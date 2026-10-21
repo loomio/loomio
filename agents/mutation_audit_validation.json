@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "tests": 3154,
+    "assertions": 29767,
+    "failures": 0,
+    "errors": 0,
+    "skips": 2,
+    "seconds": 457.188553,
+    "log": "tmp/mutineer-trial/full-suite-baseline.log"
+  },
+  "after": {
+    "tests": 3310,
+    "assertions": 33339,
+    "failures": 0,
+    "errors": 0,
+    "skips": 2,
+    "seconds": 507.756235,
+    "log": "tmp/mutation_audit/full-suite-b3-boundaries.log",
+    "checkout": "/private/tmp/loomio-mutation-coverage",
+    "database": "loomio_test_loomio_mutation_coverage",
+    "source_test_snapshot_sha256": "ada58a8a58146b2f5d2d346fa7c8929888e3fc0682d2040a95f25da14445dba7",
+    "snapshot_files": 2277,
+    "snapshot_manifest": "tmp/mutation_audit/full-suite-b3-boundaries-snapshot.json",
+    "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+    "scope_note": "Includes all previous stance, session, mobile, outbound-request, realtime, unsubscribe and trial-deletion regressions, plus B3 fail-closed configured-key boundaries, ID/identity lifecycle denials and the defined identity response field set. Source/test inputs verified unchanged throughout. Application source/schema held fixed; four application findings remain unresolved. This green suite does not complete the remaining mutation/review queue."
+  },
+  "note": "Both existing skips retained. Wall time is local execution evidence with different concurrent audit load; this is not a measured test-suite speed improvement.",
+  "previous_after_runs": [
+    {
+      "tests": 3232,
+      "assertions": 32353,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 428.724068,
+      "log": "tmp/mutation_audit/full-suite-after.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "1072ac99f5c5f36940966e4b58fb6d48fe11b07011ba9ed59ad410dbd9e76157",
+      "snapshot_files": 1116
+    },
+    {
+      "tests": 3251,
+      "assertions": 32522,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 482.406811,
+      "log": "tmp/mutation_audit/full-suite-after-topic-permissions.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "61bf3e29caeb7a4d360f67fe062d925898d7cb4574957a1795b18449931b2899",
+      "snapshot_files": 2274,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-topic-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Snapshot includes topic/stance/membership, search, mobile relay and newsletter regressions. S1, client callbacks, passkey, SAML, user-query and reaction updates made afterward require focused validation and a final full-suite run."
+    },
+    {
+      "tests": 3258,
+      "assertions": 32574,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 481.694398,
+      "log": "tmp/mutation_audit/full-suite-final.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "40fe96c4dd7711fbeadd10f4e1a9f1db0c68410cf8a4fae5c7c53c0bc32ad1e2",
+      "snapshot_files": 2274,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-final-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes SAML, passkey, S1, client callback, invitation-discovery and reaction changes. Subsequent secret-group, reader-list and topic-serializer tests are tracked by focused validation."
+    },
+    {
+      "tests": 3265,
+      "assertions": 32702,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 436.167714,
+      "log": "tmp/mutation_audit/full-suite-current.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "b02075544ee52af4c65281017f7fea1615e008c3658acd478cec2ca0b51c0740",
+      "snapshot_files": 2274,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-current-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes group/reader/topic payload privacy, relay media handling, exact search scope, invitation filtering, login-token consolidation, passkey boundaries and explore pagination. The subsequent anonymous repeat-vote permission test has focused validation and a separate targeted mutation confirmation."
+    },
+    {
+      "tests": 3283,
+      "assertions": 32986,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 433.861144,
+      "log": "tmp/mutation_audit/full-suite-model-gaps.log",
+      "checkout": "/private/tmp/loomio-mutation-coverage",
+      "database": "loomio_test_loomio_mutation_coverage",
+      "source_test_snapshot_sha256": "d41827e43f770cedaeee6856cbbb9bfc4f93b2f9df23d27f44ce9997146b54e6",
+      "snapshot_files": 2275,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-model-gaps-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes anonymous repeat-vote permission, discussion access roles, outcome authorization/attribution/recipient results, calendar/search scope, comment pinning and length/discard, option grids and anonymous immutability, template discovery/translation/custom copies/invalid results, browser push expiry/revocation and mobile relay UUID/timeouts. Four separately retained failing reproductions remain unresolved runtime work. Two later outcome-announcement closure tests have focused validation; they are not included in this frozen full-suite snapshot. The existing reader-preference precedence example was subsequently strengthened and awaits its selected-test baseline/matrix. The existing pending-identity case was later strengthened with profile synchronization enabled; it awaits focused baseline/matrix."
+    },
+    {
+      "tests": 3289,
+      "assertions": 33030,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 252.626227,
+      "log": "tmp/mutation_audit/full-suite-registration.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "2a3a05b841a9a3e84373a907c85819a89247e313c1d342a004cb4f670b17f4cf",
+      "snapshot_files": 2276,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-registration-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes the later outcome-announcement closure, membership renaming and nested peer privacy, reader preference precedence, pending SSO profile synchronization, and account-completion proof revocation recheck regressions. All frozen source/test input hashes verified unchanged in the primary and validation checkouts after completion. Two existing optional/disabled skips remain. Four separately reproduced application findings remain unresolved; this is regression-suite evidence, not completion of the mutation audit."
+    },
+    {
+      "tests": 3296,
+      "assertions": 33131,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 438.2336,
+      "log": "tmp/mutation_audit/full-suite-group-and-consent.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "87358dff0a33be17982288d792ac97d637c7884dc1ba2944b92b8129d48e824b",
+      "snapshot_files": 2277,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-group-and-consent-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes named group invitation/private-content boundaries; persisted discussion author/callback/creator rights and settings, outsider discard rejection; mobile browser-authenticated consent, exact expiry/replay, callback validation/cache header/result keys; checked-task creation timestamp; bounded BLT terminator parsing. All frozen input hashes verified unchanged after completion in primary and validation checkouts. Two existing skips retained. Runtime code/schema unchanged and four separate application findings remain unresolved. Mutation comparisons and remaining contexts are still in progress."
+    },
+    {
+      "tests": 3299,
+      "assertions": 33152,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 494.266249,
+      "log": "tmp/mutation_audit/full-suite-discussion-recheck.log",
+      "checkout": "/private/tmp/loomio-mutation-coverage",
+      "database": "loomio_test_loomio_mutation_coverage",
+      "source_test_snapshot_sha256": "aa3e7535c3274f10a7d90520479685b23187707bc8df3cbec41ba8fe5784e053",
+      "snapshot_files": 2277,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-discussion-recheck-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes the subsequent real-write-lock discussion authorization recheck, independent guest invitation denial, and verified destination-group member/coordinator boundaries. Frozen source/test inputs verified unchanged after completion. Two existing skips retained. Mutation audit unfinished; four separately reproduced app bugs remain unresolved and production code/schema unchanged. A subsequent assertion checks the returned discarded object before reload; its focused27-test141-assertion run passed and is recorded separately from this frozen full-suite snapshot. The later Markdown raw-markup corpus and returned-state assertion passed together in a separate32-test172-assertion focused run; they are subsequent to this frozen full-suite snapshot."
+    },
+    {
+      "tests": 3301,
+      "assertions": 33177,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 265.068833,
+      "log": "tmp/mutation_audit/full-suite-session-links.log",
+      "checkout": "/private/tmp/loomio-mutation-validation",
+      "database": "loomio_test_loomio_mutation_validation",
+      "source_test_snapshot_sha256": "020e2ec191165ada961f98245d4228303cdf481d29075b92e1fbefc3c620825a",
+      "snapshot_files": 2277,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-session-links-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Current frozen suite includes every prior discussion/group/mobile/Markdown/BLT/task assertion plus session bounce/complaint resets, logout token rotation/idempotence and dependency cleanup, invalid-link cleanup, blank-password failed-attempt preservation, and sign-in link consumption before account-completion staging and after stale lookup. Both primary and validation source/test hashes verified unchanged after completion. Two existing skips retained. Source/schema fixed; four application findings remain unresolved. This green suite does not complete the remaining mutation/review queue."
+    },
+    {
+      "tests": 3306,
+      "assertions": 33280,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 504.235354,
+      "log": "tmp/mutation_audit/full-suite-stance-and-auth-boundaries.log",
+      "checkout": "/private/tmp/loomio-mutation-coverage",
+      "database": "loomio_test_loomio_mutation_coverage",
+      "source_test_snapshot_sha256": "f91b437b69892104982cfd25dde424638a6af14573a785013a6ce4713328a5fa",
+      "snapshot_files": 2277,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-stance-and-auth-boundaries-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes the corrected valid-ballot ASCII/emoji reason boundaries and required-reason draft/length cases, shared sign-in inactive-resolution/name guards, HttpOnly/SameSite settings, sign-in counts and logout cookie clearing, usable mobile access-token issuance/lifetimes, invalid client/callback/verifier rejection, refresh rejection/expiry and revoked-device ticket denial. Source/test inputs verified unchanged throughout. Application source/schema held fixed; four application findings remain unresolved. This green suite does not complete the remaining mutation/review queue."
+    },
+    {
+      "tests": 3309,
+      "assertions": 33318,
+      "failures": 0,
+      "errors": 0,
+      "skips": 2,
+      "seconds": 496.73526,
+      "log": "tmp/mutation_audit/full-suite-outbound-and-channel-boundaries.log",
+      "checkout": "/private/tmp/loomio-mutation-coverage",
+      "database": "loomio_test_loomio_mutation_coverage",
+      "source_test_snapshot_sha256": "7e28c9b0047c1c55032c90a3bdbfa7ab00b78e6d3e230a973bbc010ae49fd04f",
+      "snapshot_files": 2277,
+      "snapshot_manifest": "tmp/mutation_audit/full-suite-outbound-and-channel-boundaries-snapshot.json",
+      "snapshot_format": "SHA256 of compact, sorted JSON mapping app/lib/config/db/test Ruby and YAML paths to their file SHA256.",
+      "scope_note": "Includes every prior stance/session/mobile case plus actual validated-IP pinning/TLS/timeout/header/body request configuration, mixed-DNS rejection at the outbound boundary, successful redirect parsing and hop counts, exact safe-open byte limits, chatbot duplicate suppression with valid DNS, actual realtime broadcast destinations and personal/shared scope separation, topic-only and direct-topic unsubscribe preferences, and trial-only spam deletion with paid/missing/malformed IDs. Source/test inputs verified unchanged throughout. Application source/schema held fixed; four application findings remain unresolved. This green suite does not complete the remaining mutation/review queue."
+    }
+  ],
+  "focused_runs": [
+    {
+      "tests": 102,
+      "assertions": 531,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 6.205481,
+      "log": "tmp/mutation_audit/focused-auth-invitations-reactions-after.log",
+      "scope": [
+        "subscriptions verification",
+        "HTTP callback dispatch",
+        "passkey credential authentication",
+        "SAML settings and opt-in",
+        "invitation discovery",
+        "reaction realtime recipients"
+      ]
+    },
+    {
+      "tests": 37,
+      "assertions": 155,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.657043,
+      "log": "tmp/mutation_audit/focused-group-reader-privacy.log",
+      "scope": [
+        "secret group current handle and key denial",
+        "group/direct topic reader email visibility",
+        "reader mutation response payloads"
+      ]
+    },
+    {
+      "tests": 40,
+      "assertions": 192,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.934447,
+      "log": "tmp/mutation_audit/focused-topic-payload-privacy.log",
+      "scope": [
+        "secret group page denial",
+        "reader email visibility and mutation payload",
+        "personal and shared group/direct topic payload privacy"
+      ]
+    },
+    {
+      "tests": 6,
+      "assertions": 31,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 0.586553,
+      "log": "tmp/mutation_audit/focused-relay-media.log",
+      "scope": [
+        "valid authorization body rejected under text/plain without consumption"
+      ]
+    },
+    {
+      "tests": 10,
+      "assertions": 12,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 0.887146,
+      "log": "tmp/mutation_audit/focused-search-exact-scope.log",
+      "scope": [
+        "exact indexed discussion/comment/poll IDs and author scope"
+      ]
+    },
+    {
+      "tests": 11,
+      "assertions": 79,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.774447,
+      "log": "tmp/mutation_audit/focused-invitation-query-filters.log",
+      "scope": [
+        "named fixture invitation query exclusions and inactive-account filtering"
+      ]
+    },
+    {
+      "tests": 56,
+      "assertions": 234,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.830258,
+      "log": "tmp/mutation_audit/focused-login-token-consolidation.log",
+      "scope": [
+        "login token service with preserved returned and persisted redirect",
+        "HTML login links",
+        "session password/code/link authentication and logout"
+      ]
+    },
+    {
+      "tests": 36,
+      "assertions": 210,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.325048,
+      "log": "tmp/mutation_audit/focused-app-passkey-after.log",
+      "scope": [
+        "root bootstrap app mount and Pragma/Expires headers",
+        "stable WebAuthn handles",
+        "recent-authentication boundary",
+        "expired passkey challenge cleanup",
+        "registration and authentication controllers"
+      ]
+    },
+    {
+      "tests": 25,
+      "assertions": 105,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.657387,
+      "log": "tmp/mutation_audit/focused-explore-pagination.log",
+      "scope": [
+        "public group result pagination with exact member-count ordering and page clamping",
+        "secret group page access and exports"
+      ]
+    },
+    {
+      "tests": 6,
+      "assertions": 43,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.561344,
+      "log": "tmp/mutation_audit/focused-anonymous-vote-permission.log",
+      "scope": [
+        "post-submission anonymous vote permission while retaining electorate membership on group/direct topics"
+      ]
+    },
+    {
+      "tests": 90,
+      "assertions": 564,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 9.727518,
+      "log": "tmp/mutation_audit/focused-model-permission-gaps-after.log",
+      "scope": [
+        "outcome service authorization, attribution, invitation targeting and return values",
+        "STV service empty result and quota metadata",
+        "anonymous option counts, freezing, availability grid and averages",
+        "discussion author, coordinator, member and outsider permission matrix",
+        "comment heading pinning and exact length/discard boundary",
+        "calendar attendees and exact outcome search indexing scope",
+        "template translation export",
+        "browser subscription expiry/revocation in actual notification jobs",
+        "mobile relay UUID version/variant and request timeouts"
+      ]
+    },
+    {
+      "tests": 49,
+      "assertions": 164,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.466941,
+      "log": "tmp/mutation_audit/focused-template-discovery-after.log",
+      "scope": [
+        "stored and built-in template discovery, group positions/visibility and example state",
+        "translated option metadata and tag arrays",
+        "custom copy persistence/key removal and invalid create/update results",
+        "existing template API permission and portable export tests"
+      ]
+    },
+    {
+      "tests": 19,
+      "assertions": 104,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 4.882371,
+      "log": "tmp/mutation_audit/focused-outcome-closure.log",
+      "scope": [
+        "closed-versus-open outcome announcement authorization independently of poll announcement permission, group/direct topics",
+        "reopened-poll service denial with valid recipient invitation permission"
+      ]
+    },
+    {
+      "tests": 59,
+      "assertions": 210,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.180928,
+      "log": "tmp/mutation_audit/focused-membership-names-and-pending-sso-after.log",
+      "scope": [
+        "non-instance coordinator name-change authorization for verified nameless and unverified named users",
+        "unchanged names after denied own-group verified-name and outsider edits",
+        "exact legacy member filtering and peer email/weight privacy including nested users",
+        "pending identity remains unlinked with profile synchronization enabled and unchanged signed-in profile"
+      ]
+    },
+    {
+      "tests": 24,
+      "assertions": 119,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.859898,
+      "log": "tmp/mutation_audit/focused-discussion-and-group-tokens-after.log",
+      "scope": [
+        "discussion actor attribution/callback and creator reader rights",
+        "persisted discussion topic settings and eventless realtime update",
+        "outsider discard denial without writes/jobs",
+        "named group and pending invitation tokens; metadata versus private content"
+      ]
+    },
+    {
+      "tests": 4,
+      "assertions": 22,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "log": "tmp/mutation_audit/focused-blt-terminator-after.log",
+      "scope": [
+        "bounded BLT parsing with required ballot terminator"
+      ],
+      "seconds": 1.400302
+    },
+    {
+      "tests": 24,
+      "assertions": 162,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 1.652476,
+      "log": "tmp/mutation_audit/focused-mobile-consent-and-task-completion.log",
+      "scope": [
+        "browser-authenticated mobile consent, exact expiry, replay and callback parameter rejection",
+        "no-store consent response and exact callback query keys",
+        "completed task creation timestamp"
+      ]
+    },
+    {
+      "tests": 27,
+      "assertions": 140,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.272205,
+      "log": "tmp/mutation_audit/focused-discussion-recheck-and-move.log",
+      "scope": [
+        "move destination membership/coordinator setting and email verification boundaries",
+        "discussion permission revoked before its real write lock",
+        "legitimate discussion editor denied guest invitation without writes"
+      ]
+    },
+    {
+      "tests": 27,
+      "assertions": 141,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.859597,
+      "log": "tmp/mutation_audit/focused-discussion-returned-state-after.log",
+      "scope": [
+        "immediate returned discarded state before reload for controller serialization",
+        "discussion lock/invitation and destination-group regressions"
+      ]
+    },
+    {
+      "tests": 32,
+      "assertions": 172,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 2.386176,
+      "log": "tmp/mutation_audit/focused-rendering-and-returned-state.log",
+      "scope": [
+        "literal script/event-handler markup and unsafe URL corpus in Markdown mode",
+        "immediate returned discussion discard state",
+        "discussion lock/invitation and destination-group regressions"
+      ]
+    },
+    {
+      "tests": 55,
+      "assertions": 262,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 3.863018,
+      "log": "tmp/mutation_audit/focused-session-consumption-and-logout.log",
+      "scope": [
+        "authentication bounce/complaint counter reset from independent nonzero states",
+        "logout token rotation, idempotent signed-out logout and dependent subscription cleanup",
+        "blank password does not burn real-account attempts; invalid pending-link cleanup",
+        "sign-in link consumption before account completion and recheck after stale initial lookup",
+        "real-CSRF inactive-session integration boundaries"
+      ]
+    }
+  ],
+  "kill_preservation_check": {
+    "contexts_compared": 92,
+    "historical_reports_compared": 118,
+    "contexts_with_lost_kills": [],
+    "report": "agents/mutation_audit_preservation.json",
+    "note": "Current matching complete matrices against available historical complete reports with identical candidate IDs; excludes errors, timeouts and no verdicts. Application source held fixed throughout the test audit. This check does not classify behavioral redundancy or cover unfinished contexts."
+  },
+  "test_consolidations": [
+    {
+      "unit": "services/login_token_service",
+      "removed_test_id": "LoginTokenServiceTest#test_stores_a_redirect_uri",
+      "retained_test_id": "LoginTokenServiceTest#test_creates_a_new_login_token",
+      "behavior_preserved": "Returned token ownership and in-memory redirect, plus an explicit reload proving the redirect is saved; mail delivery, logged-out denial and foreign-host refusal remain separate.",
+      "before_tests": 5,
+      "after_tests": 4,
+      "before_report": "tmp/mutation_audit/services/login_token_service/55219b8dfa162271b9d14c4e0a586514c9c03448278cc91153abd224b297ea51/before.json",
+      "after_report": "tmp/mutation_audit/services/login_token_service/18baa3efa6c887214f8246f66068298f7942666de7771fbf1992cb7465f88ff7/before.json",
+      "candidate_ids": [
+        "1e8d66bbc4aa",
+        "1f2828036692",
+        "26d9f09491f2",
+        "447021b9ce01",
+        "4c50f91838da",
+        "53fa9c5f0b99",
+        "6fe144980000",
+        "7f297696d4d6",
+        "aa2a85df61a1",
+        "dc98b3b13d94",
+        "df3b0cd8d9ae",
+        "ef851476bf5c"
+      ],
+      "previously_killed_ids": [
+        "1e8d66bbc4aa",
+        "1f2828036692",
+        "26d9f09491f2",
+        "447021b9ce01",
+        "4c50f91838da",
+        "53fa9c5f0b99",
+        "6fe144980000",
+        "7f297696d4d6",
+        "aa2a85df61a1",
+        "dc98b3b13d94",
+        "df3b0cd8d9ae"
+      ],
+      "after_killed_ids": [
+        "1e8d66bbc4aa",
+        "1f2828036692",
+        "26d9f09491f2",
+        "447021b9ce01",
+        "4c50f91838da",
+        "53fa9c5f0b99",
+        "6fe144980000",
+        "7f297696d4d6",
+        "aa2a85df61a1",
+        "dc98b3b13d94",
+        "df3b0cd8d9ae"
+      ],
+      "lost_kills": [],
+      "newly_killed_ids": [],
+      "matrix_complete": true,
+      "remaining_survivor_ids": [
+        "ef851476bf5c"
+      ]
+    }
+  ],
+  "targeted_mutations": [
+    {
+      "unit": "permissions/poll",
+      "report": "tmp/mutation_audit/targeted-poll-vote.json",
+      "operators": [
+        "condition_false"
+      ],
+      "tests": [
+        "test/models/ability/poll_access_test.rb"
+      ],
+      "mutant_id": "1cd21089112d",
+      "status": "killed",
+      "killed_by": [
+        "Ability::PollAccessTest#test_anonymous_voters_remain_in_the_electorate_but_cannot_vote_again_after_submitting"
+      ],
+      "scope_note": "Limited operator/test confirmation of anonymous repeat-vote permission. Does not replace the full 74-candidate poll permission matrix."
+    }
+  ],
+  "environment_retries": [
+    {
+      "unit": "permissions/group",
+      "first_baseline_log": "tmp/mutation_audit/group-baseline-deadlock-first.log",
+      "tests": 233,
+      "assertions": 1513,
+      "failures": 0,
+      "errors": 1,
+      "seconds": 21.490065,
+      "reason": "PostgreSQL deadlock during fixture reset after an interrupted audit. Isolated validation database had zero remaining clients before retry. The exact competing process was no longer present; no application defect is inferred.",
+      "retry": "baseline_green_matrix_running",
+      "retry_baseline": {
+        "tests": 233,
+        "assertions": 1514,
+        "failures": 0,
+        "errors": 0,
+        "seconds": 19.213768
+      }
+    }
+  ],
+  "runner_checks": [
+    "Ruby syntax passes.",
+    "Exact context filters accept known IDs and reject unknown IDs without writing progress.",
+    "A bounded one-attempt queue skips reusable evidence, attempts the next context and leaves later work queued.",
+    "Actual fork-process check: a worker ignoring INT is terminated after its leader exits, verified by pipe EOF; no database needed.",
+    {
+      "check": "Aggregate dependency signature invalidation",
+      "result": "passed",
+      "evidence": "A read-only in-memory change to a permission module test mapping changed the models/ability aggregate signature, while the unrelated models/login_token signature stayed identical. Ruby syntax check passed. No application or test file was changed by the probe."
+    },
+    {
+      "check": "Attempt-specific report directories",
+      "result": "passed",
+      "evidence": "Synthetic standalone fixture exercised the real audit runner without a Rails or DB connection: first run produced a report, an identical-input retry after an incomplete result created a different report path while preserving the earlier report bytes, and a third run reused the complete result with zero new attempts. Both old/new one-level report layouts remain discoverable.",
+      "probe_directory": "/private/tmp/mutation-audit-artifact-probe-v05v0erd"
+    }
+  ],
+  "focused_stance_and_auth_boundaries": {
+    "log": "tmp/mutation_audit/focused-stance-and-auth-boundaries.log",
+    "result": "285 runs, 1338 assertions, 0 failures, 0 errors, 0 skips",
+    "scope": "Affected stance model/caller, session/completion/registration and mobile authentication/caller test files."
+  },
+  "focused_outbound_and_channel_boundaries": {
+    "log": "tmp/mutation_audit/focused-outbound-and-channel-boundaries.log",
+    "result": "68 runs, 318 assertions, 0 failures, 0 errors, 0 skips",
+    "scope": "Affected outbound HTTP, chatbot, realtime channel, unsubscribe preference and administrative deletion test files."
+  },
+  "focused_b3_fail_closed": {
+    "log": "tmp/mutation_audit/focused-b3-fail-closed.log",
+    "tests": 24,
+    "assertions": 89,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 0.995109
+  },
+  "runtime_artifact_integrity": {
+    "reports_verified": 17,
+    "diagnostic_contexts": 16,
+    "missing_or_changed_reports": [],
+    "scope_note": "Retained partial attempts and resolved retry history verified by SHA256. NotificationMailer and TopicItem bounded retries are running; partial verdicts are not complete measurement evidence."
+  },
+  "frozen_input_recheck": {
+    "checkouts_verified": 4,
+    "snapshot_files": 2277,
+    "source_test_snapshot_sha256": "ada58a8a58146b2f5d2d346fa7c8929888e3fc0682d2040a95f25da14445dba7",
+    "changed_inputs": [],
+    "scope_note": "Source/test files still match the green3310-test manifest after documentation, source/test mapping, security classification and Topic timeout-budget updates; no new Rails full run is claimed."
+  }
+}
