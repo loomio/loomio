@@ -377,6 +377,33 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_includes discussion_json.keys, 'description'
   end
 
+  test "viewing a discussion accepts the viewer's pending membership" do
+    invitee = User.create!(name: "Invitee", email: "discussion-invitee@example.test", email_verified: true)
+    membership = @group.memberships.create!(user: invitee, inviter: @admin)
+    assert_nil membership.accepted_at
+    sign_in invitee
+
+    get :show, params: { id: @discussion.key }
+
+    assert_response :success
+    assert_not_nil membership.reload.accepted_at
+  end
+
+  test "viewing a public discussion does not restore a revoked invitation" do
+    group = topics(:public_discussion_topic).group
+    invitee = User.create!(name: "Revoked invitee", email: "revoked-invitee@example.test", email_verified: true)
+    membership = group.memberships.create!(user: invitee, inviter: @admin)
+    MembershipService.revoke(membership: membership, actor: @admin)
+    sign_in invitee
+
+    get :show, params: { id: discussions(:public_discussion).key }
+
+    assert_response :success
+    membership.reload
+    assert_not_nil membership.revoked_at
+    assert_nil membership.accepted_at
+  end
+
   test "show serializes without record cache fallbacks" do
     sign_in @user
 

@@ -31,6 +31,25 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "viewing a poll accepts the viewer's pending membership" do
+    poll = PollService.create(params: {
+      title: "Pending membership poll",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    invitee = User.create!(name: "Invitee", email: "poll-invitee@example.test", email_verified: true)
+    membership = @group.memberships.create!(user: invitee, inviter: @admin)
+    sign_in invitee
+
+    get :show, params: { id: poll.key }
+
+    assert_response :success
+    assert_not_nil membership.reload.accepted_at
+  end
+
   test "show displays a poll" do
     poll = PollService.create(params: {
       title: "POLL!",
