@@ -14,7 +14,7 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     end
     assert_equal 'bounced', @delivery.events.sole.kind
     assert_equal @delivery.events.sole.id, EmailSuppression.for_address(@recipient.email).sole.notification_delivery_event_id
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
     assert_no_difference 'ActionMailer::Base.deliveries.count' do
       UserMailer.redacted(@recipient.email, 'en').deliver_now
     end
@@ -29,7 +29,7 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     end
     assert_equal 'complained', @delivery.events.sole.kind
     refute @recipient.email_delivery_blocked?
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 
   test 'temporary failure and forged feedback cannot permanently block the address' do
@@ -63,16 +63,16 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
         receive_inbound_email_from_source(source.call('first-attempt'))
       end
     end
-    email = ReceivedEmail.find_by!(message_id: mail.message_id)
-    refute email.released?
+    email = ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id)
+    assert_nil email.processing_completed_at
     assert ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).failed?
     refute @recipient.email_delivery_blocked?
 
-    assert_no_difference 'ReceivedEmail.count' do
+    assert_no_difference 'PendingEmail.count' do
       receive_inbound_email_from_source(source.call('retry-attempt'))
     end
     assert @recipient.email_delivery_blocked?
-    assert email.reload.released?
+    assert email.reload.processing_completed_at
     assert_equal 1, @delivery.events.count
   end
 
@@ -82,9 +82,9 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
     NotificationEmailEventService.stub(:record!, ->(**) { raise 'storage unavailable' }) do
       assert_raises(RuntimeError) { receive_inbound_email_from_source(original.to_s) }
     end
-    email = ReceivedEmail.find_by!(message_id: original.message_id)
-    source_id = email.header(EmailFeedbackService::SOURCE_INBOUND_HEADER)
-    assert_equal original.message_id, ActionMailbox::InboundEmail.find(source_id).message_id
+    email = ActionMailbox::InboundEmail.find_by!(message_id: original.message_id)
+    source_id = email.id
+    assert_equal original.message_id, email.message_id
 
     forged = feedback
     forged.message_id = original.message_id
@@ -97,9 +97,9 @@ class EmailFeedbackMailboxTest < ActionMailbox::TestCase
 
     assert @recipient.email_delivery_blocked?
     refute users(:alien).email_delivery_blocked?
-    assert_equal source_id, email.reload.header(EmailFeedbackService::SOURCE_INBOUND_HEADER)
+    assert_equal source_id, email.reload.id
     assert_equal 'bounced', @delivery.events.sole.kind
-    assert_equal [ 'original.txt' ], email.attachments.map { |attachment| attachment.filename.to_s }
+    assert_equal [ 'original.txt' ], email.mail.attachments.map(&:filename)
   end
 
   private

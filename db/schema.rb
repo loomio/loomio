@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -33,8 +33,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
     t.datetime "created_at", null: false
     t.string "message_checksum", null: false
     t.string "message_id", null: false
+    t.datetime "processing_completed_at"
     t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
+    t.index ["message_id", "id"], name: "index_inbound_emails_on_message_id_and_id"
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
   end
 
@@ -625,6 +627,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
     t.index ["user_id"], name: "index_passkey_credentials_on_user_id"
   end
 
+  create_table "pending_emails", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "group_id", null: false
+    t.bigint "inbound_email_id", null: false
+    t.string "sender_email"
+    t.string "sender_name"
+    t.integer "status", default: 0, null: false
+    t.string "subject"
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_pending_emails_on_group_id"
+    t.index ["inbound_email_id"], name: "index_pending_emails_on_inbound_email_id", unique: true
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.bigint "author_id"
     t.datetime "authored_at"
@@ -837,21 +852,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
-  end
-
-  create_table "received_emails", force: :cascade do |t|
-    t.string "body_html"
-    t.string "body_text"
-    t.datetime "created_at", null: false
-    t.boolean "dkim_valid", default: false, null: false
-    t.integer "group_id"
-    t.hstore "headers", default: {}, null: false
-    t.string "message_id"
-    t.boolean "released", default: false, null: false
-    t.boolean "spf_valid", default: false, null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_received_emails_on_group_id"
-    t.index ["message_id"], name: "index_received_emails_on_message_id", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -1398,11 +1398,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
   add_foreign_key "outcomes", "polls"
   add_foreign_key "passkey_challenges", "users", on_delete: :cascade
   add_foreign_key "passkey_credentials", "users"
+  add_foreign_key "pending_emails", "action_mailbox_inbound_emails", column: "inbound_email_id"
+  add_foreign_key "pending_emails", "groups", on_delete: :cascade
   add_foreign_key "poll_options", "polls", on_delete: :cascade
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade
-  add_foreign_key "received_emails", "groups", on_delete: :cascade
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade
   add_foreign_key "solid_queue_batch_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

@@ -49,6 +49,6 @@ class EmailReplyAttributionTest < ActionMailbox::TestCase
     assert_equal @author, reply.created_topic_item.actor
     assert_equal @comment, reply.parent
     assert_equal "Author's email reply", reply.body
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 end

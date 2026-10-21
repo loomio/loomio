@@ -84,7 +84,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       user: @author,
       reaction: "smiley"
     )
-    received_email = ReceivedEmail.create!(group: groups(:group), headers: {})
+    received_email = create_pending_email(group: groups(:group), headers: {})
     subjects = {
       "comment_replied_to" => discussions(:discussion),
       "discussion_announced" => discussions(:discussion),
@@ -462,7 +462,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal [ "in_app" ], channels_for(reacted, reaction_recipient)
     assert_empty channels_for(reacted, reaction_subscription)
 
-    received_email = ReceivedEmail.create!(group: groups(:group), headers: {})
+    received_email = create_pending_email(group: groups(:group), headers: {})
     unknown_sender = route_notification(kind: "unknown_sender", subject: received_email)
     assert_equal [ "in_app" ], channels_for(unknown_sender, admin)
     assert_empty channels_for(unknown_sender, admin_subscription)

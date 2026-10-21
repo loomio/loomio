@@ -91,7 +91,7 @@ class DiscussionService
       )
       topic_item
     end
-    EventBus.broadcast('discussion_create', discussion, actor)
+    ActiveRecord.after_all_transactions_commit { EventBus.broadcast('discussion_create', discussion, actor) }
     on_topic_item&.call(topic_item)
     discussion
   end

@@ -17,7 +17,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
     assert_includes event.detail, '5.1.1'
     assert_equal event.id, EmailSuppression.for_address(@recipient.email).sole.notification_delivery_event_id
     assert @recipient.email_delivery_blocked?
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 
   test 'a production SMTP 550 failure with DSN status 4.4.7 remains transient' do
@@ -30,7 +30,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
     assert_equal 'Transient', event.bounce_type
     assert_includes event.detail, '550 4.4.7'
     refute @recipient.email_delivery_blocked?
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 
   test 'a production complaint matches the SES ID in its attached original message' do
@@ -41,7 +41,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
     assert_includes event.detail, 'abuse'
     assert_equal event.id, EmailSuppression.for_address(@recipient.email).sole.notification_delivery_event_id
     assert @recipient.email_delivery_blocked?
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 
   test 'a production complaint can identify an untracked recipient from the ARF report' do
@@ -54,7 +54,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
     assert_equal 'complaint', record.reason
     assert_nil record.notification_delivery_event_id
     assert @recipient.email_delivery_blocked?
-    assert ReceivedEmail.last.released?
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
   end
 
   test 'production format reports cannot block an address when the relay reports failed DKIM' do
@@ -65,7 +65,7 @@ class ProductionEmailFeedbackTest < ActionMailbox::TestCase
         receive_inbound_email_from_source(mail.encoded)
       end
       refute @recipient.email_delivery_blocked?
-      assert ReceivedEmail.last.released?
+      assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
     end
   end
 

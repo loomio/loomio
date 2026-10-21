@@ -58,6 +58,7 @@ module Loomio
     end
 
     config.action_mailbox.ingress = :relay
+    config.action_mailbox.incinerate_after = 60.days
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true

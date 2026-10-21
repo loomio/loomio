@@ -10,33 +10,33 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
   end
 
   test 'an authenticated regional SES bounce to notifications links to the exact delivery' do
-    email, mail = feedback
+    mail = feedback
     assert_difference -> { EmailSuppression.for_address(@recipient.email).count }, 1 do
       assert_no_difference 'ActionMailer::Base.deliveries.count' do
-        ReceivedEmailService.route(email, mail: mail)
+        process(mail)
       end
     end
     event = @delivery.events.sole
     assert_equal 'bounced', event.kind
     assert_includes event.detail, '550 unknown mailbox'
-    assert email.reload.released?
+    assert ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).processing_completed_at.present?
     assert_no_difference ['NotificationDeliveryEvent.count', 'EmailSuppression.count'] do
-      ReceivedEmailService.route(email, mail: mail)
+      process(mail)
     end
   end
 
   test 'a delay is recorded without permanently suppressing the recipient' do
-    email, mail = feedback(action: 'delayed')
+    mail = feedback(action: 'delayed')
     assert_no_difference -> { EmailSuppression.for_address(@recipient.email).count } do
-      ReceivedEmailService.route(email, mail: mail)
+      process(mail)
     end
     assert_equal 'delayed', @delivery.events.sole.kind
   end
 
   test 'a transient or unclassified bounce records evidence without a permanent block' do
     ['4.2.2', 'unknown'].each do |status|
-      email, mail = feedback(status: status)
-      ReceivedEmailService.route(email, mail: mail)
+      mail = feedback(status: status)
+      process(mail)
       refute @recipient.email_delivery_blocked?
     end
     assert_equal %w[Transient Undetermined], @delivery.events.order(:id).pluck(:bounce_type)
@@ -44,21 +44,21 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
 
   test 'a multi recipient DSN cannot transfer a permanent failure to a delayed recipient' do
     other = users(:alien)
-    email, mail = feedback
+    mail = feedback
     report = mail.all_parts.find { |part| part.mime_type == 'message/delivery-status' }
     report.body = report.body.decoded + "\r\nFinal-Recipient: rfc822; #{other.email}\r\nAction: delayed\r\nStatus: 4.2.2\r\n"
-    ReceivedEmailService.route(email, mail: mail)
+    process(mail)
     assert @recipient.email_delivery_blocked?
     refute other.email_delivery_blocked?
     assert_equal 'bounced', @delivery.events.sole.kind
   end
 
   test 'a complaint without a report recipient records the status without blocking the current address' do
-    email, mail = feedback(complaint: true)
+    mail = feedback(complaint: true)
     report = mail.parts.find { |part| part.mime_type == 'message/feedback-report' }
     report.body = "Feedback-Type: abuse\r\n"
     assert_no_difference 'EmailSuppression.count' do
-      ReceivedEmailService.route(email, mail: mail)
+      process(mail)
     end
     assert_equal 'complained', @delivery.events.sole.kind
     refute @recipient.email_delivery_blocked?
@@ -67,8 +67,8 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
   test 'feedback for a previous address blocks only the explicit address without guessing its delivery recipient' do
     old_address = @recipient.email
     @recipient.update!(email: 'replacement@example.test')
-    email, mail = feedback(address: old_address)
-    ReceivedEmailService.route(email, mail: mail)
+    mail = feedback(address: old_address)
+    process(mail)
     refute @recipient.email_delivery_blocked?
     assert EmailSuppression.for_address(old_address).active.exists?
     assert_nil EmailSuppression.for_address(old_address).sole.notification_delivery_event_id
@@ -76,10 +76,10 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
   end
 
   test 'an explicit ARF recipient can block an address without a tracked message' do
-    email, mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
+    mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
     report = mail.all_parts.find { |part| part.mime_type == 'message/feedback-report' }
     report.body = "Feedback-Type: abuse\r\nOriginal-Rcpt-To: rfc822; #{@recipient.email}\r\n"
-    ReceivedEmailService.route(email, mail: mail)
+    process(mail)
     assert @recipient.email_delivery_blocked?
     assert_nil EmailSuppression.for_address(@recipient.email).sole.notification_delivery_event_id
     assert_empty @delivery.events
@@ -87,10 +87,10 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
 
   test 'duplicate reports for an untracked original message do not reinstate a cleared block' do
     2.times do |index|
-      email, mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
+      mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
       report = mail.all_parts.find { |part| part.mime_type == 'message/feedback-report' }
       report.body = "Feedback-Type: abuse\r\nOriginal-Rcpt-To: rfc822; #{@recipient.email}\r\n"
-      ReceivedEmailService.route(email, mail: mail)
+      process(mail)
       EmailSuppressionService.clear!(user: @recipient, actor: @recipient, method: 'sign_in') if index.zero?
     end
     refute @recipient.email_delivery_blocked?
@@ -102,46 +102,46 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     other = NotificationDelivery.create!(notification: notification, recipient: other_recipient, channel: 'email',
       provider_message_id: 'other-message')
-    email, mail = feedback(complaint: true)
+    mail = feedback(complaint: true)
     attachment = Mail::Part.new(content_type: 'multipart/mixed')
     attachment.add_part(Mail::Part.new(content_type: 'text/rfc822-headers',
       body: "Message-ID: <other-message@amazonses.com>\r\nTo: #{other_recipient.email}\r\n"))
     mail.add_part(attachment)
-    ReceivedEmailService.route(email, mail: mail)
+    process(mail)
     assert @recipient.email_delivery_blocked?
     refute other_recipient.email_delivery_blocked?
     assert_empty other.events
   end
 
   test 'ambiguous feedback is reported without guessing a recipient from a From header' do
-    email, mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
+    mail = feedback(complaint: true, message_id: 'untracked-message@amazonses.com')
     report = mail.all_parts.find { |part| part.mime_type == 'message/feedback-report' }
     report.body = "Feedback-Type: abuse\r\nFrom: #{users(:alien).email}\r\n"
     warnings = []
     Rails.logger.stub(:warn, ->(message) { warnings << message }) do
       assert_no_difference 'EmailSuppression.count' do
-        ReceivedEmailService.route(email, mail: mail)
+        process(mail)
       end
     end
     assert_empty @delivery.events
     assert_equal 1, warnings.size
-    assert_includes warnings.first, "received_email_id=#{email.id}"
-    assert email.reload.released?
+    assert_includes warnings.first, "inbound_email_id=#{ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).id}"
+    assert ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).processing_completed_at.present?
   end
 
   test 'the local message ID also links feedback for a non SES SMTP transport' do
-    email, mail = feedback(message_id: @delivery.email_message_id)
-    ReceivedEmailService.route(email, mail: mail)
+    mail = feedback(message_id: @delivery.email_message_id)
+    process(mail)
     assert_equal 'bounced', @delivery.events.sole.kind
   end
 
   test 'a configured non SES feedback sender works with SMTP message IDs and no provider API' do
     previous_address = ENV['BOUNCE_ADDRESS']
     ENV['BOUNCE_ADDRESS'] = 'bounce@postoffice.test'
-    email, mail = feedback(sender: ENV['BOUNCE_ADDRESS'], message_id: @delivery.email_message_id,
+    mail = feedback(sender: ENV['BOUNCE_ADDRESS'], message_id: @delivery.email_message_id,
       authentication: 'mx.loomio.test; dkim=pass header.d=postoffice.test')
     SesEmailSuppressionService.stub(:client, -> { raise 'feedback must not depend on SES' }) do
-      ReceivedEmailService.route(email, mail: mail)
+      process(mail)
     end
     assert_equal 'bounced', @delivery.events.sole.kind
     assert @recipient.email_delivery_blocked?
@@ -154,19 +154,19 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     other = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     other_delivery = NotificationDelivery.create!(notification: other, recipient: @recipient, channel: 'email',
       provider_message_id: 'other-message')
-    email, mail = feedback
-    ReceivedEmailService.route(email, mail: mail)
+    mail = feedback
+    process(mail)
     assert_equal 1, @delivery.events.count
     assert_empty other_delivery.events
   end
 
   test 'unknown message IDs and mismatched recipients cannot be attached to a delivery' do
-    email, mail = feedback(message_id: 'unknown@amazonses.com')
-    ReceivedEmailService.route(email, mail: mail)
+    mail = feedback(message_id: 'unknown@amazonses.com')
+    process(mail)
     assert_empty @delivery.events
 
-    email, mail = feedback(address: users(:alien).email)
-    ReceivedEmailService.route(email, mail: mail)
+    mail = feedback(address: users(:alien).email)
+    process(mail)
     assert_empty @delivery.events
   end
 
@@ -174,22 +174,22 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     [nil, 'mx.loomio.test; dkim=fail header.d=amazonses.com',
      'mx.loomio.test; dkim=pass header.d=amazonses.com.evil.test',
      'mx.loomio.test; dkim=pass header.d=evil.test'].each do |authentication|
-      email, mail = feedback(authentication: authentication)
+      mail = feedback(authentication: authentication)
       assert_no_difference ['NotificationDeliveryEvent.count', 'EmailSuppression.count'] do
-        ReceivedEmailService.route(email, mail: mail)
+        process(mail)
       end
-      assert email.reload.released?
+      assert ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).processing_completed_at.present?
     end
   end
 
   test 'failure to save linked feedback rolls back suppression and release state' do
-    email, mail = feedback
+    mail = feedback
     NotificationDeliveryEvent.stub(:new, ->(*) { raise 'storage failure' }) do
       assert_raises RuntimeError do
-        ReceivedEmailService.route(email, mail: mail)
+        process(mail)
       end
     end
-    refute email.reload.released?
+    refute ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id).processing_completed_at.present?
     refute @recipient.email_delivery_blocked?
   end
 
@@ -211,9 +211,13 @@ class EmailFeedbackServiceTest < ActiveSupport::TestCase
     original.content_type = 'text/rfc822-headers'
     original.body = "Message-ID: <#{message_id}>\r\nTo: #{address}\r\nSubject: Invitation\r\n"
     mail.add_part(original)
-    email = ReceivedEmail.create!(message_id: "#{SecureRandom.uuid}@feedback.test",
-      headers: {'From' => sender, 'To' => ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS,
-                'Authentication-Results' => authentication})
-    [email, mail]
+    mail.message_id = "#{SecureRandom.uuid}@feedback.test"
+    mail['Authentication-Results'] = authentication if authentication
+    mail
+  end
+
+  def process(mail)
+    inbound = store_inbound_mail(mail) || ActionMailbox::InboundEmail.find_by!(message_id: mail.message_id)
+    InboundEmailService.process(inbound)
   end
 end

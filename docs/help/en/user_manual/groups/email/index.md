@@ -21,6 +21,6 @@ If you use multiple email addresses, you can add an alias so Loomio knows about 
 
 When the "from" address does not match a member of the group, you will receive a notification asking you to add an alias or reject all further emails from that address.
 
-This means that the first time you send email from an unrecognised address, you will need to add an alias. After that, emails will be accepted immediately.
+This means that the first time you send email from an unrecognised address, you will need to add an alias. After that, emails will be accepted immediately. Messages waiting for review retain their original content and attachments until a coordinator acts on them, including when routine email cleanup runs.
 
 ![Location of the approve and reject buttons for an unrecognised email](email_unreleased_emails.png)

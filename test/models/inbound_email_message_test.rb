@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class ReceivedEmailTest < ActiveSupport::TestCase
+class InboundEmailMessageTest < ActiveSupport::TestCase
   def email_with(auth_results)
     headers = { 'From' => 'alice@partner.example' }
     headers['Authentication-Results'] = auth_results if auth_results
-    ReceivedEmail.new(headers: headers)
+    InboundEmailMessage.new(build_inbound_email(headers: headers))
   end
 
   test "sender_authentication_failed? is true when DMARC fails" do
@@ -28,27 +28,27 @@ class ReceivedEmailTest < ActiveSupport::TestCase
   end
 
   test "recipient_emails prefers SMTP envelope recipients from Haraka" do
-    email = ReceivedEmail.new(headers: {
+    email = InboundEmailMessage.new(build_inbound_email(headers: {
       'To' => 'Mailing list <list@example.com>',
       'harakadata' => {
         rcpt_to: ['first@loomio.example', 'second@loomio.example']
       }.to_json
-    })
+    }))
 
     assert_equal ['first@loomio.example', 'second@loomio.example'], email.recipient_emails
   end
 
   test "recipient_emails falls back to the To header without Haraka metadata" do
-    email = ReceivedEmail.new(headers: { 'To' => 'Group <group@loomio.example>' })
+    email = InboundEmailMessage.new(build_inbound_email(headers: { 'To' => 'Group <group@loomio.example>' }))
 
     assert_equal ['group@loomio.example'], email.recipient_emails
   end
 
   test "recipient_emails falls back to the To header for malformed Haraka metadata" do
-    email = ReceivedEmail.new(headers: {
+    email = InboundEmailMessage.new(build_inbound_email(headers: {
       'To' => 'Group <group@loomio.example>',
       'harakadata' => '{not-json'
-    })
+    }))
 
     assert_equal ['group@loomio.example'], email.recipient_emails
   end

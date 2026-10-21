@@ -81,8 +81,8 @@ class NotificationMailer < ApplicationMailer
       Views::NotificationMailer::MembershipRequest.new(
         topic_item: topic_item, recipient: recipient, event_key: event_key, utm_hash: utm_hash
       )
-    when 'ReceivedEmail'
-      Views::ReceivedEmailMailer.new(
+    when 'PendingEmail'
+      Views::PendingEmailMailer.new(
         topic_item: topic_item, recipient: recipient, event_key: event_key
       )
     end

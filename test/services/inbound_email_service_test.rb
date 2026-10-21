@@ -1,69 +1,70 @@
 require 'test_helper'
 
-class ReceivedEmailServiceTest < ActiveSupport::TestCase
+class InboundEmailServiceTest < ActiveSupport::TestCase
+  inline_jobs 'releases personal email-to-thread route when reply exceeds comment length limit',
+    'forwards using a forward rule',
+    'forwards from an SMTP envelope recipient and replies to the original sender'
+
   test "failed routing-rule refresh preserves the previous rules" do
     rule = ForwardEmailRule.create!(handle: "keep", email: "keep@example.com")
     ForwardEmailRule.stub(:insert_all!, ->(*) { raise "insert failed" }) do
-      assert_raises(RuntimeError) { ReceivedEmailService.refresh_forward_email_rules }
+      assert_raises(RuntimeError) { InboundEmailService.refresh_forward_email_rules }
     end
     assert ForwardEmailRule.exists?(rule.id)
   end
 
   test "unknown sender assignment rolls back when notification creation fails" do
-    group = Group.create!(name: "Atomic unknown sender #{SecureRandom.hex(4)}")
-    email = ReceivedEmail.create!(headers: {}, body_text: "Unknown sender")
-
-    assert_raises RuntimeError do
-      NotificationService.stub(:create!, ->(**) { raise "notification failed" }) do
-        ReceivedEmailService.send(:assign_group_and_notify_unknown_sender!, email, group)
-      end
+    group = groups(:group)
+    email = build_inbound_email(headers: {from: 'unknown@example.test', to: "#{group.handle}@#{ENV.fetch('REPLY_HOSTNAME')}"}, body_text: 'Unknown sender')
+    NotificationService.stub(:create!, ->(**) { raise 'notification failed' }) do
+      assert_raises(RuntimeError) { InboundEmailService.process(email) }
     end
-
-    assert_nil email.reload.group_id
+    assert_empty PendingEmail.where(inbound_email: email)
+    assert_nil email.reload.processing_completed_at
   end
 
   # -- Splitting replies --
 
   test "splits spanish text reply" do
     input_body = "Me aparece que cumpla con los Criterio?\n\nEl lun, 3 de jun. de 2024 7:03 a. m., Deborah Mowesley (via Loomio) <\nnotifications@loomio.com> escribió:\n\n> \n>\n> [image: DM] sondeo cerrará en 24 horas\n>"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Me aparece que cumpla con los Criterio?", output_body
   end
 
   test "splits spanish html reply" do
     input_body = "Me aparece que cumpla con los Criterio?\n\nEl lun, 3 de jun. de 2024 7:03 a.Â m., Deborah Mowesley (via Loomio) <notifications@loomio.com> escribiÃ³:\n\nï»¿ï»¿ï»¿ï»¿ï»¿ï»¿ï»¿ï»¿\n\nDM\n\n---------------------------\nsondeo cerrarÃ¡ en 24 horas\n---------------------------"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Me aparece que cumpla con los Criterio?", output_body
   end
 
   test "splits reply on wrote line" do
     input_body = "Yep, I'm happy for folks to jump in this week\nJ\n\nOn Tue, 7 Mar 2023 at 3:51 PM, jon g (via Loomio) <notifications@loomio.com> wrote:\n\nsome quoted text"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Yep, I'm happy for folks to jump in this week\nJ", output_body
   end
 
   test "splits on Loomio notifications address" do
     input_body = "Hi I'm the bit you want\n      On someday (Loomio) #{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS} said:\n      This is the bit that you don't want"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end
 
   test "splits on reply delimiter" do
     input_body = "Hi I'm the bit you want\n      #{NotificationMailer::REPLY_DELIMITER}\n      This is the bit that you don't want"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end
 
   test "splits on signature" do
     input_body = "Hi I'm the bit you want\n      --\n      This is the bit that you don't want"
-    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    output_body = InboundEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end
 
   test "splits on author name signature" do
     author_name = "Charles Barclay"
     input_body = "Hi I'm the bit you want\n\n      Charles Barclay\n      CEO\n      Some company\n      +35 223333333\n      \"Massive email signatures mean youre very professional\"\n      "
-    output_body = ReceivedEmailService.extract_reply_body(input_body, author_name)
+    output_body = InboundEmailService.extract_reply_body(input_body, author_name)
     assert_equal "Hi I'm the bit you want", output_body
   end
 
@@ -102,16 +103,16 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     to = "#{route_local}@#{ENV['REPLY_HOSTNAME']}"
     from = "\"#{user.name}\" <#{user.email}>"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'Test Subject' },
       body_text: "Hello from email"
     )
 
     assert_difference 'Comment.count', 1 do
-      ReceivedEmailService.route(email)
+      InboundEmailService.process(email)
     end
 
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
     comment = Comment.last
     assert_equal discussion.id, comment.topic.topicable_id
     assert_equal user.id, comment.user_id
@@ -133,18 +134,18 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     to = "#{route_local}@#{ENV['REPLY_HOSTNAME']}"
     from = "\"#{user.name}\" <#{user.email}>"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'Test Subject' },
       body_text: "This reply is too long"
     )
 
     assert_no_difference 'Comment.count' do
       assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-        ReceivedEmailService.route(email)
+        InboundEmailService.process(email)
       end
     end
 
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
     delivered = ActionMailer::Base.deliveries.last
     assert_includes delivered.to, user.email
     assert_equal 'Your reply was not posted', delivered.subject
@@ -168,19 +169,19 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     from = "\"#{user.name}\" <#{user.email}>"
     to = "#{handle}@#{ENV['REPLY_HOSTNAME']}"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'New thread via email' },
       body_text: "Thread body"
     )
 
     assert_difference 'Discussion.count', 1 do
-      ReceivedEmailService.route(email)
+      InboundEmailService.process(email)
     end
 
     discussion = Discussion.order(:id).last
     assert_equal group.id, discussion.group_id
     assert_equal 'New thread via email', discussion.title
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -195,7 +196,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     group = Group.create!(name: 'Spoofed Email Group', handle: handle)
     group.add_member!(user)
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: {
         'From' => "\"#{user.name}\" <#{user.email}>",
         'To' => "#{handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -207,12 +208,12 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
     assert_no_difference 'Discussion.count' do
       assert_difference -> { Notification.where(kind: "unknown_sender").count }, 1 do
-        ReceivedEmailService.route(email)
+        InboundEmailService.process(email)
       end
     end
 
-    assert_not email.reload.released
-    assert_equal group.id, email.group_id
+    assert email.reload.processing_completed_at
+    assert_equal group.id, PendingEmail.find_by!(inbound_email: email).group_id
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -228,21 +229,21 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     from = "\"#{user.name}\" <#{user.email}>"
     to = "#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'Forward me' },
       body_text: "Forward body text",
       body_html: "<p>Forward body html</p>"
     )
 
     assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-      ReceivedEmailService.route(email)
+      InboundEmailService.process(email)
     end
 
     delivered = ActionMailer::Base.deliveries.last
     assert_includes delivered.to, rule.email
     assert_equal 'Forward me', delivered.subject
 
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -253,7 +254,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
     rule = ForwardEmailRule.create!(handle: "staff#{SecureRandom.hex(4)}", email: 'staff@example.net')
     sender_email = "sender#{SecureRandom.hex(4)}@example.com"
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: {
         'From' => "Original Sender <#{sender_email}>",
         'To' => 'Public address <hello@example.org>',
@@ -267,13 +268,13 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     )
 
     assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-      ReceivedEmailService.route(email)
+      InboundEmailService.process(email)
     end
 
     delivered = ActionMailer::Base.deliveries.last
     assert_equal [rule.email], delivered.to
     assert_equal [sender_email], delivered.reply_to
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -296,18 +297,18 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     from = "\"#{user.name}\" <#{user.email}>"
     to = "#{old_handle}@#{ENV['REPLY_HOSTNAME']}"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'Thread via retired handle' },
       body_text: "Thread body"
     )
 
     assert_difference 'Discussion.count', 1 do
-      ReceivedEmailService.route(email)
+      InboundEmailService.process(email)
     end
 
     discussion = Discussion.order(:id).last
     assert_equal group.id, discussion.group_id
-    assert email.reload.released
+    assert email.reload.processing_completed_at.present?
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
@@ -328,19 +329,19 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     from = "\"#{user.name}\" <#{user.email}>"
     to = "#{old_handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}"
 
-    email = ReceivedEmail.create!(
+    email = build_inbound_email(
       headers: { 'From' => from, 'To' => to, 'Subject' => 'Personal thread via retired handle' },
       body_text: "Personal thread body"
     )
 
     if AppConfig.app_features[:thread_from_mail]
       assert_difference 'Discussion.count', 1 do
-        ReceivedEmailService.route(email)
+        InboundEmailService.process(email)
       end
 
       discussion = Discussion.order(:id).last
       assert_equal group.id, discussion.group_id
-      assert email.reload.released
+      assert email.reload.processing_completed_at.present?
     end
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
@@ -348,104 +349,4 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
   # -- Bounce handling --
 
-  test "permanent bounce blocks the address" do
-    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
-    hex = SecureRandom.hex(4)
-    user = User.create!(name: "BounceUser#{hex}", email: "bounceuser#{hex}@example.com",
-                        email_verified: true, username: "bounceuser#{hex}")
-
-    dsn_body = <<~DSN
-      Reporting-MTA: dns; a27-24.smtp-out.us-west-2.amazonses.com
-      Arrival-Date: Wed, 08 Apr 2026 12:00:00 +0000
-
-      Final-Recipient: rfc822; #{user.email}
-      Original-Recipient: rfc822; #{user.email}
-      Action: failed
-      Status: 5.1.1
-      Diagnostic-Code: smtp; 550 5.1.1 user unknown
-      Last-Attempt-Date: Wed, 08 Apr 2026 12:00:05 +0000
-    DSN
-
-    email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
-      body_text: "The following message was undeliverable."
-    )
-    email.attachments.attach(
-      io: StringIO.new(dsn_body),
-      filename: "delivery-status.txt",
-      content_type: "message/delivery-status"
-    )
-
-    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
-      ReceivedEmailService.route(email)
-    end
-    assert email.reload.released
-  end
-
-  test "bounce email excludes notifications address and finds recipient" do
-    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
-    hex = SecureRandom.hex(4)
-    user = User.create!(name: "BounceUser#{hex}", email: "bounceuser#{hex}@example.com",
-                        email_verified: true, username: "bounceuser#{hex}")
-
-    # DSN contains both the notifications address and the bounced user address
-    dsn_body = <<~DSN
-      From: #{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}
-      To: #{user.email}
-      Final-Recipient: rfc822; #{user.email}
-      Status: 5.1.1
-    DSN
-
-    email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
-      body_text: "Delivery failed"
-    )
-    email.attachments.attach(
-      io: StringIO.new(dsn_body),
-      filename: "delivery-status.txt",
-      content_type: "message/delivery-status"
-    )
-
-    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
-      ReceivedEmailService.route(email)
-    end
-  end
-
-  test "bounce email without matching user still marks released" do
-    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
-
-    email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
-      body_text: "Delivery failed"
-    )
-    email.attachments.attach(
-      io: StringIO.new("Final-Recipient: rfc822; nonexistent@example.com"),
-      filename: "delivery-status.txt",
-      content_type: "message/delivery-status"
-    )
-
-    ReceivedEmailService.route(email)
-    assert email.reload.released
-  end
-
-  test "complaint blocks the address" do
-    complaints_address = ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
-    user = User.create!(name: 'ComplaintUser', email: "complaintuser#{SecureRandom.hex(4)}@example.com",
-                        email_verified: true, username: "complaintuser#{SecureRandom.hex(4)}")
-
-    email = ReceivedEmail.create!(
-      headers: { from: complaints_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
-      body_text: "Complaint received"
-    )
-    email.attachments.attach(
-      io: StringIO.new("Feedback-Type: abuse\nOriginal-Rcpt-To: rfc822; #{user.email}\n"),
-      filename: "complaint-report.txt",
-      content_type: "message/feedback-report"
-    )
-
-    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
-      ReceivedEmailService.route(email)
-    end
-    assert email.reload.released
-  end
 end

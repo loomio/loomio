@@ -13,8 +13,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   # ===== Index Tests =====
 
   test "index returns emails" do
-    ReceivedEmail.create!(
-      group_id: @group.id,
+    create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -28,6 +28,21 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_response :success
     assert_equal 1, json['received_emails'].length
+  end
+
+  test 'the approval list reads envelope metadata without downloading message content' do
+    email = create_pending_email(group: @group, headers: {from: 'Private Sender <private@example.test>', subject: 'Approval subject'}, body_text: 'Do not expose this body')
+    ActiveStorage::Blob.stub(:find_signed, ->(*) { raise 'list must not inspect attachment content' }) do
+      InboundEmailMessage.stub(:new, ->(*) { raise 'list must not parse the raw source' }) do
+        get :index, params: {group_id: @group.id}
+      end
+    end
+    assert_response :success
+    row = response.parsed_body.fetch('received_emails').find { |record| record.fetch('id') == email.id }
+    assert_equal 'Approval subject', row.fetch('subject')
+    assert_equal 'private@example.test', row.fetch('sender_email')
+    refute_includes response.body, 'Do not expose this body'
+    refute row.key?('inbound_email_id')
   end
 
   test "index returns 403 when not an admin" do
@@ -72,8 +87,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   # ===== Allow and Block Tests =====
 
   test "allow creates email alias" do
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com",
@@ -100,8 +115,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       group_id: @group.id,
       author_id: @user.id
     )
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com",
@@ -118,8 +133,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   end
 
   test "allow upgrades a previously blocked alias" do
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com",
@@ -143,8 +158,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   end
 
   test "allow returns 404 for wrong group" do
-    another_received_email = ReceivedEmail.create!(
-      group_id: @another_group.id,
+    another_received_email = create_pending_email(
+      group: @another_group,
       headers: {
         to: "#{@another_group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -161,8 +176,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   end
 
   test "allow returns 403 for trial group" do
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -181,8 +196,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   end
 
   test "block creates email alias without user" do
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -205,12 +220,13 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_response :success
     assert_equal 1, json['received_emails'].length
+    assert_equal true, json['received_emails'].first.fetch('released')
     assert_nil MemberEmailAlias.last.user_id
   end
 
   test "block is idempotent when alias already exists" do
-    received_email = ReceivedEmail.create!(
-      group_id: @group.id,
+    received_email = create_pending_email(
+      group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -233,8 +249,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   end
 
   test "block returns 404 for wrong group" do
-    another_received_email = ReceivedEmail.create!(
-      group_id: @another_group.id,
+    another_received_email = create_pending_email(
+      group: @another_group,
       headers: {
         to: "#{@another_group.handle}@#{ENV['REPLY_HOSTNAME']}",
         from: "someone@gmail.com"
@@ -249,4 +265,37 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
 
     assert_response 404
   end
+  test 'approval payloads and mutations stay private to the group coordinators' do
+    email = create_pending_email(group: @group, headers: {from: 'private-sender@example.test', subject: 'Private approval'})
+    %i[member_normal guest_normal former_member_loud inactive_member_loud alien server_admin].each do |role|
+      sign_in users(role)
+      get :index, params: {group_id: @group.id}
+      assert_includes [401, 403], response.status, role.to_s
+      refute_includes response.body, 'private-sender@example.test'
+      assert_no_difference ['MemberEmailAlias.count', 'Discussion.count'] do
+        post :allow, params: {id: email.id, user_id: @admin.id}
+        assert_includes [401, 404], response.status, role.to_s
+        post :block, params: {id: email.id}
+        assert_includes [401, 404], response.status, role.to_s
+      end
+      assert_equal @group.id, email.reload.group_id
+    end
+    sign_out
+    get :index, params: {group_id: @group.id}
+    assert_includes [401, 403], response.status
+    post :allow, params: {id: email.id, user_id: @admin.id}
+    assert_includes [401, 404], response.status
+  end
+
+  test 'approval cannot attribute a message to a user outside the group or an inactive account' do
+    email = create_pending_email(group: @group, headers: {from: 'unknown@example.test'}, body_text: 'Keep pending')
+    %i[alien inactive_member_loud].each do |role|
+      assert_no_difference ['MemberEmailAlias.count', 'Discussion.count'] do
+        post :allow, params: {id: email.id, user_id: users(role).id}
+        assert_response :not_found
+      end
+      assert PendingEmail.exists?(email.id)
+    end
+  end
+
 end

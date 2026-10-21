@@ -14,41 +14,56 @@ class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
   def destroy_alias
     member_email_alias = MemberEmailAlias.where(group_id: current_user.adminable_group_ids).find(params[:id])
     member_email_alias.destroy
-    ReceivedEmailService.route_all
+    InboundEmailService.retry_pending
     success_response
   end
 
   def allow
-    @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
+    @received_email = PendingEmail.pending.where(group_id: current_user.adminable_group_ids).find(params[:id])
     if @received_email.group.is_trial_or_demo?
       respond_with_error(403, "trial groups cannot add aliases")
     else
-      user = @received_email.group.members.find(params[:user_id])
-      MemberEmailAlias.find_or_initialize_by(
-        email: @received_email.sender_email,
-        group_id: @received_email.group_id
-      ).update!(user: user, author_id: current_user.id)
-      ReceivedEmailService.route(@received_email)
+      user = @received_email.group.members.active.find(params[:user_id])
+      PendingEmail.transaction do
+        MemberEmailAlias.find_or_initialize_by(
+          email: @received_email.sender_email,
+          group_id: @received_email.group_id
+        ).update!(user: user, author_id: current_user.id)
+        InboundEmailService.approve(@received_email)
+      end
       respond_with_resource
     end
   end
 
   def block
-    @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
-    ReceivedEmail.transaction do
+    @received_email = PendingEmail.pending.where(group_id: current_user.adminable_group_ids).find(params[:id])
+    PendingEmail.transaction do
       MemberEmailAlias.find_or_initialize_by(
         email: @received_email.sender_email,
         group_id: @received_email.group_id
       ).update!(user_id: nil, author_id: current_user.id)
       @received_email.notifications.destroy_all
-      @received_email.update!(group_id: nil)
+      @received_email.blocked!
     end
     respond_with_resource
   end
 
   private
 
+  # Preserve the established approval API while its storage is now a queue.
+  def resource_class
+    PendingEmail
+  end
+
+  def serializer_class
+    PendingEmailSerializer
+  end
+
+  def serializer_root
+    :received_emails
+  end
+
   def accessible_records
-    ReceivedEmail.where(group_id: params[:group_id], released: false)
+    PendingEmail.pending.where(group_id: params[:group_id])
   end
 end
