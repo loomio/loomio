@@ -1,10 +1,10 @@
 ---
 title: Formázás
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: e8737c79986232b5
   insert-link: 2a91091525497431
   insert-emoji: 3f90cfa2b39e6fb4
-  headings: e1a7888305cf63cb
+  headings: 4c62c28f35c7742b
   bold-italicize-strikethrough: 46b3ccf64bcd81bf
   list: e226e92792260315
   numbered-list: 1476507a7d0f6aed
@@ -134,7 +134,7 @@ Az 1., 2. és 3. szintű címsorokkal tagolhatod a beszélgetést vagy a hozzás
 
 Jelöld ki a címsorrá alakítandó szöveget, majd kattints a címsorformázó eszközre.
 
-Ha egy hozzászólásban címsort használsz, a hozzászólás automatikusan rögzítve lesz a beszélgetés idővonalán.
+Ha egy hozzászólásban címsort használsz, a hozzászólás automatikusan bekerül a beszélgetés idővonalára.
 
 ![](format_heading.png)
 

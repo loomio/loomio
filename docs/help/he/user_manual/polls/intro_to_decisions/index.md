@@ -1,10 +1,10 @@
 ---
 title: הצעות וסקרים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: be97cc1820963969
@@ -33,7 +33,7 @@ generated:
   1-create-it: 47b24347f3e5f216
   2-voting-opens: 51fe75836ca99395
   3-people-vote: ea85595f06b6f761
-  4-it-closes: 1d4e1e8a38ec8398
+  4-it-closes: 617df93a04501bea
   5-share-an-outcome: 672460936d45b0ac
 title_source: d45b4ba3cb7a27cb
 title_generated: ae9ae909d9ac36c6
@@ -153,7 +153,7 @@ needs_review:
 
 ### 4. סגירת הסקר
 
-הסקר נסגר אוטומטית במועד הסגירה. ניתן לסגור אותו מוקדם גם באמצעות רכזי הסקר. לאחר הסגירה, רכזי הסקר יכולים לפתוח אותו מחדש עם מועד סגירה חדש כדי לאפשר להמשיך להצביע. לא ניתן לפתוח מחדש סקרים אנונימיים.
+הסקר נסגר אוטומטית במועד הסגירה. ניתן לסגור אותו מוקדם גם באמצעות רכזי הסקר. לאחר הסגירה, רכזי הסקר יכולים לפתוח אותו מחדש עם מועד סגירה חדש כדי לאפשר להמשיך להצביע. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, לרבות סקרים אנונימיים. ניתן להאריך את מועד הסגירה שלהם כל עוד הם פתוחים.
 
 <!-- translation-section: 5-share-an-outcome -->
 

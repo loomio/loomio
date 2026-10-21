@@ -1,25 +1,25 @@
 ---
 title: Encontrar contenido
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: 9e885b772fd7b411
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 84dd3270fff74602
   search: f9ec093a6c0ee664
-  search-tips: 0e4cb645e435de5d
+  search-tips: 819f3b5bd0c1726f
   filter-discussions: be5257a6a68fc2f5
-  category-tags: 426674d7b62a2ea9
+  category-tags: aae7b511f3a172a7
   unread-discussions: ec184519c6679451
   polls-awaiting-your-vote: 5549051d9303538e
   bookmarks: 95cdaf56f0b43029
@@ -54,7 +54,7 @@ Introduce una palabra o frase y pulsa Intro o selecciona el icono de búsqueda. 
 - Empieza con una o dos palabras distintivas del título o del contenido que recuerdes.
 - La búsqueda encuentra coincidencias con el principio de una palabra, por lo que una palabra parcial como **bott** puede coincidir con **bottle**.
 - La búsqueda compensa los errores ortográficos cuando hay muy pocos resultados para la consulta.
-- Usa los filtros para limitar los resultados a una organización, un subgrupo, una etiqueta o un tipo de contenido, como comentarios o encuestas.
+- Usa los filtros para limitar los resultados a una organización, un subgrupo, una etiqueta o un tipo de contenido, como comentarios o encuestas. Un filtro de etiqueta encuentra aportaciones que llevan explícitamente esa etiqueta y funciona sin una frase de búsqueda.
 - Ordena por **Mejor partido** cuando te importe la relevancia, o por más reciente o más antiguo cuando sepas aproximadamente cuándo se publicó el contenido.
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ Usa los controles junto a Buscar para filtrar las discusiones por su estado abie
 
 ## Etiquetas de categoría
 
-Las etiquetas agrupan discusiones y encuestas relacionadas bajo nombres elegidos por tu grupo, como un proyecto, un equipo o un área de trabajo.
+Las etiquetas agrupan discusiones, encuestas, conclusiones y comentarios relacionados bajo nombres elegidos por tu grupo, como un proyecto, un equipo o un área de trabajo.
 
 ![](tags.png)
 
-Selecciona una etiqueta en la pestaña **Discusiones** para mostrar las discusiones que coincidan. Las personas con permiso para iniciar o editar discusiones pueden aplicar etiquetas. Consulta [Etiquetas de categoría](/en/user_manual/discussions/tags) para conocer los detalles de configuración y permisos.
+Selecciona una etiqueta en la pestaña **Discusiones** para mostrar hilos que contengan una aportación coincidente. Dentro de un hilo, selecciona una etiqueta en la barra lateral para encontrar aportaciones coincidentes junto con el contexto al que pertenecen. Los autores y los coordinadores del hilo pueden aplicar etiquetas. Consulta [Etiquetas de categoría](/en/user_manual/discussions/tags) para conocer los detalles de configuración y permisos.
 
 <!-- translation-section: unread-discussions -->
 

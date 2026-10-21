@@ -1,10 +1,10 @@
 ---
 title: Convidar a votar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: ca0e336d115357af
   invite-people-to-vote-in-a-poll: 815c193d404a36f9
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: 6327e07ed4413eb6
   view-notification-history: bd518e21af31776b
   close-early: e4783b6e8c6f5e84
-  reopen: 185ec95ec0d341da
+  reopen: 9b22eac3f799d9f4
 title_source: 4801d1a3dba7ce3d
 title_generated: 38fec66e3e2c3377
 ---
@@ -142,6 +142,6 @@ Você pode fazer isso quando todas as pessoas já tiverem votado ou quando a enq
 
 Selecione **Reabrir** em uma enquete encerrada e defina uma nova data e hora de encerramento.
 
-Enquetes anônimas não podem ser reabertas.
+Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento enquanto elas ainda estiverem abertas.
 
 ![](proposal_reopen.png)

@@ -1,10 +1,10 @@
 ---
 title: Voorstellen en peilingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: ce5bd7cc4e1e97db
@@ -33,7 +33,7 @@ generated:
   1-create-it: '00008b55bb4ba4f6'
   2-voting-opens: 2c99150f025c4b96
   3-people-vote: ad5c075672e6016b
-  4-it-closes: ed24d4ee7ee274e0
+  4-it-closes: cbebb2ffba09632b
   5-share-an-outcome: bf51900fe1f6aa72
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
@@ -153,7 +153,7 @@ Zolang het voorstel of de peiling open is, kunnen mensen stemmen, hun stem toeli
 
 ### 4. De peiling sluit
 
-De peiling sluit automatisch op het sluitingstijdstip. Een peilingcoördinator kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een peilingcoördinator deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Anonieme peilingen kunnen niet worden heropend.
+De peiling sluit automatisch op het sluitingstijdstip. Een peilingcoördinator kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een peilingcoördinator deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Peilingen waarbij het resultaat verborgen blijft totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt het sluitingstijdstip van deze peilingen verlengen zolang ze nog open zijn.
 
 <!-- translation-section: 5-share-an-outcome -->
 

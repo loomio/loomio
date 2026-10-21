@@ -1,10 +1,10 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 278e78e8621ec3e0
@@ -33,7 +33,7 @@ generated:
   1-create-it: 071ae177fa0a21dd
   2-voting-opens: d24cd5262c637da0
   3-people-vote: 57cfb38790162a7b
-  4-it-closes: 5912aa84081fc2b1
+  4-it-closes: 6c8008d004df071e
   5-share-an-outcome: bd86e5c1e0eae3cc
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
@@ -156,7 +156,7 @@ Solange die Abstimmung offen ist, können Menschen ihre Stimme abgeben, begründ
 
 ### 4. Die Abstimmung endet
 
-Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Koordinierende der Abstimmung können sie auch vorzeitig beenden. Nach dem Ende können sie die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Anonyme Abstimmungen können nicht wieder geöffnet werden.
+Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Koordinierende der Abstimmung können sie auch vorzeitig beenden. Nach dem Ende können sie die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Abstimmungen, deren Ergebnis bis zum Ende der Abstimmung verborgen bleibt, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihren Endzeitpunkt verlängern, solange sie noch offen sind.
 
 <!-- translation-section: 5-share-an-outcome -->
 

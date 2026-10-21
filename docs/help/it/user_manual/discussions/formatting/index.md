@@ -1,10 +1,10 @@
 ---
 title: Formattazione
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: 05c6c9484b867b41
   insert-link: a5e1be8e47fc45d7
   insert-emoji: c65b903c9073e102
-  headings: 1a752672454f0a6f
+  headings: 51923734c52afb30
   bold-italicize-strikethrough: b82ade1784e98e71
   list: 673e427ce7b64cf1
   numbered-list: edd42d98d2ecacfb
@@ -134,7 +134,7 @@ Titolo 1, Titolo 2 e Titolo 3 possono aiutarti a strutturare una discussione o u
 
 Seleziona il testo da usare come titolo e fai clic sullo strumento di formattazione dei titoli.
 
-Se usi un titolo in un commento, il commento verrà fissato automaticamente nella cronologia della discussione.
+Se usi un titolo in un commento, il commento verrà aggiunto automaticamente alla cronologia della discussione.
 
 ![](format_heading.png)
 

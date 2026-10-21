@@ -1,10 +1,10 @@
 ---
 title: Inviter au vote
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 7026cc87771fa677
   invite-people-to-vote-in-a-poll: 2d64beb0268b5fa1
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: f8afa42653d3b138
   view-notification-history: 6eeef98f456967b3
   close-early: f5a4aef8c687d57f
-  reopen: f22bbf38b793638a
+  reopen: 5532e9c0d9b1b36a
 title_source: 4801d1a3dba7ce3d
 title_generated: 1e42d063ff2d1edc
 ---
@@ -142,6 +142,6 @@ Vous pouvez le faire lorsque tout le monde a voté ou que le sondage n’a plus 
 
 Sélectionnez **Rouvrir** sur un sondage clôturé, puis définissez une nouvelle date de clôture et une nouvelle heure.
 
-Les sondages anonymes ne peuvent pas être rouverts.
+Les sondages qui masquent les résultats jusqu’à la clôture du vote, y compris les sondages anonymes, ne peuvent pas être rouverts. Vous pouvez reporter leur heure de clôture tant qu’ils sont encore ouverts.
 
 ![](proposal_reopen.png)

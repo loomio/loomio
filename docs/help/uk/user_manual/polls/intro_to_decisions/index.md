@@ -1,10 +1,10 @@
 ---
 title: Пропозиції та опитування
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: fbb62b0bf9f5ae1f
@@ -33,7 +33,7 @@ generated:
   1-create-it: 9b3378f1c37cac93
   2-voting-opens: 507600ac14e8992e
   3-people-vote: 923275935240655f
-  4-it-closes: d5f3c20c88eae7a3
+  4-it-closes: 91ddf9fccc0e1ded
   5-share-an-outcome: ef399bdcb81b0f9a
 title_source: d45b4ba3cb7a27cb
 title_generated: 8ea097b7cb3d6a03
@@ -153,7 +153,7 @@ needs_review:
 
 ### 4. Опитування закривається
 
-Опитування закривається автоматично у визначений час закриття. Координатор опитування також може закрити його достроково. Після закриття координатор опитування може відкрити його знову, встановивши новий час закриття, щоб люди могли продовжити голосувати. Анонімні опитування не можна відкрити знову.
+Опитування закривається автоматично у визначений час закриття. Координатор опитування також може закрити його достроково. Після закриття координатор опитування може відкрити його знову, встановивши новий час закриття, щоб люди могли продовжити голосувати. Опитування, у яких результати приховано до закриття голосування, зокрема анонімні опитування, не можна відкрити знову. Ви можете продовжити час до їхнього закриття, поки вони ще відкриті.
 
 <!-- translation-section: 5-share-an-outcome -->
 

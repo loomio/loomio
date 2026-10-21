@@ -1,10 +1,10 @@
 ---
 title: 書式設定
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: 208c50bbdcd6fc6a
   insert-link: 4fca352b3a93c93a
   insert-emoji: f519c001999862b7
-  headings: 19931e088912e43f
+  headings: 6277189f543062fc
   bold-italicize-strikethrough: 0efefa2bc1b1989b
   list: 6ad9c1d735712a5e
   numbered-list: 44d68b7a40c5a41c
@@ -134,7 +134,7 @@ title_generated: 7a32dd7be63ea4ca
 
 見出しにするテキストを選択し、見出しの書式設定ツールをクリックします。
 
-コメントに見出しを使うと、そのコメントはディスカッションのタイムラインに自動的にピン留めされます。
+コメントに見出しを使うと、そのコメントはディスカッションのタイムラインに自動的に追加されます。
 
 ![](format_heading.png)
 

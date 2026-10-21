@@ -1,10 +1,10 @@
 ---
 title: コメント
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 5f4b5f328b8561dd
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: bed6fc92031586d7
   translating-comments: 96e09747c6dc2c22
   comment-actions: 3f74c786066c65f4
-  add-a-comment-to-jump-to: 8a77e5b43e8c0e16
+  add-a-comment-to-jump-to: a48bac15a5028526
   edit-a-comment-and-view-changes: 629b3614bdf387fe
   copy-a-comment-link: 5243a7bad0aaf485
   view-notification-history: 9b3c463096d5e966
@@ -123,14 +123,14 @@ Loomioからのメールにメールで返信できると記載されている�
 
 ### コメントをジャンプに追加する
 
-**タイムラインにピン留めする**を使って、スレッドの**ジャンプ**一覧にコメントを追加します。
+**タイムラインに追加**を使って、スレッドの**ジャンプ**一覧にコメントを追加します。このメニュー項目にはタイムラインのアイコンが使われています。グループのスレッド一覧の先頭にスレッドを表示し続けるためのピン留めとは別の操作です。
 
-**ジャンプ**に表示されるラベルは変更できます。リンクのテキストを変更するには、コメントのピン留めを外してから、もう一度ピン留めします。
+**ジャンプ**に表示されるラベルは変更できます。リンクのテキストを変更するには、コメントをタイムラインから削除してから、もう一度追加します。
 
 >[!Tip]
->**タイムラインにピン留めする**を選択する前に、リンクのテキストとして使う文字列を選択します。
+>**タイムラインに追加**を選択する前に、リンクのテキストとして使う文字列を選択します。
 
-**Unpin**を選択すると、**ジャンプ**から項目が削除されます。
+**タイムラインから削除**を選択すると、**ジャンプ**から項目が削除されます。
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

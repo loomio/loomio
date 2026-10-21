@@ -1,10 +1,10 @@
 ---
 title: Instellingen
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: bfc66dad40e64779
   anonymous-voting: 002f8bcf4a9bf4ce
   vote-reason: aee03d9416dd8e86
-  hide-results: be9314f89f9889d8
+  hide-results: 72fb1452e2104887
   start-the-poll: 78d8c527bf9f760c
   managing-polls: 998a7f2f76a9372a
   edit-poll: e5283692e690b034
@@ -204,11 +204,11 @@ Instellingsopties:
 - Resultaat verbergen totdat een stem is uitgebracht
 - Resultaat verbergen totdat de stemming sluit
 
-Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen op stemmen antwoorden zodra ze zelf hebben gestemd. Alle reacties onder de peiling, inclusief directe reacties en antwoorden op antwoorden, blijven in de thread verborgen voor mensen die nog niet hebben gestemd.
+Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen na het stemmen de stemkeuzes en redenen zien. Threadleden kunnen reacties schrijven en op stemmen antwoorden voordat ze zelf stemmen. Reacties blijven zichtbaar, ongeacht de instelling voor het resultaat.
 
-Wanneer het resultaat verborgen is totdat de stemming sluit, blijven reacties onder de peiling verborgen en zijn antwoorden en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit.
+Wanneer het resultaat verborgen is totdat de stemming sluit, zijn antwoorden op stemmen en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit. Threadleden kunnen nog steeds op de peiling reageren en op reacties antwoorden. Je kunt de sluitingstijd verlengen zolang de peiling open is, maar je kunt de peiling na het sluiten niet heropenen.
 
-Bij afdrukken en exporteren, ook als Markdown, wordt de instelling "Resultaat verbergen totdat een stem is uitgebracht" genegeerd en worden stemmen en antwoorden opgenomen. Resultaten die tot het sluiten verborgen zijn, blijven verborgen totdat de peiling sluit.
+Bij afdrukken en exporteren, ook als Markdown, wordt de instelling "Resultaat verbergen totdat een stem is uitgebracht" genegeerd en worden stemmen en antwoorden opgenomen. Het resultaat en stemredenen die tot het sluiten verborgen zijn, blijven verborgen totdat de peiling sluit. Gewone reacties blijven beschikbaar in de thread, zoekresultaten en exports.
 
 Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit. Het sjabloon STV-verkiezing schakelt anoniem stemmen standaard in.
 

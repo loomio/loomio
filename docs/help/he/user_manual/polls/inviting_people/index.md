@@ -1,10 +1,10 @@
 ---
 title: הזמנה להצביע
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: '097f69b07cd4cfb6'
   invite-people-to-vote-in-a-poll: 77832163de5cf69c
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: cbcde77973e25bcf
   view-notification-history: fac668b28208826a
   close-early: b07990cae2e17c95
-  reopen: 20b752f62dc8d49b
+  reopen: 85dbdb632ad9ec01
 title_source: 4801d1a3dba7ce3d
 title_generated: 74acfaefbe1bab8a
 ---
@@ -142,6 +142,6 @@ title_generated: 74acfaefbe1bab8a
 
 יש לבחור **פתח מחדש** בסקר סגור, ולאחר מכן לקבוע תאריך סגירה ושעה חדשים.
 
-לא ניתן לפתוח מחדש סקרים אנונימיים.
+לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, כולל סקרים אנונימיים. ניתן לדחות את מועד הסגירה שלהם כל עוד הם פתוחים.
 
 ![](proposal_reopen.png)

@@ -1,10 +1,10 @@
 ---
 title: Propostas e enquetes
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: '028072c21697cf1b'
@@ -33,7 +33,7 @@ generated:
   1-create-it: 02b90f37de129c8a
   2-voting-opens: b5a16dddd50f899d
   3-people-vote: 8cb83f7781708a6b
-  4-it-closes: a3b5c488d964eb38
+  4-it-closes: 71e81025b4290b6a
   5-share-an-outcome: 9554110fffe5a5f0
 title_source: d45b4ba3cb7a27cb
 title_generated: 841343fc302f1038
@@ -150,7 +150,7 @@ Enquanto a votação estiver aberta, as pessoas podem votar, explicar seu voto e
 
 ### 4. Encerramento
 
-A enquete é encerrada automaticamente no horário de encerramento. Um coordenador da enquete também pode encerrá-la antes desse horário. Após o encerramento, um coordenador da enquete pode reabri-la com um novo horário de encerramento para que as pessoas continuem votando. Enquetes anônimas não podem ser reabertas.
+A enquete é encerrada automaticamente no horário de encerramento. Um coordenador da enquete também pode encerrá-la antes desse horário. Após o encerramento, um coordenador da enquete pode reabri-la com um novo horário de encerramento para que as pessoas continuem votando. Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento dessas enquetes enquanto elas ainda estiverem abertas.
 
 <!-- translation-section: 5-share-an-outcome -->
 

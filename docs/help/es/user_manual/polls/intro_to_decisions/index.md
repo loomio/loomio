@@ -1,10 +1,10 @@
 ---
 title: Propuestas y sondeos
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: b48e6637dc129d28
@@ -33,7 +33,7 @@ generated:
   1-create-it: db3e1df57db0bf99
   2-voting-opens: 810c3a02260cab15
   3-people-vote: f548ee4fe03a2426
-  4-it-closes: 3f81bacfcc89baff
+  4-it-closes: 0fe0bae8228c4841
   5-share-an-outcome: fb914b5d1adbb266
 title_source: d45b4ba3cb7a27cb
 title_generated: 4d74778611cbdcd4
@@ -150,7 +150,7 @@ Mientras está abierta, las personas pueden votar, explicar su voto y cambiarlo.
 
 ### 4. Se cierra
 
-Se cierra automáticamente a la hora de cierre. Una persona que coordina la encuesta también puede cerrarla antes. Una vez cerrada, una persona que coordina la encuesta puede reabrirla con una nueva hora de cierre para que la gente siga votando. Las encuestas anónimas no se pueden reabrir.
+Se cierra automáticamente a la hora de cierre. Una persona que coordina la encuesta también puede cerrarla antes. Una vez cerrada, una persona que coordina la encuesta puede reabrirla con una nueva hora de cierre para que la gente siga votando. Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar su hora de cierre mientras sigan abiertas.
 
 <!-- translation-section: 5-share-an-outcome -->
 
