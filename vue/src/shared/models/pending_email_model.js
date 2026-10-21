@@ -1,9 +1,8 @@
 import BaseModel       from '@/shared/record_store/base_model';
-import AppConfig       from '@/shared/services/app_config';
 
-export default class ReceivedEmailModel extends BaseModel {
-  static singular = 'receivedEmail';
-  static plural = 'receivedEmails';
+export default class PendingEmailModel extends BaseModel {
+  static singular = 'pendingEmail';
+  static plural = 'pendingEmails';
   static indices = ['groupId'];
   static uniqueIndices = ['id'];
 

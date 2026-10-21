@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
+class Api::V1::PendingEmailsControllerTest < ActionController::TestCase
   setup do
     @admin = users(:admin)
     @user = users(:user)
@@ -27,7 +27,7 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_response :success
-    assert_equal 1, json['received_emails'].length
+    assert_equal 1, json['pending_emails'].length
   end
 
   test 'the approval list reads envelope metadata without downloading message content' do
@@ -38,7 +38,7 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       end
     end
     assert_response :success
-    row = response.parsed_body.fetch('received_emails').find { |record| record.fetch('id') == email.id }
+    row = response.parsed_body.fetch('pending_emails').find { |record| record.fetch('id') == email.id }
     assert_equal 'Approval subject', row.fetch('subject')
     assert_equal 'private@example.test', row.fetch('sender_email')
     refute_includes response.body, 'Do not expose this body'
@@ -87,7 +87,7 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   # ===== Allow and Block Tests =====
 
   test "allow creates email alias" do
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -99,12 +99,12 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 1 do
-      post :allow, params: { id: received_email.id, user_id: @admin.id }
+      post :allow, params: { id: pending_email.id, user_id: @admin.id }
     end
 
     json = JSON.parse(response.body)
     assert_response :success
-    assert_equal 1, json['received_emails'].length
+    assert_equal 1, json['pending_emails'].length
     assert_equal @admin.id, MemberEmailAlias.last.user_id
   end
 
@@ -115,7 +115,7 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       group_id: @group.id,
       author_id: @user.id
     )
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -127,13 +127,13 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :allow, params: { id: received_email.id, user_id: @user.id }
+      post :allow, params: { id: pending_email.id, user_id: @user.id }
     end
     assert_response :success
   end
 
   test "allow upgrades a previously blocked alias" do
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -151,14 +151,14 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :allow, params: { id: received_email.id, user_id: @user.id }
+      post :allow, params: { id: pending_email.id, user_id: @user.id }
     end
     assert_response :success
     assert_equal @user.id, MemberEmailAlias.find_by(email: 'someone@gmail.com', group_id: @group.id).user_id
   end
 
   test "allow returns 404 for wrong group" do
-    another_received_email = create_pending_email(
+    another_pending_email = create_pending_email(
       group: @another_group,
       headers: {
         to: "#{@another_group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -169,14 +169,14 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :allow, params: { id: another_received_email.id, user_id: @admin.id }
+      post :allow, params: { id: another_pending_email.id, user_id: @admin.id }
     end
 
     assert_response 404
   end
 
   test "allow returns 403 for trial group" do
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -189,14 +189,14 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     Subscription.for(@group).update(plan: 'trial')
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :allow, params: { id: received_email.id, user_id: @admin.id }
+      post :allow, params: { id: pending_email.id, user_id: @admin.id }
     end
 
     assert_response 403
   end
 
   test "block creates email alias without user" do
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -207,25 +207,25 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
     notification = NotificationService.create!(
       kind: "unknown_sender",
-      subject: received_email,
+      subject: pending_email,
       actor: nil
     )
 
     assert_difference -> { MemberEmailAlias.count }, 1 do
       assert_difference -> { Notification.where(id: notification.id).count }, -1 do
-        post :block, params: { id: received_email.id, user_id: @admin.id }
+        post :block, params: { id: pending_email.id, user_id: @admin.id }
       end
     end
 
     json = JSON.parse(response.body)
     assert_response :success
-    assert_equal 1, json['received_emails'].length
-    assert_equal true, json['received_emails'].first.fetch('released')
+    assert_equal 1, json['pending_emails'].length
+    assert_equal true, json['pending_emails'].first.fetch('released')
     assert_nil MemberEmailAlias.last.user_id
   end
 
   test "block is idempotent when alias already exists" do
-    received_email = create_pending_email(
+    pending_email = create_pending_email(
       group: @group,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -242,14 +242,14 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :block, params: { id: received_email.id, user_id: @user.id }
+      post :block, params: { id: pending_email.id, user_id: @user.id }
     end
     assert_response :success
     assert_nil MemberEmailAlias.find_by(email: 'someone@gmail.com', group_id: @group.id).user_id
   end
 
   test "block returns 404 for wrong group" do
-    another_received_email = create_pending_email(
+    another_pending_email = create_pending_email(
       group: @another_group,
       headers: {
         to: "#{@another_group.handle}@#{ENV['REPLY_HOSTNAME']}",
@@ -260,7 +260,7 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     )
 
     assert_difference 'MemberEmailAlias.count', 0 do
-      post :block, params: { id: another_received_email.id, user_id: @admin.id }
+      post :block, params: { id: another_pending_email.id, user_id: @admin.id }
     end
 
     assert_response 404

@@ -304,7 +304,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :received_emails, only: [:index] do
+      resources :pending_emails, only: [:index] do
         collection do
           get :aliases
           delete :destroy_alias

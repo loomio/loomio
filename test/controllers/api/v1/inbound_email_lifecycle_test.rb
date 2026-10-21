@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Api::V1::InboundEmailLifecycleTest < ActionController::TestCase
-  tests Api::V1::ReceivedEmailsController
+  tests Api::V1::PendingEmailsController
 
   setup do
     @group = groups(:group)
