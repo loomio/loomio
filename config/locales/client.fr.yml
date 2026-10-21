@@ -3257,3 +3257,22 @@ fr:
     discussion: discussion
     outcome: conclusion
     stance: vote
+  membership_notification_history:
+    invitation_delivery_history: Historique d’envoi des invitations
+    delivery_result:
+      delivered: Remis
+      failed: Échec
+    could_not_load_history: Impossible de charger l’historique des notifications
+    no_invitations_recorded: Aucune invitation enregistrée
+    membership_created: Invitation
+    membership_resent: Invitation renvoyée
+    no_custom_message: Aucun message personnalisé
+    pending: Courriel en attente
+    not_sent: Aucun envoi de courriel enregistré
+    sent: Transmis au service d’envoi de courriels
+    delivered: Accepté par le serveur de messagerie du destinataire
+    delayed: Retard de livraison signalé
+    rejected: Courriel rejeté
+    bounced: Échec de livraison signalé
+    complained: Signalement comme indésirable reçu
+    skipped: Courriel non envoyé

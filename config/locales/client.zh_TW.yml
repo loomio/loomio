@@ -3240,3 +3240,22 @@ zh_TW:
     discussion: 討論
     outcome: 結論
     stance: 投票
+  membership_notification_history:
+    invitation_delivery_history: 邀請寄送紀錄
+    delivery_result:
+      delivered: 已送達
+      failed: 失敗
+    could_not_load_history: 無法載入通知紀錄
+    no_invitations_recorded: 尚無邀請紀錄
+    membership_created: 邀請
+    membership_resent: 已重寄邀請
+    no_custom_message: 無自訂訊息
+    pending: 電子郵件待寄送
+    not_sent: 無電子郵件寄送紀錄
+    sent: 已提交至電子郵件服務
+    delivered: 收件者的郵件伺服器已接受
+    delayed: 已回報寄送延遲
+    rejected: 電子郵件遭拒收
+    bounced: 已回報退信
+    complained: 已回報垃圾郵件投訴
+    skipped: 未寄送電子郵件

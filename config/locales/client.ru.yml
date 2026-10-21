@@ -3212,3 +3212,22 @@ ru:
     discussion: обсуждение
     outcome: вывод
     stance: голос
+  membership_notification_history:
+    invitation_delivery_history: История доставки приглашений
+    delivery_result:
+      delivered: Доставлено
+      failed: Не доставлено
+    could_not_load_history: Не удалось загрузить историю уведомлений
+    no_invitations_recorded: Нет записей о приглашениях
+    membership_created: Приглашение
+    membership_resent: Приглашение отправлено повторно
+    no_custom_message: Без личного сообщения
+    pending: Письмо ожидает отправки
+    not_sent: Нет данных о доставке письма
+    sent: Передано почтовому сервису
+    delivered: Принято почтовым сервером получателя
+    delayed: Получено сообщение о задержке доставки
+    rejected: Письмо отклонено
+    bounced: Получено сообщение о возврате письма
+    complained: Получена жалоба на спам
+    skipped: Письмо не отправлено

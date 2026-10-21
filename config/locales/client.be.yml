@@ -3114,3 +3114,22 @@ be:
     discussion: абмеркаванне
     outcome: выснова
     stance: голас
+  membership_notification_history:
+    invitation_delivery_history: Гісторыя дастаўкі запрашэнняў
+    delivery_result:
+      delivered: Дастаўлена
+      failed: Не ўдалося даставіць
+    could_not_load_history: Не ўдалося загрузіць гісторыю апавяшчэнняў
+    no_invitations_recorded: Няма запісаў пра запрашэнні
+    membership_created: Запрашэнне
+    membership_resent: Запрашэнне адпраўлена паўторна
+    no_custom_message: Без уласнага паведамлення
+    pending: Ліст чакае адпраўкі
+    not_sent: Няма запісу пра дастаўку ліста
+    sent: Перададзена паштоваму сэрвісу
+    delivered: Прынята паштовым серверам адрасата
+    delayed: Паведамлена пра затрымку дастаўкі
+    rejected: Ліст адхілены
+    bounced: Паведамлена пра вяртанне ліста
+    complained: Паведамлена пра скаргу на спам
+    skipped: Ліст не адпраўлены

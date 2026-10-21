@@ -3211,3 +3211,22 @@ ja:
     discussion: ディスカッション
     outcome: 結論
     stance: 投票
+  membership_notification_history:
+    invitation_delivery_history: 招待の配信履歴
+    delivery_result:
+      delivered: 配信済み
+      failed: 配信失敗
+    could_not_load_history: 通知履歴を読み込めませんでした
+    no_invitations_recorded: 招待の記録はありません
+    membership_created: 招待
+    membership_resent: 招待を再送しました
+    no_custom_message: 個別メッセージはありません
+    pending: メール送信待ち
+    not_sent: メール配信の記録はありません
+    sent: メールサービスに送信を依頼しました
+    delivered: 受信側のメールサーバーが受け付けました
+    delayed: 配信遅延の報告がありました
+    rejected: メールが拒否されました
+    bounced: メール不達の報告がありました
+    complained: 迷惑メールの報告がありました
+    skipped: メールは送信されませんでした

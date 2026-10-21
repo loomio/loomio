@@ -3223,3 +3223,22 @@ hu:
     discussion: beszélgetés
     outcome: következtetés
     stance: szavazat
+  membership_notification_history:
+    invitation_delivery_history: Meghívók kézbesítési előzményei
+    delivery_result:
+      delivered: Kézbesítve
+      failed: Sikertelen
+    could_not_load_history: Nem sikerült betölteni az értesítési előzményeket
+    no_invitations_recorded: Nincs rögzített meghívó
+    membership_created: Meghívó
+    membership_resent: Meghívó újraküldve
+    no_custom_message: Nincs egyéni üzenet
+    pending: E-mail küldésre vár
+    not_sent: Nincs rögzített e-mail-kézbesítés
+    sent: Átadva az e-mail-szolgáltatónak
+    delivered: A címzett levelezőszervere átvette
+    delayed: Kézbesítési késés jelezve
+    rejected: E-mail elutasítva
+    bounced: Visszapattanás jelezve
+    complained: Spamként jelentve
+    skipped: E-mail nem lett elküldve

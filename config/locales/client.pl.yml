@@ -3239,3 +3239,22 @@ pl:
     discussion: dyskusja
     outcome: konkluzja
     stance: głos
+  membership_notification_history:
+    invitation_delivery_history: Historia doręczania zaproszeń
+    delivery_result:
+      delivered: Doręczono
+      failed: Nie udało się
+    could_not_load_history: Nie udało się wczytać historii powiadomień
+    no_invitations_recorded: Brak zapisanych zaproszeń
+    membership_created: Zaproszenie
+    membership_resent: Zaproszenie wysłano ponownie
+    no_custom_message: Brak własnej wiadomości
+    pending: E-mail czeka na wysłanie
+    not_sent: Brak informacji o doręczeniu e-maila
+    sent: Przekazano do usługi pocztowej
+    delivered: Przyjęto przez serwer pocztowy odbiorcy
+    delayed: Zgłoszono opóźnienie doręczenia
+    rejected: E-mail odrzucony
+    bounced: Zgłoszono zwrot e-maila
+    complained: Zgłoszono spam
+    skipped: E-mail nie został wysłany

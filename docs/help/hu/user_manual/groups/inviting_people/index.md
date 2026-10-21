@@ -1,10 +1,10 @@
 ---
 title: Emberek meghívása
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-21'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: e4f86215e7c937ea
 generated:
   introduction: 14a78fc7073ec3b9
   send-invitations-via-email: 9dc04b9a8646890f
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 59f083a75c1955b1
   re-send-invitations: ca919d118dd7d0ef
   cancelling-invitations: 938ac5db15840964
+  invitation-notification-history: 9f0478b1d404a734
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 ---
@@ -123,6 +125,18 @@ A meghívók kezeléséhez nyisd meg a szűrő legördülő menüjét a csoporto
 ![](group_invite_members_filter.png)
 
 A meghívottakat adminisztrátorrá is teheted, vagy megadhatod a csoporton belüli megnevezésüket (például „Informatikai támogatás”), még mielőtt elfogadnák a meghívójukat.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Meghívók kézbesítési előzményei
+
+Egy meghívó ellenőrzéséhez válaszd ki a **Meghívók kézbesítési előzményei** lehetőséget az adott személy melletti hárompontos menüből (**⋮**) a Tagok oldalon. A csoport koordinátorai láthatják az összes rögzített meghívót és újraküldést, a küldő személyét és a kézbesítés állapotát jelző címkét. Nyisd le a meghívót az egyéni üzenet és a kézbesítési részletek elolvasásához. Az előzmények a személy csatlakozása után is elérhetők.
+
+Ha valakit újra meghívsz, a rendszer a meglévő tagsági bejegyzését használja, így a neve melletti eredeti dátum nem változik. Az előzményekben külön láthatók az egyes küldések. Akik már tagjai ugyanazon szervezet egy másik csoportjának, meghíváskor automatikusan csatlakozhatnak; nekik nem kell újabb meghívót elfogadniuk.
+
+A **Kézbesítve** címke azt jelenti, hogy a küldés befejeződött, és utána nem rögzítettek hibát; ez nem igazolja, hogy az e-mail megérkezett a címzett beérkezett üzenetei közé. Nyisd le a meghívót, hogy megkülönböztesd az **Átadva az e-mail-szolgáltatónak** és **A címzett levelezőszervere átvette** állapotot. A **Sikertelen** állapot a jelentett visszapattanásokat, spambejelentéseket, elutasított e-maileket és kihagyott küldéseket jelöli; a lenyitott részletekben látható az okuk. A függőben lévő küldések és a jelentett késések semleges állapotot kapnak. A **Nincs rögzített e-mail-kézbesítés** azt jelenti, hogy az adott küldéshez nincs e-mail-kézbesítési bejegyzés; a régebbi bejegyzésekből nem derül ki, miért maradt ki egy e-mail küldése. A **Meghívás újraküldése** egyéni üzenet nélkül küldi el a meghívót.
+
+Ha egy e-mail-címhez végleges visszapattanást vagy spambejelentést rögzítettek, a Loomio leállítja az e-mailek küldését erre a címre. A jelszóval, e-mailben kapott kóddal vagy hivatkozással történő bejelentkezés feloldja ezt a Loomio-tiltást az adott személy aktuális címén; a Loomio-példány adminisztrátora is feloldhatja. Az e-mail-szolgáltatónál külön tiltás is érvényben lehet, amelyet annak adminisztrátorának kell feloldania.
 
 <!-- translation-section: re-send-invitations -->
 

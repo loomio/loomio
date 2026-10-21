@@ -3212,3 +3212,22 @@ fi:
     discussion: keskustelu
     outcome: johtopäätös
     stance: ääni
+  membership_notification_history:
+    invitation_delivery_history: Kutsujen toimitushistoria
+    delivery_result:
+      delivered: Toimitettu
+      failed: Epäonnistui
+    could_not_load_history: Ilmoitushistorian lataus epäonnistui
+    no_invitations_recorded: Ei kirjattuja kutsuja
+    membership_created: Kutsu
+    membership_resent: Kutsu lähetetty uudelleen
+    no_custom_message: Ei omaa viestiä
+    pending: Sähköposti odottaa lähetystä
+    not_sent: Sähköpostin toimitusta ei kirjattu
+    sent: Välitetty sähköpostipalveluun
+    delivered: Vastaanottajan postipalvelin hyväksyi viestin
+    delayed: Toimitusviive ilmoitettu
+    rejected: Sähköposti hylätty
+    bounced: Sähköpostin palautuminen ilmoitettu
+    complained: Roskaposti-ilmoitus kirjattu
+    skipped: Sähköpostia ei lähetetty

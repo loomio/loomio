@@ -1,10 +1,10 @@
 ---
 title: Invitar personas
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-21'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: e4f86215e7c937ea
 generated:
   introduction: 81f785a5369d9fe9
   send-invitations-via-email: 1e14777914cd64d4
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 00ce6c713d573345
   re-send-invitations: 93195e33dc807691
   cancelling-invitations: 966f78f5b049a2b0
+  invitation-notification-history: a8f4e3d02aa3062a
 title_source: b926eb8921d85971
 title_generated: 375e4845e20bc598
 ---
@@ -123,6 +125,18 @@ Para gestionar las invitaciones, abre el filtro o menú desplegable de la pesta�
 ![](group_invite_members_filter.png)
 
 También puedes dar a las personas el rol de administrador o establecer un cargo dentro del grupo (por ejemplo, "Soporte informático") antes de que acepten la invitación.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Historial de entrega de invitaciones
+
+Para comprobar una invitación, elige **Historial de entrega de invitaciones** en el menú de tres puntos (**⋮**) junto a la persona en la página de Integrantes. Los coordinadores del grupo pueden ver cada invitación y reenvío registrados, quién los envió y una etiqueta con el estado de entrega. Despliega una invitación para leer su mensaje personalizado y los detalles de entrega. Este historial también está disponible después de que la persona se una al grupo.
+
+Al volver a invitar a alguien, se reutiliza su registro de pertenencia al grupo, por lo que la fecha original junto a su nombre no cambia. El historial muestra los distintos envíos. Las personas que ya pertenecen a otro grupo de la misma organización pueden ser aceptadas automáticamente cuando se las invita; no necesitan aceptar otra invitación.
+
+La etiqueta **Entregada** significa que el envío se completó sin que se registrara un fallo posterior; no confirma que el correo haya llegado a la bandeja de entrada del destinatario. Despliega la invitación para distinguir entre **Enviado al servicio de correo** y **Aceptado por el servidor de correo del destinatario**. **Fallida** incluye los rebotes notificados, las quejas por correo no deseado, los correos rechazados y los envíos omitidos; los detalles desplegados muestran el motivo. Los envíos pendientes y los retrasos notificados tienen un estado neutro. **No hay entregas de correo registradas** significa que no existe un registro de entrega de correo para ese envío; los registros antiguos no indican por qué se omitió un correo. **Reenviar la invitación** realiza el envío sin un mensaje personalizado.
+
+Si una dirección de correo tiene registrado un rebote permanente o una queja por correo no deseado, Loomio deja de enviar correos a esa dirección. Iniciar sesión con una contraseña, un código por correo o un enlace por correo elimina este bloqueo de Loomio para la dirección actual de la persona; un administrador de la instancia también puede eliminarlo. El servicio de correo puede tener un bloqueo independiente que su administrador debe resolver.
 
 <!-- translation-section: re-send-invitations -->
 

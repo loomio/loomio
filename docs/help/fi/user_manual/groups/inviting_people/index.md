@@ -1,10 +1,10 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-21'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: e4f86215e7c937ea
 generated:
   introduction: f6b3b044a4ffd922
   send-invitations-via-email: '080dff343020123b'
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 41c5e89def41074b
   re-send-invitations: 3636d946aab90088
   cancelling-invitations: 0535f371aa72116e
+  invitation-notification-history: b55aa8188ebc4406
 title_source: b926eb8921d85971
 title_generated: 0f5c8e72764c2a0a
 ---
@@ -123,6 +125,18 @@ Hallitaksesi kutsuja avaa suodatusvalikko ryhmäsi sivun Jäsenet-välilehdellä
 ![](group_invite_members_filter.png)
 
 Voit myös tehdä kutsutuista ylläpitäjiä tai määrittää heidän tehtävänimikkeensä ryhmässä (esimerkiksi ”IT-tuki”) ennen kuin he hyväksyvät kutsunsa.
+
+<!-- translation-section: invitation-notification-history -->
+
+### Kutsujen toimitushistoria
+
+Voit tarkistaa kutsun valitsemalla **Kutsujen toimitushistoria** henkilön vieressä olevasta kolmen pisteen valikosta (**⋮**) Jäsenet-sivulla. Ryhmän koordinaattorit näkevät jokaisen kirjatun kutsun ja uudelleenlähetyksen, lähettäjän sekä toimitustilan tunnisteen. Avaa kutsun tiedot, niin näet sen yksilöllisen viestin ja toimitustiedot. Historia on käytettävissä myös henkilön liityttyä ryhmään.
+
+Kun kutsut henkilön uudelleen, käytetään hänen aiempaa jäsentietuettaan, joten alkuperäinen päivämäärä hänen nimensä vieressä ei muutu. Historia näyttää erilliset lähetykset. Henkilöt, jotka kuuluvat jo toiseen ryhmään samassa organisaatiossa, voidaan hyväksyä automaattisesti kutsuttaessa. Heidän ei tarvitse hyväksyä uutta kutsua.
+
+**Toimitettu**-tunniste tarkoittaa, että lähetys valmistui eikä sen jälkeen ole kirjattu toimitusvirhettä. Se ei vahvista, että sähköposti saapui vastaanottajan Saapuneet-kansioon. Avaa kutsun tiedot, niin voit erottaa tilat **Välitetty sähköpostipalveluun** ja **Vastaanottajan postipalvelin hyväksyi viestin** toisistaan. **Epäonnistui** kattaa ilmoitetut palautuneet viestit, roskaposti-ilmoitukset, hylätyt sähköpostit ja ohitetut lähetykset. Avatuissa tiedoissa näkyy syy. Odottavilla lähetyksillä ja ilmoitetuilla viiveillä on neutraali tila. **Sähköpostin toimitusta ei kirjattu** tarkoittaa, ettei kyseiselle lähetykselle ole sähköpostin toimitustietuetta. Vanhemmista tietueista ei selviä, miksi sähköposti jätettiin lähettämättä. **Lähetä kutsu uudelleen** lähettää kutsun ilman yksilöllistä viestiä.
+
+Jos sähköpostiosoitteelle on kirjattu pysyvä toimitusvirhe tai roskaposti-ilmoitus, Loomio lopettaa sähköpostien lähettämisen kyseiseen osoitteeseen. Kirjautuminen salasanalla, sähköpostikoodilla tai sähköpostilinkillä poistaa tämän Loomion lähetyseston henkilön nykyisestä osoitteesta. Myös Loomio-asennuksen ylläpitäjä voi poistaa eston. Sähköpostipalvelussa voi olla erillinen esto, joka sen ylläpitäjän on poistettava.
 
 <!-- translation-section: re-send-invitations -->
 

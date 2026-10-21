@@ -3240,3 +3240,22 @@ it:
     discussion: discussione
     outcome: conclusione
     stance: voto
+  membership_notification_history:
+    invitation_delivery_history: Cronologia di consegna degli inviti
+    delivery_result:
+      delivered: Consegnato
+      failed: Non riuscito
+    could_not_load_history: Impossibile caricare la cronologia delle notifiche
+    no_invitations_recorded: Nessun invito registrato
+    membership_created: Invito
+    membership_resent: Invito reinviato
+    no_custom_message: Nessun messaggio personalizzato
+    pending: Email in attesa
+    not_sent: Nessuna consegna email registrata
+    sent: Inoltrata al servizio email
+    delivered: Accettata dal server di posta del destinatario
+    delayed: Segnalato ritardo nella consegna
+    rejected: Email rifiutata
+    bounced: Segnalata mancata consegna
+    complained: Segnalata come spam
+    skipped: Email non inviata

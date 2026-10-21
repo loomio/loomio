@@ -3231,3 +3231,22 @@ he:
     discussion: דיון
     outcome: מסקנה
     stance: הצבעה
+  membership_notification_history:
+    invitation_delivery_history: היסטוריית מסירת הזמנות
+    delivery_result:
+      delivered: נמסרה
+      failed: נכשלה
+    could_not_load_history: לא ניתן לטעון את היסטוריית ההתראות
+    no_invitations_recorded: לא נרשמו הזמנות
+    membership_created: הזמנה
+    membership_resent: הזמנה נשלחה שוב
+    no_custom_message: אין הודעה אישית
+    pending: אימייל ממתין לשליחה
+    not_sent: לא נרשמה מסירת אימייל
+    sent: הועבר לשירות האימייל
+    delivered: התקבל בשרת האימייל של הנמען
+    delayed: דווח על עיכוב במסירה
+    rejected: האימייל נדחה
+    bounced: דווח שהאימייל חזר
+    complained: דווח על תלונת ספאם
+    skipped: האימייל לא נשלח

@@ -3213,3 +3213,22 @@ hr:
     discussion: rasprava
     outcome: zaključak
     stance: glas
+  membership_notification_history:
+    invitation_delivery_history: Povijest dostave pozivnica
+    delivery_result:
+      delivered: Dostavljeno
+      failed: Neuspješno
+    could_not_load_history: Nije moguće učitati povijest obavijesti
+    no_invitations_recorded: Nema zabilježenih pozivnica
+    membership_created: Pozivnica
+    membership_resent: Pozivnica ponovno poslana
+    no_custom_message: Nema osobne poruke
+    pending: E-pošta na čekanju
+    not_sent: Nema zabilježene dostave e-pošte
+    sent: Predano servisu za e-poštu
+    delivered: Prihvatio poslužitelj e-pošte primatelja
+    delayed: Prijavljeno kašnjenje dostave
+    rejected: E-pošta odbijena
+    bounced: Prijavljen povrat e-pošte
+    complained: Prijavljena neželjena pošta
+    skipped: E-pošta nije poslana

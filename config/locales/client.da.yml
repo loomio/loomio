@@ -3224,3 +3224,22 @@ da:
     discussion: diskussion
     outcome: konklusion
     stance: stemme
+  membership_notification_history:
+    invitation_delivery_history: Invitationens leveringshistorik
+    delivery_result:
+      delivered: Leveret
+      failed: Mislykket
+    could_not_load_history: Kunne ikke hente notifikationshistorik
+    no_invitations_recorded: Ingen invitationer registreret
+    membership_created: Invitation
+    membership_resent: Invitation sendt igen
+    no_custom_message: Ingen personlig besked
+    pending: E-mail afventer
+    not_sent: Ingen e-maillevering registreret
+    sent: Overdraget til e-mailtjenesten
+    delivered: Accepteret af modtagerens mailserver
+    delayed: Leveringsforsinkelse meldt
+    rejected: E-mail afvist
+    bounced: Returmail meldt
+    complained: Spamklage meldt
+    skipped: E-mail ikke sendt

@@ -1,10 +1,10 @@
 ---
 title: メンバーを招待する
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/inviting_people/index.md
+source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-21'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,6 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
+  invitation-notification-history: e4f86215e7c937ea
 generated:
   introduction: d0472b30afa3ea26
   send-invitations-via-email: 060c3642105461e9
@@ -27,6 +28,7 @@ generated:
   managing-invitations: 6fdff47a1de2fe7e
   re-send-invitations: 72c721832ea9504b
   cancelling-invitations: b73b9af2ad261323
+  invitation-notification-history: b7a4a06510169649
 title_source: b926eb8921d85971
 title_generated: 8443acb671cc4a96
 ---
@@ -123,6 +125,18 @@ title_generated: 8443acb671cc4a96
 ![](group_invite_members_filter.png)
 
 招待が承諾される前に、その人を管理者にしたり、グループ内での肩書き（「ITサポート」など）を設定したりすることもできます。
+
+<!-- translation-section: invitation-notification-history -->
+
+### 招待の配信履歴
+
+招待を確認するには、メンバーページで対象者の横にある三点メニュー（**⋮**）から**招待の配信履歴**を選択します。グループの管理者は、記録された各招待と再送信について、送信者と配信状況を示すチップを確認できます。招待を展開すると、個別のメッセージと配信の詳細を確認できます。この履歴は、対象者が参加した後も確認できます。
+
+同じ人を再度招待すると、既存のメンバー登録情報が再利用されるため、名前の横に表示される元の日付は変わりません。履歴には、各回の送信が個別に表示されます。同じ組織内の別のグループにすでに所属している人は、招待時に自動的に参加が承認される場合があります。その場合、招待を改めて承諾する必要はありません。
+
+**配信済み**のチップは、送信が完了し、その後の配信失敗が記録されていないことを示します。メールが受信者の受信トレイに届いたことを確認するものではありません。招待を展開すると、**メールサービスに送信を依頼しました**と**受信側のメールサーバーが受け付けました**を区別できます。**配信失敗**には、報告されたバウンス、迷惑メールの苦情、受信拒否、送信のスキップが含まれます。展開した詳細に理由が表示されます。送信待ちや遅延が報告された場合は、成功や失敗を示さない中立的なステータスになります。**メール配信の記録はありません**は、その送信のメール配信記録がないことを示します。古い記録では、メールの送信がスキップされた理由は確認できません。**招待状を再送信する**では、個別のメッセージを付けずに送信します。
+
+メールアドレスに恒久的な配信エラーや迷惑メールの苦情が記録されている場合、Loomioはそのアドレスへのメール送信を停止します。パスワード、メールで届くコード、またはメール内のリンクでサインインすると、その人の現在のメールアドレスに対するLoomioの送信制限が解除されます。インスタンス管理者も解除できます。メールサービス側で別途送信が制限されている場合は、そのサービスの管理者による対応が必要です。
 
 <!-- translation-section: re-send-invitations -->
 

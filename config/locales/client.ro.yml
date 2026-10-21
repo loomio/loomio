@@ -3212,3 +3212,22 @@ ro:
     discussion: discuție
     outcome: concluzie
     stance: vot
+  membership_notification_history:
+    invitation_delivery_history: Istoricul livrării invitațiilor
+    delivery_result:
+      delivered: Livrat
+      failed: Eșuat
+    could_not_load_history: Nu s-a putut încărca istoricul notificărilor
+    no_invitations_recorded: Nicio invitație înregistrată
+    membership_created: Invitație
+    membership_resent: Invitație retrimisă
+    no_custom_message: Fără mesaj personalizat
+    pending: E-mail în așteptare
+    not_sent: Nicio livrare de e-mail înregistrată
+    sent: Trimis către serviciul de e-mail
+    delivered: Acceptat de serverul de e-mail al destinatarului
+    delayed: Întârziere la livrare raportată
+    rejected: E-mail respins
+    bounced: Returnare raportată
+    complained: Reclamație de spam raportată
+    skipped: E-mail netrimis
