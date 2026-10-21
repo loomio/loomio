@@ -13,7 +13,7 @@ import NotificationHistory from '@/components/group/notification_history.vue';
 const membership = {id: 14, userEmail: 'member@example.com', user: () => ({nameOrUsername: () => 'Member'})};
 const entry = id => ({
   id, kind: 'membership_created', created_at: '2026-10-21T01:00:00Z', sender_name: 'Coordinator',
-  message: 'Please join our forum', email_subject: 'An invitation', email_status: 'sent',
+  message: 'Please join our forum', email_status: 'sent',
   email_sent_at: '2026-10-21T01:00:01Z', email_events: []
 });
 let mountedHistory;
@@ -54,7 +54,6 @@ describe('membership notification history', () => {
     expect(title.attributes('aria-expanded')).toBe('false');
     expect(title.text()).toContain('membership_notification_history.delivery_result.failed');
     expect(row.find('.membership-notification-history__message').exists()).toBe(false);
-    expect(title.text()).not.toContain(invitation.email_subject);
     expect(title.text()).not.toContain('550 Unknown mailbox');
     expect(wrapper.find('.membership-notification-history__blocked').exists()).toBe(false);
 

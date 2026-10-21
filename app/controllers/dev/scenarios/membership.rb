@@ -7,7 +7,7 @@ module Dev::Scenarios::Membership
       recipient_user_ids: [emilio.id], recipient_message: 'Please join the wider group discussion',
       created_at: 1.day.ago, deliveries_generated_at: 1.day.ago)
     delivery = NotificationDelivery.create!(notification: invitation, recipient: emilio, channel: 'email',
-      delivered_at: 1.day.ago, email_subject: 'Join the group')
+      delivered_at: 1.day.ago)
     delivery.events.create!(kind: 'sent', source_key: 'scenario:send', occurred_at: delivery.delivered_at)
     delivery.events.create!(kind: 'delivered', source_key: 'scenario:delivery', occurred_at: 1.day.ago + 1.minute)
 
@@ -24,8 +24,7 @@ module Dev::Scenarios::Membership
       notification = Notification.create!(kind: 'membership_resent', subject: membership, actor: patrick,
         recipient_message: "Invitation history preview: #{kind}", created_at: sent_at, deliveries_generated_at: sent_at)
       email = NotificationDelivery.create!(notification: notification, recipient: emilio, channel: 'email',
-        delivered_at: (%i[delayed bounced complained].include?(kind) ? sent_at : nil),
-        email_subject: 'Join the group discussion')
+        delivered_at: (%i[delayed bounced complained].include?(kind) ? sent_at : nil))
       if email.delivered_at
         email.events.create!(kind: 'sent', source_key: "scenario:#{kind}:send", occurred_at: sent_at)
       end

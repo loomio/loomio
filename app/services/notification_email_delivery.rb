@@ -39,7 +39,7 @@ class NotificationEmailDelivery
       return false if @delivery.recipient.email.nil?
 
       @message.message_id = @delivery.email_message_id || "#{SecureRandom.uuid}@#{ENV.fetch('SMTP_DOMAIN')}"
-      @delivery.update!(email_message_id: @message.message_id, email_subject: @message.subject)
+      @delivery.update!(email_message_id: @message.message_id)
     end
     if @message.delivery_method.is_a?(Mail::SMTP)
       @message.delivery_method(NotificationSmtpDelivery, @message.delivery_method.settings)

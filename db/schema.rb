@@ -509,7 +509,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
     t.string "email_message_id"
-    t.text "email_subject"
     t.bigint "notification_id", null: false
     t.string "provider_message_id"
     t.bigint "recipient_id", null: false

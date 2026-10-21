@@ -12,7 +12,7 @@ class Api::V1::MembershipNotificationHistoryTest < ActionController::TestCase
       recipient_user_ids: [@recipient.id, users(:member_loud).id], recipient_message: 'Please join our forum',
       deliveries_generated_at: Time.current)
     @delivery = NotificationDelivery.create!(notification: @invitation, recipient: @recipient,
-      channel: 'email', delivered_at: Time.current, email_subject: 'Join our forum')
+      channel: 'email', delivered_at: Time.current)
     @delivery.events.create!(kind: 'bounced', source_key: 'report:1', occurred_at: Time.current, detail: '550 unknown user')
     sign_in @admin
   end
@@ -34,7 +34,7 @@ class Api::V1::MembershipNotificationHistoryTest < ActionController::TestCase
     assert_equal [resend.id, @invitation.id], rows.map { |row| row.fetch('id') }
     assert_equal 'Please join our forum', rows.last.fetch('message')
     assert_equal 'bounced', rows.last.fetch('email_status')
-    assert_equal 'Join our forum', rows.last.fetch('email_subject')
+    refute rows.last.key?('email_subject')
     assert_equal '550 unknown user', rows.last.fetch('email_events').first.fetch('detail')
     refute_includes response.body, 'recipient_user_ids'
     refute_includes response.body, 'Other recipient secret'

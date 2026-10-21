@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class RedactUserWorkerTest < ActiveSupport::TestCase
-  test 'redaction erases email snapshots and diagnostics without losing nonpersonal history' do
+  test 'redaction erases email identifiers and diagnostics without losing nonpersonal history' do
     user = users(:member_normal)
     notification = Notification.create!(kind: 'membership_created', subject: groups(:group), actor: users(:admin))
     delivery = NotificationDelivery.create!(notification: notification, recipient: user, channel: 'email',
-      email_subject: 'Invitation for member', email_message_id: 'message@loomio.test',
+      email_message_id: 'message@loomio.test',
       provider_message_id: 'ses-private-id')
     event = delivery.events.create!(kind: 'bounced', source_key: 'feedback:one', occurred_at: Time.current,
       detail: "550 Unknown mailbox #{user.email}")
@@ -15,7 +15,6 @@ class RedactUserWorkerTest < ActiveSupport::TestCase
     address_digest = EmailSuppression.address_digest(user.email)
     RedactUserWorker.perform_now(user.id, user.id, false)
     delivery.reload
-    assert_nil delivery.email_subject
     assert_nil delivery.email_message_id
     assert_nil delivery.provider_message_id
     assert_nil event.reload.detail

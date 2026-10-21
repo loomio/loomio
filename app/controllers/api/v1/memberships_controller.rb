@@ -64,7 +64,6 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         created_at: notification.created_at,
         sender_name: actors[notification.actor_id]&.name_or_username,
         message: notification.recipient_message,
-        email_subject: email&.email_subject,
         email_sent_at: email&.delivered_at,
         email_status: email ? email.email_status :
           (notification.deliveries_generated_at ? 'not_sent' : 'pending'),

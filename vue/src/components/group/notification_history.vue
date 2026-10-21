@@ -77,7 +77,6 @@ v-card.membership-notification-history(:title="t('membership_notification_histor
                 time-ago(:date="entry.event ? entry.event.occurred_at : entry.email_sent_at")
             p.membership-notification-history__diagnostic(v-if="entry.event && entry.event.detail") {{ entry.event.detail }}
             .mt-4
-              p.font-weight-medium.mb-1(v-if="entry.email_subject") {{ entry.email_subject }}
               pre.membership-notification-history__message.pa-3.rounded(v-if="entry.message")
                 code {{ entry.message }}
               p.text-medium-emphasis(v-else) {{ t('membership_notification_history.no_custom_message') }}
