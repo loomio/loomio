@@ -138,6 +138,32 @@ class TagService
       used_group_ids: [group.id]} }, unique_by: [:group_id, :name])
   end
 
+  # Tag edits refresh summaries through TopicItem's tag callbacks. This hook
+  # handles deletion/restoration of the underlying content: assignments survive,
+  # but only kept contributions belong in the summaries. Other edits need no rebuild.
+  def self.refresh_topic_tags_for_visibility(itemable)
+    return unless itemable.saved_changes.key?('discarded_at')
+
+    refresh_topic_tags!([itemable.topic_id])
+  end
+
+  # Maintain all thread summaries under the same lock as tag edits and moves.
+  # Loading a thread can then use its existing rows without any tag lookups.
+  def self.refresh_topic_tags!(topic_ids)
+    Topic.where(id: topic_ids.compact.uniq).order(:id).with_write_lock do |topics|
+      topics.each do |topic|
+        rows = TopicItem.tags_visible.where(topic_id: topic.id).where('cardinality(tags) > 0').pluck(:sequence_id, :tags)
+
+        topic.assign_attributes(
+          tags: clean_tag_names(rows.flat_map(&:last)),
+          root_tags: rows.find { |sequence_id, _tags| sequence_id == 0 }&.last || [],
+          has_tagged_replies: rows.any? { |sequence_id, _tags| sequence_id && sequence_id > 0 }
+        )
+        topic.save! if topic.changed?
+      end
+    end
+  end
+
   def self.update_group_tags(group_id)
     update_org_tags(group_id)
   end

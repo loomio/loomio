@@ -448,7 +448,7 @@ class GroupExportService
         end
         TopicItem.where(id: legacy_root_ids).update_all(tags: Arel.sql(
           "COALESCE((SELECT topics.tags FROM topics WHERE topics.id = topic_items.topic_id AND topics.topicable_type = topic_items.itemable_type AND topics.topicable_id = topic_items.itemable_id), ARRAY[]::varchar[])")) if legacy_root_ids.any?
-        TopicItem.refresh_topic_tags!(topic_ids)
+        TagService.refresh_topic_tags!(topic_ids)
         TopicItem.where(topic_id: topic_ids).update_all(child_count: Arel.sql(
           '(SELECT COUNT(*) FROM topic_items children WHERE children.parent_id = topic_items.id)'))
         # Revision history is not part of ordinary group archives. Count any

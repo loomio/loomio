@@ -47,23 +47,6 @@ module HasItemTags
       tags_visible.where(itemable_type: type).where("topic_items.itemable_id = #{id_sql}")
         .select(:tags).order(:id).limit(1).to_sql.then { |sql| "COALESCE((#{sql}), ARRAY[]::varchar[])" }
     end
-
-    # Maintain all thread summaries under the same lock as tag edits and moves.
-    # Loading a thread can then use its existing rows without any tag lookups.
-    def refresh_topic_tags!(topic_ids)
-      Topic.where(id: topic_ids.compact.uniq).order(:id).with_write_lock do |topics|
-        topics.each do |topic|
-          rows = tags_visible.where(topic_id: topic.id).where('cardinality(tags) > 0').pluck(:sequence_id, :tags)
-
-          topic.assign_attributes(
-            tags: TagService.clean_tag_names(rows.flat_map(&:last)),
-            root_tags: rows.find { |sequence_id, _tags| sequence_id == 0 }&.last || [],
-            has_tagged_replies: rows.any? { |sequence_id, _tags| sequence_id && sequence_id > 0 }
-          )
-          topic.save! if topic.changed?
-        end
-      end
-    end
   end
 
   private
@@ -77,7 +60,7 @@ module HasItemTags
   end
 
   def refresh_item_tags
-    self.class.refresh_topic_tags!([topic_id, topic_id_before_last_save])
+    TagService.refresh_topic_tags!([topic_id, topic_id_before_last_save])
     # Services return their existing topic object; refresh its derived fields too.
     topic.reload
     PgSearch::Document.where(searchable_type: itemable_type, searchable_id: itemable_id)
