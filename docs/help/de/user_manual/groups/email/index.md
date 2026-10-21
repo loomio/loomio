@@ -1,16 +1,16 @@
 ---
 title: E-Mail-Adresse
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: 0da0771e67749625
-  preventing-unauthorized-emails: 4ad3a256acf1a35b
+  preventing-unauthorized-emails: 57c1e4e31718b25c
 title_source: f2488fd4ef4adbc6
 title_generated: c2f9765ad5cefe3a
 ---
@@ -38,6 +38,6 @@ Wenn du mehrere E-Mail-Adressen verwendest, kannst du einen Alias hinzufügen, d
 
 Wenn die Absenderadresse keinem Mitglied der Gruppe zugeordnet werden kann, erhältst du eine Benachrichtigung mit der Aufforderung, einen Alias hinzuzufügen oder alle weiteren E-Mails von dieser Adresse abzulehnen.
 
-Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du also einen Alias hinzufügen. Danach werden E-Mails sofort angenommen.
+Wenn du zum ersten Mal eine E-Mail von einer unbekannten Adresse sendest, musst du also einen Alias hinzufügen. Danach werden E-Mails sofort angenommen. Nachrichten, die auf eine Prüfung warten, behalten ihren ursprünglichen Inhalt und ihre Anhänge, bis eine koordinierende Person sie bearbeitet. Das gilt auch bei der routinemäßigen E-Mail-Bereinigung.
 
 ![Position der Schaltflächen zum Genehmigen und Ablehnen einer E-Mail von einer unbekannten Adresse](email_unreleased_emails.png)

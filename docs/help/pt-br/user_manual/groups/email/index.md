@@ -1,16 +1,16 @@
 ---
 title: Endereço de e-mail
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: a16b9c6079aec5ed
-  preventing-unauthorized-emails: ec13cfa3fd4ee641
+  preventing-unauthorized-emails: a761631c55b0f90b
 title_source: f2488fd4ef4adbc6
 title_generated: 32c13b636f1f855f
 ---
@@ -38,6 +38,6 @@ Se você usa vários endereços de e-mail, pode adicionar um endereço alternati
 
 Quando o endereço do campo "De" não corresponde ao de um membro do grupo, você recebe uma notificação solicitando que adicione um endereço alternativo ou rejeite todos os próximos e-mails desse endereço.
 
-Isso significa que, na primeira vez que você enviar um e-mail de um endereço não reconhecido, precisará adicionar um endereço alternativo. Depois disso, os e-mails serão aceitos imediatamente.
+Isso significa que, na primeira vez que você enviar um e-mail de um endereço não reconhecido, precisará adicionar um endereço alternativo. Depois disso, os e-mails serão aceitos imediatamente. As mensagens que aguardam revisão mantêm seu conteúdo original e seus anexos até que um coordenador tome uma ação sobre elas, inclusive durante a limpeza rotineira de e-mails.
 
 ![Localização dos botões de aprovação e rejeição de um e-mail não reconhecido](email_unreleased_emails.png)

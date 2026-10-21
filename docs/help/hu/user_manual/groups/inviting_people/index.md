@@ -1,10 +1,10 @@
 ---
 title: Emberek meghívása
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: 14a78fc7073ec3b9
   send-invitations-via-email: 9dc04b9a8646890f
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 59f083a75c1955b1
   re-send-invitations: ca919d118dd7d0ef
   cancelling-invitations: 938ac5db15840964
-  invitation-notification-history: 9f0478b1d404a734
+  invitation-notification-history: 831da42f18de6113
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 ---
@@ -136,7 +136,7 @@ Ha valakit újra meghívsz, a rendszer a meglévő tagsági bejegyzését haszn�
 
 A **Kézbesítve** címke azt jelenti, hogy a küldés befejeződött, és utána nem rögzítettek hibát; ez nem igazolja, hogy az e-mail megérkezett a címzett beérkezett üzenetei közé. Nyisd le a meghívót, hogy megkülönböztesd az **Átadva az e-mail-szolgáltatónak** és **A címzett levelezőszervere átvette** állapotot. A **Sikertelen** állapot a jelentett visszapattanásokat, spambejelentéseket, elutasított e-maileket és kihagyott küldéseket jelöli; a lenyitott részletekben látható az okuk. A függőben lévő küldések és a jelentett késések semleges állapotot kapnak. A **Nincs rögzített e-mail-kézbesítés** azt jelenti, hogy az adott küldéshez nincs e-mail-kézbesítési bejegyzés; a régebbi bejegyzésekből nem derül ki, miért maradt ki egy e-mail küldése. A **Meghívás újraküldése** egyéni üzenet nélkül küldi el a meghívót.
 
-Ha egy e-mail-címhez végleges visszapattanást vagy spambejelentést rögzítettek, a Loomio leállítja az e-mailek küldését erre a címre. A jelszóval, e-mailben kapott kóddal vagy hivatkozással történő bejelentkezés feloldja ezt a Loomio-tiltást az adott személy aktuális címén; a Loomio-példány adminisztrátora is feloldhatja. Az e-mail-szolgáltatónál külön tiltás is érvényben lehet, amelyet annak adminisztrátorának kell feloldania.
+Ha egy e-mail-címhez végleges visszapattanást vagy spambejelentést rögzítettek, a Loomio leállítja az e-mailek küldését erre a címre. A meghívók kézbesítési előzményeinek tetején megjelenő értesítés jelzi, ha a Loomio jelenleg tiltja az adott személy címét. A jelszóval, e-mailben kapott kóddal vagy hivatkozással történő bejelentkezés feloldja ezt a Loomio-tiltást az adott személy aktuális címén; a Loomio-példány adminisztrátora is feloldhatja. Az e-mail-szolgáltatónál külön tiltás is érvényben lehet, amelyet annak adminisztrátorának kell feloldania.
 
 <!-- translation-section: re-send-invitations -->
 

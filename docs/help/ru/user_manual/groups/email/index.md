@@ -1,16 +1,16 @@
 ---
 title: Адрес электронной почты
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: 05cfcc6d0124ba6c
-  preventing-unauthorized-emails: 83476a403723882c
+  preventing-unauthorized-emails: 0cfab63653bc77e1
 title_source: f2488fd4ef4adbc6
 title_generated: 76025432993de115
 ---
@@ -38,6 +38,6 @@ title_generated: 76025432993de115
 
 Если адрес в поле «От» не совпадает с адресом участника группы, вы получите уведомление с предложением добавить дополнительный адрес или отклонять все последующие письма с этого адреса.
 
-Это означает, что при первой отправке письма с неизвестного адреса вам потребуется добавить его как дополнительный. После этого письма будут приниматься сразу.
+Это означает, что при первой отправке письма с неизвестного адреса вам потребуется добавить его как дополнительный. После этого письма будут приниматься сразу. Письма, ожидающие проверки, сохраняют исходное содержимое и вложения до тех пор, пока координатор не примет по ним решение, в том числе при плановой очистке электронной почты.
 
 ![Расположение кнопок принятия и отклонения письма с неизвестного адреса](email_unreleased_emails.png)

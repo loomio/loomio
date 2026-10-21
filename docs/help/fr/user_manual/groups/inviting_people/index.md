@@ -1,10 +1,10 @@
 ---
 title: Inviter des personnes
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: 07d627bd27159ecf
   send-invitations-via-email: 513054385d01b0ef
@@ -28,7 +28,7 @@ generated:
   managing-invitations: f0cce63a809f9a5c
   re-send-invitations: d06d1a9f06473ded
   cancelling-invitations: 0ed3631657c2f9f2
-  invitation-notification-history: 21780df4612b5fb2
+  invitation-notification-history: cbf48b03635d2730
 title_source: b926eb8921d85971
 title_generated: 6dcdecac01939914
 ---
@@ -136,7 +136,7 @@ Inviter à nouveau une personne réutilise sa fiche de membre ; la date initia
 
 La pastille **Remis** signifie que l’envoi s’est terminé sans qu’un échec ait été enregistré par la suite ; elle ne confirme pas que le courriel est arrivé dans la boîte de réception du destinataire. Développez l’invitation pour distinguer **Transmis au service d’envoi de courriels** de **Accepté par le serveur de messagerie du destinataire**. L’état **Échec** couvre les retours à l’expéditeur signalés, les signalements de courrier indésirable, les courriels rejetés et les envois non effectués ; les détails affichés indiquent la raison. Les envois en attente et les retards signalés ont un état neutre. **Aucun envoi de courriel enregistré** signifie qu’aucun envoi de courriel n’a été enregistré pour cet envoi d’invitation ; les anciens enregistrements ne précisent pas pourquoi un courriel n’a pas été envoyé. **Renvoyer l'invitation** effectue l’envoi sans message personnalisé.
 
-Si un retour permanent à l’expéditeur ou un signalement de courrier indésirable est enregistré pour une adresse électronique, Loomio cesse d’envoyer des courriels à cette adresse. La connexion avec un mot de passe, un code reçu par courriel ou un lien reçu par courriel lève ce blocage dans Loomio pour l’adresse actuelle de la personne ; un administrateur de l’instance peut également le lever. Le service d’envoi de courriels peut appliquer un blocage distinct que son administrateur doit résoudre.
+Si un retour permanent à l’expéditeur ou un signalement de courrier indésirable est enregistré pour une adresse électronique, Loomio cesse d’envoyer des courriels à cette adresse. Un avis en haut de l’historique d’envoi des invitations indique si Loomio bloque actuellement l’adresse de la personne. La connexion avec un mot de passe, un code reçu par courriel ou un lien reçu par courriel lève ce blocage dans Loomio pour l’adresse actuelle de la personne ; un administrateur de l’instance peut également le lever. Le service d’envoi de courriels peut appliquer un blocage distinct que son administrateur doit résoudre.
 
 <!-- translation-section: re-send-invitations -->
 

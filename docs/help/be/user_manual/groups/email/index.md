@@ -1,16 +1,16 @@
 ---
 title: Адрас электроннай пошты
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: '0093b9afbda84eba'
-  preventing-unauthorized-emails: 7b3a23e75d830a18
+  preventing-unauthorized-emails: 4440b831085a9deb
 title_source: f2488fd4ef4adbc6
 title_generated: 46e2f084ded96ec7
 ---
@@ -38,6 +38,6 @@ title_generated: 46e2f084ded96ec7
 
 Калі адрас у полі «Ад каго» не супадае з адрасам нікога з удзельнікаў групы, вы атрымаеце апавяшчэнне з просьбай дадаць дадатковы адрас або адхіліць усе наступныя лісты з гэтага адраса.
 
-Гэта азначае, што пры першай адпраўцы ліста з нераспазнанага адраса вам трэба будзе дадаць яго як дадатковы. Пасля гэтага лісты будуць прымацца адразу.
+Гэта азначае, што пры першай адпраўцы ліста з нераспазнанага адраса вам трэба будзе дадаць яго як дадатковы. Пасля гэтага лісты будуць прымацца адразу. Лісты, якія чакаюць разгляду, захоўваюць свой зыходны змест і ўкладанні, пакуль каардынатары не прымуць па іх рашэнне, у тым ліку падчас рэгулярнай ачысткі электроннай пошты.
 
 ![Размяшчэнне кнопак ухвалення і адхілення ліста з нераспазнанага адраса](email_unreleased_emails.png)

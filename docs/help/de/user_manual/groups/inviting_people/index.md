@@ -1,10 +1,10 @@
 ---
 title: Leute einladen
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: 597adff623b5dfbe
   send-invitations-via-email: 8ef2c71dbacdf0dc
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 7b7fde2e84cd9bc3
   re-send-invitations: 82377653e3d1426c
   cancelling-invitations: 99758ebaaea65cd4
-  invitation-notification-history: 7c311e5b6f030db1
+  invitation-notification-history: c6bdf8a5ea21bc4e
 title_source: b926eb8921d85971
 title_generated: 3e0831d8f76bf916
 ---
@@ -136,7 +136,7 @@ Wenn du jemanden erneut einlädst, wird der bestehende Mitgliedschaftsdatensatz 
 
 Die Statusanzeige **Zugestellt** bedeutet, dass der Versand abgeschlossen wurde, ohne dass später ein Fehler erfasst wurde. Sie bestätigt nicht, dass die E-Mail im Posteingang der empfangenden Person angekommen ist. Klappe die Einladung auf, um zwischen **An E-Mail-Dienst übergeben** und **Vom empfangenden Mailserver angenommen** zu unterscheiden. **Fehlgeschlagen** umfasst gemeldete unzustellbare E-Mails, Spam-Beschwerden, abgewiesene E-Mails und übersprungene Versandvorgänge. Die aufgeklappten Details zeigen die Ursache. Ausstehende Versandvorgänge und gemeldete Verzögerungen haben einen neutralen Status. **Keine E-Mail-Zustellung erfasst** bedeutet, dass für diesen Versandvorgang kein E-Mail-Zustellungsdatensatz vorliegt. Bei älteren Datensätzen ist nicht ersichtlich, warum eine E-Mail nicht versendet wurde. **Einladung erneut versenden** versendet die Einladung ohne persönliche Nachricht.
 
-Wenn für eine E-Mail-Adresse eine dauerhafte Unzustellbarkeit oder eine Spam-Beschwerde erfasst wurde, sendet Loomio keine weiteren E-Mails an diese Adresse. Wenn sich die Person mit einem Passwort, einem E-Mail-Code oder einem E-Mail-Link anmeldet, hebt Loomio diese Versandbeschränkung für ihre aktuelle Adresse auf. Auch eine Person mit Administrationsrechten für die Instanz kann sie aufheben. Beim E-Mail-Dienst kann eine separate Versandbeschränkung bestehen, die von dessen Administration aufgehoben werden muss.
+Wenn für eine E-Mail-Adresse eine dauerhafte Unzustellbarkeit oder eine Spam-Beschwerde erfasst wurde, sendet Loomio keine weiteren E-Mails an diese Adresse. Ein Hinweis oben im Zustellverlauf der Einladung zeigt an, wenn Loomio den Versand an die Adresse der Person aktuell beschränkt. Wenn sich die Person mit einem Passwort, einem E-Mail-Code oder einem E-Mail-Link anmeldet, hebt Loomio diese Versandbeschränkung für ihre aktuelle Adresse auf. Auch eine Person mit Administrationsrechten für die Instanz kann sie aufheben. Beim E-Mail-Dienst kann eine separate Versandbeschränkung bestehen, die von dessen Administration aufgehoben werden muss.
 
 <!-- translation-section: re-send-invitations -->
 

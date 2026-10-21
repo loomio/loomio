@@ -1,16 +1,16 @@
 ---
 title: כתובת דוא״ל
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: 6c252ce8da530f2e
-  preventing-unauthorized-emails: 2d90745c215af994
+  preventing-unauthorized-emails: 8673195a436d8412
 title_source: f2488fd4ef4adbc6
 title_generated: 4f01adb47cbdf230
 ---
@@ -38,6 +38,6 @@ title_generated: 4f01adb47cbdf230
 
 כאשר הכתובת בשדה "מאת" אינה תואמת לכתובת של חבר בקבוצה, תישלח התראה עם בקשה להוסיף כתובת חלופית או לדחות את כל הודעות הדוא״ל העתידיות מכתובת זו.
 
-לכן, בשליחה הראשונה מכתובת לא מזוהה, יש להוסיף אותה ככתובת חלופית. לאחר מכן, הודעות דוא״ל מכתובת זו יתקבלו מיד.
+לכן, בשליחה הראשונה מכתובת לא מזוהה, יש להוסיף אותה ככתובת חלופית. לאחר מכן, הודעות דוא״ל מכתובת זו יתקבלו מיד. הודעות הממתינות לבדיקה שומרות על התוכן המקורי שלהן ועל הקבצים המצורפים עד לטיפול בהן בידי גורם מתאם, גם כאשר מתבצע ניקוי שגרתי של הודעות דוא״ל.
 
 ![מיקום כפתורי האישור והדחייה של הודעת דוא״ל מכתובת לא מזוהה](email_unreleased_emails.png)

@@ -1,10 +1,10 @@
 ---
 title: Convidar pessoas
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: 3b0c44b951dcdbc1
   send-invitations-via-email: 2b8a4d9f59ade3fb
@@ -28,7 +28,7 @@ generated:
   managing-invitations: c0713e8dece67057
   re-send-invitations: 155d1c02af55f9cc
   cancelling-invitations: 5a674fbf2baf4f85
-  invitation-notification-history: 30f4c2a90971060a
+  invitation-notification-history: 1c77a66aef4084f1
 title_source: b926eb8921d85971
 title_generated: 78d2d476af72d5ea
 ---
@@ -136,7 +136,7 @@ Convidar alguém novamente reutiliza seu registro de membro, por isso a data ori
 
 O indicador **Entregue** significa que o envio foi concluído sem uma falha registrada posteriormente; ele não confirma que o e-mail chegou à caixa de entrada do destinatário. Expanda o convite para distinguir **Enviado ao serviço de e-mail** de **Aceito pelo servidor de e-mail do destinatário**. **Falhou** abrange devoluções de e-mail, denúncias de spam, e-mails rejeitados e envios não realizados que foram registrados; os detalhes expandidos mostram o motivo. Envios pendentes e atrasos informados têm um status neutro. **Nenhuma entrega de e-mail registrada** significa que não há registro de entrega de e-mail para aquele envio; os registros mais antigos não identificam por que um e-mail deixou de ser enviado. **Re-enviar convite** envia o convite sem uma mensagem personalizada.
 
-Se um endereço de e-mail tiver uma devolução permanente ou uma denúncia de spam registrada, o Loomio para de enviar e-mails para esse endereço. Entrar com uma senha, um código por e-mail ou um link por e-mail remove esse bloqueio do Loomio para o endereço atual da pessoa; um administrador da instância também pode removê-lo. O serviço de e-mail pode ter um bloqueio separado que seu administrador precisa resolver.
+Se um endereço de e-mail tiver uma devolução permanente ou uma denúncia de spam registrada, o Loomio para de enviar e-mails para esse endereço. Um aviso no topo do histórico de entrega de convites indica quando o Loomio está bloqueando o endereço da pessoa. Entrar com uma senha, um código por e-mail ou um link por e-mail remove esse bloqueio do Loomio para o endereço atual da pessoa; um administrador da instância também pode removê-lo. O serviço de e-mail pode ter um bloqueio separado que seu administrador precisa resolver.
 
 <!-- translation-section: re-send-invitations -->
 

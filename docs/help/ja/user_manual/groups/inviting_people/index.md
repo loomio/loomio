@@ -1,10 +1,10 @@
 ---
 title: メンバーを招待する
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: d0472b30afa3ea26
   send-invitations-via-email: 060c3642105461e9
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 6fdff47a1de2fe7e
   re-send-invitations: 72c721832ea9504b
   cancelling-invitations: b73b9af2ad261323
-  invitation-notification-history: b7a4a06510169649
+  invitation-notification-history: 306ee3d4f2122da9
 title_source: b926eb8921d85971
 title_generated: 8443acb671cc4a96
 ---
@@ -136,7 +136,7 @@ title_generated: 8443acb671cc4a96
 
 **配信済み**のチップは、送信が完了し、その後の配信失敗が記録されていないことを示します。メールが受信者の受信トレイに届いたことを確認するものではありません。招待を展開すると、**メールサービスに送信を依頼しました**と**受信側のメールサーバーが受け付けました**を区別できます。**配信失敗**には、報告されたバウンス、迷惑メールの苦情、受信拒否、送信のスキップが含まれます。展開した詳細に理由が表示されます。送信待ちや遅延が報告された場合は、成功や失敗を示さない中立的なステータスになります。**メール配信の記録はありません**は、その送信のメール配信記録がないことを示します。古い記録では、メールの送信がスキップされた理由は確認できません。**招待状を再送信する**では、個別のメッセージを付けずに送信します。
 
-メールアドレスに恒久的な配信エラーや迷惑メールの苦情が記録されている場合、Loomioはそのアドレスへのメール送信を停止します。パスワード、メールで届くコード、またはメール内のリンクでサインインすると、その人の現在のメールアドレスに対するLoomioの送信制限が解除されます。インスタンス管理者も解除できます。メールサービス側で別途送信が制限されている場合は、そのサービスの管理者による対応が必要です。
+メールアドレスに恒久的な配信エラーや迷惑メールの苦情が記録されている場合、Loomioはそのアドレスへのメール送信を停止します。Loomioが現在その人のメールアドレスへの送信を制限している場合は、招待の配信履歴の上部に通知が表示されます。パスワード、メールで届くコード、またはメール内のリンクでサインインすると、その人の現在のメールアドレスに対するLoomioの送信制限が解除されます。インスタンス管理者も解除できます。メールサービス側で別途送信が制限されている場合は、そのサービスの管理者による対応が必要です。
 
 <!-- translation-section: re-send-invitations -->
 

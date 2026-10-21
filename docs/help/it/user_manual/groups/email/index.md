@@ -1,16 +1,16 @@
 ---
 title: Indirizzo email
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: c63f28ccc607c79a
-  preventing-unauthorized-emails: af0dc64fcbecc7cf
+  preventing-unauthorized-emails: edb6fe5ad781dd5c
 title_source: f2488fd4ef4adbc6
 title_generated: 5df4aa5fa0b18311
 ---
@@ -38,6 +38,6 @@ Se usi più indirizzi email, puoi aggiungere un alias per far conoscere a Loomio
 
 Quando l'indirizzo nel campo "Da" non corrisponde a quello di un membro del gruppo, ricevi una notifica che ti chiede di aggiungere un alias o rifiutare tutte le email successive provenienti da quell'indirizzo.
 
-Questo significa che la prima volta che invii un'email da un indirizzo non riconosciuto, devi aggiungere un alias. Da quel momento, le email vengono accettate immediatamente.
+Questo significa che la prima volta che invii un'email da un indirizzo non riconosciuto, devi aggiungere un alias. Da quel momento, le email vengono accettate immediatamente. I messaggi in attesa di revisione conservano il contenuto originale e gli allegati finché un coordinatore non interviene, anche durante la pulizia periodica delle email.
 
 ![Posizione dei pulsanti per approvare o rifiutare un'email non riconosciuta](email_unreleased_emails.png)

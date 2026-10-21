@@ -1,16 +1,16 @@
 ---
 title: E-mailadres
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: bd14ce359d0ef8b2
-  preventing-unauthorized-emails: b46f58727646b373
+  preventing-unauthorized-emails: 7895c4d05e68f923
 title_source: f2488fd4ef4adbc6
 title_generated: ca351133d550c4ae
 ---
@@ -38,6 +38,6 @@ Als je meerdere e-mailadressen gebruikt, kun je een alias toevoegen zodat Loomio
 
 Als het afzenderadres niet overeenkomt met het e-mailadres van een lid van de groep, ontvang je een melding met het verzoek om een alias toe te voegen of alle verdere e-mails van dat adres te weigeren.
 
-Dit betekent dat je een alias moet toevoegen wanneer je voor het eerst een e-mail vanaf een onbekend adres stuurt. Daarna worden e-mails direct geaccepteerd.
+Dit betekent dat je een alias moet toevoegen wanneer je voor het eerst een e-mail vanaf een onbekend adres stuurt. Daarna worden e-mails direct geaccepteerd. Berichten die op beoordeling wachten, behouden hun oorspronkelijke inhoud en bijlagen totdat een coördinator ze behandelt, ook wanneer e-mails routinematig worden opgeschoond.
 
 ![Locatie van de knoppen om een e-mail van een onbekend adres goed te keuren of te weigeren](email_unreleased_emails.png)

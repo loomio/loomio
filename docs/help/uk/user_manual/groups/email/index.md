@@ -1,16 +1,16 @@
 ---
 title: Адреса електронної пошти
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: a05edfbe6dc53144
-  preventing-unauthorized-emails: e1062e8da4146f7d
+  preventing-unauthorized-emails: 48c7cd3d9dfe5ac0
 title_source: f2488fd4ef4adbc6
 title_generated: ef603565033e32ac
 ---
@@ -38,6 +38,6 @@ title_generated: ef603565033e32ac
 
 Якщо адреса в полі «Від» не збігається з адресою жодного учасника групи, ви отримаєте сповіщення з пропозицією додати цю адресу як додаткову або відхиляти всі подальші листи з неї.
 
-Це означає, що коли ви вперше надішлете лист із нерозпізнаної адреси, вам потрібно буде додати її як додаткову. Після цього листи прийматимуться одразу.
+Це означає, що коли ви вперше надішлете лист із нерозпізнаної адреси, вам потрібно буде додати її як додаткову. Після цього листи прийматимуться одразу. Листи, що очікують на розгляд, зберігають початковий вміст і вкладення, доки координатор не виконає щодо них дію, зокрема й під час регулярного очищення електронної пошти.
 
 ![Розташування кнопок схвалення та відхилення нерозпізнаного листа](email_unreleased_emails.png)

@@ -1,10 +1,10 @@
 ---
 title: הזמנת אנשים
-source_revision: 982d8bc596883b63c3969d05c296aeae7551d7a8
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-21'
+  'on': '2026-10-22'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: e4f86215e7c937ea
+  invitation-notification-history: 22df89436fb592b9
 generated:
   introduction: ff26ac83dc53bb33
   send-invitations-via-email: 97a63f6ec0ac8310
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 4a03013bfa17a719
   re-send-invitations: 628d8fbb06d16308
   cancelling-invitations: de0e90559068982a
-  invitation-notification-history: f2c62edaace20212
+  invitation-notification-history: fe9fd0a61a8ca2e8
 title_source: b926eb8921d85971
 title_generated: 1a6369a35ea0bd09
 ---
@@ -136,7 +136,7 @@ title_generated: 1a6369a35ea0bd09
 
 התווית **נמסרה** מציינת שהשליחה הושלמה בלי שתועד כשל לאחר מכן; היא אינה מאשרת שהאימייל הגיע לדואר הנכנס של הנמען. יש להרחיב את ההזמנה כדי להבחין בין **הועבר לשירות האימייל** לבין **התקבל בשרת האימייל של הנמען**. המצב **נכשלה** כולל דיווחים על החזרת אימייל, תלונות על דואר זבל, הודעות אימייל שנדחו ושליחות שדולגו; הפרטים המורחבים מציגים את הסיבה. לשליחות ממתינות ולעיכובים שדווחו יש מצב ניטרלי. **לא נרשמה מסירת אימייל** מציין שאין רשומת מסירת אימייל עבור אותה שליחה; ברשומות ישנות אין מידע על הסיבה לדילוג על שליחת האימייל. האפשרות **שלח הזמנה שוב** שולחת הזמנה ללא הודעה מותאמת אישית.
 
-אם תועדה עבור כתובת אימייל החזרה קבועה או תלונה על דואר זבל, Loomio מפסיק לשלוח אימייל לכתובת זו. כניסה באמצעות סיסמה, קוד באימייל או קישור באימייל מסירה את החסימה הזו ב-Loomio עבור כתובת האימייל הנוכחית של החשבון; ניתן להסיר אותה גם באמצעות מנהל המופע. ייתכן שבשירות האימייל קיימת חסימה נפרדת, שיש להסיר באמצעות מנהל השירות.
+אם תועדה עבור כתובת אימייל החזרה קבועה או תלונה על דואר זבל, Loomio מפסיק לשלוח אימייל לכתובת זו. הודעה בראש היסטוריית מסירת ההזמנות מציינת אם Loomio חוסם כעת את כתובת האימייל של החשבון. כניסה באמצעות סיסמה, קוד באימייל או קישור באימייל מסירה את החסימה הזו ב-Loomio עבור כתובת האימייל הנוכחית של החשבון; ניתן להסיר אותה גם באמצעות מנהל המופע. ייתכן שבשירות האימייל קיימת חסימה נפרדת, שיש להסיר באמצעות מנהל השירות.
 
 <!-- translation-section: re-send-invitations -->
 

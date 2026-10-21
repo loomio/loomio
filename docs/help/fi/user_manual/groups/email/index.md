@@ -1,16 +1,16 @@
 ---
 title: Sähköpostiosoite
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: 5f7c8adfae17c07f
-  preventing-unauthorized-emails: 7d32dd121b82a3c9
+  preventing-unauthorized-emails: 17e7035afc5954d3
 title_source: f2488fd4ef4adbc6
 title_generated: c326de2e675782c3
 ---
@@ -38,6 +38,6 @@ Jos käytät useita sähköpostiosoitteita, voit lisätä rinnakkaisosoitteen, j
 
 Jos lähettäjän osoite ei vastaa yhdenkään ryhmän jäsenen sähköpostiosoitetta, saat ilmoituksen, jossa sinua pyydetään lisäämään rinnakkaisosoite tai hylkäämään kaikki tästä osoitteesta jatkossa saapuvat sähköpostit.
 
-Kun lähetät ensimmäisen kerran sähköpostia osoitteesta, jota Loomio ei tunnista, sinun on siis lisättävä rinnakkaisosoite. Sen jälkeen sähköpostit hyväksytään heti.
+Kun lähetät ensimmäisen kerran sähköpostia osoitteesta, jota Loomio ei tunnista, sinun on siis lisättävä rinnakkaisosoite. Sen jälkeen sähköpostit hyväksytään heti. Tarkistusta odottavien viestien alkuperäinen sisältö ja liitteet säilyvät, kunnes koordinaattori käsittelee viestit, myös sähköpostien säännöllisen siivouksen yhteydessä.
 
 ![Tunnistamattomasta osoitteesta saapuneen sähköpostin hyväksymis- ja hylkäyspainikkeiden sijainti](email_unreleased_emails.png)

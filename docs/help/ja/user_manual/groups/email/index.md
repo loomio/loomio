@@ -1,16 +1,16 @@
 ---
 title: メールアドレス
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/email/index.md
+source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  preventing-unauthorized-emails: f21e1ba5d395be40
 generated:
   introduction: e56d399e9da2d469
-  preventing-unauthorized-emails: 7a2516a77602db79
+  preventing-unauthorized-emails: 6fc926292513058a
 title_source: f2488fd4ef4adbc6
 title_generated: dd4433300c45394f
 ---
@@ -38,6 +38,6 @@ Loomioのグループにはメールアドレスがあります。このアド�
 
 差出人（From）アドレスがグループのメンバーのメールアドレスと一致しない場合は、エイリアスを追加するか、そのアドレスからの今後のメールをすべて拒否するよう求める通知が届きます。
 
-そのため、認識されていないアドレスから初めてメールを送信する際は、エイリアスを追加する必要があります。その後は、メールがすぐに受け付けられます。
+そのため、認識されていないアドレスから初めてメールを送信する際は、エイリアスを追加する必要があります。その後は、メールがすぐに受け付けられます。確認待ちのメールは、定期的なメールのクリーンアップが実行されても、コーディネーターが対応するまで元の内容と添付ファイルが保持されます。
 
 ![認識されていないメールの承認ボタンと拒否ボタンの位置](email_unreleased_emails.png)
