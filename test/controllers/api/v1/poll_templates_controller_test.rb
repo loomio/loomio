@@ -105,6 +105,23 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
+  test "customizing a built-in template hides the original for the group" do
+    @group.update!(hidden_poll_templates: [])
+    sign_in @admin
+
+    assert_difference 'PollTemplate.count', 1 do
+      post :create, params: { poll_template: {
+        group_id: @group.id, key: 'consent', poll_type: 'proposal',
+        process_name: 'Our consent process', process_subtitle: 'Customized process',
+        default_duration_in_days: 3
+      } }
+    end
+
+    assert_response :success
+    assert_nil PollTemplate.last.key
+    assert_equal ['consent'], @group.reload.hidden_poll_templates
+  end
+
   test "create saves STV settings in a poll template" do
     sign_in @admin
 
