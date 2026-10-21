@@ -32,7 +32,7 @@ See [Finding content](/en/user_manual/overview/finding-content) for help with se
 
 ## Sidebar
 
-Open the sidebar with the menu button (**☰**) at the top left.
+Open the sidebar with the menu button (**☰**) at the top left on desktop, or in the bottom navigation bar on mobile.
 
 ![](sidebar.png)
 
@@ -52,11 +52,21 @@ Use this menu to edit your profile, change notification settings, choose a theme
 
 ## Notifications
 
-The bell button at the top right opens your in-app notifications. A badge appears when you have notifications you have not viewed.
+The bell button at the top right on desktop, or in the bottom navigation bar on mobile, opens your in-app notifications. A badge appears when you have notifications you have not viewed.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 See [Notifications](/en/user_manual/users/email_settings) to learn about in-app notifications, email preferences, and notification settings for groups and discussions.
+
+<!-- translation-section: mobile-navigation -->
+
+## Mobile navigation and loading
+
+The icons in the bottom navigation bar open the sidebar, dashboard, and notifications. While reading a thread, it also has a thread menu button for the contents and thread actions. Search is available from the dashboard. The title bar shows the page title when its heading scrolls out of view.
+
+Loomio shows content already held in the current session while checking for updates. A loading indicator at the top right of the title bar shows when data is being fetched. The dashboard, polls awaiting your vote, and notifications load in the background after startup; fetching notifications does not mark them as viewed.
+
+Threads open at the start. Select **Latest** to jump to the newest activity. Links to a specific comment or poll still open that item.
 
 <!-- translation-section: what-to-do-next -->
 

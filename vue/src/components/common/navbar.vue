@@ -7,11 +7,13 @@ import Session             from '@/shared/services/session';
 import FormatDate from '@/mixins/format_date';
 import SidebarTips from '@/components/sidebar/tips';
 import { mergeProps } from 'vue'
+import { loading } from '@/shared/services/loading_state';
 
 import { last }            from 'lodash-es';
 
 export default {
   components: { SidebarTips },
+  setup() { return { loading }; },
   mixins: [ AuthModalMixin, FormatDate ],
   data() {
     return {
@@ -115,23 +117,33 @@ v-app-bar.lmo-no-print(
   :class="{'navbar--scrolled': appBarScrolled}"
   :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
 )
-  v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
+  v-app-bar-nav-icon.navbar__sidenav-toggle(v-if='isLoggedIn && $vuetify.display.mdAndUp' @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
   v-app-bar-title(@click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
-    sidebar-tips(v-if="!user.experiences.hideOnboarding")
+    sidebar-tips(v-if="$vuetify.display.mdAndUp && !user.experiences.hideOnboarding")
     v-btn.navbar__search(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications(v-if="$vuetify.display.mdAndUp")
-    v-btn(v-if="page === 'topicPage' && !$vuetify.display.mdAndUp" icon @click="toggleTopicNav()" :title="$t('navbar.thread_nav')")
-      common-icon(name="mdi-menu-open")
   template(v-else)
     v-btn.navbar__sign-in(variant="text" @click='signIn()')
       span(v-t="'auth_form.sign_in'")
+    v-btn(v-if="page === 'topicPage' && $vuetify.display.smAndDown" icon @click="toggleTopicNav()" :aria-label="$t('navbar.thread_nav')")
+      common-icon(name="mdi-menu-open")
+  .navbar__loading-slot(v-if="loading")
+    v-progress-circular(indeterminate :size="20" :width="2" :aria-label="$t('common.action.loading')")
 </template>
 
 <style>
+.navbar__loading-slot {
+  width: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .v-app-bar.navbar--scrolled {
   background-color: rgb(var(--v-theme-appbar-scrolled)) !important;
   color: rgb(var(--v-theme-on-appbar-scrolled)) !important;

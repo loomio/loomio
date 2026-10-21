@@ -13,6 +13,7 @@ import { useTheme } from 'vuetify';
 
 import SidebarPanel from '@/components/sidebar/panel';
 import MobileNavigation from '@/components/common/mobile_navigation';
+import { prefetchNavigation } from '@/shared/services/navigation_data';
 
 const themeNameNormalized = (name) => ['dark', 'darkBlue'].includes(name) ? 'dark' : 'light';
 const themeColorsApply = (theme, name, overrides) => {
@@ -71,10 +72,12 @@ export default {
 
   mounted() {
     if (Session.isSignedIn()) { initLiveUpdate(); }
+    // Let the initial page mount before warming the other navigation views.
+    setTimeout(prefetchNavigation, 0);
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
-    EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); });
+    EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); prefetchNavigation(); });
     Flash.fromServer(AppConfig.flash);
   },
 

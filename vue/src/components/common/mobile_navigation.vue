@@ -2,80 +2,62 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useDisplay } from 'vuetify';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 import EventBus from '@/shared/services/event_bus';
-import RecordLoader from '@/shared/services/record_loader';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const display = useDisplay();
 const route = useRoute();
+const { t } = useI18n();
 const { watchRecords } = useWatchRecords();
 
 const signedIn = ref(Session.isSignedIn());
 const unreadNotifications = ref(0);
-const pollsToVoteOn = ref(0);
-let fetched = false;
+const sidebarOpen = ref(false);
+const page = ref(null);
 
 const visible = computed(() => display.smAndDown.value && signedIn.value);
 const activeItem = computed(() => {
-  if (route.path === '/dashboard/polls_to_vote_on') return 'votes';
   if (route.path === '/notifications') return 'notifications';
-  if (route.path.startsWith('/dashboard')) return 'threads';
+  if (route.path.startsWith('/dashboard')) return 'dashboard';
   return undefined;
 });
 
 function updateCounts() {
   unreadNotifications.value = Records.notifications.find({viewed: {$ne: true}}).length;
-  const groupIds = Session.user().groupIds();
-  const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
-  const polls = Records.polls.collection.chain()
-    .find({discardedAt: null, closingAt: {$ne: null}, closedAt: null})
-    .find({$or: [
-      {groupId: {$in: groupIds}},
-      {id: {$in: pollIds}},
-      {authorId: Session.user().id}
-    ]})
-    .data();
-  pollsToVoteOn.value = polls
-    .filter(poll => poll.iCanVote() && !poll.iHaveVoted()).length;
-}
-
-function fetchData() {
-  if (fetched || !Session.isSignedIn()) return;
-  fetched = true;
-  Records.notifications.fetchNotifications();
-  Records.stances.fetch({path: 'my_stances'});
-  new RecordLoader({
-    collection: 'polls',
-    params: {exclude_types: 'group reaction', status: 'recent'}
-  }).fetchRecords();
 }
 
 function handleSignedIn() {
   signedIn.value = true;
-  fetchData();
 }
 
+function handleSidebarOpen(open) { sidebarOpen.value = open; }
+function handlePage(data) { page.value = data.page; }
+
 function refreshNotifications() {
-  if (Session.isSignedIn()) Records.notifications.fetchNotifications();
+  if (Session.isSignedIn()) Records.notifications.fetchNotifications().catch(() => {});
 }
 
 watchRecords({
   key: 'mobile-navigation',
-  collections: ['memberships', 'notifications', 'polls', 'stances'],
+  collections: ['notifications'],
   query: updateCounts
 });
 
 onMounted(() => {
-  fetchData();
   EventBus.$on('signedIn', handleSignedIn);
+  EventBus.$on('sidebarOpen', handleSidebarOpen);
+  EventBus.$on('currentComponent', handlePage);
   window.addEventListener('loomio:native-notification', refreshNotifications);
 });
 
 onUnmounted(() => {
   EventBus.$off('signedIn', handleSignedIn);
+  EventBus.$off('sidebarOpen', handleSidebarOpen);
+  EventBus.$off('currentComponent', handlePage);
   window.removeEventListener('loomio:native-notification', refreshNotifications);
 });
 </script>
@@ -85,33 +67,36 @@ v-bottom-navigation.mobile-navigation.lmo-no-print(
   v-if="visible"
   :model-value="activeItem"
   grow
-  density="compact"
   color="primary"
   bg-color="surface"
 )
-  v-btn(value="threads" to="/dashboard" :aria-label="$t('common.threads')")
-    common-icon(name="mdi-forum-outline")
-    span(v-t="'common.threads'")
+  v-btn(value="sidebar" :active="sidebarOpen" @click="EventBus.$emit('toggleSidebar')" :aria-expanded="sidebarOpen" :aria-label="t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
+    common-icon(name="mdi-menu")
 
-  v-btn(value="votes" to="/dashboard/polls_to_vote_on" :aria-label="$t('poll_common.votes')")
-    v-badge(color="primary" :content="pollsToVoteOn" v-if="pollsToVoteOn")
-      common-icon(name="mdi-checkbox-marked-circle-outline")
-    common-icon(v-else name="mdi-checkbox-marked-circle-outline")
-    span(v-t="'poll_common.votes'")
+  v-btn(value="dashboard" to="/dashboard" :aria-label="t('dashboard_page.dashboard')")
+    common-icon(name="mdi-view-dashboard-outline")
 
-  v-btn(value="notifications" to="/notifications" :aria-label="$t('notifications.header')")
+  v-btn(value="notifications" to="/notifications" :aria-label="t('notifications.header')")
     v-badge(color="primary" :content="unreadNotifications" v-if="unreadNotifications")
       common-icon(name="mdi-bell-outline")
     common-icon(v-else name="mdi-bell-outline")
-    span(v-t="'notifications.header'")
+
+  v-btn(v-if="page === 'topicPage'" value="contents" @click="EventBus.$emit('toggleTopicNav')" :aria-label="t('navbar.thread_nav')")
+    common-icon(name="mdi-menu-open")
 </template>
 
 <style>
 .mobile-navigation {
   padding-bottom: min(env(safe-area-inset-bottom), 16px);
+  /* Navigation taps do not need the browser's double-tap zoom delay. */
+  touch-action: manipulation;
 }
 
 .mobile-navigation .v-icon {
   font-size: 1.875rem;
+}
+
+.mobile-navigation .v-bottom-navigation__content > .v-btn {
+  padding: 8px 16px;
 }
 </style>
