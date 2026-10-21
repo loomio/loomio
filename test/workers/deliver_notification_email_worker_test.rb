@@ -36,17 +36,74 @@ class DeliverNotificationEmailWorkerTest < ActiveSupport::TestCase
     def transport.deliver!(message)
       @response = Net::SMTP::Response.parse("250 Ok ses-assigned-message-id\r\n")
     end
-    NotificationSmtpDelivery.stub(:new, transport) do
-      mail = NotificationMailer.notification(@delivery.id).message
-      mail.delivery_method(:smtp, address: 'email-smtp.us-east-1.amazonaws.com')
-      delivery = Object.new
-      delivery.define_singleton_method(:message) { mail }
-      delivery.define_singleton_method(:deliver_now) { mail.deliver }
-      NotificationMailer.stub(:notification, delivery) do
-        DeliverNotificationEmailWorker.perform_now(@delivery.id)
-      end
-    end
+    using_smtp(transport) { DeliverNotificationEmailWorker.perform_now(@delivery.id) }
+
     assert_equal 'ses-assigned-message-id', @delivery.reload.provider_message_id
     refute_equal @delivery.email_message_id, @delivery.provider_message_id
+  end
+
+  test 'a delayed SMTP attempt keeps its message ID when the worker retries' do
+    transport = NotificationSmtpDelivery.new(address: 'email-smtp.us-east-1.amazonaws.com')
+    message_ids = []
+    transport.define_singleton_method(:deliver!) do |message|
+      message_ids << message.message_id
+      raise Net::SMTPServerBusy, '451 Try again later' if message_ids.length == 1
+
+      @response = Net::SMTP::Response.parse("250 Ok retry-provider-id\r\n")
+    end
+
+    using_smtp(transport) do
+      assert_raises(Net::SMTPServerBusy) { DeliverNotificationEmailWorker.new.perform(@delivery.id) }
+      assert_nil @delivery.reload.delivered_at
+      assert_equal 'delayed', @delivery.events.sole.kind
+      assert_includes @delivery.events.sole.detail, '451 Try again later'
+      DeliverNotificationEmailWorker.new.perform(@delivery.id)
+    end
+
+    assert_equal [@delivery.reload.email_message_id] * 2, message_ids
+    assert @delivery.delivered_at.present?
+    assert_equal 'retry-provider-id', @delivery.provider_message_id
+    assert_equal %w[delayed sent], @delivery.events.order(:id).pluck(:kind)
+  end
+
+  test 'an SMTP rejection records the actual error and remains available to retry' do
+    transport = NotificationSmtpDelivery.new(address: 'smtp.example.test')
+    transport.define_singleton_method(:deliver!) { |_| raise Net::SMTPFatalError, '554 Message rejected' }
+
+    using_smtp(transport) do
+      assert_raises(Net::SMTPFatalError) { DeliverNotificationEmailWorker.new.perform(@delivery.id) }
+    end
+
+    assert_nil @delivery.reload.delivered_at
+    assert @delivery.email_message_id.present?
+    assert_equal 'rejected', @delivery.events.sole.kind
+    assert_includes @delivery.events.sole.detail, '554 Message rejected'
+  end
+
+  test 'completion cannot restore identifiers when redaction happens during SMTP' do
+    transport = NotificationSmtpDelivery.new(address: 'email-smtp.us-east-1.amazonaws.com')
+    recipient = @recipient
+    transport.define_singleton_method(:deliver!) do |_message|
+      RedactUserWorker.perform_now(recipient.id, recipient.id, false)
+      @response = Net::SMTP::Response.parse("250 Ok private-provider-id\r\n")
+    end
+
+    using_smtp(transport) { DeliverNotificationEmailWorker.new.perform(@delivery.id) }
+
+    assert_nil @recipient.reload.email
+    assert_nil @delivery.reload.email_subject
+    assert_nil @delivery.email_message_id
+    assert_nil @delivery.provider_message_id
+    assert_empty @delivery.events
+  end
+
+  private
+
+  def using_smtp(transport)
+    NotificationMailer.stub(:delivery_method, :smtp) do
+      NotificationMailer.stub(:smtp_settings, transport.settings) do
+        NotificationSmtpDelivery.stub(:new, transport) { yield }
+      end
+    end
   end
 end

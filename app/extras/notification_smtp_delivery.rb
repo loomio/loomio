@@ -11,4 +11,10 @@ class NotificationSmtpDelivery < Mail::SMTP
   def deliver!(mail)
     @response = super
   end
+
+  def provider_message_id
+    return unless settings.fetch(:address).match?(/\Aemail-smtp\.[a-z0-9-]+\.amazonaws\.com\z/)
+
+    response.string.match(/\A250 Ok ([a-zA-Z0-9-]+)\s*\z/)&.[](1)
+  end
 end
