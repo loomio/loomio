@@ -34,11 +34,14 @@ class MentionNotificationService
     end
 
     recipient_ids = mentioned_users.map(&:id)
-    reply_recipient_id = if mentionable.is_a?(Comment) && mentionable.parent&.author_id.in?(recipient_ids)
+    # A self-mention remains an ordinary mention when replying to your own content.
+    reply_recipient_id = if mentionable.is_a?(Comment) &&
+                            mentionable.parent&.author_id.in?(recipient_ids) &&
+                            mentionable.parent.author_id != actor.id
       mentionable.parent.author_id
     end
 
-    if reply_recipient_id && reply_recipient_id != actor.id
+    if reply_recipient_id
       notifications << create_user_notification!(
         kind: "comment_replied_to",
         subject: notification_subject,
