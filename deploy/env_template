@@ -84,6 +84,9 @@ USE_RACK_ATTACK=1
 RACK_ATTACK_RATE_MULTPLIER=1
 RACK_ATTACK_TIME_MULTPLIER=1
 
+# Optional override for the shared link-preview request limit per hour (default: 100).
+# THROTTLE_MAX_LINK_PREVIEWS_GLOBAL=100
+
 # Postgres
 POSTGRES_PASSWORD=REPLACE_WITH_POSTGRES_PASSWORD
 POSTGRES_DB=loomio_production
