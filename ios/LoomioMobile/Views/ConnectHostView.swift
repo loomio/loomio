@@ -4,21 +4,35 @@ struct ConnectHostView: View {
     @EnvironmentObject private var connectionStore: ConnectionStore
     @State private var hostAddress = ""
     @State private var errorMessage: String?
-    @FocusState private var addressFocused: Bool
+
+    private let defaultHosts = [
+        (name: "loomio.com", address: "https://www.loomio.com"),
+        (name: "loomio.eu", address: "https://loomio.eu"),
+        (name: "loomio.nz", address: "https://loomio.nz")
+    ]
 
     var body: some View {
         NavigationStack {
             Form {
+                Section("Loomio servers") {
+                    ForEach(defaultHosts, id: \.name) { host in
+                        Button(host.name) {
+                            hostAddress = host.address
+                            connect()
+                        }
+                        .accessibilityIdentifier("hostPreset-\(host.name)")
+                    }
+                }
+
                 Section {
                     TextField("https://community.example.org", text: $hostAddress)
                         .textContentType(.URL)
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
-                        .focused($addressFocused)
                         .accessibilityIdentifier("hostAddress")
                 } header: {
-                    Text("Loomio host")
+                    Text("Another Loomio host")
                 } footer: {
                     Text("Connect to the secure address supplied by your Loomio administrator.")
                 }
@@ -44,7 +58,6 @@ struct ConnectHostView: View {
 #endif
             }
             .navigationTitle("Connect to Loomio")
-            .onAppear { addressFocused = true }
         }
     }
 
@@ -105,7 +118,7 @@ struct ConnectionProposalView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Loomio Mobile")
+            .navigationTitle("Loomio")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { connectionStore.cancelConnectionProposal() }
