@@ -173,7 +173,6 @@ module GroupService
     end
 
     Sentry.metrics.count("group.update")
-    EventBus.broadcast('group_update', group, params, actor)
     group
   end
 
@@ -233,7 +232,6 @@ module GroupService
       end
     end
     group.update(parent: parent, subscription_id: nil)
-    EventBus.broadcast('group_move', group, parent, actor)
   end
 
   def self.export(group: , actor: )

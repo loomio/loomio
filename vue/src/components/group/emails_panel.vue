@@ -25,10 +25,10 @@ export default
       this.fetchAliases();
 
       this.watchRecords({
-        key: "receivedEmails#{group.id}",
-        collections: ['receivedEmails'],
+        key: "pendingEmails#{group.id}",
+        collections: ['pendingEmails'],
         query: store => {
-          this.emails = store.receivedEmails.find({groupId: this.group.id, released: false})
+          this.emails = store.pendingEmails.find({groupId: this.group.id, released: false})
         }
       });
     }).catch(() => {
@@ -38,13 +38,13 @@ export default
 
   methods: {
     fetchAliases() {
-      Records.fetch({path: 'received_emails/aliases', params: {group_id: this.group.id}}).then(data => {
+      Records.fetch({path: 'pending_emails/aliases', params: {group_id: this.group.id}}).then(data => {
         this.aliases = data.aliases
       })
     },
 
     fetchEmails() {
-      Records.fetch({path: 'received_emails', params: {group_id: this.group.id }})
+      Records.fetch({path: 'pending_emails', params: {group_id: this.group.id }})
     },
 
     userById(id) {
@@ -55,7 +55,7 @@ export default
       EventBus.$emit('openModal', {
         component: 'MemberEmailAliasModal',
         props: {
-          receivedEmail: email,
+          pendingEmail: email,
           group: this.group,
           callbackFn: () => {
             this.fetchAliases();
@@ -70,7 +70,7 @@ export default
         props: {
           confirm: {
             submit: () => {
-              return Records.receivedEmails.remote.postMember(email.id, 'block').then(() => {
+              return Records.pendingEmails.remote.postMember(email.id, 'block').then(() => {
                 EventBus.$emit('closeModal');
                 Flash.success('email_to_group.email_blocked')
                 this.fetchAliases();
@@ -91,7 +91,7 @@ export default
     },
 
     destroyAlias(alias) {
-      Records.remote.destroy('received_emails/destroy_alias', {id: alias.id}).then(() => {
+      Records.remote.destroy('pending_emails/destroy_alias', {id: alias.id}).then(() => {
         this.fetchAliases();
         this.fetchEmails();
       })

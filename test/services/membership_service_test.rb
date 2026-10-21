@@ -217,7 +217,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
 
   test "resending an invitation still honors email complaints" do
     recipient = create_unverified_user("complained-resend")
-    recipient.update!(complaints_count: 1)
+    EmailSuppressionService.record!(email: recipient.email, reason: 'complaint', source_key: 'test:complaint')
     membership = pending_membership_for(recipient, @group)
 
     MembershipService.resend(membership: membership, actor: @admin)

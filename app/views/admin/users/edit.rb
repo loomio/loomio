@@ -15,8 +15,6 @@ class Views::Admin::Users::Edit < Views::Admin::Layout
       field(form, :name)
       field(form, :email, type: :email_field)
       field(form, :username)
-      field(form, :complaints_count, type: :number_field, min: 0)
-      field(form, :bounces_count, type: :number_field, min: 0)
       checkbox_field(form, :is_admin, label: "System admin")
       checkbox_field(form, :bot, label: "Bot account")
       form.submit("Save user", class: "admin-button")

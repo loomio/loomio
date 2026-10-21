@@ -4,6 +4,7 @@ require "rails/test_help"
 require "webmock/minitest"
 require "minitest/mock"
 require_relative "./reset_database_helper"
+require_relative "support/inbound_email_helper"
 require_relative "../db/migrate/support/retained_record_count_rebuild"
 
 # Minitest 6 parallelises by default (10 threads) which causes PG deadlocks
@@ -25,6 +26,7 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
     include ActiveJob::TestHelper
+    include InboundEmailHelper
 
     class_attribute :jobs_inline, default: false
     class_attribute :jobs_inline_names, default: []
@@ -120,8 +122,6 @@ module ActiveSupport
         to_return(status: 200)
       WebMock.stub_request(:post, /outlook.office.com/).
         to_return(status: 200)
-      WebMock.stub_request(:head, /www.gravatar.com/).
-        to_return(status: 200, body: "stubbed response", headers: {})
     end
 
     teardown do

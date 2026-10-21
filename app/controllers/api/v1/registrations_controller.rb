@@ -75,7 +75,6 @@ class Api::V1::RegistrationsController < ApplicationController
       signed_in_via_password: authentication_method == "password",
       authentication_redirect: authentication_return_path
     ).compact
-    EventBus.broadcast('session_create', user)
   rescue ActiveRecord::RecordInvalid
     render json: { errors: user.errors }, status: :unprocessable_entity
   end

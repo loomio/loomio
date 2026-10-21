@@ -3212,3 +3212,23 @@ sl:
     discussion: razprava
     outcome: sklep
     stance: glas
+  membership_notification_history:
+    invitation_delivery_history: Zgodovina dostave povabil
+    email_delivery_blocked: "Loomio je onemogočil dostavo e-pošte na ta naslov"
+    delivery_result:
+      delivered: Dostavljeno
+      failed: Neuspešno
+    could_not_load_history: Zgodovine obvestil ni bilo mogoče naložiti
+    no_invitations_recorded: Ni zabeleženih povabil
+    membership_created: Povabilo
+    membership_resent: Povabilo znova poslano
+    no_custom_message: Brez osebnega sporočila
+    pending: E-pošta čaka na pošiljanje
+    not_sent: Dostava e-pošte ni zabeležena
+    sent: Predano e-poštni storitvi
+    delivered: Prejemnikov poštni strežnik je sprejel sporočilo
+    delayed: Sporočena zamuda pri dostavi
+    rejected: E-pošta zavrnjena
+    bounced: Sporočena nedostavljivost
+    complained: Prijavljeno kot neželena pošta
+    skipped: E-pošta ni bila poslana

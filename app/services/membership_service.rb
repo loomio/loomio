@@ -77,7 +77,6 @@ class MembershipService
     )
 
     Sentry.metrics.count("membership.revoke")
-    EventBus.broadcast('membership_destroy', membership, actor)
   end
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now, preserve_cast_votes: false)
@@ -137,7 +136,6 @@ class MembershipService
 
     update_user_titles_and_broadcast(membership.id)
 
-    EventBus.broadcast 'membership_update', membership, params, actor
     membership
   end
 
@@ -224,7 +222,6 @@ class MembershipService
 
   def self.resend(membership:, actor:)
     actor.ability.authorize! :resend, membership
-    EventBus.broadcast 'membership_resend', membership, actor
     NotificationService.create!(
       kind: "membership_resent",
       subject: membership,
@@ -297,7 +294,6 @@ class MembershipService
     end
 
     Sentry.metrics.count("membership.join")
-    EventBus.broadcast('membership_join_group', group, actor)
     membership
   end
 
@@ -322,6 +318,5 @@ class MembershipService
   def self.save_experience(membership:, actor:, params:)
     actor.ability.authorize! :update, membership
     membership.experienced!(params[:experience])
-    EventBus.broadcast('membership_save_experience', membership, actor, params)
   end
 end

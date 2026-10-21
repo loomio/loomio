@@ -49,6 +49,7 @@ export default
     GroupInvitationForm: asyncComponent(() => import('@/components/group/invitation_form')),
     GroupShareableLinkForm: asyncComponent(() => import('@/components/group/shareable_link_form')),
     AnnouncementHistory: asyncComponent(() => import('@/components/common/announcement_history')),
+    MembershipNotificationHistory: asyncComponent(() => import('@/components/group/notification_history')),
     SearchModal: asyncComponent(() => import('@/components/search/modal')),
     UserNameModal: asyncComponent(() => import('@/components/group/user_name_modal')),
     RecordVideoModal: asyncComponent(() => import('@/components/lmo_textarea/record_video_modal')),

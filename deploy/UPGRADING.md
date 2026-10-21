@@ -15,6 +15,25 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Email delivery history and incoming email storage
+
+Before pulling the new image, leave the old worker running so queued `RouteReceivedEmailsWorker` and `DeleteOldReceivedEmailsWorker` jobs can finish. From the deployment directory, check how many remain:
+
+```sh
+docker compose exec app bin/rails runner \
+  'puts SolidQueue::Job.where(class_name: %w[RouteReceivedEmailsWorker DeleteOldReceivedEmailsWorker], finished_at: nil).count'
+```
+
+Repeat until the count is zero. If jobs have failed, resolve their errors and retry them through `/admin/jobs`. Pending sender approvals do not need to be cleared. Once the count is zero, stop the old processes:
+
+```sh
+docker compose stop app worker
+```
+
+Back up the database and Active Storage, then follow the upgrade commands above. Migrations `20261021000002` and `20261021000003` are irreversible, and rebuilding expired incoming email sources can upload data to storage. Upgrade web and job processes together.
+
+Existing bounce/complaint counters become address blocks, and pending sender approvals keep their IDs. Custom approval clients must change `/api/v1/received_emails` to `/api/v1/pending_emails` and the response root from `received_emails` to `pending_emails`.
+
 ## Retained record count repair
 
 After deploying the replacement for `custom_counter_cache`, enqueue a background repair of historical membership, content, read, reply and version counts:

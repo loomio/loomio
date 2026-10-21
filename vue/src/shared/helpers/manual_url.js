@@ -1,4 +1,4 @@
-import locales from '../../../../docs/locales.yml';
+import locales from '../../../../docs/help/locales.yml';
 
 const manualLocales = Object.fromEntries(Object.entries(locales)
   .filter(([, settings]) => settings.published)

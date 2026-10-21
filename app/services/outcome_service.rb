@@ -75,7 +75,6 @@ class OutcomeService
     end
 
     Sentry.metrics.count("outcome.create")
-    EventBus.broadcast 'outcome_create', outcome, actor
     on_topic_item&.call(topic_item)
     outcome
   end
@@ -125,7 +124,6 @@ class OutcomeService
     end
 
     Sentry.metrics.count("outcome.update")
-    EventBus.broadcast 'outcome_update', outcome, actor
     MessageChannelService.publish_topic_model(outcome)
     outcome
   end

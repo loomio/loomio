@@ -17,6 +17,39 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     @enforce_existing_terms_before.nil? ? ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS') : ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = @enforce_existing_terms_before
   end
 
+  test "only a completed successful local sign-in clears blocks for the current address" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = users(:user)
+    user.update!(password: 'Suppression-test-password')
+    record = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: 'test:current')
+    old = EmailSuppressionService.record!(email: 'old-address@example.com', reason: 'complaint', source_key: 'test:old')
+
+    post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+    assert_response :unauthorized
+    assert_nil record.reload.cleared_at
+
+    SesEmailSuppressionService.stub(:client, -> { raise 'sign-in must not depend on SES' }) do
+      assert_difference 'Session.count', 1 do
+        post :create, params: { user: { email: user.email, password: 'Suppression-test-password' } }
+      end
+    end
+    assert_response :success
+    assert_equal user.id, record.reload.cleared_by_id
+    assert_equal 'sign_in', record.clear_method
+    assert_nil old.reload.cleared_at
+  end
+
+  test "incomplete and deactivated accounts cannot clear email blocks by attempting sign-in" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    [User.create!(email: 'incomplete-blocked@example.com', email_verified: true), users(:orphan_deactivated_user)].each do |user|
+      token = LoginToken.create!(user: user)
+      record = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: "test:#{user.id}")
+      session[:pending_login_token] = token.token
+      post :create
+      assert_nil record.reload.cleared_at
+    end
+  end
+
   test "turnstile is not required when TURNSTILE_SECRET_KEY is unset" do
     ENV['TURNSTILE_SECRET_KEY'] = nil
     user = User.create!(email: "nocaptcha@example.com", email_verified: true, password: "s3curepassword123")

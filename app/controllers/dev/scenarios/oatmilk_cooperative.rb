@@ -624,7 +624,7 @@ module Dev::Scenarios::OatmilkCooperative
 
   def setup_manual_oatmilk_unreleased_email
     group, coordinator = create_manual_oatmilk_cooperative
-    ReceivedEmail.create!(
+    create_pending_email(
       group: group,
       headers: {
         to: "#{group.handle}@#{ENV.fetch('REPLY_HOSTNAME', 'localhost')}",

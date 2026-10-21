@@ -3242,3 +3242,23 @@ uk:
     discussion: обговорення
     outcome: висновок
     stance: голос
+  membership_notification_history:
+    invitation_delivery_history: Історія доставки запрошень
+    email_delivery_blocked: "Loomio заблокував доставку листів на цю адресу"
+    delivery_result:
+      delivered: Доставлено
+      failed: Не вдалося доставити
+    could_not_load_history: Не вдалося завантажити історію сповіщень
+    no_invitations_recorded: Немає записів про запрошення
+    membership_created: Запрошення
+    membership_resent: Запрошення надіслано повторно
+    no_custom_message: Без власного повідомлення
+    pending: Лист очікує надсилання
+    not_sent: Немає даних про доставку листа
+    sent: Передано поштовому сервісу
+    delivered: Прийнято поштовим сервером одержувача
+    delayed: Повідомлено про затримку доставки
+    rejected: Лист відхилено
+    bounced: Повідомлено про повернення листа
+    complained: Отримано скаргу на спам
+    skipped: Лист не надіслано

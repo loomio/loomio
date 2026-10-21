@@ -723,7 +723,6 @@ zh_CN:
       recommendation: 请在浏览器中打开 Loomio 并直接发布您的消息。
     comment_rejected:
       subject: 您的回复未发布。
-      reason: 您的回复未发布，因为它超过了主题帖的 %{count} 个字符限制。
       recommendation: 为避免出现更多问题，请打开帖子并直接输入您的消息。
       open_thread: 打开帖子
   poll_mailer:

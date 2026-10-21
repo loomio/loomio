@@ -213,7 +213,7 @@ class NotificationDeliveryRouter
     user_ids = Array(email_recipients).map(&:id)
     return [] if user_ids.empty?
 
-    User.no_spam_complaints.where(id: user_ids).reject { |user| ApplicationMailer.demo_email_blocked?(user.email) }
+    User.email_deliverable.where(id: user_ids).reject { |user| ApplicationMailer.demo_email_blocked?(user.email) }
   end
 
   # Expand each eligible user into one delivery recipient per active browser

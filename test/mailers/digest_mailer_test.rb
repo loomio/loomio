@@ -99,7 +99,7 @@ class DigestMailerTest < ActionMailer::TestCase
   test "digest renders an unknown sender notification" do
     @user.update!(email_catch_up_day: 7)
     @group.add_admin!(@user)
-    received_email = ReceivedEmail.create!(
+    received_email = create_pending_email(
       group: @group,
       headers: { "From" => "Unknown Sender <unknown@example.com>" }
     )

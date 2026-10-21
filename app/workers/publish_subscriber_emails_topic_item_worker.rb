@@ -10,7 +10,7 @@ class PublishSubscriberEmailsTopicItemWorker < ApplicationJob
          .where.not(id: topic_item.itemable.mentioned_users)
          .where.not(id: topic_item.itemable.mentioned_group_users)
          .active
-         .no_spam_complaints
+         .email_deliverable
          .distinct
          .pluck(:id)
          .each do |recipient_id|

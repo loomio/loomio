@@ -3212,3 +3212,23 @@ el:
     discussion: συζήτηση
     outcome: συμπέρασμα
     stance: ψήφος
+  membership_notification_history:
+    invitation_delivery_history: Ιστορικό παράδοσης προσκλήσεων
+    email_delivery_blocked: "Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση"
+    delivery_result:
+      delivered: Παραδόθηκε
+      failed: Απέτυχε
+    could_not_load_history: Δεν ήταν δυνατή η φόρτωση του ιστορικού ειδοποιήσεων
+    no_invitations_recorded: Δεν έχουν καταγραφεί προσκλήσεις
+    membership_created: Πρόσκληση
+    membership_resent: Η πρόσκληση στάλθηκε ξανά
+    no_custom_message: Χωρίς προσωπικό μήνυμα
+    pending: Εκκρεμεί η αποστολή email
+    not_sent: Δεν έχει καταγραφεί παράδοση email
+    sent: Υποβλήθηκε στην υπηρεσία email
+    delivered: Έγινε δεκτό από τον διακομιστή email του παραλήπτη
+    delayed: Αναφέρθηκε καθυστέρηση παράδοσης
+    rejected: Το email απορρίφθηκε
+    bounced: Αναφέρθηκε επιστροφή email
+    complained: Αναφέρθηκε ως ανεπιθύμητο
+    skipped: Το email δεν στάλθηκε

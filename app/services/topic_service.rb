@@ -227,14 +227,12 @@ class TopicService
     actor.ability.authorize! :dismiss, topic
     reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.dismiss!
-    EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
   def self.recall(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
     reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.recall!
-    EventBus.broadcast('discussion_recall', reader, actor)
   end
 
   def self.discard(topic:, actor:)
@@ -252,7 +250,6 @@ class TopicService
       topic.update_column(:active_polls_count, 0)
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
-    EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     topicable
   end
 

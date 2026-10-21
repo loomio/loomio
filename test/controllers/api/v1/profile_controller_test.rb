@@ -165,6 +165,32 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal({ 'provider' => 'OAUTH' }, JSON.parse(response.body).fetch('provider_picture'))
   end
 
+  test "Gravatar is enabled only by an explicit update to the current users profile" do
+    sign_in @user
+    assert_nil @user.thumb_url
+
+    post :update_profile, params: {id: @alien.id, user: {avatar_kind: 'gravatar'}}, format: :json
+
+    assert_response :success
+    assert_equal 'gravatar', @user.reload.avatar_kind
+    assert_equal 'initials', @alien.reload.avatar_kind
+    assert_match %r{\Ahttps://secure\.gravatar\.com/avatar/}, @user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
+
+    post :update_profile, params: {user: {avatar_kind: 'initials'}}, format: :json
+
+    assert_response :success
+    assert_equal 'initials', @user.reload.avatar_kind
+    assert_nil @user.thumb_url
+  end
+
+  test "Gravatar selection requires a signed in user" do
+    post :update_profile, params: {user: {avatar_kind: 'gravatar'}}, format: :json
+
+    assert_response :unauthorized
+    assert_equal 'initials', @user.reload.avatar_kind
+  end
+
   test "user can select an available provider picture" do
     @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
     sign_in @user

@@ -9,7 +9,7 @@ class HourlyTaskJob < ApplicationJob
     PublishClosingSoonWorker.perform_later
     OpenScheduledPollsWorker.perform_later
     SendTaskRemindersWorker.perform_later
-    RouteReceivedEmailsWorker.perform_later
+    RetryPendingEmailsWorker.perform_later
     LoginToken.where("created_at <= ?", LoginToken::EXPIRATION.minutes.ago).delete_all
     Identity.stale(days: 7).delete_all
     Bookmark.discarded.where("discarded_at < ?", 24.hours.ago).delete_all
@@ -25,9 +25,7 @@ class HourlyTaskJob < ApplicationJob
         CleanupOrphanRecordsWorker.perform_later
         CleanupService.warn_and_discard_expired_trial_groups
       end
-      EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
-      DeleteOldReceivedEmailsWorker.perform_later
     end
   end
 end

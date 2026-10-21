@@ -245,21 +245,17 @@ class ReactionServiceTest < ActiveSupport::TestCase
   test "an outer rollback publishes neither the reaction nor its updated notification" do
     reaction, notification = create_notified_reaction
     publications = []
-    events = []
 
     MessageChannelService.stub(:publish_models, ->(*args, **options) { publications << [ args, options ] }) do
-      EventBus.stub(:broadcast, ->(*args) { events << args }) do
-        Reaction.transaction(requires_new: true) do
-          ReactionService.update(reaction: reaction, params: { reaction: "👍" }, actor: @admin)
-          raise ActiveRecord::Rollback
-        end
+      Reaction.transaction(requires_new: true) do
+        ReactionService.update(reaction: reaction, params: { reaction: "👍" }, actor: @admin)
+        raise ActiveRecord::Rollback
       end
     end
 
     assert_equal "❤️", reaction.reload.reaction
     assert_equal "❤️", notification.reload.translation_values["reaction"]
     assert_empty publications
-    assert_empty events
   end
 
   test "rapid changes on a direct topic preserve its existing recipient rules" do

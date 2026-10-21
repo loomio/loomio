@@ -320,11 +320,6 @@ export default
                 v-chip(v-if="membership.user().bot" size="x-small" label)
                   span(v-t="'members_panel.bot'")
 
-              template(v-if="membership.user().complaintsCount || membership.user().bouncesCount")
-                space
-                v-chip(color="error" size="x-small" label :title="$t('members_panel.email_rejected_meaning')")
-                  span(v-t="'members_panel.email_rejected'")
-
               template(v-if="membership.groupId == group.id && membership.admin")
                 space
                 v-chip(variant="tonal" size="x-small" label)

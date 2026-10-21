@@ -696,7 +696,6 @@ fi:
       recommendation: Avaa Loomio selaimessasi ja lähetä viestisi suoraan.
     comment_rejected:
       subject: Vastaustasi ei julkaistu
-      reason: Vastaustasi ei lähetetty, koska se on pidempi kuin ketjun %{count} merkkiä.
       recommendation: Välttääksesi lisäongelmia, avaa ketju ja kirjoita viestisi suoraan
       open_thread: Avaa ketju
   locale_names:

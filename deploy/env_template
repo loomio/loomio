@@ -57,6 +57,17 @@ SMTP_PASSWORD=smtppassword
 SMTP_USE_SSL=1
 # to disable SSL, comment out line (rather than changing to 0)
 
+# Optional bounce/complaint feedback: configure your mail provider to forward
+# reports to Loomio. Requires passing DKIM results from a trusted inbound relay
+# (the bundled Haraka relay supplies these). Override sender addresses if needed:
+# BOUNCE_ADDRESS=bounce@email-abuse.amazonses.com
+# COMPLAINTS_ADDRESS=complaints@email-abuse.amazonses.com
+
+# Optional read-only SES account suppression check in the admin interface.
+# Set the sending region and give the web process ses:GetSuppressedDestination.
+# Uses the AWS SDK credential chain, not SMTP_USERNAME/SMTP_PASSWORD.
+# SES_SUPPRESSION_REGION=us-east-1
+
 # Number of webserver processes and threads. See https://github.com/puma/puma
 WEB_CONCURRENCY=auto
 MIN_THREADS=3
@@ -72,6 +83,9 @@ FORCE_SSL=1
 USE_RACK_ATTACK=1
 RACK_ATTACK_RATE_MULTPLIER=1
 RACK_ATTACK_TIME_MULTPLIER=1
+
+# Optional override for the shared link-preview request limit per hour (default: 100).
+# THROTTLE_MAX_LINK_PREVIEWS_GLOBAL=100
 
 # Postgres
 POSTGRES_PASSWORD=REPLACE_WITH_POSTGRES_PASSWORD

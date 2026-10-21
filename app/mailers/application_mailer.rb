@@ -49,6 +49,6 @@ class ApplicationMailer < ActionMailer::Base
     email = to.match(/<(.+)>/)&.[](1) || to
     return true if self.class.demo_email_blocked?(email)
 
-    User.where(email: email).where("complaints_count > 0 OR bounces_count > 0").exists?
+    EmailSuppression.for_address(email).active.exists?
   end
 end

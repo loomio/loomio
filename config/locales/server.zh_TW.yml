@@ -726,7 +726,6 @@ zh_TW:
       recommendation: 請在瀏覽器中開啟 Loomio 並直接發布您的訊息。
     comment_rejected:
       subject: 您的回覆未發布。
-      reason: 您的回覆未發布，因為它超過了主題貼文的 %{count} 個字元限制。
       recommendation: 為避免更多問題，請開啟貼文並直接輸入您的訊息。
       open_thread: 開啟貼文
   locale_names:

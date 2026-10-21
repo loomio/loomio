@@ -22,7 +22,7 @@ module Ability
     prepend Ability::Task
     prepend Ability::PollTemplate
     prepend Ability::DiscussionTemplate
-    prepend Ability::ReceivedEmail
+    prepend Ability::PendingEmail
     prepend Ability::Topic
     prepend Ability::GroupState
 

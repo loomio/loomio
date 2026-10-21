@@ -8,7 +8,6 @@ class TagService
 
     return tag unless tag.valid?
     tag.save!
-    EventBus.broadcast 'tag_create', tag, actor
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
     tag
   end
@@ -20,7 +19,6 @@ class TagService
     tag.reload
 
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
-    EventBus.broadcast 'tag_update', tag, actor
     tag
   end
 
@@ -28,7 +26,6 @@ class TagService
     actor.ability.authorize! :destroy, tag
 
     destroy_by_name(tag.group_id, tag.name)
-    EventBus.broadcast 'tag_destroy', tag, actor
   end
 
   def self.destroy_by_name(group_id, name)

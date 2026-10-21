@@ -141,4 +141,110 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
       assert_equal 'Fish & Chips — 2 < 3; read the report', preview[:description]
     end
   end
+
+  test "preview batches fetch at most five distinct URLs in the calling thread" do
+    urls = Array.new(8) { |index| "https://example.com/#{index}" }
+    requested = []
+    caller_thread = Thread.current
+    SafeHttpService.stub(:fetch, ->(url) {
+      assert_same caller_thread, Thread.current
+      requested << url
+      {url: url}
+    }) do
+      previews = SafeHttpService.fetch_urls([nil, urls.first, *urls])
+      assert_equal urls.first(5), previews.map { |preview| preview[:url] }
+    end
+    assert_equal urls.first(5), requested
+  end
+
+  test "preview batches return completed previews when the overall deadline expires" do
+    original_timeout = Timeout.method(:timeout)
+    preview = {url: "https://example.com/fast"}
+    requested = []
+    Timeout.stub(:timeout, ->(_seconds, &block) { original_timeout.call(0.05, &block) }) do
+      SafeHttpService.stub(:fetch, ->(url) {
+        requested << url
+        sleep 1 if url.end_with?("/slow")
+        preview
+      }) do
+        assert_equal [preview], SafeHttpService.fetch_urls(%w[
+          https://example.com/fast https://example.com/slow https://example.com/not-started
+        ])
+      end
+    end
+    assert_equal %w[https://example.com/fast https://example.com/slow], requested
+  end
+
+  test "previews reject response bodies over one megabyte without Content-Length" do
+    with_dns('preview.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'http://preview.test/').to_return(
+        status: 200, body: '<title>Large page</title>' + 'x' * 1.megabyte
+      )
+
+      assert_nil SafeHttpService.fetch('http://preview.test/')
+    end
+  end
+
+  test "previews reject an oversized body after following a redirect" do
+    with_dns('preview.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'http://preview.test/').to_return(
+        status: 302, headers: {'Location' => '/large'}
+      )
+      WebMock.stub_request(:get, 'http://preview.test/large').to_return(
+        status: 200, body: '<title>Large page</title>' + 'x' * 1.megabyte
+      )
+
+      assert_nil SafeHttpService.fetch('http://preview.test/')
+    end
+  end
+
+  test "safe_open enforces its supplied response size limit" do
+    with_dns('avatar.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'http://avatar.test/image').to_return(status: 200, body: '12345')
+
+      assert_nil SafeHttpService.safe_open('http://avatar.test/image', max_bytes: 4)
+      assert_equal '12345', SafeHttpService.safe_open('http://avatar.test/image', max_bytes: 5).read
+    end
+  end
+
+  test "bounded responses stop reading as soon as streamed bytes exceed the limit" do
+    response = Net::HTTPOK.new('1.1', '200', 'OK')
+    response['Content-Length'] = '1'
+    response.define_singleton_method(:read_body) do |&block|
+      block.call('1234')
+      block.call('5')
+      raise 'must not read the remaining response after exceeding the byte limit'
+    end
+
+    with_streamed_response(response) do
+      assert_nil SafeHttpService.pinned_get('http://stream.test/', max_bytes: 4)
+    end
+  end
+
+  test "bounded responses reject excessive Content-Length before reading any body" do
+    response = Net::HTTPOK.new('1.1', '200', 'OK')
+    response['Content-Length'] = '5'
+    response.define_singleton_method(:read_body) do |&block|
+      raise 'must not read a body advertised above the byte limit'
+    end
+
+    with_streamed_response(response) do
+      assert_nil SafeHttpService.pinned_get('http://stream.test/', max_bytes: 4)
+    end
+  end
+
+  private
+
+  def with_streamed_response(response)
+    http = Net::HTTP.new('stream.test', 80)
+    with_dns('stream.test' => ['93.184.216.34']) do
+      Net::HTTP.stub(:new, http) do
+        http.stub(:start, ->(&block) { block.call(http) }) do
+          http.stub(:request, ->(_request, &block) { block.call(response); response }) do
+            yield
+          end
+        end
+      end
+    end
+  end
 end

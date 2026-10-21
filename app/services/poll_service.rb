@@ -65,7 +65,6 @@ class PollService
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
       topic_item
     end
-    EventBus.broadcast('poll_create', poll, actor)
     publish_topic_if_active(poll) if poll.opened_at
     on_topic_item&.call(topic_item)
     poll
@@ -149,7 +148,6 @@ class PollService
       )
       topic_item
     end
-    EventBus.broadcast('poll_update', poll, actor)
     MessageChannelService.publish_topic_model(poll) unless topic_item
     publish_topic_if_active(poll) if was_opened
     on_topic_item&.call(topic_item) if topic_item
@@ -377,7 +375,6 @@ class PollService
         user: actor
       )
     end
-    EventBus.broadcast('poll_reopen', poll, actor)
     publish_topic_if_active(poll)
     on_topic_item&.call(topic_item)
     poll
@@ -522,7 +519,6 @@ class PollService
   #   actor.ability.authorize! :destroy, poll
   #   poll.destroy
   #
-  #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
   # Result scores are numbers in every output: whole numbers stay integers, and

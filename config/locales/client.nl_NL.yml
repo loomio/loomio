@@ -3239,3 +3239,23 @@ nl_NL:
     discussion: discussie
     outcome: conclusie
     stance: stem
+  membership_notification_history:
+    invitation_delivery_history: Bezorggeschiedenis van uitnodigingen
+    email_delivery_blocked: "Loomio heeft e-mailbezorging naar dit adres geblokkeerd"
+    delivery_result:
+      delivered: Bezorgd
+      failed: Mislukt
+    could_not_load_history: Meldingsgeschiedenis kon niet worden geladen
+    no_invitations_recorded: Geen uitnodigingen vastgelegd
+    membership_created: Uitnodiging
+    membership_resent: Uitnodiging opnieuw verstuurd
+    no_custom_message: Geen persoonlijk bericht
+    pending: E-mail in afwachting
+    not_sent: Geen e-mailbezorging vastgelegd
+    sent: Aangeboden aan e-maildienst
+    delivered: Geaccepteerd door mailserver van ontvanger
+    delayed: Vertraging bij bezorging gemeld
+    rejected: E-mail geweigerd
+    bounced: Onbestelbare e-mail gemeld
+    complained: Spamklacht gemeld
+    skipped: E-mail niet verstuurd

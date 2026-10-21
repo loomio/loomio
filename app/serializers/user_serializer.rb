@@ -8,8 +8,6 @@ class UserSerializer < AuthorSerializer
              :avatar_url,
              :attachments,
              :date_time_pref,
-             :complaints_count,
-             :bounces_count,
              :sign_in_count
 
 
@@ -23,13 +21,5 @@ class UserSerializer < AuthorSerializer
 
   def include_sign_in_count?
     scope[:current_user_id] == object.id
-  end
-
-  def include_complaints_count?
-    object.complaints_count > 0 && scope[:current_user_is_admin]
-  end
-
-  def include_bounces_count?
-    object.bounces_count > 0 && scope[:current_user_is_admin]
   end
 end

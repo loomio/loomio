@@ -3136,3 +3136,23 @@ zh_CN:
     discussion: 讨论
     outcome: 结论
     stance: 投票
+  membership_notification_history:
+    invitation_delivery_history: 邀请投递记录
+    email_delivery_blocked: "Loomio 已停止向此地址发送邮件"
+    delivery_result:
+      delivered: 已送达
+      failed: 失败
+    could_not_load_history: 无法加载通知记录
+    no_invitations_recorded: 暂无邀请记录
+    membership_created: 邀请
+    membership_resent: 已重新发送邀请
+    no_custom_message: 无自定义留言
+    pending: 邮件待发送
+    not_sent: 无邮件投递记录
+    sent: 已提交至邮件服务
+    delivered: 收件方邮件服务器已接收
+    delayed: 收到投递延迟反馈
+    rejected: 邮件被拒收
+    bounced: 收到退信反馈
+    complained: 收到垃圾邮件投诉
+    skipped: 邮件未发送
