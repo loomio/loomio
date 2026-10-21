@@ -10536,10 +10536,10 @@
       "redundant_candidates": 0
     },
     "mailers/notification_mailer": {
-      "measurement": "incomplete",
+      "measurement": "measured",
       "review": "pending",
-      "signature": "940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597",
-      "execution_checkout": "/private/tmp/loomio-mutation-coverage",
+      "signature": "4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8",
+      "execution_checkout": "/private/tmp/loomio-mutation-coverage-2",
       "sources": [
         "app/mailers/notification_mailer.rb"
       ],
@@ -10552,27 +10552,27 @@
         "test/services/notification_delivery_router_test.rb",
         "test/services/vote_reply_visibility_test.rb"
       ],
-      "report": "tmp/mutation_audit/mailers/notification_mailer/940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597-f0fd1bf6-4244-4d0f-9278-638d98e1cbb0/before.json",
-      "log": "tmp/mutation_audit/mailers/notification_mailer/940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597-f0fd1bf6-4244-4d0f-9278-638d98e1cbb0/before.log",
-      "baseline_log": "tmp/mutation_audit/mailers/notification_mailer/940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597-f0fd1bf6-4244-4d0f-9278-638d98e1cbb0/baseline.log",
+      "report": "tmp/mutation_audit/mailers/notification_mailer/4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8-a66028d2-97de-4769-8ed4-2457416f3a99/before.json",
+      "log": "tmp/mutation_audit/mailers/notification_mailer/4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8-a66028d2-97de-4769-8ed4-2457416f3a99/before.log",
+      "baseline_log": "tmp/mutation_audit/mailers/notification_mailer/4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8-a66028d2-97de-4769-8ed4-2457416f3a99/baseline.log",
       "baseline_exit_code": 0,
       "exit_code": 0,
-      "seconds": 3103.15,
+      "seconds": 5182.42,
       "summary": {
         "total": 126,
-        "killed": 69,
-        "survived": 37,
+        "killed": 68,
+        "survived": 57,
         "no_coverage": 1,
         "uncapturable": 0,
         "unplaceable": 0,
         "ran_at_load": 0,
         "skipped_invalid": 0,
         "errored": 0,
-        "timeout": 19,
+        "timeout": 0,
         "ignored": 0,
         "attempted": 125,
-        "no_verdict": 19,
-        "score": 65.1,
+        "no_verdict": 0,
+        "score": 54.4,
         "scoped": false,
         "id_format": 2,
         "legacy_id_matches": {
@@ -10580,10 +10580,10 @@
           "baseline": 0
         }
       },
-      "matrix_complete": false,
+      "matrix_complete": true,
       "tests_observed": 85,
-      "blind_candidates": 49,
-      "redundant_candidates": 34
+      "blind_candidates": 52,
+      "redundant_candidates": 31
     },
     "services/record_count_repair_service": {
       "measurement": "incomplete",
@@ -11414,10 +11414,10 @@
       "redundant_candidates": 6
     },
     "models/topic_item": {
-      "measurement": "incomplete",
+      "measurement": "measured",
       "review": "pending",
-      "signature": "7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284",
-      "execution_checkout": "/private/tmp/loomio-mutation-coverage-2",
+      "signature": "05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f",
+      "execution_checkout": "/private/tmp/loomio-mutation-coverage-3",
       "sources": [
         "app/models/topic_item.rb"
       ],
@@ -11431,27 +11431,27 @@
         "test/controllers/api/v1/poll_edit_change_note_test.rb",
         "test/models/record_counts_test.rb"
       ],
-      "report": "tmp/mutation_audit/models/topic_item/7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284-4a74fa41-7be9-4bef-b60c-fa1826ee2e82/before.json",
-      "log": "tmp/mutation_audit/models/topic_item/7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284-4a74fa41-7be9-4bef-b60c-fa1826ee2e82/before.log",
-      "baseline_log": "tmp/mutation_audit/models/topic_item/7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284-4a74fa41-7be9-4bef-b60c-fa1826ee2e82/baseline.log",
+      "report": "tmp/mutation_audit/models/topic_item/05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f-8be6cb54-94b6-4717-ab88-63711e565711/before.json",
+      "log": "tmp/mutation_audit/models/topic_item/05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f-8be6cb54-94b6-4717-ab88-63711e565711/before.log",
+      "baseline_log": "tmp/mutation_audit/models/topic_item/05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f-8be6cb54-94b6-4717-ab88-63711e565711/baseline.log",
       "baseline_exit_code": 0,
       "exit_code": 0,
-      "seconds": 2931.75,
+      "seconds": 3570.79,
       "summary": {
         "total": 221,
-        "killed": 111,
-        "survived": 71,
+        "killed": 112,
+        "survived": 73,
         "no_coverage": 36,
         "uncapturable": 0,
         "unplaceable": 0,
         "ran_at_load": 0,
         "skipped_invalid": 0,
         "errored": 0,
-        "timeout": 3,
+        "timeout": 0,
         "ignored": 0,
         "attempted": 185,
-        "no_verdict": 3,
-        "score": 61.0,
+        "no_verdict": 0,
+        "score": 60.5,
         "scoped": false,
         "id_format": 2,
         "legacy_id_matches": {
@@ -11459,7 +11459,7 @@
           "baseline": 0
         }
       },
-      "matrix_complete": false,
+      "matrix_complete": true,
       "tests_observed": 108,
       "blind_candidates": 16,
       "redundant_candidates": 84
@@ -12841,6 +12841,52 @@
       "tests_observed": 1,
       "blind_candidates": 0,
       "redundant_candidates": 0
+    },
+    "permissions/b2_payload": {
+      "measurement": "measured",
+      "review": "pending",
+      "signature": "0c13630d30d2c62bec3f4ae85e967a6ef7b7fba84e3755e679b9524d5c48919f",
+      "execution_checkout": "/private/tmp/loomio-mutation-finalize",
+      "sources": [
+        "app/controllers/api/b2/base_controller.rb"
+      ],
+      "tests": [
+        "test/integration/b2_poll_requests_test.rb",
+        "test/controllers/api/b2/polls_controller_test.rb",
+        "test/controllers/api/b2/comments_controller_test.rb"
+      ],
+      "report": "tmp/mutation_audit/permissions/b2_payload/0c13630d30d2c62bec3f4ae85e967a6ef7b7fba84e3755e679b9524d5c48919f-e4ef9487-41e7-4dd9-ae29-446bd6b3e3aa/before.json",
+      "log": "tmp/mutation_audit/permissions/b2_payload/0c13630d30d2c62bec3f4ae85e967a6ef7b7fba84e3755e679b9524d5c48919f-e4ef9487-41e7-4dd9-ae29-446bd6b3e3aa/before.log",
+      "baseline_log": "tmp/mutation_audit/permissions/b2_payload/0c13630d30d2c62bec3f4ae85e967a6ef7b7fba84e3755e679b9524d5c48919f-e4ef9487-41e7-4dd9-ae29-446bd6b3e3aa/baseline.log",
+      "baseline_exit_code": 0,
+      "exit_code": 0,
+      "seconds": 303.24,
+      "summary": {
+        "total": 29,
+        "killed": 22,
+        "survived": 6,
+        "no_coverage": 1,
+        "uncapturable": 0,
+        "unplaceable": 0,
+        "ran_at_load": 0,
+        "skipped_invalid": 0,
+        "errored": 0,
+        "timeout": 0,
+        "ignored": 0,
+        "attempted": 28,
+        "no_verdict": 0,
+        "score": 78.6,
+        "scoped": false,
+        "id_format": 2,
+        "legacy_id_matches": {
+          "ignore": 0,
+          "baseline": 0
+        }
+      },
+      "matrix_complete": true,
+      "tests_observed": 49,
+      "blind_candidates": 9,
+      "redundant_candidates": 40
     }
   }
 }

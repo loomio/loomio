@@ -17,7 +17,7 @@ function imageWithFallbacks(sources, origin = 'https://private.example') {
     querySelectorAll(selector) { return selector === 'img[data-screenshot-sources]' ? [image] : []; },
     addEventListener() {}
   };
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../../docs/docs.js'), 'utf8'), {
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../../docs/help/docs.js'), 'utf8'), {
     document, URL, window: {location: {href: `${origin}/docs/fr/example`}}
   });
   return {image, fail() { listeners.get('error')?.(); }, listeners};

@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require "minitest/mock"
 require "tmpdir"
-require_relative "../../docs/sync_translations"
+require_relative "../../docs/help/sync_translations"
 
 class DocsTranslationSyncTest < Minitest::Test
   L = Docs::Localization
@@ -46,7 +46,7 @@ class DocsTranslationSyncTest < Minitest::Test
       []
     end
     @runner.stub(:translate, run) do
-      with_paths { assert_equal ["docs/fr/#{PAGE}"], @sync.update }
+      with_paths { assert_equal ["docs/help/fr/#{PAGE}"], @sync.update }
     end
     assert_equal ["fr"], @requests
   end

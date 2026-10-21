@@ -47,7 +47,7 @@
       "id": "contracts/openapi_routes",
       "sources": [
         "config/routes.rb",
-        "docs/en/user_manual/integrations/api/openapi.yaml"
+        "docs/help/en/user_manual/integrations/api/openapi.yaml"
       ],
       "tests": [
         "test/contracts/openapi_routes_test.rb"
@@ -4555,6 +4555,23 @@
       "review": "pending",
       "candidate_count": 27,
       "note": "Existing controller cases distinguish signed-out and ordinary users from instance administrators, and successful operator actions. Review this shared guard separately from group/topic administration and API keys."
+    },
+    {
+      "id": "permissions/b2_payload",
+      "sources": [
+        "app/controllers/api/b2/base_controller.rb"
+      ],
+      "tests": [
+        "test/integration/b2_poll_requests_test.rb",
+        "test/controllers/api/b2/polls_controller_test.rb",
+        "test/controllers/api/b2/comments_controller_test.rb"
+      ],
+      "security": true,
+      "mapping": "upstream_integration_boundary",
+      "measurement": "pending",
+      "review": "pending",
+      "candidate_count": 29,
+      "note": "Current-master integration changed flat/nested JSON parameter handling in the shared B2 base. Measure the actual JSON request contract, protected attributes, key/role denials, virtual poll options and comment context after integration. Historical audit profiles remain tied to their original signatures."
     }
   ]
 }

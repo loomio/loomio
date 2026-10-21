@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require "tmpdir"
-require_relative "../../docs/screenshots"
+require_relative "../../docs/help/screenshots"
 
 class DocsScreenshotsTest < Minitest::Test
   def recipe
@@ -12,7 +12,7 @@ class DocsScreenshotsTest < Minitest::Test
     assert_equal "save_bookmark", recipe.fetch("testcase")
     assert Docs::Screenshots.images.key?("guides/making_decisions/proposal_consensus_process_refresh_brand.png")
     refute Docs::Screenshots.images.key?("guides/facilitators_guide/collaboration-process.png")
-    assert Docs::Screenshots.catalog.all? { |entry| Docs::Screenshots::ROOT.join("docs/en", entry.fetch("image")).file? }
+    assert Docs::Screenshots.catalog.all? { |entry| Docs::Screenshots::ROOT.join("docs/help/en", entry.fetch("image")).file? }
   end
 
   def test_cache_tracks_missing_and_present_without_retaining_history
@@ -53,7 +53,7 @@ class DocsScreenshotsTest < Minitest::Test
 
   def test_present_cache_skips_the_browser_runner_even_with_legacy_fingerprints
     Dir.mktmpdir do |directory|
-      source = Docs::Screenshots::ROOT.join("docs/en", recipe.fetch("image"))
+      source = Docs::Screenshots::ROOT.join("docs/help/en", recipe.fetch("image"))
       cache = Docs::Screenshots::Cache.new(directory)
       cache.store("fr", recipe, source)
       manifest_path = File.join(directory, ".generation.json")

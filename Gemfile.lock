@@ -132,7 +132,7 @@ GEM
       thor (~> 1.0)
     byebug (13.0.0)
       reline (>= 0.6.0)
-    cancancan (3.6.1)
+    cancancan (3.7.0)
     cbor (0.5.10.3)
     cld (0.13.0)
       ffi
@@ -145,8 +145,9 @@ GEM
       bigdecimal
       rexml
     crass (1.0.7)
-    css_parser (3.0.0)
+    css_parser (3.3.0)
       addressable
+      base64
       ssrf_filter (~> 1.5)
     csv (3.3.6)
     date (3.5.1)
@@ -677,7 +678,7 @@ GEM
       openssl (>= 2.2)
       safety_net_attestation (~> 0.5.0)
       tpm-key_attestation (~> 0.14.0)
-    webmock (3.29.0)
+    webmock (3.34.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)

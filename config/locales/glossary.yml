@@ -1,5 +1,5 @@
 # Loomio terminology, shared by the app strings (config/locales/*.yml) and the
-# user manual (docs/<locale>/).
+# user manual (docs/help/<locale>/).
 #
 # Each term is an English word or phrase as it appears in Loomio's interface.
 # `means` explains the Loomio sense, which is what translators need when the
@@ -25,7 +25,7 @@
 #    for the same feature (a poll in a chat app, a tag, an admin).
 # `locales` gives each app locale's language name and style: the register and
 # conventions both translators follow. The user manual's languages in
-# docs/locales.yml take their style from here.
+# docs/help/locales.yml take their style from here.
 locales:
   be:
     name: Belarusian

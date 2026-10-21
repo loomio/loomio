@@ -2402,7 +2402,7 @@
     },
     "mailers/notification_mailer": {
       "measurement": "incomplete",
-      "status": "bounded_retry_pending",
+      "status": "resolved_by_bounded_baseline_backed_retry",
       "analysis": "Ordinary89-test baseline took32.229908seconds, above the30second mutant bound. The incomplete report contains25partial rows, including19timeouts. Several ran nearly all selected tests. This is measured budget pressure; no common infinite loop is established. Retry unchanged source/tests with120seconds and preserve partial history.",
       "report": "tmp/mutation_audit/mailers/notification_mailer/940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597-f0fd1bf6-4244-4d0f-9278-638d98e1cbb0/before.json",
       "report_sha256": "ba027e075af199bc6552b33c2451e04423d345865e48bcd9935a35efc98b10b1",
@@ -2725,11 +2725,41 @@
         }
       ],
       "baseline_log": "tmp/mutation_audit/mailers/notification_mailer/940fa3d62b02016d426c0f45e2526a68f43c97b0790d00b1d129a0f6b8cc9597-f0fd1bf6-4244-4d0f-9278-638d98e1cbb0/baseline.log",
-      "decision": "Retain all tests and partial artifacts. No test-deletion proof or complete verdict is claimed."
+      "decision": "Retain all tests and partial artifacts. No test-deletion proof or complete verdict is claimed.",
+      "retry": {
+        "report": "tmp/mutation_audit/mailers/notification_mailer/4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8-a66028d2-97de-4769-8ed4-2457416f3a99/before.json",
+        "report_sha256": "5022c1be7eaa214c2cf887f1921535184ebcc0e505b4f439832107070ccfe63d",
+        "summary": {
+          "total": 126,
+          "killed": 68,
+          "survived": 57,
+          "no_coverage": 1,
+          "uncapturable": 0,
+          "unplaceable": 0,
+          "ran_at_load": 0,
+          "skipped_invalid": 0,
+          "errored": 0,
+          "timeout": 0,
+          "ignored": 0,
+          "attempted": 125,
+          "no_verdict": 0,
+          "score": 54.4,
+          "scoped": false,
+          "id_format": 2,
+          "legacy_id_matches": {
+            "ignore": 0,
+            "baseline": 0
+          }
+        },
+        "matrix_complete": true,
+        "timeout_seconds": 120,
+        "baseline_log": "tmp/mutation_audit/mailers/notification_mailer/4c0c938f35f01f5196d5406bbef8df8d6623125325384b4b4e32558c8ba4c1c8-a66028d2-97de-4769-8ed4-2457416f3a99/baseline.log",
+        "decision": "The unchanged selected source/test set completed under the increased bound. Its ordinary baseline took48.078441seconds. Preserve all old partial rows as diagnostic history only."
+      }
     },
     "models/topic_item": {
       "measurement": "incomplete",
-      "status": "bounded_retry_pending",
+      "status": "resolved_by_bounded_baseline_backed_retry",
       "analysis": "Ordinary108-test baseline took28.264536seconds, close to the30second bound. Ten partial rows include3timeouts and some completed102-104test cases. Runtime pressure is plausible; tree-lock mutation can also alter concurrency behavior. One bounded90second retry will distinguish these cases without classifying partial kills as complete.",
       "report": "tmp/mutation_audit/models/topic_item/7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284-4a74fa41-7be9-4bef-b60c-fa1826ee2e82/before.json",
       "report_sha256": "b7b9a545a162af81660f1ceefec543c1706501626c786a8511a6c9131eda8a55",
@@ -2902,7 +2932,37 @@
         }
       ],
       "baseline_log": "tmp/mutation_audit/models/topic_item/7f04e5591ea188a9065b8d521dd0b3366c4a65f35814cda0c420e077201c7284-4a74fa41-7be9-4bef-b60c-fa1826ee2e82/baseline.log",
-      "decision": "Retain all tests and partial artifacts. No test-deletion proof or complete verdict is claimed."
+      "decision": "Retain all tests and partial artifacts. No test-deletion proof or complete verdict is claimed.",
+      "retry": {
+        "report": "tmp/mutation_audit/models/topic_item/05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f-8be6cb54-94b6-4717-ab88-63711e565711/before.json",
+        "report_sha256": "4a056076f65208c59968fa5e1929acd6ada4c70616dd9a5f2ca1a71fdeefedea",
+        "summary": {
+          "total": 221,
+          "killed": 112,
+          "survived": 73,
+          "no_coverage": 36,
+          "uncapturable": 0,
+          "unplaceable": 0,
+          "ran_at_load": 0,
+          "skipped_invalid": 0,
+          "errored": 0,
+          "timeout": 0,
+          "ignored": 0,
+          "attempted": 185,
+          "no_verdict": 0,
+          "score": 60.5,
+          "scoped": false,
+          "id_format": 2,
+          "legacy_id_matches": {
+            "ignore": 0,
+            "baseline": 0
+          }
+        },
+        "matrix_complete": true,
+        "timeout_seconds": 90,
+        "baseline_log": "tmp/mutation_audit/models/topic_item/05ec41d9683d2461720b669ef69f9ba917b317a2e8888c6c17b45dca1601109f-8be6cb54-94b6-4717-ab88-63711e565711/baseline.log",
+        "decision": "The unchanged selected source/test set completed under the bounded retry; retain the earlier partial attempt as diagnostic history only."
+      }
     },
     "models/poll": {
       "measurement": "incomplete",

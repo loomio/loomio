@@ -640,10 +640,10 @@
     "seconds": 0.995109
   },
   "runtime_artifact_integrity": {
-    "reports_verified": 17,
+    "reports_verified": 19,
     "diagnostic_contexts": 16,
     "missing_or_changed_reports": [],
-    "scope_note": "Retained partial attempts and resolved retry history verified by SHA256. NotificationMailer and TopicItem bounded retries are running; partial verdicts are not complete measurement evidence."
+    "scope_note": "All retained partial reports and completed Topic, TopicItem and NotificationMailer budget-retry histories verified by SHA256. Incomplete runtime evidence is not promoted to complete verdicts."
   },
   "frozen_input_recheck": {
     "checkouts_verified": 4,
@@ -651,5 +651,29 @@
     "source_test_snapshot_sha256": "ada58a8a58146b2f5d2d346fa7c8929888e3fc0682d2040a95f25da14445dba7",
     "changed_inputs": [],
     "scope_note": "Source/test files still match the green3310-test manifest after documentation, source/test mapping, security classification and Topic timeout-budget updates; no new Rails full run is claimed."
+  },
+  "integration_current_master": {
+    "base_commit": "c52d07f6806fde5e7c86f623daefb41e74eba5c5",
+    "exit_code": 0,
+    "seconds": 412.055182,
+    "log": "tmp/mutation_audit/full-suite-current-master.log",
+    "source_test_snapshot_sha256": "75c9173f5229a8ea1194d3a722eef1b1bffa160877fb49708bb322852157498e",
+    "snapshot_files": 2279,
+    "snapshot_manifest": "tmp/mutation_audit/full-suite-current-master-snapshot.json",
+    "changed_inputs": [],
+    "lockfile_sha256": "c26c41c56e998e2a73fb7edfd92f077cd4e8aea64a1fa06fc3063f6602734884",
+    "tests": 3323,
+    "assertions": 33468,
+    "failures": 0,
+    "errors": 0,
+    "skips": 2,
+    "rails_seconds": 405.915584,
+    "checkout": "/private/tmp/loomio-mutation-finalize",
+    "database": "loomio_test_loomio_mutation_finalize",
+    "scope_note": "Current master c52d07f680 plus the unchanged approved test patch. This validates integration with the upstream B2 JSON fix, help-site relocation and dependency updates. Historical broad mutation results retain their original source/dependency signatures; no current-source mutation coverage is inferred from this full regression run."
+  },
+  "artifact_footprint": {
+    "audit_files_bytes": 7551884,
+    "scope_note": "Approximate uncompressed audit-document/ledger size before this final metadata write. Existing Docker COPY includes these files; compressed image transfer impact not measured."
   }
 }

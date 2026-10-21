@@ -1800,17 +1800,29 @@
       "timeout_before": 30,
       "timeout_after": 90,
       "reason": "Ordinary108-test baseline took28.264536seconds, close to the30second bound. Ten partial rows include3timeouts and some completed102-104test cases. Runtime pressure is plausible; tree-lock mutation can also alter concurrency behavior. One bounded90second retry will distinguish these cases without classifying partial kills as complete."
+    },
+    {
+      "change": "Integrate the upstream help-site relocation and newly tested B2 payload boundary.",
+      "context": "permissions/b2_payload",
+      "sources_unchanged_by_this_PR": true,
+      "new_context_count": 282,
+      "test_cases_removed": [],
+      "added_existing_upstream_test": "test/integration/b2_poll_requests_test.rb",
+      "reason": "Current master moves the OpenAPI schema to docs/help and changes shared B2 JSON wrapping. Preserve original snapshot evidence rather than relabel it current, correct the declarative path and separately measure the current shared payload boundary using existing request and controller tests."
     }
   ],
   "validation": {
     "original_test_files": 293,
-    "current_test_files": 295,
+    "current_test_files": 298,
     "removed_test_files": [],
     "added_test_files": [
       "test/models/ability/group_access_test.rb",
       "test/models/ability/outcome_access_test.rb"
     ],
-    "current_contexts": 281,
-    "note": "All files in the original 314-context plan remain mapped. Later scoped outcome-announcement and group invitation/private-content files were added after grouping; no original scenario file was removed."
+    "current_contexts": 282,
+    "note": "All files in the original 314-context plan remain mapped. Later scoped outcome-announcement and group invitation/private-content files were added after grouping; no original scenario file was removed. The final unique-path recount corrects earlier summary totals: the completed historical plan has297 mapped test files, and the added upstream B2 integration maps298. These are inventory corrections, not newly authored or removed test cases.",
+    "added_existing_upstream_test_files": [
+      "test/integration/b2_poll_requests_test.rb"
+    ]
   }
 }

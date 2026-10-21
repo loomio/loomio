@@ -19,7 +19,7 @@ COPY vue ./
 # Copy Rails locale files that Vite depends on
 WORKDIR /build/
 COPY config ./config
-COPY docs/locales.yml ./docs/locales.yml
+COPY docs/help/locales.yml ./docs/help/locales.yml
 WORKDIR /build/vue
 
 # Build Vite assets
@@ -82,7 +82,7 @@ COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 # deployment continues without serving an incomplete site if this build fails.
 RUN if PAGEFIND_BINARY=/usr/local/bin/pagefind \
        PAGEFIND_LICENSE=/usr/local/share/licenses/pagefind/LICENSE \
-       bundle exec ruby docs/build.rb; then \
+       bundle exec ruby docs/help/build.rb; then \
       :; \
     else \
       rm -rf public/docs && \
