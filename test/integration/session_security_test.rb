@@ -79,6 +79,15 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
     assert_equal administrator.id, record.reload.cleared_by_id
   end
 
+  test 'the signed-in app page is not stored by browsers or proxies' do
+    authenticate(users(:member_loud))
+
+    get '/dashboard'
+
+    assert_response :success
+    assert_equal 'no-store', response.headers['Cache-Control']
+  end
+
   private
 
   def authenticate(user)
