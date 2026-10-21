@@ -62,9 +62,45 @@ class AuthenticationThrottlesTest < ActiveSupport::TestCase
     assert_equal 400, request('/api/v1/sessions', '{invalid', raw: true).first
   end
 
+  test 'trusted Cloudflare proxies keep separate client IP budgets' do
+    freeze_time do
+      limit = 10 * Rack::Attack::RATE_MULTIPLIER
+      limit.times do |index|
+        assert_equal 200, request('/api/v1/trials', {}, ip: '173.245.48.5', headers: { 'HTTP_CF_CONNECTING_IP' => '198.51.100.1' }).first
+      end
+      assert_equal 429, request('/api/v1/trials', {}, ip: '173.245.48.6', headers: { 'HTTP_CF_CONNECTING_IP' => '198.51.100.1' }).first
+      assert_equal 'post/ip/hour /api/v1/trials', @last_env['rack.attack.matched']
+      assert_equal 200, request('/api/v1/trials', {}, ip: '173.245.48.5', headers: { 'HTTP_CF_CONNECTING_IP' => '198.51.100.2' }).first
+    end
+  end
+
+  test 'untrusted clients cannot rotate a Cloudflare header to evade their IP budget' do
+    freeze_time do
+      limit = 10 * Rack::Attack::RATE_MULTIPLIER
+      limit.times do |index|
+        assert_equal 200, request('/api/v1/trials', {}, headers: { 'HTTP_CF_CONNECTING_IP' => "198.51.100.#{index + 1}" }).first
+      end
+      assert_equal 429, request('/api/v1/trials', {}, headers: { 'HTTP_CF_CONNECTING_IP' => '198.51.100.99' }).first
+      assert_equal '203.0.113.1', @last_env['rack.attack.match_discriminator']
+      assert_equal 200, request('/api/v1/trials', {}, ip: '203.0.113.2', headers: { 'HTTP_CF_CONNECTING_IP' => '198.51.100.99' }).first
+    end
+  end
+
+  test 'without a Cloudflare header the Rails resolved address shares its client budget across proxies' do
+    freeze_time do
+      limit = 10 * Rack::Attack::RATE_MULTIPLIER
+      limit.times do |index|
+        assert_equal 200, request('/api/v1/trials', {}, ip: "173.245.48.#{index + 1}", headers: { 'action_dispatch.remote_ip' => IPAddr.new('198.51.100.1') }).first
+      end
+      assert_equal 429, request('/api/v1/trials', {}, ip: '173.245.48.99', headers: { 'action_dispatch.remote_ip' => IPAddr.new('198.51.100.1') }).first
+      assert_equal '198.51.100.1', @last_env['rack.attack.match_discriminator']
+      assert_equal 200, request('/api/v1/trials', {}, ip: '173.245.48.1', headers: { 'action_dispatch.remote_ip' => IPAddr.new('198.51.100.2') }).first
+    end
+  end
+
   private
 
-  def request(path, params, content_type: 'application/json', ip: '203.0.113.1', raw: false)
+  def request(path, params, content_type: 'application/json', ip: '203.0.113.1', raw: false, headers: {})
     body = if raw
       params
     elsif content_type == 'application/json'
@@ -73,6 +109,7 @@ class AuthenticationThrottlesTest < ActiveSupport::TestCase
       params.to_query
     end
     @last_env = Rack::MockRequest.env_for(path, method: 'POST', input: body, 'CONTENT_TYPE' => content_type, 'REMOTE_ADDR' => ip, 'action_dispatch.logger' => Rails.logger)
+    @last_env.merge!(headers)
     @app.call(@last_env)
   end
 end

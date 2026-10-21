@@ -187,6 +187,7 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
     assert admin.can?(:update, topic.discussion)
     assert admin.can?(:remind, poll)
     assert admin.can?(:make_admin, reader)
+    assert admin.can?(:redeem, reader)
     group = topic.group
     group.discard!
     records.each_key { |record| record.reload if record.persisted? }

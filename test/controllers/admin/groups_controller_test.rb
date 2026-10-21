@@ -209,10 +209,15 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     sign_in @admin
     subscription = Subscription.create!(owner: @admin, plan: "trial")
     @group.update!(subscription: subscription, creator: users(:user))
+    paid_group = groups(:alien_group)
+    paid_group.update!(subscription: Subscription.create!(owner: @admin, plan: "standard"), creator: users(:alien))
 
-    assert_enqueued_with(job: DestroyUserWorker, args: [users(:user).id]) do
-      post :delete_spam, params: { group_ids: [@group.id] }
+    assert_enqueued_jobs 1, only: DestroyUserWorker do
+      assert_enqueued_with(job: DestroyUserWorker, args: [users(:user).id]) do
+        post :delete_spam, params: { group_ids: [@group.id, paid_group.id, -1, 'invalid'] }
+      end
     end
+    assert_redirected_to admin_groups_path
   end
 
   test "admin can render the user export report" do

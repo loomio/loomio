@@ -1,9 +1,36 @@
 require "test_helper"
+require_relative "../../../support/access_volume_matrix"
 
 class Api::B2::GroupsControllerTest < ActionController::TestCase
   setup do
     @user = users(:admin)
     @request.headers["Authorization"] = "Bearer #{@user.api_key}"
+  end
+
+  test "individual group reads enforce visibility and active API credentials" do
+    actors = AccessVolumeMatrix::ROLES.map { |role| users(role) } + [users(:server_admin)]
+
+    %i[group public_group parent_join_subgroup].each do |group_name|
+      group = groups(group_name)
+      actors.each do |actor|
+        @request.headers["Authorization"] = "Bearer #{actor.api_key}"
+
+        get :show, params: { id: group.id }
+
+        if actor.active? && actor.can?(:show, group)
+          assert_response :success
+          assert_equal [group.id], response.parsed_body.fetch("groups").pluck("id")
+        else
+          assert_response :forbidden
+          refute response.parsed_body.key?("groups"), "#{group_name}, actor=#{actor.id}"
+        end
+      end
+    end
+
+    @request.headers["Authorization"] = nil
+    get :show, params: { id: groups(:public_group).id }
+    assert_response :forbidden
+    refute response.parsed_body.key?("groups")
   end
 
   test "pages current memberships with an exact total and stable group order" do

@@ -121,24 +121,12 @@ class MembershipsControllerTest < ActionController::TestCase
     assert_redirected_to "/#{@group.handle}"
   end
 
-  test "show sets session token when not signed in" do
+  test "unsigned invitation visits store the pending token without accepting membership" do
     membership = Membership.create!(group: @group, user: @invitee, accepted_at: nil)
     get :show, params: { token: membership.token }
     assert_equal membership.token, session[:pending_membership_token]
     assert_redirected_to "/#{@group.handle}"
-  end
-
-  test "show does not accept membership when not signed in" do
-    membership = Membership.create!(group: @group, user: @invitee, accepted_at: nil)
-    get :show, params: { token: membership.token }
-    membership.reload
-    refute membership.accepted_at.present?
-  end
-
-  test "join redirects to group url with group token" do
-    get :join, params: { token: @group.token, model: :group }
-    assert_response 302
-    assert_redirected_to "/#{@group.handle}"
+    assert_nil membership.reload.accepted_at
   end
 
   test "join rejects external, protocol-relative, and backslash return paths" do
@@ -148,11 +136,17 @@ class MembershipsControllerTest < ActionController::TestCase
     end
   end
 
-  test "show accepts and redirects to group" do
+  test "invitation visits preserve internal return paths and pending tokens" do
     membership = Membership.create!(group: @group, user: @invitee, accepted_at: nil)
-    get :show, params: { token: membership.token }
-    membership.reload
-    refute membership.accepted_at.present?
-    assert_redirected_to "/#{@group.handle}"
+
+    get :join, params: { model: :group, token: @group.token, back_to: '/inbox' }
+    assert_redirected_to inbox_path
+    assert_equal @group.token, session[:pending_group_token]
+
+    get :show, params: { token: membership.token, back_to: '/inbox' }
+    assert_redirected_to inbox_path
+    assert_equal membership.token, session[:pending_membership_token]
+    assert_nil membership.reload.accepted_at
   end
+
 end

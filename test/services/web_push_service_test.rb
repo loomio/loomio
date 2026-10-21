@@ -21,12 +21,51 @@ class WebPushServiceTest < ActiveSupport::TestCase
   end
 
   test "successful delivery refreshes the subscription" do
-    WebPush.stub(:payload_send, true) do
-      assert WebPushService.deliver!(subscription: @subscription, payload: { title: "Review" })
-    end
+    @subscription.update!(failure_count: 3, last_seen_at: 1.day.ago)
+    payload = { title: "Review", url: "/dashboard" }
+    delivered = nil
 
-    assert_equal 0, @subscription.reload.failure_count
-    assert @subscription.last_seen_at
+    freeze_time do
+      WebPush.stub(:payload_send, ->(**options) { delivered = options; true }) do
+        assert WebPushService.deliver!(subscription: @subscription, payload: payload)
+      end
+
+      assert_equal({
+        message: payload.to_json,
+        endpoint: @subscription.endpoint,
+        p256dh: @subscription.p256dh_key,
+        auth: @subscription.auth_key,
+        vapid: {
+          subject: "mailto:admin@example.test",
+          public_key: "public-key",
+          private_key: "private-key"
+        }
+      }, delivered)
+      assert_equal 0, @subscription.reload.failure_count
+      assert_equal Time.current, @subscription.last_seen_at
+    end
+  end
+
+  test "configuration requires every VAPID setting" do
+    %w[VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT].each do |key|
+      value = ENV.delete(key)
+
+      assert_not WebPushService.configured?, "Push was enabled without #{key}"
+
+      ENV[key] = value
+    end
+  end
+
+  test "incomplete configuration prevents delivery" do
+    ENV.delete('VAPID_PRIVATE_KEY')
+
+    WebPush.stub(:payload_send, ->(**) { flunk "Attempted delivery without VAPID configuration" }) do
+      error = assert_raises(RuntimeError) do
+        WebPushService.deliver!(subscription: @subscription, payload: { title: "Review" })
+      end
+
+      assert_equal "Web Push is not configured", error.message
+    end
   end
 
   test "an expired browser subscription is revoked without retrying" do

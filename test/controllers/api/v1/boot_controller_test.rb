@@ -38,6 +38,23 @@ class Api::V1::BootControllerTest < ActionController::TestCase
     end
   end
 
+  test 'system reload requires an enabled flag and a different release even for a current client' do
+    previous = ENV['LOOMIO_SYSTEM_RELOAD']
+    Version.stub(:current, '3.10.0') do
+      [nil, 'enabled'].each do |enabled|
+        enabled ? ENV['LOOMIO_SYSTEM_RELOAD'] = enabled : ENV.delete('LOOMIO_SYSTEM_RELOAD')
+        [AppConfig.release, 'older-release'].each do |release|
+          get :version, params: { version: '3.10.0', release: release }, format: :json
+
+          assert_response :success
+          assert_equal !!(enabled && release != AppConfig.release), !!response.parsed_body.fetch('reload')
+        end
+      end
+    end
+  ensure
+    previous.nil? ? ENV.delete('LOOMIO_SYSTEM_RELOAD') : ENV['LOOMIO_SYSTEM_RELOAD'] = previous
+  end
+
   test 'version prompts clients without a version to reload' do
     get :version, params: {release: AppConfig.release}, format: :json
 

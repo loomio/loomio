@@ -10,6 +10,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
       SAML_IDP_METADATA
       SAML_IDP_METADATA_URL
       SAML_ISSUER
+      SAML_ALLOW_IDP_INITIATED
       SAML_ATTR_EMAIL
       SAML_ATTR_NAME
       SAML_ATTR_GIVEN_NAME
@@ -54,6 +55,32 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal '/some/path', session[:back_to]
     assert_equal '_saml_request', session[:saml_request_id]
     assert_redirected_to 'https://saml.provider.com/login?SAMLRequest=...'
+    assert_equal saml_oauth_callback_url, @mock_settings.assertion_consumer_service_url
+    assert_equal ENV.fetch('SAML_ISSUER'), @mock_settings.issuer
+    assert_equal saml_unauthorize_url, @mock_settings.assertion_consumer_logout_service_url
+    assert_equal 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress', @mock_settings.name_identifier_format
+    assert_equal XMLSecurity::Document::SHA256, @mock_settings.security[:digest_method]
+    assert_equal XMLSecurity::Document::RSA_SHA256, @mock_settings.security[:signature_method]
+    assert_equal true, @mock_settings.security[:want_assertions_signed]
+  end
+
+  test "uses configured inline metadata and the default issuer without fetching remote metadata" do
+    ENV['SAML_IDP_METADATA'] = '<metadata/>'
+    ENV.delete('SAML_ISSUER')
+    parser = Minitest::Mock.new
+    parser.expect(:parse, @mock_settings, [ENV.fetch('SAML_IDP_METADATA')])
+    auth_request = Minitest::Mock.new
+    auth_request.expect(:uuid, '_saml_request')
+    auth_request.expect(:create, 'https://saml.provider.com/login', [@mock_settings])
+
+    OneLogin::RubySaml::IdpMetadataParser.stub(:new, parser) do
+      OneLogin::RubySaml::Authrequest.stub(:new, auth_request) { get :oauth }
+    end
+
+    assert_redirected_to 'https://saml.provider.com/login'
+    assert_equal saml_metadata_url, @mock_settings.issuer
+    parser.verify
+    auth_request.verify
   end
 
   test "stores referrer as back_to when it is a relative path" do
@@ -559,6 +586,19 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_response 401
     json = JSON.parse(response.body)
     assert_equal 'SAML request state missing', json['error']
+  end
+
+  test "allows identity-provider initiated login only when explicitly configured" do
+    ENV['SAML_ALLOW_IDP_INITIATED'] = '0'
+    with_saml_mocks do
+      session.delete(:saml_request_id)
+      assert_difference 'Session.count', 1 do
+        post :create, params: { SAMLResponse: 'signed-provider-response' }, format: :json
+      end
+    end
+
+    assert_redirected_to dashboard_path
+    assert @controller.current_user.is_logged_in?
   end
 
   test "returns html error when SAML request state is missing" do

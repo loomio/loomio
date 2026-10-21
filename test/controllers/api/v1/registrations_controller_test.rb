@@ -211,6 +211,29 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil user.reload.name
   end
 
+  test "completion rejects a proof revoked after lookup before the transaction rechecks it" do
+    user = User.create!(email: 'revoked-completion-race@example.com', email_verified: true)
+    @controller.stage_account_completion(user)
+    proof = @controller.pending_account_completion_proof
+    assert proof.expires_at.future?
+
+    # Another request can revoke the stored proof after this request has
+    # selected it, while this request waits for the account lock.
+    stale_lookup = -> do
+      AccountCompletionProof.where(id: proof.id).delete_all
+      proof
+    end
+    @controller.stub(:pending_account_completion_proof, stale_lookup) do
+      assert_no_difference 'Session.count' do
+        post :complete, params: {user: {name: 'Too late', legal_accepted: true}}
+      end
+    end
+
+    assert_response :unauthorized
+    assert_nil user.reload.name
+    assert_nil user.legal_accepted_at
+  end
+
   test "legacy cookie-only completion state cannot create a session" do
     user = User.create!(email: "legacy-completion@example.com", email_verified: false)
     session[:pending_account_completion] = { user_id: user.id, authenticated_at: Time.current.to_i }

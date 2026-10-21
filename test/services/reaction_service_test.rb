@@ -62,6 +62,8 @@ class ReactionServiceTest < ActiveSupport::TestCase
     end
 
     assert publications.any? { |models, options| models == [ @reaction ] && options[:group_id] == @group.id }
+    recipient_ids = publications.filter_map { |models, options| options[:user_id] if models == [@reaction] }
+    assert_equal users(:guest_quiet, :guest_normal, :guest_admin_normal, :guest_loud, :former_member_guest).map(&:id).sort, recipient_ids.sort
   end
 
   test "rolls back reaction creation when notification creation fails" do
@@ -266,12 +268,18 @@ class ReactionServiceTest < ActiveSupport::TestCase
     comment = Comment.create!(parent: topics(:direct_topic).topicable, author: users(:guest_normal), body: "direct comment")
     reaction, notification = create_notified_reaction(reactable: comment, actor: users(:guest_loud))
 
-    assert_no_difference [ -> { Notification.count }, -> { NotificationDelivery.count } ] do
-      ReactionService.update(reaction: reaction, params: { reaction: "👍" }, actor: users(:guest_loud))
+    publications = []
+    MessageChannelService.stub(:publish_models, ->(models, **options) { publications << [models, options] }) do
+      assert_no_difference [ -> { Notification.count }, -> { NotificationDelivery.count } ] do
+        ReactionService.update(reaction: reaction, params: { reaction: "👍" }, actor: users(:guest_loud))
+      end
     end
 
     assert_equal "👍", notification.reload.translation_values["reaction"]
     assert_empty notification.notification_deliveries
+    reaction_publications = publications.select { |models, _options| models == [reaction] }
+    assert_equal users(:guest_quiet, :guest_normal, :guest_admin_normal, :guest_loud).map(&:id).sort,
+                 reaction_publications.map { |_models, options| options.fetch(:user_id) }.sort
   end
 
   test "revoked members cannot update an existing reaction notification" do

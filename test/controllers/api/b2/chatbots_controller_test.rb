@@ -89,6 +89,7 @@ class Api::B2::ChatbotsControllerTest < ActionController::TestCase
     assert_response :success
     chatbot = Chatbot.find(json.fetch("chatbots").first.fetch("id"))
     assert_equal @admin, chatbot.author
+    assert_equal "https://hooks.example.test/created", json.fetch("chatbots").first.fetch("server")
 
     SafeHttpService.stub(:safe_to_fetch?, true) do
       patch :update, params: {
@@ -102,11 +103,14 @@ class Api::B2::ChatbotsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "Updated through API", chatbot.reload.name
     assert_equal @group, chatbot.group
+    assert_equal "https://hooks.example.test/updated", json.fetch("chatbots").first.fetch("server")
+    assert_equal "Updated through API", json.fetch("chatbots").first.fetch("name")
 
     delete :destroy, params: { id: chatbot.id }
 
     assert_response :success
     refute Chatbot.exists?(chatbot.id)
+    assert_equal({ "success" => "success" }, json)
   end
 
   test "group admin can test a webhook destination" do
@@ -118,6 +122,18 @@ class Api::B2::ChatbotsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal({ server: "https://hooks.example.test/check", kind: "slack_webhook" }, published_params)
+  end
+
+  test "webhook checks reject non-coordinators before sending to the supplied destination" do
+    ChatbotService.stub(:publish_test!, ->(**) { flunk 'unauthorized webhook must not be sent' }) do
+      %i[member_normal guest_admin_normal former_member_loud alien server_admin].each do |role|
+        actor = users(role)
+        actor.update_columns(api_key: "webhook-check-#{SecureRandom.hex(8)}")
+        @request.headers['Authorization'] = "Bearer #{actor.api_key}"
+        post :check, params: { group_id: @group.id, server: 'https://hooks.example.test/check' }
+        assert_response :not_found
+      end
+    end
   end
 
   test "ordinary group member cannot manage webhooks" do

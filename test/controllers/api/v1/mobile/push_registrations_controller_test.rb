@@ -53,6 +53,26 @@ class Api::V1::Mobile::PushRegistrationsControllerTest < ActionDispatch::Integra
     assert_response :bad_request
   end
 
+  test "requires JSON and limits the raw test body before sending an event" do
+    create_registration
+    Mobile::RelayService.stub(:send_test!, ->(**) { flunk 'invalid requests must not send an event' }) do
+      [['{}', 'text/plain'], ['{}' + (' ' * 1_023), 'application/json']].each do |body, content_type|
+        post '/api/v1/mobile/push-registration/test', params: body, headers: bearer_headers.merge('CONTENT_TYPE' => content_type)
+        assert_response :bad_request
+        assert_equal 'invalid_request', response.parsed_body.fetch('error')
+      end
+    end
+  end
+
+  test "accepts an empty JSON test body at the byte limit" do
+    registration = create_registration
+    Mobile::RelayService.stub(:send_test!, ->(registration:) { assert_equal @pair[:device].id, registration.mobile_device_id; true }) do
+      post '/api/v1/mobile/push-registration/test', params: '{}' + (' ' * 1_022),
+        headers: bearer_headers.merge('CONTENT_TYPE' => 'application/json')
+    end
+    assert_response :accepted
+  end
+
   test "does not expose relay failures" do
     create_registration
 

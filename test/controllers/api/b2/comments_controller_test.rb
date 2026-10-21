@@ -34,6 +34,20 @@ class Api::B2::CommentsControllerTest < ActionController::TestCase
     assert_equal 'Created with bearer authentication', json['comments'][0]['body']
   end
 
+  test "create honors an explicit comment parent when discussion fallback is also supplied" do
+    parent = CommentService.create(comment: Comment.new(parent: @discussion, body: 'Parent API comment'), actor: @user)
+    post :create, params: {
+      body: 'Nested API reply', parent_type: 'Comment', parent_id: parent.id,
+      discussion_id: discussions(:public_discussion).id, api_key: @user.api_key
+    }, as: :json
+
+    assert_response :success
+    reply = Comment.find(json.fetch('comments').first.fetch('id'))
+    assert_equal parent, reply.parent
+    assert_equal parent.topic_id, reply.topic_id
+    assert_equal 'Nested API reply', json.fetch('comments').first.fetch('body')
+  end
+
   test "update happy case" do
     @discussion.group.update!(members_can_edit_comments: true)
     comment = create_comment!

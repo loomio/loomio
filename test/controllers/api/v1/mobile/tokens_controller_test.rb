@@ -73,6 +73,36 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
     assert_equal "invalid_request", JSON.parse(response.body)["error"]
   end
 
+  test "rejects an oversized token body before consuming its authorization code and accepts the byte limit" do
+    body = URI.encode_www_form(grant_type: 'authorization_code', client_id: Mobile::AuthenticationService::CLIENT_ID,
+      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI, code: @code, code_verifier: @verifier) + '&padding='
+    body += 'x' * (4_096 - body.bytesize)
+    headers = { 'CONTENT_TYPE' => 'application/x-www-form-urlencoded' }
+
+    assert_no_difference 'MobileDevice.count' do
+      post '/api/v1/mobile/token', params: body + 'x', headers: headers
+    end
+    assert_response :bad_request
+    assert_equal 'invalid_request', response.parsed_body.fetch('error')
+    assert_equal 'no-store', response.headers['Cache-Control']
+    assert_equal 'no-cache', response.headers['Pragma']
+
+    post '/api/v1/mobile/token', params: body, headers: headers
+    assert_response :success
+    assert_equal 'Bearer', response.parsed_body.fetch('token_type')
+  end
+
+  test "missing and oversized required parameters are invalid requests" do
+    ['', 'x' * 513].each do |client_id|
+      post '/api/v1/mobile/token', params: { grant_type: 'authorization_code', client_id: client_id,
+        redirect_uri: Mobile::AuthenticationService::REDIRECT_URI, code: @code, code_verifier: @verifier }
+      assert_response :bad_request
+      assert_equal 'invalid_request', response.parsed_body.fetch('error')
+      assert_equal 'no-store', response.headers['Cache-Control']
+      assert_equal 'no-cache', response.headers['Pragma']
+    end
+  end
+
   test "issues a web-session ticket only for a valid mobile bearer token" do
     pair = Mobile::AuthenticationService.exchange_authorization_code!(
       code: @code,

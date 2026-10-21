@@ -50,6 +50,12 @@ class SubscriptionPortalControllerTest < ActionController::TestCase
     assert_not_requested :post, "https://subscriptions.example/api/v1/sessions"
   end
 
+  test "a coordinator with one enabled organization goes directly to its portal" do
+    get :index
+
+    assert_redirected_to subscription_portal_group_path(@group.id)
+  end
+
   test "lists subscription links when the coordinator administers several organizations" do
     other_group = Group.new(name: "Other Cooperative", group_privacy: "secret")
     other_group.creator = @user

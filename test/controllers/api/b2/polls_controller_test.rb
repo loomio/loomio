@@ -13,6 +13,27 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "show returns the requested private poll only to authorized active API users" do
+    record = PollService.create(params: { topic_id: topics(:discussion_topic).id, title: 'Private API poll', poll_type: 'proposal', poll_option_names: ['Yes', 'No'], closing_at: 3.days.from_now }, actor: users(:admin))
+    %i[member_normal guest_normal former_member_guest alien former_member_loud server_admin inactive_member_loud].each do |role|
+      actor = users(role)
+      actor.update_columns(api_key: "show-poll-#{SecureRandom.hex(8)}")
+      @request.headers['Authorization'] = "Bearer #{actor.api_key}"
+
+      get :show, params: { id: record.id }
+
+      if %i[member_normal guest_normal former_member_guest].include?(role)
+        assert_response :success
+        payload = response.parsed_body.fetch('polls').first
+        assert_equal record.id, payload.fetch('id'), role.to_s
+        assert_equal record.title, payload.fetch('title'), role.to_s
+      else
+        assert_response :forbidden
+        refute_includes response.body, record.title, role.to_s
+      end
+    end
+  end
+
   test "create happy case no notifications" do
     post :create, params: {
       group_id: @group.id,

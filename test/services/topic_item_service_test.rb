@@ -59,6 +59,10 @@ class TopicItemServiceTest < ActiveSupport::TestCase
   end
 
   test 'item author cannot move items without administering the source topic' do
+    @target.topic.add_admin!(@member, @admin)
+    assert @member.can?(:move_comments, @target.topic)
+    assert_not @member.can?(:move_comments, @source.topic)
+
     assert_raises CanCan::AccessDenied do
       TopicItemService.move_comments(topic: @target.topic, actor: @member, params: move_params)
     end

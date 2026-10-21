@@ -80,6 +80,9 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
   test "safe_to_fetch? rejects multi-A-record where any IP is private" do
     with_dns('mixed.test' => ['93.184.216.34', '10.0.0.1']) do
       refute SafeHttpService.safe_to_fetch?('http://mixed.test/')
+      Net::HTTP.stub(:new, ->(*) { flunk 'mixed public/private DNS must not open a connection' }) do
+        assert_nil SafeHttpService.pinned_get('http://mixed.test/')
+      end
     end
   end
 
@@ -118,12 +121,15 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
       WebMock.stub_request(:get, 'http://b.test/').
         to_return(status: 302, headers: { 'Location' => 'http://a.test/' })
       assert_nil SafeHttpService.fetch('http://a.test/')
+      assert_requested :get, 'http://a.test/', times: 2
+      assert_requested :get, 'http://b.test/', times: 2
     end
   end
 
   test "fetch returns link preview metadata as plain text" do
     with_dns('preview.test' => ['93.184.216.34']) do
-      WebMock.stub_request(:get, 'http://preview.test/').to_return(
+      WebMock.stub_request(:get, 'http://preview.test/').to_return(status: 302, headers: { 'Location' => '/target' })
+      WebMock.stub_request(:get, 'http://preview.test/target').to_return(
         status: 200,
         body: <<~HTML
           <html>
@@ -139,6 +145,56 @@ class SafeHttpServiceTest < ActiveSupport::TestCase
 
       assert_equal 'Quarterly update', preview[:title]
       assert_equal 'Fish & Chips — 2 < 3; read the report', preview[:description]
+      assert_equal 'http://preview.test/target', preview[:url]
+    end
+  end
+
+  test "outbound requests pin the validated address and preserve TLS timeouts headers and body" do
+    connection = Net::HTTP.new('webhook.test', 443)
+    response = Net::HTTPOK.new('1.1', '200', 'OK')
+    requests = []
+    dns_queries = []
+    resolve = lambda do |host|
+      dns_queries << host
+      dns_queries.length == 1 ? ['93.184.216.34'] : ['169.254.169.254']
+    end
+    build_connection = lambda do |host, port|
+      assert_equal ['webhook.test', 443], [host, port]
+      connection
+    end
+
+    Resolv.stub(:getaddresses, resolve) do
+      Net::HTTP.stub(:new, build_connection) do
+        connection.stub(:start, ->(&block) { block.call(connection) }) do
+          connection.stub(:request, ->(request) { requests << request; response }) do
+            assert_same response, SafeHttpService.pinned_request(:post, 'https://webhook.test/hook',
+              headers: { 'Content-Type' => 'application/json' }, body: '{"event":"changed"}', timeout: 3)
+          end
+        end
+      end
+    end
+
+    assert_equal ['webhook.test'], dns_queries
+    assert_equal '93.184.216.34', connection.ipaddr
+    assert connection.use_ssl?
+    assert_equal 3, connection.open_timeout
+    assert_equal 3, connection.read_timeout
+    request = requests.sole
+    assert_equal 'POST', request.method
+    assert_equal '/hook', request.path
+    assert_equal 'application/json', request['Content-Type']
+    assert_equal '{"event":"changed"}', request.body
+  end
+
+  test "safe_open returns a successful body only within the byte limit" do
+    with_dns('download.test' => ['93.184.216.34']) do
+      WebMock.stub_request(:get, 'https://download.test/file').to_return(status: 200, body: 'abc')
+      assert_equal 'abc', SafeHttpService.safe_open('https://download.test/file', max_bytes: 3).read
+      assert_nil SafeHttpService.safe_open('https://download.test/file', max_bytes: 2)
+
+      WebMock.stub_request(:get, 'https://download.test/file').to_return(status: 404, body: 'abc')
+      assert_nil SafeHttpService.safe_open('https://download.test/file', max_bytes: 3)
+      assert_nil SafeHttpService.safe_open('http://169.254.169.254/file')
     end
   end
 end

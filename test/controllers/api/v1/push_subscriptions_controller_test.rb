@@ -21,6 +21,7 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert subscription.reload.revoked_at
+    assert_equal({}, response.parsed_body)
   end
 
   test "moves an existing browser endpoint to the newly signed-in account and session" do
@@ -107,6 +108,7 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
     assert_equal Current.session, subscription.reload.session
     assert_equal "new-auth", subscription.auth_key
     assert_equal "Laptop browser", subscription.name
+    assert_equal subscription.id, response.parsed_body.fetch("push_subscriptions").first.fetch("id")
   end
 
   test "reconciliation disables a subscription owned by another session for the same user" do
@@ -201,6 +203,7 @@ class Api::V1::PushSubscriptionsControllerTest < ActionController::TestCase
     end
 
     assert_response :success
+    assert_equal({}, response.parsed_body)
   end
 
   test "does not send a test notification to another user subscription" do

@@ -38,6 +38,7 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     assert_equal true, user['active']
     assert_nil user['deactivated_at']
     assert_equal @identity.uid, user['identities'].first['uid']
+    assert_equal %w[email id identity_type name uid], user['identities'].first.keys.sort
   end
 
   test "index filters users by admin status" do
@@ -131,6 +132,25 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
     assert_equal @user.id, json['user']['id']
   end
 
+  test "administrative access requires a configured key longer than sixteen characters" do
+    [nil, '', 'k' * 16].each do |key|
+      key.nil? ? ENV.delete('B3_API_KEY') : ENV['B3_API_KEY'] = key
+      @request.headers['Authorization'] = key.present? ? "Bearer #{key}" : nil
+
+      assert_no_enqueued_jobs do
+        post :deactivate, params: { id: @user.id }
+      end
+      assert_response :forbidden
+      assert_nil @user.reload.deactivated_at
+    end
+
+    ENV['B3_API_KEY'] = 'k' * 17
+    @request.headers['Authorization'] = "Bearer #{ENV.fetch('B3_API_KEY')}"
+    get :show, params: { id: @user.id }
+    assert_response :success
+    assert_equal @user.id, json.fetch('user').fetch('id')
+  end
+
   test "deactivate happy case" do
     post :deactivate, params: { id: @user.id }
     assert_response 200
@@ -141,8 +161,12 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
 
   test "cannot deactivate deactivated user" do
     @user.update_column(:deactivated_at, DateTime.now)
-    post :deactivate, params: { id: @user.id }
-    assert_response 404
+    assert_no_enqueued_jobs do
+      post :deactivate, params: { id: @user.id }
+      assert_response :not_found
+      post :deactivate_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
+      assert_response :not_found
+    end
   end
 
   test "deactivate by identity" do
@@ -190,8 +214,12 @@ class Api::B3::UsersControllerTest < ActionController::TestCase
   end
 
   test "cannot reactivate activated user" do
-    post :reactivate, params: { id: @user.id }
-    assert_response 404
+    assert_no_enqueued_jobs do
+      post :reactivate, params: { id: @user.id }
+      assert_response :not_found
+      post :reactivate_by_identity, params: { identity_type: @identity.identity_type, uid: @identity.uid }
+      assert_response :not_found
+    end
   end
 
   test "reactivate by identity" do

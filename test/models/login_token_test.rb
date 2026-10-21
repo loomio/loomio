@@ -8,7 +8,7 @@ class LoginTokenTest < ActiveSupport::TestCase
 
   test "has a code" do
     token = LoginToken.new(user: users(:user))
-    assert token.code.present?
+    assert_match(/\A[0-9]{6}\z/, token.code.to_s)
   end
 
   test "is useable by default" do
@@ -35,6 +35,32 @@ class LoginTokenTest < ActiveSupport::TestCase
 
     assert_equal LoginToken::MAX_FAILED_CODE_ATTEMPTS, token.failed_attempts
     assert token.used
+  end
+
+  test "failed attempts below the limit preserve the remaining opportunity" do
+    token = LoginToken.create!(user: users(:user), failed_attempts: LoginToken::MAX_FAILED_CODE_ATTEMPTS - 2)
+
+    token.record_failed_code_attempt!
+
+    assert_equal LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1, token.reload.failed_attempts
+    assert_not token.used
+    assert token.useable?
+  end
+
+  test "a token expires at its exact deadline" do
+    freeze_time do
+      token = LoginToken.create!(user: users(:user))
+      travel_to(token.expires_at)
+      assert_not token.useable?
+    end
+  end
+
+  test "a sign-in token still identifies its unverified account" do
+    account = users(:member_normal)
+    account.update!(email_verified: false)
+    token = LoginToken.create!(user: account)
+
+    assert_equal account, LoginToken.find(token.id).user
   end
 
   test "is not useable if it is old" do

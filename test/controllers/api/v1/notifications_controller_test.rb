@@ -341,6 +341,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     post :viewed
 
     assert_response :success
+    assert_equal({ "success" => "ok" }, JSON.parse(response.body))
     assert_not_nil user_delivery.reload.viewed_at
     assert_nil admin_delivery.reload.viewed_at
   end

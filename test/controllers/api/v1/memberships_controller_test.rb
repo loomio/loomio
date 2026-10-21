@@ -188,6 +188,63 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'pendingmember', member_user.username
   end
 
+  test 'coordinators can name verified nameless members and rename unverified named members' do
+    coordinator = users(:member_normal)
+    @test_group.add_admin!(coordinator)
+    member = users(:member_loud)
+    sign_in coordinator
+
+    [{name: nil, email_verified: true}, {name: 'Invited name', email_verified: false}].each do |profile|
+      member.update!(profile)
+
+      post :user_name, params: {id: member.id, name: 'Member supplied name'}
+
+      assert_response :success
+      assert_equal 'Member supplied name', member.reload.name
+    end
+  end
+
+  test 'coordinators cannot rename verified named members or people outside their groups' do
+    coordinator = users(:member_normal)
+    @test_group.add_admin!(coordinator)
+    sign_in coordinator
+
+    [[users(:member_loud), true], [users(:alien), false]].each do |member, verified|
+      member.update!(email_verified: verified)
+      original_name = member.name
+
+      post :user_name, params: {id: member.id, name: 'Forbidden name'}
+
+      assert_response :forbidden
+      assert_equal original_name, member.reload.name
+    end
+  end
+
+  test 'filtered membership lists expose peer emails only to group coordinators' do
+    coordinator = users(:member_normal)
+    member = users(:member_quiet)
+    peer = users(:member_loud)
+    @test_group.add_admin!(coordinator)
+    membership = @test_group.membership_for(peer)
+
+    [[coordinator, true], [member, false]].each do |actor, may_see_email|
+      sign_in actor
+      get :index, params: {group_id: @test_group.id, user_xids: peer.id.to_s}
+
+      assert_response :success
+      rows = response.parsed_body.fetch('memberships')
+      assert_equal [membership.id], rows.map { |row| row.fetch('id') }
+      if may_see_email
+        assert_equal peer.email, rows.first.fetch('user_email')
+      else
+        assert_not rows.first.key?('user_email')
+        assert_not rows.first.key?('weight')
+        peer_user = response.parsed_body.fetch('users').find { |user| user.fetch('id') == peer.id }
+        assert_not peer_user.key?('email')
+      end
+    end
+  end
+
   # ===== Set Volume Tests =====
 
   test 'weight editor pages active memberships by name with a total' do
