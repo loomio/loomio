@@ -103,7 +103,6 @@ class Api::V1::PasskeyCredentialsController < Api::V1::RestfulController
       signed_in_via_login_code: false,
       authentication_redirect: authentication_return_path
     ).compact
-    EventBus.broadcast('session_create', user)
   rescue WebAuthn::Error, ActiveRecord::RecordNotFound, OpenSSL::PKey::PKeyError, ArgumentError
     Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: "invalid_passkey" })
     render json: { errors: { passkey: [I18n.t('auth_form.passkey_authentication_failed')] } }, status: :unauthorized

@@ -33,7 +33,6 @@ class Api::V1::SessionsController < ApplicationController
         signed_in_via_password: method == "password",
         authentication_redirect: authentication_return_path
       ).compact
-      EventBus.broadcast('session_create', user)
     end
     session.delete(:pending_login_token)
   end

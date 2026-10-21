@@ -175,6 +175,5 @@ class StanceService
   # def self.destroy(stance:, actor:)
   #   actor.ability.authorize! :destroy, stance
   #   stance.destroy
-  #   EventBus.broadcast 'stance_destroy', stance, actor
   # end
 end

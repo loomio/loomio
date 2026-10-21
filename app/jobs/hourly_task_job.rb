@@ -25,7 +25,6 @@ class HourlyTaskJob < ApplicationJob
         CleanupOrphanRecordsWorker.perform_later
         CleanupService.warn_and_discard_expired_trial_groups
       end
-      EventBus.broadcast('loomio_daily_tick')
       PublishReviewDueWorker.perform_later
     end
   end

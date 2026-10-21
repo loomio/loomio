@@ -17,7 +17,6 @@ class ReactionService
       transaction.after_commit do
         Sentry.metrics.count("reaction.create", attributes: { reaction: reaction.reaction })
         publish_reaction(reaction)
-        EventBus.broadcast 'reaction_create', reaction, actor
       end
     end
 
@@ -29,7 +28,6 @@ class ReactionService
 
     reaction.destroy
     Sentry.metrics.count("reaction.destroy", attributes: { reaction: reaction.reaction })
-    EventBus.broadcast 'reaction_destroy', reaction, actor
   end
 
   # Saving the reaction serializes changes to an existing record. Lock its latest
