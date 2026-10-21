@@ -23,7 +23,7 @@ class DeliverNotificationEmailWorkerTest < ActiveSupport::TestCase
   end
 
   test 'suppressed mail is not marked sent' do
-    @recipient.update!(complaints_count: 1)
+    EmailSuppressionService.record!(email: @recipient.email, reason: 'complaint', source_key: 'test:complaint')
     assert_no_difference 'ActionMailer::Base.deliveries.count' do
       DeliverNotificationEmailWorker.perform_now(@delivery.id)
     end

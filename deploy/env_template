@@ -57,10 +57,10 @@ SMTP_PASSWORD=smtppassword
 SMTP_USE_SSL=1
 # to disable SSL, comment out line (rather than changing to 0)
 
-# Optional SES Message Insights polling; sending continues to use SMTP.
-# Enable VDM in this region and grant the job role ses:GetMessageInsights.
+# Optional read-only SES account suppression check in the admin interface.
+# Grant the web process ses:GetSuppressedDestination in this region.
 # Uses the AWS SDK credential chain, not SMTP_USERNAME/SMTP_PASSWORD.
-# SES_MESSAGE_INSIGHTS_REGION=us-east-1
+# SES_SUPPRESSION_REGION=us-east-1
 
 # Number of webserver processes and threads. See https://github.com/puma/puma
 WEB_CONCURRENCY=auto

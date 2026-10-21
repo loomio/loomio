@@ -10,6 +10,25 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "only instance administrators receive email block status in member lists" do
+    recipient = users(:member_normal)
+    EmailSuppressionService.record!(email: recipient.email, reason: 'complaint', source_key: 'test:member-list')
+    memberships(:user_membership).update!(admin: true)
+    [@user, users(:member)].each do |actor|
+      sign_in actor
+      get :index, params: {group_id: @test_group.id, user_ids: [recipient.id]}
+      assert_response :success
+      payload = response.parsed_body.fetch('users').find { |record| record['id'] == recipient.id }
+      assert payload
+      refute payload.key?('email_delivery_blocked')
+    end
+    sign_in @admin
+    get :index, params: {group_id: @test_group.id, user_ids: [recipient.id]}
+    assert_response :success
+    payload = response.parsed_body.fetch('users').find { |record| record['id'] == recipient.id }
+    assert_equal true, payload.fetch('email_delivery_blocked')
+  end
+
   test "join group responds with the created membership" do
     group = Group.create!(
       name: "Open group #{SecureRandom.hex(4)}",

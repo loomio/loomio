@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_21_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -218,6 +218,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
     t.index ["topic_id"], name: "index_discussions_on_topic_id"
+  end
+
+  create_table "email_suppressions", force: :cascade do |t|
+    t.string "clear_method"
+    t.datetime "cleared_at"
+    t.bigint "cleared_by_id"
+    t.datetime "created_at", null: false
+    t.string "email_sha256", null: false
+    t.bigint "notification_delivery_event_id"
+    t.datetime "occurred_at"
+    t.string "reason", null: false
+    t.string "source_key", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cleared_by_id"], name: "index_email_suppressions_on_cleared_by_id"
+    t.index ["email_sha256", "id"], name: "index_email_suppressions_on_email_sha256_and_id"
+    t.index ["email_sha256"], name: "index_email_suppressions_active_address", where: "(cleared_at IS NULL)"
+    t.index ["notification_delivery_event_id"], name: "index_email_suppressions_on_notification_delivery_event_id"
+    t.index ["source_key"], name: "index_email_suppressions_on_source_key", unique: true
   end
 
   create_table "forward_email_rules", force: :cascade do |t|
@@ -491,7 +509,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
     t.string "email_address"
     t.string "email_message_id"
     t.text "email_subject"
-    t.datetime "email_sync_due_at"
     t.bigint "notification_id", null: false
     t.string "provider_message_id"
     t.bigint "recipient_id", null: false
@@ -500,7 +517,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
     t.index ["email_message_id"], name: "index_notification_deliveries_on_email_message_id", unique: true
-    t.index ["email_sync_due_at", "id"], name: "index_notification_deliveries_on_email_sync_due", where: "(email_sync_due_at IS NOT NULL)"
     t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
     t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
     t.index ["provider_message_id"], name: "index_notification_deliveries_on_provider_message_id"
@@ -509,6 +525,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
   end
 
   create_table "notification_delivery_events", force: :cascade do |t|
+    t.string "bounce_type"
     t.datetime "created_at", null: false
     t.text "detail"
     t.string "kind", null: false
@@ -1283,9 +1300,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
     t.string "avatar_initials", limit: 255
     t.string "avatar_kind", limit: 255, default: "initials", null: false
     t.boolean "bot", default: false, null: false
-    t.integer "bounces_count", default: 0, null: false
     t.string "city"
-    t.integer "complaints_count", default: 0, null: false
     t.string "content_locale"
     t.string "country"
     t.datetime "created_at", precision: nil
@@ -1360,6 +1375,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
   add_foreign_key "discussions", "topics", deferrable: :deferred
+  add_foreign_key "email_suppressions", "notification_delivery_events", on_delete: :nullify
+  add_foreign_key "email_suppressions", "users", column: "cleared_by_id", on_delete: :nullify
   add_foreign_key "group_follows", "groups", on_delete: :cascade
   add_foreign_key "group_follows", "users", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"

@@ -8,8 +8,7 @@ class UserSerializer < AuthorSerializer
              :avatar_url,
              :attachments,
              :date_time_pref,
-             :complaints_count,
-             :bounces_count,
+             :email_delivery_blocked,
              :sign_in_count
 
 
@@ -25,11 +24,15 @@ class UserSerializer < AuthorSerializer
     scope[:current_user_id] == object.id
   end
 
-  def include_complaints_count?
-    object.complaints_count > 0 && scope[:current_user_is_admin]
+  def email_delivery_blocked
+    if scope[:cache]
+      scope[:cache].email_delivery_blocked?(object)
+    else
+      object.email_delivery_blocked?
+    end
   end
 
-  def include_bounces_count?
-    object.bounces_count > 0 && scope[:current_user_is_admin]
+  def include_email_delivery_blocked?
+    scope[:include_email_delivery_status]
   end
 end

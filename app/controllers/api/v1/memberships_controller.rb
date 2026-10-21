@@ -175,7 +175,8 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   def index_scope
     default_scope.merge({
       membership_email_group_ids: current_user.adminable_group_ids,
-      include_inviter: true
+      include_inviter: true,
+      include_email_delivery_status: current_user.is_admin?
     })
   end
 

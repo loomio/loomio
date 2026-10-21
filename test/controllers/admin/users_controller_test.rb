@@ -110,6 +110,66 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_includes response.body, %(href="#{admin_user_path(@user)}#merge-user")
   end
 
+  test "only instance administrators can clear local blocks" do
+    block = EmailSuppressionService.record!(email: @user.email, reason: 'complaint', source_key: 'test:complaint')
+    [users(:member), users(:alien)].each do |actor|
+      sign_out
+      sign_in actor
+      post :clear_email_suppressions, params: { id: @user.id }
+      assert_redirected_to dashboard_path
+      assert_nil block.reload.cleared_at
+    end
+    sign_out
+    post :clear_email_suppressions, params: { id: @user.id }
+    assert_redirected_to dashboard_path
+    assert_nil block.reload.cleared_at
+
+    sign_in @admin
+    post :clear_email_suppressions, params: { id: @user.id }
+    assert_redirected_to admin_user_path(@user)
+    assert_equal @admin.id, block.reload.cleared_by_id
+    assert_equal 'administrator', block.clear_method
+  end
+
+  test "email provider checks are optional read only and restricted to instance administrators" do
+    previous_region = ENV['SES_SUPPRESSION_REGION']
+    ENV.delete('SES_SUPPRESSION_REGION')
+    post :check_email_provider, params: { id: @user.id }
+    assert_response :not_found
+    ENV['SES_SUPPRESSION_REGION'] = 'us-east-1'
+    sign_out
+    sign_in users(:member)
+    SesEmailSuppressionService.stub(:client, -> { raise 'must not contact SES' }) do
+      post :check_email_provider, params: { id: @user.id }
+      assert_redirected_to dashboard_path
+    end
+    sign_out
+    sign_in @admin
+    client = Aws::SESV2::Client.new(region: 'us-east-1', stub_responses: true)
+    client.stub_responses(:get_suppressed_destination, suppressed_destination: {
+      email_address: @user.email, reason: 'BOUNCE', last_update_time: Time.current
+    })
+    SesEmailSuppressionService.stub(:client, client) do
+      assert_no_difference 'EmailSuppression.count' do
+        post :check_email_provider, params: { id: @user.id }
+      end
+      assert_response :success
+      assert_includes response.body, 'SES account suppression list entry: BOUNCE'
+      assert_equal({email_address: @user.email}, client.api_requests.sole[:params])
+
+      client.stub_responses(:get_suppressed_destination, 'NotFoundException')
+      post :check_email_provider, params: { id: @user.id }
+      assert_response :success
+      assert_includes response.body, 'No SES account suppression found'
+      client.stub_responses(:get_suppressed_destination, 'AccessDeniedException')
+      post :check_email_provider, params: { id: @user.id }
+      assert_response :success
+      assert_includes response.body, 'could not be checked'
+    end
+  ensure
+    previous_region.nil? ? ENV.delete('SES_SUPPRESSION_REGION') : ENV['SES_SUPPRESSION_REGION'] = previous_region
+  end
+
   test "admin can create a one-time sign-in link" do
     assert_difference -> { @user.login_tokens.count }, 1 do
       post :login_as, params: { id: @user.id }

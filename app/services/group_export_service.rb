@@ -18,7 +18,8 @@ class GroupExportService
   COUNTER_COLUMNS_RETIRED = {
     'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
     'topics' => %w[anonymous_polls_count closed_polls_count members_count],
-    'tags' => %w[taggings_count]
+    'tags' => %w[taggings_count],
+    'users' => %w[bounces_count complaints_count]
   }.freeze
 
   RELATIONS = %w[
@@ -49,8 +50,8 @@ class GroupExportService
 
   JSON_PARAMS = {
     # Delivery transport identity belongs to the sending instance. Reusing it
-    # after import can conflict with existing IDs or poll the original send.
-    notification_deliveries: {except: %w[email_address email_subject email_message_id provider_message_id email_sync_due_at]},
+    # after import can conflict with existing IDs.
+    notification_deliveries: {except: %w[email_address email_subject email_message_id provider_message_id]},
     groups:      {except: [:token], methods: []},
     users:       {except: [:api_key,
                            :password_digest,

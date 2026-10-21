@@ -1,17 +1,20 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
-  test 'portable exports do not copy delivery transport identity or restart SES polling' do
+  test 'portable exports do not copy delivery transport identity' do
     group, admin, member = create_detached_export_group
     notification = Notification.create!(kind: 'membership_created', subject: group, actor: admin,
       recipient_user_ids: [member.id])
     delivery = NotificationDelivery.create!(notification: notification, recipient: member, channel: 'email',
       email_address: member.email, email_subject: 'Join our group', email_message_id: 'unique-local-message@loomio.test',
-      provider_message_id: 'ses-transport-identity', email_sync_due_at: Time.current, delivered_at: Time.current)
+      provider_message_id: 'ses-transport-identity', delivered_at: Time.current)
+    event = delivery.events.create!(kind: 'complained', source_key: 'test:complaint', occurred_at: Time.current)
+    EmailSuppressionService.record!(email: member.email, reason: 'complaint', source_key: 'test:export', event: event)
     filename = GroupExportService.export(group.all_groups, group.name)
     archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    refute archive.any? { |item| %w[email_suppressions notification_delivery_events].include?(item['table']) }
     record = archive.find { |item| item['table'] == 'notification_deliveries' && item.dig('record', 'id') == delivery.id }.fetch('record')
-    %w[email_address email_subject email_message_id provider_message_id email_sync_due_at].each do |column|
+    %w[email_address email_subject email_message_id provider_message_id].each do |column|
       refute record.key?(column), column
     end
     assert record.fetch('delivered_at')
@@ -22,7 +25,23 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     imported = NotificationDelivery.where.not(id: delivery.id).order(:id).last!
     assert_nil imported.email_message_id
     assert_nil imported.provider_message_id
-    assert_nil imported.email_sync_due_at
+  end
+
+  test 'old user exports cannot restore retired email counters or transport blocks' do
+    user = users(:member_normal)
+    record = GroupExportService.export_record(user, 'users').merge('bounces_count' => 9, 'complaints_count' => 3)
+    record['key'] = "legacy-email-export-#{SecureRandom.hex(8)}"
+    record['email'] = "legacy-email-import-#{SecureRandom.hex(4)}@example.com"
+    record['username'] = nil
+    Tempfile.create(['legacy-email-counts', '.json']) do |file|
+      file.puts({table: 'users', record: record}.to_json)
+      file.flush
+      assert_no_difference 'EmailSuppression.count' do
+        GroupExportService.import(file.path)
+      end
+    end
+    imported = User.find_by!(key: record.fetch('key'))
+    refute imported.email_delivery_blocked?
   end
 
   test "simultaneous same-name exports never share a temporary file" do

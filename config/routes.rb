@@ -73,6 +73,8 @@ Rails.application.routes.draw do
         put :reactivate
         delete :delete_spam
         post :delete_identity
+        post :clear_email_suppressions
+        post :check_email_provider
       end
     end
 

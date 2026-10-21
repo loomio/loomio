@@ -37,8 +37,7 @@ class DeliverNotificationEmailWorker < ApplicationJob
       # A redaction committed while SMTP was in flight must not have its
       # erased provider identifiers restored by this worker's completion.
       return if recipient.email.nil?
-      delivery.update!(delivered_at: Time.current, provider_message_id: provider_message_id,
-        email_sync_due_at: (2.minutes.from_now if provider_message_id && ENV['SES_MESSAGE_INSIGHTS_REGION'].present?))
+      delivery.update!(delivered_at: Time.current, provider_message_id: provider_message_id)
       delivery.events.create!(kind: 'sent', source_key: "application:sent:#{message.message_id}", occurred_at: delivery.delivered_at)
     end
   rescue Net::SMTPFatalError, Net::SMTPServerBusy => error

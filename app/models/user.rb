@@ -126,9 +126,19 @@ class User < ApplicationRecord
   enum :volume_push_default, {quiet: 1, normal: 2, loud: 3}, prefix: :push_default
 
   scope :active, -> { where(deactivated_at: nil) }
-  scope :no_spam_complaints, -> { where(complaints_count: 0) }
-  scope :has_spam_complaints, -> { where("complaints_count > 0") }
-  scope :has_bounces, -> { where("bounces_count > 0") }
+  scope :email_deliverable, -> {
+    where(<<~SQL)
+      NOT EXISTS (
+        SELECT 1 FROM email_suppressions
+        WHERE email_suppressions.cleared_at IS NULL
+          AND email_suppressions.email_sha256 = encode(digest(lower(btrim(users.email)), 'sha256'), 'hex')
+      )
+    SQL
+  }
+
+  def email_delivery_blocked?
+    EmailSuppression.for_address(email).active.exists?
+  end
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }

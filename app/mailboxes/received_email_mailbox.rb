@@ -7,34 +7,54 @@ class ReceivedEmailMailbox < ApplicationMailbox
       return inbound_email.bounced!
     end
 
-    return unless save_received_email(email)
+    email, was_created = save_received_email(email)
+    return unless email
 
-    attach_files_and_inline_images(email)
+    attach_files_and_inline_images(email) if was_created
     ReceivedEmailService.route(email, mail: mail)
   rescue => e
     Rails.logger.error("Error processing received email: #{e.class} #{e.message}")
+    # Feedback controls future sending. Expose failures to the routing job so
+    # they can be retried instead of silently treating them as rejected mail.
+    raise if email && EmailFeedbackService.feedback_sender?(email)
+
     inbound_email.bounced!
   end
 
   private
 
   def build_received_email
-    ReceivedEmail.new(
+    headers = mail.header.fields.to_h { |field| [ field.name, field.decoded ] }
+    headers.reject! { |name, _| name.casecmp?(EmailFeedbackService::SOURCE_INBOUND_HEADER) }
+    email = ReceivedEmail.new(
       message_id: inbound_email.message_id,
-      headers:   mail.header.fields.to_h { |f| [f.name, f.decoded] },
+      headers: headers,
       body_text: mail.text_part&.decoded || mail.decoded,
       body_html: mail.html_part&.decoded
     )
+    if EmailFeedbackService.feedback_sender?(email)
+      email.headers[EmailFeedbackService::SOURCE_INBOUND_HEADER] = inbound_email.id
+    end
+    email
   end
 
   def save_received_email(email)
     email.save!
-    true
+    [ email, true ]
   rescue ActiveRecord::RecordNotUnique
-    raise unless ReceivedEmail.exists?(message_id: email.message_id)
+    existing = ReceivedEmail.find_by(message_id: email.message_id)
+    raise unless existing
+
+    # A previous attempt may have saved the inbound record before feedback
+    # processing failed. Resume it; the service atomically records and releases
+    # feedback and handles concurrent or repeated reports idempotently.
+    if EmailFeedbackService.feedback_sender?(existing) && !existing.released? &&
+       existing.header(EmailFeedbackService::SOURCE_INBOUND_HEADER).present?
+      return [ existing, false ]
+    end
 
     Rails.logger.info("Ignored duplicate inbound email with Message-ID: #{email.message_id}")
-    false
+    [ nil, false ]
   end
 
   def attach_files_and_inline_images(email)

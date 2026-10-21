@@ -17,7 +17,8 @@ class NotificationMailerTest < ActionMailer::TestCase
         NotificationMailer.topic_item(recipient.id, notification.subject_id).deliver_now
       end
     end
-    assert delivery.reload.delivered_at?
+    assert_nil delivery.reload.delivered_at
+    assert_equal 'skipped', delivery.events.sole.kind
   end
 
   test 'a mention email links to the thread notification form' do

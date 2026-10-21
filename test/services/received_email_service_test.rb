@@ -348,7 +348,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
   # -- Bounce handling --
 
-  test "bounce email increments bounces_count" do
+  test "permanent bounce blocks the address" do
     bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
     hex = SecureRandom.hex(4)
     user = User.create!(name: "BounceUser#{hex}", email: "bounceuser#{hex}@example.com",
@@ -376,7 +376,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
       content_type: "message/delivery-status"
     )
 
-    assert_difference -> { user.reload.bounces_count }, 1 do
+    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
       ReceivedEmailService.route(email)
     end
     assert email.reload.released
@@ -393,6 +393,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
       From: #{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}
       To: #{user.email}
       Final-Recipient: rfc822; #{user.email}
+      Status: 5.1.1
     DSN
 
     email = ReceivedEmail.create!(
@@ -405,7 +406,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
       content_type: "message/delivery-status"
     )
 
-    assert_difference -> { user.reload.bounces_count }, 1 do
+    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
       ReceivedEmailService.route(email)
     end
   end
@@ -427,7 +428,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     assert email.reload.released
   end
 
-  test "complaint email increments complaints_count" do
+  test "complaint blocks the address" do
     complaints_address = ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
     user = User.create!(name: 'ComplaintUser', email: "complaintuser#{SecureRandom.hex(4)}@example.com",
                         email_verified: true, username: "complaintuser#{SecureRandom.hex(4)}")
@@ -437,12 +438,12 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
       body_text: "Complaint received"
     )
     email.attachments.attach(
-      io: StringIO.new("From: #{user.email}\nTo: notifications@loomio.com"),
+      io: StringIO.new("Feedback-Type: abuse\nOriginal-Rcpt-To: rfc822; #{user.email}\n"),
       filename: "complaint-report.txt",
       content_type: "message/feedback-report"
     )
 
-    assert_difference -> { user.reload.complaints_count }, 1 do
+    assert_difference -> { EmailSuppression.for_address(user.email).count }, 1 do
       ReceivedEmailService.route(email)
     end
     assert email.reload.released

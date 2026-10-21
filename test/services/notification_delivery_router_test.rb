@@ -176,7 +176,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "selected-recipient routers deliver to a normal-volume eligible user" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic).set_volume!(email: :normal, push: :quiet)
     TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
@@ -208,7 +208,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "directed notifications create push deliveries only for push channels" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    recipient.update!(deactivated_at: nil)
     reader = TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
     reader.set_volume!(email: :quiet, push: :normal)
     subscription = create_push_subscription(
@@ -249,7 +249,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "push routing expands an eligible user into browser and native recipients" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    recipient.update!(deactivated_at: nil)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :quiet, push: :normal)
     subscription = create_push_subscription(
@@ -316,7 +316,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "notification push delivery remains undelivered when its session has been revoked" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    recipient.update!(deactivated_at: nil)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :quiet, push: :normal)
     subscription = create_push_subscription(
@@ -342,7 +342,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "notification push delivery remains undelivered for an expired subscription" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, complaints_count: 0)
+    recipient.update!(deactivated_at: nil)
     TopicReader.for(user: recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :quiet, push: :normal)
     subscription = create_push_subscription(
@@ -366,7 +366,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "direct operational routers preserve their recipient and channel rules" do
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true)
     membership = memberships(:member_membership)
     membership.update!(inviter: @author, volume_email: :normal)
 
@@ -390,7 +390,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     membership = memberships(:member_membership)
     membership.update!(inviter: @author)
     membership.group.membership_for(@author).update!(volume_email: :normal, volume_push: :normal)
-    @author.update!(deactivated_at: nil, complaints_count: 0)
+    @author.update!(deactivated_at: nil)
     inviter_subscription = create_push_subscription(
       user: @author,
       endpoint: "https://fcm.googleapis.com/fcm/send/accepted-in-app-only-token",
@@ -408,7 +408,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     membership = memberships(:member_membership)
     recipient = membership.user
     membership.update!(volume_email: :normal, volume_push: :normal)
-    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true)
     subscription = create_push_subscription(
       user: recipient,
       endpoint: "https://fcm.googleapis.com/fcm/send/role-change-token",
@@ -425,7 +425,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "derived-recipient routers cover requests, reactions, unknown senders and group mentions" do
     admin = users(:admin)
-    admin.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    admin.update!(deactivated_at: nil, email_verified: true)
     groups(:group).membership_for(admin).update!(volume_email: :normal, volume_push: :normal)
     admin_subscription = create_push_subscription(
       user: admin,
@@ -449,7 +449,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
       reaction: "smiley"
     )
     reaction_recipient = discussions(:discussion).author
-    reaction_recipient.update!(deactivated_at: nil, complaints_count: 0)
+    reaction_recipient.update!(deactivated_at: nil)
     TopicReader.for(user: reaction_recipient, topic: discussions(:discussion).topic)
                .set_volume!(email: :normal, push: :normal)
     reaction_subscription = create_push_subscription(
@@ -468,7 +468,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_empty channels_for(unknown_sender, admin_subscription)
 
     member = users(:member)
-    member.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    member.update!(deactivated_at: nil, email_verified: true)
     groups(:group).membership_for(member).update!(volume_email: :normal)
     group_mentioned = route_notification(
       kind: "group_mentioned",
@@ -486,7 +486,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
   test "group mentions use the mentioned group volume for both external channels" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true)
     groups(:group).membership_for(recipient).update!(volume_email: :normal, volume_push: :normal)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :quiet, push: :quiet)
     subscription = create_push_subscription(
@@ -512,7 +512,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
 
   test "scheduled router matrix preserves author and voter delivery rules" do
     TopicReader.for(user: @author, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
-    @author.update!(deactivated_at: nil, complaints_count: 0)
+    @author.update!(deactivated_at: nil)
 
     review_due = route_notification(kind: "outcome_review_due", subject: @outcome)
     assert_equal %w[email in_app], channels_for(review_due, @author)
@@ -530,7 +530,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_equal [ "push" ], channels_for(closing_for_author, subscription)
 
     voter = users(:member)
-    voter.update!(deactivated_at: nil, complaints_count: 0)
+    voter.update!(deactivated_at: nil)
     TopicReader.for(user: voter, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
     stance = Stance.latest.find_or_initialize_by(poll: @poll, participant: voter)
     stance.update!(choice: "Yes", cast_at: Time.current)
@@ -570,7 +570,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     recipient_attributes = {
       normal: { volume_email: :normal },
       quiet: { volume_email: :quiet },
-      complained: { volume_email: :normal, complaints_count: 1 },
+      complained: { volume_email: :normal, email_blocked: true },
       inactive: { volume_email: :normal, deactivated_at: Time.current },
       mentioned: { volume_email: :normal },
       loud: { volume_email: :loud }
@@ -604,8 +604,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     recipient = users(:member)
     recipient.update!(
       deactivated_at: nil,
-      email_verified: true,
-      complaints_count: 0
+      email_verified: true
     )
     TopicReader.for(user: recipient, topic: discussion.topic)
                .set_volume!(email: :normal, push: :normal)
@@ -629,7 +628,7 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
   test "a mention occurrence owns every channel for a newly mentioned selected recipient" do
     discussion = discussions(:discussion)
     recipient = users(:member)
-    recipient.update!(deactivated_at: nil, email_verified: true, complaints_count: 0)
+    recipient.update!(deactivated_at: nil, email_verified: true)
     TopicReader.for(user: recipient, topic: discussion.topic).set_volume!(email: :normal, push: :normal)
     subscription = create_push_subscription(
       user: recipient,
@@ -1280,15 +1279,16 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
                 .pluck(:channel)
   end
 
-  def create_router_user(complaints_count: 0, deactivated_at: nil)
+  def create_router_user(email_blocked: false, deactivated_at: nil)
     token = SecureRandom.hex(5)
-    User.create!(
+    user = User.create!(
       name: "Router #{token}",
       email: "router-#{token}@example.test",
       email_verified: true,
-      complaints_count: complaints_count,
       deactivated_at: deactivated_at
     )
+    EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: "test:#{token}") if email_blocked
+    user
   end
 
   def normalize_other_subscribers(topic, recipient)

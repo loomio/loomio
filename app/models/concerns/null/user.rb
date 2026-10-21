@@ -62,12 +62,8 @@ module Null::User
     "html"
   end
 
-  def complaints_count
-    0
-  end
-
-  def bounces_count
-    0
+  def email_delivery_blocked?
+    false
   end
 
   def short_bio_format
