@@ -125,15 +125,24 @@ class Comment < ApplicationRecord
     under_polls(Poll.where(hide_results: :until_closed, closed_at: nil))
   end
 
-  # Position-key prefixes include the whole conversation even at capped depth.
+  # Follow domain parents so conversations remain complete when the display
+  # depth cap makes a reply a sibling of its actual parent or enclosing poll.
   def self.under_polls(polls)
     where("comments.id IN (#{<<~SQL.squish})")
-      SELECT topic_items.itemable_id FROM topic_items
-      INNER JOIN topic_items poll_items ON poll_items.topic_id = topic_items.topic_id
-        AND topic_items.position_key LIKE poll_items.position_key || '-%'
-      WHERE topic_items.itemable_type = 'Comment'
-        AND poll_items.kind = 'poll_created' AND poll_items.itemable_type = 'Poll'
-        AND poll_items.itemable_id IN (#{polls.select(:id).to_sql})
+      WITH RECURSIVE poll_comments AS (
+        SELECT id FROM comments
+        WHERE (parent_type = 'Poll' AND parent_id IN (#{polls.select(:id).to_sql}))
+          OR (parent_type = 'Stance' AND parent_id IN (
+            SELECT id FROM stances WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
+          OR (parent_type = 'Outcome' AND parent_id IN (
+            SELECT id FROM outcomes WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
+        UNION
+        SELECT comments.id FROM comments
+        JOIN poll_comments ON comments.parent_type = 'Comment' AND comments.parent_id = poll_comments.id
+      )
+      SELECT id FROM poll_comments
     SQL
   end
 

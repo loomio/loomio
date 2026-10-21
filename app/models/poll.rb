@@ -274,6 +274,18 @@ class Poll < ApplicationRecord
   around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }, prepend: true
   around_destroy :with_topics_write_lock_for_counts, prepend: true
   after_save_commit -> { ReindexPollWorker.perform_later(id) }
+  after_update :remove_hidden_comment_search_documents, if: -> { saved_changes.keys.intersect?(%w[hide_results closed_at discarded_at]) }
+
+  # Remove newly hidden conversation content in the poll's transaction. Reindex
+  # jobs can restore it after closing; searches must not wait for those jobs to
+  # stop returning a comment's text or tag-only matches.
+  def remove_hidden_comment_search_documents
+    return unless discarded? || (hide_results == 'until_closed' && closed_at.nil?)
+
+    comments = Comment.under_polls(self.class.where(id: id)).select(:id)
+    PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comments).delete_all
+  end
+  private :remove_hidden_comment_search_documents
   after_update :synchronize_stance_weights_after_vote_weights_change
 
   # Switching vote weights resets issued stances, including cast votes, so

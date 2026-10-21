@@ -90,12 +90,6 @@ export default new class AbilityService {
     const topic = item.topic();
     const user = Session.user();
     if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
-    if (item.kind === 'new_comment') {
-      for (let parent = item.parent(); parent; parent = parent.parent()) {
-        if (parent.itemableType === 'Poll' && (parent.model().discardedAt ||
-          (parent.model().hideResults !== 'off' && !parent.model().closedAt))) { return false; }
-      }
-    }
     return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
       (item.kind === 'new_discussion' && topic.group().membersCanEditDiscussions));
   }

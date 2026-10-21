@@ -246,17 +246,8 @@ class GroupExportService
       options.merge!(cursor: [:anonymous_ballot_id, :poll_option_id], order: [:asc, :asc])
     end
 
-    if records.klass <= TopicItem
-      records.find_in_batches(**options) do |batch|
-        tags_by_id = TopicItem.tags_visible.where(id: batch.map(&:id)).pluck(:id, :tags).to_h
-        batch.each do |record|
-          puts_record(record, file, ids, anonymous_ballot_ids, item_tags: tags_by_id.fetch(record.id, []))
-        end
-      end
-    else
-      records.find_each(**options) do |record|
-        puts_record(record, file, ids, anonymous_ballot_ids)
-      end
+    records.find_each(**options) do |record|
+      puts_record(record, file, ids, anonymous_ballot_ids)
     end
   end
 
@@ -329,12 +320,12 @@ class GroupExportService
     file.puts({table: 'attachments', record: obj}.to_json)
   end
 
-  def self.puts_record(record, file, ids, anonymous_ballot_ids = {}, item_tags: nil)
+  def self.puts_record(record, file, ids, anonymous_ballot_ids = {})
     table = record.class.table_name
     identity = export_record_identity(record)
     return if ids[table].include?(identity)
     ids[table] << identity
-    file.puts({table: table, record: export_archive_record(record, table, anonymous_ballot_ids, item_tags: item_tags)}.to_json)
+    file.puts({table: table, record: export_archive_record(record, table, anonymous_ballot_ids)}.to_json)
   end
 
   def self.export_record_identity(record)
@@ -343,8 +334,8 @@ class GroupExportService
     record.id
   end
 
-  def self.export_archive_record(record, table, anonymous_ballot_ids, item_tags: nil)
-    json = export_record(record, table, item_tags: item_tags)
+  def self.export_archive_record(record, table, anonymous_ballot_ids)
+    json = export_record(record, table)
 
     case record
     when AnonymousBallot
@@ -360,12 +351,8 @@ class GroupExportService
     anonymous_ballot_ids[id] ||= SecureRandom.uuid
   end
 
-  def self.export_record(record, table, item_tags: nil)
-    record.as_json(JSON_PARAMS[table]).tap do |json|
-      if record.is_a?(TopicItem)
-        json['tags'] = item_tags || (record.tags_visible? ? record.tags : [])
-      end
-    end
+  def self.export_record(record, table)
+    record.as_json(JSON_PARAMS[table])
   end
 
   def self.import(filename_or_url, reset_keys: false)

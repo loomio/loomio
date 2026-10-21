@@ -2,14 +2,14 @@ module HasTopicItems
   extend ActiveSupport::Concern
 
   included do
-    after_update :refresh_topic_tags_for_visibility, if: -> { saved_changes.keys.intersect?(%w[discarded_at closed_at hide_results]) }
+    after_update :refresh_topic_tags_for_visibility, if: -> { saved_changes.key?('discarded_at') }
     has_many :topic_items, -> { includes :user, :itemable }, as: :itemable, dependent: :destroy
     has_one :created_topic_item, ->(itemable) { where(kind: itemable.created_topic_item_kind).order(:id) },
             as: :itemable, class_name: "TopicItem"
   end
 
-  # Tag assignments survive hiding and deletion; only their shared aggregate
-  # changes. Keep that projection in the same transaction as the content change.
+  # Assignments survive discarding; only the thread summaries change. Rebuild
+  # those summaries in the same transaction as the content change.
   def refresh_topic_tags_for_visibility
     TopicItem.refresh_topic_tags!([topic_id])
   end

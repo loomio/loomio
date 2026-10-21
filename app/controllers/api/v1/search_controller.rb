@@ -14,10 +14,13 @@ class Api::V1::SearchController < Api::V1::RestfulController
       rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
     end
 
+    # Apply the existing content rule to every search, including tag-only
+    # browsing. An indexing job that started before a poll hid its results may
+    # still hold an older snapshot; stale documents must not disclose comments.
+    rel = rel.where.not(searchable_type: 'Comment', searchable_id: Comment.hidden_until_closed.select(:id))
+
     if params[:tag].present?
-      tagged = TopicItem.tags_visible.where('topic_items.tags @> ARRAY[?]::varchar[]', Array(params[:tag]))
-        .where('topic_items.itemable_type = pg_search_documents.searchable_type AND topic_items.itemable_id = pg_search_documents.searchable_id')
-      rel = rel.where(tagged.arel.exists)
+      rel = rel.where('pg_search_documents.tags @> ARRAY[?]::varchar[]', Array(params[:tag]))
     end
 
     if SEARCHABLE_TYPES.include?(params[:type])

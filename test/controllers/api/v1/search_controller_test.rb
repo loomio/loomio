@@ -81,7 +81,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert_enqueued_with(job: ReindexPollWorker, args: [@poll.id]) do
       @poll.update!(hide_results: 'until_closed')
     end
-    assert_equal 2, PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id]).count
+    assert_empty PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id])
     perform_enqueued_jobs(only: ReindexPollWorker)
     assert_empty PgSearch::Document.where(searchable_type: 'Comment', searchable_id: [reply.id, nested.id])
     sign_in @user

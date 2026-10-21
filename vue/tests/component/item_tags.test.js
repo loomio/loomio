@@ -237,6 +237,14 @@ describe('item tagging', () => {
     expect(item.tags).toEqual(['Private follow up']);
   });
 
+  it('lets comment authors tag their comments regardless of poll result visibility', () => {
+    for (const hideResults of ['off', 'until_vote', 'until_closed']) {
+      const parent = {itemableType: 'Poll', model: () => ({hideResults, closedAt: null})};
+      const item = {kind: 'new_comment', topic: () => topic, model: () => ({authorId: 1}), parent: () => parent};
+      expect(AbilityService.canTagTopicItem(item)).toBe(true);
+    }
+  });
+
   it('allows tagging closed polls while refusing locked topics and ballot entries', () => {
     topic.adminsInclude = () => true;
     const model = {authorId: 2, closedAt: new Date()};

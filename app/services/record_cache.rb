@@ -185,14 +185,6 @@ class RecordCache
     scope[:topic_items_by_id] ||= {}
     scope[:topic_items_by_kind_and_itemable_id] ||= {}
 
-    scope[:item_tags_by_id] ||= {}
-    uncached = collection.reject { |item| scope[:item_tags_by_id].key?(item.id) }
-    uncached.each { |item| scope[:item_tags_by_id][item.id] = [] }
-    ids = uncached.select { |item| item.taggable? && item.tags.any? }.map(&:id)
-    TopicItem.tags_visible.where(id: ids).pluck(:id, :tags).each do |id, tags|
-      scope[:item_tags_by_id][id] = tags
-    end
-
     edited_items = {}
     cached_notes = scope[:change_notes_by_topic_item_id]
     collection.each do |topic_item|
@@ -488,24 +480,6 @@ class RecordCache
     return if exclude_types.include?('topic')
     merge_index(:topics_by_id, collection)
     add_anonymous_poll_flags(collection.map(&:id))
-    scope[:root_tags_by_topic_id] ||= {}
-    scope[:tagged_replies_by_topic_id] ||= {}
-    uncached = collection.reject { |topic| scope[:root_tags_by_topic_id].key?(topic.id) }
-    uncached.each do |topic|
-      scope[:root_tags_by_topic_id][topic.id] = []
-      scope[:tagged_replies_by_topic_id][topic.id] = false
-    end
-    ids = uncached.select { |topic| topic.tags.any? }.map(&:id)
-    return if ids.empty?
-
-    # Read both details in one batch. An existence check covers unloaded replies
-    # and replies sharing the root's tags without fetching every tagged item.
-    root_sql = TopicItem.tags_visible.where('topic_items.topic_id = topics.id').where(sequence_id: 0).select(:tags).limit(1).to_sql
-    replies_sql = TopicItem.tagged_replies.where('topic_items.topic_id = topics.id').select('1').to_sql
-    Topic.where(id: ids).pluck(:id, Arel.sql("(#{root_sql})"), Arel.sql("EXISTS (#{replies_sql})")).each do |id, tags, has_replies|
-      scope[:root_tags_by_topic_id][id] = tags || []
-      scope[:tagged_replies_by_topic_id][id] = has_replies
-    end
   end
 
   def add_anonymous_poll_flags(topic_ids)

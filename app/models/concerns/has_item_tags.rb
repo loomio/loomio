@@ -9,10 +9,8 @@ module HasItemTags
       where(KINDS.map { |kind, type| sanitize_sql_array(['(kind = ? AND itemable_type = ?)', kind, type]) }.join(' OR '))
     }
 
-    # Tags are shared metadata. Withhold comment tags while any enclosing poll
-    # hides results, even from viewers who have voted, so a single topic aggregate
-    # is safe for every reader and for shared realtime publication. Follow actual
-    # comment parents: the display-depth cap can make poll replies its siblings.
+    # Tags remain shared metadata when poll visibility changes. Only discarded
+    # contributions leave the aggregate; result privacy belongs to search/content.
     scope :tags_visible, -> {
       taggable.where(<<~SQL.squish)
         (itemable_type = 'Discussion' AND itemable_id IN (SELECT id FROM discussions WHERE discarded_at IS NULL)) OR
@@ -21,23 +19,7 @@ module HasItemTags
           SELECT outcomes.id FROM outcomes JOIN polls ON polls.id = outcomes.poll_id WHERE polls.discarded_at IS NULL
         )) OR
         (itemable_type = 'Comment' AND itemable_id IN (SELECT id FROM comments WHERE discarded_at IS NULL)
-          AND NOT EXISTS (
-            SELECT 1 FROM polls
-            WHERE polls.topic_id = topic_items.topic_id
-              AND (polls.discarded_at IS NOT NULL OR (polls.hide_results <> 0 AND polls.closed_at IS NULL))
-              AND EXISTS (
-                WITH RECURSIVE comment_parents AS (
-                  SELECT parent_type, parent_id FROM comments WHERE id = topic_items.itemable_id
-                  UNION
-                  SELECT comments.parent_type, comments.parent_id FROM comments
-                  JOIN comment_parents ON comment_parents.parent_type = 'Comment' AND comment_parents.parent_id = comments.id
-                )
-                SELECT 1 FROM comment_parents
-                LEFT JOIN stances ON comment_parents.parent_type = 'Stance' AND stances.id = comment_parents.parent_id
-                WHERE (comment_parents.parent_type = 'Poll' AND comment_parents.parent_id = polls.id)
-                  OR stances.poll_id = polls.id
-              )
-          ))
+          AND itemable_id NOT IN (#{Comment.under_polls(Poll.discarded.where('polls.topic_id = topic_items.topic_id')).select(:id).to_sql}))
       SQL
     }
 
@@ -54,7 +36,7 @@ module HasItemTags
     KINDS[kind] == itemable_type
   end
 
-  def tags_visible?
+  def tags_assignable?
     self.class.tags_visible.exists?(id: id)
   end
 
@@ -66,16 +48,19 @@ module HasItemTags
         .select(:tags).order(:id).limit(1).to_sql.then { |sql| "COALESCE((#{sql}), ARRAY[]::varchar[])" }
     end
 
-    # Serialize tag edits with tree moves and other edits in the same topic. Only
-    # tagged entries are read; the aggregate remains an indexed, rebuildable cache.
+    # Maintain all thread summaries under the same lock as tag edits and moves.
+    # Loading a thread can then use its existing rows without any tag lookups.
     def refresh_topic_tags!(topic_ids)
       Topic.where(id: topic_ids.compact.uniq).order(:id).with_write_lock do |topics|
         topics.each do |topic|
-          names = tags_visible.where(topic_id: topic.id).where('cardinality(tags) > 0').pluck(Arel.sql('DISTINCT unnest(topic_items.tags)'))
-          clean = TagService.clean_tag_names(names)
-          next if topic.tags == clean
+          rows = tags_visible.where(topic_id: topic.id).where('cardinality(tags) > 0').pluck(:sequence_id, :tags)
 
-          topic.update!(tags: clean)
+          topic.assign_attributes(
+            tags: TagService.clean_tag_names(rows.flat_map(&:last)),
+            root_tags: rows.find { |sequence_id, _tags| sequence_id == 0 }&.last || [],
+            has_tagged_replies: rows.any? { |sequence_id, _tags| sequence_id && sequence_id > 0 }
+          )
+          topic.save! if topic.changed?
         end
       end
     end
@@ -96,7 +81,7 @@ module HasItemTags
     # Services return their existing topic object; refresh its derived fields too.
     topic.reload
     PgSearch::Document.where(searchable_type: itemable_type, searchable_id: itemable_id)
-      .update_all(tags: !destroyed? && tags_visible? ? tags : [])
+      .update_all(tags: destroyed? ? [] : tags)
   end
 
   def publish_item_tag_changes

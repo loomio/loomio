@@ -393,6 +393,9 @@ class TopicService
     )
     topic.update_sequence_info!
 
+    # Repair can change which contribution occupies the root sequence.
+    TopicItem.refresh_topic_tags!([topic.id])
+
     # ensure all the topic_readers have valid read_ranges values
     TopicReader.where(topic_id: topic.id).each do |reader|
       reader.update_columns(

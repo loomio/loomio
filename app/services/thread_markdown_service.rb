@@ -38,7 +38,7 @@ class ThreadMarkdownService
       created: timestamp(record.created_at),
       last_activity: timestamp(topic.last_activity_at),
       tags: Array(topic.tags).map { |tag| inline(tag) }.presence,
-      root_tags: Array(topic.topicable.created_topic_item.tags).map { |tag| inline(tag) }.presence
+      root_tags: Array(topic.root_tags).map { |tag| inline(tag) }.presence
     }.compact
 
     "---\n#{fields.map { |key, value| "#{key}: #{value.to_json}" }.join("\n")}\n---"
@@ -89,7 +89,6 @@ class ThreadMarkdownService
     items.reject! { |item| item.itemable.nil? || item.itemable == topic.topicable }
     items.select! { |item| !item.itemable.is_a?(Poll) || item.id == item.itemable.created_topic_item&.id }
     preload(items)
-    @tags_by_item_id = TopicItem.tags_visible.where(id: items.map(&:id)).pluck(:id, :tags).to_h
     items
   end
 
@@ -132,7 +131,7 @@ class ThreadMarkdownService
       metadata = itemable.review_on.present? && metadata_line(:review_date, itemable.review_on.iso8601)
       [item_header(item, t(:shared_outcome, author: author_label(itemable))), metadata, body(itemable, heading_offset: 2)].compact_blank.join("\n\n")
     end
-    tags = @tags_by_item_id.fetch(item.id, [])
+    tags = item.tags
     label = "#{I18n.t('loomio_tags.tags')}: #{tags.map { |name| inline(name) }.join(', ')}" if tags.any?
     [content, label].compact_blank.join("\n\n")
   end

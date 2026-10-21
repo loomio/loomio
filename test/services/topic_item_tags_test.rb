@@ -114,6 +114,19 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_not Tag.exists?(group: @topic.group, name: 'Rollback label')
   end
 
+  test 'discarding a poll removes its conversation from tag summaries without deleting assignments' do
+    poll = make_poll
+    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Poll reply'), actor: @author)
+    tag(comment.created_topic_item, ['Reply label'])
+    PollService.discard(poll: poll, actor: @admin)
+    assert_empty @topic.reload.tags
+    assert_not @topic.has_tagged_replies
+    assert_equal ['Reply label'], comment.created_topic_item.tags
+    poll.update!(discarded_at: nil, discarded_by: nil)
+    assert_equal ['Reply label'], @topic.reload.tags
+    assert @topic.has_tagged_replies
+  end
+
   test 'subgroup assignments create colored organization metadata without waiting for a job' do
     topic = topics(:subgroup_discussion_topic)
     TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: ['Subgroup label'], actor: @admin)
@@ -125,33 +138,42 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_not topic.group.tags.exists?(name: 'Subgroup label')
   end
 
-  test 'hidden assignments do not create organization metadata until they become visible' do
-    poll = make_poll
-    poll.update!(hide_results: 'until_closed')
-    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Hidden comment'), actor: @author)
-    comment.created_topic_item.update!(tags: ['Hidden new label'])
-    assert_not Tag.exists?(name: 'Hidden new label')
-    poll.update!(closed_at: Time.current)
-    assert @topic.group.tags.find_by!(name: 'Hidden new label').color.present?
+  test 'comment authors can tag comments they can write regardless of result visibility' do
+    %w[off until_vote until_closed].each do |mode|
+      poll = make_poll
+      poll.update!(hide_results: mode)
+      comment = Comment.new(parent: poll, body: 'Tagged comment')
+      assert @author.can?(:create, comment), mode
+      CommentService.create(comment: comment, actor: @author)
+      tag(comment.created_topic_item, ["Label #{mode}"])
+
+      assert_equal ["Label #{mode}"], comment.created_topic_item.tags, mode
+      assert_includes @topic.reload.tags, "Label #{mode}", mode
+      assert @topic.group.tags.find_by!(name: "Label #{mode}").color.present?, mode
+      poll.update!(closed_at: Time.current)
+    end
   end
 
-  test 'result hiding withholds comment labels from aggregates serializers and indexes until closing' do
+  test 'existing tags remain shared metadata when results are hidden and hidden comments leave search' do
     %w[off until_vote until_closed].each do |mode|
       poll = make_poll
       comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Insurance confidential'), actor: @author)
       item = comment.created_topic_item
       tag(item, ['Sensitive'])
       poll.update!(hide_results: mode)
-      visible = mode == 'off'
-      assert_equal visible, @topic.reload.tags.include?('Sensitive'), mode
-      assert_equal visible, JSON.parse(MessageChannelService.serialize_shared_models([@item]).to_json).fetch('topics').first.fetch('has_tagged_replies'), mode
-      assert_equal visible, @author.can?(:update_tags, item), mode
+      assert_includes @topic.reload.tags, 'Sensitive', mode
+      assert JSON.parse(MessageChannelService.serialize_shared_models([@item]).to_json).fetch('topics').first.fetch('has_tagged_replies'), mode
+      assert @author.can?(:update_tags, item), mode
       shared = JSON.parse(MessageChannelService.serialize_shared_models([item]).to_json)
       row = shared.fetch('topic_items').find { |entry| entry['id'] == item.id }
-      assert_equal visible ? ['Sensitive'] : [], row['tags'], mode
+      assert_equal ['Sensitive'], row['tags'], mode
       comment.update_pg_search_document
       doc = PgSearch::Document.find_by(searchable: comment)
-      assert_empty doc.tags if doc && !visible
+      if mode == 'until_closed'
+        assert_nil doc
+      else
+        assert_equal ['Sensitive'], doc.tags
+      end
       poll.update!(closed_at: Time.current)
       assert_includes @topic.reload.tags, 'Sensitive'
       assert_equal ['Sensitive'], item.reload.tags
@@ -166,9 +188,45 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_empty @topic.reload.tags
     assert_equal ['Budget'], target.reload.tags
     assert_equal ['Budget'], @item.reload.tags
+    assert_not @topic.has_tagged_replies
+    assert_empty @topic.root_tags
+    assert target.has_tagged_replies
+    assert_empty target.root_tags
   end
 
-  test 'hidden comment tags follow actual ancestry when the display cap makes replies siblings' do
+  test 'repair rebuilds cached tag summaries after restoring the root sequence' do
+    tag(@root, ['Opening'], @admin)
+    tag(@item, ['Reply'])
+    @root.update_columns(sequence_id: nil)
+    @item.update_columns(sequence_id: 0)
+    @topic.update_columns(root_tags: ['Stale'], has_tagged_replies: false)
+
+    TopicService.repair(@topic.id)
+
+    assert_equal ['Opening', 'Reply'], @topic.reload.tags
+    assert_equal ['Opening'], @topic.root_tags
+    assert @topic.has_tagged_replies
+  end
+
+  test 'hiding poll results rolls search removal back with the poll and leaves tags unchanged' do
+    poll = make_poll
+    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Initially public'), actor: @author)
+    tag(comment.created_topic_item, ['Shared label'])
+    assert PgSearch::Document.exists?(searchable: comment)
+
+    Poll.transaction(requires_new: true) do
+      poll.update!(hide_results: 'until_closed')
+      assert_not PgSearch::Document.exists?(searchable: comment)
+      assert_equal ['Shared label'], @topic.reload.tags
+      raise ActiveRecord::Rollback
+    end
+
+    assert_equal 'off', poll.reload.hide_results
+    assert PgSearch::Document.exists?(searchable: comment)
+    assert_equal ['Shared label'], comment.created_topic_item.tags
+  end
+
+  test 'hidden comments remain taggable at the display cap while staying out of search' do
     @topic.update!(max_depth: 1)
     poll = make_poll
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Poll reply'), actor: @author)
@@ -176,8 +234,27 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     tag(reply.created_topic_item, ['Hidden branch'])
     assert_equal poll.created_topic_item.parent_id, reply.created_topic_item.parent_id
     poll.update!(hide_results: 'until_closed')
+    assert_equal ['Hidden branch'], @topic.reload.tags
+    assert @author.can?(:update_tags, reply.created_topic_item)
+    assert_not PgSearch::Document.exists?(searchable: reply)
+  end
+
+  test 'reopening a poll hides searches while its outcome conversation remains taggable' do
+    poll = make_poll
+    PollService.close(poll: poll, actor: @admin)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
+    comment = CommentService.create(comment: Comment.new(parent: outcome, body: 'Outcome reply'), actor: @author)
+    tag(comment.created_topic_item, ['Outcome discussion'])
+    assert PgSearch::Document.exists?(searchable: comment)
+    poll.update!(hide_results: 'until_closed')
+    PollService.reopen(poll: poll, params: {closing_at: 2.days.from_now}, actor: @admin)
+
+    assert @author.can?(:update_tags, comment.created_topic_item)
+    assert_not PgSearch::Document.exists?(searchable: comment)
+    assert_equal ['Outcome discussion'], @topic.reload.tags
+    assert_equal ['Outcome discussion'], comment.created_topic_item.tags
+    poll.discard!
     assert_empty @topic.reload.tags
-    assert_not reply.created_topic_item.tags_visible?
   end
 
   test 'anonymous poll tagging changes no ballots results or quorum settings' do
@@ -198,7 +275,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Budget', 'Governance'], @topic.reload.tags
   end
 
-  test 'archives and markdown retain explicit assignments without exposing hidden labels' do
+  test 'archives retain public tags while markdown omits hidden comment content' do
     poll = make_poll
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Poll reply'), actor: @author)
     item = comment.created_topic_item
@@ -206,8 +283,10 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Hidden branch'], GroupExportService.export_record(item, 'topic_items').fetch('tags')
     assert_includes ThreadMarkdownService.render(topic: @topic.reload, user: @author), 'Tags: Hidden branch'
     poll.update!(hide_results: 'until_closed')
-    assert_empty GroupExportService.export_record(item, 'topic_items').fetch('tags')
-    refute_includes ThreadMarkdownService.render(topic: @topic.reload, user: @author), 'Hidden branch'
+    assert_equal ['Hidden branch'], GroupExportService.export_record(item, 'topic_items').fetch('tags')
+    markdown = ThreadMarkdownService.render(topic: @topic.reload, user: @author)
+    assert_includes markdown, 'Hidden branch'
+    refute_includes markdown, 'Poll reply'
   end
 
   test 'organization rename merge and delete apply to every item assignment' do

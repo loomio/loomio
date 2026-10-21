@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_22_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1258,6 +1258,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.boolean "has_tagged_replies", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "last_activity_at", precision: nil
     t.datetime "locked_at", precision: nil
@@ -1267,6 +1268,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.datetime "pinned_at", precision: nil
     t.boolean "private", default: true, null: false
     t.string "ranges_string"
+    t.string "root_tags", default: [], null: false, array: true
     t.integer "seen_by_count", default: 0, null: false
     t.string "tags", default: [], array: true
     t.integer "topicable_id", null: false

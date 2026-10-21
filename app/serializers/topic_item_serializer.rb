@@ -10,7 +10,7 @@ class TopicItemSerializer < ApplicationSerializer
   has_one :reply_parent, serializer: TopicItemSerializer, root: :parent_topic_items
 
   def tags
-    cache_fetch(:item_tags_by_id, object.id) { object.tags_visible? ? object.tags : [] }
+    object.tags
   end
 
   def parent
