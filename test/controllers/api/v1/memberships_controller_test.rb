@@ -29,6 +29,29 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal true, payload.fetch('email_delivery_blocked')
   end
 
+  test "member lists batch email blocks only for instance administrators" do
+    blocked = users(:member_normal)
+    unblocked = users(:member_loud)
+    EmailSuppressionService.record!(email: blocked.email.upcase, reason: 'complaint', source_key: 'test:batch')
+    queries = []
+    callback = ->(_name, _start, _finish, _id, payload) { queries << payload[:sql] if payload[:sql].include?('email_suppressions') }
+
+    [@user, @admin].each do |viewer|
+      sign_in viewer
+      queries.clear
+      ActiveSupport::Notifications.subscribed(callback, 'sql.active_record') do
+        get :index, params: {group_id: @test_group.id, user_ids: [blocked.id, unblocked.id]}
+      end
+      assert_response :success
+      assert_equal viewer.is_admin? ? 1 : 0, queries.size, queries.join("\n")
+      if viewer.is_admin?
+        payloads = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
+        assert_equal true, payloads.fetch(blocked.id).fetch('email_delivery_blocked')
+        assert_equal false, payloads.fetch(unblocked.id).fetch('email_delivery_blocked')
+      end
+    end
+  end
+
   test "join group responds with the created membership" do
     group = Group.create!(
       name: "Open group #{SecureRandom.hex(4)}",

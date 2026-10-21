@@ -510,20 +510,6 @@ class RecordCache
     merge_index(:users_by_id, collection)
   end
 
-  # Suppression status is only serialized to instance administrators. Load it on
-  # demand for all cached users so ordinary responses pay no extra query cost.
-  def email_delivery_blocked?(user)
-    @email_delivery_blocks ||= {}
-    unless @email_delivery_blocks.key?(user.id)
-      users = scope.fetch(:users_by_id, {}).values + [ user ]
-      users = users.uniq(&:id).reject { |record| @email_delivery_blocks.key?(record.id) }
-      digests = users.index_with { |record| EmailSuppression.address_digest(record.email) if record.email.present? }
-      blocked = EmailSuppression.active.where(email_sha256: digests.values.compact).distinct.pluck(:email_sha256).to_set
-      users.each { |record| @email_delivery_blocks[record.id] = blocked.include?(digests[record]) }
-    end
-    @email_delivery_blocks.fetch(user.id)
-  end
-
   def group_ids
     scope.fetch(:groups_by_id, {}).keys
   end

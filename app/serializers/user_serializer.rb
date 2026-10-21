@@ -25,14 +25,10 @@ class UserSerializer < AuthorSerializer
   end
 
   def email_delivery_blocked
-    if scope[:cache]
-      scope[:cache].email_delivery_blocked?(object)
-    else
-      object.email_delivery_blocked?
-    end
+    scope.fetch(:email_delivery_blocked_user_ids).include?(object.id)
   end
 
   def include_email_delivery_blocked?
-    scope[:include_email_delivery_status]
+    scope.key?(:email_delivery_blocked_user_ids)
   end
 end

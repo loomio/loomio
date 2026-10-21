@@ -16,4 +16,12 @@ class EmailSuppression < ApplicationRecord
   def self.for_address(email)
     email.present? ? where(email_sha256: address_digest(email)) : none
   end
+
+  # Match a batch of accounts against address blocks in one query. Keep the
+  # address digests here; callers only need the affected user IDs.
+  def self.blocked_user_ids(users)
+    digests = users.filter_map { |user| [user.id, address_digest(user.email)] if user.email.present? }.to_h
+    blocked = active.where(email_sha256: digests.values).distinct.pluck(:email_sha256).to_set
+    digests.filter_map { |id, digest| id if blocked.include?(digest) }.to_set
+  end
 end
