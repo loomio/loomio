@@ -1,26 +1,28 @@
 ---
 title: Visite rapide
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: 05ee70f7762cd79c
 generated:
   introduction: 59ee6bb0ad1eed69
   group-page: 13cfcd25b08f7bd2
   tabs: 8e633e7902a31277
-  sidebar: a90a7c6aa5a23a05
+  sidebar: ccb4e82a2647b306
   user-settings: 441510e7051415a9
-  notifications: 37a38746db97a489
+  notifications: '08c9a9a580d9626f'
   what-to-do-next: 213b0f6a819f21c8
+  mobile-navigation: 0c012637b372846b
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
 ---
@@ -59,7 +61,7 @@ Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour ob
 
 ## Barre latérale
 
-Ouvrez la barre latérale avec le bouton de menu (**☰**) en haut à gauche.
+Ouvrez la barre latérale avec le bouton de menu (**☰**) en haut à gauche sur ordinateur, ou dans la barre de navigation inférieure sur mobile.
 
 ![](sidebar.png)
 
@@ -79,11 +81,21 @@ Utilisez ce menu pour modifier votre profil, changer les paramètres de notifica
 
 ## Notifications
 
-Le bouton en forme de cloche en haut à droite ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
+Le bouton en forme de cloche en haut à droite sur ordinateur, ou dans la barre de navigation inférieure sur mobile, ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir plus sur les notifications dans l’application, les préférences d’e-mail et les paramètres de notification des groupes et des discussions.
+
+<!-- translation-section: mobile-navigation -->
+
+## Navigation mobile et chargement
+
+Les icônes de la barre de navigation inférieure ouvrent la barre latérale, le tableau de bord et les notifications. Lorsque vous consultez un fil, cette barre comporte également un bouton de menu permettant d’accéder au contenu du fil et aux actions associées. La recherche est accessible depuis le tableau de bord. La barre de titre affiche le titre de la page lorsque son en-tête disparaît de l’écran lors du défilement.
+
+Loomio affiche le contenu déjà conservé dans la session en cours tout en recherchant des mises à jour. Un indicateur de chargement en haut à droite de la barre de titre signale la récupération de données. Le tableau de bord, les sondages en attente de votre vote et les notifications se chargent en arrière-plan après le démarrage ; la récupération des notifications ne les marque pas comme consultées.
+
+Les fils s’ouvrent au début. Sélectionnez **Dernier** pour accéder à l’activité la plus récente. Les liens vers un commentaire ou un sondage précis ouvrent toujours l’élément concerné.
 
 <!-- translation-section: what-to-do-next -->
 
