@@ -122,8 +122,6 @@ module ActiveSupport
         to_return(status: 200)
       WebMock.stub_request(:post, /outlook.office.com/).
         to_return(status: 200)
-      WebMock.stub_request(:head, /www.gravatar.com/).
-        to_return(status: 200, body: "stubbed response", headers: {})
     end
 
     teardown do

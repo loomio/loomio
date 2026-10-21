@@ -376,8 +376,7 @@ class User < ApplicationRecord
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
             email_verified: true,
-            bot: true,
-            avatar_kind: :gravatar)
+            bot: true)
   end
 
   def name

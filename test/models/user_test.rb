@@ -242,15 +242,35 @@ class UserTest < ActiveSupport::TestCase
   end
 
   # Gravatar/avatar
-  test "sets avatar_kind to initials by default in test env" do
+  test "new accounts default to initials without a Gravatar lookup in production" do
     user = User.new(
       name: "Gravatar User",
-      email: "gravatar_#{SecureRandom.hex(4)}@test.com",
-      password: "a_good_password"
+      email: "gravatar_#{SecureRandom.hex(4)}@test.com"
     )
-    # has_gravatar? returns false in test env, so avatar_kind defaults to initials
-    user.save!
+    Rails.stub(:env, ActiveSupport::EnvironmentInquirer.new('production')) { user.save! }
     assert_equal "initials", user.avatar_kind
+    assert_nil user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
+  end
+
+  test "missing uploaded avatars fall back to initials without a Gravatar lookup" do
+    @user.update!(avatar_kind: 'uploaded')
+
+    Rails.stub(:env, ActiveSupport::EnvironmentInquirer.new('production')) do
+      assert_nil @user.avatar_url
+    end
+
+    assert_equal 'initials', @user.reload.avatar_kind
+    assert_not_requested :any, /gravatar\.com/
+  end
+
+  test "existing Gravatar selections survive account updates" do
+    @user.update!(avatar_kind: 'gravatar')
+    @user.update!(name: 'Updated Name')
+
+    assert_equal 'gravatar', @user.reload.avatar_kind
+    assert_match %r{\Ahttps://secure\.gravatar\.com/avatar/}, @user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
   end
 
   test "email can have an apostrophe" do

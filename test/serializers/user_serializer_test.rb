@@ -1,6 +1,19 @@
 require 'test_helper'
 
 class UserSerializerTest < ActiveSupport::TestCase
+  test 'default avatars expose no Gravatar URL or email hash to any viewer' do
+    user = users(:member_normal)
+    hash = Digest::MD5.hexdigest(user.email.downcase)
+
+    [nil, user, users(:alien), users(:admin)].each do |viewer|
+      payload = serialize(user, viewer)
+      assert_nil payload[:thumb_url]
+      assert_nil payload[:avatar_url]
+      refute_includes payload.to_json, 'gravatar.com'
+      refute_includes payload.to_json, hash
+    end
+  end
+
   test 'suppression status and evidence stay out of user payloads for every viewer' do
     user = users(:member_normal)
     record = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: 'private-feedback-source')
