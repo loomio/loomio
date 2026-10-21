@@ -43,8 +43,8 @@ module HasItemTags
   class_methods do
     # Search documents store explicit assignments, never the enclosing thread's
     # aggregate. The item lookup is indexed and also covers legacy missing roots.
-    def tags_sql_for(type, id_sql)
-      tags_visible.where(itemable_type: type).where("topic_items.itemable_id = #{id_sql}")
+    def tags_sql_for(model)
+      tags_visible.where(itemable_type: model.name).where(arel_table[:itemable_id].eq(model.arel_table[:id]))
         .select(:tags).order(:id).limit(1).to_sql.then { |sql| "COALESCE((#{sql}), ARRAY[]::varchar[])" }
     end
   end

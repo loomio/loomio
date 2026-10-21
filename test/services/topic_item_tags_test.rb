@@ -25,6 +25,22 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Budget'], @topic.reload.tags
   end
 
+  test 'reindexing correlates discussion poll outcome and comment tags to their own items' do
+    poll = make_poll
+    PollService.close(poll: poll, actor: @admin)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
+    sibling = CommentService.create(comment: Comment.new(parent: @topic.topicable, body: 'Untagged reply'), actor: @author)
+    assignments = [[@topic.topicable, ['Governance']], [poll, ['Decision']],
+      [outcome, ['Follow up']], [@comment, ['Budget']], [sibling, []]]
+    assignments.each { |record, names| tag(record.created_topic_item, names, @admin) }
+
+    SearchService.reindex_by_discussion_id(@topic.topicable_id)
+
+    assignments.each do |record, names|
+      assert_equal names, PgSearch::Document.find_by!(searchable: record).tags, record.class.name
+    end
+  end
+
   test 'tagging uses the current access-control matrix and never grants access to revoked authors' do
     allowed = %i[admin guest_admin_normal member_normal]
     denied = %i[member_quiet guest_normal alien_quiet non_guest_loud former_guest_loud former_member_loud inactive_member_loud inactive_guest_loud]

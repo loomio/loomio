@@ -37,7 +37,7 @@ class Discussion < ApplicationRecord
         topics.group_id as group_id,
         discussions.id AS discussion_id,
         discussions.topic_id AS topic_id,
-        #{TopicItem.tags_sql_for("Discussion", "discussions.id")} AS tags,
+        #{TopicItem.tags_sql_for(Discussion)} AS tags,
         discussions.author_id AS author_id,
         discussions.created_at AS authored_at,
         #{content_str} AS content,

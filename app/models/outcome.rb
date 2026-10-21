@@ -33,7 +33,7 @@ class Outcome < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        #{TopicItem.tags_sql_for("Outcome", "outcomes.id")} AS tags,
+        #{TopicItem.tags_sql_for(Outcome)} AS tags,
         outcomes.author_id AS author_id,
         outcomes.created_at as authored_at,
         #{content_str} AS content,
