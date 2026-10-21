@@ -1,6 +1,30 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test 'portable exports do not copy delivery transport identity or restart SES polling' do
+    group, admin, member = create_detached_export_group
+    notification = Notification.create!(kind: 'membership_created', subject: group, actor: admin,
+      recipient_user_ids: [member.id])
+    delivery = NotificationDelivery.create!(notification: notification, recipient: member, channel: 'email',
+      email_address: member.email, email_subject: 'Join our group', email_message_id: 'unique-local-message@loomio.test',
+      provider_message_id: 'ses-transport-identity', email_sync_due_at: Time.current, delivered_at: Time.current)
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    record = archive.find { |item| item['table'] == 'notification_deliveries' && item.dig('record', 'id') == delivery.id }.fetch('record')
+    %w[email_address email_subject email_message_id provider_message_id email_sync_due_at].each do |column|
+      refute record.key?(column), column
+    end
+    assert record.fetch('delivered_at')
+
+    assert_difference 'NotificationDelivery.count', 1 do
+      GroupExportService.import(filename, reset_keys: true)
+    end
+    imported = NotificationDelivery.where.not(id: delivery.id).order(:id).last!
+    assert_nil imported.email_message_id
+    assert_nil imported.provider_message_id
+    assert_nil imported.email_sync_due_at
+  end
+
   test "simultaneous same-name exports never share a temporary file" do
     freeze_time do
       filenames = 2.times.map { GroupExportService.export_filename_for("Same group") }

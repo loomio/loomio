@@ -48,6 +48,9 @@ class GroupExportService
   ]
 
   JSON_PARAMS = {
+    # Delivery transport identity belongs to the sending instance. Reusing it
+    # after import can conflict with existing IDs or poll the original send.
+    notification_deliveries: {except: %w[email_address email_subject email_message_id provider_message_id email_sync_due_at]},
     groups:      {except: [:token], methods: []},
     users:       {except: [:api_key,
                            :password_digest,

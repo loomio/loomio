@@ -1,0 +1,14 @@
+# Mail normally discards the SMTP response. Keep it on this message's transport
+# so SES's assigned message ID can be matched to later feedback, without changing
+# the application's SMTP credentials or the transport used by other mailers.
+class NotificationSmtpDelivery < Mail::SMTP
+  attr_reader :response
+
+  def initialize(settings)
+    super(settings.merge(return_response: true))
+  end
+
+  def deliver!(mail)
+    @response = super
+  end
+end

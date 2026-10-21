@@ -367,7 +367,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     DSN
 
     email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com" },
+      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
       body_text: "The following message was undeliverable."
     )
     email.attachments.attach(
@@ -396,7 +396,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     DSN
 
     email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com" },
+      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
       body_text: "Delivery failed"
     )
     email.attachments.attach(
@@ -414,7 +414,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
     bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
 
     email = ReceivedEmail.create!(
-      headers: { from: bounce_address, to: "anything@example.com" },
+      headers: { from: bounce_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
       body_text: "Delivery failed"
     )
     email.attachments.attach(
@@ -433,7 +433,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
                         email_verified: true, username: "complaintuser#{SecureRandom.hex(4)}")
 
     email = ReceivedEmail.create!(
-      headers: { from: complaints_address, to: "anything@example.com" },
+      headers: { from: complaints_address, to: "anything@example.com", "Authentication-Results" => "mx.loomio.test; dkim=pass header.d=amazonses.com" },
       body_text: "Complaint received"
     )
     email.attachments.attach(

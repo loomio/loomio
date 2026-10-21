@@ -26,6 +26,7 @@ gem 'faraday-follow_redirects', '~> 0.5'
 gem 'csv'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
+gem "aws-sdk-sesv2", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
 gem 'image_processing', '~> 2.2'

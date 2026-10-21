@@ -216,6 +216,7 @@ Rails.application.routes.draw do
           post :remove_delegate
           post :save_experience
           post :resend
+          get :notification_history
           patch :set_volume
         end
       end

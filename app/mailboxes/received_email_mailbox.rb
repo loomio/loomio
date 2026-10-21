@@ -10,7 +10,7 @@ class ReceivedEmailMailbox < ApplicationMailbox
     return unless save_received_email(email)
 
     attach_files_and_inline_images(email)
-    ReceivedEmailService.route(email)
+    ReceivedEmailService.route(email, mail: mail)
   rescue => e
     Rails.logger.error("Error processing received email: #{e.class} #{e.message}")
     inbound_email.bounced!

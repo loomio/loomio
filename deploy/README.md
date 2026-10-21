@@ -103,6 +103,14 @@ Edit the `.env` and look for the vars starting with SMTP_
 
 You might also need to add an SPF DNS record to indicate that the SMTP can send mail for your domain.
 
+#### Optional Amazon SES delivery history
+
+Loomio can keep sending through SMTP while recording recipient-server delivery results from SES Message Insights. Enable Virtual Deliverability Manager in the sending region, set `SES_MESSAGE_INSIGHTS_REGION` to that region, and give the job process AWS credentials with `ses:GetMessageInsights` permission through the standard AWS SDK credential chain. SMTP credentials alone cannot call the API. Omit the region variable to disable polling. No configuration set or public webhook is required for this API integration.
+
+The recurring worker checks up to 20 due messages per minute, spaces API requests at least one second apart, and backs off pending messages. It stops after a delivery, rejection, bounce, or complaint, or when the message is more than 30 days old. Later forwarded bounce/complaint emails still update the history. This limits polling work but means API polling alone does not discover complaints that arrive after a terminal result. The history request reads stored results and never calls AWS. At sustained volumes above 20 new messages per minute, or with many pending messages, status updates will fall behind; SES event publishing is a better fit for higher volumes.
+
+SES assigns its own Message-ID; Loomio saves the ID returned by the SES SMTP endpoint and the original recipient address. Only new notification emails with a recorded provider ID can be synced automatically. Older sends remain unconfirmed. Forwarded feedback can also match the original local Message-ID when a different SMTP transport preserves it. Feedback processing requires a trusted relay's passing DKIM result for the feedback sender's domain. The bundled Haraka relay removes sender-supplied authentication headers before adding its own; relays used in its place must provide the same guarantee. Feedback that cannot be authenticated is not allowed to change delivery history or suppression counters.
+
 ### Initialize the database
 
 This command initializes a new database for your Loomio instance to use.

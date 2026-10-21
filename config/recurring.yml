@@ -10,6 +10,10 @@
 #     schedule: at 5am every day
 
 production:
+  sync_notification_emails:
+    class: SyncNotificationEmailsWorker
+    schedule: every minute
+
   loomio_hourly_tasks:
     class: HourlyTaskJob
     schedule: every hour

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_21_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -488,16 +488,36 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
     t.string "channel", null: false
     t.datetime "created_at", null: false
     t.datetime "delivered_at"
+    t.string "email_address"
+    t.string "email_message_id"
+    t.text "email_subject"
+    t.datetime "email_sync_due_at"
     t.bigint "notification_id", null: false
+    t.string "provider_message_id"
     t.bigint "recipient_id", null: false
     t.string "recipient_type", null: false
     t.jsonb "translation_values", default: {}, null: false
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
+    t.index ["email_message_id"], name: "index_notification_deliveries_on_email_message_id", unique: true
+    t.index ["email_sync_due_at", "id"], name: "index_notification_deliveries_on_email_sync_due", where: "(email_sync_due_at IS NOT NULL)"
     t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
     t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
+    t.index ["provider_message_id"], name: "index_notification_deliveries_on_provider_message_id"
     t.index ["recipient_type", "recipient_id"], name: "index_notification_deliveries_on_recipient"
     t.check_constraint "channel::text = ANY (ARRAY['in_app'::character varying::text, 'email'::character varying::text, 'push'::character varying::text, 'chatbot'::character varying::text])", name: "notification_deliveries_channel"
+  end
+
+  create_table "notification_delivery_events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "detail"
+    t.string "kind", null: false
+    t.bigint "notification_delivery_id", null: false
+    t.datetime "occurred_at", null: false
+    t.string "source_key", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_delivery_id", "source_key"], name: "index_notification_delivery_events_on_source", unique: true
+    t.index ["notification_delivery_id"], name: "index_notification_delivery_events_on_notification_delivery_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -1357,6 +1377,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_000000) do
   add_foreign_key "mobile_relay_authorizations", "mobile_devices", on_delete: :cascade
   add_foreign_key "mobile_web_session_tickets", "mobile_devices", on_delete: :cascade
   add_foreign_key "notification_deliveries", "notifications", on_delete: :cascade
+  add_foreign_key "notification_delivery_events", "notification_deliveries", on_delete: :cascade
   add_foreign_key "notifications", "users", column: "actor_id", on_delete: :nullify
   add_foreign_key "outcomes", "polls"
   add_foreign_key "passkey_challenges", "users", on_delete: :cascade

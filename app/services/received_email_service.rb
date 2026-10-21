@@ -26,11 +26,13 @@ class ReceivedEmailService
     ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
   end
 
-  def self.route(email)
+  def self.route(email, mail: nil)
     return nil if email.released # email will be cleaned up by the cron job
 
     # Ensure we have a sender for throttling and replies
     return email.destroy unless email.sender_email
+
+    return if EmailFeedbackService.process(email, mail: mail)
 
     # Replies sent to the notifications "From" address → send a delivery-failure notice (throttled)
     if email.sent_to_notifications_address?
@@ -41,22 +43,6 @@ class ReceivedEmailService
         Rails.logger.info("bounce throttled for #{email.sender_email}");
       end
       return email.destroy
-    end
-
-    # Bounce handling
-    if email.is_bounce? && email.bounced_address.present?
-      Rails.logger.info("bounce email received for #{email.bounced_address}")
-      User.where(email: email.bounced_address).update_all("bounces_count = bounces_count + 1")
-      email.update(released: true)
-      return
-    end
-
-    # Complaints handling
-    if email.is_complaint? && email.complainer_address.present?
-      Rails.logger.info("complaint email received from #{email.complainer_address}")
-      User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
-      email.update(released: true)
-      return
     end
 
     # Block banned sender hostnames early

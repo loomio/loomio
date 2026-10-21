@@ -28,6 +28,10 @@ module Ability::Membership
       !membership.accepted_at? && user_is_admin_of?(membership.group_id)
     end
 
+    can :notification_history, ::Membership do |membership|
+      user_is_admin_of?(membership.group_id) && Group.enabled.exists?(membership.group_id)
+    end
+
     can [:remove_admin, :revoke, :destroy], ::Membership do |membership|
       user.is_admin || (
         (membership.user == user ||

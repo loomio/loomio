@@ -1,6 +1,22 @@
 pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
+  'shows_notification_history_for_an_accepted_member': (test) => {
+    const page = pageHelper(test)
+    page.loadPath('setup_membership_notification_history')
+    page.click('.group-page-members-tab')
+    page.click('.members-panel .v-list-item:first-child .membership-dropdown__button')
+    page.waitFor('.membership-dropdown__notification-history .v-list-item-title')
+    page.click('.membership-dropdown__notification-history .v-list-item-title')
+    page.expectText('.membership-notification-history', 'Please join the wider group discussion')
+    page.expectText('.membership-notification-history', "Accepted by recipient's mail server")
+    page.expectText('.membership-notification-history', 'Invitation resent')
+    page.expectText('.membership-notification-history', 'No custom message')
+    test.saveScreenshot('tests/screenshots/membership_notification_history.png')
+    page.click('.membership-notification-history .dismiss-modal-button')
+    page.expectNoElement('.membership-notification-history')
+  },
+
   'successfully_removes_a_group_member': (test) => {
     page = pageHelper(test)
 
