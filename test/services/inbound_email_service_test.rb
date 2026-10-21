@@ -2,6 +2,8 @@ require 'test_helper'
 
 class InboundEmailServiceTest < ActiveSupport::TestCase
   inline_jobs 'releases personal email-to-thread route when reply exceeds comment length limit',
+    'an empty emailed reply reports its actual validation error',
+    'a comment validation exception reports its messages',
     'forwards using a forward rule',
     'forwards from an SMTP envelope recipient and replies to the original sender'
 
@@ -149,11 +151,77 @@ class InboundEmailServiceTest < ActiveSupport::TestCase
     delivered = ActionMailer::Base.deliveries.last
     assert_includes delivered.to, user.email
     assert_equal 'Your reply was not posted', delivered.subject
-    assert_includes delivered.text_part.body.to_s, "10 character limit"
+    assert_includes delivered.text_part.body.to_s, I18n.t("comment_form.messages.too_long", count: 10)
+    refute_includes delivered.text_part.body.to_s, "longer than the thread"
     assert_includes delivered.text_part.body.to_s, discussion.key
     assert_includes delivered.html_part.body.to_s, "open the thread"
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
+  end
+
+  test 'an empty emailed reply reports its actual validation error' do
+    email = build_comment_reply(body_text: '')
+
+    assert_no_difference 'Comment.count' do
+      assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+        InboundEmailService.process(email)
+      end
+    end
+
+    delivered = ActionMailer::Base.deliveries.last
+    assert_equal [users(:admin).email], delivered.to
+    assert_includes delivered.text_part.body.to_s, "Body can't be blank"
+    assert_includes delivered.html_part.body.to_s, "Body can't be blank"
+    refute_includes delivered.text_part.body.to_s, 'character limit'
+    assert email.reload.processing_completed_at.present?
+  end
+
+  test 'a comment validation exception reports its messages' do
+    email = build_comment_reply(body_text: 'Reply')
+    reject_comment = ->(comment:, actor:) do
+      comment.errors.add(:body, '<validation detail>')
+      raise ActiveRecord::RecordInvalid, comment
+    end
+
+    CommentService.stub(:create, reject_comment) do
+      assert_no_difference 'Comment.count' do
+        assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+          InboundEmailService.process(email)
+        end
+      end
+    end
+
+    delivered = ActionMailer::Base.deliveries.last
+    assert_includes delivered.text_part.body.to_s, 'Body <validation detail>'
+    assert_includes delivered.html_part.body.to_s, '&lt;validation detail&gt;'
+    refute_includes delivered.html_part.body.to_s, '<validation detail>'
+  end
+
+  test 'validation failures in dependent records retry without sending a comment rejection' do
+    email = build_comment_reply(body_text: 'Valid reply')
+    invalid_item = TopicItem.new
+    invalid_item.errors.add(:base, 'Internal timeline error')
+
+    TopicItems::NewComment.stub(:create!, ->(**) { raise ActiveRecord::RecordInvalid, invalid_item }) do
+      assert_no_difference ['Comment.count', 'TopicItem.count'] do
+        assert_no_enqueued_jobs only: InboundEmailDeliveryJob do
+          error = assert_raises(ActiveRecord::RecordInvalid) { InboundEmailService.process(email) }
+          assert_same invalid_item, error.record
+        end
+      end
+    end
+    assert_nil email.reload.processing_completed_at
+  end
+
+  test 'validation rejection emails remain limited to one per sender per hour' do
+    emails = 2.times.map { build_comment_reply(body_text: '') }
+
+    assert_no_difference 'Comment.count' do
+      assert_enqueued_jobs 1, only: InboundEmailDeliveryJob do
+        emails.each { |email| InboundEmailService.process(email) }
+      end
+    end
+    emails.each { |email| assert email.reload.processing_completed_at.present? }
   end
 
   test "creates a discussion for group handle" do
@@ -347,6 +415,15 @@ class InboundEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
-  # -- Bounce handling --
+  private
 
+  def build_comment_reply(body_text:)
+    user = users(:admin)
+    discussion = discussions(:discussion)
+    route = "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+    build_inbound_email(
+      headers: {from: user.email, to: "#{route}@#{ENV.fetch('REPLY_HOSTNAME')}"},
+      body_text: body_text
+    )
+  end
 end

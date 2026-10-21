@@ -716,7 +716,6 @@ es:
       recommendation: Abre Loomio en tu navegador y publica tu mensaje directamente.
     comment_rejected:
       subject: Tu respuesta no se publicó
-      reason: Tu respuesta no se publicó porque supera el límite de %{count} caracteres del hilo
       recommendation: Para evitar más problemas, abre el hilo y escribe tu mensaje directamente
       open_thread: Abrir hilo
   locale_names:

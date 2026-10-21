@@ -3,14 +3,18 @@
 class Views::ForwardMailer::CommentRejected < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
-  def initialize(topic:)
+  def initialize(topic:, validation_messages:)
     @topic = topic
+    @validation_messages = validation_messages
   end
 
   def view_template
     p do
-      plain t(:"forward_mailer.comment_rejected.reason",
-        count: @topic.comment_length_max)
+      plain t(:"forward_mailer.comment_rejected.subject")
+    end
+
+    ul do
+      @validation_messages.each { |message| li { plain message } }
     end
 
     p do

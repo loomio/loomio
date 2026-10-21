@@ -719,7 +719,6 @@ nl_NL:
       recommendation: Open Loomio in uw browser en plaats uw bericht direct.
     comment_rejected:
       subject: Je reactie is niet geplaatst
-      reason: Je reactie is niet geplaatst omdat deze langer is dan de limiet van %{count} tekens voor de discussie
       recommendation: Open de discussie en typ je bericht direct in om verdere problemen te voorkomen
       open_thread: Open discussie
   locale_names:

@@ -692,7 +692,6 @@ ro:
       recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.
     comment_rejected:
       subject: Răspunsul tău nu a fost postat
-      reason: Răspunsul tău nu a fost postat deoarece este mai lung decât limita de %{count} caractere a firului de discuție.
       recommendation: Pentru a evita alte probleme, deschideți firul de discuție și introduceți direct mesajul.
       open_thread: Deschide firul de discuție
   locale_names:

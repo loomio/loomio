@@ -281,13 +281,17 @@ class InboundEmailService
 
   def self.create_comment_from_email(email)
     actor = actor_from_email(email)
-    comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor)
+    comment = Comment.new(comment_params(email))
+    CommentService.create(comment: comment, actor: actor)
     return comment if comment.errors.empty?
 
     Rails.logger.info("email comment invalid: #{comment.errors.full_messages.join(', ')}")
     send_comment_rejected_email(email, comment)
     nil
   rescue ActiveRecord::RecordInvalid => e
+    # Failures in dependent records must roll back and retry, not reject the reply.
+    raise unless e.record.equal?(comment)
+
     Rails.logger.info("email comment invalid: #{e.record.errors.full_messages.join(', ')}")
     send_comment_rejected_email(email, e.record)
     nil
@@ -296,6 +300,8 @@ class InboundEmailService
   def self.send_comment_rejected_email(email, comment)
     return unless ThrottleService.can?(key: 'comment_rejected', id: email.sender_email.downcase, max: 1, per: 'hour')
 
-    ForwardMailer.comment_rejected(to: email.sender_name_and_email, topic: comment.topic).deliver_later
+    ForwardMailer.comment_rejected(
+      to: email.sender_name_and_email, topic: comment.topic, validation_messages: comment.errors.full_messages
+    ).deliver_later
   end
 end
