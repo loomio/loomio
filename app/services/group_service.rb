@@ -236,14 +236,25 @@ module GroupService
 
   def self.export(group: , actor: )
     actor.ability.authorize! :export, group
+    Sentry.metrics.count("group.export")
+    GroupExportWorker.perform_later(group.id, actor.id)
+  end
+
+  def self.export_group_ids(group:, actor:)
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
 
     if group.is_parent? && group.admins.exists?(actor.id)
       group_ids |= group.subgroups.reject { |subgroup| subgroup.group_privacy == 'secret' }.map(&:id)
     end
 
-    Sentry.metrics.count("group.export")
-    GroupExportWorker.perform_later(group_ids, group.name, actor.id)
+    group_ids
+  end
+
+  # Export jobs recheck access when they run because it can be revoked while
+  # the job is queued. Only the admin panel sends an export to a chosen
+  # address, so a recipient email requires an instance administrator.
+  def self.export_permitted?(group:, actor:, recipient_email:)
+    recipient_email ? actor.is_admin? : actor.can?(:export, group)
   end
 
   def self.merge(source:, target:, actor:)

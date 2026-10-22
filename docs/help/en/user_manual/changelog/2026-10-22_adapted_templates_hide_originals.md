@@ -1,0 +1,1 @@
+Adapting a default poll template now hides the original for the group. People starting a vote see the adapted version in its place. Group admins can restore the original from **Show hidden templates**.
