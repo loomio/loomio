@@ -50,6 +50,17 @@ class GroupExportServiceTest < ActiveSupport::TestCase
       assert_equal 2, filenames.uniq.length
     end
   end
+
+  test "export filenames stay in the temporary directory for group names containing path separators" do
+    ['../../etc/passwd', '/etc/passwd', '..\\..\\secrets', 'A group/with\\separators'].each do |name|
+      filename = GroupExportService.export_filename_for(name)
+
+      assert_equal '/tmp', File.dirname(File.expand_path(filename)), name
+      assert_equal '.json', File.extname(filename), name
+      assert_match(/\A[\w-]+\.json\z/, File.basename(filename), name)
+    end
+  end
+
   test "notification recipient audiences remap embedded group ids" do
     migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
 

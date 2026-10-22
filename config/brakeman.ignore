@@ -45,8 +45,8 @@
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/queries/membership_query.rb:7)"
     },
     {
-      "fingerprint": "3867325373f2346ebfc395cd423f75d3d698504698d15744df5737dad396afd0",
-      "note": "Baselined 2026-04-17 — Phase 1 audit residual (File Access @ app/workers/group_export_worker.rb:9)"
+      "fingerprint": "90333cec8d9e8d50ef627ef5ff5717a9a414c859e74e5cb6ef57effac5a1285f",
+      "note": "Reviewed 2026-10-22 — refreshed after queued exports began rechecking access. GroupExportService.export returns a path under the fixed /tmp directory; export_filename_for parameterizes the group name and appends a random hex suffix before the .json extension. The worker reads and deletes only that generated path. Path separators cannot escape the directory, covered by GroupExportServiceTest (File Access @ app/workers/group_export_worker.rb:15)."
     },
     {
       "fingerprint": "ec47abf45d2fb3cff822a0941c0cc21fcfd7ab01cdc0b9bc0ad2d013e70cc4f4",
@@ -189,6 +189,6 @@
       "note": "Reviewed 2026-09-06 — every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/cleanup_service.rb#with_write_lock) Re-reviewed 2026-09-10 after removing retired table references: SQL and trusted identifier sources are unchanged."
     }
   ],
-  "updated": "2026-09-06",
-  "brakeman_version": "8.0.6"
+  "updated": "2026-10-22",
+  "brakeman_version": "8.1.0"
 }

@@ -296,9 +296,9 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       name: "Session User",
       legal_accepted_at: Time.current,
       email_verified: true,
-      password: "s3curepassword123",
-      bounces_count: 2
+      password: "s3curepassword123"
     )
+    block = EmailSuppressionService.record!(email: user.email, reason: 'permanent_bounce', source_key: 'test:password-bounce')
     
     assert_difference 'Session.count', 1 do
       post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
@@ -311,8 +311,11 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in_via_login_code']
     assert_equal true, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
-    assert_equal [0, 0], user.reload.attributes.values_at('bounces_count', 'complaints_count')
-    assert_equal 1, user.sign_in_count
+    assert block.reload.cleared_at
+    assert_equal user.id, block.cleared_by_id
+    assert_equal 'sign_in', block.clear_method
+    assert_not user.email_delivery_blocked?
+    assert_equal 1, user.reload.sign_in_count
   end
 
   test "returns the server-recorded authentication destination after sign in" do
@@ -556,7 +559,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in a user via token" do
-    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true, complaints_count: 2)
+    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true)
+    block = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: 'test:token-complaint')
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
     
@@ -569,7 +573,10 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in_via_login_code']
     assert_equal false, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
-    assert_equal [0, 0], user.reload.attributes.values_at('bounces_count', 'complaints_count')
+    assert block.reload.cleared_at
+    assert_equal user.id, block.cleared_by_id
+    assert_equal 'sign_in', block.clear_method
+    assert_not user.email_delivery_blocked?
   end
 
   test "a sign-in link is consumed before staging an incomplete account" do
