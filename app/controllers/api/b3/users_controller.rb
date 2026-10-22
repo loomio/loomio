@@ -1,14 +1,11 @@
-class Api::B3::UsersController < Api::V1::SnorlaxBase
-  skip_before_action :verify_authenticity_token
-  before_action :authenticate_api_key!
-  include ::LoadAndAuthorize
-
+class Api::B3::UsersController < Api::B3::BaseController
   USER_UPDATE_FIELDS = [:name, :username, :email, :is_admin]
 
-  def authenticate_api_key!
-    api_key = ENV.fetch('B3_API_KEY', '')
-    raise CanCan::AccessDenied unless api_key.length > 16
-    raise CanCan::AccessDenied unless secure_api_key?(bearer_token, api_key)
+  def create
+    attributes = user_params
+    attributes[:email] = attributes[:email].strip.downcase if attributes[:email].is_a?(String)
+    user = User.create!(attributes)
+    render json: { user: user_json(user) }, status: :created
   end
 
   def index
@@ -64,14 +61,6 @@ class Api::B3::UsersController < Api::V1::SnorlaxBase
   end
 
   private
-
-  def secure_api_key?(candidate, api_key)
-    ActiveSupport::SecurityUtils.secure_compare(candidate, api_key)
-  end
-
-  def bearer_token
-    request.authorization.to_s[/\ABearer (.+)\z/, 1].to_s
-  end
 
   def user_scope
     User.includes(:identities)

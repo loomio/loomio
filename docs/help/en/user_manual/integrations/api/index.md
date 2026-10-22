@@ -18,4 +18,4 @@ For push-based integrations, [group webhooks](/en/user_manual/integrations/api/u
 
 ## Server API
 
-The [Server API](/en/user_manual/integrations/api/server-api) lets operators of self-hosted Loomio installations manage user accounts. It is authenticated with a server-wide secret.
+The [Server API](/en/user_manual/integrations/api/server-api) lets operators of self-hosted Loomio installations create and manage user accounts, discover groups, and manage group memberships and roles. It uses a server-wide secret and does not require a bot account or membership in each group.
