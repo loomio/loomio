@@ -589,6 +589,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   end
 
   test "allows identity-provider initiated login only when explicitly configured" do
+    # Any value enables the flag; '0' guards against comparing with '1' or 'true'.
     ENV['SAML_ALLOW_IDP_INITIATED'] = '0'
     with_saml_mocks do
       session.delete(:saml_request_id)

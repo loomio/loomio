@@ -34,16 +34,13 @@ class MutationAudit
     unknown_ids = selected_ids.uniq - @plan.fetch("units").map { |unit| unit.fetch("id") }
     raise ArgumentError, "Unknown audit contexts: #{unknown_ids.join(', ')}" unless unknown_ids.empty?
 
-    @progress = if File.exist?(PROGRESS)
-      JSON.parse(File.read(PROGRESS))
-    else
-      { "schema_version" => 1, "units" => {} }
-    end
+    load_progress
   end
 
   def status
     signatures = if File.file?(@options.fetch(:tool))
-      @plan.fetch("units").to_h { |unit| [unit.fetch("id"), signature(unit)] }
+      shared = shared_inputs_digest
+      @plan.fetch("units").to_h { |unit| [unit.fetch("id"), signature(unit, shared)] }
     end
     counts = @plan.fetch("units").group_by do |unit|
       record = @progress.fetch("units")[unit.fetch("id")]
@@ -59,10 +56,12 @@ class MutationAudit
       end
     end.transform_values(&:size)
     reviews = File.exist?(REVIEWS) ? JSON.parse(File.read(REVIEWS)).fetch("units") : {}
+    planned_ids = @plan.fetch("units").map { |unit| unit.fetch("id") }
     completed = reviews.count do |id, review|
       record = @progress.fetch("units")[id]
-      review.fetch("review") == "complete" && record && record.fetch("signature") == review.fetch("signature") &&
-        (!signatures || signatures[id] == review.fetch("signature"))
+      planned_ids.include?(id) && review["review"] == "complete" && record &&
+        record.fetch("signature") == review["signature"] &&
+        (!signatures || signatures[id] == review["signature"])
     end
     planned_tests = @plan.fetch("units").flat_map { |unit| unit.fetch("tests") }
     structural_reviews = @plan.fetch("units").count do |unit|
@@ -79,11 +78,14 @@ class MutationAudit
   end
 
   def run
-    raise "Missing Mutineer executable: #{@options.fetch(:tool)}" unless File.file?(@options.fetch(:tool))
+    require_tool
     FileUtils.mkdir_p(REPORT_ROOT)
     attempts = 0
     File.open(File.join(REPORT_ROOT, "run.lock"), "w") do |lock|
       raise "A mutation audit is already running in this checkout" unless lock.flock(File::LOCK_EX | File::LOCK_NB)
+
+      # Another runner may have saved results after this process started.
+      load_progress
 
       selected = @plan.fetch("units").select { |unit| unit.fetch("measurement") == "pending" }
       selected.select! { |unit| unit.fetch("id").include?(@options[:only]) } if @options[:only]
@@ -113,14 +115,20 @@ class MutationAudit
   # checkout's runner is stopped. Revalidate against the current local inputs;
   # a worker's earlier snapshot cannot establish coverage of later test edits.
   def merge
+    require_tool
     FileUtils.mkdir_p(REPORT_ROOT)
     File.open(File.join(REPORT_ROOT, "run.lock"), "w") do |lock|
       raise "Stop this checkout's audit before merging partition results" unless lock.flock(File::LOCK_EX | File::LOCK_NB)
 
+      load_progress
       units = @plan.fetch("units").to_h { |unit| [unit.fetch("id"), unit] }
+      shared = shared_inputs_digest
       imported = []
       @options.fetch(:from).each do |checkout|
-        incoming = JSON.parse(File.read(File.join(checkout, "tmp/mutation_audit/progress.json")))
+        incoming_file = File.join(checkout, "tmp/mutation_audit/progress.json")
+        raise "No audit progress to merge: #{incoming_file}" unless File.file?(incoming_file)
+
+        incoming = JSON.parse(File.read(incoming_file))
         incoming.fetch("units").each do |id, record|
           next unless %w[measured unexercised incomplete].include?(record.fetch("measurement"))
 
@@ -128,7 +136,7 @@ class MutationAudit
           # checkout, but are no longer independent experiments in this plan.
           next unless unit = units[id]
           next unless unit.fetch("measurement") == "pending"
-          next unless record.fetch("signature") == signature(unit)
+          next unless record.fetch("signature") == signature(unit, shared)
           next unless File.file?(File.join(checkout, record.fetch("report")))
 
           previous = @progress.fetch("units")[id]
@@ -158,29 +166,50 @@ class MutationAudit
 
   private
 
+  def load_progress
+    @progress = if File.exist?(PROGRESS)
+      JSON.parse(File.read(PROGRESS))
+    else
+      { "schema_version" => 1, "units" => {} }
+    end
+  end
+
+  def require_tool
+    raise "Missing Mutineer executable: #{@options.fetch(:tool)}" unless File.file?(@options.fetch(:tool))
+  end
+
   # Include shared application and fixture inputs, not just the mutated file:
   # another component can change whether a supposedly redundant test matters.
-  def signature(unit)
+  # Callers checking many units at once pass one shared digest; a measurement
+  # recomputes it so edits made during the run are detected.
+  def signature(unit, shared = shared_inputs_digest)
     dependencies = Array(unit["covered_by"]).map do |id|
       @plan.fetch("units").find { |candidate| candidate.fetch("id") == id } ||
         raise(ArgumentError, "Unknown dependency #{id} for #{unit.fetch('id')}")
     end
-    files = Dir.glob(File.join(ROOT, "{app,lib,config}/**/*.rb")) +
-      Dir.glob(File.join(ROOT, "test/{fixtures,support}/**/*")).select { |file| File.file?(file) } +
-      %w[Gemfile.lock db/schema.rb test/test_helper.rb test/reset_database_helper.rb].map { |file| File.join(ROOT, file) } +
-      (unit.fetch("sources") + unit.fetch("tests") + unit.fetch("requires", [])).map { |file| File.join(ROOT, file) }
+    files = (unit.fetch("sources") + unit.fetch("tests") + unit.fetch("requires", [])).map { |file| File.join(ROOT, file) }
     dependencies.each do |dependency|
       files.concat((dependency.fetch("sources") + dependency.fetch("tests") + dependency.fetch("requires", [])).map { |file| File.join(ROOT, file) })
     end
     digest = Digest::SHA256.new
-    digest << RUBY_DESCRIPTION
-    tool_version = File.expand_path("../lib/mutineer/version.rb", File.dirname(@options.fetch(:tool)))
-    digest << JSON.generate(@plan.fetch("operators")) << JSON.generate(unit.slice("sources", "tests", "requires", "timeout", "capture_timeout"))
+    digest << shared << JSON.generate(unit.slice("sources", "tests", "requires", "timeout", "capture_timeout"))
     if dependencies.any?
       digest << JSON.generate(dependencies.map { |dependency| dependency.slice("id", "sources", "tests", "requires", "timeout", "capture_timeout") })
     end
-    digest << File.read(@options.fetch(:tool)) << File.read(tool_version)
     files.uniq.sort.each { |file| digest << file.delete_prefix(ROOT) << File.binread(file) }
+    digest.hexdigest
+  end
+
+  def shared_inputs_digest
+    files = Dir.glob(File.join(ROOT, "{app,lib,config}/**/*.rb")) +
+      Dir.glob(File.join(ROOT, "{app/views,config/locales,test/fixtures,test/support}/**/*")) +
+      %w[Gemfile.lock db/schema.rb test/test_helper.rb test/reset_database_helper.rb].map { |file| File.join(ROOT, file) }
+    digest = Digest::SHA256.new
+    digest << RUBY_DESCRIPTION
+    tool_version = File.expand_path("../lib/mutineer/version.rb", File.dirname(@options.fetch(:tool)))
+    digest << JSON.generate(@plan.fetch("operators"))
+    digest << File.read(@options.fetch(:tool)) << File.read(tool_version)
+    files.select { |file| File.file?(file) }.uniq.sort.each { |file| digest << file.delete_prefix(ROOT) << File.binread(file) }
     digest.hexdigest
   end
 
@@ -276,7 +305,9 @@ class MutationAudit
     puts JSON.generate(unit: id, **record.slice("measurement", "seconds", "summary", "tests_observed",
                                                "blind_candidates", "redundant_candidates"))
     true
-  rescue Interrupt
+  rescue SignalException
+    # Covers Ctrl-C, TERM and HUP: the child's own process group does not
+    # receive terminal signals, so it must be stopped explicitly.
     stop_child
     record["measurement"] = "interrupted" if record
     save
@@ -289,29 +320,62 @@ class MutationAudit
     save
     puts JSON.generate(unit: id, measurement: "failed", error: record.fetch("error"))
     true
+  ensure
+    # Unexpected errors must not leave a child writing to the test database
+    # after this process releases the run lock.
+    stop_child
   end
 
   # Forked test workers can outlive the CLI leader after INT. Drain the whole
-  # group before another run resets fixtures in the same isolated database.
+  # group before another run resets fixtures in the same isolated database,
+  # escalating when a mutant or trapped signal keeps a process alive. Repeated
+  # signals are ignored meanwhile so they cannot skip the cleanup.
   def stop_child
-    return unless @child
+    return unless (child = @child)
 
+    previous_handlers = %w[INT TERM HUP].to_h { |signal| [signal, Signal.trap(signal, "IGNORE")] }
     begin
-      Process.kill("INT", -@child)
-    rescue Errno::ESRCH
-      # The leader and its workers already exited.
+      signal_group("INT", child)
+      signal_group("TERM", child) unless reap(child, 15)
+      signal_group("KILL", child) unless reap(child, 15)
+      reap(child, nil)
+      signal_group("TERM", child)
+      signal_group("KILL", child) unless group_exited?(child, 15)
+    ensure
+      @child = nil
+      previous_handlers.each { |signal, handler| Signal.trap(signal, handler) }
     end
-    begin
-      Process.wait(@child)
-    rescue Errno::ECHILD
-      # The signal arrived after the leader was reaped.
+  end
+
+  def signal_group(signal, group)
+    Process.kill(signal, -group)
+  rescue Errno::ESRCH
+    # No process remains in the group.
+  end
+
+  # Waits for the group leader, indefinitely when timeout is nil.
+  def reap(child, timeout)
+    deadline = timeout && Process.clock_gettime(Process::CLOCK_MONOTONIC) + timeout
+    loop do
+      return true if Process.wait(child, timeout ? Process::WNOHANG : 0)
+      return false if Process.clock_gettime(Process::CLOCK_MONOTONIC) >= deadline
+
+      sleep 0.1
     end
-    begin
-      Process.kill("TERM", -@child)
-    rescue Errno::ESRCH
-      # No forked workers remain in the group.
+  rescue Errno::ECHILD
+    true
+  end
+
+  def group_exited?(group, timeout)
+    deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + timeout
+    loop do
+      Process.kill(0, -group)
+      return false if Process.clock_gettime(Process::CLOCK_MONOTONIC) >= deadline
+
+      sleep 0.1
     end
-    @child = nil
+  rescue Errno::ESRCH
+    true
   end
 
   def save
