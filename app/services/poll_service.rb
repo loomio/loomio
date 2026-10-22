@@ -547,23 +547,25 @@ class PollService
     total_score = poll_options.sum(&:total_score)
     maximum_score = poll_options.map(&:total_score).max
     weighted_results = poll.weighted_voting?
+    electorate_total = weighted_results ? poll.voter_weight_total : poll.voters_count
 
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       score_percent = total_score > 0 ? ((option.total_score / total_score) * 100) : 0
-      voter_percent = poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0
+      option_voters = weighted_results ? option.voter_weight_total : option.voter_count
+      voter_percent = electorate_total > 0 ? (option_voters.to_d / electorate_total * 100) : 0
 
       test_result = if option.test_operator == 'gte'
         if option.test_against == 'score_percent'
           score_percent >= option.test_percent.to_f
         else
-          voter_percent >= option.test_percent.to_f
+          voter_percent >= option.test_percent.to_d
         end
       elsif option.test_operator == 'lte'
         if option.test_against == 'score_percent'
           score_percent <= option.test_percent.to_f
         else
-          voter_percent <= option.test_percent.to_f
+          voter_percent <= option.test_percent.to_d
         end
       else
         nil
@@ -581,7 +583,7 @@ class PollService
         target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
         score_percent: score_percent.to_f,
         max_score_percent: total_score > 0 ? ((option.total_score / maximum_score) * 100).to_f : 0,
-        voter_percent: voter_percent,
+        voter_percent: voter_percent.to_f,
         average: weighted_results ? option.weighted_average_score : option.average_score,
         voter_scores: option.voter_scores_for_results,
         voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
@@ -590,11 +592,13 @@ class PollService
         test_operator: option.test_operator,
         test_against: option.test_against,
         test_percent: option.test_percent,
+        test_requirement_key: poll.vote_share_requirement_key(option),
         test_result: test_result
       }.with_indifferent_access.freeze
     end
 
     if poll.show_none_of_the_above
+      none_of_the_above_total = weighted_results ? poll.stances.latest.decided.none_of_the_above.sum(:weight) : poll.none_of_the_above_count
       l.push(
         {
           id: 0,
@@ -607,7 +611,7 @@ class PollService
           score_percent: 0,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          voter_percent: electorate_total > 0 ? (none_of_the_above_total.to_f / electorate_total * 100) : 0,
           average: 0,
           voter_scores: {},
           voter_ids: (none_of_the_above_voter_ids || poll.none_of_the_above_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
@@ -619,6 +623,7 @@ class PollService
     end
 
     if poll.results_include_undecided
+      undecided_total = weighted_results ? poll.stances.latest.undecided.sum(:weight) : poll.undecided_voters_count
       l.push(
         {
           id: -1,
@@ -631,7 +636,7 @@ class PollService
           score_percent: nil,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
+          voter_percent: electorate_total > 0 ? (undecided_total.to_f / electorate_total * 100) : 0,
           average: 0,
           voter_scores: {},
           voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),

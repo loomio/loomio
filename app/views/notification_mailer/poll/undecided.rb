@@ -9,10 +9,10 @@ class Views::NotificationMailer::Poll::Undecided < Views::ApplicationMailer::Com
   def view_template
     nom = @poll.decided_voters_count
     dnom = @poll.voters_count
-    pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0
+    pct = @poll.cast_stances_pct
 
     p(class: "email-poll-meta") do
-      plain t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)
+      plain t(@poll.participation_key, num: nom, total: dnom, pct: pct)
     end
   end
 end

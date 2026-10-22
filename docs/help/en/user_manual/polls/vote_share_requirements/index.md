@@ -24,6 +24,8 @@ A requirement of 75 percent agreement from eligible voters can pass only when at
 
 A requirement of 60 percent agreement from votes cast can pass when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
 
+With [weighted voting](/en/user_manual/polls/weighted_voting), both bases use weights. **Weighted votes cast** measures the option's weighted total against all weighted votes cast. **Total assigned vote weight** measures the weight of voters choosing the option against the total weight assigned to all eligible voters, including people who have not voted. For example, one person holding 70 of 100 assigned weight can meet a 60 percent agreement requirement based on total assigned vote weight.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Different vote share requirements
@@ -35,6 +37,8 @@ A proposal can have requirements on more than one option. For example:
 - Block must be no more than 0 percent of votes cast
 
 Setting an option to **No more than 0%** is a common pattern. It means the proposal cannot pass if anyone chooses that option. Use it on **Block** so that a single block stops the proposal.
+
+With weighted voting, only a block with a positive vote weight exceeds a 0 percent requirement. A block with weight `0` adds no weight to the result.
 
 You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
 

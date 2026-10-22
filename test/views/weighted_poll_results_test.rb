@@ -93,6 +93,32 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     assert_not_includes email, '4.0'
   end
 
+  test 'weighted quorum and support requirements use the same labels across email and chatbots' do
+    poll = create_weighted_poll('proposal', %w[agree disagree], 1)
+    poll.update!(quorum_pct: 50)
+    poll.poll_options.first.update!(test_operator: 'gte', test_against: 'voter_percent', test_percent: 60)
+
+    components = [
+      Views::NotificationMailer::Poll::Rules.new(poll: poll),
+      Views::Chatbot::Matrix::Rules.new(poll: poll),
+      Views::Chatbot::Markdown::Poll.new(topic_item: poll.created_topic_item, poll: poll, recipient: @voter)
+    ]
+    components.each do |component|
+      output = ApplicationController.renderer.render(component, layout: false)
+      assert_includes output, '50% of the total assigned vote weight must participate'
+      assert_includes output.downcase, 'agree needs at least 60% of the total assigned vote weight'
+    end
+
+    components = [
+      Views::NotificationMailer::Poll::Undecided.new(poll: poll),
+      Views::Chatbot::Matrix::Undecided.new(poll: poll)
+    ]
+    components.each do |component|
+      output = ApplicationController.renderer.render(component, layout: false)
+      assert_includes output, "#{poll.cast_stances_pct}% of assigned vote weight participated"
+    end
+  end
+
   private
 
   def create_weighted_poll(poll_type, option_names, score)

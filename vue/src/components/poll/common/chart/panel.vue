@@ -4,8 +4,13 @@ import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollStvChartPanel from '@/components/poll/stv/chart_panel';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
@@ -54,16 +59,16 @@ export default {
       ul(style="list-style-type: none; padding-left: 0;")
         li.text-medium-emphasis.d-flex.align-center(v-if="poll.quorumPct")
           common-icon.mr-1(
-            :name="poll.quorumVotesRequired <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
-            :color="poll.quorumVotesRequired <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+            :name="poll.quorumReached ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="poll.quorumReached ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', args: {pct: poll.quorumPct}}")
+          span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_of_assigned_vote_weight_must_participate' : 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', {pct: poll.quorumPct}) }}
         li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
           common-icon.mr-1(
             :name="option.test_result ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
             :color="option.test_result ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
+          span {{ t(option.test_requirement_key, {percent: option.test_percent, name: option.name}) }}
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
       template(v-else-if="poll.chartType != 'grid'")
@@ -79,5 +84,5 @@ export default {
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_weighted_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct}) }}
 </template>

@@ -19,11 +19,18 @@ class PollSerializerTest < ActiveSupport::TestCase
     assert_not shared.key?(:anonymous_voter_eligible)
     assert_not shared.key?(:anonymous_ballot_submitted)
     assert_not shared.key?(:voter_has_access)
+    assert_not shared.key?(:quorum_reached)
+    assert_not shared.key?(:quorum_votes_required)
 
     personal = PollSerializer.new(poll, scope: { exclude_types: [], current_user_id: voter.id }).as_json.fetch(:poll)
     assert_equal true, personal[:anonymous_voter_eligible]
     assert_equal false, personal[:anonymous_ballot_submitted]
     assert_equal true, personal[:voter_has_access]
+    assert_not personal.key?(:quorum_reached)
+
+    PollService.close(poll: poll, actor: users(:admin))
+    closed = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
+    assert_equal false, closed.fetch(:quorum_reached)
   end
 
   test "compact personal poll responses report revoked voting access without loading group records" do

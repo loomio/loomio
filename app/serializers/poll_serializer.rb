@@ -60,6 +60,7 @@ class PollSerializer < ApplicationSerializer
              :poll_template_id,
              :poll_template_key,
              :quorum_pct,
+             :quorum_reached,
              :quorum_count,
              :quorum_votes_required,
              :topic_id,
@@ -129,6 +130,14 @@ class PollSerializer < ApplicationSerializer
   end
 
   def include_quorum_votes_required?
+    participation_visible?
+  end
+
+  def quorum_reached
+    object.quorum_reached?
+  end
+
+  def include_quorum_reached?
     participation_visible?
   end
 

@@ -553,9 +553,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         span(v-t="'poll_common_form.more_settings'")
       v-expansion-panel-text
         template(v-if="poll.config().allow_quorum")
-          .poll-common-form__quorum-title.text-body-large.pb-2(v-t="'poll_common_form.quorum'")
+          .poll-common-form__quorum-title.text-body-large.pb-2 {{ t('poll_common_form.quorum') }}
           .text-body-medium.pb-4.text-medium-emphasis
-            span {{ t('poll_common_form.quorum_hint') }}
+            span {{ t(poll.weightedVoting ? 'poll_common_form.quorum_weighted_hint' : 'poll_common_form.quorum_hint') }}
             help-link.ml-1(path="user_manual/polls/quorum")
           v-number-input.mb-4(
             v-model="poll.quorumPct"

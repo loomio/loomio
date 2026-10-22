@@ -6,8 +6,13 @@ import EventBus from '@/shared/services/event_bus';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   mixins: [WatchRecords, UrlFor],
   directives: { handle: HandleDirective },
 
@@ -521,8 +526,8 @@ export default {
 
         template(v-if="pollTemplate.config().allow_quorum")
           v-divider.mb-4
-          .text-body-large.pb-2(v-t="'poll_common_form.quorum'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+          .text-body-large.pb-2 {{ t('poll_common_form.quorum') }}
+          .text-body-medium.pb-4.text-medium-emphasis {{ t(pollTemplate.weightedVoting ? 'poll_common_form.quorum_weighted_hint' : 'poll_common_form.quorum_hint') }}
           v-number-input.mb-4(
             v-model="pollTemplate.quorumPct"
             :label="$t('poll_common_form.participation_quorum')"

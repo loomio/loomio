@@ -114,6 +114,40 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'weighted quorum and eligible vote share use issued weights in the API' do
+    poll = PollService.create(params: {
+      title: 'Weighted rules', poll_type: 'proposal', group_id: @group.id,
+      poll_option_names: %w[Agree Disagree], weighted_voting: true,
+      quorum_pct: 60, closing_at: 3.days.from_now
+    }, actor: @admin)
+    poll.stances.latest.update_all(weight: 0)
+    poll.stances.latest.find_by!(participant: @admin).update!(weight: 3)
+    option = poll.poll_options.first
+    option.update!(test_operator: 'gte', test_against: 'voter_percent', test_percent: 70)
+    poll.stances.latest.find_by!(participant: @user).update!(
+      weight: 7, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: option.id, score: 1}]
+    )
+    poll.update_counts!
+
+    sign_in @user
+    get :show, params: {id: poll.key}
+    assert_response :success
+    data = JSON.parse(response.body).fetch('polls').sole
+    assert_equal true, data.fetch('quorum_reached')
+    assert_equal 70, data.fetch('cast_stances_pct')
+    result = data.fetch('results').find { |row| row['id'] == option.id }
+    assert_equal 70, result.fetch('voter_percent')
+    assert_equal true, result.fetch('test_result')
+
+    sign_in @alien
+    get :show, params: {id: poll.key}
+    assert_response :forbidden
+    patch :update, params: {id: poll.key, poll: {quorum_pct: 0}}
+    assert_response :forbidden
+    assert_equal 60, poll.reload.quorum_pct
+  end
+
   test "legacy vote reasons expose plain text and choices without vote metadata" do
     poll = PollService.create(params: {
       title: "Migrated anonymous poll",

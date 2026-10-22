@@ -117,13 +117,13 @@ module Views::Chatbot::Markdown::Concerns
     md "**#{t('poll_common_action_panel.for_this_poll_type_to_be_valid', poll_type: t("poll_types.#{poll.poll_type}"))}**\n"
 
     if poll.quorum_pct
-      met = poll.quorum_votes_required <= 0
-      md "- #{met ? '✓' : '✗'} #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: poll.quorum_pct)}\n"
+      met = poll.quorum_reached?
+      md "- #{met ? '✓' : '✗'} #{t(poll.quorum_requirement_key, pct: poll.quorum_pct)}\n"
     end
 
     poll.results.select { |r| r['test_operator'] }.each do |option|
       met = option['test_result']
-      md "- #{met ? '✓' : '✗'} #{t("poll_option_form.name_#{option['test_operator']}_#{option['test_against']}", percent: option['test_percent'], name: option['name'])}\n"
+      md "- #{met ? '✓' : '✗'} #{t(option['test_requirement_key'], percent: option['test_percent'], name: option['name'])}\n"
     end
   end
 
@@ -317,9 +317,9 @@ module Views::Chatbot::Markdown::Concerns
   def render_undecided(poll)
     nom = poll.decided_voters_count
     dnom = poll.voters_count
-    pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0
+    pct = poll.cast_stances_pct
 
-    md "#{t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)}\n"
+    md "#{t(poll.participation_key, num: nom, total: dnom, pct: pct)}\n"
 
     if poll.active? && poll.undecided_voters.any?
       md "**#{t('poll.waiting_for_votes_from')}**: #{poll.undecided_voters.map(&:username).join(', ')}\n"

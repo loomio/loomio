@@ -426,7 +426,7 @@ class PollTest < ActiveSupport::TestCase
       'votes' => 'poll_common.votes',
       'score' => 'poll_common.weighted_votes',
       'votes_cast_percent' => 'poll_common.pct_of_weighted_votes',
-      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+      'voter_percent' => 'poll_common.pct_of_assigned_vote_weight'
     }, poll.result_heading_keys)
   end
 
@@ -447,7 +447,7 @@ class PollTest < ActiveSupport::TestCase
     }, poll.result_heading_keys)
   end
 
-  test "a zero-weight vote counts toward participation and quorum but not score" do
+  test "a zero-weight vote appears in plain counts but adds no weighted participation or score" do
     voters = [users(:admin), users(:user)]
     poll = create_poll(
       group_id: @group.id,
@@ -472,11 +472,12 @@ class PollTest < ActiveSupport::TestCase
     assert_equal 2, poll.voters_count
     assert_equal 2, poll.decided_voters_count
     assert_equal 100, poll.cast_stances_pct
-    assert_equal 2, poll.quorum_count
+    assert_equal 3, poll.quorum_count
+    assert poll.quorum_reached?
     assert_equal 1, agree.reload.voter_count
     assert_equal 0, agree.total_score
     assert_equal 3, disagree.reload.total_score
-    assert_equal 50, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
+    assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
     assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:score_percent]
   end
 

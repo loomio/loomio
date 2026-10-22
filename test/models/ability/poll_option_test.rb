@@ -11,11 +11,11 @@ class Ability::PollOptionTest < ActiveSupport::TestCase
       author = topic_name == :direct_topic ? users(:guest_admin_normal) : users(:admin)
       topic.group.add_admin!(author) if topic_name == :public_discussion_topic
 
-      [false, true].each do |anonymous|
+      [[false, false], [false, true], [true, false]].each do |anonymous, weighted_voting|
         poll = PollService.create(params: {
           topic_id: topic.id, title: "Option visibility", poll_type: "proposal",
           poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now, anonymous: anonymous,
-          quorum_pct: 50
+          quorum_pct: 50, weighted_voting: weighted_voting
         }, actor: author)
         option = poll.poll_options.first!
         option.poll = poll
@@ -27,7 +27,7 @@ class Ability::PollOptionTest < ActiveSupport::TestCase
 
             actors.each do |actor|
               assert_equal actor.can?(:show, poll), actor.can?(:show, option),
-                "#{topic_name}, anonymous=#{anonymous}, results=#{mode}, closed=#{closed_at.present?}, actor=#{actor.id}"
+                "#{topic_name}, anonymous=#{anonymous}, weighted=#{weighted_voting}, results=#{mode}, closed=#{closed_at.present?}, actor=#{actor.id}"
             end
           end
         end

@@ -58,20 +58,20 @@ export default {
         this.slices = this.poll.pieSlices();
         return;
       }
-      const voterMetric = ['voter_percent', 'votes', 'voter_count'].includes(this.selectedMetric);
+      const countMetric = ['votes', 'voter_count'].includes(this.selectedMetric);
       const unweighted = this.selectedMetric === 'unweighted_score';
       const totalUnweighted = this.poll.results.reduce((sum, option) => sum + Number(option.unweighted_score || 0), 0);
       this.slices = this.poll.results.map(option => ({
         color: option.color,
         value: unweighted
           ? (totalUnweighted ? Number(option.unweighted_score || 0) / totalUnweighted * 100 : 0)
-          : Number(option[voterMetric ? 'voter_percent' : 'score_percent'] || 0)
+          : (countMetric ? this.voterCountPercent(option) : Number(option[this.selectedMetric === 'voter_percent' ? 'voter_percent' : 'score_percent'] || 0))
       })).filter(slice => slice.value > 0);
     },
     barPercent(option) {
       const metric = this.selectedMetric;
       if (!metric) return this.clampPercent(option[this.poll.chartColumn]);
-      if (metric === 'votes' || metric === 'voter_count') return this.clampPercent(option.voter_percent);
+      if (metric === 'votes' || metric === 'voter_count') return this.clampPercent(this.voterCountPercent(option));
       if (metric === 'votes_cast_percent') return this.clampPercent(option.score_percent);
       if (metric === 'score' || metric === 'unweighted_score') {
         const maximum = Math.max(...this.poll.results.map(result => Number(result[metric] || 0)), 0);
@@ -85,6 +85,9 @@ export default {
     },
     realOption(opt) {
       return Records.pollOptions.find(opt.id) || {meaning: '', name: opt.name}
+    },
+    voterCountPercent(option) {
+      return this.poll.votersCount > 0 ? option.voter_count / this.poll.votersCount * 100 : 0;
     },
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
   },
