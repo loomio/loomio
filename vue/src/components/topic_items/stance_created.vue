@@ -3,8 +3,10 @@ import StanceService  from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import UrlFor from '@/mixins/url_for';
 import { pickBy } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() { return { t: useI18n().t }; },
   mixins: [UrlFor],
 
   props: {
@@ -66,7 +68,7 @@ section.topic-item__stance-created.stance-created
     .d-flex
       component.text-medium-emphasis(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
       mid-dot.text-medium-emphasis
-      span(v-t="'poll_common_votes_panel.undecided'")
+      span {{ t('poll_common_votes_panel.not_voted') }}
       mid-dot.text-medium-emphasis
       router-link.text-medium-emphasis(:to='link')
         time-ago(:date='itemable.updatedAt')

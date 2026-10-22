@@ -996,8 +996,8 @@ he:
       everyone_in_the_group: כולם בקבוצה
       topic: כולם בשרשור
       voters: כולם מוזמנים להצביע
-      decided_voters: כל מי שהצביע
-      undecided_voters: מצביעים מתלבטים
+      people_who_voted: כל מי שהצביע
+      people_not_voted: מצביעים מתלבטים
       non_voters: חברים ב-%{name} עדיין לא הוזמנו
       delegates_of_group: נציגים של %{name}
     form:
@@ -1783,7 +1783,7 @@ he:
       all: דיונים אחרונים
     thread_preview:
       you_voted: את/ה הצבעת %{position}
-      undecided: את/ה מתלבט/ת
+      not_voted: "עדיין לא הצבעת"
     threads_from:
       group: שיחות מאת
       pinned: שיחות נעוצות
@@ -2290,12 +2290,12 @@ he:
     started_by: התחיל לפי %{name}
   poll_common_votes_panel:
     vote_removed: ההצבעה הוסרה
-    undecided: לֹא הֶחלֵטִי
+    not_voted: לֹא הֶחלֵטִי
     newest_first: הכי חדש קודם
     oldest_first: הכי ישן קודם
     priority_first: הסכמות קודם
     priority_last: חסומים קודם
-    undecided_first: קודם כל מתלבט
+    not_voted_first: "קודם מי שטרם הצביעו"
     no_votes_yet: לא בוצעה עוד אף בחירה.
     change_results_order: שנה סדר התוצאות
     none_of_the_above: (אף אחד מהנ"ל)
@@ -2316,13 +2316,13 @@ he:
     stance: הַצבָּעָה
     participation_records_restricted: ניתן לראות מי השתתף לאחר סגירת ההצבעה
     vote_weight: משקל הצבעה %{weight}
-  poll_common_undecided_panel:
-    show_undecided: הצג %{count} מתלבטים
+  poll_common_not_voted_panel:
+    show_not_voted: "הצג %{count} אנשים שטרם הצביעו"
     show_invitations: הראה הצעות ממתינות
-    undecided_users: מתלבט (%{count})
+    people_not_voted: מתלבט (%{count})
     invitation_count_singular: אדם אחד נוסף הוזמן דרך המייל להשתתף
     invitation_count_plural: '%{count} אנשים נוספים הוזמנו להשתתף בדוא"ל'
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: תזכורת נשלחה!
     reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
@@ -2462,7 +2462,7 @@ he:
     total: סך הכל
   poll_remove_vote:
     title: להסיר את ההצבעה שלך?
-    helptext: האם אתה בטוח שברצונך להסיר את ההצבעה שלך? אתה תירשם כמתלבט ותוכל להצביע שוב מאוחר יותר אם תרצה.
+    helptext_not_voted: האם אתה בטוח שברצונך להסיר את ההצבעה שלך? אתה תירשם כמתלבט ותוכל להצביע שוב מאוחר יותר אם תרצה.
     confirm: הסר הצבעה
     success: ההצבעה הוסרה
   poll_poll_vote_form:
@@ -2824,7 +2824,7 @@ he:
       voting_title: 24 שעות לפני סגירת ההצבעה, שלחו תזכורת אל
       nobody: אַף אֶחָד
       author: מחבר (אני)
-      undecided_voters: מצביעים מתלבטים
+      people_not_voted: מצביעים מתלבטים
       voters: כל הבוחרים
     notify_on_participate:
       title: הודע לי כשאנשים משתתפים

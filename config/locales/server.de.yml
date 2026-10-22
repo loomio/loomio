@@ -490,9 +490,9 @@ de:
       not_invited: Nicht eingeladen
       please_respond: Bitte beteilige dich an der Abstimmung!
       time_zone: "(Zeitangaben in %{zone})"
-      undecided_members: Unentschlossene Mitglieder (%{count})
-      undecided_visitors: Unentschlossene Gäste (%{count})
-      more_undecided: Und %{count} mehr...
+      members_not_voted: Unentschlossene Mitglieder (%{count})
+      guests_not_voted: Unentschlossene Gäste (%{count})
+      more_not_voted: Und %{count} mehr...
       vote_now: Jetzt Stimme abgeben
       you_have_until: Du kannst bis %{when} teilnehmen.
       people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
@@ -814,7 +814,7 @@ de:
     voted: "%{author} hat für %{response} gestimmt"
     voted_hidden: "%{author} hat abgestimmt"
     vote_removed: "%{author}: Stimme entfernt"
-    undecided: "%{author}: noch nicht abgestimmt"
+    not_voted: "%{author}: noch nicht abgestimmt"
     superseded: ersetzt
     shared_outcome: "%{author} hat ein Fazit geteilt"
     removed: Entfernt

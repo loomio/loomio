@@ -999,8 +999,8 @@ uk:
       everyone_in_the_group: Всі в групі
       topic: Усім в темі
       voters: Усім запрошеним до голосування
-      decided_voters: Усім, хто голосував
-      undecided_voters: Виборцям, які не проголосували
+      people_who_voted: Усім, хто голосував
+      people_not_voted: Виборцям, які не проголосували
       non_voters: Учасників %{name} ще не запросили
       delegates_of_group: Делегати %{name}
     form:
@@ -1788,7 +1788,7 @@ uk:
       all: Нещодавні обговорення
     thread_preview:
       you_voted: Ви проголосували %{position}
-      undecided: Ви не визначились з рішенням
+      not_voted: "Ви ще не проголосували"
     threads_from:
       group: Теми від
       pinned: Закріплені теми
@@ -2299,12 +2299,12 @@ uk:
     started_by: Розпочато %{name}
   poll_common_votes_panel:
     vote_removed: Голос видалено
-    undecided: Не проголосували
+    not_voted: Не проголосували
     newest_first: Спочатку нові
     oldest_first: Спочатку старі
     priority_first: Спочатку узгоджені
     priority_last: Спочатку заблоковані
-    undecided_first: Не визначені першими
+    not_voted_first: "Спочатку ті, хто не проголосував"
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
@@ -2325,13 +2325,13 @@ uk:
     stance: Голосувати
     participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
     vote_weight: Вага голосу %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Показати тих, хто не проголосував (%{count})
+  poll_common_not_voted_panel:
+    show_not_voted: Показати тих, хто не проголосував (%{count})
     show_invitations: Показати запрошення в очікувані
-    undecided_users: Не визначився (%{count})
+    people_not_voted: Не визначився (%{count})
     invitation_count_singular: 1 особа запрошена до участі електронною поштою
     invitation_count_plural: Ще %{count} осіб було запрошено взяти участь електронною поштою
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Нагадування відправлено!
     reminder_sent: Сповіщення з нагадуванням відправлено
   poll_common_set_outcome_panel:
@@ -2471,7 +2471,7 @@ uk:
     total: Разом
   poll_remove_vote:
     title: Видалити свій голос?
-    helptext: Ви впевнені, що хочете видалити свій голос? Ви будете у списку тих, хто не проголосував, і зможете проголосувати пізніше, якщо забажаєте.
+    helptext_not_voted: Ви впевнені, що хочете видалити свій голос? Ви будете у списку тих, хто не проголосував, і зможете проголосувати пізніше, якщо забажаєте.
     confirm: Зняти голос
     success: Голос видалено
   poll_poll_vote_form:
@@ -2835,7 +2835,7 @@ uk:
       voting_title: За 24 години до завершення голосування надішліть нагадування
       nobody: Ніхто
       author: Автор (я)
-      undecided_voters: Виборці, які не проголосували
+      people_not_voted: Виборці, які не проголосували
       voters: Усі виборці
     notify_on_participate:
       title: Повідомити мене, коли люди беруть участь

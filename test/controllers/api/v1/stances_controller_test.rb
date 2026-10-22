@@ -956,7 +956,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.option_score_totals
   end
 
   test "rejects duplicate options as invalid ballot input" do
@@ -978,7 +978,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.option_score_totals
   end
 
   test "rejects options belonging to another poll as invalid ballot input" do
@@ -1005,7 +1005,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.option_score_totals
   end
 
   private

@@ -125,7 +125,7 @@ class TopicService
       topic.polls
         .where(anonymous: false)
         .joins(:stances)
-        .merge(Stance.latest.decided)
+        .merge(Stance.latest.cast)
         .pluck("stances.participant_id")
     )
 

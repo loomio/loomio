@@ -996,8 +996,8 @@ fi:
       everyone_in_the_group: Kaikki ryhmässä
       topic: Kaikki ketjussa
       voters: Kaikki kutsuttiin äänestämään
-      decided_voters: Kaikki äänestäneet
-      undecided_voters: Epävarmat äänestäjät
+      people_who_voted: Kaikki äänestäneet
+      people_not_voted: Epävarmat äänestäjät
       non_voters: Ryhmän %{name} jäseniä ei ole vielä kutsuttu
       delegates_of_group: "%{name}:n edustajat"
     form:
@@ -1771,7 +1771,7 @@ fi:
       all: Viimeaikaiset keskustelut
     thread_preview:
       you_voted: Äänestit %{position}
-      undecided: Et ole vielä äänestänyt
+      not_voted: Et ole vielä äänestänyt
     threads_from:
       group: Viestit osoitteesta
       pinned: Kiinnitetyt langat
@@ -2271,12 +2271,12 @@ fi:
     started_by: 'Aloittaja: %{name}'
   poll_common_votes_panel:
     vote_removed: Ääni poistettu
-    undecided: Äänestämättä
+    not_voted: Äänestämättä
     newest_first: Uusin ensin
     oldest_first: Vanhin ensin
     priority_first: Ensin samaa mieltä
     priority_last: Estä ensin
-    undecided_first: Äänestämättömät ensin
+    not_voted_first: Äänestämättömät ensin
     no_votes_yet: Ääniä ei ole vielä annettu.
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
@@ -2297,13 +2297,13 @@ fi:
     stance: Äänestää
     participation_records_restricted: Äänestyksen päätyttyä näet ketkä osallistuivat
     vote_weight: Äänestyspaino %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Näytä %{count} epävarmaa
+  poll_common_not_voted_panel:
+    show_not_voted: "Näytä %{count} äänestämätöntä"
     show_invitations: Näytä odottavat kutsut
-    undecided_users: Äänestämättä (%{count})
+    people_not_voted: Äänestämättä (%{count})
     invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
     invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Muistutus lähetetty!
     reminder_sent: Muistutusilmoitus lähetetty
   poll_common_set_outcome_panel:
@@ -2443,7 +2443,7 @@ fi:
     total: Kaikki yhteensä
   poll_remove_vote:
     title: Poistetaanko äänesi?
-    helptext: Haluatko varmasti poistaa äänesi? Sinut merkitään päättämättömäksi ja voit äänestää myöhemmin uudelleen, jos haluat.
+    helptext_not_voted: Haluatko varmasti poistaa äänesi? Sinut merkitään päättämättömäksi ja voit äänestää myöhemmin uudelleen, jos haluat.
     confirm: Poista ääni
     success: Ääni poistettu
   poll_poll_vote_form:
@@ -2805,7 +2805,7 @@ fi:
       voting_title: Lähetä muistutus 24 tuntia ennen äänestyksen päättymistä osoitteeseen
       nobody: Kukaan
       author: Kirjoittaja (minä)
-      undecided_voters: Päättämättömät äänestäjät
+      people_not_voted: Päättämättömät äänestäjät
       voters: Kaikki äänestäjät
     notify_on_participate:
       title: Ilmoita minulle, kun ihmiset osallistuvat

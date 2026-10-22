@@ -469,9 +469,9 @@ ru:
       not_invited: Не приглашен
       please_respond: Пожалуйста ответьте
       time_zone: "(Время отображается согласно %{zone})"
-      undecided_members: Не проголосовавшие участники группы (%{count})
-      undecided_visitors: Не проголосовавшие гости (%{count})
-      more_undecided: Еще %{count}...
+      members_not_voted: Не проголосовавшие участники группы (%{count})
+      guests_not_voted: Не проголосовавшие гости (%{count})
+      more_not_voted: Еще %{count}...
       vote_now: Голосовать!
       you_have_until: Поучаствовать можно до %{when}.
       people_have_voted: Приняло участие %{nom} из %{dnom} человек (%{pct}%)
@@ -793,7 +793,7 @@ ru:
     voted: "%{author} проголосовал %{response}"
     voted_hidden: "%{author} проголосовал"
     vote_removed: "%{author}: голос удален"
-    undecided: "%{author}: не проголосовали"
+    not_voted: "%{author}: не проголосовали"
     superseded: заменен
     shared_outcome: "%{author} поделился выводом"
     removed: Удалено

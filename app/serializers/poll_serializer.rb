@@ -18,8 +18,8 @@ class PollSerializer < ApplicationSerializer
              :opened_at,
              :created_at,
              :content_locale,
-             :cast_stances_pct,
-             :decided_voters_count,
+             :participation_pct,
+             :votes_cast_count,
              :details,
              :details_format,
              :discarded_at,
@@ -39,12 +39,12 @@ class PollSerializer < ApplicationSerializer
              :reason_prompt,
              :shuffle_options,
              :show_none_of_the_above,
-             :stance_counts,
+             :option_score_totals,
              :specified_voters_only,
              :total_score,
              :title,
-             :undecided_voters_count,
-             :voters_count,
+             :votes_uncast_count,
+             :voters_eligible_count,
              :stance_reason_required,
              :versions_count,
              :dots_per_person,
@@ -60,8 +60,8 @@ class PollSerializer < ApplicationSerializer
              :poll_template_id,
              :poll_template_key,
              :quorum_pct,
-             :quorum_count,
-             :quorum_votes_required,
+             :quorum_threshold,
+             :quorum_gap,
              :topic_id,
              :group_id,
              :weighted_voting
@@ -83,8 +83,8 @@ class PollSerializer < ApplicationSerializer
     :closing_at,
     :created_at,
     :content_locale,
-    :cast_stances_pct,
-    :decided_voters_count,
+    :participation_pct,
+    :votes_cast_count,
     :details,
     :details_format,
     :hide_results,
@@ -96,19 +96,19 @@ class PollSerializer < ApplicationSerializer
     :mentioned_usernames,
     :results,
     :shuffle_options,
-    :stance_counts,
+    :option_score_totals,
     :total_score,
     :specified_voters_only,
     :title,
-    :undecided_voters_count,
-    :voters_count,
+    :votes_uncast_count,
+    :voters_eligible_count,
     :stance_reason_required,
     :versions_count,
     :meeting_duration,
     :default_duration_in_days
   ]
 
-  def include_stance_counts?
+  def include_option_score_totals?
     results_visible?
   end
 
@@ -116,29 +116,29 @@ class PollSerializer < ApplicationSerializer
     !object.anonymous? || object.closed?
   end
 
-  def include_cast_stances_pct?
+  def include_participation_pct?
     participation_visible?
   end
 
-  def include_decided_voters_count?
+  def include_votes_cast_count?
     participation_visible?
   end
 
-  def include_undecided_voters_count?
+  def include_votes_uncast_count?
     participation_visible?
   end
 
-  def include_quorum_votes_required?
+  def include_quorum_gap?
     participation_visible?
   end
 
   def results
     # A known-missing cache entry means the poll has no such voters.
-    undecided_voter_ids = cache_fetch(:undecided_voter_ids_by_poll_id, object.id) { object.undecided_voters.ids } || []
+    voters_uncast_ids = cache_fetch(:voters_uncast_ids_by_poll_id, object.id) { object.voters_uncast.ids } || []
     none_of_the_above_voter_ids = cache_fetch(:none_of_the_above_voter_ids_by_poll_id, object.id) { object.none_of_the_above_voters.ids } || []
     PollService.calculate_results(
       object, poll_options,
-      undecided_voter_ids: undecided_voter_ids,
+      voters_uncast_ids: voters_uncast_ids,
       none_of_the_above_voter_ids: none_of_the_above_voter_ids
     )
   end

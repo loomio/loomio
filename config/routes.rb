@@ -209,7 +209,7 @@ Rails.application.routes.draw do
           get :autocomplete, action: :index
           get :my_memberships
           get :invitables
-          get :undecided
+          get :uncast
         end
         member do
           post :make_admin

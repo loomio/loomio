@@ -996,8 +996,8 @@ da:
       everyone_in_the_group: Alle i gruppen
       topic: Alle i tråden
       voters: Alle inviterede til at stemme
-      decided_voters: Alle der har stemt
-      undecided_voters: Ubeslutsomme vælgere
+      people_who_voted: Alle der har stemt
+      people_not_voted: Ubeslutsomme vælgere
       non_voters: Medlemmer af %{name} endnu ikke inviteret
       delegates_of_group: Delegerede for %{name}
     form:
@@ -1781,7 +1781,7 @@ da:
       all: Seneste diskussioner
     thread_preview:
       you_voted: Du stemte %{position}
-      undecided: De har ikke stemt
+      not_voted: De har ikke stemt
     threads_from:
       group: Debatter fra
       pinned: Fastgjorte tråde
@@ -2283,12 +2283,12 @@ da:
     started_by: Oprettet af %{name}
   poll_common_votes_panel:
     vote_removed: Stemme fjernet
-    undecided: Ikke stemt
+    not_voted: Ikke stemt
     newest_first: Nyeste først
     oldest_first: Ældste først
     priority_first: Enig først
     priority_last: Blokerer først
-    undecided_first: Ikke stemt først
+    not_voted_first: Ikke stemt først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: "(Ingen af de tidligere)"
@@ -2309,13 +2309,13 @@ da:
     stance: Stemme
     participation_records_restricted: Du kan se, hvem der deltog, efter afstemningen er afsluttet
     vote_weight: Stemmevægt %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Vis %{count} ubesluttede
+  poll_common_not_voted_panel:
+    show_not_voted: "Vis %{count}, der ikke har stemt"
     show_invitations: Vis afventende invitationer
-    undecided_users: Ikke besluttet (%{count})
+    people_not_voted: Ikke besluttet (%{count})
     invitation_count_singular: 1 yderligere person er blevet inviteret til at deltage via e-mail
     invitation_count_plural: "%{count} yderligere personer er blevet inviteret til at deltage via e-mail"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Påmindelse sendt!
     reminder_sent: Påmindelse sendt
   poll_common_set_outcome_panel:
@@ -2455,7 +2455,7 @@ da:
     total: Total
   poll_remove_vote:
     title: Vil du fjerne din stemme?
-    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som ikke stemt og kan stemme igen senere, hvis du ønsker det.
+    helptext_not_voted: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som ikke stemt og kan stemme igen senere, hvis du ønsker det.
     confirm: Fjern stemme
     success: Stemme fjernet
   poll_poll_vote_form:
@@ -2817,7 +2817,7 @@ da:
       voting_title: 24 timer før afstemningen slutter, send en påmindelse til
       nobody: Ingen
       author: Forfatter (mig)
-      undecided_voters: Uafklarede vælgere
+      people_not_voted: Uafklarede vælgere
       voters: Alle vælgere
     notify_on_participate:
       title: Giv mig besked, når folk deltager

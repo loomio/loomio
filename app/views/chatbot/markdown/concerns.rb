@@ -117,7 +117,7 @@ module Views::Chatbot::Markdown::Concerns
     md "**#{t('poll_common_action_panel.for_this_poll_type_to_be_valid', poll_type: t("poll_types.#{poll.poll_type}"))}**\n"
 
     if poll.quorum_pct
-      met = poll.quorum_votes_required <= 0
+      met = poll.quorum_gap <= 0
       md "- #{met ? '✓' : '✗'} #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: poll.quorum_pct)}\n"
     end
 
@@ -130,7 +130,7 @@ module Views::Chatbot::Markdown::Concerns
   def render_results(poll)
     return if poll.scheduled?
 
-    if (poll.decided_voters_count > 0) || poll.closed_at
+    if (poll.votes_cast_count > 0) || poll.closed_at
       if poll.results_visible?
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"
         md "\n"
@@ -148,7 +148,7 @@ module Views::Chatbot::Markdown::Concerns
         md "**#{t('poll_common_action_panel.results_hidden_until_closed')}**\n"
       end
 
-      render_undecided(poll)
+      render_uncast(poll)
     end
   end
 
@@ -170,12 +170,12 @@ module Views::Chatbot::Markdown::Concerns
 
     table = Terminal::Table.new do |tbl|
       tbl.style = { border: :unicode }
-      tbl.headings = [poll.time_zone, votes_label, *poll.decided_voters.map(&:avatar_initials)]
+      tbl.headings = [poll.time_zone, votes_label, *poll.voters_cast.map(&:avatar_initials)]
       poll.poll_options.each do |poll_option|
         tbl << [
           option_name(poll_option.name, poll.poll_option_name_format, @recipient.time_zone, @recipient.date_time_pref),
           ((poll_option.total_score.to_f) / 2).to_s.gsub('.0', ''),
-          *poll.decided_voters.map { |user| blocks[poll_option.voter_scores.fetch(user.id.to_s, 0)] }
+          *poll.voters_cast.map { |user| blocks[poll_option.voter_scores.fetch(user.id.to_s, 0)] }
         ]
       end
     end
@@ -314,20 +314,20 @@ module Views::Chatbot::Markdown::Concerns
     value == value.to_i ? value.to_i.to_s : value.round(2).to_s
   end
 
-  def render_undecided(poll)
-    nom = poll.decided_voters_count
-    dnom = poll.voters_count
+  def render_uncast(poll)
+    nom = poll.votes_cast_count
+    dnom = poll.voters_eligible_count
     pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0
 
     md "#{t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)}\n"
 
-    if poll.active? && poll.undecided_voters.any?
-      md "**#{t('poll.waiting_for_votes_from')}**: #{poll.undecided_voters.map(&:username).join(', ')}\n"
+    if poll.active? && poll.voters_uncast.any?
+      md "**#{t('poll.waiting_for_votes_from')}**: #{poll.voters_uncast.map(&:username).join(', ')}\n"
     end
   end
 
-  def render_discussion_undecided(itemable)
-    usernames = itemable.polls.map(&:undecided_voters).flatten.uniq.map(&:username)
+  def render_discussion_uncast(itemable)
+    usernames = itemable.polls.map(&:voters_uncast).flatten.uniq.map(&:username)
     return unless usernames.any?
 
     md "**#{t('poll.waiting_for_votes_from')}**: #{usernames.join(', ')}\n"

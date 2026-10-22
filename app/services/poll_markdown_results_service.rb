@@ -133,7 +133,7 @@ class PollMarkdownResultsService
 
     voters = case result[:id].to_i
     when -1
-      poll.undecided_voters.map { |voter| voter_label(voter) }
+      poll.voters_uncast.map { |voter| voter_label(voter) }
     when 0
       voter_stances.select(&:none_of_the_above?).map { |stance| voter_label(stance.participant) }
     else
@@ -148,7 +148,7 @@ class PollMarkdownResultsService
   end
 
   def voter_stances
-    @voter_stances ||= poll.stances.latest.decided.where(revoked_at: nil, redacted_at: nil).where.not(cast_at: nil).includes(:participant, :stance_choices).to_a
+    @voter_stances ||= poll.stances.latest.cast.where(revoked_at: nil, redacted_at: nil).where.not(cast_at: nil).includes(:participant, :stance_choices).to_a
   end
 
   def voter_label(voter)

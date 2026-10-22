@@ -52,9 +52,20 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "totals numeric poll scores stored as JSON strings or numbers" do
-    poll = Poll.new(stance_counts: ["1.25", 2, "0.75"])
+    poll = Poll.new(option_score_totals: ["1.25", 2, "0.75"])
 
     assert_equal BigDecimal("4"), poll.total_score
+  end
+
+  test "ordinary results include the not voted row while meetings use only availability rows" do
+    poll = create_poll(group_id: @group.id)
+    result = poll.results.find { |row| row[:id] == -1 }
+    assert_equal 'poll_common_votes_panel.not_voted', result[:name]
+    assert_equal poll.voters_eligible_count, result[:voter_count]
+    assert_equal poll.voters_uncast.ids.sort, result[:voter_ids].sort
+
+    meeting = create_meeting(group_id: @group.id)
+    assert_not meeting.results.any? { |row| row[:id] == -1 }
   end
 
   test "destroying a poll's topic destroys the poll (no orphaned topic_id)" do
@@ -399,10 +410,10 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
-    assert_equal 5, Poll.new(voters_count: 10).participation_status_votes_required
-    assert_equal 3, Poll.new(voters_count: 4).participation_status_votes_required
-    assert_equal 6, Poll.new(voters_count: 10, quorum_pct: 60).participation_status_votes_required
-    assert_equal 3, Poll.new(voters_count: 20, quorum_pct: 10).participation_status_votes_required
+    assert_equal 5, Poll.new(voters_eligible_count: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_eligible_count: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(voters_eligible_count: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(voters_eligible_count: 20, quorum_pct: 10).participation_status_votes_required
   end
 
   test "unweighted results keep master's columns and headings" do
@@ -469,10 +480,10 @@ class PollTest < ActiveSupport::TestCase
     )
     poll.update_counts!
 
-    assert_equal 2, poll.voters_count
-    assert_equal 2, poll.decided_voters_count
-    assert_equal 100, poll.cast_stances_pct
-    assert_equal 2, poll.quorum_count
+    assert_equal 2, poll.voters_eligible_count
+    assert_equal 2, poll.votes_cast_count
+    assert_equal 100, poll.participation_pct
+    assert_equal 2, poll.quorum_threshold
     assert_equal 1, agree.reload.voter_count
     assert_equal 0, agree.total_score
     assert_equal 3, disagree.reload.total_score
@@ -730,18 +741,18 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not increment decided_voters without a choice" do
+  test "does not increment voters_cast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.decided_voters.count } do
+    assert_no_difference -> { poll.voters_cast.count } do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
-  test "increments undecided_voters without a choice" do
+  test "increments voters_uncast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.undecided_voters.count }, 1 do
+    assert_difference -> { poll.voters_uncast.count }, 1 do
       Stance.create!(poll: poll, participant: voter)
     end
   end
@@ -754,10 +765,10 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "cast vote increments decided_voters" do
+  test "cast vote increments voters_cast" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.decided_voters.count }, 1 do
+    assert_difference -> { poll.voters_cast.count }, 1 do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end
@@ -765,7 +776,7 @@ class PollTest < ActiveSupport::TestCase
   test "cast vote does not increment undecided voters" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.undecided_voters.count } do
+    assert_no_difference -> { poll.voters_uncast.count } do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end

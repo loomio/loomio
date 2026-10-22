@@ -996,8 +996,8 @@ hr:
       everyone_in_the_group: Svi u grupi
       topic: Svi u temi
       voters: Svi pozvani da glasaju
-      decided_voters: Svi koji su glasali
-      undecided_voters: Birači koji još nisu glasali
+      people_who_voted: Svi koji su glasali
+      people_not_voted: Birači koji još nisu glasali
       non_voters: Članovi %{name} još nisu pozvani
       delegates_of_group: Delegati %{name}
     form:
@@ -1773,7 +1773,7 @@ hr:
       all: Nedavne rasprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      undecided: Još niste glasali
+      not_voted: Još niste glasali
     threads_from:
       group: Teme iz
       pinned: Prikvačene niti
@@ -2275,12 +2275,12 @@ hr:
     started_by: Pokrenuo %{name}
   poll_common_votes_panel:
     vote_removed: Glas uklonjen
-    undecided: Neodlučan
+    not_voted: Neodlučan
     newest_first: Prvo najnoviji
     oldest_first: Prvo najstariji
     priority_first: Prvo se složite
     priority_last: Prvo blokiraj
-    undecided_first: Prvo oni koji još nisu glasali
+    not_voted_first: Prvo oni koji još nisu glasali
     no_votes_yet: Još nema glasova.
     change_results_order: Promjena redoslijeda rezultata
     none_of_the_above: "(Ništa od navedenog)"
@@ -2301,13 +2301,13 @@ hr:
     stance: Glasanje
     participation_records_restricted: Nakon završetka glasanja možete vidjeti tko je sudjelovao
     vote_weight: Težina glasova %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Prikaži %{count} neodlučenih
+  poll_common_not_voted_panel:
+    show_not_voted: "Prikaži %{count} osoba koje još nisu glasale"
     show_invitations: Prikaži pozivnice na čekanju
-    undecided_users: Neodlučan (%{count})
+    people_not_voted: Neodlučan (%{count})
     invitation_count_singular: 1 dodatna osoba je pozvana da sudjeluje putem e-pošte
     invitation_count_plural: "%{count} dodatnih osoba pozvano je na sudjelovanje putem e-pošte"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Podsjetnik poslan!
     reminder_sent: Obavijest o podsjetniku je poslana
   poll_common_set_outcome_panel:
@@ -2447,7 +2447,7 @@ hr:
     total: Ukupno
   poll_remove_vote:
     title: Ukloniti svoj glas?
-    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni među onima koji još nisu glasali i možete ponovno glasati kasnije ako želite.
+    helptext_not_voted: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni među onima koji još nisu glasali i možete ponovno glasati kasnije ako želite.
     confirm: Ukloni glas
     success: Glas uklonjen
   poll_poll_vote_form:
@@ -2806,7 +2806,7 @@ hr:
       voting_title: 24 sata prije zatvaranja glasanja, pošaljite podsjetnik na
       nobody: Nitko
       author: Autor (ja)
-      undecided_voters: Birači koji još nisu glasali
+      people_not_voted: Birači koji još nisu glasali
       voters: Svi birači
     notify_on_participate:
       title: Obavijesti me kada ljudi sudjeluju

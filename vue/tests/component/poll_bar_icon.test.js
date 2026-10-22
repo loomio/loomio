@@ -6,7 +6,7 @@ import PollBarIcon from '@/components/poll/common/icon/bar.vue';
 describe('PollBarIcon', () => {
   it('renders a placeholder when the poll has no scores', () => {
     const wrapper = mount(PollBarIcon, {
-      props: {poll: {stanceCounts: []}, size: 30}
+      props: {poll: {optionScoreTotals: []}, size: 30}
     });
     const bars = wrapper.findAll('rect');
 
@@ -16,7 +16,7 @@ describe('PollBarIcon', () => {
 
   it('scales the first five scores against the largest score', () => {
     const wrapper = mount(PollBarIcon, {
-      props: {poll: {stanceCounts: [10, 5, 1, 0, 8, 9]}, size: 50}
+      props: {poll: {optionScoreTotals: [10, 5, 1, 0, 8, 9]}, size: 50}
     });
     const bars = wrapper.findAll('rect');
 
@@ -26,10 +26,10 @@ describe('PollBarIcon', () => {
 
   it('reacts when score data changes', async () => {
     const wrapper = mount(PollBarIcon, {
-      props: {poll: {stanceCounts: []}, size: 24}
+      props: {poll: {optionScoreTotals: []}, size: 24}
     });
 
-    await wrapper.setProps({poll: {stanceCounts: [2, 1]}});
+    await wrapper.setProps({poll: {optionScoreTotals: [2, 1]}});
 
     expect(wrapper.findAll('rect')).toHaveLength(2);
     expect(wrapper.findAll('rect').map((bar) => bar.attributes('width'))).toEqual(['24', '12']);

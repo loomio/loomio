@@ -470,9 +470,9 @@ he:
       not_invited: לא מוזמן
       please_respond: אנא הגב
       time_zone: "(פעמים שמופיע ב-%{zone})"
-      undecided_members: משתתפים שטרם החליטו (%{count})
-      undecided_visitors: אורחים שטרם החליטו (%{count})
-      more_undecided: "%{count} עוד..."
+      members_not_voted: משתתפים שטרם החליטו (%{count})
+      guests_not_voted: אורחים שטרם החליטו (%{count})
+      more_not_voted: "%{count} עוד..."
       vote_now: הצבע עכשיו
       you_have_until: יש לך עד %{when} להשתתף.
       people_have_voted: "%{nom} מתוך %{dnom} אנשים השתתפו (%{pct}%)"
@@ -794,7 +794,7 @@ he:
     voted: "%{author} הצביע %{response}"
     voted_hidden: "%{author} הצביעו"
     vote_removed: "%{author}: הצבעה הוסרה"
-    undecided: "%{author}: לא החליט"
+    not_voted: "%{author}: לא החליט"
     superseded: הוחלף
     shared_outcome: "%{author} שיתף מסקנה"
     removed: הוסר

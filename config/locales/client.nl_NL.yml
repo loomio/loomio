@@ -998,8 +998,8 @@ nl_NL:
       everyone_in_the_group: Iedereen in de groep
       topic: Iedereen in de thread
       voters: Iedereen die uitgenodigd is om te stemmen
-      decided_voters: Iedereen die gestemd heeft
-      undecided_voters: Twijfelende stemmers
+      people_who_voted: Iedereen die gestemd heeft
+      people_not_voted: Twijfelende stemmers
       non_voters: Leden van %{name} zijn nog niet uitgegnodigd
       delegates_of_group: Afgevaardigden van %{name}
     form:
@@ -1785,7 +1785,7 @@ nl_NL:
       all: Recente discussies
     thread_preview:
       you_voted: Je hebt %{position} gestemd
-      undecided: Je hebt nog niet gestemd
+      not_voted: Je hebt nog niet gestemd
     threads_from:
       group: Borden van
       pinned: Vastgeprikte borden
@@ -2296,12 +2296,12 @@ nl_NL:
     started_by: Gestart door %{name}
   poll_common_votes_panel:
     vote_removed: Stem verwijderd
-    undecided: Nog niet gestemd
+    not_voted: Nog niet gestemd
     newest_first: Nieuwste eerst
     oldest_first: Oudste eerst
     priority_first: Eens eerst
     priority_last: Geblokkeerd eerst
-    undecided_first: Nog niet gestemd eerst
+    not_voted_first: Nog niet gestemd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
@@ -2322,13 +2322,13 @@ nl_NL:
     stance: Stemmen
     participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
     vote_weight: Stemgewicht %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Toon %{count} kiezers die nog niet hebben gestemd
+  poll_common_not_voted_panel:
+    show_not_voted: Toon %{count} kiezers die nog niet hebben gestemd
     show_invitations: Toon uitnodigingen in afwachting
-    undecided_users: Nog niet gestemd (%{count})
+    people_not_voted: Nog niet gestemd (%{count})
     invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
     invitation_count_plural: "%{count} extra mensen zijn via e-mail uitgenodigd om deel te nemen"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Herinnering gestuurd!
     reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
@@ -2468,7 +2468,7 @@ nl_NL:
     total: Totaal
   poll_remove_vote:
     title: Je stem verwijderen?
-    helptext: Weet je zeker dat je je stem wilt verwijderen? Je wordt vermeld als nog niet gestemd en kunt later opnieuw stemmen als je wilt.
+    helptext_not_voted: Weet je zeker dat je je stem wilt verwijderen? Je wordt vermeld als nog niet gestemd en kunt later opnieuw stemmen als je wilt.
     confirm: Stem verwijderen
     success: Stem verwijderd
   poll_poll_vote_form:
@@ -2832,7 +2832,7 @@ nl_NL:
       voting_title: Stuur 24 uur voordat de stemming sluit een herinnering naar
       nobody: Niemand
       author: Auteur (ik)
-      undecided_voters: Onbesliste kiezers
+      people_not_voted: Onbesliste kiezers
       voters: Alle kiezers
     notify_on_participate:
       title: Laat me weten wanneer mensen meedoen

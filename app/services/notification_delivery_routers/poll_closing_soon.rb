@@ -9,8 +9,8 @@ module NotificationDeliveryRouters
       poll = subject_model
       selected_recipients = case poll.notify_on_closing_soon
       when "author" then User.active.where(id: poll.author_id)
-      when "undecided_voters" then poll.unmasked_undecided_voters.active
-      when "voters" then poll.unmasked_voters.active
+      when "voters_uncast" then poll.voters_uncast_unmasked.active
+      when "voters" then poll.voters_unmasked.active
       else User.none
       end
       users = poll.topic.members

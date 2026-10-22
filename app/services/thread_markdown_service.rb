@@ -137,7 +137,7 @@ class ThreadMarkdownService
   def stance_markdown(item, stance)
     author = author_label(stance)
     return item_header(item, t(:vote_removed, author: author)) if stance.revoked_at.present?
-    return item_header(item, t(:undecided, author: author)) if stance.cast_at.blank?
+    return item_header(item, t(:not_voted, author: author)) if stance.cast_at.blank?
     return item_header(item, t(:voted_hidden, author: author)) unless poll_results_visible?(stance.poll)
 
     summary = t(:voted, author: author, response: "**#{stance_response_heading(stance)}**")

@@ -458,9 +458,9 @@ el:
       not_invited: Δεν έχει προσκληθεί
       please_respond: Παρακαλώ απαντήστε
       time_zone: "(Οι χρόνοι εμφανίζονται σε %{zone})"
-      undecided_members: Αναποφάσιστα μέλη (%{count})
-      undecided_visitors: Αναποφάσιστοι επισκέπτες (%{count})
-      more_undecided: "%{count} ακόμη..."
+      members_not_voted: Αναποφάσιστα μέλη (%{count})
+      guests_not_voted: Αναποφάσιστοι επισκέπτες (%{count})
+      more_not_voted: "%{count} ακόμη..."
       vote_now: Ψηφίστε τώρα
       you_have_until: Έχετε μέχρι %{when} για να συμμετάσχετε.
       people_have_voted: "%{nom} από %{dnom} άτομα έχουν συμμετάσχει (%{pct}%)"
@@ -782,7 +782,7 @@ el:
     voted: "%{author} ψήφισε %{response}"
     voted_hidden: "%{author} ψήφισε"
     vote_removed: "%{author}: η ψήφος αφαιρέθηκε"
-    undecided: "%{author}: δεν έχει ψηφίσει"
+    not_voted: "%{author}: δεν έχει ψηφίσει"
     superseded: αντικαταστάθηκε
     shared_outcome: Ο χρήστης %{author} κοινοποίησε ένα συμπέρασμα
     removed: Αφαιρέθηκε

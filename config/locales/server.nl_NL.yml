@@ -485,9 +485,9 @@ nl_NL:
       not_invited: Niet uitgenodigd
       please_respond: Graag antwoorden
       time_zone: "(Tijden getoond in %{zone})"
-      undecided_members: Leden die nog niet hebben gestemd (%{count})
-      undecided_visitors: Onbesliste gasten (%{count})
-      more_undecided: "%{count} meer..."
+      members_not_voted: Leden die nog niet hebben gestemd (%{count})
+      guests_not_voted: Onbesliste gasten (%{count})
+      more_not_voted: "%{count} meer..."
       vote_now: Stem nu
       you_have_until: Je hebt tot %{when} om mee te doen.
       people_have_voted: "%{nom} van %{dnom} mensen hebben deelgenomen (%{pct}%)"
@@ -809,7 +809,7 @@ nl_NL:
     voted: "%{author} stemde %{response}"
     voted_hidden: "%{author} heeft gestemd"
     vote_removed: "%{author}: stem verwijderd"
-    undecided: "%{author}: nog niet gestemd"
+    not_voted: "%{author}: nog niet gestemd"
     superseded: vervangen
     shared_outcome: "%{author} deelde een conclusie"
     removed: Verwijderd

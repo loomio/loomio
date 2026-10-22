@@ -567,7 +567,7 @@ Create a poll as the API-key user.
 | `shuffle_options` | Boolean, default false. Display options to voters in random order |
 | `anonymous` | Boolean, optional, default false. Hide identities of voters |
 | `recipient_audience` | `group` or null, optional, default null. If `group`, the whole group will be notified |
-| `notify_on_closing_soon` | String, optional, default `nobody`. Values: `nobody`, `author`, `undecided_voters`, `voters` |
+| `notify_on_closing_soon` | String, optional, default `nobody`. Values: `nobody`, `author`, `voters_uncast`, `voters` |
 | `recipient_user_ids` | Array of user IDs to notify or invite |
 | `recipient_emails` | Array of email addresses of people to invite to vote |
 | `recipient_message` | Message to include in the email invitation |

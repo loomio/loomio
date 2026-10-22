@@ -458,9 +458,9 @@ hr:
       not_invited: Nije pozvan
       please_respond: Molim te odgovori
       time_zone: "(Vremena prikazana u %{zone})"
-      undecided_members: Članovi koji još nisu glasali (%{count})
-      undecided_visitors: Gosti koji još nisu glasali (%{count})
-      more_undecided: Još %{count}...
+      members_not_voted: Članovi koji još nisu glasali (%{count})
+      guests_not_voted: Gosti koji još nisu glasali (%{count})
+      more_not_voted: Još %{count}...
       vote_now: Glasaj sad
       you_have_until: Za sudjelovanje imate vremena do %{when}.
       people_have_voted: "%{nom} od %{dnom} osoba je sudjelovalo (%{pct}%)"
@@ -782,7 +782,7 @@ hr:
     voted: "%{author} je glasao/la %{response}"
     voted_hidden: "%{author} je glasao"
     vote_removed: "%{author}: glas uklonjen"
-    undecided: "%{author}: neodlučan"
+    not_voted: "%{author}: neodlučan"
     superseded: zamijenjen
     shared_outcome: "%{author} je podijelio/la ishod"
     removed: Uklonjeno

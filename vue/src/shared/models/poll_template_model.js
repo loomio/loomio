@@ -42,7 +42,7 @@ export default class PollTemplateModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       reasonPrompt: null,
       processName: null,
       processSubtitle: null,

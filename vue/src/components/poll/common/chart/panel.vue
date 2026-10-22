@@ -4,8 +4,13 @@ import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollStvChartPanel from '@/components/poll/stv/chart_panel';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
@@ -54,8 +59,8 @@ export default {
       ul(style="list-style-type: none; padding-left: 0;")
         li.text-medium-emphasis.d-flex.align-center(v-if="poll.quorumPct")
           common-icon.mr-1(
-            :name="poll.quorumVotesRequired <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
-            :color="poll.quorumVotesRequired <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+            :name="poll.quorumGap <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="poll.quorumGap <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
           span(v-t="{path: 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', args: {pct: poll.quorumPct}}")
         li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
@@ -79,5 +84,5 @@ export default {
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    span {{ t('poll_common_percent_voted.pct_participation', {num: poll.votesCastCount, total: poll.votersEligibleCount, pct: poll.participationPct}) }}
 </template>

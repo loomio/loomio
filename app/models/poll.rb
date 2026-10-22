@@ -182,7 +182,7 @@ class Poll < ApplicationRecord
 
   belongs_to :topic, autosave: true
 
-  enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum :notify_on_closing_soon, {nobody: 0, author: 1, voters_uncast: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
   enum :stance_reason_required, {
     disabled: 0,
@@ -194,9 +194,9 @@ class Poll < ApplicationRecord
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
-  has_many :stance_voters, -> { merge(Stance.latest) }, through: :stances, source: :participant
-  has_many :stance_undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
-  has_many :stance_decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :voters_from_stances, -> { merge(Stance.latest) }, through: :stances, source: :participant
+  has_many :voters_uncast_from_stances, -> { merge(Stance.latest.uncast) }, through: :stances, source: :participant
+  has_many :voters_cast_from_stances, -> { merge(Stance.latest.cast) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :anonymous_poll_voters, dependent: :destroy
@@ -370,7 +370,9 @@ class Poll < ApplicationRecord
     minimum_stance_choices == 1 && maximum_stance_choices == 1
   end
 
-  def results_include_undecided
+  # Most result tables include an extra row for eligible voters who have not
+  # cast a ballot. Meeting polls display a voter-by-time grid instead.
+  def results_include_uncast_row?
     poll_type != "meeting"
   end
 
@@ -520,57 +522,57 @@ class Poll < ApplicationRecord
     author_id
   end
 
-  def decided_voters_count
-    voters_count - undecided_voters_count
+  def votes_cast_count
+    voters_eligible_count - votes_uncast_count
   end
 
-  def cast_stances_pct
-    return 0 if voters_count == 0
-    ((decided_voters_count.to_f / voters_count) * 100).to_i
+  def participation_pct
+    return 0 if voters_eligible_count == 0
+    ((votes_cast_count.to_f / voters_eligible_count) * 100).to_i
   end
 
   # General-purpose voter relations must not reveal participation identities for
   # anonymous ballots. Callers that intentionally need the named
-  # electorate, such as authorization and reminder delivery, use unmasked_*.
+  # electorate, such as authorization and reminder delivery, use *_unmasked.
   def voters
-    anonymous? ? User.none : stance_voters
+    anonymous? ? User.none : voters_from_stances
   end
 
   def voter_ids
     voters.ids
   end
 
-  def undecided_voters
-    anonymous? ? User.none : stance_undecided_voters
+  def voters_uncast
+    anonymous? ? User.none : voters_uncast_from_stances
   end
 
-  def decided_voters
-    anonymous? ? User.none : stance_decided_voters
+  def voters_cast
+    anonymous? ? User.none : voters_cast_from_stances
   end
 
-  def unmasked_voters
+  def voters_unmasked
     return User.where(id: anonymous_poll_voters.select(:voter_id)) if anonymous?
 
     voters
   end
 
-  def unmasked_undecided_voters
+  def voters_uncast_unmasked
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: false).select(:voter_id)) if anonymous?
 
-    undecided_voters
+    voters_uncast
   end
 
-  def unmasked_decided_voters
+  def voters_cast_unmasked
     return User.where(id: anonymous_poll_voters.where(ballot_submitted: true).select(:voter_id)) if anonymous?
 
-    decided_voters
+    voters_cast
   end
 
   # Who voted in an anonymous poll stays hidden until enough people have voted
   # that the list says little about any one person: the quorum when the poll
   # has one, otherwise half the electorate, and never fewer than three votes.
   def participation_status_votes_required
-    votes_required = quorum_pct ? quorum_count : (voters_count / 2.0).ceil
+    votes_required = quorum_pct ? quorum_threshold : (voters_eligible_count / 2.0).ceil
     [votes_required, PARTICIPATION_STATUS_VOTES_MIN].max
   end
 
@@ -596,17 +598,17 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def quorum_count
-    (quorum_pct.to_f/100 * voters_count).ceil
+  def quorum_threshold
+    (quorum_pct.to_f/100 * voters_eligible_count).ceil
   end
 
   def quorum_reached?
-    quorum_pct && quorum_count <= voters_count
+    quorum_pct && quorum_threshold <= voters_eligible_count
   end
 
-  def quorum_votes_required
+  def quorum_gap
     return 0 if quorum_pct.nil?
-    (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
+    (((quorum_pct.to_f - participation_pct.to_f)/100) * voters_eligible_count).ceil
   end
 
   # Result data for until-vote polls may be sent to the client, which owns that
@@ -633,26 +635,26 @@ class Poll < ApplicationRecord
   end
 
   def total_score
-    stance_counts.sum { |score| BigDecimal(score.to_s) }
+    option_score_totals.sum { |score| BigDecimal(score.to_s) }
   end
 
   def update_counts!
     poll_options.reload.each(&:update_counts!)
     if anonymous?
       return update_columns(
-        stance_counts: poll_options.map { |option| option.total_score.to_f },
-        voters_count: anonymous_poll_voters.count,
-        undecided_voters_count: anonymous_poll_voters.where(ballot_submitted: false).count,
+        option_score_totals: poll_options.map { |option| option.total_score.to_f },
+        voters_eligible_count: anonymous_poll_voters.count,
+        votes_uncast_count: anonymous_poll_voters.where(ballot_submitted: false).count,
         none_of_the_above_count: anonymous_ballots.where(none_of_the_above: true).count,
         versions_count: versions.count
       )
     end
 
     update_columns(
-      stance_counts: poll_options.map { |option| option.total_score.to_f }, # should rename to option scores
-      voters_count: stances.latest.count, # should rename to stances_count
-      undecided_voters_count: stances.latest.undecided.count,
-      none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
+      option_score_totals: poll_options.map { |option| option.total_score.to_f },
+      voters_eligible_count: stances.latest.count,
+      votes_uncast_count: stances.latest.uncast.count,
+      none_of_the_above_count: stances.latest.cast.where(none_of_the_above: true).count,
       versions_count: versions.count
     )
   end
@@ -676,7 +678,7 @@ class Poll < ApplicationRecord
     if anonymous?
       anonymous_poll_voters.exists?(voter_id: user.id, ballot_submitted: false)
     else
-      !stances.latest.decided.exists?(participant_id: user.id)
+      !stances.latest.cast.exists?(participant_id: user.id)
     end
   end
 
@@ -770,7 +772,7 @@ class Poll < ApplicationRecord
 
     errors.add(:hide_results, :invalid) unless hide_results == "until_closed"
     errors.add(:stance_reason_required, :invalid) unless stance_reason_required == "disabled"
-    errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "undecided_voters"
+    errors.add(:notify_on_closing_soon, :invalid) unless notify_on_closing_soon == "voters_uncast"
   end
 
   def anonymous_configuration_cannot_change_after_ballot

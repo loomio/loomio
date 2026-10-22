@@ -28,7 +28,7 @@ const pollOptionItems = computed(() => {
   const items = [
     { title: t('poll_common_votes_panel.all_voters'), value: 'all' },
     { title: t('poll_common_votes_panel.cast'), value: 'cast' },
-    { title: t('poll_common_votes_panel.uncast'), value: 'uncast' }
+    { title: t('poll_common_votes_panel.not_voted'), value: 'uncast' }
   ];
   return poll.showResults() ? items.concat(poll.pollOptions().map(option => ({ title: option.optionName(), value: option.id }))) : items;
 });

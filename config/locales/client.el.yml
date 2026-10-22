@@ -996,8 +996,8 @@ el:
       everyone_in_the_group: Όλοι στην ομάδα
       topic: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
-      decided_voters: Όλοι όσοι ψήφισαν
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
+      people_who_voted: Όλοι όσοι ψήφισαν
+      people_not_voted: Αναποφάσιστοι ψηφοφόροι
       non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
       delegates_of_group: Εκπρόσωποι του %{name}
     form:
@@ -1766,7 +1766,7 @@ el:
       all: Πρόσφατες συζητήσεις
     thread_preview:
       you_voted: Ψηφίσατε %{position}
-      undecided: Δεν έχετε ψηφίσει
+      not_voted: Δεν έχετε ψηφίσει
     threads_from:
       group: Νήματα από
       pinned: Καρφιτσωμένες κλωστές
@@ -2271,12 +2271,12 @@ el:
     started_by: Ξεκίνησε από %{name}
   poll_common_votes_panel:
     vote_removed: Η ψήφος καταργήθηκε
-    undecided: Δεν έχουν ψηφίσει
+    not_voted: Δεν έχουν ψηφίσει
     newest_first: Πρώτα τα νεότερα
     oldest_first: Πρώτα τα πιο παλιά
     priority_first: Συμφωνώ πρώτα
     priority_last: Μπλοκάρω πρώτα
-    undecided_first: Πρώτα όσοι δεν έχουν ψηφίσει
+    not_voted_first: Πρώτα όσοι δεν έχουν ψηφίσει
     no_votes_yet: Δεν έχουν τεθεί ακόμη ψήφοι.
     change_results_order: Αλλαγή σειράς αποτελεσμάτων
     none_of_the_above: "(Κανένα από τα παραπάνω)"
@@ -2297,13 +2297,13 @@ el:
     stance: Ψήφος
     participation_records_restricted: Μπορείτε να δείτε ποιοι συμμετείχαν μετά το τέλος της ψηφοφορίας
     vote_weight: Βάρος ψήφου %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Εμφάνιση %{count} αναποφάσιστων
+  poll_common_not_voted_panel:
+    show_not_voted: "Εμφάνιση %{count} ατόμων που δεν έχουν ψηφίσει"
     show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
-    undecided_users: Δεν έχουν ψηφίσει (%{count})
+    people_not_voted: Δεν έχουν ψηφίσει (%{count})
     invitation_count_singular: 1 επιπλέον άτομο έχει προσκληθεί να συμμετάσχει μέσω email
     invitation_count_plural: "%{count} επιπλέον άτομα έχουν προσκληθεί να συμμετάσχουν μέσω email"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Η υπενθύμιση στάλθηκε!
     reminder_sent: Η ειδοποίηση υπενθύμισης εστάλη
   poll_common_set_outcome_panel:
@@ -2443,7 +2443,7 @@ el:
     total: Σύνολο
   poll_remove_vote:
     title: Να καταργηθεί η ψήφος σας;
-    helptext: Είστε βέβαιοι ότι θέλετε να καταργήσετε την ψήφο σας; Θα καταχωρηθείτε ως αναποφάσιστοι και μπορείτε να ψηφίσετε ξανά αργότερα, εάν το επιθυμείτε.
+    helptext_not_voted: Είστε βέβαιοι ότι θέλετε να καταργήσετε την ψήφο σας; Θα καταχωρηθείτε ως αναποφάσιστοι και μπορείτε να ψηφίσετε ξανά αργότερα, εάν το επιθυμείτε.
     confirm: Κατάργηση ψήφου
     success: Η ψήφος καταργήθηκε
   poll_poll_vote_form:
@@ -2805,7 +2805,7 @@ el:
       voting_title: 24 ώρες πριν από το κλείσιμο της ψηφοφορίας, στείλτε μια υπενθύμιση στο
       nobody: Κανείς
       author: Συγγραφέας (εγώ)
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
+      people_not_voted: Αναποφάσιστοι ψηφοφόροι
       voters: Όλοι οι ψηφοφόροι
     notify_on_participate:
       title: Ειδοποίησέ με όταν συμμετάσχουν άτομα

@@ -48,7 +48,7 @@ export default class PollModel extends BaseModel {
       customize: false,
       details: '',
       detailsFormat: 'html',
-      decidedVotersCount: 0,
+      votesCastCount: 0,
       defaultDurationInDays: null,
       specifiedVotersOnly: false,
       pollOptionNames: [],
@@ -69,7 +69,7 @@ export default class PollModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       notifyOnOpen: true,
       results: [],
       meetingDuration: null,
@@ -92,7 +92,7 @@ export default class PollModel extends BaseModel {
       anonymousBallotSubmitted: false,
       voterHasAccess: false,
       weightedVoting: false,
-      stanceCounts: [],
+      optionScoreTotals: [],
       topicId: null,
       allowComments: true,
       allowReactions: true,
@@ -139,8 +139,8 @@ export default class PollModel extends BaseModel {
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
-    clone.decidedVotersCount = null;
-    clone.undecidedVotersCount = null;
+    clone.votesCastCount = null;
+    clone.votesUncastCount = null;
     return clone;
   }
 
@@ -315,13 +315,13 @@ export default class PollModel extends BaseModel {
     return Records.reactions.find({reactableId: this.id, reactableType: "Poll"});
   }
 
-  decidedVoterIds() {
+  votersCastIds() {
     return uniq(flatten(this.results.map(o => o.voter_ids)));
   }
 
   // who's voted?
-  decidedVoters() {
-    return Records.users.find(this.decidedVoterIds());
+  votersCast() {
+    return Records.users.find(this.votersCastIds());
   }
 
   outcome() {

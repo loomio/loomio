@@ -462,9 +462,9 @@ fi:
       not_invited: Ei kutsuttu
       please_respond: Ole hyvä ja vastaa
       time_zone: "(Ajat näkyvät %{zone}ssa)"
-      undecided_members: Päättämättömät jäsenet (%{count})
-      undecided_visitors: Päättämättömät vieraat (%{count})
-      more_undecided: "%{count} muuta..."
+      members_not_voted: Päättämättömät jäsenet (%{count})
+      guests_not_voted: Päättämättömät vieraat (%{count})
+      more_not_voted: "%{count} muuta..."
       vote_now: Äänestä nyt
       you_have_until: Sinulla on %{when} asti aikaa osallistua.
       people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"
@@ -786,7 +786,7 @@ fi:
     voted: "%{author} äänesti %{response}"
     voted_hidden: "%{author} äänesti"
     vote_removed: "%{author}: ääni poistettu"
-    undecided: "%{author}: äänestämättä"
+    not_voted: "%{author}: äänestämättä"
     superseded: korvattu
     shared_outcome: "%{author} jakoi johtopäätöksen"
     removed: Poistettu

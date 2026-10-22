@@ -1128,8 +1128,8 @@ en:
       everyone_in_the_group: Everyone in the group
       topic: Everyone in the thread
       voters: Everyone invited to vote
-      decided_voters: Everyone who voted
-      undecided_voters: Undecided voters
+      people_who_voted: Everyone who voted
+      people_not_voted: People who haven't voted
       non_voters: Members of %{name} not yet invited
     form:
       group_has_no_members_yet: You are the only member of your group. You may want to invite some people to your group before starting a thread or decision.
@@ -2003,7 +2003,7 @@ en:
       muted_description: View only threads which have been muted
     thread_preview:
       you_voted: You voted %{position}
-      undecided: You are undecided
+      not_voted: You have not voted
     threads_from:
       group: Threads from
       pinned: Pinned threads
@@ -2525,7 +2525,7 @@ en:
       voting_title: 24 hours before voting closes, send a reminder to
       nobody: Nobody
       author: Author (me)
-      undecided_voters: Undecided voters
+      people_not_voted: People who haven't voted
       voters: All voters
     notify_on_participate:
       title: Notify me when people participate
@@ -2594,12 +2594,12 @@ en:
     unredact_reason_helptext: The reason text and attachments will be made visible again
     unredact_reason_confirm: Restore reason
     unredact_reason_success: Vote reason restored
-    undecided: Undecided
+    not_voted: Not voted
     newest_first: Newest first
     oldest_first: Oldest first
     priority_first: Agree first
     priority_last: Block first
-    undecided_first: Undecided first
+    not_voted_first: Not voted first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
@@ -2613,13 +2613,13 @@ en:
     opening_at: Opening at
     closed_at: Closed at
     closing_at: Closing at
-  poll_common_undecided_panel:
-    show_undecided: Show %{count} undecided
+  poll_common_not_voted_panel:
+    show_not_voted: Show %{count} people who have not voted
     show_invitations: Show Pending Invitations
-    undecided_users: Undecided (%{count})
+    people_not_voted: Not voted (%{count})
     invitation_count_singular: 1 additional person has been invited to participate via email
     invitation_count_plural: "%{count} additional people have been invited to participate via email"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Reminder sent!
     reminder_sent: Reminder notification sent
   poll_common_set_outcome_panel:
@@ -2907,7 +2907,7 @@ en:
     total: Total
   poll_remove_vote:
     title: Remove your vote?
-    helptext: Are you sure you want to remove your vote? You will be listed as undecided and can vote again later if you wish.
+    helptext_not_voted: Are you sure you want to remove your vote? Your status will be “Not voted” and you can vote again later if you wish.
     confirm: Remove vote
     success: Vote removed
   poll_poll_vote_form:
