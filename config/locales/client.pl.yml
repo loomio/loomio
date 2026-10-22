@@ -1000,8 +1000,8 @@ pl:
       everyone_in_the_group: Wszyscy w grupie
       topic: Wszyscy w wątku
       voters: Wszyscy zaproszeni do głosowania
-      decided_voters: Wszyscy, którzy zagłosowali
-      undecided_voters: Głosujący, którzy jeszcze nie głosowali
+      people_who_voted: Wszyscy, którzy zagłosowali
+      people_not_voted: Głosujący, którzy jeszcze nie głosowali
       non_voters: Osoby z %{name} nie zostały jeszcze zaproszone
       delegates_of_group: Delegaci %{name}
     form:
@@ -1789,7 +1789,7 @@ pl:
       all: Ostatnie dyskusje
     thread_preview:
       you_voted: Głosowałeś %{position}
-      undecided: Jeszcze nie masz oddanego głosu
+      not_voted: Jeszcze nie masz oddanego głosu
     threads_from:
       group: Wątki od
       pinned: Przypięte wątki
@@ -2315,12 +2315,12 @@ pl:
     started_by: Rozpoczęte przez %{name}
   poll_common_votes_panel:
     vote_removed: Głos usunięty
-    undecided: Nie głosowali
+    not_voted: Nie głosowali
     newest_first: Od najnowszych
     oldest_first: 'Od najstarszych '
     priority_first: Najpierw wyraź zgodę
     priority_last: Najpierw zablokuj
-    undecided_first: Najpierw niezdecydowane
+    not_voted_first: "Najpierw osoby, które nie głosowały"
     no_votes_yet: Nie oddano jeszcze żadnych głosów.
     change_results_order: Zmień kolejność wyników
     none_of_the_above: "(Żaden z powyższych)"
@@ -2341,13 +2341,13 @@ pl:
     stance: Głosować
     participation_records_restricted: Po zakończeniu głosowania możesz zobaczyć, kto wziął udział
     vote_weight: Waga głosu %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Pokaż %{count} niezdecydowanych
+  poll_common_not_voted_panel:
+    show_not_voted: "Pokaż %{count} osób, które nie głosowały"
     show_invitations: Pokaż Oczekujące Zaproszenia
-    undecided_users: Nie głosowali (%{count})
+    people_not_voted: Nie głosowali (%{count})
     invitation_count_singular: 1 dodatkowa osoba została zaproszona do wzięcia udziału poprzez e-mail
     invitation_count_plural: "%{count} dodatkowych osób zostało zaproszonych do udziału przez e-mail"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: 'Przypomnienie wysłane! '
     reminder_sent: Przypomnienie zostało wysłane
   poll_common_set_outcome_panel:
@@ -2491,7 +2491,7 @@ pl:
     total: W sumie
   poll_remove_vote:
     title: Usunąć swój głos?
-    helptext: Czy na pewno chcesz usunąć swój głos? Trafisz na listę osób, które jeszcze nie głosowały, i możesz zagłosować ponownie później, jeśli chcesz.
+    helptext_not_voted: Czy na pewno chcesz usunąć swój głos? Trafisz na listę osób, które jeszcze nie głosowały, i możesz zagłosować ponownie później, jeśli chcesz.
     confirm: Usuń głosowanie
     success: Głos usunięty
   poll_poll_vote_form:
@@ -2855,7 +2855,7 @@ pl:
       voting_title: 24 godziny przed zakończeniem głosowania wyślij przypomnienie na adres
       nobody: Nikt
       author: Autor (ja)
-      undecided_voters: Głosujący, którzy jeszcze nie głosowali
+      people_not_voted: Głosujący, którzy jeszcze nie głosowali
       voters: Wszyscy wyborcy
     notify_on_participate:
       title: Powiadom mnie, gdy ktoś weźmie udział

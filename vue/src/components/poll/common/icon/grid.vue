@@ -15,7 +15,7 @@ export default {
       query: store => {
         const max = 10;
         this.results = slice(this.poll.results, 0, max);
-        this.voterIds = slice(this.poll.decidedVoterIds(), 0, max);
+        this.voterIds = slice(this.poll.votersCastIds(), 0, max);
       }
     });
   },

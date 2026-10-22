@@ -225,14 +225,14 @@ class RecordCacheTest < ActiveSupport::TestCase
     }, actor: admin)
     cache = RecordCache.new
 
-    cache.add_undecided_voter_ids([poll.reload, anonymous_poll])
+    cache.add_voters_uncast_ids([poll.reload, anonymous_poll])
     cache.add_none_of_the_above_voter_ids([poll, anonymous_poll])
 
-    undecided_ids = cache.scope[:undecided_voter_ids_by_poll_id][poll.id]
-    assert_equal Poll::RESULT_VOTER_IDS_MAX, undecided_ids.length
-    assert (undecided_ids - poll.undecided_voters.ids).empty?
-    assert cache.scope[:undecided_voter_ids_by_poll_id].key?(anonymous_poll.id)
-    assert_nil cache.scope[:undecided_voter_ids_by_poll_id][anonymous_poll.id]
+    voters_uncast_ids = cache.scope[:voters_uncast_ids_by_poll_id][poll.id]
+    assert_equal Poll::RESULT_VOTER_IDS_MAX, voters_uncast_ids.length
+    assert (voters_uncast_ids - poll.voters_uncast.ids).empty?
+    assert cache.scope[:voters_uncast_ids_by_poll_id].key?(anonymous_poll.id)
+    assert_nil cache.scope[:voters_uncast_ids_by_poll_id][anonymous_poll.id]
     assert_equal [none_voter.id], cache.scope[:none_of_the_above_voter_ids_by_poll_id][poll.id]
     assert_nil cache.scope[:none_of_the_above_voter_ids_by_poll_id][anonymous_poll.id]
   end

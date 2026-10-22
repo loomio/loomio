@@ -998,8 +998,8 @@ ro:
       everyone_in_the_group: Toți cei din grup
       topic: Toată lumea din fir
       voters: Toți sunt invitați la vot
-      decided_voters: Toți cei care au votat
-      undecided_voters: Alegători nehotărâți
+      people_who_voted: Toți cei care au votat
+      people_not_voted: Alegători nehotărâți
       non_voters: Membrii grupului %{name} nu au fost încă invitați
       delegates_of_group: Delegații ai %{name}
     form:
@@ -1775,7 +1775,7 @@ ro:
       all: Discuții recente
     thread_preview:
       you_voted: Ai votat %{position}
-      undecided: Nu ai votat
+      not_voted: Nu ai votat
     threads_from:
       group: Discutii de la
       pinned: Fire fixate
@@ -2290,12 +2290,12 @@ ro:
     started_by: Început de %{name}
   poll_common_votes_panel:
     vote_removed: Votul a fost eliminat
-    undecided: Nu au votat
+    not_voted: Nu au votat
     newest_first: Cel mai nou primul
     oldest_first: Cei mai in varsta primii
     priority_first: Mai întâi de acord
     priority_last: Blocați mai întâi
-    undecided_first: Mai întâi cei care nu au votat
+    not_voted_first: Mai întâi cei care nu au votat
     no_votes_yet: Nu au fost plasate încă voturi.
     change_results_order: Modificați ordinea rezultatelor
     none_of_the_above: "(Nici una dintre cele de mai sus)"
@@ -2316,13 +2316,13 @@ ro:
     stance: Vot
     participation_records_restricted: Puteți vedea cine a participat după închiderea votului
     vote_weight: Ponderea voturilor %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Afișați %{count} nehotărâți
+  poll_common_not_voted_panel:
+    show_not_voted: "Afișează %{count} persoane care nu au votat"
     show_invitations: Afișați invitațiile în așteptare
-    undecided_users: Nu au votat (%{count})
+    people_not_voted: Nu au votat (%{count})
     invitation_count_singular: O persoană suplimentară a fost invitată să participe prin e-mail
     invitation_count_plural: "%{count} persoane suplimentare au fost invitate să participe prin e-mail"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Memento trimis!
     reminder_sent: Notificare de memento trimisă
   poll_common_set_outcome_panel:
@@ -2466,7 +2466,7 @@ ro:
     total: Total
   poll_remove_vote:
     title: Îți elimini votul?
-    helptext: Sigur vrei să îți ștergi votul? Vei apărea printre cei care nu au votat și poți vota din nou mai târziu, dacă vrei.
+    helptext_not_voted: Sigur vrei să îți ștergi votul? Vei apărea printre cei care nu au votat și poți vota din nou mai târziu, dacă vrei.
     confirm: Eliminați votul
     success: Vot sters
   poll_poll_vote_form:
@@ -2828,7 +2828,7 @@ ro:
       voting_title: Cu 24 de ore înainte de închiderea votării, trimiteți o reamintire către
       nobody: Nimeni
       author: Autor (eu)
-      undecided_voters: Alegătorii nehotărâți
+      people_not_voted: Alegătorii nehotărâți
       voters: Toți alegătorii
     notify_on_participate:
       title: Anunță-mă când participă alții

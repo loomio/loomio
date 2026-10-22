@@ -458,9 +458,9 @@ tr:
       not_invited: Davet edilmemiş
       please_respond: Lütfen cevap ver
       time_zone: "(%{zone}'da görüntülenen zamanlar)"
-      undecided_members: Henüz oy vermeyen üyeler (%{count})
-      undecided_visitors: Henüz oy vermeyen misafirler (%{count})
-      more_undecided: "%{count} tane daha..."
+      members_not_voted: Henüz oy vermeyen üyeler (%{count})
+      guests_not_voted: Henüz oy vermeyen misafirler (%{count})
+      more_not_voted: "%{count} tane daha..."
       vote_now: Şimdi oyla
       you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
       people_have_voted: "%{dnom} kişinin %{nom}'u katıldı (%{pct}%)"
@@ -782,7 +782,7 @@ tr:
     voted: "%{author}, %{response} seçeneğine oy verdi"
     voted_hidden: "%{author} oy kullandı"
     vote_removed: "%{author}: oy kaldırıldı"
-    undecided: "%{author}: henüz oy vermedi"
+    not_voted: "%{author}: henüz oy vermedi"
     superseded: değiştirildi
     shared_outcome: "%{author} bir vargı paylaştı"
     removed: Kaldırıldı

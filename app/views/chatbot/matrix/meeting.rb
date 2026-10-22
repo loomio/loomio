@@ -12,7 +12,7 @@ class Views::Chatbot::Matrix::Meeting < Views::Chatbot::Base
         tr do
           td { @poll.time_zone }
           td { t(:'poll_common.votes') }
-          @poll.decided_voters.each do |user|
+          @poll.voters_cast.each do |user|
             td { render Views::NotificationMailer::Common::Avatar.new(user: user, size: 24) }
           end
         end
@@ -22,7 +22,7 @@ class Views::Chatbot::Matrix::Meeting < Views::Chatbot::Base
           tr do
             td { option_name(poll_option.name, @poll.poll_option_name_format, @recipient.time_zone, @recipient.date_time_pref) }
             td { strong { ((poll_option.total_score.to_f) / 2).to_s.gsub('.0', '') } }
-            @poll.decided_voters.each do |user|
+            @poll.voters_cast.each do |user|
               td do
                 score = poll_option.voter_scores.fetch(user.id.to_s, 0)
                 plain "\u{2593}\u{2593}" if score == 2

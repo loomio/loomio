@@ -735,9 +735,9 @@ zh_CN:
       not_invited: 未受邀
       please_respond: 请回复
       time_zone: "（时间以%{zone}显示）"
-      undecided_members: 未投票成员 (%{count})
-      undecided_visitors: 未投票访客 (%{count})
-      more_undecided: 还有 %{count} 个...
+      members_not_voted: 未投票成员 (%{count})
+      guests_not_voted: 未投票访客 (%{count})
+      more_not_voted: 还有 %{count} 个...
       vote_now: 立即投票
       you_have_until: 您可以在 %{when} 之前参与。
       people_have_voted: "%{nom} 人参与了 %{dnom} 人的活动 (%{pct}%)"
@@ -777,7 +777,7 @@ zh_CN:
     voted: "%{author} 投票给了 %{response}"
     voted_hidden: "%{author} 投票"
     vote_removed: "%{author}：投票已移除"
-    undecided: "%{author}：未定"
+    not_voted: "%{author}：未定"
     superseded: 被取代
     shared_outcome: "%{author} 分享了结论"
     removed: 已移除

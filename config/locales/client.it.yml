@@ -1008,8 +1008,8 @@ it:
       everyone_in_the_group: Tutti nel gruppo
       topic: Tutti nella conversazione
       voters: Tutti invitati a votare
-      decided_voters: Tutti coloro che hanno votato
-      undecided_voters: Elettori in attesa
+      people_who_voted: Tutti coloro che hanno votato
+      people_not_voted: Elettori in attesa
       non_voters: Membri di %{name} non ancora invitati
       delegates_of_group: Delegati di %{name}
     form:
@@ -1801,7 +1801,7 @@ it:
       all: Discussioni recenti
     thread_preview:
       you_voted: Tu hai votato  %{position}
-      undecided: Tu non hai votato
+      not_voted: Tu non hai votato
     threads_from:
       group: Discussioni da
       pinned: Discussioni fissate in alto
@@ -2318,12 +2318,12 @@ it:
     started_by: Iniziato da %{name}
   poll_common_votes_panel:
     vote_removed: Voto rimosso
-    undecided: In attesa
+    not_voted: In attesa
     newest_first: I voti più nuovi prima
     oldest_first: I voti più vecchi prima
     priority_first: I voti favorevole prima
     priority_last: 'I voti blocco prima '
-    undecided_first: Prima chi è in attesa
+    not_voted_first: Prima chi è in attesa
     no_votes_yet: Nessun voto è stato finora espresso.
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
@@ -2344,13 +2344,13 @@ it:
     stance: Votare
     participation_records_restricted: Potrai vedere chi ha partecipato dopo la chiusura delle votazioni
     vote_weight: Peso del voto %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostra %{count} in attesa
+  poll_common_not_voted_panel:
+    show_not_voted: Mostra %{count} in attesa
     show_invitations: Mostra inviti pendenti
-    undecided_users: In attesa (%{count})
+    people_not_voted: In attesa (%{count})
     invitation_count_singular: una persona in più è stata invitata a partecipare via email
     invitation_count_plural: "%{count} persone in più sono state invitate a partecipare via email"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Promemoria inviato!
     reminder_sent: Notifica di promemoria inviata!
   poll_common_set_outcome_panel:
@@ -2494,7 +2494,7 @@ it:
     total: Totale
   poll_remove_vote:
     title: Rimuovere il tuo voto?
-    helptext: Sei sicuro di voler rimuovere il tuo voto? Sarai elencato come indeciso e potrai votare di nuovo in seguito, se lo desideri.
+    helptext_not_voted: Sei sicuro di voler rimuovere il tuo voto? Sarai elencato come indeciso e potrai votare di nuovo in seguito, se lo desideri.
     confirm: Rimuovi voto
     success: Voto rimosso
   poll_poll_vote_form:
@@ -2856,7 +2856,7 @@ it:
       voting_title: 24 ore prima della chiusura delle votazioni, invia un promemoria a
       nobody: Nessuno
       author: Autore (io)
-      undecided_voters: elettori in attesa
+      people_not_voted: elettori in attesa
       voters: Tutti gli elettori
     notify_on_participate:
       title: Avvisami quando le persone partecipano

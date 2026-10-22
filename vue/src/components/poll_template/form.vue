@@ -7,6 +7,7 @@ import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 import { useI18n } from 'vue-i18n';
+import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
 export default {
   setup() {
@@ -89,7 +90,7 @@ export default {
       this.pollTemplate.weightedVoting = false;
       this.pollTemplate.hideResults = 'until_closed';
       this.pollTemplate.stanceReasonRequired = 'disabled';
-      this.pollTemplate.notifyOnClosingSoon = 'undecided_voters';
+      this.pollTemplate.notifyOnClosingSoon = 'voters_uncast';
     },
     validate(field) {
       return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
@@ -208,9 +209,7 @@ export default {
     },
 
     closingSoonItems() {
-      return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-      });
+      return pollReminderItems(this.$t);
     },
 
     optionFormat() { return this.pollTemplate.pollOptionNameFormat; },

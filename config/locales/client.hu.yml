@@ -1000,8 +1000,8 @@ hu:
       everyone_in_the_group: Mindenki a csoportban
       topic: Mindenki ebben a témában
       voters: Mindenki, aki szavazhat
-      decided_voters: Mindenki, aki szavazott
-      undecided_voters: Mindenki, aki nem szavazott
+      people_who_voted: Mindenki, aki szavazott
+      people_not_voted: Mindenki, aki nem szavazott
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
       delegates_of_group: "%{name} küldöttei"
     form:
@@ -1781,7 +1781,7 @@ hu:
       all: Legutóbbi beszélgetések
     thread_preview:
       you_voted: Erre szavaztál %{position}
-      undecided: Még nem szavaztál
+      not_voted: Még nem szavaztál
     threads_from:
       group: Témák
       pinned: Rögzített témák
@@ -2301,12 +2301,12 @@ hu:
     started_by: 'Kezdte: %{name}'
   poll_common_votes_panel:
     vote_removed: Szavazat eltávolítva
-    undecided: Még nem szavaztak
+    not_voted: Még nem szavaztak
     newest_first: Először a legújabb
     oldest_first: A legrégebbi előbb
     priority_first: Egyetértők először
     priority_last: Vétók először
-    undecided_first: Először a még nem szavazók
+    not_voted_first: Először a még nem szavazók
     no_votes_yet: Még nem szavaztak.
     change_results_order: Az eredmények sorrendjének módosítása
     none_of_the_above: "(A fentiek egyike sem)"
@@ -2327,13 +2327,13 @@ hu:
     stance: Szavazás
     participation_records_restricted: A szavazás lezárása után láthatja, kik vettek részt
     vote_weight: Szavazati súly %{weight}
-  poll_common_undecided_panel:
-    show_undecided: "%{count} még nem szavazó megjelenítése"
+  poll_common_not_voted_panel:
+    show_not_voted: "%{count} még nem szavazó megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
-    undecided_users: Még nem szavaztak (%{count})
+    people_not_voted: Még nem szavaztak (%{count})
     invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
     invitation_count_plural: "%{count} további személyt meghívtak a részvételre e-mailben"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Emlékeztető elküldve!
     reminder_sent: Emlékeztető értesítés elküldve
   poll_common_set_outcome_panel:
@@ -2477,7 +2477,7 @@ hu:
     total: Összesen
   poll_remove_vote:
     title: Eltávolítja a szavazatát?
-    helptext: Biztosan eltávolítja szavazatát? Bizonytalanként fog szerepelni, és később újra szavazhat, ha kíván.
+    helptext_not_voted: Biztosan eltávolítja szavazatát? Bizonytalanként fog szerepelni, és később újra szavazhat, ha kíván.
     confirm: Szavazat eltávolítása
     success: Szavazat eltávolítva
   poll_poll_vote_form:
@@ -2839,7 +2839,7 @@ hu:
       voting_title: '24 órával a szavazás lezárása előtt küldjön emlékeztetőt a következő címre:'
       nobody: Senki
       author: Szerző (én)
-      undecided_voters: Még nem szavazó szavazók
+      people_not_voted: Még nem szavazó szavazók
       voters: Minden szavazó
     notify_on_participate:
       title: Értesítsen, ha valaki részt vesz

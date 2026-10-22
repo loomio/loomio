@@ -1059,8 +1059,8 @@ be:
       delegates_of_group: Дэлегаты %{name}
       everyone_in_the_group: Усе ў групе
       voters: Усіх запрашаюць галасаваць
-      decided_voters: Усе, хто галасаваў
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
+      people_who_voted: Усе, хто галасаваў
+      people_not_voted: Выбаршчыкі, якія не прагаласавалі
       non_voters: Удзельнікі %{name} пакуль не запрошаны
       topic: Усе ў трэдзе
     form:
@@ -1884,7 +1884,7 @@ be:
       muted_description: Праглядзець толькі тэмы, якія былі адключаны
     thread_preview:
       you_voted: Вы прагаласавалі %{position}
-      undecided: Ты не вызначыўся
+      not_voted: "Вы яшчэ не прагаласавалі"
     threads_from:
       group: Тэмы з
       pinned: Замацаваныя тэмы
@@ -2406,7 +2406,7 @@ be:
       voting_title: За 24 гадзіны да заканчэння галасавання дашліце напамін
       nobody: Ніхто
       author: Аўтар (я)
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
+      people_not_voted: Выбаршчыкі, якія не прагаласавалі
       voters: Усе выбаршчыкі
     notify_on_participate:
       title: Паведамляць мне, калі людзі ўдзельнічаюць
@@ -2471,12 +2471,12 @@ be:
     unredact_reason_helptext: Прычына, па якой тэкст і ўкладанні зноў будуць бачнымі
     unredact_reason_confirm: Прычына аднаўлення
     unredact_reason_success: Прычына галасавання адноўлена
-    undecided: Не вызначыўся
+    not_voted: Не вызначыўся
     newest_first: Спачатку найноўшыя
     oldest_first: Спачатку найстарэйшыя
     priority_first: Спачатку пагадзіся
     priority_last: Спачатку блакаванне
-    undecided_first: Спачатку тыя, хто не прагаласаваў
+    not_voted_first: Спачатку тыя, хто не прагаласаваў
     no_votes_yet: Пакуль што не было аддадзена ніякіх галасоў.
     change_results_order: Змяніць парадак вынікаў
     name_or_username: Імя або імя карыстальніка
@@ -2494,13 +2494,13 @@ be:
     opening_at: Адкрыццё ў
     closed_at: Закрыта ў
     closing_at: Закрыццё ў
-  poll_common_undecided_panel:
-    show_undecided: Паказаць %{count} нявызначаных
+  poll_common_not_voted_panel:
+    show_not_voted: "Паказаць %{count} тых, хто не прагаласаваў"
     show_invitations: Паказаць запрашэнні, якія чакаюць разгляду
-    undecided_users: Не прагаласавалі (%{count})
+    people_not_voted: Не прагаласавалі (%{count})
     invitation_count_singular: Яшчэ 1 чалавек быў запрошаны да ўдзелу па электроннай пошце
     invitation_count_plural: Дадатковыя ўдзельнікі (%{count}) былі запрошаны да ўдзелу па электроннай пошце
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Напамін адпраўлены!
     reminder_sent: Паведамленне аб напамінанні адпраўлена
   poll_common_set_outcome_panel:
@@ -2794,7 +2794,7 @@ be:
     total: Усяго
   poll_remove_vote:
     title: Зняць свой голас?
-    helptext: Вы ўпэўненыя, што хочаце выдаліць свой голас? Вы будзеце пазначаны як нявызначаны і зможаце прагаласаваць зноў пазней, калі захочаце.
+    helptext_not_voted: Вы ўпэўненыя, што хочаце выдаліць свой голас? Вы будзеце пазначаны як нявызначаны і зможаце прагаласаваць зноў пазней, калі захочаце.
     confirm: Выдаліць голас
     success: Голас выдалены
   poll_poll_vote_form:

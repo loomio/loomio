@@ -998,8 +998,8 @@ sv:
       everyone_in_the_group: Alla i gruppen
       topic: Alla i tråden
       voters: Alla inbjudna att rösta
-      decided_voters: Alla som röstade
-      undecided_voters: Obestämda väljare
+      people_who_voted: Alla som röstade
+      people_not_voted: Obestämda väljare
       non_voters: Medlemmar av %{name} är ännu inte inbjudna
       delegates_of_group: Delegater för %{name}
     form:
@@ -1783,7 +1783,7 @@ sv:
       all: Senaste diskussionerna
     thread_preview:
       you_voted: Du röstade %{position}
-      undecided: Du har inte röstat
+      not_voted: Du har inte röstat
     threads_from:
       group: Trådar från
       pinned: Nålade trådar
@@ -2298,12 +2298,12 @@ sv:
     started_by: Startade av %{name}
   poll_common_votes_panel:
     vote_removed: Rösten togs bort
-    undecided: Har inte röstat
+    not_voted: Har inte röstat
     newest_first: Nyaste först
     oldest_first: Äldst först
     priority_first: Håller med först
     priority_last: Blockera först
-    undecided_first: De som inte har röstat först
+    not_voted_first: De som inte har röstat först
     no_votes_yet: Inga röster har lagts ännu.
     change_results_order: Ändra resultatordning
     none_of_the_above: "(Inget av ovanstående)"
@@ -2324,13 +2324,13 @@ sv:
     stance: Rösta
     participation_records_restricted: Du kan se vilka som deltog efter att omröstningen avslutats
     vote_weight: Röstvikt %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Visa %{count} osäkra
+  poll_common_not_voted_panel:
+    show_not_voted: "Visa %{count} som inte har röstat"
     show_invitations: Visa väntande inbjudningar
-    undecided_users: Har inte röstat (%{count})
+    people_not_voted: Har inte röstat (%{count})
     invitation_count_singular: Ytterligare 1 person har bjudits in att delta via e-post
     invitation_count_plural: "%{count} ytterligare personer har bjudits in att delta via e-post"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Påminnelse skickad!
     reminder_sent: Påminnelse har skickats
   poll_common_set_outcome_panel:
@@ -2474,7 +2474,7 @@ sv:
     total: Totalt
   poll_remove_vote:
     title: Ta bort din röst?
-    helptext: Är du säker på att du vill ta bort din röst? Du kommer att listas bland dem som inte har röstat och kan rösta igen senare om du vill.
+    helptext_not_voted: Är du säker på att du vill ta bort din röst? Du kommer att listas bland dem som inte har röstat och kan rösta igen senare om du vill.
     confirm: Ta bort röst
     success: Röst borttagen
   poll_poll_vote_form:
@@ -2836,7 +2836,7 @@ sv:
       voting_title: 24 timmar innan röstningen avslutas, skicka en påminnelse till
       nobody: Ingen
       author: Författare (jag)
-      undecided_voters: Obestämda väljare
+      people_not_voted: Obestämda väljare
       voters: Alla väljare
     notify_on_participate:
       title: Meddela mig när folk deltar

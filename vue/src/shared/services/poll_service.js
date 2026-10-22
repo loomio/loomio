@@ -123,7 +123,7 @@ export default new class PollService {
         canPerform() {
           return !poll.discardedAt && (poll.anonymous
             ? AbilityService.canViewAnonymousVoters(poll)
-            : poll.decidedVotersCount > 0);
+            : poll.votesCastCount > 0);
         },
         to() { return `/p/${poll.key}/votes`; }
       },
@@ -150,7 +150,7 @@ export default new class PollService {
         name: 'common.action.remind',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.votersCount < 2)) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.votersEligibleCount < 2)) { return false; }
           return AbilityService.canAnnouncePoll(poll);
         },
         perform() {

@@ -1008,8 +1008,8 @@ fr:
       everyone_in_the_group: Tout le monde dans le groupe
       topic: Participants à la discussion
       voters: Participants invités à voter
-      decided_voters: Tous ceux qui ont voté
-      undecided_voters: Électeurs en attente
+      people_who_voted: Tous ceux qui ont voté
+      people_not_voted: Électeurs en attente
       non_voters: Les membres de %{name} n'ont pas encore été invités
       delegates_of_group: Délégués de %{name}
     form:
@@ -1810,7 +1810,7 @@ fr:
       all: Discussions récentes
     thread_preview:
       you_voted: Vous avez voté %{position}
-      undecided: Vous n’avez pas pris de décision
+      not_voted: "Vous n’avez pas voté"
     threads_from:
       group: Discussions depuis
       pinned: Discussions épinglées
@@ -2332,12 +2332,12 @@ fr:
     started_by: Démarré par %{name}
   poll_common_votes_panel:
     vote_removed: Vote supprimé
-    undecided: En attente
+    not_voted: En attente
     newest_first: Les plus récents en premier
     oldest_first: Les plus anciens en premier
     priority_first: Accord en premier
     priority_last: Bloquer en premier
-    undecided_first: En attente d’abord
+    not_voted_first: En attente d’abord
     no_votes_yet: Aucun vote n’a été enregistré.
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: "(Aucun des choix ci-dessus)"
@@ -2358,13 +2358,13 @@ fr:
     stance: Vote
     participation_records_restricted: Vous pourrez voir qui a participé après la clôture du vote
     vote_weight: Poids du vote %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Afficher les %{count} en attente
+  poll_common_not_voted_panel:
+    show_not_voted: Afficher les %{count} en attente
     show_invitations: Montrer les invitations en attente
-    undecided_users: En attente (%{count})
+    people_not_voted: En attente (%{count})
     invitation_count_singular: 1 autre personne a été invitée à participer par courriel
     invitation_count_plural: "%{count} autres personnes ont été invitées à participer par courriel"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Rappel envoyé !
     reminder_sent: Notification de rappel envoyée
   poll_common_set_outcome_panel:
@@ -2508,7 +2508,7 @@ fr:
     total: Total
   poll_remove_vote:
     title: Supprimer votre vote?
-    helptext: Êtes-vous sûr de vouloir supprimer votre vote ? Vous serez inscrit comme en attente et pourrez voter à nouveau plus tard si vous le souhaitez.
+    helptext_not_voted: Êtes-vous sûr de vouloir supprimer votre vote ? Vous serez inscrit comme en attente et pourrez voter à nouveau plus tard si vous le souhaitez.
     confirm: Supprimer vote
     success: Vote supprimé
   poll_poll_vote_form:
@@ -2872,7 +2872,7 @@ fr:
       voting_title: 24 heures avant la clôture du vote, envoyez un rappel à
       nobody: Personne
       author: Auteur (moi)
-      undecided_voters: Les électeurs en attente
+      people_not_voted: Les électeurs en attente
       voters: Tous les électeurs
     notify_on_participate:
       title: Prévenir-moi lorsque des personnes participent

@@ -286,7 +286,7 @@ module.exports = {
     page.expectElement('.poll-common-form__weighted-voting-title ~ .poll-common-form__quorum-title')
     page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__reminder-title')
     page.click('.poll-settings-anonymous .v-selection-control__wrapper')
-    page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
+    page.expectText('.poll-common-settings__notify-on-closing-soon', "People who haven't voted")
     page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
     page.expectText('.poll-common-settings__hide-results', 'Until voting is closed')
     page.expectElement('.poll-common-settings__hide-results.v-input--disabled')
@@ -331,7 +331,7 @@ module.exports = {
     page.click('.recipients-autocomplete input[type="text"]')
     page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
     page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
-    page.expectNoText('.v-autocomplete__content', 'Undecided voters')
+    page.expectNoText('.v-autocomplete__content', "People who haven't voted")
   },
 
   'shows_migrated_legacy_anonymous_participation_without_vote_reasons': (test) => {

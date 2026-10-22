@@ -453,9 +453,9 @@ ja:
       not_invited: 招待されていません
       please_respond: 答えてください
       time_zone: "(時間は%{zone}に表示されます)"
-      undecided_members: 未投票のメンバー (%{count})
-      undecided_visitors: 未投票のゲスト (%{count})
-      more_undecided: あと %{count} 件...
+      members_not_voted: 未投票のメンバー (%{count})
+      guests_not_voted: 未投票のゲスト (%{count})
+      more_not_voted: あと %{count} 件...
       vote_now: 今すぐ投票してください
       you_have_until: "%{when} までに参加してください。"
       people_have_voted: "%{dnom} 人中 %{nom} 人が参加しました (%{pct}%)"
@@ -782,7 +782,7 @@ ja:
     voted: "%{author} が %{response} に投票しました"
     voted_hidden: "%{author} が投票しました"
     vote_removed: "%{author}: 投票が削除されました"
-    undecided: "%{author}: 未定"
+    not_voted: "%{author}: 未定"
     superseded: 置き換え済み
     shared_outcome: "%{author} が結論を共有しました"
     removed: 削除済み

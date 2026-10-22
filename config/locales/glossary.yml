@@ -6246,7 +6246,7 @@ terms:
       use: "重新開放"
       avoid: ["重新打開"]
       stems: ["重新開放"]
-  undecided:
+  not voted:
     means: "Invited voters who have not voted yet."
     be:
       use: "не прагаласавалі"

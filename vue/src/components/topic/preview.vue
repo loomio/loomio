@@ -94,7 +94,7 @@ v-list-item.topic-preview.topic-preview__link(:to='urlFor(topic)')
   width: 21px;
 }
 
-.topic-preview__undecided-icon {
+.topic-preview__icon-uncast {
   font-size: 14px;
   line-height: 24px;
   text-align: center;

@@ -142,7 +142,7 @@ class PollQueryTest < ActiveSupport::TestCase
       closing_at: 3.days.from_now
     }, actor: author)
     assert PollQuery.relevant_to(user: author).exists?(poll.id)
-    assert_not poll.stances.latest.decided.exists?(participant_id: author.id)
+    assert_not poll.stances.latest.cast.exists?(participant_id: author.id)
 
     MembershipService.revoke(membership: @group.membership_for(author), actor: author)
     author.reload

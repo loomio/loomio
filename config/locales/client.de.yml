@@ -1006,8 +1006,8 @@ de:
       everyone_in_the_group: Jeder in der Gruppe
       topic: Jeder in der Diskussion
       voters: Alle zur Abstimmung Eingeladenen
-      decided_voters: Alle, die abgestimmt haben
-      undecided_voters: Unentschlossene
+      people_who_voted: Alle, die abgestimmt haben
+      people_not_voted: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
       delegates_of_group: Delegierte von %{name}
     form:
@@ -1797,7 +1797,7 @@ de:
       all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
-      undecided: Du hast noch nicht abgestimmt
+      not_voted: Du hast noch nicht abgestimmt
     threads_from:
       group: Diskussionen von
       pinned: Angeheftete Diskussionen
@@ -2323,12 +2323,12 @@ de:
     started_by: Erstellt von %{name}
   poll_common_votes_panel:
     vote_removed: Stimme entfernt
-    undecided: Noch nicht abgestimmt
+    not_voted: Noch nicht abgestimmt
     newest_first: Neueste zuerst
     oldest_first: Älteste zuerst
     priority_first: Zustimmende zuerst
     priority_last: Ablehnende zuerst
-    undecided_first: Unentschlossene zuerst
+    not_voted_first: "Noch nicht abgestimmt zuerst"
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
@@ -2349,13 +2349,13 @@ de:
     stance: Stimme
     participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
     vote_weight: Stimmgewicht %{weight}
-  poll_common_undecided_panel:
-    show_undecided: "%{count} Personen anzeigen, die noch nicht abgestimmt haben"
+  poll_common_not_voted_panel:
+    show_not_voted: "%{count} Personen anzeigen, die noch nicht abgestimmt haben"
     show_invitations: Ausstehende Einladungen anzeigen
-    undecided_users: Noch nicht abgestimmt (%{count})
+    people_not_voted: Noch nicht abgestimmt (%{count})
     invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
     invitation_count_plural: "%{count} weitere Personen wurden per E-Mail zur Teilnahme eingeladen"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Erinnerung gesendet!
     reminder_sent: Erinnerungsbenachrichtigung gesendet
   poll_common_set_outcome_panel:
@@ -2499,7 +2499,7 @@ de:
     total: Gesamt
   poll_remove_vote:
     title: Deine Stimme entfernen?
-    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst unter „Noch nicht abgestimmt“ aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
+    helptext_not_voted: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst unter „Noch nicht abgestimmt“ aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
     confirm: Stimme entfernen
     success: Stimme entfernt
   poll_poll_vote_form:
@@ -2863,7 +2863,7 @@ de:
       voting_title: 24 Stunden vor Ende der Abstimmung eine Erinnerung senden an
       nobody: Niemand
       author: Autor (ich)
-      undecided_voters: Unentschlossene Abstimmende
+      people_not_voted: Unentschlossene Abstimmende
       voters: Alle Abstimmenden
     notify_on_participate:
       title: Benachrichtige mich, wenn Personen teilnehmen

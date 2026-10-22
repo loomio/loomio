@@ -6,7 +6,7 @@ class RecordCache
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
-    undecided_voter_ids_by_poll_id
+    voters_uncast_ids_by_poll_id
     none_of_the_above_voter_ids_by_poll_id
     change_notes_by_topic_item_id
   ].freeze
@@ -302,13 +302,13 @@ class RecordCache
     add_poll_options PollOption.where(poll_id: collection_ids)
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
-    add_undecided_voter_ids(collection)
+    add_voters_uncast_ids(collection)
     add_none_of_the_above_voter_ids(collection)
   end
 
-  def add_undecided_voter_ids(polls)
-    poll_ids = polls.reject(&:anonymous?).select(&:results_include_undecided).map(&:id)
-    add_result_voter_ids(:undecided_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.undecided.where(poll_id: ids) }
+  def add_voters_uncast_ids(polls)
+    poll_ids = polls.reject(&:anonymous?).select(&:results_include_uncast_row?).map(&:id)
+    add_result_voter_ids(:voters_uncast_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.uncast.where(poll_id: ids) }
   end
 
   def add_none_of_the_above_voter_ids(polls)

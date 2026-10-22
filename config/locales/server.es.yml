@@ -482,9 +482,9 @@ es:
       not_invited: No invitado
       please_respond: 'Responde '
       time_zone: "(horario en %{zone})"
-      undecided_members: Miembros indecisos (%{count})
-      undecided_visitors: Invitados indecisos (%{count})
-      more_undecided: "%{count} más..."
+      members_not_voted: Miembros indecisos (%{count})
+      guests_not_voted: Invitados indecisos (%{count})
+      more_not_voted: "%{count} más..."
       vote_now: Votar ahora
       you_have_until: 'Tienes hasta %{when} para participar '
       people_have_voted: "%{nom} de %{dnom} personas han votado (%{pct}%)"
@@ -806,7 +806,7 @@ es:
     voted: "%{author} votó %{response}"
     voted_hidden: "%{author} votó"
     vote_removed: "%{author}: voto eliminado"
-    undecided: "%{author}: indeciso"
+    not_voted: "%{author}: indeciso"
     superseded: sustituido
     shared_outcome: "%{author} compartió una conclusión"
     removed: Eliminado

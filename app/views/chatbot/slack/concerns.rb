@@ -25,7 +25,7 @@ module Views::Chatbot::Slack::Concerns
       md "\n"
     end
 
-    slack_convert { render_undecided(poll) }
+    slack_convert { render_uncast(poll) }
     md "\n"
   end
 end

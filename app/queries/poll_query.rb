@@ -61,7 +61,7 @@ class PollQuery
       # Group-scoped browsing also includes public polls. Require current
       # membership or guest access before treating a retained voter as pending.
       chain = relevant_to(user: user, chain: chain.active.where('polls.closing_at > ?', Time.current))
-      stances = Stance.latest.undecided.where(participant_id: user.id).select(:poll_id)
+      stances = Stance.latest.uncast.where(participant_id: user.id).select(:poll_id)
       voters = AnonymousPollVoter.where(voter_id: user.id, ballot_submitted: false).select(:poll_id)
       chain = chain.where(anonymous: false, id: stances)
                    .or(chain.where(anonymous: true, id: voters))

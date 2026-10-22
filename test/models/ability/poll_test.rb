@@ -28,7 +28,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(specified_voters_only: true), actor: other)
     PollService.invite(poll: poll, actor: other, params: {recipient_emails: [user.email], notify_recipients: false})
     assert poll.topic.guests.exists?(user.id), 'inviting a direct poll voter grants topic access'
-    assert poll.unmasked_voters.exists?(user.id), 'the invited voter has an active stance'
+    assert poll.voters_unmasked.exists?(user.id), 'the invited voter has an active stance'
     assert user.can?(:vote_in, poll)
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)

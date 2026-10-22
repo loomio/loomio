@@ -737,9 +737,9 @@ be:
       not_invited: Не запрошаны
       please_respond: Калі ласка, адкажыце
       time_zone: "(Час паказаны ў %{zone})"
-      undecided_members: Невызначаныя ўдзельнікі (%{count})
-      undecided_visitors: Госці, якія не прагаласавалі (%{count})
-      more_undecided: Яшчэ %{count}...
+      members_not_voted: Невызначаныя ўдзельнікі (%{count})
+      guests_not_voted: Госці, якія не прагаласавалі (%{count})
+      more_not_voted: Яшчэ %{count}...
       vote_now: Галасуйце зараз
       you_have_until: У вас ёсць час для ўдзелу %{when}.
       voting_opens_and_closes: Галасаванне пачынаецца %{opens} і заканчваецца %{closes}. (%{days} дзён)
@@ -777,7 +777,7 @@ be:
     voted: "%{author} прагаласаваў за %{response}"
     voted_hidden: "%{author} прагаласаваў"
     vote_removed: "%{author}: голас выдалены"
-    undecided: "%{author}: не вызначыўся"
+    not_voted: "%{author}: не вызначыўся"
     superseded: заменены
     shared_outcome: "%{author} падзяліўся высновай"
     removed: Выдалена

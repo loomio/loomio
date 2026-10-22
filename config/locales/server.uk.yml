@@ -472,9 +472,9 @@ uk:
       not_invited: Не запрошені
       please_respond: Будь ласка дайте відповідь
       time_zone: "(Час відображається в %{zone})"
-      undecided_members: Учасників що не визначились (%{count})
-      undecided_visitors: "(%{count}) гостей що не прийняли рішення"
-      more_undecided: "%{count} більше..."
+      members_not_voted: Учасників що не визначились (%{count})
+      guests_not_voted: "(%{count}) гостей що не прийняли рішення"
+      more_not_voted: "%{count} більше..."
       vote_now: Проголосувати зараз
       you_have_until: Ви маєте чекати до %{when} для участі.
       people_have_voted: "%{nom} з %{dnom} людей взяли участь (%{pct}%)"
@@ -796,7 +796,7 @@ uk:
     voted: "%{author} проголосував за %{response}"
     voted_hidden: "%{author} проголосував"
     vote_removed: "%{author}: голос видалено"
-    undecided: "%{author}: не визначився"
+    not_voted: "%{author}: не визначився"
     superseded: замінений
     shared_outcome: "%{author} поділився висновком"
     removed: Видалено

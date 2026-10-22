@@ -108,7 +108,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     reader = TopicReader.active.find_by!(topic: poll.topic, user: former_member)
     assert membership.reload.revoked_at
-    assert poll.unmasked_voters.exists?(former_member.id)
+    assert poll.voters_unmasked.exists?(former_member.id)
     assert reader.guest
     assert former_member.can?(:show, poll)
     assert former_member.can?(:vote_in, poll)
@@ -118,7 +118,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: former_member
     )
-    assert poll.unmasked_decided_voters.exists?(former_member.id)
+    assert poll.voters_cast_unmasked.exists?(former_member.id)
     assert_not former_member.can?(:show, unrelated_discussion)
     assert_not users(:alien).can?(:show, poll)
     assert_not users(:alien).can?(:vote_in, poll)
@@ -818,16 +818,16 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    voters_count = poll.reload.voters_count
-    undecided_voters_count = poll.undecided_voters_count
+    voters_eligible_count = poll.reload.voters_eligible_count
+    votes_uncast_count = poll.votes_uncast_count
 
     new_member = create_unique_user("newanonymousmember")
     Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
 
     assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
-    assert_equal voters_count + 1, poll.reload.voters_count
-    assert_equal undecided_voters_count + 1, poll.undecided_voters_count
+    assert_equal voters_eligible_count + 1, poll.reload.voters_eligible_count
+    assert_equal votes_uncast_count + 1, poll.votes_uncast_count
   end
 
   test "does not add bot users to polls" do

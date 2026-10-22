@@ -235,7 +235,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     )
 
     poll = @topic.polls.first!
-    stance = poll.stances.undecided.find_by!(participant: voter, latest: true)
+    stance = poll.stances.uncast.find_by!(participant: voter, latest: true)
     stance.choice = poll.poll_option_names.first
     StanceService.create(stance:, actor: voter)
 

@@ -393,8 +393,8 @@ class EventTest < ActiveSupport::TestCase
     assert_equal [ @user_thread_loud.id, @user_thread_normal.id ].sort, emailed_ids.sort
   end
 
-  test "poll_closing_soon notify_on_closing_soon undecided_voters" do
-    @poll.update!(notify_on_closing_soon: 'undecided_voters')
+  test "poll_closing_soon notify_on_closing_soon voters_uncast" do
+    @poll.update!(notify_on_closing_soon: 'voters_uncast')
     Stance.create!(poll: @poll, cast_at: Time.current, choice: 'Agree', participant: @user_thread_loud)
     Stance.create!(poll: @poll, participant: @user_thread_normal)
 

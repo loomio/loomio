@@ -7,7 +7,7 @@ const { poll, size } = defineProps({
 });
 
 const barColor = 'rgb(var(--v-theme-info))';
-const scoreData = computed(() => poll.stanceCounts.slice(0, 5));
+const scoreData = computed(() => poll.optionScoreTotals.slice(0, 5));
 const scoreMax = computed(() => Math.max(...scoreData.value, 0));
 
 const bars = computed(() => {

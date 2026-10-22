@@ -485,9 +485,9 @@ pl:
       not_invited: Nie zaproszona
       please_respond: Odpowiedz
       time_zone: "(Czas wyświetlany w %{zone})"
-      undecided_members: Członkowie, którzy nie głosowali (%{count})
-      undecided_visitors: Niezdecydowane zaproszone osoby (%{count})
-      more_undecided: "%{count} więcej..."
+      members_not_voted: Członkowie, którzy nie głosowali (%{count})
+      guests_not_voted: Niezdecydowane zaproszone osoby (%{count})
+      more_not_voted: "%{count} więcej..."
       vote_now: Głosuj teraz
       you_have_until: Masz czas do %{when}  na wzięcie udziału
       people_have_voted: "%{nom} z %{dnom} osób wzięło udział (%{pct}%)"
@@ -809,7 +809,7 @@ pl:
     voted: "%{author} zagłosował na %{response}"
     voted_hidden: "%{author} zagłosował"
     vote_removed: "%{author}: głos usunięty"
-    undecided: "%{author}: brak głosu"
+    not_voted: "%{author}: brak głosu"
     superseded: zastąpiony
     shared_outcome: "%{author} udostępnił wniosek"
     removed: Usunięto

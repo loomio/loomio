@@ -998,8 +998,8 @@ ru:
       everyone_in_the_group: Все в группе
       topic: Все в теме
       voters: Приглашаем всех голосовать
-      decided_voters: Все, кто голосовал
-      undecided_voters: Не проголосовали
+      people_who_voted: Все, кто голосовал
+      people_not_voted: Не проголосовали
       non_voters: Участники %{name} еще не приглашены
       delegates_of_group: Делегаты %{name}
     form:
@@ -1775,7 +1775,7 @@ ru:
       all: Недавние обсуждения
     thread_preview:
       you_voted: Ваш голос %{position}.
-      undecided: Вы не определились
+      not_voted: "Вы ещё не проголосовали"
     threads_from:
       group: Темы из
       pinned: Закрепленные темы
@@ -2290,12 +2290,12 @@ ru:
     started_by: Автор %{name}
   poll_common_votes_panel:
     vote_removed: Голосование удалено
-    undecided: Не проголосовали
+    not_voted: Не проголосовали
     newest_first: Новички вперед
     oldest_first: Сначала старые
     priority_first: Согласитесь сначала
     priority_last: Сначала заблокировать
-    undecided_first: Сначала не проголосовавшие
+    not_voted_first: Сначала не проголосовавшие
     no_votes_yet: Голоса еще не поданы.
     change_results_order: Изменить порядок результатов
     none_of_the_above: "(Ни один из вышеперечисленных)"
@@ -2316,13 +2316,13 @@ ru:
     stance: Голосование
     participation_records_restricted: Список участников можно посмотреть после завершения голосования
     vote_weight: Вес голоса %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Показать не проголосовавших (%{count})
+  poll_common_not_voted_panel:
+    show_not_voted: Показать не проголосовавших (%{count})
     show_invitations: Показать ожидающие приглашения
-    undecided_users: Не определено (%{count})
+    people_not_voted: Не определено (%{count})
     invitation_count_singular: Еще 1 человек был приглашен к участию по электронной почте
     invitation_count_plural: "%{count} дополнительных людей были приглашены принять участие по электронной почте."
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Напоминание отправлено!
     reminder_sent: Напоминание отправлено
   poll_common_set_outcome_panel:
@@ -2466,7 +2466,7 @@ ru:
     total: Всего
   poll_remove_vote:
     title: Удалить свой голос?
-    helptext: Вы уверены, что хотите удалить свой голос? Вы будете внесены в список не определившихся и сможете проголосовать еще раз позже, если захотите.
+    helptext_not_voted: Вы уверены, что хотите удалить свой голос? Вы будете внесены в список не определившихся и сможете проголосовать еще раз позже, если захотите.
     confirm: Удалить голосование
     success: Голосование удалено
   poll_poll_vote_form:
@@ -2828,7 +2828,7 @@ ru:
       voting_title: За 24 часа до окончания голосования отправьте напоминание
       nobody: Никто
       author: Автор (я)
-      undecided_voters: Не проголосовали
+      people_not_voted: Не проголосовали
       voters: Все избиратели
     notify_on_participate:
       title: Сообщите мне, когда люди примут участие

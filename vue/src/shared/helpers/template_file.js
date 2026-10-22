@@ -29,6 +29,14 @@ export async function importTemplateFile(type, file) {
     }
 
     const template = pickAttributes(data.template, AppConfig.templateSettings[type]);
+    // Portable templates from before the participation rename use the old audience names.
+    if (template.notify_on_closing_soon === 'undecided_voters') {
+      template.notify_on_closing_soon = 'voters_uncast';
+    }
+    const audiences = { decided_voters: 'voters_cast', undecided_voters: 'voters_uncast' };
+    if (Object.hasOwn(audiences, template.recipient_audience)) {
+      template.recipient_audience = audiences[template.recipient_audience];
+    }
     template.tags = Array.isArray(template.tags) ? template.tags.filter(value => typeof value === 'string') : [];
     if (type === 'discussion_template') {
       template.poll_template_keys_or_ids = (template.poll_template_keys_or_ids || []).

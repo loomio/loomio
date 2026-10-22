@@ -12,7 +12,7 @@ class VoteReplyVisibilityTest < ActiveSupport::TestCase
       assert voter.can?(:show, nested)
 
       nonvoter = users(:guest_loud)
-      refute poll.stances.latest.decided.exists?(participant_id: nonvoter.id)
+      refute poll.stances.latest.cast.exists?(participant_id: nonvoter.id)
       before_voting = CommentService.create(comment: Comment.new(parent: nested, body: 'Before voting'), actor: nonvoter)
       assert_predicate before_voting, :persisted?
       assert nonvoter.can?(:show, nested)

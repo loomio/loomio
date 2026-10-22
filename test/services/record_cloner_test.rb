@@ -46,7 +46,7 @@ class RecordClonerTest < ActiveSupport::TestCase
 
     # Cast a stance - use only choice= setter (not stance_choices.build)
     # to avoid exceeding dots_per_person limit on proposal polls
-    stance = @poll.stances.undecided.find_by(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by(participant_id: @user.id, latest: true)
     if stance
       stance.choice = 'Agree'
       stance.reason = "good idea"

@@ -492,9 +492,9 @@ zh_TW:
       not_invited: 未邀請
       please_respond: 請回應
       time_zone: "（在 %{zone} 顯示的時間）"
-      undecided_members: 未投票的成員（%{count}）
-      undecided_visitors: 未投票的訪客 (%{count})
-      more_undecided: "%{count} 更多……"
+      members_not_voted: 未投票的成員（%{count}）
+      guests_not_voted: 未投票的訪客 (%{count})
+      more_not_voted: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
       people_have_voted: "%{dnom} 中的 %{nom} 個人已投票 (%{pct}%)"
@@ -816,7 +816,7 @@ zh_TW:
     voted: "%{author} 投票給了 %{response}"
     voted_hidden: "%{author} 投票"
     vote_removed: "%{author}：投票已移除"
-    undecided: "%{author}：未定"
+    not_voted: "%{author}：未定"
     superseded: 被取代
     shared_outcome: "%{author} 分享了結論"
     removed: 已移除

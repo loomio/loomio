@@ -354,7 +354,7 @@ class DemoGroupTemplateService
   def cast_votes!(poll, people, definition)
     definition.fetch("votes").each do |vote|
       person = people.fetch(vote.fetch("person"))
-      stance = poll.stances.undecided.find_by!(participant: person, latest: true)
+      stance = poll.stances.uncast.find_by!(participant: person, latest: true)
       stance.choice = vote_choice(poll, vote, definition)
       stance.reason = vote.fetch("reason")
       StanceService.create(stance: stance, actor: person)

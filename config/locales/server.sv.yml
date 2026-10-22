@@ -458,9 +458,9 @@ sv:
       not_invited: Inte inbjuden
       please_respond: Vänligen svara
       time_zone: "(Tiderna visas i %{zone})"
-      undecided_members: Obestämda medlemmar (%{count})
-      undecided_visitors: Obestämda gäster (%{count})
-      more_undecided: "%{count} till..."
+      members_not_voted: Obestämda medlemmar (%{count})
+      guests_not_voted: Obestämda gäster (%{count})
+      more_not_voted: "%{count} till..."
       vote_now: Rösta nu
       you_have_until: Du har fram till %{when} på dig att delta.
       people_have_voted: "%{nom} av %{dnom} personer har deltagit (%{pct}%)"
@@ -782,7 +782,7 @@ sv:
     voted: "%{author} röstade %{response}"
     voted_hidden: "%{author} röstade"
     vote_removed: "%{author}: röst borttagen"
-    undecided: "%{author}: har inte röstat"
+    not_voted: "%{author}: har inte röstat"
     superseded: ersatt
     shared_outcome: "%{author} delade en slutsats"
     removed: Borttagen

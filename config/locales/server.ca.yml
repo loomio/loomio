@@ -460,9 +460,9 @@ ca:
       not_invited: No convidat
       please_respond: Si us plau, respon
       time_zone: "(Les hores es mostren a %{zone})"
-      undecided_members: Membres indecisos (%{count})
-      undecided_visitors: Convidats indecisos (%{count})
-      more_undecided: "%{count} més..."
+      members_not_voted: Membres indecisos (%{count})
+      guests_not_voted: Convidats indecisos (%{count})
+      more_not_voted: "%{count} més..."
       vote_now: Votar ara
       you_have_until: Tens fins a %{when} per participar.
       people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
@@ -784,7 +784,7 @@ ca:
     voted: "%{author} ha votat %{response}"
     voted_hidden: "%{author} ha votat"
     vote_removed: "%{author}: vot eliminat"
-    undecided: "%{author}: sense votar"
+    not_voted: "%{author}: sense votar"
     superseded: substituït
     shared_outcome: "%{author} ha compartit una conclusió"
     removed: Eliminat

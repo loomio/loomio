@@ -42,7 +42,7 @@ class Ability::PollAccessTest < ActiveSupport::TestCase
       AnonymousBallotService.create(anonymous_ballot: ballot, actor: voter)
 
       assert_predicate ballot, :persisted?
-      assert poll.reload.unmasked_voters.exists?(voter.id)
+      assert poll.reload.voters_unmasked.exists?(voter.id)
       assert_not voter.can?(:vote_in, poll), fixture.to_s
       assert_empty poll.stances
     end

@@ -488,9 +488,9 @@ pt_BR:
       not_invited: Não convidado
       please_respond: Por favor responda
       time_zone: "(Horário mostrado em %{zone})"
-      undecided_members: Membros que não votaram (%{count})
-      undecided_visitors: Convidados que não votaram (%{count})
-      more_undecided: "%{count} mais..."
+      members_not_voted: Membros que não votaram (%{count})
+      guests_not_voted: Convidados que não votaram (%{count})
+      more_not_voted: "%{count} mais..."
       vote_now: Vote agora
       you_have_until: Você tem até %{when} para participar.
       people_have_voted: "%{nom} de %{dnom} as pessoas votaram (%{pct}%)"
@@ -812,7 +812,7 @@ pt_BR:
     voted: "%{author} votou em %{response}"
     voted_hidden: "%{author} votou"
     vote_removed: "%{author}: voto removido"
-    undecided: "%{author}: indeciso"
+    not_voted: "%{author}: indeciso"
     superseded: substituído
     shared_outcome: "%{author} compartilhou uma conclusão"
     removed: Removido

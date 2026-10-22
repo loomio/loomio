@@ -267,7 +267,7 @@ class StanceTest < ActiveSupport::TestCase
     ), actor: @admin)
     poll.stances.latest.find_by!(participant: @admin).update!(choice: 'dog')
     poll.update_counts!
-    assert_equal [1, 0], poll.stance_counts
+    assert_equal [1, 0], poll.option_score_totals
   end
 
   test "choice shorthand with array" do
@@ -278,7 +278,7 @@ class StanceTest < ActiveSupport::TestCase
     ), actor: @admin)
     poll.stances.latest.find_by!(participant: @admin).update!(choice: ['dog', 'cat'])
     poll.update_counts!
-    assert_equal [1, 1], poll.stance_counts
+    assert_equal [1, 1], poll.option_score_totals
   end
 
   private
