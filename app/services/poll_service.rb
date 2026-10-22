@@ -8,7 +8,7 @@ class PollService
     if poll.anonymous?
       poll.hide_results = :until_closed
       poll.stance_reason_required = :disabled
-      poll.notify_on_closing_soon = :undecided_voters
+      poll.notify_on_closing_soon = :voters_uncast
     end
     poll.author = actor
     poll.prioritise_poll_options!
@@ -462,7 +462,7 @@ class PollService
         revoked_at: nil,
         participant_id: Array(removed_user_ids),
       )
-      stances = stances.undecided if preserve_cast_votes
+      stances = stances.uncast if preserve_cast_votes
       stances.update_all(revoked_at: revoked_at, revoker_id: actor_id)
       poll.update_counts!
     end
@@ -530,7 +530,7 @@ class PollService
 
   # Callers with a record cache pass the voter ids they already loaded; other
   # callers leave them nil and the ids are queried here.
-  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil, none_of_the_above_voter_ids: nil)
+  def self.calculate_results(poll, poll_options, voters_uncast_ids: nil, none_of_the_above_voter_ids: nil)
     # Options may come from the record cache without their poll loaded; attach it
     # so each option's color and voter ids do not reload the poll.
     poll_options.each { |option| option.association(:poll).target = poll }
@@ -551,7 +551,7 @@ class PollService
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
       score_percent = total_score > 0 ? ((option.total_score / total_score) * 100) : 0
-      voter_percent = poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0
+      voter_percent = poll.voters_eligible_count > 0 ? ((option.voter_count.to_f / poll.voters_eligible_count.to_f) * 100) : 0
 
       test_result = if option.test_operator == 'gte'
         if option.test_against == 'score_percent'
@@ -606,8 +606,8 @@ class PollService
           unweighted_score: 0,
           score_percent: 0,
           max_score_percent: 0,
-          target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          target_percent: poll.voters_eligible_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_eligible_count.to_f * 100) : 0,
+          voter_percent: poll.voters_eligible_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_eligible_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
           voter_ids: (none_of_the_above_voter_ids || poll.none_of_the_above_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
@@ -618,24 +618,24 @@ class PollService
       )
     end
 
-    if poll.results_include_undecided
+    if poll.results_include_uncast_row?
       l.push(
         {
           id: -1,
           poll_id: poll.id,
-          name: 'poll_common_votes_panel.undecided',
+          name: 'poll_common_votes_panel.not_voted',
           name_format: 'i18n',
           rank: nil,
           score: 0,
           unweighted_score: 0,
           score_percent: nil,
           max_score_percent: 0,
-          target_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
+          target_percent: poll.voters_eligible_count > 0 ? (poll.votes_uncast_count.to_f / poll.voters_eligible_count.to_f * 100) : 0,
+          voter_percent: poll.voters_eligible_count > 0 ? (poll.votes_uncast_count.to_f / poll.voters_eligible_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
-          voter_count: poll.undecided_voters_count,
+          voter_ids: (voters_uncast_ids || poll.voters_uncast.ids).take(Poll::RESULT_VOTER_IDS_MAX),
+          voter_count: poll.votes_uncast_count,
           color: '#BBBBBB',
           test_result: nil
         }.with_indifferent_access.freeze
@@ -678,7 +678,7 @@ class PollService
         unweighted_score: option.total_score.to_i,
         score_percent: 0,
         max_score_percent: 0,
-        voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
+        voter_percent: poll.voters_eligible_count > 0 ? ((option.voter_count.to_f / poll.voters_eligible_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores_for_results,
         voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),

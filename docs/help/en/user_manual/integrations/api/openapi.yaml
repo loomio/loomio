@@ -1350,7 +1350,7 @@ components:
           enum: [group, null]
         notify_on_closing_soon:
           type: string
-          enum: [nobody, author, undecided_voters, voters]
+          enum: [nobody, author, voters_uncast, voters]
         recipient_user_ids:
           type: array
           items: {type: integer}

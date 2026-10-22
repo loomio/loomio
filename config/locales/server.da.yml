@@ -464,9 +464,9 @@ da:
       not_invited: Ikke inviteret
       please_respond: Svar venligst
       time_zone: "(Tider er vist i %{zone})"
-      undecided_members: Ubesluttede medlemmer (%{count})
-      undecided_visitors: Ubeslutsomme gæster (%{count})
-      more_undecided: "%{count} mere..."
+      members_not_voted: Ubesluttede medlemmer (%{count})
+      guests_not_voted: Ubeslutsomme gæster (%{count})
+      more_not_voted: "%{count} mere..."
       vote_now: Stem nu
       you_have_until: Du har indtil %{when} til at deltage.
       people_have_voted: "%{nom} af %{dnom} personer har deltaget (%{pct}%)"
@@ -788,7 +788,7 @@ da:
     voted: "%{author} stemte %{response}"
     voted_hidden: "%{author} stemte"
     vote_removed: "%{author}: stemme fjernet"
-    undecided: "%{author}: ikke stemt"
+    not_voted: "%{author}: ikke stemt"
     superseded: erstattet
     shared_outcome: "%{author} delte en konklusion"
     removed: Fjernet

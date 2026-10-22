@@ -999,8 +999,8 @@ zh_TW:
       everyone_in_the_group: 小組中的每個人
       topic: 在討論串中的每個人
       voters: 被邀請投票的每個人
-      decided_voters: 已經投票的每個人
-      undecided_voters: 未投票的投票者
+      people_who_voted: 已經投票的每個人
+      people_not_voted: 未投票的投票者
       non_voters: "%{name} 的成員尚未被邀請"
       delegates_of_group: "%{name} 的代表"
     form:
@@ -1788,7 +1788,7 @@ zh_TW:
       all: 近期討論
     thread_preview:
       you_voted: 您已經投了 %{position}.
-      undecided: 您尚未投票
+      not_voted: 您尚未投票
     threads_from:
       group: 討論串從
       pinned: 已釘選的討論串
@@ -2297,12 +2297,12 @@ zh_TW:
     started_by: 由 %{name} 啟動
   poll_common_votes_panel:
     vote_removed: 投票已刪除
-    undecided: 未投票
+    not_voted: 未投票
     newest_first: 最新的放在最前面
     oldest_first: 最舊的放在最前面
     priority_first: 同意的放在最前面
     priority_last: 否決的放在最前面
-    undecided_first: 未投票優先
+    not_voted_first: 未投票優先
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
     none_of_the_above: "（以上皆非）"
@@ -2323,13 +2323,13 @@ zh_TW:
     stance: 投票
     participation_records_restricted: 投票結束後，您可以查看所有參與者名單
     vote_weight: 投票權重 %{weight}
-  poll_common_undecided_panel:
-    show_undecided: 顯示 %{count} 位未投票者
+  poll_common_not_voted_panel:
+    show_not_voted: 顯示 %{count} 位未投票者
     show_invitations: 顯示擱置中的邀請函
-    undecided_users: 未投票 (%{count})
+    people_not_voted: 未投票 (%{count})
     invitation_count_singular: 已透過電子郵件邀請 1 個額外的夥伴參與
     invitation_count_plural: 已透過電子郵件邀請 %{count} 個額外的夥伴參與
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: 提醒已傳送！
     reminder_sent: 提醒通知已傳送
   poll_common_set_outcome_panel:
@@ -2469,7 +2469,7 @@ zh_TW:
     total: 全部
   poll_remove_vote:
     title: 刪除您的投票？
-    helptext: 確定要移除您的投票嗎？您將被列為未投票，之後仍可再次投票。
+    helptext_not_voted: 確定要移除您的投票嗎？您將被列為未投票，之後仍可再次投票。
     confirm: 刪除投票
     success: 投票已移除
   poll_poll_vote_form:
@@ -2833,7 +2833,7 @@ zh_TW:
       voting_title: 投票結束前 24 小時，發送提醒至
       nobody: 沒人
       author: 作者（我）
-      undecided_voters: 未投票的投票者
+      people_not_voted: 未投票的投票者
       voters: 所有選民
     notify_on_participate:
       title: 當有人參與時通知我

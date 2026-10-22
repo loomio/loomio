@@ -135,19 +135,19 @@ class Api::V1::PollsController < Api::V1::RestfulController
   # poll's own voters. Visitors to a public poll see names only.
   def voter_details_visible?
     @poll.group_id.present? &&
-      (@poll.members.exists?(current_user.id) || @poll.unmasked_voters.exists?(current_user.id))
+      (@poll.members.exists?(current_user.id) || @poll.voters_unmasked.exists?(current_user.id))
   end
 
   # Filter and page stances before loading voter details. Choice-based filters
   # and choice scores become available only when this viewer can see results.
   def render_identified_votes
-    show_results = @poll.results_visible?(voted: @poll.stances.latest.decided.exists?(participant_id: current_user.id))
+    show_results = @poll.results_visible?(voted: @poll.stances.latest.cast.exists?(participant_id: current_user.id))
     stances = @poll.stances.latest.where(revoked_at: nil)
     if params[:name].present?
       stances = stances.joins(:participant).merge(voters_matching_name)
     end
-    stances = stances.decided if params[:stance_filter] == 'cast'
-    stances = stances.undecided if params[:stance_filter] == 'uncast'
+    stances = stances.cast if params[:stance_filter] == 'cast'
+    stances = stances.uncast if params[:stance_filter] == 'uncast'
     if show_results
       stances = stances.joins(:poll_options).where(poll_options: {id: params[:poll_option_id]}) if params[:poll_option_id].present?
     elsif !@poll.results_available?

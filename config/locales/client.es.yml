@@ -998,8 +998,8 @@ es:
       everyone_in_the_group: Todos en el grupo
       topic: Todos en el hilo
       voters: Todos invitados a votar
-      decided_voters: Todos los que votaron
-      undecided_voters: Votantes indecisos
+      people_who_voted: Todos los que votaron
+      people_not_voted: Votantes indecisos
       non_voters: Miembros de %{name} todavía no han sido invitados
       delegates_of_group: Delegados de %{name}
     form:
@@ -1796,7 +1796,7 @@ es:
       all: Discusiones recientes
     thread_preview:
       you_voted: Votaste %{position}
-      undecided: 'Estas indeciso '
+      not_voted: "Todavía no has votado"
     threads_from:
       group: Hilos de
       pinned: Hilos fijados
@@ -2305,12 +2305,12 @@ es:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto eliminado
-    undecided: Sin votar
+    not_voted: Sin votar
     newest_first: El más reciente primero
     oldest_first: Los más viejos primero
     priority_first: De acuerdo primero
     priority_last: Bloqueados primero
-    undecided_first: Sin votar primero
+    not_voted_first: Sin votar primero
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
@@ -2331,13 +2331,13 @@ es:
     stance: Votar
     participation_records_restricted: Podrás ver quiénes participaron una vez finalizada la votación
     vote_weight: Peso del voto %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostrar %{count} indecisos
+  poll_common_not_voted_panel:
+    show_not_voted: "Mostrar %{count} personas que no han votado"
     show_invitations: Mostrar invitaciones pendientes
-    undecided_users: Indecisos (%{count})
+    people_not_voted: Indecisos (%{count})
     invitation_count_singular: 'Una persona más ha sido invitada a participar vía correo electrónico '
     invitation_count_plural: "%{count} personas adicionales han sido invitadas a participar vía correo electrónico"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: 'Recordatorio enviado '
     reminder_sent: 'Recordatorio de notificación enviado '
   poll_common_set_outcome_panel:
@@ -2477,7 +2477,7 @@ es:
     total: Total
   poll_remove_vote:
     title: "¿Eliminar tu voto?"
-    helptext: "¿Estás seguro de que deseas eliminar tu voto? Aparecerás como indeciso y puedes votar de nuevo más tarde si lo deseas."
+    helptext_not_voted: "¿Estás seguro de que deseas eliminar tu voto? Aparecerás como indeciso y puedes votar de nuevo más tarde si lo deseas."
     confirm: Eliminar voto
     success: 'Voto eliminado '
   poll_poll_vote_form:
@@ -2841,7 +2841,7 @@ es:
       voting_title: 24 horas antes del cierre de la votación, envíe un recordatorio a
       nobody: Nadie
       author: Autor (yo)
-      undecided_voters: Votantes indecisos
+      people_not_voted: Votantes indecisos
       voters: Todos los votantes
     notify_on_participate:
       title: Notificarme cuando la gente participe

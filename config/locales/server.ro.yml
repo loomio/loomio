@@ -458,9 +458,9 @@ ro:
       not_invited: Nu sunt invitate
       please_respond: Vă rugăm să răspundeți
       time_zone: "(Ore afișate în %{zone})"
-      undecided_members: Membri nehotărâți (%{count})
-      undecided_visitors: Oaspeți nehotărâți (%{count})
-      more_undecided: Încă %{count}...
+      members_not_voted: Membri nehotărâți (%{count})
+      guests_not_voted: Oaspeți nehotărâți (%{count})
+      more_not_voted: Încă %{count}...
       vote_now: Voteaza acum
       you_have_until: Ai timp până la %{when} pentru a participa.
       people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
@@ -782,7 +782,7 @@ ro:
     voted: "%{author} a votat %{response}"
     voted_hidden: "%{author} a votat"
     vote_removed: "%{author}: vot eliminat"
-    undecided: "%{author}: nu a votat"
+    not_voted: "%{author}: nu a votat"
     superseded: înlocuit
     shared_outcome: "%{author} a distribuit o concluzie"
     removed: Eliminat

@@ -18,6 +18,7 @@ import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
+import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
 const props = defineProps({
   poll: Object,
@@ -144,7 +145,7 @@ const setAnonymousVoting = (value) => {
   props.poll.weightedVoting = false;
   props.poll.hideResults = 'until_closed';
   props.poll.stanceReasonRequired = 'disabled';
-  props.poll.notifyOnClosingSoon = 'undecided_voters';
+  props.poll.notifyOnClosingSoon = 'voters_uncast';
 };
 
 const editOption = (option) => {
@@ -248,11 +249,7 @@ const closesSoon = computed(() => {
   return !(props.poll.closingAt && isAfter(props.poll.closingAt, addHours(new Date(), 24)));
 });
 
-const closingSoonItems = computed(() => {
-  return 'nobody author undecided_voters voters'.split(' ').map(name => {
-    return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-  });
-});
+const closingSoonItems = computed(() => pollReminderItems(t));
 
 const optionFormat = computed(() => props.poll.pollOptionNameFormat);
 const hasOptionIcon = computed(() => props.poll.config().has_option_icon);

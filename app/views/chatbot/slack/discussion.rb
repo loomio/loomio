@@ -16,7 +16,7 @@ class Views::Chatbot::Slack::Discussion < Views::Chatbot::Slack::Base
     md "\n"
     slack_convert { render_body(@topic_item.itemable) }
     md "\n"
-    slack_convert { render_discussion_undecided(@topic_item.itemable) }
+    slack_convert { render_discussion_uncast(@topic_item.itemable) }
     md "\n"
   end
 end

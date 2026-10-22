@@ -470,9 +470,9 @@ hu:
       not_invited: Nincs meghívva
       please_respond: Kérlek válaszolj
       time_zone: "(Ennyiszer megjelenítve itt %{zone})"
-      undecided_members: Még nem döntöttek (%{count})
-      undecided_visitors: Még nem szavazó vendégek (%{count})
-      more_undecided: "%{count} további ..."
+      members_not_voted: Még nem döntöttek (%{count})
+      guests_not_voted: Még nem szavazó vendégek (%{count})
+      more_not_voted: "%{count} további ..."
       vote_now: Szavazz most
       you_have_until: "%{when} -ig van lehetőséged részt venni."
       people_have_voted: "%{nom} %{dnom} ember vett részt (%{pct}%)"
@@ -794,7 +794,7 @@ hu:
     voted: "%{author} szavazata: %{response}"
     voted_hidden: "%{author} szavazott"
     vote_removed: "%{author}: szavazat eltávolítva"
-    undecided: "%{author}: nem szavazott"
+    not_voted: "%{author}: nem szavazott"
     superseded: felülírva
     shared_outcome: "%{author} megosztott egy következtetést"
     removed: Eltávolítva

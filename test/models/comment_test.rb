@@ -14,7 +14,7 @@ class CommentTest < ActiveSupport::TestCase
     reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Conversation after voting'), actor: @user)
     assert_predicate reply, :persisted?
 
-    refute stance.poll.stances.latest.decided.exists?(participant_id: @admin.id)
+    refute stance.poll.stances.latest.cast.exists?(participant_id: @admin.id)
     direct = CommentService.create(comment: Comment.new(parent: stance, body: 'Before voting'), actor: @admin)
     assert_predicate direct, :persisted?
     nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Nested before voting'), actor: @admin)

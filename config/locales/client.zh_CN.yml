@@ -1046,8 +1046,8 @@ zh_CN:
       everyone_in_the_group: 子群组中的每个人
       topic: 帖子里的所有人
       voters: 所有受邀投票的人
-      decided_voters: 所有投票的人
-      undecided_voters: 未投票的投票者
+      people_who_voted: 所有投票的人
+      people_not_voted: 未投票的投票者
       non_voters: "%{name} 的成员尚未受邀"
     form:
       group_has_no_members_yet: 您是群组中唯一的成员。在发起讨论或做出决定之前，您可能需要邀请一些人加入您的群组。
@@ -1854,7 +1854,7 @@ zh_CN:
       muted_description: 仅显示已被静音的帖子
     thread_preview:
       you_voted: 您投票给了 %{position}
-      undecided: 您还在犹豫不决。
+      not_voted: "您尚未投票"
     threads_from:
       group: 帖子来自
       pinned: 置顶帖子
@@ -2368,7 +2368,7 @@ zh_CN:
       voting_title: 投票结束前24小时，发送提醒
       nobody: 无人
       author: 作者（我）
-      undecided_voters: 未投票的投票者
+      people_not_voted: 未投票的投票者
       voters: 所有投票者
     notify_on_participate:
       title: 当有人参与时通知我
@@ -2417,12 +2417,12 @@ zh_CN:
     started_by: 由 %{name} 发起
   poll_common_votes_panel:
     vote_removed: 投票已移除
-    undecided: 未投票
+    not_voted: 未投票
     newest_first: 最新优先
     oldest_first: 最早优先
     priority_first: 同意优先
     priority_last: 否决优先
-    undecided_first: 未投票者优先
+    not_voted_first: 未投票者优先
     no_votes_yet: 目前还没有人投票。
     change_results_order: 更改结果顺序
     name_or_username: 真实姓名或用户名
@@ -2442,13 +2442,13 @@ zh_CN:
     stance: 投票
     participation_records_restricted: 投票结束后，您可以查看所有参与者名单
     vote_weight: 投票权重 %{weight}
-  poll_common_undecided_panel:
-    show_undecided: 显示 %{count} 位未投票者
+  poll_common_not_voted_panel:
+    show_not_voted: 显示 %{count} 位未投票者
     show_invitations: 待处理的邀请
-    undecided_users: 未投票（%{count}）
+    people_not_voted: 未投票（%{count}）
     invitation_count_singular: 另有一人已通过电子邮件受邀加入。
     invitation_count_plural: 已有 %{count} 人通过电子邮件受邀参与。
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: 提醒已发送！
     reminder_sent: 已发送提醒通知
   poll_common_set_outcome_panel:
@@ -2734,7 +2734,7 @@ zh_CN:
     total: 全部的
   poll_remove_vote:
     title: 取消投票？
-    helptext: 您确定要撤回投票吗？撤回后，您的状态将显示为“未投票”，如果您愿意，以后可以再次投票。
+    helptext_not_voted: 您确定要撤回投票吗？撤回后，您的状态将显示为“未投票”，如果您愿意，以后可以再次投票。
     confirm: 移除投票
     success: 投票已移除
   poll_poll_vote_form:

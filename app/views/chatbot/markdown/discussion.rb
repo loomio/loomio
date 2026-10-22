@@ -16,6 +16,6 @@ class Views::Chatbot::Markdown::Discussion < Views::Chatbot::Markdown::Base
     md "\n"
     render_body(@topic_item.itemable)
     md "\n"
-    render_discussion_undecided(@topic_item.itemable)
+    render_discussion_uncast(@topic_item.itemable)
   end
 end

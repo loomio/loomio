@@ -469,9 +469,9 @@ it:
       not_invited: Non invitato
       please_respond: Rispondi
       time_zone: "(Orari visualizzati in %{zone})"
-      undecided_members: Membri in attesa (%{count})
-      undecided_visitors: Ospiti in attesa (%{count})
-      more_undecided: "%{count} ancora.."
+      members_not_voted: Membri in attesa (%{count})
+      guests_not_voted: Ospiti in attesa (%{count})
+      more_not_voted: "%{count} ancora.."
       vote_now: Vota ora
       you_have_until: Hai tempo fino a %{when} per partecipare.
       people_have_voted: "%{nom} di %{dnom} persone hanno partecipato (%{pct}%)"
@@ -793,7 +793,7 @@ it:
     voted: "%{author} ha votato %{response}"
     voted_hidden: "%{author} ha votato"
     vote_removed: "%{author}: voto rimosso"
-    undecided: "%{author}: indeciso"
+    not_voted: "%{author}: indeciso"
     superseded: sostituito
     shared_outcome: "%{author} ha condiviso una conclusione"
     removed: Rimosso

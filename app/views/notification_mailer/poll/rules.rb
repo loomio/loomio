@@ -12,7 +12,7 @@ class Views::NotificationMailer::Poll::Rules < Views::ApplicationMailer::Compone
     h3 { plain t('poll_common_action_panel.for_this_poll_type_to_be_valid', poll_type: t("poll_types.#{@poll.poll_type}")) }
     ul do
       if @poll.quorum_pct
-        met = @poll.quorum_votes_required <= 0
+        met = @poll.quorum_gap <= 0
         li { plain "#{met ? '✓' : '✗'} #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: @poll.quorum_pct)}" }
       end
       @poll.results.select { |r| r['test_operator'] }.each do |option|

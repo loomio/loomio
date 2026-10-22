@@ -1,6 +1,57 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test 'legacy archives rebuild renamed participation counters and preserve notification audiences' do
+    group, admin, voter = create_detached_export_group
+    poll_template = PollTemplate.create!(title: 'Legacy reminder', poll_type: 'poll', group: group, author: admin,
+      process_name: 'Decision', process_subtitle: 'Choose an option', notify_on_closing_soon: 'voters_uncast')
+    poll = PollService.create(params: {
+      title: 'Legacy participation export', poll_type: 'poll', group_id: group.id,
+      poll_template_id: poll_template.id, notify_on_closing_soon: 'voters_uncast',
+      poll_option_names: %w[Yes No], closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: admin)
+    stance = poll.stances.latest.find_by!(participant: voter)
+    stance.choice = 'Yes'
+    StanceService.create(stance: stance, actor: voter)
+    template = DiscussionTemplate.create!(title: 'Legacy recipients', group: group, author: admin,
+      process_name: 'Discussion', process_subtitle: 'Share ideas', recipient_audience: 'voters_uncast')
+    notification = Notification.create!(kind: 'poll_announced', subject: poll, actor: admin,
+      recipient_audience: 'voters_cast', recipient_user_ids: [voter.id])
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    archive.each do |item|
+      record = item.fetch('record')
+      if %w[polls poll_templates].include?(item['table'])
+        record['notify_on_closing_soon'] = 'undecided_voters'
+      end
+      if item['table'] == 'polls'
+        {'voters_eligible_count' => 'voters_count', 'votes_uncast_count' => 'undecided_voters_count',
+         'option_score_totals' => 'stance_counts'}.each do |current, legacy|
+          record[legacy] = record.delete(current)
+        end
+      elsif item['table'] == 'notifications' && record['id'] == notification.id
+        record['recipient_audience'] = 'decided_voters'
+      elsif item['table'] == 'discussion_templates' && record['id'] == template.id
+        record['recipient_audience'] = 'undecided_voters'
+      end
+    end
+    File.write(filename, archive.map(&:to_json).join("\n"))
+
+    group.destroy!
+    GroupExportService.import(filename)
+    imported = Poll.where.not(id: poll.id).find_by!(title: poll.title)
+    assert_equal 2, imported.voters_eligible_count
+    assert_equal 1, imported.votes_cast_count
+    assert_equal 1, imported.votes_uncast_count
+    assert_equal [1, 0], imported.option_score_totals
+    assert_equal 'voters_uncast', imported.notify_on_closing_soon
+    assert_equal 'voters_uncast', PollTemplate.find_by!(group_id: imported.group_id, title: poll_template.title).notify_on_closing_soon
+    imported_notification = Notification.find_by!(subject: imported, kind: 'poll_announced')
+    assert_equal 'voters_cast', imported_notification.recipient_audience
+    assert_equal [voter.id], imported_notification.recipient_user_ids
+    assert_equal 'voters_uncast', DiscussionTemplate.where.not(id: template.id).find_by!(title: template.title).recipient_audience
+  end
+
   test 'portable exports do not copy delivery transport identity' do
     group, admin, member = create_detached_export_group
     notification = Notification.create!(kind: 'membership_created', subject: group, actor: admin,
@@ -534,8 +585,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     imported_poll.update_counts!
     imported_sub_poll.update_counts!
 
-    assert_equal [1, 1], imported_poll.stance_counts
-    assert_equal [0, 0], imported_sub_poll.stance_counts
+    assert_equal [1, 1], imported_poll.option_score_totals
+    assert_equal [0, 0], imported_sub_poll.option_score_totals
 
     # Templates
     DiscussionTemplate.find_by!(title: 'discussion_template', group: imported_group, author: imported_admin)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_23_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -784,6 +784,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.boolean "notify_on_open", default: true, null: false
     t.datetime "opened_at"
     t.datetime "opening_at"
+    t.jsonb "option_score_totals", default: [], null: false
     t.string "poll_option_name_format"
     t.integer "poll_template_id"
     t.string "poll_template_key"
@@ -796,7 +797,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.boolean "show_none_of_the_above", default: false, null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
-    t.jsonb "stance_counts", default: [], null: false
     t.integer "stance_reason_required", default: 1, null: false
     t.string "stv_method"
     t.string "stv_quota"
@@ -805,10 +805,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.boolean "template", default: false, null: false
     t.string "title", null: false
     t.integer "topic_id"
-    t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.integer "voters_count", default: 0, null: false
+    t.integer "voters_eligible_count", default: 0, null: false
+    t.integer "votes_uncast_count", default: 0, null: false
     t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"

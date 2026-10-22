@@ -998,8 +998,8 @@ ca:
       everyone_in_the_group: Tothom del grup
       topic: Tothom que sigui part del fil
       voters: Tothom que estigui convidat a la votació
-      decided_voters: Tothom que ja hagi votat
-      undecided_voters: Votants indecisos
+      people_who_voted: Tothom que ja hagi votat
+      people_not_voted: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
       delegates_of_group: Delegats de %{name}
     form:
@@ -1787,7 +1787,7 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      undecided: Encara no has votat
+      not_voted: Encara no has votat
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -2296,12 +2296,12 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    undecided: Sense votar
+    not_voted: Sense votar
     newest_first: El més recent primer
     oldest_first: El més antic primer
     priority_first: D'acord primer
     priority_last: Bloqueja primer
-    undecided_first: Indecisos primer
+    not_voted_first: "Primer qui no ha votat"
     no_votes_yet: Encara no s'ha votat
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
@@ -2322,13 +2322,13 @@ ca:
     stance: Vota
     participation_records_restricted: Podeu veure qui hi ha participat després del tancament de la votació
     vote_weight: Pes del vot %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostra %{count} indecisos
+  poll_common_not_voted_panel:
+    show_not_voted: "Mostra %{count} persones que no han votat"
     show_invitations: Mostra les invitacions pendents
-    undecided_users: Indecis (%{count})
+    people_not_voted: Indecis (%{count})
     invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
     invitation_count_plural: "%{count} persones addicionals han estat convidades a participar-hi per correu electrònic"
-  poll_common_undecided_user:
+  poll_common_not_voted_user:
     reminded: Recordatori enviat!
     reminder_sent: S'ha enviat la notificació de recordatori
   poll_common_set_outcome_panel:
@@ -2468,7 +2468,7 @@ ca:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
+    helptext_not_voted: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
   poll_poll_vote_form:
@@ -2832,7 +2832,7 @@ ca:
       voting_title: 24 hores abans que es tanqui la votació, envieu un recordatori a
       nobody: Ningú
       author: Autor (jo)
-      undecided_voters: Votants indecisos
+      people_not_voted: Votants indecisos
       voters: Tots els votants
     notify_on_participate:
       title: Notifica'm quan la gent participi

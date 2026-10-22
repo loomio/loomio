@@ -488,9 +488,9 @@ fr:
       not_invited: Non invité
       please_respond: Merci de répondre
       time_zone: "(Horaire affiché en %{zone})"
-      undecided_members: Membres en attente (%{count})
-      undecided_visitors: Invités en attente (%{count})
-      more_undecided: "%{count} de plus..."
+      members_not_voted: Membres en attente (%{count})
+      guests_not_voted: Invités en attente (%{count})
+      more_not_voted: "%{count} de plus..."
       vote_now: Voter maintenant
       you_have_until: Vous avez jusqu'à %{when} pour participer.
       people_have_voted: "%{nom}de %{dnom}personnes ont voté (%{pct}%)"
@@ -812,7 +812,7 @@ fr:
     voted: "%{author} a voté %{response}"
     voted_hidden: "%{author} a voté"
     vote_removed: "%{author} : vote supprimé"
-    undecided: "%{author} : en attente"
+    not_voted: "%{author} : en attente"
     superseded: remplacé
     shared_outcome: "%{author} a partagé une conclusion"
     removed: Supprimé
