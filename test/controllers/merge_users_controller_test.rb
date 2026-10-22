@@ -65,11 +65,13 @@ class MergeUsersControllerTest < ActionController::TestCase
   end
 
   test "merge with valid hash succeeds" do
-    post :merge, params: {
-      source_id: @source_user.id,
-      target_id: @target_user.id,
-      hash: @valid_hash
-    }
+    assert_enqueued_with(job: MigrateUserWorker, args: [@source_user.id, @target_user.id]) do
+      post :merge, params: {
+        source_id: @source_user.id,
+        target_id: @target_user.id,
+        hash: @valid_hash
+      }
+    end
     assert_response 200
   end
 
@@ -92,22 +94,26 @@ class MergeUsersControllerTest < ActionController::TestCase
   end
 
   test "merge with invalid hash returns 422" do
-    post :merge, params: {
-      source_id: @source_user.id,
-      target_id: @target_user.id,
-      hash: 'invalid hash'
-    }
+    assert_no_enqueued_jobs(only: MigrateUserWorker) do
+      post :merge, params: {
+        source_id: @source_user.id,
+        target_id: @target_user.id,
+        hash: 'invalid hash'
+      }
+    end
     assert_response 422
   end
 
   test "wrong user cannot merge" do
     sign_out
     sign_in @source_user
-    post :merge, params: {
-      source_id: @source_user.id,
-      target_id: @target_user.id,
-      hash: @valid_hash
-    }
+    assert_no_enqueued_jobs(only: MigrateUserWorker) do
+      post :merge, params: {
+        source_id: @source_user.id,
+        target_id: @target_user.id,
+        hash: @valid_hash
+      }
+    end
     assert_response 302
     assert_match(/target account/, flash[:error])
   end

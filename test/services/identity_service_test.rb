@@ -131,17 +131,21 @@ class IdentityServiceTest < ActiveSupport::TestCase
     assert_equal "Existing User", user.reload.name
   end
 
-  test "creates pending identity when user already signed in" do
+  test "keeps a signed-in user's pending identity unlinked with profile synchronization enabled" do
     current_user = users(:user)
+    profile_before = current_user.attributes.slice('name', 'email')
 
-    identity = IdentityService.link_or_create(
-      identity_params: @identity_params,
-      current_user: current_user
-    )
+    identity = AppConfig.stub(:sso_update_user_profile_on_login?, true) do
+      IdentityService.link_or_create(
+        identity_params: @identity_params,
+        current_user: current_user
+      )
+    end
 
-    assert_nil identity.user_id  # Pending, not linked
+    assert_nil identity.user_id
     assert_equal 'oauthuser@example.com', identity.email
-    assert_equal 0, current_user.identities.count  # Not linked to current user
+    assert_equal 0, current_user.identities.count
+    assert_equal profile_before, current_user.reload.attributes.slice('name', 'email')
   end
 
   test "returns existing identity if it exists" do

@@ -23,18 +23,30 @@ class ThrottleServiceTest < ActiveSupport::TestCase
     assert_equal false, ThrottleService.can?(key: 'jump', id: 2, max: 5, per: 'hour', inc: 2)
   end
 
-  test "correctly resets a throttle" do
-    assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
-    assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
-    assert_equal false, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
-    ThrottleService.reset!('hour')
-    assert_match(/\A[0-9a-f-]{36}\z/, ThrottleService.namespace('hour'))
-    assert_equal true, ThrottleService.can?(key: 'jump', max: 5, per: 'hour', inc: 2)
-  end
-
   test "supports per-minute throttles" do
     assert ThrottleService.can?(key: 'jump', max: 1, per: 'minute')
     assert_not ThrottleService.can?(key: 'jump', max: 1, per: 'minute')
+  end
+
+  test "normalizes symbol periods for counting and resetting throttles" do
+    assert ThrottleService.can?(key: 'jump', max: 1, per: :hour)
+    assert_not ThrottleService.can?(key: 'jump', max: 1, per: 'hour')
+
+    ['hour', :hour].each do |period|
+      ThrottleService.reset!(period)
+
+      assert ThrottleService.can?(key: 'jump', max: 1, per: period)
+      assert_not ThrottleService.can?(key: 'jump', max: 1, per: 'hour')
+    end
+  end
+
+  test "rejects unsupported periods when counting or resetting throttles" do
+    assert_raises(RuntimeError) { ThrottleService.can?(key: 'jump', per: 'week') }
+    assert_raises(RuntimeError) { ThrottleService.reset!('week') }
+  end
+
+  test "rejects unsupported periods when building cache keys" do
+    assert_raises(RuntimeError) { ThrottleService.cache_key(key: 'jump', id: 1, per: 'week') }
   end
 
   test "normalizes throttle keys for environment overrides" do

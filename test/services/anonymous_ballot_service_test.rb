@@ -428,6 +428,23 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     refute @poll.anonymous_poll_voters.find_by!(voter: @voter).ballot_submitted?
   end
 
+  test "a voter who submitted while this request waited for the poll lock cannot submit again" do
+    ballot = build_ballot(@poll.poll_options.first)
+    assert @voter.can?(:vote_in, @poll)
+
+    @poll.stub(:lock!, -> {
+      @poll.anonymous_poll_voters.find_by!(voter: @voter).update_columns(ballot_submitted: true)
+      @poll
+    }) do
+      assert_no_difference ['AnonymousBallot.count', 'AnonymousBallotChoice.count'] do
+        assert_raises(CanCan::AccessDenied) do
+          AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)
+        end
+      end
+    end
+    assert_not ballot.persisted?
+  end
+
   test "ballots, choices, and voting configuration are immutable" do
     ballot = build_ballot(@poll.poll_options.first)
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: @voter)

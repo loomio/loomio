@@ -9,12 +9,26 @@ class Clients::RequestTest < ActiveSupport::TestCase
     request = Clients::Request.new(:get, "https://example.test/profile", query: { token: "secret" })
     request.perform!(
       is_success: ->(response) { response.success? },
-      success: ->(body) { body },
-      failure: ->(body) { body }
+      success: ->(body) { body.merge("outcome" => "success") },
+      failure: ->(body) { body.merge("outcome" => "failure") }
     )
 
     assert request.success
-    assert_equal({ "name" => "Pat" }, request.json)
+    assert_equal({ "name" => "Pat", "outcome" => "success" }, request.json)
+  end
+
+  test "uses the failure callback for an unsuccessful response" do
+    WebMock.stub_request(:get, "https://example.test/profile").
+      to_return(status: 503, body: { error: "unavailable" }.to_json)
+    request = Clients::Request.new(:get, "https://example.test/profile", {})
+    request.perform!(
+      is_success: ->(response) { response.success? },
+      success: ->(_body) { flunk "an unsuccessful response must use the failure callback" },
+      failure: ->(body) { body.fetch("error") }
+    )
+
+    assert_not request.success
+    assert_equal "unavailable", request.json
   end
 
   test "encodes form request bodies" do
@@ -51,6 +65,7 @@ class Clients::RequestTest < ActiveSupport::TestCase
 
   test "does not forward authorization headers to a redirected host" do
     WebMock.stub_request(:get, "https://example.test/profile").
+      with(headers: { 'Authorization' => 'Bearer secret-access-token' }).
       to_return(status: 302, headers: { 'Location' => 'https://identity.test/profile' })
     WebMock.stub_request(:get, "https://identity.test/profile").
       with { |request| request.headers['Authorization'].nil? }.

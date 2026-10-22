@@ -8,14 +8,15 @@ class BootSiteTest < ActiveSupport::TestCase
   end
 
   HELP_ENV_KEYS = %w[HELP_URL LOOMIO_HELP_TITLE LOOMIO_HELP_SUBTITLE LOOMIO_HELP_URL].freeze
+  CONFIG_ENV_KEYS = (HELP_ENV_KEYS + %w[VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT GOOGLE_APP_KEY NEXTCLOUD_APP_KEY]).freeze
 
   setup do
-    @help_env = ENV.slice(*HELP_ENV_KEYS)
+    @config_env = ENV.slice(*CONFIG_ENV_KEYS)
   end
 
   teardown do
-    HELP_ENV_KEYS.each { |key| ENV.delete(key) }
-    @help_env.each { |key, value| ENV[key] = value }
+    CONFIG_ENV_KEYS.each { |key| ENV.delete(key) }
+    @config_env.each { |key, value| ENV[key] = value }
   end
 
   test "site config includes user manual overrides" do
@@ -42,5 +43,30 @@ class BootSiteTest < ActiveSupport::TestCase
     HELP_ENV_KEYS.each { |key| ENV[key] = ' ' }
 
     assert_equal({ title: nil, subtitle: nil, url: nil }, Boot::Site.new.payload[:userManual])
+  end
+
+  test "publishes the public push key only when every VAPID setting is present" do
+    %w[VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT].each { |key| ENV.delete(key) }
+    ENV['VAPID_PUBLIC_KEY'] = 'public-key-for-boot-test'
+    partial = Boot::Site.new.payload
+    assert_equal false, partial[:webPushEnabled]
+    assert_nil partial[:vapidPublicKey]
+
+    ENV['VAPID_PRIVATE_KEY'] = 'private-key-for-boot-test'
+    ENV['VAPID_SUBJECT'] = 'mailto:push@example.test'
+    configured = Boot::Site.new.payload
+    assert_equal true, configured[:webPushEnabled]
+    assert_equal 'public-key-for-boot-test', configured[:vapidPublicKey]
+    refute_includes configured.to_json, ENV['VAPID_PRIVATE_KEY']
+  end
+
+  test "lists identity providers with configured credentials and their login routes" do
+    ENV['GOOGLE_APP_KEY'] = 'google-key-for-boot-test'
+    ENV.delete('NEXTCLOUD_APP_KEY')
+
+    AppConfig.stub(:providers, { 'identity' => %w[google nextcloud] }) do
+      assert_equal [{ name: 'google', href: Rails.application.routes.url_helpers.google_oauth_path }],
+        Boot::Site.new.payload[:identityProviders]
+    end
   end
 end

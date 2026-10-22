@@ -159,15 +159,34 @@ class StanceTest < ActiveSupport::TestCase
   end
 
   test "reason has a length validation" do
-    poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin, reason: "a" * 505, cast_at: Time.zone.now)
+    poll = PollService.create(params: poll_params(limit_reason_length: true), actor: @admin)
+    stance = cast_stance(poll, [[poll.poll_options.first, 1]])
+    stance.reason_format = "html"
+    stance.reason = "a" * 500
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    stance.reason += "a"
     assert_not stance.valid?
+    assert_includes stance.errors[:reason], I18n.t(:"poll_common.too_long")
+
+    poll.limit_reason_length = false
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    poll.limit_reason_length = true
+    stance.cast_at = nil
+    assert stance.valid?, stance.errors.full_messages.to_sentence
   end
 
   test "reason length validation counts like javascript string length" do
-    poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin, reason: "😄" * 251, cast_at: Time.zone.now)
+    poll = PollService.create(params: poll_params(limit_reason_length: true), actor: @admin)
+    stance = cast_stance(poll, [[poll.poll_options.first, 1]])
+    stance.reason_format = "html"
+    stance.reason = "😄" * 250
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    stance.reason += "😄"
     assert_not stance.valid?
+    assert_includes stance.errors[:reason], I18n.t(:"poll_common.too_long")
   end
 
   test "requires a reason for disagree and block options when configured" do
@@ -227,6 +246,14 @@ class StanceTest < ActiveSupport::TestCase
 
     poll.stance_reason_required = "required"
     assert_not stance_for(poll, icon: "agree").valid?
+    short_reason = stance_for(poll, icon: "agree", reason: "12345")
+    short_reason.reason_format = "html"
+    assert_not short_reason.valid?
+    short_reason.reason = "123456"
+    assert short_reason.valid?, short_reason.errors.full_messages.to_sentence
+    draft = stance_for(poll, icon: "agree")
+    draft.cast_at = nil
+    assert draft.valid?, draft.errors.full_messages.to_sentence
 
     poll.stance_reason_required = "disabled"
     assert stance_for(poll, icon: "disagree").valid?

@@ -8,9 +8,14 @@ class LoginTokenServiceTest < ActiveSupport::TestCase
   end
 
   test "creates a new login token" do
+    token = nil
     assert_difference '@user.login_tokens.count', 1 do
-      LoginTokenService.create(actor: @user, uri: @uri)
+      token = LoginTokenService.create(actor: @user, uri: @uri)
     end
+    assert_predicate token, :persisted?
+    assert_equal @user, token.user
+    assert_equal '/explore', token.redirect
+    assert_equal '/explore', token.reload.redirect
   end
 
   test "sends an email to the user" do
@@ -23,11 +28,6 @@ class LoginTokenServiceTest < ActiveSupport::TestCase
     ActionMailer::Base.deliveries.clear
     LoginTokenService.create(actor: LoggedOutUser.new, uri: @uri)
     assert_equal 0, ActionMailer::Base.deliveries.count
-  end
-
-  test "stores a redirect uri" do
-    LoginTokenService.create(actor: @user, uri: @uri)
-    assert_equal '/explore', LoginToken.last.redirect
   end
 
   test "does not store a redirect uri if the host is different" do

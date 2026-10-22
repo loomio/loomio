@@ -52,7 +52,9 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   test "create discussion in group with no recipient notification" do
     sign_in @user
 
-    post :create, params: { discussion: { title: 'test', group_id: @group.id } }
+    assert_no_enqueued_jobs(only: MoveCommentsWorker) do
+      post :create, params: { discussion: { title: 'test', group_id: @group.id, selected_topic_item_ids: [] } }
+    end
 
     assert_response :success
     json = JSON.parse(response.body)
@@ -86,6 +88,25 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     assert_response :success
   end
+
+  test "creating a discussion from selected comments moves them into the new thread" do
+    source = topics(:discussion_topic).topicable
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: source, body: 'Move this comment'), actor: users(:member_normal))
+    item_id = comment.created_topic_item.id
+    sign_in actor
+
+    perform_enqueued_jobs(only: MoveCommentsWorker) do
+      post :create, params: { discussion: { title: 'Split selected comment', group_id: source.group_id, selected_topic_item_ids: [item_id] } }
+    end
+
+    assert_response :success
+    destination = Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id'))
+    assert_equal destination.topic_id, comment.reload.topic_id
+    assert_equal destination.topic_id, TopicItem.find(item_id).topic_id
+    refute_equal source.topic_id, destination.topic_id
+  end
+
 
   test "user without groups can create direct discussion when create_user is disabled" do
     hex = SecureRandom.hex(4)

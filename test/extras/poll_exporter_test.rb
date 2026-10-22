@@ -56,13 +56,11 @@ class PollExporterTest < ActiveSupport::TestCase
     # Header: num_candidates num_seats
     assert_equal "3 2", lines[0]
 
-    # Ballot lines (order may vary, so collect them)
-    ballot_lines = []
-    i = 1
-    while lines[i] != "0"
-      ballot_lines << lines[i]
-      i += 1
-    end
+    # Find the terminator before reading ballots so malformed output fails
+    # here instead of leaving the test scanning beyond the end of the file.
+    i = lines.index("0")
+    assert_not_nil i, 'BLT output must terminate its ballots with 0'
+    ballot_lines = lines[1...i]
 
     alice_idx = @poll.poll_options.order(:priority).index(@alice) + 1
     bob_idx   = @poll.poll_options.order(:priority).index(@bob) + 1

@@ -296,7 +296,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       name: "Session User",
       legal_accepted_at: Time.current,
       email_verified: true,
-      password: "s3curepassword123"
+      password: "s3curepassword123",
+      bounces_count: 2
     )
     
     assert_difference 'Session.count', 1 do
@@ -310,6 +311,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in_via_login_code']
     assert_equal true, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert_equal [0, 0], user.reload.attributes.values_at('bounces_count', 'complaints_count')
+    assert_equal 1, user.sign_in_count
   end
 
   test "returns the server-recorded authentication destination after sign in" do
@@ -334,6 +337,9 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_equal true, cookie_writes.dig(:session_id, :secure)
     assert_equal true, cookie_writes.dig(:signed_in, :secure)
+    assert_equal true, cookie_writes.dig(:session_id, :httponly)
+    assert_equal :lax, cookie_writes.dig(:session_id, :same_site)
+    assert_equal :lax, cookie_writes.dig(:signed_in, :same_site)
   end
 
   test "does not mark authentication cookies secure when force_ssl is disabled" do
@@ -347,6 +353,32 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_equal false, cookie_writes.dig(:session_id, :secure)
     assert_equal false, cookie_writes.dig(:signed_in, :secure)
+    assert_equal true, cookie_writes.dig(:session_id, :httponly)
+    assert_equal :lax, cookie_writes.dig(:session_id, :same_site)
+    assert_equal :lax, cookie_writes.dig(:signed_in, :same_site)
+  end
+
+  test "shared sign in rejects inactive accounts before and after verification" do
+    inactive_user = users(:inactive_member_loud)
+    assert_no_difference 'Session.count' do
+      assert_raises(CurrentUserHelper::InactiveUserError) { @controller.sign_in(inactive_user) }
+
+      # A provisional identity can resolve to an existing verified account.
+      provisional_user = User.new(name: 'Provisional account', email: inactive_user.email, email_verified: false)
+      assert_raises(CurrentUserHelper::InactiveUserError) { @controller.sign_in(provisional_user) }
+    end
+    assert_nil Current.session
+  end
+
+  test "shared sign in cannot expose a nameless account" do
+    user = users(:member_normal)
+    user.update_column(:name, nil)
+
+    assert_no_difference ['Session.count', -> { user.reload.sign_in_count.to_i }] do
+      error = assert_raises(ActiveRecord::RecordInvalid) { @controller.sign_in(user) }
+      assert error.record.errors.added?(:name, :blank)
+    end
+    assert_nil Current.session
   end
 
   test "legacy authentication state cannot create a session" do
@@ -407,6 +439,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
 
     terminated_session = Current.session
+    secret_token_before = user.reload.secret_token
     subscription = create_push_subscription(
       user: user,
       session: terminated_session,
@@ -420,6 +453,16 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
     assert_response :success
     refute PushSubscription.exists?(subscription.id)
+    refute_equal secret_token_before, user.reload.secret_token
+    assert_equal 'ok', JSON.parse(response.body).fetch('success')
+    assert_nil cookies[:session_id]
+    assert_nil cookies[:signed_in]
+    assert_nil Current.session
+
+    assert_no_difference 'Session.count' do
+      delete :destroy
+    end
+    assert_response :success
 
     assert_raises ActiveRecord::RecordNotFound do
       PushSubscriptionService.create_or_update!(
@@ -447,10 +490,11 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "does not sign in a blank password" do
-    User.create!(email: "sessionsuser2@example.com", email_verified: true)
+    user = User.create!(email: "sessionsuser2@example.com", email_verified: true, password: 'real-password-123')
     
     post :create, params: { user: { email: "sessionsuser2@example.com", password: "" } }
     assert_response :unauthorized
+    assert_equal 0, user.reload.failed_attempts
   end
 
   test "does not distinguish locked accounts from other invalid credentials" do
@@ -501,6 +545,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_response :unauthorized
     assert_equal [I18n.t('auth_form.invalid_token')], JSON.parse(response.body).dig('errors', 'token')
+    assert_nil session[:pending_login_token]
   end
 
   test "does not sign in a nil password" do
@@ -511,7 +556,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in a user via token" do
-    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true)
+    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true, complaints_count: 2)
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
     
@@ -524,6 +569,48 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_equal false, json['signed_in_via_login_code']
     assert_equal false, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert_equal [0, 0], user.reload.attributes.values_at('bounces_count', 'complaints_count')
+  end
+
+  test "a sign-in link is consumed before staging an incomplete account" do
+    user = users(:member_normal)
+    user.update!(name: nil)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_difference 'AccountCompletionProof.count', 1 do
+      assert_no_difference 'Session.count' do
+        post :create
+      end
+    end
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body).fetch('incomplete')
+    assert token.reload.used?
+    assert_nil session[:pending_login_token]
+  end
+
+  test "a link consumed after initial lookup cannot create a session" do
+    user = users(:member_normal)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+    assert token.useable?
+    transaction = LoginToken.method(:transaction)
+    consume_before_lock = ->(*args, **options, &block) do
+      LoginToken.where(id: token.id).update_all(used: true)
+      transaction.call(*args, **options, &block)
+    end
+
+    @controller.stub(:pending_login_token, token) do
+      LoginToken.stub(:transaction, consume_before_lock) do
+        assert_no_difference 'Session.count' do
+          post :create
+        end
+      end
+    end
+
+    assert_response :unauthorized
+    assert_nil session[:pending_login_token]
   end
 
   test "signs in a user via code and marks the token used" do

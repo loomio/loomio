@@ -33,6 +33,22 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_includes notification.notification_deliveries.where(channel: "email").pluck(:recipient_id), @actor.id
   end
 
+  test "visible groups reject membership requests when joining does not require approval" do
+    requestor = users(:alien)
+    assert requestor.can?(:show, @group)
+
+    %w[request invitation].each do |mode|
+      @group.update!(membership_granted_upon: mode)
+      request = MembershipRequest.new(group: @group, introduction: 'Please let me join')
+
+      assert_no_difference ['MembershipRequest.count', 'Notification.count'] do
+        assert_raises(CanCan::AccessDenied) do
+          MembershipRequestService.create(membership_request: request, actor: requestor)
+        end
+      end
+    end
+  end
+
   test "requesting membership without an account name identifies the requestor by email" do
     requestor = User.create!(email: "nameless-#{SecureRandom.hex(4)}@example.com", email_verified: true)
     request = MembershipRequest.new(group: @group, introduction: "Please let me join")

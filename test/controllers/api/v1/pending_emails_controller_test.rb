@@ -98,7 +98,7 @@ class Api::V1::PendingEmailsControllerTest < ActionController::TestCase
       body_text: "hello there"
     )
 
-    assert_difference 'MemberEmailAlias.count', 1 do
+    assert_difference ['MemberEmailAlias.count', 'Discussion.count'], 1 do
       post :allow, params: { id: pending_email.id, user_id: @admin.id }
     end
 
@@ -106,6 +106,7 @@ class Api::V1::PendingEmailsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, json['pending_emails'].length
     assert_equal @admin.id, MemberEmailAlias.last.user_id
+    assert_not PendingEmail.exists?(pending_email.id)
   end
 
   test "allow succeeds when an alias for that sender already exists" do

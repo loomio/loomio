@@ -27,11 +27,14 @@ class Api::V1::Mobile::RelayAuthorizationsControllerTest < ActionDispatch::Integ
     assert_equal 60, issued["expires_in"]
     assert_match(/\Alm_ra_[A-Za-z0-9_-]{43}\z/, issued["authorization"])
     assert_equal "no-store", response.headers["Cache-Control"]
+    assert_equal "no-cache", response.headers["Pragma"]
 
     post "/api/v1/mobile/relay-authorizations/verify",
          params: { authorization: issued["authorization"] }, as: :json
 
     assert_response :success
+    assert_equal "no-store", response.headers["Cache-Control"]
+    assert_equal "no-cache", response.headers["Pragma"]
     verified = JSON.parse(response.body)
     registration = @pair[:device].reload.mobile_push_registration
     assert_equal registration.registration_id, verified["registration_id"]
@@ -74,6 +77,34 @@ class Api::V1::Mobile::RelayAuthorizationsControllerTest < ActionDispatch::Integ
 
     assert_response :forbidden
     assert_equal "insufficient_scope", JSON.parse(response.body)["error"]
+  end
+
+  test "verification rejects other media types without consuming a valid authorization" do
+    authorization = Mobile::RelayAuthorizationService.issue!(device: @pair[:device]).fetch(:authorization)
+
+    post "/api/v1/mobile/relay-authorizations/verify", params: { authorization: authorization }
+
+    assert_response :bad_request
+    assert_equal "invalid_request", response.parsed_body.fetch("error")
+    post "/api/v1/mobile/relay-authorizations/verify",
+         params: { authorization: authorization }.to_json, headers: { "CONTENT_TYPE" => "text/plain" }
+    assert_response :bad_request
+    assert_equal "invalid_request", response.parsed_body.fetch("error")
+    post "/api/v1/mobile/relay-authorizations/verify", params: { authorization: authorization }, as: :json
+    assert_response :success
+  end
+
+  test "verification accepts exactly the body size limit and rejects larger bodies without consumption" do
+    authorization = Mobile::RelayAuthorizationService.issue!(device: @pair[:device]).fetch(:authorization)
+    body = { authorization: authorization }.to_json
+    body += " " * (1_024 - body.bytesize)
+
+    post "/api/v1/mobile/relay-authorizations/verify", params: body + " ", headers: { "CONTENT_TYPE" => "application/json" }
+
+    assert_response :bad_request
+    assert_equal "invalid_request", response.parsed_body.fetch("error")
+    post "/api/v1/mobile/relay-authorizations/verify", params: body, headers: { "CONTENT_TYPE" => "application/json" }
+    assert_response :success
   end
 
   private

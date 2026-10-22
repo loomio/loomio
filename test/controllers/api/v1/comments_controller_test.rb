@@ -78,14 +78,18 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal "User comment", @user_comment.body
   end
 
-  test "destroy removes a discarded comment and serializes its reparented siblings" do
+  test "destroy removes a discarded comment and returns its remaining sibling items" do
     sign_in @user
     CommentService.discard(comment: @user_comment, actor: @user)
+    deleted_item_id = @user_comment.created_topic_item.id
 
     delete :destroy, params: { id: @user_comment.id }
 
     assert_response :success
     refute Comment.exists?(@user_comment.id)
+    item_ids = response.parsed_body.fetch('topic_items').pluck('id')
+    assert_includes item_ids, @admin_comment.created_topic_item.id
+    refute_includes item_ids, deleted_item_id
   end
 
   test "create success" do
@@ -248,6 +252,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @admin_comment.reload
     assert @admin_comment.discarded?
     assert_equal @admin.id, @admin_comment.discarded_by
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @admin_comment.id }
+    assert_not_nil serialized.fetch('discarded_at')
+    assert_equal @admin.id, serialized.fetch('discarded_by')
   end
 
   test "discard not allowed" do
@@ -277,6 +284,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_not @user_comment.reload.discarded?
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @user_comment.id }
+    assert_nil serialized.fetch('discarded_at')
+    assert_equal @user_comment.body, serialized.fetch('body')
   end
 
   test "create denied when allow_comments is false" do

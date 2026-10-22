@@ -203,6 +203,20 @@ class DigestMailerTest < ActionMailer::TestCase
     end
   end
 
+  test "the mailer itself suppresses an opted-out recipient who has unread content" do
+    @group.add_member!(@user)
+    discussion = DiscussionService.create(params: { title: 'Unread but opted out', group_id: @group.id }, actor: @inviter)
+    @user.update!(email_catch_up_day: nil)
+    query = DigestQuery.new(user: @user, time_start: 1.day.ago)
+    assert_includes query.topics, discussion.topic
+    assert_not query.empty?
+    ActionMailer::Base.deliveries.clear
+
+    assert_no_difference 'ActionMailer::Base.deliveries.count' do
+      DigestMailer.digest(@user.id).deliver_now
+    end
+  end
+
   test "emails daily when digest schedule is 7" do
     @user.update!(email_catch_up_day: 7, time_zone: 'Pacific/Tarawa')
     @group.add_member!(@user)

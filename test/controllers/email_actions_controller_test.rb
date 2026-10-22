@@ -238,7 +238,7 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   test "unsubscribes discussion" do
-    @membership.set_volume!(email: :normal, push: :quiet)
+    @membership.set_volume!(email: :loud, push: :quiet)
     @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     put :set_discussion_volume, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
@@ -247,8 +247,24 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @topic_reader.reload
 
-    assert_equal 'normal', @membership.volume_email
+    assert_equal 'loud', @membership.volume_email
     assert_equal 'normal', @topic_reader.volume_email
+  end
+
+  test "a direct topic guest can change only that topic's email settings" do
+    user = users(:guest_normal)
+    topic = topics(:direct_topic)
+    reader = TopicReader.for(user: user, topic: topic)
+    other_reader = TopicReader.for(user: user, topic: topics(:discussion_topic))
+    other_volume = [other_reader.volume_email, other_reader.volume_push]
+
+    put :set_discussion_volume, params: {
+      topic_id: topic.id, unsubscribe_token: user.unsubscribe_token, volume_email: :quiet
+    }
+
+    assert_response :redirect
+    assert_equal 'quiet', reader.reload.volume_email
+    assert_equal other_volume, [other_reader.reload.volume_email, other_reader.volume_push]
   end
 
   test "applies discussion settings to every topic in its group" do

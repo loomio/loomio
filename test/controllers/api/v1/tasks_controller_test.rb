@@ -1,4 +1,5 @@
 require 'test_helper'
+require_relative '../../../support/access_volume_matrix'
 
 class Api::V1::TasksControllerTest < ActionController::TestCase
   setup do
@@ -151,5 +152,101 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     doc = Nokogiri::HTML::DocumentFragment.parse(@discussion.reload.description)
     li = doc.css("li[data-uid='#{tasks[0]['uid']}']").first
     assert_equal 'false', li['data-checked']
+  end
+
+  test "readable but unassigned members cannot change task status through any mutation route" do
+    topic = topics(:discussion_topic)
+    record = topic.topicable
+    owner = users(:user)
+    viewer = users(:member_normal)
+    topic.group.update!(members_can_edit_discussions: false)
+    record.update!(description_format: 'html', description: task_list_html(93001, owner))
+    task = record.tasks.find_by!(uid: 93001)
+    assert viewer.can?(:show, record)
+    assert_not viewer.can?(:update, task)
+    sign_in viewer
+
+    {
+      update_done: { discussion_id: record.id, uid: task.uid, done: 'true' },
+      mark_as_done: { id: task.id },
+      mark_as_not_done: { id: task.id }
+    }.each do |action, params|
+      TaskService.update_done(task, owner, action == :mark_as_not_done)
+      before = task.reload.attributes
+      body = record.reload.body
+
+      post action, params: params
+
+      assert_response :forbidden, action.to_s
+      assert_equal before, task.reload.attributes, action.to_s
+      assert_equal body, record.reload.body, action.to_s
+    end
+  end
+
+  test "task lists distinguish authors doers assignees and unrelated topic readers" do
+    topic = topics(:discussion_topic)
+    record = topic.topicable
+    owner = users(:user)
+    doer = users(:member_normal)
+    assignee = users(:guest_normal)
+    topic.group.update!(members_can_edit_discussions: true)
+    record.update!(description_format: 'html', description: task_list_html(93003, owner, assignee: assignee))
+    task = record.tasks.find_by!(uid: 93003)
+    assert doer.can?(:update, task)
+    TaskService.update_done(task, doer, true)
+    assert_equal owner.id, task.reload.author_id
+    assert_equal doer.id, task.doer_id
+    assert_equal [assignee.id], task.users.pluck(:id)
+    related_ids = [owner.id, doer.id, assignee.id]
+
+    (AccessVolumeMatrix::ROLES.map { |role| users(role) } + [users(:server_admin)]).each do |actor|
+      expected = related_ids.include?(actor.id)
+      assert_equal expected, actor.can?(:show, task), actor.email
+      sign_in actor
+
+      get :index
+
+      assert_response :success
+      assert_equal expected, response.parsed_body.fetch('tasks').any? { |item| item['id'] == task.id }, actor.email
+    end
+
+    topic.group.update!(members_can_edit_discussions: false)
+    assert assignee.can?(:update, Task.find(task.id))
+  end
+
+  test "update_done resolves comment poll and outcome tasks independently when their UIDs match" do
+    actor = users(:member_normal)
+    topic = topics(:discussion_topic)
+    topic.update!(allow_concurrent_polls: true)
+    html = task_list_html(93002, actor)
+    comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: html, body_format: 'html'), actor: actor)
+    poll = PollService.create(params: {
+      topic_id: topic.id, title: 'Task record routing', poll_type: 'proposal',
+      details: html, details_format: 'html', poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now
+    }, actor: actor)
+    PollService.close(poll: poll, actor: actor)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: html, statement_format: 'html'), actor: actor)
+    sign_in actor
+
+    [comment, poll, outcome].each do |record|
+      task = record.tasks.find_by!(uid: 93002)
+      params = { "#{record.class.name.underscore}_id" => record.id, uid: task.uid, done: 'true' }
+
+      post :update_done, params: params
+
+      assert_response :success
+      assert_equal [task.id], response.parsed_body.fetch('tasks').pluck('id')
+      assert task.reload.done?
+      assert_equal actor.id, task.doer_id
+      checkbox = Nokogiri::HTML::DocumentFragment.parse(record.reload.body).at_css("li[data-uid='93002']")
+      assert_equal 'true', checkbox['data-checked']
+    end
+  end
+
+  private
+
+  def task_list_html(uid, author, assignee: nil)
+    content = assignee ? "<span class='mention' data-mention-id='#{assignee.username}'>@#{assignee.name}</span> Follow up" : 'Follow up'
+    "<ul data-type='taskList'><li data-uid='#{uid}' data-checked='false' data-author-id='#{author.id}' data-type='taskItem'><p>#{content}</p></li></ul>"
   end
 end

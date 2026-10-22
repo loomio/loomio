@@ -67,6 +67,29 @@ class CommentTest < ActiveSupport::TestCase
     assert_not_includes comment.mentioned_users, @alien
   end
 
+  test "only html comments with headings are pinned when posted" do
+    [['html', '<h2>Section</h2>', true], ['html', '<p>Paragraph</p>', false],
+     ['md', '<h2>Literal markup</h2>', false]].each do |format, body, pinned|
+      comment = CommentService.create(comment: Comment.new(parent: @discussion, body: body, body_format: format), actor: @user)
+
+      assert_predicate comment, :persisted?
+      assert_equal @user, comment.reload.user
+      assert_equal pinned, comment.created_topic_item.pinned
+    end
+  end
+
+  test "a comment at the length limit can be posted and discarded after the limit is lowered" do
+    @discussion.topic.update!(comment_length_max: 5)
+    comment = CommentService.create(comment: Comment.new(parent: @discussion, body: '<p>12345</p>', body_format: 'html'), actor: @user)
+    assert_predicate comment, :persisted?
+    @discussion.topic.update!(comment_length_max: 4)
+
+    CommentService.discard(comment: comment, actor: @user)
+
+    assert_predicate comment.reload, :discarded?
+    assert_equal @user.id, comment.discarded_by
+  end
+
   private
 
   def cast_vote_in_new_poll(hide_results:)

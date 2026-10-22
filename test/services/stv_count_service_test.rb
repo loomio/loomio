@@ -555,6 +555,19 @@ class StvCountServiceTest < ActiveSupport::TestCase
 
   # ── Integration with StvCountService.count ────────────────────────
 
+  test "an election without submitted ballots retains its method seats and quota in the result" do
+    %w[scottish meek].each do |method|
+      poll = PollService.create(params: {
+        title: 'Awaiting ballots', poll_type: 'stv', group_id: groups(:group).id,
+        stv_seats: 2, stv_method: method, stv_quota: 'hare',
+        poll_option_names: %w[Alice Bob Carol], notify_on_open: false
+      }, actor: users(:admin))
+
+      assert_equal({quota: 0, seats: 2, method: method, quota_type: 'hare',
+                    elected: [], tied: [], rounds: []}, StvCountService.count(poll))
+    end
+  end
+
   test "StvCountService.count dispatches to scottish counter" do
     group = groups(:group)
     admin = users(:admin)
@@ -663,6 +676,7 @@ class StvCountServiceTest < ActiveSupport::TestCase
     result = StvCountService.count(poll)
 
     assert_equal 'meek', result[:method]
+    assert_equal 'hare', result[:quota_type]
     assert_equal 2, result[:elected].size
     elected_names = result[:elected].map { |e| e[:name] }
     assert_includes elected_names, 'Alice'

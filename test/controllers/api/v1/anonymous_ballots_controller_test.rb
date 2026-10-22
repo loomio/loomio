@@ -100,6 +100,22 @@ class Api::V1::AnonymousBallotsControllerTest < ActionController::TestCase
     assert_empty @poll.anonymous_ballots
   end
 
+  test "create rejects scalar ballots and mixed choice types without consuming the voter" do
+    sign_in @voter
+    invalid_payloads = [
+      'not an object',
+      { poll_id: @poll.id, anonymous_ballot_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id, score: 1 }, 'not a choice'] }
+    ]
+    invalid_payloads.each do |payload|
+      assert_no_difference ['AnonymousBallot.count', 'AnonymousBallotChoice.count'] do
+        post :create, params: { anonymous_ballot: payload }, as: :json
+      end
+
+      assert_response :bad_request
+      assert_not @poll.anonymous_poll_voters.find_by!(voter: @voter).reload.ballot_submitted?
+    end
+  end
+
   test "create rejects invalid scores without consuming the ballot" do
     sign_in @voter
     post :create, params: {

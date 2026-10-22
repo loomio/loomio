@@ -14,6 +14,20 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_equal @discussion, assigns(:discussion)
   end
 
+  test "private discussion pages and feeds reject revoked and unrelated accounts" do
+    discussion = topics(:discussion_topic).topicable
+    %i[former_member_loud former_guest_loud alien server_admin].each do |role|
+      sign_in users(role)
+      [:html, :xml].each do |format|
+        get :show, params: { key: discussion.key }, format: format
+
+        assert_response :forbidden
+        refute_includes response.body, discussion.description
+      end
+      sign_out
+    end
+  end
+
   test "public discussion has a clean canonical URL" do
     discussion = discussions(:public_discussion)
     get :show, params: { key: discussion.key, offset: 0, limit: 1, export: 1, sign_in: 1 }

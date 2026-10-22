@@ -52,6 +52,16 @@ class MembershipTest < ActiveSupport::TestCase
     assert_predicate TopicReader.new, :push_normal?
   end
 
+  test "new memberships inherit account delivery preferences and preserve later choices" do
+    @alien.update!(volume_email_default: :quiet, volume_push_default: :loud)
+    membership = Membership.create!(group: @group, user: @alien)
+    assert_equal ["quiet", "loud"], membership.attributes.values_at('volume_email', 'volume_push')
+
+    @alien.update!(volume_email_default: :normal, volume_push_default: :quiet)
+    membership.update!(title: 'Treasurer')
+    assert_equal ["quiet", "loud"], membership.reload.attributes.values_at('volume_email', 'volume_push')
+  end
+
   test "active and admin scopes match the fixture membership matrix exactly" do
     active = users(
       :admin,

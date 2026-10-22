@@ -28,14 +28,13 @@ class Api::B2::SearchControllerTest < ActionController::TestCase
     refute results.any? { |result| result["searchable_id"] == @private_discussion.id }
   end
 
-  test "searches private content available through membership" do
+  test "group filters include private content available through membership and exclude other groups" do
     groups(:group).add_member!(@user)
 
     get :index, params: { query: "b2searchterm", group_id: groups(:group).id }
 
     assert_response :success
-    results = response.parsed_body.fetch("search_results")
-    assert results.any? { |result| result["searchable_id"] == @private_discussion.id }
+    assert_equal [@private_discussion.id], discussion_result_ids
   end
 
   test "instance admin status does not expose private search results" do
@@ -56,10 +55,31 @@ class Api::B2::SearchControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "organization filters include subgroups and exclude other visible groups" do
+    groups(:group).add_member!(@user)
+    groups(:subgroup).add_member!(@user)
+    subgroup_discussion = discussions(:discussion_in_subgroup)
+    subgroup_discussion.update!(title: "b2searchterm subgroup")
+    subgroup_discussion.update_pg_search_document
+
+    get :index, params: { query: "b2searchterm", org_id: groups(:group).id }
+
+    assert_response :success
+    assert_equal [@private_discussion.id, subgroup_discussion.id].sort, discussion_result_ids.sort
+  end
+
   test "omits an undefined total rather than returning null" do
     get :index, params: { query: "b2searchterm" }
 
     assert_response :success
     refute response.parsed_body.fetch("meta").key?("total")
+  end
+
+  private
+
+  def discussion_result_ids
+    response.parsed_body.fetch("search_results").filter_map do |result|
+      result["searchable_id"] if result["searchable_type"] == "Discussion"
+    end
   end
 end
