@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: 89741a13cf2c61d6
   user-api: a1adf5122430de41
-  server-api: ef4455c17a4f3be1
+  server-api: 7d13b2dd7e7bbace
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ title_generated: c8e5998f6a3955c2
 
 ## Серверны API
 
-[Серверны API](/en/user_manual/integrations/api/server-api) дазваляе тым, хто абслугоўвае ўласныя ўстаноўкі Loomio, кіраваць уліковымі запісамі карыстальнікаў. Для аўтэнтыфікацыі выкарыстоўваецца агульны для ўсяго сервера сакрэт.
+[Серверны API](/en/user_manual/integrations/api/server-api) дазваляе тым, хто абслугоўвае ўласныя ўстаноўкі Loomio, ствараць уліковыя запісы карыстальнікаў і кіраваць імі, знаходзіць групы, а таксама кіраваць сяброўствам у групах і ролямі. Ён выкарыстоўвае агульны для ўсяго сервера сакрэт і не патрабуе ўліковага запісу бота або сяброўства ў кожнай групе.

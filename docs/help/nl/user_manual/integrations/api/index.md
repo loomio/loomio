@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: f0b238129d6e19b5
   user-api: 800eb661c29fe6d5
-  server-api: de5261eac90e6882
+  server-api: a94145947f1d7758
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ Voor integraties op basis van pushberichten sturen [groepswebhooks](/en/user_man
 
 ## Server API
 
-Met de [Server API](/en/user_manual/integrations/api/server-api) kunnen beheerders van zelfgehoste Loomio-installaties gebruikersaccounts beheren. De authenticatie verloopt via een geheime sleutel die voor de hele server geldt.
+Met de [Server API](/en/user_manual/integrations/api/server-api) kunnen beheerders van zelfgehoste Loomio-installaties gebruikersaccounts aanmaken en beheren, groepen vinden en groepslidmaatschappen en rollen beheren. De authenticatie verloopt via een geheime sleutel die voor de hele server geldt. Een botaccount of lidmaatschap van elke groep is niet vereist.

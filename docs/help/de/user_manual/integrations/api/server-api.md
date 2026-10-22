@@ -1,14 +1,14 @@
 ---
 title: Server-API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/integrations/api/server-api.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-23'
 sections:
-  introduction: a357cdc2bfc0223e
+  introduction: 8b28f9c34e3f7575
   authentication: cbabcc874f053455
-  user-object: c3a00ec4e3d66b09
+  user-object: 7e9e8ff3e48a4055
   list-users: c7d62eee05e7a6a4
   example: 2f817ab1533206e6
   show-user: 36fa596a6a5c2fd8
@@ -25,10 +25,11 @@ sections:
   delete-user: 2d5a1dbd23324e6f
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
+  provisioning: 590e1f295602247d
 generated:
-  introduction: 171b9bca49cbdf88
+  introduction: f7a4f570e789c363
   authentication: cc8bfd594a0cca41
-  user-object: 3adb7cc3e9eb665d
+  user-object: b2b4d79ee8f505b3
   list-users: e4c36202ce0f8e31
   example: a6bb2cb102a34c58
   show-user: 61043d7736eb713b
@@ -45,6 +46,7 @@ generated:
   delete-user: 715316159c2a7f8b
   examples-6: d11b984e005416bf
   sso-profile-sync-settings: f77b2da54455de67
+  provisioning: 9184f89f1fc28eff
 title_source: 370e81eb20eece44
 title_generated: 110d7181b51daf50
 ---
@@ -53,9 +55,11 @@ title_generated: 110d7181b51daf50
 
 # Dokumentation der Loomio Server-API
 
-<!-- seo-description: Nutze die Loomio Server-API, um Benutzerkonten auf einer selbst gehosteten Loomio-Installation zu verwalten. -->
+<!-- seo-description: Nutze die Loomio Server-API, um Benutzerkonten auf einer selbst gehosteten Loomio-Installation bereitzustellen, Gruppen zu finden und Mitgliedschaften zu verwalten. -->
 
 `/api/b3` ist für Vorgänge auf Serverebene vorgesehen. Nutze `/api/b2` für Aktionen, die du mit einem Loomio-Benutzerkonto ausführst.
+
+Nutze einen Serverschlüssel, um Konten zu erstellen und zu verwalten, Gruppen in der gesamten Installation zu finden und deren Mitgliedschaften und Rollen zu verwalten. Dafür sind weder ein Bot-Konto noch ein Benutzer-API-Schlüssel oder eine Mitgliedschaft in den Gruppen erforderlich. Für Benutzer-API-Schlüssel gelten weiterhin die Gruppenberechtigungen der jeweiligen Person.
 
 <!-- translation-section: authentication -->
 
@@ -71,6 +75,182 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 Sende Zugangsdaten ausschließlich im `Authorization`-Header. API-Schlüssel in Abfragezeichenfolgen oder im Anfragetext werden abgelehnt.
 
+<!-- translation-section: provisioning -->
+
+## Konten und Mitgliedschaften bereitstellen
+
+| Methode | Endpunkt | Zweck |
+| --- | --- | --- |
+| `POST` | `/api/b3/users` | Ein Konto erstellen |
+| `GET` | `/api/b3/groups` | Gruppen in der gesamten Installation finden |
+| `GET` | `/api/b3/memberships` | Mitgliedschaften in einer Gruppe auflisten |
+| `POST` | `/api/b3/memberships` | Mitglieder einladen oder eine vollständige Mitgliederliste synchronisieren |
+| `PATCH` | `/api/b3/memberships/:id` | Admin- und Delegiertenrollen in einer Gruppe ändern |
+| `DELETE` | `/api/b3/memberships/:id` | Eine Mitgliedschaft widerrufen |
+
+Die bestehenden Endpunkte zum Aktualisieren, Deaktivieren, Reaktivieren, Anonymisieren und Löschen von Konten werden weiter unten beschrieben.
+
+### Ein Konto erstellen
+
+`POST /api/b3/users`
+
+Sende ein `user`-Objekt mit dem Pflichtfeld `email`. Leerzeichen am Anfang und Ende von E-Mail-Adressen werden entfernt, und die Adressen werden in Kleinbuchstaben umgewandelt. Optionale Felder sind `name`, `username` und `is_admin`. Hier bezeichnet `is_admin` einen Admin der Instanz; Admin-Rollen für Gruppen werden über Mitgliedschaften verwaltet. Lasse `username` weg, um automatisch einen Benutzernamen zu erzeugen. Unbekannte Felder werden abgelehnt.
+
+```bash
+curl https://loomio.example.org/api/b3/users \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "user": {
+      "email": "ada@example.org",
+      "name": "Ada Lovelace",
+      "username": "ada",
+      "is_admin": false
+    }
+  }'
+```
+
+Die Antwort ist HTTP `201` mit einem `user`-Objekt. Ungültige Felder oder eine bereits verwendete E-Mail-Adresse oder ein bereits verwendeter Benutzername führen zu HTTP `422`. Beim Erstellen eines Kontos wird keine Einladung gesendet, die Person wird nicht angemeldet und ihre E-Mail-Adresse wird nicht als bestätigt markiert. Lade sie über den Mitgliedschaftsendpunkt in eine Gruppe ein, um eine Einladung über den üblichen Benachrichtigungsablauf zu senden.
+
+### Gruppen finden
+
+`GET /api/b3/groups`
+
+Liste alle Gruppen auf, die nicht gelöscht wurden, einschließlich privater Gruppen und Gruppen mit abgelaufenem Abonnement. Die Ergebnisse sind nach aufsteigender ID sortiert. Nutze `limit` (Standard- und Höchstwert `50`) und `offset` (Standardwert `0`), um die Ergebnisse seitenweise abzurufen.
+
+```bash
+curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "groups": [
+    {
+      "id": 123,
+      "key": "examplegroup",
+      "name": "Planning group",
+      "handle": "planning",
+      "parent_id": null,
+      "group_privacy": "secret"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+### Mitgliedschaften auflisten
+
+`GET /api/b3/memberships?group_id=123`
+
+`group_id` ist erforderlich. Die Ergebnisse enthalten angenommene Mitgliedschaften und ausstehende Einladungen, sortiert nach aufsteigender Mitgliedschafts-ID. Widerrufene Mitgliedschaften sind ausgeschlossen. Nutze `limit` (Standard- und Höchstwert `50`) und `offset` (Standardwert `0`), um die Ergebnisse seitenweise abzurufen.
+
+```bash
+curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "memberships": [
+    {
+      "id": 456,
+      "group_id": 123,
+      "user_id": 789,
+      "user_email": "ada@example.org",
+      "user_name": "Ada Lovelace",
+      "admin": false,
+      "delegate": false,
+      "accepted_at": null,
+      "pending": true
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+`admin` und `delegate` sind Gruppenrollen. `accepted_at` ist der Zeitstempel der Annahme oder `null`, solange eine Einladung aussteht. Dieser Endpunkt gibt keine Einladungstoken, Anmeldedaten oder Stimmen preis.
+
+### Mitglieder einladen oder synchronisieren
+
+`POST /api/b3/memberships`
+
+Sende die erforderliche `group_id` und ein erforderliches `emails`-Array. Standardmäßig werden dadurch die aufgeführten Personen hinzugefügt, die noch keine aktive Mitgliedschaft haben. Alle anderen Mitgliedschaften bleiben bestehen. Leerzeichen am Anfang und Ende von E-Mail-Adressen werden entfernt, die Adressen werden in Kleinbuchstaben umgewandelt und Duplikate werden entfernt. Für neue Adressen werden Konten und ausstehende Einladungen erstellt. Bereits vorhandene, bestätigte Mitglieder einer anderen aktiven Gruppe derselben Organisation werden automatisch aufgenommen, entsprechend dem Einladungsablauf der Benutzer-API.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org",
+      "alex@example.org"
+    ]
+  }'
+```
+
+Um eine vollständige Mitgliederliste zu synchronisieren, setze `remove_absent` ausdrücklich auf `true`. Alle Personen, die in der Liste fehlen, werden aus dieser Gruppe und ihren Untergruppen entfernt. Ein leeres Array mit `remove_absent: true` entfernt alle Mitglieder, einschließlich der Gruppenadmins. Lasse `remove_absent` weg oder setze es auf `false`, wenn du nur Personen hinzufügen möchtest. Die älteren Werte `1` und `0` werden ebenfalls akzeptiert.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org"
+    ],
+    "remove_absent": true
+  }'
+```
+
+```json
+{
+  "added_emails": [],
+  "removed_emails": [
+    "alex@example.org"
+  ]
+}
+```
+
+Eine Wiederholung derselben Anfrage erstellt keine doppelten Mitgliedschaften und versendet keine erneuten Einladungen. Wenn du ein Mitglied mit widerrufener Mitgliedschaft erneut einlädst, erhält es wieder Zugriff auf die Gruppe, jedoch keine frühere Admin-Rolle. Neue Einladungen und Rollenänderungen nutzen den üblichen Benachrichtigungsablauf, wobei keine Person als ausführend erfasst wird.
+
+Fehlende oder fehlerhaft formatierte E-Mail-Listen und ungültige boolesche Werte führen zu HTTP `400`. Ein aufgeführtes deaktiviertes Konto führt zu HTTP `422`; reaktiviere es ausdrücklich, bevor du es hinzufügst. Bei ungültigen Kontodaten, überschrittenen Abonnementgrenzen oder anderen Fehlern wird die gesamte Synchronisierung rückgängig gemacht, einschließlich neuer Konten und entfernter Mitgliedschaften. Das Hinzufügen erfordert eine aktive Gruppe und unterliegt weiterhin den Mitgliedergrenzen des Abonnements.
+
+### Mitgliedschaftsrollen aktualisieren
+
+`PATCH /api/b3/memberships/:id`
+
+Sende ein `membership`-Objekt mit einem oder beiden booleschen Feldern `admin` und `delegate`. Nicht angegebene Rollen bleiben unverändert. Unbekannte Felder werden abgelehnt; über den Endpunkt kannst du keine Mitgliedschaft übertragen, keine Einladung annehmen und keine Stimmgewichte ändern.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "membership": {
+      "admin": true,
+      "delegate": false
+    }
+  }'
+```
+
+Gibt ein `membership`-Objekt mit denselben Feldern wie eine aufgelistete Mitgliedschaft zurück. Das Zuweisen einer Rolle erzeugt die übliche Rollenbenachrichtigung; eine erneute Anfrage mit unveränderter Rolle löst keine weitere Benachrichtigung aus. Rollenänderungen erfordern eine aktive Gruppe. Widerrufene Mitgliedschaften führen zu HTTP `404`.
+
+### Eine Mitgliedschaft entfernen
+
+`DELETE /api/b3/memberships/:id`
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+Gibt `{"success": true}` zurück. Das Entfernen widerruft den Zugriff auf die Gruppe und ihre Untergruppen, einschließlich des Zugriffs auf Themen und der Stimmrechte in aktiven Abstimmungen. Das Konto wird dabei nicht gelöscht, andere Gruppen werden nicht verändert und der direkte Zugriff auf Threads bleibt bestehen. Eine wiederholte Entfernung ist erfolgreich. Du kannst Mitgliedschaften aus Gruppen mit abgelaufenem Abonnement entfernen; gelöschte Gruppen führen zu HTTP `404`.
+
 <!-- translation-section: user-object -->
 
 ## Benutzerobjekt
@@ -83,6 +263,7 @@ Antworten mit Benutzerdaten haben diese Struktur:
   "name": "Ada Lovelace",
   "username": "ada",
   "email": "ada@example.org",
+  "is_admin": false,
   "active": true,
   "deactivated_at": null,
   "identities": [

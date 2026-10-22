@@ -48,7 +48,6 @@ module GroupService
       actor: actor
     )
 
-    users = nil
     Group.transaction do
       users = UserInviter.where_or_create!(
         actor: actor,
@@ -56,7 +55,15 @@ module GroupService
         emails: params[:recipient_emails],
         user_ids: recipient_user_ids
       )
+      invite_users(group: group, users: users, group_ids: group_ids, actor: actor, params: params)
+    end
+  end
 
+  # The caller authorizes the target groups and checks subscription limits.
+  # Server provisioning has no user actor; it shares the invitation, access
+  # restoration, count, and notification lifecycle with ordinary invitations.
+  def self.invite_users(group:, users:, group_ids:, actor:, params: {})
+    Group.transaction do
       # Match the user-before-group lock order used by individual membership
       # changes and account merges before applying callback-free imports.
       User.where(id: users.pluck(:id)).order(:id).with_write_lock(:id) do
@@ -65,7 +72,7 @@ module GroupService
           revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
           returning_user_ids = revoked_memberships.pluck(:user_id)
           revoked_memberships.update_all(
-            inviter_id: actor.id,
+            inviter_id: actor&.id,
             accepted_at: nil,
             revoked_at: nil,
             revoker_id: nil,

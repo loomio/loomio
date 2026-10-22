@@ -1,14 +1,14 @@
 ---
 title: Server-API
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/integrations/api/server-api.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-23'
 sections:
-  introduction: a357cdc2bfc0223e
+  introduction: 8b28f9c34e3f7575
   authentication: cbabcc874f053455
-  user-object: c3a00ec4e3d66b09
+  user-object: 7e9e8ff3e48a4055
   list-users: c7d62eee05e7a6a4
   example: 2f817ab1533206e6
   show-user: 36fa596a6a5c2fd8
@@ -25,10 +25,11 @@ sections:
   delete-user: 2d5a1dbd23324e6f
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
+  provisioning: 590e1f295602247d
 generated:
-  introduction: 616cc29d6b8577fc
+  introduction: 2cf5e6928965fb1f
   authentication: c1bbbba346b6c4a0
-  user-object: b52df738c172f57b
+  user-object: 66215e30fa8625e7
   list-users: 96a22d3fe82474a5
   example: fd1b4660e2c0a7e7
   show-user: 7fe79e6c272dd86e
@@ -45,6 +46,7 @@ generated:
   delete-user: de66e470913a72f5
   examples-6: e0695c18e79c6ade
   sso-profile-sync-settings: 5d80d185e6028502
+  provisioning: 276c2bce27c85098
 title_source: 370e81eb20eece44
 title_generated: 110d7181b51daf50
 ---
@@ -53,9 +55,11 @@ title_generated: 110d7181b51daf50
 
 # Documentatie van de Loomio Server-API
 
-<!-- seo-description: Gebruik de Loomio Server-API om gebruikersaccounts te beheren op een zelfgehoste Loomio-installatie. -->
+<!-- seo-description: Gebruik de Loomio Server-API om gebruikersaccounts aan te maken, groepen te vinden en lidmaatschappen te beheren op een zelfgehoste Loomio-installatie. -->
 
 `/api/b3` is voor bewerkingen op serverniveau. Gebruik `/api/b2` voor gebruikersgerichte acties die je uitvoert met een Loomio-gebruikersaccount.
+
+Gebruik één serversleutel om accounts aan te maken en te beheren, groepen in de hele installatie te vinden en hun lidmaatschappen en rollen te beheren. Je hebt geen botaccount, API-sleutel voor een gebruiker of lidmaatschap van de groepen nodig. API-sleutels voor gebruikers blijven de groepsrechten van de gebruiker volgen.
 
 <!-- translation-section: authentication -->
 
@@ -71,6 +75,182 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 Stuur inloggegevens alleen in de `Authorization`-header. API-sleutels in querystrings of de inhoud van verzoeken worden geweigerd.
 
+<!-- translation-section: provisioning -->
+
+## Accounts en lidmaatschappen aanmaken en beheren
+
+| Methode | Endpoint | Doel |
+| --- | --- | --- |
+| `POST` | `/api/b3/users` | Een account aanmaken |
+| `GET` | `/api/b3/groups` | Groepen in de hele installatie vinden |
+| `GET` | `/api/b3/memberships` | Lidmaatschappen in een groep opvragen |
+| `POST` | `/api/b3/memberships` | Leden uitnodigen of een volledige ledenlijst synchroniseren |
+| `PATCH` | `/api/b3/memberships/:id` | De groepsrollen admin en afgevaardigde wijzigen |
+| `DELETE` | `/api/b3/memberships/:id` | Eén lidmaatschap intrekken |
+
+De bestaande endpoints voor het bijwerken, deactiveren, reactiveren, anonimiseren en verwijderen van accounts worden hieronder beschreven.
+
+### Een account aanmaken
+
+`POST /api/b3/users`
+
+Verstuur een `user`-object met een verplicht veld `email`. Spaties aan het begin en einde van e-mailadressen worden verwijderd en de adressen worden omgezet naar kleine letters. Optionele velden zijn `name`, `username` en `is_admin`. Hier betekent `is_admin` een admin van de installatie; adminrollen voor groepen worden via lidmaatschappen beheerd. Laat `username` weg om automatisch een gebruikersnaam te genereren. Onbekende velden worden geweigerd.
+
+```bash
+curl https://loomio.example.org/api/b3/users \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "user": {
+      "email": "ada@example.org",
+      "name": "Ada Lovelace",
+      "username": "ada",
+      "is_admin": false
+    }
+  }'
+```
+
+Het antwoord is HTTP `201` met een `user`-object. Ongeldige velden of een e-mailadres of gebruikersnaam die al in gebruik is, leveren HTTP `422` op. Bij het aanmaken van een account wordt geen uitnodiging verstuurd, wordt de persoon niet ingelogd en wordt het e-mailadres niet als geverifieerd gemarkeerd. Nodig de persoon via het lidmaatschapsendpoint uit voor een groep om een uitnodiging via de normale meldingsprocedure te versturen.
+
+### Groepen vinden
+
+`GET /api/b3/groups`
+
+Vraag alle groepen op die niet zijn verwijderd, inclusief privégroepen en groepen met verlopen abonnementen. De resultaten worden gesorteerd op oplopend ID. Gebruik `limit` (standaard en maximaal `50`) en `offset` (standaard `0`) om ze per pagina op te vragen.
+
+```bash
+curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "groups": [
+    {
+      "id": 123,
+      "key": "examplegroup",
+      "name": "Planning group",
+      "handle": "planning",
+      "parent_id": null,
+      "group_privacy": "secret"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+### Lidmaatschappen opvragen
+
+`GET /api/b3/memberships?group_id=123`
+
+`group_id` is verplicht. De resultaten bevatten geaccepteerde lidmaatschappen en openstaande uitnodigingen, gesorteerd op oplopend lidmaatschaps-ID. Ingetrokken lidmaatschappen worden niet opgenomen. Gebruik `limit` (standaard en maximaal `50`) en `offset` (standaard `0`) voor paginering.
+
+```bash
+curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "memberships": [
+    {
+      "id": 456,
+      "group_id": 123,
+      "user_id": 789,
+      "user_email": "ada@example.org",
+      "user_name": "Ada Lovelace",
+      "admin": false,
+      "delegate": false,
+      "accepted_at": null,
+      "pending": true
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+`admin` en `delegate` zijn groepsrollen. `accepted_at` is het tijdstip van acceptatie, of `null` zolang een uitnodiging openstaat. Dit endpoint geeft geen uitnodigingstokens, inloggegevens of stemmen vrij.
+
+### Leden uitnodigen of synchroniseren
+
+`POST /api/b3/memberships`
+
+Verstuur de verplichte velden `group_id` en de array `emails`. Standaard worden hiermee de vermelde personen toegevoegd die nog geen actief lidmaatschap hebben; alle anderen blijven lid. Spaties aan het begin en einde van e-mailadressen worden verwijderd, de adressen worden omgezet naar kleine letters en dubbele adressen worden verwijderd. Voor nieuwe adressen worden accounts en openstaande uitnodigingen aangemaakt. Bestaande geverifieerde leden van een andere actieve groep in dezelfde organisatie worden automatisch geaccepteerd, net als bij de uitnodigingsprocedure van de gebruikers-API.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org",
+      "alex@example.org"
+    ]
+  }'
+```
+
+Stel `remove_absent` expliciet in op `true` om een volledige ledenlijst te synchroniseren. Iedereen die niet op de lijst staat, wordt uit die groep en de bijbehorende subgroepen verwijderd. Een lege array met `remove_absent: true` verwijdert iedereen, inclusief de groepsadmins. Laat `remove_absent` weg of stel het in op `false` als je alleen personen wilt toevoegen. De oudere waarden `1` en `0` worden ook geaccepteerd.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org"
+    ],
+    "remove_absent": true
+  }'
+```
+
+```json
+{
+  "added_emails": [],
+  "removed_emails": [
+    "alex@example.org"
+  ]
+}
+```
+
+Als je hetzelfde verzoek herhaalt, worden geen dubbele lidmaatschappen aangemaakt of uitnodigingen opnieuw verstuurd. Als je een lid met een ingetrokken lidmaatschap opnieuw uitnodigt, krijgt dit lid weer toegang tot de groep, zonder dat een eerdere adminrol wordt hersteld. Nieuwe uitnodigingen en rolwijzigingen gebruiken de normale meldingsprocedure, waarbij geen gebruiker wordt vastgelegd als degene die de actie uitvoert.
+
+Ontbrekende of onjuist opgemaakte e-maillijsten en ongeldige booleaanse waarden leveren HTTP `400` op. Een gedeactiveerd account op de lijst levert HTTP `422` op; reactiveer het expliciet voordat je het toevoegt. Bij ongeldige accountgegevens, abonnementslimieten of andere fouten wordt de volledige synchronisatie teruggedraaid, inclusief nieuwe accounts en ingetrokken lidmaatschappen. Toevoegingen vereisen een actieve groep en blijven onderworpen aan de ledenlimieten van het abonnement.
+
+### Lidmaatschapsrollen bijwerken
+
+`PATCH /api/b3/memberships/:id`
+
+Verstuur een `membership`-object met een of beide booleaanse velden `admin` en `delegate`. Weggelaten rollen blijven ongewijzigd. Onbekende velden worden geweigerd; het endpoint kan geen lidmaatschap overdragen, uitnodiging accepteren of stemgewichten wijzigen.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "membership": {
+      "admin": true,
+      "delegate": false
+    }
+  }'
+```
+
+Geeft een `membership`-object terug met dezelfde velden als een opgevraagd lidmaatschap. Het toekennen van een rol maakt de gebruikelijke rolmelding aan; het opnieuw versturen van een ongewijzigde rol leidt niet tot een nieuwe melding. Rolwijzigingen vereisen een actieve groep. Ingetrokken lidmaatschappen leveren HTTP `404` op.
+
+### Eén lidmaatschap verwijderen
+
+`DELETE /api/b3/memberships/:id`
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+Geeft `{"success": true}` terug. Verwijdering trekt de toegang tot de groep en de bijbehorende subgroepen in, inclusief toegang tot onderwerpen en stemrechten in actieve peilingen. Het account wordt niet verwijderd, andere groepen worden niet gewijzigd en rechtstreekse toegang tot threads wordt niet ingetrokken. Een herhaalde verwijdering slaagt. Je kunt lidmaatschappen verwijderen uit groepen met verlopen abonnementen; verwijderde groepen leveren HTTP `404` op.
+
 <!-- translation-section: user-object -->
 
 ## Gebruikersobject
@@ -83,6 +263,7 @@ Antwoorden met gebruikersgegevens hebben deze structuur:
   "name": "Ada Lovelace",
   "username": "ada",
   "email": "ada@example.org",
+  "is_admin": false,
   "active": true,
   "deactivated_at": null,
   "identities": [

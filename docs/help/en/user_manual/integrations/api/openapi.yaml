@@ -26,6 +26,8 @@ tags:
   - name: Reports
   - name: Webhooks
   - name: Server users
+  - name: Server groups
+  - name: Server memberships
 paths:
   /api/b2/groups:
     get:
@@ -643,6 +645,125 @@ paths:
                 $ref: "#/components/schemas/Success"
         default:
           $ref: "#/components/responses/Error"
+  /api/b3/groups:
+    get:
+      operationId: listServerGroups
+      tags: [Server groups]
+      summary: List all groups that have not been deleted
+      description: Includes private groups and expired subscriptions. Ordered by ascending ID. Requires only the server key.
+      parameters:
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+      responses:
+        "200":
+          description: Groups and total count; default and maximum page size 50
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerGroupPage"
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/memberships:
+    get:
+      operationId: listServerMemberships
+      tags: [Server memberships]
+      summary: List active memberships and pending invitations in any group
+      description: Requires only the server key. Ordered by ascending membership ID. Revoked memberships are excluded.
+      parameters:
+        - $ref: "#/components/parameters/GroupIdQuery"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Offset"
+      responses:
+        "200":
+          description: Memberships and total count; default and maximum page size 50
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerMembershipPage"
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: syncServerMemberships
+      tags: [Server memberships]
+      summary: Invite members or synchronise a complete group membership list
+      description: |
+        Requires only the server key and an active group. New addresses create unverified accounts and pending invitations.
+        Existing verified organisation members are accepted automatically. Email addresses are trimmed, lowercased, and deduplicated.
+        Deactivated accounts are rejected. Reinviting a revoked member restores access without restoring administrator status.
+        Explicit remove_absent true revokes omitted members in the group and its subgroups; an empty list removes everyone.
+        False or omitted remove_absent only adds members. Legacy 1 and 0 are accepted. Invalid input returns 400.
+        Subscription constraints apply. Accounts, notifications, invitations, and removals commit or roll back together.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [group_id, emails]
+              properties:
+                group_id: {type: integer}
+                emails:
+                  type: array
+                  items: {type: string, format: email, maxLength: 200}
+                remove_absent:
+                  type: boolean
+                  default: false
+      responses:
+        "200":
+          description: Added and removed email addresses; replaying an unchanged list has no effect
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [added_emails, removed_emails]
+                properties:
+                  added_emails:
+                    type: array
+                    items: {type: string, format: email}
+                  removed_emails:
+                    type: array
+                    items: {type: string, format: email}
+        default:
+          $ref: "#/components/responses/Error"
+  /api/b3/memberships/{id}:
+    parameters:
+      - $ref: "#/components/parameters/NumericId"
+    patch:
+      operationId: updateServerMembership
+      tags: [Server memberships]
+      summary: Change group administrator or delegate roles
+      description: Requires an active group and non-revoked membership. Only changed roles granted to the member produce notifications.
+      requestBody:
+        $ref: "#/components/requestBodies/ServerMembershipRoles"
+      responses:
+        "200":
+          $ref: "#/components/responses/ServerMembership"
+        default:
+          $ref: "#/components/responses/Error"
+    put:
+      operationId: replaceServerMembership
+      deprecated: true
+      tags: [Server memberships]
+      summary: Change membership roles using the Rails PUT alias
+      requestBody:
+        $ref: "#/components/requestBodies/ServerMembershipRoles"
+      responses:
+        "200":
+          $ref: "#/components/responses/ServerMembership"
+        default:
+          $ref: "#/components/responses/Error"
+    delete:
+      operationId: revokeServerMembership
+      tags: [Server memberships]
+      summary: Revoke a membership and access in its group and subgroups
+      description: |
+        Repeated removal succeeds. Revokes topic access and voting rights in active polls through the normal membership lifecycle.
+        Unrelated groups and direct threads are unaffected. Expired subscriptions permit removal; deleted groups return 404.
+      responses:
+        "200":
+          $ref: "#/components/responses/Success"
+        default:
+          $ref: "#/components/responses/Error"
   /api/b3/users:
     get:
       operationId: listServerUsers
@@ -666,6 +787,18 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/User"
+        default:
+          $ref: "#/components/responses/Error"
+    post:
+      operationId: createServerUser
+      tags: [Server users]
+      summary: Create an unverified account without sending an invitation
+      description: Does not sign in, verify the email address, or add group memberships. Duplicate email addresses and usernames return 422.
+      requestBody:
+        $ref: "#/components/requestBodies/UserCreate"
+      responses:
+        "201":
+          $ref: "#/components/responses/User"
         default:
           $ref: "#/components/responses/Error"
   /api/b3/users/{id}:
@@ -945,6 +1078,38 @@ components:
       schema:
         type: string
   requestBodies:
+    UserCreate:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [user]
+            properties:
+              user:
+                type: object
+                required: [email]
+                additionalProperties: false
+                properties:
+                  email: {type: string, format: email}
+                  name: {type: string}
+                  username: {type: string}
+                  is_admin: {type: boolean, default: false}
+    ServerMembershipRoles:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [membership]
+            properties:
+              membership:
+                type: object
+                minProperties: 1
+                additionalProperties: false
+                properties:
+                  admin: {type: boolean}
+                  delegate: {type: boolean}
     UserUpdate:
       required: true
       content:
@@ -962,6 +1127,16 @@ components:
                   is_admin: {type: boolean}
                 additionalProperties: false
   responses:
+    ServerMembership:
+      description: Membership and its current group roles
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [membership]
+            properties:
+              membership:
+                $ref: "#/components/schemas/ServerMembership"
     Record:
       description: Serialized resource and related records
       content:
@@ -1011,6 +1186,53 @@ components:
             type: object
             additionalProperties: true
   schemas:
+    ServerGroupPage:
+      type: object
+      required: [groups, meta]
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            required: [id, key, name, handle, parent_id, group_privacy]
+            properties:
+              id: {type: integer}
+              key: {type: string}
+              name: {type: string}
+              handle: {type: [string, "null"]}
+              parent_id: {type: [integer, "null"]}
+              group_privacy: {type: string}
+        meta:
+          $ref: "#/components/schemas/ServerPageMeta"
+    ServerMembershipPage:
+      type: object
+      required: [memberships, meta]
+      properties:
+        memberships:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServerMembership"
+        meta:
+          $ref: "#/components/schemas/ServerPageMeta"
+    ServerPageMeta:
+      type: object
+      required: [total]
+      properties:
+        total: {type: integer}
+    ServerMembership:
+      type: object
+      additionalProperties: false
+      required: [id, group_id, user_id, user_email, user_name, admin, delegate, accepted_at, pending]
+      properties:
+        id: {type: integer}
+        group_id: {type: integer}
+        user_id: {type: integer}
+        user_email: {type: [string, "null"], format: email}
+        user_name: {type: [string, "null"]}
+        admin: {type: boolean}
+        delegate: {type: boolean}
+        accepted_at: {type: [string, "null"], format: date-time}
+        pending: {type: boolean}
     RecordResponse:
       type: object
       description: B2 serializers return the requested resource together with related records needed by API clients.

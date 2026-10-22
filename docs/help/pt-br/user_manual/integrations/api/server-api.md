@@ -1,14 +1,14 @@
 ---
 title: API do servidor
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/integrations/api/server-api.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-23'
 sections:
-  introduction: a357cdc2bfc0223e
+  introduction: 8b28f9c34e3f7575
   authentication: cbabcc874f053455
-  user-object: c3a00ec4e3d66b09
+  user-object: 7e9e8ff3e48a4055
   list-users: c7d62eee05e7a6a4
   example: 2f817ab1533206e6
   show-user: 36fa596a6a5c2fd8
@@ -25,10 +25,11 @@ sections:
   delete-user: 2d5a1dbd23324e6f
   examples-6: 71ae30577730b261
   sso-profile-sync-settings: 416144004d040e4f
+  provisioning: 590e1f295602247d
 generated:
-  introduction: 8c7b2271d8f23b6b
+  introduction: 597bbe01cadf9fac
   authentication: 3b8961372b3d0c57
-  user-object: b55caa01429f9c93
+  user-object: 8424c11a963abb51
   list-users: 8f1f947e3117ef2b
   example: 5b0c3624a9655049
   show-user: c5f7662f09c475a4
@@ -45,6 +46,7 @@ generated:
   delete-user: 22cf610798b09dcf
   examples-6: 2b9c16d56f574697
   sso-profile-sync-settings: 3793ea7f5de05436
+  provisioning: 7e8106f018997620
 title_source: 370e81eb20eece44
 title_generated: 8f49c340fcf3bf2d
 ---
@@ -53,9 +55,11 @@ title_generated: 8f49c340fcf3bf2d
 
 # Documentação da API do servidor Loomio
 
-<!-- seo-description: Use a API do servidor Loomio para gerenciar contas de usuário em uma instalação auto-hospedada do Loomio. -->
+<!-- seo-description: Use a API do servidor Loomio para provisionar contas de usuário, localizar grupos e gerenciar vínculos de membros em uma instalação auto-hospedada do Loomio. -->
 
 `/api/b3` serve para operações no nível do servidor. Use `/api/b2` para ações voltadas ao usuário, realizadas com uma conta de usuário do Loomio.
+
+Use uma única chave de servidor para criar e gerenciar contas, localizar grupos em toda a instalação e gerenciar seus vínculos de membros e funções. Não é necessário ter uma conta de bot, uma chave de API de usuário ou ser membro dos grupos. As chaves de API de usuário continuam seguindo as permissões do usuário nos grupos.
 
 <!-- translation-section: authentication -->
 
@@ -71,6 +75,182 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b
 
 Envie as credenciais somente no cabeçalho `Authorization`. Chaves de API em strings de consulta ou no corpo das requisições são rejeitadas.
 
+<!-- translation-section: provisioning -->
+
+## Provisionar contas e vínculos de membros
+
+| Método | Endpoint | Finalidade |
+| --- | --- | --- |
+| `POST` | `/api/b3/users` | Criar uma conta |
+| `GET` | `/api/b3/groups` | Localizar grupos em toda a instalação |
+| `GET` | `/api/b3/memberships` | Listar vínculos de membros em um grupo |
+| `POST` | `/api/b3/memberships` | Convidar membros ou sincronizar uma lista completa de membros |
+| `PATCH` | `/api/b3/memberships/:id` | Alterar funções de administrador e delegado do grupo |
+| `DELETE` | `/api/b3/memberships/:id` | Revogar um vínculo de membro |
+
+Os endpoints existentes para atualização, desativação, reativação, anonimização e exclusão de contas estão descritos abaixo.
+
+### Criar uma conta
+
+`POST /api/b3/users`
+
+Envie um objeto `user` com o campo obrigatório `email`. Os espaços em branco no início e no fim dos endereços de e-mail são removidos, e os endereços são convertidos para letras minúsculas. Os campos opcionais são `name`, `username` e `is_admin`. Aqui, `is_admin` indica um administrador da instância; as funções de administrador de grupo são gerenciadas nos vínculos de membros. Omita `username` para gerar um nome de usuário automaticamente. Campos desconhecidos são rejeitados.
+
+```bash
+curl https://loomio.example.org/api/b3/users \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "user": {
+      "email": "ada@example.org",
+      "name": "Ada Lovelace",
+      "username": "ada",
+      "is_admin": false
+    }
+  }'
+```
+
+A resposta é HTTP `201` com um objeto `user`. Campos inválidos ou um e-mail ou nome de usuário já em uso retornam HTTP `422`. Criar uma conta não envia um convite, não inicia uma sessão para a pessoa nem marca seu e-mail como verificado. Convide a pessoa para um grupo usando o endpoint de vínculos de membros para enviar um convite pelo fluxo normal de notificações.
+
+### Localizar grupos
+
+`GET /api/b3/groups`
+
+Liste todos os grupos que não foram excluídos, incluindo grupos privados e grupos com assinaturas expiradas. Os resultados são ordenados por ID em ordem crescente. Use `limit` (padrão e máximo de `50`) e `offset` (padrão de `0`) para percorrer as páginas de resultados.
+
+```bash
+curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "groups": [
+    {
+      "id": 123,
+      "key": "examplegroup",
+      "name": "Planning group",
+      "handle": "planning",
+      "parent_id": null,
+      "group_privacy": "secret"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+### Listar vínculos de membros
+
+`GET /api/b3/memberships?group_id=123`
+
+`group_id` é obrigatório. Os resultados incluem vínculos de membros aceitos e convites pendentes, ordenados pelo ID do vínculo em ordem crescente. Vínculos revogados são excluídos dos resultados. Use `limit` (padrão e máximo de `50`) e `offset` (padrão de `0`) para paginação.
+
+```bash
+curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+```json
+{
+  "memberships": [
+    {
+      "id": 456,
+      "group_id": 123,
+      "user_id": 789,
+      "user_email": "ada@example.org",
+      "user_name": "Ada Lovelace",
+      "admin": false,
+      "delegate": false,
+      "accepted_at": null,
+      "pending": true
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+`admin` e `delegate` são funções do grupo. `accepted_at` é a data e hora da aceitação, ou `null` enquanto um convite estiver pendente. Este endpoint não expõe tokens de convite, credenciais de acesso ou votos.
+
+### Convidar ou sincronizar membros
+
+`POST /api/b3/memberships`
+
+Envie os campos obrigatórios `group_id` e `emails`, sendo este último um array. Por padrão, isso adiciona as pessoas listadas que ainda não têm um vínculo ativo, mantendo todos os demais membros. Os espaços em branco no início e no fim dos endereços de e-mail são removidos, os endereços são convertidos para letras minúsculas e as duplicatas são eliminadas. Novos endereços criam contas e convites pendentes. Membros verificados de outro grupo ativo da mesma organização são aceitos automaticamente, seguindo o fluxo de convites da API de usuário.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org",
+      "alex@example.org"
+    ]
+  }'
+```
+
+Para sincronizar uma lista completa de membros, defina explicitamente `remove_absent` como `true`. Qualquer pessoa que não esteja na lista será removida desse grupo e de seus subgrupos. Um array vazio com `remove_absent: true` remove todos, incluindo os administradores do grupo. Omita `remove_absent` ou defina-o como `false` quando quiser apenas adicionar pessoas. Os valores legados `1` e `0` também são aceitos.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "group_id": 123,
+    "emails": [
+      "ada@example.org"
+    ],
+    "remove_absent": true
+  }'
+```
+
+```json
+{
+  "added_emails": [],
+  "removed_emails": [
+    "alex@example.org"
+  ]
+}
+```
+
+Repetir a mesma requisição não cria vínculos de membros duplicados nem reenvia convites. Convidar novamente um membro cujo vínculo foi revogado restaura seu acesso ao grupo sem restaurar uma função anterior de administrador. Novos convites e alterações de função usam o fluxo normal de notificações, sem registrar um usuário como responsável pela ação.
+
+Listas de e-mail ausentes ou malformadas e valores booleanos inválidos retornam HTTP `400`. Uma conta desativada incluída na lista retorna HTTP `422`; reative-a explicitamente antes de adicioná-la. Dados de conta inválidos, limites da assinatura ou outras falhas desfazem toda a sincronização, incluindo novas contas e remoções de vínculos de membros. As adições exigem um grupo ativo e continuam sujeitas aos limites de membros da assinatura.
+
+### Atualizar funções de um membro
+
+`PATCH /api/b3/memberships/:id`
+
+Envie um objeto `membership` contendo um ou ambos os campos booleanos `admin` e `delegate`. As funções omitidas permanecem inalteradas. Campos desconhecidos são rejeitados; o endpoint não pode transferir um vínculo de membro, aceitar um convite ou alterar pesos de voto.
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X PATCH \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
+  --json '{
+    "membership": {
+      "admin": true,
+      "delegate": false
+    }
+  }'
+```
+
+Retorna um objeto `membership` com os mesmos campos de um vínculo de membro listado. A concessão de uma função cria a notificação habitual dessa função; repetir uma função inalterada não envia outra notificação. Alterações de função exigem um grupo ativo. Vínculos de membros revogados retornam HTTP `404`.
+
+### Remover um vínculo de membro
+
+`DELETE /api/b3/memberships/:id`
+
+```bash
+curl https://loomio.example.org/api/b3/memberships/456 \
+  -X DELETE \
+  -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
+```
+
+Retorna `{"success": true}`. A remoção revoga o acesso ao grupo e a seus subgrupos, incluindo o acesso a tópicos e o direito de votar em enquetes ativas. Ela não exclui a conta, não altera grupos sem relação com esse vínculo nem remove o acesso direto a conversas. Repetir uma remoção também retorna sucesso. Você pode remover vínculos de membros de grupos com assinaturas expiradas; grupos excluídos retornam HTTP `404`.
+
 <!-- translation-section: user-object -->
 
 ## Objeto de usuário
@@ -83,6 +263,7 @@ As respostas de usuário usam esta estrutura:
   "name": "Ada Lovelace",
   "username": "ada",
   "email": "ada@example.org",
+  "is_admin": false,
   "active": true,
   "deactivated_at": null,
   "identities": [

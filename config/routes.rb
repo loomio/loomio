@@ -111,6 +111,8 @@ Rails.application.routes.draw do
     end
 
     namespace :b3, only: [] do
+      resources :groups, only: [ :index ]
+      resources :memberships, only: [ :index, :create, :update, :destroy ]
       get    'users/identity/:identity_type/:uid',            to: 'users#show_by_identity'
       patch  'users/identity/:identity_type/:uid',            to: 'users#update_by_identity'
       delete 'users/identity/:identity_type/:uid',            to: 'users#destroy_by_identity'
@@ -118,7 +120,7 @@ Rails.application.routes.draw do
       post   'users/identity/:identity_type/:uid/reactivate', to: 'users#reactivate_by_identity'
       post   'users/identity/:identity_type/:uid/redact',     to: 'users#redact_by_identity'
 
-      resources :users, only: [:index, :show, :update, :destroy] do
+      resources :users, only: [ :index, :show, :create, :update, :destroy ] do
         member do
           post :deactivate
           post :reactivate
