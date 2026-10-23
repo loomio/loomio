@@ -50,6 +50,7 @@ export default class TopicModel extends BaseModel {
       recipientChatbotIds: [],
       recipientEmails: [],
       tags: [],
+      hasTaggedReplies: false,
       selectedTopicItemIds: [],
       discardedAt: null,
       lockedAt: null,

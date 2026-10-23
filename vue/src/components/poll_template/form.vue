@@ -289,7 +289,7 @@ export default {
           :rules="validate('titlePlaceholder')"
         )
 
-        tags-field(:model="pollTemplate")
+        tags-field(:model="pollTemplate" template)
 
         lmo-textarea.poll-template-form-fields__details(
           :model='pollTemplate'

@@ -6,7 +6,7 @@ import { uniq } from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
-const { model } = defineProps({ model: Object });
+const { model, template } = defineProps({ model: Object, template: Boolean });
 const { t } = useI18n();
 const { watchRecords } = useWatchRecords();
 const items = ref([]);
@@ -15,17 +15,24 @@ const canCreateTags = ref(false);
 // Memberships and group permissions can arrive after the form mounts. Refresh
 // from the record store so the field uses the same permissions as the server.
 function refresh() {
+  if (template) {
+    items.value = [];
+    canCreateTags.value = true;
+    return;
+  }
   const group = model.group();
   items.value = uniq(group.tags().map(tag => tag.name));
   canCreateTags.value = !model.groupId || AbilityService.canCreateTags(group);
 }
 
 function colorFor(name) {
+  if (template) { return; }
   return model.group().tags().find(tag => tag.name === name)?.color;
 }
 
 watch(() => model.groupId, refresh, { immediate: true });
 onMounted(() => {
+  if (template) { return; }
   watchRecords({
     key: 'tagsField',
     collections: ['tags', 'groups', 'memberships'],

@@ -3,6 +3,8 @@ import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import TopicLoader       from '@/shared/loaders/topic_loader';
+import TaggedItems from '@/components/topic/tagged_items.vue';
+import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
@@ -320,8 +322,10 @@ function shouldSettleAnchorScroll() {
     v-container.max-width-800.px-0.px-sm-3#topic-page(v-if="topic")
       plan-banner(v-if="topic.groupId" :group="topic.group()")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
+      tag-filter-toolbar(v-if="route.query.tag" :tag="route.query.tag" :group="topic.group()")
       v-sheet.topic-card.mb-8.pb-4.rounded-lg
-        topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+        tagged-items(v-if="route.query.tag" :key="topic.id" :topic="topic" :loader="loader" :tag="route.query.tag")
+        topic-list.pr-1.pr-sm-3.px-sm-2(v-else :loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         topic-actions-panel(:topic="topic")
   topic-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
 </template>

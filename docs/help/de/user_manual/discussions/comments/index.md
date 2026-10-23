@@ -1,10 +1,10 @@
 ---
 title: Kommentare
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 5f4b5f328b8561dd
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 86cb366d062829eb
   translating-comments: 51beef10072737e7
   comment-actions: 99e03baa72281d67
-  add-a-comment-to-jump-to: 154d4a582b4c151d
+  add-a-comment-to-jump-to: dcc12ff011cc4458
   edit-a-comment-and-view-changes: 20862de0d146350b
   copy-a-comment-link: 328d316b1012ac82
   view-notification-history: f0adc499824ca9fb
@@ -123,14 +123,14 @@ Häufig verwendete Aktionen erscheinen direkt unter einem Kommentar. Weitere Akt
 
 ### Einen Kommentar zu Springen zu hinzufügen
 
-Verwende **An Timeline anheften**, um einen Kommentar zur Liste **Springen zu** des Threads hinzuzufügen.
+Verwende **Zur Timeline hinzufügen**, um einen Kommentar zur Liste **Springen zu** des Threads hinzuzufügen. Die Menüaktion verwendet ein Timeline-Symbol. Dieses unterscheidet sich von der Stecknadel zum Anheften eines Threads oben in der Thread-Liste einer Gruppe.
 
-Du kannst die unter **Springen zu** angezeigte Bezeichnung bearbeiten. Deaktiviere das Anheften und hefte den Kommentar anschließend erneut an, um den Linktext zu ändern.
+Du kannst die unter **Springen zu** angezeigte Bezeichnung bearbeiten. Entferne den Kommentar aus der Timeline und füge ihn erneut hinzu, um den Linktext zu ändern.
 
 >[!Tip]
->Markiere die Wörter, die du als Linktext verwenden möchtest, bevor du **An Timeline anheften** auswählst.
+>Markiere die Wörter, die du als Linktext verwenden möchtest, bevor du **Zur Timeline hinzufügen** auswählst.
 
-Wähle **Anheften deaktivieren**, um den Eintrag aus **Springen zu** zu entfernen.
+Wähle **Aus Timeline entfernen**, um den Eintrag aus **Springen zu** zu entfernen.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

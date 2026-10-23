@@ -92,6 +92,22 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     refute_includes item_ids, deleted_item_id
   end
 
+  test "stance replies are forbidden until hidden results are revealed by closing" do
+    poll = PollService.create(params: {topic_id: topics(:discussion_topic).id, title: 'Reply permissions',
+      poll_type: 'proposal', poll_option_names: ['Agree'], closing_at: 2.days.from_now,
+      hide_results: 'until_closed'}, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+    sign_in @admin
+    params = {comment: {parent_type: 'Stance', parent_id: stance.id, body: 'Reply'}}
+    assert_no_difference(['Comment.count', 'TopicItem.count']) { post :create, params: params }
+    assert_response :forbidden
+    PollService.close(poll: poll, actor: @admin)
+    assert_difference('Comment.count') { post :create, params: params }
+    assert_response :success
+  end
+
   test "create success" do
     sign_in @user
     comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }

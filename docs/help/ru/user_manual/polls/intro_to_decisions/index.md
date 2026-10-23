@@ -1,10 +1,10 @@
 ---
 title: Предложения и опросы
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: a629c4c527967a1d
@@ -33,7 +33,7 @@ generated:
   1-create-it: 5faa0bf81eb9fa66
   2-voting-opens: 295b463eb09fe839
   3-people-vote: 33512da26bfb7021
-  4-it-closes: 4fb587bd842397f8
+  4-it-closes: 96fe9888d0d92835
   5-share-an-outcome: 04c6ef034c5a5c10
 title_source: d45b4ba3cb7a27cb
 title_generated: b80340baf18daea4
@@ -152,7 +152,7 @@ needs_review:
 
 ### 4. Закрытие
 
-Опрос закрывается автоматически в назначенное время. Координатор опроса также может закрыть его досрочно. После закрытия координатор опроса может возобновить голосование, назначив новое время закрытия, чтобы люди могли продолжить голосовать. В анонимных опросах нельзя возобновить голосование.
+Опрос закрывается автоматически в назначенное время. Координатор опроса также может закрыть его досрочно. После закрытия координатор опроса может возобновить голосование, назначив новое время закрытия, чтобы люди могли продолжить голосовать. В опросах, где результаты скрыты до закрытия голосования, включая анонимные опросы, нельзя возобновить голосование. Вы можете продлить время до закрытия таких опросов, пока они ещё открыты.
 
 <!-- translation-section: 5-share-an-outcome -->
 

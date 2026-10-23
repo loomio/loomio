@@ -139,6 +139,8 @@ tr:
     manage_subscription: Aboneliği Yönet
     amount: Miktar
   loomio_tags:
+    show_tags_from_other_groups: "Diğer gruplardaki etiketleri göster"
+    parent_group_and_subgroups_in_this_organization: "Bu kuruluştaki ana grup ve alt gruplar"
     all_tags: Tüm etiketler
     tags: Etiketler
     apply_tags: Etiketleri uygula
@@ -1081,6 +1083,8 @@ tr:
     topic_notification_history: Konu bildirim geçmişi
     notification_history: Bildirim geçmişi
   action_dock:
+    add_to_timeline: Zaman çizelgesine ekle
+    remove_from_timeline: Zaman çizelgesinden kaldır
     actions_menu: Eylemler menüsü
     more_actions: Daha fazla hareket
     react: Tepki

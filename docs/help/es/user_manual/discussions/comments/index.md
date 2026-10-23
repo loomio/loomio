@@ -1,10 +1,10 @@
 ---
 title: Comentarios
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 5f4b5f328b8561dd
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 439641d1ec72244f
   translating-comments: b2c3ee1939d9d6da
   comment-actions: f2ef32a2b9629130
-  add-a-comment-to-jump-to: 9c78db3435b9dea0
+  add-a-comment-to-jump-to: 6ca231189f44bb8a
   edit-a-comment-and-view-changes: 35b9eadc9656ecb2
   copy-a-comment-link: 33afd7d3d626268e
   view-notification-history: 4a15d717db18113f
@@ -123,14 +123,14 @@ Las acciones habituales aparecen directamente debajo de un comentario. Hay más 
 
 ### Añadir un comentario a Saltar a
 
-Usa **Anclar para cronograma** para añadir un comentario a la lista **Saltar a** del hilo.
+Usa **Añade a la cronología** para añadir un comentario a la lista **Saltar a** del hilo. Esta acción del menú usa un icono de cronología, distinto de la chincheta que se usa para fijar un hilo al principio de la lista de hilos de un grupo.
 
-Puedes editar la etiqueta que aparece en **Saltar a**. Deja de fijar el comentario y vuelve a fijarlo para cambiar el texto del enlace.
+Puedes editar la etiqueta que aparece en **Saltar a**. Elimina el comentario de la cronología y vuelve a añadirlo para cambiar el texto del enlace.
 
 >[!Tip]
->Selecciona las palabras que quieras usar como texto del enlace antes de seleccionar **Anclar para cronograma**.
+>Selecciona las palabras que quieras usar como texto del enlace antes de seleccionar **Añade a la cronología**.
 
-Selecciona **Desanclar** para quitar el elemento de **Saltar a**.
+Selecciona **Elimina de la cronología** para quitar el elemento de **Saltar a**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

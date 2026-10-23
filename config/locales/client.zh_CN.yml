@@ -165,6 +165,8 @@ zh_CN:
     manage_subscription: 管理订阅
     amount: 数量
   loomio_tags:
+    show_tags_from_other_groups: "显示其他群组的标签"
+    parent_group_and_subgroups_in_this_organization: "此组织的上级群组和子群组"
     all_tags: 所有标签
     tags: 标签
     apply_tags: 应用标签
@@ -1125,6 +1127,8 @@ zh_CN:
     topic_notification_history: 帖子通知历史记录
     notification_history: 通知历史记录
   action_dock:
+    add_to_timeline: 添加到时间线
+    remove_from_timeline: 从时间线移除
     actions_menu: 操作菜单
     more_actions: 更多操作
     react: React

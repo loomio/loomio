@@ -139,6 +139,8 @@ da:
     manage_subscription: Administrer abonnement
     amount: Beløb
   loomio_tags:
+    show_tags_from_other_groups: "Vis tags fra andre grupper"
+    parent_group_and_subgroups_in_this_organization: "Hovedgruppe og undergrupper i denne organisation"
     all_tags: Alle tags
     tags: Tags
     apply_tags: Anvend tags
@@ -1083,6 +1085,8 @@ da:
     topic_notification_history: Historik over trådnotifikationer
     notification_history: Notifikationshistorik
   action_dock:
+    add_to_timeline: Føj til tidslinjen
+    remove_from_timeline: Fjern fra tidslinjen
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
     react: Reagere

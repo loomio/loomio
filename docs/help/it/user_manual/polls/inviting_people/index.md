@@ -1,10 +1,10 @@
 ---
 title: Invita a votare
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: c81f880091a97dd0
   invite-people-to-vote-in-a-poll: 80e81bb9713a8b91
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: 33ded99f6b0f28c4
   view-notification-history: 0ee34033b477855c
   close-early: c0bbdb442e71d865
-  reopen: 433db5589577fb1e
+  reopen: b644c1af17fa197e
 title_source: 4801d1a3dba7ce3d
 title_generated: 8ba8b5a973a78d79
 ---
@@ -142,6 +142,6 @@ Puoi farlo quando tutti hanno votato o quando il sondaggio non ha più bisogno d
 
 Seleziona **Riapri** su un sondaggio chiuso, poi imposta una nuova data di chiusura con il relativo orario.
 
-I sondaggi anonimi non possono essere riaperti.
+I sondaggi che nascondono i risultati fino alla chiusura della votazione, inclusi i sondaggi anonimi, non possono essere riaperti. Puoi posticipare il loro orario di chiusura mentre sono ancora aperti.
 
 ![](proposal_reopen.png)

@@ -147,6 +147,8 @@ pt_BR:
     manage_subscription: Gerenciar assinatura
     amount: Quantia
   loomio_tags:
+    show_tags_from_other_groups: "Mostre tags de outros grupos"
+    parent_group_and_subgroups_in_this_organization: "Grupo principal e subgrupos desta organização"
     all_tags: Todas as Tags
     tags: Tags
     apply_tags: Aplicar tags
@@ -1095,6 +1097,8 @@ pt_BR:
     topic_notification_history: Histórico de notificações da thread
     notification_history: Histórico de notificações
   action_dock:
+    add_to_timeline: Adicione à linha do tempo
+    remove_from_timeline: Remova da linha do tempo
     actions_menu: Menu de ações
     more_actions: Mais ações
     react: Reagir

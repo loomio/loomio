@@ -139,6 +139,8 @@ uk:
     manage_subscription: Керувати підпискою
     amount: Сума
   loomio_tags:
+    show_tags_from_other_groups: "Покажіть теги з інших груп"
+    parent_group_and_subgroups_in_this_organization: "Батьківська група та підгрупи цієї організації"
     all_tags: Всі мітки
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -1088,6 +1090,8 @@ uk:
     topic_notification_history: Історія сповіщень про теми
     notification_history: Історія сповіщень
   action_dock:
+    add_to_timeline: Додайте на часову шкалу
+    remove_from_timeline: Видаліть із часової шкали
     actions_menu: Меню дій
     more_actions: Більше дій
     react: Оцінити

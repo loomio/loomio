@@ -1,10 +1,10 @@
 ---
 title: Meghívás szavazásra
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 9b3064a18f5dd331
   invite-people-to-vote-in-a-poll: e3c8738c8cf13195
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: '0199fa8e792c66b3'
   view-notification-history: 3a5c68b864d636dc
   close-early: decba733db1aa50c
-  reopen: 81d7f5034ec86614
+  reopen: 044f6ded6ccb7943
 title_source: 4801d1a3dba7ce3d
 title_generated: 71bbaff8a3a40122
 ---
@@ -142,6 +142,6 @@ Erre akkor lehet szükség, ha már mindenki leadta a szavazatát, vagy a szavaz
 
 Egy lezárt szavazásnál válaszd az **Újranyit** lehetőséget, majd állíts be új záró dátumot és időpontot.
 
-A névtelen szavazásokat nem lehet újranyitni.
+Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, beleértve a névtelen szavazásokat is, nem lehet újranyitni. Amíg nyitva vannak, meghosszabbíthatod a szavazási időt.
 
 ![](proposal_reopen.png)

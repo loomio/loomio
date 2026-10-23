@@ -1,25 +1,25 @@
 ---
 title: Trouver du contenu
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: 9e885b772fd7b411
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 24018a02e26e9ec5
   search: 2f32db8efb032c45
-  search-tips: 6f50169d7da700ec
+  search-tips: ff383b5b202bee84
   filter-discussions: 03db7b2f834e574c
-  category-tags: ed4c1cd3a361e616
+  category-tags: 0d65c37d6ccd36a9
   unread-discussions: ccc1d99c0d54c986
   polls-awaiting-your-vote: b9f825c39f0a9bc8
   bookmarks: b3717d0fcb8a0dbf
@@ -54,7 +54,7 @@ Saisissez un mot ou une expression, puis appuyez sur Entrée ou sélectionnez l�
 - Commencez par un ou deux mots distinctifs du titre ou du contenu dont vous vous souvenez.
 - La recherche reconnaît le début d’un mot : un mot partiel comme **bott** peut donc trouver **bottle**.
 - Elle tient compte des fautes d’orthographe lorsque la requête donne très peu de résultats.
-- Utilisez les filtres pour limiter les résultats à une organisation, un sous-groupe, un tag ou un type de contenu, comme les commentaires ou les sondages.
+- Utilisez les filtres pour limiter les résultats à une organisation, un sous-groupe, un tag ou un type de contenu, comme les commentaires ou les sondages. Un filtre par tag trouve les contributions portant explicitement ce tag et fonctionne sans terme de recherche.
 - Triez par **Meilleure correspondance** lorsque la pertinence compte, ou du plus récent au plus ancien ou inversement lorsque vous savez à peu près quand le contenu a été publié.
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ Utilisez les commandes à côté de Rechercher pour filtrer les discussions selo
 
 ## Tags de catégorie
 
-Les tags regroupent les discussions et les sondages liés sous des noms choisis par votre groupe, comme un projet, une équipe ou un domaine d’activité.
+Les tags regroupent les discussions, les sondages, les conclusions et les commentaires liés sous des noms choisis par votre groupe, comme un projet, une équipe ou un domaine d’activité.
 
 ![](tags.png)
 
-Sélectionnez un tag dans l’onglet **Discussions** pour afficher les discussions correspondantes. Les personnes autorisées à démarrer ou à modifier des discussions peuvent leur attribuer des tags. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur la configuration et les permissions.
+Sélectionnez un tag dans l’onglet **Discussions** pour afficher les fils contenant une contribution correspondante. Dans un fil, sélectionnez un tag dans la barre latérale pour trouver les contributions correspondantes avec leur contexte parent. Les auteurs et les coordinateurs de fil peuvent attribuer des tags. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur la configuration et les permissions.
 
 <!-- translation-section: unread-discussions -->
 

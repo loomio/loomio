@@ -107,6 +107,6 @@ You might do this when everyone has voted or the poll no longer needs to remain 
 
 Select **Reopen** on a closed poll, then set a new closing date and time.
 
-Anonymous polls cannot be reopened.
+Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
 
 ![](proposal_reopen.png)

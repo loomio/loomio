@@ -1,10 +1,10 @@
 ---
 title: Opmaak
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: ad00460b98a69981
   insert-link: cc74342f21fdc875
   insert-emoji: fe46e50a0296b238
-  headings: e573f1b7d7c366de
+  headings: 49ddc54c0a6ebcde
   bold-italicize-strikethrough: 2b98e96ed4f67ebd
   list: baa30e0fc72596e5
   numbered-list: dd9a761c21332815
@@ -134,7 +134,7 @@ Kop 1, Kop 2 en Kop 3 kunnen helpen om een discussie of reactie structuur te gev
 
 Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor kopopmaak.
 
-Als je een kop gebruikt in een reactie, wordt de reactie automatisch vastgezet op de tijdlijn van de discussie.
+Als je een kop gebruikt in een reactie, wordt de reactie automatisch toegevoegd aan de tijdlijn van de discussie.
 
 ![](format_heading.png)
 

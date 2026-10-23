@@ -275,6 +275,8 @@ Rails.application.routes.draw do
       end
 
       resources :topic_items, only: :index do
+        patch :tags, on: :member
+        get :tagged, on: :collection
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member

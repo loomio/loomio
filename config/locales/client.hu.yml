@@ -141,6 +141,8 @@ hu:
     manage_subscription: Előfizetés kezelése
     amount: Összeg
   loomio_tags:
+    show_tags_from_other_groups: "Mutasd más csoportok címkéit"
+    parent_group_and_subgroups_in_this_organization: "A szervezet szülőcsoportja és alcsoportjai"
     all_tags: Összes címke
     tags: Címkék
     apply_tags: Címkék alkalmazása
@@ -1087,6 +1089,8 @@ hu:
     topic_notification_history: Téma értesítési előzményei
     notification_history: Értesítési előzmények
   action_dock:
+    add_to_timeline: Add hozzá az idővonalhoz
+    remove_from_timeline: Távolítsd el az idővonalról
     actions_menu: Műveletek menü
     more_actions: Több akció
     react: Érzelmi válasz

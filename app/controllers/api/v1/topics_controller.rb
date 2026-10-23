@@ -88,7 +88,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def tags
     load_resource
     TopicService.update_tags(topic: resource, tags: params[:tags], actor: current_user)
-    respond_ok
+    respond_with_resource
   end
 
   def pin

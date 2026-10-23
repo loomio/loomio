@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_22_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1195,6 +1195,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.integer "position", default: 0, null: false
     t.string "position_key"
     t.integer "sequence_id"
+    t.string "tags", default: [], null: false, array: true
     t.integer "topic_id", null: false
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
@@ -1207,13 +1208,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.index ["parent_id", "topic_id"], name: "index_topic_items_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_topic_items_on_parent_id"
     t.index ["position_key"], name: "index_topic_items_on_position_key"
+    t.index ["tags"], name: "index_topic_items_on_tags", using: :gin
     t.index ["topic_id", "depth", "sequence_id"], name: "index_topic_items_on_topic_id_depth_sequence_id"
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_and_sequence_id", unique: true
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
     t.index ["topic_id"], name: "index_topic_items_on_topic_id"
+    t.index ["topic_id"], name: "index_topic_items_with_tags_on_topic_id", where: "(cardinality(tags) > 0)"
     t.index ["user_id"], name: "index_topic_items_on_user_id"
     t.check_constraint "btrim(itemable_type::text) <> ''::text", name: "topic_items_itemable_type_present"
     t.check_constraint "btrim(kind::text) <> ''::text", name: "topic_items_kind_present"
+    t.check_constraint "cardinality(tags) = 0 OR kind::text = 'new_discussion'::text AND itemable_type::text = 'Discussion'::text OR kind::text = 'poll_created'::text AND itemable_type::text = 'Poll'::text OR kind::text = 'outcome_created'::text AND itemable_type::text = 'Outcome'::text OR kind::text = 'new_comment'::text AND itemable_type::text = 'Comment'::text", name: "topic_items_tags_supported"
   end
 
   create_table "topic_readers", id: :serial, force: :cascade do |t|
@@ -1254,6 +1258,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.boolean "has_tagged_replies", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "last_activity_at", precision: nil
     t.datetime "locked_at", precision: nil

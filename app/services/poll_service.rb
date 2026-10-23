@@ -22,6 +22,7 @@ class PollService
       topic_params[:private] = TopicService.private_default(group_id: gid)
     end
 
+    poll.tags_pending = Array(topic_params.delete(:tags))
     poll.topic ||= Topic.new topic_params.merge(topicable: poll)
 
     if !poll.opened_at &&
@@ -36,7 +37,7 @@ class PollService
   def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
     actor.ability.authorize!(:create, poll)
-    TagService.authorize_create_tag_names!(poll.group, poll.topic.tags, actor)
+    poll.tags_pending = TagService.permitted_tag_names(poll.group, poll.tags_pending, actor)
     return poll unless TopicService.validate_topicable(poll)
 
     topic_item = Poll.transaction do
@@ -56,6 +57,7 @@ class PollService
       Sentry.metrics.count("poll.create", attributes: { poll_type: poll.poll_type })
       topic_item = TopicItems::PollCreated.create!(
         itemable: poll,
+        tags: poll.tags_pending,
         pinned: true
       )
       MentionNotificationService.create!(
@@ -359,22 +361,24 @@ class PollService
   def self.reopen(poll:, params:, actor:, &on_topic_item)
     actor.ability.authorize! :reopen, poll
 
-    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
-    poll.stv_results = nil if poll.poll_type == 'stv'
-    unless poll.valid?
-      Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return poll
-    end
+    # Recheck the stored poll under the same topic lock used by poll edits.
+    topic_item = poll.with_topic_lock do |current_poll|
+      actor.ability.authorize! :reopen, current_poll
+      poll.reload
+      poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
+      poll.stv_results = nil if poll.poll_type == 'stv'
+      if poll.valid?
+        poll.save!
 
-    topic_item = Poll.transaction do
-      poll.save!
-
-      # Reopening remains visible in the timeline but never repeats poll opening notifications.
-      TopicItems::PollReopened.create!(
-        itemable: poll,
-        user: actor
-      )
+        # Reopening remains visible in the timeline but never repeats poll opening notifications.
+        TopicItems::PollReopened.create!(itemable: poll, user: actor)
+      else
+        Sentry.metrics.count("poll.reopen_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+        nil
+      end
     end
+    return poll unless topic_item
+
     publish_topic_if_active(poll)
     on_topic_item&.call(topic_item)
     poll

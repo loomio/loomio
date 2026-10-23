@@ -1,10 +1,10 @@
 ---
 title: Zur Abstimmung einladen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 10ed7faa6e25f684
   invite-people-to-vote-in-a-poll: a7398912c630c0a3
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: 91ad11fa846c64c6
   view-notification-history: f2ee925afde9dbcb
   close-early: d9467276aaca05ac
-  reopen: e78c84c1ef1d4e5a
+  reopen: b84212e87f4b5af8
 title_source: 4801d1a3dba7ce3d
 title_generated: b0f3dd8c0447dd53
 needs_review:
@@ -150,6 +150,6 @@ Das kann sinnvoll sein, wenn alle ihre Stimme abgegeben haben oder die Abstimmun
 
 Wähle bei einer beendeten Abstimmung **Erneut öffnen** und lege anschließend ein neues Enddatum und eine neue Endzeit fest.
 
-Anonyme Abstimmungen können nicht wieder geöffnet werden.
+Abstimmungen, die das Ergebnis bis zum Ende der Abstimmung verbergen, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihre Endzeit verlängern, solange sie noch offen sind.
 
 ![](proposal_reopen.png)

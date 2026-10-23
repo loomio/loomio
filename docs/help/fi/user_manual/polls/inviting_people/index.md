@@ -1,10 +1,10 @@
 ---
 title: Kutsu äänestämään
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: ed4bbf4695a967de
   invite-people-to-vote-in-a-poll: 13e1468ebb223d36
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: '09f7a8e52feaa747'
   view-notification-history: da34ddbbe19f8f64
   close-early: d7663780c0291203
-  reopen: e5b30f36c2f15891
+  reopen: a54d74be7453e43b
 title_source: 4801d1a3dba7ce3d
 title_generated: 29a79efa7cb00157
 ---
@@ -142,6 +142,6 @@ Voit tehdä näin, kun kaikki ovat äänestäneet tai kyselyä ei enää tarvits
 
 Valitse suljetussa kyselyssä **Avaa uudelleen** ja aseta sitten uusi sulkemispäivä ja kellonaika.
 
-Anonyymejä kyselyitä ei voi avata uudelleen.
+Kyselyitä, joiden tulokset piilotetaan äänestyksen sulkeutumiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyitä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
 
 ![](proposal_reopen.png)

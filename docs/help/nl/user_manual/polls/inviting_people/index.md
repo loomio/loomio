@@ -1,10 +1,10 @@
 ---
 title: Nodig uit om te stemmen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: acbf21ccebfb1a7c
   invite-people-to-vote-in-a-poll: 31559c4cd4fb4613
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: d605ddfb1f134585
   view-notification-history: 13b37b414fa93346
   close-early: ff028f40d1e56f1f
-  reopen: 3d95ad67cc42fe73
+  reopen: af9dc3e790403e85
 title_source: 4801d1a3dba7ce3d
 title_generated: 35dcf23a02ca52e2
 ---
@@ -142,6 +142,6 @@ Je kunt dit doen wanneer iedereen heeft gestemd of de peiling niet langer open h
 
 Selecteer **Heropen** bij een gesloten peiling en stel vervolgens een nieuwe sluitingsdatum en sluitingstijd in.
 
-Anonieme peilingen kunnen niet worden heropend.
+Peilingen die het resultaat verbergen totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt de sluitingstijd verlengen zolang ze nog open zijn.
 
 ![](proposal_reopen.png)

@@ -81,7 +81,7 @@ Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
 
 Select the text to mark as a heading and click on the heading format tool.
 
-If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+If a heading is used in a comment, the comment will automatically be added to the discussion timeline.
 
 ![](format_heading.png)
 

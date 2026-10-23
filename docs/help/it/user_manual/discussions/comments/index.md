@@ -1,10 +1,10 @@
 ---
 title: Commenti
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 5f4b5f328b8561dd
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,15 +28,13 @@ generated:
   reactions: e3d4d5402d3b0320
   translating-comments: 5e29212d633e11fc
   comment-actions: e29515ffd545ebca
-  add-a-comment-to-jump-to: a89883bc36b02d86
+  add-a-comment-to-jump-to: 7a512e9f13c3e9ac
   edit-a-comment-and-view-changes: a4d5e72fc1ae54fd
   copy-a-comment-link: a6cde26820f5bea0
   view-notification-history: bb445dc9aa246d94
   discard-restore-or-delete-a-comment: 40aeb4fe718e889a
 title_source: 355f79f29d7d3c2d
 title_generated: b8f128c97fcde65d
-needs_review:
-  add-a-comment-to-jump-to: use "fissare in alto" instead of "sbloccare" for "pin"
 ---
 
 <!-- translation-section: introduction -->
@@ -125,14 +123,14 @@ Le azioni più comuni appaiono direttamente sotto un commento. Altre azioni sono
 
 ### Aggiungere un commento a Vai a
 
-Usa **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione.
+Usa **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione. L'azione nel menu usa un'icona della sequenza temporale, distinta dalla puntina usata per fissare in alto una conversazione nell'elenco delle conversazioni di un gruppo.
 
-Puoi modificare l'etichetta mostrata in **Vai a**. Rimuovi il fissaggio in alto del commento, poi fissalo di nuovo in alto per cambiare il testo del collegamento.
+Puoi modificare l'etichetta mostrata in **Vai a**. Rimuovi il commento dalla sequenza temporale e aggiungilo di nuovo per cambiare il testo del collegamento.
 
 >[!Tip]
 >Evidenzia le parole che vuoi usare come testo del collegamento prima di selezionare **Aggiungi alla sequenza temporale**.
 
-Seleziona **Sbloccare** per rimuovere l'elemento da **Vai a**.
+Seleziona **Rimuovi dalla sequenza temporale** per rimuovere l'elemento da **Vai a**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

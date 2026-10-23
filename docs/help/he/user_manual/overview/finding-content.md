@@ -1,25 +1,25 @@
 ---
 title: איתור תוכן
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: 9e885b772fd7b411
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 817ef5ad16ac999a
   search: b536fd22e7fafe96
-  search-tips: f3a3a53876255b14
+  search-tips: 90a67a87755f520d
   filter-discussions: a6fbb56c27f1d8bb
-  category-tags: baa73d06accc1827
+  category-tags: 3dad01b1df67b6dc
   unread-discussions: 1a7c4373ec80050a
   polls-awaiting-your-vote: b9238bf263c4354a
   bookmarks: f708a9de1bc3d296
@@ -56,7 +56,7 @@ Loomio מספקת כמה דרכים לאיתור דיונים והחלטות ב�
 - כדאי להתחיל במילה ייחודית אחת או שתיים מתוך הכותרת או התוכן הזכורים.
 - החיפוש מתאים לתחילת מילה, כך שחלק ממילה כמו **bott** יכול להתאים ל־**bottle**.
 - החיפוש מפצה על שגיאות כתיב כאשר יש מעט מאוד תוצאות לשאילתה שהוזנה.
-- ניתן להשתמש במסננים כדי להגביל את התוצאות לארגון, לתת־קבוצה, לתגית או לסוג תוכן כגון תגובות או סקרים.
+- ניתן להשתמש במסננים כדי להגביל את התוצאות לארגון, לתת־קבוצה, לתגית או לסוג תוכן כגון תגובות או סקרים. מסנן תגיות מוצא פריטי תוכן שנושאים במפורש את התגית שנבחרה, ופועל גם ללא ביטוי חיפוש.
 - כדאי למיין לפי **ההתאמה הטובה ביותר** כאשר הרלוונטיות חשובה, או מהחדש לישן או מהישן לחדש כאשר מועד פרסום התוכן ידוע בקירוב.
 
 <!-- translation-section: filter-discussions -->
@@ -69,11 +69,11 @@ Loomio מספקת כמה דרכים לאיתור דיונים והחלטות ב�
 
 ## תגיות קטגוריה
 
-תגיות מקבצות דיונים וסקרים קשורים תחת שמות שנבחרו בקבוצה, כגון פרויקט, צוות או תחום עבודה.
+תגיות מקבצות דיונים, סקרים, מסקנות ותגובות קשורים תחת שמות שנבחרו בקבוצה, כגון פרויקט, צוות או תחום עבודה.
 
 ![](tags.png)
 
-יש לבחור תגית בלשונית **דיונים** כדי להציג דיונים תואמים. אנשים עם הרשאה לפתוח או לערוך דיונים יכולים להוסיף תגיות. פרטים על הגדרה והרשאות מופיעים בעמוד [תגיות קטגוריה](/en/user_manual/discussions/tags).
+יש לבחור תגית בלשונית **דיונים** כדי להציג שרשורים המכילים פריט תואם. בתוך שרשור, יש לבחור תגית בסרגל הצד כדי למצוא פריטים תואמים יחד עם ההקשר שבו הם מופיעים. מחברי הפריטים ורכזי השרשורים יכולים להוסיף תגיות. פרטים על הגדרה והרשאות מופיעים בעמוד [תגיות קטגוריה](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

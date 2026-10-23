@@ -38,6 +38,7 @@ class MoveCommentsWorker < ApplicationJob
       all_topic_items.update_all(topic_id: target_topic_id, sequence_id: nil)
 
       TopicService.repair(target_topic_id)
+      TagService.refresh_topic_tags!([source_topic_id, target_topic_id])
       source_was_discarded = source_topic.topicable_type == 'Poll' &&
                              all_polls.exists?(source_topic.topicable_id) &&
                              !TopicItem.exists?(topic_id: source_topic_id)

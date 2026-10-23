@@ -139,6 +139,8 @@ sl:
     manage_subscription: Upravljanje naročnine
     amount: Znesek
   loomio_tags:
+    show_tags_from_other_groups: "Prikažite oznake iz drugih skupin"
+    parent_group_and_subgroups_in_this_organization: "Nadrejena skupina in podskupine te organizacije"
     all_tags: Vse oznake
     tags: Oznake
     apply_tags: Uporabi oznake
@@ -1081,6 +1083,8 @@ sl:
     topic_notification_history: Zgodovina obvestil o nitih
     notification_history: Zgodovina obvestil
   action_dock:
+    add_to_timeline: Dodajte na časovnico
+    remove_from_timeline: Odstranite s časovnice
     actions_menu: Meni dejanj
     more_actions: Več dejanj
     react: Reagiraj

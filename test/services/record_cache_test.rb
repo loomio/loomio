@@ -336,6 +336,50 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_not cache.scope.key?(:change_notes_by_topic_item_id)
   end
 
+  test 'tagged topic and item metadata needs no additional cache queries' do
+    topic = topics(:discussion_topic)
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Tagged comment'), actor: actor)
+    TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: ['Opening'], actor: actor)
+    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Reply'], actor: actor)
+    topic.reload
+    items = TopicItem.where(topic_id: topic.id).order(:id).to_a
+    cache = RecordCache.new
+    cache.scope[:anonymous_polls_by_topic_id] = {topic.id => false}
+
+    queries = capture_sql do
+      cache.add_topics([topic])
+      cache.add_topic_items(items)
+    end
+    assert_empty queries
+    assert topic.has_tagged_replies
+    assert_equal ['Opening', 'Reply'], topic.tags
+    queries = capture_sql do
+      items.each { |item| assert_equal item.tags, TopicItemSerializer.new(item).tags }
+    end
+    assert_empty queries
+  end
+
+  test 'loading tagged thread items uses the same query count as untagged items' do
+    topic = topics(:discussion_topic)
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Reply'), actor: actor)
+    root = topic.topicable.created_topic_item
+    item = comment.created_topic_item
+    ordinary = ActiveRecord::Base.uncached do
+      capture_sql { RecordCache.for_collection([root, item], actor.id) }
+    end
+
+    TopicItemService.update_tags(topic_item: root, tags: ['Shared'], actor: actor)
+    TopicItemService.update_tags(topic_item: item, tags: ['Shared'], actor: actor)
+    tagged = ActiveRecord::Base.uncached do
+      capture_sql { RecordCache.for_collection([root, item], actor.id) }
+    end
+
+    assert_equal ordinary.length, tagged.length
+    assert_empty tagged.select { |sql| sql.include?('cardinality(tags)') || sql.include?('DISTINCT unnest') }
+  end
+
   def create_change_note_items(count)
     discussion = topics(:discussion_topic).topicable
     actor = users(:admin)

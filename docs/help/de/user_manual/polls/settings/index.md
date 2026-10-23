@@ -1,10 +1,10 @@
 ---
 title: Einstellungen
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 1e1697411da53f12
   anonymous-voting: 4c6845651d2367a8
   vote-reason: 8818e6d77a621800
-  hide-results: ce1db86b13ba05b9
+  hide-results: 368acb4844c11512
   start-the-poll: 37b766b2839b4c83
   managing-polls: 84f389087c488b72
   edit-poll: e1e0163b373527b3
@@ -204,11 +204,11 @@ Einstellungsoptionen:
 - Ergebnis bis zur Abgabe einer Stimme ausblenden
 - Ergebnis bis zum Ende der Abstimmung ausblenden
 
-Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende auf Stimmen antworten, sobald sie selbst abgestimmt haben. Alle Kommentare unter der Abstimmung, einschließlich direkter Kommentare und Antworten auf Antworten, bleiben im Thread für Personen ausgeblendet, die noch nicht abgestimmt haben.
+Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende nach der Stimmabgabe sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben. Mitglieder des Threads können schon vor der Stimmabgabe Kommentare schreiben und auf Stimmen antworten. Kommentare bleiben unabhängig von der Ergebniseinstellung sichtbar.
 
-Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, bleiben Kommentare unter der Abstimmung ausgeblendet. Antworten und Erwähnungen in Begründungen zu Stimmen sind deaktiviert, bis die Abstimmung beendet ist.
+Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, sind Antworten auf Stimmen und Erwähnungen in Begründungen zu Stimmen deaktiviert, bis die Abstimmung beendet ist. Mitglieder des Threads können weiterhin die Abstimmung kommentieren und auf Kommentare antworten. Du kannst das Enddatum verlängern, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
 
-Beim Drucken und Exportieren, auch als Markdown, wird die Einstellung „Ergebnis bis zur Abgabe einer Stimme ausblenden“ ignoriert. Stimmen und Antworten werden dabei einbezogen. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, bleiben ausgeblendet, bis die Abstimmung beendet ist.
+Beim Drucken und Exportieren, auch als Markdown, wird die Einstellung „Ergebnis bis zur Abgabe einer Stimme ausblenden“ ignoriert. Stimmen und Antworten werden dabei einbezogen. Ergebnisse und Begründungen zu Stimmen, die bis zum Ende der Abstimmung ausgeblendet sind, bleiben ausgeblendet, bis die Abstimmung beendet ist. Gewöhnliche Kommentare bleiben im Thread, in der Suche und in Exporten verfügbar.
 
 Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus. Die Vorlage für eine STV-Wahl aktiviert standardmäßig die anonyme Stimmabgabe.
 

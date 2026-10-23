@@ -6,6 +6,7 @@ module.exports = {
     page.loadPath('setup_member_discussion_with_restricted_tags');
     page.expectElement('.tags-field__input.v-autocomplete');
     page.expectText('.tags-field__input .v-chip', 'Existing');
+    page.expectText('.tags-field__input', 'Template default');
     page.fillIn('#discussion-title', 'Thread with existing tags');
     page.fillIn('.tags-field__input input:not([type="hidden"])', 'Other');
     page.click('.v-overlay--active .v-list-item');
@@ -19,6 +20,10 @@ module.exports = {
     page.expectText('.context-panel__heading', 'Thread with existing tags');
     page.expectText('.tags-display', 'Existing');
     page.expectText('.tags-display', 'Other');
+    page.expectText('.tags-display', 'Template default');
     page.expectNoText('.tags-display', 'Unauthorized new tag');
+    test.assert.elementsCount('.topic-header .tag-color-dot[style*="background-color"]', 3);
+    page.refreshAndWait();
+    page.expectText('.tags-display', 'Template default');
   }
 };

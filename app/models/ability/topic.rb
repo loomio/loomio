@@ -15,7 +15,7 @@ module Ability::Topic
     end
 
     can [:update_tags], ::Topic do |topic|
-      topic.topicable.present? && can?(:update, topic.topicable)
+      topic.topicable.present? && can?(:update_tags, topic.topicable.created_topic_item)
     end
 
     can [:announce], ::Topic do |topic|

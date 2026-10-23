@@ -23,6 +23,7 @@ import CommentModel from '@/shared/models/comment_model';
 import PollModel from '@/shared/models/poll_model';
 import TopicItemModel from '@/shared/models/topic_item_model';
 import StanceService from '@/shared/services/stance_service';
+import AbilityService from '@/shared/services/ability_service';
 import TopicList from '@/components/topic/list.vue';
 import StanceReason from '@/components/poll/common/stance_reason.vue';
 
@@ -38,7 +39,7 @@ describe('conversation beneath votes', () => {
     mocks.stances.clear();
     poll = new PollModel({id: 10, hideResults: 'until_vote', closingAt: '2026-12-01', myStanceId: 1});
     mocks.polls.set(poll.id, poll);
-    topic = {maxDepth: 2, membersInclude: () => true, lockedAt: null};
+    topic = {group: () => ({isEnabled: () => true}), maxDepth: 2, membersInclude: () => true, lockedAt: null, allowComments: true};
     poll.topic = () => topic;
     stance = {castAt: '2026-10-01', poll: () => poll};
     mocks.stances.set(11, stance);
@@ -63,9 +64,9 @@ describe('conversation beneath votes', () => {
     return {wrapper, collection};
   }
 
-  it('enables Reply as soon as the reader votes and keeps it disabled until closing for until-closed polls', () => {
+  it('allows replies without voting except while until-closed results are unavailable', () => {
     const reply = StanceService.actions(stance, {}, {depth: 2}).add_comment;
-    expect(reply.canPerform()).toBeFalsy();
+    expect(reply.canPerform()).toBeTruthy();
     mocks.vote.castAt = '2026-10-02';
     expect(reply.canPerform()).toBeTruthy();
     poll.hideResults = 'until_closed';
@@ -76,44 +77,32 @@ describe('conversation beneath votes', () => {
     expect(reply.canPerform()).toBeFalsy();
   });
 
-  it('hides a reply displayed beside its vote at maximum depth until the reader votes', async () => {
-    // The comment's domain parent is outside the page; the normal timeline
-    // parent still identifies the poll after nesting depth is capped.
-    const {wrapper, collection} = mountComment(10, {parentType: 'Comment', parentId: 999});
-    expect(wrapper.find('.topic-item').exists()).toBe(false);
-    mocks.vote.castAt = '2026-10-02';
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(true);
-    mocks.vote.castAt = null;
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(false);
-    wrapper.unmount();
-  });
-
-  it('hides direct poll comments until voting and reveals them when the poll closes', async () => {
-    const {wrapper, collection} = mountComment(10, {parentType: 'Poll', parentId: poll.id});
-    expect(wrapper.find('.topic-item').exists()).toBe(false);
-    mocks.vote.castAt = '2026-10-02';
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(true);
-    poll.hideResults = 'until_closed';
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(false);
-    poll.closedAt = '2026-10-03';
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(true);
-    wrapper.unmount();
-  });
-
-  it('uses normally loaded stance and comment ancestors to hide nested replies', async () => {
+  it.each(['off', 'until_vote', 'until_closed'])('keeps poll comments visible with %s results', async hideResults => {
+    poll.hideResults = hideResults;
     makeItem({id: 11, itemableType: 'Stance', itemableId: 11, parentId: 10});
     makeItem({id: 12, itemableType: 'Comment', itemableId: 21, parentId: 11});
-    const {wrapper, collection} = mountComment(12);
-    expect(wrapper.find('.topic-item').exists()).toBe(false);
-    mocks.vote.castAt = '2026-10-02';
-    await wrapper.setProps({collection: [...collection]});
-    expect(wrapper.find('.topic-item').exists()).toBe(true);
-    wrapper.unmount();
+    for (const parentId of [10, 11, 12]) {
+      const {wrapper, collection} = mountComment(parentId);
+      expect(wrapper.find('.topic-item').exists()).toBe(true);
+      mocks.vote.castAt = '2026-10-02';
+      await wrapper.setProps({collection: [...collection]});
+      expect(wrapper.find('.topic-item').exists()).toBe(true);
+      wrapper.unmount();
+      mocks.vote.castAt = null;
+    }
+  });
+
+  it('offers reopening only for eligible result settings', () => {
+    poll.group = () => ({isEnabled: () => true});
+    poll.adminsInclude = () => true;
+    poll.closedAt = '2026-10-03';
+    for (const mode of ['off', 'until_vote', 'until_closed']) {
+      poll.hideResults = mode;
+      expect(Boolean(AbilityService.canReopenPoll(poll))).toBe(mode !== 'until_closed');
+    }
+    poll.hideResults = 'until_vote';
+    poll.anonymous = true;
+    expect(AbilityService.canReopenPoll(poll)).toBeFalsy();
   });
 
   it('leaves comments elsewhere in the discussion visible', () => {

@@ -1,10 +1,10 @@
 ---
 title: Beállítások
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: e6ac37324b884958
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 8494c0e55397b4f7
   anonymous-voting: 25122b6c2fa90792
   vote-reason: 33520d3f5b8d0505
-  hide-results: f3be9c09bcb1650a
+  hide-results: 2f2fbfed5943e292
   start-the-poll: 3be52bb7323c5a8b
   managing-polls: 8810d3ffe4b09bf2
   edit-poll: 2158fe8e324cdec9
@@ -207,11 +207,11 @@ Beállítási lehetőségek:
 - Eredmények elrejtése a szavazat leadásáig
 - Eredmények elrejtése a szavazás lezárásáig
 
-Ha az eredmények a szavazat leadásáig rejtve vannak, az emberek a saját szavazatuk leadása után azonnal válaszolhatnak a szavazatokra. A szavazás alatti összes hozzászólás, beleértve a közvetlen hozzászólásokat és a válaszokra adott válaszokat is, rejtve marad a szálban azok elől, akik még nem szavaztak.
+Ha az eredmények a szavazat leadásáig rejtve vannak, az emberek a szavazatuk leadása után láthatják, hogy mások melyik lehetőséget választották, és milyen indoklást adtak. A szál tagjai a szavazatuk leadása előtt is írhatnak hozzászólásokat és válaszolhatnak a szavazatokra. A hozzászólások az eredmények megjelenítésének beállításától függetlenül láthatók maradnak.
 
-Ha az eredmények a szavazás lezárásáig rejtve vannak, a szavazás alatti hozzászólások is rejtve maradnak, és a szavazás lezárásáig nem lehet válaszokat írni vagy említéseket használni a szavazatok indoklásában.
+Ha az eredmények a szavazás lezárásáig rejtve vannak, a lezárásig nem lehet válaszolni a szavazatokra vagy említéseket használni a szavazatok indoklásában. A szál tagjai továbbra is hozzászólhatnak a szavazáshoz és válaszolhatnak a hozzászólásokra. Amíg a szavazás nyitva van, meghosszabbíthatod a határidejét, de a lezárása után nem nyithatod újra.
 
-A nyomtatás és az exportálás, beleértve a Markdown formátumot is, figyelmen kívül hagyja az „Eredmények elrejtése a szavazat leadásáig” beállítást, és tartalmazza a szavazatokat és a válaszokat. A lezárásig rejtett eredmények a szavazás lezárásáig rejtve maradnak.
+A nyomtatás és az exportálás, beleértve a Markdown formátumot is, figyelmen kívül hagyja az „Eredmények elrejtése a szavazat leadásáig” beállítást, és tartalmazza a szavazatokat és a válaszokat. A lezárásig rejtett eredmények és a szavazatok indoklásai a szavazás lezárásáig rejtve maradnak. A szokásos hozzászólások továbbra is elérhetők a szálban, a keresésben és az exportált adatokban.
 
 A névtelen szavazások eredményei mindig rejtve maradnak a szavazás lezárásáig. Az STV-választás sablon alapértelmezés szerint engedélyezi a névtelen szavazást.
 

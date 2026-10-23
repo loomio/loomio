@@ -1,10 +1,10 @@
 ---
 title: Invitar a votar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 61bf30560f2f1e91
   invite-people-to-vote-in-a-poll: bde9aa4ad5f05264
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: 862f07ec46c0e97c
   view-notification-history: 78fd86aa8bc76e8a
   close-early: 81408c02b77cd418
-  reopen: 055cd3caf4a37c2d
+  reopen: 05cd9ac08cb31fe1
 title_source: 4801d1a3dba7ce3d
 title_generated: 3a1a9d984f78a737
 needs_review:
@@ -145,6 +145,6 @@ Puedes hacerlo cuando todas las personas hayan votado o cuando la encuesta ya no
 
 Selecciona **Reabrir** en una encuesta cerrada y establece una nueva fecha de cierre y hora.
 
-Las encuestas anónimas no se pueden reabrir.
+Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar su plazo de cierre mientras sigan abiertas.
 
 ![](proposal_reopen.png)

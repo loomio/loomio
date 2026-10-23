@@ -1,10 +1,10 @@
 ---
 title: Formato
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: 17247b48661ee931
   insert-link: 83d0eaca1d16177a
   insert-emoji: bf71cc026c397814
-  headings: 0a760ff70863b94c
+  headings: cc1b0cfe8f591f2a
   bold-italicize-strikethrough: cec78f9215511e32
   list: c8fdce6a64da25a3
   numbered-list: '049ed50183aab008'
@@ -134,7 +134,7 @@ Los encabezados 1, 2 y 3 pueden ayudarte a estructurar una discusión o un comen
 
 Selecciona el texto que quieres marcar como encabezado y haz clic en la herramienta de formato de encabezados.
 
-Si usas un encabezado en un comentario, el comentario se fijará automáticamente en la cronología de la discusión.
+Si usas un encabezado en un comentario, el comentario se añadirá automáticamente a la cronología de la discusión.
 
 ![](format_heading.png)
 

@@ -139,6 +139,8 @@ he:
     manage_subscription: ניהול מנוי
     amount: כמות
   loomio_tags:
+    show_tags_from_other_groups: "הצגת תגיות מקבוצות אחרות"
+    parent_group_and_subgroups_in_this_organization: "קבוצת האם ותת־הקבוצות בארגון זה"
     all_tags: כל התגים
     tags: תגיות
     apply_tags: החל תגיות
@@ -1085,6 +1087,8 @@ he:
     topic_notification_history: היסטוריית התראות של השרשור
     notification_history: היסטוריית התראות
   action_dock:
+    add_to_timeline: להוסיף לציר הזמן
+    remove_from_timeline: להסיר מציר הזמן
     actions_menu: תפריט פעולות
     more_actions: יותר פעולות
     react: לְהָגִיב

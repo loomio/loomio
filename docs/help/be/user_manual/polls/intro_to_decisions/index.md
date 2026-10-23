@@ -1,10 +1,10 @@
 ---
 title: Прапановы і апытанні
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: e441e2b61fbf69f3
@@ -33,7 +33,7 @@ generated:
   1-create-it: 889fbfea40eec3e5
   2-voting-opens: c35fc4ea408bc9e6
   3-people-vote: 4e87ea0148e97879
-  4-it-closes: 76a10084874dadbc
+  4-it-closes: 8042a8827fedb405
   5-share-an-outcome: af2dae04e42c15db
 title_source: d45b4ba3cb7a27cb
 title_generated: a4b8b420de74cdb5
@@ -150,7 +150,7 @@ title_generated: a4b8b420de74cdb5
 
 ### 4. Апытанне закрываецца
 
-Апытанне закрываецца аўтаматычна ў прызначаны час закрыцця. Каардынатары апытання таксама могуць закрыць яго раней. Пасля закрыцця каардынатары апытання могуць адкрыць яго зноў з новым часам закрыцця, каб людзі маглі працягваць галасаваць. Ананімныя апытанні нельга адкрыць зноў.
+Апытанне закрываецца аўтаматычна ў прызначаны час закрыцця. Каардынатары апытання таксама могуць закрыць яго раней. Пасля закрыцця каардынатары апытання могуць адкрыць яго зноў з новым часам закрыцця, каб людзі маглі працягваць галасаваць. Апытанні, у якіх вынікі схаваныя да закрыцця галасавання, у тым ліку ананімныя апытанні, нельга адкрыць зноў. Вы можаце падоўжыць час да іх закрыцця, пакуль яны яшчэ адкрытыя.
 
 <!-- translation-section: 5-share-an-outcome -->
 

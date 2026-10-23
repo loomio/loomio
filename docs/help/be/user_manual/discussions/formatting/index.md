@@ -1,10 +1,10 @@
 ---
 title: Фарматаванне
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: 10a8050a1284c95e
   insert-link: d815566770c9c006
   insert-emoji: 36aaa4c805c884bf
-  headings: accdd0166c9d0dab
+  headings: fcad5c4e63e762d6
   bold-italicize-strikethrough: e932111b6744a2bc
   list: 42617757d4b1b6e3
   numbered-list: d4e4aacfd767e899
@@ -134,7 +134,7 @@ title_generated: d3d09eaf6040ff72
 
 Вылучыце тэкст, які хочаце зрабіць загалоўкам, і націсніце інструмент фарматавання загалоўкаў.
 
-Калі ў каментарыі ёсць загаловак, каментарый аўтаматычна замацоўваецца ў стужцы падзей абмеркавання.
+Калі ў каментарыі ёсць загаловак, каментарый аўтаматычна дадаецца ў стужку падзей абмеркавання.
 
 ![](format_heading.png)
 

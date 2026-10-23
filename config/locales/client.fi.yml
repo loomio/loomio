@@ -139,6 +139,8 @@ fi:
     manage_subscription: Hallinnoi tilausta
     amount: Määrä
   loomio_tags:
+    show_tags_from_other_groups: "Näytä muiden ryhmien tunnisteet"
+    parent_group_and_subgroups_in_this_organization: "Tämän organisaation pääryhmä ja alaryhmät"
     all_tags: Kaikki tunnisteet
     tags: Tunnisteet
     apply_tags: Käytä tunnisteita
@@ -1081,6 +1083,8 @@ fi:
     topic_notification_history: Keskusteluilmoitusten historia
     notification_history: Ilmoitushistoria
   action_dock:
+    add_to_timeline: Lisää aikajanalle
+    remove_from_timeline: Poista aikajanalta
     actions_menu: Toiminnot-valikko
     more_actions: Lisää toimintaa
     react: Reagoi

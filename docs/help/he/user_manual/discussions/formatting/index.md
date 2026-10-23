@@ -1,10 +1,10 @@
 ---
 title: עיצוב
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-22'
 sections:
   introduction: e5ed11fef349b38c
   attach-file: 772ed69602535db7
@@ -12,7 +12,7 @@ sections:
   insert-image: 8eacc62b369c9089
   insert-link: 40bfb3477cb4e448
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -33,7 +33,7 @@ generated:
   insert-image: 0e4154b34538d117
   insert-link: 31bb396b9cb4c402
   insert-emoji: ef1f99f60220ece6
-  headings: 6aaad3c27d32c8d1
+  headings: 8acd0136a8525e7e
   bold-italicize-strikethrough: fa2f21815939c673
   list: 426c79f994071988
   numbered-list: e135301d7d943e86
@@ -134,7 +134,7 @@ title_generated: fb76597681c2bb39
 
 יש לבחור את הטקסט שיש לסמן ככותרת וללחוץ על כלי עיצוב הכותרות.
 
-אם תגובה כוללת כותרת, התגובה תינעץ אוטומטית בציר הזמן של הדיון.
+אם תגובה כוללת כותרת, התגובה תתווסף אוטומטית לציר הזמן של הדיון.
 
 ![](format_heading.png)
 

@@ -1,10 +1,10 @@
 ---
 title: Comentários
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 5f4b5f328b8561dd
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: c5887b2bce44a32e
   translating-comments: b38c777266757271
   comment-actions: 20e63f24143072f1
-  add-a-comment-to-jump-to: ec9431272d7883ca
+  add-a-comment-to-jump-to: 2dbf0056d0ffb2ba
   edit-a-comment-and-view-changes: 233287098a98017a
   copy-a-comment-link: d19c203bbb7ef68b
   view-notification-history: d031f5670e8e085d
@@ -123,14 +123,14 @@ As ações comuns aparecem diretamente abaixo de um comentário. Outras ações 
 
 ### Adicionar um comentário a Pular para
 
-Use **Fixar na timeline** para adicionar um comentário à lista **Pular para** da conversa.
+Use **Adicione à linha do tempo** para adicionar um comentário à lista **Pular para** da conversa. A ação do menu usa um ícone de linha do tempo, diferente do alfinete usado para fixar uma conversa no topo da lista de conversas de um grupo.
 
-Você pode editar o rótulo exibido em **Pular para**. Desafixe e depois fixe o comentário novamente para alterar o texto do link.
+Você pode editar o rótulo exibido em **Pular para**. Remova o comentário da linha do tempo e adicione-o novamente para alterar o texto do link.
 
 >[!Tip]
->Selecione as palavras que você quer usar como texto do link antes de selecionar **Fixar na timeline**.
+>Selecione as palavras que você quer usar como texto do link antes de selecionar **Adicione à linha do tempo**.
 
-Selecione **Desafixar** para remover o item de **Pular para**.
+Selecione **Remova da linha do tempo** para remover o item de **Pular para**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

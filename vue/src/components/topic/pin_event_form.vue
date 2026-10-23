@@ -32,7 +32,7 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.pin-topic_item-form(:title="$t('pin_event_form.title')")
+v-card.pin-topic_item-form(:title="$t('action_dock.add_to_timeline')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text

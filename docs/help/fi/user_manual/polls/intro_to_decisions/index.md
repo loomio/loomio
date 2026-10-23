@@ -1,10 +1,10 @@
 ---
 title: Ehdotukset ja kyselyt
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,7 +18,7 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
+  4-it-closes: 160ae44c632bbf7d
   5-share-an-outcome: 8339cb332cd8a946
 generated:
   introduction: 9551fc8dad4cb470
@@ -33,7 +33,7 @@ generated:
   1-create-it: 554045028418cf81
   2-voting-opens: 2d703282ae7e7390
   3-people-vote: 124d3d146461e556
-  4-it-closes: ef425430195bd79e
+  4-it-closes: 109c316074b191b8
   5-share-an-outcome: d745e24578bc140d
 title_source: d45b4ba3cb7a27cb
 title_generated: a66d8804d0433ec4
@@ -154,7 +154,7 @@ Kun ehdotus tai kysely on avoinna, ihmiset voivat äänestää, perustella ään
 
 ### 4. Kysely sulkeutuu
 
-Kysely sulkeutuu automaattisesti sulkemisajankohtana. Kyselyn koordinaattori voi myös sulkea sen etuajassa. Sulkemisen jälkeen kyselyn koordinaattori voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Anonyymejä kyselyjä ei voi avata uudelleen.
+Kysely sulkeutuu automaattisesti sulkemisajankohtana. Kyselyn koordinaattori voi myös sulkea sen etuajassa. Sulkemisen jälkeen kyselyn koordinaattori voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Kyselyjä, joiden tulokset piilotetaan äänestyksen päättymiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyjä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
 
 <!-- translation-section: 5-share-an-outcome -->
 

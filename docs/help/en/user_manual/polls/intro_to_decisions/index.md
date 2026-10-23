@@ -109,7 +109,7 @@ While it is open, people can vote, explain their vote, and change their vote. Re
 
 ### 4. It closes
 
-It closes automatically at the closing time. A poll coordinator can also close it early. After it closes, a poll coordinator can reopen it with a new closing time to let people keep voting. Anonymous polls cannot be reopened.
+It closes automatically at the closing time. A poll coordinator can also close it early. After it closes, a poll coordinator can reopen it with a new closing time to let people keep voting. Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
 
 <!-- translation-section: 5-share-an-outcome -->
 

@@ -53,6 +53,7 @@ export default class DiscussionTemplateModel extends BaseModel {
     const discussion = Records.discussions.build();
 
     const attrs = pick(this, AppConfig.templateSettings.discussion_template.map(camelCase));
+    attrs.tags = this.tags.slice();
     attrs.discussionTemplateId = this.id;
     attrs.discussionTemplateKey = this.key;
     attrs.authorId = Session.user().id;

@@ -1,10 +1,10 @@
 ---
 title: Запросити до голосування
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-22'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -16,7 +16,7 @@ sections:
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 265ed8f74a21fdea
   invite-people-to-vote-in-a-poll: 1d11b0477858a2fa
@@ -28,7 +28,7 @@ generated:
   remind-people-to-vote: 35315307f155bed8
   view-notification-history: d79ba0c043fa315b
   close-early: 5adaadd73e135193
-  reopen: 13d53b6eb1e74ab8
+  reopen: e594bb5c9425e3b9
 title_source: 4801d1a3dba7ce3d
 title_generated: ba22e8121d90784a
 ---
@@ -142,6 +142,6 @@ title_generated: ba22e8121d90784a
 
 Виберіть **Відкрити знову** в закритому опитуванні, а потім установіть нову дату й час закриття.
 
-Анонімні опитування не можна відкрити знову.
+Опитування, у яких результати приховано до закриття голосування, зокрема анонімні опитування, не можна відкрити знову. Ви можете подовжити час до їх закриття, поки вони ще відкриті.
 
 ![](proposal_reopen.png)

@@ -26,16 +26,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_equal ['Existing'], discussion.topic.tags
   end
 
-  test "members cannot inject new tags while starting discussions when tag creation is disabled" do
+  test "disallowed tags are dropped without blocking discussion creation" do
     group = topics(:discussion_topic).group
     group.update!(members_can_create_tags: false)
     sign_in users(:member_normal)
 
-    assert_no_difference ['Discussion.count', 'Topic.count', 'Tag.count', 'TopicItem.count'] do
-      post :create, params: { discussion: { title: 'Injected tag', group_id: group.id, tags: ['New tag'] } }
+    assert_difference ['Discussion.count', 'Topic.count', 'TopicItem.count'], 1 do
+      assert_no_difference 'Tag.count' do
+        post :create, params: { discussion: { title: 'Injected tag', group_id: group.id, tags: ['New tag'] } }
+      end
     end
 
-    assert_response :forbidden
+    assert_response :success
+    assert_empty Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
   end
 
   test "group admins can create tags while starting discussions when member tag creation is disabled" do
@@ -235,13 +238,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_response :success
 
     post :create, params: { discussion: { title: 'Injected tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake', 'Not approved' ] } }
-    assert_response :forbidden
+    assert_response :success
+    assert_equal ['Intake'], Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
+    assert_not Tag.exists?(group: @group, name: 'Not approved')
 
     template.hide!
-    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
-      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake' ] } }
+    # Intake is now an existing organization tag. Use a new prescribed name to
+    # check that a hidden template cannot authorize creating more vocabulary.
+    template.update!(tags: ['Hidden intake'])
+    assert_no_difference 'Tag.count' do
+      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Hidden intake' ] } }
     end
-    assert_response :forbidden
+    assert_response :success
+    assert_empty Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
   end
 
   test "nonmember cannot invite people while creating a group discussion" do
