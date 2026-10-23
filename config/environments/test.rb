@@ -34,6 +34,9 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
+  # Solid Cache's expiry thread can deadlock against pinned fixture connections.
+  # Keep cache-backed behavior without background database work during tests.
+  config.cache_store = :memory_store
   config.active_job.queue_adapter = :test
 
   # E2E scenarios need production-like immediate job execution. Rails tests
