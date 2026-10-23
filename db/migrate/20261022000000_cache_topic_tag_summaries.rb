@@ -1,6 +1,5 @@
 class CacheTopicTagSummaries < ActiveRecord::Migration[8.1]
   def up
-    add_column :topics, :root_tags, :string, array: true, default: [], null: false
     add_column :topics, :has_tagged_replies, :boolean, default: false, null: false
 
     # Backfill derived thread fields without application callbacks or jobs.
@@ -20,7 +19,6 @@ class CacheTopicTagSummaries < ActiveRecord::Migration[8.1]
           ON comments.parent_type = 'Comment' AND comments.parent_id = discarded_poll_comments.id
       ), summaries AS (
         SELECT items.topic_id, array_agg(DISTINCT names.name) AS tags,
-          max(items.id) FILTER (WHERE items.sequence_id = 0) AS root_id,
           bool_or(items.sequence_id > 0) AS has_tagged_replies
         FROM topic_items items
         CROSS JOIN LATERAL unnest(items.tags) names(name)
@@ -36,12 +34,10 @@ class CacheTopicTagSummaries < ActiveRecord::Migration[8.1]
       ), projected AS (
         SELECT topics.id,
           ARRAY(SELECT name FROM unnest(summaries.tags) names(name) ORDER BY lower(name), name) AS tags,
-          COALESCE(roots.tags, ARRAY[]::varchar[]) AS root_tags,
           COALESCE(summaries.has_tagged_replies, FALSE) AS has_tagged_replies
         FROM topics LEFT JOIN summaries ON summaries.topic_id = topics.id
-        LEFT JOIN topic_items roots ON roots.id = summaries.root_id
       )
-      UPDATE topics SET tags = projected.tags, root_tags = projected.root_tags,
+      UPDATE topics SET tags = projected.tags,
         has_tagged_replies = projected.has_tagged_replies
       FROM projected WHERE topics.id = projected.id
     SQL
@@ -49,6 +45,5 @@ class CacheTopicTagSummaries < ActiveRecord::Migration[8.1]
 
   def down
     remove_column :topics, :has_tagged_replies
-    remove_column :topics, :root_tags
   end
 end

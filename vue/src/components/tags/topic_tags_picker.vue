@@ -20,7 +20,8 @@ const { topic, topicItem, watchKey } = defineProps({
 
 const { watchRecords } = useWatchRecords();
 const { t } = useI18n();
-const assignedTags = () => topicItem ? topicItem.tags : topic.rootTags;
+const assignedItem = () => topicItem || topic.createdTopicItem();
+const assignedTags = () => assignedItem().tags;
 
 const selectedTags = ref([]);
 const orgTags = ref([]);
@@ -179,9 +180,7 @@ function saveTags() {
   const tags = cleanTagNames(selectedTags.value);
   selectedTags.value = tags;
   savePromise = savePromise.catch(() => {}).then(() => {
-    const remote = topicItem ? Records.topicItems.remote : Records.topics.remote;
-    const id = topicItem ? topicItem.id : topic.id;
-    return remote.patchMember(id, 'tags', {tags}).then(() => {
+    return Records.topicItems.remote.patchMember(assignedItem().id, 'tags', {tags}).then(() => {
       if (sequence === saveSequence) { selectedTags.value = cleanTagNames(assignedTags()); }
     }).catch(err => {
       if (sequence === saveSequence) { selectedTags.value = cleanTagNames(assignedTags()); }

@@ -352,7 +352,6 @@ class RecordCacheTest < ActiveSupport::TestCase
       cache.add_topic_items(items)
     end
     assert_empty queries
-    assert_equal ['Opening'], topic.root_tags
     assert topic.has_tagged_replies
     assert_equal ['Opening', 'Reply'], topic.tags
     queries = capture_sql do

@@ -156,7 +156,6 @@ class TagService
 
         topic.assign_attributes(
           tags: clean_tag_names(rows.flat_map(&:last)),
-          root_tags: rows.find { |sequence_id, _tags| sequence_id == 0 }&.last || [],
           has_tagged_replies: rows.any? { |sequence_id, _tags| sequence_id && sequence_id > 0 }
         )
         topic.save! if topic.changed?

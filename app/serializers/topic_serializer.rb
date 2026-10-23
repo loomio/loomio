@@ -20,7 +20,6 @@ class TopicSerializer < ApplicationSerializer
              :has_anonymous_polls,
              :seen_by_count,
              :tags,
-             :root_tags,
              :has_tagged_replies
 
   # Reader attributes

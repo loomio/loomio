@@ -38,7 +38,7 @@ class ThreadMarkdownService
       created: timestamp(record.created_at),
       last_activity: timestamp(topic.last_activity_at),
       tags: Array(topic.tags).map { |tag| inline(tag) }.presence,
-      root_tags: Array(topic.root_tags).map { |tag| inline(tag) }.presence
+      root_tags: record.created_topic_item.tags.map { |tag| inline(tag) }.presence
     }.compact
 
     "---\n#{fields.map { |key, value| "#{key}: #{value.to_json}" }.join("\n")}\n---"

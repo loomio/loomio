@@ -1268,7 +1268,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_22_000001) do
     t.datetime "pinned_at", precision: nil
     t.boolean "private", default: true, null: false
     t.string "ranges_string"
-    t.string "root_tags", default: [], null: false, array: true
     t.integer "seen_by_count", default: 0, null: false
     t.string "tags", default: [], array: true
     t.integer "topicable_id", null: false

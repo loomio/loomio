@@ -86,6 +86,22 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "front matter reads opening tags separately from reply tags" do
+    discussion = create_discussion
+    comment = CommentService.create(comment: Comment.new(parent: discussion, body: 'Budget'), actor: @member)
+    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['budget'], actor: @member)
+
+    front_matter = YAML.safe_load(render(discussion.topic).split("---\n", 3)[1])
+
+    assert_equal ['budget', 'governance', 'planning'], front_matter['tags']
+    assert_equal ['governance', 'planning'], front_matter['root_tags']
+
+    TopicItemService.update_tags(topic_item: discussion.created_topic_item, tags: [], actor: @admin)
+    front_matter = YAML.safe_load(render(discussion.topic).split("---\n", 3)[1])
+    assert_equal ['budget'], front_matter['tags']
+    assert_not front_matter.key?('root_tags')
+  end
+
   test "renders voters by option and named reactions" do
     discussion = create_discussion
     comment = Comment.new(body: "Please record the support.", parent: discussion)
@@ -280,6 +296,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
           group_id: @group.id,
           title: 'Standalone decision',
           details: 'Choose one option.',
+          tags: ['Decision'],
           poll_type: 'proposal',
           poll_option_names: ['Agree', 'Disagree'],
           closing_at: 3.days.from_now
@@ -294,6 +311,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "# Poll: Standalone decision · #{@admin.name}"
       assert_includes markdown, "## Poll"
       assert_includes markdown, "Choose one option."
+      assert_equal ['Decision'], YAML.safe_load(markdown.split("---\n", 3)[1])['root_tags']
       assert_equal 1, markdown.scan(/^## Poll$/).length
       refute_includes markdown, "## Proposal: Standalone decision"
     end

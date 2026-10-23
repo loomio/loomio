@@ -201,9 +201,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Budget'], target.reload.tags
     assert_equal ['Budget'], @item.reload.tags
     assert_not @topic.has_tagged_replies
-    assert_empty @topic.root_tags
     assert target.has_tagged_replies
-    assert_empty target.root_tags
   end
 
   test 'repair rebuilds cached tag summaries after restoring the root sequence' do
@@ -211,12 +209,12 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     tag(@item, ['Reply'])
     @root.update_columns(sequence_id: nil)
     @item.update_columns(sequence_id: 0)
-    @topic.update_columns(root_tags: ['Stale'], has_tagged_replies: false)
+    @topic.update_columns(tags: ['Stale'], has_tagged_replies: false)
 
     TopicService.repair(@topic.id)
 
     assert_equal ['Opening', 'Reply'], @topic.reload.tags
-    assert_equal ['Opening'], @topic.root_tags
+    assert_equal ['Opening'], @topic.topicable.created_topic_item.tags
     assert @topic.has_tagged_replies
   end
 

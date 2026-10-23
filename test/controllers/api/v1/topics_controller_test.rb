@@ -241,7 +241,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal ['new', 'urgent'], @topic.reload.tags
     json = JSON.parse(response.body)
     assert_equal ['new', 'urgent'], json.fetch('topics').find { |row| row['id'] == @topic.id }.fetch('tags')
-    assert_equal ['new', 'urgent'], json.fetch('topics').find { |row| row['id'] == @topic.id }.fetch('root_tags')
+    assert_equal ['new', 'urgent'], @topic.topicable.created_topic_item.tags
+    assert_not json.fetch('topics').find { |row| row['id'] == @topic.id }.key?('root_tags')
     %w[new urgent].each do |name|
       tag = @group.tags.find_by!(name: name)
       assert_includes Tag::COLORS, tag.color
@@ -257,7 +258,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal [], @topic.reload.tags
-    assert_empty JSON.parse(response.body).fetch('topics').find { |row| row['id'] == @topic.id }.fetch('root_tags')
+    assert_empty @topic.topicable.created_topic_item.tags
   end
 
   test "tags can be updated by users who can edit the topicable" do

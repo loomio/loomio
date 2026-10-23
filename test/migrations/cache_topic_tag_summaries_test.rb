@@ -37,12 +37,9 @@ class CacheTopicTagSummariesTest < ActiveSupport::TestCase
     Topic.reset_column_information
 
     assert_equal ['Public tag', 'Reply', 'Shared'], topic.reload.tags
-    assert_equal ['Shared'], topic.root_tags
     assert topic.has_tagged_replies
     assert_equal ['Direct'], direct.reload.tags
-    assert_equal ['Direct'], direct.root_tags
     assert_not direct.has_tagged_replies
-    assert_empty topics(:subgroup_discussion_topic).root_tags
     assert_not topics(:subgroup_discussion_topic).has_tagged_replies
     assert_equal ['Removed'], discarded.created_topic_item.tags
   ensure

@@ -6,10 +6,9 @@ import { createRouter, createMemoryHistory } from 'vue-router';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
-  patchTopic: vi.fn(), patchItem: vi.fn(), serverError: vi.fn(), watchRecords: vi.fn(), user: {id: 1}
+  patchItem: vi.fn(), serverError: vi.fn(), watchRecords: vi.fn(), user: {id: 1}
 }));
 vi.mock('@/shared/services/records', () => ({default: {
-  topics: {remote: {patchMember: mocks.patchTopic}},
   topicItems: {remote: {patchMember: mocks.patchItem}}
 }}));
 vi.mock('@/shared/services/flash', () => ({default: {serverError: mocks.serverError}}));
@@ -27,12 +26,13 @@ describe('item tagging', () => {
   let topic;
   let group;
   let taggedItem;
+  let rootItem;
 
   beforeEach(() => {
     vi.clearAllMocks();
     taggedItem = null;
-    mocks.patchTopic.mockImplementation(async (_id, _action, {tags}) => { topic.rootTags = tags; });
-    mocks.patchItem.mockImplementation(async (_id, _action, {tags}) => { taggedItem.tags = tags; });
+    rootItem = reactive({id: 6, tags: ['Governance']});
+    mocks.patchItem.mockImplementation(async (_id, _action, {tags}) => { (taggedItem || rootItem).tags = tags; });
     vi.stubGlobal('ResizeObserver', class {observe() {} unobserve() {} disconnect() {}});
     vi.stubGlobal('visualViewport', undefined);
     vi.stubGlobal('matchMedia', () => ({matches: false, addEventListener() {}, removeEventListener() {}}));
@@ -43,7 +43,8 @@ describe('item tagging', () => {
       tags: () => [{id: 1, name: 'Budget', usedGroupIds: [1]}, {id: 2, name: 'Governance', usedGroupIds: [1]}]
     };
     topic = reactive({
-      id: 5, groupId: 1, tags: ['Budget', 'Governance'], rootTags: ['Governance'], hasTaggedReplies: true,
+      id: 5, groupId: 1, tags: ['Budget', 'Governance'], hasTaggedReplies: true,
+      createdTopicItem: () => rootItem,
       group: () => group, membersInclude: () => true, adminsInclude: () => false,
       topicable: () => ({authorId: 1}), topicableType: 'Discussion'
     });
@@ -67,8 +68,8 @@ describe('item tagging', () => {
     await nextTick();
     await wrapper.findAll('.topic-tags-picker__tag')[0].trigger('click');
     await flushPromises();
-    expect(mocks.patchTopic).toHaveBeenCalledWith(5, 'tags', {tags: ['Budget', 'Governance']});
-    expect(mocks.patchItem).not.toHaveBeenCalled();
+    expect(mocks.patchItem).toHaveBeenCalledWith(6, 'tags', {tags: ['Budget', 'Governance']});
+    expect(rootItem.tags).toEqual(['Budget', 'Governance']);
   });
 
   it('uses the item endpoint and leaves other assignments alone', async () => {
@@ -79,8 +80,7 @@ describe('item tagging', () => {
     await flushPromises();
     expect(mocks.patchItem).toHaveBeenCalledWith(9, 'tags', {tags: []});
     expect(item.tags).toEqual([]);
-    expect(topic.rootTags).toEqual(['Governance']);
-    expect(mocks.patchTopic).not.toHaveBeenCalled();
+    expect(rootItem.tags).toEqual(['Governance']);
   });
 
   it('restores the saved selection when an edit fails', async () => {
@@ -138,7 +138,7 @@ describe('item tagging', () => {
     expect(names()).toEqual(['Governance', 'Shared', 'Subgroup', 'Unused']);
     await wrapper.findAll('.topic-tags-picker__tag')[2].trigger('click');
     await flushPromises();
-    expect(mocks.patchTopic).toHaveBeenCalledWith(5, 'tags', {tags: ['Governance', 'Subgroup']});
+    expect(mocks.patchItem).toHaveBeenCalledWith(6, 'tags', {tags: ['Governance', 'Subgroup']});
     wrapper.vm.reset();
     await nextTick();
     expect(names()).toContain('Subgroup');
@@ -149,7 +149,7 @@ describe('item tagging', () => {
     group.id = 2;
     group.parentOrSelf = () => parent;
     topic.groupId = 2;
-    topic.rootTags = [];
+    rootItem.tags = [];
     group.tags = () => [
       {id: 1, name: 'Local', usedGroupIds: [2]},
       {id: 2, name: 'Parent', usedGroupIds: [1]},

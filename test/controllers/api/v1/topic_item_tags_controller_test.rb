@@ -18,7 +18,8 @@ class Api::V1::TopicItemTagsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal ['Finance'], json.fetch('topic_items').find { |row| row['id'] == @item.id }.fetch('tags')
     assert_equal ['Finance'], json.fetch('topics').find { |row| row['id'] == @topic.id }.fetch('tags')
-    assert_empty json.fetch('topics').first.fetch('root_tags')
+    root = @topic.topicable.created_topic_item
+    assert_empty json.fetch('parent_topic_items').find { |row| row['id'] == root.id }.fetch('tags')
     assert json.fetch('topics').first.fetch('has_tagged_replies')
     tag = @topic.group.tags.find_by!(name: 'Finance')
     assert_includes Tag::COLORS, tag.color
@@ -30,6 +31,27 @@ class Api::V1::TopicItemTagsControllerTest < ActionController::TestCase
     patch :tags, params: {id: @item.id, tags: ['Finance']}
     assert_response :forbidden
     assert_equal ['Budget'], @item.reload.tags
+  end
+
+  test 'loading a reply includes the opening tags for discussion and poll topics' do
+    poll = PollService.create(params: {group_id: @topic.group_id, poll_type: 'proposal', title: 'Standalone poll',
+      poll_option_names: ['Agree'], closing_at: 2.days.from_now}, actor: users(:admin))
+    sign_in @author
+
+    [@topic, poll.topic].each do |topic|
+      root = topic.topicable.created_topic_item
+      TopicItemService.update_tags(topic_item: root, tags: ['Opening'], actor: users(:admin))
+      comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Later reply'), actor: @author)
+
+      assert_no_record_cache_fallbacks do
+        get :index, params: {topic_id: topic.id, sequence_id_gte: comment.created_topic_item.sequence_id, per: 1}
+      end
+
+      assert_response :success
+      json = JSON.parse(response.body)
+      assert_equal [comment.created_topic_item.id], json.fetch('topic_items').map { |row| row['id'] }
+      assert_equal ['Opening'], json.fetch('parent_topic_items').find { |row| row['id'] == root.id }.fetch('tags')
+    end
   end
 
   test 'an author can tag their poll comment before voting in an until-vote poll' do
