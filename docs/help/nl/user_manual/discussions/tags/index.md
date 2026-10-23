@@ -1,14 +1,14 @@
 ---
 title: Categorielabels
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 92b3cf9e975b03fe
-  apply-tags: 67abe04779aed464
-  create-tags: 732b6c13280d0639
+  apply-tags: 7b0f620ef70f52f5
+  create-tags: f64f571afd12c4bd
   edit-tags: 5b2b1095f7a30105
   edit-tag-in-thread-or-poll: 6df72258d82f0338
   template-tags: da3f0bac6b18bd9f
@@ -43,7 +43,7 @@ Klik op je groepspagina op **Labels** boven de lijst met threads. Selecteer een 
 
 ## Labels toepassen
 
-Auteurs en threadcoördinatoren kunnen labels toevoegen aan of verwijderen van bijdragen waartoe ze toegang hebben in een ontgrendelde thread. Leden kunnen ook de openingsdiscussie van labels voorzien als **Leden kunnen discussies bewerken** is ingeschakeld. Labels blijven bewerkbaar nadat een peiling is gesloten. Als je toegang is ingetrokken, behoud je geen toestemming om eerdere bijdragen van labels te voorzien.
+Je kunt je eigen discussies, peilingen, conclusies en reacties van labels voorzien. Threadcoördinatoren kunnen elke bijdrage van labels voorzien.
 
 Klik bij het starten van een thread of peiling op het veld **Labels** en selecteer een of meer labels.
 
@@ -55,7 +55,7 @@ Begin te typen om de lijst te filteren. Selecteer een label opnieuw, of klik op 
 
 ## Labels aanmaken
 
-Admins van de hoofdgroep kunnen altijd labels aanmaken voor de hoofdgroep en de subgroepen. Admins van subgroepen kunnen labels aanmaken terwijl ze inhoud in hun subgroep van labels voorzien. De groepsmachtiging **Leden kunnen tags aanmaken.**, die standaard is ingeschakeld, laat andere leden die inhoud van labels kunnen voorzien ook nieuwe labelnamen aanmaken. Als deze machtiging is uitgeschakeld, kunnen leden de bestaande labels van de organisatie gebruiken en labelnamen die door sjablonen in de doelgroep worden voorgeschreven. Andere namen worden bij het opslaan weggelaten; ze verhinderen niet dat de discussie, peiling of labelwijziging wordt opgeslagen.
+Admins van de hoofdgroep kunnen altijd labels aanmaken voor de hoofdgroep en de subgroepen. Admins van subgroepen kunnen labels aanmaken terwijl ze inhoud in hun subgroep van labels voorzien. De groepsmachtiging **Leden kunnen tags aanmaken.**, die standaard is ingeschakeld, laat andere leden die inhoud van labels kunnen voorzien ook nieuwe labelnamen aanmaken. Als deze machtiging is uitgeschakeld, kunnen leden de bestaande labels van de organisatie gebruiken en labelnamen die door sjablonen in de bestemmingsgroep worden voorgeschreven.
 
 Om bij het starten van een thread of peiling een label aan te maken, typ je de naam in het veld **Labels** en druk je op Enter.
 

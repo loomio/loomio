@@ -84,7 +84,7 @@ Common actions appear directly below a comment. Additional actions are available
 
 ### Add a comment to Jump to
 
-Use **Add to timeline** to add a comment to the thread's **Jump to** list. The menu action uses a timeline icon, separate from the pin used to keep a thread at the top of a group's thread list.
+Use **Add to timeline** to add a comment to the thread's **Jump to** list.
 
 You can edit the label shown in **Jump to**. Remove the comment from the timeline and add it again to change the link text.
 

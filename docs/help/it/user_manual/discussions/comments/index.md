@@ -1,10 +1,10 @@
 ---
 title: Commenti
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: e3d4d5402d3b0320
   translating-comments: 5e29212d633e11fc
   comment-actions: e29515ffd545ebca
-  add-a-comment-to-jump-to: 7a512e9f13c3e9ac
+  add-a-comment-to-jump-to: e215036ffb735313
   edit-a-comment-and-view-changes: a4d5e72fc1ae54fd
   copy-a-comment-link: a6cde26820f5bea0
   view-notification-history: bb445dc9aa246d94
@@ -123,7 +123,7 @@ Le azioni più comuni appaiono direttamente sotto un commento. Altre azioni sono
 
 ### Aggiungere un commento a Vai a
 
-Usa **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione. L'azione nel menu usa un'icona della sequenza temporale, distinta dalla puntina usata per fissare in alto una conversazione nell'elenco delle conversazioni di un gruppo.
+Usa **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione.
 
 Puoi modificare l'etichetta mostrata in **Vai a**. Rimuovi il commento dalla sequenza temporale e aggiungilo di nuovo per cambiare il testo del collegamento.
 

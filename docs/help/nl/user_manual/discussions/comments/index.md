@@ -1,10 +1,10 @@
 ---
 title: Reacties
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: ea59bceffa549699
   translating-comments: fa2bdb121e6f6b61
   comment-actions: cc94f8497f41b487
-  add-a-comment-to-jump-to: 33e3644fc3012b99
+  add-a-comment-to-jump-to: 5c4c65c66d748964
   edit-a-comment-and-view-changes: 5aeceeae04f79895
   copy-a-comment-link: ddc38ea77c198d14
   view-notification-history: 4f891858547ed11b
@@ -123,7 +123,7 @@ Veelgebruikte acties staan direct onder een reactie. Meer acties zijn beschikbaa
 
 ### Een reactie toevoegen aan Spring naar
 
-Gebruik **Voeg toe aan tijdlijn** om een reactie toe te voegen aan de lijst **Spring naar** van de thread. Deze menuactie gebruikt een tijdlijnpictogram. Dat verschilt van het speldpictogram waarmee je een thread bovenaan de threadlijst van een groep vastzet.
+Gebruik **Voeg toe aan tijdlijn** om een reactie toe te voegen aan de lijst **Spring naar** van de thread.
 
 Je kunt het label in **Spring naar** bewerken. Verwijder de reactie uit de tijdlijn en voeg deze opnieuw toe om de linktekst te wijzigen.
 

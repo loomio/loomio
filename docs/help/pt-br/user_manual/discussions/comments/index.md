@@ -1,10 +1,10 @@
 ---
 title: Comentários
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: c5887b2bce44a32e
   translating-comments: b38c777266757271
   comment-actions: 20e63f24143072f1
-  add-a-comment-to-jump-to: 2dbf0056d0ffb2ba
+  add-a-comment-to-jump-to: 0f9ee24103b47507
   edit-a-comment-and-view-changes: 233287098a98017a
   copy-a-comment-link: d19c203bbb7ef68b
   view-notification-history: d031f5670e8e085d
@@ -123,7 +123,7 @@ As ações comuns aparecem diretamente abaixo de um comentário. Outras ações 
 
 ### Adicionar um comentário a Pular para
 
-Use **Adicione à linha do tempo** para adicionar um comentário à lista **Pular para** da conversa. A ação do menu usa um ícone de linha do tempo, diferente do alfinete usado para fixar uma conversa no topo da lista de conversas de um grupo.
+Use **Adicione à linha do tempo** para adicionar um comentário à lista **Pular para** da conversa.
 
 Você pode editar o rótulo exibido em **Pular para**. Remova o comentário da linha do tempo e adicione-o novamente para alterar o texto do link.
 

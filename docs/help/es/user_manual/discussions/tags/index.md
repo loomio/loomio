@@ -1,14 +1,14 @@
 ---
 title: Etiquetas de categoría
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 1d7b5ac1523d0a8a
-  apply-tags: 482f06fcfe168fbb
-  create-tags: 36e1c882a771f4e3
+  apply-tags: cda612f9110ccaac
+  create-tags: 54fc028db0c4d8c5
   edit-tags: 5a606ba2ed55b333
   edit-tag-in-thread-or-poll: f134636d4f570ccb
   template-tags: cf1af5f545414586
@@ -43,7 +43,7 @@ En la página de tu grupo, haz clic en **Etiquetas**, encima de la lista de hilo
 
 ## Aplicar etiquetas
 
-Los autores y los coordinadores del hilo pueden añadir o quitar etiquetas en las contribuciones a las que tienen acceso dentro de un hilo desbloqueado. Los miembros también pueden etiquetar la discusión inicial cuando está activada la opción **Los miembros pueden editar discusiones**. Las etiquetas se pueden seguir editando después de que se cierre una encuesta. Si se revoca el acceso, no se conserva el permiso para etiquetar contribuciones anteriores.
+Puedes etiquetar tus propias discusiones, encuestas, conclusiones y comentarios. Los coordinadores del hilo pueden etiquetar cualquier contribución.
 
 Cuando inicies un hilo o una encuesta, haz clic en el campo **Etiquetas** y selecciona una o varias etiquetas.
 
@@ -55,7 +55,7 @@ Empieza a escribir para filtrar la lista. Para quitar una etiqueta, selecciónal
 
 ## Crear etiquetas
 
-Los admins del grupo principal siempre pueden crear etiquetas para el grupo principal y sus subgrupos. Los admins de los subgrupos pueden crear etiquetas al etiquetar contenido en su subgrupo. El permiso del grupo **Los miembros pueden crear etiquetas**, activado de forma predeterminada, permite que otros miembros que pueden etiquetar contenido creen nuevos nombres de etiquetas. Si el permiso está desactivado, los miembros pueden usar las etiquetas existentes de la organización y los nombres de etiquetas definidos por las plantillas del grupo de destino. Los demás nombres se descartan al guardar; no impiden que se guarde la discusión, la encuesta o el cambio de etiquetas.
+Los admins del grupo principal siempre pueden crear etiquetas para el grupo principal y sus subgrupos. Los admins de los subgrupos pueden crear etiquetas al etiquetar contenido en su subgrupo. El permiso del grupo **Los miembros pueden crear etiquetas**, activado de forma predeterminada, permite que otros miembros que pueden etiquetar contenido creen nuevos nombres de etiquetas. Si el permiso está desactivado, los miembros pueden usar las etiquetas existentes de la organización y los nombres de etiquetas definidos por las plantillas del grupo de destino.
 
 Para crear una etiqueta al iniciar un hilo o una encuesta, escribe su nombre en el campo **Etiquetas** y pulsa Enter.
 

@@ -1,10 +1,10 @@
 ---
 title: Комментарии
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 7902f6b8c6635220
   translating-comments: d0a8315b58581697
   comment-actions: 0aac865799df6852
-  add-a-comment-to-jump-to: 31a539767ad45253
+  add-a-comment-to-jump-to: 7d3e108985d7a6d3
   edit-a-comment-and-view-changes: b5895e4027760704
   copy-a-comment-link: 72c3303143711bd7
   view-notification-history: 4c8571527179eebe
@@ -123,7 +123,7 @@ title_generated: 497d1e50001d2630
 
 ### Добавление комментария в список «Перейти к»
 
-Выберите **Добавьте на временную шкалу**, чтобы добавить комментарий в список **Перейти к** в ветке. Для этого действия в меню используется значок временной шкалы. Он отличается от значка закрепления, который используется, чтобы закрепить ветку вверху списка веток группы.
+Выберите **Добавьте на временную шкалу**, чтобы добавить комментарий в список **Перейти к** в ветке.
 
 Вы можете изменить название, отображаемое в списке **Перейти к**. Чтобы изменить текст ссылки, удалите комментарий с временной шкалы и добавьте его снова.
 

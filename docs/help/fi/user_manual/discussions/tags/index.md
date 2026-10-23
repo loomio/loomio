@@ -1,14 +1,14 @@
 ---
 title: Luokkatunnisteet
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: e5516c6572fe517d
-  apply-tags: ae7f850916efc3e9
-  create-tags: bc07943174dc0d57
+  apply-tags: 372e8bf04d589384
+  create-tags: acd1f36a32d56d68
   edit-tags: 74686003d910064e
   edit-tag-in-thread-or-poll: b43c30449432d30b
   template-tags: f68495c1ff697239
@@ -43,7 +43,7 @@ Napsauta ryhmäsi sivulla ketjuluettelon yläpuolella olevaa **Tunnisteet**-pain
 
 ## Lisää tunnisteita
 
-Sisällön kirjoittajat ja ketjun koordinaattorit voivat lisätä tai poistaa tunnisteita sisällöstä, johon heillä on pääsy lukitsemattomassa ketjussa. Myös jäsenet voivat lisätä tunnisteita avauskeskusteluun, kun **Jäsenet voivat muokata keskusteluja** on käytössä. Tunnisteita voi muokata myös kyselyn sulkeuduttua. Jos pääsyoikeus poistetaan, oikeus lisätä tunnisteita aiempaan sisältöön ei säily.
+Voit lisätä tunnisteita omiin keskusteluihisi, kyselyihisi, johtopäätöksiisi ja kommentteihisi. Ketjun koordinaattorit voivat lisätä tunnisteita kaikkeen sisältöön.
 
 Kun aloitat ketjun tai kyselyn, napsauta **Tunnisteet**-kenttää ja valitse yksi tai useampi tunniste.
 
@@ -55,7 +55,7 @@ Aloita kirjoittaminen suodattaaksesi luetteloa. Poista tunniste valitsemalla se 
 
 ## Luo tunnisteita
 
-Pääryhmän ylläpitäjät voivat aina luoda tunnisteita pääryhmälle ja sen alaryhmille. Alaryhmän ylläpitäjät voivat luoda tunnisteita lisätessään niitä alaryhmänsä sisältöön. Oletusarvoisesti käytössä oleva ryhmän käyttöoikeus **Jäsenet voivat luoda tunnisteita** antaa muille jäsenille, jotka voivat lisätä tunnisteita sisältöön, oikeuden luoda uusia tunnisteiden nimiä. Jos käyttöoikeus poistetaan käytöstä, jäsenet voivat käyttää organisaation olemassa olevia tunnisteita ja kohderyhmän malleissa määritettyjä tunnisteiden nimiä. Muut nimet jätetään pois tallennettaessa. Ne eivät estä keskustelun, kyselyn tai tunnistemuutoksen tallentamista.
+Pääryhmän ylläpitäjät voivat aina luoda tunnisteita pääryhmälle ja sen alaryhmille. Alaryhmän ylläpitäjät voivat luoda tunnisteita lisätessään niitä alaryhmänsä sisältöön. Oletusarvoisesti käytössä oleva ryhmän käyttöoikeus **Jäsenet voivat luoda tunnisteita** antaa muille jäsenille, jotka voivat lisätä tunnisteita sisältöön, oikeuden luoda uusia tunnisteiden nimiä. Jos käyttöoikeus poistetaan käytöstä, jäsenet voivat käyttää organisaation olemassa olevia tunnisteita ja kohderyhmän malleissa määritettyjä tunnisteiden nimiä.
 
 Luo tunniste ketjua tai kyselyä aloittaessasi kirjoittamalla sen nimi **Tunnisteet**-kenttään ja painamalla Enter.
 

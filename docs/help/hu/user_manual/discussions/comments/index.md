@@ -1,10 +1,10 @@
 ---
 title: Hozzászólások
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 7516c967d2bb419b
   translating-comments: 67d5ce85a3b62637
   comment-actions: 27ac21ebbb975627
-  add-a-comment-to-jump-to: 5935f7044718afdd
+  add-a-comment-to-jump-to: 33500d06ba3f1fa0
   edit-a-comment-and-view-changes: d2e3808c946762d5
   copy-a-comment-link: fc2561bdf1619ff0
   view-notification-history: c6505a0beb4436be
@@ -123,7 +123,7 @@ A gyakori műveletek közvetlenül a hozzászólás alatt jelennek meg. További
 
 ### Hozzászólás hozzáadása az Ugrás ide: listához
 
-Az **Add hozzá az idővonalhoz** lehetőséggel hozzáadhatsz egy hozzászólást a szál **Ugrás ide:** listájához. A menüpont idővonalikont használ, amely eltér a szál csoport szállistájának tetejére történő kitűzéséhez használt gombostűikontól.
+Az **Add hozzá az idővonalhoz** lehetőséggel hozzáadhatsz egy hozzászólást a szál **Ugrás ide:** listájához.
 
 Az **Ugrás ide:** listában megjelenő címkét szerkesztheted. A link szövegének módosításához távolítsd el a hozzászólást az idővonalról, majd add hozzá újra.
 

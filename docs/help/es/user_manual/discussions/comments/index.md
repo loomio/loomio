@@ -1,10 +1,10 @@
 ---
 title: Comentarios
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 439641d1ec72244f
   translating-comments: b2c3ee1939d9d6da
   comment-actions: f2ef32a2b9629130
-  add-a-comment-to-jump-to: 6ca231189f44bb8a
+  add-a-comment-to-jump-to: b3a3646e40c8c731
   edit-a-comment-and-view-changes: 35b9eadc9656ecb2
   copy-a-comment-link: 33afd7d3d626268e
   view-notification-history: 4a15d717db18113f
@@ -123,7 +123,7 @@ Las acciones habituales aparecen directamente debajo de un comentario. Hay más 
 
 ### Añadir un comentario a Saltar a
 
-Usa **Añade a la cronología** para añadir un comentario a la lista **Saltar a** del hilo. Esta acción del menú usa un icono de cronología, distinto de la chincheta que se usa para fijar un hilo al principio de la lista de hilos de un grupo.
+Usa **Añade a la cronología** para añadir un comentario a la lista **Saltar a** del hilo.
 
 Puedes editar la etiqueta que aparece en **Saltar a**. Elimina el comentario de la cronología y vuelve a añadirlo para cambiar el texto del enlace.
 

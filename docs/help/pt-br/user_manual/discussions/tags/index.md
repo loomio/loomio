@@ -1,14 +1,14 @@
 ---
 title: Tags de categoria
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 8f2c19e78a57cfb9
-  apply-tags: 4350257ba47e53a7
-  create-tags: 97c6a0acc3e0dd24
+  apply-tags: a3169e2aee394cec
+  create-tags: 6e3d8dc2f57e82e3
   edit-tags: a6e6190881c6d019
   edit-tag-in-thread-or-poll: ce50a895e2e6de08
   template-tags: 53dec2e8ec01cc51
@@ -43,7 +43,7 @@ Na página do seu grupo, clique em **Tags** acima da lista de conversas. Selecio
 
 ## Aplicar tags
 
-Autores e coordenadores de conversas podem adicionar ou remover tags de contribuições às quais têm acesso em uma conversa desbloqueada. Os membros também podem aplicar tags à discussão inicial quando a opção **Os membros podem editar discussões** estiver ativada. As tags continuam editáveis após o encerramento de uma enquete. Quando o acesso é revogado, a permissão para aplicar tags a contribuições anteriores também é perdida.
+Você pode aplicar tags às suas próprias discussões, enquetes, conclusões e comentários. Coordenadores de conversas podem aplicar tags a qualquer contribuição.
 
 Ao iniciar uma conversa ou enquete, clique no campo **Tags** e selecione uma ou mais tags.
 
@@ -55,7 +55,7 @@ Comece a digitar para filtrar a lista. Selecione uma tag novamente ou clique no 
 
 ## Criar tags
 
-Admins do grupo principal sempre podem criar tags para o grupo principal e seus subgrupos. Admins de subgrupos podem criar tags ao aplicá-las ao conteúdo do seu subgrupo. A permissão do grupo **Os membros podem criar etiquetas.**, ativada por padrão, permite que outros membros que podem aplicar tags ao conteúdo criem novos nomes de tags. Se a permissão estiver desativada, os membros poderão usar as tags existentes da organização e os nomes de tags definidos por modelos no grupo de destino. Outros nomes são descartados ao salvar; eles não impedem que a discussão, a enquete ou a alteração de tags seja salva.
+Admins do grupo principal sempre podem criar tags para o grupo principal e seus subgrupos. Admins de subgrupos podem criar tags ao aplicá-las ao conteúdo do seu subgrupo. A permissão do grupo **Os membros podem criar etiquetas.**, ativada por padrão, permite que outros membros que podem aplicar tags ao conteúdo criem novos nomes de tags. Se a permissão estiver desativada, os membros poderão usar as tags existentes da organização e os nomes de tags definidos por modelos no grupo de destino.
 
 Para criar uma tag ao iniciar uma conversa ou enquete, digite seu nome no campo **Tags** e pressione Enter.
 

@@ -1,10 +1,10 @@
 ---
 title: תגובות
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 9de4affb97de90fb
   translating-comments: 0c5cfd81aa7ed8ef
   comment-actions: ed38f53413bc244a
-  add-a-comment-to-jump-to: 943f391089fafc6b
+  add-a-comment-to-jump-to: 2eed2755393d7607
   edit-a-comment-and-view-changes: d84fbcde1ea92822
   copy-a-comment-link: 4a0e4f846ba8f5bd
   view-notification-history: 42f597177dc8ff87
@@ -123,7 +123,7 @@ title_generated: 7b2f493e410a5f4f
 
 ### הוספת תגובה לקפיצה אל
 
-יש לבחור **להוסיף לציר הזמן** כדי להוסיף תגובה לרשימת **קפיצה אל** של השרשור. לפעולה בתפריט יש סמל של ציר זמן, הנבדל מסמל ההצמדה המשמש להשארת שרשור בראש רשימת השרשורים של הקבוצה.
+יש לבחור **להוסיף לציר הזמן** כדי להוסיף תגובה לרשימת **קפיצה אל** של השרשור.
 
 ניתן לערוך את התווית המוצגת ברשימת **קפיצה אל**. כדי לשנות את טקסט הקישור, יש להסיר את התגובה מציר הזמן ולהוסיף אותה שוב.
 

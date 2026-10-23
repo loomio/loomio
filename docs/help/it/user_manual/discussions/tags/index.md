@@ -1,14 +1,14 @@
 ---
 title: Etichette di categoria
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 36edef5272b6231f
-  apply-tags: 95ac81df81984553
-  create-tags: d79131818d11f0b5
+  apply-tags: 8dcc5f3831c25594
+  create-tags: 55f1b5ef807621d9
   edit-tags: 9a9f64d1aa713733
   edit-tag-in-thread-or-poll: 14c86ef043b3a7fa
   template-tags: c0e1333396dd7a50
@@ -43,7 +43,7 @@ Nella pagina del tuo gruppo, fai clic su **Etichette** sopra l'elenco delle conv
 
 ## Applica tag
 
-Gli autori e i coordinatori della conversazione possono aggiungere o rimuovere tag dai contributi a cui hanno accesso in una conversazione non bloccata. I membri possono anche applicare tag alla discussione iniziale quando è attiva l'opzione **I membri possono modificare le discussioni**. I tag restano modificabili dopo la chiusura di un sondaggio. La revoca dell'accesso comporta anche la perdita del permesso di applicare tag ai contributi precedenti.
+Puoi applicare tag alle tue discussioni, ai tuoi sondaggi, alle tue conclusioni e ai tuoi commenti. I coordinatori della conversazione possono applicare tag a qualsiasi contributo.
 
 Quando avvii una conversazione o un sondaggio, fai clic sul campo **Etichette** e seleziona uno o più tag.
 
@@ -55,7 +55,7 @@ Inizia a digitare per filtrare l'elenco. Per rimuovere un tag, selezionalo di nu
 
 ## Crea tag
 
-Gli amministratori del gruppo principale possono sempre creare tag per il gruppo principale e i suoi sottogruppi. Gli amministratori dei sottogruppi possono creare tag mentre li applicano ai contenuti del proprio sottogruppo. Il permesso del gruppo **I membri possono creare tag**, attivo per impostazione predefinita, consente agli altri membri che possono applicare tag ai contenuti di creare nuovi nomi di tag. Se il permesso è disattivato, i membri possono usare i tag esistenti dell'organizzazione e i nomi di tag previsti dai modelli nel gruppo di destinazione. Gli altri nomi vengono scartati al salvataggio; questo non impedisce di salvare la discussione, il sondaggio o la modifica ai tag.
+Gli amministratori del gruppo principale possono sempre creare tag per il gruppo principale e i suoi sottogruppi. Gli amministratori dei sottogruppi possono creare tag mentre li applicano ai contenuti del proprio sottogruppo. Il permesso del gruppo **I membri possono creare tag**, attivo per impostazione predefinita, consente agli altri membri che possono applicare tag ai contenuti di creare nuovi nomi di tag. Se il permesso è disattivato, i membri possono usare i tag esistenti dell'organizzazione e i nomi di tag previsti dai modelli nel gruppo di destinazione.
 
 Per creare un tag mentre avvii una conversazione o un sondaggio, digita il suo nome nel campo **Etichette** e premi Invio.
 

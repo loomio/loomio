@@ -1,10 +1,10 @@
 ---
 title: Коментарі
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 5a62216923e10ae6
   translating-comments: ce27a325ef78abf2
   comment-actions: f06fd7edec0c3098
-  add-a-comment-to-jump-to: 0da0533422be0349
+  add-a-comment-to-jump-to: b5de7d6e58a1601e
   edit-a-comment-and-view-changes: eda7cd1d8ca16631
   copy-a-comment-link: faafda921a3e44e4
   view-notification-history: 65bd8b7e17cefa12
@@ -123,9 +123,9 @@ title_generated: 36555c1f9aead291
 
 ### Додавання коментаря до списку «Перейти до»
 
-Скористайтеся дією **Додайте на часову шкалу**, щоб додати коментар до списку **Перейти до** в темі. Ця дія в меню має піктограму часової шкали, яка відрізняється від піктограми закріплення теми вгорі списку тем групи.
+Скористайтеся дією **Додайте на часову шкалу**, щоб додати коментар до списку **Перейти до** в темі.
 
-Ви можете змінити назву, що відображається в списку **Перейти до**. Видаліть коментар із часової шкали та додайте його знову, щоб змінити текст посилання.
+Можете змінити назву, що відображається в списку **Перейти до**. Видаліть коментар із часової шкали та додайте його знову, щоб змінити текст посилання.
 
 >[!Tip]
 >Виділіть слова, які ви хочете використати як текст посилання, перш ніж вибрати **Додайте на часову шкалу**.

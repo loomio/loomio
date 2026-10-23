@@ -1,10 +1,10 @@
 ---
 title: コメント
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: bed6fc92031586d7
   translating-comments: 96e09747c6dc2c22
   comment-actions: 3f74c786066c65f4
-  add-a-comment-to-jump-to: a48bac15a5028526
+  add-a-comment-to-jump-to: 7d5fab91149eadfa
   edit-a-comment-and-view-changes: 629b3614bdf387fe
   copy-a-comment-link: 5243a7bad0aaf485
   view-notification-history: 9b3c463096d5e966
@@ -123,7 +123,7 @@ Loomioからのメールにメールで返信できると記載されている�
 
 ### コメントをジャンプに追加する
 
-**タイムラインに追加**を使って、スレッドの**ジャンプ**一覧にコメントを追加します。このメニュー項目にはタイムラインのアイコンが使われています。グループのスレッド一覧の先頭にスレッドを表示し続けるためのピン留めとは別の操作です。
+**タイムラインに追加**を使って、スレッドの**ジャンプ**一覧にコメントを追加します。
 
 **ジャンプ**に表示されるラベルは変更できます。リンクのテキストを変更するには、コメントをタイムラインから削除してから、もう一度追加します。
 

@@ -1,14 +1,14 @@
 ---
 title: Mots-clés de catégorie
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 51be55fc0209c435
-  apply-tags: c944fd26d90aa9bb
-  create-tags: 1ce1f9434c093eb1
+  apply-tags: 8c359aeabe15500d
+  create-tags: '080c17c23940f547'
   edit-tags: 8b7306cbb1c85b6a
   edit-tag-in-thread-or-poll: 17ed72f6d190cef1
   template-tags: cfbff2f2978ac3d9
@@ -43,7 +43,7 @@ Sur la page de votre groupe, cliquez sur **Mots-clés** au-dessus de la liste de
 
 ## Appliquer des tags
 
-Les auteurs et les coordinateurs de fil peuvent ajouter ou retirer des tags sur les contributions auxquelles ils ont accès dans un fil non verrouillé. Les membres peuvent également appliquer des tags à la discussion initiale lorsque l’autorisation **Les membres peuvent modifier les discussions** est activée. Les tags restent modifiables après la clôture d’un sondage. La révocation de l’accès retire aussi l’autorisation de modifier les tags des contributions antérieures.
+Vous pouvez appliquer des tags à vos propres discussions, sondages, conclusions et commentaires. Les coordinateurs de fil peuvent appliquer des tags à toute contribution.
 
 Lorsque vous créez un fil ou un sondage, cliquez sur le champ **Mots-clés** et sélectionnez un ou plusieurs tags.
 
@@ -55,7 +55,7 @@ Commencez à saisir du texte pour filtrer la liste. Pour retirer un tag, sélect
 
 ## Créer des tags
 
-Les administrateurs du groupe parent peuvent toujours créer des tags pour le groupe parent et ses sous-groupes. Les administrateurs des sous-groupes peuvent créer des tags lorsqu’ils en appliquent au contenu de leur sous-groupe. L’autorisation du groupe **Les membres peuvent créer des tags**, activée par défaut, permet aux autres membres qui peuvent appliquer des tags au contenu de créer de nouveaux noms de tags. Si cette autorisation est désactivée, les membres peuvent utiliser les tags existants de l’organisation et les noms de tags prévus par les modèles du groupe de destination. Les autres noms sont ignorés lors de l’enregistrement ; ils n’empêchent pas l’enregistrement de la discussion, du sondage ou de la modification des tags.
+Les administrateurs du groupe parent peuvent toujours créer des tags pour le groupe parent et ses sous-groupes. Les administrateurs des sous-groupes peuvent créer des tags lorsqu’ils en appliquent au contenu de leur sous-groupe. L’autorisation du groupe **Les membres peuvent créer des tags**, activée par défaut, permet aux autres membres qui peuvent appliquer des tags au contenu de créer de nouveaux noms de tags. Si cette autorisation est désactivée, les membres peuvent utiliser les tags existants de l’organisation et les noms de tags prévus par les modèles du groupe de destination.
 
 Pour créer un tag lors de la création d’un fil ou d’un sondage, saisissez son nom dans le champ **Mots-clés** et appuyez sur Entrée.
 

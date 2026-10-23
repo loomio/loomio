@@ -1,14 +1,14 @@
 ---
 title: Kategóriacímkék
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 827f5becfb59af80
-  apply-tags: 33979b33ef78044c
-  create-tags: 05630523ae79cde6
+  apply-tags: 5ef7d7894a84850b
+  create-tags: 611420f0c31a16e5
   edit-tags: af14986195a6fc82
   edit-tag-in-thread-or-poll: 17ebe3df48d1e96c
   template-tags: 2ac763ecf6bcc8be
@@ -43,7 +43,7 @@ A csoportod oldalán kattints a szálak listája feletti **Címkék** gombra. V�
 
 ## Címkék hozzáadása
 
-A szerzők és a szál koordinátorai hozzáadhatnak és eltávolíthatnak címkéket azokon a tartalmakon, amelyekhez hozzáférnek egy nem zárolt szálban. A tagok a nyitó beszélgetést is címkézhetik, ha **A tagok szerkeszthetik a beszélgetéseket** engedély be van kapcsolva. A címkék a szavazás lezárása után is szerkeszthetők. A hozzáférés visszavonása után a korábbi tartalmak címkézésére vonatkozó jogosultság sem marad meg.
+Címkézheted a saját beszélgetéseidet, szavazásaidat, következtetéseidet és hozzászólásaidat. A szál koordinátorai bármelyik tartalmat címkézhetik.
 
 Amikor szálat vagy szavazást indítasz, kattints a **Címkék** mezőre, és válassz ki egy vagy több címkét.
 
@@ -55,7 +55,7 @@ Kezdj el gépelni a lista szűréséhez. Egy címke eltávolításához válaszd
 
 ## Címkék létrehozása
 
-A szülőcsoport adminjai mindig létrehozhatnak címkéket a szülőcsoport és annak alcsoportjai számára. Az alcsoportok adminjai az alcsoportjuk tartalmainak címkézése közben hozhatnak létre címkéket. Az alapértelmezés szerint bekapcsolt **A tagok címkéket hozhatnak létre** csoportengedély lehetővé teszi, hogy a tartalmak címkézésére jogosult többi tag is létrehozzon új címkeneveket. Ha az engedély ki van kapcsolva, a tagok a szervezet meglévő címkéit és a célcsoport sablonjaiban előírt címkeneveket használhatják. A többi nevet a rendszer mentéskor elhagyja; ezek nem akadályozzák meg a beszélgetés, a szavazás vagy a címkemódosítás mentését.
+A szülőcsoport adminjai mindig létrehozhatnak címkéket a szülőcsoport és annak alcsoportjai számára. Az alcsoportok adminjai az alcsoportjuk tartalmainak címkézése közben hozhatnak létre címkéket. Az alapértelmezés szerint bekapcsolt **A tagok címkéket hozhatnak létre** csoportengedély lehetővé teszi, hogy a tartalmak címkézésére jogosult többi tag is létrehozzon új címkeneveket. Ha az engedély ki van kapcsolva, a tagok a szervezet meglévő címkéit és a célcsoport sablonjaiban előírt címkeneveket használhatják.
 
 Ha szál vagy szavazás indításakor szeretnél címkét létrehozni, írd be a nevét a **Címkék** mezőbe, és nyomd meg az Enter billentyűt.
 

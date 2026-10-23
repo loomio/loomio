@@ -1,10 +1,10 @@
 ---
 title: Kommentit
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 4a7505b9e1c5a830
   translating-comments: 57bf86e99b01a093
   comment-actions: 54ff803eb7380d17
-  add-a-comment-to-jump-to: 928fc2e7eb40f0bb
+  add-a-comment-to-jump-to: 2c0683b2222aa768
   edit-a-comment-and-view-changes: a97ec62b3ec46857
   copy-a-comment-link: eed8e7a2e9670bd7
   view-notification-history: 4f2864c2c0f13397
@@ -123,7 +123,7 @@ Tavallisimmat toiminnot näkyvät suoraan kommentin alla. Lisää toimintoja lö
 
 ### Kommentin lisääminen Siirry kohtaan -luetteloon
 
-Lisää kommentti ketjun **Siirry kohtaan** -luetteloon valitsemalla **Lisää aikajanalle**. Valikkotoiminnossa on aikajanakuvake. Se on eri kuvake kuin kiinnityskuvake, jolla ketju pidetään ryhmän ketjuluettelon alussa.
+Lisää kommentti ketjun **Siirry kohtaan** -luetteloon valitsemalla **Lisää aikajanalle**.
 
 Voit muokata **Siirry kohtaan** -luettelossa näkyvää tekstiä. Muuta linkkitekstiä poistamalla kommentti aikajanalta ja lisäämällä se uudelleen.
 

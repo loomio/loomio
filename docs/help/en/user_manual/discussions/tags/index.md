@@ -14,7 +14,7 @@ On your group page, click **Tags** above the thread list. Select a tag to show t
 
 ## Apply tags
 
-Authors and thread coordinators can add or remove tags on contributions they can access in an unlocked thread. Members can also tag the opening discussion when **Members can edit discussions** is enabled. Tags remain editable after a poll closes. Revoked access does not preserve permission to tag earlier contributions.
+You can tag your own discussions, polls, outcomes, and comments. Thread coordinators can tag any contribution.
 
 When you start a thread or poll, click the **Tags** field and select one or more tags.
 
@@ -26,7 +26,7 @@ Start typing to filter the list. Select a tag again, or click the × on its chip
 
 ## Create tags
 
-Parent-group admins can always create tags for the parent group and its subgroups. Subgroup admins can create tags while tagging content in their subgroup. The **Members can create tags** group permission, enabled by default, allows other members who can tag content to create new tag names. If the permission is disabled, members can use the organization's existing tags and tag names prescribed by templates in the destination group. Other names are dropped when saving; they do not prevent the discussion, poll, or tag change from being saved.
+Parent-group admins can always create tags for the parent group and its subgroups. Subgroup admins can create tags while tagging content in their subgroup. The **Members can create tags** group permission, enabled by default, allows other members who can tag content to create new tag names. If the permission is disabled, members can use the organization's existing tags and tag names prescribed by templates in the destination group.
 
 To create a tag while starting a thread or poll, type its name in the **Tags** field and press Enter.
 

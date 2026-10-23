@@ -1,14 +1,14 @@
 ---
 title: Kategorie-Schlagwörter
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 267808d8652e6bac
-  create-tags: cccdf6a66b0877a5
+  apply-tags: 0acc78ec07a23ffb
+  create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
@@ -16,8 +16,8 @@ sections:
   find-tagged-contributions: 2bd9e00732e598dc
 generated:
   introduction: 4fadcf8e25340356
-  apply-tags: eeee7daac3b26ad5
-  create-tags: '03851e52c94ba71a'
+  apply-tags: 3ae985d8c1774347
+  create-tags: b5f741b9a55d4efd
   edit-tags: 782550c2c496a9a6
   edit-tag-in-thread-or-poll: bc116c48359ce901
   template-tags: e2dbb5dd8645e8f6
@@ -45,7 +45,7 @@ Klicke auf deiner Gruppenseite oberhalb der Thread-Liste auf **Schlagwörter**. 
 
 ## Schlagwörter zuweisen
 
-Verfassende und Thread-Koordinierende können Beiträge, auf die sie in einem nicht gesperrten Thread zugreifen können, mit Schlagwörtern versehen oder Schlagwörter daraus entfernen. Mitglieder können auch die einleitende Diskussion mit Schlagwörtern versehen, wenn **Mitglieder können Diskussionen bearbeiten** aktiviert ist. Schlagwörter bleiben auch nach dem Ende einer Abstimmung bearbeitbar. Wird der Zugriff entzogen, entfällt auch die Berechtigung, frühere Beiträge mit Schlagwörtern zu versehen.
+Du kannst deine eigenen Diskussionen, Abstimmungen, Fazits und Kommentare mit Schlagwörtern versehen. Thread-Koordinierende können jeden Beitrag mit Schlagwörtern versehen.
 
 Wenn du einen Thread oder eine Abstimmung startest, klicke auf das Feld **Schlagwörter** und wähle ein oder mehrere Schlagwörter aus.
 
@@ -57,7 +57,7 @@ Beginne zu tippen, um die Liste zu filtern. Wähle ein Schlagwort erneut aus ode
 
 ## Schlagwörter erstellen
 
-Admins der Hauptgruppe können jederzeit Schlagwörter für die Hauptgruppe und ihre Untergruppen erstellen. Admins einer Untergruppe können Schlagwörter erstellen, während sie Inhalte in ihrer Untergruppe mit Schlagwörtern versehen. Die standardmäßig aktivierte Gruppenberechtigung **Mitglieder können Tags erstellen** erlaubt anderen Mitgliedern, die Inhalte mit Schlagwörtern versehen können, neue Schlagwortnamen zu erstellen. Wenn die Berechtigung deaktiviert ist, können Mitglieder die vorhandenen Schlagwörter der Organisation und Schlagwortnamen verwenden, die durch Vorlagen in der Zielgruppe vorgegeben sind. Andere Namen werden beim Speichern verworfen; sie verhindern nicht, dass die Diskussion, die Abstimmung oder die Schlagwortänderung gespeichert wird.
+Admins der Hauptgruppe können jederzeit Schlagwörter für die Hauptgruppe und ihre Untergruppen erstellen. Admins einer Untergruppe können Schlagwörter erstellen, während sie Inhalte in ihrer Untergruppe mit Schlagwörtern versehen. Die standardmäßig aktivierte Gruppenberechtigung **Mitglieder können Tags erstellen** erlaubt anderen Mitgliedern, die Inhalte mit Schlagwörtern versehen können, neue Schlagwortnamen zu erstellen. Wenn die Berechtigung deaktiviert ist, können Mitglieder die vorhandenen Schlagwörter der Organisation und Schlagwortnamen verwenden, die durch Vorlagen in der Zielgruppe vorgegeben sind.
 
 Um beim Starten eines Threads oder einer Abstimmung ein Schlagwort zu erstellen, gib seinen Namen in das Feld **Schlagwörter** ein und drücke die Eingabetaste.
 

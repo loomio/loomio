@@ -1,10 +1,10 @@
 ---
 title: Каментарыі
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 5f4b5f328b8561dd
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 58141a0cc7aedcd4
   translating-comments: 3652a90e9e26dbfc
   comment-actions: 499556f95102efea
-  add-a-comment-to-jump-to: 93ac22af4991b59b
+  add-a-comment-to-jump-to: 07dc931d6c151f79
   edit-a-comment-and-view-changes: bda29e5c41359adb
   copy-a-comment-link: 711e451066a27bb8
   view-notification-history: 58185a48fad67262
@@ -123,7 +123,7 @@ title_generated: 679e02dd9f48539b
 
 ### Даданне каментарыя ў спіс «Перайсці да»
 
-Выкарыстайце **Дадаць на храналогію**, каб дадаць каментарый у спіс **Перайсці да** ў тэме. Для гэтага дзеяння ў меню выкарыстоўваецца значок храналогіі, які адрозніваецца ад значка замацавання тэмы ўверсе спіса тэм групы.
+Выкарыстайце **Дадаць на храналогію**, каб дадаць каментарый у спіс **Перайсці да** ў тэме.
 
 Вы можаце змяніць назву, якая паказваецца ў спісе **Перайсці да**. Выдаліце каментарый з храналогіі і дадайце яго зноў, каб змяніць тэкст спасылкі.
 
