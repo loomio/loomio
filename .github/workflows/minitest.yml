@@ -59,4 +59,4 @@ jobs:
         npm run build
     - name: run minitest
       run: |
-        bundle exec rails test
+        bundle exec rails test --verbose
