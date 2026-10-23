@@ -2267,6 +2267,8 @@
       ],
       "tests": [
         "test/models/poll_test.rb",
+        "test/models/poll_quorum_test.rb",
+        "test/views/weighted_poll_results_test.rb",
         "test/integration/topic_write_concurrency_test.rb",
         "test/models/record_counts_test.rb"
       ],
@@ -2274,7 +2276,7 @@
       "mapping": "paired_and_existing_callers",
       "measurement": "pending",
       "review": "pending",
-      "candidate_count": 506
+      "candidate_count": 567
     },
     {
       "id": "models/poll_option",
@@ -3833,13 +3835,18 @@
         "app/services/poll_service.rb"
       ],
       "tests": [
-        "test/services/poll_service_test.rb"
+        "test/services/poll_service_test.rb",
+        "test/models/poll_quorum_test.rb",
+        "test/models/poll_option_test.rb",
+        "test/controllers/api/v1/polls_controller_test.rb",
+        "test/serializers/poll_serializer_test.rb",
+        "test/views/weighted_poll_results_test.rb"
       ],
       "security": true,
-      "mapping": "paired_path",
+      "mapping": "paired_and_existing_callers",
       "measurement": "pending",
       "review": "pending",
-      "candidate_count": 572
+      "candidate_count": 590
     },
     {
       "id": "services/poll_template_service",

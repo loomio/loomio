@@ -27,6 +27,10 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
 
   test 'score poll results show points and weighted points across email, chatbots, and exports' do
     poll = create_weighted_poll('score', %w[Alpha Beta], 4)
+    pending = poll.results.find { |row| row[:id] == -1 }
+    assert_operator pending[:voter_percent], :>, 0
+    assert_equal 0, pending[:score], 'uncast vote weight is not a total of awarded points'
+    assert_nil pending[:score_percent]
 
     rendered_results(poll).each_value do |output|
       assert_includes output, 'Points'
