@@ -825,6 +825,10 @@ module Dev::Scenarios::OatmilkCooperative
 
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
     poll.update!(quorum_pct: 60)
+    PollService.invite(
+      poll: poll, actor: coordinator,
+      params: {recipient_user_ids: [operations_lead.id, finance_lead.id], notify_recipients: false}
+    )
 
     vote_share = params[:vote_share] == '1'
     if vote_share

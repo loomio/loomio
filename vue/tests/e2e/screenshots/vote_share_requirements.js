@@ -8,6 +8,7 @@ function spotlight(selectors, padding = 16) {
 // Opens the proposal used in the results screenshots, so the whole example
 // follows one poll and its Agree option.
 function openProposalForm(page) {
+  page.resizeWindow(1200, 1600);
   page.loadPath('setup_manual_oatmilk_quorum?view=edit');
   page.waitFor('.poll-common-form-fields__title input');
   page.execute(`
@@ -55,6 +56,7 @@ function openVoteSharePoll(page, votes) {
   page.loadPath(`setup_manual_oatmilk_quorum?vote_share=1&votes=${votes}`);
   page.waitFor('.poll-created .poll-common-chart-panel');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
+  page.expectText('.poll-created', `${votes} of 5 votes cast (${votes * 20}% participation)`);
   page.execute("document.querySelector('.poll-created .poll-common-chart-panel .v-alert').classList.add('manual-pass-requirements')");
   page.pause(400);
 }
@@ -125,13 +127,12 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openVoteSharePoll(page, 2);
-    screenshot.captureRegion(
+    screenshot.captureElement(
       'polls/vote_share_requirements/first-vote-breakdown',
-      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      '.poll-created',
       {
-        padding: 32,
-        width: 1200,
-        height: 1800,
+        width: 1600,
+        height: 1400,
         clearSelection: true,
         spotlight: spotlight(['.manual-pass-requirements'])
       }
@@ -142,13 +143,12 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openVoteSharePoll(page, 5);
-    screenshot.captureRegion(
+    screenshot.captureElement(
       'polls/vote_share_requirements/final-vote-breakdown',
-      ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
+      '.poll-created',
       {
-        padding: 32,
-        width: 1200,
-        height: 1800,
+        width: 1600,
+        height: 1400,
         clearSelection: true,
         spotlight: spotlight(['.manual-pass-requirements'])
       }

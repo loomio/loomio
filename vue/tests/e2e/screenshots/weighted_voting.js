@@ -28,10 +28,11 @@ module.exports = {
     page.loadPath('setup_manual_oatmilk_vote_weights?view=edit');
     page.clickAndWait('.poll-common-form__more-settings', '.poll-settings-weighted-voting');
     page.expectText('.poll-settings-weighted-voting', 'Use weighted voting');
-    screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-common-form__more-settings', '.poll-common-form__reminder-title'], {
-      padding: 32,
+    page.expectText('.poll-common-form__quorum', 'Quorum');
+    screenshot.captureRegion('polls/weighted_voting/poll-setting', ['.poll-common-form__more-settings', '.poll-common-form__quorum + .text-body-medium'], {
+      padding: 16,
       width: 1200,
-      height: 1200,
+      height: 1400,
       scrollSelector: '.poll-settings-weighted-voting',
       spotlight: {selectors: ['.text-body-large:has(+ .text-body-medium + .poll-settings-weighted-voting)', '.poll-settings-weighted-voting'], padding: 16, radius: 14, opacity: 0.4, outlineWidth: 0}
     });
@@ -41,12 +42,11 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    page.loadPath('setup_manual_oatmilk_vote_weights?votes=1');
+    page.loadPath('setup_manual_oatmilk_vote_weights?votes=partial');
     page.waitFor('.poll-created .action-dock__button--announce_poll');
     page.expectText('.poll-created .action-dock__button--announce_poll', 'Manage voters');
-    screenshot.captureRegion('polls/weighted_voting/poll-manage-voters', ['.poll-created .poll-common-card__title', '.poll-created .action-dock'], {
-      padding: 24,
-      width: 1200,
+    screenshot.captureElement('polls/weighted_voting/poll-manage-voters', '.poll-created', {
+      width: 1600,
       height: 1400,
       clearSelection: true,
       spotlight: {selector: '.poll-created .action-dock__button--announce_poll', padding: 10, radius: 14, opacity: 0.4, outlineWidth: 0}
@@ -57,12 +57,13 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    page.loadPath('setup_manual_oatmilk_vote_weights?votes=1');
+    page.resizeWindow(1200, 800);
+    page.loadPath('setup_manual_oatmilk_vote_weights?votes=partial');
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list');
     page.expectText('.poll-members-form__list', 'Jamie Chen');
     page.expectText('.poll-members-form__list', 'Samira Patel');
     page.expectText('.poll-members-form__list', 'Alex Morgan');
-    screenshot.captureElement('polls/weighted_voting/poll-voter-weights', '.poll-members-form', {width: 1200, height: 700});
+    screenshot.captureElement('polls/weighted_voting/poll-voter-weights', '.poll-members-form', {width: 1200, height: 800});
   },
 
   'weighted_proposal_result': (test) => {
