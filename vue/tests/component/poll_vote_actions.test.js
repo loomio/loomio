@@ -61,6 +61,7 @@ describe('poll vote actions', () => {
     actions.announce_poll.perform();
     expect(mocks.openModal).toHaveBeenCalledWith({
       component: 'PollMembers',
+      persistent: false,
       props: {poll: expect.objectContaining({key: 'poll123'})}
     });
     expect(pollActions({closedAt: '2026-09-25T00:00:00Z'}).announce_poll.canPerform()).toBe(false);

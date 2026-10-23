@@ -186,6 +186,7 @@ const submit = () => {
     if ((actionName == 'created') && poll.specifiedVotersOnly && (poll.openedAt || poll.openingAt)) {
       EventBus.$emit('openModal', {
         component: 'PollMembers',
+        persistent: false,
         props: { poll }
       });
     }

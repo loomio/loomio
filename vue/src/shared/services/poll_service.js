@@ -139,6 +139,7 @@ export default new class PollService {
         perform() {
           return openModal({
             component: 'PollMembers',
+            persistent: false,
             props: { poll }
           });
         }
