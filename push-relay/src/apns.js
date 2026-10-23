@@ -20,23 +20,26 @@ export function isPermanentAPNsFailure(status, reason) {
 export class APNsClient {
   constructor(config) {
     this.config = config;
-    this.cachedToken = null;
-    this.cachedAt = 0;
+    this.tokens = new Map();
   }
 
-  providerToken() {
+  // New Apple keys belong to one environment. Keep each environment's signed
+  // token separate so a cached production token cannot be sent to the sandbox.
+  providerToken(environment = "production") {
     const now = Math.floor(Date.now() / 1_000);
-    if (this.cachedToken && now - this.cachedAt < 3_000) return this.cachedToken;
-    const header = base64urlJSON({ alg: "ES256", kid: this.config.keyId });
+    const cached = this.tokens.get(environment);
+    if (cached && now - cached.createdAt < 3_000) return cached.token;
+    const signingKey = environment === "sandbox" && this.config.sandbox ? this.config.sandbox : this.config;
+    const header = base64urlJSON({ alg: "ES256", kid: signingKey.keyId });
     const claims = base64urlJSON({ iss: this.config.teamId, iat: now });
     const signingInput = `${header}.${claims}`;
     const signature = crypto.sign("sha256", Buffer.from(signingInput), {
-      key: this.config.privateKey,
+      key: signingKey.privateKey,
       dsaEncoding: "ieee-p1363"
     }).toString("base64url");
-    this.cachedAt = now;
-    this.cachedToken = `${signingInput}.${signature}`;
-    return this.cachedToken;
+    const token = `${signingInput}.${signature}`;
+    this.tokens.set(environment, { token, createdAt: now });
+    return token;
   }
 
   async send({ token, environment, registrationId, eventId, kind, badge }) {
@@ -52,7 +55,7 @@ export class APNsClient {
       const request = client.request({
         ":method": "POST",
         ":path": `/3/device/${token}`,
-        authorization: `bearer ${this.providerToken()}`,
+        authorization: `bearer ${this.providerToken(environment)}`,
         "apns-topic": this.config.topic,
         "apns-push-type": "alert",
         "apns-priority": "10",

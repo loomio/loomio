@@ -7,7 +7,8 @@ export default class RecordLoader {
     this.exhausted = false;
     this.loading = false;
     this.collection   = opts.collection;
-    this.params       = merge({from: 0, per: 25, order: 'id'}, opts.params);
+    const pagination = opts.params?.limit != null ? {offset: 0, order: 'id'} : {from: 0, per: 25, order: 'id'};
+    this.params       = merge(pagination, opts.params);
     this.path         = opts.path;
     // @numLoaded    = opts.numLoaded or 0
     this.total        = 0;
@@ -16,7 +17,7 @@ export default class RecordLoader {
   }
 
   reset() {
-    return this.params['from'] = 0;
+    return this.params[this.params.limit != null ? 'offset' : 'from'] = 0;
   }
     // @numLoaded = 0
 
@@ -30,8 +31,9 @@ export default class RecordLoader {
       path: this.path,
       params: this.params}).then(data => {
       this.total = data.meta.total;
-      this.params.from = this.params.from + this.params.per;
-      this.exhausted = this.params.from >= this.total;
+      const offsetKey = this.params.limit != null ? 'offset' : 'from';
+      this.params[offsetKey] += this.params.limit ?? this.params.per;
+      this.exhausted = this.params[offsetKey] >= this.total;
       return data;
     }).finally(() => {
       return this.loading = false;

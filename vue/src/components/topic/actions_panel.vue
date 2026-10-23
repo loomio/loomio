@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { ref, computed, watch, nextTick, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
 import AbilityService from '@/shared/services/ability_service';
@@ -8,6 +8,7 @@ import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_tem
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
+import ScrollService from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const { topic } = defineProps({
@@ -23,6 +24,21 @@ const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);
 const poll = ref(null);
+const commentFormWasOpened = ref(currentAction.value === 'add-comment');
+const pollFormWasOpened = ref(currentAction.value === 'add-poll');
+
+// Retain visited drafts, then bring the tabs into view after the selected form
+// takes its natural height. Do not reserve space from the previous form.
+watch(currentAction, action => {
+  if (action === 'add-comment') commentFormWasOpened.value = true;
+  if (action === 'add-poll') pollFormWasOpened.value = true;
+}, {flush: 'sync'});
+
+async function selectAction(action) {
+  currentAction.value = action;
+  await nextTick();
+  ScrollService.scrollTo('#add-comment', 72);
+}
 
 const resetComment = () => {
   newComment.value = Records.comments.build({
@@ -60,6 +76,8 @@ watch(() => route.query.current_action, (val) => {
 watch(() => topic.id, () => {
   resetComment();
   resetPoll();
+  commentFormWasOpened.value = true;
+  pollFormWasOpened.value = false;
 });
 
 watchRecords({
@@ -95,18 +113,18 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
         :comment="newComment"
         @comment-submitted="resetComment")
     template(v-else)
-      v-tabs.activity-panel__actions.mb-3(grow v-model="currentAction")
-        v-tab(value='add-comment')
+      v-tabs.activity-panel__actions.mb-3(grow :model-value="currentAction" @update:model-value="selectAction")
+        v-tab(value='add-comment' :id="`topic-${topic.id}-comment-tab`" :aria-controls="`topic-${topic.id}-comment-panel`")
           span(v-t="'comment_form.add_a_comment'")
-        v-tab.activity-panel__add-poll(value='add-poll')
+        v-tab.activity-panel__add-poll(value='add-poll' :id="`topic-${topic.id}-poll-tab`" :aria-controls="`topic-${topic.id}-poll-panel`")
           span(v-t="'discussion_context.start_a_vote'")
-      v-window(v-model="currentAction")
-        v-window-item(value="add-comment")
+      .actions-panel__forms
+        section(v-if="commentFormWasOpened" v-show="currentAction === 'add-comment'" role="tabpanel" :id="`topic-${topic.id}-comment-panel`" :aria-labelledby="`topic-${topic.id}-comment-tab`")
           .add-comment-panel
             comment-form(
               :comment="newComment"
               @comment-submitted="resetComment")
-        v-window-item(value="add-poll")
+        section(v-if="pollFormWasOpened" v-show="currentAction === 'add-poll'" role="tabpanel" :id="`topic-${topic.id}-poll-panel`" :aria-labelledby="`topic-${topic.id}-poll-tab`")
           .poll-common-start-form
             poll-common-form(
               v-if="poll"
@@ -136,10 +154,6 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
 </template>
 
 <style>
-#add-comment .v-window {
-  overflow: visible;
-}
-
 .add-comment-panel__sign-in-btn {
   width: 100%;
 }

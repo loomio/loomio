@@ -4,6 +4,7 @@ import RecordLoader from '@/shared/services/record_loader';
 import Session       from '@/shared/services/session';
 import { filter } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
+import { votePollParams } from '@/shared/services/navigation_data';
 
 export default
 {
@@ -18,10 +19,7 @@ export default
   created() {
     this.loader = new RecordLoader({
       collection: 'polls',
-      params: {
-        exclude_types: 'group reaction',
-        status: 'recent'
-      }
+      params: votePollParams
     });
 
     this.loader.fetchRecords();
@@ -50,7 +48,7 @@ export default
 </script>
 
 <template lang="pug">
-.polls-panel(v-if='votePolls.length || loader.loading')
+.polls-panel(v-if='votePolls.length')
   v-card.mb-2(variant="flat")
     v-list(lines="two")
       template(v-if="votePolls.length")
@@ -62,7 +60,4 @@ export default
           v-for="poll in votePolls",
           :key="poll.id"
         )
-      template(v-if='!votePolls.length && loader.loading')
-        v-list-subheader(v-t="'group_page.polls'")
-        loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

@@ -1,3 +1,5 @@
 node_modules/
 .env
 *.p8
+deploy/.env
+deploy/secrets/

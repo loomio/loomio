@@ -1,0 +1,42 @@
+# Only the TLS proxy's internal network may supply forwarded client addresses.
+set_real_ip_from ${PROXY_TRUSTED_CIDR};
+real_ip_header X-Forwarded-For;
+real_ip_recursive on;
+
+limit_req_zone $binary_remote_addr zone=registrations:10m rate=30r/m;
+limit_req_zone $binary_remote_addr zone=deliveries:10m rate=300r/m;
+
+server {
+    listen 80;
+    server_name _;
+    client_max_body_size 16k;
+    limit_req_status 429;
+    access_log off;
+    error_log /dev/stderr warn;
+
+    proxy_connect_timeout 5s;
+    proxy_read_timeout 30s;
+    proxy_send_timeout 15s;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+
+    location = /health {
+        limit_except GET { deny all; }
+        proxy_pass http://relay:8080;
+    }
+
+    location = /v1/registrations {
+        limit_except POST { deny all; }
+        limit_req zone=registrations burst=10 nodelay;
+        proxy_pass http://relay:8080;
+    }
+
+    location /v1/registrations/ {
+        limit_except POST DELETE { deny all; }
+        limit_req zone=deliveries burst=50 nodelay;
+        proxy_pass http://relay:8080;
+    }
+
+    location / { return 404; }
+}
