@@ -34,7 +34,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json hocuspocus/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
-FROM ruby:4.0.5-slim
+FROM ruby:4.0.9-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \

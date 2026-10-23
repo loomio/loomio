@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "24",
+    "node": "26",
     "npm": "11.16.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24",
+      "version": "26",
       "onFail": "error"
     },
     "packageManager": {

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '4.0.5'
+ruby '4.0.9'
 gem 'rails', '~> 8.1.0'
 # Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
 gem 'json', '< 3'
