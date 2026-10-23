@@ -2,21 +2,21 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: 8da463db03c81410
   set-members-vote-weights: d514e814b623a6d1
-  use-weighted-voting-in-a-poll: 73899f9058a36db7
-  results: 736b60bbaa774ba6
+  use-weighted-voting-in-a-poll: 02dee6bac10acb07
+  results: 3c276f8c45fe77f1
 title: Súlyozott szavazás
 title_source: 0b971991dfcacbab
 title_generated: 0d7fde4370c0d725
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ A tag szavazati súlya átmásolódik minden olyan szavazásba, amelyhez hozzáa
 
 ## Súlyozott szavazás használata egy szavazásban
 
-Válaszd ki a **Súlyozott szavazás használata** lehetőséget a szavazás speciális beállításaiban. A szavazás megnyitása után is be- vagy kikapcsolhatod. A kikapcsolás a szavazásban minden szavazati súlyt `1`-re állít, és az adott szavazásban módosított szavazati súlyok elvesznek.
+Nyisd meg a **További beállítások** részt a szavazás űrlapján, és válaszd ki a **Súlyozott szavazás használata** lehetőséget. A szavazás megnyitása után is be- vagy kikapcsolhatod a súlyozott szavazást. A kikapcsolás a szavazásban minden szavazati súlyt `1`-re állít, és az adott szavazásban módosított szavazati súlyok elvesznek.
 
 Ha a csoportod egy bevett folyamatban súlyozott szavazást használ, válaszd ki a **Súlyozott szavazás használata** lehetőséget egy [szavazási sablonban](/en/user_manual/polls/poll_templates). Az ebből a sablonból indított szavazások súlyozott szavazást használnak.
 
@@ -68,6 +68,14 @@ Az eredmények egymás mellett mutatják a súlyozás nélküli és a súlyozott
 - A Javaslat és a Kiválasztás típusú szavazások a **Szavazatok** és a **Súlyozott szavazatok** értékeit mutatják.
 - A Pontozás, a Pontelosztás és a Rangsorolás típusú szavazások a **Pont** és a **Súlyozott pontok** értékeit mutatják.
 
-A diagram a súlyozott eredményt mutatja. Válaszd ki egy oszlop fejlécét, ha inkább annak az oszlopnak az adatait szeretnéd megjeleníteni a diagramon. A szavazásra jogosultak számánál és a határozatképességnél a személyek számítanak, nem a szavazati súlyok. Aki láthatja a szavazatokat, az minden szavazó szavazati súlyát is láthatja.
+A diagram a súlyozott eredményt mutatja. Válaszd ki egy oszlop fejlécét, ha inkább annak az oszlopnak az adatait szeretnéd megjeleníteni a diagramon. Aki láthatja a szavazatokat, az minden szavazó szavazati súlyát is láthatja.
+
+A Javaslat és a Kiválasztás típusú szavazásoknál a **Nem szavazott** sor a **Szavazatok** oszlopban a még nem szavazók számát, a **Súlyozott szavazatok** oszlopban pedig a még le nem adott szavazati súlyt mutatja. Ezek az oszlopok és **a jogosultak szavazati súlyának %-a** oszlop a diagramon azokat is tartalmazzák, akik még nem szavaztak. **a leadott szavazati súly %-a** oszlop üresen hagyja a **Nem szavazott** sort, és kihagyja azt a diagramból.
+
+A szavazati súlyok a [határozatképességre](/en/user_manual/polls/quorum) és a [szavazati arányra vonatkozó követelményekre](/en/user_manual/polls/vote_share_requirements) is érvényesek.
+
+Az alábbi példában Jamie az **Egyetért** lehetőségre szavaz `2` szavazati súllyal. Hárman a **Nem ért egyet** lehetőségre szavaznak, `1`, `0` és `0` szavazati súllyal. Két ember, akiknek a szavazati súlya `2` és `1`, még nem szavazott.
+
+Az Egyetértek lehetőség a négy leadott szavazatból egyet kapott, de a leadott szavazati súly kétharmadát teszi ki. A jogosultak szavazati súlyának felét adták le, így a 60 százalékos határozatképességi küszöböt nem érték el.
 
 ![Egy javaslat eredménye szavazatokkal és súlyozott szavazatokkal](weighted-proposal-result.png)

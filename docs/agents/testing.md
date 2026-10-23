@@ -8,7 +8,7 @@
 
 **Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
 
-For Ruby model, controller, service, and permission audits or test-suite cleanup, follow [the mutation-testing workflow](mutation_testing.md). Keep the comprehensive audit inventory current, review kill-matrix findings against the behavior each test protects, consolidate one candidate at a time, and compare exact mutant IDs before and after. Preserve security, access-control, and integration guarantees even when tests share mutation kills.
+For Ruby model, controller, service, and permission changes or test-suite cleanup, follow [the mutation-testing workflow](mutation_testing.md). Use focused checks with the affected production sources and relevant tests, including integration callers. Review kill-matrix findings against the behavior each test protects, consolidate one candidate at a time, and compare exact mutant IDs before and after. Preserve security, access-control, and integration guarantees even when tests share mutation kills. Temporary audit inventories and batch tooling belong under ignored `tmp/`; no permanent repository-wide inventory is required.
 
 ## Running E2E Tests
 

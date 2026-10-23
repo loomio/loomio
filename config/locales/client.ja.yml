@@ -246,7 +246,7 @@ ja:
       open: 議論中
       closed: 議論終了
       private: 非公開
-      parent_members: "親グループに表示"
+      parent_members: 親グループに表示
       secret: 秘密
     selected: 選択中
     today: 今日
@@ -1422,8 +1422,8 @@ ja:
     confirm_change_to_public: 続行すると、このグループのすべてのスレッドが Web 上に公開されます。
     confirm_change_to_private_discussions_only: 続行すると、このグループ内の公開スレッドはすべて非公開になります。
     profile: プロフィール
-    subgroup_name_and_content_are_public: "誰でもこのサブグループを見つけてスレッドを読めます"
-    subgroup_name_is_public_and_threads_are_private: "誰でもこのサブグループを見つけられますが、スレッドは非公開です"
+    subgroup_name_and_content_are_public: 誰でもこのサブグループを見つけてスレッドを読めます
+    subgroup_name_is_public_and_threads_are_private: 誰でもこのサブグループを見つけられますが、スレッドは非公開です
     subgroup_is_visible_to_parent_members: "%{parent}のメンバーはこのサブグループを見つけられますが、スレッドは非公開です"
     subgroup_privacy_is_open_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。すべてのスレッドは公開されています。
     subgroup_privacy_is_closed_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーのみです。すべてのスレッドは非公開です。
@@ -1432,9 +1432,9 @@ ja:
     subgroup_privacy_is_secret_description: 招待されたメンバーのみがこのサブグループを見つけ、誰が参加しているかを確認し、スレッドを表示できます。
     advanced_settings: 高度な設定
     how_do_people_join: 人々はどうやって参加するのでしょうか？
-    join_without_approval: "承認なしで参加できます"
-    request_to_join: "参加を申請します"
-    invitation_only: "招待のみです"
+    join_without_approval: 承認なしで参加できます
+    request_to_join: 参加を申請します
+    invitation_only: 招待のみです
     permissions: 権限
     thread_privacy: スレッドのプライバシー
     public_threads: パブリックスレッドのみ
@@ -1442,7 +1442,7 @@ ja:
     public_or_private_threads: パブリックスレッドとプライベートスレッドを許可する
     private_threads: メンバーのみがディスカッションを閲覧できます
     allow_public_threads: このグループでパブリック スレッドを許可します。
-    parent_group_members_can_see_private_threads: "親グループのメンバーは非公開スレッドを閲覧できます"
+    parent_group_members_can_see_private_threads: 親グループのメンバーは非公開スレッドを閲覧できます
     parent_group_members_can_see_private_threads_help: "%{parent}のメンバーがこのグループ内のスレッドとアンケートを閲覧できるようにしますが、参加はできません"
     members_can_announce: メンバーはグループ内の全員に通知できます
     members_can_announce_help: メンバーがグループ内の全員にスレッドまたは投票について通知できるようにする
@@ -1990,6 +1990,18 @@ ja:
     for_the_proposal_to_pass: 提案が可決されるには、この選択肢に必要な票数は…
     for_the_poll_to_be_valid: "%{poll_type}が成立するには、この選択肢に必要な票数は…"
     points_cast: 得点
+    eligible_vote_weight: 投票可能な票の重み
+    vote_weight_cast: 投票済みの票の重み
+    name_gte_eligible_vote_weight: "%{name}には投票可能な票の重みの%{percent}%以上が必要です"
+    name_lte_eligible_vote_weight: "%{name}は投票可能な票の重みの%{percent}%を超えてはいけません"
+    name_gte_vote_weight_cast: "%{name}には投票済みの票の重みの%{percent}%以上が必要です"
+    name_lte_vote_weight_cast: "%{name}は投票済みの票の重みの%{percent}%を超えてはいけません"
+    total_assigned_vote_weight: 割り当てられた票の重みの合計
+    weighted_votes_cast: 重み付きの投票数
+    name_gte_assigned_vote_weight: "%{name}には割り当てられた票の重みの合計の%{percent}%以上が必要です"
+    name_lte_assigned_vote_weight: "%{name}は割り当てられた票の重みの合計の%{percent}%を超えてはいけません"
+    name_gte_weighted_votes_cast: "%{name}には重み付きの投票数の%{percent}%以上が必要です"
+    name_lte_weighted_votes_cast: "%{name}は重み付きの投票数の%{percent}%を超えてはいけません"
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -2106,6 +2118,9 @@ ja:
     pct_of_weighted_votes: 加重投票の割合
     pct_of_weighted_points: 加重ポイントの割合
     weighted_mean: 加重平均
+    pct_of_eligible_vote_weight: 投票可能な票の重みに対する%
+    pct_of_vote_weight_cast: 投票済みの票の重みに対する%
+    pct_of_assigned_vote_weight: 割り当てられた票の重みに対する%
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2438,6 +2453,10 @@ ja:
     votes_short_of_quorum: "%{pct}% の定足数に達するにはあと %{num} 票が必要です"
     quorum_reached: "%{pct}% の定足数に達しました"
     pct_participation: 投票総数 %{total} のうち %{num} 票 (投票率 %{pct}%)
+    pct_vote_weight_participation: "%{total}票中%{num}票が投票済みです（票の重みの%{pct}%）"
+    pct_of_eligible_vote_weight_must_participate: 投票可能な票の重みの%{pct}%の投票が必要です
+    pct_weighted_participation: "%{total}票中%{num}票が投票済みです（割り当てられた票の重みの%{pct}%が投票済み）"
+    pct_of_assigned_vote_weight_must_participate: 割り当てられた票の重みの合計の%{pct}%の投票が必要です
   poll_meeting_chart_panel:
     total: 合計
   poll_remove_vote:
@@ -2971,6 +2990,10 @@ ja:
     weighted_voting_off_warning: 加重投票を無効にすると、すべての投票の重みが1に設定されます。この投票で変更した投票の重みはすべて失われます。
     weighted_voting_on_group: 加重投票を有効にすると、各メンバーのデフォルトの投票重みがコピーされます。その他の投票者には投票重み1が割り当てられます。
     weighted_voting_on_direct: 加重投票を有効にすると、すべての投票の重みが1に設定されます
+    quorum_vote_weight_hint: 結果の成立には、投票可能な票の重みの何%の投票が必要ですか？任意です。定足数を設けない場合は空欄にしてください。
+    quorum_vote_weight_placeholder: 投票可能な票の重みの割合（0–100）
+    quorum_voters_placeholder: 投票可能な投票者の割合（0–100）
+    quorum_weighted_hint: 結果の成立には、割り当てられた票の重みの合計の何%の投票が必要ですか？任意です。定足数を設けない場合は空欄にしてください。
   poll_receipts_page:
     participation_status_requires_min_votes: 投票資格があった人を表示します。各人が投票したかどうかは、少なくとも%{count}人が投票した場合にのみ表示されます。
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
@@ -3213,7 +3236,7 @@ ja:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 招待の配信履歴
-    email_delivery_blocked: "Loomioがこのアドレスへのメール配信を停止しています"
+    email_delivery_blocked: Loomioがこのアドレスへのメール配信を停止しています
     delivery_result:
       delivered: 配信済み
       failed: 配信失敗

@@ -410,12 +410,14 @@ class Poll < ApplicationRecord
   }.freeze
 
   WEIGHTED_VOTES_HEADING_KEYS = {
+    'voter_percent' => 'poll_common.pct_of_eligible_vote_weight',
     'score' => 'poll_common.weighted_votes',
-    'score_percent' => 'poll_common.pct_of_weighted_votes',
-    'votes_cast_percent' => 'poll_common.pct_of_weighted_votes'
+    'score_percent' => 'poll_common.pct_of_vote_weight_cast',
+    'votes_cast_percent' => 'poll_common.pct_of_vote_weight_cast'
   }.freeze
 
   WEIGHTED_POINTS_HEADING_KEYS = {
+    'voter_percent' => 'poll_common.pct_of_eligible_vote_weight',
     'score' => 'poll_common.weighted_points',
     'score_percent' => 'poll_common.pct_of_weighted_points',
     'votes_cast_percent' => 'poll_common.pct_of_weighted_points',
@@ -524,9 +526,18 @@ class Poll < ApplicationRecord
     voters_count - undecided_voters_count
   end
 
-  def cast_stances_pct
+  def cast_stances_pct(vote_weight_total: nil, vote_weight_cast: nil)
+    if weighted_voting?
+      total = vote_weight_total || self.vote_weight_total
+      return total.positive? ? ((vote_weight_cast || self.vote_weight_cast) / total * 100).to_i : 0
+    end
+
     return 0 if voters_count == 0
     ((decided_voters_count.to_f / voters_count) * 100).to_i
+  end
+
+  def participation_key
+    weighted_voting? ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation'
   end
 
   # General-purpose voter relations must not reveal participation identities for
@@ -596,17 +607,63 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def quorum_count
-    (quorum_pct.to_f/100 * voters_count).ceil
-  end
-
-  def quorum_reached?
-    quorum_pct && quorum_count <= voters_count
-  end
-
-  def quorum_votes_required
+  def quorum_count(vote_weight_total: nil)
     return 0 if quorum_pct.nil?
-    (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
+
+    total = weighted_voting? ? (vote_weight_total || self.vote_weight_total) : voters_count
+    required = quorum_pct.to_d / 100 * total
+    weighted_voting? ? required.ceil(3) : required.ceil
+  end
+
+  def quorum_reached?(vote_weight_total: nil, vote_weight_cast: nil)
+    return false if quorum_pct.nil?
+    vote_weight_total ||= self.vote_weight_total if weighted_voting?
+    return false if weighted_voting? && quorum_pct.positive? && vote_weight_total.zero?
+
+    quorum_votes_required(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast) <= 0
+  end
+
+  def quorum_votes_required(vote_weight_total: nil, vote_weight_cast: nil)
+    return 0 if quorum_pct.nil?
+
+    quorum_count(vote_weight_total: vote_weight_total) - (weighted_voting? ? (vote_weight_cast || self.vote_weight_cast) : decided_voters_count)
+  end
+
+  # Use the weights issued in this poll, including pending votes and overrides.
+  # Latest excludes replaced and revoked votes; group defaults may have changed.
+  def vote_weight_total
+    stances.latest.sum(:weight)
+  end
+
+  def vote_weight_cast
+    stances.latest.decided.sum(:weight)
+  end
+
+  def vote_weight_uncast
+    stances.latest.undecided.sum(:weight)
+  end
+
+  def vote_weight_none_of_the_above
+    stances.latest.decided.none_of_the_above.sum(:weight)
+  end
+
+  def quorum_requirement_key
+    if weighted_voting?
+      'poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate'
+    else
+      'poll_common_percent_voted.pct_of_eligible_voters_must_participate'
+    end
+  end
+
+  def vote_share_requirement_key(option)
+    return unless option.test_operator
+
+    basis = if weighted_voting?
+      option.test_against == 'voter_percent' ? 'eligible_vote_weight' : 'vote_weight_cast'
+    else
+      option.test_against
+    end
+    "poll_option_form.name_#{option.test_operator}_#{basis}"
   end
 
   # Result data for until-vote polls may be sent to the client, which owns that

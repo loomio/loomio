@@ -2,21 +2,21 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: 8cd61bf7870de99f
   set-members-vote-weights: 20cf383c6b1ac9e2
-  use-weighted-voting-in-a-poll: bac2c3ba9e58d57f
-  results: 03531f7bdb8dd047
+  use-weighted-voting-in-a-poll: 999c1f41c13f9a94
+  results: 737b0be6c2e337d9
 title: 加重投票
 title_source: 0b971991dfcacbab
 title_generated: c3ab3c21bb14998e
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ translated:
 
 ## アンケートで加重投票を使用する
 
-アンケートの詳細設定で、**加重投票を使用する**を選択します。投票開始後も、有効または無効にできます。無効にすると、アンケート内のすべての票の重みが `1` に設定され、そのアンケートで変更した票の重みは失われます。
+アンケートのフォームで**その他の設定**を開き、**加重投票を使用する**を選択します。投票開始後も、加重投票を有効または無効にできます。無効にすると、アンケート内のすべての票の重みが `1` に設定され、そのアンケートで変更した票の重みは失われます。
 
 グループの定められた手順で加重投票を使う場合は、[アンケートのテンプレート](/en/user_manual/polls/poll_templates)で**加重投票を使用する**を選択します。そのテンプレートから開始したアンケートでは、加重投票が使われます。
 
@@ -68,6 +68,14 @@ translated:
 - 提案と選択のアンケートでは、**投票**と**加重投票**が表示されます。
 - スコア、配分、ランクのアンケートでは、**ポイント**と**加重ポイント**が表示されます。
 
-グラフには、重みを適用した結果が表示されます。列の見出しを選択すると、その列のデータをグラフに表示できます。投票資格のある投票者数と定足数は、票の重みではなく人数で数えます。投票を閲覧できる人は、各投票者の票の重みも閲覧できます。
+グラフには、重みを適用した結果が表示されます。列の見出しを選択すると、その列のデータをグラフに表示できます。投票を閲覧できる人は、各投票者の票の重みも閲覧できます。
+
+提案と選択のアンケートでは、**未投票**の行の**投票**列に未投票の人数が、**加重投票**列に未投票の票の重みの合計が表示されます。これらの列と**投票可能な票の重みに対する%**では、未投票の人もグラフに含まれます。**投票済みの票の重みに対する%**では、**未投票**の欄は空白になり、グラフからも除外されます。
+
+票の重みは、[定足数](/en/user_manual/polls/quorum)と[得票率の要件](/en/user_manual/polls/vote_share_requirements)にも適用されます。
+
+以下の例では、Jamieは票の重み `2` で**賛成**に投票しています。3人が**反対**に投票しており、票の重みはそれぞれ `1`、`0`、`0` です。票の重みが `2` と `1` の2人は、まだ投票していません。
+
+賛成の票数は投票済みの4票のうち1票ですが、票の重みでは投票済みの合計の3分の2を占めます。投票済みの票の重みは、投票可能な票の重みの合計の半分なので、60%の定足数には達していません。
 
 ![投票と加重投票を表示した提案の結果](weighted-proposal-result.png)

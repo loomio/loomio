@@ -248,7 +248,7 @@ sv:
       open: Öppen
       closed: Stängd
       private: Privat
-      parent_members: "Synlig för huvudgruppen"
+      parent_members: Synlig för huvudgruppen
       secret: Hemlig
     selected: Vald
     today: i dag
@@ -1431,9 +1431,9 @@ sv:
     confirm_change_to_public: Om du fortsätter kommer alla trådar i den här gruppen att göras offentliga på webben.
     confirm_change_to_private_discussions_only: Om du fortsätter kommer alla offentliga trådar i den här gruppen att göras privata.
     profile: Profil
-    subgroup_name_and_content_are_public: "Alla kan hitta denna undergrupp och läsa dess trådar"
-    subgroup_name_is_public_and_threads_are_private: "Alla kan hitta denna undergrupp; dess trådar är privata"
-    subgroup_is_visible_to_parent_members: "Medlemmar i %{parent} kan hitta denna undergrupp; dess trådar är privata"
+    subgroup_name_and_content_are_public: Alla kan hitta denna undergrupp och läsa dess trådar
+    subgroup_name_is_public_and_threads_are_private: Alla kan hitta denna undergrupp; dess trådar är privata
+    subgroup_is_visible_to_parent_members: Medlemmar i %{parent} kan hitta denna undergrupp; dess trådar är privata
     subgroup_privacy_is_open_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är offentliga.
     subgroup_privacy_is_closed_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är privata.
     subgroup_privacy_is_closed_public_threads_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Trådar kan vara offentliga eller privata.
@@ -1441,9 +1441,9 @@ sv:
     subgroup_privacy_is_secret_description: Endast inbjudna medlemmar kan hitta den här undergruppen, se vem som är i den och se trådar.
     advanced_settings: Avancerade inställningar
     how_do_people_join: Hur går folk med?
-    join_without_approval: "Gå med utan godkännande"
-    request_to_join: "Be om att få gå med"
-    invitation_only: "Endast med inbjudan"
+    join_without_approval: Gå med utan godkännande
+    request_to_join: Be om att få gå med
+    invitation_only: Endast med inbjudan
     permissions: Behörigheter
     thread_privacy: Trådens integritet
     public_threads: Endast offentliga trådar
@@ -1451,8 +1451,8 @@ sv:
     public_or_private_threads: Tillåt offentliga och privata trådar
     private_threads: Endast medlemmar kan se diskussioner
     allow_public_threads: Tillåt offentliga trådar i den här gruppen.
-    parent_group_members_can_see_private_threads: "Huvudgruppens medlemmar kan se privata trådar"
-    parent_group_members_can_see_private_threads_help: "Låt medlemmar i %{parent} se trådar och omröstningar i den här gruppen, men inte delta"
+    parent_group_members_can_see_private_threads: Huvudgruppens medlemmar kan se privata trådar
+    parent_group_members_can_see_private_threads_help: Låt medlemmar i %{parent} se trådar och omröstningar i den här gruppen, men inte delta
     members_can_announce: Medlemmar kan meddela alla i gruppen
     members_can_announce_help: Tillåt medlemmar att meddela alla i gruppen om en tråd eller omröstning
     members_can_add_members: Medlemmar kan bjuda in medlemmar
@@ -1999,6 +1999,18 @@ sv:
     for_the_proposal_to_pass: För att förslaget ska gå igenom måste detta alternativ få…
     for_the_poll_to_be_valid: För att %{poll_type} ska vara giltig måste detta alternativ ta emot…
     points_cast: Gavna poäng
+    eligible_vote_weight: Röstberättigades röstvikt
+    vote_weight_cast: Avgiven röstvikt
+    name_gte_eligible_vote_weight: "%{name} behöver minst %{percent}% av de röstberättigades röstvikt"
+    name_lte_eligible_vote_weight: "%{name} får inte överstiga %{percent}% av de röstberättigades röstvikt"
+    name_gte_vote_weight_cast: "%{name} behöver minst %{percent}% av den avgivna röstvikten"
+    name_lte_vote_weight_cast: "%{name} får inte överstiga %{percent}% av den avgivna röstvikten"
+    total_assigned_vote_weight: Total tilldelad röstvikt
+    weighted_votes_cast: Avgivna viktade röster
+    name_gte_assigned_vote_weight: "%{name} behöver minst %{percent}% av den totala tilldelade röstvikten"
+    name_lte_assigned_vote_weight: "%{name} får inte överstiga %{percent}% av den totala tilldelade röstvikten"
+    name_gte_weighted_votes_cast: "%{name} behöver minst %{percent}% av de avgivna viktade rösterna"
+    name_lte_weighted_votes_cast: "%{name} får inte överstiga %{percent}% av de avgivna viktade rösterna"
   poll_common:
     superseded: Ersatt
     outdated: Föråldrad
@@ -2115,6 +2127,9 @@ sv:
     pct_of_weighted_votes: "% av viktade röster"
     pct_of_weighted_points: "% av viktade poäng"
     weighted_mean: Viktat medelvärde
+    pct_of_eligible_vote_weight: "% av de röstberättigades röstvikt"
+    pct_of_vote_weight_cast: "% av den avgivna röstvikten"
+    pct_of_assigned_vote_weight: "% av den tilldelade röstvikten"
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2447,6 +2462,10 @@ sv:
     votes_short_of_quorum: "%{num} fler röster behövs för att uppnå kvorum på %{pct}%"
     quorum_reached: Kvorum på %{pct}% har uppnåtts
     pct_participation: "%{num} av %{total} avgivna röster (%{pct}% deltagande)"
+    pct_vote_weight_participation: "%{num} av %{total} röster avgivna (%{pct}% av röstvikten)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% av de röstberättigades röstvikt måste delta"
+    pct_weighted_participation: "%{num} av %{total} röster avgivna (%{pct}% av den tilldelade röstvikten deltog)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% av den totala tilldelade röstvikten måste delta"
   poll_meeting_chart_panel:
     total: Totalt
   poll_remove_vote:
@@ -2980,6 +2999,10 @@ sv:
     weighted_voting_off_warning: Om du stänger av viktad röstning sätts varje röstvikt till 1. Alla röstvikter du ändrade för den här omröstningen kommer att gå förlorade.
     weighted_voting_on_group: Om viktad röstning aktiveras kopieras varje medlems standardröstvikt. Andra väljare får röstvikten 1.
     weighted_voting_on_direct: Om man aktiverar viktad röstning sätts varje röstvikt till 1
+    quorum_vote_weight_hint: Hur stor andel av de röstberättigades röstvikt måste delta för att resultatet ska vara giltigt? Valfritt, lämna tomt för inget kvorum.
+    quorum_vote_weight_placeholder: Andel av de röstberättigades röstvikt (0–100)
+    quorum_voters_placeholder: Andel av de röstberättigade väljarna (0–100)
+    quorum_weighted_hint: Hur stor andel av den totala tilldelade röstvikten måste delta för att resultatet ska vara giltigt? Valfritt, lämna tomt för inget kvorum.
   poll_receipts_page:
     participation_status_requires_min_votes: Detta visar vilka som var röstberättigade. Om varje person har röstat visas endast när minst %{count} personer har röstat.
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
@@ -3222,7 +3245,7 @@ sv:
     stance: röst
   membership_notification_history:
     invitation_delivery_history: Leveranshistorik för inbjudningar
-    email_delivery_blocked: "Loomio har stoppat mejlleverans till den här adressen"
+    email_delivery_blocked: Loomio har stoppat mejlleverans till den här adressen
     delivery_result:
       delivered: Levererad
       failed: Misslyckades

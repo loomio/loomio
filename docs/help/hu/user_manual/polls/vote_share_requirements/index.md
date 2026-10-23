@@ -1,19 +1,19 @@
 ---
 title: Szavazati arányra vonatkozó követelmények
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: dd647f06e3600784
-  eligible-voters-and-votes-cast: 5933f0fc011fa890
-  different-vote-share-requirements: '09b534e644fda4c0'
+  eligible-voters-and-votes-cast: 7e23c677d41808dd
+  different-vote-share-requirements: 720cfaf8f6720b30
   detailed-example: c5d02cc747af70bb
 title_source: a654891ca817844e
 title_generated: 899d1458530748ec
@@ -45,6 +45,8 @@ Ha a követelmény a jogosult szavazók 75 százalékának egyetértése, a java
 
 Ha a követelmény a leadott szavazatok 60 százalékának egyetértése, a javaslat akkor fogadható el, ha a beküldött szavazatok 60 százaléka támogatja a lehetőséget, a teljes részvételi aránytól függetlenül. Állíts be határozatképességi küszöböt, ha a folyamatotok minimális részvételi arányt is megkövetel.
 
+[Súlyozott szavazás](/en/user_manual/polls/weighted_voting) esetén mindkét számítási alap szavazati súlyokat használ. A **Leadott szavazati súly** az adott lehetőségre leadott szavazatok összesített súlyát viszonyítja az összes leadott szavazat súlyához. A **Jogosultak szavazati súlya** az adott lehetőségre szavazók összesített szavazati súlyát viszonyítja az összes jogosult szavazó szavazati súlyához, beleértve azokat is, akik még nem szavaztak. Például ha a jogosult szavazók összesített szavazati súlya 100, és ebből egy személy szavazati súlya 70, akkor ő egyedül is teljesítheti a jogosultak szavazati súlyán alapuló 60 százalékos egyetértési követelményt.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Különböző szavazati arányra vonatkozó követelmények
@@ -56,6 +58,8 @@ Egy javaslat több lehetőségéhez is tartozhat követelmény. Például:
 - A vétók aránya legfeljebb a leadott szavazatok 0 százaléka lehet
 
 Gyakori beállítás a **Legfeljebb 0%** követelmény használata egy lehetőségnél. Ez azt jelenti, hogy a javaslat nem fogadható el, ha bárki ezt a lehetőséget választja. Használd a **Vétózom** lehetőségnél, hogy egyetlen vétó is megakadályozza a javaslat elfogadását.
+
+Súlyozott szavazás esetén csak a pozitív szavazati súlyú vétó lépi túl a 0 százalékos követelményt. A `0` szavazati súlyú vétó nem ad hozzá szavazati súlyt az eredményhez.
 
 Egy [szavazási sablonhoz](/en/user_manual/polls/poll_templates/) is hozzáadhatsz követelményeket, így a sablonból létrehozott új javaslatok alapértelmezetten ezeket használják.
 

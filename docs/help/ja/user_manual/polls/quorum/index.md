@@ -1,16 +1,16 @@
 ---
 title: 定足数
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: 60e6899e80a53a93
-  example-scenario: ec3ccb9b0a10edc1
+  introduction: 3a8d3d302c0803fd
+  example-scenario: 71fabdc5dd7acf29
 title_source: 18ed8b6c5ab90343
 title_generated: cc555d51b9c1ff66
 ---
@@ -21,9 +21,11 @@ title_generated: cc555d51b9c1ff66
 
 定足数とは、アンケートが有効となるために参加する必要がある、投票資格を持つ人の最低割合です。組織の意思決定の手続きで一定の参加率が求められる場合に使用します。
 
-アンケートを作成する際に、**その他の設定**を開き、**参加定足数**に必要な割合を入力します。定足数が不要な場合は、欄を空白のままにします。
+[加重投票](/en/user_manual/polls/weighted_voting)では、定足数の計算に票の重みを使用します。例えば、Jamieの票の重みが`2`、Samiraの票の重みが`1`、Alexの票の重みが`1`の場合、Jamieだけが投票すると、投票資格を持つ人の票の重みの合計の半分が参加したことになります。Samiraも投票すると、参加率は75％となり、60％の定足数を満たします。
 
-![参加定足数を60％に設定した定足数の設定](./quorum-section.png)
+アンケートを作成する際に、**その他の設定**を開きます。**定足数**に必要な割合を入力します。定足数が不要な場合は、欄を空白のままにします。
+
+![参加率の定足数を60％に設定した定足数の設定](./quorum-section.png)
 
 [アンケートテンプレート](/en/user_manual/polls/poll_templates/)にも定足数を設定できます。そのテンプレートから作成するアンケートには、設定した定足数が初期設定として適用されます。
 
@@ -39,7 +41,7 @@ Jamieは**投票を開始する**を選択し、**同意**の提案テンプレ�
 
 Jamieは、投票できる人を試験導入の予算を担当する5人に限定します。
 
-協同組合では重要な決定に60％の参加を求めているため、Jamieは参加定足数の欄に**60**と入力し、提案を開始します。
+協同組合では重要な決定に60％の参加を求めているため、Jamieは**定足数**に**60**と入力し、提案を開始します。
 
 まだ誰も投票していない時点では、結果パネルに定足数に達していないことが表示されます。
 

@@ -254,7 +254,7 @@ de:
       open: Offen
       closed: Geschlossen
       private: Privat
-      parent_members: "Für die übergeordnete Gruppe sichtbar"
+      parent_members: Für die übergeordnete Gruppe sichtbar
       secret: Geheim
     selected: Ausgewählt
     today: heute
@@ -1437,9 +1437,9 @@ de:
     confirm_change_to_public: Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
     profile: Profil
-    subgroup_name_and_content_are_public: "Alle können diese Untergruppe finden und ihre Threads lesen"
-    subgroup_name_is_public_and_threads_are_private: "Alle können diese Untergruppe finden; ihre Threads sind privat"
-    subgroup_is_visible_to_parent_members: "Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat"
+    subgroup_name_and_content_are_public: Alle können diese Untergruppe finden und ihre Threads lesen
+    subgroup_name_is_public_and_threads_are_private: Alle können diese Untergruppe finden; ihre Threads sind privat
+    subgroup_is_visible_to_parent_members: Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat
     subgroup_privacy_is_open_description: Jeder kann diese Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich.
     subgroup_privacy_is_closed_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat.
     subgroup_privacy_is_closed_public_threads_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein.
@@ -1447,9 +1447,9 @@ de:
     subgroup_privacy_is_secret_description: Nur eingeladene Mitglieder können diese Untergruppe finden und die Teilnehmer und Diskussionsbeiträge sehen.
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann man teilnehmen?
-    join_without_approval: "Ohne Genehmigung beitreten"
-    request_to_join: "Beitritt anfragen"
-    invitation_only: "Nur auf Einladung"
+    join_without_approval: Ohne Genehmigung beitreten
+    request_to_join: Beitritt anfragen
+    invitation_only: Nur auf Einladung
     permissions: Berechtigungen
     thread_privacy: Diskussions-Sichtbarkeit
     public_threads: Nur öffentliche Diskussionen
@@ -1457,8 +1457,8 @@ de:
     public_or_private_threads: Öffentliche und private Diskussionen erlauben
     private_threads: Nur Mitglieder können Diskussionen sehen
     allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
-    parent_group_members_can_see_private_threads: "Mitglieder der Hauptgruppe können private Threads sehen"
-    parent_group_members_can_see_private_threads_help: "Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen"
+    parent_group_members_can_see_private_threads: Mitglieder der Hauptgruppe können private Threads sehen
+    parent_group_members_can_see_private_threads_help: Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen
     members_can_announce: Mitglieder können alle Mitglieder der Gruppe benachrichtigen
     members_can_announce_help: Mitgliedern erlauben, alle in der Gruppe über einen Thread oder eine Abstimmung zu benachrichtigen
     members_can_add_members: Mitglieder können andere Mitglieder einladen
@@ -2022,6 +2022,18 @@ de:
     for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
     for_the_poll_to_be_valid: Damit %{poll_type} gültig ist, muss diese Option … erhalten.
     points_cast: Vergebene Punkte
+    eligible_vote_weight: Stimmgewicht der Stimmberechtigten
+    vote_weight_cast: Abgegebenes Stimmgewicht
+    name_gte_eligible_vote_weight: "%{name} benötigt mindestens %{percent}% des Stimmgewichts der Stimmberechtigten"
+    name_lte_eligible_vote_weight: "%{name} darf %{percent}% des Stimmgewichts der Stimmberechtigten nicht überschreiten"
+    name_gte_vote_weight_cast: "%{name} benötigt mindestens %{percent}% des abgegebenen Stimmgewichts"
+    name_lte_vote_weight_cast: "%{name} darf %{percent}% des abgegebenen Stimmgewichts nicht überschreiten"
+    total_assigned_vote_weight: Gesamtes zugewiesenes Stimmgewicht
+    weighted_votes_cast: Abgegebene gewichtete Stimmen
+    name_gte_assigned_vote_weight: "%{name} benötigt mindestens %{percent}% des gesamten zugewiesenen Stimmgewichts"
+    name_lte_assigned_vote_weight: "%{name} darf %{percent}% des gesamten zugewiesenen Stimmgewichts nicht überschreiten"
+    name_gte_weighted_votes_cast: "%{name} benötigt mindestens %{percent}% der abgegebenen gewichteten Stimmen"
+    name_lte_weighted_votes_cast: "%{name} darf %{percent}% der abgegebenen gewichteten Stimmen nicht überschreiten"
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -2138,6 +2150,9 @@ de:
     pct_of_weighted_votes: "% der gewichteten Stimmen"
     pct_of_weighted_points: "% der gewichteten Punkte"
     weighted_mean: Gewichteter Mittelwert
+    pct_of_eligible_vote_weight: "% des Stimmgewichts der Stimmberechtigten"
+    pct_of_vote_weight_cast: "% des abgegebenen Stimmgewichts"
+    pct_of_assigned_vote_weight: "% des zugewiesenen Stimmgewichts"
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2472,6 +2487,10 @@ de:
     votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
     quorum_reached: Quorum von %{pct}% wurde erreicht
     pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Wahlbeteiligung)"
+    pct_vote_weight_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des Stimmgewichts)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% des Stimmgewichts der Stimmberechtigten müssen abgegeben werden"
+    pct_weighted_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des zugewiesenen Stimmgewichts abgegeben)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden"
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:
@@ -3007,6 +3026,10 @@ de:
     weighted_voting_off_warning: Wenn du die gewichtete Abstimmung deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
     weighted_voting_on_group: Wenn du die gewichtete Abstimmung aktivierst, wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.
     weighted_voting_on_direct: Wenn du die gewichtete Abstimmung aktivierst, wird jedes Stimmgewicht auf 1 gesetzt
+    quorum_vote_weight_hint: Wie viel Prozent des Stimmgewichts der Stimmberechtigten müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
+    quorum_vote_weight_placeholder: Prozent des Stimmgewichts der Stimmberechtigten (0–100)
+    quorum_voters_placeholder: Prozent der Stimmberechtigten (0–100)
+    quorum_weighted_hint: Wie viel Prozent des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
@@ -3249,7 +3272,7 @@ de:
     stance: Stimme
   membership_notification_history:
     invitation_delivery_history: Zustellverlauf der Einladung
-    email_delivery_blocked: "Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt"
+    email_delivery_blocked: Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt
     delivery_result:
       delivered: Zugestellt
       failed: Fehlgeschlagen

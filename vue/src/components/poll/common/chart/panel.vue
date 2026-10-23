@@ -4,8 +4,13 @@ import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollStvChartPanel from '@/components/poll/stv/chart_panel';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
@@ -18,7 +23,17 @@ export default {
   },
 
   data() {
-    return { votersByOptionId: {} };
+    return { votersByOptionId: {}, chartMetric: null };
+  },
+
+  computed: {
+    participationWeighted() {
+      return this.poll.weightedVoting && !['votes', 'voter_count', 'unweighted_score'].includes(this.chartMetric);
+    },
+    participationPct() {
+      if (!this.poll.weightedVoting || this.participationWeighted) return this.poll.castStancesPct;
+      return this.poll.votersCount > 0 ? Math.floor(this.poll.decidedVotersCount / this.poll.votersCount * 100) : 0;
+    }
   },
 
   created() {
@@ -54,16 +69,16 @@ export default {
       ul(style="list-style-type: none; padding-left: 0;")
         li.text-medium-emphasis.d-flex.align-center(v-if="poll.quorumPct")
           common-icon.mr-1(
-            :name="poll.quorumVotesRequired <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
-            :color="poll.quorumVotesRequired <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+            :name="poll.quorumReached ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="poll.quorumReached ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', args: {pct: poll.quorumPct}}")
+          span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate' : 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', {pct: poll.quorumPct}) }}
         li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
           common-icon.mr-1(
             :name="option.test_result ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
             :color="option.test_result ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
+          span {{ t(option.test_requirement_key, {percent: option.test_percent, name: option.name}) }}
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
       template(v-else-if="poll.chartType != 'grid'")
@@ -75,9 +90,9 @@ export default {
         )
           span {{ $t('poll_common_action_panel.votes_have_different_weights') }}
           help-link.ml-1(path="user_manual/polls/weighted_voting")
-        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters")
+        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters" @metric-change="chartMetric = $event")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.decidedVotersCount, total: poll.votersCount, pct: participationPct}) }}
 </template>

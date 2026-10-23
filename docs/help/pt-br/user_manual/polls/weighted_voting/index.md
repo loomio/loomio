@@ -2,21 +2,21 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: 0f50b6cbab5ae01d
   set-members-vote-weights: f94ec00f2d3266dd
-  use-weighted-voting-in-a-poll: 54fedb127a3c2676
-  results: ad8a3e01df327144
+  use-weighted-voting-in-a-poll: 32ef21a06f72453b
+  results: 76a34b4c37f063cc
 title: Votação ponderada
 title_source: 0b971991dfcacbab
 title_generated: 217338839311fe74
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ O peso do voto de um membro é copiado para cada enquete à qual ele é adiciona
 
 ## Use votação ponderada em uma enquete
 
-Selecione **Usar votação ponderada** nas configurações avançadas da enquete. Você pode ativar ou desativar essa opção depois que a votação começar. Desativá-la define todos os pesos de voto da enquete como `1`, e quaisquer pesos de voto que você tenha alterado nessa enquete são perdidos.
+Abra **Mais configurações** no formulário da enquete e selecione **Usar votação ponderada**. Você pode ativar ou desativar a votação ponderada depois que a votação começar. Desativá-la define todos os pesos de voto da enquete como `1`, e quaisquer pesos de voto que você tenha alterado nessa enquete são perdidos.
 
 Se seu grupo usa votação ponderada em um processo estabelecido, selecione **Usar votação ponderada** em um [modelo de enquete](/en/user_manual/polls/poll_templates). As enquetes iniciadas a partir desse modelo usam votação ponderada.
 
@@ -68,6 +68,14 @@ Os resultados mostram os totais sem ponderação e os totais ponderados lado a l
 - As enquetes dos tipos Proposta e Escolher mostram **Votos** e **Votos ponderados**.
 - As enquetes dos tipos Pontuar, Distribuir e Classificar mostram **Pontos** e **Pontos ponderados**.
 
-O gráfico mostra o resultado ponderado. Selecione o cabeçalho de uma coluna para mostrar os dados dessa coluna no gráfico. A contagem de eleitores aptos a votar e o quórum consideram pessoas, não pesos de voto. Qualquer pessoa que possa ver os votos pode ver o peso do voto de cada eleitor.
+O gráfico mostra o resultado ponderado. Selecione o cabeçalho de uma coluna para mostrar os dados dessa coluna no gráfico. Qualquer pessoa que possa ver os votos pode ver o peso do voto de cada eleitor.
+
+Nas enquetes dos tipos Proposta e Escolher, **Não votou** mostra o número de eleitores que ainda não votaram em **Votos** e a soma dos pesos dos votos desses eleitores em **Votos ponderados**. Essas colunas e **% do peso dos votos elegíveis** incluem no gráfico quem ainda não votou. **% do peso dos votos emitidos** deixa **Não votou** em branco e exclui essa categoria do gráfico.
+
+Os pesos de voto também se aplicam ao [quórum](/en/user_manual/polls/quorum) e aos [requisitos de proporção de votos](/en/user_manual/polls/vote_share_requirements).
+
+No exemplo abaixo, Jamie vota **Concordar** com peso `2`. Três pessoas votam **Discordo**, com pesos `1`, `0` e `0`. Duas pessoas, com pesos `2` e `1`, ainda não votaram.
+
+Concordo tem um dos quatro votos registrados, mas dois terços do peso dos votos registrados. Metade do peso dos votos aptos a votar participou, portanto o quórum de 60 por cento não foi atingido.
 
 ![Resultado de uma proposta com votos e votos ponderados](weighted-proposal-result.png)

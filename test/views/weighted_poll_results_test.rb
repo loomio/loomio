@@ -27,6 +27,10 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
 
   test 'score poll results show points and weighted points across email, chatbots, and exports' do
     poll = create_weighted_poll('score', %w[Alpha Beta], 4)
+    pending = poll.results.find { |row| row[:id] == -1 }
+    assert_operator pending[:voter_percent], :>, 0
+    assert_equal 0, pending[:score], 'uncast vote weight is not a total of awarded points'
+    assert_nil pending[:score_percent]
 
     rendered_results(poll).each_value do |output|
       assert_includes output, 'Points'
@@ -91,6 +95,32 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     email = rendered_results(poll).fetch(:email)
     assert_includes email, '>4<'
     assert_not_includes email, '4.0'
+  end
+
+  test 'weighted quorum and support requirements use the same labels across email and chatbots' do
+    poll = create_weighted_poll('proposal', %w[agree disagree], 1)
+    poll.update!(quorum_pct: 50)
+    poll.poll_options.first.update!(test_operator: 'gte', test_against: 'voter_percent', test_percent: 60)
+
+    components = [
+      Views::NotificationMailer::Poll::Rules.new(poll: poll),
+      Views::Chatbot::Matrix::Rules.new(poll: poll),
+      Views::Chatbot::Markdown::Poll.new(topic_item: poll.created_topic_item, poll: poll, recipient: @voter)
+    ]
+    components.each do |component|
+      output = ApplicationController.renderer.render(component, layout: false)
+      assert_includes output, '50% of eligible vote weight must participate'
+      assert_includes output.downcase, 'agree needs at least 60% of eligible vote weight'
+    end
+
+    components = [
+      Views::NotificationMailer::Poll::Undecided.new(poll: poll),
+      Views::Chatbot::Matrix::Undecided.new(poll: poll)
+    ]
+    components.each do |component|
+      output = ApplicationController.renderer.render(component, layout: false)
+      assert_includes output, "#{poll.cast_stances_pct}% of vote weight)"
+    end
   end
 
   private

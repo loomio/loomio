@@ -2244,6 +2244,18 @@ en:
     votes_cast: Votes cast
     points_cast: Points cast
     eligible_voters: Eligible voters
+    eligible_vote_weight: Eligible vote weight
+    vote_weight_cast: Vote weight cast
+    name_gte_eligible_vote_weight: "%{name} needs at least %{percent}% of eligible vote weight"
+    name_lte_eligible_vote_weight: "%{name} must not exceed %{percent}% of eligible vote weight"
+    name_gte_vote_weight_cast: "%{name} needs at least %{percent}% of vote weight cast"
+    name_lte_vote_weight_cast: "%{name} must not exceed %{percent}% of vote weight cast"
+    total_assigned_vote_weight: Total assigned vote weight
+    weighted_votes_cast: Weighted votes cast
+    name_gte_assigned_vote_weight: "%{name} needs at least %{percent}% of the total assigned vote weight"
+    name_lte_assigned_vote_weight: "%{name} must not exceed %{percent}% of the total assigned vote weight"
+    name_gte_weighted_votes_cast: "%{name} needs at least %{percent}% of weighted votes cast"
+    name_lte_weighted_votes_cast: "%{name} must not exceed %{percent}% of weighted votes cast"
     gte_score_percent: Needs at least %{percent}% of votes cast
     gte_voter_percent: Needs at least %{percent}% of eligible voters
     lte_score_percent: Must not exceed %{percent}% of votes cast
@@ -2256,6 +2268,9 @@ en:
     weighted_votes: Weighted votes
     weighted_points: Weighted points
     pct_of_weighted_votes: "% of weighted votes"
+    pct_of_eligible_vote_weight: "% of eligible vote weight"
+    pct_of_vote_weight_cast: "% of vote weight cast"
+    pct_of_assigned_vote_weight: "% of assigned vote weight"
     pct_of_weighted_points: "% of weighted points"
     weighted_mean: Weighted mean
     your_vote_is_requested: Your vote is requested
@@ -2678,6 +2693,10 @@ en:
     member_vote_weights_hint: Voters without a current group membership get a vote weight of 1
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
+    quorum_vote_weight_hint: What percentage of eligible vote weight must participate for the result to be valid? Optional, leave blank for no quorum.
+    quorum_vote_weight_placeholder: Percentage of eligible vote weight (0–100)
+    quorum_voters_placeholder: Percentage of eligible voters (0–100)
+    quorum_weighted_hint: What percentage of the total assigned vote weight must participate for the result to be valid? Optional, leave blank for no quorum.
     participation_quorum: Participation quorum
     quorum_hint: What percentage of voters must participate for the result to be valid? Optional, leave blank for no quorum.
     quorum_placeholder: Leave blank or enter a number between 0 and 100
@@ -2898,6 +2917,10 @@ en:
     'yes': 'Yes'
     'no': 'No'
   poll_common_percent_voted:
+    pct_vote_weight_participation: "%{num} of %{total} votes cast (%{pct}% of vote weight)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% of eligible vote weight must participate"
+    pct_weighted_participation: "%{num} of %{total} votes cast (%{pct}% of assigned vote weight participated)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% of the total assigned vote weight must participate"
     pct_of_eligible_voters_must_participate: "%{pct}% of eligible voters must participate"
     pct_participation: "%{num} of %{total} votes cast (%{pct}% participation)"
     vote_short_of_quorum: "1 more vote needed to reach quorum of %{pct}%"

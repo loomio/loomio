@@ -2,6 +2,14 @@
 
 Use Mutineer's kill matrix to find missing behavioral checks and review overlapping model, controller, service, and permission tests. Start with one component, keep production code fixed while comparing tests, and record the useful results in the pull request. Mutation scores alone do not establish that a test is unnecessary.
 
+## Ongoing workflow
+
+Run focused mutation checks when adding or changing tests or making substantive changes to Ruby behavior. Select the production methods or components affected by the change and include their relevant model, controller, service, permission, serialization, rendering, and integration tests. Read the callers to choose that scope; a component's paired test file may cover only part of its behavior. Continue to run ordinary regression tests as usual.
+
+Use Mutineer directly with the selected sources and tests. Keep any temporary inventories, batch scripts, reports, caches, and installed tooling under ignored `tmp/`. A repository-wide audit can use a temporary queue to organize the work; retire that queue and its batch runner once the review is complete and any execution limits have been addressed or explicitly accepted. Keep the improved tests and these instructions in version control. There is no permanent audit inventory to maintain or requirement to repeat the whole repository audit for each change.
+
+The initial repository-wide audit reviewed all 281 original contexts, including 255 complete mutation matrices. Its 12 runtime-limited and four optional billing-engine execution limits were explicitly accepted on 23 October 2026; the remaining contexts had structural or aggregate reviews. That completes the initial review with those limits, without claiming full mutation execution or coverage. The historical completion record remains available in Git at `025a812904^:agents/mutation_audit_completion.json`. Later code changes require their own focused evidence.
+
 ## Review a component
 
 1. Read the implementation, its callers, and all relevant tests. Identify the behaviors, side effects, error paths, boundary values, and historical regressions they protect. Run the selected tests against the unmodified implementation first.
@@ -16,7 +24,7 @@ For voting, anonymous polls, permissions, authentication, and sessions, follow t
 
 ## Run a kill matrix
 
-The runner uses Mutineer 1.6.0. Install it into the checkout's ignored temporary directory without changing application dependencies:
+Use Mutineer 1.6.0. Install it into the checkout's ignored temporary directory without changing application dependencies:
 
 ```sh
 gem install mutineer --version 1.6.0 --install-dir tmp/mutineer/gems --no-document
@@ -33,25 +41,14 @@ RAILS_ENV=test bundle exec ruby tmp/mutineer/gems/gems/mutineer-1.6.0/bin/mutine
 
 Repeat `--test` for additional relevant files. Use separate before/after report names and separate cache directories for independent audits. Read the JSON summary and matrix even when the tool exits successfully; a zero exit code can include survivors.
 
+Use `--only 'Poll#quorum_count'` to restrict a run to a complete method when that is the intended scope. For scope and filter behavior, consider adding the `chain_link` operator so the audit tests removal of calls such as `latest` or `decided`. Record the chosen methods, tests, and operators with the results. Frontend tests require their own mutation tooling.
+
 Use the checkout's configured Ruby and test database, and follow the [test instructions](testing.md). Linked worktrees derive their own database name through `TestDatabaseUrl` unless `DATABASE_URL` or `TEST_DATABASE_URL` overrides it. On the macOS audit setup, forked PostgreSQL connections required `PGGSSENCMODE=disable`; investigate capture failures before interpreting results. Mutineer 1.6.0 matrix runs use the serial in-process backend and cannot combine `--matrix` with `--daemon`, `--test-command`, or `--fail-fast`.
 
-## Run bounded audit batches
+## Interpret and retain results
 
-The reusable [audit plan](../../script/mutation_audit_plan.json) maps sources to relevant tests, including related controllers, workers, serializers, permissions, and integrations. Keep that mapping current when application boundaries or tests change. Identical source sets share a matrix containing their combined tests; their distinct behavioral guarantees still need review. Structural, optional-engine, and aggregate contexts require their declared review rather than an independent executable matrix.
+Aim to detect mutations that change intended behavior. A raw 100 percent score is not required: equivalent mutations, tool limits, and behavior outside the selected test scope need explicit review. Add behavioral assertions for genuine gaps in the changed behavior. Do not suppress survivors or invent unsupported input states merely to increase the score. Document remaining limits and distinguish accepted limits from complete execution.
 
-```sh
-bundle exec ruby script/mutation_audit.rb status
-bundle exec ruby script/mutation_audit.rb run \
-  --tool tmp/mutineer/gems/gems/mutineer-1.6.0/bin/mutineer \
-  --only permissions/ --limit 3
-```
+Results apply to the source, tests, dependencies, fixtures, configuration, and tool version used for the run. Record enough information to identify those inputs and compare exact mutant IDs before and after test changes. Recheck relevant changes before reusing old reports or caches; a completed historical audit does not establish current coverage.
 
-Progress, optional manual reviews, reports, and baseline logs live under ignored `tmp/mutation_audit/`. The runner reads `progress.json` and, when present, `reviews.json` there. They are local run state, never repository instructions or committed audit history. A fresh checkout starts with no recorded measurements; retaining a plan does not establish current coverage.
-
-`--limit N` bounds new measurement attempts, including failed baselines and incomplete attempts. Complete reusable results do not consume that allowance. Use repeatable `--only-id ID` or `--exclude-id ID` for exact contexts; `--only TEXT` matches substrings. Excluding a context leaves it unfinished. Set each timeout above its complete selected baseline, investigate nontermination, and retain incomplete verdicts. Increasing a timeout alone is not deletion evidence.
-
-The runner fingerprints Ruby, the tool, application/library/configuration Ruby files, view templates, locale files, schema, lockfile, fixtures, test support, selected inputs, and aggregate dependency mappings. Non-Ruby configuration and environment values are not included unless explicitly selected; review those changes before reuse. `status` revalidates fingerprints when the tool is available, flags newly unmapped model/controller/service tests, and reports missing local artifacts. `run` requires a green baseline and unchanged inputs before accepting a matrix. Measurement and behavioral review remain separate.
-
-For partitioned sweeps, use `--partition 0/3`, `--partition 1/3`, and `--partition 2/3` in separate checkouts with identical inputs and distinct databases. Stop the destination runner before importing with `merge --tool PATH --from CHECKOUT`. Import reads the other checkout's local progress and revalidates signatures before copying artifacts; incomplete imports cannot replace complete matching results. `SIGUSR1` pauses after the current context; interruption or termination stops the child process group and records unfinished work. The runner lock only coordinates audit processes in that checkout, so observe the Rails/E2E database exclusion separately.
-
-Matrix cost grows with candidate count, covering test work, and boot/capture overhead. Use targeted audits during substantive Ruby changes and bounded maintenance batches before considering a full-repository gate. No recurring automation is installed. Frontend tests require their own mutation tooling.
+Matrix cost grows with candidate count, covering test work, and boot/capture overhead. Run one component at a time, set timeouts above its clean test baseline, and investigate nontermination. If a run is interrupted, stop its child processes before another suite uses the same database. Separate checkouts with distinct test databases are required for parallel audit work. Increasing a timeout alone is not evidence for deleting a test.

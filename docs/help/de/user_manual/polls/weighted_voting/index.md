@@ -2,25 +2,23 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: 8f8bb18a1084d4d6
   set-members-vote-weights: 2ea15e71f22a830b
-  use-weighted-voting-in-a-poll: 5754dcb5550474ea
-  results: 57c653dc053885ca
+  use-weighted-voting-in-a-poll: cb191088ab53c50d
+  results: 8cc78a19849f89ef
 title: Gewichtete Abstimmung
 title_source: 0b971991dfcacbab
 title_generated: b8d6b85d250e6095
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 needs_review:
   set-members-vote-weights: use "Stimme" instead of "Abstimmung" for "vote"
-  use-weighted-voting-in-a-poll: use "Stimme" instead of "Abstimmung" for "vote"
-  results: use "Bewerten" instead of "Ergebnis" for "Score"
   introduction: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
@@ -48,7 +46,7 @@ Das Stimmgewicht eines Mitglieds wird in jede Abstimmung übernommen, zu der das
 
 ## Gewichtete Abstimmung in einer Abstimmung verwenden
 
-Wähle **Gewichtete Abstimmung verwenden** in den erweiterten Einstellungen der Abstimmung. Du kannst diese Einstellung auch nach Beginn der Stimmabgabe ein- oder ausschalten. Wenn du sie ausschaltest, werden alle Stimmgewichte in der Abstimmung auf `1` gesetzt. Alle Stimmgewichte, die du für diese Abstimmung geändert hast, gehen dabei verloren.
+Öffne **Weitere Einstellungen** im Abstimmungsformular und wähle **Gewichtete Abstimmung verwenden**. Du kannst die gewichtete Abstimmung auch nach Beginn der Stimmabgabe ein- oder ausschalten. Wenn du sie ausschaltest, werden alle Stimmgewichte in der Abstimmung auf `1` gesetzt. Alle Stimmgewichte, die du für diese Abstimmung geändert hast, gehen dabei verloren.
 
 Wenn deine Gruppe für einen etablierten Ablauf gewichtete Abstimmungen verwendet, wähle **Gewichtete Abstimmung verwenden** in einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates). Abstimmungen, die mit dieser Vorlage gestartet werden, verwenden gewichtete Abstimmung.
 
@@ -73,6 +71,14 @@ Das Ergebnis zeigt die ungewichteten und die gewichteten Summen nebeneinander:
 - Abstimmungen der Typen Vorschlag und Auswählen zeigen **Abstimmungsbeiträge** und **Gewichtete Stimmen**.
 - Abstimmungen der Typen Bewerten, Verteilen und Ordnen zeigen **Punkte** und **Gewichtete Punkte**.
 
-Das Diagramm zeigt das gewichtete Ergebnis. Wähle eine Spaltenüberschrift, um stattdessen die Werte dieser Spalte im Diagramm anzuzeigen. Bei der Anzahl der Stimmberechtigten und beim Quorum zählen Personen, keine Stimmgewichte. Wer die Stimmen sehen kann, kann auch das Stimmgewicht jeder abstimmenden Person sehen.
+Das Diagramm zeigt das gewichtete Ergebnis. Wähle eine Spaltenüberschrift, um stattdessen die Werte dieser Spalte im Diagramm anzuzeigen. Wer die Stimmen sehen kann, kann auch das Stimmgewicht jeder abstimmenden Person sehen.
+
+Bei Abstimmungen der Typen Vorschlag und Auswählen zeigt **Nicht abgestimmt** unter **Abstimmungsbeiträge** die Anzahl der Personen, die noch nicht abgestimmt haben, und unter **Gewichtete Stimmen** deren gesamtes Stimmgewicht. Diese Spalten und **% des Stimmgewichts der Stimmberechtigten** berücksichtigen im Diagramm auch diejenigen, die noch nicht abgestimmt haben. Bei **% des abgegebenen Stimmgewichts** bleibt **Nicht abgestimmt** leer und wird im Diagramm nicht berücksichtigt.
+
+Stimmgewichte gelten auch für das [Quorum](/en/user_manual/polls/quorum) und die [Anforderungen an den Stimmenanteil](/en/user_manual/polls/vote_share_requirements).
+
+Im folgenden Beispiel stimmt Jamie mit dem Stimmgewicht `2` für **Zustimmung**. Drei Personen stimmen mit den Stimmgewichten `1`, `0` und `0` für **Widerspruch**. Zwei Personen mit den Stimmgewichten `2` und `1` haben noch nicht abgestimmt.
+
+Auf Zustimmung entfällt eine der vier abgegebenen Stimmen, aber zwei Drittel des abgegebenen Stimmgewichts. Die Hälfte des stimmberechtigten Stimmgewichts hat sich beteiligt, daher wurde das Quorum von 60 Prozent nicht erreicht.
 
 ![Das Ergebnis eines Vorschlags mit Stimmen und gewichteten Stimmen](weighted-proposal-result.png)

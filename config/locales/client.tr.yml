@@ -248,7 +248,7 @@ tr:
       open: Açık
       closed: Kapalı
       private: Özel
-      parent_members: "Üst gruba görünür"
+      parent_members: Üst gruba görünür
       secret: Gizli
     selected: Seçilmiş
     today: Bugün
@@ -1423,8 +1423,8 @@ tr:
     confirm_change_to_public: Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.
     confirm_change_to_private_discussions_only: Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.
     profile: Profil
-    subgroup_name_and_content_are_public: "Herkes bu alt grubu bulabilir ve ileti dizilerini okuyabilir"
-    subgroup_name_is_public_and_threads_are_private: "Herkes bu alt grubu bulabilir; ileti dizileri gizlidir"
+    subgroup_name_and_content_are_public: Herkes bu alt grubu bulabilir ve ileti dizilerini okuyabilir
+    subgroup_name_is_public_and_threads_are_private: Herkes bu alt grubu bulabilir; ileti dizileri gizlidir
     subgroup_is_visible_to_parent_members: "%{parent} üyeleri bu alt grubu bulabilir; ileti dizileri gizlidir"
     subgroup_privacy_is_open_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır.
     subgroup_privacy_is_closed_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir.
@@ -1433,9 +1433,9 @@ tr:
     subgroup_privacy_is_secret_description: Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.
     advanced_settings: Gelişmiş ayarlar
     how_do_people_join: Kişiler nasıl katılabilir?
-    join_without_approval: "Onay beklemeden katılın"
-    request_to_join: "Katılma isteği gönderin"
-    invitation_only: "Yalnızca davetle"
+    join_without_approval: Onay beklemeden katılın
+    request_to_join: Katılma isteği gönderin
+    invitation_only: Yalnızca davetle
     permissions: İzinler
     thread_privacy: İleti dizisi gizliliği
     public_threads: Sadece kamuya açık olan müzakereler
@@ -1443,7 +1443,7 @@ tr:
     public_or_private_threads: Kamuya açık ve gizli müzakerelere izin ver
     private_threads: Sadece üyeler müzakereleri görebilir
     allow_public_threads: Bu grupta kamuya açık müzakerelere izin ver.
-    parent_group_members_can_see_private_threads: "Ana grup üyeleri özel ileti dizilerini görebilir"
+    parent_group_members_can_see_private_threads: Ana grup üyeleri özel ileti dizilerini görebilir
     parent_group_members_can_see_private_threads_help: "%{parent} üyelerinin bu gruptaki ileti dizilerini ve anketleri görmesine izin verin; katılamazlar"
     members_can_announce: Üyeler gruptaki herkese bildirimde bulunabilir
     members_can_announce_help: Üyelerin gruptaki herkesi bir konu veya anket hakkında bilgilendirmesine izin ver
@@ -1991,6 +1991,18 @@ tr:
     for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
     for_the_poll_to_be_valid: "%{poll_type} seçeneğinin geçerli olması için bu seçeneğin… alması gerekir."
     points_cast: Verilen puanlar
+    eligible_vote_weight: Oy kullanabileceklerin oy ağırlığı
+    vote_weight_cast: Verilen oyların ağırlığı
+    name_gte_eligible_vote_weight: "%{name}, oy kullanabileceklerin oy ağırlığının en az %{percent}%'ini almalı"
+    name_lte_eligible_vote_weight: "%{name}, oy kullanabileceklerin oy ağırlığının %{percent}%'ini aşmamalı"
+    name_gte_vote_weight_cast: "%{name}, verilen oyların ağırlığının en az %{percent}%'ini almalı"
+    name_lte_vote_weight_cast: "%{name}, verilen oyların ağırlığının %{percent}%'ini aşmamalı"
+    total_assigned_vote_weight: Atanan toplam oy ağırlığı
+    weighted_votes_cast: Verilen ağırlıklı oylar
+    name_gte_assigned_vote_weight: "%{name}, atanan toplam oy ağırlığının en az %{percent}%'ini almalı"
+    name_lte_assigned_vote_weight: "%{name}, atanan toplam oy ağırlığının %{percent}%'ini aşmamalı"
+    name_gte_weighted_votes_cast: "%{name}, verilen ağırlıklı oyların en az %{percent}%'ini almalı"
+    name_lte_weighted_votes_cast: "%{name}, verilen ağırlıklı oyların %{percent}%'ini aşmamalı"
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -2107,6 +2119,9 @@ tr:
     pct_of_weighted_votes: Ağırlıklı oyların yüzdesi
     pct_of_weighted_points: Ağırlıklı puanların yüzdesi
     weighted_mean: Ağırlıklı ortalama
+    pct_of_eligible_vote_weight: Oy kullanabileceklerin oy ağırlığının yüzdesi
+    pct_of_vote_weight_cast: Verilen oyların ağırlığının yüzdesi
+    pct_of_assigned_vote_weight: Atanan oy ağırlığının yüzdesi
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2439,6 +2454,10 @@ tr:
     votes_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için %{num} oy daha gerekiyor"
     quorum_reached: "%{pct}% çoğunluğa ulaşıldı"
     pct_participation: "%{total} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
+    pct_vote_weight_participation: "%{total} oydan %{num} oy verildi (oy ağırlığının %{pct}%'i)"
+    pct_of_eligible_vote_weight_must_participate: Oy kullanabileceklerin oy ağırlığının %{pct}%'i katılmalı
+    pct_weighted_participation: "%{total} oydan %{num} oy verildi (atanan oy ağırlığının %{pct}%'i katıldı)"
+    pct_of_assigned_vote_weight_must_participate: Atanan toplam oy ağırlığının %{pct}%'i katılmalı
   poll_meeting_chart_panel:
     total: Toplam
   poll_remove_vote:
@@ -2969,6 +2988,10 @@ tr:
     weighted_voting_off_warning: Ağırlıklı oylamayı kapatmak, her oy ağırlığını 1'e ayarlar. Bu anket için değiştirdiğiniz tüm oy ağırlıkları kaybolacaktır.
     weighted_voting_on_group: Ağırlıklı oylamayı etkinleştirmek, her üyenin varsayılan oy ağırlığını kopyalar. Diğer seçmenler 1 oy ağırlığı alır.
     weighted_voting_on_direct: Ağırlıklı oylamayı etkinleştirmek, her oy ağırlığını 1'e ayarlar
+    quorum_vote_weight_hint: Sonucun geçerli olması için oy kullanabileceklerin oy ağırlığının yüzde kaçı katılmalı? İsteğe bağlı, yeter sayı aranmaması için boş bırakın.
+    quorum_vote_weight_placeholder: Oy kullanabileceklerin oy ağırlığının yüzdesi (0–100)
+    quorum_voters_placeholder: Uygun seçmenlerin yüzdesi (0–100)
+    quorum_weighted_hint: Sonucun geçerli olması için atanan toplam oy ağırlığının yüzde kaçı katılmalı? İsteğe bağlı, yeter sayı aranmaması için boş bırakın.
   poll_receipts_page:
     participation_status_requires_min_votes: Bu, kimlerin oy kullanma hakkına sahip olduğunu gösterir. Her kişinin oy kullanıp kullanmadığı yalnızca en az %{count} kişi oy verdiğinde gösterilir.
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -3211,7 +3234,7 @@ tr:
     stance: oy
   membership_notification_history:
     invitation_delivery_history: Davet teslim geçmişi
-    email_delivery_blocked: "Loomio bu adrese e-posta gönderimini durdurdu"
+    email_delivery_blocked: Loomio bu adrese e-posta gönderimini durdurdu
     delivery_result:
       delivered: Teslim edildi
       failed: Başarısız

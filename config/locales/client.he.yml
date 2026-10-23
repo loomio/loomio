@@ -248,7 +248,7 @@ he:
       open: פתוח
       closed: סגור
       private: פרטי
-      parent_members: "גלויה לקבוצת האם"
+      parent_members: גלויה לקבוצת האם
       secret: סודי
     selected: נבחר
     today: היום
@@ -1427,9 +1427,9 @@ he:
     confirm_change_to_public: אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.
     confirm_change_to_private_discussions_only: אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.
     profile: פרופיל
-    subgroup_name_and_content_are_public: "כל אחד יכול למצוא את תת־הקבוצה ולקרוא את השרשורים שלה"
-    subgroup_name_is_public_and_threads_are_private: "כל אחד יכול למצוא את תת־הקבוצה; השרשורים שלה פרטיים"
-    subgroup_is_visible_to_parent_members: "חברי %{parent} יכולים למצוא את תת־הקבוצה; השרשורים שלה פרטיים"
+    subgroup_name_and_content_are_public: כל אחד יכול למצוא את תת־הקבוצה ולקרוא את השרשורים שלה
+    subgroup_name_is_public_and_threads_are_private: כל אחד יכול למצוא את תת־הקבוצה; השרשורים שלה פרטיים
+    subgroup_is_visible_to_parent_members: חברי %{parent} יכולים למצוא את תת־הקבוצה; השרשורים שלה פרטיים
     subgroup_privacy_is_open_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות.
     subgroup_privacy_is_closed_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות.
     subgroup_privacy_is_closed_public_threads_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות.
@@ -1437,9 +1437,9 @@ he:
     subgroup_privacy_is_secret_description: רק חברים מוזמנים יכולים למצוא את תת הקבוצה, לראות מי בה ולראות את השיחה שבה.
     advanced_settings: הגדרות מתקדמות
     how_do_people_join: איך אנשים מצטרפים?
-    join_without_approval: "להצטרף ללא אישור"
-    request_to_join: "לבקש להצטרף"
-    invitation_only: "בהזמנה בלבד"
+    join_without_approval: להצטרף ללא אישור
+    request_to_join: לבקש להצטרף
+    invitation_only: בהזמנה בלבד
     permissions: הרשאות
     thread_privacy: פרטיות השיחה
     public_threads: שיחות פומביות בלבד
@@ -1447,8 +1447,8 @@ he:
     public_or_private_threads: אפשר שיחות פומביות ופרטיות
     private_threads: רק חברים יכולים לראות את הדיונים
     allow_public_threads: אפשר שיחות פומביות בקבוצה זו.
-    parent_group_members_can_see_private_threads: "חברי קבוצת האם יכולים לראות שרשורים פרטיים"
-    parent_group_members_can_see_private_threads_help: "לאפשר לחברי %{parent} לראות שרשורים וסקרים בקבוצה זו, אך לא להשתתף בהם"
+    parent_group_members_can_see_private_threads: חברי קבוצת האם יכולים לראות שרשורים פרטיים
+    parent_group_members_can_see_private_threads_help: לאפשר לחברי %{parent} לראות שרשורים וסקרים בקבוצה זו, אך לא להשתתף בהם
     members_can_announce: חברים יכולים להודיע לכולם בקבוצה
     members_can_announce_help: אפשר לחברים להודיע לכולם בקבוצה על שרשור או סקר
     members_can_add_members: חברים יכולים להזמין חברים
@@ -2010,6 +2010,18 @@ he:
     for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל...
     for_the_poll_to_be_valid: כדי ש-%{poll_type} יהיה תקף, אפשרות זו חייבת לקבל...
     points_cast: נקודות שהוטל
+    eligible_vote_weight: משקל ההצבעה של בעלי זכות ההצבעה
+    vote_weight_cast: משקל ההצבעה שמומש
+    name_gte_eligible_vote_weight: ל־%{name} נדרשים לפחות %{percent}% ממשקל ההצבעה של בעלי זכות ההצבעה
+    name_lte_eligible_vote_weight: המשקל של %{name} לא יעלה על %{percent}% ממשקל ההצבעה של בעלי זכות ההצבעה
+    name_gte_vote_weight_cast: ל־%{name} נדרשים לפחות %{percent}% ממשקל ההצבעה שמומש
+    name_lte_vote_weight_cast: המשקל של %{name} לא יעלה על %{percent}% ממשקל ההצבעה שמומש
+    total_assigned_vote_weight: סך משקל ההצבעה שהוקצה
+    weighted_votes_cast: קולות משוקללים שניתנו
+    name_gte_assigned_vote_weight: ל־%{name} נדרשים לפחות %{percent}% מסך משקל ההצבעה שהוקצה
+    name_lte_assigned_vote_weight: המשקל של %{name} לא יעלה על %{percent}% מסך משקל ההצבעה שהוקצה
+    name_gte_weighted_votes_cast: ל־%{name} נדרשים לפחות %{percent}% מהקולות המשוקללים שניתנו
+    name_lte_weighted_votes_cast: מספר הקולות המשוקללים של %{name} לא יעלה על %{percent}% מהקולות המשוקללים שניתנו
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -2126,6 +2138,9 @@ he:
     pct_of_weighted_votes: אחוז מהקולות המשוקללים
     pct_of_weighted_points: אחוז הנקודות המשוקללות
     weighted_mean: ממוצע משוקלל
+    pct_of_eligible_vote_weight: "% ממשקל ההצבעה של בעלי זכות ההצבעה"
+    pct_of_vote_weight_cast: "% ממשקל ההצבעה שמומש"
+    pct_of_assigned_vote_weight: "% ממשקל ההצבעה שהוקצה"
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2458,6 +2473,10 @@ he:
     votes_short_of_quorum: נדרשים עוד %{num} קולות כדי להגיע למניין חוקי של %{pct}%
     quorum_reached: מניין חוקי של %{pct}% הושג
     pct_participation: "%{num} מתוך %{total} הקולות שהוצבעו (%{pct}% השתתפות)"
+    pct_vote_weight_participation: ניתנו %{num} מתוך %{total} קולות (%{pct}% ממשקל ההצבעה)
+    pct_of_eligible_vote_weight_must_participate: נדרשת השתתפות של %{pct}% ממשקל ההצבעה של בעלי זכות ההצבעה
+    pct_weighted_participation: ניתנו %{num} מתוך %{total} קולות (השתתפו %{pct}% ממשקל ההצבעה שהוקצה)
+    pct_of_assigned_vote_weight_must_participate: נדרשת השתתפות של %{pct}% מסך משקל ההצבעה שהוקצה
   poll_meeting_chart_panel:
     total: סך הכל
   poll_remove_vote:
@@ -2991,6 +3010,10 @@ he:
     weighted_voting_off_warning: כיבוי הצבעה משוקללת מגדיר את משקל כל הקולות ל-1. כל משקלי הקולות ששיניתם עבור סקר זה יאבדו.
     weighted_voting_on_group: הפעלת הצבעה משוקללת מעתיקה את משקל ההצבעה המוגדר כברירת מחדל של כל חבר. שאר המצביעים מקבלים משקל הצבעה של 1.
     weighted_voting_on_direct: הפעלת הצבעה משוקללת מגדירה את משקל כל הצבעה ל-1
+    quorum_vote_weight_hint: איזה אחוז ממשקל ההצבעה של בעלי זכות ההצבעה צריך להשתתף כדי שהתוצאה תהיה תקפה? לא חובה, יש להשאיר ריק אם אין צורך במניין חוקי.
+    quorum_vote_weight_placeholder: אחוז ממשקל ההצבעה של בעלי זכות ההצבעה (0–100)
+    quorum_voters_placeholder: אחוז מבעלי זכות ההצבעה (0–100)
+    quorum_weighted_hint: איזה אחוז מסך משקל ההצבעה שהוקצה צריך להשתתף כדי שהתוצאה תהיה תקפה? לא חובה, יש להשאיר ריק אם אין צורך במניין חוקי.
   poll_receipts_page:
     participation_status_requires_min_votes: זה מראה מי היה זכאי להצביע. האם כל אדם הצביע מוצג רק לאחר שלפחות %{count} אנשים הצביעו.
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
@@ -3233,7 +3256,7 @@ he:
     stance: הצבעה
   membership_notification_history:
     invitation_delivery_history: היסטוריית מסירת הזמנות
-    email_delivery_blocked: "Loomio חסמה שליחת אימייל לכתובת זו"
+    email_delivery_blocked: Loomio חסמה שליחת אימייל לכתובת זו
     delivery_result:
       delivered: נמסרה
       failed: נכשלה

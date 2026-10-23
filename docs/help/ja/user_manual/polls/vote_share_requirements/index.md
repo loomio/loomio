@@ -1,19 +1,19 @@
 ---
 title: 投票割合の要件
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 6de41a070ca168dd
-  eligible-voters-and-votes-cast: fdc9da98acd84b6d
-  different-vote-share-requirements: b73064247eac6a65
+  eligible-voters-and-votes-cast: 156c45b1ecd523cb
+  different-vote-share-requirements: '008d5014b0cbca0e'
   detailed-example: aa04e010f24d9fd6
 title_source: a654891ca817844e
 title_generated: 1ded9d960ce79938
@@ -45,6 +45,8 @@ title_generated: 1ded9d960ce79938
 
 提出された票の60パーセントが賛成するという要件では、全体の投票率にかかわらず、提出された票の60パーセントがその選択肢を支持すれば、提案を可決できます。手続き上、最低限の参加率も必要な場合は、定足数を追加します。
 
+[加重投票](/en/user_manual/polls/weighted_voting)では、どちらの基準でも票の重みを使います。**投票済みの票の重み**では、投票済みの票の重みの合計に対する、その選択肢に投じられた票の重みの合計の割合を求めます。**投票可能な票の重み**では、まだ投票していない人も含め、投票資格のある人全員の票の重みの合計に対する、その選択肢を選んだ投票者の票の重みの合計の割合を求めます。例えば、投票可能な票の重みの合計が100で、そのうち70を持つ人が1人いれば、その人の賛成だけで、投票可能な票の重みを基準とする60パーセントの賛成要件を満たせます。
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## 選択肢ごとに異なる投票割合の要件
@@ -56,6 +58,8 @@ title_generated: 1ded9d960ce79938
 - ブロックは、提出された票の0パーセント以下
 
 選択肢を**0%以下**に設定するのは、よく使われる方法です。誰かがその選択肢を選ぶと、提案を可決できなくなります。**ブロック**に設定すると、1票のブロックで提案の可決を止められます。
+
+加重投票では、票の重みが0より大きいブロックだけが、0パーセントという要件を超えます。票の重みが`0`のブロックは、結果に重みを加えません。
 
 [アンケートのテンプレート](/en/user_manual/polls/poll_templates/)にも要件を追加できます。そのテンプレートから作成する新しい提案には、これらの要件が初期設定として適用されます。
 

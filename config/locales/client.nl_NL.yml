@@ -248,7 +248,7 @@ nl_NL:
       open: Openen
       closed: Gesloten
       private: Besloten
-      parent_members: "Zichtbaar voor de bovenliggende groep"
+      parent_members: Zichtbaar voor de bovenliggende groep
       secret: Geheim
     selected: Geselecteerd
     today: Vandaag
@@ -1429,9 +1429,9 @@ nl_NL:
     confirm_change_to_public: Als je verder gaat worden alle borden in deze groep openbaar gemaakt op het internet.
     confirm_change_to_private_discussions_only: Als je verder gaat worden alle openbare borden in deze groep privé gemaakt.
     profile: Profiel
-    subgroup_name_and_content_are_public: "Iedereen kan deze subgroep vinden en de threads lezen"
-    subgroup_name_is_public_and_threads_are_private: "Iedereen kan deze subgroep vinden; de threads zijn privé"
-    subgroup_is_visible_to_parent_members: "Leden van %{parent} kunnen deze subgroep vinden; de threads zijn privé"
+    subgroup_name_and_content_are_public: Iedereen kan deze subgroep vinden en de threads lezen
+    subgroup_name_is_public_and_threads_are_private: Iedereen kan deze subgroep vinden; de threads zijn privé
+    subgroup_is_visible_to_parent_members: Leden van %{parent} kunnen deze subgroep vinden; de threads zijn privé
     subgroup_privacy_is_open_description: Iedereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle borden zijn openbaar.
     subgroup_privacy_is_closed_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé.
     subgroup_privacy_is_closed_public_threads_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Borden kunnen openbaar of privé zijn.
@@ -1439,9 +1439,9 @@ nl_NL:
     subgroup_privacy_is_secret_description: Alleen uitgenodigde leden kunnen deze subgroep vinden, zien wie er in zit en borden zien.
     advanced_settings: Geavanceerde instellingen
     how_do_people_join: Hoe sluiten mensen aan?
-    join_without_approval: "Lid worden zonder goedkeuring"
-    request_to_join: "Lidmaatschap aanvragen"
-    invitation_only: "Alleen op uitnodiging"
+    join_without_approval: Lid worden zonder goedkeuring
+    request_to_join: Lidmaatschap aanvragen
+    invitation_only: Alleen op uitnodiging
     permissions: Toestemmingen
     thread_privacy: Bordprivacy
     public_threads: Alleen openbare borden
@@ -1449,8 +1449,8 @@ nl_NL:
     public_or_private_threads: Sta openbare en privéborden toe
     private_threads: Enkel leden kunnen discussies zien
     allow_public_threads: Sta openbare borden toe in deze groep.
-    parent_group_members_can_see_private_threads: "Leden van de hoofdgroep kunnen privéthreads zien"
-    parent_group_members_can_see_private_threads_help: "Laat leden van %{parent} threads en peilingen in deze groep zien, maar niet deelnemen"
+    parent_group_members_can_see_private_threads: Leden van de hoofdgroep kunnen privéthreads zien
+    parent_group_members_can_see_private_threads_help: Laat leden van %{parent} threads en peilingen in deze groep zien, maar niet deelnemen
     members_can_announce: Leden kunnen iedereen in de groep op de hoogte stellen
     members_can_announce_help: Leden toestaan iedereen in de groep op de hoogte te stellen van een gesprek of peiling
     members_can_add_members: Leden kunnen leden uitnodigen
@@ -2014,6 +2014,18 @@ nl_NL:
     for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
     for_the_poll_to_be_valid: Om %{poll_type} geldig te laten zijn, moet deze optie het volgende ontvangen...
     points_cast: Toegekende punten
+    eligible_vote_weight: Stemgerechtigd stemgewicht
+    vote_weight_cast: Uitgebracht stemgewicht
+    name_gte_eligible_vote_weight: "%{name} heeft minimaal %{percent}% van het stemgerechtigde stemgewicht nodig"
+    name_lte_eligible_vote_weight: "%{name} mag niet meer dan %{percent}% van het stemgerechtigde stemgewicht bedragen"
+    name_gte_vote_weight_cast: "%{name} heeft minimaal %{percent}% van het uitgebrachte stemgewicht nodig"
+    name_lte_vote_weight_cast: "%{name} mag niet meer dan %{percent}% van het uitgebrachte stemgewicht bedragen"
+    total_assigned_vote_weight: Totaal toegewezen stemgewicht
+    weighted_votes_cast: Uitgebrachte gewogen stemmen
+    name_gte_assigned_vote_weight: "%{name} heeft minimaal %{percent}% van het totale toegewezen stemgewicht nodig"
+    name_lte_assigned_vote_weight: "%{name} mag niet meer dan %{percent}% van het totale toegewezen stemgewicht bedragen"
+    name_gte_weighted_votes_cast: "%{name} heeft minimaal %{percent}% van de uitgebrachte gewogen stemmen nodig"
+    name_lte_weighted_votes_cast: "%{name} mag niet meer dan %{percent}% van de uitgebrachte gewogen stemmen bedragen"
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -2130,6 +2142,9 @@ nl_NL:
     pct_of_weighted_votes: "% van de gewogen stemmen"
     pct_of_weighted_points: "% van de gewogen punten"
     weighted_mean: Gewogen gemiddelde
+    pct_of_eligible_vote_weight: "% van het stemgerechtigde stemgewicht"
+    pct_of_vote_weight_cast: "% van het uitgebrachte stemgewicht"
+    pct_of_assigned_vote_weight: "% van het toegewezen stemgewicht"
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2464,6 +2479,10 @@ nl_NL:
     votes_short_of_quorum: "%{num} meer stemmen nodig om het quorum van %{pct}% te bereiken"
     quorum_reached: Quorum van %{pct}% is bereikt
     pct_participation: "%{num} van %{total} uitgebrachte stemmen (%{pct}% deelname)"
+    pct_vote_weight_participation: "%{num} van %{total} stemmen uitgebracht (%{pct}% van het stemgewicht)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% van het stemgerechtigde stemgewicht moet deelnemen"
+    pct_weighted_participation: "%{num} van %{total} stemmen uitgebracht (%{pct}% van het toegewezen stemgewicht heeft deelgenomen)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% van het totale toegewezen stemgewicht moet deelnemen"
   poll_meeting_chart_panel:
     total: Totaal
   poll_remove_vote:
@@ -2999,6 +3018,10 @@ nl_NL:
     weighted_voting_off_warning: Als je gewogen stemmen uitschakelt, wordt het gewicht van elke stem op 1 gezet. Alle stemgewichten die je voor deze peiling hebt gewijzigd, gaan verloren.
     weighted_voting_on_group: Door gewogen stemmen in te schakelen, wordt het standaard stemgewicht van elk lid gekopieerd. Andere stemmers krijgen een stemgewicht van 1.
     weighted_voting_on_direct: Door gewogen stemmen in te schakelen, wordt het gewicht van elke stem op 1 gezet
+    quorum_vote_weight_hint: Welk percentage van het stemgerechtigde stemgewicht moet deelnemen voor een geldig resultaat? Optioneel, laat leeg voor geen quorum.
+    quorum_vote_weight_placeholder: Percentage van het stemgerechtigde stemgewicht (0–100)
+    quorum_voters_placeholder: Percentage van de stemgerechtigde kiezers (0–100)
+    quorum_weighted_hint: Welk percentage van het totale toegewezen stemgewicht moet deelnemen voor een geldig resultaat? Optioneel, laat leeg voor geen quorum.
   poll_receipts_page:
     participation_status_requires_min_votes: Dit laat zien wie stemgerechtigd was. Of elke persoon heeft gestemd, wordt alleen getoond wanneer minstens %{count} mensen hebben gestemd.
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
@@ -3241,7 +3264,7 @@ nl_NL:
     stance: stem
   membership_notification_history:
     invitation_delivery_history: Bezorggeschiedenis van uitnodigingen
-    email_delivery_blocked: "Loomio heeft e-mailbezorging naar dit adres geblokkeerd"
+    email_delivery_blocked: Loomio heeft e-mailbezorging naar dit adres geblokkeerd
     delivery_result:
       delivered: Bezorgd
       failed: Mislukt

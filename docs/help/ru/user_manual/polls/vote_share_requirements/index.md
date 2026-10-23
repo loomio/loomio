@@ -1,19 +1,19 @@
 ---
 title: Требования к доле голосов
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 9f261c9d2f92ed82
-  eligible-voters-and-votes-cast: 8450655bb624da19
-  different-vote-share-requirements: 2be9178782e5dcde
+  eligible-voters-and-votes-cast: 5ae6a36e24aa2bd6
+  different-vote-share-requirements: e20cef400d6db696
   detailed-example: 18ede485a6e0f5a0
 title_source: a654891ca817844e
 title_generated: 735be600f6b03c10
@@ -45,6 +45,8 @@ title_generated: 735be600f6b03c10
 
 Если требуется согласие 60 процентов от поданных голосов, предложение может быть принято, когда 60 процентов поданных голосов поддерживают вариант, независимо от общего уровня участия. Добавьте кворум, если ваш процесс также требует минимального уровня участия.
 
+При [взвешенном голосовании](/en/user_manual/polls/weighted_voting) в обоих случаях учитывается вес голосов. **Вес поданных голосов** позволяет сравнить суммарный вес голосов за вариант с общим весом всех поданных голосов. **Доступный вес голосов** позволяет сравнить суммарный вес голосов тех, кто выбрал вариант, с общим весом голосов всех имеющих право голоса, включая тех, кто ещё не проголосовал. Например, один человек с весом голоса 70 из общего доступного веса 100 может выполнить требование о 60 процентах согласия, рассчитанное от веса голосов всех имеющих право голоса.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Разные требования к доле голосов
@@ -56,6 +58,8 @@ title_generated: 735be600f6b03c10
 - Доля голосов «Блокирую» должна составлять не более 0 процентов от поданных голосов
 
 Для варианта часто задают требование **Не более 0%**. Это означает, что предложение не может быть принято, если кто-либо выберет этот вариант. Используйте это требование для варианта **Блокировать**, чтобы одного голоса с возражением было достаточно для блокирования предложения.
+
+При взвешенном голосовании только голос «Блокирую» с положительным весом превышает порог в 0 процентов. Голос «Блокирую» с весом `0` не добавляет веса к результату.
 
 Вы также можете добавить требования в [шаблон опроса](/en/user_manual/polls/poll_templates/), чтобы новые предложения, созданные по этому шаблону, использовали их по умолчанию.
 

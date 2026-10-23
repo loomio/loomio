@@ -284,7 +284,7 @@ be:
       open: Адкрыта
       closed: Закрыта
       private: Прыватнае
-      parent_members: "Бачная бацькоўскай групе"
+      parent_members: Бачная бацькоўскай групе
       secret: Сакрэтная група
     selected: Выбранае
     today: сёння
@@ -1540,9 +1540,9 @@ be:
     confirm_change_to_public: Калі вы працягнеце, усе тэмы ў гэтай групе будуць апублікаваныя ў інтэрнэце.
     confirm_change_to_private_discussions_only: Калі вы працягнеце, усе публічныя тэмы ў гэтай групе стануць прыватнымі.
     profile: Профіль
-    subgroup_name_and_content_are_public: "Кожны можа знайсці гэтую падгрупу і чытаць яе тэмы"
-    subgroup_name_is_public_and_threads_are_private: "Кожны можа знайсці гэтую падгрупу; яе тэмы прыватныя"
-    subgroup_is_visible_to_parent_members: "Удзельнікі %{parent} могуць знайсці гэтую падгрупу; яе тэмы прыватныя"
+    subgroup_name_and_content_are_public: Кожны можа знайсці гэтую падгрупу і чытаць яе тэмы
+    subgroup_name_is_public_and_threads_are_private: Кожны можа знайсці гэтую падгрупу; яе тэмы прыватныя
+    subgroup_is_visible_to_parent_members: Удзельнікі %{parent} могуць знайсці гэтую падгрупу; яе тэмы прыватныя
     subgroup_privacy_is_open_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы публічныя.
     subgroup_privacy_is_closed_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы прыватныя.
     subgroup_privacy_is_closed_public_threads_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Тэмы могуць быць публічнымі або прыватнымі.
@@ -1550,9 +1550,9 @@ be:
     subgroup_privacy_is_secret_description: Толькі запрошаныя ўдзельнікі могуць бачыць гэтую падгрупу.
     advanced_settings: Пашыраныя налады
     how_do_people_join: Як людзі далучаюцца?
-    join_without_approval: "Далучэнне без ухвалення"
-    request_to_join: "Запыт на далучэнне"
-    invitation_only: "Толькі па запрашэнні"
+    join_without_approval: Далучэнне без ухвалення
+    request_to_join: Запыт на далучэнне
+    invitation_only: Толькі па запрашэнні
     permissions: Дазволы
     thread_privacy: Прыватнасць ланцужка паведамленняў
     public_threads: Толькі публічныя тэмы
@@ -1560,8 +1560,8 @@ be:
     public_or_private_threads: Дазволіць публічныя і прыватныя тэмы
     private_threads: Толькі ўдзельнікі могуць бачыць абмеркаванні
     allow_public_threads: Дазволіць публічныя тэмы ў гэтай групе.
-    parent_group_members_can_see_private_threads: "Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы"
-    parent_group_members_can_see_private_threads_help: "Дазволіць удзельнікам групы %{parent} бачыць тэмы і апытанні ў гэтай групе, але не ўдзельнічаць у іх"
+    parent_group_members_can_see_private_threads: Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы
+    parent_group_members_can_see_private_threads_help: Дазволіць удзельнікам групы %{parent} бачыць тэмы і апытанні ў гэтай групе, але не ўдзельнічаць у іх
     members_can_announce: Удзельнікі могуць апавясціць усіх у групе
     members_can_announce_help: Дазволіць удзельнікам апавяшчаць усіх у групе пра тэму або апытанне
     members_can_add_members: Удзельнікі могуць запрашаць удзельнікаў
@@ -2118,6 +2118,18 @@ be:
     name_lte_score_percent: "%{name} не павінен перавышаць %{percent}% аддадзеных галасоў"
     name_lte_voter_percent: "%{name} не павінна перавышаць %{percent}% ад колькасці выбаршчыкаў, якія маюць права голасу"
     points_cast: Ачкі
+    eligible_vote_weight: Вага голасу выбаршчыкаў з правам голасу
+    vote_weight_cast: Скарыстаная вага голасу
+    name_gte_eligible_vote_weight: "%{name} патрабуе як мінімум %{percent}% вагі голасу выбаршчыкаў з правам голасу"
+    name_lte_eligible_vote_weight: "%{name}: не больш за %{percent}% вагі голасу выбаршчыкаў з правам голасу"
+    name_gte_vote_weight_cast: "%{name} патрабуе як мінімум %{percent}% скарыстанай вагі голасу"
+    name_lte_vote_weight_cast: "%{name}: не больш за %{percent}% скарыстанай вагі голасу"
+    total_assigned_vote_weight: Агульная прызначаная вага голасу
+    weighted_votes_cast: Аддадзеныя ўзважаныя галасы
+    name_gte_assigned_vote_weight: "%{name} патрабуе як мінімум %{percent}% агульнай прызначанай вагі голасу"
+    name_lte_assigned_vote_weight: "%{name}: не больш за %{percent}% агульнай прызначанай вагі голасу"
+    name_gte_weighted_votes_cast: "%{name} патрабуе як мінімум %{percent}% аддадзеных узважаных галасоў"
+    name_lte_weighted_votes_cast: "%{name}: не больш за %{percent}% аддадзеных узважаных галасоў"
   poll_common:
     your_vote_is_requested: Запытваецца ваш голас
     superseded: Заменена
@@ -2234,6 +2246,9 @@ be:
     pct_of_weighted_votes: "% узважаных галасоў"
     pct_of_weighted_points: "% узважаных балаў"
     weighted_mean: Сярэднеўзважанае значэнне
+    pct_of_eligible_vote_weight: "% вагі голасу выбаршчыкаў з правам голасу"
+    pct_of_vote_weight_cast: "% скарыстанай вагі голасу"
+    pct_of_assigned_vote_weight: "% прызначанай вагі голасу"
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:
@@ -2658,6 +2673,10 @@ be:
     weighted_voting_off_warning: Адключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу роўнай 1. Усе вагі галасоў, якія вы змянілі для гэтага апытання, будуць страчаны.
     weighted_voting_on_group: Уключэнне ўзважанага галасавання капіюе вагу галасоў кожнага ўдзельніка па змаўчанні. Іншыя выбаршчыкі атрымліваюць вагу галасоў, роўную 1.
     weighted_voting_on_direct: Уключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу на 1
+    quorum_vote_weight_hint: Які працэнт вагі голасу выбаршчыкаў з правам голасу трэба скарыстаць, каб вынік быў сапраўдным? Неабавязкова, пакіньце пустым, калі кворум не патрэбны.
+    quorum_vote_weight_placeholder: Працэнт вагі голасу выбаршчыкаў з правам голасу (0–100)
+    quorum_voters_placeholder: Працэнт выбаршчыкаў з правам голасу (0–100)
+    quorum_weighted_hint: Які працэнт агульнай прызначанай вагі голасу трэба скарыстаць, каб вынік быў сапраўдным? Неабавязкова, пакіньце пустым, калі кворум не патрэбны.
   poll_proposal_form:
     start_header: Пачаць прапанову
     edit_header: Рэдагаваць прапанову
@@ -2763,6 +2782,10 @@ be:
     vote_short_of_quorum: Для дасягнення кворуму ў %{pct}% патрэбен яшчэ 1 голас
     votes_short_of_quorum: Для дасягнення кворуму ў %{pct}% патрабуецца яшчэ %{num} галасоў
     quorum_reached: Дасягнуты кворум %{pct}%
+    pct_vote_weight_participation: Аддадзена %{num} з %{total} галасоў (%{pct}% вагі голасу)
+    pct_of_eligible_vote_weight_must_participate: Трэба скарыстаць %{pct}% вагі голасу выбаршчыкаў з правам голасу
+    pct_weighted_participation: Аддадзена %{num} з %{total} галасоў (скарыстана %{pct}% прызначанай вагі голасу)
+    pct_of_assigned_vote_weight_must_participate: Трэба скарыстаць %{pct}% агульнай прызначанай вагі голасу
   poll_meeting_chart_panel:
     total: Усяго
   poll_remove_vote:
@@ -3116,7 +3139,7 @@ be:
     stance: голас
   membership_notification_history:
     invitation_delivery_history: Гісторыя дастаўкі запрашэнняў
-    email_delivery_blocked: "Loomio блакуе дастаўку лістоў на гэты адрас"
+    email_delivery_blocked: Loomio блакуе дастаўку лістоў на гэты адрас
     delivery_result:
       delivered: Дастаўлена
       failed: Не ўдалося даставіць

@@ -825,6 +825,10 @@ module Dev::Scenarios::OatmilkCooperative
 
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
     poll.update!(quorum_pct: 60)
+    PollService.invite(
+      poll: poll, actor: coordinator,
+      params: {recipient_user_ids: [operations_lead.id, finance_lead.id], notify_recipients: false}
+    )
 
     vote_share = params[:vote_share] == '1'
     if vote_share
@@ -868,9 +872,9 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to params[:view] == 'edit' ? "/p/#{poll.key}/edit" : poll_path(poll)
   end
 
-  # The board decides with vote weight 1. Operations staff take part in the
-  # conversation and vote with vote weight 0, so their votes are on record
-  # without changing the result.
+  # The electorate has total vote weight 6. Partial turnout gives Agree one person
+  # with weight 2, Disagree three people with weight 1, and pending weight 3.
+  # This distinguishes headcount, weighted support, and weighted quorum.
   def setup_manual_oatmilk_vote_weights
     group, coordinator, discussion = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')
@@ -880,10 +884,10 @@ module Dev::Scenarios::OatmilkCooperative
     operations_coordinator = create_manual_oatmilk_member(name: 'Lena Fischer', email: 'lena@oatmilk.example')
     [board_member, treasurer, operations_coordinator].each { |member| group.add_member!(member) }
     {
-      coordinator => ['Board chair', 1],
-      board_member => ['Board member', 1],
+      coordinator => ['Board chair', 2],
+      board_member => ['Board member', 2],
       treasurer => ['Treasurer', 1],
-      production_lead => ['Production lead', 0],
+      production_lead => ['Production lead', 1],
       sales_lead => ['Sales lead', 0],
       operations_coordinator => ['Operations coordinator', 0]
     }.each do |member, (title, weight)|
@@ -897,12 +901,16 @@ module Dev::Scenarios::OatmilkCooperative
       poll: poll, actor: coordinator,
       params: {recipient_user_ids: [board_member.id, treasurer.id, operations_coordinator.id], notify_recipients: false}
     )
-    poll.update!(weighted_voting: true)
-    if params[:votes] == '1'
-      [
+    poll.update!(weighted_voting: true, quorum_pct: 60)
+    if %w[1 partial].include?(params[:votes])
+      votes = [
         [coordinator, 'agree'], [treasurer, 'agree'], [board_member, 'disagree'],
         [production_lead, 'disagree'], [sales_lead, 'disagree'], [operations_coordinator, 'disagree']
-      ].each do |voter, icon|
+      ]
+      if params[:votes] == 'partial'
+        votes.reject! { |voter, _| [board_member, treasurer].include?(voter) }
+      end
+      votes.each do |voter, icon|
         option = poll.poll_options.find_by!(icon: icon)
         StanceService.update(
           stance: poll.stances.latest.find_by!(participant: voter),

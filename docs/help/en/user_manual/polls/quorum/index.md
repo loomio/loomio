@@ -4,7 +4,9 @@
 
 A quorum is the minimum percentage of eligible voters who must participate for a poll to be valid. Use it when your governance process requires a particular level of participation.
 
-When creating a poll, open **More settings** and enter the required percentage in **Participation quorum**. Leave the field blank when no quorum is required.
+With [weighted voting](/en/user_manual/polls/weighted_voting), quorum uses vote weights. For example, Jamie has weight `2`, Samira has weight `1`, and Alex has weight `1`. If only Jamie votes, half the eligible vote weight has participated. If Samira also votes, participation reaches 75 percent, meeting a 60 percent quorum.
+
+When creating a poll, open **More settings**. Enter the required percentage in **Quorum**. Leave the field blank when no quorum is required.
 
 ![The Quorum setting with a 60 percent participation quorum](./quorum-section.png)
 
@@ -22,7 +24,7 @@ Jamie selects **Start a vote**, chooses the **Consent** proposal template, and c
 
 Jamie limits the vote to the five people responsible for the trial budget.
 
-The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in the participation quorum field and starts the proposal.
+The cooperative requires 60 percent participation for significant decisions, so Jamie enters **60** in **Quorum** and starts the proposal.
 
 Before anyone votes, the results panel shows that the quorum has not been reached.
 

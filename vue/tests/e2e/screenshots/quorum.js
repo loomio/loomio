@@ -24,6 +24,7 @@ function openQuorumPoll(page, votes) {
   page.loadPath(`setup_manual_oatmilk_quorum?votes=${votes}`);
   page.waitFor('.poll-created .poll-common-chart-panel');
   page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
+  page.expectText('.poll-created', `${votes} of 5 votes cast (${votes * 20}% participation)`);
   page.pause(400);
 }
 
@@ -33,35 +34,12 @@ module.exports = {
   'proposal_options': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
+    page.resizeWindow(1200, 2000);
     openProposalForm(page);
-    page.execute(`
-      const form = document.querySelector('.poll-common-form');
-      const optionsHeading = form.querySelector('.poll-common-form__options-heading');
-      const durationHeading = form.querySelector('.poll-common-form__duration-heading');
-      const votersHeading = form.querySelector('.poll-common-form__voters-heading');
-      const wrapper = document.createElement('div');
-      wrapper.className = 'manual-quorum-options-capture';
-      Object.assign(wrapper.style, {
-        position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
-        padding: '24px', background: 'white'
-      });
-      [
-        form.querySelector('.poll-common-form-fields__title'),
-        form.querySelector('.poll-common-form-fields__details'),
-        optionsHeading,
-        optionsHeading.nextElementSibling,
-        durationHeading,
-        durationHeading.nextElementSibling,
-        form.querySelector('.poll-common-closing-at-field'),
-        votersHeading,
-        votersHeading.nextElementSibling
-      ].filter(Boolean).forEach(el => wrapper.append(el.cloneNode(true)));
-      document.body.append(wrapper);
-    `);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/quorum/proposal-options',
-      '.manual-quorum-options-capture',
-      {width: 1200, height: 1600}
+      ['.poll-common-form > .v-card-title', '.poll-common-form__voters-heading + .v-input'],
+      {padding: 0, width: 1200, height: 2000, clearSelection: true, scrollSelector: '.poll-common-form > .v-card-title', scrollBlock: 'start'}
     );
   },
 
@@ -80,10 +58,11 @@ module.exports = {
       title.scrollIntoView({block: 'center'});
     `);
     page.pause(200);
+    page.expectText('.poll-common-form__quorum', 'Quorum');
     screenshot.captureRegion(
       'polls/quorum/quorum-section',
-      ['.manual-quorum-title', '.manual-quorum-hint', '.manual-quorum-input', '.manual-quorum-tip'],
-      {padding: 16, width: 1100, height: 1400, scrollSelector: '.manual-quorum-title'}
+      ['.poll-common-form__more-settings', '.manual-quorum-tip'],
+      {padding: 16, width: 1200, height: 1400, scrollSelector: '.manual-quorum-title', spotlight: {selectors: ['.manual-quorum-title', '.manual-quorum-hint', '.manual-quorum-input', '.manual-quorum-tip'], padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}}
     );
   },
 
@@ -91,10 +70,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openQuorumPoll(page, 0);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/quorum/pie-chart-0',
-      '.poll-created .poll-common-chart-panel',
-      {width: 1200, height: 1000}
+      ['.poll-created .poll-common-card__title', '.poll-created .action-dock'],
+      {padding: 16, width: 1600, height: 1800, scrollSelector: '.poll-created .poll-common-chart-panel', clearSelection: true, spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}}
     );
   },
 
@@ -102,10 +81,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openQuorumPoll(page, 2);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/quorum/pie-chart-40',
-      '.poll-created .poll-common-chart-panel',
-      {width: 1200, height: 1000}
+      ['.poll-created .poll-common-card__title', '.poll-created .action-dock'],
+      {padding: 16, width: 1600, height: 1800, scrollSelector: '.poll-created .poll-common-chart-panel', clearSelection: true, spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}}
     );
   },
 
@@ -113,10 +92,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openQuorumPoll(page, 3);
-    screenshot.captureElement(
+    screenshot.captureRegion(
       'polls/quorum/pie-chart-60',
-      '.poll-created .poll-common-chart-panel',
-      {width: 1200, height: 1000}
+      ['.poll-created .poll-common-card__title', '.poll-created .action-dock'],
+      {padding: 16, width: 1600, height: 1800, scrollSelector: '.poll-created .poll-common-chart-panel', clearSelection: true, spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}}
     );
   }
 };

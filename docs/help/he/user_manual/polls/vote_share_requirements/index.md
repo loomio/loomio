@@ -1,19 +1,19 @@
 ---
 title: דרישות לשיעור הקולות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 8280f9a4b638a1b8
-  eligible-voters-and-votes-cast: fb601630e59057c9
-  different-vote-share-requirements: 5cbe2602d6e1badc
+  eligible-voters-and-votes-cast: 629fe0e10af97d60
+  different-vote-share-requirements: 3e6e9ecca024bd58
   detailed-example: dc1b2ce523865dd1
 title_source: a654891ca817844e
 title_generated: a35103867891200c
@@ -45,6 +45,8 @@ title_generated: a35103867891200c
 
 דרישה של 60 אחוזים לבחירה באפשרות מסכים/ה מתוך הקולות שהושלכו יכולה להתקיים כאשר 60 אחוזים מהקולות שנמסרו תומכים באפשרות, ללא תלות בשיעור ההשתתפות הכולל. יש להוסיף מניין כאשר התהליך מחייב גם שיעור השתתפות מינימלי.
 
+ב[הצבעה משוקללת](/en/user_manual/polls/weighted_voting), שני בסיסי החישוב משתמשים במשקלי הצבעה. **משקל ההצבעה שמומש** מודד את סך משקל ההצבעה לאפשרות מתוך כלל משקל ההצבעה שמומש. **משקל ההצבעה של בעלי זכות ההצבעה** מודד את משקל ההצבעה של המצביעים שבחרו באפשרות מתוך משקל ההצבעה של כלל בעלי זכות ההצבעה, כולל מי שטרם הצביעו. לדוגמה, הצבעה של אדם אחד שמשקל ההצבעה שלו הוא 70 מתוך משקל הצבעה כולל של 100 לבעלי זכות ההצבעה יכולה להספיק כדי לעמוד בדרישה של 60 אחוזי הסכמה המחושבת לפי משקל ההצבעה של בעלי זכות ההצבעה.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## דרישות שונות לשיעור הקולות
@@ -56,6 +58,8 @@ title_generated: a35103867891200c
 - שיעור הווטו חייב להיות לכל היותר 0 אחוזים מהקולות שהושלכו
 
 הגדרת אפשרות כ־**לכל היותר 0%** היא שימוש נפוץ. משמעותה היא שההצעה אינה יכולה להתקבל אם יש אפילו הצבעה אחת לאפשרות זו. יש להשתמש בה עבור **וטו** כדי שווטו יחיד יעצור את ההצעה.
+
+בהצבעה משוקללת, רק וטו עם משקל הצבעה חיובי חורג מדרישה של 0 אחוזים. וטו עם משקל הצבעה `0` אינו מוסיף משקל לתוצאה.
 
 ניתן גם להוסיף דרישות ל[תבנית סקר](/en/user_manual/polls/poll_templates/) כדי שהן יחולו כברירת מחדל על הצעות חדשות שנוצרות מהתבנית.
 

@@ -1,6 +1,37 @@
 require "test_helper"
 
 class PollSerializerTest < ActiveSupport::TestCase
+  test 'weighted serialization without a response cache uses current vote weights' do
+    poll = PollService.create(params: {
+      title: 'Live weighted serialization', poll_type: 'proposal', weighted_voting: true,
+      specified_voters_only: true, quorum_pct: 60, show_none_of_the_above: true, poll_option_names: %w[Agree Disagree],
+      closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: users(:admin))
+    voters = [users(:admin), users(:user), users(:member)]
+    stances = voters.zip([2, 1, 1]).map do |voter, weight|
+      Stance.create!(poll: poll, participant: voter, weight: weight)
+    end
+    stances.first.update!(cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id, score: 1}])
+    poll.update_counts!
+    serializer = PollSerializer.new(poll)
+
+    assert_equal 50, serializer.cast_stances_pct
+    assert_equal BigDecimal('2.4'), serializer.quorum_count
+    assert_equal BigDecimal('0.4'), serializer.quorum_votes_required
+    assert_equal false, serializer.quorum_reached
+
+    stances.last.update!(weight: 5)
+    assert_equal 25, serializer.cast_stances_pct
+    assert_equal BigDecimal('4.8'), serializer.quorum_count
+    assert_equal BigDecimal('2.8'), serializer.quorum_votes_required
+    assert_equal false, serializer.quorum_reached
+    results = serializer.results.index_by { |row| row[:id] }
+    assert_equal 6, results.fetch(-1)[:score]
+    assert_equal 75, results.fetch(-1)[:voter_percent]
+    assert_equal 0, results.fetch(0)[:voter_percent]
+  end
+
   test "shared payloads omit anonymous voter state instead of reporting false" do
     voter = users(:user)
     poll = PollService.create(
@@ -19,11 +50,18 @@ class PollSerializerTest < ActiveSupport::TestCase
     assert_not shared.key?(:anonymous_voter_eligible)
     assert_not shared.key?(:anonymous_ballot_submitted)
     assert_not shared.key?(:voter_has_access)
+    assert_not shared.key?(:quorum_reached)
+    assert_not shared.key?(:quorum_votes_required)
 
     personal = PollSerializer.new(poll, scope: { exclude_types: [], current_user_id: voter.id }).as_json.fetch(:poll)
     assert_equal true, personal[:anonymous_voter_eligible]
     assert_equal false, personal[:anonymous_ballot_submitted]
     assert_equal true, personal[:voter_has_access]
+    assert_not personal.key?(:quorum_reached)
+
+    PollService.close(poll: poll, actor: users(:admin))
+    closed = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
+    assert_equal false, closed.fetch(:quorum_reached)
   end
 
   test "compact personal poll responses report revoked voting access without loading group records" do
