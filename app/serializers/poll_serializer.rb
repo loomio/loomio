@@ -133,8 +133,47 @@ class PollSerializer < ApplicationSerializer
     participation_visible?
   end
 
+  # Optional response-scoped weights; calculations query live sums without a cache.
+  def vote_weight_total
+    return unless object.weighted_voting?
+
+    cache_fetch(:vote_weight_total_by_poll_id, object.id) { nil }
+  end
+
+  def vote_weight_cast
+    return unless object.weighted_voting?
+
+    cache_fetch(:vote_weight_cast_by_poll_id, object.id) { nil }
+  end
+
+  def vote_weight_uncast
+    return unless object.weighted_voting?
+
+    cache_fetch(:vote_weight_uncast_by_poll_id, object.id) { nil }
+  end
+
+  def vote_weight_none_of_the_above
+    return unless object.weighted_voting?
+
+    cache_fetch(:vote_weight_none_of_the_above_by_poll_id, object.id) { nil }
+  end
+
+  def cast_stances_pct
+    return if object.discarded_at
+
+    object.cast_stances_pct(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
+  end
+
+  def quorum_count
+    object.quorum_count(vote_weight_total: vote_weight_total)
+  end
+
+  def quorum_votes_required
+    object.quorum_votes_required(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
+  end
+
   def quorum_reached
-    object.quorum_reached?
+    object.quorum_reached?(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
   end
 
   def include_quorum_reached?
@@ -148,7 +187,10 @@ class PollSerializer < ApplicationSerializer
     PollService.calculate_results(
       object, poll_options,
       undecided_voter_ids: undecided_voter_ids,
-      none_of_the_above_voter_ids: none_of_the_above_voter_ids
+      none_of_the_above_voter_ids: none_of_the_above_voter_ids,
+      vote_weight_total: vote_weight_total,
+      vote_weight_uncast: vote_weight_uncast,
+      vote_weight_none_of_the_above: vote_weight_none_of_the_above
     )
   end
 

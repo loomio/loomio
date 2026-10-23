@@ -46,8 +46,8 @@ class PollQuorumTest < ActiveSupport::TestCase
     @stances[1].update_columns(revoked_at: Time.current, weight: 100)
     @poll.update_counts!
 
-    assert_equal BigDecimal('0.5'), @poll.voter_weight_total
-    assert_equal BigDecimal('0.5'), @poll.voter_weight_cast
+    assert_equal BigDecimal('0.5'), @poll.vote_weight_total
+    assert_equal BigDecimal('0.5'), @poll.vote_weight_cast
     assert_equal BigDecimal('0.25'), @poll.quorum_count
     assert @poll.quorum_reached?
   end
@@ -144,8 +144,8 @@ class PollQuorumTest < ActiveSupport::TestCase
     @stances.zip(%w[1 2 3]).each { |stance, weight| stance.update!(weight: weight) }
     cast(@stances[0])
 
-    assert_equal 6, @poll.voter_weight_total
-    assert_equal 1, @poll.voter_weight_cast
+    assert_equal 6, @poll.vote_weight_total
+    assert_equal 1, @poll.vote_weight_cast
     assert_equal 16, @poll.cast_stances_pct
     assert_equal BigDecimal('3.6'), @poll.quorum_count
     assert_equal BigDecimal('2.6'), @poll.quorum_votes_required
@@ -227,8 +227,8 @@ class PollQuorumTest < ActiveSupport::TestCase
     end
     @poll.update_counts!
 
-    assert_equal 1, @poll.voter_weight_total
-    assert_equal BigDecimal('0.5'), @poll.voter_weight_cast
+    assert_equal 1, @poll.vote_weight_total
+    assert_equal BigDecimal('0.5'), @poll.vote_weight_cast
     rows = @poll.results.index_by { |row| row[:id] }
     assert_equal 12.5, rows.fetch(0)[:voter_percent]
     assert_equal 50, rows.fetch(-1)[:voter_percent]

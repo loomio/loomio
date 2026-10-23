@@ -528,9 +528,10 @@ class PollService
     number.frac.zero? ? number.to_i : number.to_f
   end
 
-  # Callers with a record cache pass the voter ids they already loaded; other
-  # callers leave them nil and the ids are queried here.
-  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil, none_of_the_above_voter_ids: nil)
+  # Callers with a response cache pass preloaded voter IDs and weight sums.
+  # Other callers leave them nil and read the current data here.
+  def self.calculate_results(poll, poll_options, undecided_voter_ids: nil, none_of_the_above_voter_ids: nil,
+                             vote_weight_total: nil, vote_weight_uncast: nil, vote_weight_none_of_the_above: nil)
     # Options may come from the record cache without their poll loaded; attach it
     # so each option's color and voter ids do not reload the poll.
     poll_options.each { |option| option.association(:poll).target = poll }
@@ -547,7 +548,7 @@ class PollService
     total_score = poll_options.sum(&:total_score)
     maximum_score = poll_options.map(&:total_score).max
     weighted_results = poll.weighted_voting?
-    electorate_total = weighted_results ? poll.voter_weight_total : poll.voters_count
+    electorate_total = weighted_results ? (vote_weight_total || poll.vote_weight_total) : poll.voters_count
 
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
@@ -598,7 +599,7 @@ class PollService
     end
 
     if poll.show_none_of_the_above
-      none_of_the_above_total = weighted_results ? poll.stances.latest.decided.none_of_the_above.sum(:weight) : poll.none_of_the_above_count
+      none_of_the_above_total = weighted_results ? (vote_weight_none_of_the_above || poll.vote_weight_none_of_the_above) : poll.none_of_the_above_count
       l.push(
         {
           id: 0,
@@ -623,7 +624,7 @@ class PollService
     end
 
     if poll.results_include_undecided
-      undecided_total = weighted_results ? poll.stances.latest.undecided.sum(:weight) : poll.undecided_voters_count
+      undecided_total = weighted_results ? (vote_weight_uncast || poll.vote_weight_uncast) : poll.undecided_voters_count
       # Uncast weight is comparable to weighted votes, but not to points awarded
       # in multi-point polls. It remains excluded from percentages of votes cast.
       undecided_score = weighted_results && poll.one_point_choices? ? result_number(undecided_total) : 0

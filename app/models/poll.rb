@@ -526,10 +526,10 @@ class Poll < ApplicationRecord
     voters_count - undecided_voters_count
   end
 
-  def cast_stances_pct
+  def cast_stances_pct(vote_weight_total: nil, vote_weight_cast: nil)
     if weighted_voting?
-      total = voter_weight_total
-      return total.positive? ? (voter_weight_cast / total * 100).to_i : 0
+      total = vote_weight_total || self.vote_weight_total
+      return total.positive? ? ((vote_weight_cast || self.vote_weight_cast) / total * 100).to_i : 0
     end
 
     return 0 if voters_count == 0
@@ -607,35 +607,44 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def quorum_count
+  def quorum_count(vote_weight_total: nil)
     return 0 if quorum_pct.nil?
 
-    total = weighted_voting? ? voter_weight_total : voters_count
+    total = weighted_voting? ? (vote_weight_total || self.vote_weight_total) : voters_count
     required = quorum_pct.to_d / 100 * total
     weighted_voting? ? required.ceil(3) : required.ceil
   end
 
-  def quorum_reached?
+  def quorum_reached?(vote_weight_total: nil, vote_weight_cast: nil)
     return false if quorum_pct.nil?
-    return false if weighted_voting? && quorum_pct.positive? && voter_weight_total.zero?
+    vote_weight_total ||= self.vote_weight_total if weighted_voting?
+    return false if weighted_voting? && quorum_pct.positive? && vote_weight_total.zero?
 
-    quorum_votes_required <= 0
+    quorum_votes_required(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast) <= 0
   end
 
-  def quorum_votes_required
+  def quorum_votes_required(vote_weight_total: nil, vote_weight_cast: nil)
     return 0 if quorum_pct.nil?
 
-    quorum_count - (weighted_voting? ? voter_weight_cast : decided_voters_count)
+    quorum_count(vote_weight_total: vote_weight_total) - (weighted_voting? ? (vote_weight_cast || self.vote_weight_cast) : decided_voters_count)
   end
 
   # Use the weights issued in this poll, including pending votes and overrides.
   # Latest excludes replaced and revoked votes; group defaults may have changed.
-  def voter_weight_total
+  def vote_weight_total
     stances.latest.sum(:weight)
   end
 
-  def voter_weight_cast
+  def vote_weight_cast
     stances.latest.decided.sum(:weight)
+  end
+
+  def vote_weight_uncast
+    stances.latest.undecided.sum(:weight)
+  end
+
+  def vote_weight_none_of_the_above
+    stances.latest.decided.none_of_the_above.sum(:weight)
   end
 
   def quorum_requirement_key
