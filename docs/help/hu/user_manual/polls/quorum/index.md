@@ -1,16 +1,16 @@
 ---
 title: Határozatképesség
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: 98d078d4d2a3a430
-  example-scenario: e1cc6cccc0fc2933
+  introduction: adb84d888e40b51c
+  example-scenario: 89acd8cce4fff1cd
 title_source: 18ed8b6c5ab90343
 title_generated: 6c41db0de288697e
 ---
@@ -21,7 +21,9 @@ title_generated: 6c41db0de288697e
 
 A határozatképesség a szavazásra jogosultak azon minimális százalékos aránya, akiknek részt kell venniük ahhoz, hogy a szavazás érvényes legyen. Használd, ha a döntéshozatali folyamatod meghatározott részvételi arányt követel meg.
 
-Szavazás létrehozásakor nyisd meg a **További beállítások** részt, és add meg a szükséges százalékot a **Részvételi határozatképesség** mezőben. Hagyd üresen a mezőt, ha nincs határozatképességi követelmény.
+[Súlyozott szavazás](/en/user_manual/polls/weighted_voting) esetén a határozatképesség számítása a szavazati súlyokon alapul. Például Jamie szavazati súlya `2`, Samiráé `1`, Alexé pedig `1`. Ha csak Jamie szavaz, a szavazásra jogosultak összesített szavazati súlyának fele vesz részt. Ha Samira is szavaz, a részvétel eléri a 75 százalékot, így teljesül a 60 százalékos határozatképességi küszöb.
+
+Szavazás létrehozásakor nyisd meg a **További beállítások** részt. Add meg a szükséges százalékot a **Határozatképesség** mezőben. Hagyd üresen a mezőt, ha nincs határozatképességi követelmény.
 
 ![A határozatképesség beállítása 60 százalékos részvételi küszöbbel](./quorum-section.png)
 
@@ -39,7 +41,7 @@ Jamie kiválasztja a **Szavazás indítása** gombot, majd a **Beleegyezés** ja
 
 Jamie a próba költségvetéséért felelős öt emberre korlátozza a szavazásra jogosultak körét.
 
-A szövetkezet a jelentős döntésekhez 60 százalékos részvételt követel meg, ezért Jamie **60**-at ír a részvételi határozatképesség mezőbe, és elindítja a javaslatot.
+A szövetkezet a jelentős döntésekhez 60 százalékos részvételt követel meg, ezért Jamie **60**-at ír a **Határozatképesség** mezőbe, és elindítja a javaslatot.
 
 Mielőtt bárki szavazna, az eredmények panelje azt mutatja, hogy a szavazás még nem érte el a határozatképességi küszöböt.
 

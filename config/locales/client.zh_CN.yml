@@ -275,7 +275,7 @@ zh_CN:
       open: 打开
       closed: 关闭
       private: 私密
-      parent_members: "对父群组可见"
+      parent_members: 对父群组可见
       secret: 秘密
     selected: 已选
     today: 今天
@@ -1509,8 +1509,8 @@ zh_CN:
     confirm_change_to_public: 如果您继续操作，本群组中的所有帖子都将在网络上公开。
     confirm_change_to_private_discussions_only: 如果您继续操作，本群组中的所有公开帖子都将被设为私密帖子。
     profile: 轮廓
-    subgroup_name_and_content_are_public: "任何人都能找到此子群组并阅读其帖子"
-    subgroup_name_is_public_and_threads_are_private: "任何人都能找到此子群组；其帖子不公开"
+    subgroup_name_and_content_are_public: 任何人都能找到此子群组并阅读其帖子
+    subgroup_name_is_public_and_threads_are_private: 任何人都能找到此子群组；其帖子不公开
     subgroup_is_visible_to_parent_members: "%{parent}的成员能找到此子群组；其帖子不公开"
     subgroup_privacy_is_open_description: 任何人都可以找到这个子群组并应用加入。所有帖子都是公开的。
     subgroup_privacy_is_closed_description: 任何人都可以找到这个子群组并应用加入。所有帖子均为私密帖。
@@ -1519,9 +1519,9 @@ zh_CN:
     subgroup_privacy_is_secret_description: 只有受邀成员才能看到此子群组。
     advanced_settings: 高级设置
     how_do_people_join: 如何加入？
-    join_without_approval: "无需审批即可加入"
-    request_to_join: "申请加入"
-    invitation_only: "仅限受邀加入"
+    join_without_approval: 无需审批即可加入
+    request_to_join: 申请加入
+    invitation_only: 仅限受邀加入
     permissions: 权限
     thread_privacy: 帖子隐私
     public_threads: 仅限公开讨论
@@ -1529,8 +1529,8 @@ zh_CN:
     public_or_private_threads: 允许公开和私密帖子
     private_threads: 只有成员才能查看讨论
     allow_public_threads: 允许在本群组中发布公开话题。
-    parent_group_members_can_see_private_threads: "上级群组成员可查看私密帖子"
-    parent_group_members_can_see_private_threads_help: "允许 %{parent} 的成员查看本群组内的帖子和投票，但不能参与"
+    parent_group_members_can_see_private_threads: 上级群组成员可查看私密帖子
+    parent_group_members_can_see_private_threads_help: 允许 %{parent} 的成员查看本群组内的帖子和投票，但不能参与
     members_can_announce: 成员可以通知群里的所有人。
     members_can_announce_help: 允许成员通知群组中的所有人有关帖子或投票的信息。
     members_can_add_members: 成员可以邀请其他成员
@@ -2098,6 +2098,18 @@ zh_CN:
     name_lte_score_percent: "%{name} 不得超过 %{percent}% 的投票数"
     name_lte_voter_percent: "%{name} 不得超过合格投票者的 %{percent}%"
     points_cast: 投出的点
+    eligible_vote_weight: 合格投票权重
+    vote_weight_cast: 已投投票权重
+    name_gte_eligible_vote_weight: "%{name} 需获得至少 %{percent}% 的合格投票权重"
+    name_lte_eligible_vote_weight: "%{name} 不得超过合格投票权重的 %{percent}%"
+    name_gte_vote_weight_cast: "%{name} 需获得至少 %{percent}% 的已投投票权重"
+    name_lte_vote_weight_cast: "%{name} 不得超过已投投票权重的 %{percent}%"
+    total_assigned_vote_weight: 已分配投票权重总和
+    weighted_votes_cast: 已投加权票数
+    name_gte_assigned_vote_weight: "%{name} 需获得已分配投票权重总和的至少 %{percent}%"
+    name_lte_assigned_vote_weight: "%{name} 不得超过已分配投票权重总和的 %{percent}%"
+    name_gte_weighted_votes_cast: "%{name} 需获得至少 %{percent}% 的已投加权票数"
+    name_lte_weighted_votes_cast: "%{name} 不得超过已投加权票数的 %{percent}%"
   poll_common:
     superseded: 被取代
     outdated: 过时的
@@ -2214,6 +2226,9 @@ zh_CN:
     pct_of_weighted_votes: 加权投票百分比
     pct_of_weighted_points: 加权积分百分比
     weighted_mean: 加权平均值
+    pct_of_eligible_vote_weight: 占合格投票权重的 %
+    pct_of_vote_weight_cast: 占已投投票权重的 %
+    pct_of_assigned_vote_weight: 占已分配投票权重的 %
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2625,6 +2640,10 @@ zh_CN:
     weighted_voting_off_warning: 关闭加权投票后，所有投票权重均设为 1。您在此投票中更改的任何投票权重都将丢失。
     weighted_voting_on_group: 启用加权投票后，每个成员的默认投票权重将被复制。其他投票者的投票权重为 1。
     weighted_voting_on_direct: 启用加权投票后，所有选票的权重均设为 1
+    quorum_vote_weight_hint: 合格投票权重的百分之多少必须参与投票，结果才有效？可选，留空则不设法定人数。
+    quorum_vote_weight_placeholder: 合格投票权重的百分比 (0–100)
+    quorum_voters_placeholder: 合格投票者的百分比 (0–100)
+    quorum_weighted_hint: 已分配投票权重总和的百分之多少必须参与投票，结果才有效？可选，留空则不设法定人数。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2730,6 +2749,10 @@ zh_CN:
     vote_short_of_quorum: 还需1票才能达到法定人数%{pct}%。
     votes_short_of_quorum: 还需要 %{num} 票才能达到 %{pct}% 的法定人数
     quorum_reached: 已达到法定人数 %{pct}%。
+    pct_vote_weight_participation: 共 %{total} 票，已投 %{num} 票 (占投票权重的 %{pct}%)
+    pct_of_eligible_vote_weight_must_participate: 合格投票权重的 %{pct}% 必须参与投票
+    pct_weighted_participation: 共 %{total} 票，已投 %{num} 票 (已分配投票权重的 %{pct}% 已参与投票)
+    pct_of_assigned_vote_weight_must_participate: 已分配投票权重总和的 %{pct}% 必须参与投票
   poll_meeting_chart_panel:
     total: 全部的
   poll_remove_vote:
@@ -3138,7 +3161,7 @@ zh_CN:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 邀请投递记录
-    email_delivery_blocked: "Loomio 已停止向此地址发送邮件"
+    email_delivery_blocked: Loomio 已停止向此地址发送邮件
     delivery_result:
       delivered: 已送达
       failed: 失败

@@ -1,16 +1,16 @@
 ---
 title: Päätösvaltaisuus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: 5b17c6e06ac6746a
-  example-scenario: 5d1b5b99f55849a2
+  introduction: d33bd535ffd2646e
+  example-scenario: 7ee0a7a527876382
 title_source: 18ed8b6c5ab90343
 title_generated: 231a357976471e5a
 ---
@@ -21,9 +21,11 @@ title_generated: 231a357976471e5a
 
 Päätösvaltaisuus tarkoittaa sitä vähimmäisprosenttia äänioikeutetuista äänestäjistä, jonka on osallistuttava, jotta kysely olisi pätevä. Käytä sitä, kun päätöksentekoprosessisi edellyttää tiettyä osallistumistasoa.
 
-Kun luot kyselyn, avaa **Lisää asetuksia** ja syötä vaadittu prosenttiosuus kenttään **Osallistumispäätösvaltaisuus**. Jätä kenttä tyhjäksi, jos päätösvaltaisuutta ei edellytetä.
+Kun käytät [painotettua äänestystä](/en/user_manual/polls/weighted_voting), päätösvaltaisuus lasketaan äänipainojen perusteella. Esimerkiksi Jamien äänipaino on `2`, Samiran `1` ja Alexin `1`. Jos vain Jamie äänestää, osallistuneiden osuus on puolet äänioikeutettujen yhteenlasketusta äänipainosta. Jos myös Samira äänestää, osallistuminen nousee 75 prosenttiin, jolloin 60 prosentin päätösvaltaisuus saavutetaan.
 
-![Päätösvaltaisuusasetus, jossa osallistumispäätösvaltaisuus on 60 prosenttia](./quorum-section.png)
+Kun luot kyselyn, avaa **Lisää asetuksia**. Syötä vaadittu prosenttiosuus kenttään **Päätösvaltaisuus**. Jätä kenttä tyhjäksi, jos päätösvaltaisuutta ei edellytetä.
+
+![Päätösvaltaisuusasetus, jossa vaadittu osallistuminen on 60 prosenttia](./quorum-section.png)
 
 Voit asettaa päätösvaltaisuuden myös [kyselymallissa](/en/user_manual/polls/poll_templates/), jolloin mallista luodut kyselyt käyttävät sitä oletuksena.
 
@@ -39,16 +41,16 @@ Jamie valitsee **Aloita äänestys**, valitsee **Suostumus**-ehdotusmallin ja t�
 
 Jamie rajaa äänestyksen viiteen kokeilun budjetista vastaavaan henkilöön.
 
-Osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista, joten Jamie syöttää osallistumispäätösvaltaisuuden kenttään **60** ja käynnistää ehdotuksen.
+Osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista, joten Jamie syöttää kenttään **Päätösvaltaisuus** arvon **60** ja käynnistää ehdotuksen.
 
 Ennen kuin kukaan äänestää, tulospaneeli näyttää, ettei päätösvaltaisuutta ole saavutettu.
 
 ![Yhtään ääntä ei ole annettu, eikä 60 prosentin päätösvaltaisuutta ole vielä saavutettu](pie-chart-0.png)
 
-Jamie on samaa mieltä ja Samira on eri mieltä. Kaavio päivittyy, mutta kaksi viidestä äänioikeutetusta äänestäjästä tarkoittaa vain 40 prosentin osallistumista, joten päätösvaltaisuutta ei vieläkään ole saavutettu.
+Jamie valitsee Samaa mieltä ja Samira valitsee Eri mieltä. Kaavio päivittyy, mutta kaksi viidestä äänioikeutetusta äänestäjästä tarkoittaa vain 40 prosentin osallistumista, joten päätösvaltaisuutta ei vieläkään ole saavutettu.
 
 ![Kaksi viidestä äänestä on annettu, eikä päätösvaltaisuutta ole vielä saavutettu](pie-chart-40.png)
 
-Alex on myös samaa mieltä. Kolme viidestä äänioikeutetusta äänestäjästä on osallistunut, joten 60 prosentin päätösvaltaisuus on saavutettu. Vaatimuksen kohdalla näkyy nyt vihreä valintamerkki. Jamie voi sulkea kyselyn etuajassa tai odottaa muiden äänestäjien ääniä.
+Alex valitsee sitten Samaa mieltä. Kolme viidestä äänioikeutetusta äänestäjästä on osallistunut, joten 60 prosentin päätösvaltaisuus on saavutettu. Vaatimuksen kohdalla näkyy nyt vihreä valintamerkki. Jamie voi sulkea kyselyn etuajassa tai odottaa muiden äänestäjien ääniä.
 
 ![Kolme viidestä äänestä on annettu, ja 60 prosentin päätösvaltaisuus on saavutettu](pie-chart-60.png)

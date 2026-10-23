@@ -75,7 +75,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "- **Options:** Agree; Disagree"
       assert_includes markdown, "### Current results"
       assert_match(/\| Agree\s+\| 1\s+\| 100%\s+\| 10%\s+\| #{@member.name}\s+\|/, markdown)
-      assert_match(/\| Undecided\s+\| 9\s+\|\s+\| 90%\s+\| .*#{@admin.name}.*\|/, markdown)
+      assert_match(/\| Not voted\s+\| 9\s+\|\s+\| 90%\s+\| .*#{@admin.name}.*\|/, markdown)
       assert_match(/^> \*\*#{@member.name}\*\* voted \*\*Agree\*\* · 2026-07-15 10:00 · #\d+\n>\n> It addresses the main concern\.$/, markdown)
       refute_includes markdown, "\n- Agree\n"
       refute_includes markdown, "**Response:**"
@@ -168,9 +168,9 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @admin)
     closed_markdown = render(discussion.topic)
     assert_match(/\| Agree\s+\| 1\s+\| 100%\s+\| 10%\s+\| Anonymous\s+\|/, closed_markdown)
-    assert_match(/\| Undecided\s+\| 9\s+\|\s+\| 90%\s+\| Anonymous\s+\|/, closed_markdown)
+    assert_match(/\| Not voted\s+\| 9\s+\|\s+\| 90%\s+\| Anonymous\s+\|/, closed_markdown)
     assert_equal 1, closed_markdown.scan(/^## Proposal: Detached anonymous check/).length
-    refute_includes closed_markdown, " voted"
+    refute_match(/^###? .* voted/, closed_markdown)
     refute_includes closed_markdown, @member.name
   end
 
@@ -350,7 +350,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     poll = create_poll(discussion)
 
     undecided_markdown = render(discussion.topic)
-    assert_match(/\| Undecided\s+\|[^\n]*#{nameless.username}/, undecided_markdown)
+    assert_match(/\| Not voted\s+\|[^\n]*#{nameless.username}/, undecided_markdown)
 
     stance = poll.stances.latest.find_by!(participant_id: nameless.id)
     stance.choice = "Agree"

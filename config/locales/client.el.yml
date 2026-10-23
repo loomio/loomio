@@ -248,7 +248,7 @@ el:
       open: Άνοιγμα
       closed: Έκλεισε
       private: Ιδιωτικό
-      parent_members: "Ορατή στη γονική ομάδα"
+      parent_members: Ορατή στη γονική ομάδα
       secret: Κρυφό
     selected: Επιλεγμένα
     today: σήμερα
@@ -1423,9 +1423,9 @@ el:
     confirm_change_to_public: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα θα δημοσιοποιηθούν στον ιστό.
     confirm_change_to_private_discussions_only: Εάν συνεχίσετε, τυχόν δημόσια νήματα σε αυτήν την ομάδα θα γίνουν ιδιωτικά.
     profile: Προφίλ
-    subgroup_name_and_content_are_public: "Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της"
-    subgroup_name_is_public_and_threads_are_private: "Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
-    subgroup_is_visible_to_parent_members: "Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
+    subgroup_name_and_content_are_public: Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της
+    subgroup_name_is_public_and_threads_are_private: Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά
+    subgroup_is_visible_to_parent_members: Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
@@ -1433,9 +1433,9 @@ el:
     subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
     advanced_settings: Προηγμένες ρυθμίσεις
     how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
-    join_without_approval: "Εγγραφή χωρίς έγκριση"
-    request_to_join: "Αίτημα εγγραφής"
-    invitation_only: "Μόνο με πρόσκληση"
+    join_without_approval: Εγγραφή χωρίς έγκριση
+    request_to_join: Αίτημα εγγραφής
+    invitation_only: Μόνο με πρόσκληση
     permissions: Δικαιώματα
     thread_privacy: Ιδιωτικότητα του θέματος
     public_threads: Μόνο δημόσια θέματα
@@ -1443,8 +1443,8 @@ el:
     public_or_private_threads: Επιτρέπονται δημόσια και ιδιωτικά θέματα
     private_threads: Μόνο τα μέλη μπορούν να δεις τις συζητήσεις
     allow_public_threads: Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.
-    parent_group_members_can_see_private_threads: "Τα μέλη της γονικής ομάδας μπορούν να βλέπουν ιδιωτικά νήματα"
-    parent_group_members_can_see_private_threads_help: "Επιτρέψτε στα μέλη της %{parent} να βλέπουν νήματα και δημοσκοπήσεις σε αυτή την ομάδα, χωρίς να συμμετέχουν"
+    parent_group_members_can_see_private_threads: Τα μέλη της γονικής ομάδας μπορούν να βλέπουν ιδιωτικά νήματα
+    parent_group_members_can_see_private_threads_help: Επιτρέψτε στα μέλη της %{parent} να βλέπουν νήματα και δημοσκοπήσεις σε αυτή την ομάδα, χωρίς να συμμετέχουν
     members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
     members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
     members_can_add_members: Τα μέλη μπορούν να προσκαλέσουν μέλη
@@ -1991,6 +1991,18 @@ el:
     for_the_proposal_to_pass: Για να εγκριθεί η πρόταση, η επιλογή αυτή πρέπει να λάβει...
     for_the_poll_to_be_valid: Για να είναι έγκυρη η %{poll_type}, αυτή η επιλογή πρέπει να λάβει…
     points_cast: Πόντοι από ψήφους
+    eligible_vote_weight: Βάρος ψήφου επιλέξιμων ψηφοφόρων
+    vote_weight_cast: Βάρος ψήφου που κατατέθηκε
+    name_gte_eligible_vote_weight: "%{name} χρειάζεται τουλάχιστον %{percent}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    name_lte_eligible_vote_weight: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    name_gte_vote_weight_cast: "%{name} χρειάζεται τουλάχιστον %{percent}% του βάρους ψήφου που κατατέθηκε"
+    name_lte_vote_weight_cast: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του βάρους ψήφου που κατατέθηκε"
+    total_assigned_vote_weight: Συνολικό βάρος ψήφου που ανατέθηκε
+    weighted_votes_cast: Σταθμισμένες ψήφοι που κατατέθηκαν
+    name_gte_assigned_vote_weight: "%{name} χρειάζεται τουλάχιστον %{percent}% του συνολικού βάρους ψήφου που ανατέθηκε"
+    name_lte_assigned_vote_weight: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του συνολικού βάρους ψήφου που ανατέθηκε"
+    name_gte_weighted_votes_cast: "%{name} χρειάζεται τουλάχιστον %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
+    name_lte_weighted_votes_cast: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
   poll_common:
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος
@@ -2107,6 +2119,9 @@ el:
     pct_of_weighted_votes: "% σταθμισμένων ψήφων"
     pct_of_weighted_points: "% σταθμισμένων πόντων"
     weighted_mean: Σταθμισμένος μέσος όρος
+    pct_of_eligible_vote_weight: "% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    pct_of_vote_weight_cast: "% του βάρους ψήφου που κατατέθηκε"
+    pct_of_assigned_vote_weight: "% του βάρους ψήφου που ανατέθηκε"
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2439,6 +2454,10 @@ el:
     votes_short_of_quorum: Απαιτούνται %{num} ακόμη ψήφοι για την επίτευξη απαρτίας %{pct}%
     quorum_reached: Έχει επιτευχθεί απαρτία %{pct}%
     pct_participation: "%{num} από %{total} ψήφους που έδωσαν (%{pct}% συμμετοχή)"
+    pct_vote_weight_participation: Κατατέθηκαν %{num} από %{total} ψήφους (%{pct}% του βάρους ψήφου)
+    pct_of_eligible_vote_weight_must_participate: Πρέπει να συμμετέχει το %{pct}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων
+    pct_weighted_participation: Κατατέθηκαν %{num} από %{total} ψήφους (συμμετείχε το %{pct}% του βάρους ψήφου που ανατέθηκε)
+    pct_of_assigned_vote_weight_must_participate: Πρέπει να συμμετέχει το %{pct}% του συνολικού βάρους ψήφου που ανατέθηκε
   poll_meeting_chart_panel:
     total: Σύνολο
   poll_remove_vote:
@@ -2972,6 +2991,10 @@ el:
     weighted_voting_off_warning: Η απενεργοποίηση της σταθμισμένης ψήφου ορίζει τη στάθμιση κάθε ψήφου σε 1. Οποιαδήποτε στάθμιση ψήφων αλλάξατε για αυτήν την δημοσκόπηση θα χαθεί.
     weighted_voting_on_group: Η ενεργοποίηση της σταθμισμένης ψήφου αντιγράφει την προεπιλεγμένη βαρύτητα ψήφου κάθε μέλους. Οι υπόλοιποι ψηφοφόροι λαμβάνουν βάρος ψήφου 1.
     weighted_voting_on_direct: Η ενεργοποίηση της σταθμισμένης ψήφου ορίζει το βάρος κάθε ψήφου σε 1
+    quorum_vote_weight_hint: Τι ποσοστό του βάρους ψήφου των επιλέξιμων ψηφοφόρων πρέπει να συμμετέχει για να είναι έγκυρο το αποτέλεσμα; Προαιρετικό, αφήστε το κενό αν δεν απαιτείται απαρτία.
+    quorum_vote_weight_placeholder: Ποσοστό βάρους ψήφου επιλέξιμων ψηφοφόρων (0–100)
+    quorum_voters_placeholder: Ποσοστό επιλέξιμων ψηφοφόρων (0–100)
+    quorum_weighted_hint: Τι ποσοστό του συνολικού βάρους ψήφου που ανατέθηκε πρέπει να συμμετέχει για να είναι έγκυρο το αποτέλεσμα; Προαιρετικό, αφήστε το κενό αν δεν απαιτείται απαρτία.
   poll_receipts_page:
     participation_status_requires_min_votes: Αυτό δείχνει ποιος είχε δικαίωμα ψήφου. Το αν ψήφισε κάθε άτομο εμφανίζεται μόνο όταν έχουν ψηφίσει τουλάχιστον %{count} άτομα.
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.
@@ -3214,7 +3237,7 @@ el:
     stance: ψήφος
   membership_notification_history:
     invitation_delivery_history: Ιστορικό παράδοσης προσκλήσεων
-    email_delivery_blocked: "Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση"
+    email_delivery_blocked: Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση
     delivery_result:
       delivered: Παραδόθηκε
       failed: Απέτυχε

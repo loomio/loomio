@@ -1,4 +1,5 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
+import { createVuetify } from 'vuetify';
 import { describe, expect, it, vi } from 'vitest';
 import { reactive, nextTick } from 'vue';
 
@@ -6,6 +7,10 @@ vi.mock('@/shared/services/records', () => ({
   default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null, build: () => ({})}}
 }));
 vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: () => {}}}}));
+vi.mock('@/components/user/avatar', () => ({default: {
+  name: 'UserAvatar', props: {user: Object, size: Number, noLink: Boolean},
+  template: '<div class="v-avatar test-voter-avatar" :title="user.name">{{ user.name }}</div>'
+}}));
 vi.mock('vue-i18n', async importOriginal => ({
   ...await importOriginal(),
   useI18n: () => ({t: key => key})
@@ -41,7 +46,7 @@ describe('weighted poll results table', () => {
     expect(wrapper.findAll('tbody td').slice(-2).map(cell => cell.text())).toEqual(['2', '2.83']);
   });
 
-  it('shows votes and weighted votes on weighted proposals', () => {
+  it('shows remaining vote weight for Not voted but leaves its share of votes cast blank', () => {
     const poll = {
       weightedVoting: true,
       pollType: 'proposal',
@@ -52,9 +57,13 @@ describe('weighted poll results table', () => {
       resultColumns: ['name', 'votes', 'score', 'voter_percent', 'votes_cast_percent'],
       resultHeadingKeys: {
         name: 'common.option', votes: 'poll_common.votes', score: 'poll_common.weighted_votes',
-        votes_cast_percent: 'poll_common.pct_of_weighted_votes', voter_percent: 'poll_common.pct_of_assigned_vote_weight'
+        votes_cast_percent: 'poll_common.pct_of_vote_weight_cast', voter_percent: 'poll_common.pct_of_eligible_vote_weight'
       },
-      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: 2, score: '2.83', score_percent: 75, voter_percent: 50}]
+      results: [
+        {id: 1, name: 'Agree', name_format: 'plain', voter_count: 2, score: '2.83', score_percent: 100, voter_percent: 50},
+        {id: 2, name: 'Disagree', name_format: 'plain', voter_count: 0, score: 0, score_percent: 0, voter_percent: 0},
+        {id: -1, name: 'Not voted', name_format: 'plain', voter_count: 3, score: 2.83, score_percent: null, voter_percent: 50}
+      ]
     };
 
     const wrapper = shallowMount(ChartTable, {
@@ -67,27 +76,32 @@ describe('weighted poll results table', () => {
 
     expect(wrapper.findAll('thead th').map(cell => cell.text())).toEqual([
       'common.option', 'poll_common.votes', 'poll_common.weighted_votes',
-      'poll_common.pct_of_assigned_vote_weight', 'poll_common.pct_of_weighted_votes'
+      'poll_common.pct_of_eligible_vote_weight', 'poll_common.pct_of_vote_weight_cast'
     ]);
-    expect(wrapper.findAll('tbody td').slice(1).map(cell => cell.text())).toEqual(['2', '2.83', '50%', '75%']);
+    expect(wrapper.findAll('tbody tr').map(row => row.findAll('td').slice(1).map(cell => cell.text()))).toEqual([
+      ['2', '2.83', '50%', '100%'],
+      ['0', '0', '0%', '0%'],
+      ['3', '2.83', '50%', '']
+    ]);
   });
 
-  it('charts plain vote counts separately from weighted percentages', async () => {
+  it('includes Not voted in vote counts and weights, excluding it only from the share of votes cast', async () => {
     const poll = {
       weightedVoting: true,
       closedAt: false,
       chartType: 'pie',
       chartColumn: 'score_percent',
       singleChoice: () => true,
-      votersCount: 3,
+      votersCount: 4,
       resultColumns: ['chart', 'name', 'votes', 'score', 'votes_cast_percent', 'voter_percent'],
       resultHeadingKeys: {
         name: 'common.option', votes: 'poll_common.votes', score: 'poll_common.weighted_votes',
-        votes_cast_percent: 'poll_common.pct_of_weighted_votes', voter_percent: 'poll_common.pct_of_assigned_vote_weight'
+        votes_cast_percent: 'poll_common.pct_of_vote_weight_cast', voter_percent: 'poll_common.pct_of_eligible_vote_weight'
       },
       results: [
-        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 2, score: '1', score_percent: 25, voter_percent: 25},
-        {id: 2, name: 'Disagree', name_format: 'plain', color: 'red', voter_count: 1, score: '3', score_percent: 75, voter_percent: 75}
+        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 2, score: 1, score_percent: 25, voter_percent: 12.5},
+        {id: 2, name: 'Disagree', name_format: 'plain', color: 'red', voter_count: 1, score: 3, score_percent: 75, voter_percent: 37.5},
+        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', voter_count: 1, score: 4, score_percent: null, voter_percent: 50}
       ]
     };
     const wrapper = shallowMount(ChartTable, {
@@ -102,13 +116,18 @@ describe('weighted poll results table', () => {
     const voterHeader = wrapper.findAll('thead button').find(button => button.text() === 'poll_common.votes');
     await voterHeader.trigger('click');
     expect(voterHeader.attributes('aria-pressed')).toBe('true');
-    expect(wrapper.vm.slices.map(slice => Math.round(slice.value))).toEqual([67, 33]);
-    const weightHeader = wrapper.findAll('thead button').find(button => button.text() === 'poll_common.pct_of_assigned_vote_weight');
-    await weightHeader.trigger('click');
-    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([25, 75]);
-    expect(wrapper.findAll('tbody tr').map(row => row.text())).toEqual([
-      expect.stringContaining('2'), expect.stringContaining('1')
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([50, 25, 25]);
+    await wrapper.findAll('thead button').find(button => button.text() === 'poll_common.weighted_votes').trigger('click');
+    expect(wrapper.vm.slices).toEqual([
+      {color: 'green', value: 12.5}, {color: 'red', value: 37.5}, {color: 'grey', value: 50}
     ]);
+    const weightHeader = wrapper.findAll('thead button').find(button => button.text() === 'poll_common.pct_of_eligible_vote_weight');
+    await weightHeader.trigger('click');
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([12.5, 37.5, 50]);
+    await wrapper.findAll('thead button').find(button => button.text() === 'poll_common.pct_of_vote_weight_cast').trigger('click');
+    expect(wrapper.vm.slices.map(slice => slice.value)).toEqual([25, 75]);
+    expect(wrapper.vm.slices.map(slice => slice.color)).not.toContain('grey');
+    expect(wrapper.find('tbody tr:last-child').findAll('td').slice(1).map(cell => cell.text())).toEqual(['1', '4', '', '50%']);
   });
 
   it('switches bars from weighted score to eligible voter share', async () => {
@@ -156,7 +175,7 @@ describe('weighted poll results table', () => {
       resultHeadingKeys: {name: 'common.option', voter_percent: 'poll_ranked_choice_form.pct_of_voters', voter_count: 'membership_card.voters'},
       results: [
         {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 1, voter_percent: 50},
-        {id: -1, name: 'Undecided', name_format: 'plain', color: 'grey', voter_count: 1, voter_percent: 50}
+        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', voter_count: 1, voter_percent: 50}
       ]
     };
     const wrapper = shallowMount(ChartTable, {
@@ -194,7 +213,8 @@ describe('weighted poll results table', () => {
     expect(wrapper.vm.selectedMetric).toBe('score_percent');
   });
 
-  it('shows three voter avatars and counts the rest', () => {
+  function voterTable(sampleCount, voterCount, hideVoters = false) {
+    const ids = Array.from({length: sampleCount}, (_, index) => index + 1);
     const poll = {
       closedAt: false,
       chartType: 'bar',
@@ -202,18 +222,46 @@ describe('weighted poll results table', () => {
       pieSlices: () => [],
       resultColumns: ['name', 'voters'],
       resultHeadingKeys: {name: 'common.option', voters: 'poll_common.voters'},
-      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: 5, voter_ids: [1, 2, 3, 4, 5]}]
+      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: voterCount, voter_ids: ids}]
     };
 
-    const wrapper = shallowMount(ChartTable, {
-      props: {poll},
+    return mount(ChartTable, {
+      props: {poll, hideVoters},
+      data: () => ({users: Object.fromEntries(ids.map(id => [id, {id, name: `Voter ${id}`}]))}),
       global: {
+        plugins: [createVuetify()],
+        directives: {t: () => {}},
         mocks: {$t: key => key},
-        stubs: {VTable: {template: '<table><slot /></table>'}, PlainText: {template: '<span>Agree</span>'}}
+        stubs: {
+          VTable: {template: '<table><slot /></table>'},
+          PlainText: {template: '<span>Agree</span>'}
+        }
       }
     });
+  }
 
-    expect(wrapper.findAll('.poll-common-chart-table__voter-avatar')).toHaveLength(3);
-    expect(wrapper.find('.poll-common-chart-table__more-voters').text()).toBe('+2');
+  it.each([
+    [3, 3, 3, ''],
+    [4, 4, 4, ''],
+    [5, 5, 5, ''],
+    [6, 6, 5, '+1'],
+    [50, 100, 5, '+95'],
+    [0, 100, 0, '+100']
+  ])('groups %i supplied identities out of %i voters with accurate overflow', (sample, total, shown, overflow) => {
+    const wrapper = voterTable(sample, total);
+    expect(wrapper.findAll('.test-voter-avatar')).toHaveLength(shown);
+    expect(wrapper.find('.v-avatar-group__overflow').exists()).toBe(Boolean(overflow));
+    if (overflow) expect(wrapper.get('.v-avatar-group__overflow').text()).toBe(overflow);
+    const avatars = wrapper.findAllComponents({name: 'UserAvatar'});
+    expect(avatars).toHaveLength(shown);
+    avatars.forEach(avatar => {
+      expect(avatar.props('noLink')).toBe(true);
+    });
+  });
+
+  it('keeps voter identities hidden when the results panel hides voters', () => {
+    const wrapper = voterTable(5, 100, true);
+    expect(wrapper.find('.v-avatar-group').exists()).toBe(false);
+    expect(wrapper.text()).not.toContain('Voter 1');
   });
 });

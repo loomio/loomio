@@ -425,8 +425,8 @@ class PollTest < ActiveSupport::TestCase
       'name' => 'common.option',
       'votes' => 'poll_common.votes',
       'score' => 'poll_common.weighted_votes',
-      'votes_cast_percent' => 'poll_common.pct_of_weighted_votes',
-      'voter_percent' => 'poll_common.pct_of_assigned_vote_weight'
+      'votes_cast_percent' => 'poll_common.pct_of_vote_weight_cast',
+      'voter_percent' => 'poll_common.pct_of_eligible_vote_weight'
     }, poll.result_heading_keys)
   end
 
@@ -445,6 +445,7 @@ class PollTest < ActiveSupport::TestCase
       'average' => 'poll_common.weighted_mean',
       'voter_count' => 'membership_card.voters'
     }, poll.result_heading_keys)
+    assert_equal 0, poll.results.find { |row| row['id'] == -1 }.fetch('score')
   end
 
   test "a zero-weight vote appears in plain counts but adds no weighted participation or score" do

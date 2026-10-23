@@ -99,7 +99,7 @@ class PollQuorumTest < ActiveSupport::TestCase
     assert_equal 50, result[:voter_percent]
     assert_equal 100, result[:score_percent]
     assert result[:test_result], 'one of three voters holds half the assigned weight'
-    assert_equal 'poll_option_form.name_gte_assigned_vote_weight', result[:test_requirement_key]
+    assert_equal 'poll_option_form.name_gte_eligible_vote_weight', result[:test_requirement_key]
 
     option.update!(test_operator: 'lte', test_percent: 49)
     refute result_for(option)[:test_result]

@@ -461,29 +461,19 @@ export default {
 
         template(v-if="allowAnonymous")
           v-divider.mb-4
-          .text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
-          .text-body-medium.text-medium-emphasis(v-t="'poll_common_form.anonymous_votes_stored_separately'")
+          .poll-common-form__anonymous-voting-title.text-body-large.pb-2 {{ t('poll_common_form.anonymous_voting') }}
+          .text-body-medium.text-medium-emphasis {{ t('poll_common_form.anonymous_votes_stored_separately') }}
           v-checkbox.poll-settings-anonymous(
             hide-details
             v-model="pollTemplate.anonymous"
             @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
 
-          v-divider.mb-4
-          .text-body-large.pb-2(v-t="'poll_common_card.hide_results'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
-          v-select.poll-common-settings__hide-results(
-            :label="$t('poll_common_card.hide_results')"
-            :items="hideResultsItems"
-            v-model="pollTemplate.hideResults"
-            :disabled="pollTemplate.anonymous"
-          )
-
         template(v-if="allowWeightedVoting")
           v-divider.mb-4
-          .text-body-large.pb-2(v-t="'poll_common_form.weighted_voting'")
+          .poll-common-form__weighted-voting-title.text-body-large.pb-2 {{ t('poll_common_form.weighted_voting') }}
           .text-body-medium.text-medium-emphasis
-            span(v-t="'poll_common_form.give_voters_different_vote_weights'")
+            span {{ t('poll_common_form.give_voters_different_vote_weights') }}
             help-link.ml-1(path="user_manual/polls/weighted_voting")
           v-checkbox.poll-settings-weighted-voting(
             hide-details
@@ -491,6 +481,36 @@ export default {
             v-model="pollTemplate.weightedVoting"
             :label="$t('poll_common_form.use_weighted_voting')")
           p.text-body-small.text-medium-emphasis.mt-1(v-if="pollTemplate.anonymous") {{ $t('poll_common_form.weighted_voting_is_not_available_with_anonymous_voting') }}
+
+        template(v-if="pollTemplate.config().allow_quorum")
+          v-divider.mb-4
+          .poll-common-form__quorum-title.text-body-large.pb-2 {{ t('poll_common_form.quorum') }}
+          .text-body-medium.pb-4.text-medium-emphasis {{ t(pollTemplate.weightedVoting ? 'poll_common_form.quorum_vote_weight_hint' : 'poll_common_form.quorum_hint') }}
+          v-number-input.poll-common-form__quorum.mb-4(
+            v-model="pollTemplate.quorumPct"
+            :label="t('poll_common_form.quorum')"
+            :placeholder="t(pollTemplate.weightedVoting ? 'poll_common_form.quorum_vote_weight_placeholder' : 'poll_common_form.quorum_voters_placeholder')"
+            :min="0"
+            :max="100"
+            autocomplete="off"
+            control-variant="hidden"
+          )
+            template(v-slot:append-inner)
+              span.mr-4 %
+          .text-body-medium.mt-n4.pb-4.font-italic.text-medium-emphasis(
+            v-if="pollTemplate.quorumPct && pollTemplate.config().allow_vote_share_requirement"
+          ) {{ t('poll_common_form.quorum_tip_vote_share_requirement') }}
+
+        template(v-if="allowAnonymous")
+          v-divider.mb-4
+          .text-body-large.pb-2 {{ t('poll_common_card.hide_results') }}
+          .text-body-medium.pb-4.text-medium-emphasis {{ t('poll_common_form.hide_results_description') }}
+          v-select.poll-common-settings__hide-results(
+            :label="$t('poll_common_card.hide_results')"
+            :items="hideResultsItems"
+            v-model="pollTemplate.hideResults"
+            :disabled="pollTemplate.anonymous"
+          )
 
         template(v-if="pollTemplate.config().can_shuffle_options")
           v-divider.pb-4
@@ -523,26 +543,6 @@ export default {
           v-model="pollTemplate.limitReasonLength"
           :label="$t('poll_common_form.limit_reason_length')"
         )
-
-        template(v-if="pollTemplate.config().allow_quorum")
-          v-divider.mb-4
-          .text-body-large.pb-2 {{ t('poll_common_form.quorum') }}
-          .text-body-medium.pb-4.text-medium-emphasis {{ t(pollTemplate.weightedVoting ? 'poll_common_form.quorum_weighted_hint' : 'poll_common_form.quorum_hint') }}
-          v-number-input.mb-4(
-            v-model="pollTemplate.quorumPct"
-            :label="$t('poll_common_form.participation_quorum')"
-            :placeholder="$t('poll_common_form.quorum_placeholder')"
-            :min="0"
-            :max="100"
-            autocomplete="off"
-            control-variant="hidden"
-          )
-            template(v-slot:append-inner)
-              span.mr-4 %
-          .text-body-medium.mt-n4.pb-4.font-italic.text-medium-emphasis(
-            v-if="pollTemplate.quorumPct && pollTemplate.config().allow_vote_share_requirement"
-            v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
-          )
 
         v-divider.mb-4
         .text-body-large.pb-2(v-t="'poll_common_outcome_form.outcome_statement_template'")

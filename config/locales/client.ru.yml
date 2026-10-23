@@ -248,7 +248,7 @@ ru:
       open: Открыто
       closed: Закрыто
       private: Приватная
-      parent_members: "Видна родительской группе"
+      parent_members: Видна родительской группе
       secret: Секретная группа
     selected: Выбранные
     today: сегодня
@@ -1423,9 +1423,9 @@ ru:
     confirm_change_to_public: Если вы продолжите, все обсуждения в этой группе станут общедоступными в Интернете.
     confirm_change_to_private_discussions_only: Если вы продолжите, все общедоступные обсуждения в этой группе станут частными.
     profile: Профиль
-    subgroup_name_and_content_are_public: "Любой может найти эту подгруппу и читать её ветки"
-    subgroup_name_is_public_and_threads_are_private: "Любой может найти эту подгруппу; её ветки приватны"
-    subgroup_is_visible_to_parent_members: "Участники %{parent} могут найти эту подгруппу; её ветки приватны"
+    subgroup_name_and_content_are_public: Любой может найти эту подгруппу и читать её ветки
+    subgroup_name_is_public_and_threads_are_private: Любой может найти эту подгруппу; её ветки приватны
+    subgroup_is_visible_to_parent_members: Участники %{parent} могут найти эту подгруппу; её ветки приватны
     subgroup_privacy_is_open_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы общедоступны.
     subgroup_privacy_is_closed_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы являются частными.
     subgroup_privacy_is_closed_public_threads_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Темы могут быть публичными или частными.
@@ -1433,9 +1433,9 @@ ru:
     subgroup_privacy_is_secret_description: Только приглашенные участники могут найти эту подгруппу, увидеть, кто в ней состоит, и просмотреть темы.
     advanced_settings: Расширенные настройки
     how_do_people_join: Как люди присоединяются?
-    join_without_approval: "Вступление без одобрения"
-    request_to_join: "Вступление по запросу"
-    invitation_only: "Только по приглашению"
+    join_without_approval: Вступление без одобрения
+    request_to_join: Вступление по запросу
+    invitation_only: Только по приглашению
     permissions: Разрешения
     thread_privacy: Конфиденциальность темы
     public_threads: Только публичные темы
@@ -1443,8 +1443,8 @@ ru:
     public_or_private_threads: Разрешить публичные и закрытые темы
     private_threads: Только участники могут видеть обсуждения
     allow_public_threads: Разрешить общедоступные темы в этой группе.
-    parent_group_members_can_see_private_threads: "Участники родительской группы могут видеть закрытые ветки"
-    parent_group_members_can_see_private_threads_help: "Разрешить участникам группы %{parent} просматривать ветки и опросы в этой группе, но не участвовать в них"
+    parent_group_members_can_see_private_threads: Участники родительской группы могут видеть закрытые ветки
+    parent_group_members_can_see_private_threads_help: Разрешить участникам группы %{parent} просматривать ветки и опросы в этой группе, но не участвовать в них
     members_can_announce: Участники могут уведомлять всех в группе
     members_can_announce_help: Разрешить участникам уведомлять всех в группе о теме или опросе
     members_can_add_members: Участники могут приглашать участников
@@ -1991,6 +1991,18 @@ ru:
     for_the_proposal_to_pass: Для того чтобы предложение было принято, этот вариант должен получить…
     for_the_poll_to_be_valid: Чтобы признать %{poll_type} действительным, этот вариант должен получить…
     points_cast: Начисленные баллы
+    eligible_vote_weight: Доступный вес голосов
+    vote_weight_cast: Вес поданных голосов
+    name_gte_eligible_vote_weight: "%{name} необходимо набрать не менее %{percent}% доступного веса голосов"
+    name_lte_eligible_vote_weight: "%{name} не должен превышать %{percent}% доступного веса голосов"
+    name_gte_vote_weight_cast: "%{name} необходимо набрать не менее %{percent}% веса поданных голосов"
+    name_lte_vote_weight_cast: "%{name} не должен превышать %{percent}% веса поданных голосов"
+    total_assigned_vote_weight: Общий назначенный вес голосов
+    weighted_votes_cast: Поданные голоса с учётом веса
+    name_gte_assigned_vote_weight: "%{name} необходимо набрать не менее %{percent}% общего назначенного веса голосов"
+    name_lte_assigned_vote_weight: "%{name} не должен превышать %{percent}% общего назначенного веса голосов"
+    name_gte_weighted_votes_cast: "%{name} необходимо набрать не менее %{percent}% поданных голосов с учётом веса"
+    name_lte_weighted_votes_cast: "%{name} не должен превышать %{percent}% поданных голосов с учётом веса"
   poll_common:
     superseded: Заменено
     outdated: Устаревший
@@ -2107,6 +2119,9 @@ ru:
     pct_of_weighted_votes: "% взвешенных голосов"
     pct_of_weighted_points: "% взвешенных баллов"
     weighted_mean: Взвешенное среднее
+    pct_of_eligible_vote_weight: "% доступного веса голосов"
+    pct_of_vote_weight_cast: "% веса поданных голосов"
+    pct_of_assigned_vote_weight: "% назначенного веса голосов"
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2439,6 +2454,10 @@ ru:
     votes_short_of_quorum: Для достижения кворума %{pct}% необходимо еще %{num} голосов
     quorum_reached: Кворум %{pct}% достигнут
     pct_participation: "%{num} из %{total} поданных голосов (%{pct}% участия)"
+    pct_vote_weight_participation: Подано %{num} из %{total} голосов (%{pct}% веса голосов)
+    pct_of_eligible_vote_weight_must_participate: Нужно подать голоса с %{pct}% доступного веса голосов
+    pct_weighted_participation: Подано %{num} из %{total} голосов (%{pct}% назначенного веса голосов)
+    pct_of_assigned_vote_weight_must_participate: Нужно подать голоса с %{pct}% общего назначенного веса голосов
   poll_meeting_chart_panel:
     total: Всего
   poll_remove_vote:
@@ -2972,6 +2991,10 @@ ru:
     weighted_voting_off_warning: Отключение взвешенного голосования устанавливает вес каждого голоса равным 1. Все веса голосов, которые вы изменили для этого опроса, будут потеряны.
     weighted_voting_on_group: Включение взвешенного голосования копирует вес голоса каждого участника по умолчанию. Другим избирателям присваивается вес голоса, равный 1.
     weighted_voting_on_direct: Включение взвешенного голосования устанавливает вес каждого голоса равным 1
+    quorum_vote_weight_hint: 'Какой процент доступного веса голосов нужен для признания результата действительным? Необязательно: оставьте поле пустым, если кворум не нужен.'
+    quorum_vote_weight_placeholder: Процент доступного веса голосов (0–100)
+    quorum_voters_placeholder: Процент голосующих с правом голоса (0–100)
+    quorum_weighted_hint: 'Какой процент общего назначенного веса голосов нужен для признания результата действительным? Необязательно: оставьте поле пустым, если кворум не нужен.'
   poll_receipts_page:
     participation_status_requires_min_votes: Здесь показано, кто имел право голоса. Сведения о том, проголосовал ли каждый участник, отображаются только после того, как проголосуют не менее %{count} человек.
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
@@ -3214,7 +3237,7 @@ ru:
     stance: голос
   membership_notification_history:
     invitation_delivery_history: История доставки приглашений
-    email_delivery_blocked: "Loomio заблокировал отправку писем на этот адрес"
+    email_delivery_blocked: Loomio заблокировал отправку писем на этот адрес
     delivery_result:
       delivered: Доставлено
       failed: Не доставлено

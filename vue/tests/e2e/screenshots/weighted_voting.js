@@ -69,19 +69,24 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    page.loadPath('setup_manual_oatmilk_vote_weights?votes=1');
+    page.loadPath('setup_manual_oatmilk_vote_weights?votes=partial');
     page.waitFor('.poll-created .poll-common-chart-panel');
     page.expectText('.poll-common-chart-panel', 'Agree');
     page.expectText('.poll-common-chart-panel', 'Disagree');
-    screenshot.captureRegion('polls/weighted_voting/weighted-proposal-result', ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel'], {
-      padding: 24,
-      width: 1200,
+    page.expectText('.poll-common-chart-table tbody tr:last-child', 'Not voted');
+    page.expectText('.poll-common-chart-table tbody tr:first-child td:nth-child(4)', '2');
+    page.expectText('.poll-common-chart-table tbody tr:first-child td:nth-child(6)', '67%');
+    page.expectText('.poll-common-chart-table tbody tr:last-child td:nth-child(3)', '3');
+    page.expectText('.poll-created .poll-common-chart-panel', '50% of vote weight');
+    page.expectText('.poll-created .poll-common-chart-panel', '60% of eligible vote weight must participate');
+    screenshot.captureElement('polls/weighted_voting/weighted-proposal-result', '.poll-created', {
+      width: 1600,
       height: 1400,
       clearSelection: true,
       spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
     });
     page.click('.poll-common-chart-table thead th:nth-child(3) button');
     page.expectElement('.poll-common-chart-table thead th:nth-child(3) button[aria-pressed="true"]');
-    page.expectText('.poll-common-chart-table', '67%');
+    page.expectText('.poll-created .poll-common-chart-panel', '66% participation');
   }
 };

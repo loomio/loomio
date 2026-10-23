@@ -250,7 +250,7 @@ hu:
       open: Nyitva
       closed: Zárva
       private: Zártkörű
-      parent_members: "Látható a szülőcsoport számára"
+      parent_members: Látható a szülőcsoport számára
       secret: Titkos
     selected: Kiválasztva
     today: Ma
@@ -1429,9 +1429,9 @@ hu:
     confirm_change_to_public: Ha folytatja, akkor a csoport összes témát közzéteszi az interneten.
     confirm_change_to_private_discussions_only: Ha folytatja, a csoport összes nyilvános témája zártkörű lesz.
     profile: Profil
-    subgroup_name_and_content_are_public: "Bárki megtalálhatja ezt az alcsoportot és olvashatja a szálait"
-    subgroup_name_is_public_and_threads_are_private: "Bárki megtalálhatja ezt az alcsoportot; a szálai privátak"
-    subgroup_is_visible_to_parent_members: "A(z) %{parent} tagjai megtalálhatják ezt az alcsoportot; a szálai privátak"
+    subgroup_name_and_content_are_public: Bárki megtalálhatja ezt az alcsoportot és olvashatja a szálait
+    subgroup_name_is_public_and_threads_are_private: Bárki megtalálhatja ezt az alcsoportot; a szálai privátak
+    subgroup_is_visible_to_parent_members: A(z) %{parent} tagjai megtalálhatják ezt az alcsoportot; a szálai privátak
     subgroup_privacy_is_open_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma nyilvános.
     subgroup_privacy_is_closed_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. Az összes téma zártkörű.
     subgroup_privacy_is_closed_public_threads_description: Bárki megtalálhatja ezt az alcsoportot, és kérheti a csatlakozást. Csak a tagok láthatják, ki van a csoportban. A témák lehetnek nyilvános vagy magántémák
@@ -1439,9 +1439,9 @@ hu:
     subgroup_privacy_is_secret_description: Csak az meghívott tagok találhatják meg ezt az alcsoportot, megnézhetik, ki van benne, és láthatják a témákat.
     advanced_settings: További beállítások
     how_do_people_join: Hogyan csatlakoznak az emberek?
-    join_without_approval: "Csatlakozás jóváhagyás nélkül"
-    request_to_join: "Csatlakozás kérése"
-    invitation_only: "Csak meghívóval"
+    join_without_approval: Csatlakozás jóváhagyás nélkül
+    request_to_join: Csatlakozás kérése
+    invitation_only: Csak meghívóval
     permissions: Engedélyek
     thread_privacy: Téma adatvédelme
     public_threads: Csak nyilvános témák
@@ -1449,8 +1449,8 @@ hu:
     public_or_private_threads: Engedélyezd a nyilvános és a zártkörű témákat
     private_threads: Csak a tagok láthatják a beszélgetéseket
     allow_public_threads: Engedélyezd a nyilvános témákat ebben a csoportban.
-    parent_group_members_can_see_private_threads: "A szülőcsoport tagjai láthatják a privát szálakat"
-    parent_group_members_can_see_private_threads_help: "Engedd meg a(z) %{parent} tagjainak, hogy lássák a csoport szálait és szavazásait, de ne vehessenek részt bennük"
+    parent_group_members_can_see_private_threads: A szülőcsoport tagjai láthatják a privát szálakat
+    parent_group_members_can_see_private_threads_help: Engedd meg a(z) %{parent} tagjainak, hogy lássák a csoport szálait és szavazásait, de ne vehessenek részt bennük
     members_can_announce: A tagok mindenkit értesíthetnek a csoportban
     members_can_announce_help: Lehetővé teszi a tagok számára, hogy értesítsenek mindenkit a csoportban egy témaszálról vagy szavazásról
     members_can_add_members: A tagok meghívhatnak tagokat
@@ -2002,6 +2002,18 @@ hu:
     for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
     for_the_poll_to_be_valid: Ahhoz, hogy a %{poll_type} érvényes legyen, ennek az opciónak a következőt kell kapnia…
     points_cast: Leadott pontok
+    eligible_vote_weight: Jogosultak szavazati súlya
+    vote_weight_cast: Leadott szavazati súly
+    name_gte_eligible_vote_weight: "%{name}: a jogosultak szavazati súlyának legalább %{percent}%-a szükséges"
+    name_lte_eligible_vote_weight: "%{name}: nem haladhatja meg a jogosultak szavazati súlyának %{percent}%-át"
+    name_gte_vote_weight_cast: "%{name}: a leadott szavazati súly legalább %{percent}%-a szükséges"
+    name_lte_vote_weight_cast: "%{name}: nem haladhatja meg a leadott szavazati súly %{percent}%-át"
+    total_assigned_vote_weight: Összes kiosztott szavazati súly
+    weighted_votes_cast: Leadott súlyozott szavazatok
+    name_gte_assigned_vote_weight: "%{name}: az összes kiosztott szavazati súly legalább %{percent}%-a szükséges"
+    name_lte_assigned_vote_weight: "%{name}: nem haladhatja meg az összes kiosztott szavazati súly %{percent}%-át"
+    name_gte_weighted_votes_cast: "%{name}: a leadott súlyozott szavazatok legalább %{percent}%-a szükséges"
+    name_lte_weighted_votes_cast: "%{name}: nem haladhatja meg a leadott súlyozott szavazatok %{percent}%-át"
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -2118,6 +2130,9 @@ hu:
     pct_of_weighted_votes: Súlyozott szavazatok %-a
     pct_of_weighted_points: Súlyozott pontok %-a
     weighted_mean: Súlyozott átlag
+    pct_of_eligible_vote_weight: a jogosultak szavazati súlyának %-a
+    pct_of_vote_weight_cast: a leadott szavazati súly %-a
+    pct_of_assigned_vote_weight: a kiosztott szavazati súly %-a
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2450,6 +2465,10 @@ hu:
     votes_short_of_quorum: "%{num} további szavazat szükséges a %{pct}%-os kvórum eléréséhez"
     quorum_reached: A határozatképesség elérte a %{pct}%-ot
     pct_participation: A leadott szavazatok %{num} százaléka a %{total} szavazatból (%{pct}% részvétel)
+    pct_vote_weight_participation: "%{total} szavazatból %{num} leadva (a szavazati súly %{pct}%-a)"
+    pct_of_eligible_vote_weight_must_participate: A jogosultak szavazati súlyának %{pct}%-a szükséges a részvételhez
+    pct_weighted_participation: "%{total} szavazatból %{num} leadva (a kiosztott szavazati súly %{pct}%-a vett részt)"
+    pct_of_assigned_vote_weight_must_participate: Az összes kiosztott szavazati súly %{pct}%-a szükséges a részvételhez
   poll_meeting_chart_panel:
     total: Összesen
   poll_remove_vote:
@@ -2983,6 +3002,10 @@ hu:
     weighted_voting_off_warning: A súlyozott szavazás kikapcsolása minden szavazat súlyát 1-re állítja. Az ebben a szavazásban módosított szavazati súlyok elvesznek.
     weighted_voting_on_group: A súlyozott szavazás bekapcsolása minden tag alapértelmezett szavazati súlyát lemásolja. A többi szavazó 1-es szavazati súlyt kap.
     weighted_voting_on_direct: A súlyozott szavazás bekapcsolása minden szavazat súlyát 1-re állítja
+    quorum_vote_weight_hint: A jogosultak szavazati súlyának hány százaléka szükséges az érvényes eredményhez? Nem kötelező, hagyd üresen, ha nincs határozatképességi küszöb.
+    quorum_vote_weight_placeholder: A jogosultak szavazati súlyának százaléka (0–100)
+    quorum_voters_placeholder: A jogosult szavazók százaléka (0–100)
+    quorum_weighted_hint: Az összes kiosztott szavazati súly hány százaléka szükséges az érvényes eredményhez? Nem kötelező, hagyd üresen, ha nincs határozatképességi küszöb.
   poll_receipts_page:
     participation_status_requires_min_votes: Ez megmutatja, hogy ki volt jogosult szavazni. Az, hogy egyes személyek szavaztak-e, csak akkor jelenik meg, ha legalább %{count} ember szavazott.
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
@@ -3225,7 +3248,7 @@ hu:
     stance: szavazat
   membership_notification_history:
     invitation_delivery_history: Meghívók kézbesítési előzményei
-    email_delivery_blocked: "A Loomio letiltotta az e-mailek kézbesítését erre a címre"
+    email_delivery_blocked: A Loomio letiltotta az e-mailek kézbesítését erre a címre
     delivery_result:
       delivered: Kézbesítve
       failed: Sikertelen

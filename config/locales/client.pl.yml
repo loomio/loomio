@@ -248,7 +248,7 @@ pl:
       open: Otwarta
       closed: Zamknięta
       private: Prywatna
-      parent_members: "Widoczna dla grupy nadrzędnej"
+      parent_members: Widoczna dla grupy nadrzędnej
       secret: Tajna
     selected: Wybrane
     today: Dzisiaj
@@ -1429,9 +1429,9 @@ pl:
     confirm_change_to_public: Jeśli przejdziesz dalej, wszystkie wątki w tej grupie zostaną upublicznione w sieci.
     confirm_change_to_private_discussions_only: Jeśli przejdziesz dalej, wszystkie wątki publiczne w tej grupie staną się prywatne.
     profile: Profil
-    subgroup_name_and_content_are_public: "Każdy może znaleźć tę podgrupę i czytać jej wątki"
-    subgroup_name_is_public_and_threads_are_private: "Każdy może znaleźć tę podgrupę; jej wątki są prywatne"
-    subgroup_is_visible_to_parent_members: "Członkowie %{parent} mogą znaleźć tę podgrupę; jej wątki są prywatne"
+    subgroup_name_and_content_are_public: Każdy może znaleźć tę podgrupę i czytać jej wątki
+    subgroup_name_is_public_and_threads_are_private: Każdy może znaleźć tę podgrupę; jej wątki są prywatne
+    subgroup_is_visible_to_parent_members: Członkowie %{parent} mogą znaleźć tę podgrupę; jej wątki są prywatne
     subgroup_privacy_is_open_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby do niej należące mogą zobaczyć, kto jest w grupie. Wszystkie wątki są publiczne.
     subgroup_privacy_is_closed_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wszystkie wątki są prywatne.
     subgroup_privacy_is_closed_public_threads_description: Każdy może znaleźć tę podgrupę i poprosić o dołączenie. Tylko osoby z grupy mogą zobaczyć kto w niej jest. Wątki mogą być publiczne lub prywatne.
@@ -1439,9 +1439,9 @@ pl:
     subgroup_privacy_is_secret_description: Tylko zaproszone osoby mogą znaleźć tę podgrupę, zobaczyć, kto w niej jest, i zobaczyć wątki.
     advanced_settings: Ustawienia zaawansowane
     how_do_people_join: Kto może dołączyć?
-    join_without_approval: "Dołącz bez zatwierdzenia"
-    request_to_join: "Poproś o dołączenie"
-    invitation_only: "Tylko na zaproszenie"
+    join_without_approval: Dołącz bez zatwierdzenia
+    request_to_join: Poproś o dołączenie
+    invitation_only: Tylko na zaproszenie
     permissions: Uprawnienia
     thread_privacy: Prywatność wątków
     public_threads: Tylko wątki publiczne
@@ -1449,8 +1449,8 @@ pl:
     public_or_private_threads: Zezwalaj na wątki publiczne i prywatne
     private_threads: Tylko osoby z tej grupy mogą zobaczyć dyskusje
     allow_public_threads: Zezwalaj na wątki publiczne w tej grupie.
-    parent_group_members_can_see_private_threads: "Członkowie grupy nadrzędnej mogą widzieć prywatne wątki"
-    parent_group_members_can_see_private_threads_help: "Pozwól członkom grupy %{parent} przeglądać wątki i ankiety w tej grupie, ale bez możliwości udziału"
+    parent_group_members_can_see_private_threads: Członkowie grupy nadrzędnej mogą widzieć prywatne wątki
+    parent_group_members_can_see_private_threads_help: Pozwól członkom grupy %{parent} przeglądać wątki i ankiety w tej grupie, ale bez możliwości udziału
     members_can_announce: Członkowie mogą powiadomić wszystkich w grupie
     members_can_announce_help: Zezwalaj członkom na powiadamianie wszystkich członków grupy o wątku lub ankiecie
     members_can_add_members: Członkowie mogą zapraszać członków
@@ -2014,6 +2014,18 @@ pl:
     for_the_proposal_to_pass: Aby propozycja została przyjęta, opcja ta musi otrzymać…
     for_the_poll_to_be_valid: Aby %{poll_type} było ważne, ta opcja musi otrzymać…
     points_cast: Przyznane punkty
+    eligible_vote_weight: Waga głosów uprawnionych głosujących
+    vote_weight_cast: Waga oddanych głosów
+    name_gte_eligible_vote_weight: "%{name} potrzebuje co najmniej %{percent}% wagi głosów uprawnionych głosujących"
+    name_lte_eligible_vote_weight: "%{name} nie może przekroczyć %{percent}% wagi głosów uprawnionych głosujących"
+    name_gte_vote_weight_cast: "%{name} potrzebuje co najmniej %{percent}% wagi oddanych głosów"
+    name_lte_vote_weight_cast: "%{name} nie może przekroczyć %{percent}% wagi oddanych głosów"
+    total_assigned_vote_weight: Łączna przydzielona waga głosów
+    weighted_votes_cast: Oddane głosy ważone
+    name_gte_assigned_vote_weight: "%{name} potrzebuje co najmniej %{percent}% łącznej przydzielonej wagi głosów"
+    name_lte_assigned_vote_weight: "%{name} nie może przekroczyć %{percent}% łącznej przydzielonej wagi głosów"
+    name_gte_weighted_votes_cast: "%{name} potrzebuje co najmniej %{percent}% oddanych głosów ważonych"
+    name_lte_weighted_votes_cast: "%{name} nie może przekroczyć %{percent}% oddanych głosów ważonych"
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -2130,6 +2142,9 @@ pl:
     pct_of_weighted_votes: "% głosów ważonych"
     pct_of_weighted_points: "% punktów ważonych"
     weighted_mean: Średnia ważona
+    pct_of_eligible_vote_weight: "% wagi głosów uprawnionych głosujących"
+    pct_of_vote_weight_cast: "% wagi oddanych głosów"
+    pct_of_assigned_vote_weight: "% przydzielonej wagi głosów"
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2464,6 +2479,10 @@ pl:
     votes_short_of_quorum: Potrzeba jeszcze %{num} głosów, aby osiągnąć kworum %{pct}%
     quorum_reached: Osiągnięto kworum %{pct}%
     pct_participation: "%{num} z %{total} oddanych głosów (%{pct}% frekwencja)"
+    pct_vote_weight_participation: Oddano %{num} z %{total} głosów (%{pct}% wagi głosów)
+    pct_of_eligible_vote_weight_must_participate: Oddane głosy muszą stanowić %{pct}% wagi głosów uprawnionych głosujących
+    pct_weighted_participation: Oddano %{num} z %{total} głosów (%{pct}% przydzielonej wagi głosów)
+    pct_of_assigned_vote_weight_must_participate: Oddane głosy muszą stanowić %{pct}% łącznej przydzielonej wagi głosów
   poll_meeting_chart_panel:
     total: W sumie
   poll_remove_vote:
@@ -2999,6 +3018,10 @@ pl:
     weighted_voting_off_warning: Wyłączenie głosowania ważonego spowoduje ustawienie wagi każdego głosu na 1. Wszelkie zmiany wagi głosu dla tej ankiety zostaną utracone.
     weighted_voting_on_group: Włączenie głosowania ważonego powoduje skopiowanie domyślnej wagi głosu każdego członka. Pozostali wyborcy otrzymują wagę głosu równą 1.
     weighted_voting_on_direct: Włączenie głosowania ważonego powoduje ustawienie wagi każdego głosu na 1
+    quorum_vote_weight_hint: Jaki procent wagi głosów uprawnionych głosujących muszą stanowić oddane głosy, aby wynik był ważny? Opcjonalne, zostaw puste, jeśli nie wymagasz kworum.
+    quorum_vote_weight_placeholder: Procent wagi głosów uprawnionych głosujących (0–100)
+    quorum_voters_placeholder: Procent uprawnionych głosujących (0–100)
+    quorum_weighted_hint: Jaki procent łącznej przydzielonej wagi głosów muszą stanowić oddane głosy, aby wynik był ważny? Opcjonalne, zostaw puste, jeśli nie wymagasz kworum.
   poll_receipts_page:
     participation_status_requires_min_votes: Pokazuje, kto był uprawniony do głosowania. Informacja o tym, czy poszczególne osoby zagłosowały, jest wyświetlana tylko wtedy, gdy zagłosowały co najmniej %{count} osoby.
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.
@@ -3241,7 +3264,7 @@ pl:
     stance: głos
   membership_notification_history:
     invitation_delivery_history: Historia doręczania zaproszeń
-    email_delivery_blocked: "Loomio wstrzymało wysyłanie e-maili na ten adres"
+    email_delivery_blocked: Loomio wstrzymało wysyłanie e-maili na ten adres
     delivery_result:
       delivered: Doręczono
       failed: Nie udało się

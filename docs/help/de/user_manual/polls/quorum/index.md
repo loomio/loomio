@@ -1,20 +1,18 @@
 ---
 title: Quorum
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: 7e0690ca41581746
-  example-scenario: 050c81396fce43af
+  introduction: eb6a475137c9aac4
+  example-scenario: 2e0638205c9cdf83
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
-needs_review:
-  example-scenario: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -23,7 +21,9 @@ needs_review:
 
 Ein Quorum ist der Mindestprozentsatz der stimmberechtigten Abstimmenden, die teilnehmen müssen, damit eine Abstimmung gültig ist. Nutze es, wenn dein Entscheidungsverfahren eine bestimmte Beteiligung erfordert.
 
-Öffne beim Erstellen einer Abstimmung **Weitere Einstellungen** und gib unter **Teilnahmequorum** den erforderlichen Prozentsatz ein. Lass das Feld leer, wenn kein Quorum erforderlich ist.
+Bei einer [gewichteten Abstimmung](/en/user_manual/polls/weighted_voting) berücksichtigt das Quorum die Stimmgewichte. Zum Beispiel hat Jamie das Stimmgewicht `2`, Samira das Stimmgewicht `1` und Alex das Stimmgewicht `1`. Wenn nur Jamie abstimmt, ist die Hälfte des stimmberechtigten Stimmgewichts vertreten. Wenn auch Samira abstimmt, erreicht die Beteiligung 75 Prozent und erfüllt damit ein Quorum von 60 Prozent.
+
+Öffne beim Erstellen einer Abstimmung **Weitere Einstellungen**. Gib unter **Quorum** den erforderlichen Prozentsatz ein. Lass das Feld leer, wenn kein Quorum erforderlich ist.
 
 ![Die Quorum-Einstellung mit einem Teilnahmequorum von 60 Prozent](./quorum-section.png)
 
@@ -41,7 +41,7 @@ Jamie wählt **Jetzt abstimmen**, wählt die Vorschlagsvorlage **Konsent** aus u
 
 Jamie beschränkt die Stimmabgabe auf die fünf Personen, die für das Budget des Tests verantwortlich sind.
 
-Die Genossenschaft verlangt für wichtige Entscheidungen eine Beteiligung von 60 Prozent. Deshalb trägt Jamie **60** in das Feld für das Teilnahmequorum ein und startet den Vorschlag.
+Die Genossenschaft verlangt für wichtige Entscheidungen eine Beteiligung von 60 Prozent. Deshalb trägt Jamie unter **Quorum** den Wert **60** ein und startet den Vorschlag.
 
 Bevor jemand abstimmt, zeigt die Ergebnisanzeige, dass das Quorum noch nicht erreicht ist.
 

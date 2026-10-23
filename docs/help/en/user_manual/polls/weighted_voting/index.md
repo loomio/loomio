@@ -22,7 +22,7 @@ A member's vote weight is copied into each poll they are added to. Changing it l
 
 ## Use weighted voting in a poll
 
-Select **Use weighted voting** in the poll's advanced settings. You can turn it on or off after voting opens. Turning it off sets every vote weight in the poll to `1`, and any vote weights you changed for that poll are lost.
+Open **More settings** in the poll form and select **Use weighted voting**. You can turn weighted voting on or off after voting opens. Turning it off sets every vote weight in the poll to `1`, and any vote weights you changed for that poll are lost.
 
 If your group uses weighted voting for an established process, select **Use weighted voting** in a [poll template](/en/user_manual/polls/poll_templates). Polls started from that template use weighted voting.
 
@@ -49,8 +49,12 @@ Results show the plain totals and the weighted totals side by side:
 
 The chart shows the weighted result. Select a column heading to chart that column instead. Anyone who can see the votes can see each voter's vote weight.
 
-Weighted voting also applies to [quorum](/en/user_manual/polls/quorum), participation percentages, and [vote share requirements](/en/user_manual/polls/vote_share_requirements). Quorum measures the weight of submitted votes as a percentage of the total weight assigned to all eligible voters. A vote share requirement can use either the weighted votes cast or the total assigned vote weight, including people who have not voted. There is no separate setting to enable weighted quorum.
+For Proposal and Choose polls, **Not voted** shows the remaining voter count under **Votes** and the remaining vote weight under **Weighted votes**. These columns and **% of eligible vote weight** include those who have not voted in the chart. **% of vote weight cast** leaves **Not voted** blank and excludes it from the chart.
 
-For example, three shareholders have vote weights of `50`, `30`, and `20`. With a 60 percent quorum, the shareholder with weight `50` cannot reach quorum alone. The shareholders with weights `50` and `20` reach it together with 70 percent of the assigned weight. A voter with weight `0` appears in the plain vote count but adds no weight to quorum or support requirements. A positive quorum cannot be reached if every eligible voter has weight `0`.
+Vote weights also apply to [quorum](/en/user_manual/polls/quorum) and [vote share requirements](/en/user_manual/polls/vote_share_requirements).
+
+In the example below, Jamie votes **Agree** with weight `2`. Three people vote **Disagree**, with weights `1`, `0`, and `0`. Two people, with weights `2` and `1`, have not voted.
+
+Agree has one of the four votes cast, but two-thirds of the vote weight cast. Half the eligible vote weight has participated, so the 60 percent quorum has not been reached.
 
 ![A proposal result with votes and weighted votes](weighted-proposal-result.png)

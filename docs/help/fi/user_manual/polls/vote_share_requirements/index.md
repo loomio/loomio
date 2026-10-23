@@ -1,19 +1,19 @@
 ---
 title: Ääniosuusvaatimukset
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: c10b52e202ae3194
-  eligible-voters-and-votes-cast: 21bd5da2dbae05e0
-  different-vote-share-requirements: 355553d529308add
+  eligible-voters-and-votes-cast: 0c704d191f7dcabc
+  different-vote-share-requirements: 9ce29fe557f6b056
   detailed-example: c8bf82311c2e1fb4
 title_source: a654891ca817844e
 title_generated: 49e9c181193d6bed
@@ -45,6 +45,8 @@ Vaatimus, jonka mukaan 75 prosentin äänestäjäoikeutetuista on oltava samaa m
 
 Vaatimus, jonka mukaan 60 prosentin annetuista äänistä on tuettava vaihtoehtoa, voi täyttyä osallistumisasteesta riippumatta. Lisää päätösvaltaisuusvaatimus, jos toimintatapasi edellyttää myös tiettyä vähimmäisosallistumista.
 
+[Painotetussa äänestyksessä](/en/user_manual/polls/weighted_voting) molemmat laskentatavat käyttävät äänipainoja. **Annettujen äänten äänipaino** vertaa vaihtoehdon painotettua yhteismäärää kaikkien annettujen äänten yhteenlaskettuun äänipainoon. **Äänioikeutettujen äänipaino** vertaa vaihtoehdon valinneiden äänestäjien yhteenlaskettua äänipainoa kaikkien äänestäjäoikeutettujen yhteenlaskettuun äänipainoon, mukaan lukien ne, jotka eivät ole äänestäneet. Esimerkiksi yksi henkilö, jonka äänipaino on 70 äänestäjäoikeutettujen kokonaisäänipainosta 100, voi täyttää 60 prosentin kannatusvaatimuksen, joka perustuu äänestäjäoikeutettujen äänipainoon.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Erilaiset ääniosuusvaatimukset
@@ -56,6 +58,8 @@ Ehdotuksessa voi olla vaatimuksia usealle vaihtoehdolle. Esimerkiksi:
 - Vetoääniä saa olla enintään 0 prosenttia annetuista äänistä
 
 Vaihtoehdon asettaminen arvoon **Enintään 0 %** on yleinen käytäntö. Se tarkoittaa, ettei ehdotusta voi hyväksyä, jos yksikin henkilö valitsee kyseisen vaihtoehdon. Käytä tätä **Veto**-vaihtoehdossa, jotta yksikin veto estää ehdotuksen hyväksymisen.
+
+Painotetussa äänestyksessä vain vetoääni, jonka äänipaino on positiivinen, ylittää 0 prosentin vaatimuksen. Vetoääni, jonka äänipaino on `0`, ei lisää tulokseen äänipainoa.
 
 Voit lisätä vaatimuksia myös [kyselymalliin](/en/user_manual/polls/poll_templates/), jolloin mallista luodut uudet ehdotukset käyttävät niitä oletusarvoisesti.
 

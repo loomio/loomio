@@ -250,7 +250,7 @@ zh_TW:
       open: 公開
       closed: 封閉
       private: 非公開
-      parent_members: "對父群組可見"
+      parent_members: 對父群組可見
       secret: 私密
     selected: 已選取
     today: 今天
@@ -1431,8 +1431,8 @@ zh_TW:
     confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
     confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為非公開。
     profile: 簡歷
-    subgroup_name_and_content_are_public: "任何人都能找到此子群組並閱讀其對話串"
-    subgroup_name_is_public_and_threads_are_private: "任何人都能找到此子群組；其對話串不公開"
+    subgroup_name_and_content_are_public: 任何人都能找到此子群組並閱讀其對話串
+    subgroup_name_is_public_and_threads_are_private: 任何人都能找到此子群組；其對話串不公開
     subgroup_is_visible_to_parent_members: "%{parent}的成員能找到此子群組；其對話串不公開"
     subgroup_privacy_is_open_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
     subgroup_privacy_is_closed_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
@@ -1441,9 +1441,9 @@ zh_TW:
     subgroup_privacy_is_secret_description: 只有被邀請的成員才能找到此子群組，並檢視有誰在裡面以及觀看討論串。
     advanced_settings: 進階設定
     how_do_people_join: 夥伴要怎樣加入？
-    join_without_approval: "無需核准即可加入"
-    request_to_join: "申請加入"
-    invitation_only: "僅限受邀者"
+    join_without_approval: 無需核准即可加入
+    request_to_join: 申請加入
+    invitation_only: 僅限受邀者
     permissions: 權限
     thread_privacy: 討論串隱私權
     public_threads: 僅限公開討論串
@@ -1451,8 +1451,8 @@ zh_TW:
     public_or_private_threads: 允許公開與非公開討論串
     private_threads: 只有成員才能看到討論串
     allow_public_threads: 允許在此群組中公開討論串。
-    parent_group_members_can_see_private_threads: "上層群組成員可查看私人對話串"
-    parent_group_members_can_see_private_threads_help: "允許 %{parent} 的成員查看此群組的對話串與投票，但不能參與"
+    parent_group_members_can_see_private_threads: 上層群組成員可查看私人對話串
+    parent_group_members_can_see_private_threads_help: 允許 %{parent} 的成員查看此群組的對話串與投票，但不能參與
     members_can_announce: 成員可以通知任何在群組裡的人
     members_can_announce_help: 允許成員通知所有在群組中的人關於討論串或投票的訊息
     members_can_add_members: 成員可以邀請成員
@@ -2017,6 +2017,18 @@ zh_TW:
     for_the_proposal_to_pass: 為了使提案獲得通過，此選項必須獲得…
     for_the_poll_to_be_valid: 為了使 %{poll_type} 有效，此選項必須接收...
     points_cast: 已投點數
+    eligible_vote_weight: 可投票權重
+    vote_weight_cast: 已投票權重
+    name_gte_eligible_vote_weight: "%{name} 需要至少 %{percent}% 的可投票權重"
+    name_lte_eligible_vote_weight: "%{name} 不得超過可投票權重的 %{percent}%"
+    name_gte_vote_weight_cast: "%{name} 需要至少 %{percent}% 的已投票權重"
+    name_lte_vote_weight_cast: "%{name} 不得超過已投票權重的 %{percent}%"
+    total_assigned_vote_weight: 已分配投票權重總和
+    weighted_votes_cast: 已投加權票數
+    name_gte_assigned_vote_weight: "%{name} 需要至少 %{percent}% 的已分配投票權重總和"
+    name_lte_assigned_vote_weight: "%{name} 不得超過已分配投票權重總和的 %{percent}%"
+    name_gte_weighted_votes_cast: "%{name} 需要至少 %{percent}% 的已投加權票數"
+    name_lte_weighted_votes_cast: "%{name} 不得超過已投加權票數的 %{percent}%"
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -2133,6 +2145,9 @@ zh_TW:
     pct_of_weighted_votes: 加權投票百分比
     pct_of_weighted_points: 加權分數百分比
     weighted_mean: 加權平均值
+    pct_of_eligible_vote_weight: 占可投票權重的 %
+    pct_of_vote_weight_cast: 占已投票權重的 %
+    pct_of_assigned_vote_weight: 占已分配投票權重的 %
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2465,6 +2480,10 @@ zh_TW:
     votes_short_of_quorum: 還需要 %{num} 票才能達到 %{pct}% 的法定人數
     quorum_reached: 已達 %{pct}% 的法定人數
     pct_participation: 已投出 %{num} 票，佔總票數的 %{total} 票（參與率 %{pct}%）
+    pct_vote_weight_participation: 已投 %{num} 票，共 %{total} 票（占投票權重的 %{pct}%）
+    pct_of_eligible_vote_weight_must_participate: 須有 %{pct}% 的可投票權重參與
+    pct_weighted_participation: 已投 %{num} 票，共 %{total} 票（已分配投票權重的 %{pct}% 已參與）
+    pct_of_assigned_vote_weight_must_participate: 須有 %{pct}% 的已分配投票權重總和參與
   poll_meeting_chart_panel:
     total: 全部
   poll_remove_vote:
@@ -3000,6 +3019,10 @@ zh_TW:
     weighted_voting_off_warning: 關閉加權投票後，所有投票權重均為 1。您在此投票中更改的任何投票權重都將遺失。
     weighted_voting_on_group: 啟用加權投票後，每個成員的預設投票權重將會被複製。其他投票者的投票權重為 1。
     weighted_voting_on_direct: 啟用加權投票後，所有選票的權重皆設為 1
+    quorum_vote_weight_hint: 需要多少百分比的可投票權重參與，結果才有效？選填，留空表示不設法定人數。
+    quorum_vote_weight_placeholder: 可投票權重百分比 (0–100)
+    quorum_voters_placeholder: 合格投票者百分比 (0–100)
+    quorum_weighted_hint: 需要多少百分比的已分配投票權重總和參與，結果才有效？選填，留空表示不設法定人數。
   poll_receipts_page:
     participation_status_requires_min_votes: 這裡顯示哪些人有資格投票。只有在至少%{count}人投票後，才會顯示每個人是否投票。
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -3242,7 +3265,7 @@ zh_TW:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 邀請寄送紀錄
-    email_delivery_blocked: "Loomio 已停止寄送電子郵件至此地址"
+    email_delivery_blocked: Loomio 已停止寄送電子郵件至此地址
     delivery_result:
       delivered: 已送達
       failed: 失敗

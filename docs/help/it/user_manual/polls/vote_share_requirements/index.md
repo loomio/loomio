@@ -1,19 +1,19 @@
 ---
 title: Requisiti di quota di voto
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 57968292811710c0
-  eligible-voters-and-votes-cast: 2f1c6cf1b0195cbe
-  different-vote-share-requirements: d31565d13080a9c9
+  eligible-voters-and-votes-cast: 17e6fff96ba92d18
+  different-vote-share-requirements: af2fa92869029207
   detailed-example: 298a7a8db2bc7b0a
 title_source: a654891ca817844e
 title_generated: d852e35efaa49f9a
@@ -45,6 +45,8 @@ Un requisito di accordo del 75 percento degli elettori aventi diritto può esser
 
 Un requisito di accordo del 60 percento dei voti espressi può essere soddisfatto quando il 60 percento dei voti inviati sostiene l'opzione, indipendentemente dalla partecipazione complessiva. Aggiungi un quorum quando il tuo processo richiede anche un livello minimo di partecipazione.
 
+Con il [voto ponderato](/en/user_manual/polls/weighted_voting), entrambe le basi di calcolo usano i pesi di voto. **Peso dei voti espressi** confronta il totale ponderato dell'opzione con il peso totale dei voti espressi. **Peso dei voti aventi diritto** confronta il peso degli elettori che scelgono l'opzione con il peso di tutti gli elettori aventi diritto, comprese le persone che non hanno votato. Per esempio, una persona che detiene 70 unità su un peso totale di 100 dei voti aventi diritto può soddisfare un requisito di accordo del 60 percento basato sul peso dei voti aventi diritto.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Diversi requisiti di quota di voto
@@ -56,6 +58,8 @@ Una proposta può avere requisiti su più di un'opzione. Per esempio:
 - Blocco non deve superare lo 0 percento dei voti espressi
 
 Impostare un'opzione su **Non più dello 0%** è una pratica comune. Significa che la proposta non può essere approvata se qualcuno sceglie quell'opzione. Usa questa impostazione su **Blocco** affinché un singolo blocco fermi la proposta.
+
+Con il voto ponderato, solo un blocco con un peso del voto positivo supera un requisito dello 0 percento. Un blocco con peso `0` non aggiunge peso al risultato.
 
 Puoi anche aggiungere requisiti a un [modello di sondaggio](/en/user_manual/polls/poll_templates/) affinché le nuove proposte create dal modello li usino per impostazione predefinita.
 

@@ -2,21 +2,21 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: 9b344dddaa25f823
   set-members-vote-weights: 861ad5297b83ee45
-  use-weighted-voting-in-a-poll: 067b92e9b9a01a46
-  results: a545207931448c87
+  use-weighted-voting-in-a-poll: eef9afc63045ec13
+  results: caa4eeddcb2da04e
 title: Votación ponderada
 title_source: 0b971991dfcacbab
 title_generated: 9c00eabb8b2b3ef6
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ El peso del voto de un miembro se copia en cada encuesta a la que se le añade. 
 
 ## Usar votación ponderada en una encuesta
 
-Selecciona **Usar votación ponderada** en los ajustes avanzados de la encuesta. Puedes activarla o desactivarla después de que se abra la votación. Al desactivarla, todos los pesos del voto de la encuesta pasan a ser `1` y se pierden los pesos del voto que hayas cambiado para esa encuesta.
+Abre **Más configuraciones** en el formulario de la encuesta y selecciona **Usar votación ponderada**. Puedes activar o desactivar la votación ponderada después de que se abra la votación. Al desactivarla, todos los pesos del voto de la encuesta pasan a ser `1` y se pierden los pesos del voto que hayas cambiado para esa encuesta.
 
 Si tu grupo usa votación ponderada para un proceso establecido, selecciona **Usar votación ponderada** en una [plantilla de encuesta](/en/user_manual/polls/poll_templates). Las encuestas iniciadas a partir de esa plantilla usan votación ponderada.
 
@@ -68,6 +68,14 @@ Los resultados muestran los totales sin ponderar y los totales ponderados uno al
 - Las encuestas de tipo Propuesta y Elegir muestran **Votos** y **Votos ponderados**.
 - Las encuestas de tipo Puntuar, Repartir y Ordenar muestran **Puntos** y **Puntos ponderados**.
 
-El gráfico muestra el resultado ponderado. Selecciona el encabezado de una columna para mostrar esa columna en el gráfico. El recuento de votantes con derecho a votar y el quórum cuentan personas, no pesos del voto. Cualquier persona que pueda ver los votos puede ver el peso del voto de cada votante.
+El gráfico muestra el resultado ponderado. Selecciona el encabezado de una columna para mostrar esa columna en el gráfico. Cualquier persona que pueda ver los votos puede ver el peso del voto de cada votante.
+
+En las encuestas de tipo Propuesta y Elegir, **No votó** muestra el número de votantes que aún no han votado en **Votos** y el peso del voto restante en **Votos ponderados**. Estas columnas y **% del peso del voto elegible** incluyen en el gráfico a quienes no han votado. **% del peso del voto emitido** deja **No votó** en blanco y lo excluye del gráfico.
+
+Los pesos del voto también se aplican al [quórum](/en/user_manual/polls/quorum) y a los [requisitos de porcentaje de votos](/en/user_manual/polls/vote_share_requirements).
+
+En el ejemplo siguiente, Jamie vota **De acuerdo** con un peso de `2`. Tres personas votan **En desacuerdo**, con pesos de `1`, `0` y `0`. Dos personas, con pesos de `2` y `1`, no han votado.
+
+De acuerdo tiene uno de los cuatro votos emitidos, pero dos tercios del peso del voto emitido. Ha participado la mitad del peso del voto con derecho a votar, por lo que no se ha alcanzado el quórum del 60 por ciento.
 
 ![El resultado de una propuesta con votos y votos ponderados](weighted-proposal-result.png)

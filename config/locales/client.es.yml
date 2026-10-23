@@ -248,7 +248,7 @@ es:
       open: Abierto
       closed: 'Cerrado '
       private: Privado
-      parent_members: "Visible para el grupo principal"
+      parent_members: Visible para el grupo principal
       secret: Secreto
     selected: Seleccionado
     today: Hoy
@@ -1438,9 +1438,9 @@ es:
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
     profile: Perfil
-    subgroup_name_and_content_are_public: "Cualquiera puede encontrar este subgrupo y leer sus hilos"
-    subgroup_name_is_public_and_threads_are_private: "Cualquiera puede encontrar este subgrupo; sus hilos son privados"
-    subgroup_is_visible_to_parent_members: "Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados"
+    subgroup_name_and_content_are_public: Cualquiera puede encontrar este subgrupo y leer sus hilos
+    subgroup_name_is_public_and_threads_are_private: Cualquiera puede encontrar este subgrupo; sus hilos son privados
+    subgroup_is_visible_to_parent_members: Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados
     subgroup_privacy_is_open_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son públicos.
     subgroup_privacy_is_closed_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados.
     subgroup_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados.
@@ -1448,9 +1448,9 @@ es:
     subgroup_privacy_is_secret_description: Sólo integrantes invitados pueden encontrar este sub-grupo, ver sus integrantes y sus hilos.
     advanced_settings: 'Configuración avanzada '
     how_do_people_join: "¿Cómo se unen las personas a este grupo?"
-    join_without_approval: "Unirse sin aprobación"
-    request_to_join: "Solicitar unirse"
-    invitation_only: "Solo por invitación"
+    join_without_approval: Unirse sin aprobación
+    request_to_join: Solicitar unirse
+    invitation_only: Solo por invitación
     permissions: Permisos
     thread_privacy: Privacidad del hilo
     public_threads: Sólo hilos públicos
@@ -1458,8 +1458,8 @@ es:
     public_or_private_threads: Permitir hilos públicos y privados
     private_threads: Solamente los integrantes pueden ver las discusiones
     allow_public_threads: Permitir hilos públicos en este grupo.
-    parent_group_members_can_see_private_threads: "Los miembros del grupo principal pueden ver los hilos privados"
-    parent_group_members_can_see_private_threads_help: "Permite que los miembros de %{parent} vean los hilos y encuestas de este grupo, pero no participen"
+    parent_group_members_can_see_private_threads: Los miembros del grupo principal pueden ver los hilos privados
+    parent_group_members_can_see_private_threads_help: Permite que los miembros de %{parent} vean los hilos y encuestas de este grupo, pero no participen
     members_can_announce: Los miembros pueden notificar a cualquiera en el grupo
     members_can_announce_help: Permite a los miembros notificar a cualquiera en el grupo acerca del hilo o sondeo
     members_can_add_members: Los miembros pueden invitar a otros miembros
@@ -2025,6 +2025,18 @@ es:
     for_the_proposal_to_pass: Para que la propuesta sea aprobada, esta opción debe recibir…
     for_the_poll_to_be_valid: Para que %{poll_type} sea válido, esta opción debe recibir…
     points_cast: Puntos emitidos
+    eligible_vote_weight: Peso del voto elegible
+    vote_weight_cast: Peso del voto emitido
+    name_gte_eligible_vote_weight: "%{name} necesita al menos el %{percent}% del peso del voto elegible"
+    name_lte_eligible_vote_weight: "%{name} no debe superar el %{percent}% del peso del voto elegible"
+    name_gte_vote_weight_cast: "%{name} necesita al menos el %{percent}% del peso del voto emitido"
+    name_lte_vote_weight_cast: "%{name} no debe superar el %{percent}% del peso del voto emitido"
+    total_assigned_vote_weight: Peso total del voto asignado
+    weighted_votes_cast: Votos ponderados emitidos
+    name_gte_assigned_vote_weight: "%{name} necesita al menos el %{percent}% del peso total del voto asignado"
+    name_lte_assigned_vote_weight: "%{name} no debe superar el %{percent}% del peso total del voto asignado"
+    name_gte_weighted_votes_cast: "%{name} necesita al menos el %{percent}% de los votos ponderados emitidos"
+    name_lte_weighted_votes_cast: "%{name} no debe superar el %{percent}% de los votos ponderados emitidos"
   poll_common:
     superseded: Reemplazado
     outdated: Anticuado
@@ -2141,6 +2153,9 @@ es:
     pct_of_weighted_votes: "% de votos ponderados"
     pct_of_weighted_points: "% de puntos ponderados"
     weighted_mean: Media ponderada
+    pct_of_eligible_vote_weight: "% del peso del voto elegible"
+    pct_of_vote_weight_cast: "% del peso del voto emitido"
+    pct_of_assigned_vote_weight: "% del peso del voto asignado"
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2473,6 +2488,10 @@ es:
     votes_short_of_quorum: Se necesitan %{num} votos más para alcanzar el quórum del %{pct}%
     quorum_reached: Se ha alcanzado el quórum del %{pct}%
     pct_participation: "%{num} de %{total} votos emitidos (%{pct}% de participación)"
+    pct_vote_weight_participation: "%{num} de %{total} votos emitidos (%{pct}% del peso del voto)"
+    pct_of_eligible_vote_weight_must_participate: Debe participar el %{pct}% del peso del voto elegible
+    pct_weighted_participation: "%{num} de %{total} votos emitidos (participó el %{pct}% del peso del voto asignado)"
+    pct_of_assigned_vote_weight_must_participate: Debe participar el %{pct}% del peso total del voto asignado
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -3008,6 +3027,10 @@ es:
     weighted_voting_off_warning: Al desactivar la votación ponderada, el peso de cada voto se establece en 1. Cualquier peso de voto que hayas modificado para esta encuesta se perderá.
     weighted_voting_on_group: Al activar la votación ponderada, se copia el peso de voto predeterminado de cada miembro. Los demás votantes obtienen un peso de voto de 1.
     weighted_voting_on_direct: Al activar la votación ponderada, el peso de cada voto se establece en 1
+    quorum_vote_weight_hint: "¿Qué porcentaje del peso del voto elegible debe participar para que el resultado sea válido? Opcional, déjalo en blanco si no hay quórum."
+    quorum_vote_weight_placeholder: Porcentaje del peso del voto elegible (0–100)
+    quorum_voters_placeholder: Porcentaje de votantes elegibles (0–100)
+    quorum_weighted_hint: "¿Qué porcentaje del peso total del voto asignado debe participar para que el resultado sea válido? Opcional, déjalo en blanco si no hay quórum."
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió tu voto.
@@ -3250,7 +3273,7 @@ es:
     stance: voto
   membership_notification_history:
     invitation_delivery_history: Historial de entrega de invitaciones
-    email_delivery_blocked: "Loomio ha bloqueado el envío de correos a esta dirección"
+    email_delivery_blocked: Loomio ha bloqueado el envío de correos a esta dirección
     delivery_result:
       delivered: Entregada
       failed: Fallida

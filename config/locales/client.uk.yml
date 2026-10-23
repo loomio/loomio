@@ -248,7 +248,7 @@ uk:
       open: Відкрита
       closed: Закрита
       private: Приватна
-      parent_members: "Видима батьківській групі"
+      parent_members: Видима батьківській групі
       secret: Таємна
     selected: Вибрані
     today: сьогодні
@@ -1432,9 +1432,9 @@ uk:
     confirm_change_to_public: Якщо ви продовжите, всі теми в цій групі стануть загальнодоступними в мережі.
     confirm_change_to_private_discussions_only: Якщо ви продовжите, всі загальнодоступні теми в цій групі буде змінено на приватні.
     profile: Профіль
-    subgroup_name_and_content_are_public: "Будь-хто може знайти цю підгрупу й читати її теми"
-    subgroup_name_is_public_and_threads_are_private: "Будь-хто може знайти цю підгрупу; її теми приватні"
-    subgroup_is_visible_to_parent_members: "Учасники %{parent} можуть знайти цю підгрупу; її теми приватні"
+    subgroup_name_and_content_are_public: Будь-хто може знайти цю підгрупу й читати її теми
+    subgroup_name_is_public_and_threads_are_private: Будь-хто може знайти цю підгрупу; її теми приватні
+    subgroup_is_visible_to_parent_members: Учасники %{parent} можуть знайти цю підгрупу; її теми приватні
     subgroup_privacy_is_open_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є загальнодоступними. '
     subgroup_privacy_is_closed_description: 'Будь-хто може знайти групу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є приватними. '
     subgroup_privacy_is_closed_public_threads_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Теми можуть бути загальнодоступними та приватними. '
@@ -1442,9 +1442,9 @@ uk:
     subgroup_privacy_is_secret_description: Тільки запрошені учасники можуть знайти цю підгрупу, бачити перелік ії учасників та теми.
     advanced_settings: Додаткові налаштування
     how_do_people_join: Як люди можуть приєднатися?
-    join_without_approval: "Вступ без схвалення"
-    request_to_join: "Запит на вступ"
-    invitation_only: "Лише за запрошенням"
+    join_without_approval: Вступ без схвалення
+    request_to_join: Запит на вступ
+    invitation_only: Лише за запрошенням
     permissions: Дозволи
     thread_privacy: Конфіденційність тем
     public_threads: Тільки загальнодоступні теми
@@ -1452,8 +1452,8 @@ uk:
     public_or_private_threads: Дозволити загальнодоступні та приватні теми
     private_threads: Тільки учасники можуть бачити обговорення
     allow_public_threads: Дозволити загальнодоступні теми в цій групі.
-    parent_group_members_can_see_private_threads: "Учасники батьківської групи можуть бачити приватні теми"
-    parent_group_members_can_see_private_threads_help: "Дозволити учасникам групи %{parent} переглядати теми й опитування в цій групі, але не брати в них участі"
+    parent_group_members_can_see_private_threads: Учасники батьківської групи можуть бачити приватні теми
+    parent_group_members_can_see_private_threads_help: Дозволити учасникам групи %{parent} переглядати теми й опитування в цій групі, але не брати в них участі
     members_can_announce: Учасники можуть повідомити усіх в групі.
     members_can_announce_help: Дозволити учасникам повідомляти усіх в групі щодо тем та опитувань
     members_can_add_members: Учасники можуть запрошувати нових учасників
@@ -2017,6 +2017,18 @@ uk:
     for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
     for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
     points_cast: Очки нараховані
+    eligible_vote_weight: Вага голосу виборців із правом голосу
+    vote_weight_cast: Віддана вага голосу
+    name_gte_eligible_vote_weight: "%{name} потребує щонайменше %{percent}% ваги голосу виборців із правом голосу"
+    name_lte_eligible_vote_weight: "%{name} не повинен перевищувати %{percent}% ваги голосу виборців із правом голосу"
+    name_gte_vote_weight_cast: "%{name} потребує щонайменше %{percent}% відданої ваги голосу"
+    name_lte_vote_weight_cast: "%{name} не повинен перевищувати %{percent}% відданої ваги голосу"
+    total_assigned_vote_weight: Загальна призначена вага голосу
+    weighted_votes_cast: Віддані зважені голоси
+    name_gte_assigned_vote_weight: "%{name} потребує щонайменше %{percent}% загальної призначеної ваги голосу"
+    name_lte_assigned_vote_weight: "%{name} не повинен перевищувати %{percent}% загальної призначеної ваги голосу"
+    name_gte_weighted_votes_cast: "%{name} потребує щонайменше %{percent}% відданих зважених голосів"
+    name_lte_weighted_votes_cast: "%{name} не повинен перевищувати %{percent}% відданих зважених голосів"
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2133,6 +2145,9 @@ uk:
     pct_of_weighted_votes: "% зважених голосів"
     pct_of_weighted_points: "% зважених балів"
     weighted_mean: Середньозважене значення
+    pct_of_eligible_vote_weight: "% ваги голосу виборців із правом голосу"
+    pct_of_vote_weight_cast: "% відданої ваги голосу"
+    pct_of_assigned_vote_weight: "% призначеної ваги голосу"
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2467,6 +2482,10 @@ uk:
     votes_short_of_quorum: Для досягнення кворуму %{pct}% потрібно ще %{num} голосів
     quorum_reached: Досягнуто кворуму %{pct}%
     pct_participation: "%{num} з %{total} голосів (%{pct}% участі)"
+    pct_vote_weight_participation: Віддано %{num} із %{total} голосів (%{pct}% ваги голосу)
+    pct_of_eligible_vote_weight_must_participate: Має бути віддано %{pct}% ваги голосу виборців із правом голосу
+    pct_weighted_participation: Віддано %{num} із %{total} голосів (віддано %{pct}% призначеної ваги голосу)
+    pct_of_assigned_vote_weight_must_participate: Має бути віддано %{pct}% загальної призначеної ваги голосу
   poll_meeting_chart_panel:
     total: Разом
   poll_remove_vote:
@@ -3002,6 +3021,10 @@ uk:
     weighted_voting_off_warning: Вимкнення зваженого голосування встановлює вагу кожного голосу на 1. Будь-які ваги голосів, які ви змінили для цього опитування, будуть втрачені.
     weighted_voting_on_group: Увімкнення зваженого голосування копіює вагу голосу кожного члена за замовчуванням. Інші виборці отримують вагу голосу, що дорівнює 1.
     weighted_voting_on_direct: Увімкнення зваженого голосування встановлює вагу кожного голосу на 1
+    quorum_vote_weight_hint: Який відсоток ваги голосу виборців із правом голосу має бути віддано, щоб результат був дійсним? Необов’язково, залиште поле порожнім, якщо кворум не потрібен.
+    quorum_vote_weight_placeholder: Відсоток ваги голосу виборців із правом голосу (0–100)
+    quorum_voters_placeholder: Відсоток виборців із правом голосу (0–100)
+    quorum_weighted_hint: Який відсоток загальної призначеної ваги голосу має бути віддано, щоб результат був дійсним? Необов’язково, залиште поле порожнім, якщо кворум не потрібен.
   poll_receipts_page:
     participation_status_requires_min_votes: Тут показано, хто мав право голосувати. Інформація про те, чи проголосувала кожна людина, відображається лише після того, як проголосують щонайменше %{count} людини.
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
@@ -3244,7 +3267,7 @@ uk:
     stance: голос
   membership_notification_history:
     invitation_delivery_history: Історія доставки запрошень
-    email_delivery_blocked: "Loomio заблокував доставку листів на цю адресу"
+    email_delivery_blocked: Loomio заблокував доставку листів на цю адресу
     delivery_result:
       delivered: Доставлено
       failed: Не вдалося доставити

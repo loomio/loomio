@@ -611,7 +611,7 @@ class PollService
           score_percent: 0,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: electorate_total > 0 ? (none_of_the_above_total.to_f / electorate_total * 100) : 0,
+          voter_percent: electorate_total > 0 ? (none_of_the_above_total.to_d / electorate_total * 100).to_f : 0,
           average: 0,
           voter_scores: {},
           voter_ids: (none_of_the_above_voter_ids || poll.none_of_the_above_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),
@@ -624,19 +624,22 @@ class PollService
 
     if poll.results_include_undecided
       undecided_total = weighted_results ? poll.stances.latest.undecided.sum(:weight) : poll.undecided_voters_count
+      # Uncast weight is comparable to weighted votes, but not to points awarded
+      # in multi-point polls. It remains excluded from percentages of votes cast.
+      undecided_score = weighted_results && poll.one_point_choices? ? result_number(undecided_total) : 0
       l.push(
         {
           id: -1,
           poll_id: poll.id,
-          name: 'poll_common_votes_panel.undecided',
+          name: 'poll_receipts_page.not_voted',
           name_format: 'i18n',
           rank: nil,
-          score: 0,
+          score: undecided_score,
           unweighted_score: 0,
           score_percent: nil,
           max_score_percent: 0,
           target_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
-          voter_percent: electorate_total > 0 ? (undecided_total.to_f / electorate_total * 100) : 0,
+          voter_percent: electorate_total > 0 ? (undecided_total.to_d / electorate_total * 100).to_f : 0,
           average: 0,
           voter_scores: {},
           voter_ids: (undecided_voter_ids || poll.undecided_voters.ids).take(Poll::RESULT_VOTER_IDS_MAX),

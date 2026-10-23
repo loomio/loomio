@@ -36,8 +36,8 @@ describe('weighted poll rules', () => {
     });
 
     const choices = wrapper.findAll('.choices').at(-1).text();
-    expect(choices).toContain(weightedVoting ? 'poll_option_form.weighted_votes_cast' : 'poll_option_form.votes_cast');
-    expect(choices).toContain(weightedVoting ? 'poll_option_form.total_assigned_vote_weight' : 'poll_option_form.eligible_voters');
+    expect(choices).toContain(weightedVoting ? 'poll_option_form.vote_weight_cast' : 'poll_option_form.votes_cast');
+    expect(choices).toContain(weightedVoting ? 'poll_option_form.eligible_vote_weight' : 'poll_option_form.eligible_voters');
   });
 
   it('shows weighted quorum, support, and turnout labels and uses the server quorum status', () => {
@@ -47,14 +47,14 @@ describe('weighted poll rules', () => {
         id: 1, pollType: 'proposal', weightedVoting: true, quorumPct: 60,
         quorumVotesRequired: 0, quorumReached: false, closingAt: '2026-10-30',
         results: [{name: 'Agree', test_operator: 'gte', test_percent: 60, test_result: false,
-          test_requirement_key: 'poll_option_form.name_gte_assigned_vote_weight'}],
+          test_requirement_key: 'poll_option_form.name_gte_eligible_vote_weight'}],
         config: () => ({has_options: false}), showResults: () => true, isClosed: () => false
       }}
     });
 
-    expect(wrapper.text()).toContain('poll_common_percent_voted.pct_of_assigned_vote_weight_must_participate');
-    expect(wrapper.text()).toContain('poll_option_form.name_gte_assigned_vote_weight');
-    expect(wrapper.text()).toContain('poll_common_percent_voted.pct_weighted_participation');
+    expect(wrapper.text()).toContain('poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate');
+    expect(wrapper.text()).toContain('poll_option_form.name_gte_eligible_vote_weight');
+    expect(wrapper.text()).toContain('poll_common_percent_voted.pct_vote_weight_participation');
     expect(wrapper.findComponent(CommonIcon).props('name')).toBe('mdiCheckboxBlankOutline');
   });
 });

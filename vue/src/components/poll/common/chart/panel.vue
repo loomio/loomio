@@ -23,7 +23,17 @@ export default {
   },
 
   data() {
-    return { votersByOptionId: {} };
+    return { votersByOptionId: {}, chartMetric: null };
+  },
+
+  computed: {
+    participationWeighted() {
+      return this.poll.weightedVoting && !['votes', 'voter_count', 'unweighted_score'].includes(this.chartMetric);
+    },
+    participationPct() {
+      if (!this.poll.weightedVoting || this.participationWeighted) return this.poll.castStancesPct;
+      return this.poll.votersCount > 0 ? Math.floor(this.poll.decidedVotersCount / this.poll.votersCount * 100) : 0;
+    }
   },
 
   created() {
@@ -62,7 +72,7 @@ export default {
             :name="poll.quorumReached ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
             :color="poll.quorumReached ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_of_assigned_vote_weight_must_participate' : 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', {pct: poll.quorumPct}) }}
+          span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate' : 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', {pct: poll.quorumPct}) }}
         li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
           common-icon.mr-1(
             :name="option.test_result ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
@@ -80,9 +90,9 @@ export default {
         )
           span {{ $t('poll_common_action_panel.votes_have_different_weights') }}
           help-link.ml-1(path="user_manual/polls/weighted_voting")
-        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters")
+        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters" @metric-change="chartMetric = $event")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_weighted_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct}) }}
+    span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.decidedVotersCount, total: poll.votersCount, pct: participationPct}) }}
 </template>

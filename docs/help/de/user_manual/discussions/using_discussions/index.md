@@ -1,10 +1,10 @@
 ---
 title: Threads verwenden
-source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
-source_file: docs/en/user_manual/discussions/using_discussions/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-12'
+  'on': '2026-10-23'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: e6708fb7422f2c4e
+  markdown: c6434ed486db8be4
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: ea98543142d6e416
   actions: 8c8be25fa54c0adc
   print: a338e05fc2833d18
-  markdown: d1f5058263b76107
+  markdown: 0b345adabf70ede9
   thread-settings-and-display: b5e22ab11c5259aa
   pin-or-unpin-a-thread: 5de696dc7828f152
   move-a-thread: 83ffef8883555192
@@ -269,7 +269,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 | Agree | 1 | 50% | 33% | Samira Patel |
 | Abstain | 1 | 50% | 33% | Alex Morgan |
 | Disagree | 0 | 0% | 0% | No voters |
-| Undecided | 1 |  | 33% | Jamie Chen |
+| Not voted | 1 |  | 33% | Jamie Chen |
 
 > **Samira Patel** voted **Agree** · 2026-09-10 23:28 · #3 · ❤️ Jamie Chen
 >

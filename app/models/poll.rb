@@ -410,14 +410,14 @@ class Poll < ApplicationRecord
   }.freeze
 
   WEIGHTED_VOTES_HEADING_KEYS = {
-    'voter_percent' => 'poll_common.pct_of_assigned_vote_weight',
+    'voter_percent' => 'poll_common.pct_of_eligible_vote_weight',
     'score' => 'poll_common.weighted_votes',
-    'score_percent' => 'poll_common.pct_of_weighted_votes',
-    'votes_cast_percent' => 'poll_common.pct_of_weighted_votes'
+    'score_percent' => 'poll_common.pct_of_vote_weight_cast',
+    'votes_cast_percent' => 'poll_common.pct_of_vote_weight_cast'
   }.freeze
 
   WEIGHTED_POINTS_HEADING_KEYS = {
-    'voter_percent' => 'poll_common.pct_of_assigned_vote_weight',
+    'voter_percent' => 'poll_common.pct_of_eligible_vote_weight',
     'score' => 'poll_common.weighted_points',
     'score_percent' => 'poll_common.pct_of_weighted_points',
     'votes_cast_percent' => 'poll_common.pct_of_weighted_points',
@@ -537,7 +537,7 @@ class Poll < ApplicationRecord
   end
 
   def participation_key
-    weighted_voting? ? 'poll_common_percent_voted.pct_weighted_participation' : 'poll_common_percent_voted.pct_participation'
+    weighted_voting? ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation'
   end
 
   # General-purpose voter relations must not reveal participation identities for
@@ -640,7 +640,7 @@ class Poll < ApplicationRecord
 
   def quorum_requirement_key
     if weighted_voting?
-      'poll_common_percent_voted.pct_of_assigned_vote_weight_must_participate'
+      'poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate'
     else
       'poll_common_percent_voted.pct_of_eligible_voters_must_participate'
     end
@@ -650,7 +650,7 @@ class Poll < ApplicationRecord
     return unless option.test_operator
 
     basis = if weighted_voting?
-      option.test_against == 'voter_percent' ? 'assigned_vote_weight' : 'weighted_votes_cast'
+      option.test_against == 'voter_percent' ? 'eligible_vote_weight' : 'vote_weight_cast'
     else
       option.test_against
     end

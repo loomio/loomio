@@ -2,21 +2,21 @@
 sections:
   introduction: d1b37bf68148b2a5
   set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: d8af319ed1e38e4d
-  results: 3cd10f104ced0ed5
+  use-weighted-voting-in-a-poll: 1cc0b5130642217b
+  results: a0eeeda5a9e70a97
 generated:
   introduction: e68797adab665ded
   set-members-vote-weights: 36139b6a5f25024c
-  use-weighted-voting-in-a-poll: f5d73b198ba1c246
-  results: 66e85ec0de2cf047
+  use-weighted-voting-in-a-poll: 97a799ad2be1188a
+  results: af0e91cca184546d
 title: Gewogen stemmen
 title_source: 0b971991dfcacbab
 title_generated: ae4290c895e6ff10
-source_revision: 3f73d4a156d9ffd3137ff085cc6ab58fbc4de46b
-source_file: docs/en/user_manual/polls/weighted_voting/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-06'
+  'on': '2026-10-23'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ Het stemgewicht van een lid wordt gekopieerd naar elke peiling waaraan dat lid w
 
 ## Gewogen stemmen gebruiken in een peiling
 
-Selecteer **Gewogen stemmen gebruiken** in de geavanceerde instellingen van de peiling. Je kunt dit in- of uitschakelen nadat het stemmen is begonnen. Als je het uitschakelt, wordt elk stemgewicht in de peiling ingesteld op `1` en gaan alle stemgewichten die je voor die peiling hebt gewijzigd verloren.
+Open **Meer instellingen** in het peilingformulier en selecteer **Gewogen stemmen gebruiken**. Je kunt gewogen stemmen in- of uitschakelen nadat het stemmen is begonnen. Als je het uitschakelt, wordt elk stemgewicht in de peiling ingesteld op `1` en gaan alle stemgewichten die je voor die peiling hebt gewijzigd verloren.
 
 Als jouw groep gewogen stemmen gebruikt voor een vast proces, selecteer dan **Gewogen stemmen gebruiken** in een [peilingsjabloon](/en/user_manual/polls/poll_templates). Peilingen die vanuit dat sjabloon worden gestart, gebruiken gewogen stemmen.
 
@@ -68,6 +68,14 @@ De resultaten tonen de ongewogen en gewogen totalen naast elkaar:
 - Peilingen van de typen Voorstel en Kiezen tonen **Stemmen** en **Gewogen stemmen**.
 - Peilingen van de typen Beoordelen, Verdelen en Rangschikken tonen **Punten** en **Gewogen punten**.
 
-De grafiek toont het gewogen resultaat. Selecteer een kolomkop om in plaats daarvan die kolom in de grafiek weer te geven. Bij het aantal stemgerechtigde kiezers en het quorum tellen personen, niet stemgewichten. Iedereen die de stemmen kan zien, kan het stemgewicht van elke kiezer zien.
+De grafiek toont het gewogen resultaat. Selecteer een kolomkop om in plaats daarvan die kolom in de grafiek weer te geven. Iedereen die de stemmen kan zien, kan het stemgewicht van elke kiezer zien.
+
+Bij peilingen van de typen Voorstel en Kiezen toont **Niet gestemd** het aantal kiezers dat nog niet heeft gestemd onder **Stemmen** en hun totale stemgewicht onder **Gewogen stemmen**. Deze kolommen en **% van het stemgerechtigde stemgewicht** nemen degenen die niet hebben gestemd mee in de grafiek. Bij **% van het uitgebrachte stemgewicht** blijft **Niet gestemd** leeg en wordt het niet meegenomen in de grafiek.
+
+Stemgewichten gelden ook voor het [quorum](/en/user_manual/polls/quorum) en de [vereisten voor het stemmenaandeel](/en/user_manual/polls/vote_share_requirements).
+
+In het onderstaande voorbeeld stemt Jamie **Eens** met een stemgewicht van `2`. Drie mensen stemmen **Oneens**, met stemgewichten van `1`, `0` en `0`. Twee mensen, met stemgewichten van `2` en `1`, hebben niet gestemd.
+
+Eens heeft één van de vier uitgebrachte stemmen, maar twee derde van het uitgebrachte stemgewicht. De helft van het stemgerechtigde stemgewicht heeft deelgenomen, dus het quorum van 60 procent is niet bereikt.
 
 ![Het resultaat van een voorstel met stemmen en gewogen stemmen](weighted-proposal-result.png)

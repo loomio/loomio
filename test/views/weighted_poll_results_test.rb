@@ -105,8 +105,8 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     ]
     components.each do |component|
       output = ApplicationController.renderer.render(component, layout: false)
-      assert_includes output, '50% of the total assigned vote weight must participate'
-      assert_includes output.downcase, 'agree needs at least 60% of the total assigned vote weight'
+      assert_includes output, '50% of eligible vote weight must participate'
+      assert_includes output.downcase, 'agree needs at least 60% of eligible vote weight'
     end
 
     components = [
@@ -115,7 +115,7 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     ]
     components.each do |component|
       output = ApplicationController.renderer.render(component, layout: false)
-      assert_includes output, "#{poll.cast_stances_pct}% of assigned vote weight participated"
+      assert_includes output, "#{poll.cast_stances_pct}% of vote weight)"
     end
   end
 
