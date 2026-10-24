@@ -26,10 +26,8 @@
   },
   "overrides": {
     "haraka-plugin-mailauth": {
-      "mailauth": "4.13.3"
+      "mailauth": "8.0.4"
     },
-    "joi": "18.2.9",
-    "nodemailer": "10.0.13",
-    "undici": "7.30.0"
+    "nodemailer": "10.2.1"
   }
 }
