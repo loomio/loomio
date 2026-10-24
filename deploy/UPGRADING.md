@@ -15,6 +15,10 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Finished job cleanup
+
+Restart workers with the updated `config/queue.yml` to restore finished-job cleanup. Custom worker configurations must include `solid_queue_recurring` in the general worker pool. Previously queued cleanup runs will then execute and remove finished jobs older than the retention period (one day by default).
+
 ## Email delivery history and incoming email storage
 
 Before pulling the new image, leave the old worker running so queued `RouteReceivedEmailsWorker` and `DeleteOldReceivedEmailsWorker` jobs can finish. From the deployment directory, check how many remain:

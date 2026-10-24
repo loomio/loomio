@@ -1,6 +1,23 @@
 require "test_helper"
 
 class QueueConfigurationTest < ActiveSupport::TestCase
+  test "every production recurring task has a worker that can claim its jobs" do
+    config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
+    workers = config.fetch("production").fetch("workers")
+    tasks = YAML.safe_load(Rails.root.join("config/recurring.yml").read).fetch("production")
+
+    tasks.each do |key, options|
+      task = SolidQueue::RecurringTask.from_configuration(key, **options.symbolize_keys)
+      active_job = task.enqueue(at: Time.current)
+      execution = ready_execution(active_job.queue_name)
+
+      assert workers.any? { |worker|
+        SolidQueue::QueueSelector.new(worker.fetch("queues"), SolidQueue::ReadyExecution.where(id: execution.id))
+                                 .scoped_relations.any?(&:exists?)
+      }, "No worker serves recurring task #{key} on #{active_job.queue_name}"
+    end
+  end
+
   test "group destruction and count repair each have a dedicated worker when the general pool scales" do
     previous = ENV["JOB_CONCURRENCY"]
     ENV["JOB_CONCURRENCY"] = "4"
