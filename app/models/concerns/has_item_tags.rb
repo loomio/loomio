@@ -9,17 +9,40 @@ module HasItemTags
       where(KINDS.map { |kind, type| sanitize_sql_array(['(kind = ? AND itemable_type = ?)', kind, type]) }.join(' OR '))
     }
 
-    # Tags remain shared metadata when poll visibility changes. Only discarded
-    # contributions leave the aggregate; result privacy belongs to search/content.
+    # Tags remain shared metadata when poll visibility changes. CASE and
+    # correlated lookups keep small batches from materializing every kept
+    # discussion/comment. For a comment, follow its indexed parent chain rather
+    # than rebuilding all descendants of discarded polls in the thread.
     scope :tags_visible, -> {
-      taggable.where(<<~SQL.squish)
-        (itemable_type = 'Discussion' AND itemable_id IN (SELECT id FROM discussions WHERE discarded_at IS NULL)) OR
-        (itemable_type = 'Poll' AND itemable_id IN (SELECT id FROM polls WHERE discarded_at IS NULL)) OR
-        (itemable_type = 'Outcome' AND itemable_id IN (
-          SELECT outcomes.id FROM outcomes JOIN polls ON polls.id = outcomes.poll_id WHERE polls.discarded_at IS NULL
-        )) OR
-        (itemable_type = 'Comment' AND itemable_id IN (SELECT id FROM comments WHERE discarded_at IS NULL)
-          AND itemable_id NOT IN (#{Comment.under_polls(Poll.discarded.where('polls.topic_id = topic_items.topic_id')).select(:id).to_sql}))
+      where(<<~SQL.squish)
+        CASE
+        WHEN topic_items.kind = 'new_discussion' AND topic_items.itemable_type = 'Discussion' THEN EXISTS (
+          SELECT 1 FROM discussions WHERE discussions.id = topic_items.itemable_id AND discarded_at IS NULL LIMIT 1 OFFSET 0
+        )
+        WHEN topic_items.kind = 'poll_created' AND topic_items.itemable_type = 'Poll' THEN EXISTS (
+          SELECT 1 FROM polls WHERE polls.id = topic_items.itemable_id AND discarded_at IS NULL LIMIT 1 OFFSET 0
+        )
+        WHEN topic_items.kind = 'outcome_created' AND topic_items.itemable_type = 'Outcome' THEN EXISTS (
+          SELECT 1 FROM outcomes JOIN polls ON polls.id = outcomes.poll_id
+          WHERE outcomes.id = topic_items.itemable_id AND polls.discarded_at IS NULL LIMIT 1 OFFSET 0
+        )
+        WHEN topic_items.kind = 'new_comment' AND topic_items.itemable_type = 'Comment' THEN
+          EXISTS (SELECT 1 FROM comments WHERE comments.id = topic_items.itemable_id AND discarded_at IS NULL LIMIT 1 OFFSET 0)
+          AND NOT EXISTS (
+            WITH RECURSIVE ancestors AS (
+              SELECT id, parent_type, parent_id FROM comments WHERE id = topic_items.itemable_id
+              UNION
+              SELECT comments.id, comments.parent_type, comments.parent_id FROM comments JOIN ancestors
+                ON ancestors.parent_type = 'Comment' AND comments.id = ancestors.parent_id
+            )
+            SELECT 1 FROM ancestors
+            LEFT JOIN stances ON ancestors.parent_type = 'Stance' AND stances.id = ancestors.parent_id
+            LEFT JOIN outcomes ON ancestors.parent_type = 'Outcome' AND outcomes.id = ancestors.parent_id
+            JOIN polls ON polls.id = CASE ancestors.parent_type
+              WHEN 'Poll' THEN ancestors.parent_id WHEN 'Stance' THEN stances.poll_id WHEN 'Outcome' THEN outcomes.poll_id END
+            WHERE polls.discarded_at IS NOT NULL AND polls.topic_id = topic_items.topic_id LIMIT 1 OFFSET 0
+          )
+        ELSE FALSE END
       SQL
     }
 

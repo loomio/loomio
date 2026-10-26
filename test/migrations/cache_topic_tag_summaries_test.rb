@@ -2,7 +2,9 @@ require 'test_helper'
 require_relative '../../db/migrate/20261022000000_cache_topic_tag_summaries'
 
 class CacheTopicTagSummariesTest < ActiveSupport::TestCase
-  test 'backfill rebuilds summaries from kept assignments including previously public hidden-poll tags' do
+  self.use_transactional_tests = false
+
+  test 'schema migration defers rebuilding kept tag summaries until the background backfill' do
     topic = topics(:discussion_topic)
     topic.update!(allow_concurrent_polls: true)
     actor = users(:admin)
@@ -35,6 +37,10 @@ class CacheTopicTagSummariesTest < ActiveSupport::TestCase
       end
     end
     Topic.reset_column_information
+
+    assert_equal ['Stale aggregate'], topic.reload.tags
+    assert_not topic.has_tagged_replies
+    ItemTagBackfillService.new.run_batch
 
     assert_equal ['Public tag', 'Reply', 'Shared'], topic.reload.tags
     assert topic.has_tagged_replies

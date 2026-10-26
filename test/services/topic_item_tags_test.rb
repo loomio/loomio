@@ -143,6 +143,37 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert @topic.has_tagged_replies
   end
 
+  test 'discarded poll ancestry excludes nested stance and outcome comments even at the display cap' do
+    @topic.update!(max_depth: 1)
+    poll = make_poll
+    stance = poll.stances.latest.find_by!(participant: @admin)
+    stance.choice = 'Agree'
+    stance.reason = 'Vote reason'
+    StanceService.create(stance: stance, actor: @admin)
+    PollService.close(poll: poll, actor: @admin)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
+    replies = [stance, outcome].map do |parent|
+      comment = CommentService.create(comment: Comment.new(parent: parent, body: 'Parent reply'), actor: @author)
+      reply = CommentService.create(comment: Comment.new(parent: comment, body: 'Nested reply'), actor: @author)
+      tag(reply.created_topic_item, [parent.class.name])
+      reply
+    end
+
+    poll.discard!
+    assert_empty @topic.reload.tags
+    replies.each do |reply|
+      assert_not reply.created_topic_item.tags_assignable?
+      assert_equal [reply.parent.parent_type], reply.created_topic_item.tags
+      reply.update_pg_search_document
+      assert_not PgSearch::Document.exists?(searchable: reply)
+    end
+    assert @item.tags_assignable?, 'An unrelated discussion reply stays assignable'
+
+    poll.update!(discarded_at: nil, discarded_by: nil)
+    assert_equal ['Outcome', 'Stance'], @topic.reload.tags
+    replies.each { |reply| assert reply.created_topic_item.tags_assignable? }
+  end
+
   test 'subgroup assignments create colored organization metadata without waiting for a job' do
     topic = topics(:subgroup_discussion_topic)
     TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: ['Subgroup label'], actor: @admin)
