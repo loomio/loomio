@@ -23,7 +23,7 @@ Before starting an applicable task, read every matching document below. These ar
 | User-facing copy, documentation, changelog entries, emails, or onboarding text | [Writing and Markdown](docs/agents/writing.md) |
 | Application strings, translations, terminology, or glossary changes | [Localization](docs/agents/localization.md) |
 | Frontend or Vue work | [Frontend and Vue](docs/agents/frontend.md) |
-| Adding, changing, running, or debugging tests | [Tests](docs/agents/testing.md); for Ruby mutation audits or test-suite cleanup, [Mutation testing](docs/agents/mutation_testing.md) |
+| Adding, changing, running, or debugging tests; mutation audits or test-suite cleanup | [Tests](docs/agents/testing.md) |
 | User-visible features or behaviour changes; user manual, guides, API reference, help-site builder, navigation, links, or redirects | [User manual and help site](docs/agents/user_manual.md) |
 | Manual translations or translation tooling; preparing a feature for merge | [User-manual translations](docs/agents/user_manual_translations.md), alongside the user-manual instructions |
 | Manual screenshots; preparing a feature for merge | [User-manual screenshots](docs/agents/user_manual_screenshots.md), alongside the user-manual instructions |
