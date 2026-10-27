@@ -54,6 +54,8 @@ Back up the database and Active Storage, then follow the upgrade commands above.
 
 Existing bounce/complaint counters become address blocks, and pending sender approvals keep their IDs. Custom approval clients must change `/api/v1/received_emails` to `/api/v1/pending_emails` and the response root from `received_emails` to `pending_emails`.
 
+Incoming-email routing retries failures up to five times with increasing delays. If all retries fail, the job remains failed in `/admin/jobs` for manual review. Jobs already in the failed queue need a manual retry to use the new policy.
+
 ## Retained record count repair
 
 After deploying the replacement for `custom_counter_cache`, enqueue a background repair of historical membership, content, read, reply and version counts:
