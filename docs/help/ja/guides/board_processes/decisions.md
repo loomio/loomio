@@ -1,30 +1,24 @@
 ---
 title: 決議を行う
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/board_processes/decisions.md
+source_revision: 44bb4520839557ec23fd64c4d591a1028d6b4434
+source_file: docs/help/en/guides/board_processes/decisions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
   examples-of-out-of-session-decisions: 6a4d6a8c978bcb11
   decision-about-property-purchase: fff64b1ac620cc4a
-  decision-to-accept-directors-and-officers-liability-insurance: b279ed6b1c5aadfa
   a-security-breach-has-occurred-at-one-of-our-facilities: ca3a40286ca25a9a
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1d79254c3f3a0ba6
-  keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
-  on-loomio-2: 5ef094900505a875
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: c406842807e1091b
 generated:
   introduction: be77663bf9588179
   on-loomio: e03a213b4bdc71e6
   examples-of-out-of-session-decisions: f2355eabac60633a
   decision-about-property-purchase: 3fd021d0376fedda
-  decision-to-accept-directors-and-officers-liability-insurance: 754d4afa4ca86653
   a-security-breach-has-occurred-at-one-of-our-facilities: b3aae116a50c18f7
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1b46f4dd66fb6ed0
-  keeping-a-record-of-decisions-made-and-supporting-discussion: ec16f0debe845156
-  on-loomio-2: cf66c305370f9ddf
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 61116c363946e360
 title_source: 9a7f398684e7c05f
 title_generated: 96ee8cd6619c23c7
 needs_review:
@@ -71,11 +65,6 @@ needs_review:
 ### 不動産購入に関する決定
 前回の理事会の会議で、不動産の購入について話し合いました。ある理事は、決定を行う前に独立した専門家による技術調査報告書が必要だと述べました。理事会は、技術調査報告書の内容が満足できるものであることを条件に、不動産を購入することに合意しました。ただし、次の理事会の会議までに購入する必要があるため、報告書が完成したらLoomioにアップロードし、Loomio上でディスカッションを行い、不動産購入について最終的な決定を行うことに合意しました。
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### 役員賠償責任保険の更新見積もりを承認する決定
-理事会の会議で、年に一度の保険更新の時期が近づいていることが確認されました。これは事務的な事項と判断されたため、理事会はLoomioを使って更新申請について話し合い、各理事から必要な情報を集め、申請を提出し、保険更新の見積もりを承認することに合意しました。
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### 施設の一つで不法侵入が発生した場合
@@ -85,36 +74,3 @@ needs_review:
 
 ### 理事が理事会のジェンダー構成と多様性について問題を提起した場合
 ある理事が、法人の構成をより適切に反映するために理事会メンバーの多様性を高めるべきだという、十分な理由と根拠を示しました。理事は情報を理解し、質問し、問題について話し合い、対応を決定する必要があります。
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## 決定とその根拠となるディスカッションの記録を残す
-
-組織を統治する理事会には記録の保管が法的に求められ、委員会にとっても適切な実務です。
-
-現在、多くの組織は正式な議事録、決議、方針、重要な決定を電子的に記録し、保存しています。文書記録は作成・承認され、配布・利用され、保管・保存された後、最終的に廃棄されます。
-
-<!-- translation-section: on-loomio-2 -->
-
-### Loomioでの進め方
-議事録、報告書、決議、その他の文書は、会議の**スレッド**の背景説明、アンケート、またはスレッド内のコメントに添付できます。これにより、文書は常に関連するディスカッションと結び付けられます。
-
-ファイルの一覧は、**ファイル**タブでも確認できます。
-
-![](files_tab.png#width-90)
-
-利用している文書管理システムに保存された文書へのリンクを、スレッドやアンケートに追加することもできます。文書の共有可能なオンラインリンクを取得し、スレッド、アンケート、またはコメントにコピーして貼り付けます。
-
-アクセス権限がある人は、リンクをクリックして文書を開き、読むことができます。
-
-![](thread_link.png#width-90)
-
-Loomioではディスカッションと決定が常に記録されるため、理事会のすべての意思決定を確実に確認できます。何がいつ決まったかを簡単に示せます。理事が決議に投票するだけでなく、ディスカッションやコメントも行っていれば、それぞれの決定にどのように、なぜ至ったのかも確認できます。
-
-使い続けることで組織の履歴が蓄積され、過去の決定や関連するディスカッションを簡単に検索して見つけられます。
-
-![](thread_search.png#width-90)
-
-Loomioでは、すべてのデータが*クラウド上*の複数のディスクと複数の場所に書き込まれ、保存され、毎日バックアップされます。アップロードされたファイルは、処理のボトルネックや障害の原因となる箇所を取り除くための最新技術を使ったサーバーに保存されます。

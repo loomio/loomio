@@ -729,6 +729,16 @@ module Dev::Scenarios::OatmilkCooperative
         actor: coordinator
       )
 
+      # One member is left without a vote, so the results show a Not voted row.
+      Array(example[:votes]).zip([production_lead, coordinator]).each do |(option, reason), voter|
+        option_name = (poll.poll_options.find_by(icon: option) || poll.poll_options.find_by!(name: option)).name
+        StanceService.update(
+          stance: Stance.find_by!(poll: poll, participant: voter, latest: true),
+          actor: voter,
+          params: {choice: {option_name => 1}, reason: reason}
+        )
+      end
+
       if example[:outcome]
         PollService.close(poll: poll, actor: coordinator)
         OutcomeService.create(
@@ -1743,6 +1753,51 @@ module Dev::Scenarios::OatmilkCooperative
           options: %w[agree abstain disagree block]
         },
         outcome: 'The reusable packaging policy was approved for the six-week trial. We will review it with cafe partners when the trial ends.'
+      },
+      'board_minutes' => {
+        title: 'October board meeting',
+        description: '<p>Agenda, papers, and minutes for the October board meeting.</p>',
+        poll: {
+          title: 'Accept the minutes of the October board meeting',
+          details: "Please read the minutes and note your actions.\n\nVote **Accept** if the minutes and actions are correct, or **Review** if there is anything to discuss.",
+          type: 'poll',
+          options: %w[Accept Review]
+        },
+        votes: [
+          ['Accept', 'Thanks. I have started on my actions.'],
+          ['Accept', '']
+        ]
+      },
+      'board_report' => {
+        title: 'October board reports',
+        description: '<p>The finance and operations reports for the October board meeting. Ask questions here before the meeting.</p>',
+        poll: {
+          title: 'Approve the quarterly financial statements',
+          details: "Vote **Agree** if you approve the financial statements, or **Disagree** if you have questions.\n\nChange your vote once your questions are answered.",
+          type: 'proposal',
+          options: %w[agree abstain disagree block]
+        },
+        votes: [
+          ['disagree', 'Why is the washing cost higher than last quarter?'],
+          ['agree', '']
+        ]
+      },
+      'board_funding' => {
+        title: 'Funding application to the Community Food Trust',
+        description: '<p>The Community Food Trust has invited us to apply for a grant toward the returnable bottle trial.</p><p>The draft application covers the washing equipment, the cafe collection runs, and six months of reporting.</p><p>Please read the draft and raise any risks before we submit it.</p>',
+        comments: [
+          'The reporting schedule looks manageable alongside the trial.'
+        ],
+        poll: {
+          title: "Let's apply for the Community Food Trust grant",
+          details: 'Tell us if you see any risks, and where the application could be stronger.',
+          type: 'check',
+          options: %w[looks_good not_sure concerned]
+        },
+        votes: [
+          ['agree', 'The budget matches the trial plan.'],
+          ['abstain', 'I would like a second quote for the washing equipment.']
+        ]
       },
       'thread_raise_issue' => {
         title: 'Choosing a bottle washing supplier',

@@ -1,34 +1,26 @@
 ---
 title: Beschlüsse fassen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/guides/board_processes/decisions.md
+source_revision: 44bb4520839557ec23fd64c4d591a1028d6b4434
+source_file: docs/help/en/guides/board_processes/decisions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
   examples-of-out-of-session-decisions: 6a4d6a8c978bcb11
   decision-about-property-purchase: fff64b1ac620cc4a
-  decision-to-accept-directors-and-officers-liability-insurance: b279ed6b1c5aadfa
   a-security-breach-has-occurred-at-one-of-our-facilities: ca3a40286ca25a9a
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1d79254c3f3a0ba6
-  keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
-  on-loomio-2: 5ef094900505a875
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: c406842807e1091b
 generated:
   introduction: a8f26422e61105b8
   on-loomio: a353106174a8fbeb
   examples-of-out-of-session-decisions: 4a26a859c0f2e45f
   decision-about-property-purchase: 2393c77ecdc6c63f
-  decision-to-accept-directors-and-officers-liability-insurance: 8703500e2f9f5463
   a-security-breach-has-occurred-at-one-of-our-facilities: 3fd6a31210897675
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 3ce9748c198a2717
-  keeping-a-record-of-decisions-made-and-supporting-discussion: 90255e9612493498
-  on-loomio-2: 48b36354e97cbece
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 53ddcbd883366534
 title_source: 9a7f398684e7c05f
 title_generated: 80e5bda534914821
-needs_review:
-  on-loomio-2: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -72,11 +64,6 @@ Halte ein **Fazit** fest, wenn die Abstimmung über den Vorschlag beendet ist. T
 ### Entscheidung über einen Immobilienkauf
 Bei der letzten Vorstandssitzung wurde ein Immobilienkauf besprochen. Ein Vorstandsmitglied verlangte vor der Entscheidung ein unabhängiges technisches Gutachten. Der Vorstand beschloss in der Sitzung, die Immobilie zu kaufen, sofern das Gutachten zufriedenstellend ausfällt. Da der Kauf jedoch vor der nächsten Vorstandssitzung erfolgen muss, vereinbarte der Vorstand, das fertige Gutachten auf Loomio hochzuladen, dort zu besprechen und die endgültige Entscheidung über den Immobilienkauf auf Loomio zu treffen.
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### Entscheidung über die Verlängerung einer D&O-Haftpflichtversicherung
-Während der Vorstandssitzung wurde darauf hingewiesen, dass die jährliche Verlängerung der Versicherung ansteht. Da dies als Verwaltungsangelegenheit betrachtet wurde, vereinbarte der Vorstand, auf Loomio den Verlängerungsantrag zu besprechen, die erforderlichen Informationen von jedem Vorstandsmitglied einzuholen, den Antrag einzureichen und das Angebot zur Versicherungsverlängerung anzunehmen.
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### In einer unserer Einrichtungen gab es einen Sicherheitsvorfall
@@ -86,36 +73,3 @@ Ein Einbruch und der Diebstahl von Eigentum haben die Organisation und ihre Mita
 
 ### Ein Vorstandsmitglied hat die Geschlechterverteilung und Vielfalt im Vorstand zur Diskussion gestellt
 Das Vorstandsmitglied hat nachvollziehbare Begründungen und Belege dafür vorgelegt, dass der Vorstand vielfältiger zusammengesetzt sein sollte, um die Organisation besser zu repräsentieren. Die Vorstandsmitglieder müssen sich mit den Informationen auseinandersetzen, Fragen stellen, das Thema diskutieren und über eine Reaktion entscheiden.
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## Getroffene Entscheidungen und zugehörige Diskussionen dokumentieren
-
-Für Vorstände ist die Dokumentation gesetzlich vorgeschrieben, für Ausschüsse ist sie gute Praxis.
-
-Viele Organisationen dokumentieren und speichern heute formelle Protokolle, Beschlüsse, Richtlinien und wichtige Entscheidungen elektronisch. Dokumente werden erstellt und genehmigt, verteilt und genutzt, aufbewahrt und gespeichert und schließlich entsorgt.
-
-<!-- translation-section: on-loomio-2 -->
-
-### Auf Loomio
-Protokolle, Berichte, Beschlüsse und andere Dokumente können im Kontext eines Sitzungs-**Threads**, in einer Abstimmung oder in einem Kommentar im Thread angehängt werden. So bleiben die Dokumente immer mit der zugehörigen Diskussion verknüpft.
-
-Eine Liste der Dateien findest du auch im Tab **Dokumente**.
-
-![](files_tab.png#width-90)
-
-Du kannst außerdem in jedem Thread oder jeder Abstimmung einen Link zu einem Dokument einfügen, das in deinem bevorzugten Dokumentenverwaltungssystem gespeichert ist. Suche den Freigabelink zum Dokument, kopiere ihn und füge ihn in deinen Thread, deine Abstimmung oder deinen Kommentar ein.
-
-Alle mit der entsprechenden Berechtigung können dann auf den Link klicken, um das Dokument zu öffnen und zu lesen.
-
-![](thread_link.png#width-90)
-
-Da Diskussionen und Entscheidungen auf Loomio bereits dokumentiert sind, kannst du die Entscheidungsprozesse deines Vorstands zuverlässig nachvollziehen. Du kannst leicht belegen, was wann entschieden wurde. Wenn Vorstandsmitglieder einen Beschluss diskutiert, kommentiert und ihre Stimme dazu abgegeben haben, kannst du auch nachvollziehen, wie und warum jede Entscheidung zustande kam.
-
-Mit der Zeit entsteht eine Chronik deiner Organisation, in der du frühere Entscheidungen und die zugehörigen Diskussionen leicht suchen und finden kannst.
-
-![](thread_search.png#width-90)
-
-Auf Loomio werden alle Daten auf mehreren Datenträgern an mehreren Standorten *in der Cloud* gespeichert und täglich gesichert. Hochgeladene Dateien werden auf Servern gespeichert, die moderne Verfahren einsetzen, um Engpässe und Ausfallstellen zu vermeiden.
