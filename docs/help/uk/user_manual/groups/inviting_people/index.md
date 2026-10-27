@@ -1,12 +1,12 @@
 ---
 title: Запрошення людей
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 3e6acdf3c70c8e89
+  introduction: f7b646896ae43819
   send-invitations-via-email: 16671dbea9179ec9
   invite-many-at-once: ee0b13d8c8e8fba8
   invite-people-to-subgroups: 3b480cf12e8d2af2
@@ -35,11 +35,9 @@ title_generated: 596ec23ae41c2feb
 
 <!-- translation-section: introduction -->
 
-# Запрошення людей
+# Запросіть людей до групи Loomio
 
-Перейдіть на сторінку вашої групи й натисніть вкладку **Учасники**, щоб керувати учасниками групи.
-
-Ви можете скористатися кнопкою **Запросити**, щоб запросити конкретних людей до вашої групи за їхніми електронними адресами, або кнопкою **Поширити**, щоб поширити посилання на вашу групу електронною поштою, у розсилці, чаті чи на вашому вебсайті.
+Запросіть людей до вашої групи Loomio електронною поштою або поширте посилання на групу в розсилці, чаті чи на вебсайті. Щоб почати, відкрийте вкладку **Учасники** на сторінці вашої групи.
 
 ![](group_join_group_invite.png)
 

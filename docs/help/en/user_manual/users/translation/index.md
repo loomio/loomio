@@ -2,17 +2,13 @@
 
 # Languages and Translation
 
-Loomio supports mutliple languages with these two features:
-
-1. Application translation - Change the language of the user interface, IE: the buttons and application text.
-2. Content translation - Translate comments, discussions and proposals into your preferred language.
+Change the language of Loomio’s interface, or translate discussions, comments and proposals into your preferred language.
 
 <!-- translation-section: application-translation -->
 
 ## Application translation
 
-Loomio will automatically detect what your preferred language is when you visit the app with your browser. 
-If you want to change the preferred language, you can do so from the "Edit profile" page.
+Loomio detects your browser’s preferred language. To choose a different language, open **Edit profile** and select one there.
 
 ![changing your preferred language](change_language.png)
 
@@ -21,7 +17,7 @@ If you want to change the preferred language, you can do so from the "Edit profi
 ## Content translation
 When someone in your group writes their message in a language that is different to your preferred language, a "translate" button will appear below the message. You can click this button to automatically translate the message into your preferred language.
 
-![content tranlation](content_translation.png)
+![Translate action below a comment](content_translation.png)
 
 The translated text replaces the original text in the discussion. Select **original** to show the original text again.
 

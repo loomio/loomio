@@ -1,13 +1,13 @@
 ---
 title: Ваш профіль
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 4cce930005f3dac7
-  edit-profile: db62074ac5638f03
+  introduction: 9137e1a6c629d0f8
+  edit-profile: 216fd51edc23b843
   update-your-personal-info: 64b82dfc97172d64
   viewing-another-person-s-profile: 9f9ede78b983b043
   uploading-a-profile-photo: 5bf96e74b646dfdc
@@ -32,25 +32,14 @@ title_generated: c5e37ca5d5d3c4fd
 <!-- translation-section: introduction -->
 
 # Ваш профіль
-Ваш профіль у Loomio дапамагае людзям пазнаваць вас.  
 
-Магчымасць пазнаваць людзей у Loomio дапамагае будаваць давер і заахвочвае да больш адкрытага ўдзелу. Таму, калі магчыма, мы раім вам прадстаўляць сябе пад сваім імем і дадаць фота або аватар.
+Ваш профіль дапамагае людзям пазнаваць вас у Loomio. Дадайце фота, уводзіны і іншыя звесткі, якімі вы хочаце падзяліцца.
 
 <!-- translation-section: edit-profile -->
 
 ## Рэдагаваць профіль
 
-На старонцы профілю вы можаце наладзіць, як вас бачаць у Loomio. Каб перайсці на старонку профілю, выберыце **Рэдагаваць профіль** у меню карыстальніка. Каб адкрыць гэтае меню, націсніце на сваё імя ўверсе бакавой панэлі.
-
-Калі бакавая панэль схаваная, націсніце на значок меню (**☰**), каб адкрыць яе.
-
-![](sidebar_menu.png)
-
-Націсніце на стрэлку ўніз справа ад вашага імя.
-
-![](sidebar_profile.png)
-
-Націсніце **Рэдагаваць профіль**
+Адкрыйце меню карыстальніка, выбраўшы сваё імя на бакавой панэлі, затым выберыце **Рэдагаваць профіль**. Калі бакавая панэль схаваная, адкрыйце яе з дапамогай кнопкі меню (**☰**).
 
 ![](edit_profile.png)
 

@@ -1,6 +1,6 @@
 <!-- translation-section: introduction -->
 
-# Intro to Groups
+# Groups
 
 A Loomio group is a safe place for people to meet, have discussions and make decisions. 
 
@@ -10,13 +10,9 @@ A Loomio group looks like this.  At the top of the page you will see an image an
 
 ![The Oatmilk Cooperative group page, with its description and discussion list](group_page.png)
 
-Choose a representative name for your group and use the group description to outline;
-- **what** this group is used for,
-- **why** this is important,
-- **who** is involved, and
-- **how** members can participate.
+Give your group a recognizable name and use its description to explain its purpose, who is involved and how members can participate. You can also add a logo, cover image and links to documents such as your terms of reference.
 
-You may also include information like a code of conduct, terms of reference or other governing documents for the group.
+To get started, [create a group](/en/user_manual/groups/starting_a_group), choose its [privacy settings](/en/user_manual/groups/settings/privacy), and [invite people](/en/user_manual/groups/inviting_people).
 
 If you are preparing a new group, see [Introducing Loomio to your group](/en/user_manual/overview/introducing_loomio) for a practical sequence from choosing the first piece of work through to recording an outcome.
 
@@ -24,10 +20,4 @@ If you are preparing a new group, see [Introducing Loomio to your group](/en/use
 
 ## Administration, Facilitation and Moderation - Code of Conduct
 
-Loomio is built to foster inclusive participation, diversity and trust - helping groups make better decisions together. 
-
-Some topics bring tension in a group.  So it's important to allow a robust discussion to take place, while ensuring it is also a safe place, particularly for vulnerable people in your group. 
-
-We recommend establishing a code of conduct for your group, to help everyone be aware of their responsibility for appropriate behaviour and encourage self-regulation. 
-
-See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) to further explore the value of a code of conduct.
+A code of conduct can help members understand how to participate and how the group will respond to inappropriate behaviour. See the [Facilitator's Guide](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) for guidance on setting expectations.

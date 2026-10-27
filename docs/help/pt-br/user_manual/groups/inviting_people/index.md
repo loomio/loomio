@@ -1,12 +1,12 @@
 ---
 title: Convidar pessoas
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 3b0c44b951dcdbc1
+  introduction: 11414f62ee5967b1
   send-invitations-via-email: 2b8a4d9f59ade3fb
   invite-many-at-once: 0d712706c051acde
   invite-people-to-subgroups: 8dff558b6aa64a4c
@@ -35,11 +35,9 @@ title_generated: 78d2d476af72d5ea
 
 <!-- translation-section: introduction -->
 
-# Convidar pessoas
+# Convide pessoas para um grupo do Loomio
 
-Acesse a página do seu grupo e clique na aba **Membros** para gerenciar os membros.
-
-Você pode **Convidar** pessoas específicas para seu grupo usando seus endereços de e-mail ou **Compartilhar** um link para seu grupo por e-mail, boletim informativo, chat ou pelo seu site.
+Convide pessoas para seu grupo do Loomio por e-mail ou compartilhe um link do grupo em um boletim informativo, chat ou site. Abra a aba **Membros** na página do seu grupo para começar.
 
 ![](group_join_group_invite.png)
 

@@ -1,23 +1,23 @@
 ---
 title: Csoportok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: 78046b3541d5faa7
-  administration-facilitation-and-moderation-code-of-conduct: b5c95616e91e1f52
+  introduction: 3753751332452c43
+  administration-facilitation-and-moderation-code-of-conduct: 49762e47ca8b1a90
 title_source: 39bbb719fa2b9d22
 title_generated: af564256c41cc70b
 ---
 
 <!-- translation-section: introduction -->
 
-# Bevezetés a csoportok használatába
+# Csoportok
 
 A Loomio-csoport biztonságos hely, ahol az emberek találkozhatnak, beszélgetéseket folytathatnak és döntéseket hozhatnak.
 
@@ -27,13 +27,9 @@ Olyan tér, ahol a csoport tagjai információkat találhatnak és oszthatnak me
 
 ![Az Oatmilk Cooperative csoportoldala a leírással és a beszélgetések listájával](group_page.png)
 
-Válassz a csoportodat jól jellemző nevet, és a csoport leírásában mutasd be:
-- **mire** használjátok ezt a csoportot,
-- **miért** fontos ez,
-- **kik** vesznek részt benne, és
-- **hogyan** kapcsolódhatnak be a tagok.
+Adj a csoportodnak könnyen felismerhető nevet, és a leírásában mutasd be a célját, hogy kik vesznek részt benne, és hogyan kapcsolódhatnak be a tagok. Logót, borítóképet és dokumentumokra, például a működési szabályzatra mutató hivatkozásokat is hozzáadhatsz.
 
-Megadhatod a csoport magatartási kódexét, működési szabályzatát vagy más, a működését szabályozó dokumentumait is.
+Kezdésként [hozz létre egy csoportot](/en/user_manual/groups/starting_a_group), válaszd ki az [adatvédelmi beállításait](/en/user_manual/groups/settings/privacy), és [hívj meg embereket](/en/user_manual/groups/inviting_people).
 
 Ha új csoportot készítesz elő, olvasd el [A Loomio bevezetése a csoportodban](/en/user_manual/overview/introducing_loomio) című útmutatót. Ez gyakorlati lépéseken vezet végig az első feladat kiválasztásától a következtetés rögzítéséig.
 
@@ -41,10 +37,4 @@ Ha új csoportot készítesz elő, olvasd el [A Loomio bevezetése a csoportodba
 
 ## Adminisztráció, facilitálás és moderálás - Magatartási kódex
 
-A Loomio célja a befogadó részvétel, a sokszínűség és a bizalom támogatása, hogy a csoportok közösen jobb döntéseket hozhassanak.
-
-Egyes témák feszültséget keltenek a csoportban. Ezért fontos teret adni az alapos beszélgetésnek, és közben gondoskodni arról, hogy a csoport biztonságos hely maradjon, különösen a kiszolgáltatott tagok számára.
-
-Javasoljuk, hogy dolgozz ki magatartási kódexet a csoportod számára. Ez segít mindenkinek megérteni a megfelelő viselkedéssel kapcsolatos felelősségét, és ösztönzi az önszabályozást.
-
-Olvasd el a [Facilitátori útmutatót](/en/guides/facilitators_guide/commencing#culture-protocol-expectations), hogy többet megtudj a magatartási kódex szerepéről.
+A magatartási kódex segíthet a tagoknak megérteni, hogyan vehetnek részt a csoport munkájában, és hogyan reagál a csoport a nem megfelelő viselkedésre. Az elvárások meghatározásához olvasd el a [Facilitátori útmutatót](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).

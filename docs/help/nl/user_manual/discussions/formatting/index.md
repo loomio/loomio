@@ -1,16 +1,16 @@
 ---
 title: Opmaak
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
   headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
@@ -27,11 +27,11 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 61008fbffdc74f54
+  introduction: 21954b5db45cee59
   attach-file: 5c8e241f954fb9f6
   remove-attachments: 1ac9ddb9b78b79eb
-  insert-image: ad00460b98a69981
-  insert-link: cc74342f21fdc875
+  insert-image: 4c911e275e6524df
+  insert-link: ef4303946164243b
   insert-emoji: fe46e50a0296b238
   headings: 49ddc54c0a6ebcde
   bold-italicize-strikethrough: 2b98e96ed4f67ebd
@@ -53,15 +53,13 @@ title_generated: 7d7a9ce4e4aad2d0
 
 <!-- translation-section: introduction -->
 
-# Opmaak
+# Tekst opmaken en bestanden bijvoegen
 
 Wanneer je een discussie of peiling start of bewerkt, of een reactie schrijft, zie je een opmaakbalk onder het tekstveld. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
 
 Beweeg de muis of cursor over elk pictogram om de naam van het hulpmiddel te zien.
 
 ![](thread_format_bar.png)
-
-Gebruik opmaak om structuur aan te brengen en tekst te benadrukken, zodat informatie gemakkelijker te overzien is.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ Klik tijdens het bewerken van de context op de **X** rechts van de bestandsnaam 
 
 ## Afbeelding invoegen
 
-Gebruik dit hulpmiddel om een afbeelding in te voegen en weer te geven.
-
-![](format_insert_image.png)
-
-Selecteer een afbeeldingsbestand op je computer. Na het uploaden wordt de afbeelding in de editor ingevoegd.
+Selecteer **Afbeelding invoegen** en kies een bestand, of plak een afbeelding rechtstreeks in de editor. De afbeelding wordt weergegeven in de gepubliceerde discussie, peiling of reactie.
 
 ![](format_insert_example.png)
-
-De afbeelding wordt weergegeven in de gepubliceerde discussie, peiling of reactie.
-
->[!Tip]
->Je kunt een afbeelding ook rechtstreeks in Loomio kopiëren en plakken.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ Zo voeg je een link toe:
 
 Controleer bij een document dat elders wordt gehost de instellingen voor delen, zodat deelnemers aan de discussie het kunnen openen.
 
-Onder het tekstveld verschijnt een voorbeeld van het document. Je kunt dit verwijderen als je wilt.
-
-Iedereen met toegang tot jouw Loomio-discussie en toestemming om het document te bekijken, kan het nu openen en lezen.
+Onder de tekst kan een voorbeeld verschijnen. Je kunt dit verwijderen als je wilt.
 
 ![](format_link.png)
 

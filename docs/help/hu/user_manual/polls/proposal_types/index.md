@@ -1,12 +1,12 @@
 ---
 title: Szavazások
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 8b11cf05ef9ce1ab
+  introduction: 6a53ef2b63587672
   simple-poll: ee50fcb17cf3a648
   score-poll: f0866030f2eaeb8f
   dot-vote: 555ff212c5647541
@@ -30,6 +30,15 @@ title_generated: 21bb4226710ebb6f
 # Szavazások
 
 A szavazások kiválasztásokat, pontszámokat, pontelosztásokat, rangsorokat, elérhető időpontokat vagy választási szavazatokat gyűjtenek. Válaszd ki a szavazási módot aszerint, hogy mit kell kifejezniük a résztvevőknek, és hogyan szeretnéd felhasználni az eredményt. Használj [javaslatot](/en/user_manual/polls/proposals/), ha az embereknek egy állításra vagy tervezett lépésre kell reagálniuk.
+
+| Mit szeretnél tenni? | Mód | Hogyan alakul ki az eredmény? |
+| --- | --- | --- |
+| Népszerű lehetőségek keresése vagy szűkített lista összeállítása | [Kiválasztás](/en/user_manual/polls/choose) (több lehetőség kiválasztása) | Összeszámolja az egyes lehetőségekre adott szavazatokat |
+| A lehetőségek támogatottságának összehasonlítása | [Pontozás](/en/user_manual/polls/score) | Közös skálán összesíti az értékeléseket |
+| Prioritások meghatározása korlátozott számú ponttal | [Pontelosztás](/en/user_manual/polls/allocate) (pontszavazás) | Összeadja az egyes lehetőségekhez rendelt pontokat |
+| Lehetőségek sorrendbe állítása preferencia szerint | [Rangsorolás](/en/user_manual/polls/rank) (rangsorolás) | A rangsorokat pontokon alapuló sorrenddé összesíti |
+| Találkozó időpontjának keresése | [Időpontszavazás](/en/user_manual/polls/meeting_polls) | Megmutatja, hogy az egyes időpontok kinek felelnek meg |
+| Több képviselő arányos megválasztása | [STV-választás](/en/user_manual/polls/stv) | A jelölteket rangsoroló szavazatok összeszámlálásával több győztest választ |
 
 <!-- translation-section: simple-poll -->
 

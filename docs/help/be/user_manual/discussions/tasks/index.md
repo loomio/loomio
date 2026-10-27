@@ -1,18 +1,18 @@
 ---
 title: Задачы
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/tasks/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 5d689ea44215eba6
+  introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
   name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
-  introduction: 5a08ccfb85e7e65f
+  introduction: 1da36da227ad0450
   add-a-task: 288bb99a82894693
   name-and-assign-the-task-to-a-person: 01c9fed41d7bb15d
   set-a-reminder: a4b1e5feb3d77cce
@@ -23,7 +23,7 @@ title_generated: 8534be17f9a29d43
 
 <!-- translation-section: introduction -->
 
-# Задачы
+# Прызначайце і адсочвайце задачы
 
 Выкарыстоўвайце задачы ў тэмах і каментарыях, каб назваць дзеянне, прызначыць яго камусьці, задаць тэрмін выканання і адсочваць, ці выканана яно.
 

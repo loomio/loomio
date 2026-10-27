@@ -68,11 +68,7 @@ You'll shortly receive an email with a link to downloading the JSON file.
 
 ## Print thread to pdf
 
-You may need to extract a copy of a thread to store in a separate file archive.
-
-**Print** thread retains all comments, polls, votes and outcomes, along with thread formatting.
-
-In the thread menu click on the 3 dots menu (⋯) and choose **Print**. Loomio will generate an HTML page that you can then print or "save to pdf" using the print tool in your browser.
+To save a thread for your records, open its menu and choose **Print**. Loomio generates an HTML page with the thread’s comments, polls, votes, outcomes and formatting. Use your browser’s print tool to print it or save it as a PDF.
 
 You can copy the page to paste it into a document editor, file, or data repository.
 

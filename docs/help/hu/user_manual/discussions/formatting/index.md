@@ -1,16 +1,16 @@
 ---
 title: Formázás
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
   headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
@@ -27,11 +27,11 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 5b7a10ffacf59c1c
+  introduction: 983c3788edf2b6db
   attach-file: 96a249746dcd4f52
   remove-attachments: f68ac4a24e7b7c86
-  insert-image: e8737c79986232b5
-  insert-link: 2a91091525497431
+  insert-image: 627ec734bb8a22a5
+  insert-link: 03b754c22884e091
   insert-emoji: 3f90cfa2b39e6fb4
   headings: 4c62c28f35c7742b
   bold-italicize-strikethrough: 46b3ccf64bcd81bf
@@ -53,15 +53,13 @@ title_generated: f69549cfa8a49f53
 
 <!-- translation-section: introduction -->
 
-# Formázás
+# Szöveg formázása és fájlok csatolása
 
 Amikor beszélgetést vagy szavazást indítasz vagy szerkesztesz, illetve hozzászólást írsz, a szövegmező alatt megjelenik egy formázási eszköztár. Kattints az eszköztár végén lévő nyílra az összes eszköz megjelenítéséhez vagy elrejtéséhez.
 
 Vidd az egérmutatót az egyes eszközök fölé a nevük megjelenítéséhez.
 
 ![](thread_format_bar.png)
-
-Használd a formázást a szöveg tagolásához és a fontos részek kiemeléséhez, hogy az információ könnyebben áttekinthető legyen.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ A leírás szerkesztése közben kattints a fájlnévtől jobbra lévő **X** go
 
 ## Kép beszúrása
 
-Ezzel az eszközzel képet szúrhatsz be és jeleníthetsz meg.
-
-![](format_insert_image.png)
-
-Válaszd ki a képfájlt a számítógépedről. A feltöltés után a kép bekerül a szerkesztőbe.
+Válaszd ki a **Kép beszúrása** eszközt, és válassz egy fájlt, vagy illessz be egy képet közvetlenül a szerkesztőbe. A kép megjelenik a közzétett beszélgetésben, szavazásban vagy hozzászólásban.
 
 ![](format_insert_example.png)
-
-A kép megjelenik a közzétett beszélgetésben, szavazásban vagy hozzászólásban.
-
->[!Tip]
->Képet közvetlenül is másolhatsz és beilleszthetsz a Loomióba.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ Hivatkozás hozzáadásához:
 
 Ha a dokumentumot máshol tárolod, ellenőrizd a megosztási jogosultságait, hogy a beszélgetés résztvevői meg tudják nyitni.
 
-A szövegmező alatt megjelenik a dokumentum előnézete. Ezt eltávolíthatod, ha szeretnéd.
-
-Ezután bárki megnyithatja és elolvashatja a dokumentumot, aki hozzáfér a Loomio-beszélgetésedhez, és jogosult a dokumentum megtekintésére.
+A szöveg alatt megjelenhet egy előnézet. Ezt eltávolíthatod, ha szeretnéd.
 
 ![](format_link.png)
 

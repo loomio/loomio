@@ -1,12 +1,12 @@
 ---
 title: הזמנת אנשים
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: ff26ac83dc53bb33
+  introduction: b38878f6985ec210
   send-invitations-via-email: 97a63f6ec0ac8310
   invite-many-at-once: c474b6685a59517f
   invite-people-to-subgroups: 5401bf29c268d8d3
@@ -35,11 +35,9 @@ title_generated: 1a6369a35ea0bd09
 
 <!-- translation-section: introduction -->
 
-# הזמנת אנשים
+# הזמנת אנשים לקבוצה ב־Loomio
 
-לניהול החברים, יש לעבור לדף הקבוצה וללחוץ על הלשונית **חברים**.
-
-ניתן להזמין אנשים מסוימים לקבוצה באמצעות כתובת הדוא״ל שלהם ולחיצה על **הזמן**, או לשתף קישור לקבוצה באמצעות **שיתוף** בדוא״ל, בניוזלטר, בצ׳אט או באתר.
+ניתן להזמין אנשים לקבוצה ב־Loomio בדוא״ל, או לשתף קישור לקבוצה בניוזלטר, בצ׳אט או באתר. כדי להתחיל, יש לפתוח את הלשונית **חברים** בדף הקבוצה.
 
 ![](group_join_group_invite.png)
 

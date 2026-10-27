@@ -1,23 +1,23 @@
 ---
 title: Группы
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: 9334aaa76a27ee8c
-  administration-facilitation-and-moderation-code-of-conduct: a773f76fa56ad440
+  introduction: 20a337229ed735d5
+  administration-facilitation-and-moderation-code-of-conduct: d08cf7c1bedaf757
 title_source: 39bbb719fa2b9d22
 title_generated: cd8c587351082be4
 ---
 
 <!-- translation-section: introduction -->
 
-# Знакомство с группами
+# Группы
 
 Группа в Loomio — это безопасное пространство, где люди могут встречаться, вести обсуждения и принимать решения.
 
@@ -27,13 +27,9 @@ title_generated: cd8c587351082be4
 
 ![Страница группы The Oatmilk Cooperative с описанием и списком обсуждений](group_page.png)
 
-Выберите название, которое отражает назначение вашей группы, и укажите в описании группы:
-- **для чего** используется эта группа,
-- **почему** это важно,
-- **кто** участвует в её работе и
-- **как** участники могут принимать участие.
+Дайте вашей группе узнаваемое название и укажите в описании её назначение, кто участвует в её работе и как участники могут принимать участие. Вы также можете добавить логотип, обложку и ссылки на документы, например положение о группе.
 
-Вы также можете добавить кодекс поведения, положение о группе или другие документы, регулирующие её работу.
+Для начала [создайте группу](/en/user_manual/groups/starting_a_group), выберите её [настройки конфиденциальности](/en/user_manual/groups/settings/privacy) и [пригласите людей](/en/user_manual/groups/inviting_people).
 
 Если вы готовите новую группу, обратитесь к странице [Знакомство вашей группы с Loomio](/en/user_manual/overview/introducing_loomio). Там описана последовательность практических шагов: от выбора первой задачи до записи вывода.
 
@@ -41,10 +37,4 @@ title_generated: cd8c587351082be4
 
 ## Администрирование, фасилитация и модерация — кодекс поведения
 
-Loomio помогает создавать условия для участия всех, поддерживать разнообразие и доверие, чтобы группы могли вместе принимать более обоснованные решения.
-
-Некоторые темы вызывают напряжение в группе. Поэтому важно давать возможность для содержательного обсуждения, сохраняя при этом безопасное пространство, особенно для уязвимых участников вашей группы.
-
-Мы рекомендуем разработать кодекс поведения для вашей группы. Он поможет всем осознать свою ответственность за корректное поведение и будет способствовать саморегуляции.
-
-Подробнее о пользе кодекса поведения читайте в [Руководстве для фасилитаторов](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+Кодекс поведения помогает участникам понять, как участвовать в работе группы и как группа будет реагировать на неприемлемое поведение. Рекомендации по определению ожиданий читайте в [Руководстве для фасилитаторов](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).

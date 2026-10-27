@@ -1,12 +1,12 @@
 ---
 title: Invitare persone
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: b7e5d4c88511ea42
+  introduction: 4543409120f65cae
   send-invitations-via-email: a16bf0ed8f846e10
   invite-many-at-once: c3059e25979f41cd
   invite-people-to-subgroups: 8a6aec882e478c2e
@@ -35,11 +35,9 @@ title_generated: 4b6c1590d7342b55
 
 <!-- translation-section: introduction -->
 
-# Invitare persone
+# Invita persone in un gruppo Loomio
 
-Vai alla pagina del tuo gruppo e fai clic sulla scheda **Membri** per accedere alla gestione dei membri.
-
-Puoi usare **Invita** per invitare persone specifiche nel tuo gruppo tramite il loro indirizzo email oppure **Condividi** per condividere un link al tuo gruppo via email, newsletter, chat o dal tuo sito web.
+Invita persone nel tuo gruppo Loomio via email oppure condividi un link al gruppo tramite una newsletter, una chat o un sito web. Apri la scheda **Membri** nella pagina del tuo gruppo per iniziare.
 
 ![](group_join_group_invite.png)
 

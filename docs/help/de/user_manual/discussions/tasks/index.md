@@ -1,18 +1,18 @@
 ---
 title: Aufgaben
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/tasks/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 5d689ea44215eba6
+  introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
   name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
-  introduction: 5385b9f410606b3c
+  introduction: 9294f176843fdabe
   add-a-task: 213a28a163fbfcc4
   name-and-assign-the-task-to-a-person: 398a833dd1e14250
   set-a-reminder: 366abf2017600a50
@@ -23,7 +23,7 @@ title_generated: 1351ad2fb58aee4b
 
 <!-- translation-section: introduction -->
 
-# Aufgaben
+# Aufgaben zuweisen und nachverfolgen
 
 Nutze Aufgaben in Threads und Kommentaren, um eine Handlung zu benennen, sie jemandem zuzuweisen, ein Fälligkeitsdatum festzulegen und nachzuverfolgen, ob sie erledigt ist.
 

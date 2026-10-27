@@ -1,17 +1,17 @@
 ---
 title: Esportazione dei dati
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 1f927b13e546ddfd
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: 53a693d5950de0be
   export-group-data-as-html: 20e1f21d5c4dd6af
   export-group-data-as-json: 48bc3d9b70eb8dd9
-  print-thread-to-pdf: 02d3680574342030
+  print-thread-to-pdf: 88d8ca0b511e1a86
   import-your-group-data-on-another-loomio-server: 160c567e2e49c3b4
 title_source: 29049648f87b87f5
 title_generated: ea7bba9669375d58
@@ -95,11 +95,7 @@ Riceverai a breve un'email con un link per scaricare il file JSON.
 
 ## Stampa una conversazione in PDF
 
-Potresti aver bisogno di estrarre una copia di una conversazione per conservarla in un archivio di file separato.
-
-La funzione **Stampa** della conversazione conserva tutti i commenti, i sondaggi, i voti e le conclusioni, insieme alla formattazione della conversazione.
-
-Nel menu della conversazione, fai clic sul menu con i tre puntini (⋯) e scegli **Stampa**. Loomio genererà una pagina HTML che potrai stampare o "salvare in PDF" usando lo strumento di stampa del tuo browser.
+Per conservare una copia di una conversazione nel tuo archivio, apri il suo menu e scegli **Stampa**. Loomio genera una pagina HTML con i commenti, i sondaggi, i voti, le conclusioni e la formattazione della conversazione. Usa lo strumento di stampa del tuo browser per stamparla o salvarla in PDF.
 
 Puoi copiare la pagina e incollarla in un editor di documenti, in un file o in un archivio di dati.
 

@@ -1,14 +1,14 @@
 ---
 title: Delegati con diritto di voto
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/delegated_voters/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/delegated_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: b7bb98cef1cbcc28
+  introduction: 124e9ce630557695
 generated:
-  introduction: 1f6afbc47ee4df3d
+  introduction: 8d055b588979dffa
 title_source: 71bebf9802e7d67d
 title_generated: d7fe219b55c6c09c
 ---
@@ -17,13 +17,15 @@ title_generated: d7fe219b55c6c09c
 
 # Delegati con diritto di voto
 
-Se alcuni membri del tuo gruppo devono avere diritto di voto e altri no, puoi usare la funzione "Nomina delegato" per identificare le persone con diritto di voto. È disponibile anche l'azione corrispondente "Revoca delega".
+Se alcuni membri del tuo gruppo devono avere diritto di voto e altri no, puoi usare la funzione "Rendi delegato" per identificare le persone con diritto di voto. È disponibile anche l'azione corrispondente "Revoca delegato".
 
 Usa i delegati quando le persone devono condividere lo stesso spazio di discussione, ma solo un insieme definito, come gli amministratori o i rappresentanti eletti, può votare. Di solito è più semplice che mantenere un secondo sottogruppo il cui unico scopo è separare gli elettori da chi non ha diritto di voto.
 
 Usa invece un sottogruppo privato quando i suoi membri hanno anche bisogno di discussioni, file o informazioni sui membri che gli altri membri non devono vedere.
 
-![Azione Nomina delegato nel menu di un membro](member_make_delegate.png)
+Nella pagina del gruppo, apri **Membri**, trova la persona e seleziona **Rendi delegato** dal menu con i tre puntini accanto al suo nome. Usa **Revoca delegato** nello stesso menu per rimuovere la designazione.
+
+![Azione Rendi delegato nel menu di un membro](member_make_delegate.png)
 
 Per creare un sondaggio o una proposta e invitare solo i delegati, usa l'impostazione del sondaggio "Solo le persone selezionate".
 ![Impostazione Solo le persone selezionate quando si avvia una proposta](poll_invited_people_only.png)

@@ -1,25 +1,14 @@
 <!-- translation-section: introduction -->
 
-# Your Profile
-Your Loomio user profile is how people recognize you.  
+# Your profile
 
-Being able to recognize people in Loomio helps build trust and authenticity, encouraging more genuine participation.  So wherever possible we encourage you to be you, and to add a photo or avatar.
+Your profile helps people recognize you in Loomio. Add a photo, introduction and other details you want to share.
 
 <!-- translation-section: edit-profile -->
 
 ## Edit profile
 
-Your profile page lets you customize your Loomio identity. To visit your profile page select the **Edit profile** option in the user menu, which is found by clicking on your name at the top of the sidebar. 
-
-If the sidebar is closed, click on the menu icon (**☰**) to open it.
-
-![](sidebar_menu.png)
-
-Click on the down arrow to the right of your name.
-
-![](sidebar_profile.png)
-
-Click on **Edit profile**
+Open your user menu by selecting your name in the sidebar, then select **Edit profile**. If the sidebar is closed, open it with the menu button (**☰**).
 
 ![](edit_profile.png)
 

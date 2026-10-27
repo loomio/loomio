@@ -1,19 +1,19 @@
 ---
 title: 言語と翻訳
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/translation/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 339f8c77362b2d12
-  application-translation: e1a57b4f96352649
-  content-translation: 427aa006b46961a8
+  introduction: 61c3576014d50390
+  application-translation: '02678dc26a30c3bc'
+  content-translation: a62f882355b42534
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: 81c22a049cb29638
-  application-translation: ad2352ddd7262f47
-  content-translation: '019da94b6eeeeddd'
+  introduction: c7eadc8a30637f35
+  application-translation: 4f3b7b4e9d238821
+  content-translation: 11dc7b6e6e895b40
   automatic-translation: dcde7670dad0d05a
 title_source: 9fd7f67efecb7288
 title_generated: 484080555cd02820
@@ -23,16 +23,13 @@ title_generated: 484080555cd02820
 
 # 言語と翻訳
 
-Loomioは、次の2つの機能で複数の言語に対応しています。
-
-1. アプリケーションの翻訳 - ボタンやアプリケーション内のテキストなど、ユーザーインターフェースの言語を変更します。
-2. コンテンツの翻訳 - コメント、ディスカッション、提案を希望する言語に翻訳します。
+Loomioのインターフェースの言語を変更したり、ディスカッション、コメント、提案を希望する言語に翻訳したりできます。
 
 <!-- translation-section: application-translation -->
 
 ## アプリケーションの翻訳
 
-ブラウザーでLoomioにアクセスすると、希望する言語が自動的に検出されます。希望する言語は「プロファイル編集」ページで変更できます。
+Loomioはブラウザーの優先言語を検出します。別の言語に変更するには、**プロファイル編集**を開き、言語を選択します。
 
 ![希望する言語の変更](change_language.png)
 
@@ -41,7 +38,7 @@ Loomioは、次の2つの機能で複数の言語に対応しています。
 ## コンテンツの翻訳
 グループ内で希望する言語とは異なる言語のメッセージが投稿されると、メッセージの下に「翻訳」ボタンが表示されます。このボタンをクリックすると、メッセージが希望する言語に自動的に翻訳されます。
 
-![コンテンツの翻訳](content_translation.png)
+![コメントの下にある翻訳ボタン](content_translation.png)
 
 ディスカッション内の元のテキストは、翻訳されたテキストに置き換わります。**原文**を選択すると、元のテキストが再び表示されます。
 

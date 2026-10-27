@@ -1,13 +1,13 @@
 ---
 title: Dein Profil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 75668d43e4958447
-  edit-profile: 9aa2d2c89bd54de3
+  introduction: 161b14830a7ba831
+  edit-profile: b76cae3c48b9f0e9
   update-your-personal-info: 1c26ce118c2808f8
   viewing-another-person-s-profile: 2028023c2c5bb1dd
   uploading-a-profile-photo: de6367b80a02ecf8
@@ -32,25 +32,14 @@ title_generated: 8e13b89f47bacbcd
 <!-- translation-section: introduction -->
 
 # Dein Profil
-An deinem Loomio-Profil erkennen dich andere Personen.  
 
-Wenn Menschen einander in Loomio erkennen können, hilft das, Vertrauen und Authentizität aufzubauen und eine aufrichtige Beteiligung zu fördern. Deshalb empfehlen wir dir, dich nach Möglichkeit als du selbst zu zeigen und ein Foto oder einen Avatar hinzuzufügen.
+An deinem Profil erkennen dich andere Personen in Loomio. Füge ein Foto, eine kurze Vorstellung und weitere Angaben hinzu, die du teilen möchtest.
 
 <!-- translation-section: edit-profile -->
 
 ## Profil bearbeiten
 
-Auf deiner Profilseite kannst du anpassen, wie du dich in Loomio zeigst. Um deine Profilseite aufzurufen, wähle **Profil bearbeiten** im Benutzermenü. Du öffnest es, indem du oben in der Seitenleiste auf deinen Namen klickst.
-
-Wenn die Seitenleiste geschlossen ist, klicke auf das Menüsymbol (**☰**), um sie zu öffnen.
-
-![](sidebar_menu.png)
-
-Klicke auf den Pfeil nach unten rechts neben deinem Namen.
-
-![](sidebar_profile.png)
-
-Klicke auf **Profil bearbeiten**
+Öffne dein Benutzermenü, indem du deinen Namen in der Seitenleiste auswählst, und wähle dann **Profil bearbeiten**. Wenn die Seitenleiste geschlossen ist, öffne sie mit der Menüschaltfläche (**☰**).
 
 ![](edit_profile.png)
 

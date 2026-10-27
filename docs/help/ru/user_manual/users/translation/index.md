@@ -1,19 +1,19 @@
 ---
 title: Язык и перевод
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/translation/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 339f8c77362b2d12
-  application-translation: e1a57b4f96352649
-  content-translation: 427aa006b46961a8
+  introduction: 61c3576014d50390
+  application-translation: '02678dc26a30c3bc'
+  content-translation: a62f882355b42534
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: 39c3ab55eece19fb
-  application-translation: f681f8a70217fb1a
-  content-translation: 5f7a3e6555b9461d
+  introduction: c4ebd0d7f6e7bb1f
+  application-translation: b016ccbdb25d3a15
+  content-translation: 679339d4f646756a
   automatic-translation: 0617f586f1259ff3
 title_source: 9fd7f67efecb7288
 title_generated: 286a21901842f5c7
@@ -23,26 +23,22 @@ title_generated: 286a21901842f5c7
 
 # Языки и перевод
 
-Loomio поддерживает несколько языков с помощью двух функций:
-
-1. Перевод интерфейса — изменение языка кнопок и текста приложения.
-2. Перевод контента — перевод комментариев, обсуждений и предложений на предпочитаемый вами язык.
+Измените язык интерфейса Loomio или переводите обсуждения, комментарии и предложения на предпочитаемый вами язык.
 
 <!-- translation-section: application-translation -->
 
 ## Перевод интерфейса
 
-Loomio автоматически определяет предпочитаемый вами язык, когда вы открываете приложение в браузере. Изменить предпочитаемый язык можно на странице «Редактировать профиль».
+Loomio определяет предпочитаемый язык вашего браузера. Чтобы выбрать другой язык, откройте **Редактировать профиль** и выберите нужный язык.
 
 ![Изменение предпочитаемого языка](change_language.png)
 
 <!-- translation-section: content-translation -->
 
 ## Перевод контента
-
 Когда кто-то в вашей группе пишет сообщение на языке, отличном от предпочитаемого вами, под сообщением появляется кнопка «Перевести». Нажмите эту кнопку, чтобы автоматически перевести сообщение на предпочитаемый вами язык.
 
-![Перевод контента](content_translation.png)
+![Кнопка перевода под комментарием](content_translation.png)
 
 Переведённый текст заменяет исходный текст в обсуждении. Выберите **оригинал**, чтобы снова показать исходный текст.
 

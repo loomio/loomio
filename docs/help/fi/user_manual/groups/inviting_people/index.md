@@ -1,12 +1,12 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: f6b3b044a4ffd922
+  introduction: 9f041a9d35405958
   send-invitations-via-email: '080dff343020123b'
   invite-many-at-once: 42395868536237e3
   invite-people-to-subgroups: 940fb4ebbebfea36
@@ -35,11 +35,9 @@ title_generated: 0f5c8e72764c2a0a
 
 <!-- translation-section: introduction -->
 
-# Ihmisten kutsuminen
+# Kutsu ihmisiä Loomio-ryhmään
 
-Siirry ryhmäsi sivulle ja napsauta **Jäsenet**-välilehteä hallitaksesi jäseniä.
-
-Voit kutsua tiettyjä ihmisiä ryhmääsi heidän sähköpostiosoitteillaan käyttämällä **Kutsu**-painiketta tai jakaa linkin ryhmääsi sähköpostitse, uutiskirjeessä, chatissa tai verkkosivustollasi käyttämällä **Jaa**-painiketta.
+Kutsu ihmisiä Loomio-ryhmääsi sähköpostitse tai jaa ryhmän linkki uutiskirjeessä, chatissa tai verkkosivustolla. Aloita avaamalla ryhmäsi sivun **Jäsenet**-välilehti.
 
 ![](group_join_group_invite.png)
 

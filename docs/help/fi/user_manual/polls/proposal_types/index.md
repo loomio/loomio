@@ -1,12 +1,12 @@
 ---
 title: Kyselyt
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 5e7b997f7e2f78a3
+  introduction: c1f266150c62e7a7
   simple-poll: 3824b6e1873ca44d
   score-poll: c79a526a798d88c8
   dot-vote: bea83a9dbecdec18
@@ -30,6 +30,15 @@ title_generated: dbda99a26349e313
 # Kyselyt
 
 Kyselyillä kerätään valintoja, pisteytyksiä, pistejakoja, etusijajärjestyksiä, tietoja sopivista ajankohdista tai vaaliääniä. Valitse äänestystapa sen perusteella, mitä osallistujien tarvitsee ilmaista ja miten aiot käyttää tulosta. Käytä [ehdotusta](/en/user_manual/polls/proposals/), kun osallistujien pitää ottaa kantaa väittämään tai toimintatapaan.
+
+| Mitä haluat tehdä | Äänestystapa | Miten tulos muodostuu |
+| --- | --- | --- |
+| Etsi suosittuja vaihtoehtoja tai kokoa niistä suppea lista | [Valinta](/en/user_manual/polls/choose) (monivalinta) | Laskee kunkin vaihtoehdon valintakerrat |
+| Vertaa vaihtoehtojen kannatuksen vahvuutta | [Pisteytys](/en/user_manual/polls/score) | Yhdistää samalla asteikolla annetut arviot |
+| Aseta tärkeysjärjestys rajallisella pistemäärällä | [Pistejako](/en/user_manual/polls/allocate) (pisteäänestys) | Laskee kullekin vaihtoehdolle jaettujen pisteiden summan |
+| Järjestä vaihtoehdot mieltymysten mukaan | [Järjestys](/en/user_manual/polls/rank) (etusijajärjestys) | Yhdistää etusijajärjestykset pisteisiin perustuvaksi järjestykseksi |
+| Etsi kokousaika | [Aikakysely](/en/user_manual/polls/meeting_polls) | Näyttää kunkin ajankohdan sopivuuden osallistujille |
+| Valitse useita edustajia suhteellisella vaalitavalla | [STV-vaalit](/en/user_manual/polls/stv) | Laskee etusijajärjestykseen perustuvat äänet usean valitun määrittämiseksi |
 
 <!-- translation-section: simple-poll -->
 

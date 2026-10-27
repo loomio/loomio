@@ -1,12 +1,12 @@
 ---
 title: Leute einladen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 597adff623b5dfbe
+  introduction: bd6ed214f7c8cac9
   send-invitations-via-email: 8ef2c71dbacdf0dc
   invite-many-at-once: 6e5fab9d5b61658d
   invite-people-to-subgroups: 409d415fe7276d2b
@@ -35,11 +35,9 @@ title_generated: 3e0831d8f76bf916
 
 <!-- translation-section: introduction -->
 
-# Leute einladen
+# Leute in eine Loomio-Gruppe einladen
 
-Gehe auf deine Gruppenseite und klicke auf den Tab **Mitglieder**, um die Mitgliederverwaltung zu öffnen.
-
-Mit **Einladen** kannst du bestimmte Personen über ihre E-Mail-Adresse in deine Gruppe einladen. Mit **Teilen** kannst du einen Link zu deiner Gruppe per E-Mail, Newsletter, Chat oder über deine Website teilen.
+Lade Leute per E-Mail in deine Loomio-Gruppe ein oder teile einen Gruppenlink über einen Newsletter, Chat oder eine Website. Öffne dazu den Tab **Mitglieder** auf deiner Gruppenseite.
 
 ![](group_join_group_invite.png)
 

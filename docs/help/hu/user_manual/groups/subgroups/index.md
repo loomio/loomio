@@ -1,32 +1,32 @@
 ---
 title: Alcsoportok
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: ee3713d0233cae02
   add-a-subgroup: 403fc6fe9c56ff91
   subgroup-settings: 16d3adb394b9f23e
-  privacy: 0a0cd483f00f3789
+  privacy: 8b0b70ce03e1eded
   permissions: 76698e8be0416225
   find-subgroups: 4a9b8588abd2a44d
   invite-to-a-subgroup: 6b62a1bbab58947c
   simultaneously-invite-people-to-subgroups-and-parent-group: 9a32f87b98d4beff
-  administer-a-subgroup: b12db1ce0ba3b431
+  administer-a-subgroup: 91317d896a52eaf3
   delete-a-subgroup: b425952ca6a4401b
   how-people-join: c5387a490ee24b5f
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ Válaszd ki, hogy kik találhatják meg az alcsoportot és olvashatják a szála
 | **Látható a szülőcsoport számára** | A szülőcsoport és az alcsoport tagjai | Az alcsoport tagjai és a meghívott vendégek |
 | **Titkos** | Az alcsoport meghívott tagjai | Az alcsoport tagjai és a meghívott vendégek |
 
+Az **A szülőcsoport tagjai láthatják a privát szálakat** engedély a szülőcsoport tagjainak csatlakozás nélkül is hozzáférést adhat az alcsoport szálaihoz.
+
 Ha a szülőcsoport privát, az alcsoportnál a **Látható a szülőcsoport számára** és a **Titkos** beállítás érhető el.
 
 [A csoportok adatvédelméről itt olvashatsz](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ Ha a szülőcsoport **Tagok** lapján a **Hívj meg embereket** gombot használo
 
 Az alcsoportoknak lehetnek saját adminjaik, akik eltérhetnek a szülőcsoport adminjaitól.
 
-A szülőcsoport adminja azonban bármelyik alcsoportban adminná teheti magát. Ez lehetővé teszi, hogy a szülőcsoport adminjai szükség esetén kezeljék az alcsoportokat.
+A szülőcsoport adminja csatlakozhat egy nem titkos alcsoporthoz, és az alcsoport adminjává teheti magát. Ez a titkos alcsoportokra nem vonatkozik.
 
 Nyisd meg az Alcsoportok lapot, keresd meg az alcsoportot, és kattints a **Kapcsolódj a csoporthoz** gombra.
 

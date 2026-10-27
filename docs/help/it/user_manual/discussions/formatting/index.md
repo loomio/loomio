@@ -1,16 +1,16 @@
 ---
 title: Formattazione
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
   headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
@@ -27,11 +27,11 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: ce5a69c0f373a9d5
+  introduction: 43f28f2561e56dca
   attach-file: bc5ee4b085dceba4
   remove-attachments: 146e17361964fc2c
-  insert-image: 05c6c9484b867b41
-  insert-link: a5e1be8e47fc45d7
+  insert-image: 9d537c2a04195559
+  insert-link: 8c77abf8d3b21ab3
   insert-emoji: c65b903c9073e102
   headings: 51923734c52afb30
   bold-italicize-strikethrough: b82ade1784e98e71
@@ -53,15 +53,13 @@ title_generated: ddab7a78a28c6259
 
 <!-- translation-section: introduction -->
 
-# Formattazione
+# Formatta il testo e allega file
 
 Quando avvii o modifichi una discussione o un sondaggio, oppure scrivi un commento, vedrai una barra di formattazione sotto il campo di testo. Seleziona la freccia alla fine della barra per mostrare o nascondere tutti gli strumenti.
 
 Passa il puntatore del mouse su ogni elemento per vedere il nome dello strumento.
 
 ![](thread_format_bar.png)
-
-Usa la formattazione per strutturare il testo e mettere in evidenza le informazioni, così sarà più facile leggerle a colpo d'occhio.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ Mentre modifichi il contesto, fai clic sulla **X** a destra del nome del file pe
 
 ## Inserisci immagine
 
-Usa questo strumento per inserire e visualizzare un'immagine.
-
-![](format_insert_image.png)
-
-Seleziona un file immagine dal tuo computer. L'immagine viene inserita nell'editor al termine del caricamento.
+Seleziona **Inserire un'immagine** e scegli un file, oppure incolla un'immagine direttamente nell'editor. L'immagine viene visualizzata nella discussione, nel sondaggio o nel commento pubblicato.
 
 ![](format_insert_example.png)
-
-L'immagine viene visualizzata nella discussione, nel sondaggio o nel commento pubblicato.
-
->[!Tip]
->Puoi anche copiare e incollare un'immagine direttamente in Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ Per aggiungere un collegamento:
 
 Se il documento è ospitato altrove, controlla le autorizzazioni di condivisione affinché i partecipanti alla discussione possano aprirlo.
 
-Un'anteprima del documento apparirà sotto il campo di testo. Puoi rimuoverla se vuoi.
-
-Ora chiunque abbia accesso alla tua discussione su Loomio e l'autorizzazione a visualizzare il documento può aprirlo e leggerlo.
+Potrebbe apparire un'anteprima sotto il testo; puoi rimuoverla se preferisci.
 
 ![](format_link.png)
 

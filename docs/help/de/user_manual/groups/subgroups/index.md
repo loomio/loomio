@@ -1,32 +1,32 @@
 ---
 title: Untergruppen
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: ea06820dfdbb7bd3
   add-a-subgroup: '0583e95e8fd8424d'
   subgroup-settings: e79b4c0cb34a6e3c
-  privacy: 6aba37ab7abd1c62
+  privacy: e07364ee9d1deacb
   permissions: 1e71998a7fe07864
   find-subgroups: c4956da3eeabc8d5
   invite-to-a-subgroup: 79ef72a3ea7f6750
   simultaneously-invite-people-to-subgroups-and-parent-group: b4dbc6f6abf00a2d
-  administer-a-subgroup: 930d4e980b22508e
+  administer-a-subgroup: be64f6f6f9b0cee0
   delete-a-subgroup: 54f25462618ec475
   how-people-join: 588893ceb3cb73eb
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ Wähle, wer die Untergruppe finden und ihre Threads lesen kann:
 | **Für die übergeordnete Gruppe sichtbar** | Mitglieder der Hauptgruppe und der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
 | **Geheim** | Eingeladene Mitglieder der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
 
+Die Berechtigung **Mitglieder der Hauptgruppe können private Threads sehen** kann Mitgliedern der Hauptgruppe auch Zugriff auf Threads der Untergruppe geben, ohne dass sie der Untergruppe beitreten.
+
 Wenn die Hauptgruppe privat ist, stehen für Untergruppen die Einstellungen **Für die übergeordnete Gruppe sichtbar** und **Geheim** zur Verfügung.
 
 [Lies hier mehr über die Privatsphäre von Gruppen](/en/user_manual/groups/settings/privacy).
@@ -132,13 +134,13 @@ Wenn du im Tab **Mitglieder** deiner Hauptgruppe auf **Leute einladen** klickst,
 
 Untergruppen können eigene Admins haben. Die Admins einer Untergruppe können andere Personen sein als die Admins der Hauptgruppe.
 
-Ein Admin der Hauptgruppe kann sich jedoch selbst zum Admin jeder Untergruppe machen. So können Admins der Hauptgruppe Untergruppen bei Bedarf verwalten.
+Ein Admin der Hauptgruppe kann einer nicht geheimen Untergruppe beitreten und sich selbst zum Admin dieser Untergruppe machen. Das gilt nicht für geheime Untergruppen.
 
 Öffne den Tab „Untergruppen“, suche die Untergruppe und klicke auf **Der Gruppe beitreten**.
 
 ![Schaltfläche „Der Gruppe beitreten“ bei einer geschlossenen Untergruppe](member_join_subgroup.png)
 
-Sobald ein Admin der Hauptgruppe Mitglied der Untergruppe ist, kann er sich selbst zum Admin der Untergruppe machen.
+Sobald ein Admin der Hauptgruppe Mitglied der Untergruppe ist, kann sich diese Person selbst zum Admin der Untergruppe machen.
 
 ![Aktion zum Ernennen eines Admins der Hauptgruppe zum Admin der Untergruppe](member_make_admin.png)
 

@@ -49,6 +49,8 @@ Choose who can find the subgroup and read its threads:
 | **Visible to parent group** | Parent group members and subgroup members | Subgroup members and invited guests |
 | **Secret** | Invited subgroup members | Subgroup members and invited guests |
 
+The **Parent group members can see private threads** permission can also give parent group members access to subgroup threads without joining.
+
 When the parent group is private, subgroups can be **Visible to parent group** or **Secret**.
 
 [Read about group privacy here](/en/user_manual/groups/settings/privacy).
@@ -97,7 +99,7 @@ If you use the **Invite people** button from your parent group's **Members** tab
 
 Subgroups can have their own admins, and admins of a subgroup may not be the same as the admins of the parent group.
 
-However an admin of the 'parent' group can make themselves admin of any subgroup.  This helps administrators of the parent group to administer subgroups as necessary.
+A parent group admin can join a non-secret subgroup and make themselves an admin of that subgroup. This does not apply to secret subgroups.
 
 Go to the Subgroup tab, find the subgroup and click **Join group**.
 

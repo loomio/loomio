@@ -1,23 +1,23 @@
 ---
 title: Groupes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: 127d2425a2da0c66
-  administration-facilitation-and-moderation-code-of-conduct: 2383dd480fe05200
+  introduction: caf1805894611455
+  administration-facilitation-and-moderation-code-of-conduct: 64f88cb7d4762986
 title_source: 39bbb719fa2b9d22
 title_generated: 0144dbff81bec13a
 ---
 
 <!-- translation-section: introduction -->
 
-# Présentation des groupes
+# Groupes
 
 Un groupe Loomio est un espace sûr où les personnes peuvent se retrouver, avoir des discussions et prendre des décisions.
 
@@ -27,13 +27,9 @@ Voici à quoi ressemble un groupe Loomio. En haut de la page, vous verrez une im
 
 ![La page du groupe Oatmilk Cooperative, avec sa description et sa liste de discussions](group_page.png)
 
-Choisissez un nom représentatif pour votre groupe et utilisez sa description pour préciser ;
-- **à quoi** sert ce groupe,
-- **pourquoi** c’est important,
-- **qui** y participe, et
-- **comment** les membres peuvent participer.
+Donnez à votre groupe un nom reconnaissable et utilisez sa description pour expliquer son objectif, qui y participe et comment les membres peuvent participer. Vous pouvez également ajouter un logo, une image de couverture et des liens vers des documents tels que votre mandat.
 
-Vous pouvez également inclure un code de conduite, un mandat ou d’autres documents qui définissent le fonctionnement du groupe.
+Pour commencer, [créez un groupe](/en/user_manual/groups/starting_a_group), choisissez ses [paramètres de confidentialité](/en/user_manual/groups/settings/privacy) et [invitez des personnes](/en/user_manual/groups/inviting_people).
 
 Si vous préparez un nouveau groupe, consultez [Présenter Loomio à votre groupe](/en/user_manual/overview/introducing_loomio) pour suivre une démarche pratique, du choix du premier travail à réaliser jusqu’à la consignation d’une conclusion.
 
@@ -41,10 +37,4 @@ Si vous préparez un nouveau groupe, consultez [Présenter Loomio à votre group
 
 ## Administration, animation et modération - Code de conduite
 
-Loomio est conçu pour favoriser la participation inclusive, la diversité et la confiance, afin d’aider les groupes à prendre de meilleures décisions ensemble.
-
-Certains sujets créent des tensions dans un groupe. Il est donc important de permettre une discussion approfondie, tout en veillant à ce que le groupe reste un espace sûr, particulièrement pour les personnes vulnérables qui en font partie.
-
-Nous vous recommandons d’établir un code de conduite pour votre groupe, afin d’aider chaque personne à prendre conscience de sa responsabilité d’adopter un comportement approprié et d’encourager l’autorégulation.
-
-Consultez le [Guide d’animation](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) pour approfondir l’intérêt d’un code de conduite.
+Un code de conduite peut aider les membres à comprendre comment participer et comment le groupe réagira aux comportements inappropriés. Consultez le [Guide d’animation](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) pour savoir comment définir les attentes.

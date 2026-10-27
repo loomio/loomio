@@ -1,13 +1,13 @@
 ---
 title: A profilod
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: a91587d436dd384c
-  edit-profile: 821e24151d3c558d
+  introduction: 47f4e3a3a1dad64b
+  edit-profile: a02d1a8842a23142
   update-your-personal-info: afcf4c68514140f2
   viewing-another-person-s-profile: 7851b89ed2cf359c
   uploading-a-profile-photo: 75621b2526e9e93a
@@ -32,25 +32,14 @@ title_generated: b0abe97f76d97f5e
 <!-- translation-section: introduction -->
 
 # A profilod
-A Loomio felhasználói profilod alapján ismernek fel mások.  
 
-Ha a Loomióban felismerjük egymást, az segít kialakítani a bizalmat és a hitelességet, és ösztönzi az őszinte részvételt. Ezért arra biztatunk, hogy lehetőség szerint vállald önmagad, és adj hozzá egy fényképet vagy avatárt.
+A profilod segít másoknak felismerni téged a Loomióban. Adj hozzá egy fényképet, bemutatkozást és más adatokat, amelyeket meg szeretnél osztani.
 
 <!-- translation-section: edit-profile -->
 
 ## Profil szerkesztése
 
-A profiloldaladon személyre szabhatod, hogyan jelensz meg a Loomióban. A profiloldalad megnyitásához válaszd ki a **Profil szerkesztése** lehetőséget a felhasználói menüben. A menüt az oldalsáv tetején a nevedre kattintva találod meg.
-
-Ha az oldalsáv nincs nyitva, kattints a menüikonra (**☰**) a megnyitásához.
-
-![](sidebar_menu.png)
-
-Kattints a nevedtől jobbra található lefelé mutató nyílra.
-
-![](sidebar_profile.png)
-
-Kattints a **Profil szerkesztése** lehetőségre
+Az oldalsávban a nevedet kiválasztva nyisd meg a felhasználói menüt, majd válaszd ki a **Profil szerkesztése** lehetőséget. Ha az oldalsáv nincs nyitva, nyisd meg a menügombbal (**☰**).
 
 ![](edit_profile.png)
 

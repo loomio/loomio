@@ -1,16 +1,16 @@
 ---
 title: Formatierung
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
   headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
@@ -27,11 +27,11 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 04ad4bba2072ba2c
+  introduction: e3698ee1eb845284
   attach-file: b9e84838dab10ce4
   remove-attachments: 9388ba5d44a69901
-  insert-image: 219d6be2e74215b3
-  insert-link: 5ce099970be545cb
+  insert-image: 63f14dc45cefa4fd
+  insert-link: 3f6b493e0a146f5c
   insert-emoji: 3c2015f947f5d006
   headings: 5fd2dcb9d4d46c67
   bold-italicize-strikethrough: 5deb72047cdedcff
@@ -53,15 +53,13 @@ title_generated: f4a6018874ae1f36
 
 <!-- translation-section: introduction -->
 
-# Formatierung
+# Text formatieren und Dateien anhängen
 
 Wenn du eine Diskussion oder Abstimmung startest oder bearbeitest oder einen Kommentar schreibst, siehst du unter dem Textfeld eine Formatierungsleiste. Wähle den Pfeil am Ende der Leiste, um alle Werkzeuge ein- oder auszublenden.
 
 Bewege den Mauszeiger über die einzelnen Symbole, um den Namen des jeweiligen Werkzeugs zu sehen.
 
 ![](thread_format_bar.png)
-
-Nutze Formatierung, um Inhalte zu strukturieren und hervorzuheben, damit Informationen leichter zu überblicken sind.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ Klicke beim Bearbeiten des Kontexts auf das **X** rechts neben dem Dateinamen, u
 
 ## Bild einfügen
 
-Nutze dieses Werkzeug, um ein Bild einzufügen und anzuzeigen.
-
-![](format_insert_image.png)
-
-Wähle eine Bilddatei von deinem Computer aus. Nach dem Hochladen wird das Bild in den Editor eingefügt.
+Wähle **Bild einfügen** und eine Datei aus oder füge ein Bild direkt in den Editor ein. Das Bild wird in der veröffentlichten Diskussion, Abstimmung oder im veröffentlichten Kommentar angezeigt.
 
 ![](format_insert_example.png)
-
-Das Bild wird in der veröffentlichten Diskussion, Abstimmung oder im veröffentlichten Kommentar angezeigt.
-
->[!Tip]
->Du kannst ein Bild auch direkt kopieren und in Loomio einfügen.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ So fügst du einen Link hinzu:
 
 Prüfe bei einem Dokument, das an anderer Stelle gespeichert ist, die Freigabeberechtigungen, damit die Teilnehmenden der Diskussion es öffnen können.
 
-Unter dem Textfeld erscheint eine Vorschau des Dokuments. Du kannst sie entfernen, wenn du möchtest.
-
-Nun können alle, die Zugriff auf deine Loomio-Diskussion und die Berechtigung zum Anzeigen des Dokuments haben, es öffnen und lesen.
+Unter dem Text kann eine Vorschau erscheinen. Du kannst sie entfernen, wenn du möchtest.
 
 ![](format_link.png)
 

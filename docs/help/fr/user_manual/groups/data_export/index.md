@@ -1,17 +1,17 @@
 ---
 title: Exportation des données
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 6061911e71d1350e
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: b58368aa8a3c8d7f
   export-group-data-as-html: cef1c9713a716ad6
   export-group-data-as-json: d5468a0a0f2632ba
-  print-thread-to-pdf: b33a8f4cad276066
+  print-thread-to-pdf: 6b5eaa876ff3f305
   import-your-group-data-on-another-loomio-server: fd60f1bf9307db2a
 title_source: 29049648f87b87f5
 title_generated: 0221a14f9fad8a33
@@ -95,11 +95,7 @@ Vous recevrez sous peu un e-mail contenant un lien pour télécharger le fichier
 
 ## Imprimer un fil au format PDF
 
-Vous pouvez avoir besoin d’extraire une copie d’un fil pour la conserver dans une archive de fichiers distincte.
-
-La fonction **Imprimer** conserve tous les commentaires, sondages, votes et conclusions, ainsi que la mise en forme du fil.
-
-Dans le fil, cliquez sur le menu à trois points (⋯) et choisissez **Imprimer**. Loomio génère une page HTML que vous pouvez ensuite imprimer ou « enregistrer au format PDF » à l’aide de l’outil d’impression de votre navigateur.
+Pour conserver une copie d’un fil dans vos archives, ouvrez son menu et choisissez **Imprimer**. Loomio génère une page HTML contenant les commentaires, les sondages, les votes, les conclusions et la mise en forme du fil. Utilisez l’outil d’impression de votre navigateur pour l’imprimer ou l’enregistrer au format PDF.
 
 Vous pouvez copier la page pour la coller dans un éditeur de documents, un fichier ou un dépôt de données.
 

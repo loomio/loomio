@@ -1,32 +1,32 @@
 ---
 title: Sottogruppi
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 051652a00db9998f
   add-a-subgroup: 95936e1a60dbdd9f
   subgroup-settings: 2102921a561843bd
-  privacy: 4cd1c2801602cdf2
+  privacy: 6b72cd4573dc4091
   permissions: 60fbbcca015e8f58
   find-subgroups: 77105b0d7b3a1773
   invite-to-a-subgroup: d13d4627eb013177
   simultaneously-invite-people-to-subgroups-and-parent-group: 0fa563a5977885f6
-  administer-a-subgroup: e6948da1a2307da2
+  administer-a-subgroup: 9b97d6d5efa1cdec
   delete-a-subgroup: 2a801f5ff85e1241
   how-people-join: 679cfedb61456d41
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ Scegli chi può trovare il sottogruppo e leggere le sue conversazioni:
 | **Visibile al gruppo principale** | Membri del gruppo principale e membri del sottogruppo | Membri del sottogruppo e ospiti invitati |
 | **Segreto** | Membri invitati al sottogruppo | Membri del sottogruppo e ospiti invitati |
 
+Il permesso **I membri del gruppo principale possono vedere le conversazioni private** può anche consentire ai membri del gruppo principale di accedere alle conversazioni del sottogruppo senza iscriversi.
+
 Quando il gruppo principale è privato, i sottogruppi possono essere **Visibili al gruppo principale** o **Segreti**.
 
 [Leggi qui come funziona la privacy dei gruppi](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ Se usi il pulsante **Invita persone** nella scheda **Membri** del tuo gruppo pri
 
 I sottogruppi possono avere i propri amministratori, che possono essere diversi dagli amministratori del gruppo principale.
 
-Tuttavia, un amministratore del gruppo principale può assegnarsi il ruolo di amministratore di qualsiasi sottogruppo. Questo consente agli amministratori del gruppo principale di amministrare i sottogruppi quando necessario.
+Un amministratore del gruppo principale può iscriversi a un sottogruppo non segreto e assegnarsi il ruolo di amministratore di quel sottogruppo. Questo non vale per i sottogruppi segreti.
 
 Vai alla scheda Sottogruppi, trova il sottogruppo e fai clic su **Iscriviti al gruppo**.
 

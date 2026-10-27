@@ -1,17 +1,17 @@
 ---
 title: Datenexport
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 933dab9d3f96317c
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: c063220f6c01635d
   export-group-data-as-html: 2019ed78af84f3d2
   export-group-data-as-json: 1e3c491408327ea4
-  print-thread-to-pdf: 377dc595af2ca88b
+  print-thread-to-pdf: 78795d843ab95647
   import-your-group-data-on-another-loomio-server: 5f0f3a5148b8494e
 title_source: 29049648f87b87f5
 title_generated: 9b85380b6981cdc8
@@ -95,11 +95,7 @@ Du erhältst in Kürze eine E-Mail mit einem Link zum Herunterladen der JSON-Dat
 
 ## Thread als PDF drucken
 
-Vielleicht möchtest du eine Kopie eines Threads in einem separaten Dateiarchiv speichern.
-
-Beim **Drucken** eines Threads bleiben alle Kommentare, Abstimmungen, Stimmen und Fazits sowie die Formatierung des Threads erhalten.
-
-Klicke im Thread auf das Drei-Punkte-Menü (⋯) und wähle **Drucken**. Loomio erstellt eine HTML-Seite, die du anschließend mit der Druckfunktion deines Browsers drucken oder „als PDF speichern“ kannst.
+Um einen Thread für deine Unterlagen zu speichern, öffne sein Menü und wähle **Drucken**. Loomio erstellt eine HTML-Seite mit den Kommentaren, Abstimmungen, Stimmen, Fazits und der Formatierung des Threads. Verwende die Druckfunktion deines Browsers, um die Seite zu drucken oder als PDF zu speichern.
 
 Du kannst die Seite kopieren und in einen Dokumenteditor, eine Datei oder ein Datenarchiv einfügen.
 

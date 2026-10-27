@@ -1,19 +1,19 @@
 ---
 title: Мова і пераклад
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/translation/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 339f8c77362b2d12
-  application-translation: e1a57b4f96352649
-  content-translation: 427aa006b46961a8
+  introduction: 61c3576014d50390
+  application-translation: '02678dc26a30c3bc'
+  content-translation: a62f882355b42534
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: af7a46b2d1740911
-  application-translation: 2ea0c17869f92abe
-  content-translation: 3cafe3ded7c50b73
+  introduction: 4e9182bca81cc4ca
+  application-translation: 467042ab9f02cfba
+  content-translation: f501cf6bce0a8852
   automatic-translation: 44ebc35cfb51de29
 title_source: 9fd7f67efecb7288
 title_generated: b79dc7d00783316f
@@ -23,16 +23,13 @@ title_generated: b79dc7d00783316f
 
 # Мовы і пераклад
 
-Loomio падтрымлівае некалькі моў дзякуючы дзвюм функцыям:
-
-1. Пераклад праграмы — змяняйце мову інтэрфейсу, гэта значыць кнопак і тэксту праграмы.
-2. Пераклад кантэнту — перакладайце каментарыі, абмеркаванні і прапановы на мову, якой вы аддаяце перавагу.
+Змяняйце мову інтэрфейсу Loomio або перакладайце абмеркаванні, каментарыі і прапановы на мову, якой вы аддаяце перавагу.
 
 <!-- translation-section: application-translation -->
 
 ## Пераклад праграмы
 
-Loomio аўтаматычна вызначае мову, якой вы аддаяце перавагу, калі вы адкрываеце праграму ў браўзеры. Каб змяніць гэтую мову, перайдзіце на старонку «Рэдагаваць профіль».
+Loomio вызначае мову, якой вы аддаяце перавагу, паводле налад вашага браўзера. Каб выбраць іншую мову, адкрыйце **Рэдагаваць профіль** і выберыце яе там.
 
 ![Змена мовы, якой вы аддаяце перавагу](change_language.png)
 
@@ -41,7 +38,7 @@ Loomio аўтаматычна вызначае мову, якой вы адда�
 ## Пераклад кантэнту
 Калі ў вашай групе з'яўляецца паведамленне на мове, якая адрозніваецца ад мовы, якой вы аддаяце перавагу, пад паведамленнем з'яўляецца кнопка «перакласці». Націсніце яе, каб аўтаматычна перакласці паведамленне на мову, якой вы аддаяце перавагу.
 
-![Пераклад кантэнту](content_translation.png)
+![Кнопка перакладу пад каментарыем](content_translation.png)
 
 Перакладзены тэкст замяняе зыходны тэкст у абмеркаванні. Выберыце **арыгінал**, каб зноў паказаць зыходны тэкст.
 

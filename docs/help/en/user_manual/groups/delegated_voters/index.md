@@ -8,6 +8,8 @@ Use delegates when people should share the same discussion space but only a defi
 
 Use a private subgroup instead when its members also need discussions, files, or membership information that other members must not see.
 
+On the group page, open **Members**, find the person, and select **Make delegate** from the three-dot menu beside their name. Use **Revoke delegate** in the same menu to remove the designation.
+
 ![Make delegate action in a member's menu](member_make_delegate.png)
 
 To create a poll or proposal and only invite the delegates, use the "Selected people only" poll setting.

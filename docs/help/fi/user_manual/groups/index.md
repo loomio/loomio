@@ -1,23 +1,23 @@
 ---
 title: Ryhmät
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: faa22b0fa3bbac81
-  administration-facilitation-and-moderation-code-of-conduct: dfa10a1a5082ec40
+  introduction: f64e7fd5c213c98b
+  administration-facilitation-and-moderation-code-of-conduct: 3da84cfe7e7dce4c
 title_source: 39bbb719fa2b9d22
 title_generated: 7c07beca688f5e39
 ---
 
 <!-- translation-section: introduction -->
 
-# Johdanto ryhmiin
+# Ryhmät
 
 Loomio-ryhmä on turvallinen paikka, jossa ihmiset voivat tavata, käydä keskusteluja ja tehdä päätöksiä.
 
@@ -27,13 +27,9 @@ Loomio-ryhmä näyttää tältä. Sivun yläosassa näet kuvan ja logon, jotka v
 
 ![Oatmilk Cooperative -ryhmän sivu, jolla näkyvät ryhmän kuvaus ja keskusteluluettelo](group_page.png)
 
-Valitse ryhmällesi sitä kuvaava nimi ja kerro ryhmän kuvauksessa:
-- **mihin** tätä ryhmää käytetään,
-- **miksi** se on tärkeää,
-- **ketkä** ovat mukana ja
-- **miten** jäsenet voivat osallistua.
+Anna ryhmällesi tunnistettava nimi ja kerro sen kuvauksessa ryhmän tarkoituksesta, ketkä ovat mukana ja miten jäsenet voivat osallistua. Voit myös lisätä logon, kansikuvan ja linkkejä asiakirjoihin, kuten ryhmän toimintaohjeisiin.
 
-Voit myös lisätä esimerkiksi ryhmän käyttäytymissäännöt, toimintaohjeet tai muita ryhmän toimintaa ohjaavia asiakirjoja.
+Aloita [luomalla ryhmä](/en/user_manual/groups/starting_a_group), valitse sen [yksityisyysasetukset](/en/user_manual/groups/settings/privacy) ja [kutsu ihmisiä mukaan](/en/user_manual/groups/inviting_people).
 
 Jos valmistelet uutta ryhmää, katso [Loomion käyttöönotto ryhmässäsi](/en/user_manual/overview/introducing_loomio). Siinä kuvataan käytännön vaiheet ensimmäisen tehtävän valinnasta johtopäätöksen kirjaamiseen.
 
@@ -41,10 +37,4 @@ Jos valmistelet uutta ryhmää, katso [Loomion käyttöönotto ryhmässäsi](/en
 
 ## Hallinnointi, fasilitointi ja moderointi - käyttäytymissäännöt
 
-Loomio on suunniteltu tukemaan kaikkien osallistumista, moninaisuutta ja luottamusta sekä auttamaan ryhmiä tekemään parempia päätöksiä yhdessä.
-
-Jotkin aiheet aiheuttavat ryhmässä jännitteitä. Siksi on tärkeää antaa tilaa perusteelliselle keskustelulle ja samalla varmistaa, että ryhmä pysyy turvallisena paikkana erityisesti haavoittuvassa asemassa oleville ihmisille.
-
-Suosittelemme laatimaan ryhmällesi käyttäytymissäännöt. Ne auttavat kaikkia ymmärtämään vastuunsa asiallisesta käyttäytymisestä ja kannustavat arvioimaan omaa toimintaansa.
-
-Lue lisää käyttäytymissääntöjen merkityksestä [fasilitaattorin oppaasta](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+Käyttäytymissäännöt voivat auttaa jäseniä ymmärtämään, miten he voivat osallistua ja miten ryhmä puuttuu epäasialliseen käyttäytymiseen. Katso [fasilitaattorin oppaasta](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) ohjeita yhteisten odotusten määrittelyyn.

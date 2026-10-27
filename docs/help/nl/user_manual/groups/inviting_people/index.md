@@ -1,12 +1,12 @@
 ---
 title: Mensen uitnodigen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -18,7 +18,7 @@ sections:
   cancelling-invitations: f3df8386eeda62f5
   invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: eaa85091715b10f2
+  introduction: 0ce7a85282062326
   send-invitations-via-email: 39a05a1b8e15b3f4
   invite-many-at-once: 40df2b5f0190b40d
   invite-people-to-subgroups: 0edbf681b80664a0
@@ -35,11 +35,9 @@ title_generated: 5cf9fd03683405f5
 
 <!-- translation-section: introduction -->
 
-# Mensen uitnodigen
+# Mensen uitnodigen voor een Loomio-groep
 
-Ga naar je groepspagina en klik op het tabblad **Leden** om leden te beheren.
-
-Je kunt specifieke mensen met hun e-mailadres uitnodigen voor je groep via **Uitnodigen**, of een link naar je groep delen via **Delen**, bijvoorbeeld per e-mail, in een nieuwsbrief, via chat of op je website.
+Nodig mensen per e-mail uit voor je Loomio-groep, of deel een link naar je groep via een nieuwsbrief, chat of website. Open het tabblad **Leden** op je groepspagina om te beginnen.
 
 ![](group_join_group_invite.png)
 

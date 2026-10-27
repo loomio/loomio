@@ -1,19 +1,19 @@
 ---
 title: Taal en vertaling
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/translation/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 339f8c77362b2d12
-  application-translation: e1a57b4f96352649
-  content-translation: 427aa006b46961a8
+  introduction: 61c3576014d50390
+  application-translation: '02678dc26a30c3bc'
+  content-translation: a62f882355b42534
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: 5fbf18c4296504d4
-  application-translation: 2f65f7ee864efb47
-  content-translation: 3d4f8e12c3baecd1
+  introduction: 18c2a6efac37df80
+  application-translation: c458834600c18d35
+  content-translation: 9252938eefe6cf30
   automatic-translation: a68231661f337b4b
 title_source: 9fd7f67efecb7288
 title_generated: c2bd38e270ecbf8d
@@ -23,16 +23,13 @@ title_generated: c2bd38e270ecbf8d
 
 # Talen en vertaling
 
-Loomio ondersteunt meerdere talen met deze twee functies:
-
-1. Vertaling van de app - Wijzig de taal van de gebruikersinterface, zoals de knoppen en de tekst in de app.
-2. Vertaling van inhoud - Vertaal reacties, discussies en voorstellen naar jouw voorkeurstaal.
+Wijzig de taal van de interface van Loomio of vertaal discussies, reacties en voorstellen naar jouw voorkeurstaal.
 
 <!-- translation-section: application-translation -->
 
 ## Vertaling van de app
 
-Loomio detecteert automatisch jouw voorkeurstaal wanneer je de app in je browser bezoekt. Als je jouw voorkeurstaal wilt wijzigen, kun je dat doen op de pagina "Profiel bewerken".
+Loomio detecteert de voorkeurstaal van je browser. Open **Profiel bewerken** en kies daar een andere taal om deze te wijzigen.
 
 ![Je voorkeurstaal wijzigen](change_language.png)
 
@@ -41,7 +38,7 @@ Loomio detecteert automatisch jouw voorkeurstaal wanneer je de app in je browser
 ## Vertaling van inhoud
 Wanneer iemand in jouw groep een bericht schrijft in een andere taal dan jouw voorkeurstaal, verschijnt onder het bericht een knop "vertalen". Klik op deze knop om het bericht automatisch naar jouw voorkeurstaal te vertalen.
 
-![Vertaling van inhoud](content_translation.png)
+![De optie om te vertalen onder een reactie](content_translation.png)
 
 De vertaalde tekst vervangt de oorspronkelijke tekst in de discussie. Selecteer **origineel** om de oorspronkelijke tekst opnieuw te tonen.
 

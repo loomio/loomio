@@ -1,13 +1,13 @@
 ---
 title: Seu perfil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 798b422b42c5f6a4
-  edit-profile: 685c7bcce3870d6f
+  introduction: 44ed81f8c238adbd
+  edit-profile: d8298b41bd7bbff6
   update-your-personal-info: 6cbd0509b246de92
   viewing-another-person-s-profile: fdb0fa198a078d7c
   uploading-a-profile-photo: f0abf2d442bfac7b
@@ -32,25 +32,14 @@ title_generated: 9f249d9aa487d528
 <!-- translation-section: introduction -->
 
 # Seu perfil
-Seu perfil de usuário no Loomio é como as pessoas reconhecem você.  
 
-Reconhecer as pessoas no Loomio ajuda a construir confiança e autenticidade, incentivando uma participação mais genuína. Por isso, sempre que possível, incentivamos você a se apresentar como é e a adicionar uma foto ou um avatar.
+Seu perfil ajuda as pessoas a reconhecer você no Loomio. Adicione uma foto, uma apresentação e outros detalhes que você queira compartilhar.
 
 <!-- translation-section: edit-profile -->
 
 ## Editar perfil
 
-Sua página de perfil permite personalizar sua identidade no Loomio. Para acessar sua página de perfil, selecione a opção **Editar perfil** no menu de usuário, que você encontra ao clicar no seu nome na parte superior da barra lateral.
-
-Se a barra lateral estiver fechada, clique no ícone de menu (**☰**) para abri-la.
-
-![](sidebar_menu.png)
-
-Clique na seta para baixo à direita do seu nome.
-
-![](sidebar_profile.png)
-
-Clique em **Editar perfil**
+Abra seu menu de usuário selecionando seu nome na barra lateral e selecione **Editar perfil**. Se a barra lateral estiver fechada, abra-a usando o botão de menu (**☰**).
 
 ![](edit_profile.png)
 
