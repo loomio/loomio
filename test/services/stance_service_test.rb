@@ -349,6 +349,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     StanceService.unredact(stance: stance, actor: @admin)
     assert_nil stance.reload.redacted_at
     assert_nil stance.redactor_id
+    ReindexSearchDocumentWorker.perform_now('Stance', stance.id)
     assert PgSearch::Document.exists?(searchable_type: 'Stance', searchable_id: stance.id)
   end
 

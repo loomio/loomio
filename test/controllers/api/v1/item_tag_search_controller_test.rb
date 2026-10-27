@@ -10,6 +10,7 @@ class Api::V1::ItemTagSearchControllerTest < ActionController::TestCase
     @item = @comment.created_topic_item
     TopicItemService.update_tags(topic_item: @item, tags: ['Budget'], actor: @author)
     @topic.topicable.update_pg_search_document
+    perform_enqueued_jobs(only: [ReindexSearchDocumentWorker, ReindexPollWorker])
     sign_in @author
   end
 
@@ -25,6 +26,7 @@ class Api::V1::ItemTagSearchControllerTest < ActionController::TestCase
 
   test 'text plus tag matches the content of tagged items rather than untagged siblings' do
     sibling = CommentService.create(comment: Comment.new(parent: @topic.topicable, body: 'Unrelated cheese'), actor: @author)
+    perform_enqueued_jobs(only: [ReindexSearchDocumentWorker, ReindexPollWorker])
     get :index, params: {tag: 'Budget', query: 'Insurance'}
     assert_includes JSON.parse(response.body).fetch('search_results').map { |row| row['searchable_id'] }, @comment.id
     get :index, params: {tag: 'Budget', query: 'cheese'}
@@ -47,6 +49,7 @@ class Api::V1::ItemTagSearchControllerTest < ActionController::TestCase
     author = users(:guest_normal)
     comment = CommentService.create(comment: Comment.new(parent: topics(:direct_topic).topicable, body: 'Direct insurance'), actor: author)
     TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Private budget'], actor: author)
+    perform_enqueued_jobs(only: [ReindexSearchDocumentWorker, ReindexPollWorker])
     sign_in author
     get :index, params: {tag: 'Private budget', org_id: '0'}
     assert_equal [comment.id], JSON.parse(response.body).fetch('search_results').map { |row| row['searchable_id'] }
@@ -71,6 +74,7 @@ class Api::V1::ItemTagSearchControllerTest < ActionController::TestCase
       poll_option_names: ['Agree'], closing_at: 2.days.from_now}, actor: @author)
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Standalone insurance'), actor: @author)
     TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Standalone'], actor: @author)
+    perform_enqueued_jobs(only: [ReindexSearchDocumentWorker, ReindexPollWorker])
     get :index, params: {tag: 'Standalone'}
     row = JSON.parse(response.body).fetch('search_results').sole
     assert_equal poll.key, row.fetch('poll_key')

@@ -20,7 +20,6 @@ class CommentService
         itemable: comment,
         pinned: comment.should_pin
       )
-      comment.update_pg_search_document
       MentionNotificationService.create!(
         subject: topic_item,
         actor: actor
@@ -40,7 +39,6 @@ class CommentService
       comment.created_topic_item.update(pinned: false)
       comment.topic.update_sequence_info!
     end
-    ReindexCommentWorker.perform_later(comment.id)
     on_topic_item&.call(comment.created_topic_item)
     comment
   end
@@ -52,7 +50,6 @@ class CommentService
       comment.update(discarded_at: nil, discarded_by: nil)
       comment.created_topic_item.update(user_id: comment.user_id)
     end
-    ReindexCommentWorker.perform_later(comment.id)
     on_topic_item&.call(comment.created_topic_item)
     comment
   end

@@ -1,6 +1,23 @@
 require "test_helper"
 
 class QueueConfigurationTest < ActiveSupport::TestCase
+  test "the general worker claims search indexing before ordinary jobs and mail delivery" do
+    config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
+    workers = config.fetch("production").fetch("workers")
+    indexing_jobs = [ ReindexSearchDocumentWorker, ReindexCommentWorker, ReindexPollWorker,
+                     ReindexDiscussionWorker, ReindexAuthorWorker ]
+    indexing_jobs.each { |job_class| assert_equal "search_index", job_class.new.queue_name }
+
+    ordinary = ready_execution("default")
+    mail = ready_execution("mailers")
+    search = ready_execution("search_index")
+    relation = SolidQueue::ReadyExecution.where(id: [ ordinary.id, mail.id, search.id ])
+    queues = workers.first.fetch("queues")
+    selected = SolidQueue::QueueSelector.new(queues, relation).scoped_relations.filter_map(&:first)
+
+    assert_equal [ "search_index", "default", "mailers" ], selected.map(&:queue_name)
+  end
+
   test "every production recurring task has a worker that can claim its jobs" do
     config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
     workers = config.fetch("production").fetch("workers")

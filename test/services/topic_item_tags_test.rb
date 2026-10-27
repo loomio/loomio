@@ -14,6 +14,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
   test 'explicit assignments aggregate without being inherited by siblings or the opening discussion' do
     tag(@root, ['Governance'])
     tag(@item, [' Budget ', 'Budget'])
+    perform_enqueued_jobs(only: [ReindexSearchDocumentWorker, ReindexPollWorker])
 
     assert_equal ['Budget', 'Governance'], @topic.reload.tags
     assert_equal ['Governance'], @root.reload.tags
@@ -176,6 +177,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
   end
 
   test 'tag changes and their aggregate roll back together' do
+    ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
     TopicItem.transaction(requires_new: true) do
       tag(@item, ['Rollback label'])
       assert_equal ['Rollback label'], @topic.reload.tags
@@ -327,6 +329,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
     comment = CommentService.create(comment: Comment.new(parent: outcome, body: 'Outcome reply'), actor: @author)
     tag(comment.created_topic_item, ['Outcome discussion'])
+    ReindexSearchDocumentWorker.perform_now('Comment', comment.id)
     assert PgSearch::Document.exists?(searchable: comment)
     poll.update!(hide_results: 'until_vote')
     PollService.reopen(poll: poll, params: {closing_at: 2.days.from_now}, actor: @admin)
@@ -337,7 +340,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Outcome discussion'], comment.created_topic_item.tags
     poll.discard!
     assert_empty @topic.reload.tags
-    assert_not PgSearch::Document.exists?(searchable: comment)
+    assert PgSearch::Document.exists?(searchable: comment)
     ReindexPollWorker.perform_now(poll.id)
     assert_not PgSearch::Document.exists?(searchable: comment)
     SearchService.reindex_by_comment_id(comment.id)
