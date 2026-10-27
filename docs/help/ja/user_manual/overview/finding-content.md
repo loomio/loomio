@@ -1,13 +1,13 @@
 ---
 title: コンテンツを探す
-source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: b5f4c5a4b3ec6a1c
+  search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 722b477e36d38916
-  search: db939e36f911c070
+  search: c8aa14c205dfe84f
   search-tips: f3a770db6b4de8ff
   filter-discussions: 96d2f75670039a04
   category-tags: de8267370ca390e0
@@ -42,8 +42,6 @@ Loomioでは、参加しているグループのディスカッションや決�
 ![](search_button.png)
 
 検索の対象は、参加しているすべてのグループと直接のディスカッションでアクセスできるコンテンツです。ディスカッションのタイトルや背景説明、コメント、アンケート、投票、結論を検索できます。
-
-新しいコンテンツや編集内容が検索結果に表示されるまで、少し時間がかかる場合があります。
 
 単語や語句を入力し、Enterキーを押すか検索アイコンを選択します。例えば、**bottle**で検索すると、Oatmilk Cooperativeのコンテンツから、その単語を含むものが見つかります。
 

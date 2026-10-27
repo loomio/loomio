@@ -1,13 +1,13 @@
 ---
 title: Sisällön löytäminen
-source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: b5f4c5a4b3ec6a1c
+  search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: a5c50bacd68ae46a
-  search: b6deca8154970fa3
+  search: 31a1e2a08cfa1ae7
   search-tips: 71b6160aeda5e939
   filter-discussions: 7aebe0484ff86ee1
   category-tags: 6278ea55f1a74fc0
@@ -42,8 +42,6 @@ Yläreunan navigointipalkin Haku-painike avaa yleisen haun miltä tahansa Loomio
 ![](search_button.png)
 
 Haku kattaa sisällön, johon sinulla on pääsy kaikissa ryhmissäsi ja suorissa keskusteluissa. Voit löytää keskustelujen otsikoita ja kontekstia, kommentteja, kyselyjä, ääniä ja johtopäätöksiä.
-
-Uuden sisällön ja muokkausten näkymisessä hakutuloksissa voi kestää hetken.
 
 Kirjoita sana tai ilmaus ja paina Enter tai valitse hakukuvake. Esimerkiksi haku sanalla **bottle** löytää Oatmilk Cooperativen sisältöä, jossa kyseinen sana esiintyy.
 

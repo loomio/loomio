@@ -1,13 +1,13 @@
 ---
 title: Encontrar contenido
-source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: b5f4c5a4b3ec6a1c
+  search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 84dd3270fff74602
-  search: 3f40e0b98bc17dcc
+  search: f9ec093a6c0ee664
   search-tips: 819f3b5bd0c1726f
   filter-discussions: be5257a6a68fc2f5
   category-tags: 4c7357ef34cfa62d
@@ -42,8 +42,6 @@ El botón Buscar de la barra de navegación superior abre la búsqueda global de
 ![](search_button.png)
 
 La búsqueda incluye el contenido al que tienes acceso en todos tus grupos y discusiones directas. Puede encontrar títulos y contexto de discusiones, comentarios, encuestas, votos y conclusiones.
-
-El contenido nuevo y los cambios pueden tardar un poco en aparecer en los resultados de búsqueda.
 
 Introduce una palabra o frase y pulsa Intro o selecciona el icono de búsqueda. Por ejemplo, buscar **bottle** encuentra contenido de Oatmilk Cooperative que contiene esa palabra.
 

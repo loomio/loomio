@@ -1,13 +1,13 @@
 ---
 title: Tartalom keresése
-source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: b5f4c5a4b3ec6a1c
+  search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 61f73c522a97cf27
-  search: b6b8ba60f1a2303d
+  search: ebbf1e28c195a36a
   search-tips: 33af6f9e9bb21d45
   filter-discussions: a5afc403f56c405f
   category-tags: 1e12ad8b20246779
@@ -42,8 +42,6 @@ A felső navigációs sáv Keresés gombja a Loomio bármely oldaláról megnyit
 ![](search_button.png)
 
 A keresés a csoportjaidban és a közvetlen beszélgetéseidben elérhető tartalmakra terjed ki. Megtalálhatod vele a beszélgetések címét és leírását, a hozzászólásokat, a szavazásokat, a szavazatokat és a következtetéseket.
-
-Az új tartalmak és módosítások rövid késéssel jelenhetnek meg a keresési eredmények között.
 
 Írj be egy szót vagy kifejezést, majd nyomd meg az Enter billentyűt, vagy válaszd ki a keresés ikonját. Például a **bottle** szóra keresve megtalálod az Oatmilk Cooperative azon tartalmait, amelyekben ez a szó szerepel.
 
