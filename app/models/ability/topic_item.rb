@@ -9,7 +9,7 @@ module Ability
           !topic.locked_at && !topic.discarded_at && can?(:show, topic) &&
           item.tags_assignable? && topic.members_include?(user) &&
           (topic.admins_include?(user) || item.itemable.author_id == user.id ||
-            (item.kind == 'new_discussion' && topic.group.members_can_edit_discussions))
+            topic.group.members_can_edit_discussions)
       end
 
       can [:pin, :unpin], ::TopicItem do |topic_item|

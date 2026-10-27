@@ -1,15 +1,15 @@
 ---
 title: Eliminare il tuo gruppo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/deleting_your_group/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: d1fb3691890a02b6
+  introduction: 779d4a92736ca62a
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: c85721ee72cde11d
+  introduction: 7a91128cae5aba69
   group-data-is-permanently-deleted-after-90-days: a396ba275b96d7de
 title_source: 9a0868f49f1262ea
 title_generated: 23b0500c07487f95
@@ -27,7 +27,7 @@ Apri il menu a discesa del gruppo facendo clic sui tre puntini e seleziona l'opz
 
 Quando elimini un gruppo, viene nascosto immediatamente e sarà eliminato definitivamente dopo 90 giorni. Tu e i membri del gruppo perdete immediatamente l'accesso al gruppo. Se lo hai eliminato per errore, contattaci entro 90 giorni dall'eliminazione per richiederne il ripristino.
 
-I gruppi in attesa di eliminazione e i loro sottogruppi non sono accessibili ai membri e ai coordinatori per la consultazione, la partecipazione o l'esportazione, compresi i sondaggi aperti tramite link salvati. I membri non possono creare o modificare contenuti, votare, inviare annunci o promemoria né accettare inviti. Esporta il gruppo e scarica i file importanti prima di confermare l'eliminazione. Le discussioni e i sondaggi diretti non sono interessati.
+I gruppi in attesa di eliminazione e i loro sottogruppi non sono accessibili ai membri e agli amministratori per la consultazione, la partecipazione o l'esportazione, compresi i sondaggi aperti tramite link salvati. I membri non possono creare o modificare contenuti, votare, inviare annunci o promemoria né accettare inviti. Esporta il gruppo e scarica i file importanti prima di confermare l'eliminazione. Le discussioni e i sondaggi diretti non sono interessati.
 
 Programmare l'eliminazione del gruppo interrompe le notifiche di attività e i promemoria dei sondaggi in attesa di invio per il gruppo e i suoi sottogruppi. I messaggi già in fase di invio potrebbero comunque arrivare.
 

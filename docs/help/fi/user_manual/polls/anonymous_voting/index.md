@@ -1,20 +1,20 @@
 ---
 title: Anonyymi äänestys
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: 615af5fab336f767
   how-anonymous-voting-protects-voters: d8b855653cb914cc
-  while-voting-is-open: 936b965a7ce3dd23
-  votes-cannot-be-changed: c391ae4a0e1a521e
+  while-voting-is-open: e78f248470d96ba9
+  votes-cannot-be-changed: 93c10c3c8fb1f7c1
   why-anonymous-votes-do-not-have-reasons: b7364c8bc51e82a9
   results-and-exports: 143e96b8852c2eec
-  participation-verification: 9eb3d0ab2398ea18
+  participation-verification: ae3ec0def58b5c1c
   reminders: 4eff1cc8ae6b06fc
-  what-coordinators-and-administrators-can-see: 0171b9ab6f321de6
+  what-coordinators-and-administrators-can-see: a65b658649ac3e19
   limits-of-anonymous-voting: f5ee56c4db48047a
   questions: b868ae945415823c
   can-a-coordinator-see-how-i-voted: 52d65c9c546534d8
@@ -74,7 +74,7 @@ Tiedot pidetään erillään jo ääntä tallennettaessa. Suoja ei perustu pelk�
 
 ## Kun äänestys on avoinna
 
-Tulokset pysyvät piilossa kaikilta, kunnes kysely sulkeutuu. Tämä koskee myös kyselyn koordinaattoreita, ryhmän ylläpitäjiä ja Loomio-asennuksen järjestelmänvalvojia, jotka käyttävät sovellusta.
+Tulokset pysyvät piilossa kaikilta, kunnes kysely sulkeutuu. Tämä koskee myös ketjun ylläpitäjiä, ryhmän ylläpitäjiä ja Loomio-asennuksen ylläpitäjiä, jotka käyttävät sovellusta.
 
 Kun joku äänestää:
 
@@ -90,7 +90,7 @@ Osallistumistietoihin ei tallenneta tarkkaa äänestysaikaa. Annettuja ääniä 
 
 ## Ääniä ei voi muuttaa
 
-Jokainen äänioikeutettu henkilö voi äänestää kerran. Annettua anonyymiä ääntä ei voi tarkastella, muuttaa, perua eikä korvata. Tämä koskee myös koordinaattoreita ja ylläpitäjiä.
+Jokainen äänioikeutettu henkilö voi äänestää kerran. Annettua anonyymiä ääntä ei voi tarkastella, muuttaa, perua eikä korvata. Myöskään ylläpitäjä ei voi tehdä näin.
 
 Jos henkilö voisi hakea oman äänensä tai korvata sen, henkilön ja äänen välillä pitäisi olla pysyvä yhteys. Anonyymissä äänestyksessä tätä yhteyttä ei tarkoituksella luoda.
 
@@ -126,7 +126,7 @@ Ryhmän jäsenet ja kyselyn äänestäjät näkevät myös, milloin kukin henkil
 
 Koska kaikki tulokset näkevät henkilöt näkevät myös, ketkä äänestivät, yksipuolinen tulos voi paljastaa, miten ihmiset äänestivät. Jos esimerkiksi jokainen ääni on Samaa mieltä, kaikki äänestäneet olivat samaa mieltä.
 
-Koordinaattorit voivat lisätä äänioikeutettuja henkilöitä äänestyksen ollessa avoinna myös sen jälkeen, kun muut ovat jo äänestäneet. Anonyymistä kyselystä ei voi poistaa siihen jo lisättyjä äänestäjiä.
+Ylläpitäjät voivat lisätä äänioikeutettuja henkilöitä äänestyksen ollessa avoinna myös sen jälkeen, kun muut ovat jo äänestäneet. Anonyymistä kyselystä ei voi poistaa siihen jo lisättyjä äänestäjiä.
 
 <!-- translation-section: reminders -->
 
@@ -140,12 +140,12 @@ Kyselyt, joiden koko äänestysaika on alle 24 tuntia, eivät lähetä tätä au
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Mitä koordinaattorit ja ylläpitäjät voivat nähdä
+## Mitä ylläpitäjät voivat nähdä
 
-Kyselyn koordinaattori, ryhmän ylläpitäjä tai Loomio-asennuksen järjestelmänvalvoja voi sovelluksessa nähdä:
+Ketjun ylläpitäjä, ryhmän ylläpitäjä tai Loomio-asennuksen ylläpitäjä voi sovelluksessa nähdä:
 
 - kyselyn ja sen äänioikeutetut henkilöt;
-- onko kukin äänioikeutettu henkilö äänestänyt, jos hänen roolinsa sallii tiedon katselun ja riittävän moni on äänestänyt; ja
+- onko kukin äänioikeutettu henkilö äänestänyt, jos ylläpitäjän rooli sallii tiedon katselun ja riittävän moni on äänestänyt; ja
 - yhteistulokset kyselyn sulkeuduttua.
 
 He eivät voi sovelluksen toimintojen avulla nähdä:

@@ -112,7 +112,7 @@ poll counts inside database transactions. A validation failure must:
 - store no detached anonymous ballot or choices.
 
 Authorization and ballot integrity are separate boundaries. A participant,
-coordinator, group administrator, or instance administrator may have different
+admin, group administrator, or instance administrator may have different
 permissions to submit or manage a poll, but no role may bypass ballot
 validation.
 

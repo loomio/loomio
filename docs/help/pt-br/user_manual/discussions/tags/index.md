@@ -1,30 +1,34 @@
 ---
 title: Tags de categoria
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 8f2c19e78a57cfb9
-  apply-tags: a3169e2aee394cec
+  apply-tags: 1e5088a6cee39d74
   create-tags: 6e3d8dc2f57e82e3
   edit-tags: a6e6190881c6d019
   edit-tag-in-thread-or-poll: ce50a895e2e6de08
   template-tags: 53dec2e8ec01cc51
-  tag-contributions: f7ddb645c8262c5b
-  find-tagged-contributions: 658a06dc5408ccdd
+  tag-contributions: 5f3172343b07c1f0
+  find-tagged-contributions: 7030935abbbcef42
+  global-search: 7042d3783b516396
 title_source: c86f6830bf302394
 title_generated: '04853111899cd0c4'
+needs_review:
+  global-search: use "enquete" instead of "pesquisa" for "poll"
 ---
 
 <!-- translation-section: introduction -->
@@ -43,13 +47,13 @@ Na página do seu grupo, clique em **Tags** acima da lista de conversas. Selecio
 
 ## Aplicar tags
 
-Você pode aplicar tags às suas próprias discussões, enquetes, conclusões e comentários. Coordenadores de conversas podem aplicar tags a qualquer contribuição.
+Você pode aplicar tags às suas próprias discussões, enquetes, conclusões e comentários. Admins de grupo, admins de conversa e pessoas com permissão para editar o contexto da discussão podem aplicar tags a qualquer contribuição em uma conversa desbloqueada. Em conversas diretas, todos os participantes podem aplicar tags a qualquer contribuição.
 
 Ao iniciar uma conversa ou enquete, clique no campo **Tags** e selecione uma ou mais tags.
 
 ![](tags_add_new.png)
 
-Comece a digitar para filtrar a lista. Selecione uma tag novamente ou clique no × ao lado do nome dela para removê-la.
+Comece a digitar para filtrar a lista. Selecione uma tag novamente ou clique no × dentro dela para removê-la.
 
 <!-- translation-section: create-tags -->
 
@@ -113,7 +117,7 @@ O seletor mostra as tags usadas no grupo atual, as tags da organização que nã
 
 Abra o menu de ações de uma enquete, conclusão ou comentário e selecione **Aplicar tags**. O mesmo seletor usado ao lado do título da discussão permite adicionar ou remover tags. As alterações são salvas imediatamente. Quando uma contribuição tem tags, elas e o botão de tags aparecem à direita da linha com o autor, a data e a hora.
 
-As tags se aplicam à contribuição que você seleciona. Elas não são herdadas pelas respostas. Aplicar tags à discussão inicial não aplica essas tags a todos os comentários ou enquetes da conversa. Não é possível aplicar tags a votos ou cédulas de votação.
+As tags se aplicam à contribuição que você seleciona. Não é possível aplicar tags a votos ou cédulas de votação.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +125,14 @@ As tags se aplicam à contribuição que você seleciona. Elas não são herdada
 
 A seção **Tags** aparece na barra lateral da conversa quando uma contribuição além da discussão ou enquete inicial tem tags. Ela reúne as tags do item inicial e de todas as outras contribuições com tags. Selecione uma tag para mostrar as contribuições correspondentes com o contexto em que aparecem. Uma barra de ferramentas permanece visível acima da conversa enquanto o filtro está ativo. Feche-a com o botão × à direita, selecione a tag novamente ou escolha **Limpar** na barra lateral para voltar à visualização habitual da conversa. No celular, abra o painel de navegação da conversa para usar o mesmo filtro.
 
-As tags ao lado do título da discussão pertencem à discussão inicial. A lista de conversas do grupo usa todas as tags da conversa, portanto remover uma tag da discussão inicial não remove a conversa dessa categoria se outra contribuição ainda tiver essa tag.
+![Tags na barra lateral da conversa](tags_thread_sidebar.png)
 
-Na busca global, selecionar uma tag encontra contribuições que têm essa tag explicitamente aplicada. Você pode navegar por tag sem inserir uma expressão de busca. Combinar uma tag com uma expressão busca no conteúdo das contribuições com essa tag, em vez de buscar em todas as contribuições das conversas em que elas aparecem.
+<!-- translation-section: global-search -->
 
-Os autores podem aplicar tags aos seus comentários independentemente da visibilidade dos resultados da enquete. As tags são metadados compartilhados e continuam disponíveis se uma enquete for reaberta ou seus resultados ficarem ocultos. Os comentários e suas tags continuam aparecendo nas buscas enquanto os resultados da enquete estão ocultos. As contribuições deletadas são omitidas dos filtros de tags; restaurar uma contribuição restaura suas tags. Os registros da linha do tempo continuam oferecendo atalhos com nomes para contribuições individuais e funcionam independentemente das tags.
+## Pesquisar por tag
 
-Os relatórios de participação contam as conversas que contêm cada tag. Participar de uma dessas conversas não significa necessariamente que a pessoa tenha escrito uma contribuição com essa tag.
+Abra **Pesquisar** na navegação superior e selecione seu grupo principal para exibir o menu de tags. Escolha uma tag para encontrar discussões, enquetes, conclusões e comentários com essa tag.
+
+Deixe o campo de pesquisa vazio para navegar por tag ou digite uma palavra ou frase para pesquisar nas contribuições com essa tag. Selecione **Qualquer etiqueta** para limpar o filtro de tags.
+
+![Seleção de uma tag na pesquisa global após escolher o grupo principal](tags_global_search.png)

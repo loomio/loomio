@@ -1,10 +1,10 @@
 ---
 title: Запрашэнне людзей
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
   introduction: 82b0520b2bfa1b5b
   send-invitations-via-email: 0a118013a7610f3a
@@ -28,7 +28,7 @@ generated:
   managing-invitations: cce0cc8bb39c2848
   re-send-invitations: 1a965b9bb3004d93
   cancelling-invitations: 0bec5822cedd402a
-  invitation-notification-history: 17c19b77f0f77e35
+  invitation-notification-history: 5823ae8db1a4ea76
 title_source: b926eb8921d85971
 title_generated: 2dac44685c0fc76a
 ---
@@ -130,7 +130,7 @@ title_generated: 2dac44685c0fc76a
 
 ### Гісторыя дастаўкі запрашэнняў
 
-Калі хтосьці не атрымлівае ліст з запрашэннем, каардынатары групы могуць адкрыць **Гісторыя дастаўкі запрашэнняў** у меню з трыма кропкамі (**⋮**) побач з імем чалавека на старонцы «Удзельнікі», каб убачыць, калі адпраўляліся запрашэнні і якія праблемы з дастаўкай былі зарэгістраваныя.
+Калі хтосьці не атрымлівае ліст з запрашэннем, адміністратары групы могуць выбраць пункт **Гісторыя дастаўкі запрашэнняў** у меню з трыма кропкамі (**⋮**) побач з імем чалавека на старонцы «Удзельнікі», каб убачыць, калі адпраўляліся запрашэнні і якія праблемы з дастаўкай былі зарэгістраваныя.
 
 <!-- translation-section: re-send-invitations -->
 

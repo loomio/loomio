@@ -1,28 +1,30 @@
 ---
 title: Etiquetas de categoría
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 1d7b5ac1523d0a8a
-  apply-tags: cda612f9110ccaac
+  apply-tags: fdbad561988c6860
   create-tags: 54fc028db0c4d8c5
   edit-tags: 5a606ba2ed55b333
   edit-tag-in-thread-or-poll: f134636d4f570ccb
   template-tags: cf1af5f545414586
-  tag-contributions: 915b42b397013fa0
-  find-tagged-contributions: e04a6d1d69278bc9
+  tag-contributions: 7968f7a3aa61a07d
+  find-tagged-contributions: 28e6908be8a4782e
+  global-search: 3db836b3840fedb6
 title_source: c86f6830bf302394
 title_generated: d4f492cef22ddd95
 ---
@@ -43,13 +45,13 @@ En la página de tu grupo, haz clic en **Etiquetas**, encima de la lista de hilo
 
 ## Aplicar etiquetas
 
-Puedes etiquetar tus propias discusiones, encuestas, conclusiones y comentarios. Los coordinadores del hilo pueden etiquetar cualquier contribución.
+Puedes etiquetar tus propias discusiones, encuestas, conclusiones y comentarios. Los admins del grupo, los admins del hilo y las personas con permiso para editar el contexto de la discusión pueden etiquetar cualquier contribución en un hilo desbloqueado. En los hilos directos, todos los participantes pueden etiquetar cualquier contribución.
 
 Cuando inicies un hilo o una encuesta, haz clic en el campo **Etiquetas** y selecciona una o varias etiquetas.
 
 ![](tags_add_new.png)
 
-Empieza a escribir para filtrar la lista. Para quitar una etiqueta, selecciónala de nuevo o haz clic en la × de su ficha.
+Empieza a escribir para filtrar la lista. Para quitar una etiqueta, selecciónala de nuevo o haz clic en la × de la ficha de esa etiqueta.
 
 <!-- translation-section: create-tags -->
 
@@ -113,7 +115,7 @@ El selector muestra las etiquetas utilizadas en el grupo actual, las etiquetas d
 
 Abre el menú de acciones de una encuesta, una conclusión o un comentario y selecciona **Aplicar etiquetas**. El mismo selector que se usa junto al título de la discusión te permite añadir o quitar etiquetas. Los cambios se guardan inmediatamente. Cuando una contribución tiene etiquetas, sus fichas y el botón de etiquetas aparecen a la derecha en la línea que muestra el autor y la fecha y hora.
 
-Las etiquetas se aplican a la contribución que seleccionas. Las respuestas no las heredan. Etiquetar la discusión inicial no etiqueta todos los comentarios o encuestas de su hilo. Los votos y las papeletas no se pueden etiquetar.
+Las etiquetas se aplican a la contribución que seleccionas. Los votos y las papeletas no se pueden etiquetar.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +123,14 @@ Las etiquetas se aplican a la contribución que seleccionas. Las respuestas no l
 
 La sección **Etiquetas** aparece en la barra lateral del hilo cuando alguna contribución, además de la discusión o encuesta inicial, tiene etiquetas. Reúne las etiquetas del elemento inicial y de todas las demás contribuciones etiquetadas. Selecciona una etiqueta para mostrar las contribuciones coincidentes con el contexto al que pertenecen. Mientras el filtro está activo, una barra de herramientas permanece visible encima del hilo. Ciérrala con el botón × de la derecha, selecciona la etiqueta de nuevo o elige **Limpiar** en la barra lateral para volver a la vista habitual del hilo. En el móvil, abre el panel de navegación del hilo para usar el mismo filtro.
 
-Las etiquetas junto al título de la discusión pertenecen a la discusión inicial. La lista de hilos del grupo utiliza todas las etiquetas del hilo, por lo que quitar una etiqueta de la discusión inicial no elimina el hilo de esa categoría si otra contribución todavía tiene esa etiqueta.
+![Etiquetas en la barra lateral del hilo](tags_thread_sidebar.png)
 
-En la búsqueda global, seleccionar una etiqueta permite encontrar contribuciones que tengan esa etiqueta aplicada explícitamente. Puedes explorar por etiqueta sin introducir una frase de búsqueda. Al combinar una etiqueta con una frase, se busca en el contenido de las contribuciones etiquetadas, en lugar de hacerlo en todas las contribuciones de sus hilos.
+<!-- translation-section: global-search -->
 
-Los autores pueden etiquetar sus comentarios independientemente de la visibilidad de los resultados de la encuesta. Las etiquetas son metadatos compartidos y siguen disponibles si se reabre una encuesta o se ocultan sus resultados. Los comentarios y sus etiquetas se pueden seguir encontrando en las búsquedas mientras los resultados de la encuesta están ocultos. Las contribuciones eliminadas se omiten de los filtros de etiquetas; al restaurar una contribución, se restauran sus etiquetas. Las entradas de la cronología siguen ofreciendo accesos directos con nombre a contribuciones individuales y funcionan de forma independiente de las etiquetas.
+## Buscar por etiqueta
 
-Los informes de participación cuentan los hilos que contienen cada etiqueta. Participar en uno de esos hilos no significa necesariamente que una persona haya escrito una contribución con esa etiqueta.
+Abre **Buscar** desde la navegación superior y selecciona tu grupo principal para mostrar el menú de etiquetas. Elige una etiqueta para encontrar discusiones, encuestas, conclusiones y comentarios que tengan esa etiqueta.
+
+Deja el campo de búsqueda vacío para explorar por etiqueta, o introduce una palabra o frase para buscar en las contribuciones etiquetadas. Selecciona **cualquier etiqueta** para quitar el filtro de etiquetas.
+
+![Selección de una etiqueta en la búsqueda global después de elegir el grupo principal](tags_global_search.png)

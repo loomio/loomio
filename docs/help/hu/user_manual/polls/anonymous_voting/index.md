@@ -1,20 +1,20 @@
 ---
 title: Névtelen szavazás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: 2adb64c67ec4a37b
   how-anonymous-voting-protects-voters: 6148b5938f7b434e
-  while-voting-is-open: 4ce6fb67585eafbd
-  votes-cannot-be-changed: d46e5d276c32812b
+  while-voting-is-open: 788dc7557306917a
+  votes-cannot-be-changed: 56ca7eacd6214635
   why-anonymous-votes-do-not-have-reasons: a4c41c47a40dacd6
   results-and-exports: 2ddae1eb2986cf79
-  participation-verification: b330a3399a0ff953
+  participation-verification: 1e13300cd145ef57
   reminders: 6c429a1c23d63d39
-  what-coordinators-and-administrators-can-see: 3518f56047bfcd8d
+  what-coordinators-and-administrators-can-see: 479a0165ae1d6f4b
   limits-of-anonymous-voting: bb689a71f029522f
   questions: da64f98c28ad9eee
   can-a-coordinator-see-how-i-voted: c346c6d212702e6b
@@ -74,7 +74,7 @@ Az elkülönítés a szavazat tárolásakor történik. Nem csupán a nevek fel�
 
 ## Amíg a szavazás nyitva van
 
-Az eredmények a szavazás lezárásáig mindenki elől rejtve maradnak. Ez az alkalmazást használó szavazási koordinátorokra, csoportadminokra és a Loomio-példány adminjaira is vonatkozik.
+Az eredmények a szavazás lezárásáig mindenki elől rejtve maradnak. Ez az alkalmazást használó száladminokra, csoportadminokra és a Loomio-példány adminjaira is vonatkozik.
 
 Amikor valaki szavaz:
 
@@ -90,7 +90,7 @@ A részvételi nyilvántartás nem tárolja a szavazás pontos időpontját. A l
 
 ## A szavazatok nem módosíthatók
 
-Minden jogosult személy egyszer szavazhat. A leadott névtelen szavazat nem tekinthető meg újra, nem módosítható, nem vonható vissza és nem cserélhető le, még koordinátor vagy admin által sem.
+Minden jogosult személy egyszer szavazhat. A leadott névtelen szavazat nem tekinthető meg újra, nem módosítható, nem vonható vissza és nem cserélhető le, még admin által sem.
 
 Ahhoz, hogy valaki visszakereshesse vagy lecserélhesse a szavazatát, tartós kapcsolatra lenne szükség közte és a szavazat között. A névtelen szavazás szándékosan nem hoz létre ilyen kapcsolatot.
 
@@ -126,7 +126,7 @@ A csoport tagjai és a szavazás szavazói azt is látják, hogy az egyes szemé
 
 Mivel mindenki, aki látja az eredményeket, azt is láthatja, hogy ki szavazott, az egyoldalú eredmény felfedheti, hogy az emberek hogyan szavaztak. Ha például minden szavazat az Egyetértek lehetőségre érkezett, akkor minden szavazó egyetértett.
 
-A koordinátorok újabb szavazásra jogosult személyeket adhatnak hozzá, amíg a szavazás nyitva van, akkor is, ha mások már szavaztak. A meglévő szavazók nem távolíthatók el a névtelen szavazásból.
+Az adminok újabb szavazásra jogosult személyeket adhatnak hozzá, amíg a szavazás nyitva van, akkor is, ha mások már szavaztak. A meglévő szavazók nem távolíthatók el a névtelen szavazásból.
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ Az összesen 24 óránál rövidebb ideig tartó szavazásoknál az alkalmazás 
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Mit láthatnak a koordinátorok és az adminok
+## Mit láthatnak az adminok
 
-Az alkalmazáson keresztül a szavazás koordinátora, a csoport adminja vagy a Loomio-példány adminja a következőket láthatja:
+Az alkalmazáson keresztül a szál adminja, a csoport adminja vagy a Loomio-példány adminja a következőket láthatja:
 
 - a szavazást és a szavazásra jogosult személyeket;
 - azt, hogy az egyes jogosult személyek szavaztak-e, ha a szerepkörük hozzáférést biztosít ehhez, és elegen szavaztak; és

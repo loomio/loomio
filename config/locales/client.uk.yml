@@ -1076,7 +1076,7 @@ uk:
       has_not_read_thread: Не переглянув тему
       has_not_joined_yet: Ще не приєднався
       has_not_joined_yet_hint: Цей користувач не прийняв запрошення приєднатися до Loomio і не отримуватиме подальших сповіщень, доки не прийме
-      discussion_admin: Адміністратор обговорення
+      discussion_admin: "Адміністратор теми"
       has_not_read_discussion: Не переглянув обговорення
     group_form:
       search_placeholder: Шукати людину...
@@ -1620,7 +1620,7 @@ uk:
     title_helptext:
       group: Ця назва з'явиться поруч із іменем %{name} у цій групі. Використовуйте її щоб люди розуміли свою роль.
     title_label: назва
-    title_placeholder: Напр. "Координатор" або "Фасілітатор"
+    title_placeholder: "Наприклад, «Адміністратор» або «Фасилітатор»"
     updated: Назву учасника оновлено
     weight_label: Вага голосу
   user_name_modal:

@@ -37,7 +37,7 @@ describe('item tagging', () => {
     vi.stubGlobal('visualViewport', undefined);
     vi.stubGlobal('matchMedia', () => ({matches: false, addEventListener() {}, removeEventListener() {}}));
     group = {
-      id: 1, subgroupsCount: 0, isEnabled: () => true, membersCanCreateTags: false,
+      id: 1, subgroupsCount: 0, isEnabled: () => true, membersCanCreateTags: false, membersCanEditDiscussions: false,
       membersInclude: () => true, adminsInclude: () => false,
       parentOrSelf: () => group,
       tags: () => [{id: 1, name: 'Budget', usedGroupIds: [1]}, {id: 2, name: 'Governance', usedGroupIds: [1]}]
@@ -255,5 +255,43 @@ describe('item tagging', () => {
     topic.lockedAt = null;
     item.kind = 'stance_updated';
     expect(AbilityService.canTagTopicItem(item)).toBe(false);
+  });
+
+  it.each(['new_discussion', 'poll_created', 'outcome_created', 'new_comment'])('lets context editors tag another author’s %s', kind => {
+    const item = {kind, topic: () => topic, model: () => ({authorId: 2})};
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+    group.membersCanEditDiscussions = true;
+    expect(AbilityService.canTagTopicItem(item)).toBe(true);
+
+    topic.membersInclude = () => false;
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+  });
+
+  it('keeps context editors subject to thread and contribution restrictions', () => {
+    group.membersCanEditDiscussions = true;
+    const model = {authorId: 2};
+    const item = {kind: 'new_comment', topic: () => topic, model: () => model};
+    expect(AbilityService.canTagTopicItem(item)).toBe(true);
+    topic.lockedAt = new Date();
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+    topic.lockedAt = null;
+    topic.discardedAt = new Date();
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+    topic.discardedAt = null;
+    model.discardedAt = new Date();
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+    model.discardedAt = null;
+    group.isEnabled = () => false;
+    expect(AbilityService.canTagTopicItem(item)).toBe(false);
+  });
+
+  it.each(['Discussion', 'Poll'])('lets context editors tag the opening %s', type => {
+    topic.topicableType = type;
+    topic.topicable = () => ({authorId: 2});
+    expect(AbilityService.canEditTags(topic)).toBe(false);
+    group.membersCanEditDiscussions = true;
+    expect(AbilityService.canEditTags(topic)).toBe(true);
+    topic.membersInclude = () => false;
+    expect(AbilityService.canEditTags(topic)).toBe(false);
   });
 });

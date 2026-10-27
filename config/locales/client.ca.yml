@@ -1075,7 +1075,7 @@ ca:
       has_not_read_thread: No ha visualitzat el fil
       has_not_joined_yet: Encara no s'ha unit
       has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
-      discussion_admin: Administrador de la discussió
+      discussion_admin: "Admin del fil"
       has_not_read_discussion: No ha vist la discussió
     group_form:
       search_placeholder: Busca gent...
@@ -1617,7 +1617,7 @@ ca:
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
-    title_placeholder: 'Per exemple: "coordinador" o "moderador"'
+    title_placeholder: "Per exemple: «Admin» o «Facilitador»"
     updated: S'ha actualitzat el títol de membre
     weight_label: Pes del vot
   user_name_modal:

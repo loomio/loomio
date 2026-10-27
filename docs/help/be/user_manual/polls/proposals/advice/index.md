@@ -1,14 +1,14 @@
 ---
 title: Парада
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: c24d7361e5663b31
   when-to-use-advice: 4b54047e5a52e30a
-  example-choose-a-washing-supplier: ac11a65805285bdd
+  example-choose-a-washing-supplier: bf911343d4ac73ea
   set-up-the-proposal: 20e32ae2632c5d83
   vote: 4b1215abdecd48cc
   read-the-results: a5b31d3fa6e08628
@@ -45,7 +45,7 @@ title_generated: 2804767b69915fd7
 
 ## Прыклад: выбар пастаўшчыка паслуг мыцця
 
-У кааператыве Oatmilk тым, хто каардынуе аперацыйную дзейнасць, трэба выбраць пастаўшчыка паслуг мыцця. Яны запрашаюць даць парады наконт магутнасцей, дакументацыі па бяспецы харчовых прадуктаў, выкарыстання вады, часу рэагавання на запыты і падтрымкі.
+У кааператыве Oatmilk тым, хто кіруе аперацыйнай дзейнасцю, трэба выбраць пастаўшчыка паслуг мыцця. Яны запрашаюць даць парады наконт магутнасцей, дакументацыі па бяспецы харчовых прадуктаў, выкарыстання вады, часу рэагавання на запыты і падтрымкі.
 
 <!-- translation-section: set-up-the-proposal -->
 

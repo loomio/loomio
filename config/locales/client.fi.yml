@@ -1069,7 +1069,7 @@ fi:
       has_not_read_thread: Ei ole katsonut lankaa
       has_not_joined_yet: Ei ole vielä liittynyt
       has_not_joined_yet_hint: Tämä käyttäjä ei ole hyväksynyt hänen kutsuaan liittyä Loomioon, eikä hän saa muita ilmoituksia ennen kuin hyväksyy
-      discussion_admin: Keskustelun ylläpitäjä
+      discussion_admin: "Viestiketjun ylläpitäjä"
       has_not_read_discussion: Ei ole katsonut keskustelua
     group_form:
       search_placeholder: Etsi ihmisiä...
@@ -1603,7 +1603,7 @@ fi:
     title_helptext:
       group: Tämä otsikko näkyy käyttäjän %{name} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
     title_label: otsikko
-    title_placeholder: Esim 'koordinaattori' tai 'fasilitaattori'
+    title_placeholder: "Esim. ”Ylläpitäjä” tai ”Fasilitaattori”"
     updated: Jäsennimike päivitetty
     weight_label: Äänestyspaino
   user_name_modal:

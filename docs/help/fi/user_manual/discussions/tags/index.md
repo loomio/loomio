@@ -1,28 +1,30 @@
 ---
 title: Luokkatunnisteet
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: e5516c6572fe517d
-  apply-tags: 372e8bf04d589384
+  apply-tags: 37921b2ec0562ed7
   create-tags: acd1f36a32d56d68
   edit-tags: 74686003d910064e
   edit-tag-in-thread-or-poll: b43c30449432d30b
   template-tags: f68495c1ff697239
-  tag-contributions: e46dd32abffbd34b
-  find-tagged-contributions: fe9e0a7b190e30fe
+  tag-contributions: bf15c46a9c3ceb2e
+  find-tagged-contributions: c5e7278642916fb8
+  global-search: 2ec6a2232d778cde
 title_source: c86f6830bf302394
 title_generated: 4b6ce0ad244e059e
 ---
@@ -43,7 +45,7 @@ Napsauta ryhmäsi sivulla ketjuluettelon yläpuolella olevaa **Tunnisteet**-pain
 
 ## Lisää tunnisteita
 
-Voit lisätä tunnisteita omiin keskusteluihisi, kyselyihisi, johtopäätöksiisi ja kommentteihisi. Ketjun koordinaattorit voivat lisätä tunnisteita kaikkeen sisältöön.
+Voit lisätä tunnisteita omiin keskusteluihisi, kyselyihisi, johtopäätöksiisi ja kommentteihisi. Ryhmän ylläpitäjät, ketjun ylläpitäjät ja henkilöt, joilla on oikeus muokata keskustelun kontekstia, voivat lisätä tunnisteita kaikkeen sisältöön lukitsemattomassa ketjussa. Suorissa ketjuissa kaikki osallistujat voivat lisätä tunnisteita kaikkeen sisältöön.
 
 Kun aloitat ketjun tai kyselyn, napsauta **Tunnisteet**-kenttää ja valitse yksi tai useampi tunniste.
 
@@ -113,7 +115,7 @@ Valitsin näyttää nykyisessä ryhmässä käytetyt tunnisteet, organisaation k
 
 Avaa kyselyn, johtopäätöksen tai kommentin toimintovalikko ja valitse **Käytä tunnisteita**. Voit lisätä tai poistaa tunnisteita samalla valitsimella, jota käytetään keskustelun otsikon vieressä. Muutokset tallennetaan heti. Kun sisällöllä on tunnisteita, sen tunnistelaatat ja tunnistepainike näkyvät kirjoittajan ja aikaleiman sisältävän rivin oikealla puolella.
 
-Tunnisteet koskevat valitsemaasi sisältöä. Ne eivät periydy vastauksiin. Tunnisteiden lisääminen avauskeskusteluun ei lisää niitä ketjun jokaiseen kommenttiin tai kyselyyn. Ääniin ja äänestyslipukkeisiin ei voi lisätä tunnisteita.
+Tunnisteet koskevat valitsemaasi sisältöä. Ääniin ja äänestyslipukkeisiin ei voi lisätä tunnisteita.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +123,14 @@ Tunnisteet koskevat valitsemaasi sisältöä. Ne eivät periydy vastauksiin. Tun
 
 **Tunnisteet**-osio tulee näkyviin ketjun sivupalkkiin, kun avauskeskustelun tai -kyselyn lisäksi johonkin muuhun sisältöön on lisätty tunnisteita. Osio kokoaa tunnisteet avauksesta ja kaikesta muusta tunnisteilla merkitystä sisällöstä. Valitse tunniste näyttääksesi sitä vastaavat sisällöt asiayhteyksineen. Työkalupalkki pysyy näkyvissä ketjun yläpuolella, kun suodatin on käytössä. Palaa tavalliseen ketjunäkymään sulkemalla palkki oikealla olevasta ×-painikkeesta, valitsemalla tunniste uudelleen tai valitsemalla sivupalkista **Asia selvä**. Mobiililaitteella voit käyttää samaa suodatinta avaamalla ketjun navigointipaneelin.
 
-Keskustelun otsikon vieressä olevat tunnisteet kuuluvat avauskeskusteluun. Ryhmän ketjuluettelo käyttää kaikkia ketjun tunnisteita, joten tunnisteen poistaminen avauskeskustelusta ei poista ketjua kyseisestä luokasta, jos tunniste on edelleen jossakin muussa ketjun sisällössä.
+![Tunnisteet ketjun sivupalkissa](tags_thread_sidebar.png)
 
-Yleisessä haussa tunnisteen valitseminen löytää sisällöt, joihin kyseinen tunniste on lisätty. Voit selata tunnisteen perusteella kirjoittamatta hakulauseketta. Kun yhdistät tunnisteen ja hakulausekkeen, haku kohdistuu tunnisteella merkittyyn sisältöön eikä kaikkeen näiden ketjujen sisältöön.
+<!-- translation-section: global-search -->
 
-Kirjoittajat voivat lisätä tunnisteita kommentteihinsa riippumatta kyselyn tulosten näkyvyydestä. Tunnisteet ovat yhteisiä metatietoja ja pysyvät käytettävissä, jos kysely avataan uudelleen tai sen tulokset piilotetaan. Kommentit ja niiden tunnisteet löytyvät edelleen haulla, vaikka kyselyn tulokset olisi piilotettu. Poistettua sisältöä ei näytetä tunnistesuodattimissa. Sisällön palauttaminen palauttaa myös sen tunnisteet. Aikajanan merkinnät tarjoavat edelleen nimettyjä oikopolkuja yksittäisiin sisältöihin ja toimivat tunnisteista riippumatta.
+## Hae tunnisteella
 
-Osallistumisraportit laskevat, kuinka monessa ketjussa kukin tunniste on. Osallistuminen tällaiseen ketjuun ei välttämättä tarkoita, että henkilö olisi kirjoittanut kyseisellä tunnisteella merkittyä sisältöä.
+Avaa **Hae** yläreunan navigaatiosta ja valitse pääryhmäsi, niin tunnistevalikko tulee näkyviin. Valitse tunniste löytääksesi keskustelut, kyselyt, johtopäätökset ja kommentit, joissa on kyseinen tunniste.
+
+Jätä hakukenttä tyhjäksi selataksesi sisältöä tunnisteen mukaan tai kirjoita sana tai ilmaus hakeaksesi tunnisteella merkitystä sisällöstä. Poista tunnistesuodatin valitsemalla **Mikä tahansa tagi**.
+
+![Tunnisteen valitseminen yleisessä haussa pääryhmän valitsemisen jälkeen](tags_global_search.png)

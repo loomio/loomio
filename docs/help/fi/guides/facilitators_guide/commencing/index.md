@@ -1,10 +1,10 @@
 ---
 title: Aloittaminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: 510eb9c600b57dbe
   settling: 0e94e3c0ef063170
   who-s-in-the-room: 4c9ddaa1ce95ae73
-  check-in: 48f40f5c121a112b
+  check-in: d3c6d4166a2b3401
   who-s-not-in-the-room: 8e43112ed90ab68e
   culture-protocol-expectations: 20431cbbc681077f
 title_source: a595572326eb8669
@@ -107,7 +107,7 @@ Ihmiset eivät ilmaise itseään tyhjiössä, vaan heidän taustansa ja identite
 Loomiossa
 
 * Luo ketju nimeltä ”Esittäydy” tai ”Kuulumiskierros”. Se tarjoaa hyödyllisen ensimmäisen _toimintakehotuksen_, jonka jokainen mukaan tuleva ymmärtää.
-* Ryhmissä, joihin liitytään pyynnöstä, liittymistä pyytävä voi esitellä itsensä koordinaattorille päästäkseen ryhmään. Joissakin ryhmissä esittely julkaistaan uudelleen esittäytymisketjussa, jotta tulija voidaan toivottaa tervetulleeksi.
+* Ryhmissä, joihin liitytään pyynnöstä, liittymistä pyytävä voi esitellä itsensä ryhmän ylläpitäjälle päästäkseen ryhmään. Joissakin ryhmissä esittely julkaistaan uudelleen esittäytymisketjussa, jotta tulija voidaan toivottaa tervetulleeksi.
 * Lisää profiilikuva. Kasvokuvat ovat yksi tehokkaimmista tavoista luoda verkossa tunne siitä, että tiedät, keitä kanssasi on mukana.
 
 <!-- translation-section: who-s-not-in-the-room -->

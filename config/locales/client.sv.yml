@@ -1069,7 +1069,7 @@ sv:
       has_not_read_thread: Har inte sett tråden
       has_not_joined_yet: Har inte gått med ännu
       has_not_joined_yet_hint: Den här användaren har inte accepterat sin inbjudan att gå med i Loomio och kommer inte att få ytterligare meddelanden förrän de gör det
-      discussion_admin: Diskussionsadministratör
+      discussion_admin: "Trådadmin"
       has_not_read_discussion: Har inte sett diskussionen
     group_form:
       search_placeholder: Sök efter personer...
@@ -1611,7 +1611,7 @@ sv:
     title_helptext:
       group: Den här titeln kommer att visas bredvid %{name}s namn inom den här gruppen. Använd den för att låta folk veta sin roll.
     title_label: titel
-    title_placeholder: T.ex. "koordinator" eller "förmedlare"
+    title_placeholder: "T.ex. ”Admin” eller ”Mötesledare”"
     updated: Medlemstitel uppdaterad
     weight_label: Röstvikt
   user_name_modal:

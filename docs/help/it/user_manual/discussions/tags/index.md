@@ -1,28 +1,30 @@
 ---
 title: Etichette di categoria
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 36edef5272b6231f
-  apply-tags: 8dcc5f3831c25594
+  apply-tags: 8d1a68269a0605aa
   create-tags: 55f1b5ef807621d9
   edit-tags: 9a9f64d1aa713733
   edit-tag-in-thread-or-poll: 14c86ef043b3a7fa
   template-tags: c0e1333396dd7a50
-  tag-contributions: 0a7b1a6f4b77404e
-  find-tagged-contributions: 9a87ee04dd79be7a
+  tag-contributions: 0fc7baf87edbc69f
+  find-tagged-contributions: ec015213bcb3fe1b
+  global-search: 846ee32d90d9b230
 title_source: c86f6830bf302394
 title_generated: 8b48a1d5453587c7
 ---
@@ -43,13 +45,13 @@ Nella pagina del tuo gruppo, fai clic su **Etichette** sopra l'elenco delle conv
 
 ## Applica tag
 
-Puoi applicare tag alle tue discussioni, ai tuoi sondaggi, alle tue conclusioni e ai tuoi commenti. I coordinatori della conversazione possono applicare tag a qualsiasi contributo.
+Puoi applicare tag alle tue discussioni, ai tuoi sondaggi, alle tue conclusioni e ai tuoi commenti. Gli amministratori del gruppo, gli amministratori della conversazione e le persone autorizzate a modificare il contesto della discussione possono applicare tag a qualsiasi contributo in una conversazione non bloccata. Nelle conversazioni dirette, tutti i partecipanti possono applicare tag a qualsiasi contributo.
 
 Quando avvii una conversazione o un sondaggio, fai clic sul campo **Etichette** e seleziona uno o più tag.
 
 ![](tags_add_new.png)
 
-Inizia a digitare per filtrare l'elenco. Per rimuovere un tag, selezionalo di nuovo oppure fai clic sulla × accanto al suo nome.
+Inizia a digitare per filtrare l'elenco. Per rimuovere un tag, selezionalo di nuovo oppure fai clic sulla × nel riquadro del tag.
 
 <!-- translation-section: create-tags -->
 
@@ -113,7 +115,7 @@ Il selettore mostra i tag usati nel gruppo attuale, i tag dell'organizzazione no
 
 Apri il menu delle azioni di un sondaggio, di una conclusione o di un commento e seleziona **Inserisci etichette**. Lo stesso selettore usato accanto al titolo della discussione ti permette di aggiungere o rimuovere tag. Le modifiche vengono salvate immediatamente. Quando un contributo ha dei tag, questi e il relativo pulsante appaiono a destra nella riga con l'autore e la data e l'ora.
 
-I tag si applicano al contributo che selezioni. Non vengono ereditati dalle risposte. Applicare un tag alla discussione iniziale non lo applica a tutti i commenti o sondaggi nella sua conversazione. Non è possibile applicare tag ai voti o alle schede di voto.
+I tag si applicano al contributo che selezioni. Non è possibile applicare tag ai voti o alle schede di voto.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +123,14 @@ I tag si applicano al contributo che selezioni. Non vengono ereditati dalle risp
 
 La sezione **Etichette** appare nella barra laterale della conversazione quando almeno un contributo oltre alla discussione o al sondaggio iniziale ha dei tag. Raccoglie i tag dell'elemento iniziale e di tutti gli altri contributi con tag. Seleziona un tag per mostrare i contributi corrispondenti con il contesto a cui appartengono. Una barra degli strumenti resta visibile sopra la conversazione mentre il filtro è attivo. Chiudila con il pulsante × a destra, seleziona di nuovo il tag oppure scegli **Pulisci** nella barra laterale per tornare alla visualizzazione abituale della conversazione. Su un dispositivo mobile, apri il pannello di navigazione della conversazione per usare lo stesso filtro.
 
-I tag accanto al titolo della discussione appartengono alla discussione iniziale. L'elenco delle conversazioni del gruppo usa tutti i tag presenti nella conversazione, quindi rimuovere un tag dalla discussione iniziale non rimuove la conversazione da quella categoria se un altro contributo ha ancora quel tag.
+![Tag nella barra laterale della conversazione](tags_thread_sidebar.png)
 
-Nella ricerca globale, selezionare un tag permette di trovare i contributi a cui quel tag è stato applicato esplicitamente. Puoi esplorare i contenuti per tag senza inserire una frase di ricerca. Combinando un tag con una frase, la ricerca viene effettuata nel contenuto dei contributi con quel tag, anziché in tutti i contributi delle loro conversazioni.
+<!-- translation-section: global-search -->
 
-Gli autori possono applicare tag ai propri commenti indipendentemente dalla visibilità dei risultati del sondaggio. I tag sono metadati condivisi e restano disponibili se un sondaggio viene riaperto o se i suoi risultati vengono nascosti. I commenti e i loro tag restano ricercabili mentre i risultati del sondaggio sono nascosti. I contributi eliminati sono esclusi dai filtri per tag; ripristinare un contributo ne ripristina i tag. Le voci della cronologia continuano a fornire collegamenti con nome ai singoli contributi e funzionano indipendentemente dai tag.
+## Cerca per tag
 
-I resoconti sulla partecipazione contano le conversazioni che contengono ciascun tag. Partecipare a una di queste conversazioni non significa necessariamente aver scritto un contributo con quel tag.
+Apri **Ricerca** dalla barra di navigazione in alto e seleziona il tuo gruppo principale per visualizzare il menu dei tag. Scegli un tag per trovare discussioni, sondaggi, conclusioni e commenti con quel tag.
+
+Lascia vuoto il campo di ricerca per esplorare i contenuti per tag, oppure inserisci una parola o una frase per cercare tra i contributi con quel tag. Seleziona **Qualsiasi etichetta** per rimuovere il filtro per tag.
+
+![Selezione di un tag nella ricerca globale dopo aver scelto il gruppo principale](tags_global_search.png)

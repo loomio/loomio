@@ -1,14 +1,14 @@
 ---
 title: Порада
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 3e286d87289a94e4
   when-to-use-advice: 6eb3d6f913f14288
-  example-choose-a-washing-supplier: 81d2e18ceb3340bf
+  example-choose-a-washing-supplier: eb93d07c9e187af4
   set-up-the-proposal: dbf5a1fe0b2c8d54
   vote: 5750a4f11693bac0
   read-the-results: 5371f39c7c99f158
@@ -48,7 +48,7 @@ needs_review:
 
 ## Приклад: вибір постачальника послуг миття
 
-Координатор операційної діяльності кооперативу Oatmilk має вибрати постачальника послуг миття. Для цього координатор просить поради щодо потужностей, даних про дотримання вимог безпечності харчових продуктів, використання води, часу реагування на запити та підтримки.
+Керівник операційної діяльності кооперативу Oatmilk має вибрати постачальника послуг миття. Для цього керівник просить поради щодо потужностей, даних про дотримання вимог безпечності харчових продуктів, використання води, часу реагування на запити та підтримки.
 
 <!-- translation-section: set-up-the-proposal -->
 

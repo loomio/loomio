@@ -1,16 +1,16 @@
 ---
 title: Пошук вмісту
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 21caf2208df3746e
   search-tips: fc2004d84608f3d2
   filter-discussions: 72fab77fadfe2844
-  category-tags: bdbf7f338050d19f
+  category-tags: f19398fceae0ec87
   unread-discussions: bce703cf191cd453
   polls-awaiting-your-vote: 20da32b9a934aa3c
   bookmarks: e5c3de97d7627409
@@ -71,7 +71,7 @@ Loomio пропонує кілька способів знайти обгово�
 
 ![](tags.png)
 
-Виберіть тег на вкладці **Обговорення**, щоб показати теми, які містять допис із цим тегом. У темі виберіть тег на бічній панелі, щоб знайти дописи з цим тегом разом із контекстом, до якого вони належать. Автори та координатори тем можуть додавати теги. Докладніше про налаштування та дозволи дивіться на сторінці [Теги категорій](/en/user_manual/discussions/tags).
+Виберіть тег на вкладці **Обговорення**, щоб показати теми, які містять допис із цим тегом. У темі виберіть тег на бічній панелі, щоб знайти дописи з цим тегом разом із контекстом, до якого вони належать. Автори можуть додавати теги до власних дописів. Адміністратори груп, адміністратори тем і люди з дозволом редагувати контекст обговорення можуть додавати теги до будь-якого допису. Докладніше про налаштування та дозволи дивіться на сторінці [Теги категорій](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

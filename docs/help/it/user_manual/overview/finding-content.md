@@ -1,16 +1,16 @@
 ---
 title: Trovare contenuti
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 0f7b616246a69fd2
   search-tips: 9d5be313ec558270
   filter-discussions: a19da6f812e99111
-  category-tags: 916e429bd3abb6d7
+  category-tags: a8e3e32140840437
   unread-discussions: 262742674e734fb9
   polls-awaiting-your-vote: 2db0a40e43d47c5d
   bookmarks: c5d7a4007bf8bb55
@@ -71,7 +71,7 @@ I tag raggruppano discussioni, sondaggi, conclusioni e commenti correlati sotto 
 
 ![](tags.png)
 
-Seleziona un tag nella scheda **Discussioni** per mostrare le conversazioni che contengono un contributo corrispondente. All'interno di una conversazione, seleziona un tag nella barra laterale per trovare i contributi corrispondenti insieme al contesto a cui appartengono. Gli autori e i coordinatori delle conversazioni possono applicare tag. Consulta [Tag di categoria](/en/user_manual/discussions/tags) per i dettagli sulla configurazione e sui permessi.
+Seleziona un tag nella scheda **Discussioni** per mostrare le conversazioni che contengono un contributo corrispondente. All'interno di una conversazione, seleziona un tag nella barra laterale per trovare i contributi corrispondenti insieme al contesto a cui appartengono. Gli autori possono applicare tag ai propri contributi. Gli amministratori del gruppo, gli amministratori della conversazione e le persone con il permesso di modificare il contesto della discussione possono applicare tag a qualsiasi contributo. Consulta [Tag di categoria](/en/user_manual/discussions/tags) per i dettagli sulla configurazione e sui permessi.
 
 <!-- translation-section: unread-discussions -->
 

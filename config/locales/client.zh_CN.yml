@@ -1113,7 +1113,7 @@ zh_CN:
       not_notified: 尚未收到通知
       no_members: 这件事还没跟任何人分享过！
       group_admin: 群组管理员
-      discussion_admin: 讨论管理员
+      discussion_admin: "主题管理员"
       last_read_at: 上次查看时间：%{time}
       has_not_read_discussion: 未查看讨论
       has_not_joined_yet: 尚未加入
@@ -1683,7 +1683,7 @@ zh_CN:
     title_helptext:
       group: 此标题将显示在 %{name} 的名字旁边。使用它可以让成员了解他们的角色。
     title_label: 标题
-    title_placeholder: 例如“协调员”或“促进者”
+    title_placeholder: "例如“管理员”或“引导者”"
     updated: 会员头衔已更新
     weight_label: 投票权重
   user_name_modal:

@@ -13,6 +13,8 @@ These notes apply to any copy written for end users: UI strings, flash/error mes
 
 ### Prefer
 
+Use **group admin** and **thread admin** for permission roles. **Administrator** is acceptable in longer prose. Do not use **coordinator** for either role, even when an older code identifier or source document uses it.
+
 Plain, factual statements: what happened, what the software does, who it's for. No adjectives doing the work that a fact could do. This is consistent with the [localization guidance](localization.md) (calm tone, no exclamation marks on success messages).
 
 - **Lead with the value to the user.** Explain what a feature helps people do before describing eligibility, configuration, or implementation constraints.

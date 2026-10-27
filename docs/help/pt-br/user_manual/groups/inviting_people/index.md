@@ -1,10 +1,10 @@
 ---
 title: Convidar pessoas
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
   introduction: 3b0c44b951dcdbc1
   send-invitations-via-email: 2b8a4d9f59ade3fb
@@ -28,7 +28,7 @@ generated:
   managing-invitations: c0713e8dece67057
   re-send-invitations: 155d1c02af55f9cc
   cancelling-invitations: 5a674fbf2baf4f85
-  invitation-notification-history: 6a78f135f3359458
+  invitation-notification-history: cba44c8a9874b0e7
 title_source: b926eb8921d85971
 title_generated: 78d2d476af72d5ea
 ---
@@ -130,7 +130,7 @@ Você também pode tornar as pessoas administradoras ou definir seu cargo no gru
 
 ### Histórico de entrega de convites
 
-Se alguém não estiver recebendo o e-mail de convite, os coordenadores do grupo podem abrir **Histórico de entrega de convites** no menu de três pontos (**⋮**) ao lado do nome da pessoa na página Membros para ver quando os convites foram enviados e quaisquer problemas de entrega registrados.
+Se alguém não estiver recebendo o e-mail de convite, os admins do grupo podem abrir **Histórico de entrega de convites** no menu de três pontos (**⋮**) ao lado do nome da pessoa na página Membros para ver quando os convites foram enviados e quaisquer problemas de entrega registrados.
 
 <!-- translation-section: re-send-invitations -->
 

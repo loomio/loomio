@@ -14,7 +14,7 @@ On your group page, click **Tags** above the thread list. Select a tag to show t
 
 ## Apply tags
 
-You can tag your own discussions, polls, outcomes, and comments. Thread coordinators can tag any contribution.
+You can tag your own discussions, polls, outcomes, and comments. Group admins, thread admins, and people with permission to edit the discussion context can tag any contribution in an unlocked thread. In direct threads, all participants can tag any contribution.
 
 When you start a thread or poll, click the **Tags** field and select one or more tags.
 
@@ -84,7 +84,7 @@ The picker shows tags used in the current group, unused organization tags, and t
 
 Open a poll, outcome, or comment's action menu and select **Apply tags**. The same picker used beside the discussion title lets you add or remove tags. Changes save immediately. When a contribution has tags, its chips and tag button appear on the right of its author and timestamp line.
 
-Tags apply to the contribution you select. They are not inherited by replies. Tagging the opening discussion does not tag every comment or poll in its thread. Votes and ballots cannot be tagged.
+Tags apply to the contribution you select. Votes and ballots cannot be tagged.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -92,10 +92,14 @@ Tags apply to the contribution you select. They are not inherited by replies. Ta
 
 The **Tags** section appears in the thread sidebar once a contribution beyond the opening discussion or poll has tags. It collects tags from the opening item and all other tagged contributions. Select a tag to show matching contributions with their parent context. A toolbar stays visible above the thread while the filter is active. Close it with the × button on the right, select the tag again, or choose **Clear** in the sidebar to return to the usual thread view. On mobile, open the thread navigation drawer to use the same filter.
 
-The tags beside the discussion title belong to the opening discussion. The group thread list uses all tags in the thread, so removing a tag from the opening discussion does not remove the thread from that category if another contribution still carries it.
+![Tags in the thread sidebar](tags_thread_sidebar.png)
 
-In global search, selecting a tag finds contributions explicitly carrying that tag. You can browse by tag without entering a search phrase. Combining a tag with a phrase searches the tagged contributions' content, rather than every contribution in their threads.
+<!-- translation-section: global-search -->
 
-Authors can tag their comments regardless of the poll's result visibility. Tags are shared metadata and remain available if a poll is reopened or its results become hidden. Comments and their tags remain searchable while poll results are hidden. Deleted contributions are omitted from tag filters; restoring a contribution restores its tags. Timeline entries continue to provide named shortcuts to individual contributions and work independently of tags.
+## Search by tag
 
-Participation reports count threads containing each tag. Participation in one of those threads does not necessarily mean a person authored a contribution with that tag.
+Open **Search** from the top navigation and select your parent group to show the tag menu. Choose a tag to find discussions, polls, outcomes, and comments carrying that tag.
+
+Leave the search field empty to browse by tag, or enter a word or phrase to search within the tagged contributions. Select **Any tag** to clear the tag filter.
+
+![Selecting a tag in global search after choosing the parent group](tags_global_search.png)

@@ -109,13 +109,13 @@ While it is open, people can vote, explain their vote, and change their vote. Re
 
 ### 4. It closes
 
-It closes automatically at the closing time. A poll coordinator can also close it early. After it closes, a poll coordinator can reopen it with a new closing time to let people keep voting. Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
+It closes automatically at the closing time. A thread admin can also close it early. After it closes, a thread admin can reopen it with a new closing time to let people keep voting. Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Share an outcome
 
-When it closes, Loomio asks the poll coordinators to share an outcome.
+When it closes, Loomio asks the thread admins to share an outcome.
 
 ![The prompt to enter an outcome after a proposal closes](outcome_prompt.png)
 

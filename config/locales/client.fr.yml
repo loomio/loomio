@@ -1083,7 +1083,7 @@ fr:
       has_not_read_thread: N’a pas thread vu
       has_not_joined_yet: N'a pas encore rejoint
       has_not_joined_yet_hint: Cet utilisateur n'a pas accepté son invitation à rejoindre Loomio et ne recevra pas d'autres notifications tant qu'il ne l'aura pas fait.
-      discussion_admin: administrateur de la discussion
+      discussion_admin: "Discussion admin"
       has_not_read_discussion: N'a pas consulté la discussion
     group_form:
       search_placeholder: Chercher des personnes...
@@ -1638,7 +1638,7 @@ fr:
     title_helptext:
       group: Ce rôle apparaîtra après le nom de %{name} dans ce groupe. Utilisez-le pour informer les personnes de leur rôle.
     title_label: rôle
-    title_placeholder: Par exemple, « Coordinateur » ou « Facilitateur »
+    title_placeholder: "Par exemple, « Administrateur » ou « Facilitateur »"
     updated: Rôle mis à jour
     weight_label: Poids du vote
   user_name_modal:

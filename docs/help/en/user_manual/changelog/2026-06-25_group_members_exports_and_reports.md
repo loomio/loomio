@@ -12,7 +12,7 @@ This helps admins find people by role, position, or responsibility when titles a
 
 Poll CSV exports now include member details.
 
-This gives admins and coordinators more useful context when reviewing poll participation outside Loomio.
+This gives group admins and thread admins more useful context when reviewing poll participation outside Loomio.
 
 ## Participation report performance
 

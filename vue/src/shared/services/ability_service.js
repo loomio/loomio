@@ -82,7 +82,7 @@ export default new class AbilityService {
     const user = Session.user();
     return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
       topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
-        (topic.topicableType === 'Discussion' && topic.group().membersCanEditDiscussions));
+        topic.group().membersCanEditDiscussions);
   }
 
   canTagTopicItem(item) {
@@ -91,7 +91,7 @@ export default new class AbilityService {
     const user = Session.user();
     if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
     return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
-      (item.kind === 'new_discussion' && topic.group().membersCanEditDiscussions));
+      topic.group().membersCanEditDiscussions);
   }
 
   canAdminTags(topic) {

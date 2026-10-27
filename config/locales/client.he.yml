@@ -1073,7 +1073,7 @@ he:
       has_not_read_thread: לא צפה בשרשור
       has_not_joined_yet: עדיין לא הצטרף
       has_not_joined_yet_hint: משתמש זה לא קיבל את הזמנתו להצטרף ל-Loomio ולא יקבל הודעות נוספות עד שיקבל
-      discussion_admin: מנהל הדיון
+      discussion_admin: "מנהל שרשור"
       has_not_read_discussion: לא צפה בדיון
     group_form:
       search_placeholder: חפש אנשים...
@@ -1615,7 +1615,7 @@ he:
     title_helptext:
       group: שם זה יופיע לצד השם של %{name} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
     title_label: כותרת
-    title_placeholder: 'לדוגמא: מתאם או מאפשר'
+    title_placeholder: "לדוגמה: מנהל או מנחה"
     updated: כותרת החברות עודכנה
     weight_label: משקל הצבעה
   user_name_modal:

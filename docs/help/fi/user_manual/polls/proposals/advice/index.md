@@ -1,14 +1,14 @@
 ---
 title: Neuvoja
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 4859d0da5b4b8f2a
   when-to-use-advice: f1ac3ee180b7bb28
-  example-choose-a-washing-supplier: 04a1193ec0c317c6
+  example-choose-a-washing-supplier: 2918462be33378cd
   set-up-the-proposal: '082fe51100eb450c'
   vote: 201bba39c03f0320
   read-the-results: a105de54fad04804
@@ -47,7 +47,7 @@ Neuvoja-ehdotuksessa ei äänestetä hyväksymisestä. Kerro, kuka tekee päät�
 
 ## Esimerkki: valitse pesupalvelun toimittaja
 
-Oatmilk-osuuskunnan toimintakoordinaattorin on valittava pesupalvelun toimittaja. Hän pyytää neuvoja kapasiteetista, elintarviketurvallisuuden seurantatiedoista, vedenkäytöstä, palvelun vasteajoista ja tuesta.
+Oatmilk-osuuskunnan toiminnasta vastaavan henkilön on valittava pesupalvelun toimittaja. Hän pyytää neuvoja kapasiteetista, elintarviketurvallisuuden seurantatiedoista, vedenkäytöstä, palvelun vasteajoista ja tuesta.
 
 <!-- translation-section: set-up-the-proposal -->
 

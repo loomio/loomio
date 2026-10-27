@@ -1,16 +1,16 @@
 ---
 title: Encontrar contenido
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: f9ec093a6c0ee664
   search-tips: 819f3b5bd0c1726f
   filter-discussions: be5257a6a68fc2f5
-  category-tags: aae7b511f3a172a7
+  category-tags: 4c7357ef34cfa62d
   unread-discussions: ec184519c6679451
   polls-awaiting-your-vote: 5549051d9303538e
   bookmarks: 95cdaf56f0b43029
@@ -71,7 +71,7 @@ Las etiquetas agrupan discusiones, encuestas, conclusiones y comentarios relacio
 
 ![](tags.png)
 
-Selecciona una etiqueta en la pestaña **Discusiones** para mostrar hilos que contengan una aportación coincidente. Dentro de un hilo, selecciona una etiqueta en la barra lateral para encontrar aportaciones coincidentes junto con el contexto al que pertenecen. Los autores y los coordinadores del hilo pueden aplicar etiquetas. Consulta [Etiquetas de categoría](/en/user_manual/discussions/tags) para conocer los detalles de configuración y permisos.
+Selecciona una etiqueta en la pestaña **Discusiones** para mostrar hilos que contengan una aportación coincidente. Dentro de un hilo, selecciona una etiqueta en la barra lateral para encontrar aportaciones coincidentes junto con el contexto al que pertenecen. Los autores pueden etiquetar sus propias aportaciones. Los admins del grupo, los admins del hilo y las personas con permiso para editar el contexto de la discusión pueden etiquetar cualquier aportación. Consulta [Etiquetas de categoría](/en/user_manual/discussions/tags) para conocer los detalles de configuración y permisos.
 
 <!-- translation-section: unread-discussions -->
 

@@ -1075,7 +1075,7 @@ nl_NL:
       has_not_read_thread: Hebben bord niet gezien
       has_not_joined_yet: Is nog niet lid
       has_not_joined_yet_hint: Deze gebruiker heeft de uitnodiging om lid te worden van Loomio niet geaccepteerd en ontvangt geen verdere meldingen totdat hij dit wel doet
-      discussion_admin: Discussiebeheerder
+      discussion_admin: "Threadadmin"
       has_not_read_discussion: Heeft de discussie niet bekeken
     group_form:
       search_placeholder: Zoek naar mensen...
@@ -1617,7 +1617,7 @@ nl_NL:
     title_helptext:
       group: Deze titel zal naast %{name}'s naam verschijnen binnen deze groep. Gebruik dit om mensen hun rol te laten weten.
     title_label: titel
-    title_placeholder: bv 'Coordinator', of 'Facilitator'
+    title_placeholder: "Bijv. 'Admin' of 'Facilitator'"
     updated: Lidmaatschapstitel geupdate
     weight_label: Stemgewicht
   user_name_modal:

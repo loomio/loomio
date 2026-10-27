@@ -1,16 +1,16 @@
 ---
 title: Inhoud vinden
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 3d10de67a3e5dd0a
   search-tips: 4364609a0c79e00f
   filter-discussions: 31e584e1aa043dc6
-  category-tags: 89b1c1b412c49329
+  category-tags: d60668aba3fc92e0
   unread-discussions: daf8fab91e73b4c3
   polls-awaiting-your-vote: 75bf0b4728c130f4
   bookmarks: a756900967f6ae85
@@ -71,7 +71,7 @@ Labels groeperen gerelateerde discussies, peilingen, conclusies en reacties onde
 
 ![](tags.png)
 
-Selecteer een label op het tabblad **Discussies** om threads met een bijbehorende bijdrage te tonen. Selecteer binnen een thread een label in de zijbalk om bijbehorende bijdragen met hun bovenliggende context te vinden. Auteurs en threadcoördinatoren kunnen labels toevoegen. Zie [Categorielabels](/en/user_manual/discussions/tags) voor meer informatie over het instellen en de toegangsrechten.
+Selecteer een label op het tabblad **Discussies** om threads met een bijbehorende bijdrage te tonen. Selecteer binnen een thread een label in de zijbalk om bijbehorende bijdragen met hun bovenliggende context te vinden. Auteurs kunnen labels toevoegen aan hun eigen bijdragen. Groepsadmins, threadadmins en mensen met toestemming om de discussiecontext te bewerken, kunnen labels toevoegen aan elke bijdrage. Zie [Categorielabels](/en/user_manual/discussions/tags) voor meer informatie over het instellen en de toegangsrechten.
 
 <!-- translation-section: unread-discussions -->
 

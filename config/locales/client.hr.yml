@@ -1071,7 +1071,7 @@ hr:
       has_not_read_thread: Nije pogledao nit
       has_not_joined_yet: Još se nije pridružio
       has_not_joined_yet_hint: Ovaj korisnik nije prihvatio njihov poziv da se pridruži Loomiju i neće primati daljnje obavijesti dok to ne prihvati
-      discussion_admin: Administrator rasprave
+      discussion_admin: "Administrator teme"
       has_not_read_discussion: Nije pregledao/la raspravu
     group_form:
       search_placeholder: Traži ljude...
@@ -1605,7 +1605,7 @@ hr:
     title_helptext:
       group: Ovaj naslov će se pojaviti pored imena %{name} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
     title_label: titula
-    title_placeholder: Npr. 'Koordinator' ili 'Facilitator'
+    title_placeholder: "Npr. „Admin” ili „Facilitator”"
     updated: Naziv članstva ažuriran
     weight_label: Težina glasova
   user_name_modal:

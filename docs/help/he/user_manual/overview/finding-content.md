@@ -1,16 +1,16 @@
 ---
 title: איתור תוכן
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: b536fd22e7fafe96
   search-tips: 90a67a87755f520d
   filter-discussions: a6fbb56c27f1d8bb
-  category-tags: 3dad01b1df67b6dc
+  category-tags: 149a9ae43cd5e834
   unread-discussions: 1a7c4373ec80050a
   polls-awaiting-your-vote: b9238bf263c4354a
   bookmarks: f708a9de1bc3d296
@@ -73,7 +73,7 @@ Loomio מספקת כמה דרכים לאיתור דיונים והחלטות ב�
 
 ![](tags.png)
 
-יש לבחור תגית בלשונית **דיונים** כדי להציג שרשורים המכילים פריט תואם. בתוך שרשור, יש לבחור תגית בסרגל הצד כדי למצוא פריטים תואמים יחד עם ההקשר שבו הם מופיעים. מחברי הפריטים ורכזי השרשורים יכולים להוסיף תגיות. פרטים על הגדרה והרשאות מופיעים בעמוד [תגיות קטגוריה](/en/user_manual/discussions/tags).
+יש לבחור תגית בלשונית **דיונים** כדי להציג שרשורים המכילים פריט תואם. בתוך שרשור, יש לבחור תגית בסרגל הצד כדי למצוא פריטים תואמים יחד עם ההקשר שבו הם מופיעים. ניתן להוסיף תגיות לפריטים על ידי מי שכתבו אותם. למנהלי קבוצה, למנהלי שרשור ולמי שיש הרשאה לערוך את הקשר הדיון יש אפשרות להוסיף תגיות לכל פריט. פרטים על הגדרה והרשאות מופיעים בעמוד [תגיות קטגוריה](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

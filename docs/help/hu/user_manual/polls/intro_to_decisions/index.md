@@ -1,10 +1,10 @@
 ---
 title: Javaslatok és szavazások
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: 160ae44c632bbf7d
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: 48eb6e96196ccd27
   find-the-right-help: eab9fd9db254f8d2
@@ -33,8 +33,8 @@ generated:
   1-create-it: f3e8a61816e977ec
   2-voting-opens: f18c6c078d6ed55a
   3-people-vote: 4a3a475e41a53461
-  4-it-closes: 014e48efa6bd85b8
-  5-share-an-outcome: d0b571f688f4d60c
+  4-it-closes: fe6b36ed4484db29
+  5-share-an-outcome: 855ea851321438c4
 title_source: d45b4ba3cb7a27cb
 title_generated: b90b8b4620a81657
 ---
@@ -150,13 +150,13 @@ Amíg a szavazás nyitva van, az emberek szavazhatnak, megindokolhatják és mó
 
 ### 4. Lezárul
 
-A szavazás automatikusan lezárul a lezárási időpontban. A szavazás koordinátora korábban is lezárhatja. A lezárás után a szavazás koordinátora új lezárási időponttal újranyithatja, hogy az emberek tovább szavazhassanak. Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, köztük a névtelen szavazásokat, nem lehet újranyitni. Amíg ezek a szavazások nyitva vannak, meghosszabbíthatod a lezárási idejüket.
+A szavazás automatikusan lezárul a lezárási időpontban. A szál adminja korábban is lezárhatja. A lezárás után a szál adminja új lezárási időponttal újranyithatja, hogy az emberek tovább szavazhassanak. Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, köztük a névtelen szavazásokat, nem lehet újranyitni. Amíg ezek a szavazások nyitva vannak, meghosszabbíthatod a lezárási idejüket.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Oszd meg a következtetést
 
-Amikor a szavazás lezárul, a Loomio megkéri a szavazás koordinátorait, hogy osszák meg a következtetést.
+Amikor a szavazás lezárul, a Loomio megkéri a szál adminjait, hogy osszák meg a következtetést.
 
 ![Felhívás a következtetés megadására a javaslat lezárása után](outcome_prompt.png)
 

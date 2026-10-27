@@ -42,6 +42,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
   end
 
   test 'tagging uses the current access-control matrix and never grants access to revoked authors' do
+    @topic.group.update!(members_can_edit_discussions: false)
     allowed = %i[admin guest_admin_normal member_normal]
     denied = %i[member_quiet guest_normal alien_quiet non_guest_loud former_guest_loud former_member_loud inactive_member_loud inactive_guest_loud]
     allowed.each { |role| assert users(role).can?(:update_tags, @item), role.to_s }
@@ -67,17 +68,74 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_not serialized_topic.call.fetch('has_tagged_replies')
   end
 
-  test 'direct-topic authors and coordinators can tag but ordinary or revoked guests cannot tag others' do
+  test 'context editing allows tagging every contribution while preserving the access-control matrix' do
+    @topic.group.update!(members_can_edit_discussions: true)
+    poll = make_poll
+    PollService.close(poll: poll, actor: @admin)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: poll, statement: 'Proceed'), actor: @admin)
+    items = [@root, poll.created_topic_item, outcome.created_topic_item, @item]
+    allowed = %i[admin guest_admin_normal member_normal member_quiet guest_normal]
+    denied = %i[alien_quiet non_guest_loud former_guest_loud former_member_loud inactive_member_loud inactive_guest_loud]
+
+    items.each do |item|
+      allowed.each { |role| assert users(role).can?(:update_tags, item), "#{item.kind}: #{role}" }
+      denied.each { |role| assert_not users(role).can?(:update_tags, item), "#{item.kind}: #{role}" }
+      assert_not LoggedOutUser.new.can?(:update_tags, item)
+      TopicItemService.update_tags(topic_item: item, tags: ['Organized'], actor: users(:member_quiet))
+      assert_equal ['Organized'], item.reload.tags
+    end
+
+    @topic.group.update!(members_can_edit_discussions: false)
+    items.each { |item| assert_not users(:member_quiet).can?(:update_tags, item), item.kind }
+  end
+
+  test 'context editors cannot tag locked discarded or disabled threads or removed contributions' do
+    @topic.group.update!(members_can_edit_discussions: true)
+    editor = users(:member_quiet)
+    assert editor.can?(:update_tags, @item)
+
+    @topic.update!(locked_at: Time.current)
+    assert_raises(CanCan::AccessDenied) { tag(@item, ['Blocked'], editor) }
+    @topic.update!(locked_at: nil, discarded_at: Time.current)
+    assert_raises(CanCan::AccessDenied) { tag(@item, ['Blocked'], editor) }
+    @topic.update!(discarded_at: nil)
+    @comment.update!(discarded_at: Time.current)
+    assert_raises(CanCan::AccessDenied) { tag(@item, ['Blocked'], editor) }
+    @comment.update!(discarded_at: nil)
+    subscription = Subscription.create!(plan: 'free', state: 'on_hold')
+    @topic.group.update!(subscription: subscription)
+    assert_raises(CanCan::AccessDenied) { tag(@item, ['Blocked'], editor) }
+    assert_empty @item.reload.tags
+  end
+
+  test 'member editing permits tagging the opening poll and replies in a standalone poll thread' do
+    poll = PollService.create(params: {group_id: @topic.group_id, poll_type: 'proposal', title: 'Standalone poll',
+      poll_option_names: ['Agree'], closing_at: 2.days.from_now}, actor: @admin)
+    comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Follow up'), actor: @admin)
+    editor = users(:member_quiet)
+    @topic.group.update!(members_can_edit_discussions: false)
+    items = [poll.created_topic_item, comment.created_topic_item]
+    items.each { |item| assert_not editor.can?(:update_tags, item) }
+
+    @topic.group.update!(members_can_edit_discussions: true)
+    items.each do |item|
+      TopicItemService.update_tags(topic_item: item, tags: ['Organized'], actor: editor)
+      assert_equal ['Organized'], item.reload.tags
+    end
+  end
+
+  test 'direct-topic participants can tag others contributions but revoked and unrelated users cannot' do
     topic = topics(:direct_topic)
     author = users(:guest_normal)
     comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Direct budget'), actor: author)
     item = comment.created_topic_item
     assert author.can?(:update_tags, item)
     assert users(:guest_admin_normal).can?(:update_tags, item)
-    %i[guest_quiet non_guest_loud former_guest_loud inactive_guest_loud alien_quiet].each do |role|
+    assert users(:guest_quiet).can?(:update_tags, item)
+    %i[non_guest_loud former_guest_loud inactive_guest_loud alien_quiet].each do |role|
       assert_not users(role).can?(:update_tags, item), role.to_s
     end
-    TopicItemService.update_tags(topic_item: item, tags: ['Private label'], actor: author)
+    TopicItemService.update_tags(topic_item: item, tags: ['Private label'], actor: users(:guest_quiet))
     assert_equal ['Private label'], topic.reload.tags
     assert_not Tag.exists?(name: 'Private label')
   end

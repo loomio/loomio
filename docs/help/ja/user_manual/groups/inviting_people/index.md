@@ -1,10 +1,10 @@
 ---
 title: メンバーを招待する
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
   introduction: d0472b30afa3ea26
   send-invitations-via-email: 060c3642105461e9

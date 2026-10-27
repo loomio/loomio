@@ -1,16 +1,16 @@
 ---
 title: Пошук змесціва
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 33380153df6a280b
   search-tips: 30900d799fc0fb2e
   filter-discussions: cc7968dc66b4fb2d
-  category-tags: a4149796ee19d215
+  category-tags: e86cb810b2539c44
   unread-discussions: cf1bff1b010fb247
   polls-awaiting-your-vote: 637009bd18c94757
   bookmarks: dbfec38814c9d735
@@ -71,7 +71,7 @@ Loomio прапануе некалькі спосабаў знайсці абм�
 
 ![](tags.png)
 
-Выберыце тэг на ўкладцы **Абмеркаванні**, каб паказаць тэмы з допісамі, якія маюць гэты тэг. У тэме выберыце тэг на бакавой панэлі, каб знайсці адпаведныя допісы разам з кантэкстам, да якога яны належаць. Аўтары допісаў і каардынатары тэм могуць дадаваць тэгі. Падрабязнасці пра наладжванне і правы доступу глядзіце ў раздзеле [Тэгі катэгорый](/en/user_manual/discussions/tags).
+Выберыце тэг на ўкладцы **Абмеркаванні**, каб паказаць тэмы з допісамі, якія маюць гэты тэг. У тэме выберыце тэг на бакавой панэлі, каб знайсці адпаведныя допісы разам з кантэкстам, да якога яны належаць. Аўтары могуць дадаваць тэгі да ўласных допісаў. Адміністратары груп, адміністратары тэм і людзі з правам рэдагавання кантэксту абмеркавання могуць дадаваць тэгі да любых допісаў. Падрабязнасці пра наладжванне і правы доступу глядзіце ў раздзеле [Тэгі катэгорый](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

@@ -1,20 +1,20 @@
 ---
 title: Vote anonyme
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: b97bdf2862e4ec7a
   how-anonymous-voting-protects-voters: d136bc2501a72059
-  while-voting-is-open: 7218d0269e6c6bbc
-  votes-cannot-be-changed: 47e26bade58623cb
+  while-voting-is-open: 3a6c1ef63a19eca6
+  votes-cannot-be-changed: 2e915648b03eac38
   why-anonymous-votes-do-not-have-reasons: 0c4f22c307749d21
   results-and-exports: 3378fed87dc33ee5
-  participation-verification: 8290bee2156868d5
+  participation-verification: 7dbb332904692165
   reminders: 0a68333c75993339
-  what-coordinators-and-administrators-can-see: 4f8335d9f1a4f99c
+  what-coordinators-and-administrators-can-see: d859b63f7d484b34
   limits-of-anonymous-voting: '06209050d317de16'
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: c8866e96b45c008a
@@ -74,7 +74,7 @@ Cette séparation est appliquée lors de l’enregistrement du vote. Elle ne rep
 
 ## Pendant que le vote est ouvert
 
-Les résultats restent masqués pour tout le monde jusqu’à la clôture du sondage. Cela inclut les coordinateurs du sondage, les administrateurs du groupe et les administrateurs de l’instance qui utilisent l’application.
+Les résultats restent masqués pour tout le monde jusqu’à la clôture du sondage. Cela inclut les administrateurs du fil, les administrateurs du groupe et les administrateurs de l’instance qui utilisent l’application.
 
 Lorsqu’une personne vote :
 
@@ -90,7 +90,7 @@ Les données de participation ne conservent pas l’heure précise à laquelle l
 
 ## Les votes ne peuvent pas être modifiés
 
-Chaque personne autorisée à voter peut voter une seule fois. Un vote anonyme soumis ne peut pas être consulté, modifié, retiré ni remplacé, même par un coordinateur ou un administrateur.
+Chaque personne autorisée à voter peut voter une seule fois. Un vote anonyme soumis ne peut pas être consulté, modifié, retiré ni remplacé, même par un administrateur.
 
 Permettre à une personne de retrouver ou de remplacer son vote nécessiterait un lien permanent entre cette personne et le vote. Le vote anonyme ne crée volontairement pas ce lien.
 
@@ -124,9 +124,9 @@ Sélectionnez **Voir les votes** pour consulter la liste. Elle indique toujours 
 
 Les membres du groupe et les électeurs du sondage voient également quand chaque personne a rejoint le groupe et qui l’a invitée. Les administrateurs du groupe voient aussi les adresses e-mail pour distinguer les personnes qui portent le même nom.
 
-Comme toute personne pouvant voir les résultats peut voir qui a voté, un résultat unanime peut révéler comment les personnes ont voté. Par exemple, si tous les votes sont Accord, toutes les personnes qui ont voté ont exprimé leur accord.
+Comme toute personne pouvant voir les résultats peut voir qui a voté, un résultat allant dans un seul sens peut révéler comment les personnes ont voté. Par exemple, si tous les votes sont Accord, toutes les personnes qui ont voté ont exprimé leur accord.
 
-Les coordinateurs peuvent ajouter des personnes autorisées à voter tant que le vote reste ouvert, y compris après que d’autres personnes ont voté. Les électeurs déjà présents ne peuvent pas être retirés d’un sondage anonyme.
+Les administrateurs peuvent ajouter des personnes autorisées à voter tant que le vote reste ouvert, y compris après que d’autres personnes ont voté. Les électeurs déjà présents ne peuvent pas être retirés d’un sondage anonyme.
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ Les sondages dont la durée totale de vote est inférieure à 24 heures n’envo
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Ce que les coordinateurs et les administrateurs peuvent voir
+## Ce que les administrateurs peuvent voir
 
-Dans l’application, un coordinateur de sondage, un administrateur de groupe ou un administrateur d’instance peut avoir accès aux informations suivantes :
+Dans l’application, un administrateur de fil, un administrateur de groupe ou un administrateur d’instance peut avoir accès aux informations suivantes :
 
 - le sondage et ses électeurs autorisés à voter ;
 - si chaque personne autorisée à voter a voté, lorsque son rôle permet cet accès et qu’un nombre suffisant de personnes a voté ; et

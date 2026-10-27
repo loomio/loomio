@@ -1,16 +1,16 @@
 ---
 title: Encontrar conteúdo
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 4f959dd1007491d2
   search-tips: 60375ff1f35326eb
   filter-discussions: 34da34d3f72e1f95
-  category-tags: 1069d83f1453a037
+  category-tags: 8c881d31fcb29e7c
   unread-discussions: a0aee32fc32fc55a
   polls-awaiting-your-vote: 2953d59f66ae0aec
   bookmarks: 5947d3f191ee26e2
@@ -71,7 +71,7 @@ As tags agrupam discussões, enquetes, conclusões e comentários relacionados s
 
 ![](tags.png)
 
-Selecione uma tag na aba **Discussões** para exibir conversas que contenham uma contribuição correspondente. Dentro de uma conversa, selecione uma tag na barra lateral para encontrar contribuições correspondentes com o contexto ao qual pertencem. Autores e coordenadores de conversas podem aplicar tags. Consulte [Tags de categoria](/en/user_manual/discussions/tags) para obter detalhes sobre configuração e permissões.
+Selecione uma tag na aba **Discussões** para exibir conversas que contenham uma contribuição correspondente. Dentro de uma conversa, selecione uma tag na barra lateral para encontrar contribuições correspondentes com o contexto ao qual pertencem. Autores podem adicionar tags às próprias contribuições. Admins de grupo, admins de conversa e pessoas com permissão para editar o contexto da discussão podem adicionar tags a qualquer contribuição. Consulte [Tags de categoria](/en/user_manual/discussions/tags) para obter detalhes sobre configuração e permissões.
 
 <!-- translation-section: unread-discussions -->
 

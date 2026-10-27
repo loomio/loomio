@@ -1,15 +1,15 @@
 ---
 title: Eliminar tu grupo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/deleting_your_group/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: d1fb3691890a02b6
+  introduction: 779d4a92736ca62a
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: f1300089f7950c3f
+  introduction: b89c7b3e577e045e
   group-data-is-permanently-deleted-after-90-days: eb20280f8a698767
 title_source: 9a0868f49f1262ea
 title_generated: 4b8bbecb323ce936
@@ -27,7 +27,7 @@ Abre el menú desplegable del grupo haciendo clic en los tres puntos y seleccion
 
 Cuando eliminas un grupo, deja de estar visible inmediatamente y se elimina permanentemente después de 90 días. Tú y los miembros del grupo perdéis el acceso al grupo inmediatamente. Si ha habido un error, contacta con nosotros dentro de los 90 días posteriores a la eliminación de tu grupo para solicitar que lo restauremos.
 
-Los grupos pendientes de eliminación y sus subgrupos no están disponibles para que los miembros y coordinadores los consulten, participen en ellos o los exporten. Esto incluye las encuestas abiertas desde enlaces guardados. Los miembros no pueden crear ni editar contenido, votar, enviar anuncios o recordatorios ni aceptar invitaciones. Exporta el grupo y descarga los archivos importantes antes de confirmar la eliminación. Las discusiones y encuestas directas no se ven afectadas.
+Los grupos pendientes de eliminación y sus subgrupos no están disponibles para que los miembros y admins los consulten, participen en ellos o los exporten. Esto incluye las encuestas abiertas desde enlaces guardados. Los miembros no pueden crear ni editar contenido, votar, enviar anuncios o recordatorios ni aceptar invitaciones. Exporta el grupo y descarga los archivos importantes antes de confirmar la eliminación. Las discusiones y encuestas directas no se ven afectadas.
 
 Programar la eliminación del grupo detiene las notificaciones de actividad y los recordatorios de encuestas pendientes del grupo y sus subgrupos. Los mensajes que ya se estén enviando pueden llegar igualmente.
 

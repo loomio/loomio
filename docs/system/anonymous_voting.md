@@ -46,7 +46,7 @@ A detached response to an anonymous poll. It contains a random UUID, its poll, a
 
 ## Security guarantee
 
-For a detached anonymous poll, Loomio records whether each eligible person has submitted a vote, but stores the submitted ballot without a user association. Application users, including poll participants, coordinators, group administrators, and instance administrators using the application, cannot link an individual ballot to its voter.
+For a detached anonymous poll, Loomio records whether each eligible person has submitted a vote, but stores the submitted ballot without a user association. Application users, including poll participants, admins, group administrators, and instance administrators using the application, cannot link an individual ballot to its voter.
 
 Individual ballots, ballot choices, and calculated results are unavailable through the application until the poll closes.
 
@@ -61,7 +61,7 @@ The design must prevent ballot-to-voter correlation by:
 - signed-out or public users;
 - ordinary group members;
 - invited poll participants;
-- poll coordinators;
+- thread admins;
 - group and topic administrators;
 - instance administrators using application interfaces;
 - API clients using supported application permissions;
@@ -194,7 +194,7 @@ When voting opens, Loomio must:
 4. make the poll eligible for the hourly automatic-reminder check; and
 5. avoid creating named or undecided stance records.
 
-Coordinators may add eligible voters while the poll is open, including after ballots have been submitted. Group members added to an unrestricted group poll also become eligible while it remains open. Existing electorate records cannot be removed, and late additions must not create a ballot-to-voter correlation path.
+Admins may add eligible voters while the poll is open, including after ballots have been submitted. Group members added to an unrestricted group poll also become eligible while it remains open. Existing electorate records cannot be removed, and late additions must not create a ballot-to-voter correlation path.
 
 ## Ballot submission
 
@@ -224,7 +224,7 @@ The authenticated voter and submitted choices necessarily coexist briefly in app
 
 A voter cannot change or withdraw an anonymous ballot after submission.
 
-The application must not provide an update, revoke, redact, or replace operation for an anonymous ballot. Coordinators and administrators must not receive a privileged ballot-editing path.
+The application must not provide an update, revoke, redact, or replace operation for an anonymous ballot. Group, thread, and instance admins must not receive a privileged ballot-editing path.
 
 If an operational need to invalidate ballots is introduced later, it requires a separate security design because identifying a person's ballot is intentionally impossible.
 
@@ -244,7 +244,7 @@ Before the poll closes:
 
 - individual anonymous ballots are not serialized;
 - ballot choices are not returned to the voter who submitted them;
-- ballot choices are not returned to coordinators or administrators;
+- ballot choices are not returned to group, thread, or instance admins;
 - calculated results are not returned;
 - per-option counts are not returned;
 - ballots do not appear in topics, timelines, searches, notifications, live updates, exports, or chatbot payloads; and
@@ -270,7 +270,7 @@ It must never expose or internally derive which ballot belongs to a participant.
 
 The named electorate is visible to everyone who can view the poll's results. Detached anonymous polls hide results until they close, so the electorate is visible only after closing. Because participation status and aggregate results are visible to the same people, a unanimous or otherwise one-sided result can reveal individual choices to every result viewer.
 
-Group members and the poll's voters may view membership duration and invitation provenance. Other result viewers, including signed-out visitors to a public poll, see names only. The API must omit each person's participation status until enough people have voted, including after a poll closes below the threshold. The threshold is the poll's quorum count if it has a quorum, otherwise half the electorate rounded up, and never fewer than three votes. Only group administrators may view participant email addresses; other coordinators receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
+Group members and the poll's voters may view membership duration and invitation provenance. Other result viewers, including signed-out visitors to a public poll, see names only. The API must omit each person's participation status until enough people have voted, including after a poll closes below the threshold. The threshold is the poll's quorum count if it has a quorum, otherwise half the electorate rounded up, and never fewer than three votes. Only group administrators may view participant email addresses; other admins receive no email value, and email domains are not used as a masked substitute. A missing historical inviter is displayed as unknown rather than preventing verification. Adding a specified voter must update the electorate and cached participation counts in the same poll transaction.
 
 The UI must describe participation verification as named participation metadata, not ballot identity.
 
@@ -499,7 +499,7 @@ Security tests must exercise each boundary independently:
 - eligible voters who have not submitted;
 - eligible voters who have submitted;
 - non-eligible users;
-- poll coordinators;
+- thread admins;
 - group and topic administrators;
 - instance administrators using application interfaces; and
 - application export operators.
@@ -555,7 +555,7 @@ Exact upgrade instructions belong in the release notes and
 1. Native detached results and ordinary user-facing application exports expose aggregates only. Closed STV polls are the ballot-pattern exception: authorized result viewers may export BLT files containing candidate rankings grouped by identical pattern, without ballot identifiers, timestamps, submission order, or electorate records. This disclosure is required for an independent recount and may permit inference when someone already knows a distinctive ranking. The closed-poll JSON group portability archive is the documented operational exception required for restoration. Migrated legacy polls may additionally display a plain-text legacy reason with the choices from that reason's historical vote, without exposing a ballot identifier or metadata.
 2. Everyone who can view the results may view the named electorate after the poll closes, and named participation status once the participation threshold is met. Group members and the poll's voters may also view invitation provenance.
 3. Group polls establish their initial electorate when the poll is created. Polls restricted to specified voters use an explicitly invited electorate.
-4. Coordinators may add specified voters while voting is open, including after ballots have been submitted. New group members become eligible in unrestricted group polls while voting remains open. Existing electorate records cannot be removed.
+4. Admins may add specified voters while voting is open, including after ballots have been submitted. New group members become eligible in unrestricted group polls while voting remains open. Existing electorate records cannot be removed.
 5. `closing_at` may be extended while voting is open. The hourly check uses the current deadline without maintaining queued-job state. A poll receives at most one automatic closing reminder, including after an extension.
 6. The automatic reminder is sent when a poll lasting at least 24 hours enters its final 24 hours. Polls lasting less than 24 hours receive no automatic closing reminder.
 7. There is no minimum electorate size.

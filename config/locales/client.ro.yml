@@ -1069,7 +1069,7 @@ ro:
       has_not_read_thread: Nu a văzut firul
       has_not_joined_yet: Nu s-a alăturat încă
       has_not_joined_yet_hint: Acest utilizator nu și-a acceptat invitația de a se alătura Loomio și nu va mai primi notificări până nu o va face
-      discussion_admin: Administrator discuții
+      discussion_admin: "Admin subiect"
       has_not_read_discussion: Nu a vizualizat discuția
     group_form:
       search_placeholder: Cauta oameni...
@@ -1603,7 +1603,7 @@ ro:
     title_helptext:
       group: Acest titlu va apărea lângă numele lui %{name} în cadrul acestui grup. Folosiți-l pentru a le informa oamenilor rolul lor.
     title_label: titlu
-    title_placeholder: De exemplu, „coordonator” sau „facilitator”
+    title_placeholder: "De exemplu, „Admin” sau „Facilitator”"
     updated: Titlul de membru a fost actualizat
     weight_label: Ponderea voturilor
   user_name_modal:

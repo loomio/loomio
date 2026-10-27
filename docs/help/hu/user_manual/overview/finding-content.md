@@ -1,16 +1,16 @@
 ---
 title: Tartalom keresése
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: ebbf1e28c195a36a
   search-tips: 33af6f9e9bb21d45
   filter-discussions: a5afc403f56c405f
-  category-tags: 9f6ddf9e24f3023b
+  category-tags: 1e12ad8b20246779
   unread-discussions: 5a321f8f5b3ec434
   polls-awaiting-your-vote: a2c71ecbae9d4718
   bookmarks: 21fc7353bd66d2ff
@@ -71,7 +71,7 @@ A címkék a csoportod által választott nevek alatt rendezik az összetartozó
 
 ![](tags.png)
 
-Válassz ki egy címkét a **Beszélgetések** lapon az olyan szálak megjelenítéséhez, amelyek tartalmaznak a címkének megfelelő tartalmi elemet. Egy szálon belül válassz ki egy címkét az oldalsávban, hogy megtaláld a megfelelő tartalmi elemeket a hozzájuk tartozó leírással együtt. A szerzők és a szál koordinátorai alkalmazhatnak címkéket. A beállításokról és a jogosultságokról a [Kategóriacímkék](/en/user_manual/discussions/tags) oldalon olvashatsz.
+Válaszd ki az egyik címkét a **Beszélgetések** lapon az olyan szálak megjelenítéséhez, amelyek tartalmaznak a címkének megfelelő tartalmi elemet. Egy szálon belül válaszd ki az egyik címkét az oldalsávban, hogy megtaláld a megfelelő tartalmi elemeket a hozzájuk tartozó leírással együtt. A szerzők címkézhetik a saját tartalmi elemeiket. A csoportadminok, a száladminok és a beszélgetés leírásának szerkesztésére jogosult személyek bármelyik tartalmi elemet címkézhetik. A beállításokról és a jogosultságokról a [Kategóriacímkék](/en/user_manual/discussions/tags) oldalon olvashatsz.
 
 <!-- translation-section: unread-discussions -->
 

@@ -1,10 +1,10 @@
 ---
 title: הצעות וסקרים
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: 160ae44c632bbf7d
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: be97cc1820963969
   find-the-right-help: 2010e5cea3fd32ef
@@ -33,8 +33,8 @@ generated:
   1-create-it: 47b24347f3e5f216
   2-voting-opens: 51fe75836ca99395
   3-people-vote: ea85595f06b6f761
-  4-it-closes: 617df93a04501bea
-  5-share-an-outcome: 672460936d45b0ac
+  4-it-closes: 0c498f8562303588
+  5-share-an-outcome: 741710df0fe5b687
 title_source: d45b4ba3cb7a27cb
 title_generated: ae9ae909d9ac36c6
 needs_review:
@@ -153,13 +153,13 @@ needs_review:
 
 ### 4. סגירת הסקר
 
-הסקר נסגר אוטומטית במועד הסגירה. ניתן לסגור אותו מוקדם גם באמצעות רכזי הסקר. לאחר הסגירה, רכזי הסקר יכולים לפתוח אותו מחדש עם מועד סגירה חדש כדי לאפשר להמשיך להצביע. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, לרבות סקרים אנונימיים. ניתן להאריך את מועד הסגירה שלהם כל עוד הם פתוחים.
+הסקר נסגר אוטומטית במועד הסגירה. מנהל שרשור יכול גם לסגור אותו מוקדם. לאחר הסגירה, מנהל שרשור יכול לפתוח אותו מחדש עם מועד סגירה חדש כדי לאפשר להמשיך להצביע. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, לרבות סקרים אנונימיים. ניתן להאריך את מועד הסגירה שלהם כל עוד הם פתוחים.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. שיתוף מסקנה
 
-לאחר סגירת הסקר, Loomio מבקש מרכזי הסקר לשתף מסקנה.
+לאחר סגירת הסקר, Loomio מבקש ממנהלי השרשור לשתף מסקנה.
 
 ![הבקשה להזין מסקנה לאחר סגירת הצעה](outcome_prompt.png)
 

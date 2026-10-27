@@ -27,10 +27,24 @@ class Api::V1::TopicItemTagsControllerTest < ActionController::TestCase
   end
 
   test 'other members cannot change someone elses assignments' do
+    @topic.group.update!(members_can_edit_discussions: false)
     sign_in users(:member_quiet)
     patch :tags, params: {id: @item.id, tags: ['Finance']}
     assert_response :forbidden
     assert_equal ['Budget'], @item.reload.tags
+  end
+
+  test 'context editors can apply existing tags to others contributions without creating tag names' do
+    @topic.group.update!(members_can_edit_discussions: true, members_can_create_tags: false)
+    Tag.create!(group: @topic.group, name: 'Finance')
+    sign_in users(:member_quiet)
+
+    patch :tags, params: {id: @item.id, tags: ['Finance', 'New tag']}
+
+    assert_response :success
+    assert_equal ['Finance'], @item.reload.tags
+    assert_equal ['Finance'], @topic.reload.tags
+    assert_not Tag.exists?(group: @topic.group, name: 'New tag')
   end
 
   test 'loading a reply includes the opening tags for discussion and poll topics' do
@@ -92,6 +106,7 @@ class Api::V1::TopicItemTagsControllerTest < ActionController::TestCase
 
   test 'signed out readers can browse public tags but cannot edit them' do
     topic = topics(:public_discussion_topic)
+    topic.group.update!(members_can_edit_discussions: true)
     root = topic.topicable.created_topic_item
     root.update!(tags: ['Public'])
     get :tagged, params: {topic_id: topic.id, tag: 'Public'}

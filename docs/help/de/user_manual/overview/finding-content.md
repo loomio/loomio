@@ -1,16 +1,16 @@
 ---
 title: Inhalte finden
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 297053715280e21f
   search-tips: 9a2633cc3ee7bd34
   filter-discussions: 70155d7e42f8af43
-  category-tags: 22bee27d0665e4c2
+  category-tags: 6ddd1c1062572432
   unread-discussions: 2bfc622d985e22f4
   polls-awaiting-your-vote: 3dbe915779869dec
   bookmarks: b4177a1e490d5f98
@@ -73,7 +73,7 @@ Schlagwörter bündeln zusammengehörige Diskussionen, Abstimmungen, Fazits und 
 
 ![](tags.png)
 
-Wähle im Tab **Diskussionen** ein Schlagwort aus, um Threads anzuzeigen, die einen passenden Beitrag enthalten. Wähle innerhalb eines Threads ein Schlagwort in der Seitenleiste aus, um passende Beiträge mit ihrem übergeordneten Kontext zu finden. Verfassende und Thread-Koordinierende können Schlagwörter zuweisen. Einzelheiten zur Einrichtung und zu den Berechtigungen findest du unter [Kategorie-Schlagwörter](/en/user_manual/discussions/tags).
+Wähle im Tab **Diskussionen** ein Schlagwort aus, um Threads anzuzeigen, die einen passenden Beitrag enthalten. Wähle innerhalb eines Threads ein Schlagwort in der Seitenleiste aus, um passende Beiträge mit ihrem übergeordneten Kontext zu finden. Verfassende können ihren eigenen Beiträgen Schlagwörter zuweisen. Gruppen-Admins, Thread-Admins und Personen mit der Berechtigung, den Diskussionskontext zu bearbeiten, können jedem Beitrag Schlagwörter zuweisen. Einzelheiten zur Einrichtung und zu den Berechtigungen findest du unter [Kategorie-Schlagwörter](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

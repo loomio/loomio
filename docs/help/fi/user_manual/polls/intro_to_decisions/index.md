@@ -1,10 +1,10 @@
 ---
 title: Ehdotukset ja kyselyt
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: 160ae44c632bbf7d
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: 9551fc8dad4cb470
   find-the-right-help: 3f38797ded5c2293
@@ -33,14 +33,13 @@ generated:
   1-create-it: 554045028418cf81
   2-voting-opens: 2d703282ae7e7390
   3-people-vote: 124d3d146461e556
-  4-it-closes: 109c316074b191b8
-  5-share-an-outcome: d745e24578bc140d
+  4-it-closes: 9c64bed059f3e041
+  5-share-an-outcome: c6c5700ee22d68db
 title_source: d45b4ba3cb7a27cb
 title_generated: a66d8804d0433ec4
 needs_review:
   find-the-right-help: use "vaihtoehto" instead of "asetukset" for "option"
   1-create-it: use "vaihtoehto" instead of "asetukset" for "option"
-  5-share-an-outcome: check the interface label "**Tarkistuksen päivämäärä**" for "**Review date**"
 ---
 
 <!-- translation-section: introduction -->
@@ -154,18 +153,18 @@ Kun ehdotus tai kysely on avoinna, ihmiset voivat äänestää, perustella ään
 
 ### 4. Kysely sulkeutuu
 
-Kysely sulkeutuu automaattisesti sulkemisajankohtana. Kyselyn koordinaattori voi myös sulkea sen etuajassa. Sulkemisen jälkeen kyselyn koordinaattori voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Kyselyjä, joiden tulokset piilotetaan äänestyksen päättymiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyjä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
+Kysely sulkeutuu automaattisesti sulkemisajankohtana. Ketjun ylläpitäjä voi myös sulkea sen etuajassa. Sulkemisen jälkeen ketjun ylläpitäjä voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Kyselyjä, joiden tulokset piilotetaan äänestyksen päättymiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyjä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Jaa johtopäätös
 
-Kun kysely sulkeutuu, Loomio pyytää kyselyn koordinaattoreita jakamaan johtopäätöksen.
+Kun kysely sulkeutuu, Loomio pyytää ketjun ylläpitäjiä jakamaan johtopäätöksen.
 
 ![Kehote kirjoittaa johtopäätös ehdotuksen sulkeuduttua](outcome_prompt.png)
 
 Johtopäätös kertoo, mitä päätettiin ja mitä seuraavaksi tapahtuu. Se näkyy tulosten yläpuolella, joten ihmiset lukevat sen ensimmäisenä. Kun julkaiset johtopäätöksen, voit ilmoittaa siitä muille. He saavat sähköpostin, jossa ovat tulokset ja johtopäätös.
 
-Voit myös asettaa **Tarkistuksen päivämäärän**. Sinä päivänä Loomio muistuttaa sinua tarkistamaan päätöksen.
+Voit myös asettaa päivämäärän kohdassa **Tarkistuksen päivämäärä**. Sinä päivänä Loomio muistuttaa sinua tarkistamaan päätöksen.
 
 ![Julkaistu johtopäätös ja tarkistuksen päivämäärä](outcome_published.png)

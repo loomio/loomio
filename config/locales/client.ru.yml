@@ -1069,7 +1069,7 @@ ru:
       has_not_read_thread: Не просматривал тему
       has_not_joined_yet: Еще не присоединился
       has_not_joined_yet_hint: Этот пользователь не принял приглашение присоединиться к Loomio и не будет получать дальнейших уведомлений, пока не примет это.
-      discussion_admin: Администратор обсуждения
+      discussion_admin: "Администратор темы"
       has_not_read_discussion: Не просматривал обсуждение
     group_form:
       search_placeholder: Ищите людей...
@@ -1603,7 +1603,7 @@ ru:
     title_helptext:
       group: Этот заголовок появится рядом с именем %{name} в этой группе. Используйте его, чтобы сообщить людям свою роль.
     title_label: заголовок
-    title_placeholder: Например, «Координатор» или «Координатор».
+    title_placeholder: "Например, «Администратор» или «Ведущий»"
     updated: Название членства обновлено
     weight_label: Вес голоса
   user_name_modal:

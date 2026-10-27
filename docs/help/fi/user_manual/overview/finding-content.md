@@ -1,16 +1,16 @@
 ---
 title: Sisällön löytäminen
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 31a1e2a08cfa1ae7
   search-tips: 71b6160aeda5e939
   filter-discussions: 7aebe0484ff86ee1
-  category-tags: 78116b1cd9e315e1
+  category-tags: 6278ea55f1a74fc0
   unread-discussions: 942ccc0d2e219dd3
   polls-awaiting-your-vote: 32111a6d1850435f
   bookmarks: 6b45eb4aa8d22ff3
@@ -71,7 +71,7 @@ Tunnisteet kokoavat toisiinsa liittyviä keskusteluja, kyselyjä, johtopäätök
 
 ![](tags.png)
 
-Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi ketjut, joissa on kyseisellä tunnisteella merkittyä sisältöä. Valitse ketjun sivupalkista tunniste löytääksesi sillä merkityt sisällöt ja kontekstin, johon ne kuuluvat. Sisällön kirjoittajat ja ketjun koordinaattorit voivat lisätä tunnisteita. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
+Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi ketjut, joissa on kyseisellä tunnisteella merkittyä sisältöä. Valitse ketjun sivupalkista tunniste löytääksesi sillä merkityt sisällöt ja kontekstin, johon ne kuuluvat. Sisällön kirjoittajat voivat lisätä tunnisteita omaan sisältöönsä. Ryhmän ylläpitäjät, ketjun ylläpitäjät ja henkilöt, joilla on oikeus muokata keskustelun kontekstia, voivat lisätä tunnisteita mihin tahansa sisältöön. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

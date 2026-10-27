@@ -1125,7 +1125,7 @@ be:
       not_notified: Пакуль не апавешчана
       no_members: Гэтым пакуль ні з кім не падзяліліся!
       group_admin: Адміністратар групы
-      discussion_admin: Адміністратар абмеркавання
+      discussion_admin: "Адміністратар тэмы"
       thread_admin: Адміністратар тэмы
       last_read_at: Апошні прагляд %{time}
       has_not_read_discussion: Не праглядаў абмеркаванне
@@ -1704,7 +1704,7 @@ be:
     title_helptext:
       group: Гэты тытул будзе адлюстроўвацца побач з імем %{name} у гэтай групе. Выкарыстоўвайце яго, каб паведаміць людзям яго ролю.
     title_label: тытул
-    title_placeholder: Напрыклад, «Каардынатар» або «Фасілітатар»
+    title_placeholder: "Напрыклад, «Адміністратар» або «Фасілітатар»"
     updated: Назва членства абноўлена
     weight_label: Вага голасу
   user_name_modal:

@@ -95,7 +95,7 @@ You can also make people administrators or set their title (e.g. "IT Support") w
 
 ### Invitation delivery history
 
-If someone isn't receiving their invitation email, group coordinators can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
+If someone isn't receiving their invitation email, group admins can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
 
 <!-- translation-section: re-send-invitations -->
 

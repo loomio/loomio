@@ -1,20 +1,20 @@
 ---
 title: Voto anonimo
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: e46fc8d2f0abd936
   how-anonymous-voting-protects-voters: 5fa366a01b25311c
-  while-voting-is-open: 7ba38dae70a307a8
-  votes-cannot-be-changed: 12a89f833c90e9fb
+  while-voting-is-open: f7e4cfd16c885656
+  votes-cannot-be-changed: 20e8b29342ec3a9d
   why-anonymous-votes-do-not-have-reasons: fe912eb9eb87aad1
   results-and-exports: eed9e119bd424a76
-  participation-verification: 43a67017d98f2551
+  participation-verification: 6d4dc6171b944df7
   reminders: 3568d0256b22e857
-  what-coordinators-and-administrators-can-see: 371dda1777668a92
+  what-coordinators-and-administrators-can-see: 700fe505f4ef9260
   limits-of-anonymous-voting: 9947cc8cc24920a1
   questions: 5e4bf1632f15b07f
   can-a-coordinator-see-how-i-voted: faa5d8392a9822f4
@@ -74,7 +74,7 @@ Questa separazione viene applicata quando il voto viene memorizzato. Non dipende
 
 ## Mentre il sondaggio è aperto
 
-I risultati rimangono nascosti a tutti fino alla chiusura del sondaggio. Questo vale anche per i coordinatori del sondaggio, gli amministratori del gruppo e gli amministratori dell'istanza che usano l'applicazione.
+I risultati rimangono nascosti a tutti fino alla chiusura del sondaggio. Questo vale anche per gli amministratori della conversazione, gli amministratori del gruppo e gli amministratori dell'istanza che usano l'applicazione.
 
 Quando qualcuno vota:
 
@@ -90,7 +90,7 @@ I dati di partecipazione non conservano l'ora precisa in cui la persona ha votat
 
 ## I voti non possono essere modificati
 
-Ogni persona avente diritto può votare una sola volta. Un voto anonimo inviato non può essere consultato, modificato, ritirato o sostituito, nemmeno da un coordinatore o un amministratore.
+Ogni persona avente diritto può votare una sola volta. Un voto anonimo inviato non può essere consultato, modificato, ritirato o sostituito, nemmeno da un amministratore.
 
 Consentire a una persona di recuperare o sostituire il proprio voto richiederebbe un collegamento persistente tra quella persona e il voto. Il voto anonimo non crea questo collegamento per scelta.
 
@@ -126,7 +126,7 @@ I membri del gruppo e gli elettori del sondaggio vedono anche quando ogni person
 
 Poiché chiunque possa vedere i risultati può vedere chi ha votato, un risultato in cui tutti i voti sono per la stessa opzione può rivelare come hanno votato le persone. Per esempio, se ogni voto è Accordo, tutte le persone che hanno votato erano d'accordo.
 
-I coordinatori possono aggiungere persone aventi diritto mentre il sondaggio è aperto, anche dopo che altre persone hanno votato. Gli elettori già presenti non possono essere rimossi da un sondaggio anonimo.
+Gli amministratori possono aggiungere persone aventi diritto mentre il sondaggio è aperto, anche dopo che altre persone hanno votato. Gli elettori già presenti non possono essere rimossi da un sondaggio anonimo.
 
 <!-- translation-section: reminders -->
 
@@ -140,12 +140,12 @@ I sondaggi con un periodo di voto complessivo inferiore a 24 ore non inviano que
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Cosa possono vedere coordinatori e amministratori
+## Cosa possono vedere gli amministratori
 
-Tramite l'applicazione, un coordinatore del sondaggio, un amministratore del gruppo o un amministratore dell'istanza può avere accesso a:
+Tramite l'applicazione, un amministratore della conversazione, un amministratore del gruppo o un amministratore dell'istanza può vedere, se autorizzato:
 
 - il sondaggio e i suoi elettori aventi diritto;
-- l'informazione che indica se ogni persona avente diritto ha votato, quando il suo ruolo consente l'accesso e hanno votato abbastanza persone; e
+- se ogni persona avente diritto ha votato, quando il suo ruolo consente l'accesso e hanno votato abbastanza persone; e
 - i risultati aggregati dopo la chiusura del sondaggio.
 
 Non può usare le funzioni dell'applicazione per vedere:

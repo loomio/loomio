@@ -1073,7 +1073,7 @@ es:
       has_not_read_thread: Tiene un hilo no visto
       has_not_joined_yet: Aún no se ha unido
       has_not_joined_yet_hint: Este usuario no ha aceptado tu invitación para unirse a Loomio y no recibirá más notificaciones hasta que lo haga.
-      discussion_admin: Administrador de discusión
+      discussion_admin: "Hilo de administración"
       has_not_read_discussion: No ha visto la discusión
     group_form:
       search_placeholder: Buscar personas...
@@ -1626,7 +1626,7 @@ es:
     title_helptext:
       group: Este título será mostrado junto al nombre de %{name} dentro de este grupo. Úsalo para que otros integrantes conozcan tu cargo.
     title_label: Título
-    title_placeholder: ej. ´Coordinadora´o ´Facilitadora´
+    title_placeholder: "P. ej., «Admin» o «Facilitador»"
     updated: Título del integrante actualizado
     weight_label: Peso del voto
   user_name_modal:

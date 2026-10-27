@@ -1,14 +1,14 @@
 ---
 title: Conseil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 63d7013fd2d9c6ec
   when-to-use-advice: 14a4155b78aece9b
-  example-choose-a-washing-supplier: 7572cf124f27df90
+  example-choose-a-washing-supplier: b0c24700cd2be426
   set-up-the-proposal: 3d2d7bc0aa05a991
   vote: c22962dd2cecdd5c
   read-the-results: a1e049e021803847
@@ -45,7 +45,7 @@ Une proposition de type Conseil n’est pas un vote d’approbation. Précisez q
 
 ## Exemple : choisir un prestataire de lavage
 
-La personne chargée de la coordination des opérations de la coopérative Oatmilk doit choisir un prestataire de lavage. Elle sollicite des conseils sur la capacité, les antécédents en matière de sécurité alimentaire, la consommation d’eau, les délais d’intervention et l’assistance.
+La personne responsable des opérations de la coopérative Oatmilk doit choisir un prestataire de lavage. Elle sollicite des conseils sur la capacité, les antécédents en matière de sécurité alimentaire, la consommation d’eau, les délais d’intervention et l’assistance.
 
 <!-- translation-section: set-up-the-proposal -->
 

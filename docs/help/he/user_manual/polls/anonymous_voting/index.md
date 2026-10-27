@@ -1,20 +1,20 @@
 ---
 title: הצבעה אנונימית
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: d5f3bf403e8e6080
   how-anonymous-voting-protects-voters: 8f032efddf476154
-  while-voting-is-open: 37df1a1cb4a1c527
-  votes-cannot-be-changed: 3300293653db2e40
+  while-voting-is-open: 9aee26c62509f908
+  votes-cannot-be-changed: e38ae318007ed8ec
   why-anonymous-votes-do-not-have-reasons: d6b4c20db98d7217
   results-and-exports: 3b0d7af19d032717
-  participation-verification: 5220c271967475a4
+  participation-verification: f15cbd0bd356c71a
   reminders: '08a3113f7884da5a'
-  what-coordinators-and-administrators-can-see: af67c3402cbdcb77
+  what-coordinators-and-administrators-can-see: a25ccdefeaa4c426
   limits-of-anonymous-voting: 38d7603da36b8879
   questions: 501618f774d6e235
   can-a-coordinator-see-how-i-voted: 26dabd87d4f51eab
@@ -74,7 +74,7 @@ title_generated: 1097c4f1c00530f0
 
 ## כל עוד ההצבעה פתוחה
 
-התוצאות מוסתרות מכולם עד לסגירת הסקר. הדבר כולל רכזי סקרים, מנהלי קבוצות ומנהלי מערכת המשתמשים ביישום.
+התוצאות מוסתרות מכולם עד לסגירת הסקר. הדבר כולל מנהלי שרשורים, מנהלי קבוצות ומנהלי מופע המשתמשים ביישום.
 
 בעת הצבעה:
 
@@ -90,7 +90,7 @@ title_generated: 1097c4f1c00530f0
 
 ## לא ניתן לשנות הצבעות
 
-לכל מי שיש להם זכות הצבעה מותר להצביע פעם אחת. לא ניתן לעיין בהצבעה אנונימית שנשלחה, לשנות אותה, לבטל אותה או להחליף אותה, גם באמצעות רכזי הסקר או מנהלים.
+לכל מי שיש להם זכות הצבעה מותר להצביע פעם אחת. לא ניתן לעיין בהצבעה אנונימית שנשלחה, לשנות אותה, לבטל אותה או להחליף אותה, גם באמצעות מנהלים.
 
 כדי לאפשר אחזור או החלפה של הצבעה, נדרש קישור קבוע בין מי שהצביעו לבין ההצבעה. בהצבעה אנונימית הקישור הזה אינו נוצר במכוון.
 
@@ -126,7 +126,7 @@ title_generated: 1097c4f1c00530f0
 
 מכיוון שכל מי שיש להם גישה לתוצאות יכולים לראות מי הצביעו, תוצאה חד־צדדית עשויה לחשוף כיצד הצביעו. לדוגמה, אם כל ההצבעות הן מסכים/ה, כל מי שהצביעו הסכימו.
 
-רכזי הסקר יכולים להוסיף אנשים בעלי זכות הצבעה כל עוד ההצבעה פתוחה, גם לאחר שאחרים כבר הצביעו. לא ניתן להסיר מצביעים קיימים מסקר אנונימי.
+מנהלים יכולים להוסיף אנשים בעלי זכות הצבעה כל עוד ההצבעה פתוחה, גם לאחר שאחרים כבר הצביעו. לא ניתן להסיר מצביעים קיימים מסקר אנונימי.
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ title_generated: 1097c4f1c00530f0
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## מה יכולים רכזים ומנהלים לראות
+## מה מנהלים יכולים לראות
 
-באמצעות היישום, רכזי סקר, מנהלי קבוצה או מנהלי מערכת עשויים לקבל גישה למידע הבא:
+באמצעות היישום, מנהלי שרשור, מנהלי קבוצה או מנהלי מופע עשויים לקבל גישה למידע הבא:
 
 - הסקר והמצביעים בעלי זכות ההצבעה בו;
 - האם כל מי שיש להם זכות הצבעה כבר הצביעו, כאשר התפקיד מאפשר גישה ומספיק אנשים הצביעו; וכן

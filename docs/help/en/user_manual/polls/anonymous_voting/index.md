@@ -27,7 +27,7 @@ This separation is enforced when the vote is stored. It does not depend only on 
 
 ## While voting is open
 
-Results remain hidden from everyone until the poll closes. This includes poll coordinators, group administrators, and instance administrators using the application.
+Results remain hidden from everyone until the poll closes. This includes thread admins, group administrators, and instance administrators using the application.
 
 When someone votes:
 
@@ -43,7 +43,7 @@ The participation record does not store a precise time for when the person voted
 
 ## Votes cannot be changed
 
-Each eligible person can vote once. A submitted anonymous vote cannot be reviewed, changed, withdrawn, or replaced, including by a coordinator or administrator.
+Each eligible person can vote once. A submitted anonymous vote cannot be reviewed, changed, withdrawn, or replaced, including by an admin.
 
 Allowing a person to retrieve or replace their vote would require a persistent link between that person and the vote. Anonymous voting deliberately does not create that link.
 
@@ -79,7 +79,7 @@ Group members and the poll's voters also see when each person joined the group a
 
 Because everyone who can see the results can see who voted, a one-sided result can reveal how people voted. For example, if every vote is Agree, everyone who voted agreed.
 
-Coordinators can add eligible people while voting remains open, including after
+Admins can add eligible people while voting remains open, including after
 other people have voted. Existing voters cannot be removed from an anonymous
 poll.
 
@@ -95,9 +95,9 @@ Polls with a total voting period of less than 24 hours do not send this automati
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## What coordinators and administrators can see
+## What admins can see
 
-Through the application, a poll coordinator, group administrator, or instance administrator may be able to see:
+Through the application, a thread admin, group administrator, or instance administrator may be able to see:
 
 - the poll and its eligible voters;
 - whether each eligible person has voted, where their role permits access and enough people have voted; and

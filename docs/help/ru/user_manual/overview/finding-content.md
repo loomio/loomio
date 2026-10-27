@@ -1,16 +1,16 @@
 ---
 title: Поиск материалов
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: a266ae5001f4c9ad
   search-tips: 06daa28a4df59df8
   filter-discussions: f553776f6d69ebea
-  category-tags: 4981d20a3d2c40e4
+  category-tags: 5eff765153d3d7d2
   unread-discussions: 4e6426492bc7bf95
   polls-awaiting-your-vote: cb95ff38179d1c62
   bookmarks: f71ca5fab57a09f3
@@ -71,7 +71,7 @@ Loomio предлагает несколько способов находить
 
 ![](tags.png)
 
-Выберите тег на вкладке **Обсуждения**, чтобы увидеть ветки, содержащие материалы с этим тегом. Внутри ветки выберите тег на боковой панели, чтобы найти материалы с этим тегом вместе с содержимым родительского элемента. Добавлять теги могут авторы и координаторы веток. Подробнее о настройке и правах доступа см. в разделе [Теги категорий](/en/user_manual/discussions/tags).
+Выберите тег на вкладке **Обсуждения**, чтобы увидеть ветки, содержащие материалы с этим тегом. Внутри ветки выберите тег на боковой панели, чтобы найти материалы с этим тегом вместе с содержимым родительского элемента. Авторы могут добавлять теги к своим материалам. Администраторы группы, администраторы ветки и пользователи с правом редактировать описание обсуждения могут добавлять теги к любым материалам. Подробнее о настройке и правах доступа см. в разделе [Теги категорий](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

@@ -14,4 +14,4 @@ The poll outcome post includes the winning option, making it easy to share decis
 
 ## Setup
 
-Instance admins configure chatbot webhooks under Admin > Integrations. Group coordinators then enable the feature and set the destination channel from group settings.
+Instance admins configure chatbot webhooks under Admin > Integrations. Group admins then enable the feature and set the destination channel from group settings.

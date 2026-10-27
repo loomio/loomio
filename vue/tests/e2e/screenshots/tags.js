@@ -139,6 +139,66 @@ module.exports = {
     });
   },
 
+  'tags_global_search': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.resizeWindow(1280, 1000);
+    openGroup(page);
+    page.clickAndWait('.v-app-bar .navbar__search', '.search-modal');
+    page.click('.search-modal .v-select .v-field');
+    page.waitFor('.v-menu.v-overlay--active .v-list');
+    page.execute("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Oatmilk Cooperative')).classList.add('manual-parent-group')");
+    page.click('.manual-parent-group');
+    page.expectText('.search-modal', 'Any tag');
+    page.execute("Array.from(document.querySelectorAll('.search-modal .v-select')).find(el => el.textContent.includes('Any tag')).setAttribute('data-manual-search-tags', '')");
+    page.click('[data-manual-search-tags] .v-field');
+    page.waitFor('.v-menu.v-overlay--active .v-list');
+    page.execute("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Packaging')).classList.add('manual-packaging-tag')");
+    page.click('.manual-packaging-tag');
+    page.waitFor('.search-results-list .v-list-item');
+    page.click('[data-manual-search-tags] .v-field');
+    page.waitFor('.v-menu.v-overlay--active .v-list');
+    screenshot.captureRegion('discussions/tags/tags_global_search', [
+      '.search-modal',
+      '.v-menu.v-overlay--active .v-list'
+    ], {
+      width: 1280,
+      height: 1000,
+      padding: 24,
+      clearSelection: true,
+      spotlight: {selectors: ['[data-manual-search-tags]', '.v-menu.v-overlay--active .v-list'], padding: 10, radius: 14, opacity: 0.4, outlineWidth: 0}
+    });
+  },
+
+  'tags_thread_sidebar': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.resizeWindow(1440, 1100);
+    openGroup(page);
+    page.execute("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')");
+    page.clickElement('.manual-topic');
+    page.waitFor('.topic-page');
+    page.waitFor('.new-comment .action-menu--btn');
+    page.execute("document.querySelector('.new-comment .action-menu--btn').scrollIntoView({block: 'center'})");
+    page.click('.new-comment .action-menu--btn');
+    page.click('.v-overlay--active .action-dock__button--edit_item_tags');
+    page.waitFor('.topic-tags-dialog .topic-tags-picker__tag');
+    page.execute("Array.from(document.querySelectorAll('.topic-tags-dialog .topic-tags-picker__tag')).find(el => el.textContent.includes('Sustainability')).classList.add('manual-tag')");
+    page.click('.manual-tag');
+    page.expectText('.thread-tags', 'Sustainability');
+    page.click('.topic-tags-dialog .dismiss-modal-button');
+    page.execute('window.scrollTo(0, 0)');
+    screenshot.captureRegion('discussions/tags/tags_thread_sidebar', [
+      '.context-panel',
+      '.topic-sidebar'
+    ], {
+      width: 1440,
+      height: 1100,
+      padding: 16,
+      spotlight: {selector: '.thread-tags', padding: 12, radius: 14, opacity: 0.4, outlineWidth: 0}
+    });
+  },
+
   'tags_thread_edit': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

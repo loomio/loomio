@@ -1,10 +1,10 @@
 ---
 title: Propuestas y sondeos
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: 160ae44c632bbf7d
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: b48e6637dc129d28
   find-the-right-help: 8a1938e9ef7c506e
@@ -33,8 +33,8 @@ generated:
   1-create-it: db3e1df57db0bf99
   2-voting-opens: 810c3a02260cab15
   3-people-vote: f548ee4fe03a2426
-  4-it-closes: 0fe0bae8228c4841
-  5-share-an-outcome: fb914b5d1adbb266
+  4-it-closes: 99632d4f0f6e5d1e
+  5-share-an-outcome: a039e5907d4e7d85
 title_source: d45b4ba3cb7a27cb
 title_generated: 4d74778611cbdcd4
 ---
@@ -150,18 +150,18 @@ Mientras está abierta, las personas pueden votar, explicar su voto y cambiarlo.
 
 ### 4. Se cierra
 
-Se cierra automáticamente a la hora de cierre. Una persona que coordina la encuesta también puede cerrarla antes. Una vez cerrada, una persona que coordina la encuesta puede reabrirla con una nueva hora de cierre para que la gente siga votando. Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar su hora de cierre mientras sigan abiertas.
+Se cierra automáticamente a la hora de cierre. Un admin del hilo también puede cerrarla antes. Una vez cerrada, un admin del hilo puede reabrirla con una nueva hora de cierre para que la gente siga votando. Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar la hora de cierre mientras sigan abiertas.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Comparte una conclusión
 
-Cuando se cierra, Loomio pide a las personas que coordinan la encuesta que compartan una conclusión.
+Cuando se cierra, Loomio pide a los admins del hilo que compartan una conclusión.
 
 ![El aviso para introducir una conclusión después de que se cierre una propuesta](outcome_prompt.png)
 
 La conclusión indica qué se decidió y qué ocurrirá después. Aparece encima de los resultados, así que es lo primero que la gente lee. Cuando la publicas, puedes notificar a las personas. Reciben un correo electrónico con los resultados y la conclusión.
 
-También puedes establecer una **Revisar fecha**. En esa fecha, Loomio te recuerda que revises la decisión.
+También puedes fijar una fecha con **Revisar fecha**. En esa fecha, Loomio te recuerda que revises la decisión.
 
 ![Una conclusión publicada con una fecha de revisión](outcome_published.png)

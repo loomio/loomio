@@ -1,16 +1,16 @@
 ---
 title: Trouver du contenu
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: 2f32db8efb032c45
   search-tips: ff383b5b202bee84
   filter-discussions: 03db7b2f834e574c
-  category-tags: 0d65c37d6ccd36a9
+  category-tags: '1185091708290522'
   unread-discussions: ccc1d99c0d54c986
   polls-awaiting-your-vote: b9f825c39f0a9bc8
   bookmarks: b3717d0fcb8a0dbf
@@ -71,7 +71,7 @@ Les tags regroupent les discussions, les sondages, les conclusions et les commen
 
 ![](tags.png)
 
-Sélectionnez un tag dans l’onglet **Discussions** pour afficher les fils contenant une contribution correspondante. Dans un fil, sélectionnez un tag dans la barre latérale pour trouver les contributions correspondantes avec leur contexte parent. Les auteurs et les coordinateurs de fil peuvent attribuer des tags. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur la configuration et les permissions.
+Sélectionnez un tag dans l’onglet **Discussions** pour afficher les fils contenant une contribution correspondante. Dans un fil, sélectionnez un tag dans la barre latérale pour trouver les contributions correspondantes avec leur contexte parent. Les auteurs peuvent attribuer des tags à leurs propres contributions. Les administrateurs du groupe, les administrateurs du fil et les personnes autorisées à modifier le contexte de la discussion peuvent attribuer des tags à toute contribution. Consultez [Tags de catégorie](/en/user_manual/discussions/tags) pour en savoir plus sur la configuration et les permissions.
 
 <!-- translation-section: unread-discussions -->
 

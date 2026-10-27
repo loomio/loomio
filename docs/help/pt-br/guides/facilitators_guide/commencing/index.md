@@ -1,10 +1,10 @@
 ---
 title: Começando
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: d96fc46bcaa5830a
   settling: dd2c9530e68a118e
   who-s-in-the-room: 87e961699b3c9b35
-  check-in: d5a21159dfe713b5
+  check-in: 5af7eae234996520
   who-s-not-in-the-room: c207dc08058655fc
   culture-protocol-expectations: e8699416e59d420c
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ As pessoas não se expressam no vazio, mas no contexto de quem são. Uma visão 
 No Loomio
 
 * Crie uma conversa chamada "Apresente-se" ou "Como você está?". Ela oferece uma primeira _chamada à ação_ útil, que todos que chegam vão entender.
-* Para grupos em que é necessário solicitar entrada, temos uma função que permite à pessoa solicitante se apresentar ao coordenador para obter acesso ao grupo. Alguns grupos têm um processo de republicação desse conteúdo na conversa de apresentação para dar boas-vindas às pessoas.
+* Para grupos em que é necessário solicitar entrada, temos uma função que permite à pessoa solicitante se apresentar ao admin do grupo para obter acesso ao grupo. Alguns grupos têm um processo de republicação desse conteúdo na conversa de apresentação para dar boas-vindas às pessoas.
 * Envie fotos de perfil. Fotos de rostos são uma das formas mais eficazes de sentir que você sabe quem está na sala com você no ambiente online.
 
 <!-- translation-section: who-s-not-in-the-room -->

@@ -1,16 +1,16 @@
 ---
 title: コンテンツを探す
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 9e885b772fd7b411
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
@@ -19,7 +19,7 @@ generated:
   search: c8aa14c205dfe84f
   search-tips: f3a770db6b4de8ff
   filter-discussions: 96d2f75670039a04
-  category-tags: 7d00034676b6e765
+  category-tags: de8267370ca390e0
   unread-discussions: 167c7860e371e94b
   polls-awaiting-your-vote: ae30c38b411b498c
   bookmarks: 4ca179694050520a
@@ -71,7 +71,7 @@ Loomioでは、参加しているグループのディスカッションや決�
 
 ![](tags.png)
 
-**議論**タブでタグを選択すると、一致する投稿を含むスレッドが表示されます。スレッド内では、サイドバーでタグを選択すると、一致する投稿をその親の背景説明とともに確認できます。作成者とスレッドのコーディネーターは、タグを付けられます。設定と権限の詳細は、[カテゴリタグ](/en/user_manual/discussions/tags)を参照してください。
+**議論**タブでタグを選択すると、一致する投稿を含むスレッドが表示されます。スレッド内では、サイドバーでタグを選択すると、一致する投稿をその親の背景説明とともに確認できます。作成者は自分の投稿にタグを付けられます。グループ管理者、スレッド管理者、およびディスカッションの背景説明を編集する権限を持つメンバーは、どの投稿にもタグを付けられます。設定と権限の詳細は、[カテゴリタグ](/en/user_manual/discussions/tags)を参照してください。
 
 <!-- translation-section: unread-discussions -->
 

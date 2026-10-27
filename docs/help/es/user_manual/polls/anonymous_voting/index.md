@@ -1,20 +1,20 @@
 ---
 title: Votación anónima
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: 610c51e5cc6e6692
   how-anonymous-voting-protects-voters: 89da0ae00ae0dbea
-  while-voting-is-open: d0255036755b0838
-  votes-cannot-be-changed: e6cb0b971146e775
+  while-voting-is-open: 174c10d07c2e8f40
+  votes-cannot-be-changed: '08907637e2718fbc'
   why-anonymous-votes-do-not-have-reasons: ab05152c47bebbf0
   results-and-exports: '029a62ade78bf70c'
-  participation-verification: f30a65e042065492
+  participation-verification: 7673f170873508cb
   reminders: 149cb032b2a5b4ee
-  what-coordinators-and-administrators-can-see: 707fbb794f8840d0
+  what-coordinators-and-administrators-can-see: 58680017314a9f39
   limits-of-anonymous-voting: 0f62aeac5b357704
   questions: f388a65a94d4a089
   can-a-coordinator-see-how-i-voted: a2d1819c59840142
@@ -74,7 +74,7 @@ Esta separación se aplica al almacenar el voto. No depende únicamente de ocult
 
 ## Mientras la votación está abierta
 
-Los resultados permanecen ocultos para todo el mundo hasta que se cierra la encuesta. Esto incluye a los coordinadores de la encuesta, los administradores del grupo y los administradores de la instancia que usan la aplicación.
+Los resultados permanecen ocultos para todo el mundo hasta que se cierra la encuesta. Esto incluye a los admins del hilo, los administradores del grupo y los administradores de la instancia que usan la aplicación.
 
 Cuando alguien vota:
 
@@ -90,7 +90,7 @@ El registro de participación no almacena la hora exacta en que la persona votó
 
 ## Los votos no se pueden cambiar
 
-Cada persona con derecho a voto puede votar una vez. Un voto anónimo enviado no se puede consultar, cambiar, retirar ni sustituir, ni siquiera por un coordinador o administrador.
+Cada persona con derecho a voto puede votar una vez. Un voto anónimo enviado no se puede consultar, cambiar, retirar ni sustituir, ni siquiera por un admin.
 
 Permitir que una persona recupere o sustituya su voto requeriría un vínculo persistente entre esa persona y el voto. La votación anónima no crea ese vínculo de forma deliberada.
 
@@ -126,7 +126,7 @@ Los miembros del grupo y los votantes de la encuesta también ven cuándo se uni
 
 Como todas las personas que pueden ver los resultados pueden ver quién votó, un resultado en el que todos los votos coinciden puede revelar cómo votaron las personas. Por ejemplo, si todos los votos son De acuerdo, todas las personas que votaron estuvieron de acuerdo.
 
-Los coordinadores pueden añadir personas con derecho a voto mientras la votación siga abierta, incluso después de que otras personas hayan votado. No se puede eliminar de una encuesta anónima a los votantes que ya forman parte de ella.
+Los admins pueden añadir personas con derecho a voto mientras la votación siga abierta, incluso después de que otras personas hayan votado. No se puede eliminar de una encuesta anónima a los votantes que ya forman parte de ella.
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ Las encuestas con un periodo total de votación inferior a 24 horas no envían e
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Qué pueden ver los coordinadores y administradores
+## Qué pueden ver los admins
 
-A través de la aplicación, un coordinador de la encuesta, un administrador del grupo o un administrador de la instancia puede tener acceso a:
+A través de la aplicación, un admin del hilo, un administrador del grupo o un administrador de la instancia puede tener acceso a:
 
 - la encuesta y los votantes con derecho a voto;
 - si cada persona con derecho a voto ha votado, cuando su rol permita el acceso y hayan votado suficientes personas; y

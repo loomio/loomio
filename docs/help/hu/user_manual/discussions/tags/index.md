@@ -1,28 +1,30 @@
 ---
 title: Kategóriacímkék
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 827f5becfb59af80
-  apply-tags: 5ef7d7894a84850b
+  apply-tags: fef3a3d2df26bb62
   create-tags: 611420f0c31a16e5
   edit-tags: af14986195a6fc82
   edit-tag-in-thread-or-poll: 17ebe3df48d1e96c
   template-tags: 2ac763ecf6bcc8be
-  tag-contributions: e17bfed511e217ec
-  find-tagged-contributions: 89af7bbf1cd347c9
+  tag-contributions: 1038d6200196175a
+  find-tagged-contributions: f60344f0093a377b
+  global-search: 51d4067786e76b4a
 title_source: c86f6830bf302394
 title_generated: e4c5770779828ac9
 ---
@@ -43,7 +45,7 @@ A csoportod oldalán kattints a szálak listája feletti **Címkék** gombra. V�
 
 ## Címkék hozzáadása
 
-Címkézheted a saját beszélgetéseidet, szavazásaidat, következtetéseidet és hozzászólásaidat. A szál koordinátorai bármelyik tartalmat címkézhetik.
+Címkézheted a saját beszélgetéseidet, szavazásaidat, következtetéseidet és hozzászólásaidat. A csoportadminok, a száladminok és a beszélgetés leírásának szerkesztésére jogosult személyek bármelyik tartalmat címkézhetik egy nem zárolt szálban. A közvetlen szálakban minden résztvevő bármelyik tartalmat címkézheti.
 
 Amikor szálat vagy szavazást indítasz, kattints a **Címkék** mezőre, és válassz ki egy vagy több címkét.
 
@@ -113,7 +115,7 @@ A címkeválasztó az aktuális csoportban használt címkéket, a szervezet nem
 
 Nyisd meg egy szavazás, következtetés vagy hozzászólás műveleti menüjét, és válaszd ki a **Címkék alkalmazása** lehetőséget. A beszélgetés címe mellett is használt címkeválasztóval adhatsz hozzá és távolíthatsz el címkéket. A változtatások azonnal mentésre kerülnek. Ha egy tartalomnak vannak címkéi, a címkéket jelölő elemek és a címkegomb a szerzőt és az időpontot mutató sor jobb oldalán jelennek meg.
 
-A címkék a kiválasztott tartalomra vonatkoznak. A válaszok nem öröklik őket. A nyitó beszélgetés címkézése nem címkézi meg a szál összes hozzászólását vagy szavazását. A szavazatok és a szavazólapok nem címkézhetők.
+A címkék a kiválasztott tartalomra vonatkoznak. A szavazatok és a szavazólapok nem címkézhetők.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +123,14 @@ A címkék a kiválasztott tartalomra vonatkoznak. A válaszok nem öröklik ők
 
 A **Címkék** rész akkor jelenik meg a szál oldalsávjában, ha a nyitó beszélgetésen vagy szavazáson kívül más tartalom is kapott címkét. Itt a nyitó tartalom és az összes többi címkézett tartalom címkéi szerepelnek. Válassz ki egy címkét a megfelelő tartalmak és az azokat tartalmazó bejegyzések megjelenítéséhez. Amíg a szűrő aktív, a szál felett egy eszköztár látható. A szokásos szálnézethez való visszatéréshez zárd be a jobb oldali × gombbal, válaszd ki újra a címkét, vagy válaszd ki az oldalsáv **Töröl** lehetőségét. Mobilon nyisd meg a szál navigációs paneljét ugyanezen szűrő használatához.
 
-A beszélgetés címe melletti címkék a nyitó beszélgetéshez tartoznak. A csoport szállistája a szál összes címkéjét használja, ezért ha eltávolítasz egy címkét a nyitó beszélgetésről, a szál továbbra is az adott kategóriában marad, ha valamelyik másik tartalmán még szerepel a címke.
+![Címkék a szál oldalsávjában](tags_thread_sidebar.png)
 
-A globális keresésben egy címke kiválasztásával azokat a tartalmakat találod meg, amelyekhez közvetlenül hozzáadták az adott címkét. Keresőkifejezés megadása nélkül is böngészhetsz címkék szerint. Ha egy címkét keresőkifejezéssel együtt használsz, a keresés a címkézett tartalmak szövegében történik, nem pedig a szálaik összes tartalmában.
+<!-- translation-section: global-search -->
 
-A szerzők a szavazás eredményeinek láthatóságától függetlenül címkézhetik a hozzászólásaikat. A címkék közös metaadatok, és akkor is elérhetők maradnak, ha egy szavazást újranyitnak, vagy az eredményei rejtetté válnak. A hozzászólások és címkéik akkor is kereshetők maradnak, amikor a szavazás eredményei rejtettek. A törölt tartalmak nem jelennek meg a címkeszűrőkben; egy tartalom visszaállítása a címkéit is visszaállítja. Az idővonal bejegyzései továbbra is névvel ellátott hivatkozásokat biztosítanak az egyes tartalmakhoz, és a címkéktől függetlenül működnek.
+## Keresés címke alapján
 
-A részvételi jelentések az egyes címkéket tartalmazó szálakat számolják. Az ilyen szálak valamelyikében való részvétel nem feltétlenül jelenti azt, hogy az adott személy írt az adott címkével ellátott tartalmat.
+Nyisd meg a **Keresés** lehetőséget a felső navigációs sávban, és válaszd ki a szülőcsoportodat a címkemenü megjelenítéséhez. Válassz ki egy címkét az azzal ellátott beszélgetések, szavazások, következtetések és hozzászólások kereséséhez.
+
+Hagyd üresen a keresőmezőt a címke szerinti böngészéshez, vagy írj be egy szót vagy kifejezést a címkével ellátott tartalmakon belüli kereséshez. Válaszd ki a **Bármilyen címke** lehetőséget a címkeszűrő törléséhez.
+
+![Címke kiválasztása a globális keresésben a szülőcsoport kiválasztása után](tags_global_search.png)

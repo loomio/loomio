@@ -1083,7 +1083,7 @@ pt_BR:
       has_not_read_thread: Não visualizou o tópico
       has_not_joined_yet: Ainda não aderiu
       has_not_joined_yet_hint: Este usuário não aceitou o convite para ingressar no Loomio e não receberá mais notificações até que o faça
-      discussion_admin: Administrador da discussão
+      discussion_admin: "Administrador do tópico"
       has_not_read_discussion: Não visualizou a discussão
     group_form:
       search_placeholder: Buscar pessoas…
@@ -1638,7 +1638,7 @@ pt_BR:
     title_helptext:
       group: Esse título aparecerá ao lado do nome de %{name} nesse grupo. Use para que os demais participantes saibam qual o seu papel.
     title_label: cargo
-    title_placeholder: E.x. 'Coordenador', ou 'Facilitador'
+    title_placeholder: "Ex.: “Admin” ou “Facilitador”"
     updated: Título do membro atualizado
     weight_label: Peso do voto
   user_name_modal:

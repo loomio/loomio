@@ -1,20 +1,20 @@
 ---
 title: Ананімнае галасаванне
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: 54422fca03553027
   how-anonymous-voting-protects-voters: bce0a2835f778607
-  while-voting-is-open: 9df9349e1fb354c3
-  votes-cannot-be-changed: f2477f3dee9d8d7b
+  while-voting-is-open: 2d30a583a16a6c7b
+  votes-cannot-be-changed: 582eabad7d98ad74
   why-anonymous-votes-do-not-have-reasons: 5938adcf0c0aaac3
   results-and-exports: 6ea43dbd8f5b747f
-  participation-verification: '0422826031040d24'
+  participation-verification: 65df82c64e14107e
   reminders: 58cbc5eb9f7c0040
-  what-coordinators-and-administrators-can-see: 4031b0b3ff321860
+  what-coordinators-and-administrators-can-see: e76e2268249ef811
   limits-of-anonymous-voting: c2749b9828c3ead7
   questions: fb1641dc2c872559
   can-a-coordinator-see-how-i-voted: f9d35cea469174f0
@@ -43,8 +43,6 @@ generated:
   is-anonymous-voting-suitable-for-every-election: 0157676fa09fea86
 title_source: 1bc4567506ad4d51
 title_generated: 9dfbd5bbbb70bfe8
-needs_review:
-  participation-verification: use "Пагаджаюся" instead of "За" for "agree"
 ---
 
 <!-- translation-section: introduction -->
@@ -76,7 +74,7 @@ needs_review:
 
 ## Пакуль галасаванне адкрытае
 
-Вынікі схаваныя ад усіх да закрыцця апытання. Гэта датычыцца таксама каардынатараў апытання, адміністратараў групы і адміністратараў асобніка Loomio, якія карыстаюцца праграмай.
+Вынікі схаваныя ад усіх да закрыцця апытання. Гэта датычыцца таксама адміністратараў тэмы, адміністратараў групы і адміністратараў асобніка Loomio, якія карыстаюцца праграмай.
 
 Калі ўдзельнікі галасуюць:
 
@@ -92,7 +90,7 @@ needs_review:
 
 ## Галасы нельга змяніць
 
-Усе, хто мае права галасаваць, могуць прагаласаваць адзін раз. Пададзены ананімны голас нельга праглядзець, змяніць, адклікаць або замяніць, у тым ліку каардынатарам і адміністратарам.
+Усе, хто мае права галасаваць, могуць прагаласаваць адзін раз. Пададзены ананімны голас нельга праглядзець, змяніць, адклікаць або замяніць, у тым ліку адміністратарам.
 
 Каб можна было атрымаць або замяніць свой голас, спатрэбілася б пастаянная сувязь паміж асобай і голасам. Пры ананімным галасаванні такая сувязь наўмысна не ствараецца.
 
@@ -126,9 +124,9 @@ needs_review:
 
 Удзельнікі групы і выбаршчыкі апытання таксама бачаць, калі людзі далучыліся да групы і хто іх запрасіў. Адміністратары групы таксама бачаць адрасы электроннай пошты, каб адрозніваць людзей з аднолькавымі імёнамі.
 
-Паколькі ўсе, хто можа бачыць вынікі, могуць бачыць, хто прагаласаваў, аднабаковы вынік можа раскрыць, як галасавалі людзі. Напрыклад, калі ўсе галасы — «Пагаджаюся», усе, хто прагаласаваў, падтрымалі прапанову.
+Паколькі ўсе, хто можа бачыць вынікі, могуць бачыць, хто прагаласаваў, аднабаковы вынік можа раскрыць, як галасавалі людзі. Напрыклад, калі ўсе галасы — «Пагаджаюся», усе ўдзельнікі галасавання падтрымалі прапанову.
 
-Каардынатары могуць дадаваць людзей з правам галасаваць, пакуль галасаванне адкрытае, у тым ліку пасля таго, як іншыя людзі ўжо прагаласавалі. Выдаляць наяўных выбаршчыкаў з ананімнага апытання нельга.
+Адміністратары могуць дадаваць людзей з правам галасаваць, пакуль галасаванне адкрытае, у тым ліку пасля таго, як іншыя людзі ўжо прагаласавалі. Выдаляць наяўных выбаршчыкаў з ананімнага апытання нельга.
 
 <!-- translation-section: reminders -->
 
@@ -142,12 +140,12 @@ needs_review:
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Што могуць бачыць каардынатары і адміністратары
+## Што могуць бачыць адміністратары
 
-Праз праграму каардынатары апытання, адміністратары групы або адміністратары асобніка Loomio могуць мець доступ да наступнай інфармацыі:
+Праз праграму адміністратары тэмы, адміністратары групы або адміністратары асобніка Loomio могуць мець доступ да наступнай інфармацыі:
 
 - апытанне і выбаршчыкі, якія маюць права галасаваць;
-- ці прагаласавалі асобныя людзі з правам галасаваць, калі іх роля дазваляе такі доступ і прагаласавала дастатковая колькасць людзей; і
+- ці прагаласавалі асобныя людзі з правам галасаваць, калі роля адміністратараў дазваляе такі доступ і прагаласавала дастатковая колькасць людзей; і
 - зводныя вынікі пасля закрыцця апытання.
 
 Функцыі праграмы не дазваляюць ім бачыць:

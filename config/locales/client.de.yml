@@ -1081,7 +1081,7 @@ de:
       has_not_read_thread: Hat den Thread nicht angesehen
       has_not_joined_yet: Ist noch nicht beigetreten
       has_not_joined_yet_hint: Dieser Benutzer hat die Einladung zur Teilnahme an Loomio nicht angenommen und erhält keine weiteren Benachrichtigungen, bis er dies tut.
-      discussion_admin: Diskussionsadministrator
+      discussion_admin: "Diskussionsadmin"
       has_not_read_discussion: Hat die Diskussion nicht angesehen
     group_form:
       search_placeholder: Nach Personen suchen...
@@ -1625,7 +1625,7 @@ de:
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
-    title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
+    title_placeholder: "Z. B. „Admin“ oder „Moderator“"
     updated: Mitgliedstchaftstitel überarbeitet
     weight_label: Stimmgewicht
   user_name_modal:

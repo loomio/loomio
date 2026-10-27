@@ -1,10 +1,10 @@
 ---
 title: Nodig uit om te stemmen
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,7 +12,7 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -24,7 +24,7 @@ generated:
   invite-a-subgroup-to-vote: bb4893a7304fa6e1
   engage-people-while-a-poll-is-running: 9f477f8c9e6757d1
   add-voters-to-the-poll: f7bbe041be6b679b
-  remove-people-from-the-poll: 4c946ed155326e3a
+  remove-people-from-the-poll: 3689e5a08de61153
   remind-people-to-vote: d605ddfb1f134585
   view-notification-history: 13b37b414fa93346
   close-early: ff028f40d1e56f1f
@@ -102,9 +102,9 @@ Selecteer **Kiezers beheren**, zoek de naam van de persoon in het venster voor k
 
 Mensen kunnen niet uit een anonieme peiling worden verwijderd.
 
-Een beheerder die bijvoorbeeld namens bestuursleden een peiling maakt, kan zichzelf verwijderen als die niet bevoegd is om te stemmen.
+Een admin die bijvoorbeeld namens bestuursleden een peiling maakt, kan zichzelf verwijderen als die niet bevoegd is om te stemmen.
 
-Bij peilingen met stemgewichten kunnen peilingcoördinatoren in hetzelfde venster [stemgewichten bekijken en aanpassen](/en/user_manual/polls/weighted_voting).
+Bij peilingen met stemgewichten kunnen thread admins in hetzelfde venster [stemgewichten bekijken en aanpassen](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

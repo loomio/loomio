@@ -1,28 +1,30 @@
 ---
 title: Categorielabels
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 92b3cf9e975b03fe
-  apply-tags: 7b0f620ef70f52f5
+  apply-tags: 4f075725b4f54baa
   create-tags: f64f571afd12c4bd
   edit-tags: 5b2b1095f7a30105
   edit-tag-in-thread-or-poll: 6df72258d82f0338
   template-tags: da3f0bac6b18bd9f
-  tag-contributions: ea1fe94eab9d2bb3
-  find-tagged-contributions: d19741d5e1a1151a
+  tag-contributions: 89a7cd1cb0f5ca35
+  find-tagged-contributions: aff00c5d8cc1946b
+  global-search: 60877d8ad9c23223
 title_source: c86f6830bf302394
 title_generated: a390fa68f1924439
 ---
@@ -43,7 +45,7 @@ Klik op je groepspagina op **Labels** boven de lijst met threads. Selecteer een 
 
 ## Labels toepassen
 
-Je kunt je eigen discussies, peilingen, conclusies en reacties van labels voorzien. Threadcoördinatoren kunnen elke bijdrage van labels voorzien.
+Je kunt je eigen discussies, peilingen, conclusies en reacties van labels voorzien. Groepsadmins, threadadmins en mensen met toestemming om de context van de discussie te bewerken, kunnen elke bijdrage in een ontgrendelde thread van labels voorzien. In directe threads kunnen alle deelnemers elke bijdrage van labels voorzien.
 
 Klik bij het starten van een thread of peiling op het veld **Labels** en selecteer een of meer labels.
 
@@ -113,7 +115,7 @@ De keuzelijst toont labels die in de huidige groep worden gebruikt, ongebruikte 
 
 Open het actiemenu van een peiling, conclusie of reactie en selecteer **Labels toekennen**. Met dezelfde keuzelijst als naast de discussietitel kun je labels toevoegen of verwijderen. Wijzigingen worden direct opgeslagen. Wanneer een bijdrage labels heeft, verschijnen de labels en de labelknop rechts op de regel met de auteur en het tijdstip.
 
-Labels gelden voor de bijdrage die je selecteert. Ze worden niet overgenomen door antwoorden. Als je de openingsdiscussie van labels voorziet, krijgen niet alle reacties of peilingen in de thread die labels. Stemmen en stembiljetten kunnen niet van labels worden voorzien.
+Labels gelden voor de bijdrage die je selecteert. Stemmen en stembiljetten kunnen niet van labels worden voorzien.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -121,10 +123,14 @@ Labels gelden voor de bijdrage die je selecteert. Ze worden niet overgenomen doo
 
 De sectie **Labels** verschijnt in de zijbalk van de thread zodra een andere bijdrage dan de openingsdiscussie of -peiling labels heeft. Deze sectie verzamelt labels van het openingsitem en alle andere bijdragen met labels. Selecteer een label om bijbehorende bijdragen met hun bovenliggende context te tonen. Zolang het filter actief is, blijft er boven de thread een werkbalk zichtbaar. Sluit deze met de ×-knop rechts, selecteer het label opnieuw of kies **Leegmaken** in de zijbalk om terug te gaan naar de gebruikelijke threadweergave. Open op je mobiel het navigatiepaneel van de thread om hetzelfde filter te gebruiken.
 
-De labels naast de discussietitel horen bij de openingsdiscussie. De lijst met threads van de groep gebruikt alle labels in de thread. Als je een label van de openingsdiscussie verwijdert, verdwijnt de thread dus niet uit die categorie zolang een andere bijdrage dat label nog heeft.
+![Labels in de zijbalk van de thread](tags_thread_sidebar.png)
 
-Als je bij het zoeken in heel Loomio een label selecteert, vind je bijdragen die dat label expliciet hebben. Je kunt op label zoeken zonder een zoekterm in te voeren. Als je een label met een zoekterm combineert, doorzoek je de inhoud van de bijdragen met dat label, in plaats van alle bijdragen in hun threads.
+<!-- translation-section: global-search -->
 
-Auteurs kunnen hun reacties van labels voorzien, ongeacht de zichtbaarheid van het resultaat van de peiling. Labels zijn gedeelde metadata en blijven beschikbaar als een peiling wordt heropend of het resultaat ervan wordt verborgen. Reacties en hun labels blijven doorzoekbaar terwijl het resultaat van de peiling verborgen is. Verwijderde bijdragen worden weggelaten uit labelfilters; als je een bijdrage herstelt, worden ook de labels ervan hersteld. Vermeldingen in de tijdlijn blijven benoemde snelkoppelingen naar afzonderlijke bijdragen bieden en werken onafhankelijk van labels.
+## Zoeken op label
 
-Deelnamerapporten tellen hoeveel threads elk label bevatten. Deelname aan een van die threads betekent niet noodzakelijk dat iemand een bijdrage met dat label heeft geschreven.
+Open **Zoek** in de bovenste navigatie en selecteer jouw hoofdgroep om het labelmenu weer te geven. Kies een label om discussies, peilingen, conclusies en reacties met dat label te vinden.
+
+Laat het zoekveld leeg om op label te bladeren, of voer een woord of woordgroep in om binnen de gelabelde bijdragen te zoeken. Selecteer **Elk label** om het labelfilter te wissen.
+
+![Een label selecteren in de algemene zoekfunctie na het kiezen van de hoofdgroep](tags_global_search.png)

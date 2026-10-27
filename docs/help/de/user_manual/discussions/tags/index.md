@@ -1,28 +1,30 @@
 ---
 title: Kategorie-Schlagwörter
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-10-27'
 sections:
   introduction: a898970462d0556f
-  apply-tags: 0acc78ec07a23ffb
+  apply-tags: 86f59d27fd31c89f
   create-tags: a73c85e12ffa1e16
   edit-tags: f2ad1debf84eb70f
   edit-tag-in-thread-or-poll: a1c9e538d0d30424
   template-tags: a7cd2b824613855c
-  tag-contributions: 25e6a9bc0937ebe2
-  find-tagged-contributions: 2bd9e00732e598dc
+  tag-contributions: 133105ee90747934
+  find-tagged-contributions: 88ea04f0fde7cb1a
+  global-search: 597afa36d4894500
 generated:
   introduction: 4fadcf8e25340356
-  apply-tags: 3ae985d8c1774347
+  apply-tags: fcc5150ec95022ea
   create-tags: b5f741b9a55d4efd
   edit-tags: 782550c2c496a9a6
   edit-tag-in-thread-or-poll: bc116c48359ce901
   template-tags: e2dbb5dd8645e8f6
-  tag-contributions: c3886b5e59b68232
-  find-tagged-contributions: 3b98fdc61c4b58df
+  tag-contributions: 263aef394f8d6f45
+  find-tagged-contributions: 66fc3bd293c50e3a
+  global-search: 690335a804aa5ea2
 title_source: c86f6830bf302394
 title_generated: 9241f7889e480c49
 needs_review:
@@ -45,7 +47,7 @@ Klicke auf deiner Gruppenseite oberhalb der Thread-Liste auf **Schlagwörter**. 
 
 ## Schlagwörter zuweisen
 
-Du kannst deine eigenen Diskussionen, Abstimmungen, Fazits und Kommentare mit Schlagwörtern versehen. Thread-Koordinierende können jeden Beitrag mit Schlagwörtern versehen.
+Du kannst deine eigenen Diskussionen, Abstimmungen, Fazits und Kommentare mit Schlagwörtern versehen. Gruppen-Admins, Thread-Admins und Personen mit der Berechtigung, den Kontext der Diskussion zu bearbeiten, können jeden Beitrag in einem nicht gesperrten Thread mit Schlagwörtern versehen. In direkten Threads können alle Teilnehmenden jeden Beitrag mit Schlagwörtern versehen.
 
 Wenn du einen Thread oder eine Abstimmung startest, klicke auf das Feld **Schlagwörter** und wähle ein oder mehrere Schlagwörter aus.
 
@@ -115,7 +117,7 @@ Die Auswahl zeigt Schlagwörter, die in der aktuellen Gruppe verwendet werden, u
 
 Öffne das Aktionsmenü einer Abstimmung, eines Fazits oder eines Kommentars und wähle **Schlagwörter übernehmen**. Mit derselben Auswahl wie neben dem Diskussionstitel kannst du Schlagwörter hinzufügen oder entfernen. Änderungen werden sofort gespeichert. Wenn ein Beitrag Schlagwörter hat, erscheinen die Schlagwort-Schaltflächen und die Schaltfläche zum Bearbeiten der Schlagwörter rechts in der Zeile mit Namen und Zeitstempel.
 
-Schlagwörter gelten für den Beitrag, den du auswählst. Sie werden nicht an Antworten vererbt. Wenn du die einleitende Diskussion mit Schlagwörtern versiehst, erhalten nicht alle Kommentare oder Abstimmungen in ihrem Thread diese Schlagwörter. Stimmen und Stimmzettel können nicht mit Schlagwörtern versehen werden.
+Schlagwörter gelten für den Beitrag, den du auswählst. Stimmen und Stimmzettel können nicht mit Schlagwörtern versehen werden.
 
 <!-- translation-section: find-tagged-contributions -->
 
@@ -123,10 +125,14 @@ Schlagwörter gelten für den Beitrag, den du auswählst. Sie werden nicht an An
 
 Der Bereich **Schlagwörter** erscheint in der Seitenleiste des Threads, sobald ein Beitrag außer der einleitenden Diskussion oder Abstimmung Schlagwörter hat. Er sammelt Schlagwörter des einleitenden Beitrags und aller weiteren Beiträge mit Schlagwörtern. Wähle ein Schlagwort aus, um passende Beiträge mit ihrem übergeordneten Kontext anzuzeigen. Solange der Filter aktiv ist, bleibt oberhalb des Threads eine Werkzeugleiste sichtbar. Schließe sie über die ×-Schaltfläche rechts, wähle das Schlagwort erneut aus oder wähle **Löschen ** in der Seitenleiste, um zur üblichen Thread-Ansicht zurückzukehren. Öffne auf Mobilgeräten das Navigationsmenü des Threads, um denselben Filter zu verwenden.
 
-Die Schlagwörter neben dem Diskussionstitel gehören zur einleitenden Diskussion. Die Thread-Liste der Gruppe berücksichtigt alle Schlagwörter im Thread. Wenn du ein Schlagwort aus der einleitenden Diskussion entfernst, bleibt der Thread daher in dieser Kategorie, solange ein anderer Beitrag das Schlagwort noch trägt.
+![Schlagwörter in der Seitenleiste des Threads](tags_thread_sidebar.png)
 
-Wenn du in der globalen Suche ein Schlagwort auswählst, findest du Beiträge, denen dieses Schlagwort ausdrücklich zugewiesen ist. Du kannst nach Schlagwörtern suchen, ohne einen Suchbegriff einzugeben. Wenn du ein Schlagwort mit einem Suchbegriff kombinierst, wird der Inhalt der Beiträge mit diesem Schlagwort durchsucht, statt aller Beiträge in deren Threads.
+<!-- translation-section: global-search -->
 
-Verfassende können ihre Kommentare unabhängig von der Sichtbarkeit des Abstimmungsergebnisses mit Schlagwörtern versehen. Schlagwörter sind gemeinsame Metadaten und bleiben verfügbar, wenn eine Abstimmung wieder geöffnet oder ihr Ergebnis ausgeblendet wird. Kommentare und ihre Schlagwörter bleiben durchsuchbar, während Abstimmungsergebnisse ausgeblendet sind. Gelöschte Beiträge werden in Schlagwortfiltern nicht berücksichtigt; beim Wiederherstellen eines Beitrags werden auch seine Schlagwörter wiederhergestellt. Einträge im Verlauf bieten weiterhin benannte Direktlinks zu einzelnen Beiträgen und funktionieren unabhängig von Schlagwörtern.
+## Nach Schlagwort suchen
 
-Teilnahmeberichte zählen für jedes Schlagwort die Threads, die es enthalten. Die Teilnahme an einem dieser Threads bedeutet nicht zwangsläufig, dass eine Person einen Beitrag mit diesem Schlagwort verfasst hat.
+Öffne **Suchen** in der oberen Navigation und wähle deine Hauptgruppe aus, um das Schlagwortmenü anzuzeigen. Wähle ein Schlagwort aus, um Diskussionen, Abstimmungen, Fazits und Kommentare mit diesem Schlagwort zu finden.
+
+Lass das Suchfeld leer, um nach Schlagwort zu stöbern, oder gib ein Wort oder eine Wortgruppe ein, um innerhalb der mit dem Schlagwort versehenen Beiträge zu suchen. Wähle **Irgendein Tag**, um den Schlagwortfilter zu entfernen.
+
+![Auswahl eines Schlagworts in der globalen Suche nach Auswahl der Hauptgruppe](tags_global_search.png)

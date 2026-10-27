@@ -1069,7 +1069,7 @@ tr:
       has_not_read_thread: Konuyu görüntülemedi
       has_not_joined_yet: Henüz katılmadı
       has_not_joined_yet_hint: Bu kullanıcı, Loomio'ya katılma davetini kabul etmemiştir ve kabul edene kadar başka bildirim almayacaktır.
-      discussion_admin: Tartışma yöneticisi
+      discussion_admin: "Konu yöneticisi"
       has_not_read_discussion: Tartışmayı görüntülemedi
     group_form:
       search_placeholder: İnsanları arayın...
@@ -1603,7 +1603,7 @@ tr:
     title_helptext:
       group: Bu başlık, bu grup içinde %{name}'nin adının yanında görünecek. İnsanların rollerini bilmelerini sağlamak için bunu kullanın.
     title_label: başlık
-    title_placeholder: Örneğin 'Koordinatör' veya 'Kolaylaştırıcı'
+    title_placeholder: "Örneğin “Yönetici” veya “Kolaylaştırıcı”"
     updated: Üyelik başlığı güncellendi
     weight_label: Oy ağırlığı
   user_name_modal:

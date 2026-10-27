@@ -1197,7 +1197,7 @@ en:
       not_notified: Not notified yet
       no_members: This hasn't been shared with anyone yet!
       group_admin: Group admin
-      discussion_admin: Discussion admin
+      discussion_admin: "Thread admin"
       thread_admin: Thread admin
       last_read_at: Last viewed %{time}
       has_not_read_discussion: Has not viewed discussion
@@ -1802,7 +1802,7 @@ en:
     title_helptext:
       group: This title will appear beside %{name}'s name within this group. Use it to let people know their role.
     title_label: title
-    title_placeholder: E.g. 'Coordinator', or 'Facilitator'
+    title_placeholder: "E.g. 'Admin' or 'Facilitator'"
     updated: Membership title updated
     weight_label: Vote weight
   user_name_modal:

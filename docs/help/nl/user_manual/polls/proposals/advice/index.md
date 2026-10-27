@@ -1,14 +1,14 @@
 ---
 title: Advies
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: f7dc50f77462f5ee
   when-to-use-advice: 3c3f0e912605de9a
-  example-choose-a-washing-supplier: 3a8c31cfba757bc4
+  example-choose-a-washing-supplier: 3bc3eda88ec8ced3
   set-up-the-proposal: 73f4b346bd6efbfa
   vote: 03275aecf36ded48
   read-the-results: 68cafed598ef82e1
@@ -47,7 +47,7 @@ Advies is geen stem ter goedkeuring. Geef aan wie het besluit neemt, welke beper
 
 ## Voorbeeld: kies een leverancier voor het wassen
 
-De operationeel coördinator van Oatmilk Cooperative moet een leverancier voor het wassen kiezen. Die vraagt om advies over capaciteit, gegevens over voedselveiligheid, waterverbruik, reactietijden bij servicevragen en ondersteuning.
+De operationeel verantwoordelijke van Oatmilk Cooperative moet een leverancier voor het wassen kiezen. Die vraagt om advies over capaciteit, gegevens over voedselveiligheid, waterverbruik, reactietijden bij servicevragen en ondersteuning.
 
 <!-- translation-section: set-up-the-proposal -->
 

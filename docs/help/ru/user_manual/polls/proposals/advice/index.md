@@ -1,14 +1,14 @@
 ---
 title: Совет
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 8a4bba31a7e1b791
   when-to-use-advice: dbd4222f1c025684
-  example-choose-a-washing-supplier: 874b10044d225c17
+  example-choose-a-washing-supplier: 55f52eef4bd25c09
   set-up-the-proposal: 33eac450f46b43ba
   vote: be6dbca130af34b1
   read-the-results: 87e60e597150da35
@@ -45,7 +45,7 @@ title_generated: 92da565684465956
 
 ## Пример: выбор поставщика услуг мойки
 
-Координатор операционной деятельности кооператива Oatmilk должен выбрать поставщика услуг мойки. Он запрашивает советы о производительности, соблюдении требований безопасности пищевых продуктов, расходе воды, времени реагирования на запросы и поддержке.
+Руководитель операционной деятельности кооператива Oatmilk должен выбрать поставщика услуг мойки. Он запрашивает советы о производительности, соблюдении требований безопасности пищевых продуктов, расходе воды, времени реагирования на запросы и поддержке.
 
 <!-- translation-section: set-up-the-proposal -->
 

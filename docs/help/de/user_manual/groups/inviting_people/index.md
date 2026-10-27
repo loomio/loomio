@@ -1,10 +1,10 @@
 ---
 title: Leute einladen
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 55a6bcc670aa6224
   send-invitations-via-email: bbc814cba35c9541
@@ -16,7 +16,7 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
   introduction: 597adff623b5dfbe
   send-invitations-via-email: 8ef2c71dbacdf0dc
@@ -28,7 +28,7 @@ generated:
   managing-invitations: 7b7fde2e84cd9bc3
   re-send-invitations: 82377653e3d1426c
   cancelling-invitations: 99758ebaaea65cd4
-  invitation-notification-history: b3e42523fc83b2a0
+  invitation-notification-history: 92f6b137b73e2728
 title_source: b926eb8921d85971
 title_generated: 3e0831d8f76bf916
 ---
@@ -130,7 +130,7 @@ Du kannst Personen auch Administrationsrechte geben oder ihre Bezeichnung innerh
 
 ### Zustellverlauf der Einladung
 
-Wenn jemand die Einladungs-E-Mail nicht erhält, können Gruppenkoordinierende **Zustellverlauf der Einladung** im Dreipunktmenü (**⋮**) neben dem Namen der Person auf der Seite **Mitglieder** öffnen, um zu sehen, wann Einladungen versendet wurden und welche Zustellprobleme erfasst wurden.
+Wenn jemand die Einladungs-E-Mail nicht erhält, können Gruppenadmins **Zustellverlauf der Einladung** im Dreipunktmenü (**⋮**) neben dem Namen der Person auf der Seite **Mitglieder** öffnen, um zu sehen, wann Einladungen versendet wurden und welche Zustellprobleme erfasst wurden.
 
 <!-- translation-section: re-send-invitations -->
 

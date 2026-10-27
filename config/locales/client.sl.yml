@@ -1069,7 +1069,7 @@ sl:
       has_not_read_thread: Ni si ogledal niti
       has_not_joined_yet: Se še ni pridružil
       has_not_joined_yet_hint: Ta uporabnik ni sprejel njihovega povabila, da se pridruži Loomio, in ne bo prejel nadaljnjih obvestil, dokler tega ne stori
-      discussion_admin: Administrator razprave
+      discussion_admin: "Skrbnik teme"
       has_not_read_discussion: Ni si ogledal razprave
     group_form:
       search_placeholder: Iskanje ljudi ...
@@ -1603,7 +1603,7 @@ sl:
     title_helptext:
       group: Ta naslov bo prikazan poleg imena %{name} znotraj te skupine. Uporabite ga, da seznanite ljudi s svojo vlogo.
     title_label: naslov
-    title_placeholder: Npr. 'Koordinator' ali 'Pospeševalec'
+    title_placeholder: "Npr. »Skrbnik« ali »Moderator«"
     updated: Naslov članstva posodobljen
     weight_label: Teža glasov
   user_name_modal:

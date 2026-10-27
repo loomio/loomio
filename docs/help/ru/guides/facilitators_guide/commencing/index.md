@@ -1,10 +1,10 @@
 ---
 title: Начало работы
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: 4b2538666e92f28c
   settling: 10186a0bd0e492e1
   who-s-in-the-room: a8d260ef64b0393d
-  check-in: f5dce4539898c81e
+  check-in: ad20abfae9e1fd51
   who-s-not-in-the-room: 9d3fe7ef9e1141aa
   culture-protocol-expectations: 95d474b26ba498c0
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ title_generated: b5b75c376dc8f5e6
 В Loomio
 
 * Создайте ветку «Представьтесь» или «Как вы сейчас». Это даст каждому, кто присоединяется, понятный первый _призыв к действию_.
-* В группах, куда вступают по запросу, есть функция, позволяющая человеку представиться координатору, чтобы получить доступ к группе. В некоторых группах это сообщение затем публикуют в ветке для знакомства, чтобы поприветствовать нового участника.
+* В группах, куда вступают по запросу, есть функция, позволяющая человеку представиться администратору группы, чтобы получить доступ к группе. В некоторых группах это сообщение затем публикуют в ветке для знакомства, чтобы поприветствовать нового участника.
 * Загрузите фотографии профиля. Фотографии лиц хорошо помогают понять, с кем вы общаетесь онлайн.
 
 <!-- translation-section: who-s-not-in-the-room -->

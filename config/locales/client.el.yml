@@ -1069,7 +1069,7 @@ el:
       has_not_read_thread: Δεν έχει δει το νήμα
       has_not_joined_yet: Δεν έχει εγγραφεί ακόμα
       has_not_joined_yet_hint: Αυτός ο χρήστης δεν έχει αποδεχτεί την πρόσκλησή του να εγγραφεί στο Loomio και δεν θα λάβει περαιτέρω ειδοποιήσεις μέχρι να το κάνει
-      discussion_admin: Διαχειριστής συζήτησης
+      discussion_admin: "Διαχειριστής νήματος"
       has_not_read_discussion: Δεν έχει δει τη συζήτηση
     group_form:
       search_placeholder: Αναζήτηση ατόμων...
@@ -1603,7 +1603,7 @@ el:
     title_helptext:
       group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη %{name} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
     title_label: τίτλος
-    title_placeholder: Π.χ. «Συντονιστής» ή «Διευκολυντής»
+    title_placeholder: "Π.χ. «Διαχειριστής» ή «Διευκολυντής»"
     updated: Ο τίτλος μέλους ενημερώθηκε
     weight_label: Βάρος ψήφου
   user_name_modal:

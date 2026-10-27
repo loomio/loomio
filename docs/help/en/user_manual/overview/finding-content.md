@@ -42,7 +42,7 @@ Tags group related discussions, polls, outcomes, and comments under names chosen
 
 ![](tags.png)
 
-Select a tag on the **Discussions** tab to show threads containing a matching contribution. Within a thread, select a tag in the sidebar to find matching contributions with their parent context. Authors and thread coordinators can apply tags. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
+Select a tag on the **Discussions** tab to show threads containing a matching contribution. Within a thread, select a tag in the sidebar to find matching contributions with their parent context. Authors can tag their own contributions. Group admins, thread admins, and people with permission to edit the discussion context can tag any contribution. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
 
 <!-- translation-section: unread-discussions -->
 

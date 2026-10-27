@@ -1,20 +1,20 @@
 ---
 title: Votação anônima
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: c06d5643691d9e83
   how-anonymous-voting-protects-voters: dd4dd7be3461c342
-  while-voting-is-open: f698e6a83cc22b38
-  votes-cannot-be-changed: 7deff56b56084e5c
+  while-voting-is-open: 5ec04d77abbf4187
+  votes-cannot-be-changed: c42b760384802b27
   why-anonymous-votes-do-not-have-reasons: 484e7fe1658e8ed0
   results-and-exports: e18594c1007a7f89
-  participation-verification: 108e769b81a008c1
+  participation-verification: 13b86a0ed4c3bcb9
   reminders: 39ca7d6a4518da86
-  what-coordinators-and-administrators-can-see: 4f9bdbc765f107f4
+  what-coordinators-and-administrators-can-see: 92d7cba4638f64db
   limits-of-anonymous-voting: a07b7527c62bf523
   questions: '06486bdf6b6b59d1'
   can-a-coordinator-see-how-i-voted: 64a34745b8ba62be
@@ -74,7 +74,7 @@ Essa separação é garantida quando o voto é armazenado. Ela não depende apen
 
 ## Enquanto a votação estiver aberta
 
-Os resultados permanecem ocultos para todos até que a enquete seja encerrada. Isso inclui coordenadores da enquete, administradores do grupo e administradores da instância que usam o aplicativo.
+Os resultados permanecem ocultos para todos até que a enquete seja encerrada. Isso inclui admins da conversa, administradores do grupo e administradores da instância que usam o aplicativo.
 
 Quando alguém vota:
 
@@ -90,7 +90,7 @@ O registro de participação não armazena o horário preciso em que a pessoa vo
 
 ## Os votos não podem ser alterados
 
-Cada pessoa apta a votar pode votar uma vez. Um voto anônimo enviado não pode ser consultado, alterado, retirado ou substituído, nem mesmo por um coordenador ou administrador.
+Cada pessoa apta a votar pode votar uma vez. Um voto anônimo enviado não pode ser consultado, alterado, retirado ou substituído, nem mesmo por um admin.
 
 Permitir que uma pessoa recupere ou substitua seu voto exigiria um vínculo persistente entre essa pessoa e o voto. A votação anônima não cria esse vínculo por escolha deliberada.
 
@@ -126,7 +126,7 @@ Os membros do grupo e os eleitores da enquete também veem quando cada pessoa en
 
 Como todos que podem ver os resultados podem ver quem votou, um resultado em que todos os votos são para a mesma opção pode revelar como as pessoas votaram. Por exemplo, se todos os votos forem Concordo, todas as pessoas que votaram concordaram.
 
-Os coordenadores podem adicionar pessoas aptas a votar enquanto a votação estiver aberta, inclusive depois que outras pessoas já tiverem votado. Os eleitores existentes não podem ser removidos de uma enquete anônima.
+Os admins podem adicionar pessoas aptas a votar enquanto a votação estiver aberta, inclusive depois que outras pessoas já tiverem votado. Os eleitores existentes não podem ser removidos de uma enquete anônima.
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ Enquetes com um período total de votação inferior a 24 horas não enviam esse
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## O que coordenadores e administradores podem ver
+## O que os admins podem ver
 
-Pelo aplicativo, um coordenador da enquete, administrador do grupo ou administrador da instância pode ter acesso a:
+Pelo aplicativo, um admin da conversa, administrador do grupo ou administrador da instância pode ter acesso a:
 
 - a enquete e seus eleitores aptos a votar;
 - a informação de que cada pessoa apta a votar votou ou não, quando sua função permitir esse acesso e houver votos suficientes; e

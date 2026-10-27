@@ -1,10 +1,10 @@
 ---
 title: Zur Abstimmung einladen
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
 source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,7 +12,7 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
@@ -24,7 +24,7 @@ generated:
   invite-a-subgroup-to-vote: 7d9cb96223f8125e
   engage-people-while-a-poll-is-running: 566c1d09b00dc335
   add-voters-to-the-poll: 186469c2ae108142
-  remove-people-from-the-poll: 8ac140f30d51e961
+  remove-people-from-the-poll: 739ee7680cda2c28
   remind-people-to-vote: 91ad11fa846c64c6
   view-notification-history: f2ee925afde9dbcb
   close-early: d9467276aaca05ac
@@ -35,7 +35,6 @@ needs_review:
   introduction: use "Stimme" instead of "Abstimmung" for "vote"
   invite-people-to-vote-in-a-poll: use "Stimme" instead of "Abstimmung" for "vote"
   invite-a-subgroup-to-vote: use "Stimme" instead of "Abstimmung" for "vote"
-  remove-people-from-the-poll: use "Stimme" instead of "Abstimmung" for "vote"
   remind-people-to-vote: use "Stimme" instead of "Abstimmung" for "vote"
   view-notification-history: use "Stimme" instead of "Abstimmung" for "vote"
   close-early: use "Stimme" instead of "Abstimmung" for "vote"
@@ -112,7 +111,7 @@ Aus einer anonymen Abstimmung können keine Personen entfernt werden.
 
 Wenn beispielsweise eine Person mit Administrationsrechten eine Abstimmung im Auftrag von Vorstandsmitgliedern erstellt, kann sie sich selbst entfernen, falls sie nicht zur Stimmabgabe berechtigt ist.
 
-Bei Abstimmungen mit Stimmgewichten können Personen, die die Abstimmung koordinieren, im selben Fenster [Stimmgewichte prüfen und bearbeiten](/en/user_manual/polls/weighted_voting).
+Bei Abstimmungen mit Stimmgewichten können Thread-Admins im selben Fenster [Stimmgewichte prüfen und bearbeiten](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 

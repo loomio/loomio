@@ -1076,7 +1076,7 @@ zh_TW:
       has_not_read_thread: 尚未檢視討論串
       has_not_joined_yet: 尚未加入
       has_not_joined_yet_hint: 該用戶尚未接受加入 Loomio 的邀請，並且在接受之前不會收到進一步的通知
-      discussion_admin: 討論管理員
+      discussion_admin: "討論串管理員"
       has_not_read_discussion: 未查看討論
     group_form:
       search_placeholder: 搜尋夥伴……
@@ -1620,7 +1620,7 @@ zh_TW:
     title_helptext:
       group: 這個標題會出現在這個群組中的 %{name} 名稱旁。使用它來讓夥伴們知道他們的角色。
     title_label: 標題
-    title_placeholder: 例子：「協調者」或「主持人」
+    title_placeholder: "例如：「管理員」或「引導者」"
     updated: 成員標題已更新
     weight_label: 投票權重
   user_name_modal:

@@ -1068,7 +1068,7 @@ ja:
       has_not_read_thread: スレッドを見ていません
       has_not_joined_yet: まだ参加していません
       has_not_joined_yet_hint: このユーザーはLoomioへの招待を承諾していないため、承諾するまで通知は届きません。
-      discussion_admin: ディスカッション管理者
+      discussion_admin: "スレッド管理者"
       has_not_read_discussion: ディスカッションを閲覧していない
     group_form:
       search_placeholder: 人を探す...
@@ -1602,7 +1602,7 @@ ja:
     title_helptext:
       group: このタイトルは、このグループ内の %{name} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
     title_label: タイトル
-    title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
+    title_placeholder: "例：「管理者」または「ファシリテーター」"
     updated: 会員タイトルを更新しました
     weight_label: 票の重み
   user_name_modal:

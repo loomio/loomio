@@ -1,20 +1,20 @@
 ---
 title: Anonyme Abstimmung
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: b8afdb08e55b22ea
   how-anonymous-voting-protects-voters: fae2e30be5c03422
-  while-voting-is-open: 6c2d1903d2391db2
-  votes-cannot-be-changed: '046646068ce07033'
+  while-voting-is-open: 937a337bbb62facb
+  votes-cannot-be-changed: 19369afcde682059
   why-anonymous-votes-do-not-have-reasons: 515a6c03d7ed3817
   results-and-exports: d5f9aa1ad7e2d0db
-  participation-verification: 842efa55f441037e
+  participation-verification: a1ab74da9ae99f18
   reminders: caacb89867a7bb49
-  what-coordinators-and-administrators-can-see: e669f6aeaf5165b9
+  what-coordinators-and-administrators-can-see: 7f90e57522135795
   limits-of-anonymous-voting: b7114a5d7fe1a230
   questions: 35697f4e2def282c
   can-a-coordinator-see-how-i-voted: 20ac5720e43b944d
@@ -46,12 +46,9 @@ title_generated: 911f939f43e472e8
 needs_review:
   introduction: use "Stimme" instead of "Abstimmung" for "vote"
   how-anonymous-voting-protects-voters: use "Stimme" instead of "Abstimmung" for "vote"
-  while-voting-is-open: use "Stimme" instead of "Abstimmung" for "vote"
   why-anonymous-votes-do-not-have-reasons: use "Stimme" instead of "Abstimmung" for "vote"
   results-and-exports: use "Stimme" instead of "Abstimmung" for "vote"
-  participation-verification: use "Stimme" instead of "Abstimmung" for "vote"; use "Zustimmung" instead of "Dafür" for "agree"
   reminders: use "Stimme" instead of "Abstimmung" for "vote"
-  what-coordinators-and-administrators-can-see: use "Stimme" instead of "Abstimmung" for "vote"
   limits-of-anonymous-voting: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
   does-a-public-poll-reveal-more-information: use "Stimme" instead of "Abstimmung" for "vote"
 ---
@@ -85,7 +82,7 @@ Diese Trennung wird beim Speichern der Stimme durchgesetzt. Sie beruht nicht all
 
 ## Solange die Abstimmung offen ist
 
-Das Ergebnis bleibt für alle verborgen, bis die Abstimmung beendet wird. Das gilt auch für Abstimmungskoordinierende, Gruppenadmins und Instanzadmins, die die Anwendung nutzen.
+Das Ergebnis bleibt für alle verborgen, bis die Abstimmung beendet wird. Das gilt auch für Thread-Admins, Gruppenadmins und Instanzadmins, die die Anwendung nutzen.
 
 Wenn eine Person abstimmt:
 
@@ -101,7 +98,7 @@ Der Teilnahmedatensatz speichert keinen genauen Zeitpunkt der Stimmabgabe. Abgeg
 
 ## Stimmen können nicht geändert werden
 
-Jede stimmberechtigte Person kann einmal abstimmen. Eine abgegebene anonyme Stimme kann nicht eingesehen, geändert, zurückgezogen oder ersetzt werden, auch nicht durch Koordinierende oder Admins.
+Jede stimmberechtigte Person kann einmal abstimmen. Eine abgegebene anonyme Stimme kann nicht eingesehen, geändert, zurückgezogen oder ersetzt werden, auch nicht durch einen Admin.
 
 Damit eine Person ihre Stimme abrufen oder ersetzen könnte, müsste eine dauerhafte Verknüpfung zwischen dieser Person und der Stimme bestehen. Bei anonymen Abstimmungen wird diese Verknüpfung bewusst nicht erstellt.
 
@@ -131,13 +128,13 @@ Eine anonyme Abstimmung kann nach ihrem Ende nicht wieder geöffnet werden.
 
 Nachdem eine anonyme Abstimmung beendet wurde, können alle, die ihr Ergebnis sehen können, auch sehen, wer teilgenommen hat. Solange die Abstimmung offen ist, kann dies niemand sehen.
 
-Wähle **Stimmen ansehen**, um die Liste zu sehen. Sie zeigt immer, wer stimmberechtigt war. Ob die einzelnen Personen abgestimmt haben, zeigt sie nur, wenn genügend Personen abgestimmt haben. Dafür muss das Quorum der Abstimmung erreicht sein, falls eines festgelegt wurde. Andernfalls muss mindestens die Hälfte der Stimmberechtigten abgestimmt haben. In jedem Fall sind mindestens drei Stimmen erforderlich. Die Liste zeigt nie, wie oder wann jemand abgestimmt hat.
+Wähle **Stimmen ansehen**, um die Liste zu sehen. Sie zeigt immer, wer stimmberechtigt war. Ob die einzelnen Personen abgestimmt haben, zeigt sie nur, wenn genügend Personen abgestimmt haben. Dazu muss das Quorum der Abstimmung erreicht sein, falls eines festgelegt wurde. Andernfalls muss mindestens die Hälfte der Stimmberechtigten abgestimmt haben. In jedem Fall sind mindestens drei Stimmen erforderlich. Die Liste zeigt nie, wie oder wann jemand abgestimmt hat.
 
 Mitglieder der Gruppe und die Abstimmenden sehen außerdem, wann die einzelnen Personen der Gruppe beigetreten sind und wer sie eingeladen hat. Gruppenadmins sehen auch die E-Mail-Adressen, um Personen mit demselben Namen unterscheiden zu können.
 
 Da alle, die das Ergebnis sehen können, auch sehen können, wer abgestimmt hat, kann ein einseitiges Ergebnis erkennen lassen, wie Personen abgestimmt haben. Wenn beispielsweise jede Stimme auf Zustimmung lautet, haben alle Personen, die abgestimmt haben, zugestimmt.
 
-Koordinierende können stimmberechtigte Personen hinzufügen, solange die Abstimmung offen ist, auch nachdem andere Personen bereits abgestimmt haben. Bereits hinzugefügte Abstimmende können nicht aus einer anonymen Abstimmung entfernt werden.
+Admins können stimmberechtigte Personen hinzufügen, solange die Abstimmung offen ist, auch nachdem andere Personen bereits abgestimmt haben. Bereits hinzugefügte Abstimmende können nicht aus einer anonymen Abstimmung entfernt werden.
 
 <!-- translation-section: reminders -->
 
@@ -151,9 +148,9 @@ Abstimmungen mit einer Gesamtdauer von weniger als 24 Stunden versenden diese au
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Was Koordinierende und Admins sehen können
+## Was Admins sehen können
 
-Über die Anwendung können Abstimmungskoordinierende, Gruppenadmins oder Instanzadmins je nach Berechtigung Folgendes sehen:
+Über die Anwendung können Thread-Admins, Gruppenadmins oder Instanzadmins je nach Berechtigung Folgendes sehen:
 
 - die Abstimmung und ihre Stimmberechtigten;
 - ob die einzelnen stimmberechtigten Personen abgestimmt haben, sofern ihre Rolle den Zugriff erlaubt und genügend Personen abgestimmt haben; und

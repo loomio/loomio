@@ -1,20 +1,20 @@
 ---
 title: Анонімне голосування
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: cd582c910b0758e9
   how-anonymous-voting-protects-voters: 4d722d355cbf90e7
-  while-voting-is-open: 1f6ca8c32cd0c3ee
-  votes-cannot-be-changed: 9a72d1e402101ddb
+  while-voting-is-open: 39b443c88ccbb9f3
+  votes-cannot-be-changed: 6e8ee081fe2c8364
   why-anonymous-votes-do-not-have-reasons: 78c8caccebccdd19
   results-and-exports: bd10dbd2954fa646
-  participation-verification: cad04ee166ecbe3f
+  participation-verification: 9338a728b5f671bb
   reminders: c2dc21f2a94dd3e2
-  what-coordinators-and-administrators-can-see: 8e250cd98cfa5e14
+  what-coordinators-and-administrators-can-see: afa3f32da95101e3
   limits-of-anonymous-voting: bcad79ec05f9ec6a
   questions: 383de76846743b3f
   can-a-coordinator-see-how-i-voted: a17d063f39b4ab8d
@@ -74,7 +74,7 @@ title_generated: 26e9df2720881bfd
 
 ## Поки голосування відкрите
 
-Результати залишаються прихованими від усіх до закриття опитування. Це стосується також адміністраторів опитування, адміністраторів групи та адміністраторів інстансу, які користуються застосунком.
+Результати залишаються прихованими від усіх до закриття опитування. Це стосується також адміністраторів теми, адміністраторів групи та адміністраторів інстансу, які користуються застосунком.
 
 Коли людина голосує:
 
@@ -90,7 +90,7 @@ title_generated: 26e9df2720881bfd
 
 ## Голоси не можна змінювати
 
-Кожна людина, яка має право голосувати, може проголосувати один раз. Поданий анонімний голос не можна переглянути, змінити, відкликати чи замінити. Це стосується й адміністраторів опитування та інших адміністраторів.
+Кожна людина, яка має право голосувати, може проголосувати один раз. Поданий анонімний голос не можна переглянути, змінити, відкликати чи замінити, зокрема й адміністратору.
 
 Щоб людина могла отримати або замінити свій голос, потрібен був би постійний зв’язок між нею та голосом. Анонімне голосування навмисно не створює такого зв’язку.
 
@@ -126,7 +126,7 @@ title_generated: 26e9df2720881bfd
 
 Оскільки всі, хто може бачити результати, можуть бачити, хто проголосував, одностайний результат може розкрити, як голосували люди. Наприклад, якщо кожен голос — «Погоджуюся», усі, хто проголосував, погодилися.
 
-Адміністратори опитування можуть додавати людей, які мають право голосувати, поки голосування відкрите, зокрема після того, як інші люди вже проголосували. Наявних виборців не можна вилучити з анонімного опитування.
+Адміністратори можуть додавати людей, які мають право голосувати, поки голосування відкрите, зокрема після того, як інші люди вже проголосували. Наявних виборців не можна вилучити з анонімного опитування.
 
 <!-- translation-section: reminders -->
 
@@ -140,12 +140,12 @@ title_generated: 26e9df2720881bfd
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Що можуть бачити адміністратори опитувань та інші адміністратори
+## Що можуть бачити адміністратори
 
-Через застосунок адміністратор опитування, адміністратор групи або адміністратор інстансу може мати змогу бачити:
+Через застосунок адміністратор теми, адміністратор групи або адміністратор інстансу може мати змогу бачити:
 
 - опитування та виборців, які мають право голосувати в ньому;
-- чи проголосувала кожна людина, яка має право голосувати, якщо її роль дозволяє такий доступ і проголосувало достатньо людей; і
+- чи проголосувала кожна людина, яка має право голосувати, якщо роль адміністратора дозволяє такий доступ і проголосувало достатньо людей; і
 - сукупні результати після закриття опитування.
 
 Вони не можуть за допомогою функцій застосунку бачити:

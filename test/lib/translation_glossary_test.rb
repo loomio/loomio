@@ -63,6 +63,17 @@ class TranslationGlossaryTest < ActiveSupport::TestCase
     end
   end
 
+  test "admin translation prompts cover group and thread roles and reject coordination roles" do
+    TranslationGlossary.data.fetch('locales').each_key do |locale|
+      prompt = TranslationGlossary.prompt(locale, english: 'Group admins and thread admins can apply tags')
+      assert_includes prompt, 'group admin manages the group', locale
+      assert_includes prompt, 'thread admin manages a thread', locale
+      assert_includes prompt, 'Never call either role coordinator', locale
+      wrong = TranslationGlossary.terms.fetch('admin').fetch(locale).fetch('avoid').last
+      assert_not_empty TranslationGlossary.wrong_terms('Thread admin', wrong, locale), locale
+    end
+  end
+
   test "wrong terms are found only where the English uses the term" do
     with_glossary do
       assert_equal [%(use "conclusion" instead of "résultat" for "outcome")],
