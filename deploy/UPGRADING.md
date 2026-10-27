@@ -17,17 +17,17 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 
 ## Contribution tag backfill
 
-The contribution-tag migrations now release schema locks before copying data and build indexes concurrently. Existing opening tags are preserved in small transactions during migration. The full search-tag and thread-summary rebuild runs separately, so it cannot hold up application startup or keep an exclusive schema lock for the duration of the backfill.
+The contribution-tag migrations release schema locks before copying data and build indexes concurrently. Existing opening tags are preserved in small transactions during migration. Migration `20261027000000` automatically schedules the thread-summary and search-tag backfill to start ten minutes later, separately from application startup.
 
-After upgrading both web and worker processes, enqueue the backfill:
+Upgrade both web and worker processes before the scheduled start: older workers can restore inherited thread tags when reindexing content. An active tag backfill continues without queuing another pass. The delayed pass is safe for installations that already completed the original migrations; it only updates derived values that differ.
+
+No manual command is needed for the upgrade. To rerun the backfill or resume it with custom settings after upgrading web and workers:
 
 ```sh
 docker compose exec app rake loomio:backfill_item_tags
 ```
 
-Run this only after all processes use the new code: older workers can restore inherited thread tags when reindexing content. Installations that already completed all the original contribution-tag migrations do not need another backfill.
-
-The command returns a job ID. Each low-priority job commits at most 500 records, logs its phase, cursor, captured maximum ID, and update count, then schedules the next batch after one second. Database statements have a one-second timeout and lock waits have a 100-millisecond timeout. Busy or slow batches retry the same cursor; completed batches remain committed. Retrying the job or restarting the pass is safe. Existing opening tags remain visible while tag-filtered search results and cached thread summaries are updated progressively.
+The manual command returns a job ID. Each low-priority job commits at most 500 records, logs its phase, cursor, captured maximum ID, and update count, then schedules the next batch after one second. Database statements have a one-second timeout and lock waits have a 100-millisecond timeout. Busy or slow batches retry the same cursor; completed batches remain committed. Retrying the job or restarting the pass is safe. Existing opening tags remain visible while tag-filtered search results and cached thread summaries are updated progressively.
 
 Use `BATCH_SIZE` (1–1000) and `STATEMENT_TIMEOUT_MS` to tune the work. Increasing the timeout also increases the possible time a batch holds row locks. To resume manually, set `PHASE` (`summaries` or `search`), `AFTER_ID`, and `THROUGH_ID` to the last completed batch's logged values. The search phase starts automatically after the summary phase finishes. A schema-lock timeout fails the migration promptly instead of leaving new application requests queued behind it; rerun the migration to resume its completed schema steps and rebuild any interrupted concurrent index.
 

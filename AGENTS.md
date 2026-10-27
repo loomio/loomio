@@ -8,6 +8,7 @@
 - Boolean env vars: **presence is truthy**. Set the var to enable, omit it to disable. Check with `ENV["VAR"].present?` (Rails) or `ENV.key?("VAR")` (plain Ruby) — never compare against `"true"` or `"1"`.
 - Run Rails tests with escalated sandbox permissions on the first attempt; the local PostgreSQL test database is not reachable from the filesystem sandbox. Use the existing approved `bin/rails test` permission.
 - Never run Rails tests and E2E tests in parallel. Run one suite at a time because they can share the test database.
+- Large migrations: keep schema locks short, build indexes concurrently, and move bulk backfills to idempotent background jobs scheduled 10 minutes later. Prefer newest records first so active content is corrected sooner. Keep the app usable before backfill completes. Commit small batches, persist progress for retries, and verify lock behavior on production-sized data with concurrent read/write checks before deploying to loomio.com.
 - Changes touching voting, anonymous polls, permissions, authentication, or sessions require an explicit security review and focused regression tests. Read the security instructions below before working on these areas.
 - For user-visible features and behaviour changes, read the user-manual instructions below and update relevant documentation.
 - Do not hard-wrap prose in Markdown documents. Keep each paragraph and list item on one source line; preserve deliberate line breaks required by Markdown syntax or the content.
