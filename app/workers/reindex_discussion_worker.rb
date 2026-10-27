@@ -1,4 +1,4 @@
-class ReindexDiscussionWorker < ApplicationJob
+class ReindexDiscussionWorker < SearchIndexJob
   def perform(discussion_id)
     SearchService.reindex_by_discussion_id(discussion_id)
   end

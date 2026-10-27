@@ -1,13 +1,13 @@
 ---
 title: Inhoud vinden
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 0ae81f84f491641f
-  search: 3d10de67a3e5dd0a
+  search: fb00d341baaedeae
   search-tips: 4364609a0c79e00f
   filter-discussions: 31e584e1aa043dc6
   category-tags: d60668aba3fc92e0
@@ -42,6 +42,8 @@ Met de knop Zoeken in de bovenste navigatiebalk open je vanaf elke pagina in Loo
 ![](search_button.png)
 
 De zoekfunctie doorzoekt inhoud waar je toegang toe hebt in al jouw groepen en directe discussies. Je kunt zoeken in titels en context van discussies, reacties, peilingen, stemmen en conclusies.
+
+Het kan even duren voordat nieuwe inhoud en wijzigingen in de zoekresultaten verschijnen.
 
 Voer een woord of woordgroep in en druk op Enter of selecteer het zoekpictogram. Als je bijvoorbeeld zoekt op **bottle**, vind je inhoud van Oatmilk Cooperative waarin dat woord voorkomt.
 

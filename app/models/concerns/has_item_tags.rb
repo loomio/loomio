@@ -53,6 +53,8 @@ module HasItemTags
     after_save :refresh_item_tags, if: -> { saved_change_to_tags? || (tags.any? && saved_change_to_topic_id?) }
     after_destroy :refresh_item_tags, if: -> { tags.any? && !destroyed_with_topic? }
     after_save_commit :publish_item_tag_changes, if: :saved_change_to_tags?
+    after_commit :enqueue_item_tag_index_update, on: [:create, :update, :destroy],
+      if: -> { taggable? && (destroyed? || saved_change_to_tags? || (tags.any? && saved_change_to_topic_id?)) }
   end
 
   def taggable?
@@ -86,8 +88,10 @@ module HasItemTags
     TagService.refresh_topic_tags!([topic_id, topic_id_before_last_save])
     # Services return their existing topic object; refresh its derived fields too.
     topic.reload
-    PgSearch::Document.where(searchable_type: itemable_type, searchable_id: itemable_id)
-      .update_all(tags: destroyed? ? [] : tags)
+  end
+
+  def enqueue_item_tag_index_update
+    ReindexSearchDocumentWorker.perform_later(itemable_type, itemable_id)
   end
 
   def publish_item_tag_changes

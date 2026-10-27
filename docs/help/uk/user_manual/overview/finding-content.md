@@ -1,13 +1,13 @@
 ---
 title: Пошук вмісту
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 984a7289fddd2ddf
-  search: 21caf2208df3746e
+  search: 7edc05af57c582af
   search-tips: fc2004d84608f3d2
   filter-discussions: 72fab77fadfe2844
   category-tags: f19398fceae0ec87
@@ -42,6 +42,8 @@ Loomio пропонує кілька способів знайти обгово�
 ![](search_button.png)
 
 Пошук охоплює вміст, до якого ви маєте доступ у всіх ваших групах і прямих обговореннях. Він знаходить назви та контекст обговорень, коментарі, опитування, голоси й висновки.
+
+Новий вміст і зміни можуть з’являтися в результатах пошуку з невеликою затримкою.
 
 Введіть слово або фразу, а потім натисніть Enter або виберіть значок пошуку. Наприклад, пошук за словом **bottle** знаходить вміст Oatmilk Cooperative, що містить це слово.
 

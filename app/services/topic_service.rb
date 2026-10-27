@@ -111,12 +111,18 @@ class TopicService
       ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
-      ReindexDiscussionWorker.perform_later(topic.id)
       TopicItems::DiscussionMoved.create!(
         itemable: topic.topicable,
         user: actor,
         created_at: Time.current
       )
+    end
+    ActiveRecord.after_all_transactions_commit do
+      if topic.topicable_type == 'Discussion'
+        ReindexDiscussionWorker.perform_later(topic.topicable_id)
+      else
+        ReindexPollWorker.perform_later(topic.topicable_id)
+      end
     end
     on_topic_item&.call(topic_item)
     topic
@@ -251,6 +257,8 @@ class TopicService
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       topic.update_column(:active_polls_count, 0)
+    end
+    ActiveRecord.after_all_transactions_commit do
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
     topicable

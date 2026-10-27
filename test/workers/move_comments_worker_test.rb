@@ -146,7 +146,9 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     comment_event = nil
     CommentService.create(comment: comment, actor: @user) { |created_topic_item| comment_event = created_topic_item }
 
-    MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
+    SearchService.stub(:reindex_by_discussion_id, ->(*) { raise 'search indexing unavailable' }) do
+      MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
+    end
 
     poll.reload; poll_event.reload; comment_event.reload
     source_topic = Topic.find(source_topic_id)

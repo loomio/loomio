@@ -1,8 +1,29 @@
 class SearchService
   BATCH_SIZE = 50_000
+  SEARCHABLE_TYPES = %w[Comment Discussion Outcome Poll Stance].freeze
+
+  # Serialize document replacements, including overlapping bulk jobs, without
+  # locking source records that web requests need. A failed insert restores the
+  # previous index rows; retries always query the latest committed source data.
+  def self.with_index_lock(*types)
+    PgSearch::Document.transaction(requires_new: true) do
+      connection = PgSearch::Document.connection
+      types.sort.each do |type|
+        connection.execute("SELECT pg_advisory_xact_lock(hashtext('loomio_search_index'), hashtext(#{connection.quote(type)}))")
+      end
+      yield
+    end
+  end
+
+  def self.reindex_record(model, id)
+    with_index_lock(model.name) do
+      PgSearch::Document.where(searchable_type: model.name, searchable_id: id).delete_all
+      model.connection.execute(model.pg_search_insert_statement(id: id))
+    end
+  end
 
   def self.reindex_everything
-    PgSearch::Document.delete_all
+    with_index_lock(*SEARCHABLE_TYPES) { PgSearch::Document.delete_all }
     reindex_in_batches("Discussion", Discussion)
     reindex_in_batches("Poll", Poll)
     reindex_in_batches("Comment", Comment)
@@ -67,7 +88,10 @@ class SearchService
     while cursor > 0
       lower = [ cursor - BATCH_SIZE, 0 ].max
       sql = model.pg_search_insert_statement + " AND #{model.table_name}.id > #{lower} AND #{model.table_name}.id <= #{cursor}"
-      rows = ActiveRecord::Base.connection.execute(sql).cmd_tuples
+      rows = with_index_lock(type) do
+        PgSearch::Document.where(searchable_type: type, searchable_id: (lower + 1)..cursor).delete_all
+        ActiveRecord::Base.connection.execute(sql).cmd_tuples
+      end
       total += rows
       # puts "  reindex_everything #{type}: #{total} rows inserted so far (id #{lower}..#{cursor})"
       cursor = lower
@@ -75,63 +99,67 @@ class SearchService
   end
 
   def self.reindex_by_author_id(author_id)
-    PgSearch::Document.where(author_id: author_id).delete_all
+    with_index_lock(*SEARCHABLE_TYPES) do
+      PgSearch::Document.where(author_id: author_id).delete_all
 
-    [
-      Discussion.pg_search_insert_statement(author_id: author_id),
-      Comment.pg_search_insert_statement(author_id: author_id),
-      Poll.pg_search_insert_statement(author_id: author_id),
-      Stance.pg_search_insert_statement(author_id: author_id),
-      Outcome.pg_search_insert_statement(author_id: author_id)
-    ].each do |statement|
-      ActiveRecord::Base.connection.execute(statement)
+      [
+        Discussion.pg_search_insert_statement(author_id: author_id),
+        Comment.pg_search_insert_statement(author_id: author_id),
+        Poll.pg_search_insert_statement(author_id: author_id),
+        Stance.pg_search_insert_statement(author_id: author_id),
+        Outcome.pg_search_insert_statement(author_id: author_id)
+      ].each do |statement|
+        ActiveRecord::Base.connection.execute(statement)
+      end
     end
   end
 
   def self.reindex_by_discussion_id(discussion_id)
-    PgSearch::Document.where(discussion_id: discussion_id).delete_all
+    with_index_lock(*SEARCHABLE_TYPES) do
+      PgSearch::Document.where(discussion_id: discussion_id).delete_all
 
-    topic = Topic.find_by(topicable_type: 'Discussion', topicable_id: discussion_id)
-    return if topic.nil? || topic.discarded_at.present? || topic.topicable.discarded_at.present?
+      topic = Topic.find_by(topicable_type: 'Discussion', topicable_id: discussion_id)
+      return if topic.nil? || topic.discarded_at.present? || topic.topicable.discarded_at.present?
 
-    topic_id = topic.id
+      topic_id = topic.id
 
-    statements = [
-      Discussion.pg_search_insert_statement(id: discussion_id),
-      (Comment.pg_search_insert_statement(topic_id: topic_id) if topic_id)
-    ]
+      statements = [
+        Discussion.pg_search_insert_statement(id: discussion_id),
+        (Comment.pg_search_insert_statement(topic_id: topic_id) if topic_id)
+      ]
 
-    if topic_id
-      Poll.where(topic_id: topic_id).pluck(:id).each do |poll_id|
-        statements << Poll.pg_search_insert_statement(id: poll_id)
-        statements << Stance.pg_search_insert_statement(poll_id: poll_id)
-        statements << Outcome.pg_search_insert_statement(poll_id: poll_id)
+      if topic_id
+        Poll.where(topic_id: topic_id).pluck(:id).each do |poll_id|
+          statements << Poll.pg_search_insert_statement(id: poll_id)
+          statements << Stance.pg_search_insert_statement(poll_id: poll_id)
+          statements << Outcome.pg_search_insert_statement(poll_id: poll_id)
+        end
       end
-    end
 
-    statements.compact.each do |statement|
-      ActiveRecord::Base.connection.execute(statement)
+      statements.compact.each do |statement|
+        ActiveRecord::Base.connection.execute(statement)
+      end
     end
   end
 
   def self.reindex_by_poll_id(poll_id)
-    comment_ids = Comment.under_polls(Poll.where(id: poll_id)).select(:id)
-    PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comment_ids).delete_all
-    PgSearch::Document.where(poll_id: poll_id).delete_all
+    with_index_lock('Comment', 'Outcome', 'Poll', 'Stance') do
+      comment_ids = Comment.under_polls(Poll.where(id: poll_id)).select(:id)
+      PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comment_ids).delete_all
+      PgSearch::Document.where(poll_id: poll_id).delete_all
 
-    [
-      Poll.pg_search_insert_statement(id: poll_id),
-      Stance.pg_search_insert_statement(poll_id: poll_id),
-      Outcome.pg_search_insert_statement(poll_id: poll_id),
-      Comment.pg_search_insert_statement(poll_id: poll_id)
-    ].each do |statement|
-      ActiveRecord::Base.connection.execute(statement)
+      [
+        Poll.pg_search_insert_statement(id: poll_id),
+        Stance.pg_search_insert_statement(poll_id: poll_id),
+        Outcome.pg_search_insert_statement(poll_id: poll_id),
+        Comment.pg_search_insert_statement(poll_id: poll_id)
+      ].each do |statement|
+        ActiveRecord::Base.connection.execute(statement)
+      end
     end
   end
 
   def self.reindex_by_comment_id(comment_id)
-    # Comment.find(comment_id).update_pg_search_document
-    PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comment_id).delete_all
-    ActiveRecord::Base.connection.execute(Comment.pg_search_insert_statement(id: comment_id))
+    reindex_record(Comment, comment_id)
   end
 end

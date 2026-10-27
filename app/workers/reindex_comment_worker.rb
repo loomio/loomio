@@ -1,4 +1,4 @@
-class ReindexCommentWorker < ApplicationJob
+class ReindexCommentWorker < SearchIndexJob
   def perform(comment_id)
     SearchService.reindex_by_comment_id(comment_id)
   end

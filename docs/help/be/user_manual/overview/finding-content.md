@@ -1,13 +1,13 @@
 ---
 title: Пошук змесціва
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 34b704c9fa2999dc
-  search: 33380153df6a280b
+  search: 58b6d55e6cb62f0d
   search-tips: 30900d799fc0fb2e
   filter-discussions: cc7968dc66b4fb2d
   category-tags: e86cb810b2539c44
@@ -42,6 +42,8 @@ Loomio прапануе некалькі спосабаў знайсці абм�
 ![](search_button.png)
 
 Пошук ахоплівае змесціва, да якога вы маеце доступ ва ўсіх вашых групах і прамых абмеркаваннях. Ён знаходзіць назвы і кантэкст абмеркаванняў, каментарыі, апытанні, галасы і высновы.
+
+Новае змесціва і змены могуць з’явіцца ў выніках пошуку з невялікай затрымкай.
 
 Увядзіце слова або фразу, затым націсніце Enter або выберыце значок пошуку. Напрыклад, пошук слова **bottle** знаходзіць змесціва Oatmilk Cooperative, якое змяшчае гэтае слова.
 

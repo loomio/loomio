@@ -1,13 +1,13 @@
 ---
 title: איתור תוכן
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 817ef5ad16ac999a
-  search: b536fd22e7fafe96
+  search: 302a607a7c17814c
   search-tips: 90a67a87755f520d
   filter-discussions: a6fbb56c27f1d8bb
   category-tags: 149a9ae43cd5e834
@@ -44,6 +44,8 @@ Loomio מספקת כמה דרכים לאיתור דיונים והחלטות ב�
 ![](search_button.png)
 
 החיפוש כולל תוכן שניתן לגשת אליו בכל הקבוצות ובדיונים ישירים. ניתן למצוא כותרות והקשר של דיונים, תגובות, סקרים, הצבעות ומסקנות.
+
+ייתכן שיחלוף זמן קצר עד שתוכן חדש ועריכות יופיעו בתוצאות החיפוש.
 
 יש להזין מילה או ביטוי, ואז ללחוץ על Enter או לבחור בסמל החיפוש. לדוגמה, חיפוש של **bottle** מוצא תוכן של Oatmilk Cooperative שמכיל את המילה הזו.
 

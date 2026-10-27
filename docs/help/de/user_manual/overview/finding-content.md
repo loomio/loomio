@@ -1,13 +1,13 @@
 ---
 title: Inhalte finden
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 4e633afc9317ad6a
-  search: 297053715280e21f
+  search: 6bab3a4a7a035494
   search-tips: 9a2633cc3ee7bd34
   filter-discussions: 70155d7e42f8af43
   category-tags: 6ddd1c1062572432
@@ -44,6 +44,8 @@ Die Schaltfläche Suche in der oberen Navigationsleiste öffnet die globale Such
 ![](search_button.png)
 
 Die Suche umfasst Inhalte, auf die du in all deinen Gruppen und direkten Diskussionen zugreifen kannst. Sie findet Diskussionstitel und Kontext, Kommentare, Abstimmungen, Stimmen und Fazits.
+
+Es kann etwas dauern, bis neue Inhalte und Änderungen in den Suchergebnissen erscheinen.
 
 Gib ein Wort oder eine Wortgruppe ein und drücke dann die Eingabetaste oder wähle das Suchsymbol. Eine Suche nach **bottle** findet beispielsweise Inhalte der Oatmilk Cooperative, die dieses Wort enthalten.
 

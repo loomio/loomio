@@ -14,6 +14,8 @@ The Search button in the top navigation bar opens global search from any page in
 
 Search includes content you can access across all your groups and direct discussions. It can find discussion titles and context, comments, polls, votes, and outcomes.
 
+New content and edits may take a short time to appear in search results.
+
 Enter a word or phrase, then press Enter or select the search icon. For example, searching for **bottle** finds Oatmilk Cooperative content containing that word.
 
 ![](search_strategy.png)

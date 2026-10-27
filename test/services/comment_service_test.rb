@@ -147,9 +147,12 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    error = assert_raises RuntimeError do
-      TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
-        CommentService.create(comment: comment, actor: @user)
+    error = nil
+    assert_no_enqueued_jobs(only: ReindexSearchDocumentWorker) do
+      error = assert_raises RuntimeError do
+        TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
+          CommentService.create(comment: comment, actor: @user)
+        end
       end
     end
 

@@ -1,13 +1,13 @@
 ---
 title: Поиск материалов
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: f1b135b42ee4d037c7198ceceb813f9a075a4421
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
+  search: b5f4c5a4b3ec6a1c
   search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
   category-tags: b021794cfa36788c
@@ -16,7 +16,7 @@ sections:
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 1f97d87f09d467c9
-  search: a266ae5001f4c9ad
+  search: 2b1b0090135df22f
   search-tips: 06daa28a4df59df8
   filter-discussions: f553776f6d69ebea
   category-tags: 5eff765153d3d7d2
@@ -42,6 +42,8 @@ Loomio предлагает несколько способов находить
 ![](search_button.png)
 
 Поиск охватывает доступные вам материалы во всех ваших группах и прямых обсуждениях. Он позволяет находить заголовки и описания обсуждений, комментарии, опросы, голоса и выводы.
+
+Новые материалы и изменения могут появляться в результатах поиска с небольшой задержкой.
 
 Введите слово или фразу, затем нажмите Enter или выберите значок поиска. Например, поиск по слову **bottle** находит материалы Oatmilk Cooperative, содержащие это слово.
 

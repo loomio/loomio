@@ -45,6 +45,7 @@ class Stance < ApplicationRecord
         LEFT JOIN polls ON polls.id = stances.poll_id
         LEFT JOIN topics t ON t.id = polls.topic_id
       WHERE polls.discarded_at IS NULL
+        AND NOT polls.anonymous
         AND stances.cast_at IS NOT null
         AND stances.redacted_at IS NULL
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)

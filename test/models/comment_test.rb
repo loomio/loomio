@@ -19,6 +19,7 @@ class CommentTest < ActiveSupport::TestCase
     assert_predicate direct, :persisted?
     nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Nested before voting'), actor: @admin)
     assert_predicate nested, :persisted?
+    ReindexSearchDocumentWorker.perform_now('Comment', nested.id)
     assert PgSearch::Document.exists?(searchable: nested)
   end
 

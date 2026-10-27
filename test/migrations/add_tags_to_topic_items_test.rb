@@ -9,6 +9,7 @@ class AddTagsToTopicItemsTest < ActiveSupport::TestCase
     root_id = topic.topicable.created_topic_item.id
     comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Inherited search tag'), actor: users(:admin))
     comment_item_id = comment.created_topic_item.id
+    ReindexSearchDocumentWorker.perform_now('Comment', comment.id)
     document = PgSearch::Document.find_by!(searchable: comment)
     topic.update_columns(tags: ['Legacy'])
     migration = AddTagsToTopicItems.new

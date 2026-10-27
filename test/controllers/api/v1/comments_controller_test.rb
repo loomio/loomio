@@ -117,6 +117,22 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "posting and editing return successfully without running search indexing" do
+    sign_in @user
+    Comment.stub(:pg_search_insert_statement, ->(**) { raise 'search indexing unavailable' }) do
+      post :create, params: {comment: {parent_type: 'Discussion', parent_id: @discussion.id, body: 'Deferred search'}}
+      assert_response :success
+      comment = Comment.find_by!(body: 'Deferred search')
+      assert_not PgSearch::Document.exists?(searchable: comment)
+      assert_enqueued_with(job: ReindexSearchDocumentWorker, args: ['Comment', comment.id])
+
+      put :update, params: {id: comment.id, comment: {body: 'Deferred search edited'}}
+      assert_response :success
+      assert_equal 'Deferred search edited', comment.reload.body
+      assert_not PgSearch::Document.exists?(searchable: comment)
+    end
+  end
+
   test "create warns the reply author when the original comment is deleted" do
     parent_id = @user_comment.id
     CommentService.destroy(comment: @user_comment, actor: @user)
