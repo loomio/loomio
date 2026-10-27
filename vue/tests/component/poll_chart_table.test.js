@@ -92,7 +92,7 @@ describe('weighted poll results table', () => {
       chartType: 'pie',
       chartColumn: 'score_percent',
       singleChoice: () => true,
-      voteCountTotal: 4,
+      voteCountEligible: 4,
       resultColumns: ['chart', 'name', 'votes', 'score', 'votes_cast_percent', 'voter_percent'],
       resultHeadingKeys: {
         name: 'common.option', votes: 'poll_common.votes', score: 'poll_common.weighted_votes',
@@ -136,7 +136,7 @@ describe('weighted poll results table', () => {
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'max_score_percent',
-      voteCountTotal: 4,
+      voteCountEligible: 4,
       resultColumns: ['chart', 'name', 'score', 'vote_count'],
       resultHeadingKeys: {name: 'common.option', score: 'poll_common.weighted_points', vote_count: 'membership_card.voters'},
       results: [
@@ -170,7 +170,7 @@ describe('weighted poll results table', () => {
       chartColumn: 'score_percent',
       singleChoice: () => true,
       pieSlices: () => [{color: 'green', value: 100}],
-      voteCountTotal: 2,
+      voteCountEligible: 2,
       resultColumns: ['chart', 'name', 'voter_percent', 'vote_count'],
       resultHeadingKeys: {name: 'common.option', voter_percent: 'poll_ranked_choice_form.pct_of_voters', vote_count: 'membership_card.voters'},
       results: [

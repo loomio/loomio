@@ -154,15 +154,15 @@ class User0PollRequestsTest < ActionDispatch::IntegrationTest
     poll = Poll.find(legacy.fetch('id'))
     assert_equal 'voters_uncast', poll.notify_on_closing_soon
     assert_equal 'undecided_voters', legacy.fetch('notify_on_closing_soon')
-    assert_equal poll.vote_count_total, legacy.fetch('voters_count')
+    assert_equal poll.vote_count_eligible, legacy.fetch('voters_count')
     assert_equal poll.vote_count_uncast, legacy.fetch('undecided_voters_count')
     %w[voters_count decided_voters_count undecided_voters_count cast_stances_pct].each { |field| assert legacy.key?(field), field }
-    %w[vote_count_total vote_count_cast vote_count_uncast participation_pct quorum_shortfall].each { |field| assert_not legacy.key?(field), field }
+    %w[vote_count_eligible vote_count_cast vote_count_uncast participation_pct quorum_shortfall].each { |field| assert_not legacy.key?(field), field }
 
     get "/api/user0/polls/#{poll.id}", headers: @headers
     current = response.parsed_body.fetch('polls').first
     assert_equal 'voters_uncast', current.fetch('notify_on_closing_soon')
-    assert_equal poll.vote_count_total, current.fetch('vote_count_total')
+    assert_equal poll.vote_count_eligible, current.fetch('vote_count_eligible')
     assert_not current.key?('voters_count')
   end
 

@@ -5,7 +5,7 @@ module Api::User0::LegacyB2Fields
   extend ActiveSupport::Concern
 
   POLL_FIELDS = {
-    'vote_count_total' => 'voters_count',
+    'vote_count_eligible' => 'voters_count',
     'vote_count_cast' => 'decided_voters_count',
     'vote_count_uncast' => 'undecided_voters_count',
     'participation_pct' => 'cast_stances_pct',

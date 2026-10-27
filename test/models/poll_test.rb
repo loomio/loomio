@@ -399,10 +399,10 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
-    assert_equal 5, Poll.new(vote_count_total: 10).participation_status_votes_required
-    assert_equal 3, Poll.new(vote_count_total: 4).participation_status_votes_required
-    assert_equal 6, Poll.new(vote_count_total: 10, quorum_pct: 60).participation_status_votes_required
-    assert_equal 3, Poll.new(vote_count_total: 20, quorum_pct: 10).participation_status_votes_required
+    assert_equal 5, Poll.new(vote_count_eligible: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_eligible: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(vote_count_eligible: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_eligible: 20, quorum_pct: 10).participation_status_votes_required
   end
 
   test "unweighted results keep master's columns and headings" do
@@ -470,7 +470,7 @@ class PollTest < ActiveSupport::TestCase
     )
     poll.update_counts!
 
-    assert_equal 2, poll.vote_count_total
+    assert_equal 2, poll.vote_count_eligible
     assert_equal 2, poll.vote_count_cast
     assert_equal 100, poll.participation_pct
     assert_equal 3, poll.quorum_threshold

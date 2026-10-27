@@ -64,7 +64,7 @@ class PollSerializerTest < ActiveSupport::TestCase
     closed = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
     assert_equal false, closed.fetch(:quorum_reached)
     assert_equal 0, closed[:vote_count_cast]
-    assert_equal poll.vote_count_total, closed[:vote_count_uncast]
+    assert_equal poll.vote_count_eligible, closed[:vote_count_uncast]
     assert_equal 0, closed[:participation_pct]
   end
 
@@ -79,8 +79,8 @@ class PollSerializerTest < ActiveSupport::TestCase
     data = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
 
     assert_equal 1, data[:vote_count_cast]
-    assert_equal poll.vote_count_total - 1, data[:vote_count_uncast]
-    assert_equal poll.vote_count_total, data[:vote_count_total]
+    assert_equal poll.vote_count_eligible - 1, data[:vote_count_uncast]
+    assert_equal poll.vote_count_eligible, data[:vote_count_eligible]
     assert data.key?(:participation_pct)
     assert_not data.key?(:scores_by_option)
     %i[decided_voters_count undecided_voters_count voters_count none_of_the_above_count cast_stances_pct stance_counts quorum_count quorum_votes_required].each do |field|

@@ -32,7 +32,7 @@ export default {
     },
     participationPct() {
       if (!this.poll.weightedVoting || this.participationWeighted) return this.poll.participationPct;
-      return this.poll.voteCountTotal > 0 ? Math.floor(this.poll.voteCountCast / this.poll.voteCountTotal * 100) : 0;
+      return this.poll.voteCountEligible > 0 ? Math.floor(this.poll.voteCountCast / this.poll.voteCountEligible * 100) : 0;
     }
   },
 
@@ -94,5 +94,5 @@ export default {
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.voteCountCast, total: poll.voteCountTotal, pct: participationPct}) }}
+    span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.voteCountCast, total: poll.voteCountEligible, pct: participationPct}) }}
 </template>

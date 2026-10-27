@@ -44,7 +44,7 @@ class PollSerializer < ApplicationSerializer
              :total_score,
              :title,
              :vote_count_uncast,
-             :vote_count_total,
+             :vote_count_eligible,
              :stance_reason_required,
              :versions_count,
              :points_per_voter,
@@ -102,7 +102,7 @@ class PollSerializer < ApplicationSerializer
     :specified_voters_only,
     :title,
     :vote_count_uncast,
-    :vote_count_total,
+    :vote_count_eligible,
     :stance_reason_required,
     :versions_count,
     :meeting_duration,
@@ -134,10 +134,10 @@ class PollSerializer < ApplicationSerializer
   end
 
   # Optional response-scoped weights; calculations query live sums without a cache.
-  def vote_weight_total
+  def vote_weight_eligible
     return unless object.weighted_voting?
 
-    cache_fetch(:vote_weight_total_by_poll_id, object.id) { nil }
+    cache_fetch(:vote_weight_eligible_by_poll_id, object.id) { nil }
   end
 
   def vote_weight_cast
@@ -161,19 +161,19 @@ class PollSerializer < ApplicationSerializer
   def participation_pct
     return if object.discarded_at
 
-    object.participation_pct(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
+    object.participation_pct(vote_weight_eligible: vote_weight_eligible, vote_weight_cast: vote_weight_cast)
   end
 
   def quorum_threshold
-    object.quorum_threshold(vote_weight_total: vote_weight_total)
+    object.quorum_threshold(vote_weight_eligible: vote_weight_eligible)
   end
 
   def quorum_shortfall
-    object.quorum_shortfall(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
+    object.quorum_shortfall(vote_weight_eligible: vote_weight_eligible, vote_weight_cast: vote_weight_cast)
   end
 
   def quorum_reached
-    object.quorum_reached?(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast)
+    object.quorum_reached?(vote_weight_eligible: vote_weight_eligible, vote_weight_cast: vote_weight_cast)
   end
 
   def include_quorum_reached?
@@ -188,7 +188,7 @@ class PollSerializer < ApplicationSerializer
       object, poll_options,
       voter_ids_uncast: voter_ids_uncast,
       voter_ids_none_of_the_above: voter_ids_none_of_the_above,
-      vote_weight_total: vote_weight_total,
+      vote_weight_eligible: vote_weight_eligible,
       vote_weight_uncast: vote_weight_uncast,
       vote_weight_none_of_the_above: vote_weight_none_of_the_above
     )

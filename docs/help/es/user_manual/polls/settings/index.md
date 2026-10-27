@@ -1,10 +1,10 @@
 ---
 title: Configuración
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,7 +14,7 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
   hide-results: 570a32d6a0966aac
@@ -36,7 +36,7 @@ generated:
   edit-voting-options: e773bdbcc7894d29
   opening-time: 500d89370b4e9875
   more-settings: 3519ac4ed701ef08
-  reminder: c0cc0e2c31806174
+  reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
   vote-reason: 8a70d40c93b8a51d
   hide-results: b01a1971e25f2b63
@@ -157,7 +157,7 @@ Envía una notificación de «Cierre próximo» 24 horas antes de que se cierre 
 Opciones de configuración:
 - Nadie
 - Autor
-- Votantes sin votar (por defecto)
+- Personas sin votar (por defecto)
 - Todos los votantes
 
 En una encuesta anónima que dura al menos 24 horas, Loomio envía automáticamente un recordatorio durante las últimas 24 horas a las personas que pueden votar y aún no lo han hecho. Este recordatorio no se puede cambiar en la configuración de la encuesta.

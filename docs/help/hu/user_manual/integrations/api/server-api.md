@@ -1,52 +1,52 @@
 ---
 title: Szerver API
-source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-10-28'
 sections:
-  introduction: 8b28f9c34e3f7575
-  authentication: cbabcc874f053455
+  introduction: 33c4ce1c59342826
+  authentication: a215188bb0ae2b38
   user-object: 7e9e8ff3e48a4055
-  list-users: c7d62eee05e7a6a4
-  example: 2f817ab1533206e6
-  show-user: 36fa596a6a5c2fd8
-  examples: 522d17246020d82f
-  update-user: 39d632ce15d489d3
+  list-users: 16e557db2983e597
+  example: 5a370a67d3dc961f
+  show-user: ef061aab9e142a98
+  examples: 5b98557c8af42e29
+  update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: 3aab846e77253829
-  deactivate-user: 132d435583a46920
-  examples-3: d8c7c152ab2b0ace
-  reactivate-user: 309592dead978456
-  examples-4: 95251484d1fd7e1d
-  redact-user: 47ea30122aa92fae
-  examples-5: 9d3bb1c3a865f3e0
-  delete-user: 2d5a1dbd23324e6f
-  examples-6: 71ae30577730b261
+  examples-2: b6bc03ca1e104210
+  deactivate-user: 19c9b37ded7cad07
+  examples-3: 706a02fb50225d20
+  reactivate-user: 03bccb45ded4f11c
+  examples-4: 5c9cf19d21267502
+  redact-user: 9560a30820cb43cc
+  examples-5: df81d06971fb0391
+  delete-user: 1aad5e4da586e0ed
+  examples-6: 23542029b0bc8237
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: 590e1f295602247d
+  provisioning: de7ad238bf914455
 generated:
-  introduction: 7dd1c45d8c9cf38a
-  authentication: 4d854b1e0542a044
+  introduction: aa125dc9f745e1a9
+  authentication: 7e8a9bf9af61e255
   user-object: afe27321e49ef0cb
-  list-users: 51e0b842a6e86883
-  example: 60d916f8463e867d
-  show-user: 5142ee896b10008d
-  examples: 74ab4378e2cdd8ca
-  update-user: 54f5981b669af24b
+  list-users: 8123ae29057d56d7
+  example: 7fed26f99982f674
+  show-user: b646341db5d58b9a
+  examples: 93210687eb70ac86
+  update-user: 60c6072d33231f94
   params: 131cfe6ff1893b66
-  examples-2: 4e83e784297e6db7
-  deactivate-user: f4a0b2e2fe10e5e6
-  examples-3: 3ee062bfd7fafd31
-  reactivate-user: 390bd04ec7199f8d
-  examples-4: cc465604a39ed723
-  redact-user: 587379079ab8ef84
-  examples-5: 21cb7c29527c70f6
-  delete-user: 4adac6f76eed97b6
-  examples-6: 453e6872ada898f0
+  examples-2: 7b09bcdef10e15a0
+  deactivate-user: 0d2dc555116c7405
+  examples-3: 2aa72b039fb4db99
+  reactivate-user: 9412d9e85438896d
+  examples-4: 99419c235d006ca6
+  redact-user: '040168d88958cf0e'
+  examples-5: abf7efe55dbccdbd
+  delete-user: d7ff3cf32ea0bca2
+  examples-6: e40bd4111216486d
   sso-profile-sync-settings: 4010344e72bad294
-  provisioning: f011bf14d0a9aaf4
+  provisioning: 2dcdf57eb71bd92f
 title_source: 370e81eb20eece44
 title_generated: 4c1219c444b5c15c
 ---
@@ -57,7 +57,7 @@ title_generated: 4c1219c444b5c15c
 
 <!-- seo-description: Hozz létre felhasználói fiókokat, keresd meg a csoportokat, és kezeld a tagságokat a saját szerveren futtatott Loomio rendszerben a Loomio szerver API segítségével. -->
 
-A `/api/b3` a szerverszintű műveletekre szolgál. A Loomio felhasználói fiókkal végzett, felhasználói szintű műveletekhez használd a `/api/b2` API-t.
+A `/api/server0` a szerverszintű műveletekre szolgál. A Loomio felhasználói fiókkal végzett, felhasználói szintű műveletekhez használd a `/api/user0` API-t.
 
 Egyetlen szerverkulccsal hozhatsz létre és kezelhetsz fiókokat, keresheted meg a rendszer összes csoportját, és kezelheted a tagságaikat és szerepköreiket. Ehhez nincs szükség botfiókra, felhasználói API-kulcsra vagy csoporttagságra. A felhasználói API-kulcsokra továbbra is a felhasználó csoportjogosultságai érvényesek.
 
@@ -65,12 +65,12 @@ Egyetlen szerverkulccsal hozhatsz létre és kezelhetsz fiókokat, keresheted me
 
 ## Hitelesítés
 
-Állítsd a `B3_API_KEY` értékét egy 16 karakternél hosszabb titkos kulcsra.
+A kulcs a szerverkörnyezet `SERVER_API_KEY` beállításában található. Új telepítéseknél a `create_env.sh` hozza létre.
 
 Küldd el a kulcsot bearer tokenként:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 A hitelesítési adatokat kizárólag az `Authorization` fejlécben küldd el. A rendszer elutasítja a lekérdezési karakterláncban vagy a kérés törzsében küldött API-kulcsokat.
@@ -81,23 +81,23 @@ A hitelesítési adatokat kizárólag az `Authorization` fejlécben küldd el. A
 
 | Metódus | Végpont | Cél |
 | --- | --- | --- |
-| `POST` | `/api/b3/users` | Fiók létrehozása |
-| `GET` | `/api/b3/groups` | A rendszer összes csoportjának megkeresése |
-| `GET` | `/api/b3/memberships` | Egy csoport tagságainak listázása |
-| `POST` | `/api/b3/memberships` | Tagok meghívása vagy a teljes taglista szinkronizálása |
-| `PATCH` | `/api/b3/memberships/:id` | Csoportadmini és küldötti szerepkörök módosítása |
-| `DELETE` | `/api/b3/memberships/:id` | Egy tagság visszavonása |
+| `POST` | `/api/server0/users` | Fiók létrehozása |
+| `GET` | `/api/server0/groups` | A rendszer összes csoportjának megkeresése |
+| `GET` | `/api/server0/memberships` | Egy csoport tagságainak listázása |
+| `POST` | `/api/server0/memberships` | Tagok meghívása vagy a teljes taglista szinkronizálása |
+| `PATCH` | `/api/server0/memberships/:id` | Csoportadmini és küldötti szerepkörök módosítása |
+| `DELETE` | `/api/server0/memberships/:id` | Egy tagság visszavonása |
 
 A meglévő fiókok frissítésére, inaktiválására, újraaktiválására, személyes adataik eltávolítására és törlésére szolgáló végpontokat alább ismertetjük.
 
 ### Fiók létrehozása
 
-`POST /api/b3/users`
+`POST /api/server0/users`
 
 Küldj egy `user` objektumot a kötelező `email` mezővel. Az e-mail-címek elejéről és végéről a rendszer eltávolítja a szóközöket, és a címeket kisbetűssé alakítja. Az opcionális mezők: `name`, `username` és `is_admin`. Az `is_admin` itt a Loomio-példány adminját jelenti; a csoportadmini szerepköröket a tagságokon keresztül kezelheted. A felhasználónév automatikus létrehozásához hagyd ki a `username` mezőt. A rendszer elutasítja az ismeretlen mezőket.
 
 ```bash
-curl https://loomio.example.org/api/b3/users \
+curl https://loomio.example.org/api/server0/users \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "user": {
@@ -113,12 +113,12 @@ A válasz HTTP `201` állapotkódot és egy `user` objektumot tartalmaz. Érvén
 
 ### Csoportok megkeresése
 
-`GET /api/b3/groups`
+`GET /api/server0/groups`
 
 Listázd az összes nem törölt csoportot, beleértve a privát csoportokat és a lejárt előfizetésű csoportokat is. A találatok azonosító szerint növekvő sorrendben jelennek meg. A lapozáshoz használd a `limit` (alapértelmezett és maximális értéke `50`) és az `offset` (alapértelmezett értéke `0`) paramétereket.
 
 ```bash
-curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/groups?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -142,12 +142,12 @@ curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
 
 ### Tagságok listázása
 
-`GET /api/b3/memberships?group_id=123`
+`GET /api/server0/memberships?group_id=123`
 
 A `group_id` megadása kötelező. A találatok az elfogadott tagságokat és a függőben lévő meghívókat tartalmazzák, a tagság azonosítója szerint növekvő sorrendben. A visszavont tagságok nem szerepelnek közöttük. A lapozáshoz használd a `limit` (alapértelmezett és maximális értéke `50`) és az `offset` (alapértelmezett értéke `0`) paramétereket.
 
 ```bash
-curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -176,12 +176,12 @@ Az `admin` és a `delegate` csoportszerepkörök. Az `accepted_at` az elfogadás
 
 ### Tagok meghívása vagy szinkronizálása
 
-`POST /api/b3/memberships`
+`POST /api/server0/memberships`
 
 Küldd el a kötelező `group_id` értéket és az `emails` tömböt. Alapértelmezés szerint ez hozzáadja a felsorolt személyek közül azokat, akiknek még nincs aktív tagságuk, és mindenki más tagságát változatlanul hagyja. Az e-mail-címek elejéről és végéről a rendszer eltávolítja a szóközöket, a címeket kisbetűssé alakítja, és kiszűri az ismétlődéseket. Az új címekhez fiókokat és függőben lévő meghívókat hoz létre. Az ugyanazon szervezet másik aktív csoportjában már tagsággal és ellenőrzött e-mail-címmel rendelkező személyek tagságát automatikusan elfogadja, a felhasználói API meghívási folyamatával megegyezően.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -195,7 +195,7 @@ curl https://loomio.example.org/api/b3/memberships \
 A teljes taglista szinkronizálásához állítsd a `remove_absent` értékét kifejezetten `true` értékre. A rendszer mindenkit eltávolít a csoportból és annak alcsoportjaiból, aki hiányzik a listáról. Egy üres tömb a `remove_absent: true` beállítással mindenkit eltávolít, a csoport adminjait is beleértve. Ha csak személyeket szeretnél hozzáadni, hagyd ki a `remove_absent` paramétert, vagy állítsd `false` értékre. A korábban használt `1` és `0` értékeket is elfogadja a rendszer.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -221,12 +221,12 @@ Hiányzó vagy hibás formátumú e-mail-lista és érvénytelen logikai érték
 
 ### Tagsági szerepkörök frissítése
 
-`PATCH /api/b3/memberships/:id`
+`PATCH /api/server0/memberships/:id`
 
 Küldj egy `membership` objektumot, amely az `admin` és a `delegate` logikai mezők egyikét vagy mindkettőt tartalmazza. A kihagyott szerepkörök változatlanok maradnak. A rendszer elutasítja az ismeretlen mezőket; a végponttal nem lehet tagságot áthelyezni, meghívót elfogadni vagy szavazati súlyokat módosítani.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
@@ -241,10 +241,10 @@ Egy `membership` objektumot ad vissza, ugyanazokkal a mezőkkel, mint a listázo
 
 ### Egy tagság eltávolítása
 
-`DELETE /api/b3/memberships/:id`
+`DELETE /api/server0/memberships/:id`
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
@@ -284,14 +284,14 @@ A felhasználói adatokat tartalmazó válaszok szerkezete:
 
 Listázd a Loomio rendszer összes felhasználói fiókját.
 
-`GET /api/b3/users`
+`GET /api/server0/users`
 
 <!-- translation-section: example -->
 
 ### Példa
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 Válasz:
@@ -308,9 +308,9 @@ Válasz:
 
 Keress meg egy felhasználót a Loomio felhasználói azonosítója vagy külső identitása alapján.
 
-`GET /api/b3/users/:id`
+`GET /api/server0/users/:id`
 
-`GET /api/b3/users/identity/:identity_type/:uid`
+`GET /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples -->
 
@@ -319,13 +319,13 @@ Keress meg egy felhasználót a Loomio felhasználói azonosítója vagy külső
 Loomio felhasználói azonosító alapján:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 Külső identitás alapján:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Válasz:
@@ -342,9 +342,9 @@ Válasz:
 
 Frissítsd a Loomio felhasználói azonosító vagy külső identitás alapján megtalált felhasználó profilmezőit.
 
-`PATCH /api/b3/users/:id`
+`PATCH /api/server0/users/:id`
 
-`PATCH /api/b3/users/identity/:identity_type/:uid`
+`PATCH /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: params -->
 
@@ -367,7 +367,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/123
+  https://www.loomio.com/api/server0/users/123
 ```
 
 Külső identitás alapján:
@@ -377,7 +377,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/identity/oauth/external-123
+  https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 A válasz a frissített felhasználót tartalmazza:
@@ -394,9 +394,9 @@ A válasz a frissített felhasználót tartalmazza:
 
 Deaktiváld a Loomio felhasználói azonosító vagy külső identitás alapján megtalált felhasználói fiókot.
 
-`POST /api/b3/users/:id/deactivate`
+`POST /api/server0/users/:id/deactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/deactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/deactivate`
 
 <!-- translation-section: examples-3 -->
 
@@ -405,13 +405,13 @@ Deaktiváld a Loomio felhasználói azonosító vagy külső identitás alapján
 Loomio felhasználói azonosító alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
 ```
 
 Külső identitás alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Válasz:
@@ -429,9 +429,9 @@ Válasz:
 
 Aktiválj újra egy deaktivált felhasználói fiókot a Loomio-felhasználóazonosítója vagy külső azonosítója alapján.
 
-`POST /api/b3/users/:id/reactivate`
+`POST /api/server0/users/:id/reactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/reactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/reactivate`
 
 <!-- translation-section: examples-4 -->
 
@@ -440,13 +440,13 @@ Aktiválj újra egy deaktivált felhasználói fiókot a Loomio-felhasználóazo
 Loomio-felhasználóazonosító alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
 ```
 
 Külső azonosító alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Válasz:
@@ -466,9 +466,9 @@ A személyes adatok eltávolítása megőrzi a felhasználó hozzászólásait �
 
 Ez az ajánlott módja egy felhasználó eltávolításának a Loomióból.
 
-`POST /api/b3/users/:id/redact`
+`POST /api/server0/users/:id/redact`
 
-`POST /api/b3/users/identity/:identity_type/:uid/redact`
+`POST /api/server0/users/identity/:identity_type/:uid/redact`
 
 <!-- translation-section: examples-5 -->
 
@@ -477,13 +477,13 @@ Ez az ajánlott módja egy felhasználó eltávolításának a Loomióból.
 Loomio-felhasználóazonosító alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
 ```
 
 Külső azonosító alapján:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Válasz:
@@ -502,9 +502,9 @@ A törlés eltávolítja a felhasználót és az általa létrehozott rekordokat
 
 Ez jelentős adatvesztéssel jár. Helyette erősen ajánlott a személyes adatok eltávolítása.
 
-`DELETE /api/b3/users/:id`
+`DELETE /api/server0/users/:id`
 
-`DELETE /api/b3/users/identity/:identity_type/:uid`
+`DELETE /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples-6 -->
 
@@ -513,13 +513,13 @@ Ez jelentős adatvesztéssel jár. Helyette erősen ajánlott a személyes adato
 Loomio-felhasználóazonosító alapján:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 Külső azonosító alapján:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Válasz:

@@ -818,7 +818,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    vote_count_total = poll.reload.vote_count_total
+    vote_count_eligible = poll.reload.vote_count_eligible
     vote_count_uncast = poll.vote_count_uncast
 
     new_member = create_unique_user("newanonymousmember")
@@ -826,7 +826,7 @@ class PollServiceTest < ActiveSupport::TestCase
     PollService.group_members_added(@group.id)
 
     assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
-    assert_equal vote_count_total + 1, poll.reload.vote_count_total
+    assert_equal vote_count_eligible + 1, poll.reload.vote_count_eligible
     assert_equal vote_count_uncast + 1, poll.vote_count_uncast
   end
 

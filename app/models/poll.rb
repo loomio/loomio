@@ -528,17 +528,17 @@ class Poll < ApplicationRecord
   end
 
   def vote_count_cast
-    vote_count_total - vote_count_uncast
+    vote_count_eligible - vote_count_uncast
   end
 
-  def participation_pct(vote_weight_total: nil, vote_weight_cast: nil)
+  def participation_pct(vote_weight_eligible: nil, vote_weight_cast: nil)
     if weighted_voting?
-      total = vote_weight_total || self.vote_weight_total
+      total = vote_weight_eligible || self.vote_weight_eligible
       return total.positive? ? ((vote_weight_cast || self.vote_weight_cast) / total * 100).to_i : 0
     end
 
-    return 0 if vote_count_total == 0
-    ((vote_count_cast.to_f / vote_count_total) * 100).to_i
+    return 0 if vote_count_eligible == 0
+    ((vote_count_cast.to_f / vote_count_eligible) * 100).to_i
   end
 
   def participation_key
@@ -586,7 +586,7 @@ class Poll < ApplicationRecord
   # that the list says little about any one person: the quorum when the poll
   # has one, otherwise half the electorate, and never fewer than three votes.
   def participation_status_votes_required
-    votes_required = quorum_pct ? quorum_threshold : (vote_count_total / 2.0).ceil
+    votes_required = quorum_pct ? quorum_threshold : (vote_count_eligible / 2.0).ceil
     [votes_required, PARTICIPATION_STATUS_VOTES_MIN].max
   end
 
@@ -612,31 +612,31 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def quorum_threshold(vote_weight_total: nil)
+  def quorum_threshold(vote_weight_eligible: nil)
     return 0 if quorum_pct.nil?
 
-    total = weighted_voting? ? (vote_weight_total || self.vote_weight_total) : vote_count_total
+    total = weighted_voting? ? (vote_weight_eligible || self.vote_weight_eligible) : vote_count_eligible
     required = quorum_pct.to_d / 100 * total
     weighted_voting? ? required.ceil(3) : required.ceil
   end
 
-  def quorum_reached?(vote_weight_total: nil, vote_weight_cast: nil)
+  def quorum_reached?(vote_weight_eligible: nil, vote_weight_cast: nil)
     return false if quorum_pct.nil?
-    vote_weight_total ||= self.vote_weight_total if weighted_voting?
-    return false if weighted_voting? && quorum_pct.positive? && vote_weight_total.zero?
+    vote_weight_eligible ||= self.vote_weight_eligible if weighted_voting?
+    return false if weighted_voting? && quorum_pct.positive? && vote_weight_eligible.zero?
 
-    quorum_shortfall(vote_weight_total: vote_weight_total, vote_weight_cast: vote_weight_cast) <= 0
+    quorum_shortfall(vote_weight_eligible: vote_weight_eligible, vote_weight_cast: vote_weight_cast) <= 0
   end
 
-  def quorum_shortfall(vote_weight_total: nil, vote_weight_cast: nil)
+  def quorum_shortfall(vote_weight_eligible: nil, vote_weight_cast: nil)
     return 0 if quorum_pct.nil?
 
-    quorum_threshold(vote_weight_total: vote_weight_total) - (weighted_voting? ? (vote_weight_cast || self.vote_weight_cast) : vote_count_cast)
+    quorum_threshold(vote_weight_eligible: vote_weight_eligible) - (weighted_voting? ? (vote_weight_cast || self.vote_weight_cast) : vote_count_cast)
   end
 
   # Use the weights issued in this poll, including pending votes and overrides.
   # Latest excludes replaced and revoked votes; group defaults may have changed.
-  def vote_weight_total
+  def vote_weight_eligible
     stances.latest.sum(:weight)
   end
 
@@ -703,7 +703,7 @@ class Poll < ApplicationRecord
     if anonymous?
       return update_columns(
         scores_by_option: poll_options.map { |option| option.total_score.to_f },
-        vote_count_total: anonymous_poll_voters.count,
+        vote_count_eligible: anonymous_poll_voters.count,
         vote_count_uncast: anonymous_poll_voters.where(ballot_submitted: false).count,
         vote_count_none_of_the_above: anonymous_ballots.where(none_of_the_above: true).count,
         versions_count: versions.count
@@ -712,7 +712,7 @@ class Poll < ApplicationRecord
 
     update_columns(
       scores_by_option: poll_options.map { |option| option.total_score.to_f },
-      vote_count_total: stances.latest.count,
+      vote_count_eligible: stances.latest.count,
       vote_count_uncast: stances.latest.uncast.count,
       vote_count_none_of_the_above: stances.latest.cast.where(none_of_the_above: true).count,
       versions_count: versions.count

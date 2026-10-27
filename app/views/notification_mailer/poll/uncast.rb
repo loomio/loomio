@@ -8,7 +8,7 @@ class Views::NotificationMailer::Poll::Uncast < Views::ApplicationMailer::Compon
 
   def view_template
     nom = @poll.vote_count_cast
-    dnom = @poll.vote_count_total
+    dnom = @poll.vote_count_eligible
     pct = @poll.participation_pct
 
     p(class: "email-poll-meta") do

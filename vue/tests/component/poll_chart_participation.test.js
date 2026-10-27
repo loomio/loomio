@@ -20,7 +20,7 @@ function mountPanel(overrides = {}) {
   const columns = ['votes', 'unweighted_score', 'vote_count', 'score', 'votes_cast_percent', 'voter_percent', 'average'];
   const poll = reactive({
     id: 1, pollType: 'poll', weightedVoting: true, chartType: 'pie', chartColumn: 'score_percent',
-    closingAt: '2026-10-30', voteCountTotal: 3, voteCountCast: 1, participationPct: 80,
+    closingAt: '2026-10-30', voteCountEligible: 3, voteCountCast: 1, participationPct: 80,
     quorumPct: 90, quorumReached: false,
     config: () => ({has_options: true}), showResults: () => true, isClosed: () => false,
     translatedPollType: () => 'Choose', iHaveVoted: () => false,
@@ -82,8 +82,8 @@ describe('chart participation follows the selected results column', () => {
   });
 
   it.each([
-    {voteCountTotal: 0, voteCountCast: 0, participationPct: 0, expected: '0/0, 0%'},
-    {voteCountTotal: 3, voteCountCast: 1, participationPct: 0, expected: '1/3, 33%'}
+    {voteCountEligible: 0, voteCountCast: 0, participationPct: 0, expected: '0/0, 0%'},
+    {voteCountEligible: 3, voteCountCast: 1, participationPct: 0, expected: '1/3, 33%'}
   ])('counts people even when assigned weight or electorate is zero: $expected', async ({expected, ...counts}) => {
     const {participation, select} = mountPanel(counts);
     await select('votes');

@@ -27,7 +27,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
         assert_not_equal original.id, replacement.id
         ordinary_comment = Comment.new(parent: poll, body: 'An ordinary poll comment')
         CommentService.create(comment: ordinary_comment, actor: @member)
-        voted_counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast', 'vote_count_none_of_the_above')
+        voted_counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_eligible', 'vote_count_uncast', 'vote_count_none_of_the_above')
         scores = replacement.option_scores
         pending_poll = create_poll
         pending_stance = pending_poll.stances.latest.find_by!(participant: @member)
@@ -78,7 +78,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
     poll = create_poll(weighted_voting: true, quorum_pct: 50)
     stance = cast_vote(poll)
     StanceService.set_weight(stance: stance, weight: '2.5', actor: @admin)
-    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast')
+    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_eligible', 'vote_count_uncast')
     quorum = [poll.quorum_threshold, poll.quorum_reached?]
     totals = poll.poll_options.order(:id).pluck(:total_score, :vote_weight, :vote_count)
 
@@ -138,7 +138,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
       {poll_option_id: poll.poll_options.first.id, score: 1}
     ])
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: @member)
-    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast')
+    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_eligible', 'vote_count_uncast')
 
     retire_account('redact')
 

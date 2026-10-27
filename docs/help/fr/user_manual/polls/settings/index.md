@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,7 +14,7 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
   hide-results: 570a32d6a0966aac
@@ -36,7 +36,7 @@ generated:
   edit-voting-options: dfe67094a9cbd0cf
   opening-time: 6f06b709acf58c46
   more-settings: ea1e48c372fdea5d
-  reminder: eb948ef4fce9ad1a
+  reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
   vote-reason: 4e8a95a3905977c2
   hide-results: d6766d2c80135984
@@ -159,7 +159,7 @@ Envoyez une notification « Clôture prochaine » 24 heures avant la clôtur
 Options du paramètre :
 - Personne
 - Auteur
-- Électeurs en attente (par défaut)
+- Personnes en attente (par défaut)
 - Tous les électeurs
 
 Pour un sondage anonyme d’une durée d’au moins 24 heures, Loomio envoie automatiquement un rappel aux personnes ayant le droit de voter qui n’ont pas encore voté, au cours des dernières 24 heures. Ce rappel ne peut pas être modifié dans les paramètres du sondage.

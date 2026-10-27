@@ -43,7 +43,7 @@ class NotificationAudienceService
       raise CanCan::AccessDenied unless topic&.readers&.exists?
       topic.readers
     when "voters"
-      raise CanCan::AccessDenied unless poll && poll.vote_count_total.to_i.positive?
+      raise CanCan::AccessDenied unless poll && poll.vote_count_eligible.to_i.positive?
       poll.voters_unmasked
     when "voters_cast"
       authorize_voter_status_audience!(poll)
@@ -86,7 +86,7 @@ class NotificationAudienceService
 
     candidates << { id: "topic", kind: "topic" } if topic&.readers&.exists?
 
-    if poll&.persisted? && poll.vote_count_total.to_i.positive?
+    if poll&.persisted? && poll.vote_count_eligible.to_i.positive?
       candidates << { id: "voters", kind: "voters" }
       if !poll.anonymous? && poll.vote_count_cast.to_i.positive? && poll.vote_count_uncast.to_i.positive?
         candidates << { id: "voters_cast", kind: "voters_cast" }

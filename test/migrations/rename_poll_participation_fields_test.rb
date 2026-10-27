@@ -8,7 +8,7 @@ class RenamePollParticipationFieldsTest < ActiveSupport::TestCase
       title: 'Participation migration', poll_type: 'poll', group_id: groups(:group).id,
       poll_option_names: %w[Yes No], closing_at: 1.day.from_now
     }, actor: users(:admin))
-    counters = {vote_count_total: 7, vote_count_uncast: 3, vote_count_none_of_the_above: 1, scores_by_option: [2.5, 1]}
+    counters = {vote_count_eligible: 7, vote_count_uncast: 3, vote_count_none_of_the_above: 1, scores_by_option: [2.5, 1]}
     poll.update_columns(counters)
     notification = Notification.create!(kind: 'poll_announced', subject: poll, actor: users(:admin),
       recipient_audience: 'voters_cast', recipient_user_ids: [users(:member).id])

@@ -474,11 +474,11 @@ class RecordCacheTest < ActiveSupport::TestCase
     cache = RecordCache.new
     queries = capture_sql { cache.add_polls([poll, zero, empty]) }
     assert_equal 1, queries.length
-    assert_equal [poll.id, zero.id, empty.id].sort, cache.scope[:vote_weight_total_by_poll_id].keys.sort
+    assert_equal [poll.id, zero.id, empty.id].sort, cache.scope[:vote_weight_eligible_by_poll_id].keys.sort
 
     serializer = PollSerializer.new(poll, scope: {cache: cache})
     queries = capture_sql do
-      assert_equal 2, serializer.vote_weight_total
+      assert_equal 2, serializer.vote_weight_eligible
       assert_equal BigDecimal('0.75'), serializer.vote_weight_cast
       assert_equal BigDecimal('1.25'), serializer.vote_weight_uncast
       assert_equal BigDecimal('0.5'), serializer.vote_weight_none_of_the_above
@@ -488,7 +488,7 @@ class RecordCacheTest < ActiveSupport::TestCase
       assert_equal false, serializer.quorum_reached
       [zero, empty].each do |other|
         other_serializer = PollSerializer.new(other, scope: {cache: cache})
-        assert_equal 0, other_serializer.vote_weight_total
+        assert_equal 0, other_serializer.vote_weight_eligible
         assert_equal 0, other_serializer.vote_weight_cast
         assert_equal 0, other_serializer.vote_weight_uncast
         assert_equal 0, other_serializer.vote_weight_none_of_the_above
@@ -503,7 +503,7 @@ class RecordCacheTest < ActiveSupport::TestCase
     queries = capture_sql do
       results = PollService.calculate_results(poll, options,
         voter_ids_uncast: [stances.last.participant_id], voter_ids_none_of_the_above: [stances[1].participant_id],
-        vote_weight_total: serializer.vote_weight_total,
+        vote_weight_eligible: serializer.vote_weight_eligible,
         vote_weight_uncast: serializer.vote_weight_uncast,
         vote_weight_none_of_the_above: serializer.vote_weight_none_of_the_above)
     end
@@ -525,12 +525,12 @@ class RecordCacheTest < ActiveSupport::TestCase
     poll, stances = build_weighted_cache_poll
     RecordCache.new.add_polls([poll])
     stances.last.update!(weight: '2.25')
-    assert_equal 3, poll.vote_weight_total
+    assert_equal 3, poll.vote_weight_eligible
     assert_equal BigDecimal('2.25'), poll.vote_weight_uncast
     assert_equal BigDecimal('1.8'), poll.quorum_threshold
 
     stances[1].update!(weight: '1.5')
-    assert_equal 4, poll.vote_weight_total
+    assert_equal 4, poll.vote_weight_eligible
     assert_equal BigDecimal('1.75'), poll.vote_weight_cast
     assert_equal BigDecimal('1.5'), poll.vote_weight_none_of_the_above
 
@@ -559,7 +559,7 @@ class RecordCacheTest < ActiveSupport::TestCase
     }, actor: users(:admin))
     cache = RecordCache.new
     assert_empty capture_sql { cache.add_polls([plain, anonymous]) }
-    refute cache.scope.key?(:vote_weight_total_by_poll_id)
+    refute cache.scope.key?(:vote_weight_eligible_by_poll_id)
   end
 
   private

@@ -25,7 +25,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
         record['notify_on_closing_soon'] = 'undecided_voters'
       end
       if item['table'] == 'polls'
-        {'vote_count_total' => 'voters_count', 'vote_count_uncast' => 'undecided_voters_count',
+        {'vote_count_eligible' => 'voters_count', 'vote_count_uncast' => 'undecided_voters_count',
          'vote_count_none_of_the_above' => 'none_of_the_above_count', 'scores_by_option' => 'stance_counts'}.each do |current, legacy|
           record[legacy] = record.delete(current)
         end
@@ -41,7 +41,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group.destroy!
     GroupExportService.import(filename)
     imported = Poll.where.not(id: poll.id).find_by!(title: poll.title)
-    assert_equal 2, imported.vote_count_total
+    assert_equal 2, imported.vote_count_eligible
     assert_equal 1, imported.vote_count_cast
     assert_equal 1, imported.vote_count_uncast
     assert_equal [1, 0], imported.scores_by_option

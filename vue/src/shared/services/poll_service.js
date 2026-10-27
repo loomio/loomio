@@ -150,7 +150,7 @@ export default new class PollService {
         name: 'common.action.remind',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.voteCountTotal < 2)) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.voteCountEligible < 2)) { return false; }
           return AbilityService.canAnnouncePoll(poll);
         },
         perform() {

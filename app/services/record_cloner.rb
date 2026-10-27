@@ -17,7 +17,7 @@ class RecordCloner
     ],
     Poll => %w[
       id key topic_id attachments versions_count
-      vote_count_total vote_count_uncast vote_count_none_of_the_above scores_by_option
+      vote_count_eligible vote_count_uncast vote_count_none_of_the_above scores_by_option
     ],
     PollOption => %w[id poll_id],
     Stance => %w[id poll_id token attachments versions_count option_scores],

@@ -7,7 +7,7 @@ class Views::Chatbot::Matrix::Uncast < Views::Chatbot::Base
 
   def view_template
     nom = @poll.vote_count_cast
-    dnom = @poll.vote_count_total
+    dnom = @poll.vote_count_eligible
     pct = @poll.participation_pct
 
     p { t(@poll.participation_key, num: nom, total: dnom, pct: pct) }

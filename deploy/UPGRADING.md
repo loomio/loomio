@@ -29,7 +29,7 @@ Poll fields have new names in `/api/user0` requests and responses and in poll CS
 
 | Previous field | New field |
 | --- | --- |
-| `voters_count` | `vote_count_total` |
+| `voters_count` | `vote_count_eligible` |
 | `decided_voters_count` | `vote_count_cast` |
 | `undecided_voters_count` | `vote_count_uncast` |
 | `cast_stances_pct` | `participation_pct` |

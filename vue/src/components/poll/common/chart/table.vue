@@ -90,7 +90,7 @@ export default {
       return Records.pollOptions.find(opt.id) || {meaning: '', name: opt.name}
     },
     voterCountPercent(option) {
-      return this.poll.voteCountTotal > 0 ? option.vote_count / this.poll.voteCountTotal * 100 : 0;
+      return this.poll.voteCountEligible > 0 ? option.vote_count / this.poll.voteCountEligible * 100 : 0;
     },
     voterOverflowText(option) {
       const visible = Math.min(option.voter_ids.length, VOTER_AVATARS_MAX);

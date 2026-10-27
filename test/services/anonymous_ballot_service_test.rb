@@ -518,7 +518,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
 
     assert_equal [@voter.id], voters.pluck(:voter_id)
-    assert_equal 1, poll.reload.vote_count_total
+    assert_equal 1, poll.reload.vote_count_eligible
     assert_equal 1, poll.vote_count_uncast
     assert_empty poll.stances
     notification = Notification.about(poll).find_by!(kind: "poll_announced")
@@ -543,7 +543,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
 
     assert_equal [late_voter.id], voters.pluck(:voter_id)
     assert_not poll.anonymous_poll_voters.find_by!(voter: late_voter).group_member
-    assert_equal 2, poll.reload.vote_count_total
+    assert_equal 2, poll.reload.vote_count_eligible
     assert_equal 1, poll.vote_count_uncast
     assert_equal 1, poll.anonymous_ballots.count
   end

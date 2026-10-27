@@ -23,8 +23,8 @@ require 'test_helper'
 class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
   tests Api::V1::PollsController
 
-  SMALL = {options_count: 2, vote_count_total: 2}
-  LARGE = {options_count: 5, vote_count_total: 8}
+  SMALL = {options_count: 2, vote_count_eligible: 2}
+  LARGE = {options_count: 5, vote_count_eligible: 8}
   WEIGHTED_OVERHEAD_MAX = 2
 
   setup do
@@ -88,11 +88,11 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
   # Replace the group's visible polls so the index lists exactly polls_count.
   def index_queries(polls_count:, weighted: false)
     Poll.where(topic_id: @group.topics.select(:id)).update_all(discarded_at: Time.current)
-    polls_count.times { build_voted_poll(options_count: 3, vote_count_total: 3, weighted:) }
+    polls_count.times { build_voted_poll(options_count: 3, vote_count_eligible: 3, weighted:) }
     count_queries { get :index, params: {group_key: @group.key} }
   end
 
-  def build_voted_poll(options_count:, vote_count_total:, weighted: false)
+  def build_voted_poll(options_count:, vote_count_eligible:, weighted: false)
     params = {
       title: 'Query count', poll_type: 'poll', group_id: @group.id,
       poll_option_names: Array.new(options_count) { |i| "Option #{i}" },
@@ -102,7 +102,7 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
     poll = PollService.create(params:, actor: @admin)
     assert poll.persisted?, poll.errors.full_messages.to_sentence
 
-    voters = Array.new(vote_count_total) do |i|
+    voters = Array.new(vote_count_eligible) do |i|
       user = User.create!(name: "Voter #{i}", email: "query-count-#{poll.id}-#{i}@example.com", email_verified: true)
       @group.add_member!(user).tap { |membership| membership.update_columns(weight: 1 + i) if weighted }
       user

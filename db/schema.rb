@@ -807,7 +807,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_000003) do
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
     t.integer "vote_count_none_of_the_above", default: 0, null: false
-    t.integer "vote_count_total", default: 0, null: false
+    t.integer "vote_count_eligible", default: 0, null: false
     t.integer "vote_count_uncast", default: 0, null: false
     t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"

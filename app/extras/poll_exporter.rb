@@ -53,7 +53,7 @@ class PollExporter
       closed_at: @poll.closed_at,
       vote_count_cast: @poll.vote_count_cast,
       vote_count_uncast: @poll.vote_count_uncast,
-      vote_count_total: @poll.vote_count_total,
+      vote_count_eligible: @poll.vote_count_eligible,
       details: @poll.details,
       group_name: @poll.group.full_name,
       discussion_title: @poll.topic.topicable.title,
