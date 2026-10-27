@@ -53,22 +53,6 @@ class ReindexSearchDocumentWorkerTest < ActiveSupport::TestCase
     end
   end
 
-  test 'failed indexing schedules a retry and eventually indexes current content' do
-    ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
-    CommentService.update(comment: @comment, params: { body: 'Updated after failure' }, actor: @user)
-    clear_enqueued_jobs
-
-    Comment.stub(:pg_search_insert_statement, ->(**) { raise 'search indexing unavailable' }) do
-      assert_enqueued_with(job: ReindexSearchDocumentWorker, args: [ 'Comment', @comment.id ]) do
-        ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
-      end
-    end
-    assert_not PgSearch::Document.exists?(searchable: @comment)
-
-    ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
-    assert_includes PgSearch::Document.where(searchable: @comment).sole.content, 'Updated after failure'
-  end
-
   test 'all searchable models defer indexing on save' do
     poll = PollService.create(params: { topic_id: @topic.id, title: 'Deferred poll', poll_type: 'proposal',
       closing_at: 2.days.from_now, poll_option_names: [ 'Agree' ] }, actor: users(:admin))

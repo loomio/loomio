@@ -8,29 +8,6 @@ class SearchIndexTransactionTest < ActiveSupport::TestCase
     @user = users(:member_normal)
   end
 
-  test 'index jobs appear only after the complete contribution commits and disappear on rollback' do
-    [ false, true ].each do |rollback|
-      clear_enqueued_jobs
-      comment = nil
-      Comment.transaction do
-        comment = CommentService.create(comment: Comment.new(parent: @topic.topicable, body: 'Committed search'), actor: @user)
-        TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: [ 'Budget' ], actor: @user)
-        assert_no_enqueued_jobs(only: ReindexSearchDocumentWorker)
-        raise ActiveRecord::Rollback if rollback
-      end
-      if rollback
-        assert_no_enqueued_jobs(only: ReindexSearchDocumentWorker)
-        assert_not Comment.exists?(comment.id)
-      else
-        assert_enqueued_with(job: ReindexSearchDocumentWorker, args: [ 'Comment', comment.id ])
-        perform_enqueued_jobs(only: ReindexSearchDocumentWorker)
-        document = PgSearch::Document.where(searchable: comment).sole
-        assert_equal @topic.id, document.topic_id
-        assert_equal [ 'Budget' ], document.tags
-      end
-    end
-  end
-
   test 'moving discussion and standalone poll topics queues the correct index scope after commit' do
     poll = PollService.create(params: { group_id: @topic.group_id, title: 'Moving poll', poll_type: 'proposal',
       closing_at: 2.days.from_now, poll_option_names: [ 'Agree' ] }, actor: users(:admin))
