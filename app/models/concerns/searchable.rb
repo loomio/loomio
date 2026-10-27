@@ -3,18 +3,14 @@ module Searchable
   include PgSearch::Model
 
   included do
-    # Own the lifecycle instead of pg_search's synchronous save/delete callbacks.
-    has_one :pg_search_document, as: :searchable, class_name: 'PgSearch::Document'
-    after_commit :enqueue_search_index_update, on: [ :create, :update, :destroy ],
-      if: -> { destroyed? || PgSearch.multisearch_enabled? }
+    multisearchable
+    skip_callback :save, :after, :update_pg_search_document
+    after_save_commit :enqueue_search_index_update, if: -> { PgSearch.multisearch_enabled? }
   end
 
   class_methods do
     def rebuild_pg_search_documents
-      SearchService.with_index_lock(name) do
-        PgSearch::Document.where(searchable_type: name).delete_all
-        connection.execute pg_search_insert_statement
-      end
+      connection.execute pg_search_insert_statement
     end
 
     def pg_search_insert_statement(id: nil, author_id: nil)
@@ -22,14 +18,14 @@ module Searchable
     end
   end
 
-  # Explicit synchronous indexing remains available to maintenance tasks.
-  def update_pg_search_document
-    SearchService.reindex_record(self.class, id)
-  end
-
-  private
-
   def enqueue_search_index_update
     ReindexSearchDocumentWorker.perform_later(self.class.name, id)
+  end
+end
+
+module PgSearch::Multisearchable
+  def update_pg_search_document
+    PgSearch::Document.where(searchable: self).delete_all
+    ActiveRecord::Base.connection.execute(self.class.pg_search_insert_statement(id: self.id))
   end
 end

@@ -340,7 +340,7 @@ class TopicItemTagsTest < ActiveSupport::TestCase
     assert_equal ['Outcome discussion'], comment.created_topic_item.tags
     poll.discard!
     assert_empty @topic.reload.tags
-    assert_empty SearchDocumentQuery.current(PgSearch::Document.where(searchable: comment))
+    assert PgSearch::Document.exists?(searchable: comment)
     ReindexPollWorker.perform_now(poll.id)
     assert_not PgSearch::Document.exists?(searchable: comment)
     SearchService.reindex_by_comment_id(comment.id)

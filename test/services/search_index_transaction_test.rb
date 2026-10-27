@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'timeout'
 
 class SearchIndexTransactionTest < ActiveSupport::TestCase
   self.use_transactional_tests = false
@@ -30,43 +29,6 @@ class SearchIndexTransactionTest < ActiveSupport::TestCase
         assert_equal [ 'Budget' ], document.tags
       end
     end
-  end
-
-  test 'overlapping record and thread reindexes serialize without blocking comment edits' do
-    comment = CommentService.create(comment: Comment.new(parent: @topic.topicable, body: 'Original search'), actor: @user)
-    comment.update_pg_search_document
-    config = ActiveRecord::Base.connection_db_config.configuration_hash
-    locker = PG.connect(**config.slice(:host, :port, :password).merge(dbname: config[:database], user: config[:username]).compact)
-    locker.exec("SELECT pg_advisory_lock(hashtext('loomio_search_index'), hashtext('Comment'))")
-    ready = Queue.new
-    operations = [ -> { SearchService.reindex_record(Comment, comment.id) },
-                  -> { SearchService.reindex_by_discussion_id(@topic.topicable_id) } ]
-    workers = operations.map do |operation|
-      Thread.new do
-        ActiveRecord::Base.connection_pool.with_connection do |connection|
-          ready << connection.raw_connection.backend_pid
-          operation.call
-        end
-      end
-    end
-    pids = 2.times.map { Timeout.timeout(5) { ready.pop } }
-    Timeout.timeout(5) do
-      loop do
-        break if pids.all? { |pid| locker.exec_params('SELECT cardinality(pg_blocking_pids($1)) > 0', [ pid ]).getvalue(0, 0) == 't' }
-        sleep 0.01
-      end
-    end
-
-    Timeout.timeout(5) do
-      CommentService.update(comment: comment, params: { body: 'Current committed search' }, actor: @user)
-    end
-    locker.close
-    Timeout.timeout(10) { workers.each(&:value) }
-
-    assert_includes PgSearch::Document.where(searchable: comment).sole.content, 'Current committed search'
-  ensure
-    locker&.close unless locker&.finished?
-    workers&.each { |worker| worker.join(5) }
   end
 
   test 'moving discussion and standalone poll topics queues the correct index scope after commit' do

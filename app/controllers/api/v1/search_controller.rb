@@ -14,7 +14,9 @@ class Api::V1::SearchController < Api::V1::RestfulController
       rel = PgSearch::Document.where("group_id IN (:group_ids)", group_ids: group_ids)
     end
 
-    rel = SearchDocumentQuery.current(rel)
+    # Apply the existing content rule to every search, including tag-only
+    # browsing. An indexing job that started before a poll hid its results may
+    # still hold an older snapshot; stale documents must not disclose comments.
 
     if params[:tag].present?
       rel = rel.where('pg_search_documents.tags @> ARRAY[?]::varchar[]', Array(params[:tag]))

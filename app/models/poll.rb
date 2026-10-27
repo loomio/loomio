@@ -277,7 +277,6 @@ class Poll < ApplicationRecord
   def enqueue_search_index_update
     ReindexPollWorker.perform_later(id)
   end
-  private :enqueue_search_index_update
   after_update :synchronize_stance_weights_after_vote_weights_change
 
   # Switching vote weights resets issued stances, including cast votes, so

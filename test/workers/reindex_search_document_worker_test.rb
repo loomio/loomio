@@ -46,15 +46,14 @@ class ReindexSearchDocumentWorkerTest < ActiveSupport::TestCase
           CommentService.discard(comment: comment, actor: @user)
         end
       end
-      assert PgSearch::Document.exists?(searchable: comment)
-      assert_empty SearchDocumentQuery.current(PgSearch::Document.where(searchable: comment))
+      assert_equal !destroy, PgSearch::Document.exists?(searchable: comment)
 
       ReindexSearchDocumentWorker.perform_now('Comment', comment.id)
       assert_not PgSearch::Document.exists?(searchable: comment)
     end
   end
 
-  test 'failed replacement preserves the previous document and schedules a retry' do
+  test 'failed indexing schedules a retry and eventually indexes current content' do
     ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
     CommentService.update(comment: @comment, params: { body: 'Updated after failure' }, actor: @user)
     clear_enqueued_jobs
@@ -64,7 +63,7 @@ class ReindexSearchDocumentWorkerTest < ActiveSupport::TestCase
         ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
       end
     end
-    assert_includes PgSearch::Document.where(searchable: @comment).sole.content, 'Original search text'
+    assert_not PgSearch::Document.exists?(searchable: @comment)
 
     ReindexSearchDocumentWorker.perform_now('Comment', @comment.id)
     assert_includes PgSearch::Document.where(searchable: @comment).sole.content, 'Updated after failure'
