@@ -24,14 +24,18 @@ class ItemTagBackfillService
     result = { phase: @phase, after_id: @after_id, through_id: through_id, checked: 0, updated: 0, finished: true }
     connection.transaction do
       connection.execute("SET LOCAL lock_timeout = '100ms'")
-      connection.execute("SET LOCAL statement_timeout = #{@statement_timeout_ms}")
+      timeout = ActiveRecord::Relation::QueryAttribute.new('statement_timeout', @statement_timeout_ms.to_s, ActiveRecord::Type::String.new)
+      connection.exec_query("SELECT set_config('statement_timeout', $1, true)", 'Set tag backfill timeout', [timeout])
       # Keep GIN pending-list cleanup small enough for bounded search updates.
       # The default 4MB list can force a multi-second flush inside one UPDATE.
       connection.execute("SET LOCAL gin_pending_list_limit = '64kB'") if @phase == 'search'
-      ids = connection.select_values(<<~SQL)
+      binds = [@after_id, through_id, @batch_size].map do |value|
+        ActiveRecord::Relation::QueryAttribute.new('cursor', value, ActiveRecord::Type::Integer.new(limit: 8))
+      end
+      ids = connection.exec_query(<<~SQL, 'Lock tag backfill batch', binds).rows.map(&:first)
         SELECT id FROM #{table}
-        WHERE id > #{@after_id} AND id <= #{through_id}
-        ORDER BY id LIMIT #{@batch_size}
+        WHERE id > $1 AND id <= $2
+        ORDER BY id LIMIT $3
         FOR NO KEY UPDATE
       SQL
       unless ids.empty?
