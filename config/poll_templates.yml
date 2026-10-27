@@ -155,8 +155,8 @@ meeting:
   title_placeholder_i18n: poll_templates.time_poll.title
   details_i18n: poll_templates.time_poll.details
   chart_type: grid
-  min_score: 0
-  max_score: 2
+  score_min: 0
+  score_max: 2
   default_duration_in_days: 3
   can_respond_maybe: true
 

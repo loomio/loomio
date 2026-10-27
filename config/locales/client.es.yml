@@ -139,8 +139,8 @@ es:
     manage_subscription: Administrar suscripción
     amount: Cantidad
   loomio_tags:
-    show_tags_from_other_groups: "Muestra etiquetas de otros grupos"
-    parent_group_and_subgroups_in_this_organization: "Grupo principal y subgrupos de esta organización"
+    show_tags_from_other_groups: Muestra etiquetas de otros grupos
+    parent_group_and_subgroups_in_this_organization: Grupo principal y subgrupos de esta organización
     all_tags: Todas las etiquetas
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
@@ -1000,10 +1000,10 @@ es:
       everyone_in_the_group: Todos en el grupo
       topic: Todos en el hilo
       voters: Todos invitados a votar
-      people_who_voted: Todos los que votaron
-      people_not_voted: Votantes indecisos
       non_voters: Miembros de %{name} todavía no han sido invitados
       delegates_of_group: Delegados de %{name}
+      everyone_who_voted: Todos los que votaron
+      people_who_have_not_voted: Personas sin votar
     form:
       group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
@@ -1073,7 +1073,7 @@ es:
       has_not_read_thread: Tiene un hilo no visto
       has_not_joined_yet: Aún no se ha unido
       has_not_joined_yet_hint: Este usuario no ha aceptado tu invitación para unirse a Loomio y no recibirá más notificaciones hasta que lo haga.
-      discussion_admin: "Hilo de administración"
+      discussion_admin: Hilo de administración
       has_not_read_discussion: No ha visto la discusión
     group_form:
       search_placeholder: Buscar personas...
@@ -1626,7 +1626,7 @@ es:
     title_helptext:
       group: Este título será mostrado junto al nombre de %{name} dentro de este grupo. Úsalo para que otros integrantes conozcan tu cargo.
     title_label: Título
-    title_placeholder: "P. ej., «Admin» o «Facilitador»"
+    title_placeholder: P. ej., «Admin» o «Facilitador»
     updated: Título del integrante actualizado
     weight_label: Peso del voto
   user_name_modal:
@@ -1800,7 +1800,6 @@ es:
       all: Discusiones recientes
     thread_preview:
       you_voted: Votaste %{position}
-      not_voted: "Todavía no has votado"
     threads_from:
       group: Hilos de
       pinned: Hilos fijados
@@ -2324,18 +2323,14 @@ es:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto eliminado
-    not_voted: Sin votar
     newest_first: El más reciente primero
     oldest_first: Los más viejos primero
     priority_first: De acuerdo primero
     priority_last: Bloqueados primero
-    not_voted_first: Sin votar primero
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
     name_or_username: Nombre o nombre de usuario
-    cast: Emitidos
-    uncast: No emitidos
     reason_redacted: Motivo censurado
     redact_reason_title: "¿Motivo de la votación?"
     redact_reason_helptext: El texto y los archivos adjuntos se ocultarán, pero el voto permanecerá en los resultados.
@@ -2350,15 +2345,6 @@ es:
     stance: Votar
     participation_records_restricted: Podrás ver quiénes participaron una vez finalizada la votación
     vote_weight: Peso del voto %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "Mostrar %{count} personas que no han votado"
-    show_invitations: Mostrar invitaciones pendientes
-    people_not_voted: Indecisos (%{count})
-    invitation_count_singular: 'Una persona más ha sido invitada a participar vía correo electrónico '
-    invitation_count_plural: "%{count} personas adicionales han sido invitadas a participar vía correo electrónico"
-  poll_common_not_voted_user:
-    reminded: 'Recordatorio enviado '
-    reminder_sent: 'Recordatorio de notificación enviado '
   poll_common_set_outcome_panel:
     enter_outcome: Poner el resultado
     poll_type: Este %{poll_type} se ha cerrado. Tómate el tiempo para considerar los resultados y luego comparte una conclusión para que las personas sepan lo que sucederá a continuación.
@@ -2500,9 +2486,9 @@ es:
     total: Total
   poll_remove_vote:
     title: "¿Eliminar tu voto?"
-    helptext_not_voted: "¿Estás seguro de que deseas eliminar tu voto? Aparecerás como indeciso y puedes votar de nuevo más tarde si lo deseas."
     confirm: Eliminar voto
     success: 'Voto eliminado '
+    helptext_not_voted: "¿Seguro que quieres eliminar tu voto? Tu estado será “Sin votar” y podrás volver a votar más tarde si quieres."
   poll_poll_vote_form:
     stance_created: Voto creado
     stance_updated: Voto actualizado
@@ -2864,8 +2850,8 @@ es:
       voting_title: 24 horas antes del cierre de la votación, envíe un recordatorio a
       nobody: Nadie
       author: Autor (yo)
-      people_not_voted: Votantes indecisos
       voters: Todos los votantes
+      people_who_have_not_voted: Personas sin votar
     notify_on_participate:
       title: Notificarme cuando la gente participe
       helptext_on: Una vez seleccionado, se le notificará cada vez que alguien participe.

@@ -102,15 +102,15 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_equal poll.voters_uncast.ids.sort, poll.voters_uncast_unmasked.ids.sort
   end
 
-  test "anonymous results include undecided counts without voter identities" do
+  test "anonymous results include uncast counts without voter identities" do
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
     @poll.reload
 
     result_uncast = PollService.calculate_results(@poll, @poll.poll_options)
                                   .find { |result| result[:id] == -1 }
 
-    assert_equal @poll.votes_uncast_count, result_uncast[:voter_count]
-    assert_predicate result_uncast[:voter_count], :positive?
+    assert_equal @poll.vote_count_uncast, result_uncast[:vote_count]
+    assert_predicate result_uncast[:vote_count], :positive?
     assert_empty result_uncast[:voter_ids]
   end
 
@@ -257,7 +257,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     assert_includes recipient_ids, @admin.id
   end
 
-  test "anonymous-ballot reminders create deliveries for undecided voters" do
+  test "anonymous-ballot reminders create deliveries for voters who have not voted" do
     notification = NotificationService.create!(
       kind: "poll_closing_soon",
       subject: @poll,
@@ -518,8 +518,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     )
 
     assert_equal [@voter.id], voters.pluck(:voter_id)
-    assert_equal 1, poll.reload.voters_eligible_count
-    assert_equal 1, poll.votes_uncast_count
+    assert_equal 1, poll.reload.vote_count_total
+    assert_equal 1, poll.vote_count_uncast
     assert_empty poll.stances
     notification = Notification.about(poll).find_by!(kind: "poll_announced")
     assert_equal [ @voter.id ], notification.recipient_user_ids
@@ -543,8 +543,8 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
 
     assert_equal [late_voter.id], voters.pluck(:voter_id)
     assert_not poll.anonymous_poll_voters.find_by!(voter: late_voter).group_member
-    assert_equal 2, poll.reload.voters_eligible_count
-    assert_equal 1, poll.votes_uncast_count
+    assert_equal 2, poll.reload.vote_count_total
+    assert_equal 1, poll.vote_count_uncast
     assert_equal 1, poll.anonymous_ballots.count
   end
 
@@ -726,7 +726,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
         closing_at: 3.days.from_now,
         group_id: @group.id,
         anonymous: true,
-        minimum_stance_choices: 3,
+        choice_count_min: 3,
         poll_option_names: %w[Apple Orange Banana]
       },
       actor: @admin
@@ -751,9 +751,9 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
 
     open_serializer = PollSerializer.new(@poll, scope: { current_user_id: @admin.id })
     refute open_serializer.send(:include_results?)
-    refute open_serializer.send(:include_option_score_totals?)
-    refute open_serializer.send(:include_votes_cast_count?)
-    refute open_serializer.send(:include_votes_uncast_count?)
+    refute open_serializer.send(:include_scores_by_option?)
+    refute open_serializer.send(:include_vote_count_cast?)
+    refute open_serializer.send(:include_vote_count_uncast?)
     refute open_serializer.send(:include_participation_pct?)
 
     PollService.close(poll: @poll, actor: @admin)
@@ -762,7 +762,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     agree_result = closed_serializer.results.find { |result| result[:id] == @poll.poll_options.first.id }
 
     assert_equal 1, agree_result[:score]
-    assert_equal({}, agree_result[:voter_scores])
+    assert_equal({}, agree_result[:scores_by_voter])
     assert_empty agree_result[:voter_ids]
   end
 

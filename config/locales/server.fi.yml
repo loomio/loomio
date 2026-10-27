@@ -112,7 +112,7 @@ fi:
     add_guests:
       all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
   errors:
-    item_you_are_replying_to_deleted: "Kohde, johon vastaat, on poistettu"
+    item_you_are_replying_to_deleted: Kohde, johon vastaat, on poistettu
     clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
     404:
       title: Ei löydetty
@@ -197,7 +197,6 @@ fi:
       poll_options_dont_match: Loomiossa oli bugi, joka esti äänesi tallentamisen. Työskentelemme parhaillaan ongelman korjaamiseksi. Lataa sivu uudelleen ja yritä uudelleen.
       opening_at_before_closing_at: Avauspäivämäärän on oltava ennen sulkemispäivämäärää
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) jäsentä on ilmoittanut kantansa"
       title: Otsikko
       author: Tekijä
       email: Sähköposti
@@ -462,12 +461,8 @@ fi:
       not_invited: Ei kutsuttu
       please_respond: Ole hyvä ja vastaa
       time_zone: "(Ajat näkyvät %{zone}ssa)"
-      members_not_voted: Päättämättömät jäsenet (%{count})
-      guests_not_voted: Päättämättömät vieraat (%{count})
-      more_not_voted: "%{count} muuta..."
       vote_now: Äänestä nyt
       you_have_until: Sinulla on %{when} asti aikaa osallistua.
-      people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"
       voting_opens_and_closes: Äänestys alkaa %{opens} ja päättyy %{closes}. (%{days} päivää)
       voting_closes: Äänestys päättyy %{when}.
       voting_opened_and_closed: Äänestys avattiin %{opens} ja suljettiin %{closes}. (%{days} päivää)
@@ -786,9 +781,9 @@ fi:
     voted: "%{author} äänesti %{response}"
     voted_hidden: "%{author} äänesti"
     vote_removed: "%{author}: ääni poistettu"
-    not_voted: "%{author}: äänestämättä"
     superseded: korvattu
     shared_outcome: "%{author} jakoi johtopäätöksen"
     removed: Poistettu
+    not_voted: "%{author}: äänestämättä"
   error:
     access_denied: Sinulla ei ole lupaa tehdä niin

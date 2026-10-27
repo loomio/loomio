@@ -112,7 +112,7 @@ zh_TW:
     add_guests:
       all: 您必須升級您的 Loomio 訂閱才能新增訪客。或者，您可以邀請他們成為您群組的成員。
   errors:
-    item_you_are_replying_to_deleted: "您正在回覆的內容已被刪除"
+    item_you_are_replying_to_deleted: 您正在回覆的內容已被刪除
     clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
       title: 錯誤的請求
@@ -202,7 +202,6 @@ zh_TW:
       poll_options_dont_match: 由於 Loomio 的漏洞，您的投票未能保存。我們正在努力修復此問題。請刷新頁面後重試。
       opening_at_before_closing_at: 開業日期必須早於關閉日期
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) 的成員已經表達了他們的立場"
       title: 標題
       author: 作者
       email: 電子郵件
@@ -492,12 +491,8 @@ zh_TW:
       not_invited: 未邀請
       please_respond: 請回應
       time_zone: "（在 %{zone} 顯示的時間）"
-      members_not_voted: 未投票的成員（%{count}）
-      guests_not_voted: 未投票的訪客 (%{count})
-      more_not_voted: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
-      people_have_voted: "%{dnom} 中的 %{nom} 個人已投票 (%{pct}%)"
       voting_opens_and_closes: 投票於 %{opens} 開始，%{closes} 結束。 （%{days} 天）
       voting_closes: 投票將於 %{when} 結束。
       voting_opened_and_closed: 投票於 %{opens} 天開始，%{closes} 天結束。 （耗時 %{days} 天）
@@ -816,9 +811,9 @@ zh_TW:
     voted: "%{author} 投票給了 %{response}"
     voted_hidden: "%{author} 投票"
     vote_removed: "%{author}：投票已移除"
-    not_voted: "%{author}：未定"
     superseded: 被取代
     shared_outcome: "%{author} 分享了結論"
     removed: 已移除
+    not_voted: "%{author}: 未投票"
   error:
     access_denied: 你沒有權限這樣做。

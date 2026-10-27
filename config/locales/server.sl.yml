@@ -112,7 +112,7 @@ sl:
     add_guests:
       all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste. Lahko pa jih povabite, da postanejo člani vaše skupine.
   errors:
-    item_you_are_replying_to_deleted: "Element, na katerega odgovarjate, je bil izbrisan"
+    item_you_are_replying_to_deleted: Element, na katerega odgovarjate, je bil izbrisan
     clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
     404:
       title: Ni najdeno
@@ -197,7 +197,6 @@ sl:
       poll_options_dont_match: Napaka v programu Loomio je preprečila shranjevanje vašega glasu. Delamo na odpravi te težave. Ponovno naložite in poskusite znova.
       opening_at_before_closing_at: Datum odprtja mora biti pred datumom zaprtja
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) članov je izrazilo svoje stališče"
       title: Naslov
       author: Avtor
       email: Email
@@ -458,12 +457,8 @@ sl:
       not_invited: Ni povabljen
       please_respond: Prosim odgovori
       time_zone: "(Časi so prikazani v %{zone})"
-      members_not_voted: Neodločeni člani (%{count})
-      guests_not_voted: Neodločeni gostje (%{count})
-      more_not_voted: še %{count} ...
       vote_now: Glasujte zdaj
       you_have_until: Časa za sodelovanje imate do %{when}.
-      people_have_voted: "%{nom} od %{dnom} oseb je sodelovalo (%{pct}%)"
       voting_opens_and_closes: Glasovanje se odpre %{opens} in konča %{closes}. (%{days} dni)
       voting_closes: Glasovanje se zaključi %{when}.
       voting_opened_and_closed: Glasovanje se je začelo %{opens} in končalo %{closes}. (%{days} dni)
@@ -782,9 +777,9 @@ sl:
     voted: "%{author} je glasoval/a za %{response}"
     voted_hidden: "%{author} je glasoval"
     vote_removed: "%{author}: glas odstranjen"
-    not_voted: "%{author}: še ni glasoval/-a"
     superseded: nadomeščen
     shared_outcome: "%{author} je delil/a sklep"
     removed: Odstranjeno
+    not_voted: "%{author}: še niso glasovali"
   error:
     access_denied: Nimate dovoljenja za to.

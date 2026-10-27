@@ -139,8 +139,8 @@ sl:
     manage_subscription: Upravljanje naročnine
     amount: Znesek
   loomio_tags:
-    show_tags_from_other_groups: "Prikažite oznake iz drugih skupin"
-    parent_group_and_subgroups_in_this_organization: "Nadrejena skupina in podskupine te organizacije"
+    show_tags_from_other_groups: Prikažite oznake iz drugih skupin
+    parent_group_and_subgroups_in_this_organization: Nadrejena skupina in podskupine te organizacije
     all_tags: Vse oznake
     tags: Oznake
     apply_tags: Uporabi oznake
@@ -998,10 +998,10 @@ sl:
       everyone_in_the_group: Vsi v skupini
       topic: Vsi v temi
       voters: K glasovanju vabljeni vsi
-      people_who_voted: Vsi, ki so glasovali
-      people_not_voted: Neopredeljeni volivci
       non_voters: Člani %{name} še niso povabljeni
       delegates_of_group: Delegati %{name}
+      everyone_who_voted: Vsi, ki so glasovali
+      people_who_have_not_voted: Tisti, ki še niso glasovali
     form:
       group_has_no_members_yet: Ste edini član svoje skupine. Morda boste želeli povabiti nekaj ljudi v svojo skupino, preden začnete nit ali odločitev.
       invite_people_to_evaluate_loomio: Povabite nekaj ljudi v svojo skupino Loomio, da se skupaj odločite
@@ -1069,7 +1069,7 @@ sl:
       has_not_read_thread: Ni si ogledal niti
       has_not_joined_yet: Se še ni pridružil
       has_not_joined_yet_hint: Ta uporabnik ni sprejel njihovega povabila, da se pridruži Loomio, in ne bo prejel nadaljnjih obvestil, dokler tega ne stori
-      discussion_admin: "Skrbnik teme"
+      discussion_admin: Skrbnik teme
       has_not_read_discussion: Ni si ogledal razprave
     group_form:
       search_placeholder: Iskanje ljudi ...
@@ -1603,7 +1603,7 @@ sl:
     title_helptext:
       group: Ta naslov bo prikazan poleg imena %{name} znotraj te skupine. Uporabite ga, da seznanite ljudi s svojo vlogo.
     title_label: naslov
-    title_placeholder: "Npr. »Skrbnik« ali »Moderator«"
+    title_placeholder: Npr. »Skrbnik« ali »Moderator«
     updated: Naslov članstva posodobljen
     weight_label: Teža glasov
   user_name_modal:
@@ -1775,7 +1775,6 @@ sl:
       all: Nedavne razprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      not_voted: Še niste glasovali
     threads_from:
       group: Niti iz
       pinned: Pripete niti
@@ -2290,18 +2289,14 @@ sl:
     started_by: Začel %{name}
   poll_common_votes_panel:
     vote_removed: Glas odstranjen
-    not_voted: Neodločeno
     newest_first: Najprej najnovejše
     oldest_first: Najprej najstarejši
     priority_first: Najprej se strinjaj
     priority_last: Najprej blokiraj
-    not_voted_first: Najprej tisti, ki še niso glasovali
     no_votes_yet: Oddanih še ni bilo nobenih glasov.
     change_results_order: Spremenite vrstni red rezultatov
     none_of_the_above: "(Nič od naštetega)"
     name_or_username: Ime ali uporabniško ime
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Razlog je bil umaknjen
     redact_reason_title: Želite izbrisati razlog za glasovanje?
     redact_reason_helptext: Razlog, zakaj bo besedilo in priloge skrito, vendar bo glasovanje ostalo v rezultatih
@@ -2316,15 +2311,6 @@ sl:
     stance: Glasujte
     participation_records_restricted: Po koncu glasovanja si lahko ogledate, kdo je sodeloval
     vote_weight: Teža glasov %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "Prikaži %{count} oseb, ki še niso glasovale"
-    show_invitations: Prikaži čakajoča povabila
-    people_not_voted: Neodločeno (%{count})
-    invitation_count_singular: 1 dodatna oseba je bila povabljena k sodelovanju po e-pošti
-    invitation_count_plural: "%{count} dodatnih oseb je bilo povabljenih k sodelovanju po e-pošti"
-  poll_common_not_voted_user:
-    reminded: Opomnik poslan!
-    reminder_sent: Obvestilo o opomniku je poslano
   poll_common_set_outcome_panel:
     enter_outcome: Vnesite rezultat
     poll_type: Ta %{poll_type} je zaključena. Vzemite si čas za premislek o rezultatih in nato delite sklep, da bodo ljudje vedeli, kaj sledi.
@@ -2466,9 +2452,9 @@ sl:
     total: Skupaj
   poll_remove_vote:
     title: Odstraniti svoj glas?
-    helptext_not_voted: Ali ste prepričani, da želite odstraniti svoj glas? Navedeni boste kot neopredeljeni in lahko pozneje znova glasujete, če želite.
     confirm: Odstrani glas
     success: Glas odstranjen
+    helptext_not_voted: Ali res želite odstraniti svoj glas? Vaše stanje bo “Še niste glasovali” in pozneje lahko znova glasujete, če želite.
   poll_poll_vote_form:
     stance_created: Glasovanje ustvarjeno
     stance_updated: Glasovanje posodobljeno
@@ -2828,8 +2814,8 @@ sl:
       voting_title: 24 ur pred zaključkom glasovanja pošljite opomnik na
       nobody: Nihče
       author: Avtor (jaz)
-      people_not_voted: Neodločeni volivci
       voters: Vsi volivci
+      people_who_have_not_voted: Tisti, ki še niso glasovali
     notify_on_participate:
       title: Obvesti me, ko bodo ljudje sodelovali
       helptext_on: Ko boste izbrani, boste obveščeni vsakič, ko bo kdo sodeloval.

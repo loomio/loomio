@@ -109,7 +109,7 @@ class StanceTest < ActiveSupport::TestCase
   test "dot vote ballots reject negative scores and totals above the dot limit" do
     poll = PollService.create(params: poll_params(
       poll_type: "dot_vote",
-      dots_per_person: 3,
+      points_per_voter: 3,
       poll_option_names: %w[apple orange]
     ), actor: @admin)
 
@@ -123,7 +123,7 @@ class StanceTest < ActiveSupport::TestCase
       poll_type: "score",
       poll_option_names: %w[apple orange]
     ), actor: @admin)
-    poll.update_column(:min_score, -10)
+    poll.update_column(:score_min, -10)
 
     stance = cast_stance(poll.reload, [[poll.poll_options.first, -1]])
 
@@ -134,7 +134,7 @@ class StanceTest < ActiveSupport::TestCase
   test "rank ballots require the configured number of contiguous unique scores" do
     poll = PollService.create(params: poll_params(
       poll_type: "ranked_choice",
-      minimum_stance_choices: 3,
+      choice_count_min: 3,
       poll_option_names: %w[apple orange banana]
     ), actor: @admin)
     options = poll.poll_options
@@ -261,24 +261,24 @@ class StanceTest < ActiveSupport::TestCase
 
   test "choice shorthand with string" do
     poll = PollService.create(params: poll_params(
-      maximum_stance_choices: 2,
+      choice_count_max: 2,
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
     poll.stances.latest.find_by!(participant: @admin).update!(choice: 'dog')
     poll.update_counts!
-    assert_equal [1, 0], poll.option_score_totals
+    assert_equal [1, 0], poll.scores_by_option
   end
 
   test "choice shorthand with array" do
     poll = PollService.create(params: poll_params(
-      maximum_stance_choices: 2,
+      choice_count_max: 2,
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
     poll.stances.latest.find_by!(participant: @admin).update!(choice: ['dog', 'cat'])
     poll.update_counts!
-    assert_equal [1, 1], poll.option_score_totals
+    assert_equal [1, 1], poll.scores_by_option
   end
 
   private

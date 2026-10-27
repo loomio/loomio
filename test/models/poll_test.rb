@@ -52,7 +52,7 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "totals numeric poll scores stored as JSON strings or numbers" do
-    poll = Poll.new(stance_counts: ["1.25", 2, "0.75"])
+    poll = Poll.new(scores_by_option: ["1.25", 2, "0.75"])
 
     assert_equal BigDecimal("4"), poll.total_score
   end
@@ -235,26 +235,26 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "score bounds must be nonnegative and ordered" do
-    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], score_min: -1)
 
     assert_predicate invalid_poll, :invalid?
     assert_not invalid_poll.persisted?
 
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
 
-    poll.min_score = -1
+    poll.score_min = -1
     refute poll.valid?
-    assert poll.errors.added?(:min_score, :invalid)
+    assert poll.errors.added?(:score_min, :invalid)
 
-    poll.min_score = 5
-    poll.max_score = 4
+    poll.score_min = 5
+    poll.score_max = 4
     refute poll.valid?
-    assert poll.errors.added?(:max_score, :invalid)
+    assert poll.errors.added?(:score_max, :invalid)
   end
 
   test "a legacy negative-score poll can be discarded" do
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
-    poll.update_column(:min_score, -1)
+    poll.update_column(:score_min, -1)
 
     PollService.discard(poll: poll, actor: @admin)
 
@@ -263,10 +263,10 @@ class PollTest < ActiveSupport::TestCase
 
   test "an existing negative scale does not validate again for unrelated edits" do
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
-    poll.update_columns(min_score: -1, closed_at: Time.current)
+    poll.update_columns(score_min: -1, closed_at: Time.current)
 
     assert poll.update(title: "Edited historical score poll")
-    assert_equal(-1, poll.reload.min_score)
+    assert_equal(-1, poll.reload.score_min)
   end
 
   test "does not allow changing poll options if the template does not allow" do
@@ -277,15 +277,15 @@ class PollTest < ActiveSupport::TestCase
 
   test "does not allow higher minimum stance choices than number of poll options" do
     ranked_choice = create_ranked_choice
-    ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
+    ranked_choice.choice_count_min = ranked_choice.poll_options.length + 1
     ranked_choice.valid?
-    assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
+    assert_equal ranked_choice.poll_options.length, ranked_choice.choice_count_min
   end
 
   test "ranked choice accepts a full ranking despite a stored maximum choices" do
     ranked_choice = create_ranked_choice(
-      minimum_stance_choices: 2,
-      maximum_stance_choices: 1
+      choice_count_min: 2,
+      choice_count_max: 1
     )
 
     stance = ranked_choice.stances.build(
@@ -299,14 +299,14 @@ class PollTest < ActiveSupport::TestCase
   test "meeting derives required choice bounds when dates are added" do
     meeting = create_meeting(
       poll_option_names: %w[01-01-2015 01-02-2015],
-      minimum_stance_choices: 2,
-      maximum_stance_choices: 2
+      choice_count_min: 2,
+      choice_count_max: 2
     )
 
     meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015])
 
-    assert_equal 3, meeting.reload.minimum_stance_choices
-    assert_equal 3, meeting.maximum_stance_choices
+    assert_equal 3, meeting.reload.choice_count_min
+    assert_equal 3, meeting.choice_count_max
 
     stance = meeting.stances.build(
       participant: @admin,
@@ -319,14 +319,14 @@ class PollTest < ActiveSupport::TestCase
   test "meeting derives required choice bounds when dates are removed" do
     meeting = create_meeting(
       poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015],
-      minimum_stance_choices: 3,
-      maximum_stance_choices: 3
+      choice_count_min: 3,
+      choice_count_max: 3
     )
 
     meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015])
 
-    assert_equal 2, meeting.reload.minimum_stance_choices
-    assert_equal 2, meeting.maximum_stance_choices
+    assert_equal 2, meeting.reload.choice_count_min
+    assert_equal 2, meeting.choice_count_max
   end
 
   test "poll types without a maximum choices setting derive it from their options" do
@@ -338,11 +338,11 @@ class PollTest < ActiveSupport::TestCase
 
     ballots.each do |poll_type, scores|
       poll = create_poll(poll_type: poll_type, poll_option_names: %w[apple banana])
-      poll.update_columns(maximum_stance_choices: 2)
+      poll.update_columns(choice_count_max: 2)
 
       poll.update!(poll_option_names: %w[apple banana orange])
 
-      assert_equal 3, poll.reload.maximum_stance_choices, poll_type
+      assert_equal 3, poll.reload.choice_count_max, poll_type
 
       stance = poll.stances.build(
         participant: @admin,
@@ -356,29 +356,29 @@ class PollTest < ActiveSupport::TestCase
   test "ballot configuration ignores JSON custom fields" do
     poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
     poll.update_columns(
-      min_score: nil,
-      max_score: nil,
-      dots_per_person: nil,
-      minimum_stance_choices: nil,
-      maximum_stance_choices: nil,
+      score_min: nil,
+      score_max: nil,
+      points_per_voter: nil,
+      choice_count_min: nil,
+      choice_count_max: nil,
       custom_fields: poll.custom_fields.merge(
-        "min_score" => 3,
-        "max_score" => 3,
-        "dots_per_person" => 1,
-        "minimum_stance_choices" => 2,
-        "maximum_stance_choices" => 2
+        "score_min" => 3,
+        "score_max" => 3,
+        "points_per_voter" => 1,
+        "choice_count_min" => 2,
+        "choice_count_max" => 2
       )
     )
 
     poll.reload
-    assert_equal 0, poll.min_score
-    assert_nil poll.max_score
-    assert_equal 8, poll.dots_per_person
-    assert_equal 0, poll.minimum_stance_choices
-    assert_equal 3, poll.maximum_stance_choices
+    assert_equal 0, poll.score_min
+    assert_nil poll.score_max
+    assert_equal 8, poll.points_per_voter
+    assert_equal 0, poll.choice_count_min
+    assert_equal 3, poll.choice_count_max
 
-    poll.update!(min_score: 2)
-    assert_equal 3, poll.reload.custom_fields["min_score"]
+    poll.update!(score_min: 2)
+    assert_equal 3, poll.reload.custom_fields["score_min"]
   end
 
   test "allows closing dates in the future" do
@@ -399,10 +399,10 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
-    assert_equal 5, Poll.new(voters_count: 10).participation_status_votes_required
-    assert_equal 3, Poll.new(voters_count: 4).participation_status_votes_required
-    assert_equal 6, Poll.new(voters_count: 10, quorum_pct: 60).participation_status_votes_required
-    assert_equal 3, Poll.new(voters_count: 20, quorum_pct: 10).participation_status_votes_required
+    assert_equal 5, Poll.new(vote_count_total: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_total: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(vote_count_total: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_total: 20, quorum_pct: 10).participation_status_votes_required
   end
 
   test "unweighted results keep master's columns and headings" do
@@ -433,17 +433,17 @@ class PollTest < ActiveSupport::TestCase
   test "weighted multi-point results list points before percentages" do
     poll = create_poll(
       group_id: @group.id, poll_type: 'dot_vote', weighted_voting: true,
-      poll_option_names: %w[Alpha Beta], dots_per_person: 8
+      poll_option_names: %w[Alpha Beta], points_per_voter: 8
     )
 
-    assert_equal %w[chart name unweighted_score score score_percent average voter_count], poll.result_columns
+    assert_equal %w[chart name unweighted_score score score_percent average vote_count], poll.result_columns
     assert_equal({
       'name' => 'common.option',
       'score_percent' => 'poll_common.pct_of_weighted_points',
       'unweighted_score' => 'poll_ranked_choice_form.points',
       'score' => 'poll_common.weighted_points',
       'average' => 'poll_common.weighted_mean',
-      'voter_count' => 'membership_card.voters'
+      'vote_count' => 'membership_card.voters'
     }, poll.result_heading_keys)
     assert_equal 0, poll.results.find { |row| row['id'] == -1 }.fetch('score')
   end
@@ -470,12 +470,12 @@ class PollTest < ActiveSupport::TestCase
     )
     poll.update_counts!
 
-    assert_equal 2, poll.voters_count
-    assert_equal 2, poll.decided_voters_count
-    assert_equal 100, poll.cast_stances_pct
-    assert_equal 3, poll.quorum_count
+    assert_equal 2, poll.vote_count_total
+    assert_equal 2, poll.vote_count_cast
+    assert_equal 100, poll.participation_pct
+    assert_equal 3, poll.quorum_threshold
     assert poll.quorum_reached?
-    assert_equal 1, agree.reload.voter_count
+    assert_equal 1, agree.reload.vote_count
     assert_equal 0, agree.total_score
     assert_equal 3, disagree.reload.total_score
     assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
@@ -732,18 +732,18 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not increment decided_voters without a choice" do
+  test "does not increment voters_cast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.decided_voters.count } do
+    assert_no_difference -> { poll.voters_cast.count } do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
-  test "increments undecided_voters without a choice" do
+  test "increments voters_uncast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.undecided_voters.count }, 1 do
+    assert_difference -> { poll.voters_uncast.count }, 1 do
       Stance.create!(poll: poll, participant: voter)
     end
   end
@@ -756,18 +756,18 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "cast vote increments decided_voters" do
+  test "cast vote increments voters_cast" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.decided_voters.count }, 1 do
+    assert_difference -> { poll.voters_cast.count }, 1 do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end
 
-  test "cast vote does not increment undecided voters" do
+  test "cast vote does not increment uncast votes" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.undecided_voters.count } do
+    assert_no_difference -> { poll.voters_uncast.count } do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end

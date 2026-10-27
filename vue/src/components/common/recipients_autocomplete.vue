@@ -251,9 +251,9 @@ export default {
         case 'voters':
           return this.$t('announcement.audiences.voters');
         case 'voters_cast':
-          return this.$t('announcement.audiences.people_who_voted');
+          return this.$t('announcement.audiences.everyone_who_voted');
         case 'voters_uncast':
-          return this.$t('announcement.audiences.people_not_voted');
+          return this.$t('announcement.audiences.people_who_have_not_voted');
       }
     },
 

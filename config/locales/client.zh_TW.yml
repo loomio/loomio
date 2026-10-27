@@ -140,8 +140,8 @@ zh_TW:
     amount: 數量
     members: 成員
   loomio_tags:
-    show_tags_from_other_groups: "顯示其他群組的標籤"
-    parent_group_and_subgroups_in_this_organization: "此組織的上層群組和子群組"
+    show_tags_from_other_groups: 顯示其他群組的標籤
+    parent_group_and_subgroups_in_this_organization: 此組織的上層群組和子群組
     all_tags: 所有標籤
     tags: 標籤
     apply_tags: 套用標籤
@@ -1001,10 +1001,10 @@ zh_TW:
       everyone_in_the_group: 小組中的每個人
       topic: 在討論串中的每個人
       voters: 被邀請投票的每個人
-      people_who_voted: 已經投票的每個人
-      people_not_voted: 未投票的投票者
       non_voters: "%{name} 的成員尚未被邀請"
       delegates_of_group: "%{name} 的代表"
+      everyone_who_voted: 所有已投票的人
+      people_who_have_not_voted: 尚未投票的人
     form:
       group_has_no_members_yet: 您是小組中唯一的成員。在開始話題或做出決定之前，您可能會想邀請一些人加入您的小組。
       invite_people_to_evaluate_loomio: 邀請一些人加入您的 Loomio 小組，共同做出決定
@@ -1076,7 +1076,7 @@ zh_TW:
       has_not_read_thread: 尚未檢視討論串
       has_not_joined_yet: 尚未加入
       has_not_joined_yet_hint: 該用戶尚未接受加入 Loomio 的邀請，並且在接受之前不會收到進一步的通知
-      discussion_admin: "討論串管理員"
+      discussion_admin: 討論串管理員
       has_not_read_discussion: 未查看討論
     group_form:
       search_placeholder: 搜尋夥伴……
@@ -1620,7 +1620,7 @@ zh_TW:
     title_helptext:
       group: 這個標題會出現在這個群組中的 %{name} 名稱旁。使用它來讓夥伴們知道他們的角色。
     title_label: 標題
-    title_placeholder: "例如：「管理員」或「引導者」"
+    title_placeholder: 例如：「管理員」或「引導者」
     updated: 成員標題已更新
     weight_label: 投票權重
   user_name_modal:
@@ -1792,7 +1792,6 @@ zh_TW:
       all: 近期討論
     thread_preview:
       you_voted: 您已經投了 %{position}.
-      not_voted: 您尚未投票
     threads_from:
       group: 討論串從
       pinned: 已釘選的討論串
@@ -2316,18 +2315,14 @@ zh_TW:
     started_by: 由 %{name} 啟動
   poll_common_votes_panel:
     vote_removed: 投票已刪除
-    not_voted: 未投票
     newest_first: 最新的放在最前面
     oldest_first: 最舊的放在最前面
     priority_first: 同意的放在最前面
     priority_last: 否決的放在最前面
-    not_voted_first: 未投票優先
     no_votes_yet: 尚未有人投票。
     change_results_order: 變更您的結果順序
     none_of_the_above: "（以上皆非）"
     name_or_username: 姓名或用戶名
-    cast: Cast
-    uncast: Uncast
     reason_redacted: 原因已隱去
     redact_reason_title: 刪除投票理由？
     redact_reason_helptext: 原因文字和附件將被隱藏，但投票結果仍將保留。
@@ -2342,15 +2337,6 @@ zh_TW:
     stance: 投票
     participation_records_restricted: 投票結束後，您可以查看所有參與者名單
     vote_weight: 投票權重 %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: 顯示 %{count} 位未投票者
-    show_invitations: 顯示擱置中的邀請函
-    people_not_voted: 未投票 (%{count})
-    invitation_count_singular: 已透過電子郵件邀請 1 個額外的夥伴參與
-    invitation_count_plural: 已透過電子郵件邀請 %{count} 個額外的夥伴參與
-  poll_common_not_voted_user:
-    reminded: 提醒已傳送！
-    reminder_sent: 提醒通知已傳送
   poll_common_set_outcome_panel:
     enter_outcome: 輸入結論
     poll_type: 此 %{poll_type} 已關閉。花時間考慮結果，然後分享結果，讓人們知道接下來會發生什麼。
@@ -2492,9 +2478,9 @@ zh_TW:
     total: 全部
   poll_remove_vote:
     title: 刪除您的投票？
-    helptext_not_voted: 確定要移除您的投票嗎？您將被列為未投票，之後仍可再次投票。
     confirm: 刪除投票
     success: 投票已移除
+    helptext_not_voted: 確定要移除您的投票嗎？您的狀態將變為「未投票」，之後可以再次投票。
   poll_poll_vote_form:
     stance_created: 已建立投票
     stance_updated: 已更新投票
@@ -2856,8 +2842,8 @@ zh_TW:
       voting_title: 投票結束前 24 小時，發送提醒至
       nobody: 沒人
       author: 作者（我）
-      people_not_voted: 未投票的投票者
       voters: 所有選民
+      people_who_have_not_voted: 尚未投票的人
     notify_on_participate:
       title: 當有人參與時通知我
       helptext_on: 一旦被選中，每當有人參與時您都會收到通知。

@@ -139,8 +139,8 @@ nl_NL:
     manage_subscription: Abonnement beheren
     amount: Hoeveelheid
   loomio_tags:
-    show_tags_from_other_groups: "Toon labels uit andere groepen"
-    parent_group_and_subgroups_in_this_organization: "Hoofdgroep en subgroepen binnen deze organisatie"
+    show_tags_from_other_groups: Toon labels uit andere groepen
+    parent_group_and_subgroups_in_this_organization: Hoofdgroep en subgroepen binnen deze organisatie
     all_tags: Alle labels
     tags: Labels
     apply_tags: Labels toekennen
@@ -1000,10 +1000,10 @@ nl_NL:
       everyone_in_the_group: Iedereen in de groep
       topic: Iedereen in de thread
       voters: Iedereen die uitgenodigd is om te stemmen
-      people_who_voted: Iedereen die gestemd heeft
-      people_not_voted: Twijfelende stemmers
       non_voters: Leden van %{name} zijn nog niet uitgegnodigd
       delegates_of_group: Afgevaardigden van %{name}
+      everyone_who_voted: Iedereen die gestemd heeft
+      people_who_have_not_voted: Mensen die nog niet gestemd hebben
     form:
       group_has_no_members_yet: Jij bent het enige lid van jouw groep. Misschien wil je enkele mensen uitnodigen voor je groep voordat je een gesprek of beslissing start.
       invite_people_to_evaluate_loomio: Nodig enkele mensen uit in jouw Loomio-groep om samen een beslissing te nemen
@@ -1075,7 +1075,7 @@ nl_NL:
       has_not_read_thread: Hebben bord niet gezien
       has_not_joined_yet: Is nog niet lid
       has_not_joined_yet_hint: Deze gebruiker heeft de uitnodiging om lid te worden van Loomio niet geaccepteerd en ontvangt geen verdere meldingen totdat hij dit wel doet
-      discussion_admin: "Threadadmin"
+      discussion_admin: Threadadmin
       has_not_read_discussion: Heeft de discussie niet bekeken
     group_form:
       search_placeholder: Zoek naar mensen...
@@ -1617,7 +1617,7 @@ nl_NL:
     title_helptext:
       group: Deze titel zal naast %{name}'s naam verschijnen binnen deze groep. Gebruik dit om mensen hun rol te laten weten.
     title_label: titel
-    title_placeholder: "Bijv. 'Admin' of 'Facilitator'"
+    title_placeholder: Bijv. 'Admin' of 'Facilitator'
     updated: Lidmaatschapstitel geupdate
     weight_label: Stemgewicht
   user_name_modal:
@@ -1789,7 +1789,6 @@ nl_NL:
       all: Recente discussies
     thread_preview:
       you_voted: Je hebt %{position} gestemd
-      not_voted: Je hebt nog niet gestemd
     threads_from:
       group: Borden van
       pinned: Vastgeprikte borden
@@ -2315,18 +2314,14 @@ nl_NL:
     started_by: Gestart door %{name}
   poll_common_votes_panel:
     vote_removed: Stem verwijderd
-    not_voted: Nog niet gestemd
     newest_first: Nieuwste eerst
     oldest_first: Oudste eerst
     priority_first: Eens eerst
     priority_last: Geblokkeerd eerst
-    not_voted_first: Nog niet gestemd eerst
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
     name_or_username: Naam of gebruikersnaam
-    cast: Uitgebracht
-    uncast: Niet uitgebracht
     reason_redacted: Reden weggelaten
     redact_reason_title: Reden voor stemming?
     redact_reason_helptext: De toelichting en bijlagen worden verborgen, maar de stem blijft wel zichtbaar in de resultaten.
@@ -2341,15 +2336,6 @@ nl_NL:
     stance: Stemmen
     participation_records_restricted: Je kunt zien wie er heeft deelgenomen nadat de stemming is gesloten
     vote_weight: Stemgewicht %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: Toon %{count} kiezers die nog niet hebben gestemd
-    show_invitations: Toon uitnodigingen in afwachting
-    people_not_voted: Nog niet gestemd (%{count})
-    invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
-    invitation_count_plural: "%{count} extra mensen zijn via e-mail uitgenodigd om deel te nemen"
-  poll_common_not_voted_user:
-    reminded: Herinnering gestuurd!
-    reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
     enter_outcome: Voer conclusie in
     poll_type: Deze %{poll_type} is gesloten. Neem de tijd om de resultaten te overwegen en deel vervolgens een uitkomst zodat mensen weten wat er vervolgens gaat gebeuren.
@@ -2491,9 +2477,9 @@ nl_NL:
     total: Totaal
   poll_remove_vote:
     title: Je stem verwijderen?
-    helptext_not_voted: Weet je zeker dat je je stem wilt verwijderen? Je wordt vermeld als nog niet gestemd en kunt later opnieuw stemmen als je wilt.
     confirm: Stem verwijderen
     success: Stem verwijderd
+    helptext_not_voted: Weet je zeker dat je je stem wilt verwijderen? Je status wordt “Nog niet gestemd” en je kunt later opnieuw stemmen als je wilt.
   poll_poll_vote_form:
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd
@@ -2855,8 +2841,8 @@ nl_NL:
       voting_title: Stuur 24 uur voordat de stemming sluit een herinnering naar
       nobody: Niemand
       author: Auteur (ik)
-      people_not_voted: Onbesliste kiezers
       voters: Alle kiezers
+      people_who_have_not_voted: Mensen die nog niet gestemd hebben
     notify_on_participate:
       title: Laat me weten wanneer mensen meedoen
       helptext_on: Als u geselecteerd bent, wordt u op de hoogte gesteld wanneer iemand deelneemt.

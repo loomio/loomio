@@ -139,8 +139,8 @@ sv:
     manage_subscription: Hantera prenumeration
     amount: Belopp
   loomio_tags:
-    show_tags_from_other_groups: "Visa taggar från andra grupper"
-    parent_group_and_subgroups_in_this_organization: "Huvudgrupp och undergrupper i den här organisationen"
+    show_tags_from_other_groups: Visa taggar från andra grupper
+    parent_group_and_subgroups_in_this_organization: Huvudgrupp och undergrupper i den här organisationen
     all_tags: Alla taggar
     tags: Taggar
     apply_tags: Använd taggar
@@ -998,10 +998,10 @@ sv:
       everyone_in_the_group: Alla i gruppen
       topic: Alla i tråden
       voters: Alla inbjudna att rösta
-      people_who_voted: Alla som röstade
-      people_not_voted: Obestämda väljare
       non_voters: Medlemmar av %{name} är ännu inte inbjudna
       delegates_of_group: Delegater för %{name}
+      everyone_who_voted: Alla som har röstat
+      people_who_have_not_voted: De som inte har röstat
     form:
       group_has_no_members_yet: Du är den enda medlemmen i din grupp. Du kanske vill bjuda in några personer till din grupp innan du startar en tråd eller ett beslut.
       invite_people_to_evaluate_loomio: Bjud in några personer till din Loomio-grupp för att fatta ett beslut tillsammans
@@ -1069,7 +1069,7 @@ sv:
       has_not_read_thread: Har inte sett tråden
       has_not_joined_yet: Har inte gått med ännu
       has_not_joined_yet_hint: Den här användaren har inte accepterat sin inbjudan att gå med i Loomio och kommer inte att få ytterligare meddelanden förrän de gör det
-      discussion_admin: "Trådadmin"
+      discussion_admin: Trådadmin
       has_not_read_discussion: Har inte sett diskussionen
     group_form:
       search_placeholder: Sök efter personer...
@@ -1611,7 +1611,7 @@ sv:
     title_helptext:
       group: Den här titeln kommer att visas bredvid %{name}s namn inom den här gruppen. Använd den för att låta folk veta sin roll.
     title_label: titel
-    title_placeholder: "T.ex. ”Admin” eller ”Mötesledare”"
+    title_placeholder: T.ex. ”Admin” eller ”Mötesledare”
     updated: Medlemstitel uppdaterad
     weight_label: Röstvikt
   user_name_modal:
@@ -1783,7 +1783,6 @@ sv:
       all: Senaste diskussionerna
     thread_preview:
       you_voted: Du röstade %{position}
-      not_voted: Du har inte röstat
     threads_from:
       group: Trådar från
       pinned: Nålade trådar
@@ -2298,18 +2297,14 @@ sv:
     started_by: Startade av %{name}
   poll_common_votes_panel:
     vote_removed: Rösten togs bort
-    not_voted: Har inte röstat
     newest_first: Nyaste först
     oldest_first: Äldst först
     priority_first: Håller med först
     priority_last: Blockera först
-    not_voted_first: De som inte har röstat först
     no_votes_yet: Inga röster har lagts ännu.
     change_results_order: Ändra resultatordning
     none_of_the_above: "(Inget av ovanstående)"
     name_or_username: Namn eller användarnamn
-    cast: Avgivna
-    uncast: Inte avgivna
     reason_redacted: Anledningen borttagen
     redact_reason_title: Ta bort anledningen till röstning?
     redact_reason_helptext: Anledningen till att text och bilagor kommer att döljas, men rösten kommer att finnas kvar i resultatet
@@ -2324,15 +2319,6 @@ sv:
     stance: Rösta
     participation_records_restricted: Du kan se vilka som deltog efter att omröstningen avslutats
     vote_weight: Röstvikt %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "Visa %{count} som inte har röstat"
-    show_invitations: Visa väntande inbjudningar
-    people_not_voted: Har inte röstat (%{count})
-    invitation_count_singular: Ytterligare 1 person har bjudits in att delta via e-post
-    invitation_count_plural: "%{count} ytterligare personer har bjudits in att delta via e-post"
-  poll_common_not_voted_user:
-    reminded: Påminnelse skickad!
-    reminder_sent: Påminnelse har skickats
   poll_common_set_outcome_panel:
     enter_outcome: Ange slutsats
     poll_type: Denna %{poll_type} har stängts. Ta dig tid att överväga resultaten och dela sedan ett resultat så att folk vet vad som kommer att hända härnäst.
@@ -2474,9 +2460,9 @@ sv:
     total: Totalt
   poll_remove_vote:
     title: Ta bort din röst?
-    helptext_not_voted: Är du säker på att du vill ta bort din röst? Du kommer att listas bland dem som inte har röstat och kan rösta igen senare om du vill.
     confirm: Ta bort röst
     success: Röst borttagen
+    helptext_not_voted: Vill du ta bort din röst? Din status blir ”Har inte röstat” och du kan rösta igen senare om du vill.
   poll_poll_vote_form:
     stance_created: Röst skapad
     stance_updated: Röst uppdaterad
@@ -2836,8 +2822,8 @@ sv:
       voting_title: 24 timmar innan röstningen avslutas, skicka en påminnelse till
       nobody: Ingen
       author: Författare (jag)
-      people_not_voted: Obestämda väljare
       voters: Alla väljare
+      people_who_have_not_voted: De som inte har röstat
     notify_on_participate:
       title: Meddela mig när folk deltar
       helptext_on: När du blivit utvald får du ett meddelande när någon deltar.

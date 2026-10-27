@@ -112,7 +112,7 @@ ru:
     add_guests:
       all: Вам необходимо обновить подписку Loomio, чтобы добавлять гостей. Кроме того, вы можете пригласить их стать членами вашей группы.
   errors:
-    item_you_are_replying_to_deleted: "Элемент, на который вы отвечаете, удалён"
+    item_you_are_replying_to_deleted: Элемент, на который вы отвечаете, удалён
     clear_cache: Обнаружена проблема с загрузкой. Удерживайте клавишу Shift и нажмите «Обновить» или очистите кеш браузера.
     404:
       title: Не найдено
@@ -199,7 +199,6 @@ ru:
       poll_options_dont_match: Из-за ошибки в Loomio ваш голос не сохранился. Мы работаем над решением этой проблемы. Перезагрузите страницу и повторите попытку.
       opening_at_before_closing_at: Дата открытия должна быть раньше даты закрытия.
     export:
-      percent_voted: "%{num}/%{denom}(%{percent}) участников выразили свое мнение"
       title: Название
       author: Автор
       email: Email
@@ -469,12 +468,8 @@ ru:
       not_invited: Не приглашен
       please_respond: Пожалуйста ответьте
       time_zone: "(Время отображается согласно %{zone})"
-      members_not_voted: Не проголосовавшие участники группы (%{count})
-      guests_not_voted: Не проголосовавшие гости (%{count})
-      more_not_voted: Еще %{count}...
       vote_now: Голосовать!
       you_have_until: Поучаствовать можно до %{when}.
-      people_have_voted: Приняло участие %{nom} из %{dnom} человек (%{pct}%)
       voting_opens_and_closes: Голосование открывается %{opens} и закрывается %{closes}. (%{days} дней)
       voting_closes: Голосование завершится %{when}.
       voting_opened_and_closed: Голосование открылось %{opens} и закрылось %{closes}. (%{days} дней)
@@ -793,9 +788,9 @@ ru:
     voted: "%{author} проголосовал %{response}"
     voted_hidden: "%{author} проголосовал"
     vote_removed: "%{author}: голос удален"
-    not_voted: "%{author}: не проголосовали"
     superseded: заменен
     shared_outcome: "%{author} поделился выводом"
     removed: Удалено
+    not_voted: "%{author}: не проголосовали"
   error:
     access_denied: У вас нет разрешения на это.

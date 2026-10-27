@@ -139,8 +139,8 @@ ca:
     manage_subscription: Gestiona la subscripció
     amount: Import
   loomio_tags:
-    show_tags_from_other_groups: "Mostra etiquetes d'altres grups"
-    parent_group_and_subgroups_in_this_organization: "Grup principal i subgrups d'aquesta organització"
+    show_tags_from_other_groups: Mostra etiquetes d'altres grups
+    parent_group_and_subgroups_in_this_organization: Grup principal i subgrups d'aquesta organització
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -1000,10 +1000,10 @@ ca:
       everyone_in_the_group: Tothom del grup
       topic: Tothom que sigui part del fil
       voters: Tothom que estigui convidat a la votació
-      people_who_voted: Tothom que ja hagi votat
-      people_not_voted: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
       delegates_of_group: Delegats de %{name}
+      everyone_who_voted: Tothom que ha votat
+      people_who_have_not_voted: Persones que no han votat
     form:
       group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
       invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
@@ -1075,7 +1075,7 @@ ca:
       has_not_read_thread: No ha visualitzat el fil
       has_not_joined_yet: Encara no s'ha unit
       has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
-      discussion_admin: "Admin del fil"
+      discussion_admin: Admin del fil
       has_not_read_discussion: No ha vist la discussió
     group_form:
       search_placeholder: Busca gent...
@@ -1617,7 +1617,7 @@ ca:
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
-    title_placeholder: "Per exemple: «Admin» o «Facilitador»"
+    title_placeholder: 'Per exemple: «Admin» o «Facilitador»'
     updated: S'ha actualitzat el títol de membre
     weight_label: Pes del vot
   user_name_modal:
@@ -1791,7 +1791,6 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      not_voted: Encara no has votat
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -2315,18 +2314,14 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    not_voted: Sense votar
     newest_first: El més recent primer
     oldest_first: El més antic primer
     priority_first: D'acord primer
     priority_last: Bloqueja primer
-    not_voted_first: "Primer qui no ha votat"
     no_votes_yet: Encara no s'ha votat
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
     name_or_username: Nom o nom d'usuari
-    cast: Emès
-    uncast: No emès
     reason_redacted: Motiu redactat
     redact_reason_title: Voleu eliminar el motiu del vot?
     redact_reason_helptext: El motiu pel qual el text i els fitxers adjunts s'ocultaran, però el vot romandrà als resultats
@@ -2341,15 +2336,6 @@ ca:
     stance: Vota
     participation_records_restricted: Podeu veure qui hi ha participat després del tancament de la votació
     vote_weight: Pes del vot %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "Mostra %{count} persones que no han votat"
-    show_invitations: Mostra les invitacions pendents
-    people_not_voted: Indecis (%{count})
-    invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
-    invitation_count_plural: "%{count} persones addicionals han estat convidades a participar-hi per correu electrònic"
-  poll_common_not_voted_user:
-    reminded: Recordatori enviat!
-    reminder_sent: S'ha enviat la notificació de recordatori
   poll_common_set_outcome_panel:
     enter_outcome: Introduir resultat
     poll_type: Aquest %{poll_type} s'ha tancat. Preneu-vos el temps per considerar els resultats i compartir-ne un perquè la gent sàpiga què passarà després.
@@ -2491,9 +2477,9 @@ ca:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext_not_voted: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
+    helptext_not_voted: Segur que vols eliminar el teu vot? El teu estat serà “Sense votar” i podràs tornar a votar més endavant si vols.
   poll_poll_vote_form:
     stance_created: S'ha creat el vot
     stance_updated: S'ha actualitzat el vot
@@ -2855,8 +2841,8 @@ ca:
       voting_title: 24 hores abans que es tanqui la votació, envieu un recordatori a
       nobody: Ningú
       author: Autor (jo)
-      people_not_voted: Votants indecisos
       voters: Tots els votants
+      people_who_have_not_voted: Persones que no han votat
     notify_on_participate:
       title: Notifica'm quan la gent participi
       helptext_on: Quan siguis seleccionat, rebràs una notificació sempre que algú hi participi.

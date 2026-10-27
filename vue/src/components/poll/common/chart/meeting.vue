@@ -78,7 +78,7 @@ export default {
           span(v-if="poll.canRespondMaybe") {{option.score/2}}
           span(v-else="poll.canRespondMaybe") {{option.score}}
         td(v-for="user in votersCast" :key="user.id")
-          .poll-meeting-chart__cell(:class="classForScore(option.voter_scores[user.id])")
+          .poll-meeting-chart__cell(:class="classForScore(option.scores_by_voter[user.id])")
             | &nbsp;
 </template>
 

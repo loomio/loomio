@@ -168,7 +168,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     agree = @poll.poll_options.find_by!(name: "Agree")
     StanceService.create(stance: stance.tap { |record| record.choice = "Agree" }, actor: @user)
-    counts_before = @poll.reload.option_score_totals
+    counts_before = @poll.reload.scores_by_option
     topic_items_before = TopicItem.count
 
     updated_stance = StanceService.update(
@@ -180,7 +180,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_same stance, updated_stance
     assert_predicate updated_stance, :invalid?
     assert_equal({ agree.id.to_s => 1 }, stance.reload.option_scores)
-    assert_equal counts_before, @poll.reload.option_score_totals
+    assert_equal counts_before, @poll.reload.scores_by_option
     assert_equal topic_items_before, TopicItem.count
   end
 

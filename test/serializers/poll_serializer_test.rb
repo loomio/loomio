@@ -16,15 +16,15 @@ class PollSerializerTest < ActiveSupport::TestCase
     poll.update_counts!
     serializer = PollSerializer.new(poll)
 
-    assert_equal 50, serializer.cast_stances_pct
-    assert_equal BigDecimal('2.4'), serializer.quorum_count
-    assert_equal BigDecimal('0.4'), serializer.quorum_votes_required
+    assert_equal 50, serializer.participation_pct
+    assert_equal BigDecimal('2.4'), serializer.quorum_threshold
+    assert_equal BigDecimal('0.4'), serializer.quorum_shortfall
     assert_equal false, serializer.quorum_reached
 
     stances.last.update!(weight: 5)
-    assert_equal 25, serializer.cast_stances_pct
-    assert_equal BigDecimal('4.8'), serializer.quorum_count
-    assert_equal BigDecimal('2.8'), serializer.quorum_votes_required
+    assert_equal 25, serializer.participation_pct
+    assert_equal BigDecimal('4.8'), serializer.quorum_threshold
+    assert_equal BigDecimal('2.8'), serializer.quorum_shortfall
     assert_equal false, serializer.quorum_reached
     results = serializer.results.index_by { |row| row[:id] }
     assert_equal 6, results.fetch(-1)[:score]
@@ -50,7 +50,7 @@ class PollSerializerTest < ActiveSupport::TestCase
     assert_not shared.key?(:anonymous_voter_eligible)
     assert_not shared.key?(:anonymous_ballot_submitted)
     assert_not shared.key?(:voter_has_access)
-    %i[quorum_reached quorum_votes_required votes_cast_count votes_uncast_count participation_pct quorum_gap].each do |field|
+    %i[quorum_reached quorum_shortfall vote_count_cast vote_count_uncast participation_pct].each do |field|
       assert_not shared.key?(field), "open anonymous poll must omit #{field}"
     end
 
@@ -63,8 +63,8 @@ class PollSerializerTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: users(:admin))
     closed = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
     assert_equal false, closed.fetch(:quorum_reached)
-    assert_equal 0, closed[:votes_cast_count]
-    assert_equal poll.voters_eligible_count, closed[:votes_uncast_count]
+    assert_equal 0, closed[:vote_count_cast]
+    assert_equal poll.vote_count_total, closed[:vote_count_uncast]
     assert_equal 0, closed[:participation_pct]
   end
 
@@ -78,18 +78,18 @@ class PollSerializerTest < ActiveSupport::TestCase
     StanceService.create(stance: stance, actor: users(:admin))
     data = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
 
-    assert_equal 1, data[:votes_cast_count]
-    assert_equal poll.voters_eligible_count - 1, data[:votes_uncast_count]
-    assert_equal poll.voters_eligible_count, data[:voters_eligible_count]
+    assert_equal 1, data[:vote_count_cast]
+    assert_equal poll.vote_count_total - 1, data[:vote_count_uncast]
+    assert_equal poll.vote_count_total, data[:vote_count_total]
     assert data.key?(:participation_pct)
-    assert_not data.key?(:option_score_totals)
-    %i[decided_voters_count undecided_voters_count voters_count cast_stances_pct stance_counts quorum_count quorum_votes_required].each do |field|
+    assert_not data.key?(:scores_by_option)
+    %i[decided_voters_count undecided_voters_count voters_count none_of_the_above_count cast_stances_pct stance_counts quorum_count quorum_votes_required].each do |field|
       assert_not data.key?(field), "retired field #{field}"
     end
 
     PollService.close(poll: poll, actor: users(:admin))
     closed = PollSerializer.new(poll, scope: {exclude_types: []}).as_json.fetch(:poll)
-    assert_equal [1, 0], closed[:option_score_totals]
+    assert_equal [1, 0], closed[:scores_by_option]
   end
 
   test "compact personal poll responses report revoked voting access without loading group records" do

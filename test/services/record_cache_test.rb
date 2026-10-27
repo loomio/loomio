@@ -209,11 +209,11 @@ class RecordCacheTest < ActiveSupport::TestCase
     admin = users(:admin)
     group = groups(:group)
     poll = PollService.create(params: {
-      title: 'Many undecided', poll_type: 'proposal', group_id: group.id,
+      title: 'Many uncast', poll_type: 'proposal', group_id: group.id,
       poll_option_names: %w[agree disagree], closing_at: 3.days.from_now, specified_voters_only: true
     }, actor: admin)
     voters = Array.new(Poll::RESULT_VOTER_IDS_MAX + 5) do |i|
-      User.create!(name: "Undecided #{i}", email: "undecided-cache-#{i}@example.com", email_verified: true).tap { |user| group.add_member!(user) }
+      User.create!(name: "Not voted #{i}", email: "uncast-cache-#{i}@example.com", email_verified: true).tap { |user| group.add_member!(user) }
     end
     PollService.invite(poll: poll, actor: admin, params: {recipient_user_ids: voters.map(&:id), notify_recipients: false})
     none_voter = voters.first
@@ -225,16 +225,16 @@ class RecordCacheTest < ActiveSupport::TestCase
     }, actor: admin)
     cache = RecordCache.new
 
-    cache.add_voters_uncast_ids([poll.reload, anonymous_poll])
-    cache.add_none_of_the_above_voter_ids([poll, anonymous_poll])
+    cache.add_voter_ids_uncast([poll.reload, anonymous_poll])
+    cache.add_voter_ids_none_of_the_above([poll, anonymous_poll])
 
-    voters_uncast_ids = cache.scope[:voters_uncast_ids_by_poll_id][poll.id]
-    assert_equal Poll::RESULT_VOTER_IDS_MAX, voters_uncast_ids.length
-    assert (voters_uncast_ids - poll.voters_uncast.ids).empty?
-    assert cache.scope[:voters_uncast_ids_by_poll_id].key?(anonymous_poll.id)
-    assert_nil cache.scope[:voters_uncast_ids_by_poll_id][anonymous_poll.id]
-    assert_equal [none_voter.id], cache.scope[:none_of_the_above_voter_ids_by_poll_id][poll.id]
-    assert_nil cache.scope[:none_of_the_above_voter_ids_by_poll_id][anonymous_poll.id]
+    voter_ids_uncast = cache.scope[:voter_ids_uncast_by_poll_id][poll.id]
+    assert_equal Poll::RESULT_VOTER_IDS_MAX, voter_ids_uncast.length
+    assert (voter_ids_uncast - poll.voters_uncast.ids).empty?
+    assert cache.scope[:voter_ids_uncast_by_poll_id].key?(anonymous_poll.id)
+    assert_nil cache.scope[:voter_ids_uncast_by_poll_id][anonymous_poll.id]
+    assert_equal [none_voter.id], cache.scope[:voter_ids_none_of_the_above_by_poll_id][poll.id]
+    assert_nil cache.scope[:voter_ids_none_of_the_above_by_poll_id][anonymous_poll.id]
   end
 
   test 'excluded types do not create their cache indexes' do
@@ -482,9 +482,9 @@ class RecordCacheTest < ActiveSupport::TestCase
       assert_equal BigDecimal('0.75'), serializer.vote_weight_cast
       assert_equal BigDecimal('1.25'), serializer.vote_weight_uncast
       assert_equal BigDecimal('0.5'), serializer.vote_weight_none_of_the_above
-      assert_equal 37, serializer.cast_stances_pct
-      assert_equal BigDecimal('1.2'), serializer.quorum_count
-      assert_equal BigDecimal('0.45'), serializer.quorum_votes_required
+      assert_equal 37, serializer.participation_pct
+      assert_equal BigDecimal('1.2'), serializer.quorum_threshold
+      assert_equal BigDecimal('0.45'), serializer.quorum_shortfall
       assert_equal false, serializer.quorum_reached
       [zero, empty].each do |other|
         other_serializer = PollSerializer.new(other, scope: {cache: cache})
@@ -492,7 +492,7 @@ class RecordCacheTest < ActiveSupport::TestCase
         assert_equal 0, other_serializer.vote_weight_cast
         assert_equal 0, other_serializer.vote_weight_uncast
         assert_equal 0, other_serializer.vote_weight_none_of_the_above
-        assert_equal 0, other_serializer.cast_stances_pct
+        assert_equal 0, other_serializer.participation_pct
         assert_equal false, other_serializer.quorum_reached
       end
     end
@@ -502,7 +502,7 @@ class RecordCacheTest < ActiveSupport::TestCase
     results = nil
     queries = capture_sql do
       results = PollService.calculate_results(poll, options,
-        undecided_voter_ids: [stances.last.participant_id], none_of_the_above_voter_ids: [stances[1].participant_id],
+        voter_ids_uncast: [stances.last.participant_id], voter_ids_none_of_the_above: [stances[1].participant_id],
         vote_weight_total: serializer.vote_weight_total,
         vote_weight_uncast: serializer.vote_weight_uncast,
         vote_weight_none_of_the_above: serializer.vote_weight_none_of_the_above)
@@ -518,7 +518,7 @@ class RecordCacheTest < ActiveSupport::TestCase
 
     duplicate = Poll.find(poll.id)
     assert_empty capture_sql { cache.add_polls([duplicate]) }
-    assert_empty capture_sql { assert_equal 37, PollSerializer.new(duplicate, scope: {cache: cache}).cast_stances_pct }
+    assert_empty capture_sql { assert_equal 37, PollSerializer.new(duplicate, scope: {cache: cache}).participation_pct }
   end
 
   test 'response weight aggregates do not memoize live model calculations' do
@@ -527,7 +527,7 @@ class RecordCacheTest < ActiveSupport::TestCase
     stances.last.update!(weight: '2.25')
     assert_equal 3, poll.vote_weight_total
     assert_equal BigDecimal('2.25'), poll.vote_weight_uncast
-    assert_equal BigDecimal('1.8'), poll.quorum_count
+    assert_equal BigDecimal('1.8'), poll.quorum_threshold
 
     stances[1].update!(weight: '1.5')
     assert_equal 4, poll.vote_weight_total
@@ -537,9 +537,9 @@ class RecordCacheTest < ActiveSupport::TestCase
     fresh_cache = RecordCache.new
     fresh_cache.add_polls([poll])
     serializer = PollSerializer.new(poll, scope: {cache: fresh_cache})
-    assert_equal 43, serializer.cast_stances_pct
-    assert_equal BigDecimal('2.4'), serializer.quorum_count
-    assert_equal BigDecimal('0.65'), serializer.quorum_votes_required
+    assert_equal 43, serializer.participation_pct
+    assert_equal BigDecimal('2.4'), serializer.quorum_threshold
+    assert_equal BigDecimal('0.65'), serializer.quorum_shortfall
   end
 
   test 'discarded polls keep turnout hidden when serialization uses weight aggregates' do
@@ -548,7 +548,7 @@ class RecordCacheTest < ActiveSupport::TestCase
     cache.add_polls([poll])
     poll.update_columns(discarded_at: Time.current)
 
-    assert_nil PollSerializer.new(poll, scope: {cache: cache}).cast_stances_pct
+    assert_nil PollSerializer.new(poll, scope: {cache: cache}).participation_pct
   end
 
   test 'plain and anonymous polls do not load weighted electorate aggregates' do

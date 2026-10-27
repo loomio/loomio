@@ -112,7 +112,7 @@ pt_BR:
     add_guests:
       all: Você deve atualizar sua assinatura do Loomio para adicionar convidados. Como alternativa, você pode convidá-los para serem membros do seu grupo.
   errors:
-    item_you_are_replying_to_deleted: "O item ao qual você está respondendo foi excluído"
+    item_you_are_replying_to_deleted: O item ao qual você está respondendo foi excluído
     clear_cache: Problema de carregamento detectado. Segure shift e pressione recarregar, ou limpe o cache do navegador.
     400:
       title: Pedido ruim
@@ -202,7 +202,6 @@ pt_BR:
       poll_options_dont_match: Um erro no Loomio impediu que seu voto fosse salvo. Estamos trabalhando para corrigir isso. Por favor, atualize a página e tente novamente.
       opening_at_before_closing_at: A data de abertura deve ser anterior à data de encerramento.
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membros manifestaram sua posição"
       title: Título
       author: Autor(a)
       email: E-mail
@@ -488,12 +487,8 @@ pt_BR:
       not_invited: Não convidado
       please_respond: Por favor responda
       time_zone: "(Horário mostrado em %{zone})"
-      members_not_voted: Membros que não votaram (%{count})
-      guests_not_voted: Convidados que não votaram (%{count})
-      more_not_voted: "%{count} mais..."
       vote_now: Vote agora
       you_have_until: Você tem até %{when} para participar.
-      people_have_voted: "%{nom} de %{dnom} as pessoas votaram (%{pct}%)"
       voting_opens_and_closes: A votação abre em %{opens} e fecha em %{closes}. (%{days} dias)
       voting_closes: A votação encerra em %{when}.
       voting_opened_and_closed: A votação foi aberta em %{opens} e fechada em %{closes}. (%{days} dias)
@@ -812,9 +807,9 @@ pt_BR:
     voted: "%{author} votou em %{response}"
     voted_hidden: "%{author} votou"
     vote_removed: "%{author}: voto removido"
-    not_voted: "%{author}: indeciso"
     superseded: substituído
     shared_outcome: "%{author} compartilhou uma conclusão"
     removed: Removido
+    not_voted: "%{author}: não votou"
   error:
     access_denied: Você não tem permissão para fazer isso.

@@ -13,7 +13,7 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
 
     my_stance = @current_user && ::Stance.latest.find_by(poll_id: @poll.id, participant_id: @current_user.id)
 
-    if @poll.has_options && (@poll.votes_cast_count > 0 || @poll.closed_at)
+    if @poll.has_options && (@poll.vote_count_cast > 0 || @poll.closed_at)
       div do
         if @poll.results_visible?(voted: @for_export || my_stance&.cast_at.present?)
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }

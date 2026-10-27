@@ -367,8 +367,8 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     discussion = create_discussion
     poll = create_poll(discussion)
 
-    undecided_markdown = render(discussion.topic)
-    assert_match(/\| Not voted\s+\|[^\n]*#{nameless.username}/, undecided_markdown)
+    markdown_uncast = render(discussion.topic)
+    assert_match(/\| Not voted\s+\|[^\n]*#{nameless.username}/, markdown_uncast)
 
     stance = poll.stances.latest.find_by!(participant_id: nameless.id)
     stance.choice = "Agree"

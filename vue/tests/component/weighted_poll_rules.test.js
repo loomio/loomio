@@ -45,7 +45,7 @@ describe('weighted poll rules', () => {
       global,
       props: {poll: {
         id: 1, pollType: 'proposal', weightedVoting: true, quorumPct: 60,
-        quorumVotesRequired: 0, quorumReached: false, closingAt: '2026-10-30',
+        quorumShortfall: 0, quorumReached: false, closingAt: '2026-10-30',
         results: [{name: 'Agree', test_operator: 'gte', test_percent: 60, test_result: false,
           test_requirement_key: 'poll_option_form.name_gte_eligible_vote_weight'}],
         config: () => ({has_options: false}), showResults: () => true, isClosed: () => false

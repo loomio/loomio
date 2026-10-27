@@ -48,18 +48,18 @@ export default class PollModel extends BaseModel {
       customize: false,
       details: '',
       detailsFormat: 'html',
-      votesCastCount: 0,
+      voteCountCast: 0,
       defaultDurationInDays: null,
       specifiedVotersOnly: false,
       pollOptionNames: [],
       pollType: 'proposal',
       chartColumn: null,
       chartType: null,
-      minScore: null,
-      maxScore: null,
-      minimumStanceChoices: null,
-      maximumStanceChoices: null,
-      dotsPerPerson: null,
+      scoreMin: null,
+      scoreMax: null,
+      choiceCountMin: null,
+      choiceCountMax: null,
+      pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
       limitReasonLength: true,
@@ -92,7 +92,7 @@ export default class PollModel extends BaseModel {
       anonymousBallotSubmitted: false,
       voterHasAccess: false,
       weightedVoting: false,
-      optionScoreTotals: [],
+      scoresByOption: [],
       topicId: null,
       allowComments: true,
       allowReactions: true,
@@ -139,8 +139,8 @@ export default class PollModel extends BaseModel {
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
-    clone.votesCastCount = null;
-    clone.votesUncastCount = null;
+    clone.voteCountCast = null;
+    clone.voteCountUncast = null;
     return clone;
   }
 
@@ -394,12 +394,12 @@ export default class PollModel extends BaseModel {
   }
 
   hasVariableScore() {
-    return this.defaulted('minScore') !== this.defaulted('maxScore');
+    return this.defaulted('scoreMin') !== this.defaulted('scoreMax');
   }
 
   singleChoice() {
     let middle;
-    return this.defaulted('minimumStanceChoices') === (middle = this.defaulted('maximumStanceChoices')) && middle === 1;
+    return this.defaulted('choiceCountMin') === (middle = this.defaulted('choiceCountMax')) && middle === 1;
   }
 
   hasOptionIcon() {

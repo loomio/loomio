@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-class Views::NotificationMailer::Poll::Undecided < Views::ApplicationMailer::Component
+class Views::NotificationMailer::Poll::Uncast < Views::ApplicationMailer::Component
 
   def initialize(poll:)
     @poll = poll
   end
 
   def view_template
-    nom = @poll.decided_voters_count
-    dnom = @poll.voters_count
-    pct = @poll.cast_stances_pct
+    nom = @poll.vote_count_cast
+    dnom = @poll.vote_count_total
+    pct = @poll.participation_pct
 
     p(class: "email-poll-meta") do
       plain t(@poll.participation_key, num: nom, total: dnom, pct: pct)

@@ -6,8 +6,8 @@ class RecordCache
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
-    voters_uncast_ids_by_poll_id
-    none_of_the_above_voter_ids_by_poll_id
+    voter_ids_uncast_by_poll_id
+    voter_ids_none_of_the_above_by_poll_id
     change_notes_by_topic_item_id
   ].freeze
 
@@ -302,18 +302,18 @@ class RecordCache
     add_poll_options PollOption.where(poll_id: collection_ids)
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
-    add_voters_uncast_ids(collection)
-    add_none_of_the_above_voter_ids(collection)
+    add_voter_ids_uncast(collection)
+    add_voter_ids_none_of_the_above(collection)
   end
 
-  def add_voters_uncast_ids(polls)
+  def add_voter_ids_uncast(polls)
     poll_ids = polls.reject(&:anonymous?).select(&:results_include_uncast_row?).map(&:id)
-    add_result_voter_ids(:voters_uncast_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.uncast.where(poll_id: ids) }
+    add_result_voter_ids(:voter_ids_uncast_by_poll_id, polls, poll_ids) { |ids| Stance.latest.uncast.where(poll_id: ids) }
   end
 
-  def add_none_of_the_above_voter_ids(polls)
+  def add_voter_ids_none_of_the_above(polls)
     poll_ids = polls.reject(&:anonymous?).select(&:show_none_of_the_above).map(&:id)
-    add_result_voter_ids(:none_of_the_above_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
+    add_result_voter_ids(:voter_ids_none_of_the_above_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
   end
 
   # Results show at most RESULT_VOTER_IDS_MAX voters per row, so load only that

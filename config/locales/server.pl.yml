@@ -112,7 +112,7 @@ pl:
     add_guests:
       all: Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie.
   errors:
-    item_you_are_replying_to_deleted: "Element, na który odpowiadasz, został usunięty"
+    item_you_are_replying_to_deleted: Element, na który odpowiadasz, został usunięty
     clear_cache: Wykryto problem z wczytywaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki.
     400:
       title: Zła prośba
@@ -203,7 +203,6 @@ pl:
       poll_options_dont_match: Błąd w Loomio uniemożliwił zapisanie Twojego głosu. Pracujemy nad jego rozwiązaniem. Odśwież stronę i spróbuj ponownie.
       opening_at_before_closing_at: Data otwarcia musi być wcześniejsza niż data zamknięcia
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł
       author: Autor
       email: E-mail
@@ -485,12 +484,8 @@ pl:
       not_invited: Nie zaproszona
       please_respond: Odpowiedz
       time_zone: "(Czas wyświetlany w %{zone})"
-      members_not_voted: Członkowie, którzy nie głosowali (%{count})
-      guests_not_voted: Niezdecydowane zaproszone osoby (%{count})
-      more_not_voted: "%{count} więcej..."
       vote_now: Głosuj teraz
       you_have_until: Masz czas do %{when}  na wzięcie udziału
-      people_have_voted: "%{nom} z %{dnom} osób wzięło udział (%{pct}%)"
       voting_opens_and_closes: Głosowanie rozpocznie się %{opens}, a zakończy %{closes}. (%{days} dni)
       voting_closes: Głosowanie zakończy się %{when}.
       voting_opened_and_closed: Głosowanie rozpoczęło się %{opens}, a zakończyło %{closes}. (%{days} dni)
@@ -809,9 +804,9 @@ pl:
     voted: "%{author} zagłosował na %{response}"
     voted_hidden: "%{author} zagłosował"
     vote_removed: "%{author}: głos usunięty"
-    not_voted: "%{author}: brak głosu"
     superseded: zastąpiony
     shared_outcome: "%{author} udostępnił wniosek"
     removed: Usunięto
+    not_voted: "%{author}: nie głosowali"
   error:
     access_denied: Nie masz uprawnień, aby to zrobić

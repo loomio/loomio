@@ -141,8 +141,8 @@ hu:
     manage_subscription: Előfizetés kezelése
     amount: Összeg
   loomio_tags:
-    show_tags_from_other_groups: "Mutasd más csoportok címkéit"
-    parent_group_and_subgroups_in_this_organization: "A szervezet szülőcsoportja és alcsoportjai"
+    show_tags_from_other_groups: Mutasd más csoportok címkéit
+    parent_group_and_subgroups_in_this_organization: A szervezet szülőcsoportja és alcsoportjai
     all_tags: Összes címke
     tags: Címkék
     apply_tags: Címkék alkalmazása
@@ -1000,10 +1000,10 @@ hu:
       everyone_in_the_group: Mindenki a csoportban
       topic: Mindenki ebben a témában
       voters: Mindenki, aki szavazhat
-      people_who_voted: Mindenki, aki szavazott
-      people_not_voted: Mindenki, aki nem szavazott
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
       delegates_of_group: "%{name} küldöttei"
+      everyone_who_voted: Mindenki, aki szavazott
+      people_who_have_not_voted: Akik még nem szavaztak
     form:
       group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
@@ -1075,7 +1075,7 @@ hu:
       has_not_read_thread: Nem nézte meg a szálat
       has_not_joined_yet: Még nem csatlakozott
       has_not_joined_yet_hint: Ez a felhasználó nem fogadta el a meghívását, hogy csatlakozzon a Loomióhoz, és addig nem kap további értesítéseket, amíg el nem fogadja
-      discussion_admin: "Téma adminisztrátora"
+      discussion_admin: Téma adminisztrátora
       has_not_read_discussion: Nem tekintette meg a beszélgetést
     group_form:
       search_placeholder: Emberek keresése ...
@@ -1609,7 +1609,7 @@ hu:
     title_helptext:
       group: Ez a cím a csoporton belül a %{name} neve mellett jelenik meg. Használja azt, hogy megtudja az emberek szerepét.
     title_label: cím
-    title_placeholder: "Például: „Admin” vagy „Levezető”"
+    title_placeholder: 'Például: „Admin” vagy „Levezető”'
     updated: A tagság címe frissítve
     weight_label: Szavazati súly
   user_name_modal:
@@ -1781,7 +1781,6 @@ hu:
       all: Legutóbbi beszélgetések
     thread_preview:
       you_voted: Erre szavaztál %{position}
-      not_voted: Még nem szavaztál
     threads_from:
       group: Témák
       pinned: Rögzített témák
@@ -2301,18 +2300,14 @@ hu:
     started_by: 'Kezdte: %{name}'
   poll_common_votes_panel:
     vote_removed: Szavazat eltávolítva
-    not_voted: Még nem szavaztak
     newest_first: Először a legújabb
     oldest_first: A legrégebbi előbb
     priority_first: Egyetértők először
     priority_last: Vétók először
-    not_voted_first: Először a még nem szavazók
     no_votes_yet: Még nem szavaztak.
     change_results_order: Az eredmények sorrendjének módosítása
     none_of_the_above: "(A fentiek egyike sem)"
     name_or_username: Név vagy felhasználónév
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Indoklás kitakarva
     redact_reason_title: Szavazás indokának kitakarása?
     redact_reason_helptext: Az indoklás szövege és mellékletei rejtve lesznek, de a szavazat megmarad az eredmények között
@@ -2327,15 +2322,6 @@ hu:
     stance: Szavazás
     participation_records_restricted: A szavazás lezárása után láthatja, kik vettek részt
     vote_weight: Szavazati súly %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "%{count} még nem szavazó megjelenítése"
-    show_invitations: A függőben lévő meghívók megjelenítése
-    people_not_voted: Még nem szavaztak (%{count})
-    invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
-    invitation_count_plural: "%{count} további személyt meghívtak a részvételre e-mailben"
-  poll_common_not_voted_user:
-    reminded: Emlékeztető elküldve!
-    reminder_sent: Emlékeztető értesítés elküldve
   poll_common_set_outcome_panel:
     enter_outcome: Írd be a végeredményt
     poll_type: Ez a %{poll_type} bezárt. Szánjon időt az eredmények mérlegelésére, majd ossza meg az eredményt, hogy az emberek tudják, mi fog ezután történni.
@@ -2477,9 +2463,9 @@ hu:
     total: Összesen
   poll_remove_vote:
     title: Eltávolítja a szavazatát?
-    helptext_not_voted: Biztosan eltávolítja szavazatát? Bizonytalanként fog szerepelni, és később újra szavazhat, ha kíván.
     confirm: Szavazat eltávolítása
     success: Szavazat eltávolítva
+    helptext_not_voted: Biztosan eltávolítod a szavazatodat? Az állapotod “Nem szavazott” lesz, és később újra szavazhatsz, ha szeretnél.
   poll_poll_vote_form:
     stance_created: Szavazás létrehozva
     stance_updated: A szavazás frissítve
@@ -2839,8 +2825,8 @@ hu:
       voting_title: '24 órával a szavazás lezárása előtt küldjön emlékeztetőt a következő címre:'
       nobody: Senki
       author: Szerző (én)
-      people_not_voted: Még nem szavazó szavazók
       voters: Minden szavazó
+      people_who_have_not_voted: Akik még nem szavaztak
     notify_on_participate:
       title: Értesítsen, ha valaki részt vesz
       helptext_on: Amikor kiválasztották, értesítést kapsz, valahányszor valaki részt vesz.

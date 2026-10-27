@@ -112,7 +112,7 @@ ro:
     add_guests:
       all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
-    item_you_are_replying_to_deleted: "Elementul la care răspunzi a fost șters"
+    item_you_are_replying_to_deleted: Elementul la care răspunzi a fost șters
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
       title: Nu am găsit
@@ -197,7 +197,6 @@ ro:
       poll_options_dont_match: O eroare cu Loomio a împiedicat salvarea votului tău. Lucrăm la remedierea acestei probleme. Te rugăm să reîncarci pagina și să încerci din nou.
       opening_at_before_closing_at: Data de deschidere trebuie să fie anterioară datei de închidere
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
       title: Titlu
       author: Autor
       email: Email
@@ -458,12 +457,8 @@ ro:
       not_invited: Nu sunt invitate
       please_respond: Vă rugăm să răspundeți
       time_zone: "(Ore afișate în %{zone})"
-      members_not_voted: Membri nehotărâți (%{count})
-      guests_not_voted: Oaspeți nehotărâți (%{count})
-      more_not_voted: Încă %{count}...
       vote_now: Voteaza acum
       you_have_until: Ai timp până la %{when} pentru a participa.
-      people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
       voting_opens_and_closes: Votarea se deschide %{opens} și se închide %{closes}. (%{days} zile)
       voting_closes: Votarea se încheie la %{when}.
       voting_opened_and_closed: Votarea s-a deschis %{opens} și s-a închis %{closes}. (%{days} zile)
@@ -782,9 +777,9 @@ ro:
     voted: "%{author} a votat %{response}"
     voted_hidden: "%{author} a votat"
     vote_removed: "%{author}: vot eliminat"
-    not_voted: "%{author}: nu a votat"
     superseded: înlocuit
     shared_outcome: "%{author} a distribuit o concluzie"
     removed: Eliminat
+    not_voted: "%{author}: nu a votat"
   error:
     access_denied: Nu aveți permisiunea să faceți asta

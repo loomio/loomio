@@ -773,7 +773,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, JSON.parse(response.body)['users'].length
     assert poll.anonymous_poll_voters.joins(:voter).exists?(users: { email: 'late-voter@example.com' })
-    assert_equal 1, poll.reload.votes_uncast_count
+    assert_equal 1, poll.reload.vote_count_uncast
   end
 
   test "poll create reports the invitation rate limit" do

@@ -139,8 +139,8 @@ he:
     manage_subscription: ניהול מנוי
     amount: כמות
   loomio_tags:
-    show_tags_from_other_groups: "הצגת תגיות מקבוצות אחרות"
-    parent_group_and_subgroups_in_this_organization: "קבוצת האם ותת־הקבוצות בארגון זה"
+    show_tags_from_other_groups: הצגת תגיות מקבוצות אחרות
+    parent_group_and_subgroups_in_this_organization: קבוצת האם ותת־הקבוצות בארגון זה
     all_tags: כל התגים
     tags: תגיות
     apply_tags: החל תגיות
@@ -998,10 +998,10 @@ he:
       everyone_in_the_group: כולם בקבוצה
       topic: כולם בשרשור
       voters: כולם מוזמנים להצביע
-      people_who_voted: כל מי שהצביע
-      people_not_voted: מצביעים מתלבטים
       non_voters: חברים ב-%{name} עדיין לא הוזמנו
       delegates_of_group: נציגים של %{name}
+      everyone_who_voted: כל מי שהצביעו
+      people_who_have_not_voted: מי שטרם הצביעו
     form:
       group_has_no_members_yet: אתה החבר היחיד בקבוצה שלך. ייתכן שתרצה להזמין כמה אנשים לקבוצה שלך לפני שתתחיל שרשור או החלטה.
       invite_people_to_evaluate_loomio: הזמן כמה אנשים לקבוצת Loomio שלך כדי לקבל החלטה ביחד
@@ -1073,7 +1073,7 @@ he:
       has_not_read_thread: לא צפה בשרשור
       has_not_joined_yet: עדיין לא הצטרף
       has_not_joined_yet_hint: משתמש זה לא קיבל את הזמנתו להצטרף ל-Loomio ולא יקבל הודעות נוספות עד שיקבל
-      discussion_admin: "מנהל שרשור"
+      discussion_admin: מנהל שרשור
       has_not_read_discussion: לא צפה בדיון
     group_form:
       search_placeholder: חפש אנשים...
@@ -1615,7 +1615,7 @@ he:
     title_helptext:
       group: שם זה יופיע לצד השם של %{name} בתוך קבוצה זו. השתמש בזה כדי ליידע את האנשים על תפקידם.
     title_label: כותרת
-    title_placeholder: "לדוגמה: מנהל או מנחה"
+    title_placeholder: 'לדוגמה: מנהל או מנחה'
     updated: כותרת החברות עודכנה
     weight_label: משקל הצבעה
   user_name_modal:
@@ -1787,7 +1787,6 @@ he:
       all: דיונים אחרונים
     thread_preview:
       you_voted: את/ה הצבעת %{position}
-      not_voted: "עדיין לא הצבעת"
     threads_from:
       group: שיחות מאת
       pinned: שיחות נעוצות
@@ -2309,18 +2308,14 @@ he:
     started_by: התחיל לפי %{name}
   poll_common_votes_panel:
     vote_removed: ההצבעה הוסרה
-    not_voted: לֹא הֶחלֵטִי
     newest_first: הכי חדש קודם
     oldest_first: הכי ישן קודם
     priority_first: הסכמות קודם
     priority_last: חסומים קודם
-    not_voted_first: "קודם מי שטרם הצביעו"
     no_votes_yet: לא בוצעה עוד אף בחירה.
     change_results_order: שנה סדר התוצאות
     none_of_the_above: (אף אחד מהנ"ל)
     name_or_username: שם או שם משתמש
-    cast: Cast
-    uncast: Uncast
     reason_redacted: הסיבה נמחקה
     redact_reason_title: למחוק את סיבת ההצבעה?
     redact_reason_helptext: הסיבה שבגללה הטקסט והקבצים המצורפים יוסתרו, אך ההצבעה תישאר בתוצאות
@@ -2335,15 +2330,6 @@ he:
     stance: הַצבָּעָה
     participation_records_restricted: ניתן לראות מי השתתף לאחר סגירת ההצבעה
     vote_weight: משקל הצבעה %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "הצג %{count} אנשים שטרם הצביעו"
-    show_invitations: הראה הצעות ממתינות
-    people_not_voted: מתלבט (%{count})
-    invitation_count_singular: אדם אחד נוסף הוזמן דרך המייל להשתתף
-    invitation_count_plural: '%{count} אנשים נוספים הוזמנו להשתתף בדוא"ל'
-  poll_common_not_voted_user:
-    reminded: תזכורת נשלחה!
-    reminder_sent: הודעת תזכורת נשלחה
   poll_common_set_outcome_panel:
     enter_outcome: הזן מסקנה
     poll_type: "%{poll_type} זה נסגר. כדאי לשקול את התוצאות ואז לשתף מסקנה כדי שאנשים ידעו מה יקרה אחר כך."
@@ -2485,9 +2471,9 @@ he:
     total: סך הכל
   poll_remove_vote:
     title: להסיר את ההצבעה שלך?
-    helptext_not_voted: האם אתה בטוח שברצונך להסיר את ההצבעה שלך? אתה תירשם כמתלבט ותוכל להצביע שוב מאוחר יותר אם תרצה.
     confirm: הסר הצבעה
     success: ההצבעה הוסרה
+    helptext_not_voted: להסיר את ההצבעה? הסטטוס ישתנה ל“טרם הצביעו” וניתן יהיה להצביע שוב בהמשך.
   poll_poll_vote_form:
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
@@ -2847,8 +2833,8 @@ he:
       voting_title: 24 שעות לפני סגירת ההצבעה, שלחו תזכורת אל
       nobody: אַף אֶחָד
       author: מחבר (אני)
-      people_not_voted: מצביעים מתלבטים
       voters: כל הבוחרים
+      people_who_have_not_voted: מי שטרם הצביעו
     notify_on_participate:
       title: הודע לי כשאנשים משתתפים
       helptext_on: לאחר בחירתך, תקבל הודעה בכל פעם שמישהו ישתתף.

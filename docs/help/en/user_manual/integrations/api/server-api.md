@@ -4,7 +4,7 @@
 
 <!-- seo-description: Use the Loomio Server API to provision user accounts, discover groups, and manage memberships on a self-hosted Loomio installation. -->
 
-`/api/b3` is for server-level operations. Use `/api/b2` for user-oriented actions performed as a Loomio user account.
+`/api/server0` is for server-level operations. Use `/api/user0` for user-oriented actions performed as a Loomio user account.
 
 Use one server key to create and manage accounts, discover groups across the installation, and manage their memberships and roles. No bot account, user API key, or membership in the groups is required. User API keys continue to follow the user's group permissions.
 
@@ -12,12 +12,12 @@ Use one server key to create and manage accounts, discover groups across the ins
 
 ## Authentication
 
-Set `B3_API_KEY` to a secret longer than 16 characters.
+The key is the `SERVER_API_KEY` setting in the server environment. `create_env.sh` generates one for new installations.
 
 Send the key as a bearer token:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 Send credentials only in the `Authorization` header. API keys in query strings or request bodies are rejected.
@@ -28,23 +28,23 @@ Send credentials only in the `Authorization` header. API keys in query strings o
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
-| `POST` | `/api/b3/users` | Create an account |
-| `GET` | `/api/b3/groups` | Discover groups across the installation |
-| `GET` | `/api/b3/memberships` | List memberships in a group |
-| `POST` | `/api/b3/memberships` | Invite members or synchronise a complete membership list |
-| `PATCH` | `/api/b3/memberships/:id` | Change group administrator and delegate roles |
-| `DELETE` | `/api/b3/memberships/:id` | Revoke one membership |
+| `POST` | `/api/server0/users` | Create an account |
+| `GET` | `/api/server0/groups` | Discover groups across the installation |
+| `GET` | `/api/server0/memberships` | List memberships in a group |
+| `POST` | `/api/server0/memberships` | Invite members or synchronise a complete membership list |
+| `PATCH` | `/api/server0/memberships/:id` | Change group administrator and delegate roles |
+| `DELETE` | `/api/server0/memberships/:id` | Revoke one membership |
 
 Existing account update, deactivation, reactivation, redaction, and deletion endpoints are described below.
 
 ### Create an account
 
-`POST /api/b3/users`
+`POST /api/server0/users`
 
 Send a `user` object with a required `email`. Email addresses are trimmed and converted to lowercase. Optional fields are `name`, `username`, and `is_admin`. Here `is_admin` means an instance administrator; group administrator roles are managed on memberships. Omit `username` to generate one automatically. Unknown fields are rejected.
 
 ```bash
-curl https://loomio.example.org/api/b3/users \
+curl https://loomio.example.org/api/server0/users \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "user": {
@@ -60,12 +60,12 @@ The response is HTTP `201` with a `user` object. Invalid fields or an email or u
 
 ### Discover groups
 
-`GET /api/b3/groups`
+`GET /api/server0/groups`
 
 List all groups that have not been deleted, including private groups and groups with expired subscriptions. Results are ordered by ascending ID. Use `limit` (default and maximum `50`) and `offset` (default `0`) to page through them.
 
 ```bash
-curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/groups?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -89,12 +89,12 @@ curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
 
 ### List memberships
 
-`GET /api/b3/memberships?group_id=123`
+`GET /api/server0/memberships?group_id=123`
 
 `group_id` is required. Results include accepted memberships and pending invitations, ordered by ascending membership ID. Revoked memberships are excluded. Use `limit` (default and maximum `50`) and `offset` (default `0`) for pagination.
 
 ```bash
-curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -123,12 +123,12 @@ curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset
 
 ### Invite or synchronise members
 
-`POST /api/b3/memberships`
+`POST /api/server0/memberships`
 
 Send a required `group_id` and `emails` array. By default, this adds the listed people who do not already have an active membership, leaving everyone else in place. Email addresses are trimmed, converted to lowercase, and deduplicated. New addresses create accounts and pending invitations. Existing verified members of another active group in the same organisation are accepted automatically, matching the User API invitation workflow.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -142,7 +142,7 @@ curl https://loomio.example.org/api/b3/memberships \
 To synchronise a complete membership list, explicitly set `remove_absent` to `true`. Anyone missing from the list is removed from that group and its subgroups. An empty array with `remove_absent: true` removes everyone, including group administrators. Omit `remove_absent` or set it to `false` when only adding people. The legacy values `1` and `0` are also accepted.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -168,12 +168,12 @@ Missing or malformed email lists and invalid boolean values return HTTP `400`. A
 
 ### Update membership roles
 
-`PATCH /api/b3/memberships/:id`
+`PATCH /api/server0/memberships/:id`
 
 Send a `membership` object containing either or both boolean fields `admin` and `delegate`. Omitted roles remain unchanged. Unknown fields are rejected; the endpoint cannot transfer a membership, accept an invitation, or change voting weights.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
@@ -188,10 +188,10 @@ Returns a `membership` object with the same fields as a listed membership. Grant
 
 ### Remove one membership
 
-`DELETE /api/b3/memberships/:id`
+`DELETE /api/server0/memberships/:id`
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
@@ -231,14 +231,14 @@ User responses use this shape:
 
 List all user accounts on the Loomio installation.
 
-`GET /api/b3/users`
+`GET /api/server0/users`
 
 <!-- translation-section: example -->
 
 ### Example
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 Returns:
@@ -255,9 +255,9 @@ Returns:
 
 Find a user by their Loomio user ID or external identity.
 
-`GET /api/b3/users/:id`
+`GET /api/server0/users/:id`
 
-`GET /api/b3/users/identity/:identity_type/:uid`
+`GET /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples -->
 
@@ -266,13 +266,13 @@ Find a user by their Loomio user ID or external identity.
 By Loomio user ID:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 By external identity:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Returns:
@@ -289,9 +289,9 @@ Returns:
 
 Update the profile fields of a user found by their Loomio user ID or external identity.
 
-`PATCH /api/b3/users/:id`
+`PATCH /api/server0/users/:id`
 
-`PATCH /api/b3/users/identity/:identity_type/:uid`
+`PATCH /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: params -->
 
@@ -314,7 +314,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/123
+  https://www.loomio.com/api/server0/users/123
 ```
 
 By external identity:
@@ -324,7 +324,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/identity/oauth/external-123
+  https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Returns the updated user:
@@ -341,9 +341,9 @@ Returns the updated user:
 
 Deactivate a user account found by its Loomio user ID or external identity.
 
-`POST /api/b3/users/:id/deactivate`
+`POST /api/server0/users/:id/deactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/deactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/deactivate`
 
 <!-- translation-section: examples-3 -->
 
@@ -352,13 +352,13 @@ Deactivate a user account found by its Loomio user ID or external identity.
 By Loomio user ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
 ```
 
 By external identity:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Returns:
@@ -376,9 +376,9 @@ Returns:
 
 Reactivate a deactivated user account found by its Loomio user ID or external identity.
 
-`POST /api/b3/users/:id/reactivate`
+`POST /api/server0/users/:id/reactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/reactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/reactivate`
 
 <!-- translation-section: examples-4 -->
 
@@ -387,13 +387,13 @@ Reactivate a deactivated user account found by its Loomio user ID or external id
 By Loomio user ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
 ```
 
 By external identity:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Returns:
@@ -413,9 +413,9 @@ Redaction keeps the user's comments and other user-generated content within thei
 
 This is the recommended way to remove a user from Loomio.
 
-`POST /api/b3/users/:id/redact`
+`POST /api/server0/users/:id/redact`
 
-`POST /api/b3/users/identity/:identity_type/:uid/redact`
+`POST /api/server0/users/identity/:identity_type/:uid/redact`
 
 <!-- translation-section: examples-5 -->
 
@@ -424,13 +424,13 @@ This is the recommended way to remove a user from Loomio.
 By Loomio user ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
 ```
 
 By external identity:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Returns:
@@ -449,9 +449,9 @@ Delete removes the user and records the user created. Comments are removed from 
 
 This is very destructive. Redaction is highly recommended instead.
 
-`DELETE /api/b3/users/:id`
+`DELETE /api/server0/users/:id`
 
-`DELETE /api/b3/users/identity/:identity_type/:uid`
+`DELETE /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples-6 -->
 
@@ -460,13 +460,13 @@ This is very destructive. Redaction is highly recommended instead.
 By Loomio user ID:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 By external identity:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Returns:

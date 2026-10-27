@@ -114,12 +114,12 @@ class WeightedPollResultsTest < ActiveSupport::TestCase
     end
 
     components = [
-      Views::NotificationMailer::Poll::Undecided.new(poll: poll),
-      Views::Chatbot::Matrix::Undecided.new(poll: poll)
+      Views::NotificationMailer::Poll::Uncast.new(poll: poll),
+      Views::Chatbot::Matrix::Uncast.new(poll: poll)
     ]
     components.each do |component|
       output = ApplicationController.renderer.render(component, layout: false)
-      assert_includes output, "#{poll.cast_stances_pct}% of vote weight)"
+      assert_includes output, "#{poll.participation_pct}% of vote weight)"
     end
   end
 

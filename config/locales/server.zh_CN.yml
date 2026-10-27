@@ -385,7 +385,7 @@ zh_CN:
     add_guests:
       all: 您必须升级 Loomio 订阅才能添加访客。或者，您可以邀请他们成为您群组的成员。
   errors:
-    item_you_are_replying_to_deleted: "您正在回复的内容已被删除"
+    item_you_are_replying_to_deleted: 您正在回复的内容已被删除
     clear_cache: 检测到加载问题。请按住Shift键并重新加载页面，或清除浏览器缓存。
     '400':
       title: 错误的请求
@@ -467,7 +467,6 @@ zh_CN:
       poll_options_dont_match: 由于 Loomio 的一个漏洞，您的投票未能保存。我们正在努力修复此问题。请刷新页面后重试。
       opening_at_before_closing_at: 开业日期必须早于关闭日期
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) 位成员已表明立场"
       title: 标题
       author: 作者
       email: 电子邮件
@@ -735,12 +734,8 @@ zh_CN:
       not_invited: 未受邀
       please_respond: 请回复
       time_zone: "（时间以%{zone}显示）"
-      members_not_voted: 未投票成员 (%{count})
-      guests_not_voted: 未投票访客 (%{count})
-      more_not_voted: 还有 %{count} 个...
       vote_now: 立即投票
       you_have_until: 您可以在 %{when} 之前参与。
-      people_have_voted: "%{nom} 人参与了 %{dnom} 人的活动 (%{pct}%)"
       voting_opens_and_closes: 投票于 %{opens} 开始，%{closes} 结束。（%{days} 天）
       voting_closes: 投票将于 %{when} 结束。
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）
@@ -777,9 +772,9 @@ zh_CN:
     voted: "%{author} 投票给了 %{response}"
     voted_hidden: "%{author} 投票"
     vote_removed: "%{author}：投票已移除"
-    not_voted: "%{author}：未定"
     superseded: 被取代
     shared_outcome: "%{author} 分享了结论"
     removed: 已移除
+    not_voted: "%{author}：未投票"
   error:
     access_denied: 你没有权限这样做。

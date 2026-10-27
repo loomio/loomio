@@ -25,10 +25,11 @@ class GroupExportServiceTest < ActiveSupport::TestCase
         record['notify_on_closing_soon'] = 'undecided_voters'
       end
       if item['table'] == 'polls'
-        {'voters_eligible_count' => 'voters_count', 'votes_uncast_count' => 'undecided_voters_count',
-         'option_score_totals' => 'stance_counts'}.each do |current, legacy|
+        {'vote_count_total' => 'voters_count', 'vote_count_uncast' => 'undecided_voters_count',
+         'vote_count_none_of_the_above' => 'none_of_the_above_count', 'scores_by_option' => 'stance_counts'}.each do |current, legacy|
           record[legacy] = record.delete(current)
         end
+        GroupExportService::POLL_SETTING_COLUMNS_RENAMED.each { |legacy, current| record[legacy] = record.delete(current) }
       elsif item['table'] == 'notifications' && record['id'] == notification.id
         record['recipient_audience'] = 'decided_voters'
       elsif item['table'] == 'discussion_templates' && record['id'] == template.id
@@ -40,11 +41,13 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group.destroy!
     GroupExportService.import(filename)
     imported = Poll.where.not(id: poll.id).find_by!(title: poll.title)
-    assert_equal 2, imported.voters_eligible_count
-    assert_equal 1, imported.votes_cast_count
-    assert_equal 1, imported.votes_uncast_count
-    assert_equal [1, 0], imported.option_score_totals
+    assert_equal 2, imported.vote_count_total
+    assert_equal 1, imported.vote_count_cast
+    assert_equal 1, imported.vote_count_uncast
+    assert_equal [1, 0], imported.scores_by_option
     assert_equal 'voters_uncast', imported.notify_on_closing_soon
+    assert_equal poll.slice(:score_min, :score_max, :choice_count_min, :choice_count_max, :points_per_voter),
+      imported.slice(:score_min, :score_max, :choice_count_min, :choice_count_max, :points_per_voter)
     assert_equal 'voters_uncast', PollTemplate.find_by!(group_id: imported.group_id, title: poll_template.title).notify_on_closing_soon
     imported_notification = Notification.find_by!(subject: imported, kind: 'poll_announced')
     assert_equal 'voters_cast', imported_notification.recipient_audience
@@ -585,8 +588,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     imported_poll.update_counts!
     imported_sub_poll.update_counts!
 
-    assert_equal [1, 1], imported_poll.option_score_totals
-    assert_equal [0, 0], imported_sub_poll.option_score_totals
+    assert_equal [1, 1], imported_poll.scores_by_option
+    assert_equal [0, 0], imported_sub_poll.scores_by_option
 
     # Templates
     DiscussionTemplate.find_by!(title: 'discussion_template', group: imported_group, author: imported_admin)

@@ -139,8 +139,8 @@ uk:
     manage_subscription: Керувати підпискою
     amount: Сума
   loomio_tags:
-    show_tags_from_other_groups: "Покажіть теги з інших груп"
-    parent_group_and_subgroups_in_this_organization: "Батьківська група та підгрупи цієї організації"
+    show_tags_from_other_groups: Покажіть теги з інших груп
+    parent_group_and_subgroups_in_this_organization: Батьківська група та підгрупи цієї організації
     all_tags: Всі мітки
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -1001,10 +1001,10 @@ uk:
       everyone_in_the_group: Всі в групі
       topic: Усім в темі
       voters: Усім запрошеним до голосування
-      people_who_voted: Усім, хто голосував
-      people_not_voted: Виборцям, які не проголосували
       non_voters: Учасників %{name} ще не запросили
       delegates_of_group: Делегати %{name}
+      everyone_who_voted: Усі, хто проголосували
+      people_who_have_not_voted: Ті, хто ще не проголосували
     form:
       group_has_no_members_yet: Ви єдиний учасник вашої групи. Можливо, ви захочете запросити кількох людей до своєї групи, перш ніж розпочинати ланцюжок або приймати рішення.
       invite_people_to_evaluate_loomio: Запросіть кількох людей до вашої групи Loomio, щоб разом прийняти рішення
@@ -1076,7 +1076,7 @@ uk:
       has_not_read_thread: Не переглянув тему
       has_not_joined_yet: Ще не приєднався
       has_not_joined_yet_hint: Цей користувач не прийняв запрошення приєднатися до Loomio і не отримуватиме подальших сповіщень, доки не прийме
-      discussion_admin: "Адміністратор теми"
+      discussion_admin: Адміністратор теми
       has_not_read_discussion: Не переглянув обговорення
     group_form:
       search_placeholder: Шукати людину...
@@ -1620,7 +1620,7 @@ uk:
     title_helptext:
       group: Ця назва з'явиться поруч із іменем %{name} у цій групі. Використовуйте її щоб люди розуміли свою роль.
     title_label: назва
-    title_placeholder: "Наприклад, «Адміністратор» або «Фасилітатор»"
+    title_placeholder: Наприклад, «Адміністратор» або «Фасилітатор»
     updated: Назву учасника оновлено
     weight_label: Вага голосу
   user_name_modal:
@@ -1792,7 +1792,6 @@ uk:
       all: Нещодавні обговорення
     thread_preview:
       you_voted: Ви проголосували %{position}
-      not_voted: "Ви ще не проголосували"
     threads_from:
       group: Теми від
       pinned: Закріплені теми
@@ -2318,18 +2317,14 @@ uk:
     started_by: Розпочато %{name}
   poll_common_votes_panel:
     vote_removed: Голос видалено
-    not_voted: Не проголосували
     newest_first: Спочатку нові
     oldest_first: Спочатку старі
     priority_first: Спочатку узгоджені
     priority_last: Спочатку заблоковані
-    not_voted_first: "Спочатку ті, хто не проголосував"
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
     name_or_username: Ім'я або ім'я користувача
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Причину вилучено
     redact_reason_title: Викреслити причину голосування?
     redact_reason_helptext: Текст причини та вкладення будуть приховані, але голосування залишиться в результатах
@@ -2344,15 +2339,6 @@ uk:
     stance: Голосувати
     participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
     vote_weight: Вага голосу %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: Показати тих, хто не проголосував (%{count})
-    show_invitations: Показати запрошення в очікувані
-    people_not_voted: Не визначився (%{count})
-    invitation_count_singular: 1 особа запрошена до участі електронною поштою
-    invitation_count_plural: Ще %{count} осіб було запрошено взяти участь електронною поштою
-  poll_common_not_voted_user:
-    reminded: Нагадування відправлено!
-    reminder_sent: Сповіщення з нагадуванням відправлено
   poll_common_set_outcome_panel:
     enter_outcome: Введіть висновок
     poll_type: Цей %{poll_type} закрито. Знайдіть час, щоб розглянути результати, а потім поділіться результатом, щоб люди знали, що буде далі.
@@ -2494,9 +2480,9 @@ uk:
     total: Разом
   poll_remove_vote:
     title: Видалити свій голос?
-    helptext_not_voted: Ви впевнені, що хочете видалити свій голос? Ви будете у списку тих, хто не проголосував, і зможете проголосувати пізніше, якщо забажаєте.
     confirm: Зняти голос
     success: Голос видалено
+    helptext_not_voted: Ви впевнені, що хочете видалити свій голос? Ваш статус буде “Не проголосували”, і ви зможете проголосувати пізніше, якщо захочете.
   poll_poll_vote_form:
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
@@ -2858,8 +2844,8 @@ uk:
       voting_title: За 24 години до завершення голосування надішліть нагадування
       nobody: Ніхто
       author: Автор (я)
-      people_not_voted: Виборці, які не проголосували
       voters: Усі виборці
+      people_who_have_not_voted: Ті, хто ще не проголосували
     notify_on_participate:
       title: Повідомити мене, коли люди беруть участь
       helptext_on: Після обрання ви отримуватимете сповіщення щоразу, коли хтось братиме участь.

@@ -17,10 +17,10 @@ import ChartTable from '@/components/poll/common/chart/table.vue';
 import CommonIcon from '@/components/common/icon.vue';
 
 function mountPanel(overrides = {}) {
-  const columns = ['votes', 'unweighted_score', 'voter_count', 'score', 'votes_cast_percent', 'voter_percent', 'average'];
+  const columns = ['votes', 'unweighted_score', 'vote_count', 'score', 'votes_cast_percent', 'voter_percent', 'average'];
   const poll = reactive({
     id: 1, pollType: 'poll', weightedVoting: true, chartType: 'pie', chartColumn: 'score_percent',
-    closingAt: '2026-10-30', votersCount: 3, decidedVotersCount: 1, castStancesPct: 80,
+    closingAt: '2026-10-30', voteCountTotal: 3, voteCountCast: 1, participationPct: 80,
     quorumPct: 90, quorumReached: false,
     config: () => ({has_options: true}), showResults: () => true, isClosed: () => false,
     translatedPollType: () => 'Choose', iHaveVoted: () => false,
@@ -28,9 +28,9 @@ function mountPanel(overrides = {}) {
     resultColumns: ['chart', 'name', ...columns],
     resultHeadingKeys: Object.fromEntries(['name', ...columns].map(column => [column, column])),
     results: [
-      {id: 1, name: 'Yes', name_format: 'plain', color: 'green', voter_count: 1,
+      {id: 1, name: 'Yes', name_format: 'plain', color: 'green', vote_count: 1,
         unweighted_score: 1, score: 8, score_percent: 100, voter_percent: 80, average: 1},
-      {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', voter_count: 2,
+      {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', vote_count: 2,
         unweighted_score: 0, score: 0, score_percent: null, voter_percent: 20, average: 0}
     ],
     ...overrides
@@ -52,7 +52,7 @@ function mountPanel(overrides = {}) {
 }
 
 describe('chart participation follows the selected results column', () => {
-  it.each(['votes', 'unweighted_score', 'voter_count'])('uses people for %s and returns to weight for weighted columns', async column => {
+  it.each(['votes', 'unweighted_score', 'vote_count'])('uses people for %s and returns to weight for weighted columns', async column => {
     const {wrapper, participation, select} = mountPanel();
     await nextTick();
     expect(participation()).toBe('poll_common_percent_voted.pct_vote_weight_participation: 1/3, 80%');
@@ -82,8 +82,8 @@ describe('chart participation follows the selected results column', () => {
   });
 
   it.each([
-    {votersCount: 0, decidedVotersCount: 0, castStancesPct: 0, expected: '0/0, 0%'},
-    {votersCount: 3, decidedVotersCount: 1, castStancesPct: 0, expected: '1/3, 33%'}
+    {voteCountTotal: 0, voteCountCast: 0, participationPct: 0, expected: '0/0, 0%'},
+    {voteCountTotal: 3, voteCountCast: 1, participationPct: 0, expected: '1/3, 33%'}
   ])('counts people even when assigned weight or electorate is zero: $expected', async ({expected, ...counts}) => {
     const {participation, select} = mountPanel(counts);
     await select('votes');
@@ -91,7 +91,7 @@ describe('chart participation follows the selected results column', () => {
   });
 
   it('keeps the server participation value for ordinary unweighted polls', async () => {
-    const {participation, select} = mountPanel({weightedVoting: false, castStancesPct: 33});
+    const {participation, select} = mountPanel({weightedVoting: false, participationPct: 33});
     await select('score');
     expect(participation()).toBe('poll_common_percent_voted.pct_participation: 1/3, 33%');
   });
@@ -99,7 +99,7 @@ describe('chart participation follows the selected results column', () => {
   it('does not mount the results table or expose anonymous participation before closing', () => {
     const {wrapper, participation} = mountPanel({
       anonymous: true, weightedVoting: false, hideResults: 'until_closed',
-      showResults: () => false, decidedVotersCount: undefined, castStancesPct: undefined
+      showResults: () => false, voteCountCast: undefined, participationPct: undefined
     });
     expect(wrapper.findComponent(ChartTable).exists()).toBe(false);
     expect(participation()).not.toContain('33%');

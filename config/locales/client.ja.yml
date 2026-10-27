@@ -138,8 +138,8 @@ ja:
     manage_subscription: サブスクリプションの管理
     amount: 額
   loomio_tags:
-    show_tags_from_other_groups: "他のグループのタグを表示"
-    parent_group_and_subgroups_in_this_organization: "この組織の親グループとサブグループ"
+    show_tags_from_other_groups: 他のグループのタグを表示
+    parent_group_and_subgroups_in_this_organization: この組織の親グループとサブグループ
     all_tags: 全タグ
     tags: タグ
     apply_tags: タグを適用する
@@ -997,10 +997,10 @@ ja:
       everyone_in_the_group: グループの全員が
       topic: スレッド内の全員
       voters: 投票に招待された全員
-      people_who_voted: 投票してくださった皆様
-      people_not_voted: 未投票の投票者
       non_voters: "%{name} のメンバーはまだ招待されていません"
       delegates_of_group: "%{name} の代表者"
+      everyone_who_voted: 投票した全員
+      people_who_have_not_voted: 未投票の人
     form:
       group_has_no_members_yet: あなたはあなたのグループの唯一のメンバーです。スレッドや決定を開始する前に、何人かをグループに招待したい場合があります。
       invite_people_to_evaluate_loomio: Loomio グループに何人かを招待して、一緒に意思決定をしましょう
@@ -1068,7 +1068,7 @@ ja:
       has_not_read_thread: スレッドを見ていません
       has_not_joined_yet: まだ参加していません
       has_not_joined_yet_hint: このユーザーはLoomioへの招待を承諾していないため、承諾するまで通知は届きません。
-      discussion_admin: "スレッド管理者"
+      discussion_admin: スレッド管理者
       has_not_read_discussion: ディスカッションを閲覧していない
     group_form:
       search_placeholder: 人を探す...
@@ -1602,7 +1602,7 @@ ja:
     title_helptext:
       group: このタイトルは、このグループ内の %{name} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
     title_label: タイトル
-    title_placeholder: "例：「管理者」または「ファシリテーター」"
+    title_placeholder: 例：「管理者」または「ファシリテーター」
     updated: 会員タイトルを更新しました
     weight_label: 票の重み
   user_name_modal:
@@ -1774,7 +1774,6 @@ ja:
       all: 最近の議論
     thread_preview:
       you_voted: あなたは %{position} に投票しました
-      not_voted: "まだ投票していません"
     threads_from:
       group: からのスレッド
       pinned: 固定されたねじ山
@@ -2289,18 +2288,14 @@ ja:
     started_by: "%{name}によって開始されました"
   poll_common_votes_panel:
     vote_removed: 投票が削除されました
-    not_voted: 未定
     newest_first: 新しい順
     oldest_first: 古い順
     priority_first: 賛成を先に表示
     priority_last: 最初にブロックする
-    not_voted_first: "未投票の人を先に表示"
     no_votes_yet: まだ投票は行われていません。
     change_results_order: 結果の順序を変更する
     none_of_the_above: "（上記のどれでもない）"
     name_or_username: 名前またはユーザー名
-    cast: Cast
-    uncast: Uncast
     reason_redacted: 理由は伏せられています
     redact_reason_title: 投票理由を伏せてください。
     redact_reason_helptext: 理由テキストと添付ファイルは非表示になりますが、投票結果は残ります。
@@ -2315,15 +2310,6 @@ ja:
     stance: 投票する
     participation_records_restricted: 投票終了後、誰が参加したかを確認できます
     vote_weight: 投票の重み %{weight}
-  poll_common_not_voted_panel:
-    show_not_voted: "未投票の%{count}人を表示"
-    show_invitations: 保留中の招待状を表示
-    people_not_voted: 未定 (%{count})
-    invitation_count_singular: さらに 1 人がメールで参加するよう招待されました
-    invitation_count_plural: さらに %{count} 人がメールで参加するよう招待されました
-  poll_common_not_voted_user:
-    reminded: リマインダーを送信しました!
-    reminder_sent: リマインダー通知が送信されました
   poll_common_set_outcome_panel:
     enter_outcome: 結論を入力してください
     poll_type: この %{poll_type} は終了しました。時間をかけて結果を検討し、次に何が起こるかを人々に知らせるために結果を共有します。
@@ -2465,9 +2451,9 @@ ja:
     total: 合計
   poll_remove_vote:
     title: 投票を削除しますか?
-    helptext_not_voted: 投票を削除してもよろしいですか?未投票として表示され、希望すれば後で再び投票できます。
     confirm: 投票を削除する
     success: 投票が削除されました
+    helptext_not_voted: 投票を削除しますか？ステータスは「未投票」になり、後でまた投票できます。
   poll_poll_vote_form:
     stance_created: 投票が作成されました
     stance_updated: 投票が更新されました
@@ -2827,8 +2813,8 @@ ja:
       voting_title: 投票終了の24時間前にリマインダーを送信してください
       nobody: 誰でもない
       author: 著者（私）
-      people_not_voted: 未投票の投票者
       voters: すべての有権者
+      people_who_have_not_voted: 未投票の人
     notify_on_participate:
       title: 参加者が参加したら通知する
       helptext_on: 選択すると、誰かが参加するたびに通知が届きます。

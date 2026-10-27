@@ -60,9 +60,9 @@ describe('weighted poll results table', () => {
         votes_cast_percent: 'poll_common.pct_of_vote_weight_cast', voter_percent: 'poll_common.pct_of_eligible_vote_weight'
       },
       results: [
-        {id: 1, name: 'Agree', name_format: 'plain', voter_count: 2, score: '2.83', score_percent: 100, voter_percent: 50},
-        {id: 2, name: 'Disagree', name_format: 'plain', voter_count: 0, score: 0, score_percent: 0, voter_percent: 0},
-        {id: -1, name: 'Not voted', name_format: 'plain', voter_count: 3, score: 2.83, score_percent: null, voter_percent: 50}
+        {id: 1, name: 'Agree', name_format: 'plain', vote_count: 2, score: '2.83', score_percent: 100, voter_percent: 50},
+        {id: 2, name: 'Disagree', name_format: 'plain', vote_count: 0, score: 0, score_percent: 0, voter_percent: 0},
+        {id: -1, name: 'Not voted', name_format: 'plain', vote_count: 3, score: 2.83, score_percent: null, voter_percent: 50}
       ]
     };
 
@@ -92,16 +92,16 @@ describe('weighted poll results table', () => {
       chartType: 'pie',
       chartColumn: 'score_percent',
       singleChoice: () => true,
-      votersCount: 4,
+      voteCountTotal: 4,
       resultColumns: ['chart', 'name', 'votes', 'score', 'votes_cast_percent', 'voter_percent'],
       resultHeadingKeys: {
         name: 'common.option', votes: 'poll_common.votes', score: 'poll_common.weighted_votes',
         votes_cast_percent: 'poll_common.pct_of_vote_weight_cast', voter_percent: 'poll_common.pct_of_eligible_vote_weight'
       },
       results: [
-        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 2, score: 1, score_percent: 25, voter_percent: 12.5},
-        {id: 2, name: 'Disagree', name_format: 'plain', color: 'red', voter_count: 1, score: 3, score_percent: 75, voter_percent: 37.5},
-        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', voter_count: 1, score: 4, score_percent: null, voter_percent: 50}
+        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', vote_count: 2, score: 1, score_percent: 25, voter_percent: 12.5},
+        {id: 2, name: 'Disagree', name_format: 'plain', color: 'red', vote_count: 1, score: 3, score_percent: 75, voter_percent: 37.5},
+        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', vote_count: 1, score: 4, score_percent: null, voter_percent: 50}
       ]
     };
     const wrapper = shallowMount(ChartTable, {
@@ -136,12 +136,12 @@ describe('weighted poll results table', () => {
       closedAt: false,
       chartType: 'bar',
       chartColumn: 'max_score_percent',
-      votersCount: 4,
-      resultColumns: ['chart', 'name', 'score', 'voter_count'],
-      resultHeadingKeys: {name: 'common.option', score: 'poll_common.weighted_points', voter_count: 'membership_card.voters'},
+      voteCountTotal: 4,
+      resultColumns: ['chart', 'name', 'score', 'vote_count'],
+      resultHeadingKeys: {name: 'common.option', score: 'poll_common.weighted_points', vote_count: 'membership_card.voters'},
       results: [
-        {id: 1, name: 'Alpha', name_format: 'plain', score: '2', voter_count: 3, voter_percent: 33},
-        {id: 2, name: 'Beta', name_format: 'plain', score: '4', voter_count: 1, voter_percent: 67}
+        {id: 1, name: 'Alpha', name_format: 'plain', score: '2', vote_count: 3, voter_percent: 33},
+        {id: 2, name: 'Beta', name_format: 'plain', score: '4', vote_count: 1, voter_percent: 67}
       ]
     };
     const wrapper = shallowMount(ChartTable, {
@@ -170,12 +170,12 @@ describe('weighted poll results table', () => {
       chartColumn: 'score_percent',
       singleChoice: () => true,
       pieSlices: () => [{color: 'green', value: 100}],
-      votersCount: 2,
-      resultColumns: ['chart', 'name', 'voter_percent', 'voter_count'],
-      resultHeadingKeys: {name: 'common.option', voter_percent: 'poll_ranked_choice_form.pct_of_voters', voter_count: 'membership_card.voters'},
+      voteCountTotal: 2,
+      resultColumns: ['chart', 'name', 'voter_percent', 'vote_count'],
+      resultHeadingKeys: {name: 'common.option', voter_percent: 'poll_ranked_choice_form.pct_of_voters', vote_count: 'membership_card.voters'},
       results: [
-        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', voter_count: 1, voter_percent: 50},
-        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', voter_count: 1, voter_percent: 50}
+        {id: 1, name: 'Agree', name_format: 'plain', color: 'green', vote_count: 1, voter_percent: 50},
+        {id: -1, name: 'Not voted', name_format: 'plain', color: 'grey', vote_count: 1, voter_percent: 50}
       ]
     };
     const wrapper = shallowMount(ChartTable, {
@@ -195,9 +195,9 @@ describe('weighted poll results table', () => {
     const poll = reactive({
       weightedVoting: true, closedAt: false, chartType: 'bar', chartColumn: 'score_percent',
       pieSlices: () => [],
-      resultColumns: ['chart', 'name', 'score_percent', 'unweighted_score', 'score', 'voter_count'],
-      resultHeadingKeys: {name: 'common.option', score_percent: 'p', unweighted_score: 'u', score: 's', voter_count: 'v'},
-      results: [{id: 1, name: 'Alpha', name_format: 'plain', score_percent: 100, unweighted_score: 1, score: '1', voter_count: 1, voter_percent: 100}]
+      resultColumns: ['chart', 'name', 'score_percent', 'unweighted_score', 'score', 'vote_count'],
+      resultHeadingKeys: {name: 'common.option', score_percent: 'p', unweighted_score: 'u', score: 's', vote_count: 'v'},
+      results: [{id: 1, name: 'Alpha', name_format: 'plain', score_percent: 100, unweighted_score: 1, score: '1', vote_count: 1, voter_percent: 100}]
     });
     const wrapper = shallowMount(ChartTable, {
       props: {poll},
@@ -207,13 +207,13 @@ describe('weighted poll results table', () => {
     await wrapper.findAll('thead button').find(button => button.text() === 'u').trigger('click');
     expect(wrapper.vm.selectedMetric).toBe('unweighted_score');
 
-    poll.resultColumns = ['chart', 'name', 'score_percent', 'score', 'voter_count'];
+    poll.resultColumns = ['chart', 'name', 'score_percent', 'score', 'vote_count'];
     await nextTick();
 
     expect(wrapper.vm.selectedMetric).toBe('score_percent');
   });
 
-  function voterTable(sampleCount, voterCount, hideVoters = false) {
+  function voterTable(sampleCount, voteCount, hideVoters = false) {
     const ids = Array.from({length: sampleCount}, (_, index) => index + 1);
     const poll = {
       closedAt: false,
@@ -222,7 +222,7 @@ describe('weighted poll results table', () => {
       pieSlices: () => [],
       resultColumns: ['name', 'voters'],
       resultHeadingKeys: {name: 'common.option', voters: 'poll_common.voters'},
-      results: [{id: 1, name: 'Agree', name_format: 'plain', voter_count: voterCount, voter_ids: ids}]
+      results: [{id: 1, name: 'Agree', name_format: 'plain', vote_count: voteCount, voter_ids: ids}]
     };
 
     return mount(ChartTable, {

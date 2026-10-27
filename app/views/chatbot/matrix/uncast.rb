@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-class Views::Chatbot::Matrix::Undecided < Views::Chatbot::Base
+class Views::Chatbot::Matrix::Uncast < Views::Chatbot::Base
   def initialize(poll:)
     @poll = poll
   end
 
   def view_template
-    nom = @poll.decided_voters_count
-    dnom = @poll.voters_count
-    pct = @poll.cast_stances_pct
+    nom = @poll.vote_count_cast
+    dnom = @poll.vote_count_total
+    pct = @poll.participation_pct
 
     p { t(@poll.participation_key, num: nom, total: dnom, pct: pct) }
 
-    if @poll.active? && @poll.undecided_voters.any?
+    if @poll.active? && @poll.voters_uncast.any?
       h5 { t('poll.waiting_for_votes_from') }
-      p { @poll.undecided_voters.map(&:username).join(', ') }
+      p { @poll.voters_uncast.map(&:username).join(', ') }
     end
   end
 end

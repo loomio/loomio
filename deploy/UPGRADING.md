@@ -15,6 +15,37 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## User and Server API paths
+
+The User API moves to `/api/user0` and the Server API to `/api/server0`. The number increases when a release breaks one of these APIs. `/api/b2` and `/api/b3` still work and will be removed in a later release.
+
+The Server API key is now `SERVER_API_KEY`. `B3_API_KEY` is still read while `SERVER_API_KEY` is unset. Loomio will not start if the key is shorter than 17 characters. To add a key to an existing `.env`:
+
+```sh
+echo "SERVER_API_KEY=$(openssl rand -hex 32)" >> .env
+```
+
+Poll fields have new names in `/api/user0` requests and responses and in poll CSV exports. `/api/b2` keeps the previous names.
+
+| Previous field | New field |
+| --- | --- |
+| `voters_count` | `vote_count_total` |
+| `decided_voters_count` | `vote_count_cast` |
+| `undecided_voters_count` | `vote_count_uncast` |
+| `cast_stances_pct` | `participation_pct` |
+| `stance_counts` | `scores_by_option` |
+| `quorum_count` | `quorum_threshold` |
+| `quorum_votes_required` | `quorum_shortfall` |
+| `min_score` | `score_min` |
+| `max_score` | `score_max` |
+| `minimum_stance_choices` | `choice_count_min` |
+| `maximum_stance_choices` | `choice_count_max` |
+| `dots_per_person` | `points_per_voter` |
+| `voter_count` (in `results`) | `vote_count` |
+| `voter_scores` (in `results`) | `scores_by_voter` |
+
+The audience identifiers `decided_voters` and `undecided_voters` become `voters_cast` and `voters_uncast`, and the closing reminder setting uses `voters_uncast`. Migration `20261027000001` renames four poll columns and takes a brief lock on `polls`. Migration `20261027000002` updates stored audiences in notifications and discussion templates. Migration `20261027000003` renames scoring columns on `polls`, `poll_templates` and `poll_options`. Upgrade web and job processes together.
+
 ## Contribution tag backfill
 
 The contribution-tag migrations release schema locks before copying data and build indexes concurrently. Existing opening tags are preserved in small transactions during migration. Migration `20261027000000` automatically schedules the thread-summary and search-tag backfill to start ten minutes later, separately from application startup.

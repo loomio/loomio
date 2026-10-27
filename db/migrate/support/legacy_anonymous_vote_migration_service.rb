@@ -145,7 +145,7 @@ class LegacyAnonymousVoteMigrationService
       vote_count: stances.length,
       ballot_count: stances.sum { |stance| ballot_count_for_stance(stance) },
       voter_count: poll.voters_count,
-      votes_uncast_count: poll.undecided_voters_count,
+      vote_count_uncast: poll.undecided_voters_count,
       none_of_the_above_count: stances.count(&:none_of_the_above?),
       option_data: option_data_from_stances(stances),
       option_voter_counts: poll.poll_options.to_h { |option| [ option.id, option.voter_count ] },
@@ -338,7 +338,7 @@ class LegacyAnonymousVoteMigrationService
     poll.update_columns(
       stance_counts: poll.poll_options.reload.map(&:total_score),
       voters_count: baseline[:voter_count],
-      undecided_voters_count: baseline[:votes_uncast_count],
+      undecided_voters_count: baseline[:vote_count_uncast],
       none_of_the_above_count: baseline[:none_of_the_above_count]
     )
   end

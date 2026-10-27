@@ -18,9 +18,28 @@ class GroupExportService
   COUNTER_COLUMNS_RETIRED = {
     'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
     'topics' => %w[anonymous_polls_count closed_polls_count members_count],
-    'polls' => %w[voters_count undecided_voters_count stance_counts],
+    'polls' => %w[voters_count undecided_voters_count none_of_the_above_count stance_counts],
     'tags' => %w[taggings_count],
     'users' => %w[bounces_count complaints_count]
+  }.freeze
+
+  # Archives from earlier releases use the column names before these renames.
+  POLL_SETTING_COLUMNS_RENAMED = {
+    'min_score' => 'score_min',
+    'max_score' => 'score_max',
+    'minimum_stance_choices' => 'choice_count_min',
+    'maximum_stance_choices' => 'choice_count_max',
+    'dots_per_person' => 'points_per_voter'
+  }.freeze
+  COLUMNS_RENAMED = {
+    'polls' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_templates' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_options' => {
+      'voter_count' => 'vote_count',
+      'voter_scores' => 'scores_by_voter',
+      'voter_weight_total' => 'vote_weight',
+      'score_counts' => 'vote_counts_by_score'
+    }
   }.freeze
 
   RELATIONS = %w[
@@ -399,6 +418,9 @@ class GroupExportService
 
             attrs = data['record'].deep_dup
             attrs.except!(*COUNTER_COLUMNS_RETIRED.fetch(table, []))
+            COLUMNS_RENAMED.fetch(table, {}).each do |before, after|
+              attrs[after] = attrs.delete(before) if attrs.key?(before)
+            end
             if %w[polls poll_templates].include?(table) && attrs['notify_on_closing_soon'] == 'undecided_voters'
               attrs['notify_on_closing_soon'] = 'voters_uncast'
             end

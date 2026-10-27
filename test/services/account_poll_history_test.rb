@@ -14,7 +14,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
   %w[deactivate redact].each do |operation|
     %w[off until_vote until_closed].each do |hide_results|
       test "#{operation} preserves ranked votes and reasons with #{hide_results} results" do
-        poll = create_poll(hide_results: hide_results, poll_type: 'ranked_choice', minimum_stance_choices: 3)
+        poll = create_poll(hide_results: hide_results, poll_type: 'ranked_choice', choice_count_min: 3)
         original = cast_vote(poll)
         original.update_columns(updated_at: 16.minutes.ago)
         replacement = StanceService.update(stance: original, actor: @member, params: {
@@ -27,7 +27,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
         assert_not_equal original.id, replacement.id
         ordinary_comment = Comment.new(parent: poll, body: 'An ordinary poll comment')
         CommentService.create(comment: ordinary_comment, actor: @member)
-        voted_counts = poll.reload.attributes.slice('option_score_totals', 'voters_eligible_count', 'votes_uncast_count', 'none_of_the_above_count')
+        voted_counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast', 'vote_count_none_of_the_above')
         scores = replacement.option_scores
         pending_poll = create_poll
         pending_stance = pending_poll.stances.latest.find_by!(participant: @member)
@@ -67,7 +67,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
 
         PollService.close(poll: poll, actor: @admin)
         assert_equal scores, replacement.reload.option_scores
-        assert_equal voted_counts.fetch('option_score_totals'), poll.reload.option_score_totals
+        assert_equal voted_counts.fetch('scores_by_option'), poll.reload.scores_by_option
         assert StanceSerializer.new(replacement, scope: {current_user_id: users(:member_loud).id}).include_reason?
         assert TopicItem.where(itemable: replacement).exists?
       end
@@ -78,15 +78,15 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
     poll = create_poll(weighted_voting: true, quorum_pct: 50)
     stance = cast_vote(poll)
     StanceService.set_weight(stance: stance, weight: '2.5', actor: @admin)
-    counts = poll.reload.attributes.slice('option_score_totals', 'voters_eligible_count', 'votes_uncast_count')
+    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast')
     quorum = [poll.quorum_threshold, poll.quorum_reached?]
-    totals = poll.poll_options.order(:id).pluck(:total_score, :voter_weight_total, :voter_count)
+    totals = poll.poll_options.order(:id).pluck(:total_score, :vote_weight, :vote_count)
 
     retire_account('deactivate')
 
     assert_equal counts, poll.reload.attributes.slice(*counts.keys)
     assert_equal quorum, [poll.quorum_threshold, poll.quorum_reached?]
-    assert_equal totals, poll.poll_options.order(:id).pluck(:total_score, :voter_weight_total, :voter_count)
+    assert_equal totals, poll.poll_options.order(:id).pluck(:total_score, :vote_weight, :vote_count)
     assert_equal '2.5', VoteWeight.format(stance.reload.weight)
   end
 
@@ -138,7 +138,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
       {poll_option_id: poll.poll_options.first.id, score: 1}
     ])
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: @member)
-    counts = poll.reload.attributes.slice('option_score_totals', 'voters_eligible_count', 'votes_uncast_count')
+    counts = poll.reload.attributes.slice('scores_by_option', 'vote_count_total', 'vote_count_uncast')
 
     retire_account('redact')
 
@@ -156,12 +156,12 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
     @admin = users(:guest_admin_normal)
     poll = create_poll
     stance = cast_vote(poll)
-    counts = poll.reload.option_score_totals
+    counts = poll.reload.scores_by_option
 
     retire_account('redact')
 
     assert_nil stance.reload.revoked_at
-    assert_equal counts, poll.reload.option_score_totals
+    assert_equal counts, poll.reload.scores_by_option
     assert_not @member.reload.can?(:show, poll)
     assert_not @member.can?(:vote_in, poll)
     assert users(:guest_loud).can?(:show, poll)

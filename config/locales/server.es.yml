@@ -112,7 +112,7 @@ es:
     add_guests:
       all: Debes actualizar tu suscripción de Loomio para agregar invitados. Alternativamente, puedes invitarlos a ser miembros de tu grupo.
   errors:
-    item_you_are_replying_to_deleted: "El elemento al que estás respondiendo se ha eliminado"
+    item_you_are_replying_to_deleted: El elemento al que estás respondiendo se ha eliminado
     clear_cache: Se ha detectado un problema al cargar. Mantener "shift" y presionar "recargar" o elimina tu navegador caché.
     400:
       title: Mala petición
@@ -198,7 +198,6 @@ es:
       poll_options_dont_match: Un error en Loomio impidió que se guardara tu voto. Estamos trabajando para solucionarlo. Recarga la página e inténtalo de nuevo.
       opening_at_before_closing_at: La fecha de apertura debe ser anterior a la fecha de cierre.
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) miembros han manifestado su posición"
       title: Título
       author: Autor
       email: Correo Electrónico
@@ -482,12 +481,8 @@ es:
       not_invited: No invitado
       please_respond: 'Responde '
       time_zone: "(horario en %{zone})"
-      members_not_voted: Miembros indecisos (%{count})
-      guests_not_voted: Invitados indecisos (%{count})
-      more_not_voted: "%{count} más..."
       vote_now: Votar ahora
       you_have_until: 'Tienes hasta %{when} para participar '
-      people_have_voted: "%{nom} de %{dnom} personas han votado (%{pct}%)"
       voting_opens_and_closes: La votación se abre %{opens} y se cierra %{closes}. (%{days} días)
       voting_closes: La votación cierra %{when}.
       voting_opened_and_closed: La votación se abrió %{opens} y se cerró %{closes}. (%{days} días)
@@ -806,9 +801,9 @@ es:
     voted: "%{author} votó %{response}"
     voted_hidden: "%{author} votó"
     vote_removed: "%{author}: voto eliminado"
-    not_voted: "%{author}: indeciso"
     superseded: sustituido
     shared_outcome: "%{author} compartió una conclusión"
     removed: Eliminado
+    not_voted: "%{author}: sin votar"
   error:
     access_denied: No tienes permiso para hacer eso

@@ -29,7 +29,7 @@ class Views::NotificationMailer::Poll::Results::Meeting < Views::ApplicationMail
             end
             @poll.voters_cast.each do |user|
               td do
-                score = poll_option.voter_scores.fetch(user.id.to_s, 0)
+                score = poll_option.scores_by_voter.fetch(user.id.to_s, 0)
                 class_for_score = case score
                 when 2 then 'email-meeting-chart-cell--yes'
                 when 1 then 'email-meeting-chart-cell--maybe'

@@ -72,7 +72,7 @@ class Api::V1::TopicItemTagsControllerTest < ActionController::TestCase
     poll = PollService.create(params: {topic_id: @topic.id, poll_type: 'proposal', title: 'Poll',
       hide_results: 'until_vote', poll_option_names: ['Agree'], closing_at: 2.days.from_now}, actor: users(:admin))
     comment = CommentService.create(comment: Comment.new(parent: poll, body: 'Before voting'), actor: @author)
-    assert_not poll.stances.decided.exists?(participant_id: @author.id)
+    assert_not poll.stances.cast.exists?(participant_id: @author.id)
     sign_in @author
 
     patch :tags, params: {id: comment.created_topic_item.id, tags: ['Question']}

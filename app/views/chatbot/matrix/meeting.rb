@@ -24,7 +24,7 @@ class Views::Chatbot::Matrix::Meeting < Views::Chatbot::Base
             td { strong { ((poll_option.total_score.to_f) / 2).to_s.gsub('.0', '') } }
             @poll.voters_cast.each do |user|
               td do
-                score = poll_option.voter_scores.fetch(user.id.to_s, 0)
+                score = poll_option.scores_by_voter.fetch(user.id.to_s, 0)
                 plain "\u{2593}\u{2593}" if score == 2
                 plain "\u{2591}\u{2591}" if score == 1
               end

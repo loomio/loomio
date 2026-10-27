@@ -4,10 +4,10 @@ class DemoGroupTemplateService
   TEMPLATE_ROOT = Rails.root.join("config", "demo_groups")
   POLL_CONFIGURATION_KEYS = %w[
     agree_target
-    dots_per_person
-    maximum_stance_choices
+    points_per_voter
+    choice_count_max
     meeting_duration
-    minimum_stance_choices
+    choice_count_min
     stv_method
     stv_quota
     stv_seats

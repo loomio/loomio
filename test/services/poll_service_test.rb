@@ -818,16 +818,16 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    voters_eligible_count = poll.reload.voters_eligible_count
-    votes_uncast_count = poll.votes_uncast_count
+    vote_count_total = poll.reload.vote_count_total
+    vote_count_uncast = poll.vote_count_uncast
 
     new_member = create_unique_user("newanonymousmember")
     Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
 
     assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
-    assert_equal voters_eligible_count + 1, poll.reload.voters_eligible_count
-    assert_equal votes_uncast_count + 1, poll.votes_uncast_count
+    assert_equal vote_count_total + 1, poll.reload.vote_count_total
+    assert_equal vote_count_uncast + 1, poll.vote_count_uncast
   end
 
   test "does not add bot users to polls" do

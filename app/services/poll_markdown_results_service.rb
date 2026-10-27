@@ -118,7 +118,7 @@ class PollMarkdownResultsService
     when "name" then option_name(result[:name], result[:name_format])
     when "stv_status" then result[:stv_status] ? t("poll_stv_results.#{result[:stv_status]}") : ""
     when "rank", "score", "unweighted_score" then result[column.to_sym]
-    when "voter_count", "votes" then result[:voter_count]
+    when "vote_count", "votes" then result[:vote_count]
     when "average" then result[:average].round(1)
     when "voter_percent" then percent(result[:voter_percent])
     when "score_percent", "votes_cast_percent" then percent(result[:score_percent])
@@ -128,7 +128,7 @@ class PollMarkdownResultsService
   end
 
   def voters_for_result(result)
-    return t("thread_markdown.no_voters") if result[:voter_count].to_i.zero?
+    return t("thread_markdown.no_voters") if result[:vote_count].to_i.zero?
     return t("thread_markdown.anonymous") if poll.anonymous?
 
     voters = case result[:id].to_i

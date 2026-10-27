@@ -1,0 +1,33 @@
+class Api::User0::ThreadsController < Api::User0::BaseController
+  def index
+    scope = TopicQuery.visible_to(user: current_user)
+    self.collection_count = scope.count
+    self.collection = scope.order(last_activity_at: :desc)
+                           .offset(params[:offset].to_i)
+                           .limit((params[:limit] || 50).to_i)
+    respond_with_collection serializer: TopicSerializer, root: :threads
+  end
+
+  def show
+    self.resource = thread
+    respond_with_resource serializer: TopicSerializer, root: :threads
+  end
+
+  def items
+    self.collection = thread.items.order(:sequence_id, :id)
+    self.collection_count = collection.count
+    self.collection = page_collection_bounded(collection)
+    respond_with_collection serializer: TopicItemSerializer, root: :items
+  end
+
+  def markdown
+    current_user.ability.authorize!(:export, thread)
+    render json: {markdown: ThreadMarkdownService.render(topic: thread, user: current_user)}
+  end
+
+  private
+
+  def thread
+    @thread ||= TopicQuery.visible_to(user: current_user).find(params[:id])
+  end
+end

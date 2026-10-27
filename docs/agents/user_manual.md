@@ -32,7 +32,7 @@ Read [writing.md](writing.md) before writing documentation. Paths in these instr
 Use this format:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
