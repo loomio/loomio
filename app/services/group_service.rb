@@ -288,7 +288,8 @@ module GroupService
   def self.suggest_handle(name:, parent_handle:)
     attempt = 0
     while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists? ||
-         GroupHandleRedirect.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
+         GroupHandleRedirect.where(handle: generate_handle(name, parent_handle, attempt)).exists? ||
+         Group.reserved_handles.include?(generate_handle(name, parent_handle, attempt))) do
       attempt += 1
     end
     generate_handle(name, parent_handle, attempt)
