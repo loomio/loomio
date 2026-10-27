@@ -1,10 +1,10 @@
 ---
 title: Benachrichtigungen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,14 +28,14 @@ generated:
   group-and-thread-notification-settings: 92d951e38f1832ca
   group-notification-settings: 8333cb971dc06656
   thread-notification-settings: 142e54bf266df489
-  email-delivery: 1387797aae91c033
+  email-delivery: 31c8cda422b7ad86
   enable-mobile-notifications-with-web-push: 38280111135d8680
   turn-off-external-notifications: daaa0c86fd3d78bf
 title_source: 788011833a5a0f22
 title_generated: f7205df4f1e2d6bc
 needs_review:
   introduction: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
-  email-delivery: use "Stimme" instead of "Abstimmung" for "vote"
+  email-delivery: use "Zusammenfassung" instead of "Aufholen" for "catch-up email"
 ---
 
 <!-- translation-section: introduction -->
@@ -170,7 +170,7 @@ In den Thread-Benachrichtigungseinstellungen stehen ebenfalls **Nur zum Aufholen
 
 Standardmäßig sendet Loomio dir eine E-Mail, wenn du eine Benachrichtigung erhältst. Je nach deinen Benachrichtigungseinstellungen für Gruppen und Threads können dazu Erwähnungen, Antworten, mit dir geteilte Diskussionen, Einladungen und Erinnerungen zur Stimmabgabe, Fazits und bald endende Abstimmungen gehören. Wähle **Alle Aktivitäten**, um auch E-Mails zu jedem neuen Kommentar, jeder neuen Stimme, jedem neuen Thread, jeder neuen Abstimmung und jedem neuen Fazit zu erhalten.
 
-Der Link **Benachrichtigungen deaktivieren** in einer Benachrichtigungs-E-Mail öffnet die Einstellungen für den betreffenden Thread oder die betreffende Gruppe. Das gilt auch für E-Mails, die gesendet werden, weil jemand dich erwähnt oder dir geantwortet hat. Dieses Formular zeigt deinen aktuellen Zeitplan für Zusammenfassungen für alle Gruppen und enthält einen Link zu den Einstellungen für Zusammenfassungs-E-Mails. Diese E-Mail-Links gewähren nur Zugriff auf das jeweils zugehörige Einstellungsformular; sie melden dich nicht bei Loomio an.
+Der Link **Benachrichtigungen deaktivieren** in einer Benachrichtigungs-E-Mail öffnet die Einstellungen für den betreffenden Thread oder die betreffende Gruppe. Das gilt auch für E-Mails, die gesendet werden, weil jemand dich erwähnt oder dir geantwortet hat. Wähle **Nur zum Aufholen**, um sofortige E-Mails zu deaktivieren und die Aktivitäten weiterhin in deiner Zusammenfassung zu erhalten. Auf derselben Seite kannst du unter **Zusammenfassungs-E-Mails (alle Gruppen)** auch den Zeitplan für Zusammenfassungen ändern. Speichere die Thread- oder Gruppeneinstellungen und den Zeitplan für Zusammenfassungen jeweils separat. Diese E-Mail-Links gewähren nur Zugriff auf das jeweils zugehörige Einstellungsformular; sie melden dich nicht bei Loomio an.
 
 Wenn eine E-Mail zu einer Diskussion angibt, dass Antworten möglich sind, kannst du direkt per E-Mail antworten. Deine Nachricht wird dann in der Loomio-Diskussion veröffentlicht.
 

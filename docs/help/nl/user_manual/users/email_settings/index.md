@@ -1,10 +1,10 @@
 ---
 title: Meldingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: 3600c5d214184c72
   group-notification-settings: b0c36775dc3882bd
   thread-notification-settings: 4723bb166542c1ec
-  email-delivery: 6000738f241f53bf
+  email-delivery: 8b22fb0ccc5c7b59
   enable-mobile-notifications-with-web-push: 599f498a6977505b
   turn-off-external-notifications: ca524daa6549ca57
 title_source: 788011833a5a0f22
@@ -167,7 +167,7 @@ De meldingsinstellingen voor threads bieden dezelfde keuzes: **Alleen inhalen**,
 
 Loomio verstuurt standaard een e-mail wanneer je een melding krijgt. Afhankelijk van je meldingsinstellingen voor groepen en threads kan het gaan om vermeldingen, antwoorden, discussies die met je worden gedeeld, uitnodigingen en herinneringen om te stemmen, conclusies en peilingen die binnenkort sluiten. Kies **Alle activiteiten** om ook e-mails te ontvangen over elke nieuwe reactie, stem, thread, peiling en conclusie.
 
-De link **Uitschrijven** in een meldingsmail opent de instellingen voor die thread of groep. Dit geldt ook voor e-mails die zijn verstuurd omdat iemand je heeft vermeld of je heeft geantwoord. Dat formulier toont je huidige verzendschema voor samenvattingsmails voor alle groepen en bevat een link naar de instellingen voor samenvattingsmails. Deze e-maillinks geven alleen toegang tot hun eigen instellingenformulieren; ze loggen je niet in op Loomio.
+De link **Uitschrijven** in een meldingsmail opent de instellingen voor die thread of groep. Dit geldt ook voor e-mails die zijn verstuurd omdat iemand je heeft vermeld of je heeft geantwoord. Kies **Alleen inhalen** om directe e-mails te stoppen en de activiteit in je samenvattingsmail te behouden. Je kunt ook het verzendschema voor samenvattingsmails op dezelfde pagina wijzigen, onder **Inhaalmails (alle groepen)**. Sla de instellingen voor de thread of groep en het verzendschema voor samenvattingsmails afzonderlijk op. Deze e-maillinks geven alleen toegang tot hun eigen instellingenformulieren; ze loggen je niet in op Loomio.
 
 Wanneer een e-mail over een discussie aangeeft dat antwoorden worden geaccepteerd, kun je rechtstreeks vanuit je e-mail antwoorden. Je bericht wordt dan in de Loomio-discussie geplaatst.
 
