@@ -1,10 +1,10 @@
 ---
 title: Asetukset
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: d01973b781822d5c
   setting-up-a-proposal-or-poll: e63f3d4fd70d0824
@@ -34,7 +34,7 @@ generated:
   add-content: 0516e40c5da65837
   voting-options: 988f7a5cad12d9b0
   edit-voting-options: 60fbea7da813d115
-  opening-time: 26fec8b26fb3be0d
+  opening-time: e360331503ff818f
   more-settings: 52929ce7488bbd4c
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
@@ -43,12 +43,12 @@ generated:
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
-  make-a-copy: 310fccb06391d89b
   notification-history: 678a71b017d1ba31
   export-poll: 9235fe3be4eea371
   print: 4756595e532bc054
   delete: 0cda8b7bcda6bdae
   save-bookmark: a8a3baefd1aba243
+  save-as-template: 3b67d0904a07c5e1
 title_source: 74a883a037bc227f
 title_generated: 8af481aba70ae8df
 needs_review:
@@ -134,6 +134,8 @@ Näin voit varata aikaa keskustelulle ennen äänestyksen alkamista tai varmista
 Jos ryhmälläsi on esimerkiksi useita päätöksiä äänestettävänä tulevassa kokouksessa, voit valmistella kyselyt ja lisätä äänestäjät etukäteen sekä ajastaa kaikki kyselyt avautumaan äänestysajan alkaessa. Ihmiset näkevät kyselyt ennen niiden avautumista, mutta eivät voi äänestää etukäteen.
 
 Kun kyselyn alkamisaika on ajastettu, voit lisätä äänestäjiä ennen äänestyksen alkamista. Äänestäjille lähetetään ilmoitus äänestyksen alkaessa eikä silloin, kun heidät lisätään.
+
+Jos haluat aloittaa äänestyksen ennen ajastettua aikaa, valitse **Muokkaa kyselyä**, valitse **Äänestys alkaa heti** ja tallenna.
 
 **Ilmoita äänestäjille kyselyn avautumisesta:** Kun tämä on valittuna (oletus), kaikki äänestäjät saavat ilmoituksen äänestyksen alkamisesta. Poista valinta, jos haluat aloittaa äänestyksen lähettämättä ilmoituksia.
 
@@ -233,11 +235,13 @@ Avaa kyselyn oikeassa alakulmassa oleva kolmen pisteen valikko.
 
 Valitse **Muokkaa kyselyä**, kun haluat muokata kyselyn sisältöä tai asetuksia.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Tee kopio
+### Tallenna mallina
 
-Valitse **Tee kopio**, kun haluat luoda uuden kyselyn nykyisen kyselyn ja sen asetusten pohjalta.
+Valitse kyselyn toimintovalikosta **Tallenna mallina**, kun haluat käyttää sen sisältöä, äänestysvaihtoehtoja, selityksiä ja asetuksia uudelleen. Tarkista esitäytetty mallilomake, anna mallille nimi ja alaotsikko ja valitse **Tallenna mallipohja**. Ryhmän jäsenet voivat sitten valita mallin aloittaessaan uuden kyselyn.
+
+Ryhmän ylläpitäjät voivat tallentaa malleja. Myös jäsenet voivat tallentaa niitä, kun **Jäsenet voivat luoda malleja** on käytössä ryhmän käyttöoikeusasetuksissa. Lisätietoja on sivulla [Kyselymallit](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

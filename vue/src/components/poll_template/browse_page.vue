@@ -1,6 +1,6 @@
 <script lang="js">
 import Records       from '@/shared/services/records';
-import Session       from '@/shared/services/session';
+import PollTemplateService from '@/shared/services/poll_template_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
 import { importTemplateFile } from '@/shared/helpers/template_file';
@@ -44,10 +44,7 @@ export default {
       });
     },
     canImportTemplates() {
-      return this.group && (
-        this.group.adminsInclude(Session.user()) ||
-        (this.group.membersCanCreateTemplates && this.group.membersInclude(Session.user()))
-      );
+      return this.group && PollTemplateService.canCreateTemplate(this.group);
     },
     filteredResults() {
       if (this.filter === 'proposal') {

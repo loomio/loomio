@@ -1,10 +1,10 @@
 ---
 title: Configurações
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: 9e65c25dba50f2d8
   setting-up-a-proposal-or-poll: dfd4131bed6df169
@@ -34,7 +34,7 @@ generated:
   add-content: c438022ad610d57a
   voting-options: ce27d4aa22b6e72a
   edit-voting-options: 649d9c3d8156c05d
-  opening-time: 6b999c1315b28e29
+  opening-time: 21e44f5babf01d65
   more-settings: f868cbc69693539f
   reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
@@ -43,12 +43,12 @@ generated:
   start-the-poll: 2230fbd6a77fa9f6
   managing-polls: 301e2f77ba8cb7da
   edit-poll: e8a3a23ee27ba8e5
-  make-a-copy: '0668e2a371826ac7'
   notification-history: cbcb5b02bfc2d579
   export-poll: 591f9cc02be87cb2
   print: 26126b674c3fbb7e
   delete: 1e0a0d0a1becaf73
   save-bookmark: a96ae6e16f6024d9
+  save-as-template: 2f1f681d0731b2a3
 title_source: 74a883a037bc227f
 title_generated: 76b0fb6ad18939ac
 ---
@@ -132,6 +132,8 @@ Isso é útil para dar tempo à discussão antes do início da votação ou para
 Por exemplo, se seu grupo tiver várias decisões para votar em uma próxima assembleia, você pode preparar as enquetes e adicionar os eleitores com antecedência, depois agendar todas para abrir quando o período de votação começar. As pessoas podem ver as enquetes antes da abertura, mas não podem votar antecipadamente.
 
 Quando uma enquete tem um horário de abertura agendado, você pode adicionar eleitores antes do início da votação. Os eleitores receberão uma notificação quando a votação começar, em vez de quando forem adicionados.
+
+Para iniciar a votação antes do horário agendado, selecione **Editar enquete de escolha**, marque **A votação começa imediatamente.** e salve.
 
 **Notificar eleitores quando a enquete abrir:** Quando esta opção está marcada (padrão), todos os eleitores recebem uma notificação quando a votação começa. Desmarque esta opção se quiser iniciar a votação sem enviar notificações.
 
@@ -231,11 +233,13 @@ Abra o menu de três pontos no canto inferior direito da enquete.
 
 Use **Editar enquete de escolha** para editar o conteúdo ou as configurações da enquete.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Fazer uma cópia
+### Salvar como modelo
 
-Use **Faça uma cópia** para criar uma nova enquete usando a enquete atual e suas configurações como ponto de partida.
+Use **Salvar como modelo** no menu de ações de uma enquete para reutilizar seu conteúdo, opções de voto, explicações e configurações. Revise o formulário de modelo preenchido previamente, dê um nome e um subtítulo ao modelo e selecione **Salvar modelo**. As pessoas do grupo poderão então escolhê-lo ao iniciar uma nova enquete.
+
+Admins do grupo podem salvar modelos. Os membros também podem salvá-los quando **Os membros podem criar modelos.** estiver habilitado nas permissões do grupo. Consulte [Modelos de enquete](/en/user_manual/polls/poll_templates) para mais detalhes.
 
 <!-- translation-section: notification-history -->
 

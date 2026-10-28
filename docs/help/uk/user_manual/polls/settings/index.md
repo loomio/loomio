@@ -1,10 +1,10 @@
 ---
 title: Налаштування
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: 6dd7fee001d74242
   setting-up-a-proposal-or-poll: e0f9bc6b7d0321c9
@@ -34,7 +34,7 @@ generated:
   add-content: 895fd893ac0cb2ba
   voting-options: '094d517422cffc49'
   edit-voting-options: 8839c76792a4b2ac
-  opening-time: 061dc7ec3d33a3d4
+  opening-time: 0a34a84c51643ecf
   more-settings: 68aeb45fb83bc080
   reminder: 97c156082524dd66
   anonymous-voting: 8b458204a781dedb
@@ -43,12 +43,12 @@ generated:
   start-the-poll: 2262820048977c68
   managing-polls: 1d2af0afe90f5343
   edit-poll: 1cd998d22212ceee
-  make-a-copy: ea9610d8b5c6d010
   notification-history: 4d82f5089947cb5a
   export-poll: '090165663946a60d'
   print: d0f86d20222543b6
   delete: 031fd0fc38d6d399
   save-bookmark: 6ca59c40fe994ea6
+  save-as-template: 4160ad14300a6cd6
 title_source: 74a883a037bc227f
 title_generated: 16e671aa4e14998b
 needs_review:
@@ -135,6 +135,8 @@ needs_review:
 Наприклад, якщо ваша група має проголосувати щодо кількох рішень на майбутніх зборах, ви можете заздалегідь підготувати опитування й додати виборців, а потім запланувати відкриття всіх опитувань на початок періоду голосування. Люди можуть переглядати опитування до їхнього відкриття, але не можуть голосувати завчасно.
 
 Якщо для опитування заплановано час відкриття, ви можете додавати виборців до початку голосування. Виборці отримають сповіщення під час відкриття голосування, а не під час їхнього додавання.
+
+Щоб відкрити голосування раніше запланованого часу, виберіть **Редагувати опитування**, встановіть позначку **Голосування відкривається негайно** та збережіть зміни.
 
 **Сповістити виборців, коли опитування відкриється:** Якщо позначку встановлено (за замовчуванням), усі виборці отримають сповіщення, коли голосування відкриється. Зніміть позначку, якщо хочете відкрити голосування без надсилання сповіщень.
 
@@ -234,11 +236,13 @@ needs_review:
 
 Виберіть **Редагувати опитування**, щоб змінити вміст або налаштування опитування.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Зробити копію
+### Зберегти як шаблон
 
-Виберіть **Зробіть копію**, щоб створити нове опитування на основі поточного опитування та його налаштувань.
+Виберіть **Зберегти як шаблон** у меню дій опитування, щоб повторно використати його вміст, варіанти для голосування, пояснення та налаштування. Перегляньте попередньо заповнену форму шаблону, додайте назву й підзаголовок шаблону та виберіть **Зберегти шаблон**. Після цього учасники групи зможуть вибирати його під час створення нового опитування.
+
+Адміністратори групи можуть зберігати шаблони. Учасники також можуть зберігати їх, якщо в налаштуваннях дозволів групи ввімкнено **Учасники можуть створювати шаблони**. Докладніше див. у розділі [Шаблони опитувань](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

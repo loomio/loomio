@@ -1,10 +1,10 @@
 ---
 title: Impostazioni
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: 8ca1ef9413b5fc51
   setting-up-a-proposal-or-poll: 35ef8639f23a61f8
@@ -34,7 +34,7 @@ generated:
   add-content: 367cac67db5d031f
   voting-options: eb1768f770b58c82
   edit-voting-options: b5d0c05af51fbac4
-  opening-time: de9b07e7104212c2
+  opening-time: 409effb0131ee89b
   more-settings: d67937a9b83269cd
   reminder: 522e54360b5663b3
   anonymous-voting: 623409b0b84a8a2f
@@ -43,12 +43,12 @@ generated:
   start-the-poll: ae6e267103f7db9d
   managing-polls: 9f6bb577125aa07e
   edit-poll: c0e9dfcf12cf21c1
-  make-a-copy: 7aa3bed7a295927e
   notification-history: '07369e9798cbcb2f'
   export-poll: 756059a1f6fa5cd3
   print: 0362fdef2618198f
   delete: af03445a901c505d
   save-bookmark: c133640f8d660ba5
+  save-as-template: d0eb83b79d9534a0
 title_source: 74a883a037bc227f
 title_generated: 7b855ce7525ebc18
 ---
@@ -132,6 +132,8 @@ Questo permette di lasciare tempo per la discussione prima dell'apertura delle v
 Ad esempio, se il tuo gruppo deve votare su diverse decisioni in una prossima assemblea, puoi preparare i sondaggi e aggiungere gli elettori in anticipo, poi programmarli tutti perché si aprano all'inizio del periodo di voto. Le persone possono vedere i sondaggi prima dell'apertura, ma non possono votare in anticipo.
 
 Quando un sondaggio ha un'apertura programmata, puoi aggiungere gli elettori prima dell'apertura delle votazioni. Gli elettori riceveranno una notifica all'apertura delle votazioni, anziché quando vengono aggiunti.
+
+Per aprire le votazioni prima dell'orario programmato, seleziona **Modifica sondaggio**, seleziona **Le votazioni si aprono immediatamente** e salva.
 
 **Notifica gli elettori all'apertura del sondaggio:** Quando questa opzione è selezionata (impostazione predefinita), tutti gli elettori ricevono una notifica all'apertura delle votazioni. Deselezionala se vuoi aprire le votazioni senza inviare notifiche.
 
@@ -231,11 +233,13 @@ Apri il menu con i tre puntini in basso a destra nel sondaggio.
 
 Usa **Modifica sondaggio** per modificare il contenuto o le impostazioni del sondaggio.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Fai una copia
+### Salva come modello
 
-Usa **Fai una copia** per creare un nuovo sondaggio usando il sondaggio attuale e le sue impostazioni come punto di partenza.
+Usa **Salva come modello** nel menu delle azioni di un sondaggio per riutilizzarne il contenuto, le opzioni di voto, le spiegazioni e le impostazioni. Controlla il modulo del modello precompilato, assegna al modello un nome e un sottotitolo e seleziona **Salva modello**. Le persone del gruppo potranno poi sceglierlo quando avviano un nuovo sondaggio.
+
+Gli amministratori del gruppo possono salvare modelli. Anche i membri possono salvarli quando **I membri possono creare modelli** è abilitato nelle autorizzazioni del gruppo. Per maggiori dettagli, consulta [Modelli di sondaggio](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

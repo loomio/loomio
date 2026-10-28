@@ -343,6 +343,7 @@ he:
       unredact: לְשַׁחְזֵר
       export_json: ייצוא json
       import_json: ייבוא json
+      save_as_template: שמירה כתבנית
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -2144,6 +2145,7 @@ he:
     pct_of_eligible_vote_weight: "% ממשקל ההצבעה של בעלי זכות ההצבעה"
     pct_of_vote_weight_cast: "% ממשקל ההצבעה שמומש"
     pct_of_assigned_vote_weight: "% ממשקל ההצבעה שהוקצה"
+    reuse_voting_options_and_settings: תבניות מאפשרות לכל מי שבקבוצה להשתמש שוב באפשרויות ההצבעה, בהסברים ובהגדרות. יש לבדוק את התוכן לדוגמה לפני השמירה, ואז לבחור בתבנית כשפותחים סקר חדש
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:

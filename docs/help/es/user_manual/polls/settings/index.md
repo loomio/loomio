@@ -1,10 +1,10 @@
 ---
 title: Configuración
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: d6e6465a941f05cc
   setting-up-a-proposal-or-poll: bb36970da131d96f
@@ -34,7 +34,7 @@ generated:
   add-content: c4be9624dffcbb7e
   voting-options: d66fbd0a4522aa98
   edit-voting-options: e773bdbcc7894d29
-  opening-time: 500d89370b4e9875
+  opening-time: 3e17f0d2bd093487
   more-settings: 3519ac4ed701ef08
   reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
@@ -43,12 +43,12 @@ generated:
   start-the-poll: 4a14fd3145c3e39b
   managing-polls: 3711abc9c32d6f77
   edit-poll: 37ec4c799be29490
-  make-a-copy: 1d5735a95c25da75
   notification-history: ffdba555bbd69a46
   export-poll: bb706aea38b9e931
   print: aaa8be85f0db958d
   delete: 308d1e3227e365db
   save-bookmark: 5bdb299d7db4dc71
+  save-as-template: 951653bc48b8f1f5
 title_source: 74a883a037bc227f
 title_generated: bb507137e3631379
 ---
@@ -132,6 +132,8 @@ Esto permite dejar tiempo para la discusión antes de que se abra la votación, 
 Por ejemplo, si tu grupo tiene varias decisiones que votar en una próxima asamblea, puedes preparar las encuestas y agregar votantes con antelación, y luego programarlas para que todas se abran cuando comience el periodo de votación. Las personas pueden ver las encuestas antes de que se abran, pero no pueden votar antes de tiempo.
 
 Cuando una encuesta tiene una hora de apertura programada, puedes agregar votantes antes de que se abra la votación. Los votantes recibirán una notificación cuando se abra la votación, en lugar de cuando los agregues.
+
+Para abrir la votación antes de la hora programada, selecciona **Editar encuesta**, marca **La votación se abre inmediatamente** y guarda los cambios.
 
 **Notificar a los votantes cuando se abra la encuesta:** Cuando esta opción está marcada (de forma predeterminada), todos los votantes recibirán una notificación cuando se abra la votación. Desmárcala si quieres abrir la votación sin enviar notificaciones.
 
@@ -231,11 +233,13 @@ Abre el menú de tres puntos en la parte inferior derecha de la encuesta.
 
 Usa **Editar encuesta** para editar el contenido o la configuración de la encuesta.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Haz una copia
+### Guardar como plantilla
 
-Usa **Haz una copia** para crear una nueva encuesta tomando como punto de partida la encuesta actual y su configuración.
+Usa **Guardar como plantilla** en el menú de acciones de una encuesta para reutilizar su contenido, opciones de voto, explicaciones y configuración. Revisa el formulario de la plantilla con los campos ya rellenados, dale un nombre y un subtítulo a la plantilla y selecciona **Guardar plantilla**. Las personas del grupo podrán elegirla al iniciar una nueva encuesta.
+
+Los admins del grupo pueden guardar plantillas. Los miembros también pueden guardarlas cuando **Los miembros pueden crear plantillas** está activado en los permisos del grupo. Consulta [Plantillas de encuestas](/en/user_manual/polls/poll_templates) para obtener más detalles.
 
 <!-- translation-section: notification-history -->
 

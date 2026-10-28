@@ -343,6 +343,7 @@ es:
       unredact: Restaurar
       export_json: Exportar json
       import_json: Importar json
+      save_as_template: Guardar como plantilla
     formatting_help:
       label: 'Formato '
       title: Aprende a usar Markdown para dar formato a tu texto
@@ -2159,6 +2160,7 @@ es:
     pct_of_eligible_vote_weight: "% del peso del voto elegible"
     pct_of_vote_weight_cast: "% del peso del voto emitido"
     pct_of_assigned_vote_weight: "% del peso del voto asignado"
+    reuse_voting_options_and_settings: Las plantillas permiten a cualquiera de tu grupo reutilizar opciones de voto, explicaciones y ajustes. Revisa el contenido de ejemplo antes de guardar y elige la plantilla al crear una nueva encuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:

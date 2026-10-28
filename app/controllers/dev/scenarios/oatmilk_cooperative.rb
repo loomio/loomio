@@ -1245,6 +1245,10 @@ module Dev::Scenarios::OatmilkCooperative
 
     if params[:view] == 'edit'
       redirect_to "/poll_templates/#{template.id}/edit"
+    elsif params[:view] == 'new'
+      redirect_to "/poll_templates/new?template_id=#{template.id}&group_id=#{group.id}"
+    elsif params[:view] == 'list'
+      redirect_to "/p/new?group_id=#{group.id}"
     else
       redirect_to discussion_path(discussion)
     end
@@ -1307,6 +1311,27 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     sign_in coordinator
+    redirect_to poll_path(poll)
+  end
+
+  def setup_manual_oatmilk_consent_process
+    group, admin, = create_manual_oatmilk_cooperative
+    poll = PollService.create(params: {
+      group_id: group.id,
+      title: 'Require two approvals for payments over $2,000',
+      details: '<p><strong>Proposed policy change</strong><br>Require two members to approve any payment over $2,000, starting next month.</p><p><strong>Reason for the change</strong><br>We currently rely on one person to check large payments. A second approval will help catch mistakes and keep spending within the budget agreed by the group.</p><p><strong>Consent check</strong><br>Jamie will document the approval steps and arrange a backup approver. We will review the policy after three months. Please raise any risks that need addressing before we adopt it.</p>',
+      details_format: 'html', poll_type: 'proposal', poll_option_name_format: 'plain',
+      tags: ['Policy', 'Consent'], shuffle_options: false, stance_reason_required: 'required', closing_at: 7.days.from_now,
+      poll_options_attributes: [
+        {name: 'Consent', icon: 'agree', meaning: 'I support trying this policy change',
+         prompt: 'How will this change help the group?'},
+        {name: 'Consent with concerns', icon: 'abstain', meaning: 'I can work with this change and have concerns to record',
+         prompt: 'What should we monitor or review?'},
+        {name: 'Objection', icon: 'disagree', meaning: 'I see a risk the group needs to address before proceeding',
+         prompt: 'What needs to change to address the risk?', test_operator: 'lte', test_percent: 0, test_against: 'score_percent'}
+      ]
+    }, actor: admin)
+    sign_in admin
     redirect_to poll_path(poll)
   end
 
@@ -1497,9 +1522,11 @@ module Dev::Scenarios::OatmilkCooperative
       process_name: source.process_name,
       process_subtitle: source.process_subtitle,
       process_introduction: source.process_introduction,
+      process_introduction_format: source.process_introduction_format,
       title: source.title,
       title_placeholder: source.title_placeholder,
       details: source.details,
+      details_format: source.details_format,
       reason_prompt: source.reason_prompt,
       outcome_statement: source.outcome_statement,
       default_duration_in_days: source.default_duration_in_days,
@@ -1592,18 +1619,22 @@ module Dev::Scenarios::OatmilkCooperative
       group: group,
       author: coordinator,
       poll_type: 'proposal',
-      process_name: 'Bottle trial readiness review',
-      process_subtitle: 'Check whether the returnable bottle trial is ready to start',
-      process_introduction: '<p>Use this review before starting a bottle trial. Invite advice from people responsible for cafe collections, washing, food safety, and reporting.</p>',
-      title: 'Is the returnable bottle trial ready to start?',
-      details: '<p>Review the collection schedule, deposit guidance, washing workflow, food-safety checks, and return-rate reporting.</p>',
-      reason_prompt: 'What is ready, and what needs attention before the trial starts?',
-      outcome_statement: 'Record whether the trial will start and any work that must be completed first.',
-      default_duration_in_days: 5,
+      process_name: 'Policy change consent process',
+      process_subtitle: 'Reach consent on changes to group policies',
+      process_introduction: '<p>Use this process when a proposed change affects group policies or member responsibilities.</p><p>Before opening voting, explain the change, who it affects, and any risks or limits.</p><p>A policy change passes when no objections remain. Work with anyone who objects to address the risk and amend the proposal as needed.</p>',
+      process_introduction_format: 'html',
+      title: 'Policy change: [short description]',
+      title_placeholder: 'Name the policy and proposed change',
+      details: '<p><strong>Proposed policy change</strong><br>Describe what would change and who would be affected.</p><p><strong>Reason for the change</strong><br>Explain the problem this addresses and any risks or limits.</p><p><strong>Consent check</strong><br>Give consent if the proposal is good enough and safe to try. If you object, explain the risk and suggest a change.</p>',
+      details_format: 'html',
+      tags: ['Policy', 'Consent'], shuffle_options: false, stance_reason_required: 'required',
+      reason_prompt: 'Explain your response and suggest any changes needed',
+      outcome_statement: '<p>Record the agreed policy change, who will implement it, and when it will be reviewed.</p>',
+      default_duration_in_days: 7,
       poll_options: [
-        {name: 'Ready', icon: 'agree', color: '#70C9F8', meaning: 'The trial can start as planned.', prompt: 'What gives you confidence the trial is ready?'},
-        {name: 'Needs work', icon: 'abstain', color: '#C8E56E', meaning: 'Some work should be completed before launch.', prompt: 'What needs attention before the trial starts?'},
-        {name: 'Not ready', icon: 'disagree', color: '#D38FE1', meaning: 'A significant issue prevents the trial from starting.', prompt: 'What issue must be resolved?'}
+        {name: 'Consent', icon: 'agree', meaning: 'I support trying this policy change', prompt: 'How will this change help the group?'},
+        {name: 'Consent with concerns', icon: 'abstain', meaning: 'I can work with this change and have concerns to record', prompt: 'What should we monitor or review?'},
+        {name: 'Objection', icon: 'disagree', meaning: 'I see a risk the group needs to address before proceeding', prompt: 'What needs to change to address the risk?', test_operator: 'lte', test_percent: 0, test_against: 'score_percent'}
       ]
     )
   end

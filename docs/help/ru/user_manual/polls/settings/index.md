@@ -1,10 +1,10 @@
 ---
 title: Настройки
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: a0c1e3a0ab2e3022
   setting-up-a-proposal-or-poll: 8646cfa98265ba26
@@ -34,7 +34,7 @@ generated:
   add-content: 1cd13f03020c0afc
   voting-options: e7abfa61e8294ba5
   edit-voting-options: 85a80574f956ba54
-  opening-time: 7ad8f4361c0206f6
+  opening-time: 3b2c160aeb226028
   more-settings: b4f56f447860aa7a
   reminder: e9ee0a26fc25f292
   anonymous-voting: 075d4da36503b6e9
@@ -43,12 +43,12 @@ generated:
   start-the-poll: fbfbeada262ca03a
   managing-polls: 24208e2b7439b5ce
   edit-poll: 8802eb896c3615ce
-  make-a-copy: 27d56747b62f4a7a
   notification-history: 3c690110e72be1b5
   export-poll: fb5fa3aa07a7e259
   print: 5a298044f4fbc529
   delete: 8a84ef2280808dd0
   save-bookmark: 102030953f320dcf
+  save-as-template: e7880664d07e8f1c
 title_source: 74a883a037bc227f
 title_generated: 985b5e0f2ccf1ba0
 ---
@@ -132,6 +132,8 @@ title_generated: 985b5e0f2ccf1ba0
 Например, если на предстоящем собрании вашей группе нужно проголосовать по нескольким решениям, вы можете заранее подготовить опросы и добавить голосующих, а затем запланировать открытие всех опросов на начало периода голосования. Люди смогут увидеть опросы до их открытия, но не смогут проголосовать заранее.
 
 Если для опроса запланировано время открытия, вы можете заранее добавить голосующих. Они получат уведомление при открытии голосования, а не при добавлении в опрос.
+
+Чтобы открыть голосование раньше запланированного времени, выберите **Редактировать опрос**, установите флажок **Голосование открывается немедленно.** и сохраните изменения.
 
 **Уведомить голосующих при открытии опроса:** Если флажок установлен (по умолчанию), все голосующие получат уведомление при открытии голосования. Снимите флажок, если хотите открыть голосование без отправки уведомлений.
 
@@ -231,11 +233,13 @@ title_generated: 985b5e0f2ccf1ba0
 
 Выберите **Редактировать опрос**, чтобы изменить содержание или настройки опроса.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Создание копии
+### Сохранить как шаблон
 
-Выберите **Сделать копию**, чтобы создать новый опрос на основе текущего опроса и его настроек.
+Используйте **Сохранить как шаблон** в меню действий опроса, чтобы повторно использовать его содержимое, варианты для голосования, пояснения и настройки. Проверьте предварительно заполненную форму шаблона, укажите название и подзаголовок и выберите **Сохранить шаблон**. После этого участники группы смогут выбирать этот шаблон при создании нового опроса.
+
+Администраторы группы могут сохранять шаблоны. Участники группы также могут сохранять их, если в настройках разрешений группы включена настройка **Участники могут создавать шаблоны.** Подробнее см. в разделе [Шаблоны опросов](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

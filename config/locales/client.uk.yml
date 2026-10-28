@@ -343,6 +343,7 @@ uk:
       unredact: Відновити
       export_json: Експортувати JSON
       import_json: Імпорт JSON
+      save_as_template: Зберегти як шаблон
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -2151,6 +2152,7 @@ uk:
     pct_of_eligible_vote_weight: "% ваги голосу виборців із правом голосу"
     pct_of_vote_weight_cast: "% відданої ваги голосу"
     pct_of_assigned_vote_weight: "% призначеної ваги голосу"
+    reuse_voting_options_and_settings: Шаблони дають усім у вашій групі змогу повторно використовувати варіанти голосування, пояснення й налаштування. Перегляньте приклад вмісту перед збереженням, а потім виберіть шаблон, коли створюватимете нове опитування
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:

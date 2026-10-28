@@ -343,6 +343,7 @@ ru:
       unredact: Восстановить
       export_json: Экспорт в формате JSON
       import_json: Импортировать json
+      save_as_template: Сохранить как шаблон
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -2125,6 +2126,7 @@ ru:
     pct_of_eligible_vote_weight: "% доступного веса голосов"
     pct_of_vote_weight_cast: "% веса поданных голосов"
     pct_of_assigned_vote_weight: "% назначенного веса голосов"
+    reuse_voting_options_and_settings: Шаблоны позволяют всем в вашей группе повторно использовать варианты ответа, пояснения и настройки. Проверьте примеры перед сохранением, затем выберите шаблон при создании нового опроса
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:

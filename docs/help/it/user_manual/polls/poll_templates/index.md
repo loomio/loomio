@@ -1,36 +1,36 @@
 ---
 title: Modelli di sondaggio
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/poll_templates/index.md
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
-  introduction: f11182d62d99dbcc
-  voting-methods-and-templates: 24be471686aa2dfd
-  use-a-template: 8b19cdf141c41c9b
-  who-can-manage-templates: 60218ef791438e19
-  create-a-poll-template: c20dd8c57c3deab0
-  template-title-subtitle-and-help: 3ad53a8b118aabd3
-  voting-method: 761137852812fea8
-  example-title-details-and-tags: 9dbbd0510d2d6cc1
-  response-options: 727afbf0dcea6069
-  duration-and-settings: a364411a3bebb3ae
-  save-and-test-the-template: 8c48386c69ea309a
-  manage-the-template-list: 0c124d7958c3f80a
+  introduction: a535465485cdbc13
+  who-can-manage-templates: 6c3d5e693cd1dfdc
+  create-a-poll-template: 0fafc6275b6c9153
+  template-title-subtitle-and-help: fba07d32acbd9707
+  voting-method: 521873388e929bad
+  example-title-details-and-tags: 664997906f52f40c
+  response-options: 53b3f1f6d01353f2
+  duration-and-settings: 81c3c1bc8b33d5bb
+  manage-the-template-list: 76e78b8a60f1d08c
+  save-a-poll-as-a-template: 36dc7b5d410d0eea
+  start-a-new-template: 4f14910d88b22de8
+  configure-the-template: 9e620830fa0955f9
 generated:
-  introduction: 49745e96294b0830
-  voting-methods-and-templates: cef5904fcc581fc1
-  use-a-template: 0f0c96c11c2a08f3
-  who-can-manage-templates: 055e27518e741805
-  create-a-poll-template: a2c73cab05fe74c8
-  template-title-subtitle-and-help: 947ed154868d5e60
-  voting-method: a802f0bb747a835f
-  example-title-details-and-tags: ff1de4d5ee6887da
-  response-options: 35fa9dcc69d39731
-  duration-and-settings: 102809d90d7585c8
-  save-and-test-the-template: 2ca4b9320d340233
-  manage-the-template-list: 155f5605c52b3801
+  introduction: 01d6fe334146a8de
+  who-can-manage-templates: 0cdd889436df0e8b
+  create-a-poll-template: 7ae714a8da3ec346
+  template-title-subtitle-and-help: 2835fe16d44e43fc
+  voting-method: 37303dd5db004952
+  example-title-details-and-tags: f0e315108f2d6826
+  response-options: 15851ee2efd41ddf
+  duration-and-settings: 6de353f97dfa7265
+  manage-the-template-list: 64597c751858b1d3
+  save-a-poll-as-a-template: de64c8c664a56966
+  start-a-new-template: 87cf012ae10f52a8
+  configure-the-template: c3a64495b439fd35
 title_source: 114cca246e357304
 title_generated: ea088d8e86a3eb3c
 ---
@@ -43,61 +43,51 @@ I modelli di sondaggio sono punti di partenza riutilizzabili mostrati quando qua
 
 Usa questa pagina per configurare quali modelli sono disponibili per un gruppo o per crearne uno per il tuo processo. Per scegliere un modello per una votazione specifica, consulta [Proposte](../proposals/) o [Sondaggi](../proposal_types/). Per facilitare un intero processo decisionale, consulta [Prendere decisioni](/en/guides/making_decisions/).
 
-<!-- translation-section: voting-methods-and-templates -->
-
-## Metodi di voto e modelli
-
-Un metodo di voto determina come rispondono i partecipanti e come Loomio calcola il risultato. Alcuni esempi sono Proposta, Scelta, Punteggio, Ripartizione, Classifica, Sondaggio appuntamento e STV.
-
-Un modello di sondaggio usa uno di questi metodi e aggiunge impostazioni predefinite riutilizzabili. Ad esempio, Verifica delle opinioni, Consiglio, Consenso e Consenso unanime sono modelli diversi basati sul metodo di voto Proposta. Le loro istruzioni e opzioni di risposta sono diverse, anche se Loomio gestisce i relativi voti nello stesso modo.
-
-<!-- translation-section: use-a-template -->
-
-## Usa un modello
-
 Quando avvii una votazione, seleziona la scheda **Proposta** o **Sondaggio** e scegli uno dei modelli disponibili per il gruppo.
 
-![](proposal_templates_list.png)
-
 Il modello fornisce un'introduzione, contenuti di esempio, opzioni e impostazioni. Controllali e modificali in base alla decisione specifica prima di avviare la votazione. Modificare la nuova votazione non cambia il modello riutilizzabile.
-
-<!-- translation-section: who-can-manage-templates -->
-
-## Chi può gestire i modelli
-
-Gli amministratori del gruppo possono creare e gestire tutti i modelli di sondaggio del proprio gruppo. Possono attivare **I membri possono creare modelli** in **Impostazioni del gruppo** → **Permessi**. Quando questa impostazione è attiva, i membri possono creare modelli e gestire quelli che hanno creato.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## Crea un modello di sondaggio
 
+<!-- translation-section: save-a-poll-as-a-template -->
+
+### Salva come modello
+
+Per riutilizzare una proposta o un sondaggio esistente, apri il relativo menu delle azioni e seleziona **Salva come modello**.
+
+![Una proposta con il menu delle azioni aperto e Salva come modello evidenziato](save_as_template.png)
+
+Le date della votazione, gli elettori, i voti, i risultati e la conclusione del sondaggio non vengono salvati nel modello.
+
+<!-- translation-section: start-a-new-template -->
+
+### Crea un nuovo modello
+
 Apri l'elenco dei modelli e seleziona **Nuovo modello**. Parti da un esempio o da un modello vuoto, poi scegli il gruppo che lo userà.
 
 ![](proposal_template_setting.png)
 
-Il modulo del modello definisce le indicazioni e le impostazioni predefinite che le persone ricevono quando avviano una votazione.
+<!-- translation-section: configure-the-template -->
 
-![](poll_template_new.png)
+### Configura il modello
+
+Assegna al modello un nome e un sottotitolo che descrivano quando usarlo. Puoi modificare qualsiasi altro campo per renderlo più adatto al riutilizzo. Dopo aver selezionato **Salva modello**, il modello apparirà nell'elenco quando le persone avviano una nuova proposta o un nuovo sondaggio.
+
+[![Il modulo completo del modello Processo di consenso per una modifica al regolamento](poll_template_new.png)](poll_template_new.png)
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-### Titolo, sottotitolo e aiuto del modello
+#### Titolo, sottotitolo e aiuto del modello
 
-- **Titolo del modello** è il nome breve mostrato nell'elenco dei modelli.
-- **Sottotitolo del modello** spiega in una frase quando usarlo.
-- **Aiuto modello** appare nel pannello informativo quando qualcuno usa il modello. Spiega il suo scopo e le regole che i partecipanti devono conoscere, e aggiungi link a regolamenti o guide pertinenti.
-
-![](template_WAAP_intro.png)
-
-Usa nomi semplici e specifici che distinguano il modello dagli altri del gruppo.
+Usa il titolo e il sottotitolo per spiegare quando scegliere il modello. Inserisci indicazioni sul processo, regole decisionali e link a risorse in **Aiuto modello**.
 
 <!-- translation-section: voting-method -->
 
-### Metodo di voto
+#### Metodo di voto
 
 Scegli cosa devono esprimere i partecipanti e come deve essere calcolato il risultato.
-
-![](poll_type_voting_method.png)
 
 - **Proposta**: rispondere a un'affermazione usando posizioni definite;
 - **Scegliere**: selezionare una o più opzioni;
@@ -111,17 +101,13 @@ Cambiare il metodo di voto modifica i campi e il calcolo del risultato disponibi
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### Titolo, dettagli e tag di esempio
+#### Titolo, dettagli e tag di esempio
 
-Fornisci contenuti di esempio che aiutino chi crea la votazione a impostarla. Questi valori vengono copiati in una nuova proposta o in un nuovo sondaggio e possono essere modificati prima dell'avvio.
-
-![](template_WAAP_details.png)
-
-Usa suggerimenti per la compilazione invece di contenuti fissi quando ogni utilizzo richiede un titolo o dettagli diversi. Aggiungi tag di categoria predefiniti solo quando si applicano a ogni utilizzo del modello.
+Usa suggerimenti per la compilazione del titolo e dei dettagli di esempio quando ogni votazione richiede contenuti diversi. Aggiungi tag di categoria predefiniti solo quando si applicano a ogni utilizzo del modello.
 
 <!-- translation-section: response-options -->
 
-### Opzioni di risposta
+#### Opzioni di risposta
 
 Metodi come Proposta e Scelta ti permettono di configurare le opzioni di risposta. Seleziona l'icona della matita accanto a un'opzione per modificare:
 
@@ -136,23 +122,15 @@ Definisci le opzioni in modo che i partecipanti possano distinguerle senza dover
 
 <!-- translation-section: duration-and-settings -->
 
-### Durata e impostazioni
+#### Durata e impostazioni
 
 Imposta una durata predefinita adatta alla maggior parte degli utilizzi del modello. Chi crea la votazione può modificarne l'orario di chiusura.
 
-![](poll_type_duration.png)
-
 Altre impostazioni predefinite possono controllare la visibilità dei risultati, il voto anonimo, il [voto ponderato](../weighted_voting/), l'obbligo di fornire un motivo per il voto, i promemoria, il quorum e il comportamento specifico del metodo. Consulta [Impostazioni di proposte e sondaggi](../settings/) per conoscerne gli effetti.
-
-<!-- translation-section: save-and-test-the-template -->
-
-### Salva e prova il modello
-
-Dopo aver salvato, avvia una bozza di votazione dal modello. Verifica che l'introduzione, le richieste, le opzioni e le impostazioni predefinite siano comprensibili anche a chi non lo ha creato. Avviare una bozza è anche un modo utile per verificare che il metodo di voto scelto produca il risultato atteso dal gruppo.
 
 <!-- translation-section: manage-the-template-list -->
 
-## Gestisci l'elenco dei modelli
+## Gestione dei modelli
 
 Usa il menu delle azioni accanto a un modello per:
 
@@ -161,10 +139,14 @@ Usa il menu delle azioni accanto a un modello per:
 - **Nascondere**: nasconderlo alle persone che avviano votazioni; oppure
 - **Cancella**: eliminare un modello personalizzato che non serve più.
 
-![](template_manage.png)
+![L'elenco dei modelli del gruppo con il menu delle azioni del modello Processo di consenso per una modifica al regolamento aperto](template_manage.png)
 
 Seleziona **Mostra modelli nascosti** per controllare o ripristinare i modelli nascosti. I modelli predefiniti possono essere nascosti o adattati al gruppo, ma non possono essere eliminati.
 
-![](template_manage_settings.png)
-
 Modificare un modello non cambia le proposte o i sondaggi già avviati a partire da quel modello.
+
+<!-- translation-section: who-can-manage-templates -->
+
+### Chi può gestire i modelli
+
+Gli amministratori del gruppo possono creare e gestire tutti i modelli di sondaggio del proprio gruppo. Possono attivare **I membri possono creare modelli** in **Impostazioni del gruppo** → **Permessi**. Quando questa impostazione è attiva, i membri possono creare modelli e gestire quelli che hanno creato.

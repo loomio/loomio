@@ -72,6 +72,10 @@ export default {
           title: 'poll_common_form.voting_methods.question',
           hint: 'poll_common_form.voting_methods.question_hint'
         },
+        stv: {
+          title: 'poll_common_form.voting_methods.stv',
+          hint: 'poll_common_form.voting_methods.stv_hint'
+        },
       },
 
       currentHideResults: this.pollTemplate.hideResults,
@@ -242,6 +246,9 @@ export default {
         common-icon(name="mdi-close")
 
     v-card-text
+      v-alert.poll-template-form__help.mb-6(v-if="pollTemplate.isNew()" type="info" variant="tonal")
+        span {{ t('poll_common.reuse_voting_options_and_settings') }}
+        help-link.ml-1(path="user_manual/polls/poll_templates")
       v-form#poll-template-form(ref="form" @submit.prevent="submit")
         v-select(
           :label="$t('poll_common_form.voting_method')"

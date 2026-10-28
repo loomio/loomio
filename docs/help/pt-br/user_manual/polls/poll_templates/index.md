@@ -1,36 +1,36 @@
 ---
 title: Modelos de enquetes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/poll_templates/index.md
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
-  introduction: f11182d62d99dbcc
-  voting-methods-and-templates: 24be471686aa2dfd
-  use-a-template: 8b19cdf141c41c9b
-  who-can-manage-templates: 60218ef791438e19
-  create-a-poll-template: c20dd8c57c3deab0
-  template-title-subtitle-and-help: 3ad53a8b118aabd3
-  voting-method: 761137852812fea8
-  example-title-details-and-tags: 9dbbd0510d2d6cc1
-  response-options: 727afbf0dcea6069
-  duration-and-settings: a364411a3bebb3ae
-  save-and-test-the-template: 8c48386c69ea309a
-  manage-the-template-list: 0c124d7958c3f80a
+  introduction: a535465485cdbc13
+  who-can-manage-templates: 6c3d5e693cd1dfdc
+  create-a-poll-template: 0fafc6275b6c9153
+  template-title-subtitle-and-help: fba07d32acbd9707
+  voting-method: 521873388e929bad
+  example-title-details-and-tags: 664997906f52f40c
+  response-options: 53b3f1f6d01353f2
+  duration-and-settings: 81c3c1bc8b33d5bb
+  manage-the-template-list: 76e78b8a60f1d08c
+  save-a-poll-as-a-template: 36dc7b5d410d0eea
+  start-a-new-template: 4f14910d88b22de8
+  configure-the-template: 9e620830fa0955f9
 generated:
-  introduction: d52e61a641d86304
-  voting-methods-and-templates: 281dc3f57002e13d
-  use-a-template: 4b62a6860f706368
-  who-can-manage-templates: 68b6bb940a9b7e47
-  create-a-poll-template: 9cbff815d96d2c67
-  template-title-subtitle-and-help: be074b1beff3db7d
-  voting-method: a80ed623a6611169
-  example-title-details-and-tags: e4d9711ec1d02862
-  response-options: '01239d8e216c72e5'
-  duration-and-settings: f5d38860c91f5a1c
-  save-and-test-the-template: e882508f51a8cee7
-  manage-the-template-list: 80e396788168944b
+  introduction: 3a4a66d9acf40a3d
+  who-can-manage-templates: 83e2a396784e1044
+  create-a-poll-template: fee35008f18fdd60
+  template-title-subtitle-and-help: 86d596d6ac28dc9c
+  voting-method: a12adc208f147455
+  example-title-details-and-tags: 192e248ea918c454
+  response-options: 4c54ad4c6ee9de08
+  duration-and-settings: b834cfd461fd4a59
+  manage-the-template-list: 154c1395ab809a60
+  save-a-poll-as-a-template: a76addad156cf71e
+  start-a-new-template: 60083397d1c24ee5
+  configure-the-template: 05bf47fb258a6ddf
 title_source: 114cca246e357304
 title_generated: 38127cb43d236492
 ---
@@ -43,61 +43,51 @@ Modelos de enquetes são pontos de partida reutilizáveis exibidos quando algué
 
 Use esta página para configurar quais modelos estão disponíveis para um grupo ou para criar um modelo para seu próprio processo. Para escolher um modelo para uma votação específica, consulte [Propostas](../proposals/) ou [Enquetes](../proposal_types/). Para facilitar um processo completo de decisão, consulte [Como tomar decisões](/en/guides/making_decisions/).
 
-<!-- translation-section: voting-methods-and-templates -->
-
-## Métodos de votação e modelos
-
-Um método de votação determina como os participantes respondem e como o Loomio calcula o resultado. Alguns exemplos são Proposta, Escolher, Pontuar, Distribuir, Classificar, Enquete de horário e STV.
-
-Um modelo de enquete usa um desses métodos e acrescenta padrões reutilizáveis. Por exemplo, Verificação de opinião, Aconselhamento, Consentimento e Consenso são modelos diferentes baseados no método de votação Proposta. Suas instruções e opções de resposta são diferentes, embora o Loomio processe seus votos da mesma maneira.
-
-<!-- translation-section: use-a-template -->
-
-## Use um modelo
-
 Ao iniciar uma votação, selecione a aba **Proposta** ou **Enquete** e escolha um dos modelos disponíveis para o grupo.
 
-![](proposal_templates_list.png)
-
 O modelo fornece uma introdução, conteúdo de exemplo, opções e configurações. Revise e edite esses elementos para a decisão específica antes de iniciar a votação. Editar a nova votação não altera o modelo reutilizável.
-
-<!-- translation-section: who-can-manage-templates -->
-
-## Quem pode gerenciar modelos
-
-Os administradores do grupo podem criar e gerenciar todos os modelos de enquetes do seu grupo. Eles podem ativar **Os membros podem criar modelos.** em **Configurações do grupo** → **Permissões**. Quando essa opção está ativada, os membros podem criar modelos e gerenciar os modelos que criaram.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## Crie um modelo de enquete
 
+<!-- translation-section: save-a-poll-as-a-template -->
+
+### Salve como modelo
+
+Para reutilizar uma proposta ou enquete existente, abra seu menu de ações e selecione **Salvar como modelo**.
+
+![Uma proposta com o menu de ações aberto e Salvar como modelo em destaque](save_as_template.png)
+
+As datas de votação, os eleitores, os votos, os resultados e a conclusão da enquete não são salvos no modelo.
+
+<!-- translation-section: start-a-new-template -->
+
+### Inicie um novo modelo
+
 Abra a lista de modelos e selecione **Novo modelo**. Comece com um exemplo ou um modelo em branco e escolha o grupo que vai usá-lo.
 
 ![](proposal_template_setting.png)
 
-O formulário do modelo define as orientações e os padrões que as pessoas recebem ao iniciar uma votação.
+<!-- translation-section: configure-the-template -->
 
-![](poll_template_new.png)
+### Configure o modelo
+
+Dê ao modelo um nome e um subtítulo que descrevam quando usá-lo. Você pode modificar qualquer um dos outros campos para torná-los mais adequados para reutilização. Depois que você selecionar **Salvar modelo**, o modelo será listado quando as pessoas iniciarem uma nova proposta ou enquete.
+
+[![O formulário completo do modelo de processo de consentimento para alteração de política](poll_template_new.png)](poll_template_new.png)
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-### Título, subtítulo e ajuda do modelo
+#### Título, subtítulo e ajuda do modelo
 
-- **Título do modelo** é o nome curto exibido na lista de modelos.
-- **Modelo de legenda** explica em uma frase quando usar o modelo.
-- **Ajuda de modelo** aparece no painel de informações quando alguém usa o modelo. Explique sua finalidade e as regras que os participantes precisam conhecer, e inclua links para políticas ou guias relevantes.
-
-![](template_WAAP_intro.png)
-
-Use nomes simples e específicos que diferenciem o modelo dos demais no grupo.
+Use o título e o subtítulo para explicar quando escolher o modelo. Inclua orientações sobre o processo, regras de decisão e links para recursos em **Ajuda de modelo**.
 
 <!-- translation-section: voting-method -->
 
-### Método de votação
+#### Método de votação
 
 Escolha o que os participantes precisam expressar e como o resultado deve ser calculado.
-
-![](poll_type_voting_method.png)
 
 - **Proposta**: responder a uma afirmação usando posicionamentos definidos;
 - **Escolher**: selecionar uma ou mais opções;
@@ -111,17 +101,13 @@ Alterar o método de votação muda os campos e o cálculo do resultado disponí
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### Título, detalhes e tags de exemplo
+#### Título, detalhes e tags de exemplo
 
-Forneça conteúdo de exemplo que ajude o autor a estruturar a votação. Esses valores são copiados para uma nova proposta ou enquete e podem ser editados antes de ela começar.
-
-![](template_WAAP_details.png)
-
-Use orientações em vez de conteúdo fixo quando cada uso exigir um título ou detalhes diferentes. Adicione tags de categoria padrão apenas quando elas se aplicarem a todos os usos do modelo.
+Use orientações para o título e os detalhes de exemplo quando cada votação precisar de conteúdo diferente. Adicione tags de categoria padrão apenas quando elas se aplicarem a todos os usos do modelo.
 
 <!-- translation-section: response-options -->
 
-### Opções de resposta
+#### Opções de resposta
 
 Métodos como Proposta e Escolher permitem configurar opções de resposta. Selecione o ícone de lápis ao lado de uma opção para editar:
 
@@ -136,23 +122,15 @@ Defina as opções para que os participantes possam distinguir umas das outras s
 
 <!-- translation-section: duration-and-settings -->
 
-### Duração e configurações
+#### Duração e configurações
 
 Defina uma duração padrão adequada para a maioria dos usos do modelo. O autor pode alterar o horário de encerramento de uma votação específica.
 
-![](poll_type_duration.png)
-
 Outros padrões podem controlar a visibilidade dos resultados, a votação anônima, a [votação ponderada](../weighted_voting/), a exigência de motivos para os votos, os lembretes, o quórum e o comportamento específico de cada método. Consulte [Configurações de propostas e enquetes](../settings/) para entender seus efeitos.
-
-<!-- translation-section: save-and-test-the-template -->
-
-### Salve e teste o modelo
-
-Depois de salvar, crie um rascunho de votação a partir do modelo. Verifique se a introdução, as orientações, as opções e os padrões fazem sentido para alguém que não criou o modelo. Criar um rascunho também ajuda a confirmar que o método de votação escolhido produz o resultado que o grupo espera.
 
 <!-- translation-section: manage-the-template-list -->
 
-## Gerencie a lista de modelos
+## Gerencie os modelos
 
 Use o menu de ações ao lado de um modelo para:
 
@@ -161,10 +139,14 @@ Use o menu de ações ao lado de um modelo para:
 - **Esconder** o modelo das pessoas que iniciam votações; ou
 - **Deletar** um modelo personalizado que não é mais necessário.
 
-![](template_manage.png)
+![A lista de modelos do grupo com o menu de ações do processo de consentimento para alteração de política aberto](template_manage.png)
 
 Selecione **Mostrar modelos ocultos** para revisar ou restaurar modelos ocultos. Os modelos padrão podem ser ocultados ou adaptados para o grupo, mas não podem ser deletados.
 
-![](template_manage_settings.png)
-
 Alterar um modelo não modifica as propostas ou enquetes que já foram iniciadas a partir dele.
+
+<!-- translation-section: who-can-manage-templates -->
+
+### Quem pode gerenciar modelos
+
+Os administradores do grupo podem criar e gerenciar todos os modelos de enquetes do seu grupo. Eles podem ativar **Os membros podem criar modelos.** em **Configurações do grupo** → **Permissões**. Quando essa opção está ativada, os membros podem criar modelos e gerenciar os modelos que criaram.

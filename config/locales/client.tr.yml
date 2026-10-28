@@ -343,6 +343,7 @@ tr:
       unredact: Eski haline getirmek
       export_json: JSON'u dışa aktar
       import_json: JSON'u içe aktar
+      save_as_template: Şablon olarak kaydet
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -2125,6 +2126,7 @@ tr:
     pct_of_eligible_vote_weight: Oy kullanabileceklerin oy ağırlığının yüzdesi
     pct_of_vote_weight_cast: Verilen oyların ağırlığının yüzdesi
     pct_of_assigned_vote_weight: Atanan oy ağırlığının yüzdesi
+    reuse_voting_options_and_settings: Şablonlar, grubunuzdaki herkesin oy seçeneklerini, açıklamaları ve ayarları yeniden kullanmasını sağlar. Kaydetmeden önce örnek içeriği gözden geçirin, ardından yeni bir anket başlatırken şablonu seçin
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:

@@ -1,42 +1,40 @@
 ---
 title: תבניות סקר
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/poll_templates/index.md
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
-  introduction: f11182d62d99dbcc
-  voting-methods-and-templates: 24be471686aa2dfd
-  use-a-template: 8b19cdf141c41c9b
-  who-can-manage-templates: 60218ef791438e19
-  create-a-poll-template: c20dd8c57c3deab0
-  template-title-subtitle-and-help: 3ad53a8b118aabd3
-  voting-method: 761137852812fea8
-  example-title-details-and-tags: 9dbbd0510d2d6cc1
-  response-options: 727afbf0dcea6069
-  duration-and-settings: a364411a3bebb3ae
-  save-and-test-the-template: 8c48386c69ea309a
-  manage-the-template-list: 0c124d7958c3f80a
+  introduction: a535465485cdbc13
+  who-can-manage-templates: 6c3d5e693cd1dfdc
+  create-a-poll-template: 0fafc6275b6c9153
+  template-title-subtitle-and-help: fba07d32acbd9707
+  voting-method: 521873388e929bad
+  example-title-details-and-tags: 664997906f52f40c
+  response-options: 53b3f1f6d01353f2
+  duration-and-settings: 81c3c1bc8b33d5bb
+  manage-the-template-list: 76e78b8a60f1d08c
+  save-a-poll-as-a-template: 36dc7b5d410d0eea
+  start-a-new-template: 4f14910d88b22de8
+  configure-the-template: 9e620830fa0955f9
 generated:
-  introduction: b0567db7130405ab
-  voting-methods-and-templates: 54b65ec83e555188
-  use-a-template: 3d139547a6df15e4
-  who-can-manage-templates: cc5b7d3b01ce39d5
-  create-a-poll-template: 6bc89b41864c7850
-  template-title-subtitle-and-help: 32cb8217950c9d44
-  voting-method: 7af725b32a25d9d5
-  example-title-details-and-tags: 327ec4f4d50d710c
-  response-options: 7be1e7525173f394
-  duration-and-settings: 2127ea6dd26d8638
-  save-and-test-the-template: b8dad55b47c1381f
-  manage-the-template-list: 75d7ecb75c4ca95c
+  introduction: 509051f4b08046ed
+  who-can-manage-templates: bbbcabd18f41454d
+  create-a-poll-template: 93377a41bc54bac4
+  template-title-subtitle-and-help: 751b2479d931b2f8
+  voting-method: 24d4a50bb3e63f47
+  example-title-details-and-tags: 8588ba2a90d8c4d7
+  response-options: 2791136fcdc0f6a7
+  duration-and-settings: ad162c467f8934f2
+  manage-the-template-list: 8c0cc3f24c1d87c4
+  save-a-poll-as-a-template: e68b0609d97f146d
+  start-a-new-template: b49f326b289fd1f8
+  configure-the-template: 86857f8ca063fe38
 title_source: 114cca246e357304
 title_generated: 9e12dfd46f55c441
 needs_review:
-  voting-methods-and-templates: use "קונצנזוס" instead of "הסכמה" for "consensus"
-  create-a-poll-template: use "בחירה" instead of "לבחור" for "Choose"
-  voting-method: use "בחירה" instead of "לבחור" for "Choose"
+  voting-method: check the interface label "**לְהַקְצוֹת**" for "**Allocate**"; check the interface label "**דַרגָה**" for "**Rank**"; use "בחירה" instead of "לבחור" for "Choose"
   response-options: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
@@ -46,69 +44,59 @@ needs_review:
 
 תבניות סקר הן נקודות התחלה לשימוש חוזר, המוצגות בעת בחירה ב־**התחל הצבעה** או ב־**סקר חדש**. תבנית משלבת שיטת הצבעה עם הנחיות, אפשרויות תגובה והגדרות שנקבעו מראש.
 
-ניתן להשתמש בעמוד זה כדי להגדיר אילו תבניות זמינות לקבוצה או ליצור תבנית לתהליך הרצוי. לבחירת תבנית להצבעה מסוימת, ראו [הצעות](../proposals/) או [סקרים](../proposal_types/). להנחיית תהליך החלטה שלם, ראו [קבלת החלטות](/en/guides/making_decisions/).
+ניתן להשתמש בעמוד זה כדי להגדיר אילו תבניות זמינות לקבוצה או ליצור תבנית לתהליך הרצוי. לבחירת תבנית להצבעה מסוימת, ניתן לעיין בעמוד [הצעות](../proposals/) או [סקרים](../proposal_types/). להנחיית תהליך החלטה שלם, ניתן לעיין בעמוד [קבלת החלטות](/en/guides/making_decisions/).
 
-<!-- translation-section: voting-methods-and-templates -->
+בעת פתיחת הצבעה, יש לבחור בלשונית **הצעה** או **סקר** ולבחור אחת מהתבניות הזמינות לקבוצה.
 
-## שיטות הצבעה ותבניות
-
-שיטת הצבעה קובעת כיצד המשתתפים מגיבים וכיצד Loomio מחשבת את התוצאה. דוגמאות לשיטות הצבעה הן הצעה, בחירה, ציון, הקצאה, דירוג, סקר זמן ו־STV.
-
-תבנית סקר משתמשת באחת מהשיטות האלה ומוסיפה ברירות מחדל לשימוש חוזר. למשל, בדיקת כיוון, ייעוץ, הסכמה וקונצנזוס הן תבניות שונות המבוססות על שיטת ההצבעה הצעה. ההנחיות ואפשרויות התגובה שלהן שונות, אף ש־Loomio מעבדת את ההצבעות בהן באותו אופן.
-
-<!-- translation-section: use-a-template -->
-
-## שימוש בתבנית
-
-בעת פתיחת הצבעה, יש לעבור ללשונית **הצעה** או **סקר** ולבחור אחת מהתבניות הזמינות לקבוצה.
-
-![](proposal_templates_list.png)
-
-התבנית מספקת מבוא, תוכן לדוגמה, אפשרויות והגדרות. לפני פתיחת ההצבעה, יש לבדוק ולערוך אותם בהתאם להחלטה שעל הפרק. עריכת ההצבעה החדשה אינה משנה את התבנית לשימוש חוזר.
-
-<!-- translation-section: who-can-manage-templates -->
-
-## מי יכול לנהל תבניות
-
-למנהלי הקבוצה יש אפשרות ליצור ולנהל את כל תבניות הסקר בקבוצה. ניתן להפעיל את **חברים יכולים ליצור תבניות** תחת **הגדרות קבוצה** → **הרשאות**. כשההגדרה מופעלת, חברים יכולים ליצור תבניות ולנהל תבניות שיצרו.
+התבנית מספקת מבוא, תוכן לדוגמה, אפשרויות והגדרות. לפני פתיחת ההצבעה, יש לבדוק ולערוך אותם בהתאם להחלטה המסוימת. עריכת ההצבעה החדשה אינה משנה את התבנית לשימוש חוזר.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## יצירת תבנית סקר
 
+<!-- translation-section: save-a-poll-as-a-template -->
+
+### שמירה כתבנית
+
+כדי להשתמש שוב בהצעה או בסקר קיימים, יש לפתוח את תפריט הפעולות ולבחור **שמירה כתבנית**.
+
+![הצעה עם תפריט פעולות פתוח והאפשרות שמירה כתבנית מודגשת](save_as_template.png)
+
+מועדי ההצבעה, המצביעים, ההצבעות, התוצאות ומסקנת הסקר אינם נשמרים בתבנית.
+
+<!-- translation-section: start-a-new-template -->
+
+### יצירת תבנית חדשה
+
 יש לפתוח את רשימת התבניות ולבחור **תבנית חדשה**. ניתן להתחיל מדוגמה או מתבנית ריקה, ולאחר מכן לבחור את הקבוצה שתשתמש בה.
 
 ![](proposal_template_setting.png)
 
-טופס התבנית מגדיר את ההנחיות ואת ברירות המחדל שיוצגו בעת פתיחת הצבעה.
+<!-- translation-section: configure-the-template -->
 
-![](poll_template_new.png)
+### הגדרת התבנית
+
+יש לתת לתבנית שם וכותרת משנה המתארים מתי להשתמש בה. ניתן לשנות כל אחד מהשדות האחרים כדי להתאים אותם לשימוש חוזר. לאחר בחירה ב־**שמור תבנית**, התבנית תופיע ברשימה בעת פתיחת הצעה או סקר חדשים.
+
+[![הטופס המלא של תבנית תהליך הסכמה לשינוי מדיניות](poll_template_new.png)](poll_template_new.png)
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-### כותרת התבנית, כותרת המשנה והעזרה
+#### כותרת התבנית, כותרת המשנה והעזרה
 
-- **כותרת התבנית** היא השם הקצר המוצג ברשימת התבניות.
-- **כותרת משנה של התבנית** מסבירה במשפט אחד מתי להשתמש בה.
-- **עזרה בתבנית** מופיעה בלוח המידע בעת שימוש בתבנית. יש להסביר את מטרתה ואת הכללים שעל המשתתפים להכיר, ולצרף קישורים למדיניות או למדריכים רלוונטיים.
-
-![](template_WAAP_intro.png)
-
-יש להשתמש בשמות פשוטים ומדויקים שמבדילים את התבנית מתבניות אחרות בקבוצה.
+יש להשתמש בכותרת ובכותרת המשנה כדי להסביר מתי לבחור בתבנית. יש להוסיף הנחיות לתהליך, כללי קבלת החלטות וקישורים למשאבים בשדה **עזרה בתבנית**.
 
 <!-- translation-section: voting-method -->
 
-### שיטת הצבעה
+#### שיטת הצבעה
 
 יש לבחור מה המשתתפים צריכים להביע וכיצד יש לחשב את התוצאה.
-
-![](poll_type_voting_method.png)
 
 - **הצעה**: להגיב להצהרה באמצעות עמדות מוגדרות;
 - **בחירה**: לבחור אפשרות אחת או יותר;
 - **ציון**: להעריך כל אפשרות לפי סולם ציונים;
-- **לְהַקְצוֹת**: לחלק כמות מוגבלת של נקודות;
-- **דַרגָה**: לסדר אפשרויות לפי סדר העדפה;
+- **הקצאה**: לחלק כמות מוגבלת של נקודות;
+- **דירוג**: לסדר אפשרויות לפי סדר העדפה;
 - **סקר זמן**: לציין זמינות; וכן
 - **STV**: לדרג מועמדים בבחירות יחסיות שבהן נבחרים כמה מועמדים.
 
@@ -116,17 +104,13 @@ needs_review:
 
 <!-- translation-section: example-title-details-and-tags -->
 
-### כותרת ופרטים לדוגמה ותגיות
+#### כותרת ופרטים לדוגמה ותגיות
 
-יש לספק תוכן לדוגמה שיעזור לנסח את ההצבעה. ערכים אלה מועתקים להצעה או לסקר חדשים, וניתן לערוך אותם לפני פתיחת ההצבעה.
-
-![](template_WAAP_details.png)
-
-כאשר בכל שימוש נדרשים כותרת או פרטים שונים, יש להשתמש בהנחיות במקום בתוכן קבוע. יש להוסיף תגיות קטגוריה כברירת מחדל רק כאשר הן מתאימות לכל שימוש בתבנית.
+כאשר בכל הצבעה נדרש תוכן שונה, יש להשתמש בהנחיות לכותרת ולפרטים לדוגמה. יש להוסיף תגיות קטגוריה כברירת מחדל רק כאשר הן מתאימות לכל שימוש בתבנית.
 
 <!-- translation-section: response-options -->
 
-### אפשרויות תגובה
+#### אפשרויות תגובה
 
 שיטות כגון הצעה ובחירה מאפשרות להגדיר אפשרויות תגובה. יש לבחור בסמל העיפרון שלצד אפשרות כדי לערוך:
 
@@ -141,23 +125,15 @@ needs_review:
 
 <!-- translation-section: duration-and-settings -->
 
-### משך והגדרות
+#### משך והגדרות
 
-יש להגדיר משך ברירת מחדל שמתאים לרוב השימושים בתבנית. בעת יצירת הצבעה מסוימת, ניתן לשנות את מועד הסגירה שלה.
+יש להגדיר משך ברירת מחדל שמתאים לרוב השימושים בתבנית. ניתן לשנות את מועד הסגירה של הצבעה מסוימת על ידי מי שיצרו אותה.
 
-![](poll_type_duration.png)
-
-ברירות מחדל נוספות יכולות לקבוע את נראות התוצאות, הצבעה אנונימית, [הצבעה משוקללת](../weighted_voting/), דרישות למתן נימוק להצבעה, תזכורות, מניין והתנהגות ייחודית לשיטת ההצבעה. להסבר על השפעתן, ראו [הגדרות הצעות וסקרים](../settings/).
-
-<!-- translation-section: save-and-test-the-template -->
-
-### שמירת התבנית ובדיקתה
-
-לאחר השמירה, יש ליצור טיוטת הצבעה מהתבנית. יש לבדוק שהמבוא, ההנחיות, האפשרויות וברירות המחדל מובנים גם למי שלא היו מעורבים ביצירתה. יצירת טיוטה מאפשרת גם לוודא ששיטת ההצבעה שנבחרה מפיקה את התוצאה שהקבוצה מצפה לה.
+ברירות מחדל נוספות יכולות לקבוע את נראות התוצאות, הצבעה אנונימית, [הצבעה משוקללת](../weighted_voting/), דרישות למתן נימוק להצבעה, תזכורות, מניין והתנהגות ייחודית לשיטת ההצבעה. להסבר על השפעתן, ניתן לעיין בעמוד [הגדרות הצעות וסקרים](../settings/).
 
 <!-- translation-section: manage-the-template-list -->
 
-## ניהול רשימת התבניות
+## ניהול תבניות
 
 ניתן להשתמש בתפריט הפעולות לצד תבנית כדי:
 
@@ -166,10 +142,14 @@ needs_review:
 - לבחור ב־**להתחבא** להסתרתה בעת פתיחת הצבעות; או
 - לבחור ב־**מחיקה** להסרת תבנית מותאמת אישית שכבר אין בה צורך.
 
-![](template_manage.png)
+![רשימת התבניות של הקבוצה עם תפריט הפעולות של תהליך הסכמה לשינוי מדיניות פתוח](template_manage.png)
 
 יש לבחור ב־**הצג תבניות מוסתרות** כדי לבדוק תבניות מוסתרות או להחזיר אותן לרשימה. ניתן להסתיר תבניות ברירת מחדל או להתאים אותן לקבוצה, אך לא למחוק אותן.
 
-![](template_manage_settings.png)
-
 שינוי תבנית אינו משנה הצעות או סקרים שכבר נפתחו באמצעותה.
+
+<!-- translation-section: who-can-manage-templates -->
+
+### מי יכול לנהל תבניות
+
+למנהלי הקבוצה יש אפשרות ליצור ולנהל את כל תבניות הסקר בקבוצה. ניתן להפעיל את **חברים יכולים ליצור תבניות** תחת **הגדרות קבוצה** → **הרשאות**. כשההגדרה מופעלת, חברים יכולים ליצור תבניות ולנהל תבניות שיצרו.

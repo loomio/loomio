@@ -343,6 +343,7 @@ ro:
       unredact: Restabili
       export_json: Exportați JSON
       import_json: Importați json
+      save_as_template: Salvează ca șablon
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -2125,6 +2126,7 @@ ro:
     pct_of_eligible_vote_weight: "% din ponderea voturilor eligibile"
     pct_of_vote_weight_cast: "% din ponderea voturilor exprimate"
     pct_of_assigned_vote_weight: "% din ponderea alocată a voturilor"
+    reuse_voting_options_and_settings: Șabloanele permit oricui din grupul tău să refolosească opțiunile de vot, explicațiile și setările. Verifică conținutul de exemplu înainte de a salva, apoi alege șablonul când începi un sondaj nou
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:

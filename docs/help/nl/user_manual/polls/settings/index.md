@@ -1,10 +1,10 @@
 ---
 title: Instellingen
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: ab2a875c4f826f8e
   setting-up-a-proposal-or-poll: e96f5dcce20c5096
@@ -34,7 +34,7 @@ generated:
   add-content: e6cc73fdb7a701bb
   voting-options: 48f34901246ac268
   edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 77505f12a34aaf09
+  opening-time: 47b34a785b068708
   more-settings: ac9de733ac425f3a
   reminder: 830f0f493ba85dbd
   anonymous-voting: 002f8bcf4a9bf4ce
@@ -43,12 +43,12 @@ generated:
   start-the-poll: 78d8c527bf9f760c
   managing-polls: 998a7f2f76a9372a
   edit-poll: e5283692e690b034
-  make-a-copy: ddc154e21c55c776
   notification-history: f7b6b6e8d1d16bb2
   export-poll: a22c90c0ae0a38be
   print: 82896aa5dc7d87eb
   delete: 9acf822e2506248b
   save-bookmark: 641508ba541567f1
+  save-as-template: 9fa218d1889f3517
 title_source: 74a883a037bc227f
 title_generated: 2701873dad7cb276
 ---
@@ -132,6 +132,8 @@ Zo geef je mensen tijd voor discussie voordat de stemming opent, of zorg je ervo
 Als jouw groep bijvoorbeeld tijdens een komende vergadering over meerdere besluiten gaat stemmen, kun je de peilingen voorbereiden en vooraf kiezers toevoegen. Plan vervolgens alle peilingen zo dat ze openen wanneer de stemperiode begint. Mensen kunnen de peilingen bekijken voordat ze openen, maar kunnen nog niet stemmen.
 
 Als een peiling een geplande openingstijd heeft, kun je kiezers toevoegen voordat de stemming opent. Kiezers krijgen een melding wanneer de stemming opent, in plaats van wanneer ze worden toegevoegd.
+
+Selecteer **Peiling bewerken**, vink **De stemming is direct geopend.** aan en sla de wijzigingen op om de stemming vóór het geplande tijdstip te openen.
 
 **Kiezers een melding sturen wanneer de peiling opent:** Als dit is aangevinkt (standaard), krijgen alle kiezers een melding wanneer de stemming opent. Vink dit uit als je de stemming wilt openen zonder meldingen te sturen.
 
@@ -231,11 +233,13 @@ Open het menu met de drie puntjes rechtsonder in de peiling.
 
 Gebruik **Peiling bewerken** om de inhoud of instellingen van de peiling te bewerken.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Een kopie maken
+### Opslaan als sjabloon
 
-Gebruik **Een kopie maken** om een nieuwe peiling te maken met de huidige peiling en instellingen als uitgangspunt.
+Gebruik **Opslaan als sjabloon** in het actiemenu van een peiling om de inhoud, stemopties, toelichtingen en instellingen opnieuw te gebruiken. Controleer het vooraf ingevulde sjabloonformulier, geef het sjabloon een naam en ondertitel en selecteer **Sjabloon opslaan**. Mensen in de groep kunnen het dan kiezen wanneer ze een nieuwe peiling starten.
+
+Groepsadmins kunnen sjablonen opslaan. Leden kunnen dit ook als **Leden kunnen sjablonen maken.** is ingeschakeld in de groepsrechten. Zie [Peilingsjablonen](/en/user_manual/polls/poll_templates) voor meer informatie.
 
 <!-- translation-section: notification-history -->
 

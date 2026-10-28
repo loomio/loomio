@@ -345,6 +345,7 @@ en:
       add: Add
       save: Save
       save_template: Save template
+      save_as_template: Save as template
       fork_template: Fork template
       export_json: Export json
       import_json: Import json
@@ -2316,6 +2317,7 @@ en:
     blank_subtitle: Create a new poll template for a specific process
     poll_template: Poll template
     poll_template_saved: Poll template saved
+    reuse_voting_options_and_settings: Templates let anyone in your group reuse voting options, explanations, and settings. Review the example content before saving, then choose the template when starting a new poll
     poll_templates: Poll templates
     start_a_poll: Start a poll
     poll_types: Poll types

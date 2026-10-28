@@ -349,6 +349,7 @@ de:
       unredact: Wiederherstellen
       export_json: JSON exportieren
       import_json: JSON importieren
+      save_as_template: Als Vorlage speichern
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -2156,6 +2157,7 @@ de:
     pct_of_eligible_vote_weight: "% des Stimmgewichts der Stimmberechtigten"
     pct_of_vote_weight_cast: "% des abgegebenen Stimmgewichts"
     pct_of_assigned_vote_weight: "% des zugewiesenen Stimmgewichts"
+    reuse_voting_options_and_settings: Mit Vorlagen können alle in deiner Gruppe Optionen, Erklärungen und Einstellungen wiederverwenden. Prüfe die Beispielinhalte vor dem Speichern und wähle dann die Vorlage, wenn du eine neue Abstimmung startest
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:

@@ -1,10 +1,10 @@
 ---
 title: Налады
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: 82a7036d1f956ef2
   setting-up-a-proposal-or-poll: c0f01f87d2f01d76
@@ -34,7 +34,7 @@ generated:
   add-content: 142f0bf898b76fcb
   voting-options: 1502b39960357fc7
   edit-voting-options: 02b2ca00524af2c5
-  opening-time: 0b284ddabc31f8c1
+  opening-time: 2e4f286e58f3038b
   more-settings: adae832df14939b8
   reminder: 2931dfb07798e576
   anonymous-voting: 9c03fc35187e426c
@@ -43,12 +43,12 @@ generated:
   start-the-poll: 6164fa0284f85db3
   managing-polls: fe0da49986045f8c
   edit-poll: 63d33703ccd54933
-  make-a-copy: 69c422b639770bbc
   notification-history: 358c0f3560447eb5
   export-poll: a87225178b6fb399
   print: 1933a174db8bc35a
   delete: 82809cb96ad088ae
   save-bookmark: 81568cdb6758727e
+  save-as-template: a09b0aa87b2db8f2
 title_source: 74a883a037bc227f
 title_generated: b1b3d8b8aa661af6
 ---
@@ -132,6 +132,8 @@ title_generated: b1b3d8b8aa661af6
 Напрыклад, калі вашай групе трэба прагаласаваць па некалькіх рашэннях на будучым сходзе, вы можаце загадзя падрыхтаваць апытанні і дадаць выбаршчыкаў, а затым запланаваць адкрыццё ўсіх апытанняў на пачатак перыяду галасавання. Людзі могуць бачыць апытанні да іх адкрыцця, але не могуць прагаласаваць загадзя.
 
 Калі для апытання запланаваны час адкрыцця, вы можаце дадаць выбаршчыкаў да пачатку галасавання. Выбаршчыкі атрымаюць апавяшчэнне пры адкрыцці галасавання, а не пры іх даданні.
+
+Каб адкрыць галасаванне раней за запланаваны час, выберыце **Рэдагаваць апытанне**, усталюйце пазнаку **Галасаванне адкрываецца адразу** і захавайце змены.
 
 **Апавясціць выбаршчыкаў пры адкрыцці апытання:** Калі пазнака ўсталявана (па змаўчанні), усе выбаршчыкі атрымаюць апавяшчэнне пры адкрыцці галасавання. Зніміце пазнаку, калі хочаце адкрыць галасаванне без адпраўкі апавяшчэнняў.
 
@@ -231,11 +233,13 @@ title_generated: b1b3d8b8aa661af6
 
 Выберыце **Рэдагаваць апытанне**, каб змяніць змест або налады апытання.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Зрабіць копію
+### Захаваць як шаблон
 
-Выберыце **Зрабіць копію**, каб стварыць новае апытанне на аснове бягучага апытання і яго налад.
+Выберыце **Захаваць як шаблон** у меню дзеянняў апытання, каб паўторна выкарыстоўваць яго змест, варыянты галасавання, тлумачэнні і налады. Праверце папярэдне запоўненую форму шаблону, задайце назву і падзагаловак шаблону і выберыце **Захаваць шаблон**. Пасля гэтага ўдзельнікі групы змогуць выбіраць яго пры стварэнні новага апытання.
+
+Адміністратары групы могуць захоўваць шаблоны. Удзельнікі групы таксама могуць іх захоўваць, калі ў дазволах групы ўключана налада **Удзельнікі могуць ствараць шаблоны**. Падрабязнасці глядзіце ў раздзеле [Шаблоны апытанняў](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

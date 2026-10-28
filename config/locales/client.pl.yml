@@ -343,6 +343,7 @@ pl:
       unredact: Przywrócić
       export_json: Eksportuj json
       import_json: Importuj json
+      save_as_template: Zapisz jako szablon
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -2148,6 +2149,7 @@ pl:
     pct_of_eligible_vote_weight: "% wagi głosów uprawnionych głosujących"
     pct_of_vote_weight_cast: "% wagi oddanych głosów"
     pct_of_assigned_vote_weight: "% przydzielonej wagi głosów"
+    reuse_voting_options_and_settings: Szablony pozwalają każdej osobie w twojej grupie ponownie użyć opcji ankiety, objaśnień i ustawień. Sprawdź przykładową treść przed zapisaniem, a potem wybierz szablon przy tworzeniu nowej ankiety
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:

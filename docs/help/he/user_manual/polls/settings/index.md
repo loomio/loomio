@@ -1,10 +1,10 @@
 ---
 title: הגדרות
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: 2c7537bf51656c32
   setting-up-a-proposal-or-poll: e85b745ae7d14f9f
@@ -34,7 +34,7 @@ generated:
   add-content: 8b53edb22eb0c099
   voting-options: 13ae3649e14d622c
   edit-voting-options: 5d2f31b4187443de
-  opening-time: 7a2104d1506d82ad
+  opening-time: 2ae75ba578c410c5
   more-settings: 52b6b4962e084972
   reminder: 55da41038e171ed3
   anonymous-voting: 56a6bc77e42331ff
@@ -43,12 +43,12 @@ generated:
   start-the-poll: d971bc701e164d4e
   managing-polls: 07cbcf088b35c603
   edit-poll: 9203d0a9d41bf074
-  make-a-copy: cbc16f9f6d9edb48
   notification-history: 48f2b02883d16fb5
   export-poll: e3c0288e8a7fefe2
   print: f1d31d94abea6429
   delete: d60cd65c6bc895be
   save-bookmark: 25abe3f06059ef81
+  save-as-template: f9af941716079950
 title_source: 74a883a037bc227f
 title_generated: 2a929616c81f3e30
 needs_review:
@@ -134,6 +134,8 @@ needs_review:
 למשל, אם בקבוצה יש כמה החלטות להצבעה באספה הקרובה, ניתן להכין את הסקרים ולהוסיף מצביעים מראש, ואז לתזמן את כולם לפתיחה עם תחילת תקופת ההצבעה. ניתן לראות את הסקרים לפני פתיחתם, אך לא להצביע מוקדם.
 
 כאשר נקבע לסקר מועד פתיחה, ניתן להוסיף מצביעים לפני פתיחת ההצבעה. המצביעים יקבלו התראה עם פתיחת ההצבעה, ולא בעת הוספתם.
+
+כדי לפתוח את ההצבעה לפני המועד המתוכנן, יש לבחור **עריכת סקר**, לסמן **ההצבעה נפתחת מיד** ולשמור.
 
 **שליחת התראה למצביעים עם פתיחת הסקר:** כאשר האפשרות מסומנת, כפי שהיא כברירת מחדל, כל המצביעים יקבלו התראה עם פתיחת ההצבעה. כדי לפתוח את ההצבעה ללא שליחת התראות, יש לבטל את הסימון.
 
@@ -233,11 +235,13 @@ needs_review:
 
 ניתן להשתמש ב־**עריכת סקר** כדי לערוך את תוכן הסקר או את הגדרותיו.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### יצירת עותק
+### שמירה כתבנית
 
-ניתן להשתמש ב־**צור עותק** כדי ליצור סקר חדש על בסיס הסקר הנוכחי והגדרותיו.
+כדי לעשות שימוש חוזר בתוכן הסקר, באפשרויות ההצבעה, בהסברים ובהגדרות שלו, יש לבחור **שמירה כתבנית** בתפריט הפעולות של הסקר. יש לבדוק את טופס התבנית שמולא מראש, לתת לתבנית שם וכותרת משנה ולבחור **שמור תבנית**. לאחר מכן ניתן לבחור בתבנית בעת פתיחת סקר חדש בקבוצה.
+
+מנהלי קבוצה יכולים לשמור תבניות. גם חברים יכולים לשמור תבניות כאשר האפשרות **חברים יכולים ליצור תבניות** מופעלת בהרשאות הקבוצה. לפרטים נוספים, ניתן לעיין ב[תבניות סקרים](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

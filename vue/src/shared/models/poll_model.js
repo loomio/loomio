@@ -2,8 +2,8 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import { I18n }             from '@/i18n';
-import { addDays, startOfHour } from 'date-fns';
-import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
+import { addDays, startOfHour, differenceInHours } from 'date-fns';
+import { snakeCase, camelCase, cloneDeep, mapKeys, pick, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
 import Records from '@/shared/services/records';
 
 export default class PollModel extends BaseModel {
@@ -136,6 +136,8 @@ export default class PollModel extends BaseModel {
       });
     }
 
+    clone.openingAt = null;
+    clone.openedAt = null;
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
@@ -157,6 +159,29 @@ export default class PollModel extends BaseModel {
         testAgainst: o.testAgainst
       };
     });
+  }
+
+  buildTemplate() {
+    // Copy reusable configuration only; voting records, results, and lifecycle
+    // timestamps belong to the source poll and must never become template data.
+    const template = Records.pollTemplates.build();
+    const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
+    const attrs = cloneDeep(pick(this, settings.map(camelCase)));
+    const topic = this.topic();
+    Object.assign(attrs, pick(topic, ['allowComments', 'allowReactions', 'commentLengthMax']));
+    attrs.tags = this.tags.slice();
+    attrs.groupId = this.groupId;
+    attrs.processName = this.title;
+    // Polls may leave election settings implicit; templates store their defaults.
+    ['stvSeats', 'stvMethod', 'stvQuota'].forEach(name => attrs[name] = this[name] ?? template[name]);
+    const openingAt = this.openedAt || this.openingAt;
+    attrs.defaultDurationInDays = openingAt && this.closingAt
+      ? Math.max(1, Math.ceil(differenceInHours(this.closingAt, openingAt) / 24))
+      : 7;
+    const optionSettings = AppConfig.templateSettings.poll_option.map(camelCase);
+    attrs.pollOptions = this.pollOptions().map(option => mapKeys(pick(option, optionSettings), (_, key) => snakeCase(key)));
+    template.update(attrs);
+    return template;
   }
 
   defaulted(attr) {

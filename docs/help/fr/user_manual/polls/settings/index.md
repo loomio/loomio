@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-29'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 6a9fd4fa980e28c4
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -21,12 +21,12 @@ sections:
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
 generated:
   introduction: ba7b949b80a72354
   setting-up-a-proposal-or-poll: ed8004c6ef8f091b
@@ -34,7 +34,7 @@ generated:
   add-content: 4931f40f13f0eaca
   voting-options: d1893c3bdfa74deb
   edit-voting-options: dfe67094a9cbd0cf
-  opening-time: 6f06b709acf58c46
+  opening-time: 183cb8f2047a0f5c
   more-settings: ea1e48c372fdea5d
   reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
@@ -43,12 +43,12 @@ generated:
   start-the-poll: ca61b5a2672e2066
   managing-polls: d4841c826f9ca251
   edit-poll: ed3ebb4902f5ff63
-  make-a-copy: baa297a7f304d98d
   notification-history: eb53d703cf1c8e5a
   export-poll: e44eea9d9839d374
   print: e4ad8ccc4ccfff16
   delete: 101eacf14a0a98be
   save-bookmark: d5b24c58cd7adffe
+  save-as-template: aa8558d6d0cba97a
 title_source: 74a883a037bc227f
 title_generated: '01923df7a446c42f'
 needs_review:
@@ -134,6 +134,8 @@ Cela permet de laisser du temps à la discussion avant l’ouverture du vote, ou
 Par exemple, si votre groupe doit voter sur plusieurs décisions lors d’une prochaine assemblée, vous pouvez préparer les sondages et ajouter les électeurs à l’avance, puis programmer leur ouverture au début de la période de vote. Les personnes peuvent consulter les sondages avant leur ouverture, mais ne peuvent pas voter à l’avance.
 
 Lorsqu’une heure d’ouverture est programmée pour un sondage, vous pouvez ajouter des électeurs avant l’ouverture du vote. Ils recevront une notification à l’ouverture du vote, plutôt qu’au moment de leur ajout.
+
+Pour ouvrir le vote avant l’heure prévue, sélectionnez **Modifier le sondage**, cochez **Le vote est ouvert immédiatement** et enregistrez.
 
 **Notifier les électeurs à l’ouverture du sondage :** Lorsque cette case est cochée (par défaut), tous les électeurs reçoivent une notification à l’ouverture du vote. Décochez-la si vous souhaitez ouvrir le vote sans envoyer de notifications.
 
@@ -233,11 +235,13 @@ Ouvrez le menu à trois points en bas à droite du sondage.
 
 Utilisez **Modifier le sondage** pour modifier le contenu ou les paramètres du sondage.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Faire une copie
+### Enregistrer comme modèle
 
-Utilisez **Faire une copie** pour créer un nouveau sondage en prenant le sondage actuel et ses paramètres comme point de départ.
+Utilisez **Enregistrer comme modèle** dans le menu d’actions d’un sondage pour réutiliser son contenu, ses options de vote, ses explications et ses paramètres. Vérifiez le formulaire de modèle prérempli, donnez un nom et un sous-titre au modèle, puis sélectionnez **Enregistrer le modèle**. Les personnes du groupe peuvent ensuite le choisir lors de la création d’un nouveau sondage.
+
+Les administrateurs du groupe peuvent enregistrer des modèles. Les membres peuvent également le faire lorsque **Les membres peuvent créer des modèles** est activé dans les permissions du groupe. Consultez [Modèles de sondage](/en/user_manual/polls/poll_templates) pour plus de détails.
 
 <!-- translation-section: notification-history -->
 

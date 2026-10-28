@@ -378,6 +378,7 @@ be:
       zoom: Маштаб
       align: Выраўнаваць
       customize: Наладзіць
+      save_as_template: Захаваць як шаблон
     formatting_help:
       label: Фарматаванне
       title: Даведайцеся, як выкарыстоўваць Markdown для фарматавання тэксту
@@ -2252,6 +2253,7 @@ be:
     pct_of_eligible_vote_weight: "% вагі голасу выбаршчыкаў з правам голасу"
     pct_of_vote_weight_cast: "% скарыстанай вагі голасу"
     pct_of_assigned_vote_weight: "% прызначанай вагі голасу"
+    reuse_voting_options_and_settings: Шаблоны дазваляюць усім у вашай групе паўторна выкарыстоўваць варыянты галасавання, тлумачэнні і налады. Праверце змесціва прыкладу перад захаваннем, затым выберыце шаблон пры стварэнні новага апытання
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:

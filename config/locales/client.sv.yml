@@ -343,6 +343,7 @@ sv:
       unredact: Återställa
       export_json: Exportera json
       import_json: Importera json
+      save_as_template: Spara som mall
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -2133,6 +2134,7 @@ sv:
     pct_of_eligible_vote_weight: "% av de röstberättigades röstvikt"
     pct_of_vote_weight_cast: "% av den avgivna röstvikten"
     pct_of_assigned_vote_weight: "% av den tilldelade röstvikten"
+    reuse_voting_options_and_settings: Mallar låter alla i din grupp återanvända röstningsalternativ, förklaringar och inställningar. Granska exempelinnehållet innan du sparar och välj sedan mallen när du startar en ny omröstning
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:

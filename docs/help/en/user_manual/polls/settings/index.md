@@ -79,6 +79,8 @@ For example, if your group has several decisions to vote on at an upcoming assem
 
 When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
 
+To open voting before the scheduled time, select **Edit poll**, check **Voting opens immediately**, and save.
+
 **Notify voters when poll opens:** When checked (default), all voters will receive a notification when voting opens. Uncheck this if you want to open voting without sending notifications.
 
 **Closing date and time:** Select the closing date and time for your poll.
@@ -184,11 +186,13 @@ Open the three-dot menu at the bottom right of the poll.
 
 Use **Edit poll** to edit poll content or settings.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Make a copy
+### Save as template
 
-Use **Make a copy** to create a new poll using the current poll and settings as a starting point.
+Use **Save as template** in a poll's action menu to reuse its content, voting options, explanations, and settings. Review the prefilled template form, give the template a name and subtitle, and select **Save template**. People in the group can then choose it when starting a new poll.
+
+Group admins can save templates. Members can also save them when **Members can create templates** is enabled in the group's permissions. See [Poll templates](/en/user_manual/polls/poll_templates) for details.
 
 <!-- translation-section: notification-history -->
 

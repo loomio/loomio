@@ -157,6 +157,26 @@ class Dev::PollsController < Dev::NightwatchController
     redirect_to poll_url(scenario[:poll])
   end
 
+  def save_poll_as_template
+    group = create_group_with_members
+    group.update!(members_can_create_templates: params[:members_can_create_templates].present?)
+    admin = group.admins.first
+    poll = PollService.create(params: {
+      group_id: group.id, title: 'Article proposal', details: '<p>Proposed article changes</p>',
+      details_format: 'html', poll_type: params[:poll_type] || 'proposal', closing_at: 3.days.from_now,
+      tags: ['Consent', 'Significant decisions'],
+      opening_at: (1.day.from_now if params[:scheduled].present?),
+      poll_options_attributes: [
+        {name: 'Consent', meaning: 'I support these changes', prompt: 'Any concerns?', icon: 'consent'},
+        {name: 'Object', meaning: 'These changes need revision', prompt: 'What needs to change?', icon: 'objection'}
+      ]
+    }, actor: admin)
+    PollService.close(poll: poll, actor: admin) if params[:closed].present?
+    actor = params[:member].present? ? group.members.where.not(id: admin.id).first : admin
+    sign_in actor
+    redirect_to poll_url(poll)
+  end
+
   # Build a large weighted electorate with both cast and pending votes so the
   # voter modal, pagination, and result avatars can be inspected together.
   def test_many_weighted_voters

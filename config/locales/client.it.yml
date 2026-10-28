@@ -351,6 +351,7 @@ it:
       unredact: Ripristinare
       export_json: Esporta in formato JSON
       import_json: Importa JSON
+      save_as_template: Salva come modello
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -2153,6 +2154,7 @@ it:
     pct_of_eligible_vote_weight: "% del peso dei voti aventi diritto"
     pct_of_vote_weight_cast: "% del peso dei voti espressi"
     pct_of_assigned_vote_weight: "% del peso dei voti assegnati"
+    reuse_voting_options_and_settings: I modelli permettono a chiunque nel tuo gruppo di riutilizzare opzioni di voto, spiegazioni e impostazioni. Controlla i contenuti di esempio prima di salvare, poi scegli il modello quando avvii un nuovo sondaggio
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

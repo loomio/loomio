@@ -343,6 +343,7 @@ da:
       unredact: Gendan
       export_json: Eksportér json
       import_json: Importér json
+      save_as_template: Gem som skabelon
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -2137,6 +2138,7 @@ da:
     pct_of_eligible_vote_weight: "% af stemmeberettiget stemmevægt"
     pct_of_vote_weight_cast: "% af afgivet stemmevægt"
     pct_of_assigned_vote_weight: "% af tildelt stemmevægt"
+    reuse_voting_options_and_settings: Med skabeloner kan alle i din gruppe genbruge stemmemuligheder, forklaringer og indstillinger. Gennemgå eksempelindholdet, før du gemmer, og vælg så skabelonen, når du starter en ny afstemning
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:

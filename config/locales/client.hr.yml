@@ -343,6 +343,7 @@ hr:
       unredact: Vratiti
       export_json: Izvoz JSON-a
       import_json: Uvoz JSON-a
+      save_as_template: Spremite kao predložak
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -2129,6 +2130,7 @@ hr:
     pct_of_eligible_vote_weight: "% težine glasova birača s pravom glasa"
     pct_of_vote_weight_cast: "% težine danih glasova"
     pct_of_assigned_vote_weight: "% dodijeljene težine glasova"
+    reuse_voting_options_and_settings: Predlošci svima u vašoj grupi omogućuju ponovnu upotrebu opcija za glasanje, objašnjenja i postavki. Pregledajte ogledni sadržaj prije spremanja, a zatim odaberite predložak pri pokretanju nove ankete
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:

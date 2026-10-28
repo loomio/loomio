@@ -343,6 +343,7 @@ sl:
       unredact: Obnovi
       export_json: Izvozi JSON
       import_json: Uvozi JSON
+      save_as_template: Shranite kot predlogo
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -2125,6 +2126,7 @@ sl:
     pct_of_eligible_vote_weight: "% teže upravičenih glasov"
     pct_of_vote_weight_cast: "% teže oddanih glasov"
     pct_of_assigned_vote_weight: "% dodeljene teže glasov"
+    reuse_voting_options_and_settings: S predlogami lahko vsi v vaši skupini znova uporabijo možnosti glasovanja, pojasnila in nastavitve. Pred shranjevanjem preglejte vzorčno vsebino, nato pa ob ustvarjanju nove ankete izberite predlogo
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:

@@ -341,6 +341,7 @@ ja:
       unredact: 復元する
       export_json: JSONをエクスポート
       import_json: JSONをインポート
+      save_as_template: テンプレートとして保存
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -2124,6 +2125,7 @@ ja:
     pct_of_eligible_vote_weight: 投票可能な票の重みに対する%
     pct_of_vote_weight_cast: 投票済みの票の重みに対する%
     pct_of_assigned_vote_weight: 割り当てられた票の重みに対する%
+    reuse_voting_options_and_settings: テンプレートを使うと、グループの誰でも投票の選択肢や説明、設定を再利用できます。保存前にサンプルの内容を確認し、新しいアンケートを始めるときにテンプレートを選びます
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:

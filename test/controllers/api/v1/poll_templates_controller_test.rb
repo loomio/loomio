@@ -202,6 +202,20 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "template creation permission does not extend to topic guests former members or other groups" do
+    @group.update!(members_can_create_templates: true)
+    %i[guest_normal guest_admin_normal former_member_loud alien].each do |role|
+      sign_in users(role)
+      assert_no_difference 'PollTemplate.count', role.to_s do
+        post :create, params: {poll_template: {
+          group_id: @group.id, process_name: 'Reusable proposal', process_subtitle: 'Group process',
+          poll_type: 'proposal', default_duration_in_days: 3
+        }}
+      end
+      assert_response :forbidden, role.to_s
+    end
+  end
+
   # === EXPORT ===
 
   test "export returns a portable poll template file" do

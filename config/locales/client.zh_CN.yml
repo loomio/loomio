@@ -369,6 +369,7 @@ zh_CN:
       unredact: 恢复
       export_json: 导出 JSON
       import_json: 导入 JSON
+      save_as_template: 保存为模板
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
@@ -2232,6 +2233,7 @@ zh_CN:
     pct_of_eligible_vote_weight: 占合格投票权重的 %
     pct_of_vote_weight_cast: 占已投投票权重的 %
     pct_of_assigned_vote_weight: 占已分配投票权重的 %
+    reuse_voting_options_and_settings: 模板让群组中的任何人都能复用投票选项、说明和设置。保存前请检查示例内容，然后在发起新投票时选择该模板
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
