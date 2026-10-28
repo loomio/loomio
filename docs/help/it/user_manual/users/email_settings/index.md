@@ -1,10 +1,10 @@
 ---
 title: Notifiche
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,11 +28,13 @@ generated:
   group-and-thread-notification-settings: afc7e114e68c515a
   group-notification-settings: b405bbd1b58fa6fa
   thread-notification-settings: ed10d0e7b1afedd5
-  email-delivery: eee5931162b24d00
+  email-delivery: 4c5015db0bb1ff50
   enable-mobile-notifications-with-web-push: '08de784ba80e4383'
   turn-off-external-notifications: f1b04b66d777d3a2
 title_source: 788011833a5a0f22
 title_generated: b49faefbb7aa6700
+needs_review:
+  email-delivery: use "email di riepilogo" instead of "recupero" for "catch-up email"
 ---
 
 <!-- translation-section: introduction -->
@@ -167,7 +169,7 @@ Le impostazioni delle notifiche della conversazione offrono le stesse opzioni: *
 
 Per impostazione predefinita, Loomio invia un'email quando ricevi una notifica. A seconda delle impostazioni delle notifiche dei tuoi gruppi e delle tue conversazioni, queste email possono riguardare menzioni, risposte, discussioni condivise con te, inviti e promemoria per votare, conclusioni e sondaggi in chiusura. Scegli **Tutte le attività** per ricevere anche email su ogni nuovo commento, voto, conversazione, sondaggio e conclusione.
 
-Il link **Discriviti** in un'email di notifica apre le impostazioni della conversazione o del gruppo corrispondente, anche per le email inviate perché qualcuno ti ha menzionato o ti ha risposto. Quel modulo mostra la frequenza attuale dell'email di riepilogo per tutti i gruppi e contiene un link alle impostazioni delle email di riepilogo. Questi link nelle email autorizzano l'accesso solo ai rispettivi moduli delle impostazioni; non ti fanno accedere a Loomio.
+Il link **Discriviti** in un'email di notifica apre le impostazioni della conversazione o del gruppo corrispondente, anche per le email inviate perché qualcuno ti ha menzionato o ti ha risposto. Scegli **Solo recupero** per interrompere le email immediate mantenendo le attività nella tua email di riepilogo. Puoi anche modificare la frequenza delle email di riepilogo nella stessa pagina, sotto **Email di riepilogo (tutti i gruppi)**. Salva separatamente le impostazioni della conversazione o del gruppo e la frequenza delle email di riepilogo. Questi link nelle email autorizzano l'accesso solo ai rispettivi moduli delle impostazioni; non ti fanno accedere a Loomio.
 
 Quando un'email relativa a una discussione indica che sono accettate risposte, puoi rispondere direttamente via email e il tuo messaggio verrà pubblicato nella discussione su Loomio.
 

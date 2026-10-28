@@ -1,10 +1,10 @@
 ---
 title: Ilmoitukset
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,13 +28,13 @@ generated:
   group-and-thread-notification-settings: f8a1f7e8aa2facef
   group-notification-settings: 719a986905dca481
   thread-notification-settings: 6df207962646b185
-  email-delivery: 6be6d6ba24f23079
+  email-delivery: e2505397c1d179c2
   enable-mobile-notifications-with-web-push: 16edaccc5b9fdb5d
   turn-off-external-notifications: 76642365fed15a52
 title_source: 788011833a5a0f22
 title_generated: 0fedd323441839c8
 needs_review:
-  email-delivery: use "vaihtoehto" instead of "asetukset" for "option"
+  email-delivery: use "vaihtoehto" instead of "asetukset" for "option"; use "sähköpostikooste" instead of "kertaus" for "catch-up email"
 ---
 
 <!-- translation-section: introduction -->
@@ -169,7 +169,7 @@ Ketjun ilmoitusasetuksissa on samat valinnat: **Vain kertaus**, **Kun ilmoitetaa
 
 Oletusarvoisesti Loomio lähettää sähköpostin, kun saat ilmoituksen. Ryhmiesi ja ketjujesi ilmoitusasetuksista riippuen voit saada sähköpostia maininnoista, vastauksista, kanssasi jaetuista keskusteluista, äänestyskutsuista ja -muistutuksista, johtopäätöksistä sekä pian sulkeutuvista kyselyistä. Valitse **Kaikki toiminta**, jos haluat saada sähköpostin myös jokaisesta uudesta kommentista, äänestä, ketjusta, kyselystä ja johtopäätöksestä.
 
-Sähköposti-ilmoituksen **Lopeta tilaus** -linkki avaa kyseisen ketjun tai ryhmän asetukset. Tämä koskee myös sähköposteja, jotka lähetetään, kun joku mainitsee sinut tai vastaa sinulle. Lomake näyttää nykyisen sähköpostikoosteen lähetysaikataulusi kaikille ryhmille ja sisältää linkin sähköpostikoosteen asetuksiin. Nämä sähköpostilinkit antavat pääsyn vain omiin asetuslomakkeisiinsa. Ne eivät kirjaa sinua sisään Loomioon.
+Sähköposti-ilmoituksen **Lopeta tilaus** -linkki avaa kyseisen ketjun tai ryhmän asetukset. Tämä koskee myös sähköposteja, jotka lähetetään, kun joku mainitsee sinut tai vastaa sinulle. Valitse **Vain kertaus**, jos haluat lopettaa välittömät sähköpostit mutta saada tiedot toiminnasta edelleen sähköpostikoosteessa. Voit myös muuttaa sähköpostikoosteen lähetysaikataulua samalla sivulla kohdassa **Päivityssähköpostit (kaikki ryhmät)**. Tallenna ketjun tai ryhmän asetukset ja sähköpostikoosteen lähetysaikataulu erikseen. Nämä sähköpostilinkit antavat pääsyn vain omiin asetuslomakkeisiinsa. Ne eivät kirjaa sinua sisään Loomioon.
 
 Kun keskustelusta lähetetyssä sähköpostissa kerrotaan, että vastaukset hyväksytään, voit vastata suoraan sähköpostitse. Viestisi julkaistaan Loomion keskustelussa.
 

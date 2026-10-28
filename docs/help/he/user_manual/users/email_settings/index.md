@@ -1,10 +1,10 @@
 ---
 title: התראות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: 91fecd09947eef4a
   group-notification-settings: aa8a1e0b4299117f
   thread-notification-settings: 12ecb46ac7396b44
-  email-delivery: 29a6ddedffe67f0d
+  email-delivery: 355a63f17068541e
   enable-mobile-notifications-with-web-push: 8d4ce0319142b1d1
   turn-off-external-notifications: 242025ef3cf4ffef
 title_source: 788011833a5a0f22
@@ -169,7 +169,7 @@ Loomio אינה שולחת מייל עדכונים כאשר אין התראות 
 
 כברירת מחדל, Loomio שולחת דואר אלקטרוני כאשר מתקבלת התראה. בהתאם להגדרות ההתראות של הקבוצות והשרשורים, המיילים יכולים לכלול אזכורים, תשובות, דיונים ששותפו איתכם, הזמנות ותזכורות להצביע, מסקנות וסקרים שעומדים להיסגר. יש לסמן **כל הפעילות** כדי לקבל גם מיילים על כל תגובה, הצבעה, שרשור, סקר ומסקנה חדשים.
 
-הקישור **ביטול מינוי** במייל התראה פותח הגדרות לאותו שרשור או לאותה קבוצה, גם במיילים שנשלחו בעקבות אזכור שלכם או תשובה אליכם. הטופס מציג את תדירות מייל העדכונים הנוכחית לכל הקבוצות וכולל קישור להגדרות מייל העדכונים. הקישורים האלה שבמייל מעניקים הרשאה רק לטופסי ההגדרות שלהם; הם אינם מבצעים כניסה לחשבון ב-Loomio.
+הקישור **ביטול מינוי** במייל התראה פותח הגדרות לאותו שרשור או לאותה קבוצה, גם במיילים שנשלחו בעקבות אזכור שלכם או תשובה אליכם. יש לסמן **רק השלמה** כדי להפסיק לקבל מיילים מיידיים ולהמשיך לכלול את הפעילות במייל העדכונים. ניתן גם לשנות את תדירות מייל העדכונים באותו עמוד, תחת **אימיילים לעדכון (כל הקבוצות)**. יש לשמור בנפרד את הגדרות השרשור או הקבוצה ואת תדירות מייל העדכונים. הקישורים האלה שבמייל מעניקים הרשאה רק לטופסי ההגדרות שלהם; הם אינם מבצעים כניסה לחשבון ב-Loomio.
 
 כאשר במייל של דיון מצוין שניתן להשיב, אפשר להשיב ישירות בדואר אלקטרוני וההודעה תתפרסם בדיון ב-Loomio.
 

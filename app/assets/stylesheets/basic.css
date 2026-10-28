@@ -115,7 +115,7 @@ header {
   outline-offset: 3px;
 }
 
-.email-action-secondary-link {
+.email-action-catch-up {
   border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
   margin-top: 2em;
   padding-top: 1em;

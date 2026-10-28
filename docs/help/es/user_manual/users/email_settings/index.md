@@ -1,10 +1,10 @@
 ---
 title: Notificaciones
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: e3570b54a6e5e164
   group-notification-settings: 56d14133e72d5381
   thread-notification-settings: 0343df4deabda0df
-  email-delivery: 06d775210e8ca893
+  email-delivery: 9eea4d261a6df0fb
   enable-mobile-notifications-with-web-push: 9b1b820ea0ead994
   turn-off-external-notifications: f0df6189db308579
 title_source: 788011833a5a0f22
@@ -167,7 +167,7 @@ Los ajustes de notificación del hilo usan las mismas opciones: **Solo para pone
 
 De forma predeterminada, Loomio envía un correo cuando recibes una notificación. Según los ajustes de notificación de tus grupos e hilos, esto puede incluir menciones, respuestas, discusiones compartidas contigo, invitaciones y recordatorios para votar, conclusiones y encuestas que están a punto de cerrar. Elige **Toda la actividad** para recibir también correos sobre cada nuevo comentario, voto, hilo, encuesta y conclusión.
 
-El enlace **Cancelar suscripción** de un correo de notificación abre los ajustes de ese hilo o grupo, también en los correos enviados porque alguien te mencionó o te respondió. Ese formulario muestra la frecuencia actual de tu correo de resumen para todos los grupos y contiene un enlace a los ajustes del correo de resumen. Estos enlaces de correo solo autorizan el acceso a sus respectivos formularios de ajustes; no inician tu sesión en Loomio.
+El enlace **Cancelar suscripción** de un correo de notificación abre los ajustes de ese hilo o grupo, también en los correos enviados porque alguien te mencionó o te respondió. Elige **Solo para ponerse al día** para dejar de recibir correos inmediatos y mantener la actividad en tu correo de resumen. También puedes cambiar la frecuencia del correo de resumen en la misma página, en **Correos de resumen (todos los grupos)**. Guarda los ajustes del hilo o grupo y la frecuencia del correo de resumen por separado. Estos enlaces de correo solo autorizan el acceso a sus respectivos formularios de ajustes; no inician tu sesión en Loomio.
 
 Cuando un correo de una discusión indica que se aceptan respuestas, puedes responder directamente desde tu correo y tu mensaje se publicará en la discusión de Loomio.
 
