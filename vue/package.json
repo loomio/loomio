@@ -30,7 +30,7 @@
     "@hocuspocus/provider": "^4.7.1",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.400",
-    "@sentry/vue": "^11.8.0",
+    "@sentry/vue": "^11.9.0",
     "@tiptap/core": "3.32.0",
     "@tiptap/extension-blockquote": "3.32.0",
     "@tiptap/extension-bold": "3.32.0",
