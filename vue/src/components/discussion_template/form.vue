@@ -177,7 +177,7 @@ v-form(ref="form" @submit.prevent="submit")
         maxlength='250'
       )
 
-      tags-field(:model="discussionTemplate")
+      tags-field(:model="discussionTemplate" template)
 
       lmo-textarea(
         :model='discussionTemplate'

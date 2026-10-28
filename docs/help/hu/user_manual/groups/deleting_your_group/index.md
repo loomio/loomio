@@ -1,15 +1,15 @@
 ---
 title: Csoportod törlése
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/deleting_your_group/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: d1fb3691890a02b6
+  introduction: 779d4a92736ca62a
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 776fe3d5c4d2bd17
+  introduction: 9215cd1ffadd47a1
   group-data-is-permanently-deleted-after-90-days: 614b22086f7b0641
 title_source: 9a0868f49f1262ea
 title_generated: 4e608398015d0580
@@ -23,11 +23,11 @@ Loomio-csoportod törlésével elindítod a csoport összes adatának végleges 
 
 Ha vannak olyan adatok, amelyeket meg szeretnél őrizni, a folytatás előtt [exportáld a csoport adatait](/en/user_manual/groups/data_export/), és töltsd le kézzel az összes fontos fájlt, amelyet feltöltöttél.
 
-Kattints a három pontra a csoport legördülő menüjének megnyitásához, majd válaszd ki a **Csoport törlése** lehetőséget. Ezzel megszünteted a csoporthoz való hozzáférést, és elindítod a csoport összes adatának törlését a nyilvántartásunkból. A csoport törléséhez adminnak kell lenned.
+Kattints a három pontra a csoport legördülő menüjének megnyitásához, majd válaszd ki a **Csoport törlése** lehetőséget. Ezzel megszünteted a csoporthoz való hozzáférést, és elindítod a csoport összes adatának törlését a nyilvántartásunkból. A csoport törléséhez csoportadminnak kell lenned.
 
 Amikor törölsz egy csoportot, az azonnal eltűnik a felületről, és 90 nap múlva véglegesen törlődik. Te és a csoport tagjai azonnal elveszítitek a hozzáférést a csoporthoz. Ha tévedésből törölted a csoportot, a törléstől számított 90 napon belül vedd fel velünk a kapcsolatot, és kérd a helyreállítását.
 
-A törlésre váró csoportokat és alcsoportjaikat a tagok és a koordinátorok nem tekinthetik meg, nem vehetnek részt bennük, és nem exportálhatják az adataikat. Ez a mentett hivatkozásokból megnyitott szavazásokra is vonatkozik. A tagok nem hozhatnak létre és nem szerkeszthetnek tartalmat, nem szavazhatnak, nem küldhetnek bejelentéseket vagy emlékeztetőket, és nem fogadhatnak el meghívókat. A törlés megerősítése előtt exportáld a csoport adatait, és töltsd le a fontos fájlokat. A közvetlen beszélgetéseket és szavazásokat a törlés nem érinti.
+A törlésre váró csoportokat és alcsoportjaikat a tagok és a csoportadminok nem tekinthetik meg, nem vehetnek részt bennük, és nem exportálhatják az adataikat. Ez a mentett hivatkozásokból megnyitott szavazásokra is vonatkozik. A tagok nem hozhatnak létre és nem szerkeszthetnek tartalmat, nem szavazhatnak, nem küldhetnek bejelentéseket vagy emlékeztetőket, és nem fogadhatnak el meghívókat. A törlés megerősítése előtt exportáld a csoport adatait, és töltsd le a fontos fájlokat. A közvetlen beszélgetéseket és szavazásokat a törlés nem érinti.
 
 A csoport törlésének ütemezése leállítja a csoport és alcsoportjai tevékenységeiről szóló, még el nem küldött értesítéseket és a szavazási emlékeztetőket. Azok az üzenetek, amelyek küldése már folyamatban van, még megérkezhetnek.
 

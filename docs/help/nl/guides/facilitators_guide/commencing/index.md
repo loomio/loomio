@@ -1,10 +1,10 @@
 ---
 title: Van start gaan
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: d1d0da366f644b0f
   settling: 7a9728609f33cf04
   who-s-in-the-room: 5a2fcb44570bf170
-  check-in: 1be4be841965c0dd
+  check-in: 813ce5109d3539bc
   who-s-not-in-the-room: 7ef1f5e6c16946c9
   culture-protocol-expectations: ba2c9d7eb7bcafde
 title_source: a595572326eb8669
@@ -105,8 +105,8 @@ Wat mensen zeggen, staat niet op zichzelf, maar hangt samen met wie ze zijn. Een
 Op Loomio
 
 * Maak een thread met de naam "Stel jezelf voor" of "Inchecken". Dat geeft iedereen die binnenkomt een eerste duidelijke _oproep om iets te doen_.
-* Voor groepen waarvoor je een verzoek moet indienen om lid te worden, is er een functie waarmee de aanvrager zich aan de coördinator kan voorstellen om toegang tot de groep te krijgen. Sommige groepen plaatsen deze tekst vervolgens in de kennismakingsthread om mensen te verwelkomen.
-* Upload profielfoto's. Foto's van gezichten zijn een van de krachtigste manieren om online het gevoel te krijgen dat je weet wie er bij je aanwezig zijn.
+* Voor groepen waarvoor je een verzoek moet indienen om lid te worden, is er een functie waarmee de aanvrager zich aan de groepsadmin kan voorstellen om toegang tot de groep te krijgen. Sommige groepen plaatsen deze tekst vervolgens in de kennismakingsthread om mensen te verwelkomen.
+* Upload profielfoto's! Foto's van gezichten zijn een van de krachtigste manieren om online het gevoel te krijgen dat je weet wie er bij je aanwezig zijn.
 
 <!-- translation-section: who-s-not-in-the-room -->
 

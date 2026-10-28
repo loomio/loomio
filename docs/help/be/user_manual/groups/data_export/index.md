@@ -1,17 +1,17 @@
 ---
 title: Экспарт дадзеных
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 1f284d53880be469
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: 2a2bf91d803eda0a
   export-group-data-as-html: b51b83d2b5122e7a
   export-group-data-as-json: 3f80474c723eb545
-  print-thread-to-pdf: ba72edab6d03f510
+  print-thread-to-pdf: 8f6272ae8c691edc
   import-your-group-data-on-another-loomio-server: 50726afc3859e834
 title_source: 29049648f87b87f5
 title_generated: 9fc25a543c5b2272
@@ -95,11 +95,7 @@ Loomio рыхтуе файл HTML у фонавым рэжыме і дасыла
 
 ## Друк тэмы ў PDF
 
-Вам можа спатрэбіцца копія тэмы для захоўвання ў асобным файлавым архіве.
-
-Функцыя **Друк** захоўвае ўсе каментарыі, апытанні, галасы і высновы разам з фарматаваннем тэмы.
-
-У меню тэмы націсніце на тры кропкі (⋯), а затым на **Друк**. Loomio створыць HTML-старонку, якую вы зможаце раздрукаваць або «захаваць у PDF» з дапамогай інструмента друку ў вашым браўзеры.
+Каб захаваць тэму для ўласнага архіва, адкрыйце яе меню і выберыце **Друк**. Loomio стварае HTML-старонку з каментарыямі, апытаннямі, галасамі, высновамі і фарматаваннем тэмы. Скарыстайцеся інструментам друку ў вашым браўзеры, каб раздрукаваць яе або захаваць у PDF.
 
 Вы можаце скапіяваць старонку і ўставіць яе ў рэдактар дакументаў, файл або сховішча дадзеных.
 

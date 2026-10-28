@@ -79,7 +79,19 @@ export default new class AbilityService {
   }
 
   canEditTags(topic) {
-    return topic.group().isEnabled() && this.canEdit(topic.topicable());
+    const user = Session.user();
+    return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
+      topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
+        topic.group().membersCanEditDiscussions);
+  }
+
+  canTagTopicItem(item) {
+    if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
+    const topic = item.topic();
+    const user = Session.user();
+    if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
+    return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
+      topic.group().membersCanEditDiscussions);
   }
 
   canAdminTags(topic) {
@@ -383,6 +395,6 @@ export default new class AbilityService {
   }
 
   canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

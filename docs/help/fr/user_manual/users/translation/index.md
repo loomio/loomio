@@ -1,19 +1,19 @@
 ---
 title: Langue et traduction
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/translation/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 339f8c77362b2d12
-  application-translation: e1a57b4f96352649
-  content-translation: 427aa006b46961a8
+  introduction: 61c3576014d50390
+  application-translation: '02678dc26a30c3bc'
+  content-translation: a62f882355b42534
   automatic-translation: 32a1aa99502e1e87
 generated:
-  introduction: a2cb121fdf49efa4
-  application-translation: 67f5f0931010e4d9
-  content-translation: c3749a81cff0de90
+  introduction: 743bb2d4b09be75a
+  application-translation: 60c8095dcf2571c6
+  content-translation: df6c5631d6224cc7
   automatic-translation: 5e3e923a5ae036f5
 title_source: 9fd7f67efecb7288
 title_generated: d6600ed9cd486a64
@@ -23,25 +23,22 @@ title_generated: d6600ed9cd486a64
 
 # Langues et traduction
 
-Loomio prend en charge plusieurs langues grâce à ces deux fonctionnalités :
-
-1. Traduction de l’application - Changez la langue de l’interface, c’est-à-dire des boutons et des textes de l’application.
-2. Traduction du contenu - Traduisez les commentaires, les discussions et les propositions dans votre langue préférée.
+Changez la langue de l’interface de Loomio ou traduisez les discussions, les commentaires et les propositions dans votre langue préférée.
 
 <!-- translation-section: application-translation -->
 
 ## Traduction de l’application
 
-Loomio détecte automatiquement votre langue préférée lorsque vous accédez à l’application avec votre navigateur. Si vous souhaitez changer votre langue préférée, vous pouvez le faire depuis la page « Modifier mon profil ».
+Loomio détecte la langue préférée de votre navigateur. Pour choisir une autre langue, ouvrez **Modifier mon profil** et sélectionnez la langue souhaitée.
 
 ![Modification de votre langue préférée](change_language.png)
 
 <!-- translation-section: content-translation -->
 
 ## Traduction du contenu
-Lorsque quelqu’un dans votre groupe écrit un message dans une langue différente de votre langue préférée, un bouton « Traduire » apparaît sous le message. Cliquez sur ce bouton pour traduire automatiquement le message dans votre langue préférée.
+Lorsqu’une personne de votre groupe écrit un message dans une langue différente de votre langue préférée, un bouton « Traduire » apparaît sous le message. Cliquez sur ce bouton pour traduire automatiquement le message dans votre langue préférée.
 
-![Traduction du contenu](content_translation.png)
+![Action Traduire sous un commentaire](content_translation.png)
 
 Le texte traduit remplace le texte original dans la discussion. Sélectionnez **original** pour afficher à nouveau le texte original.
 

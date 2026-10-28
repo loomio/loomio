@@ -8,6 +8,6 @@ Each group gets a unique email address (displayed in group settings). Any group 
 
 ## Managing incoming email
 
-Group coordinators can create email aliases for members who want to post from a different address than the one on their Loomio account. Addresses can be allowlisted or blocked from the group settings page.
+Group admins can create email aliases for members who want to post from a different address than the one on their Loomio account. Addresses can be allowlisted or blocked from the group settings page.
 
 Instance admins must enable incoming email for the instance before groups can use this feature.

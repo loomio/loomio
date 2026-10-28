@@ -1,6 +1,6 @@
 <!-- translation-section: introduction -->
 
-# Formatting
+# Format text and attach files
 
 When starting or editing a discussion or poll, or writing a comment, you will see a formatting bar below the text field. Select the arrow at the end of the bar to show or hide the full set of tools.
 
@@ -8,7 +8,6 @@ Hover the mouse or cursor over each item for the name of each tool.
 
 ![](thread_format_bar.png)
 
-Use formatting to add structure and emphasis so information is easier to scan.
 
 <!-- translation-section: attach-file -->
 
@@ -30,20 +29,9 @@ While editing the context, click the **X** to the right of the file name to remo
 
 ## Insert image
 
-Use this tool to insert and display an image.
-
-![](format_insert_image.png)
-
-Select an image file from your computer. The image is inserted into the editor after it uploads.
+Select **Insert image** and choose a file, or paste an image directly into the editor. The image appears within the published discussion, poll or comment.
 
 ![](format_insert_example.png)
-
-The image is displayed within the published discussion, poll or comment.
-
->[!Tip]
->You can also copy/paste an image directly into Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -59,9 +47,7 @@ To add a link:
 
 For a document hosted elsewhere, check its sharing permissions so discussion participants can open it.
 
-A preview of the doc will appear under the text space. You can remove this if you want.
-
-Now, anyone with access to your Loomio discussion and permission to view the doc can open and read it.
+A preview may appear below the text; you can remove it if you prefer.
 
 ![](format_link.png)
 
@@ -81,7 +67,7 @@ Heading 1, Heading 2 and Heading 3 can help structure a discussion or comment.
 
 Select the text to mark as a heading and click on the heading format tool.
 
-If a heading is used in a comment, the comment will automatically be pinned to the discussion timeline.
+If a heading is used in a comment, the comment will automatically be added to the discussion timeline.
 
 ![](format_heading.png)
 

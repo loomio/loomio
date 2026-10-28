@@ -139,6 +139,8 @@ hr:
     manage_subscription: Upravljanje pretplatom
     amount: Iznos
   loomio_tags:
+    show_tags_from_other_groups: Prikažite oznake iz drugih grupa
+    parent_group_and_subgroups_in_this_organization: Matična grupa i podgrupe ove organizacije
     all_tags: Sve oznake
     tags: Oznake
     apply_tags: Primijeni oznake
@@ -248,7 +250,7 @@ hr:
       open: Otvoren
       closed: Zatvoreno
       private: Privatna
-      parent_members: "Vidljiva matičnoj grupi"
+      parent_members: Vidljiva matičnoj grupi
       secret: Tajna
     selected: Odabran
     today: danas
@@ -996,10 +998,10 @@ hr:
       everyone_in_the_group: Svi u grupi
       topic: Svi u temi
       voters: Svi pozvani da glasaju
-      decided_voters: Svi koji su glasali
-      undecided_voters: Birači koji još nisu glasali
       non_voters: Članovi %{name} još nisu pozvani
       delegates_of_group: Delegati %{name}
+      everyone_who_voted: Svi koji su glasali
+      people_who_have_not_voted: Oni koji još nisu glasali
     form:
       group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
       invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
@@ -1069,7 +1071,7 @@ hr:
       has_not_read_thread: Nije pogledao nit
       has_not_joined_yet: Još se nije pridružio
       has_not_joined_yet_hint: Ovaj korisnik nije prihvatio njihov poziv da se pridruži Loomiju i neće primati daljnje obavijesti dok to ne prihvati
-      discussion_admin: Administrator rasprave
+      discussion_admin: Administrator teme
       has_not_read_discussion: Nije pregledao/la raspravu
     group_form:
       search_placeholder: Traži ljude...
@@ -1083,6 +1085,8 @@ hr:
     topic_notification_history: Povijest obavijesti o temama
     notification_history: Povijest obavijesti
   action_dock:
+    add_to_timeline: Dodajte na vremensku traku
+    remove_from_timeline: Uklonite s vremenske trake
     actions_menu: Izbornik radnji
     more_actions: Vise akcije
     react: Reagirati
@@ -1425,9 +1429,9 @@ hr:
     confirm_change_to_public: Ako nastavite, sve niti u ovoj grupi bit će javne na webu.
     confirm_change_to_private_discussions_only: Ako nastavite, sve javne niti u ovoj grupi postat će privatne.
     profile: Profil
-    subgroup_name_and_content_are_public: "Svatko može pronaći ovu podgrupu i čitati njezine niti"
-    subgroup_name_is_public_and_threads_are_private: "Svatko može pronaći ovu podgrupu; njezine su niti privatne"
-    subgroup_is_visible_to_parent_members: "Članovi %{parent} mogu pronaći ovu podgrupu; njezine su niti privatne"
+    subgroup_name_and_content_are_public: Svatko može pronaći ovu podgrupu i čitati njezine niti
+    subgroup_name_is_public_and_threads_are_private: Svatko može pronaći ovu podgrupu; njezine su niti privatne
+    subgroup_is_visible_to_parent_members: Članovi %{parent} mogu pronaći ovu podgrupu; njezine su niti privatne
     subgroup_privacy_is_open_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme javne.
     subgroup_privacy_is_closed_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme privatne.
     subgroup_privacy_is_closed_public_threads_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Niti mogu biti javne ili privatne.
@@ -1435,9 +1439,9 @@ hr:
     subgroup_privacy_is_secret_description: Samo pozvani članovi mogu pronaći ovu podgrupu, vidjeti tko je u njoj i vidjeti teme.
     advanced_settings: Napredne postavke
     how_do_people_join: Kako se ljudi pridružuju?
-    join_without_approval: "Pridružite se bez odobrenja"
-    request_to_join: "Zatražite pridruživanje"
-    invitation_only: "Samo uz pozivnicu"
+    join_without_approval: Pridružite se bez odobrenja
+    request_to_join: Zatražite pridruživanje
+    invitation_only: Samo uz pozivnicu
     permissions: Dozvole
     thread_privacy: Privatnost niti
     public_threads: Samo javne niti
@@ -1445,8 +1449,8 @@ hr:
     public_or_private_threads: Dopusti javne i privatne niti
     private_threads: Samo članovi mogu vidjeti rasprave
     allow_public_threads: Dopusti javne niti u ovoj grupi.
-    parent_group_members_can_see_private_threads: "Članovi matične grupe mogu vidjeti privatne niti"
-    parent_group_members_can_see_private_threads_help: "Dopustite članovima grupe %{parent} da vide niti i ankete u ovoj grupi, ali ne i da u njima sudjeluju"
+    parent_group_members_can_see_private_threads: Članovi matične grupe mogu vidjeti privatne niti
+    parent_group_members_can_see_private_threads_help: Dopustite članovima grupe %{parent} da vide niti i ankete u ovoj grupi, ali ne i da u njima sudjeluju
     members_can_announce: Članovi mogu obavijestiti sve u grupi
     members_can_announce_help: Dopustite članovima da obavijeste sve u grupi o niti ili anketi
     members_can_add_members: Članovi mogu pozvati članove
@@ -1601,7 +1605,7 @@ hr:
     title_helptext:
       group: Ovaj naslov će se pojaviti pored imena %{name} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
     title_label: titula
-    title_placeholder: Npr. 'Koordinator' ili 'Facilitator'
+    title_placeholder: Npr. „Admin” ili „Facilitator”
     updated: Naziv članstva ažuriran
     weight_label: Težina glasova
   user_name_modal:
@@ -1773,7 +1777,6 @@ hr:
       all: Nedavne rasprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      undecided: Još niste glasali
     threads_from:
       group: Teme iz
       pinned: Prikvačene niti
@@ -1995,6 +1998,18 @@ hr:
     for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
     for_the_poll_to_be_valid: Da bi %{poll_type} bio valjan, ova opcija mora primiti…
     points_cast: Dodijeljeni bodovi
+    eligible_vote_weight: Težina glasova birača s pravom glasa
+    vote_weight_cast: Težina danih glasova
+    name_gte_eligible_vote_weight: "%{name} treba barem %{percent}% težine glasova birača s pravom glasa"
+    name_lte_eligible_vote_weight: "%{name} ne smije prelaziti %{percent}% težine glasova birača s pravom glasa"
+    name_gte_vote_weight_cast: "%{name} treba barem %{percent}% težine danih glasova"
+    name_lte_vote_weight_cast: "%{name} ne smije prelaziti %{percent}% težine danih glasova"
+    total_assigned_vote_weight: Ukupna dodijeljena težina glasova
+    weighted_votes_cast: Dani ponderirani glasovi
+    name_gte_assigned_vote_weight: "%{name} treba barem %{percent}% ukupne dodijeljene težine glasova"
+    name_lte_assigned_vote_weight: "%{name} ne smije prelaziti %{percent}% ukupne dodijeljene težine glasova"
+    name_gte_weighted_votes_cast: "%{name} treba barem %{percent}% danih ponderiranih glasova"
+    name_lte_weighted_votes_cast: "%{name} ne smije prelaziti %{percent}% danih ponderiranih glasova"
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -2111,6 +2126,9 @@ hr:
     pct_of_weighted_votes: "% ponderiranih glasova"
     pct_of_weighted_points: "% ponderiranih bodova"
     weighted_mean: Ponderirana srednja vrijednost
+    pct_of_eligible_vote_weight: "% težine glasova birača s pravom glasa"
+    pct_of_vote_weight_cast: "% težine danih glasova"
+    pct_of_assigned_vote_weight: "% dodijeljene težine glasova"
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2275,18 +2293,14 @@ hr:
     started_by: Pokrenuo %{name}
   poll_common_votes_panel:
     vote_removed: Glas uklonjen
-    undecided: Neodlučan
     newest_first: Prvo najnoviji
     oldest_first: Prvo najstariji
     priority_first: Prvo se složite
     priority_last: Prvo blokiraj
-    undecided_first: Prvo oni koji još nisu glasali
     no_votes_yet: Još nema glasova.
     change_results_order: Promjena redoslijeda rezultata
     none_of_the_above: "(Ništa od navedenog)"
     name_or_username: Ime ili korisničko ime
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Razlog je uklonjen
     redact_reason_title: Uredi razlog glasanja?
     redact_reason_helptext: Razlog zašto će tekst i privitci biti skriveni, ali će glas ostati u rezultatima
@@ -2301,15 +2315,6 @@ hr:
     stance: Glasanje
     participation_records_restricted: Nakon završetka glasanja možete vidjeti tko je sudjelovao
     vote_weight: Težina glasova %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Prikaži %{count} neodlučenih
-    show_invitations: Prikaži pozivnice na čekanju
-    undecided_users: Neodlučan (%{count})
-    invitation_count_singular: 1 dodatna osoba je pozvana da sudjeluje putem e-pošte
-    invitation_count_plural: "%{count} dodatnih osoba pozvano je na sudjelovanje putem e-pošte"
-  poll_common_undecided_user:
-    reminded: Podsjetnik poslan!
-    reminder_sent: Obavijest o podsjetniku je poslana
   poll_common_set_outcome_panel:
     enter_outcome: Unesite ishod
     poll_type: Ovaj %{poll_type} je zatvoren. Odvojite vrijeme za razmatranje rezultata, a zatim podijelite ishod kako bi ljudi znali što će se sljedeće dogoditi.
@@ -2443,13 +2448,17 @@ hr:
     votes_short_of_quorum: Potrebno je još %{num} glasova za kvorum od %{pct}%
     quorum_reached: Kvorum od %{pct}% je dostignut
     pct_participation: "%{num} od %{total} glasova (%{pct}% sudjelovanja)"
+    pct_vote_weight_participation: Dano %{num} od %{total} glasova (%{pct}% težine glasova)
+    pct_of_eligible_vote_weight_must_participate: Mora sudjelovati %{pct}% težine glasova birača s pravom glasa
+    pct_weighted_participation: Dano %{num} od %{total} glasova (sudjelovalo %{pct}% dodijeljene težine glasova)
+    pct_of_assigned_vote_weight_must_participate: Mora sudjelovati %{pct}% ukupne dodijeljene težine glasova
   poll_meeting_chart_panel:
     total: Ukupno
   poll_remove_vote:
     title: Ukloniti svoj glas?
-    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni među onima koji još nisu glasali i možete ponovno glasati kasnije ako želite.
     confirm: Ukloni glas
     success: Glas uklonjen
+    helptext_not_voted: Želite li zaista ukloniti svoj glas? Vaš će status biti “Još nisu glasali” i možete ponovno glasati kasnije ako želite.
   poll_poll_vote_form:
     stance_created: Glasanje je kreirano
     stance_updated: Glasanje ažurirano
@@ -2806,8 +2815,8 @@ hr:
       voting_title: 24 sata prije zatvaranja glasanja, pošaljite podsjetnik na
       nobody: Nitko
       author: Autor (ja)
-      undecided_voters: Birači koji još nisu glasali
       voters: Svi birači
+      people_who_have_not_voted: Oni koji još nisu glasali
     notify_on_participate:
       title: Obavijesti me kada ljudi sudjeluju
       helptext_on: Kada budete odabrani, bit ćete obaviješteni svaki put kada netko sudjeluje.
@@ -2973,6 +2982,10 @@ hr:
     weighted_voting_off_warning: Isključivanjem ponderiranog glasanja svaka težina glasa postavlja se na 1. Sve težine glasova koje ste promijenili za ovu anketu bit će izgubljene.
     weighted_voting_on_group: Uključivanjem ponderiranog glasanja kopira se zadana težina glasa svakog člana. Ostali glasači dobivaju težinu glasa od 1.
     weighted_voting_on_direct: Uključivanjem ponderiranog glasanja težina svakog glasa postaje 1
+    quorum_vote_weight_hint: Koji postotak težine glasova birača s pravom glasa mora sudjelovati da bi rezultat bio valjan? Neobavezno, ostavite prazno ako kvorum nije potreban.
+    quorum_vote_weight_placeholder: Postotak težine glasova birača s pravom glasa (0–100)
+    quorum_voters_placeholder: Postotak birača s pravom glasa (0–100)
+    quorum_weighted_hint: Koji postotak ukupne dodijeljene težine glasova mora sudjelovati da bi rezultat bio valjan? Neobavezno, ostavite prazno ako kvorum nije potreban.
   poll_receipts_page:
     participation_status_requires_min_votes: Ovo pokazuje tko je imao pravo glasa. Je li svaka osoba glasala prikazuje se tek kada su glasale najmanje %{count} osobe.
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
@@ -3215,7 +3228,7 @@ hr:
     stance: glas
   membership_notification_history:
     invitation_delivery_history: Povijest dostave pozivnica
-    email_delivery_blocked: "Loomio je onemogućio dostavu e-pošte na ovu adresu"
+    email_delivery_blocked: Loomio je onemogućio dostavu e-pošte na ovu adresu
     delivery_result:
       delivered: Dostavljeno
       failed: Neuspješno

@@ -18,7 +18,7 @@ Advice is not an approval vote. Say who will make the decision, what constraints
 
 ## Example: choose a washing supplier
 
-Oatmilk Cooperative's operations coordinator must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
+Oatmilk Cooperative's operations lead must select a washing supplier. They invite advice about capacity, food-safety records, water use, service response times, and support.
 
 <!-- translation-section: set-up-the-proposal -->
 

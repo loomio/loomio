@@ -26,16 +26,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_equal ['Existing'], discussion.topic.tags
   end
 
-  test "members cannot inject new tags while starting discussions when tag creation is disabled" do
+  test "disallowed tags are dropped without blocking discussion creation" do
     group = topics(:discussion_topic).group
     group.update!(members_can_create_tags: false)
     sign_in users(:member_normal)
 
-    assert_no_difference ['Discussion.count', 'Topic.count', 'Tag.count', 'TopicItem.count'] do
-      post :create, params: { discussion: { title: 'Injected tag', group_id: group.id, tags: ['New tag'] } }
+    assert_difference ['Discussion.count', 'Topic.count', 'TopicItem.count'], 1 do
+      assert_no_difference 'Tag.count' do
+        post :create, params: { discussion: { title: 'Injected tag', group_id: group.id, tags: ['New tag'] } }
+      end
     end
 
-    assert_response :forbidden
+    assert_response :success
+    assert_empty Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
   end
 
   test "group admins can create tags while starting discussions when member tag creation is disabled" do
@@ -52,7 +55,9 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   test "create discussion in group with no recipient notification" do
     sign_in @user
 
-    post :create, params: { discussion: { title: 'test', group_id: @group.id } }
+    assert_no_enqueued_jobs(only: MoveCommentsWorker) do
+      post :create, params: { discussion: { title: 'test', group_id: @group.id, selected_topic_item_ids: [] } }
+    end
 
     assert_response :success
     json = JSON.parse(response.body)
@@ -86,6 +91,25 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
 
     assert_response :success
   end
+
+  test "creating a discussion from selected comments moves them into the new thread" do
+    source = topics(:discussion_topic).topicable
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: source, body: 'Move this comment'), actor: users(:member_normal))
+    item_id = comment.created_topic_item.id
+    sign_in actor
+
+    perform_enqueued_jobs(only: MoveCommentsWorker) do
+      post :create, params: { discussion: { title: 'Split selected comment', group_id: source.group_id, selected_topic_item_ids: [item_id] } }
+    end
+
+    assert_response :success
+    destination = Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id'))
+    assert_equal destination.topic_id, comment.reload.topic_id
+    assert_equal destination.topic_id, TopicItem.find(item_id).topic_id
+    refute_equal source.topic_id, destination.topic_id
+  end
+
 
   test "user without groups can create direct discussion when create_user is disabled" do
     hex = SecureRandom.hex(4)
@@ -214,13 +238,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_response :success
 
     post :create, params: { discussion: { title: 'Injected tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake', 'Not approved' ] } }
-    assert_response :forbidden
+    assert_response :success
+    assert_equal ['Intake'], Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
+    assert_not Tag.exists?(group: @group, name: 'Not approved')
 
     template.hide!
-    assert_no_difference [ 'Discussion.count', 'Topic.count' ] do
-      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Intake' ] } }
+    # Intake is now an existing organization tag. Use a new prescribed name to
+    # check that a hidden template cannot authorize creating more vocabulary.
+    template.update!(tags: ['Hidden intake'])
+    assert_no_difference 'Tag.count' do
+      post :create, params: { discussion: { title: 'Hidden template tag', group_id: @group.id, discussion_template_id: template.id, tags: [ 'Hidden intake' ] } }
     end
-    assert_response :forbidden
+    assert_response :success
+    assert_empty Discussion.find(response.parsed_body.fetch('discussions').first.fetch('id')).created_topic_item.tags
   end
 
   test "nonmember cannot invite people while creating a group discussion" do
@@ -375,6 +405,33 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_includes discussion_json.keys, 'key'
     assert_includes discussion_json.keys, 'title'
     assert_includes discussion_json.keys, 'description'
+  end
+
+  test "viewing a discussion accepts the viewer's pending membership" do
+    invitee = User.create!(name: "Invitee", email: "discussion-invitee@example.test", email_verified: true)
+    membership = @group.memberships.create!(user: invitee, inviter: @admin)
+    assert_nil membership.accepted_at
+    sign_in invitee
+
+    get :show, params: { id: @discussion.key }
+
+    assert_response :success
+    assert_not_nil membership.reload.accepted_at
+  end
+
+  test "viewing a public discussion does not restore a revoked invitation" do
+    group = topics(:public_discussion_topic).group
+    invitee = User.create!(name: "Revoked invitee", email: "revoked-invitee@example.test", email_verified: true)
+    membership = group.memberships.create!(user: invitee, inviter: @admin)
+    MembershipService.revoke(membership: membership, actor: @admin)
+    sign_in invitee
+
+    get :show, params: { id: discussions(:public_discussion).key }
+
+    assert_response :success
+    membership.reload
+    assert_not_nil membership.revoked_at
+    assert_nil membership.accepted_at
   end
 
   test "show serializes without record cache fallbacks" do

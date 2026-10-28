@@ -33,7 +33,7 @@ class Stance < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        t.tags AS tags,
+        ARRAY[]::varchar[] AS tags,
         stances.participant_id AS author_id,
         stances.cast_at AS authored_at,
         #{content_str} AS content,
@@ -79,19 +79,19 @@ class Stance < ApplicationRecord
 
   scope :latest, -> { where(latest: true, revoked_at: nil) }
   scope :newest_first, -> { order("cast_at DESC NULLS LAST") }
-  scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
+  scope :uncast_first, -> { order("cast_at DESC NULLS FIRST") }
   scope :oldest_first, -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
-  scope :decided, -> { where("stances.cast_at IS NOT NULL") }
-  scope :undecided, -> { where("stances.cast_at IS NULL") }
+  scope :cast, -> { where("stances.cast_at IS NOT NULL") }
+  scope :uncast, -> { where("stances.cast_at IS NULL") }
   scope :revoked, -> { where("revoked_at IS NOT NULL") }
   scope :invited, -> { where("inviter_id is not null") }
   scope :none_of_the_above, -> { where(none_of_the_above: true) }
 
   scope :redeemable, -> {
-    latest.invited.undecided.where('stances.accepted_at IS NULL')
+    latest.invited.uncast.where('stances.accepted_at IS NULL')
       .where(poll_id: Poll.where(topic_id: Topic.left_joins(:group).group_enabled.select(:id)).select(:id))
       .where(<<~SQL.squish)
         NOT EXISTS (

@@ -1,10 +1,10 @@
 ---
 title: Configurações
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,10 +14,10 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -36,10 +36,10 @@ generated:
   edit-voting-options: 649d9c3d8156c05d
   opening-time: 6b999c1315b28e29
   more-settings: f868cbc69693539f
-  reminder: 5e6b4efd519e49d2
+  reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
   vote-reason: 70f2e2565d94b6d8
-  hide-results: ac87e3af0cba9c93
+  hide-results: e637a8d5be5becaa
   start-the-poll: 2230fbd6a77fa9f6
   managing-polls: 301e2f77ba8cb7da
   edit-poll: e8a3a23ee27ba8e5
@@ -157,7 +157,7 @@ Envie uma notificação de 'Encerramento em breve' 24 horas antes do encerrament
 Opções de configuração:
 - Ninguém
 - Autor
-- Eleitores que não votaram (padrão)
+- Pessoas que não votaram (padrão)
 - Todos os eleitores
 
 Em uma enquete anônima com duração de pelo menos 24 horas, o Loomio envia automaticamente um lembrete às pessoas aptas a votar que ainda não votaram, durante as últimas 24 horas. Esse lembrete não pode ser alterado nas configurações da enquete.
@@ -204,11 +204,11 @@ Opções de configuração:
 - Ocultar resultados até votar
 - Ocultar resultados até o encerramento da votação
 
-Quando os resultados ficam ocultos até votar, as pessoas podem responder aos votos assim que votarem. Todos os comentários na enquete, incluindo comentários diretos e respostas a outras respostas, permanecem ocultos na conversa para quem ainda não votou.
+Quando os resultados ficam ocultos até votar, as pessoas podem ver as opções escolhidas e os motivos dos votos depois de votar. Os membros da conversa podem escrever comentários e responder aos votos antes de votar. Os comentários permanecem visíveis independentemente da configuração dos resultados.
 
-Quando os resultados ficam ocultos até o encerramento da votação, os comentários na enquete permanecem ocultos, e as respostas e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada.
+Quando os resultados ficam ocultos até o encerramento da votação, as respostas aos votos e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada. Os membros da conversa ainda podem comentar na enquete e responder aos comentários. Você pode prorrogar o prazo de encerramento enquanto a enquete estiver aberta, mas não pode reabri-la depois de encerrada.
 
-A impressão e as exportações, incluindo Markdown, ignoram a configuração "ocultar resultados até votar" e incluem votos e respostas. Os resultados ocultos até o encerramento permanecem ocultos até a enquete ser encerrada.
+A impressão e as exportações, incluindo Markdown, ignoram a configuração "ocultar resultados até votar" e incluem votos e respostas. Os resultados e os motivos dos votos ocultos até o encerramento permanecem ocultos até a enquete ser encerrada. Os comentários comuns permanecem disponíveis na conversa, na busca e nas exportações.
 
 Enquetes anônimas sempre ocultam os resultados até o encerramento da votação. O modelo de eleição STV habilita a votação anônima por padrão.
 

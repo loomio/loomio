@@ -92,7 +92,7 @@ module Dev::Scenarios::OatmilkCooperative
       },
       actor: coordinator
     )
-    discussion.topic.update!(tags: ['Packaging'])
+    discussion.created_topic_item.update!(tags: ['Packaging'])
     CommentService.create(
       comment: Comment.new(
         parent: discussion,
@@ -669,8 +669,8 @@ module Dev::Scenarios::OatmilkCooperative
     group.tags.create!(name: 'Cafe partnerships', color: '#6a1b9a')
     group.tags.create!(name: 'Packaging', color: '#1565c0')
     group.tags.create!(name: 'Sustainability', color: '#2e7d32')
-    discussion.topic.update!(tags: ['Cafe partnerships', 'Packaging'])
-    group.discussions.find_by!(title: 'Weekly production schedule').topic.update!(tags: ['Sustainability'])
+    discussion.created_topic_item.update!(tags: ['Cafe partnerships', 'Packaging'])
+    group.discussions.find_by!(title: 'Weekly production schedule').created_topic_item.update!(tags: ['Sustainability'])
 
     sign_in coordinator
     redirect_to group_path(group)
@@ -728,6 +728,16 @@ module Dev::Scenarios::OatmilkCooperative
         },
         actor: coordinator
       )
+
+      # One member is left without a vote, so the results show a Not voted row.
+      Array(example[:votes]).zip([production_lead, coordinator]).each do |(option, reason), voter|
+        option_name = (poll.poll_options.find_by(icon: option) || poll.poll_options.find_by!(name: option)).name
+        StanceService.update(
+          stance: Stance.find_by!(poll: poll, participant: voter, latest: true),
+          actor: voter,
+          params: {choice: {option_name => 1}, reason: reason}
+        )
+      end
 
       if example[:outcome]
         PollService.close(poll: poll, actor: coordinator)
@@ -825,6 +835,10 @@ module Dev::Scenarios::OatmilkCooperative
 
     poll = discussion.polls.find_by!(title: 'Run a six-week returnable bottle trial')
     poll.update!(quorum_pct: 60)
+    PollService.invite(
+      poll: poll, actor: coordinator,
+      params: {recipient_user_ids: [operations_lead.id, finance_lead.id], notify_recipients: false}
+    )
 
     vote_share = params[:vote_share] == '1'
     if vote_share
@@ -868,9 +882,9 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to params[:view] == 'edit' ? "/p/#{poll.key}/edit" : poll_path(poll)
   end
 
-  # The board decides with vote weight 1. Operations staff take part in the
-  # conversation and vote with vote weight 0, so their votes are on record
-  # without changing the result.
+  # The electorate has total vote weight 6. Partial turnout gives Agree one person
+  # with weight 2, Disagree three people with weight 1, and pending weight 3.
+  # This distinguishes headcount, weighted support, and weighted quorum.
   def setup_manual_oatmilk_vote_weights
     group, coordinator, discussion = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')
@@ -880,10 +894,10 @@ module Dev::Scenarios::OatmilkCooperative
     operations_coordinator = create_manual_oatmilk_member(name: 'Lena Fischer', email: 'lena@oatmilk.example')
     [board_member, treasurer, operations_coordinator].each { |member| group.add_member!(member) }
     {
-      coordinator => ['Board chair', 1],
-      board_member => ['Board member', 1],
+      coordinator => ['Board chair', 2],
+      board_member => ['Board member', 2],
       treasurer => ['Treasurer', 1],
-      production_lead => ['Production lead', 0],
+      production_lead => ['Production lead', 1],
       sales_lead => ['Sales lead', 0],
       operations_coordinator => ['Operations coordinator', 0]
     }.each do |member, (title, weight)|
@@ -897,12 +911,16 @@ module Dev::Scenarios::OatmilkCooperative
       poll: poll, actor: coordinator,
       params: {recipient_user_ids: [board_member.id, treasurer.id, operations_coordinator.id], notify_recipients: false}
     )
-    poll.update!(weighted_voting: true)
-    if params[:votes] == '1'
-      [
+    poll.update!(weighted_voting: true, quorum_pct: 60)
+    if %w[1 partial].include?(params[:votes])
+      votes = [
         [coordinator, 'agree'], [treasurer, 'agree'], [board_member, 'disagree'],
         [production_lead, 'disagree'], [sales_lead, 'disagree'], [operations_coordinator, 'disagree']
-      ].each do |voter, icon|
+      ]
+      if params[:votes] == 'partial'
+        votes.reject! { |voter, _| [board_member, treasurer].include?(voter) }
+      end
+      votes.each do |voter, icon|
         option = poll.poll_options.find_by!(icon: icon)
         StanceService.update(
           stance: poll.stances.latest.find_by!(participant: voter),
@@ -1166,11 +1184,11 @@ module Dev::Scenarios::OatmilkCooperative
         details: config.fetch(:details),
         poll_type: poll_type,
         poll_option_names: config.fetch(:options),
-        minimum_stance_choices: config[:minimum_stance_choices],
-        maximum_stance_choices: config[:maximum_stance_choices],
-        dots_per_person: config[:dots_per_person],
-        min_score: config[:min_score],
-        max_score: config[:max_score],
+        choice_count_min: config[:choice_count_min],
+        choice_count_max: config[:choice_count_max],
+        points_per_voter: config[:points_per_voter],
+        score_min: config[:score_min],
+        score_max: config[:score_max],
         closing_at: 1.week.from_now
       }.compact,
       actor: coordinator
@@ -1260,9 +1278,9 @@ module Dev::Scenarios::OatmilkCooperative
         details: 'We need advice about capacity, food-safety records, water use, and support before selecting a supplier for the returnable bottle trial.',
         poll_type: template.poll_type,
         poll_template_id: template.id,
-        minimum_stance_choices: template.minimum_stance_choices,
-        maximum_stance_choices: template.maximum_stance_choices,
-        dots_per_person: template.dots_per_person,
+        choice_count_min: template.choice_count_min,
+        choice_count_max: template.choice_count_max,
+        points_per_voter: template.points_per_voter,
         poll_options_attributes: manual_oatmilk_poll_options_attributes(template),
         closing_at: 1.week.from_now
       },
@@ -1311,9 +1329,9 @@ module Dev::Scenarios::OatmilkCooperative
       details: manual_oatmilk_proposal_details(template_key),
       poll_type: template.poll_type,
       poll_template_key: template.key,
-      minimum_stance_choices: template.minimum_stance_choices,
-      maximum_stance_choices: template.maximum_stance_choices,
-      dots_per_person: template.dots_per_person,
+      choice_count_min: template.choice_count_min,
+      choice_count_max: template.choice_count_max,
+      points_per_voter: template.points_per_voter,
       stance_reason_required: template.stance_reason_required,
       closing_at: 1.week.from_now
     }
@@ -1485,9 +1503,9 @@ module Dev::Scenarios::OatmilkCooperative
       reason_prompt: source.reason_prompt,
       outcome_statement: source.outcome_statement,
       default_duration_in_days: source.default_duration_in_days,
-      minimum_stance_choices: source.minimum_stance_choices,
-      maximum_stance_choices: source.maximum_stance_choices,
-      dots_per_person: source.dots_per_person,
+      choice_count_min: source.choice_count_min,
+      choice_count_max: source.choice_count_max,
+      points_per_voter: source.points_per_voter,
       stance_reason_required: source.stance_reason_required,
       poll_options: source.poll_options,
       tags: source.tags
@@ -1560,9 +1578,9 @@ module Dev::Scenarios::OatmilkCooperative
       reason_prompt: source.reason_prompt,
       outcome_statement: source.outcome_statement,
       default_duration_in_days: source.default_duration_in_days,
-      minimum_stance_choices: source.minimum_stance_choices,
-      maximum_stance_choices: source.maximum_stance_choices,
-      dots_per_person: source.dots_per_person,
+      choice_count_min: source.choice_count_min,
+      choice_count_max: source.choice_count_max,
+      points_per_voter: source.points_per_voter,
       stance_reason_required: source.stance_reason_required,
       poll_options: source.poll_options,
       tags: source.tags
@@ -1596,8 +1614,8 @@ module Dev::Scenarios::OatmilkCooperative
         title: 'Which bottle trial topics need the most meeting time?',
         details: 'Choose up to two topics for the Oatmilk Cooperative planning meeting. We will use the result to set the agenda.',
         options: ['Cafe collection schedule', 'Bottle deposit amount', 'Washing workflow', 'Return-rate reporting'],
-        minimum_stance_choices: 1,
-        maximum_stance_choices: 2,
+        choice_count_min: 1,
+        choice_count_max: 2,
         votes: [
           {'Cafe collection schedule' => 1, 'Washing workflow' => 1},
           {'Cafe collection schedule' => 1, 'Bottle deposit amount' => 1},
@@ -1610,8 +1628,8 @@ module Dev::Scenarios::OatmilkCooperative
         title: 'Score possible locations for the bottle trial',
         details: 'Score each location from 0 (unsuitable) to 10 (ideal) for the six-week trial.',
         options: ['Central Station cafe', 'Riverside market', 'University food court', 'Harbour offices'],
-        min_score: 0,
-        max_score: 10,
+        score_min: 0,
+        score_max: 10,
         votes: [
           {'Central Station cafe' => 8, 'Riverside market' => 6, 'University food court' => 7, 'Harbour offices' => 5},
           {'Central Station cafe' => 7, 'Riverside market' => 8, 'University food court' => 6, 'Harbour offices' => 6},
@@ -1624,7 +1642,7 @@ module Dev::Scenarios::OatmilkCooperative
         title: "Set priorities for next year's strategy review",
         details: 'Allocate ten points across the areas that should receive the most time in our annual strategy review.',
         options: ['Member participation', 'Financial sustainability', 'Products and services', 'Environmental impact', 'Staff development'],
-        dots_per_person: 10,
+        points_per_voter: 10,
         votes: [
           {'Member participation' => 3, 'Financial sustainability' => 3, 'Environmental impact' => 2, 'Staff development' => 2},
           {'Member participation' => 2, 'Financial sustainability' => 4, 'Products and services' => 2, 'Environmental impact' => 2},
@@ -1637,7 +1655,7 @@ module Dev::Scenarios::OatmilkCooperative
         title: 'Rank the bottle designs for the trial',
         details: 'Rank the four bottle designs in the order the cooperative should consider them for the trial.',
         options: ['500 ml amber bottle', '500 ml clear bottle', '750 ml amber bottle', '1 litre clear bottle'],
-        minimum_stance_choices: 4,
+        choice_count_min: 4,
         votes: [
           {'500 ml amber bottle' => 4, '500 ml clear bottle' => 3, '750 ml amber bottle' => 2, '1 litre clear bottle' => 1},
           {'500 ml clear bottle' => 4, '500 ml amber bottle' => 3, '1 litre clear bottle' => 2, '750 ml amber bottle' => 1},
@@ -1735,6 +1753,51 @@ module Dev::Scenarios::OatmilkCooperative
           options: %w[agree abstain disagree block]
         },
         outcome: 'The reusable packaging policy was approved for the six-week trial. We will review it with cafe partners when the trial ends.'
+      },
+      'board_minutes' => {
+        title: 'October board meeting',
+        description: '<p>Agenda, papers, and minutes for the October board meeting.</p>',
+        poll: {
+          title: 'Accept the minutes of the October board meeting',
+          details: "Please read the minutes and note your actions.\n\nVote **Accept** if the minutes and actions are correct, or **Review** if there is anything to discuss.",
+          type: 'poll',
+          options: %w[Accept Review]
+        },
+        votes: [
+          ['Accept', 'Thanks. I have started on my actions.'],
+          ['Accept', '']
+        ]
+      },
+      'board_report' => {
+        title: 'October board reports',
+        description: '<p>The finance and operations reports for the October board meeting. Ask questions here before the meeting.</p>',
+        poll: {
+          title: 'Approve the quarterly financial statements',
+          details: "Vote **Agree** if you approve the financial statements, or **Disagree** if you have questions.\n\nChange your vote once your questions are answered.",
+          type: 'proposal',
+          options: %w[agree abstain disagree block]
+        },
+        votes: [
+          ['disagree', 'Why is the washing cost higher than last quarter?'],
+          ['agree', '']
+        ]
+      },
+      'board_funding' => {
+        title: 'Funding application to the Community Food Trust',
+        description: '<p>The Community Food Trust has invited us to apply for a grant toward the returnable bottle trial.</p><p>The draft application covers the washing equipment, the cafe collection runs, and six months of reporting.</p><p>Please read the draft and raise any risks before we submit it.</p>',
+        comments: [
+          'The reporting schedule looks manageable alongside the trial.'
+        ],
+        poll: {
+          title: "Let's apply for the Community Food Trust grant",
+          details: 'Tell us if you see any risks, and where the application could be stronger.',
+          type: 'check',
+          options: %w[looks_good not_sure concerned]
+        },
+        votes: [
+          ['agree', 'The budget matches the trial plan.'],
+          ['abstain', 'I would like a second quote for the washing equipment.']
+        ]
       },
       'thread_raise_issue' => {
         title: 'Choosing a bottle washing supplier',

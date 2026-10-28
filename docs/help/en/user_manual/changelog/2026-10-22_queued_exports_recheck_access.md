@@ -1,0 +1,1 @@
+JSON and CSV group data exports now check access when the export is prepared, not only when it is requested. If an admin loses admin access before their export is ready, Loomio does not send it. A parent group export includes the subgroups the admin can access when it is prepared.

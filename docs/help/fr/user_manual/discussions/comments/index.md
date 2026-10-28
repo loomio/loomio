@@ -1,10 +1,10 @@
 ---
 title: Commentaires
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,7 +28,7 @@ generated:
   reactions: 65677706372348e5
   translating-comments: 56abf81e2d998c67
   comment-actions: 680c9ff79d7e4c67
-  add-a-comment-to-jump-to: 0e03e9263ed25b03
+  add-a-comment-to-jump-to: 8bc9e1877931d007
   edit-a-comment-and-view-changes: 0cda6e4a6745c27c
   copy-a-comment-link: 6cb038158b8825af
   view-notification-history: 2bb478eb8a297794
@@ -123,14 +123,14 @@ Les actions courantes apparaissent directement sous un commentaire. D’autres a
 
 ### Ajouter un commentaire à Aller à
 
-Utilisez **Epingler dans la timeline ** pour ajouter un commentaire à la liste **Aller à** du fil.
+Utilisez **Ajouter à la timeline** pour ajouter un commentaire à la liste **Aller à** du fil.
 
-Vous pouvez modifier le libellé affiché dans **Aller à**. Désépinglez le commentaire, puis épinglez-le à nouveau pour modifier le texte du lien.
+Vous pouvez modifier le libellé affiché dans **Aller à**. Retirez le commentaire de la timeline, puis ajoutez-le à nouveau pour modifier le texte du lien.
 
 >[!Tip]
->Sélectionnez les mots que vous souhaitez utiliser comme texte du lien avant de sélectionner **Epingler dans la timeline **.
+>Sélectionnez les mots que vous souhaitez utiliser comme texte du lien avant de sélectionner **Ajouter à la timeline**.
 
-Sélectionnez **Ne plus épingler** pour retirer l’élément de **Aller à**.
+Sélectionnez **Retirer de la timeline** pour retirer l’élément de **Aller à**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

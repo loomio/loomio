@@ -1,10 +1,10 @@
 ---
 title: Asetukset
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,10 +14,10 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -39,7 +39,7 @@ generated:
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
   vote-reason: b3539bc5be115312
-  hide-results: 2ffd733e74216345
+  hide-results: 31d718986ffd6bba
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
@@ -204,15 +204,15 @@ Jos haluat ihmisten äänestävän tietämättä, miten muut ovat äänestäneet
 Asetuksen vaihtoehdot:
 - Älä piilota tuloksia
 - Piilota tulokset, kunnes ääni on annettu
-- Piilota tulokset, kunnes äänestys sulkeutuu
+- Piilota tulokset, kunnes äänestys päättyy
 
-Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat vastata ääniin heti annettuaan oman äänensä. Kaikki kyselyn alla olevat kommentit, myös suorat kommentit ja vastauksiin annetut vastaukset, pysyvät ketjussa piilossa ihmisiltä, jotka eivät ole äänestäneet.
+Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat nähdä äänivalinnat ja perustelut äänestettyään. Ketjun jäsenet voivat kirjoittaa kommentteja ja vastata ääniin ennen äänestämistä. Kommentit pysyvät näkyvissä tulosten asetuksesta riippumatta.
 
-Kun tulokset ovat piilossa äänestyksen sulkeutumiseen asti, kyselyn alla olevat kommentit pysyvät piilossa ja vastaukset sekä maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti.
+Kun tulokset ovat piilossa äänestyksen päättymiseen asti, ääniin vastaaminen ja maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti. Ketjun jäsenet voivat silti kommentoida kyselyä ja vastata kommentteihin. Voit pidentää äänestysaikaa kyselyn ollessa avoinna, mutta et voi avata kyselyä uudelleen sen sulkeuduttua.
 
-Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset pysyvät piilossa kyselyn sulkeutumiseen asti.
+Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset ja äänten perustelut pysyvät piilossa kyselyn sulkeutumiseen asti. Tavalliset kommentit ovat edelleen saatavilla ketjussa, haussa ja vienneissä.
 
-Anonyymit kyselyt piilottavat tulokset aina äänestyksen sulkeutumiseen asti. STV-vaalit-mallissa anonyymi äänestys on oletusarvoisesti käytössä.
+Anonyymit kyselyt piilottavat tulokset aina äänestyksen päättymiseen asti. STV-vaalit-mallissa anonyymi äänestys on oletusarvoisesti käytössä.
 
 <!-- translation-section: start-the-poll -->
 

@@ -30,10 +30,39 @@ class DirectUploadsControllerTest < ActionController::TestCase
     }
   end
 
-  test "allows upload within trial limit" do
+  test "allows uploads within and at the trial limit with the editor download contract" do
     sign_in @trial_user
-    post :create, params: blob_params(byte_size: 1.megabyte), format: :json
-    assert_response :success
+    [1.megabyte, DirectUploadsController::TRIAL_MAX_UPLOAD_BYTES].each do |byte_size|
+      post :create, params: blob_params(byte_size: byte_size), format: :json
+      assert_response :success
+      payload = response.parsed_body
+      blob = ActiveStorage::Blob.find(payload.fetch('id'))
+      assert_equal blob.signed_id, payload.fetch('signed_id')
+      assert_equal rails_blob_path(blob, only_path: true), payload.fetch('download_url')
+      assert payload.fetch('direct_upload').fetch('url').present?
+    end
+  end
+
+  test "rejects executable script and SVG content before creating a blob" do
+    sign_in @trial_user
+    %w[application/x-msdownload application/javascript image/svg+xml IMAGE/SVG+XML].each do |content_type|
+      assert_no_difference 'ActiveStorage::Blob.count' do
+        post :create, params: blob_params(byte_size: 1_024).deep_merge(blob: { content_type: content_type }), format: :json
+      end
+      assert_response :unprocessable_entity
+      assert_equal 'This file type is not allowed', response.parsed_body.fetch('error')
+    end
+  end
+
+  test "image uploads include a preview path while plain text uploads omit it" do
+    sign_in @trial_user
+    [['image/png', true], ['text/plain', false]].each do |content_type, preview|
+      post :create, params: blob_params(byte_size: 1_024).deep_merge(blob: { content_type: content_type }), format: :json
+      assert_response :success
+      payload = response.parsed_body
+      assert_equal preview, payload.key?('preview_url')
+      assert_match(%r{\A/rails/active_storage/representations/}, payload.fetch('preview_url')) if preview
+    end
   end
 
   test "rejects blank filename before creating a blob" do

@@ -112,7 +112,7 @@ nl_NL:
     add_guests:
       all: U moet uw Loomio-abonnement upgraden om gasten toe te voegen. U kunt ze ook uitnodigen om lid te worden van uw groep.
   errors:
-    item_you_are_replying_to_deleted: "Het item waarop je antwoordt, is verwijderd"
+    item_you_are_replying_to_deleted: Het item waarop je antwoordt, is verwijderd
     clear_cache: Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache.
     400:
       title: Bad request
@@ -203,7 +203,6 @@ nl_NL:
       poll_options_dont_match: Een bug in Loomio zorgde ervoor dat je stem niet werd opgeslagen. We werken aan een oplossing. Laad de pagina opnieuw en probeer het opnieuw.
       opening_at_before_closing_at: De openingsdatum moet vóór de sluitingsdatum liggen.
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) leden hebben hun positie gegeven."
       title: Titel
       author: Auteur
       email: E-mail
@@ -485,12 +484,8 @@ nl_NL:
       not_invited: Niet uitgenodigd
       please_respond: Graag antwoorden
       time_zone: "(Tijden getoond in %{zone})"
-      undecided_members: Leden die nog niet hebben gestemd (%{count})
-      undecided_visitors: Onbesliste gasten (%{count})
-      more_undecided: "%{count} meer..."
       vote_now: Stem nu
       you_have_until: Je hebt tot %{when} om mee te doen.
-      people_have_voted: "%{nom} van %{dnom} mensen hebben deelgenomen (%{pct}%)"
       voting_opens_and_closes: De stemming begint op %{opens} en eindigt op %{closes}. (%{days} dagen)
       voting_closes: De stemming sluit %{when}.
       voting_opened_and_closed: De stemming is geopend op %{opens} en gesloten op %{closes}. (%{days} dagen)
@@ -809,9 +804,9 @@ nl_NL:
     voted: "%{author} stemde %{response}"
     voted_hidden: "%{author} heeft gestemd"
     vote_removed: "%{author}: stem verwijderd"
-    undecided: "%{author}: nog niet gestemd"
     superseded: vervangen
     shared_outcome: "%{author} deelde een conclusie"
     removed: Verwijderd
+    not_voted: "%{author}: nog niet gestemd"
   error:
     access_denied: Je hebt geen toestemming om dat te doen

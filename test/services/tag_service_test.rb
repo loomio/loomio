@@ -99,7 +99,7 @@ class TagServiceTest < ActiveSupport::TestCase
   test "normalize_all_tag_names normalizes topics and metadata" do
     tag = Tag.create!(group: @group, name: 'planned')
     topic = @group.topics.first
-    topic.update_columns(tags: ['planned ', '  Beta   tag'])
+    topic.topicable.created_topic_item.update_columns(tags: ['planned ', '  Beta   tag'])
     Tag.where(id: tag.id).update_all(name: 'planned ')
 
     result = TagService.normalize_all_tag_names

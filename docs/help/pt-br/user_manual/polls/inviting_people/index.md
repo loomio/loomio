@@ -1,10 +1,10 @@
 ---
 title: Convidar a votar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: ca0e336d115357af
   invite-people-to-vote-in-a-poll: 815c193d404a36f9
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: f8ffd9f94066d78e
   engage-people-while-a-poll-is-running: 2ad855a7ed684fd7
   add-voters-to-the-poll: 76a1d7805cb7b48e
-  remove-people-from-the-poll: e98da3a9b054834e
+  remove-people-from-the-poll: 0544e0ba6b0d4f21
   remind-people-to-vote: 6327e07ed4413eb6
   view-notification-history: bd518e21af31776b
   close-early: e4783b6e8c6f5e84
-  reopen: 185ec95ec0d341da
+  reopen: 9b22eac3f799d9f4
 title_source: 4801d1a3dba7ce3d
 title_generated: 38fec66e3e2c3377
 ---
@@ -104,7 +104,7 @@ Não é possível remover pessoas de uma enquete anônima.
 
 Por exemplo, um administrador que cria uma enquete em nome dos membros de um conselho pode remover a si mesmo se não tiver autorização para votar.
 
-Nas enquetes que usam pesos do voto, essa mesma janela permite que os coordenadores da enquete [revisem e editem os pesos do voto](/en/user_manual/polls/weighted_voting).
+Nas enquetes que usam pesos do voto, essa mesma janela permite que os admins da conversa [revisem e editem os pesos do voto](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ Você pode fazer isso quando todas as pessoas já tiverem votado ou quando a enq
 
 Selecione **Reabrir** em uma enquete encerrada e defina uma nova data e hora de encerramento.
 
-Enquetes anônimas não podem ser reabertas.
+Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento enquanto elas ainda estiverem abertas.
 
 ![](proposal_reopen.png)

@@ -8,6 +8,16 @@ discussion_created_topic_item:
   position_key: "00000"
   depth: 0
 
+direct_discussion_created_topic_item:
+  kind: new_discussion
+  itemable: direct_discussion (Discussion)
+  topic: direct_topic
+  user: guest_normal
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
 discussion_in_subgroup_created_topic_item:
   kind: new_discussion
   itemable: discussion_in_subgroup (Discussion)

@@ -1,25 +1,25 @@
 ---
 title: Encontrar conteúdo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 66286b7829c37639
   search: 4f959dd1007491d2
-  search-tips: 30cc868ea329fefc
+  search-tips: 60375ff1f35326eb
   filter-discussions: 34da34d3f72e1f95
-  category-tags: 01df5684e5512b62
+  category-tags: 8c881d31fcb29e7c
   unread-discussions: a0aee32fc32fc55a
   polls-awaiting-your-vote: 2953d59f66ae0aec
   bookmarks: 5947d3f191ee26e2
@@ -54,7 +54,7 @@ Digite uma palavra ou frase e pressione Enter ou selecione o ícone de busca. Po
 - Comece com uma ou duas palavras específicas do título ou do conteúdo de que você se lembra.
 - A busca encontra correspondências pelo início de uma palavra, então uma palavra parcial como **bott** pode encontrar **bottle**.
 - A busca compensa erros de digitação quando há poucos resultados para o termo pesquisado.
-- Use os filtros para limitar os resultados a uma organização, subgrupo, tag ou tipo de conteúdo, como comentários ou enquetes.
+- Use os filtros para limitar os resultados a uma organização, subgrupo, tag ou tipo de conteúdo, como comentários ou enquetes. Um filtro de tag encontra contribuições que tenham essa tag explicitamente aplicada e funciona sem um termo de busca.
 - Ordene por **Melhor resultado** quando a relevância for importante, ou pelos mais recentes ou mais antigos quando você souber aproximadamente quando o conteúdo foi publicado.
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ Use os controles ao lado da busca para filtrar discussões pelo status de aberta
 
 ## Tags de categoria
 
-As tags agrupam discussões e enquetes relacionadas sob nomes escolhidos pelo seu grupo, como um projeto, equipe ou área de trabalho.
+As tags agrupam discussões, enquetes, conclusões e comentários relacionados sob nomes escolhidos pelo seu grupo, como um projeto, equipe ou área de trabalho.
 
 ![](tags.png)
 
-Selecione uma tag na aba **Discussões** para exibir as discussões correspondentes. Pessoas com permissão para iniciar ou editar discussões podem aplicar tags. Consulte [Tags de categoria](/en/user_manual/discussions/tags) para obter detalhes sobre configuração e permissões.
+Selecione uma tag na aba **Discussões** para exibir conversas que contenham uma contribuição correspondente. Dentro de uma conversa, selecione uma tag na barra lateral para encontrar contribuições correspondentes com o contexto ao qual pertencem. Autores podem adicionar tags às próprias contribuições. Admins de grupo, admins de conversa e pessoas com permissão para editar o contexto da discussão podem adicionar tags a qualquer contribuição. Consulte [Tags de categoria](/en/user_manual/discussions/tags) para obter detalhes sobre configuração e permissões.
 
 <!-- translation-section: unread-discussions -->
 

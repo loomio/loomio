@@ -1,18 +1,18 @@
 ---
 title: עיצוב
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 28e62586d6c1d027
+  introduction: 63d73b72ef6532d1
   attach-file: 30f604fcf0d3dc78
   remove-attachments: 031db0021f386187
-  insert-image: 0e4154b34538d117
-  insert-link: 31bb396b9cb4c402
+  insert-image: 3d761f7433f5234d
+  insert-link: e96110766c543bb5
   insert-emoji: ef1f99f60220ece6
-  headings: 6aaad3c27d32c8d1
+  headings: 8acd0136a8525e7e
   bold-italicize-strikethrough: fa2f21815939c673
   list: 426c79f994071988
   numbered-list: e135301d7d943e86
@@ -53,15 +53,13 @@ title_generated: fb76597681c2bb39
 
 <!-- translation-section: introduction -->
 
-# עיצוב
+# עיצוב טקסט וצירוף קבצים
 
 בעת פתיחה או עריכה של דיון או סקר, או כתיבת תגובה, מופיע סרגל עיצוב מתחת לשדה הטקסט. יש לבחור בחץ שבקצה הסרגל כדי להציג או להסתיר את כל הכלים.
 
 כדי לראות את שם הכלי, יש להעביר את סמן העכבר מעל כל פריט.
 
 ![](thread_format_bar.png)
-
-ניתן להשתמש בעיצוב כדי להוסיף מבנה והדגשות ולהקל על סקירת המידע.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ title_generated: fb76597681c2bb39
 
 ## הוספת תמונה
 
-כלי זה מאפשר להוסיף ולהציג תמונה.
-
-![](format_insert_image.png)
-
-יש לבחור קובץ תמונה מהמחשב. התמונה מתווספת לעורך לאחר העלאתה.
+יש לבחור **הוסף תמונה** ולבחור קובץ, או להדביק תמונה ישירות בעורך. התמונה מוצגת בתוך הדיון, הסקר או התגובה שפורסמו.
 
 ![](format_insert_example.png)
-
-התמונה מוצגת בתוך הדיון, הסקר או התגובה שפורסמו.
-
->[!Tip]
->ניתן גם להעתיק ולהדביק תמונה ישירות לתוך Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ title_generated: fb76597681c2bb39
 
 אם המסמך מאוחסן במקום אחר, יש לבדוק את הרשאות השיתוף שלו כדי לאפשר למשתתפים בדיון לפתוח אותו.
 
-תצוגה מקדימה של המסמך תופיע מתחת לשדה הטקסט. ניתן להסיר אותה לפי הצורך.
-
-כעת ניתן לפתוח ולקרוא את המסמך עם גישה לדיון ב־Loomio והרשאה לצפות במסמך.
+ייתכן שתופיע תצוגה מקדימה מתחת לטקסט; ניתן להסיר אותה לפי הצורך.
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ title_generated: fb76597681c2bb39
 
 יש לבחור את הטקסט שיש לסמן ככותרת וללחוץ על כלי עיצוב הכותרות.
 
-אם תגובה כוללת כותרת, התגובה תינעץ אוטומטית בציר הזמן של הדיון.
+אם תגובה כוללת כותרת, התגובה תתווסף אוטומטית לציר הזמן של הדיון.
 
 ![](format_heading.png)
 

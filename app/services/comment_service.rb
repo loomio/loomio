@@ -11,9 +11,10 @@ class CommentService
     return comment unless comment.valid?
 
     topic_item = comment.topic.with_write_lock do
+      # The poll's result setting may have changed while waiting for this lock.
+      parent.association(:poll).reset if parent.is_a?(Stance)
       actor.ability.authorize! :create, comment
       comment.save!
-      comment.update_pg_search_document
       Sentry.metrics.count("comment.create", attributes: { parent_type: comment.parent_type })
       topic_item = TopicItems::NewComment.create!(
         itemable: comment,
@@ -38,7 +39,6 @@ class CommentService
       comment.created_topic_item.update(pinned: false)
       comment.topic.update_sequence_info!
     end
-    ReindexCommentWorker.perform_later(comment.id)
     on_topic_item&.call(comment.created_topic_item)
     comment
   end
@@ -50,7 +50,6 @@ class CommentService
       comment.update(discarded_at: nil, discarded_by: nil)
       comment.created_topic_item.update(user_id: comment.user_id)
     end
-    ReindexCommentWorker.perform_later(comment.id)
     on_topic_item&.call(comment.created_topic_item)
     comment
   end

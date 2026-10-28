@@ -5,7 +5,7 @@ class OpenapiRoutesTest < ActiveSupport::TestCase
   SPEC_PATH = Rails.root.join("docs/help/en/user_manual/integrations/api/openapi.yaml")
   HTTP_METHODS = %w[get post put patch delete options head trace].freeze
 
-  test "OpenAPI contract covers every B2 and B3 route" do
+  test "OpenAPI contract covers every user0 and server0 route" do
     assert_equal rails_operations, documented_operations
   end
 
@@ -65,9 +65,13 @@ class OpenapiRoutesTest < ActiveSupport::TestCase
   def rails_operations
     Rails.application.routes.routes.filter_map do |route|
       controller = route.defaults[:controller].to_s
-      next unless controller.start_with?("api/b2/", "api/b3/")
+      next unless controller.start_with?("api/user0/", "api/server0/")
 
-      path = route.path.spec.to_s.delete_suffix("(.:format)").gsub(/:([a-z_]+)/, '{\\1}')
+      path = route.path.spec.to_s
+      # Legacy b2 and b3 aliases share these controllers but are not documented.
+      next unless path.start_with?("/api/user0/", "/api/server0/")
+
+      path = path.delete_suffix("(.:format)").gsub(/:([a-z_]+)/, '{\\1}')
       route.verb.to_s.split("|").map { |verb| "#{verb} #{path}" }
     end.flatten.sort
   end

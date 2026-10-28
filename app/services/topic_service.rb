@@ -64,19 +64,22 @@ class TopicService
 
   def self.update(topic:, params:, actor:)
     actor.ability.authorize! :update, topic
-    topic.assign_attributes(params)
+    params = params.to_h.with_indifferent_access
+    topic.assign_attributes(params.except(:tags))
     rearrange = topic.max_depth_changed?
     return topic unless topic.valid?
 
-    topic.save!
+    Topic.transaction do
+      topic.save!
+      update_tags(topic: topic, tags: params[:tags], actor: actor) if params.key?(:tags)
+    end
     RepairTopicWorker.perform_later(topic.id) if rearrange
     topic
   end
 
   def self.update_tags(topic:, tags:, actor:)
-    actor.ability.authorize! :update_tags, topic
-    TagService.authorize_create_tag_names!(topic.group, tags, actor)
-    topic.update!(tags: TagService.clean_tag_names(tags))
+    TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: tags, actor: actor)
+    topic.reload
   end
 
   def self.lock(topic:, actor:)
@@ -108,12 +111,18 @@ class TopicService
       ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
-      ReindexDiscussionWorker.perform_later(topic.id)
       TopicItems::DiscussionMoved.create!(
         itemable: topic.topicable,
         user: actor,
         created_at: Time.current
       )
+    end
+    ActiveRecord.after_all_transactions_commit do
+      if topic.topicable_type == 'Discussion'
+        ReindexDiscussionWorker.perform_later(topic.topicable_id)
+      else
+        ReindexPollWorker.perform_later(topic.topicable_id)
+      end
     end
     on_topic_item&.call(topic_item)
     topic
@@ -125,7 +134,7 @@ class TopicService
       topic.polls
         .where(anonymous: false)
         .joins(:stances)
-        .merge(Stance.latest.decided)
+        .merge(Stance.latest.cast)
         .pluck("stances.participant_id")
     )
 
@@ -248,6 +257,8 @@ class TopicService
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       topic.update_column(:active_polls_count, 0)
+    end
+    ActiveRecord.after_all_transactions_commit do
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
     topicable
@@ -389,6 +400,9 @@ class TopicService
       child_count: created_topic_item.children.count
     )
     topic.update_sequence_info!
+
+    # Repair can change which contribution occupies the root sequence.
+    TagService.refresh_topic_tags!([topic.id])
 
     # ensure all the topic_readers have valid read_ranges values
     TopicReader.where(topic_id: topic.id).each do |reader|

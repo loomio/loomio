@@ -1,10 +1,10 @@
 ---
 title: 設定
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,10 +14,10 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -36,10 +36,10 @@ generated:
   edit-voting-options: 244706d5d94bb2dd
   opening-time: 3695d23bab31dc75
   more-settings: ee685758816f701f
-  reminder: 37ef7799665f0689
+  reminder: 61136dac07544bb7
   anonymous-voting: a2ecf3255db05030
   vote-reason: 62318725e7487f0d
-  hide-results: b689c22cffa1b17b
+  hide-results: 2acd89a5bee36ca4
   start-the-poll: cd4c593025090505
   managing-polls: 98a208666a4101b9
   edit-poll: f00e83972b06e9ec
@@ -159,7 +159,7 @@ needs_review:
 通知先の設定：
 - 誰にも通知しない
 - 作成者
-- 未投票の投票者（初期設定）
+- 未投票の人（初期設定）
 - すべての投票者
 
 投票期間が24時間以上の匿名アンケートでは、投票資格があり、まだ投票していない人に、締め切りまでの最後の24時間にLoomioが自動でリマインダーを送信します。このリマインダーはアンケートの設定では変更できません。
@@ -206,11 +206,11 @@ needs_review:
 - 投票するまで結果を非表示にする
 - 投票が締め切られるまで結果を非表示にする
 
-投票するまで結果が非表示になる設定の場合は、投票するとすぐに投票への返信ができるようになります。アンケートの下にあるすべてのコメントは、直接投稿されたコメントや返信への返信も含め、まだ投票していない人にはスレッド内で表示されません。
+投票するまで結果が非表示になる設定の場合は、投票後に選択肢ごとの投票内容と理由を確認できます。スレッドのメンバーは、投票前でもコメントを投稿したり、投票に返信したりできます。結果の設定にかかわらず、コメントは表示されます。
 
-投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、アンケートの下にあるコメントは非表示のままとなり、返信と投票理由内のメンションが無効になります。
+投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、投票への返信と投票理由内のメンションが無効になります。スレッドのメンバーは、引き続きアンケートにコメントしたり、コメントに返信したりできます。アンケートの受付中は締め切り日時を延長できますが、締め切り後は再開できません。
 
-印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで結果を非表示にする設定の場合は、アンケートが締め切られるまで結果は非表示のままです。
+印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで非表示にする設定の結果と投票理由は、アンケートが締め切られるまで非表示のままです。通常のコメントは、引き続きスレッド、検索、エクスポートで確認できます。
 
 匿名アンケートでは、投票が締め切られるまで結果が常に非表示になります。STV選挙テンプレートでは、初期設定で匿名投票が有効になっています。
 

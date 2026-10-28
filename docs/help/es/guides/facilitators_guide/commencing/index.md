@@ -1,10 +1,10 @@
 ---
 title: Comenzar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: ade074ad24e77caa
   settling: 2f10feb7f96de6b2
   who-s-in-the-room: 0afe8f49541a92ec
-  check-in: a2a604f5c33782d5
+  check-in: 31bd8cfd60a50aa8
   who-s-not-in-the-room: d2a22f151e04dc67
   culture-protocol-expectations: '086addaaaf4fe322'
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ Lo que las personas expresan no ocurre en el vacío, sino en el contexto de qui�
 En Loomio
 
 * Crea un hilo llamado «Preséntate» o «Ronda inicial». Ofrece una primera _llamada a la acción_ útil que todas las personas que lleguen entenderán.
-* En los grupos donde hay que solicitar unirse, tenemos una función que permite a quien envía la solicitud presentarse ante la persona coordinadora para obtener acceso al grupo. Algunos grupos vuelven a publicar este contenido en el hilo de presentaciones para dar la bienvenida a quienes llegan.
+* En los grupos donde hay que solicitar unirse, tenemos una función que permite a quien envía la solicitud presentarse ante el admin del grupo para obtener acceso al grupo. Algunos grupos vuelven a publicar este contenido en el hilo de presentaciones para dar la bienvenida a quienes llegan.
 * Sube fotos de perfil. Las fotos de rostros son una de las formas más eficaces de sentir que conoces a quienes comparten contigo el espacio en línea.
 
 <!-- translation-section: who-s-not-in-the-room -->

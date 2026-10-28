@@ -1,10 +1,10 @@
 ---
 title: Propositions et sondages
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: 5964c948e010b2a8
   find-the-right-help: 9f099b7827f0f5cb
@@ -33,8 +33,8 @@ generated:
   1-create-it: d9a4de4a83aec885
   2-voting-opens: 2a0c9487fe7eef86
   3-people-vote: 2409e4c3f813bbf8
-  4-it-closes: dc2e7d08ff38f071
-  5-share-an-outcome: 7cefa3f5891e9077
+  4-it-closes: 0eaf3786a96ccd94
+  5-share-an-outcome: f1b827c6cc1e7d32
 title_source: d45b4ba3cb7a27cb
 title_generated: 177d8f0aa41e5dc7
 ---
@@ -150,13 +150,13 @@ Tant que le vote est ouvert, les personnes peuvent voter, expliquer leur vote et
 
 ### 4. Le sondage est clôturé
 
-Le sondage est clôturé automatiquement à l’heure de clôture. Un coordinateur du sondage peut aussi le clôturer plus tôt. Après la clôture, un coordinateur du sondage peut le rouvrir en fixant une nouvelle heure de clôture pour permettre aux personnes de continuer à voter. Les sondages anonymes ne peuvent pas être rouverts.
+Le sondage est clôturé automatiquement à l’heure de clôture. Un administrateur du fil peut aussi le clôturer plus tôt. Après la clôture, un administrateur du fil peut le rouvrir en fixant une nouvelle heure de clôture pour permettre aux personnes de continuer à voter. Les sondages qui masquent les résultats jusqu’à la clôture du vote, y compris les sondages anonymes, ne peuvent pas être rouverts. Vous pouvez prolonger leur durée de vote tant qu’ils sont encore ouverts.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Partagez une conclusion
 
-Lorsque le sondage est clôturé, Loomio demande aux coordinateurs du sondage de partager une conclusion.
+Lorsque le sondage est clôturé, Loomio demande aux administrateurs du fil de partager une conclusion.
 
 ![L’invitation à saisir une conclusion après la clôture d’une proposition](outcome_prompt.png)
 

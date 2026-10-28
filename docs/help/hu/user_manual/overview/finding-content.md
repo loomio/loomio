@@ -1,25 +1,25 @@
 ---
 title: Tartalom keresése
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 61f73c522a97cf27
   search: ebbf1e28c195a36a
-  search-tips: 6c0e5bebd6955390
+  search-tips: 33af6f9e9bb21d45
   filter-discussions: a5afc403f56c405f
-  category-tags: ef59d0c7412322c8
+  category-tags: 1e12ad8b20246779
   unread-discussions: 5a321f8f5b3ec434
   polls-awaiting-your-vote: a2c71ecbae9d4718
   bookmarks: 21fc7353bd66d2ff
@@ -54,7 +54,7 @@ A keresés a csoportjaidban és a közvetlen beszélgetéseidben elérhető tart
 - Kezdj egy-két jellegzetes szóval abból a címből vagy tartalomból, amelyre emlékszel.
 - A keresés a szavak elejét is felismeri, így például a **bott** szórészletre keresve a **bottle** szót is megtalálhatod.
 - Ha a megadott keresésre nagyon kevés találat van, a keresés az elírásokat is figyelembe veszi.
-- Használd a szűrőket, hogy a találatokat egy szervezetre, alcsoportra, címkére vagy tartalomtípusra, például hozzászólásokra vagy szavazásokra szűkítsd.
+- Használd a szűrőket, hogy a találatokat egy szervezetre, alcsoportra, címkére vagy tartalomtípusra, például hozzászólásokra vagy szavazásokra szűkítsd. A címkeszűrő azokat a tartalmi elemeket találja meg, amelyekhez kifejezetten hozzárendelték az adott címkét, és keresőkifejezés nélkül is működik.
 - Válaszd a **Legjobb találat** szerinti rendezést, ha a relevancia számít, vagy rendezz a legújabb vagy legrégebbi tartalmak szerint, ha nagyjából tudod, mikor tették közzé a keresett tartalmat.
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ A Keresés melletti vezérlőkkel szűrd a beszélgetéseket nyitott vagy lezár
 
 ## Kategóriacímkék
 
-A címkék a csoportod által választott nevek alatt rendezik az összetartozó beszélgetéseket és szavazásokat, például projekt, csapat vagy munkaterület szerint.
+A címkék a csoportod által választott nevek alatt rendezik az összetartozó beszélgetéseket, szavazásokat, következtetéseket és hozzászólásokat, például projekt, csapat vagy munkaterület szerint.
 
 ![](tags.png)
 
-Válassz ki egy címkét a **Beszélgetések** lapon a hozzá tartozó beszélgetések megjelenítéséhez. Azok alkalmazhatnak címkéket, akik jogosultak beszélgetések indítására vagy szerkesztésére. A beállításokról és a jogosultságokról a [Kategóriacímkék](/en/user_manual/discussions/tags) oldalon olvashatsz.
+Válaszd ki az egyik címkét a **Beszélgetések** lapon az olyan szálak megjelenítéséhez, amelyek tartalmaznak a címkének megfelelő tartalmi elemet. Egy szálon belül válaszd ki az egyik címkét az oldalsávban, hogy megtaláld a megfelelő tartalmi elemeket a hozzájuk tartozó leírással együtt. A szerzők címkézhetik a saját tartalmi elemeiket. A csoportadminok, a száladminok és a beszélgetés leírásának szerkesztésére jogosult személyek bármelyik tartalmi elemet címkézhetik. A beállításokról és a jogosultságokról a [Kategóriacímkék](/en/user_manual/discussions/tags) oldalon olvashatsz.
 
 <!-- translation-section: unread-discussions -->
 

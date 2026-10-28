@@ -26,7 +26,7 @@ module StvCountService
       end
     end
 
-    poll.stances.latest.decided.includes(:stance_choices).map do |stance|
+    poll.stances.latest.cast.includes(:stance_choices).map do |stance|
       stance.stance_choices
             .sort_by { |sc| sc.score }
             .map(&:poll_option_id)

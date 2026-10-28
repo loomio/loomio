@@ -1,10 +1,10 @@
 ---
 title: 通知
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: 344441daff8ed726
   group-notification-settings: d98b4d48802df58d
   thread-notification-settings: 1eab34b3753d5044
-  email-delivery: d3d02d978c70b49f
+  email-delivery: 445628c3b54ccb52
   enable-mobile-notifications-with-web-push: 5b34224be0166bd6
   turn-off-external-notifications: 69536fd9ceda617c
 title_source: 788011833a5a0f22
@@ -167,7 +167,7 @@ Loomioの通知をまとめて受け取りたい場合は、1日1回の方法に
 
 初期設定では、Loomioは通知があるとメールを送信します。グループやスレッドの通知設定に応じて、メンション、返信、共有されたディスカッション、投票への招待やリマインダー、結論、締め切りが近いアンケートなどが含まれます。**すべてのアクティビティ**を選ぶと、新しいコメント、投票、スレッド、アンケート、結論のすべてについてもメールを受け取れます。
 
-通知メールの**購読を解除する**リンクを開くと、そのスレッドやグループの設定が表示されます。メンションや返信によって送信されたメールも対象です。そのフォームには、すべてのグループに適用される現在のまとめメールの配信スケジュールと、まとめメールの設定へのリンクが表示されます。これらのメール内のリンクは、それぞれの設定フォームを操作する権限だけを付与し、Loomioへのサインインは行いません。
+通知メールの**購読を解除する**リンクを開くと、そのスレッドやグループの設定が表示されます。メンションや返信によって送信されたメールも対象です。**見逃し配信のみ**を選ぶと、アクティビティをまとめメールに含めたまま、即時のメール配信を停止できます。同じページの**最新情報メール（全グループ対象）**で、まとめメールの配信スケジュールも変更できます。スレッドやグループの設定と、まとめメールの配信スケジュールは、それぞれ個別に保存してください。これらのメール内のリンクは、それぞれの設定フォームを操作する権限だけを付与し、Loomioへのサインインは行いません。
 
 ディスカッションのメールに返信を受け付ける旨が記載されている場合は、メールから直接返信できます。返信したメッセージは、Loomioのディスカッションに投稿されます。
 

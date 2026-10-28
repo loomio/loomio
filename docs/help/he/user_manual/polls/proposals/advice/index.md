@@ -1,14 +1,14 @@
 ---
 title: עֵצָה
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,15 +16,13 @@ sections:
 generated:
   introduction: 29ae0ef84f04148c
   when-to-use-advice: 86265337c42343b3
-  example-choose-a-washing-supplier: 8b756f56178eecab
+  example-choose-a-washing-supplier: f233b4f283e6ba1c
   set-up-the-proposal: f4a74c36612cdd41
   vote: a6df4fe79f923828
   read-the-results: bfbc2fc4e26d42e7
   share-an-outcome: 7378b7e23eec9bba
 title_source: 305f5e5463e18d7f
 title_generated: df94c0d56ed03c7e
-needs_review:
-  example-choose-a-washing-supplier: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
@@ -47,7 +45,7 @@ needs_review:
 
 ## דוגמה: בחירה בספק שירותי שטיפה
 
-במסגרת תיאום התפעול בקואופרטיב Oatmilk, יש לבחור ספק שירותי שטיפה. לשם כך מבקשים עצות בנוגע לקיבולת, לתיעוד בטיחות המזון, לשימוש במים, לזמני התגובה לפניות שירות ולתמיכה.
+במסגרת הובלת התפעול בקואופרטיב Oatmilk, יש לבחור ספק שירותי שטיפה. לשם כך מבקשים עצות בנוגע לקיבולת, לתיעוד בטיחות המזון, לשימוש במים, לזמני התגובה לפניות שירות ולתמיכה.
 
 <!-- translation-section: set-up-the-proposal -->
 

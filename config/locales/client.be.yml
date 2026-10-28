@@ -161,6 +161,8 @@ be:
     manage_subscription: Кіраванне падпіскай
     amount: Сума
   loomio_tags:
+    show_tags_from_other_groups: Паказаць тэгі з іншых груп
+    parent_group_and_subgroups_in_this_organization: Бацькоўская група і падгрупы гэтай арганізацыі
     all_tags: Усе тэгі
     show_all_tags_in_organization: Паказаць усе тэгі ў арганізацыі
     show_tags_used_in_this_group: Паказаць тэгі, якія выкарыстоўваюцца ў гэтай групе
@@ -284,7 +286,7 @@ be:
       open: Адкрыта
       closed: Закрыта
       private: Прыватнае
-      parent_members: "Бачная бацькоўскай групе"
+      parent_members: Бачная бацькоўскай групе
       secret: Сакрэтная група
     selected: Выбранае
     today: сёння
@@ -1057,10 +1059,10 @@ be:
       delegates_of_group: Дэлегаты %{name}
       everyone_in_the_group: Усе ў групе
       voters: Усіх запрашаюць галасаваць
-      decided_voters: Усе, хто галасаваў
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
       non_voters: Удзельнікі %{name} пакуль не запрошаны
       topic: Усе ў трэдзе
+      everyone_who_voted: Усе, хто прагаласавалі
+      people_who_have_not_voted: Тыя, хто яшчэ не прагаласавалі
     form:
       group_has_no_members_yet: Вы адзіны ўдзельнік вашай групы. Перш чым пачынаць абмеркаванне або прымаць рашэнне, магчыма, варта запрасіць у групу некалькіх людзей.
       invite_people_to_evaluate_loomio: Запрасіце некалькіх людзей у сваю групу Loomio, каб разам прыняць рашэнне
@@ -1123,7 +1125,7 @@ be:
       not_notified: Пакуль не апавешчана
       no_members: Гэтым пакуль ні з кім не падзяліліся!
       group_admin: Адміністратар групы
-      discussion_admin: Адміністратар абмеркавання
+      discussion_admin: Адміністратар тэмы
       thread_admin: Адміністратар тэмы
       last_read_at: Апошні прагляд %{time}
       has_not_read_discussion: Не праглядаў абмеркаванне
@@ -1135,6 +1137,8 @@ be:
     flash:
       success: Адпраўлена %{count} апавяшчэнняў
   action_dock:
+    add_to_timeline: Дадаць на храналогію
+    remove_from_timeline: Выдаліць з храналогіі
     copy_markdown: Капіраваць Markdown
     copy_markdown_description: Скапіюйце тэму ў структураваным фармаце Markdown — ідэальна падыходзіць для выкарыстання з агентам штучнага інтэлекту або для стварэння простага дакумента са зместу тэмы.
     thread_markdown_copied: Скапіраваны тэкст Markdown тэмы
@@ -1540,9 +1544,9 @@ be:
     confirm_change_to_public: Калі вы працягнеце, усе тэмы ў гэтай групе будуць апублікаваныя ў інтэрнэце.
     confirm_change_to_private_discussions_only: Калі вы працягнеце, усе публічныя тэмы ў гэтай групе стануць прыватнымі.
     profile: Профіль
-    subgroup_name_and_content_are_public: "Кожны можа знайсці гэтую падгрупу і чытаць яе тэмы"
-    subgroup_name_is_public_and_threads_are_private: "Кожны можа знайсці гэтую падгрупу; яе тэмы прыватныя"
-    subgroup_is_visible_to_parent_members: "Удзельнікі %{parent} могуць знайсці гэтую падгрупу; яе тэмы прыватныя"
+    subgroup_name_and_content_are_public: Кожны можа знайсці гэтую падгрупу і чытаць яе тэмы
+    subgroup_name_is_public_and_threads_are_private: Кожны можа знайсці гэтую падгрупу; яе тэмы прыватныя
+    subgroup_is_visible_to_parent_members: Удзельнікі %{parent} могуць знайсці гэтую падгрупу; яе тэмы прыватныя
     subgroup_privacy_is_open_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы публічныя.
     subgroup_privacy_is_closed_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Усе тэмы прыватныя.
     subgroup_privacy_is_closed_public_threads_description: Кожны можа знайсці гэтую падгрупу і папрасіць далучыцца. Тэмы могуць быць публічнымі або прыватнымі.
@@ -1550,9 +1554,9 @@ be:
     subgroup_privacy_is_secret_description: Толькі запрошаныя ўдзельнікі могуць бачыць гэтую падгрупу.
     advanced_settings: Пашыраныя налады
     how_do_people_join: Як людзі далучаюцца?
-    join_without_approval: "Далучэнне без ухвалення"
-    request_to_join: "Запыт на далучэнне"
-    invitation_only: "Толькі па запрашэнні"
+    join_without_approval: Далучэнне без ухвалення
+    request_to_join: Запыт на далучэнне
+    invitation_only: Толькі па запрашэнні
     permissions: Дазволы
     thread_privacy: Прыватнасць ланцужка паведамленняў
     public_threads: Толькі публічныя тэмы
@@ -1560,8 +1564,8 @@ be:
     public_or_private_threads: Дазволіць публічныя і прыватныя тэмы
     private_threads: Толькі ўдзельнікі могуць бачыць абмеркаванні
     allow_public_threads: Дазволіць публічныя тэмы ў гэтай групе.
-    parent_group_members_can_see_private_threads: "Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы"
-    parent_group_members_can_see_private_threads_help: "Дазволіць удзельнікам групы %{parent} бачыць тэмы і апытанні ў гэтай групе, але не ўдзельнічаць у іх"
+    parent_group_members_can_see_private_threads: Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы
+    parent_group_members_can_see_private_threads_help: Дазволіць удзельнікам групы %{parent} бачыць тэмы і апытанні ў гэтай групе, але не ўдзельнічаць у іх
     members_can_announce: Удзельнікі могуць апавясціць усіх у групе
     members_can_announce_help: Дазволіць удзельнікам апавяшчаць усіх у групе пра тэму або апытанне
     members_can_add_members: Удзельнікі могуць запрашаць удзельнікаў
@@ -1700,7 +1704,7 @@ be:
     title_helptext:
       group: Гэты тытул будзе адлюстроўвацца побач з імем %{name} у гэтай групе. Выкарыстоўвайце яго, каб паведаміць людзям яго ролю.
     title_label: тытул
-    title_placeholder: Напрыклад, «Каардынатар» або «Фасілітатар»
+    title_placeholder: Напрыклад, «Адміністратар» або «Фасілітатар»
     updated: Назва членства абноўлена
     weight_label: Вага голасу
   user_name_modal:
@@ -1880,7 +1884,6 @@ be:
       muted_description: Праглядзець толькі тэмы, якія былі адключаны
     thread_preview:
       you_voted: Вы прагаласавалі %{position}
-      undecided: Ты не вызначыўся
     threads_from:
       group: Тэмы з
       pinned: Замацаваныя тэмы
@@ -2118,6 +2121,18 @@ be:
     name_lte_score_percent: "%{name} не павінен перавышаць %{percent}% аддадзеных галасоў"
     name_lte_voter_percent: "%{name} не павінна перавышаць %{percent}% ад колькасці выбаршчыкаў, якія маюць права голасу"
     points_cast: Ачкі
+    eligible_vote_weight: Вага голасу выбаршчыкаў з правам голасу
+    vote_weight_cast: Скарыстаная вага голасу
+    name_gte_eligible_vote_weight: "%{name} патрабуе як мінімум %{percent}% вагі голасу выбаршчыкаў з правам голасу"
+    name_lte_eligible_vote_weight: "%{name}: не больш за %{percent}% вагі голасу выбаршчыкаў з правам голасу"
+    name_gte_vote_weight_cast: "%{name} патрабуе як мінімум %{percent}% скарыстанай вагі голасу"
+    name_lte_vote_weight_cast: "%{name}: не больш за %{percent}% скарыстанай вагі голасу"
+    total_assigned_vote_weight: Агульная прызначаная вага голасу
+    weighted_votes_cast: Аддадзеныя ўзважаныя галасы
+    name_gte_assigned_vote_weight: "%{name} патрабуе як мінімум %{percent}% агульнай прызначанай вагі голасу"
+    name_lte_assigned_vote_weight: "%{name}: не больш за %{percent}% агульнай прызначанай вагі голасу"
+    name_gte_weighted_votes_cast: "%{name} патрабуе як мінімум %{percent}% аддадзеных узважаных галасоў"
+    name_lte_weighted_votes_cast: "%{name}: не больш за %{percent}% аддадзеных узважаных галасоў"
   poll_common:
     your_vote_is_requested: Запытваецца ваш голас
     superseded: Заменена
@@ -2234,6 +2249,9 @@ be:
     pct_of_weighted_votes: "% узважаных галасоў"
     pct_of_weighted_points: "% узважаных балаў"
     weighted_mean: Сярэднеўзважанае значэнне
+    pct_of_eligible_vote_weight: "% вагі голасу выбаршчыкаў з правам голасу"
+    pct_of_vote_weight_cast: "% скарыстанай вагі голасу"
+    pct_of_assigned_vote_weight: "% прызначанай вагі голасу"
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:
@@ -2387,8 +2405,8 @@ be:
       voting_title: За 24 гадзіны да заканчэння галасавання дашліце напамін
       nobody: Ніхто
       author: Аўтар (я)
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
       voters: Усе выбаршчыкі
+      people_who_have_not_voted: Тыя, хто яшчэ не прагаласавалі
     notify_on_participate:
       title: Паведамляць мне, калі людзі ўдзельнічаюць
       helptext_on: Пасля таго, як хтосьці будзе абраны, вы будзеце атрымліваць апавяшчэнні кожны раз, калі ён пачне ўдзельнічаць.
@@ -2440,8 +2458,6 @@ be:
     poll_type_by_name: "%{poll_type} ад %{name}"
     started_by: Пачата %{name}
   poll_common_votes_panel:
-    cast: У ролях
-    uncast: Нетрансліравана
     vote_removed: Голас выдалены
     reason_redacted: Прычына выдалена
     redact_reason_title: Выкрасліць прычыну галасавання?
@@ -2452,12 +2468,10 @@ be:
     unredact_reason_helptext: Прычына, па якой тэкст і ўкладанні зноў будуць бачнымі
     unredact_reason_confirm: Прычына аднаўлення
     unredact_reason_success: Прычына галасавання адноўлена
-    undecided: Не вызначыўся
     newest_first: Спачатку найноўшыя
     oldest_first: Спачатку найстарэйшыя
     priority_first: Спачатку пагадзіся
     priority_last: Спачатку блакаванне
-    undecided_first: Спачатку тыя, хто не прагаласаваў
     no_votes_yet: Пакуль што не было аддадзена ніякіх галасоў.
     change_results_order: Змяніць парадак вынікаў
     name_or_username: Імя або імя карыстальніка
@@ -2475,15 +2489,6 @@ be:
     opening_at: Адкрыццё ў
     closed_at: Закрыта ў
     closing_at: Закрыццё ў
-  poll_common_undecided_panel:
-    show_undecided: Паказаць %{count} нявызначаных
-    show_invitations: Паказаць запрашэнні, якія чакаюць разгляду
-    undecided_users: Не прагаласавалі (%{count})
-    invitation_count_singular: Яшчэ 1 чалавек быў запрошаны да ўдзелу па электроннай пошце
-    invitation_count_plural: Дадатковыя ўдзельнікі (%{count}) былі запрошаны да ўдзелу па электроннай пошце
-  poll_common_undecided_user:
-    reminded: Напамін адпраўлены!
-    reminder_sent: Паведамленне аб напамінанні адпраўлена
   poll_common_set_outcome_panel:
     enter_an_outcome: Увядзіце выснову
     poll_type: Гэты %{poll_type} закрыты. Абдумайце вынікі галасавання, а затым падзяліцеся высновай, каб людзі ведалі, што будзе далей.
@@ -2658,6 +2663,10 @@ be:
     weighted_voting_off_warning: Адключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу роўнай 1. Усе вагі галасоў, якія вы змянілі для гэтага апытання, будуць страчаны.
     weighted_voting_on_group: Уключэнне ўзважанага галасавання капіюе вагу галасоў кожнага ўдзельніка па змаўчанні. Іншыя выбаршчыкі атрымліваюць вагу галасоў, роўную 1.
     weighted_voting_on_direct: Уключэнне ўзважанага галасавання ўстанаўлівае вагу кожнага голасу на 1
+    quorum_vote_weight_hint: Які працэнт вагі голасу выбаршчыкаў з правам голасу трэба скарыстаць, каб вынік быў сапраўдным? Неабавязкова, пакіньце пустым, калі кворум не патрэбны.
+    quorum_vote_weight_placeholder: Працэнт вагі голасу выбаршчыкаў з правам голасу (0–100)
+    quorum_voters_placeholder: Працэнт выбаршчыкаў з правам голасу (0–100)
+    quorum_weighted_hint: Які працэнт агульнай прызначанай вагі голасу трэба скарыстаць, каб вынік быў сапраўдным? Неабавязкова, пакіньце пустым, калі кворум не патрэбны.
   poll_proposal_form:
     start_header: Пачаць прапанову
     edit_header: Рэдагаваць прапанову
@@ -2763,13 +2772,17 @@ be:
     vote_short_of_quorum: Для дасягнення кворуму ў %{pct}% патрэбен яшчэ 1 голас
     votes_short_of_quorum: Для дасягнення кворуму ў %{pct}% патрабуецца яшчэ %{num} галасоў
     quorum_reached: Дасягнуты кворум %{pct}%
+    pct_vote_weight_participation: Аддадзена %{num} з %{total} галасоў (%{pct}% вагі голасу)
+    pct_of_eligible_vote_weight_must_participate: Трэба скарыстаць %{pct}% вагі голасу выбаршчыкаў з правам голасу
+    pct_weighted_participation: Аддадзена %{num} з %{total} галасоў (скарыстана %{pct}% прызначанай вагі голасу)
+    pct_of_assigned_vote_weight_must_participate: Трэба скарыстаць %{pct}% агульнай прызначанай вагі голасу
   poll_meeting_chart_panel:
     total: Усяго
   poll_remove_vote:
     title: Зняць свой голас?
-    helptext: Вы ўпэўненыя, што хочаце выдаліць свой голас? Вы будзеце пазначаны як нявызначаны і зможаце прагаласаваць зноў пазней, калі захочаце.
     confirm: Выдаліць голас
     success: Голас выдалены
+    helptext_not_voted: Вы ўпэўнены, што хочаце выдаліць свой голас? Ваш статус зменіцца на “Не прагаласавалі”, і вы зможаце прагаласаваць зноў пазней, калі захочаце.
   poll_poll_vote_form:
     stance_created: Голас створаны
     stance_updated: Галасаванне абноўлена
@@ -3116,7 +3129,7 @@ be:
     stance: голас
   membership_notification_history:
     invitation_delivery_history: Гісторыя дастаўкі запрашэнняў
-    email_delivery_blocked: "Loomio блакуе дастаўку лістоў на гэты адрас"
+    email_delivery_blocked: Loomio блакуе дастаўку лістоў на гэты адрас
     delivery_result:
       delivered: Дастаўлена
       failed: Не ўдалося даставіць

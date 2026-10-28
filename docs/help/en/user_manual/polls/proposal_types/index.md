@@ -4,6 +4,15 @@
 
 Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
 
+| What you want to do | Method | How the result works |
+| --- | --- | --- |
+| Find popular options or make a shortlist | [Choose](/en/user_manual/polls/choose) (multiple choice) | Counts selections for each option |
+| Compare the strength of support for options | [Score](/en/user_manual/polls/score) | Combines ratings on a shared scale |
+| Set priorities with a limited number of points | [Allocate](/en/user_manual/polls/allocate) (dot voting) | Totals points allocated to each option |
+| Order options by preference | [Rank](/en/user_manual/polls/rank) (ranked choice) | Combines rankings into a points-based order |
+| Find a meeting time | [Time poll](/en/user_manual/polls/meeting_polls) | Shows availability for each time |
+| Elect several representatives proportionally | [STV Election](/en/user_manual/polls/stv) | Counts ranked ballots to elect multiple winners |
+
 <!-- translation-section: simple-poll -->
 
 ## Simple poll

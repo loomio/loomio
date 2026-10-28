@@ -1,12 +1,12 @@
 ---
 title: Emberek meghívása
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 14a78fc7073ec3b9
+  introduction: 5f405c34f4a567b2
   send-invitations-via-email: 9dc04b9a8646890f
   invite-many-at-once: e6b29ad880f2b1ae
   invite-people-to-subgroups: 6295343c6798b5b5
@@ -28,18 +28,16 @@ generated:
   managing-invitations: 59f083a75c1955b1
   re-send-invitations: ca919d118dd7d0ef
   cancelling-invitations: 938ac5db15840964
-  invitation-notification-history: 72bb4e9f3413db96
+  invitation-notification-history: 2fd1ab3267fb0c9d
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 ---
 
 <!-- translation-section: introduction -->
 
-# Emberek meghívása
+# Emberek meghívása egy Loomio-csoportba
 
-Nyisd meg a csoportod oldalát, és kattints a **Tagok** fülre a tagok kezeléséhez.
-
-A **Meghív** gombbal az email-címük alapján meghívhatsz embereket a csoportodba, a **Megoszt** gombbal pedig megoszthatod a csoportod linkjét emailben, hírlevélben, csevegésben vagy a weboldaladon.
+Hívj meg embereket a Loomio-csoportodba emailben, vagy oszd meg a csoport linkjét hírlevélben, csevegésben vagy weboldalon. A kezdéshez nyisd meg a csoportod oldalán a **Tagok** fület.
 
 ![](group_join_group_invite.png)
 
@@ -130,7 +128,7 @@ A meghívottakat adminisztrátorrá is teheted, vagy megadhatod a csoporton bel�
 
 ### Meghívók kézbesítési előzményei
 
-Ha valaki nem kapja meg a meghívót tartalmazó e-mailt, a csoport koordinátorai a Tagok oldalon, a neve melletti hárompontos menüből (**⋮**) megnyithatják a **Meghívók kézbesítési előzményei** lehetőséget, hogy lássák, mikor küldték el a meghívókat, és milyen kézbesítési problémákat rögzítettek.
+Ha valaki nem kapja meg a meghívót tartalmazó e-mailt, a csoport adminjai a Tagok oldalon, a neve melletti hárompontos menüből (**⋮**) megnyithatják a **Meghívók kézbesítési előzményei** lehetőséget, hogy lássák, mikor küldték el a meghívókat, és milyen kézbesítési problémákat rögzítettek.
 
 <!-- translation-section: re-send-invitations -->
 

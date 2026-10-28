@@ -76,7 +76,7 @@ People's expression does not occur in a vaccuum, but in the context of who they 
 On Loomio
 
 * Create a thread called "Introduce yourself" or "Check in". It provides a useful first _call to action_ everyone coming in will understand.
-* For “request to join” groups, we have a function that allows the requestor to introduce themselves to the coordinator, to get access to the group. Some groups have a process of re-posting this content in the intro thread to welcome people in.
+* For “request to join” groups, we have a function that allows the requestor to introduce themselves to the admin, to get access to the group. Some groups have a process of re-posting this content in the intro thread to welcome people in.
 * Upload profile photos! Photos of faces are one of the most powerful ways of feeling like you know who is in the room with you online.
 
 

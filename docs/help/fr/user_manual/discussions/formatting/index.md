@@ -1,18 +1,18 @@
 ---
 title: Mise en forme
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: f4f0e14ebe990a1d
+  introduction: 36c2ca3e3927835a
   attach-file: f432f7eda35bf6e2
   remove-attachments: d8b9796c947c040c
-  insert-image: f9b94911340c2ff5
-  insert-link: ed6cc3f8162e06bb
+  insert-image: df17114fb42bfd01
+  insert-link: 45157a3c82ec41ce
   insert-emoji: 8e271d4073d014f5
-  headings: 1997315489448a94
+  headings: 8f04e23536e7fc1a
   bold-italicize-strikethrough: eff4f39478bb8595
   list: 481c0280da55ce5b
   numbered-list: e26ea5210bb42106
@@ -55,15 +55,13 @@ needs_review:
 
 <!-- translation-section: introduction -->
 
-# Mise en forme
+# Mettre en forme le texte et joindre des fichiers
 
 Lorsque vous créez ou modifiez une discussion ou un sondage, ou rédigez un commentaire, une barre de mise en forme apparaît sous le champ de texte. Cliquez sur la flèche à l’extrémité de la barre pour afficher ou masquer l’ensemble des outils.
 
 Survolez chaque élément avec le pointeur pour afficher le nom de l’outil.
 
 ![](thread_format_bar.png)
-
-Utilisez la mise en forme pour structurer le contenu et mettre en évidence les informations afin d’en faciliter la lecture.
 
 <!-- translation-section: attach-file -->
 
@@ -85,20 +83,9 @@ Lorsque vous modifiez le contexte, cliquez sur le **X** à droite du nom du fich
 
 ## Insérer une image
 
-Utilisez cet outil pour insérer et afficher une image.
-
-![](format_insert_image.png)
-
-Choisissez un fichier image sur votre ordinateur. L’image est insérée dans l’éditeur une fois son transfert terminé.
+Cliquez sur **Insérer une image** et choisissez un fichier, ou collez une image directement dans l’éditeur. L’image s’affiche dans la discussion, le sondage ou le commentaire publié.
 
 ![](format_insert_example.png)
-
-L’image s’affiche dans la discussion, le sondage ou le commentaire publié.
-
->[!Tip]
->Vous pouvez aussi copier et coller une image directement dans Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -114,9 +101,7 @@ Pour ajouter un lien :
 
 Pour un document hébergé ailleurs, vérifiez ses autorisations de partage afin que les participants à la discussion puissent l’ouvrir.
 
-Un aperçu du document apparaît sous le champ de texte. Vous pouvez le supprimer si vous le souhaitez.
-
-Toute personne ayant accès à votre discussion Loomio et l’autorisation de consulter le document peut alors l’ouvrir et le lire.
+Un aperçu peut apparaître sous le texte ; vous pouvez le supprimer si vous le souhaitez.
 
 ![](format_link.png)
 
@@ -136,7 +121,7 @@ Les titres de niveaux 1, 2 et 3 peuvent vous aider à structurer une discussion 
 
 Sélectionnez le texte à utiliser comme titre et cliquez sur l’outil de mise en forme des titres.
 
-Si vous utilisez un titre dans un commentaire, ce commentaire est automatiquement épinglé dans la chronologie de la discussion.
+Si vous utilisez un titre dans un commentaire, ce commentaire est automatiquement ajouté à la chronologie de la discussion.
 
 ![](format_heading.png)
 

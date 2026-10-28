@@ -15,7 +15,7 @@ module Ability::Poll
         else
           # Voting always updates an existing stance. Members of open polls get
           # theirs when they join, which fixes their vote weight up front.
-          poll.unmasked_voters.exists?(user.id)
+          poll.voters_unmasked.exists?(user.id)
         end
       )
     end
@@ -93,6 +93,7 @@ module Ability::Poll
 
     can :reopen, ::Poll do |poll|
       poll.closed? &&
+      poll.hide_results != 'until_closed' &&
       !poll.anonymous? &&
       !poll.topic.locked_at &&
       poll.admins.exists?(user.id)

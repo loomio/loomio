@@ -1,10 +1,10 @@
 ---
 title: Reacties
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,15 +28,13 @@ generated:
   reactions: ea59bceffa549699
   translating-comments: fa2bdb121e6f6b61
   comment-actions: cc94f8497f41b487
-  add-a-comment-to-jump-to: 3fe841f7e824adf0
+  add-a-comment-to-jump-to: 5c4c65c66d748964
   edit-a-comment-and-view-changes: 5aeceeae04f79895
   copy-a-comment-link: ddc38ea77c198d14
   view-notification-history: 4f891858547ed11b
   discard-restore-or-delete-a-comment: 05d60688d45deb28
 title_source: 355f79f29d7d3c2d
 title_generated: 2f4abc2e5018fdf4
-needs_review:
-  add-a-comment-to-jump-to: use "vastzetten" instead of "ontprikken" for "pin"
 ---
 
 <!-- translation-section: introduction -->
@@ -125,14 +123,14 @@ Veelgebruikte acties staan direct onder een reactie. Meer acties zijn beschikbaa
 
 ### Een reactie toevoegen aan Spring naar
 
-Gebruik **Pin vast aan de tijdslijn** om een reactie toe te voegen aan de lijst **Spring naar** van de thread.
+Gebruik **Voeg toe aan tijdlijn** om een reactie toe te voegen aan de lijst **Spring naar** van de thread.
 
-Je kunt het label in **Spring naar** bewerken. Maak de reactie los en zet deze opnieuw vast om de linktekst te wijzigen.
+Je kunt het label in **Spring naar** bewerken. Verwijder de reactie uit de tijdlijn en voeg deze opnieuw toe om de linktekst te wijzigen.
 
 >[!Tip]
->Selecteer de woorden die je als linktekst wilt gebruiken voordat je **Pin vast aan de tijdslijn** selecteert.
+>Selecteer de woorden die je als linktekst wilt gebruiken voordat je **Voeg toe aan tijdlijn** selecteert.
 
-Selecteer **Ontprikken** om het item uit **Spring naar** te verwijderen.
+Selecteer **Verwijder uit tijdlijn** om het item uit **Spring naar** te verwijderen.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

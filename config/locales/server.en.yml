@@ -9,7 +9,7 @@ en:
     voted: "%{author} voted %{response}"
     voted_hidden: "%{author} voted"
     vote_removed: "%{author}: vote removed"
-    undecided: "%{author}: undecided"
+    not_voted: "%{author}: not voted"
     superseded: superseded
     shared_outcome: "%{author} shared an outcome"
     removed: Removed
@@ -504,7 +504,6 @@ en:
       opening_at_before_closing_at: Opening date must be before closing date
       poll_options_dont_match: A bug with Loomio prevented your vote from saving. We're working on fixing this. Please reload and try again.
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
       title: Title
       author: Author
       email: Email
@@ -805,15 +804,11 @@ en:
       not_invited: Not invited
       please_respond: Please respond
       time_zone: "(Times displayed in %{zone})"
-      undecided_members: Undecided Members (%{count})
-      undecided_visitors: Undecided Guests (%{count})
-      more_undecided: "%{count} more..."
       vote_now: Vote now
       you_have_until: You have until %{when} to participate.
       voting_opens_and_closes: "Voting opens %{opens} and closes %{closes}. (%{days} days)"
       voting_closes: "Voting closes %{when}."
       voting_opened_and_closed: "Voting opened %{opens} and closed %{closes}. (%{days} days)"
-      people_have_voted: "%{nom} of %{dnom} people have participated (%{pct}%)"
   upload:
     file_too_large: "File is too large. Maximum upload size is %{limit}."
     filename_required: File name is required

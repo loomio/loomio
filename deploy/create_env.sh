@@ -43,7 +43,8 @@ docker run --rm \
       "REPLACE_WITH_CONTACT_EMAIL" => email,
       "REPLACE_WITH_POSTGRES_PASSWORD" => postgres_password,
       "REPLACE_WITH_SECRET_COOKIE_TOKEN" => SecureRandom.hex(32),
-      "REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD" => SecureRandom.hex(32)
+      "REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD" => SecureRandom.hex(32),
+      "REPLACE_WITH_SERVER_API_KEY" => SecureRandom.hex(32)
     }
     content = File.read(template_path)
     replacements.each { |placeholder, value| content.gsub!(placeholder, value) }
@@ -62,7 +63,7 @@ if grep -q 'REPLACE_WITH_' "$generated_file"; then
   echo "The generated environment contains an unresolved placeholder; no changes were made" >&2
   exit 1
 fi
-for setting in POSTGRES_PASSWORD DATABASE_URL SECRET_COOKIE_TOKEN RAILS_INBOUND_EMAIL_PASSWORD VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT; do
+for setting in POSTGRES_PASSWORD DATABASE_URL SECRET_COOKIE_TOKEN RAILS_INBOUND_EMAIL_PASSWORD SERVER_API_KEY VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT; do
   if [ "$(grep -c "^${setting}=" "$generated_file")" -ne 1 ]; then
     echo "The generated environment does not contain exactly one $setting; no changes were made" >&2
     exit 1

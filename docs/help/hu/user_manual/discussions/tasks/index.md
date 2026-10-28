@@ -1,18 +1,18 @@
 ---
 title: Feladatok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/tasks/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 5d689ea44215eba6
+  introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
   name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
-  introduction: 0e476e759b274125
+  introduction: fd68a07ebf3643e8
   add-a-task: e3d3f0a7637dda92
   name-and-assign-the-task-to-a-person: 411346d90fa91ee0
   set-a-reminder: efc2426835ff8300
@@ -23,7 +23,7 @@ title_generated: 7df70dd8cebc7674
 
 <!-- translation-section: introduction -->
 
-# Feladatok
+# Feladatok hozzárendelése és nyomon követése
 
 A szálakban és hozzászólásokban feladatokkal nevezhetsz meg egy teendőt, rendelheted hozzá valakihez, állíthatsz be határidőt, és követheted nyomon, hogy elkészült-e.
 

@@ -1,30 +1,24 @@
 ---
 title: Принятие решений
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/board_processes/decisions.md
+source_revision: 44bb4520839557ec23fd64c4d591a1028d6b4434
+source_file: docs/help/en/guides/board_processes/decisions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
   examples-of-out-of-session-decisions: 6a4d6a8c978bcb11
   decision-about-property-purchase: fff64b1ac620cc4a
-  decision-to-accept-directors-and-officers-liability-insurance: b279ed6b1c5aadfa
   a-security-breach-has-occurred-at-one-of-our-facilities: ca3a40286ca25a9a
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1d79254c3f3a0ba6
-  keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
-  on-loomio-2: 5ef094900505a875
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: c406842807e1091b
 generated:
   introduction: b6fb736c1d574f06
   on-loomio: e1a18fc46395e10d
   examples-of-out-of-session-decisions: dff4e5cda8273e64
   decision-about-property-purchase: 63d18138bd6ebc15
-  decision-to-accept-directors-and-officers-liability-insurance: 42f1bcd114f8379f
   a-security-breach-has-occurred-at-one-of-our-facilities: '0750827251332260'
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: b618027e96d372ea
-  keeping-a-record-of-decisions-made-and-supporting-discussion: 6c6faa488473f9f5
-  on-loomio-2: 19123e3c31eee5f8
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1dfbfd1e0bde0501
 title_source: 9a7f398684e7c05f
 title_generated: 1ad57a49a273c347
 ---
@@ -69,11 +63,6 @@ title_generated: 1ad57a49a273c347
 ### Решение о покупке недвижимости
 На последнем заседании совета директоров обсуждалась покупка недвижимости. Одному из директоров для принятия решения потребовалось независимое заключение о техническом состоянии объекта. Совет согласился приобрести недвижимость при условии, что заключение будет удовлетворительным. Однако покупку нужно совершить до следующего заседания, поэтому совет договорился загрузить готовое заключение в Loomio, обсудить его и принять там окончательное решение о покупке.
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### Решение о продлении страхования ответственности директоров и должностных лиц
-На заседании совета директоров отметили, что приближается срок ежегодного продления страхования. Поскольку вопрос сочли административным, совет договорился использовать Loomio, чтобы обсудить заявление на продление, получить необходимые сведения от каждого директора, подать заявление и принять предложенные условия продления страхования.
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### На одном из наших объектов произошло нарушение безопасности
@@ -83,36 +72,3 @@ title_generated: 1ad57a49a273c347
 
 ### Директор поднял вопрос о гендерном балансе и разнообразии состава совета
 Директор представил обоснованные доводы и подтверждающие сведения о том, что состав совета следует сделать более разнообразным, чтобы он лучше представлял организацию. Директорам нужно изучить информацию, задать вопросы, обсудить проблему и решить, какие меры принять.
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## Хранение записей о принятых решениях и связанных обсуждениях
-
-Ведение документации — установленное законом требование для советов директоров и полезная практика для комитетов.
-
-Сегодня многие организации ведут и хранят официальные протоколы, решения, внутренние правила и ключевые решения в электронном виде. Документы создают и утверждают, распространяют и используют, сохраняют и хранят, а затем уничтожают.
-
-<!-- translation-section: on-loomio-2 -->
-
-### В Loomio
-Протоколы, отчёты, решения и другие документы можно прикрепить к **ветке** заседания: в описании ветки, в опросе или в любом комментарии ветки. Так документы всегда связаны с соответствующим обсуждением.
-
-Список файлов также доступен на вкладке **Файлы**.
-
-![](files_tab.png#width-90)
-
-Вы также можете добавить в любую ветку или опрос ссылку на документ, который хранится в выбранной вами системе управления документами. Найдите ссылку для общего доступа к документу, скопируйте её и вставьте в ветку, опрос или комментарий.
-
-Любой человек с правом доступа сможет перейти по ссылке, открыть и прочитать документ.
-
-![](thread_link.png#width-90)
-
-Поскольку обсуждения и решения в Loomio уже зафиксированы, вы можете проверить весь процесс принятия решений вашим советом директоров. Вы можете легко показать, что и когда было решено. Если директора обсуждали решение, оставляли комментарии и голосовали, вы также сможете узнать, как и почему было принято каждое решение.
-
-Со временем вы создаёте историю вашей организации, в которой легко искать прошлые решения и связанные с ними обсуждения.
-
-![](thread_search.png#width-90)
-
-В Loomio все данные записываются и хранятся на нескольких дисках в нескольких местах, *в облаке*, с ежедневным резервным копированием. Загруженные файлы хранятся на серверах, которые используют современные методы устранения узких мест и точек отказа.

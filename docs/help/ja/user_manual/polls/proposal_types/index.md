@@ -1,12 +1,12 @@
 ---
 title: 投票
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: added00b667cb2a5
+  introduction: b4aea57a511b43e3
   simple-poll: 7276517d5a795e2e
   score-poll: 6c7b4492bef97220
   dot-vote: 0e6f871fc1c73649
@@ -30,6 +30,15 @@ title_generated: 3c5a0fdbcf55aaa8
 # アンケート
 
 アンケートでは、選択、スコア、ポイントの配分、順位、参加可能な日時、選挙の投票を集めます。参加者が何を表明する必要があるか、結果をどのように使うかに応じて、投票方法を選びます。声明や行動方針への意思を確認する場合は、[提案](/en/user_manual/polls/proposals/)を使います。
+
+| 目的 | 投票方法 | 結果の集計方法 |
+| --- | --- | --- |
+| 人気のある選択肢を見つける、または候補を絞り込む | [選択](/en/user_manual/polls/choose)（複数選択） | 各選択肢が選ばれた数を集計します |
+| 選択肢への支持の強さを比較する | [スコア](/en/user_manual/polls/score) | 共通の尺度による評価を集計します |
+| 限られたポイントで優先順位を決める | [配分](/en/user_manual/polls/allocate)（ドット投票） | 各選択肢に配分されたポイントを合計します |
+| 好みの順に選択肢を並べる | [ランク](/en/user_manual/polls/rank)（ランク投票） | 順位をポイントに換算して集計し、全体の順位を決めます |
+| 会議の日時を決める | [日程調整](/en/user_manual/polls/meeting_polls) | 各日時の参加可否を表示します |
+| 支持の割合に応じて複数の代表者を選出する | [STV選挙](/en/user_manual/polls/stv) | 候補者に順位を付けた票を集計し、複数の当選者を決めます |
 
 <!-- translation-section: simple-poll -->
 

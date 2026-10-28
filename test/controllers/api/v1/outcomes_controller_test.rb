@@ -257,7 +257,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
       id: outcome.id,
       outcome: {
         statement: "This must not be saved",
-        recipient_audience: "decided_voters"
+        recipient_audience: "voters_cast"
       }
     }
 

@@ -112,7 +112,7 @@ hu:
     add_guests:
       all: Frissítenie kell Loomio-előfizetését, hogy vendégeket adhasson hozzá. Alternatív megoldásként meghívhatja őket, hogy legyenek a csoport tagjai.
   errors:
-    item_you_are_replying_to_deleted: "Az elemet, amelyre válaszolsz, törölték"
+    item_you_are_replying_to_deleted: Az elemet, amelyre válaszolsz, törölték
     clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
     404:
       title: Nem található
@@ -199,7 +199,6 @@ hu:
       poll_options_dont_match: A Loomio hibája miatt nem sikerült menteni a szavazatodat. Dolgozunk a hiba kijavításán. Kérjük, töltsd be újra az oldalt, és próbáld meg újra.
       opening_at_before_closing_at: A nyitó dátumnak a záró dátum előtt kell lennie.
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím
       author: Szerző
       email: E-mail
@@ -470,12 +469,8 @@ hu:
       not_invited: Nincs meghívva
       please_respond: Kérlek válaszolj
       time_zone: "(Ennyiszer megjelenítve itt %{zone})"
-      undecided_members: Még nem döntöttek (%{count})
-      undecided_visitors: Még nem szavazó vendégek (%{count})
-      more_undecided: "%{count} további ..."
       vote_now: Szavazz most
       you_have_until: "%{when} -ig van lehetőséged részt venni."
-      people_have_voted: "%{nom} %{dnom} ember vett részt (%{pct}%)"
       voting_opens_and_closes: 'A szavazás ekkor kezdődik: %{opens} és ekkor zárul: %{closes}. (%{days} nap)'
       voting_closes: 'A szavazás ekkor zárul: %{when}.'
       voting_opened_and_closed: A szavazás megnyílt %{opens} és lezárult %{closes}. (%{days} nap)
@@ -794,9 +789,9 @@ hu:
     voted: "%{author} szavazata: %{response}"
     voted_hidden: "%{author} szavazott"
     vote_removed: "%{author}: szavazat eltávolítva"
-    undecided: "%{author}: nem szavazott"
     superseded: felülírva
     shared_outcome: "%{author} megosztott egy következtetést"
     removed: Eltávolítva
+    not_voted: "%{author}: nem szavazott"
   error:
     access_denied: Nincs engedélyed erre

@@ -1,13 +1,13 @@
 ---
 title: הפרופיל שלך
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: de2aa713d2aab768
-  edit-profile: 16d19ee98f83d305
+  introduction: 4027638a6b7b6f18
+  edit-profile: e9b6a9fcbc689451
   update-your-personal-info: 2e754c9e097727e4
   viewing-another-person-s-profile: a99bab401d618088
   uploading-a-profile-photo: a2b4265133d66c7a
@@ -32,25 +32,14 @@ title_generated: 9db27d9770fa26f5
 <!-- translation-section: introduction -->
 
 # הפרופיל שלך
-פרופיל המשתמש ב־Loomio מאפשר לאנשים לזהות אותך.  
 
-היכולת לזהות אנשים ב־Loomio עוזרת לבנות אמון ותחושת אותנטיות ומעודדת השתתפות כנה יותר. לכן, ככל האפשר, מומלץ להשתמש בזהות האישית ולהוסיף תמונה או אווטאר.
+הפרופיל מאפשר לאנשים לזהות אותך ב־Loomio. ניתן להוסיף תמונה, הצגה ופרטים נוספים שרוצים לשתף.
 
 <!-- translation-section: edit-profile -->
 
 ## עריכת פרופיל
 
-דף הפרופיל מאפשר להתאים את הזהות המוצגת ב־Loomio. כדי להגיע לדף הפרופיל, יש לבחור באפשרות **עריכת פרופיל** בתפריט המשתמש, שנפתח בלחיצה על השם בראש סרגל הצד.
-
-אם סרגל הצד סגור, יש ללחוץ על סמל התפריט (**☰**) כדי לפתוח אותו.
-
-![](sidebar_menu.png)
-
-יש ללחוץ על החץ כלפי מטה שמימין לשם.
-
-![](sidebar_profile.png)
-
-יש ללחוץ על **עריכת פרופיל**
+כדי לפתוח את תפריט המשתמש, יש לבחור בשם בסרגל הצד ולאחר מכן לבחור באפשרות **עריכת פרופיל**. אם סרגל הצד סגור, יש לפתוח אותו באמצעות לחצן התפריט (**☰**).
 
 ![](edit_profile.png)
 

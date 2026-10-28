@@ -139,6 +139,8 @@ da:
     manage_subscription: Administrer abonnement
     amount: Beløb
   loomio_tags:
+    show_tags_from_other_groups: Vis tags fra andre grupper
+    parent_group_and_subgroups_in_this_organization: Hovedgruppe og undergrupper i denne organisation
     all_tags: Alle tags
     tags: Tags
     apply_tags: Anvend tags
@@ -248,7 +250,7 @@ da:
       open: Offentlig
       closed: Lukket
       private: Privat
-      parent_members: "Synlig for hovedgruppen"
+      parent_members: Synlig for hovedgruppen
       secret: Hemmelig
     selected: Valgt(e)
     today: i dag
@@ -996,10 +998,10 @@ da:
       everyone_in_the_group: Alle i gruppen
       topic: Alle i tråden
       voters: Alle inviterede til at stemme
-      decided_voters: Alle der har stemt
-      undecided_voters: Ubeslutsomme vælgere
       non_voters: Medlemmer af %{name} endnu ikke inviteret
       delegates_of_group: Delegerede for %{name}
+      everyone_who_voted: Alle, der har stemt
+      people_who_have_not_voted: Personer, der ikke har stemt
     form:
       group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
       invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
@@ -1069,7 +1071,7 @@ da:
       has_not_read_thread: Har ikke set tråden
       has_not_joined_yet: Har ikke været med endnu
       has_not_joined_yet_hint: Denne bruger har ikke accepteret deres invitation til at blive medlem af Loomio og vil ikke modtage yderligere meddelelser, før de gør det
-      discussion_admin: Diskussionsadministrator
+      discussion_admin: Tråd administrator
       has_not_read_discussion: Har ikke set diskussionen
     group_form:
       search_placeholder: Søg efter personer...
@@ -1083,6 +1085,8 @@ da:
     topic_notification_history: Historik over trådnotifikationer
     notification_history: Notifikationshistorik
   action_dock:
+    add_to_timeline: Føj til tidslinjen
+    remove_from_timeline: Fjern fra tidslinjen
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
     react: Reagere
@@ -1433,9 +1437,9 @@ da:
     confirm_change_to_public: Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).
     confirm_change_to_private_discussions_only: Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.
     profile: Profil
-    subgroup_name_and_content_are_public: "Alle kan finde denne undergruppe og læse dens tråde"
-    subgroup_name_is_public_and_threads_are_private: "Alle kan finde denne undergruppe; dens tråde er private"
-    subgroup_is_visible_to_parent_members: "Medlemmer af %{parent} kan finde denne undergruppe; dens tråde er private"
+    subgroup_name_and_content_are_public: Alle kan finde denne undergruppe og læse dens tråde
+    subgroup_name_is_public_and_threads_are_private: Alle kan finde denne undergruppe; dens tråde er private
+    subgroup_is_visible_to_parent_members: Medlemmer af %{parent} kan finde denne undergruppe; dens tråde er private
     subgroup_privacy_is_open_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem).
     subgroup_privacy_is_closed_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private.
     subgroup_privacy_is_closed_public_threads_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private.
@@ -1443,9 +1447,9 @@ da:
     subgroup_privacy_is_secret_description: Det er kun inviterede medlemmer der kan finde undergruppen, se hvem der er medlem og se debatter.
     advanced_settings: Avancerede indstillinger
     how_do_people_join: Hvordan bliver man medlem?
-    join_without_approval: "Deltag uden godkendelse"
-    request_to_join: "Anmod om at deltage"
-    invitation_only: "Kun med invitation"
+    join_without_approval: Deltag uden godkendelse
+    request_to_join: Anmod om at deltage
+    invitation_only: Kun med invitation
     permissions: Rettigheder
     thread_privacy: Trådens privatindstillinger
     public_threads: Kun offentlige debatter
@@ -1453,8 +1457,8 @@ da:
     public_or_private_threads: Tillad både offentlige og private debatter
     private_threads: Det er kun medlemmer der kan se debatter
     allow_public_threads: Tillad offentlige debatter i denne gruppe.
-    parent_group_members_can_see_private_threads: "Hovedgruppens medlemmer kan se private tråde"
-    parent_group_members_can_see_private_threads_help: "Lad medlemmer af %{parent} se tråde og afstemninger i denne gruppe uden at deltage"
+    parent_group_members_can_see_private_threads: Hovedgruppens medlemmer kan se private tråde
+    parent_group_members_can_see_private_threads_help: Lad medlemmer af %{parent} se tråde og afstemninger i denne gruppe uden at deltage
     members_can_announce: Medlemmer kan underrette alle i gruppen
     members_can_announce_help: Tillad medlemmer at underrette alle i gruppen om en tråd eller afstemning
     members_can_add_members: Medlemmer kan invitere medlemmer
@@ -1609,7 +1613,7 @@ da:
     title_helptext:
       group: Denne titel vises ved siden af %{name}s navn i denne gruppe. Brug det til at lade folk kende deres rolle.
     title_label: titel
-    title_placeholder: F.eks. 'Koordinator' eller 'Facilitator'
+    title_placeholder: F.eks. 'Admin' eller 'Facilitator'
     updated: Medlemskabs titel er opdateret
     weight_label: Stemmevægt
   user_name_modal:
@@ -1781,7 +1785,6 @@ da:
       all: Seneste diskussioner
     thread_preview:
       you_voted: Du stemte %{position}
-      undecided: De har ikke stemt
     threads_from:
       group: Debatter fra
       pinned: Fastgjorte tråde
@@ -2003,6 +2006,18 @@ da:
     for_the_proposal_to_pass: For at forslaget kan vedtages, skal dette alternativ modtage…
     for_the_poll_to_be_valid: For at %{poll_type} kan være gyldig, skal denne indstilling modtage…
     points_cast: Afgivne point
+    eligible_vote_weight: Stemmeberettiget stemmevægt
+    vote_weight_cast: Afgivet stemmevægt
+    name_gte_eligible_vote_weight: "%{name} skal have mindst %{percent}% af den stemmeberettigede stemmevægt"
+    name_lte_eligible_vote_weight: "%{name} må ikke overstige %{percent}% af den stemmeberettigede stemmevægt"
+    name_gte_vote_weight_cast: "%{name} skal have mindst %{percent}% af den afgivne stemmevægt"
+    name_lte_vote_weight_cast: "%{name} må ikke overstige %{percent}% af den afgivne stemmevægt"
+    total_assigned_vote_weight: Samlet tildelt stemmevægt
+    weighted_votes_cast: Afgivne vægtede stemmer
+    name_gte_assigned_vote_weight: "%{name} skal have mindst %{percent}% af den samlede tildelte stemmevægt"
+    name_lte_assigned_vote_weight: "%{name} må ikke overstige %{percent}% af den samlede tildelte stemmevægt"
+    name_gte_weighted_votes_cast: "%{name} skal have mindst %{percent}% af de afgivne vægtede stemmer"
+    name_lte_weighted_votes_cast: "%{name} må ikke overstige %{percent}% af de afgivne vægtede stemmer"
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -2119,6 +2134,9 @@ da:
     pct_of_weighted_votes: "% af vægtede stemmer"
     pct_of_weighted_points: "% af vægtede point"
     weighted_mean: Vægtet gennemsnit
+    pct_of_eligible_vote_weight: "% af stemmeberettiget stemmevægt"
+    pct_of_vote_weight_cast: "% af afgivet stemmevægt"
+    pct_of_assigned_vote_weight: "% af tildelt stemmevægt"
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2283,18 +2301,14 @@ da:
     started_by: Oprettet af %{name}
   poll_common_votes_panel:
     vote_removed: Stemme fjernet
-    undecided: Ikke stemt
     newest_first: Nyeste først
     oldest_first: Ældste først
     priority_first: Enig først
     priority_last: Blokerer først
-    undecided_first: Ikke stemt først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: "(Ingen af de tidligere)"
     name_or_username: Navn eller brugernavn
-    cast: Afgivet
-    uncast: Ikke afgivet
     reason_redacted: Begrundelse fjernet
     redact_reason_title: Redigér årsagen til stemmen?
     redact_reason_helptext: Årsagen til, at tekst og vedhæftede filer vil blive skjult, men afstemningen vil forblive i resultaterne
@@ -2309,15 +2323,6 @@ da:
     stance: Stemme
     participation_records_restricted: Du kan se, hvem der deltog, efter afstemningen er afsluttet
     vote_weight: Stemmevægt %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Vis %{count} ubesluttede
-    show_invitations: Vis afventende invitationer
-    undecided_users: Ikke besluttet (%{count})
-    invitation_count_singular: 1 yderligere person er blevet inviteret til at deltage via e-mail
-    invitation_count_plural: "%{count} yderligere personer er blevet inviteret til at deltage via e-mail"
-  poll_common_undecided_user:
-    reminded: Påmindelse sendt!
-    reminder_sent: Påmindelse sendt
   poll_common_set_outcome_panel:
     enter_outcome: Indtast konklusion
     poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter en konklusion, så folk ved, hvad der vil ske næste gang.
@@ -2451,13 +2456,17 @@ da:
     votes_short_of_quorum: "%{num} flere stemmer kræves for at opnå et kvorum på %{pct}%"
     quorum_reached: Kvorum på %{pct}% er nået
     pct_participation: "%{num} af %{total} afgivne stemmer (%{pct}% deltagelse)"
+    pct_vote_weight_participation: "%{num} af %{total} stemmer afgivet (%{pct}% af stemmevægten)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% af den stemmeberettigede stemmevægt skal deltage"
+    pct_weighted_participation: "%{num} af %{total} stemmer afgivet (%{pct}% af den tildelte stemmevægt deltog)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% af den samlede tildelte stemmevægt skal deltage"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: Vil du fjerne din stemme?
-    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som ikke stemt og kan stemme igen senere, hvis du ønsker det.
     confirm: Fjern stemme
     success: Stemme fjernet
+    helptext_not_voted: Er du sikker på, at du vil fjerne din stemme? Din status bliver “Ikke stemt”, og du kan stemme igen senere, hvis du vil.
   poll_poll_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
@@ -2817,8 +2826,8 @@ da:
       voting_title: 24 timer før afstemningen slutter, send en påmindelse til
       nobody: Ingen
       author: Forfatter (mig)
-      undecided_voters: Uafklarede vælgere
       voters: Alle vælgere
+      people_who_have_not_voted: Personer, der ikke har stemt
     notify_on_participate:
       title: Giv mig besked, når folk deltager
       helptext_on: Når du er valgt, får du besked, når nogen deltager.
@@ -2984,6 +2993,10 @@ da:
     weighted_voting_off_warning: Hvis du slår vægtet afstemning fra, sættes alle stemmevægte til 1. Alle stemmevægte, du har ændret for denne afstemning, vil gå tabt.
     weighted_voting_on_group: Aktivering af vægtet stemmeafgivning kopierer hvert medlems standardstemmevægt. Andre vælgere får en stemmevægt på 1.
     weighted_voting_on_direct: Aktivering af vægtet afstemning sætter hver stemmevægt til 1
+    quorum_vote_weight_hint: Hvor stor en procentdel af den stemmeberettigede stemmevægt skal deltage, for at resultatet er gyldigt? Valgfrit, lad feltet stå tomt, hvis der ikke kræves kvorum.
+    quorum_vote_weight_placeholder: Procentdel af stemmeberettiget stemmevægt (0–100)
+    quorum_voters_placeholder: Procentdel af stemmeberettigede vælgere (0–100)
+    quorum_weighted_hint: Hvor stor en procentdel af den samlede tildelte stemmevægt skal deltage, for at resultatet er gyldigt? Valgfrit, lad feltet stå tomt, hvis der ikke kræves kvorum.
   poll_receipts_page:
     participation_status_requires_min_votes: Dette viser, hvem der var stemmeberettigede. Om hver person stemte, vises kun, når mindst %{count} personer har stemt.
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og kvorum er nået, kan du se, hvem der stemte
@@ -3226,7 +3239,7 @@ da:
     stance: stemme
   membership_notification_history:
     invitation_delivery_history: Invitationens leveringshistorik
-    email_delivery_blocked: "Loomio har blokeret e-maillevering til denne adresse"
+    email_delivery_blocked: Loomio har blokeret e-maillevering til denne adresse
     delivery_result:
       delivered: Leveret
       failed: Mislykket

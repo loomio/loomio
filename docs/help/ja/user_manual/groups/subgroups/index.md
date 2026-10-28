@@ -1,32 +1,32 @@
 ---
 title: サブグループ
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: d99c9be1c97d1648
   add-a-subgroup: 794946c2c597f16c
   subgroup-settings: 4d1baea010b1b7e1
-  privacy: 201c06097802c912
+  privacy: cbff19d91c642778
   permissions: dbb96a53ab720785
   find-subgroups: 5711dcd4a3c90e26
   invite-to-a-subgroup: bd1058971796e58b
   simultaneously-invite-people-to-subgroups-and-parent-group: 3518924ddb8272cc
-  administer-a-subgroup: 4e20b12396362d33
+  administer-a-subgroup: a526ae34c9d3912d
   delete-a-subgroup: 7bcfbcd6afa22a92
   how-people-join: 3a3af47b9b118b15
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ title_generated: 70b41aa1386d23c6
 | **親グループに表示** | 親グループのメンバーとサブグループのメンバー | サブグループのメンバーと招待されたゲスト |
 | **秘密** | 招待されたサブグループのメンバー | サブグループのメンバーと招待されたゲスト |
 
+**親グループのメンバーは非公開スレッドを閲覧できます**の権限を有効にすると、親グループのメンバーはサブグループに参加せずに、そのスレッドを閲覧することもできます。
+
 親グループが非公開の場合、サブグループで選択できる設定は**親グループに表示**と**秘密**です。
 
 [グループのプライバシーについてはこちらをご覧ください](/en/user_manual/groups/settings/privacy)。
@@ -132,11 +134,11 @@ title_generated: 70b41aa1386d23c6
 
 サブグループには独自の管理者を設定できます。サブグループの管理者は、親グループの管理者と同じである必要はありません。
 
-ただし、親グループの管理者は、どのサブグループでも自分を管理者に設定できます。これにより、親グループの管理者は必要に応じてサブグループを管理できます。
+親グループの管理者は、秘密ではないサブグループに参加し、自分をそのサブグループの管理者に設定できます。秘密のサブグループでは、この操作はできません。
 
 サブグループタブを開き、対象のサブグループを見つけて、**グループに参加する**をクリックします。
 
-![閉鎖のサブグループにあるグループに参加するボタン](member_join_subgroup.png)
+![プライバシー設定が「閉鎖」のサブグループにあるグループに参加するボタン](member_join_subgroup.png)
 
 サブグループのメンバーになった親グループの管理者は、自分をサブグループの管理者に設定できます。
 

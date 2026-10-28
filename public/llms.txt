@@ -6,7 +6,7 @@ integrations.
 ## User API
 
 - [User API documentation](/help/api2)
-- Base path: `/api/b2`
+- Base path: `/api/user0`
 
 The user API performs actions as a Loomio user account. API requests have the same permissions as the authenticated user.
 
@@ -21,14 +21,14 @@ Use this API for user-oriented operations involving groups, discussions, threads
 ## Server API
 
 - [Server API documentation](/help/api3)
-- Base path: `/api/b3`
+- Base path: `/api/server0`
 
 The server API provides trusted server-level operations such as managing, deactivating, reactivating and redacting users. It is intended for administrators and server-to-server
 integrations.
 
-Server operators create a secret longer than 16 characters and set it as `B3_API_KEY` in the Loomio server environment.
+Server operators set the key as `SERVER_API_KEY` in the Loomio server environment.
 
-Authenticate using the server’s `B3_API_KEY`:
+Authenticate using the server’s `SERVER_API_KEY`:
 
 `Authorization: Bearer <server_api_key>`
 

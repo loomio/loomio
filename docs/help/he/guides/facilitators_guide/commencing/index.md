@@ -1,10 +1,10 @@
 ---
 title: תחילת הדרך
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: fe889766438bdb7d
   settling: f9ce1736084cbcfc
   who-s-in-the-room: f7480dafecb97f12
-  check-in: de3d2e5f036f8816
+  check-in: 7820732049752d3a
   who-s-not-in-the-room: cb0d4cccf52b1fca
   culture-protocol-expectations: 043a47f100a5db78
 title_source: a595572326eb8669
@@ -107,7 +107,7 @@ needs_review:
 ב־Loomio
 
 * ניתן ליצור שרשור בשם ״היכרות״ או ״סבב שיתוף״. הוא מספק _הנעה לפעולה_ ראשונית ומועילה, שברורה לכל מי שמצטרפים.
-* בקבוצות שההצטרפות אליהן נעשית באמצעות בקשה, יש אפשרות להציג את עצמכם בפני מי שמתאמים את הקבוצה, כדי לקבל גישה אליה. בחלק מהקבוצות נהוג לפרסם את התוכן הזה מחדש בשרשור ההיכרות כחלק מקבלת הפנים.
+* בקבוצות שההצטרפות אליהן נעשית באמצעות בקשה, יש אפשרות להציג את עצמך בפני מנהל הקבוצה כדי לקבל גישה אליה. בחלק מהקבוצות נהוג לפרסם את התוכן הזה מחדש בשרשור ההיכרות כחלק מקבלת הפנים.
 * מומלץ להעלות תמונות פרופיל. תמונות פנים הן אחת הדרכים היעילות ביותר ליצור תחושת היכרות עם האנשים שנמצאים יחד במרחב המקוון.
 
 <!-- translation-section: who-s-not-in-the-room -->

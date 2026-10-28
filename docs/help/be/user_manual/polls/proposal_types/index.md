@@ -1,12 +1,12 @@
 ---
 title: Апытанні
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 0c1a9b34dd3831ed
+  introduction: ef9ab4429656dc24
   simple-poll: 235c5c7f2f70ffa5
   score-poll: 9da15be798b09d1d
   dot-vote: 8ec019e2075d3da0
@@ -30,6 +30,15 @@ title_generated: 3c497ef1a443acb5
 # Апытанні
 
 Апытанні збіраюць выбраныя варыянты, ацэнкі, размеркаванні балаў, ранжыраванні, звесткі пра даступны час або выбарчыя бюлетэні. Выбірайце спосаб галасавання ў залежнасці ад таго, што ўдзельнікам трэба выказаць і як вы плануеце выкарыстаць вынік. Выкарыстоўвайце [прапанову](/en/user_manual/polls/proposals/), калі людзям трэба выказаць сваё стаўленне да сцвярджэння або плана дзеянняў.
+
+| Што вы хочаце зрабіць | Спосаб | Як вызначаецца вынік |
+| --- | --- | --- |
+| Знайсці папулярныя варыянты або скласці кароткі спіс | [Выбар](/en/user_manual/polls/choose) (множны выбар) | Падлічваецца колькасць выбараў кожнага варыянта |
+| Параўнаць узровень падтрымкі варыянтаў | [Ацэнка](/en/user_manual/polls/score) | Аб'ядноўваюцца ацэнкі паводле агульнай шкалы |
+| Вызначыць прыярытэты з абмежаванай колькасцю балаў | [Размеркаванне](/en/user_manual/polls/allocate) (размеркаванне балаў) | Падсумоўваюцца балы, размеркаваныя на кожны варыянт |
+| Упарадкаваць варыянты паводле пераваг | [Ранжыраванне](/en/user_manual/polls/rank) (рэйтынгавы выбар) | Ранжыраванні аб'ядноўваюцца ў парадак паводле набраных балаў |
+| Знайсці час для сустрэчы | [Апытанне пра час](/en/user_manual/polls/meeting_polls) | Паказваецца даступнасць удзельнікаў для кожнага часу |
+| Прапарцыйна абраць некалькі прадстаўнікоў | [Выбары па STV](/en/user_manual/polls/stv) | Падлічваюцца бюлетэні з ранжыраваннем кандыдатур, каб вызначыць некалькі пераможцаў |
 
 <!-- translation-section: simple-poll -->
 

@@ -139,6 +139,8 @@ es:
     manage_subscription: Administrar suscripción
     amount: Cantidad
   loomio_tags:
+    show_tags_from_other_groups: Muestra etiquetas de otros grupos
+    parent_group_and_subgroups_in_this_organization: Grupo principal y subgrupos de esta organización
     all_tags: Todas las etiquetas
     tags: Etiquetas
     apply_tags: Aplicar etiquetas
@@ -248,7 +250,7 @@ es:
       open: Abierto
       closed: 'Cerrado '
       private: Privado
-      parent_members: "Visible para el grupo principal"
+      parent_members: Visible para el grupo principal
       secret: Secreto
     selected: Seleccionado
     today: Hoy
@@ -998,10 +1000,10 @@ es:
       everyone_in_the_group: Todos en el grupo
       topic: Todos en el hilo
       voters: Todos invitados a votar
-      decided_voters: Todos los que votaron
-      undecided_voters: Votantes indecisos
       non_voters: Miembros de %{name} todavía no han sido invitados
       delegates_of_group: Delegados de %{name}
+      everyone_who_voted: Todos los que votaron
+      people_who_have_not_voted: Personas sin votar
     form:
       group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
@@ -1071,7 +1073,7 @@ es:
       has_not_read_thread: Tiene un hilo no visto
       has_not_joined_yet: Aún no se ha unido
       has_not_joined_yet_hint: Este usuario no ha aceptado tu invitación para unirse a Loomio y no recibirá más notificaciones hasta que lo haga.
-      discussion_admin: Administrador de discusión
+      discussion_admin: Hilo de administración
       has_not_read_discussion: No ha visto la discusión
     group_form:
       search_placeholder: Buscar personas...
@@ -1085,6 +1087,8 @@ es:
     topic_notification_history: Historial de notificaciones de hilos
     notification_history: Historial de notificaciones
   action_dock:
+    add_to_timeline: Añade a la cronología
+    remove_from_timeline: Elimina de la cronología
     actions_menu: Menú de acciones
     more_actions: Más acciones
     react: 'Reaccionar '
@@ -1438,9 +1442,9 @@ es:
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
     profile: Perfil
-    subgroup_name_and_content_are_public: "Cualquiera puede encontrar este subgrupo y leer sus hilos"
-    subgroup_name_is_public_and_threads_are_private: "Cualquiera puede encontrar este subgrupo; sus hilos son privados"
-    subgroup_is_visible_to_parent_members: "Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados"
+    subgroup_name_and_content_are_public: Cualquiera puede encontrar este subgrupo y leer sus hilos
+    subgroup_name_is_public_and_threads_are_private: Cualquiera puede encontrar este subgrupo; sus hilos son privados
+    subgroup_is_visible_to_parent_members: Los miembros de %{parent} pueden encontrar este subgrupo; sus hilos son privados
     subgroup_privacy_is_open_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Solo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son públicos.
     subgroup_privacy_is_closed_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Todos los hilos son privados.
     subgroup_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los integrantes pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados.
@@ -1448,9 +1452,9 @@ es:
     subgroup_privacy_is_secret_description: Sólo integrantes invitados pueden encontrar este sub-grupo, ver sus integrantes y sus hilos.
     advanced_settings: 'Configuración avanzada '
     how_do_people_join: "¿Cómo se unen las personas a este grupo?"
-    join_without_approval: "Unirse sin aprobación"
-    request_to_join: "Solicitar unirse"
-    invitation_only: "Solo por invitación"
+    join_without_approval: Unirse sin aprobación
+    request_to_join: Solicitar unirse
+    invitation_only: Solo por invitación
     permissions: Permisos
     thread_privacy: Privacidad del hilo
     public_threads: Sólo hilos públicos
@@ -1458,8 +1462,8 @@ es:
     public_or_private_threads: Permitir hilos públicos y privados
     private_threads: Solamente los integrantes pueden ver las discusiones
     allow_public_threads: Permitir hilos públicos en este grupo.
-    parent_group_members_can_see_private_threads: "Los miembros del grupo principal pueden ver los hilos privados"
-    parent_group_members_can_see_private_threads_help: "Permite que los miembros de %{parent} vean los hilos y encuestas de este grupo, pero no participen"
+    parent_group_members_can_see_private_threads: Los miembros del grupo principal pueden ver los hilos privados
+    parent_group_members_can_see_private_threads_help: Permite que los miembros de %{parent} vean los hilos y encuestas de este grupo, pero no participen
     members_can_announce: Los miembros pueden notificar a cualquiera en el grupo
     members_can_announce_help: Permite a los miembros notificar a cualquiera en el grupo acerca del hilo o sondeo
     members_can_add_members: Los miembros pueden invitar a otros miembros
@@ -1622,7 +1626,7 @@ es:
     title_helptext:
       group: Este título será mostrado junto al nombre de %{name} dentro de este grupo. Úsalo para que otros integrantes conozcan tu cargo.
     title_label: Título
-    title_placeholder: ej. ´Coordinadora´o ´Facilitadora´
+    title_placeholder: P. ej., «Admin» o «Facilitador»
     updated: Título del integrante actualizado
     weight_label: Peso del voto
   user_name_modal:
@@ -1796,7 +1800,6 @@ es:
       all: Discusiones recientes
     thread_preview:
       you_voted: Votaste %{position}
-      undecided: 'Estas indeciso '
     threads_from:
       group: Hilos de
       pinned: Hilos fijados
@@ -2025,6 +2028,18 @@ es:
     for_the_proposal_to_pass: Para que la propuesta sea aprobada, esta opción debe recibir…
     for_the_poll_to_be_valid: Para que %{poll_type} sea válido, esta opción debe recibir…
     points_cast: Puntos emitidos
+    eligible_vote_weight: Peso del voto elegible
+    vote_weight_cast: Peso del voto emitido
+    name_gte_eligible_vote_weight: "%{name} necesita al menos el %{percent}% del peso del voto elegible"
+    name_lte_eligible_vote_weight: "%{name} no debe superar el %{percent}% del peso del voto elegible"
+    name_gte_vote_weight_cast: "%{name} necesita al menos el %{percent}% del peso del voto emitido"
+    name_lte_vote_weight_cast: "%{name} no debe superar el %{percent}% del peso del voto emitido"
+    total_assigned_vote_weight: Peso total del voto asignado
+    weighted_votes_cast: Votos ponderados emitidos
+    name_gte_assigned_vote_weight: "%{name} necesita al menos el %{percent}% del peso total del voto asignado"
+    name_lte_assigned_vote_weight: "%{name} no debe superar el %{percent}% del peso total del voto asignado"
+    name_gte_weighted_votes_cast: "%{name} necesita al menos el %{percent}% de los votos ponderados emitidos"
+    name_lte_weighted_votes_cast: "%{name} no debe superar el %{percent}% de los votos ponderados emitidos"
   poll_common:
     superseded: Reemplazado
     outdated: Anticuado
@@ -2141,6 +2156,9 @@ es:
     pct_of_weighted_votes: "% de votos ponderados"
     pct_of_weighted_points: "% de puntos ponderados"
     weighted_mean: Media ponderada
+    pct_of_eligible_vote_weight: "% del peso del voto elegible"
+    pct_of_vote_weight_cast: "% del peso del voto emitido"
+    pct_of_assigned_vote_weight: "% del peso del voto asignado"
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2305,18 +2323,14 @@ es:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto eliminado
-    undecided: Sin votar
     newest_first: El más reciente primero
     oldest_first: Los más viejos primero
     priority_first: De acuerdo primero
     priority_last: Bloqueados primero
-    undecided_first: Sin votar primero
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
     name_or_username: Nombre o nombre de usuario
-    cast: Emitidos
-    uncast: No emitidos
     reason_redacted: Motivo censurado
     redact_reason_title: "¿Motivo de la votación?"
     redact_reason_helptext: El texto y los archivos adjuntos se ocultarán, pero el voto permanecerá en los resultados.
@@ -2331,15 +2345,6 @@ es:
     stance: Votar
     participation_records_restricted: Podrás ver quiénes participaron una vez finalizada la votación
     vote_weight: Peso del voto %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostrar %{count} indecisos
-    show_invitations: Mostrar invitaciones pendientes
-    undecided_users: Indecisos (%{count})
-    invitation_count_singular: 'Una persona más ha sido invitada a participar vía correo electrónico '
-    invitation_count_plural: "%{count} personas adicionales han sido invitadas a participar vía correo electrónico"
-  poll_common_undecided_user:
-    reminded: 'Recordatorio enviado '
-    reminder_sent: 'Recordatorio de notificación enviado '
   poll_common_set_outcome_panel:
     enter_outcome: Poner el resultado
     poll_type: Este %{poll_type} se ha cerrado. Tómate el tiempo para considerar los resultados y luego comparte una conclusión para que las personas sepan lo que sucederá a continuación.
@@ -2473,13 +2478,17 @@ es:
     votes_short_of_quorum: Se necesitan %{num} votos más para alcanzar el quórum del %{pct}%
     quorum_reached: Se ha alcanzado el quórum del %{pct}%
     pct_participation: "%{num} de %{total} votos emitidos (%{pct}% de participación)"
+    pct_vote_weight_participation: "%{num} de %{total} votos emitidos (%{pct}% del peso del voto)"
+    pct_of_eligible_vote_weight_must_participate: Debe participar el %{pct}% del peso del voto elegible
+    pct_weighted_participation: "%{num} de %{total} votos emitidos (participó el %{pct}% del peso del voto asignado)"
+    pct_of_assigned_vote_weight_must_participate: Debe participar el %{pct}% del peso total del voto asignado
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: "¿Eliminar tu voto?"
-    helptext: "¿Estás seguro de que deseas eliminar tu voto? Aparecerás como indeciso y puedes votar de nuevo más tarde si lo deseas."
     confirm: Eliminar voto
     success: 'Voto eliminado '
+    helptext_not_voted: "¿Seguro que quieres eliminar tu voto? Tu estado será “Sin votar” y podrás volver a votar más tarde si quieres."
   poll_poll_vote_form:
     stance_created: Voto creado
     stance_updated: Voto actualizado
@@ -2841,8 +2850,8 @@ es:
       voting_title: 24 horas antes del cierre de la votación, envíe un recordatorio a
       nobody: Nadie
       author: Autor (yo)
-      undecided_voters: Votantes indecisos
       voters: Todos los votantes
+      people_who_have_not_voted: Personas sin votar
     notify_on_participate:
       title: Notificarme cuando la gente participe
       helptext_on: Una vez seleccionado, se le notificará cada vez que alguien participe.
@@ -3008,6 +3017,10 @@ es:
     weighted_voting_off_warning: Al desactivar la votación ponderada, el peso de cada voto se establece en 1. Cualquier peso de voto que hayas modificado para esta encuesta se perderá.
     weighted_voting_on_group: Al activar la votación ponderada, se copia el peso de voto predeterminado de cada miembro. Los demás votantes obtienen un peso de voto de 1.
     weighted_voting_on_direct: Al activar la votación ponderada, el peso de cada voto se establece en 1
+    quorum_vote_weight_hint: "¿Qué porcentaje del peso del voto elegible debe participar para que el resultado sea válido? Opcional, déjalo en blanco si no hay quórum."
+    quorum_vote_weight_placeholder: Porcentaje del peso del voto elegible (0–100)
+    quorum_voters_placeholder: Porcentaje de votantes elegibles (0–100)
+    quorum_weighted_hint: "¿Qué porcentaje del peso total del voto asignado debe participar para que el resultado sea válido? Opcional, déjalo en blanco si no hay quórum."
   poll_receipts_page:
     participation_status_requires_min_votes: Esto muestra quién tenía derecho a votar. Solo se muestra si cada persona votó cuando han votado al menos %{count} personas.
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió tu voto.
@@ -3250,7 +3263,7 @@ es:
     stance: voto
   membership_notification_history:
     invitation_delivery_history: Historial de entrega de invitaciones
-    email_delivery_blocked: "Loomio ha bloqueado el envío de correos a esta dirección"
+    email_delivery_blocked: Loomio ha bloqueado el envío de correos a esta dirección
     delivery_result:
       delivered: Entregada
       failed: Fallida

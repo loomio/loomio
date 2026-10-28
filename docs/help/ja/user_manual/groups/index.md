@@ -1,23 +1,23 @@
 ---
 title: グループ
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: 8d0bff59a683d300
-  administration-facilitation-and-moderation-code-of-conduct: ee386ea54b34954e
+  introduction: 9a2292e5de53aa16
+  administration-facilitation-and-moderation-code-of-conduct: a90d24c813f8e32b
 title_source: 39bbb719fa2b9d22
 title_generated: 22e44df705a2e22a
 ---
 
 <!-- translation-section: introduction -->
 
-# グループの紹介
+# グループ
 
 Loomioのグループは、人々が集まり、ディスカッションを行い、決定を下すための安心できる場所です。
 
@@ -27,13 +27,9 @@ Loomioのグループは次のように表示されます。ページの上部�
 
 ![説明とディスカッション一覧が表示されたOatmilk Cooperativeのグループページ](group_page.png)
 
-グループを表す名前を選び、グループの説明に次の内容を記載します。
-- このグループを**何に**使うのか
-- **なぜ**それが重要なのか
-- **誰が**関わるのか
-- メンバーが**どのように**参加できるのか
+グループにわかりやすい名前を付け、説明にはその目的、誰が関わるのか、メンバーがどのように参加できるのかを記載します。ロゴ、カバー画像、活動の目的や範囲を定めた文書などへのリンクも追加できます。
 
-行動規範、活動の目的や範囲を定めた文書、その他のグループ運営に関する文書なども掲載できます。
+まず、[グループを作成](/en/user_manual/groups/starting_a_group)し、[プライバシー設定](/en/user_manual/groups/settings/privacy)を選び、[参加者を招待](/en/user_manual/groups/inviting_people)します。
 
 新しいグループを準備する場合は、[グループにLoomioを導入する](/en/user_manual/overview/introducing_loomio)を参照してください。最初に取り組む活動の選択から結論の記録まで、具体的な手順を紹介しています。
 
@@ -41,10 +37,4 @@ Loomioのグループは次のように表示されます。ページの上部�
 
 ## 管理、ファシリテーション、モデレーション - 行動規範
 
-Loomioは、誰もが参加できる環境、多様性、信頼を育み、グループがともによりよい決定を下せるように設計されています。
-
-話題によっては、グループ内に緊張が生じることがあります。そのため、十分に意見を交わせるディスカッションを行いながら、特に弱い立場にある人にとっても安心できる場所を保つことが大切です。
-
-全員が適切な行動をとる責任を理解し、自ら行動を律するよう促すために、グループの行動規範を定めることをお勧めします。
-
-行動規範の意義について詳しくは、[ファシリテーターガイド](/en/guides/facilitators_guide/commencing#culture-protocol-expectations)を参照してください。
+行動規範は、メンバーが参加の仕方や、不適切な行動にグループがどのように対応するかを理解する助けになります。期待される行動を定める方法については、[ファシリテーターガイド](/en/guides/facilitators_guide/commencing#culture-protocol-expectations)を参照してください。

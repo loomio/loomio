@@ -27,8 +27,8 @@ const rangeLast = computed(() => Math.min(page.value * limit, meta.value?.total 
 const pollOptionItems = computed(() => {
   const items = [
     { title: t('poll_common_votes_panel.all_voters'), value: 'all' },
-    { title: t('poll_common_votes_panel.cast'), value: 'cast' },
-    { title: t('poll_common_votes_panel.uncast'), value: 'uncast' }
+    { title: t('poll_receipts_page.voted'), value: 'cast' },
+    { title: t('poll_receipts_page.not_voted'), value: 'uncast' }
   ];
   return poll.showResults() ? items.concat(poll.pollOptions().map(option => ({ title: option.optionName(), value: option.id }))) : items;
 });
@@ -37,7 +37,7 @@ function shownChoices(voter) {
   const choices = Object.entries(voter.option_scores || {}).map(([id, score]) => ({
     option: poll.pollOptions().find(option => option.id === Number(id)),
     score,
-    rank: poll.pollType === 'ranked_choice' ? poll.minimumStanceChoices - score + 1 : null
+    rank: poll.pollType === 'ranked_choice' ? poll.choiceCountMin - score + 1 : null
   })).filter(choice => choice.option && (choice.score > 0 || poll.pollType === 'score'));
   return poll.pollType === 'ranked_choice'
     ? choices.sort((a, b) => a.rank - b.rank)

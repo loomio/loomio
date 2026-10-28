@@ -72,7 +72,7 @@ class CommentServiceTest < ActiveSupport::TestCase
       closing_at: 3.days.from_now,
       poll_option_names: %w[Agree Disagree]
     }, actor: @admin)
-    stance = poll.stances.undecided.find_by!(participant: @user)
+    stance = poll.stances.uncast.find_by!(participant: @user)
     stance.choice = "Agree"
     stance.reason = "My vote"
     StanceService.create(stance: stance, actor: @user)
@@ -147,9 +147,12 @@ class CommentServiceTest < ActiveSupport::TestCase
       body_format: "md"
     )
 
-    error = assert_raises RuntimeError do
-      TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
-        CommentService.create(comment: comment, actor: @user)
+    error = nil
+    assert_no_enqueued_jobs(only: ReindexSearchDocumentWorker) do
+      error = assert_raises RuntimeError do
+        TopicItems::NewComment.stub(:create!, ->(**) { raise "topic_item failed" }) do
+          CommentService.create(comment: comment, actor: @user)
+        end
       end
     end
 

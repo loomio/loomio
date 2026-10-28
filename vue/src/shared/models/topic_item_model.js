@@ -21,6 +21,7 @@ export default class TopicItemModel extends BaseModel {
   defaultValues() {
     return {
       pinned: false,
+      tags: [],
       itemableId: null,
       itemableType: null,
       topicId: null,

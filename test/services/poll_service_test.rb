@@ -108,7 +108,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     reader = TopicReader.active.find_by!(topic: poll.topic, user: former_member)
     assert membership.reload.revoked_at
-    assert poll.unmasked_voters.exists?(former_member.id)
+    assert poll.voters_unmasked.exists?(former_member.id)
     assert reader.guest
     assert former_member.can?(:show, poll)
     assert former_member.can?(:vote_in, poll)
@@ -118,7 +118,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: former_member
     )
-    assert poll.unmasked_decided_voters.exists?(former_member.id)
+    assert poll.voters_cast_unmasked.exists?(former_member.id)
     assert_not former_member.can?(:show, unrelated_discussion)
     assert_not users(:alien).can?(:show, poll)
     assert_not users(:alien).can?(:vote_in, poll)
@@ -686,6 +686,52 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not topic_item_was_yielded
   end
 
+  test "until-closed polls can be extended while active but cannot reopen after closing" do
+    poll = create_poll(hide_results: 'until_closed')
+    deadline = 7.days.from_now.beginning_of_hour
+    PollService.update(poll: poll, params: {closing_at: deadline}, actor: @user)
+    assert_equal deadline, poll.reload.closing_at
+    assert_nil poll.closed_at
+    PollService.close(poll: poll, actor: @user)
+    closed_at = poll.reload.closed_at
+
+    assert_no_difference ['TopicItem.count', 'Notification.count'] do
+      assert_raises(CanCan::AccessDenied) do
+        PollService.reopen(poll: poll, params: {closing_at: 10.days.from_now}, actor: @user)
+      end
+    end
+    assert_equal closed_at, poll.reload.closed_at
+    poll.closed_at = nil
+    assert_not poll.valid?, 'model writes must also reject reopening'
+    assert_includes poll.errors.attribute_names, :closed_at
+  end
+
+  test "reopening checks stored result settings instead of stale poll attributes" do
+    poll = create_poll
+    PollService.close(poll: poll, actor: @user)
+    stale = Poll.find(poll.id)
+    poll.update!(hide_results: 'until_closed')
+
+    assert_raises(CanCan::AccessDenied) do
+      PollService.reopen(poll: stale, params: {closing_at: 7.days.from_now}, actor: @user)
+    end
+    assert poll.reload.closed?
+  end
+
+  test "failed reopening rolls back the poll when timeline creation fails" do
+    travel_to(Time.current.change(nsec: 123_456_789), with_usec: true) do
+      poll = create_poll(hide_results: 'until_vote')
+      PollService.close(poll: poll, actor: @user)
+      closed_at = poll.reload.closed_at
+      TopicItems::PollReopened.stub(:create!, ->(**) { raise 'Timeline failed' }) do
+        assert_raises(RuntimeError) do
+          PollService.reopen(poll: poll, params: {closing_at: 7.days.from_now}, actor: @user)
+        end
+      end
+      assert_equal closed_at, poll.reload.closed_at
+    end
+  end
+
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do
@@ -772,16 +818,16 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    voters_count = poll.reload.voters_count
-    undecided_voters_count = poll.undecided_voters_count
+    vote_count_eligible = poll.reload.vote_count_eligible
+    vote_count_uncast = poll.vote_count_uncast
 
     new_member = create_unique_user("newanonymousmember")
     Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
 
     assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
-    assert_equal voters_count + 1, poll.reload.voters_count
-    assert_equal undecided_voters_count + 1, poll.undecided_voters_count
+    assert_equal vote_count_eligible + 1, poll.reload.vote_count_eligible
+    assert_equal vote_count_uncast + 1, poll.vote_count_uncast
   end
 
   test "does not add bot users to polls" do

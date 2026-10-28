@@ -1,32 +1,15 @@
-<script lang="js">
-import OutcomeService from '@/shared/services/outcome_service';
+<script setup>
+import { computed } from 'vue';
 import TopicItemService from '@/shared/services/topic_item_service';
 
-import { pick } from 'lodash-es';
-
-export default {
-  props: {
-    topic_item: Object,
-    itemable: Object
-  },
-
-  computed: {
-    dockActions() {
-      return OutcomeService.actions(this.itemable, this);
-    },
-    menuActions() {
-      return pick(TopicItemService.actions(this.topic_item, this), ['pin_event', 'unpin_event', 'notification_history']);
-    }
-  }
-};
-
+const { topic_item, itemable } = defineProps({topic_item: Object, itemable: Object});
+const menuActions = computed(() => ({edit_item_tags: TopicItemService.actions(topic_item).edit_item_tags}));
 </script>
 
 <template lang="pug">
-section.outcome-created.topic-item__outcome-created(id="'outcome-'+ itemable.id")
+section.outcome-created.topic-item__outcome-created(:id="'outcome-' + itemable.id")
   topic-item-headline(:topic_item="topic_item" :itemable="itemable")
-  //- formatted-text.topic-item__body.new-comment__body(:model="itemable" field="body")
-  //- link-previews(:model="poll")
-  //- attachment-list(:attachments="itemable.attachments")
-  //- action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' icons)
+  formatted-text.topic-item__body(:model="itemable" field="statement")
+  attachment-list(:attachments="itemable.attachments")
+  action-dock(:model="itemable" :actions="{}" :menu-actions="menuActions" size="small" left)
 </template>

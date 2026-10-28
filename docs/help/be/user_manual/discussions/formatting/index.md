@@ -1,18 +1,18 @@
 ---
 title: Фарматаванне
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: a610a5bfd9632071
+  introduction: b85af62bab6dffd8
   attach-file: e4b6c9f9de2fec75
   remove-attachments: d5787ae770d33e6b
-  insert-image: 10a8050a1284c95e
-  insert-link: d815566770c9c006
+  insert-image: 4c2bf6c7abfc7569
+  insert-link: 6060022cedea3642
   insert-emoji: 36aaa4c805c884bf
-  headings: accdd0166c9d0dab
+  headings: fcad5c4e63e762d6
   bold-italicize-strikethrough: e932111b6744a2bc
   list: 42617757d4b1b6e3
   numbered-list: d4e4aacfd767e899
@@ -53,15 +53,13 @@ title_generated: d3d09eaf6040ff72
 
 <!-- translation-section: introduction -->
 
-# Фарматаванне
+# Фарматаванне тэксту і далучэнне файлаў
 
 Калі вы ствараеце ці рэдагуеце абмеркаванне або апытанне ці пішаце каментарый, пад тэкставым полем з'яўляецца панэль фарматавання. Націсніце стрэлку ў канцы панэлі, каб паказаць або схаваць поўны набор інструментаў.
 
 Навядзіце ўказальнік мышы на кожны элемент, каб убачыць назву інструмента.
 
 ![](thread_format_bar.png)
-
-Выкарыстоўвайце фарматаванне, каб упарадкаваць тэкст і вылучыць важнае — так інфармацыю лягчэй праглядаць.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ title_generated: d3d09eaf6040ff72
 
 ## Уставіць выяву
 
-Выкарыстоўвайце гэты інструмент, каб уставіць і паказаць выяву.
-
-![](format_insert_image.png)
-
-Выберыце файл выявы на вашым камп'ютары. Пасля загрузкі выява з'явіцца ў рэдактары.
+Выберыце **Уставіць выяву** і выберыце файл або ўстаўце выяву непасрэдна ў рэдактар. Выява адлюстроўваецца ў апублікаваным абмеркаванні, апытанні або каментарыі.
 
 ![](format_insert_example.png)
-
-Выява адлюстроўваецца ў апублікаваным абмеркаванні, апытанні або каментарыі.
-
->[!Tip]
->Вы таксама можаце скапіяваць выяву і ўставіць яе непасрэдна ў Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ title_generated: d3d09eaf6040ff72
 
 Калі дакумент размешчаны на іншым сэрвісе, праверце налады доступу, каб удзельнікі абмеркавання маглі яго адкрыць.
 
-Пад тэкставым полем з'явіцца папярэдні прагляд дакумента. Пры жаданні вы можаце яго выдаліць.
-
-Цяпер усе, хто мае доступ да вашага абмеркавання ў Loomio і дазвол на прагляд дакумента, могуць адкрыць і прачытаць яго.
+Пад тэкстам можа з'явіцца папярэдні прагляд. Пры жаданні вы можаце яго выдаліць.
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ title_generated: d3d09eaf6040ff72
 
 Вылучыце тэкст, які хочаце зрабіць загалоўкам, і націсніце інструмент фарматавання загалоўкаў.
 
-Калі ў каментарыі ёсць загаловак, каментарый аўтаматычна замацоўваецца ў стужцы падзей абмеркавання.
+Калі ў каментарыі ёсць загаловак, каментарый аўтаматычна дадаецца ў стужку падзей абмеркавання.
 
 ![](format_heading.png)
 

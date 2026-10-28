@@ -78,14 +78,34 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal "User comment", @user_comment.body
   end
 
-  test "destroy removes a discarded comment and serializes its reparented siblings" do
+  test "destroy removes a discarded comment and returns its remaining sibling items" do
     sign_in @user
     CommentService.discard(comment: @user_comment, actor: @user)
+    deleted_item_id = @user_comment.created_topic_item.id
 
     delete :destroy, params: { id: @user_comment.id }
 
     assert_response :success
     refute Comment.exists?(@user_comment.id)
+    item_ids = response.parsed_body.fetch('topic_items').pluck('id')
+    assert_includes item_ids, @admin_comment.created_topic_item.id
+    refute_includes item_ids, deleted_item_id
+  end
+
+  test "stance replies are forbidden until hidden results are revealed by closing" do
+    poll = PollService.create(params: {topic_id: topics(:discussion_topic).id, title: 'Reply permissions',
+      poll_type: 'proposal', poll_option_names: ['Agree'], closing_at: 2.days.from_now,
+      hide_results: 'until_closed'}, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+    sign_in @admin
+    params = {comment: {parent_type: 'Stance', parent_id: stance.id, body: 'Reply'}}
+    assert_no_difference(['Comment.count', 'TopicItem.count']) { post :create, params: params }
+    assert_response :forbidden
+    PollService.close(poll: poll, actor: @admin)
+    assert_difference('Comment.count') { post :create, params: params }
+    assert_response :success
   end
 
   test "create success" do
@@ -95,6 +115,22 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
       post :create, params: { comment: comment_params }
     end
     assert_response :success
+  end
+
+  test "posting and editing return successfully without running search indexing" do
+    sign_in @user
+    Comment.stub(:pg_search_insert_statement, ->(**) { raise 'search indexing unavailable' }) do
+      post :create, params: {comment: {parent_type: 'Discussion', parent_id: @discussion.id, body: 'Deferred search'}}
+      assert_response :success
+      comment = Comment.find_by!(body: 'Deferred search')
+      assert_not PgSearch::Document.exists?(searchable: comment)
+      assert_enqueued_with(job: ReindexSearchDocumentWorker, args: ['Comment', comment.id])
+
+      put :update, params: {id: comment.id, comment: {body: 'Deferred search edited'}}
+      assert_response :success
+      assert_equal 'Deferred search edited', comment.reload.body
+      assert_not PgSearch::Document.exists?(searchable: comment)
+    end
   end
 
   test "create warns the reply author when the original comment is deleted" do
@@ -248,6 +284,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @admin_comment.reload
     assert @admin_comment.discarded?
     assert_equal @admin.id, @admin_comment.discarded_by
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @admin_comment.id }
+    assert_not_nil serialized.fetch('discarded_at')
+    assert_equal @admin.id, serialized.fetch('discarded_by')
   end
 
   test "discard not allowed" do
@@ -277,6 +316,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_not @user_comment.reload.discarded?
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @user_comment.id }
+    assert_nil serialized.fetch('discarded_at')
+    assert_equal @user_comment.body, serialized.fetch('body')
   end
 
   test "create denied when allow_comments is false" do

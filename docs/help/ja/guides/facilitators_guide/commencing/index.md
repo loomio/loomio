@@ -1,10 +1,10 @@
 ---
 title: 開始にあたって
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: 1dc2fdfb20e91c70
   settling: efca164c47efef04
   who-s-in-the-room: fd140fb34305e548
-  check-in: 92e43a87a54984a0
+  check-in: ad03fe88770b9132
   who-s-not-in-the-room: 775e1afc74417602
   culture-protocol-expectations: 44ab8026f65ad84b
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ Loomioでは
 Loomioでは
 
 * 「自己紹介」や「チェックイン」というスレッドを作成します。新しく参加する全員が理解できる、最初の _行動の呼びかけ_ になります。
-* 参加申請を受け付けるグループには、申請者が管理者に自己紹介をして、グループへの参加を求める機能があります。その内容を自己紹介スレッドに再投稿して、新しい人を歓迎するグループもあります。
+* 参加申請を受け付けるグループには、申請者がグループ管理者に自己紹介をして、グループへの参加を求める機能があります。その内容を自己紹介スレッドに再投稿して、新しい人を歓迎するグループもあります。
 * プロフィール写真をアップロードします。顔写真は、オンラインでも誰と同じ場にいるのかを実感するための、特に有効な方法の一つです。
 
 <!-- translation-section: who-s-not-in-the-room -->

@@ -42,8 +42,8 @@ class PollOptionTest < ActiveSupport::TestCase
       poll_type: 'score',
       title: 'Weighted score',
       poll_option_names: %w[Alpha Beta],
-      min_score: 0,
-      max_score: 5,
+      score_min: 0,
+      score_max: 5,
       closing_at: 1.day.from_now,
       group_id: groups(:group).id,
       weighted_voting: true,
@@ -71,9 +71,9 @@ class PollOptionTest < ActiveSupport::TestCase
     option.reload
     assert_equal 8, option.total_score
     assert_equal 5, poll.results.find { |result| result[:id] == option.id }[:unweighted_score]
-    assert_equal 2, option.voter_count
+    assert_equal 2, option.vote_count
     assert_equal 5, option.unweighted_score
-    assert_equal 2, option.voter_weight_total
+    assert_equal 2, option.vote_weight
     assert_equal 4, option.weighted_average_score
   end
 
@@ -82,8 +82,8 @@ class PollOptionTest < ActiveSupport::TestCase
       poll_type: 'score',
       title: 'Large weighted score',
       poll_option_names: %w[Alpha Beta],
-      min_score: 0,
-      max_score: 3_000,
+      score_min: 0,
+      score_max: 3_000,
       closing_at: 1.day.from_now,
       group_id: groups(:group).id,
       weighted_voting: true,
@@ -120,7 +120,7 @@ class PollOptionTest < ActiveSupport::TestCase
 
     assert_equal BigDecimal('2.83'), option.reload.total_score
     assert_equal BigDecimal('2.83'), poll.reload.total_score
-    assert_equal 2, option.voter_count
+    assert_equal 2, option.vote_count
     result = poll.results.find { |row| row[:id] == option.id }
     assert_equal 2, result[:unweighted_score]
     assert_equal 2.83, result[:score]
@@ -138,6 +138,9 @@ class PollOptionTest < ActiveSupport::TestCase
     result = poll.results.find { |row| row[:id] == option.id }
     assert_equal 1, result[:unweighted_score]
     assert_equal 1, result[:score]
+    assert_equal 1, option.reload.vote_count
+    assert_equal 1, option.vote_weight
+    assert_empty option.scores_by_voter
   end
 
   test "weighted one point polls show weighted votes without separate points" do
@@ -150,7 +153,7 @@ class PollOptionTest < ActiveSupport::TestCase
       notify_on_open: false
     }, actor: users(:admin))
     assert poll.weighted_voting?
-    assert_includes poll.result_columns, 'voter_count'
+    assert_includes poll.result_columns, 'vote_count'
     assert_not_includes poll.result_columns, 'unweighted_score'
     assert_includes poll.result_columns, 'score'
   end
@@ -202,8 +205,50 @@ class PollOptionTest < ActiveSupport::TestCase
     proposal.update_counts!
     result = proposal.reload.results.find { |row| row[:id] == option.id }
 
-    assert_equal({users(:user).id.to_s => 1}, option.reload.voter_scores)
-    assert_equal({}, result[:voter_scores])
+    assert_equal({users(:user).id.to_s => 1}, option.reload.scores_by_voter)
+    assert_equal({}, result[:scores_by_voter])
     assert_equal [users(:user).id], result[:voter_ids]
+  end
+
+  test "time poll results retain zero scores and expose the complete availability grid" do
+    poll = PollService.create(params: {
+      poll_type: 'meeting', title: 'Availability grid', group_id: groups(:group).id,
+      poll_option_names: ['2026-11-01', '2026-11-02'], notify_on_open: false
+    }, actor: users(:admin))
+    option = poll.poll_options.first
+    {users(:user) => 0, users(:member) => 2}.each do |voter, score|
+      poll.stances.latest.find_by!(participant: voter).update!(cast_at: Time.current,
+        stance_choices_attributes: poll.poll_options.map { |choice| {poll_option_id: choice.id, score: choice == option ? score : 0} })
+    end
+    poll.update_counts!
+    result = poll.reload.results.find { |row| row[:id] == option.id }
+
+    assert_equal({users(:user).id.to_s => 0, users(:member).id.to_s => 2}, result[:scores_by_voter])
+    assert_equal [users(:user).id, users(:member).id].sort, result[:voter_ids].sort
+    assert_equal 1, option.reload.average_score
+    assert_equal 0, poll.poll_options.last.average_score
+  end
+
+  test "anonymous choices freeze option changes only after a ballot exists" do
+    poll = PollService.create(params: {
+      poll_type: 'proposal', title: 'Frozen options', group_id: groups(:group).id,
+      anonymous: true, poll_option_names: %w[agree disagree], notify_on_open: false
+    }, actor: users(:admin))
+    option = poll.poll_options.first
+    option.update!(meaning: 'Before voting')
+    poll.anonymous_ballots.create!(anonymous_ballot_choices_attributes: [{poll_option_id: option.id, score: 1}])
+
+    assert option.reload.save
+    option.meaning = 'Changed after voting'
+    assert_not option.save
+    assert option.errors.added?(:base, :anonymous_ballot_configuration_frozen)
+    assert_equal 'Before voting', option.reload.meaning
+
+    identified_poll = PollService.create(params: {
+      poll_type: 'proposal', title: 'Editable identified options', group_id: groups(:group).id,
+      poll_option_names: %w[agree disagree], notify_on_open: false
+    }, actor: users(:admin))
+    identified = identified_poll.poll_options.first
+    assert identified.update(meaning: 'Identified options remain editable')
   end
 end

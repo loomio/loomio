@@ -1,4 +1,5 @@
 <script setup lang="js">
+import ThreadTags from '@/components/tags/thread_tags.vue';
 import EventBus      from '@/shared/services/event_bus';
 import Records       from '@/shared/services/records';
 import TopicService  from '@/shared/services/topic_service';
@@ -174,6 +175,7 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
     v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd")
+  thread-tags(:topic="topic")
   template(v-if="isSignedIn")
 
     v-list(nav slim density="compact" :lines="false")

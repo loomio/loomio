@@ -13,10 +13,22 @@ These notes apply to any copy written for end users: UI strings, flash/error mes
 
 ### Prefer
 
+Use **group admin** and **thread admin** for permission roles. **Administrator** is acceptable in longer prose. Do not use **coordinator** for either role, even when an older code identifier or source document uses it.
+
 Plain, factual statements: what happened, what the software does, who it's for. No adjectives doing the work that a fact could do. This is consistent with the [localization guidance](localization.md) (calm tone, no exclamation marks on success messages).
 
 - **Lead with the value to the user.** Explain what a feature helps people do before describing eligibility, configuration, or implementation constraints.
 - **Do not mention email verification unless it is part of the workflow being explained.** In user-facing copy, say “people” or “users” rather than “people with a verified email address” when verification is only an insignificant implementation precondition.
+
+## User-manual prose
+
+Write for people trying to use the feature. Explain the useful steps and consequences that affect their decisions. Keep the prose concise and practical.
+
+- Trust clear UI labels and screenshots. Do not narrate the interface, describe control order, or restate behaviour the reader can already see.
+- Use simple, concrete examples chosen to demonstrate a meaningful difference. Prefer small, easy-to-follow numbers, such as vote weights of `0`, `1`, and `2`.
+- Match the terminology used in the UI and reuse it consistently.
+- Omit redundant reassurances, descriptions of absent settings, and development history. Include edge cases only when readers are likely to encounter them or need to act on them.
+- Remove any sentence that does not help the reader understand or do something. Link to the relevant topic instead of repeating its explanation.
 
 ## Markdown formatting
 

@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,10 +14,10 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -36,10 +36,10 @@ generated:
   edit-voting-options: dfe67094a9cbd0cf
   opening-time: 6f06b709acf58c46
   more-settings: ea1e48c372fdea5d
-  reminder: eb948ef4fce9ad1a
+  reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
   vote-reason: 4e8a95a3905977c2
-  hide-results: 248411199214ea6a
+  hide-results: d6766d2c80135984
   start-the-poll: ca61b5a2672e2066
   managing-polls: d4841c826f9ca251
   edit-poll: ed3ebb4902f5ff63
@@ -159,7 +159,7 @@ Envoyez une notification « Clôture prochaine » 24 heures avant la clôtur
 Options du paramètre :
 - Personne
 - Auteur
-- Électeurs en attente (par défaut)
+- Personnes en attente (par défaut)
 - Tous les électeurs
 
 Pour un sondage anonyme d’une durée d’au moins 24 heures, Loomio envoie automatiquement un rappel aux personnes ayant le droit de voter qui n’ont pas encore voté, au cours des dernières 24 heures. Ce rappel ne peut pas être modifié dans les paramètres du sondage.
@@ -206,11 +206,11 @@ Options du paramètre :
 - Masquer les résultats jusqu’à ce qu’un vote soit exprimé
 - Masquer les résultats jusqu’à la clôture du vote
 
-Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, les personnes peuvent répondre aux votes dès qu’elles ont voté. Tous les commentaires sous le sondage, y compris les commentaires directs et les réponses aux réponses, restent masqués dans le fil pour les personnes qui n’ont pas voté.
+Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, les personnes peuvent voir les choix de vote et les raisons après avoir voté. Les membres du fil peuvent écrire des commentaires et répondre aux votes avant de voter. Les commentaires restent visibles quel que soit le paramètre d’affichage des résultats.
 
-Lorsque les résultats sont masqués jusqu’à la clôture du vote, les commentaires sous le sondage restent masqués et les réponses et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage.
+Lorsque les résultats sont masqués jusqu’à la clôture du vote, les réponses aux votes et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage. Les membres du fil peuvent toujours commenter le sondage et répondre aux commentaires. Vous pouvez reporter la date de clôture tant que le sondage est ouvert, mais vous ne pouvez pas le rouvrir après sa clôture.
 
-L’impression et les exports, y compris au format Markdown, ignorent le paramètre « Masquer les résultats jusqu’à ce qu’un vote soit exprimé » et incluent les votes et les réponses. Les résultats masqués jusqu’à la clôture restent masqués jusqu’à la clôture du sondage.
+L’impression et les exports, y compris au format Markdown, ignorent le paramètre « Masquer les résultats jusqu’à ce qu’un vote soit exprimé » et incluent les votes et les réponses. Les résultats et les raisons des votes masqués jusqu’à la clôture restent masqués jusqu’à la clôture du sondage. Les commentaires ordinaires restent accessibles dans le fil, la recherche et les exports.
 
 Les sondages anonymes masquent toujours les résultats jusqu’à la clôture du vote. Le modèle Élection STV active le vote anonyme par défaut.
 

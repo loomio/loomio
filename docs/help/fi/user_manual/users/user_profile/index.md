@@ -1,13 +1,13 @@
 ---
 title: Oma profiili
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: aeb2c44728a7c7f1
-  edit-profile: 2d1d6467154c33a0
+  introduction: 571eb96f30d65f8b
+  edit-profile: c69eded36e8813c4
   update-your-personal-info: 0040c8c7161c9760
   viewing-another-person-s-profile: 6a93d366833c63f9
   uploading-a-profile-photo: b09cc830e155de25
@@ -32,25 +32,14 @@ title_generated: f036aa770febacfc
 <!-- translation-section: introduction -->
 
 # Oma profiili
-Ihmiset tunnistavat sinut Loomiossa käyttäjäprofiilisi perusteella.  
 
-Kun ihmiset tunnistavat toisensa Loomiossa, luottamus vahvistuu ja osallistuminen on luontevampaa. Siksi kannustamme sinua esiintymään omana itsenäsi ja lisäämään valokuvan tai avatarin aina kun mahdollista.
+Profiilisi auttaa muita tunnistamaan sinut Loomiossa. Lisää kuva, esittely ja muita tietoja, jotka haluat jakaa.
 
 <!-- translation-section: edit-profile -->
 
 ## Muokkaa profiilia
 
-Profiilisivulla voit muokata sitä, miten näyt Loomiossa. Avaa profiilisivusi valitsemalla käyttäjävalikosta **Muokkaa profiilia**. Käyttäjävalikko avautuu napsauttamalla nimeäsi sivupalkin yläreunassa.
-
-Jos sivupalkki on suljettu, avaa se napsauttamalla valikkokuvaketta (**☰**).
-
-![](sidebar_menu.png)
-
-Napsauta nimesi oikealla puolella olevaa alanuolta.
-
-![](sidebar_profile.png)
-
-Napsauta **Muokkaa profiilia**
+Avaa käyttäjävalikko valitsemalla nimesi sivupalkista ja valitse sitten **Muokkaa profiilia**. Jos sivupalkki on suljettu, avaa se valikkopainikkeella (**☰**).
 
 ![](edit_profile.png)
 

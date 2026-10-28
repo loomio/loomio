@@ -36,10 +36,31 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_equal 0, tasks_data.first[:remind]
   end
 
+  test "rewrites duplicate task ids while preserving other task items" do
+    rich_text = <<~HTML
+      <li data-uid='123' data-type='taskItem'>First task</li>
+      <li data-uid='123' data-type='taskItem'>Copied task</li>
+      <li data-uid='456' data-type='taskItem'>Other task</li>
+    HTML
+
+    rewritten = TaskService.stub(:rand, 0.5) { TaskService.rewrite_uids(rich_text) }
+    tasks = TaskService.parse_tasks(rewritten, @member)
+
+    assert_equal ['First task', 'Copied task', 'Other task'], tasks.map { |task| task[:name] }
+    assert_equal 123, tasks.first[:uid]
+    assert_equal 456, tasks.last[:uid]
+    assert_equal 3, tasks.map { |task| task[:uid] }.uniq.length
+    assert_operator tasks.second[:uid], :>, 0
+    assert_operator tasks.second[:uid], :<, 100_000_000
+  end
+
   test "creates a task" do
     rich_text = "<li data-uid='123' data-type='taskItem' data-checked='true' data-author-id='#{@member.id}' data-due-on='2022-05-02'>this is a task for <span data-mention-id='#{@member.username}'>#{@member.name}</span></li>"
     tasks_data = TaskService.parse_tasks(rich_text, @member)
-    TaskService.update_model(@discussion, tasks_data)
+    freeze_time do
+      TaskService.update_model(@discussion, tasks_data)
+      assert_equal Time.current, @discussion.tasks.sole.done_at
+    end
 
     assert_equal 1, @discussion.tasks.count
     assert_equal 123, @discussion.tasks.first.uid
@@ -79,6 +100,123 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_includes task.users, @member
     assert_equal true, task.done
     assert_not_nil task.done_at
+
+    done_at = task.done_at
+    travel 1.hour do
+      TaskService.update_model(@discussion, tasks_data)
+
+      assert_equal done_at, task.reload.done_at
+    end
+  end
+
+  test "editing an incomplete task leaves its completion timestamp empty" do
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='false'>Original task</li>"
+    tasks_data = TaskService.parse_tasks(rich_text, @member)
+    TaskService.update_model(@discussion, tasks_data)
+    task = @discussion.tasks.sole
+
+    tasks_data.first[:name] = 'Edited task'
+    TaskService.update_model(@discussion, tasks_data)
+
+    assert_equal 'Edited task', task.reload.name
+    assert_not task.done
+    assert_nil task.done_at
+  end
+
+  test "updating tasks preserves authors who can access group and direct topics" do
+    [topics(:discussion_topic), topics(:direct_topic)].each do |topic|
+      author = users(:guest_normal)
+      rich_text = "<li data-uid='123' data-type='taskItem' data-author-id='#{author.id}'>Original task</li>"
+      tasks_data = TaskService.parse_tasks(rich_text, author)
+      TaskService.update_model(topic.topicable, tasks_data)
+      task = topic.topicable.tasks.sole
+
+      tasks_data.first[:name] = 'Edited task'
+      TaskService.update_model(topic.topicable, tasks_data)
+
+      assert_equal 'Edited task', task.reload.name
+      assert_equal author, task.author
+    end
+  end
+
+  test "updating tasks falls back to the record author for users without topic access" do
+    [topics(:discussion_topic), topics(:direct_topic)].each do |topic|
+      rich_text = "<li data-uid='123' data-type='taskItem'>Task</li>"
+      tasks_data = TaskService.parse_tasks(rich_text, topic.topicable.author)
+      TaskService.update_model(topic.topicable, tasks_data)
+      task = topic.topicable.tasks.sole
+
+      %i[alien_quiet former_guest_loud former_member_loud inactive_guest_loud inactive_member_loud non_guest_loud].each do |fixture|
+        user = users(fixture)
+        tasks_data.first[:author_id] = user.id
+        TaskService.update_model(topic.topicable, tasks_data)
+
+        assert_equal topic.topicable.author, task.reload.author
+      end
+    end
+  end
+
+  test "completing a task persists its doer timestamp and matching checkbox" do
+    @discussion.update!(description: <<~HTML)
+      <li data-uid='123' data-type='taskItem' data-checked='false'>First task</li>
+      <li data-uid='456' data-type='taskItem' data-checked='false'>Other task</li>
+    HTML
+    task = @discussion.tasks.find_by!(uid: 123)
+
+    freeze_time do
+      TaskService.update_done(task, @member, true)
+
+      assert task.done
+      assert task.reload.done
+      assert_equal @member, task.doer
+      assert_equal Time.current, task.done_at
+      document = Nokogiri::HTML.fragment(@discussion.reload.description)
+      assert_equal 'true', document.at_css("li[data-uid='123']")['data-checked']
+      assert_equal 'false', document.at_css("li[data-uid='456']")['data-checked']
+    end
+  end
+
+  test "reopening a task clears its doer timestamp and checkbox" do
+    @discussion.update!(description: "<li data-uid='123' data-type='taskItem' data-checked='false'>Task</li>")
+    task = @discussion.tasks.sole
+    TaskService.update_done(task, @member, true)
+
+    TaskService.update_done(task, @member, false)
+
+    assert_not task.done
+    assert_not task.reload.done
+    assert_nil task.doer
+    assert_nil task.done_at
+    document = Nokogiri::HTML.fragment(@discussion.reload.description)
+    assert_equal 'false', document.at_css("li[data-uid='123']")['data-checked']
+  end
+
+  test "task updates are published to the group and current guests of group and direct topics" do
+    [topics(:discussion_topic), topics(:direct_topic)].each do |topic|
+      record = topic.topicable
+      record.update!(description: "<li data-uid='123' data-type='taskItem' data-checked='false'>Task</li>")
+      publications = []
+      publish = lambda do |models, group_id: nil, user_id: nil|
+        publications << { models: models, group_id: group_id, user_id: user_id }
+      end
+
+      MessageChannelService.stub(:publish_models, publish) do
+        TaskService.update_done(record.tasks.sole, record.author, true)
+      end
+
+      assert_equal topic.group_id ? [topic.group_id] : [], publications.filter_map { |publication| publication[:group_id] }
+      guest_fixtures = %i[guest_quiet guest_normal guest_admin_normal guest_loud]
+      if topic.group_id
+        # This former member was granted guest access after membership was revoked.
+        membership = memberships(:former_member_guest_membership)
+        reader = topic_readers(:former_member_guest_reader)
+        assert_operator reader.created_at, :>, membership.revoked_at
+        guest_fixtures << :former_member_guest
+      end
+      guest_ids = guest_fixtures.map { |fixture| users(fixture).id }
+      assert_equal guest_ids.sort, publications.filter_map { |publication| publication[:user_id] }.sort
+      assert publications.all? { |publication| publication[:models] == [record] }
+    end
   end
 
   test "destroys a task" do

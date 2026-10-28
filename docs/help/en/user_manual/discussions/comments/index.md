@@ -84,14 +84,14 @@ Common actions appear directly below a comment. Additional actions are available
 
 ### Add a comment to Jump to
 
-Use **Pin to timeline** to add a comment to the thread's **Jump to** list.
+Use **Add to timeline** to add a comment to the thread's **Jump to** list.
 
-You can edit the label shown in **Jump to**. Unpin and then pin the comment again to change the link text.
+You can edit the label shown in **Jump to**. Remove the comment from the timeline and add it again to change the link text.
 
 >[!Tip]
->Highlight the words you want to use as the link text before selecting **Pin to timeline**.
+>Highlight the words you want to use as the link text before selecting **Add to timeline**.
 
-Select **Unpin** to remove the item from **Jump to**.
+Select **Remove from timeline** to remove the item from **Jump to**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

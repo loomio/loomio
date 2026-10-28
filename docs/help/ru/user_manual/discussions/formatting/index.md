@@ -1,18 +1,18 @@
 ---
 title: Форматирование
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: 2fc74de141f13487
+  introduction: 934e2eac0fc0d515
   attach-file: f8b6ed0ab22da2a2
   remove-attachments: 4ce5f7ae56a6afed
-  insert-image: 359bf4c839e15dc6
-  insert-link: 54806ac7a06966f1
+  insert-image: b854287bee50f671
+  insert-link: 6845ec304c819026
   insert-emoji: 62539f6b686d7642
-  headings: 6f0896cb7d00d20e
+  headings: be962441ffa0017d
   bold-italicize-strikethrough: b6fd0c6f85086855
   list: d1b0568f2b06aa84
   numbered-list: 951f25e22f146bfd
@@ -53,15 +53,13 @@ title_generated: 65f12809f629d490
 
 <!-- translation-section: introduction -->
 
-# Форматирование
+# Форматирование текста и прикрепление файлов
 
 При создании или редактировании обсуждения или опроса, а также при написании комментария под текстовым полем отображается панель форматирования. Нажмите на стрелку в конце панели, чтобы показать или скрыть полный набор инструментов.
 
 Наведите указатель мыши на любой инструмент, чтобы увидеть его название.
 
 ![](thread_format_bar.png)
-
-Используйте форматирование, чтобы структурировать текст и выделить важное: так информацию будет проще просматривать.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ title_generated: 65f12809f629d490
 
 ## Вставка изображения
 
-Используйте этот инструмент, чтобы вставить и отобразить изображение.
-
-![](format_insert_image.png)
-
-Выберите файл изображения на вашем компьютере. После загрузки изображение появится в редакторе.
+Нажмите **Вставить изображение** и выберите файл или вставьте изображение прямо в редактор. Изображение появится в опубликованном обсуждении, опросе или комментарии.
 
 ![](format_insert_example.png)
-
-Изображение отображается в опубликованном обсуждении, опросе или комментарии.
-
->[!Tip]
->Вы также можете скопировать изображение и вставить его прямо в Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ title_generated: 65f12809f629d490
 
 Если документ размещён на другом ресурсе, проверьте настройки доступа, чтобы участники обсуждения могли его открыть.
 
-Под текстовым полем появится предварительный просмотр документа. При желании его можно удалить.
-
-Теперь любой человек с доступом к вашему обсуждению в Loomio и разрешением на просмотр документа сможет открыть и прочитать его.
+Под текстовым полем может появиться предварительный просмотр. При желании его можно удалить.
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ title_generated: 65f12809f629d490
 
 Выделите текст, который хотите сделать заголовком, и нажмите на инструмент форматирования заголовков.
 
-Если в комментарии используется заголовок, комментарий автоматически закрепляется в ленте обсуждения.
+Если в комментарии используется заголовок, комментарий автоматически добавляется в ленту обсуждения.
 
 ![](format_heading.png)
 

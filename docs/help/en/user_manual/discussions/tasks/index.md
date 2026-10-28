@@ -1,6 +1,6 @@
 <!-- translation-section: introduction -->
 
-# Tasks
+# Assign and track tasks
 
 Use tasks in threads and comments to name an action, assign it to someone, set a due date, and track whether it is complete.
 

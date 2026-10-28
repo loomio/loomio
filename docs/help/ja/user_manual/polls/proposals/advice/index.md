@@ -1,14 +1,14 @@
 ---
 title: アドバイス
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: 0017400c5bb267d2
   when-to-use-advice: 8bce736e8f48da5b
-  example-choose-a-washing-supplier: dc20c984abbd8b2d
+  example-choose-a-washing-supplier: 96a239f969af38cf
   set-up-the-proposal: 43ea148c509c72e9
   vote: 8a6b73db41c7b07e
   read-the-results: 6c88449ce7612a9e
@@ -47,7 +47,7 @@ needs_review:
 
 ## 例：洗浄業者を選ぶ
 
-Oatmilk Cooperativeの業務コーディネーターは、洗浄業者を選定する必要があります。処理能力、食品安全に関する実績、水の使用量、サービスの対応時間、サポートについてアドバイスを求めます。
+Oatmilk Cooperativeの業務責任者は、洗浄業者を選定する必要があります。処理能力、食品安全に関する実績、水の使用量、サービスの対応時間、サポートについてアドバイスを求めます。
 
 <!-- translation-section: set-up-the-proposal -->
 

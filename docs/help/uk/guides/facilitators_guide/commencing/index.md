@@ -1,10 +1,10 @@
 ---
 title: Початок роботи
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: 4954d2efc3e19867
   settling: 76bf2fd9f3c9e68d
   who-s-in-the-room: 492191b0e19cb538
-  check-in: 8ce27f396954d050
+  check-in: a52bbec5d3a729ec
   who-s-not-in-the-room: 05c15fefb603090a
   culture-protocol-expectations: ecaea552ec6e1d47
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ title_generated: 31a09e9dad38f7ff
 У Loomio
 
 * Створіть тему «Представтеся» або «Як ви зараз». Вона стане корисним першим _закликом до дії_, зрозумілим усім, хто долучається.
-* Для груп, до яких приєднуються за запитом, є функція, що дає змогу людині представитися координатору, щоб отримати доступ до групи. У деяких групах цей текст повторно публікують у темі для знайомства, щоб привітати нових учасників.
+* Для груп, до яких приєднуються за запитом, є функція, що дає змогу людині представитися адміністратору групи, щоб отримати доступ до групи. У деяких групах цей текст повторно публікують у темі для знайомства, щоб привітати нових учасників.
 * Завантажте фото профілю. Фотографії облич — один із найдієвіших способів відчути, що ви знаєте, хто перебуває поруч із вами в онлайн-просторі.
 
 <!-- translation-section: who-s-not-in-the-room -->

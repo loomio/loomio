@@ -1,12 +1,12 @@
 ---
 title: Inviter des personnes
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 07d627bd27159ecf
+  introduction: cf12d88f0b2d6ead
   send-invitations-via-email: 513054385d01b0ef
   invite-many-at-once: 78d9e4b94c481bdb
   invite-people-to-subgroups: 3f6db033577249a7
@@ -28,18 +28,16 @@ generated:
   managing-invitations: f0cce63a809f9a5c
   re-send-invitations: d06d1a9f06473ded
   cancelling-invitations: 0ed3631657c2f9f2
-  invitation-notification-history: 2f96d6784b98ee50
+  invitation-notification-history: 22afb502ff286085
 title_source: b926eb8921d85971
 title_generated: 6dcdecac01939914
 ---
 
 <!-- translation-section: introduction -->
 
-# Inviter des personnes
+# Inviter des personnes dans un groupe Loomio
 
-Accédez à la page de votre groupe et cliquez sur l’onglet **Membres** pour accéder à la gestion des membres.
-
-Vous pouvez **Inviter** des personnes dans votre groupe avec leur adresse e-mail ou **Partager** un lien vers votre groupe par e-mail, dans une newsletter, une messagerie ou depuis votre site web.
+Invitez des personnes dans votre groupe Loomio par e-mail, ou partagez un lien vers le groupe dans une newsletter, une messagerie ou sur un site web. Ouvrez l’onglet **Membres** sur la page de votre groupe pour commencer.
 
 ![](group_join_group_invite.png)
 
@@ -130,7 +128,7 @@ Vous pouvez également attribuer aux personnes le rôle d’administrateur ou d�
 
 ### Historique d’envoi des invitations
 
-Si une personne ne reçoit pas son courriel d’invitation, les coordinateurs du groupe peuvent ouvrir **Historique d’envoi des invitations** dans le menu à trois points (**⋮**) à côté de son nom sur la page Membres pour consulter les dates d’envoi des invitations et les éventuels problèmes de livraison enregistrés.
+Si une personne ne reçoit pas son courriel d’invitation, les administrateurs du groupe peuvent ouvrir **Historique d’envoi des invitations** dans le menu à trois points (**⋮**) à côté de son nom sur la page Membres pour consulter les dates d’envoi des invitations et les éventuels problèmes de livraison enregistrés.
 
 <!-- translation-section: re-send-invitations -->
 

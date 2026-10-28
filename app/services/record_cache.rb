@@ -6,8 +6,8 @@ class RecordCache
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
-    undecided_voter_ids_by_poll_id
-    none_of_the_above_voter_ids_by_poll_id
+    voter_ids_uncast_by_poll_id
+    voter_ids_none_of_the_above_by_poll_id
     change_notes_by_topic_item_id
   ].freeze
 
@@ -302,18 +302,18 @@ class RecordCache
     add_poll_options PollOption.where(poll_id: collection_ids)
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
-    add_undecided_voter_ids(collection)
-    add_none_of_the_above_voter_ids(collection)
+    add_voter_ids_uncast(collection)
+    add_voter_ids_none_of_the_above(collection)
   end
 
-  def add_undecided_voter_ids(polls)
-    poll_ids = polls.reject(&:anonymous?).select(&:results_include_undecided).map(&:id)
-    add_result_voter_ids(:undecided_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.undecided.where(poll_id: ids) }
+  def add_voter_ids_uncast(polls)
+    poll_ids = polls.reject(&:anonymous?).select(&:results_include_uncast_row?).map(&:id)
+    add_result_voter_ids(:voter_ids_uncast_by_poll_id, polls, poll_ids) { |ids| Stance.latest.uncast.where(poll_id: ids) }
   end
 
-  def add_none_of_the_above_voter_ids(polls)
+  def add_voter_ids_none_of_the_above(polls)
     poll_ids = polls.reject(&:anonymous?).select(&:show_none_of_the_above).map(&:id)
-    add_result_voter_ids(:none_of_the_above_voter_ids_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
+    add_result_voter_ids(:voter_ids_none_of_the_above_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
   end
 
   # Results show at most RESULT_VOTER_IDS_MAX voters per row, so load only that
@@ -337,6 +337,8 @@ class RecordCache
 
   def add_polls(collection)
     return if exclude_types.include?('poll')
+    collection = collection.to_a
+    add_poll_vote_weights_eligible(collection)
     scope[:polls_by_topic_id] ||= {}
     scope[:polls_by_id] ||= {}
     collection.each do |poll|
@@ -344,6 +346,39 @@ class RecordCache
       scope[:polls_by_id][poll.id] = poll
       scope[:polls_by_topic_id][poll.topic_id] ||= []
       scope[:polls_by_topic_id][poll.topic_id].push poll
+    end
+  end
+
+  # One grouped query supplies all weighted participation/result totals for a
+  # batch. Retain zero totals for empty electorates and reuse earlier batches.
+  def add_poll_vote_weights_eligible(polls)
+    weighted_polls = polls.select(&:weighted_voting?).reject(&:anonymous?)
+    return if weighted_polls.empty?
+
+    scope[:vote_weight_eligible_by_poll_id] ||= {}
+    scope[:vote_weight_cast_by_poll_id] ||= {}
+    scope[:vote_weight_uncast_by_poll_id] ||= {}
+    scope[:vote_weight_none_of_the_above_by_poll_id] ||= {}
+    poll_ids = weighted_polls.map(&:id).uniq - scope[:vote_weight_eligible_by_poll_id].keys
+    return if poll_ids.empty?
+
+    poll_ids.each do |id|
+      scope[:vote_weight_eligible_by_poll_id][id] = 0
+      scope[:vote_weight_cast_by_poll_id][id] = 0
+      scope[:vote_weight_uncast_by_poll_id][id] = 0
+      scope[:vote_weight_none_of_the_above_by_poll_id][id] = 0
+    end
+    Stance.latest.where(poll_id: poll_ids).group(:poll_id).pluck(
+      :poll_id,
+      Arel.sql('SUM(weight)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NOT NULL), 0)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NULL), 0)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NOT NULL AND none_of_the_above), 0)')
+    ).each do |id, total, cast, uncast, none_of_the_above|
+      scope[:vote_weight_eligible_by_poll_id][id] = total
+      scope[:vote_weight_cast_by_poll_id][id] = cast
+      scope[:vote_weight_uncast_by_poll_id][id] = uncast
+      scope[:vote_weight_none_of_the_above_by_poll_id][id] = none_of_the_above
     end
   end
 

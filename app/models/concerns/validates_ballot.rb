@@ -51,13 +51,13 @@ module ValidatesBallot
     return true unless scores.all? { |score| score.is_a?(Integer) }
     return true if scores.any?(&:negative?)
 
-    choice_count_min = ballot_integer(poll.minimum_stance_choices)
-    choice_count_max = ballot_integer(poll.maximum_stance_choices)
-    score_min = ballot_integer(poll.min_score)
-    score_max = ballot_integer(poll.max_score)
+    choice_count_min = ballot_integer(poll.choice_count_min)
+    choice_count_max = ballot_integer(poll.choice_count_max)
+    score_min = ballot_integer(poll.score_min)
+    score_max = ballot_integer(poll.score_max)
     return true unless choice_count_min && choice_count_max
-    return true unless ballot_integer_or_nil?(poll.min_score, score_min)
-    return true unless ballot_integer_or_nil?(poll.max_score, score_max)
+    return true unless ballot_integer_or_nil?(poll.score_min, score_min)
+    return true unless ballot_integer_or_nil?(poll.score_max, score_max)
     return true if choices.length < choice_count_min || choices.length > choice_count_max
     return true if score_min && scores.any? { |score| score < score_min }
     return true if score_max && scores.any? { |score| score > score_max }
@@ -66,8 +66,8 @@ module ValidatesBallot
     when "bounded"
       false
     when "dot_vote"
-      dots_per_person = ballot_integer(poll.dots_per_person)
-      dots_per_person.nil? || scores.sum > dots_per_person
+      points_per_voter = ballot_integer(poll.points_per_voter)
+      points_per_voter.nil? || scores.sum > points_per_voter
     when "ranked_points"
       choices.length != choice_count_min || !ballot_rank_sequence_valid?(scores)
     when "ranked_preferences"

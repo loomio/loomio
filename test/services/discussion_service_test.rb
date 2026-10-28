@@ -12,16 +12,21 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   # -- Create --
 
   test "creates a discussion" do
+    topic_item = nil
     discussion = DiscussionService.create(params: {
       title: 'Test Discussion',
       description: 'Test description',
       group_id: @group.id,
-      private: true
-    }, actor: @user)
+      private: true,
+      author_id: @alien.id
+    }, actor: @user) { |created_item| topic_item = created_item }
 
     assert_kind_of Discussion, discussion
     assert discussion.persisted?
     assert_kind_of Topic, discussion.topic
+    assert_equal @user, discussion.reload.author
+    assert_equal discussion.created_topic_item.id, topic_item.id
+    assert_equal @user.id, topic_item.user_id
   end
 
   test "creates a public discussion when the group requires public discussions" do
@@ -143,7 +148,10 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     }, actor: @user)
 
     reader = TopicReader.for(user: @user, topic: discussion.topic)
-    assert_not_nil reader
+    assert_predicate reader, :persisted?
+    assert_predicate reader, :admin?
+    assert_not reader.guest?
+    assert_equal @user.id, reader.inviter_id
     assert_includes ['normal', 'loud'], reader.volume_email
   end
 
@@ -151,8 +159,20 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   test "updates a discussion" do
     discussion = discussions(:discussion)
-    DiscussionService.update(discussion: discussion, actor: @user, params: { title: 'New Title' })
+    discussion.topic.update!(allow_comments: true, newest_first: false, comment_length_max: 0)
+    topic_item_was_yielded = false
+    assert_enqueued_with(job: PublishTopicModelWorker, args: ['Discussion', discussion.id]) do
+      DiscussionService.update(
+        discussion: discussion,
+        actor: @user,
+        params: {title: 'New Title', allow_comments: false, newest_first: true, comment_length_max: 120}
+      ) { topic_item_was_yielded = true }
+    end
     assert_equal 'New Title', discussion.reload.title
+    assert_equal false, discussion.topic.reload.allow_comments
+    assert_equal true, discussion.topic.newest_first
+    assert_equal 120, discussion.topic.comment_length_max
+    assert_not topic_item_was_yielded
   end
 
   test "returns an invalid discussion without updating it" do
@@ -201,6 +221,52 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     discussion = discussions(:discussion)
     DiscussionService.update(discussion: discussion, actor: @admin, params: { title: 'Admin Updated' })
     assert_equal 'Admin Updated', discussion.reload.title
+  end
+
+  test "update rechecks permission after waiting for the topic write lock" do
+    discussion = topics(:discussion_topic).discussion
+    actor = users(:member_normal)
+    group = discussion.group
+    group.update!(members_can_edit_discussions: true)
+    assert actor.can?(:update, discussion)
+    original_title = discussion.title
+    topic = discussion.topic
+    write_lock = topic.method(:with_write_lock)
+
+    # Another request can revoke member editing after the initial check while
+    # this request waits; keep the real lock/transaction for the second check.
+    revoke_before_lock = ->(&block) do
+      group.update!(members_can_edit_discussions: false)
+      write_lock.call(&block)
+    end
+    topic.stub(:with_write_lock, revoke_before_lock) do
+      assert_raises(CanCan::AccessDenied) do
+        DiscussionService.update(discussion: discussion, actor: actor, params: {title: 'Blocked while waiting'})
+      end
+    end
+
+    assert_equal original_title, discussion.reload.title
+    assert_not actor.can?(:update, discussion)
+  end
+
+  test "permission to edit does not permit inviting a new guest" do
+    discussion = topics(:discussion_topic).discussion
+    actor = users(:guest_admin_normal)
+    original_title = discussion.title
+    assert actor.can?(:update, discussion)
+    assert_not actor.can?(:add_guests, discussion.topic)
+
+    assert_no_difference ['User.count', 'TopicReader.count', 'TopicItem.count', 'Notification.count'] do
+      assert_raises(CanCan::AccessDenied) do
+        DiscussionService.update(
+          discussion: discussion,
+          actor: actor,
+          params: {title: 'Unauthorized invitation', recipient_emails: ['disallowed-discussion-guest@example.com']}
+        )
+      end
+    end
+
+    assert_equal original_title, discussion.reload.title
   end
 
   test "update cannot move a discussion to another group" do
@@ -289,6 +355,20 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   # -- Discard --
 
+  test "discard rejects an outsider without changing the discussion or its topic" do
+    discussion = topics(:discussion_topic).discussion
+    assert_not users(:alien_loud).can?(:discard, discussion)
+
+    assert_no_enqueued_jobs do
+      assert_raises(CanCan::AccessDenied) do
+        DiscussionService.discard(discussion: discussion, actor: users(:alien_loud))
+      end
+    end
+
+    assert_nil discussion.reload.discarded_at
+    assert_nil discussion.topic.reload.discarded_at
+  end
+
   test "discard marks discussion and polls as discarded" do
     discussion = discussions(:discussion)
 
@@ -307,6 +387,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
 
     assert_same discussion, discarded_discussion
+    assert_not_nil discarded_discussion.discarded_at
     assert_equal discussion.created_topic_item, topic_item
     assert_not_nil discussion.reload.discarded_at
     assert_not_nil discussion.topic.reload.discarded_at

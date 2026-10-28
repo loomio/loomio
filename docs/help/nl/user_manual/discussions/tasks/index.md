@@ -1,18 +1,18 @@
 ---
 title: Taken
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/tasks/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/tasks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 5d689ea44215eba6
+  introduction: 1c8fbf5fd4e7be46
   add-a-task: 2e3141ad862d640d
   name-and-assign-the-task-to-a-person: 77a72b5bdbcc9b46
   set-a-reminder: 5991fc639ca19605
   mark-it-as-done: 793004b43676d64e
 generated:
-  introduction: 51e49aea7c7be7e5
+  introduction: f109aa700cb2c20f
   add-a-task: f928c214dba1ff86
   name-and-assign-the-task-to-a-person: 380ea75485b9339a
   set-a-reminder: 8f3e89b4ecc82e79
@@ -23,7 +23,7 @@ title_generated: c76e6790bc5b4018
 
 <!-- translation-section: introduction -->
 
-# Taken
+# Taken toewijzen en bijhouden
 
 Gebruik taken in threads en reacties om een actie te beschrijven, deze aan iemand toe te wijzen, een vervaldatum in te stellen en bij te houden of de taak is voltooid.
 

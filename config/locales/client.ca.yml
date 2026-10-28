@@ -139,6 +139,8 @@ ca:
     manage_subscription: Gestiona la subscripció
     amount: Import
   loomio_tags:
+    show_tags_from_other_groups: Mostra etiquetes d'altres grups
+    parent_group_and_subgroups_in_this_organization: Grup principal i subgrups d'aquesta organització
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -248,7 +250,7 @@ ca:
       open: Obert
       closed: Tancat
       private: Privat
-      parent_members: "Visible al grup principal"
+      parent_members: Visible al grup principal
       secret: Secret
     selected: Seleccionat
     today: avui
@@ -998,10 +1000,10 @@ ca:
       everyone_in_the_group: Tothom del grup
       topic: Tothom que sigui part del fil
       voters: Tothom que estigui convidat a la votació
-      decided_voters: Tothom que ja hagi votat
-      undecided_voters: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
       delegates_of_group: Delegats de %{name}
+      everyone_who_voted: Tothom que ha votat
+      people_who_have_not_voted: Persones que no han votat
     form:
       group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
       invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
@@ -1073,7 +1075,7 @@ ca:
       has_not_read_thread: No ha visualitzat el fil
       has_not_joined_yet: Encara no s'ha unit
       has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
-      discussion_admin: Administrador de la discussió
+      discussion_admin: Admin del fil
       has_not_read_discussion: No ha vist la discussió
     group_form:
       search_placeholder: Busca gent...
@@ -1087,6 +1089,8 @@ ca:
     topic_notification_history: Historial de notificacions de fils
     notification_history: Historial de notificacions
   action_dock:
+    add_to_timeline: Afegeix a la línia de temps
+    remove_from_timeline: Elimina de la línia de temps
     actions_menu: Menú d'accions
     more_actions: Més accions
     react: Reacciona
@@ -1429,9 +1433,9 @@ ca:
     confirm_change_to_public: Si continueu, tots els fils d'aquest grup es faran públics a internet.
     confirm_change_to_private_discussions_only: Si continueu, tots els fils públics d'aquest grup passaran a ser privats.
     profile: Perfil
-    subgroup_name_and_content_are_public: "Qualsevol pot trobar aquest subgrup i llegir-ne els fils"
-    subgroup_name_is_public_and_threads_are_private: "Qualsevol pot trobar aquest subgrup; els fils són privats"
-    subgroup_is_visible_to_parent_members: "Els membres de %{parent} poden trobar aquest subgrup; els fils són privats"
+    subgroup_name_and_content_are_public: Qualsevol pot trobar aquest subgrup i llegir-ne els fils
+    subgroup_name_is_public_and_threads_are_private: Qualsevol pot trobar aquest subgrup; els fils són privats
+    subgroup_is_visible_to_parent_members: Els membres de %{parent} poden trobar aquest subgrup; els fils són privats
     subgroup_privacy_is_open_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són públics.
     subgroup_privacy_is_closed_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són privats.
     subgroup_privacy_is_closed_public_threads_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Els fils poden ser públics o privats.
@@ -1439,9 +1443,9 @@ ca:
     subgroup_privacy_is_secret_description: Només els membres convidats poden trobar aquest grup, veure qui hi pertany i veure els fils.
     advanced_settings: Configuració avançada
     how_do_people_join: Com s'uneix la gent?
-    join_without_approval: "Uneix-te sense aprovació"
-    request_to_join: "Demana unir-te"
-    invitation_only: "Només amb invitació"
+    join_without_approval: Uneix-te sense aprovació
+    request_to_join: Demana unir-te
+    invitation_only: Només amb invitació
     permissions: Permisos
     thread_privacy: Privacitat dels fils
     public_threads: Només fils públics
@@ -1449,8 +1453,8 @@ ca:
     public_or_private_threads: Permet fils públics i privats
     private_threads: Només els membres poden veure els fils
     allow_public_threads: Permet els fils públics en aquest grup.
-    parent_group_members_can_see_private_threads: "Els membres del grup principal poden veure els fils privats"
-    parent_group_members_can_see_private_threads_help: "Permet als membres de %{parent} veure els fils i les enquestes d'aquest grup, però no participar-hi"
+    parent_group_members_can_see_private_threads: Els membres del grup principal poden veure els fils privats
+    parent_group_members_can_see_private_threads_help: Permet als membres de %{parent} veure els fils i les enquestes d'aquest grup, però no participar-hi
     members_can_announce: Els membres poden notificar a tots els membres del grup
     members_can_announce_help: Permet als membres notificar a tots els membres del grup sobre un fil o una enquesta
     members_can_add_members: Els membres poden convidar membres
@@ -1613,7 +1617,7 @@ ca:
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
-    title_placeholder: 'Per exemple: "coordinador" o "moderador"'
+    title_placeholder: 'Per exemple: «Admin» o «Facilitador»'
     updated: S'ha actualitzat el títol de membre
     weight_label: Pes del vot
   user_name_modal:
@@ -1787,7 +1791,6 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      undecided: Encara no has votat
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -2014,6 +2017,18 @@ ca:
     for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
     for_the_poll_to_be_valid: Perquè %{poll_type} sigui vàlid, aquesta opció ha de rebre…
     points_cast: Punts emesos
+    eligible_vote_weight: Pes del vot amb dret a vot
+    vote_weight_cast: Pes del vot emès
+    name_gte_eligible_vote_weight: "%{name} necessita com a mínim un %{percent}% del pes del vot amb dret a vot"
+    name_lte_eligible_vote_weight: "%{name} no pot superar el %{percent}% del pes del vot amb dret a vot"
+    name_gte_vote_weight_cast: "%{name} necessita com a mínim un %{percent}% del pes del vot emès"
+    name_lte_vote_weight_cast: "%{name} no pot superar el %{percent}% del pes del vot emès"
+    total_assigned_vote_weight: Pes total del vot assignat
+    weighted_votes_cast: Vots ponderats emesos
+    name_gte_assigned_vote_weight: "%{name} necessita com a mínim un %{percent}% del pes total del vot assignat"
+    name_lte_assigned_vote_weight: "%{name} no pot superar el %{percent}% del pes total del vot assignat"
+    name_gte_weighted_votes_cast: "%{name} necessita com a mínim un %{percent}% dels vots ponderats emesos"
+    name_lte_weighted_votes_cast: "%{name} no pot superar el %{percent}% dels vots ponderats emesos"
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -2130,6 +2145,9 @@ ca:
     pct_of_weighted_votes: "% de vots ponderats"
     pct_of_weighted_points: "% de punts ponderats"
     weighted_mean: Mitjana ponderada
+    pct_of_eligible_vote_weight: "% del pes del vot amb dret a vot"
+    pct_of_vote_weight_cast: "% del pes del vot emès"
+    pct_of_assigned_vote_weight: "% del pes del vot assignat"
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2296,18 +2314,14 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    undecided: Sense votar
     newest_first: El més recent primer
     oldest_first: El més antic primer
     priority_first: D'acord primer
     priority_last: Bloqueja primer
-    undecided_first: Indecisos primer
     no_votes_yet: Encara no s'ha votat
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
     name_or_username: Nom o nom d'usuari
-    cast: Emès
-    uncast: No emès
     reason_redacted: Motiu redactat
     redact_reason_title: Voleu eliminar el motiu del vot?
     redact_reason_helptext: El motiu pel qual el text i els fitxers adjunts s'ocultaran, però el vot romandrà als resultats
@@ -2322,15 +2336,6 @@ ca:
     stance: Vota
     participation_records_restricted: Podeu veure qui hi ha participat després del tancament de la votació
     vote_weight: Pes del vot %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostra %{count} indecisos
-    show_invitations: Mostra les invitacions pendents
-    undecided_users: Indecis (%{count})
-    invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
-    invitation_count_plural: "%{count} persones addicionals han estat convidades a participar-hi per correu electrònic"
-  poll_common_undecided_user:
-    reminded: Recordatori enviat!
-    reminder_sent: S'ha enviat la notificació de recordatori
   poll_common_set_outcome_panel:
     enter_outcome: Introduir resultat
     poll_type: Aquest %{poll_type} s'ha tancat. Preneu-vos el temps per considerar els resultats i compartir-ne un perquè la gent sàpiga què passarà després.
@@ -2464,13 +2469,17 @@ ca:
     votes_short_of_quorum: Es necessiten %{num} vots més per assolir el quòrum del %{pct}%
     quorum_reached: S'ha assolit el quòrum del %{pct}%
     pct_participation: "%{num} de %{total} vots emesos (%{pct}% de participació)"
+    pct_vote_weight_participation: "%{num} de %{total} vots emesos (%{pct}% del pes del vot)"
+    pct_of_eligible_vote_weight_must_participate: Ha de participar el %{pct}% del pes del vot amb dret a vot
+    pct_weighted_participation: "%{num} de %{total} vots emesos (ha participat el %{pct}% del pes del vot assignat)"
+    pct_of_assigned_vote_weight_must_participate: Ha de participar el %{pct}% del pes total del vot assignat
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext: Segur que vols eliminar el teu vot? Apareixeràs com a sense votar i podràs tornar a votar més tard si vols.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
+    helptext_not_voted: Segur que vols eliminar el teu vot? El teu estat serà “Sense votar” i podràs tornar a votar més endavant si vols.
   poll_poll_vote_form:
     stance_created: S'ha creat el vot
     stance_updated: S'ha actualitzat el vot
@@ -2832,8 +2841,8 @@ ca:
       voting_title: 24 hores abans que es tanqui la votació, envieu un recordatori a
       nobody: Ningú
       author: Autor (jo)
-      undecided_voters: Votants indecisos
       voters: Tots els votants
+      people_who_have_not_voted: Persones que no han votat
     notify_on_participate:
       title: Notifica'm quan la gent participi
       helptext_on: Quan siguis seleccionat, rebràs una notificació sempre que algú hi participi.
@@ -2999,6 +3008,10 @@ ca:
     weighted_voting_off_warning: Si desactiveu la votació ponderada, el pes de cada vot serà d'1. Es perdrà qualsevol pes de vot que hàgiu canviat per a aquesta enquesta.
     weighted_voting_on_group: En activar el vot ponderat, es copia el pes de vot predeterminat de cada membre. Els altres votants reben un pes de vot d'1.
     weighted_voting_on_direct: En activar el vot ponderat, cada vot té un pes d'1
+    quorum_vote_weight_hint: Quin percentatge del pes del vot amb dret a vot ha de participar perquè el resultat sigui vàlid? Opcional, deixa-ho en blanc si no cal quòrum.
+    quorum_vote_weight_placeholder: Percentatge del pes del vot amb dret a vot (0–100)
+    quorum_voters_placeholder: Percentatge de votants amb dret a vot (0–100)
+    quorum_weighted_hint: Quin percentatge del pes total del vot assignat ha de participar perquè el resultat sigui vàlid? Opcional, deixa-ho en blanc si no cal quòrum.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
@@ -3241,7 +3254,7 @@ ca:
     stance: vot
   membership_notification_history:
     invitation_delivery_history: Historial de lliurament d'invitacions
-    email_delivery_blocked: "Loomio ha bloquejat l'enviament de correus a aquesta adreça"
+    email_delivery_blocked: Loomio ha bloquejat l'enviament de correus a aquesta adreça
     delivery_result:
       delivered: Lliurada
       failed: Fallida

@@ -165,6 +165,8 @@ zh_CN:
     manage_subscription: 管理订阅
     amount: 数量
   loomio_tags:
+    show_tags_from_other_groups: 显示其他群组的标签
+    parent_group_and_subgroups_in_this_organization: 此组织的上级群组和子群组
     all_tags: 所有标签
     tags: 标签
     apply_tags: 应用标签
@@ -275,7 +277,7 @@ zh_CN:
       open: 打开
       closed: 关闭
       private: 私密
-      parent_members: "对父群组可见"
+      parent_members: 对父群组可见
       secret: 秘密
     selected: 已选
     today: 今天
@@ -1046,9 +1048,9 @@ zh_CN:
       everyone_in_the_group: 子群组中的每个人
       topic: 帖子里的所有人
       voters: 所有受邀投票的人
-      decided_voters: 所有投票的人
-      undecided_voters: 未投票的投票者
       non_voters: "%{name} 的成员尚未受邀"
+      everyone_who_voted: 所有已投票的人
+      people_who_have_not_voted: 未投票的人
     form:
       group_has_no_members_yet: 您是群组中唯一的成员。在发起讨论或做出决定之前，您可能需要邀请一些人加入您的群组。
       invite_people_to_evaluate_loomio: 邀请一些人加入您的 Loomio 群组，一起做出决定。
@@ -1111,7 +1113,7 @@ zh_CN:
       not_notified: 尚未收到通知
       no_members: 这件事还没跟任何人分享过！
       group_admin: 群组管理员
-      discussion_admin: 讨论管理员
+      discussion_admin: 主题管理员
       last_read_at: 上次查看时间：%{time}
       has_not_read_discussion: 未查看讨论
       has_not_joined_yet: 尚未加入
@@ -1125,6 +1127,8 @@ zh_CN:
     topic_notification_history: 帖子通知历史记录
     notification_history: 通知历史记录
   action_dock:
+    add_to_timeline: 添加到时间线
+    remove_from_timeline: 从时间线移除
     actions_menu: 操作菜单
     more_actions: 更多操作
     react: React
@@ -1509,8 +1513,8 @@ zh_CN:
     confirm_change_to_public: 如果您继续操作，本群组中的所有帖子都将在网络上公开。
     confirm_change_to_private_discussions_only: 如果您继续操作，本群组中的所有公开帖子都将被设为私密帖子。
     profile: 轮廓
-    subgroup_name_and_content_are_public: "任何人都能找到此子群组并阅读其帖子"
-    subgroup_name_is_public_and_threads_are_private: "任何人都能找到此子群组；其帖子不公开"
+    subgroup_name_and_content_are_public: 任何人都能找到此子群组并阅读其帖子
+    subgroup_name_is_public_and_threads_are_private: 任何人都能找到此子群组；其帖子不公开
     subgroup_is_visible_to_parent_members: "%{parent}的成员能找到此子群组；其帖子不公开"
     subgroup_privacy_is_open_description: 任何人都可以找到这个子群组并应用加入。所有帖子都是公开的。
     subgroup_privacy_is_closed_description: 任何人都可以找到这个子群组并应用加入。所有帖子均为私密帖。
@@ -1519,9 +1523,9 @@ zh_CN:
     subgroup_privacy_is_secret_description: 只有受邀成员才能看到此子群组。
     advanced_settings: 高级设置
     how_do_people_join: 如何加入？
-    join_without_approval: "无需审批即可加入"
-    request_to_join: "申请加入"
-    invitation_only: "仅限受邀加入"
+    join_without_approval: 无需审批即可加入
+    request_to_join: 申请加入
+    invitation_only: 仅限受邀加入
     permissions: 权限
     thread_privacy: 帖子隐私
     public_threads: 仅限公开讨论
@@ -1529,8 +1533,8 @@ zh_CN:
     public_or_private_threads: 允许公开和私密帖子
     private_threads: 只有成员才能查看讨论
     allow_public_threads: 允许在本群组中发布公开话题。
-    parent_group_members_can_see_private_threads: "上级群组成员可查看私密帖子"
-    parent_group_members_can_see_private_threads_help: "允许 %{parent} 的成员查看本群组内的帖子和投票，但不能参与"
+    parent_group_members_can_see_private_threads: 上级群组成员可查看私密帖子
+    parent_group_members_can_see_private_threads_help: 允许 %{parent} 的成员查看本群组内的帖子和投票，但不能参与
     members_can_announce: 成员可以通知群里的所有人。
     members_can_announce_help: 允许成员通知群组中的所有人有关帖子或投票的信息。
     members_can_add_members: 成员可以邀请其他成员
@@ -1679,7 +1683,7 @@ zh_CN:
     title_helptext:
       group: 此标题将显示在 %{name} 的名字旁边。使用它可以让成员了解他们的角色。
     title_label: 标题
-    title_placeholder: 例如“协调员”或“促进者”
+    title_placeholder: 例如“管理员”或“引导者”
     updated: 会员头衔已更新
     weight_label: 投票权重
   user_name_modal:
@@ -1854,7 +1858,6 @@ zh_CN:
       muted_description: 仅显示已被静音的帖子
     thread_preview:
       you_voted: 您投票给了 %{position}
-      undecided: 您还在犹豫不决。
     threads_from:
       group: 帖子来自
       pinned: 置顶帖子
@@ -2098,6 +2101,18 @@ zh_CN:
     name_lte_score_percent: "%{name} 不得超过 %{percent}% 的投票数"
     name_lte_voter_percent: "%{name} 不得超过合格投票者的 %{percent}%"
     points_cast: 投出的点
+    eligible_vote_weight: 合格投票权重
+    vote_weight_cast: 已投投票权重
+    name_gte_eligible_vote_weight: "%{name} 需获得至少 %{percent}% 的合格投票权重"
+    name_lte_eligible_vote_weight: "%{name} 不得超过合格投票权重的 %{percent}%"
+    name_gte_vote_weight_cast: "%{name} 需获得至少 %{percent}% 的已投投票权重"
+    name_lte_vote_weight_cast: "%{name} 不得超过已投投票权重的 %{percent}%"
+    total_assigned_vote_weight: 已分配投票权重总和
+    weighted_votes_cast: 已投加权票数
+    name_gte_assigned_vote_weight: "%{name} 需获得已分配投票权重总和的至少 %{percent}%"
+    name_lte_assigned_vote_weight: "%{name} 不得超过已分配投票权重总和的 %{percent}%"
+    name_gte_weighted_votes_cast: "%{name} 需获得至少 %{percent}% 的已投加权票数"
+    name_lte_weighted_votes_cast: "%{name} 不得超过已投加权票数的 %{percent}%"
   poll_common:
     superseded: 被取代
     outdated: 过时的
@@ -2214,6 +2229,9 @@ zh_CN:
     pct_of_weighted_votes: 加权投票百分比
     pct_of_weighted_points: 加权积分百分比
     weighted_mean: 加权平均值
+    pct_of_eligible_vote_weight: 占合格投票权重的 %
+    pct_of_vote_weight_cast: 占已投投票权重的 %
+    pct_of_assigned_vote_weight: 占已分配投票权重的 %
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2368,8 +2386,8 @@ zh_CN:
       voting_title: 投票结束前24小时，发送提醒
       nobody: 无人
       author: 作者（我）
-      undecided_voters: 未投票的投票者
       voters: 所有投票者
+      people_who_have_not_voted: 未投票的人
     notify_on_participate:
       title: 当有人参与时通知我
       helptext_on: 被选中后，每当有人参与活动时，您都会收到通知。
@@ -2417,17 +2435,13 @@ zh_CN:
     started_by: 由 %{name} 发起
   poll_common_votes_panel:
     vote_removed: 投票已移除
-    undecided: 未投票
     newest_first: 最新优先
     oldest_first: 最早优先
     priority_first: 同意优先
     priority_last: 否决优先
-    undecided_first: 未投票者优先
     no_votes_yet: 目前还没有人投票。
     change_results_order: 更改结果顺序
     name_or_username: 真实姓名或用户名
-    cast: Cast
-    uncast: Uncast
     reason_redacted: 原因已隐去
     redact_reason_title: 删除投票理由？
     redact_reason_helptext: 原因文本和附件将被隐藏，但投票结果仍将保留。
@@ -2442,15 +2456,6 @@ zh_CN:
     stance: 投票
     participation_records_restricted: 投票结束后，您可以查看所有参与者名单
     vote_weight: 投票权重 %{weight}
-  poll_common_undecided_panel:
-    show_undecided: 显示 %{count} 位未投票者
-    show_invitations: 待处理的邀请
-    undecided_users: 未投票（%{count}）
-    invitation_count_singular: 另有一人已通过电子邮件受邀加入。
-    invitation_count_plural: 已有 %{count} 人通过电子邮件受邀参与。
-  poll_common_undecided_user:
-    reminded: 提醒已发送！
-    reminder_sent: 已发送提醒通知
   poll_common_set_outcome_panel:
     enter_an_outcome: 输入结论
     poll_type: 此 %{poll_type} 已结束。请花些时间考虑结果，然后分享总结，以便大家了解下一步安排。
@@ -2625,6 +2630,10 @@ zh_CN:
     weighted_voting_off_warning: 关闭加权投票后，所有投票权重均设为 1。您在此投票中更改的任何投票权重都将丢失。
     weighted_voting_on_group: 启用加权投票后，每个成员的默认投票权重将被复制。其他投票者的投票权重为 1。
     weighted_voting_on_direct: 启用加权投票后，所有选票的权重均设为 1
+    quorum_vote_weight_hint: 合格投票权重的百分之多少必须参与投票，结果才有效？可选，留空则不设法定人数。
+    quorum_vote_weight_placeholder: 合格投票权重的百分比 (0–100)
+    quorum_voters_placeholder: 合格投票者的百分比 (0–100)
+    quorum_weighted_hint: 已分配投票权重总和的百分之多少必须参与投票，结果才有效？可选，留空则不设法定人数。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2730,13 +2739,17 @@ zh_CN:
     vote_short_of_quorum: 还需1票才能达到法定人数%{pct}%。
     votes_short_of_quorum: 还需要 %{num} 票才能达到 %{pct}% 的法定人数
     quorum_reached: 已达到法定人数 %{pct}%。
+    pct_vote_weight_participation: 共 %{total} 票，已投 %{num} 票 (占投票权重的 %{pct}%)
+    pct_of_eligible_vote_weight_must_participate: 合格投票权重的 %{pct}% 必须参与投票
+    pct_weighted_participation: 共 %{total} 票，已投 %{num} 票 (已分配投票权重的 %{pct}% 已参与投票)
+    pct_of_assigned_vote_weight_must_participate: 已分配投票权重总和的 %{pct}% 必须参与投票
   poll_meeting_chart_panel:
     total: 全部的
   poll_remove_vote:
     title: 取消投票？
-    helptext: 您确定要撤回投票吗？撤回后，您的状态将显示为“未投票”，如果您愿意，以后可以再次投票。
     confirm: 移除投票
     success: 投票已移除
+    helptext_not_voted: 确定要移除您的投票吗？您的状态将变为“未投票”，之后仍可再次投票。
   poll_poll_vote_form:
     stance_created: 投票已创建
     stance_updated: 投票结果已更新
@@ -3138,7 +3151,7 @@ zh_CN:
     stance: 投票
   membership_notification_history:
     invitation_delivery_history: 邀请投递记录
-    email_delivery_blocked: "Loomio 已停止向此地址发送邮件"
+    email_delivery_blocked: Loomio 已停止向此地址发送邮件
     delivery_result:
       delivered: 已送达
       failed: 失败

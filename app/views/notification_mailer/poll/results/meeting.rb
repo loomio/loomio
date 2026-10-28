@@ -13,7 +13,7 @@ class Views::NotificationMailer::Poll::Results::Meeting < Views::ApplicationMail
         tr do
           td { plain @recipient.time_zone }
           td { plain t(:'poll_common.votes') }
-          @poll.decided_voters.each do |user|
+          @poll.voters_cast.each do |user|
             td { render Views::NotificationMailer::Common::Avatar.new(user: user, size: 24) }
           end
         end
@@ -27,9 +27,9 @@ class Views::NotificationMailer::Poll::Results::Meeting < Views::ApplicationMail
             td(class: "email-table-center") do
               strong { plain((poll_option.total_score.to_f / 2).to_s.gsub('.0', '')) }
             end
-            @poll.decided_voters.each do |user|
+            @poll.voters_cast.each do |user|
               td do
-                score = poll_option.voter_scores.fetch(user.id.to_s, 0)
+                score = poll_option.scores_by_voter.fetch(user.id.to_s, 0)
                 class_for_score = case score
                 when 2 then 'email-meeting-chart-cell--yes'
                 when 1 then 'email-meeting-chart-cell--maybe'

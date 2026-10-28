@@ -139,6 +139,8 @@ fi:
     manage_subscription: Hallinnoi tilausta
     amount: Määrä
   loomio_tags:
+    show_tags_from_other_groups: Näytä muiden ryhmien tunnisteet
+    parent_group_and_subgroups_in_this_organization: Tämän organisaation pääryhmä ja alaryhmät
     all_tags: Kaikki tunnisteet
     tags: Tunnisteet
     apply_tags: Käytä tunnisteita
@@ -248,7 +250,7 @@ fi:
       open: Avoin
       closed: Suljettu
       private: Yksityinen
-      parent_members: "Näkyy pääryhmälle"
+      parent_members: Näkyy pääryhmälle
       secret: Salainen
     selected: Valittu
     today: tänään
@@ -996,10 +998,10 @@ fi:
       everyone_in_the_group: Kaikki ryhmässä
       topic: Kaikki ketjussa
       voters: Kaikki kutsuttiin äänestämään
-      decided_voters: Kaikki äänestäneet
-      undecided_voters: Epävarmat äänestäjät
       non_voters: Ryhmän %{name} jäseniä ei ole vielä kutsuttu
       delegates_of_group: "%{name}:n edustajat"
+      everyone_who_voted: Kaikki äänestäneet
+      people_who_have_not_voted: Äänestämättä olevat
     form:
       group_has_no_members_yet: Olet ryhmäsi ainoa jäsen. Haluat ehkä kutsua ihmisiä ryhmääsi ennen kuin aloitat ketjun tai päätöksen.
       invite_people_to_evaluate_loomio: Kutsu ihmisiä Loomio-ryhmääsi tekemään päätös yhdessä
@@ -1067,7 +1069,7 @@ fi:
       has_not_read_thread: Ei ole katsonut lankaa
       has_not_joined_yet: Ei ole vielä liittynyt
       has_not_joined_yet_hint: Tämä käyttäjä ei ole hyväksynyt hänen kutsuaan liittyä Loomioon, eikä hän saa muita ilmoituksia ennen kuin hyväksyy
-      discussion_admin: Keskustelun ylläpitäjä
+      discussion_admin: Viestiketjun ylläpitäjä
       has_not_read_discussion: Ei ole katsonut keskustelua
     group_form:
       search_placeholder: Etsi ihmisiä...
@@ -1081,6 +1083,8 @@ fi:
     topic_notification_history: Keskusteluilmoitusten historia
     notification_history: Ilmoitushistoria
   action_dock:
+    add_to_timeline: Lisää aikajanalle
+    remove_from_timeline: Poista aikajanalta
     actions_menu: Toiminnot-valikko
     more_actions: Lisää toimintaa
     react: Reagoi
@@ -1423,9 +1427,9 @@ fi:
     confirm_change_to_public: Jos jatkat, kaikki tämän ryhmän viestiketjut julkistetaan verkossa.
     confirm_change_to_private_discussions_only: Jos jatkat, kaikki tämän ryhmän julkiset viestiketjut muutetaan yksityisiksi.
     profile: Profiili
-    subgroup_name_and_content_are_public: "Kuka tahansa voi löytää tämän alaryhmän ja lukea sen ketjuja"
-    subgroup_name_is_public_and_threads_are_private: "Kuka tahansa voi löytää tämän alaryhmän; sen ketjut ovat yksityisiä"
-    subgroup_is_visible_to_parent_members: "Ryhmän %{parent} jäsenet voivat löytää tämän alaryhmän; sen ketjut ovat yksityisiä"
+    subgroup_name_and_content_are_public: Kuka tahansa voi löytää tämän alaryhmän ja lukea sen ketjuja
+    subgroup_name_is_public_and_threads_are_private: Kuka tahansa voi löytää tämän alaryhmän; sen ketjut ovat yksityisiä
+    subgroup_is_visible_to_parent_members: Ryhmän %{parent} jäsenet voivat löytää tämän alaryhmän; sen ketjut ovat yksityisiä
     subgroup_privacy_is_open_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat julkisia.
     subgroup_privacy_is_closed_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat yksityisiä.
     subgroup_privacy_is_closed_public_threads_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Säikeet voivat olla julkisia tai yksityisiä.
@@ -1433,9 +1437,9 @@ fi:
     subgroup_privacy_is_secret_description: Vain kutsutut jäsenet voivat löytää tämän alaryhmän, nähdä keitä siinä on ja viestiketjuja.
     advanced_settings: Lisäasetukset
     how_do_people_join: Miten ihmiset liittyvät?
-    join_without_approval: "Liity ilman hyväksyntää"
-    request_to_join: "Pyydä jäsenyyttä"
-    invitation_only: "Vain kutsulla"
+    join_without_approval: Liity ilman hyväksyntää
+    request_to_join: Pyydä jäsenyyttä
+    invitation_only: Vain kutsulla
     permissions: Käyttöoikeudet
     thread_privacy: Viestiketjun yksityisyys
     public_threads: Vain julkiset viestiketjut
@@ -1443,8 +1447,8 @@ fi:
     public_or_private_threads: Salli julkiset ja yksityiset viestiketjut
     private_threads: Vain jäsenet näkevät keskustelut
     allow_public_threads: Salli julkiset viestiketjut tässä ryhmässä.
-    parent_group_members_can_see_private_threads: "Pääryhmän jäsenet näkevät yksityiset ketjut"
-    parent_group_members_can_see_private_threads_help: "Salli ryhmän %{parent} jäsenten nähdä tämän ryhmän ketjut ja kyselyt, mutta ei osallistua niihin"
+    parent_group_members_can_see_private_threads: Pääryhmän jäsenet näkevät yksityiset ketjut
+    parent_group_members_can_see_private_threads_help: Salli ryhmän %{parent} jäsenten nähdä tämän ryhmän ketjut ja kyselyt, mutta ei osallistua niihin
     members_can_announce: Jäsenet voivat ilmoittaa kaikille ryhmän jäsenille
     members_can_announce_help: Salli jäsenten ilmoittaa kaikille ryhmän jäsenille viestiketjusta tai kyselystä
     members_can_add_members: Jäsenet voivat kutsua jäseniä
@@ -1599,7 +1603,7 @@ fi:
     title_helptext:
       group: Tämä otsikko näkyy käyttäjän %{name} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
     title_label: otsikko
-    title_placeholder: Esim 'koordinaattori' tai 'fasilitaattori'
+    title_placeholder: Esim. ”Ylläpitäjä” tai ”Fasilitaattori”
     updated: Jäsennimike päivitetty
     weight_label: Äänestyspaino
   user_name_modal:
@@ -1771,7 +1775,6 @@ fi:
       all: Viimeaikaiset keskustelut
     thread_preview:
       you_voted: Äänestit %{position}
-      undecided: Et ole vielä äänestänyt
     threads_from:
       group: Viestit osoitteesta
       pinned: Kiinnitetyt langat
@@ -1991,6 +1994,18 @@ fi:
     for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava…
     for_the_poll_to_be_valid: Jotta %{poll_type} olisi kelvollinen, tämän vaihtoehdon on vastaanotettava…
     points_cast: Annetut pisteet
+    eligible_vote_weight: Äänioikeutettujen äänipaino
+    vote_weight_cast: Annettujen äänten äänipaino
+    name_gte_eligible_vote_weight: "%{name} tarvitsee vähintään %{percent}% äänioikeutettujen äänipainosta"
+    name_lte_eligible_vote_weight: "%{name} ei saa ylittää %{percent}% äänioikeutettujen äänipainosta"
+    name_gte_vote_weight_cast: "%{name} tarvitsee vähintään %{percent}% annettujen äänten äänipainosta"
+    name_lte_vote_weight_cast: "%{name} ei saa ylittää %{percent}% annettujen äänten äänipainosta"
+    total_assigned_vote_weight: Jaettu äänipaino yhteensä
+    weighted_votes_cast: Annetut painotetut äänet
+    name_gte_assigned_vote_weight: "%{name} tarvitsee vähintään %{percent}% jaetusta kokonaisäänipainosta"
+    name_lte_assigned_vote_weight: "%{name} ei saa ylittää %{percent}% jaetusta kokonaisäänipainosta"
+    name_gte_weighted_votes_cast: "%{name} tarvitsee vähintään %{percent}% annetuista painotetuista äänistä"
+    name_lte_weighted_votes_cast: "%{name} ei saa ylittää %{percent}% annetuista painotetuista äänistä"
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -2107,6 +2122,9 @@ fi:
     pct_of_weighted_votes: Painotettujen äänten prosenttiosuus
     pct_of_weighted_points: Painotettujen pisteiden prosenttiosuus
     weighted_mean: Painotettu keskiarvo
+    pct_of_eligible_vote_weight: "% äänioikeutettujen äänipainosta"
+    pct_of_vote_weight_cast: "% annettujen äänten äänipainosta"
+    pct_of_assigned_vote_weight: "% jaetusta äänipainosta"
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2271,18 +2289,14 @@ fi:
     started_by: 'Aloittaja: %{name}'
   poll_common_votes_panel:
     vote_removed: Ääni poistettu
-    undecided: Äänestämättä
     newest_first: Uusin ensin
     oldest_first: Vanhin ensin
     priority_first: Ensin samaa mieltä
     priority_last: Estä ensin
-    undecided_first: Äänestämättömät ensin
     no_votes_yet: Ääniä ei ole vielä annettu.
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
     name_or_username: Nimi tai käyttäjätunnus
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Syy muokattu
     redact_reason_title: Peitetäänkö äänestyksen syy?
     redact_reason_helptext: Syy, miksi teksti ja liitteet piilotetaan, mutta ääni pysyy tuloksissa
@@ -2297,15 +2311,6 @@ fi:
     stance: Äänestää
     participation_records_restricted: Äänestyksen päätyttyä näet ketkä osallistuivat
     vote_weight: Äänestyspaino %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Näytä %{count} epävarmaa
-    show_invitations: Näytä odottavat kutsut
-    undecided_users: Äänestämättä (%{count})
-    invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
-    invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
-  poll_common_undecided_user:
-    reminded: Muistutus lähetetty!
-    reminder_sent: Muistutusilmoitus lähetetty
   poll_common_set_outcome_panel:
     enter_outcome: Syötä tulos
     poll_type: Tämä %{poll_type} on suljettu. Käytä aikaa tulosten pohtimiseen ja jaa sitten johtopäätös, jotta ihmiset tietävät, mitä tapahtuu seuraavaksi.
@@ -2439,13 +2444,17 @@ fi:
     votes_short_of_quorum: "%{num} ääntä lisää tarvitaan %{pct}% päätösvaltaisuuteen"
     quorum_reached: Päätösvaltainen jäsenmäärä on %{pct}%
     pct_participation: "%{num} / %{total} annetuista äänistä (%{pct}% osallistumisprosentti)"
+    pct_vote_weight_participation: "%{num}/%{total} ääntä annettu (%{pct}% äänipainosta)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% äänioikeutettujen äänipainosta on käytettävä"
+    pct_weighted_participation: "%{num}/%{total} ääntä annettu (%{pct}% jaetusta äänipainosta käytetty)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% jaetusta kokonaisäänipainosta on käytettävä"
   poll_meeting_chart_panel:
     total: Kaikki yhteensä
   poll_remove_vote:
     title: Poistetaanko äänesi?
-    helptext: Haluatko varmasti poistaa äänesi? Sinut merkitään päättämättömäksi ja voit äänestää myöhemmin uudelleen, jos haluat.
     confirm: Poista ääni
     success: Ääni poistettu
+    helptext_not_voted: Haluatko varmasti poistaa äänesi? Tilaksesi tulee “Äänestämättä” ja voit halutessasi äänestää myöhemmin uudelleen.
   poll_poll_vote_form:
     stance_created: Äänestys luotu
     stance_updated: Äänestys päivitetty
@@ -2805,8 +2814,8 @@ fi:
       voting_title: Lähetä muistutus 24 tuntia ennen äänestyksen päättymistä osoitteeseen
       nobody: Kukaan
       author: Kirjoittaja (minä)
-      undecided_voters: Päättämättömät äänestäjät
       voters: Kaikki äänestäjät
+      people_who_have_not_voted: Äänestämättä olevat
     notify_on_participate:
       title: Ilmoita minulle, kun ihmiset osallistuvat
       helptext_on: Kun sinut on valittu, saat ilmoituksen aina, kun joku osallistuu.
@@ -2972,6 +2981,10 @@ fi:
     weighted_voting_off_warning: Painotetun äänestyksen poistaminen käytöstä asettaa jokaisen äänen painoarvon arvoon 1. Tässä kyselyssä muuttamasi äänipainotukset menetetään.
     weighted_voting_on_group: Painotetun äänestyksen päälle ottaminen kopioi jokaisen jäsenen oletusäänipainotuksen. Muut äänestäjät saavat äänipainotuksen 1.
     weighted_voting_on_direct: Painotetun äänestyksen päälle kytkeminen asettaa jokaisen äänen painoarvon arvoon 1
+    quorum_vote_weight_hint: Kuinka suuri osuus äänioikeutettujen äänipainosta on käytettävä, jotta tulos on pätevä? Valinnainen, jätä tyhjäksi, jos päätösvaltaisuutta ei vaadita.
+    quorum_vote_weight_placeholder: Osuus äänioikeutettujen äänipainosta (0–100)
+    quorum_voters_placeholder: Osuus äänioikeutetuista (0–100)
+    quorum_weighted_hint: Kuinka suuri osuus jaetusta kokonaisäänipainosta on käytettävä, jotta tulos on pätevä? Valinnainen, jätä tyhjäksi, jos päätösvaltaisuutta ei vaadita.
   poll_receipts_page:
     participation_status_requires_min_votes: Tämä näyttää, ketkä olivat äänioikeutettuja. Se, äänestikö kukin henkilö, näytetään vasta, kun vähintään %{count} henkilöä on äänestänyt.
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.
@@ -3214,7 +3227,7 @@ fi:
     stance: ääni
   membership_notification_history:
     invitation_delivery_history: Kutsujen toimitushistoria
-    email_delivery_blocked: "Loomio on estänyt sähköpostien lähettämisen tähän osoitteeseen"
+    email_delivery_blocked: Loomio on estänyt sähköpostien lähettämisen tähän osoitteeseen
     delivery_result:
       delivered: Toimitettu
       failed: Epäonnistui

@@ -1,12 +1,12 @@
 ---
 title: Приглашение людей
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 541029ef1d775679
+  introduction: 694890c519562f21
   send-invitations-via-email: eb2ddce01a036f18
   invite-many-at-once: 7866f3055f795b41
   invite-people-to-subgroups: d5b75b58b9714a3f
@@ -28,18 +28,16 @@ generated:
   managing-invitations: 72836f65a61402d4
   re-send-invitations: 529d5e60443cc4d8
   cancelling-invitations: b97cbbdd64992533
-  invitation-notification-history: 5343a9ece8e14826
+  invitation-notification-history: e59b876b60e12eca
 title_source: b926eb8921d85971
 title_generated: 74f19aba73e43553
 ---
 
 <!-- translation-section: introduction -->
 
-# Приглашение людей
+# Пригласите людей в группу Loomio
 
-Перейдите на страницу вашей группы и нажмите вкладку **Участники**, чтобы управлять участниками группы.
-
-Вы можете пригласить конкретных людей в вашу группу по электронной почте с помощью кнопки **Приглашать** или отправить ссылку на группу по электронной почте, в рассылке, чате или разместить её на вашем сайте с помощью кнопки **Поделиться**.
+Пригласите людей в вашу группу Loomio по электронной почте или поделитесь ссылкой на группу в рассылке, чате или на сайте. Для начала откройте вкладку **Участники** на странице вашей группы.
 
 ![](group_join_group_invite.png)
 
@@ -130,7 +128,7 @@ title_generated: 74f19aba73e43553
 
 ### История доставки приглашений
 
-Если человек не получает письмо с приглашением, координаторы группы могут открыть **История доставки приглашений** в меню с тремя точками (**⋮**) рядом с его именем на странице **Участники**, чтобы посмотреть, когда отправлялись приглашения и какие проблемы с доставкой были зарегистрированы.
+Если человек не получает письмо с приглашением, администраторы группы могут открыть раздел **История доставки приглашений** в меню с тремя точками (**⋮**) рядом с его именем на странице «Участники», чтобы посмотреть, когда отправлялись приглашения и какие проблемы с доставкой были зарегистрированы.
 
 <!-- translation-section: re-send-invitations -->
 

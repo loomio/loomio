@@ -1,32 +1,32 @@
 ---
 title: Subgrupos
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 6ad96a601d7c0b89
   add-a-subgroup: f0b0365a80acc5fe
   subgroup-settings: cfb7850bde221463
-  privacy: f43226f5d555885c
+  privacy: bfec6df0f8c68566
   permissions: ef00486a0545d0f0
   find-subgroups: 28b3c3488fbdc36d
   invite-to-a-subgroup: cc5655654a8abc56
   simultaneously-invite-people-to-subgroups-and-parent-group: ef5bec1085470e79
-  administer-a-subgroup: 90a971a288f1e415
+  administer-a-subgroup: 756b0e241222c8b6
   delete-a-subgroup: 3a8a13578b5d7d1e
   how-people-join: c7e7f4f951e01126
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ Elige quién puede encontrar el subgrupo y leer sus hilos:
 | **Visible para el grupo principal** | Miembros del grupo principal y del subgrupo | Miembros del subgrupo e invitados |
 | **Secreto** | Miembros invitados al subgrupo | Miembros del subgrupo e invitados |
 
+El permiso **Los miembros del grupo principal pueden ver los hilos privados** también puede dar a los miembros del grupo principal acceso a los hilos del subgrupo sin unirse.
+
 Cuando el grupo principal es privado, los subgrupos pueden ser **Visible para el grupo principal** o **Secreto**.
 
 [Lee sobre la privacidad de los grupos aquí](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ Si usas el botón **Invitar personas** de la pestaña **Integrantes** de tu grup
 
 Los subgrupos pueden tener admins propios, y los admins de un subgrupo pueden ser distintos de los admins del grupo principal.
 
-Sin embargo, un admin del grupo principal puede asignarse el rol de admin de cualquier subgrupo. Esto permite a los administradores del grupo principal administrar los subgrupos cuando sea necesario.
+Un admin del grupo principal puede unirse a un subgrupo que no sea secreto y asignarse el rol de admin de ese subgrupo. Esto no se aplica a los subgrupos secretos.
 
 Ve a la pestaña Subgrupos, busca el subgrupo y haz clic en **Unirse al grupo**.
 

@@ -3,6 +3,8 @@ import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import TopicLoader       from '@/shared/loaders/topic_loader';
+import TaggedItems from '@/components/topic/tagged_items.vue';
+import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
@@ -393,12 +395,15 @@ function shouldSettleAnchorScroll() {
     v-container.max-width-800.px-0.px-sm-3.pb-0.pb-md-4#topic-page(v-if="topic")
       plan-banner(v-if="topic.groupId" :group="topic.group()")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
+      tag-filter-toolbar(v-if="route.query.tag" :tag="route.query.tag" :group="topic.group()")
       v-sheet.topic-card.mb-0.mb-md-8.pb-4.rounded-lg
-        .topic-page__cached-context.sequenceId-0.pa-3#context(v-if="!loader.collection.length")
-          topic-header(:topicable="topic.topicable()")
-          formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
-          attachment-list(:attachments="topic.topicable().attachments")
-        topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+        tagged-items(v-if="route.query.tag" :key="topic.id" :topic="topic" :loader="loader" :tag="route.query.tag")
+        template(v-else)
+          .topic-page__cached-context.sequenceId-0.pa-3#context(v-if="!loader.collection.length")
+            topic-header(:topicable="topic.topicable()")
+            formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
+            attachment-list(:attachments="topic.topicable().attachments")
+          topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         topic-actions-panel(:topic="topic")
     .topic-page__latest.lmo-no-print(v-if="showLatest")
       v-btn(rounded color="info" :prepend-icon="mdiArrowDown" :loading="jumping" @click="jumpToLatest") {{ t('strand_nav.latest') }}

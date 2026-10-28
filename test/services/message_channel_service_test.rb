@@ -4,32 +4,30 @@ class MessageChannelServiceTest < ActiveSupport::TestCase
   test "user-scoped serialization is not reused for shared channels" do
     topic = topics(:discussion_topic)
     user = users(:user)
-    serialized_user_ids = []
-    published_options = []
 
-    serialize = lambda do |_models, serializer: nil, scope: {}, root: nil|
-      serialized_user_ids << scope[:current_user_id]
-      { records: [] }
-    end
-    publish = lambda do |_data, group_id: nil, user_id: nil, topic_id: nil|
-      published_options << { group_id: group_id, user_id: user_id, topic_id: topic_id }
-    end
-
-    MessageChannelService.stub(:serialize_models, serialize) do
-      MessageChannelService.stub(:publish_serialized_records, publish) do
-        MessageChannelService.publish_models(
-          [topic],
-          scope: { current_user_id: user.id },
-          group_id: topic.group_id,
-          topic_id: topic.id,
-          user_id: user.id
-        )
+    [{ group_id: topic.group_id }, { topic_id: topic.id }, { group_id: topic.group_id, topic_id: topic.id }].each do |destinations|
+      serialized_user_ids = []
+      publications = {}
+      serialize = lambda do |_models, serializer: nil, scope: {}, root: nil|
+        serialized_user_ids << scope[:current_user_id]
+        assert_not scope.key?(:current_user) unless scope[:current_user_id]
+        { viewer_id: scope[:current_user_id] }
       end
-    end
+      broadcast = ->(channel, payload) { publications[channel] = payload.fetch(:records) }
 
-    assert_equal [user.id, nil], serialized_user_ids
-    assert_includes published_options, { group_id: nil, user_id: user.id, topic_id: nil }
-    assert_includes published_options, { group_id: topic.group_id, user_id: nil, topic_id: topic.id }
+      MessageChannelService.stub(:serialize_models, serialize) do
+        ActionCable.server.stub(:broadcast, broadcast) do
+          MessageChannelService.publish_models([topic],
+            scope: { current_user: user, current_user_id: user.id }, user_id: user.id, **destinations)
+        end
+      end
+
+      channels_shared = destinations.map { |kind, id| "#{kind.to_s.delete_suffix('_id')}_#{id}" }
+      assert_equal [user.id, nil], serialized_user_ids
+      assert_equal (["user_#{user.id}"] + channels_shared).sort, publications.keys.sort
+      assert_equal({ viewer_id: user.id }, publications.fetch("user_#{user.id}"))
+      channels_shared.each { |channel| assert_equal({ viewer_id: nil }, publications.fetch(channel)) }
+    end
   end
 
   test "topic models are serialized once for the group and every current guest" do
@@ -42,21 +40,21 @@ class MessageChannelServiceTest < ActiveSupport::TestCase
       assert_nil scope[:current_user_id]
       { records: [] }
     end
-    publish = lambda do |data, group_id: nil, user_id: nil, topic_id: nil|
-      publications << { data: data, group_id: group_id, user_id: user_id }
+    broadcast = lambda do |channel, payload|
+      publications << { data: payload.fetch(:records), channel: channel }
     end
 
     MessageChannelService.stub(:serialize_models, serialize) do
-      MessageChannelService.stub(:publish_serialized_records, publish) do
+      ActionCable.server.stub(:broadcast, broadcast) do
         PublishTopicModelWorker.perform_now("Discussion", discussion.id)
       end
     end
 
     assert_equal 1, serialize_count
     assert_equal 1, publications.map { |publication| publication[:data] }.uniq(&:object_id).length
-    assert_equal [ discussion.group_id ], publications.filter_map { |publication| publication[:group_id] }
+    assert_equal [ "group_#{discussion.group_id}" ], publications.map { |publication| publication[:channel] }.select { |channel| channel.start_with?('group_') }
 
-    guest_user_ids = publications.filter_map { |publication| publication[:user_id] }
+    guest_user_ids = publications.filter_map { |publication| publication[:channel].delete_prefix('user_').to_i if publication[:channel].start_with?('user_') }
     assert_equal discussion.topic.guests.pluck(:id).sort, guest_user_ids.sort
     assert_includes guest_user_ids, users(:guest_normal).id
     assert_not_includes guest_user_ids, users(:member_guest_loud).id

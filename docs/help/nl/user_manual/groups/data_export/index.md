@@ -1,17 +1,17 @@
 ---
 title: Data exporteren
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 455665f1a9869ad5
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: 5afb79256cbf73df
   export-group-data-as-html: e46608e827cc909a
   export-group-data-as-json: 1d85607fa76ecb5e
-  print-thread-to-pdf: efbf543b049e2262
+  print-thread-to-pdf: 262cf5c98596f988
   import-your-group-data-on-another-loomio-server: b0aba0cea3de9078
 title_source: 29049648f87b87f5
 title_generated: 1acdc4eed6fbed0f
@@ -95,11 +95,7 @@ Je ontvangt binnenkort een e-mail met een link om het JSON-bestand te downloaden
 
 ## Thread afdrukken als pdf
 
-Je kunt een kopie van een thread nodig hebben om deze in een apart bestandsarchief op te slaan.
-
-Met **Afdrukken** blijven alle reacties, peilingen, stemmen en conclusies behouden, samen met de opmaak van de thread.
-
-Klik in de thread op het menu met de drie puntjes (⋯) en kies **Afdrukken**. Loomio maakt een HTML-pagina die je vervolgens met de afdrukfunctie van je browser kunt afdrukken of "opslaan als pdf".
+Om een thread voor je archief op te slaan, open je het menu van de thread en kies je **Afdrukken**. Loomio maakt een HTML-pagina met de reacties, peilingen, stemmen, conclusies en opmaak van de thread. Gebruik de afdrukfunctie van je browser om de pagina af te drukken of als pdf op te slaan.
 
 Je kunt de pagina kopiëren en in een documenteditor, bestand of dataopslag plakken.
 

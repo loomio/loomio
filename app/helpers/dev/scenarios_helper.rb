@@ -108,8 +108,8 @@ module Dev::ScenariosHelper
     Stance.where(poll_id: poll.id).delete_all
     poll.update_columns(
       anonymous: true,
-      voters_count: 1,
-      undecided_voters_count: 0
+      vote_count_eligible: 1,
+      vote_count_uncast: 0
     )
     ballot = AnonymousBallot.create!(
       id: SecureRandom.uuid,

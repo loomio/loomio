@@ -48,6 +48,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
     get :oauth, params: { back_to: '/some/path' }
     assert_equal '/some/path', session[:back_to]
     assert_match(/cloud\.example\.com/, response.location)
+    assert_equal '/index.php/apps/oauth2/authorize', URI.parse(response.location).path
     assert_includes response.location, 'client_id=nc_client_id'
     assert_includes response.location, 'state='
     assert session[:oauth_state].present?

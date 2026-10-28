@@ -100,6 +100,7 @@ class Group < ApplicationRecord
   validate :handle_is_valid
   validates :handle, uniqueness: true, allow_nil: true
   validate :handle_is_not_retired_handle
+  validate :handle_is_not_reserved
 
   delegate :locale, to: :creator, allow_nil: true
   delegate :time_zone, to: :creator, allow_nil: true
@@ -361,6 +362,16 @@ class Group < ApplicationRecord
     reload
   end
 
+  # Top-level paths used by the marketing website (pages and language prefixes).
+  # The website build writes this file into public/; without it nothing is reserved.
+  def self.reserved_handles
+    @reserved_handles ||= begin
+      path = Rails.root.join("public/reserved-group-handles.txt")
+      lines = File.exist?(path) ? File.readlines(path) : []
+      lines.map { |line| line.strip.downcase }.reject { |line| line.empty? || line.start_with?("#") }.to_set
+    end
+  end
+
   # Shared SQL form of subscription_active? for scopes that require an enabled group.
   # Loomio subscriptions live on root groups; a subgroup inherits its parent.
   def self.subscription_active_sql
@@ -483,6 +494,12 @@ class Group < ApplicationRecord
     if is_subgroup? && parent.handle && !handle.starts_with?("#{parent.handle}-")
       errors.add(:handle, I18n.t(:'group.error.handle_must_begin_with_parent_handle', parent_handle: parent.handle))
     end
+  end
+
+  def handle_is_not_reserved
+    return if handle.blank? || !will_save_change_to_handle?
+
+    errors.add(:handle, :taken) if Group.reserved_handles.include?(handle)
   end
 
   def handle_is_not_retired_handle

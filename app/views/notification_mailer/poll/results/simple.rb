@@ -80,8 +80,8 @@ class Views::NotificationMailer::Poll::Results::Simple < Views::ApplicationMaile
       td(class: "email-table-right") { plain option[:score].to_s }
     when 'unweighted_score'
       td(class: "email-table-right") { plain option[:unweighted_score].to_s }
-    when 'voter_count', 'votes'
-      td(class: "email-table-right") { plain option[:voter_count].to_s }
+    when 'vote_count', 'votes'
+      td(class: "email-table-right") { plain option[:vote_count].to_s }
     when 'average'
       td(class: "email-table-right") { plain option[:average].round.to_s }
     when 'target_percent'

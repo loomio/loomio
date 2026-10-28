@@ -1,10 +1,10 @@
 ---
 title: Kezdés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: fe2fc9571adf8fe6
   settling: bce8dd6ed8923125
   who-s-in-the-room: 72ae613c507c48c0
-  check-in: 4f5e05cf8ce2a0de
+  check-in: a1ac95f9b7573e25
   who-s-not-in-the-room: 366b075f3a5d28c7
   culture-protocol-expectations: b379bcf05e72cfc1
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ Az emberek megnyilvánulásai nem légüres térben születnek: összefüggnek a
 A Loomióban
 
 * Hozz létre egy „Mutatkozz be” vagy „Hogy vagy?” című szálat. Ez hasznos első _cselekvésre ösztönzés_, amelyet minden érkező megért.
-* A csatlakozási kérelmet használó csoportokban egy funkció lehetővé teszi, hogy a kérelmező bemutatkozzon a koordinátornak, és így hozzáférést kapjon a csoporthoz. Egyes csoportok ezt a bemutatkozást a bemutatkozó szálban is közzéteszik, hogy üdvözöljék az új érkezőt.
+* A csatlakozási kérelmet használó csoportokban egy funkció lehetővé teszi, hogy a kérelmező bemutatkozzon a csoport adminjának, és így hozzáférést kapjon a csoporthoz. Egyes csoportok ezt a bemutatkozást a bemutatkozó szálban is közzéteszik, hogy üdvözöljék az új érkezőt.
 * Tölts fel profilképet! Az arcokat ábrázoló fényképek az egyik leghatékonyabb módját adják annak, hogy online is úgy érezd, tudod, kik vannak jelen veled.
 
 <!-- translation-section: who-s-not-in-the-room -->

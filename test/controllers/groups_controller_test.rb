@@ -16,6 +16,26 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response 200
   end
 
+  test "index pages matching groups by member count and clamps pages beyond the end" do
+    prefix = "Pagination #{SecureRandom.hex(4)}"
+    members = users(:member_normal, :guest_quiet, :guest_normal)
+    groups = 3.times.map do |index|
+      group = Group.create!(name: "#{prefix} #{index}", creator: @user, group_privacy: 'open', listed_in_explore: true)
+      members.first(3 - index).each { |member| group.add_member!(member) }
+      group
+    end
+
+    get :index, params: {q: prefix, limit: 2, page: 1}
+    assert_response :success
+    assert_equal groups.first(2).map(&:name), css_select('.v-card__title').map(&:text)
+
+    [2, 99].each do |page|
+      get :index, params: {q: prefix, limit: 2, page: page}
+      assert_response :success
+      assert_equal [groups.last.name], css_select('.v-card__title').map(&:text)
+    end
+  end
+
   test "index allows logged out when restriction disabled" do
     AppConfig.stub(:app_features, { restrict_explore_to_signed_in_users: false }) do
       get :index
@@ -46,6 +66,22 @@ class GroupsControllerTest < ActionController::TestCase
     get :show, params: { key: @group.key }
     assert_response 200
     assert_equal @group, assigns(:group)
+  end
+
+  test "secret group handles and keys deny guests revoked members outsiders and unrelated instance admins" do
+    group = groups(:group)
+    group.update!(group_privacy: 'secret', description: 'Private group page description')
+    actors = users(:guest_normal, :former_member_guest, :former_member_loud, :former_guest_loud, :alien, :server_admin)
+    [nil, *actors].each do |actor|
+      sign_out
+      sign_in actor if actor
+      [{id: group.handle}, {key: group.key}].each do |params|
+        get :show, params: params
+
+        assert_response :forbidden
+        refute_includes response.body, group.description
+      end
+    end
   end
 
   test "show 404 for non-existent group" do

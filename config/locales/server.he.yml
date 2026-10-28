@@ -112,7 +112,7 @@ he:
     add_guests:
       all: עליך לשדרג את מנוי Loomio שלך כדי להוסיף אורחים. לחלופין, ניתן להזמין אותם להיות חברים בקבוצה שלך.
   errors:
-    item_you_are_replying_to_deleted: "הפריט שאליו נכתבת התשובה נמחק"
+    item_you_are_replying_to_deleted: הפריט שאליו נכתבת התשובה נמחק
     clear_cache: זוהתה בעיית טעינה. החזק את Shift ולחץ על טען מחדש, או נקה את מטמון הדפדפן שלך.
     404:
       title: לא נמצא
@@ -197,7 +197,6 @@ he:
       poll_options_dont_match: באג עם Loomio מנע את שמירת ההצבעה שלך. אנו עובדים על תיקון הבעיה. אנא טען מחדש ונסה שוב.
       opening_at_before_closing_at: תאריך הפתיחה חייב להיות לפני תאריך הסגירה
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת
       author: מחבר
       email: דואר אלקטרוני
@@ -470,12 +469,8 @@ he:
       not_invited: לא מוזמן
       please_respond: אנא הגב
       time_zone: "(פעמים שמופיע ב-%{zone})"
-      undecided_members: משתתפים שטרם החליטו (%{count})
-      undecided_visitors: אורחים שטרם החליטו (%{count})
-      more_undecided: "%{count} עוד..."
       vote_now: הצבע עכשיו
       you_have_until: יש לך עד %{when} להשתתף.
-      people_have_voted: "%{nom} מתוך %{dnom} אנשים השתתפו (%{pct}%)"
       voting_opens_and_closes: ההצבעה נפתחת %{opens} ונסגרת %{closes}. (%{days} ימים)
       voting_closes: ההצבעה נסגרת %{when}.
       voting_opened_and_closed: ההצבעה נפתחה %{opens} ונסגרה %{closes}. (%{days} ימים)
@@ -794,9 +789,9 @@ he:
     voted: "%{author} הצביע %{response}"
     voted_hidden: "%{author} הצביעו"
     vote_removed: "%{author}: הצבעה הוסרה"
-    undecided: "%{author}: לא החליט"
     superseded: הוחלף
     shared_outcome: "%{author} שיתף מסקנה"
     removed: הוסר
+    not_voted: "%{author}: טרם הצביעו"
   error:
     access_denied: אין לך אישור לעשות זאת

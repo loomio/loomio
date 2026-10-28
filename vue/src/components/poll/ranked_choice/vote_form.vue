@@ -58,7 +58,7 @@ export default {
 
   computed: {
     poll() { return this.stance.poll(); },
-    numChoices() { return this.stance.poll().minimumStanceChoices; }
+    numChoices() { return this.stance.poll().choiceCountMin; }
   }
 };
 </script>

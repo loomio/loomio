@@ -1,10 +1,10 @@
 ---
 title: Пригласить голосовать
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: ad199496aa11b405
   invite-people-to-vote-in-a-poll: 6e47dc61cb1d9182
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: c69f7f861f29cd02
   engage-people-while-a-poll-is-running: 107eccd9f7cf1439
   add-voters-to-the-poll: b7ed5da263ac1448
-  remove-people-from-the-poll: 88b2b720dec14fab
+  remove-people-from-the-poll: 3d47ace08a0daf6e
   remind-people-to-vote: 70bcc80cddebed02
   view-notification-history: 63bd5d7b46b8265f
   close-early: 3ae299c1d36186c5
-  reopen: c48125b43208aeb8
+  reopen: 1867d8c93d9ed13e
 title_source: 4801d1a3dba7ce3d
 title_generated: cb6d5ae5ce932a86
 ---
@@ -104,7 +104,7 @@ title_generated: cb6d5ae5ce932a86
 
 Например, администратор, который создаёт опрос от имени членов правления, может удалить себя, если у него нет права голосовать.
 
-В опросах с весами голосов это же окно позволяет координаторам опроса [просматривать и изменять веса голосов](/en/user_manual/polls/weighted_voting).
+В опросах с весами голосов это же окно позволяет администраторам ветки [просматривать и изменять веса голосов](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ title_generated: cb6d5ae5ce932a86
 
 В закрытом опросе выберите **Открыть вновь**, затем задайте новую дату и время закрытия.
 
-В анонимных опросах нельзя возобновить голосование.
+В опросах, которые скрывают результаты до закрытия голосования, включая анонимные опросы, нельзя возобновить голосование. Пока такие опросы открыты, вы можете продлить время до их закрытия.
 
 ![](proposal_reopen.png)

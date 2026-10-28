@@ -1,18 +1,18 @@
 ---
 title: Muotoilu
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: e0db4c995caa6486
+  introduction: baad4aa847d7b823
   attach-file: e8e4943137e00316
   remove-attachments: 51f9f27503258247
-  insert-image: c651cf44eceba890
-  insert-link: b33b36ffec10712a
+  insert-image: 3b51f4fd1ee47231
+  insert-link: 63850222d7f43d56
   insert-emoji: 64b39465daaab5e0
-  headings: 7d9bb22a844874e8
+  headings: 677ba9cc169a0263
   bold-italicize-strikethrough: cbdf3478c0a2533e
   list: 544e70bfc34a27dd
   numbered-list: 462daa5de8057555
@@ -53,15 +53,13 @@ title_generated: 3b2e66c991904e49
 
 <!-- translation-section: introduction -->
 
-# Muotoilu
+# Muotoile tekstiä ja liitä tiedostoja
 
 Kun aloitat keskustelun tai kyselyn, muokkaat niitä tai kirjoitat kommenttia, tekstikentän alapuolella näkyy muotoilupalkki. Näytä tai piilota kaikki työkalut valitsemalla palkin lopussa oleva nuoli.
 
 Näet kunkin työkalun nimen viemällä hiiren osoittimen sen päälle.
 
 ![](thread_format_bar.png)
-
-Jäsennä ja korosta tekstiä muotoilun avulla, jotta tietoa on helpompi silmäillä.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ Kun muokkaat kontekstia, poista tiedosto napsauttamalla tiedostonimen oikealla p
 
 ## Lisää kuva
 
-Lisää ja näytä kuva tällä työkalulla.
-
-![](format_insert_image.png)
-
-Valitse kuvatiedosto tietokoneeltasi. Kuva lisätään editoriin, kun sen lataus on valmis.
+Valitse **Lisää kuva** ja valitse tiedosto tai liitä kuva suoraan editoriin. Kuva näkyy julkaistussa keskustelussa, kyselyssä tai kommentissa.
 
 ![](format_insert_example.png)
-
-Kuva näkyy julkaistussa keskustelussa, kyselyssä tai kommentissa.
-
->[!Tip]
->Voit myös kopioida ja liittää kuvan suoraan Loomioon.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ Lisää linkki näin:
 
 Jos asiakirja on toisessa palvelussa, tarkista sen jakamisoikeudet, jotta keskustelun osallistujat voivat avata sen.
 
-Asiakirjan esikatselu näkyy tekstikentän alapuolella. Voit poistaa sen halutessasi.
-
-Tämän jälkeen kaikki, joilla on pääsy Loomio-keskusteluusi ja oikeus katsella asiakirjaa, voivat avata ja lukea sen.
+Tekstin alapuolella saattaa näkyä esikatselu. Voit poistaa sen halutessasi.
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ Otsikko 1, Otsikko 2 ja Otsikko 3 auttavat jäsentämään keskustelua tai komme
 
 Valitse teksti, jonka haluat merkitä otsikoksi, ja napsauta otsikon muotoilutyökalua.
 
-Jos kommentissa on otsikko, kommentti kiinnitetään automaattisesti keskustelun aikajanalle.
+Jos kommentissa on otsikko, kommentti lisätään automaattisesti keskustelun aikajanalle.
 
 ![](format_heading.png)
 

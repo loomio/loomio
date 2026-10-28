@@ -18,6 +18,7 @@ class NewsletterServiceTest < ActiveSupport::TestCase
           email: 'pat@example.test',
           name: 'Pat Example',
           status: 'enabled',
+          lists: [NewsletterService::LISTMONK_LIST_ID.to_i],
           preconfirm_subscriptions: true
         )
       ).
@@ -64,5 +65,29 @@ class NewsletterServiceTest < ActiveSupport::TestCase
     end
 
     assert_not_requested :delete, %r{listmonk\.test}
+  end
+
+  test "disabled newsletters make no subscription or unsubscription requests" do
+    WebMock.stub_request(:any, %r{listmonk\.test}).to_return(status: 200, body: '{}')
+
+    NewsletterService.stub(:enabled?, false) do
+      NewsletterService.stub(:connection, @connection) do
+        NewsletterService.subscribe('Pat Example', 'pat@example.test')
+        NewsletterService.unsubscribe('pat@example.test')
+      end
+    end
+
+    assert_not_requested :any, %r{listmonk\.test}
+  end
+
+  test "invalid email addresses fail before making a request" do
+    NewsletterService.stub(:enabled?, true) do
+      NewsletterService.stub(:connection, @connection) do
+        assert_raises(RuntimeError) { NewsletterService.subscribe('Pat Example', 'invalid') }
+        assert_raises(RuntimeError) { NewsletterService.unsubscribe('invalid') }
+      end
+    end
+
+    assert_not_requested :any, %r{listmonk\.test}
   end
 end

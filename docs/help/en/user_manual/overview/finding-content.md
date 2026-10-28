@@ -25,7 +25,7 @@ Enter a word or phrase, then press Enter or select the search icon. For example,
 - Start with one or two distinctive words from the title or content you remember.
 - Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. 
 - It will compensate for misspellings when results for the given query are very few.
-- Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls.
+- Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls. A tag filter matches contributions explicitly carrying that tag, and works without a search phrase.
 - Sort by **Best match** when relevance matters, or by newest or oldest when you know roughly when the content was posted.
 
 <!-- translation-section: filter-discussions -->
@@ -38,11 +38,11 @@ Use the controls beside Search to filter discussions by open or closed status or
 
 ## Category tags
 
-Tags group related discussions and polls under names chosen by your group, such as a project, team, or area of work.
+Tags group related discussions, polls, outcomes, and comments under names chosen by your group, such as a project, team, or area of work.
 
 ![](tags.png)
 
-Select a tag on the **Discussions** tab to show matching discussions. People with permission to start or edit discussions can apply tags. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
+Select a tag on the **Discussions** tab to show threads containing a matching contribution. Within a thread, select a tag in the sidebar to find matching contributions with their parent context. Authors can tag their own contributions. Group admins, thread admins, and people with permission to edit the discussion context can tag any contribution. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
 
 <!-- translation-section: unread-discussions -->
 

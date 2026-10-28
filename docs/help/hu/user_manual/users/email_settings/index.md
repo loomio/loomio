@@ -1,10 +1,10 @@
 ---
 title: Értesítések
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: 0ea5015d900a0bab
   group-notification-settings: 587cc7272d3d0b40
   thread-notification-settings: d49d1bf95cd0277c
-  email-delivery: 364f8268a97f07f5
+  email-delivery: 249a696fa5b8ff96
   enable-mobile-notifications-with-web-push: 8f5cd9ff98e15a16
   turn-off-external-notifications: 445184d981bba6a4
 title_source: 788011833a5a0f22
@@ -167,7 +167,7 @@ A szál értesítési beállításainál ugyanúgy a **Csak felzárkózás**, az
 
 Alapértelmezés szerint a Loomio e-mailt küld, amikor értesítést kapsz. A csoportok és szálak értesítési beállításaitól függően ezek említésekről, válaszokról, veled megosztott beszélgetésekről, szavazásra szóló meghívókról és emlékeztetőkről, következtetésekről és hamarosan lezáruló szavazásokról szólhatnak. Válaszd a **Minden tevékenység** beállítást, ha minden új hozzászólásról, szavazatról, szálról, szavazásról és következtetésről is szeretnél e-mailt kapni.
 
-Az értesítő e-mail **Leiratkozás** hivatkozása megnyitja az adott szál vagy csoport beállításait, beleértve azokat az e-maileket is, amelyeket azért kapsz, mert valaki megemlített vagy válaszolt neked. Az űrlap megmutatja az összes csoportra érvényes összefoglaló e-mail jelenlegi gyakoriságát, és hivatkozást tartalmaz az összefoglaló e-mail beállításaira. Ezek az e-mailben lévő hivatkozások csak a saját beállítási űrlapjukhoz biztosítanak hozzáférést; nem jelentkeztetnek be a Loomióba.
+Az értesítő e-mail **Leiratkozás** hivatkozása megnyitja az adott szál vagy csoport beállításait, beleértve azokat az e-maileket is, amelyeket azért kapsz, mert valaki megemlített vagy válaszolt neked. Válaszd a **Csak felzárkózás** beállítást az azonnali e-mailek leállításához, miközben a tevékenységek továbbra is megjelennek az összefoglaló e-mailben. Ugyanezen az oldalon, az **Összefoglaló e-mailek (minden csoport)** alatt az összefoglaló e-mailek gyakoriságát is módosíthatod. A szál vagy csoport beállításait és az összefoglaló e-mailek gyakoriságát külön-külön mentsd el. Ezek az e-mailben lévő hivatkozások csak a saját beállítási űrlapjukhoz biztosítanak hozzáférést; nem jelentkeztetnek be a Loomióba.
 
 Ha egy beszélgetésről szóló e-mail jelzi, hogy fogad válaszokat, közvetlenül az e-mailre válaszolhatsz, és az üzeneted megjelenik a Loomio-beszélgetésben.
 

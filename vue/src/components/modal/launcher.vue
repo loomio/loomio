@@ -80,9 +80,7 @@ export default
 
   methods: {
     openModal(opts) {
-      if (opts.hasOwnProperty('persistent')) {
-        this.persistent = opts.persistent;
-      }
+      this.persistent = opts.persistent ?? true;
       this.scrollable = opts.scrollable || false;
       this.maxWidth = opts.maxWidth || 720;
       this.componentName = opts.component;

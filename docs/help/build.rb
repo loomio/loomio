@@ -207,7 +207,7 @@ module Docs
       if legacy_redirects?
         write_page_aliases(pages)
       end
-      write_landing_redirect
+      write_landing_redirect(translations)
       write_sitemap(all_pages)
       build_search_index
       validate_site(all_pages)
@@ -774,10 +774,16 @@ module Docs
       end
     end
 
-    def write_landing_redirect
+    # /docs/ and /docs/<locale>/ land on that language's overview, so links
+    # can point at a language root. Falls back to English if it isn't translated.
+    def write_landing_redirect(translations)
       target = Docs.site_path("/en/user_manual/overview")
       write_redirect(OUTPUT_ROOT.join("index.html"), target)
       write_redirect(OUTPUT_ROOT.join("en/index.html"), target)
+      translations.each do |code, localized|
+        overview = localized.key?("user_manual/overview/index.md") ? "/#{code}/user_manual/overview" : "/en/user_manual/overview"
+        write_redirect(OUTPUT_ROOT.join("#{code}/index.html"), Docs.site_path(overview))
+      end
     end
 
     def write_redirect(path, target)

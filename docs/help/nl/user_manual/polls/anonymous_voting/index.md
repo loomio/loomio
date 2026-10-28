@@ -1,20 +1,20 @@
 ---
 title: Anoniem stemmen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: 1e3cef0a3dc2c06b
   how-anonymous-voting-protects-voters: 5f12d500b3bc5efb
-  while-voting-is-open: ec10a63a6903ede3
-  votes-cannot-be-changed: fedb7749fb86a478
+  while-voting-is-open: ffef7a9a7b4c3b0d
+  votes-cannot-be-changed: 7dd5587b068c419a
   why-anonymous-votes-do-not-have-reasons: 6ad6dbb701fdda59
   results-and-exports: baf5df60155d2a78
-  participation-verification: a0c5335effa4b797
+  participation-verification: '0818e826a50e893b'
   reminders: 1210b2f710608c53
-  what-coordinators-and-administrators-can-see: 4ef2b68c8c133099
+  what-coordinators-and-administrators-can-see: 50e0a84746be55d8
   limits-of-anonymous-voting: 972d01e13508c204
   questions: 81dbe0d658bb53fe
   can-a-coordinator-see-how-i-voted: be5f18d5f24ea98b
@@ -74,7 +74,7 @@ Deze scheiding wordt afgedwongen wanneer de stem wordt opgeslagen. Ze hangt niet
 
 ## Terwijl stemmen mogelijk is
 
-Het resultaat blijft voor iedereen verborgen totdat de peiling sluit. Dit geldt ook voor peilingcoördinatoren, groepsadmins en instantieadmins die de applicatie gebruiken.
+Het resultaat blijft voor iedereen verborgen totdat de peiling sluit. Dit geldt ook voor threadadmins, groepsadmins en instantieadmins die de applicatie gebruiken.
 
 Wanneer iemand stemt:
 
@@ -90,7 +90,7 @@ De deelnamegegevens bevatten geen precies tijdstip waarop de persoon heeft geste
 
 ## Stemmen kunnen niet worden gewijzigd
 
-Elke stemgerechtigde persoon kan één keer stemmen. Een ingediende anonieme stem kan niet worden bekeken, gewijzigd, ingetrokken of vervangen, ook niet door een coördinator of admin.
+Elke stemgerechtigde persoon kan één keer stemmen. Een ingediende anonieme stem kan niet worden bekeken, gewijzigd, ingetrokken of vervangen, ook niet door een admin.
 
 Om iemand een stem te laten ophalen of vervangen, zou een blijvende koppeling tussen die persoon en de stem nodig zijn. Anoniem stemmen maakt die koppeling bewust niet aan.
 
@@ -126,7 +126,7 @@ Groepsleden en de kiezers van de peiling zien ook wanneer elke persoon lid werd 
 
 Omdat iedereen die het resultaat kan zien ook kan zien wie heeft gestemd, kan een eenzijdig resultaat onthullen hoe mensen hebben gestemd. Als bijvoorbeeld elke stem Eens is, was iedereen die heeft gestemd het eens.
 
-Coördinatoren kunnen stemgerechtigde personen toevoegen zolang stemmen mogelijk is, ook nadat anderen hebben gestemd. Bestaande kiezers kunnen niet uit een anonieme peiling worden verwijderd.
+Admins kunnen stemgerechtigde personen toevoegen zolang stemmen mogelijk is, ook nadat anderen hebben gestemd. Bestaande kiezers kunnen niet uit een anonieme peiling worden verwijderd.
 
 <!-- translation-section: reminders -->
 
@@ -140,12 +140,12 @@ Peilingen waarbij de totale periode om te stemmen korter is dan 24 uur, versture
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Wat coördinatoren en admins kunnen zien
+## Wat admins kunnen zien
 
-Via de applicatie kan een peilingcoördinator, groepsadmin of instantieadmin mogelijk het volgende zien:
+Via de applicatie kan een threadadmin, groepsadmin of instantieadmin mogelijk het volgende zien:
 
 - de peiling en de stemgerechtigde kiezers;
-- of elke stemgerechtigde persoon heeft gestemd, als hun rol toegang toestaat en genoeg mensen hebben gestemd; en
+- of elke stemgerechtigde persoon heeft gestemd, als de rol van de admin toegang toestaat en genoeg mensen hebben gestemd; en
 - het samengevoegde resultaat nadat de peiling is gesloten.
 
 Via de functies van de applicatie kunnen zij niet zien:

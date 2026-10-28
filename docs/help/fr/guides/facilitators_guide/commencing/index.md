@@ -1,10 +1,10 @@
 ---
 title: Commencer
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: c7b274be91bebda8
   settling: 2832161dad5c5093
   who-s-in-the-room: 5f2eee3fb4b19543
-  check-in: 655af6de5fb7e7dc
+  check-in: 8badc2c6225bdda3
   who-s-not-in-the-room: 4388afdba89b12ad
   culture-protocol-expectations: efb98424e74c2f0c
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ Les personnes ne s’expriment pas dans le vide, mais en fonction de qui elles s
 Sur Loomio
 
 * Créez un fil intitulé « Présentez-vous » ou « Tour de parole ». Il propose une première _invitation à participer_ utile et compréhensible pour toutes les personnes qui arrivent.
-* Pour les groupes accessibles sur demande, une fonction permet à la personne qui souhaite rejoindre le groupe de se présenter à la personne chargée de la coordination afin d’y accéder. Certains groupes republient cette présentation dans le fil de présentation pour accueillir les nouvelles personnes.
+* Pour les groupes accessibles sur demande, une fonction permet à la personne qui souhaite rejoindre le groupe de se présenter à l’administrateur du groupe afin d’y accéder. Certains groupes republient cette présentation dans le fil de présentation pour accueillir les nouvelles personnes.
 * Ajoutez des photos de profil ! Les photos de visages sont l’un des moyens les plus efficaces de savoir qui est présent avec vous dans un espace en ligne.
 
 <!-- translation-section: who-s-not-in-the-room -->

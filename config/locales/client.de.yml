@@ -145,6 +145,8 @@ de:
     manage_subscription: Manage Subscription
     amount: Menge
   loomio_tags:
+    show_tags_from_other_groups: Schlagwörter anderer Gruppen anzeigen
+    parent_group_and_subgroups_in_this_organization: Hauptgruppe und Untergruppen in dieser Organisation
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
@@ -254,7 +256,7 @@ de:
       open: Offen
       closed: Geschlossen
       private: Privat
-      parent_members: "Für die übergeordnete Gruppe sichtbar"
+      parent_members: Für die übergeordnete Gruppe sichtbar
       secret: Geheim
     selected: Ausgewählt
     today: heute
@@ -1004,10 +1006,10 @@ de:
       everyone_in_the_group: Jeder in der Gruppe
       topic: Jeder in der Diskussion
       voters: Alle zur Abstimmung Eingeladenen
-      decided_voters: Alle, die abgestimmt haben
-      undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
       delegates_of_group: Delegierte von %{name}
+      everyone_who_voted: Alle, die abgestimmt haben
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     form:
       group_has_no_members_yet: Du bist das einzige Mitglied deiner Gruppe. Möglicherweise möchtest du einige Personen in deine Gruppe einladen, bevor du einen Thread oder eine Entscheidung startest.
       invite_people_to_evaluate_loomio: Lade einige Leute in deine Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
@@ -1079,7 +1081,7 @@ de:
       has_not_read_thread: Hat den Thread nicht angesehen
       has_not_joined_yet: Ist noch nicht beigetreten
       has_not_joined_yet_hint: Dieser Benutzer hat die Einladung zur Teilnahme an Loomio nicht angenommen und erhält keine weiteren Benachrichtigungen, bis er dies tut.
-      discussion_admin: Diskussionsadministrator
+      discussion_admin: Diskussionsadmin
       has_not_read_discussion: Hat die Diskussion nicht angesehen
     group_form:
       search_placeholder: Nach Personen suchen...
@@ -1093,6 +1095,8 @@ de:
     topic_notification_history: Thread-Benachrichtigungsverlauf
     notification_history: Benachrichtigungsverlauf
   action_dock:
+    add_to_timeline: Zur Timeline hinzufügen
+    remove_from_timeline: Aus Timeline entfernen
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
     react: Reagieren
@@ -1437,9 +1441,9 @@ de:
     confirm_change_to_public: Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
     profile: Profil
-    subgroup_name_and_content_are_public: "Alle können diese Untergruppe finden und ihre Threads lesen"
-    subgroup_name_is_public_and_threads_are_private: "Alle können diese Untergruppe finden; ihre Threads sind privat"
-    subgroup_is_visible_to_parent_members: "Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat"
+    subgroup_name_and_content_are_public: Alle können diese Untergruppe finden und ihre Threads lesen
+    subgroup_name_is_public_and_threads_are_private: Alle können diese Untergruppe finden; ihre Threads sind privat
+    subgroup_is_visible_to_parent_members: Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat
     subgroup_privacy_is_open_description: Jeder kann diese Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich.
     subgroup_privacy_is_closed_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat.
     subgroup_privacy_is_closed_public_threads_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein.
@@ -1447,9 +1451,9 @@ de:
     subgroup_privacy_is_secret_description: Nur eingeladene Mitglieder können diese Untergruppe finden und die Teilnehmer und Diskussionsbeiträge sehen.
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann man teilnehmen?
-    join_without_approval: "Ohne Genehmigung beitreten"
-    request_to_join: "Beitritt anfragen"
-    invitation_only: "Nur auf Einladung"
+    join_without_approval: Ohne Genehmigung beitreten
+    request_to_join: Beitritt anfragen
+    invitation_only: Nur auf Einladung
     permissions: Berechtigungen
     thread_privacy: Diskussions-Sichtbarkeit
     public_threads: Nur öffentliche Diskussionen
@@ -1457,8 +1461,8 @@ de:
     public_or_private_threads: Öffentliche und private Diskussionen erlauben
     private_threads: Nur Mitglieder können Diskussionen sehen
     allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
-    parent_group_members_can_see_private_threads: "Mitglieder der Hauptgruppe können private Threads sehen"
-    parent_group_members_can_see_private_threads_help: "Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen"
+    parent_group_members_can_see_private_threads: Mitglieder der Hauptgruppe können private Threads sehen
+    parent_group_members_can_see_private_threads_help: Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen
     members_can_announce: Mitglieder können alle Mitglieder der Gruppe benachrichtigen
     members_can_announce_help: Mitgliedern erlauben, alle in der Gruppe über einen Thread oder eine Abstimmung zu benachrichtigen
     members_can_add_members: Mitglieder können andere Mitglieder einladen
@@ -1621,7 +1625,7 @@ de:
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
-    title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
+    title_placeholder: Z. B. „Admin“ oder „Moderator“
     updated: Mitgliedstchaftstitel überarbeitet
     weight_label: Stimmgewicht
   user_name_modal:
@@ -1793,7 +1797,6 @@ de:
       all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
-      undecided: Du hast noch nicht abgestimmt
     threads_from:
       group: Diskussionen von
       pinned: Angeheftete Diskussionen
@@ -2022,6 +2025,18 @@ de:
     for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
     for_the_poll_to_be_valid: Damit %{poll_type} gültig ist, muss diese Option … erhalten.
     points_cast: Vergebene Punkte
+    eligible_vote_weight: Stimmgewicht der Stimmberechtigten
+    vote_weight_cast: Abgegebenes Stimmgewicht
+    name_gte_eligible_vote_weight: "%{name} benötigt mindestens %{percent}% des Stimmgewichts der Stimmberechtigten"
+    name_lte_eligible_vote_weight: "%{name} darf %{percent}% des Stimmgewichts der Stimmberechtigten nicht überschreiten"
+    name_gte_vote_weight_cast: "%{name} benötigt mindestens %{percent}% des abgegebenen Stimmgewichts"
+    name_lte_vote_weight_cast: "%{name} darf %{percent}% des abgegebenen Stimmgewichts nicht überschreiten"
+    total_assigned_vote_weight: Gesamtes zugewiesenes Stimmgewicht
+    weighted_votes_cast: Abgegebene gewichtete Stimmen
+    name_gte_assigned_vote_weight: "%{name} benötigt mindestens %{percent}% des gesamten zugewiesenen Stimmgewichts"
+    name_lte_assigned_vote_weight: "%{name} darf %{percent}% des gesamten zugewiesenen Stimmgewichts nicht überschreiten"
+    name_gte_weighted_votes_cast: "%{name} benötigt mindestens %{percent}% der abgegebenen gewichteten Stimmen"
+    name_lte_weighted_votes_cast: "%{name} darf %{percent}% der abgegebenen gewichteten Stimmen nicht überschreiten"
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -2138,6 +2153,9 @@ de:
     pct_of_weighted_votes: "% der gewichteten Stimmen"
     pct_of_weighted_points: "% der gewichteten Punkte"
     weighted_mean: Gewichteter Mittelwert
+    pct_of_eligible_vote_weight: "% des Stimmgewichts der Stimmberechtigten"
+    pct_of_vote_weight_cast: "% des abgegebenen Stimmgewichts"
+    pct_of_assigned_vote_weight: "% des zugewiesenen Stimmgewichts"
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2304,18 +2322,14 @@ de:
     started_by: Erstellt von %{name}
   poll_common_votes_panel:
     vote_removed: Stimme entfernt
-    undecided: Noch nicht abgestimmt
     newest_first: Neueste zuerst
     oldest_first: Älteste zuerst
     priority_first: Zustimmende zuerst
     priority_last: Ablehnende zuerst
-    undecided_first: Unentschlossene zuerst
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
     name_or_username: Name oder Benutzername
-    cast: Abgegeben
-    uncast: Nicht abgegeben
     reason_redacted: Grund geschwärzt
     redact_reason_title: Grund für die Schwärzungsabstimmung?
     redact_reason_helptext: Der Begründungstext und die Anhänge werden ausgeblendet, die Stimme bleibt jedoch im Ergebnis sichtbar
@@ -2330,15 +2344,6 @@ de:
     stance: Stimme
     participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
     vote_weight: Stimmgewicht %{weight}
-  poll_common_undecided_panel:
-    show_undecided: "%{count} Personen anzeigen, die noch nicht abgestimmt haben"
-    show_invitations: Ausstehende Einladungen anzeigen
-    undecided_users: Noch nicht abgestimmt (%{count})
-    invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
-    invitation_count_plural: "%{count} weitere Personen wurden per E-Mail zur Teilnahme eingeladen"
-  poll_common_undecided_user:
-    reminded: Erinnerung gesendet!
-    reminder_sent: Erinnerungsbenachrichtigung gesendet
   poll_common_set_outcome_panel:
     enter_outcome: Abstimmungsergebnis eingeben
     poll_type: Dieser %{poll_type} wurde geschlossen. Nimm dir Zeit, über die Ergebnisse nachzudenken und teile dann ein Ergebnis mit, damit die Leute wissen, was als nächstes passieren wird.
@@ -2472,13 +2477,17 @@ de:
     votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
     quorum_reached: Quorum von %{pct}% wurde erreicht
     pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Wahlbeteiligung)"
+    pct_vote_weight_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des Stimmgewichts)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% des Stimmgewichts der Stimmberechtigten müssen abgegeben werden"
+    pct_weighted_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des zugewiesenen Stimmgewichts abgegeben)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden"
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:
     title: Deine Stimme entfernen?
-    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst unter „Noch nicht abgestimmt“ aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
     confirm: Stimme entfernen
     success: Stimme entfernt
+    helptext_not_voted: Möchtest du deine Stimme wirklich entfernen? Dein Status wird „Noch nicht abgestimmt“ und du kannst später erneut abstimmen, wenn du möchtest.
   poll_poll_vote_form:
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
@@ -2840,8 +2849,8 @@ de:
       voting_title: 24 Stunden vor Ende der Abstimmung eine Erinnerung senden an
       nobody: Niemand
       author: Autor (ich)
-      undecided_voters: Unentschlossene Abstimmende
       voters: Alle Abstimmenden
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     notify_on_participate:
       title: Benachrichtige mich, wenn Personen teilnehmen
       helptext_on: Wenn du diese Option auswählst, wirst du benachrichtigt, wenn jemand teilnimmt.
@@ -3007,6 +3016,10 @@ de:
     weighted_voting_off_warning: Wenn du die gewichtete Abstimmung deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
     weighted_voting_on_group: Wenn du die gewichtete Abstimmung aktivierst, wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.
     weighted_voting_on_direct: Wenn du die gewichtete Abstimmung aktivierst, wird jedes Stimmgewicht auf 1 gesetzt
+    quorum_vote_weight_hint: Wie viel Prozent des Stimmgewichts der Stimmberechtigten müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
+    quorum_vote_weight_placeholder: Prozent des Stimmgewichts der Stimmberechtigten (0–100)
+    quorum_voters_placeholder: Prozent der Stimmberechtigten (0–100)
+    quorum_weighted_hint: Wie viel Prozent des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
@@ -3249,7 +3262,7 @@ de:
     stance: Stimme
   membership_notification_history:
     invitation_delivery_history: Zustellverlauf der Einladung
-    email_delivery_blocked: "Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt"
+    email_delivery_blocked: Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt
     delivery_result:
       delivered: Zugestellt
       failed: Fehlgeschlagen

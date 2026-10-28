@@ -231,26 +231,34 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes topic_ids, topic_id
   end
 
-  test "tags updates only topic tags" do
+  test "tags updates opening assignments and returns their colors immediately" do
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['urgent', 'new'] }
 
     assert_response :success
     assert_equal ['new', 'urgent'], @topic.reload.tags
-    assert_equal({}, JSON.parse(response.body))
+    json = JSON.parse(response.body)
+    assert_equal ['new', 'urgent'], json.fetch('topics').find { |row| row['id'] == @topic.id }.fetch('tags')
+    assert_equal ['new', 'urgent'], @topic.topicable.created_topic_item.tags
+    assert_not json.fetch('topics').find { |row| row['id'] == @topic.id }.key?('root_tags')
+    %w[new urgent].each do |name|
+      tag = @group.tags.find_by!(name: name)
+      assert_includes Tag::COLORS, tag.color
+      assert_equal tag.color, json.fetch('tags').find { |row| row['id'] == tag.id }.fetch('color')
+    end
   end
 
   test "tags can clear all topic tags" do
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: [] }
 
     assert_response :success
     assert_equal [], @topic.reload.tags
-    assert_equal({}, JSON.parse(response.body))
+    assert_empty @topic.topicable.created_topic_item.tags
   end
 
   test "tags can be updated by users who can edit the topicable" do
@@ -273,7 +281,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "tags can be updated by members who can edit discussions" do
     @group.update!(members_can_edit_discussions: true)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
 
@@ -286,7 +294,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     Tag.find_or_create_by!(group: @group, name: 'apple')
     Tag.find_or_create_by!(group: @group, name: 'banana')
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['apple', 'banana'] }
 
@@ -294,21 +302,22 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal ['apple', 'banana'], @topic.reload.tags
   end
 
-  test "members cannot create new tags when members cannot create tags" do
+  test "disallowed tag names are dropped when members cannot create tags" do
     @group.update!(members_can_edit_discussions: true, members_can_create_tags: false)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 
-    assert_response :forbidden
-    assert_equal ['old'], @topic.reload.tags
+    assert_response :success
+    assert_empty @topic.reload.tags
+    assert_not Tag.exists?(group: @group, name: 'new')
   end
 
   test "admins can create new tags when members cannot create tags" do
     @group.update!(members_can_create_tags: false)
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 
@@ -319,7 +328,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "tags cannot be updated by members who cannot edit discussions" do
     @group.update!(members_can_edit_discussions: false)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 

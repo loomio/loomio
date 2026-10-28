@@ -1,20 +1,20 @@
 ---
 title: 匿名投票
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: df1cf938f21a4d2d
   how-anonymous-voting-protects-voters: 17f221ab45a10ad8
-  while-voting-is-open: f789f6b19d3d7098
-  votes-cannot-be-changed: c6fc31f7f7b6fe74
+  while-voting-is-open: 2cbb259a20970254
+  votes-cannot-be-changed: cb6a53de980fe57e
   why-anonymous-votes-do-not-have-reasons: 8fe54e4844111fb3
   results-and-exports: 2aca469868ba0b14
-  participation-verification: 88397a0d7141c265
+  participation-verification: b6311c02544bae93
   reminders: 88a20342873efdfa
-  what-coordinators-and-administrators-can-see: 9fc98a2f1238a713
+  what-coordinators-and-administrators-can-see: e887bb63a115098b
   limits-of-anonymous-voting: ad34e02c831ef6b1
   questions: 883d548ca99120b0
   can-a-coordinator-see-how-i-voted: e2b193fa96d15c20
@@ -74,7 +74,7 @@ title_generated: 55edffe99178b192
 
 ## 投票受付中
 
-アンケートが締め切られるまで、結果は誰にも表示されません。アプリケーションを利用するアンケートのコーディネーター、グループ管理者、インスタンス管理者も同様です。
+アンケートが締め切られるまで、結果は誰にも表示されません。アプリケーションを利用するスレッド管理者、グループ管理者、インスタンス管理者も同様です。
 
 投票すると、次の処理が行われます。
 
@@ -90,7 +90,7 @@ title_generated: 55edffe99178b192
 
 ## 投票は変更できません
 
-投票資格がある人は、それぞれ1回投票できます。送信された匿名の投票は、コーディネーターや管理者であっても、確認、変更、撤回、差し替えができません。
+投票資格がある人は、それぞれ1回投票できます。送信された匿名の投票は、管理者であっても、確認、変更、撤回、差し替えができません。
 
 投票した人が自分の投票を取得したり差し替えたりするには、その人と投票を継続的に結び付ける必要があります。匿名投票では、そのような関連付けを意図的に作成しません。
 
@@ -126,7 +126,7 @@ title_generated: 55edffe99178b192
 
 結果を閲覧できる人は誰でも、誰が投票したかを確認できるため、結果が一方に偏っていると、各人の投票内容が分かる場合があります。たとえば、すべての票が「賛成」であれば、投票した全員が賛成したことになります。
 
-コーディネーターは、投票受付中であれば、他の人が投票した後でも、投票資格がある人を追加できます。匿名アンケートから既存の投票者を削除することはできません。
+管理者は、投票受付中であれば、他の人が投票した後でも、投票資格がある人を追加できます。匿名アンケートから既存の投票者を削除することはできません。
 
 <!-- translation-section: reminders -->
 
@@ -140,9 +140,9 @@ title_generated: 55edffe99178b192
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## コーディネーターと管理者が確認できる情報
+## 管理者が確認できる情報
 
-アンケートのコーディネーター、グループ管理者、インスタンス管理者は、アプリケーションを通じて次の情報を確認できる場合があります。
+スレッド管理者、グループ管理者、インスタンス管理者は、アプリケーションを通じて次の情報を確認できる場合があります。
 
 - アンケートと、投票資格がある人
 - 役割に応じた閲覧権限があり、十分な人数が投票した場合の、投票資格がある各人の投票の有無

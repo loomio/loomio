@@ -1,32 +1,32 @@
 ---
 title: Падгрупы
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 1618fcad71be2663
   add-a-subgroup: dc0aa7b1d0b5dbf1
   subgroup-settings: 7f07de40f539d0f6
-  privacy: 42d17f2a626a3ac2
+  privacy: 59adb16c992f3c43
   permissions: 8c327a236e35959d
   find-subgroups: c90ca166d19dc291
   invite-to-a-subgroup: 160de3a4ad495ecb
   simultaneously-invite-people-to-subgroups-and-parent-group: 2ba96e357a029ccf
-  administer-a-subgroup: e59fa4f4e660cfd9
+  administer-a-subgroup: 48fb54a23e755c3e
   delete-a-subgroup: 2db62be49c211aa9
   how-people-join: a59dad68099510c8
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ title_generated: 419292afc0b8cfee
 | **Бачная бацькоўскай групе** | Удзельнікі бацькоўскай групы і ўдзельнікі падгрупы | Удзельнікі падгрупы і запрошаныя госці |
 | **Сакрэтная група** | Запрошаныя ўдзельнікі падгрупы | Удзельнікі падгрупы і запрошаныя госці |
 
+Дазвол **Удзельнікі бацькоўскай групы могуць бачыць прыватныя тэмы** таксама можа даць удзельнікам бацькоўскай групы доступ да тэм падгрупы без далучэння да яе.
+
 Калі бацькоўская група прыватная, для падгруп даступныя налады **Бачная бацькоўскай групе** і **Сакрэтная група**.
 
 [Прачытайце пра прыватнасць груп тут](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ title_generated: 419292afc0b8cfee
 
 Падгрупы могуць мець уласных адміністратараў, якія могуць адрознівацца ад адміністратараў бацькоўскай групы.
 
-Аднак адміністратары бацькоўскай групы могуць прызначыць сябе адміністратарамі любой падгрупы. Гэта дазваляе ім кіраваць падгрупамі пры неабходнасці.
+Адміністратары бацькоўскай групы могуць далучыцца да несакрэтнай падгрупы і прызначыць сябе адміністратарамі гэтай падгрупы. Гэта не датычыцца сакрэтных падгруп.
 
 Перайдзіце на ўкладку «Падгрупы», знайдзіце падгрупу і націсніце **Далучыцца да групы**.
 

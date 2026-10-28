@@ -112,7 +112,7 @@ uk:
     add_guests:
       all: Ви повинні оновити підписку на Loomio, щоб додати гостей. Крім того, ви можете запросити їх стати членами вашої групи.
   errors:
-    item_you_are_replying_to_deleted: "Елемент, на який ви відповідаєте, видалено"
+    item_you_are_replying_to_deleted: Елемент, на який ви відповідаєте, видалено
     clear_cache: Виявлено проблему завантаження. Утримуйте shift і натисніть reload або очистіть кеш браузера.
     404:
       title: Не знайдено
@@ -199,7 +199,6 @@ uk:
       poll_options_dont_match: Помилка Loomio завадила збереженню вашого голосу. Ми працюємо над виправленням. Будь ласка, перезавантажте сторінку та спробуйте ще раз.
       opening_at_before_closing_at: Дата відкриття має бути раніше дати закриття
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) учасників висловили свою позицію"
       title: Заголовок
       author: Автор
       email: Електронна адреса
@@ -472,12 +471,8 @@ uk:
       not_invited: Не запрошені
       please_respond: Будь ласка дайте відповідь
       time_zone: "(Час відображається в %{zone})"
-      undecided_members: Учасників що не визначились (%{count})
-      undecided_visitors: "(%{count}) гостей що не прийняли рішення"
-      more_undecided: "%{count} більше..."
       vote_now: Проголосувати зараз
       you_have_until: Ви маєте чекати до %{when} для участі.
-      people_have_voted: "%{nom} з %{dnom} людей взяли участь (%{pct}%)"
       voting_opens_and_closes: Голосування починається %{opens} та закінчується %{closes}. (%{days} днів)
       voting_closes: Голосування закривається %{when}.
       voting_opened_and_closed: Голосування розпочалося %{opens} та закрилося %{closes}. (%{days} днів)
@@ -796,9 +791,9 @@ uk:
     voted: "%{author} проголосував за %{response}"
     voted_hidden: "%{author} проголосував"
     vote_removed: "%{author}: голос видалено"
-    undecided: "%{author}: не визначився"
     superseded: замінений
     shared_outcome: "%{author} поділився висновком"
     removed: Видалено
+    not_voted: "%{author}: не проголосували"
   error:
     access_denied: У вас немає дозволу на це

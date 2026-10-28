@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: b6dc083f4409e997
   user-api: f746cd40d4279938
-  server-api: 2dc9cd10c89530f4
+  server-api: 89d67d159e85f503
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ title_generated: c8e5998f6a3955c2
 
 ## API לשרת
 
-[ה־API לשרת](/en/user_manual/integrations/api/server-api) מאפשר לנהל חשבונות משתמשים בהתקנות Loomio באירוח עצמי. האימות מתבצע באמצעות סוד משותף לכל השרת.
+[ה־API לשרת](/en/user_manual/integrations/api/server-api) מאפשר לתפעל התקנות Loomio באירוח עצמי: ליצור ולנהל חשבונות משתמשים, לאתר קבוצות ולנהל חברוּת בקבוצות ותפקידים. האימות מתבצע באמצעות סוד משותף לכל השרת, ואין צורך בחשבון בוט או בחברוּת בכל קבוצה.

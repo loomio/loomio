@@ -1,16 +1,16 @@
 ---
 title: Cuórum
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: 9eabda93ec428d90
-  example-scenario: 8851316d1f8e92cc
+  introduction: ea81dc9ced09cc1a
+  example-scenario: f603603a6afb6bd8
 title_source: 18ed8b6c5ab90343
 title_generated: 654fa046f1980103
 ---
@@ -21,7 +21,9 @@ title_generated: 654fa046f1980103
 
 El quórum es el porcentaje mínimo de votantes con derecho a votar que deben participar para que una encuesta sea válida. Úsalo cuando tu proceso de gobernanza requiera un nivel determinado de participación.
 
-Al crear una encuesta, abre **Más configuraciones** e introduce el porcentaje requerido en **Cuórum de participación**. Deja el campo en blanco cuando no se requiera quórum.
+Con la [votación ponderada](/en/user_manual/polls/weighted_voting), el quórum utiliza los pesos de los votos. Por ejemplo, Jamie tiene un peso del voto de `2`, Samira de `1` y Alex de `1`. Si solo vota Jamie, ha participado la mitad del peso total de los votos con derecho a participar. Si Samira también vota, la participación alcanza el 75 por ciento y cumple el quórum del 60 por ciento.
+
+Al crear una encuesta, abre **Más configuraciones**. Introduce el porcentaje requerido en **Quórum**. Deja el campo en blanco cuando no se requiera quórum.
 
 ![La configuración de quórum con un quórum de participación del 60 por ciento](./quorum-section.png)
 
@@ -39,7 +41,7 @@ Jamie selecciona **Iniciar una votación**, elige la plantilla de propuesta **Co
 
 Jamie limita la votación a las cinco personas responsables del presupuesto de la prueba.
 
-La cooperativa requiere un 60 por ciento de participación para las decisiones importantes, así que Jamie introduce **60** en el campo de quórum de participación e inicia la propuesta.
+La cooperativa requiere un 60 por ciento de participación para las decisiones importantes, así que Jamie introduce **60** en **Quórum** e inicia la propuesta.
 
 Antes de que alguien vote, el panel de resultados muestra que no se ha alcanzado el quórum.
 

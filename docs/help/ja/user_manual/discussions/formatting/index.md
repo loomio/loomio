@@ -1,18 +1,18 @@
 ---
 title: 書式設定
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: ebfd47723f0c2f9f
+  introduction: 6e1c4768c69ebd84
   attach-file: 7a1206901836d9c4
   remove-attachments: 0c526f722f096c38
-  insert-image: 208c50bbdcd6fc6a
-  insert-link: 4fca352b3a93c93a
+  insert-image: '095ce9b82f6a4762'
+  insert-link: 256bd9cd0a25686c
   insert-emoji: f519c001999862b7
-  headings: 19931e088912e43f
+  headings: 6277189f543062fc
   bold-italicize-strikethrough: 0efefa2bc1b1989b
   list: 6ad9c1d735712a5e
   numbered-list: 44d68b7a40c5a41c
@@ -53,15 +53,13 @@ title_generated: 7a32dd7be63ea4ca
 
 <!-- translation-section: introduction -->
 
-# 書式設定
+# テキストの書式設定とファイルの添付
 
 ディスカッションやアンケートを開始・編集するときや、コメントを書くときには、入力欄の下に書式設定バーが表示されます。バーの端にある矢印を選択すると、すべてのツールの表示・非表示を切り替えられます。
 
 各項目にマウスポインターやカーソルを合わせると、ツールの名前が表示されます。
 
 ![](thread_format_bar.png)
-
-書式設定を使って文章を構成し、強調することで、情報を読み取りやすくできます。
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ title_generated: 7a32dd7be63ea4ca
 
 ## 画像を挿入
 
-このツールを使うと、画像を挿入して表示できます。
-
-![](format_insert_image.png)
-
-コンピューターから画像ファイルを選択します。アップロードが完了すると、画像がエディターに挿入されます。
+**画像の挿入**を選択してファイルを選ぶか、画像をエディターに直接貼り付けます。画像は、公開されたディスカッション、アンケート、コメントの中に表示されます。
 
 ![](format_insert_example.png)
-
-画像は、公開されたディスカッション、アンケート、コメントの中に表示されます。
-
->[!Tip]
->画像をコピーして、Loomioに直接貼り付けることもできます。
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ title_generated: 7a32dd7be63ea4ca
 
 別のサービスで管理されている文書の場合は、ディスカッションの参加者が開けるように、文書の共有権限を確認します。
 
-入力欄の下に文書のプレビューが表示されます。必要に応じて削除できます。
-
-これで、Loomioのディスカッションにアクセスでき、文書の閲覧権限がある人は、文書を開いて読むことができます。
+入力欄の下にプレビューが表示される場合があります。必要に応じて削除できます。
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ title_generated: 7a32dd7be63ea4ca
 
 見出しにするテキストを選択し、見出しの書式設定ツールをクリックします。
 
-コメントに見出しを使うと、そのコメントはディスカッションのタイムラインに自動的にピン留めされます。
+コメントに見出しを使うと、そのコメントはディスカッションのタイムラインに自動的に追加されます。
 
 ![](format_heading.png)
 

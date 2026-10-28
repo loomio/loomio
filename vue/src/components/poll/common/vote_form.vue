@@ -52,12 +52,12 @@ export default {
       }
     },
     optionCountAlertColor() {
-      if (!this.singleChoice && this.selectedOptionIds.length && ((this.selectedOptionIds.length < this.poll.minimumStanceChoices) || (this.selectedOptionIds.length > this.poll.maximumStanceChoices))) { return 'warning'; }
+      if (!this.singleChoice && this.selectedOptionIds.length && ((this.selectedOptionIds.length < this.poll.choiceCountMin) || (this.selectedOptionIds.length > this.poll.choiceCountMax))) { return 'warning'; }
     },
     optionCountValid() {
       return this.stance.noneOfTheAbove ||
              (this.singleChoice && this.selectedOptionId) ||
-             ((this.selectedOptionIds.length >= this.poll.minimumStanceChoices) && (this.selectedOptionIds.length <= this.poll.maximumStanceChoices));
+             ((this.selectedOptionIds.length >= this.poll.choiceCountMin) && (this.selectedOptionIds.length <= this.poll.choiceCountMax));
     }
   },
 
@@ -138,11 +138,11 @@ export default {
 form.poll-common-vote-form(@submit.prevent="submit()" v-submit-on-mod-enter="submit")
   v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
-      v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
-      v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
+      v-if="poll.choiceCountMin == poll.choiceCountMax"
+      v-t="{path: 'poll_common.select_count_options', args: {count: poll.choiceCountMin}}")
     span(
       v-else
-      v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
+      v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.choiceCountMin, maximum: poll.choiceCountMax}}")
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
     variant="tonal"

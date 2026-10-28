@@ -36,24 +36,20 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
         )
       end
 
-      p { t(:"push_notifications.enable_from_loomio") } unless @push_enabled
-      div(class: "email-action-secondary-link") do
-        p do
-          strong { t(:"email_actions.catch_up_all_groups") }
-          plain ": #{t(:"email_actions.catch_up_days.#{catch_up_day_key}")}"
-        end
-        a(href: email_actions_catch_up_path(unsubscribe_token: @unsubscribe_token)) do
-          t(:"email_actions.catch_up_link")
-        end
+      section(class: "email-action-catch-up", aria: { labelledby: "catch-up-heading" }) do
+        h3(id: "catch-up-heading") { t(:"email_actions.catch_up_all_groups") }
+        p { t(:"email_actions.catch_up_description") }
+        render Views::EmailActions::CatchUpForm.new(
+          email_catch_up_day: @email_catch_up_day,
+          unsubscribe_token: @unsubscribe_token,
+          topic_id: @topic_reader&.topic_id,
+          group_id: @topic_reader ? nil : @membership&.group_id
+        )
       end
     end
   end
 
   private
-
-  def catch_up_day_key
-    Views::EmailActions::CatchUp::DAY_OPTIONS.to_h.fetch((@email_catch_up_day || 'never').to_s)
-  end
 
   def render_styles
     style do

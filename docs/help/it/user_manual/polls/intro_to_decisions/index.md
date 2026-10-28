@@ -1,10 +1,10 @@
 ---
 title: Proposte e votazioni
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: ebf374feeca6fb9f
   find-the-right-help: 2f097107c2307e3e
@@ -33,8 +33,8 @@ generated:
   1-create-it: fdd3b95f0a68156d
   2-voting-opens: dd1303519f29301b
   3-people-vote: 269123d0b7581bd2
-  4-it-closes: 9b9ed640052b7e8a
-  5-share-an-outcome: 4c802d68dcb9f6a4
+  4-it-closes: 2d75be884a39cdf6
+  5-share-an-outcome: 830ab4954674e0d5
 title_source: d45b4ba3cb7a27cb
 title_generated: e427868b8757c27c
 ---
@@ -150,13 +150,13 @@ Durante la votazione, le persone possono votare, spiegare il proprio voto e modi
 
 ### 4. Si chiude
 
-Il sondaggio si chiude automaticamente all'orario di chiusura. Un coordinatore del sondaggio può anche chiuderlo in anticipo. Dopo la chiusura, un coordinatore del sondaggio può riaprirlo con un nuovo orario di chiusura per consentire alle persone di continuare a votare. I sondaggi anonimi non possono essere riaperti.
+Il sondaggio si chiude automaticamente all'orario di chiusura. Un amministratore della conversazione può anche chiuderlo in anticipo. Dopo la chiusura, un amministratore della conversazione può riaprirlo con un nuovo orario di chiusura per consentire alle persone di continuare a votare. I sondaggi che nascondono i risultati fino alla chiusura delle votazioni, compresi i sondaggi anonimi, non possono essere riaperti. Puoi prolungarne l'orario di chiusura mentre sono ancora aperti.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Condividi una conclusione
 
-Quando il sondaggio si chiude, Loomio chiede ai coordinatori del sondaggio di condividere una conclusione.
+Quando il sondaggio si chiude, Loomio chiede agli amministratori della conversazione di condividere una conclusione.
 
 ![La richiesta di inserire una conclusione dopo la chiusura di una proposta](outcome_prompt.png)
 

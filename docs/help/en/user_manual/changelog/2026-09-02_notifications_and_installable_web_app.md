@@ -8,7 +8,7 @@ The separate **Notify me when I'm mentioned** account setting has been removed. 
 
 With **When notified**, Loomio sends an update when someone mentions you, replies to you, shares a discussion with you, invites or reminds you to vote, announces an outcome, or when a poll is closing soon. With **Catch-up only**, those notifications are collected into your next catch-up instead. Choose **All activity** for a group or thread when you want every update as it happens.
 
-These settings belong to each member. Group coordinators cannot change another member's notification preferences.
+These settings belong to each member. Group admins cannot change another member's notification preferences.
 
 ## Catch-up includes notifications
 

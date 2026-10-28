@@ -51,9 +51,9 @@ class PollExporter
       author_name: @poll.author.name,
       created_at: @poll.created_at,
       closed_at: @poll.closed_at,
-      decided_voters_count: @poll.decided_voters_count,
-      undecided_voters_count: @poll.undecided_voters_count,
-      voters_count: @poll.voters_count,
+      vote_count_cast: @poll.vote_count_cast,
+      vote_count_uncast: @poll.vote_count_uncast,
+      vote_count_eligible: @poll.vote_count_eligible,
       details: @poll.details,
       group_name: @poll.group.full_name,
       discussion_title: @poll.topic.topicable.title,
@@ -72,7 +72,7 @@ class PollExporter
       csv << meta_table.values
       csv << ['poll_options']
       results = PollService.calculate_results(@poll, @poll.poll_options)
-      keys = %w[id poll_id name name_format rank unweighted_score score score_percent max_score_percent voter_percent average voter_count color]
+      keys = %w[id poll_id name name_format rank unweighted_score score score_percent max_score_percent voter_percent average vote_count color]
       csv << keys
       results.each { |r| csv << r.slice(*keys).values }
       csv << ['votes']

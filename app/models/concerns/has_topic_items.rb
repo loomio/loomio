@@ -2,6 +2,7 @@ module HasTopicItems
   extend ActiveSupport::Concern
 
   included do
+    after_update { TagService.refresh_topic_tags_for_visibility(self) }
     has_many :topic_items, -> { includes :user, :itemable }, as: :itemable, dependent: :destroy
     has_one :created_topic_item, ->(itemable) { where(kind: itemable.created_topic_item_kind).order(:id) },
             as: :itemable, class_name: "TopicItem"

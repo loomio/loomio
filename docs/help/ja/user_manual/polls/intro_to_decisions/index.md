@@ -1,10 +1,10 @@
 ---
 title: 提案と投票
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: f8f94e00d47bdafb
   find-the-right-help: bd160de214fbbe37
@@ -33,13 +33,12 @@ generated:
   1-create-it: 1804d0d646b44791
   2-voting-opens: 06bd61e89bb9aa44
   3-people-vote: 54d5b2a141500dcd
-  4-it-closes: 57df4314ca7ba66a
-  5-share-an-outcome: d9b3c22918b4bc83
+  4-it-closes: c2ffe4e91c60a549
+  5-share-an-outcome: 9c5b2200dc4e3758
 title_source: d45b4ba3cb7a27cb
 title_generated: be4107aa6d3ae949
 needs_review:
   find-the-right-help: use "結論" instead of "結果" for "outcome"
-  5-share-an-outcome: use "結論" instead of "結果" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -153,13 +152,13 @@ needs_review:
 
 ### 4. 締め切り
 
-アンケートは締め切り時刻に自動的に締め切られます。アンケートのコーディネーターは、早めに締め切ることもできます。締め切り後は、アンケートのコーディネーターが新しい締め切り時刻を設定して再開し、投票を続けられるようにできます。匿名のアンケートは再開できません。
+アンケートは締め切り時刻に自動的に締め切られます。スレッド管理者は、早めに締め切ることもできます。締め切り後は、スレッド管理者が新しい締め切り時刻を設定して再開し、投票を続けられるようにできます。匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。これらのアンケートは、締め切り前であれば締め切り時刻を延長できます。
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. 結論を共有する
 
-アンケートが締め切られると、Loomioはアンケートのコーディネーターに結論の共有を促します。
+アンケートが締め切られると、Loomioはスレッド管理者に結論の共有を促します。
 
 ![提案の締め切り後に結論の入力を促す画面](outcome_prompt.png)
 

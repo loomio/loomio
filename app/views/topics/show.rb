@@ -88,7 +88,6 @@ class Views::Topics::Show < Views::Application::Layout
         .includes(:itemable, :user)
         .order("position_key #{@topic.newest_first ? 'desc' : 'asc'}")
         .where(kind: %w[new_comment poll_created stance_created stance_updated])
-        .where.not(itemable_type: 'Comment', itemable_id: Comment.hidden_until_closed.select(:id))
         .where.not(itemable_type: 'Stance', itemable_id: stance_ids_hidden_from_activity)
 
       total = scope.count

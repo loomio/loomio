@@ -28,11 +28,11 @@ class PollTemplate < ApplicationRecord
     show_none_of_the_above
     hide_results
     chart_type
-    min_score
-    max_score
-    minimum_stance_choices
-    maximum_stance_choices
-    dots_per_person
+    score_min
+    score_max
+    choice_count_min
+    choice_count_max
+    points_per_voter
     reason_prompt
     tags
     poll_options
@@ -71,7 +71,7 @@ class PollTemplate < ApplicationRecord
   belongs_to :author, class_name: "User"
   belongs_to :group, class_name: "Group"
 
-  enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum :notify_on_closing_soon, {nobody: 0, author: 1, voters_uncast: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
   enum :stance_reason_required, {
     disabled: 0,
@@ -124,11 +124,11 @@ class PollTemplate < ApplicationRecord
     :notify_on_closing_soon,
     :notify_on_open,
     :hide_results,
-    :min_score,
-    :max_score,
-    :minimum_stance_choices,
-    :maximum_stance_choices,
-    :dots_per_person,
+    :score_min,
+    :score_max,
+    :choice_count_min,
+    :choice_count_max,
+    :points_per_voter,
     :reason_prompt,
     :poll_options,
     :limit_reason_length,

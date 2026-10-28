@@ -219,7 +219,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 | Agree | 1 | 50% | 33% | Samira Patel |
 | Abstain | 1 | 50% | 33% | Alex Morgan |
 | Disagree | 0 | 0% | 0% | No voters |
-| Undecided | 1 |  | 33% | Jamie Chen |
+| Not voted | 1 |  | 33% | Jamie Chen |
 
 > **Samira Patel** voted **Agree** · 2026-09-10 23:28 · #3 · ❤️ Jamie Chen
 >

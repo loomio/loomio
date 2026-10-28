@@ -1,20 +1,20 @@
 ---
 title: Анонимное голосование
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/anonymous_voting/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: dda23e517269b9cf
-  votes-cannot-be-changed: 1e317297688ba902
+  while-voting-is-open: 60b564978d2a7a71
+  votes-cannot-be-changed: f4353c89bbffe7aa
   why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
   results-and-exports: eb2429afd442dad2
-  participation-verification: 87bc3647be4bbfb8
+  participation-verification: 75edf02a6a2324a3
   reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 07faa9f646665b64
+  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
   limits-of-anonymous-voting: 912141560342d073
   questions: 60cc6f1a0163ec5d
   can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
@@ -26,13 +26,13 @@ sections:
 generated:
   introduction: e85fd93ff585b3d2
   how-anonymous-voting-protects-voters: 6f443b79b4263466
-  while-voting-is-open: a6b301e14df1ae53
-  votes-cannot-be-changed: 1f105bb0af323bba
+  while-voting-is-open: 7512f538c48f9cb5
+  votes-cannot-be-changed: 6beebb2a2df16903
   why-anonymous-votes-do-not-have-reasons: d85d050b4e4f8265
   results-and-exports: 2d5bf54bde326c5a
-  participation-verification: f892915f4fe775b9
+  participation-verification: 80238c5c0e24268d
   reminders: fb50edf537e6120f
-  what-coordinators-and-administrators-can-see: a15085a8b95a30af
+  what-coordinators-and-administrators-can-see: 17db3755ea80054a
   limits-of-anonymous-voting: 6d0e0bb79f2f35a5
   questions: 2780c52ad15014e4
   can-a-coordinator-see-how-i-voted: f13816f7f204efd3
@@ -43,8 +43,6 @@ generated:
   is-anonymous-voting-suitable-for-every-election: 5bd8b8e0a43ad596
 title_source: 1bc4567506ad4d51
 title_generated: 594e50e8ce3a747f
-needs_review:
-  participation-verification: use "Согласен" instead of "За" for "agree"
 ---
 
 <!-- translation-section: introduction -->
@@ -76,7 +74,7 @@ needs_review:
 
 ## Пока голосование открыто
 
-Результаты скрыты от всех до закрытия опроса. Это относится и к координаторам опроса, администраторам группы и администраторам сервера Loomio, использующим приложение.
+Результаты скрыты от всех до закрытия опроса. Это относится и к администраторам ветки, администраторам группы и администраторам сервера Loomio, использующим приложение.
 
 Когда человек голосует:
 
@@ -92,7 +90,7 @@ needs_review:
 
 ## Голоса нельзя изменить
 
-Каждый человек, имеющий право голоса, может проголосовать один раз. Поданный анонимный голос нельзя просмотреть, изменить, отозвать или заменить. Это ограничение действует и для координатора или администратора.
+Каждый человек, имеющий право голоса, может проголосовать один раз. Поданный анонимный голос нельзя просмотреть, изменить, отозвать или заменить. Это ограничение действует и для администратора.
 
 Чтобы человек мог получить или заменить свой голос, потребовалась бы постоянная связь между ним и голосом. При анонимном голосовании такая связь намеренно не создаётся.
 
@@ -128,7 +126,7 @@ needs_review:
 
 Поскольку все, кому доступны результаты, могут увидеть, кто проголосовал, результат, в котором все голоса отданы за один вариант, может раскрыть выбор людей. Например, если каждый голос отдан за вариант «Согласен», все проголосовавшие поддержали предложение.
 
-Координаторы могут добавлять людей, имеющих право голосовать, пока голосование открыто, в том числе после того, как другие люди уже проголосовали. Удалить существующих голосующих из анонимного опроса нельзя.
+Администраторы могут добавлять людей, имеющих право голосовать, пока голосование открыто, в том числе после того, как другие люди уже проголосовали. Удалить существующих голосующих из анонимного опроса нельзя.
 
 <!-- translation-section: reminders -->
 
@@ -142,9 +140,9 @@ needs_review:
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
-## Что могут видеть координаторы и администраторы
+## Что могут видеть администраторы
 
-Через приложение координатор опроса, администратор группы или администратор сервера Loomio может иметь доступ к следующим сведениям:
+Через приложение администратор ветки, администратор группы или администратор сервера Loomio может иметь доступ к следующим сведениям:
 
 - опрос и люди, имеющие право голосовать в нём;
 - проголосовал ли каждый человек, имеющий право голоса, если его роль разрешает доступ и проголосовало достаточно людей; и

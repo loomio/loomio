@@ -450,63 +450,72 @@ terms:
       stems: ["成員"]
       note: "會員 suggests a paying or club membership."
   admin:
-    means: "A group member with permission to manage the group, its members and settings."
+    means: "A permission role: a group admin manages the group, its members and settings; a thread admin manages a thread and its contributions. Use group admin and thread admin, or administrator in longer prose. Never call either role coordinator or translate it as a coordination or facilitation role, including when a legacy translation key contains coordinator."
     be:
       use: "адміністратар"
+      avoid: ["каардынатар"]
       stems: ["адміністратар"]
     ca:
       use: "admin"
+      avoid: ["coordinador", "coordinadora"]
       stems: ["admin"]
       note: "\"admin\" is the app's majority and is gender-neutral; \"administrador/a\" is acceptable in running text."
     da:
       use: "admin"
+      avoid: ["koordinator"]
       stems: ["admin"]
       note: "Administrator is acceptable in longer prose."
     de:
       use: "Admin"
-      avoid: ["Gruppenmoderator", "Moderator"]
+      avoid: ["Gruppenmoderator", "Moderator", "Koordinator", "Koordinatorin"]
       stems: ["admin"]
       note: "Moderation/Moderator means facilitation in the manual, so it must not stand for admin; Administrator is acceptable but Admin is the majority."
     el:
       use: "διαχειριστής"
+      avoid: ["συντονιστής", "συντονίστρια"]
       stems: ["διαχειριστ"]
     es:
       use: "admin"
-      avoid: ["grupo de administración", "hilo de administración"]
+      avoid: ["grupo de administración", "hilo de administración", "coordinador", "coordinadora"]
       stems: ["admin"]
       note: "Short familiar loanword already used in the app; administrador is fine in running prose. \"Group admin\" is admin del grupo, not grupo de administración."
     fi:
       use: "ylläpitäjä"
-      avoid: ["järjestelmänvalvoja"]
+      avoid: ["järjestelmänvalvoja", "koordinaattori"]
       stems: ["ylläpitäj"]
       note: "Järjestelmänvalvoja means a system administrator; a Loomio admin manages a group."
     fr:
       use: "administrateur"
+      avoid: ["coordinateur", "coordinatrice"]
       stems: ["administrat", "admin"]
       note: "Admin is acceptable where space is tight."
     he:
       use: "מנהל"
-      avoid: ["מנהל מערכת", "אחראי"]
+      avoid: ["מנהל מערכת", "אחראי", "מתאם", "רכז"]
       stems: ["מנהל"]
       note: "A group admin, not a system administrator (מנהל מערכת)."
     hr:
       use: "admin"
+      avoid: ["koordinator"]
       stems: ["admin"]
       note: "Short and familiar; administrator is acceptable in prose."
     hu:
       use: "admin"
-      avoid: ["rendszergazda"]
+      avoid: ["rendszergazda", "koordinátor"]
       stems: ["admin"]
       note: "Rendszergazda means a system administrator. Adminisztrátor is an acceptable longer form."
     it:
       use: "amministratore"
+      avoid: ["coordinatore", "coordinatrice"]
       stems: ["amministrat", "admin"]
       note: "Admin is acceptable where space is tight."
     ja:
       use: "管理者"
+      avoid: ["コーディネーター"]
       stems: ["管理者"]
     nl_NL:
       use: "admin"
+      avoid: ["coördinator", "coordinator"]
       stems: ["admin"]
       note: "Beheerder also appears, mostly in the manual; use admin consistently."
     pl:
@@ -515,10 +524,12 @@ terms:
       stems: ["administrator"]
     pt_BR:
       use: "admin"
+      avoid: ["coordenador", "coordenadora"]
       stems: ["admin"]
       note: "App and manual majority; administrador is acceptable in running prose."
     ro:
       use: "admin"
+      avoid: ["coordonator"]
       stems: ["admin"]
       note: "Short, familiar label; \"administrator\" is fine in running text."
     ru:
@@ -528,15 +539,17 @@ terms:
       note: "Админ is acceptable only in short labels."
     sl:
       use: "skrbnik"
+      avoid: ["koordinator"]
       stems: ["skrbni", "administrator"]
       note: "Administrator is an acceptable synonym; prefer skrbnik for consistency."
     sv:
       use: "admin"
-      avoid: ["administration"]
+      avoid: ["administration", "koordinator", "samordnare"]
       stems: ["admin"]
       note: "Administratör is acceptable in longer prose; Administration names the activity, not the role."
     tr:
       use: "yönetici"
+      avoid: ["koordinatör"]
       stems: ["yönetici"]
       note: "Use yönetici rather than the loanword admin in labels such as Make admin"
     uk:
@@ -546,10 +559,11 @@ terms:
       note: "координатор is Loomio's former name for the role."
     zh_CN:
       use: "管理员"
-      avoid: ["行政"]
+      avoid: ["行政", "协调员", "协调者"]
       stems: ["管理员"]
     zh_TW:
       use: "管理員"
+      avoid: ["協調員", "協調者"]
       stems: ["管理員"]
   guest:
     means: "A person invited to a single thread or poll without joining the group."
@@ -6232,7 +6246,7 @@ terms:
       use: "重新開放"
       avoid: ["重新打開"]
       stems: ["重新開放"]
-  undecided:
+  not voted:
     means: "Invited voters who have not voted yet."
     be:
       use: "не прагаласавалі"
@@ -6514,7 +6528,7 @@ terms:
       use: "加權投票"
       stems: ["加權"]
   pin:
-    means: "To keep a thread or comment at the top so people see it first."
+    means: "To keep a thread at the top of the group's thread list so people see it first. Adding an item to a thread's timeline is a separate action."
     be:
       use: "замацаваць"
       stems: ["замацав", "замацоў", "замацаван"]

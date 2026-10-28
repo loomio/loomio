@@ -38,16 +38,22 @@ class MoveCommentsWorker < ApplicationJob
       all_topic_items.update_all(topic_id: target_topic_id, sequence_id: nil)
 
       TopicService.repair(target_topic_id)
+      TagService.refresh_topic_tags!([source_topic_id, target_topic_id])
       source_was_discarded = source_topic.topicable_type == 'Poll' &&
                              all_polls.exists?(source_topic.topicable_id) &&
                              !TopicItem.exists?(topic_id: source_topic_id)
       source_topic.update!(discarded_at: Time.current, discarded_by: actor_id) if source_was_discarded
       TopicService.repair(source_topic_id) unless source_was_discarded
 
-      SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
-      SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
-
       ActiveStorage::Attachment.where(record: all_topic_items.map(&:itemable).compact).update_all(group_id: target_topic.group_id)
+    end
+
+    ActiveRecord.after_all_transactions_commit do
+      ReindexDiscussionWorker.perform_later(target_topicable.id) if target_topicable.is_a?(Discussion)
+      ReindexDiscussionWorker.perform_later(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
+      # Bulk topic-item updates bypass Poll's indexing callback.
+      Poll.where(id: TopicItem.where(id: topic_item_ids, itemable_type: 'Poll').select(:itemable_id))
+        .pluck(:id).each { |poll_id| ReindexPollWorker.perform_later(poll_id) }
     end
 
     MessageChannelService.publish_models([ source_topic ], group_id: source_topic.group_id)

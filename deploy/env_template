@@ -331,6 +331,11 @@ ACTIVE_STORAGE_SERVICE=local
 # tell clients to reload when the server is upgraded
 LOOMIO_SYSTEM_RELOAD=1
 
+# Server API key for trusted server-to-server integrations at /api/server0.
+# It must be at least 17 characters; Loomio will not start with a shorter key.
+# create_env.sh generates one. Comment out the line to disable the Server API.
+SERVER_API_KEY=REPLACE_WITH_SERVER_API_KEY
+
 SECRET_COOKIE_TOKEN=REPLACE_WITH_SECRET_COOKIE_TOKEN
 RAILS_INBOUND_EMAIL_PASSWORD=REPLACE_WITH_RAILS_INBOUND_EMAIL_PASSWORD
 RAILS_ENV=production

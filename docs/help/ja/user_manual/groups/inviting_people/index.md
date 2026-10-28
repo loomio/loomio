@@ -1,12 +1,12 @@
 ---
 title: メンバーを招待する
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: d0472b30afa3ea26
+  introduction: f2e8269c482268d8
   send-invitations-via-email: 060c3642105461e9
   invite-many-at-once: 9a64ce568e061b6e
   invite-people-to-subgroups: '00819b2abb4a85c9'
@@ -35,11 +35,9 @@ title_generated: 8443acb671cc4a96
 
 <!-- translation-section: introduction -->
 
-# メンバーを招待する
+# Loomioのグループにメンバーを招待する
 
-グループページで**メンバー**タブをクリックすると、メンバーを管理できます。
-
-メールアドレスを指定して特定の人をグループに**招待する**ことも、メール、ニュースレター、チャット、ウェブサイトでグループへのリンクを**共有**することもできます。
+メールでLoomioのグループにメンバーを招待するか、ニュースレター、チャット、ウェブサイトでグループへのリンクを共有できます。まず、グループページの**メンバー**タブを開きます。
 
 ![](group_join_group_invite.png)
 

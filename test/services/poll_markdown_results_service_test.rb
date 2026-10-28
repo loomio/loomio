@@ -12,12 +12,12 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
 
   SIMPLE_COLUMNS = {
     "proposal" => %w[chart name votes votes_cast_percent voter_percent voters],
-    "check" => %w[chart name voter_percent voter_count voters],
-    "count" => %w[chart name target_percent voter_count voters],
-    "poll" => %w[chart name score_percent voter_count voters],
-    "score" => %w[chart name score average voter_count],
-    "dot_vote" => %w[chart name score_percent score average voter_count],
-    "ranked_choice" => %w[chart name rank score_percent score average voter_count]
+    "check" => %w[chart name voter_percent vote_count voters],
+    "count" => %w[chart name target_percent vote_count voters],
+    "poll" => %w[chart name score_percent vote_count voters],
+    "score" => %w[chart name score average vote_count],
+    "dot_vote" => %w[chart name score_percent score average vote_count],
+    "ranked_choice" => %w[chart name rank score_percent score average vote_count]
   }.freeze
 
   setup do
@@ -41,7 +41,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
           voter_percent: 50,
           target_percent: 75,
           average: 4.0,
-          voter_count: 0
+          vote_count: 0
         }]
       )
 

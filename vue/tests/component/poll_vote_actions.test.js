@@ -19,7 +19,7 @@ function pollActions(overrides = {}) {
   const poll = {
     key: 'poll123',
     anonymous: false,
-    decidedVotersCount: 1,
+    voteCountCast: 1,
     discardedAt: null,
     closedAt: null,
     openedAt: '2026-09-24T00:00:00Z',
@@ -41,7 +41,7 @@ describe('poll vote actions', () => {
     expect(actions.view_votes.canPerform()).toBe(true);
     expect(actions.view_votes.to()).toBe('/p/poll123/votes');
     expect(actions.view_votes.dock).toBe(2);
-    expect(pollActions({decidedVotersCount: 0}).view_votes.canPerform()).toBe(false);
+    expect(pollActions({voteCountCast: 0}).view_votes.canPerform()).toBe(false);
     expect(pollActions({discardedAt: '2026-09-25T00:00:00Z'}).view_votes.canPerform()).toBe(false);
   });
 
@@ -50,7 +50,7 @@ describe('poll vote actions', () => {
     expect(pollActions({anonymous: true}).view_votes.canPerform()).toBe(false);
 
     mocks.canViewAnonymousVoters.mockReturnValue(true);
-    expect(pollActions({anonymous: true, decidedVotersCount: 0}).view_votes.canPerform()).toBe(true);
+    expect(pollActions({anonymous: true, voteCountCast: 0}).view_votes.canPerform()).toBe(true);
   });
 
   it('opens voter management only for eligible coordinators while the poll is active', () => {
@@ -61,6 +61,7 @@ describe('poll vote actions', () => {
     actions.announce_poll.perform();
     expect(mocks.openModal).toHaveBeenCalledWith({
       component: 'PollMembers',
+      persistent: false,
       props: {poll: expect.objectContaining({key: 'poll123'})}
     });
     expect(pollActions({closedAt: '2026-09-25T00:00:00Z'}).announce_poll.canPerform()).toBe(false);

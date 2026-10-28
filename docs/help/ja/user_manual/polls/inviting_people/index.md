@@ -1,10 +1,10 @@
 ---
 title: 投票に招待する
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 8f87b6e6b3e25a97
   invite-people-to-vote-in-a-poll: a6fc7e7b0ae4a0d6
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: 6f3228f1d5dab373
   engage-people-while-a-poll-is-running: eef79ac1d5980464
   add-voters-to-the-poll: ae6b8b389ce12125
-  remove-people-from-the-poll: 31a3fca1759f8209
+  remove-people-from-the-poll: fd9af5b1bd5c7d55
   remind-people-to-vote: 862645ba318945ab
   view-notification-history: 3d57fe3583c72c7a
   close-early: 3bf9b98777d391b8
-  reopen: 3f0b0b428f2f79ae
+  reopen: 07eef6778bb54e08
 title_source: 4801d1a3dba7ce3d
 title_generated: '010598b1d68b0563'
 ---
@@ -104,7 +104,7 @@ title_generated: '010598b1d68b0563'
 
 例えば、理事会のメンバーに代わってアンケートを作成した管理者は、自分に投票する権限がない場合、自分自身を削除できます。
 
-票の重みを使用するアンケートでは、アンケートのコーディネーターが同じウィンドウで[票の重みを確認・編集](/en/user_manual/polls/weighted_voting)できます。
+票の重みを使用するアンケートでは、スレッド管理者が同じウィンドウで[票の重みを確認・編集](/en/user_manual/polls/weighted_voting)できます。
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ title_generated: '010598b1d68b0563'
 
 締め切り済みのアンケートで**再開**を選択し、新しい締め切り日時を設定します。
 
-匿名のアンケートは再開できません。
+匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。締め切り前であれば、締め切り日時を延長できます。
 
 ![](proposal_reopen.png)

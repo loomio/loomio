@@ -1,12 +1,12 @@
 ---
 title: Enquetes
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: a9cffe2617d5f103
+  introduction: 1aeb490073747519
   simple-poll: a4b59ef35f8c9eb6
   score-poll: 3c3955685a6cc6db
   dot-vote: 4fe6b1ffa387d925
@@ -30,6 +30,15 @@ title_generated: 7a15afaf1bd7bdbf
 # Enquetes
 
 As enquetes coletam seleções, pontuações, distribuições de pontos, classificações, disponibilidade ou votos em eleições. Escolha o método de votação com base no que os participantes precisam expressar e em como você pretende usar o resultado. Use uma [Proposta](/en/user_manual/polls/proposals/) quando as pessoas precisarem responder a uma declaração ou a um curso de ação.
+
+| O que você quer fazer | Método | Como funciona o resultado |
+| --- | --- | --- |
+| Encontrar opções populares ou criar uma lista reduzida | [Escolher](/en/user_manual/polls/choose) (múltipla escolha) | Conta as seleções de cada opção |
+| Comparar a intensidade do apoio às opções | [Pontuar](/en/user_manual/polls/score) | Combina avaliações em uma escala comum |
+| Definir prioridades com um número limitado de pontos | [Distribuir](/en/user_manual/polls/allocate) (enquete de distribuição) | Soma os pontos distribuídos para cada opção |
+| Ordenar opções por preferência | [Classificar](/en/user_manual/polls/rank) (enquete de classificação) | Combina as classificações em uma ordem baseada em pontos |
+| Encontrar um horário para uma reunião | [Enquete de horário](/en/user_manual/polls/meeting_polls) | Mostra a disponibilidade para cada horário |
+| Eleger vários representantes de forma proporcional | [Eleição STV](/en/user_manual/polls/stv) | Apura votos com candidatos ordenados por preferência para eleger vários vencedores |
 
 <!-- translation-section: simple-poll -->
 

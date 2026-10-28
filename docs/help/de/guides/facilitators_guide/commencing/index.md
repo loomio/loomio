@@ -1,10 +1,10 @@
 ---
 title: Beginn
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/guides/facilitators_guide/commencing/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/guides/facilitators_guide/commencing/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 87ee3ad32a430187
   invitation: b671f8d5413b5b4d
@@ -12,7 +12,7 @@ sections:
   welcoming: 66e7e79597f6a3d0
   settling: e02aa72b5214d93a
   who-s-in-the-room: 02526b2df978f92b
-  check-in: cbc09557ae9534ef
+  check-in: 9f3f187dd0de59ab
   who-s-not-in-the-room: 21fcc8d3589e51c4
   culture-protocol-expectations: ee488948ed8403ca
 generated:
@@ -22,7 +22,7 @@ generated:
   welcoming: 1e72fc03bf7a47e8
   settling: 6206ead9b802c964
   who-s-in-the-room: 255b108f950c7e39
-  check-in: 922fc54934ea332b
+  check-in: 1f0c3e89b9f063a6
   who-s-not-in-the-room: 8ea2b589f7c1b0f9
   culture-protocol-expectations: d7bb6860c8f52fa7
 title_source: a595572326eb8669
@@ -105,7 +105,7 @@ Was Menschen äußern, steht nicht für sich allein, sondern im Zusammenhang dam
 Auf Loomio
 
 * Erstelle einen Thread mit dem Titel „Stell dich vor“ oder „Check-in“. Er bietet eine hilfreiche erste _Handlungsaufforderung_, die alle neu Hinzukommenden verstehen.
-* Für Gruppen, bei denen der Beitritt beantragt werden muss, gibt es eine Funktion, mit der sich die anfragende Person der koordinierenden Person vorstellen kann, um Zugang zur Gruppe zu erhalten. Manche Gruppen veröffentlichen diese Vorstellung anschließend im Vorstellungs-Thread, um neue Menschen willkommen zu heißen.
+* Für Gruppen, bei denen der Beitritt beantragt werden muss, gibt es eine Funktion, mit der sich die anfragende Person einem Gruppen-Admin vorstellen kann, um Zugang zur Gruppe zu erhalten. Manche Gruppen veröffentlichen diese Vorstellung anschließend im Vorstellungs-Thread, um neue Menschen willkommen zu heißen.
 * Lade Profilfotos hoch. Fotos von Gesichtern helfen besonders dabei, auch online das Gefühl zu haben, zu wissen, wer mit dir im Raum ist.
 
 <!-- translation-section: who-s-not-in-the-room -->

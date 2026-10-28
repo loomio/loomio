@@ -123,7 +123,7 @@ export default new class PollService {
         canPerform() {
           return !poll.discardedAt && (poll.anonymous
             ? AbilityService.canViewAnonymousVoters(poll)
-            : poll.decidedVotersCount > 0);
+            : poll.voteCountCast > 0);
         },
         to() { return `/p/${poll.key}/votes`; }
       },
@@ -139,6 +139,7 @@ export default new class PollService {
         perform() {
           return openModal({
             component: 'PollMembers',
+            persistent: false,
             props: { poll }
           });
         }
@@ -149,7 +150,7 @@ export default new class PollService {
         name: 'common.action.remind',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.votersCount < 2)) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.voteCountEligible < 2)) { return false; }
           return AbilityService.canAnnouncePoll(poll);
         },
         perform() {

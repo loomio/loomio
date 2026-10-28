@@ -14,31 +14,25 @@ class CommentTest < ActiveSupport::TestCase
     reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Conversation after voting'), actor: @user)
     assert_predicate reply, :persisted?
 
-    refute stance.poll.stances.latest.decided.exists?(participant_id: @admin.id)
+    refute stance.poll.stances.latest.cast.exists?(participant_id: @admin.id)
     direct = CommentService.create(comment: Comment.new(parent: stance, body: 'Before voting'), actor: @admin)
     assert_predicate direct, :persisted?
     nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Nested before voting'), actor: @admin)
     assert_predicate nested, :persisted?
-    refute_includes Comment.hidden_until_closed, nested
+    ReindexSearchDocumentWorker.perform_now('Comment', nested.id)
+    assert PgSearch::Document.exists?(searchable: nested)
   end
 
-  test "until closed search and export scope includes all poll comments at maximum depth" do
-    stance = cast_vote_in_new_poll(hide_results: 'off')
-    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'First reply'), actor: @user)
-    nested = CommentService.create(comment: Comment.new(parent: reply, body: 'Second reply'), actor: @admin)
-    deep = CommentService.create(comment: Comment.new(parent: nested, body: 'Third reply'), actor: @user)
-    direct = CommentService.create(comment: Comment.new(parent: stance.poll, body: 'Direct poll comment'), actor: @user)
-    ordinary = CommentService.create(comment: Comment.new(parent: @discussion, body: 'Ordinary discussion'), actor: @user)
-    stance.poll.update!(hide_results: 'until_closed')
+  test "vote replies require until-closed results to be available even outside the service" do
+    stance = cast_vote_in_new_poll(hide_results: 'until_closed')
+    comment = Comment.new(parent: stance, body: 'Reply before closing', author: @admin)
+    assert_not comment.valid?
+    assert_includes comment.errors.attribute_names, :parent
+    assert_not @admin.can?(:create, comment)
 
-    [reply, nested, deep, direct].each do |comment|
-      assert_includes Comment.hidden_until_closed, comment
-      assert @user.can?(:show, comment)
-    end
-    refute_includes Comment.hidden_until_closed, ordinary
-    assert Comment.new(parent: deep, body: 'Hidden nested reply', author: @user).valid?
     PollService.close(poll: stance.poll, actor: @admin)
-    assert_empty Comment.hidden_until_closed
+    assert comment.valid?
+    assert @admin.can?(:create, comment)
   end
 
   test "replies to votes are allowed when results are always visible" do
@@ -65,6 +59,29 @@ class CommentTest < ActiveSupport::TestCase
     CommentService.create(comment: comment, actor: @user)
 
     assert_not_includes comment.mentioned_users, @alien
+  end
+
+  test "only html comments with headings are pinned when posted" do
+    [['html', '<h2>Section</h2>', true], ['html', '<p>Paragraph</p>', false],
+     ['md', '<h2>Literal markup</h2>', false]].each do |format, body, pinned|
+      comment = CommentService.create(comment: Comment.new(parent: @discussion, body: body, body_format: format), actor: @user)
+
+      assert_predicate comment, :persisted?
+      assert_equal @user, comment.reload.user
+      assert_equal pinned, comment.created_topic_item.pinned
+    end
+  end
+
+  test "a comment at the length limit can be posted and discarded after the limit is lowered" do
+    @discussion.topic.update!(comment_length_max: 5)
+    comment = CommentService.create(comment: Comment.new(parent: @discussion, body: '<p>12345</p>', body_format: 'html'), actor: @user)
+    assert_predicate comment, :persisted?
+    @discussion.topic.update!(comment_length_max: 4)
+
+    CommentService.discard(comment: comment, actor: @user)
+
+    assert_predicate comment.reload, :discarded?
+    assert_equal @user.id, comment.discarded_by
   end
 
   private

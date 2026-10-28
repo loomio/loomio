@@ -2,18 +2,24 @@ module Searchable
   extend ActiveSupport::Concern
   include PgSearch::Model
 
-	included do
-	  multisearchable
-	end
+  included do
+    multisearchable
+    skip_callback :save, :after, :update_pg_search_document
+    after_save_commit :enqueue_search_index_update, if: -> { PgSearch.multisearch_enabled? }
+  end
 
-  module ClassMethods
-	  def rebuild_pg_search_documents
-	    connection.execute pg_search_insert_statement 
-	  end
+  class_methods do
+    def rebuild_pg_search_documents
+      connection.execute pg_search_insert_statement
+    end
 
-	  def pg_search_insert_statement(id: nil, author_id: nil)
-	  	raise "expected to be overwritten"
-	  end
+    def pg_search_insert_statement(id: nil, author_id: nil)
+      raise 'expected to be overwritten'
+    end
+  end
+
+  def enqueue_search_index_update
+    ReindexSearchDocumentWorker.perform_later(self.class.name, id)
   end
 end
 

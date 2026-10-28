@@ -1,13 +1,13 @@
 ---
 title: Je profiel
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 34f9d731cdddcef1
-  edit-profile: ea2dc3ccf673c255
+  introduction: a35b4a423bbdfe39
+  edit-profile: 2229cb1b25e0fb50
   update-your-personal-info: a318e9a34f185d43
   viewing-another-person-s-profile: f502553be32b3213
   uploading-a-profile-photo: 586e73511f94118f
@@ -32,25 +32,14 @@ title_generated: 02676a8214e00e60
 <!-- translation-section: introduction -->
 
 # Je profiel
-Aan je Loomio-gebruikersprofiel herkennen mensen je.  
 
-Als mensen elkaar op Loomio herkennen, helpt dat om vertrouwen en authenticiteit op te bouwen en stimuleert dat oprechte deelname. Daarom moedigen we je aan om waar mogelijk jezelf te zijn en een foto of avatar toe te voegen.
+Je profiel helpt mensen je te herkennen in Loomio. Voeg een foto, een introductie en andere gegevens toe die je wilt delen.
 
 <!-- translation-section: edit-profile -->
 
 ## Profiel bewerken
 
-Op je profielpagina kun je jouw Loomio-identiteit aanpassen. Selecteer **Profiel bewerken** in het gebruikersmenu om je profielpagina te openen. Je vindt dit menu door bovenaan de zijbalk op je naam te klikken.
-
-Als de zijbalk gesloten is, klik dan op het menupictogram (**☰**) om deze te openen.
-
-![](sidebar_menu.png)
-
-Klik op het pijltje omlaag rechts van je naam.
-
-![](sidebar_profile.png)
-
-Klik op **Profiel bewerken**
+Open je gebruikersmenu door je naam in de zijbalk te selecteren en selecteer vervolgens **Profiel bewerken**. Als de zijbalk gesloten is, open je deze met de menuknop (**☰**).
 
 ![](edit_profile.png)
 

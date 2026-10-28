@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "24",
+    "node": "26",
     "npm": "11.16.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24",
+      "version": "26",
       "onFail": "error"
     },
     "packageManager": {
@@ -65,7 +65,7 @@
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.1",
-    "emojibase-data": "^17.0.0",
+    "emojibase-data": "^18.0.0",
     "lodash-es": "latest",
     "lokijs": "1.5.12",
     "marked": "^4.3.0",
@@ -79,7 +79,7 @@
     "vue-i18n": "^11.4.0",
     "vue-router": "^5.4.0",
     "vue-slicksort": "^2.0.5",
-    "vuetify": "4.2.6",
+    "vuetify": "4.3.0",
     "y-indexeddb": "^9.0.12",
     "y-protocols": "^1.0.1",
     "yjs": "13.6.33"
@@ -93,7 +93,7 @@
     "pagefind": "1.5.2",
     "pug": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "8.3.4",
+    "vite": "8.3.5",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "vitest": "^5.0.5",

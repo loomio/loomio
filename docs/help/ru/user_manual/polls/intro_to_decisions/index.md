@@ -1,10 +1,10 @@
 ---
 title: Предложения и опросы
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: a629c4c527967a1d
   find-the-right-help: 937b0d39483edc74
@@ -33,12 +33,10 @@ generated:
   1-create-it: 5faa0bf81eb9fa66
   2-voting-opens: 295b463eb09fe839
   3-people-vote: 33512da26bfb7021
-  4-it-closes: 4fb587bd842397f8
-  5-share-an-outcome: 04c6ef034c5a5c10
+  4-it-closes: 6747780819a3a481
+  5-share-an-outcome: e3b7af60cd24a803
 title_source: d45b4ba3cb7a27cb
 title_generated: b80340baf18daea4
-needs_review:
-  5-share-an-outcome: check the interface label "**Дата рассмотрения**" for "**Review date**"
 ---
 
 <!-- translation-section: introduction -->
@@ -152,18 +150,18 @@ needs_review:
 
 ### 4. Закрытие
 
-Опрос закрывается автоматически в назначенное время. Координатор опроса также может закрыть его досрочно. После закрытия координатор опроса может возобновить голосование, назначив новое время закрытия, чтобы люди могли продолжить голосовать. В анонимных опросах нельзя возобновить голосование.
+Опрос закрывается автоматически в назначенное время. Администратор ветки также может закрыть его досрочно. После закрытия администратор ветки может возобновить голосование, назначив новое время закрытия, чтобы люди могли продолжить голосовать. В опросах, где результаты скрыты до закрытия голосования, включая анонимные опросы, нельзя возобновить голосование. Пока такие опросы ещё открыты, вы можете продлить срок голосования.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Поделитесь выводом
 
-Когда опрос закрывается, Loomio просит его координаторов поделиться выводом.
+Когда опрос закрывается, Loomio просит администраторов ветки поделиться выводом.
 
 ![Запрос на ввод вывода после закрытия предложения](outcome_prompt.png)
 
 Вывод описывает, какое решение принято и что произойдёт дальше. Он отображается над результатами, поэтому люди читают его первым. При публикации вывода вы можете уведомить людей. Они получат письмо с результатами и выводом.
 
-Вы также можете установить **Дату рассмотрения**. В этот день Loomio напомнит вам пересмотреть решение.
+Вы также можете указать дату в поле **Дата рассмотрения**. В этот день Loomio напомнит вам пересмотреть решение.
 
 ![Опубликованный вывод с датой рассмотрения](outcome_published.png)

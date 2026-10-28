@@ -1,23 +1,23 @@
 ---
 title: Gruppi
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 81d8e340d2ee4456
-  administration-facilitation-and-moderation-code-of-conduct: f5e0c19c83cba888
+  introduction: bc6967c16a4da2f5
+  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
 generated:
-  introduction: 9c6e2d2f6d83c391
-  administration-facilitation-and-moderation-code-of-conduct: c7b3d61e447d777b
+  introduction: ac2301b0eac9d180
+  administration-facilitation-and-moderation-code-of-conduct: 812787bd6188fd28
 title_source: 39bbb719fa2b9d22
 title_generated: 14d4b57af43b19a6
 ---
 
 <!-- translation-section: introduction -->
 
-# Introduzione ai gruppi
+# Gruppi
 
 Un gruppo Loomio è uno spazio sicuro in cui le persone possono incontrarsi, avere discussioni e prendere decisioni.
 
@@ -27,13 +27,9 @@ Un gruppo Loomio si presenta così. In cima alla pagina vedrai un'immagine e un 
 
 ![La pagina del gruppo Oatmilk Cooperative, con la descrizione e l'elenco delle discussioni](group_page.png)
 
-Scegli un nome rappresentativo per il tuo gruppo e usa la descrizione del gruppo per spiegare:
-- **a cosa** serve questo gruppo,
-- **perché** è importante,
-- **chi** è coinvolto e
-- **come** possono partecipare i membri.
+Dai al tuo gruppo un nome riconoscibile e usa la descrizione per spiegare il suo scopo, chi è coinvolto e come possono partecipare i membri. Puoi anche aggiungere un logo, un'immagine di copertina e link a documenti come il mandato del gruppo.
 
-Puoi anche includere un codice di condotta, un mandato o altri documenti che regolano il funzionamento del gruppo.
+Per iniziare, [crea un gruppo](/en/user_manual/groups/starting_a_group), scegli le sue [impostazioni di privacy](/en/user_manual/groups/settings/privacy) e [invita persone](/en/user_manual/groups/inviting_people).
 
 Se stai preparando un nuovo gruppo, consulta [Presentare Loomio al tuo gruppo](/en/user_manual/overview/introducing_loomio) per una sequenza pratica di passaggi, dalla scelta della prima attività alla registrazione di una conclusione.
 
@@ -41,10 +37,4 @@ Se stai preparando un nuovo gruppo, consulta [Presentare Loomio al tuo gruppo](/
 
 ## Amministrazione, facilitazione e moderazione - Codice di condotta
 
-Loomio è progettato per favorire la partecipazione inclusiva, la diversità e la fiducia, aiutando i gruppi a prendere decisioni migliori insieme.
-
-Alcuni argomenti creano tensioni in un gruppo. È quindi importante permettere una discussione approfondita, mantenendo al tempo stesso uno spazio sicuro, soprattutto per le persone vulnerabili del tuo gruppo.
-
-Ti consigliamo di stabilire un codice di condotta per il tuo gruppo, per aiutare tutti a comprendere la propria responsabilità nel comportarsi in modo appropriato e incoraggiare l'autoregolazione.
-
-Consulta la [Guida alla facilitazione](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) per approfondire il valore di un codice di condotta.
+Un codice di condotta può aiutare i membri a capire come partecipare e come il gruppo risponderà ai comportamenti inappropriati. Consulta la [Guida alla facilitazione](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) per indicazioni su come definire le aspettative.

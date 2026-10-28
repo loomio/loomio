@@ -1,19 +1,19 @@
 ---
 title: Requisitos de percentual de votos
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 1fe00d5014b7f234
-  eligible-voters-and-votes-cast: c586a145a40e8c35
-  different-vote-share-requirements: 732924676a1cb15a
+  eligible-voters-and-votes-cast: 565e00910031c662
+  different-vote-share-requirements: 410cee5ab8526180
   detailed-example: 223a7a2e2eb8d822
 title_source: a654891ca817844e
 title_generated: 4b196ba8657cc416
@@ -45,6 +45,8 @@ Uma proposta com um requisito de 75 por cento de concordância entre os eleitore
 
 Uma proposta com um requisito de 60 por cento de concordância entre os votos lançados pode ser aprovada quando 60 por cento dos votos enviados apoiarem a opção, independentemente da participação total. Adicione um quórum quando seu processo também exigir um nível mínimo de participação.
 
+Com a [votação ponderada](/en/user_manual/polls/weighted_voting), ambas as bases usam pesos. **Peso dos votos emitidos** compara o total ponderado da opção com o peso total de todos os votos lançados. **Peso dos votos elegíveis** compara o peso dos eleitores que escolheram a opção com o peso de todos os eleitores elegíveis, incluindo as pessoas que não votaram. Por exemplo, uma pessoa com peso do voto de 70, de um total elegível de 100, pode atender a um requisito de 60 por cento de concordância baseado no peso dos votos elegíveis.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Diferentes requisitos de percentual de votos
@@ -56,6 +58,8 @@ Uma proposta pode ter requisitos para mais de uma opção. Por exemplo:
 - O bloqueio deve corresponder a no máximo 0 por cento dos votos lançados
 
 Definir uma opção como **No máximo 0%** é uma prática comum. Isso significa que a proposta não pode ser aprovada se alguém escolher essa opção. Use esse requisito em **Bloqueio** para que um único bloqueio impeça a aprovação da proposta.
+
+Com a votação ponderada, apenas um bloqueio com peso do voto positivo ultrapassa um requisito de 0 por cento. Um bloqueio com peso `0` não acrescenta peso ao resultado.
 
 Você também pode adicionar requisitos a um [modelo de enquete](/en/user_manual/polls/poll_templates/) para que novas propostas criadas a partir do modelo os usem por padrão.
 

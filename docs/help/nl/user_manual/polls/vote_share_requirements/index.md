@@ -1,19 +1,19 @@
 ---
 title: Vereisten voor het stemmenaandeel
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: f5482ba462535d6e
-  eligible-voters-and-votes-cast: 0112f66d7ecf1b2c
-  different-vote-share-requirements: de390abee5e8c544
+  eligible-voters-and-votes-cast: 7bed4a8cf19aad93
+  different-vote-share-requirements: 0a7142705df6dee0
   detailed-example: 0fb7101cb612e110
 title_source: a654891ca817844e
 title_generated: 5730833b95912bf9
@@ -45,6 +45,8 @@ Bij een vereiste van 75 procent instemming onder kiesgerechtigde kiezers kan het
 
 Bij een vereiste van 60 procent instemming onder uitgebrachte stemmen kan het voorstel worden aangenomen als 60 procent van de ingediende stemmen de optie steunt, ongeacht de totale opkomst. Voeg een quorum toe als jouw besluitvormingsproces ook een minimale deelname vereist.
 
+Bij [gewogen stemmen](/en/user_manual/polls/weighted_voting) wordt voor beide berekeningsgrondslagen het stemgewicht gebruikt. **Uitgebracht stemgewicht** vergelijkt het gewogen totaal van de optie met al het uitgebrachte stemgewicht. **Stemgerechtigd stemgewicht** vergelijkt het stemgewicht van de kiezers die de optie kiezen met het stemgewicht van alle kiesgerechtigde kiezers, inclusief mensen die niet hebben gestemd. Eén persoon met 70 van de 100 eenheden kiesgerechtigd stemgewicht kan bijvoorbeeld voldoen aan een vereiste van 60 procent instemming op basis van kiesgerechtigd stemgewicht.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Verschillende vereisten voor het stemmenaandeel
@@ -56,6 +58,8 @@ Een voorstel kan vereisten hebben voor meer dan één optie. Bijvoorbeeld:
 - Veto's mogen niet meer dan 0 procent van de uitgebrachte stemmen vormen
 
 Een optie instellen op **Niet meer dan 0%** is gebruikelijk. Dit betekent dat het voorstel niet kan worden aangenomen als iemand die optie kiest. Gebruik deze instelling voor **Veto**, zodat één veto het voorstel tegenhoudt.
+
+Bij gewogen stemmen overschrijdt alleen een veto met een positief stemgewicht een vereiste van 0 procent. Een veto met stemgewicht `0` voegt geen stemgewicht toe aan het resultaat.
 
 Je kunt ook vereisten toevoegen aan een [peilingssjabloon](/en/user_manual/polls/poll_templates/), zodat nieuwe voorstellen die met het sjabloon worden gemaakt deze standaard gebruiken.
 

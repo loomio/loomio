@@ -139,6 +139,8 @@ ro:
     manage_subscription: Gestionați abonamentul
     amount: Cantitate
   loomio_tags:
+    show_tags_from_other_groups: Arată etichetele din alte grupuri
+    parent_group_and_subgroups_in_this_organization: Grupul părinte și subgrupurile acestei organizații
     all_tags: Toate etichetele
     tags: Etichete
     apply_tags: Aplica etichete
@@ -248,7 +250,7 @@ ro:
       open: Deschis
       closed: Inchis
       private: Confidential
-      parent_members: "Vizibil pentru grupul părinte"
+      parent_members: Vizibil pentru grupul părinte
       secret: Secret
     selected: Selectat
     today: astăzi
@@ -996,10 +998,10 @@ ro:
       everyone_in_the_group: Toți cei din grup
       topic: Toată lumea din fir
       voters: Toți sunt invitați la vot
-      decided_voters: Toți cei care au votat
-      undecided_voters: Alegători nehotărâți
       non_voters: Membrii grupului %{name} nu au fost încă invitați
       delegates_of_group: Delegații ai %{name}
+      everyone_who_voted: Toți cei care au votat
+      people_who_have_not_voted: Cei care nu au votat
     form:
       group_has_no_members_yet: Sunteți singurul membru al grupului dvs. Poate doriți să invitați câteva persoane în grupul dvs. înainte de a începe o discuție sau o decizie.
       invite_people_to_evaluate_loomio: Invitați câteva persoane în grupul dvs. Loomio pentru a lua o decizie împreună
@@ -1067,7 +1069,7 @@ ro:
       has_not_read_thread: Nu a văzut firul
       has_not_joined_yet: Nu s-a alăturat încă
       has_not_joined_yet_hint: Acest utilizator nu și-a acceptat invitația de a se alătura Loomio și nu va mai primi notificări până nu o va face
-      discussion_admin: Administrator discuții
+      discussion_admin: Admin subiect
       has_not_read_discussion: Nu a vizualizat discuția
     group_form:
       search_placeholder: Cauta oameni...
@@ -1081,6 +1083,8 @@ ro:
     topic_notification_history: Istoricul notificărilor firului de discuție
     notification_history: Istoricul notificărilor
   action_dock:
+    add_to_timeline: Adaugă în cronologie
+    remove_from_timeline: Elimină din cronologie
     actions_menu: Meniul Acțiuni
     more_actions: Mai multe actiuni
     react: Reacţiona
@@ -1423,9 +1427,9 @@ ro:
     confirm_change_to_public: Daca vei continua, toate discutiile vor deveni publice pe web.
     confirm_change_to_private_discussions_only: Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.
     profile: Profil
-    subgroup_name_and_content_are_public: "Oricine poate găsi acest subgrup și îi poate citi firele"
-    subgroup_name_is_public_and_threads_are_private: "Oricine poate găsi acest subgrup; firele sale sunt private"
-    subgroup_is_visible_to_parent_members: "Membrii %{parent} pot găsi acest subgrup; firele sale sunt private"
+    subgroup_name_and_content_are_public: Oricine poate găsi acest subgrup și îi poate citi firele
+    subgroup_name_is_public_and_threads_are_private: Oricine poate găsi acest subgrup; firele sale sunt private
+    subgroup_is_visible_to_parent_members: Membrii %{parent} pot găsi acest subgrup; firele sale sunt private
     subgroup_privacy_is_open_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt publice.
     subgroup_privacy_is_closed_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt private.
     subgroup_privacy_is_closed_public_threads_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Firele pot fi publice sau private.
@@ -1433,9 +1437,9 @@ ro:
     subgroup_privacy_is_secret_description: Numai membrii invitați pot găsi acest subgrup, pot vedea cine face parte din el și pot vedea firele.
     advanced_settings: Setari avansate
     how_do_people_join: Cum se alătură oamenii?
-    join_without_approval: "Alătură-te fără aprobare"
-    request_to_join: "Cere să te alături"
-    invitation_only: "Doar cu invitație"
+    join_without_approval: Alătură-te fără aprobare
+    request_to_join: Cere să te alături
+    invitation_only: Doar cu invitație
     permissions: Permisiuni
     thread_privacy: Confidentialitatea discutiei
     public_threads: Doar discutii publice
@@ -1443,8 +1447,8 @@ ro:
     public_or_private_threads: Permite discutii publice si private
     private_threads: Numai membrii pot vedea discuțiile
     allow_public_threads: Permite discutii publice in acest grup
-    parent_group_members_can_see_private_threads: "Membrii grupului părinte pot vedea firele private"
-    parent_group_members_can_see_private_threads_help: "Permite membrilor din %{parent} să vadă firele și sondajele din acest grup, fără să participe"
+    parent_group_members_can_see_private_threads: Membrii grupului părinte pot vedea firele private
+    parent_group_members_can_see_private_threads_help: Permite membrilor din %{parent} să vadă firele și sondajele din acest grup, fără să participe
     members_can_announce: Membrii pot notifica pe toți membrii grupului
     members_can_announce_help: Permiteți membrilor să notifice pe toți cei din grup despre o discuție sau un sondaj
     members_can_add_members: Membrii pot invita membri
@@ -1599,7 +1603,7 @@ ro:
     title_helptext:
       group: Acest titlu va apărea lângă numele lui %{name} în cadrul acestui grup. Folosiți-l pentru a le informa oamenilor rolul lor.
     title_label: titlu
-    title_placeholder: De exemplu, „coordonator” sau „facilitator”
+    title_placeholder: De exemplu, „Admin” sau „Facilitator”
     updated: Titlul de membru a fost actualizat
     weight_label: Ponderea voturilor
   user_name_modal:
@@ -1771,7 +1775,6 @@ ro:
       all: Discuții recente
     thread_preview:
       you_voted: Ai votat %{position}
-      undecided: Nu ai votat
     threads_from:
       group: Discutii de la
       pinned: Fire fixate
@@ -1991,6 +1994,18 @@ ro:
     for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească…
     for_the_poll_to_be_valid: Pentru ca %{poll_type} să fie valid, această opțiune trebuie să primească…
     points_cast: Puncte distribuite
+    eligible_vote_weight: Ponderea voturilor eligibile
+    vote_weight_cast: Ponderea voturilor exprimate
+    name_gte_eligible_vote_weight: "%{name} are nevoie de cel puțin %{percent}% din ponderea voturilor eligibile"
+    name_lte_eligible_vote_weight: "%{name} nu trebuie să depășească %{percent}% din ponderea voturilor eligibile"
+    name_gte_vote_weight_cast: "%{name} are nevoie de cel puțin %{percent}% din ponderea voturilor exprimate"
+    name_lte_vote_weight_cast: "%{name} nu trebuie să depășească %{percent}% din ponderea voturilor exprimate"
+    total_assigned_vote_weight: Ponderea totală alocată a voturilor
+    weighted_votes_cast: Voturi ponderate exprimate
+    name_gte_assigned_vote_weight: "%{name} are nevoie de cel puțin %{percent}% din ponderea totală alocată a voturilor"
+    name_lte_assigned_vote_weight: "%{name} nu trebuie să depășească %{percent}% din ponderea totală alocată a voturilor"
+    name_gte_weighted_votes_cast: "%{name} are nevoie de cel puțin %{percent}% din voturile ponderate exprimate"
+    name_lte_weighted_votes_cast: "%{name} nu trebuie să depășească %{percent}% din voturile ponderate exprimate"
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -2107,6 +2122,9 @@ ro:
     pct_of_weighted_votes: "% din voturile ponderate"
     pct_of_weighted_points: "% din punctele ponderate"
     weighted_mean: Medie ponderată
+    pct_of_eligible_vote_weight: "% din ponderea voturilor eligibile"
+    pct_of_vote_weight_cast: "% din ponderea voturilor exprimate"
+    pct_of_assigned_vote_weight: "% din ponderea alocată a voturilor"
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2271,18 +2289,14 @@ ro:
     started_by: Început de %{name}
   poll_common_votes_panel:
     vote_removed: Votul a fost eliminat
-    undecided: Nu au votat
     newest_first: Cel mai nou primul
     oldest_first: Cei mai in varsta primii
     priority_first: Mai întâi de acord
     priority_last: Blocați mai întâi
-    undecided_first: Mai întâi cei care nu au votat
     no_votes_yet: Nu au fost plasate încă voturi.
     change_results_order: Modificați ordinea rezultatelor
     none_of_the_above: "(Nici una dintre cele de mai sus)"
     name_or_username: Nume sau nume de utilizator
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Motivul a fost redactat
     redact_reason_title: Se elimină motivul votului?
     redact_reason_helptext: Motivul pentru care textul și atașamentele vor fi ascunse, dar votul va rămâne în rezultate
@@ -2297,15 +2311,6 @@ ro:
     stance: Vot
     participation_records_restricted: Puteți vedea cine a participat după închiderea votului
     vote_weight: Ponderea voturilor %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Afișați %{count} nehotărâți
-    show_invitations: Afișați invitațiile în așteptare
-    undecided_users: Nu au votat (%{count})
-    invitation_count_singular: O persoană suplimentară a fost invitată să participe prin e-mail
-    invitation_count_plural: "%{count} persoane suplimentare au fost invitate să participe prin e-mail"
-  poll_common_undecided_user:
-    reminded: Memento trimis!
-    reminder_sent: Notificare de memento trimisă
   poll_common_set_outcome_panel:
     enter_outcome: Introduceți rezultatul
     poll_type: Acest %{poll_type} s-a închis. Fă-ți timp să analizezi rezultatele, apoi distribuie o concluzie ca oamenii să știe ce urmează.
@@ -2439,13 +2444,17 @@ ro:
     votes_short_of_quorum: Sunt necesare încă %{num} voturi pentru a atinge cvorumul de %{pct}%
     quorum_reached: Cvorumul de %{pct}% a fost atins
     pct_participation: "%{num} din %{total} voturi exprimate (%{pct}% participare)"
+    pct_vote_weight_participation: "%{num} din %{total} voturi exprimate (%{pct}% din ponderea voturilor)"
+    pct_of_eligible_vote_weight_must_participate: Trebuie exprimat %{pct}% din ponderea voturilor eligibile
+    pct_weighted_participation: "%{num} din %{total} voturi exprimate (%{pct}% din ponderea alocată a voturilor a fost exprimată)"
+    pct_of_assigned_vote_weight_must_participate: Trebuie exprimat %{pct}% din ponderea totală alocată a voturilor
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: Îți elimini votul?
-    helptext: Sigur vrei să îți ștergi votul? Vei apărea printre cei care nu au votat și poți vota din nou mai târziu, dacă vrei.
     confirm: Eliminați votul
     success: Vot sters
+    helptext_not_voted: Sigur vrei să îți elimini votul? Vei apărea la “Nu au votat” și poți vota din nou mai târziu dacă vrei.
   poll_poll_vote_form:
     stance_created: Vot creat
     stance_updated: Vot actualizat
@@ -2805,8 +2814,8 @@ ro:
       voting_title: Cu 24 de ore înainte de închiderea votării, trimiteți o reamintire către
       nobody: Nimeni
       author: Autor (eu)
-      undecided_voters: Alegătorii nehotărâți
       voters: Toți alegătorii
+      people_who_have_not_voted: Cei care nu au votat
     notify_on_participate:
       title: Anunță-mă când participă alții
       helptext_on: Când ești selectat, vei fi notificat de fiecare dată când cineva participă.
@@ -2972,6 +2981,10 @@ ro:
     weighted_voting_off_warning: Dezactivarea votului ponderat setează ponderea fiecărei voturi la 1. Orice ponderi ale votului modificate pentru acest sondaj se vor pierde.
     weighted_voting_on_group: Activarea votului ponderat copiază ponderea implicită a voturilor fiecărui membru. Ceilalți votanți primesc o pondere de 1.
     weighted_voting_on_direct: Activarea votului ponderat setează ponderea fiecărui vot la 1
+    quorum_vote_weight_hint: Ce procent din ponderea voturilor eligibile trebuie exprimat pentru ca rezultatul să fie valid? Opțional, lasă necompletat pentru a nu cere cvorum.
+    quorum_vote_weight_placeholder: Procent din ponderea voturilor eligibile (0–100)
+    quorum_voters_placeholder: Procent din alegătorii eligibili (0–100)
+    quorum_weighted_hint: Ce procent din ponderea totală alocată a voturilor trebuie exprimat pentru ca rezultatul să fie valid? Opțional, lasă necompletat pentru a nu cere cvorum.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
@@ -3214,7 +3227,7 @@ ro:
     stance: vot
   membership_notification_history:
     invitation_delivery_history: Istoricul livrării invitațiilor
-    email_delivery_blocked: "Loomio a blocat trimiterea e-mailurilor către această adresă"
+    email_delivery_blocked: Loomio a blocat trimiterea e-mailurilor către această adresă
     delivery_result:
       delivered: Livrat
       failed: Eșuat

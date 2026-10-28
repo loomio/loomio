@@ -209,11 +209,11 @@ class RecordCacheTest < ActiveSupport::TestCase
     admin = users(:admin)
     group = groups(:group)
     poll = PollService.create(params: {
-      title: 'Many undecided', poll_type: 'proposal', group_id: group.id,
+      title: 'Many uncast', poll_type: 'proposal', group_id: group.id,
       poll_option_names: %w[agree disagree], closing_at: 3.days.from_now, specified_voters_only: true
     }, actor: admin)
     voters = Array.new(Poll::RESULT_VOTER_IDS_MAX + 5) do |i|
-      User.create!(name: "Undecided #{i}", email: "undecided-cache-#{i}@example.com", email_verified: true).tap { |user| group.add_member!(user) }
+      User.create!(name: "Not voted #{i}", email: "uncast-cache-#{i}@example.com", email_verified: true).tap { |user| group.add_member!(user) }
     end
     PollService.invite(poll: poll, actor: admin, params: {recipient_user_ids: voters.map(&:id), notify_recipients: false})
     none_voter = voters.first
@@ -225,16 +225,16 @@ class RecordCacheTest < ActiveSupport::TestCase
     }, actor: admin)
     cache = RecordCache.new
 
-    cache.add_undecided_voter_ids([poll.reload, anonymous_poll])
-    cache.add_none_of_the_above_voter_ids([poll, anonymous_poll])
+    cache.add_voter_ids_uncast([poll.reload, anonymous_poll])
+    cache.add_voter_ids_none_of_the_above([poll, anonymous_poll])
 
-    undecided_ids = cache.scope[:undecided_voter_ids_by_poll_id][poll.id]
-    assert_equal Poll::RESULT_VOTER_IDS_MAX, undecided_ids.length
-    assert (undecided_ids - poll.undecided_voters.ids).empty?
-    assert cache.scope[:undecided_voter_ids_by_poll_id].key?(anonymous_poll.id)
-    assert_nil cache.scope[:undecided_voter_ids_by_poll_id][anonymous_poll.id]
-    assert_equal [none_voter.id], cache.scope[:none_of_the_above_voter_ids_by_poll_id][poll.id]
-    assert_nil cache.scope[:none_of_the_above_voter_ids_by_poll_id][anonymous_poll.id]
+    voter_ids_uncast = cache.scope[:voter_ids_uncast_by_poll_id][poll.id]
+    assert_equal Poll::RESULT_VOTER_IDS_MAX, voter_ids_uncast.length
+    assert (voter_ids_uncast - poll.voters_uncast.ids).empty?
+    assert cache.scope[:voter_ids_uncast_by_poll_id].key?(anonymous_poll.id)
+    assert_nil cache.scope[:voter_ids_uncast_by_poll_id][anonymous_poll.id]
+    assert_equal [none_voter.id], cache.scope[:voter_ids_none_of_the_above_by_poll_id][poll.id]
+    assert_nil cache.scope[:voter_ids_none_of_the_above_by_poll_id][anonymous_poll.id]
   end
 
   test 'excluded types do not create their cache indexes' do
@@ -336,6 +336,50 @@ class RecordCacheTest < ActiveSupport::TestCase
     assert_not cache.scope.key?(:change_notes_by_topic_item_id)
   end
 
+  test 'tagged topic and item metadata needs no additional cache queries' do
+    topic = topics(:discussion_topic)
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Tagged comment'), actor: actor)
+    TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: ['Opening'], actor: actor)
+    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['Reply'], actor: actor)
+    topic.reload
+    items = TopicItem.where(topic_id: topic.id).order(:id).to_a
+    cache = RecordCache.new
+    cache.scope[:anonymous_polls_by_topic_id] = {topic.id => false}
+
+    queries = capture_sql do
+      cache.add_topics([topic])
+      cache.add_topic_items(items)
+    end
+    assert_empty queries
+    assert topic.has_tagged_replies
+    assert_equal ['Opening', 'Reply'], topic.tags
+    queries = capture_sql do
+      items.each { |item| assert_equal item.tags, TopicItemSerializer.new(item).tags }
+    end
+    assert_empty queries
+  end
+
+  test 'loading tagged thread items uses the same query count as untagged items' do
+    topic = topics(:discussion_topic)
+    actor = users(:admin)
+    comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Reply'), actor: actor)
+    root = topic.topicable.created_topic_item
+    item = comment.created_topic_item
+    ordinary = ActiveRecord::Base.uncached do
+      capture_sql { RecordCache.for_collection([root, item], actor.id) }
+    end
+
+    TopicItemService.update_tags(topic_item: root, tags: ['Shared'], actor: actor)
+    TopicItemService.update_tags(topic_item: item, tags: ['Shared'], actor: actor)
+    tagged = ActiveRecord::Base.uncached do
+      capture_sql { RecordCache.for_collection([root, item], actor.id) }
+    end
+
+    assert_equal ordinary.length, tagged.length
+    assert_empty tagged.select { |sql| sql.include?('cardinality(tags)') || sql.include?('DISTINCT unnest') }
+  end
+
   def create_change_note_items(count)
     discussion = topics(:discussion_topic).topicable
     actor = users(:admin)
@@ -412,5 +456,134 @@ class RecordCacheTest < ActiveSupport::TestCase
 
     assert_equal topics(:trial_cleanup_poll), cache.scope[:topics_by_id][topics(:trial_cleanup_poll).id]
     assert_not poll.association(:topic).loaded?
+  end
+
+  test 'weighted poll totals are batched and serialize fractional results without per-poll queries' do
+    poll, stances = build_weighted_cache_poll
+    empty, = build_weighted_cache_poll(voters: false)
+    zero, = build_weighted_cache_poll
+    zero.stances.update_all(weight: 0)
+    zero.update_counts!
+    build_weighted_cache_poll # A separate poll must stay outside this response's batch.
+    [{latest: false}, {revoked_at: Time.current}].each do |attributes|
+      Stance.create!(poll: poll, participant: users(:alien), weight: 100,
+                     cast_at: Time.current, none_of_the_above: true, **attributes)
+      Stance.create!(poll: poll, participant: users(:subgroup_user), weight: 100, **attributes)
+    end
+    poll.update_counts!
+    cache = RecordCache.new
+    queries = capture_sql { cache.add_polls([poll, zero, empty]) }
+    assert_equal 1, queries.length
+    assert_equal [poll.id, zero.id, empty.id].sort, cache.scope[:vote_weight_eligible_by_poll_id].keys.sort
+
+    serializer = PollSerializer.new(poll, scope: {cache: cache})
+    queries = capture_sql do
+      assert_equal 2, serializer.vote_weight_eligible
+      assert_equal BigDecimal('0.75'), serializer.vote_weight_cast
+      assert_equal BigDecimal('1.25'), serializer.vote_weight_uncast
+      assert_equal BigDecimal('0.5'), serializer.vote_weight_none_of_the_above
+      assert_equal 37, serializer.participation_pct
+      assert_equal BigDecimal('1.2'), serializer.quorum_threshold
+      assert_equal BigDecimal('0.45'), serializer.quorum_shortfall
+      assert_equal false, serializer.quorum_reached
+      [zero, empty].each do |other|
+        other_serializer = PollSerializer.new(other, scope: {cache: cache})
+        assert_equal 0, other_serializer.vote_weight_eligible
+        assert_equal 0, other_serializer.vote_weight_cast
+        assert_equal 0, other_serializer.vote_weight_uncast
+        assert_equal 0, other_serializer.vote_weight_none_of_the_above
+        assert_equal 0, other_serializer.participation_pct
+        assert_equal false, other_serializer.quorum_reached
+      end
+    end
+    assert_empty queries
+
+    options = poll.poll_options.to_a
+    results = nil
+    queries = capture_sql do
+      results = PollService.calculate_results(poll, options,
+        voter_ids_uncast: [stances.last.participant_id], voter_ids_none_of_the_above: [stances[1].participant_id],
+        vote_weight_eligible: serializer.vote_weight_eligible,
+        vote_weight_uncast: serializer.vote_weight_uncast,
+        vote_weight_none_of_the_above: serializer.vote_weight_none_of_the_above)
+    end
+    assert_empty queries
+    rows = results.index_by { |row| row[:id] }
+    assert_equal 12.5, rows.fetch(options.first.id)[:voter_percent]
+    assert_equal true, rows.fetch(options.first.id)[:test_result]
+    assert_equal 25, rows.fetch(0)[:voter_percent]
+    assert_equal 62.5, rows.fetch(-1)[:voter_percent]
+    assert_equal 1.25, rows.fetch(-1)[:score]
+    assert_nil rows.fetch(-1)[:score_percent]
+
+    duplicate = Poll.find(poll.id)
+    assert_empty capture_sql { cache.add_polls([duplicate]) }
+    assert_empty capture_sql { assert_equal 37, PollSerializer.new(duplicate, scope: {cache: cache}).participation_pct }
+  end
+
+  test 'response weight aggregates do not memoize live model calculations' do
+    poll, stances = build_weighted_cache_poll
+    RecordCache.new.add_polls([poll])
+    stances.last.update!(weight: '2.25')
+    assert_equal 3, poll.vote_weight_eligible
+    assert_equal BigDecimal('2.25'), poll.vote_weight_uncast
+    assert_equal BigDecimal('1.8'), poll.quorum_threshold
+
+    stances[1].update!(weight: '1.5')
+    assert_equal 4, poll.vote_weight_eligible
+    assert_equal BigDecimal('1.75'), poll.vote_weight_cast
+    assert_equal BigDecimal('1.5'), poll.vote_weight_none_of_the_above
+
+    fresh_cache = RecordCache.new
+    fresh_cache.add_polls([poll])
+    serializer = PollSerializer.new(poll, scope: {cache: fresh_cache})
+    assert_equal 43, serializer.participation_pct
+    assert_equal BigDecimal('2.4'), serializer.quorum_threshold
+    assert_equal BigDecimal('0.65'), serializer.quorum_shortfall
+  end
+
+  test 'discarded polls keep turnout hidden when serialization uses weight aggregates' do
+    poll, = build_weighted_cache_poll
+    cache = RecordCache.new
+    cache.add_polls([poll])
+    poll.update_columns(discarded_at: Time.current)
+
+    assert_nil PollSerializer.new(poll, scope: {cache: cache}).participation_pct
+  end
+
+  test 'plain and anonymous polls do not load weighted electorate aggregates' do
+    plain = polls(:trial_cleanup_poll)
+    anonymous = PollService.create(params: {
+      title: 'Anonymous cache', poll_type: 'proposal', anonymous: true,
+      poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: users(:admin))
+    cache = RecordCache.new
+    assert_empty capture_sql { cache.add_polls([plain, anonymous]) }
+    refute cache.scope.key?(:vote_weight_eligible_by_poll_id)
+  end
+
+  private
+
+  def build_weighted_cache_poll(voters: true)
+    poll = PollService.create(params: {
+      title: 'Weighted cache', poll_type: 'proposal', weighted_voting: true,
+      specified_voters_only: true, show_none_of_the_above: true, quorum_pct: 60,
+      poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: users(:admin))
+    option = poll.poll_options.first
+    option.update!(test_operator: 'gte', test_against: 'voter_percent', test_percent: 10)
+    stances = if voters
+      [users(:admin), users(:user), users(:member)].zip(%w[0.25 0.5 1.25]).map do |voter, weight|
+        Stance.create!(poll: poll, participant: voter, weight: weight)
+      end
+    else
+      []
+    end
+    if voters
+      stances.first.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+      stances[1].update!(cast_at: Time.current, none_of_the_above: true)
+    end
+    poll.update_counts!
+    [poll, stances]
   end
 end

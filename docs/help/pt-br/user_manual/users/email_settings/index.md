@@ -1,10 +1,10 @@
 ---
 title: Notificações
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,7 +28,7 @@ generated:
   group-and-thread-notification-settings: 214c9379a2247841
   group-notification-settings: 8671049c6cc6b1d4
   thread-notification-settings: 91f564169d96ca5b
-  email-delivery: e0369573e1b61fa6
+  email-delivery: e659c590204db7f7
   enable-mobile-notifications-with-web-push: 72c767afbc5c110b
   turn-off-external-notifications: d39bcf1c9cb30db9
 title_source: 788011833a5a0f22
@@ -167,7 +167,7 @@ As configurações de notificação da conversa usam as mesmas opções: **Apena
 
 Por padrão, o Loomio envia um e-mail quando você recebe uma notificação. Dependendo das configurações de notificação dos seus grupos e conversas, isso pode incluir menções, respostas, discussões compartilhadas com você, convites e lembretes para votar, conclusões e enquetes prestes a encerrar. Escolha **Todas as atividades** para também receber e-mails sobre cada novo comentário, voto, conversa, enquete e conclusão.
 
-O link **Cancelar assinatura** em um e-mail de notificação abre as configurações dessa conversa ou grupo, inclusive nos e-mails enviados porque alguém mencionou você ou respondeu a você. Esse formulário mostra a frequência atual do seu e-mail de resumo para todos os grupos e contém um link para as configurações do e-mail de resumo. Esses links de e-mail autorizam o acesso apenas aos seus respectivos formulários de configuração; eles não conectam você ao Loomio.
+O link **Cancelar assinatura** em um e-mail de notificação abre as configurações dessa conversa ou grupo, inclusive nos e-mails enviados porque alguém mencionou você ou respondeu a você. Escolha **Apenas para assistir posteriormente** para interromper os e-mails imediatos e manter as atividades no seu e-mail de resumo. Você também pode alterar a frequência do e-mail de resumo na mesma página, em **E-mails de atualização (todos os grupos)**. Salve as configurações da conversa ou do grupo e a frequência do e-mail de resumo separadamente. Esses links de e-mail autorizam o acesso apenas aos seus respectivos formulários de configuração; eles não conectam você ao Loomio.
 
 Quando um e-mail de discussão informa que aceita respostas, você pode responder diretamente pelo e-mail, e sua mensagem será publicada na discussão do Loomio.
 

@@ -1,10 +1,10 @@
 ---
 title: Notifications
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,11 +28,13 @@ generated:
   group-and-thread-notification-settings: 875a66d19d62d0ee
   group-notification-settings: 9791f89c77a9e379
   thread-notification-settings: bdb437ec7bcb302e
-  email-delivery: 360d22cd59ea6e1c
+  email-delivery: abd883c6226d0fb9
   enable-mobile-notifications-with-web-push: f33eb00ecdd97ef6
   turn-off-external-notifications: a94845174f27ceae
 title_source: 788011833a5a0f22
 title_generated: 788011833a5a0f22
+needs_review:
+  email-delivery: use "e-mail récapitulatif" instead of "rattrapage" for "catch-up email"
 ---
 
 <!-- translation-section: introduction -->
@@ -167,7 +169,7 @@ Les paramètres de notification d’un fil proposent les mêmes choix : **Ratt
 
 Par défaut, Loomio envoie un e-mail lorsque vous recevez une notification. Selon les paramètres de notification de vos groupes et de vos fils, cela peut inclure les mentions, les réponses, les discussions partagées avec vous, les invitations et les rappels pour voter, les conclusions et les sondages qui vont bientôt se clôturer. Choisissez **Toute activité** pour recevoir également des e-mails à chaque nouveau commentaire, vote, fil, sondage et conclusion.
 
-Le lien **Se désinscrire** dans un e-mail de notification ouvre les paramètres du fil ou du groupe concerné, y compris pour les e-mails envoyés parce que quelqu’un vous a mentionné ou vous a répondu. Ce formulaire affiche la fréquence actuelle de votre e-mail récapitulatif pour tous les groupes et propose un lien vers les paramètres de l’e-mail récapitulatif. Ces liens autorisent uniquement l’accès à leurs propres formulaires de paramètres ; ils ne vous connectent pas à Loomio.
+Le lien **Se désinscrire** dans un e-mail de notification ouvre les paramètres du fil ou du groupe concerné, y compris pour les e-mails envoyés parce que quelqu’un vous a mentionné ou vous a répondu. Choisissez **Rattrapage uniquement** pour arrêter les e-mails immédiats tout en conservant l’activité dans votre e-mail récapitulatif. Vous pouvez également modifier la fréquence des e-mails récapitulatifs sur la même page, sous **E-mails récapitulatifs (tous les groupes)**. Enregistrez séparément les paramètres du fil ou du groupe et la fréquence des e-mails récapitulatifs. Ces liens autorisent uniquement l’accès à leurs propres formulaires de paramètres ; ils ne vous connectent pas à Loomio.
 
 Lorsqu’un e-mail de discussion indique que les réponses sont acceptées, vous pouvez répondre directement à cet e-mail et votre message sera publié dans la discussion Loomio.
 

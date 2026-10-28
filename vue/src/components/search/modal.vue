@@ -78,11 +78,11 @@ export default {
 
   methods: {
     fetch() {
-      if (!this.query) {
+      if (!this.query && !this.tag) {
         this.results = [];
       } else {
         this.loading = true;
-        this.resultsQuery = this.query;
+        this.resultsQuery = this.query || this.tag;
         Records.remote.get('search', {
           query: this.query,
           type: this.type,

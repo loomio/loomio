@@ -39,11 +39,6 @@ State an **outcome** when the proposal closes. Let everyone know the result of t
 ### Decision about property purchase
 At the last board meeting, a property purchase was discussed. A director required an independent engineering report before making the decision. At the board meeting, the board agreed to purchase the property subject to a satisfactory engineering report. However as the purchase must be made before the next board meeting, the board agreed to upload the engineering report to Loomio when ready, for discussion and to make the final decision for the property purchase on Loomio.
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### Decision to accept Directors and Officers Liability insurance
-During the board meeting it was noted that the annual insurance renewal was coming up. As this was considered to be an administrative matter, the board agreed to use Loomio to discuss the renewal application, seek the required information from each director, submit the application and to accept the insurance renewal quote.
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### A security breach has occurred at one of our facilities
@@ -53,36 +48,3 @@ A break-in and theft of property has occurred that has put the corporation and s
 
 ### A director has challenged the board about gender and diversity of board membership
 The director has provided good reasons and evidence that the board should diversify membership to be more representative of the corporation. Directors need to digest the information, ask questions, discuss the issue and decide a response.
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## Keeping a record of decisions made and supporting discussion
-
-Record keeping is a legal requirement for governance boards and good practice for committees.
-
-Today, many organizations record and store formal minutes, resolutions, policies and key decisions electronically. Document records are created and approved, distributed and used, retained and stored, and ultimately disposed of.
-
-<!-- translation-section: on-loomio-2 -->
-
-### On Loomio
-Minutes, reports, resolutions and other documents can be attached to a meeting **thread**, in the thread context, within a poll or any to thread comment.  This means the documents are always associated with the relevant discussion.
-
-A list of files can also be found under the **Files** tab.
-
-![](files_tab.png#width-90)
-
-You can also add a link within any thread or poll to a document stored in your preferred document management system.  Find the online shareable link to the document, copy and paste into your thread, poll or comment.
-
-Anyone with permission can then click the link to open and read the document.
-
-![](thread_link.png#width-90)
-
-Because Loomio discussions and decisions are always already documented, it provides a robust way to verify all your board's decision-making. You can easily demonstrate what was decided, and when. If directors have discussed and commented, as well as voted on a resolution—you will also know how and why each decision was reached.
-
-Over time, you are creating a history for your organization where you can easily search and find past decisions and related discussion.
-
-![](thread_search.png#width-90)
-
-In Loomio all data is written and stored on multiple disks and multiple locations, *in the cloud*, backed up daily.  Files uploaded are stored on servers that use modern techniques to remove bottlenecks and points of failure.

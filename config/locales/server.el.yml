@@ -112,7 +112,7 @@ el:
     add_guests:
       all: Πρέπει να αναβαθμίσετε τη συνδρομή σας στο Loomio για να προσθέσετε επισκέπτες. Εναλλακτικά, μπορείτε να τους προσκαλέσετε να γίνουν μέλη της ομάδας σας.
   errors:
-    item_you_are_replying_to_deleted: "Το στοιχείο στο οποίο απαντάτε έχει διαγραφεί"
+    item_you_are_replying_to_deleted: Το στοιχείο στο οποίο απαντάτε έχει διαγραφεί
     clear_cache: Εντοπίστηκε πρόβλημα φόρτωσης. Κρατήστε πατημένο το shift και πατήστε reload ή διαγράψτε την προσωρινή μνήμη του προγράμματος περιήγησής σας.
     404:
       title: Δεν βρέθηκε
@@ -197,7 +197,6 @@ el:
       poll_options_dont_match: Ένα σφάλμα με το Loomio εμπόδισε την αποθήκευση της ψήφου σας. Εργαζόμαστε για τη διόρθωση αυτού του προβλήματος. Παρακαλούμε επαναλάβετε τη φόρτωση και δοκιμάστε ξανά.
       opening_at_before_closing_at: Η ημερομηνία έναρξης πρέπει να είναι πριν από την ημερομηνία λήξης
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) μέλη έχουν δηλώσει τη θέση τους"
       title: Τίτλος
       author: Συγγραφέας
       email: Ηλεκτρονική Διεύθυνση
@@ -458,12 +457,8 @@ el:
       not_invited: Δεν έχει προσκληθεί
       please_respond: Παρακαλώ απαντήστε
       time_zone: "(Οι χρόνοι εμφανίζονται σε %{zone})"
-      undecided_members: Αναποφάσιστα μέλη (%{count})
-      undecided_visitors: Αναποφάσιστοι επισκέπτες (%{count})
-      more_undecided: "%{count} ακόμη..."
       vote_now: Ψηφίστε τώρα
       you_have_until: Έχετε μέχρι %{when} για να συμμετάσχετε.
-      people_have_voted: "%{nom} από %{dnom} άτομα έχουν συμμετάσχει (%{pct}%)"
       voting_opens_and_closes: Η ψηφοφορία ξεκινά %{opens} και κλείνει %{closes}. (%{days} ημέρες)
       voting_closes: Η ψηφοφορία λήγει %{when}.
       voting_opened_and_closed: Η ψηφοφορία ξεκίνησε %{opens} και έκλεισε %{closes}. (%{days} ημέρες)
@@ -782,9 +777,9 @@ el:
     voted: "%{author} ψήφισε %{response}"
     voted_hidden: "%{author} ψήφισε"
     vote_removed: "%{author}: η ψήφος αφαιρέθηκε"
-    undecided: "%{author}: δεν έχει ψηφίσει"
     superseded: αντικαταστάθηκε
     shared_outcome: Ο χρήστης %{author} κοινοποίησε ένα συμπέρασμα
     removed: Αφαιρέθηκε
+    not_voted: "%{author}: δεν έχει ψηφίσει"
   error:
     access_denied: Δεν έχετε άδεια να το κάνετε αυτό

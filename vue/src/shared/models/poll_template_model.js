@@ -28,11 +28,11 @@ export default class PollTemplateModel extends BaseModel {
       specifiedVotersOnly: false,
       pollType: null,
       chartType: null,
-      minScore: null,
-      maxScore: null,
-      minimumStanceChoices: null,
-      maximumStanceChoices: null,
-      dotsPerPerson: null,
+      scoreMin: null,
+      scoreMax: null,
+      choiceCountMin: null,
+      choiceCountMax: null,
+      pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
       limitReasonLength: true,
@@ -42,7 +42,7 @@ export default class PollTemplateModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       reasonPrompt: null,
       processName: null,
       processSubtitle: null,
@@ -86,6 +86,7 @@ export default class PollTemplateModel extends BaseModel {
     // Options are copied as nested attributes below, not as a plain setting.
     const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
     const attrs = pick(this, settings.map(camelCase));
+    attrs.tags = this.tags.slice();
     attrs.groupId = this.groupId;
     attrs.pollTemplateId = this.id;
     attrs.pollTemplateKey = this.key;

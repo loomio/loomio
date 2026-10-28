@@ -69,7 +69,7 @@ People cannot be removed from an anonymous poll.
 
 For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
 
-For polls that use vote weights, the same window lets poll coordinators [review and edit vote weights](/en/user_manual/polls/weighted_voting).
+For polls that use vote weights, the same window lets thread admins [review and edit vote weights](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -107,6 +107,6 @@ You might do this when everyone has voted or the poll no longer needs to remain 
 
 Select **Reopen** on a closed poll, then set a new closing date and time.
 
-Anonymous polls cannot be reopened.
+Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
 
 ![](proposal_reopen.png)

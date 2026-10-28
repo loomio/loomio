@@ -1,19 +1,19 @@
 ---
 title: Stimmenanteilsanforderungen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/vote_share_requirements/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 930bbc475f734396
-  different-vote-share-requirements: cfdfd13a0a6a8b38
+  eligible-voters-and-votes-cast: 2cf6ad55d557c189
+  different-vote-share-requirements: 0e81fb881e5c113e
   detailed-example: 395dbccb0e6427fc
 generated:
   introduction: 7cf89a31e178a57c
-  eligible-voters-and-votes-cast: 54fd4de6f9962379
-  different-vote-share-requirements: b20042d1d363ec3f
+  eligible-voters-and-votes-cast: 1a3c191783ed2969
+  different-vote-share-requirements: 475f7ad193d7bcc6
   detailed-example: cf1fb3aac04bcf51
 title_source: a654891ca817844e
 title_generated: 35ba3ce6df488414
@@ -45,6 +45,8 @@ Eine Anforderung von 75 Prozent Zustimmung der Wahlberechtigten ist nur erfüllt
 
 Eine Anforderung von 60 Prozent Zustimmung der abgegebenen Stimmen ist erfüllt, wenn 60 Prozent der abgegebenen Stimmen die Option unterstützen, unabhängig von der Gesamtbeteiligung. Füge ein Quorum hinzu, wenn dein Verfahren auch eine Mindestbeteiligung voraussetzt.
 
+Bei der [gewichteten Abstimmung](/en/user_manual/polls/weighted_voting) verwenden beide Bezugsgrößen Stimmgewichte. **Abgegebenes Stimmgewicht** setzt die Summe der Stimmgewichte für die Option ins Verhältnis zum gesamten abgegebenen Stimmgewicht. **Stimmgewicht der Stimmberechtigten** setzt das Stimmgewicht der Abstimmenden, die die Option wählen, ins Verhältnis zum Stimmgewicht aller Wahlberechtigten, einschließlich der Personen, die noch nicht abgestimmt haben. Beispielsweise kann eine Person mit 70 von insgesamt 100 wahlberechtigten Stimmgewichtseinheiten eine Anforderung von 60 Prozent Zustimmung auf Basis des wahlberechtigten Stimmgewichts erfüllen.
+
 <!-- translation-section: different-vote-share-requirements -->
 
 ## Unterschiedliche Stimmenanteilsanforderungen
@@ -56,6 +58,8 @@ Ein Vorschlag kann Anforderungen für mehrere Optionen haben. Zum Beispiel:
 - Veto darf höchstens 0 Prozent der abgegebenen Stimmen ausmachen
 
 Eine Option auf **Höchstens 0%** zu setzen, ist eine gängige Vorgehensweise. Das bedeutet, dass der Vorschlag nicht angenommen werden kann, wenn jemand diese Option auswählt. Verwende diese Einstellung für **Veto**, damit ein einziges Veto den Vorschlag stoppt.
+
+Bei gewichteter Abstimmung überschreitet nur ein Veto mit einem positiven Stimmgewicht eine Anforderung von 0 Prozent. Ein Veto mit dem Stimmgewicht `0` fügt dem Ergebnis kein Stimmgewicht hinzu.
 
 Du kannst auch einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates/) Anforderungen hinzufügen, damit neue Vorschläge aus dieser Vorlage sie standardmäßig verwenden.
 

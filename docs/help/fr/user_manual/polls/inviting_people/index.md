@@ -1,10 +1,10 @@
 ---
 title: Inviter au vote
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 7026cc87771fa677
   invite-people-to-vote-in-a-poll: 2d64beb0268b5fa1
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: e064c79d84104fcd
   engage-people-while-a-poll-is-running: a530412974474b5f
   add-voters-to-the-poll: f65da6c230b2ef55
-  remove-people-from-the-poll: 450502bc525e561f
+  remove-people-from-the-poll: 4a93d1127dfb3b81
   remind-people-to-vote: f8afa42653d3b138
   view-notification-history: 6eeef98f456967b3
   close-early: f5a4aef8c687d57f
-  reopen: f22bbf38b793638a
+  reopen: 5532e9c0d9b1b36a
 title_source: 4801d1a3dba7ce3d
 title_generated: 1e42d063ff2d1edc
 ---
@@ -104,7 +104,7 @@ Il est impossible de retirer des personnes d’un sondage anonyme.
 
 Par exemple, un administrateur qui crée un sondage au nom des membres d’un conseil peut se retirer s’il n’est pas autorisé à voter.
 
-Pour les sondages utilisant des poids du vote, cette même fenêtre permet aux coordinateurs du sondage de [consulter et modifier les poids du vote](/en/user_manual/polls/weighted_voting).
+Pour les sondages utilisant des poids du vote, cette même fenêtre permet aux administrateurs du fil de [consulter et modifier les poids du vote](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ Vous pouvez le faire lorsque tout le monde a voté ou que le sondage n’a plus 
 
 Sélectionnez **Rouvrir** sur un sondage clôturé, puis définissez une nouvelle date de clôture et une nouvelle heure.
 
-Les sondages anonymes ne peuvent pas être rouverts.
+Les sondages qui masquent les résultats jusqu’à la clôture du vote, y compris les sondages anonymes, ne peuvent pas être rouverts. Vous pouvez reporter leur heure de clôture tant qu’ils sont encore ouverts.
 
 ![](proposal_reopen.png)

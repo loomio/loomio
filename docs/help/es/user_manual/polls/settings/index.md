@@ -1,10 +1,10 @@
 ---
 title: Configuración
-source_revision: e3d2454052d7531a995c9218ee5c386670a8c5d7
-source_file: docs/en/user_manual/polls/settings/index.md
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,10 +14,10 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: c866719279c04ad8
+  hide-results: 570a32d6a0966aac
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -36,10 +36,10 @@ generated:
   edit-voting-options: e773bdbcc7894d29
   opening-time: 500d89370b4e9875
   more-settings: 3519ac4ed701ef08
-  reminder: c0cc0e2c31806174
+  reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
   vote-reason: 8a70d40c93b8a51d
-  hide-results: 56c010de016e48e2
+  hide-results: b01a1971e25f2b63
   start-the-poll: 4a14fd3145c3e39b
   managing-polls: 3711abc9c32d6f77
   edit-poll: 37ec4c799be29490
@@ -157,7 +157,7 @@ Envía una notificación de «Cierre próximo» 24 horas antes de que se cierre 
 Opciones de configuración:
 - Nadie
 - Autor
-- Votantes sin votar (por defecto)
+- Personas sin votar (por defecto)
 - Todos los votantes
 
 En una encuesta anónima que dura al menos 24 horas, Loomio envía automáticamente un recordatorio durante las últimas 24 horas a las personas que pueden votar y aún no lo han hecho. Este recordatorio no se puede cambiar en la configuración de la encuesta.
@@ -204,11 +204,11 @@ Opciones de configuración:
 - Ocultar los resultados hasta emitir un voto
 - Ocultar los resultados hasta que se cierre la votación
 
-Cuando los resultados están ocultos hasta emitir un voto, las personas pueden responder a los votos en cuanto hayan votado. Todos los comentarios de la encuesta, incluidos los comentarios directos y las respuestas a otras respuestas, permanecen ocultos en el hilo para quienes no hayan votado.
+Cuando los resultados están ocultos hasta emitir un voto, las personas pueden ver las opciones elegidas y los motivos después de votar. Los miembros del hilo pueden escribir comentarios y responder a los votos antes de votar. Los comentarios permanecen visibles independientemente de la configuración de los resultados.
 
-Cuando los resultados están ocultos hasta que se cierre la votación, los comentarios de la encuesta permanecen ocultos y las respuestas y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta.
+Cuando los resultados están ocultos hasta que se cierre la votación, las respuestas a los votos y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta. Los miembros del hilo pueden seguir comentando en la encuesta y respondiendo a los comentarios. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
 
-La impresión y las exportaciones, incluida la exportación a Markdown, ignoran la configuración «Ocultar los resultados hasta emitir un voto» e incluyen los votos y las respuestas. Los resultados ocultos hasta el cierre permanecen ocultos hasta que se cierre la encuesta.
+La impresión y las exportaciones, incluida la exportación a Markdown, ignoran la configuración «Ocultar los resultados hasta emitir un voto» e incluyen los votos y las respuestas. Los resultados y los motivos de los votos ocultos hasta el cierre permanecen ocultos hasta que se cierre la encuesta. Los comentarios normales siguen disponibles en el hilo, las búsquedas y las exportaciones.
 
 Las encuestas anónimas siempre ocultan los resultados hasta que se cierra la votación. La plantilla de elección STV activa la votación anónima por defecto.
 

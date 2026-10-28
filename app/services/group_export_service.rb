@@ -18,8 +18,28 @@ class GroupExportService
   COUNTER_COLUMNS_RETIRED = {
     'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
     'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+    'polls' => %w[voters_count undecided_voters_count none_of_the_above_count stance_counts],
     'tags' => %w[taggings_count],
     'users' => %w[bounces_count complaints_count]
+  }.freeze
+
+  # Archives from earlier releases use the column names before these renames.
+  POLL_SETTING_COLUMNS_RENAMED = {
+    'min_score' => 'score_min',
+    'max_score' => 'score_max',
+    'minimum_stance_choices' => 'choice_count_min',
+    'maximum_stance_choices' => 'choice_count_max',
+    'dots_per_person' => 'points_per_voter'
+  }.freeze
+  COLUMNS_RENAMED = {
+    'polls' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_templates' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_options' => {
+      'voter_count' => 'vote_count',
+      'voter_scores' => 'scores_by_voter',
+      'voter_weight_total' => 'vote_weight',
+      'score_counts' => 'vote_counts_by_score'
+    }
   }.freeze
 
   RELATIONS = %w[
@@ -398,6 +418,18 @@ class GroupExportService
 
             attrs = data['record'].deep_dup
             attrs.except!(*COUNTER_COLUMNS_RETIRED.fetch(table, []))
+            COLUMNS_RENAMED.fetch(table, {}).each do |before, after|
+              attrs[after] = attrs.delete(before) if attrs.key?(before)
+            end
+            if %w[polls poll_templates].include?(table) && attrs['notify_on_closing_soon'] == 'undecided_voters'
+              attrs['notify_on_closing_soon'] = 'voters_uncast'
+            end
+            if %w[notifications discussion_templates].include?(table)
+              attrs['recipient_audience'] = {
+                'decided_voters' => 'voters_cast',
+                'undecided_voters' => 'voters_uncast'
+              }.fetch(attrs['recipient_audience'], attrs['recipient_audience'])
+            end
             translate_foreign_keys!(attrs, table, migrate_ids)
             attrs[pk] = new_id if pk
             translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'
@@ -440,6 +472,15 @@ class GroupExportService
           topic.recount_active_polls!
           RecordCounts.recount!(topic) { { seen_by_count: topic.topic_readers.where.not(last_read_at: nil).count } }
         end
+        legacy_root_ids = datas.filter_map do |data|
+          next unless data['table'] == 'topic_items' && !data['record'].key?('tags')
+          next unless %w[new_discussion poll_created].include?(data['record']['kind'])
+
+          migrate_ids.fetch('topic_items')[data['record']['id']]
+        end
+        TopicItem.where(id: legacy_root_ids).update_all(tags: Arel.sql(
+          "COALESCE((SELECT topics.tags FROM topics WHERE topics.id = topic_items.topic_id AND topics.topicable_type = topic_items.itemable_type AND topics.topicable_id = topic_items.itemable_id), ARRAY[]::varchar[])")) if legacy_root_ids.any?
+        TagService.refresh_topic_tags!(topic_ids)
         TopicItem.where(topic_id: topic_ids).update_all(child_count: Arel.sql(
           '(SELECT COUNT(*) FROM topic_items children WHERE children.parent_id = topic_items.id)'))
         # Revision history is not part of ordinary group archives. Count any

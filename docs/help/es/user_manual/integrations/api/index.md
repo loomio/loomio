@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: 4e35a9aabc9f17c7
   user-api: 9ab9163969f45df3
-  server-api: 63bda90d159f43c7
+  server-api: a9daf7d1e1f82966
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ Para las integraciones basadas en el envío de eventos, los [webhooks de grupo](
 
 ## API de servidor
 
-La [API de servidor](/en/user_manual/integrations/api/server-api) permite a quienes operan instalaciones autoalojadas de Loomio gestionar cuentas de usuario. La autenticación se realiza mediante un secreto válido para todo el servidor.
+La [API de servidor](/en/user_manual/integrations/api/server-api) permite a quienes operan instalaciones autoalojadas de Loomio crear y gestionar cuentas de usuario, descubrir grupos y gestionar las membresías y los roles en los grupos. Utiliza un secreto válido para todo el servidor y no requiere una cuenta de bot ni pertenecer a cada grupo.

@@ -1,13 +1,13 @@
 ---
 title: プロフィール
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: 9811766c78c2117a
-  edit-profile: 33eca9d5afd202ac
+  introduction: c97f1dae26df431b
+  edit-profile: cc1a47bafc7e9f96
   update-your-personal-info: ea027b0f57e581db
   viewing-another-person-s-profile: 3a6c36cfe2df8089
   uploading-a-profile-photo: 661298d01104e879
@@ -32,25 +32,14 @@ title_generated: d9251b856c472b7a
 <!-- translation-section: introduction -->
 
 # プロフィール
-Loomioのユーザープロフィールは、他の人が誰であるかを確認するための情報です。  
 
-Loomioで参加者が誰であるかを確認できることは、信頼関係を築き、安心して参加する助けになります。できる限り自分らしいプロフィールにし、写真やアバターを追加することをおすすめします。
+プロフィールは、Loomioで他の人が誰であるかを確認するための情報です。写真、自己紹介、その他の共有したい情報を追加します。
 
 <!-- translation-section: edit-profile -->
 
 ## プロフィールの編集
 
-プロフィールページでは、Loomioで表示される自分の情報を変更できます。プロフィールページを開くには、サイドバー上部の自分の名前をクリックし、ユーザーメニューから**プロファイル編集**を選択します。
-
-サイドバーが閉じている場合は、メニューアイコン（**☰**）をクリックして開きます。
-
-![](sidebar_menu.png)
-
-自分の名前の右側にある下向きの矢印をクリックします。
-
-![](sidebar_profile.png)
-
-**プロファイル編集**をクリックします。
+サイドバーで自分の名前を選択してユーザーメニューを開き、**プロファイル編集**を選択します。サイドバーが閉じている場合は、メニューボタン（**☰**）で開きます。
 
 ![](edit_profile.png)
 

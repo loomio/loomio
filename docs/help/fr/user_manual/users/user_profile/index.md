@@ -1,13 +1,13 @@
 ---
 title: Votre profil
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/user_profile/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: c9002e77f5270003
-  edit-profile: 7bfe2795d9b01549
+  introduction: 80eccb0578990d75
+  edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
   viewing-another-person-s-profile: 97816a7b0c57fddf
   uploading-a-profile-photo: 7dd7e7acbc688060
@@ -16,8 +16,8 @@ sections:
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
 generated:
-  introduction: df120c4719e4406d
-  edit-profile: f44b5d4c7d69f5ca
+  introduction: 76803d2b0ab19bce
+  edit-profile: 4607df6b80c45a4e
   update-your-personal-info: f6ffe7ee88eefeeb
   viewing-another-person-s-profile: ceb9c88b93debcfc
   uploading-a-profile-photo: 80c7da3f1e129605
@@ -32,25 +32,14 @@ title_generated: 71d880790ee5b689
 <!-- translation-section: introduction -->
 
 # Votre profil
-Votre profil utilisateur Loomio permet aux autres de vous reconnaître.  
 
-Pouvoir reconnaître les personnes sur Loomio contribue à établir la confiance et l’authenticité, et encourage une participation plus sincère. Lorsque c’est possible, nous vous encourageons donc à vous présenter sous votre propre identité et à ajouter une photo ou un avatar.
+Votre profil permet aux autres de vous reconnaître sur Loomio. Ajoutez une photo, une introduction et les autres informations que vous souhaitez partager.
 
 <!-- translation-section: edit-profile -->
 
 ## Modifier mon profil
 
-Votre page de profil vous permet de personnaliser votre identité sur Loomio. Pour y accéder, sélectionnez l’option **Modifier mon profil** dans le menu utilisateur, accessible en cliquant sur votre nom en haut de la barre latérale.
-
-Si la barre latérale est fermée, cliquez sur l’icône de menu (**☰**) pour l’ouvrir.
-
-![](sidebar_menu.png)
-
-Cliquez sur la flèche vers le bas à droite de votre nom.
-
-![](sidebar_profile.png)
-
-Cliquez sur **Modifier mon profil**
+Ouvrez votre menu utilisateur en sélectionnant votre nom dans la barre latérale, puis sélectionnez **Modifier mon profil**. Si la barre latérale est fermée, ouvrez-la à l’aide du bouton de menu (**☰**).
 
 ![](edit_profile.png)
 

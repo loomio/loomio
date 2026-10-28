@@ -1,32 +1,32 @@
 ---
 title: Sous-groupes
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 5dedb9fedacabb90
   add-a-subgroup: e83e38dd9cd34258
   subgroup-settings: bdd0548ab28d965d
-  privacy: c99161b3e56307e0
+  privacy: 7327b2cd2ac41d81
   permissions: 2ae23cefd9ceb983
   find-subgroups: 8bdb0244966a9a56
   invite-to-a-subgroup: f43723d038795ee2
   simultaneously-invite-people-to-subgroups-and-parent-group: f8892fdd5672d75b
-  administer-a-subgroup: 00da0bfa7eaa1f4e
+  administer-a-subgroup: d7f48cea8fa8085f
   delete-a-subgroup: 2115bc77d425a1e9
   how-people-join: 621dd74dabf4c9eb
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ Choisissez qui peut trouver le sous-groupe et lire ses fils :
 | **Visible pour le groupe parent** | Les membres du groupe parent et du sous-groupe | Les membres du sous-groupe et les invités |
 | **Secret** | Les membres invités du sous-groupe | Les membres du sous-groupe et les invités |
 
+La permission **Les membres du groupe parent peuvent voir les fils privés** peut également permettre aux membres du groupe parent d’accéder aux fils du sous-groupe sans le rejoindre.
+
 Lorsque le groupe parent est privé, les sous-groupes peuvent être **Visible pour le groupe parent** ou **Secret**.
 
 [Consultez les informations sur la confidentialité des groupes](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ Si vous utilisez le bouton **Inviter des personnes** depuis l’onglet **Membres
 
 Les sous-groupes peuvent avoir leurs propres administrateurs, qui peuvent être différents de ceux du groupe parent.
 
-Toutefois, un administrateur du groupe parent peut se nommer administrateur de n’importe quel sous-groupe. Cela permet aux administrateurs du groupe parent d’administrer les sous-groupes selon les besoins.
+Un administrateur du groupe parent peut rejoindre un sous-groupe non secret et se nommer administrateur de ce sous-groupe. Cela ne s’applique pas aux sous-groupes secrets.
 
 Accédez à l’onglet Sous-groupes, trouvez le sous-groupe et cliquez sur **Rejoindre le groupe**.
 

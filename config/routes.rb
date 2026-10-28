@@ -93,7 +93,9 @@ Rails.application.routes.draw do
       post 'subscriptions/verify', to: 'subscriptions#verify'
     end
 
-    namespace :b2 do
+    # The user and server APIs share routes with their legacy b2 and b3 paths.
+    # Bump the numeric suffix when a release breaks one of these APIs.
+    user_api_routes = lambda do
       resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
       resources :polls, only: [:create, :show, :index, :update, :destroy]
@@ -110,7 +112,9 @@ Rails.application.routes.draw do
       end
     end
 
-    namespace :b3, only: [] do
+    server_api_routes = lambda do
+      resources :groups, only: [ :index ]
+      resources :memberships, only: [ :index, :create, :update, :destroy ]
       get    'users/identity/:identity_type/:uid',            to: 'users#show_by_identity'
       patch  'users/identity/:identity_type/:uid',            to: 'users#update_by_identity'
       delete 'users/identity/:identity_type/:uid',            to: 'users#destroy_by_identity'
@@ -118,7 +122,7 @@ Rails.application.routes.draw do
       post   'users/identity/:identity_type/:uid/reactivate', to: 'users#reactivate_by_identity'
       post   'users/identity/:identity_type/:uid/redact',     to: 'users#redact_by_identity'
 
-      resources :users, only: [:index, :show, :update, :destroy] do
+      resources :users, only: [ :index, :show, :create, :update, :destroy ] do
         member do
           post :deactivate
           post :reactivate
@@ -131,6 +135,11 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    namespace :user0, &user_api_routes
+    scope 'b2', module: 'user0', as: 'b2', &user_api_routes
+    namespace :server0, &server_api_routes
+    scope 'b3', module: 'server0', as: 'b3', &server_api_routes
 
     namespace :v1 do
       namespace :mobile do
@@ -209,7 +218,7 @@ Rails.application.routes.draw do
           get :autocomplete, action: :index
           get :my_memberships
           get :invitables
-          get :undecided
+          get :uncast
         end
         member do
           post :make_admin
@@ -273,6 +282,8 @@ Rails.application.routes.draw do
       end
 
       resources :topic_items, only: :index do
+        patch :tags, on: :member
+        get :tagged, on: :collection
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member

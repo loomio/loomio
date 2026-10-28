@@ -1,32 +1,32 @@
 ---
 title: Подгруппы
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/subgroups/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
   introduction: 63e6e23d24e80919
   add-a-subgroup: 0bc0e5f99eb074c3
   subgroup-settings: 737225cc4bebe7e8
-  privacy: 58872ebdc8b93967
+  privacy: a8b34f0abb250f97
   permissions: 485ea3cc98d48900
   find-subgroups: 5e6fc5a5122c1417
   invite-to-a-subgroup: 0af670e1e9b32a5e
   simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 58fa95833f79dd01
+  administer-a-subgroup: 7a25cb392c4abd4f
   delete-a-subgroup: 2c6e76ec78386443
   how-people-join: 3e3d7bf205af6b7c
 generated:
   introduction: 67bbb0a68f6eeaff
   add-a-subgroup: 6b01ab7da6a9afc6
   subgroup-settings: 1be409cb3865a31e
-  privacy: cacd2678a68addcb
+  privacy: 78fc77031051fcb1
   permissions: ad0db7331204bfac
   find-subgroups: aae945e22a60304b
   invite-to-a-subgroup: 4fd9de2765b2e910
   simultaneously-invite-people-to-subgroups-and-parent-group: 48ab8138ac6a36bc
-  administer-a-subgroup: 3f80a79b5c5c41d1
+  administer-a-subgroup: c943b92822aac42f
   delete-a-subgroup: 8d24bc57a5a46319
   how-people-join: 7aa5aa3e511a67f8
 title_source: 9f81e728f70cae3e
@@ -84,6 +84,8 @@ title_generated: a3ec35ef95a0fb4a
 | **Видна родительской группе** | Участники родительской группы и подгруппы | Участники подгруппы и приглашённые гости |
 | **Секретная группа** | Приглашённые участники подгруппы | Участники подгруппы и приглашённые гости |
 
+Разрешение **Участники родительской группы могут видеть закрытые ветки** также может предоставить участникам родительской группы доступ к веткам подгруппы без вступления в неё.
+
 Если родительская группа приватная, для подгруппы доступны настройки **Видна родительской группе** и **Секретная группа**.
 
 [Подробнее о конфиденциальности групп](/en/user_manual/groups/settings/privacy).
@@ -132,7 +134,7 @@ title_generated: a3ec35ef95a0fb4a
 
 У подгрупп могут быть свои администраторы, которые не обязательно являются администраторами родительской группы.
 
-Однако администратор родительской группы может назначить себя администратором любой подгруппы. Это позволяет администраторам родительской группы управлять подгруппами при необходимости.
+Администратор родительской группы может вступить в несекретную подгруппу и назначить себя её администратором. Это не относится к секретным подгруппам.
 
 Перейдите на вкладку «Подгруппы», найдите подгруппу и нажмите **Вступить в группу**.
 

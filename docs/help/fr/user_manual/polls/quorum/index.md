@@ -1,16 +1,16 @@
 ---
 title: Quorum
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/quorum/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
-  introduction: 0bf465006210877b
-  example-scenario: 6596ad44e1c046b4
+  introduction: dbfdebe6e23060db
+  example-scenario: d247e0866095c321
 generated:
-  introduction: b106dd3c9a09edc8
-  example-scenario: 769e94666b4d5c91
+  introduction: '0499fe59b4b6e641'
+  example-scenario: 185ee1c540ea0187
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
 ---
@@ -21,7 +21,9 @@ title_generated: 18ed8b6c5ab90343
 
 Un quorum est le pourcentage minimum d’électeurs habilités à voter qui doivent participer pour qu’un sondage soit valide. Utilisez-le lorsque votre processus de gouvernance exige un niveau de participation particulier.
 
-Lors de la création d’un sondage, ouvrez **Plus de paramètres** et saisissez le pourcentage requis dans **Quorum de participation**. Laissez le champ vide si aucun quorum n’est requis.
+Avec le [vote pondéré](/en/user_manual/polls/weighted_voting), le quorum tient compte du poids des votes. Par exemple, Jamie a un poids du vote de `2`, Samira de `1` et Alex de `1`. Si seul Jamie vote, la moitié du poids total des votes des électeurs habilités à voter est représentée. Si Samira vote également, la participation atteint 75 %, ce qui satisfait un quorum de 60 %.
+
+Lors de la création d’un sondage, ouvrez **Plus de paramètres**. Saisissez le pourcentage requis dans **Quorum**. Laissez le champ vide si aucun quorum n’est requis.
 
 ![Le paramètre Quorum avec un quorum de participation de 60 %](./quorum-section.png)
 
@@ -39,7 +41,7 @@ Jamie sélectionne **Lancer un vote**, choisit le modèle de proposition **Conse
 
 Jamie limite le vote aux cinq personnes responsables du budget de l’essai.
 
-La coopérative exige une participation de 60 % pour les décisions importantes. Jamie saisit donc **60** dans le champ du quorum de participation et lance la proposition.
+La coopérative exige une participation de 60 % pour les décisions importantes. Jamie saisit donc **60** dans **Quorum** et lance la proposition.
 
 Avant que quiconque ne vote, le panneau des résultats indique que le quorum n’a pas été atteint.
 

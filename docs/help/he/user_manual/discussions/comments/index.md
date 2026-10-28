@@ -1,10 +1,10 @@
 ---
 title: תגובות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/comments/index.md
+source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-24'
 sections:
   introduction: 5de86c47a823daf0
   reading-comments: 4b20b215ad06a596
@@ -14,7 +14,7 @@ sections:
   reactions: 6c323c46a8ecd068
   translating-comments: 37fa032f1fff2c53
   comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: ba4aa1f2597a01d6
+  add-a-comment-to-jump-to: 10a48fa173d9fe68
   edit-a-comment-and-view-changes: 5607bcf53a8a0dff
   copy-a-comment-link: e7c44dd77efba66e
   view-notification-history: '0186c24ddde89f56'
@@ -28,15 +28,13 @@ generated:
   reactions: 9de4affb97de90fb
   translating-comments: 0c5cfd81aa7ed8ef
   comment-actions: ed38f53413bc244a
-  add-a-comment-to-jump-to: 4a874467316f5944
+  add-a-comment-to-jump-to: 2eed2755393d7607
   edit-a-comment-and-view-changes: d84fbcde1ea92822
   copy-a-comment-link: 4a0e4f846ba8f5bd
   view-notification-history: 42f597177dc8ff87
   discard-restore-or-delete-a-comment: cc83c1356a5183f4
 title_source: 355f79f29d7d3c2d
 title_generated: 7b2f493e410a5f4f
-needs_review:
-  add-a-comment-to-jump-to: check the interface label "**הסר סיכה**" for "**Unpin**"
 ---
 
 <!-- translation-section: introduction -->
@@ -125,14 +123,14 @@ needs_review:
 
 ### הוספת תגובה לקפיצה אל
 
-יש לבחור **הצמד לציר הזמן** כדי להוסיף תגובה לרשימת **קפיצה אל** של השרשור.
+יש לבחור **להוסיף לציר הזמן** כדי להוסיף תגובה לרשימת **קפיצה אל** של השרשור.
 
-ניתן לערוך את התווית המוצגת ברשימת **קפיצה אל**. כדי לשנות את טקסט הקישור, יש להסיר את ההצמדה ואז להצמיד שוב את התגובה.
+ניתן לערוך את התווית המוצגת ברשימת **קפיצה אל**. כדי לשנות את טקסט הקישור, יש להסיר את התגובה מציר הזמן ולהוסיף אותה שוב.
 
 >[!Tip]
->יש לסמן את המילים שישמשו כטקסט הקישור לפני בחירת **הצמד לציר הזמן**.
+>יש לסמן את המילים שישמשו כטקסט הקישור לפני בחירת **להוסיף לציר הזמן**.
 
-יש לבחור **הסרת הצמדה** כדי להסיר את הפריט מרשימת **קפיצה אל**.
+יש לבחור **להסיר מציר הזמן** כדי להסיר את הפריט מרשימת **קפיצה אל**.
 
 <!-- translation-section: edit-a-comment-and-view-changes -->
 

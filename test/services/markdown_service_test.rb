@@ -15,6 +15,9 @@ class MarkdownServiceTest < ActiveSupport::TestCase
 
   test "markdown replaces unsafe link and image URLs" do
     markdown = <<~MARKDOWN
+      <script>alert(1)</script>
+      <img src="https://example.test/raw.png" onerror="alert(1)">
+
       [javascript](javascript:alert(1))
       [mixed case](JaVaScRiPt:alert(1))
       [encoded colon](javascript&#58;alert(1))
@@ -29,6 +32,7 @@ class MarkdownServiceTest < ActiveSupport::TestCase
 
     assert_equal ['#'] * 7, fragment.css('a').map { |link| link['href'] }
     assert_equal ['#'], fragment.css('img').map { |image| image['src'] }
+    assert_empty fragment.css('script, [onerror]')
   end
 
   test "markdown preserves safe link and image URLs" do

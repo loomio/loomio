@@ -58,6 +58,30 @@ class ApiAccessControllerTest < ActionController::TestCase
     assert_select "a[href='/g/#{pending_group.key}']", count: 0
   end
 
+  test "API access lists omit disabled organizations and discarded subgroups" do
+    subscription = subscriptions(:cleanup_active_free)
+    @group.update!(subscription: subscription)
+    sign_in @user
+    get :show
+    assert_select "a[href='/g/#{@group.key}']"
+    assert_select "a[href='/g/#{@subgroup.key}']"
+
+    subscription.update!(state: 'on_hold')
+    get :show
+
+    assert_response :success
+    assert_select "a[href='/g/#{@group.key}']", count: 0
+    assert_select "a[href='/g/#{@subgroup.key}']", count: 0
+
+    subscription.update!(state: 'active')
+    @subgroup.discard!
+    get :show
+
+    assert_response :success
+    assert_select "a[href='/g/#{@group.key}']"
+    assert_select "a[href='/g/#{@subgroup.key}']", count: 0
+  end
+
   test "API access page is not cached and does not load JavaScript" do
     sign_in @user
 

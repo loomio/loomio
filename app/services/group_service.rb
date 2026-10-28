@@ -48,7 +48,6 @@ module GroupService
       actor: actor
     )
 
-    users = nil
     Group.transaction do
       users = UserInviter.where_or_create!(
         actor: actor,
@@ -56,7 +55,15 @@ module GroupService
         emails: params[:recipient_emails],
         user_ids: recipient_user_ids
       )
+      invite_users(group: group, users: users, group_ids: group_ids, actor: actor, params: params)
+    end
+  end
 
+  # The caller authorizes the target groups and checks subscription limits.
+  # Server provisioning has no user actor; it shares the invitation, access
+  # restoration, count, and notification lifecycle with ordinary invitations.
+  def self.invite_users(group:, users:, group_ids:, actor:, params: {})
+    Group.transaction do
       # Match the user-before-group lock order used by individual membership
       # changes and account merges before applying callback-free imports.
       User.where(id: users.pluck(:id)).order(:id).with_write_lock(:id) do
@@ -65,7 +72,7 @@ module GroupService
           revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
           returning_user_ids = revoked_memberships.pluck(:user_id)
           revoked_memberships.update_all(
-            inviter_id: actor.id,
+            inviter_id: actor&.id,
             accepted_at: nil,
             revoked_at: nil,
             revoker_id: nil,
@@ -236,14 +243,25 @@ module GroupService
 
   def self.export(group: , actor: )
     actor.ability.authorize! :export, group
+    Sentry.metrics.count("group.export")
+    GroupExportWorker.perform_later(group.id, actor.id)
+  end
+
+  def self.export_group_ids(group:, actor:)
     group_ids = actor.groups.where(id: group.all_groups).pluck(:id)
 
     if group.is_parent? && group.admins.exists?(actor.id)
       group_ids |= group.subgroups.reject { |subgroup| subgroup.group_privacy == 'secret' }.map(&:id)
     end
 
-    Sentry.metrics.count("group.export")
-    GroupExportWorker.perform_later(group_ids, group.name, actor.id)
+    group_ids
+  end
+
+  # Export jobs recheck access when they run because it can be revoked while
+  # the job is queued. Only the admin panel sends an export to a chosen
+  # address, so a recipient email requires an instance administrator.
+  def self.export_permitted?(group:, actor:, recipient_email:)
+    recipient_email ? actor.is_admin? : actor.can?(:export, group)
   end
 
   def self.merge(source:, target:, actor:)
@@ -270,7 +288,8 @@ module GroupService
   def self.suggest_handle(name:, parent_handle:)
     attempt = 0
     while(Group.where(handle: generate_handle(name, parent_handle, attempt)).exists? ||
-         GroupHandleRedirect.where(handle: generate_handle(name, parent_handle, attempt)).exists?) do
+         GroupHandleRedirect.where(handle: generate_handle(name, parent_handle, attempt)).exists? ||
+         Group.reserved_handles.include?(generate_handle(name, parent_handle, attempt))) do
       attempt += 1
     end
     generate_handle(name, parent_handle, attempt)

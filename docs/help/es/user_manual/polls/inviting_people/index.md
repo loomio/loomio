@@ -1,10 +1,10 @@
 ---
 title: Invitar a votar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 61bf30560f2f1e91
   invite-people-to-vote-in-a-poll: bde9aa4ad5f05264
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: 6cb3df6751415df1
   engage-people-while-a-poll-is-running: e7be24b2d7ec53c0
   add-voters-to-the-poll: af06c4b9ebdcc280
-  remove-people-from-the-poll: '08af9b7253ef289a'
+  remove-people-from-the-poll: 5e8166010f1cd253
   remind-people-to-vote: 862f07ec46c0e97c
   view-notification-history: 78fd86aa8bc76e8a
   close-early: 81408c02b77cd418
-  reopen: 055cd3caf4a37c2d
+  reopen: 05cd9ac08cb31fe1
 title_source: 4801d1a3dba7ce3d
 title_generated: 3a1a9d984f78a737
 needs_review:
@@ -107,7 +107,7 @@ No se pueden eliminar personas de una encuesta anónima.
 
 Por ejemplo, un administrador que crea una encuesta en nombre de los miembros de una junta puede eliminarse a sí mismo si no tiene autorización para votar.
 
-En las encuestas que usan pesos del voto, la misma ventana permite a los coordinadores de la encuesta [revisar y editar los pesos del voto](/en/user_manual/polls/weighted_voting).
+En las encuestas que usan pesos del voto, la misma ventana permite a los admins del hilo [revisar y editar los pesos del voto](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -145,6 +145,6 @@ Puedes hacerlo cuando todas las personas hayan votado o cuando la encuesta ya no
 
 Selecciona **Reabrir** en una encuesta cerrada y establece una nueva fecha de cierre y hora.
 
-Las encuestas anónimas no se pueden reabrir.
+Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar su plazo de cierre mientras sigan abiertas.
 
 ![](proposal_reopen.png)

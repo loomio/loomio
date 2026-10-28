@@ -282,10 +282,11 @@ module.exports = {
       '.poll-common-form__anonymous-voting-explanation',
       'Anonymous votes are stored separately from voter identities. Results only appear after voting closes, and voters cannot add reasons, review their vote after submitting it, or change it.'
     )
-    page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__anonymous-voting-title')
-    page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__reminder-title')
+    page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__weighted-voting-title')
+    page.expectElement('.poll-common-form__weighted-voting-title ~ .poll-common-form__quorum-title')
+    page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__reminder-title')
     page.click('.poll-settings-anonymous .v-selection-control__wrapper')
-    page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
+    page.expectText('.poll-common-settings__notify-on-closing-soon', "People who haven't voted")
     page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
     page.expectText('.poll-common-settings__hide-results', 'Until voting is closed')
     page.expectElement('.poll-common-settings__hide-results.v-input--disabled')
@@ -330,7 +331,7 @@ module.exports = {
     page.click('.recipients-autocomplete input[type="text"]')
     page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
     page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
-    page.expectNoText('.v-autocomplete__content', 'Undecided voters')
+    page.expectNoText('.v-autocomplete__content', "People who haven't voted")
   },
 
   'shows_migrated_legacy_anonymous_participation_without_vote_reasons': (test) => {
@@ -647,7 +648,7 @@ module.exports = {
   'can_page_and_search_poll_voters': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_scheduled_poll?voter_count=25&weighted=1')
+    page.loadPath('polls/test_scheduled_poll?vote_count=25&weighted=1')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form', 'Manage voters')
     page.expectText('.poll-members-form .help-link', 'User manual')
@@ -682,7 +683,7 @@ module.exports = {
   'confirms_removing_a_poll_voter': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_scheduled_poll?voter_count=4')
+    page.loadPath('polls/test_scheduled_poll?vote_count=4')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form__page-count', '1–4 of 4')
     page.click('.poll-members-form__remove')
@@ -700,6 +701,16 @@ module.exports = {
 
     page.loadPath('polls/test_many_weighted_voters')
     page.expectText('.poll-common-chart-panel__variable-vote-weights', 'Votes in this poll have different weights, so some count more than others.')
+    page.expectElement('.poll-common-chart-table .v-avatar-group')
+    page.expectText('.poll-common-chart-table tbody tr:last-child .v-avatar-group__overflow', '+33')
+    page.expectText('.poll-common-chart-table tbody tr:last-child td:nth-child(3)', '70')
+    page.expectCount('.poll-common-chart-table .poll-proposal-chart path', 4)
+    page.click('.poll-common-chart-table thead th:nth-child(4) button')
+    page.expectCount('.poll-common-chart-table .poll-proposal-chart path', 5)
+    page.expectElement('.poll-common-chart-table .poll-proposal-chart path[fill="#BBBBBB"]')
+    page.click('.poll-common-chart-table thead th:nth-child(6) button')
+    page.expectCount('.poll-common-chart-table .poll-proposal-chart path', 4)
+    page.expectNoElement('.poll-common-chart-table .poll-proposal-chart path[fill="#BBBBBB"]')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form__page-count', '1–50 of 50')
     page.expectText('.poll-members-form__list .v-list-item:first-child', 'Voter 45')
@@ -719,7 +730,7 @@ module.exports = {
   'pages_weighted_voters_after_fifty': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_many_weighted_voters?voter_count=55')
+    page.loadPath('polls/test_many_weighted_voters?vote_count=55')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form__page-count', '1–50 of 55')
     page.expectText('.poll-members-form__list .v-list-item:first-child', 'Voter 50')
@@ -747,6 +758,11 @@ module.exports = {
     page.clickAndWait('.decision-tools-card__poll-type--proposal', '.poll-common-form__more-settings')
     page.click('.poll-common-form__more-settings')
     page.expectElement('.poll-settings-weighted-voting')
+    page.expectElement('.poll-common-form__anonymous-voting-title ~ .poll-common-form__weighted-voting-title')
+    page.expectElement('.poll-common-form__weighted-voting-title ~ .poll-common-form__quorum-title')
+    page.expectText('.poll-common-form__quorum', 'Quorum')
+    page.expectText('.poll-common-form__quorum-title + .text-body-medium', 'What percentage of voters must participate')
+    test.assert.attributeEquals('.poll-common-form__quorum input', 'placeholder', 'Percentage of eligible voters (0–100)')
     page.expectElement('a[href$="/docs/en/user_manual/polls/quorum"]')
     page.expectText('.poll-common-form', 'Give voters different vote weights. Results show both the plain and the weighted totals.')
     page.expectElement('a[href$="/docs/en/user_manual/polls/weighted_voting"]')
@@ -760,6 +776,20 @@ module.exports = {
     page.expectElement('a[href$="/docs/en/user_manual/polls/anonymous_voting"] .v-icon')
     page.click('.poll-settings-weighted-voting input')
     test.assert.elementPresent('.poll-settings-weighted-voting input:checked')
+    page.expectText('.poll-common-form__quorum', 'Quorum')
+    page.expectText('.poll-common-form__quorum-title + .text-body-medium', 'What percentage of eligible vote weight must participate')
+    test.assert.attributeEquals('.poll-common-form__quorum input', 'placeholder', 'Percentage of eligible vote weight (0–100)')
+    page.fillIn('.poll-common-form__quorum input', '60')
+    page.click('.poll-settings-weighted-voting input')
+    page.expectText('.poll-common-form__quorum', 'Quorum')
+    page.expectText('.poll-common-form__quorum-title + .text-body-medium', 'What percentage of voters must participate')
+    test.assert.attributeEquals('.poll-common-form__quorum input', 'placeholder', 'Percentage of eligible voters (0–100)')
+    test.assert.valueEquals('.poll-common-form__quorum input', '60')
+    page.click('.poll-settings-weighted-voting input')
+    page.click('.poll-settings-anonymous .v-selection-control__wrapper')
+    test.assert.elementPresent('.poll-settings-weighted-voting input:disabled')
+    test.assert.not.elementPresent('.poll-settings-weighted-voting input:checked')
+    page.expectText('.poll-common-form__quorum', 'Quorum')
   },
 
   'explains_that_anonymous_voting_disables_weighted_voting': (test) => {

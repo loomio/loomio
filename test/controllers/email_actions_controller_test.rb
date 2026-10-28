@@ -30,6 +30,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_response :success
     assert_select "select[name=email_catch_up_day] option[value='1'][selected]"
     assert_select "input#email_catch_up_save[type=submit]"
+    assert_includes response.body, "(() => {"
     assert_includes response.body, "save.disabled = schedule.value === savedValue"
     assert_select "input[name=unsubscribe_token][value='#{@user.unsubscribe_token}']"
     assert_equal 'no-referrer', response.headers['Referrer-Policy']
@@ -86,12 +87,122 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_equal 7, @user.reload.email_catch_up_day
   end
 
-  test "the thread notification form links to catch-up email settings" do
+  test "the thread unsubscribe page includes a separate catch-up schedule form" do
     @user.update!(email_catch_up_day: 7)
     get :unsubscribe, params: {topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token}
 
-    assert_select "a[href='#{email_actions_catch_up_path(unsubscribe_token: @user.unsubscribe_token)}']", text: I18n.t('email_actions.catch_up_link')
-    assert_select ".email-action-secondary-link", text: /#{Regexp.escape(I18n.t('email_actions.catch_up_all_groups'))}: #{Regexp.escape(I18n.t('email_actions.catch_up_days.every_day'))}/
+    assert_response :success
+    assert_select ".email-action-catch-up h3", text: I18n.t('email_actions.catch_up_all_groups')
+    assert_select "form[action='#{email_actions_set_catch_up_path}']" do
+      assert_select "select[name=email_catch_up_day] option[value='7'][selected]"
+      assert_select "input[name=topic_id][value='#{@topic.id}']"
+      assert_select "input[name=unsubscribe_token][value='#{@user.unsubscribe_token}']"
+      assert_select "input[name=volume_email]", count: 0
+    end
+    assert_select ".notification-settings-form select[name=email_catch_up_day]", count: 0
+    refute_includes response.body, I18n.t('push_notifications.enable_from_loomio')
+  end
+
+  test "the group unsubscribe page shows when catch-up emails are disabled" do
+    @user.update!(email_catch_up_day: nil)
+
+    get :unsubscribe, params: {group_id: @group.id, unsubscribe_token: @user.unsubscribe_token}
+
+    assert_response :success
+    assert_select "form[action='#{email_actions_set_catch_up_path}']" do
+      assert_select "select[name=email_catch_up_day] option[value=never][selected]"
+      assert_select "input[name=group_id][value='#{@group.id}']"
+      assert_select "input[name=topic_id]", count: 0
+    end
+  end
+
+  test "saving an inline catch-up schedule returns to the thread without changing notification levels" do
+    @topic_reader.set_volume!(email: :loud, push: :normal)
+    volumes = [@membership.volume_email, @membership.volume_push]
+
+    put :set_catch_up, params: {
+      topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: '1'
+    }
+
+    assert_redirected_to email_actions_unsubscribe_path(topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token)
+    assert_equal 1, @user.reload.email_catch_up_day
+    assert_equal ['loud', 'normal'], [@topic_reader.reload.volume_email, @topic_reader.volume_push]
+    assert_equal volumes, [@membership.reload.volume_email, @membership.volume_push]
+    assert_equal 'no-referrer', response.headers['Referrer-Policy']
+    assert_equal 'no-store', response.headers['Cache-Control']
+
+    get :unsubscribe, params: {topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token}
+    assert_select ".flash-notice", text: I18n.t('email_actions.catch_up_saved')
+    assert_select "select[name=email_catch_up_day] option[value='1'][selected]"
+  end
+
+  test "stopping catch-up emails returns to the group without changing its notification levels" do
+    volumes = [@membership.volume_email, @membership.volume_push]
+
+    put :set_catch_up, params: {
+      group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: 'never'
+    }
+
+    assert_redirected_to email_actions_unsubscribe_path(group_id: @group.id, unsubscribe_token: @user.unsubscribe_token)
+    assert_nil @user.reload.email_catch_up_day
+    assert_equal volumes, [@membership.reload.volume_email, @membership.volume_push]
+  end
+
+  test "changing group email settings preserves the catch-up schedule" do
+    @user.update!(email_catch_up_day: 8)
+
+    put :set_group_volume, params: {
+      group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, volume_email: :quiet
+    }
+
+    assert_redirected_to email_actions_unsubscribe_path(group_id: @group.id, unsubscribe_token: @user.unsubscribe_token)
+    assert_equal 'quiet', @membership.reload.volume_email
+    assert_equal 8, @user.reload.email_catch_up_day
+  end
+
+  test "a catch-up token changes its owner's schedule even when someone else is signed in" do
+    sign_in @author
+    @author.update!(email_catch_up_day: 1)
+
+    put :set_catch_up, params: {
+      topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, email_catch_up_day: '8'
+    }
+
+    assert_redirected_to email_actions_unsubscribe_path(topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token)
+    assert_equal 8, @user.reload.email_catch_up_day
+    assert_equal 1, @author.reload.email_catch_up_day
+  end
+
+  test "a direct topic guest can save the inline catch-up form" do
+    user = users(:guest_normal)
+    topic = topics(:direct_topic)
+
+    get :unsubscribe, params: {topic_id: topic.id, unsubscribe_token: user.unsubscribe_token}
+
+    assert_response :success
+    assert_select "form[action='#{email_actions_set_catch_up_path}']" do
+      assert_select "input[name=topic_id][value='#{topic.id}']"
+      assert_select "input[name=group_id]", count: 0
+    end
+
+    put :set_catch_up, params: {
+      topic_id: topic.id, unsubscribe_token: user.unsubscribe_token, email_catch_up_day: '8'
+    }
+
+    assert_redirected_to email_actions_unsubscribe_path(topic_id: topic.id, unsubscribe_token: user.unsubscribe_token)
+    assert_equal 8, user.reload.email_catch_up_day
+  end
+
+  test "an inline catch-up form rejects inaccessible context before changing the schedule" do
+    user = users(:alien_loud)
+    schedule = user.email_catch_up_day
+
+    put :set_catch_up, params: {
+      topic_id: topics(:discussion_topic).id, unsubscribe_token: user.unsubscribe_token, email_catch_up_day: 'never'
+    }
+
+    assert_redirected_to dashboard_path
+    assert_equal schedule, user.reload.email_catch_up_day
   end
 
   # unsubscribe page rendering
@@ -238,7 +349,7 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   test "unsubscribes discussion" do
-    @membership.set_volume!(email: :normal, push: :quiet)
+    @membership.set_volume!(email: :loud, push: :quiet)
     @topic_reader.set_volume!(email: :loud, push: :quiet)
 
     put :set_discussion_volume, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
@@ -247,8 +358,24 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @topic_reader.reload
 
-    assert_equal 'normal', @membership.volume_email
+    assert_equal 'loud', @membership.volume_email
     assert_equal 'normal', @topic_reader.volume_email
+  end
+
+  test "a direct topic guest can change only that topic's email settings" do
+    user = users(:guest_normal)
+    topic = topics(:direct_topic)
+    reader = TopicReader.for(user: user, topic: topic)
+    other_reader = TopicReader.for(user: user, topic: topics(:discussion_topic))
+    other_volume = [other_reader.volume_email, other_reader.volume_push]
+
+    put :set_discussion_volume, params: {
+      topic_id: topic.id, unsubscribe_token: user.unsubscribe_token, volume_email: :quiet
+    }
+
+    assert_response :redirect
+    assert_equal 'quiet', reader.reload.volume_email
+    assert_equal other_volume, [other_reader.reload.volume_email, other_reader.volume_push]
   end
 
   test "applies discussion settings to every topic in its group" do

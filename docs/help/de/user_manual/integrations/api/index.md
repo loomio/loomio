@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: 04d7781c11e06db0
   user-api: 354fab200c67a992
-  server-api: d7ef52058ab76750
+  server-api: f7b5deb9a0e2988c
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ Für Push-basierte Integrationen senden [Gruppen-Webhooks](/en/user_manual/integ
 
 ## Server API
 
-Mit der [Server API](/en/user_manual/integrations/api/server-api) können Betreibende selbst gehosteter Loomio-Installationen Benutzerkonten verwalten. Die Authentifizierung erfolgt mit einem serverweit gültigen Geheimnis.
+Mit der [Server API](/en/user_manual/integrations/api/server-api) können Betreibende selbst gehosteter Loomio-Installationen Benutzerkonten erstellen und verwalten, Gruppen finden sowie Gruppenmitgliedschaften und Rollen verwalten. Sie verwendet ein serverweit gültiges Geheimnis und erfordert weder ein Bot-Konto noch eine Mitgliedschaft in jeder Gruppe.

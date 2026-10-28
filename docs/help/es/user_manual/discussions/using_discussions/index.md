@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: 3c911ddf85c4df37787b3aee088e6a04dafe0930
-source_file: docs/en/user_manual/discussions/using_discussions/index.md
+source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-12'
+  'on': '2026-10-23'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -18,7 +18,7 @@ sections:
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
-  markdown: e6708fb7422f2c4e
+  markdown: c6434ed486db8be4
   thread-settings-and-display: b05e5c1364ceee12
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
@@ -37,7 +37,7 @@ generated:
   notified: 120c01df31b886db
   actions: 593b28e22bf5e368
   print: 5bc1ebb2520dfc04
-  markdown: 140c14cd71cb571f
+  markdown: c6b41d1b01dbb950
   thread-settings-and-display: 5d8b6ed9d60c5134
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
   move-a-thread: bef5744e818508c2
@@ -46,7 +46,7 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
 needs_review:
-  markdown: check the interface label "**Imprimir **" for "**Print**"; check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
+  markdown: check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
 ---
 
 <!-- translation-section: introduction -->
@@ -221,7 +221,7 @@ El documento comienza con una cabecera YAML que contiene la clave del hilo, la U
 
 Cada encuesta es una sección. Los comentarios, votos y conclusiones aparecen como citas, y las respuestas aparecen como citas debajo del elemento al que responden. Esto muestra dónde empieza y termina el texto de cada persona. Cada cita comienza con una línea que indica la persona, cuándo publicó, el número del elemento en el hilo y las reacciones que haya recibido. Los votos y las conclusiones también indican qué son. La clave del hilo y el número del elemento identifican cada elemento en Loomio.
 
-Loomio aplica las mismas reglas de visibilidad que en el hilo. Los resultados y los motivos de voto que no puedes ver no se incluyen, y los votantes no se identifican en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota antes de exportar el hilo. **Markdown** e **Imprimir** no están disponibles hasta que lo hagas.
+Loomio aplica las mismas reglas de visibilidad que en el hilo. Los resultados y los motivos de voto que no puedes ver no se incluyen, y los votantes no se identifican en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota antes de exportar el hilo. **Markdown** e **Imprimir ** no están disponibles hasta que lo hagas.
 
 Por ejemplo, una discusión que contiene un comentario, reacciones, una propuesta, dos votos, una respuesta y una conclusión genera este Markdown:
 
@@ -268,7 +268,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 | Agree | 1 | 50% | 33% | Samira Patel |
 | Abstain | 1 | 50% | 33% | Alex Morgan |
 | Disagree | 0 | 0% | 0% | No voters |
-| Undecided | 1 |  | 33% | Jamie Chen |
+| Not voted | 1 |  | 33% | Jamie Chen |
 
 > **Samira Patel** voted **Agree** · 2026-09-10 23:28 · #3 · ❤️ Jamie Chen
 >

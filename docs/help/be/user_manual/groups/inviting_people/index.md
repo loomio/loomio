@@ -1,12 +1,12 @@
 ---
 title: Запрашэнне людзей
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: 82b0520b2bfa1b5b
+  introduction: a443268f00173ed7
   send-invitations-via-email: 0a118013a7610f3a
   invite-many-at-once: 3e77b65112c34bf7
   invite-people-to-subgroups: bfd352f184d2ddff
@@ -28,18 +28,16 @@ generated:
   managing-invitations: cce0cc8bb39c2848
   re-send-invitations: 1a965b9bb3004d93
   cancelling-invitations: 0bec5822cedd402a
-  invitation-notification-history: 17c19b77f0f77e35
+  invitation-notification-history: 5823ae8db1a4ea76
 title_source: b926eb8921d85971
 title_generated: 2dac44685c0fc76a
 ---
 
 <!-- translation-section: introduction -->
 
-# Запрашэнне людзей
+# Запрасіце людзей у групу Loomio
 
-Перайдзіце на старонку вашай групы і націсніце на ўкладку **Удзельнікі**, каб кіраваць удзельнікамі групы.
-
-Вы можаце **Запрасіць** пэўных людзей у вашу групу праз іх адрасы электроннай пошты або **Падзяліцца** спасылкай на групу праз электронную пошту, рассылку, чат ці ваш сайт.
+Запрасіце людзей у вашу групу Loomio праз электронную пошту або падзяліцеся спасылкай на групу праз рассылку, чат ці сайт. Каб пачаць, адкрыйце ўкладку **Удзельнікі** на старонцы вашай групы.
 
 ![](group_join_group_invite.png)
 
@@ -130,7 +128,7 @@ title_generated: 2dac44685c0fc76a
 
 ### Гісторыя дастаўкі запрашэнняў
 
-Калі хтосьці не атрымлівае ліст з запрашэннем, каардынатары групы могуць адкрыць **Гісторыя дастаўкі запрашэнняў** у меню з трыма кропкамі (**⋮**) побач з імем чалавека на старонцы «Удзельнікі», каб убачыць, калі адпраўляліся запрашэнні і якія праблемы з дастаўкай былі зарэгістраваныя.
+Калі хтосьці не атрымлівае ліст з запрашэннем, адміністратары групы могуць выбраць пункт **Гісторыя дастаўкі запрашэнняў** у меню з трыма кропкамі (**⋮**) побач з імем чалавека на старонцы «Удзельнікі», каб убачыць, калі адпраўляліся запрашэнні і якія праблемы з дастаўкай былі зарэгістраваныя.
 
 <!-- translation-section: re-send-invitations -->
 

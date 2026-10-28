@@ -1,14 +1,14 @@
 ---
 title: Tanács
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/advice/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/proposals/advice/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 3b517bcf7f8d31d2
   when-to-use-advice: d98ed1affd9abbd3
-  example-choose-a-washing-supplier: 94c2d1f8987bd817
+  example-choose-a-washing-supplier: d7d3c4402b975296
   set-up-the-proposal: e93938cfa0895f27
   vote: e076d476b50d1445
   read-the-results: 937eff4c74abcc79
@@ -16,7 +16,7 @@ sections:
 generated:
   introduction: ea0cc3345df861d7
   when-to-use-advice: 7982b07514a555ab
-  example-choose-a-washing-supplier: fcc3edc711b1f426
+  example-choose-a-washing-supplier: d28608bf59660c9e
   set-up-the-proposal: 04c38d65dbbf282d
   vote: 135973e6b68d4b3d
   read-the-results: 929c82f719aa8dbe
@@ -45,7 +45,7 @@ A Tanács nem jóváhagyó szavazás. Írd le, ki hozza meg a döntést, milyen 
 
 ## Példa: válassz mosási szolgáltatót
 
-Az Oatmilk Cooperative működési koordinátorának mosási szolgáltatót kell választania. Tanácsot kér a kapacitásról, az élelmiszer-biztonsági nyilvántartásokról, a vízfelhasználásról, a szolgáltató válaszidejéről és a támogatásról.
+Az Oatmilk Cooperative működési vezetőjének mosási szolgáltatót kell választania. Tanácsot kér a kapacitásról, az élelmiszer-biztonsági nyilvántartásokról, a vízfelhasználásról, a szolgáltató válaszidejéről és a támogatásról.
 
 <!-- translation-section: set-up-the-proposal -->
 

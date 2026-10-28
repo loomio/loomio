@@ -27,8 +27,14 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     choice = params.require(:email_catch_up_day)
     return respond_with_error 422 unless Views::EmailActions::CatchUp::DAY_OPTIONS.to_h.key?(choice)
 
+    from_unsubscribe = params[:topic_id].present? || params[:group_id].present?
+    load_models_or_404 if from_unsubscribe
     current_user.update!(email_catch_up_day: choice == 'never' ? nil : choice.to_i)
-    redirect_to email_actions_catch_up_path(unsubscribe_token: params[:unsubscribe_token]), notice: t(:'email_actions.catch_up_saved')
+    if from_unsubscribe
+      redirect_to_unsubscribe(notice: t(:'email_actions.catch_up_saved'))
+    else
+      redirect_to email_actions_catch_up_path(unsubscribe_token: params[:unsubscribe_token]), notice: t(:'email_actions.catch_up_saved')
+    end
   end
 
   def set_group_volume
@@ -104,9 +110,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     { volume_email: email, volume_push: push }
   end
 
-  def redirect_to_unsubscribe
+  def redirect_to_unsubscribe(notice: t(:'change_volume_form.saved'))
     args = params.permit!.slice(:topic_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])
-    redirect_to email_actions_unsubscribe_path(args), notice: t(:'change_volume_form.saved')
+    redirect_to email_actions_unsubscribe_path(args), notice: notice
   end
 
   # Resolve current topic/group links and legacy email links through an authorized model so old messages remain usable without widening access.

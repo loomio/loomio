@@ -1,10 +1,10 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: 278e78e8621ec3e0
   find-the-right-help: 37e7190cb10dc5cf
@@ -33,8 +33,8 @@ generated:
   1-create-it: 071ae177fa0a21dd
   2-voting-opens: d24cd5262c637da0
   3-people-vote: 57cfb38790162a7b
-  4-it-closes: 5912aa84081fc2b1
-  5-share-an-outcome: bd86e5c1e0eae3cc
+  4-it-closes: 8f364ade545a3f44
+  5-share-an-outcome: 678dc40e27b740f6
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
 needs_review:
@@ -42,7 +42,7 @@ needs_review:
   without-a-discussion: use "Stimme" instead of "Abstimmung" for "vote"
   1-create-it: use "Stimme" instead of "Abstimmung" for "vote"
   3-people-vote: use "Stimme" instead of "Abstimmung" for "vote"
-  5-share-an-outcome: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
+  5-share-an-outcome: use "Entscheidung" instead of "Abstimmung" for "decision"
 ---
 
 <!-- translation-section: introduction -->
@@ -156,13 +156,13 @@ Solange die Abstimmung offen ist, können Menschen ihre Stimme abgeben, begründ
 
 ### 4. Die Abstimmung endet
 
-Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Koordinierende der Abstimmung können sie auch vorzeitig beenden. Nach dem Ende können sie die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Anonyme Abstimmungen können nicht wieder geöffnet werden.
+Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Ein Thread-Admin kann sie auch vorzeitig beenden. Nach dem Ende kann ein Thread-Admin die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Abstimmungen, deren Ergebnis bis zum Ende der Abstimmung verborgen bleibt, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihren Endzeitpunkt verlängern, solange sie noch offen sind.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Teile ein Fazit
 
-Wenn die Abstimmung beendet ist, bittet Loomio die Abstimmungskoordinierenden, ein Fazit zu teilen.
+Wenn die Abstimmung beendet ist, bittet Loomio die Thread-Admins, ein Fazit zu teilen.
 
 ![Die Aufforderung, nach dem Ende eines Vorschlags ein Fazit einzugeben](outcome_prompt.png)
 

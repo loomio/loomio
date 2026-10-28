@@ -1,17 +1,17 @@
 ---
 title: データのエクスポート
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: '08204f8655220845'
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: 0ad311ba86a4e492
   export-group-data-as-html: 846f521da886f3dd
   export-group-data-as-json: cb7d5f9d59155c2e
-  print-thread-to-pdf: c338f22ca5e6d9a2
+  print-thread-to-pdf: 90052e68b5b44e76
   import-your-group-data-on-another-loomio-server: e38bb967c4b4743e
 title_source: 29049648f87b87f5
 title_generated: e8a1a8a6aba2c93d
@@ -95,11 +95,7 @@ JSONエクスポートには次のものは含まれません。
 
 ## スレッドをPDFとして印刷
 
-スレッドのコピーを取り出して、別のファイル保管場所に保存する必要がある場合があります。
-
-スレッドの**印刷する**機能では、スレッドの書式とともに、すべてのコメント、アンケート、投票、結論が保持されます。
-
-スレッドの3つの点のメニュー（⋯）をクリックし、**印刷する**を選択します。LoomioがHTMLページを生成するので、ブラウザーの印刷機能を使って印刷したり、「PDFとして保存」したりできます。
+スレッドを記録として保存するには、スレッドのメニューを開き、**印刷する**を選択します。Loomioが、スレッドのコメント、アンケート、投票、結論、書式を含むHTMLページを生成します。ブラウザーの印刷機能を使って、印刷するかPDFとして保存します。
 
 ページをコピーして、文書エディター、ファイル、データリポジトリに貼り付けることもできます。
 

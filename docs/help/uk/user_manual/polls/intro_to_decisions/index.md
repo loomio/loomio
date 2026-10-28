@@ -1,10 +1,10 @@
 ---
 title: Пропозиції та опитування
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: fbb62b0bf9f5ae1f
   find-the-right-help: 6d85f02ce87dde6f
@@ -33,13 +33,12 @@ generated:
   1-create-it: 9b3378f1c37cac93
   2-voting-opens: 507600ac14e8992e
   3-people-vote: 923275935240655f
-  4-it-closes: d5f3c20c88eae7a3
-  5-share-an-outcome: ef399bdcb81b0f9a
+  4-it-closes: 820a9953f798e4ba
+  5-share-an-outcome: e0559b71fc9b8cd6
 title_source: d45b4ba3cb7a27cb
 title_generated: 8ea097b7cb3d6a03
 needs_review:
   find-the-right-help: use "висновок" instead of "рішення" for "outcome"; use "результати" instead of "висновок" for "results"
-  5-share-an-outcome: check the interface label "**Дата перегляду**" for "**Review date**"; use "висновок" instead of "рішення" for "outcome"; use "результати" instead of "висновок" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -153,18 +152,18 @@ needs_review:
 
 ### 4. Опитування закривається
 
-Опитування закривається автоматично у визначений час закриття. Координатор опитування також може закрити його достроково. Після закриття координатор опитування може відкрити його знову, встановивши новий час закриття, щоб люди могли продовжити голосувати. Анонімні опитування не можна відкрити знову.
+Опитування закривається автоматично у визначений час закриття. Адміністратор теми також може закрити його достроково. Після закриття адміністратор теми може відкрити його знову, встановивши новий час закриття, щоб люди могли продовжити голосувати. Опитування, у яких результати приховано до закриття голосування, зокрема анонімні опитування, не можна відкрити знову. ви можете продовжити час до їхнього закриття, поки вони ще відкриті.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Поділіться висновком
 
-Коли опитування закривається, Loomio просить координаторів опитування поділитися висновком.
+Коли опитування закривається, Loomio просить адміністраторів теми поділитися висновком.
 
 ![Запит на введення висновку після закриття пропозиції](outcome_prompt.png)
 
 Висновок пояснює, що було вирішено і що відбудеться далі. Він відображається над результатами, тому люди читають його першим. Коли ви публікуєте висновок, ви можете сповістити людей. Вони отримають електронний лист із результатами та висновком.
 
-Ви також можете вказати **Дату перегляду**. Цього дня Loomio нагадає вам переглянути рішення.
+Також ви можете вказати дату в полі **Дата перегляду**. Цього дня Loomio нагадає вам переглянути рішення.
 
 ![Опублікований висновок із датою перегляду](outcome_published.png)

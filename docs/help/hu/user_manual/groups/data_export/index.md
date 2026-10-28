@@ -1,17 +1,17 @@
 ---
 title: Adatok exportálása
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: f1698c80b1be0a4d
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: e6d247a9de86d244
   export-group-data-as-html: 8633b6e8ae580869
   export-group-data-as-json: aa5ae383d632c616
-  print-thread-to-pdf: 969dcf98961a7212
+  print-thread-to-pdf: a09b6ab5df8adf62
   import-your-group-data-on-another-loomio-server: 3d3e7708eddab6a6
 title_source: 29049648f87b87f5
 title_generated: 5469a70f111d4c58
@@ -95,11 +95,7 @@ Hamarosan e-mailt kapsz a JSON-fájl letöltési linkjével.
 
 ## Szál nyomtatása PDF-be
 
-Előfordulhat, hogy szükséged van egy szál másolatára, amelyet külön fájlarchívumban tárolhatsz.
-
-A szál **Nyomtatás** funkciója megőrzi az összes hozzászólást, szavazást, szavazatot és következtetést, valamint a szál formázását.
-
-A szál menüjében kattints a hárompontos menüre (⋯), és válaszd ki a **Nyomtatás** lehetőséget. A Loomio létrehoz egy HTML-oldalt, amelyet a böngésződ nyomtatási eszközével kinyomtathatsz vagy „PDF-ként menthetsz”.
+Ha meg szeretnél őrizni egy szálat, nyisd meg a menüjét, és válaszd ki a **Nyomtatás** lehetőséget. A Loomio létrehoz egy HTML-oldalt a szál hozzászólásaival, szavazásaival, szavazataival, következtetéseivel és formázásával. A böngésződ nyomtatási eszközével nyomtasd ki, vagy mentsd PDF-ként.
 
 Az oldalt kimásolhatod, majd beillesztheted egy dokumentumszerkesztőbe, fájlba vagy adattárba.
 

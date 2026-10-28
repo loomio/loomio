@@ -1,10 +1,10 @@
 ---
 title: Апавяшчэнні
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/email_settings/index.md
+source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: db6a4e8433aa7b0f
   two-ways-to-begin: 5e708ab9dfe6522f
@@ -15,7 +15,7 @@ sections:
   group-and-thread-notification-settings: 52305d00ac264d6a
   group-notification-settings: e310ce9d4af47a46
   thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: 8a3be8949e2a2d29
+  email-delivery: c896cd145227017e
   enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
   turn-off-external-notifications: d2a31e0e2a4437fc
 generated:
@@ -28,11 +28,13 @@ generated:
   group-and-thread-notification-settings: 821c97c4fda83fee
   group-notification-settings: 5e338546173d4b1d
   thread-notification-settings: 5753af975f23b615
-  email-delivery: f78af995ed132609
+  email-delivery: 3fb22a7b8272cb87
   enable-mobile-notifications-with-web-push: d2867b754bb080af
   turn-off-external-notifications: be89c68c27d84afd
 title_source: 788011833a5a0f22
 title_generated: d0c984de0944ef7c
+needs_review:
+  email-delivery: use "зводка" instead of "даганянне" for "catch-up email"
 ---
 
 <!-- translation-section: introduction -->
@@ -167,7 +169,7 @@ Loomio не адпраўляе зводку, калі за адпаведны п
 
 Па змаўчанні Loomio дасылае ліст, калі вы атрымліваеце апавяшчэнне. У залежнасці ад налад апавяшчэнняў вашых груп і тэм гэта могуць быць згадкі, адказы, абмеркаванні, якімі з вамі падзяліліся, запрашэнні і напаміны прагаласаваць, высновы і апытанні, якія хутка закрываюцца. Абярыце **Уся актыўнасць**, каб таксама атрымліваць лісты пра кожны новы каментарый, голас, тэму, апытанне і выснову.
 
-Спасылка **Адпісацца** ў лісце з апавяшчэннем адкрывае налады для адпаведнай тэмы ці групы, у тым ліку для лістоў, дасланых праз згадку вас або адказ вам. Гэтая форма паказвае ваш бягучы расклад зводкі для ўсіх груп і змяшчае спасылку на налады зводкі. Гэтыя спасылкі ў лістах даюць доступ толькі да адпаведных формаў налад; яны не выконваюць уваход у Loomio.
+Спасылка **Адпісацца** ў лісце з апавяшчэннем адкрывае налады для адпаведнай тэмы ці групы, у тым ліку для лістоў, дасланых праз згадку вас або адказ вам. Абярыце **Толькі даганянне**, каб спыніць неадкладныя лісты, але захаваць звесткі пра актыўнасць у зводцы. На гэтай жа старонцы ў раздзеле **Электронныя лісты для нагоды прапушчаных падзей (усе групы)** вы таксама можаце змяніць расклад зводкі. Захавайце налады тэмы ці групы і расклад зводкі паасобку. Гэтыя спасылкі ў лістах даюць доступ толькі да адпаведных формаў налад; яны не выконваюць уваход у Loomio.
 
 Калі ў лісце пра абмеркаванне пазначана, што адказы прымаюцца, вы можаце адказаць непасрэдна праз электронную пошту, і ваша паведамленне будзе апублікавана ў абмеркаванні Loomio.
 

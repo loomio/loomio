@@ -118,7 +118,7 @@ class PollMarkdownResultsService
     when "name" then option_name(result[:name], result[:name_format])
     when "stv_status" then result[:stv_status] ? t("poll_stv_results.#{result[:stv_status]}") : ""
     when "rank", "score", "unweighted_score" then result[column.to_sym]
-    when "voter_count", "votes" then result[:voter_count]
+    when "vote_count", "votes" then result[:vote_count]
     when "average" then result[:average].round(1)
     when "voter_percent" then percent(result[:voter_percent])
     when "score_percent", "votes_cast_percent" then percent(result[:score_percent])
@@ -128,12 +128,12 @@ class PollMarkdownResultsService
   end
 
   def voters_for_result(result)
-    return t("thread_markdown.no_voters") if result[:voter_count].to_i.zero?
+    return t("thread_markdown.no_voters") if result[:vote_count].to_i.zero?
     return t("thread_markdown.anonymous") if poll.anonymous?
 
     voters = case result[:id].to_i
     when -1
-      poll.undecided_voters.map { |voter| voter_label(voter) }
+      poll.voters_uncast.map { |voter| voter_label(voter) }
     when 0
       voter_stances.select(&:none_of_the_above?).map { |stance| voter_label(stance.participant) }
     else
@@ -148,7 +148,7 @@ class PollMarkdownResultsService
   end
 
   def voter_stances
-    @voter_stances ||= poll.stances.latest.decided.where(revoked_at: nil, redacted_at: nil).where.not(cast_at: nil).includes(:participant, :stance_choices).to_a
+    @voter_stances ||= poll.stances.latest.cast.where(revoked_at: nil, redacted_at: nil).where.not(cast_at: nil).includes(:participant, :stance_choices).to_a
   end
 
   def voter_label(voter)

@@ -15,6 +15,57 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## User and Server API paths
+
+The User API moves to `/api/user0` and the Server API to `/api/server0`. The number increases when a release breaks one of these APIs. `/api/b2` and `/api/b3` still work and will be removed in a later release.
+
+The Server API key is now `SERVER_API_KEY`. `B3_API_KEY` is still read while `SERVER_API_KEY` is unset. Loomio will not start if the key is shorter than 17 characters. To add a key to an existing `.env`:
+
+```sh
+echo "SERVER_API_KEY=$(openssl rand -hex 32)" >> .env
+```
+
+Poll fields have new names in `/api/user0` requests and responses and in poll CSV exports. `/api/b2` keeps the previous names.
+
+| Previous field | New field |
+| --- | --- |
+| `voters_count` | `vote_count_eligible` |
+| `decided_voters_count` | `vote_count_cast` |
+| `undecided_voters_count` | `vote_count_uncast` |
+| `cast_stances_pct` | `participation_pct` |
+| `stance_counts` | `scores_by_option` |
+| `quorum_count` | `quorum_threshold` |
+| `quorum_votes_required` | `quorum_shortfall` |
+| `min_score` | `score_min` |
+| `max_score` | `score_max` |
+| `minimum_stance_choices` | `choice_count_min` |
+| `maximum_stance_choices` | `choice_count_max` |
+| `dots_per_person` | `points_per_voter` |
+| `voter_count` (in `results`) | `vote_count` |
+| `voter_scores` (in `results`) | `scores_by_voter` |
+
+The audience identifiers `decided_voters` and `undecided_voters` become `voters_cast` and `voters_uncast`, and the closing reminder setting uses `voters_uncast`. Migration `20261027000001` renames four poll columns and takes a brief lock on `polls`. Migration `20261027000002` updates stored audiences in notifications and discussion templates. Migration `20261027000003` renames scoring columns on `polls`, `poll_templates` and `poll_options`. Upgrade web and job processes together.
+
+## Contribution tag backfill
+
+The contribution-tag migrations release schema locks before copying data and build indexes concurrently. Existing opening tags are preserved in small transactions during migration. Migration `20261027000000` automatically schedules the thread-summary and search-tag backfill to start ten minutes later, separately from application startup.
+
+Upgrade both web and worker processes before the scheduled start: older workers can restore inherited thread tags when reindexing content. An active tag backfill continues without queuing another pass. The delayed pass is safe for installations that already completed the original migrations; it only updates derived values that differ.
+
+No manual command is needed for the upgrade. To rerun the backfill or resume it with custom settings after upgrading web and workers:
+
+```sh
+docker compose exec app rake loomio:backfill_item_tags
+```
+
+The manual command returns a job ID. Each low-priority job commits at most 500 records, logs its phase, cursor, captured maximum ID, and update count, then schedules the next batch after one second. Database statements have a one-second timeout and lock waits have a 100-millisecond timeout. Busy or slow batches retry the same cursor; completed batches remain committed. Retrying the job or restarting the pass is safe. Existing opening tags remain visible while tag-filtered search results and cached thread summaries are updated progressively.
+
+Use `BATCH_SIZE` (1–1000) and `STATEMENT_TIMEOUT_MS` to tune the work. Increasing the timeout also increases the possible time a batch holds row locks. To resume manually, set `PHASE` (`summaries` or `search`), `AFTER_ID`, and `THROUGH_ID` to the last completed batch's logged values. The search phase starts automatically after the summary phase finishes. A schema-lock timeout fails the migration promptly instead of leaving new application requests queued behind it; rerun the migration to resume its completed schema steps and rebuild any interrupted concurrent index.
+
+## Finished job cleanup
+
+Restart workers with the updated `config/queue.yml` to restore finished-job cleanup. Custom worker configurations must include `solid_queue_recurring` in the general worker pool. Previously queued cleanup runs will then execute and remove finished jobs older than the retention period (one day by default).
+
 ## Email delivery history and incoming email storage
 
 Before pulling the new image, leave the old worker running so queued `RouteReceivedEmailsWorker` and `DeleteOldReceivedEmailsWorker` jobs can finish. From the deployment directory, check how many remain:
@@ -33,6 +84,8 @@ docker compose stop app worker
 Back up the database and Active Storage, then follow the upgrade commands above. Migrations `20261021000002` and `20261021000003` are irreversible, and rebuilding expired incoming email sources can upload data to storage. Upgrade web and job processes together.
 
 Existing bounce/complaint counters become address blocks, and pending sender approvals keep their IDs. Custom approval clients must change `/api/v1/received_emails` to `/api/v1/pending_emails` and the response root from `received_emails` to `pending_emails`.
+
+Incoming-email routing retries failures up to five times with increasing delays. If all retries fail, the job remains failed in `/admin/jobs` for manual review. Jobs already in the failed queue need a manual retry to use the new policy.
 
 ## Retained record count repair
 

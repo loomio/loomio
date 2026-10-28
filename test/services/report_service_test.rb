@@ -34,6 +34,7 @@ class ReportServiceTest < ActiveSupport::TestCase
     )
     poll.save!
     poll.create_missing_created_topic_item!
+    poll.created_topic_item.update!(tags: tags)
     poll
   end
 

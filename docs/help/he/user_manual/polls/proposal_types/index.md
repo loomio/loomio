@@ -1,12 +1,12 @@
 ---
 title: סקרים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: 63f5d36f7ea2df1c
+  introduction: 9619826c447ad724
   simple-poll: 5a398e4adbb68a1b
   score-poll: 7d44e995a801b6b0
   dot-vote: 4e47519a95cc9ec1
@@ -25,6 +25,7 @@ title_source: 996729458535904a
 title_generated: ec8c1df195c6c0d4
 needs_review:
   simple-poll: use "בחירה" instead of "לבחור" for "Choose"
+  introduction: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
@@ -32,6 +33,15 @@ needs_review:
 # סקרים
 
 סקרים אוספים בחירות, ציונים, הקצאות, דירוגים, זמינות או פתקי הצבעה בבחירות. יש להתאים את שיטת ההצבעה למה שהמשתתפים צריכים להביע ולאופן שבו ייעשה שימוש בתוצאה. ניתן להשתמש ב[הצעה](/en/user_manual/polls/proposals/) כשנדרשת תגובה להצהרה או לדרך פעולה.
+
+| מה רוצים לעשות | שיטה | כיצד מתקבלת התוצאה |
+| --- | --- | --- |
+| למצוא אפשרויות פופולריות או לגבש רשימה מצומצמת | [בחירה](/en/user_manual/polls/choose) (בחירה מרובה) | ספירת הבחירות בכל אפשרות |
+| להשוות את עוצמת התמיכה באפשרויות | [ציון](/en/user_manual/polls/score) | שילוב ציונים בסולם משותף |
+| לקבוע סדרי עדיפויות באמצעות מספר מוגבל של נקודות | [הקצאה](/en/user_manual/polls/allocate) (הצבעת נקודות) | סיכום הנקודות שהוקצו לכל אפשרות |
+| לסדר אפשרויות לפי העדפה | [דירוג](/en/user_manual/polls/rank) (בחירה מדורגת) | שילוב הדירוגים לסדר המבוסס על נקודות |
+| למצוא מועד לפגישה | [סקר זמן](/en/user_manual/polls/meeting_polls) | הצגת הזמינות לכל מועד |
+| לבחור כמה נציגים באופן יחסי | [בחירות STV](/en/user_manual/polls/stv) | ספירת פתקי הצבעה מדורגים לבחירת כמה זוכים |
 
 <!-- translation-section: simple-poll -->
 

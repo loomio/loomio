@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_27_000003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -678,16 +678,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.integer "poll_id", null: false
     t.integer "priority", default: 0, null: false
     t.string "prompt"
-    t.jsonb "score_counts", default: {}, null: false
+    t.jsonb "scores_by_voter", default: {}, null: false
     t.string "test_against"
     t.string "test_operator"
     t.integer "test_percent"
     t.decimal "total_score", precision: 30, scale: 3, default: "0.0", null: false
     t.bigint "unweighted_score", default: 0, null: false
     t.datetime "updated_at", precision: nil
-    t.integer "voter_count", default: 0, null: false
-    t.jsonb "voter_scores", default: {}, null: false
-    t.decimal "voter_weight_total", precision: 30, scale: 3, default: "0.0", null: false
+    t.integer "vote_count", default: 0, null: false
+    t.jsonb "vote_counts_by_score", default: {}, null: false
+    t.decimal "vote_weight", precision: 30, scale: 3, default: "0.0", null: false
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -699,6 +699,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.integer "author_id", null: false
     t.boolean "can_respond_maybe", default: true, null: false
     t.string "chart_type"
+    t.integer "choice_count_max"
+    t.integer "choice_count_min"
     t.integer "comment_length_max"
     t.string "content_locale"
     t.datetime "created_at", null: false
@@ -707,7 +709,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at"
     t.integer "discarded_by"
-    t.integer "dots_per_person"
     t.integer "group_id", null: false
     t.datetime "hidden_at"
     t.integer "hide_results", default: 0, null: false
@@ -715,16 +716,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.string "key"
     t.boolean "limit_reason_length", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.integer "max_score"
-    t.integer "maximum_stance_choices"
     t.integer "meeting_duration"
-    t.integer "min_score"
-    t.integer "minimum_stance_choices"
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.boolean "notify_on_open", default: true, null: false
     t.integer "outcome_review_due_in_days"
     t.string "outcome_statement"
     t.string "outcome_statement_format", default: "html", null: false
+    t.integer "points_per_voter"
     t.string "poll_option_name_format", default: "plain", null: false
     t.jsonb "poll_options", default: [], null: false
     t.string "poll_type", null: false
@@ -736,6 +734,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.boolean "public", default: false, null: false
     t.integer "quorum_pct"
     t.string "reason_prompt"
+    t.integer "score_max"
+    t.integer "score_min"
     t.boolean "show_none_of_the_above", default: false, null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
@@ -760,6 +760,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.jsonb "attachments", default: [], null: false
     t.integer "author_id", null: false
     t.string "chart_type"
+    t.integer "choice_count_max"
+    t.integer "choice_count_min"
     t.datetime "closed_at", precision: nil
     t.datetime "closing_at", precision: nil
     t.string "content_locale"
@@ -770,20 +772,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.integer "dots_per_person"
     t.integer "hide_results", default: 0, null: false
     t.string "key", null: false
     t.boolean "limit_reason_length", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.integer "max_score"
-    t.integer "maximum_stance_choices"
-    t.integer "min_score"
-    t.integer "minimum_stance_choices"
-    t.integer "none_of_the_above_count", default: 0, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.boolean "notify_on_open", default: true, null: false
     t.datetime "opened_at"
     t.datetime "opening_at"
+    t.integer "points_per_voter"
     t.string "poll_option_name_format"
     t.integer "poll_template_id"
     t.string "poll_template_key"
@@ -793,10 +790,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.string "process_url"
     t.integer "quorum_pct"
     t.string "reason_prompt"
+    t.integer "score_max"
+    t.integer "score_min"
+    t.jsonb "scores_by_option", default: [], null: false
     t.boolean "show_none_of_the_above", default: false, null: false
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
-    t.jsonb "stance_counts", default: [], null: false
     t.integer "stance_reason_required", default: 1, null: false
     t.string "stv_method"
     t.string "stv_quota"
@@ -805,10 +804,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.boolean "template", default: false, null: false
     t.string "title", null: false
     t.integer "topic_id"
-    t.integer "undecided_voters_count", default: 0, null: false
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.integer "voters_count", default: 0, null: false
+    t.integer "vote_count_none_of_the_above", default: 0, null: false
+    t.integer "vote_count_eligible", default: 0, null: false
+    t.integer "vote_count_uncast", default: 0, null: false
     t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
@@ -1195,6 +1195,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.integer "position", default: 0, null: false
     t.string "position_key"
     t.integer "sequence_id"
+    t.string "tags", default: [], null: false, array: true
     t.integer "topic_id", null: false
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
@@ -1207,13 +1208,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.index ["parent_id", "topic_id"], name: "index_topic_items_on_parent_id_and_topic_id", where: "(topic_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_topic_items_on_parent_id"
     t.index ["position_key"], name: "index_topic_items_on_position_key"
+    t.index ["tags"], name: "index_topic_items_on_tags", using: :gin
     t.index ["topic_id", "depth", "sequence_id"], name: "index_topic_items_on_topic_id_depth_sequence_id"
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_and_sequence_id", unique: true
     t.index ["topic_id", "sequence_id"], name: "index_topic_items_on_topic_id_sequence_id_pinned", where: "(pinned = true)"
     t.index ["topic_id"], name: "index_topic_items_on_topic_id"
+    t.index ["topic_id"], name: "index_topic_items_with_tags_on_topic_id", where: "(cardinality(tags) > 0)"
     t.index ["user_id"], name: "index_topic_items_on_user_id"
     t.check_constraint "btrim(itemable_type::text) <> ''::text", name: "topic_items_itemable_type_present"
     t.check_constraint "btrim(kind::text) <> ''::text", name: "topic_items_kind_present"
+    t.check_constraint "cardinality(tags) = 0 OR kind::text = 'new_discussion'::text AND itemable_type::text = 'Discussion'::text OR kind::text = 'poll_created'::text AND itemable_type::text = 'Poll'::text OR kind::text = 'outcome_created'::text AND itemable_type::text = 'Outcome'::text OR kind::text = 'new_comment'::text AND itemable_type::text = 'Comment'::text", name: "topic_items_tags_supported"
   end
 
   create_table "topic_readers", id: :serial, force: :cascade do |t|
@@ -1254,6 +1258,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_21_000003) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.boolean "has_tagged_replies", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "last_activity_at", precision: nil
     t.datetime "locked_at", precision: nil

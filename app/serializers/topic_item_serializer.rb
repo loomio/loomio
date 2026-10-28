@@ -1,13 +1,17 @@
 class TopicItemSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
     :topic_id, :created_at, :itemable_id, :itemable_type,
-    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :change_note
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :change_note, :tags
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :itemable, polymorphic: true
   has_one :parent, serializer: TopicItemSerializer, root: :parent_topic_items
   has_one :reply_parent, serializer: TopicItemSerializer, root: :parent_topic_items
+
+  def tags
+    object.tags
+  end
 
   def parent
     cache_fetch(:topic_items_by_id, object.parent_id) { object.parent }

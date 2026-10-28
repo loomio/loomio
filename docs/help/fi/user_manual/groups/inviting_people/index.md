@@ -1,12 +1,12 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: 5116fecb738315af3037f660ba51fe2e39f8aad7
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-27'
 sections:
-  introduction: 55a6bcc670aa6224
+  introduction: '078a06dcec8907b7'
   send-invitations-via-email: bbc814cba35c9541
   invite-many-at-once: 971aad55946f5f1d
   invite-people-to-subgroups: 69a78a72938caca5
@@ -16,9 +16,9 @@ sections:
   managing-invitations: 25d2b33504493b14
   re-send-invitations: 76c7fc660f7e3d42
   cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 7b4538f731e0cef3
+  invitation-notification-history: 0f2431ba7ab7232e
 generated:
-  introduction: f6b3b044a4ffd922
+  introduction: 9f041a9d35405958
   send-invitations-via-email: '080dff343020123b'
   invite-many-at-once: 42395868536237e3
   invite-people-to-subgroups: 940fb4ebbebfea36
@@ -28,18 +28,16 @@ generated:
   managing-invitations: 41c5e89def41074b
   re-send-invitations: 3636d946aab90088
   cancelling-invitations: 0535f371aa72116e
-  invitation-notification-history: 9e40bbf3cc0e0ce9
+  invitation-notification-history: 8a2d89aec20f3cde
 title_source: b926eb8921d85971
 title_generated: 0f5c8e72764c2a0a
 ---
 
 <!-- translation-section: introduction -->
 
-# Ihmisten kutsuminen
+# Kutsu ihmisiä Loomio-ryhmään
 
-Siirry ryhmäsi sivulle ja napsauta **Jäsenet**-välilehteä hallitaksesi jäseniä.
-
-Voit kutsua tiettyjä ihmisiä ryhmääsi heidän sähköpostiosoitteillaan käyttämällä **Kutsu**-painiketta tai jakaa linkin ryhmääsi sähköpostitse, uutiskirjeessä, chatissa tai verkkosivustollasi käyttämällä **Jaa**-painiketta.
+Kutsu ihmisiä Loomio-ryhmääsi sähköpostitse tai jaa ryhmän linkki uutiskirjeessä, chatissa tai verkkosivustolla. Aloita avaamalla ryhmäsi sivun **Jäsenet**-välilehti.
 
 ![](group_join_group_invite.png)
 
@@ -130,7 +128,7 @@ Voit myös tehdä kutsutuista ylläpitäjiä tai määrittää heidän tehtävä
 
 ### Kutsujen toimitushistoria
 
-Jos joku ei saa kutsusähköpostiaan, ryhmän koordinaattorit voivat avata **Kutsujen toimitushistoria** henkilön nimen vieressä olevasta kolmen pisteen valikosta (**⋮**) Jäsenet-sivulla ja tarkistaa, milloin kutsut lähetettiin ja onko toimitusongelmia kirjattu.
+Jos joku ei saa kutsusähköpostiaan, ryhmän ylläpitäjät voivat valita Jäsenet-sivulla henkilön nimen vieressä olevasta kolmen pisteen valikosta (**⋮**) **Kutsujen toimitushistoria** ja tarkistaa, milloin kutsut lähetettiin ja mitä toimitusongelmia on kirjattu.
 
 <!-- translation-section: re-send-invitations -->
 

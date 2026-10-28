@@ -1,10 +1,8 @@
 <!-- translation-section: introduction -->
 
-# Inviting people
+# Invite people to a Loomio group
 
-Go to your group page and click the **Members** tab to access member management.
-
-You can **Invite** particular people to your group with their email address or **Share** a link to your group via email, newsletter, chat or from your website.
+Invite people to your Loomio group by email, or share a group link through a newsletter, chat or website. Open the **Members** tab on your group page to get started.
 
 ![](group_join_group_invite.png)
 
@@ -95,7 +93,7 @@ You can also make people administrators or set their title (e.g. "IT Support") w
 
 ### Invitation delivery history
 
-If someone isn't receiving their invitation email, group coordinators can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
+If someone isn't receiving their invitation email, group admins can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
 
 <!-- translation-section: re-send-invitations -->
 

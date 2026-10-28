@@ -1,10 +1,10 @@
 ---
 title: Meghívás szavazásra
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 9b3064a18f5dd331
   invite-people-to-vote-in-a-poll: e3c8738c8cf13195
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: b7da99d2d3e5f494
   engage-people-while-a-poll-is-running: 1177d2fe4f8d4a49
   add-voters-to-the-poll: d34ee53a3eaeebff
-  remove-people-from-the-poll: c5efb5acf1d7bf6e
+  remove-people-from-the-poll: 16d647b657ff9c55
   remind-people-to-vote: '0199fa8e792c66b3'
   view-notification-history: 3a5c68b864d636dc
   close-early: decba733db1aa50c
-  reopen: 81d7f5034ec86614
+  reopen: 044f6ded6ccb7943
 title_source: 4801d1a3dba7ce3d
 title_generated: 71bbaff8a3a40122
 ---
@@ -104,7 +104,7 @@ Névtelen szavazásból nem lehet embereket eltávolítani.
 
 Például egy adminisztrátor, aki a vezetőség tagjai nevében hoz létre szavazást, eltávolíthatja saját magát, ha nem jogosult szavazni.
 
-Szavazati súlyokat használó szavazásoknál a szavazás koordinátorai ugyanebben az ablakban [áttekinthetik és módosíthatják a szavazati súlyokat](/en/user_manual/polls/weighted_voting).
+Szavazati súlyokat használó szavazásoknál a szál adminjai ugyanebben az ablakban [áttekinthetik és módosíthatják a szavazati súlyokat](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ Erre akkor lehet szükség, ha már mindenki leadta a szavazatát, vagy a szavaz
 
 Egy lezárt szavazásnál válaszd az **Újranyit** lehetőséget, majd állíts be új záró dátumot és időpontot.
 
-A névtelen szavazásokat nem lehet újranyitni.
+Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, beleértve a névtelen szavazásokat is, nem lehet újranyitni. Amíg nyitva vannak, meghosszabbíthatod a szavazási időt.
 
 ![](proposal_reopen.png)

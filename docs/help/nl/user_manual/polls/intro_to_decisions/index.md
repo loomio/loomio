@@ -1,10 +1,10 @@
 ---
 title: Voorstellen en peilingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/intro_to_decisions/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: d7cf8a871d9af6ea
   find-the-right-help: 4bb04c002cbbde42
@@ -18,8 +18,8 @@ sections:
   1-create-it: 865fde10233c86d2
   2-voting-opens: 571a77b9c70569d3
   3-people-vote: 71061d516df57dab
-  4-it-closes: c0376a9026d18bc3
-  5-share-an-outcome: 8339cb332cd8a946
+  4-it-closes: dae736b9f231adf2
+  5-share-an-outcome: e3c2308ea7c675e2
 generated:
   introduction: ce5bd7cc4e1e97db
   find-the-right-help: 5dfa3d499cca1678
@@ -33,13 +33,12 @@ generated:
   1-create-it: '00008b55bb4ba4f6'
   2-voting-opens: 2c99150f025c4b96
   3-people-vote: ad5c075672e6016b
-  4-it-closes: ed24d4ee7ee274e0
-  5-share-an-outcome: bf51900fe1f6aa72
+  4-it-closes: 13f6ef61d3634f65
+  5-share-an-outcome: b0e6115cca7ebd97
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
 needs_review:
   find-the-right-help: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
-  5-share-an-outcome: use "conclusie" instead of "resultaat" for "outcome"; use "resultaat" instead of "conclusie" for "results"
 ---
 
 <!-- translation-section: introduction -->
@@ -153,13 +152,13 @@ Zolang het voorstel of de peiling open is, kunnen mensen stemmen, hun stem toeli
 
 ### 4. De peiling sluit
 
-De peiling sluit automatisch op het sluitingstijdstip. Een peilingcoördinator kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een peilingcoördinator deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Anonieme peilingen kunnen niet worden heropend.
+De peiling sluit automatisch op het sluitingstijdstip. Een thread admin kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een thread admin deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Peilingen waarbij het resultaat verborgen blijft totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt het sluitingstijdstip van deze peilingen verlengen zolang ze nog open zijn.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Deel een conclusie
 
-Wanneer de peiling sluit, vraagt Loomio de peilingcoördinatoren om een conclusie te delen.
+Wanneer de peiling sluit, vraagt Loomio de thread admins om een conclusie te delen.
 
 ![De vraag om een conclusie in te voeren nadat een voorstel is gesloten](outcome_prompt.png)
 

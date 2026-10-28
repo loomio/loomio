@@ -139,6 +139,8 @@ el:
     manage_subscription: Διαχείριση συνδρομής
     amount: Ποσό
   loomio_tags:
+    show_tags_from_other_groups: Εμφανίστε ετικέτες από άλλες ομάδες
+    parent_group_and_subgroups_in_this_organization: Γονική ομάδα και υποομάδες αυτού του οργανισμού
     all_tags: Όλες οι ετικέτες
     tags: Ετικέτες
     apply_tags: Εφαρμογή ετικετών
@@ -248,7 +250,7 @@ el:
       open: Άνοιγμα
       closed: Έκλεισε
       private: Ιδιωτικό
-      parent_members: "Ορατή στη γονική ομάδα"
+      parent_members: Ορατή στη γονική ομάδα
       secret: Κρυφό
     selected: Επιλεγμένα
     today: σήμερα
@@ -996,10 +998,10 @@ el:
       everyone_in_the_group: Όλοι στην ομάδα
       topic: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
-      decided_voters: Όλοι όσοι ψήφισαν
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
       non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
       delegates_of_group: Εκπρόσωποι του %{name}
+      everyone_who_voted: Όλοι όσοι ψήφισαν
+      people_who_have_not_voted: Όσοι δεν έχουν ψηφίσει
     form:
       group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
       invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
@@ -1067,7 +1069,7 @@ el:
       has_not_read_thread: Δεν έχει δει το νήμα
       has_not_joined_yet: Δεν έχει εγγραφεί ακόμα
       has_not_joined_yet_hint: Αυτός ο χρήστης δεν έχει αποδεχτεί την πρόσκλησή του να εγγραφεί στο Loomio και δεν θα λάβει περαιτέρω ειδοποιήσεις μέχρι να το κάνει
-      discussion_admin: Διαχειριστής συζήτησης
+      discussion_admin: Διαχειριστής νήματος
       has_not_read_discussion: Δεν έχει δει τη συζήτηση
     group_form:
       search_placeholder: Αναζήτηση ατόμων...
@@ -1081,6 +1083,8 @@ el:
     topic_notification_history: Ιστορικό ειδοποιήσεων νημάτων
     notification_history: Ιστορικό ειδοποιήσεων
   action_dock:
+    add_to_timeline: Προσθέστε στη γραμμή χρόνου
+    remove_from_timeline: Αφαιρέστε από τη γραμμή χρόνου
     actions_menu: Μενού ενεργειών
     more_actions: Περισσότερες δράσεις
     react: Αντιδρώ
@@ -1423,9 +1427,9 @@ el:
     confirm_change_to_public: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα θα δημοσιοποιηθούν στον ιστό.
     confirm_change_to_private_discussions_only: Εάν συνεχίσετε, τυχόν δημόσια νήματα σε αυτήν την ομάδα θα γίνουν ιδιωτικά.
     profile: Προφίλ
-    subgroup_name_and_content_are_public: "Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της"
-    subgroup_name_is_public_and_threads_are_private: "Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
-    subgroup_is_visible_to_parent_members: "Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά"
+    subgroup_name_and_content_are_public: Όλοι μπορούν να βρουν αυτή την υποομάδα και να διαβάσουν τα νήματά της
+    subgroup_name_is_public_and_threads_are_private: Όλοι μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά
+    subgroup_is_visible_to_parent_members: Τα μέλη της %{parent} μπορούν να βρουν αυτή την υποομάδα· τα νήματά της είναι ιδιωτικά
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
@@ -1433,9 +1437,9 @@ el:
     subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
     advanced_settings: Προηγμένες ρυθμίσεις
     how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
-    join_without_approval: "Εγγραφή χωρίς έγκριση"
-    request_to_join: "Αίτημα εγγραφής"
-    invitation_only: "Μόνο με πρόσκληση"
+    join_without_approval: Εγγραφή χωρίς έγκριση
+    request_to_join: Αίτημα εγγραφής
+    invitation_only: Μόνο με πρόσκληση
     permissions: Δικαιώματα
     thread_privacy: Ιδιωτικότητα του θέματος
     public_threads: Μόνο δημόσια θέματα
@@ -1443,8 +1447,8 @@ el:
     public_or_private_threads: Επιτρέπονται δημόσια και ιδιωτικά θέματα
     private_threads: Μόνο τα μέλη μπορούν να δεις τις συζητήσεις
     allow_public_threads: Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.
-    parent_group_members_can_see_private_threads: "Τα μέλη της γονικής ομάδας μπορούν να βλέπουν ιδιωτικά νήματα"
-    parent_group_members_can_see_private_threads_help: "Επιτρέψτε στα μέλη της %{parent} να βλέπουν νήματα και δημοσκοπήσεις σε αυτή την ομάδα, χωρίς να συμμετέχουν"
+    parent_group_members_can_see_private_threads: Τα μέλη της γονικής ομάδας μπορούν να βλέπουν ιδιωτικά νήματα
+    parent_group_members_can_see_private_threads_help: Επιτρέψτε στα μέλη της %{parent} να βλέπουν νήματα και δημοσκοπήσεις σε αυτή την ομάδα, χωρίς να συμμετέχουν
     members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
     members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
     members_can_add_members: Τα μέλη μπορούν να προσκαλέσουν μέλη
@@ -1599,7 +1603,7 @@ el:
     title_helptext:
       group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη %{name} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
     title_label: τίτλος
-    title_placeholder: Π.χ. «Συντονιστής» ή «Διευκολυντής»
+    title_placeholder: Π.χ. «Διαχειριστής» ή «Διευκολυντής»
     updated: Ο τίτλος μέλους ενημερώθηκε
     weight_label: Βάρος ψήφου
   user_name_modal:
@@ -1766,7 +1770,6 @@ el:
       all: Πρόσφατες συζητήσεις
     thread_preview:
       you_voted: Ψηφίσατε %{position}
-      undecided: Δεν έχετε ψηφίσει
     threads_from:
       group: Νήματα από
       pinned: Καρφιτσωμένες κλωστές
@@ -1991,6 +1994,18 @@ el:
     for_the_proposal_to_pass: Για να εγκριθεί η πρόταση, η επιλογή αυτή πρέπει να λάβει...
     for_the_poll_to_be_valid: Για να είναι έγκυρη η %{poll_type}, αυτή η επιλογή πρέπει να λάβει…
     points_cast: Πόντοι από ψήφους
+    eligible_vote_weight: Βάρος ψήφου επιλέξιμων ψηφοφόρων
+    vote_weight_cast: Βάρος ψήφου που κατατέθηκε
+    name_gte_eligible_vote_weight: "%{name} χρειάζεται τουλάχιστον %{percent}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    name_lte_eligible_vote_weight: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    name_gte_vote_weight_cast: "%{name} χρειάζεται τουλάχιστον %{percent}% του βάρους ψήφου που κατατέθηκε"
+    name_lte_vote_weight_cast: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του βάρους ψήφου που κατατέθηκε"
+    total_assigned_vote_weight: Συνολικό βάρος ψήφου που ανατέθηκε
+    weighted_votes_cast: Σταθμισμένες ψήφοι που κατατέθηκαν
+    name_gte_assigned_vote_weight: "%{name} χρειάζεται τουλάχιστον %{percent}% του συνολικού βάρους ψήφου που ανατέθηκε"
+    name_lte_assigned_vote_weight: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% του συνολικού βάρους ψήφου που ανατέθηκε"
+    name_gte_weighted_votes_cast: "%{name} χρειάζεται τουλάχιστον %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
+    name_lte_weighted_votes_cast: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
   poll_common:
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος
@@ -2107,6 +2122,9 @@ el:
     pct_of_weighted_votes: "% σταθμισμένων ψήφων"
     pct_of_weighted_points: "% σταθμισμένων πόντων"
     weighted_mean: Σταθμισμένος μέσος όρος
+    pct_of_eligible_vote_weight: "% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
+    pct_of_vote_weight_cast: "% του βάρους ψήφου που κατατέθηκε"
+    pct_of_assigned_vote_weight: "% του βάρους ψήφου που ανατέθηκε"
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2271,18 +2289,14 @@ el:
     started_by: Ξεκίνησε από %{name}
   poll_common_votes_panel:
     vote_removed: Η ψήφος καταργήθηκε
-    undecided: Δεν έχουν ψηφίσει
     newest_first: Πρώτα τα νεότερα
     oldest_first: Πρώτα τα πιο παλιά
     priority_first: Συμφωνώ πρώτα
     priority_last: Μπλοκάρω πρώτα
-    undecided_first: Πρώτα όσοι δεν έχουν ψηφίσει
     no_votes_yet: Δεν έχουν τεθεί ακόμη ψήφοι.
     change_results_order: Αλλαγή σειράς αποτελεσμάτων
     none_of_the_above: "(Κανένα από τα παραπάνω)"
     name_or_username: Όνομα ή όνομα χρήστη
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Ο λόγος διορθώθηκε
     redact_reason_title: Λόγος διαγραφής ψήφου;
     redact_reason_helptext: Ο λόγος για τον οποίο το κείμενο και τα συνημμένα θα αποκρύπτονται, αλλά η ψήφος θα παραμείνει στα αποτελέσματα
@@ -2297,15 +2311,6 @@ el:
     stance: Ψήφος
     participation_records_restricted: Μπορείτε να δείτε ποιοι συμμετείχαν μετά το τέλος της ψηφοφορίας
     vote_weight: Βάρος ψήφου %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Εμφάνιση %{count} αναποφάσιστων
-    show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
-    undecided_users: Δεν έχουν ψηφίσει (%{count})
-    invitation_count_singular: 1 επιπλέον άτομο έχει προσκληθεί να συμμετάσχει μέσω email
-    invitation_count_plural: "%{count} επιπλέον άτομα έχουν προσκληθεί να συμμετάσχουν μέσω email"
-  poll_common_undecided_user:
-    reminded: Η υπενθύμιση στάλθηκε!
-    reminder_sent: Η ειδοποίηση υπενθύμισης εστάλη
   poll_common_set_outcome_panel:
     enter_outcome: Εισαγάγετε το αποτέλεσμα
     poll_type: Αυτό το %{poll_type} έκλεισε. Αφιερώστε χρόνο για να εξετάσετε τα αποτελέσματα και, στη συνέχεια, μοιραστείτε ένα συμπέρασμα, ώστε οι άνθρωποι να γνωρίζουν τι θα συμβεί στη συνέχεια.
@@ -2439,13 +2444,17 @@ el:
     votes_short_of_quorum: Απαιτούνται %{num} ακόμη ψήφοι για την επίτευξη απαρτίας %{pct}%
     quorum_reached: Έχει επιτευχθεί απαρτία %{pct}%
     pct_participation: "%{num} από %{total} ψήφους που έδωσαν (%{pct}% συμμετοχή)"
+    pct_vote_weight_participation: Κατατέθηκαν %{num} από %{total} ψήφους (%{pct}% του βάρους ψήφου)
+    pct_of_eligible_vote_weight_must_participate: Πρέπει να συμμετέχει το %{pct}% του βάρους ψήφου των επιλέξιμων ψηφοφόρων
+    pct_weighted_participation: Κατατέθηκαν %{num} από %{total} ψήφους (συμμετείχε το %{pct}% του βάρους ψήφου που ανατέθηκε)
+    pct_of_assigned_vote_weight_must_participate: Πρέπει να συμμετέχει το %{pct}% του συνολικού βάρους ψήφου που ανατέθηκε
   poll_meeting_chart_panel:
     total: Σύνολο
   poll_remove_vote:
     title: Να καταργηθεί η ψήφος σας;
-    helptext: Είστε βέβαιοι ότι θέλετε να καταργήσετε την ψήφο σας; Θα καταχωρηθείτε ως αναποφάσιστοι και μπορείτε να ψηφίσετε ξανά αργότερα, εάν το επιθυμείτε.
     confirm: Κατάργηση ψήφου
     success: Η ψήφος καταργήθηκε
+    helptext_not_voted: Θέλετε σίγουρα να καταργήσετε την ψήφο σας; Η κατάστασή σας θα γίνει “Δεν έχετε ψηφίσει” και μπορείτε να ψηφίσετε ξανά αργότερα αν θέλετε.
   poll_poll_vote_form:
     stance_created: Η ψηφοφορία δημιουργήθηκε
     stance_updated: Η ψηφοφορία ενημερώθηκε
@@ -2805,8 +2814,8 @@ el:
       voting_title: 24 ώρες πριν από το κλείσιμο της ψηφοφορίας, στείλτε μια υπενθύμιση στο
       nobody: Κανείς
       author: Συγγραφέας (εγώ)
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
       voters: Όλοι οι ψηφοφόροι
+      people_who_have_not_voted: Όσοι δεν έχουν ψηφίσει
     notify_on_participate:
       title: Ειδοποίησέ με όταν συμμετάσχουν άτομα
       helptext_on: Όταν επιλεγείτε, θα ειδοποιηθείτε κάθε φορά που κάποιος συμμετέχει.
@@ -2972,6 +2981,10 @@ el:
     weighted_voting_off_warning: Η απενεργοποίηση της σταθμισμένης ψήφου ορίζει τη στάθμιση κάθε ψήφου σε 1. Οποιαδήποτε στάθμιση ψήφων αλλάξατε για αυτήν την δημοσκόπηση θα χαθεί.
     weighted_voting_on_group: Η ενεργοποίηση της σταθμισμένης ψήφου αντιγράφει την προεπιλεγμένη βαρύτητα ψήφου κάθε μέλους. Οι υπόλοιποι ψηφοφόροι λαμβάνουν βάρος ψήφου 1.
     weighted_voting_on_direct: Η ενεργοποίηση της σταθμισμένης ψήφου ορίζει το βάρος κάθε ψήφου σε 1
+    quorum_vote_weight_hint: Τι ποσοστό του βάρους ψήφου των επιλέξιμων ψηφοφόρων πρέπει να συμμετέχει για να είναι έγκυρο το αποτέλεσμα; Προαιρετικό, αφήστε το κενό αν δεν απαιτείται απαρτία.
+    quorum_vote_weight_placeholder: Ποσοστό βάρους ψήφου επιλέξιμων ψηφοφόρων (0–100)
+    quorum_voters_placeholder: Ποσοστό επιλέξιμων ψηφοφόρων (0–100)
+    quorum_weighted_hint: Τι ποσοστό του συνολικού βάρους ψήφου που ανατέθηκε πρέπει να συμμετέχει για να είναι έγκυρο το αποτέλεσμα; Προαιρετικό, αφήστε το κενό αν δεν απαιτείται απαρτία.
   poll_receipts_page:
     participation_status_requires_min_votes: Αυτό δείχνει ποιος είχε δικαίωμα ψήφου. Το αν ψήφισε κάθε άτομο εμφανίζεται μόνο όταν έχουν ψηφίσει τουλάχιστον %{count} άτομα.
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.
@@ -3214,7 +3227,7 @@ el:
     stance: ψήφος
   membership_notification_history:
     invitation_delivery_history: Ιστορικό παράδοσης προσκλήσεων
-    email_delivery_blocked: "Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση"
+    email_delivery_blocked: Το Loomio έχει σταματήσει την αποστολή email σε αυτή τη διεύθυνση
     delivery_result:
       delivered: Παραδόθηκε
       failed: Απέτυχε

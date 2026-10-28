@@ -1,25 +1,25 @@
 ---
 title: コンテンツを探す
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 722b477e36d38916
   search: c8aa14c205dfe84f
-  search-tips: 40e8aeb7de1ab090
+  search-tips: f3a770db6b4de8ff
   filter-discussions: 96d2f75670039a04
-  category-tags: ef5cc636cd612251
+  category-tags: de8267370ca390e0
   unread-discussions: 167c7860e371e94b
   polls-awaiting-your-vote: ae30c38b411b498c
   bookmarks: 4ca179694050520a
@@ -54,7 +54,7 @@ Loomioでは、参加しているグループのディスカッションや決�
 - 覚えているタイトルや内容から、特徴的な単語を1つか2つ選んで検索します。
 - 検索は単語の先頭部分に一致するため、**bott**のような単語の一部でも**bottle**を検索できます。
 - 入力した検索語に一致する結果が非常に少ない場合は、スペルの誤りを補って検索します。
-- フィルターを使うと、組織、サブグループ、タグ、またはコメントやアンケートなどのコンテンツの種類で検索結果を絞り込めます。
+- フィルターを使うと、組織、サブグループ、タグ、またはコメントやアンケートなどのコンテンツの種類で検索結果を絞り込めます。タグのフィルターは、そのタグが明示的に付けられた投稿に一致し、検索語を入力しなくても使えます。
 - 関連性を重視する場合は**ベストマッチ**で並べ替えます。投稿された時期が大まかに分かる場合は、新しい順または古い順で並べ替えます。
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ Loomioでは、参加しているグループのディスカッションや決�
 
 ## カテゴリタグ
 
-タグを使うと、プロジェクト、チーム、業務分野など、グループで選んだ名前で関連するディスカッションやアンケートをまとめられます。
+タグを使うと、プロジェクト、チーム、業務分野など、グループで選んだ名前で関連するディスカッション、アンケート、結論、コメントをまとめられます。
 
 ![](tags.png)
 
-**議論**タブでタグを選択すると、一致するディスカッションが表示されます。ディスカッションを開始または編集する権限がある人は、タグを付けられます。設定と権限の詳細は、[カテゴリタグ](/en/user_manual/discussions/tags)を参照してください。
+**議論**タブでタグを選択すると、一致する投稿を含むスレッドが表示されます。スレッド内では、サイドバーでタグを選択すると、一致する投稿をその親の背景説明とともに確認できます。作成者は自分の投稿にタグを付けられます。グループ管理者、スレッド管理者、およびディスカッションの背景説明を編集する権限を持つメンバーは、どの投稿にもタグを付けられます。設定と権限の詳細は、[カテゴリタグ](/en/user_manual/discussions/tags)を参照してください。
 
 <!-- translation-section: unread-discussions -->
 

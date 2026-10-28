@@ -1,10 +1,10 @@
 ---
 title: Kutsu äänestämään
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: ed4bbf4695a967de
   invite-people-to-vote-in-a-poll: 13e1468ebb223d36
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: 8a18c28fff4b64ff
   engage-people-while-a-poll-is-running: 593babd64f70eb82
   add-voters-to-the-poll: f688ef2432ce7905
-  remove-people-from-the-poll: a3dc48f261e165b4
+  remove-people-from-the-poll: cf1ccbf48fb26514
   remind-people-to-vote: '09f7a8e52feaa747'
   view-notification-history: da34ddbbe19f8f64
   close-early: d7663780c0291203
-  reopen: e5b30f36c2f15891
+  reopen: a54d74be7453e43b
 title_source: 4801d1a3dba7ce3d
 title_generated: 29a79efa7cb00157
 ---
@@ -104,7 +104,7 @@ Anonyymistä kyselystä ei voi poistaa henkilöitä.
 
 Esimerkiksi ylläpitäjä, joka luo kyselyn hallituksen jäsenten puolesta, voi poistaa itsensä, jos hänellä ei ole oikeutta äänestää.
 
-Äänipainoja käyttävissä kyselyissä kyselyn koordinaattorit voivat samassa ikkunassa [tarkastella ja muokata äänipainoja](/en/user_manual/polls/weighted_voting).
+Äänipainoja käyttävissä kyselyissä ketjun ylläpitäjät voivat samassa ikkunassa [tarkastella ja muokata äänipainoja](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ Voit tehdä näin, kun kaikki ovat äänestäneet tai kyselyä ei enää tarvits
 
 Valitse suljetussa kyselyssä **Avaa uudelleen** ja aseta sitten uusi sulkemispäivä ja kellonaika.
 
-Anonyymejä kyselyitä ei voi avata uudelleen.
+Kyselyitä, joiden tulokset piilotetaan äänestyksen sulkeutumiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyitä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
 
 ![](proposal_reopen.png)

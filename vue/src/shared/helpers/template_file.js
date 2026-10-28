@@ -9,6 +9,14 @@ const resources = {
 
 const pendingTemplates = {};
 
+const legacySettings = {
+  min_score: 'score_min',
+  max_score: 'score_max',
+  minimum_stance_choices: 'choice_count_min',
+  maximum_stance_choices: 'choice_count_max',
+  dots_per_person: 'points_per_voter'
+};
+
 export function exportTemplateFile(type, template, groupId) {
   const resource = resources[type];
   const id = template.id || template.key;
@@ -28,7 +36,20 @@ export async function importTemplateFile(type, file) {
       throw new Error('Invalid template file');
     }
 
-    const template = pickAttributes(data.template, AppConfig.templateSettings[type]);
+    // Portable templates from before the scoring rename use the old setting names.
+    const source = { ...data.template };
+    Object.entries(legacySettings).forEach(([before, after]) => {
+      if (Object.hasOwn(source, before) && !Object.hasOwn(source, after)) { source[after] = source[before]; }
+    });
+    const template = pickAttributes(source, AppConfig.templateSettings[type]);
+    // Portable templates from before the participation rename use the old audience names.
+    if (template.notify_on_closing_soon === 'undecided_voters') {
+      template.notify_on_closing_soon = 'voters_uncast';
+    }
+    const audiences = { decided_voters: 'voters_cast', undecided_voters: 'voters_uncast' };
+    if (Object.hasOwn(audiences, template.recipient_audience)) {
+      template.recipient_audience = audiences[template.recipient_audience];
+    }
     template.tags = Array.isArray(template.tags) ? template.tags.filter(value => typeof value === 'string') : [];
     if (type === 'discussion_template') {
       template.poll_template_keys_or_ids = (template.poll_template_keys_or_ids || []).

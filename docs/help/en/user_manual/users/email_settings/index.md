@@ -130,7 +130,7 @@ Thread notification settings use the same **Catch-up only**, **When notified**, 
 
 By default, Loomio sends an email when you are notified. Depending on your group and thread notification settings, this can include mentions, replies, discussions shared with you, invitations and reminders to vote, outcomes, and polls closing soon. Choose **All activity** to also receive emails about every new comment, vote, thread, poll, and outcome.
 
-The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. That form shows your current catch-up schedule for all groups and links to the catch-up email settings. These email links authorize only their own settings forms; they do not sign you in to Loomio.
+The **Unsubscribe** link in a notification email opens settings for that thread or group, including emails sent because someone mentioned you or replied to you. Choose **Catch-up only** to stop immediate emails while keeping activity in your catch-up. You can also change the catch-up schedule on the same page, under **Catch-up emails (all groups)**. Save the thread or group settings and the catch-up schedule separately. These email links authorize only their own settings forms; they do not sign you in to Loomio.
 
 When a discussion email says that replies are accepted, you can reply directly from your email and your message will be posted into the Loomio discussion.
 

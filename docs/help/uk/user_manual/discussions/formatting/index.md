@@ -1,18 +1,18 @@
 ---
 title: Форматування
-source_revision: f0c873209653029367083ca854d7fb90269a9998
-source_file: docs/en/user_manual/discussions/formatting/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-10-27'
 sections:
-  introduction: e5ed11fef349b38c
+  introduction: 8835d30a218fce4e
   attach-file: 772ed69602535db7
   remove-attachments: 7f47fde42b902677
-  insert-image: 8eacc62b369c9089
-  insert-link: 40bfb3477cb4e448
+  insert-image: efa8f0ee5300aef3
+  insert-link: 0e0ec502a3ae3051
   insert-emoji: 6658e6f893b1a0a7
-  headings: bab64fa040201017
+  headings: 20ebc1f33dd138a7
   bold-italicize-strikethrough: 98d2f6aaed506413
   list: cd1c1465db2505c8
   numbered-list: 92b0ed9aab771c4f
@@ -27,13 +27,13 @@ sections:
   markdown: 7c37a4c00bd431ee
   rich-text: 9136c76bfd5409a9
 generated:
-  introduction: a2404ffd5836366a
+  introduction: 6e66fd6386fefec7
   attach-file: f23988f4b546e077
   remove-attachments: 1ea146b57fe18e0f
-  insert-image: e4a0a6081f8855b4
-  insert-link: a55bc06a475757af
+  insert-image: 4adf7fdbccd0d70f
+  insert-link: b13642fd53a381d2
   insert-emoji: a89d0ec761979758
-  headings: 9476c25f217e56a1
+  headings: 7c575617f29764f8
   bold-italicize-strikethrough: 961f37f640ee877d
   list: 317d1fd5ab0e8a14
   numbered-list: 23c76ae5c567f5df
@@ -53,15 +53,13 @@ title_generated: d44f860b245b8f20
 
 <!-- translation-section: introduction -->
 
-# Форматування
+# Форматування тексту та прикріплення файлів
 
 Коли ви створюєте або редагуєте обговорення чи опитування або пишете коментар, під текстовим полем з’являється панель форматування. Виберіть стрілку в кінці панелі, щоб показати або приховати повний набір інструментів.
 
 Наведіть вказівник на кожен інструмент, щоб побачити його назву.
 
 ![](thread_format_bar.png)
-
-Використовуйте форматування, щоб структурувати інформацію та виділяти важливе — так її легше переглядати.
 
 <!-- translation-section: attach-file -->
 
@@ -83,20 +81,9 @@ title_generated: d44f860b245b8f20
 
 ## Вставлення зображення
 
-Використовуйте цей інструмент, щоб вставити та показати зображення.
-
-![](format_insert_image.png)
-
-Виберіть файл зображення на вашому комп’ютері. Після завантаження зображення буде вставлено в редактор.
+Виберіть **Вставити зображення** та виберіть файл або вставте зображення безпосередньо в редактор. Зображення відображається в опублікованому обговоренні, опитуванні або коментарі.
 
 ![](format_insert_example.png)
-
-Зображення відображається в опублікованому обговоренні, опитуванні або коментарі.
-
->[!Tip]
->Ви також можете скопіювати та вставити зображення безпосередньо в Loomio.
-
-![](format_image_example.png)
 
 <!-- translation-section: insert-link -->
 
@@ -112,9 +99,7 @@ title_generated: d44f860b245b8f20
 
 Якщо документ розміщено на іншому ресурсі, перевірте налаштування доступу, щоб учасники обговорення могли його відкрити.
 
-Під текстовим полем з’явиться попередній перегляд документа. За бажанням ви можете його видалити.
-
-Тепер усі, хто має доступ до вашого обговорення в Loomio та дозвіл на перегляд документа, можуть відкрити й прочитати його.
+Під текстом може з’явитися попередній перегляд. За бажанням ви можете його видалити.
 
 ![](format_link.png)
 
@@ -134,7 +119,7 @@ title_generated: d44f860b245b8f20
 
 Виберіть текст, який хочете зробити заголовком, і натисніть інструмент форматування заголовків.
 
-Якщо в коментарі використано заголовок, коментар буде автоматично закріплено в хронології обговорення.
+Якщо в коментарі використано заголовок, коментар буде автоматично додано до хронології обговорення.
 
 ![](format_heading.png)
 

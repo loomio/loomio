@@ -1,25 +1,25 @@
 ---
 title: Sisällön löytäminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/finding-content.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 91ceec48c5d29a37
   search: 514f599496d28353
-  search-tips: ae4beb63fce46abb
+  search-tips: 11a94b0fc8efa50c
   filter-discussions: 8406e110b5b52ecf
-  category-tags: 5d3299a93e3bf2d3
+  category-tags: b021794cfa36788c
   unread-discussions: 128b2d8a143abde3
   polls-awaiting-your-vote: 037bf208ec166e84
   bookmarks: 06b79827757caeeb
 generated:
   introduction: a5c50bacd68ae46a
   search: 31a1e2a08cfa1ae7
-  search-tips: b7a45ef5fe5f6ec9
+  search-tips: 71b6160aeda5e939
   filter-discussions: 7aebe0484ff86ee1
-  category-tags: 650e24529a06125d
+  category-tags: 6278ea55f1a74fc0
   unread-discussions: 942ccc0d2e219dd3
   polls-awaiting-your-vote: 32111a6d1850435f
   bookmarks: 6b45eb4aa8d22ff3
@@ -54,7 +54,7 @@ Kirjoita sana tai ilmaus ja paina Enter tai valitse hakukuvake. Esimerkiksi haku
 - Aloita yhdellä tai kahdella erottuvalla sanalla muistamastasi otsikosta tai sisällöstä.
 - Haku tunnistaa sanan alun, joten sanan osa, kuten **bott**, voi löytää sanan **bottle**.
 - Haku huomioi kirjoitusvirheet, jos hakulausekkeella löytyy hyvin vähän tuloksia.
-- Rajaa tulokset suodattimilla organisaatioon, alaryhmään, tunnisteeseen tai sisältötyyppiin, kuten kommentteihin tai kyselyihin.
+- Rajaa tulokset suodattimilla organisaatioon, alaryhmään, tunnisteeseen tai sisältötyyppiin, kuten kommentteihin tai kyselyihin. Tunnistesuodatin löytää sisällöt, joihin kyseinen tunniste on lisätty, ja toimii myös ilman hakulauseketta.
 - Valitse lajitteluksi **Paras ottelu**, kun osuvuus on tärkeää, tai lajittele uusimmasta tai vanhimmasta alkaen, kun tiedät suunnilleen, milloin sisältö julkaistiin.
 
 <!-- translation-section: filter-discussions -->
@@ -67,11 +67,11 @@ Suodata keskusteluja haun vieressä olevilla valinnoilla sen mukaan, ovatko ne a
 
 ## Luokittelutunnisteet
 
-Tunnisteet kokoavat toisiinsa liittyviä keskusteluja ja kyselyjä ryhmäsi valitsemien nimien alle. Nimi voi viitata esimerkiksi projektiin, tiimiin tai työn osa-alueeseen.
+Tunnisteet kokoavat toisiinsa liittyviä keskusteluja, kyselyjä, johtopäätöksiä ja kommentteja ryhmäsi valitsemien nimien alle. Nimi voi viitata esimerkiksi projektiin, tiimiin tai työn osa-alueeseen.
 
 ![](tags.png)
 
-Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi sitä vastaavat keskustelut. Ihmiset, joilla on oikeus aloittaa tai muokata keskusteluja, voivat lisätä tunnisteita. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
+Valitse tunniste **Keskustelut**-välilehdellä nähdäksesi ketjut, joissa on kyseisellä tunnisteella merkittyä sisältöä. Valitse ketjun sivupalkista tunniste löytääksesi sillä merkityt sisällöt ja kontekstin, johon ne kuuluvat. Sisällön kirjoittajat voivat lisätä tunnisteita omaan sisältöönsä. Ryhmän ylläpitäjät, ketjun ylläpitäjät ja henkilöt, joilla on oikeus muokata keskustelun kontekstia, voivat lisätä tunnisteita mihin tahansa sisältöön. Katso määritysten ja käyttöoikeuksien tiedot sivulta [Luokittelutunnisteet](/en/user_manual/discussions/tags).
 
 <!-- translation-section: unread-discussions -->
 

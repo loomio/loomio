@@ -107,7 +107,7 @@ ja:
         blank: 空白にすることはできません
         invalid: は有効な値ではありません
   errors:
-    item_you_are_replying_to_deleted: "返信先の項目は削除されています"
+    item_you_are_replying_to_deleted: 返信先の項目は削除されています
     clear_cache: 読み込みの問題が検出されました。 Shift キーを押しながらリロードを押すか、ブラウザのキャッシュをクリアします。
     404:
       title: 見つかりません
@@ -192,7 +192,6 @@ ja:
       poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
       opening_at_before_closing_at: 開始日は終了日より前にする必要があります
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
       title: タイトル
       author: 作成者
       email: Eメール
@@ -453,12 +452,8 @@ ja:
       not_invited: 招待されていません
       please_respond: 答えてください
       time_zone: "(時間は%{zone}に表示されます)"
-      undecided_members: 未投票のメンバー (%{count})
-      undecided_visitors: 未投票のゲスト (%{count})
-      more_undecided: あと %{count} 件...
       vote_now: 今すぐ投票してください
       you_have_until: "%{when} までに参加してください。"
-      people_have_voted: "%{dnom} 人中 %{nom} 人が参加しました (%{pct}%)"
       voting_opens_and_closes: 投票は %{opens} に開始され、 %{closes} に終了します。(%{days} 日)
       voting_closes: 投票は%{when}に終了します。
       voting_opened_and_closed: 投票は %{opens} に開始され、 %{closes} に終了しました。(%{days} 日)
@@ -782,9 +777,9 @@ ja:
     voted: "%{author} が %{response} に投票しました"
     voted_hidden: "%{author} が投票しました"
     vote_removed: "%{author}: 投票が削除されました"
-    undecided: "%{author}: 未定"
     superseded: 置き換え済み
     shared_outcome: "%{author} が結論を共有しました"
     removed: 削除済み
+    not_voted: "%{author}: 未投票"
   error:
     access_denied: あなたにはそれを行う権限がありません

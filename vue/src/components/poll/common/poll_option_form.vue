@@ -2,8 +2,13 @@
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     pollOption: Object,
     poll: Object,
@@ -131,7 +136,7 @@ form(v-on:submit.prevent='submit()')
           v-select(
             :disabled="!testEnabled"
             v-model="pollOption.testAgainst"
-            :items="[{title: $t(poll.weightedVoting && poll.pollType === 'proposal' ? 'poll_option_form.points_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+            :items="[{title: t(poll.weightedVoting ? 'poll_option_form.vote_weight_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: t(poll.weightedVoting ? 'poll_option_form.eligible_vote_weight' : 'poll_option_form.eligible_voters'), value: 'voter_percent'}]"
             :item-props="item => ({class: 'poll-option-form__test-against--' + item.value})"
           )
 

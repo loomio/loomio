@@ -37,7 +37,7 @@ class Discussion < ApplicationRecord
         topics.group_id as group_id,
         discussions.id AS discussion_id,
         discussions.topic_id AS topic_id,
-        topics.tags AS tags,
+        #{TopicItem.tags_sql_for(Discussion)} AS tags,
         discussions.author_id AS author_id,
         discussions.created_at AS authored_at,
         #{content_str} AS content,
@@ -72,6 +72,8 @@ class Discussion < ApplicationRecord
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
   has_paper_trail only: %i[title description description_format author_id tags attachments]
+
+  attr_accessor :tags_pending
 
   belongs_to :topic
   belongs_to :author, class_name: 'User'
@@ -141,14 +143,6 @@ class Discussion < ApplicationRecord
 
   def created_topic_item_kind
     :new_discussion
-  end
-
-  def created_from_group_template?
-    discussion_template&.kept? && !discussion_template.hidden? && discussion_template.group_id == group_id
-  end
-
-  def tag_names_not_from_template
-    TagService.clean_tag_names(topic.tags) - TagService.clean_tag_names(discussion_template&.tags)
   end
 
   def body=(val)

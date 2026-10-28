@@ -27,7 +27,7 @@ export default {
     .poll-common-chart-preview__stance(v-else)
       common-icon(v-if="poll.pollType != 'meeting'" size="small" color="primary" name="mdi-check")
       common-icon(v-else size="small" name="mdi-check")
-  .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else :title="$t('poll_common.your_vote_is_requested')")
+  .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--uncast(v-else :title="$t('poll_common.your_vote_is_requested')")
     common-icon(style="margin-top: 2px" :size="size - (size/5)" name="mdi-help" color="primary")
 </template>
 
@@ -62,7 +62,7 @@ export default {
     transform: rotate(0deg);
   }
 }
-.poll-proposal-chart-preview__stance--undecided {
+.poll-proposal-chart-preview__stance--uncast {
   animation: wobble 2.5s ease-in-out infinite;
 }
 </style>

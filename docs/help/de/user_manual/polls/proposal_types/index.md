@@ -1,12 +1,12 @@
 ---
 title: Umfragen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposal_types/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
-  introduction: 286e04a878e4c1d9
+  introduction: c13cd643890f38d5
   simple-poll: d362d91b19914c39
   score-poll: 0b71f670ef804b57
   dot-vote: 4d7c819dc05f1c06
@@ -14,7 +14,7 @@ sections:
   time-poll: 8b3a09b278bd7fde
   stv-election: e8407157d29424e4
 generated:
-  introduction: b0fa83ac78c48696
+  introduction: 473ba52fc3ae5fb7
   simple-poll: 61be22f4268dfe47
   score-poll: 3580bcd122f395b1
   dot-vote: 77ea775145566eea
@@ -32,6 +32,15 @@ needs_review:
 # Abstimmungen
 
 Abstimmungen erfassen ausgewählte Optionen, Bewertungen, Punkteverteilungen, Rangfolgen, Verfügbarkeiten oder Wahlstimmen. Wähle die Abstimmungsart danach aus, was die Teilnehmenden ausdrücken müssen und wie du das Ergebnis verwenden möchtest. Verwende einen [Vorschlag](/en/user_manual/polls/proposals/), wenn Menschen zu einer Aussage oder einem geplanten Vorgehen Stellung nehmen sollen.
+
+| Was du tun möchtest | Abstimmungsart | Wie das Ergebnis ermittelt wird |
+| --- | --- | --- |
+| Beliebte Optionen finden oder eine Vorauswahl treffen | [Auswählen](/en/user_manual/polls/choose) (Mehrfachauswahl) | Zählt, wie oft jede Option ausgewählt wurde |
+| Vergleichen, wie stark Optionen unterstützt werden | [Bewerten](/en/user_manual/polls/score) | Führt Bewertungen auf einer gemeinsamen Skala zusammen |
+| Mit einer begrenzten Anzahl von Punkten Prioritäten setzen | [Verteilen](/en/user_manual/polls/allocate) (Punktabstimmung) | Summiert die Punkte, die auf jede Option verteilt wurden |
+| Optionen nach Präferenz ordnen | [Ordnen](/en/user_manual/polls/rank) (Rangfolge) | Führt Rangfolgen zu einer auf Punkten basierenden Reihenfolge zusammen |
+| Einen Besprechungstermin finden | [Terminfindung](/en/user_manual/polls/meeting_polls) | Zeigt die Verfügbarkeit für jeden Termin |
+| Mehrere Vertretungspersonen nach dem Verhältniswahlprinzip wählen | [STV-Wahl](/en/user_manual/polls/stv) | Zählt Stimmzettel mit Rangfolgen aus, um mehrere Personen zu wählen |
 
 <!-- translation-section: simple-poll -->
 

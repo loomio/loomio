@@ -75,7 +75,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "- **Options:** Agree; Disagree"
       assert_includes markdown, "### Current results"
       assert_match(/\| Agree\s+\| 1\s+\| 100%\s+\| 10%\s+\| #{@member.name}\s+\|/, markdown)
-      assert_match(/\| Undecided\s+\| 9\s+\|\s+\| 90%\s+\| .*#{@admin.name}.*\|/, markdown)
+      assert_match(/\| Not voted\s+\| 9\s+\|\s+\| 90%\s+\| .*#{@admin.name}.*\|/, markdown)
       assert_match(/^> \*\*#{@member.name}\*\* voted \*\*Agree\*\* · 2026-07-15 10:00 · #\d+\n>\n> It addresses the main concern\.$/, markdown)
       refute_includes markdown, "\n- Agree\n"
       refute_includes markdown, "**Response:**"
@@ -84,6 +84,22 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       refute_includes markdown, "- **Status:** Current"
       assert_match(/shared an outcome · [^\n]+\n>\n> The plan was adopted\.$/, markdown)
     end
+  end
+
+  test "front matter reads opening tags separately from reply tags" do
+    discussion = create_discussion
+    comment = CommentService.create(comment: Comment.new(parent: discussion, body: 'Budget'), actor: @member)
+    TopicItemService.update_tags(topic_item: comment.created_topic_item, tags: ['budget'], actor: @member)
+
+    front_matter = YAML.safe_load(render(discussion.topic).split("---\n", 3)[1])
+
+    assert_equal ['budget', 'governance', 'planning'], front_matter['tags']
+    assert_equal ['governance', 'planning'], front_matter['root_tags']
+
+    TopicItemService.update_tags(topic_item: discussion.created_topic_item, tags: [], actor: @admin)
+    front_matter = YAML.safe_load(render(discussion.topic).split("---\n", 3)[1])
+    assert_equal ['budget'], front_matter['tags']
+    assert_not front_matter.key?('root_tags')
   end
 
   test "renders voters by option and named reactions" do
@@ -168,9 +184,9 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: @admin)
     closed_markdown = render(discussion.topic)
     assert_match(/\| Agree\s+\| 1\s+\| 100%\s+\| 10%\s+\| Anonymous\s+\|/, closed_markdown)
-    assert_match(/\| Undecided\s+\| 9\s+\|\s+\| 90%\s+\| Anonymous\s+\|/, closed_markdown)
+    assert_match(/\| Not voted\s+\| 9\s+\|\s+\| 90%\s+\| Anonymous\s+\|/, closed_markdown)
     assert_equal 1, closed_markdown.scan(/^## Proposal: Detached anonymous check/).length
-    refute_includes closed_markdown, " voted"
+    refute_match(/^###? .* voted/, closed_markdown)
     refute_includes closed_markdown, @member.name
   end
 
@@ -280,6 +296,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
           group_id: @group.id,
           title: 'Standalone decision',
           details: 'Choose one option.',
+          tags: ['Decision'],
           poll_type: 'proposal',
           poll_option_names: ['Agree', 'Disagree'],
           closing_at: 3.days.from_now
@@ -294,6 +311,7 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
       assert_includes markdown, "# Poll: Standalone decision · #{@admin.name}"
       assert_includes markdown, "## Poll"
       assert_includes markdown, "Choose one option."
+      assert_equal ['Decision'], YAML.safe_load(markdown.split("---\n", 3)[1])['root_tags']
       assert_equal 1, markdown.scan(/^## Poll$/).length
       refute_includes markdown, "## Proposal: Standalone decision"
     end
@@ -349,8 +367,8 @@ class ThreadMarkdownServiceTest < ActiveSupport::TestCase
     discussion = create_discussion
     poll = create_poll(discussion)
 
-    undecided_markdown = render(discussion.topic)
-    assert_match(/\| Undecided\s+\|[^\n]*#{nameless.username}/, undecided_markdown)
+    markdown_uncast = render(discussion.topic)
+    assert_match(/\| Not voted\s+\|[^\n]*#{nameless.username}/, markdown_uncast)
 
     stance = poll.stances.latest.find_by!(participant_id: nameless.id)
     stance.choice = "Agree"

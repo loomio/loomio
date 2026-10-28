@@ -26,6 +26,8 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     options = registration_options
     assert_equal "required", options.dig("authenticatorSelection", "residentKey")
     assert_equal "required", options.dig("authenticatorSelection", "userVerification")
+    assert_equal @user.name, options.dig("user", "displayName")
+    assert_equal @user.email, options.dig("user", "name")
     credential = @client.create(challenge: options["challenge"], rp_id: "test.host", user_verified: true)
 
     assert_difference "PasskeyCredential.count", 1 do
@@ -166,6 +168,7 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
       delete :destroy, params: { id: passkey.id }, format: :json
     end
     assert_response :success
+    assert_equal({ "success" => true }, response.parsed_body)
   end
 
   test "authenticates from the discoverable credential returned by the authenticator" do
@@ -189,6 +192,7 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal @user.id, json["current_user_id"]
     assert_equal true, json.dig("users", 0, "has_passkey")
+    assert_equal false, json.fetch("signed_in_via_login_code")
     assert passkey.reload.last_used_at.present?
   end
 
@@ -305,9 +309,12 @@ class Api::V1::PasskeyCredentialsControllerTest < ActionController::TestCase
     post :authentication_options, format: :json
 
     assert_no_difference "Session.count" do
-      post :authenticate, params: { public_key_credential: authentication_assertion(passkey, JSON.parse(response.body)) }, format: :json
+      post :authenticate, params: { public_key_credential: authentication_assertion(passkey, JSON.parse(response.body), sign_count: 5) }, format: :json
     end
     assert_response :unauthorized
+    assert_equal [I18n.t('auth_form.passkey_authentication_failed')], response.parsed_body.dig('errors', 'passkey')
+    assert_equal 0, passkey.reload.sign_count
+    assert_nil passkey.last_used_at
   end
 
   test "authentication permits zero and increasing counters but rejects unchanged or regressing nonzero counters" do

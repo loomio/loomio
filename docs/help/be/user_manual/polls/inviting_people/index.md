@@ -1,10 +1,10 @@
 ---
 title: Запрашаем галасаваць
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/inviting_people/index.md
+source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_file: docs/help/en/user_manual/polls/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-27'
 sections:
   introduction: 0635cf23fcaaa95b
   invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
@@ -12,11 +12,11 @@ sections:
   invite-a-subgroup-to-vote: 3ac684bdca4b3365
   engage-people-while-a-poll-is-running: 69971de8d56c0a74
   add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: ceec3f0319728807
+  remove-people-from-the-poll: 427e849387413f3b
   remind-people-to-vote: 177c881cb1b0dfb9
   view-notification-history: 52d930341c048008
   close-early: 0c46e8066719fc2f
-  reopen: 9575383179a411cc
+  reopen: 175c9d2024008fa4
 generated:
   introduction: 5e5df9fc347f1158
   invite-people-to-vote-in-a-poll: c93d1609ef43c505
@@ -24,11 +24,11 @@ generated:
   invite-a-subgroup-to-vote: 9b2c8c3befd98b35
   engage-people-while-a-poll-is-running: 4662940c7f36ff5e
   add-voters-to-the-poll: f85dab7da99572ca
-  remove-people-from-the-poll: 4be456fe3926262f
+  remove-people-from-the-poll: 935e9e874cb19160
   remind-people-to-vote: a1e8fa658080606c
   view-notification-history: b571dc589a1228bf
   close-early: 18329daaf31bc29f
-  reopen: 791c8b4c73566434
+  reopen: 88c94eb7986e06d4
 title_source: 4801d1a3dba7ce3d
 title_generated: a068b848ce2b9f20
 ---
@@ -104,7 +104,7 @@ title_generated: a068b848ce2b9f20
 
 Напрыклад, адміністратары, якія ствараюць апытанне ад імя ўдзельнікаў праўлення, могуць выдаліць сябе, калі не маюць права галасаваць.
 
-У апытаннях з вагой голасу гэтае ж акно дазваляе каардынатарам апытання [праглядаць і змяняць вагі галасоў](/en/user_manual/polls/weighted_voting).
+У апытаннях з вагой голасу гэтае ж акно дазваляе адміністратарам тэмы [праглядаць і змяняць вагі галасоў](/en/user_manual/polls/weighted_voting).
 
 <!-- translation-section: remind-people-to-vote -->
 
@@ -142,6 +142,6 @@ title_generated: a068b848ce2b9f20
 
 У закрытым апытанні выберыце **Зноў адкрыць**, затым задайце новую дату і час закрыцця.
 
-Ананімныя апытанні нельга адкрыць зноў.
+Апытанні, якія хаваюць вынікі да закрыцця галасавання, у тым ліку ананімныя апытанні, нельга адкрыць зноў. Вы можаце перанесці час іх закрыцця на пазнейшы, пакуль яны яшчэ адкрытыя.
 
 ![](proposal_reopen.png)

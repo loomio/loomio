@@ -1,17 +1,17 @@
 ---
 title: ייצוא נתונים
-source_revision: cd2e1e63e611688362e80009f50b8ed25025ba8b
-source_file: docs/en/user_manual/groups/data_export/index.md
+source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-07'
+  'on': '2026-10-27'
 sections:
   introduction: 5e29f67f9a2084ec
   export-data: 58b5e1d4e6f0b917
   export-group-data-as-csv: 53286ec33e7300d6
   export-group-data-as-html: 101671937dcd6f36
   export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: 39c48383953f9fd5
+  print-thread-to-pdf: a0ad78b64036be18
   import-your-group-data-on-another-loomio-server: 910ee8af48049e82
 generated:
   introduction: 83ddee06aad14202
@@ -19,7 +19,7 @@ generated:
   export-group-data-as-csv: d5520f8c2057535d
   export-group-data-as-html: 87a1439b14f4c49c
   export-group-data-as-json: 4981e21f47eb48be
-  print-thread-to-pdf: 1bfb75e4b95aaf02
+  print-thread-to-pdf: 7cff02a824194e15
   import-your-group-data-on-another-loomio-server: 3c7a3871ff8be859
 title_source: 29049648f87b87f5
 title_generated: 5a4d0da747307b8b
@@ -95,11 +95,7 @@ Loomio מכינה את קובץ ה־HTML ברקע ושולחת בדוא״ל קי
 
 ## הדפסת שרשור ל־PDF
 
-לעיתים יש צורך להפיק עותק של שרשור כדי לשמור אותו בארכיון קבצים נפרד.
-
-הפעולה **הדפס** בשרשור שומרת את כל התגובות, הסקרים, ההצבעות והמסקנות, יחד עם עיצוב השרשור.
-
-בתפריט השרשור יש ללחוץ על תפריט שלוש הנקודות (⋯) ולבחור **הדפס**. Loomio תיצור דף HTML שניתן להדפיס או לשמור כ־PDF באמצעות כלי ההדפסה בדפדפן.
+כדי לשמור שרשור לצורכי תיעוד, יש לפתוח את התפריט שלו ולבחור **הדפס**. Loomio יוצרת דף HTML הכולל את התגובות, הסקרים, ההצבעות, המסקנות והעיצוב של השרשור. יש להשתמש בכלי ההדפסה של הדפדפן כדי להדפיס את הדף או לשמור אותו כ־PDF.
 
 ניתן להעתיק את הדף ולהדביק אותו בעורך מסמכים, בקובץ או במאגר נתונים.
 

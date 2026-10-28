@@ -1,18 +1,18 @@
 ---
 title: API
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/api/index.md
+source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_file: docs/help/en/user_manual/integrations/api/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-23'
 sections:
   introduction: 99e59473b33baba1
   user-api: 8424224e38edf17f
-  server-api: f1bf07c1162ff08b
+  server-api: 42859c6715b7a994
 generated:
   introduction: 40d54e28138a3125
   user-api: d221fd02d9c02039
-  server-api: b4bc50d257f8498b
+  server-api: 49e237c98fe51203
 title_source: c8e5998f6a3955c2
 title_generated: c8e5998f6a3955c2
 ---
@@ -37,4 +37,4 @@ Push-pohjaisissa integraatioissa [ryhmän webhookit](/en/user_manual/integration
 
 ## Palvelin-API
 
-[Palvelin-API](/en/user_manual/integrations/api/server-api) antaa omalla palvelimella ylläpidettyjen Loomio-asennusten ylläpitäjille mahdollisuuden hallita käyttäjätilejä. Todennukseen käytetään koko palvelimen yhteistä salaisuutta.
+[Palvelin-API](/en/user_manual/integrations/api/server-api) antaa omalla palvelimella ylläpidettyjen Loomio-asennusten ylläpitäjille mahdollisuuden luoda ja hallita käyttäjätilejä, etsiä ryhmiä sekä hallita ryhmien jäsenyyksiä ja rooleja. Se käyttää koko palvelimen yhteistä salaisuutta eikä edellytä bottitiliä tai jäsenyyttä jokaisessa ryhmässä.

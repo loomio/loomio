@@ -236,7 +236,7 @@ v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="hei
       :placeholder="t('announcement.form.placeholder')"
       :model="poll"
       :reset="reset"
-      :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
+      :excludedAudiences="['voters', 'voters_uncast', 'non_voters', 'voters_cast']"
       :excludedUserIds="userIds"
       :initialRecipients="initialRecipients"
       hideEmptyMenu
