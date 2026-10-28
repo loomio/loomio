@@ -112,7 +112,7 @@ ca:
     add_guests:
       all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats. Alternativament, podeu convidar-los a ser membres del vostre grup.
   errors:
-    item_you_are_replying_to_deleted: "L'element al qual respons s'ha eliminat"
+    item_you_are_replying_to_deleted: L'element al qual respons s'ha eliminat
     clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
     404:
       title: No s'ha trobat
@@ -197,7 +197,6 @@ ca:
       poll_options_dont_match: Un error amb Loomio ha impedit que es desés el teu vot. Estem treballant per solucionar-ho. Torna a carregar i intenta-ho de nou.
       opening_at_before_closing_at: La data d'obertura ha de ser anterior a la data de tancament
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
       title: Títol
       author: Autor
       email: Correu electrònic
@@ -460,12 +459,8 @@ ca:
       not_invited: No convidat
       please_respond: Si us plau, respon
       time_zone: "(Les hores es mostren a %{zone})"
-      undecided_members: Membres indecisos (%{count})
-      undecided_visitors: Convidats indecisos (%{count})
-      more_undecided: "%{count} més..."
       vote_now: Votar ara
       you_have_until: Tens fins a %{when} per participar.
-      people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
       voting_opens_and_closes: La votació s'obre %{opens} i es tanca %{closes}. (%{days} dies)
       voting_closes: La votació es tanca %{when}.
       voting_opened_and_closed: La votació s'ha obert %{opens} i s'ha tancat %{closes}. (%{days} dies)
@@ -784,9 +779,9 @@ ca:
     voted: "%{author} ha votat %{response}"
     voted_hidden: "%{author} ha votat"
     vote_removed: "%{author}: vot eliminat"
-    undecided: "%{author}: sense votar"
     superseded: substituït
     shared_outcome: "%{author} ha compartit una conclusió"
     removed: Eliminat
+    not_voted: "%{author}: sense votar"
   error:
     access_denied: No tens permís per fer això

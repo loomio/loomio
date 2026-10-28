@@ -1,10 +1,10 @@
 ---
 title: Настройки
-source_revision: fdb774ee7abcf7ac06924381c5cdd0220438899d
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-10-28'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -14,7 +14,7 @@ sections:
   edit-voting-options: ef0d61585b34fbd6
   opening-time: 2fdf358a34805114
   more-settings: fd837a51b81cbc13
-  reminder: e6ac37324b884958
+  reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
   hide-results: 570a32d6a0966aac
@@ -36,7 +36,7 @@ generated:
   edit-voting-options: 85a80574f956ba54
   opening-time: 7ad8f4361c0206f6
   more-settings: b4f56f447860aa7a
-  reminder: 66705632854cea16
+  reminder: e9ee0a26fc25f292
   anonymous-voting: 075d4da36503b6e9
   vote-reason: 2a48125c25959765
   hide-results: a639f7344c1b0289
@@ -157,10 +157,10 @@ title_generated: 985b5e0f2ccf1ba0
 Варианты настройки:
 - Никому
 - Автору
-- Тем, кто ещё не определился (по умолчанию)
-- Всем участникам голосования
+- Тем, кто ещё не проголосовал (по умолчанию)
+- Всем голосующим
 
-Если анонимный опрос длится не менее 24 часов, Loomio автоматически напоминает имеющим право голоса людям, которые ещё не проголосовали, в последние 24 часа. Это напоминание нельзя изменить в настройках опроса.
+Если анонимный опрос длится не менее 24 часов, Loomio автоматически напоминает людям, имеющим право голоса и ещё не проголосовавшим, в последние 24 часа перед закрытием опроса. Это напоминание нельзя изменить в настройках опроса.
 
 <!-- translation-section: anonymous-voting -->
 

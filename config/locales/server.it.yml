@@ -112,7 +112,7 @@ it:
     add_guests:
       all: Devi aggiornare il tuo abbonamento Loomio per aggiungere ospiti. In alternativa, puoi invitarli a diventare membri del tuo gruppo.
   errors:
-    item_you_are_replying_to_deleted: "L’elemento a cui stai rispondendo è stato eliminato"
+    item_you_are_replying_to_deleted: L’elemento a cui stai rispondendo è stato eliminato
     clear_cache: Rilevato problema di caricamento. Tenere premuto MAIUSC e premere ricarica o cancellare la cache del browser
     400:
       title: Richiesta sfortunata
@@ -203,7 +203,6 @@ it:
       poll_options_dont_match: Un bug con Loomio ha impedito il salvataggio del tuo voto. Stiamo lavorando per risolvere il problema. Ricarica e riprova.
       opening_at_before_closing_at: La data di apertura deve essere precedente alla data di chiusura
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membri hanno dichiarato la loro posizione"
       title: Titolo
       author: Autore
       email: Email
@@ -469,12 +468,8 @@ it:
       not_invited: Non invitato
       please_respond: Rispondi
       time_zone: "(Orari visualizzati in %{zone})"
-      undecided_members: Membri in attesa (%{count})
-      undecided_visitors: Ospiti in attesa (%{count})
-      more_undecided: "%{count} ancora.."
       vote_now: Vota ora
       you_have_until: Hai tempo fino a %{when} per partecipare.
-      people_have_voted: "%{nom} di %{dnom} persone hanno partecipato (%{pct}%)"
       voting_opens_and_closes: Le votazioni si aprono %{opens} e si chiudono %{closes}. (%{days} giorni)
       voting_closes: La votazione si chiude %{when}.
       voting_opened_and_closed: Le votazioni si sono aperte %{opens} e si sono chiuse %{closes}. (%{days} giorni)
@@ -793,9 +788,9 @@ it:
     voted: "%{author} ha votato %{response}"
     voted_hidden: "%{author} ha votato"
     vote_removed: "%{author}: voto rimosso"
-    undecided: "%{author}: indeciso"
     superseded: sostituito
     shared_outcome: "%{author} ha condiviso una conclusione"
     removed: Rimosso
+    not_voted: "%{author}: in attesa"
   error:
     access_denied: Non hai il permesso di farlo

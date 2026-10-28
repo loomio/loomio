@@ -10,8 +10,8 @@ class StanceUserReferenceIntegrityCleanupTest < ActiveSupport::TestCase
     voter = User.create!(name: "Kept voter", email: "kept-#{SecureRandom.hex(4)}@example.com", email_verified: true)
     missing_user_id = User.maximum(:id) + 1
     now = Time.current
-    stance_counts_recorded = [7.0, 3.0]
-    poll.update_columns(stance_counts: stance_counts_recorded)
+    scores_by_option_recorded = [7.0, 3.0]
+    poll.update_columns(scores_by_option: scores_by_option_recorded)
 
     attributes = {
       poll_id: poll.id, latest: true, created_at: now, updated_at: now,
@@ -38,7 +38,7 @@ class StanceUserReferenceIntegrityCleanupTest < ActiveSupport::TestCase
     assert_nil kept_stance.revoker_id
     assert_nil kept_stance.redactor_id
     assert_equal voter.id, kept_stance.participant_id
-    assert_equal stance_counts_recorded, poll.reload.stance_counts
+    assert_equal scores_by_option_recorded, poll.reload.scores_by_option
   end
 
   test "deleting a user removes their stances and clears their actor references" do

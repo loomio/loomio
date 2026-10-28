@@ -147,8 +147,8 @@ pt_BR:
     manage_subscription: Gerenciar assinatura
     amount: Quantia
   loomio_tags:
-    show_tags_from_other_groups: "Mostre tags de outros grupos"
-    parent_group_and_subgroups_in_this_organization: "Grupo principal e subgrupos desta organização"
+    show_tags_from_other_groups: Mostre tags de outros grupos
+    parent_group_and_subgroups_in_this_organization: Grupo principal e subgrupos desta organização
     all_tags: Todas as Tags
     tags: Tags
     apply_tags: Aplicar tags
@@ -1008,10 +1008,10 @@ pt_BR:
       everyone_in_the_group: Todos no grupo
       topic: Todos no tópico
       voters: Todos convidados a votar
-      decided_voters: Todos que votaram
-      undecided_voters: Eleitores que não votaram
       non_voters: Membros de %{name} ainda não convidados
       delegates_of_group: Delegados de %{name}
+      everyone_who_voted: Todos que votaram
+      people_who_have_not_voted: Pessoas que não votaram
     form:
       group_has_no_members_yet: Você é o único membro do seu grupo. Você pode convidar algumas pessoas para o seu grupo antes de iniciar um tópico ou decisão.
       invite_people_to_evaluate_loomio: Convide algumas pessoas para o seu grupo Loomio para tomarem uma decisão juntos
@@ -1083,7 +1083,7 @@ pt_BR:
       has_not_read_thread: Não visualizou o tópico
       has_not_joined_yet: Ainda não aderiu
       has_not_joined_yet_hint: Este usuário não aceitou o convite para ingressar no Loomio e não receberá mais notificações até que o faça
-      discussion_admin: "Administrador do tópico"
+      discussion_admin: Administrador do tópico
       has_not_read_discussion: Não visualizou a discussão
     group_form:
       search_placeholder: Buscar pessoas…
@@ -1638,7 +1638,7 @@ pt_BR:
     title_helptext:
       group: Esse título aparecerá ao lado do nome de %{name} nesse grupo. Use para que os demais participantes saibam qual o seu papel.
     title_label: cargo
-    title_placeholder: "Ex.: “Admin” ou “Facilitador”"
+    title_placeholder: 'Ex.: “Admin” ou “Facilitador”'
     updated: Título do membro atualizado
     weight_label: Peso do voto
   user_name_modal:
@@ -1810,7 +1810,6 @@ pt_BR:
       all: Discussões recentes
     thread_preview:
       you_voted: Você votou %{position}
-      undecided: Você está indeciso
     threads_from:
       group: Conversas de
       pinned: Conversas afixadas
@@ -2336,18 +2335,14 @@ pt_BR:
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
     vote_removed: Voto removido
-    undecided: Não votaram
     newest_first: Mais recentes primeiro
     oldest_first: Mais antigos primeiro
     priority_first: De acordo primeiro
     priority_last: Bloqueado primeiro
-    undecided_first: Quem não votou primeiro
     no_votes_yet: Nenhum voto foi registrado ainda.
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: "(Nenhuma das opções acima)"
     name_or_username: Nome ou nome de usuário
-    cast: Emitidos
-    uncast: Não emitidos
     reason_redacted: Motivo omitido
     redact_reason_title: Ocultar o motivo do voto?
     redact_reason_helptext: O texto explicativo e os anexos serão ocultados, mas o voto permanecerá nos resultados.
@@ -2362,15 +2357,6 @@ pt_BR:
     stance: Voto
     participation_records_restricted: Você poderá ver quem participou após o encerramento da votação
     vote_weight: Peso do voto %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Mostrar %{count} indeciso
-    show_invitations: Mostrar Convites Pendentes
-    undecided_users: Indeciso (%{count})
-    invitation_count_singular: Mais 1 pessoa foi convidada para participar por email
-    invitation_count_plural: "%{count} pessoas adicionais foram convidadas a participar por e-mail"
-  poll_common_undecided_user:
-    reminded: Lembrete enviado!
-    reminder_sent: Notificação de lembrete enviado
   poll_common_set_outcome_panel:
     enter_outcome: Digite a conclusão
     poll_type: Esta %{poll_type} foi encerrada. Reserve um tempo para considerar os resultados e, em seguida, compartilhe uma conclusão para que as pessoas saibam o que acontecerá a seguir.
@@ -2512,9 +2498,9 @@ pt_BR:
     total: Total
   poll_remove_vote:
     title: Remover seu voto?
-    helptext: Tem certeza de que deseja remover seu voto? Você será listado como indeciso e poderá votar novamente mais tarde, se desejar.
     confirm: Remover voto
     success: Voto removido
+    helptext_not_voted: Tem certeza de que deseja remover seu voto? Seu status será “Não votou” e você poderá votar novamente depois, se quiser.
   poll_poll_vote_form:
     stance_created: Votação criada
     stance_updated: Voto atualizado
@@ -2873,8 +2859,8 @@ pt_BR:
       voting_title: 24 horas antes do encerramento da votação, envie um lembrete para
       nobody: Ninguém
       author: Autor (eu)
-      undecided_voters: Eleitores que não votaram
       voters: Todos os eleitores
+      people_who_have_not_voted: Pessoas que não votaram
     notify_on_participate:
       title: Avise-me quando as pessoas participarem
       helptext_on: Quando selecionado, você será notificado sempre que alguém participar.

@@ -773,7 +773,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, JSON.parse(response.body)['users'].length
     assert poll.anonymous_poll_voters.joins(:voter).exists?(users: { email: 'late-voter@example.com' })
-    assert_equal 1, poll.reload.undecided_voters_count
+    assert_equal 1, poll.reload.vote_count_uncast
   end
 
   test "poll create reports the invitation rate limit" do
@@ -1032,8 +1032,8 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
     assert_includes audience_ids, "voters"
-    refute_includes audience_ids, "decided_voters"
-    refute_includes audience_ids, "undecided_voters"
+    refute_includes audience_ids, "voters_cast"
+    refute_includes audience_ids, "voters_uncast"
     refute_includes audience_ids, "non_voters"
   end
 
@@ -1062,14 +1062,14 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
     audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
     assert_includes audience_ids, "voters"
-    assert_includes audience_ids, "decided_voters"
-    assert_includes audience_ids, "undecided_voters"
+    assert_includes audience_ids, "voters_cast"
+    assert_includes audience_ids, "voters_uncast"
   end
 
   test "detached anonymous outcome audience cannot expand voters by participation status" do
     _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
 
-    get :audience, params: { outcome_id: outcome.id, recipient_audience: "decided_voters" }
+    get :audience, params: { outcome_id: outcome.id, recipient_audience: "voters_cast" }
 
     assert_response :forbidden
   end
@@ -1085,7 +1085,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "detached anonymous outcome audience count rejects participation status" do
     _poll, outcome, _voter, _non_voter = create_closed_anonymous_poll_with_outcome
 
-    get :count, params: { outcome_id: outcome.id, recipient_audience: "undecided_voters" }
+    get :count, params: { outcome_id: outcome.id, recipient_audience: "voters_uncast" }
 
     assert_response :forbidden
   end
@@ -1094,7 +1094,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     _poll, outcome, voter, _non_voter = create_closed_anonymous_poll_with_outcome
     voter.notifications.destroy_all
 
-    post :create, params: { outcome_id: outcome.id, recipient_audience: "decided_voters" }
+    post :create, params: { outcome_id: outcome.id, recipient_audience: "voters_cast" }
 
     assert_response :forbidden
     assert_empty voter.notifications

@@ -13,7 +13,7 @@ module PollHelper
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.dots_per_person.to_i
+    max = stance.poll.points_per_voter.to_i
     if max > 0
       (100 * stance_choice.score.to_f / max).to_i
     else
@@ -22,7 +22,7 @@ module PollHelper
   end
 
   def score_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.max_score.to_i
+    max = stance.poll.score_max.to_i
     if max > 0
       (100 * stance_choice.score.to_f / max).to_i
     else

@@ -139,8 +139,8 @@ da:
     manage_subscription: Administrer abonnement
     amount: Beløb
   loomio_tags:
-    show_tags_from_other_groups: "Vis tags fra andre grupper"
-    parent_group_and_subgroups_in_this_organization: "Hovedgruppe og undergrupper i denne organisation"
+    show_tags_from_other_groups: Vis tags fra andre grupper
+    parent_group_and_subgroups_in_this_organization: Hovedgruppe og undergrupper i denne organisation
     all_tags: Alle tags
     tags: Tags
     apply_tags: Anvend tags
@@ -998,10 +998,10 @@ da:
       everyone_in_the_group: Alle i gruppen
       topic: Alle i tråden
       voters: Alle inviterede til at stemme
-      decided_voters: Alle der har stemt
-      undecided_voters: Ubeslutsomme vælgere
       non_voters: Medlemmer af %{name} endnu ikke inviteret
       delegates_of_group: Delegerede for %{name}
+      everyone_who_voted: Alle, der har stemt
+      people_who_have_not_voted: Personer, der ikke har stemt
     form:
       group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
       invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
@@ -1071,7 +1071,7 @@ da:
       has_not_read_thread: Har ikke set tråden
       has_not_joined_yet: Har ikke været med endnu
       has_not_joined_yet_hint: Denne bruger har ikke accepteret deres invitation til at blive medlem af Loomio og vil ikke modtage yderligere meddelelser, før de gør det
-      discussion_admin: "Tråd administrator"
+      discussion_admin: Tråd administrator
       has_not_read_discussion: Har ikke set diskussionen
     group_form:
       search_placeholder: Søg efter personer...
@@ -1613,7 +1613,7 @@ da:
     title_helptext:
       group: Denne titel vises ved siden af %{name}s navn i denne gruppe. Brug det til at lade folk kende deres rolle.
     title_label: titel
-    title_placeholder: "F.eks. 'Admin' eller 'Facilitator'"
+    title_placeholder: F.eks. 'Admin' eller 'Facilitator'
     updated: Medlemskabs titel er opdateret
     weight_label: Stemmevægt
   user_name_modal:
@@ -1785,7 +1785,6 @@ da:
       all: Seneste diskussioner
     thread_preview:
       you_voted: Du stemte %{position}
-      undecided: De har ikke stemt
     threads_from:
       group: Debatter fra
       pinned: Fastgjorte tråde
@@ -2302,18 +2301,14 @@ da:
     started_by: Oprettet af %{name}
   poll_common_votes_panel:
     vote_removed: Stemme fjernet
-    undecided: Ikke stemt
     newest_first: Nyeste først
     oldest_first: Ældste først
     priority_first: Enig først
     priority_last: Blokerer først
-    undecided_first: Ikke stemt først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: "(Ingen af de tidligere)"
     name_or_username: Navn eller brugernavn
-    cast: Afgivet
-    uncast: Ikke afgivet
     reason_redacted: Begrundelse fjernet
     redact_reason_title: Redigér årsagen til stemmen?
     redact_reason_helptext: Årsagen til, at tekst og vedhæftede filer vil blive skjult, men afstemningen vil forblive i resultaterne
@@ -2328,15 +2323,6 @@ da:
     stance: Stemme
     participation_records_restricted: Du kan se, hvem der deltog, efter afstemningen er afsluttet
     vote_weight: Stemmevægt %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Vis %{count} ubesluttede
-    show_invitations: Vis afventende invitationer
-    undecided_users: Ikke besluttet (%{count})
-    invitation_count_singular: 1 yderligere person er blevet inviteret til at deltage via e-mail
-    invitation_count_plural: "%{count} yderligere personer er blevet inviteret til at deltage via e-mail"
-  poll_common_undecided_user:
-    reminded: Påmindelse sendt!
-    reminder_sent: Påmindelse sendt
   poll_common_set_outcome_panel:
     enter_outcome: Indtast konklusion
     poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter en konklusion, så folk ved, hvad der vil ske næste gang.
@@ -2478,9 +2464,9 @@ da:
     total: Total
   poll_remove_vote:
     title: Vil du fjerne din stemme?
-    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som ikke stemt og kan stemme igen senere, hvis du ønsker det.
     confirm: Fjern stemme
     success: Stemme fjernet
+    helptext_not_voted: Er du sikker på, at du vil fjerne din stemme? Din status bliver “Ikke stemt”, og du kan stemme igen senere, hvis du vil.
   poll_poll_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
@@ -2840,8 +2826,8 @@ da:
       voting_title: 24 timer før afstemningen slutter, send en påmindelse til
       nobody: Ingen
       author: Forfatter (mig)
-      undecided_voters: Uafklarede vælgere
       voters: Alle vælgere
+      people_who_have_not_voted: Personer, der ikke har stemt
     notify_on_participate:
       title: Giv mig besked, når folk deltager
       helptext_on: Når du er valgt, får du besked, når nogen deltager.

@@ -306,7 +306,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[Red Blue],
-      dots_per_person: 8,
+      points_per_voter: 8,
       specified_voters_only: true
     )
     poll.create_missing_created_topic_item!
@@ -335,7 +335,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[Alpha Beta],
-      max_score: 9,
+      score_max: 9,
       specified_voters_only: true
     )
     poll.create_missing_created_topic_item!
@@ -361,7 +361,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[First Second Third],
-      minimum_stance_choices: 3,
+      choice_count_min: 3,
       specified_voters_only: true
     )
     poll.create_missing_created_topic_item!

@@ -526,7 +526,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
     reader.update!(guest: true)
     MembershipService.revoke(membership: group.membership_for(member), actor: member)
-    count = poll.reload.undecided_voters_count
+    count = poll.reload.vote_count_uncast
 
     assert_no_enqueued_jobs(only: PollGroupMembersAddedWorker) do
       NotificationService.stub(:create!, ->(**) { raise 'Notification failed' }) do
@@ -539,7 +539,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
     assert_not_nil Membership.find_by!(group: group, user: member).revoked_at
     assert_not_nil reader.reload.revoked_at
     assert_not_nil stance.reload.revoked_at
-    assert_equal count, poll.reload.undecided_voters_count
+    assert_equal count, poll.reload.vote_count_uncast
   end
 
   test "inviting a former member restores their cast vote and active poll counts" do
@@ -554,15 +554,15 @@ class MembershipServiceTest < ActiveSupport::TestCase
       stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id, score: 1}]
     })
     cast_at = stance.reload.cast_at
-    voters_count = poll.reload.voters_count
+    vote_count_eligible = poll.reload.vote_count_eligible
     MembershipService.revoke(membership: group.membership_for(member), actor: member)
-    assert_equal voters_count - 1, poll.reload.voters_count
+    assert_equal vote_count_eligible - 1, poll.reload.vote_count_eligible
 
     GroupService.invite(group: group, actor: users(:admin), params: {recipient_emails: [member.email]})
 
     assert_nil stance.reload.revoked_at
     assert_equal cast_at, stance.cast_at
-    assert_equal voters_count, poll.reload.voters_count
+    assert_equal vote_count_eligible, poll.reload.vote_count_eligible
     assert member.can?(:vote_in, poll)
     assert_not poll.vote_needed_from?(member)
     assert_equal 1, poll.stances.latest.where(participant: member).count

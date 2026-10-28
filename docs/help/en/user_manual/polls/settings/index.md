@@ -105,7 +105,7 @@ Send a 'Closing soon' notification 24 hours before the poll closes. This can be 
 Setting options:
 - Nobody
 - Author
-- Undecided voters (default)
+- People who haven't voted (default)
 - All voters
 
 For an anonymous poll lasting at least 24 hours, Loomio automatically reminds

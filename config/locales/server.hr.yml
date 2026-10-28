@@ -112,7 +112,7 @@ hr:
     add_guests:
       all: Morate nadograditi svoju pretplatu na Loomio da biste dodali goste. Alternativno, možete ih pozvati da budu članovi vaše grupe.
   errors:
-    item_you_are_replying_to_deleted: "Stavka na koju odgovarate je izbrisana"
+    item_you_are_replying_to_deleted: Stavka na koju odgovarate je izbrisana
     clear_cache: Otkriven problem učitavanja. Držite shift i pritisnite reload ili izbrišite predmemoriju preglednika.
     404:
       title: Nije pronađeno
@@ -197,7 +197,6 @@ hr:
       poll_options_dont_match: Greška u Loomiu spriječila je spremanje vašeg glasa. Radimo na rješavanju problema. Molimo vas da ponovno učitate stranicu i pokušate ponovno.
       opening_at_before_closing_at: Datum otvaranja mora biti prije datuma zatvaranja
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) članova iznijelo je svoj stav"
       title: Titula
       author: Autor
       email: E-mail
@@ -458,12 +457,8 @@ hr:
       not_invited: Nije pozvan
       please_respond: Molim te odgovori
       time_zone: "(Vremena prikazana u %{zone})"
-      undecided_members: Članovi koji još nisu glasali (%{count})
-      undecided_visitors: Gosti koji još nisu glasali (%{count})
-      more_undecided: Još %{count}...
       vote_now: Glasaj sad
       you_have_until: Za sudjelovanje imate vremena do %{when}.
-      people_have_voted: "%{nom} od %{dnom} osoba je sudjelovalo (%{pct}%)"
       voting_opens_and_closes: Glasanje se otvara %{opens} i završava %{closes}. (%{days} dana)
       voting_closes: Glasanje završava %{when}.
       voting_opened_and_closed: Glasanje je otvoreno %{opens} i zatvoreno %{closes}. (%{days} dana)
@@ -782,9 +777,9 @@ hr:
     voted: "%{author} je glasao/la %{response}"
     voted_hidden: "%{author} je glasao"
     vote_removed: "%{author}: glas uklonjen"
-    undecided: "%{author}: neodlučan"
     superseded: zamijenjen
     shared_outcome: "%{author} je podijelio/la ishod"
     removed: Uklonjeno
+    not_voted: "%{author}: još nisu glasali"
   error:
     access_denied: Nemate dopuštenje za to

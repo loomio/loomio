@@ -4,10 +4,10 @@ class DemoGroupTemplateService
   TEMPLATE_ROOT = Rails.root.join("config", "demo_groups")
   POLL_CONFIGURATION_KEYS = %w[
     agree_target
-    dots_per_person
-    maximum_stance_choices
+    points_per_voter
+    choice_count_max
     meeting_duration
-    minimum_stance_choices
+    choice_count_min
     stv_method
     stv_quota
     stv_seats
@@ -354,7 +354,7 @@ class DemoGroupTemplateService
   def cast_votes!(poll, people, definition)
     definition.fetch("votes").each do |vote|
       person = people.fetch(vote.fetch("person"))
-      stance = poll.stances.undecided.find_by!(participant: person, latest: true)
+      stance = poll.stances.uncast.find_by!(participant: person, latest: true)
       stance.choice = vote_choice(poll, vote, definition)
       stance.reason = vote.fetch("reason")
       StanceService.create(stance: stance, actor: person)

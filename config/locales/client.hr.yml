@@ -139,8 +139,8 @@ hr:
     manage_subscription: Upravljanje pretplatom
     amount: Iznos
   loomio_tags:
-    show_tags_from_other_groups: "Prikažite oznake iz drugih grupa"
-    parent_group_and_subgroups_in_this_organization: "Matična grupa i podgrupe ove organizacije"
+    show_tags_from_other_groups: Prikažite oznake iz drugih grupa
+    parent_group_and_subgroups_in_this_organization: Matična grupa i podgrupe ove organizacije
     all_tags: Sve oznake
     tags: Oznake
     apply_tags: Primijeni oznake
@@ -998,10 +998,10 @@ hr:
       everyone_in_the_group: Svi u grupi
       topic: Svi u temi
       voters: Svi pozvani da glasaju
-      decided_voters: Svi koji su glasali
-      undecided_voters: Birači koji još nisu glasali
       non_voters: Članovi %{name} još nisu pozvani
       delegates_of_group: Delegati %{name}
+      everyone_who_voted: Svi koji su glasali
+      people_who_have_not_voted: Oni koji još nisu glasali
     form:
       group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
       invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
@@ -1071,7 +1071,7 @@ hr:
       has_not_read_thread: Nije pogledao nit
       has_not_joined_yet: Još se nije pridružio
       has_not_joined_yet_hint: Ovaj korisnik nije prihvatio njihov poziv da se pridruži Loomiju i neće primati daljnje obavijesti dok to ne prihvati
-      discussion_admin: "Administrator teme"
+      discussion_admin: Administrator teme
       has_not_read_discussion: Nije pregledao/la raspravu
     group_form:
       search_placeholder: Traži ljude...
@@ -1605,7 +1605,7 @@ hr:
     title_helptext:
       group: Ovaj naslov će se pojaviti pored imena %{name} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
     title_label: titula
-    title_placeholder: "Npr. „Admin” ili „Facilitator”"
+    title_placeholder: Npr. „Admin” ili „Facilitator”
     updated: Naziv članstva ažuriran
     weight_label: Težina glasova
   user_name_modal:
@@ -1777,7 +1777,6 @@ hr:
       all: Nedavne rasprave
     thread_preview:
       you_voted: Glasovali ste za %{position}
-      undecided: Još niste glasali
     threads_from:
       group: Teme iz
       pinned: Prikvačene niti
@@ -2294,18 +2293,14 @@ hr:
     started_by: Pokrenuo %{name}
   poll_common_votes_panel:
     vote_removed: Glas uklonjen
-    undecided: Neodlučan
     newest_first: Prvo najnoviji
     oldest_first: Prvo najstariji
     priority_first: Prvo se složite
     priority_last: Prvo blokiraj
-    undecided_first: Prvo oni koji još nisu glasali
     no_votes_yet: Još nema glasova.
     change_results_order: Promjena redoslijeda rezultata
     none_of_the_above: "(Ništa od navedenog)"
     name_or_username: Ime ili korisničko ime
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Razlog je uklonjen
     redact_reason_title: Uredi razlog glasanja?
     redact_reason_helptext: Razlog zašto će tekst i privitci biti skriveni, ali će glas ostati u rezultatima
@@ -2320,15 +2315,6 @@ hr:
     stance: Glasanje
     participation_records_restricted: Nakon završetka glasanja možete vidjeti tko je sudjelovao
     vote_weight: Težina glasova %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Prikaži %{count} neodlučenih
-    show_invitations: Prikaži pozivnice na čekanju
-    undecided_users: Neodlučan (%{count})
-    invitation_count_singular: 1 dodatna osoba je pozvana da sudjeluje putem e-pošte
-    invitation_count_plural: "%{count} dodatnih osoba pozvano je na sudjelovanje putem e-pošte"
-  poll_common_undecided_user:
-    reminded: Podsjetnik poslan!
-    reminder_sent: Obavijest o podsjetniku je poslana
   poll_common_set_outcome_panel:
     enter_outcome: Unesite ishod
     poll_type: Ovaj %{poll_type} je zatvoren. Odvojite vrijeme za razmatranje rezultata, a zatim podijelite ishod kako bi ljudi znali što će se sljedeće dogoditi.
@@ -2470,9 +2456,9 @@ hr:
     total: Ukupno
   poll_remove_vote:
     title: Ukloniti svoj glas?
-    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni među onima koji još nisu glasali i možete ponovno glasati kasnije ako želite.
     confirm: Ukloni glas
     success: Glas uklonjen
+    helptext_not_voted: Želite li zaista ukloniti svoj glas? Vaš će status biti “Još nisu glasali” i možete ponovno glasati kasnije ako želite.
   poll_poll_vote_form:
     stance_created: Glasanje je kreirano
     stance_updated: Glasanje ažurirano
@@ -2829,8 +2815,8 @@ hr:
       voting_title: 24 sata prije zatvaranja glasanja, pošaljite podsjetnik na
       nobody: Nitko
       author: Autor (ja)
-      undecided_voters: Birači koji još nisu glasali
       voters: Svi birači
+      people_who_have_not_voted: Oni koji još nisu glasali
     notify_on_participate:
       title: Obavijesti me kada ljudi sudjeluju
       helptext_on: Kada budete odabrani, bit ćete obaviješteni svaki put kada netko sudjeluje.

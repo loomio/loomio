@@ -252,7 +252,7 @@ module Dev::FakeDataHelper
   def fake_score(poll, index = 0)
     case poll.poll_type
     when 'score'
-      ((poll.min_score)..(poll.max_score)).to_a.sample
+      ((poll.score_min)..(poll.score_max)).to_a.sample
     when 'ranked_choice', 'stv'
       index + 1
     when 'meeting'
@@ -270,7 +270,7 @@ module Dev::FakeDataHelper
     if poll.require_all_choices
       num_choices = poll.poll_options.length
     else
-      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+      num_choices = (poll.choice_count_min..poll.choice_count_max).to_a.sample
     end
 
     choice = poll.poll_options.sample(num_choices).map.with_index do |option, index|
@@ -297,7 +297,7 @@ module Dev::FakeDataHelper
     if poll.require_all_choices
       num_choices = poll.poll_options.length
     else
-      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+      num_choices = (poll.choice_count_min..poll.choice_count_max).to_a.sample
     end
 
     choice =  poll.poll_options.sample(num_choices).map.with_index do |option, index|

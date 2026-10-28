@@ -7,6 +7,7 @@ import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 import { useI18n } from 'vue-i18n';
+import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
 export default {
   setup() {
@@ -89,7 +90,7 @@ export default {
       this.pollTemplate.weightedVoting = false;
       this.pollTemplate.hideResults = 'until_closed';
       this.pollTemplate.stanceReasonRequired = 'disabled';
-      this.pollTemplate.notifyOnClosingSoon = 'undecided_voters';
+      this.pollTemplate.notifyOnClosingSoon = 'voters_uncast';
     },
     validate(field) {
       return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
@@ -208,9 +209,7 @@ export default {
     },
 
     closingSoonItems() {
-      return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-      });
+      return pollReminderItems(this.$t);
     },
 
     optionFormat() { return this.pollTemplate.pollOptionNameFormat; },
@@ -348,13 +347,13 @@ export default {
 
           .d-flex(v-if="pollTemplate.pollType == 'score'")
             v-text-field.poll-score-form__min(
-              v-model="pollTemplate.minScore"
+              v-model="pollTemplate.scoreMin"
               type="number"
               :step="1"
               :label="$t('poll_common.min_score')")
             v-spacer
             v-text-field.poll-score-form__max(
-              v-model="pollTemplate.maxScore"
+              v-model="pollTemplate.scoreMax"
               type="number"
               :step="1"
               :label="$t('poll_common.max_score')")
@@ -364,13 +363,13 @@ export default {
             .text-body-large.pb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
             .d-flex
               v-text-field.poll-common-form__minimum-stance-choices.mr-2(
-                v-model="pollTemplate.minimumStanceChoices"
+                v-model="pollTemplate.choiceCountMin"
                 type="number"
                 :step="1"
                 :hint="$t('poll_common_form.choose_at_least')"
                 :label="$t('poll_common_form.minimum_choices')")
               v-text-field.poll-common-form__maximum-stance-choices.ml-2(
-                v-model="pollTemplate.maximumStanceChoices"
+                v-model="pollTemplate.choiceCountMax"
                 type="number"
                 :step="1"
                 :hint="$t('poll_common_form.choose_at_most')"
@@ -379,12 +378,12 @@ export default {
           .d-flex.align-center(v-if="pollTemplate.pollType == 'ranked_choice'")
             v-divider.my-4
             v-text-field.lmo-number-input(
-              v-model="pollTemplate.minimumStanceChoices"
+              v-model="pollTemplate.choiceCountMin"
               :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
               :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
               type="number"
               :min="1"
-              :rules="validate('minimumStanceChoices')"
+              :rules="validate('choiceCountMin')"
             )
 
           template(v-if="pollTemplate.pollType == 'dot_vote'")
@@ -394,8 +393,8 @@ export default {
               :label="$t('poll_dot_vote_form.dots_per_person')"
               type="number"
               min="1"
-              v-model="pollTemplate.dotsPerPerson"
-              :rules="validate('dotsPerPerson')"
+              v-model="pollTemplate.pointsPerVoter"
+              :rules="validate('pointsPerVoter')"
             )
 
           template(v-if="pollTemplate.pollType == 'stv'")

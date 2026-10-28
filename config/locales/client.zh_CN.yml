@@ -165,8 +165,8 @@ zh_CN:
     manage_subscription: 管理订阅
     amount: 数量
   loomio_tags:
-    show_tags_from_other_groups: "显示其他群组的标签"
-    parent_group_and_subgroups_in_this_organization: "此组织的上级群组和子群组"
+    show_tags_from_other_groups: 显示其他群组的标签
+    parent_group_and_subgroups_in_this_organization: 此组织的上级群组和子群组
     all_tags: 所有标签
     tags: 标签
     apply_tags: 应用标签
@@ -1048,9 +1048,9 @@ zh_CN:
       everyone_in_the_group: 子群组中的每个人
       topic: 帖子里的所有人
       voters: 所有受邀投票的人
-      decided_voters: 所有投票的人
-      undecided_voters: 未投票的投票者
       non_voters: "%{name} 的成员尚未受邀"
+      everyone_who_voted: 所有已投票的人
+      people_who_have_not_voted: 未投票的人
     form:
       group_has_no_members_yet: 您是群组中唯一的成员。在发起讨论或做出决定之前，您可能需要邀请一些人加入您的群组。
       invite_people_to_evaluate_loomio: 邀请一些人加入您的 Loomio 群组，一起做出决定。
@@ -1113,7 +1113,7 @@ zh_CN:
       not_notified: 尚未收到通知
       no_members: 这件事还没跟任何人分享过！
       group_admin: 群组管理员
-      discussion_admin: "主题管理员"
+      discussion_admin: 主题管理员
       last_read_at: 上次查看时间：%{time}
       has_not_read_discussion: 未查看讨论
       has_not_joined_yet: 尚未加入
@@ -1683,7 +1683,7 @@ zh_CN:
     title_helptext:
       group: 此标题将显示在 %{name} 的名字旁边。使用它可以让成员了解他们的角色。
     title_label: 标题
-    title_placeholder: "例如“管理员”或“引导者”"
+    title_placeholder: 例如“管理员”或“引导者”
     updated: 会员头衔已更新
     weight_label: 投票权重
   user_name_modal:
@@ -1858,7 +1858,6 @@ zh_CN:
       muted_description: 仅显示已被静音的帖子
     thread_preview:
       you_voted: 您投票给了 %{position}
-      undecided: 您还在犹豫不决。
     threads_from:
       group: 帖子来自
       pinned: 置顶帖子
@@ -2387,8 +2386,8 @@ zh_CN:
       voting_title: 投票结束前24小时，发送提醒
       nobody: 无人
       author: 作者（我）
-      undecided_voters: 未投票的投票者
       voters: 所有投票者
+      people_who_have_not_voted: 未投票的人
     notify_on_participate:
       title: 当有人参与时通知我
       helptext_on: 被选中后，每当有人参与活动时，您都会收到通知。
@@ -2436,17 +2435,13 @@ zh_CN:
     started_by: 由 %{name} 发起
   poll_common_votes_panel:
     vote_removed: 投票已移除
-    undecided: 未投票
     newest_first: 最新优先
     oldest_first: 最早优先
     priority_first: 同意优先
     priority_last: 否决优先
-    undecided_first: 未投票者优先
     no_votes_yet: 目前还没有人投票。
     change_results_order: 更改结果顺序
     name_or_username: 真实姓名或用户名
-    cast: Cast
-    uncast: Uncast
     reason_redacted: 原因已隐去
     redact_reason_title: 删除投票理由？
     redact_reason_helptext: 原因文本和附件将被隐藏，但投票结果仍将保留。
@@ -2461,15 +2456,6 @@ zh_CN:
     stance: 投票
     participation_records_restricted: 投票结束后，您可以查看所有参与者名单
     vote_weight: 投票权重 %{weight}
-  poll_common_undecided_panel:
-    show_undecided: 显示 %{count} 位未投票者
-    show_invitations: 待处理的邀请
-    undecided_users: 未投票（%{count}）
-    invitation_count_singular: 另有一人已通过电子邮件受邀加入。
-    invitation_count_plural: 已有 %{count} 人通过电子邮件受邀参与。
-  poll_common_undecided_user:
-    reminded: 提醒已发送！
-    reminder_sent: 已发送提醒通知
   poll_common_set_outcome_panel:
     enter_an_outcome: 输入结论
     poll_type: 此 %{poll_type} 已结束。请花些时间考虑结果，然后分享总结，以便大家了解下一步安排。
@@ -2761,9 +2747,9 @@ zh_CN:
     total: 全部的
   poll_remove_vote:
     title: 取消投票？
-    helptext: 您确定要撤回投票吗？撤回后，您的状态将显示为“未投票”，如果您愿意，以后可以再次投票。
     confirm: 移除投票
     success: 投票已移除
+    helptext_not_voted: 确定要移除您的投票吗？您的状态将变为“未投票”，之后仍可再次投票。
   poll_poll_vote_form:
     stance_created: 投票已创建
     stance_updated: 投票结果已更新

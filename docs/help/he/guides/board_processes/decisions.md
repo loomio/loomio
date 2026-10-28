@@ -1,30 +1,24 @@
 ---
 title: קבלת החלטות
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/board_processes/decisions.md
+source_revision: 44bb4520839557ec23fd64c4d591a1028d6b4434
+source_file: docs/help/en/guides/board_processes/decisions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
   examples-of-out-of-session-decisions: 6a4d6a8c978bcb11
   decision-about-property-purchase: fff64b1ac620cc4a
-  decision-to-accept-directors-and-officers-liability-insurance: b279ed6b1c5aadfa
   a-security-breach-has-occurred-at-one-of-our-facilities: ca3a40286ca25a9a
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1d79254c3f3a0ba6
-  keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
-  on-loomio-2: 5ef094900505a875
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: c406842807e1091b
 generated:
   introduction: 0c33521826622727
   on-loomio: bb47152a14de5b20
   examples-of-out-of-session-decisions: 51e71b7c3a3db65a
   decision-about-property-purchase: dd826463affa1127
-  decision-to-accept-directors-and-officers-liability-insurance: 1cf28f10bce51e5a
   a-security-breach-has-occurred-at-one-of-our-facilities: '09fef878e33df1e9'
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: df399e3e03999f5f
-  keeping-a-record-of-decisions-made-and-supporting-discussion: d7e710d36435dc95
-  on-loomio-2: 93a48da6487cd711
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: b0cc1acf08bb93aa
 title_source: 9a7f398684e7c05f
 title_generated: 12478406da6b29a1
 needs_review:
@@ -74,11 +68,6 @@ needs_review:
 ### החלטה על רכישת נכס
 בישיבת הדירקטוריון האחרונה נדונה רכישת נכס. הועלתה דרישה לקבל דוח הנדסי בלתי תלוי לפני קבלת ההחלטה. בישיבה הוסכם לרכוש את הנכס בכפוף לדוח הנדסי משביע רצון. עם זאת, מכיוון שיש לבצע את הרכישה לפני ישיבת הדירקטוריון הבאה, הוסכם להעלות את הדוח ההנדסי ל-Loomio כשיהיה מוכן, לצורך דיון וקבלת ההחלטה הסופית על רכישת הנכס ב-Loomio.
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### החלטה על אישור ביטוח אחריות דירקטורים ונושאי משרה
-במהלך ישיבת הדירקטוריון צוין כי מועד חידוש הביטוח השנתי מתקרב. מכיוון שהחידוש נחשב לעניין מנהלי, הוסכם להשתמש ב-Loomio כדי לדון בבקשת החידוש, לבקש את המידע הנדרש מכל אחד מחברי הדירקטוריון, להגיש את הבקשה ולאשר את הצעת המחיר לחידוש הביטוח.
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### אירוע אבטחה התרחש באחד המתקנים שלנו
@@ -87,37 +76,4 @@ needs_review:
 <!-- translation-section: a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership -->
 
 ### הועלתה בדירקטוריון סוגיית המגדר והגיוון בהרכבו
-אחד מחברי הדירקטוריון הציג נימוקים מבוססים וראיות לצורך בגיוון הרכב הדירקטוריון, כדי שישקף טוב יותר את התאגיד. על חברי הדירקטוריון לעיין במידע, לשאול שאלות, לדון בסוגיה ולהחליט כיצד להגיב.
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## שמירת תיעוד של החלטות ושל הדיונים הנלווים
-
-שמירת תיעוד היא דרישה חוקית עבור דירקטוריונים ונוהג מומלץ עבור ועדות.
-
-כיום, ארגונים רבים מתעדים ושומרים באופן אלקטרוני פרוטוקולים רשמיים, החלטות, מדיניות והחלטות מרכזיות. מסמכים נוצרים ומאושרים, מופצים ומשמשים לעבודה, נשמרים ומאוחסנים, ולבסוף מסולקים.
-
-<!-- translation-section: on-loomio-2 -->
-
-### ב-Loomio
-ניתן לצרף פרוטוקולים, דוחות, החלטות ומסמכים אחרים ל**שרשור** של ישיבה, בהקשר של השרשור, בתוך סקר או בכל תגובה בשרשור. כך המסמכים תמיד משויכים לדיון הרלוונטי.
-
-ניתן למצוא רשימת קבצים גם בלשונית **קבצים**.
-
-![](files_tab.png#width-90)
-
-ניתן גם להוסיף בכל שרשור או סקר קישור למסמך השמור במערכת ניהול המסמכים המועדפת. יש למצוא את הקישור המקוון לשיתוף המסמך, להעתיק אותו ולהדביק בשרשור, בסקר או בתגובה.
-
-לאחר מכן, כל מי שיש להם הרשאה יכולים ללחוץ על הקישור כדי לפתוח את המסמך ולקרוא אותו.
-
-![](thread_link.png#width-90)
-
-מכיוון שהדיונים וההחלטות ב-Loomio מתועדים כחלק מהתהליך, ניתן לאמת באמצעותם את כל תהליכי קבלת ההחלטות של הדירקטוריון. ניתן להראות בקלות מה הוחלט ומתי. אם חברי הדירקטוריון השתתפו בדיון וכתבו תגובות, וגם הצביעו על החלטה, ניתן לדעת גם כיצד ומדוע התקבלה כל החלטה.
-
-עם הזמן נבנה תיעוד היסטורי של הארגון, שבו ניתן לחפש ולמצוא בקלות החלטות קודמות ודיונים קשורים.
-
-![](thread_search.png#width-90)
-
-ב-Loomio כל הנתונים נכתבים ונשמרים במספר דיסקים ובמספר מיקומים, *בענן*, ומגובים מדי יום. קבצים שמועלים נשמרים בשרתים המשתמשים בטכניקות מודרניות להסרת צווארי בקבוק ונקודות כשל.
+הוצגו לדירקטוריון נימוקים מבוססים וראיות לצורך בגיוון הרכבו, כדי שישקף טוב יותר את התאגיד. יש לעיין במידע, לשאול שאלות, לדון בסוגיה ולהחליט כיצד להגיב.

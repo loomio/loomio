@@ -1,76 +1,76 @@
 ---
 title: API карыстальніка
-source_revision: aa8cf2cef8336b4d86d7200c0d66c0eb8f973256
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-17'
+  'on': '2026-10-28'
 sections:
-  introduction: b6e6ec7463276869
-  response-size-and-related-records: 8349c4d8e567a0c1
-  endpoint-summary: 258f7560def524ec
+  introduction: 68d638b236cac8c3
+  response-size-and-related-records: 6f8cf57b45766ad1
+  endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: e94dbf27dff819ff
-  get-a-group: 80912be614c0ea89
+  list-groups: 9aef26f9b926766b
+  get-a-group: 05fd7cc3b212e7e1
   webhooks: f65fa289f8c1b808
-  list-webhooks: 6ec5700a0ac5cbc7
-  create-a-webhook: 173ce08be83b4b58
-  update-a-webhook: 2bf0f59f8bff06ec
-  test-a-webhook-destination: 0637a17a98f20f4b
-  delete-a-webhook: 6ba2c6360e4f1d2a
+  list-webhooks: fa6555a40e1c4929
+  create-a-webhook: 82f92d8c0291ebba
+  update-a-webhook: 7e838aa6eba73663
+  test-a-webhook-destination: bceeb98f6e8c0000
+  delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
   http-delivery: a32c763b6f816e65
   payload-formats: ca728b0ef542305c
-  search: bb5a1cfc7a6179aa
-  params: 1e7478b9883d2a47
-  participation-report: a1798112a78390fe
+  search: 9f562d745e3eb6b2
+  params: 9fa99390aca5fcce
+  participation-report: 2d11a398e2293ea4
   params-2: 464322ffc1ac56e5
-  example: ba3f68d5b68a955b
-  create-discussion: 958fc684640462a9
+  example: 7cab9083deb72c59
+  create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
-  example-2: bca512c06153265f
-  show-discussion: 40102aeffe4f1286
-  example-3: fe0959389ff4f2f6
-  list-discussions: '09ff7f0d3a937b41'
+  example-2: 71b3da6ca440fc97
+  show-discussion: e4c59f833a2e0f0e
+  example-3: 2371364611978a4d
+  list-discussions: 70edb4a95bf5cafd
   params-4: dcebc294fbb9d837
-  example-4: dd55f55bf83d135f
-  list-threads: '09f7bd670e581400'
+  example-4: 62b76a3e8ccd9d3f
+  list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
-  example-5: 1864da3b097f66d6
-  read-thread: ac36d1b81c1eeed4
-  example-6: 8c582a286e04ca75
-  edit-discussion: 918161e7aa8f4aa6
+  example-5: 785a417a6afa1b29
+  read-thread: d7b366d09189eeaf
+  example-6: 13abd928820aa15e
+  edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
-  example-7: 8b591051e20fa1e4
-  soft-delete-discussion: c8ffe951171e6f07
-  example-8: d0e726a1a20cc469
-  create-comment: f95f56b81c8f22b5
+  example-7: a98e95cf6bec9f7d
+  soft-delete-discussion: 97396a318d1c74a2
+  example-8: e92d4004513fc701
+  create-comment: a3c290a9028f0f28
   params-7: 5ad8ede0919c5f47
-  example-9: 61514be87d3a8857
-  edit-comment: 80322da74162d58f
+  example-9: a13b59af4b411c26
+  edit-comment: fd9b7963e483d2a1
   params-8: 288331c60f3c9b28
-  example-10: c0aed6ea023ff3d4
-  soft-delete-comment: 04baf86923c7e8f1
-  example-11: 129076a53c6c4b31
-  create-poll: cf62e787784a5e87
-  params-9: 89465a6e2dfa6bdb
-  example-12: 4397219f26129191
-  show-poll: d759508986aab08c
-  example-13: 01f20dba176f4f23
-  list-polls: 56e5ed4ae45e5428
+  example-10: 48c0def4c835d801
+  soft-delete-comment: be989b770bd2025a
+  example-11: e9019f5c028e3632
+  create-poll: f339b99e95def65f
+  params-9: 1c63b4ef4047f3c3
+  example-12: 58ea197b72a8bd0f
+  show-poll: 40b4370bcac536e5
+  example-13: 6e74d6164d61fd19
+  list-polls: e52282b2b9fe775b
   params-10: e68e8cf62b21488d
-  example-14: a1149e09d37d9b0a
-  edit-poll: 65467ad0b431ddbf
+  example-14: cda8994926bc7002
+  edit-poll: b2c8cd57e7dea231
   params-11: 70b594511872194a
-  example-15: 8c4d585a050423ac
-  soft-delete-poll: 61cf76310e08d7ff
-  example-16: fb15cb7d90550c2f
-  list-memberships: 5fab06bb8ecf1fd0
+  example-15: fda29e1741869e22
+  soft-delete-poll: 740d74b8f48adfd8
+  example-16: aa8016ff2c0dcd5d
+  list-memberships: 769573d5f0f4a077
   params-12: decaff0790566fb0
-  example-17: 7714e1b8d2d07999
-  manage-memberships: 802d39c06674d395
+  example-17: 213d79e474d7ab1d
+  manage-memberships: c492589da7e249c8
   params-13: 771b5338a4ba3d0b
-  example-18: a06882d9d8de45f0
+  example-18: bacb90328233ce5b
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,75 +78,75 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 05024e64103f7d39
-  poll-detailed-options: a511f74ddaa0b6bf
-  edit-poll-detailed-options: 767b869e6b9efcff
+  poll-many-options: 54f4ab737df476d9
+  poll-detailed-options: 1df1348a129c3991
+  edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
-  introduction: 849c97b72c026484
-  response-size-and-related-records: 7fbf62fa7b99a64e
-  endpoint-summary: e3d96ab90cf32525
+  introduction: e4926d1fcf181fef
+  response-size-and-related-records: 5bc4669777bf04a7
+  endpoint-summary: 93595306a381e6ae
   groups: 8a31f2457ed0bf48
-  list-groups: 50effa23dad625ba
-  get-a-group: ef349f43954c35ff
+  list-groups: '0599def1d427cecb'
+  get-a-group: 78dae087ebe0f43c
   webhooks: 3654136d8b45e07f
-  list-webhooks: d9a32f1320360c75
-  create-a-webhook: d4a1208bf95acb90
-  update-a-webhook: a62c265105758351
-  test-a-webhook-destination: 545a1944084ccc11
-  delete-a-webhook: ea534ae0af3113bf
+  list-webhooks: 943b507e98f541ce
+  create-a-webhook: 9bfd9c306515ed4b
+  update-a-webhook: 6e23e80acf371277
+  test-a-webhook-destination: 3549819dd14c3d91
+  delete-a-webhook: 3f75debd8050c43f
   event-types: 85af050b98ebd07a
   http-delivery: 5e3bf2907ebbead8
   payload-formats: a3bf082ada430cf4
-  search: b53fa7c0b4a7526a
-  params: 30fb20a082e31e66
-  participation-report: 77f4f7ee4543c73e
+  search: 05aa49a9b4658641
+  params: 57fd6f3f1b40dc49
+  participation-report: 9e4941f55a28e685
   params-2: afa0284992112bed
-  example: 0ee1218b2ddf4e64
-  create-discussion: bbcefe2166983de4
+  example: 94bc1a04ae758d47
+  create-discussion: 8e21fda3e81aa779
   params-3: 884ab498289af44d
-  example-2: 2531494638f29289
-  show-discussion: 173faa0152c306ca
-  example-3: 4753092ed86b477e
-  list-discussions: d303a89d3bc0b2b1
+  example-2: 941976c2f972c4b5
+  show-discussion: 7c472e4340ed496f
+  example-3: f8a966c8c876580b
+  list-discussions: 522f0122e57ab72a
   params-4: dd3b95f8bd569907
-  example-4: 850313fffbdce09e
-  list-threads: c7259a3cc7d741a7
+  example-4: a9d7fcd2c0654d86
+  list-threads: 39415eabb60a049e
   params-5: 5019ac45508d65d2
-  example-5: 1ecf7d134218ebdb
-  read-thread: cbd31fa43a79f50c
-  example-6: 381c6fcef8615c83
-  edit-discussion: a3a0a702c266af43
+  example-5: 7b5d246728b22285
+  read-thread: 04e112b54651b45c
+  example-6: 6053b13e96209c5b
+  edit-discussion: 8e416742a2891a03
   params-6: 9cd0f870c1b09362
-  example-7: d1764a1021fce11d
-  soft-delete-discussion: b296001795c88990
-  example-8: 43f1553a4d0245e3
-  create-comment: 5ce87bc5e1485686
+  example-7: e2b8da257a972890
+  soft-delete-discussion: 3073a39d4dcb3fda
+  example-8: a51062e2ae169c7c
+  create-comment: 99ecd46cf3f5080d
   params-7: bd7aec3e16a33c41
-  example-9: ab2a5047721fa2db
-  edit-comment: b4d6a0b67881693a
+  example-9: ba0459a3f949bf67
+  edit-comment: 75f690c0faab5657
   params-8: 47a1469415a6ec3b
-  example-10: f62b2779f779ea6e
-  soft-delete-comment: efad348231a34466
-  example-11: 417da88e3d6def6c
-  create-poll: 93ff3699a4c921be
-  params-9: 9c28d078bbbe111e
-  example-12: 01bb8728942fa80c
-  show-poll: 6b41ec64b67fb709
-  example-13: '051288e974558bd4'
-  list-polls: fcf939380c3366e1
+  example-10: b972e0d1f6c883aa
+  soft-delete-comment: a7d51cc04ea7b3ac
+  example-11: 13fd898b22167ba3
+  create-poll: 8fd53831115706a4
+  params-9: ddbe2b97bbba65fb
+  example-12: 0b1b934b79ccb576
+  show-poll: 4cb01cb105899707
+  example-13: 79a80624be3351b7
+  list-polls: 0a8259fe700f31e9
   params-10: 39852b43af2e4048
-  example-14: '0826f3d3a8732dc6'
-  edit-poll: 6694866f8c87b6a4
+  example-14: 8834b452bf49f20b
+  edit-poll: a2dbada4f26c36b5
   params-11: d9d7995b76811c19
-  example-15: 52ec55ea48ab0218
-  soft-delete-poll: 94afe5abd8995786
-  example-16: bc30ab8c3659b24d
-  list-memberships: a0940657dd84d742
+  example-15: cffbbbdcda903755
+  soft-delete-poll: 6b6d400458139f4b
+  example-16: 7354e7f8ccaead45
+  list-memberships: aa8c67bb16de1538
   params-12: 178998fef390053e
-  example-17: 66c1cb8b635820e5
-  manage-memberships: 3931d25abf823b18
+  example-17: a749bf647e36d933
+  manage-memberships: 79d892f7efed8449
   params-13: d2e959856583accd
-  example-18: 6715e30a4734e97c
+  example-18: 45324fbcc7504b9a
   pagination: 0df3d10582a3a8ab
   comments: 94655c65e8aa2283
   discussions: 5b671f0b1f135817
@@ -154,9 +154,9 @@ generated:
   polls: a9a87990e67b734b
   threads: 2e210208230c2de0
   request-bodies: ffa5cf4db166176a
-  poll-many-options: 7fbde2f8b7cdcdd3
-  poll-detailed-options: 6f2c38e49789e07c
-  edit-poll-detailed-options: dfef43a6225f57eb
+  poll-many-options: 3ce270a28bb373b2
+  poll-detailed-options: 7fec8945af0dbc6f
+  edit-poll-detailed-options: c48075ad27ecf450
 title_source: c23fb6526b722360
 title_generated: 142976b96af3aa95
 ---
@@ -167,7 +167,7 @@ title_generated: 142976b96af3aa95
 
 <!-- seo-description: Выкарыстоўвайце API карыстальніка Loomio, каб ствараць абмеркаванні, каментарыі, апытанні, тэмы і кіраваць імі, а таксама ўдзелам у групах з іншых праграм. -->
 
-`/api/b2` — гэта API для інтэграцый з Loomio, арыентаваны на карыстальнікаў. Ён выкарыстоўвае ключ API ўліковага запісу, і ўсе дзеянні выконваюцца ад імя гэтага ўліковага запісу.
+`/api/user0` — гэта API для інтэграцый з Loomio, арыентаваны на карыстальнікаў. Ён выкарыстоўвае ключ API ўліковага запісу, і ўсе дзеянні выконваюцца ад імя гэтага ўліковага запісу.
 
 Аперацыі з групамі выкарыстоўваюць удзел у групах і правы ўліковага запісу, якому належыць ключ API. Статус адміністратара асобніка не пашырае доступ ключа API да груп або змесціва; для адміністравання асобніка выкарыстоўвайце API сервера.
 
@@ -199,34 +199,34 @@ Authorization: Bearer YOUR_API_KEY
 
 | Метад | Канцавы пункт | Прызначэнне |
 | --- | --- | --- |
-| `POST` | `/api/b2/comments` | Стварыць каментарый або адказ |
-| `PATCH` | `/api/b2/comments/:id` | Рэдагаваць каментарый |
-| `DELETE` | `/api/b2/comments/:id` | Выдаліць каментарый з захаваннем запісу |
-| `POST` | `/api/b2/discussions` | Стварыць абмеркаванне |
-| `GET` | `/api/b2/discussions/:id` | Атрымаць абмеркаванне |
-| `GET` | `/api/b2/discussions` | Атрымаць спіс абмеркаванняў у групе |
-| `PATCH` | `/api/b2/discussions/:id` | Рэдагаваць абмеркаванне |
-| `DELETE` | `/api/b2/discussions/:id` | Выдаліць абмеркаванне з захаваннем запісу |
-| `GET` | `/api/b2/groups` | Атрымаць спіс груп уліковага запісу, якому належыць ключ API |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Атрымаць даступную групу |
-| `GET` | `/api/b2/memberships` | Атрымаць спіс запісаў удзелу ў групе |
-| `POST` | `/api/b2/memberships` | Дадаць удзельнікаў і пры неабходнасці выдаліць удзельнікаў, якіх няма ў спісе |
-| `GET` | `/api/b2/reports` | Стварыць справаздачу аб удзеле |
-| `POST` | `/api/b2/polls` | Стварыць апытанне |
-| `GET` | `/api/b2/polls/:id` | Атрымаць апытанне |
-| `GET` | `/api/b2/polls` | Атрымаць спіс апытанняў у групе |
-| `PATCH` | `/api/b2/polls/:id` | Рэдагаваць апытанне |
-| `DELETE` | `/api/b2/polls/:id` | Выдаліць апытанне з захаваннем запісу |
-| `GET` | `/api/b2/search` | Шукаць даступныя абмеркаванні, каментарыі, апытанні, галасы і высновы |
-| `GET` | `/api/b2/threads` | Атрымаць спіс даступных тэм абмеркаванняў і асобных апытанняў |
-| `GET` | `/api/b2/threads/:topic_id` | Атрымаць тэму |
-| `GET` | `/api/b2/threads/:topic_id/items` | Атрымаць упарадкаваныя элементы тэмы |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | Атрымаць поўную тэму ў фармаце Markdown |
-| `GET` | `/api/b2/chatbots` | Атрымаць спіс інтэграцый з чатам і вэбхукаў групы |
-| `POST` | `/api/b2/chatbots` | Стварыць інтэграцыю з чатам або вэбхук |
-| `PATCH` | `/api/b2/chatbots/:id` | Абнавіць інтэграцыю з чатам або вэбхук |
-| `DELETE` | `/api/b2/chatbots/:id` | Выдаліць інтэграцыю з чатам або вэбхук |
-| `POST` | `/api/b2/chatbots/check` | Адправіць тэст падключэння вэбхука |
+| `POST` | `/api/user0/comments` | Стварыць каментарый або адказ |
+| `PATCH` | `/api/user0/comments/:id` | Рэдагаваць каментарый |
+| `DELETE` | `/api/user0/comments/:id` | Выдаліць каментарый з захаваннем запісу |
+| `POST` | `/api/user0/discussions` | Стварыць абмеркаванне |
+| `GET` | `/api/user0/discussions/:id` | Атрымаць абмеркаванне |
+| `GET` | `/api/user0/discussions` | Атрымаць спіс абмеркаванняў у групе |
+| `PATCH` | `/api/user0/discussions/:id` | Рэдагаваць абмеркаванне |
+| `DELETE` | `/api/user0/discussions/:id` | Выдаліць абмеркаванне з захаваннем запісу |
+| `GET` | `/api/user0/groups` | Атрымаць спіс груп уліковага запісу, якому належыць ключ API |
+| `GET` | `/api/user0/groups/:id_or_key_or_handle` | Атрымаць даступную групу |
+| `GET` | `/api/user0/memberships` | Атрымаць спіс запісаў удзелу ў групе |
+| `POST` | `/api/user0/memberships` | Дадаць удзельнікаў і пры неабходнасці выдаліць удзельнікаў, якіх няма ў спісе |
+| `GET` | `/api/user0/reports` | Стварыць справаздачу аб удзеле |
+| `POST` | `/api/user0/polls` | Стварыць апытанне |
+| `GET` | `/api/user0/polls/:id` | Атрымаць апытанне |
+| `GET` | `/api/user0/polls` | Атрымаць спіс апытанняў у групе |
+| `PATCH` | `/api/user0/polls/:id` | Рэдагаваць апытанне |
+| `DELETE` | `/api/user0/polls/:id` | Выдаліць апытанне з захаваннем запісу |
+| `GET` | `/api/user0/search` | Шукаць даступныя абмеркаванні, каментарыі, апытанні, галасы і высновы |
+| `GET` | `/api/user0/threads` | Атрымаць спіс даступных тэм абмеркаванняў і асобных апытанняў |
+| `GET` | `/api/user0/threads/:topic_id` | Атрымаць тэму |
+| `GET` | `/api/user0/threads/:topic_id/items` | Атрымаць упарадкаваныя элементы тэмы |
+| `GET` | `/api/user0/threads/:topic_id/markdown` | Атрымаць поўную тэму ў фармаце Markdown |
+| `GET` | `/api/user0/chatbots` | Атрымаць спіс інтэграцый з чатам і вэбхукаў групы |
+| `POST` | `/api/user0/chatbots` | Стварыць інтэграцыю з чатам або вэбхук |
+| `PATCH` | `/api/user0/chatbots/:id` | Абнавіць інтэграцыю з чатам або вэбхук |
+| `DELETE` | `/api/user0/chatbots/:id` | Выдаліць інтэграцыю з чатам або вэбхук |
+| `POST` | `/api/user0/chatbots/check` | Адправіць тэст падключэння вэбхука |
 
 <!-- translation-section: pagination -->
 
@@ -249,7 +249,7 @@ Authorization: Bearer YOUR_API_KEY
 Перадайце `compact=1`, каб выключыць аб’ёмныя звязаныя запісы тэм, груп, бацькоўскіх груп, удзелу ў групах, рэакцый, тэгаў і перакладаў. Асноўныя запісы і звязаныя запісы, патрэбныя для разумення іх змесціва, застаюцца ў адказе.
 
 ```bash
-curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -267,7 +267,7 @@ curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
 
 Стварыце каментарый у абмеркаванні ад імя ўліковага запісу, якому належыць ключ API.
 
-`POST /api/b2/comments`
+`POST /api/user0/comments`
 
 <!-- translation-section: params-7 -->
 
@@ -284,7 +284,7 @@ curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/comments \
+curl https://www.loomio.com/api/user0/comments \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "discussion_id": 123,
@@ -299,7 +299,7 @@ curl https://www.loomio.com/api/b2/comments \
 
 Адрэдагуйце каментарый ад імя ўліковага запісу, якому належыць ключ API. Дзейнічаюць тыя ж правы доступу, што і ў Loomio: гэты ўліковы запіс павінен мець права рэдагаваць гэты каментарый.
 
-`PATCH /api/b2/comments/:id`
+`PATCH /api/user0/comments/:id`
 
 <!-- translation-section: params-8 -->
 
@@ -315,7 +315,7 @@ curl https://www.loomio.com/api/b2/comments \
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/comments/123 \
+curl https://www.loomio.com/api/user0/comments/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -330,14 +330,14 @@ curl https://www.loomio.com/api/b2/comments/123 \
 
 Мякка выдаліце каментарый ад імя ўліковага запісу, якому належыць ключ API. Гэта выдаляе каментарый і хавае яго тэкст, але захоўвае яго запіс.
 
-`DELETE /api/b2/comments/:id`
+`DELETE /api/user0/comments/:id`
 
 <!-- translation-section: example-11 -->
 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/comments/123 \
+curl https://www.loomio.com/api/user0/comments/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -352,7 +352,7 @@ curl https://www.loomio.com/api/b2/comments/123 \
 
 Стварыце абмеркаванне ад імя ўліковага запісу з API-ключом.
 
-`POST /api/b2/discussions`
+`POST /api/user0/discussions`
 
 <!-- translation-section: params-3 -->
 
@@ -374,7 +374,7 @@ curl https://www.loomio.com/api/b2/comments/123 \
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions \
+curl https://www.loomio.com/api/user0/discussions \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -391,14 +391,14 @@ curl https://www.loomio.com/api/b2/discussions \
 
 Атрымайце абмеркаванне паводле яго ID (цэлага ліку) або ключа (радка).
 
-`GET /api/b2/discussions/:id`
+`GET /api/user0/discussions/:id`
 
 <!-- translation-section: example-3 -->
 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/abc123 \
+curl https://www.loomio.com/api/user0/discussions/abc123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -408,7 +408,7 @@ curl https://www.loomio.com/api/b2/discussions/abc123 \
 
 Атрымайце спіс абмеркаванняў у групе, даступных уліковаму запісу, якому належыць ключ API. Калі група публічна бачная, людзі па-за групай могуць атрымаць спіс яе публічных абмеркаванняў; прыватныя абмеркаванні застаюцца даступнымі толькі тым, хто мае права чытаць іх у Loomio.
 
-`GET /api/b2/discussions`
+`GET /api/user0/discussions`
 
 <!-- translation-section: params-4 -->
 
@@ -428,7 +428,7 @@ curl https://www.loomio.com/api/b2/discussions/abc123 \
 #### Прыклад
 
 ```bash
-curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+curl 'https://www.loomio.com/api/user0/discussions?group_id=123' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -438,7 +438,7 @@ curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
 
 Адрэдагуйце абмеркаванне ад імя ўліковага запісу, якому належыць ключ API. Дзейнічаюць тыя ж правы доступу, што і ў Loomio: гэты ўліковы запіс павінен мець права рэдагаваць гэтае абмеркаванне.
 
-`PATCH /api/b2/discussions/:id`
+`PATCH /api/user0/discussions/:id`
 
 <!-- translation-section: params-6 -->
 
@@ -459,7 +459,7 @@ curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/123 \
+curl https://www.loomio.com/api/user0/discussions/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -475,14 +475,14 @@ curl https://www.loomio.com/api/b2/discussions/123 \
 
 Мякка выдаліце абмеркаванне ад імя ўліковага запісу, якому належыць ключ API. Гэта выдаляе абмеркаванне, але захоўвае яго запіс.
 
-`DELETE /api/b2/discussions/:id`
+`DELETE /api/user0/discussions/:id`
 
 <!-- translation-section: example-8 -->
 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/123 \
+curl https://www.loomio.com/api/user0/discussions/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -499,7 +499,7 @@ curl https://www.loomio.com/api/b2/discussions/123 \
 
 Вяртае групы, у якіх уліковы запіс, якому належыць ключ API, мае актыўны ўдзел.
 
-`GET /api/b2/groups`
+`GET /api/user0/groups`
 
 | Назва | Апісанне |
 | --- | --- |
@@ -507,7 +507,7 @@ curl https://www.loomio.com/api/b2/discussions/123 \
 | `offset` | Цэлы лік, неабавязковы, па змаўчанні 0. Зрушэнне для падзелу на старонкі |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/groups?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -540,15 +540,15 @@ curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
 
 Вяртае адну групу, даступную ўліковаму запісу, якому належыць ключ API.
 
-`GET /api/b2/groups/:id_or_key_or_handle`
+`GET /api/user0/groups/:id_or_key_or_handle`
 
 Ідэнтыфікатарам можа быць лікавы ID групы, ключ або чытэльны ідэнтыфікатар.
 
 ```bash
-curl https://www.loomio.com/api/b2/groups/123 \
+curl https://www.loomio.com/api/user0/groups/123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 
-curl https://www.loomio.com/api/b2/groups/example-group \
+curl https://www.loomio.com/api/user0/groups/example-group \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -564,7 +564,7 @@ curl https://www.loomio.com/api/b2/groups/example-group \
 
 Атрымайце спіс удзельнікаў групы, бачны ўладальнікам ключа API. Удзельнікі групы могуць бачыць імёны, ідэнтыфікатары, пасады і ролі іншых удзельнікаў. Адрасы электроннай пошты ўключаюцца толькі для ўласнага ўліковага запісу, якому належыць ключ API, або калі ўладальнікі ключа API маюць правы адміністратараў групы.
 
-`GET /api/b2/memberships`
+`GET /api/user0/memberships`
 
 <!-- translation-section: params-12 -->
 
@@ -585,7 +585,7 @@ curl https://www.loomio.com/api/b2/groups/example-group \
 #### Прыклад
 
 ```bash
-curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -595,7 +595,7 @@ curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' 
 
 Адпраўце спіс адрасоў электроннай пошты. На ўсе новыя адрасы будуць адпраўлены запрашэнні ў групу. У адрозненне ад атрымання спіса ўдзельнікаў, гэтая аперацыя патрабуе правоў адміністратараў групы.
 
-`POST /api/b2/memberships`
+`POST /api/user0/memberships`
 
 <!-- translation-section: params-13 -->
 
@@ -612,7 +612,7 @@ curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/memberships \
+curl https://www.loomio.com/api/user0/memberships \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -625,7 +625,7 @@ curl https://www.loomio.com/api/b2/memberships \
 Калі вы перадасце `remove_absent=1`, усе ўдзельнікі групы, чые адрасы не ўключаны ў спіс, будуць выдалены з групы. Будзьце ўважлівыя: вы можаце выдаліць усіх удзельнікаў вашай групы.
 
 ```bash
-curl https://www.loomio.com/api/b2/memberships \
+curl https://www.loomio.com/api/user0/memberships \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -644,7 +644,7 @@ curl https://www.loomio.com/api/b2/memberships \
 
 Вяртае тыя ж зводныя даныя аб удзеле, якія выкарыстоўваюцца ў справаздачы аб удзеле ў Loomio.
 
-`GET /api/b2/reports`
+`GET /api/user0/reports`
 
 <!-- translation-section: params-2 -->
 
@@ -669,7 +669,7 @@ API прымяняе тыя ж правілы бачнасці груп, што 
 ### Прыклад
 
 ```bash
-curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+curl 'https://www.loomio.com/api/user0/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -708,7 +708,7 @@ curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&gro
 
 Стварыце апытанне ад імя ўліковага запісу, якому належыць ключ API.
 
-`POST /api/b2/polls`
+`POST /api/user0/polls`
 
 <!-- translation-section: params-9 -->
 
@@ -732,7 +732,7 @@ curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&gro
 | `shuffle_options` | Лагічнае значэнне, па змаўчанні false. Паказваць варыянты выбаршчыкам у выпадковым парадку |
 | `anonymous` | Лагічнае значэнне, неабавязковае, па змаўчанні false. Хаваць асобы выбаршчыкаў |
 | `recipient_audience` | `group` або null, неабавязковы, па змаўчанні null. Калі `group`, уся група атрымае апавяшчэнне |
-| `notify_on_closing_soon` | Радок, неабавязковы, па змаўчанні `nobody`. Значэнні: `nobody`, `author`, `undecided_voters`, `voters` |
+| `notify_on_closing_soon` | Радок, неабавязковы, па змаўчанні `nobody`. Значэнні: `nobody`, `author`, `voters_uncast`, `voters` |
 | `recipient_user_ids` | Масіў ID карыстальнікаў, якім трэба даслаць апавяшчэнне або запрашэнне |
 | `recipient_emails` | Масіў адрасоў электроннай пошты людзей, якіх трэба запрасіць прагаласаваць |
 | `recipient_message` | Паведамленне, якое трэба ўключыць у запрашэнне па электроннай пошце |
@@ -743,7 +743,7 @@ curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&gro
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -769,7 +769,7 @@ curl https://www.loomio.com/api/b2/polls \
 Дадайце ўсе назвы вашых варыянтаў у масіў:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -807,7 +807,7 @@ curl https://www.loomio.com/api/b2/polls \
 Стварыце прапанову з уласнымі назвамі варыянтаў і пытаннямі пра прычыны:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -836,7 +836,7 @@ curl https://www.loomio.com/api/b2/polls \
 Для звычайнага апытання выкарыстоўвайце той жа фармат падрабязных варыянтаў з агульным пытаннем пра прычыну ў полі `reason_prompt` апытання:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -867,14 +867,14 @@ curl https://www.loomio.com/api/b2/polls \
 
 Атрымайце апытанне па яго ID — цэлым ліку — або ключы — радку.
 
-`GET /api/b2/polls/:id`
+`GET /api/user0/polls/:id`
 
 <!-- translation-section: example-13 -->
 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/abc123 \
+curl https://www.loomio.com/api/user0/polls/abc123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -882,9 +882,9 @@ curl https://www.loomio.com/api/b2/polls/abc123 \
 
 ### Спіс апытанняў
 
-Атрымайце спіс апытанняў у групе, даступных уліковаму запісу, якому належыць API-ключ. Для публічна бачнай групы людзі, якія не ўваходзяць у яе, могуць атрымаць спіс яе публічных апытанняў; прыватныя апытанні застаюцца даступнымі толькі тым, хто можа чытаць іх у Loomio. Адказ уключае бягучую выснову кожнага даступнага апытання, таму вы можаце выкарыстоўваць `status=closed`, каб атрымаць спіс прапаноў, па якіх прынята рашэнне.
+Атрымайце спіс апытанняў у групе, даступных уліковаму запісу, якому належыць ключ API. Для публічна бачнай групы людзі, якія не ўваходзяць у яе, могуць атрымаць спіс яе публічных апытанняў; прыватныя апытанні застаюцца даступнымі толькі тым, хто можа чытаць іх у Loomio. Адказ уключае бягучую выснову кожнага даступнага апытання, таму вы можаце выкарыстоўваць `status=closed`, каб атрымаць спіс прапаноў, па якіх прынята рашэнне.
 
-`GET /api/b2/polls`
+`GET /api/user0/polls`
 
 <!-- translation-section: params-10 -->
 
@@ -904,7 +904,7 @@ curl https://www.loomio.com/api/b2/polls/abc123 \
 #### Прыклад
 
 ```bash
-curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+curl 'https://www.loomio.com/api/user0/polls?group_id=123' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -914,7 +914,7 @@ curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
 
 Адрэдагуйце апытанне ад імя ўліковага запісу, якому належыць API-ключ. Дзейнічаюць тыя ж правы доступу, што і ў Loomio: уліковы запіс павінен мець права рэдагаваць гэтае апытанне.
 
-`PATCH /api/b2/polls/:id`
+`PATCH /api/user0/polls/:id`
 
 <!-- translation-section: params-11 -->
 
@@ -940,7 +940,7 @@ curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -957,7 +957,7 @@ curl https://www.loomio.com/api/b2/polls/123 \
 Атрымайце ID варыянтаў з масіву `poll_options` у адказе на запыт стварэння або атрымання апытання. Перадайце толькі палі, якія трэба змяніць, разам з `id` кожнага існуючага варыянта:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -985,14 +985,14 @@ ID варыянтаў павінны належаць апытанню, якое
 
 Выдаліце апытанне мяккім спосабам ад імя ўліковага запісу, якому належыць API-ключ. Гэта пазначае апытанне як выдаленае, але захоўвае яго запіс.
 
-`DELETE /api/b2/polls/:id`
+`DELETE /api/user0/polls/:id`
 
 <!-- translation-section: example-16 -->
 
 #### Прыклад
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -1003,7 +1003,7 @@ curl https://www.loomio.com/api/b2/polls/123 \
 
 Шукайце абмеркаванні, каментарыі, апытанні, галасы і высновы, даступныя ўліковаму запісу з API-ключом. Вынікі ўключаюць публічнае змесціва, нават калі гэты ўліковы запіс не належыць да ўдзельнікаў адпаведнай групы; доступ да прыватнага змесціва вызначаецца звычайнымі правіламі бачнасці тэм.
 
-`GET /api/b2/search`
+`GET /api/user0/search`
 
 <!-- translation-section: params -->
 
@@ -1021,7 +1021,7 @@ curl https://www.loomio.com/api/b2/polls/123 \
 | `order` | Задайце `authored_at_desc`, каб упарадкаваць адпаведнае змесціва паводле часу стварэння |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+curl 'https://www.loomio.com/api/user0/search?query=quarterly+planning&type=Discussion' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -1037,7 +1037,7 @@ curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discuss
 
 Атрымайце спіс тэм з абмеркаваннямі і апытаннямі, даступных уліковаму запісу, якому належыць ключ API, у парадку апошняй актыўнасці. ID тэмы — гэта яе `topic_id`.
 
-`GET /api/b2/threads`
+`GET /api/user0/threads`
 
 <!-- translation-section: params-5 -->
 
@@ -1053,7 +1053,7 @@ curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discuss
 #### Прыклад
 
 ```bash
-curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/threads?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -1063,11 +1063,11 @@ curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
 
 Прачытайце тэму, яе ўпарадкаваны паток падзей або поўны дакумент Markdown з яе даступным змесцівам.
 
-`GET /api/b2/threads/:topic_id`
+`GET /api/user0/threads/:topic_id`
 
-`GET /api/b2/threads/:topic_id/items`
+`GET /api/user0/threads/:topic_id/items`
 
-`GET /api/b2/threads/:topic_id/markdown`
+`GET /api/user0/threads/:topic_id/markdown`
 
 Канцавы пункт `items` прымае наступныя параметры падзелу на старонкі:
 
@@ -1081,9 +1081,9 @@ curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
 #### Прыклад
 
 ```text
-GET https://www.loomio.com/api/b2/threads/<topic_id>
-GET https://www.loomio.com/api/b2/threads/<topic_id>/items?limit=50&offset=0
-GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
+GET https://www.loomio.com/api/user0/threads/<topic_id>
+GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
+GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
 Канцавы пункт `items` вяртае старонку патоку падзей у парадку ўзрастання іх паслядоўных нумароў, у тым ліку даступныя каментарыі, апытанні, галасы і высновы. `meta.total` — агульная колькасць элементаў у тэме. Атрымайце наступныя старонкі, каб прачытаць увесь паток. Канцавы пункт `markdown` вяртае ўсё даступнае змесціва тэмы ў адным дакуменце Markdown. Прычыны галасоў уключаюцца толькі тады, калі яны даступныя ўліковаму запісу, якому належыць ключ API.
@@ -1115,7 +1115,7 @@ API карыстальніка працуе на аснове запытаў: і
 
 Вяртае інтэграцыі з чатам, наладжаныя для групы. Уліковы запіс, якому належыць ключ API, павінен мець правы адміністратара гэтай групы. Адказ уключае URL-адрасы прызначэння, таму яго нельга раскрываць звычайным удзельнікам групы.
 
-`GET /api/b2/chatbots?group_id=123`
+`GET /api/user0/chatbots?group_id=123`
 
 | Назва | Апісанне |
 | --- | --- |
@@ -1124,7 +1124,7 @@ API карыстальніка працуе на аснове запытаў: і
 | `offset` | Цэлы лік, неабавязковы, па змаўчанні 0. Зрушэнне для падзелу на старонкі |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/chatbots?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -1145,10 +1145,10 @@ curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
 
 ### Стварэнне вэбхука
 
-`POST /api/b2/chatbots`
+`POST /api/user0/chatbots`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots \
+curl https://www.loomio.com/api/user0/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -1172,12 +1172,12 @@ curl https://www.loomio.com/api/b2/chatbots \
 
 ### Абнаўленне вэбхука
 
-`PATCH /api/b2/chatbots/:id`
+`PATCH /api/user0/chatbots/:id`
 
 Перадайце ўсе палі, якія трэба змяніць. Вэбхук нельга перанесці ў іншую групу, змяніўшы `group_id`.
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/456 \
+curl https://www.loomio.com/api/user0/chatbots/456 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -1195,10 +1195,10 @@ curl https://www.loomio.com/api/b2/chatbots/456 \
 
 Адпраўце тэставае паведамленне, сумяшчальнае з Markdown, на адрас прызначэння да або пасля захавання яго налад.
 
-`POST /api/b2/chatbots/check`
+`POST /api/user0/chatbots/check`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/check \
+curl https://www.loomio.com/api/user0/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -1210,10 +1210,10 @@ curl https://www.loomio.com/api/b2/chatbots/check \
 
 ### Выдаленне вэбхука
 
-`DELETE /api/b2/chatbots/:id`
+`DELETE /api/user0/chatbots/:id`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/456 \
+curl https://www.loomio.com/api/user0/chatbots/456 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```

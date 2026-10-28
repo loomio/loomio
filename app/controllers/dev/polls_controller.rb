@@ -144,8 +144,8 @@ class Dev::PollsController < Dev::NightwatchController
 
   def test_scheduled_poll
     scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal', weighted: params[:weighted].present?)
-    if params[:voter_count].present?
-      voters = Array.new(params[:voter_count].to_i.clamp(0, 25)) { saved(fake_user) }
+    if params[:vote_count].present?
+      voters = Array.new(params[:vote_count].to_i.clamp(0, 25)) { saved(fake_user) }
       voters.each { |voter| scenario[:group].add_member!(voter) }
       PollService.invite(
         poll: scenario[:poll],
@@ -161,14 +161,14 @@ class Dev::PollsController < Dev::NightwatchController
   # voter modal, pagination, and result avatars can be inspected together.
   def test_many_weighted_voters
     scenario = poll_scheduled_scenario(poll_type: 'proposal', weighted: true)
-    voter_count = params.fetch(:voter_count, 50).to_i.clamp(50, 100)
+    vote_count = params.fetch(:vote_count, 50).to_i.clamp(50, 100)
     group = scenario[:group]
     poll = scenario[:poll]
     actor = scenario[:actor]
     group.update!(name: 'Fifty-member voting group')
 
     voters = group.members.to_a
-    (voter_count - voters.length).times do |index|
+    (vote_count - voters.length).times do |index|
       voter = saved(fake_user(name: "Voter #{format('%02d', index + 1)}", email: "voter#{index + 1}@example.com"))
       group.add_member!(voter)
       voters << voter
@@ -179,7 +179,7 @@ class Dev::PollsController < Dev::NightwatchController
       membership.update!(weight: weights[index % weights.length])
     end
 
-    poll.update!(title: "Variable weights with #{voter_count} voters", opening_at: nil, opened_at: Time.current)
+    poll.update!(title: "Variable weights with #{vote_count} voters", opening_at: nil, opened_at: Time.current)
     PollService.invite(
       poll: poll,
       params: {recipient_user_ids: voters.map(&:id), include_actor: true, notify_recipients: false},
@@ -258,8 +258,8 @@ class Dev::PollsController < Dev::NightwatchController
       unless poll
         # Match PollTemplateModel#buildPoll, then override only the matrix's audience and ballot mode.
         poll_params = template.attributes.slice(*%w[
-          poll_type details details_format chart_type min_score max_score minimum_stance_choices
-          maximum_stance_choices dots_per_person limit_reason_length stance_reason_required
+          poll_type details details_format chart_type score_min score_max choice_count_min
+          choice_count_max points_per_voter limit_reason_length stance_reason_required
           notify_on_closing_soon notify_on_open reason_prompt process_name process_subtitle
           poll_option_name_format shuffle_options show_none_of_the_above hide_results quorum_pct
           tags default_duration_in_days
@@ -275,7 +275,7 @@ class Dev::PollsController < Dev::NightwatchController
         end if template.poll_options.any?
         poll_params[:poll_option_names] = spec[:options] if spec[:options]
         poll_params[:stv_seats] = 2 if template.poll_type == 'stv'
-        poll_params[:maximum_stance_choices] = 3 if spec[:label] == 'multiple choice poll'
+        poll_params[:choice_count_max] = 3 if spec[:label] == 'multiple choice poll'
         poll = PollService.create(params: poll_params, actor: actor)
         raise "Could not create #{title}: #{poll.errors.full_messages.join(', ')}" unless poll.persisted?
 
@@ -330,7 +330,7 @@ class Dev::PollsController < Dev::NightwatchController
         {poll_option_id: option.id, score: i + 1}
       end
     else
-      count = poll.maximum_stance_choices > 1 ? random.rand(2..3) : 1
+      count = poll.choice_count_max > 1 ? random.rand(2..3) : 1
       vote_table_matrix_pick(options, random, count).map { |option| {poll_option_id: option.id, score: 1} }
     end
   end

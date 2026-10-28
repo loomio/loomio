@@ -14,13 +14,13 @@ class PollQuorumTest < ActiveSupport::TestCase
   end
 
   test 'weighted quorum uses issued weights and includes voters who have not voted' do
-    assert_equal BigDecimal('0.6'), @poll.quorum_count
+    assert_equal BigDecimal('0.6'), @poll.quorum_threshold
     refute @poll.quorum_reached?
 
     cast(@stances[0])
     cast(@stances[1])
-    assert_equal 50, @poll.cast_stances_pct
-    assert_equal BigDecimal('0.1'), @poll.quorum_votes_required
+    assert_equal 50, @poll.participation_pct
+    assert_equal BigDecimal('0.1'), @poll.quorum_shortfall
     refute @poll.quorum_reached?, 'two of three voters hold only half the assigned weight'
 
     cast(@stances[2])
@@ -31,12 +31,12 @@ class PollQuorumTest < ActiveSupport::TestCase
     @poll.update!(quorum_pct: 50)
     cast(@stances[2])
 
-    assert_equal 0, @poll.quorum_votes_required
+    assert_equal 0, @poll.quorum_shortfall
     assert @poll.quorum_reached?, 'one of three voters holds half the assigned weight'
 
     @stances[2].update!(weight: '0.499')
     refute @poll.quorum_reached?
-    assert_equal BigDecimal('0.001'), @poll.quorum_votes_required
+    assert_equal BigDecimal('0.001'), @poll.quorum_shortfall
   end
 
   test 'replaced and revoked stances do not count toward the weighted electorate or participation' do
@@ -46,9 +46,9 @@ class PollQuorumTest < ActiveSupport::TestCase
     @stances[1].update_columns(revoked_at: Time.current, weight: 100)
     @poll.update_counts!
 
-    assert_equal BigDecimal('0.5'), @poll.vote_weight_total
+    assert_equal BigDecimal('0.5'), @poll.vote_weight_eligible
     assert_equal BigDecimal('0.5'), @poll.vote_weight_cast
-    assert_equal BigDecimal('0.25'), @poll.quorum_count
+    assert_equal BigDecimal('0.25'), @poll.quorum_threshold
     assert @poll.quorum_reached?
   end
 
@@ -72,7 +72,7 @@ class PollQuorumTest < ActiveSupport::TestCase
     assert @poll.quorum_reached?
     @poll.update!(quorum_pct: nil)
     assert_equal false, @poll.quorum_reached?
-    assert_equal 0, @poll.quorum_votes_required
+    assert_equal 0, @poll.quorum_shortfall
   end
 
   test 'unweighted polls count people without rounding participation percentages' do
@@ -81,14 +81,14 @@ class PollQuorumTest < ActiveSupport::TestCase
     refute @poll.quorum_reached?
     cast(@stances[1])
 
-    assert_equal 2, @poll.quorum_count
-    assert_equal 0, @poll.quorum_votes_required
+    assert_equal 2, @poll.quorum_threshold
+    assert_equal 0, @poll.quorum_shortfall
     assert @poll.quorum_reached?
   end
 
   test 'turning off weighted voting counts people' do
     @poll.update!(weighted_voting: false)
-    assert_equal 2, @poll.quorum_count
+    assert_equal 2, @poll.quorum_threshold
     refute @poll.quorum_reached?
   end
 
@@ -131,30 +131,30 @@ class PollQuorumTest < ActiveSupport::TestCase
     assert_equal 50, pending[:voter_percent]
     assert_equal 0.5, pending[:score]
     assert_nil pending[:score_percent]
-    assert_equal 50, @poll.cast_stances_pct
+    assert_equal 50, @poll.participation_pct
 
     @stances.each { |stance| stance.update!(weight: 0) }
     @poll.update_counts!
     assert @poll.results.all? { |row| row[:voter_percent] == 0 }
     assert @poll.results.all? { |row| row[:score_percent].nil? || row[:score_percent] == 0 }
-    assert_equal 0, @poll.cast_stances_pct
+    assert_equal 0, @poll.participation_pct
   end
 
   test 'turnout divides cast weight by a non-unit electorate and switches back to people' do
     @stances.zip(%w[1 2 3]).each { |stance, weight| stance.update!(weight: weight) }
     cast(@stances[0])
 
-    assert_equal 6, @poll.vote_weight_total
+    assert_equal 6, @poll.vote_weight_eligible
     assert_equal 1, @poll.vote_weight_cast
-    assert_equal 16, @poll.cast_stances_pct
-    assert_equal BigDecimal('3.6'), @poll.quorum_count
-    assert_equal BigDecimal('2.6'), @poll.quorum_votes_required
+    assert_equal 16, @poll.participation_pct
+    assert_equal BigDecimal('3.6'), @poll.quorum_threshold
+    assert_equal BigDecimal('2.6'), @poll.quorum_shortfall
 
     cast(@stances[1])
-    assert_equal 50, @poll.cast_stances_pct
+    assert_equal 50, @poll.participation_pct
 
     @poll.update!(weighted_voting: false)
-    assert_equal 66, @poll.cast_stances_pct
+    assert_equal 66, @poll.participation_pct
     assert_equal 'poll_common_percent_voted.pct_participation', @poll.participation_key
     assert_equal 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', @poll.quorum_requirement_key
   end
@@ -163,8 +163,8 @@ class PollQuorumTest < ActiveSupport::TestCase
     cast(@stances[2])
     @poll.update!(quorum_pct: nil)
 
-    assert_equal 0, @poll.quorum_count
-    assert_equal 0, @poll.quorum_votes_required
+    assert_equal 0, @poll.quorum_threshold
+    assert_equal 0, @poll.quorum_shortfall
     assert_equal false, @poll.quorum_reached?
   end
 
@@ -174,7 +174,7 @@ class PollQuorumTest < ActiveSupport::TestCase
 
     [true, false].each do |weighted|
       @poll.update!(weighted_voting: weighted, show_none_of_the_above: true)
-      assert_equal 0, @poll.cast_stances_pct
+      assert_equal 0, @poll.participation_pct
       @poll.results.each do |row|
         assert_equal 0, row[:voter_percent]
         assert_equal 0, row[:target_percent]
@@ -227,7 +227,7 @@ class PollQuorumTest < ActiveSupport::TestCase
     end
     @poll.update_counts!
 
-    assert_equal 1, @poll.vote_weight_total
+    assert_equal 1, @poll.vote_weight_eligible
     assert_equal BigDecimal('0.5'), @poll.vote_weight_cast
     rows = @poll.results.index_by { |row| row[:id] }
     assert_equal 12.5, rows.fetch(0)[:voter_percent]
@@ -246,24 +246,24 @@ class PollQuorumTest < ActiveSupport::TestCase
     })
 
     refute @poll.weighted_voting?
-    assert_equal 3, @poll.voters_count
+    assert_equal 3, @poll.vote_count_eligible
     assert_empty @poll.stances
-    assert_equal 2, @poll.quorum_count
+    assert_equal 2, @poll.quorum_threshold
     assert_equal 3, @poll.participation_status_votes_required
     option = @poll.poll_options.first
     ballot = @poll.anonymous_ballots.new(anonymous_ballot_choices_attributes: [{poll_option_id: option.id, score: 1}])
     AnonymousBallotService.create(anonymous_ballot: ballot, actor: users(:admin))
 
-    assert_equal 33, @poll.cast_stances_pct
-    assert_equal 1, @poll.quorum_votes_required
+    assert_equal 33, @poll.participation_pct
+    assert_equal 1, @poll.quorum_shortfall
     assert_equal false, @poll.quorum_reached?
     rows = @poll.results.index_by { |row| row[:id] }
     assert_in_delta 100.0 / 3, rows.fetch(option.id)[:voter_percent]
     assert_in_delta 200.0 / 3, rows.fetch(-1)[:voter_percent]
 
     AnonymousBallotService.create(anonymous_ballot: @poll.anonymous_ballots.new(none_of_the_above: true), actor: users(:user))
-    assert_equal 66, @poll.cast_stances_pct
-    assert_equal 0, @poll.quorum_votes_required
+    assert_equal 66, @poll.participation_pct
+    assert_equal 0, @poll.quorum_shortfall
     assert_equal true, @poll.quorum_reached?
     assert_in_delta 100.0 / 3, @poll.results.find { |row| row[:id] == 0 }[:voter_percent]
     refute @poll.participation_status_visible?

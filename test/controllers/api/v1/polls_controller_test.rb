@@ -100,7 +100,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     assert_response :success
     data = JSON.parse(response.body).fetch('polls').first
-    assert_includes data.fetch('result_columns'), 'voter_count'
+    assert_includes data.fetch('result_columns'), 'vote_count'
     assert_includes data.fetch('result_columns'), 'score'
     assert_not_includes data.fetch('result_columns'), 'unweighted_score'
     result = data.fetch('results').find { |row| row['id'] == option.id }
@@ -148,7 +148,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
     data = JSON.parse(response.body).fetch('polls').sole
     assert_equal true, data.fetch('quorum_reached')
-    assert_equal 70, data.fetch('cast_stances_pct')
+    assert_equal 70, data.fetch('participation_pct')
     result = data.fetch('results').find { |row| row['id'] == option.id }
     assert_equal 70, result.fetch('voter_percent')
     assert_equal true, result.fetch('test_result')

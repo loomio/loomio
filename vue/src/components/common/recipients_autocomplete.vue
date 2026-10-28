@@ -250,10 +250,10 @@ export default {
           return this.$t('announcement.audiences.topic');
         case 'voters':
           return this.$t('announcement.audiences.voters');
-        case 'decided_voters':
-          return this.$t('announcement.audiences.decided_voters');
-        case 'undecided_voters':
-          return this.$t('announcement.audiences.undecided_voters');
+        case 'voters_cast':
+          return this.$t('announcement.audiences.everyone_who_voted');
+        case 'voters_uncast':
+          return this.$t('announcement.audiences.people_who_have_not_voted');
       }
     },
 

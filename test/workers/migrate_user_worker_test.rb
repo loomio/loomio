@@ -98,7 +98,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert @another_group.members.exists?(@jennifer.id)
     assert_equal 2, @jennifer.memberships_count
 
-    assert_equal 1, @poll.reload.voters_count
+    assert_equal 1, @poll.reload.vote_count_eligible
     assert_equal 2, @group.reload.memberships_count
     assert_equal 1, @group.reload.pending_memberships_count
     assert_equal 1, @group.reload.admin_memberships_count

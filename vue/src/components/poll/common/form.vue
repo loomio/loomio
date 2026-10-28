@@ -18,6 +18,7 @@ import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
+import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
 const props = defineProps({
   poll: Object,
@@ -77,7 +78,7 @@ const validate = (field) => {
 };
 
 const optionHasVotes = (option) => {
-  return (props.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
+  return (props.poll.results.find(o => o.id === option.id) || {vote_count: 0}).vote_count > 0;
 };
 
 const setPollOptionPriority = () => {
@@ -144,7 +145,7 @@ const setAnonymousVoting = (value) => {
   props.poll.weightedVoting = false;
   props.poll.hideResults = 'until_closed';
   props.poll.stanceReasonRequired = 'disabled';
-  props.poll.notifyOnClosingSoon = 'undecided_voters';
+  props.poll.notifyOnClosingSoon = 'voters_uncast';
 };
 
 const editOption = (option) => {
@@ -192,7 +193,7 @@ const submit = () => {
     }
   }).catch(error => {
     form.value.validate();
-    Flash.serverError(error, ['title', 'minimumStanceChoices', 'dotsPerPerson', 'closingAt', 'openingAt']);
+    Flash.serverError(error, ['title', 'choiceCountMin', 'pointsPerVoter', 'closingAt', 'openingAt']);
   }).finally(() => loading.value = false);
 };
 
@@ -249,11 +250,7 @@ const closesSoon = computed(() => {
   return !(props.poll.closingAt && isAfter(props.poll.closingAt, addHours(new Date(), 24)));
 });
 
-const closingSoonItems = computed(() => {
-  return 'nobody author undecided_voters voters'.split(' ').map(name => {
-    return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-  });
-});
+const closingSoonItems = computed(() => pollReminderItems(t));
 
 const optionFormat = computed(() => props.poll.pollOptionNameFormat);
 const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
@@ -416,12 +413,12 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     p.mt-4.text-body-large.mb-4(v-t="'poll_common_form.define_minimum_and_maxmimum_score'")
     .d-flex
       v-text-field.poll-score-form__min.mr-2(
-        v-model="poll.minScore"
+        v-model="poll.scoreMin"
         type="number"
         :step="1"
         :label="$t('poll_common.min_score')")
       v-text-field.poll-score-form__max(
-        v-model="poll.maxScore"
+        v-model="poll.scoreMax"
         type="number"
         :step="1"
         :label="$t('poll_common.max_score')")
@@ -431,13 +428,13 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     p.mt-4.text-body-large.mb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
     .d-flex
       v-text-field.poll-common-form__minimum-stance-choices.mr-2(
-        v-model="poll.minimumStanceChoices"
+        v-model="poll.choiceCountMin"
         type="number"
         :step="1"
         :hint="$t('poll_common_form.choose_at_least')"
         :label="$t('poll_common_form.minimum_choices')")
       v-text-field.poll-common-form__maximum-stance-choices(
-        v-model="poll.maximumStanceChoices"
+        v-model="poll.choiceCountMax"
         type="number"
         :step="1"
         :hint="$t('poll_common_form.choose_at_most')"
@@ -449,12 +446,12 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_ranked_choice_form.how_many_ranking_positions_explained'")
     .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
       v-text-field.lmo-number-input(
-        v-model="poll.minimumStanceChoices"
+        v-model="poll.choiceCountMin"
         :label="$t('poll_ranked_choice_form.number_of_choices')"
         type="number"
         :min="1"
         :max="poll.pollOptionNames.length"
-        :rules="validate('minimumStanceChoices')"
+        :rules="validate('choiceCountMin')"
       )
 
   template(v-if="poll.pollType == 'stv'")
@@ -489,8 +486,8 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_dot_vote_form.dots_per_person')"
       type="number"
       min="1"
-      v-model="poll.dotsPerPerson"
-      :rules="validate('dotsPerPerson')"
+      v-model="poll.pointsPerVoter"
+      :rules="validate('pointsPerVoter')"
     )
 
   template(v-if="poll.config().allow_none_of_the_above")

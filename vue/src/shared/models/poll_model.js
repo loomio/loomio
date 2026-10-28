@@ -48,18 +48,18 @@ export default class PollModel extends BaseModel {
       customize: false,
       details: '',
       detailsFormat: 'html',
-      decidedVotersCount: 0,
+      voteCountCast: 0,
       defaultDurationInDays: null,
       specifiedVotersOnly: false,
       pollOptionNames: [],
       pollType: 'proposal',
       chartColumn: null,
       chartType: null,
-      minScore: null,
-      maxScore: null,
-      minimumStanceChoices: null,
-      maximumStanceChoices: null,
-      dotsPerPerson: null,
+      scoreMin: null,
+      scoreMax: null,
+      choiceCountMin: null,
+      choiceCountMax: null,
+      pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
       limitReasonLength: true,
@@ -69,7 +69,7 @@ export default class PollModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       notifyOnOpen: true,
       results: [],
       meetingDuration: null,
@@ -92,7 +92,7 @@ export default class PollModel extends BaseModel {
       anonymousBallotSubmitted: false,
       voterHasAccess: false,
       weightedVoting: false,
-      stanceCounts: [],
+      scoresByOption: [],
       topicId: null,
       allowComments: true,
       allowReactions: true,
@@ -139,8 +139,8 @@ export default class PollModel extends BaseModel {
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
-    clone.decidedVotersCount = null;
-    clone.undecidedVotersCount = null;
+    clone.voteCountCast = null;
+    clone.voteCountUncast = null;
     return clone;
   }
 
@@ -315,13 +315,13 @@ export default class PollModel extends BaseModel {
     return Records.reactions.find({reactableId: this.id, reactableType: "Poll"});
   }
 
-  decidedVoterIds() {
+  votersCastIds() {
     return uniq(flatten(this.results.map(o => o.voter_ids)));
   }
 
   // who's voted?
-  decidedVoters() {
-    return Records.users.find(this.decidedVoterIds());
+  votersCast() {
+    return Records.users.find(this.votersCastIds());
   }
 
   outcome() {
@@ -394,12 +394,12 @@ export default class PollModel extends BaseModel {
   }
 
   hasVariableScore() {
-    return this.defaulted('minScore') !== this.defaulted('maxScore');
+    return this.defaulted('scoreMin') !== this.defaulted('scoreMax');
   }
 
   singleChoice() {
     let middle;
-    return this.defaulted('minimumStanceChoices') === (middle = this.defaulted('maximumStanceChoices')) && middle === 1;
+    return this.defaulted('choiceCountMin') === (middle = this.defaulted('choiceCountMax')) && middle === 1;
   }
 
   hasOptionIcon() {

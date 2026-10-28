@@ -139,8 +139,8 @@ fi:
     manage_subscription: Hallinnoi tilausta
     amount: Määrä
   loomio_tags:
-    show_tags_from_other_groups: "Näytä muiden ryhmien tunnisteet"
-    parent_group_and_subgroups_in_this_organization: "Tämän organisaation pääryhmä ja alaryhmät"
+    show_tags_from_other_groups: Näytä muiden ryhmien tunnisteet
+    parent_group_and_subgroups_in_this_organization: Tämän organisaation pääryhmä ja alaryhmät
     all_tags: Kaikki tunnisteet
     tags: Tunnisteet
     apply_tags: Käytä tunnisteita
@@ -998,10 +998,10 @@ fi:
       everyone_in_the_group: Kaikki ryhmässä
       topic: Kaikki ketjussa
       voters: Kaikki kutsuttiin äänestämään
-      decided_voters: Kaikki äänestäneet
-      undecided_voters: Epävarmat äänestäjät
       non_voters: Ryhmän %{name} jäseniä ei ole vielä kutsuttu
       delegates_of_group: "%{name}:n edustajat"
+      everyone_who_voted: Kaikki äänestäneet
+      people_who_have_not_voted: Äänestämättä olevat
     form:
       group_has_no_members_yet: Olet ryhmäsi ainoa jäsen. Haluat ehkä kutsua ihmisiä ryhmääsi ennen kuin aloitat ketjun tai päätöksen.
       invite_people_to_evaluate_loomio: Kutsu ihmisiä Loomio-ryhmääsi tekemään päätös yhdessä
@@ -1069,7 +1069,7 @@ fi:
       has_not_read_thread: Ei ole katsonut lankaa
       has_not_joined_yet: Ei ole vielä liittynyt
       has_not_joined_yet_hint: Tämä käyttäjä ei ole hyväksynyt hänen kutsuaan liittyä Loomioon, eikä hän saa muita ilmoituksia ennen kuin hyväksyy
-      discussion_admin: "Viestiketjun ylläpitäjä"
+      discussion_admin: Viestiketjun ylläpitäjä
       has_not_read_discussion: Ei ole katsonut keskustelua
     group_form:
       search_placeholder: Etsi ihmisiä...
@@ -1603,7 +1603,7 @@ fi:
     title_helptext:
       group: Tämä otsikko näkyy käyttäjän %{name} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
     title_label: otsikko
-    title_placeholder: "Esim. ”Ylläpitäjä” tai ”Fasilitaattori”"
+    title_placeholder: Esim. ”Ylläpitäjä” tai ”Fasilitaattori”
     updated: Jäsennimike päivitetty
     weight_label: Äänestyspaino
   user_name_modal:
@@ -1775,7 +1775,6 @@ fi:
       all: Viimeaikaiset keskustelut
     thread_preview:
       you_voted: Äänestit %{position}
-      undecided: Et ole vielä äänestänyt
     threads_from:
       group: Viestit osoitteesta
       pinned: Kiinnitetyt langat
@@ -2290,18 +2289,14 @@ fi:
     started_by: 'Aloittaja: %{name}'
   poll_common_votes_panel:
     vote_removed: Ääni poistettu
-    undecided: Äänestämättä
     newest_first: Uusin ensin
     oldest_first: Vanhin ensin
     priority_first: Ensin samaa mieltä
     priority_last: Estä ensin
-    undecided_first: Äänestämättömät ensin
     no_votes_yet: Ääniä ei ole vielä annettu.
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
     name_or_username: Nimi tai käyttäjätunnus
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Syy muokattu
     redact_reason_title: Peitetäänkö äänestyksen syy?
     redact_reason_helptext: Syy, miksi teksti ja liitteet piilotetaan, mutta ääni pysyy tuloksissa
@@ -2316,15 +2311,6 @@ fi:
     stance: Äänestää
     participation_records_restricted: Äänestyksen päätyttyä näet ketkä osallistuivat
     vote_weight: Äänestyspaino %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Näytä %{count} epävarmaa
-    show_invitations: Näytä odottavat kutsut
-    undecided_users: Äänestämättä (%{count})
-    invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
-    invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
-  poll_common_undecided_user:
-    reminded: Muistutus lähetetty!
-    reminder_sent: Muistutusilmoitus lähetetty
   poll_common_set_outcome_panel:
     enter_outcome: Syötä tulos
     poll_type: Tämä %{poll_type} on suljettu. Käytä aikaa tulosten pohtimiseen ja jaa sitten johtopäätös, jotta ihmiset tietävät, mitä tapahtuu seuraavaksi.
@@ -2466,9 +2452,9 @@ fi:
     total: Kaikki yhteensä
   poll_remove_vote:
     title: Poistetaanko äänesi?
-    helptext: Haluatko varmasti poistaa äänesi? Sinut merkitään päättämättömäksi ja voit äänestää myöhemmin uudelleen, jos haluat.
     confirm: Poista ääni
     success: Ääni poistettu
+    helptext_not_voted: Haluatko varmasti poistaa äänesi? Tilaksesi tulee “Äänestämättä” ja voit halutessasi äänestää myöhemmin uudelleen.
   poll_poll_vote_form:
     stance_created: Äänestys luotu
     stance_updated: Äänestys päivitetty
@@ -2828,8 +2814,8 @@ fi:
       voting_title: Lähetä muistutus 24 tuntia ennen äänestyksen päättymistä osoitteeseen
       nobody: Kukaan
       author: Kirjoittaja (minä)
-      undecided_voters: Päättämättömät äänestäjät
       voters: Kaikki äänestäjät
+      people_who_have_not_voted: Äänestämättä olevat
     notify_on_participate:
       title: Ilmoita minulle, kun ihmiset osallistuvat
       helptext_on: Kun sinut on valittu, saat ilmoituksen aina, kun joku osallistuu.

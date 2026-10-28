@@ -184,7 +184,7 @@ Poll-level discussion remains available where the poll topic permits it. The pro
 
 ## Electorate lifecycle
 
-A detached anonymous poll uses `AnonymousPollVoter` rather than undecided stances to represent eligible voters.
+A detached anonymous poll uses `AnonymousPollVoter` rather than uncast stances to represent eligible voters.
 
 When voting opens, Loomio must:
 
@@ -192,7 +192,7 @@ When voting opens, Loomio must:
 2. create or finalize one electorate record for each eligible voter;
 3. record invitation provenance and group-membership state where required;
 4. make the poll eligible for the hourly automatic-reminder check; and
-5. avoid creating named or undecided stance records.
+5. avoid creating named or uncast stance records.
 
 Admins may add eligible voters while the poll is open, including after ballots have been submitted. Group members added to an unrestricted group poll also become eligible while it remains open. Existing electorate records cannot be removed, and late additions must not create a ballot-to-voter correlation path.
 
@@ -390,7 +390,7 @@ It does not copy:
 - creation, update, submission, revocation, or redaction times; or
 - sequence or ordering metadata.
 
-Undecided, revoked, and superseded stances do not become ballots. A redacted stance that is still a current submitted vote does become a ballot so its choices continue contributing to the result, but its redacted reason is not restored. The poll's `voting_system` changes to `anonymous_ballot` only after every current vote has been converted and its results have been verified.
+Uncast, revoked, and superseded stances do not become ballots. A redacted stance that is still a current submitted vote does become a ballot so its choices continue contributing to the result, but its redacted reason is not restored. The poll's `voting_system` changes to `anonymous_ballot` only after every current vote has been converted and its results have been verified.
 
 ### Legacy vote reasons
 

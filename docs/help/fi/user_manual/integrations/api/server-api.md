@@ -1,52 +1,52 @@
 ---
 title: Palvelimen API
-source_revision: 2d360988a87765e6a1345dd06155bc988154178e
+source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-10-28'
 sections:
-  introduction: 8b28f9c34e3f7575
-  authentication: cbabcc874f053455
+  introduction: 33c4ce1c59342826
+  authentication: a215188bb0ae2b38
   user-object: 7e9e8ff3e48a4055
-  list-users: c7d62eee05e7a6a4
-  example: 2f817ab1533206e6
-  show-user: 36fa596a6a5c2fd8
-  examples: 522d17246020d82f
-  update-user: 39d632ce15d489d3
+  list-users: 16e557db2983e597
+  example: 5a370a67d3dc961f
+  show-user: ef061aab9e142a98
+  examples: 5b98557c8af42e29
+  update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: 3aab846e77253829
-  deactivate-user: 132d435583a46920
-  examples-3: d8c7c152ab2b0ace
-  reactivate-user: 309592dead978456
-  examples-4: 95251484d1fd7e1d
-  redact-user: 47ea30122aa92fae
-  examples-5: 9d3bb1c3a865f3e0
-  delete-user: 2d5a1dbd23324e6f
-  examples-6: 71ae30577730b261
+  examples-2: b6bc03ca1e104210
+  deactivate-user: 19c9b37ded7cad07
+  examples-3: 706a02fb50225d20
+  reactivate-user: 03bccb45ded4f11c
+  examples-4: 5c9cf19d21267502
+  redact-user: 9560a30820cb43cc
+  examples-5: df81d06971fb0391
+  delete-user: 1aad5e4da586e0ed
+  examples-6: 23542029b0bc8237
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: 590e1f295602247d
+  provisioning: de7ad238bf914455
 generated:
-  introduction: f02a8827ac2b70a9
-  authentication: 76c4ebae56d9e683
+  introduction: 9460e06469762868
+  authentication: 2b59ff6dbe256994
   user-object: 902fa5b6ecd9535b
-  list-users: dfecbabec62a5002
-  example: 3849933612930aeb
-  show-user: 488193629bd5a028
-  examples: 04b02e2452f8d449
-  update-user: '09daabaa021ff5fb'
+  list-users: 591c5e3b3cf9df2b
+  example: caffa6764d2083d6
+  show-user: 8c19ec2d96f2f49d
+  examples: 3fd58de08a889b3f
+  update-user: 84287345cf520f17
   params: b29f72f9f8367e50
-  examples-2: 0fad539c38c70148
-  deactivate-user: cf07e34cc9850e2e
-  examples-3: '082ccd9158a69ae7'
-  reactivate-user: 1a743e4153c6eea6
-  examples-4: '09d1f8c1ba598db8'
-  redact-user: 6c1a2029e16a9f70
-  examples-5: ddba94c3f79d9465
-  delete-user: e2dbdde89b12df85
-  examples-6: 5ee22a0723a6b25f
+  examples-2: b69b57236cb4d8ca
+  deactivate-user: 381d9c90b6527d33
+  examples-3: 3ec8227a57ee7919
+  reactivate-user: 6144532816502aa5
+  examples-4: 99dca83a53a149d1
+  redact-user: ce2482e8f0ed1953
+  examples-5: 60765bb78904d8df
+  delete-user: 7ec815ca06b9425b
+  examples-6: 8957e7e1a24ee384
   sso-profile-sync-settings: 0e8908951c1924fc
-  provisioning: 81f891b448f577cf
+  provisioning: e40e449a7fdbb68c
 title_source: 370e81eb20eece44
 title_generated: 6b950a4b886b152a
 ---
@@ -57,7 +57,7 @@ title_generated: 6b950a4b886b152a
 
 <!-- seo-description: Luo käyttäjätilejä, etsi ryhmiä ja hallitse jäsenyyksiä itse ylläpitämässäsi Loomio-asennuksessa Loomion palvelimen API:n avulla. -->
 
-`/api/b3` on tarkoitettu palvelintason toimintoihin. Käytä `/api/b2`-rajapintaa käyttäjäkohtaisiin toimintoihin, jotka suoritetaan Loomion käyttäjätilillä.
+`/api/server0` on tarkoitettu palvelintason toimintoihin. Käytä `/api/user0`-rajapintaa käyttäjäkohtaisiin toimintoihin, jotka suoritetaan Loomion käyttäjätilillä.
 
 Yhdellä palvelinavaimella voit luoda ja hallita tilejä, etsiä ryhmiä koko asennuksesta ja hallita niiden jäsenyyksiä ja rooleja. Bottitiliä, käyttäjän API-avainta tai ryhmien jäsenyyttä ei tarvita. Käyttäjien API-avaimet noudattavat edelleen käyttäjän ryhmäkohtaisia käyttöoikeuksia.
 
@@ -65,12 +65,12 @@ Yhdellä palvelinavaimella voit luoda ja hallita tilejä, etsiä ryhmiä koko as
 
 ## Todennus
 
-Aseta `B3_API_KEY`-muuttujan arvoksi yli 16 merkin pituinen salainen avain.
+Avain määritetään palvelinympäristön `SERVER_API_KEY`-asetuksella. `create_env.sh` luo avaimen uusille asennuksille.
 
 Lähetä avain bearer-tokenina:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 Lähetä tunnistetiedot vain `Authorization`-otsakkeessa. Kyselymerkkijonoissa tai pyyntöjen rungoissa lähetetyt API-avaimet hylätään.
@@ -81,23 +81,23 @@ Lähetä tunnistetiedot vain `Authorization`-otsakkeessa. Kyselymerkkijonoissa t
 
 | Metodi | Päätepiste | Tarkoitus |
 | --- | --- | --- |
-| `POST` | `/api/b3/users` | Luo tili |
-| `GET` | `/api/b3/groups` | Etsi ryhmiä koko asennuksesta |
-| `GET` | `/api/b3/memberships` | Listaa ryhmän jäsenyydet |
-| `POST` | `/api/b3/memberships` | Kutsu jäseniä tai synkronoi koko jäsenluettelo |
-| `PATCH` | `/api/b3/memberships/:id` | Muuta ryhmän ylläpitäjän ja edustajan rooleja |
-| `DELETE` | `/api/b3/memberships/:id` | Peru yksittäinen jäsenyys |
+| `POST` | `/api/server0/users` | Luo tili |
+| `GET` | `/api/server0/groups` | Etsi ryhmiä koko asennuksesta |
+| `GET` | `/api/server0/memberships` | Listaa ryhmän jäsenyydet |
+| `POST` | `/api/server0/memberships` | Kutsu jäseniä tai synkronoi koko jäsenluettelo |
+| `PATCH` | `/api/server0/memberships/:id` | Muuta ryhmän ylläpitäjän ja edustajan rooleja |
+| `DELETE` | `/api/server0/memberships/:id` | Peru yksittäinen jäsenyys |
 
 Olemassa olevien tilien päivittämisen, käytöstä poistamisen, uudelleenaktivoinnin, henkilötietojen poistamisen ja tilien poistamisen päätepisteet kuvataan alempana.
 
 ### Luo tili
 
-`POST /api/b3/users`
+`POST /api/server0/users`
 
 Lähetä `user`-objekti, joka sisältää pakollisen `email`-kentän. Sähköpostiosoitteiden alusta ja lopusta poistetaan tyhjämerkit, ja osoitteet muunnetaan pieniksi kirjaimiksi. Valinnaiset kentät ovat `name`, `username` ja `is_admin`. Tässä `is_admin` tarkoittaa koko asennuksen ylläpitäjää; ryhmän ylläpitäjärooleja hallitaan jäsenyyksien kautta. Jätä `username` pois, jos haluat luoda käyttäjänimen automaattisesti. Tuntemattomat kentät hylätään.
 
 ```bash
-curl https://loomio.example.org/api/b3/users \
+curl https://loomio.example.org/api/server0/users \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "user": {
@@ -113,12 +113,12 @@ Vastauksena palautetaan HTTP `201` ja `user`-objekti. Virheelliset kentät tai j
 
 ### Etsi ryhmiä
 
-`GET /api/b3/groups`
+`GET /api/server0/groups`
 
 Listaa kaikki ryhmät, joita ei ole poistettu, mukaan lukien yksityiset ryhmät ja ryhmät, joiden tilaus on päättynyt. Tulokset järjestetään tunnuksen mukaan nousevaan järjestykseen. Selaa tuloksia sivuittain parametreilla `limit` (oletus ja enimmäisarvo `50`) ja `offset` (oletus `0`).
 
 ```bash
-curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/groups?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -142,12 +142,12 @@ curl 'https://loomio.example.org/api/b3/groups?limit=50&offset=0' \
 
 ### Listaa jäsenyydet
 
-`GET /api/b3/memberships?group_id=123`
+`GET /api/server0/memberships?group_id=123`
 
 `group_id` on pakollinen. Tulokset sisältävät hyväksytyt jäsenyydet ja odottavat kutsut jäsenyyden tunnuksen mukaan nousevassa järjestyksessä. Perutut jäsenyydet jätetään pois. Käytä sivutukseen parametreja `limit` (oletus ja enimmäisarvo `50`) ja `offset` (oletus `0`).
 
 ```bash
-curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset=0' \
+curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
@@ -176,12 +176,12 @@ curl 'https://loomio.example.org/api/b3/memberships?group_id=123&limit=50&offset
 
 ### Kutsu tai synkronoi jäseniä
 
-`POST /api/b3/memberships`
+`POST /api/server0/memberships`
 
 Lähetä pakolliset `group_id` ja `emails`-taulukko. Oletusarvoisesti tämä lisää luettelon henkilöt, joilla ei vielä ole aktiivista jäsenyyttä, ja säilyttää muiden jäsenyydet ennallaan. Sähköpostiosoitteiden alusta ja lopusta poistetaan tyhjämerkit, osoitteet muunnetaan pieniksi kirjaimiksi ja kaksoiskappaleet poistetaan. Uusille osoitteille luodaan tilit ja odottavat kutsut. Saman organisaation toisen aktiivisen ryhmän olemassa olevat vahvistetut jäsenet hyväksytään automaattisesti käyttäjän API:n kutsuprosessin mukaisesti.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -195,7 +195,7 @@ curl https://loomio.example.org/api/b3/memberships \
 Synkronoi koko jäsenluettelo asettamalla `remove_absent` nimenomaisesti arvoon `true`. Kaikki luettelosta puuttuvat poistetaan kyseisestä ryhmästä ja sen alaryhmistä. Tyhjä taulukko yhdessä asetuksen `remove_absent: true` kanssa poistaa kaikki, myös ryhmän ylläpitäjät. Jätä `remove_absent` pois tai aseta sen arvoksi `false`, kun vain lisäät henkilöitä. Myös vanhat arvot `1` ja `0` hyväksytään.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships \
+curl https://loomio.example.org/api/server0/memberships \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
     "group_id": 123,
@@ -221,12 +221,12 @@ Puuttuvat tai väärin muotoillut sähköpostiluettelot ja virheelliset totuusar
 
 ### Päivitä jäsenyyden roolit
 
-`PATCH /api/b3/memberships/:id`
+`PATCH /api/server0/memberships/:id`
 
 Lähetä `membership`-objekti, joka sisältää joko toisen tai molemmat totuusarvokentistä `admin` ja `delegate`. Pois jätetyt roolit säilyvät ennallaan. Tuntemattomat kentät hylätään; päätepisteellä ei voi siirtää jäsenyyttä, hyväksyä kutsua eikä muuttaa äänten painotuksia.
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   --json '{
@@ -241,10 +241,10 @@ Palauttaa `membership`-objektin, jossa on samat kentät kuin listatussa jäsenyy
 
 ### Poista yksittäinen jäsenyys
 
-`DELETE /api/b3/memberships/:id`
+`DELETE /api/server0/memberships/:id`
 
 ```bash
-curl https://loomio.example.org/api/b3/memberships/456 \
+curl https://loomio.example.org/api/server0/memberships/456 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
@@ -284,14 +284,14 @@ Käyttäjätietoja sisältävien vastausten rakenne on seuraava:
 
 Listaa kaikki Loomio-asennuksen käyttäjätilit.
 
-`GET /api/b3/users`
+`GET /api/server0/users`
 
 <!-- translation-section: example -->
 
 ### Esimerkki
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
 ```
 
 Palauttaa:
@@ -308,9 +308,9 @@ Palauttaa:
 
 Etsi käyttäjä Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella.
 
-`GET /api/b3/users/:id`
+`GET /api/server0/users/:id`
 
-`GET /api/b3/users/identity/:identity_type/:uid`
+`GET /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples -->
 
@@ -319,13 +319,13 @@ Etsi käyttäjä Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella.
 Loomion käyttäjä-ID:n perusteella:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 Ulkoisen identiteetin perusteella:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Palauttaa:
@@ -342,9 +342,9 @@ Palauttaa:
 
 Päivitä Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella löydetyn käyttäjän profiilikentät.
 
-`PATCH /api/b3/users/:id`
+`PATCH /api/server0/users/:id`
 
-`PATCH /api/b3/users/identity/:identity_type/:uid`
+`PATCH /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: params -->
 
@@ -367,7 +367,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/123
+  https://www.loomio.com/api/server0/users/123
 ```
 
 Ulkoisen identiteetin perusteella:
@@ -377,7 +377,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/b3/users/identity/oauth/external-123
+  https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Palauttaa päivitetyn käyttäjän:
@@ -394,9 +394,9 @@ Palauttaa päivitetyn käyttäjän:
 
 Poista käytöstä käyttäjätili, joka on löydetty Loomion käyttäjä-ID:n tai ulkoisen identiteetin perusteella.
 
-`POST /api/b3/users/:id/deactivate`
+`POST /api/server0/users/:id/deactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/deactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/deactivate`
 
 <!-- translation-section: examples-3 -->
 
@@ -405,13 +405,13 @@ Poista käytöstä käyttäjätili, joka on löydetty Loomion käyttäjä-ID:n t
 Loomion käyttäjä-ID:n perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
 ```
 
 Ulkoisen identiteetin perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Palauttaa:
@@ -429,9 +429,9 @@ Palauttaa:
 
 Aktivoi käytöstä poistettu käyttäjätili uudelleen Loomion käyttäjätunnisteen tai ulkoisen identiteetin perusteella.
 
-`POST /api/b3/users/:id/reactivate`
+`POST /api/server0/users/:id/reactivate`
 
-`POST /api/b3/users/identity/:identity_type/:uid/reactivate`
+`POST /api/server0/users/identity/:identity_type/:uid/reactivate`
 
 <!-- translation-section: examples-4 -->
 
@@ -440,13 +440,13 @@ Aktivoi käytöstä poistettu käyttäjätili uudelleen Loomion käyttäjätunni
 Loomion käyttäjätunnisteen perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
 ```
 
 Ulkoisen identiteetin perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Palauttaa:
@@ -466,9 +466,9 @@ Tunnistetietojen poistaminen säilyttää käyttäjän kommentit ja muun käytt�
 
 Tämä on suositeltu tapa poistaa käyttäjä Loomiosta.
 
-`POST /api/b3/users/:id/redact`
+`POST /api/server0/users/:id/redact`
 
-`POST /api/b3/users/identity/:identity_type/:uid/redact`
+`POST /api/server0/users/identity/:identity_type/:uid/redact`
 
 <!-- translation-section: examples-5 -->
 
@@ -477,13 +477,13 @@ Tämä on suositeltu tapa poistaa käyttäjä Loomiosta.
 Loomion käyttäjätunnisteen perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
 ```
 
 Ulkoisen identiteetin perusteella:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Palauttaa:
@@ -502,9 +502,9 @@ Poistaminen poistaa käyttäjän ja hänen luomansa tietueet. Kommentit poisteta
 
 Tämä poistaa laajasti tietoja. Käyttäjän tunnistetietojen poistaminen on vahvasti suositeltu vaihtoehto.
 
-`DELETE /api/b3/users/:id`
+`DELETE /api/server0/users/:id`
 
-`DELETE /api/b3/users/identity/:identity_type/:uid`
+`DELETE /api/server0/users/identity/:identity_type/:uid`
 
 <!-- translation-section: examples-6 -->
 
@@ -513,13 +513,13 @@ Tämä poistaa laajasti tietoja. Käyttäjän tunnistetietojen poistaminen on va
 Loomion käyttäjätunnisteen perusteella:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
 ```
 
 Ulkoisen identiteetin perusteella:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/b3/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
 ```
 
 Palauttaa:

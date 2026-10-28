@@ -3,9 +3,9 @@ info:
   title: Loomio API
   version: "1"
   description: |
-    HTTP API for user-scoped integrations (`/api/b2`) and self-hosted server administration (`/api/b3`).
-    The B2 API applies the permissions of the user who owns the API key. The B3 API is enabled by the
-    server-wide `B3_API_KEY` environment variable. See the Loomio API guides for permission and workflow details.
+    HTTP API for user-scoped integrations (`/api/user0`) and self-hosted server administration (`/api/server0`).
+    The User API applies the permissions of the user who owns the API key. The Server API is enabled by the
+    server-wide `SERVER_API_KEY` environment variable. See the Loomio API guides for permission and workflow details.
 servers:
   - url: https://www.loomio.com
     description: Loomio hosted service
@@ -29,7 +29,7 @@ tags:
   - name: Server groups
   - name: Server memberships
 paths:
-  /api/b2/groups:
+  /api/user0/groups:
     get:
       operationId: listGroups
       tags: [Groups]
@@ -49,7 +49,7 @@ paths:
                 $ref: "#/components/schemas/GroupsResponse"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/groups/{id}:
+  /api/user0/groups/{id}:
     parameters:
       - $ref: "#/components/parameters/GroupIdentifier"
     get:
@@ -68,7 +68,7 @@ paths:
                 $ref: "#/components/schemas/GroupResponse"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/discussions:
+  /api/user0/discussions:
     get:
       operationId: listDiscussions
       tags: [Discussions]
@@ -105,7 +105,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/discussions/{id}:
+  /api/user0/discussions/{id}:
     parameters:
       - $ref: "#/components/parameters/RecordIdentifier"
     get:
@@ -160,7 +160,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/threads:
+  /api/user0/threads:
     get:
       operationId: listThreads
       tags: [Threads]
@@ -175,7 +175,7 @@ paths:
           $ref: "#/components/responses/RecordCollection"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/threads/{id}:
+  /api/user0/threads/{id}:
     parameters:
       - $ref: "#/components/parameters/TopicId"
     get:
@@ -190,7 +190,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/threads/{id}/items:
+  /api/user0/threads/{id}/items:
     parameters:
       - $ref: "#/components/parameters/TopicId"
     get:
@@ -208,7 +208,7 @@ paths:
           $ref: "#/components/responses/RecordCollection"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/threads/{id}/markdown:
+  /api/user0/threads/{id}/markdown:
     parameters:
       - $ref: "#/components/parameters/TopicId"
     get:
@@ -228,7 +228,7 @@ paths:
                     type: string
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/comments:
+  /api/user0/comments:
     post:
       operationId: createComment
       tags: [Comments]
@@ -244,7 +244,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/comments/{id}:
+  /api/user0/comments/{id}:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     patch:
@@ -287,7 +287,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/polls:
+  /api/user0/polls:
     get:
       operationId: listPolls
       tags: [Polls]
@@ -324,7 +324,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/polls/{id}:
+  /api/user0/polls/{id}:
     parameters:
       - $ref: "#/components/parameters/RecordIdentifier"
     get:
@@ -379,7 +379,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/memberships:
+  /api/user0/memberships:
     get:
       operationId: listMemberships
       tags: [Memberships]
@@ -438,7 +438,7 @@ paths:
                     items: {type: string, format: email}
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/reports:
+  /api/user0/reports:
     get:
       operationId: getParticipationReport
       tags: [Reports]
@@ -489,7 +489,7 @@ paths:
                 additionalProperties: true
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/search:
+  /api/user0/search:
     get:
       operationId: searchContent
       tags: [Threads]
@@ -535,7 +535,7 @@ paths:
                 $ref: "#/components/schemas/RecordResponse"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/chatbots:
+  /api/user0/chatbots:
     get:
       operationId: listWebhooks
       tags: [Webhooks]
@@ -575,7 +575,7 @@ paths:
           $ref: "#/components/responses/Record"
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/chatbots/check:
+  /api/user0/chatbots/check:
     post:
       operationId: checkWebhook
       tags: [Webhooks]
@@ -598,7 +598,7 @@ paths:
           description: Test request delivered
         default:
           $ref: "#/components/responses/Error"
-  /api/b2/chatbots/{id}:
+  /api/user0/chatbots/{id}:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     patch:
@@ -645,7 +645,7 @@ paths:
                 $ref: "#/components/schemas/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/groups:
+  /api/server0/groups:
     get:
       operationId: listServerGroups
       tags: [Server groups]
@@ -663,7 +663,7 @@ paths:
                 $ref: "#/components/schemas/ServerGroupPage"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/memberships:
+  /api/server0/memberships:
     get:
       operationId: listServerMemberships
       tags: [Server memberships]
@@ -725,7 +725,7 @@ paths:
                     items: {type: string, format: email}
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/memberships/{id}:
+  /api/server0/memberships/{id}:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     patch:
@@ -764,7 +764,7 @@ paths:
           $ref: "#/components/responses/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users:
+  /api/server0/users:
     get:
       operationId: listServerUsers
       tags: [Server users]
@@ -801,7 +801,7 @@ paths:
           $ref: "#/components/responses/User"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/{id}:
+  /api/server0/users/{id}:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     get:
@@ -845,7 +845,7 @@ paths:
           $ref: "#/components/responses/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/{id}/deactivate:
+  /api/server0/users/{id}/deactivate:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     post:
@@ -857,7 +857,7 @@ paths:
           $ref: "#/components/responses/UserSuccess"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/{id}/reactivate:
+  /api/server0/users/{id}/reactivate:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     post:
@@ -869,7 +869,7 @@ paths:
           $ref: "#/components/responses/UserSuccess"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/{id}/redact:
+  /api/server0/users/{id}/redact:
     parameters:
       - $ref: "#/components/parameters/NumericId"
     post:
@@ -881,7 +881,7 @@ paths:
           $ref: "#/components/responses/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/identity/{identity_type}/{uid}:
+  /api/server0/users/identity/{identity_type}/{uid}:
     parameters:
       - $ref: "#/components/parameters/IdentityType"
       - $ref: "#/components/parameters/IdentityUid"
@@ -914,7 +914,7 @@ paths:
           $ref: "#/components/responses/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/identity/{identity_type}/{uid}/deactivate:
+  /api/server0/users/identity/{identity_type}/{uid}/deactivate:
     parameters:
       - $ref: "#/components/parameters/IdentityType"
       - $ref: "#/components/parameters/IdentityUid"
@@ -927,7 +927,7 @@ paths:
           $ref: "#/components/responses/UserSuccess"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/identity/{identity_type}/{uid}/reactivate:
+  /api/server0/users/identity/{identity_type}/{uid}/reactivate:
     parameters:
       - $ref: "#/components/parameters/IdentityType"
       - $ref: "#/components/parameters/IdentityUid"
@@ -940,7 +940,7 @@ paths:
           $ref: "#/components/responses/UserSuccess"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/identity/{identity_type}/{uid}/redact:
+  /api/server0/users/identity/{identity_type}/{uid}/redact:
     parameters:
       - $ref: "#/components/parameters/IdentityType"
       - $ref: "#/components/parameters/IdentityUid"
@@ -953,7 +953,7 @@ paths:
           $ref: "#/components/responses/Success"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/deactivate:
+  /api/server0/users/deactivate:
     post:
       operationId: deactivateServerUserLegacy
       deprecated: true
@@ -966,7 +966,7 @@ paths:
           $ref: "#/components/responses/UserSuccess"
         default:
           $ref: "#/components/responses/Error"
-  /api/b3/users/reactivate:
+  /api/server0/users/reactivate:
     post:
       operationId: reactivateServerUserLegacy
       deprecated: true
@@ -984,7 +984,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: Use a user's API key for B2 operations or `B3_API_KEY` for B3 operations.
+      description: Use a user's API key for User API operations or `SERVER_API_KEY` for Server API operations.
   parameters:
     Compact:
       name: compact
@@ -1235,7 +1235,7 @@ components:
         pending: {type: boolean}
     RecordResponse:
       type: object
-      description: B2 serializers return the requested resource together with related records needed by API clients.
+      description: User API serializers return the requested resource together with related records needed by API clients.
       additionalProperties: true
     Group:
       type: object
@@ -1350,7 +1350,7 @@ components:
           enum: [group, null]
         notify_on_closing_soon:
           type: string
-          enum: [nobody, author, undecided_voters, voters]
+          enum: [nobody, author, voters_uncast, voters]
         recipient_user_ids:
           type: array
           items: {type: integer}

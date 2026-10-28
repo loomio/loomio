@@ -4,7 +4,7 @@
 
 <!-- seo-description: Use the Loomio User API to create and manage discussions, comments, polls, threads, and group memberships from other software. -->
 
-`/api/b2` is the user-oriented API for integrations with Loomio. It uses the API key of a user account, and every action is performed as that user.
+`/api/user0` is the user-oriented API for integrations with Loomio. It uses the API key of a user account, and every action is performed as that user.
 
 Group operations use the memberships and group permissions of the API-key user. Instance-administrator status does not expand an API key's access to groups or content; use the Server API for instance-level administration.
 
@@ -36,34 +36,34 @@ Check the HTTP status and response body after each request. A validation failure
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
-| `POST` | `/api/b2/comments` | Create a comment or reply |
-| `PATCH` | `/api/b2/comments/:id` | Edit a comment |
-| `DELETE` | `/api/b2/comments/:id` | Soft-delete a comment |
-| `POST` | `/api/b2/discussions` | Create a discussion |
-| `GET` | `/api/b2/discussions/:id` | Get a discussion |
-| `GET` | `/api/b2/discussions` | List discussions in a group |
-| `PATCH` | `/api/b2/discussions/:id` | Edit a discussion |
-| `DELETE` | `/api/b2/discussions/:id` | Soft-delete a discussion |
-| `GET` | `/api/b2/groups` | List the API-key user's groups |
-| `GET` | `/api/b2/groups/:id_or_key_or_handle` | Get a visible group |
-| `GET` | `/api/b2/memberships` | List a group's memberships |
-| `POST` | `/api/b2/memberships` | Add members and optionally remove absent members |
-| `GET` | `/api/b2/reports` | Generate a participation report |
-| `POST` | `/api/b2/polls` | Create a poll |
-| `GET` | `/api/b2/polls/:id` | Get a poll |
-| `GET` | `/api/b2/polls` | List polls in a group |
-| `PATCH` | `/api/b2/polls/:id` | Edit a poll |
-| `DELETE` | `/api/b2/polls/:id` | Soft-delete a poll |
-| `GET` | `/api/b2/search` | Search visible discussions, comments, polls, votes, and outcomes |
-| `GET` | `/api/b2/threads` | List visible discussion and standalone-poll threads |
-| `GET` | `/api/b2/threads/:topic_id` | Get a thread |
-| `GET` | `/api/b2/threads/:topic_id/items` | Get the ordered items in a thread |
-| `GET` | `/api/b2/threads/:topic_id/markdown` | Get a complete thread as Markdown |
-| `GET` | `/api/b2/chatbots` | List a group's chat integrations and webhooks |
-| `POST` | `/api/b2/chatbots` | Create a chat integration or webhook |
-| `PATCH` | `/api/b2/chatbots/:id` | Update a chat integration or webhook |
-| `DELETE` | `/api/b2/chatbots/:id` | Delete a chat integration or webhook |
-| `POST` | `/api/b2/chatbots/check` | Send a webhook connection test |
+| `POST` | `/api/user0/comments` | Create a comment or reply |
+| `PATCH` | `/api/user0/comments/:id` | Edit a comment |
+| `DELETE` | `/api/user0/comments/:id` | Soft-delete a comment |
+| `POST` | `/api/user0/discussions` | Create a discussion |
+| `GET` | `/api/user0/discussions/:id` | Get a discussion |
+| `GET` | `/api/user0/discussions` | List discussions in a group |
+| `PATCH` | `/api/user0/discussions/:id` | Edit a discussion |
+| `DELETE` | `/api/user0/discussions/:id` | Soft-delete a discussion |
+| `GET` | `/api/user0/groups` | List the API-key user's groups |
+| `GET` | `/api/user0/groups/:id_or_key_or_handle` | Get a visible group |
+| `GET` | `/api/user0/memberships` | List a group's memberships |
+| `POST` | `/api/user0/memberships` | Add members and optionally remove absent members |
+| `GET` | `/api/user0/reports` | Generate a participation report |
+| `POST` | `/api/user0/polls` | Create a poll |
+| `GET` | `/api/user0/polls/:id` | Get a poll |
+| `GET` | `/api/user0/polls` | List polls in a group |
+| `PATCH` | `/api/user0/polls/:id` | Edit a poll |
+| `DELETE` | `/api/user0/polls/:id` | Soft-delete a poll |
+| `GET` | `/api/user0/search` | Search visible discussions, comments, polls, votes, and outcomes |
+| `GET` | `/api/user0/threads` | List visible discussion and standalone-poll threads |
+| `GET` | `/api/user0/threads/:topic_id` | Get a thread |
+| `GET` | `/api/user0/threads/:topic_id/items` | Get the ordered items in a thread |
+| `GET` | `/api/user0/threads/:topic_id/markdown` | Get a complete thread as Markdown |
+| `GET` | `/api/user0/chatbots` | List a group's chat integrations and webhooks |
+| `POST` | `/api/user0/chatbots` | Create a chat integration or webhook |
+| `PATCH` | `/api/user0/chatbots/:id` | Update a chat integration or webhook |
+| `DELETE` | `/api/user0/chatbots/:id` | Delete a chat integration or webhook |
+| `POST` | `/api/user0/chatbots/check` | Send a webhook connection test |
 
 <!-- translation-section: pagination -->
 
@@ -86,7 +86,7 @@ User API responses use a compound format: the primary records are accompanied by
 Pass `compact=1` to omit bulky related topics, groups, parent groups, memberships, reactions, tags, and translations. Primary records and the related records needed to interpret their content remain present.
 
 ```bash
-curl 'https://www.loomio.com/api/b2/threads/123/items?compact=1' \
+curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -104,7 +104,7 @@ Collection responses include `meta.total` when an exact collection size is defin
 
 Create a comment in a discussion as the API-key user.
 
-`POST /api/b2/comments`
+`POST /api/user0/comments`
 
 <!-- translation-section: params-7 -->
 
@@ -121,7 +121,7 @@ Create a comment in a discussion as the API-key user.
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/comments \
+curl https://www.loomio.com/api/user0/comments \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "discussion_id": 123,
@@ -136,7 +136,7 @@ curl https://www.loomio.com/api/b2/comments \
 
 Edit a comment as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that comment.
 
-`PATCH /api/b2/comments/:id`
+`PATCH /api/user0/comments/:id`
 
 <!-- translation-section: params-8 -->
 
@@ -152,7 +152,7 @@ Edit a comment as the API-key user. The same permissions apply as in Loomio: the
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/comments/123 \
+curl https://www.loomio.com/api/user0/comments/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -167,14 +167,14 @@ curl https://www.loomio.com/api/b2/comments/123 \
 
 Soft delete a comment as the API-key user. This discards the comment, hides its body, and keeps the comment record in place.
 
-`DELETE /api/b2/comments/:id`
+`DELETE /api/user0/comments/:id`
 
 <!-- translation-section: example-11 -->
 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/comments/123 \
+curl https://www.loomio.com/api/user0/comments/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -189,7 +189,7 @@ curl https://www.loomio.com/api/b2/comments/123 \
 
 Create a discussion as the API-key user.
 
-`POST /api/b2/discussions`
+`POST /api/user0/discussions`
 
 <!-- translation-section: params-3 -->
 
@@ -211,7 +211,7 @@ Create a discussion as the API-key user.
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions \
+curl https://www.loomio.com/api/user0/discussions \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -228,14 +228,14 @@ curl https://www.loomio.com/api/b2/discussions \
 
 Fetch a discussion using the discussion ID, an integer, or key, a string.
 
-`GET /api/b2/discussions/:id`
+`GET /api/user0/discussions/:id`
 
 <!-- translation-section: example-3 -->
 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/abc123 \
+curl https://www.loomio.com/api/user0/discussions/abc123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -245,7 +245,7 @@ curl https://www.loomio.com/api/b2/discussions/abc123 \
 
 List discussions visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public discussions; private discussions remain restricted to users who can read them in Loomio.
 
-`GET /api/b2/discussions`
+`GET /api/user0/discussions`
 
 <!-- translation-section: params-4 -->
 
@@ -265,7 +265,7 @@ Legacy: `per` and `from` are accepted as aliases for `limit` and `offset` and wi
 #### Example
 
 ```bash
-curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
+curl 'https://www.loomio.com/api/user0/discussions?group_id=123' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -275,7 +275,7 @@ curl 'https://www.loomio.com/api/b2/discussions?group_id=123' \
 
 Edit a discussion as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that discussion.
 
-`PATCH /api/b2/discussions/:id`
+`PATCH /api/user0/discussions/:id`
 
 <!-- translation-section: params-6 -->
 
@@ -296,7 +296,7 @@ Edit a discussion as the API-key user. The same permissions apply as in Loomio: 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/123 \
+curl https://www.loomio.com/api/user0/discussions/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -312,14 +312,14 @@ curl https://www.loomio.com/api/b2/discussions/123 \
 
 Soft delete a discussion as the API-key user. This discards the discussion and keeps the discussion record in place.
 
-`DELETE /api/b2/discussions/:id`
+`DELETE /api/user0/discussions/:id`
 
 <!-- translation-section: example-8 -->
 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/discussions/123 \
+curl https://www.loomio.com/api/user0/discussions/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -334,7 +334,7 @@ curl https://www.loomio.com/api/b2/discussions/123 \
 
 Return the groups in which the API-key user has an active membership.
 
-`GET /api/b2/groups`
+`GET /api/user0/groups`
 
 | Name | Description |
 | --- | --- |
@@ -342,7 +342,7 @@ Return the groups in which the API-key user has an active membership.
 | `offset` | Integer, optional, default 0. Offset for pagination |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/groups?limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/groups?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -375,15 +375,15 @@ The response may include additional group settings, related parent-group records
 
 Return one group visible to the API-key user.
 
-`GET /api/b2/groups/:id_or_key_or_handle`
+`GET /api/user0/groups/:id_or_key_or_handle`
 
 The identifier can be the group's numeric ID, key or handle.
 
 ```bash
-curl https://www.loomio.com/api/b2/groups/123 \
+curl https://www.loomio.com/api/user0/groups/123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 
-curl https://www.loomio.com/api/b2/groups/example-group \
+curl https://www.loomio.com/api/user0/groups/example-group \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -399,7 +399,7 @@ The response contains the group in the `groups` array and uses the same fields a
 
 List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator.
 
-`GET /api/b2/memberships`
+`GET /api/user0/memberships`
 
 <!-- translation-section: params-12 -->
 
@@ -420,7 +420,7 @@ The response contains a page of `memberships` and related `users`. `meta.total` 
 #### Example
 
 ```bash
-curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -430,7 +430,7 @@ curl 'https://www.loomio.com/api/b2/memberships?group_id=123&limit=50&offset=0' 
 
 Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator permission.
 
-`POST /api/b2/memberships`
+`POST /api/user0/memberships`
 
 <!-- translation-section: params-13 -->
 
@@ -447,7 +447,7 @@ Send a list of emails. It will invite all the new email addresses to the group. 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/memberships \
+curl https://www.loomio.com/api/user0/memberships \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -460,7 +460,7 @@ curl https://www.loomio.com/api/b2/memberships \
 If you pass `remove_absent=1`, any members of the group who were not included in the list will be removed from the group. Be careful, you could remove everyone in your group.
 
 ```bash
-curl https://www.loomio.com/api/b2/memberships \
+curl https://www.loomio.com/api/user0/memberships \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -479,7 +479,7 @@ This returns an object with `{added_emails: ["person@added.com"], removed_emails
 
 Return the same aggregated participation data used by Loomio's Participation report.
 
-`GET /api/b2/reports`
+`GET /api/user0/reports`
 
 <!-- translation-section: params-2 -->
 
@@ -504,7 +504,7 @@ The API applies the same group visibility rules as the in-product report. A user
 ### Example
 
 ```bash
-curl 'https://www.loomio.com/api/b2/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
+curl 'https://www.loomio.com/api/user0/reports?section=users&group_scope=custom&group_ids=123&member_type=delegate&start_month=2026-01&end_month=2026-09' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -543,7 +543,7 @@ The `users` array contains complete activity rows:
 
 Create a poll as the API-key user.
 
-`POST /api/b2/polls`
+`POST /api/user0/polls`
 
 <!-- translation-section: params-9 -->
 
@@ -567,7 +567,7 @@ Create a poll as the API-key user.
 | `shuffle_options` | Boolean, default false. Display options to voters in random order |
 | `anonymous` | Boolean, optional, default false. Hide identities of voters |
 | `recipient_audience` | `group` or null, optional, default null. If `group`, the whole group will be notified |
-| `notify_on_closing_soon` | String, optional, default `nobody`. Values: `nobody`, `author`, `undecided_voters`, `voters` |
+| `notify_on_closing_soon` | String, optional, default `nobody`. Values: `nobody`, `author`, `voters_uncast`, `voters` |
 | `recipient_user_ids` | Array of user IDs to notify or invite |
 | `recipient_emails` | Array of email addresses of people to invite to vote |
 | `recipient_message` | Message to include in the email invitation |
@@ -578,7 +578,7 @@ Create a poll as the API-key user.
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -604,7 +604,7 @@ Send all option names in the `options` array. Omitting `closing_at` creates a wo
 Add all your option names to the array:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -642,7 +642,7 @@ Each object in `poll_options_attributes` accepts these fields:
 Create a proposal with custom option labels and prompts:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -671,7 +671,7 @@ curl https://www.loomio.com/api/b2/polls \
 For a regular poll, use the same detailed option format with a shared `reason_prompt` on the poll:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls \
+curl https://www.loomio.com/api/user0/polls \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -702,14 +702,14 @@ These examples omit `closing_at`, so voting stays disabled until a future closin
 
 Fetch a poll using the poll ID, an integer, or key, a string.
 
-`GET /api/b2/polls/:id`
+`GET /api/user0/polls/:id`
 
 <!-- translation-section: example-13 -->
 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/abc123 \
+curl https://www.loomio.com/api/user0/polls/abc123 \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -719,7 +719,7 @@ curl https://www.loomio.com/api/b2/polls/abc123 \
 
 List polls visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list decided proposals.
 
-`GET /api/b2/polls`
+`GET /api/user0/polls`
 
 <!-- translation-section: params-10 -->
 
@@ -739,7 +739,7 @@ Legacy: `per` and `from` are accepted as aliases for `limit` and `offset` and wi
 #### Example
 
 ```bash
-curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
+curl 'https://www.loomio.com/api/user0/polls?group_id=123' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -749,7 +749,7 @@ curl 'https://www.loomio.com/api/b2/polls?group_id=123' \
 
 Edit a poll as the API-key user. The same permissions apply as in Loomio: the user must be allowed to edit that poll.
 
-`PATCH /api/b2/polls/:id`
+`PATCH /api/user0/polls/:id`
 
 <!-- translation-section: params-11 -->
 
@@ -775,7 +775,7 @@ Edit a poll as the API-key user. The same permissions apply as in Loomio: the us
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -792,7 +792,7 @@ curl https://www.loomio.com/api/b2/polls/123 \
 Get option IDs from the `poll_options` array in a create or get response. Send only the fields to change, together with each existing option's `id`:
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -820,14 +820,14 @@ Option IDs must belong to the poll being edited. Editing requires permission to 
 
 Soft delete a poll as the API-key user. This discards the poll and keeps the poll record in place.
 
-`DELETE /api/b2/polls/:id`
+`DELETE /api/user0/polls/:id`
 
 <!-- translation-section: example-16 -->
 
 #### Example
 
 ```bash
-curl https://www.loomio.com/api/b2/polls/123 \
+curl https://www.loomio.com/api/user0/polls/123 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
@@ -838,7 +838,7 @@ curl https://www.loomio.com/api/b2/polls/123 \
 
 Search discussions, comments, polls, votes, and outcomes visible to the API-key user. Results include public content even when the user is not a member of its group; private content remains subject to normal topic visibility.
 
-`GET /api/b2/search`
+`GET /api/user0/search`
 
 <!-- translation-section: params -->
 
@@ -856,7 +856,7 @@ Search discussions, comments, polls, votes, and outcomes visible to the API-key 
 | `order` | Set to `authored_at_desc` to order matching content by authoring time |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/search?query=quarterly+planning&type=Discussion' \
+curl 'https://www.loomio.com/api/user0/search?query=quarterly+planning&type=Discussion' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -872,7 +872,7 @@ The response contains a `search_results` array. Each result identifies the match
 
 List the discussion and poll threads visible to the API-key user, ordered by latest activity. A thread ID is its `topic_id`.
 
-`GET /api/b2/threads`
+`GET /api/user0/threads`
 
 <!-- translation-section: params-5 -->
 
@@ -888,7 +888,7 @@ List the discussion and poll threads visible to the API-key user, ordered by lat
 #### Example
 
 ```bash
-curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/threads?limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -898,11 +898,11 @@ curl 'https://www.loomio.com/api/b2/threads?limit=50&offset=0' \
 
 Read a thread, its ordered event stream, or its complete visible Markdown document.
 
-`GET /api/b2/threads/:topic_id`
+`GET /api/user0/threads/:topic_id`
 
-`GET /api/b2/threads/:topic_id/items`
+`GET /api/user0/threads/:topic_id/items`
 
-`GET /api/b2/threads/:topic_id/markdown`
+`GET /api/user0/threads/:topic_id/markdown`
 
 The `items` endpoint accepts these pagination parameters:
 
@@ -916,9 +916,9 @@ The `items` endpoint accepts these pagination parameters:
 #### Example
 
 ```text
-GET https://www.loomio.com/api/b2/threads/<topic_id>
-GET https://www.loomio.com/api/b2/threads/<topic_id>/items?limit=50&offset=0
-GET https://www.loomio.com/api/b2/threads/<topic_id>/markdown
+GET https://www.loomio.com/api/user0/threads/<topic_id>
+GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
+GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
 The `items` endpoint returns a page of the event stream in ascending sequence order, including visible comments, polls, votes, and outcomes. `meta.total` is the full item count for the thread. Fetch subsequent pages to read the entire stream. The `markdown` endpoint returns the complete visible thread as one Markdown document. Vote reasons are included only when they are visible to the API-key user.
@@ -950,7 +950,7 @@ Agents and other integrations can instead manage webhooks through the Bearer-aut
 
 Return the chat integrations configured for a group. The API-key user must be an administrator of that group. The response includes destination URLs, so it must not be exposed to ordinary group members.
 
-`GET /api/b2/chatbots?group_id=123`
+`GET /api/user0/chatbots?group_id=123`
 
 | Name | Description |
 | --- | --- |
@@ -959,7 +959,7 @@ Return the chat integrations configured for a group. The API-key user must be an
 | `offset` | Integer, optional, default 0. Offset for pagination |
 
 ```bash
-curl 'https://www.loomio.com/api/b2/chatbots?group_id=123&limit=50&offset=0' \
+curl 'https://www.loomio.com/api/user0/chatbots?group_id=123&limit=50&offset=0' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
@@ -980,10 +980,10 @@ The response contains a `chatbots` page ordered by ascending integration ID, wit
 
 ### Create a webhook
 
-`POST /api/b2/chatbots`
+`POST /api/user0/chatbots`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots \
+curl https://www.loomio.com/api/user0/chatbots \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -1007,12 +1007,12 @@ The API-key user must be an administrator of `group_id`. The destination is vali
 
 ### Update a webhook
 
-`PATCH /api/b2/chatbots/:id`
+`PATCH /api/user0/chatbots/:id`
 
 Send any fields that should change. The webhook cannot be transferred to another group by changing `group_id`.
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/456 \
+curl https://www.loomio.com/api/user0/chatbots/456 \
   -X PATCH \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
@@ -1030,10 +1030,10 @@ curl https://www.loomio.com/api/b2/chatbots/456 \
 
 Send a Markdown-compatible test message to a destination before or after saving its configuration.
 
-`POST /api/b2/chatbots/check`
+`POST /api/user0/chatbots/check`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/check \
+curl https://www.loomio.com/api/user0/chatbots/check \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   --json '{
     "group_id": 123,
@@ -1045,10 +1045,10 @@ curl https://www.loomio.com/api/b2/chatbots/check \
 
 ### Delete a webhook
 
-`DELETE /api/b2/chatbots/:id`
+`DELETE /api/user0/chatbots/:id`
 
 ```bash
-curl https://www.loomio.com/api/b2/chatbots/456 \
+curl https://www.loomio.com/api/user0/chatbots/456 \
   -X DELETE \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```

@@ -15,7 +15,7 @@ class StanceChoiceSerializer < ApplicationSerializer
   end
 
   def rank
-    poll.minimum_stance_choices - object.score + 1 if poll.poll_type == 'ranked_choice'
+    poll.choice_count_min - object.score + 1 if poll.poll_type == 'ranked_choice'
   end
 
   def rank_or_score

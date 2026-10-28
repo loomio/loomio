@@ -7,7 +7,7 @@ import WatchRecords from '@/mixins/watch_records';
 import { useI18n } from 'vue-i18n';
 import { VAvatarGroup } from 'vuetify/components/VAvatarGroup';
 
-const METRIC_COLUMNS = ['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'voter_count'];
+const METRIC_COLUMNS = ['target_percent', 'score_percent', 'votes_cast_percent', 'voter_percent', 'score', 'unweighted_score', 'average', 'votes', 'vote_count'];
 // Show five identities, with overflow based on the full count rather than the
 // bounded sample of voter identities supplied in a result row.
 const VOTER_AVATARS_MAX = 5;
@@ -48,7 +48,7 @@ export default {
     },
     chartableMetric(column) {
       if (!METRIC_COLUMNS.includes(column)) return false;
-      if (this.poll.chartType === 'pie' && !this.poll.singleChoice() && ['voter_percent', 'votes', 'voter_count'].includes(column)) return false;
+      if (this.poll.chartType === 'pie' && !this.poll.singleChoice() && ['voter_percent', 'votes', 'vote_count'].includes(column)) return false;
       return true;
     },
     selectMetric(column) {
@@ -61,7 +61,7 @@ export default {
         this.slices = this.poll.pieSlices();
         return;
       }
-      const countMetric = ['votes', 'voter_count'].includes(this.selectedMetric);
+      const countMetric = ['votes', 'vote_count'].includes(this.selectedMetric);
       const scoreMetric = ['score', 'unweighted_score'].includes(this.selectedMetric);
       const totalScore = scoreMetric ? this.poll.results.reduce((sum, option) => sum + Number(option[this.selectedMetric]), 0) : 0;
       this.slices = this.poll.results.map(option => ({
@@ -74,14 +74,14 @@ export default {
     barPercent(option) {
       const metric = this.selectedMetric;
       if (!metric) return this.clampPercent(option[this.poll.chartColumn]);
-      if (metric === 'votes' || metric === 'voter_count') return this.clampPercent(this.voterCountPercent(option));
+      if (metric === 'votes' || metric === 'vote_count') return this.clampPercent(this.voterCountPercent(option));
       if (metric === 'votes_cast_percent') return this.clampPercent(option.score_percent);
       if (metric === 'score' || metric === 'unweighted_score') {
         const maximum = Math.max(...this.poll.results.map(result => Number(result[metric] || 0)), 0);
         return maximum ? this.clampPercent(Number(option[metric] || 0) / maximum * 100) : 0;
       }
       if (metric === 'average') {
-        const maximum = Number(this.poll.defaulted('maxScore'));
+        const maximum = Number(this.poll.defaulted('scoreMax'));
         return maximum ? this.clampPercent(Number(option.average || 0) / maximum * 100) : 0;
       }
       return this.clampPercent(option[metric]);
@@ -90,11 +90,11 @@ export default {
       return Records.pollOptions.find(opt.id) || {meaning: '', name: opt.name}
     },
     voterCountPercent(option) {
-      return this.poll.votersCount > 0 ? option.voter_count / this.poll.votersCount * 100 : 0;
+      return this.poll.voteCountEligible > 0 ? option.vote_count / this.poll.voteCountEligible * 100 : 0;
     },
     voterOverflowText(option) {
       const visible = Math.min(option.voter_ids.length, VOTER_AVATARS_MAX);
-      const overflow = option.voter_count - visible;
+      const overflow = option.vote_count - visible;
       return overflow > 0 ? `+${overflow}` : '';
     },
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
@@ -178,7 +178,7 @@ export default {
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{ option.score }}
           td.text-right(v-if="col == 'unweighted_score'") {{option.unweighted_score}}
-          td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
+          td.text-right(v-if="col == 'votes' || col == 'vote_count'") {{option.vote_count}}
           td.text-right(v-if="col == 'average'") {{option.average}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}

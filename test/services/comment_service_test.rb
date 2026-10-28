@@ -72,7 +72,7 @@ class CommentServiceTest < ActiveSupport::TestCase
       closing_at: 3.days.from_now,
       poll_option_names: %w[Agree Disagree]
     }, actor: @admin)
-    stance = poll.stances.undecided.find_by!(participant: @user)
+    stance = poll.stances.uncast.find_by!(participant: @user)
     stance.choice = "Agree"
     stance.reason = "My vote"
     StanceService.create(stance: stance, actor: @user)

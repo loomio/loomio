@@ -286,7 +286,7 @@ module.exports = {
     page.expectElement('.poll-common-form__weighted-voting-title ~ .poll-common-form__quorum-title')
     page.expectElement('.poll-common-form__quorum-title ~ .poll-common-form__reminder-title')
     page.click('.poll-settings-anonymous .v-selection-control__wrapper')
-    page.expectText('.poll-common-settings__notify-on-closing-soon', 'Undecided voters')
+    page.expectText('.poll-common-settings__notify-on-closing-soon', "People who haven't voted")
     page.expectElement('.poll-common-settings__notify-on-closing-soon.v-input--disabled')
     page.expectText('.poll-common-settings__hide-results', 'Until voting is closed')
     page.expectElement('.poll-common-settings__hide-results.v-input--disabled')
@@ -331,7 +331,7 @@ module.exports = {
     page.click('.recipients-autocomplete input[type="text"]')
     page.expectText('.v-autocomplete__content', 'Everyone invited to vote')
     page.expectNoText('.v-autocomplete__content', 'Everyone who voted')
-    page.expectNoText('.v-autocomplete__content', 'Undecided voters')
+    page.expectNoText('.v-autocomplete__content', "People who haven't voted")
   },
 
   'shows_migrated_legacy_anonymous_participation_without_vote_reasons': (test) => {
@@ -648,7 +648,7 @@ module.exports = {
   'can_page_and_search_poll_voters': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_scheduled_poll?voter_count=25&weighted=1')
+    page.loadPath('polls/test_scheduled_poll?vote_count=25&weighted=1')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form', 'Manage voters')
     page.expectText('.poll-members-form .help-link', 'User manual')
@@ -683,7 +683,7 @@ module.exports = {
   'confirms_removing_a_poll_voter': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_scheduled_poll?voter_count=4')
+    page.loadPath('polls/test_scheduled_poll?vote_count=4')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form__page-count', '1–4 of 4')
     page.click('.poll-members-form__remove')
@@ -730,7 +730,7 @@ module.exports = {
   'pages_weighted_voters_after_fifty': (test) => {
     page = pageHelper(test)
 
-    page.loadPath('polls/test_many_weighted_voters?voter_count=55')
+    page.loadPath('polls/test_many_weighted_voters?vote_count=55')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form__page-count', '1–50 of 55')
     page.expectText('.poll-members-form__list .v-list-item:first-child', 'Voter 50')

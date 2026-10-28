@@ -112,7 +112,7 @@ de:
     add_guests:
       all: Du musst dein Loomio-Abonnement aktualisieren, um Gäste hinzuzufügen. Alternativ kannst du sie einladen, Mitglieder deiner Gruppe zu werden.
   errors:
-    item_you_are_replying_to_deleted: "Der Eintrag, auf den du antwortest, wurde gelöscht"
+    item_you_are_replying_to_deleted: Der Eintrag, auf den du antwortest, wurde gelöscht
     clear_cache: Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke "Neu laden", oder leere den Browser-Cache.
     400:
       title: Ungültige Anforderung
@@ -202,7 +202,6 @@ de:
       poll_options_dont_match: Ein Fehler in Loomio hat verhindert, dass deine Stimme gespeichert wurde. Wir arbeiten an der Behebung. Bitte lade die Seite neu und versuche es erneut.
       opening_at_before_closing_at: Das Startdatum muss vor dem Enddatum liegen
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) Mitglieder haben ihre Position angegeben."
       title: Titel
       author: Autor
       email: E-Mail
@@ -490,12 +489,8 @@ de:
       not_invited: Nicht eingeladen
       please_respond: Bitte beteilige dich an der Abstimmung!
       time_zone: "(Zeitangaben in %{zone})"
-      undecided_members: Unentschlossene Mitglieder (%{count})
-      undecided_visitors: Unentschlossene Gäste (%{count})
-      more_undecided: Und %{count} mehr...
       vote_now: Jetzt Stimme abgeben
       you_have_until: Du kannst bis %{when} teilnehmen.
-      people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
       voting_opens_and_closes: Die Abstimmung beginnt %{opens} und endet %{closes}. (%{days} Tage)
       voting_closes: Die Abstimmung endet %{when}.
       voting_opened_and_closed: Die Abstimmung begann %{opens} und endete %{closes}. (%{days} Tage)
@@ -814,9 +809,9 @@ de:
     voted: "%{author} hat für %{response} gestimmt"
     voted_hidden: "%{author} hat abgestimmt"
     vote_removed: "%{author}: Stimme entfernt"
-    undecided: "%{author}: noch nicht abgestimmt"
     superseded: ersetzt
     shared_outcome: "%{author} hat ein Fazit geteilt"
     removed: Entfernt
+    not_voted: "%{author}: noch nicht abgestimmt"
   error:
     access_denied: Du hast keine Berechtigung dazu

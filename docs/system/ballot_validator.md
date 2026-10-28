@@ -29,7 +29,7 @@ combined with choices. The concern also applies configured score, choice-count,
 dot-budget, and ranking rules to the complete ballot. Voting-system eligibility,
 stance reasons, and record lifecycle checks remain on their respective models.
 
-An undecided `Stance` is allowed to have no choices. The complete ballot is
+An uncast `Stance` is allowed to have no choices. The complete ballot is
 validated once `cast_at` is present. An `AnonymousBallot` is always a submitted
 ballot and is validated whenever it is saved.
 
@@ -39,8 +39,8 @@ Every entry in `config/poll_types.yml` must declare a `ballot_rule`. There are
 no optional `validate_*` switches. Omitting a rule is invalid configuration;
 it must never mean that validation is skipped.
 
-Scalar defaults such as `min_score`, `max_score`,
-`minimum_stance_choices`, `maximum_stance_choices`, and `dots_per_person`
+Scalar defaults such as `score_min`, `score_max`,
+`choice_count_min`, `choice_count_max`, and `points_per_voter`
 remain under the poll type's `defaults` section. The validator reads the
 effective values from first-class columns on the instantiated poll, falling
 back to the poll-type defaults. Legacy values in `custom_fields` are ignored for
@@ -60,7 +60,7 @@ poll rather than trusting the template that created it.
 | Rule | Poll types | Required invariant |
 | --- | --- | --- |
 | `bounded` | count, check, proposal, meeting, poll, score | Choice count and every score are within the poll's effective bounds |
-| `dot_vote` | dot vote | Bounded choices and scores, with the sum no greater than `dots_per_person` |
+| `dot_vote` | dot vote | Bounded choices and scores, with the sum no greater than `points_per_voter` |
 | `ranked_points` | rank | Exactly the configured number of choices, with scores forming the unique contiguous sequence `1..N` |
 | `ranked_preferences` | STV | Any permitted number of choices, with scores forming the unique contiguous sequence `1..N` |
 | `reason_only` | question | No ballot choices |
@@ -91,7 +91,7 @@ Bounds alone are insufficient for ranked ballots. Values such as `[3, 3, 1]`
 or `[1, 2, 9999]` may fall partly within plausible bounds but do not represent
 a valid ordering. Rank and STV therefore require unique, contiguous scores.
 
-Rank polls use the configured `minimum_stance_choices` as the exact number of
+Rank polls use the configured `choice_count_min` as the exact number of
 ranked options. When `require_all_choices` is enabled, the effective minimum is
 the number of poll options.
 

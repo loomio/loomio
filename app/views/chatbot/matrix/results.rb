@@ -9,7 +9,7 @@ class Views::Chatbot::Matrix::Results < Views::Chatbot::Base
   def view_template
     return if @poll.scheduled?
 
-    if @poll.decided_voters_count > 0 || @poll.closed_at
+    if @poll.vote_count_cast > 0 || @poll.closed_at
       if @poll.results_visible?
         h5 { t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
         if @poll.poll_type == "meeting"
@@ -24,6 +24,6 @@ class Views::Chatbot::Matrix::Results < Views::Chatbot::Base
       end
     end
 
-    render Views::Chatbot::Matrix::Undecided.new(poll: @poll)
+    render Views::Chatbot::Matrix::Uncast.new(poll: @poll)
   end
 end

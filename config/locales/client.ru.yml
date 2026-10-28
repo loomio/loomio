@@ -139,8 +139,8 @@ ru:
     manage_subscription: Управление подпиской
     amount: Количество
   loomio_tags:
-    show_tags_from_other_groups: "Покажите теги из других групп"
-    parent_group_and_subgroups_in_this_organization: "Родительская группа и подгруппы этой организации"
+    show_tags_from_other_groups: Покажите теги из других групп
+    parent_group_and_subgroups_in_this_organization: Родительская группа и подгруппы этой организации
     all_tags: Все теги
     tags: Метки
     apply_tags: Применить метки
@@ -998,10 +998,10 @@ ru:
       everyone_in_the_group: Все в группе
       topic: Все в теме
       voters: Приглашаем всех голосовать
-      decided_voters: Все, кто голосовал
-      undecided_voters: Не проголосовали
       non_voters: Участники %{name} еще не приглашены
       delegates_of_group: Делегаты %{name}
+      everyone_who_voted: Все, кто проголосовал
+      people_who_have_not_voted: Те, кто ещё не проголосовали
     form:
       group_has_no_members_yet: Вы единственный участник своей группы. Возможно, вы захотите пригласить некоторых людей в свою группу, прежде чем начинать обсуждение или принимать решение.
       invite_people_to_evaluate_loomio: Пригласите несколько человек в свою группу Loomio, чтобы вместе принять решение.
@@ -1069,7 +1069,7 @@ ru:
       has_not_read_thread: Не просматривал тему
       has_not_joined_yet: Еще не присоединился
       has_not_joined_yet_hint: Этот пользователь не принял приглашение присоединиться к Loomio и не будет получать дальнейших уведомлений, пока не примет это.
-      discussion_admin: "Администратор темы"
+      discussion_admin: Администратор темы
       has_not_read_discussion: Не просматривал обсуждение
     group_form:
       search_placeholder: Ищите людей...
@@ -1603,7 +1603,7 @@ ru:
     title_helptext:
       group: Этот заголовок появится рядом с именем %{name} в этой группе. Используйте его, чтобы сообщить людям свою роль.
     title_label: заголовок
-    title_placeholder: "Например, «Администратор» или «Ведущий»"
+    title_placeholder: Например, «Администратор» или «Ведущий»
     updated: Название членства обновлено
     weight_label: Вес голоса
   user_name_modal:
@@ -1775,7 +1775,6 @@ ru:
       all: Недавние обсуждения
     thread_preview:
       you_voted: Ваш голос %{position}.
-      undecided: Вы не определились
     threads_from:
       group: Темы из
       pinned: Закрепленные темы
@@ -2290,18 +2289,14 @@ ru:
     started_by: Автор %{name}
   poll_common_votes_panel:
     vote_removed: Голосование удалено
-    undecided: Не проголосовали
     newest_first: Новички вперед
     oldest_first: Сначала старые
     priority_first: Согласитесь сначала
     priority_last: Сначала заблокировать
-    undecided_first: Сначала не проголосовавшие
     no_votes_yet: Голоса еще не поданы.
     change_results_order: Изменить порядок результатов
     none_of_the_above: "(Ни один из вышеперечисленных)"
     name_or_username: Имя или имя пользователя
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Причина удалена
     redact_reason_title: Причина голосования "Замаскировать"?
     redact_reason_helptext: Текст и вложения будут скрыты, но результаты голосования останутся в итоговой таблице.
@@ -2316,15 +2311,6 @@ ru:
     stance: Голосование
     participation_records_restricted: Список участников можно посмотреть после завершения голосования
     vote_weight: Вес голоса %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Показать не проголосовавших (%{count})
-    show_invitations: Показать ожидающие приглашения
-    undecided_users: Не определено (%{count})
-    invitation_count_singular: Еще 1 человек был приглашен к участию по электронной почте
-    invitation_count_plural: "%{count} дополнительных людей были приглашены принять участие по электронной почте."
-  poll_common_undecided_user:
-    reminded: Напоминание отправлено!
-    reminder_sent: Напоминание отправлено
   poll_common_set_outcome_panel:
     enter_outcome: Введите результат
     poll_type: Этот %{poll_type} закрыт. Уделите время обдумыванию результатов, а затем поделитесь ими, чтобы люди знали, что будет дальше.
@@ -2466,9 +2452,9 @@ ru:
     total: Всего
   poll_remove_vote:
     title: Удалить свой голос?
-    helptext: Вы уверены, что хотите удалить свой голос? Вы будете внесены в список не определившихся и сможете проголосовать еще раз позже, если захотите.
     confirm: Удалить голосование
     success: Голосование удалено
+    helptext_not_voted: Удалить ваш голос? Ваш статус изменится на «Не проголосовали», и при желании вы сможете проголосовать снова.
   poll_poll_vote_form:
     stance_created: Голосование создано
     stance_updated: Голосование обновлено
@@ -2828,8 +2814,8 @@ ru:
       voting_title: За 24 часа до окончания голосования отправьте напоминание
       nobody: Никто
       author: Автор (я)
-      undecided_voters: Не проголосовали
       voters: Все избиратели
+      people_who_have_not_voted: Те, кто ещё не проголосовали
     notify_on_participate:
       title: Сообщите мне, когда люди примут участие
       helptext_on: После выбора этого варианта вы будете получать уведомления каждый раз, когда кто-то принимает участие.

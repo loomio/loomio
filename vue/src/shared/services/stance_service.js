@@ -200,7 +200,7 @@ export default new class StanceService {
           },
           text: {
             title: 'poll_remove_vote.title',
-            helptext: 'poll_remove_vote.helptext',
+            helptext: 'poll_remove_vote.helptext_not_voted',
             submit: 'poll_remove_vote.confirm',
             flash: 'poll_remove_vote.success'
           }

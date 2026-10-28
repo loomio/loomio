@@ -15,7 +15,7 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
             when 'pie', 'bar', 'grid'
               th { @poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results") }
             when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
-                 'unweighted_score', 'average', 'stv_status', 'voter_count', 'votes'
+                 'unweighted_score', 'average', 'stv_status', 'vote_count', 'votes'
               th { t(@poll.result_heading_key(col)) }
             when 'voters'
               th
@@ -45,8 +45,8 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
                 td { option[:score].to_s }
               when 'unweighted_score'
                 td { option[:unweighted_score].to_s }
-              when 'voter_count', 'votes'
-                td { option[:voter_count].to_s }
+              when 'vote_count', 'votes'
+                td { option[:vote_count].to_s }
               when 'average'
                 td { option[:average].round.to_s }
               when 'voter_percent'

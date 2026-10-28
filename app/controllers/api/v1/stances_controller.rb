@@ -80,9 +80,9 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
       case params[:stance_filter]
       when 'cast'
-        collection = collection.decided
+        collection = collection.cast
       when 'uncast'
-        collection = collection.undecided
+        collection = collection.uncast
       end
 
       if @poll.results_available?
@@ -101,7 +101,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
   def users
     poll = load_and_authorize(:poll)
     current_user.ability.authorize!(:add_voters, poll)
-    voters = poll.unmasked_voters
+    voters = poll.voters_unmasked
     if query = params[:query].presence
       voters = voters.invitable_search(query)
     end
@@ -120,7 +120,7 @@ class Api::V1::StancesController < Api::V1::RestfulController
 
   def my_stances
     pending_polls = PollQuery.filter(chain: PollQuery.start, params: {status: 'vote'}, user: current_user)
-    self.collection = current_user.stances.latest.undecided.includes({poll: :topic}).joins(:poll)
+    self.collection = current_user.stances.latest.uncast.includes({poll: :topic}).joins(:poll)
                         .where(poll_id: pending_polls.except(:includes).select(:id))
     self.collection = collection.where('polls.topic_id': @discussion.topic_id) if load_and_authorize(:discussion, optional: true)
     self.collection = collection.joins(poll: :topic).where('topics.group_id': @group.id) if load_and_authorize(:group, optional: true)

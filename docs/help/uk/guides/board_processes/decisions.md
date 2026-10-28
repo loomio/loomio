@@ -1,30 +1,24 @@
 ---
 title: Ухвалення рішень
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/guides/board_processes/decisions.md
+source_revision: 44bb4520839557ec23fd64c4d591a1028d6b4434
+source_file: docs/help/en/guides/board_processes/decisions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-28'
 sections:
   introduction: 6c619a2500c9b018
   on-loomio: fd8ae80ddea0ea14
   examples-of-out-of-session-decisions: 6a4d6a8c978bcb11
   decision-about-property-purchase: fff64b1ac620cc4a
-  decision-to-accept-directors-and-officers-liability-insurance: b279ed6b1c5aadfa
   a-security-breach-has-occurred-at-one-of-our-facilities: ca3a40286ca25a9a
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 1d79254c3f3a0ba6
-  keeping-a-record-of-decisions-made-and-supporting-discussion: fe8d98d6b8d50a2a
-  on-loomio-2: 5ef094900505a875
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: c406842807e1091b
 generated:
   introduction: 2f53b9b4fa06652f
   on-loomio: 81338ab48e06ac5c
   examples-of-out-of-session-decisions: 74791caa8c436384
   decision-about-property-purchase: 9706ad24795ffd08
-  decision-to-accept-directors-and-officers-liability-insurance: 4c2bda84f76946a4
   a-security-breach-has-occurred-at-one-of-our-facilities: 668f2ed6c8be3a49
-  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: 881e169ff8077f71
-  keeping-a-record-of-decisions-made-and-supporting-discussion: 993c9f63f1e948fc
-  on-loomio-2: 59f731f782212c98
+  a-director-has-challenged-the-board-about-gender-and-diversity-of-board-membership: a4ef11b54ceb79cb
 title_source: 9a7f398684e7c05f
 title_generated: 1ceda7a272b99d14
 needs_review:
@@ -73,11 +67,6 @@ needs_review:
 ### Рішення про придбання нерухомості
 На останньому засіданні правління обговорювали придбання нерухомості. Один з учасників правління вимагав незалежного інженерного звіту перед ухваленням рішення. На засіданні правління погодилося придбати нерухомість за умови задовільного інженерного звіту. Однак, оскільки придбання має відбутися до наступного засідання, правління домовилося завантажити готовий інженерний звіт до Loomio для обговорення та ухвалення остаточного рішення про придбання нерухомості в Loomio.
 
-<!-- translation-section: decision-to-accept-directors-and-officers-liability-insurance -->
-
-### Рішення про погодження страхування відповідальності директорів і посадових осіб
-На засіданні правління зазначили, що наближається щорічне поновлення страхування. Оскільки це вважалося адміністративним питанням, правління домовилося використати Loomio, щоб обговорити заяву на поновлення, отримати необхідну інформацію від кожного учасника правління, подати заяву та погодити запропоновані умови поновлення страхування.
-
 <!-- translation-section: a-security-breach-has-occurred-at-one-of-our-facilities -->
 
 ### На одному з наших об’єктів сталося порушення безпеки
@@ -87,36 +76,3 @@ needs_review:
 
 ### Учасник правління порушив питання гендерного балансу та різноманітності складу правління
 Учасник правління навів вагомі аргументи та докази того, що склад правління слід урізноманітнити, щоб він краще представляв організацію. Учасникам правління потрібно опрацювати інформацію, поставити запитання, обговорити питання та вирішити, як діяти.
-
-![](thread_insurance.png#width-90)
-
-<!-- translation-section: keeping-a-record-of-decisions-made-and-supporting-discussion -->
-
-## Збереження записів про ухвалені рішення та пов’язані обговорення
-
-Ведення документації є законодавчою вимогою для правлінь і належною практикою для комітетів.
-
-Сьогодні багато організацій оформлюють і зберігають офіційні протоколи, постанови, політики та ключові рішення в електронному вигляді. Документи створюють і затверджують, поширюють і використовують, залишають на зберігання, а зрештою знищують.
-
-<!-- translation-section: on-loomio-2 -->
-
-### У Loomio
-Протоколи, звіти, постанови та інші документи можна додавати до **теми** засідання: у контексті теми, в опитуванні або в будь-якому коментарі теми. Завдяки цьому документи завжди пов’язані з відповідним обговоренням.
-
-Список файлів також доступний на вкладці **Файли**.
-
-![](files_tab.png#width-90)
-
-Ви також можете додати до будь-якої теми або опитування посилання на документ, що зберігається у вашій системі керування документами. Знайдіть посилання для спільного доступу до документа, скопіюйте його та вставте у свою тему, опитування або коментар.
-
-Кожен, хто має дозвіл на доступ, зможе натиснути посилання, щоб відкрити та прочитати документ.
-
-![](thread_link.png#width-90)
-
-Оскільки обговорення та рішення в Loomio вже задокументовані, ви можете надійно перевірити весь процес ухвалення рішень вашим правлінням. Ви можете легко показати, що й коли було вирішено. Якщо учасники правління обговорювали питання, залишали коментарі та голосували за рішення, ви також знатимете, як і чому кожне рішення було ухвалено.
-
-З часом ви створюєте історію своєї організації, у якій можна легко шукати та знаходити попередні рішення й пов’язані обговорення.
-
-![](thread_search.png#width-90)
-
-У Loomio всі дані записуються та зберігаються на кількох дисках у кількох місцях, *у хмарі*, а резервні копії створюються щодня. Завантажені файли зберігаються на серверах, які використовують сучасні технології для усунення вузьких місць і точок відмови.

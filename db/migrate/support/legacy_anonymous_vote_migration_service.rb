@@ -37,7 +37,7 @@ class LegacyAnonymousVoteMigrationService
   def self.audit(poll:)
     poll.with_lock do
       validate_preconditions!(poll)
-      current_stances = poll.stances.latest.decided.to_a
+      current_stances = poll.stances.latest.cast.to_a
       {
         poll_id: poll.id,
         votes: current_stances.length,
@@ -59,7 +59,7 @@ class LegacyAnonymousVoteMigrationService
       LegacyAnonymousVoteMigrationCleanupService.remove_cross_poll_stance_choices!(poll: poll)
       poll.reload
 
-      stances = poll.stances.latest.decided.order(:id).includes(:stance_choices).to_a
+      stances = poll.stances.latest.cast.order(:id).includes(:stance_choices).to_a
       stance_ids = poll.stances.pluck(:id)
       baseline = snapshot(poll, stances)
       ballot_ids_by_stance_id = stances.to_h do |stance|
@@ -145,7 +145,7 @@ class LegacyAnonymousVoteMigrationService
       vote_count: stances.length,
       ballot_count: stances.sum { |stance| ballot_count_for_stance(stance) },
       voter_count: poll.voters_count,
-      undecided_voter_count: poll.undecided_voters_count,
+      vote_count_uncast: poll.undecided_voters_count,
       none_of_the_above_count: stances.count(&:none_of_the_above?),
       option_data: option_data_from_stances(stances),
       option_voter_counts: poll.poll_options.to_h { |option| [ option.id, option.voter_count ] },
@@ -327,17 +327,18 @@ class LegacyAnonymousVoteMigrationService
       voting_system: 1,
       hide_results: Poll.hide_results.fetch("until_closed"),
       stance_reason_required: Poll.stance_reason_requireds.fetch("disabled"),
-      notify_on_closing_soon: Poll.notify_on_closing_soons.fetch("undecided_voters")
+      notify_on_closing_soon: Poll.notify_on_closing_soons.fetch("voters_uncast")
     )
     poll.reload
     poll.poll_options.each do |option|
       option.update_counts!
       option.update_columns(voter_count: baseline[:option_voter_counts].fetch(option.id))
     end
+    # This conversion runs before the participation column rename migration.
     poll.update_columns(
       stance_counts: poll.poll_options.reload.map(&:total_score),
       voters_count: baseline[:voter_count],
-      undecided_voters_count: baseline[:undecided_voter_count],
+      undecided_voters_count: baseline[:vote_count_uncast],
       none_of_the_above_count: baseline[:none_of_the_above_count]
     )
   end

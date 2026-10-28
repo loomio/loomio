@@ -33,10 +33,10 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   def poll_extra_config(poll_type)
     case poll_type.to_s
-    when 'dot_vote' then {dots_per_person: 10}
+    when 'dot_vote' then {points_per_voter: 10}
     when 'meeting' then {time_zone: 'Asia/Seoul', can_respond_maybe: true}
-    when 'ranked_choice' then {minimum_stance_choices: 3}
-    when 'score' then {max_score: 9, min_score: 0}
+    when 'ranked_choice' then {choice_count_min: 3}
+    when 'score' then {score_max: 9, score_min: 0}
     else {}
     end
   end
@@ -81,7 +81,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
-    choice = poll.poll_options.limit(poll.minimum_stance_choices).map.with_index do |option, i|
+    choice = poll.poll_options.limit(poll.choice_count_min).map.with_index do |option, i|
       [option.name, fake_score(poll, i)]
     end.to_h
     stance.update!(choice: choice, cast_at: Time.current)

@@ -139,8 +139,8 @@ el:
     manage_subscription: Διαχείριση συνδρομής
     amount: Ποσό
   loomio_tags:
-    show_tags_from_other_groups: "Εμφανίστε ετικέτες από άλλες ομάδες"
-    parent_group_and_subgroups_in_this_organization: "Γονική ομάδα και υποομάδες αυτού του οργανισμού"
+    show_tags_from_other_groups: Εμφανίστε ετικέτες από άλλες ομάδες
+    parent_group_and_subgroups_in_this_organization: Γονική ομάδα και υποομάδες αυτού του οργανισμού
     all_tags: Όλες οι ετικέτες
     tags: Ετικέτες
     apply_tags: Εφαρμογή ετικετών
@@ -998,10 +998,10 @@ el:
       everyone_in_the_group: Όλοι στην ομάδα
       topic: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
-      decided_voters: Όλοι όσοι ψήφισαν
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
       non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
       delegates_of_group: Εκπρόσωποι του %{name}
+      everyone_who_voted: Όλοι όσοι ψήφισαν
+      people_who_have_not_voted: Όσοι δεν έχουν ψηφίσει
     form:
       group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
       invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
@@ -1069,7 +1069,7 @@ el:
       has_not_read_thread: Δεν έχει δει το νήμα
       has_not_joined_yet: Δεν έχει εγγραφεί ακόμα
       has_not_joined_yet_hint: Αυτός ο χρήστης δεν έχει αποδεχτεί την πρόσκλησή του να εγγραφεί στο Loomio και δεν θα λάβει περαιτέρω ειδοποιήσεις μέχρι να το κάνει
-      discussion_admin: "Διαχειριστής νήματος"
+      discussion_admin: Διαχειριστής νήματος
       has_not_read_discussion: Δεν έχει δει τη συζήτηση
     group_form:
       search_placeholder: Αναζήτηση ατόμων...
@@ -1603,7 +1603,7 @@ el:
     title_helptext:
       group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη %{name} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
     title_label: τίτλος
-    title_placeholder: "Π.χ. «Διαχειριστής» ή «Διευκολυντής»"
+    title_placeholder: Π.χ. «Διαχειριστής» ή «Διευκολυντής»
     updated: Ο τίτλος μέλους ενημερώθηκε
     weight_label: Βάρος ψήφου
   user_name_modal:
@@ -1770,7 +1770,6 @@ el:
       all: Πρόσφατες συζητήσεις
     thread_preview:
       you_voted: Ψηφίσατε %{position}
-      undecided: Δεν έχετε ψηφίσει
     threads_from:
       group: Νήματα από
       pinned: Καρφιτσωμένες κλωστές
@@ -2290,18 +2289,14 @@ el:
     started_by: Ξεκίνησε από %{name}
   poll_common_votes_panel:
     vote_removed: Η ψήφος καταργήθηκε
-    undecided: Δεν έχουν ψηφίσει
     newest_first: Πρώτα τα νεότερα
     oldest_first: Πρώτα τα πιο παλιά
     priority_first: Συμφωνώ πρώτα
     priority_last: Μπλοκάρω πρώτα
-    undecided_first: Πρώτα όσοι δεν έχουν ψηφίσει
     no_votes_yet: Δεν έχουν τεθεί ακόμη ψήφοι.
     change_results_order: Αλλαγή σειράς αποτελεσμάτων
     none_of_the_above: "(Κανένα από τα παραπάνω)"
     name_or_username: Όνομα ή όνομα χρήστη
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Ο λόγος διορθώθηκε
     redact_reason_title: Λόγος διαγραφής ψήφου;
     redact_reason_helptext: Ο λόγος για τον οποίο το κείμενο και τα συνημμένα θα αποκρύπτονται, αλλά η ψήφος θα παραμείνει στα αποτελέσματα
@@ -2316,15 +2311,6 @@ el:
     stance: Ψήφος
     participation_records_restricted: Μπορείτε να δείτε ποιοι συμμετείχαν μετά το τέλος της ψηφοφορίας
     vote_weight: Βάρος ψήφου %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Εμφάνιση %{count} αναποφάσιστων
-    show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
-    undecided_users: Δεν έχουν ψηφίσει (%{count})
-    invitation_count_singular: 1 επιπλέον άτομο έχει προσκληθεί να συμμετάσχει μέσω email
-    invitation_count_plural: "%{count} επιπλέον άτομα έχουν προσκληθεί να συμμετάσχουν μέσω email"
-  poll_common_undecided_user:
-    reminded: Η υπενθύμιση στάλθηκε!
-    reminder_sent: Η ειδοποίηση υπενθύμισης εστάλη
   poll_common_set_outcome_panel:
     enter_outcome: Εισαγάγετε το αποτέλεσμα
     poll_type: Αυτό το %{poll_type} έκλεισε. Αφιερώστε χρόνο για να εξετάσετε τα αποτελέσματα και, στη συνέχεια, μοιραστείτε ένα συμπέρασμα, ώστε οι άνθρωποι να γνωρίζουν τι θα συμβεί στη συνέχεια.
@@ -2466,9 +2452,9 @@ el:
     total: Σύνολο
   poll_remove_vote:
     title: Να καταργηθεί η ψήφος σας;
-    helptext: Είστε βέβαιοι ότι θέλετε να καταργήσετε την ψήφο σας; Θα καταχωρηθείτε ως αναποφάσιστοι και μπορείτε να ψηφίσετε ξανά αργότερα, εάν το επιθυμείτε.
     confirm: Κατάργηση ψήφου
     success: Η ψήφος καταργήθηκε
+    helptext_not_voted: Θέλετε σίγουρα να καταργήσετε την ψήφο σας; Η κατάστασή σας θα γίνει “Δεν έχετε ψηφίσει” και μπορείτε να ψηφίσετε ξανά αργότερα αν θέλετε.
   poll_poll_vote_form:
     stance_created: Η ψηφοφορία δημιουργήθηκε
     stance_updated: Η ψηφοφορία ενημερώθηκε
@@ -2828,8 +2814,8 @@ el:
       voting_title: 24 ώρες πριν από το κλείσιμο της ψηφοφορίας, στείλτε μια υπενθύμιση στο
       nobody: Κανείς
       author: Συγγραφέας (εγώ)
-      undecided_voters: Αναποφάσιστοι ψηφοφόροι
       voters: Όλοι οι ψηφοφόροι
+      people_who_have_not_voted: Όσοι δεν έχουν ψηφίσει
     notify_on_participate:
       title: Ειδοποίησέ με όταν συμμετάσχουν άτομα
       helptext_on: Όταν επιλεγείτε, θα ειδοποιηθείτε κάθε φορά που κάποιος συμμετέχει.

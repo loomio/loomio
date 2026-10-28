@@ -112,7 +112,7 @@ da:
     add_guests:
       all: Du skal opgradere dit Loomio-abonnement for at tilføje gæster. Alternativt kan du invitere dem til at være medlemmer af din gruppe.
   errors:
-    item_you_are_replying_to_deleted: "Det element, du svarer på, er blevet slettet"
+    item_you_are_replying_to_deleted: Det element, du svarer på, er blevet slettet
     clear_cache: Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache.
     404:
       title: Ingen resultater fundet
@@ -197,7 +197,6 @@ da:
       poll_options_dont_match: En fejl med Loomio forhindrede din stemme i at blive gemt. Vi arbejder på at løse dette. Genindlæs venligst og prøv igen.
       opening_at_before_closing_at: Åbningsdatoen skal være før lukkedatoen
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
       title: Titel
       author: Forfatter
       email: Email
@@ -464,12 +463,8 @@ da:
       not_invited: Ikke inviteret
       please_respond: Svar venligst
       time_zone: "(Tider er vist i %{zone})"
-      undecided_members: Ubesluttede medlemmer (%{count})
-      undecided_visitors: Ubeslutsomme gæster (%{count})
-      more_undecided: "%{count} mere..."
       vote_now: Stem nu
       you_have_until: Du har indtil %{when} til at deltage.
-      people_have_voted: "%{nom} af %{dnom} personer har deltaget (%{pct}%)"
       voting_opens_and_closes: Afstemningen åbner %{opens} og lukker %{closes}. (%{days} dage)
       voting_closes: Afstemningen lukker %{when}.
       voting_opened_and_closed: Afstemningen åbnede %{opens} og lukkede %{closes}. (%{days} dage)
@@ -788,9 +783,9 @@ da:
     voted: "%{author} stemte %{response}"
     voted_hidden: "%{author} stemte"
     vote_removed: "%{author}: stemme fjernet"
-    undecided: "%{author}: ikke stemt"
     superseded: erstattet
     shared_outcome: "%{author} delte en konklusion"
     removed: Fjernet
+    not_voted: "%{author}: ikke stemt"
   error:
     access_denied: Du har ikke tilladelse til at gøre det

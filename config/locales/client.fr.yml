@@ -147,8 +147,8 @@ fr:
     manage_subscription: Gérer l’abonnement
     amount: Montant
   loomio_tags:
-    show_tags_from_other_groups: "Afficher les tags des autres groupes"
-    parent_group_and_subgroups_in_this_organization: "Groupe parent et sous-groupes de cette organisation"
+    show_tags_from_other_groups: Afficher les tags des autres groupes
+    parent_group_and_subgroups_in_this_organization: Groupe parent et sous-groupes de cette organisation
     all_tags: Tous les mots-clés
     tags: Mots-clés
     apply_tags: Appliquer les mots-clés
@@ -1008,10 +1008,10 @@ fr:
       everyone_in_the_group: Tout le monde dans le groupe
       topic: Participants à la discussion
       voters: Participants invités à voter
-      decided_voters: Tous ceux qui ont voté
-      undecided_voters: Électeurs en attente
       non_voters: Les membres de %{name} n'ont pas encore été invités
       delegates_of_group: Délégués de %{name}
+      everyone_who_voted: Toutes les personnes ayant voté
+      people_who_have_not_voted: Personnes en attente de vote
     form:
       group_has_no_members_yet: Vous êtes le seul membre de votre groupe. Vous souhaiterez peut-être inviter certaines personnes dans votre groupe avant de démarrer un fil de discussion ou une décision.
       invite_people_to_evaluate_loomio: Inviter des personnes dans votre groupe Loomio pour prendre une décision ensemble
@@ -1083,7 +1083,7 @@ fr:
       has_not_read_thread: N’a pas thread vu
       has_not_joined_yet: N'a pas encore rejoint
       has_not_joined_yet_hint: Cet utilisateur n'a pas accepté son invitation à rejoindre Loomio et ne recevra pas d'autres notifications tant qu'il ne l'aura pas fait.
-      discussion_admin: "Discussion admin"
+      discussion_admin: Discussion admin
       has_not_read_discussion: N'a pas consulté la discussion
     group_form:
       search_placeholder: Chercher des personnes...
@@ -1638,7 +1638,7 @@ fr:
     title_helptext:
       group: Ce rôle apparaîtra après le nom de %{name} dans ce groupe. Utilisez-le pour informer les personnes de leur rôle.
     title_label: rôle
-    title_placeholder: "Par exemple, « Administrateur » ou « Facilitateur »"
+    title_placeholder: Par exemple, « Administrateur » ou « Facilitateur »
     updated: Rôle mis à jour
     weight_label: Poids du vote
   user_name_modal:
@@ -1810,7 +1810,6 @@ fr:
       all: Discussions récentes
     thread_preview:
       you_voted: Vous avez voté %{position}
-      undecided: Vous n’avez pas pris de décision
     threads_from:
       group: Discussions depuis
       pinned: Discussions épinglées
@@ -2332,18 +2331,14 @@ fr:
     started_by: Démarré par %{name}
   poll_common_votes_panel:
     vote_removed: Vote supprimé
-    undecided: En attente
     newest_first: Les plus récents en premier
     oldest_first: Les plus anciens en premier
     priority_first: Accord en premier
     priority_last: Bloquer en premier
-    undecided_first: En attente d’abord
     no_votes_yet: Aucun vote n’a été enregistré.
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: "(Aucun des choix ci-dessus)"
     name_or_username: Nom ou nom d'utilisateur
-    cast: Exprimés
-    uncast: Non exprimés
     reason_redacted: Motif masqué
     redact_reason_title: Réduire la raison du vote ?
     redact_reason_helptext: Le texte et les pièces jointes seront masqués, mais le vote restera dans les résultats.
@@ -2358,15 +2353,6 @@ fr:
     stance: Vote
     participation_records_restricted: Vous pourrez voir qui a participé après la clôture du vote
     vote_weight: Poids du vote %{weight}
-  poll_common_undecided_panel:
-    show_undecided: Afficher les %{count} en attente
-    show_invitations: Montrer les invitations en attente
-    undecided_users: En attente (%{count})
-    invitation_count_singular: 1 autre personne a été invitée à participer par courriel
-    invitation_count_plural: "%{count} autres personnes ont été invitées à participer par courriel"
-  poll_common_undecided_user:
-    reminded: Rappel envoyé !
-    reminder_sent: Notification de rappel envoyée
   poll_common_set_outcome_panel:
     enter_outcome: Saisir une conclusion
     poll_type: Ce %{poll_type} est fermé. Prenez le temps d’examiner les résultats, puis partagez la conclusion afin que les gens sachent ce qui se passera ensuite.
@@ -2508,9 +2494,9 @@ fr:
     total: Total
   poll_remove_vote:
     title: Supprimer votre vote?
-    helptext: Êtes-vous sûr de vouloir supprimer votre vote ? Vous serez inscrit comme en attente et pourrez voter à nouveau plus tard si vous le souhaitez.
     confirm: Supprimer vote
     success: Vote supprimé
+    helptext_not_voted: Voulez-vous vraiment supprimer votre vote ? Votre statut sera “En attente” et vous pourrez voter à nouveau plus tard si vous le souhaitez.
   poll_poll_vote_form:
     stance_created: Vote créé
     stance_updated: Vote mis à jour
@@ -2872,8 +2858,8 @@ fr:
       voting_title: 24 heures avant la clôture du vote, envoyez un rappel à
       nobody: Personne
       author: Auteur (moi)
-      undecided_voters: Les électeurs en attente
       voters: Tous les électeurs
+      people_who_have_not_voted: Personnes en attente de vote
     notify_on_participate:
       title: Prévenir-moi lorsque des personnes participent
       helptext_on: Une fois sélectionné, vous serez averti chaque fois que quelqu'un participera.

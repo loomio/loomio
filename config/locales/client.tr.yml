@@ -139,8 +139,8 @@ tr:
     manage_subscription: Aboneliği Yönet
     amount: Miktar
   loomio_tags:
-    show_tags_from_other_groups: "Diğer gruplardaki etiketleri göster"
-    parent_group_and_subgroups_in_this_organization: "Bu kuruluştaki ana grup ve alt gruplar"
+    show_tags_from_other_groups: Diğer gruplardaki etiketleri göster
+    parent_group_and_subgroups_in_this_organization: Bu kuruluştaki ana grup ve alt gruplar
     all_tags: Tüm etiketler
     tags: Etiketler
     apply_tags: Etiketleri uygula
@@ -998,10 +998,10 @@ tr:
       everyone_in_the_group: Gruptaki herkes
       topic: Konudaki herkes
       voters: Herkes oy kullanmaya davet edildi
-      decided_voters: Oy veren herkes
-      undecided_voters: Henüz oy vermeyen seçmenler
       non_voters: "%{name} üyeleri henüz davet edilmedi"
       delegates_of_group: "%{name} temsilcileri"
+      everyone_who_voted: Oy veren herkes
+      people_who_have_not_voted: Henüz oy vermeyenler
     form:
       group_has_no_members_yet: Grubunuzun tek üyesi sizsiniz. Bir konuya veya karara başlamadan önce bazı kişileri grubunuza davet etmek isteyebilirsiniz.
       invite_people_to_evaluate_loomio: Birlikte karar vermeleri için birkaç kişiyi Loomio grubunuza davet edin
@@ -1069,7 +1069,7 @@ tr:
       has_not_read_thread: Konuyu görüntülemedi
       has_not_joined_yet: Henüz katılmadı
       has_not_joined_yet_hint: Bu kullanıcı, Loomio'ya katılma davetini kabul etmemiştir ve kabul edene kadar başka bildirim almayacaktır.
-      discussion_admin: "Konu yöneticisi"
+      discussion_admin: Konu yöneticisi
       has_not_read_discussion: Tartışmayı görüntülemedi
     group_form:
       search_placeholder: İnsanları arayın...
@@ -1603,7 +1603,7 @@ tr:
     title_helptext:
       group: Bu başlık, bu grup içinde %{name}'nin adının yanında görünecek. İnsanların rollerini bilmelerini sağlamak için bunu kullanın.
     title_label: başlık
-    title_placeholder: "Örneğin “Yönetici” veya “Kolaylaştırıcı”"
+    title_placeholder: Örneğin “Yönetici” veya “Kolaylaştırıcı”
     updated: Üyelik başlığı güncellendi
     weight_label: Oy ağırlığı
   user_name_modal:
@@ -1775,7 +1775,6 @@ tr:
       all: Son Tartışmalar
     thread_preview:
       you_voted: "%{position} için oy verdiniz"
-      undecided: kararsızsın
     threads_from:
       group: tarafından müzakereler
       pinned: Sabitlenmiş konular
@@ -2290,18 +2289,14 @@ tr:
     started_by: "%{name} tarafından başlatıldı"
   poll_common_votes_panel:
     vote_removed: Oy kaldırıldı
-    undecided: Henüz oy vermedi
     newest_first: En yeni ilk
     oldest_first: Önce en eski
     priority_first: İlk önce katılıyorum
     priority_last: Önce engelle
-    undecided_first: İlk önce kararsızım
     no_votes_yet: Henüz oy verilmedi.
     change_results_order: Sonuçların sırasını değiştir
     none_of_the_above: "(Yukarıdakilerin hiçbiri)"
     name_or_username: Ad veya kullanıcı adı
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Sebep gizlendi
     redact_reason_title: Oy verme gerekçesini gizle?
     redact_reason_helptext: Metin ve ekler gizlenecek, ancak oy sonuçlarda görünecektir.
@@ -2316,15 +2311,6 @@ tr:
     stance: Oy
     participation_records_restricted: Oy verme işlemi sona erdikten sonra kimlerin katıldığını görebilirsiniz
     vote_weight: Oy ağırlığı %{weight}
-  poll_common_undecided_panel:
-    show_undecided: "%{count} kararsızı göster"
-    show_invitations: Bekleyen Davetiyeleri Göster
-    undecided_users: Henüz oy vermedi (%{count})
-    invitation_count_singular: 1 kişi daha e-posta yoluyla katılmaya davet edildi
-    invitation_count_plural: "%{count} kişi daha e-posta yoluyla katılmaya davet edildi"
-  poll_common_undecided_user:
-    reminded: hatırlatıcı gönderildi!
-    reminder_sent: Hatırlatma bildirimi gönderildi
   poll_common_set_outcome_panel:
     enter_outcome: Kararı girin
     poll_type: Bu %{poll_type} kapandı. Sonuçları düşünmeye zaman ayırın ve ardından sonucu paylaşın, böylece insanlar bundan sonra ne olacağını bilsin.
@@ -2466,9 +2452,9 @@ tr:
     total: Toplam
   poll_remove_vote:
     title: Oyunuz kaldırılsın mı?
-    helptext: Oyunuzu kaldırmak istediğinizden emin misiniz? Henüz oy vermemiş olarak listeleneceksiniz ve dilerseniz daha sonra tekrar oy verebileceksiniz.
     confirm: Oyu kaldır
     success: Oy kaldırıldı
+    helptext_not_voted: Oyunuzu kaldırmak istediğinizden emin misiniz? Durumunuz “Henüz oy vermedi” olacak ve isterseniz daha sonra yeniden oy verebilirsiniz.
   poll_poll_vote_form:
     stance_created: Oy oluşturuldu
     stance_updated: Oy güncellendi
@@ -2825,8 +2811,8 @@ tr:
       voting_title: Oylama kapanmadan 24 saat önce, bir hatırlatma gönderin
       nobody: Hiç kimse
       author: Yazar (ben)
-      undecided_voters: Henüz oy vermeyen seçmenler
       voters: Tüm seçmenler
+      people_who_have_not_voted: Henüz oy vermeyenler
     notify_on_participate:
       title: İnsanlar katıldığında bana haber ver
       helptext_on: Seçildiğinizde, birisi katıldığında size bildirim gönderilecektir.

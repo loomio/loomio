@@ -161,8 +161,8 @@ be:
     manage_subscription: Кіраванне падпіскай
     amount: Сума
   loomio_tags:
-    show_tags_from_other_groups: "Паказаць тэгі з іншых груп"
-    parent_group_and_subgroups_in_this_organization: "Бацькоўская група і падгрупы гэтай арганізацыі"
+    show_tags_from_other_groups: Паказаць тэгі з іншых груп
+    parent_group_and_subgroups_in_this_organization: Бацькоўская група і падгрупы гэтай арганізацыі
     all_tags: Усе тэгі
     show_all_tags_in_organization: Паказаць усе тэгі ў арганізацыі
     show_tags_used_in_this_group: Паказаць тэгі, якія выкарыстоўваюцца ў гэтай групе
@@ -1059,10 +1059,10 @@ be:
       delegates_of_group: Дэлегаты %{name}
       everyone_in_the_group: Усе ў групе
       voters: Усіх запрашаюць галасаваць
-      decided_voters: Усе, хто галасаваў
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
       non_voters: Удзельнікі %{name} пакуль не запрошаны
       topic: Усе ў трэдзе
+      everyone_who_voted: Усе, хто прагаласавалі
+      people_who_have_not_voted: Тыя, хто яшчэ не прагаласавалі
     form:
       group_has_no_members_yet: Вы адзіны ўдзельнік вашай групы. Перш чым пачынаць абмеркаванне або прымаць рашэнне, магчыма, варта запрасіць у групу некалькіх людзей.
       invite_people_to_evaluate_loomio: Запрасіце некалькіх людзей у сваю групу Loomio, каб разам прыняць рашэнне
@@ -1125,7 +1125,7 @@ be:
       not_notified: Пакуль не апавешчана
       no_members: Гэтым пакуль ні з кім не падзяліліся!
       group_admin: Адміністратар групы
-      discussion_admin: "Адміністратар тэмы"
+      discussion_admin: Адміністратар тэмы
       thread_admin: Адміністратар тэмы
       last_read_at: Апошні прагляд %{time}
       has_not_read_discussion: Не праглядаў абмеркаванне
@@ -1704,7 +1704,7 @@ be:
     title_helptext:
       group: Гэты тытул будзе адлюстроўвацца побач з імем %{name} у гэтай групе. Выкарыстоўвайце яго, каб паведаміць людзям яго ролю.
     title_label: тытул
-    title_placeholder: "Напрыклад, «Адміністратар» або «Фасілітатар»"
+    title_placeholder: Напрыклад, «Адміністратар» або «Фасілітатар»
     updated: Назва членства абноўлена
     weight_label: Вага голасу
   user_name_modal:
@@ -1884,7 +1884,6 @@ be:
       muted_description: Праглядзець толькі тэмы, якія былі адключаны
     thread_preview:
       you_voted: Вы прагаласавалі %{position}
-      undecided: Ты не вызначыўся
     threads_from:
       group: Тэмы з
       pinned: Замацаваныя тэмы
@@ -2406,8 +2405,8 @@ be:
       voting_title: За 24 гадзіны да заканчэння галасавання дашліце напамін
       nobody: Ніхто
       author: Аўтар (я)
-      undecided_voters: Выбаршчыкі, якія не прагаласавалі
       voters: Усе выбаршчыкі
+      people_who_have_not_voted: Тыя, хто яшчэ не прагаласавалі
     notify_on_participate:
       title: Паведамляць мне, калі людзі ўдзельнічаюць
       helptext_on: Пасля таго, як хтосьці будзе абраны, вы будзеце атрымліваць апавяшчэнні кожны раз, калі ён пачне ўдзельнічаць.
@@ -2459,8 +2458,6 @@ be:
     poll_type_by_name: "%{poll_type} ад %{name}"
     started_by: Пачата %{name}
   poll_common_votes_panel:
-    cast: У ролях
-    uncast: Нетрансліравана
     vote_removed: Голас выдалены
     reason_redacted: Прычына выдалена
     redact_reason_title: Выкрасліць прычыну галасавання?
@@ -2471,12 +2468,10 @@ be:
     unredact_reason_helptext: Прычына, па якой тэкст і ўкладанні зноў будуць бачнымі
     unredact_reason_confirm: Прычына аднаўлення
     unredact_reason_success: Прычына галасавання адноўлена
-    undecided: Не вызначыўся
     newest_first: Спачатку найноўшыя
     oldest_first: Спачатку найстарэйшыя
     priority_first: Спачатку пагадзіся
     priority_last: Спачатку блакаванне
-    undecided_first: Спачатку тыя, хто не прагаласаваў
     no_votes_yet: Пакуль што не было аддадзена ніякіх галасоў.
     change_results_order: Змяніць парадак вынікаў
     name_or_username: Імя або імя карыстальніка
@@ -2494,15 +2489,6 @@ be:
     opening_at: Адкрыццё ў
     closed_at: Закрыта ў
     closing_at: Закрыццё ў
-  poll_common_undecided_panel:
-    show_undecided: Паказаць %{count} нявызначаных
-    show_invitations: Паказаць запрашэнні, якія чакаюць разгляду
-    undecided_users: Не прагаласавалі (%{count})
-    invitation_count_singular: Яшчэ 1 чалавек быў запрошаны да ўдзелу па электроннай пошце
-    invitation_count_plural: Дадатковыя ўдзельнікі (%{count}) былі запрошаны да ўдзелу па электроннай пошце
-  poll_common_undecided_user:
-    reminded: Напамін адпраўлены!
-    reminder_sent: Паведамленне аб напамінанні адпраўлена
   poll_common_set_outcome_panel:
     enter_an_outcome: Увядзіце выснову
     poll_type: Гэты %{poll_type} закрыты. Абдумайце вынікі галасавання, а затым падзяліцеся высновай, каб людзі ведалі, што будзе далей.
@@ -2794,9 +2780,9 @@ be:
     total: Усяго
   poll_remove_vote:
     title: Зняць свой голас?
-    helptext: Вы ўпэўненыя, што хочаце выдаліць свой голас? Вы будзеце пазначаны як нявызначаны і зможаце прагаласаваць зноў пазней, калі захочаце.
     confirm: Выдаліць голас
     success: Голас выдалены
+    helptext_not_voted: Вы ўпэўнены, што хочаце выдаліць свой голас? Ваш статус зменіцца на “Не прагаласавалі”, і вы зможаце прагаласаваць зноў пазней, калі захочаце.
   poll_poll_vote_form:
     stance_created: Голас створаны
     stance_updated: Галасаванне абноўлена

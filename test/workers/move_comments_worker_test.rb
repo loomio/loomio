@@ -78,7 +78,7 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
       topic_id: @source.topic_id
     }, actor: @admin)
 
-    stance = poll.stances.undecided.find_by(participant_id: @user.id, latest: true)
+    stance = poll.stances.uncast.find_by(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     StanceService.create(stance: stance, actor: @user)
 

@@ -14,12 +14,12 @@ count:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    min_score: 1
-    max_score: 1
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
+    score_min: 1
+    score_max: 1
+    choice_count_min: 1
+    choice_count_max: 1
     agree_target: 5
-    dots_per_person: 1
+    points_per_voter: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
   common_poll_options:
@@ -53,12 +53,12 @@ check:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: pie
-    min_score: 1
-    max_score: 1
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
+    score_min: 1
+    score_max: 1
+    choice_count_min: 1
+    choice_count_max: 1
     agree_target: 5
-    dots_per_person: 1
+    points_per_voter: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
   common_poll_options:
@@ -99,11 +99,11 @@ question:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: none
-    min_score: 0
-    max_score: 0
-    minimum_stance_choices: 0
-    maximum_stance_choices: 0
-    dots_per_person: 0
+    score_min: 0
+    score_max: 0
+    choice_count_min: 0
+    choice_count_max: 0
+    points_per_voter: 0
     default_duration_in_days: 7
     stance_reason_required: 2
     notify_on_closing_soon: 2
@@ -218,11 +218,11 @@ proposal:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: pie
-    min_score: 1
-    max_score: 1
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
-    dots_per_person: 1
+    score_min: 1
+    score_max: 1
+    choice_count_min: 1
+    choice_count_max: 1
+    points_per_voter: 1
     default_duration_in_days: 7
     notify_on_closing_soon: 2
 
@@ -245,8 +245,8 @@ meeting:
     meeting_duration: 60
     poll_option_name_format: iso8601
     chart_type: grid
-    min_score: 0
-    max_score: 2
+    score_min: 0
+    score_max: 2
     default_duration_in_days: 3
     can_respond_maybe: true
     notify_on_closing_soon: 2
@@ -270,10 +270,10 @@ poll:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    min_score: 1
-    max_score: 1
-    minimum_stance_choices: 1
-    maximum_stance_choices: 1
+    score_min: 1
+    score_max: 1
+    choice_count_min: 1
+    choice_count_max: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
 
@@ -293,9 +293,9 @@ dot_vote:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    dots_per_person: 8
-    min_score: 0
-    minimum_stance_choices: 0
+    points_per_voter: 8
+    score_min: 0
+    choice_count_min: 0
     default_duration_in_days: 3
     notify_on_closing_soon: 2
 
@@ -315,9 +315,9 @@ score:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    min_score: 0
-    max_score: 5
-    minimum_stance_choices: 1
+    score_min: 0
+    score_max: 5
+    choice_count_min: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
 
@@ -339,8 +339,8 @@ ranked_choice:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    minimum_stance_choices: 3
-    min_score: 1
+    choice_count_min: 3
+    score_min: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
 
@@ -363,6 +363,6 @@ stv:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    min_score: 1
+    score_min: 1
     default_duration_in_days: 7
     notify_on_closing_soon: 2

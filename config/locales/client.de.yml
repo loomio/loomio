@@ -145,8 +145,8 @@ de:
     manage_subscription: Manage Subscription
     amount: Menge
   loomio_tags:
-    show_tags_from_other_groups: "Schlagwörter anderer Gruppen anzeigen"
-    parent_group_and_subgroups_in_this_organization: "Hauptgruppe und Untergruppen in dieser Organisation"
+    show_tags_from_other_groups: Schlagwörter anderer Gruppen anzeigen
+    parent_group_and_subgroups_in_this_organization: Hauptgruppe und Untergruppen in dieser Organisation
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
@@ -1006,10 +1006,10 @@ de:
       everyone_in_the_group: Jeder in der Gruppe
       topic: Jeder in der Diskussion
       voters: Alle zur Abstimmung Eingeladenen
-      decided_voters: Alle, die abgestimmt haben
-      undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
       delegates_of_group: Delegierte von %{name}
+      everyone_who_voted: Alle, die abgestimmt haben
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     form:
       group_has_no_members_yet: Du bist das einzige Mitglied deiner Gruppe. Möglicherweise möchtest du einige Personen in deine Gruppe einladen, bevor du einen Thread oder eine Entscheidung startest.
       invite_people_to_evaluate_loomio: Lade einige Leute in deine Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
@@ -1081,7 +1081,7 @@ de:
       has_not_read_thread: Hat den Thread nicht angesehen
       has_not_joined_yet: Ist noch nicht beigetreten
       has_not_joined_yet_hint: Dieser Benutzer hat die Einladung zur Teilnahme an Loomio nicht angenommen und erhält keine weiteren Benachrichtigungen, bis er dies tut.
-      discussion_admin: "Diskussionsadmin"
+      discussion_admin: Diskussionsadmin
       has_not_read_discussion: Hat die Diskussion nicht angesehen
     group_form:
       search_placeholder: Nach Personen suchen...
@@ -1625,7 +1625,7 @@ de:
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
-    title_placeholder: "Z. B. „Admin“ oder „Moderator“"
+    title_placeholder: Z. B. „Admin“ oder „Moderator“
     updated: Mitgliedstchaftstitel überarbeitet
     weight_label: Stimmgewicht
   user_name_modal:
@@ -1797,7 +1797,6 @@ de:
       all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
-      undecided: Du hast noch nicht abgestimmt
     threads_from:
       group: Diskussionen von
       pinned: Angeheftete Diskussionen
@@ -2323,18 +2322,14 @@ de:
     started_by: Erstellt von %{name}
   poll_common_votes_panel:
     vote_removed: Stimme entfernt
-    undecided: Noch nicht abgestimmt
     newest_first: Neueste zuerst
     oldest_first: Älteste zuerst
     priority_first: Zustimmende zuerst
     priority_last: Ablehnende zuerst
-    undecided_first: Unentschlossene zuerst
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
     name_or_username: Name oder Benutzername
-    cast: Abgegeben
-    uncast: Nicht abgegeben
     reason_redacted: Grund geschwärzt
     redact_reason_title: Grund für die Schwärzungsabstimmung?
     redact_reason_helptext: Der Begründungstext und die Anhänge werden ausgeblendet, die Stimme bleibt jedoch im Ergebnis sichtbar
@@ -2349,15 +2344,6 @@ de:
     stance: Stimme
     participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
     vote_weight: Stimmgewicht %{weight}
-  poll_common_undecided_panel:
-    show_undecided: "%{count} Personen anzeigen, die noch nicht abgestimmt haben"
-    show_invitations: Ausstehende Einladungen anzeigen
-    undecided_users: Noch nicht abgestimmt (%{count})
-    invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
-    invitation_count_plural: "%{count} weitere Personen wurden per E-Mail zur Teilnahme eingeladen"
-  poll_common_undecided_user:
-    reminded: Erinnerung gesendet!
-    reminder_sent: Erinnerungsbenachrichtigung gesendet
   poll_common_set_outcome_panel:
     enter_outcome: Abstimmungsergebnis eingeben
     poll_type: Dieser %{poll_type} wurde geschlossen. Nimm dir Zeit, über die Ergebnisse nachzudenken und teile dann ein Ergebnis mit, damit die Leute wissen, was als nächstes passieren wird.
@@ -2499,9 +2485,9 @@ de:
     total: Gesamt
   poll_remove_vote:
     title: Deine Stimme entfernen?
-    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst unter „Noch nicht abgestimmt“ aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
     confirm: Stimme entfernen
     success: Stimme entfernt
+    helptext_not_voted: Möchtest du deine Stimme wirklich entfernen? Dein Status wird „Noch nicht abgestimmt“ und du kannst später erneut abstimmen, wenn du möchtest.
   poll_poll_vote_form:
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
@@ -2863,8 +2849,8 @@ de:
       voting_title: 24 Stunden vor Ende der Abstimmung eine Erinnerung senden an
       nobody: Niemand
       author: Autor (ich)
-      undecided_voters: Unentschlossene Abstimmende
       voters: Alle Abstimmenden
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     notify_on_participate:
       title: Benachrichtige mich, wenn Personen teilnehmen
       helptext_on: Wenn du diese Option auswählst, wirst du benachrichtigt, wenn jemand teilnimmt.
