@@ -68,6 +68,32 @@ class PollServiceTest < ActiveSupport::TestCase
     assert Stance.where(participant_id: member.id, poll: poll).exists?
   end
 
+  test "reinviting a voter preserves their latest vote and historical revisions" do
+    poll = create_poll
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = poll.poll_options.first.name
+    stance.reason = 'Original vote'
+    StanceService.create(stance: stance, actor: @user)
+    assert stance.reload.cast_at
+    stance.update_column(:updated_at, 20.minutes.ago)
+    current_stance = StanceService.update(stance: stance, actor: @user,
+      params: { stance_choices_attributes: [{ poll_option_id: poll.poll_options.last.id }], reason: 'Changed vote' })
+    revisions = poll.stances.where(participant_id: @user.id).order(:id)
+    original = revisions.pluck(:id, :latest, :option_scores, :cast_at)
+    revisions.update_all(revoked_at: Time.current, revoker_id: @admin.id)
+    poll.update_counts!
+    assert_not @user.can?(:vote_in, poll)
+
+    invited = PollService.create_stances(poll: poll, actor: @admin, user_ids: [@user.id])
+
+    assert_equal [current_stance.id], invited.pluck(:id)
+    assert_equal original, revisions.pluck(:id, :latest, :option_scores, :cast_at)
+    assert revisions.all? { |revision| revision.revoked_at.nil? }
+    assert @user.can?(:vote_in, poll.reload)
+    assert_equal poll.voters.count, poll.vote_count_eligible
+    assert_equal 1, poll.poll_options.last.reload.total_score.to_i
+  end
+
   test "notified invitation rolls back its stance when notification creation fails" do
     poll = create_poll(specified_voters_only: true)
     member = create_unique_user("atomicpollinvite")

@@ -292,6 +292,7 @@ class PollService
         include_actor: include_actor,
         emails: emails
       ).where.not(id: existing_voter_ids)
+      next Stance.none unless users.exists?
 
       reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
 
@@ -316,7 +317,9 @@ class PollService
 
       Stance.import(new_stances, on_duplicate_key_ignore: true)
 
-      poll.reset_latest_stances!
+      # New stances are already latest, and reinvitations retain their revision
+      # flags. Resetting every response here locks unrelated votes and can
+      # deadlock with concurrent membership/account changes.
       poll.update_counts!
 
       Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
