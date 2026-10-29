@@ -189,7 +189,8 @@ import {
   mdiBookmarkOutline,
   mdiBookmarkRemoveOutline,
   mdiCheckboxMarkedCircleOutline,
-  mdiForumOutline
+  mdiForumOutline,
+  mdiViewDashboardOutline
 } from '@mdi/js';
 
 const icons = {
@@ -379,6 +380,7 @@ const icons = {
   mdiBookmarkRemoveOutline,
   mdiCheckboxMarkedCircleOutline,
   mdiForumOutline,
+  mdiViewDashboardOutline,
   webex
 };
 

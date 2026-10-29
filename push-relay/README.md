@@ -18,6 +18,10 @@ npm run migrate
 npm start
 ```
 
+New Apple signing keys are environment-specific. The `APNS_KEY_ID` and `APNS_PRIVATE_KEY` settings above select the production key. Configure `APNS_SANDBOX_KEY_ID` and `APNS_SANDBOX_PRIVATE_KEY` for Xcode Debug installations. Without a sandbox override, the relay uses the base key for both environments, supporting older Apple keys that permit both. Set both sandbox values together; incomplete configuration fails at startup.
+
+Signing keys may instead be mounted as read-only files, with their paths supplied in `APNS_PRIVATE_KEY_FILE` and `APNS_SANDBOX_PRIVATE_KEY_FILE`. Do not supply both an inline key and its file setting. The [deployment stack](deploy/README.md) includes private database storage, mounted signing keys, request limits, and integration with the existing TLS proxy.
+
 Keep `ALLOW_PRIVATE_HOSTS` unset in a public deployment. A private relay may define it only when its network policy separately limits reachable destinations. Like Loomio's other boolean environment flags, its presence enables the setting regardless of its value.
 
 Expose the service through a TLS reverse proxy that limits `POST /v1/registrations` to 30 requests per minute per client IP and all signed registration routes to 300 requests per minute per source host. Do not trust forwarded client-address headers unless the proxy overwrites them. Restrict direct access to the application port so these limits cannot be bypassed.
