@@ -1,10 +1,10 @@
 ---
 title: Modèles de discussion
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 187a2e572ccfb339
   how-templates-are-used: db5b15b1e79e3885
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: a0ad468c2b8b3361
   templates-for-non-members: 7fef1b42802231ff
   related: c11ae1cbf27daade
+  save-an-existing-discussion-as-a-template: 122c81dd975bfa6a
 title_source: 5ac608aa42806d13
 title_generated: 0a2818116b3c746a
 ---
@@ -112,6 +114,14 @@ Ce processus se prête à un modèle, car l’objectif et les éléments à exam
 Les administrateurs du groupe peuvent sélectionner **Nouveau modèle** dans la liste des modèles. Choisissez un exemple dans la galerie de Loomio ou commencez avec un modèle vierge, puis adaptez-le et enregistrez-le.
 
 Vous pouvez rechercher ou filtrer les modèles de la galerie. Un exemple n’est ajouté à votre groupe que lorsque vous l’enregistrez.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Enregistrez une discussion existante comme modèle
+
+Sélectionnez **Enregistrer comme modèle** dans le menu d’actions sous le contexte d’une discussion. Le nouveau modèle conserve le titre, le contexte et les tags de la discussion, ainsi que les paramètres du fil. Ajoutez un sous-titre au modèle, vérifiez le contenu, puis sélectionnez **Enregistrer le modèle**. Le modèle enregistré apparaît dans la liste des modèles du groupe.
+
+Les administrateurs du groupe peuvent utiliser cette action. Les membres peuvent également l’utiliser lorsque l’option **Les membres peuvent créer des modèles** est activée. Cette action est disponible pour les discussions au sein d’un groupe.
 
 <!-- translation-section: manage-the-template-list -->
 

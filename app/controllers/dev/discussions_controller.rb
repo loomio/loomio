@@ -1,6 +1,21 @@
 class Dev::DiscussionsController < Dev::BaseController
   include Dev::FakeDataHelper
 
+  def test_save_as_template
+    group = create_group_with_members
+    group.update!(members_can_create_templates: params[:members_can_create_templates].present?)
+    admin = group.admins.first
+    discussion = DiscussionService.create(params: {
+      group_id: group.id, title: 'Monthly project review',
+      description: '<p>What worked, and what should change next month?</p>', description_format: 'html',
+      tags: ['Project review'], allow_concurrent_polls: true, comment_length_max: 400
+    }, actor: admin)
+    CommentService.create(comment: Comment.new(parent: discussion, body: 'Private review feedback'), actor: admin)
+    actor = params[:member].present? ? group.members.where.not(id: admin.id).first : admin
+    sign_in actor
+    redirect_to discussion_url(discussion)
+  end
+
   def test_none_read
     discussion = create_discussion_with_nested_comments
     sign_in discussion.author

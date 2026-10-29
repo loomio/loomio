@@ -1,10 +1,10 @@
 ---
 title: Diskussionsvorlagen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 1886093dd5128b3c
   how-templates-are-used: 2f4cd073b70433e7
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 21d8ca6904700d2a
   templates-for-non-members: 682494b3f4d2f42c
   related: 58cbfc7ebe12fceb
+  save-an-existing-discussion-as-a-template: 4ac4b04130de0724
 title_source: 5ac608aa42806d13
 title_generated: 3bc3bb95557b6309
 needs_review:
@@ -114,6 +116,14 @@ Das eignet sich als Vorlage, weil der Zweck und die Bewertungsgrundlagen in jede
 Admins der Gruppe können in der Vorlagenliste **Neue Vorlage** auswählen. Wähle ein Beispiel aus der Galerie von Loomio oder beginne mit einer leeren Vorlage, passe sie an und speichere sie.
 
 Du kannst die Galerie durchsuchen oder filtern. Ein Beispiel wird deiner Gruppe erst hinzugefügt, wenn du es speicherst.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Eine bestehende Diskussion als Vorlage speichern
+
+Wähle im Aktionsmenü unter dem Kontext einer Diskussion **Als Vorlage speichern**. Die neue Vorlage übernimmt den Titel, den Kontext, die Schlagwörter und die Thread-Einstellungen der Diskussion. Füge einen Vorlagenuntertitel hinzu, prüfe den Inhalt und wähle **Vorlage speichern**. Die gespeicherte Vorlage erscheint in der Vorlagenliste der Gruppe.
+
+Admins der Gruppe können diese Aktion verwenden. Mitglieder können sie ebenfalls verwenden, wenn **Mitglieder können Vorlagen erstellen.** aktiviert ist. Die Aktion ist für Diskussionen in einer Gruppe verfügbar.
 
 <!-- translation-section: manage-the-template-list -->
 

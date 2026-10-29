@@ -3,19 +3,20 @@ import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import openModal      from '@/shared/helpers/open_modal';
 import BookmarkService from '@/shared/services/bookmark_service';
+import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 
 export default new class DiscussionService {
   actions(discussion, vm) {
     return {
       ...BookmarkService.actions(discussion),
 
-      // make_a_copy: {
-      //   icon: 'mdi-content-copy',
-      //   name: 'templates.make_a_copy',
-      //   menu: true,
-      //   canPerform() { return Session.user(); },
-      //   to() { return `/d/new?discussion_id=${discussion.id}`; }
-      // },
+      save_as_template: {
+        icon: 'mdi-content-save-outline',
+        name: 'common.action.save_as_template',
+        menu: true,
+        canPerform() { return !discussion.discardedAt && DiscussionTemplateService.canCreateTemplate(discussion.group()); },
+        to() { return {path: '/discussion_templates/new', query: {discussion_id: discussion.id, return_to: Session.returnTo()}}; }
+      },
 
       react: {
         dock: 1,

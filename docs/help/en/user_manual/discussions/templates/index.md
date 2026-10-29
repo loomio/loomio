@@ -78,6 +78,14 @@ Group admins can select **New template** from the template list. Choose an examp
 
 You can search or filter the gallery. An example is not added to your group until you save it.
 
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Save an existing discussion as a template
+
+Select **Save as template** from the action menu under a discussion's context. The new template keeps the discussion's title, context, tags, and thread settings. Add a template subtitle, review the content, and select **Save template**. The saved template appears in the group's template list.
+
+Group admins can use this action. Members can also use it when **Members can create templates** is enabled. The action is available for discussions in a group.
+
 <!-- translation-section: manage-the-template-list -->
 
 ## Manage the template list

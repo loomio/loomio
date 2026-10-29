@@ -130,7 +130,7 @@ v-form(ref="form" @submit.prevent="submit")
         common-icon(name="mdi-close")
 
     v-card-text
-      v-text-field(
+      v-text-field.discussion-template-form-fields__process-name(
          v-model="discussionTemplate.processName"
         :label="$t('poll_common_form.process_name')"
         :placeholder="sourceProcessName || $t('discussion_template.process_name_placeholder')"
@@ -138,7 +138,7 @@ v-form(ref="form" @submit.prevent="submit")
         :rules="validate('processName')"
       )
 
-      v-text-field(
+      v-text-field.discussion-template-form-fields__process-subtitle(
          v-model="discussionTemplate.processSubtitle"
         :label="$t('poll_common_form.process_subtitle')"
         :placeholder="$t('discussion_template.process_subtitle_placeholder')"

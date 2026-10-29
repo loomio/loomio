@@ -1,10 +1,10 @@
 ---
 title: Шаблони обговорень
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,18 +17,20 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 92db8d3e7962de74
   how-templates-are-used: 82e63266e33d2862
   choose-who-is-notified-by-default: c448bf8eb5ab6fbd
   template-settings: 5ff728513c0d3a47
   example-bottle-trial-review: a1961dd641295135
-  create-a-template: bc5a18c4abb8274d
+  create-a-template: 6aba41bece27a24b
   manage-the-template-list: 61cc60f20c27d89f
   share-templates-between-groups: c1f62c8f18a5588c
   let-members-create-templates: '043716092952c098'
   templates-for-non-members: a5ce12229ca566ee
   related: 3996bb0006ce5806
+  save-an-existing-discussion-as-a-template: 4052c89a138b7218
 title_source: 5ac608aa42806d13
 title_generated: 3eb64464e1fc9951
 needs_review:
@@ -113,7 +115,15 @@ needs_review:
 
 Адміністратори групи можуть вибрати **Новий шаблон** у списку шаблонів. Скористайтеся прикладом із галереї Loomio або почніть із порожнього шаблону, а потім адаптуйте його й збережіть.
 
-Ви можете шукати приклади в галереї або фільтрувати їх. Приклад не додається до вашої групи, доки ви його не збережете.
+У галереї можна шукати приклади або фільтрувати їх. Приклад не додається до вашої групи, доки ви його не збережете.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Збереження наявного обговорення як шаблону
+
+Виберіть **Зберегти як шаблон** у меню дій під контекстом обговорення. Новий шаблон зберігає назву, контекст і теги обговорення, а також налаштування теми. Додайте підзаголовок шаблону, перегляньте вміст і виберіть **Зберегти шаблон**. Збережений шаблон з’явиться у списку шаблонів групи.
+
+Ця дія доступна адміністраторам групи. Учасники також можуть нею скористатися, якщо ввімкнено **Учасники можуть створювати шаблони**. Дія доступна для обговорень у групі.
 
 <!-- translation-section: manage-the-template-list -->
 

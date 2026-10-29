@@ -1,10 +1,10 @@
 ---
 title: Шаблоны абмеркаванняў
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,18 +17,20 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: edbd9f3baf048d1c
   how-templates-are-used: a077aec277904e1d
   choose-who-is-notified-by-default: a39866d371d3632c
   template-settings: 416c4171f7bd3abb
   example-bottle-trial-review: d3e9242758691368
-  create-a-template: 4030e0af44d33c53
+  create-a-template: d24debad63839185
   manage-the-template-list: 16fbe21180882551
   share-templates-between-groups: 7fa9939f468515cb
   let-members-create-templates: fa414447f2a14e78
   templates-for-non-members: d07108cd4859b790
   related: 1f4777f973cf84fe
+  save-an-existing-discussion-as-a-template: c2d27c963ba2b0fb
 title_source: 5ac608aa42806d13
 title_generated: 04c52b5e6177912e
 ---
@@ -111,7 +113,15 @@ title_generated: 04c52b5e6177912e
 
 Адміністратары групы могуць абраць **Новы шаблон** у спісе шаблонаў. Абярыце прыклад з галерэі Loomio або пачніце з пустога шаблону, затым адаптуйце яго і захавайце.
 
-Вы можаце шукаць прыклады ў галерэі або фільтраваць іх. Прыклад не дадаецца ў вашу групу, пакуль вы яго не захаваеце.
+У галерэі можна шукаць прыклады або фільтраваць іх. Прыклад не дадаецца ў вашу групу, пакуль вы яго не захаваеце.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Захаванне існага абмеркавання як шаблону
+
+Выберыце **Захаваць як шаблон** у меню дзеянняў пад кантэкстам абмеркавання. Новы шаблон захоўвае назву абмеркавання, кантэкст, тэгі і налады тэмы. Дадайце падзагаловак шаблону, праверце змесціва і выберыце **Захаваць шаблон**. Захаваны шаблон з’явіцца ў спісе шаблонаў групы.
+
+Гэта дзеянне даступнае адміністратарам групы. Удзельнікі таксама могуць ім карыстацца, калі ўключаны дазвол **Удзельнікі могуць ствараць шаблоны**. Дзеянне даступнае для абмеркаванняў у групе.
 
 <!-- translation-section: manage-the-template-list -->
 

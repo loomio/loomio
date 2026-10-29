@@ -1,10 +1,10 @@
 ---
 title: Plantillas de discusión
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: a3b7e43580c06c4b
   how-templates-are-used: f10451d9e9732db8
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 9bd189a9f21f1e8b
   templates-for-non-members: e6d4f754f53e8872
   related: 3d0a6f649a610afc
+  save-an-existing-discussion-as-a-template: 575911b25c81f14d
 title_source: 5ac608aa42806d13
 title_generated: 6e52ea675fe98e39
 ---
@@ -112,6 +114,14 @@ Esto funciona como plantilla porque el propósito y la información que se anali
 Los admins del grupo pueden seleccionar **Nueva plantilla** en la lista de plantillas. Elige un ejemplo de la galería de Loomio o empieza con una plantilla en blanco, luego adáptala y guárdala.
 
 Puedes buscar o filtrar la galería. Un ejemplo no se añade a tu grupo hasta que lo guardas.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Guarda una discusión existente como plantilla
+
+Selecciona **Guardar como plantilla** en el menú de acciones situado debajo del contexto de una discusión. La nueva plantilla conserva el título, el contexto, las etiquetas y la configuración del hilo de la discusión. Añade un subtítulo a la plantilla, revisa el contenido y selecciona **Guardar plantilla**. La plantilla guardada aparece en la lista de plantillas del grupo.
+
+Los admins del grupo pueden usar esta acción. Los miembros también pueden usarla cuando está habilitado **Los miembros pueden crear plantillas**. La acción está disponible para las discusiones de un grupo.
 
 <!-- translation-section: manage-the-template-list -->
 

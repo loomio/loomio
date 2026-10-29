@@ -1,10 +1,10 @@
 ---
 title: ディスカッションテンプレート
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: f7d37afab38c639f
   how-templates-are-used: 75b8f40cb89c7937
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: fbd3d83b296fc2d9
   templates-for-non-members: '0949114935173899'
   related: 598d7dc77dd05b00
+  save-an-existing-discussion-as-a-template: 3b8f862d4d630d9e
 title_source: 5ac608aa42806d13
 title_generated: d90989df1a626938
 ---
@@ -112,6 +114,14 @@ Oatmilk Cooperativeでは、回収して再利用する瓶の試験運用を、�
 グループの管理者は、テンプレート一覧から**新しいテンプレート**を選択できます。Loomioのギャラリーから例を選ぶか、空のテンプレートから始めて、必要に応じて編集し、保存します。
 
 ギャラリーでは検索や絞り込みができます。選んだ例は、保存するまでグループに追加されません。
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### 既存のディスカッションをテンプレートとして保存する
+
+ディスカッションの背景説明の下にある操作メニューから**テンプレートとして保存**を選択します。新しいテンプレートには、ディスカッションのタイトル、背景説明、タグ、スレッドの設定が引き継がれます。テンプレートのサブタイトルを追加し、内容を確認して、**テンプレートを保存**を選択します。保存したテンプレートは、グループのテンプレート一覧に表示されます。
+
+この操作はグループの管理者が利用できます。**メンバーはテンプレートを作成できます**が有効な場合は、メンバーも利用できます。この操作は、グループ内のディスカッションで利用できます。
 
 <!-- translation-section: manage-the-template-list -->
 

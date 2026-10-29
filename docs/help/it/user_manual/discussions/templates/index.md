@@ -1,10 +1,10 @@
 ---
 title: Modelli di discussione
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 99c0d868c6f66383
   how-templates-are-used: ce39b24829dd3e38
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 493aff5d847f1e60
   templates-for-non-members: fc85c9de3acd217d
   related: 7c622437a7751c12
+  save-an-existing-discussion-as-a-template: 3d1cfc141f496d8b
 title_source: 5ac608aa42806d13
 title_generated: e69d3a4bcbeae260
 ---
@@ -112,6 +114,14 @@ Questo funziona come modello perché lo scopo e i dati da esaminare restano gli 
 Gli amministratori del gruppo possono selezionare **Nuovo modello** dall'elenco dei modelli. Scegli un esempio dalla galleria di Loomio oppure parti da un modello vuoto, poi adattalo e salvalo.
 
 Puoi cercare nella galleria o filtrarla. Un esempio viene aggiunto al tuo gruppo solo quando lo salvi.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Salva una discussione esistente come modello
+
+Seleziona **Salva come modello** dal menu delle azioni sotto il contesto di una discussione. Il nuovo modello conserva il titolo, il contesto, i tag e le impostazioni della conversazione. Aggiungi un sottotitolo al modello, controlla il contenuto e seleziona **Salva modello**. Il modello salvato appare nell'elenco dei modelli del gruppo.
+
+Gli amministratori del gruppo possono usare questa azione. Anche i membri possono usarla quando **I membri possono creare modelli** è abilitato. L'azione è disponibile per le discussioni in un gruppo.
 
 <!-- translation-section: manage-the-template-list -->
 

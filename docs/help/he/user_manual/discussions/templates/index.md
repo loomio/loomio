@@ -1,10 +1,10 @@
 ---
 title: תבניות דיון
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 2de8cdb647d52405
   how-templates-are-used: c730af8c0eaa7e91
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 2f7c3ac8d27f7901
   templates-for-non-members: 1182a4ed4ee8e983
   related: 0c5b80ca8ca54dd8
+  save-an-existing-discussion-as-a-template: 7eeb979ba5da18aa
 title_source: 5ac608aa42806d13
 title_generated: 659bf27b5fab26d7
 needs_review:
@@ -116,6 +118,14 @@ needs_review:
 מנהלי הקבוצה יכולים לבחור באפשרות **תבנית חדשה** ברשימת התבניות. ניתן לבצע בחירה בדוגמה מהגלריה של Loomio או להתחיל מתבנית ריקה, ואז להתאים אותה ולשמור אותה.
 
 ניתן לחפש בגלריה או לסנן אותה. דוגמה מתווספת לקבוצה רק לאחר שמירתה.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### שמירת דיון קיים כתבנית
+
+יש לבחור באפשרות **שמירה כתבנית** מתפריט הפעולות שמתחת להקשר של הדיון. התבנית החדשה שומרת על הכותרת, ההקשר, התגיות והגדרות השרשור של הדיון. יש להוסיף כותרת משנה לתבנית, לבדוק את התוכן ולבחור באפשרות **שמור תבנית**. התבנית שנשמרה מופיעה ברשימת התבניות של הקבוצה.
+
+מנהלי הקבוצה יכולים להשתמש בפעולה זו. גם חברים יכולים להשתמש בה כאשר האפשרות **חברים יכולים ליצור תבניות** מופעלת. הפעולה זמינה לדיונים בקבוצה.
 
 <!-- translation-section: manage-the-template-list -->
 

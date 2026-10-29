@@ -1,10 +1,10 @@
 ---
 title: Discussiesjablonen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 2308140934edbe9d
   how-templates-are-used: 67913b701f6f755a
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 5edbd8179cfa1172
   templates-for-non-members: e2e38a3d7fdf3d17
   related: 49540d851863497b
+  save-an-existing-discussion-as-a-template: d92ed3a0e7582532
 title_source: 5ac608aa42806d13
 title_generated: c34ea3b3df5b6c70
 ---
@@ -112,6 +114,14 @@ Dit werkt als sjabloon omdat het doel en de gegevens waarop de evaluatie is geba
 Groepsadmins kunnen **Nieuwe sjabloon** selecteren in de sjablonenlijst. Kies een voorbeeld uit de galerij van Loomio of begin met een lege sjabloon, pas het aan en sla het op.
 
 Je kunt de galerij doorzoeken of filteren. Een voorbeeld wordt pas aan jouw groep toegevoegd wanneer je het opslaat.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Sla een bestaande discussie op als sjabloon
+
+Selecteer **Bewaren als sjabloon** in het actiemenu onder de context van een discussie. Het nieuwe sjabloon behoudt de titel, context, labels en threadinstellingen van de discussie. Voeg een ondertitel voor het sjabloon toe, controleer de inhoud en selecteer **Sjabloon opslaan**. Het opgeslagen sjabloon verschijnt in de sjablonenlijst van de groep.
+
+Groepsadmins kunnen deze actie gebruiken. Leden kunnen dit ook wanneer **Leden kunnen sjablonen maken.** is ingeschakeld. De actie is beschikbaar voor discussies in een groep.
 
 <!-- translation-section: manage-the-template-list -->
 

@@ -1,10 +1,10 @@
 ---
 title: Beszélgetési sablonok
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,18 +17,20 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 7e9723081f24e3e2
   how-templates-are-used: 32def3a80f6ac655
   choose-who-is-notified-by-default: 60956973a9d98035
   template-settings: 25d0e5d468c1fa60
   example-bottle-trial-review: 591cce7d11ee6789
-  create-a-template: c19ee5eb7fe092af
+  create-a-template: 3c66eeee67cfb821
   manage-the-template-list: 59c330c041d44cc6
   share-templates-between-groups: cbf0ef07f239a2bd
   let-members-create-templates: 1758e3b5a9e5c568
   templates-for-non-members: 5508f8208a742556
   related: ddf6006b7540f500
+  save-an-existing-discussion-as-a-template: 00f4cc0d074358ea
 title_source: 5ac608aa42806d13
 title_generated: b1d1b8868cc08b68
 ---
@@ -109,9 +111,17 @@ Ez azért működik sablonként, mert a cél és az értékelés alapjául szolg
 
 ## Hozz létre sablont
 
-A csoport adminjai a sablonlistában kiválaszthatják az **Új sablon** gombot. Válassz egy példát a Loomio galériájából, vagy kezdj egy üres sablonnal, majd alakítsd az igényeidhez, és mentsd el.
+A csoport adminjai a sablonlistában kiválaszthatják az **Új sablon** lehetőséget. Válassz egy példát a Loomio galériájából, vagy kezdj egy üres sablonnal, majd alakítsd az igényeidhez, és mentsd el.
 
 A galériában kereshetsz és szűrhetsz. Egy példa csak akkor kerül a csoportodba, amikor elmented.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Ments el egy meglévő beszélgetést sablonként
+
+Válaszd ki a **Mentés sablonként** lehetőséget a beszélgetés leírása alatti műveleti menüből. Az új sablon megőrzi a beszélgetés címét, leírását, címkéit és a szál beállításait. Adj meg egy alcímet a sablonhoz, ellenőrizd a tartalmát, majd válaszd ki a **Sablon mentése** lehetőséget. Az elmentett sablon megjelenik a csoport sablonlistájában.
+
+Ezt a műveletet a csoport adminjai használhatják. A tagok is használhatják, ha **A tagok sablonokat hozhatnak létre** engedély be van kapcsolva. A művelet a csoportban lévő beszélgetéseknél érhető el.
 
 <!-- translation-section: manage-the-template-list -->
 

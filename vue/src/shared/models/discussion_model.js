@@ -4,7 +4,7 @@ import Session          from '@/shared/services/session';
 import RangeSet         from '@/shared/services/range_set';
 import { isAfter } from 'date-fns';
 import dateIsEqual from 'date-fns/isEqual';
-import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray } from 'lodash-es';
+import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray, cloneDeep, pick, camelCase } from 'lodash-es';
 import { I18n } from '@/i18n';
 import Records from '@/shared/services/records';
 
@@ -66,6 +66,23 @@ export default class DiscussionModel extends BaseModel {
     clone.createdAt = null;
     clone.updatedAt = null;
     return clone;
+  }
+
+  buildTemplate() {
+    // Carry reusable content and thread settings into a fresh template, leaving
+    // participants, activity, and lifecycle state on the source discussion.
+    const template = Records.discussionTemplates.build();
+    const attrs = cloneDeep(pick(this, AppConfig.templateSettings.discussion_template.map(camelCase)));
+    Object.assign(attrs, pick(this.topic(), [
+      'newestFirst', 'maxDepth', 'allowConcurrentPolls', 'allowComments', 'allowReactions', 'commentLengthMax'
+    ]));
+    attrs.tags = this.createdTopicItem().tags.slice();
+    attrs.groupId = this.groupId;
+    attrs.processName = this.title;
+    attrs.public = false;
+    attrs.defaultToDirectDiscussion = false;
+    template.update(attrs);
+    return template;
   }
 
   pollTemplates() {

@@ -233,6 +233,31 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   # === EXPORT ===
 
+  test "creating a template from discussion content respects group template permissions" do
+    [false, true].each do |enabled|
+      @group.update!(members_can_create_templates: enabled)
+      %i[admin member_normal guest_admin_normal guest_normal alien former_member_loud server_admin].each do |role|
+        sign_in users(role)
+        allowed = role == :admin || (enabled && role == :member_normal)
+        assert_difference 'DiscussionTemplate.count', allowed ? 1 : 0 do
+          post :create, params: {discussion_template: {
+            group_id: @group.id, process_name: 'Monthly review', process_subtitle: 'Review the month',
+            title: 'Monthly review', description: discussions(:discussion).description,
+            description_format: 'html', tags: ['Review'], public: false,
+            allow_concurrent_polls: true, comment_length_max: 400
+          }}
+        end
+        assert_response allowed ? :success : :forbidden
+        if allowed
+          data = JSON.parse(response.body).fetch('discussion_templates').sole
+          assert_equal ['Review'], data.fetch('tags')
+          assert_equal false, data.fetch('public')
+          assert_equal 400, data.fetch('comment_length_max')
+        end
+      end
+    end
+  end
+
   test "export returns a portable discussion template file" do
     template = DiscussionTemplate.create!(
       group: @group,

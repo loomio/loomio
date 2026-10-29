@@ -1,10 +1,10 @@
 ---
 title: Modelos de discussão
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-29'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
@@ -17,6 +17,7 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: e825802bcd936f98
   how-templates-are-used: '055373488d5af188'
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 647e6d4cd4055f96
   templates-for-non-members: c86a480a0e890115
   related: 11038cb6350e41bc
+  save-an-existing-discussion-as-a-template: d1573949454c1192
 title_source: 5ac608aa42806d13
 title_generated: 8c7c97249e5996da
 ---
@@ -112,6 +114,14 @@ Isso funciona como modelo porque o objetivo e as evidências permanecem os mesmo
 Os admins do grupo podem selecionar **Novo modelo** na lista de modelos. Escolha um exemplo da galeria do Loomio ou comece com um modelo em branco, depois adapte-o e salve-o.
 
 Você pode pesquisar ou filtrar a galeria. Um exemplo só é adicionado ao seu grupo quando você o salva.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Salve uma discussão existente como modelo
+
+Selecione **Salvar como modelo** no menu de ações abaixo do contexto de uma discussão. O novo modelo mantém o título, o contexto, as tags e as configurações da conversa. Adicione um subtítulo ao modelo, revise o conteúdo e selecione **Salvar modelo**. O modelo salvo aparece na lista de modelos do grupo.
+
+Os admins do grupo podem usar essa ação. Os membros também podem usá-la quando a permissão **Os membros podem criar modelos.** está ativada. A ação está disponível para discussões em um grupo.
 
 <!-- translation-section: manage-the-template-list -->
 
