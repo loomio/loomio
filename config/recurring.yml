@@ -10,6 +10,14 @@
 #     schedule: at 5am every day
 
 production:
+  open_scheduled_polls:
+    class: OpenScheduledPollsWorker
+    schedule: every minute
+
+  expire_lapsed_polls:
+    class: ExpireLapsedPollsWorker
+    schedule: every minute
+
   loomio_hourly_tasks:
     class: HourlyTaskJob
     schedule: every hour

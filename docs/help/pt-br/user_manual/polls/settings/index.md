@@ -1,6 +1,6 @@
 ---
 title: Configurações
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: c438022ad610d57a
   voting-options: ce27d4aa22b6e72a
   edit-voting-options: 649d9c3d8156c05d
-  opening-time: 21e44f5babf01d65
+  opening-time: 0dfc04421861ff59
   more-settings: f868cbc69693539f
   reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
@@ -126,6 +126,8 @@ Use o ícone de lápis ao lado da opção de voto para abrir a janela de ediçã
 ### Duração
 
 Por padrão, a votação começa imediatamente quando você cria a enquete. Se quiser agendar o início da votação para mais tarde, desmarque **A votação começa imediatamente.** e selecione uma data e um horário de abertura.
+
+A votação agendada pode levar cerca de um minuto para começar após o horário selecionado.
 
 Isso é útil para dar tempo à discussão antes do início da votação ou para garantir que uma enquete ou proposta esteja configurada corretamente e agendada para o momento adequado.
 

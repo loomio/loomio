@@ -1,6 +1,6 @@
 ---
 title: Configuración
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: c4be9624dffcbb7e
   voting-options: d66fbd0a4522aa98
   edit-voting-options: e773bdbcc7894d29
-  opening-time: 3e17f0d2bd093487
+  opening-time: 1372662d376cbd7f
   more-settings: 3519ac4ed701ef08
   reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
@@ -126,6 +126,8 @@ Usa el icono del lápiz junto a la opción de votación para abrir el cuadro de 
 ### Duración
 
 De forma predeterminada, la votación se abre inmediatamente cuando creas la encuesta. Si quieres programar la votación para que se abra más adelante, desmarca **La votación se abre inmediatamente** y selecciona una fecha y hora de apertura.
+
+La votación programada puede tardar alrededor de un minuto en abrirse después de la hora seleccionada.
 
 Esto permite dejar tiempo para la discusión antes de que se abra la votación, o asegurarte de que una encuesta o propuesta esté bien configurada y programada para el momento adecuado.
 

@@ -413,10 +413,10 @@ class PollService
 
   def self.open_scheduled_polls
     Poll.kept
-        .where(opened_at: nil)
-        .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
-        .each do |poll|
-          publish_topic_if_active(poll) if open_poll_if_ready(poll)
+        .where(opened_at: nil, closed_at: nil)
+        .where("opening_at <= ?", Time.current)
+        .select(:id).find_each do |poll|
+          OpenScheduledPollWorker.perform_later(poll.id)
         end
   end
 
@@ -473,9 +473,31 @@ class PollService
   end
 
   def self.expire_lapsed_polls
-    Poll.lapsed_but_not_closed.each do |poll|
+    Poll.lapsed_but_not_closed.select(:id).find_each do |poll|
       CloseExpiredPollWorker.perform_later(poll.id)
     end
+  end
+
+  # Recheck the deadline under the voting/editing lock, then commit closing and
+  # its notification together. Retries can repair a previously committed close;
+  # realtime publication happens after this transaction completes.
+  def self.expire(poll:)
+    expired = poll.with_topic_lock do
+      poll.lock!
+      next false unless poll.kept? && poll.closing_at && poll.closing_at <= Time.current
+
+      do_closing_work(poll: poll)
+
+      # A reopened poll gets a new notification for its next voting period.
+      notified = Notification.where(kind: 'poll_expired', subject: poll)
+                             .where(created_at: poll.closing_at..).exists?
+      if NotificationService.group_enabled?(poll) && !notified
+        NotificationService.create!(kind: 'poll_expired', subject: poll, actor: poll.author)
+      end
+      true
+    end
+    publish_topic_if_active(poll) if expired
+    poll
   end
 
   def self.do_closing_work(poll:)
@@ -703,15 +725,18 @@ class PollService
   end
 
   def self.open_poll_if_ready(poll)
-    return false if poll.opened_at
-    return false unless poll.closing_at
-    return false if poll.opening_at.present? && poll.opening_at > Time.now
+    # Share the topic-then-poll lock order with voting, editing and closing.
+    # Recheck persisted times so a queued job respects rescheduling and discard.
+    poll.with_topic_lock do
+      poll.lock!
+      next false if poll.opened? || poll.closed? || poll.discarded?
+      next false unless poll.closing_at && poll.closing_at > Time.current
+      next false if poll.opening_at.present? && poll.opening_at > Time.current
 
-    Poll.transaction do
-      poll.update!(opened_at: Time.now)
+      poll.update!(opened_at: Time.current)
       announce_poll_opened(poll) if poll.notify_on_open
+      true
     end
-    true
   end
 
   def self.publish_topic_if_active(poll)

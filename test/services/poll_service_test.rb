@@ -2,6 +2,10 @@ require 'test_helper'
 
 class PollServiceTest < ActiveSupport::TestCase
   inline_jobs "expires a lapsed poll",
+              "scheduled polls open at the selected minute",
+              "open_scheduled_polls opens scheduled polls and sends poll_announced when notify_on_open is true",
+              "open_scheduled_polls opens scheduled polls without poll_announced when notify_on_open is false",
+              "open_scheduled_polls delivers no emails to voters when notify_on_open is false",
               "open_scheduled_polls delivers emails to voters when notify_on_open is true",
               "poll opening notification owns loud recipient email over topic publication"
   setup do
@@ -156,6 +160,36 @@ class PollServiceTest < ActiveSupport::TestCase
 
   # -- create --
 
+  test "creating a poll preserves an end-of-day deadline in different time zones" do
+    [ '+00:00', '+05:45', '-03:30' ].each do |offset|
+      deadline = Time.iso8601("#{3.days.from_now.to_date}T23:59:00#{offset}")
+      poll = create_poll(closing_at: deadline.iso8601)
+
+      assert_equal deadline, poll.reload.closing_at
+      travel_to(deadline - 1.second) { assert @user.can?(:vote_in, poll) }
+      travel_to(deadline) { assert_not @user.can?(:vote_in, poll) }
+    end
+  end
+
+  test "scheduled polls open at the selected minute" do
+    opening = 3.days.from_now.change(hour: 23, min: 59, sec: 0)
+    deadline = opening + 1.day
+    poll = create_poll(opening_at: opening.iso8601, closing_at: deadline.iso8601)
+
+    assert_equal opening, poll.reload.opening_at
+    assert_equal deadline, poll.closing_at
+    travel_to(opening - 1.second) do
+      PollService.open_scheduled_polls
+      assert_not poll.reload.opened?
+      assert_not @user.can?(:vote_in, poll)
+    end
+    travel_to(opening) do
+      PollService.open_scheduled_polls
+      assert poll.reload.opened?
+      assert @user.can?(:vote_in, poll)
+    end
+  end
+
   test "creates a new poll" do
     poll = nil
     assert_difference 'Poll.count', 1 do
@@ -281,6 +315,17 @@ class PollServiceTest < ActiveSupport::TestCase
   # (poll_mailer/vote-button-.png). Mention notifications are covered in discussion_service_test.
 
   # -- update --
+
+  test "editing a poll preserves an end-of-day deadline" do
+    poll = create_poll
+    deadline = 5.days.from_now.change(hour: 23, min: 59, sec: 0)
+
+    PollService.update(poll: poll, params: { closing_at: deadline.iso8601 }, actor: @user)
+
+    assert_equal deadline, poll.reload.closing_at
+    travel_to(deadline - 1.second) { assert @user.can?(:vote_in, poll) }
+    travel_to(deadline) { assert_not @user.can?(:vote_in, poll) }
+  end
 
   test "updates an existing poll" do
     poll = create_poll

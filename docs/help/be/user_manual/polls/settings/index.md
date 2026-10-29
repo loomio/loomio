@@ -1,6 +1,6 @@
 ---
 title: Налады
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 142f0bf898b76fcb
   voting-options: 1502b39960357fc7
   edit-voting-options: 02b2ca00524af2c5
-  opening-time: 2e4f286e58f3038b
+  opening-time: 177f4336528b2397
   more-settings: adae832df14939b8
   reminder: 2931dfb07798e576
   anonymous-voting: 9c03fc35187e426c
@@ -126,6 +126,8 @@ title_generated: b1b3d8b8aa661af6
 ### Працягласць
 
 Па змаўчанні галасаванне адкрываецца адразу пасля стварэння апытання. Калі вы хочаце запланаваць адкрыццё галасавання на пазнейшы час, зніміце пазнаку **Галасаванне адкрываецца адразу** і выберыце дату і час адкрыцця.
+
+Запланаванае галасаванне можа адкрыцца прыкладна праз хвіліну пасля выбранага часу.
 
 Гэта дазваляе пакінуць час на абмеркаванне перад адкрыццём галасавання або праверыць, ці правільна наладжана апытанне або прапанова і ці запланавана адкрыццё на патрэбны час.
 

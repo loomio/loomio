@@ -1,6 +1,6 @@
 ---
 title: Impostazioni
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 367cac67db5d031f
   voting-options: eb1768f770b58c82
   edit-voting-options: b5d0c05af51fbac4
-  opening-time: 409effb0131ee89b
+  opening-time: c53b864389a395bd
   more-settings: d67937a9b83269cd
   reminder: 522e54360b5663b3
   anonymous-voting: 623409b0b84a8a2f
@@ -126,6 +126,8 @@ Usa l'icona della matita accanto all'opzione di voto per aprire la finestra di m
 ### Durata
 
 Per impostazione predefinita, le votazioni si aprono immediatamente quando crei il sondaggio. Se vuoi programmarne l'apertura per un momento successivo, deseleziona **Le votazioni si aprono immediatamente** e seleziona una data e un'ora di apertura.
+
+Le votazioni programmate possono aprirsi circa un minuto dopo l'orario selezionato.
 
 Questo permette di lasciare tempo per la discussione prima dell'apertura delle votazioni, oppure di verificare che un sondaggio o una proposta siano configurati correttamente e programmati per il momento previsto.
 

@@ -1,6 +1,6 @@
 ---
 title: Instellingen
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: e6cc73fdb7a701bb
   voting-options: 48f34901246ac268
   edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 47b34a785b068708
+  opening-time: 0f3b2f7ee94415e0
   more-settings: ac9de733ac425f3a
   reminder: 830f0f493ba85dbd
   anonymous-voting: 002f8bcf4a9bf4ce
@@ -126,6 +126,8 @@ Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te open
 ### Looptijd
 
 Standaard opent de stemming direct wanneer je de peiling aanmaakt. Als je de stemming op een later moment wilt laten openen, vink je **De stemming is direct geopend.** uit en selecteer je een openingsdatum en -tijd.
+
+Het kan ongeveer een minuut na het gekozen tijdstip duren voordat de geplande stemming opent.
 
 Zo geef je mensen tijd voor discussie voordat de stemming opent, of zorg je ervoor dat een peiling of voorstel goed is ingesteld en op het juiste moment opent.
 

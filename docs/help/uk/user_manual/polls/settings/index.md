@@ -1,6 +1,6 @@
 ---
 title: Налаштування
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 895fd893ac0cb2ba
   voting-options: '094d517422cffc49'
   edit-voting-options: 8839c76792a4b2ac
-  opening-time: 0a34a84c51643ecf
+  opening-time: 2330181cea72ee2d
   more-settings: 68aeb45fb83bc080
   reminder: 97c156082524dd66
   anonymous-voting: 8b458204a781dedb
@@ -129,6 +129,8 @@ needs_review:
 ### Тривалість
 
 За замовчуванням голосування відкривається відразу після створення опитування. Якщо ви хочете запланувати відкриття голосування на пізніший час, зніміть позначку **Голосування відкривається негайно** та виберіть дату й час відкриття.
+
+Заплановане голосування може відкритися приблизно через хвилину після вибраного часу.
 
 Це дає час на обговорення перед відкриттям голосування або допомагає переконатися, що опитування чи пропозицію налаштовано правильно й заплановано на потрібний час.
 

@@ -1,6 +1,6 @@
 ---
 title: Paramètres
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 4931f40f13f0eaca
   voting-options: d1893c3bdfa74deb
   edit-voting-options: dfe67094a9cbd0cf
-  opening-time: 183cb8f2047a0f5c
+  opening-time: 668f0b37264d54bb
   more-settings: ea1e48c372fdea5d
   reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
@@ -128,6 +128,8 @@ Utilisez l’icône de crayon à côté de l’option de vote pour ouvrir la fen
 ### Durée
 
 Par défaut, le vote est ouvert immédiatement lorsque vous créez le sondage. Si vous souhaitez programmer l’ouverture du vote à une date ultérieure, décochez **Le vote est ouvert immédiatement** et choisissez une date et une heure d’ouverture.
+
+Le vote programmé peut s’ouvrir environ une minute après l’heure choisie.
 
 Cela permet de laisser du temps à la discussion avant l’ouverture du vote, ou de vérifier qu’un sondage ou une proposition est correctement configuré et programmé pour le moment voulu.
 

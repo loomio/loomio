@@ -280,6 +280,64 @@ class TopicWriteConcurrencyTest < ActiveSupport::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
+  test 'queued expiry rechecks a deadline extended while waiting for the topic lock' do
+    poll = create_poll(group_id: @group.id)
+    poll.update_column(:closing_at, 1.minute.ago)
+
+    assert_no_difference -> { Notification.where(kind: 'poll_expired', subject: poll).count } do
+      while_writer_waits_on_topics([poll.topic_id], -> { CloseExpiredPollWorker.perform_now(poll.id) }) do
+        PollService.update(poll: poll, params: { closing_at: 1.day.from_now }, actor: @actor)
+      end
+    end
+
+    assert_nil poll.reload.closed_at
+  end
+
+  test 'overlapping expiry jobs close once and publish one notification' do
+    [false, true].each do |anonymous|
+      poll = create_poll(group_id: @group.id, anonymous: anonymous)
+      poll.update_column(:closing_at, 1.minute.ago)
+
+      assert_difference -> { Notification.where(kind: 'poll_expired', subject: poll).count }, 1 do
+        while_writer_waits_on_topics([poll.topic_id], -> { CloseExpiredPollWorker.perform_now(poll.id) }) do
+          CloseExpiredPollWorker.perform_now(poll.id)
+        end
+      end
+
+      assert poll.reload.closed_at
+      assert_equal 0, poll.topic.reload.active_polls_count
+    end
+  end
+
+  test 'queued opening rechecks rescheduling while waiting for the topic lock' do
+    poll = create_poll(group_id: @group.id, opening_at: 2.hours.from_now)
+    poll.update_column(:opening_at, 1.minute.ago)
+
+    while_writer_waits_on_topics([poll.topic_id], -> { OpenScheduledPollWorker.perform_now(poll.id) }) do
+      PollService.update(poll: poll, params: { opening_at: 3.hours.from_now }, actor: @actor)
+    end
+
+    assert_nil poll.reload.opened_at
+    assert_not Notification.exists?(kind: 'poll_announced', subject: poll.created_topic_item)
+  end
+
+  test 'overlapping opening jobs announce a poll once' do
+    @group.add_member!(users(:member))
+    [false, true].each do |anonymous|
+      poll = create_poll(group_id: @group.id, opening_at: 2.hours.from_now, anonymous: anonymous)
+      poll.update_column(:opening_at, 1.minute.ago)
+
+      assert_difference -> { Notification.where(kind: 'poll_announced', subject: poll.created_topic_item).count }, 1 do
+        while_writer_waits_on_topics([poll.topic_id], -> { OpenScheduledPollWorker.perform_now(poll.id) }) do
+          OpenScheduledPollWorker.perform_now(poll.id)
+        end
+      end
+
+      assert poll.reload.opened_at
+      assert_equal 1, poll.topic.reload.active_polls_count
+    end
+  end
+
   private
 
   def create_poll(**params)

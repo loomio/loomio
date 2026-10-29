@@ -1,6 +1,6 @@
 ---
 title: Asetukset
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 0516e40c5da65837
   voting-options: 988f7a5cad12d9b0
   edit-voting-options: 60fbea7da813d115
-  opening-time: e360331503ff818f
+  opening-time: d5e49c948b4932cd
   more-settings: 52929ce7488bbd4c
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
@@ -128,6 +128,8 @@ Avaa muokkausikkuna äänestysvaihtoehdon vieressä olevalla kynäkuvakkeella:
 ### Kesto
 
 Oletuksena äänestys alkaa heti, kun luot kyselyn. Jos haluat ajastaa äänestyksen alkamaan myöhemmin, poista valinta kohdasta **Äänestys alkaa heti** ja valitse alkamispäivä ja kellonaika.
+
+Ajastettu äänestys voi alkaa noin minuutin viiveellä valitun ajan jälkeen.
 
 Näin voit varata aikaa keskustelulle ennen äänestyksen alkamista tai varmistaa, että kysely tai ehdotus on määritetty oikein ja ajastettu oikeaan hetkeen.
 

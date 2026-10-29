@@ -1,6 +1,6 @@
 ---
 title: הגדרות
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 8b53edb22eb0c099
   voting-options: 13ae3649e14d622c
   edit-voting-options: 5d2f31b4187443de
-  opening-time: 2ae75ba578c410c5
+  opening-time: bbc6a0a0c708e114
   more-settings: 52b6b4962e084972
   reminder: 55da41038e171ed3
   anonymous-voting: 56a6bc77e42331ff
@@ -128,6 +128,8 @@ needs_review:
 ### משך ההצבעה
 
 כברירת מחדל, ההצבעה נפתחת מיד עם יצירת הסקר. כדי לתזמן את פתיחת ההצבעה למועד מאוחר יותר, יש לבטל את הסימון של **ההצבעה נפתחת מיד** ולבחור תאריך ושעת פתיחה.
+
+פתיחת הצבעה מתוזמנת עשויה להתעכב בכדקה לאחר המועד שנבחר.
 
 כך ניתן להקצות זמן לדיון לפני פתיחת ההצבעה, או לוודא שהסקר או ההצעה מוגדרים כראוי ומתוזמנים למועד המתאים.
 

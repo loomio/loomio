@@ -1,6 +1,6 @@
 ---
 title: 設定
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 71443d304edbb235
   voting-options: 6e953b9fa9039b42
   edit-voting-options: 244706d5d94bb2dd
-  opening-time: ab9769f85dad1764
+  opening-time: d1577e02d03500bf
   more-settings: ee685758816f701f
   reminder: 61136dac07544bb7
   anonymous-voting: a2ecf3255db05030
@@ -128,6 +128,8 @@ needs_review:
 ### 投票期間
 
 初期設定では、アンケートを作成するとすぐに投票が開始されます。後で投票を開始するように予約する場合は、**投票はすぐに開始されます**のチェックを外し、開始日時を選択します。
+
+予約した投票は、指定した時刻から開始までに1分ほどかかる場合があります。
 
 投票開始前にディスカッションの時間を設けたり、アンケートや提案を適切に設定して予定の時間に開始したりする場合に役立ちます。
 

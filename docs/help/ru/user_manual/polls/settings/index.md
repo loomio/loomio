@@ -1,6 +1,6 @@
 ---
 title: Настройки
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: 1cd13f03020c0afc
   voting-options: e7abfa61e8294ba5
   edit-voting-options: 85a80574f956ba54
-  opening-time: 3b2c160aeb226028
+  opening-time: 91469463a524b284
   more-settings: b4f56f447860aa7a
   reminder: e9ee0a26fc25f292
   anonymous-voting: 075d4da36503b6e9
@@ -126,6 +126,8 @@ title_generated: 985b5e0f2ccf1ba0
 ### Продолжительность
 
 По умолчанию голосование открывается сразу после создания опроса. Если вы хотите запланировать его открытие на более позднее время, снимите флажок **Голосование открывается немедленно.** и выберите дату и время открытия.
+
+Запланированное голосование может открыться примерно через минуту после выбранного времени.
 
 Это позволяет выделить время на обсуждение до начала голосования или проверить, что опрос или предложение настроены правильно и откроются в нужное время.
 

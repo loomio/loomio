@@ -1,6 +1,6 @@
 ---
 title: Einstellungen
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: '093813006c859f24'
   voting-options: 0ac7e1fbaf3e6854
   edit-voting-options: 634ce969f2de0e5f
-  opening-time: 9fcb4e5c848de1bf
+  opening-time: bed1b55339b0f43a
   more-settings: 1dad0763dce25b73
   reminder: 1e1697411da53f12
   anonymous-voting: 4c6845651d2367a8
@@ -126,6 +126,8 @@ Nutze das Stiftsymbol neben der Abstimmungsoption, um den Bearbeitungsdialog zu 
 ### Dauer
 
 Standardmäßig beginnt die Abstimmung sofort, wenn du sie erstellst. Wenn du einen späteren Beginn planen möchtest, entferne das Häkchen bei **Die Abstimmung beginnt sofort.** und wähle ein Startdatum und eine Startzeit.
+
+Bei geplanten Abstimmungen kann es nach dem gewählten Zeitpunkt etwa eine Minute dauern, bis sie beginnen.
 
 So kannst du vor Beginn der Abstimmung Zeit für eine Diskussion einplanen oder sicherstellen, dass eine Abstimmung oder ein Vorschlag richtig eingerichtet ist und zum vorgesehenen Zeitpunkt beginnt.
 

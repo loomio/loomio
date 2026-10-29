@@ -215,7 +215,7 @@ class Poll < ApplicationRecord
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :recent, -> { kept.where("polls.opened_at IS NOT NULL").where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
-  scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
+  scope :lapsed_but_not_closed, -> { kept.where(closed_at: nil).where("polls.closing_at <= ?", Time.current) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
   scope :closing_soon_not_published, ->(timeframe) do
      active
@@ -234,7 +234,6 @@ class Poll < ApplicationRecord
 
   before_validation :clamp_choice_count_min
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
-  normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
   validate :anonymity_cannot_change

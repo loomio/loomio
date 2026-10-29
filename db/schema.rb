@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_27_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -815,6 +815,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_000003) do
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
     t.index ["discarded_by"], name: "index_polls_on_discarded_by"
     t.index ["key"], name: "index_polls_on_key", unique: true
+    t.index ["opening_at"], name: "index_polls_on_pending_opening_at", where: "((opened_at IS NULL) AND (closed_at IS NULL) AND (discarded_at IS NULL) AND (opening_at IS NOT NULL))"
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
   end

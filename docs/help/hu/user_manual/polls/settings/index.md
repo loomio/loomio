@@ -1,6 +1,6 @@
 ---
 title: Beállítások
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 6a9fd4fa980e28c4
+  opening-time: 2fe182c9536ef6e3
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -34,7 +34,7 @@ generated:
   add-content: f2515c65da92b653
   voting-options: 489cc319033ffdff
   edit-voting-options: 82c565cdbfc42031
-  opening-time: 2fbdd3e06fabae83
+  opening-time: d2593ff73a18e57e
   more-settings: cb3edf4e3a9ca244
   reminder: 8494c0e55397b4f7
   anonymous-voting: 25122b6c2fa90792
@@ -127,6 +127,8 @@ Kattints a szavazási lehetőség melletti ceruza ikonra a szerkesztőablak megn
 ### Időtartam
 
 Alapértelmezés szerint a szavazás azonnal megnyílik, amikor létrehozod. Ha későbbi időpontra szeretnéd ütemezni a megnyitást, vedd ki a jelölést az **A szavazás azonnal megnyílik** jelölőnégyzetből, és válaszd ki a megnyitás dátumát és időpontját.
+
+Az ütemezett szavazás megnyitása a kiválasztott időpont után körülbelül egy percet vehet igénybe.
 
 Ez időt adhat a beszélgetésre a szavazás megnyitása előtt, vagy segíthet biztosítani, hogy a szavazás vagy javaslat megfelelően legyen beállítva, és a megfelelő időpontban induljon.
 
