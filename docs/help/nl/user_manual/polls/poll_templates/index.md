@@ -1,6 +1,6 @@
 ---
 title: Peilingsjablonen
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 602c75aa282bf6e3
   who-can-manage-templates: 6dcd429a422ca5e1
   create-a-poll-template: 3dffa179fb78dc1a
-  template-title-subtitle-and-help: b09433fb96a714cf
-  voting-method: f9e06bd7ab14e7a0
-  example-title-details-and-tags: 1b47d60df7d4f051
-  response-options: e9a962af81aed020
-  duration-and-settings: 0ff57840b55396aa
+  template-title-subtitle-and-help: c0a0f874a019a625
+  voting-method: 6941930aa07c81eb
+  example-title-details-and-tags: d69b0bf54ef53d5f
+  response-options: 1b5c0c8902834a3c
+  duration-and-settings: 34359a391bde66ba
   manage-the-template-list: c2773799003e5ce8
   save-a-poll-as-a-template: 3ae361db115248c8
   start-a-new-template: b72713ccb3dc723a
-  configure-the-template: 56f352a892fc8fdf
+  configure-the-template: 8db9fc549ef830ba
+  edit-a-default-template: 3db420d6c20e1602
 title_source: 114cca246e357304
 title_generated: '0990c400c548d976'
 ---
@@ -69,9 +71,17 @@ Open de sjablonenlijst en selecteer **Nieuwe sjabloon**. Begin met een voorbeeld
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Een standaardsjabloon bewerken
+
+Om een standaardsjabloon zoals **Consent** aan te passen, open je het actiemenu en selecteer je **Sjabloon bewerken**. Deze optie is beschikbaar voor groepsadmins. Als je opslaat, wordt een aangepast sjabloon voor jouw groep gemaakt en wordt de standaardversie verborgen in de sjablonenlijst van de groep.
+
+![Het standaardsjabloon Consent met de actie Sjabloon bewerken zichtbaar](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Het sjabloon instellen
+## Sjablooninstellingen
 
 Geef het sjabloon een naam en ondertitel die beschrijven wanneer je het gebruikt. Je kunt alle andere velden aanpassen om ze geschikter te maken voor hergebruik. Nadat je **Sjabloon opslaan** hebt geselecteerd, verschijnt het sjabloon in de lijst wanneer mensen een nieuw voorstel of een nieuwe peiling starten.
 
@@ -79,13 +89,13 @@ Geef het sjabloon een naam en ondertitel die beschrijven wanneer je het gebruikt
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Sjabloontitel, ondertitel en hulp
+### Sjabloontitel, ondertitel en hulp
 
 Gebruik de titel en ondertitel om uit te leggen wanneer je het sjabloon kiest. Zet procesinstructies, besluitvormingsregels en links naar informatiebronnen in **Sjabloonhulp**.
 
 <!-- translation-section: voting-method -->
 
-#### Stemmethode
+### Stemmethode
 
 Kies wat deelnemers moeten aangeven en hoe het resultaat moet worden berekend.
 
@@ -101,13 +111,13 @@ Als je de stemmethode verandert, veranderen ook de beschikbare velden en de resu
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Voorbeeldtitel, details en labels
+### Voorbeeldtitel, details en labels
 
 Gebruik aanwijzingen voor de voorbeeldtitel en details als elke stemming andere inhoud nodig heeft. Voeg alleen standaard categorielabels toe als ze bij elk gebruik van het sjabloon van toepassing zijn.
 
 <!-- translation-section: response-options -->
 
-#### Antwoordopties
+### Antwoordopties
 
 Met methoden zoals Voorstel en Kiezen kun je antwoordopties instellen. Selecteer het potloodicoon naast een optie om het volgende te bewerken:
 
@@ -122,7 +132,7 @@ Formuleer opties zodat deelnemers het verschil ertussen kunnen zien zonder te ho
 
 <!-- translation-section: duration-and-settings -->
 
-#### Duur en instellingen
+### Duur en instellingen
 
 Stel een standaardduur in die geschikt is voor de meeste toepassingen van het sjabloon. De maker kan het sluitingstijdstip voor een afzonderlijke stemming aanpassen.
 

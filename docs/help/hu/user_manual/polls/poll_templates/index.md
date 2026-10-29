@@ -1,6 +1,6 @@
 ---
 title: Szavazási sablonok
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: d0536d14f08b8f1f
   who-can-manage-templates: 138021fefe136330
   create-a-poll-template: 40e0eddc7f902d7c
-  template-title-subtitle-and-help: 606a6f1120137297
-  voting-method: 2a5789f744edbc9c
-  example-title-details-and-tags: c9d573c33e44d07a
-  response-options: bbd20a7dfd3a3cd0
-  duration-and-settings: 86a6c3a19c400bc8
+  template-title-subtitle-and-help: 6513075b3eba60ff
+  voting-method: '093e7de6c5c816ad'
+  example-title-details-and-tags: c40bcf44faa3517c
+  response-options: 969ece4fd4afe274
+  duration-and-settings: 04d36bf6698bfd33
   manage-the-template-list: 6e59f45ace92921d
   save-a-poll-as-a-template: 803aeebd4d7a065e
   start-a-new-template: 41f96c7b3e0a6415
-  configure-the-template: e8470467870078af
+  configure-the-template: 166d47166cda7044
+  edit-a-default-template: 8572d30093938299
 title_source: 114cca246e357304
 title_generated: bf81c7a2bbcc8a9b
 ---
@@ -69,9 +71,17 @@ Nyisd meg a sablonlistát, és válaszd az **Új sablon** lehetőséget. Indulj 
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Alapértelmezett sablon szerkesztése
+
+Egy alapértelmezett sablon, például a **Beleegyezés** átalakításához nyisd meg a műveleti menüjét, és válaszd ki a **Sablon szerkesztése** lehetőséget. Ez a lehetőség a csoportadminok számára érhető el. Mentéskor egyéni sablon jön létre a csoportod számára, az alapértelmezett változat pedig rejtetté válik a csoport sablonlistájában.
+
+![A Beleegyezés alapértelmezett sablon a Sablon szerkesztése művelettel](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### A sablon beállítása
+## A sablon beállításai
 
 Adj a sablonnak olyan nevet és alcímet, amelyek leírják, mikor érdemes használni. A többi mezőt is módosíthatod, hogy jobban megfeleljenek az újrafelhasználásnak. A **Sablon mentése** kiválasztása után a sablon megjelenik a listában, amikor valaki új javaslatot vagy szavazást indít.
 
@@ -79,13 +89,13 @@ Adj a sablonnak olyan nevet és alcímet, amelyek leírják, mikor érdemes hasz
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### A sablon címe, alcíme és súgója
+### A sablon címe, alcíme és súgója
 
 A címmel és az alcímmel magyarázd el, mikor érdemes a sablont választani. A folyamatra vonatkozó útmutatást, a döntési szabályokat és a segédanyagokra mutató hivatkozásokat a **Sablon súgó** mezőben add meg.
 
 <!-- translation-section: voting-method -->
 
-#### Szavazási mód
+### Szavazási mód
 
 Válaszd ki, mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt.
 
@@ -101,13 +111,13 @@ A szavazási mód megváltoztatása módosítja a sablonban elérhető mezőket 
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Mintacím, részletek és címkék
+### Mintacím, részletek és címkék
 
 Használj segítő kérdéseket vagy útmutatást a mintacímhez és a részletekhez, ha minden szavazáshoz más tartalomra van szükség. Csak akkor adj meg alapértelmezett kategóriacímkéket, ha azok a sablon minden használatakor érvényesek.
 
 <!-- translation-section: response-options -->
 
-#### Válaszlehetőségek
+### Válaszlehetőségek
 
 Az olyan szavazási módoknál, mint a Javaslat és a Kiválasztás, beállíthatod a válaszlehetőségeket. Válaszd ki a lehetőség melletti ceruza ikont az alábbiak szerkesztéséhez:
 
@@ -122,7 +132,7 @@ Az olyan szavazási módoknál, mint a Javaslat és a Kiválasztás, beállítha
 
 <!-- translation-section: duration-and-settings -->
 
-#### Időtartam és beállítások
+### Időtartam és beállítások
 
 Állíts be olyan alapértelmezett időtartamot, amely a sablon legtöbb használatához megfelelő. A szerző az egyes szavazásoknál módosíthatja a lezárás időpontját.
 

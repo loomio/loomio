@@ -1,6 +1,6 @@
 ---
 title: Шаблоны голосований
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 22e92f49a3370649
   who-can-manage-templates: b3308589aaba9d9d
   create-a-poll-template: 051a5e4c0d4e5414
-  template-title-subtitle-and-help: ab1dd28241c529c1
-  voting-method: 4cc308fdcd640123
-  example-title-details-and-tags: fa3d68ecf9ed86f1
-  response-options: 0e6aa3d386363a13
-  duration-and-settings: a9e6d418ad94886a
+  template-title-subtitle-and-help: b79a52118a412d5e
+  voting-method: a4d31e2cc67c42a3
+  example-title-details-and-tags: 111c6f62b4c7035d
+  response-options: cfebbd9b88e32422
+  duration-and-settings: 11d45618a3c0d4a0
   manage-the-template-list: f6996f150ebba618
   save-a-poll-as-a-template: d103dd3c27475c48
   start-a-new-template: 83099c9af7664c54
-  configure-the-template: 4c58818245717539
+  configure-the-template: b5ee0a3626eab248
+  edit-a-default-template: 585a5b59e8dd6b2d
 title_source: 114cca246e357304
 title_generated: 791f225f6cb4ad29
 ---
@@ -69,9 +71,17 @@ title_generated: 791f225f6cb4ad29
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Редактирование стандартного шаблона
+
+Чтобы адаптировать стандартный шаблон, например **Согласие**, откройте его меню действий и выберите **Редактировать шаблон**. Эта возможность доступна администраторам группы. При сохранении создаётся собственный шаблон для вашей группы, а стандартная версия скрывается из её списка шаблонов.
+
+![Стандартный шаблон «Согласие» с доступным действием «Редактировать шаблон»](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Настройка шаблона
+## Настройки шаблона
 
 Задайте шаблону название и подзаголовок, которые объясняют, когда его использовать. Вы можете изменить любые другие поля, чтобы они лучше подходили для многократного использования. После выбора **Сохранить шаблон** шаблон появится в списке при запуске нового предложения или опроса.
 
@@ -79,13 +89,13 @@ title_generated: 791f225f6cb4ad29
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Название, подзаголовок и справка шаблона
+### Название, подзаголовок и справка шаблона
 
 Используйте название и подзаголовок, чтобы объяснить, когда выбирать шаблон. Добавьте инструкции по процессу, правила принятия решений и ссылки на ресурсы в поле **Помощь с шаблонами**.
 
 <!-- translation-section: voting-method -->
 
-#### Способ голосования
+### Способ голосования
 
 Выберите, что участникам нужно выразить и как следует рассчитывать результат.
 
@@ -101,13 +111,13 @@ title_generated: 791f225f6cb4ad29
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Пример названия, описания и тегов
+### Пример названия, описания и тегов
 
 Используйте подсказки для примера названия и описания, если для каждого опроса нужно разное содержимое. Добавляйте теги категорий по умолчанию только тогда, когда они подходят для каждого использования шаблона.
 
 <!-- translation-section: response-options -->
 
-#### Варианты ответа
+### Варианты ответа
 
 Такие способы голосования, как Предложение и Выбор, позволяют настроить варианты ответа. Нажмите на значок карандаша рядом с вариантом, чтобы отредактировать:
 
@@ -122,7 +132,7 @@ title_generated: 791f225f6cb4ad29
 
 <!-- translation-section: duration-and-settings -->
 
-#### Продолжительность и настройки
+### Продолжительность и настройки
 
 Задайте продолжительность по умолчанию, которая подходит для большинства случаев использования шаблона. Автор может изменить время закрытия отдельного опроса.
 

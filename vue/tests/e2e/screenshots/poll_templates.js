@@ -282,6 +282,30 @@ module.exports = {
     );
   },
 
+  'edit_default_template': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_custom_poll_template?view=list');
+    page.expectText('.poll-common-templates-list', 'Policy change consent process');
+    page.resizeWindow(1100, 1300);
+    page.pause(300);
+    page.execute(`document.querySelector('.poll-common-templates-list').closest('.v-card').classList.add('manual-template-list-card')`);
+    page.clickAndWait('.decision-tools-card__template--consent .action-menu--btn', '.v-overlay--active .action-dock__button--edit_default_template');
+    screenshot.captureRegion(
+      'polls/poll_templates/edit_default_template',
+      ['.poll-form-page .v-breadcrumbs a', '.manual-template-list-card', '.v-overlay--active .v-list'],
+      {
+        width: 1100,
+        height: 1300,
+        padding: 24,
+        spotlight: {selectors: ['.decision-tools-card__template--consent .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
+    );
+    page.clickAndWait('.action-dock__button--edit_default_template', '.poll-template-form');
+    page.expectValue('.poll-template-form-fields__process-name input', '');
+    page.expectText('.poll-template-form', 'Consent');
+  },
+
   'template_manage': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);

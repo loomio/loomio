@@ -1,6 +1,6 @@
 ---
 title: 投票テンプレート
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: b639b0623cf3c623
   who-can-manage-templates: ca9ce236b6e42ea8
   create-a-poll-template: 4231b06a60e5dd40
-  template-title-subtitle-and-help: b26bc768db3976a3
-  voting-method: 0e9b8c8b1e776bce
-  example-title-details-and-tags: ee6d358f48c275d8
-  response-options: 66ae5407e301fff6
-  duration-and-settings: 51691461b957a55c
+  template-title-subtitle-and-help: 54d6c9a919de49b7
+  voting-method: a09300b8f89542b7
+  example-title-details-and-tags: 555bddc190301689
+  response-options: 0d23ec7906ce6ab3
+  duration-and-settings: fb453195b431beae
   manage-the-template-list: 318125ec61eeefea
   save-a-poll-as-a-template: 723208bb847716c3
   start-a-new-template: 97787fe021e66307
-  configure-the-template: 514aaca305700a01
+  configure-the-template: 6a7fbe6df6006da3
+  edit-a-default-template: 81b5fdb907a06b19
 title_source: 114cca246e357304
 title_generated: 9112f2db22c72b79
 ---
@@ -69,9 +71,17 @@ title_generated: 9112f2db22c72b79
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### 既定のテンプレートを編集する
+
+**同意**などの既定のテンプレートを調整するには、アクションメニューを開いて**テンプレートの編集**を選択します。この操作はグループ管理者が行えます。保存すると、グループ専用のテンプレートが作成され、既定のテンプレートはグループのテンプレート一覧で非表示になります。
+
+![テンプレートの編集アクションが表示された既定の同意テンプレート](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### テンプレートを設定する
+## テンプレートの設定
 
 テンプレートをどのようなときに使うかがわかる名前とサブタイトルを付けます。ほかの項目も、再利用しやすいように変更できます。**テンプレートを保存**を選択すると、新しい提案やアンケートを開始するときに、そのテンプレートが一覧に表示されます。
 
@@ -79,13 +89,13 @@ title_generated: 9112f2db22c72b79
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### テンプレートのタイトル、サブタイトル、ヘルプ
+### テンプレートのタイトル、サブタイトル、ヘルプ
 
 タイトルとサブタイトルで、どのようなときにテンプレートを選ぶかを説明します。**テンプレートのヘルプ**には、進め方の説明、決定のルール、参考資料へのリンクを記載します。
 
 <!-- translation-section: voting-method -->
 
-#### 投票方法
+### 投票方法
 
 参加者に何を表明してもらうかと、結果をどのように計算するかを選びます。
 
@@ -101,13 +111,13 @@ title_generated: 9112f2db22c72b79
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### タイトル、詳細、タグの例
+### タイトル、詳細、タグの例
 
-投票ごとに異なる内容が必要な場合は、タイトルと詳細の例に、記入を促す文を使ってください。分類用のタグを初期設定に追加するのは、そのテンプレートを使うたびに適用できる場合だけにしてください。
+投票ごとに異なる内容が必要な場合は、タイトルと詳細の例に、記入を促す文を使います。分類用のタグを初期設定に追加するのは、そのテンプレートを使うたびに適用できる場合だけにします。
 
 <!-- translation-section: response-options -->
 
-#### 回答の選択肢
+### 回答の選択肢
 
 提案や選択などの投票方法では、回答の選択肢を設定できます。選択肢の横にある鉛筆アイコンを選択すると、次の項目を編集できます。
 
@@ -118,11 +128,11 @@ title_generated: 9112f2db22c72b79
 
 ![](poll_type_edit_option.png)
 
-参加者が推測せずに違いを理解できるよう、選択肢を定めてください。それぞれの意味は、グループが実際に使っている決定のルールに合わせてください。
+参加者が推測せずに違いを理解できるよう、選択肢を定めます。それぞれの意味は、グループが実際に使っている決定のルールに合わせます。
 
 <!-- translation-section: duration-and-settings -->
 
-#### 期間と設定
+### 期間と設定
 
 テンプレートの通常の用途に適した期間を初期設定として指定します。作成者は、個別の投票の締め切り日時を変更できます。
 

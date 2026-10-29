@@ -1,6 +1,6 @@
 ---
 title: Modelos de enquetes
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 3a4a66d9acf40a3d
   who-can-manage-templates: 83e2a396784e1044
   create-a-poll-template: fee35008f18fdd60
-  template-title-subtitle-and-help: 86d596d6ac28dc9c
-  voting-method: a12adc208f147455
-  example-title-details-and-tags: 192e248ea918c454
-  response-options: 4c54ad4c6ee9de08
-  duration-and-settings: b834cfd461fd4a59
+  template-title-subtitle-and-help: 89cb319a83033fa1
+  voting-method: 8f098612064c12f9
+  example-title-details-and-tags: 4af49d802094a864
+  response-options: '01239d8e216c72e5'
+  duration-and-settings: f801c12b57b3276e
   manage-the-template-list: 154c1395ab809a60
   save-a-poll-as-a-template: a76addad156cf71e
   start-a-new-template: 60083397d1c24ee5
-  configure-the-template: 05bf47fb258a6ddf
+  configure-the-template: 111569685e647766
+  edit-a-default-template: d93b133341414a74
 title_source: 114cca246e357304
 title_generated: 38127cb43d236492
 ---
@@ -69,9 +71,17 @@ Abra a lista de modelos e selecione **Novo modelo**. Comece com um exemplo ou um
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Editar um modelo padrão
+
+Para adaptar um modelo padrão como **Consentimento**, abra o menu de ações dele e selecione **Editar modelo**. Essa opção está disponível para admins do grupo. Ao salvar, você cria um modelo personalizado para seu grupo e oculta a versão padrão da lista de modelos dele.
+
+![O modelo padrão Consentimento com a ação Editar modelo visível](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Configure o modelo
+## Configurações do modelo
 
 Dê ao modelo um nome e um subtítulo que descrevam quando usá-lo. Você pode modificar qualquer um dos outros campos para torná-los mais adequados para reutilização. Depois que você selecionar **Salvar modelo**, o modelo será listado quando as pessoas iniciarem uma nova proposta ou enquete.
 
@@ -79,13 +89,13 @@ Dê ao modelo um nome e um subtítulo que descrevam quando usá-lo. Você pode m
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Título, subtítulo e ajuda do modelo
+### Título, subtítulo e ajuda do modelo
 
 Use o título e o subtítulo para explicar quando escolher o modelo. Inclua orientações sobre o processo, regras de decisão e links para recursos em **Ajuda de modelo**.
 
 <!-- translation-section: voting-method -->
 
-#### Método de votação
+### Método de votação
 
 Escolha o que os participantes precisam expressar e como o resultado deve ser calculado.
 
@@ -101,13 +111,13 @@ Alterar o método de votação muda os campos e o cálculo do resultado disponí
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Título, detalhes e tags de exemplo
+### Título, detalhes e tags de exemplo
 
 Use orientações para o título e os detalhes de exemplo quando cada votação precisar de conteúdo diferente. Adicione tags de categoria padrão apenas quando elas se aplicarem a todos os usos do modelo.
 
 <!-- translation-section: response-options -->
 
-#### Opções de resposta
+### Opções de resposta
 
 Métodos como Proposta e Escolher permitem configurar opções de resposta. Selecione o ícone de lápis ao lado de uma opção para editar:
 
@@ -122,7 +132,7 @@ Defina as opções para que os participantes possam distinguir umas das outras s
 
 <!-- translation-section: duration-and-settings -->
 
-#### Duração e configurações
+### Duração e configurações
 
 Defina uma duração padrão adequada para a maioria dos usos do modelo. O autor pode alterar o horário de encerramento de uma votação específica.
 

@@ -1,6 +1,6 @@
 ---
 title: תבניות סקר
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 509051f4b08046ed
   who-can-manage-templates: bbbcabd18f41454d
   create-a-poll-template: 93377a41bc54bac4
-  template-title-subtitle-and-help: 751b2479d931b2f8
-  voting-method: 24d4a50bb3e63f47
-  example-title-details-and-tags: 8588ba2a90d8c4d7
-  response-options: 2791136fcdc0f6a7
-  duration-and-settings: ad162c467f8934f2
+  template-title-subtitle-and-help: 24119aba5f92c5a0
+  voting-method: 278f0c87bf918c03
+  example-title-details-and-tags: c5c66ec400734669
+  response-options: 7be1e7525173f394
+  duration-and-settings: 584983eaa4ec3b8c
   manage-the-template-list: 8c0cc3f24c1d87c4
   save-a-poll-as-a-template: e68b0609d97f146d
   start-a-new-template: b49f326b289fd1f8
-  configure-the-template: 86857f8ca063fe38
+  configure-the-template: 5c903ecfc6f72056
+  edit-a-default-template: eaaca9858cab6535
 title_source: 114cca246e357304
 title_generated: 9e12dfd46f55c441
 needs_review:
@@ -72,9 +74,17 @@ needs_review:
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### עריכת תבנית ברירת מחדל
+
+כדי להתאים תבנית ברירת מחדל כגון **הַסכָּמָה**, יש לפתוח את תפריט הפעולות שלה ולבחור ב־**ערוך תבנית**. אפשרות זו זמינה למנהלי קבוצה. השמירה יוצרת תבנית מותאמת לקבוצה ומסתירה את גרסת ברירת המחדל מרשימת התבניות שלה.
+
+![תבנית ברירת המחדל הסכמה עם הפעולה ערוך תבנית גלויה](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### הגדרת התבנית
+## הגדרות התבנית
 
 יש לתת לתבנית שם וכותרת משנה המתארים מתי להשתמש בה. ניתן לשנות כל אחד מהשדות האחרים כדי להתאים אותם לשימוש חוזר. לאחר בחירה ב־**שמור תבנית**, התבנית תופיע ברשימה בעת פתיחת הצעה או סקר חדשים.
 
@@ -82,13 +92,13 @@ needs_review:
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### כותרת התבנית, כותרת המשנה והעזרה
+### כותרת התבנית, כותרת המשנה והעזרה
 
 יש להשתמש בכותרת ובכותרת המשנה כדי להסביר מתי לבחור בתבנית. יש להוסיף הנחיות לתהליך, כללי קבלת החלטות וקישורים למשאבים בשדה **עזרה בתבנית**.
 
 <!-- translation-section: voting-method -->
 
-#### שיטת הצבעה
+### שיטת הצבעה
 
 יש לבחור מה המשתתפים צריכים להביע וכיצד יש לחשב את התוצאה.
 
@@ -104,13 +114,13 @@ needs_review:
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### כותרת ופרטים לדוגמה ותגיות
+### כותרת ופרטים לדוגמה ותגיות
 
 כאשר בכל הצבעה נדרש תוכן שונה, יש להשתמש בהנחיות לכותרת ולפרטים לדוגמה. יש להוסיף תגיות קטגוריה כברירת מחדל רק כאשר הן מתאימות לכל שימוש בתבנית.
 
 <!-- translation-section: response-options -->
 
-#### אפשרויות תגובה
+### אפשרויות תגובה
 
 שיטות כגון הצעה ובחירה מאפשרות להגדיר אפשרויות תגובה. יש לבחור בסמל העיפרון שלצד אפשרות כדי לערוך:
 
@@ -125,7 +135,7 @@ needs_review:
 
 <!-- translation-section: duration-and-settings -->
 
-#### משך והגדרות
+### משך והגדרות
 
 יש להגדיר משך ברירת מחדל שמתאים לרוב השימושים בתבנית. ניתן לשנות את מועד הסגירה של הצבעה מסוימת על ידי מי שיצרו אותה.
 

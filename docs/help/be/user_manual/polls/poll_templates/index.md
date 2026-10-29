@@ -1,6 +1,6 @@
 ---
 title: Шаблоны апытанняў
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 629f7d966853e26a
   who-can-manage-templates: e746b5b423b059d3
   create-a-poll-template: 064fd16253a392ef
-  template-title-subtitle-and-help: 9e9c0a6b0a1cf2f1
-  voting-method: 29f53a1a051f8b49
-  example-title-details-and-tags: '09eece349a393e75'
-  response-options: d898cbe0a8bcfb9b
-  duration-and-settings: 8ec6c4714801bc20
+  template-title-subtitle-and-help: 44a54c628b05e79e
+  voting-method: 6e0102d9fa9982f7
+  example-title-details-and-tags: 8ddae6e7092f9aa2
+  response-options: 8b46dee67b049e25
+  duration-and-settings: 0b102df1aa280be5
   manage-the-template-list: 201c2ae0d0546466
   save-a-poll-as-a-template: 29983c3ee32d08e3
   start-a-new-template: 9b17dc06fffcff91
-  configure-the-template: 8f6dcda48295aa57
+  configure-the-template: d72a331fe107f69e
+  edit-a-default-template: 7b2ee8a97d3a678a
 title_source: 114cca246e357304
 title_generated: 819e1c4bcf2cf380
 ---
@@ -69,9 +71,17 @@ title_generated: 819e1c4bcf2cf380
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Рэдагаванне стандартнага шаблону
+
+Каб адаптаваць стандартны шаблон, напрыклад **Згода**, адкрыйце яго меню дзеянняў і выберыце **Рэдагаваць шаблон**. Гэта дзеянне даступнае адміністратарам групы. Пры захаванні ствараецца ўласны шаблон для вашай групы, а стандартная версія хаваецца са спіса яе шаблонаў.
+
+![Стандартны шаблон «Згода» з бачным дзеяннем «Рэдагаваць шаблон»](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Наладжванне шаблону
+## Налады шаблону
 
 Задайце шаблону назву і падзагаловак, якія тлумачаць, калі яго выкарыстоўваць. Вы можаце змяніць любыя іншыя палі, каб яны лепш падыходзілі для паўторнага выкарыстання. Пасля націскання **Захаваць шаблон** ён будзе паказвацца ў спісе пры стварэнні новай прапановы або апытання.
 
@@ -79,13 +89,13 @@ title_generated: 819e1c4bcf2cf380
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Назва, падзагаловак і даведка шаблону
+### Назва, падзагаловак і даведка шаблону
 
 Выкарыстоўвайце назву і падзагаловак, каб патлумачыць, калі выбіраць шаблон. Змясціце інструкцыі па працэсе, правілы прыняцця рашэнняў і спасылкі на рэсурсы ў поле **Даведка па шаблонах**.
 
 <!-- translation-section: voting-method -->
 
-#### Спосаб галасавання
+### Спосаб галасавання
 
 Вызначце, што ўдзельнікам трэба выказаць і як трэба разлічваць вынікі.
 
@@ -101,13 +111,13 @@ title_generated: 819e1c4bcf2cf380
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Прыклад назвы, апісання і тэгаў
+### Прыклад назвы, апісання і тэгаў
 
 Выкарыстоўвайце падказкі для прыкладу назвы і апісання, калі кожнаму галасаванню патрэбны іншы змест. Дадавайце тэгі катэгорый па змаўчанні толькі тады, калі яны падыходзяць для кожнага выкарыстання шаблону.
 
 <!-- translation-section: response-options -->
 
-#### Варыянты адказу
+### Варыянты адказу
 
 Такія спосабы, як Прапанова і Выбар, дазваляюць наладжваць варыянты адказу. Націсніце значок алоўка побач з варыянтам, каб адрэдагаваць:
 
@@ -122,7 +132,7 @@ title_generated: 819e1c4bcf2cf380
 
 <!-- translation-section: duration-and-settings -->
 
-#### Працягласць і налады
+### Працягласць і налады
 
 Задайце працягласць па змаўчанні, якая падыходзіць для большасці выпадкаў выкарыстання шаблону. Пры стварэнні асобнага галасавання можна змяніць час яго закрыцця.
 

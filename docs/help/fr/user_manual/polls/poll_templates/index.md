@@ -1,6 +1,6 @@
 ---
 title: Modèles de sondage
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: f618ac9c58fb2d1b
   who-can-manage-templates: 8415575d22a226aa
   create-a-poll-template: 1334d2e3d3d73853
-  template-title-subtitle-and-help: f86e6b5c622a0779
-  voting-method: c83ce1c8b15dbba6
-  example-title-details-and-tags: d561e2ac9ab0c21a
-  response-options: 0307d5fc0b9f8091
-  duration-and-settings: 400ce4e438e03d4d
+  template-title-subtitle-and-help: 344248e8b3992859
+  voting-method: dadde6a8c85262e6
+  example-title-details-and-tags: acd0018624924a32
+  response-options: 60c3084a72cb9aa0
+  duration-and-settings: fd3770d58d5efd92
   manage-the-template-list: d5fb47d49b03482d
   save-a-poll-as-a-template: 382da00f01cd87df
   start-a-new-template: 12253dceea1c3b74
-  configure-the-template: dd03772463cbb121
+  configure-the-template: 212b0fbb68e5604c
+  edit-a-default-template: 8e612d7b6c8ef601
 title_source: 114cca246e357304
 title_generated: cd672e826498e8c7
 ---
@@ -69,9 +71,17 @@ Ouvrez la liste des modèles et sélectionnez **Nouveau modèle**. Partez d’un
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Modifier un modèle par défaut
+
+Pour adapter un modèle par défaut comme **Consentement**, ouvrez son menu d’actions et sélectionnez **Modifier le modèle**. Cette option est accessible aux administrateurs du groupe. L’enregistrement crée un modèle personnalisé pour votre groupe et masque la version par défaut dans sa liste de modèles.
+
+![Le modèle par défaut Consentement avec l’action Modifier le modèle visible](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Configurer le modèle
+## Paramètres du modèle
 
 Donnez au modèle un nom et un sous-titre qui indiquent quand l’utiliser. Vous pouvez modifier tous les autres champs pour les rendre plus adaptés à la réutilisation. Après avoir sélectionné **Enregistrer le modèle**, le modèle apparaîtra dans la liste lorsqu’une personne lancera une nouvelle proposition ou un nouveau sondage.
 
@@ -79,13 +89,13 @@ Donnez au modèle un nom et un sous-titre qui indiquent quand l’utiliser. Vous
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Titre, sous-titre et aide du modèle
+### Titre, sous-titre et aide du modèle
 
 Utilisez le titre et le sous-titre pour expliquer quand choisir le modèle. Ajoutez les consignes sur le processus, les règles de décision et les liens vers des ressources dans **Aide sur les modèles**.
 
 <!-- translation-section: voting-method -->
 
-#### Méthode de vote
+### Méthode de vote
 
 Choisissez ce que les participants doivent exprimer et comment le résultat doit être calculé.
 
@@ -101,13 +111,13 @@ Changer la méthode de vote modifie les champs et le calcul du résultat disponi
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Exemples de titre, de détails et de tags
+### Exemples de titre, de détails et de tags
 
 Utilisez des consignes pour le titre et les détails de l’exemple lorsque chaque vote nécessite un contenu différent. Ajoutez des tags de catégorie par défaut uniquement s’ils s’appliquent à chaque utilisation du modèle.
 
 <!-- translation-section: response-options -->
 
-#### Options de réponse
+### Options de réponse
 
 Les méthodes telles que Proposition et Choisir vous permettent de configurer les options de réponse. Sélectionnez l’icône de crayon à côté d’une option pour modifier :
 
@@ -122,7 +132,7 @@ Définissez les options pour que les participants puissent les distinguer sans a
 
 <!-- translation-section: duration-and-settings -->
 
-#### Durée et paramètres
+### Durée et paramètres
 
 Définissez une durée par défaut adaptée à la plupart des utilisations du modèle. L’auteur peut modifier l’heure de clôture d’un vote particulier.
 

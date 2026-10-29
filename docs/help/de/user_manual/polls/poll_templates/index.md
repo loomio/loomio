@@ -1,6 +1,6 @@
 ---
 title: Umfragevorlagen
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 833dd5852abe2772
   who-can-manage-templates: 0ab5fdb13174457a
   create-a-poll-template: 9b5594433fc6e4d9
-  template-title-subtitle-and-help: '8776290288494330'
-  voting-method: 431a077271966b7f
-  example-title-details-and-tags: fe2fc9eb117d09e1
-  response-options: ffaadf532d7e75a9
-  duration-and-settings: b59d855fa6912e9c
+  template-title-subtitle-and-help: a4ab5501c937d468
+  voting-method: 3459cf9e4abd78dc
+  example-title-details-and-tags: 7054bc26fb5b2e04
+  response-options: bb24a8d1d824a768
+  duration-and-settings: f2f446bba7ea510a
   manage-the-template-list: 71fd35b164b173be
   save-a-poll-as-a-template: 75dd4109015f8d27
   start-a-new-template: 23fc3fbe925eba29
-  configure-the-template: 53c672275545d7d0
+  configure-the-template: a76349ad2b7ff44f
+  edit-a-default-template: b27441118773ebb5
 title_source: 114cca246e357304
 title_generated: 2f338bb1d4e6c8b2
 needs_review:
@@ -71,9 +73,17 @@ Abstimmungstermine, Abstimmende, Stimmen, Ergebnisse und das Fazit der Abstimmun
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Eine Standardvorlage bearbeiten
+
+Um eine Standardvorlage wie **Konsent** anzupassen, öffne ihr Aktionsmenü und wähle **Vorlage bearbeiten**. Diese Option steht Gruppen-Admins zur Verfügung. Beim Speichern wird eine eigene Vorlage für deine Gruppe erstellt und die Standardversion in der Vorlagenliste der Gruppe ausgeblendet.
+
+![Die Standardvorlage Konsent mit sichtbarer Aktion Vorlage bearbeiten](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Die Vorlage konfigurieren
+## Vorlageneinstellungen
 
 Gib der Vorlage einen Namen und einen Untertitel, die beschreiben, wann sie verwendet werden sollte. Du kannst alle anderen Felder anpassen, damit sie sich besser zur Wiederverwendung eignen. Nachdem du **Vorlage speichern** ausgewählt hast, wird die Vorlage angezeigt, wenn Personen einen neuen Vorschlag oder eine neue Abstimmung starten.
 
@@ -81,13 +91,13 @@ Gib der Vorlage einen Namen und einen Untertitel, die beschreiben, wann sie verw
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Vorlagentitel, Untertitel und Hilfe
+### Vorlagentitel, Untertitel und Hilfe
 
 Erkläre mit dem Titel und Untertitel, wann die Vorlage gewählt werden sollte. Trage Hinweise zum Prozess, Entscheidungsregeln und Links zu Ressourcen in die **Vorlagenhilfe** ein.
 
 <!-- translation-section: voting-method -->
 
-#### Abstimmungsart
+### Abstimmungsart
 
 Wähle, was Teilnehmende ausdrücken sollen und wie das Ergebnis berechnet werden soll.
 
@@ -103,13 +113,13 @@ Wenn du die Abstimmungsart änderst, ändern sich die verfügbaren Felder und di
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Beispieltitel, Details und Schlagwörter
+### Beispieltitel, Details und Schlagwörter
 
-Verwende Formulierungshilfen für den Beispieltitel und die Details, wenn für jede Stimmabgabe andere Inhalte benötigt werden. Füge voreingestellte Schlagwörter zur Kategorisierung nur hinzu, wenn sie bei jeder Verwendung der Vorlage zutreffen.
+Verwende Formulierungshilfen für den Beispieltitel und die Details, wenn für jede Stimme andere Inhalte benötigt werden. Füge voreingestellte Schlagwörter zur Kategorisierung nur hinzu, wenn sie bei jeder Verwendung der Vorlage zutreffen.
 
 <!-- translation-section: response-options -->
 
-#### Antwortoptionen
+### Antwortoptionen
 
 Bei Abstimmungsarten wie Vorschlag und Auswählen kannst du Antwortoptionen konfigurieren. Wähle das Stiftsymbol neben einer Option, um Folgendes zu bearbeiten:
 
@@ -124,7 +134,7 @@ Definiere Optionen so, dass Teilnehmende sie unterscheiden können, ohne raten z
 
 <!-- translation-section: duration-and-settings -->
 
-#### Dauer und Einstellungen
+### Dauer und Einstellungen
 
 Lege eine voreingestellte Dauer fest, die für die meisten Verwendungen der Vorlage geeignet ist. Die erstellende Person kann den Schlusszeitpunkt für eine einzelne Abstimmung ändern.
 

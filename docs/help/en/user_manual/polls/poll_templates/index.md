@@ -32,9 +32,17 @@ Open the template list and select **New template**. Start with an example or a b
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Edit a default template
+
+To adapt a default template such as **Consent**, open its action menu and select **Edit template**. This option is available to group admins. Saving creates a custom template for your group and hides the default version from its template list.
+
+![The Consent default template with its Edit template action visible](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Configure the template
+## Template settings
 
 Give the template a name and subtitle that describe when to use it. You can modify any of the other fields to make them more suitable for reuse. After you select **Save template**, the template will be listed when people start a new proposal or poll.
 
@@ -42,13 +50,13 @@ Give the template a name and subtitle that describe when to use it. You can modi
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Template title, subtitle, and help
+### Template title, subtitle, and help
 
 Use the title and subtitle to explain when to choose the template. Put process guidance, decision rules, and links to resources in **Template help**.
 
 <!-- translation-section: voting-method -->
 
-#### Voting method
+### Voting method
 
 Choose what participants need to express and how the result should be calculated.
 
@@ -64,13 +72,13 @@ Changing the voting method changes the fields and result calculation available t
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Example title, details, and tags
+### Example title, details, and tags
 
 Use prompts for the example title and details when each vote needs different content. Add default category tags only when they apply every time the template is used.
 
 <!-- translation-section: response-options -->
 
-#### Response options
+### Response options
 
 Methods such as Proposal and Choose let you configure response options. Select the pencil icon beside an option to edit:
 
@@ -85,7 +93,7 @@ Define options so participants can tell the difference between them without gues
 
 <!-- translation-section: duration-and-settings -->
 
-#### Duration and settings
+### Duration and settings
 
 Set a default duration that is suitable for most uses of the template. The author can change the closing time for an individual vote.
 

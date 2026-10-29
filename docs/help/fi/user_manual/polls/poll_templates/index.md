@@ -1,6 +1,6 @@
 ---
 title: Kyselymallit
-source_revision: 595e8cfd18014f10702d5ac514fd3aa3cbf0beb0
+source_revision: 00d781409c832b216c95759c1369678ad240e246
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,28 +9,30 @@ sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
   create-a-poll-template: 0fafc6275b6c9153
-  template-title-subtitle-and-help: fba07d32acbd9707
-  voting-method: 521873388e929bad
-  example-title-details-and-tags: 664997906f52f40c
-  response-options: 53b3f1f6d01353f2
-  duration-and-settings: 81c3c1bc8b33d5bb
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
+  response-options: 727afbf0dcea6069
+  duration-and-settings: f1f3643e94524af9
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 9e620830fa0955f9
+  configure-the-template: bec89f7804dd12f8
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 118c34aa89fee06b
   who-can-manage-templates: ac0f1499dcd3fdb7
   create-a-poll-template: 78bc97e104c5da3e
-  template-title-subtitle-and-help: d8c7f28bd15c89a3
-  voting-method: 6b0a89ef64c6a8a7
-  example-title-details-and-tags: 5a23a185afcf4398
-  response-options: 5d8f5e172669ac2d
-  duration-and-settings: 6a905cb931d69d54
+  template-title-subtitle-and-help: 3ec0fb67dd959f51
+  voting-method: 2162798a730d20e9
+  example-title-details-and-tags: ea5a7b3f71daa65b
+  response-options: 328e97027f9e1c75
+  duration-and-settings: 0c8c9889123f698c
   manage-the-template-list: 0bf7894caa98552a
   save-a-poll-as-a-template: 06f4be9e88c10c14
   start-a-new-template: 5e58489e7152e692
-  configure-the-template: 625891cf23b8a5c4
+  configure-the-template: e5994b5cec68b91e
+  edit-a-default-template: 4c63b99976fc0d15
 title_source: 114cca246e357304
 title_generated: 22a10edb0e6d9b26
 needs_review:
@@ -71,9 +73,17 @@ Avaa malliluettelo ja valitse **Uusi malli**. Aloita esimerkistä tai tyhjästä
 
 ![](proposal_template_setting.png)
 
+<!-- translation-section: edit-a-default-template -->
+
+### Muokkaa oletusmallia
+
+Jos haluat mukauttaa oletusmallia, kuten **Suostumus**, avaa sen toimintovalikko ja valitse **Muokkaa mallia**. Tämä toiminto on ryhmän ylläpitäjien käytettävissä. Tallentaminen luo ryhmällesi oman mallin ja piilottaa oletusversion ryhmän malliluettelosta.
+
+![Suostumus-oletusmalli, jonka Muokkaa mallia -toiminto on näkyvissä](edit_default_template.png)
+
 <!-- translation-section: configure-the-template -->
 
-### Määritä mallin asetukset
+## Mallin asetukset
 
 Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käyttää. Voit muokata muitakin kenttiä niin, että ne sopivat paremmin uudelleenkäyttöön. Kun valitset **Tallenna mallipohja**, malli näkyy luettelossa, kun käyttäjät aloittavat uuden ehdotuksen tai kyselyn.
 
@@ -81,13 +91,13 @@ Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käytt
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
-#### Mallin otsikko, alaotsikko ja ohjeet
+### Mallin otsikko, alaotsikko ja ohjeet
 
 Kerro otsikossa ja alaotsikossa, milloin malli kannattaa valita. Lisää prosessin ohjeet, päätöksentekosäännöt ja linkit lisämateriaaleihin kohtaan **Mallipohjan ohjeet**.
 
 <!-- translation-section: voting-method -->
 
-#### Äänestystapa
+### Äänestystapa
 
 Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan.
 
@@ -103,13 +113,13 @@ Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan.
 
 <!-- translation-section: example-title-details-and-tags -->
 
-#### Esimerkkiotsikko, kuvaus ja tunnisteet
+### Esimerkkiotsikko, kuvaus ja tunnisteet
 
 Käytä esimerkkiotsikossa ja kuvauksessa ohjaavia kysymyksiä tai ohjeita, kun jokainen äänestys tarvitsee erilaisen sisällön. Lisää oletusarvoisia luokittelutunnisteita vain, jos ne sopivat mallin jokaiseen käyttökertaan.
 
 <!-- translation-section: response-options -->
 
-#### Vastausvaihtoehdot
+### Vastausvaihtoehdot
 
 Äänestystavat, kuten Ehdotus ja Valinta, antavat sinun määrittää vastausvaihtoehdot. Napsauta vaihtoehdon vieressä olevaa kynäkuvaketta muokataksesi seuraavia tietoja:
 
@@ -124,7 +134,7 @@ Määritä vaihtoehdot niin, että osallistujat ymmärtävät niiden erot arvail
 
 <!-- translation-section: duration-and-settings -->
 
-#### Kesto ja asetukset
+### Kesto ja asetukset
 
 Aseta oletuskesto, joka sopii mallin useimpiin käyttötarkoituksiin. Laatija voi muuttaa yksittäisen äänestyksen päättymisaikaa.
 
