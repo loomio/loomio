@@ -171,6 +171,8 @@ When results are hidden until a vote is cast, people can see vote choices and re
 
 When results are hidden until voting closes, replies to votes and mentions in vote reasons are disabled until the poll closes. Thread members can still comment on the poll and reply to comments. You can extend the closing time while the poll is open, but cannot reopen it after it closes.
 
+People with permission to edit a poll can change its details and settings, including anonymous voting and result visibility, before voting opens. Once voting opens, anonymity is fixed and results hidden until closing cannot be revealed early.
+
 Printing and exports, including Markdown, ignore the "hide until a vote is cast" setting and include votes and replies. Results and vote reasons hidden until closing remain hidden until the poll closes. Ordinary comments remain available in the thread, search, and exports.
 
 Anonymous polls always hide results until voting closes. The STV Election

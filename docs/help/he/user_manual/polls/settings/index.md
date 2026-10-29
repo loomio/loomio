@@ -1,10 +1,10 @@
 ---
 title: הגדרות
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 55da41038e171ed3
   anonymous-voting: 56a6bc77e42331ff
   vote-reason: 19e4130ac201561b
-  hide-results: e177d54414fefe2c
+  hide-results: 489b2bf75dd17d9c
   start-the-poll: d971bc701e164d4e
   managing-polls: 07cbcf088b35c603
   edit-poll: 9203d0a9d41bf074
@@ -224,6 +224,8 @@ needs_review:
 כאשר התוצאות מוסתרות עד להצבעה, ניתן לראות את אפשרויות ההצבעה שנבחרו ואת הנימוקים לאחר ההצבעה. חברי השרשור יכולים לכתוב תגובות ולהשיב להצבעות לפני ההצבעה. התגובות נשארות גלויות ללא קשר להגדרת התוצאות.
 
 כאשר התוצאות מוסתרות עד לסגירת ההצבעה, האפשרות להשיב להצבעות ולהוסיף אזכורים בנימוקי ההצבעה מושבתת עד לסגירת הסקר. חברי השרשור עדיין יכולים להגיב על הסקר ולהשיב לתגובות. ניתן להאריך את זמן ההצבעה כל עוד הסקר פתוח, אך לא ניתן לפתוח אותו מחדש לאחר סגירתו.
+
+לפני פתיחת ההצבעה, ניתן לשנות את פרטי הסקר ואת הגדרותיו, כולל הצבעה אנונימית והצגת תוצאות, אם קיימת הרשאה לעריכת הסקר. לאחר פתיחת ההצבעה, לא ניתן לשנות את הגדרת האנונימיות או לחשוף מוקדם תוצאות שמוסתרות עד לסגירה.
 
 הדפסה וייצוא, כולל ייצוא כ־Markdown, מתעלמים מההגדרה "הסתרת תוצאות עד להצבעה" וכוללים הצבעות ותשובות. תוצאות ונימוקי הצבעה שמוסתרים עד לסגירה נשארים מוסתרים עד לסגירת הסקר. תגובות רגילות נשארות זמינות בשרשור, בחיפוש ובייצוא.
 

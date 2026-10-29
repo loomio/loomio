@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
   vote-reason: 4e8a95a3905977c2
-  hide-results: d6766d2c80135984
+  hide-results: 556f1f281afb78f7
   start-the-poll: ca61b5a2672e2066
   managing-polls: d4841c826f9ca251
   edit-poll: ed3ebb4902f5ff63
@@ -222,6 +222,8 @@ Options du paramètre :
 Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, les personnes peuvent voir les choix de vote et les raisons après avoir voté. Les membres du fil peuvent écrire des commentaires et répondre aux votes avant de voter. Les commentaires restent visibles quel que soit le paramètre d’affichage des résultats.
 
 Lorsque les résultats sont masqués jusqu’à la clôture du vote, les réponses aux votes et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage. Les membres du fil peuvent toujours commenter le sondage et répondre aux commentaires. Vous pouvez reporter la date de clôture tant que le sondage est ouvert, mais vous ne pouvez pas le rouvrir après sa clôture.
+
+Les personnes autorisées à modifier un sondage peuvent modifier ses détails et ses paramètres, notamment le vote anonyme et la visibilité des résultats, avant l’ouverture du vote. Une fois le vote ouvert, le paramètre d’anonymat ne peut plus être modifié et les résultats masqués jusqu’à la clôture ne peuvent pas être révélés à l’avance.
 
 L’impression et les exports, y compris au format Markdown, ignorent le paramètre « Masquer les résultats jusqu’à ce qu’un vote soit exprimé » et incluent les votes et les réponses. Les résultats et les raisons des votes masqués jusqu’à la clôture restent masqués jusqu’à la clôture du sondage. Les commentaires ordinaires restent accessibles dans le fil, la recherche et les exports.
 

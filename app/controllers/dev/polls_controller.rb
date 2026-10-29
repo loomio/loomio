@@ -1,6 +1,19 @@
 class Dev::PollsController < Dev::NightwatchController
   include Dev::ScenariosHelper
 
+  def test_scheduled_settings
+    group = create_group_with_members
+    admin = group.admins.first
+    poll = PollService.create(params: {
+      group_id: group.id, title: 'Scheduled decision', details: 'Review the choices before voting opens', details_format: 'md',
+      poll_type: 'ranked_choice', poll_option_names: %w[First Second Third],
+      opening_at: (2.days.from_now unless params[:opened].present?), closing_at: 5.days.from_now,
+      hide_results: 'until_closed', anonymous: params[:anonymous].present?
+    }, actor: admin)
+    sign_in admin
+    redirect_to poll_url(poll)
+  end
+
   def test_poll_scenario
     scenario =send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],

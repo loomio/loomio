@@ -557,7 +557,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             help-link.ml-1(path="user_manual/polls/anonymous_voting")
           v-checkbox.poll-settings-anonymous(
             hide-label
-            :disabled="!poll.isNew()"
+            :disabled="!!poll.openedAt"
             v-model="poll.anonymous"
             @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
@@ -625,7 +625,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             :label="$t('poll_common_card.hide_results')"
             :items="hideResultsItems"
             v-model="poll.hideResults"
-            :disabled="poll.anonymous || (!poll.isNew() && currentHideResults == 'until_closed')"
+            :disabled="poll.anonymous || (!!poll.openedAt && currentHideResults == 'until_closed')"
           )
 
         template(v-if="poll.config().can_shuffle_options")

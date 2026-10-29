@@ -3,6 +3,9 @@ class Poll < ApplicationRecord
   include LocksTopicsForCounts
   PARTICIPATION_STATUS_VOTES_MIN = 3
   RESULT_VOTER_IDS_MAX = 50
+  TOPIC_WRITE_LOCK_ATTRIBUTES = %w[
+    topic_id opened_at closed_at discarded_at anonymous poll_type hide_results
+  ].freeze
 
   extend  HasCustomFields
   include ReadableUnguessableUrls
@@ -236,9 +239,8 @@ class Poll < ApplicationRecord
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validate :closes_in_future
   validate :opening_at_before_closing_at
-  validate :anonymity_cannot_change
+  validate :configuration_changes_are_allowed
   validate :cannot_reopen_after_revealing_results
-  validate :cannot_reveal_results_early
   validate :anonymous_invariants
   validate :anonymous_configuration_cannot_change_after_ballot
   validate :weighted_voting_available
@@ -250,6 +252,7 @@ class Poll < ApplicationRecord
 
   has_paper_trail only: [
     :author_id,
+    :poll_type,
     :title,
     :details,
     :details_format,
@@ -271,12 +274,56 @@ class Poll < ApplicationRecord
   after_save :update_poll_counts, if: -> { saved_changes.keys.intersect?(%w[id topic_id opened_at closed_at discarded_at]) }
   after_destroy :update_poll_counts
   around_create :with_topics_write_lock_for_counts, prepend: true
-  around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(%w[topic_id opened_at closed_at discarded_at]) }, prepend: true
+  around_update :with_topics_write_lock_for_counts, if: -> { changes.keys.intersect?(TOPIC_WRITE_LOCK_ATTRIBUTES) }, prepend: true
   around_destroy :with_topics_write_lock_for_counts, prepend: true
   def enqueue_search_index_update
     ReindexPollWorker.perform_later(id)
   end
+  before_update :recheck_configuration_changes, if: -> { changes.keys.intersect?(%w[anonymous poll_type hide_results]) }
+  after_update :convert_unopened_electorate, if: :saved_change_to_anonymous?
   after_update :synchronize_stance_weights_after_vote_weights_change
+
+  # Move the electorate between its two storage formats before opening. Check
+  # the storage invariants here as well as in validation, before changing rows.
+  # This callback runs in the poll update transaction under the topic lock.
+  def convert_unopened_electorate
+    self.class.uncached do
+      raise 'Cannot convert an electorate after voting has opened' if self.class.where(id: id).where.not(opened_at: nil).exists?
+      raise 'Cannot convert an electorate with cast stances' if stances.cast.exists?
+      raise 'Cannot convert an electorate with stance choices' if StanceChoice.where(stance_id: stances.select(:id)).exists?
+      raise 'Cannot convert an electorate with anonymous ballots' if anonymous_ballots.exists?
+      raise 'Cannot convert an electorate with submitted anonymous voters' if anonymous_poll_voters.where(ballot_submitted: true).exists?
+
+      if anonymous?
+        raise 'Cannot convert into an existing anonymous electorate' if anonymous_poll_voters.exists?
+      else
+        raise 'Cannot convert into existing active named stances' if stances.where(revoked_at: nil).exists?
+      end
+    end
+
+    if anonymous?
+      eligible_stances = stances.latest.to_a
+      group_member_ids = group.members.where(id: eligible_stances.map(&:participant_id)).pluck(:id).to_set
+      rows = eligible_stances.map do |stance|
+        {poll_id: id, voter_id: stance.participant_id, inviter_id: stance.inviter_id,
+          invited_at: stance.created_at, group_member: group_member_ids.include?(stance.participant_id), ballot_submitted: false}
+      end
+      AnonymousPollVoter.insert_all!(rows) if rows.any?
+      # Keep revoked voter records so changing modes does not re-enrol excluded voters.
+      stances.where(revoked_at: nil).destroy_all
+    else
+      eligible_voters = anonymous_poll_voters.includes(:voter).to_a
+      weights = weighted_voting? ? member_vote_weights_by_user_id(eligible_voters.map(&:voter_id)) : {}
+      eligible_voters.each do |voter|
+        stance = stances.find_or_initialize_by(participant_id: voter.voter_id, latest: true)
+        stance.update!(inviter_id: voter.inviter_id || author_id, revoked_at: nil, revoker_id: nil,
+          created_at: voter.invited_at, reason_format: voter.voter.default_format, weight: weights.fetch(voter.voter_id, 1))
+      end
+      anonymous_poll_voters.delete_all
+    end
+    update_counts!
+  end
+  private :convert_unopened_electorate
 
   # Switching vote weights resets issued stances, including cast votes, so
   # stored weights and poll results reflect the current voting mode.
@@ -812,14 +859,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  # Anonymity is fixed when a poll is created: an anonymous poll records voters
-  # and ballots separately from the start, and a named poll records stances.
-  def anonymity_cannot_change
-    return unless persisted? && will_save_change_to_anonymous?
-
-    errors.add :anonymous, (anonymous_in_database ? :cannot_deanonymize : :invalid)
-  end
-
   # Once closing has revealed results, voting cannot resume under this rule.
   def cannot_reopen_after_revealing_results
     if closed_at_in_database.present? && closed_at.nil? && hide_results_in_database == 'until_closed'
@@ -827,10 +866,32 @@ class Poll < ApplicationRecord
     end
   end
 
-  def cannot_reveal_results_early
-    if hide_results_changed? && (hide_results_was == 'until_closed')
+  # Opening is the configuration cutoff. Read current storage to protect stale
+  # forms, and retain protection for inconsistent legacy rows containing votes.
+  def configuration_changes_are_allowed
+    return unless persisted? && changes.keys.intersect?(%w[anonymous poll_type hide_results])
+
+    poll_in_database = self.class.uncached { self.class.select(:id, :anonymous, :hide_results, :opened_at).find(id) }
+    locked = poll_in_database.opened?
+    if !locked && changes.keys.intersect?(%w[anonymous poll_type])
+      locked = stances.cast.exists? || anonymous_ballots.exists? || anonymous_poll_voters.where(ballot_submitted: true).exists?
+    end
+    return unless locked
+
+    if will_save_change_to_anonymous?
+      errors.add :anonymous, (poll_in_database.anonymous? ? :cannot_deanonymize : :invalid)
+    end
+    if will_save_change_to_poll_type?
+      errors.add :poll_type, :invalid
+    end
+    if will_save_change_to_hide_results? && poll_in_database.hide_results == 'until_closed' && hide_results != 'until_closed'
       errors.add :hide_results, :cannot_show_results_early
     end
+  end
+
+  def recheck_configuration_changes
+    configuration_changes_are_allowed
+    throw(:abort) if errors.any?
   end
 
   def anonymous_invariants

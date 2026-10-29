@@ -83,22 +83,25 @@ class PollService
     )
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).slice(*DiscussionService::TOPIC_ATTRS_UPDATE)
-    poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
-
-    # check again, because the group id could be updated to a untrusted group
-    actor.ability.authorize! :update, poll
-
-    poll.prioritise_poll_options!
-
-    unless poll.valid?
-      Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return poll
-    end
+    poll.topic_id = params[:topic_id] if params.key?(:topic_id)
 
     was_opened = false
     topic_item = poll.with_topic_lock do |current_poll|
       actor.ability.authorize! :update, current_poll
+      # Apply edits to current state under the opening/voting lock, so a form
+      # loaded before opening cannot change frozen settings after it opens.
+      poll.reload
+      poll.assign_attributes_and_files(params.except(:poll_template_id, :poll_template_key))
+      if poll.will_save_change_to_anonymous? && poll.anonymous?
+        poll.assign_attributes(hide_results: :until_closed, stance_reason_required: :disabled,
+          notify_on_closing_soon: :voters_uncast, weighted_voting: false)
+      end
       actor.ability.authorize! :update, poll
+      poll.prioritise_poll_options!
+      unless poll.valid?
+        Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+        next
+      end
       poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
       poll.save!
       poll.update_counts!
@@ -150,6 +153,8 @@ class PollService
       )
       topic_item
     end
+    return poll if poll.errors.any?
+
     MessageChannelService.publish_topic_model(poll) unless topic_item
     publish_topic_if_active(poll) if was_opened
     on_topic_item&.call(topic_item) if topic_item
@@ -236,7 +241,7 @@ class PollService
         audience: params[:recipient_audience]
       )
     else
-      poll.members.humans
+      poll.members.humans.where.not(id: poll.stances.revoked.select(:participant_id))
     end
 
     existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)

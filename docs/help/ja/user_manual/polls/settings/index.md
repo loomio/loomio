@@ -1,10 +1,10 @@
 ---
 title: 設定
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 61136dac07544bb7
   anonymous-voting: a2ecf3255db05030
   vote-reason: 62318725e7487f0d
-  hide-results: 2acd89a5bee36ca4
+  hide-results: b9e4a0a80655e6cc
   start-the-poll: cd4c593025090505
   managing-polls: 98a208666a4101b9
   edit-poll: f00e83972b06e9ec
@@ -224,6 +224,8 @@ needs_review:
 投票するまで結果が非表示になる設定の場合は、投票後に選択肢ごとの投票内容と理由を確認できます。スレッドのメンバーは、投票前でもコメントを投稿したり、投票に返信したりできます。結果の設定にかかわらず、コメントは表示されます。
 
 投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、投票への返信と投票理由内のメンションが無効になります。スレッドのメンバーは、引き続きアンケートにコメントしたり、コメントに返信したりできます。アンケートの受付中は締め切り日時を延長できますが、締め切り後は再開できません。
+
+アンケートを編集する権限を持つ人は、投票開始前であれば、匿名投票や結果の表示設定を含む詳細と設定を変更できます。投票が始まると匿名設定は変更できなくなり、締め切りまで非表示にする設定の結果を早めに公開することもできません。
 
 印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで非表示にする設定の結果と投票理由は、アンケートが締め切られるまで非表示のままです。通常のコメントは、引き続きスレッド、検索、エクスポートで確認できます。
 

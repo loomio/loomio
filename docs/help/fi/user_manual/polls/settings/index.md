@@ -1,10 +1,10 @@
 ---
 title: Asetukset
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
   vote-reason: b3539bc5be115312
-  hide-results: 31d718986ffd6bba
+  hide-results: 7716cb3ed1866061
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
@@ -224,6 +224,8 @@ Asetuksen vaihtoehdot:
 Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat nähdä äänivalinnat ja perustelut äänestettyään. Ketjun jäsenet voivat kirjoittaa kommentteja ja vastata ääniin ennen äänestämistä. Kommentit pysyvät näkyvissä tulosten asetuksesta riippumatta.
 
 Kun tulokset ovat piilossa äänestyksen päättymiseen asti, ääniin vastaaminen ja maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti. Ketjun jäsenet voivat silti kommentoida kyselyä ja vastata kommentteihin. Voit pidentää äänestysaikaa kyselyn ollessa avoinna, mutta et voi avata kyselyä uudelleen sen sulkeuduttua.
+
+Henkilöt, joilla on oikeus muokata kyselyä, voivat muuttaa sen tietoja ja asetuksia, kuten anonyymiä äänestystä ja tulosten näkyvyyttä, ennen äänestyksen alkamista. Kun äänestys alkaa, anonyymiyttä ei voi enää muuttaa eikä sulkeutumiseen asti piilotettuja tuloksia voi näyttää etuajassa.
 
 Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset ja äänten perustelut pysyvät piilossa kyselyn sulkeutumiseen asti. Tavalliset kommentit ovat edelleen saatavilla ketjussa, haussa ja vienneissä.
 

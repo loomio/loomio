@@ -571,17 +571,65 @@ class PollServiceTest < ActiveSupport::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
-  test "does not allow change from anonymous to normal" do
+  test "does not allow change from anonymous to normal after voting opens" do
     poll = create_poll(anonymous: true)
     poll.anonymous = false
     assert_not poll.save
   end
 
-  test "does not allow hiding results change after creation" do
+  test "does not allow revealing results after voting opens" do
     poll = create_poll
     poll.update!(hide_results: :until_closed)
     poll.hide_results = :off
     assert_not poll.save
+  end
+
+  test "allows changing details and result visibility before voting opens" do
+    %w[off until_vote].each do |visibility|
+      poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+      assert_not poll.opened?
+
+      PollService.update(poll: poll, actor: @user, params: {
+        title: 'Revised scheduled vote', details: '<p>Updated before opening</p>', hide_results: visibility
+      })
+
+      assert_empty poll.errors
+      poll.reload
+      assert_equal visibility, poll.hide_results
+      assert_equal 'Revised scheduled vote', poll.title
+      assert_equal '<p>Updated before opening</p>', poll.details
+      assert_not poll.opened?
+    end
+  end
+
+  test "result visibility can change in the same edit that opens a scheduled poll" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+    PollService.update(poll: poll, actor: @user, params: {hide_results: 'off', opening_at: nil})
+    assert_empty poll.errors
+    assert poll.reload.opened?
+    assert_equal 'off', poll.hide_results
+  end
+
+  test "an edit loaded before opening cannot reveal results after voting opens" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+    stale = Poll.find(poll.id)
+    PollService.update(poll: poll, actor: @user, params: {opening_at: nil})
+    assert poll.reload.opened?
+
+    PollService.update(poll: stale, actor: @user, params: {hide_results: 'off'})
+    assert stale.errors.added?(:hide_results, :cannot_show_results_early)
+    assert_equal 'until_closed', poll.reload.hide_results
+  end
+
+  test "a stale result setting cannot bypass the current privacy lock" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'off')
+    stale = Poll.find(poll.id)
+    PollService.update(poll: poll, actor: @user, params: {opening_at: nil, hide_results: 'until_closed'})
+    assert poll.reload.opened?
+
+    PollService.update(poll: stale, actor: @user, params: {hide_results: 'until_vote'})
+    assert stale.errors.added?(:hide_results, :cannot_show_results_early)
+    assert_equal 'until_closed', poll.reload.hide_results
   end
 
   test "disallows new stances after close" do

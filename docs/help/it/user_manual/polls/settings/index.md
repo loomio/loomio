@@ -1,10 +1,10 @@
 ---
 title: Impostazioni
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 522e54360b5663b3
   anonymous-voting: 623409b0b84a8a2f
   vote-reason: 6d4306fcd181f788
-  hide-results: b0f18eba104435a1
+  hide-results: d3add053fe8915ea
   start-the-poll: ae6e267103f7db9d
   managing-polls: 9f6bb577125aa07e
   edit-poll: c0e9dfcf12cf21c1
@@ -222,6 +222,8 @@ Opzioni dell'impostazione:
 Quando i risultati sono nascosti finché non viene espresso un voto, le persone possono vedere le scelte di voto e i motivi dopo aver votato. I membri della conversazione possono scrivere commenti e rispondere ai voti prima di votare. I commenti restano visibili indipendentemente dall'impostazione dei risultati.
 
 Quando i risultati sono nascosti fino alla chiusura delle votazioni, le risposte ai voti e le menzioni nei motivi dei voti sono disabilitate fino alla chiusura del sondaggio. I membri della conversazione possono comunque commentare il sondaggio e rispondere ai commenti. Puoi posticipare la chiusura mentre il sondaggio è aperto, ma non puoi riaprirlo dopo la chiusura.
+
+Le persone con il permesso di modificare un sondaggio possono modificarne i dettagli e le impostazioni, compresi il voto anonimo e la visibilità dei risultati, prima dell'apertura delle votazioni. Una volta aperte le votazioni, l'anonimato non può più essere modificato e i risultati nascosti fino alla chiusura non possono essere mostrati in anticipo.
 
 La stampa e le esportazioni, compresa quella in formato Markdown, ignorano l'impostazione "Nascondi i risultati finché non viene espresso un voto" e includono voti e risposte. I risultati e i motivi dei voti nascosti fino alla chiusura restano nascosti fino alla chiusura del sondaggio. I normali commenti restano disponibili nella conversazione, nella ricerca e nelle esportazioni.
 

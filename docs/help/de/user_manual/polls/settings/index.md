@@ -1,10 +1,10 @@
 ---
 title: Einstellungen
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 1e1697411da53f12
   anonymous-voting: 4c6845651d2367a8
   vote-reason: 8818e6d77a621800
-  hide-results: 368acb4844c11512
+  hide-results: 1ca8c61a3a34d915
   start-the-poll: 37b766b2839b4c83
   managing-polls: 84f389087c488b72
   edit-poll: e1e0163b373527b3
@@ -222,6 +222,8 @@ Einstellungsoptionen:
 Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende nach der Stimmabgabe sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben. Mitglieder des Threads können schon vor der Stimmabgabe Kommentare schreiben und auf Stimmen antworten. Kommentare bleiben unabhängig von der Ergebniseinstellung sichtbar.
 
 Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, sind Antworten auf Stimmen und Erwähnungen in Begründungen zu Stimmen deaktiviert, bis die Abstimmung beendet ist. Mitglieder des Threads können weiterhin die Abstimmung kommentieren und auf Kommentare antworten. Du kannst das Enddatum verlängern, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
+
+Personen mit der Berechtigung, eine Abstimmung zu bearbeiten, können deren Details und Einstellungen ändern, bevor die Stimmabgabe beginnt. Dazu gehören auch die anonyme Stimmabgabe und die Sichtbarkeit des Ergebnisses. Sobald die Stimmabgabe beginnt, lässt sich die Einstellung zur Anonymität nicht mehr ändern. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, können dann nicht vorzeitig eingeblendet werden.
 
 Beim Drucken und Exportieren, auch als Markdown, wird die Einstellung „Ergebnis bis zur Abgabe einer Stimme ausblenden“ ignoriert. Stimmen und Antworten werden dabei einbezogen. Ergebnisse und Begründungen zu Stimmen, die bis zum Ende der Abstimmung ausgeblendet sind, bleiben ausgeblendet, bis die Abstimmung beendet ist. Gewöhnliche Kommentare bleiben im Thread, in der Suche und in Exporten verfügbar.
 

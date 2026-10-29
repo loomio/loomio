@@ -1,10 +1,10 @@
 ---
 title: Configurações
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -17,7 +17,7 @@ sections:
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
@@ -40,7 +40,7 @@ generated:
   reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
   vote-reason: 70f2e2565d94b6d8
-  hide-results: e637a8d5be5becaa
+  hide-results: c8406da2ec4cd4df
   start-the-poll: 2230fbd6a77fa9f6
   managing-polls: 301e2f77ba8cb7da
   edit-poll: e8a3a23ee27ba8e5
@@ -222,6 +222,8 @@ Opções de configuração:
 Quando os resultados ficam ocultos até votar, as pessoas podem ver as opções escolhidas e os motivos dos votos depois de votar. Os membros da conversa podem escrever comentários e responder aos votos antes de votar. Os comentários permanecem visíveis independentemente da configuração dos resultados.
 
 Quando os resultados ficam ocultos até o encerramento da votação, as respostas aos votos e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada. Os membros da conversa ainda podem comentar na enquete e responder aos comentários. Você pode prorrogar o prazo de encerramento enquanto a enquete estiver aberta, mas não pode reabri-la depois de encerrada.
+
+Pessoas com permissão para editar uma enquete podem alterar seus detalhes e configurações, incluindo a votação anônima e a visibilidade dos resultados, antes do início da votação. Depois que a votação começa, a configuração de anonimato não pode ser alterada e os resultados ocultos até o encerramento não podem ser revelados antes desse momento.
 
 A impressão e as exportações, incluindo Markdown, ignoram a configuração "ocultar resultados até votar" e incluem votos e respostas. Os resultados e os motivos dos votos ocultos até o encerramento permanecem ocultos até a enquete ser encerrada. Os comentários comuns permanecem disponíveis na conversa, na busca e nas exportações.
 

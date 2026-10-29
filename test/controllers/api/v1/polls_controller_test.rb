@@ -24,6 +24,26 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   # Show tests
+  test "only existing poll admins can change settings before voting opens" do
+    %i[admin guest_admin_normal member_normal guest_normal alien non_guest_loud former_member_loud former_guest_loud server_admin].each do |role|
+      poll = PollService.create(params: {
+        title: 'Scheduled decision', poll_type: 'ranked_choice', topic_id: topics(:discussion_topic).id,
+        poll_option_names: %w[First Second Third], opening_at: 2.days.from_now,
+        closing_at: 5.days.from_now, hide_results: 'until_closed'
+      }, actor: @admin)
+      sign_in users(role)
+      patch :update, params: {id: poll.id, poll: {
+        title: 'Revised decision', details: '<p>Revised before opening</p>', hide_results: 'off'
+      }}
+
+      allowed = %i[admin guest_admin_normal].include?(role)
+      assert_response allowed ? :success : :forbidden
+      assert_equal allowed ? 'off' : 'until_closed', poll.reload.hide_results, role.to_s
+      assert_equal allowed ? 'Revised decision' : 'Scheduled decision', poll.title, role.to_s
+      assert_not poll.opened?
+    end
+  end
+
   test "former group members cannot list or open their authored polls" do
     author = users(:member_normal)
     poll = PollService.create(params: {
@@ -61,6 +81,53 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_not_nil membership.reload.accepted_at
+  end
+
+  test "scheduled direct poll settings require thread admin access" do
+    author = users(:guest_admin_normal)
+    %i[guest_admin_normal guest_normal admin alien].each do |role|
+      poll = PollService.create(params: {
+        title: 'Direct scheduled decision', poll_type: 'poll', topic_id: topics(:direct_topic).id,
+        poll_option_names: %w[Yes No], opening_at: 2.days.from_now,
+        closing_at: 5.days.from_now, hide_results: 'until_closed'
+      }, actor: author)
+      sign_in users(role)
+      patch :update, params: {id: poll.id, poll: {hide_results: 'off'}}
+
+      allowed = role == :guest_admin_normal
+      assert_response allowed ? :success : :forbidden
+      assert_equal allowed ? 'off' : 'until_closed', poll.reload.hide_results, role.to_s
+    end
+  end
+
+  test "members without poll edit permission cannot change a scheduled poll's voting mode" do
+    poll = PollService.create(params: {
+      title: 'Scheduled decision', poll_type: 'poll', topic_id: topics(:discussion_topic).id,
+      poll_option_names: %w[Yes No], opening_at: 2.days.from_now, closing_at: 5.days.from_now
+    }, actor: @admin)
+    stance_ids = poll.stances.pluck(:id)
+    sign_in users(:member_normal)
+
+    patch :update, params: {id: poll.id, poll: {anonymous: true}}
+
+    assert_response :forbidden
+    assert_not poll.reload.anonymous?
+    assert_equal stance_ids, poll.stances.pluck(:id)
+    assert_empty poll.anonymous_poll_voters
+  end
+
+  test "the API cannot switch voting mode after voting opens" do
+    poll = PollService.create(params: {
+      title: 'Open decision', poll_type: 'poll', topic_id: topics(:discussion_topic).id,
+      poll_option_names: %w[Yes No], closing_at: 5.days.from_now
+    }, actor: @admin)
+    sign_in @admin
+
+    patch :update, params: {id: poll.id, poll: {anonymous: true}}
+
+    assert_response 422
+    assert_not poll.reload.anonymous?
+    assert_empty poll.anonymous_poll_voters
   end
 
   test "show displays a poll" do
