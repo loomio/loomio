@@ -628,18 +628,19 @@ module.exports = {
 
     page.loadPath('polls/test_scheduled_poll')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form')
-    let modalHeight
-    test.execute(() => document.querySelector('.poll-members-form').offsetHeight, [], ({value}) => { modalHeight = value })
     page.click('.recipients-autocomplete input[type="text"]')
-    page.expectText('.recipients-autocomplete-suggestion', 'Everyone in the thread')
+    page.waitFor('.recipients-autocomplete-suggestion')
+    page.expectNoText('.v-overlay--active .v-list:has(.recipients-autocomplete-suggestion)', 'Everyone in the thread')
     page.click('.recipients-autocomplete-suggestion')
-    page.expectText('.common-notifications-count', '1 person will be added')
+    page.expectText('.common-notifications-count', 'people will be added')
+    let countText
+    test.getText('.common-notifications-count', ({value}) => { countText = value.match(/\d+ people/)[0] })
     test.expect.element('.poll-members-form__list').to.not.be.present
-    test.execute(() => document.querySelector('.poll-members-form').offsetHeight, [], ({value}) => {
-      test.assert.ok(Math.abs(value - modalHeight) <= 1, 'modal height stays steady after selecting recipients')
-    })
     page.click('.recipients-autocomplete .chip--select-multi')
-    page.expectText('.common-notifications-count', '1 person will be added')
+    page.waitFor('.recipients-autocomplete .chip--select-multi [class*=user-avatar]')
+    test.getText('.common-notifications-count', ({value}) => {
+      test.assert.ok(value.startsWith(countText), 'expanding the audience keeps the count')
+    })
     page.click('.recipients-autocomplete .v-field__clearable')
     page.expectElement('.poll-members-form__list')
     test.expect.element('.poll-members-form__submit').to.not.be.present

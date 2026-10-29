@@ -89,11 +89,18 @@ To open voting before the scheduled time, select **Edit poll**, check **Voting o
 
 Give sufficient time for people to vote. You could time the proposal so it closes before a meeting, or avoid closing over a weekend, so that people will receive a timely reminder. If necessary, you can close the poll early or extend the closing time.
 
-**Who can vote?** Invite everyone in the group or only specific people that you invite.
+<!-- translation-section: who-can-vote -->
 
-You can later add people to an 'Invite people only' poll. For identified polls,
-you can also remove people who should no longer be eligible to vote. People
-cannot be removed from an anonymous poll.
+### Who can vote?
+
+Choose who can vote in the poll.
+
+- **Anyone in the group** (or **Anyone in the thread**): everyone with access to the poll can vote, including people who join later.
+- **Selected people only:** only the people you add can vote. Use this when only some members should vote, such as a board or a committee.
+
+![Who can vote setting](../manage_voters/invited-people-only.png)
+
+After you start a **Selected people only** poll, **Manage voters** opens so you can add voters. You can add or remove voters later. See [Manage voters](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

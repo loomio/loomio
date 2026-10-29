@@ -1,112 +1,118 @@
 <!-- translation-section: introduction -->
 
-# Invite to vote
+# Manage voters
+
+Use **Manage voters** to give people a vote and invite them to take part in a proposal or poll.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Invite people to vote in a poll
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-Invite people to your poll by sending them a notification.
+## Invite people to vote
 
-After you start a poll, the **Invite to vote** box appears. Select an audience such as **Everyone in the thread** or your group, or enter individual names and email addresses.
+After you start a poll with **Selected people only**, the **Manage voters** window opens. You can also open it by selecting **Manage voters** on the poll.
 
-![](proposal_invite.png)
+![The Manage voters button at the bottom of a poll](proposal_after_start.png)
 
-You can include an optional message with the invitation.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### Choose an audience
 
-Select a group chip to expand it into the people you are inviting. Select the x beside a name to remove that person from the invitation.
+Click the empty **Find or invite voters** field to see suggestions. They appear in this order:
 
-![](proposal_invite_expand.png)
+- your group
+- **Delegates of** your group, if your group has [delegated voters](/en/user_manual/groups/delegated_voters)
+- connected chat rooms, such as Slack or Microsoft Teams
+- subgroups and the parent group
+- individual members
+
+In a [direct thread](/en/user_manual/discussions/direct_discussions), the list offers **Everyone in the thread** instead of a group.
+
+![The Manage voters window with suggestions for the group, its delegates, a chat room, and a subgroup](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+Select an audience to invite those people together. For example, selecting **Oatmilk Cooperative** includes the people in that group. You can also select a connected chat room to post the invitation there. Posting to a chat room does not add its members as voters.
+
+<!-- translation-section: check-your-recipients -->
+
+### Check who is included
+
+After you select an audience, the field shows its name and how many people are included. Check this count before sending the invitation.
+
+![Oatmilk Cooperative selected, with the recipient count shown beneath the field](proposal_invite_members.png)
+
+Click the audience name to expand it into individual people. You can then select the **×** beside a person to leave them out of this invitation. This does not remove them from the group.
+
+![The group audience expanded into named people, each with a remove control](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Invite guests or experts
+<a id="invite-guests-or-experts"></a>
 
-You can also invite a guest to the poll by entering their email address. They will be given permission to participate in only this poll.
+### Add people by name or email
 
-If the poll is within a thread, they will also be able to see that thread and its comments. They will not be able to comment, participate in other polls in the thread, or see other threads in the group.
+You can also type a person's name and select them from the suggestions, or enter an email address to invite someone new. You can add several people to the same invitation.
 
-![](proposal_invite_guest.png)
+![An invitation addressed to a group member and a guest by email, with a message ready to send](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+Guests receive access to this poll. If the poll is within a thread, they can also read that thread and its comments. The invitation does not give them permission to comment in the thread, vote in its other polls, or see other group threads.
 
-### Invite a subgroup to vote
+<!-- translation-section: send-the-invitations -->
 
-To limit voting to invited people, select **Selected people only** when you create the poll. You can then invite a subgroup from the parent group. See also [Delegated voters](/en/user_manual/groups/delegated_voters/).
+### Send the invitations
 
-![Selecting invited people only](invited-people-only.png)
-![Inviting a subgroup to vote](invite-voters-subgroup.png)
+Add a message explaining what you are asking people to decide, then select **Invite**. Leave **Send notifications** checked to notify the people you are inviting. Uncheck it to add voters without sending a notification.
+
+For a scheduled poll, select **Add voters**. People receive their invitation when voting opens.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Engage people while a poll is running
+<a id="engage-people-while-a-poll-is-running"></a>
 
-At the bottom of the poll are several features to help you engage with people once the poll is running.
-
-![](proposal_after_start.png)
+## After inviting people
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Add voters to the poll
+### Add more voters
 
-You can add new people to the poll at any time, including before voting opens on a scheduled poll.
-
-Select **Manage voters** to open the voter management window. You can invite everyone in the group, add members by name, or add guests by email if guest invitations are allowed. Typing in **Find or invite voters** also filters the people already in the poll. The most recently added voters appear first; use the page controls to browse the full list.
-
-If the poll has a scheduled opening time and voting has not yet opened, voters will not receive an immediate notification. Instead, they will be notified when voting opens.
+You can reopen **Manage voters** to add people at any time, including before a scheduled poll opens. The window also lists existing voters, with the most recently added people first. Type a name to find someone, or use the page controls to browse a longer list.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### Remove people from the poll
 
-Select **Manage voters**, find the person's name in the voter management window, select the trash button beside it, and confirm **Remove voter**.
+Select the trash button beside a person and confirm **Remove voter** to take away their vote in this poll. For example, someone setting up a board vote can remove themself if they are not entitled to vote.
 
-![The trash button beside a voter in the voter management window](proposal_invite_remove.png)
+![The Manage voters window showing existing voters, with a voter's trash button highlighted](proposal_invite_remove.png)
 
-People cannot be removed from an anonymous poll.
-
-For example, an administrator who creates a poll on behalf of board members can remove themself if they are not authorised to vote.
-
-For polls that use vote weights, the same window lets thread admins [review and edit vote weights](/en/user_manual/polls/weighted_voting).
+People cannot be removed from an anonymous poll. In polls with [vote weights](/en/user_manual/polls/weighted_voting), thread admins can also review and edit weights here.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Remind people to vote
 
-Select **Remind** to send a notification to people who have not voted. **Everyone invited to vote** is selected by default. Select the chip to see or change the recipients.
+Select **Remind** on the poll, choose who should receive the reminder, add a message, and select **Remind** to send it. You can select **People who haven't voted** to reach the people whose responses are still needed.
 
-![](proposal_remind.png)
+![A reminder addressed to people who have not voted, with a message about the decision deadline](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### View notification history
 
-Open the three-dot menu (**⋯**) at the bottom of the poll and select **Notification history**.
+Open the poll's three-dot menu (**⋯**) and select **Notification history** to see who has been invited, when each invitation was sent, and whether it has been read when that information is available.
 
-![Notification history in a poll's actions menu](../../discussions/notifying_people/poll_notification_history.png)
-
-The history shows who has been invited to vote, when each invitation was sent, and whether it has been read when that information is available.
-
-![Notification history for a poll](../../discussions/notifying_people/poll_notification_example.png)
+![Notification history showing the recipients of a poll invitation](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### Close early
 
-Select **Close early** to close a poll before its scheduled closing time.
-
-You might do this when everyone has voted or the poll no longer needs to remain open.
-
-![](proposal_close_early.png)
+Select **Close early** when everyone has voted or the poll no longer needs to stay open.
 
 <!-- translation-section: reopen -->
 
 ### Reopen
 
-Select **Reopen** on a closed poll, then set a new closing date and time.
-
-Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
-
-![](proposal_reopen.png)
+Select **Reopen** on a closed poll and set a new closing date and time. Polls that hide results until voting closes, including anonymous polls, cannot be reopened; you can extend their closing time while they are still open.

@@ -406,17 +406,7 @@ module Dev::Scenarios::OatmilkCooperative
 
   def setup_manual_oatmilk_chatbot
     group, coordinator, = create_manual_oatmilk_cooperative
-    chatbot = Chatbot.new(
-      group: group,
-      author: coordinator,
-      kind: 'webhook',
-      webhook_kind: 'slack',
-      name: 'Oatmilk Cooperative chat',
-      server: 'https://hooks.example.com/services/oatmilk/cooperative/docs',
-      event_kinds: [],
-      notification_only: false
-    )
-    chatbot.save!(validate: false)
+    create_manual_oatmilk_chatbot(group, coordinator)
     sign_in coordinator
 
     if params[:view] == 'poll'
@@ -800,12 +790,15 @@ module Dev::Scenarios::OatmilkCooperative
     GroupService.create(group: subgroup, actor: coordinator)
     subgroup.add_member!(production_lead)
     subgroup.add_member!(sales_lead)
+    mark_manual_oatmilk_delegates(group)
+    create_manual_oatmilk_chatbot(group, coordinator)
 
     poll = PollService.create(
       params: {
         topic_id: discussion.topic_id,
         title: 'Approve the bottle trial responsibilities',
-        details: 'Confirm the collection, washing, and reporting responsibilities before the six-week trial begins.',
+        details: '<p>Before the six-week returnable bottle trial begins, we need to agree who is responsible for each part of the work.</p><p><strong>Samira</strong> will oversee bottle washing and food-safety checks. <strong>Alex</strong> will confirm the cafe collection schedule, and Jamie will keep the weekly return-rate report.</p><p>Please check that these responsibilities cover the work and that each person has enough time to carry them out. We will review the arrangement after the first two weeks.</p>',
+        details_format: 'html',
         poll_type: 'proposal',
         poll_option_names: %w[agree abstain disagree],
         specified_voters_only: true,
@@ -1885,6 +1878,21 @@ module Dev::Scenarios::OatmilkCooperative
     end
 
     [group, coordinator, subgroups]
+  end
+
+  def create_manual_oatmilk_chatbot(group, coordinator)
+    chatbot = Chatbot.new(
+      group: group,
+      author: coordinator,
+      kind: 'webhook',
+      webhook_kind: 'slack',
+      name: 'Oatmilk Cooperative chat',
+      server: 'https://hooks.example.com/services/oatmilk/cooperative/docs',
+      event_kinds: [],
+      notification_only: false
+    )
+    chatbot.save!(validate: false)
+    chatbot
   end
 
   def mark_manual_oatmilk_delegates(group)

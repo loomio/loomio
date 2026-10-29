@@ -1,7 +1,7 @@
 ---
 title: Convidar a votar
 source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
-source_file: docs/help/en/user_manual/polls/inviting_people/index.md
+source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
