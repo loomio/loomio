@@ -169,7 +169,7 @@ export default class PollModel extends BaseModel {
     const attrs = cloneDeep(pick(this, settings.map(camelCase)));
     const topic = this.topic();
     Object.assign(attrs, pick(topic, ['allowComments', 'allowReactions', 'commentLengthMax']));
-    attrs.tags = this.tags.slice();
+    attrs.tags = this.createdTopicItem().tags.slice();
     attrs.groupId = this.groupId;
     attrs.processName = this.title;
     // Polls may leave election settings implicit; templates store their defaults.

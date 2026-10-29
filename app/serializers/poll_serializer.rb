@@ -43,7 +43,6 @@ class PollSerializer < ApplicationSerializer
              :specified_voters_only,
              :total_score,
              :title,
-             :tags,
              :vote_count_uncast,
              :vote_count_eligible,
              :stance_reason_required,
@@ -112,15 +111,6 @@ class PollSerializer < ApplicationSerializer
 
   def include_scores_by_option?
     results_visible?
-  end
-
-  def tags
-    return [] if object.discarded?
-
-    cache_fetch([:tags_by_type_and_id, 'Poll'], object.id) do
-      # Legacy polls without a creation item have no explicit tag assignments.
-      object.created_topic_item&.tags || []
-    end
   end
 
   def participation_visible?

@@ -1,8 +1,9 @@
 require "test_helper"
 
 class PollSerializerTest < ActiveSupport::TestCase
-  test "poll tags contain only that poll's assignments with and without a response cache" do
+  test "normal poll payloads omit tags with and without a response cache" do
     topic = topics(:discussion_topic)
+    topic.update!(allow_concurrent_polls: true)
     topic.topicable.created_topic_item.update!(tags: ['Thread category'])
     [false, true].each do |anonymous|
       poll = PollService.create(params: {
@@ -10,16 +11,11 @@ class PollSerializerTest < ActiveSupport::TestCase
         anonymous: anonymous, tags: ['Consent', 'Significant decisions'],
         poll_option_names: %w[Consent Objection], closing_at: 3.days.from_now
       }, actor: users(:admin))
-      assert_equal ['Consent', 'Significant decisions'], PollSerializer.new(poll).tags
-
       cache = RecordCache.for_collection([poll], users(:admin).id)
-      poll.stub(:created_topic_item, -> { raise 'creation items should be batch loaded' }) do
-        serializer = PollSerializer.new(poll, scope: {cache: cache})
-        assert_equal ['Consent', 'Significant decisions'], serializer.tags
+      [{}, {cache: cache}].each do |scope|
+        payload = PollSerializer.new(poll, scope: scope).as_json.fetch(:poll)
+        assert_not payload.key?(:tags)
       end
-
-      poll.update!(discarded_at: Time.current)
-      assert_empty PollSerializer.new(poll, scope: {cache: cache}).tags
     end
   end
 

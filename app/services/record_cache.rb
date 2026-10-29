@@ -391,13 +391,6 @@ class RecordCache
   def add_tags_complete
     scope[:tags_by_type_and_id] ||= {}
 
-    poll_ids = scope.fetch(:polls_by_id, {}).keys
-    scope[:tags_by_type_and_id]['Poll'] = poll_ids.index_with { [] }
-    TopicItem.where(kind: 'poll_created', itemable_type: 'Poll', itemable_id: poll_ids)
-      .pluck(:itemable_id, :tags).each do |poll_id, tags|
-        scope[:tags_by_type_and_id]['Poll'][poll_id] = tags
-      end
-
     scope.fetch(:topics_by_id, {}).each_value do |topic|
       scope[:tags_by_type_and_id]['Topic'] ||= {}
       scope[:tags_by_type_and_id]['Topic'][topic.id] = topic.tags || []

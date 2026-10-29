@@ -7,12 +7,15 @@ const mocks = vi.hoisted(() => ({
   buildTemplate: vi.fn(),
   buildPoll: vi.fn(),
   fetchPoll: vi.fn(),
+  findTopicItems: vi.fn(),
+  fetchTopicItems: vi.fn(),
   emit: vi.fn()
 }));
 
 vi.mock('@/shared/services/records', () => ({default: {
   pollTemplates: {build: mocks.buildTemplate},
-  polls: {build: mocks.buildPoll, findOrFetchById: mocks.fetchPoll}
+  polls: {build: mocks.buildPoll, findOrFetchById: mocks.fetchPoll},
+  topicItems: {find: mocks.findTopicItems, fetch: mocks.fetchTopicItems}
 }}));
 vi.mock('@/shared/services/session', () => ({default: {
   user: () => mocks.user,
@@ -45,6 +48,7 @@ import PollTemplateFormPage from '@/components/poll_template/form_page.vue';
 let source;
 let group;
 let topic;
+let creationItem;
 let options;
 let wrapper;
 
@@ -52,8 +56,14 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.signedIn = true;
   group = {id: 7, membersCanCreateTemplates: false, adminsInclude: () => true, membersInclude: () => true};
-  topic = {allowComments: false, allowReactions: false, commentLengthMax: 300,
+  topic = {topicableType: 'Discussion', topicableId: 12,
+    allowComments: false, allowReactions: false, commentLengthMax: 300,
     tags: ['Bargaining', 'Other thread category']};
+  creationItem = {tags: ['Bargaining']};
+  mocks.findTopicItems.mockReturnValue([creationItem]);
+  mocks.fetchTopicItems.mockImplementation(async () => {
+    mocks.findTopicItems.mockReturnValue([creationItem]);
+  });
   options = [{id: 30, pollId: 10, name: 'Consent', meaning: 'I support this proposal',
     prompt: 'Any concerns?', icon: 'consent', priority: 0, testOperator: 'gte',
     testPercent: 80, testAgainst: 'score_percent', totalScore: 4, voterIds: [5]}];
@@ -61,7 +71,7 @@ beforeEach(() => {
     title: 'Consent proposal', details: '<p>Proposed changes</p>', detailsFormat: 'html',
     openedAt: new Date(2026, 9, 20), closingAt: new Date(2026, 9, 23),
     voteCountCast: 4, results: [{voter_ids: [5]}], quorumPct: 60, stvMethod: null, stvQuota: null,
-    tags: ['Bargaining'],
+    tags: [],
     stanceReasonRequired: 'required_for_disagree_or_block'});
   source.group = () => group;
   source.topic = () => topic;
@@ -93,7 +103,8 @@ describe('saving a poll as a template', () => {
       test_operator: 'gte', test_percent: 80, test_against: 'score_percent'}]);
     template.tags.push('Template only');
     template.pollOptions[0].meaning = 'Revised meaning';
-    expect(source.tags).toEqual(['Bargaining']);
+    expect(source.tags).toEqual([]);
+    expect(creationItem.tags).toEqual(['Bargaining']);
     expect(topic.tags).toEqual(['Bargaining', 'Other thread category']);
     expect(options[0].meaning).toBe('I support this proposal');
     expect(template.stvMethod).toBe('scottish');
@@ -163,7 +174,38 @@ describe('template form loaded from a poll', () => {
     const template = wrapper.findComponent({name: 'PollTemplateForm'}).props('pollTemplate');
     expect(template.isNew()).toBe(true);
     expect(template.processName).toBe(source.title);
+    expect(template.tags).toEqual(['Bargaining']);
     expect(mocks.fetchPoll).toHaveBeenCalledWith(10);
+    expect(mocks.fetchTopicItems).not.toHaveBeenCalled();
+  });
+
+  it.each(['Poll', 'Discussion'])('fetches a missing creation item for a %s topic before building the template', async topicableType => {
+    Object.assign(topic, {topicableType, topicableId: topicableType === 'Poll' ? source.id : 12});
+    mocks.findTopicItems.mockReturnValue([]);
+    await mountPage();
+    const params = {poll_key: 'source', kind: 'poll_created', per: 1};
+    if (topicableType === 'Discussion') { params.unread_or_newest = 1; }
+    expect(mocks.fetchTopicItems).toHaveBeenCalledWith({params});
+    expect(wrapper.findComponent({name: 'PollTemplateForm'}).props('pollTemplate').tags).toEqual(['Bargaining']);
+  });
+
+  it('waits for the missing creation item before showing the form', async () => {
+    mocks.findTopicItems.mockReturnValue([]);
+    let resolveFetch;
+    mocks.fetchTopicItems.mockReturnValue(new Promise(resolve => { resolveFetch = resolve; }));
+    await mountPage();
+    expect(wrapper.findComponent({name: 'PollTemplateForm'}).exists()).toBe(false);
+    mocks.findTopicItems.mockReturnValue([creationItem]);
+    resolveFetch();
+    await flushPromises();
+    expect(wrapper.findComponent({name: 'PollTemplateForm'}).props('pollTemplate').tags).toEqual(['Bargaining']);
+  });
+
+  it('copies an empty tag list from the creation item', async () => {
+    creationItem.tags = [];
+    source.tags = ['Stale poll tags'];
+    await mountPage();
+    expect(wrapper.findComponent({name: 'PollTemplateForm'}).props('pollTemplate').tags).toEqual([]);
   });
 
   it('rejects a manually entered route when the member cannot create templates', async () => {
@@ -171,10 +213,20 @@ describe('template form loaded from a poll', () => {
     await mountPage();
     expect(mocks.emit).toHaveBeenCalledWith('pageError', expect.objectContaining({status: 403}));
     expect(mocks.buildTemplate).not.toHaveBeenCalled();
+    expect(mocks.fetchTopicItems).not.toHaveBeenCalled();
   });
 
   it.each([403, 404])('shows a source poll HTTP %s error without building a template', async status => {
     mocks.fetchPoll.mockRejectedValue(Object.assign(new Error('Unavailable'), {status}));
+    await mountPage();
+    expect(mocks.emit).toHaveBeenCalledWith('pageError', expect.objectContaining({status}));
+    expect(mocks.buildTemplate).not.toHaveBeenCalled();
+    expect(mocks.fetchTopicItems).not.toHaveBeenCalled();
+  });
+
+  it.each([403, 404])('shows a creation item HTTP %s error without building a template', async status => {
+    mocks.findTopicItems.mockReturnValue([]);
+    mocks.fetchTopicItems.mockRejectedValue(Object.assign(new Error('Unavailable'), {status}));
     await mountPage();
     expect(mocks.emit).toHaveBeenCalledWith('pageError', expect.objectContaining({status}));
     expect(mocks.buildTemplate).not.toHaveBeenCalled();

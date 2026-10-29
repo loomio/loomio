@@ -33,9 +33,15 @@ export default {
         this.pollTemplate = pollTemplate;
       });
     } else if ((pollId = parseInt(this.$route.query.poll_id))) {
-      Records.polls.findOrFetchById(pollId).then(poll => {
+      Records.polls.findOrFetchById(pollId).then(async poll => {
         if (poll.discardedAt || !PollTemplateService.canCreateTemplate(poll.group())) {
           throw Object.assign(new Error('Forbidden'), {status: 403});
+        }
+        if (!poll.createdTopicItem()) {
+          const params = {poll_key: poll.key, kind: 'poll_created', per: 1};
+          // Embedded polls use the API's poll-focus path to locate their own item.
+          if (!poll.isTopicable()) { params.unread_or_newest = 1; }
+          await Records.topicItems.fetch({params});
         }
         this.group = poll.group();
         this.pollTemplate = poll.buildTemplate();
