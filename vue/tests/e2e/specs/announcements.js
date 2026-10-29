@@ -152,7 +152,8 @@ module.exports = {
 
     page.expectElement('.poll-members-form')
     page.click('.recipients-autocomplete input[type="text"]')
-    page.expectText('.v-autocomplete__content', 'Everyone in the thread')
+    page.waitFor('.recipients-autocomplete-suggestion')
+    page.expectNoText('.v-autocomplete__content', 'Everyone in the thread')
     page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
