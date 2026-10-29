@@ -1,6 +1,6 @@
 ---
 title: 設定
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 38d903c510503cbb
   setting-up-a-proposal-or-poll: 16beec14d33069d9
@@ -34,7 +35,7 @@ generated:
   add-content: 71443d304edbb235
   voting-options: 6e953b9fa9039b42
   edit-voting-options: 244706d5d94bb2dd
-  opening-time: d1577e02d03500bf
+  opening-time: 6166dd2aae4586a1
   more-settings: ee685758816f701f
   reminder: 61136dac07544bb7
   anonymous-voting: a2ecf3255db05030
@@ -49,6 +50,7 @@ generated:
   delete: ee4b24e9252915cf
   save-bookmark: 178e06901c45c1d0
   save-as-template: 9cc5ab3e34df5da1
+  who-can-vote: 61162d9364087f97
 title_source: 74a883a037bc227f
 title_generated: 0d8619aae051ae34
 needs_review:
@@ -145,9 +147,18 @@ needs_review:
 
 投票に十分な時間を確保します。会議の前に提案を締め切るようにしたり、週末の締め切りを避けたりすると、適切なタイミングでリマインダーを届けられます。必要に応じて、アンケートを早めに締め切ることや、締め切りを延長することもできます。
 
-**誰が投票できますか？** グループの全員を招待するか、特定の人だけを招待します。
+<!-- translation-section: who-can-vote -->
 
-「招待された人のみ」のアンケートには、後から参加者を追加できます。記名式のアンケートでは、投票資格がなくなった人を削除することもできます。匿名のアンケートから参加者を削除することはできません。
+### 誰が投票できますか？
+
+アンケートに投票できる人を選択します。
+
+- **グループ内の誰でも**（または**スレッド内の誰でも**）: 後から参加する人も含め、アンケートにアクセスできる全員が投票できます。
+- **選ばれた人のみ:** 追加した人だけが投票できます。理事会や委員会など、一部のメンバーだけが投票する場合に使用します。
+
+![投票できる人の設定](../manage_voters/invited-people-only.png)
+
+**選ばれた人のみ**のアンケートを開始すると、**有権者の管理**が開き、投票者を追加できます。投票者は後から追加または削除できます。[投票者の管理](/en/user_manual/polls/manage_voters)を参照してください。
 
 <!-- translation-section: more-settings -->
 

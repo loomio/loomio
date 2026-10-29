@@ -1,6 +1,6 @@
 ---
 title: Настройки
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: a0c1e3a0ab2e3022
   setting-up-a-proposal-or-poll: 8646cfa98265ba26
@@ -34,7 +35,7 @@ generated:
   add-content: 1cd13f03020c0afc
   voting-options: e7abfa61e8294ba5
   edit-voting-options: 85a80574f956ba54
-  opening-time: 91469463a524b284
+  opening-time: d329f5911d9531a8
   more-settings: b4f56f447860aa7a
   reminder: e9ee0a26fc25f292
   anonymous-voting: 075d4da36503b6e9
@@ -49,6 +50,7 @@ generated:
   delete: 8a84ef2280808dd0
   save-bookmark: 102030953f320dcf
   save-as-template: e7880664d07e8f1c
+  who-can-vote: baa9b3239c0b672f
 title_source: 74a883a037bc227f
 title_generated: 985b5e0f2ccf1ba0
 ---
@@ -143,9 +145,18 @@ title_generated: 985b5e0f2ccf1ba0
 
 Дайте людям достаточно времени, чтобы проголосовать. Вы можете запланировать закрытие предложения до собрания или выбрать день вне выходных, чтобы люди получили напоминание вовремя. При необходимости вы можете закрыть опрос раньше или перенести время закрытия на более поздний срок.
 
-**Кто может голосовать?** Пригласите всех участников группы или только конкретных людей.
+<!-- translation-section: who-can-vote -->
 
-Позже вы можете добавить людей в опрос с настройкой «Только приглашённые». В опросах с указанием личности голосующих вы также можете удалить людей, которые больше не должны иметь права голосовать. Из анонимного опроса удалять людей нельзя.
+### Кто может голосовать?
+
+Выберите, кто может голосовать в опросе.
+
+- **Любой в группе** (или **Любой участник темы**): голосовать могут все, у кого есть доступ к опросу, включая тех, кто присоединится позже.
+- **Только для избранных:** голосовать могут только те, кого вы добавите. Используйте эту настройку, если голосовать должны только некоторые участники группы, например члены правления или комитета.
+
+![Настройка «Кто может голосовать?»](../manage_voters/invited-people-only.png)
+
+После запуска опроса с настройкой **Только для избранных** откроется **Управление избирателями**, где вы сможете добавить голосующих. Позже вы сможете добавлять или удалять голосующих. См. [Управление голосующими](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

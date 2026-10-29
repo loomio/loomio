@@ -1,147 +1,157 @@
 ---
-title: Kutsu äänestämään
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: Hallitse äänestäjiä
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: ed4bbf4695a967de
-  invite-people-to-vote-in-a-poll: 13e1468ebb223d36
-  invite-guests-or-experts: 922aadd3c9b6199c
-  invite-a-subgroup-to-vote: 8a18c28fff4b64ff
-  engage-people-while-a-poll-is-running: 593babd64f70eb82
-  add-voters-to-the-poll: f688ef2432ce7905
-  remove-people-from-the-poll: cf1ccbf48fb26514
-  remind-people-to-vote: '09f7a8e52feaa747'
-  view-notification-history: da34ddbbe19f8f64
-  close-early: d7663780c0291203
-  reopen: a54d74be7453e43b
-title_source: 4801d1a3dba7ce3d
-title_generated: 29a79efa7cb00157
+  introduction: 71dcb23e826f8935
+  invite-people-to-vote-in-a-poll: 722befe83624026e
+  invite-guests-or-experts: aba122e2bbf9dc40
+  engage-people-while-a-poll-is-running: 2ff05dc4463cf45e
+  add-voters-to-the-poll: adb76228f3a54557
+  remove-people-from-the-poll: '09aaf630adf706bf'
+  remind-people-to-vote: 2ab464d18c6e56f2
+  view-notification-history: c26197785d06b8e6
+  close-early: 9b093d1c42825567
+  reopen: 3a3a0def40521d37
+  choose-an-audience: 306174dea99d05b5
+  check-your-recipients: 7834fcdb424fe599
+  send-the-invitations: 7f0102b383122293
+title_source: 10858faa0464257e
+title_generated: 731ba3b8553d08e4
 ---
 
 <!-- translation-section: introduction -->
 
-# Kutsu äänestämään
+# Hallitse äänestäjiä
+
+Anna henkilöille oikeus äänestää ja kutsu heidät osallistumaan ehdotukseen tai kyselyyn **Hallitse äänestäjiä** -toiminnolla.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Kutsu ihmisiä äänestämään kyselyssä
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-Kutsu ihmisiä kyselyysi lähettämällä heille ilmoitus.
+## Kutsu ihmisiä äänestämään
 
-Kun olet aloittanut kyselyn, **Kutsu äänestämään** -ruutu tulee näkyviin. Valitse vastaanottajiksi esimerkiksi **Kaikki ketjussa** tai oma ryhmäsi, tai kirjoita yksittäisten henkilöiden nimiä ja sähköpostiosoitteita.
+Kun aloitat kyselyn asetuksella **Vain valitut henkilöt**, **Hallitse äänestäjiä** -ikkuna avautuu. Voit avata sen myös valitsemalla kyselystä **Hallitse äänestäjiä**.
 
-![](proposal_invite.png)
+![Hallitse äänestäjiä -painike kyselyn alaosassa](proposal_after_start.png)
 
-Voit halutessasi liittää kutsuun viestin.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### Valitse vastaanottajat
 
-Valitse ryhmän tunniste, niin näet siihen kuuluvat kutsuttavat henkilöt. Poista henkilö kutsusta valitsemalla hänen nimensä vieressä oleva x.
+Napsauta tyhjää **Etsi tai kutsu äänestäjiä** -kenttää nähdäksesi ehdotukset. Ne näkyvät tässä järjestyksessä:
 
-![](proposal_invite_expand.png)
+- oma ryhmäsi
+- ryhmäsi **edustajat**, jos ryhmälläsi on [valtuutettuja äänestäjiä](/en/user_manual/groups/delegated_voters)
+- yhdistetyt keskustelukanavat, kuten Slack tai Microsoft Teams
+- alaryhmät ja pääryhmä
+- yksittäiset jäsenet
+
+[Suorassa ketjussa](/en/user_manual/discussions/direct_discussions) luettelo tarjoaa ryhmän sijaan vaihtoehdon **Kaikki ketjussa**.
+
+![Hallitse äänestäjiä -ikkunan ehdotuksissa ryhmä, sen edustajat, keskustelukanava ja alaryhmä](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+Valitse vastaanottajajoukko kutsuaksesi sen henkilöt kerralla. Esimerkiksi valitsemalla **Oatmilk Cooperative** sisällytät kutsuun kyseisen ryhmän henkilöt. Voit myös valita yhdistetyn keskustelukanavan julkaistaksesi kutsun siellä. Kutsun julkaiseminen keskustelukanavalla ei lisää sen jäseniä äänestäjiksi.
+
+<!-- translation-section: check-your-recipients -->
+
+### Tarkista, ketkä ovat mukana
+
+Kun valitset vastaanottajajoukon, kentässä näkyvät sen nimi ja mukana olevien henkilöiden määrä. Tarkista määrä ennen kutsun lähettämistä.
+
+![Oatmilk Cooperative valittuna ja vastaanottajien määrä kentän alla](proposal_invite_members.png)
+
+Napsauta vastaanottajajoukon nimeä nähdäksesi yksittäiset henkilöt. Voit sitten jättää henkilön pois tästä kutsusta valitsemalla hänen nimensä vierestä **×**. Tämä ei poista häntä ryhmästä.
+
+![Ryhmän vastaanottajat avattuina nimetyiksi henkilöiksi, joista jokaisen vieressä on poistopainike](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Kutsu vieraita tai asiantuntijoita
+<a id="invite-guests-or-experts"></a>
 
-Voit myös kutsua vieraan kyselyyn kirjoittamalla hänen sähköpostiosoitteensa. Hän saa oikeuden osallistua vain tähän kyselyyn.
+### Lisää henkilöitä nimellä tai sähköpostiosoitteella
 
-Jos kysely on ketjussa, vieras näkee myös ketjun ja sen kommentit. Hän ei voi kommentoida, osallistua ketjun muihin kyselyihin tai nähdä ryhmän muita ketjuja.
+Voit myös kirjoittaa henkilön nimen ja valita hänet ehdotuksista tai kutsua uuden henkilön kirjoittamalla hänen sähköpostiosoitteensa. Voit lisätä samaan kutsuun useita henkilöitä.
 
-![](proposal_invite_guest.png)
+![Ryhmän jäsenelle ja sähköpostiosoitteella lisätylle vieraalle osoitettu kutsu, jonka viesti on valmis lähetettäväksi](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+Vieraat saavat pääsyn tähän kyselyyn. Jos kysely on ketjussa, he voivat myös lukea ketjun ja sen kommentit. Kutsu ei anna heille oikeutta kommentoida ketjussa, äänestää sen muissa kyselyissä tai nähdä ryhmän muita ketjuja.
 
-### Kutsu alaryhmä äänestämään
+<!-- translation-section: send-the-invitations -->
 
-Jos haluat rajata äänestämisen kutsutuille henkilöille, valitse **Vain valitut henkilöt**, kun luot kyselyn. Voit sitten kutsua pääryhmän alaryhmän. Katso myös [Valtuutetut äänestäjät](/en/user_manual/groups/delegated_voters/).
+### Lähetä kutsut
 
-![Vain kutsuttujen henkilöiden valitseminen](invited-people-only.png)
-![Alaryhmän kutsuminen äänestämään](invite-voters-subgroup.png)
+Lisää viesti, jossa kerrot, mistä pyydät ihmisiä päättämään, ja valitse sitten **Kutsu**. Jätä **Lähetä ilmoituksia** valituksi, jotta kutsuttavat saavat ilmoituksen. Poista valinta, jos haluat lisätä äänestäjiä lähettämättä ilmoitusta.
+
+Jos kysely on ajastettu, valitse **Lisää äänestäjiä**. Henkilöt saavat kutsunsa, kun äänestys avautuu.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Kannusta ihmisiä osallistumaan kyselyn aikana
+<a id="engage-people-while-a-poll-is-running"></a>
 
-Kyselyn alaosassa on useita toimintoja, joiden avulla voit kannustaa ihmisiä osallistumaan kyselyn ollessa käynnissä.
-
-![](proposal_after_start.png)
+## Kutsujen lähettämisen jälkeen
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Lisää äänestäjiä kyselyyn
+### Lisää äänestäjiä
 
-Voit lisätä kyselyyn uusia henkilöitä milloin tahansa, myös ennen kuin ajastetun kyselyn äänestys avautuu.
-
-Avaa äänestäjien hallintaikkuna valitsemalla **Hallitse äänestäjiä**. Voit kutsua kaikki ryhmän jäsenet, lisätä jäseniä nimellä tai lisätä vieraita sähköpostiosoitteella, jos vieraiden kutsuminen on sallittu. Kirjoittaminen **Etsi tai kutsu äänestäjiä** -kenttään suodattaa myös kyselyssä jo olevia henkilöitä. Viimeksi lisätyt äänestäjät näkyvät ensin. Selaa koko luetteloa sivutuspainikkeilla.
-
-Jos kyselylle on asetettu avautumisaika eikä äänestys ole vielä avautunut, äänestäjät eivät saa ilmoitusta heti. He saavat ilmoituksen, kun äänestys avautuu.
+Voit avata **Hallitse äänestäjiä** -ikkunan uudelleen ja lisätä henkilöitä milloin tahansa, myös ennen ajastetun kyselyn avautumista. Ikkunassa näkyvät myös nykyiset äänestäjät, viimeksi lisätyt ensin. Etsi henkilö kirjoittamalla nimi tai selaa pidempää luetteloa sivutuspainikkeilla.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### Poista henkilöitä kyselystä
 
-Valitse **Hallitse äänestäjiä**, etsi henkilön nimi äänestäjien hallintaikkunasta, valitse nimen vieressä oleva roskakoripainike ja vahvista valitsemalla **Poista äänestäjä**.
+Valitse henkilön vieressä oleva roskakoripainike ja vahvista valitsemalla **Poista äänestäjä**, jolloin hän menettää oikeutensa äänestää tässä kyselyssä. Esimerkiksi hallituksen äänestystä valmisteleva henkilö voi poistaa itsensä, jos hänellä ei ole äänioikeutta.
 
-![Äänestäjän vieressä oleva roskakoripainike äänestäjien hallintaikkunassa](proposal_invite_remove.png)
+![Hallitse äänestäjiä -ikkunassa nykyiset äänestäjät ja korostettuna yhden äänestäjän roskakoripainike](proposal_invite_remove.png)
 
-Anonyymistä kyselystä ei voi poistaa henkilöitä.
-
-Esimerkiksi ylläpitäjä, joka luo kyselyn hallituksen jäsenten puolesta, voi poistaa itsensä, jos hänellä ei ole oikeutta äänestää.
-
-Äänipainoja käyttävissä kyselyissä ketjun ylläpitäjät voivat samassa ikkunassa [tarkastella ja muokata äänipainoja](/en/user_manual/polls/weighted_voting).
+Anonyymistä kyselystä ei voi poistaa henkilöitä. [Äänipainoja](/en/user_manual/polls/weighted_voting) käyttävissä kyselyissä ketjun ylläpitäjät voivat myös tarkastella ja muokata äänipainoja tässä ikkunassa.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Muistuta ihmisiä äänestämään
 
-Lähetä ilmoitus henkilöille, jotka eivät ole äänestäneet, valitsemalla **Muistuttaa**. **Kaikki kutsuttiin äänestämään** on valittuna oletusarvoisesti. Tarkastele tai muuta vastaanottajia valitsemalla tunniste.
+Valitse kyselystä **Muistuttaa**, valitse muistutuksen vastaanottajat, lisää viesti ja lähetä muistutus valitsemalla **Muistuttaa**. Voit valita **Äänestämättä olevat** tavoittaaksesi henkilöt, joiden vastauksia vielä tarvitaan.
 
-![](proposal_remind.png)
+![Äänestämättä oleville osoitettu muistutus, jonka viestissä kerrotaan päätöksen määräajasta](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### Tarkastele ilmoitushistoriaa
 
-Avaa kyselyn alaosassa oleva kolmen pisteen valikko (**⋯**) ja valitse **Ilmoitushistoria**.
+Avaa kyselyn kolmen pisteen valikko (**⋯**) ja valitse **Ilmoitushistoria**. Näet, ketkä on kutsuttu, milloin kukin kutsu lähetettiin ja onko se luettu, jos tämä tieto on saatavilla.
 
-![Ilmoitushistoria kyselyn toimintovalikossa](../../discussions/notifying_people/poll_notification_history.png)
-
-Historiasta näet, ketkä on kutsuttu äänestämään ja milloin kukin kutsu lähetettiin. Näet myös, onko kutsu luettu, jos tämä tieto on saatavilla.
-
-![Kyselyn ilmoitushistoria](../../discussions/notifying_people/poll_notification_example.png)
+![Ilmoitushistoriassa näkyvät kyselykutsun vastaanottajat](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### Sulje etuajassa
 
-Sulje kysely ennen sen ajastettua sulkemisaikaa valitsemalla **Sulje aikaisin**.
-
-Voit tehdä näin, kun kaikki ovat äänestäneet tai kyselyä ei enää tarvitse pitää avoinna.
-
-![](proposal_close_early.png)
+Valitse **Sulje aikaisin**, kun kaikki ovat äänestäneet tai kyselyä ei enää tarvitse pitää avoinna.
 
 <!-- translation-section: reopen -->
 
 ### Avaa uudelleen
 
-Valitse suljetussa kyselyssä **Avaa uudelleen** ja aseta sitten uusi sulkemispäivä ja kellonaika.
-
-Kyselyitä, joiden tulokset piilotetaan äänestyksen sulkeutumiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyitä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
-
-![](proposal_reopen.png)
+Valitse suljetussa kyselyssä **Avaa uudelleen** ja aseta uusi sulkemispäivä ja kellonaika. Kyselyitä, joiden tulokset piilotetaan äänestyksen sulkeutumiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyitä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.

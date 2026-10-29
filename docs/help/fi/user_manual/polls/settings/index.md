@@ -1,6 +1,6 @@
 ---
 title: Asetukset
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: d01973b781822d5c
   setting-up-a-proposal-or-poll: e63f3d4fd70d0824
@@ -34,7 +35,7 @@ generated:
   add-content: 0516e40c5da65837
   voting-options: 988f7a5cad12d9b0
   edit-voting-options: 60fbea7da813d115
-  opening-time: d5e49c948b4932cd
+  opening-time: 4a9cebf7458bc8d3
   more-settings: 52929ce7488bbd4c
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
@@ -49,6 +50,7 @@ generated:
   delete: 0cda8b7bcda6bdae
   save-bookmark: a8a3baefd1aba243
   save-as-template: 3b67d0904a07c5e1
+  who-can-vote: 1098f8316bb9e01a
 title_source: 74a883a037bc227f
 title_generated: 8af481aba70ae8df
 needs_review:
@@ -145,9 +147,18 @@ Jos haluat aloittaa äänestyksen ennen ajastettua aikaa, valitse **Muokkaa kyse
 
 Varaa ihmisille riittävästi aikaa äänestää. Voit ajastaa ehdotuksen sulkeutumaan ennen kokousta tai välttää sen sulkeutumista viikonloppuna, jotta ihmiset saavat muistutuksen sopivaan aikaan. Tarvittaessa voit sulkea kyselyn etuajassa tai siirtää sulkemisaikaa myöhemmäksi.
 
-**Kuka voi äänestää?** Kutsu kaikki ryhmän jäsenet tai vain valitsemasi ihmiset.
+<!-- translation-section: who-can-vote -->
 
-Voit myöhemmin lisätä ihmisiä kyselyyn, jonka asetuksena on 'Vain kutsutut'. Jos kyselyn äänet yhdistetään äänestäjiin, voit myös poistaa ihmisiä, joilla ei enää pitäisi olla äänioikeutta. Anonyymistä kyselystä ei voi poistaa ihmisiä.
+### Kuka voi äänestää?
+
+Valitse, ketkä voivat äänestää kyselyssä.
+
+- **Kuka tahansa ryhmässä** (tai **Kuka tahansa ketjussa**): kaikki, joilla on pääsy kyselyyn, voivat äänestää, myös myöhemmin liittyvät ihmiset.
+- **Vain valitut henkilöt:** vain lisäämäsi ihmiset voivat äänestää. Käytä tätä, kun vain joidenkin jäsenten, kuten hallituksen tai toimikunnan jäsenten, on tarkoitus äänestää.
+
+![Kuka voi äänestää -asetus](../manage_voters/invited-people-only.png)
+
+Kun aloitat kyselyn, jonka asetuksena on **Vain valitut henkilöt**, **Hallitse äänestäjiä** avautuu, jotta voit lisätä äänestäjiä. Voit lisätä tai poistaa äänestäjiä myöhemmin. Katso [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

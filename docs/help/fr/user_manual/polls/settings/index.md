@@ -1,6 +1,6 @@
 ---
 title: Paramètres
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: ba7b949b80a72354
   setting-up-a-proposal-or-poll: ed8004c6ef8f091b
@@ -34,7 +35,7 @@ generated:
   add-content: 4931f40f13f0eaca
   voting-options: d1893c3bdfa74deb
   edit-voting-options: dfe67094a9cbd0cf
-  opening-time: 668f0b37264d54bb
+  opening-time: 3a78f68d4693f4ec
   more-settings: ea1e48c372fdea5d
   reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
@@ -49,10 +50,9 @@ generated:
   delete: 101eacf14a0a98be
   save-bookmark: d5b24c58cd7adffe
   save-as-template: aa8558d6d0cba97a
+  who-can-vote: 4281a70fb65bbdaf
 title_source: 74a883a037bc227f
 title_generated: '01923df7a446c42f'
-needs_review:
-  opening-time: check the interface label "**Qui peut voter ?**" for "**Who can vote?**"
 ---
 
 <!-- translation-section: introduction -->
@@ -145,9 +145,18 @@ Pour ouvrir le vote avant l’heure prévue, sélectionnez **Modifier le sondage
 
 Laissez suffisamment de temps aux personnes pour voter. Vous pouvez programmer la clôture de la proposition avant une réunion ou éviter une clôture pendant le week-end, afin que les personnes reçoivent un rappel au moment opportun. Si nécessaire, vous pouvez clôturer le sondage plus tôt ou repousser l’heure de clôture.
 
-**Qui peut voter ?** Invitez toutes les personnes du groupe ou uniquement certaines personnes de votre choix.
+<!-- translation-section: who-can-vote -->
 
-Vous pouvez ajouter des personnes ultérieurement à un sondage réservé aux personnes invitées. Pour les sondages où les votes sont identifiés, vous pouvez également retirer les personnes qui ne doivent plus avoir le droit de voter. Il n’est pas possible de retirer des personnes d’un sondage anonyme.
+### Qui peut voter ?
+
+Choisissez qui peut voter dans le sondage.
+
+- **Quelqu'un dans le groupe** (ou **Toute personne dans le fil**) : toutes les personnes ayant accès au sondage peuvent voter, y compris celles qui rejoignent le groupe ou le fil plus tard.
+- **Personnes sélectionnées uniquement :** seules les personnes que vous ajoutez peuvent voter. Utilisez ce paramètre lorsque seuls certains membres doivent voter, par exemple les membres d’un conseil d’administration ou d’un comité.
+
+![Paramètre Qui peut voter](../manage_voters/invited-people-only.png)
+
+Après le démarrage d’un sondage **Personnes sélectionnées uniquement**, **Gérer les électeurs** s’ouvre pour vous permettre d’ajouter des électeurs. Vous pouvez ajouter ou retirer des électeurs ultérieurement. Consultez [Gérer les électeurs](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

@@ -1,147 +1,157 @@
 ---
-title: Nodig uit om te stemmen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: Kiezers beheren
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: acbf21ccebfb1a7c
-  invite-people-to-vote-in-a-poll: 31559c4cd4fb4613
-  invite-guests-or-experts: ce5a8db8613425ad
-  invite-a-subgroup-to-vote: bb4893a7304fa6e1
-  engage-people-while-a-poll-is-running: 9f477f8c9e6757d1
-  add-voters-to-the-poll: f7bbe041be6b679b
-  remove-people-from-the-poll: 3689e5a08de61153
-  remind-people-to-vote: d605ddfb1f134585
-  view-notification-history: 13b37b414fa93346
-  close-early: ff028f40d1e56f1f
-  reopen: af9dc3e790403e85
-title_source: 4801d1a3dba7ce3d
-title_generated: 35dcf23a02ca52e2
+  introduction: c777047a700c36f7
+  invite-people-to-vote-in-a-poll: 37b5981cda1c4e1c
+  invite-guests-or-experts: 04d848b5a94de6af
+  engage-people-while-a-poll-is-running: 79cb8744c9c90d7f
+  add-voters-to-the-poll: 55ea7ec94313fe9e
+  remove-people-from-the-poll: c5695e85a4ec593e
+  remind-people-to-vote: 3a413f3433d2b835
+  view-notification-history: 87e1350b3a89ce5e
+  close-early: 9249378d3d2944a9
+  reopen: 3e422f4bef4daa9b
+  choose-an-audience: a5c6e7480091f80e
+  check-your-recipients: 4e0c336900f3597b
+  send-the-invitations: 14218a0d07490b82
+title_source: 10858faa0464257e
+title_generated: 287e0109694865f8
 ---
 
 <!-- translation-section: introduction -->
 
-# Nodig uit om te stemmen
+# Kiezers beheren
+
+Gebruik **Kiezers beheren** om mensen stemrecht te geven en hen uit te nodigen om deel te nemen aan een voorstel of peiling.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Nodig mensen uit om in een peiling te stemmen
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-Nodig mensen uit voor jouw peiling door ze een melding te sturen.
+## Nodig mensen uit om te stemmen
 
-Nadat je een peiling hebt gestart, verschijnt het vak **Nodig uit om te stemmen**. Selecteer wie je wilt uitnodigen, zoals **Iedereen in de thread** of jouw groep, of voer individuele namen en e-mailadressen in.
+Nadat je een peiling hebt gestart met **Alleen voor geselecteerde personen.**, wordt het venster **Kiezers beheren** geopend. Je kunt het ook openen door bij de peiling **Kiezers beheren** te selecteren.
 
-![](proposal_invite.png)
+![De knop Kiezers beheren onderaan een peiling](proposal_after_start.png)
 
-Je kunt een bericht toevoegen aan de uitnodiging.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### Kies een doelgroep
 
-Selecteer een groepschip om de mensen die je uitnodigt afzonderlijk weer te geven. Selecteer de x naast een naam om die persoon uit de uitnodiging te verwijderen.
+Klik op het lege veld **Zoek of nodig kiezers uit** om suggesties te bekijken. Ze verschijnen in deze volgorde:
 
-![](proposal_invite_expand.png)
+- jouw groep
+- **Afgevaardigden van** jouw groep, als jouw groep [afgevaardigde kiezers](/en/user_manual/groups/delegated_voters) heeft
+- gekoppelde chatruimtes, zoals Slack of Microsoft Teams
+- subgroepen en de hoofdgroep
+- individuele leden
+
+In een [directe thread](/en/user_manual/discussions/direct_discussions) biedt de lijst **Iedereen in de thread** aan in plaats van een groep.
+
+![Het venster Kiezers beheren met suggesties voor de groep, haar afgevaardigden, een chatruimte en een subgroep](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+Selecteer een doelgroep om die mensen samen uit te nodigen. Als je bijvoorbeeld **Oatmilk Cooperative** selecteert, worden de mensen in die groep opgenomen. Je kunt ook een gekoppelde chatruimte selecteren om de uitnodiging daar te plaatsen. Als je een uitnodiging in een chatruimte plaatst, worden de leden ervan niet als kiezers toegevoegd.
+
+<!-- translation-section: check-your-recipients -->
+
+### Controleer wie er is opgenomen
+
+Nadat je een doelgroep hebt geselecteerd, toont het veld de naam en het aantal mensen dat erin is opgenomen. Controleer dit aantal voordat je de uitnodiging verstuurt.
+
+![Oatmilk Cooperative geselecteerd, met het aantal ontvangers onder het veld](proposal_invite_members.png)
+
+Klik op de naam van de doelgroep om de afzonderlijke personen weer te geven. Je kunt vervolgens de **×** naast een persoon selecteren om die persoon niet in deze uitnodiging op te nemen. Hiermee verwijder je die persoon niet uit de groep.
+
+![De doelgroep van de groep uitgeklapt tot afzonderlijke personen, elk met een knop om die persoon te verwijderen](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Nodig gasten of experts uit
+<a id="invite-guests-or-experts"></a>
 
-Je kunt ook een gast uitnodigen voor de peiling door het e-mailadres van die persoon in te voeren. De gast krijgt toestemming om alleen aan deze peiling deel te nemen.
+### Voeg mensen toe op naam of e-mailadres
 
-Als de peiling in een thread staat, kan de gast ook die thread en de reacties bekijken. De gast kan niet reageren, deelnemen aan andere peilingen in de thread of andere threads in de groep bekijken.
+Je kunt ook de naam van een persoon typen en die persoon uit de suggesties selecteren, of een e-mailadres invoeren om iemand nieuw uit te nodigen. Je kunt meerdere mensen aan dezelfde uitnodiging toevoegen.
 
-![](proposal_invite_guest.png)
+![Een uitnodiging aan een groepslid en een gast via e-mail, met een bericht dat klaarstaat om te versturen](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+Gasten krijgen toegang tot deze peiling. Als de peiling in een thread staat, kunnen ze ook die thread en de reacties lezen. De uitnodiging geeft hen geen toestemming om in de thread te reageren, in andere peilingen in die thread te stemmen of andere threads in de groep te bekijken.
 
-### Nodig een subgroep uit om te stemmen
+<!-- translation-section: send-the-invitations -->
 
-Om alleen uitgenodigde mensen te laten stemmen, selecteer je **Alleen voor geselecteerde personen.** wanneer je de peiling maakt. Je kunt vervolgens een subgroep uit de hoofdgroep uitnodigen. Zie ook [Gedelegeerde kiezers](/en/user_manual/groups/delegated_voters/).
+### Verstuur de uitnodigingen
 
-![Alleen uitgenodigde mensen selecteren](invited-people-only.png)
-![Een subgroep uitnodigen om te stemmen](invite-voters-subgroup.png)
+Voeg een bericht toe waarin je uitlegt waarover je mensen vraagt een besluit te nemen en selecteer vervolgens **Uitnodigen**. Laat **Meldingen verzenden** aangevinkt om de mensen die je uitnodigt een melding te sturen. Vink dit uit om kiezers toe te voegen zonder een melding te versturen.
+
+Selecteer bij een geplande peiling **Kiezers toevoegen**. Mensen ontvangen hun uitnodiging wanneer het stemmen begint.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Betrek mensen bij een lopende peiling
+<a id="engage-people-while-a-poll-is-running"></a>
 
-Onderaan de peiling staan verschillende functies waarmee je mensen kunt betrekken zodra de peiling loopt.
-
-![](proposal_after_start.png)
+## Nadat je mensen hebt uitgenodigd
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Voeg kiezers toe aan de peiling
+### Voeg meer kiezers toe
 
-Je kunt op elk moment nieuwe mensen aan de peiling toevoegen, ook voordat het stemmen in een geplande peiling begint.
-
-Selecteer **Kiezers beheren** om het venster voor kiezersbeheer te openen. Je kunt iedereen in de groep uitnodigen, leden op naam toevoegen of gasten via hun e-mailadres toevoegen als uitnodigingen voor gasten zijn toegestaan. Door te typen in **Zoek of nodig kiezers uit** filter je ook de mensen die al in de peiling staan. De laatst toegevoegde kiezers verschijnen bovenaan; gebruik de paginaknoppen om de volledige lijst te bekijken.
-
-Als de peiling een geplande openingstijd heeft en het stemmen nog niet is begonnen, ontvangen kiezers niet meteen een melding. Ze krijgen een melding wanneer het stemmen begint.
+Je kunt **Kiezers beheren** op elk moment opnieuw openen om mensen toe te voegen, ook voordat een geplande peiling opengaat. Het venster toont ook de bestaande kiezers, met de laatst toegevoegde mensen bovenaan. Typ een naam om iemand te vinden of gebruik de paginaknoppen om een langere lijst te doorlopen.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### Verwijder mensen uit de peiling
 
-Selecteer **Kiezers beheren**, zoek de naam van de persoon in het venster voor kiezersbeheer, selecteer de prullenbakknop ernaast en bevestig met **Verwijder kiezer**.
+Selecteer de prullenbakknop naast een persoon en bevestig met **Verwijder kiezer** om het stemrecht van die persoon in deze peiling in te trekken. Iemand die bijvoorbeeld een peiling voor een bestuur opzet, kan zichzelf verwijderen als die niet bevoegd is om te stemmen.
 
-![De prullenbakknop naast een kiezer in het venster voor kiezersbeheer](proposal_invite_remove.png)
+![Het venster Kiezers beheren met bestaande kiezers, waarbij de prullenbakknop van een kiezer is gemarkeerd](proposal_invite_remove.png)
 
-Mensen kunnen niet uit een anonieme peiling worden verwijderd.
-
-Een admin die bijvoorbeeld namens bestuursleden een peiling maakt, kan zichzelf verwijderen als die niet bevoegd is om te stemmen.
-
-Bij peilingen met stemgewichten kunnen thread admins in hetzelfde venster [stemgewichten bekijken en aanpassen](/en/user_manual/polls/weighted_voting).
+Mensen kunnen niet uit een anonieme peiling worden verwijderd. Bij peilingen met [stemgewichten](/en/user_manual/polls/weighted_voting) kunnen thread admins hier ook de stemgewichten bekijken en aanpassen.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Herinner mensen eraan om te stemmen
 
-Selecteer **Herinneren** om een melding te sturen naar mensen die nog niet hebben gestemd. **Iedereen die uitgenodigd is om te stemmen** is standaard geselecteerd. Selecteer de chip om de ontvangers te bekijken of te wijzigen.
+Selecteer **Herinneren** bij de peiling, kies wie de herinnering moet ontvangen, voeg een bericht toe en selecteer **Herinneren** om het te versturen. Je kunt **Mensen die nog niet gestemd hebben** selecteren om de mensen te bereiken van wie nog een stem nodig is.
 
-![](proposal_remind.png)
+![Een herinnering aan mensen die nog niet gestemd hebben, met een bericht over de uiterste datum voor het besluit](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### Bekijk de meldingsgeschiedenis
 
-Open het menu met drie puntjes (**⋯**) onderaan de peiling en selecteer **Meldingsgeschiedenis**.
+Open het menu met drie puntjes (**⋯**) van de peiling en selecteer **Meldingsgeschiedenis** om te zien wie is uitgenodigd, wanneer elke uitnodiging is verstuurd en of deze is gelezen, als die informatie beschikbaar is.
 
-![Meldingsgeschiedenis in het actiemenu van een peiling](../../discussions/notifying_people/poll_notification_history.png)
-
-De geschiedenis laat zien wie is uitgenodigd om te stemmen, wanneer elke uitnodiging is verstuurd en of deze is gelezen, als die informatie beschikbaar is.
-
-![Meldingsgeschiedenis van een peiling](../../discussions/notifying_people/poll_notification_example.png)
+![Meldingsgeschiedenis met de ontvangers van een uitnodiging voor een peiling](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### Sluit vroeg
 
-Selecteer **Sluit vroeg** om een peiling vóór de geplande sluitingstijd te sluiten.
-
-Je kunt dit doen wanneer iedereen heeft gestemd of de peiling niet langer open hoeft te blijven.
-
-![](proposal_close_early.png)
+Selecteer **Sluit vroeg** wanneer iedereen heeft gestemd of de peiling niet langer open hoeft te blijven.
 
 <!-- translation-section: reopen -->
 
 ### Heropen
 
-Selecteer **Heropen** bij een gesloten peiling en stel vervolgens een nieuwe sluitingsdatum en sluitingstijd in.
-
-Peilingen die het resultaat verbergen totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt de sluitingstijd verlengen zolang ze nog open zijn.
-
-![](proposal_reopen.png)
+Selecteer **Heropen** bij een gesloten peiling en stel een nieuwe sluitingsdatum en sluitingstijd in. Peilingen die het resultaat verbergen totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend; je kunt de sluitingstijd verlengen zolang ze nog open zijn.

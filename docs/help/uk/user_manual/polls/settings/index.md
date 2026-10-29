@@ -1,6 +1,6 @@
 ---
 title: Налаштування
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 6dd7fee001d74242
   setting-up-a-proposal-or-poll: e0f9bc6b7d0321c9
@@ -34,7 +35,7 @@ generated:
   add-content: 895fd893ac0cb2ba
   voting-options: '094d517422cffc49'
   edit-voting-options: 8839c76792a4b2ac
-  opening-time: 2330181cea72ee2d
+  opening-time: 42167e21a67c3edc
   more-settings: 68aeb45fb83bc080
   reminder: 97c156082524dd66
   anonymous-voting: 8b458204a781dedb
@@ -49,6 +50,7 @@ generated:
   delete: 031fd0fc38d6d399
   save-bookmark: 6ca59c40fe994ea6
   save-as-template: 4160ad14300a6cd6
+  who-can-vote: 86534f0e03b4e1fe
 title_source: 74a883a037bc227f
 title_generated: 16e671aa4e14998b
 needs_review:
@@ -146,9 +148,18 @@ needs_review:
 
 Дайте людям достатньо часу для голосування. Ви можете запланувати закриття пропозиції перед зустріччю або уникнути закриття у вихідні, щоб люди вчасно отримали нагадування. За потреби ви можете закрити опитування раніше або відкласти час закриття.
 
-**Хто може голосувати?** Запросіть усіх у групі або лише окремих людей.
+<!-- translation-section: who-can-vote -->
 
-Ви можете пізніше додати людей до опитування з налаштуванням «Лише запрошені люди». В опитуваннях, де голоси пов'язані з виборцями, ви також можете видалити людей, які більше не повинні мати права голосувати. З анонімного опитування видалити людей неможливо.
+### Хто може голосувати?
+
+Укажіть, хто може голосувати в опитуванні.
+
+- **Будь-хто в групі** (або **Будь-хто в темі**): усі, хто має доступ до опитування, можуть голосувати, зокрема й ті, хто приєднається пізніше.
+- **Тільки вибрані люди:** голосувати можуть лише ті люди, яких ви додасте. Використовуйте це налаштування, коли голосувати мають лише деякі учасники групи, наприклад учасники правління або комітету.
+
+![Налаштування «Хто може голосувати?»](../manage_voters/invited-people-only.png)
+
+Після запуску опитування з налаштуванням **Тільки вибрані люди** відкриється **Керування виборцями**, де ви зможете додати виборців. Ви можете додавати або видаляти виборців пізніше. Див. [Керування виборцями](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

@@ -1,6 +1,6 @@
 ---
 title: Configuración
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: d6e6465a941f05cc
   setting-up-a-proposal-or-poll: bb36970da131d96f
@@ -34,7 +35,7 @@ generated:
   add-content: c4be9624dffcbb7e
   voting-options: d66fbd0a4522aa98
   edit-voting-options: e773bdbcc7894d29
-  opening-time: 1372662d376cbd7f
+  opening-time: 445c6baffde2eb1d
   more-settings: 3519ac4ed701ef08
   reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
@@ -49,6 +50,7 @@ generated:
   delete: 308d1e3227e365db
   save-bookmark: 5bdb299d7db4dc71
   save-as-template: 951653bc48b8f1f5
+  who-can-vote: 590b1af3d3c55239
 title_source: 74a883a037bc227f
 title_generated: bb507137e3631379
 ---
@@ -143,9 +145,18 @@ Para abrir la votación antes de la hora programada, selecciona **Editar encuest
 
 Deja tiempo suficiente para que las personas voten. Puedes programar la propuesta para que se cierre antes de una reunión o evitar que se cierre durante un fin de semana, para que las personas reciban un recordatorio a tiempo. Si es necesario, puedes cerrar la encuesta antes de tiempo o ampliar el plazo de cierre.
 
-**¿Quién puede votar?** Invita a todo el grupo o solo a personas concretas.
+<!-- translation-section: who-can-vote -->
 
-Puedes agregar personas más adelante a una encuesta configurada como 'Solo personas invitadas'. En las encuestas con votos identificados, también puedes eliminar a las personas que ya no deban tener derecho a votar. No se pueden eliminar personas de una encuesta anónima.
+### ¿Quién puede votar?
+
+Elige quién puede votar en la encuesta.
+
+- **¿Alguien en el grupo?** (o **Cualquier persona en el hilo**): todas las personas con acceso a la encuesta pueden votar, incluidas las que se unan más adelante.
+- **Solo para personas seleccionadas:** solo pueden votar las personas que agregues. Usa esta opción cuando solo deban votar algunos miembros, como una junta directiva o un comité.
+
+![Configuración de quién puede votar](../manage_voters/invited-people-only.png)
+
+Después de iniciar una encuesta con la opción **Solo para personas seleccionadas**, se abre **Gestionar a los votantes** para que puedas agregar votantes. Puedes agregar o eliminar votantes más adelante. Consulta [Gestionar a los votantes](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

@@ -1,6 +1,6 @@
 ---
 title: Instellingen
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: ab2a875c4f826f8e
   setting-up-a-proposal-or-poll: e96f5dcce20c5096
@@ -34,7 +35,7 @@ generated:
   add-content: e6cc73fdb7a701bb
   voting-options: 48f34901246ac268
   edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 0f3b2f7ee94415e0
+  opening-time: 6980ebf17b2c0d8b
   more-settings: ac9de733ac425f3a
   reminder: 830f0f493ba85dbd
   anonymous-voting: 002f8bcf4a9bf4ce
@@ -49,6 +50,7 @@ generated:
   delete: 9acf822e2506248b
   save-bookmark: 641508ba541567f1
   save-as-template: 9fa218d1889f3517
+  who-can-vote: 911094b3a11038ef
 title_source: 74a883a037bc227f
 title_generated: 2701873dad7cb276
 ---
@@ -143,9 +145,18 @@ Selecteer **Peiling bewerken**, vink **De stemming is direct geopend.** aan en s
 
 Geef mensen voldoende tijd om te stemmen. Je kunt het voorstel bijvoorbeeld vóór een vergadering laten sluiten, of voorkomen dat het in het weekend sluit, zodat mensen op tijd een herinnering krijgen. Als het nodig is, kun je de peiling eerder sluiten of de sluitingstijd uitstellen.
 
-**Wie mag stemmen?** Nodig iedereen in de groep uit of alleen specifieke mensen.
+<!-- translation-section: who-can-vote -->
 
-Je kunt later mensen toevoegen aan een peiling waarvoor je 'Alleen uitgenodigde mensen' hebt gekozen. Bij peilingen waarin de identiteit van kiezers zichtbaar is, kun je ook mensen verwijderen die niet langer mogen stemmen. Je kunt geen mensen verwijderen uit een anonieme peiling.
+### Wie mag stemmen?
+
+Kies wie in de peiling mag stemmen.
+
+- **Iedereen in de groep** (of **Iedereen in de thread**): iedereen met toegang tot de peiling mag stemmen, ook mensen die later lid worden.
+- **Alleen voor geselecteerde personen.:** alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
+
+![Instelling voor wie mag stemmen](../manage_voters/invited-people-only.png)
+
+Nadat je een peiling met **Alleen voor geselecteerde personen.** start, opent **Kiezers beheren** zodat je kiezers kunt toevoegen. Je kunt later kiezers toevoegen of verwijderen. Zie [Kiezers beheren](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

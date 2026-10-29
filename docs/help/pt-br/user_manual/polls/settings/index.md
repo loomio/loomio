@@ -1,6 +1,6 @@
 ---
 title: Configurações
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 9e65c25dba50f2d8
   setting-up-a-proposal-or-poll: dfd4131bed6df169
@@ -34,7 +35,7 @@ generated:
   add-content: c438022ad610d57a
   voting-options: ce27d4aa22b6e72a
   edit-voting-options: 649d9c3d8156c05d
-  opening-time: 0dfc04421861ff59
+  opening-time: 77974fabab1393ac
   more-settings: f868cbc69693539f
   reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
@@ -49,6 +50,7 @@ generated:
   delete: 1e0a0d0a1becaf73
   save-bookmark: a96ae6e16f6024d9
   save-as-template: 2f1f681d0731b2a3
+  who-can-vote: 1cb1fb6fe9b58bc4
 title_source: 74a883a037bc227f
 title_generated: 76b0fb6ad18939ac
 ---
@@ -143,9 +145,18 @@ Para iniciar a votação antes do horário agendado, selecione **Editar enquete 
 
 Dê tempo suficiente para as pessoas votarem. Você pode programar a proposta para encerrar antes de uma reunião ou evitar o encerramento durante um fim de semana, para que as pessoas recebam um lembrete em tempo hábil. Se necessário, você pode encerrar a enquete antecipadamente ou adiar o horário de encerramento.
 
-**Quem pode votar?** Convide todas as pessoas do grupo ou apenas pessoas específicas.
+<!-- translation-section: who-can-vote -->
 
-Você pode adicionar pessoas posteriormente a uma enquete configurada como 'Somente pessoas convidadas'. Nas enquetes identificadas, você também pode remover pessoas que não devem mais ter direito a votar. Não é possível remover pessoas de uma enquete anônima.
+### Quem pode votar?
+
+Escolha quem pode votar na enquete.
+
+- **Alguém no grupo** (ou **Qualquer pessoa no tópico**): todas as pessoas com acesso à enquete podem votar, incluindo aquelas que entrarem depois.
+- **Apenas para pessoas selecionadas:** somente as pessoas que você adicionar podem votar. Use esta opção quando apenas alguns membros devem votar, como um conselho ou um comitê.
+
+![Configuração de quem pode votar](../manage_voters/invited-people-only.png)
+
+Depois que você inicia uma enquete **Apenas para pessoas selecionadas**, a tela **Gerenciar eleitores** é aberta para que você possa adicionar eleitores. Você pode adicionar ou remover eleitores depois. Consulte [Gerenciar eleitores](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

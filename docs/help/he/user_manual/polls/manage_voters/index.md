@@ -1,147 +1,159 @@
 ---
-title: הזמנה להצביע
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: ניהול מצביעים
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: '097f69b07cd4cfb6'
-  invite-people-to-vote-in-a-poll: 77832163de5cf69c
-  invite-guests-or-experts: '0896b3bffe58f58f'
-  invite-a-subgroup-to-vote: c5110e4c6a44d928
-  engage-people-while-a-poll-is-running: 40253cd9266af846
-  add-voters-to-the-poll: 710dea6975ea17b6
-  remove-people-from-the-poll: a922615dfff55a28
-  remind-people-to-vote: cbcde77973e25bcf
-  view-notification-history: fac668b28208826a
-  close-early: b07990cae2e17c95
-  reopen: 85dbdb632ad9ec01
-title_source: 4801d1a3dba7ce3d
-title_generated: 74acfaefbe1bab8a
+  introduction: 390fc66afa1d6497
+  invite-people-to-vote-in-a-poll: 8a3fa935584140e9
+  invite-guests-or-experts: b8176a49110bfe43
+  engage-people-while-a-poll-is-running: d9116c09792e9370
+  add-voters-to-the-poll: 2e88d91c8793c874
+  remove-people-from-the-poll: 2ee51dc193fcbf7c
+  remind-people-to-vote: de73b822d93cc0d1
+  view-notification-history: 78a28832746673d0
+  close-early: f846c80be29018d5
+  reopen: f213aacd66cb8790
+  choose-an-audience: cf65f2f54d967366
+  check-your-recipients: c1119a12d900c03a
+  send-the-invitations: 4d217ce3564690fc
+title_source: 10858faa0464257e
+title_generated: 3fda8c8a6dd319a8
+needs_review:
+  choose-an-audience: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
 
-# הזמנה להצביע
+# ניהול מצביעים
+
+ניתן להשתמש ב**ניהול מצביעים** כדי לתת לאנשים זכות הצבעה ולהזמין אותם להשתתף בהצעה או בסקר.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## הזמנת אנשים להצביע בסקר
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-ניתן להזמין אנשים לסקר באמצעות שליחת התראה.
+## הזמנת אנשים להצביע
 
-לאחר פתיחת סקר, מופיעה התיבה **הזמנה להצביע**. יש לבחור קהל, כגון **כולם בשרשור** או הקבוצה, או להזין שמות וכתובות דוא״ל של אנשים מסוימים.
+לאחר פתיחת סקר עם האפשרות **אנשים נבחרים בלבד**, נפתח חלון **ניהול מצביעים**. ניתן לפתוח אותו גם באמצעות בחירה ב**ניהול מצביעים** בסקר.
 
-![](proposal_invite.png)
+![כפתור ניהול מצביעים בתחתית סקר](proposal_after_start.png)
 
-ניתן לצרף הודעה להזמנה.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### בחירה בקהל
 
-יש לבחור בתגית של קבוצה כדי להרחיב אותה לרשימת האנשים המוזמנים. להסרת אדם מההזמנה, יש לבחור בסימן x לצד השם.
+יש ללחוץ על השדה הריק **מצא או הזמן מצביעים** כדי לראות הצעות. הן מופיעות בסדר הבא:
 
-![](proposal_invite_expand.png)
+- הקבוצה
+- **נציגי** הקבוצה, אם יש בקבוצה [מצביעים מייצגים](/en/user_manual/groups/delegated_voters)
+- חדרי צ׳אט מחוברים, כגון Slack או Microsoft Teams
+- תת־קבוצות וקבוצת האם
+- חברים יחידים
+
+ב[שרשור ישיר](/en/user_manual/discussions/direct_discussions), הרשימה מציעה את האפשרות **כולם בשרשור** במקום קבוצה.
+
+![חלון ניהול המצביעים עם הצעות לקבוצה, לנציגיה, לחדר צ׳אט ולתת־קבוצה](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+יש לבחור קהל כדי להזמין את כל האנשים שבו יחד. לדוגמה, בחירה ב־**Oatmilk Cooperative** כוללת את האנשים בקבוצה זו. ניתן גם לבחור חדר צ׳אט מחובר כדי לפרסם בו את ההזמנה. פרסום בחדר צ׳אט אינו מוסיף את חבריו כמצביעים.
+
+<!-- translation-section: check-your-recipients -->
+
+### בדיקת רשימת הנמענים
+
+לאחר בחירת קהל, השדה מציג את שמו ואת מספר האנשים הכלולים בו. יש לבדוק את המספר הזה לפני שליחת ההזמנה.
+
+![קואופרטיב חלב שיבולת שועל נבחר, ומספר הנמענים מוצג מתחת לשדה](proposal_invite_members.png)
+
+יש ללחוץ על שם הקהל כדי להרחיב אותו לרשימת אנשים. לאחר מכן ניתן לבחור בסימן **×** לצד שם כדי להסיר את האדם מההזמנה הזו. פעולה זו אינה מסירה אותו מהקבוצה.
+
+![קהל הקבוצה מורחב לרשימת שמות, ולצד כל שם כפתור הסרה](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### הזמנת אורחים או מומחים
+<a id="invite-guests-or-experts"></a>
 
-ניתן גם להזמין אורח לסקר באמצעות הזנת כתובת הדוא״ל שלו. ההרשאה שתינתן תאפשר השתתפות בסקר זה בלבד.
+### הוספת אנשים לפי שם או דוא״ל
 
-אם הסקר נמצא בתוך שרשור, ההרשאה תאפשר גם לצפות בשרשור ובתגובות שבו. היא לא תאפשר לפרסם תגובות, להשתתף בסקרים אחרים בשרשור או לצפות בשרשורים אחרים בקבוצה.
+ניתן גם להקליד שם ולבחור מתוך ההצעות, או להזין כתובת דוא״ל כדי להזמין אדם חדש. ניתן להוסיף כמה אנשים לאותה הזמנה.
 
-![](proposal_invite_guest.png)
+![הזמנה הממוענת לחבר קבוצה ולאורח באמצעות דוא״ל, עם הודעה מוכנה לשליחה](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+אורחים מקבלים גישה לסקר זה. אם הסקר נמצא בתוך שרשור, ניתן להם גם לקרוא את השרשור ואת התגובות שבו. ההזמנה אינה מעניקה הרשאה לפרסם תגובות בשרשור, להצביע בסקרים אחרים שבו או לצפות בשרשורים אחרים בקבוצה.
 
-### הזמנת תת־קבוצה להצביע
+<!-- translation-section: send-the-invitations -->
 
-כדי להגביל את ההצבעה לאנשים שהוזמנו, יש לבחור **אנשים נבחרים בלבד** בעת יצירת הסקר. לאחר מכן ניתן להזמין תת־קבוצה מתוך קבוצת האם. ראו גם [מצביעים מטעם הקבוצה](/en/user_manual/groups/delegated_voters/).
+### שליחת ההזמנות
 
-![בחירת אנשים שהוזמנו בלבד](invited-people-only.png)
-![הזמנת תת־קבוצה להצביע](invite-voters-subgroup.png)
+יש להוסיף הודעה שמסבירה מה נדרשים האנשים להחליט, ואז לבחור **הזמן**. יש להשאיר את האפשרות **שלח התראות** מסומנת כדי לשלוח התראה לאנשים המוזמנים. יש לבטל את הסימון כדי להוסיף מצביעים ללא שליחת התראה.
+
+בסקר מתוזמן, יש לבחור **הוסף מצביעים**. ההזמנה תישלח עם פתיחת ההצבעה.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## עידוד השתתפות בזמן שהסקר פעיל
+<a id="engage-people-while-a-poll-is-running"></a>
 
-בתחתית הסקר יש כמה כלים שמסייעים לעודד השתתפות בזמן שהסקר פעיל.
-
-![](proposal_after_start.png)
+## לאחר הזמנת אנשים
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### הוספת מצביעים לסקר
+### הוספת מצביעים נוספים
 
-ניתן להוסיף אנשים חדשים לסקר בכל עת, גם לפני פתיחת ההצבעה בסקר מתוזמן.
-
-יש לבחור **ניהול מצביעים** כדי לפתוח את חלון ניהול המצביעים. ניתן להזמין את כל חברי הקבוצה, להוסיף חברים לפי שם או להוסיף אורחים באמצעות דוא״ל אם מותר להזמין אורחים. הקלדה בשדה **מצא או הזמן מצביעים** מסננת גם את האנשים שכבר נמצאים בסקר. המצביעים שנוספו לאחרונה מופיעים ראשונים; ניתן להשתמש בכפתורי המעבר בין העמודים כדי לעיין ברשימה המלאה.
-
-אם נקבע לסקר מועד פתיחה וההצבעה עדיין לא נפתחה, המצביעים לא יקבלו התראה מיידית. ההתראה תישלח עם פתיחת ההצבעה.
+ניתן לפתוח שוב את **ניהול מצביעים** כדי להוסיף אנשים בכל עת, גם לפני פתיחת סקר מתוזמן. החלון מציג גם את המצביעים הקיימים, כשהאנשים שנוספו לאחרונה מופיעים ראשונים. יש להקליד שם כדי למצוא אדם מסוים, או להשתמש בכפתורי המעבר בין העמודים כדי לעיין ברשימה ארוכה יותר.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### הסרת אנשים מהסקר
 
-יש לבחור **ניהול מצביעים**, למצוא את שם האדם בחלון ניהול המצביעים, לבחור בכפתור הפח שלצד השם ולאשר **הסר את הבוחר**.
+יש לבחור בכפתור הפח לצד שם ולאשר **הסר את הבוחר** כדי להסיר את זכות ההצבעה של אותו אדם בסקר זה. לדוגמה, בעת הגדרת הצבעה של ועד מנהל, ניתן להסיר את החשבון שמגדיר את ההצבעה אם אין לו זכות להצביע.
 
-![כפתור הפח לצד מצביע בחלון ניהול המצביעים](proposal_invite_remove.png)
+![חלון ניהול מצביעים המציג מצביעים קיימים, עם כפתור הפח של אחד המצביעים מודגש](proposal_invite_remove.png)
 
-לא ניתן להסיר אנשים מסקר אנונימי.
-
-לדוגמה, בעת יצירת סקר בשם חברי ועד מנהל, ניתן להסיר את החשבון שיצר את הסקר אם אין לו הרשאה להצביע.
-
-בסקרים המשתמשים במשקלי הצבעה, אותו חלון מאפשר למנהלי השרשור [לעיין במשקלי ההצבעה ולערוך אותם](/en/user_manual/polls/weighted_voting).
+לא ניתן להסיר אנשים מסקר אנונימי. בסקרים עם [משקלי הצבעה](/en/user_manual/polls/weighted_voting), מנהלי השרשור יכולים גם לעיין במשקלים ולערוך אותם כאן.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### שליחת תזכורת להצביע
 
-יש לבחור **תזכורת** כדי לשלוח התראה לאנשים שטרם הצביעו. האפשרות **כולם מוזמנים להצביע** נבחרת כברירת מחדל. יש לבחור בתגית כדי לראות או לשנות את רשימת הנמענים.
+יש לבחור **תזכורת** בסקר, לבחור מי יקבלו את התזכורת, להוסיף הודעה ולבחור **תזכורת** כדי לשלוח אותה. ניתן לבחור **מי שטרם הצביעו** כדי לפנות לאנשים שעדיין נדרשת הצבעתם.
 
-![](proposal_remind.png)
+![תזכורת הממוענת לאנשים שטרם הצביעו, עם הודעה על המועד האחרון לקבלת ההחלטה](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### צפייה בהיסטוריית התראות
 
-יש לפתוח את תפריט שלוש הנקודות (**⋯**) בתחתית הסקר ולבחור **היסטוריית התראות**.
+יש לפתוח את תפריט שלוש הנקודות (**⋯**) של הסקר ולבחור **היסטוריית התראות** כדי לראות מי הוזמנו, מתי נשלחה כל הזמנה והאם נקראה, כאשר המידע הזה זמין.
 
-![היסטוריית התראות בתפריט הפעולות של סקר](../../discussions/notifying_people/poll_notification_history.png)
-
-ההיסטוריה מציגה מי הוזמן להצביע, מתי נשלחה כל הזמנה והאם נקראה, כאשר המידע הזה זמין.
-
-![היסטוריית התראות של סקר](../../discussions/notifying_people/poll_notification_example.png)
+![היסטוריית התראות המציגה את נמעני ההזמנה לסקר](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### סגירה מוקדמת
 
-יש לבחור **סגור מוקדם** כדי לסגור סקר לפני מועד הסגירה המתוכנן.
-
-ניתן לעשות זאת כאשר כולם כבר הצביעו או כאשר אין עוד צורך להשאיר את הסקר פתוח.
-
-![](proposal_close_early.png)
+יש לבחור **סגור מוקדם** כאשר כולם כבר הצביעו או כאשר אין עוד צורך להשאיר את הסקר פתוח.
 
 <!-- translation-section: reopen -->
 
 ### פתיחה מחדש
 
-יש לבחור **פתח מחדש** בסקר סגור, ולאחר מכן לקבוע תאריך סגירה ושעה חדשים.
-
-לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, כולל סקרים אנונימיים. ניתן לדחות את מועד הסגירה שלהם כל עוד הם פתוחים.
-
-![](proposal_reopen.png)
+יש לבחור **פתח מחדש** בסקר סגור ולקבוע תאריך סגירה ושעה חדשים. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, כולל סקרים אנונימיים; ניתן לדחות את מועד הסגירה שלהם כל עוד הם פתוחים.

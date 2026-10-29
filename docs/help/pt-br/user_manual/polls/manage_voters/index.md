@@ -1,147 +1,157 @@
 ---
-title: Convidar a votar
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: Gerenciar eleitores
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: ca0e336d115357af
-  invite-people-to-vote-in-a-poll: 815c193d404a36f9
-  invite-guests-or-experts: 9ecc2e9abb83596e
-  invite-a-subgroup-to-vote: f8ffd9f94066d78e
-  engage-people-while-a-poll-is-running: 2ad855a7ed684fd7
-  add-voters-to-the-poll: 76a1d7805cb7b48e
-  remove-people-from-the-poll: 0544e0ba6b0d4f21
-  remind-people-to-vote: 6327e07ed4413eb6
-  view-notification-history: bd518e21af31776b
-  close-early: e4783b6e8c6f5e84
-  reopen: 9b22eac3f799d9f4
-title_source: 4801d1a3dba7ce3d
-title_generated: 38fec66e3e2c3377
+  introduction: e1dbcbc60299a5de
+  invite-people-to-vote-in-a-poll: 9af2ba0fabcf5110
+  invite-guests-or-experts: 21af711b48e40082
+  engage-people-while-a-poll-is-running: 800a7010da730ecb
+  add-voters-to-the-poll: 14a595eb9e3158e1
+  remove-people-from-the-poll: adc78e796eb00642
+  remind-people-to-vote: 4fe7a7dff89b8bd4
+  view-notification-history: c6598006cc9e7e80
+  close-early: 153ca47f91023247
+  reopen: 472bb76bd04c33a3
+  choose-an-audience: 63f2977529d8b4c6
+  check-your-recipients: 2e863ab8d0a530b4
+  send-the-invitations: 4fb9e69722860bfa
+title_source: 10858faa0464257e
+title_generated: 3c945a1aef5e3b09
 ---
 
 <!-- translation-section: introduction -->
 
-# Convidar a votar
+# Gerenciar eleitores
+
+Use **Gerenciar eleitores** para dar às pessoas o direito de votar e convidá-las a participar de uma proposta ou enquete.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Convide pessoas a votar em uma enquete
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-Convide pessoas para sua enquete enviando uma notificação.
+## Convide pessoas a votar
 
-Depois que você iniciar uma enquete, a caixa **Convidar a votar** será exibida. Selecione um público, como **Todos no tópico** ou seu grupo, ou digite nomes e endereços de e-mail individuais.
+Depois que você iniciar uma enquete com **Apenas para pessoas selecionadas**, a janela **Gerenciar eleitores** será aberta. Você também pode abri-la selecionando **Gerenciar eleitores** na enquete.
 
-![](proposal_invite.png)
+![O botão Gerenciar eleitores na parte inferior de uma enquete](proposal_after_start.png)
 
-Você pode incluir uma mensagem opcional no convite.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### Escolha um público
 
-Selecione o marcador de um grupo para expandi-lo e mostrar as pessoas que você está convidando. Selecione o x ao lado de um nome para remover essa pessoa do convite.
+Clique no campo vazio **Encontre ou convide eleitores** para ver sugestões. Elas aparecem nesta ordem:
 
-![](proposal_invite_expand.png)
+- seu grupo
+- **Delegados de** seu grupo, se ele tiver [eleitores delegados](/en/user_manual/groups/delegated_voters)
+- salas de bate-papo conectadas, como Slack ou Microsoft Teams
+- subgrupos e o grupo principal
+- membros individuais
+
+Em uma [conversa direta](/en/user_manual/discussions/direct_discussions), a lista oferece **Todos no tópico** em vez de um grupo.
+
+![A janela Gerenciar eleitores com sugestões para o grupo, seus delegados, uma sala de bate-papo e um subgrupo](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+Selecione um público para convidar essas pessoas de uma só vez. Por exemplo, selecionar **Oatmilk Cooperative** inclui as pessoas desse grupo. Você também pode selecionar uma sala de bate-papo conectada para publicar o convite nela. Publicar em uma sala de bate-papo não adiciona seus membros como eleitores.
+
+<!-- translation-section: check-your-recipients -->
+
+### Confira quem está incluído
+
+Depois que você selecionar um público, o campo mostrará o nome dele e quantas pessoas estão incluídas. Confira essa contagem antes de enviar o convite.
+
+![Oatmilk Cooperative selecionado, com a contagem de destinatários exibida abaixo do campo](proposal_invite_members.png)
+
+Clique no nome do público para expandir a lista e mostrar cada pessoa. Você poderá selecionar o **×** ao lado de uma pessoa para deixá-la de fora deste convite. Isso não a remove do grupo.
+
+![O público do grupo expandido em uma lista de pessoas identificadas pelo nome, cada uma com um controle para removê-la](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Convide convidados ou especialistas
+<a id="invite-guests-or-experts"></a>
 
-Você também pode convidar uma pessoa para a enquete digitando seu endereço de e-mail. Ela receberá permissão para participar apenas dessa enquete.
+### Adicione pessoas pelo nome ou e-mail
 
-Se a enquete estiver em uma conversa, essa pessoa também poderá ver a conversa e seus comentários. Ela não poderá comentar, participar de outras enquetes na conversa nem ver outras conversas do grupo.
+Você também pode digitar o nome de uma pessoa e selecioná-la nas sugestões, ou inserir um endereço de e-mail para convidar alguém novo. Você pode adicionar várias pessoas ao mesmo convite.
 
-![](proposal_invite_guest.png)
+![Um convite destinado a um membro do grupo e a um convidado por e-mail, com uma mensagem pronta para enviar](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+Os convidados recebem acesso a esta enquete. Se a enquete estiver em uma conversa, eles também poderão ler essa conversa e seus comentários. O convite não dá permissão para comentar na conversa, votar nas outras enquetes dela ou ver outras conversas do grupo.
 
-### Convide um subgrupo a votar
+<!-- translation-section: send-the-invitations -->
 
-Para limitar a votação às pessoas convidadas, selecione **Apenas para pessoas selecionadas** ao criar a enquete. Depois, você poderá convidar um subgrupo do grupo principal. Veja também [Eleitores delegados](/en/user_manual/groups/delegated_voters/).
+### Envie os convites
 
-![Selecionando apenas pessoas convidadas](invited-people-only.png)
-![Convidando um subgrupo a votar](invite-voters-subgroup.png)
+Adicione uma mensagem explicando o que você está pedindo às pessoas que decidam e selecione **Convidar**. Deixe **Enviar notificações** marcado para notificar as pessoas que você está convidando. Desmarque essa opção para adicionar eleitores sem enviar uma notificação.
+
+Para uma enquete agendada, selecione **Adicionar eleitores**. As pessoas receberão o convite quando a votação começar.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Envolva as pessoas enquanto a enquete estiver em andamento
+<a id="engage-people-while-a-poll-is-running"></a>
 
-Na parte inferior da enquete, há vários recursos para ajudar você a envolver as pessoas enquanto ela estiver em andamento.
-
-![](proposal_after_start.png)
+## Depois de convidar as pessoas
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Adicione eleitores à enquete
+### Adicione mais eleitores
 
-Você pode adicionar novas pessoas à enquete a qualquer momento, inclusive antes do início da votação em uma enquete agendada.
-
-Selecione **Gerenciar eleitores** para abrir a janela de gerenciamento de eleitores. Você pode convidar todas as pessoas do grupo, adicionar membros pelo nome ou adicionar convidados pelo e-mail, se convites para convidados forem permitidos. Digitar em **Encontre ou convide eleitores** também filtra as pessoas que já estão na enquete. Os eleitores adicionados mais recentemente aparecem primeiro; use os controles de paginação para percorrer a lista completa.
-
-Se a enquete tiver um horário de início agendado e a votação ainda não tiver começado, os eleitores não receberão uma notificação imediata. Eles serão notificados quando a votação começar.
+Você pode abrir novamente **Gerenciar eleitores** para adicionar pessoas a qualquer momento, inclusive antes do início de uma enquete agendada. A janela também lista os eleitores existentes, com as pessoas adicionadas mais recentemente primeiro. Digite um nome para encontrar alguém ou use os controles de paginação para percorrer uma lista mais longa.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### Remova pessoas da enquete
 
-Selecione **Gerenciar eleitores**, encontre o nome da pessoa na janela de gerenciamento de eleitores, selecione o botão de lixeira ao lado do nome e confirme **Remover eleitor**.
+Selecione o botão de lixeira ao lado de uma pessoa e confirme **Remover eleitor** para retirar o direito dela de votar nesta enquete. Por exemplo, alguém que está preparando uma votação de um conselho pode remover a si mesmo se não tiver direito a voto.
 
-![O botão de lixeira ao lado de um eleitor na janela de gerenciamento de eleitores](proposal_invite_remove.png)
+![A janela Gerenciar eleitores mostrando os eleitores existentes, com o botão de lixeira de um eleitor destacado](proposal_invite_remove.png)
 
-Não é possível remover pessoas de uma enquete anônima.
-
-Por exemplo, um administrador que cria uma enquete em nome dos membros de um conselho pode remover a si mesmo se não tiver autorização para votar.
-
-Nas enquetes que usam pesos do voto, essa mesma janela permite que os admins da conversa [revisem e editem os pesos do voto](/en/user_manual/polls/weighted_voting).
+Não é possível remover pessoas de uma enquete anônima. Nas enquetes com [pesos do voto](/en/user_manual/polls/weighted_voting), os admins da conversa também podem revisar e editar os pesos aqui.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Lembre as pessoas de votar
 
-Selecione **Lembrar** para enviar uma notificação às pessoas que ainda não votaram. **Todos convidados a votar** fica selecionado por padrão. Selecione o marcador para ver ou alterar os destinatários.
+Selecione **Lembrar** na enquete, escolha quem deve receber o lembrete, adicione uma mensagem e selecione **Lembrar** para enviá-lo. Você pode selecionar **Pessoas que não votaram** para entrar em contato com as pessoas cujas respostas ainda são necessárias.
 
-![](proposal_remind.png)
+![Um lembrete destinado às pessoas que não votaram, com uma mensagem sobre o prazo da decisão](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### Veja o histórico de notificações
 
-Abra o menu de três pontos (**⋯**) na parte inferior da enquete e selecione **Histórico de notificações**.
+Abra o menu de três pontos (**⋯**) da enquete e selecione **Histórico de notificações** para ver quem recebeu um convite, quando cada convite foi enviado e se ele foi lido, quando essa informação estiver disponível.
 
-![Histórico de notificações no menu de ações de uma enquete](../../discussions/notifying_people/poll_notification_history.png)
-
-O histórico mostra quem recebeu um convite para votar, quando cada convite foi enviado e se ele foi lido, quando essa informação estiver disponível.
-
-![Histórico de notificações de uma enquete](../../discussions/notifying_people/poll_notification_example.png)
+![Histórico de notificações mostrando os destinatários de um convite para uma enquete](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### Encerre antecipadamente
 
-Selecione **Fechar cedo** para encerrar uma enquete antes do horário de encerramento agendado.
-
-Você pode fazer isso quando todas as pessoas já tiverem votado ou quando a enquete não precisar mais permanecer aberta.
-
-![](proposal_close_early.png)
+Selecione **Fechar cedo** quando todas as pessoas já tiverem votado ou quando a enquete não precisar mais permanecer aberta.
 
 <!-- translation-section: reopen -->
 
 ### Reabra
 
-Selecione **Reabrir** em uma enquete encerrada e defina uma nova data e hora de encerramento.
-
-Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento enquanto elas ainda estiverem abertas.
-
-![](proposal_reopen.png)
+Selecione **Reabrir** em uma enquete encerrada e defina uma nova data e hora de encerramento. Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas; você pode prorrogar o horário de encerramento enquanto elas ainda estiverem abertas.

@@ -1,147 +1,157 @@
 ---
-title: 投票に招待する
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: 有権者の管理
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: 8f87b6e6b3e25a97
-  invite-people-to-vote-in-a-poll: a6fc7e7b0ae4a0d6
-  invite-guests-or-experts: 6c080c03679fdb46
-  invite-a-subgroup-to-vote: 6f3228f1d5dab373
-  engage-people-while-a-poll-is-running: eef79ac1d5980464
-  add-voters-to-the-poll: ae6b8b389ce12125
-  remove-people-from-the-poll: fd9af5b1bd5c7d55
-  remind-people-to-vote: 862645ba318945ab
-  view-notification-history: 3d57fe3583c72c7a
-  close-early: 3bf9b98777d391b8
-  reopen: 07eef6778bb54e08
-title_source: 4801d1a3dba7ce3d
-title_generated: '010598b1d68b0563'
+  introduction: b7795b7385836c84
+  invite-people-to-vote-in-a-poll: 1293f18a7b4882cb
+  invite-guests-or-experts: 4ed19aac084705c5
+  engage-people-while-a-poll-is-running: b9e5c8c5c6a8247b
+  add-voters-to-the-poll: 1cb76908f4c3c2f8
+  remove-people-from-the-poll: 251b2c3e26d802b7
+  remind-people-to-vote: e82494f287e28233
+  view-notification-history: e065424d8ad29e4a
+  close-early: 701e0de243a1162e
+  reopen: 76ab0000750ed570
+  choose-an-audience: 18550912fd7ea79d
+  check-your-recipients: 71ccc641e3d51539
+  send-the-invitations: e0c676d51cf8b069
+title_source: 10858faa0464257e
+title_generated: ecbb5e3fb9bc7db0
 ---
 
 <!-- translation-section: introduction -->
 
-# 投票に招待する
+# 有権者の管理
+
+**有権者の管理**で投票する権限を付与し、提案やアンケートへの参加を招待します。
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## アンケートへの投票に招待する
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-通知を送信して、アンケートへの投票に招待します。
+## 投票に招待する
 
-アンケートを開始すると、**投票に招待する**ボックスが表示されます。**スレッド内の全員**やグループなどの招待先を選択するか、個人の名前やメールアドレスを入力します。
+**選ばれた人のみ**でアンケートを開始すると、**有権者の管理**ウィンドウが開きます。アンケートで**有権者の管理**を選択して開くこともできます。
 
-![](proposal_invite.png)
+![アンケートの下部にある「有権者の管理」ボタン](proposal_after_start.png)
 
-招待には任意でメッセージを添えることができます。
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### 招待先を選択する
 
-グループのチップを選択すると、招待する人の一覧が展開されます。名前の横にある x を選択すると、その人を招待先から除外できます。
+空の**有権者を探す、または招待する**欄をクリックすると、候補が次の順序で表示されます。
 
-![](proposal_invite_expand.png)
+- 所属するグループ
+- グループに[委任された投票者](/en/user_manual/groups/delegated_voters)がいる場合は、そのグループの**代表者**
+- SlackやMicrosoft Teamsなどの接続されたチャットルーム
+- サブグループと親グループ
+- 個々のメンバー
+
+[ダイレクトスレッド](/en/user_manual/discussions/direct_discussions)では、グループの代わりに**スレッド内の全員**が候補に表示されます。
+
+![グループ、その代表者、チャットルーム、サブグループの候補が表示された「有権者の管理」ウィンドウ](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+招待先を選択すると、そこに含まれる人をまとめて招待できます。例えば、**Oatmilk Cooperative**を選択すると、そのグループの人が含まれます。接続されたチャットルームを選択して、そこに招待を投稿することもできます。チャットルームに投稿しても、そのメンバーは投票者として追加されません。
+
+<!-- translation-section: check-your-recipients -->
+
+### 招待に含まれる人を確認する
+
+招待先を選択すると、その名前と含まれる人数が欄に表示されます。招待を送信する前に、この人数を確認します。
+
+![Oatmilk Cooperativeが選択され、欄の下に招待先の人数が表示されている状態](proposal_invite_members.png)
+
+招待先の名前をクリックすると、個々の人の一覧が展開されます。名前の横にある**×**を選択すると、その人を今回の招待から除外できます。グループから削除されることはありません。
+
+![グループの招待先を展開した状態。各人の名前と削除ボタンが表示されています](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### ゲストや専門家を招待する
+<a id="invite-guests-or-experts"></a>
 
-メールアドレスを入力して、ゲストをアンケートに招待することもできます。ゲストには、このアンケートにのみ参加する権限が付与されます。
+### 名前やメールアドレスで追加する
 
-アンケートがスレッド内にある場合、ゲストはそのスレッドとコメントも閲覧できます。ただし、コメントの投稿、スレッド内の他のアンケートへの参加、グループ内の他のスレッドの閲覧はできません。
+名前を入力して候補から選択したり、メールアドレスを入力して新しい人を招待したりすることもできます。同じ招待に複数の人を追加できます。
 
-![](proposal_invite_guest.png)
+![グループメンバーとメールアドレスで指定したゲストを宛先にし、送信するメッセージを入力した招待](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+ゲストには、このアンケートにアクセスする権限が付与されます。アンケートがスレッド内にある場合は、そのスレッドとコメントも閲覧できます。この招待では、スレッドへのコメントの投稿、スレッド内の他のアンケートへの投票、グループ内の他のスレッドの閲覧は許可されません。
 
-### サブグループを投票に招待する
+<!-- translation-section: send-the-invitations -->
 
-投票できる人を招待された人に限定するには、アンケートの作成時に**選ばれた人のみ**を選択します。その後、親グループ内のサブグループを招待できます。[投票者の委任](/en/user_manual/groups/delegated_voters/)も参照してください。
+### 招待を送信する
 
-![招待された人のみを選択する](invited-people-only.png)
-![サブグループを投票に招待する](invite-voters-subgroup.png)
+何を決めてもらうのかを説明するメッセージを追加し、**招待する**を選択します。招待する人に通知するには、**通知を送信する**にチェックを入れたままにします。通知を送信せずに投票者を追加するには、チェックを外します。
+
+開始日時が設定されたアンケートでは、**投票者を追加**を選択します。投票が始まると、招待が届きます。
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## アンケートの実施中に参加を促す
+<a id="engage-people-while-a-poll-is-running"></a>
 
-アンケートの下部には、アンケートの実施中に参加を促すための機能がいくつかあります。
-
-![](proposal_after_start.png)
+## 招待後の操作
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### アンケートに投票者を追加する
+### 投票者を追加する
 
-アンケートにはいつでも新しい人を追加できます。開始日時が設定されたアンケートでは、投票の開始前にも追加できます。
-
-**有権者の管理**を選択すると、投票者の管理ウィンドウが開きます。グループ内の全員を招待したり、名前でメンバーを追加したりできます。ゲストの招待が許可されている場合は、メールアドレスでゲストを追加することもできます。**有権者を探す、または招待する**に入力すると、アンケートにすでに追加されている人も絞り込まれます。最近追加された投票者から順に表示されます。ページ切り替えの操作で一覧全体を確認できます。
-
-アンケートに開始日時が設定されていて、投票がまだ始まっていない場合、投票者にはすぐに通知は送信されません。投票が始まると通知されます。
+**有権者の管理**を再び開くと、いつでも人を追加できます。開始日時が設定されたアンケートでは、投票の開始前にも追加できます。このウィンドウには、既存の投票者も最近追加された人から順に表示されます。名前を入力して人を探したり、一覧が長い場合はページ切り替えの操作で確認したりできます。
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### アンケートから人を削除する
 
-**有権者の管理**を選択し、投票者管理ウィンドウで対象者の名前を探します。名前の横にあるごみ箱ボタンを選択し、**有権者を削除する**を確認します。
+名前の横にあるごみ箱ボタンを選択し、**有権者を削除する**を確認すると、その人がこのアンケートで投票する権限を取り消せます。例えば、理事会の投票を準備する人は、自分に投票する権限がない場合、自分自身を削除できます。
 
-![投票者管理ウィンドウの投票者の横にあるごみ箱ボタン](proposal_invite_remove.png)
+![既存の投票者が表示され、投票者のごみ箱ボタンが強調された「有権者の管理」ウィンドウ](proposal_invite_remove.png)
 
-匿名のアンケートから人を削除することはできません。
-
-例えば、理事会のメンバーに代わってアンケートを作成した管理者は、自分に投票する権限がない場合、自分自身を削除できます。
-
-票の重みを使用するアンケートでは、スレッド管理者が同じウィンドウで[票の重みを確認・編集](/en/user_manual/polls/weighted_voting)できます。
+匿名のアンケートから人を削除することはできません。[票の重み](/en/user_manual/polls/weighted_voting)を使用するアンケートでは、スレッド管理者がここで重みを確認・編集することもできます。
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### 投票を促す通知を送る
 
-**思い出させる**を選択すると、まだ投票していない人に通知を送信できます。初期設定では、**投票に招待された全員**が選択されています。チップを選択すると、通知先を確認または変更できます。
+アンケートで**思い出させる**を選択し、通知先を選んでメッセージを追加した後、**思い出させる**を選択して送信します。**未投票の人**を選択すると、まだ回答が必要な人に通知できます。
 
-![](proposal_remind.png)
+![未投票の人を宛先にし、決定の期限についてのメッセージを添えた通知](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### 通知履歴を確認する
 
-アンケートの下部にある三点メニュー（**⋯**）を開き、**通知履歴**を選択します。
+アンケートの三点メニュー（**⋯**）を開き、**通知履歴**を選択すると、招待された人と各招待の送信日時を確認できます。既読情報を取得できる場合は、招待が読まれたかどうかも確認できます。
 
-![アンケートの操作メニューにある通知履歴](../../discussions/notifying_people/poll_notification_history.png)
-
-履歴には、投票に招待された人と各招待の送信日時が表示されます。既読情報を取得できる場合は、招待が読まれたかどうかも表示されます。
-
-![アンケートの通知履歴](../../discussions/notifying_people/poll_notification_example.png)
+![アンケートの招待先が表示された通知履歴](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### 早めに締め切る
 
-**早めに締め切る**を選択すると、予定された締め切り日時より前にアンケートを締め切ることができます。
-
-全員が投票を終えた場合や、投票の受付を続ける必要がなくなった場合などに使用できます。
-
-![](proposal_close_early.png)
+全員が投票を終えた場合や、投票の受付を続ける必要がなくなった場合は、**早めに締め切る**を選択します。
 
 <!-- translation-section: reopen -->
 
-### 再開する
+### 再開
 
-締め切り済みのアンケートで**再開**を選択し、新しい締め切り日時を設定します。
-
-匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。締め切り前であれば、締め切り日時を延長できます。
-
-![](proposal_reopen.png)
+締め切り済みのアンケートで**再開**を選択し、新しい締め切り日時を設定します。匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。締め切り前であれば、締め切り日時を延長できます。

@@ -1,6 +1,6 @@
 ---
 title: הגדרות
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 2c7537bf51656c32
   setting-up-a-proposal-or-poll: e85b745ae7d14f9f
@@ -34,7 +35,7 @@ generated:
   add-content: 8b53edb22eb0c099
   voting-options: 13ae3649e14d622c
   edit-voting-options: 5d2f31b4187443de
-  opening-time: bbc6a0a0c708e114
+  opening-time: 2c647dad207ea28e
   more-settings: 52b6b4962e084972
   reminder: 55da41038e171ed3
   anonymous-voting: 56a6bc77e42331ff
@@ -49,6 +50,7 @@ generated:
   delete: d60cd65c6bc895be
   save-bookmark: 25abe3f06059ef81
   save-as-template: f9af941716079950
+  who-can-vote: 0263b0313da7d92e
 title_source: 74a883a037bc227f
 title_generated: 2a929616c81f3e30
 needs_review:
@@ -145,9 +147,18 @@ needs_review:
 
 יש להקצות מספיק זמן להצבעה. ניתן לתזמן את סגירת ההצעה לפני פגישה, או להימנע מסגירה בסוף השבוע, כדי שהתזכורת תגיע בזמן מתאים. במידת הצורך, ניתן לסגור את הסקר מוקדם או לדחות את מועד הסגירה.
 
-**מי יכול להצביע?** ניתן להזמין את כל חברי הקבוצה או רק אנשים מסוימים.
+<!-- translation-section: who-can-vote -->
 
-ניתן להוסיף אנשים בהמשך לסקר שמוגדר כ'מוזמנים בלבד'. בסקרים שבהם זהות המצביעים גלויה, ניתן גם להסיר אנשים שאינם זכאים עוד להצביע. לא ניתן להסיר אנשים מסקר אנונימי.
+### מי יכול להצביע?
+
+בחירה מי יכול להצביע בסקר.
+
+- **כל מי שנמצא בקבוצה** (או **כל מי שנמצא בשרשור**): כל מי שיש לו גישה לסקר יכול להצביע, כולל אנשים שיצטרפו בהמשך.
+- **אנשים נבחרים בלבד:** רק האנשים שנוספו יכולים להצביע. אפשרות זו מתאימה כאשר רק חלק מחברי הקבוצה אמורים להצביע, למשל חברי הנהלה או ועדה.
+
+![הגדרת מי יכול להצביע](../manage_voters/invited-people-only.png)
+
+לאחר פתיחת סקר מסוג **אנשים נבחרים בלבד**, נפתח **ניהול מצביעים** כדי לאפשר הוספת מצביעים. ניתן להוסיף או להסיר מצביעים בהמשך. למידע נוסף, ראו [ניהול מצביעים](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

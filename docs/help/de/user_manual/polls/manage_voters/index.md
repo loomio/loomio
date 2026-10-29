@@ -1,154 +1,157 @@
 ---
-title: Zur Abstimmung einladen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+title: Abstimmende verwalten
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-10-29'
 sections:
-  introduction: 0635cf23fcaaa95b
-  invite-people-to-vote-in-a-poll: cfbf5caf71d1d5ca
-  invite-guests-or-experts: 0717537bbd36fa07
-  invite-a-subgroup-to-vote: 3ac684bdca4b3365
-  engage-people-while-a-poll-is-running: 69971de8d56c0a74
-  add-voters-to-the-poll: 48f3b4a1edb5a037
-  remove-people-from-the-poll: 427e849387413f3b
-  remind-people-to-vote: 177c881cb1b0dfb9
-  view-notification-history: 52d930341c048008
-  close-early: 0c46e8066719fc2f
-  reopen: 175c9d2024008fa4
+  introduction: ea21036eb694c27f
+  invite-people-to-vote-in-a-poll: c087ce6e0173270f
+  invite-guests-or-experts: c6e4d0e0811de6f2
+  engage-people-while-a-poll-is-running: d0eb90b4b53003bc
+  add-voters-to-the-poll: 621bd4bf8ed67895
+  remove-people-from-the-poll: be96ad95169a79a3
+  remind-people-to-vote: ab98343bd2bc18eb
+  view-notification-history: 675d77824d320d89
+  close-early: e09d92a63b72c516
+  reopen: f80ab5f17351d679
+  choose-an-audience: a7a00bf75338b395
+  check-your-recipients: 7c3de537341ecd1b
+  send-the-invitations: 7ca4926c4ff46564
 generated:
-  introduction: 10ed7faa6e25f684
-  invite-people-to-vote-in-a-poll: a7398912c630c0a3
-  invite-guests-or-experts: e9eafc0a939dff62
-  invite-a-subgroup-to-vote: 7d9cb96223f8125e
-  engage-people-while-a-poll-is-running: 566c1d09b00dc335
-  add-voters-to-the-poll: 186469c2ae108142
-  remove-people-from-the-poll: 739ee7680cda2c28
-  remind-people-to-vote: 91ad11fa846c64c6
-  view-notification-history: f2ee925afde9dbcb
-  close-early: d9467276aaca05ac
-  reopen: b84212e87f4b5af8
-title_source: 4801d1a3dba7ce3d
-title_generated: b0f3dd8c0447dd53
-needs_review:
-  introduction: use "Stimme" instead of "Abstimmung" for "vote"
-  invite-people-to-vote-in-a-poll: use "Stimme" instead of "Abstimmung" for "vote"
-  invite-a-subgroup-to-vote: use "Stimme" instead of "Abstimmung" for "vote"
-  remind-people-to-vote: use "Stimme" instead of "Abstimmung" for "vote"
-  view-notification-history: use "Stimme" instead of "Abstimmung" for "vote"
-  close-early: use "Stimme" instead of "Abstimmung" for "vote"
+  introduction: 761b3ce5e9f7bf27
+  invite-people-to-vote-in-a-poll: bac3b7326f4c7a57
+  invite-guests-or-experts: 5af53d62708e91d0
+  engage-people-while-a-poll-is-running: c85d5092f12628e4
+  add-voters-to-the-poll: ca4318f3d742fa1b
+  remove-people-from-the-poll: fec33be78b9c5e33
+  remind-people-to-vote: e903b1d4127ddd99
+  view-notification-history: a333956d55f70285
+  close-early: 02a1eb3d69399a73
+  reopen: 2f2c2fa34fdb5299
+  choose-an-audience: 9e3c85e47e057c3a
+  check-your-recipients: bd097ca19440089e
+  send-the-invitations: 7c221b4500eccd2d
+title_source: 10858faa0464257e
+title_generated: 91a81313c5851d9a
 ---
 
 <!-- translation-section: introduction -->
 
-# Zur Abstimmung einladen
+# Abstimmende verwalten
+
+Mit **Abstimmende verwalten** gibst du Personen das Stimmrecht und lädst sie ein, an einem Vorschlag oder einer Abstimmung teilzunehmen.
 
 <!-- translation-section: invite-people-to-vote-in-a-poll -->
 
-## Personen zur Stimmabgabe in einer Abstimmung einladen
+<a id="invite-people-to-vote-in-a-poll"></a>
+<a id="add-voters-to-the-poll"></a>
 
-Lade Personen zu deiner Abstimmung ein, indem du ihnen eine Benachrichtigung sendest.
+## Personen zur Stimmabgabe einladen
 
-Nachdem du eine Abstimmung gestartet hast, erscheint das Feld **Zur Abstimmung einladen**. Wähle einen Personenkreis wie **Jeder in der Diskussion** oder deine Gruppe aus oder gib einzelne Namen und E-Mail-Adressen ein.
+Nachdem du eine Abstimmung mit **Nur für ausgewählte Personen** gestartet hast, öffnet sich das Fenster **Abstimmende verwalten**. Du kannst es auch öffnen, indem du in der Abstimmung **Abstimmende verwalten** auswählst.
 
-![](proposal_invite.png)
+![Die Schaltfläche „Abstimmende verwalten“ am unteren Rand einer Abstimmung](proposal_after_start.png)
 
-Du kannst der Einladung eine Nachricht hinzufügen.
+<!-- translation-section: choose-an-audience -->
 
-![](proposal_invite_members.png)
+### Einen Personenkreis auswählen
 
-Wähle einen Gruppen-Chip aus, um die Personen anzuzeigen, die du einlädst. Wähle das x neben einem Namen aus, um diese Person aus der Einladung zu entfernen.
+Klicke auf das leere Feld **Abstimmende finden oder einladen**, um Vorschläge anzuzeigen. Sie erscheinen in dieser Reihenfolge:
 
-![](proposal_invite_expand.png)
+- deine Gruppe
+- **Delegierte von** deiner Gruppe, wenn deine Gruppe [delegierte Abstimmende](/en/user_manual/groups/delegated_voters) hat
+- verbundene Chatrooms, etwa Slack oder Microsoft Teams
+- Untergruppen und die Hauptgruppe
+- einzelne Mitglieder
+
+In einem [direkten Thread](/en/user_manual/discussions/direct_discussions) bietet die Liste **Jeder in der Diskussion** anstelle einer Gruppe an.
+
+![Das Fenster „Abstimmende verwalten“ mit Vorschlägen für die Gruppe, ihre Delegierten, einen Chatroom und eine Untergruppe](proposal_invite.png)
+
+<a id="invite-a-subgroup-to-vote"></a>
+
+Wähle einen Personenkreis aus, um diese Personen gemeinsam einzuladen. Wenn du beispielsweise **Oatmilk Cooperative** auswählst, werden die Personen in dieser Gruppe einbezogen. Du kannst auch einen verbundenen Chatroom auswählen, um die Einladung dort zu veröffentlichen. Eine Veröffentlichung in einem Chatroom fügt dessen Mitglieder nicht als Abstimmende hinzu.
+
+<!-- translation-section: check-your-recipients -->
+
+### Prüfen, wer einbezogen ist
+
+Nachdem du einen Personenkreis ausgewählt hast, zeigt das Feld dessen Namen und die Anzahl der einbezogenen Personen an. Prüfe diese Anzahl, bevor du die Einladung sendest.
+
+![Oatmilk Cooperative ist ausgewählt, unter dem Feld wird die Anzahl der empfangenden Personen angezeigt](proposal_invite_members.png)
+
+Klicke auf den Namen des Personenkreises, um die einzelnen Personen anzuzeigen. Du kannst dann das **×** neben einer Person auswählen, um sie von dieser Einladung auszunehmen. Dadurch wird sie nicht aus der Gruppe entfernt.
+
+![Der Personenkreis der Gruppe ist in einzelne Personen mit Namen aufgeklappt, jeweils mit einer Schaltfläche zum Entfernen](proposal_invite_expand.png)
 
 <!-- translation-section: invite-guests-or-experts -->
 
-### Gäste oder Fachleute einladen
+<a id="invite-guests-or-experts"></a>
 
-Du kannst auch einen Gast zur Abstimmung einladen, indem du dessen E-Mail-Adresse eingibst. Der Gast erhält die Berechtigung, nur an dieser Abstimmung teilzunehmen.
+### Personen über Namen oder E-Mail-Adresse hinzufügen
 
-Wenn die Abstimmung Teil eines Threads ist, kann der Gast auch diesen Thread und seine Kommentare sehen. Der Gast kann keine Kommentare schreiben, an anderen Abstimmungen im Thread teilnehmen oder andere Threads in der Gruppe sehen.
+Du kannst auch den Namen einer Person eingeben und sie aus den Vorschlägen auswählen oder eine E-Mail-Adresse eingeben, um eine neue Person einzuladen. Du kannst mehrere Personen zur selben Einladung hinzufügen.
 
-![](proposal_invite_guest.png)
+![Eine Einladung an ein Gruppenmitglied und einen Gast per E-Mail, mit einer Nachricht zum Senden](proposal_invite_guest.png)
 
-<!-- translation-section: invite-a-subgroup-to-vote -->
+Gäste erhalten Zugriff auf diese Abstimmung. Wenn die Abstimmung Teil eines Threads ist, können sie auch diesen Thread und seine Kommentare lesen. Die Einladung berechtigt sie nicht dazu, im Thread zu kommentieren, an anderen Abstimmungen darin teilzunehmen oder andere Threads der Gruppe zu sehen.
 
-### Eine Untergruppe zur Stimmabgabe einladen
+<!-- translation-section: send-the-invitations -->
 
-Um die Stimmabgabe auf eingeladene Personen zu beschränken, wähle beim Erstellen der Abstimmung **Nur für ausgewählte Personen** aus. Anschließend kannst du eine Untergruppe aus der Hauptgruppe einladen. Siehe auch [Delegierte Abstimmende](/en/user_manual/groups/delegated_voters/).
+### Einladungen senden
 
-![Nur eingeladene Personen auswählen](invited-people-only.png)
-![Eine Untergruppe zur Stimmabgabe einladen](invite-voters-subgroup.png)
+Füge eine Nachricht hinzu, die erklärt, worüber die Personen entscheiden sollen, und wähle dann **Einladen**. Lass **Benachrichtigungen senden** aktiviert, um die eingeladenen Personen zu benachrichtigen. Deaktiviere die Option, um Abstimmende ohne Benachrichtigung hinzuzufügen.
+
+Wähle bei einer geplanten Abstimmung **Abstimmende hinzufügen**. Die Personen erhalten ihre Einladung, sobald die Stimmabgabe beginnt.
 
 <!-- translation-section: engage-people-while-a-poll-is-running -->
 
-## Personen während einer laufenden Abstimmung einbeziehen
+<a id="engage-people-while-a-poll-is-running"></a>
 
-Am unteren Rand der Abstimmung findest du mehrere Funktionen, mit denen du Personen während der laufenden Abstimmung einbeziehen kannst.
-
-![](proposal_after_start.png)
+## Nach dem Einladen
 
 <!-- translation-section: add-voters-to-the-poll -->
 
-### Abstimmende zur Abstimmung hinzufügen
+### Weitere Abstimmende hinzufügen
 
-Du kannst jederzeit neue Personen zur Abstimmung hinzufügen, auch bevor die Stimmabgabe bei einer geplanten Abstimmung beginnt.
-
-Wähle **Abstimmende verwalten**, um das Fenster zur Verwaltung der Abstimmenden zu öffnen. Du kannst alle Personen in der Gruppe einladen, Mitglieder über ihren Namen hinzufügen oder Gäste über ihre E-Mail-Adresse hinzufügen, sofern Einladungen für Gäste erlaubt sind. Eine Eingabe in **Abstimmende finden oder einladen** filtert auch die Personen, die bereits an der Abstimmung teilnehmen. Die zuletzt hinzugefügten Abstimmenden erscheinen zuerst. Nutze die Bedienelemente zum Blättern, um die vollständige Liste durchzusehen.
-
-Wenn die Abstimmung eine geplante Startzeit hat und die Stimmabgabe noch nicht begonnen hat, erhalten die Abstimmenden keine sofortige Benachrichtigung. Sie werden benachrichtigt, sobald die Stimmabgabe beginnt.
+Du kannst **Abstimmende verwalten** jederzeit erneut öffnen, um Personen hinzuzufügen, auch bevor die Stimmabgabe bei einer geplanten Abstimmung beginnt. Das Fenster zeigt auch die bereits hinzugefügten Abstimmenden an, wobei die zuletzt hinzugefügten Personen zuerst erscheinen. Gib einen Namen ein, um eine Person zu finden, oder nutze die Bedienelemente zum Blättern, um eine längere Liste durchzusehen.
 
 <!-- translation-section: remove-people-from-the-poll -->
 
 ### Personen aus der Abstimmung entfernen
 
-Wähle **Abstimmende verwalten** aus, suche den Namen der Person im Fenster zur Verwaltung der Abstimmenden, wähle die Papierkorb-Schaltfläche daneben aus und bestätige mit **Abstimmende entfernen**.
+Wähle die Papierkorb-Schaltfläche neben einer Person und bestätige mit **Abstimmende entfernen**, um ihr das Stimmrecht in dieser Abstimmung zu entziehen. Beispielsweise kann sich eine Person, die eine Vorstandsabstimmung einrichtet, selbst entfernen, wenn sie nicht zur Stimmabgabe berechtigt ist.
 
-![Die Papierkorb-Schaltfläche neben einer abstimmenden Person im Fenster zur Verwaltung der Abstimmenden](proposal_invite_remove.png)
+![Das Fenster „Abstimmende verwalten“ zeigt bereits hinzugefügte Abstimmende, wobei die Papierkorb-Schaltfläche einer Person hervorgehoben ist](proposal_invite_remove.png)
 
-Aus einer anonymen Abstimmung können keine Personen entfernt werden.
-
-Wenn beispielsweise eine Person mit Administrationsrechten eine Abstimmung im Auftrag von Vorstandsmitgliedern erstellt, kann sie sich selbst entfernen, falls sie nicht zur Stimmabgabe berechtigt ist.
-
-Bei Abstimmungen mit Stimmgewichten können Thread-Admins im selben Fenster [Stimmgewichte prüfen und bearbeiten](/en/user_manual/polls/weighted_voting).
+Aus einer anonymen Abstimmung können keine Personen entfernt werden. Bei Abstimmungen mit [Stimmgewichten](/en/user_manual/polls/weighted_voting) können Thread-Admins hier auch die Stimmgewichte prüfen und bearbeiten.
 
 <!-- translation-section: remind-people-to-vote -->
 
 ### Personen an die Stimmabgabe erinnern
 
-Wähle **Erinnern** aus, um Personen, die noch keine Stimme abgegeben haben, eine Benachrichtigung zu senden. **Alle zur Abstimmung Eingeladenen** ist standardmäßig ausgewählt. Wähle den Chip aus, um die empfangenden Personen anzuzeigen oder zu ändern.
+Wähle in der Abstimmung **Erinnern**, wähle aus, wer die Erinnerung erhalten soll, füge eine Nachricht hinzu und wähle zum Senden **Erinnern**. Du kannst **Alle, die noch nicht abgestimmt haben** auswählen, um die Personen zu erreichen, deren Stimmen noch benötigt werden.
 
-![](proposal_remind.png)
+![Eine Erinnerung an Personen, die noch nicht abgestimmt haben, mit einer Nachricht zur Entscheidungsfrist](proposal_remind.png)
 
 <!-- translation-section: view-notification-history -->
 
 ### Benachrichtigungsverlauf anzeigen
 
-Öffne das Drei-Punkte-Menü (**⋯**) unten in der Abstimmung und wähle **Benachrichtigungsverlauf** aus.
+Öffne das Drei-Punkte-Menü (**⋯**) der Abstimmung und wähle **Benachrichtigungsverlauf**, um zu sehen, wer eingeladen wurde, wann die einzelnen Einladungen gesendet wurden und ob sie gelesen wurden, sofern diese Information verfügbar ist.
 
-![Benachrichtigungsverlauf im Aktionsmenü einer Abstimmung](../../discussions/notifying_people/poll_notification_history.png)
-
-Der Verlauf zeigt, wer zur Stimmabgabe eingeladen wurde, wann die einzelnen Einladungen gesendet wurden und ob sie gelesen wurden, sofern diese Information verfügbar ist.
-
-![Benachrichtigungsverlauf einer Abstimmung](../../discussions/notifying_people/poll_notification_example.png)
+![Benachrichtigungsverlauf mit den empfangenden Personen einer Abstimmungseinladung](../../discussions/notifying_people/poll_notification_example.png)
 
 <!-- translation-section: close-early -->
 
 ### Vorzeitig beenden
 
-Wähle **Früh schließen** aus, um eine Abstimmung vor ihrem geplanten Endzeitpunkt zu beenden.
-
-Das kann sinnvoll sein, wenn alle ihre Stimme abgegeben haben oder die Abstimmung nicht länger offen bleiben muss.
-
-![](proposal_close_early.png)
+Wähle **Früh schließen**, wenn alle abgestimmt haben oder die Abstimmung nicht länger offen bleiben muss.
 
 <!-- translation-section: reopen -->
 
 ### Wieder öffnen
 
-Wähle bei einer beendeten Abstimmung **Erneut öffnen** und lege anschließend ein neues Enddatum und eine neue Endzeit fest.
-
-Abstimmungen, die das Ergebnis bis zum Ende der Abstimmung verbergen, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihre Endzeit verlängern, solange sie noch offen sind.
-
-![](proposal_reopen.png)
+Wähle bei einer beendeten Abstimmung **Erneut öffnen** und lege ein neues Enddatum und eine neue Endzeit fest. Abstimmungen, die das Ergebnis bis zum Ende der Abstimmung verbergen, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden; du kannst ihre Endzeit verlängern, solange sie noch offen sind.

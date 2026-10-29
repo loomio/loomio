@@ -1,6 +1,6 @@
 ---
 title: Impostazioni
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 8ca1ef9413b5fc51
   setting-up-a-proposal-or-poll: 35ef8639f23a61f8
@@ -34,7 +35,7 @@ generated:
   add-content: 367cac67db5d031f
   voting-options: eb1768f770b58c82
   edit-voting-options: b5d0c05af51fbac4
-  opening-time: c53b864389a395bd
+  opening-time: bc5aee07e04c1949
   more-settings: d67937a9b83269cd
   reminder: 522e54360b5663b3
   anonymous-voting: 623409b0b84a8a2f
@@ -49,6 +50,7 @@ generated:
   delete: af03445a901c505d
   save-bookmark: c133640f8d660ba5
   save-as-template: d0eb83b79d9534a0
+  who-can-vote: 8e16d28e30a46d57
 title_source: 74a883a037bc227f
 title_generated: 7b855ce7525ebc18
 ---
@@ -143,9 +145,18 @@ Per aprire le votazioni prima dell'orario programmato, seleziona **Modifica sond
 
 Lascia alle persone tempo sufficiente per votare. Puoi programmare la chiusura della proposta prima di una riunione oppure evitare che avvenga durante il fine settimana, in modo che le persone ricevano un promemoria al momento opportuno. Se necessario, puoi chiudere il sondaggio in anticipo o posticiparne la chiusura.
 
-**Chi può votare?** Invita tutte le persone del gruppo oppure solo persone specifiche.
+<!-- translation-section: who-can-vote -->
 
-Puoi aggiungere altre persone in seguito a un sondaggio con l'impostazione 'Solo persone invitate'. Nei sondaggi con voto identificato, puoi anche rimuovere le persone che non devono più avere diritto di voto. Non puoi rimuovere persone da un sondaggio anonimo.
+### Chi può votare?
+
+Scegli chi può votare nel sondaggio.
+
+- **Qualcuno nel gruppo** (o **Chiunque nel thread**): tutte le persone che hanno accesso al sondaggio possono votare, comprese quelle che si uniscono in seguito.
+- **Solo persone selezionate:** solo le persone che aggiungi possono votare. Usa questa impostazione quando devono votare solo alcuni membri, ad esempio un consiglio direttivo o un comitato.
+
+![Impostazione Chi può votare](../manage_voters/invited-people-only.png)
+
+Dopo aver avviato un sondaggio con l'impostazione **Solo persone selezionate**, si apre **Gestisci gli elettori** per permetterti di aggiungere gli elettori. Puoi aggiungere o rimuovere elettori in seguito. Vedi [Gestisci gli elettori](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

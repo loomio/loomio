@@ -1,6 +1,6 @@
 ---
 title: Beállítások
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 3f46afe20f32f7fd
   setting-up-a-proposal-or-poll: 156be3b6b9961477
@@ -34,7 +35,7 @@ generated:
   add-content: f2515c65da92b653
   voting-options: 489cc319033ffdff
   edit-voting-options: 82c565cdbfc42031
-  opening-time: d2593ff73a18e57e
+  opening-time: ff93781329629cc3
   more-settings: cb3edf4e3a9ca244
   reminder: 8494c0e55397b4f7
   anonymous-voting: 25122b6c2fa90792
@@ -49,6 +50,7 @@ generated:
   delete: 7634f55bb4d5c467
   save-bookmark: 177d22e6e3259f71
   save-as-template: 278d2b7395c6cdb3
+  who-can-vote: 7af32b5918f34bed
 title_source: 74a883a037bc227f
 title_generated: 109d0914682650db
 ---
@@ -144,9 +146,18 @@ Ha az ütemezett időpont előtt szeretnéd megnyitni a szavazást, válaszd ki 
 
 Adj elegendő időt az embereknek a szavazásra. Úgy is időzítheted a javaslatot, hogy egy találkozó előtt záruljon le, vagy elkerülheted a hétvégi lezárást, hogy az emberek megfelelő időben kapjanak emlékeztetőt. Szükség esetén a tervezett időpont előtt lezárhatod a szavazást, vagy későbbre tolhatod a lezárást.
 
-**Ki szavazhat?** Hívd meg a csoport minden tagját, vagy csak az általad kiválasztott embereket.
+<!-- translation-section: who-can-vote -->
 
-A „Csak meghívottak” szavazáshoz később is hozzáadhatsz embereket. A névvel leadott szavazatokat használó szavazásokból el is távolíthatod azokat, akik már nem jogosultak szavazni. Névtelen szavazásból nem lehet eltávolítani embereket.
+### Ki szavazhat?
+
+Válaszd ki, ki szavazhat a szavazáson.
+
+- **Bárki a csoportban** (vagy **Bárki a témában**): mindenki szavazhat, aki hozzáfér a szavazáshoz, beleértve a később csatlakozókat is.
+- **Csak kiválasztott személyek:** csak azok szavazhatnak, akiket hozzáadsz. Akkor használd ezt, ha csak bizonyos tagoknak kell szavazniuk, például egy vezetőség vagy bizottság tagjainak.
+
+![Ki szavazhat beállítás](../manage_voters/invited-people-only.png)
+
+Miután elindítasz egy **Csak kiválasztott személyek** beállítású szavazást, megnyílik a **Szavazók kezelése**, ahol hozzáadhatod a szavazókat. Később is hozzáadhatsz vagy eltávolíthatsz szavazókat. Lásd: [Szavazók kezelése](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 

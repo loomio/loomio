@@ -1,6 +1,6 @@
 ---
 title: Налады
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -12,7 +12,7 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fe182c9536ef6e3
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
@@ -27,6 +27,7 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 82a7036d1f956ef2
   setting-up-a-proposal-or-poll: c0f01f87d2f01d76
@@ -34,7 +35,7 @@ generated:
   add-content: 142f0bf898b76fcb
   voting-options: 1502b39960357fc7
   edit-voting-options: 02b2ca00524af2c5
-  opening-time: 177f4336528b2397
+  opening-time: e12ff5fe5d50dc4d
   more-settings: adae832df14939b8
   reminder: 2931dfb07798e576
   anonymous-voting: 9c03fc35187e426c
@@ -49,6 +50,7 @@ generated:
   delete: 82809cb96ad088ae
   save-bookmark: 81568cdb6758727e
   save-as-template: a09b0aa87b2db8f2
+  who-can-vote: aca48c96cef58c12
 title_source: 74a883a037bc227f
 title_generated: b1b3d8b8aa661af6
 ---
@@ -143,9 +145,18 @@ title_generated: b1b3d8b8aa661af6
 
 Дайце людзям дастаткова часу, каб прагаласаваць. Вы можаце запланаваць закрыццё прапановы перад сустрэчай або пазбегнуць закрыцця ў выхадныя, каб людзі своечасова атрымалі напамін. Пры неабходнасці вы можаце закрыць апытанне раней або падоўжыць час галасавання.
 
-**Хто можа галасаваць?** Запрасіце ўсіх у групе або толькі асобных людзей.
+<!-- translation-section: who-can-vote -->
 
-Вы можаце пазней дадаць людзей у апытанне з наладай «Толькі запрошаныя людзі». У апытаннях, дзе галасы звязаны з асобамі, можна таксама выдаліць людзей, якія больш не павінны мець права галасаваць. З ананімнага апытання людзей выдаліць нельга.
+### Хто можа галасаваць?
+
+Вызначце, хто можа галасаваць у апытанні.
+
+- **Любы ўдзельнік групы** (або **Усе ўдзельнікі трэда**): усе, хто мае доступ да апытання, могуць галасаваць, у тым ліку людзі, якія далучацца пазней.
+- **Толькі выбраныя людзі:** галасаваць могуць толькі людзі, якіх вы дадасце. Выкарыстоўвайце гэтую наладу, калі галасаваць павінны толькі некаторыя ўдзельнікі групы, напрыклад праўленне або камітэт.
+
+![Налада «Хто можа галасаваць?»](../manage_voters/invited-people-only.png)
+
+Пасля запуску апытання з наладай **Толькі выбраныя людзі** адкрыецца **Кіраванне выбаршчыкамі**, дзе вы зможаце дадаць выбаршчыкаў. Вы можаце дадаваць або выдаляць выбаршчыкаў пазней. Глядзіце [Кіраванне выбаршчыкамі](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
