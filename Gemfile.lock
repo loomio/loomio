@@ -70,7 +70,7 @@ GEM
       activemodel (= 8.1.3.1)
       activesupport (= 8.1.3.1)
       timeout (>= 0.4.0)
-    activerecord-import (3.0.0)
+    activerecord-import (3.0.1)
       activerecord (>= 6.1)
     activestorage (8.1.3.1)
       actionpack (= 8.1.3.1)
@@ -708,7 +708,7 @@ DEPENDENCIES
   actionpack-cloudflare
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)!
-  activerecord-import (= 3.0.0)
+  activerecord-import (= 3.0.1)
   aws-sdk-s3
   aws-sdk-sesv2
   bcrypt
