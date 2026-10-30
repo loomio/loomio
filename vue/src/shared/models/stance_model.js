@@ -127,7 +127,7 @@ export default class StanceModel extends BaseModel {
 
     choices = choices.filter(c => c.pollOption);
 
-    if (poll.pollType === 'meeting') {
+    if (poll.pollType === 'availability') {
       return sortBy(choices, c => c.pollOption.priority);
     } else if (poll.pollType == 'ranked_choice') {
       return sortBy(choices, 'rank');

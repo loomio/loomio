@@ -57,7 +57,11 @@ class InboundEmailService
   end
 
   def self.route(email)
-    return :bounced unless email.sender_email && email.is_addressed_to_loomio? && !email.is_auto_response?
+    return :bounced unless email.sender_email && email.is_addressed_to_loomio?
+    if email.route_address && email.route_path.start_with?('calendar+')
+      return CalendarReplyService.process(email)
+    end
+    return :bounced if email.is_auto_response?
 
     # Replies sent to the notifications "From" address → send a delivery-failure notice (throttled)
     if email.sent_to_notifications_address?

@@ -54,6 +54,7 @@ export default
       return [
         {id: 0, name: 'discussions',   route: this.urlFor(this.group, null)+query},
         {id: 1, name: 'polls',     route: this.urlFor(this.group, 'polls')+query},
+        {id: 5, name: 'calendar', route: this.urlFor(this.group, 'calendar')+query},
         {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
       ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
@@ -141,7 +142,7 @@ v-main
         :class="'group-page-' + tab.name + '-tab' "
       )
         //- common-icon(name="mdi-comment-multiple")
-        span(v-t="'group_page.'+tab.name")
+        span {{ $t(tab.name === 'calendar' ? 'calendar.calendar' : 'group_page.' + tab.name) }}
     router-view
 </template>
 

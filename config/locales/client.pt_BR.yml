@@ -190,6 +190,7 @@ pt_BR:
     poll: enquete de escolha
     dot_vote: enquete de distribuição
     meeting: enquete de horário
+    availability: enquete de horário
     ranked_choice: enquete de classificação
     score: enquete de pontuação
     question: rodada de perguntas
@@ -2003,6 +2004,7 @@ pt_BR:
     score_title: Enquete de pontuação
     dot_vote_title: Enquete de distribuição
     meeting_title: Enquete de horário
+    availability_title: Enquete de horário
     ranked_choice_title: Enquete de classificação
     gradients_of_agreement_title: Gradientes de concordância
     majority_title: Maioria

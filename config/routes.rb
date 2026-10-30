@@ -13,6 +13,7 @@ end
 require 'mission_control/jobs/engine'
 
 Rails.application.routes.draw do
+  get 'calendar/group.ics', to: 'calendar_feeds#show', as: :calendar_feed
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
 
   admin_session_constraint = lambda do |request|
@@ -192,6 +193,10 @@ Rails.application.routes.draw do
 
       resources :groups, only: [:index, :show, :create, :update, :destroy] do
         member do
+          get :calendar
+          post :calendar_subscription
+          post :reset_calendar_subscription
+          delete :unsubscribe_calendar
           get :token
           post :reset_token
           get :subgroups
@@ -351,6 +356,7 @@ Rails.application.routes.draw do
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
+          post :cancel_event
           get :votes
           post :remind
           delete :discard

@@ -225,12 +225,14 @@ en:
     no_tags_in_group: This group has no category tags yet
     only_admins_can_edit_tags: Sorry, only admins of %{group} can create, rename or delete tags
   poll_types:
+    event: event
     proposal: proposal
     count: opt-in
     check: sense check
     poll: poll
     dot_vote: dot vote
     meeting: time poll
+    availability: time poll
     ranked_choice: ranked choice
     stv: STV election
     score: score poll
@@ -2205,6 +2207,7 @@ en:
 
 
   decision_tools_card:
+    event_title: Event
     choose_type: Choose poll type
     title: Facilitate
     recommended: Recommended
@@ -2220,6 +2223,7 @@ en:
     score_title: Score poll
     dot_vote_title: Dot vote
     meeting_title: Time poll
+    availability_title: Time poll
     ranked_choice_title: Ranked choice
     stv_title: STV Election
     majority_title: Majority
@@ -3221,3 +3225,63 @@ en:
       government: Government/Local Government
       cohousing: Co-living & co-housing
       other: Other
+
+  calendar:
+    attendance: Attendance
+    people: People
+    not_attending: Not attending
+    show_more: Show more
+    load_attendance_error: Could not load attendees
+    view_event: View event
+    response_requested: Please confirm your attendance for the current event time
+    attendance_recorded: Your attendance response has been recorded
+    view: Calendar view
+    last_day: Last day
+    calendar_link: Calendar link
+    link_copied: Calendar link copied
+    attendance_hint: Attendance reflects explicit responses; no response does not indicate whether an invitation was read
+    event: Event
+    event_description: Schedule an event and confirm who’s coming
+    availability_description: Find the best time for an event
+    going: Going
+    maybe: Maybe
+    not_going: Not going
+    no_response: No response
+    calendar: Calendar
+    starts_at: Starts
+    ends_at: Ends
+    all_day: All day
+    location: Location or meeting link
+    time_zone: Event time zone
+    create_event: Create an event
+    cancel_event: Cancel event
+    cancel_event_confirm: Cancel this event and notify everyone who received a calendar invitation?
+    cancelled: Cancelled
+    invitation: 'Invitation: %{title}'
+    invitation_updated: 'Updated invitation: %{title}'
+    invitation_cancelled: 'Cancelled: %{title}'
+    respond: Confirm your attendance
+    invitation_hint: Respond in your calendar or confirm your attendance in Loomio
+    reconfirm_hint: The event time has changed; please confirm your attendance again
+    subscribe: Subscribe to calendar
+    subscription_hint: Add this calendar to your calendar app to see upcoming events and decision deadlines
+    private_link_hint: This link gives access to your group calendar details; keep it private
+    refresh_hint: Your calendar app controls how often updates appear; invitations and notifications provide time-sensitive updates
+    copy_link: Copy calendar link
+    reset_link: Reset calendar link
+    reset_link_confirm: Reset your calendar link? You will need to subscribe again using the new link
+    google_instructions: 'Google Calendar: Other calendars → From URL'
+    outlook_instructions: 'Outlook: Add calendar → Subscribe from web'
+    apple_instructions: 'Apple Calendar: File → New Calendar Subscription'
+    deadline: 'Voting closes: %{title}'
+    review: 'Review due: %{title}'
+    month: Month
+    week: Week
+    day: Day
+    upcoming: Upcoming
+    today: Today
+    previous: Previous
+    next: Next
+    load_error: Could not load the calendar
+    members_only: Group members can view and subscribe to the calendar
+    no_upcoming: No upcoming events or decision deadlines

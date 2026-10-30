@@ -17,7 +17,7 @@ class Views::Chatbot::Markdown::Stance < Views::Chatbot::Markdown::Base
     render_title(@topic_item.itemable.poll)
     md "\n"
 
-    if @topic_item.itemable.poll.poll_type == "meeting"
+    if @topic_item.itemable.poll.poll_type == "availability"
       render_meeting_stance_choices(@topic_item.itemable)
     else
       render_stance_choices(@topic_item.itemable)

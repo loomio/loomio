@@ -17,7 +17,7 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
       div do
         if @poll.results_visible?(voted: @for_export || my_stance&.cast_at.present?)
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
-          if @poll.poll_type == "meeting"
+          if @poll.poll_type == "availability"
             render Views::NotificationMailer::Poll::Results::Meeting.new(poll: @poll, recipient: @current_user)
           elsif @poll.poll_type == "stv"
             render Views::NotificationMailer::Poll::Results::Stv.new(poll: @poll, recipient: @current_user)

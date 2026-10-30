@@ -11,6 +11,7 @@ Polls collect selections, scores, allocations, rankings, availability, or electi
 | Set priorities with a limited number of points | [Allocate](/en/user_manual/polls/allocate) (dot voting) | Totals points allocated to each option |
 | Order options by preference | [Rank](/en/user_manual/polls/rank) (ranked choice) | Combines rankings into a points-based order |
 | Find a meeting time | [Time poll](/en/user_manual/polls/meeting_polls) | Shows availability for each time |
+| Confirm attendance at a scheduled time | [Event](/en/user_manual/polls/events) | Records Going, Maybe, and Not going responses |
 | Elect several representatives proportionally | [STV Election](/en/user_manual/polls/stv) | Counts ranked ballots to elect multiple winners |
 
 <!-- translation-section: simple-poll -->

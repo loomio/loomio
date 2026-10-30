@@ -184,6 +184,7 @@ hu:
     poll: szavazás
     dot_vote: pont-szavazás
     meeting: időpontszavazás
+    availability: időpontszavazás
     ranked_choice: rangsorolás
     score: pontozás
     question: kérdezési kör
@@ -1970,6 +1971,7 @@ hu:
     score_title: Pontozás
     dot_vote_title: Pont szavazás
     meeting_title: Időpont választás
+    availability_title: Időpont választás
     ranked_choice_title: Sorrend választás
     gradients_of_agreement_title: Az egyetértés gradiensei
     majority_title: Többség

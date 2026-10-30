@@ -145,11 +145,28 @@ majority:
       prompt_i18n: poll_templates.majority.no_prompt
       color: "#D38FE1"
 
+event:
+  poll_type: event
+  process_name_i18n: calendar.event
+  process_subtitle_i18n: calendar.event_description
+  stance_reason_required: optional
+  default_duration_in_days: 7
+  poll_options:
+    - key: going
+      name_i18n: calendar.going
+      icon: agree
+    - key: maybe
+      name_i18n: calendar.maybe
+      icon: abstain
+    - key: not_going
+      name_i18n: calendar.not_attending
+      icon: disagree
+
 meeting:
-  poll_type: meeting
+  poll_type: availability
   meeting_duration: 60
   process_name_i18n: decision_tools_card.meeting_title
-  process_subtitle_i18n: poll_templates.time_poll.process_subtitle_v2
+  process_subtitle_i18n: calendar.availability_description
   process_introduction_i18n: poll_templates.time_poll.process_introduction_v2
   reason_prompt_i18n: poll_templates.time_poll.reason_prompt
   title_placeholder_i18n: poll_templates.time_poll.title

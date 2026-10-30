@@ -190,6 +190,7 @@ it:
     poll: Sondaggio
     dot_vote: voto a punti
     meeting: sondaggio appuntamento
+    availability: sondaggio appuntamento
     ranked_choice: scelta di preferenze
     score: punteggio
     question: giro di domande
@@ -1987,6 +1988,7 @@ it:
     score_title: Punteggio
     dot_vote_title: Voto a punti
     meeting_title: Sondaggio appuntamento
+    availability_title: Sondaggio appuntamento
     ranked_choice_title: Scelta di preferenze
     gradients_of_agreement_title: Gradienti di accordo
     majority_title: Maggioranza

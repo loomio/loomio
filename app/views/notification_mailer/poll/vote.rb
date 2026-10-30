@@ -21,7 +21,7 @@ class Views::NotificationMailer::Poll::Vote < Views::ApplicationMailer::Componen
       elsif @poll.active?
         p { strong { plain t(:"poll_common.please_vote") } }
 
-        if @poll.poll_type == 'meeting'
+        if @poll.poll_type == 'availability'
           p do
             plain t(:"common.time_zone")
             plain " "

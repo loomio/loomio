@@ -36,6 +36,12 @@ export default class PollModel extends BaseModel {
     return `poll_types.${this.pollType}`;
   }
 
+  voteSuccessKey(actionName) {
+    if (this.pollType === 'event') return 'calendar.attendance_recorded';
+    const type = this.pollType === 'availability' ? 'meeting' : this.pollType;
+    return `poll_${type}_vote_form.stance_${actionName}`;
+  }
+
   poll() { return this; }
 
   defaultValues() {
@@ -62,6 +68,14 @@ export default class PollModel extends BaseModel {
       pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
+      timeZone: null,
+      eventStartsAt: null,
+      eventEndsAt: null,
+      eventAllDay: false,
+      eventLocation: '',
+      eventCancelledAt: null,
+      calendarSequence: null,
+      sourceOutcomeId: null,
       limitReasonLength: true,
       stanceReasonRequired: 'optional',
       reasonPrompt: null,
@@ -108,6 +122,17 @@ export default class PollModel extends BaseModel {
     return this.pollTemplateId || this.pollTemplateKey;
   }
 
+  update(attributes) {
+    const previousSequence = this.calendarSequence;
+    super.update(attributes);
+    // Shared updates cannot carry a member's private current stance. Fetch it
+    // again when a calendar revision may have reset attendance confirmations.
+    if (this.pollType === 'event' && previousSequence != null && attributes.calendarSequence != null &&
+        previousSequence !== attributes.calendarSequence && this.id && AppConfig.currentUserId) {
+      Records.polls.remote.fetchById(this.id).catch(() => {});
+    }
+  }
+
   clonePoll() {
     const clone = this.clone();
     clone.id = null;
@@ -141,6 +166,12 @@ export default class PollModel extends BaseModel {
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
+    if (clone.pollType === 'event') {
+      clone.eventStartsAt = null;
+      clone.eventEndsAt = null;
+      clone.eventCancelledAt = null;
+      clone.sourceOutcomeId = null;
+    }
     clone.voteCountCast = null;
     clone.voteCountUncast = null;
     return clone;
@@ -414,7 +445,7 @@ export default class PollModel extends BaseModel {
   addOption(option) {
     if (this.pollOptionNames.includes(option) || !option) { return false; }
     this.pollOptionNames.push(option);
-    if (this.pollType === "meeting") { this.pollOptionNames.sort(); }
+    if (this.pollType === "availability") { this.pollOptionNames.sort(); }
     return option;
   }
 

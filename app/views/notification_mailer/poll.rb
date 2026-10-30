@@ -25,6 +25,7 @@ class Views::NotificationMailer::Poll < Views::NotificationMailer::Layout
     render Views::NotificationMailer::Common::Title.new(itemable: @poll, recipient: @recipient)
     render Views::NotificationMailer::Common::Tags.new(itemable: @poll)
     render Views::NotificationMailer::Poll::Summary.new(poll: @poll, recipient: @recipient)
+    render Views::EventMailer::Details.new(poll: @poll, recipient: @recipient) if @poll.event?
     render Views::NotificationMailer::Poll::VotingPeriod.new(poll: @poll, recipient: @recipient)
     render Views::NotificationMailer::Poll::Vote.new(poll: @poll, recipient: @recipient)
     render Views::NotificationMailer::Poll::Rules.new(poll: @poll)

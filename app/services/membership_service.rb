@@ -81,6 +81,9 @@ class MembershipService
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now, preserve_cast_votes: false)
     User.where(id: user_id).with_write_lock(:id) do
+      # Bulk membership revocation bypasses model callbacks. Retire these read
+      # credentials here too, so rejoining cannot reactivate an old feed URL.
+      CalendarSubscription.where(membership_id: Membership.where(user_id: user_id, group_id: group_ids).select(:id)).delete_all
       TopicReader
         .joins(:topic).where(user_id: user_id)
         .where("topics.group_id IN (?)", group_ids)

@@ -19,6 +19,16 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   protected
+
+  # Action Mailer's format collector selects the calendar MIME type but drops
+  # its scheduling method parameter. Set it on the constructed MIME part so
+  # clients recognize an invitation or cancellation rather than a plain import.
+  def calendar_method!(method)
+    part = message.all_parts.find { |item| item.mime_type == 'text/calendar' }
+    part.content_type = "text/calendar; method=#{method}; charset=UTF-8"
+    message
+  end
+
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_campaign: action_name }
   end

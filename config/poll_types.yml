@@ -226,7 +226,49 @@ proposal:
     default_duration_in_days: 7
     notify_on_closing_soon: 2
 
-meeting:
+event:
+  ballot_rule: bounded
+  material_icon: mdi-calendar-check
+  prevent_anonymous: true
+  prevent_weighted_voting: true
+  vote_method: show_thumbs
+  has_option_icon: true
+  hide_reason_required: true
+  order_results_by: priority
+  options_have_meaning: true
+  has_options: true
+  min_options: 3
+  allow_quorum: false
+  defaults:
+    details_format: html
+    process_introduction_format: html
+    poll_option_name_format: plain
+    chart_type: bar
+    score_min: 1
+    score_max: 1
+    choice_count_min: 1
+    choice_count_max: 1
+    points_per_voter: 1
+    default_duration_in_days: 7
+    notify_on_closing_soon: 2
+  common_poll_options:
+    - key: going
+      name_i18n: calendar.going
+      icon: agree
+      color: '#70C9F8'
+      default: true
+    - key: maybe
+      name_i18n: calendar.maybe
+      icon: abstain
+      color: '#C8E56E'
+      default: true
+    - key: not_going
+      name_i18n: calendar.not_attending
+      icon: disagree
+      color: '#D38FE1'
+      default: true
+
+availability:
   ballot_rule: bounded
   material_icon: mdi-calendar-multiselect
   prevent_anonymous: true

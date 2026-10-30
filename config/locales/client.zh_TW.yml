@@ -183,6 +183,7 @@ zh_TW:
     poll: 投票
     dot_vote: 點投票
     meeting: 時間投票
+    availability: 時間投票
     ranked_choice: 排序選擇
     score: 分數投票
     question: 問答環節
@@ -1985,6 +1986,7 @@ zh_TW:
     score_title: 分數投票
     dot_vote_title: 點投票
     meeting_title: 時間投票
+    availability_title: 時間投票
     ranked_choice_title: 排序選擇
     gradients_of_agreement_title: 一致性梯度
     majority_title: 多數

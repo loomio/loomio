@@ -181,6 +181,7 @@ ja:
     poll: アンケート
     dot_vote: ドット投票
     meeting: 時間投票
+    availability: 時間投票
     ranked_choice: ランク投票
     score: スコア投票
     question: 質問ラウンド
@@ -1958,6 +1959,7 @@ ja:
     score_title: スコア投票
     dot_vote_title: ドット投票
     meeting_title: 日程調整
+    availability_title: 日程調整
     ranked_choice_title: ランク投票
     gradients_of_agreement_title: 一致の勾配
     majority_title: 過半数

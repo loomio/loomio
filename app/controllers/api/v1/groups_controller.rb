@@ -7,6 +7,40 @@ class Api::V1::GroupsController < Api::V1::RestfulController
     respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 
+  def calendar
+    group, = calendar_membership
+    starts_at = Date.iso8601(params.fetch(:start)).in_time_zone(current_user.time_zone)
+    ends_at = Date.iso8601(params.fetch(:end)).in_time_zone(current_user.time_zone)
+    raise ActionController::BadRequest unless ends_at > starts_at && ends_at <= starts_at + 93.days
+
+    render json: {entries: GroupCalendarService.new(group: group, user: current_user, starts_at: starts_at, ends_at: ends_at).entries}, root: false
+  rescue ArgumentError, KeyError
+    raise ActionController::BadRequest
+  end
+
+  def calendar_subscription
+    _, membership = calendar_membership
+    subscription = User.where(id: current_user.id).with_write_lock(:id) do
+      membership.with_lock do
+        raise ActiveRecord::RecordNotFound unless Membership.active.exists?(id: membership.id) && User.active.exists?(id: current_user.id)
+        CalendarSubscription.find_or_create_by!(membership: membership)
+      end
+    end
+    render json: {url: calendar_feed_url(token: subscription.token)}, root: false
+  end
+
+  def reset_calendar_subscription
+    _, membership = calendar_membership
+    membership.with_lock { CalendarSubscription.where(membership: membership).destroy_all }
+    calendar_subscription
+  end
+
+  def unsubscribe_calendar
+    _, membership = calendar_membership
+    CalendarSubscription.where(membership: membership).destroy_all
+    head :no_content
+  end
+
   def suggest_handle
     render json: { handle: service.suggest_handle(name: params[:name], parent_handle: params[:parent_handle])  }
   end
@@ -88,6 +122,13 @@ class Api::V1::GroupsController < Api::V1::RestfulController
   end
 
   private
+
+  def calendar_membership
+    group = load_and_authorize(:group)
+    raise CanCan::AccessDenied unless current_user.is_logged_in? && current_user.active? && group.enabled?
+    membership = Membership.active.find_by!(user_id: current_user.id, group_id: group.id)
+    [group, membership]
+  end
 
   def destroy_action
     service.warn_and_discard(group: resource, actor: current_user)

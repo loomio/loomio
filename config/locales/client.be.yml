@@ -204,6 +204,7 @@ be:
     poll: апытанне
     dot_vote: размеркаванне балаў
     meeting: апытанне пра час
+    availability: апытанне пра час
     ranked_choice: рэйтынгавы выбар
     stv: выбары па STV
     score: ацэначнае апытанне
@@ -2086,6 +2087,7 @@ be:
     score_title: Ацэначнае апытанне
     dot_vote_title: Галасуйце
     meeting_title: Апытанне пра час
+    availability_title: Апытанне пра час
     ranked_choice_title: Рэйтынгавы выбар
     stv_title: Выбары па STV
     majority_title: Большасць

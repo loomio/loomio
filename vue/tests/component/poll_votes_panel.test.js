@@ -126,7 +126,7 @@ describe('Poll votes panel', () => {
       meta: {total: 1}
     });
     const wrapper = mountPanel({
-      pollType: 'meeting', weightedVoting: false, hasVariableScore: () => true,
+      pollType: 'availability', weightedVoting: false, hasVariableScore: () => true,
       pollOptions: () => [
         {id: 5, optionName: () => 'Monday'}, {id: 6, optionName: () => 'Tuesday'}, {id: 7, optionName: () => 'Wednesday'}
       ]

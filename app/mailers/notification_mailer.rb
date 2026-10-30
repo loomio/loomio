@@ -1,5 +1,6 @@
 class NotificationMailer < ApplicationMailer
   around_deliver :track_notification_delivery, if: -> { action_name == "notification" }
+  after_deliver :record_calendar_delivery
 
   REPLY_DELIMITER = "\uFEFF\uFEFF"*4 # surprise! this is actually U+FEFF
 
@@ -129,14 +130,6 @@ class NotificationMailer < ApplicationMailer
       "Auto-Submitted": :"auto-generated"
     }
 
-    if topic_item.itemable.respond_to?(:calendar_invite) && topic_item.itemable.calendar_invite
-      attachments['meeting.ics'] = {
-        content_type: 'text/calendar',
-        content_transfer_encoding: 'base64',
-        content: Base64.encode64(topic_item.itemable.calendar_invite)
-      }
-    end
-
     # this should be notification.i18n_key
     event_key = self.class.event_key_for(topic_item, recipient)
 
@@ -153,6 +146,15 @@ class NotificationMailer < ApplicationMailer
 
     return if spam?(recipient.email) || rejected_address?(recipient.email)
 
+    calendar = nil
+    if poll&.event? && %w[poll_created poll_announced poll_opened poll_reminder poll_edited].include?(topic_item.kind) && recipient.can?(:vote_in, poll)
+      @calendar_invitation = CalendarInvitation.create_or_find_by!(poll: poll, user: recipient) { |invitation| invitation.email = recipient.email }
+      if @calendar_invitation.email == EmailAddress.normalize(recipient.email)
+        @calendar_sequence = poll.calendar_sequence
+        calendar = EventCalendarService.invitation(poll: poll, invitation: @calendar_invitation)
+      end
+    end
+
     I18n.with_locale(first_supported_locale(recipient.locale)) do
       mail(
         to: recipient.email,
@@ -161,8 +163,16 @@ class NotificationMailer < ApplicationMailer
         subject: subject_for(topic_item: topic_item, recipient: recipient, event_key: event_key, poll: poll)
       ) do |format|
         format.html { render component }
+        format.ics { render plain: calendar, content_type: 'text/calendar; method=REQUEST; charset=UTF-8' } if calendar
       end
     end
+    calendar_method!('REQUEST') if calendar
+  end
+
+  def record_calendar_delivery
+    return unless @calendar_invitation && @calendar_sequence
+
+    @calendar_invitation.mark_delivered!(sequence: @calendar_sequence)
   end
 
   def subject_for(topic_item:, recipient:, event_key:, poll: nil)

@@ -7,9 +7,10 @@ import { pickBy, assign, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import ItemTags from '@/components/tags/item_tags.vue';
+import PollEventDetails from '@/components/poll/event/details.vue';
 
 export default {
-  components: { ItemTags },
+  components: { ItemTags, PollEventDetails },
   mixins: [WatchRecords, UrlFor],
   props: {
     topic_item: Object,
@@ -39,7 +40,7 @@ export default {
     rebuildActions() {
       let pollActions = PollService.actions(this.poll, this, this.topic_item);
       this.editStanceAction = pollActions["edit_stance"]
-      if (this.poll.pollType != 'meeting') {
+      if (this.poll.pollType != 'availability') {
         pollActions = omit(pollActions, "edit_stance");
       }
       const topic = this.poll.topic();
@@ -77,6 +78,7 @@ section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
   div(v-if="!collapsed")
     poll-common-details-meta(:poll="poll")
       item-tags.ml-auto(v-if="!poll.isTopicable()" :topic-item="topic_item")
+    poll-event-details(v-if="poll.pollType === 'event'" :poll="poll")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")

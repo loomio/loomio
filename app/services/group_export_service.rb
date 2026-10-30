@@ -69,6 +69,7 @@ class GroupExportService
   ]
 
   JSON_PARAMS = {
+    polls: {except: %w[calendar_uid calendar_sequence]},
     # Delivery transport identity belongs to the sending instance. Reusing it
     # after import can conflict with existing IDs.
     notification_deliveries: {except: %w[email_message_id provider_message_id]},
@@ -82,6 +83,7 @@ class GroupExportService
 
   BACK_REFERENCES = {
     outcomes: {
+      polls: %w[source_outcome_id],
       topic_items: %w[itemable],
       notifications: %w[subject]
     },
@@ -639,6 +641,10 @@ class GroupExportService
   end
 
   def self.prepare_record_for_import!(record, table, original_attrs, klass, reset_keys)
+    if table == 'polls' && record.event?
+      record.calendar_uid = "#{SecureRandom.uuid}@loomio"
+      record.calendar_sequence = 0
+    end
     if reset_keys && original_attrs.has_key?('key')
       record.key = nil
       record.set_key

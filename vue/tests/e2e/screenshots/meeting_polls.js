@@ -6,13 +6,13 @@ function openPollTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
   page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll');
-  page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting');
+  page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--availability');
   page.expectText('.decision-tools-card__poll-types', 'Time poll');
   page.execute(`
     document.querySelectorAll('.decision-tools-card__poll-type').forEach(el => {
-      if (!el.classList.contains('decision-tools-card__poll-type--meeting')) el.style.display = 'none';
+      if (!el.classList.contains('decision-tools-card__poll-type--availability')) el.style.display = 'none';
     });
-    document.querySelector('.decision-tools-card__poll-type--meeting').scrollIntoView({block: 'center'});
+    document.querySelector('.decision-tools-card__poll-type--availability').scrollIntoView({block: 'center'});
   `);
 }
 
@@ -28,7 +28,7 @@ function fillCommonFields(page, title, details) {
 
 function openTimePollForm(page) {
   openPollTemplates(page);
-  page.clickAndWait('.decision-tools-card__poll-type--meeting', '.poll-common-form-fields__title input');
+  page.clickAndWait('.decision-tools-card__poll-type--availability', '.poll-common-form-fields__title input');
   fillCommonFields(
     page,
     'Schedule the bottle trial planning meeting',
@@ -66,7 +66,7 @@ module.exports = {
     openPollTemplates(page);
     screenshot.captureRegion(
       'polls/meeting_polls/meeting_polls',
-      ['.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting'],
+      ['.poll-common-choose-template__poll', '.decision-tools-card__poll-type--availability'],
       {padding: 8, width: 1100, height: 900}
     );
   },
@@ -77,7 +77,7 @@ module.exports = {
     openPollTemplates(page);
     screenshot.captureElement(
       'polls/meeting_polls/timepoll_label',
-      '.decision-tools-card__poll-type--meeting',
+      '.decision-tools-card__poll-type--availability',
       {width: 1100, height: 900}
     );
   },

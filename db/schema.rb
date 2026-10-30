@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_30_100002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -112,6 +112,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.index ["discarded_at"], name: "index_bookmarks_on_discarded_at"
     t.index ["user_id", "bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_user_and_bookmarkable", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "calendar_invitations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "delivered_at"
+    t.integer "delivered_sequence"
+    t.string "email", null: false
+    t.bigint "poll_id", null: false
+    t.datetime "response_dtstamp"
+    t.integer "response_sequence"
+    t.string "token", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["poll_id", "user_id"], name: "index_calendar_invitations_on_poll_id_and_user_id", unique: true
+    t.index ["poll_id"], name: "index_calendar_invitations_on_poll_id"
+    t.index ["token"], name: "index_calendar_invitations_on_token", unique: true
+    t.index ["user_id"], name: "index_calendar_invitations_on_user_id"
+  end
+
+  create_table "calendar_subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "membership_id", null: false
+    t.string "token", null: false
+    t.datetime "updated_at", null: false
+    t.index ["membership_id"], name: "index_calendar_subscriptions_on_membership_id", unique: true
+    t.index ["token"], name: "index_calendar_subscriptions_on_token", unique: true
   end
 
   create_table "chatbots", force: :cascade do |t|
@@ -759,6 +785,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.boolean "anonymous", default: false, null: false
     t.jsonb "attachments", default: [], null: false
     t.integer "author_id", null: false
+    t.integer "calendar_sequence", default: 0, null: false
+    t.string "calendar_uid"
     t.string "chart_type"
     t.integer "choice_count_max"
     t.integer "choice_count_min"
@@ -772,6 +800,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.string "details_format", limit: 10, default: "md", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
+    t.boolean "event_all_day", default: false, null: false
+    t.datetime "event_cancelled_at"
+    t.datetime "event_ends_at"
+    t.text "event_location"
+    t.datetime "event_starts_at"
     t.integer "hide_results", default: 0, null: false
     t.string "key", null: false
     t.boolean "limit_reason_length", default: true, null: false
@@ -795,6 +828,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.jsonb "scores_by_option", default: [], null: false
     t.boolean "show_none_of_the_above", default: false, null: false
     t.boolean "shuffle_options", default: false, null: false
+    t.bigint "source_outcome_id"
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "stance_reason_required", default: 1, null: false
     t.string "stv_method"
@@ -806,16 +840,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.integer "topic_id"
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
-    t.integer "vote_count_none_of_the_above", default: 0, null: false
     t.integer "vote_count_eligible", default: 0, null: false
+    t.integer "vote_count_none_of_the_above", default: 0, null: false
     t.integer "vote_count_uncast", default: 0, null: false
     t.boolean "weighted_voting", default: false, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
+    t.index ["calendar_uid"], name: "index_polls_on_calendar_uid", unique: true
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
     t.index ["discarded_by"], name: "index_polls_on_discarded_by"
+    t.index ["event_starts_at"], name: "index_polls_on_event_starts_at", where: "((poll_type)::text = 'event'::text)"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["opening_at"], name: "index_polls_on_pending_opening_at", where: "((opened_at IS NULL) AND (closed_at IS NULL) AND (discarded_at IS NULL) AND (opening_at IS NOT NULL))"
+    t.index ["source_outcome_id"], name: "index_polls_on_source_outcome_id"
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
   end
@@ -1378,6 +1415,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
   add_foreign_key "anonymous_poll_voters", "polls"
   add_foreign_key "anonymous_poll_voters", "users", column: "inviter_id"
   add_foreign_key "anonymous_poll_voters", "users", column: "voter_id"
+  add_foreign_key "calendar_invitations", "polls", on_delete: :cascade
+  add_foreign_key "calendar_invitations", "users", on_delete: :cascade
+  add_foreign_key "calendar_subscriptions", "memberships", on_delete: :cascade
   add_foreign_key "discussions", "topics", deferrable: :deferred
   add_foreign_key "email_suppressions", "notification_delivery_events", on_delete: :nullify
   add_foreign_key "email_suppressions", "users", column: "cleared_by_id", on_delete: :nullify
@@ -1406,6 +1446,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
   add_foreign_key "pending_emails", "action_mailbox_inbound_emails", column: "inbound_email_id"
   add_foreign_key "pending_emails", "groups", on_delete: :cascade
   add_foreign_key "poll_options", "polls", on_delete: :cascade
+  add_foreign_key "polls", "outcomes", column: "source_outcome_id", on_delete: :nullify, deferrable: :deferred, validate: false
   add_foreign_key "polls", "topics", deferrable: :deferred
   add_foreign_key "push_subscriptions", "sessions", on_delete: :cascade
   add_foreign_key "push_subscriptions", "users", on_delete: :cascade

@@ -11,7 +11,7 @@ class PollMarkdownResultsService
   # Mirror the chatbot result branches while emitting native Markdown tables.
   def render
     case poll.poll_type
-    when "meeting" then meeting_results
+    when "availability" then meeting_results
     when "stv" then stv_results
     else simple_results
     end

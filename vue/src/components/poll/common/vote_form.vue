@@ -86,7 +86,7 @@ export default {
       }
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
-        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        Flash.success(this.stance.poll().voteSuccessKey(actionName));
         EventBus.$emit('closeModal');
       }).catch((err) => {
         Flash.serverError(err);
@@ -103,7 +103,7 @@ export default {
 
     selectedOptionColor(option) {
       if (!this.isSelected(option)) { return null; }
-      return this.poll.pollType === 'proposal' ? option.color : null;
+      return this.hasOptionIcon ? option.color : null;
     },
 
     classes(option) {
@@ -122,7 +122,7 @@ export default {
           return [
             'elevation-2',
             votingStatus,
-            {'poll-common-vote-form__button--brand-selected': this.poll.pollType !== 'proposal'}
+            {'poll-common-vote-form__button--brand-selected': !this.hasOptionIcon}
           ];
       } else {
         return ['poll-common-vote-form__button--none-selected', votingStatus];

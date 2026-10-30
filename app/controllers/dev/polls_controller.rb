@@ -1,6 +1,40 @@
 class Dev::PollsController < Dev::NightwatchController
   include Dev::ScenariosHelper
 
+  def event_calendar
+    admin = saved fake_user(name: 'Event organizer', time_zone: 'Pacific/Auckland')
+    participant = saved fake_user(name: 'Event participant', time_zone: 'Pacific/Auckland')
+    group = saved fake_group(name: 'Community calendar')
+    group.add_admin! admin
+    group.add_member! participant
+    start = 3.days.from_now.change(hour: 12, usec: 0)
+    if params[:source].present?
+      poll = PollService.create(actor: admin, params: {
+        title: 'Find a gathering time', poll_type: 'availability', group_id: group.id,
+        poll_template_key: 'meeting', poll_option_names: [start.iso8601, (start + 1.day).iso8601],
+        closing_at: 1.day.from_now, notify_on_open: false
+      })
+      PollService.close(poll: poll, actor: admin)
+      OutcomeService.create(actor: admin, outcome: Outcome.new(poll: poll,
+        poll_option: poll.poll_options.first, statement: 'The gathering time is agreed', event_summary: 'Community gathering', event_location: 'Town hall'))
+    else
+      template = PollTemplateService.default_templates.find { |item| item.key == 'event' }
+      poll = PollService.create(actor: admin, params: {
+        title: 'Community gathering', details: '<p>Bring your ideas</p>', poll_type: 'event', group_id: group.id,
+        poll_template_key: 'event', poll_options_attributes: template.poll_options.each_with_index.map { |option, index| option.except('key').merge('priority' => index) },
+        event_starts_at: start, event_ends_at: start + 1.hour, event_location: 'Town hall',
+        time_zone: 'Pacific/Auckland', closing_at: start, notify_on_open: false
+      })
+    end
+    raise ActiveRecord::RecordInvalid, poll unless poll.persisted?
+    sign_in(params[:admin].present? || params[:source].present? ? admin : participant)
+    case params[:view]
+    when 'calendar' then redirect_to "/g/#{group.key}/calendar"
+    when 'form' then redirect_to "/p/new?group_id=#{group.id}&template_key=event"
+    else redirect_to poll_url(poll)
+    end
+  end
+
   def test_poll_scenario
     scenario =send(:"#{params[:scenario]}_scenario", {
                       poll_type: params[:poll_type],
@@ -330,7 +364,7 @@ class Dev::PollsController < Dev::NightwatchController
     options = poll.poll_options.order(:priority).to_a
     random = Random.new(poll.id * 10_000 + index)
     case poll.poll_type
-    when 'meeting'
+    when 'availability'
       options.each_with_index.map do |option, i|
         {poll_option_id: option.id, score: random.rand < [0.8, 0.55, 0.3][i] ? 2 : random.rand(0..1)}
       end

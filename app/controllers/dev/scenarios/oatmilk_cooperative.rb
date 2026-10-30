@@ -1071,7 +1071,7 @@ module Dev::Scenarios::OatmilkCooperative
         topic_id: discussion.topic_id,
         title: 'Schedule the bottle trial planning meeting',
         details: 'Choose the times you can meet to confirm cafe collections, washing checks, and responsibilities for the six-week trial.',
-        poll_type: 'meeting',
+        poll_type: 'availability',
         poll_option_names: times.map(&:iso8601),
         meeting_duration: 90,
         closing_at: 4.days.from_now

@@ -1,4 +1,5 @@
 class PollTemplate < ApplicationRecord
+  include AvailabilityPollType
   include HasCountChanges
   include Hideable
   include DiscardableBy
@@ -103,6 +104,7 @@ class PollTemplate < ApplicationRecord
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   normalizes :comment_length_max, with: ->(v) { v.presence&.to_i }
   validate :weighted_voting_available
+  validate :event_attendance_configuration, if: -> { poll_type == 'event' }
 
   has_paper_trail only: [
     :poll_type,
@@ -178,6 +180,10 @@ class PollTemplate < ApplicationRecord
   end
 
   private
+
+  def event_attendance_configuration
+    EventPoll.validate_attendance(self, icons: poll_options.map { |option| option.with_indifferent_access[:icon] })
+  end
 
   # Use the poll rule, so a template cannot save a combination that polls
   # started from it would reject.

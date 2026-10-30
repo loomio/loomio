@@ -50,7 +50,7 @@ export default {
       if (this.filter === 'proposal') {
         return this.results.filter(r => ['proposal', 'question'].includes(r.pollType));
       } else {
-        return this.results.filter(r => ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count'].includes(r.pollType));
+        return this.results.filter(r => ['score', 'poll', 'ranked_choice', 'dot_vote', 'availability', 'event', 'count'].includes(r.pollType));
       }
     },
     groupIdParam() {

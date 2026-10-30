@@ -12,7 +12,7 @@ class Views::Chatbot::Matrix::Results < Views::Chatbot::Base
     if @poll.vote_count_cast > 0 || @poll.closed_at
       if @poll.results_visible?
         h5 { t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
-        if @poll.poll_type == "meeting"
+        if @poll.poll_type == "availability"
           render Views::Chatbot::Matrix::Meeting.new(poll: @poll, recipient: @recipient)
         elsif @poll.poll_type == "stv"
           render Views::Chatbot::Matrix::Stv.new(poll: @poll, recipient: @recipient)

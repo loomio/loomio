@@ -49,6 +49,7 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
   after_save :remove_group_follow, if: :active_membership_saved?
+  after_update :revoke_calendar_subscriptions, if: -> { saved_change_to_revoked_at? && revoked_at.present? }
 
   def title_model
     group
@@ -83,6 +84,10 @@ class Membership < ApplicationRecord
   end
 
   private
+
+  def revoke_calendar_subscriptions
+    CalendarSubscription.where(membership_id: id).delete_all
+  end
 
   def active_membership_saved?
     revoked_at.nil? && (previous_changes.key?('id') || previous_changes.key?('revoked_at'))

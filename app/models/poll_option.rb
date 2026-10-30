@@ -76,13 +76,13 @@ class PollOption < ApplicationRecord
   # Only the time poll grid reads each voter's score from results. Other poll
   # types would send every voter's score for every option.
   def scores_by_voter_for_results
-    poll.poll_type == 'meeting' ? scores_by_voter : {}
+    poll.poll_type == 'availability' ? scores_by_voter : {}
   end
 
   def voter_ids
     # this is a hack, we both know this
     # some polls 0 is a vote, others it is not
-    if poll.poll_type == 'meeting'
+    if poll.poll_type == 'availability'
       scores_by_voter.keys.map(&:to_i)
     else
       scores_by_voter.filter { |id, score| score != 0 }.keys.map(&:to_i)

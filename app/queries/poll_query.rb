@@ -68,7 +68,10 @@ class PollQuery
     end
 
     chain = chain.where(author_id: params[:author_id]) if params[:author_id]
-    chain = chain.where(poll_type: params[:poll_type]) if params[:poll_type]
+    if params[:poll_type]
+      types = %w[meeting availability].include?(params[:poll_type]) ? %w[meeting availability] : params[:poll_type]
+      chain = chain.where(poll_type: types)
+    end
     chain = chain.send(params[:status]) if %w(active closed recent template).include?(params[:status])
     chain = chain.search_for(params[:query]) if params[:query]
     chain

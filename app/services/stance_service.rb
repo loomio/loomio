@@ -83,7 +83,9 @@ class StanceService
     end
 
     if stance_to_publish
-      MessageChannelService.publish_models([stance_to_publish], group_id: stance.poll.group_id)
+      ActiveRecord.after_all_transactions_commit do
+        MessageChannelService.publish_models([stance_to_publish], group_id: stance.poll.group_id)
+      end
     end
     publish_stance_directly!(stance_changed, publication)
     Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })

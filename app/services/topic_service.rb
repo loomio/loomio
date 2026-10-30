@@ -252,9 +252,17 @@ class TopicService
   def self.discard_without_authorization(topic:, actor:)
     topicable = topic.topicable
     discarded_at = Time.current
-    Topic.transaction do
+    topic.with_lock do
       topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
-      topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.polls.where(poll_type: 'event', discarded_at: nil).find_each do |poll|
+        poll.update!(discarded_at: discarded_at, discarded_by: actor.id,
+                     calendar_sequence: poll.calendar_sequence + 1)
+      end
+      unless topicable.is_a?(Poll) && topicable.event?
+        topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
+      else
+        topicable.reload
+      end
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
       topic.update_column(:active_polls_count, 0)
     end

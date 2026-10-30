@@ -135,7 +135,7 @@ module Views::Chatbot::Markdown::Concerns
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"
         md "\n"
 
-        if poll.poll_type == "meeting"
+        if poll.poll_type == "availability"
           render_meeting_table(poll)
         elsif poll.poll_type == "stv"
           render_stv_table(poll)

@@ -182,6 +182,7 @@ tr:
     poll: anket
     dot_vote: nokta oylaması
     meeting: zaman anketi
+    availability: zaman anketi
     ranked_choice: sıralı tercih
     score: puanlama anketi
     question: soru turu
@@ -1959,6 +1960,7 @@ tr:
     score_title: Puan anketi
     dot_vote_title: Nokta oylaması
     meeting_title: Zaman anketi
+    availability_title: Zaman anketi
     ranked_choice_title: Sıralı tercih
     gradients_of_agreement_title: Anlaşmanın gradyanları
     majority_title: Çoğunluk

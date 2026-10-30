@@ -56,7 +56,7 @@ class PollMarkdownResultsServiceTest < ActiveSupport::TestCase
 
   test "renders a time poll availability matrix" do
     options = [PollOption.new(id: 1, name: "2026-10-01T09:00:00Z", total_score: 0)]
-    poll = MeetingPoll.new(poll_type: "meeting", time_zone: "UTC", poll_options: options, poll_option_name_format: nil)
+    poll = MeetingPoll.new(poll_type: "availability", time_zone: "UTC", poll_options: options, poll_option_name_format: nil)
     service = PollMarkdownResultsService.new(poll, @user)
 
     service.stub(:voter_stances, []) do

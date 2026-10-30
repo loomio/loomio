@@ -45,6 +45,19 @@ export default new class PollService {
     return {
       ...BookmarkService.actions(poll),
 
+      cancel_event: {
+        name: 'calendar.cancel_event',
+        icon: 'mdi-calendar-remove',
+        menu: true,
+        canPerform() { return poll.pollType === 'event' && !poll.eventCancelledAt && AbilityService.canDeletePoll(poll); },
+        perform() {
+          return openModal({ component: 'ConfirmModal', props: { confirm: {
+            submit: () => Records.polls.remote.postMember(poll.keyOrId(), 'cancel_event', {}),
+            text: { title: 'calendar.cancel_event', helptext: 'calendar.cancel_event_confirm', flash: 'calendar.cancelled' }
+          } } });
+        }
+      },
+
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',

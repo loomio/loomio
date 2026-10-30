@@ -64,7 +64,7 @@ export default {
       let actionName;
       this.loading = true;
       if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
-      if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
+      if (this.poll.pollType == 'availability') { this.outcome.includeActor = 1; }
 
       if (this.outcome.isNew()) {
         actionName = "created";
@@ -105,7 +105,7 @@ v-card.poll-common-outcome-modal(
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
-      :include-actor="outcome.poll().pollType == 'meeting'"
+      :include-actor="outcome.poll().pollType == 'availability'"
       :model="outcome")
 
     .poll-common-calendar-invite(v-if='poll.datesAsOptions()')

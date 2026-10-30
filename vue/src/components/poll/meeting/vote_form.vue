@@ -60,7 +60,7 @@ export default {
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
         EventBus.$emit("closeModal");
-        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        Flash.success(this.stance.poll().voteSuccessKey(actionName));
       }).catch((err) => {
         Flash.serverError(err, ['stanceChoices']);
       }).finally(() => this.loading = false);

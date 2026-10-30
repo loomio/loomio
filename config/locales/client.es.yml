@@ -182,6 +182,7 @@ es:
     poll: sondeo
     dot_vote: votación por puntos
     meeting: Coordinación de horario
+    availability: Coordinación de horario
     ranked_choice: votación preferencial
     score: Encuesta de puntuación
     question: ronda de preguntas
@@ -1993,6 +1994,7 @@ es:
     score_title: Encuesta de puntuación
     dot_vote_title: Voto de puntos
     meeting_title: Coordinar horario
+    availability_title: Coordinar horario
     ranked_choice_title: Votación preferencial
     gradients_of_agreement_title: Gradientes de concordancia
     majority_title: Mayoría

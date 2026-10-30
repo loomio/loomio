@@ -190,6 +190,7 @@ fr:
     poll: Sondage
     dot_vote: Vote à points
     meeting: Sondage horaire de réunion
+    availability: Sondage horaire de réunion
     ranked_choice: 'Classement par préférence '
     score: notation
     question: tour de questions
@@ -2001,6 +2002,7 @@ fr:
     score_title: Notation
     dot_vote_title: Vote à points
     meeting_title: Sondage horaire de réunion
+    availability_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
     gradients_of_agreement_title: Gradients d’accord
     majority_title: Majorité

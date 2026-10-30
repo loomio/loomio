@@ -4,6 +4,7 @@ import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollStvChartPanel from '@/components/poll/stv/chart_panel';
+import PollEventAttendance from '@/components/poll/event/attendance.vue';
 import { useI18n } from 'vue-i18n';
 
 export default {
@@ -12,6 +13,7 @@ export default {
     return { t };
   },
   components: {
+    PollEventAttendance,
     PollCommonChartTable,
     PollCommonChartMeeting,
     PollStvChartPanel,
@@ -37,7 +39,7 @@ export default {
   },
 
   created() {
-    if (Session.isSignedIn() && (!this.hideVoters || this.poll.chartType == 'grid')) {
+    if (this.poll.pollType !== 'event' && Session.isSignedIn() && (!this.hideVoters || this.poll.chartType == 'grid')) {
       Records.fetch({path: "polls/"+this.poll.id+"/voters"})
     }
   }
@@ -80,7 +82,8 @@ export default {
           )
           span {{ t(option.test_requirement_key, {percent: option.test_percent, name: option.name}) }}
     template(v-if="poll.config().has_options")
-      poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
+      poll-event-attendance(v-if="poll.pollType === 'event'" :poll="poll" :hide-voters="hideVoters")
+      poll-stv-chart-panel(v-else-if="poll.pollType == 'stv'" :poll="poll")
       template(v-else-if="poll.chartType != 'grid'")
         v-alert.poll-common-chart-panel__variable-vote-weights.mb-4(
           v-if="poll.weightedVoting"
@@ -93,6 +96,6 @@ export default {
         poll-common-chart-table(:poll="poll" :hide-voters="hideVoters" @metric-change="chartMetric = $event")
       poll-common-chart-meeting(v-else :poll="poll")
 
-  p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
+  p.text-medium-emphasis.my-2(v-if="poll.closingAt && !['count', 'event'].includes(poll.pollType)")
     span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.voteCountCast, total: poll.voteCountEligible, pct: participationPct}) }}
 </template>

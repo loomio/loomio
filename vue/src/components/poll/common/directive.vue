@@ -12,7 +12,7 @@ export default {
     'poll-dot_vote-vote-form': PollDotVoteVoteForm,
     'poll-score-vote-form': PollScoreVoteForm,
     'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm,
-    'poll-meeting-vote-form': PollMeetingVoteForm,
+    'poll-availability-vote-form': PollMeetingVoteForm,
     'poll-stv-vote-form': PollStvVoteForm
   },
 

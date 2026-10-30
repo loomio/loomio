@@ -188,6 +188,7 @@ de:
     poll: Abstimmung
     dot_vote: Punktabstimmung
     meeting: Terminfindung
+    availability: Terminfindung
     ranked_choice: Prioritäten setzen
     score: Bewertung
     question: Fragerunde
@@ -1990,6 +1991,7 @@ de:
     score_title: Bewertung
     dot_vote_title: Punktabstimmung
     meeting_title: Terminfindung
+    availability_title: Terminfindung
     ranked_choice_title: Prioritätensetzung
     gradients_of_agreement_title: Übereinstimmungsgradienten
     majority_title: Mehrheitlich

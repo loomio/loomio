@@ -15,6 +15,7 @@ import { addMinutes, intervalToDuration, format, formatDuration, addHours, isAft
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { mdiCogOutline, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
+import PollEventFields from '@/components/poll/event/fields.vue';
 import { HandleDirective } from 'vue-slicksort';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
@@ -193,7 +194,7 @@ const submit = () => {
     }
   }).catch(error => {
     form.value.validate();
-    Flash.serverError(error, ['title', 'choiceCountMin', 'pointsPerVoter', 'closingAt', 'openingAt']);
+    Flash.serverError(error, ['title', 'choiceCountMin', 'pointsPerVoter', 'closingAt', 'openingAt', 'eventStartsAt', 'eventEndsAt', 'timeZone', 'pollOptions']);
   }).finally(() => loading.value = false);
 };
 
@@ -324,7 +325,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :label="$t('poll_common_form.details')"
   )
 
-  template(v-if="hasOptions")
+  poll-event-fields(v-if="poll.pollType === 'event'" :poll="poll")
+
+  template(v-if="hasOptions && poll.pollType !== 'event'")
     v-divider.my-4
     .text-body-large.py-2.poll-common-form__options-heading( v-t="'poll_common_form.options'")
     //p.text-body-small.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
@@ -357,7 +360,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             p {{option.meaning}}
 
           template(v-slot:append)
-            div.ml-0(v-if="poll.pollType != 'meeting'")
+            div.ml-0(v-if="poll.pollType != 'availability'")
               v-btn.poll-common-form__edit-option(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                 common-icon(name="mdi-pencil")
             v-btn(
@@ -367,7 +370,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
               :title="$t('common.action.delete')"
             )
               common-icon(name="mdi-delete")
-            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'")
+            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'availability'")
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)

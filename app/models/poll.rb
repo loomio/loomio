@@ -1,4 +1,6 @@
 class Poll < ApplicationRecord
+  include AvailabilityPollType
+  include EventPoll
   include HasCountChanges
   include LocksTopicsForCounts
   PARTICIPATION_STATUS_VOTES_MIN = 3
@@ -125,6 +127,7 @@ class Poll < ApplicationRecord
   # who voted, so they cannot carry weights, and poll_types.yml marks the
   # voting methods that do not support weighted totals.
   def self.weighted_voting_available?(poll_type:, anonymous:)
+    poll_type = 'availability' if poll_type == 'meeting'
     !anonymous && !AppConfig.poll_types.dig(poll_type, 'prevent_weighted_voting')
   end
 
@@ -375,7 +378,7 @@ class Poll < ApplicationRecord
   end
 
   def results_include_uncast_row?
-    poll_type != "meeting"
+    poll_type != "availability"
   end
 
   def dates_as_options
@@ -434,6 +437,8 @@ class Poll < ApplicationRecord
 
   def unweighted_result_columns
     case poll_type
+    when 'event'
+      %w[name vote_count voters]
     when 'proposal'
       %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
@@ -454,7 +459,7 @@ class Poll < ApplicationRecord
       %w[chart name score average vote_count]
     when 'poll'
       %w[chart name score_percent vote_count voters]
-    when 'meeting'
+    when 'availability'
       %w[chart name score voters]
     else
       []
@@ -489,6 +494,10 @@ class Poll < ApplicationRecord
   end
 
   def result_heading_key(column)
+    if event?
+      return 'calendar.attendance' if column == 'name'
+      return 'calendar.people' if column == 'vote_count'
+    end
     weighted_keys = if !weighted_voting? then {}
     elsif one_point_choices? then WEIGHTED_VOTES_HEADING_KEYS
     else WEIGHTED_POINTS_HEADING_KEYS
@@ -760,7 +769,7 @@ class Poll < ApplicationRecord
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    names = names.sort if poll_type == 'meeting'
+    names = names.sort if poll_type == 'availability'
     names.each_with_index do |name, priority|
       option = poll_options.find_or_initialize_by(name: name)
       option.priority = priority
@@ -786,7 +795,7 @@ class Poll < ApplicationRecord
   end
 
   def prioritise_poll_options!
-    if self.poll_type == 'meeting'
+    if self.poll_type == 'availability'
       self.poll_options.sort {|a,b| a.name <=> b.name }.each_with_index {|o, i| o.priority = i }
     end
   end

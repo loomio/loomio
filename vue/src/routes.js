@@ -15,6 +15,7 @@ const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
 const BookmarksPage = wrapAsyncLoader(() => import('./components/bookmarks/page'));
 const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
+const GroupCalendarPanel = wrapAsyncLoader(() => import('./components/group/calendar_panel.vue'));
 const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
 const MembersPanel = wrapAsyncLoader(() => import('./components/group/members_panel'));
 const MemberWeightsPage = wrapAsyncLoader(() => import('./components/group/member_weights_page.vue'));
@@ -42,6 +43,7 @@ const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
   {path: 'emails', component: GroupEmailsPanel, meta: {noScroll: true}},
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
+  {path: 'calendar', component: GroupCalendarPanel, meta: {noScroll: true}},
   {path: 'members/weights', component: MemberWeightsPage},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},

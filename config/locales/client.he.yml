@@ -182,6 +182,7 @@ he:
     poll: מִשׁאָל
     dot_vote: הצבעת נקודות
     meeting: סקר זמן
+    availability: סקר זמן
     ranked_choice: בחירה מדורגת
     score: סקר ציון
     question: סבב שאלות
@@ -1978,6 +1979,7 @@ he:
     score_title: סקר ציון
     dot_vote_title: הצבעת נקודות
     meeting_title: סקר זמן
+    availability_title: סקר זמן
     ranked_choice_title: בחירה מדורגת
     gradients_of_agreement_title: שיפועים של הסכמה
     majority_title: רוֹב

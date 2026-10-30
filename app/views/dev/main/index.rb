@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Views::Dev::Main::Index < Phlex::HTML
-  POLL_TYPES = %w[count check proposal poll dot_vote score count meeting ranked_choice stv].freeze
+  POLL_TYPES = %w[count check proposal poll dot_vote score count availability ranked_choice stv].freeze
   POLL_SCENARIOS = %w[
     poll_created
     poll_scheduled

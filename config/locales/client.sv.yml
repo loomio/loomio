@@ -182,6 +182,7 @@ sv:
     poll: omröstning
     dot_vote: prickomröstning
     meeting: tidsomröstning
+    availability: tidsomröstning
     ranked_choice: rankat val
     score: poängomröstning
     question: frågerundan
@@ -1967,6 +1968,7 @@ sv:
     score_title: Poängomröstning
     dot_vote_title: Prickomröstning
     meeting_title: Tidsröstning
+    availability_title: Tidsröstning
     ranked_choice_title: Rangordning
     gradients_of_agreement_title: Gradienter av överensstämmelse
     majority_title: Majoritet

@@ -96,6 +96,11 @@ class Api::V1::PollsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def cancel_event
+    service.cancel_event(poll: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
   def reopen
     service.reopen(poll: load_resource, params: resource_params, actor: current_user) { |topic_item| @topic_item = topic_item }
     respond_with_resource

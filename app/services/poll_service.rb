@@ -25,6 +25,12 @@ class PollService
     poll.tags_pending = Array(topic_params.delete(:tags))
     poll.topic ||= Topic.new topic_params.merge(topicable: poll)
 
+    if poll.source_outcome_id
+      source = Outcome.find(poll.source_outcome_id)
+      actor.ability.authorize! :show, source.poll
+      raise CanCan::AccessDenied unless poll.event? && source.poll.dates_as_options && source.poll_option_id && source.group_id == poll.topic.group_id
+    end
+
     if !poll.opened_at &&
         poll.closing_at &&
         (poll.opening_at.blank? || poll.opening_at <= Time.now)
@@ -83,7 +89,7 @@ class PollService
     )
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).slice(*DiscussionService::TOPIC_ATTRS_UPDATE)
-    poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
+    poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key, :source_outcome_id))
 
     # check again, because the group id could be updated to a untrusted group
     actor.ability.authorize! :update, poll
@@ -100,6 +106,7 @@ class PollService
       actor.ability.authorize! :update, current_poll
       actor.ability.authorize! :update, poll
       poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
+      EventPollService.prepare_update!(poll: poll, current_poll: current_poll)
       poll.save!
       poll.update_counts!
 
@@ -327,7 +334,8 @@ class PollService
     actor.ability.authorize!(:destroy, poll)
 
     Sentry.metrics.count("poll.discard", attributes: { poll_type: poll.poll_type })
-    Poll.transaction do
+    poll.with_topic_lock do |current_poll|
+      poll.calendar_sequence = current_poll.calendar_sequence + 1 if poll.event?
       poll.update(discarded_at: Time.now, discarded_by: actor.id)
       TopicItem.where(
         kind: [ "stance_created", "stance_updated" ],
@@ -340,6 +348,20 @@ class PollService
 
     MessageChannelService.publish_models([poll.created_topic_item], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     on_topic_item&.call(poll.created_topic_item)
+    poll
+  end
+
+  def self.cancel_event(poll:, actor:)
+    poll.with_topic_lock do
+      poll.reload
+      actor.ability.authorize! :destroy, poll
+      raise ActiveRecord::RecordNotFound unless poll.event? && !poll.event_cancelled?
+
+      poll.update!(event_cancelled_at: Time.current, closed_at: Time.current,
+                   calendar_sequence: poll.calendar_sequence + 1)
+      poll.update_counts!
+      TopicItems::PollEdited.create!(itemable: poll, user: actor)
+    end
     poll
   end
 
@@ -658,7 +680,7 @@ class PollService
         {
           id: -1,
           poll_id: poll.id,
-          name: 'poll_receipts_page.not_voted',
+          name: poll.event? ? 'calendar.no_response' : 'poll_receipts_page.not_voted',
           name_format: 'i18n',
           rank: nil,
           score: uncast_score,

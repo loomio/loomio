@@ -60,9 +60,13 @@ export default {
           title: 'poll_common_form.voting_methods.rank',
           hint: 'poll_common_form.voting_methods.ranked_choice_hint'
         },
-        meeting: {
+        availability: {
           title: 'poll_common_form.voting_methods.time_poll',
           hint: 'poll_common_form.voting_methods.time_poll_hint'
+        },
+        event: {
+          title: 'calendar.event',
+          hint: 'calendar.event_description'
         },
         count: {
           title: 'decision_tools_card.count_title',
@@ -336,7 +340,7 @@ export default {
                   p {{option.meaning}}
 
                 template(v-slot:append)
-                  div.ml-0(v-if="pollTemplate.pollType != 'meeting'")
+                  div.ml-0(v-if="pollTemplate.pollType != 'availability'")
                     v-btn.poll-common-form__edit-option(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                       common-icon(name="mdi-pencil")
                   v-btn(
@@ -346,7 +350,7 @@ export default {
                     :title="$t('common.action.delete')"
                   )
                     common-icon(name="mdi-delete")
-                  common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="pollTemplate.pollType != 'meeting'")
+                  common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="pollTemplate.pollType != 'availability'")
 
           .d-flex.justify-center
             v-btn.poll-template-form__add-option-btn.my-2(color="primary" variant="tonal" @click="addOption")

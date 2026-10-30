@@ -185,7 +185,7 @@ module Dev::FakeDataHelper
       count: %w[accept decline],
       check: %w[looks_good not_sure concerned],
       dot_vote: options,
-      meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
+      availability: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,
       score: options,
       stv: options
@@ -193,6 +193,7 @@ module Dev::FakeDataHelper
   end
 
   def fake_poll_params(args = {})
+    args[:poll_type] = 'availability' if args[:poll_type].to_s == 'meeting'
     names = option_names(args.delete(:option_count) || (2..7).to_a.sample)
     is_wip = args.delete(:wip)
     closing_at = is_wip ? nil : (args.delete(:closing_at) || 3.days.from_now)
@@ -255,7 +256,7 @@ module Dev::FakeDataHelper
       ((poll.score_min)..(poll.score_max)).to_a.sample
     when 'ranked_choice', 'stv'
       index + 1
-    when 'meeting'
+    when 'availability'
       if poll.can_respond_maybe
         [0,1,2].sample
       else

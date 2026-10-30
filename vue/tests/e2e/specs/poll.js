@@ -147,8 +147,8 @@ module.exports = {
 
     page.loadPath('polls/test_discussion?time_zone=America%2FLos_Angeles')
     page.clickAndWait('.activity-panel__add-poll', '.poll-common-choose-template__poll')
-    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--meeting')
-    page.clickAndWait('.decision-tools-card__poll-type--meeting', '.poll-common-form-fields__title input')
+    page.clickAndWait('.poll-common-choose-template__poll', '.decision-tools-card__poll-type--availability')
+    page.clickAndWait('.decision-tools-card__poll-type--availability', '.poll-common-form-fields__title input')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.expectText('.date-time-picker', 'America/Los_Angeles')

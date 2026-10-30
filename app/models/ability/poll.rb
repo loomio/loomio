@@ -93,6 +93,7 @@ module Ability::Poll
 
     can :reopen, ::Poll do |poll|
       poll.closed? &&
+      (!poll.event? || !poll.event_cancelled?) &&
       poll.hide_results != 'until_closed' &&
       !poll.anonymous? &&
       !poll.topic.locked_at &&

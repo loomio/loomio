@@ -12,6 +12,16 @@ export default new class OutcomeService {
     return {
       ...BookmarkService.actions(outcome),
 
+      create_event: {
+        name: 'calendar.create_event',
+        icon: 'mdi-calendar-check',
+        dock: 2,
+        canPerform() {
+          return poll.pollType === 'availability' && !!outcome.pollOptionId && outcome.latest && AbilityService.canSetPollOutcome(poll);
+        },
+        to() { return {path: '/p/new', query: {source_poll: poll.key}}; }
+      },
+
       translate_outcome: {
         name: 'common.action.translate',
         icon: 'mdi-translate',

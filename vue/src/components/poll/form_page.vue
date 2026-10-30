@@ -7,6 +7,7 @@ import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import { compact } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
+import { eventScheduleFromOutcome } from '@/shared/helpers/event_schedule';
 
 export default {
   mixins: [UrlFor],
@@ -22,6 +23,26 @@ export default {
   },
 
   created() {
+    if (this.$route.query.source_poll) {
+      this.loading = true;
+      Records.polls.findOrFetchById(this.$route.query.source_poll).then(async source => {
+        const outcome = source.outcome();
+        const template = await Records.pollTemplates.findOrFetchByKeyOrId('event');
+        const schedule = eventScheduleFromOutcome(source, outcome, Session.user().timeZone);
+        this.poll = template.buildPoll();
+        Object.assign(this.poll, {
+          groupId: source.groupId,
+          topicId: source.topic().discussion() ? source.topicId : null,
+          sourceOutcomeId: outcome.id,
+          title: outcome.eventSummary || source.title,
+          details: source.details,
+          detailsFormat: source.detailsFormat,
+          ...schedule, eventLocation: outcome.eventLocation || '', closingAt: schedule.eventStartsAt
+        });
+        this.group = source.group();
+      }).catch(error => EventBus.$emit('pageError', error)).finally(() => { this.loading = false; });
+      return;
+    }
     // Sorry everyone, template_id is a poll_id in this case.
     // After the first release of poll_templates we can start to modify this stuff
     let discussionId, groupId, templateId;

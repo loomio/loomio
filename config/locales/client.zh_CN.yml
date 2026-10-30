@@ -208,6 +208,7 @@ zh_CN:
     poll: 投票
     dot_vote: 投票
     meeting: 时间投票
+    availability: 时间投票
     ranked_choice: 排序选择
     score: 评分投票
     question: 问答环节
@@ -2066,6 +2067,7 @@ zh_CN:
     score_title: 评分投票
     dot_vote_title: 请投票
     meeting_title: 时间投票
+    availability_title: 时间投票
     ranked_choice_title: 排名选择
     gradients_of_agreement_title: 一致性梯度
     majority_title: 多数

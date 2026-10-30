@@ -58,4 +58,4 @@ When the Time poll closes, pick the best time and share an outcome. See [Share a
 
 **Statement**: Summarize the result and add any instructions for the meeting
 
-Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
+The outcome records the selected time, meeting name, duration, location, and statement. To request attendance confirmations, choose **Create an event** on the outcome. This opens a separate [Event poll](/en/user_manual/polls/events) with the selected time and location filled in. Availability responses remain in the Time poll; attendance responses belong to the Event.

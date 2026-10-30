@@ -83,7 +83,7 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
       else
         selection_indicator("☐")
       end
-    when 'meeting'
+    when 'availability'
       if score
         icon = { 0 => 'disagree', 1 => 'abstain', 2 => 'agree' }[score]
         img(src: image_path("poll_mailer/vote-button-#{icon}.png"), width: 48, height: 48, alt: display_name, style: 'display: inline-block')

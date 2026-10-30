@@ -10,7 +10,7 @@ class EmailSuppression < ApplicationRecord
   validates :clear_method, inclusion: { in: %w[sign_in administrator] }, allow_nil: true
 
   def self.address_digest(email)
-    Digest::SHA256.hexdigest(email.strip.downcase)
+    Digest::SHA256.hexdigest(EmailAddress.normalize(email))
   end
 
   def self.for_address(email)
