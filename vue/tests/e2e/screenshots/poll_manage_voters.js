@@ -133,20 +133,6 @@ module.exports = {
     screenshot.captureElement('polls/manage_voters/invited-people-only', '.manual-who-can-vote', {width: 1100, height: 800});
   },
 
-  'invite_voters_subgroup': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openAddVoters(page);
-    page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
-    page.waitFor('.v-overlay--active .recipients-autocomplete-suggestion');
-    page.execute("const option = Array.from(document.querySelectorAll('.v-overlay--active .recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Bottle Trial Board')); option.classList.add('manual-subgroup-option'); option.closest('.v-overlay__content').style.transform = 'translateY(-40px)'");
-    screenshot.captureRegion(
-      'polls/manage_voters/invite-voters-subgroup',
-      ['.v-overlay--active .v-list'],
-      {padding: 12, width: 1100, height: 1200, spotlight: spotlight('.manual-subgroup-option')}
-    );
-  },
-
   'proposal_after_start': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
@@ -212,22 +198,5 @@ module.exports = {
       test.assert.deepEqual(result.value.clipped, [], 'Floating labels fit inside their dialog containers');
     });
     screenshot.captureRegion('polls/manage_voters/proposal_remind', ['.poll-remind'], {width: 1100, height: 850, padding: 32});
-  },
-
-  'proposal_close_early': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    openRunningPoll(page);
-    page.clickAndWait('.action-dock__button--close_poll', '.confirm-modal');
-    screenshot.captureElement('polls/manage_voters/proposal_close_early', '.confirm-modal', {width: 1100, height: 800});
-  },
-
-  'proposal_reopen': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    page.loadPath('setup_manual_oatmilk_outcome');
-    page.waitFor('.poll-created');
-    page.clickAndWait('.action-dock__button--reopen_poll', '.poll-common-reopen-modal');
-    screenshot.captureElement('polls/manage_voters/proposal_reopen', '.poll-common-reopen-modal', {width: 1100, height: 900});
   }
 };
