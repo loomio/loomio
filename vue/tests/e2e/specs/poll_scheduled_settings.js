@@ -48,7 +48,7 @@ module.exports = {
   can_switch_voting_mode_before_opening_and_keep_the_setting_after_refresh: test => {
     const page = editPoll(test);
     page.expectNoElement('.poll-settings-anonymous.v-input--disabled');
-    page.click('.poll-settings-anonymous .v-selection-control__wrapper');
+    page.clickElement('.poll-settings-anonymous input');
     test.assert.selected('.poll-settings-anonymous input');
     page.expectElement('.poll-common-settings__hide-results.v-input--disabled');
     page.click('.poll-common-form__submit');
@@ -60,7 +60,7 @@ module.exports = {
     test.assert.selected('.poll-settings-anonymous input');
     page.expectNoElement('.poll-settings-anonymous.v-input--disabled');
 
-    page.click('.poll-settings-anonymous .v-selection-control__wrapper');
+    page.clickElement('.poll-settings-anonymous input');
     test.assert.not.selected('.poll-settings-anonymous input');
     test.click('.poll-common-settings__hide-results .v-field');
     page.waitFor('.v-overlay--active .v-list-item');
