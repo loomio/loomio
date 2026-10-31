@@ -1,5 +1,6 @@
 class Topic < ApplicationRecord
   include SelfReferencing
+  include HasPollSequence
 
   # Hold the tree lock before dependent items/polls start taking their locks.
   around_destroy :with_tree_write_lock_for_destruction, prepend: true
@@ -9,7 +10,7 @@ class Topic < ApplicationRecord
   end
   private :with_tree_write_lock_for_destruction
 
-  has_paper_trail only: [:group_id]
+  has_paper_trail only: [:group_id, :attachments_admin_only]
 
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true

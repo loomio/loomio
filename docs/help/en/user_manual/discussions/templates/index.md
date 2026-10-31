@@ -57,8 +57,9 @@ Group admins can edit a template from the action menu beside it in the template 
 - **Context**: the starting text of the discussion. Use headings, questions, or links to guide what people write.
 - **Invite**: whether to invite everyone in the group by default. See [Choose who is notified by default](#choose-who-is-notified-by-default).
 - **Poll templates**: polls suggested for this process. They are listed on the new discussion form. They also appear first when someone starts a poll in the discussion. They do not start automatically.
-- **Allow concurrent polls**: whether more than one poll can be open in the discussion at the same time.
+- **Only one poll at a time**: prevent another poll from starting until the current poll has closed. Unchecked by default for new templates.
 - **Comment length limit**: an optional maximum length for comments.
+- **Only admins can add attachments**: restrict new files and inline images to thread admins and group admins in discussions started from this template.
 
 Use a default title only when it will stay accurate. Otherwise, write an example title that prompts the author to name the specific review, period, document, or decision.
 

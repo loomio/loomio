@@ -6,7 +6,7 @@ class AccountPollHistoryTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @group = groups(:group)
     @topic = topics(:discussion_topic)
-    @topic.update!(allow_concurrent_polls: true)
+    @topic.update!(polls_one_at_a_time: false)
   end
 
   # The existing access-control fixture matrix supplies the participant,

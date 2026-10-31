@@ -160,7 +160,7 @@ class PollQueryTest < ActiveSupport::TestCase
   end
 
   test "authorship does not bypass the group topic access matrix" do
-    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    topics(:discussion_topic).update!(polls_one_at_a_time: false)
     users(:alien).update!(is_admin: true)
     roles = %i[admin member_normal guest_normal guest_admin_normal alien
                non_guest_loud former_member_loud former_guest_loud

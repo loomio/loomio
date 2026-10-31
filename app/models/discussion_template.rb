@@ -2,6 +2,7 @@ class DiscussionTemplate < ApplicationRecord
   include Hideable
   include DiscardableBy
   include HasRichText
+  include HasPollSequence
 
   # Task items in a template describe future work. They become Task records only when
   # the template body is saved as a discussion with a real author and participants.
@@ -21,10 +22,11 @@ class DiscussionTemplate < ApplicationRecord
     recipient_audience
     newest_first
     max_depth
-    allow_concurrent_polls
+    polls_one_at_a_time
     allow_comments
     allow_reactions
     comment_length_max
+    attachments_admin_only
     public
     default_to_direct_discussion
     poll_template_keys_or_ids
@@ -54,6 +56,7 @@ class DiscussionTemplate < ApplicationRecord
     :group_id,
     :tags,
     :comment_length_max,
+    :attachments_admin_only,
     :hidden_at,
     :discarded_at,
     :attachments

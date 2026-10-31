@@ -46,6 +46,7 @@ export default class DiscussionModel extends BaseModel {
       topicId: null,
       discussionTemplateId: null,
       commentLengthMax: null,
+      attachmentsAdminOnly: false,
       discussionReaderUserId: null,
       pinnedAt: null,
       poll_template_keys_or_ids: []
@@ -74,7 +75,7 @@ export default class DiscussionModel extends BaseModel {
     const template = Records.discussionTemplates.build();
     const attrs = cloneDeep(pick(this, AppConfig.templateSettings.discussion_template.map(camelCase)));
     Object.assign(attrs, pick(this.topic(), [
-      'newestFirst', 'maxDepth', 'allowConcurrentPolls', 'allowComments', 'allowReactions', 'commentLengthMax'
+      'newestFirst', 'maxDepth', 'pollsOneAtATime', 'allowComments', 'allowReactions', 'commentLengthMax', 'attachmentsAdminOnly'
     ]));
     attrs.tags = this.createdTopicItem().tags.slice();
     attrs.groupId = this.groupId;

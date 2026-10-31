@@ -159,7 +159,7 @@ class RecordCountsTest < ActiveSupport::TestCase
 
   test 'discarding a thread with several polls resets its active count' do
     discussion = new_discussion
-    discussion.topic.update!(allow_concurrent_polls: true)
+    discussion.topic.update!(polls_one_at_a_time: false)
     2.times { PollService.create(params: poll_params.merge(topic_id: discussion.topic_id), actor: @admin) }
     assert_equal 2, discussion.topic.reload.active_polls_count
 

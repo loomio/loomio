@@ -11,7 +11,7 @@ module Ability::GroupState
 
     cannot [ :create, :update, :update_version, :destroy, :discard, :undiscard,
              :announce, :add_members, :add_guests, :vote_in, :remind, :add_voters,
-             :close, :reopen, :pin, :unpin, :move, :move_comments, :update_tags ],
+             :close, :reopen, :pin, :unpin, :move, :move_comments, :update_tags, :attach_files ],
            [ ::Discussion, ::Comment, ::Poll, ::Outcome, ::Reaction, ::Topic, ::TopicItem,
              ::PollTemplate, ::DiscussionTemplate, ::Tag ] do |record|
       disabled_group?(record.group)

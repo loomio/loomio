@@ -110,7 +110,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
   end
 
   test "index batches creation items for poll outcome and stance URLs" do
-    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    topics(:discussion_topic).update!(polls_one_at_a_time: false)
     notifications = 3.times.flat_map do |index|
       poll = PollService.create(params: {
         title: "Notification URL poll #{index}",

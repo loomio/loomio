@@ -142,6 +142,38 @@ To remove someone, open the three-dot menu (**⋯**) beside their name and selec
 
 ![Discussion notification history](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Thread settings
+
+Thread admins and group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
+
+![](thread_display.png)
+
+![Thread settings with layout, poll limits, attachment permissions, and a comment length limit](thread_layout_options.png)
+
+### Layout
+
+Choose **Chronological** to list items in the order they were posted, or **Nested** to group replies beneath the item they respond to. This changes the layout for everyone in the thread.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Only one poll at a time
+
+When checked, users cannot start another poll until the current poll has closed. This is unchecked by default for new threads. Threads started from a discussion template use that template's setting.
+
+### Only admins can add attachments
+
+Enable this setting to restrict new files and inline images to thread admins and group admins throughout the thread, including poll responses and email replies. Existing attachments remain available, and participants can still edit their text or remove attachments.
+
+Discussion and poll templates can supply this setting for new threads. See [Discussion templates](/en/user_manual/discussions/templates) and [Poll templates](/en/user_manual/polls/poll_templates).
+
+### Comment length limit
+
+Set a maximum number of characters per comment to keep contributions concise. Leave it blank for no limit. The limit applies to everyone, including admins.
+
 <!-- translation-section: actions -->
 
 ## Actions
@@ -239,18 +271,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 The headings and labels use your selected language. Content written by participants remains in its original language.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Thread settings and display
-
-Group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
-
-![](thread_display.png)
-
-Choose **Timeline** to list items in the order they were posted, or **Threaded** to group replies beneath the item they respond to. Thread settings also control whether multiple polls may run at once and can set a maximum comment length. These settings apply to everyone in the discussion.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

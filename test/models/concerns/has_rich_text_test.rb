@@ -100,6 +100,42 @@ class HasRichTextTest < ActiveSupport::TestCase
     assert_empty @comment.reload.image_files.blobs
   end
 
+  test "detects additions on templates without a topic or actor" do
+    template = DiscussionTemplate.new(description: "Text only", description_format: "md")
+    assert_not template.attachments_added?
+
+    template.description = "![image](https://example.com/image.png)"
+    assert template.attachments_added?
+
+    template.description = "Text only"
+    template.files = [create_blob("template attachment")]
+    assert template.attachments_added?
+  end
+
+  test "distinguishes retained and removed files from additions without assigning them" do
+    existing_blob = create_blob("existing file")
+    added_blob = create_blob("added file")
+    @comment.files.attach(existing_blob)
+
+    assert_not @comment.attachments_added?("files" => [existing_blob.signed_id])
+    assert_not @comment.attachments_added?(files: [])
+    assert @comment.attachments_added?(files: [existing_blob.signed_id, added_blob.signed_id])
+    assert @comment.attachments_added?(image_files: [added_blob.signed_id])
+    assert_equal [existing_blob.id], @comment.reload.files.blobs.ids
+    assert_empty @comment.image_files
+  end
+
+  test "compares rendered media across formats and pending text edits" do
+    @comment.update!(body: "![image](https://example.com/image.png)", body_format: "md")
+
+    assert_not @comment.attachments_added?(body: '<img src="https://example.com/image.png">', body_format: "html")
+    assert_not @comment.attachments_added?(body: "Text only")
+
+    @comment.body = "![image](https://example.com/another.png)"
+    assert @comment.attachments_added?
+    assert_includes @comment.reload.body, "https://example.com/image.png"
+  end
+
   private
 
   def create_blob(contents)

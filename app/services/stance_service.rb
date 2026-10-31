@@ -2,6 +2,7 @@ class StanceService
   def self.create(stance:, actor:, &on_topic_item)
     actor.ability.authorize!(:vote_in, stance.poll)
 
+    AttachmentPermissionService.authorize!(record: stance, actor: actor)
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
@@ -38,6 +39,7 @@ class StanceService
   def self.update(stance: , actor: , params: , &on_topic_item)
     actor.ability.authorize!(:update, stance)
     params = params.to_h.with_indifferent_access.except(:poll_id)
+    AttachmentPermissionService.authorize!(record: stance, actor: actor, params: params)
     is_update = !!stance.cast_at
 
     new_stance = stance.build_replacement

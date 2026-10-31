@@ -89,7 +89,7 @@ module.exports = {
     page.click('.group-form__privacy-parent_members');
     page.click('.group-form__membership-granted-upon-request label');
     test.assert.selected('.group-form__membership-granted-upon-request input');
-    page.expectText('.group-form__guide-link', 'User guide');
+    page.expectText('.group-form__guide-link', 'Help');
     page.expectText('.group-form__membership-granted-upon-request', 'Join without approval');
     page.expectText('.group-form__membership-granted-upon-approval', 'Request to join');
     page.expectText('.group-form__membership-granted-upon-invitation', 'Invitation only');

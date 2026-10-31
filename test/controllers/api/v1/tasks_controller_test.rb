@@ -217,7 +217,7 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
   test "update_done resolves comment poll and outcome tasks independently when their UIDs match" do
     actor = users(:member_normal)
     topic = topics(:discussion_topic)
-    topic.update!(allow_concurrent_polls: true)
+    topic.update!(polls_one_at_a_time: false)
     html = task_list_html(93002, actor)
     comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: html, body_format: 'html'), actor: actor)
     poll = PollService.create(params: {
