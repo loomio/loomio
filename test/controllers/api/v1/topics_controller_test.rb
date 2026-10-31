@@ -11,17 +11,19 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
 
   # Test index action
-  test 'only thread and group admins can change the attachment restriction' do
+  test 'only thread and group admins can change attachment and sequential-poll restrictions' do
     %i[member_normal guest_normal alien server_admin admin guest_admin_normal].each do |role|
-      @topic.update!(attachments_admin_only: false)
+      @topic.update!(attachments_admin_only: false, polls_one_at_a_time: false)
       sign_in users(role)
-      put :update, params: {id: @topic.id, topic: {attachments_admin_only: true}}
+      put :update, params: {id: @topic.id, topic: {attachments_admin_only: true, polls_one_at_a_time: true}}
       allowed = %i[admin guest_admin_normal].include?(role)
       assert_response allowed ? :success : :forbidden, role.to_s
       assert_equal allowed, @topic.reload.attachments_admin_only?, role.to_s
+      assert_equal allowed, @topic.polls_one_at_a_time?, role.to_s
       if allowed
         serialized = response.parsed_body.fetch('topics').find { |topic| topic['id'] == @topic.id }
         assert_equal true, serialized.fetch('attachments_admin_only')
+        assert_equal true, serialized.fetch('polls_one_at_a_time')
       end
     end
   end

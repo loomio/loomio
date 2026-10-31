@@ -24,7 +24,7 @@ export default class DiscussionTemplateModel extends BaseModel {
       linkPreviews: [],
       maxDepth: 3,
       newestFirst: false,
-      allowConcurrentPolls: true,
+      pollsOneAtATime: false,
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,

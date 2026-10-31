@@ -5,7 +5,7 @@ class ConcurrentPollDefaultsTest < ActiveSupport::TestCase
     [groups(:group).id, nil].each do |group_id|
       actor = users(:member_normal)
       discussion = DiscussionService.create(params: {title: 'Concurrent decisions', group_id: group_id}, actor: actor)
-      assert discussion.topic.allow_concurrent_polls?
+      assert_not discussion.topic.polls_one_at_a_time?
 
       2.times do
         poll = PollService.create(params: poll_params(discussion.topic), actor: actor)
@@ -22,11 +22,11 @@ class ConcurrentPollDefaultsTest < ActiveSupport::TestCase
     [groups(:group).id, nil].each do |group_id|
       actor = users(:member_normal)
       discussion = DiscussionService.create(params: {
-        title: 'One decision at a time', group_id: group_id, allow_concurrent_polls: false
+        title: 'One decision at a time', group_id: group_id, polls_one_at_a_time: true
       }, actor: actor)
       first = PollService.create(params: poll_params(discussion.topic), actor: actor)
       assert first.persisted?
-      assert_not discussion.topic.reload.allow_concurrent_polls?
+      assert discussion.topic.reload.polls_one_at_a_time?
 
       admins = group_id ? [actor, users(:admin)] : [actor]
       admins.each do |admin|
@@ -42,17 +42,17 @@ class ConcurrentPollDefaultsTest < ActiveSupport::TestCase
   test 'new built-in discussion templates carry concurrent polls into the group template list' do
     defaults = AppConfig.discussion_templates.values
     assert defaults.any?
-    assert defaults.all? { |settings| settings.fetch('allow_concurrent_polls') == true }
+    assert defaults.all? { |settings| settings.fetch('polls_one_at_a_time') == false }
 
-    assert DiscussionTemplateService.default_templates.all?(&:allow_concurrent_polls?)
+    assert DiscussionTemplateService.default_templates.none?(&:polls_one_at_a_time?)
     templates = DiscussionTemplateService.group_templates(group: groups(:group))
     assert templates.any?
-    assert templates.all?(&:allow_concurrent_polls?)
+    assert templates.none?(&:polls_one_at_a_time?)
 
     template = templates.find { |item| item.key == 'blank' }
-    template.update!(allow_concurrent_polls: false)
+    template.update!(polls_one_at_a_time: true)
     reloaded = DiscussionTemplateService.group_templates(group: groups(:group)).find { |item| item.id == template.id }
-    assert_not reloaded.allow_concurrent_polls?
+    assert reloaded.polls_one_at_a_time?
   end
 
   private

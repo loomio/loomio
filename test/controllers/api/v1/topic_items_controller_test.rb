@@ -217,7 +217,7 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index returns every poll that is not closed, including polls that are not open" do
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
 
     create_poll = lambda do |title|
       PollService.create(params: {
@@ -249,7 +249,7 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index includes polls that are not closed alongside unread topic_items" do
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
     poll = PollService.create(params: {
       title: 'Read but not closed poll',
       poll_type: 'proposal',
@@ -360,7 +360,7 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     # Regression: Outcome lacked topic_id delegation, so comment.topic_id
     # (which delegates to parent.topic_id) raised NoMethodError for Outcome parents.
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
 
     poll = PollService.create(params: {
       title: "Test proposal",

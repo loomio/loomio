@@ -49,7 +49,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
   end
 
   test "discussion show excludes hidden stances before pagination" do
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
     hidden_poll = PollService.create(params: {
       title: 'Hidden SSR poll',
       poll_type: 'proposal',

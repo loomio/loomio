@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { model, kind } = defineProps({
@@ -7,17 +6,13 @@ const { model, kind } = defineProps({
   kind: { type: String, required: true, validator: value => ['discussion', 'poll'].includes(value) }
 });
 const { t } = useI18n();
-const onlyOnePollAtATime = computed({
-  get: () => !model.allowConcurrentPolls,
-  set: value => { model.allowConcurrentPolls = !value; }
-});
 </script>
 
 <template>
   <div class="topic-settings-fields">
     <v-checkbox
       v-if="kind === 'discussion'"
-      v-model="onlyOnePollAtATime"
+      v-model="model.pollsOneAtATime"
       class="topic-settings__single-poll"
       :label="t('thread_arrangement_form.only_one_poll_at_a_time')"
       hide-details

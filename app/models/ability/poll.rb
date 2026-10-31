@@ -43,7 +43,7 @@ module Ability::Poll
       (topic.topicable_type != 'Poll' || topic.topicable_id.nil?) &&
       group.enabled? &&
       !topic.locked_at &&
-      (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
+      (!topic.polls_one_at_a_time? || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
       (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user)) ||
        topic.admins_include?(user) || (topic.members_can_raise_motions && topic.members_include?(user)))

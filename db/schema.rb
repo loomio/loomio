@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_31_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -174,6 +174,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000001) do
     t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.jsonb "poll_template_keys_or_ids", default: [], null: false
+    t.boolean "polls_one_at_a_time", default: false
     t.integer "position"
     t.string "process_introduction"
     t.string "process_introduction_format", default: "html", null: false
@@ -1270,6 +1271,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000001) do
     t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "pinned_at", precision: nil
+    t.boolean "polls_one_at_a_time", default: false
     t.boolean "private", default: true, null: false
     t.string "ranges_string"
     t.integer "seen_by_count", default: 0, null: false

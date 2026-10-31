@@ -217,7 +217,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_equal "New Process", json['discussion_templates'][0]['process_name']
-    assert_equal true, json['discussion_templates'][0]['allow_concurrent_polls']
+    assert_equal false, json['discussion_templates'][0]['polls_one_at_a_time']
   end
 
   test "create denies non-admin" do
@@ -245,7 +245,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
             group_id: @group.id, process_name: 'Monthly review', process_subtitle: 'Review the month',
             title: 'Monthly review', description: discussions(:discussion).description,
             description_format: 'html', tags: ['Review'], public: false,
-            allow_concurrent_polls: true, comment_length_max: 400, attachments_admin_only: true
+            polls_one_at_a_time: false, comment_length_max: 400, attachments_admin_only: true
           }}
         end
         assert_response allowed ? :success : :forbidden

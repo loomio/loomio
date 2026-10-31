@@ -9,7 +9,7 @@ vi.mock('@/shared/services/app_config', () => ({
   default: {
     templateSettings: {
       poll_template: ['poll_type', 'agree_target', 'notify_on_open', 'content_locale', 'poll_options', 'tags'],
-      discussion_template: ['title', 'content_locale', 'allow_reactions', 'allow_concurrent_polls', 'tags']
+      discussion_template: ['title', 'content_locale', 'allow_reactions', 'polls_one_at_a_time', 'tags']
     }
   }
 }));
@@ -29,17 +29,17 @@ import AbilityService from '@/shared/services/ability_service';
 
 describe('starting from a template', () => {
   it.each([
-    [{}, true],
-    [{allowConcurrentPolls: false}, false]
+    [{}, false],
+    [{pollsOneAtATime: true}, true]
   ])('carries the default or saved concurrency setting into a new discussion', (attributes, expected) => {
     const template = new DiscussionTemplateModel(attributes);
     template.buildDiscussion();
-    expect(mocks.built.allowConcurrentPolls).toBe(expected);
+    expect(mocks.built.pollsOneAtATime).toBe(expected);
   });
 
   it.each([
     [{}, true],
-    [{allowConcurrentPolls: false}, false]
+    [{pollsOneAtATime: true}, false]
   ])('uses the default or saved setting when offering another poll', (attributes, expected) => {
     const topic = new TopicModel({topicableType: 'Discussion', activePollsCount: 1, ...attributes});
     topic.group = () => ({isEnabled: () => true});

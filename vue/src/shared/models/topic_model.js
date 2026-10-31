@@ -37,7 +37,7 @@ export default class TopicModel extends BaseModel {
       readRanges: [],
       maxDepth: 3,
       newestFirst: false,
-      allowConcurrentPolls: true,
+      pollsOneAtATime: false,
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,

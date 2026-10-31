@@ -1,5 +1,5 @@
 class DiscussionService
-  TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls allow_comments allow_reactions comment_length_max attachments_admin_only locked_at pinned_at tags].freeze
+  TOPIC_ATTRS = %w[group_id private max_depth newest_first polls_one_at_a_time allow_comments allow_reactions comment_length_max attachments_admin_only locked_at pinned_at tags].freeze
   TOPIC_ATTRS_UPDATE = (TOPIC_ATTRS - %w[group_id tags]).freeze
 
   def self.build(params:, actor:)

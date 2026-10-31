@@ -366,7 +366,7 @@ export default new class AbilityService {
 
   canStartPoll(topic) {
     if (topic.topicableType === 'Poll') { return false; }
-    if (topic.activePollsCount > 0 && !topic.allowConcurrentPolls) { return false; }
+    if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
            (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
     )

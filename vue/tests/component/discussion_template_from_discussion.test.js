@@ -18,7 +18,7 @@ vi.mock('@/shared/services/session', () => ({default: {
 vi.mock('@/shared/services/app_config', () => ({default: {
   templateSettings: {discussion_template: [
     'title', 'description', 'description_format', 'content_locale', 'tags', 'newest_first', 'max_depth',
-    'allow_concurrent_polls', 'allow_comments', 'allow_reactions', 'comment_length_max', 'attachments_admin_only',
+    'polls_one_at_a_time', 'allow_comments', 'allow_reactions', 'comment_length_max', 'attachments_admin_only',
     'poll_template_keys_or_ids', 'recipient_audience', 'public', 'default_to_direct_discussion'
   ]}
 }}));
@@ -42,7 +42,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.signedIn = true;
   group = {id: 7, membersCanCreateTemplates: false, adminsInclude: () => true, membersInclude: () => true};
-  topic = {id: 8, newestFirst: true, maxDepth: 2, allowConcurrentPolls: true,
+  topic = {id: 8, newestFirst: true, maxDepth: 2, pollsOneAtATime: true,
     allowComments: false, allowReactions: false, commentLengthMax: 400, attachmentsAdminOnly: true, tags: ['Review', 'Reply tag']};
   creationItem = {tags: ['Review']};
   mocks.findTopicItems.mockReturnValue([creationItem]);
@@ -66,7 +66,7 @@ describe('saving a discussion as a template', () => {
     expect(template.isNew()).toBe(true);
     expect(template).toMatchObject({groupId: 7, processName: source.title, title: source.title,
       description: source.description, descriptionFormat: 'html', contentLocale: 'fr', tags: ['Review'],
-      newestFirst: true, maxDepth: 2, allowConcurrentPolls: true, allowComments: false, allowReactions: false,
+      newestFirst: true, maxDepth: 2, pollsOneAtATime: true, allowComments: false, allowReactions: false,
       commentLengthMax: 400, attachmentsAdminOnly: true, pollTemplateKeysOrIds: ['proposal', 9], public: false, defaultToDirectDiscussion: false});
     for (const field of ['id', 'key', 'topicId', 'authorId', 'createdAt', 'lockedAt', 'pinnedAt', 'recipientUserIds']) {
       expect(template.attributeNames).not.toContain(field);

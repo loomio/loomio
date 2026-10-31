@@ -4,7 +4,7 @@ class PollPreopeningSettingsTest < ActiveSupport::TestCase
   setup do
     @admin = users(:admin)
     @voters = [users(:member_normal), users(:guest_normal)]
-    topics(:discussion_topic).update!(allow_concurrent_polls: true)
+    topics(:discussion_topic).update!(polls_one_at_a_time: false)
   end
 
   test "switching voting mode before opening preserves the electorate for group and direct polls" do

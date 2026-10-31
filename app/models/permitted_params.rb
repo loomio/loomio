@@ -152,7 +152,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def topic_attributes
-    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions, :comment_length_max, :attachments_admin_only, :tags, {tags: []}]
+    [:newest_first, :max_depth, :polls_one_at_a_time, :allow_comments, :allow_reactions, :comment_length_max, :attachments_admin_only, :tags, {tags: []}]
   end
 
   def group_attributes
@@ -181,7 +181,7 @@ class PermittedParams < Struct.new(:params)
      :private,
      :newest_first,
      :max_depth,
-     :allow_concurrent_polls,
+     :polls_one_at_a_time,
      :allow_comments,
      :allow_reactions,
      :comment_length_max,

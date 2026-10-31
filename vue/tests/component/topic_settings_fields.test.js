@@ -6,7 +6,7 @@ import TopicSettingsFields from '@/components/topic/settings_fields.vue';
 
 function mountFields(kind, attributes = {}) {
   const model = reactive({
-    allowConcurrentPolls: true,
+    pollsOneAtATime: false,
     allowComments: true,
     allowReactions: true,
     attachmentsAdminOnly: false,
@@ -29,17 +29,17 @@ describe('shared thread settings fields', () => {
     expect(singlePoll.props('modelValue')).toBe(false);
     singlePoll.vm.$emit('update:modelValue', true);
     await wrapper.vm.$nextTick();
-    expect(model).toMatchObject({allowConcurrentPolls: false, allowComments: true, allowReactions: true});
+    expect(model).toMatchObject({pollsOneAtATime: true, allowComments: true, allowReactions: true});
     singlePoll.vm.$emit('update:modelValue', false);
     await wrapper.vm.$nextTick();
-    expect(model.allowConcurrentPolls).toBe(true);
+    expect(model.pollsOneAtATime).toBe(false);
     wrapper.unmount();
   });
 
   it('shows an existing single-poll restriction as checked without changing the saved value', () => {
-    const {wrapper, model} = mountFields('discussion', {allowConcurrentPolls: false});
+    const {wrapper, model} = mountFields('discussion', {pollsOneAtATime: true});
     expect(wrapper.findComponent('.topic-settings__single-poll').props('modelValue')).toBe(true);
-    expect(model.allowConcurrentPolls).toBe(false);
+    expect(model.pollsOneAtATime).toBe(true);
     wrapper.unmount();
   });
 
@@ -48,10 +48,10 @@ describe('shared thread settings fields', () => {
     expect(wrapper.find('.topic-settings__single-poll').exists()).toBe(false);
     wrapper.findComponent('.topic-settings__comments').vm.$emit('update:modelValue', false);
     await wrapper.vm.$nextTick();
-    expect(model).toMatchObject({allowComments: false, allowReactions: true, allowConcurrentPolls: true});
+    expect(model).toMatchObject({allowComments: false, allowReactions: true, pollsOneAtATime: false});
     wrapper.findComponent('.topic-settings__reactions').vm.$emit('update:modelValue', false);
     await wrapper.vm.$nextTick();
-    expect(model).toMatchObject({allowComments: false, allowReactions: false, allowConcurrentPolls: true});
+    expect(model).toMatchObject({allowComments: false, allowReactions: false, pollsOneAtATime: false});
     wrapper.unmount();
   });
 

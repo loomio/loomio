@@ -1,5 +1,6 @@
 class Topic < ApplicationRecord
   include SelfReferencing
+  include HasPollSequence
 
   # Hold the tree lock before dependent items/polls start taking their locks.
   around_destroy :with_tree_write_lock_for_destruction, prepend: true
