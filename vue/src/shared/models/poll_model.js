@@ -97,6 +97,7 @@ export default class PollModel extends BaseModel {
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,
+      attachmentsAdminOnly: false,
       stvSeats: 1,
       stvMethod: 'scottish',
       stvQuota: 'droop',
@@ -168,7 +169,7 @@ export default class PollModel extends BaseModel {
     const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
     const attrs = cloneDeep(pick(this, settings.map(camelCase)));
     const topic = this.topic();
-    Object.assign(attrs, pick(topic, ['allowComments', 'allowReactions', 'commentLengthMax']));
+    Object.assign(attrs, pick(topic, ['allowComments', 'allowReactions', 'commentLengthMax', 'attachmentsAdminOnly']));
     attrs.tags = this.createdTopicItem().tags.slice();
     attrs.groupId = this.groupId;
     attrs.processName = this.title;

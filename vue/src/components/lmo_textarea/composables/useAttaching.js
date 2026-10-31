@@ -1,5 +1,6 @@
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, computed } from 'vue';
 import FileUploader from '@/shared/services/file_uploader';
+import AbilityService from '@/shared/services/ability_service';
 import { insertImage } from '../extension_image';
 import { forEach } from 'lodash-es';
 import { reactive } from 'vue';
@@ -7,6 +8,7 @@ import { reactive } from 'vue';
 export function useAttaching(model, emit) {
   const files = ref([]);
   const imageFiles = ref([]);
+  const canAttachFiles = computed(() => AbilityService.canAttachFiles(model.value));
 
   onMounted(() => {
     files.value = model.value.attachments.filter(a => a.signed_id).map(a => ({
@@ -46,6 +48,7 @@ export function useAttaching(model, emit) {
   };
 
   const attachFile = ({ file }) => {
+    if (!canAttachFiles.value) { return; }
     const wrapper = reactive({ 
       file, 
       key: file.name + file.size, 
@@ -68,6 +71,7 @@ export function useAttaching(model, emit) {
   };
 
   const attachImageFile = ({ file, onProgress, onComplete, onFailure }) => {
+    if (!canAttachFiles.value) { onFailure(); return; }
     const wrapper = { file, blob: null };
     imageFiles.value.push(wrapper);
     emitUploading();
@@ -103,6 +107,7 @@ export function useAttaching(model, emit) {
   };
 
   return {
+    canAttachFiles,
     files,
     imageFiles,
     resetFiles,

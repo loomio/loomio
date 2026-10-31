@@ -219,18 +219,7 @@ v-form(ref="form" @submit.prevent="submit")
           common-icon(name="mdi-plus")
       v-divider.my-4
 
-      v-checkbox(v-model="discussionTemplate.allowConcurrentPolls" :label="$t('thread_arrangement_form.allow_concurrent_polls')" :hint="$t('thread_arrangement_form.allow_concurrent_polls_description')" persistent-hint)
-
-      .text-body-large.mt-4.py-2(v-t="'thread_arrangement_form.comment_length_max'")
-      .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
-      v-number-input(
-        v-model="discussionTemplate.commentLengthMax"
-        :hint="$t('thread_arrangement_form.comment_length_max_hint')"
-        placeholder="e.g. 500"
-        persistent-hint
-        :min="1"
-        control-variant="hidden"
-      )
+      topic-settings-fields(:model="discussionTemplate" kind="discussion")
 
       //.text-body-large.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.sorting'")
       //v-radio-group(v-model="discussionTemplate.newestFirst")

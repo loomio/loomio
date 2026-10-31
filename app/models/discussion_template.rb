@@ -25,6 +25,7 @@ class DiscussionTemplate < ApplicationRecord
     allow_comments
     allow_reactions
     comment_length_max
+    attachments_admin_only
     public
     default_to_direct_discussion
     poll_template_keys_or_ids
@@ -54,6 +55,7 @@ class DiscussionTemplate < ApplicationRecord
     :group_id,
     :tags,
     :comment_length_max,
+    :attachments_admin_only,
     :hidden_at,
     :discarded_at,
     :attachments

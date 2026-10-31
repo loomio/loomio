@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_31_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -153,9 +153,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
 
   create_table "discussion_templates", force: :cascade do |t|
     t.boolean "allow_comments", default: true, null: false
-    t.boolean "allow_concurrent_polls", default: false, null: false
+    t.boolean "allow_concurrent_polls", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.jsonb "attachments", default: [], null: false
+    t.boolean "attachments_admin_only", default: false, null: false
     t.integer "author_id"
     t.integer "comment_length_max"
     t.string "content_locale"
@@ -696,6 +697,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.boolean "anonymous", default: false, null: false
+    t.boolean "attachments_admin_only", default: false, null: false
     t.integer "author_id", null: false
     t.boolean "can_respond_maybe", default: true, null: false
     t.string "chart_type"
@@ -1252,8 +1254,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_29_000000) do
   create_table "topics", force: :cascade do |t|
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
-    t.boolean "allow_concurrent_polls", default: false, null: false
+    t.boolean "allow_concurrent_polls", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
+    t.boolean "attachments_admin_only", default: false, null: false
     t.integer "comment_length_max"
     t.datetime "created_at", null: false
     t.datetime "discarded_at"

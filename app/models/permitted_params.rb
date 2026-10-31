@@ -54,6 +54,7 @@ class PermittedParams < Struct.new(:params)
       :recipient_audience,
       :recipient_message,
       :comment_length_max,
+      :attachments_admin_only,
       :tags, {tags: []},
       :notify_recipients,
       :recipient_user_ids, {recipient_user_ids: []},
@@ -151,7 +152,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def topic_attributes
-    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions, :comment_length_max, :tags, {tags: []}]
+    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions, :comment_length_max, :attachments_admin_only, :tags, {tags: []}]
   end
 
   def group_attributes
@@ -184,6 +185,7 @@ class PermittedParams < Struct.new(:params)
      :allow_comments,
      :allow_reactions,
      :comment_length_max,
+     :attachments_admin_only,
      :notify_recipients,
      :recipient_audience,
      :recipient_message,

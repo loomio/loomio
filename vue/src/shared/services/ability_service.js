@@ -31,6 +31,14 @@ export default new class AbilityService {
     return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 
+  canAttachFiles(model) {
+    const kind = model.constructor.singular;
+    if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }
+    if (['discussion', 'poll'].includes(kind) && !model.topicId) { return true; }
+    const topic = kind === 'outcome' ? model.poll().topic() : model.topic();
+    return !topic.attachmentsAdminOnly || topic.adminsInclude(Session.user());
+  }
+
   canRespondToComment(comment) {
     const topic = comment.topic();
     return topic &&

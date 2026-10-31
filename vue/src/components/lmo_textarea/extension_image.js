@@ -213,6 +213,7 @@ export const CustomImage = Image.extend({
     ]
   },
   addProseMirrorPlugins() {
+    const canAttachFiles = this.options.canAttachFiles || (() => true)
     const attachFile = this.options.attachFile
     const attachImageFile = this.options.attachImageFile
     return [
@@ -228,6 +229,7 @@ export const CustomImage = Image.extend({
               }
 
               event.preventDefault()
+              if (!canAttachFiles()) { return true }
               const coordinates = null;
               handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },
@@ -243,6 +245,7 @@ export const CustomImage = Image.extend({
               }
               event.preventDefault()
 
+              if (!canAttachFiles()) { return true }
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
               handleUploads({files: event.dataTransfer.files, view, attachFile, attachImageFile, coordinates})

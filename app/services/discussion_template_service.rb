@@ -56,6 +56,7 @@ class DiscussionTemplateService
           description_format: template.description_format,
           tags: template.tags || [],
           max_depth: template.max_depth,
+          allow_concurrent_polls: template.allow_concurrent_polls,
           newest_first: template.newest_first,
           poll_template_keys_or_ids: template.poll_template_keys_or_ids || [],
           recipient_audience: template.recipient_audience,

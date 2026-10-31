@@ -11,6 +11,21 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
 
   # Test index action
+  test 'only thread and group admins can change the attachment restriction' do
+    %i[member_normal guest_normal alien server_admin admin guest_admin_normal].each do |role|
+      @topic.update!(attachments_admin_only: false)
+      sign_in users(role)
+      put :update, params: {id: @topic.id, topic: {attachments_admin_only: true}}
+      allowed = %i[admin guest_admin_normal].include?(role)
+      assert_response allowed ? :success : :forbidden, role.to_s
+      assert_equal allowed, @topic.reload.attachments_admin_only?, role.to_s
+      if allowed
+        serialized = response.parsed_body.fetch('topics').find { |topic| topic['id'] == @topic.id }
+        assert_equal true, serialized.fetch('attachments_admin_only')
+      end
+    end
+  end
+
   test "index responds with success for logged out users" do
     get :index
 

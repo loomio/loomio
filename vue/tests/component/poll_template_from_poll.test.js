@@ -27,7 +27,7 @@ vi.mock('@/shared/services/app_config', () => ({default: {
   templateSettings: {
     poll_template: ['poll_type', 'title', 'details', 'details_format', 'anonymous', 'weighted_voting',
       'hide_results', 'specified_voters_only', 'quorum_pct', 'stance_reason_required',
-      'notify_on_open', 'tags', 'poll_options', 'stv_seats', 'stv_method', 'stv_quota'],
+      'notify_on_open', 'tags', 'poll_options', 'attachments_admin_only', 'stv_seats', 'stv_method', 'stv_quota'],
     poll_option: ['name', 'meaning', 'prompt', 'icon', 'priority', 'test_operator', 'test_percent', 'test_against']
   }
 }}));
@@ -57,7 +57,7 @@ beforeEach(() => {
   mocks.signedIn = true;
   group = {id: 7, membersCanCreateTemplates: false, adminsInclude: () => true, membersInclude: () => true};
   topic = {topicableType: 'Discussion', topicableId: 12,
-    allowComments: false, allowReactions: false, commentLengthMax: 300,
+    allowComments: false, allowReactions: false, commentLengthMax: 300, attachmentsAdminOnly: true,
     tags: ['Bargaining', 'Other thread category']};
   creationItem = {tags: ['Bargaining']};
   mocks.findTopicItems.mockReturnValue([creationItem]);
@@ -91,7 +91,7 @@ describe('saving a poll as a template', () => {
     expect(template).toMatchObject({groupId: 7, processName: source.title, title: source.title,
       details: source.details, detailsFormat: 'html', quorumPct: 60,
       stanceReasonRequired: source.stanceReasonRequired, defaultDurationInDays: 3,
-      hideResults, allowComments: false, allowReactions: false, commentLengthMax: 300,
+      hideResults, allowComments: false, allowReactions: false, commentLengthMax: 300, attachmentsAdminOnly: true,
       tags: ['Bargaining']});
     expect(template.isNew()).toBe(true);
     for (const field of ['id', 'key', 'topicId', 'authorId', 'openedAt', 'openingAt', 'closingAt',
@@ -121,7 +121,7 @@ describe('saving a poll as a template', () => {
     const poll = template.buildPoll();
 
     expect(poll).toMatchObject({anonymous: true, hideResults: 'until_closed',
-      stanceReasonRequired: 'disabled', pollTemplateId: 9, groupId: 7,
+      stanceReasonRequired: 'disabled', pollTemplateId: 9, groupId: 7, attachmentsAdminOnly: true,
       openingAt: null, openedAt: null, anonymousBallotSubmitted: false, voteCountCast: 0});
     expect(poll.pollOptionsAttributes[0]).toMatchObject({meaning: options[0].meaning,
       prompt: options[0].prompt, testOperator: 'gte', testPercent: 80});

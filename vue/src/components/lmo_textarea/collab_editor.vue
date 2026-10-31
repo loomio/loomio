@@ -98,6 +98,7 @@ const modelRef = toRef(props, 'model');
 const mentionOptions = useMentionSuggestion(modelRef, toRef(props, 'allowMentions'));
 
 const {
+  canAttachFiles,
   files,
   imageFiles,
   resetFiles,
@@ -364,7 +365,7 @@ onMounted(() => {
     },
     autofocus: props.autofocus,
     extensions: [
-      ...contentExtensions({ attachFile, attachImageFile, mentionOptions }),
+      ...contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value }),
       CharacterCount.configure({limit: props.maxLength}),
       Collaboration.configure({
         document: ydoc,
@@ -509,10 +510,10 @@ div.mb-2
             v-menu(activator="parent")
               emoji-picker(:insert="emojiPicked")
 
-          v-btn.text-editor__attach(v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
+          v-btn.text-editor__attach(v-if="canAttachFiles" v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
             common-icon(v-bind="iconProps" name="mdi-paperclip")
 
-          v-btn.text-editor__insert-image(v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
+          v-btn.text-editor__insert-image(v-if="canAttachFiles" v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
             common-icon(v-bind="iconProps" name="mdi-image")
 
           //- link
@@ -536,7 +537,7 @@ div.mb-2
                   v-card(:title="$t('text_editor.select_text_to_link')")
 
           template(v-if="expanded")
-            v-btn(v-bind="btnProps" @click='openRecordAudioModal' :title="$t('record_modal.record_audio')")
+            v-btn(v-if="canAttachFiles" v-bind="btnProps" @click='openRecordAudioModal' :title="$t('record_modal.record_audio')")
               common-icon(v-bind="iconProps" name="mdi-microphone")
 
             //v-btn(v-bind="btnProps" @click='openRecordVideoModal' :title="$t('record_modal.record_video')")

@@ -18,7 +18,7 @@ vi.mock('@/shared/services/session', () => ({default: {
 vi.mock('@/shared/services/app_config', () => ({default: {
   templateSettings: {discussion_template: [
     'title', 'description', 'description_format', 'content_locale', 'tags', 'newest_first', 'max_depth',
-    'allow_concurrent_polls', 'allow_comments', 'allow_reactions', 'comment_length_max',
+    'allow_concurrent_polls', 'allow_comments', 'allow_reactions', 'comment_length_max', 'attachments_admin_only',
     'poll_template_keys_or_ids', 'recipient_audience', 'public', 'default_to_direct_discussion'
   ]}
 }}));
@@ -43,7 +43,7 @@ beforeEach(() => {
   mocks.signedIn = true;
   group = {id: 7, membersCanCreateTemplates: false, adminsInclude: () => true, membersInclude: () => true};
   topic = {id: 8, newestFirst: true, maxDepth: 2, allowConcurrentPolls: true,
-    allowComments: false, allowReactions: false, commentLengthMax: 400, tags: ['Review', 'Reply tag']};
+    allowComments: false, allowReactions: false, commentLengthMax: 400, attachmentsAdminOnly: true, tags: ['Review', 'Reply tag']};
   creationItem = {tags: ['Review']};
   mocks.findTopicItems.mockReturnValue([creationItem]);
   mocks.fetchTopicItems.mockImplementation(async () => mocks.findTopicItems.mockReturnValue([creationItem]));
@@ -67,7 +67,7 @@ describe('saving a discussion as a template', () => {
     expect(template).toMatchObject({groupId: 7, processName: source.title, title: source.title,
       description: source.description, descriptionFormat: 'html', contentLocale: 'fr', tags: ['Review'],
       newestFirst: true, maxDepth: 2, allowConcurrentPolls: true, allowComments: false, allowReactions: false,
-      commentLengthMax: 400, pollTemplateKeysOrIds: ['proposal', 9], public: false, defaultToDirectDiscussion: false});
+      commentLengthMax: 400, attachmentsAdminOnly: true, pollTemplateKeysOrIds: ['proposal', 9], public: false, defaultToDirectDiscussion: false});
     for (const field of ['id', 'key', 'topicId', 'authorId', 'createdAt', 'lockedAt', 'pinnedAt', 'recipientUserIds']) {
       expect(template.attributeNames).not.toContain(field);
     }
@@ -84,7 +84,7 @@ describe('saving a discussion as a template', () => {
     const discussion = template.buildDiscussion();
     expect(discussion.isNew()).toBe(true);
     expect(discussion).toMatchObject({title: source.title, description: source.description,
-      tags: ['Review'], allowComments: false, allowReactions: false, commentLengthMax: 400,
+      tags: ['Review'], allowComments: false, allowReactions: false, commentLengthMax: 400, attachmentsAdminOnly: true,
       discussionTemplateId: 9, authorId: 2, pinnedAt: null, recipientUserIds: []});
   });
 

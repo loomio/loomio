@@ -7,6 +7,7 @@ blank:
   recipient_audience: group
   newest_first: false
   max_depth: 3
+  allow_concurrent_polls: true
   position: 0
 
 practice_thread:
@@ -20,6 +21,7 @@ practice_thread:
   recipient_audience: group
   newest_first: false
   max_depth: 3
+  allow_concurrent_polls: true
   position: 0
   poll_template_keys_or_ids:
     - practice_proposal
@@ -36,6 +38,7 @@ discuss_a_topic:
   recipient_audience: group
   newest_first: false
   max_depth: 3
+  allow_concurrent_polls: true
   position: 1
 
 advice_process:
@@ -51,6 +54,7 @@ advice_process:
   newest_first: false
   position: 3
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 consent_process:
@@ -66,6 +70,7 @@ consent_process:
   newest_first: false
   position: 3
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 decision_by_consensus:
@@ -81,6 +86,7 @@ decision_by_consensus:
   newest_first: false
   position: 4
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 approve_a_document:
@@ -96,6 +102,7 @@ approve_a_document:
   newest_first: false
   position: 4
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 share_links_and_info:
@@ -112,6 +119,7 @@ share_links_and_info:
   position: 3
   position: 6
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 prepare_for_a_meeting:
@@ -127,6 +135,7 @@ prepare_for_a_meeting:
   newest_first: false
   position: 4
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 funding_decision:
@@ -142,6 +151,7 @@ funding_decision:
   newest_first: false
   position: 4
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 elect_a_governance_position:
@@ -157,6 +167,7 @@ elect_a_governance_position:
   newest_first: false
   position: 4
   max_depth: 3
+  allow_concurrent_polls: true
   recipient_audience: group
 
 

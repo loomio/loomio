@@ -9,20 +9,44 @@ vi.mock('@/shared/services/app_config', () => ({
   default: {
     templateSettings: {
       poll_template: ['poll_type', 'agree_target', 'notify_on_open', 'content_locale', 'poll_options', 'tags'],
-      discussion_template: ['title', 'content_locale', 'allow_reactions', 'tags']
+      discussion_template: ['title', 'content_locale', 'allow_reactions', 'allow_concurrent_polls', 'tags']
     }
   }
 }));
 vi.mock('@/shared/services/session', () => ({ default: { user: () => ({ id: 1 }) } }));
 vi.mock('@/shared/services/records', () => ({
-  default: { polls: { build: mocks.record }, discussions: { build: mocks.record } }
+  default: {
+    polls: { build: mocks.record }, discussions: { build: mocks.record },
+    groups: { nullModel: () => ({discussionPrivacyOptions: 'private_only'}) }
+  }
 }));
 vi.mock('@/i18n', () => ({ I18n: { global: { t: (key) => key } } }));
 
 import PollTemplateModel from '@/shared/models/poll_template_model';
 import DiscussionTemplateModel from '@/shared/models/discussion_template_model';
+import TopicModel from '@/shared/models/topic_model';
+import AbilityService from '@/shared/services/ability_service';
 
 describe('starting from a template', () => {
+  it.each([
+    [{}, true],
+    [{allowConcurrentPolls: false}, false]
+  ])('carries the default or saved concurrency setting into a new discussion', (attributes, expected) => {
+    const template = new DiscussionTemplateModel(attributes);
+    template.buildDiscussion();
+    expect(mocks.built.allowConcurrentPolls).toBe(expected);
+  });
+
+  it.each([
+    [{}, true],
+    [{allowConcurrentPolls: false}, false]
+  ])('uses the default or saved setting when offering another poll', (attributes, expected) => {
+    const topic = new TopicModel({topicableType: 'Discussion', activePollsCount: 1, ...attributes});
+    topic.group = () => ({isEnabled: () => true});
+    topic.adminsInclude = () => true;
+    expect(AbilityService.canStartPoll(topic)).toBe(expected);
+  });
+
   it('copies every poll template setting onto the poll', () => {
     const template = {
       id: 5, key: null, groupId: 8, defaultDurationInDays: 3,

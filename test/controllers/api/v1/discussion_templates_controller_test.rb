@@ -217,6 +217,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     json = JSON.parse(response.body)
     assert_equal "New Process", json['discussion_templates'][0]['process_name']
+    assert_equal true, json['discussion_templates'][0]['allow_concurrent_polls']
   end
 
   test "create denies non-admin" do
@@ -244,7 +245,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
             group_id: @group.id, process_name: 'Monthly review', process_subtitle: 'Review the month',
             title: 'Monthly review', description: discussions(:discussion).description,
             description_format: 'html', tags: ['Review'], public: false,
-            allow_concurrent_polls: true, comment_length_max: 400
+            allow_concurrent_polls: true, comment_length_max: 400, attachments_admin_only: true
           }}
         end
         assert_response allowed ? :success : :forbidden
@@ -253,6 +254,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
           assert_equal ['Review'], data.fetch('tags')
           assert_equal false, data.fetch('public')
           assert_equal 400, data.fetch('comment_length_max')
+          assert_equal true, data.fetch('attachments_admin_only')
         end
       end
     end
@@ -265,7 +267,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
       process_name: "Consent",
       process_subtitle: "Seek consent",
       description: "A shared process",
-      poll_template_keys_or_ids: ["proposal", 123]
+      poll_template_keys_or_ids: ["proposal", 123], attachments_admin_only: true
     )
 
     sign_in @user
@@ -279,6 +281,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_equal "discussion_template", data["type"]
     assert_equal "Consent", data.dig("template", "process_name")
     assert_equal ["proposal"], data.dig("template", "poll_template_keys_or_ids")
+    assert_equal true, data.dig("template", "attachments_admin_only")
     refute data["template"].key?("id")
     refute data["template"].key?("group_id")
     refute data["template"].key?("author_id")

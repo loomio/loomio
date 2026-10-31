@@ -24,6 +24,41 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal comment_params[:body], @admin_comment.reload.body
   end
 
+  test 'attachment restrictions reject API uploads and inline images while allowing text replies' do
+    @discussion.topic.update!(attachments_admin_only: true)
+    blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new('document'), filename: 'document.txt', content_type: 'text/plain')
+    sign_in @user
+
+    [{files: [blob.signed_id]}, {image_files: [blob.signed_id]},
+     {body: '![image](https://example.com/reply.png)', body_format: 'md'}].each do |attributes|
+      assert_no_difference ['Comment.count', 'ActiveStorage::Attachment.count'] do
+        post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Reply'}.merge(attributes)}
+      end
+      assert_response :forbidden
+    end
+
+    post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Text reply'}}
+    assert_response :success
+    assert_equal 'Text reply', Comment.last.body
+
+    sign_in users(:guest_admin_normal)
+    post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Supporting material', files: [blob.signed_id]}}
+    assert_response :success
+    assert_equal [blob.id], Comment.last.files.blobs.ids
+  end
+
+  test 'attachment restrictions apply to API edits before files are saved' do
+    @discussion.topic.update!(attachments_admin_only: true)
+    blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new('document'), filename: 'document.txt', content_type: 'text/plain')
+    sign_in @user
+
+    assert_no_difference 'ActiveStorage::Attachment.count' do
+      put :update, params: {id: @user_comment.id, comment: {body: 'Changed', image_files: [blob.signed_id]}}
+    end
+    assert_response :forbidden
+    assert_equal 'User comment', @user_comment.reload.body
+  end
+
   test "update admins can edit user content true" do
     sign_in @admin
     @group.update(admins_can_edit_user_content: true)

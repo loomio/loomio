@@ -9,6 +9,7 @@ class TopicSerializer < ApplicationSerializer
              :allow_comments,
              :allow_reactions,
              :comment_length_max,
+             :attachments_admin_only,
              :active_polls_count,
              :last_activity_at,
              :discarded_at,
