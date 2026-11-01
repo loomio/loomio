@@ -153,7 +153,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
 
   create_table "discussion_templates", force: :cascade do |t|
     t.boolean "allow_comments", default: true, null: false
-    t.boolean "allow_concurrent_polls", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.jsonb "attachments", default: [], null: false
     t.boolean "attachments_admin_only", default: false, null: false
@@ -174,7 +173,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
     t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.jsonb "poll_template_keys_or_ids", default: [], null: false
-    t.boolean "polls_one_at_a_time", default: false
+    t.boolean "polls_one_at_a_time", default: false, null: false
     t.integer "position"
     t.string "process_introduction"
     t.string "process_introduction_format", default: "html", null: false
@@ -1255,7 +1254,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
   create_table "topics", force: :cascade do |t|
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
-    t.boolean "allow_concurrent_polls", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
     t.boolean "attachments_admin_only", default: false, null: false
     t.integer "comment_length_max"
@@ -1271,7 +1269,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
     t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "pinned_at", precision: nil
-    t.boolean "polls_one_at_a_time", default: false
+    t.boolean "polls_one_at_a_time", default: false, null: false
     t.boolean "private", default: true, null: false
     t.string "ranges_string"
     t.integer "seen_by_count", default: 0, null: false

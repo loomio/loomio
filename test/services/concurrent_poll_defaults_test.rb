@@ -55,6 +55,17 @@ class ConcurrentPollDefaultsTest < ActiveSupport::TestCase
     assert reloaded.polls_one_at_a_time?
   end
 
+  test 'thread and template serializers expose the stored poll restriction' do
+    [[topics(:discussion_topic), TopicSerializer, :topic],
+     [discussion_templates(:cleanup_discussion_template), DiscussionTemplateSerializer, :discussion_template]].each do |record, serializer, root|
+      [false, true].each do |value|
+        record.update!(polls_one_at_a_time: value)
+        payload = serializer.new(record.reload).as_json.fetch(root)
+        assert_equal value, payload.fetch(:polls_one_at_a_time)
+      end
+    end
+  end
+
   private
 
   def poll_params(topic)
