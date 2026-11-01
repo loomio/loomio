@@ -1,10 +1,10 @@
 ---
 title: שימוש בשרשורים
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 4abaa67a88c8ef75
   print: a78e02e851589a56
   markdown: 15369657b0c43e23
-  thread-settings-and-display: 44ffcf237239059b
+  thread-settings-and-display: 7c943d2adb2ea7ce
   pin-or-unpin-a-thread: d1557b5934abb66e
   move-a-thread: 80077f6c5a1fc0a7
   lock-or-unlock-a-thread: bc13d28b92075e83
@@ -194,6 +194,38 @@ needs_review:
 
 ![היסטוריית ההתראות של הדיון](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## הגדרות שרשור
+
+מנהלי שרשורים ומנהלי קבוצות יכולים להשתמש ב־**הגדרות שרשור** כדי לשנות את סידור התשובות ולהגדיר אפשרויות נוספות לדיון.
+
+![](thread_display.png)
+
+![הגדרות שרשור הכוללות פריסה, מגבלות על סקרים, הרשאות לצירוף קבצים ומגבלת אורך תגובה](thread_layout_options.png)
+
+### פריסה
+
+בחירה ב־**כרונולוגית** מציגה את הפריטים לפי סדר פרסומם, ובחירה ב־**מקונן** מקבצת תשובות מתחת לפריט שאליו הן משיבות. שינוי זה חל על התצוגה עבור כל המשתתפים בשרשור.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### סקר אחד בלבד בכל פעם
+
+כאשר האפשרות מסומנת, לא ניתן להתחיל סקר נוסף עד לסגירת הסקר הנוכחי. בשרשורים חדשים האפשרות אינה מסומנת כברירת מחדל. שרשורים שנוצרו מתבנית דיון משתמשים בהגדרה של אותה תבנית.
+
+### רק מנהלים יכולים לצרף קבצים
+
+הפעלת הגדרה זו מאפשרת רק למנהלי שרשורים ולמנהלי קבוצות להוסיף קבצים חדשים ותמונות בגוף התוכן בכל חלקי השרשור, כולל בתשובות לסקרים ובתשובות בדוא״ל. קבצים מצורפים קיימים נשארים זמינים, ועדיין ניתן לערוך את הטקסט או להסיר קבצים שצורפו.
+
+תבניות דיון וסקר יכולות לקבוע הגדרה זו עבור שרשורים חדשים. ראו [תבניות דיון](/en/user_manual/discussions/templates) ו[תבניות סקר](/en/user_manual/polls/poll_templates).
+
+### מגבלת אורך תגובה
+
+ניתן להגדיר מספר תווים מרבי לכל תגובה כדי לשמור על תגובות תמציתיות. ללא מגבלה, יש להשאיר את השדה ריק. המגבלה חלה על כולם, כולל מנהלים.
+
 <!-- translation-section: actions -->
 
 ## פעולות
@@ -291,18 +323,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 הכותרות והתוויות מופיעות בשפה שנבחרה. תוכן שנכתב על ידי המשתתפים נשאר בשפת המקור.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### הגדרות השרשור והתצוגה
-
-מנהלי קבוצות יכולים להשתמש ב־**הגדרות שרשור** כדי לשנות את סידור התשובות ולהגדיר אפשרויות נוספות לדיון.
-
-![](thread_display.png)
-
-בחירה ב־**ציר זמן** מציגה את הפריטים לפי סדר פרסומם, ובחירה ב־**Threaded** מקבצת תשובות מתחת לפריט שאליו הן משיבות. הגדרות השרשור קובעות גם אם ניתן לקיים כמה סקרים במקביל ומאפשרות להגביל את אורך התגובות. הגדרות אלה חלות על כל המשתתפים בדיון.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

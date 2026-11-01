@@ -158,6 +158,7 @@ it:
     direct_thread_anonymous_poll: Un thread contenente un sondaggio anonimo non può essere convertito in un thread diretto
     invitation_rate_limit_reached_contact_support: Limite giornaliero di inviti raggiunto. Contatta immediatamente l'assistenza.
     subscription_thread_limit_reached: Questa organizzazione ha raggiunto il limite di thread. Esegui l'aggiornamento per continuare a utilizzare Loomio.
+    attachments_admin_only: Solo gli amministratori della conversazione e del gruppo possono aggiungere allegati a questa conversazione
   group:
     error:
       handle_must_begin_with_parent_handle: Deve iniziare con%{parent_handle}-

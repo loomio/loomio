@@ -1935,6 +1935,8 @@ pt_BR:
     comment_length_max_help: Deixe em branco se não houver limite de tópicos
     comment_length_max_description: Incentive comentários concisos definindo um limite máximo de caracteres
     comment_length_max_hint: Número máximo de caracteres por comentário. Deixe em branco para não haver limite.
+    only_admins_can_add_attachments: Só admins podem adicionar anexos
+    only_one_poll_at_a_time: Só uma enquete por vez
   delete_thread_form:
     title: Apagar conversa
     body: Você tem certeza de que deseja apagar este conversa?

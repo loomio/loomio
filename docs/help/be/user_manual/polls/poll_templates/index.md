@@ -1,10 +1,10 @@
 ---
 title: Шаблоны апытанняў
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 629f7d966853e26a
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 201c2ae0d0546466
   save-a-poll-as-a-template: 29983c3ee32d08e3
   start-a-new-template: 9b17dc06fffcff91
-  configure-the-template: d72a331fe107f69e
+  configure-the-template: 49e14794bc2ba829
   edit-a-default-template: 7b2ee8a97d3a678a
 title_source: 114cca246e357304
 title_generated: 819e1c4bcf2cf380
@@ -86,6 +86,8 @@ title_generated: 819e1c4bcf2cf380
 Задайце шаблону назву і падзагаловак, якія тлумачаць, калі яго выкарыстоўваць. Вы можаце змяніць любыя іншыя палі, каб яны лепш падыходзілі для паўторнага выкарыстання. Пасля націскання **Захаваць шаблон** ён будзе паказвацца ў спісе пры стварэнні новай прапановы або апытання.
 
 [![Поўная форма шаблону працэсу згоды на змену палітыкі](poll_template_new.png)](poll_template_new.png)
+
+Для асобных апытанняў налада **Толькі адміністратары могуць дадаваць укладанні** дазваляе дадаваць новыя файлы і выявы ў тэксце толькі адміністратарам тэмы і адміністратарам групы, у тым ліку ў адказах на апытанне і адказах на каментарыі. Апытанні, пачатыя ў існуючай тэме, выкарыстоўваюць наладу ўкладанняў гэтай тэмы. Змена шаблону ўплывае толькі на будучыя апытанні.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

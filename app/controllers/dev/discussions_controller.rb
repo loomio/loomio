@@ -8,7 +8,7 @@ class Dev::DiscussionsController < Dev::BaseController
     discussion = DiscussionService.create(params: {
       group_id: group.id, title: 'Monthly project review',
       description: '<p>What worked, and what should change next month?</p>', description_format: 'html',
-      tags: ['Project review'], allow_concurrent_polls: true, comment_length_max: 400
+      tags: ['Project review'], polls_one_at_a_time: false, comment_length_max: 400
     }, actor: admin)
     CommentService.create(comment: Comment.new(parent: discussion, body: 'Private review feedback'), actor: admin)
     actor = params[:member].present? ? group.members.where.not(id: admin.id).first : admin

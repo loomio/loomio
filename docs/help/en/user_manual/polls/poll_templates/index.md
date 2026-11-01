@@ -48,6 +48,8 @@ Give the template a name and subtitle that describe when to use it. You can modi
 
 [![The complete Policy change consent process template form](poll_template_new.png)](poll_template_new.png)
 
+For standalone polls, **Only admins can add attachments** restricts new files and inline images to thread admins and group admins, including in responses and replies. Polls started inside an existing thread follow that thread's attachment setting. Changing the template affects future polls only.
+
 <!-- translation-section: template-title-subtitle-and-help -->
 
 ### Template title, subtitle, and help

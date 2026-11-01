@@ -1502,7 +1502,7 @@ module Dev::Scenarios::OatmilkCooperative
       tags: ['Bottle trial'],
       recipient_audience: 'group',
       poll_template_keys_or_ids: poll_template_ids,
-      allow_concurrent_polls: false,
+      polls_one_at_a_time: true,
       comment_length_max: 500
     )
   end

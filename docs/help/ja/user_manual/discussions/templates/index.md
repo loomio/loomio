@@ -1,15 +1,15 @@
 ---
 title: ディスカッションテンプレート
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: f7d37afab38c639f
   how-templates-are-used: 75b8f40cb89c7937
   choose-who-is-notified-by-default: 1a5fb2e0e531bb5e
-  template-settings: 89fc9e0e6c63ee14
+  template-settings: e88219a6b1915558
   example-bottle-trial-review: 8b485a42ce7666b5
   create-a-template: 76a5dbba70d36fd9
   manage-the-template-list: fee48b7fac8bc0f2
@@ -94,8 +94,9 @@ title_generated: d90989df1a626938
 - **背景説明**：ディスカッションに最初から入力される文章です。見出し、質問、リンクを使って、記載する内容を案内します。
 - **招待する**：デフォルトでグループ全員を招待するかどうかを指定します。[デフォルトの通知先を選ぶ](#choose-who-is-notified-by-default)を参照してください。
 - **アンケートテンプレート**：この手順で推奨するアンケートです。新しいディスカッションのフォームに一覧表示されます。また、ディスカッション内でアンケートを始める際にも先頭に表示されます。自動的に開始されることはありません。
-- **同時ポーリングを許可する**：ディスカッション内で複数のアンケートを同時に実施できるかどうかを指定します。
+- **同時に開けるアンケートは1つだけです**：現在のアンケートが締め切られるまで、別のアンケートを開始できないようにします。新しいテンプレートでは、デフォルトでチェックが外れています。
 - **コメントの文字数制限**：必要に応じて設定できるコメントの最大文字数です。
+- **管理者のみ添付ファイルを追加できます**：このテンプレートから始めたディスカッションでは、新しいファイルや本文中の画像を追加できる人を、スレッドの管理者とグループの管理者に限定します。
 
 デフォルトのタイトルは、毎回そのまま使っても正確な場合にのみ設定します。それ以外の場合は、具体的な振り返りの対象、期間、文書、決定の名前を作成者が入力できるよう、タイトルの例を記載します。
 

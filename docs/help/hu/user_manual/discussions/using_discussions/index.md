@@ -1,10 +1,10 @@
 ---
 title: Témák használata
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 01e122860b46a4af
   print: 771c0dbde4b51a61
   markdown: fbfa134ed8e40413
-  thread-settings-and-display: 5358a272e7860c1a
+  thread-settings-and-display: cc9526a648d01124
   pin-or-unpin-a-thread: 85f49bd712d7c920
   move-a-thread: c28c9825e4fd4e31
   lock-or-unlock-a-thread: df3e8f559d2e1d15
@@ -191,6 +191,38 @@ Az **Értesített** megnyitja a beszélgetés értesítési előzményeit. Ezek 
 
 ![A beszélgetés értesítési előzményei](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Szálbeállítások
+
+A szál adminjai és a csoport adminjai a **Szálbeállítások** lehetőséggel módosíthatják a válaszok elrendezését és a beszélgetés egyéb beállításait.
+
+![](thread_display.png)
+
+![Szálbeállítások az elrendezéssel, a szavazások korlátozásával, a mellékletek jogosultságaival és a hozzászólások hosszkorlátjával](thread_layout_options.png)
+
+### Elrendezés
+
+Válaszd ki az **Időrendi** lehetőséget az elemek közzétételi sorrendben történő megjelenítéséhez, vagy a **Beágyazott** lehetőséget a válaszok azon elemek alá rendezéséhez, amelyekre válaszolnak. Ez a szál minden résztvevőjénél módosítja az elrendezést.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Egyszerre csak egy szavazás
+
+Ha be van jelölve, a felhasználók nem indíthatnak újabb szavazást, amíg az aktuális szavazás le nem zárult. Új szálaknál ez alapértelmezés szerint nincs bejelölve. A beszélgetéssablonból indított szálak a sablon beállítását használják.
+
+### Csak adminok adhatnak hozzá mellékleteket
+
+Kapcsold be ezt a beállítást, hogy a teljes szálban csak a szál adminjai és a csoport adminjai adhassanak hozzá új fájlokat és szövegbe illesztett képeket, beleértve a szavazásokra adott válaszokat és az e-mailes válaszokat is. A meglévő mellékletek továbbra is elérhetők maradnak, és a résztvevők továbbra is szerkeszthetik a szövegüket vagy eltávolíthatják a mellékleteket.
+
+A beszélgetés- és szavazássablonok megadhatják ezt a beállítást az új szálakhoz. Lásd: [Beszélgetéssablonok](/en/user_manual/discussions/templates) és [Szavazássablonok](/en/user_manual/polls/poll_templates).
+
+### Hozzászólások hosszkorlátja
+
+Állítsd be a hozzászólásonként megengedett karakterek legnagyobb számát, hogy a hozzászólások tömörek maradjanak. Ha nem szeretnél korlátot, hagyd üresen a mezőt. A korlát mindenkire vonatkozik, az adminokra is.
+
 <!-- translation-section: actions -->
 
 ## Műveletek
@@ -288,18 +320,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 A címsorok és feliratok a kiválasztott nyelven jelennek meg. A résztvevők által írt tartalom az eredeti nyelvén marad.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Szálbeállítások és megjelenítés
-
-A csoport adminjai a **Szálbeállítások** lehetőséggel módosíthatják a válaszok elrendezését és a beszélgetés egyéb beállításait.
-
-![](thread_display.png)
-
-Válaszd ki az **Idővonal** lehetőséget az elemek közzétételi sorrendben történő megjelenítéséhez, vagy a **Threaded** lehetőséget a válaszok azon elemek alá rendezéséhez, amelyekre válaszolnak. A szálbeállítások azt is szabályozzák, hogy futhat-e egyszerre több szavazás, és megadható bennük a hozzászólások legnagyobb hossza. Ezek a beállítások a beszélgetés minden résztvevőjére érvényesek.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

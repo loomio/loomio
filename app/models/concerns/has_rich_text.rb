@@ -28,6 +28,13 @@ module HasRichText
     signed_ids.uniq.filter_map { |signed_id| ActiveStorage::Blob.find_signed(signed_id) }.uniq(&:id)
   end
 
+  def self.media_sources(text, format)
+    html = format == 'md' ? MarkdownService.render_html(text.to_s) : text.to_s
+    Nokogiri::HTML.fragment(html).css('img, video, audio, source').flat_map do |node|
+      %w[src poster srcset].filter_map { |attribute| node[attribute].presence }
+    end
+  end
+
   module ClassMethods
     def is_rich_text(on: [], materialize_tasks: true)
       define_singleton_method :rich_text_fields, -> { Array on }
@@ -134,6 +141,30 @@ module HasRichText
       i.merge!({ icon: attachment_icon(file.content_type || file.filename) })
       i.merge!({ signed_id: file.signed_id })
       i
+    end
+  end
+
+  # Compare against persisted files and rendered media so retaining or removing
+  # attachments is allowed, including when switching editor formats. Without
+  # params, inspect the record's pending contents instead.
+  def attachments_added?(params = nil)
+    params ||= attributes.merge(files: files.blobs.to_a, image_files: image_files.blobs.to_a)
+    params = params.to_h.with_indifferent_access
+    existing = persisted? ? self.class.find(id) : self.class.new
+    existing_blob_ids = existing.files.blobs.ids + existing.image_files.blobs.ids
+
+    additions = %i[files image_files].any? do |name|
+      Array(params[name]).compact_blank.any? do |attachable|
+        blob = attachable.is_a?(String) ? ActiveStorage::Blob.find_signed!(attachable) : attachable
+        !blob.is_a?(ActiveStorage::Blob) || !existing_blob_ids.include?(blob.id)
+      end
+    end
+    additions || self.class.rich_text_fields.any? do |field|
+      next false unless params.key?(field) || params.key?("#{field}_format")
+
+      format = params.fetch("#{field}_format", public_send("#{field}_format"))
+      text = params.fetch(field, self[field])
+      (HasRichText.media_sources(text, format) - HasRichText.media_sources(existing[field], existing.public_send("#{field}_format"))).any?
     end
   end
 

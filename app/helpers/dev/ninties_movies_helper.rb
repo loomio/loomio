@@ -301,7 +301,7 @@ module Dev::NintiesMoviesHelper
 
 
   def create_all_notifications
-    create_discussion.topic.update!(allow_concurrent_polls: true)
+    create_discussion.topic.update!(polls_one_at_a_time: false)
 
     create_delivered_notification(
       kind: "group_announced",

@@ -1900,6 +1900,8 @@ hr:
     comment_length_max_help: Ostavite prazno ako nema ograničenja tema
     comment_length_max_description: Potaknite sažete komentare postavljanjem maksimalne duljine
     comment_length_max_hint: Maksimalan broj znakova po komentaru. Ostavite prazno ako nema ograničenja.
+    only_admins_can_add_attachments: Samo admini mogu dodavati privitke
+    only_one_poll_at_a_time: Samo jedna anketa istovremeno
   delete_thread_form:
     title: Izbriši nit
     body: Jeste li sigurni da želite izbrisati ovu nit?

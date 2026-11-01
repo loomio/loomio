@@ -1,15 +1,15 @@
 ---
 title: Plantillas de discusión
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: a3b7e43580c06c4b
   how-templates-are-used: f10451d9e9732db8
   choose-who-is-notified-by-default: 914a15ff14c3351c
-  template-settings: 8e12ee2bdaf0589b
+  template-settings: 81b37efe654c049a
   example-bottle-trial-review: 2bcaa4a905e96e16
   create-a-template: ad598d12bdf95deb
   manage-the-template-list: 554cbe4f4eec9968
@@ -94,8 +94,9 @@ Los admins del grupo pueden editar una plantilla desde el menú de acciones que 
 - **Contexto**: el texto inicial de la discusión. Usa encabezados, preguntas o enlaces para orientar lo que escriben las personas.
 - **Invitar**: si se invita a todos en el grupo de forma predeterminada. Consulta [Elige quién recibe notificaciones de forma predeterminada](#choose-who-is-notified-by-default).
 - **Plantillas de encuestas**: encuestas sugeridas para este proceso. Se muestran en el formulario de nueva discusión. También aparecen primero cuando alguien inicia una encuesta en la discusión. No se inician automáticamente.
-- **Permitir sondeos simultáneos**: si puede haber más de una encuesta abierta en la discusión al mismo tiempo.
+- **Solo una encuesta a la vez**: impide que se inicie otra encuesta hasta que se haya cerrado la actual. Esta opción está desmarcada de forma predeterminada en las nuevas plantillas.
 - **Límite de longitud de los comentarios**: una longitud máxima opcional para los comentarios.
+- **Solo los admins pueden añadir archivos adjuntos**: restringe la incorporación de nuevos archivos e imágenes dentro del texto a los admins del hilo y del grupo en las discusiones iniciadas a partir de esta plantilla.
 
 Usa un título predeterminado solo cuando vaya a seguir siendo adecuado. En caso contrario, escribe un título de ejemplo que anime al autor a nombrar la revisión, el período, el documento o la decisión concreta.
 

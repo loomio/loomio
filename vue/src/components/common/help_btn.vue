@@ -6,7 +6,7 @@ const { path, label } = defineProps({
   path: String,
   label: {
     type: String,
-    default: 'common.user_guide'
+    default: 'common.help'
   },
   variant: {
     type: String,
@@ -19,5 +19,5 @@ const { t, locale } = useI18n();
 <template lang="pug">
 v-btn.help-link(:variant="variant" :href="manualUrl(path, locale)" target="_blank" rel="noopener noreferrer")
   span {{ t(label) }}
-  common-icon.ml-1(size="small" name="mdi-open-in-new")
+  common-icon.ml-2(:size="24" name="mdi-open-in-new" aria-hidden="true")
 </template>

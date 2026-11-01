@@ -50,7 +50,7 @@ class Ability::PollAccessTest < ActiveSupport::TestCase
 
   test "ordinary direct-topic members can announce and remind only an open electorate poll" do
     topic = topics(:direct_topic)
-    topic.update!(allow_concurrent_polls: true)
+    topic.update!(polls_one_at_a_time: false)
     coordinator = users(:guest_admin_normal)
     member = users(:guest_normal)
     outsider = users(:alien)
@@ -80,7 +80,7 @@ class Ability::PollAccessTest < ActiveSupport::TestCase
 
   test "reopening requires an identified closed poll in an unlocked topic" do
     topic = topics(:discussion_topic)
-    topic.update!(allow_concurrent_polls: true)
+    topic.update!(polls_one_at_a_time: false)
     coordinator = users(:admin)
     identified = PollService.create(params: poll_params(topic_id: topic.id), actor: coordinator)
     anonymous = PollService.create(params: poll_params(topic_id: topic.id, anonymous: true), actor: coordinator)

@@ -1904,6 +1904,8 @@ hu:
     comment_length_max_help: Hagyja üresen, ha nincs témakorlát
     comment_length_max_description: Ösztönözd a tömör hozzászólásokat a maximális hossz meghatározásával
     comment_length_max_hint: Maximális karakterszám hozzászólásonként. Hagyja üresen, ha nem szeretne korlátot létrehozni.
+    only_admins_can_add_attachments: Csak adminok adhatnak hozzá mellékletet
+    only_one_poll_at_a_time: Egyszerre csak egy szavazás
   delete_thread_form:
     title: Törölje a témát
     body: Biztosan törli ezt a témát?

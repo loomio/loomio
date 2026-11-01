@@ -3,7 +3,7 @@ require "test_helper"
 class PollSerializerTest < ActiveSupport::TestCase
   test "normal poll payloads omit tags with and without a response cache" do
     topic = topics(:discussion_topic)
-    topic.update!(allow_concurrent_polls: true)
+    topic.update!(polls_one_at_a_time: false)
     topic.topicable.created_topic_item.update!(tags: ['Thread category'])
     [false, true].each do |anonymous|
       poll = PollService.create(params: {

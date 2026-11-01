@@ -1,10 +1,10 @@
 ---
 title: Modelos de enquetes
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 3a4a66d9acf40a3d
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 154c1395ab809a60
   save-a-poll-as-a-template: a76addad156cf71e
   start-a-new-template: 60083397d1c24ee5
-  configure-the-template: 111569685e647766
+  configure-the-template: e06601a9d030b894
   edit-a-default-template: d93b133341414a74
 title_source: 114cca246e357304
 title_generated: 38127cb43d236492
@@ -86,6 +86,8 @@ Para adaptar um modelo padrão como **Consentimento**, abra o menu de ações de
 Dê ao modelo um nome e um subtítulo que descrevam quando usá-lo. Você pode modificar qualquer um dos outros campos para torná-los mais adequados para reutilização. Depois que você selecionar **Salvar modelo**, o modelo será listado quando as pessoas iniciarem uma nova proposta ou enquete.
 
 [![O formulário completo do modelo de processo de consentimento para alteração de política](poll_template_new.png)](poll_template_new.png)
+
+Para enquetes independentes, **Somente admins podem adicionar anexos** restringe a adição de novos arquivos e imagens no corpo do texto aos admins da conversa e do grupo, inclusive em respostas à enquete e a comentários. Enquetes iniciadas dentro de uma conversa existente seguem a configuração de anexos dessa conversa. Alterar o modelo afeta apenas enquetes futuras.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

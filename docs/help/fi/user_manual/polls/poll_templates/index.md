@@ -1,10 +1,10 @@
 ---
 title: Kyselymallit
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 118c34aa89fee06b
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 0bf7894caa98552a
   save-a-poll-as-a-template: 06f4be9e88c10c14
   start-a-new-template: 5e58489e7152e692
-  configure-the-template: e5994b5cec68b91e
+  configure-the-template: c152ac97758bdc54
   edit-a-default-template: 4c63b99976fc0d15
 title_source: 114cca246e357304
 title_generated: 22a10edb0e6d9b26
@@ -88,6 +88,8 @@ Jos haluat mukauttaa oletusmallia, kuten **Suostumus**, avaa sen toimintovalikko
 Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käyttää. Voit muokata muitakin kenttiä niin, että ne sopivat paremmin uudelleenkäyttöön. Kun valitset **Tallenna mallipohja**, malli näkyy luettelossa, kun käyttäjät aloittavat uuden ehdotuksen tai kyselyn.
 
 [![Toimintaperiaatteiden muuttamiseen tarkoitetun suostumusprosessin koko mallilomake](poll_template_new.png)](poll_template_new.png)
+
+Itsenäisissä kyselyissä **Vain ylläpitäjät voivat lisätä liitteitä** sallii uusien tiedostojen ja tekstin sekaan lisättävien kuvien lisäämisen vain ketjun ja ryhmän ylläpitäjille. Rajoitus koskee myös kyselyvastauksia ja niihin annettuja vastauksia. Olemassa olevassa ketjussa aloitetut kyselyt noudattavat kyseisen ketjun liiteasetusta. Mallin muuttaminen vaikuttaa vain tuleviin kyselyihin.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

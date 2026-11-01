@@ -117,7 +117,7 @@ class PollEditGuestAccessTest < ActiveSupport::TestCase
   end
 
   test 'anonymous poll notify grants topic access without adding a voter or ballot' do
-    @topic.update!(allow_concurrent_polls: true)
+    @topic.update!(polls_one_at_a_time: false)
     poll = create_poll(@topic, @actor, anonymous: true)
     before_voters = poll.anonymous_poll_voters.count
     email = 'anonymous-poll-notify@example.test'

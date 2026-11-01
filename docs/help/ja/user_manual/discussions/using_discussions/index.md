@@ -1,10 +1,10 @@
 ---
 title: スレッドの使い方
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 7ce501c7a92745cc
   print: dfbdf2a700bf264d
   markdown: f01e47537dc12d37
-  thread-settings-and-display: 2ea803f9d986247f
+  thread-settings-and-display: 31491e0a1edb4745
   pin-or-unpin-a-thread: dd96e104a57fbd03
   move-a-thread: d1e130cbb12d7b27
   lock-or-unlock-a-thread: c6a71b989ce0cbab
@@ -191,6 +191,38 @@ H2またはH3の見出しを含むコメント、アンケート、提案は、�
 
 ![ディスカッションの通知履歴](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## スレッド設定
+
+スレッド管理者とグループ管理者は、**スレッド設定**を選択して返信の配置を変更したり、ディスカッションのその他の設定を行ったりできます。
+
+![](thread_display.png)
+
+![レイアウト、アンケートの制限、添付権限、コメントの文字数制限を含むスレッド設定](thread_layout_options.png)
+
+### レイアウト
+
+**年代順**を選択すると項目が投稿順に表示され、**入れ子構造**を選択すると返信が返信先の項目の下にまとめて表示されます。この変更は、スレッドの参加者全員のレイアウトに適用されます。
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### 同時に実施できるアンケートは1つのみ
+
+チェックを入れると、現在のアンケートが締め切られるまで、別のアンケートを開始できなくなります。新しいスレッドでは、既定でチェックが外れています。ディスカッションのテンプレートから開始したスレッドには、そのテンプレートの設定が適用されます。
+
+### 管理者のみ添付可能
+
+この設定を有効にすると、アンケートへの回答やメールでの返信を含め、スレッド全体で新しいファイルや本文中の画像を追加できるのは、スレッド管理者とグループ管理者のみになります。既存の添付ファイルは引き続き利用でき、参加者は自分の文章の編集や添付ファイルの削除を引き続き行えます。
+
+ディスカッションやアンケートのテンプレートで、新しいスレッドに適用するこの設定を指定できます。[ディスカッションのテンプレート](/en/user_manual/discussions/templates)と[アンケートのテンプレート](/en/user_manual/polls/poll_templates)を参照してください。
+
+### コメントの文字数制限
+
+投稿を簡潔にするために、コメントごとの最大文字数を設定できます。制限しない場合は空欄にします。この制限は、管理者を含む全員に適用されます。
+
 <!-- translation-section: actions -->
 
 ## 操作
@@ -288,18 +320,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 見出しとラベルには、選択した言語が使われます。参加者が書いた内容は、元の言語のままです。
-
-<!-- translation-section: thread-settings-and-display -->
-
-### スレッドの設定と表示
-
-グループの管理者は、**スレッド設定**を選択して返信の配置を変更したり、ディスカッションのその他の設定を行ったりできます。
-
-![](thread_display.png)
-
-**タイムライン**を選択すると項目が投稿順に表示され、**Threaded**を選択すると返信が返信先の項目の下にまとめて表示されます。スレッド設定では、複数のアンケートを同時に実施できるかどうかや、コメントの文字数の上限も設定できます。これらの設定は、ディスカッションの参加者全員に適用されます。
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

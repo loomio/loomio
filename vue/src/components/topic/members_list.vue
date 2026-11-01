@@ -193,7 +193,7 @@ watchRecords({
 <template lang="pug">
 v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')" style="height: 760px; max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
   template(v-slot:append)
-    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#invite-people" label="common.user_manual" variant="text")
+    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#invite-people" variant="text")
     dismiss-modal-button
 
   v-card-text(style="flex: none")

@@ -15,6 +15,10 @@ for (const [role, params] of [['admin', ''], ['member', '?member=1&members_can_c
     page.expectText('.discussion-template-form .tags-field__input', 'Project review');
     page.expectText('.discussion-template-form', 'What worked, and what should change next month?');
     page.expectNoText('.discussion-template-form', 'Private review feedback');
+    test.assert.not.selected('.topic-settings__single-poll input');
+    page.click('.topic-settings__single-poll label');
+    page.click('.topic-settings__attachments-admin-only label');
+    page.fillIn('.topic-settings__comment-length input', '120');
     page.fillIn('.discussion-template-form-fields__process-subtitle input', 'Review the month and agree next steps');
     page.click('.discussion-template-form__submit');
     page.expectNoElement('.discussion-template-form__submit', 8000);
@@ -39,6 +43,10 @@ for (const [role, params] of [['admin', ''], ['member', '?member=1&members_can_c
     page.expectText('.context-panel__heading', 'Monthly project review');
     page.expectText('.topic-header .tags-display', 'Project review');
     page.expectNoText('.topic-page', 'Private review feedback');
+    page.click('.topic-sidebar .action-dock__button--thread_settings');
+    test.assert.selected('.topic-settings__single-poll input');
+    test.assert.selected('.topic-settings__attachments-admin-only input');
+    page.expectValue('.topic-settings__comment-length input', '120');
   };
 }
 

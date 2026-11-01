@@ -14,6 +14,12 @@ module Ability::Topic
       topic.admins_include?(user)
     end
 
+    can :attach_files, ::Topic do |topic|
+      topic.admins_include?(user) ||
+        (!topic.attachments_admin_only? && topic.members_include?(user)) ||
+        (topic.new_record? && topic.topicable.author == user)
+    end
+
     can [:update_tags], ::Topic do |topic|
       topic.topicable.present? && can?(:update_tags, topic.topicable.created_topic_item)
     end

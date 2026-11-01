@@ -1917,6 +1917,8 @@ zh_TW:
     comment_length_max_help: 留空表示不設主題數量限制
     comment_length_max_description: 設定評論長度上限，鼓勵評論簡潔明了
     comment_length_max_hint: 每則評論的字數限制。留空則無字數限制。
+    only_admins_can_add_attachments: 僅管理員可新增附件
+    only_one_poll_at_a_time: 一次只能進行一個投票
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？

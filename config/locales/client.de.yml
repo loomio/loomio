@@ -1922,6 +1922,8 @@ de:
     comment_length_max_help: Lassen Sie dieses Feld leer, wenn keine Themenbeschränkung gewünscht ist
     comment_length_max_description: Fördern Sie prägnante Kommentare, indem Sie eine maximale Länge festlegen
     comment_length_max_hint: Maximale Zeichenanzahl pro Kommentar. Für keine Zeichenbegrenzung leer lassen.
+    only_admins_can_add_attachments: Nur Admins können Anhänge hinzufügen
+    only_one_poll_at_a_time: Nur eine Abstimmung gleichzeitig
   delete_thread_form:
     title: Diskussion löschen
     body: Möchtest du diesen Thread wirklich löschen?

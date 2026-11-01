@@ -445,13 +445,13 @@ module.exports = {
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')
-    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.expectText('.poll-members-form .help-link', 'Help')
     test.expect.element('.poll-members-form__submit').to.not.be.present
     test.expect.element('.poll-members-form .v-checkbox').to.not.be.present
     page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
-    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.expectText('.poll-members-form .help-link', 'Help')
     test.expect.element('.recipients-autocomplete__no-data').to.not.be.present
     test.expect.element('.poll-members-form__list').to.not.be.present
     test.expect.element('.poll-members-form__page-count').to.not.be.present
@@ -615,7 +615,7 @@ module.exports = {
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     test.expect.element('.recipients-autocomplete__no-data').to.not.be.present
-    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.expectText('.poll-members-form .help-link', 'Help')
     page.escape()
 
     // Selecting a recipient reveals the submission controls.
@@ -652,7 +652,7 @@ module.exports = {
     page.loadPath('polls/test_scheduled_poll?vote_count=25&weighted=1')
     page.clickAndWait('.action-dock__button--announce_poll', '.poll-members-form__list')
     page.expectText('.poll-members-form', 'Manage voters')
-    page.expectText('.poll-members-form .help-link', 'User manual')
+    page.expectText('.poll-members-form .help-link', 'Help')
     page.expectText('.poll-members-form__page-count', '1–25 of 25')
     page.expectElement('.poll-members-form__weight')
     page.click('.poll-members-form__weight')

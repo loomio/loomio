@@ -1,10 +1,10 @@
 ---
 title: Користування темами
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 2aee56bf5b9ce943
   print: 8fe89975fc6f1603
   markdown: 132ed1c2bbbb8e16
-  thread-settings-and-display: b8126bdb685def53
+  thread-settings-and-display: 3c412b80fbf779f5
   pin-or-unpin-a-thread: 534e7035423407a5
   move-a-thread: 6f5d4d00322a74e4
   lock-or-unlock-a-thread: e8e52c59631ff335
@@ -50,7 +50,6 @@ needs_review:
   discussion-context: use "висновок" instead of "рішення" for "outcome"
   navigation: check the interface label "**Новий для тебе**" for "**New to you**"
   email-notifications-for-this-thread: use "Вибір" instead of "Виберіть" for "Choose"
-  thread-settings-and-display: use "Вибір" instead of "Виберіть" for "Choose"
   markdown: check the interface label "**Згоден**" for "**Agree**"; use "Вибір" instead of "Виберіть" for "Choose"
 ---
 
@@ -196,6 +195,38 @@ needs_review:
 
 ![Історія сповіщень обговорення](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Налаштування теми
+
+Адміністратори теми та адміністратори групи можуть вибрати **Налаштування теми**, щоб змінити розташування відповідей і налаштувати інші параметри обговорення.
+
+![](thread_display.png)
+
+![Налаштування теми з параметрами розташування дописів, обмеженнями опитувань, дозволами на вкладення та обмеженням довжини коментаря](thread_layout_options.png)
+
+### Розташування дописів
+
+Вибір режиму **Хронологічно** відображає дописи в порядку їх публікації, а режиму **Вкладені** — групує відповіді під дописами, на які вони відповідають. Це змінює розташування дописів для всіх учасників теми.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Лише одне опитування одночасно
+
+Коли цей параметр увімкнено, користувачі не можуть почати інше опитування, доки поточне опитування не буде закрито. Для нових тем цей параметр типово вимкнено. Теми, створені із шаблону обговорення, використовують налаштування цього шаблону.
+
+### Лише адміністратори можуть додавати вкладення
+
+Увімкніть цей параметр, щоб лише адміністратори теми та адміністратори групи могли додавати нові файли й зображення в тексті будь-де в темі, зокрема у відповідях на опитування та відповідях електронною поштою. Наявні вкладення залишаються доступними, а учасники й надалі можуть редагувати свій текст або видаляти вкладення.
+
+Шаблони обговорень і опитувань можуть задавати цей параметр для нових тем. Див. [Шаблони обговорень](/en/user_manual/discussions/templates) і [Шаблони опитувань](/en/user_manual/polls/poll_templates).
+
+### Обмеження довжини коментаря
+
+Установіть максимальну кількість символів у коментарі, щоб дописи були стислими. Залиште поле порожнім, щоб не обмежувати довжину. Обмеження діє для всіх, зокрема адміністраторів.
+
 <!-- translation-section: actions -->
 
 ## Дії
@@ -293,18 +324,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Заголовки й підписи відображаються вибраною вами мовою. Текст, написаний учасниками, залишається мовою оригіналу.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Налаштування та відображення теми
-
-Адміністратори групи можуть вибрати **Налаштування теми**, щоб змінити розташування відповідей і налаштувати інші параметри обговорення.
-
-![](thread_display.png)
-
-Виберіть **Хронологія**, щоб показувати дописи в порядку їх публікації, або **Threaded**, щоб групувати відповіді під дописами, на які вони відповідають. Налаштування теми також визначають, чи можуть кілька опитувань тривати одночасно, і дають змогу встановити максимальну довжину коментаря. Ці налаштування діють для всіх учасників обговорення.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

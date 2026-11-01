@@ -1,10 +1,10 @@
 ---
 title: 投票テンプレート
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: b639b0623cf3c623
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 318125ec61eeefea
   save-a-poll-as-a-template: 723208bb847716c3
   start-a-new-template: 97787fe021e66307
-  configure-the-template: 6a7fbe6df6006da3
+  configure-the-template: 74b3f4dc05dc1898
   edit-a-default-template: 81b5fdb907a06b19
 title_source: 114cca246e357304
 title_generated: 9112f2db22c72b79
@@ -86,6 +86,8 @@ title_generated: 9112f2db22c72b79
 テンプレートをどのようなときに使うかがわかる名前とサブタイトルを付けます。ほかの項目も、再利用しやすいように変更できます。**テンプレートを保存**を選択すると、新しい提案やアンケートを開始するときに、そのテンプレートが一覧に表示されます。
 
 [![方針変更の同意プロセス用テンプレートのフォーム全体](poll_template_new.png)](poll_template_new.png)
+
+単独のアンケートでは、**管理者のみ添付ファイルを追加できます**を有効にすると、回答や返信も含め、新しいファイルや本文中の画像を追加できるのはスレッド管理者とグループ管理者に限られます。既存のスレッド内で開始したアンケートには、そのスレッドの添付ファイル設定が適用されます。テンプレートの変更は、今後開始するアンケートにのみ適用されます。
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

@@ -38,10 +38,10 @@ module.exports = {
 
     page.click('.action-menu');
     page.click('.action-dock__button--edit_group');
-    page.expectText('.group-form__guide-link', 'User guide');
+    page.expectText('.group-form__guide-link', 'Help');
     test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/profile');
     page.click('.group-form__privacy-tab');
-    page.expectText('.group-form__guide-link', 'User guide');
+    page.expectText('.group-form__guide-link', 'Help');
     test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/privacy');
     test.assert.selected('.group-form__privacy-parent_members input');
     page.expectText('.group-form__membership-granted-upon-request', 'Join without approval');
@@ -56,7 +56,7 @@ module.exports = {
     test.assert.selected('.group-form__membership-granted-upon-approval input');
     page.click('.group-form__membership-granted-upon-request label');
     page.click('.group-form__permissions-tab');
-    page.expectText('.group-form__guide-link', 'User guide');
+    page.expectText('.group-form__guide-link', 'Help');
     test.assert.attributeContains('.group-form__guide-link', 'href', '/user_manual/groups/settings/permissions');
     page.click('.group-form__parent-members-can-see-discussions');
     page.click('.group-form__submit-button');

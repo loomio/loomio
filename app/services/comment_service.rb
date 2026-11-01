@@ -7,6 +7,7 @@ class CommentService
     raise ParentDeleted, "Comment parent has been deleted" if parent.nil? || parent.discarded?
 
     actor.ability.authorize! :create, comment
+    AttachmentPermissionService.authorize!(record: comment, actor: actor)
     comment.author = actor
     return comment unless comment.valid?
 
@@ -71,6 +72,7 @@ class CommentService
     actor.ability.authorize! :update, comment
     comment.edited_at = Time.zone.now
 
+    AttachmentPermissionService.authorize!(record: comment, actor: actor, params: params)
     comment.assign_attributes_and_files(params)
     unless comment.valid?
       Sentry.metrics.count("comment.update_failed", attributes: { columns: comment.errors.attribute_names.join(',') })

@@ -24,6 +24,9 @@ for (const [state, params] of [
     page.expectText('.poll-template-form-fields__details', 'Proposed article changes');
     page.expectText('.poll-template-form', 'I support these changes');
     page.expectText('.poll-template-form', 'These changes need revision');
+    page.click('.topic-settings__comments label');
+    page.click('.topic-settings__attachments-admin-only label');
+    page.fillIn('.topic-settings__comment-length input', '120');
     page.fillIn('.poll-template-form-fields__process-subtitle input', 'Reusable article consent process');
     page.click('.poll-template-form__submit');
     page.expectNoElement('.poll-template-form__submit', 8000);
@@ -46,10 +49,20 @@ for (const [state, params] of [
     test.assert.selected('.poll-common-form__opens-immediately input');
     page.expectText('.poll-common-form', 'I support these changes');
     page.expectText('.poll-common-form', 'These changes need revision');
+    page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .topic-settings__comments');
+    test.assert.not.selected('.poll-common-form .topic-settings__comments input');
+    test.assert.selected('.poll-common-form .topic-settings__attachments-admin-only input');
+    page.expectValue('.poll-common-form .topic-settings__comment-length input', '120');
     page.click('.poll-common-form__submit');
     page.expectNoElement('.poll-common-form__submit', 8000);
     page.expectText('.topic-header .tags-display', 'Consent');
     page.expectText('.topic-header .tags-display', 'Significant decisions');
+    page.click('.topic-sidebar .action-dock__button--thread_settings');
+    page.expectElement('.topic-arrangement-form .topic-settings__comments');
+    page.expectNoElement('.topic-arrangement-form .topic-settings__single-poll');
+    test.assert.not.selected('.topic-arrangement-form .topic-settings__comments input');
+    test.assert.selected('.topic-arrangement-form .topic-settings__attachments-admin-only input');
+    page.expectValue('.topic-arrangement-form .topic-settings__comment-length input', '120');
   };
 }
 

@@ -1,15 +1,15 @@
 ---
 title: Discussiesjablonen
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 2308140934edbe9d
   how-templates-are-used: 67913b701f6f755a
   choose-who-is-notified-by-default: c3a8abecfdaa9063
-  template-settings: 2fb5f27c2b978fa2
+  template-settings: 7cd181a8c66eca83
   example-bottle-trial-review: 8e3bc96941e704de
   create-a-template: 5c92f4175b4c2089
   manage-the-template-list: e11ea0b9d293553c
@@ -94,8 +94,9 @@ Groepsadmins kunnen een sjabloon bewerken via het actiemenu naast het sjabloon i
 - **Beschrijving**: de begintekst van de discussie. Gebruik koppen, vragen of links om richting te geven aan wat mensen schrijven.
 - **Uitnodigen**: of iedereen in de groep standaard wordt uitgenodigd. Zie [Kies wie standaard een melding krijgt](#choose-who-is-notified-by-default).
 - **Peilingsjablonen**: peilingen die voor dit proces worden voorgesteld. Ze staan op het formulier voor een nieuwe discussie. Ze verschijnen ook als eerste wanneer iemand een peiling in de discussie start. Ze starten niet automatisch.
-- **Gelijktijdige peilingen toestaan**: of er meer dan één peiling tegelijk open kan staan in de discussie.
+- **Slechts één peiling tegelijk**: voorkom dat een andere peiling wordt gestart voordat de huidige peiling is gesloten. Standaard uitgevinkt bij nieuwe sjablonen.
 - **Maximale lengte van reacties**: een optionele maximale lengte voor reacties.
+- **Alleen admins kunnen bijlagen toevoegen**: beperk het toevoegen van nieuwe bestanden en afbeeldingen in de tekst tot threadadmins en groepsadmins in discussies die vanuit dit sjabloon zijn gestart.
 
 Gebruik alleen een standaardtitel als die steeds blijft kloppen. Schrijf anders een voorbeeldtitel die de auteur aanspoort om de specifieke evaluatie, periode, het document of het besluit te benoemen.
 

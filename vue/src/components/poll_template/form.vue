@@ -573,35 +573,7 @@ export default {
     v-card-text
       v-divider.mb-4
       .text-body-large.pb-2(v-t="'thread_arrangement_form.thread_settings'")
-      v-list(bg-color="transparent")
-        v-list-item(
-          lines="two"
-          class="px-0"
-          :title="$t('thread_arrangement_form.allow_comments')"
-          :subtitle="$t('thread_arrangement_form.allow_comments_description')"
-          @click="pollTemplate.allowComments = !pollTemplate.allowComments"
-        )
-          template(v-slot:prepend)
-            v-checkbox-btn(v-model="pollTemplate.allowComments" @click.stop)
-        v-list-item(
-          lines="two"
-          class="px-0"
-          :title="$t('thread_arrangement_form.allow_reactions')"
-          :subtitle="$t('thread_arrangement_form.allow_reactions_description')"
-          @click="pollTemplate.allowReactions = !pollTemplate.allowReactions"
-        )
-          template(v-slot:prepend)
-            v-checkbox-btn(v-model="pollTemplate.allowReactions" @click.stop)
-      .text-body-large.pt-4.pb-2(v-t="'thread_arrangement_form.comment_length_max'")
-      .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
-      v-number-input(
-        v-model="pollTemplate.commentLengthMax"
-        :hint="$t('thread_arrangement_form.comment_length_max_hint')"
-        placeholder="e.g. 500"
-        persistent-hint
-        :min="1"
-        control-variant="hidden"
-      )
+      topic-settings-fields(:model="pollTemplate" kind="poll")
 
     v-card-actions.poll-template-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')

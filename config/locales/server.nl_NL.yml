@@ -158,6 +158,7 @@ nl_NL:
     direct_thread_anonymous_poll: Een discussie met een anonieme peiling kan niet worden omgezet in een directe discussie
     invitation_rate_limit_reached_contact_support: Het dagelijkse limiet voor uitnodigingen is bereikt. Neem direct contact op met de supportafdeling.
     subscription_thread_limit_reached: Deze organisatie heeft de limiet voor discussies bereikt. Upgrade je abonnement om Loomio te blijven gebruiken.
+    attachments_admin_only: Alleen threadadmins en groepsadmins kunnen bijlagen aan deze thread toevoegen
   group:
     error:
       handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-

@@ -1,10 +1,10 @@
 ---
 title: Szavazási sablonok
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: d0536d14f08b8f1f
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 6e59f45ace92921d
   save-a-poll-as-a-template: 803aeebd4d7a065e
   start-a-new-template: 41f96c7b3e0a6415
-  configure-the-template: 166d47166cda7044
+  configure-the-template: 19236a998c0515ce
   edit-a-default-template: 8572d30093938299
 title_source: 114cca246e357304
 title_generated: bf81c7a2bbcc8a9b
@@ -86,6 +86,8 @@ Egy alapértelmezett sablon, például a **Beleegyezés** átalakításához nyi
 Adj a sablonnak olyan nevet és alcímet, amelyek leírják, mikor érdemes használni. A többi mezőt is módosíthatod, hogy jobban megfeleljenek az újrafelhasználásnak. A **Sablon mentése** kiválasztása után a sablon megjelenik a listában, amikor valaki új javaslatot vagy szavazást indít.
 
 [![A Szabályzatmódosítás beleegyezési folyamata sablon teljes űrlapja](poll_template_new.png)](poll_template_new.png)
+
+Önálló szavazásoknál a **Csak adminok adhatnak hozzá mellékletet** beállítás csak a száladminok és a csoportadminok számára engedélyezi új fájlok és szövegbe ágyazott képek hozzáadását, a szavazatok indoklásában és a válaszokban is. A meglévő szálon belül indított szavazások az adott szál mellékletekre vonatkozó beállítását követik. A sablon módosítása csak a később indított szavazásokra van hatással.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

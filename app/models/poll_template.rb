@@ -50,6 +50,7 @@ class PollTemplate < ApplicationRecord
     allow_comments
     allow_reactions
     comment_length_max
+    attachments_admin_only
     stv_seats
     stv_method
     stv_quota
@@ -137,6 +138,7 @@ class PollTemplate < ApplicationRecord
     :can_respond_maybe,
     :tags,
     :comment_length_max,
+    :attachments_admin_only,
     :hidden_at,
     :discarded_at,
     :attachments

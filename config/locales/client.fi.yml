@@ -1896,6 +1896,8 @@ fi:
     comment_length_max_help: Jätä tyhjäksi, jos aihetta ei rajoiteta
     comment_length_max_description: Kannusta ytimekkäitä kommentteja asettamalla niille enimmäispituus
     comment_length_max_hint: Kommentin enimmäismäärä merkkejä. Jätä tyhjäksi, jos et halua merkkien määrää.
+    only_admins_can_add_attachments: Vain ylläpitäjät voivat lisätä liitteitä
+    only_one_poll_at_a_time: Vain yksi kysely kerrallaan
   delete_thread_form:
     title: Poista lanka
     body: Haluatko varmasti poistaa tämän ketjun?

@@ -258,7 +258,7 @@ class TopicServiceTest < ActiveSupport::TestCase
   end
 
   test "move does not convert a thread containing an anonymous poll to direct" do
-    @topic.update!(allow_concurrent_polls: true)
+    @topic.update!(polls_one_at_a_time: false)
     PollService.create(params: {
       title: "Anonymous poll",
       poll_type: "proposal",

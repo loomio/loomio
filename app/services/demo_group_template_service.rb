@@ -269,7 +269,7 @@ class DemoGroupTemplateService
           private: true,
           max_depth: 3,
           tags: definition.fetch("tags", []),
-          allow_concurrent_polls: true,
+          polls_one_at_a_time: false,
           title: definition.fetch("title"),
           description: definition.fetch("description"),
           description_format: definition.fetch("description_format", "md")

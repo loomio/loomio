@@ -1,15 +1,15 @@
 ---
 title: Diskussionsvorlagen
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 1886093dd5128b3c
   how-templates-are-used: 2f4cd073b70433e7
   choose-who-is-notified-by-default: 91c68ed243760be0
-  template-settings: 5aa53615efec7ae3
+  template-settings: d01b700d29ccdf59
   example-bottle-trial-review: 966f1df72550fe4e
   create-a-template: 71bdcac7fbb20017
   manage-the-template-list: d4d079feab24bbd7
@@ -33,8 +33,6 @@ generated:
   save-an-existing-discussion-as-a-template: 4ac4b04130de0724
 title_source: 5ac608aa42806d13
 title_generated: 3bc3bb95557b6309
-needs_review:
-  template-settings: use "Entscheidung" instead of "Abstimmung" for "decision"
 ---
 
 <!-- translation-section: introduction -->
@@ -96,8 +94,9 @@ Admins der Gruppe können eine Vorlage über das Aktionsmenü neben der Vorlage 
 - **Kontext**: der Ausgangstext der Diskussion. Verwende Überschriften, Fragen oder Links, um den Teilnehmenden Orientierung beim Schreiben zu geben.
 - **Einladen**: ob standardmäßig alle in der Gruppe eingeladen werden. Siehe [Wähle, wer standardmäßig benachrichtigt wird](#choose-who-is-notified-by-default).
 - **Umfragevorlagen**: Abstimmungen, die für diesen Ablauf vorgeschlagen werden. Sie werden im Formular für eine neue Diskussion aufgelistet. Sie erscheinen auch zuerst, wenn jemand eine Abstimmung in der Diskussion startet. Sie starten nicht automatisch.
-- **Gleichzeitige Abstimmungen zulassen**: ob in der Diskussion mehrere Abstimmungen gleichzeitig offen sein können.
+- **Nur eine Abstimmung gleichzeitig**: verhindert, dass eine weitere Abstimmung gestartet wird, bevor die aktuelle Abstimmung beendet ist. Bei neuen Vorlagen standardmäßig deaktiviert.
 - **Kommentarlängenbegrenzung**: eine optionale Höchstlänge für Kommentare.
+- **Nur Admins können Anhänge hinzufügen**: beschränkt das Hinzufügen neuer Dateien und direkt im Text eingebundener Bilder auf Thread-Admins und Gruppen-Admins in Diskussionen, die mit dieser Vorlage gestartet werden.
 
 Verwende einen Standardtitel nur, wenn er dauerhaft zutreffend bleibt. Schreibe andernfalls einen Beispieltitel, der die Person, die die Diskussion startet, dazu anregt, die konkrete Überprüfung, den Zeitraum, das Dokument oder die Entscheidung zu benennen.
 

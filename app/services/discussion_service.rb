@@ -1,5 +1,5 @@
 class DiscussionService
-  TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls allow_comments allow_reactions comment_length_max locked_at pinned_at tags].freeze
+  TOPIC_ATTRS = %w[group_id private max_depth newest_first polls_one_at_a_time allow_comments allow_reactions comment_length_max attachments_admin_only locked_at pinned_at tags].freeze
   TOPIC_ATTRS_UPDATE = (TOPIC_ATTRS - %w[group_id tags]).freeze
 
   def self.build(params:, actor:)
@@ -24,6 +24,7 @@ class DiscussionService
   def self.create(params:, actor:, &on_topic_item)
     discussion = build(params: params, actor: actor)
     actor.ability.authorize!(:create, discussion)
+    AttachmentPermissionService.authorize!(record: discussion, actor: actor)
     discussion.tags_pending = TagService.permitted_tag_names(discussion.group, discussion.tags_pending, actor)
     return discussion unless TopicService.validate_topicable(discussion)
 
@@ -101,6 +102,8 @@ class DiscussionService
 
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*TOPIC_ATTRS).slice(*TOPIC_ATTRS_UPDATE)
+    AttachmentPermissionService.authorize_topic_settings!(topic: discussion.topic, params: topic_params, actor: actor)
+    AttachmentPermissionService.authorize!(record: discussion, actor: actor, params: params)
     discussion.assign_attributes_and_files(params)
     unless discussion.valid?
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })

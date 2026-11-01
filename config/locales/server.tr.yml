@@ -154,6 +154,7 @@ tr:
     direct_thread_anonymous_poll: Anonim anket içeren bir konu, doğrudan bir konuya dönüştürülemez.
     invitation_rate_limit_reached_contact_support: Günlük davet limiti doldu. Lütfen hemen destek ekibiyle iletişime geçin.
     subscription_thread_limit_reached: Bu kuruluş konu sınırına ulaştı. Loomio'yu kullanmaya devam etmek için lütfen planınızı yükseltin.
+    attachments_admin_only: Bu ileti dizisine yalnızca ileti dizisi yöneticileri ve grup yöneticileri ek ekleyebilir
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"

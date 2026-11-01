@@ -1,10 +1,10 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: c27c64d76d724643
   print: 0f31c6373354dabb
   markdown: 7a818d7100143305
-  thread-settings-and-display: dbad2a7ee3fbb369
+  thread-settings-and-display: d8bdb5e8ee279a5a
   pin-or-unpin-a-thread: 3cb7608b7a17df07
   move-a-thread: 3015baa5dae6c908
   lock-or-unlock-a-thread: '4369712522914425'
@@ -191,6 +191,38 @@ Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de
 
 ![Historique des notifications de la discussion](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Paramètres du fil
+
+Les administrateurs du fil et les administrateurs du groupe peuvent sélectionner **Paramètres du fil de discussion** pour modifier l’agencement des réponses et configurer d’autres options de la discussion.
+
+![](thread_display.png)
+
+![Paramètres du fil avec l’agencement, les limites des sondages, les autorisations relatives aux pièces jointes et la limite de longueur des commentaires](thread_layout_options.png)
+
+### Agencement
+
+Choisissez **Chronologique** pour afficher les éléments dans leur ordre de publication, ou **Imbriqué** pour regrouper les réponses sous l’élément auquel elles répondent. Ce choix modifie l’agencement pour toutes les personnes qui participent au fil.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Un seul sondage à la fois
+
+Lorsque cette option est cochée, les utilisateurs ne peuvent pas démarrer un autre sondage tant que le sondage en cours n’est pas clôturé. Cette option est décochée par défaut pour les nouveaux fils. Les fils créés à partir d’un modèle de discussion utilisent le réglage de ce modèle.
+
+### Seuls les administrateurs peuvent ajouter des pièces jointes
+
+Activez ce paramètre pour réserver l’ajout de fichiers et d’images intégrées aux administrateurs du fil et aux administrateurs du groupe dans l’ensemble du fil, y compris dans les réponses aux sondages et les réponses par e-mail. Les pièces jointes existantes restent disponibles, et les participants peuvent toujours modifier leur texte ou supprimer des pièces jointes.
+
+Les modèles de discussion et de sondage peuvent définir ce paramètre pour les nouveaux fils. Consultez [Modèles de discussion](/en/user_manual/discussions/templates) et [Modèles de sondage](/en/user_manual/polls/poll_templates).
+
+### Limite de longueur des commentaires
+
+Définissez un nombre maximal de caractères par commentaire pour que les contributions restent concises. Laissez le champ vide pour ne pas imposer de limite. La limite s’applique à tout le monde, y compris aux administrateurs.
+
 <!-- translation-section: actions -->
 
 ## Actions
@@ -288,18 +320,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Les titres et les libellés utilisent la langue que vous avez sélectionnée. Le contenu rédigé par les participants reste dans sa langue d’origine.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Paramètres et affichage du fil
-
-Les administrateurs du groupe peuvent sélectionner **Paramètres du fil de discussion** pour modifier l’agencement des réponses et configurer d’autres options de la discussion.
-
-![](thread_display.png)
-
-Choisissez **Chronologie** pour afficher les éléments dans leur ordre de publication, ou **En fils** pour regrouper les réponses sous l’élément auquel elles répondent. Les paramètres du fil permettent également de déterminer si plusieurs sondages peuvent être ouverts en même temps et de fixer une longueur maximale pour les commentaires. Ces paramètres s’appliquent à toutes les personnes qui participent à la discussion.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

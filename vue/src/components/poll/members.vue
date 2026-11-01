@@ -227,7 +227,7 @@ onMounted(() => {
 <template lang="pug">
 v-card.poll-members-form(:title="t('poll_common_form.manage_voters')" style="max-height: 90vh; display: flex; flex-direction: column; overflow-y: auto")
   template(v-slot:append)
-    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/polls/manage_voters#invite-people-to-vote" label="common.user_manual" variant="text")
+    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/polls/manage_voters#invite-people-to-vote" variant="text")
     dismiss-modal-button
   .px-4.pt-4
     recipients-autocomplete(

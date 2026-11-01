@@ -1,10 +1,10 @@
 ---
 title: Plantillas de sondeo
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: a703609f1b81eff5
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 000b0a7947e547b1
   save-a-poll-as-a-template: ccce3fba3c63ecbe
   start-a-new-template: '069a511371c97e60'
-  configure-the-template: baa241c02cb2bffb
+  configure-the-template: 25ecbf8c888aa0f8
   edit-a-default-template: 7f0ee08027463464
 title_source: 114cca246e357304
 title_generated: ab9dd5c48dbfb316
@@ -86,6 +86,8 @@ Para adaptar una plantilla predeterminada como **Consentimiento**, abre el menú
 Dale a la plantilla un nombre y un subtítulo que describan cuándo usarla. Puedes modificar cualquiera de los demás campos para facilitar su reutilización. Después de seleccionar **Guardar plantilla**, la plantilla aparecerá en la lista cuando alguien inicie una nueva propuesta o encuesta.
 
 [![El formulario completo de la plantilla Proceso de consentimiento para cambios de políticas](poll_template_new.png)](poll_template_new.png)
+
+En las encuestas independientes, **Solo los admins pueden añadir archivos adjuntos** permite que únicamente los admins del hilo y los admins del grupo añadan archivos nuevos e imágenes insertadas en el texto, incluso en las respuestas y sus réplicas. Las encuestas iniciadas dentro de un hilo existente siguen la configuración de archivos adjuntos de ese hilo. Los cambios en la plantilla solo afectan a las encuestas futuras.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

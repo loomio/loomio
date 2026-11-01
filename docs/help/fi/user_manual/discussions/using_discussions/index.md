@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 7640a063f929b3ab
   print: '019a05246c3ea0bc'
   markdown: 0614f2e1f3127dea
-  thread-settings-and-display: 0d71c7e52a8077d6
+  thread-settings-and-display: f6ef2902fe2b2436
   pin-or-unpin-a-thread: d81d501c2b75c9e9
   move-a-thread: f0b7a83519058ef4
   lock-or-unlock-a-thread: 18b3090e8625fb81
@@ -46,8 +46,8 @@ generated:
 title_source: 99e2d1eb313f35c4
 title_generated: cf8604cd3cd81e88
 needs_review:
-  thread-settings-and-display: use "vaihtoehto" instead of "asetukset" for "option"
   pin-or-unpin-a-thread: use "kiinnittää" instead of "pin" for "pin"
+  thread-settings-and-display: use "vaihtoehto" instead of "asetus" for "option"
 ---
 
 <!-- translation-section: introduction -->
@@ -192,6 +192,38 @@ Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko
 
 ![Keskustelun ilmoitushistoria](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Ketjun asetukset
+
+Ketjun ylläpitäjät ja ryhmän ylläpitäjät voivat valita **Ketjun asetukset**, kun he haluavat muuttaa vastausten järjestelyä ja määrittää muita keskustelun vaihtoehtoja.
+
+![](thread_display.png)
+
+![Ketjun asetukset: asettelu, kyselyjen rajoitukset, liitteiden käyttöoikeudet ja kommentin pituusrajoitus](thread_layout_options.png)
+
+### Asettelu
+
+Valitse **Kronologinen**, jos haluat näyttää sisällön julkaisujärjestyksessä, tai **Sisäkkäinen**, jos haluat ryhmitellä vastaukset sen kohdan alle, johon ne vastaavat. Tämä muuttaa asettelua kaikille ketjun osallistujille.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Vain yksi kysely kerrallaan
+
+Kun tämä asetus on valittuna, käyttäjät eivät voi aloittaa uutta kyselyä ennen kuin nykyinen kysely on suljettu. Uusissa ketjuissa asetus ei ole oletusarvoisesti valittuna. Keskustelumallista aloitetut ketjut käyttävät mallin asetusta.
+
+### Vain ylläpitäjät voivat lisätä liitteitä
+
+Ota tämä asetus käyttöön, jos haluat sallia uusien tiedostojen ja tekstin sekaan lisättävien kuvien lisäämisen vain ketjun ylläpitäjille ja ryhmän ylläpitäjille koko ketjussa, myös kyselyvastauksissa ja sähköpostivastauksissa. Aiemmat liitteet pysyvät saatavilla, ja osallistujat voivat edelleen muokata tekstejään tai poistaa liitteitä.
+
+Keskustelu- ja kyselymallit voivat määrittää tämän asetuksen uusille ketjuille. Katso [Keskustelumallit](/en/user_manual/discussions/templates) ja [Kyselymallit](/en/user_manual/polls/poll_templates).
+
+### Kommentin pituusrajoitus
+
+Aseta kommentin enimmäismerkkimäärä, jotta kommentit pysyvät tiiviinä. Jätä kenttä tyhjäksi, jos et halua rajoittaa pituutta. Rajoitus koskee kaikkia, myös ylläpitäjiä.
+
 <!-- translation-section: actions -->
 
 ## Toiminnot
@@ -289,18 +321,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Otsikot ja nimikkeet ovat valitsemallasi kielellä. Osallistujien kirjoittama sisältö säilyy alkuperäisellä kielellään.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Ketjun asetukset ja näkymä
-
-Ryhmän ylläpitäjät voivat valita **Ketjun asetukset**, kun he haluavat muuttaa vastausten järjestelyä ja määrittää muita keskustelun vaihtoehtoja.
-
-![](thread_display.png)
-
-Valitse **Aikajana**, jos haluat näyttää sisällön julkaisujärjestyksessä, tai **Threaded**, jos haluat ryhmitellä vastaukset sen kohdan alle, johon ne vastaavat. Ketjun asetuksissa voit myös määrittää, saako useita kyselyjä olla käynnissä yhtä aikaa, ja asettaa kommentin enimmäispituuden. Nämä asetukset koskevat kaikkia keskustelun osallistujia.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

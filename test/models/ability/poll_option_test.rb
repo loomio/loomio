@@ -7,7 +7,7 @@ class Ability::PollOptionTest < ActiveSupport::TestCase
 
     %i[discussion_topic direct_topic public_discussion_topic].each do |topic_name|
       topic = topics(topic_name)
-      topic.update!(allow_concurrent_polls: true)
+      topic.update!(polls_one_at_a_time: false)
       author = topic_name == :direct_topic ? users(:guest_admin_normal) : users(:admin)
       topic.group.add_admin!(author) if topic_name == :public_discussion_topic
 

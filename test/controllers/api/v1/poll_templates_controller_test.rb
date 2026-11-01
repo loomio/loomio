@@ -244,14 +244,15 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute data["template"].key?("author_id")
   end
 
-  test "export keeps weighted voting" do
-    template = create_poll_template(process_name: "Weighted", weighted_voting: true)
+  test "export keeps weighted voting and attachment restrictions" do
+    template = create_poll_template(process_name: "Weighted", weighted_voting: true, attachments_admin_only: true)
 
     sign_in @user
     get :export, params: { id: template.id, group_id: @group.id }
 
     assert_response :success
     assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "weighted_voting")
+    assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "attachments_admin_only")
   end
 
   test "export supports built-in poll templates" do

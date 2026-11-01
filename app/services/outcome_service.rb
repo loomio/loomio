@@ -37,6 +37,7 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
+    AttachmentPermissionService.authorize!(record: outcome, actor: actor)
     outcome.assign_attributes(author: actor)
     unless outcome.valid?
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
@@ -88,6 +89,7 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
+    AttachmentPermissionService.authorize!(record: outcome, actor: actor, params: params)
     outcome.assign_attributes_and_files(params.slice(:review_on, :statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews, :poll_option_id))
     unless outcome.valid?
       Sentry.metrics.count("outcome.update_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })

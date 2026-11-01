@@ -1896,6 +1896,8 @@ sl:
     comment_length_max_help: Pustite prazno, če ni omejitve tem
     comment_length_max_description: Spodbujajte jedrnate komentarje z določitvijo največje dolžine
     comment_length_max_hint: Največje dovoljeno število znakov na komentar. Pustite prazno, če ni omejitve.
+    only_admins_can_add_attachments: Priloge lahko dodajajo le skrbniki
+    only_one_poll_at_a_time: Le ena anketa hkrati
   delete_thread_form:
     title: Izbriši temo
     body: Ali ste prepričani, da želite izbrisati to nit?

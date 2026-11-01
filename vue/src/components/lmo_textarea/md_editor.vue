@@ -80,6 +80,7 @@ const {
 );
 
 const {
+  canAttachFiles,
   files,
   imageFiles,
   resetFiles,
@@ -119,6 +120,7 @@ const onPaste = (event) => {
 };
 
 const handleUploads = (uploadFiles) => {
+  if (!canAttachFiles.value) { return; }
   Array.from(uploadFiles).forEach(file => {
     if ((/image/i).test(file.type)) {
       insertImage(file);
@@ -218,7 +220,7 @@ div(style="position: relative")
     p(v-t="'common.empty'")
 
   .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
-    v-btn(icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
+    v-btn(v-if="canAttachFiles" icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
     v-btn.e2e-wysiwyg-btn(variant="text" size="small" :loading="converting" @click="convertToHtmlHandler") {{ t('formatting.wysiwyg') }}
     v-spacer

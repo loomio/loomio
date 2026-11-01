@@ -37,6 +37,7 @@ class PollService
   def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
     actor.ability.authorize!(:create, poll)
+    AttachmentPermissionService.authorize!(record: poll, actor: actor)
     poll.tags_pending = TagService.permitted_tag_names(poll.group, poll.tags_pending, actor)
     return poll unless TopicService.validate_topicable(poll)
 
@@ -91,6 +92,8 @@ class PollService
       # Apply edits to current state under the opening/voting lock, so a form
       # loaded before opening cannot change frozen settings after it opens.
       poll.reload
+      AttachmentPermissionService.authorize_topic_settings!(topic: poll.topic, params: topic_params, actor: actor)
+      AttachmentPermissionService.authorize!(record: poll, actor: actor, params: params)
       poll.assign_attributes_and_files(params.except(:poll_template_id, :poll_template_key))
       if poll.will_save_change_to_anonymous? && poll.anonymous?
         poll.assign_attributes(hide_results: :until_closed, stance_reason_required: :disabled,
