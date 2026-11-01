@@ -1,10 +1,10 @@
 ---
 title: Modèles de sondage
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: f618ac9c58fb2d1b
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: d5fb47d49b03482d
   save-a-poll-as-a-template: 382da00f01cd87df
   start-a-new-template: 12253dceea1c3b74
-  configure-the-template: 212b0fbb68e5604c
+  configure-the-template: e22557220a7e5fad
   edit-a-default-template: 8e612d7b6c8ef601
 title_source: 114cca246e357304
 title_generated: cd672e826498e8c7
@@ -86,6 +86,8 @@ Pour adapter un modèle par défaut comme **Consentement**, ouvrez son menu d’
 Donnez au modèle un nom et un sous-titre qui indiquent quand l’utiliser. Vous pouvez modifier tous les autres champs pour les rendre plus adaptés à la réutilisation. Après avoir sélectionné **Enregistrer le modèle**, le modèle apparaîtra dans la liste lorsqu’une personne lancera une nouvelle proposition ou un nouveau sondage.
 
 [![Le formulaire complet du modèle de processus de consentement pour un changement de politique](poll_template_new.png)](poll_template_new.png)
+
+Pour les sondages autonomes, le paramètre **Seuls les administrateurs peuvent ajouter des pièces jointes** réserve l’ajout de nouveaux fichiers et d’images intégrées aux administrateurs du fil et du groupe, y compris dans les réponses au sondage et les réponses aux commentaires. Les sondages lancés dans un fil existant suivent le paramètre de pièces jointes de ce fil. La modification du modèle ne s’applique qu’aux futurs sondages.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

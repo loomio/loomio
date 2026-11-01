@@ -1,15 +1,15 @@
 ---
 title: Modelli di discussione
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 99c0d868c6f66383
   how-templates-are-used: ce39b24829dd3e38
   choose-who-is-notified-by-default: ff962121c0f764c6
-  template-settings: 9c268506d645904b
+  template-settings: 6b5dd4ed77b29e5d
   example-bottle-trial-review: 589d545faca4e8ef
   create-a-template: 2c97964c3151dbca
   manage-the-template-list: dea7c70a5be3627b
@@ -94,8 +94,9 @@ Gli amministratori del gruppo possono modificare un modello dal menu delle azion
 - **Contesto**: il testo iniziale della discussione. Usa titoli, domande o link per guidare ciò che le persone scrivono.
 - **Invita**: indica se invitare tutti nel gruppo per impostazione predefinita. Vedi [Scegli chi riceve le notifiche per impostazione predefinita](#choose-who-is-notified-by-default).
 - **Modelli di sondaggio**: i sondaggi suggeriti per questo processo. Sono elencati nel modulo per la nuova discussione. Compaiono anche per primi quando qualcuno avvia un sondaggio nella discussione. Non si avviano automaticamente.
-- **Consenti sondaggi simultanei**: indica se nella discussione può essere aperto più di un sondaggio contemporaneamente.
+- **Un solo sondaggio alla volta**: impedisce di avviare un altro sondaggio finché quello attuale non è chiuso. L'opzione è deselezionata per impostazione predefinita nei nuovi modelli.
 - **limite di lunghezza dei commenti**: una lunghezza massima facoltativa per i commenti.
+- **Solo gli amministratori possono aggiungere allegati**: consente solo agli amministratori della conversazione e del gruppo di aggiungere nuovi file e immagini nel testo nelle discussioni avviate da questo modello.
 
 Usa un titolo predefinito solo quando resterà appropriato. Altrimenti, scrivi un titolo di esempio che inviti l'autore a indicare la revisione, il periodo, il documento o la decisione specifici.
 

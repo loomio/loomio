@@ -1,10 +1,10 @@
 ---
 title: Peilingsjablonen
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 602c75aa282bf6e3
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: c2773799003e5ce8
   save-a-poll-as-a-template: 3ae361db115248c8
   start-a-new-template: b72713ccb3dc723a
-  configure-the-template: 8db9fc549ef830ba
+  configure-the-template: b5e67de82e90976a
   edit-a-default-template: 3db420d6c20e1602
 title_source: 114cca246e357304
 title_generated: '0990c400c548d976'
@@ -86,6 +86,8 @@ Om een standaardsjabloon zoals **Consent** aan te passen, open je het actiemenu 
 Geef het sjabloon een naam en ondertitel die beschrijven wanneer je het gebruikt. Je kunt alle andere velden aanpassen om ze geschikter te maken voor hergebruik. Nadat je **Sjabloon opslaan** hebt geselecteerd, verschijnt het sjabloon in de lijst wanneer mensen een nieuw voorstel of een nieuwe peiling starten.
 
 [![Het volledige sjabloonformulier voor het consentproces voor beleidswijzigingen](poll_template_new.png)](poll_template_new.png)
+
+Voor op zichzelf staande peilingen zorgt **Alleen admins kunnen bijlagen toevoegen** ervoor dat alleen thread admins en group admins nieuwe bestanden en inline afbeeldingen kunnen toevoegen, ook in reacties en antwoorden. Peilingen die binnen een bestaande thread worden gestart, volgen de bijlage-instelling van die thread. Wijzigingen aan het sjabloon gelden alleen voor toekomstige peilingen.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

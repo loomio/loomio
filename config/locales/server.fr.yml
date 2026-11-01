@@ -157,6 +157,7 @@ fr:
     direct_thread_anonymous_poll: Un fil de discussion contenant un sondage anonyme ne peut pas être converti en fil de discussion direct.
     invitation_rate_limit_reached_contact_support: Limite d'invitations quotidienne atteinte. Veuillez contacter l'assistance immédiatement.
     subscription_thread_limit_reached: Cette organisation a atteint sa limite de discussions. Passez à une offre supérieure pour continuer à utiliser Loomio.
+    attachments_admin_only: Seuls les administrateurs du fil et du groupe peuvent ajouter des pièces jointes à ce fil
   group:
     error:
       handle_must_begin_with_parent_handle: Doit commencer par %{parent_handle}

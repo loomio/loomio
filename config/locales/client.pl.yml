@@ -1914,6 +1914,8 @@ pl:
     comment_length_max_help: Pozostaw puste pole, aby nie było limitu tematów
     comment_length_max_description: Zachęcaj do zwięzłych komentarzy, ustalając maksymalną długość
     comment_length_max_hint: Maksymalna liczba znaków w komentarzu. Pozostaw puste miejsce, aby nie ograniczać liczby znaków.
+    only_admins_can_add_attachments: Tylko administratorzy mogą dodawać załączniki
+    only_one_poll_at_a_time: Tylko jedna ankieta naraz
   delete_thread_form:
     title: Usuń wątek
     body: Czy na pewno chcesz usunąć ten wątek?

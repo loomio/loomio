@@ -1,15 +1,15 @@
 ---
 title: Modelos de discussão
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: e825802bcd936f98
   how-templates-are-used: '055373488d5af188'
   choose-who-is-notified-by-default: c02e91360e1545c6
-  template-settings: 4add25daa1171109
+  template-settings: 3b29d31879066af0
   example-bottle-trial-review: 688608fa0862fd8b
   create-a-template: 88d7f3326812d313
   manage-the-template-list: 725d150f0e537276
@@ -94,8 +94,9 @@ Os admins do grupo podem editar um modelo pelo menu de ações ao lado dele na l
 - **Contexto**: o texto inicial da discussão. Use títulos, perguntas ou links para orientar o que as pessoas escrevem.
 - **Convidar**: define se todos no grupo são convidados por padrão. Veja [Escolha quem recebe notificações por padrão](#choose-who-is-notified-by-default).
 - **Modelos de enquete**: enquetes sugeridas para esse processo. Elas são listadas no formulário de nova discussão. Também aparecem primeiro quando alguém inicia uma enquete na discussão. Elas não começam automaticamente.
-- **Permitir votações simultâneas**: define se mais de uma enquete pode ficar aberta na discussão ao mesmo tempo.
+- **Apenas uma enquete por vez**: impede que outra enquete seja iniciada até que a enquete atual seja encerrada. Essa opção fica desmarcada por padrão em novos modelos.
 - **Limite de comprimento do comentário**: um limite máximo opcional para o comprimento dos comentários.
+- **Apenas admins podem adicionar anexos**: restringe a adição de novos arquivos e imagens no corpo do texto aos admins da conversa e aos admins do grupo nas discussões iniciadas a partir deste modelo.
 
 Use um título padrão apenas quando ele continuar sendo adequado. Caso contrário, escreva um título de exemplo que incentive o autor a identificar a revisão, o período, o documento ou a decisão em questão.
 

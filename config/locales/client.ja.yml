@@ -1895,6 +1895,8 @@ ja:
     comment_length_max_help: トピック制限を設けない場合は空欄のままにしてください
     comment_length_max_description: 最大文字数を設定することで、簡潔なコメントを促しましょう
     comment_length_max_hint: コメントあたりの最大文字数。制限なしの場合は空欄のままにしてください。
+    only_admins_can_add_attachments: 管理者のみ添付ファイルを追加できます
+    only_one_poll_at_a_time: 同時に開けるアンケートは1つだけです
   delete_thread_form:
     title: スレッドの削除
     body: このスレッドを削除してもよろしいですか?

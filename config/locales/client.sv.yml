@@ -1904,6 +1904,8 @@ sv:
     comment_length_max_help: Lämna tomt om du vill ha obegränsad ämnesgräns
     comment_length_max_description: Uppmuntra koncisa kommentarer genom att ange en maximal längd
     comment_length_max_hint: Maximalt antal tecken per kommentar. Lämna tomt om du vill ha obegränsat antal tecken.
+    only_admins_can_add_attachments: Bara admin kan lägga till bilagor
+    only_one_poll_at_a_time: Bara en omröstning i taget
   delete_thread_form:
     title: Ta bort tråd
     body: Är du säker på att du vill ta bort den här tråden?

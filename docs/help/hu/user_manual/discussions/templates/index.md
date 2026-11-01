@@ -1,15 +1,15 @@
 ---
 title: Beszélgetési sablonok
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 7e9723081f24e3e2
   how-templates-are-used: 32def3a80f6ac655
   choose-who-is-notified-by-default: 60956973a9d98035
-  template-settings: 25d0e5d468c1fa60
+  template-settings: f26abb43c6dc5534
   example-bottle-trial-review: 591cce7d11ee6789
   create-a-template: 3c66eeee67cfb821
   manage-the-template-list: 59c330c041d44cc6
@@ -94,8 +94,9 @@ A csoport adminjai a sablonlistában a sablon melletti műveleti menüből szerk
 - **Leírás**: a beszélgetés kezdőszövege. Használj címsorokat, kérdéseket vagy hivatkozásokat, hogy segíts az embereknek megfogalmazni a mondanivalójukat.
 - **Meghív**: azt határozza meg, hogy alapértelmezés szerint meghívja-e a csoport minden tagját. Lásd: [Válaszd ki, ki kapjon alapértelmezés szerint értesítést](#choose-who-is-notified-by-default).
 - **Szavazási sablonok**: az ehhez a folyamathoz javasolt szavazások. Az új beszélgetés űrlapján jelennek meg. Akkor is ezek jelennek meg először, amikor valaki szavazást indít a beszélgetésben. Nem indulnak el automatikusan.
-- **Egyidejű szavazások engedélyezése**: azt határozza meg, hogy egyszerre több szavazás is nyitva lehet-e a beszélgetésben.
+- **Egyszerre csak egy szavazás**: megakadályozza újabb szavazás indítását, amíg az aktuális szavazás le nem zárult. Új sablonoknál alapértelmezés szerint nincs bejelölve.
 - **Hozzászóláshossz-korlát**: a hozzászólások választható maximális hossza.
+- **Csak adminok adhatnak hozzá mellékletet**: az ebből a sablonból indított beszélgetésekben csak a szál adminjai és a csoport adminjai adhatnak hozzá új fájlokat és szövegbe ágyazott képeket.
 
 Csak akkor használj alapértelmezett címet, ha az minden alkalommal pontos marad. Egyébként írj olyan példacímet, amely arra ösztönzi a szerzőt, hogy nevezze meg az adott értékelést, időszakot, dokumentumot vagy döntést.
 

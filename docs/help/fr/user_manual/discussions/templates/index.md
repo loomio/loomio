@@ -1,15 +1,15 @@
 ---
 title: Modèles de discussion
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 187a2e572ccfb339
   how-templates-are-used: db5b15b1e79e3885
   choose-who-is-notified-by-default: 124aa359d558dc1b
-  template-settings: 7ab593b2e571177e
+  template-settings: e75d66209522f1b7
   example-bottle-trial-review: '07495be8434faba4'
   create-a-template: 27c009c5f4013f5d
   manage-the-template-list: 5171165d289de886
@@ -94,8 +94,9 @@ Les administrateurs du groupe peuvent modifier un modèle depuis le menu d’act
 - **Contexte** : le texte initial de la discussion. Utilisez des titres, des questions ou des liens pour guider ce que les personnes écrivent.
 - **Inviter** : indique si tout le monde dans le groupe est invité par défaut. Voir [Choisissez qui reçoit une notification par défaut](#choose-who-is-notified-by-default).
 - **Modèles de sondage** : les sondages suggérés pour ce processus. Ils figurent dans le formulaire de nouvelle discussion. Ils apparaissent aussi en premier lorsqu’une personne lance un sondage dans la discussion. Ils ne sont pas lancés automatiquement.
-- **Autoriser les sondages simultanés** : indique si plusieurs sondages peuvent être ouverts en même temps dans la discussion.
+- **Un seul sondage à la fois** : empêche de lancer un autre sondage tant que le sondage en cours n’est pas clôturé. Cette option est décochée par défaut pour les nouveaux modèles.
 - **Limite de longueur des commentaires** : une longueur maximale facultative pour les commentaires.
+- **Seuls les administrateurs peuvent ajouter des pièces jointes** : réserve l’ajout de nouveaux fichiers et d’images intégrées aux administrateurs du fil et aux administrateurs du groupe dans les discussions lancées à partir de ce modèle.
 
 Utilisez un titre par défaut uniquement s’il reste pertinent pour chaque discussion. Sinon, rédigez un exemple de titre qui invite l’auteur à préciser le bilan, la période, le document ou la décision concernés.
 

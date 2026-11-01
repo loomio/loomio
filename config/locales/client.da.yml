@@ -1908,6 +1908,8 @@ da:
     comment_length_max_help: Lad feltet stå tomt, hvis der ikke er nogen emnegrænse
     comment_length_max_description: Opfordr til kortfattede kommentarer ved at sætte en maksimal længde
     comment_length_max_hint: Maksimalt antal tegn pr. kommentar. Lad det stå tomt for ingen begrænsning.
+    only_admins_can_add_attachments: Kun admins kan vedhæfte filer
+    only_one_poll_at_a_time: Kun én afstemning ad gangen
   delete_thread_form:
     title: Slet debat
     body: Er du sikker på at du vil slette denne debat?

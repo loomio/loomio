@@ -1,10 +1,10 @@
 ---
 title: Modelli di sondaggio
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 01d6fe334146a8de
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 64597c751858b1d3
   save-a-poll-as-a-template: de64c8c664a56966
   start-a-new-template: 87cf012ae10f52a8
-  configure-the-template: d51093c9a501290c
+  configure-the-template: 84e180e6ab630b72
   edit-a-default-template: 652bc17758f47410
 title_source: 114cca246e357304
 title_generated: ea088d8e86a3eb3c
@@ -86,6 +86,8 @@ Per adattare un modello predefinito come **Consenso**, apri il suo menu delle az
 Assegna al modello un nome e un sottotitolo che descrivano quando usarlo. Puoi modificare qualsiasi altro campo per renderlo più adatto al riutilizzo. Dopo aver selezionato **Salva modello**, il modello apparirà nell'elenco quando le persone avviano una nuova proposta o un nuovo sondaggio.
 
 [![Il modulo completo del modello Processo di consenso per una modifica al regolamento](poll_template_new.png)](poll_template_new.png)
+
+Per i sondaggi autonomi, **Solo gli amministratori possono aggiungere allegati** consente solo agli amministratori della conversazione e agli amministratori del gruppo di aggiungere nuovi file e immagini incorporate, anche nelle risposte al sondaggio e nelle repliche. I sondaggi avviati all'interno di una conversazione esistente seguono l'impostazione degli allegati di quella conversazione. La modifica del modello influisce solo sui sondaggi futuri.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

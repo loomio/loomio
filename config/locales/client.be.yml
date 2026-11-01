@@ -2002,6 +2002,8 @@ be:
     allow_reactions_description: Дазволіць удзельнікам дадаваць рэакцыі ў выглядзе эмодзі
     topic_settings: Налады тэмы
     thread_settings: Налады тэмы
+    only_admins_can_add_attachments: Толькі адміністратары могуць дадаваць укладанні
+    only_one_poll_at_a_time: Толькі адно апытанне адначасова
   delete_discussion_form:
     body: Вы ўпэўненыя, што хочаце выдаліць гэтую тэму?
     discussion_deleted: Абмеркаванне выдалена

@@ -1,10 +1,10 @@
 ---
 title: Шаблони опитувань
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 2d29c238e747055b
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: bebfae115f998ef6
   save-a-poll-as-a-template: f33194cd5ddaf274
   start-a-new-template: 365f2a78e4de9979
-  configure-the-template: f6c86a59e05de036
+  configure-the-template: ce7360ce8a296e76
   edit-a-default-template: 1dfb2ed5d9b0910d
 title_source: 114cca246e357304
 title_generated: 63dfb2c360af57d6
@@ -83,9 +83,11 @@ title_generated: 63dfb2c360af57d6
 
 ## Налаштування шаблону
 
-Дайте шаблону назву та підзаголовок, які описують, коли його використовувати. Ви можете змінити будь-які інші поля, щоб зробити їх придатнішими для повторного використання. Після того як ви виберете **Зберегти шаблон**, шаблон з’являтиметься у списку, коли люди розпочинатимуть нову пропозицію або опитування.
+Дайте шаблону назву та підзаголовок, які описують, коли його використовувати. ви можете змінити будь-які інші поля, щоб зробити їх придатнішими для повторного використання. Після того як ви виберете **Зберегти шаблон**, шаблон з’являтиметься у списку, коли люди розпочинатимуть нову пропозицію або опитування.
 
 [![Повна форма шаблону «Процес згоди щодо зміни політики»](poll_template_new.png)](poll_template_new.png)
+
+Для окремих опитувань налаштування **Лише адміністратори можуть додавати вкладення** дозволяє додавати нові файли та зображення в тексті лише адміністраторам теми та адміністраторам групи, зокрема у відповідях на опитування та відповідях на коментарі. Опитування, розпочаті в наявній темі, використовують налаштування вкладень цієї теми. Зміна шаблону впливає лише на майбутні опитування.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

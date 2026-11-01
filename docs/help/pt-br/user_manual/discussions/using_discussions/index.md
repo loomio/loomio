@@ -1,10 +1,10 @@
 ---
 title: Como usar as discussões
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 299b467b99d9605d
   print: 04b6a7b4cbcfc955
   markdown: dbf2601cd0fe1ca6
-  thread-settings-and-display: ca4fa6e8d33a6e9f
+  thread-settings-and-display: 689564700a3d06f6
   pin-or-unpin-a-thread: 2be1f71e8e31ba5e
   move-a-thread: 4b11a891de925dac
   lock-or-unlock-a-thread: f5199f5d2e466f55
@@ -191,6 +191,38 @@ Para remover alguém, abra o menu de três pontos (**⋯**) ao lado do nome da p
 
 ![Histórico de notificações da discussão](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Configurações da conversa
+
+Os admins da conversa e do grupo podem selecionar **Configurações de thread** para alterar a organização das respostas e configurar outras opções da discussão.
+
+![](thread_display.png)
+
+![Configurações da conversa com layout, limites de enquetes, permissões de anexos e limite de tamanho dos comentários](thread_layout_options.png)
+
+### Layout
+
+Escolha **Cronológico** para listar os itens na ordem em que foram publicados ou **Aninhado** para agrupar as respostas abaixo do item ao qual respondem. Isso altera o layout para todas as pessoas na conversa.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Apenas uma enquete por vez
+
+Quando esta opção está marcada, os usuários não podem iniciar outra enquete até que a enquete atual seja encerrada. Esta opção fica desmarcada por padrão em novas conversas. As conversas iniciadas a partir de um modelo de discussão usam a configuração desse modelo.
+
+### Apenas admins podem adicionar anexos
+
+Ative esta configuração para permitir que apenas admins da conversa e do grupo adicionem novos arquivos e imagens inseridas no texto em toda a conversa, incluindo respostas a enquetes e respostas por email. Os anexos existentes continuam disponíveis, e os participantes ainda podem editar seu texto ou remover anexos.
+
+Os modelos de discussão e de enquete podem fornecer esta configuração para novas conversas. Consulte [Modelos de discussão](/en/user_manual/discussions/templates) e [Modelos de enquete](/en/user_manual/polls/poll_templates).
+
+### Limite de tamanho dos comentários
+
+Defina um número máximo de caracteres por comentário para manter as contribuições concisas. Deixe o campo em branco para não definir um limite. O limite se aplica a todas as pessoas, incluindo admins.
+
 <!-- translation-section: actions -->
 
 ## Ações
@@ -288,18 +320,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Os títulos e rótulos usam o idioma que você selecionou. O conteúdo escrito pelos participantes permanece no idioma original.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Configurações e exibição da conversa
-
-Os admins do grupo podem selecionar **Configurações de thread** para alterar a organização das respostas e configurar outras opções da discussão.
-
-![](thread_display.png)
-
-Escolha **Linha do tempo** para listar os itens na ordem em que foram publicados ou **Em threads** para agrupar as respostas abaixo do item ao qual respondem. As configurações da conversa também controlam se várias enquetes podem ocorrer ao mesmo tempo e permitem definir um limite de tamanho para os comentários. Essas configurações se aplicam a todas as pessoas na discussão.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

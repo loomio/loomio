@@ -1896,6 +1896,8 @@ tr:
     comment_length_max_help: Konu sınırlaması yoksa boş bırakın
     comment_length_max_description: Yorumların kısa ve öz olmasını teşvik etmek için maksimum uzunluk sınırı belirleyin
     comment_length_max_hint: Yorum başına maksimum karakter sayısı. Sınırlama yoksa boş bırakın.
+    only_admins_can_add_attachments: Yalnızca yöneticiler ek ekleyebilir
+    only_one_poll_at_a_time: Aynı anda yalnızca bir anket
   delete_thread_form:
     title: Müzakereyi sil
     body: Bu müzakereyi silmek istediğinden emin misin?

@@ -1,10 +1,10 @@
 ---
 title: Umfragevorlagen
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 833dd5852abe2772
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 71fd35b164b173be
   save-a-poll-as-a-template: 75dd4109015f8d27
   start-a-new-template: 23fc3fbe925eba29
-  configure-the-template: a76349ad2b7ff44f
+  configure-the-template: bee4a25c5f560611
   edit-a-default-template: b27441118773ebb5
 title_source: 114cca246e357304
 title_generated: 2f338bb1d4e6c8b2
@@ -88,6 +88,8 @@ Um eine Standardvorlage wie **Konsent** anzupassen, öffne ihr Aktionsmenü und 
 Gib der Vorlage einen Namen und einen Untertitel, die beschreiben, wann sie verwendet werden sollte. Du kannst alle anderen Felder anpassen, damit sie sich besser zur Wiederverwendung eignen. Nachdem du **Vorlage speichern** ausgewählt hast, wird die Vorlage angezeigt, wenn Personen einen neuen Vorschlag oder eine neue Abstimmung starten.
 
 [![Das vollständige Vorlagenformular für das Konsentverfahren zur Änderung einer Richtlinie](poll_template_new.png)](poll_template_new.png)
+
+Bei eigenständigen Abstimmungen beschränkt **Nur Admins können Anhänge hinzufügen** das Hinzufügen neuer Dateien und eingebetteter Bilder auf Thread-Admins und Gruppen-Admins, auch in Stellungnahmen und Antworten. Abstimmungen, die innerhalb eines bestehenden Threads gestartet werden, übernehmen dessen Einstellung für Anhänge. Änderungen an der Vorlage wirken sich nur auf zukünftige Abstimmungen aus.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

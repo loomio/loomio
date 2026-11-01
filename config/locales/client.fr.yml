@@ -1933,6 +1933,8 @@ fr:
     comment_length_max_help: Laissez vide pour aucune limite de sujets
     comment_length_max_description: Encouragez les commentaires concis en fixant une longueur maximale
     comment_length_max_hint: Nombre de caractères maximum par commentaire. Laisser vide pour aucune limite.
+    only_admins_can_add_attachments: Seuls les administrateurs peuvent ajouter des pièces jointes
+    only_one_poll_at_a_time: Un seul sondage à la fois
   delete_thread_form:
     title: Supprimer la discussion
     body: Êtes-vous sûr de vouloir supprimer cette discussion ?

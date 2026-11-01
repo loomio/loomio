@@ -1,15 +1,15 @@
 ---
 title: Keskustelumallit
-source_revision: a1c55ffa7c0b3def0a4f15be2abd29ce4d5e68f9
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -22,7 +22,7 @@ generated:
   introduction: 0c48855c6c3912a5
   how-templates-are-used: 3de0f58a904f29b9
   choose-who-is-notified-by-default: ef2847c229cf399a
-  template-settings: '0029f64c59958918'
+  template-settings: b54ba4785f7ff56d
   example-bottle-trial-review: 3c29e1e27a3f725d
   create-a-template: 808f176c2d832720
   manage-the-template-list: 4d0ccf20ab05a299
@@ -96,8 +96,9 @@ Ryhmän ylläpitäjät voivat muokata mallia malliluettelossa sen vieressä olev
 - **Konteksti**: keskustelun aloitusteksti. Ohjaa kirjoittamista otsikoilla, kysymyksillä tai linkeillä.
 - **Kutsu**: kutsutaanko kaikki ryhmän jäsenet oletuksena. Katso [Valitse, kenelle ilmoitetaan oletuksena](#choose-who-is-notified-by-default).
 - **Kyselymallit**: tähän prosessiin ehdotettavat kyselyt. Ne näkyvät uuden keskustelun lomakkeessa. Ne näkyvät myös ensimmäisinä, kun joku aloittaa kyselyn keskustelussa. Ne eivät ala automaattisesti.
-- **Salli samanaikaiset kyselyt**: voiko keskustelussa olla avoinna useampi kuin yksi kysely kerrallaan.
+- **Vain yksi kysely kerrallaan**: estää uuden kyselyn aloittamisen, kunnes nykyinen kysely on suljettu. Asetus ei ole oletuksena valittuna uusissa malleissa.
 - **Kommentin pituusrajoitus**: valinnainen kommenttien enimmäispituus.
+- **Vain ylläpitäjät voivat lisätä liitteitä**: vain ketjun ylläpitäjät ja ryhmän ylläpitäjät voivat lisätä uusia tiedostoja ja tekstin sekaan upotettuja kuvia tästä mallista aloitettuihin keskusteluihin.
 
 Käytä oletusotsikkoa vain, jos se pysyy paikkansapitävänä. Muussa tapauksessa kirjoita esimerkki otsikosta, joka ohjaa aloittajaa nimeämään kyseisen arvioinnin, ajanjakson, asiakirjan tai päätöksen.
 

@@ -1925,6 +1925,8 @@ es:
     comment_length_max_help: Déjalo en blanco si no deseas un límite para el tema
     comment_length_max_description: Fomenta comentarios concisos definiendo una longitud máxima
     comment_length_max_hint: Máximo de caracteres por comentario. Déjalo en blanco para no tener límite.
+    only_admins_can_add_attachments: Solo los admins pueden añadir archivos adjuntos
+    only_one_poll_at_a_time: Solo una encuesta a la vez
   delete_thread_form:
     title: 'Borrar hilo '
     body: "¿Estás seguro que quieres eliminar este hilo?"

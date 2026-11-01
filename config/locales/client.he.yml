@@ -1910,6 +1910,8 @@ he:
     comment_length_max_help: השאר ריק אם אין הגבלת נושאים
     comment_length_max_description: עודדו הערות תמציתיות על ידי קביעת אורך מקסימלי
     comment_length_max_hint: מספר תווים מקסימלי לכל תגובה. השאר ריק ללא הגבלה.
+    only_admins_can_add_attachments: רק מנהלים יכולים להוסיף קבצים מצורפים
+    only_one_poll_at_a_time: סקר אחד בלבד בכל פעם
   delete_thread_form:
     title: מחיקת שיחה
     body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?

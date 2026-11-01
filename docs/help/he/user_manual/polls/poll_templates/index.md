@@ -1,10 +1,10 @@
 ---
 title: תבניות סקר
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 509051f4b08046ed
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: 8c0cc3f24c1d87c4
   save-a-poll-as-a-template: e68b0609d97f146d
   start-a-new-template: b49f326b289fd1f8
-  configure-the-template: 5c903ecfc6f72056
+  configure-the-template: 620d156240775d87
   edit-a-default-template: eaaca9858cab6535
 title_source: 114cca246e357304
 title_generated: 9e12dfd46f55c441
@@ -89,6 +89,8 @@ needs_review:
 יש לתת לתבנית שם וכותרת משנה המתארים מתי להשתמש בה. ניתן לשנות כל אחד מהשדות האחרים כדי להתאים אותם לשימוש חוזר. לאחר בחירה ב־**שמור תבנית**, התבנית תופיע ברשימה בעת פתיחת הצעה או סקר חדשים.
 
 [![הטופס המלא של תבנית תהליך הסכמה לשינוי מדיניות](poll_template_new.png)](poll_template_new.png)
+
+בסקרים עצמאיים, ההגדרה **רק מנהלים יכולים להוסיף קבצים מצורפים** מאפשרת רק למנהלי השרשור ולמנהלי הקבוצה להוסיף קבצים חדשים ותמונות בגוף התוכן, גם בתגובות להצבעה ובתגובות אחרות. בסקרים שנפתחים בתוך שרשור קיים חלה הגדרת הקבצים המצורפים של אותו שרשור. שינוי התבנית משפיע רק על סקרים עתידיים.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 

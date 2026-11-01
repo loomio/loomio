@@ -1,10 +1,10 @@
 ---
 title: Шаблоны голосований
-source_revision: 00d781409c832b216c95759c1369678ad240e246
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-01'
 sections:
   introduction: a535465485cdbc13
   who-can-manage-templates: 6c3d5e693cd1dfdc
@@ -17,7 +17,7 @@ sections:
   manage-the-template-list: 76e78b8a60f1d08c
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: bec89f7804dd12f8
+  configure-the-template: 06a5645786f28281
   edit-a-default-template: 6f1e7050d20ed373
 generated:
   introduction: 22e92f49a3370649
@@ -31,7 +31,7 @@ generated:
   manage-the-template-list: f6996f150ebba618
   save-a-poll-as-a-template: d103dd3c27475c48
   start-a-new-template: 83099c9af7664c54
-  configure-the-template: b5ee0a3626eab248
+  configure-the-template: 524606649545bfe8
   edit-a-default-template: 585a5b59e8dd6b2d
 title_source: 114cca246e357304
 title_generated: 791f225f6cb4ad29
@@ -86,6 +86,8 @@ title_generated: 791f225f6cb4ad29
 Задайте шаблону название и подзаголовок, которые объясняют, когда его использовать. Вы можете изменить любые другие поля, чтобы они лучше подходили для многократного использования. После выбора **Сохранить шаблон** шаблон появится в списке при запуске нового предложения или опроса.
 
 [![Полная форма шаблона процесса принятия изменений в правилах на основе согласия](poll_template_new.png)](poll_template_new.png)
+
+Для отдельных опросов настройка **Только администраторы могут добавлять вложения** разрешает добавлять новые файлы и изображения в текст только администраторам ветки и администраторам группы, в том числе в ответах на опрос и ответах на комментарии. Опросы, созданные внутри существующей ветки, используют настройку вложений этой ветки. Изменение шаблона влияет только на будущие опросы.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
