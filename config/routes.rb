@@ -291,6 +291,7 @@ Rails.application.routes.draw do
         get :comment, on: :collection
         get :position_keys, on: :collection
         get :timeline, on: :collection
+        get :headings, on: :collection
       end
 
       resources :discussions, only: [:show, :create, :update]

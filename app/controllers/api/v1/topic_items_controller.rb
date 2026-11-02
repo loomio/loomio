@@ -42,6 +42,14 @@ class Api::V1::TopicItemsController < Api::V1::RestfulController
     render json: data.to_json, root: 'timeline'
   end
 
+  def headings
+    load_and_authorize_topic
+    page = page_collection_bounded(TopicHeadingsService.items(@topic).order(:position_key, :id), limit_max: 200)
+    items = page.preload(:itemable).to_a
+    next_offset = page.offset_value.to_i + items.length if items.length == page.limit_value
+    render json: {sections: TopicHeadingsService.sections(items, current_user), meta: {next_offset: next_offset}}, root: false
+  end
+
   def comment
     load_and_authorize_topic
     self.resource = TopicItem.where(topic_id: @topic.id).find_by!(kind: "new_comment", itemable_type: "Comment", itemable_id: params[:comment_id])

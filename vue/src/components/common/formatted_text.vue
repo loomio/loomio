@@ -34,7 +34,7 @@ const content = computed(() => {
   }
 });
 
-const format = computed(() => props.model[props.field + 'Format'] || 'none');
+const format = computed(() => props.model.translationId ? 'html' : props.model[props.field + 'Format'] || 'none');
 
 function formatDimension(value) {
   return value === Math.trunc(value) ? Math.trunc(value) : value.toFixed(2);
@@ -132,7 +132,7 @@ function onCopy(event) {
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper(@click="onClick" @copy="onCopy")
+div.lmo-markdown-wrapper(:data-content-model="`${model.constructor.singular}-${model.id}`" :data-content-field="field" @click="onClick" @copy="onCopy")
   div(v-if="format == 'md'" v-marked='content')
   div(v-if="format == 'html'" ref="htmlContent" v-html='content')
   span(v-if="format == 'none'") Format none. Use plain-text instead.

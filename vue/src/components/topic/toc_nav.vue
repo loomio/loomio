@@ -1,5 +1,9 @@
 <script setup lang="js">
 import ThreadTags from '@/components/tags/thread_tags.vue';
+import ContentHeadingLinks from '@/components/common/content_heading_links.vue';
+import TopicHeadingsService from '@/shared/services/topic_headings_service';
+import TopicHeadingIndex from '@/shared/services/topic_heading_index';
+import Flash from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import Records       from '@/shared/services/records';
 import TopicService  from '@/shared/services/topic_service';
@@ -10,10 +14,10 @@ import PushSubscriptionService from '@/shared/services/push_subscription_service
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 import { notificationCatchUpTitleKey } from '@/shared/helpers/notification_volume_options';
 import { useWatchRecords } from '@/composables/useWatchRecords';
-import { ref, computed, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
-import { sortBy, last, pickBy } from 'lodash-es';
+import { sortBy, last, pickBy, omit } from 'lodash-es';
 import { mdiArrowUpThin, mdiArrowDownThin, mdiCellphone, mdiEmailOutline, mdiLightningBolt, mdiMessageBadgeOutline } from '@mdi/js';
 
 const volumeDisplayByState = {
@@ -41,8 +45,28 @@ const { watchRecords } = useWatchRecords();
 const open        = ref(null);
 const deviceNotificationsAvailable = ref(false);
 const pinnedItems = ref([]);
+const contentHeadings = ref([]);
 const baseUrl     = ref('');
 const topicActions = ref({});
+const headingIndex = new TopicHeadingIndex(props.topic.id);
+let unmounted = false;
+let headingJump = 0;
+let cancelHeadingScroll = null;
+
+async function fetchHeadings() {
+  try {
+    const sections = await TopicHeadingsService.fetch(props.topic.id, () => unmounted);
+    if (!unmounted) { contentHeadings.value = headingIndex.seed(sections); }
+  } catch (error) {
+    if (!unmounted) { Flash.serverError(error); }
+  }
+}
+
+onUnmounted(() => {
+  unmounted = true;
+  headingJump++;
+  if (cancelHeadingScroll) { cancelHeadingScroll(); }
+});
 
 const selectedSequenceId = computed(() => parseInt(route.params.sequence_id));
 const selectedCommentId  = computed(() => parseInt(route.params.comment_id));
@@ -111,6 +135,18 @@ function scrollToSequenceId(id) {
   ScrollService.scrollTo(`.sequenceId-${id}`);
 }
 
+async function onHeadingSelected(heading) {
+  const jump = ++headingJump;
+  if (cancelHeadingScroll) { cancelHeadingScroll(); }
+  if (!display.mdAndUp.value) { open.value = false; }
+  if (route.query.tag) { await router.replace({query: omit(route.query, 'tag')}); }
+  try {
+    cancelHeadingScroll = await TopicHeadingsService.jumpTo(heading, props.loader, () => jump !== headingJump);
+  } catch (error) {
+    if (jump === headingJump) { Flash.serverError(error); }
+  }
+}
+
 onMounted(() => {
   PushSubscriptionService.subscriptions()
     .then(subscriptions => { deviceNotificationsAvailable.value = subscriptions.length > 0; })
@@ -129,6 +165,13 @@ onMounted(() => {
       per: 200
     }
   });
+
+  watchRecords({
+    key: 'topic-headings' + props.topic.id,
+    collections: ['topic_items', 'discussions', 'polls', 'comments', 'stances', 'outcomes', 'translations'],
+    query: () => { contentHeadings.value = headingIndex.update(); }
+  });
+  fetchHeadings();
 
   watchRecords({
     key: 'topic-nav' + props.topic.id,
@@ -164,6 +207,7 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
     v-list-item(color="info" value="toc-start" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
     v-list-item(color="info" value="toc-new-to-you" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.new_to_you')" @click="scrollToNewToYou" v-if="loader.firstUnreadSequenceId()")
     v-list-item(color="info" value="toc-latest" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToLatest" v-if="loader.lastSequenceId() !== topic.lastSequenceId()")
+    content-heading-links(:headings="contentHeadings" @selected="onHeadingSelected")
     v-list-item(v-for="item in pinnedItems" :key="item.key" :value="'toc-pinned-' + item.key" :title="item.title" :to="baseUrl+'/'+item.sequenceId" @click="scrollToSequenceId(item.sequenceId)")
       template(v-slot:prepend)
         poll-common-icon-panel(v-if="item.poll && item.poll.showResults()" :poll="item.poll" show-my-stance :size="24" :stanceSize="12")

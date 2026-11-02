@@ -94,6 +94,18 @@ module HasRichText
     end
   end
 
+  # Use the rendered document for both formats. Positions include blank headings
+  # so duplicate labels and headings without a slug remain unambiguous targets.
+  def self.headings(text, format)
+    html = format == 'md' ? MarkdownService.render_html(text) : text.to_s
+    Nokogiri::HTML5.fragment(html).css('h1,h2,h3,h4,h5,h6').each_with_index.filter_map do |node, index|
+      title = node.text.gsub(/[[:space:]]+/, ' ').strip
+      next if title.empty?
+
+      {index: index, level: node.name[1].to_i, title: title}
+    end
+  end
+
   included do
     has_many_attached :files, dependent: :detach
     has_many_attached :image_files, dependent: :detach
