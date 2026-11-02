@@ -1,4 +1,4 @@
-import { ref, onMounted, unref } from 'vue';
+import { ref, onMounted, unref, nextTick } from 'vue';
 import { sortBy, filter, uniqBy, debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
@@ -138,13 +138,17 @@ export function useMdMentioning(model, field, textarea, query, mentions, navigat
   };
 
   const selectRow = (user) => {
-    const text = textarea.value.value;
     const beforeText = textarea.value.value.slice(0, textarea.value.selectionStart - query.value.length);
     const afterText = textarea.value.value.slice(textarea.value.selectionStart);
+    const caret = (beforeText + user.handle).length + 1;
     model.value[field.value] = beforeText + user.handle + ' ' + afterText;
-    textarea.value.selectionEnd = (beforeText + user.handle).length + 1;
-    textarea.value.focus();
     query.value = null;
+    // Vue writes the new value to the textarea on the next render, which moves
+    // the caret to the end. Place it after the inserted handle once that happens.
+    nextTick(() => {
+      textarea.value.focus();
+      textarea.value.setSelectionRange(caret, caret);
+    });
   };
 
   const updatePopup = () => {
