@@ -115,3 +115,5 @@ yarn-error.log*
 # Localized documentation screenshots are generated into the client asset cache.
 /public/docs-screenshots/
 /public/vue/
+vue/tests/playwright/results
+vue/tests/playwright/report

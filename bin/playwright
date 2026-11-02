@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# bin/playwright — Run Playwright E2E tests against a local Rails server
+#
+# Usage:
+#   bin/playwright                              # run all specs
+#   bin/playwright dashboard                    # run specs whose path matches "dashboard"
+#   bin/playwright auth -g "signs in"           # run tests whose title matches
+#   bin/playwright --headed                     # run in a visible browser
+#   bin/playwright --skip-build ...             # reuse the existing Vue build
+#
+# Other arguments are passed to `playwright test`.
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+RAILS_PID=""
+HOCUSPOCUS_PID=""
+BUILD=true
+PW_ARGS=()
+E2E_PORT="${E2E_PORT:-3001}"
+HOCUSPOCUS_PORT="${HOCUSPOCUS_PORT:-4445}"
+
+for arg in "$@"; do
+  if [ "$arg" = "--skip-build" ]; then
+    BUILD=false
+  else
+    PW_ARGS+=("$arg")
+  fi
+done
+
+cleanup() {
+  if [ -n "$HOCUSPOCUS_PID" ]; then
+    kill "$HOCUSPOCUS_PID" 2>/dev/null || true
+    wait "$HOCUSPOCUS_PID" 2>/dev/null || true
+  fi
+  if [ -n "$RAILS_PID" ]; then
+    kill "$RAILS_PID" 2>/dev/null || true
+    wait "$RAILS_PID" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
+
+if [ "$BUILD" = true ]; then
+  echo "==> Building Vue assets..."
+  (cd "$ROOT/vue" && npm run build)
+fi
+
+echo "==> Preparing test database..."
+RAILS_ENV=test bundle exec rails db:prepare
+
+echo "==> Starting hocuspocus server on port $HOCUSPOCUS_PORT..."
+APP_URL="http://localhost:$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" node "$ROOT/hocuspocus/server.mjs" > "$ROOT/tmp/hocuspocus-e2e.log" 2>&1 &
+HOCUSPOCUS_PID=$!
+for i in $(seq 1 10); do
+  if nc -z localhost "$HOCUSPOCUS_PORT" 2>/dev/null; then break; fi
+  if [ "$i" -eq 10 ]; then
+    echo "    ERROR: hocuspocus did not start within 10 seconds."
+    cat "$ROOT/tmp/hocuspocus-e2e.log"
+    exit 1
+  fi
+  sleep 1
+done
+
+echo "==> Starting Rails server on port $E2E_PORT..."
+CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 -P "$ROOT/tmp/pids/e2e-server.pid" &
+RAILS_PID=$!
+
+for i in $(seq 1 30); do
+  if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then break; fi
+  if [ "$i" -eq 30 ]; then
+    echo "    ERROR: Rails server did not start within 30 seconds."
+    exit 1
+  fi
+  sleep 1
+done
+
+echo "==> Running Playwright: npx playwright test ${PW_ARGS[*]:-}"
+set +e
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx playwright test ${PW_ARGS[@]+"${PW_ARGS[@]}"})
+TEST_EXIT=$?
+set -e
+
+if [ "$TEST_EXIT" -ne 0 ]; then
+  echo "==> Tests failed. Open the report with: (cd vue && npx playwright show-report tests/playwright/report)"
+fi
+exit "$TEST_EXIT"

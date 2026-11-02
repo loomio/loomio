@@ -1,0 +1,110 @@
+name: playwright
+
+on:
+  push:
+    branches:
+      - playwright-e2e
+  workflow_dispatch:
+    inputs:
+      args:
+        description: 'Arguments for playwright test, such as a spec name or -g "test title"'
+        required: false
+        type: string
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PGDATABASE: loomio_test
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: postgres
+      RAILS_ENV: test
+      E2E_PORT: 3001
+      CI: 1
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: install libvips
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libvips
+    - name: install ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '4.0.9'
+        bundler-cache: true
+    - name: install node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: .node-version
+    - name: install npm
+      run: npm install --global "npm@$(cat .npm-version)" --no-audit --no-fund
+    - name: create db
+      run: |
+        createdb
+        cp config/database.yml.postgresql config/database.yml
+        bundle exec rake db:setup
+    - name: start rails server
+      env:
+        PUMA_WORKERS: 1
+        MIN_THREADS: 3
+        MAX_THREADS: 3
+      run: |
+        CANONICAL_PORT="$E2E_PORT" bundle exec rails server -b 0.0.0.0 -p "$E2E_PORT" &
+    - name: start hocuspocus server
+      run: |
+        cd hocuspocus
+        npm ci
+        node server.mjs &
+        for i in $(seq 1 30); do
+          if nc -z localhost 4444; then
+            echo "hocuspocus is up"
+            exit 0
+          fi
+          sleep 1
+        done
+        echo "hocuspocus failed to start" >&2
+        exit 1
+    - name: build client
+      working-directory: vue
+      run: |
+        npm ci
+        npm run build
+    - name: install playwright browser
+      working-directory: vue
+      run: npx playwright install --with-deps chromium
+    - name: run playwright
+      working-directory: vue
+      env:
+        PW_ARGS: ${{ inputs.args }}
+      run: |
+        eval "set -- $PW_ARGS"
+        npx playwright test "$@"
+    - name: upload playwright report
+      uses: actions/upload-artifact@v4
+      if: ${{ failure() }}
+      with:
+        name: playwright-report
+        path: |
+          vue/tests/playwright/report
+          vue/tests/playwright/results
+    - name: upload rails test log
+      uses: actions/upload-artifact@v4
+      if: ${{ failure() }}
+      with:
+        name: playwright-rails-test-log
+        path: log/test.log
