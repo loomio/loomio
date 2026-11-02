@@ -1,0 +1,195 @@
+import { test, expect } from '../screenshotFixtures.mjs';
+
+import richText from '../helpers/oatmilkRichText.mjs';
+
+async function openTemplates(page) {
+  await page.loadPath('setup_manual_oatmilk_formatting?key=0');
+  await page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
+  await page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
+  await page.waitFor('.decision-tools-card__template--consent');
+}
+
+async function openProposalForm(page) {
+  await openTemplates(page);
+  await page.click('.decision-tools-card__template--consent');
+  await page.waitFor('.poll-common-form-fields__title input');
+  await page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial plan');
+  await page.fillRichText(
+    '.poll-common-form-fields__details [contenteditable=true]',
+    richText.context('new-proposal', [
+      'Approve a six-week returnable bottle trial with three cafe partners and one collection from each cafe every week.',
+      'Before launch, confirm the collection schedule, washing checks, bottle deposit guidance, and named responsibilities.',
+      'At the end of the trial, review return rates, cleaning time, damaged bottles, and transport costs.'
+    ])
+  );
+}
+
+async function markOptions(page) {
+  await page.execute(`
+    const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
+    heading.classList.add('manual-options-heading');
+    heading.nextElementSibling.classList.add('manual-options-list');
+    const options = Array.from(heading.nextElementSibling.querySelectorAll('.v-list-item'));
+    options.at(-1).classList.add('manual-option-last');
+  `);
+  await page.waitFor('.manual-options-list');
+}
+
+async function openPoll(page) {
+  await page.loadPath('setup_manual_oatmilk_discussion');
+  await page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
+  await page.execute("document.querySelector('.topic-item__load-more button')?.click()");
+  await page.waitFor('.poll-created');
+  await page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
+}
+
+async function openPollMenu(page) {
+  await openPoll(page);
+  await page.click('.poll-created .action-menu--btn');
+  await page.waitFor('.v-overlay--active .v-list');
+}
+
+test('proposal_templates', async ({ lmo: page, manual: screenshot }) => {
+  await openTemplates(page);
+  await screenshot.captureElement(
+    'polls/settings/proposal_templates',
+    '.actions-panel',
+    {width: 1280, height: 1000}
+  );
+});
+
+test('proposal_new', async ({ lmo: page, manual: screenshot }) => {
+  await openProposalForm(page);
+  await page.execute(`
+    const form = document.querySelector('.poll-common-form');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'manual-proposal-new-capture';
+    Object.assign(wrapper.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
+      padding: '24px', background: 'white'
+    });
+    [
+      form.querySelector('.v-card-title'),
+      form.querySelector('.poll-template-info-panel'),
+      form.querySelector('.poll-common-form-fields__title'),
+      form.querySelector('.poll-common-form-fields__details')
+    ].forEach(el => wrapper.append(el.cloneNode(true)));
+    document.body.append(wrapper);
+  `);
+  await page.pause(200);
+  await screenshot.captureElement(
+    'polls/settings/proposal_new',
+    '.manual-proposal-new-capture',
+    {width: 1200, height: 1100}
+  );
+});
+
+test('vote_options', async ({ lmo: page, manual: screenshot }) => {
+  await openProposalForm(page);
+  await markOptions(page);
+  await page.execute(`
+    const heading = document.querySelector('.manual-options-heading');
+    const list = document.querySelector('.manual-options-list');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'manual-options-capture';
+    Object.assign(wrapper.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
+      padding: '16px', background: 'white'
+    });
+    wrapper.append(heading.cloneNode(true), list.cloneNode(true));
+    document.body.append(wrapper);
+  `);
+  await screenshot.captureElement(
+    'polls/settings/vote_options',
+    '.manual-options-capture',
+    {width: 1200, height: 1200}
+  );
+});
+
+test('proposal_edit_option', async ({ lmo: page, manual: screenshot }) => {
+  await openProposalForm(page);
+  await markOptions(page);
+  await page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
+  await screenshot.captureElement(
+    'polls/settings/proposal_edit_option',
+    '.poll-common-option-form',
+    {width: 1100, height: 1000}
+  );
+});
+
+test('settings_advanced', async ({ lmo: page, manual: screenshot }) => {
+  await openProposalForm(page);
+  await page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
+  await screenshot.captureElement(
+    'polls/settings/settings_advanced',
+    '.poll-common-form .v-expansion-panel',
+    {width: 1100, height: 1600}
+  );
+});
+
+test('vote_reason_options', async ({ lmo: page, manual: screenshot }) => {
+  await openProposalForm(page);
+  await page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
+  await page.click('.poll-common-form__stance-reason-required .v-field');
+  await page.waitFor('.v-overlay--active .v-list');
+  await page.execute(`
+    const wrapper = document.createElement('div');
+    wrapper.className = 'manual-vote-reason-options-capture';
+    Object.assign(wrapper.style, {
+      position: 'fixed', top: '0', left: '0', width: '720px', zIndex: '9999',
+      padding: '24px', background: 'white'
+    });
+    wrapper.append(
+      document.querySelector('.poll-common-form__stance-reason-required').cloneNode(true),
+      document.querySelector('.v-overlay--active .v-list').cloneNode(true)
+    );
+    document.body.append(wrapper);
+  `);
+  await screenshot.captureElement(
+    'polls/settings/vote_reason_options',
+    '.manual-vote-reason-options-capture',
+    {width: 900, height: 900}
+  );
+});
+
+test('proposal_edit', async ({ lmo: page, manual: screenshot }) => {
+  await openPollMenu(page);
+  await screenshot.captureRegion(
+    'polls/settings/proposal_edit',
+    ['.poll-created .action-dock', '.v-overlay--active .v-list'],
+    {padding: 16, width: 1280, height: 1100}
+  );
+});
+
+test('proposal_notification_history', async ({ lmo: page, manual: screenshot }) => {
+  await openPollMenu(page);
+  await page.clickAndWait('.v-overlay--active .action-dock__button--notification_history', '.modal-launcher .v-card');
+  await page.expectText('.modal-launcher .v-card', 'Poll notification history');
+  await screenshot.captureElement(
+    'polls/settings/proposal_notification_history',
+    '.modal-launcher .v-card',
+    {width: 1100, height: 900}
+  );
+});
+
+test('proposal_delete', async ({ lmo: page, manual: screenshot }) => {
+  await openPollMenu(page);
+  await page.clickAndWait('.v-overlay--active .action-dock__button--discard_poll', '.confirm-modal');
+  await screenshot.captureElement(
+    'polls/settings/proposal_delete',
+    '.confirm-modal',
+    {width: 1100, height: 800}
+  );
+});
+
+test('proposal_print', async ({ lmo: page, manual: screenshot }) => {
+  await openPoll(page);
+  await page.waitFor('.topic-sidebar .action-dock__button--export_thread');
+  await page.click('.topic-sidebar .action-dock__button--export_thread');
+  await page.waitForUrlToContain('export=1');
+  await page.waitFor('body');
+  await screenshot.capture('polls/settings/proposal_print', {
+    width: 1280,
+    height: 1200
+  });
+});

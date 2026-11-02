@@ -2101,11 +2101,11 @@ module Dev::Scenarios::OatmilkCooperative
     )
     GroupService.create(group: group, actor: coordinator)
     group.cover_photo.attach(
-      io: File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-cover.jpg')),
+      io: File.open(Rails.root.join('vue/tests/playwright/assets/avatars/oatmilk-cooperative-cover.jpg')),
       filename: 'oatmilk-cooperative-cover.jpg'
     )
     group.logo.attach(
-      io: File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-logo.png')),
+      io: File.open(Rails.root.join('vue/tests/playwright/assets/avatars/oatmilk-cooperative-logo.png')),
       filename: 'oatmilk-cooperative-logo.png'
     )
     group.add_admin!(coordinator)
@@ -2188,7 +2188,7 @@ module Dev::Scenarios::OatmilkCooperative
     )
 
     if avatar_filename
-      File.open(Rails.root.join('vue/tests/e2e/fixtures/avatars', avatar_filename)) do |avatar|
+      File.open(Rails.root.join('vue/tests/playwright/assets/avatars', avatar_filename)) do |avatar|
         user.uploaded_avatar.attach(io: avatar, filename: avatar_filename)
       end
       user.update!(avatar_kind: 'uploaded')

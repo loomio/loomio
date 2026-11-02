@@ -4,8 +4,8 @@ const manualScreenshot = require('../helpers/manualScreenshot');
 
 const editor = '.comment-form .lmo-textarea';
 const proseMirror = `${editor} .ProseMirror`;
-const sampleImage = path.resolve(__dirname, '../fixtures/avatars/oatmilk-bottle.png');
-const sampleFile = path.resolve(__dirname, '../fixtures/oatmilk-bottle-trial.md');
+const sampleImage = path.resolve(__dirname, '../../playwright/assets/avatars/oatmilk-bottle.png');
+const sampleFile = path.resolve(__dirname, '../../playwright/assets/oatmilk-bottle-trial.md');
 let scenarioKey = 0;
 
 function openEditor(page, expanded = false) {

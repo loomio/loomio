@@ -117,3 +117,4 @@ yarn-error.log*
 /public/vue/
 vue/tests/playwright/results
 vue/tests/playwright/report
+vue/tests/playwright/screenshot-results
