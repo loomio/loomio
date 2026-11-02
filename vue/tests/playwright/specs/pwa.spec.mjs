@@ -1,0 +1,29 @@
+import { test, expect } from '../fixtures.mjs';
+
+test('registers_the_push_worker_and_serves_home_screen_metadata', async ({ lmo: page }) => {
+  await page.loadPath('setup_group')
+  await page.expectElement('.group-page')
+
+  const value = await page.execute(async () => {
+    const manifestLink = document.querySelector('link[rel="manifest"]')
+    const manifest = await (await fetch(manifestLink.href)).json()
+    const maskableIcon = manifest.icons.find((icon) => icon.purpose === 'maskable')
+    const iconResponse = await fetch(maskableIcon.src)
+    await navigator.serviceWorker.register('/service-worker.js')
+    const registration = await navigator.serviceWorker.ready
+    return {
+      manifestHref: manifestLink.getAttribute('href'),
+      manifest,
+      maskableIconAvailable: iconResponse.ok,
+      workerScriptUrl: registration.active && registration.active.scriptURL
+    }
+  })
+
+  expect(value.manifestHref).toBe('/manifest')
+  expect(value.manifest.id).toBe('/')
+  expect(value.manifest.scope).toBe('/')
+  expect(value.manifest.display).toBe('standalone')
+  expect(value.manifest.icons.some((icon) => icon.purpose === 'maskable')).toBe(true)
+  expect(value.maskableIconAvailable).toBe(true)
+  expect(value.workerScriptUrl).toMatch(/\/service-worker\.js$/)
+});

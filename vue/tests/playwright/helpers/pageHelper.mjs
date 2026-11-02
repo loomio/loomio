@@ -211,6 +211,38 @@ export function pageHelper(page) {
       await expect(first(selector)).toContainText(value, { timeout: wait });
     },
 
+    async expectChecked(selector, wait = WAIT) {
+      await expect(first(selector)).toBeChecked({ timeout: wait });
+    },
+
+    async expectNotChecked(selector, wait = WAIT) {
+      await expect(first(selector)).not.toBeChecked({ timeout: wait });
+    },
+
+    async expectEnabled(selector, wait = WAIT) {
+      await expect(first(selector)).toBeEnabled({ timeout: wait });
+    },
+
+    async expectDisabled(selector, wait = WAIT) {
+      await expect(first(selector)).toBeDisabled({ timeout: wait });
+    },
+
+    // Matches a substring of the attribute unless `exact` is set.
+    async expectAttribute(selector, name, value, { exact = false, wait = WAIT } = {}) {
+      const expected = exact ? value : new RegExp(escapeRegExp(value));
+      await expect(first(selector)).toHaveAttribute(name, expected, { timeout: wait });
+    },
+
+    async attribute(selector, name, wait = WAIT) {
+      await first(selector).waitFor({ state: 'attached', timeout: wait });
+      return first(selector).getAttribute(name);
+    },
+
+    async text(selector, wait = WAIT) {
+      await helper.waitFor(selector, wait);
+      return first(selector).innerText();
+    },
+
     async expectFlash(value, wait = WAIT) {
       await expect(first('.flash-root__message')).toContainText(value, { timeout: wait });
     },
