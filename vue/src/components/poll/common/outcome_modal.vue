@@ -37,7 +37,7 @@ export default {
     if (this.poll.datesAsOptions()) {
       this.options = map(this.outcome.poll().pollOptions(), option => ({
         id:        option.id,
-        value:     exact(parseISO(option.name)),
+        value:     exact(parseISO(option.name), Session.user().timeZone),
         attendees: option.stances().length
       }));
 
