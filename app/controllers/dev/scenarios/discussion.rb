@@ -10,6 +10,19 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_heading_navigation
+    discussion = create_discussion
+    discussion.update!(description: "# Agenda\n\n## Shared section\n\n#{("Supporting notes.\n\n" * 40)}", description_format: 'md')
+    create_poll.update!(details: '<h2>Choices</h2><p>Compare the options.</p>', details_format: 'html')
+    30.times do
+      CommentService.create(comment: Comment.new(parent: discussion, body: 'Additional discussion before the notes.'), actor: jennifer)
+    end
+    CommentService.create(comment: Comment.new(parent: discussion,
+      body: "# Discussion notes\n\n## Shared section\n\n#{("More supporting notes.\n\n" * 40)}", body_format: 'md'), actor: patrick)
+    sign_in patrick
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_attachment_restricted_discussion
     discussion = create_discussion
     discussion.topic.update!(attachments_admin_only: true)

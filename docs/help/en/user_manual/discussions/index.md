@@ -19,6 +19,14 @@ Discussions can also contain polls and proposals to help progress a discussion t
 
 ![The Returnable bottles for cafe customers discussion, with a comment and a proposal](discussion-example.png)
 
+<!-- translation-section: heading-navigation -->
+
+## Jump to a heading
+
+Use headings to divide longer content into sections. Headings in the discussion context, poll details, comments, vote reasons, and outcomes appear under **Jump to** in the thread sidebar. Select a heading to go directly to that section.
+
+The list follows the order of the content, with subheadings indented. It includes sections further down the thread, even before you load those replies, and updates when saved edits arrive. Selecting a heading loads its contribution and expands any collapsed parents.
+
 <!-- translation-section: common-uses -->
 
 ## Common uses
