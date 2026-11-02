@@ -152,7 +152,7 @@ GEM
       addressable
       base64
       ssrf_filter (~> 1.5)
-    csv (3.3.6)
+    csv (3.3.7)
     date (3.5.1)
     declarative (0.0.20)
     digest-crc (0.7.0)
