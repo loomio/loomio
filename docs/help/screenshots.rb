@@ -41,7 +41,8 @@ module Docs
         result
       end
       result = Hash.new { |hash, key| hash[key] = [] }
-      %w[client server].each do |kind|
+      Dir.glob(ROOT.join("config/locales/*.en.yml")).sort.each do |source|
+        kind = File.basename(source, ".en.yml")
         english = flatten.call(YAML.safe_load_file(ROOT.join("config/locales/#{kind}.en.yml")).fetch("en"))
         translated = flatten.call(YAML.safe_load_file(ROOT.join("config/locales/#{kind}.#{app_locale}.yml")).fetch(app_locale))
         english.each do |key, value|

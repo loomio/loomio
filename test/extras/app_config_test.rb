@@ -3,10 +3,15 @@ require "test_helper"
 class AppConfigTest < ActiveSupport::TestCase
   test "every manual time zone has a label in every supported language" do
     AppConfig.locales.fetch('supported').each do |locale|
-      labels = YAML.load_file(Rails.root.join('config', 'locales', "client.#{locale}.yml")).fetch(locale).fetch('timezones').fetch('regions', {})
+      labels = YAML.load_file(Rails.root.join('config', 'locales', "timezones.#{locale}.yml")).fetch(locale).fetch('timezones').fetch('regions', {})
 
       assert_equal AppConfig.time_zones.sort, labels.keys.sort, "Time zone labels are incomplete for #{locale}"
       assert labels.values.all? { |label| label.is_a?(String) && label.present? }, "Time zone labels must be nonempty strings for #{locale}"
+      labels.each do |identifier, label|
+        assert_equal identifier.split('/').length, label.split(' / ').length, "Time zone labels must preserve every geographic path segment for #{identifier} in #{locale}"
+      end
+      client = YAML.load_file(Rails.root.join('config', 'locales', "client.#{locale}.yml")).fetch(locale)
+      refute client.key?('timezones'), "Time zone labels must stay out of the client bundle for #{locale}"
     end
   end
 

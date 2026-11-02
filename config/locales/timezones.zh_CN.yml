@@ -1,0 +1,174 @@
+---
+zh_CN:
+  timezones:
+    local: 本地时间（%{value}）
+    regions:
+      Africa/Algiers: 非洲 / 阿尔及尔
+      Africa/Cairo: 非洲 / 开罗
+      Africa/Casablanca: 非洲 / 卡萨布兰卡
+      Africa/Harare: 非洲 / 哈拉雷（津巴布韦）
+      Africa/Johannesburg: 非洲 / 约翰内斯堡（南非）
+      Africa/Monrovia: 非洲 / 蒙罗维亚
+      Africa/Nairobi: 非洲 / 内罗毕
+      America/Adak: 美洲 / 阿达克（阿留申群岛）
+      America/Argentina/Buenos_Aires: 美洲 / 阿根廷 / 布宜诺斯艾利斯
+      America/Asuncion: 美洲 / 亚松森
+      America/Bogota: 美洲 / 波哥大
+      America/Cambridge_Bay: 美洲 / 剑桥湾（努纳武特）
+      America/Caracas: 美洲 / 加拉加斯
+      America/Chicago: 美洲 / 芝加哥（美国中部）
+      America/Chihuahua: 美洲 / 奇瓦瓦
+      America/Dawson: 美洲 / 道森（育空）
+      America/Dawson_Creek: 美洲 / 道森溪（不列颠哥伦比亚）
+      America/Denver: 美洲 / 丹佛（美国山区）
+      America/Edmonton: 美洲 / 埃德蒙顿（艾伯塔）
+      America/Fort_Nelson: 美洲 / 纳尔逊堡（不列颠哥伦比亚）
+      America/Glace_Bay: 美洲 / 格莱斯湾（新斯科舍）
+      America/Goose_Bay: 美洲 / 古斯湾（拉布拉多）
+      America/Guatemala: 美洲 / 危地马拉
+      America/Guyana: 美洲 / 圭亚那
+      America/Halifax: 美洲 / 哈利法克斯（新斯科舍）
+      America/Havana: 美洲 / 哈瓦那
+      America/Indiana/Indianapolis: 美洲 / 印第安纳州 / 印第安纳波利斯（印第安纳）
+      America/Inuvik: 美洲 / 伊努维克（西北地区）
+      America/Iqaluit: 美洲 / 伊卡卢伊特（努纳武特）
+      America/Juneau: 美洲 / 朱诺（阿拉斯加）
+      America/La_Paz: 美洲 / 拉巴斯
+      America/Lima: 美洲 / 利马
+      America/Los_Angeles: 美洲 / 洛杉矶（美国太平洋）
+      America/Mazatlan: 美洲 / 马萨特兰
+      America/Mexico_City: 美洲 / 墨西哥城
+      America/Miquelon: 美洲 / 圣皮埃尔和密克隆
+      America/Moncton: 美洲 / 蒙克顿（新不伦瑞克）
+      America/Monterrey: 美洲 / 蒙特雷
+      America/Montevideo: 美洲 / 蒙得维的亚
+      America/New_York: 美洲 / 纽约（美国东部）
+      America/Nuuk: 美洲 / 努克
+      America/Panama: 美洲 / 巴拿马
+      America/Phoenix: 美洲 / 菲尼克斯 (亚利桑那州)
+      America/Puerto_Rico: 美洲 / 波多黎各
+      America/Rankin_Inlet: 美洲 / 兰金因莱特 (努纳武特)
+      America/Regina: 美洲 / 里贾纳 (萨斯喀彻温省)
+      America/Resolute: 美洲 / 雷索卢特 (努纳武特)
+      America/Santiago: 美洲 / 圣地亚哥
+      America/Sao_Paulo: 美洲 / 圣保罗
+      America/St_Johns: 美洲 / 圣约翰斯 (纽芬兰)
+      America/Swift_Current: 美洲 / 斯威夫特卡伦特 (萨斯喀彻温省)
+      America/Tijuana: 美洲 / 蒂华纳
+      America/Toronto: 美洲 / 多伦多 (安大略省)
+      America/Vancouver: 美洲 / 温哥华 (不列颠哥伦比亚省)
+      America/Whitehorse: 美洲 / 怀特霍斯 (育空)
+      America/Winnipeg: 美洲 / 温尼伯 (马尼托巴省)
+      Antarctica/Troll: 南极洲 / 特罗尔站 (南极洲)
+      Asia/Almaty: 亚洲 / 阿拉木图
+      Asia/Baghdad: 亚洲 / 巴格达
+      Asia/Baku: 亚洲 / 巴库
+      Asia/Bangkok: 亚洲 / 曼谷
+      Asia/Beirut: 亚洲 / 贝鲁特
+      Asia/Chongqing: 亚洲 / 重庆
+      Asia/Colombo: 亚洲 / 科伦坡
+      Asia/Dhaka: 亚洲 / 达卡
+      Asia/Gaza: 亚洲 / 加沙
+      Asia/Hong_Kong: 亚洲 / 香港
+      Asia/Irkutsk: 亚洲 / 伊尔库茨克
+      Asia/Jakarta: 亚洲 / 雅加达
+      Asia/Jerusalem: 亚洲 / 耶路撒冷
+      Asia/Kabul: 亚洲 / 喀布尔
+      Asia/Kamchatka: 亚洲 / 堪察加
+      Asia/Karachi: 亚洲 / 卡拉奇
+      Asia/Kathmandu: 亚洲 / 加德满都
+      Asia/Kolkata: 亚洲 / 加尔各答 (印度)
+      Asia/Krasnoyarsk: 亚洲 / 克拉斯诺亚尔斯克
+      Asia/Kuala_Lumpur: 亚洲 / 吉隆坡
+      Asia/Kuwait: 亚洲 / 科威特
+      Asia/Magadan: 亚洲 / 马加丹
+      Asia/Muscat: 亚洲 / 马斯喀特
+      Asia/Novosibirsk: 亚洲 / 新西伯利亚
+      Asia/Rangoon: 亚洲 / 仰光（缅甸）
+      Asia/Riyadh: 亚洲 / 利雅得
+      Asia/Seoul: 亚洲 / 首尔
+      Asia/Shanghai: 亚洲 / 上海
+      Asia/Singapore: 亚洲 / 新加坡
+      Asia/Srednekolymsk: 亚洲 / 中科雷姆斯克
+      Asia/Taipei: 亚洲 / 台北
+      Asia/Tashkent: 亚洲 / 塔什干
+      Asia/Tbilisi: 亚洲 / 第比利斯
+      Asia/Tehran: 亚洲 / 德黑兰
+      Asia/Tokyo: 亚洲 / 东京
+      Asia/Ulaanbaatar: 亚洲 / 乌兰巴托
+      Asia/Urumqi: 亚洲 / 乌鲁木齐
+      Asia/Vladivostok: 亚洲 / 符拉迪沃斯托克
+      Asia/Yakutsk: 亚洲 / 雅库茨克
+      Asia/Yekaterinburg: 亚洲 / 叶卡捷琳堡
+      Asia/Yerevan: 亚洲 / 埃里温
+      Atlantic/Azores: 大西洋 / 亚速尔群岛
+      Atlantic/Cape_Verde: 大西洋 / 佛得角
+      Atlantic/South_Georgia: 大西洋 / 南乔治亚岛
+      Australia/Adelaide: 澳大利亚 / 阿德莱德（南澳大利亚州）
+      Australia/Brisbane: 澳大利亚 / 布里斯班（昆士兰州）
+      Australia/Canberra: 澳大利亚 / 堪培拉（澳大利亚首都领地）
+      Australia/Darwin: 澳大利亚 / 达尔文（北领地）
+      Australia/Eucla: 澳大利亚 / 尤克拉（西澳大利亚州）
+      Australia/Hobart: 澳大利亚 / 霍巴特（塔斯马尼亚州）
+      Australia/Lord_Howe: 澳大利亚 / 豪勋爵岛
+      Australia/Melbourne: 澳大利亚 / 墨尔本（维多利亚州）
+      Australia/Perth: 澳大利亚 / 珀斯（西澳大利亚州）
+      Australia/Sydney: 澳大利亚 / 悉尼（新南威尔士州）
+      Etc/GMT+12: 其他 / 国际日期变更线以西（UTC−12）
+      Etc/UTC: 其他 / 协调世界时（UTC）
+      Europe/Amsterdam: 欧洲 / 阿姆斯特丹
+      Europe/Athens: 欧洲 / 雅典
+      Europe/Belgrade: 欧洲 / 贝尔格莱德
+      Europe/Berlin: 欧洲 / 柏林
+      Europe/Bratislava: 欧洲 / 布拉迪斯拉发
+      Europe/Brussels: 欧洲 / 布鲁塞尔
+      Europe/Bucharest: 欧洲 / 布加勒斯特
+      Europe/Budapest: 欧洲 / 布达佩斯
+      Europe/Copenhagen: 欧洲 / 哥本哈根
+      Europe/Dublin: 欧洲 / 都柏林
+      Europe/Helsinki: 欧洲 / 赫尔辛基
+      Europe/Istanbul: 欧洲 / 伊斯坦布尔
+      Europe/Kaliningrad: 欧洲 / 加里宁格勒
+      Europe/Kiev: 欧洲 / 基辅（乌克兰）
+      Europe/Lisbon: 欧洲 / 里斯本
+      Europe/Ljubljana: 欧洲 / 卢布尔雅那
+      Europe/London: 欧洲 / 伦敦
+      Europe/Madrid: 欧洲 / 马德里
+      Europe/Minsk: 欧洲 / 明斯克
+      Europe/Moscow: 欧洲 / 莫斯科
+      Europe/Paris: 欧洲 / 巴黎
+      Europe/Prague: 欧洲 / 布拉格
+      Europe/Riga: 欧洲 / 里加
+      Europe/Rome: 欧洲 / 罗马
+      Europe/Samara: 欧洲 / 萨马拉
+      Europe/Sarajevo: 欧洲 / 萨拉热窝
+      Europe/Skopje: 欧洲 / 斯科普里
+      Europe/Sofia: 欧洲 / 索非亚
+      Europe/Stockholm: 欧洲 / 斯德哥尔摩
+      Europe/Tallinn: 欧洲 / 塔林
+      Europe/Vienna: 欧洲 / 维也纳
+      Europe/Vilnius: 欧洲 / 维尔纽斯
+      Europe/Volgograd: 欧洲 / 伏尔加格勒
+      Europe/Warsaw: 欧洲 / 华沙
+      Europe/Zagreb: 欧洲 / 萨格勒布
+      Europe/Zurich: 欧洲 / 苏黎世
+      Pacific/Apia: 太平洋 / 阿皮亚
+      Pacific/Auckland: 太平洋 / 奥克兰（新西兰）
+      Pacific/Chatham: 太平洋 / 查塔姆群岛（新西兰）
+      Pacific/Easter: 太平洋 / 复活节岛（智利）
+      Pacific/Fakaofo: 太平洋 / 法考福（托克劳）
+      Pacific/Fiji: 太平洋 / 斐济
+      Pacific/Gambier: 太平洋 / 甘比尔群岛
+      Pacific/Guadalcanal: 太平洋 / 瓜达尔卡纳尔岛（所罗门群岛）
+      Pacific/Guam: 太平洋 / 关岛
+      Pacific/Honolulu: 太平洋 / 檀香山（夏威夷）
+      Pacific/Kiritimati: 太平洋 / 基里蒂马蒂岛（基里巴斯）
+      Pacific/Majuro: 太平洋 / 马朱罗（马绍尔群岛）
+      Pacific/Marquesas: 太平洋 / 马克萨斯群岛
+      Pacific/Midway: 太平洋 / 中途岛
+      Pacific/Norfolk: 太平洋 / 诺福克岛
+      Pacific/Noumea: 太平洋 / 努美阿（新喀里多尼亚）
+      Pacific/Pago_Pago: 太平洋 / 帕果帕果（美属萨摩亚）
+      Pacific/Pitcairn: 太平洋 / 皮特凯恩群岛
+      Pacific/Port_Moresby: 太平洋 / 莫尔兹比港（巴布亚新几内亚）
+      Pacific/Tongatapu: 太平洋 / 汤加塔布（汤加）

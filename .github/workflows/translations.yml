@@ -15,6 +15,6 @@ jobs:
         with:
           ruby-version: '4.0.9'
       - name: check translations
-        run: ruby script/check_translations.rb origin/${{ github.base_ref }} config/locales:server config/locales:client
+        run: ruby script/check_translations.rb origin/${{ github.base_ref }} config/locales:server config/locales:client config/locales:timezones
       - name: check interpolation variables
         run: ruby script/check_i18n_interpolations.rb

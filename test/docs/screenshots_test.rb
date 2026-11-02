@@ -70,6 +70,7 @@ class DocsScreenshotsTest < Minitest::Test
 
   def test_literal_interface_expectations_use_the_selected_language
     assert_includes Docs::Screenshots.labels("fr").fetch("Bookmarks"), "Signets"
+    assert_includes Docs::Screenshots.labels("fr").fetch("Europe / London"), "Europe / Londres"
   end
 
   def test_local_publishing_uploads_only_selected_images_and_the_language_manifest

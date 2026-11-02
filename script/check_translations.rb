@@ -3,7 +3,7 @@
 #
 # Usage:
 #   ruby script/check_translations.rb <base_ref> <dir:prefix> [<dir:prefix> ...]
-#   ruby script/check_translations.rb origin/master config/locales:server config/locales:client
+#   ruby script/check_translations.rb origin/master config/locales:server config/locales:client config/locales:timezones
 #
 # For each <dir:prefix>, compares <dir>/<prefix>.en.yml against <base_ref> and then
 # verifies every newly-added leaf path is present in <dir>/<prefix>.<locale>.yml for

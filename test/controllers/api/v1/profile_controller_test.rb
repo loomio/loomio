@@ -69,9 +69,9 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
     assert_response :success
     zones = JSON.parse(response.body)
-    assert_includes zones, { 'title' => 'Vancouver (British Columbia)', 'value' => 'America/Vancouver' }
-    assert_includes zones, { 'title' => 'Whitehorse (Yukon)', 'value' => 'America/Whitehorse' }
-    assert_includes zones, { 'title' => 'Los Angeles (US Pacific)', 'value' => 'America/Los_Angeles' }
+    assert_includes zones, { 'title' => 'America / Vancouver (British Columbia)', 'value' => 'America/Vancouver' }
+    assert_includes zones, { 'title' => 'America / Whitehorse (Yukon)', 'value' => 'America/Whitehorse' }
+    assert_includes zones, { 'title' => 'America / Los Angeles (US Pacific)', 'value' => 'America/Los_Angeles' }
     assert_equal 1, zones.count { |zone| zone['value'] == 'America/Vancouver' }
   end
 
@@ -82,8 +82,10 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
     assert_response :success
     zones = JSON.parse(response.body)
-    assert_includes zones, { 'title' => 'Londres', 'value' => 'Europe/London' }
-    refute_includes zones.pluck('title'), 'London'
+    assert_includes zones, { 'title' => 'Europe / Londres', 'value' => 'Europe/London' }
+    assert_includes zones, { 'title' => 'Asie / Tokyo', 'value' => 'Asia/Tokyo' }
+    assert_includes zones, { 'title' => 'Amériques / Argentine / Buenos Aires', 'value' => 'America/Argentina/Buenos_Aires' }
+    refute_includes zones.pluck('title'), 'Europe / London'
     assert_equal zones.pluck('title').sort, zones.pluck('title')
   end
 
