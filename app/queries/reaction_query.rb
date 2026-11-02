@@ -33,8 +33,7 @@ class ReactionQuery
     poll_ids_requested = ids_requested[:poll_ids]
     poll_ids_requested += Outcome.where(id: ids_requested[:outcome_ids]).pluck(:poll_id)
     poll_ids_requested += Stance.where(id: ids_requested[:stance_ids]).pluck(:poll_id)
-    poll_ids_visible = PollQuery.visible_to(user: user)
-                                .where(id: poll_ids_requested.uniq)
+    poll_ids_visible = PollQuery.visible_to(user: user, poll_ids: poll_ids_requested.uniq)
                                 .except(:includes)
                                 .ids
     stance_ids_visible = Stance.joins(:poll)

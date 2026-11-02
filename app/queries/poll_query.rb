@@ -6,8 +6,11 @@ class PollQuery
   def self.visible_to(user: LoggedOutUser.new,
                       chain: start,
                       group_ids: [],
-                      topic_id: nil)
-    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: false, topic_id: topic_id)
+                      topic_id: nil,
+                      poll_ids: nil)
+    chain = chain.where(id: poll_ids) unless poll_ids.nil?
+    topic_ids = chain.except(:includes).select(:topic_id) unless poll_ids.nil?
+    visible_scope(user: user, chain: chain, group_ids: group_ids, relevant: false, topic_id: topic_id, topic_ids: topic_ids)
   end
 
   def self.relevant_to(user: LoggedOutUser.new,
@@ -18,24 +21,26 @@ class PollQuery
 
   # Topics own poll access. Preserve the narrower dashboard relevance rules
   # and direct authorship access for polls created without an author reader.
-  def self.visible_scope(user:, chain:, group_ids:, relevant:, topic_id: nil)
+  def self.visible_scope(user:, chain:, group_ids:, relevant:, topic_id: nil, topic_ids: nil)
     return chain.none if user.deactivated_at.present?
 
     group_ids = Array(group_ids).compact.map(&:to_i)
-    # Restrict both UNION arms for a single-poll permission check; otherwise
-    # PostgreSQL can collect every accessible topic before checking one poll.
+    # Bound both topic UNION arms for single-poll and batch permission checks;
+    # otherwise PostgreSQL can collect every accessible topic first. Deriving
+    # batch topic IDs from the requested polls keeps unrelated topics out.
     chain = chain.where(topic_id: topic_id) if topic_id
     topics = if relevant
       # Parent-only readers appear in feeds only when browsing that subgroup.
       TopicQuery.relevant_to(user: user, group_ids: group_ids, or_subgroups: group_ids.any?)
     else
-      TopicQuery.visible_to(user: user, group_ids: group_ids, topic_id: topic_id)
+      TopicQuery.visible_to(user: user, group_ids: group_ids, topic_id: topic_id, topic_ids: topic_ids)
     end
     visible = chain.where(topic_id: topics.except(:includes).select(:id))
     return visible if group_ids.any?
 
     direct_topics = Topic.not_discarded.where(group_id: nil).select(:id)
     direct_topics = direct_topics.where(id: topic_id) if topic_id
+    direct_topics = direct_topics.where(id: topic_ids) unless topic_ids.nil?
     visible.or(chain.where(author_id: user.id || 0, topic_id: direct_topics))
   end
 

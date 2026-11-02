@@ -14,7 +14,8 @@ class TopicQuery
                       or_subgroups: true,
                       only_direct: false,
                       only_unread: false,
-                      topic_id: nil)
+                      topic_id: nil,
+                      topic_ids: nil)
     visible_scope(
       chain: chain,
       user: user,
@@ -24,7 +25,8 @@ class TopicQuery
       only_direct: only_direct,
       only_unread: only_unread,
       public_group_ids: nil,
-      topic_id: topic_id
+      topic_id: topic_id,
+      topic_ids: topic_ids
     )
   end
 
@@ -47,7 +49,8 @@ class TopicQuery
                          only_direct:,
                          only_unread:,
                          public_group_ids:,
-                         topic_id: nil)
+                         topic_id: nil,
+                         topic_ids: nil)
     return chain.none if user.deactivated_at.present?
 
     group_ids = Array(group_ids).compact.map(&:to_i)
@@ -96,6 +99,7 @@ class TopicQuery
 
     arms = [arm1, arm2].map do |arm|
       arm = arm.where(Topic.arel_table[:id].eq(topic_id)) if topic_id
+      arm = arm.where(id: topic_ids) unless topic_ids.nil?
       arm = arm.where("topics.group_id IN (?)", group_ids) if group_ids.any?
       arm = arm.where("topics.group_id IS NULL")            if only_direct
       arm = arm.where("topics.tags @> ARRAY[?]::varchar[]", tags) if tags.any?
