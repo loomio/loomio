@@ -186,8 +186,6 @@ sv:
     score: poängomröstning
     question: frågerundan
     stv: STV-valet
-  timezones:
-    local: Lokal tid (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin meny
@@ -1678,7 +1676,6 @@ sv:
     insert_embedded_url: Inbäddad video
   change_picture_form:
     title: Ställ in profilbild
-    helptext: Du kan ladda upp din egen profilbild, eller om du har ett <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> konto kan du använda det.
     use_initials: Använd initialer
     use_gravatar: Använd Gravatar
     use_uploaded: Ladda upp nytt foto

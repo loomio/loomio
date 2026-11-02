@@ -381,9 +381,13 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_group');
     openSidebar(page, true);
-    screenshot.captureElement('users/user_profile/edit_profile', '.sidenav-left', {
+    screenshot.captureRegion('users/user_profile/edit_profile', [
+      '.sidebar-close-settings',
+      '.user-dropdown__list-item-button--sign-out'
+    ], {
       width: 1100,
       height: 1200,
+      padding: 12,
       spotlight: '.user-dropdown__list-item-button--profile'
     });
   },
@@ -401,18 +405,5 @@ module.exports = {
     loadProfile(page);
     page.clickAndWait('.profile-page__avatar', '.change-picture-form');
     screenshot.captureElement('users/user_profile/profile_photo', '.change-picture-form', {width: 1100, height: 1300});
-  },
-
-  'profile_language': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    loadProfile(page);
-    page.execute("document.querySelector('.profile-page__locale').scrollIntoView({block: 'center'})");
-    page.pause(200);
-    screenshot.captureElement('users/user_profile/profile_language', '.profile-page__locale', {
-      width: 1100,
-      height: 900,
-      spotlight: '.profile-page__locale'
-    });
   }
 };

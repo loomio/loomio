@@ -186,8 +186,6 @@ uk:
     score: оціночне опитування
     question: раунд питань
     stv: вибори за STV
-  timezones:
-    local: За місцевим часом (%{value})
   common:
     value: "%{value}"
     admin_menu: Меню адміністратора
@@ -1687,7 +1685,6 @@ uk:
     insert_embedded_url: Додати відео
   change_picture_form:
     title: Виберіть фото профілю
-    helptext: Ви можете завантажити ваш власний малюнок профілю, або якщо ви зареєстровані на <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, можете використати його.
     use_initials: Використовувати ініціали
     use_gravatar: Використати Gravatar
     use_uploaded: Завантажити нове фото

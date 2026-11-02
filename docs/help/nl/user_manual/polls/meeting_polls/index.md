@@ -1,24 +1,22 @@
 ---
 title: Moment bevragen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 93efd2cba91ab398
   time-poll: 4f74d295cd63881f
   voting: 1878361f89e62a51
-  outcome: 10ccbf4e1413660f
+  outcome: aa6d2bca2e7bbc2a
 title_source: 8e2a07d7257fbc04
 title_generated: d6a157812dac4d19
-needs_review:
-  outcome: use "conclusie" instead of "resultaat" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -73,12 +71,12 @@ Wanneer de tijdpeiling sluit, kies je het beste tijdstip en deel je een conclusi
 
 **Meld**: Voeg de mensen toe die je uitnodigt voor de vergadering of het evenement
 
-**Tijd van de vergadering**: Selecteer het tijdstip dat het beste past
+**Tijd van de vergadering**: Selecteer het tijdstip dat het beste past. Opties gebruiken de [tijdzone in jouw profiel](/en/user_manual/users/user_profile#time-zone)
 
 **Naam vergadering**: Geef jouw vergadering een naam. Standaard wordt de titel van de tijdpeiling gebruikt
 
 **Locatie**: Voeg een fysieke locatie of een link naar de vergadering toe
 
-**Verklaring**: Vat het resultaat samen en voeg eventuele instructies voor de vergadering toe
+**Verklaring**: Vat de conclusie samen en voeg eventuele instructies voor de vergadering toe
 
 Loomio neemt het geselecteerde tijdstip, de naam van de vergadering, de duur, de locatie en de verklaring op in de melding over de conclusie en de agenda-uitnodiging.

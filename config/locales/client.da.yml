@@ -186,8 +186,6 @@ da:
     score: scoreafstemning
     question: spørgsmålsrunde
     stv: STV-valg
-  timezones:
-    local: Lokal tid (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin menu
@@ -1680,7 +1678,6 @@ da:
     insert_embedded_url: Indlejr video
   change_picture_form:
     title: Indstil profilbillede
-    helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
     use_initials: Benyt initialer
     use_gravatar: Brug Gravatar
     use_uploaded: Upload nyt billede

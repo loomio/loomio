@@ -26,29 +26,24 @@ You can update your personal info by changing any of the following fields:
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Viewing another person's profile
-
-Select a person's name or avatar to open their profile. Their recent discussions, comments, and polls are listed alongside their profile details and groups. The list only includes activity you have permission to access; signed-out visitors see public activity only.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Uploading a profile photo
 When you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. 
 
-If you have a [Gravatar](https://en.gravatar.com/) you can set that as your profile picture by selecting **Use Gravatar**. You can also choose for Loomio to use the photo you use for other common platforms/tools.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Language settings
-Loomio is developed in English, but [is translated by volunteers into many languages](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Language
 
 Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
 
-![](profile_language.png)
+<!-- translation-section: time-zone -->
+
+## Time zone
+
+Time poll options use the time zone saved in your profile. Enable **Autodetect time zone** to use the zone reported by your browser, or disable it and select your region under **Time zone**, then select **Update profile**.
 
 <!-- translation-section: resetting-your-password -->
 

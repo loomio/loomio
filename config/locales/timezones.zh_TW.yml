@@ -1,0 +1,174 @@
+---
+zh_TW:
+  timezones:
+    local: 本地時間 (%{value})
+    regions:
+      Africa/Algiers: 非洲 / 阿爾及爾
+      Africa/Cairo: 非洲 / 開羅
+      Africa/Casablanca: 非洲 / 卡薩布蘭卡
+      Africa/Harare: 非洲 / 哈拉雷 (辛巴威)
+      Africa/Johannesburg: 非洲 / 約翰尼斯堡 (南非)
+      Africa/Monrovia: 非洲 / 蒙羅維亞
+      Africa/Nairobi: 非洲 / 奈洛比
+      America/Adak: 美洲 / 阿達克 (阿留申群島)
+      America/Argentina/Buenos_Aires: 美洲 / 阿根廷 / 布宜諾斯艾利斯
+      America/Asuncion: 美洲 / 亞松森
+      America/Bogota: 美洲 / 波哥大
+      America/Cambridge_Bay: 美洲 / 劍橋灣 (努納福特)
+      America/Caracas: 美洲 / 卡拉卡斯
+      America/Chicago: 美洲 / 芝加哥 (美國中部)
+      America/Chihuahua: 美洲 / 奇瓦瓦
+      America/Dawson: 美洲 / 道森 (育空)
+      America/Dawson_Creek: 美洲 / 道森溪 (卑詩省)
+      America/Denver: 美洲 / 丹佛 (美國山區)
+      America/Edmonton: 美洲 / 愛德蒙頓 (亞伯達省)
+      America/Fort_Nelson: 美洲 / 納爾遜堡 (卑詩省)
+      America/Glace_Bay: 美洲 / 格雷斯灣 (新斯科細亞省)
+      America/Goose_Bay: 美洲 / 古斯灣 (拉布拉多)
+      America/Guatemala: 美洲 / 瓜地馬拉
+      America/Guyana: 美洲 / 蓋亞那
+      America/Halifax: 美洲 / 哈利法克斯 (新斯科細亞省)
+      America/Havana: 美洲 / 哈瓦那
+      America/Indiana/Indianapolis: 美洲 / 印第安納州 / 印第安納波利斯 (印第安納州)
+      America/Inuvik: 美洲 / 伊努維克 (西北地區)
+      America/Iqaluit: 美洲 / 伊魁特 (努納福特)
+      America/Juneau: 美洲 / 朱諾 (阿拉斯加)
+      America/La_Paz: 美洲 / 拉巴斯
+      America/Lima: 美洲 / 利馬
+      America/Los_Angeles: 美洲 / 洛杉磯 (美國太平洋)
+      America/Mazatlan: 美洲 / 馬薩特蘭
+      America/Mexico_City: 美洲 / 墨西哥城
+      America/Miquelon: 美洲 / 聖皮埃與密克隆
+      America/Moncton: 美洲 / 蒙克頓 (新不倫瑞克省)
+      America/Monterrey: 美洲 / 蒙特雷
+      America/Montevideo: 美洲 / 蒙特維多
+      America/New_York: 美洲 / 紐約 (美國東部)
+      America/Nuuk: 美洲 / 努克
+      America/Panama: 美洲 / 巴拿馬
+      America/Phoenix: 美洲 / 鳳凰城（亞利桑那州）
+      America/Puerto_Rico: 美洲 / 波多黎各
+      America/Rankin_Inlet: 美洲 / 蘭金灣（努納福特）
+      America/Regina: 美洲 / 雷吉納（薩斯喀徹溫省）
+      America/Resolute: 美洲 / 雷索 lute（努納福特）
+      America/Santiago: 美洲 / 聖地牙哥
+      America/Sao_Paulo: 美洲 / 聖保羅
+      America/St_Johns: 美洲 / 聖約翰斯（紐芬蘭）
+      America/Swift_Current: 美洲 / 斯威夫特卡倫特（薩斯喀徹溫省）
+      America/Tijuana: 美洲 / 蒂華納
+      America/Toronto: 美洲 / 多倫多（安大略省）
+      America/Vancouver: 美洲 / 溫哥華（卑詩省）
+      America/Whitehorse: 美洲 / 白馬市（育空）
+      America/Winnipeg: 美洲 / 溫尼伯（曼尼托巴省）
+      Antarctica/Troll: 南極洲 / 特羅爾站（南極洲）
+      Asia/Almaty: 亞洲 / 阿拉木圖
+      Asia/Baghdad: 亞洲 / 巴格達
+      Asia/Baku: 亞洲 / 巴庫
+      Asia/Bangkok: 亞洲 / 曼谷
+      Asia/Beirut: 亞洲 / 貝魯特
+      Asia/Chongqing: 亞洲 / 重慶
+      Asia/Colombo: 亞洲 / 可倫坡
+      Asia/Dhaka: 亞洲 / 達卡
+      Asia/Gaza: 亞洲 / 加薩
+      Asia/Hong_Kong: 亞洲 / 香港
+      Asia/Irkutsk: 亞洲 / 伊爾庫茨克
+      Asia/Jakarta: 亞洲 / 雅加達
+      Asia/Jerusalem: 亞洲 / 耶路撒冷
+      Asia/Kabul: 亞洲 / 喀布爾
+      Asia/Kamchatka: 亞洲 / 堪察加
+      Asia/Karachi: 亞洲 / 喀拉蚩
+      Asia/Kathmandu: 亞洲 / 加德滿都
+      Asia/Kolkata: 亞洲 / 加爾各答（印度）
+      Asia/Krasnoyarsk: 亞洲 / 克拉斯諾雅斯克
+      Asia/Kuala_Lumpur: 亞洲 / 吉隆坡
+      Asia/Kuwait: 亞洲 / 科威特
+      Asia/Magadan: 亞洲 / 馬加丹
+      Asia/Muscat: 亞洲 / 馬斯喀特
+      Asia/Novosibirsk: 亞洲 / 新西伯利亞
+      Asia/Rangoon: 亞洲 / 仰光 (緬甸)
+      Asia/Riyadh: 亞洲 / 利雅德
+      Asia/Seoul: 亞洲 / 首爾
+      Asia/Shanghai: 亞洲 / 上海
+      Asia/Singapore: 亞洲 / 新加坡
+      Asia/Srednekolymsk: 亞洲 / 中科雷姆斯克
+      Asia/Taipei: 亞洲 / 台北
+      Asia/Tashkent: 亞洲 / 塔什干
+      Asia/Tbilisi: 亞洲 / 提比里斯
+      Asia/Tehran: 亞洲 / 德黑蘭
+      Asia/Tokyo: 亞洲 / 東京
+      Asia/Ulaanbaatar: 亞洲 / 烏蘭巴托
+      Asia/Urumqi: 亞洲 / 烏魯木齊
+      Asia/Vladivostok: 亞洲 / 海參崴
+      Asia/Yakutsk: 亞洲 / 雅庫茨克
+      Asia/Yekaterinburg: 亞洲 / 葉卡捷琳堡
+      Asia/Yerevan: 亞洲 / 葉里溫
+      Atlantic/Azores: 大西洋 / 亞速群島
+      Atlantic/Cape_Verde: 大西洋 / 維德角
+      Atlantic/South_Georgia: 大西洋 / 南喬治亞島
+      Australia/Adelaide: 澳洲 / 阿德雷德 (南澳州)
+      Australia/Brisbane: 澳洲 / 布里斯本 (昆士蘭州)
+      Australia/Canberra: 澳洲 / 坎培拉 (澳洲首都領地)
+      Australia/Darwin: 澳洲 / 達爾文 (北領地)
+      Australia/Eucla: 澳洲 / 尤克拉 (西澳州)
+      Australia/Hobart: 澳洲 / 荷巴特 (塔斯馬尼亞州)
+      Australia/Lord_Howe: 澳洲 / 豪勳爵島
+      Australia/Melbourne: 澳洲 / 墨爾本 (維多利亞州)
+      Australia/Perth: 澳洲 / 伯斯 (西澳州)
+      Australia/Sydney: 澳洲 / 雪梨 (新南威爾斯州)
+      Etc/GMT+12: 其他 / 國際換日線以西 (UTC−12)
+      Etc/UTC: 其他 / 世界協調時間 (UTC)
+      Europe/Amsterdam: 歐洲 / 阿姆斯特丹
+      Europe/Athens: 歐洲 / 雅典
+      Europe/Belgrade: 歐洲 / 貝爾格勒
+      Europe/Berlin: 歐洲 / 柏林
+      Europe/Bratislava: 歐洲 / 布拉提斯拉瓦
+      Europe/Brussels: 歐洲 / 布魯塞爾
+      Europe/Bucharest: 歐洲 / 布加勒斯特
+      Europe/Budapest: 歐洲 / 布達佩斯
+      Europe/Copenhagen: 歐洲 / 哥本哈根
+      Europe/Dublin: 歐洲 / 都柏林
+      Europe/Helsinki: 歐洲 / 赫爾辛基
+      Europe/Istanbul: 歐洲 / 伊斯坦堡
+      Europe/Kaliningrad: 歐洲 / 加里寧格勒
+      Europe/Kiev: 歐洲 / 基輔 (烏克蘭)
+      Europe/Lisbon: 歐洲 / 里斯本
+      Europe/Ljubljana: 歐洲 / 盧比安納
+      Europe/London: 歐洲 / 倫敦
+      Europe/Madrid: 歐洲 / 馬德里
+      Europe/Minsk: 歐洲 / 明斯克
+      Europe/Moscow: 歐洲 / 莫斯科
+      Europe/Paris: 歐洲 / 巴黎
+      Europe/Prague: 歐洲 / 布拉格
+      Europe/Riga: 歐洲 / 里加
+      Europe/Rome: 歐洲 / 羅馬
+      Europe/Samara: 歐洲 / 薩馬拉
+      Europe/Sarajevo: 歐洲 / 塞拉耶佛
+      Europe/Skopje: 歐洲 / 史高比耶
+      Europe/Sofia: 歐洲 / 索菲亞
+      Europe/Stockholm: 歐洲 / 斯德哥爾摩
+      Europe/Tallinn: 歐洲 / 塔林
+      Europe/Vienna: 歐洲 / 維也納
+      Europe/Vilnius: 歐洲 / 維爾紐斯
+      Europe/Volgograd: 歐洲 / 伏爾加格勒
+      Europe/Warsaw: 歐洲 / 華沙
+      Europe/Zagreb: 歐洲 / 札格雷布
+      Europe/Zurich: 歐洲 / 蘇黎世
+      Pacific/Apia: 太平洋 / 阿皮亞
+      Pacific/Auckland: 太平洋 / 奧克蘭 (紐西蘭)
+      Pacific/Chatham: 太平洋 / 查塔姆群島 (紐西蘭)
+      Pacific/Easter: 太平洋 / 復活節島 (智利)
+      Pacific/Fakaofo: 太平洋 / 法考福 (托克勞)
+      Pacific/Fiji: 太平洋 / 斐濟
+      Pacific/Gambier: 太平洋 / 甘比爾群島
+      Pacific/Guadalcanal: 太平洋 / 瓜達康納爾島 (索羅門群島)
+      Pacific/Guam: 太平洋 / 關島
+      Pacific/Honolulu: 太平洋 / 檀香山 (夏威夷)
+      Pacific/Kiritimati: 太平洋 / 聖誕島 (吉里巴斯)
+      Pacific/Majuro: 太平洋 / 馬久羅（馬紹爾群島）
+      Pacific/Marquesas: 太平洋 / 馬克薩斯群島
+      Pacific/Midway: 太平洋 / 中途島
+      Pacific/Norfolk: 太平洋 / 諾福克島
+      Pacific/Noumea: 太平洋 / 努美阿（新喀里多尼亞）
+      Pacific/Pago_Pago: 太平洋 / 帕哥帕哥（美屬薩摩亞）
+      Pacific/Pitcairn: 太平洋 / 皮特肯群島
+      Pacific/Port_Moresby: 太平洋 / 莫士比港（巴布亞紐幾內亞）
+      Pacific/Tongatapu: 太平洋 / 東加塔布島（東加）

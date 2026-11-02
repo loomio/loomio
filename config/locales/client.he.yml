@@ -186,8 +186,6 @@ he:
     score: סקר ציון
     question: סבב שאלות
     stv: בחירות STV
-  timezones:
-    local: זמן מקומי (%{value})
   common:
     value: "%{value}"
     admin_menu: תפריט ניהול
@@ -1682,7 +1680,6 @@ he:
     insert_embedded_url: הטמע וידאו
   change_picture_form:
     title: הגדר תמונת פרופיל
-    helptext: אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.
     use_initials: השתמש בראשי תיבות
     use_gravatar: שימוש בGravatar
     use_uploaded: העלה תמונה חדשה

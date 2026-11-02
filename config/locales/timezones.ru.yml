@@ -1,0 +1,174 @@
+---
+ru:
+  timezones:
+    local: местное время (%{value})
+    regions:
+      Africa/Algiers: Африка / Алжир
+      Africa/Cairo: Африка / Каир
+      Africa/Casablanca: Африка / Касабланка
+      Africa/Harare: Африка / Хараре (Зимбабве)
+      Africa/Johannesburg: Африка / Йоханнесбург (ЮАР)
+      Africa/Monrovia: Африка / Монровия
+      Africa/Nairobi: Африка / Найроби
+      America/Adak: Америка / Адак (Алеутские острова)
+      America/Argentina/Buenos_Aires: Америка / Аргентина / Буэнос-Айрес
+      America/Asuncion: Америка / Асунсьон
+      America/Bogota: Америка / Богота
+      America/Cambridge_Bay: Америка / Кеймбридж-Бей (Нунавут)
+      America/Caracas: Америка / Каракас
+      America/Chicago: Америка / Чикаго (центральное время США)
+      America/Chihuahua: Америка / Чиуауа
+      America/Dawson: Америка / Доусон (Юкон)
+      America/Dawson_Creek: Америка / Доусон-Крик (Британская Колумбия)
+      America/Denver: Америка / Денвер (горное время США)
+      America/Edmonton: Америка / Эдмонтон (Альберта)
+      America/Fort_Nelson: Америка / Форт-Нельсон (Британская Колумбия)
+      America/Glace_Bay: Америка / Глейс-Бей (Новая Шотландия)
+      America/Goose_Bay: Америка / Гус-Бей (Лабрадор)
+      America/Guatemala: Америка / Гватемала
+      America/Guyana: Америка / Гайана
+      America/Halifax: Америка / Галифакс (Новая Шотландия)
+      America/Havana: Америка / Гавана
+      America/Indiana/Indianapolis: Америка / Индиана / Индианаполис (Индиана)
+      America/Inuvik: Америка / Инувик (Северо-Западные территории)
+      America/Iqaluit: Америка / Икалуит (Нунавут)
+      America/Juneau: Америка / Джуно (Аляска)
+      America/La_Paz: Америка / Ла-Пас
+      America/Lima: Америка / Лима
+      America/Los_Angeles: Америка / Лос-Анджелес (тихоокеанское время США)
+      America/Mazatlan: Америка / Масатлан
+      America/Mexico_City: Америка / Мехико
+      America/Miquelon: Америка / Сен-Пьер и Микелон
+      America/Moncton: Америка / Монктон (Нью-Брансуик)
+      America/Monterrey: Америка / Монтеррей
+      America/Montevideo: Америка / Монтевидео
+      America/New_York: Америка / Нью-Йорк (восточное время США)
+      America/Nuuk: Америка / Нуук
+      America/Panama: Америка / Панама
+      America/Phoenix: Америка / Финикс (Аризона)
+      America/Puerto_Rico: Америка / Пуэрто-Рико
+      America/Rankin_Inlet: Америка / Ранкин-Инлет (Нунавут)
+      America/Regina: Америка / Реджайна (Саскачеван)
+      America/Resolute: Америка / Резольют (Нунавут)
+      America/Santiago: Америка / Сантьяго
+      America/Sao_Paulo: Америка / Сан-Паулу
+      America/St_Johns: Америка / Сент-Джонс (Ньюфаундленд)
+      America/Swift_Current: Америка / Суифт-Каррент (Саскачеван)
+      America/Tijuana: Америка / Тихуана
+      America/Toronto: Америка / Торонто (Онтарио)
+      America/Vancouver: Америка / Ванкувер (Британская Колумбия)
+      America/Whitehorse: Америка / Уайтхорс (Юкон)
+      America/Winnipeg: Америка / Виннипег (Манитоба)
+      Antarctica/Troll: Антарктида / Станция Тролль (Антарктида)
+      Asia/Almaty: Азия / Алматы
+      Asia/Baghdad: Азия / Багдад
+      Asia/Baku: Азия / Баку
+      Asia/Bangkok: Азия / Бангкок
+      Asia/Beirut: Азия / Бейрут
+      Asia/Chongqing: Азия / Чунцин
+      Asia/Colombo: Азия / Коломбо
+      Asia/Dhaka: Азия / Дакка
+      Asia/Gaza: Азия / Газа
+      Asia/Hong_Kong: Азия / Гонконг
+      Asia/Irkutsk: Азия / Иркутск
+      Asia/Jakarta: Азия / Джакарта
+      Asia/Jerusalem: Азия / Иерусалим
+      Asia/Kabul: Азия / Кабул
+      Asia/Kamchatka: Азия / Камчатка
+      Asia/Karachi: Азия / Карачи
+      Asia/Kathmandu: Азия / Катманду
+      Asia/Kolkata: Азия / Калькутта (Индия)
+      Asia/Krasnoyarsk: Азия / Красноярск
+      Asia/Kuala_Lumpur: Азия / Куала-Лумпур
+      Asia/Kuwait: Азия / Эль-Кувейт
+      Asia/Magadan: Азия / Магадан
+      Asia/Muscat: Азия / Маскат
+      Asia/Novosibirsk: Азия / Новосибирск
+      Asia/Rangoon: Азия / Янгон (Мьянма)
+      Asia/Riyadh: Азия / Эр-Рияд
+      Asia/Seoul: Азия / Сеул
+      Asia/Shanghai: Азия / Шанхай
+      Asia/Singapore: Азия / Сингапур
+      Asia/Srednekolymsk: Азия / Среднеколымск
+      Asia/Taipei: Азия / Тайбэй
+      Asia/Tashkent: Азия / Ташкент
+      Asia/Tbilisi: Азия / Тбилиси
+      Asia/Tehran: Азия / Тегеран
+      Asia/Tokyo: Азия / Токио
+      Asia/Ulaanbaatar: Азия / Улан-Батор
+      Asia/Urumqi: Азия / Урумчи
+      Asia/Vladivostok: Азия / Владивосток
+      Asia/Yakutsk: Азия / Якутск
+      Asia/Yekaterinburg: Азия / Екатеринбург
+      Asia/Yerevan: Азия / Ереван
+      Atlantic/Azores: Атлантика / Азорские острова
+      Atlantic/Cape_Verde: Атлантика / Кабо-Верде
+      Atlantic/South_Georgia: Атлантика / Остров Южная Георгия
+      Australia/Adelaide: Австралия / Аделаида (Южная Австралия)
+      Australia/Brisbane: Австралия / Брисбен (Квинсленд)
+      Australia/Canberra: Австралия / Канберра (Австралийская столичная территория)
+      Australia/Darwin: Австралия / Дарвин (Северная территория)
+      Australia/Eucla: Австралия / Юкла (Западная Австралия)
+      Australia/Hobart: Австралия / Хобарт (Тасмания)
+      Australia/Lord_Howe: Австралия / Остров Лорд-Хау
+      Australia/Melbourne: Австралия / Мельбурн (Виктория)
+      Australia/Perth: Австралия / Перт (Западная Австралия)
+      Australia/Sydney: Австралия / Сидней (Новый Южный Уэльс)
+      Etc/GMT+12: Прочее / К западу от линии перемены дат (UTC−12)
+      Etc/UTC: Прочее / Всемирное координированное время (UTC)
+      Europe/Amsterdam: Европа / Амстердам
+      Europe/Athens: Европа / Афины
+      Europe/Belgrade: Европа / Белград
+      Europe/Berlin: Европа / Берлин
+      Europe/Bratislava: Европа / Братислава
+      Europe/Brussels: Европа / Брюссель
+      Europe/Bucharest: Европа / Бухарест
+      Europe/Budapest: Европа / Будапешт
+      Europe/Copenhagen: Европа / Копенгаген
+      Europe/Dublin: Европа / Дублин
+      Europe/Helsinki: Европа / Хельсинки
+      Europe/Istanbul: Европа / Стамбул
+      Europe/Kaliningrad: Европа / Калининград
+      Europe/Kiev: Европа / Киев (Украина)
+      Europe/Lisbon: Европа / Лиссабон
+      Europe/Ljubljana: Европа / Любляна
+      Europe/London: Европа / Лондон
+      Europe/Madrid: Европа / Мадрид
+      Europe/Minsk: Европа / Минск
+      Europe/Moscow: Европа / Москва
+      Europe/Paris: Европа / Париж
+      Europe/Prague: Европа / Прага
+      Europe/Riga: Европа / Рига
+      Europe/Rome: Европа / Рим
+      Europe/Samara: Европа / Самара
+      Europe/Sarajevo: Европа / Сараево
+      Europe/Skopje: Европа / Скопье
+      Europe/Sofia: Европа / София
+      Europe/Stockholm: Европа / Стокгольм
+      Europe/Tallinn: Европа / Таллин
+      Europe/Vienna: Европа / Вена
+      Europe/Vilnius: Европа / Вильнюс
+      Europe/Volgograd: Европа / Волгоград
+      Europe/Warsaw: Европа / Варшава
+      Europe/Zagreb: Европа / Загреб
+      Europe/Zurich: Европа / Цюрих
+      Pacific/Apia: Тихий океан / Апиа
+      Pacific/Auckland: Тихий океан / Окленд (Новая Зеландия)
+      Pacific/Chatham: Тихий океан / Острова Чатем (Новая Зеландия)
+      Pacific/Easter: Тихий океан / Остров Пасхи (Чили)
+      Pacific/Fakaofo: Тихий океан / Факаофо (Токелау)
+      Pacific/Fiji: Тихий океан / Фиджи
+      Pacific/Gambier: Тихий океан / Острова Гамбье
+      Pacific/Guadalcanal: Тихий океан / Гуадалканал (Соломоновы Острова)
+      Pacific/Guam: Тихий океан / Гуам
+      Pacific/Honolulu: Тихий океан / Гонолулу (Гавайи)
+      Pacific/Kiritimati: Тихий океан / Киритимати (Кирибати)
+      Pacific/Majuro: Тихий океан / Маджуро (Маршалловы Острова)
+      Pacific/Marquesas: Тихий океан / Маркизские острова
+      Pacific/Midway: Тихий океан / Острова Мидуэй
+      Pacific/Norfolk: Тихий океан / Остров Норфолк
+      Pacific/Noumea: Тихий океан / Нумеа (Новая Каледония)
+      Pacific/Pago_Pago: Тихий океан / Паго-Паго (Американское Самоа)
+      Pacific/Pitcairn: Тихий океан / Острова Питкэрн
+      Pacific/Port_Moresby: Тихий океан / Порт-Морсби (Папуа — Новая Гвинея)
+      Pacific/Tongatapu: Тихий океан / Тонгатапу (Тонга)

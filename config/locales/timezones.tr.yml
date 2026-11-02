@@ -1,0 +1,174 @@
+---
+tr:
+  timezones:
+    local: Yerel saat (%{value})
+    regions:
+      Africa/Algiers: Afrika / Cezayir
+      Africa/Cairo: Afrika / Kahire
+      Africa/Casablanca: Afrika / Kazablanka
+      Africa/Harare: Afrika / Harare (Zimbabve)
+      Africa/Johannesburg: Afrika / Johannesburg (Güney Afrika)
+      Africa/Monrovia: Afrika / Monrovia
+      Africa/Nairobi: Afrika / Nairobi
+      America/Adak: Amerika / Adak (Aleut Adaları)
+      America/Argentina/Buenos_Aires: Amerika / Arjantin / Buenos Aires
+      America/Asuncion: Amerika / Asunción
+      America/Bogota: Amerika / Bogotá
+      America/Cambridge_Bay: Amerika / Cambridge Bay (Nunavut)
+      America/Caracas: Amerika / Caracas
+      America/Chicago: Amerika / Chicago (ABD Merkez)
+      America/Chihuahua: Amerika / Chihuahua
+      America/Dawson: Amerika / Dawson (Yukon)
+      America/Dawson_Creek: Amerika / Dawson Creek (Britanya Kolumbiyası)
+      America/Denver: Amerika / Denver (ABD Dağ)
+      America/Edmonton: Amerika / Edmonton (Alberta)
+      America/Fort_Nelson: Amerika / Fort Nelson (Britanya Kolumbiyası)
+      America/Glace_Bay: Amerika / Glace Bay (Yeni İskoçya)
+      America/Goose_Bay: Amerika / Goose Bay (Labrador)
+      America/Guatemala: Amerika / Guatemala
+      America/Guyana: Amerika / Guyana
+      America/Halifax: Amerika / Halifax (Yeni İskoçya)
+      America/Havana: Amerika / Havana
+      America/Indiana/Indianapolis: Amerika / Indiana / Indianapolis (Indiana)
+      America/Inuvik: Amerika / Inuvik (Kuzeybatı Toprakları)
+      America/Iqaluit: Amerika / Iqaluit (Nunavut)
+      America/Juneau: Amerika / Juneau (Alaska)
+      America/La_Paz: Amerika / La Paz
+      America/Lima: Amerika / Lima
+      America/Los_Angeles: Amerika / Los Angeles (ABD Pasifik)
+      America/Mazatlan: Amerika / Mazatlán
+      America/Mexico_City: Amerika / Meksiko
+      America/Miquelon: Amerika / Saint Pierre ve Miquelon
+      America/Moncton: Amerika / Moncton (New Brunswick)
+      America/Monterrey: Amerika / Monterrey
+      America/Montevideo: Amerika / Montevideo
+      America/New_York: Amerika / New York (ABD Doğu)
+      America/Nuuk: Amerika / Nuuk
+      America/Panama: Amerika / Panama
+      America/Phoenix: Amerika / Phoenix (Arizona)
+      America/Puerto_Rico: Amerika / Porto Riko
+      America/Rankin_Inlet: Amerika / Rankin Inlet (Nunavut)
+      America/Regina: Amerika / Regina (Saskatchewan)
+      America/Resolute: Amerika / Resolute (Nunavut)
+      America/Santiago: Amerika / Santiago
+      America/Sao_Paulo: Amerika / São Paulo
+      America/St_Johns: Amerika / St. John's (Newfoundland)
+      America/Swift_Current: Amerika / Swift Current (Saskatchewan)
+      America/Tijuana: Amerika / Tijuana
+      America/Toronto: Amerika / Toronto (Ontario)
+      America/Vancouver: Amerika / Vancouver (Britanya Kolumbiyası)
+      America/Whitehorse: Amerika / Whitehorse (Yukon)
+      America/Winnipeg: Amerika / Winnipeg (Manitoba)
+      Antarctica/Troll: Antarktika / Troll İstasyonu (Antarktika)
+      Asia/Almaty: Asya / Almatı
+      Asia/Baghdad: Asya / Bağdat
+      Asia/Baku: Asya / Bakü
+      Asia/Bangkok: Asya / Bangkok
+      Asia/Beirut: Asya / Beyrut
+      Asia/Chongqing: Asya / Çongçing
+      Asia/Colombo: Asya / Kolombo
+      Asia/Dhaka: Asya / Dakka
+      Asia/Gaza: Asya / Gazze
+      Asia/Hong_Kong: Asya / Hong Kong
+      Asia/Irkutsk: Asya / İrkutsk
+      Asia/Jakarta: Asya / Cakarta
+      Asia/Jerusalem: Asya / Kudüs
+      Asia/Kabul: Asya / Kabil
+      Asia/Kamchatka: Asya / Kamçatka
+      Asia/Karachi: Asya / Karaçi
+      Asia/Kathmandu: Asya / Katmandu
+      Asia/Kolkata: Asya / Kalküta (Hindistan)
+      Asia/Krasnoyarsk: Asya / Krasnoyarsk
+      Asia/Kuala_Lumpur: Asya / Kuala Lumpur
+      Asia/Kuwait: Asya / Kuveyt
+      Asia/Magadan: Asya / Magadan
+      Asia/Muscat: Asya / Maskat
+      Asia/Novosibirsk: Asya / Novosibirsk
+      Asia/Rangoon: Asya / Yangon (Myanmar)
+      Asia/Riyadh: Asya / Riyad
+      Asia/Seoul: Asya / Seul
+      Asia/Shanghai: Asya / Şanghay
+      Asia/Singapore: Asya / Singapur
+      Asia/Srednekolymsk: Asya / Srednekolımsk
+      Asia/Taipei: Asya / Taipei
+      Asia/Tashkent: Asya / Taşkent
+      Asia/Tbilisi: Asya / Tiflis
+      Asia/Tehran: Asya / Tahran
+      Asia/Tokyo: Asya / Tokyo
+      Asia/Ulaanbaatar: Asya / Ulan Batur
+      Asia/Urumqi: Asya / Urumçi
+      Asia/Vladivostok: Asya / Vladivostok
+      Asia/Yakutsk: Asya / Yakutsk
+      Asia/Yekaterinburg: Asya / Yekaterinburg
+      Asia/Yerevan: Asya / Erivan
+      Atlantic/Azores: Atlantik / Azorlar
+      Atlantic/Cape_Verde: Atlantik / Yeşil Burun Adaları
+      Atlantic/South_Georgia: Atlantik / Güney Georgia Adası
+      Australia/Adelaide: Avustralya / Adelaide (Güney Avustralya)
+      Australia/Brisbane: Avustralya / Brisbane (Queensland)
+      Australia/Canberra: Avustralya / Canberra (Avustralya Başkent Bölgesi)
+      Australia/Darwin: Avustralya / Darwin (Kuzey Bölgesi)
+      Australia/Eucla: Avustralya / Eucla (Batı Avustralya)
+      Australia/Hobart: Avustralya / Hobart (Tasmanya)
+      Australia/Lord_Howe: Avustralya / Lord Howe Adası
+      Australia/Melbourne: Avustralya / Melbourne (Victoria)
+      Australia/Perth: Avustralya / Perth (Batı Avustralya)
+      Australia/Sydney: Avustralya / Sidney (Yeni Güney Galler)
+      Etc/GMT+12: Diğer / Uluslararası Tarih Çizgisi Batı (UTC−12)
+      Etc/UTC: Diğer / Eşgüdümlü Evrensel Zaman (UTC)
+      Europe/Amsterdam: Avrupa / Amsterdam
+      Europe/Athens: Avrupa / Atina
+      Europe/Belgrade: Avrupa / Belgrad
+      Europe/Berlin: Avrupa / Berlin
+      Europe/Bratislava: Avrupa / Bratislava
+      Europe/Brussels: Avrupa / Brüksel
+      Europe/Bucharest: Avrupa / Bükreş
+      Europe/Budapest: Avrupa / Budapeşte
+      Europe/Copenhagen: Avrupa / Kopenhag
+      Europe/Dublin: Avrupa / Dublin
+      Europe/Helsinki: Avrupa / Helsinki
+      Europe/Istanbul: Avrupa / İstanbul
+      Europe/Kaliningrad: Avrupa / Kaliningrad
+      Europe/Kiev: Avrupa / Kıyiv (Ukrayna)
+      Europe/Lisbon: Avrupa / Lizbon
+      Europe/Ljubljana: Avrupa / Ljubljana
+      Europe/London: Avrupa / Londra
+      Europe/Madrid: Avrupa / Madrid
+      Europe/Minsk: Avrupa / Minsk
+      Europe/Moscow: Avrupa / Moskova
+      Europe/Paris: Avrupa / Paris
+      Europe/Prague: Avrupa / Prag
+      Europe/Riga: Avrupa / Riga
+      Europe/Rome: Avrupa / Roma
+      Europe/Samara: Avrupa / Samara
+      Europe/Sarajevo: Avrupa / Saraybosna
+      Europe/Skopje: Avrupa / Üsküp
+      Europe/Sofia: Avrupa / Sofya
+      Europe/Stockholm: Avrupa / Stockholm
+      Europe/Tallinn: Avrupa / Tallinn
+      Europe/Vienna: Avrupa / Viyana
+      Europe/Vilnius: Avrupa / Vilnius
+      Europe/Volgograd: Avrupa / Volgograd
+      Europe/Warsaw: Avrupa / Varşova
+      Europe/Zagreb: Avrupa / Zagreb
+      Europe/Zurich: Avrupa / Zürih
+      Pacific/Apia: Pasifik / Apia
+      Pacific/Auckland: Pasifik / Auckland (Yeni Zelanda)
+      Pacific/Chatham: Pasifik / Chatham Adaları (Yeni Zelanda)
+      Pacific/Easter: Pasifik / Paskalya Adası (Şili)
+      Pacific/Fakaofo: Pasifik / Fakaofo (Tokelau)
+      Pacific/Fiji: Pasifik / Fiji
+      Pacific/Gambier: Pasifik / Gambier Adaları
+      Pacific/Guadalcanal: Pasifik / Guadalcanal (Solomon Adaları)
+      Pacific/Guam: Pasifik / Guam
+      Pacific/Honolulu: Pasifik / Honolulu (Hawaii)
+      Pacific/Kiritimati: Pasifik / Kiritimati (Kiribati)
+      Pacific/Majuro: Pasifik / Majuro (Marshall Adaları)
+      Pacific/Marquesas: Pasifik / Markiz Adaları
+      Pacific/Midway: Pasifik / Midway Adaları
+      Pacific/Norfolk: Pasifik / Norfolk Adası
+      Pacific/Noumea: Pasifik / Nouméa (Yeni Kaledonya)
+      Pacific/Pago_Pago: Pasifik / Pago Pago (Amerikan Samoası)
+      Pacific/Pitcairn: Pasifik / Pitcairn Adaları
+      Pacific/Port_Moresby: Pasifik / Port Moresby (Papua Yeni Gine)
+      Pacific/Tongatapu: Pasifik / Tongatapu (Tonga)

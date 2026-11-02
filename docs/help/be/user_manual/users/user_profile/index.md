@@ -1,30 +1,30 @@
 ---
 title: Ваш профіль
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: e341837e759e4369
 generated:
   introduction: 9137e1a6c629d0f8
   edit-profile: 216fd51edc23b843
   update-your-personal-info: 64b82dfc97172d64
-  viewing-another-person-s-profile: 9f9ede78b983b043
-  uploading-a-profile-photo: 5bf96e74b646dfdc
-  language-settings: fe0be4726c744398
+  uploading-a-profile-photo: e558e6fe55c279e6
+  language-settings: de39e3efa1446f79
   resetting-your-password: 5599057adf63719f
   merge-accounts: 5e29a40230d5726f
   deleting-your-account: a618bb5c3b02fdc3
+  time-zone: 4b97e5e69d2c99a1
 title_source: 528d89ad72cba22e
 title_generated: c5e37ca5d5d3c4fd
 ---
@@ -57,29 +57,24 @@ title_generated: c5e37ca5d5d3c4fd
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Прагляд профілю іншага чалавека
-
-Выберыце імя або аватар чалавека, каб адкрыць яго профіль. Побач са звесткамі профілю і групамі паказваюцца апошнія абмеркаванні, каментарыі і апытанні гэтага чалавека. Спіс змяшчае толькі дзейнасць, да якой у вас ёсць доступ; людзі, якія не ўвайшлі ва ўліковы запіс, бачаць толькі публічную дзейнасць.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Загрузка фота профілю
 Калі вы ствараеце ўліковы запіс Loomio, стандартнай выявай вашага профілю будуць вашы ініцыялы. Каб загрузіць фота профілю, націсніце на сваю выяву на старонцы профілю.
 
-Калі ў вас ёсць [Gravatar](https://en.gravatar.com/), вы можаце зрабіць яго выявай профілю, выбраўшы **Выкарыстоўвайце Gravatar**. Вы таксама можаце выбраць для Loomio фота, якое выкарыстоўваеце на іншых распаўсюджаных платформах або ў іншых інструментах.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Налады мовы
-Loomio распрацоўваецца на англійскай мове, але [дзякуючы валанцёрскай працы перакладаецца на шмат моў](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Мова
 
 Loomio вызначае мову паводле налад вашага браўзера, але вы можаце ўручную выбраць патрэбную мову з даступных варыянтаў на старонцы профілю.
 
-![](profile_language.png)
+<!-- translation-section: time-zone -->
+
+## Гадзінны пояс
+
+Варыянты апытання пра час выкарыстоўваюць гадзінны пояс, захаваны ў вашым профілі. Уключыце **Аўтаматычнае вызначэнне часавага пояса**, каб выкарыстоўваць пояс, які паведамляе ваш браўзер, або адключыце гэту наладу і выберыце свой рэгіён у полі **Гадзінны пояс**, а затым націсніце **Абнавіць профіль**.
 
 <!-- translation-section: resetting-your-password -->
 

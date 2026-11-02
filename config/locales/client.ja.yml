@@ -185,8 +185,6 @@ ja:
     score: スコア投票
     question: 質問ラウンド
     stv: STV選挙
-  timezones:
-    local: 現地時間 (%{value})
   common:
     value: "%{value}"
     admin_menu: 管理者メニュー
@@ -1669,7 +1667,6 @@ ja:
     insert_embedded_url: 埋め込まれたビデオ
   change_picture_form:
     title: プロフィール写真を設定する
-    helptext: 自分のプロフィール写真をアップロードすることも、 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>アカウントをお持ちの場合はそれを使用することもできます。
     use_initials: イニシャルを使用する
     use_gravatar: グラバターを使用する
     use_uploaded: 新しい写真をアップロードする

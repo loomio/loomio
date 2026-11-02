@@ -1,24 +1,22 @@
 ---
 title: Опитування щодо часу
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: bc26e166eedef7b4
   time-poll: b275e298b57ede9a
   voting: b37f0ede4f92ff8c
-  outcome: 3d58333a23b937e4
+  outcome: f72e91309ab5c88c
 title_source: 8e2a07d7257fbc04
 title_generated: c6514a2133082a29
-needs_review:
-  outcome: use "висновок" instead of "результат" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -73,12 +71,12 @@ _Дізнайтеся, коли люди можуть зустрітися_
 
 **Повідомити**: Додайте людей, яких ви запрошуєте на зустріч або подію
 
-**Час зустрічі**: Виберіть час, який найкраще підходить
+**Час зустрічі**: Виберіть час, який найкраще підходить. Варіанти відображаються в [часовому поясі, вказаному у вашому профілі](/en/user_manual/users/user_profile#time-zone)
 
 **Назва наради**: Дайте вашій зустрічі назву. За замовчуванням використовується назва опитування щодо часу
 
 **Місце**: Додайте місце проведення або посилання на зустріч
 
-**Пояснення**: Підсумуйте результат і додайте інструкції щодо зустрічі
+**Пояснення**: Коротко опишіть, про що домовилися, і додайте інструкції щодо зустрічі
 
 Loomio додає вибраний час, назву зустрічі, тривалість, місце та пояснення до сповіщення про висновок і запрошення в календарі.

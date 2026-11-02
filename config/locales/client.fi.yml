@@ -186,8 +186,6 @@ fi:
     score: pisteytys
     question: kysymyskierros
     stv: STV-vaalit
-  timezones:
-    local: Paikallinen aika (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin valikko
@@ -1670,7 +1668,6 @@ fi:
     insert_embedded_url: Upotettu video
   change_picture_form:
     title: Aseta profiilikuva
-    helptext: Voit ladata oman profiilikuvasi, tai jos sinulla on <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> tili, voit käyttää sitä.
     use_initials: Käytä nimikirjaimia
     use_gravatar: Käytä Gravataria
     use_uploaded: Lataa uusi kuva

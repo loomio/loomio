@@ -50,7 +50,7 @@ When the Time poll closes, pick the best time and share an outcome. See [Share a
 
 **Notify**: Add the people you are inviting to the meeting or event
 
-**Meeting time**: Select the time that works best
+**Meeting time**: Select the time that works best. Options use the [time zone in your profile](/en/user_manual/users/user_profile#time-zone)
 
 **Meeting name**: Give your meeting a name. The Time poll title is used by default
 

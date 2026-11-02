@@ -1,0 +1,174 @@
+---
+fi:
+  timezones:
+    local: Paikallinen aika (%{value})
+    regions:
+      Africa/Algiers: Afrikka / Alger
+      Africa/Cairo: Afrikka / Kairo
+      Africa/Casablanca: Afrikka / Casablanca
+      Africa/Harare: Afrikka / Harare (Zimbabwe)
+      Africa/Johannesburg: Afrikka / Johannesburg (Etelä-Afrikka)
+      Africa/Monrovia: Afrikka / Monrovia
+      Africa/Nairobi: Afrikka / Nairobi
+      America/Adak: Amerikka / Adak (Aleutit)
+      America/Argentina/Buenos_Aires: Amerikka / Argentiina / Buenos Aires
+      America/Asuncion: Amerikka / Asunción
+      America/Bogota: Amerikka / Bogotá
+      America/Cambridge_Bay: Amerikka / Cambridge Bay (Nunavut)
+      America/Caracas: Amerikka / Caracas
+      America/Chicago: Amerikka / Chicago (Yhdysvaltain keskiosat)
+      America/Chihuahua: Amerikka / Chihuahua
+      America/Dawson: Amerikka / Dawson (Yukon)
+      America/Dawson_Creek: Amerikka / Dawson Creek (Brittiläinen Kolumbia)
+      America/Denver: Amerikka / Denver (Yhdysvaltain vuoristoalue)
+      America/Edmonton: Amerikka / Edmonton (Alberta)
+      America/Fort_Nelson: Amerikka / Fort Nelson (Brittiläinen Kolumbia)
+      America/Glace_Bay: Amerikka / Glace Bay (Nova Scotia)
+      America/Goose_Bay: Amerikka / Goose Bay (Labrador)
+      America/Guatemala: Amerikka / Guatemala
+      America/Guyana: Amerikka / Guyana
+      America/Halifax: Amerikka / Halifax (Nova Scotia)
+      America/Havana: Amerikka / Havanna
+      America/Indiana/Indianapolis: Amerikka / Indiana / Indianapolis (Indiana)
+      America/Inuvik: Amerikka / Inuvik (Luoteisterritoriot)
+      America/Iqaluit: Amerikka / Iqaluit (Nunavut)
+      America/Juneau: Amerikka / Juneau (Alaska)
+      America/La_Paz: Amerikka / La Paz
+      America/Lima: Amerikka / Lima
+      America/Los_Angeles: Amerikka / Los Angeles (Yhdysvaltain Tyynenmeren rannikko)
+      America/Mazatlan: Amerikka / Mazatlán
+      America/Mexico_City: Amerikka / México
+      America/Miquelon: Amerikka / Saint-Pierre ja Miquelon
+      America/Moncton: Amerikka / Moncton (New Brunswick)
+      America/Monterrey: Amerikka / Monterrey
+      America/Montevideo: Amerikka / Montevideo
+      America/New_York: Amerikka / New York (Yhdysvaltain itäosat)
+      America/Nuuk: Amerikka / Nuuk
+      America/Panama: Amerikka / Panama
+      America/Phoenix: Amerikka / Phoenix (Arizona)
+      America/Puerto_Rico: Amerikka / Puerto Rico
+      America/Rankin_Inlet: Amerikka / Rankin Inlet (Nunavut)
+      America/Regina: Amerikka / Regina (Saskatchewan)
+      America/Resolute: Amerikka / Resolute (Nunavut)
+      America/Santiago: Amerikka / Santiago
+      America/Sao_Paulo: Amerikka / São Paulo
+      America/St_Johns: Amerikka / St. John's (Newfoundland)
+      America/Swift_Current: Amerikka / Swift Current (Saskatchewan)
+      America/Tijuana: Amerikka / Tijuana
+      America/Toronto: Amerikka / Toronto (Ontario)
+      America/Vancouver: Amerikka / Vancouver (Brittiläinen Kolumbia)
+      America/Whitehorse: Amerikka / Whitehorse (Yukon)
+      America/Winnipeg: Amerikka / Winnipeg (Manitoba)
+      Antarctica/Troll: Etelämanner / Trollin asema (Antarktis)
+      Asia/Almaty: Aasia / Almaty
+      Asia/Baghdad: Aasia / Bagdad
+      Asia/Baku: Aasia / Baku
+      Asia/Bangkok: Aasia / Bangkok
+      Asia/Beirut: Aasia / Beirut
+      Asia/Chongqing: Aasia / Chongqing
+      Asia/Colombo: Aasia / Colombo
+      Asia/Dhaka: Aasia / Dhaka
+      Asia/Gaza: Aasia / Gaza
+      Asia/Hong_Kong: Aasia / Hongkong
+      Asia/Irkutsk: Aasia / Irkutsk
+      Asia/Jakarta: Aasia / Jakarta
+      Asia/Jerusalem: Aasia / Jerusalem
+      Asia/Kabul: Aasia / Kabul
+      Asia/Kamchatka: Aasia / Kamtšatka
+      Asia/Karachi: Aasia / Karachi
+      Asia/Kathmandu: Aasia / Katmandu
+      Asia/Kolkata: Aasia / Kolkata (Intia)
+      Asia/Krasnoyarsk: Aasia / Krasnojarsk
+      Asia/Kuala_Lumpur: Aasia / Kuala Lumpur
+      Asia/Kuwait: Aasia / Kuwait
+      Asia/Magadan: Aasia / Magadan
+      Asia/Muscat: Aasia / Masqat
+      Asia/Novosibirsk: Aasia / Novosibirsk
+      Asia/Rangoon: Aasia / Yangon (Myanmar)
+      Asia/Riyadh: Aasia / Riad
+      Asia/Seoul: Aasia / Soul
+      Asia/Shanghai: Aasia / Shanghai
+      Asia/Singapore: Aasia / Singapore
+      Asia/Srednekolymsk: Aasia / Srednekolymsk
+      Asia/Taipei: Aasia / Taipei
+      Asia/Tashkent: Aasia / Taškent
+      Asia/Tbilisi: Aasia / Tbilisi
+      Asia/Tehran: Aasia / Teheran
+      Asia/Tokyo: Aasia / Tokio
+      Asia/Ulaanbaatar: Aasia / Ulan Bator
+      Asia/Urumqi: Aasia / Ürümqi
+      Asia/Vladivostok: Aasia / Vladivostok
+      Asia/Yakutsk: Aasia / Jakutsk
+      Asia/Yekaterinburg: Aasia / Jekaterinburg
+      Asia/Yerevan: Aasia / Jerevan
+      Atlantic/Azores: Atlantti / Azorit
+      Atlantic/Cape_Verde: Atlantti / Kap Verde
+      Atlantic/South_Georgia: Atlantti / Etelä-Georgia
+      Australia/Adelaide: Australia / Adelaide (Etelä-Australia)
+      Australia/Brisbane: Australia / Brisbane (Queensland)
+      Australia/Canberra: Australia / Canberra (Australian pääkaupunkiterritorio)
+      Australia/Darwin: Australia / Darwin (Pohjoisterritorio)
+      Australia/Eucla: Australia / Eucla (Länsi-Australia)
+      Australia/Hobart: Australia / Hobart (Tasmania)
+      Australia/Lord_Howe: Australia / Lord Howen saari
+      Australia/Melbourne: Australia / Melbourne (Victoria)
+      Australia/Perth: Australia / Perth (Länsi-Australia)
+      Australia/Sydney: Australia / Sydney (Uusi Etelä-Wales)
+      Etc/GMT+12: Muut / Päivämäärärajan länsipuoli (UTC−12)
+      Etc/UTC: Muut / Koordinoitu yleisaika (UTC)
+      Europe/Amsterdam: Eurooppa / Amsterdam
+      Europe/Athens: Eurooppa / Ateena
+      Europe/Belgrade: Eurooppa / Belgrad
+      Europe/Berlin: Eurooppa / Berliini
+      Europe/Bratislava: Eurooppa / Bratislava
+      Europe/Brussels: Eurooppa / Bryssel
+      Europe/Bucharest: Eurooppa / Bukarest
+      Europe/Budapest: Eurooppa / Budapest
+      Europe/Copenhagen: Eurooppa / Kööpenhamina
+      Europe/Dublin: Eurooppa / Dublin
+      Europe/Helsinki: Eurooppa / Helsinki
+      Europe/Istanbul: Eurooppa / Istanbul
+      Europe/Kaliningrad: Eurooppa / Kaliningrad
+      Europe/Kiev: Eurooppa / Kiova (Ukraina)
+      Europe/Lisbon: Eurooppa / Lissabon
+      Europe/Ljubljana: Eurooppa / Ljubljana
+      Europe/London: Eurooppa / Lontoo
+      Europe/Madrid: Eurooppa / Madrid
+      Europe/Minsk: Eurooppa / Minsk
+      Europe/Moscow: Eurooppa / Moskova
+      Europe/Paris: Eurooppa / Pariisi
+      Europe/Prague: Eurooppa / Praha
+      Europe/Riga: Eurooppa / Riika
+      Europe/Rome: Eurooppa / Rooma
+      Europe/Samara: Eurooppa / Samara
+      Europe/Sarajevo: Eurooppa / Sarajevo
+      Europe/Skopje: Eurooppa / Skopje
+      Europe/Sofia: Eurooppa / Sofia
+      Europe/Stockholm: Eurooppa / Tukholma
+      Europe/Tallinn: Eurooppa / Tallinna
+      Europe/Vienna: Eurooppa / Wien
+      Europe/Vilnius: Eurooppa / Vilna
+      Europe/Volgograd: Eurooppa / Volgograd
+      Europe/Warsaw: Eurooppa / Varsova
+      Europe/Zagreb: Eurooppa / Zagreb
+      Europe/Zurich: Eurooppa / Zürich
+      Pacific/Apia: Tyynimeri / Apia
+      Pacific/Auckland: Tyynimeri / Auckland (Uusi-Seelanti)
+      Pacific/Chatham: Tyynimeri / Chathamsaaret (Uusi-Seelanti)
+      Pacific/Easter: Tyynimeri / Pääsiäissaari (Chile)
+      Pacific/Fakaofo: Tyynimeri / Fakaofo (Tokelau)
+      Pacific/Fiji: Tyynimeri / Fidži
+      Pacific/Gambier: Tyynimeri / Gambiersaaret
+      Pacific/Guadalcanal: Tyynimeri / Guadalcanal (Salomonsaaret)
+      Pacific/Guam: Tyynimeri / Guam
+      Pacific/Honolulu: Tyynimeri / Honolulu (Havaiji)
+      Pacific/Kiritimati: Tyynimeri / Kiritimati (Kiribati)
+      Pacific/Majuro: Tyynimeri / Majuro (Marshallinsaaret)
+      Pacific/Marquesas: Tyynimeri / Markiisisaaret
+      Pacific/Midway: Tyynimeri / Midwaysaaret
+      Pacific/Norfolk: Tyynimeri / Norfolkinsaari
+      Pacific/Noumea: Tyynimeri / Nouméa (Uusi-Kaledonia)
+      Pacific/Pago_Pago: Tyynimeri / Pago Pago (Amerikan Samoa)
+      Pacific/Pitcairn: Tyynimeri / Pitcairnsaaret
+      Pacific/Port_Moresby: Tyynimeri / Port Moresby (Papua-Uusi-Guinea)
+      Pacific/Tongatapu: Tyynimeri / Tongatapu (Tonga)
