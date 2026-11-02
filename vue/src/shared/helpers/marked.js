@@ -2,6 +2,9 @@ import { marked } from 'marked';
 import { clone } from 'lodash-es';
 import parameterize from '@/shared/helpers/parameterize';
 import { safeUrl } from './safe_url.mjs';
+import { markedMention } from './marked_mention.mjs';
+
+marked.use({ extensions: [markedMention] });
 
 // marked (v4) does no protocol filtering, and the server-side HTML sanitizer
 // never sees markdown link/image syntax — so `[x](javascript:...)` reaches the
