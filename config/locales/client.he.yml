@@ -188,6 +188,176 @@ he:
     stv: בחירות STV
   timezones:
     local: זמן מקומי (%{value})
+    regions:
+      Africa/Algiers: אלג'יר
+      Africa/Cairo: קהיר
+      Africa/Casablanca: קזבלנקה
+      Africa/Harare: הרארה (זימבבואה)
+      Africa/Johannesburg: יוהנסבורג (דרום אפריקה)
+      Africa/Monrovia: מונרוביה
+      Africa/Nairobi: ניירובי
+      America/Adak: אדאק (האיים האלאוטיים)
+      America/Argentina/Buenos_Aires: בואנוס איירס
+      America/Asuncion: אסונסיון
+      America/Bogota: בוגוטה
+      America/Cambridge_Bay: קיימברידג' ביי (נונאווט)
+      America/Caracas: קראקס
+      America/Chicago: שיקגו (מרכז ארה״ב)
+      America/Chihuahua: צ'יוואווה
+      America/Dawson: דוסון (יוקון)
+      America/Dawson_Creek: דוסון קריק (קולומביה הבריטית)
+      America/Denver: דנוור (אזור ההרים בארה״ב)
+      America/Edmonton: אדמונטון (אלברטה)
+      America/Fort_Nelson: פורט נלסון (קולומביה הבריטית)
+      America/Glace_Bay: גלייס ביי (נובה סקוטיה)
+      America/Goose_Bay: גוס ביי (לברדור)
+      America/Guatemala: גואטמלה
+      America/Guyana: גיאנה
+      America/Halifax: הליפקס (נובה סקוטיה)
+      America/Havana: הוואנה
+      America/Indiana/Indianapolis: אינדיאנפוליס (אינדיאנה)
+      America/Inuvik: אינוויק (הטריטוריות הצפון־מערביות)
+      America/Iqaluit: איקאלואיט (נונאווט)
+      America/Juneau: ג'ונו (אלסקה)
+      America/La_Paz: לה פאס
+      America/Lima: לימה
+      America/Los_Angeles: לוס אנג'לס (חוף האוקיינוס השקט בארה״ב)
+      America/Mazatlan: מסטלאן
+      America/Mexico_City: מקסיקו סיטי
+      America/Miquelon: סן פייר ומיקלון
+      America/Moncton: מונקטון (ניו ברנזוויק)
+      America/Monterrey: מונטריי
+      America/Montevideo: מונטווידאו
+      America/New_York: ניו יורק (מזרח ארה״ב)
+      America/Nuuk: נוק
+      America/Panama: פנמה
+      America/Phoenix: פיניקס (אריזונה)
+      America/Puerto_Rico: פוארטו ריקו
+      America/Rankin_Inlet: רנקין אינלט (נונאווט)
+      America/Regina: רג'יינה (ססקצ'ואן)
+      America/Resolute: רזולוט (נונאווט)
+      America/Santiago: סנטיאגו
+      America/Sao_Paulo: סאו פאולו
+      America/St_Johns: סנט ג'ונס (ניופאונדלנד)
+      America/Swift_Current: סוויפט קרנט (ססקצ'ואן)
+      America/Tijuana: טיחואנה
+      America/Toronto: טורונטו (אונטריו)
+      America/Vancouver: ונקובר (קולומביה הבריטית)
+      America/Whitehorse: וייטהורס (יוקון)
+      America/Winnipeg: ויניפג (מניטובה)
+      Antarctica/Troll: תחנת טרול (אנטארקטיקה)
+      Asia/Almaty: אלמטי
+      Asia/Baghdad: בגדאד
+      Asia/Baku: באקו
+      Asia/Bangkok: בנגקוק
+      Asia/Beirut: ביירות
+      Asia/Chongqing: צ'ונגצ'ינג
+      Asia/Colombo: קולומבו
+      Asia/Dhaka: דאקה
+      Asia/Gaza: עזה
+      Asia/Hong_Kong: הונג קונג
+      Asia/Irkutsk: אירקוטסק
+      Asia/Jakarta: ג'קרטה
+      Asia/Jerusalem: ירושלים
+      Asia/Kabul: קאבול
+      Asia/Kamchatka: קמצ'טקה
+      Asia/Karachi: קראצ'י
+      Asia/Kathmandu: קטמנדו
+      Asia/Kolkata: קולקטה (הודו)
+      Asia/Krasnoyarsk: קרסנויארסק
+      Asia/Kuala_Lumpur: קואלה לומפור
+      Asia/Kuwait: כווית
+      Asia/Magadan: מגדן
+      Asia/Muscat: מסקט
+      Asia/Novosibirsk: נובוסיבירסק
+      Asia/Rangoon: יאנגון (מיאנמר)
+      Asia/Riyadh: ריאד
+      Asia/Seoul: סיאול
+      Asia/Shanghai: שנגחאי
+      Asia/Singapore: סינגפור
+      Asia/Srednekolymsk: סרדנקולימסק
+      Asia/Taipei: טאיפיי
+      Asia/Tashkent: טשקנט
+      Asia/Tbilisi: טביליסי
+      Asia/Tehran: טהראן
+      Asia/Tokyo: טוקיו
+      Asia/Ulaanbaatar: אולן בטור
+      Asia/Urumqi: אורומצ'י
+      Asia/Vladivostok: ולדיווסטוק
+      Asia/Yakutsk: יקוטסק
+      Asia/Yekaterinburg: יקטרינבורג
+      Asia/Yerevan: ירוואן
+      Atlantic/Azores: האיים האזוריים
+      Atlantic/Cape_Verde: כף ורדה
+      Atlantic/South_Georgia: האי ג'ורג'יה הדרומית
+      Australia/Adelaide: אדלייד (אוסטרליה הדרומית)
+      Australia/Brisbane: בריזבן (קווינסלנד)
+      Australia/Canberra: קנברה (טריטוריית הבירה האוסטרלית)
+      Australia/Darwin: דרווין (הטריטוריה הצפונית)
+      Australia/Eucla: יוקלה (אוסטרליה המערבית)
+      Australia/Hobart: הובארט (טסמניה)
+      Australia/Lord_Howe: האי לורד האו
+      Australia/Melbourne: מלבורן (ויקטוריה)
+      Australia/Perth: פרת' (אוסטרליה המערבית)
+      Australia/Sydney: סידני (ניו סאות' ויילס)
+      Etc/GMT+12: קו התאריך הבינלאומי מערב (UTC−12)
+      Etc/UTC: זמן אוניברסלי מתואם (UTC)
+      Europe/Amsterdam: אמסטרדם
+      Europe/Athens: אתונה
+      Europe/Belgrade: בלגרד
+      Europe/Berlin: ברלין
+      Europe/Bratislava: ברטיסלבה
+      Europe/Brussels: בריסל
+      Europe/Bucharest: בוקרשט
+      Europe/Budapest: בודפשט
+      Europe/Copenhagen: קופנהגן
+      Europe/Dublin: דבלין
+      Europe/Helsinki: הלסינקי
+      Europe/Istanbul: איסטנבול
+      Europe/Kaliningrad: קלינינגרד
+      Europe/Kiev: קייב (אוקראינה)
+      Europe/Lisbon: ליסבון
+      Europe/Ljubljana: ליובליאנה
+      Europe/London: לונדון
+      Europe/Madrid: מדריד
+      Europe/Minsk: מינסק
+      Europe/Moscow: מוסקבה
+      Europe/Paris: פריז
+      Europe/Prague: פראג
+      Europe/Riga: ריגה
+      Europe/Rome: רומא
+      Europe/Samara: סמרה
+      Europe/Sarajevo: סרייבו
+      Europe/Skopje: סקופיה
+      Europe/Sofia: סופיה
+      Europe/Stockholm: סטוקהולם
+      Europe/Tallinn: טאלין
+      Europe/Vienna: וינה
+      Europe/Vilnius: וילנה
+      Europe/Volgograd: וולגוגרד
+      Europe/Warsaw: ורשה
+      Europe/Zagreb: זאגרב
+      Europe/Zurich: ציריך
+      Pacific/Apia: אפיה
+      Pacific/Auckland: אוקלנד (ניו זילנד)
+      Pacific/Chatham: איי צ'טהאם (ניו זילנד)
+      Pacific/Easter: אי הפסחא (צ'ילה)
+      Pacific/Fakaofo: פקאופו (טוקלאו)
+      Pacific/Fiji: פיג'י
+      Pacific/Gambier: איי גמבייה
+      Pacific/Guadalcanal: גוודלקנל (איי שלמה)
+      Pacific/Guam: גואם
+      Pacific/Honolulu: הונולולו (הוואי)
+      Pacific/Kiritimati: קיריטימטי (קיריבטי)
+      Pacific/Majuro: מג'ורו (איי מרשל)
+      Pacific/Marquesas: איי מרקיז
+      Pacific/Midway: איי מידוויי
+      Pacific/Norfolk: האי נורפוק
+      Pacific/Noumea: נומאה (קלדוניה החדשה)
+      Pacific/Pago_Pago: פאגו פאגו (סמואה האמריקנית)
+      Pacific/Pitcairn: איי פיטקרן
+      Pacific/Port_Moresby: פורט מורסבי (פפואה גינאה החדשה)
+      Pacific/Tongatapu: טונגטפו (טונגה)
   common:
     value: "%{value}"
     admin_menu: תפריט ניהול

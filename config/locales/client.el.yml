@@ -188,6 +188,176 @@ el:
     stv: Εκλογές STV
   timezones:
     local: Τοπική ώρα (%{value})
+    regions:
+      Africa/Algiers: Αλγέρι
+      Africa/Cairo: Κάιρο
+      Africa/Casablanca: Καζαμπλάνκα
+      Africa/Harare: Χαράρε (Ζιμπάμπουε)
+      Africa/Johannesburg: Γιοχάνεσμπουργκ (Νότια Αφρική)
+      Africa/Monrovia: Μονρόβια
+      Africa/Nairobi: Ναϊρόμπι
+      America/Adak: Άντακ (Αλεούτιες Νήσοι)
+      America/Argentina/Buenos_Aires: Μπουένος Άιρες
+      America/Asuncion: Ασουνσιόν
+      America/Bogota: Μπογκοτά
+      America/Cambridge_Bay: Κέιμπριτζ Μπέι (Νούναβουτ)
+      America/Caracas: Καράκας
+      America/Chicago: Σικάγο (Κεντρικές ΗΠΑ)
+      America/Chihuahua: Τσιουάουα
+      America/Dawson: Ντόσον (Γιούκον)
+      America/Dawson_Creek: Ντόσον Κρικ (Βρετανική Κολομβία)
+      America/Denver: Ντένβερ (Ορεινή ζώνη ΗΠΑ)
+      America/Edmonton: Έντμοντον (Αλμπέρτα)
+      America/Fort_Nelson: Φορτ Νέλσον (Βρετανική Κολομβία)
+      America/Glace_Bay: Γκλέις Μπέι (Νέα Σκωτία)
+      America/Goose_Bay: Γκους Μπέι (Λαμπραντόρ)
+      America/Guatemala: Γουατεμάλα
+      America/Guyana: Γουιάνα
+      America/Halifax: Χάλιφαξ (Νέα Σκωτία)
+      America/Havana: Αβάνα
+      America/Indiana/Indianapolis: Ινδιανάπολη (Ιντιάνα)
+      America/Inuvik: Ινούβικ (Βορειοδυτικά Εδάφη)
+      America/Iqaluit: Ικαλούιτ (Νούναβουτ)
+      America/Juneau: Τζούνο (Αλάσκα)
+      America/La_Paz: Λα Παζ
+      America/Lima: Λίμα
+      America/Los_Angeles: Λος Άντζελες (Ακτή Ειρηνικού ΗΠΑ)
+      America/Mazatlan: Μαζατλάν
+      America/Mexico_City: Πόλη του Μεξικού
+      America/Miquelon: Σεν Πιερ και Μικελόν
+      America/Moncton: Μόνκτον (Νέο Μπράνσγουικ)
+      America/Monterrey: Μοντερέι
+      America/Montevideo: Μοντεβιδέο
+      America/New_York: Νέα Υόρκη (Ανατολικές ΗΠΑ)
+      America/Nuuk: Νουούκ
+      America/Panama: Παναμάς
+      America/Phoenix: Φοίνιξ (Αριζόνα)
+      America/Puerto_Rico: Πουέρτο Ρίκο
+      America/Rankin_Inlet: Ράνκιν Ίνλετ (Νούναβουτ)
+      America/Regina: Ρετζίνα (Σασκάτσουαν)
+      America/Resolute: Ρέζολουτ (Νούναβουτ)
+      America/Santiago: Σαντιάγο
+      America/Sao_Paulo: Σάο Πάολο
+      America/St_Johns: Σεντ Τζονς (Νέα Γη)
+      America/Swift_Current: Σουίφτ Κάρεντ (Σασκάτσουαν)
+      America/Tijuana: Τιχουάνα
+      America/Toronto: Τορόντο (Οντάριο)
+      America/Vancouver: Βανκούβερ (Βρετανική Κολομβία)
+      America/Whitehorse: Γουάιτχορς (Γιούκον)
+      America/Winnipeg: Γουίνιπεγκ (Μανιτόμπα)
+      Antarctica/Troll: Σταθμός Τρολ (Ανταρκτική)
+      Asia/Almaty: Αλμάτι
+      Asia/Baghdad: Βαγδάτη
+      Asia/Baku: Μπακού
+      Asia/Bangkok: Μπανγκόκ
+      Asia/Beirut: Βηρυτός
+      Asia/Chongqing: Τσονγκτσίνγκ
+      Asia/Colombo: Κολόμπο
+      Asia/Dhaka: Ντάκα
+      Asia/Gaza: Γάζα
+      Asia/Hong_Kong: Χονγκ Κονγκ
+      Asia/Irkutsk: Ιρκούτσκ
+      Asia/Jakarta: Τζακάρτα
+      Asia/Jerusalem: Ιερουσαλήμ
+      Asia/Kabul: Καμπούλ
+      Asia/Kamchatka: Καμτσάτκα
+      Asia/Karachi: Καράτσι
+      Asia/Kathmandu: Κατμαντού
+      Asia/Kolkata: Καλκούτα (Ινδία)
+      Asia/Krasnoyarsk: Κρασνογιάρσκ
+      Asia/Kuala_Lumpur: Κουάλα Λουμπούρ
+      Asia/Kuwait: Κουβέιτ
+      Asia/Magadan: Μαγκαντάν
+      Asia/Muscat: Μουσκάτ
+      Asia/Novosibirsk: Νοβοσιμπίρσκ
+      Asia/Rangoon: Γιανγκόν (Μιανμάρ)
+      Asia/Riyadh: Ριάντ
+      Asia/Seoul: Σεούλ
+      Asia/Shanghai: Σαγκάη
+      Asia/Singapore: Σιγκαπούρη
+      Asia/Srednekolymsk: Σρεντνεκολίμσκ
+      Asia/Taipei: Ταϊπέι
+      Asia/Tashkent: Τασκένδη
+      Asia/Tbilisi: Τιφλίδα
+      Asia/Tehran: Τεχεράνη
+      Asia/Tokyo: Τόκιο
+      Asia/Ulaanbaatar: Ουλάν Μπατόρ
+      Asia/Urumqi: Ουρούμτσι
+      Asia/Vladivostok: Βλαδιβοστόκ
+      Asia/Yakutsk: Γιακούτσκ
+      Asia/Yekaterinburg: Αικατερινούπολη
+      Asia/Yerevan: Ερεβάν
+      Atlantic/Azores: Αζόρες
+      Atlantic/Cape_Verde: Πράσινο Ακρωτήριο
+      Atlantic/South_Georgia: Νήσος Νότια Γεωργία
+      Australia/Adelaide: Αδελαΐδα (Νότια Αυστραλία)
+      Australia/Brisbane: Μπρίσμπεϊν (Κουίνσλαντ)
+      Australia/Canberra: Καμπέρα (Επικράτεια Αυστραλιανής Πρωτεύουσας)
+      Australia/Darwin: Ντάργουιν (Βόρεια Επικράτεια)
+      Australia/Eucla: Γιούκλα (Δυτική Αυστραλία)
+      Australia/Hobart: Χόμπαρτ (Τασμανία)
+      Australia/Lord_Howe: Νήσος Λορντ Χάου
+      Australia/Melbourne: Μελβούρνη (Βικτώρια)
+      Australia/Perth: Περθ (Δυτική Αυστραλία)
+      Australia/Sydney: Σίδνεϊ (Νέα Νότια Ουαλία)
+      Etc/GMT+12: Διεθνής Γραμμή Αλλαγής Ημερομηνίας — Δυτικά (UTC−12)
+      Etc/UTC: Συντονισμένη Παγκόσμια Ώρα (UTC)
+      Europe/Amsterdam: Άμστερνταμ
+      Europe/Athens: Αθήνα
+      Europe/Belgrade: Βελιγράδι
+      Europe/Berlin: Βερολίνο
+      Europe/Bratislava: Μπρατισλάβα
+      Europe/Brussels: Βρυξέλλες
+      Europe/Bucharest: Βουκουρέστι
+      Europe/Budapest: Βουδαπέστη
+      Europe/Copenhagen: Κοπεγχάγη
+      Europe/Dublin: Δουβλίνο
+      Europe/Helsinki: Ελσίνκι
+      Europe/Istanbul: Κωνσταντινούπολη
+      Europe/Kaliningrad: Καλίνινγκραντ
+      Europe/Kiev: Κίεβο (Ουκρανία)
+      Europe/Lisbon: Λισαβόνα
+      Europe/Ljubljana: Λιουμπλιάνα
+      Europe/London: Λονδίνο
+      Europe/Madrid: Μαδρίτη
+      Europe/Minsk: Μινσκ
+      Europe/Moscow: Μόσχα
+      Europe/Paris: Παρίσι
+      Europe/Prague: Πράγα
+      Europe/Riga: Ρίγα
+      Europe/Rome: Ρώμη
+      Europe/Samara: Σαμάρα
+      Europe/Sarajevo: Σαράγεβο
+      Europe/Skopje: Σκόπια
+      Europe/Sofia: Σόφια
+      Europe/Stockholm: Στοκχόλμη
+      Europe/Tallinn: Ταλίν
+      Europe/Vienna: Βιέννη
+      Europe/Vilnius: Βίλνιους
+      Europe/Volgograd: Βόλγκογκραντ
+      Europe/Warsaw: Βαρσοβία
+      Europe/Zagreb: Ζάγκρεμπ
+      Europe/Zurich: Ζυρίχη
+      Pacific/Apia: Άπια
+      Pacific/Auckland: Όκλαντ (Νέα Ζηλανδία)
+      Pacific/Chatham: Νήσοι Τσάταμ (Νέα Ζηλανδία)
+      Pacific/Easter: Νήσος του Πάσχα (Χιλή)
+      Pacific/Fakaofo: Φακαόφο (Τοκελάου)
+      Pacific/Fiji: Φίτζι
+      Pacific/Gambier: Νήσοι Γκαμπιέ
+      Pacific/Guadalcanal: Γκουανταλκανάλ (Νήσοι Σολομώντα)
+      Pacific/Guam: Γκουάμ
+      Pacific/Honolulu: Χονολουλού (Χαβάη)
+      Pacific/Kiritimati: Κιριτιμάτι (Κιριμπάτι)
+      Pacific/Majuro: Ματζούρο (Νήσοι Μάρσαλ)
+      Pacific/Marquesas: Νήσοι Μαρκέζας
+      Pacific/Midway: Νήσοι Μίντγουεϊ
+      Pacific/Norfolk: Νήσος Νόρφολκ
+      Pacific/Noumea: Νουμέα (Νέα Καληδονία)
+      Pacific/Pago_Pago: Πάγκο Πάγκο (Αμερικανική Σαμόα)
+      Pacific/Pitcairn: Νήσοι Πίτκερν
+      Pacific/Port_Moresby: Πορτ Μόρεσμπι (Παπούα Νέα Γουινέα)
+      Pacific/Tongatapu: Τονγκατάπου (Τόνγκα)
   common:
     value: "%{value}"
     admin_menu: Μενού διαχειριστή

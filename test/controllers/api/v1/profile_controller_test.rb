@@ -62,6 +62,63 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_nil @user.legal_accepted_at
   end
 
+  test "time zone choices include Canadian regions separately from US Pacific time" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Vancouver (British Columbia)', 'value' => 'America/Vancouver' }
+    assert_includes zones, { 'title' => 'Whitehorse (Yukon)', 'value' => 'America/Whitehorse' }
+    assert_includes zones, { 'title' => 'Los Angeles (US Pacific)', 'value' => 'America/Los_Angeles' }
+    assert_equal 1, zones.count { |zone| zone['value'] == 'America/Vancouver' }
+  end
+
+  test "time zone choices use the selected language without translating identifiers" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'fr' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Londres', 'value' => 'Europe/London' }
+    refute_includes zones.pluck('title'), 'London'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
+  test "time zone choices require an authenticated user" do
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "time zone choices retain the current users detected alias without changing the profile" do
+    @user.update_columns(time_zone: 'Canada/Pacific', autodetect_time_zone: true)
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Canada/Pacific', 'value' => 'Canada/Pacific' }
+    assert_equal 'Canada/Pacific', @user.reload.time_zone
+    assert @user.autodetect_time_zone?
+  end
+
+  test "manual time zone choices are compact and omit unselected aliases" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_operator zones.length, :<=, 175
+    assert_equal zones.pluck('value').uniq, zones.pluck('value')
+    refute_includes zones.pluck('value'), 'Canada/Pacific'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
   test "detected time zone saves without revalidating unrelated profile fields" do
     sign_in @user
     @user.update_columns(username: 'invalid username')

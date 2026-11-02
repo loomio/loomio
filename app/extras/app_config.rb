@@ -9,6 +9,7 @@ class AppConfig
     providers
     doctypes
     locales
+    time_zones
   ]
 
   BANNED_CHARS = %(\\s:,;\\[\\]'"`<>)

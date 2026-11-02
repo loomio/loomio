@@ -50,6 +50,16 @@ Loomio will detect your browser’s language settings, but you can manually set 
 
 ![](profile_language.png)
 
+<!-- translation-section: time-zone -->
+
+## Time zone
+
+Time poll options use the time zone saved in your profile. Enable **Autodetect time zone** to use the zone reported by your browser, or disable it and select your region under **Time zone**, then select **Update profile**.
+
+The manual list includes familiar regions covering the current clock rules around the world. Your saved or automatically detected region also appears, even if it is not one of the standard choices.
+
+Choose a region that follows your local clock changes. For British Columbia locations on year-round Pacific time, choose **Vancouver (British Columbia)**. **Los Angeles (US Pacific)** follows US Pacific clock changes. Keep your browser and operating system updated so they recognize changes to local time rules.
+
 <!-- translation-section: resetting-your-password -->
 
 ## Resetting your password

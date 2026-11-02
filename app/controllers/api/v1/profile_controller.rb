@@ -33,12 +33,13 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def all_time_zones
-    zones = ActiveSupport::TimeZone.all.map do |tz|
+    # Keep manual choices compact while showing any saved or detected region.
+    zones = (AppConfig.time_zones | [current_user.time_zone]).map do |zone|
       {
-        title: I18n.t("timezones.#{tz.name}", default: tz.name, locale: params[:selected_locale]),
-        value: tz.tzinfo.name
+        title: I18n.t("timezones.regions.#{zone}", default: zone, locale: params[:selected_locale]),
+        value: zone
       }
-    end
+    end.sort_by { |zone| zone[:title] }
     render json: zones, root: false
   end
 

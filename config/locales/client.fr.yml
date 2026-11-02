@@ -196,6 +196,176 @@ fr:
     stv: Élection STV
   timezones:
     local: Heure locale (%{value})
+    regions:
+      Africa/Algiers: Alger
+      Africa/Cairo: Le Caire
+      Africa/Casablanca: Casablanca
+      Africa/Harare: Harare (Zimbabwe)
+      Africa/Johannesburg: Johannesburg (Afrique du Sud)
+      Africa/Monrovia: Monrovia
+      Africa/Nairobi: Nairobi
+      America/Adak: Adak (îles Aléoutiennes)
+      America/Argentina/Buenos_Aires: Buenos Aires
+      America/Asuncion: Asunción
+      America/Bogota: Bogotá
+      America/Cambridge_Bay: Cambridge Bay (Nunavut)
+      America/Caracas: Caracas
+      America/Chicago: Chicago (Centre des États-Unis)
+      America/Chihuahua: Chihuahua
+      America/Dawson: Dawson (Yukon)
+      America/Dawson_Creek: Dawson Creek (Colombie-Britannique)
+      America/Denver: Denver (Rocheuses des États-Unis)
+      America/Edmonton: Edmonton (Alberta)
+      America/Fort_Nelson: Fort Nelson (Colombie-Britannique)
+      America/Glace_Bay: Glace Bay (Nouvelle-Écosse)
+      America/Goose_Bay: Goose Bay (Labrador)
+      America/Guatemala: Guatemala
+      America/Guyana: Guyana
+      America/Halifax: Halifax (Nouvelle-Écosse)
+      America/Havana: La Havane
+      America/Indiana/Indianapolis: Indianapolis (Indiana)
+      America/Inuvik: Inuvik (Territoires du Nord-Ouest)
+      America/Iqaluit: Iqaluit (Nunavut)
+      America/Juneau: Juneau (Alaska)
+      America/La_Paz: La Paz
+      America/Lima: Lima
+      America/Los_Angeles: Los Angeles (Pacifique des États-Unis)
+      America/Mazatlan: Mazatlán
+      America/Mexico_City: Mexico
+      America/Miquelon: Saint-Pierre-et-Miquelon
+      America/Moncton: Moncton (Nouveau-Brunswick)
+      America/Monterrey: Monterrey
+      America/Montevideo: Montevideo
+      America/New_York: New York (Est des États-Unis)
+      America/Nuuk: Nuuk
+      America/Panama: Panama
+      America/Phoenix: Phoenix (Arizona)
+      America/Puerto_Rico: Porto Rico
+      America/Rankin_Inlet: Rankin Inlet (Nunavut)
+      America/Regina: Regina (Saskatchewan)
+      America/Resolute: Resolute (Nunavut)
+      America/Santiago: Santiago
+      America/Sao_Paulo: São Paulo
+      America/St_Johns: Saint-Jean (Terre-Neuve)
+      America/Swift_Current: Swift Current (Saskatchewan)
+      America/Tijuana: Tijuana
+      America/Toronto: Toronto (Ontario)
+      America/Vancouver: Vancouver (Colombie-Britannique)
+      America/Whitehorse: Whitehorse (Yukon)
+      America/Winnipeg: Winnipeg (Manitoba)
+      Antarctica/Troll: Station Troll (Antarctique)
+      Asia/Almaty: Almaty
+      Asia/Baghdad: Bagdad
+      Asia/Baku: Bakou
+      Asia/Bangkok: Bangkok
+      Asia/Beirut: Beyrouth
+      Asia/Chongqing: Chongqing
+      Asia/Colombo: Colombo
+      Asia/Dhaka: Dacca
+      Asia/Gaza: Gaza
+      Asia/Hong_Kong: Hong Kong
+      Asia/Irkutsk: Irkoutsk
+      Asia/Jakarta: Jakarta
+      Asia/Jerusalem: Jérusalem
+      Asia/Kabul: Kaboul
+      Asia/Kamchatka: Kamtchatka
+      Asia/Karachi: Karachi
+      Asia/Kathmandu: Katmandou
+      Asia/Kolkata: Calcutta (Inde)
+      Asia/Krasnoyarsk: Krasnoïarsk
+      Asia/Kuala_Lumpur: Kuala Lumpur
+      Asia/Kuwait: Koweït
+      Asia/Magadan: Magadan
+      Asia/Muscat: Mascate
+      Asia/Novosibirsk: Novossibirsk
+      Asia/Rangoon: Rangoun (Myanmar)
+      Asia/Riyadh: Riyad
+      Asia/Seoul: Séoul
+      Asia/Shanghai: Shanghai
+      Asia/Singapore: Singapour
+      Asia/Srednekolymsk: Srednekolymsk
+      Asia/Taipei: Taipei
+      Asia/Tashkent: Tachkent
+      Asia/Tbilisi: Tbilissi
+      Asia/Tehran: Téhéran
+      Asia/Tokyo: Tokyo
+      Asia/Ulaanbaatar: Oulan-Bator
+      Asia/Urumqi: Ürümqi
+      Asia/Vladivostok: Vladivostok
+      Asia/Yakutsk: Iakoutsk
+      Asia/Yekaterinburg: Iekaterinbourg
+      Asia/Yerevan: Erevan
+      Atlantic/Azores: Açores
+      Atlantic/Cape_Verde: Cap-Vert
+      Atlantic/South_Georgia: Île de Géorgie du Sud
+      Australia/Adelaide: Adélaïde (Australie-Méridionale)
+      Australia/Brisbane: Brisbane (Queensland)
+      Australia/Canberra: Canberra (Territoire de la capitale australienne)
+      Australia/Darwin: Darwin (Territoire du Nord)
+      Australia/Eucla: Eucla (Australie-Occidentale)
+      Australia/Hobart: Hobart (Tasmanie)
+      Australia/Lord_Howe: Île Lord Howe
+      Australia/Melbourne: Melbourne (Victoria)
+      Australia/Perth: Perth (Australie-Occidentale)
+      Australia/Sydney: Sydney (Nouvelle-Galles du Sud)
+      Etc/GMT+12: Ligne de changement de date ouest (UTC−12)
+      Etc/UTC: Temps universel coordonné (UTC)
+      Europe/Amsterdam: Amsterdam
+      Europe/Athens: Athènes
+      Europe/Belgrade: Belgrade
+      Europe/Berlin: Berlin
+      Europe/Bratislava: Bratislava
+      Europe/Brussels: Bruxelles
+      Europe/Bucharest: Bucarest
+      Europe/Budapest: Budapest
+      Europe/Copenhagen: Copenhague
+      Europe/Dublin: Dublin
+      Europe/Helsinki: Helsinki
+      Europe/Istanbul: Istanbul
+      Europe/Kaliningrad: Kaliningrad
+      Europe/Kiev: Kyiv (Ukraine)
+      Europe/Lisbon: Lisbonne
+      Europe/Ljubljana: Ljubljana
+      Europe/London: Londres
+      Europe/Madrid: Madrid
+      Europe/Minsk: Minsk
+      Europe/Moscow: Moscou
+      Europe/Paris: Paris
+      Europe/Prague: Prague
+      Europe/Riga: Riga
+      Europe/Rome: Rome
+      Europe/Samara: Samara
+      Europe/Sarajevo: Sarajevo
+      Europe/Skopje: Skopje
+      Europe/Sofia: Sofia
+      Europe/Stockholm: Stockholm
+      Europe/Tallinn: Tallinn
+      Europe/Vienna: Vienne
+      Europe/Vilnius: Vilnius
+      Europe/Volgograd: Volgograd
+      Europe/Warsaw: Varsovie
+      Europe/Zagreb: Zagreb
+      Europe/Zurich: Zurich
+      Pacific/Apia: Apia
+      Pacific/Auckland: Auckland (Nouvelle-Zélande)
+      Pacific/Chatham: Îles Chatham (Nouvelle-Zélande)
+      Pacific/Easter: Île de Pâques (Chili)
+      Pacific/Fakaofo: Fakaofo (Tokelau)
+      Pacific/Fiji: Fidji
+      Pacific/Gambier: Îles Gambier
+      Pacific/Guadalcanal: Guadalcanal (Îles Salomon)
+      Pacific/Guam: Guam
+      Pacific/Honolulu: Honolulu (Hawaï)
+      Pacific/Kiritimati: Kiritimati (Kiribati)
+      Pacific/Majuro: Majuro (îles Marshall)
+      Pacific/Marquesas: Îles Marquises
+      Pacific/Midway: Îles Midway
+      Pacific/Norfolk: Île Norfolk
+      Pacific/Noumea: Nouméa (Nouvelle-Calédonie)
+      Pacific/Pago_Pago: Pago Pago (Samoa américaines)
+      Pacific/Pitcairn: Îles Pitcairn
+      Pacific/Port_Moresby: Port Moresby (Papouasie-Nouvelle-Guinée)
+      Pacific/Tongatapu: Tongatapu (Tonga)
   common:
     value: "%{value}"
     admin_menu: Menu administrateur
