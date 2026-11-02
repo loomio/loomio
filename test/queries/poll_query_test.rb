@@ -63,6 +63,7 @@ class PollQueryTest < ActiveSupport::TestCase
         actors.each do |actor|
           assert_not PollQuery.visible_to(user: actor).exists?(poll.id)
           assert_not PollQuery.visible_to(user: actor, chain: Poll.all).exists?(poll.id)
+          assert_not PollQuery.visible_to(user: actor, poll_ids: [poll.id]).exists?(poll.id)
           assert_not PollQuery.relevant_to(user: actor, group_ids: [poll.group_id]).exists?(poll.id)
           assert_not actor.can?(:show, poll.reload)
         end
@@ -84,6 +85,7 @@ class PollQueryTest < ActiveSupport::TestCase
     @user.update!(deactivated_at: Time.current)
 
     assert_empty PollQuery.visible_to(user: @user)
+    assert_empty PollQuery.visible_to(user: @user, poll_ids: [@authored.id, @in_a_group.id])
   end
 
   test "need vote filters the viewer's pending stance rather than other people's votes" do
@@ -185,6 +187,7 @@ class PollQueryTest < ActiveSupport::TestCase
             assert_equal expected, TopicQuery.visible_to(user: author).exists?(poll.topic_id), label
             assert_equal expected, PollQuery.visible_to(user: author).exists?(poll.id), label
             assert_equal expected, PollQuery.visible_to(user: author, topic_id: poll.topic_id).exists?(poll.id), label
+            assert_equal expected, PollQuery.visible_to(user: author, poll_ids: [poll.id, @authored.id]).exists?(poll.id), label
             assert_equal expected, PollQuery.relevant_to(user: author).exists?(poll.id), label
             assert_equal expected, author.can?(:show, poll), label
           end
@@ -198,6 +201,7 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_nil @authored.group_id
     assert PollQuery.visible_to(user: @user).exists?(@authored.id)
     assert PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@authored.id)
+    assert PollQuery.visible_to(user: @user, poll_ids: [@authored.id]).exists?(@authored.id)
     assert PollQuery.relevant_to(user: @user).exists?(@authored.id)
     assert @user.can?(:show, @authored)
     assert_not users(:alien).can?(:show, @authored)
@@ -214,6 +218,7 @@ class PollQueryTest < ActiveSupport::TestCase
 
       assert_equal expected, PollQuery.visible_to(user: viewer).exists?(poll.id), role
       assert_equal expected, PollQuery.visible_to(user: viewer, topic_id: poll.topic_id).exists?(poll.id), role
+      assert_equal expected, PollQuery.visible_to(user: viewer, poll_ids: [poll.id]).exists?(poll.id), role
       assert_equal expected, PollQuery.relevant_to(user: viewer).exists?(poll.id), role
       assert_equal expected, viewer.can?(:show, poll), role
       assert_not viewer.can?(:vote_in, poll), role
@@ -256,15 +261,30 @@ class PollQueryTest < ActiveSupport::TestCase
     assert_equal [@in_a_group.id],
                  PollQuery.visible_to(user: @user, chain: chain, topic_id: @in_a_group.topic_id).pluck(:id)
     assert_not PollQuery.visible_to(user: @user, topic_id: @authored.topic_id).exists?(@in_a_group.id)
+    assert_equal [@in_a_group.id], PollQuery.visible_to(
+      user: @user, chain: chain, poll_ids: [@in_a_group.id, @rando.id]
+    ).pluck(:id)
     %i[visible_to relevant_to].each do |query|
       assert_equal [@authored.id, @in_a_group.id].sort,
                    PollQuery.public_send(query, user: @user, chain: chain).pluck(:id).sort
     end
 
     [@authored, @in_a_group].each { |poll| poll.topic.update_column(:discarded_at, Time.current) }
+    assert_empty PollQuery.visible_to(user: @user, poll_ids: [@authored.id, @in_a_group.id])
     %i[visible_to relevant_to].each do |query|
       assert_empty PollQuery.public_send(query, user: @user, chain: chain)
     end
+  end
+
+  test "batch visibility returns only requested polls even when they share a visible topic" do
+    another_poll = make_poll(topic: @in_a_discussion.topic)
+    ids = [@in_a_discussion.id, @in_a_group.id, @authored.id, @rando.id, @rando_in_group.id]
+
+    assert_equal [@in_a_discussion.id, @in_a_group.id, @authored.id].sort,
+                 PollQuery.visible_to(user: @user, poll_ids: ids).pluck(:id).sort
+    assert_not PollQuery.visible_to(user: @user, poll_ids: ids).exists?(another_poll.id)
+    assert_empty PollQuery.visible_to(user: @user, poll_ids: [])
+    assert_empty PollQuery.visible_to(user: @user, poll_ids: [0])
   end
 
   test "dashboard visibility includes polls for topic reader guests" do
@@ -316,6 +336,8 @@ class PollQueryTest < ActiveSupport::TestCase
     }, actor: public_author)
 
     assert_includes PollQuery.visible_to(user: @user), public_poll
+    assert PollQuery.visible_to(poll_ids: [public_poll.id, @in_a_group.id]).exists?(public_poll.id)
+    assert_not PollQuery.visible_to(poll_ids: [public_poll.id, @in_a_group.id]).exists?(@in_a_group.id)
     refute_includes PollQuery.relevant_to(user: @user), public_poll
     assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
 
@@ -331,6 +353,7 @@ class PollQueryTest < ActiveSupport::TestCase
 
     subgroup_poll_members.each do |user|
       assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.visible_to(user: user, poll_ids: [poll.id]).exists?(poll.id), "batch access for #{user.email}"
       assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
       assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
       assert user.can?(:show, poll), "show permission for #{user.email}"
@@ -339,6 +362,7 @@ class PollQueryTest < ActiveSupport::TestCase
 
     parent_only_members.each do |user|
       assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.visible_to(user: user, poll_ids: [poll.id]).exists?(poll.id), "batch access for #{user.email}"
       refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
       assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
       assert user.can?(:show, poll), "show permission for #{user.email}"
@@ -348,6 +372,7 @@ class PollQueryTest < ActiveSupport::TestCase
     denied_poll_viewers.each do |user|
       label = user.is_logged_in? ? user.email : "signed-out user"
       refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.visible_to(user: user, poll_ids: [poll.id]).exists?(poll.id), "batch access for #{label}"
       refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
       refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
       refute user.can?(:show, poll), "show permission for #{label}"
@@ -361,6 +386,7 @@ class PollQueryTest < ActiveSupport::TestCase
 
     subgroup_poll_members.each do |user|
       assert PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{user.email}"
+      assert PollQuery.visible_to(user: user, poll_ids: [poll.id]).exists?(poll.id), "batch access for #{user.email}"
       assert PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{user.email}"
       assert PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{user.email}"
       assert user.can?(:show, poll), "show permission for #{user.email}"
@@ -370,6 +396,7 @@ class PollQueryTest < ActiveSupport::TestCase
     (parent_only_members + denied_poll_viewers).each do |user|
       label = user.is_logged_in? ? user.email : "signed-out user"
       refute PollQuery.visible_to(user: user).exists?(poll.id), "direct access for #{label}"
+      refute PollQuery.visible_to(user: user, poll_ids: [poll.id]).exists?(poll.id), "batch access for #{label}"
       refute PollQuery.relevant_to(user: user).exists?(poll.id), "dashboard access for #{label}"
       refute PollQuery.relevant_to(user: user, group_ids: [ child.id ]).exists?(poll.id), "subgroup access for #{label}"
       refute user.can?(:show, poll), "show permission for #{label}"

@@ -40,9 +40,8 @@ class NotificationQuery
     poll_ids = authorization_subjects.values.filter_map do |subject|
       notification_poll_id(subject)
     end.uniq
-    accessible_poll_ids = PollQuery.visible_to(user: user)
+    accessible_poll_ids = PollQuery.visible_to(user: user, poll_ids: poll_ids)
                                    .unscope(:includes)
-                                   .where(id: poll_ids)
                                    .pluck(:id)
                                    .to_set
 
