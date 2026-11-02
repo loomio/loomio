@@ -1,20 +1,20 @@
 ---
 title: Aikakysely
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 0a99ef064ca82f62
   time-poll: 6b58ee1cd2e89144
   voting: aa1ed13f84389e80
-  outcome: 757257328d6b488b
+  outcome: 1c2763d9aca913ee
 needs_review:
   introduction: check the interface label "**Aikakysely**" for "**Time poll**"
 title_source: 8e2a07d7257fbc04
@@ -73,7 +73,7 @@ Kun aikakysely sulkeutuu, valitse sopivin aika ja jaa johtopäätös. Katso [Jaa
 
 **Ilmoittaa**: Lisää ihmiset, jotka kutsut kokoukseen tai tapahtumaan
 
-**Tapaamisaika**: Valitse parhaiten sopiva aika
+**Tapaamisaika**: Valitse parhaiten sopiva aika. Vaihtoehdoissa käytetään [profiilisi aikavyöhykettä](/en/user_manual/users/user_profile#time-zone)
 
 **Kokouksen nimi**: Anna kokouksellesi nimi. Oletuksena käytetään aikakyselyn otsikkoa
 

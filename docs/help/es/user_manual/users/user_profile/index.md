@@ -1,10 +1,10 @@
 ---
 title: Tu perfil
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: e71cd5946e36dd0f
   edit-profile: 30961921c1b989c8
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: a85e7b1b734767c0
   merge-accounts: c693348e39c2d3bc
   deleting-your-account: 563bc72b118724dd
+  time-zone: f2403fb8c5a46941
 title_source: 528d89ad72cba22e
 title_generated: 3d45976ea1815628
 ---
@@ -80,6 +82,16 @@ Loomio se desarrolla en inglés, pero [personas voluntarias lo traducen a muchos
 Loomio detectará la configuración de idioma de tu navegador, pero puedes seleccionar manualmente tu idioma preferido entre las opciones disponibles en la página de perfil.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Zona horaria
+
+Las opciones de las encuestas de horario usan la zona horaria guardada en tu perfil. Activa **Detectar automáticamente zona horaria** para usar la zona que indica tu navegador, o desactiva esta función y selecciona tu región en **Zona horaria **. Después, selecciona **Actualizar perfil**.
+
+La lista de selección manual incluye regiones conocidas que abarcan las reglas horarias vigentes en todo el mundo. También aparece tu región guardada o detectada automáticamente, aunque no sea una de las opciones habituales.
+
+Elige una región que siga los cambios de hora de tu localidad. Para las localidades de Columbia Británica que usan la hora del Pacífico durante todo el año, elige **Vancouver (Columbia Británica)**. **Los Ángeles (Pacífico de EE. UU.)** sigue los cambios de hora del Pacífico de Estados Unidos. Mantén tu navegador y tu sistema operativo actualizados para que reconozcan los cambios en las reglas horarias locales.
 
 <!-- translation-section: resetting-your-password -->
 

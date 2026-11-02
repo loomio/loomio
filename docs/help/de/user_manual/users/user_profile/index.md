@@ -1,10 +1,10 @@
 ---
 title: Dein Profil
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 161b14830a7ba831
   edit-profile: b76cae3c48b9f0e9
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: 68fd423d9cbad7a4
   merge-accounts: 2c4c9aafb36102bc
   deleting-your-account: 053f9b1d5d7d9435
+  time-zone: ebf405442d67b402
 title_source: 528d89ad72cba22e
 title_generated: 8e13b89f47bacbcd
 ---
@@ -80,6 +82,16 @@ Loomio wird auf Englisch entwickelt, aber [von Freiwilligen in viele Sprachen ü
 Loomio erkennt die Spracheinstellungen deines Browsers. Du kannst deine bevorzugte Sprache aber auch manuell aus den verfügbaren Optionen auf deiner Profilseite auswählen.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Zeitzone
+
+Die Optionen einer Terminfindung verwenden die in deinem Profil gespeicherte Zeitzone. Aktiviere **Zeitzone automatisch erkennen**, um die von deinem Browser gemeldete Zeitzone zu verwenden, oder deaktiviere diese Einstellung und wähle unter **Zeitzone** deine Region aus. Wähle anschließend **Profil aktualisieren**.
+
+Die Liste zur manuellen Auswahl enthält bekannte Regionen, die die aktuellen Zeitregelungen weltweit abdecken. Deine gespeicherte oder automatisch erkannte Region wird ebenfalls angezeigt, auch wenn sie nicht zu den Standardoptionen gehört.
+
+Wähle eine Region, deren Zeitumstellungen denen an deinem Standort entsprechen. Wähle für Orte in Britisch-Kolumbien mit ganzjähriger Pazifikzeit **Vancouver (Britisch-Kolumbien)**. **Los Angeles (US-Pazifikzeit)** folgt den Zeitumstellungen der US-Pazifikzeit. Halte deinen Browser und dein Betriebssystem auf dem neuesten Stand, damit sie Änderungen der lokalen Zeitregelungen erkennen.
 
 <!-- translation-section: resetting-your-password -->
 

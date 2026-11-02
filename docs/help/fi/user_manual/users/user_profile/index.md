@@ -1,10 +1,10 @@
 ---
 title: Oma profiili
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 571eb96f30d65f8b
   edit-profile: c69eded36e8813c4
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: c472a651f96d11a9
   merge-accounts: dfab1a97536c18e9
   deleting-your-account: 3182c32334024c77
+  time-zone: adf95409ad4e79cc
 title_source: 528d89ad72cba22e
 title_generated: f036aa770febacfc
 ---
@@ -80,6 +82,16 @@ Loomiota kehitetään englanniksi, mutta [vapaaehtoiset kääntävät sitä moni
 Loomio tunnistaa selaimesi kieliasetukset, mutta voit myös valita haluamasi kielen profiilisivulla käytettävissä olevista vaihtoehdoista.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Aikavyöhyke
+
+Aikakyselyn vaihtoehdot käyttävät profiiliisi tallennettua aikavyöhykettä. Ota **Tunnista aikavyöhyke automaattisesti** käyttöön, jos haluat käyttää selaimesi ilmoittamaa aikavyöhykettä. Voit myös poistaa automaattisen tunnistuksen käytöstä ja valita alueesi kohdasta **Aikavyöhyke**. Valitse lopuksi **Päivitä profiili**.
+
+Manuaalisessa valintaluettelossa on tuttuja alueita, jotka kattavat eri puolilla maailmaa voimassa olevat kellonajan määräytymissäännöt. Myös tallentamasi tai automaattisesti tunnistettu alue näkyy luettelossa, vaikka se ei kuuluisi vakiovaihtoehtoihin.
+
+Valitse alue, joka noudattaa paikallisia kellonajan muutoksia. Jos olet Brittiläisessä Kolumbiassa alueella, jolla käytetään Tyynenmeren aikaa ympäri vuoden, valitse **Vancouver (Brittiläinen Kolumbia)**. **Los Angeles (Yhdysvaltain Tyynenmeren rannikko)** noudattaa Yhdysvaltain Tyynenmeren rannikon kellonajan muutoksia. Pidä selaimesi ja käyttöjärjestelmäsi ajan tasalla, jotta ne tunnistavat paikallisten aikasääntöjen muutokset.
 
 <!-- translation-section: resetting-your-password -->
 

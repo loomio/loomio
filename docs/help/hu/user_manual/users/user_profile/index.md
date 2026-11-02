@@ -1,10 +1,10 @@
 ---
 title: A profilod
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 47f4e3a3a1dad64b
   edit-profile: a02d1a8842a23142
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: d9cfdade65632795
   merge-accounts: e3ee843bad709830
   deleting-your-account: a3cb1463fd028b6d
+  time-zone: 34374dbf5b10ea9c
 title_source: 528d89ad72cba22e
 title_generated: b0abe97f76d97f5e
 ---
@@ -80,6 +82,16 @@ A Loomio angol nyelven készül, de [önkéntesek számos nyelvre lefordítják]
 A Loomio felismeri a böngésződ nyelvi beállításait, de a profiloldaladon kézzel is kiválaszthatod a kívánt nyelvet az elérhető lehetőségek közül.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Időzóna
+
+Az időpontszavazás lehetőségei a profilodban mentett időzónát használják. Kapcsold be az **Időzóna automatikus felismerése** beállítást a böngésződ által jelzett időzóna használatához, vagy kapcsold ki, és válaszd ki a régiódat az **Időzóna** mezőben, majd válaszd a **Profil frissítése** gombot.
+
+A kézi kiválasztáshoz használható lista ismert régiókat tartalmaz, amelyek lefedik a világszerte érvényes időszámítási szabályokat. A mentett vagy automatikusan felismert régiód akkor is megjelenik, ha nem szerepel az alapértelmezett lehetőségek között.
+
+Válassz olyan régiót, amely követi a helyi óraátállításokat. Brit Columbia azon területein, ahol egész évben a csendes-óceáni időt használják, válaszd a **Vancouver (Brit Columbia)** lehetőséget. A **Los Angeles (USA csendes-óceáni partvidéke)** az USA csendes-óceáni időzónájának óraátállításait követi. Tartsd naprakészen a böngésződet és az operációs rendszeredet, hogy felismerjék a helyi időszámítási szabályok változásait.
 
 <!-- translation-section: resetting-your-password -->
 

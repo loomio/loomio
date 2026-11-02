@@ -1,10 +1,10 @@
 ---
 title: Il tuo profilo
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 72f678517fe07a5a
   edit-profile: b4d90aedfce00654
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: 291f03c420ade3bc
   merge-accounts: 9c4540cd853a8bc0
   deleting-your-account: d2c020a57c4668db
+  time-zone: 5d13749583bcc4d8
 title_source: 528d89ad72cba22e
 title_generated: 0e22fdc1f2d8dc68
 ---
@@ -80,6 +82,16 @@ Loomio è sviluppato in inglese, ma [viene tradotto da volontari in molte lingue
 Loomio rileva le impostazioni della lingua del tuo browser, ma puoi impostare manualmente la tua lingua preferita tra le opzioni disponibili nella pagina del profilo.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Fuso orario
+
+Le opzioni dei sondaggi appuntamento usano il fuso orario salvato nel tuo profilo. Attiva **Rilevamento automatico del fuso orario** per usare il fuso orario indicato dal tuo browser, oppure disattivalo e seleziona la tua regione in **Fuso orario**, poi seleziona **Aggiorna profilo**.
+
+L'elenco per la selezione manuale include regioni note che coprono le attuali regole sull'ora locale nel mondo. Compare anche la regione salvata o rilevata automaticamente, anche se non rientra tra le opzioni standard.
+
+Scegli una regione che segue i cambi d'ora della tua zona. Per le località della Columbia Britannica che adottano l'ora del Pacifico tutto l'anno, scegli **Vancouver (Columbia Britannica)**. **Los Angeles (Pacifico USA)** segue i cambi d'ora del Pacifico degli Stati Uniti. Mantieni aggiornati il browser e il sistema operativo affinché riconoscano le modifiche alle regole sull'ora locale.
 
 <!-- translation-section: resetting-your-password -->
 

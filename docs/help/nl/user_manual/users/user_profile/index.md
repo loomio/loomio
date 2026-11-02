@@ -1,10 +1,10 @@
 ---
 title: Je profiel
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: a35b4a423bbdfe39
   edit-profile: 2229cb1b25e0fb50
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: 924b5b4030719f09
   merge-accounts: d40e1a7bcb25358a
   deleting-your-account: 2b1ab7a3c7492d25
+  time-zone: be577251a6b0a2ac
 title_source: 528d89ad72cba22e
 title_generated: 02676a8214e00e60
 ---
@@ -80,6 +82,16 @@ Loomio wordt in het Engels ontwikkeld, maar [wordt door vrijwilligers in veel ta
 Loomio detecteert de taalinstellingen van je browser, maar je kunt op de profielpagina handmatig je voorkeurstaal kiezen uit de beschikbare opties.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Tijdzone
+
+Opties in tijdpeilingen gebruiken de tijdzone die in jouw profiel is opgeslagen. Schakel **Tijdzone automatisch detecteren** in om de tijdzone te gebruiken die jouw browser doorgeeft, of schakel deze instelling uit en selecteer jouw regio onder **Tijdzone**. Selecteer daarna **Bijwerken profiel**.
+
+De lijst voor handmatige selectie bevat herkenbare regio's die de huidige tijdregels wereldwijd volgen. Jouw opgeslagen of automatisch gedetecteerde regio wordt ook weergegeven, zelfs als deze niet tot de standaardopties behoort.
+
+Kies een regio die de lokale klokveranderingen volgt. Kies voor locaties in Brits-Columbia die het hele jaar de Pacifische tijd hanteren **Vancouver (Brits-Columbia)**. **Los Angeles (westkust VS)** volgt de klokveranderingen van de Amerikaanse Pacifische tijd. Houd jouw browser en besturingssysteem up-to-date, zodat ze wijzigingen in de lokale tijdregels herkennen.
 
 <!-- translation-section: resetting-your-password -->
 

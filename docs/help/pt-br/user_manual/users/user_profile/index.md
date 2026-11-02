@@ -1,10 +1,10 @@
 ---
 title: Seu perfil
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 44ed81f8c238adbd
   edit-profile: d8298b41bd7bbff6
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: e92a6c8b7b3f5c11
   merge-accounts: d78e84c300ccd0af
   deleting-your-account: c824c58db7aac17c
+  time-zone: 2681bc3db8dbf7bb
 title_source: 528d89ad72cba22e
 title_generated: 9f249d9aa487d528
 ---
@@ -80,6 +82,16 @@ O Loomio é desenvolvido em inglês, mas [é traduzido por voluntários para vá
 O Loomio detecta as configurações de idioma do seu navegador, mas você pode definir manualmente seu idioma preferido entre as opções disponíveis na página de perfil.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Fuso horário
+
+As opções de enquetes de horário usam o fuso horário salvo no seu perfil. Ative **Detecção automática de fuso horário** para usar o fuso informado pelo seu navegador ou desative essa configuração e selecione sua região em **Fuso Horário**. Em seguida, selecione **Atualizar perfil**.
+
+A lista de seleção manual inclui regiões conhecidas que abrangem as regras de horário atuais em todo o mundo. Sua região salva ou detectada automaticamente também aparece, mesmo que não seja uma das opções padrão.
+
+Escolha uma região que siga as mudanças de horário locais. Para localidades da Colúmbia Britânica que usam o horário do Pacífico durante todo o ano, escolha **Vancouver (Colúmbia Britânica)**. **Los Angeles (Pacífico dos EUA)** segue as mudanças de horário do Pacífico dos EUA. Mantenha seu navegador e sistema operacional atualizados para que reconheçam as alterações nas regras de horário locais.
 
 <!-- translation-section: resetting-your-password -->
 

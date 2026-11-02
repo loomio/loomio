@@ -1,10 +1,10 @@
 ---
 title: הפרופיל שלך
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 4027638a6b7b6f18
   edit-profile: e9b6a9fcbc689451
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: cd5ab0bf29f43ced
   merge-accounts: d4e67d4b07cac895
   deleting-your-account: 25cfef2b62b317f7
+  time-zone: ec90b9024959758d
 title_source: 528d89ad72cba22e
 title_generated: 9db27d9770fa26f5
 ---
@@ -80,6 +82,16 @@ Loomio מפותח באנגלית, אך [מתורגם לשפות רבות על י
 Loomio מזהה את הגדרות השפה של הדפדפן, אך ניתן להגדיר ידנית את השפה המועדפת מתוך האפשרויות הזמינות בדף הפרופיל.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## אזור זמן
+
+האפשרויות בסקר זמן משתמשות באזור הזמן שנשמר בפרופיל. יש להפעיל את **זיהוי אוטומטי של אזור זמן** כדי להשתמש באזור הזמן שמדווח הדפדפן, או להשבית את ההגדרה ולבצע בחירה באזור המתאים תחת **אזור זמן**, ולאחר מכן ללחוץ על **עדכן פרופיל**.
+
+הרשימה לבחירה ידנית כוללת אזורים מוכרים המייצגים את כללי השעון הנוכחיים ברחבי העולם. גם האזור שנשמר או זוהה אוטומטית מופיע ברשימה, גם אם אינו אחת מהאפשרויות הרגילות.
+
+יש לבצע בחירה באזור התואם את שינויי השעון המקומיים. עבור מקומות בקולומביה הבריטית המשתמשים בשעון האוקיינוס השקט לאורך כל השנה, יש לבצע בחירה באפשרות **ונקובר (קולומביה הבריטית)**. האפשרות **לוס אנג'לס (חוף האוקיינוס השקט בארה״ב)** פועלת לפי שינויי השעון באזור האוקיינוס השקט בארה״ב. יש לעדכן את הדפדפן ואת מערכת ההפעלה כדי שיזהו שינויים בכללי השעה המקומית.
 
 <!-- translation-section: resetting-your-password -->
 

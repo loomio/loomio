@@ -1,20 +1,20 @@
 ---
 title: סקר זמן
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 0bde51e58de371b3
   time-poll: 39f9d6bdc9a9214f
   voting: 724f5b7202ba35c6
-  outcome: dc53e01c7a027f40
+  outcome: eaa6aec942e3346d
 title_source: 8e2a07d7257fbc04
 title_generated: fe52860ad7a50271
 ---
@@ -71,7 +71,7 @@ _למצוא מתי יש זמינות לפגישה_
 
 **לְהוֹדִיעַ**: יש להוסיף את האנשים שיוזמנו לפגישה או לאירוע
 
-**זמן פגישה**: יש לבחור את המועד המתאים ביותר
+**זמן פגישה**: יש לבחור את המועד המתאים ביותר. האפשרויות מוצגות לפי [אזור הזמן שבפרופיל](/en/user_manual/users/user_profile#time-zone)
 
 **שם הפגישה**: יש לתת לפגישה שם. כברירת מחדל, נעשה שימוש בכותרת סקר הזמן
 

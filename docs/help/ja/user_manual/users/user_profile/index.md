@@ -1,10 +1,10 @@
 ---
 title: プロフィール
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: c97f1dae26df431b
   edit-profile: cc1a47bafc7e9f96
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: 0cf1012b2363e60a
   merge-accounts: 64ac83c28cba0693
   deleting-your-account: cba72719e6844da2
+  time-zone: 2d669e84e5d432b3
 title_source: 528d89ad72cba22e
 title_generated: d9251b856c472b7a
 ---
@@ -80,6 +82,16 @@ Loomioは英語で開発されていますが、[ボランティアによって�
 Loomioはブラウザーの言語設定を検出します。プロフィールページで、利用可能な言語から希望する言語を手動で設定することもできます。
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## タイムゾーン
+
+日程調整の選択肢には、プロフィールに保存されているタイムゾーンが使用されます。ブラウザーが報告するタイムゾーンを使用するには、**タイムゾーンを自動検出**を有効にします。手動で設定するには、無効にして**タイムゾーン**で地域を選択し、**プロフィールを更新する**を選択します。
+
+手動選択用のリストには、世界各地の現在の時刻制度に対応する、なじみのある地域が含まれています。保存済みの地域や自動検出された地域も、標準の選択肢に含まれていない場合でも表示されます。
+
+現地の時刻の変更に対応する地域を選択します。ブリティッシュコロンビア州で通年の太平洋時間を使用する地域では、**バンクーバー（ブリティッシュコロンビア）**を選択します。**ロサンゼルス（米国太平洋岸）**は、米国太平洋時間の時刻変更に従います。現地の時刻制度の変更を認識できるよう、ブラウザーとオペレーティングシステムを最新の状態に保ちます。
 
 <!-- translation-section: resetting-your-password -->
 

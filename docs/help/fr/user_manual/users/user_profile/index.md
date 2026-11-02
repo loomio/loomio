@@ -1,10 +1,10 @@
 ---
 title: Votre profil
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
@@ -15,6 +15,7 @@ sections:
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: ceae2068bfaa750e
 generated:
   introduction: 76803d2b0ab19bce
   edit-profile: 4607df6b80c45a4e
@@ -25,6 +26,7 @@ generated:
   resetting-your-password: 126137d7468886b1
   merge-accounts: 52a71a29fdf5efa1
   deleting-your-account: 442c234b284520c4
+  time-zone: 564302924d4e4939
 title_source: 528d89ad72cba22e
 title_generated: 71d880790ee5b689
 ---
@@ -80,6 +82,16 @@ Loomio est développé en anglais, mais [est traduit par des bénévoles dans de
 Loomio détecte les paramètres de langue de votre navigateur, mais vous pouvez définir manuellement votre langue préférée parmi les options disponibles sur la page de profil.
 
 ![](profile_language.png)
+
+<!-- translation-section: time-zone -->
+
+## Fuseau horaire
+
+Les options des sondages horaires utilisent le fuseau horaire enregistré dans votre profil. Activez **Détection automatique du fuseau horaire** pour utiliser le fuseau indiqué par votre navigateur, ou désactivez cette fonction et sélectionnez votre région sous **Fuseau horaire**, puis sélectionnez **Mettre à jour mon profil**.
+
+La liste de sélection manuelle comprend des régions connues qui couvrent les règles horaires actuellement en vigueur dans le monde. Votre région enregistrée ou détectée automatiquement apparaît également, même si elle ne fait pas partie des choix proposés par défaut.
+
+Choisissez une région qui suit les changements d’heure de votre lieu de résidence. Pour les localités de Colombie-Britannique qui restent à l’heure du Pacifique toute l’année, choisissez **Vancouver (Colombie-Britannique)**. **Los Angeles (Pacifique des États-Unis)** suit les changements d’heure du Pacifique aux États-Unis. Maintenez votre navigateur et votre système d’exploitation à jour pour qu’ils prennent en compte les modifications des règles horaires locales.
 
 <!-- translation-section: resetting-your-password -->
 

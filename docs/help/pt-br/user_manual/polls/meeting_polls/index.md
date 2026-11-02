@@ -1,20 +1,20 @@
 ---
 title: Enquete de horário
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: cb5b84872e0a0051
   time-poll: 7b65b2d3bfe83ca2
   voting: 72d10de2be075735
-  outcome: e793a81323222be4
+  outcome: 0276e1ac24a038c1
 title_source: 8e2a07d7257fbc04
 title_generated: 04060d737aa295bd
 needs_review:
@@ -73,7 +73,7 @@ Quando a enquete de horário for encerrada, escolha o melhor horário e comparti
 
 **Notificar**: Adicione as pessoas que você está convidando para a reunião ou evento
 
-**Horário da reunião**: Selecione o horário mais adequado
+**Horário da reunião**: Selecione o horário mais adequado. As opções usam o [fuso horário do seu perfil](/en/user_manual/users/user_profile#time-zone)
 
 **Nome da reunião**: Dê um nome à sua reunião. O título da enquete de horário é usado por padrão
 
