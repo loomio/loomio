@@ -5,17 +5,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @voter = users(:user)
     @group = groups(:group)
-    @poll = PollService.create(
-      params: {
-        title: "Detached anonymous poll",
-        poll_type: "proposal",
-        closing_at: 3.days.from_now,
-        group_id: @group.id,
-        anonymous: true,
-        poll_option_names: ["Agree", "Disagree"]
-      },
-      actor: @admin
-    )
+    @poll = create_anonymous_poll
   end
 
   test "discard rejects anonymous ballots without changing ballots or voter state" do
@@ -476,7 +466,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
   end
 
   test "closed STV polls export ballot patterns without identifying metadata" do
-    @poll.update!(poll_type: "stv", stv_seats: 1)
+    @poll = create_anonymous_poll(poll_type: "stv", stv_seats: 1)
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
     PollService.close(poll: @poll, actor: @admin)
 
@@ -491,7 +481,7 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
   end
 
   test "open STV polls do not export detached anonymous ballots" do
-    @poll.update!(poll_type: "stv", stv_seats: 1)
+    @poll = create_anonymous_poll(poll_type: "stv", stv_seats: 1)
     AnonymousBallotService.create(anonymous_ballot: build_ballot(@poll.poll_options.first), actor: @voter)
 
     assert_raises(CanCan::AccessDenied) { PollExporter.new(@poll).to_blt }
@@ -778,6 +768,13 @@ class AnonymousBallotServiceTest < ActiveSupport::TestCase
   end
 
   private
+
+  def create_anonymous_poll(**settings)
+    PollService.create(params: {
+      title: "Detached anonymous poll", poll_type: "proposal", closing_at: 3.days.from_now,
+      group_id: @group.id, anonymous: true, poll_option_names: ["Agree", "Disagree"], **settings
+    }, actor: @admin)
+  end
 
   def build_ballot(option)
     @poll.anonymous_ballots.build(

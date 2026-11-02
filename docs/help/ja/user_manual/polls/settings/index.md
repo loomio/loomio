@@ -1,10 +1,10 @@
 ---
 title: 設定
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 38d903c510503cbb
   setting-up-a-proposal-or-poll: 16beec14d33069d9
@@ -34,21 +35,22 @@ generated:
   add-content: 71443d304edbb235
   voting-options: 6e953b9fa9039b42
   edit-voting-options: 244706d5d94bb2dd
-  opening-time: 3695d23bab31dc75
+  opening-time: 6166dd2aae4586a1
   more-settings: ee685758816f701f
   reminder: 61136dac07544bb7
   anonymous-voting: a2ecf3255db05030
   vote-reason: 62318725e7487f0d
-  hide-results: 2acd89a5bee36ca4
+  hide-results: b9e4a0a80655e6cc
   start-the-poll: cd4c593025090505
   managing-polls: 98a208666a4101b9
   edit-poll: f00e83972b06e9ec
-  make-a-copy: 7d48fd177b1ed338
   notification-history: 9608d471484a177d
   export-poll: 9dfd0e4df44a19dd
   print: 3018ebb8210c1c57
   delete: ee4b24e9252915cf
   save-bookmark: 178e06901c45c1d0
+  save-as-template: 9cc5ab3e34df5da1
+  who-can-vote: 61162d9364087f97
 title_source: 74a883a037bc227f
 title_generated: 0d8619aae051ae34
 needs_review:
@@ -129,11 +131,15 @@ needs_review:
 
 初期設定では、アンケートを作成するとすぐに投票が開始されます。後で投票を開始するように予約する場合は、**投票はすぐに開始されます**のチェックを外し、開始日時を選択します。
 
+予約した投票は、指定した時刻から開始までに1分ほどかかる場合があります。
+
 投票開始前にディスカッションの時間を設けたり、アンケートや提案を適切に設定して予定の時間に開始したりする場合に役立ちます。
 
 例えば、今後の総会でグループが複数の決定について投票する場合、あらかじめアンケートを準備して投票者を追加し、投票期間の開始時にすべてのアンケートが開始されるように予約できます。開始前でもアンケートを閲覧できますが、投票はできません。
 
 アンケートの開始日時を予約している場合は、投票開始前に投票者を追加できます。投票者には、追加された時点ではなく、投票開始時に通知が届きます。
+
+予定時刻より前に投票を開始するには、**投票の編集**を選択し、**投票はすぐに開始されます**にチェックを入れて保存します。
 
 **アンケート開始時に投票者に通知:** チェックが入っている場合（初期設定）、投票開始時にすべての投票者に通知が届きます。通知を送らずに投票を開始する場合は、チェックを外します。
 
@@ -141,9 +147,18 @@ needs_review:
 
 投票に十分な時間を確保します。会議の前に提案を締め切るようにしたり、週末の締め切りを避けたりすると、適切なタイミングでリマインダーを届けられます。必要に応じて、アンケートを早めに締め切ることや、締め切りを延長することもできます。
 
-**誰が投票できますか？** グループの全員を招待するか、特定の人だけを招待します。
+<!-- translation-section: who-can-vote -->
 
-「招待された人のみ」のアンケートには、後から参加者を追加できます。記名式のアンケートでは、投票資格がなくなった人を削除することもできます。匿名のアンケートから参加者を削除することはできません。
+### 誰が投票できますか？
+
+アンケートに投票できる人を選択します。
+
+- **グループ内の誰でも**（または**スレッド内の誰でも**）: 後から参加する人も含め、アンケートにアクセスできる全員が投票できます。
+- **選ばれた人のみ:** 追加した人だけが投票できます。理事会や委員会など、一部のメンバーだけが投票する場合に使用します。
+
+![投票できる人の設定](../manage_voters/invited-people-only.png)
+
+**選ばれた人のみ**のアンケートを開始すると、**有権者の管理**が開き、投票者を追加できます。投票者は後から追加または削除できます。[投票者の管理](/en/user_manual/polls/manage_voters)を参照してください。
 
 <!-- translation-section: more-settings -->
 
@@ -210,6 +225,8 @@ needs_review:
 
 投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、投票への返信と投票理由内のメンションが無効になります。スレッドのメンバーは、引き続きアンケートにコメントしたり、コメントに返信したりできます。アンケートの受付中は締め切り日時を延長できますが、締め切り後は再開できません。
 
+アンケートを編集する権限を持つ人は、投票開始前であれば、匿名投票や結果の表示設定を含む詳細と設定を変更できます。投票が始まると匿名設定は変更できなくなり、締め切りまで非表示にする設定の結果を早めに公開することもできません。
+
 印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで非表示にする設定の結果と投票理由は、アンケートが締め切られるまで非表示のままです。通常のコメントは、引き続きスレッド、検索、エクスポートで確認できます。
 
 匿名アンケートでは、投票が締め切られるまで結果が常に非表示になります。STV選挙テンプレートでは、初期設定で匿名投票が有効になっています。
@@ -233,11 +250,13 @@ needs_review:
 
 **投票の編集**で、アンケートの内容や設定を編集します。
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### コピーを作成する
+### テンプレートとして保存
 
-**コピーを作成する**で、現在のアンケートとその設定をもとに新しいアンケートを作成します。
+アンケートのアクションメニューで**テンプレートとして保存**を選択すると、内容、投票の選択肢、説明、設定を再利用できます。あらかじめ入力されたテンプレートのフォームを確認し、テンプレートの名前とサブタイトルを入力して、**テンプレートを保存**を選択します。グループのメンバーは、新しいアンケートを開始する際にこのテンプレートを選択できるようになります。
+
+グループ管理者はテンプレートを保存できます。グループの権限設定で**メンバーはテンプレートを作成できます**が有効になっている場合は、メンバーも保存できます。詳しくは、[アンケートのテンプレート](/en/user_manual/polls/poll_templates)をご覧ください。
 
 <!-- translation-section: notification-history -->
 

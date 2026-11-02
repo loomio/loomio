@@ -345,6 +345,7 @@ zh_TW:
       unredact: 恢復
       export_json: 導出 JSON
       import_json: 導入 JSON
+      save_as_template: 另存為範本
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -1916,6 +1917,8 @@ zh_TW:
     comment_length_max_help: 留空表示不設主題數量限制
     comment_length_max_description: 設定評論長度上限，鼓勵評論簡潔明了
     comment_length_max_hint: 每則評論的字數限制。留空則無字數限制。
+    only_admins_can_add_attachments: 僅管理員可新增附件
+    only_one_poll_at_a_time: 一次只能進行一個投票
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
@@ -2151,6 +2154,7 @@ zh_TW:
     pct_of_eligible_vote_weight: 占可投票權重的 %
     pct_of_vote_weight_cast: 占已投票權重的 %
     pct_of_assigned_vote_weight: 占已分配投票權重的 %
+    reuse_voting_options_and_settings: 範本讓群組中的任何人都能重複使用投票選項、說明和設定。儲存前先檢查範例內容，之後發起新投票時即可選用此範本
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:

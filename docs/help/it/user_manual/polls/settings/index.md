@@ -1,10 +1,10 @@
 ---
 title: Impostazioni
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 8ca1ef9413b5fc51
   setting-up-a-proposal-or-poll: 35ef8639f23a61f8
@@ -34,21 +35,22 @@ generated:
   add-content: 367cac67db5d031f
   voting-options: eb1768f770b58c82
   edit-voting-options: b5d0c05af51fbac4
-  opening-time: de9b07e7104212c2
+  opening-time: bc5aee07e04c1949
   more-settings: d67937a9b83269cd
   reminder: 522e54360b5663b3
   anonymous-voting: 623409b0b84a8a2f
   vote-reason: 6d4306fcd181f788
-  hide-results: b0f18eba104435a1
+  hide-results: d3add053fe8915ea
   start-the-poll: ae6e267103f7db9d
   managing-polls: 9f6bb577125aa07e
   edit-poll: c0e9dfcf12cf21c1
-  make-a-copy: 7aa3bed7a295927e
   notification-history: '07369e9798cbcb2f'
   export-poll: 756059a1f6fa5cd3
   print: 0362fdef2618198f
   delete: af03445a901c505d
   save-bookmark: c133640f8d660ba5
+  save-as-template: d0eb83b79d9534a0
+  who-can-vote: 8e16d28e30a46d57
 title_source: 74a883a037bc227f
 title_generated: 7b855ce7525ebc18
 ---
@@ -127,11 +129,15 @@ Usa l'icona della matita accanto all'opzione di voto per aprire la finestra di m
 
 Per impostazione predefinita, le votazioni si aprono immediatamente quando crei il sondaggio. Se vuoi programmarne l'apertura per un momento successivo, deseleziona **Le votazioni si aprono immediatamente** e seleziona una data e un'ora di apertura.
 
+Le votazioni programmate possono aprirsi circa un minuto dopo l'orario selezionato.
+
 Questo permette di lasciare tempo per la discussione prima dell'apertura delle votazioni, oppure di verificare che un sondaggio o una proposta siano configurati correttamente e programmati per il momento previsto.
 
 Ad esempio, se il tuo gruppo deve votare su diverse decisioni in una prossima assemblea, puoi preparare i sondaggi e aggiungere gli elettori in anticipo, poi programmarli tutti perché si aprano all'inizio del periodo di voto. Le persone possono vedere i sondaggi prima dell'apertura, ma non possono votare in anticipo.
 
 Quando un sondaggio ha un'apertura programmata, puoi aggiungere gli elettori prima dell'apertura delle votazioni. Gli elettori riceveranno una notifica all'apertura delle votazioni, anziché quando vengono aggiunti.
+
+Per aprire le votazioni prima dell'orario programmato, seleziona **Modifica sondaggio**, seleziona **Le votazioni si aprono immediatamente** e salva.
 
 **Notifica gli elettori all'apertura del sondaggio:** Quando questa opzione è selezionata (impostazione predefinita), tutti gli elettori ricevono una notifica all'apertura delle votazioni. Deselezionala se vuoi aprire le votazioni senza inviare notifiche.
 
@@ -139,9 +145,18 @@ Quando un sondaggio ha un'apertura programmata, puoi aggiungere gli elettori pri
 
 Lascia alle persone tempo sufficiente per votare. Puoi programmare la chiusura della proposta prima di una riunione oppure evitare che avvenga durante il fine settimana, in modo che le persone ricevano un promemoria al momento opportuno. Se necessario, puoi chiudere il sondaggio in anticipo o posticiparne la chiusura.
 
-**Chi può votare?** Invita tutte le persone del gruppo oppure solo persone specifiche.
+<!-- translation-section: who-can-vote -->
 
-Puoi aggiungere altre persone in seguito a un sondaggio con l'impostazione 'Solo persone invitate'. Nei sondaggi con voto identificato, puoi anche rimuovere le persone che non devono più avere diritto di voto. Non puoi rimuovere persone da un sondaggio anonimo.
+### Chi può votare?
+
+Scegli chi può votare nel sondaggio.
+
+- **Qualcuno nel gruppo** (o **Chiunque nel thread**): tutte le persone che hanno accesso al sondaggio possono votare, comprese quelle che si uniscono in seguito.
+- **Solo persone selezionate:** solo le persone che aggiungi possono votare. Usa questa impostazione quando devono votare solo alcuni membri, ad esempio un consiglio direttivo o un comitato.
+
+![Impostazione Chi può votare](../manage_voters/invited-people-only.png)
+
+Dopo aver avviato un sondaggio con l'impostazione **Solo persone selezionate**, si apre **Gestisci gli elettori** per permetterti di aggiungere gli elettori. Puoi aggiungere o rimuovere elettori in seguito. Vedi [Gestisci gli elettori](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -208,6 +223,8 @@ Quando i risultati sono nascosti finché non viene espresso un voto, le persone 
 
 Quando i risultati sono nascosti fino alla chiusura delle votazioni, le risposte ai voti e le menzioni nei motivi dei voti sono disabilitate fino alla chiusura del sondaggio. I membri della conversazione possono comunque commentare il sondaggio e rispondere ai commenti. Puoi posticipare la chiusura mentre il sondaggio è aperto, ma non puoi riaprirlo dopo la chiusura.
 
+Le persone con il permesso di modificare un sondaggio possono modificarne i dettagli e le impostazioni, compresi il voto anonimo e la visibilità dei risultati, prima dell'apertura delle votazioni. Una volta aperte le votazioni, l'anonimato non può più essere modificato e i risultati nascosti fino alla chiusura non possono essere mostrati in anticipo.
+
 La stampa e le esportazioni, compresa quella in formato Markdown, ignorano l'impostazione "Nascondi i risultati finché non viene espresso un voto" e includono voti e risposte. I risultati e i motivi dei voti nascosti fino alla chiusura restano nascosti fino alla chiusura del sondaggio. I normali commenti restano disponibili nella conversazione, nella ricerca e nelle esportazioni.
 
 I sondaggi anonimi nascondono sempre i risultati fino alla chiusura delle votazioni. Il modello Elezione STV attiva il voto anonimo per impostazione predefinita.
@@ -231,11 +248,13 @@ Apri il menu con i tre puntini in basso a destra nel sondaggio.
 
 Usa **Modifica sondaggio** per modificare il contenuto o le impostazioni del sondaggio.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Fai una copia
+### Salva come modello
 
-Usa **Fai una copia** per creare un nuovo sondaggio usando il sondaggio attuale e le sue impostazioni come punto di partenza.
+Usa **Salva come modello** nel menu delle azioni di un sondaggio per riutilizzarne il contenuto, le opzioni di voto, le spiegazioni e le impostazioni. Controlla il modulo del modello precompilato, assegna al modello un nome e un sottotitolo e seleziona **Salva modello**. Le persone del gruppo potranno poi sceglierlo quando avviano un nuovo sondaggio.
+
+Gli amministratori del gruppo possono salvare modelli. Anche i membri possono salvarli quando **I membri possono creare modelli** è abilitato nelle autorizzazioni del gruppo. Per maggiori dettagli, consulta [Modelli di sondaggio](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

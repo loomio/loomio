@@ -343,6 +343,7 @@ el:
       unredact: Επαναφέρω
       export_json: Εξαγωγή json
       import_json: Εισαγωγή json
+      save_as_template: Αποθήκευση ως πρότυπο
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
@@ -1895,6 +1896,8 @@ el:
     comment_length_max_help: Αφήστε κενό εάν δεν υπάρχει όριο θεμάτων
     comment_length_max_description: Ενθαρρύνετε τα συνοπτικά σχόλια ορίζοντας ένα μέγιστο μήκος
     comment_length_max_hint: Μέγιστος αριθμός χαρακτήρων ανά σχόλιο. Αφήστε το κενό για λόγους ασφαλείας.
+    only_admins_can_add_attachments: Μόνο οι διαχειριστές μπορούν να προσθέτουν συνημμένα
+    only_one_poll_at_a_time: Μόνο μία δημοσκόπηση κάθε φορά
   delete_thread_form:
     title: Διαγραφή νήματος
     body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το νήμα;
@@ -2125,6 +2128,7 @@ el:
     pct_of_eligible_vote_weight: "% του βάρους ψήφου των επιλέξιμων ψηφοφόρων"
     pct_of_vote_weight_cast: "% του βάρους ψήφου που κατατέθηκε"
     pct_of_assigned_vote_weight: "% του βάρους ψήφου που ανατέθηκε"
+    reuse_voting_options_and_settings: Τα πρότυπα επιτρέπουν σε όλα τα μέλη της ομάδας σας να ξαναχρησιμοποιούν επιλογές ψήφου, επεξηγήσεις και ρυθμίσεις. Ελέγξτε το ενδεικτικό περιεχόμενο πριν το αποθηκεύσετε και επιλέξτε το πρότυπο όταν ξεκινάτε μια νέα δημοσκόπηση
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:

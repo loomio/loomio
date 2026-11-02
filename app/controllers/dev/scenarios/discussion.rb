@@ -10,6 +10,13 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  def setup_attachment_restricted_discussion
+    discussion = create_discussion
+    discussion.topic.update!(attachments_admin_only: true)
+    sign_in emilio
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_discussion_many_members
     discussion = create_discussion
     50.times do |index|

@@ -401,9 +401,14 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
+    page.resizeWindow(1100, 1200);
     openDiscussion(page);
     page.click('.topic-sidebar .action-dock__button--thread_settings');
     page.waitFor('.topic-arrangement-form');
+    page.expectElement('.topic-settings__attachments-admin-only');
+    page.expectElement('.topic-arrangement-form .v-card-item__append .help-link');
+    test.assert.attributeContains('.topic-arrangement-form .v-card-item__append .help-link', 'href', '/user_manual/discussions/using_discussions#thread-settings');
+    test.assert.not.selected('.topic-arrangement-form .topic-settings__single-poll input');
     screenshot.captureElement('discussions/using_discussions/thread_layout_options', '.topic-arrangement-form', {
       width: 1100,
       height: 1200

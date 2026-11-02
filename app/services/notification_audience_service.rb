@@ -84,7 +84,8 @@ class NotificationAudienceService
     topic = topic_for(model)
     poll = poll_for(model)
 
-    candidates << { id: "topic", kind: "topic" } if topic&.readers&.exists?
+    # Group threads offer the group instead; "Everyone in the thread" only makes sense in direct threads.
+    candidates << { id: "topic", kind: "topic" } if topic && topic.group_id.blank? && topic.readers.exists?
 
     if poll&.persisted? && poll.vote_count_eligible.to_i.positive?
       candidates << { id: "voters", kind: "voters" }

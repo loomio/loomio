@@ -107,7 +107,7 @@ module.exports = {
     page.loadPath('setup_discussion_many_members')
     page.clickAndWait('.action-dock__button--announce_thread', '.topic-members-list__readers')
     page.expectText('.topic-members-list', 'Manage thread members')
-    page.expectText('.topic-members-list .help-link', 'User manual')
+    page.expectText('.topic-members-list .help-link', 'Help')
     page.expectText('.topic-members-list__page-count', '1–50 of 52')
     page.expectText('.topic-members-list__readers', 'Thread member 50')
     page.click('.topic-members-list__pagination .v-pagination__next button')
@@ -152,7 +152,8 @@ module.exports = {
 
     page.expectElement('.poll-members-form')
     page.click('.recipients-autocomplete input[type="text"]')
-    page.expectText('.v-autocomplete__content', 'Everyone in the thread')
+    page.waitFor('.recipients-autocomplete-suggestion')
+    page.expectNoText('.v-autocomplete__content', 'Everyone in the thread')
     page.fillIn('.recipients-autocomplete input[type="text"]', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')

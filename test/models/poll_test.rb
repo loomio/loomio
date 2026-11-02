@@ -86,7 +86,7 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "anonymity cannot change after a poll is created" do
+  test "anonymity cannot change after voting opens" do
     named_poll = create_poll
     named_poll.anonymous = true
     assert_not named_poll.valid?
@@ -681,6 +681,22 @@ class PollTest < ActiveSupport::TestCase
     poll.update!(closed_at: Time.current)
     assert poll.results_available?
     assert poll.results_visible?(voted: false)
+  end
+
+  test "scheduled anonymous polls must keep results hidden until closing" do
+    poll = create_poll(anonymous: true, opening_at: 3.days.from_now, hide_results: 'until_closed')
+    poll.hide_results = 'off'
+    assert_not poll.valid?
+    assert poll.errors.added?(:hide_results, :invalid)
+    assert_equal 'until_closed', poll.reload.hide_results
+  end
+
+  test "clearing the opening timestamp cannot unlock result visibility" do
+    poll = create_poll(hide_results: 'until_closed')
+    assert poll.opened?
+    poll.assign_attributes(opened_at: nil, hide_results: 'off')
+    assert_not poll.valid?
+    assert poll.errors.added?(:hide_results, :cannot_show_results_early)
   end
 
   test "assigns poll options" do

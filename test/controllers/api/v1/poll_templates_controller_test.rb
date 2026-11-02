@@ -202,6 +202,20 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "template creation permission does not extend to topic guests former members or other groups" do
+    @group.update!(members_can_create_templates: true)
+    %i[guest_normal guest_admin_normal former_member_loud alien].each do |role|
+      sign_in users(role)
+      assert_no_difference 'PollTemplate.count', role.to_s do
+        post :create, params: {poll_template: {
+          group_id: @group.id, process_name: 'Reusable proposal', process_subtitle: 'Group process',
+          poll_type: 'proposal', default_duration_in_days: 3
+        }}
+      end
+      assert_response :forbidden, role.to_s
+    end
+  end
+
   # === EXPORT ===
 
   test "export returns a portable poll template file" do
@@ -230,14 +244,15 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute data["template"].key?("author_id")
   end
 
-  test "export keeps weighted voting" do
-    template = create_poll_template(process_name: "Weighted", weighted_voting: true)
+  test "export keeps weighted voting and attachment restrictions" do
+    template = create_poll_template(process_name: "Weighted", weighted_voting: true, attachments_admin_only: true)
 
     sign_in @user
     get :export, params: { id: template.id, group_id: @group.id }
 
     assert_response :success
     assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "weighted_voting")
+    assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "attachments_admin_only")
   end
 
   test "export supports built-in poll templates" do

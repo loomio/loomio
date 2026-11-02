@@ -245,6 +245,43 @@ class TopicWriteConcurrencyTest < ActiveSupport::TestCase
     end
   end
 
+  test 'membership synchronization does not lock votes when every member is already a voter' do
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant_id: @actor.id)
+    original = stance.attributes
+
+    while_stance_is_locked(stance) { PollGroupMembersAddedWorker.perform_now(@group.id) }
+
+    assert_equal original, stance.reload.attributes
+    assert_equal 1, poll.reload.vote_count_eligible
+    assert_equal 1, poll.vote_count_uncast
+  end
+
+  test 'membership synchronization adds voters without locking existing votes or changing their history' do
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant_id: @actor.id)
+    stance.choice = poll.poll_options.first.name
+    stance.reason = 'Original vote'
+    StanceService.create(stance: stance, actor: @actor)
+    assert stance.reload.cast_at
+    stance.update_column(:updated_at, 20.minutes.ago)
+    current_stance = StanceService.update(stance: stance, actor: @actor,
+      params: { stance_choices_attributes: [{ poll_option_id: poll.poll_options.last.id }], reason: 'Changed vote' })
+    original = poll.stances.order(:id).map(&:attributes)
+    member = users(:alien)
+    @group.add_member!(member)
+    assert_not member.can?(:vote_in, poll)
+
+    while_stance_is_locked(current_stance) { PollGroupMembersAddedWorker.perform_now(@group.id) }
+
+    assert_equal original, poll.stances.where(participant_id: @actor.id).order(:id).map(&:attributes)
+    assert poll.stances.latest.uncast.exists?(participant_id: member.id)
+    assert member.can?(:vote_in, poll.reload)
+    assert_equal 2, poll.vote_count_eligible
+    assert_equal 1, poll.vote_count_uncast
+    assert_equal 1, poll.poll_options.last.reload.total_score.to_i
+  end
+
   test 'reply creation waits for repair and leaves the tree and counts consistent' do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: 'Concurrent repair' }, actor: @actor)
     parent = CommentService.create(comment: Comment.new(parent: discussion, body: 'Parent'), actor: @actor)
@@ -280,7 +317,90 @@ class TopicWriteConcurrencyTest < ActiveSupport::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
+  test 'queued expiry rechecks a deadline extended while waiting for the topic lock' do
+    poll = create_poll(group_id: @group.id)
+    poll.update_column(:closing_at, 1.minute.ago)
+
+    assert_no_difference -> { Notification.where(kind: 'poll_expired', subject: poll).count } do
+      while_writer_waits_on_topics([poll.topic_id], -> { CloseExpiredPollWorker.perform_now(poll.id) }) do
+        PollService.update(poll: poll, params: { closing_at: 1.day.from_now }, actor: @actor)
+      end
+    end
+
+    assert_nil poll.reload.closed_at
+  end
+
+  test 'overlapping expiry jobs close once and publish one notification' do
+    [false, true].each do |anonymous|
+      poll = create_poll(group_id: @group.id, anonymous: anonymous)
+      poll.update_column(:closing_at, 1.minute.ago)
+
+      assert_difference -> { Notification.where(kind: 'poll_expired', subject: poll).count }, 1 do
+        while_writer_waits_on_topics([poll.topic_id], -> { CloseExpiredPollWorker.perform_now(poll.id) }) do
+          CloseExpiredPollWorker.perform_now(poll.id)
+        end
+      end
+
+      assert poll.reload.closed_at
+      assert_equal 0, poll.topic.reload.active_polls_count
+    end
+  end
+
+  test 'queued opening rechecks rescheduling while waiting for the topic lock' do
+    poll = create_poll(group_id: @group.id, opening_at: 2.hours.from_now)
+    poll.update_column(:opening_at, 1.minute.ago)
+
+    while_writer_waits_on_topics([poll.topic_id], -> { OpenScheduledPollWorker.perform_now(poll.id) }) do
+      PollService.update(poll: poll, params: { opening_at: 3.hours.from_now }, actor: @actor)
+    end
+
+    assert_nil poll.reload.opened_at
+    assert_not Notification.exists?(kind: 'poll_announced', subject: poll.created_topic_item)
+  end
+
+  test 'overlapping opening jobs announce a poll once' do
+    @group.add_member!(users(:member))
+    [false, true].each do |anonymous|
+      poll = create_poll(group_id: @group.id, opening_at: 2.hours.from_now, anonymous: anonymous)
+      poll.update_column(:opening_at, 1.minute.ago)
+
+      assert_difference -> { Notification.where(kind: 'poll_announced', subject: poll.created_topic_item).count }, 1 do
+        while_writer_waits_on_topics([poll.topic_id], -> { OpenScheduledPollWorker.perform_now(poll.id) }) do
+          OpenScheduledPollWorker.perform_now(poll.id)
+        end
+      end
+
+      assert poll.reload.opened_at
+      assert_equal 1, poll.topic.reload.active_polls_count
+    end
+  end
+
   private
+
+  # Hold a response lock as a concurrent membership/account writer can. The
+  # synchronization must finish before it is released, including when adding
+  # another voter; otherwise it is still rewriting unrelated responses.
+  def while_stance_is_locked(stance)
+    writer = nil
+    Stance.transaction do
+      Stance.where(id: stance.id).lock.load
+      writer = Thread.new do
+        Thread.current.report_on_exception = false
+        ActiveRecord::Base.connection_pool.with_connection do |connection|
+          Stance.transaction do
+            connection.execute("SET LOCAL lock_timeout = '1s'")
+            yield
+          end
+        end
+      end
+      Timeout.timeout(10) { writer.value }
+    end
+  ensure
+    if writer&.alive?
+      writer.kill
+      writer.join
+    end
+  end
 
   def create_poll(**params)
     PollService.create(params: {

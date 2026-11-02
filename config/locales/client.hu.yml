@@ -345,6 +345,7 @@ hu:
       unredact: Visszaállítás
       export_json: JSON exportálása
       import_json: JSON importálása
+      save_as_template: Mentés sablonként
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -1903,6 +1904,8 @@ hu:
     comment_length_max_help: Hagyja üresen, ha nincs témakorlát
     comment_length_max_description: Ösztönözd a tömör hozzászólásokat a maximális hossz meghatározásával
     comment_length_max_hint: Maximális karakterszám hozzászólásonként. Hagyja üresen, ha nem szeretne korlátot létrehozni.
+    only_admins_can_add_attachments: Csak adminok adhatnak hozzá mellékletet
+    only_one_poll_at_a_time: Egyszerre csak egy szavazás
   delete_thread_form:
     title: Törölje a témát
     body: Biztosan törli ezt a témát?
@@ -2136,6 +2139,7 @@ hu:
     pct_of_eligible_vote_weight: a jogosultak szavazati súlyának %-a
     pct_of_vote_weight_cast: a leadott szavazati súly %-a
     pct_of_assigned_vote_weight: a kiosztott szavazati súly %-a
+    reuse_voting_options_and_settings: A sablonokkal a csoportod bármely tagja újra felhasználhatja a szavazási lehetőségeket, magyarázatokat és beállításokat. Mentés előtt nézd át a példatartalmat, majd új szavazás indításakor válaszd ki a sablont
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:

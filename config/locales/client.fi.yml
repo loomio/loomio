@@ -343,6 +343,7 @@ fi:
       unredact: Palauttaa
       export_json: Vie JSON-tiedosto
       import_json: Tuo JSON-tiedosto
+      save_as_template: Tallenna mallina
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -1895,6 +1896,8 @@ fi:
     comment_length_max_help: Jätä tyhjäksi, jos aihetta ei rajoiteta
     comment_length_max_description: Kannusta ytimekkäitä kommentteja asettamalla niille enimmäispituus
     comment_length_max_hint: Kommentin enimmäismäärä merkkejä. Jätä tyhjäksi, jos et halua merkkien määrää.
+    only_admins_can_add_attachments: Vain ylläpitäjät voivat lisätä liitteitä
+    only_one_poll_at_a_time: Vain yksi kysely kerrallaan
   delete_thread_form:
     title: Poista lanka
     body: Haluatko varmasti poistaa tämän ketjun?
@@ -2125,6 +2128,7 @@ fi:
     pct_of_eligible_vote_weight: "% äänioikeutettujen äänipainosta"
     pct_of_vote_weight_cast: "% annettujen äänten äänipainosta"
     pct_of_assigned_vote_weight: "% jaetusta äänipainosta"
+    reuse_voting_options_and_settings: Mallien avulla kuka tahansa ryhmässäsi voi käyttää samoja äänestysvaihtoehtoja, selityksiä ja asetuksia. Tarkista esimerkkisisältö ennen tallentamista ja valitse sitten malli, kun aloitat uuden kyselyn
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:

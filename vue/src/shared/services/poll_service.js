@@ -7,6 +7,7 @@ import openModal      from '@/shared/helpers/open_modal';
 import { I18n }          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 import BookmarkService from '@/shared/services/bookmark_service';
+import PollTemplateService from '@/shared/services/poll_template_service';
 import { startOfHour, addDays, format } from 'date-fns';
 
 function openSetOutcomeModal(poll) {
@@ -108,12 +109,12 @@ export default new class PollService {
         }
       },
 
-      make_a_copy: {
-        icon: 'mdi-content-copy',
-        name: 'templates.make_a_copy',
+      save_as_template: {
+        icon: 'mdi-content-save-outline',
+        name: 'common.action.save_as_template',
         menu: true,
-        canPerform() { return Session.isSignedIn(); },
-        to() { return `/p/new?template_id=${poll.id}`; }
+        canPerform() { return !poll.discardedAt && PollTemplateService.canCreateTemplate(poll.group()); },
+        to() { return {path: '/poll_templates/new', query: {poll_id: poll.id, return_to: Session.returnTo()}}; }
       },
 
       view_votes: {

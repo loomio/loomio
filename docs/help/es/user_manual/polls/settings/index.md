@@ -1,10 +1,10 @@
 ---
 title: Configuración
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: d6e6465a941f05cc
   setting-up-a-proposal-or-poll: bb36970da131d96f
@@ -34,21 +35,22 @@ generated:
   add-content: c4be9624dffcbb7e
   voting-options: d66fbd0a4522aa98
   edit-voting-options: e773bdbcc7894d29
-  opening-time: 500d89370b4e9875
+  opening-time: 445c6baffde2eb1d
   more-settings: 3519ac4ed701ef08
   reminder: 56b99642d067b0f0
   anonymous-voting: 82830bddf2aae95a
   vote-reason: 8a70d40c93b8a51d
-  hide-results: b01a1971e25f2b63
+  hide-results: a728576cf7d7b841
   start-the-poll: 4a14fd3145c3e39b
   managing-polls: 3711abc9c32d6f77
   edit-poll: 37ec4c799be29490
-  make-a-copy: 1d5735a95c25da75
   notification-history: ffdba555bbd69a46
   export-poll: bb706aea38b9e931
   print: aaa8be85f0db958d
   delete: 308d1e3227e365db
   save-bookmark: 5bdb299d7db4dc71
+  save-as-template: 951653bc48b8f1f5
+  who-can-vote: 590b1af3d3c55239
 title_source: 74a883a037bc227f
 title_generated: bb507137e3631379
 ---
@@ -127,11 +129,15 @@ Usa el icono del lápiz junto a la opción de votación para abrir el cuadro de 
 
 De forma predeterminada, la votación se abre inmediatamente cuando creas la encuesta. Si quieres programar la votación para que se abra más adelante, desmarca **La votación se abre inmediatamente** y selecciona una fecha y hora de apertura.
 
+La votación programada puede tardar alrededor de un minuto en abrirse después de la hora seleccionada.
+
 Esto permite dejar tiempo para la discusión antes de que se abra la votación, o asegurarte de que una encuesta o propuesta esté bien configurada y programada para el momento adecuado.
 
 Por ejemplo, si tu grupo tiene varias decisiones que votar en una próxima asamblea, puedes preparar las encuestas y agregar votantes con antelación, y luego programarlas para que todas se abran cuando comience el periodo de votación. Las personas pueden ver las encuestas antes de que se abran, pero no pueden votar antes de tiempo.
 
 Cuando una encuesta tiene una hora de apertura programada, puedes agregar votantes antes de que se abra la votación. Los votantes recibirán una notificación cuando se abra la votación, en lugar de cuando los agregues.
+
+Para abrir la votación antes de la hora programada, selecciona **Editar encuesta**, marca **La votación se abre inmediatamente** y guarda los cambios.
 
 **Notificar a los votantes cuando se abra la encuesta:** Cuando esta opción está marcada (de forma predeterminada), todos los votantes recibirán una notificación cuando se abra la votación. Desmárcala si quieres abrir la votación sin enviar notificaciones.
 
@@ -139,9 +145,18 @@ Cuando una encuesta tiene una hora de apertura programada, puedes agregar votant
 
 Deja tiempo suficiente para que las personas voten. Puedes programar la propuesta para que se cierre antes de una reunión o evitar que se cierre durante un fin de semana, para que las personas reciban un recordatorio a tiempo. Si es necesario, puedes cerrar la encuesta antes de tiempo o ampliar el plazo de cierre.
 
-**¿Quién puede votar?** Invita a todo el grupo o solo a personas concretas.
+<!-- translation-section: who-can-vote -->
 
-Puedes agregar personas más adelante a una encuesta configurada como 'Solo personas invitadas'. En las encuestas con votos identificados, también puedes eliminar a las personas que ya no deban tener derecho a votar. No se pueden eliminar personas de una encuesta anónima.
+### ¿Quién puede votar?
+
+Elige quién puede votar en la encuesta.
+
+- **¿Alguien en el grupo?** (o **Cualquier persona en el hilo**): todas las personas con acceso a la encuesta pueden votar, incluidas las que se unan más adelante.
+- **Solo para personas seleccionadas:** solo pueden votar las personas que agregues. Usa esta opción cuando solo deban votar algunos miembros, como una junta directiva o un comité.
+
+![Configuración de quién puede votar](../manage_voters/invited-people-only.png)
+
+Después de iniciar una encuesta con la opción **Solo para personas seleccionadas**, se abre **Gestionar a los votantes** para que puedas agregar votantes. Puedes agregar o eliminar votantes más adelante. Consulta [Gestionar a los votantes](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -208,6 +223,8 @@ Cuando los resultados están ocultos hasta emitir un voto, las personas pueden v
 
 Cuando los resultados están ocultos hasta que se cierre la votación, las respuestas a los votos y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta. Los miembros del hilo pueden seguir comentando en la encuesta y respondiendo a los comentarios. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
 
+Las personas con permiso para editar una encuesta pueden cambiar los detalles y la configuración, incluidas la votación anónima y la visibilidad de los resultados, antes de que se abra la votación. Una vez que se abre la votación, la configuración de anonimato queda fija y los resultados ocultos hasta el cierre no se pueden revelar antes de tiempo.
+
 La impresión y las exportaciones, incluida la exportación a Markdown, ignoran la configuración «Ocultar los resultados hasta emitir un voto» e incluyen los votos y las respuestas. Los resultados y los motivos de los votos ocultos hasta el cierre permanecen ocultos hasta que se cierre la encuesta. Los comentarios normales siguen disponibles en el hilo, las búsquedas y las exportaciones.
 
 Las encuestas anónimas siempre ocultan los resultados hasta que se cierra la votación. La plantilla de elección STV activa la votación anónima por defecto.
@@ -231,11 +248,13 @@ Abre el menú de tres puntos en la parte inferior derecha de la encuesta.
 
 Usa **Editar encuesta** para editar el contenido o la configuración de la encuesta.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Haz una copia
+### Guardar como plantilla
 
-Usa **Haz una copia** para crear una nueva encuesta tomando como punto de partida la encuesta actual y su configuración.
+Usa **Guardar como plantilla** en el menú de acciones de una encuesta para reutilizar su contenido, opciones de voto, explicaciones y configuración. Revisa el formulario de la plantilla con los campos ya rellenados, dale un nombre y un subtítulo a la plantilla y selecciona **Guardar plantilla**. Las personas del grupo podrán elegirla al iniciar una nueva encuesta.
+
+Los admins del grupo pueden guardar plantillas. Los miembros también pueden guardarlas cuando **Los miembros pueden crear plantillas** está activado en los permisos del grupo. Consulta [Plantillas de encuestas](/en/user_manual/polls/poll_templates) para obtener más detalles.
 
 <!-- translation-section: notification-history -->
 

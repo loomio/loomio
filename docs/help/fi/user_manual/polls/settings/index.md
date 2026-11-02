@@ -1,10 +1,10 @@
 ---
 title: Asetukset
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: d01973b781822d5c
   setting-up-a-proposal-or-poll: e63f3d4fd70d0824
@@ -34,21 +35,22 @@ generated:
   add-content: 0516e40c5da65837
   voting-options: 988f7a5cad12d9b0
   edit-voting-options: 60fbea7da813d115
-  opening-time: 26fec8b26fb3be0d
+  opening-time: 4a9cebf7458bc8d3
   more-settings: 52929ce7488bbd4c
   reminder: 63527fd989980fd2
   anonymous-voting: 076522c7bd57ad42
   vote-reason: b3539bc5be115312
-  hide-results: 31d718986ffd6bba
+  hide-results: 7716cb3ed1866061
   start-the-poll: a18ab01326475ff0
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
-  make-a-copy: 310fccb06391d89b
   notification-history: 678a71b017d1ba31
   export-poll: 9235fe3be4eea371
   print: 4756595e532bc054
   delete: 0cda8b7bcda6bdae
   save-bookmark: a8a3baefd1aba243
+  save-as-template: 3b67d0904a07c5e1
+  who-can-vote: 1098f8316bb9e01a
 title_source: 74a883a037bc227f
 title_generated: 8af481aba70ae8df
 needs_review:
@@ -129,11 +131,15 @@ Avaa muokkausikkuna äänestysvaihtoehdon vieressä olevalla kynäkuvakkeella:
 
 Oletuksena äänestys alkaa heti, kun luot kyselyn. Jos haluat ajastaa äänestyksen alkamaan myöhemmin, poista valinta kohdasta **Äänestys alkaa heti** ja valitse alkamispäivä ja kellonaika.
 
+Ajastettu äänestys voi alkaa noin minuutin viiveellä valitun ajan jälkeen.
+
 Näin voit varata aikaa keskustelulle ennen äänestyksen alkamista tai varmistaa, että kysely tai ehdotus on määritetty oikein ja ajastettu oikeaan hetkeen.
 
 Jos ryhmälläsi on esimerkiksi useita päätöksiä äänestettävänä tulevassa kokouksessa, voit valmistella kyselyt ja lisätä äänestäjät etukäteen sekä ajastaa kaikki kyselyt avautumaan äänestysajan alkaessa. Ihmiset näkevät kyselyt ennen niiden avautumista, mutta eivät voi äänestää etukäteen.
 
 Kun kyselyn alkamisaika on ajastettu, voit lisätä äänestäjiä ennen äänestyksen alkamista. Äänestäjille lähetetään ilmoitus äänestyksen alkaessa eikä silloin, kun heidät lisätään.
+
+Jos haluat aloittaa äänestyksen ennen ajastettua aikaa, valitse **Muokkaa kyselyä**, valitse **Äänestys alkaa heti** ja tallenna.
 
 **Ilmoita äänestäjille kyselyn avautumisesta:** Kun tämä on valittuna (oletus), kaikki äänestäjät saavat ilmoituksen äänestyksen alkamisesta. Poista valinta, jos haluat aloittaa äänestyksen lähettämättä ilmoituksia.
 
@@ -141,9 +147,18 @@ Kun kyselyn alkamisaika on ajastettu, voit lisätä äänestäjiä ennen äänes
 
 Varaa ihmisille riittävästi aikaa äänestää. Voit ajastaa ehdotuksen sulkeutumaan ennen kokousta tai välttää sen sulkeutumista viikonloppuna, jotta ihmiset saavat muistutuksen sopivaan aikaan. Tarvittaessa voit sulkea kyselyn etuajassa tai siirtää sulkemisaikaa myöhemmäksi.
 
-**Kuka voi äänestää?** Kutsu kaikki ryhmän jäsenet tai vain valitsemasi ihmiset.
+<!-- translation-section: who-can-vote -->
 
-Voit myöhemmin lisätä ihmisiä kyselyyn, jonka asetuksena on 'Vain kutsutut'. Jos kyselyn äänet yhdistetään äänestäjiin, voit myös poistaa ihmisiä, joilla ei enää pitäisi olla äänioikeutta. Anonyymistä kyselystä ei voi poistaa ihmisiä.
+### Kuka voi äänestää?
+
+Valitse, ketkä voivat äänestää kyselyssä.
+
+- **Kuka tahansa ryhmässä** (tai **Kuka tahansa ketjussa**): kaikki, joilla on pääsy kyselyyn, voivat äänestää, myös myöhemmin liittyvät ihmiset.
+- **Vain valitut henkilöt:** vain lisäämäsi ihmiset voivat äänestää. Käytä tätä, kun vain joidenkin jäsenten, kuten hallituksen tai toimikunnan jäsenten, on tarkoitus äänestää.
+
+![Kuka voi äänestää -asetus](../manage_voters/invited-people-only.png)
+
+Kun aloitat kyselyn, jonka asetuksena on **Vain valitut henkilöt**, **Hallitse äänestäjiä** avautuu, jotta voit lisätä äänestäjiä. Voit lisätä tai poistaa äänestäjiä myöhemmin. Katso [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -210,6 +225,8 @@ Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat nähdä ään
 
 Kun tulokset ovat piilossa äänestyksen päättymiseen asti, ääniin vastaaminen ja maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti. Ketjun jäsenet voivat silti kommentoida kyselyä ja vastata kommentteihin. Voit pidentää äänestysaikaa kyselyn ollessa avoinna, mutta et voi avata kyselyä uudelleen sen sulkeuduttua.
 
+Henkilöt, joilla on oikeus muokata kyselyä, voivat muuttaa sen tietoja ja asetuksia, kuten anonyymiä äänestystä ja tulosten näkyvyyttä, ennen äänestyksen alkamista. Kun äänestys alkaa, anonyymiyttä ei voi enää muuttaa eikä sulkeutumiseen asti piilotettuja tuloksia voi näyttää etuajassa.
+
 Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset ja äänten perustelut pysyvät piilossa kyselyn sulkeutumiseen asti. Tavalliset kommentit ovat edelleen saatavilla ketjussa, haussa ja vienneissä.
 
 Anonyymit kyselyt piilottavat tulokset aina äänestyksen päättymiseen asti. STV-vaalit-mallissa anonyymi äänestys on oletusarvoisesti käytössä.
@@ -233,11 +250,13 @@ Avaa kyselyn oikeassa alakulmassa oleva kolmen pisteen valikko.
 
 Valitse **Muokkaa kyselyä**, kun haluat muokata kyselyn sisältöä tai asetuksia.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Tee kopio
+### Tallenna mallina
 
-Valitse **Tee kopio**, kun haluat luoda uuden kyselyn nykyisen kyselyn ja sen asetusten pohjalta.
+Valitse kyselyn toimintovalikosta **Tallenna mallina**, kun haluat käyttää sen sisältöä, äänestysvaihtoehtoja, selityksiä ja asetuksia uudelleen. Tarkista esitäytetty mallilomake, anna mallille nimi ja alaotsikko ja valitse **Tallenna mallipohja**. Ryhmän jäsenet voivat sitten valita mallin aloittaessaan uuden kyselyn.
+
+Ryhmän ylläpitäjät voivat tallentaa malleja. Myös jäsenet voivat tallentaa niitä, kun **Jäsenet voivat luoda malleja** on käytössä ryhmän käyttöoikeusasetuksissa. Lisätietoja on sivulla [Kyselymallit](/en/user_manual/polls/poll_templates).
 
 <!-- translation-section: notification-history -->
 

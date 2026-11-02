@@ -1,15 +1,15 @@
 ---
 title: תבניות דיון
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 2de8cdb647d52405
   how-templates-are-used: c730af8c0eaa7e91
   choose-who-is-notified-by-default: dedd35414799be81
-  template-settings: 9121e95ac535b07d
+  template-settings: caaee04ddda34d8e
   example-bottle-trial-review: d093b316f00f3a45
   create-a-template: 68d073e03c3eb111
   manage-the-template-list: aab80a87976e6f19
@@ -29,11 +30,11 @@ generated:
   let-members-create-templates: 2f7c3ac8d27f7901
   templates-for-non-members: 1182a4ed4ee8e983
   related: 0c5b80ca8ca54dd8
+  save-an-existing-discussion-as-a-template: 7eeb979ba5da18aa
 title_source: 5ac608aa42806d13
 title_generated: 659bf27b5fab26d7
 needs_review:
   introduction: use "החלטה" instead of "דיון" for "decision"
-  template-settings: use "החלטה" instead of "דיון" for "decision"
   create-a-template: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
@@ -96,8 +97,9 @@ needs_review:
 - **הקשר**: הטקסט הראשוני של הדיון. ניתן להשתמש בכותרות, בשאלות או בקישורים כדי להנחות את הכתיבה.
 - **הזמן**: האם להזמין את כולם בקבוצה כברירת מחדל. ראו [בחירת האנשים שיקבלו הודעה כברירת מחדל](#choose-who-is-notified-by-default).
 - **תבניות סקר**: סקרים שמוצעים לתהליך זה. הם מופיעים בטופס לפתיחת דיון חדש. הם גם מופיעים ראשונים בעת פתיחת סקר בדיון. הם אינם נפתחים אוטומטית.
-- **אפשר סקרים בו-זמניים**: האם יותר מסקר אחד יכול להיות פתוח בדיון באותו זמן.
+- **סקר אחד בלבד בכל פעם**: מניעת פתיחת סקר נוסף עד לסגירת הסקר הנוכחי. האפשרות אינה מסומנת כברירת מחדל בתבניות חדשות.
 - **מגבלת אורך התגובה**: הגדרה אופציונלית של האורך המרבי לתגובות.
+- **רק מנהלים יכולים להוסיף קבצים מצורפים**: הגבלת הוספת קבצים חדשים ותמונות בגוף הטקסט למנהלי השרשור ולמנהלי הקבוצה בדיונים שנפתחו מתבנית זו.
 
 יש להשתמש בכותרת ברירת מחדל רק כאשר היא תישאר מדויקת. אחרת, יש לכתוב כותרת לדוגמה שמנחה לציין את הסקירה, התקופה, המסמך או ההחלטה המסוימים.
 
@@ -116,6 +118,14 @@ needs_review:
 מנהלי הקבוצה יכולים לבחור באפשרות **תבנית חדשה** ברשימת התבניות. ניתן לבצע בחירה בדוגמה מהגלריה של Loomio או להתחיל מתבנית ריקה, ואז להתאים אותה ולשמור אותה.
 
 ניתן לחפש בגלריה או לסנן אותה. דוגמה מתווספת לקבוצה רק לאחר שמירתה.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### שמירת דיון קיים כתבנית
+
+יש לבחור באפשרות **שמירה כתבנית** מתפריט הפעולות שמתחת להקשר של הדיון. התבנית החדשה שומרת על הכותרת, ההקשר, התגיות והגדרות השרשור של הדיון. יש להוסיף כותרת משנה לתבנית, לבדוק את התוכן ולבחור באפשרות **שמור תבנית**. התבנית שנשמרה מופיעה ברשימת התבניות של הקבוצה.
+
+מנהלי הקבוצה יכולים להשתמש בפעולה זו. גם חברים יכולים להשתמש בה כאשר האפשרות **חברים יכולים ליצור תבניות** מופעלת. הפעולה זמינה לדיונים בקבוצה.
 
 <!-- translation-section: manage-the-template-list -->
 

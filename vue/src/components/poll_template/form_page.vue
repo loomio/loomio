@@ -2,6 +2,8 @@
 import Records from '@/shared/services/records';
 import PollTemplateForm from '@/components/poll_template/form';
 import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import PollTemplateService from '@/shared/services/poll_template_service';
 import { takeImportedTemplate } from '@/shared/helpers/template_file';
 
 export default {
@@ -25,10 +27,29 @@ export default {
   },
 
   created() {
-    let pollTemplateId, groupId, importedTemplate;
+    let pollTemplateId, groupId, importedTemplate, pollId;
     if ((pollTemplateId = parseInt(this.$route.params.id))) {
       Records.pollTemplates.findOrFetchById(pollTemplateId).then(pollTemplate => {
         this.pollTemplate = pollTemplate;
+      });
+    } else if ((pollId = parseInt(this.$route.query.poll_id))) {
+      Records.polls.findOrFetchById(pollId).then(async poll => {
+        if (poll.discardedAt || !PollTemplateService.canCreateTemplate(poll.group())) {
+          throw Object.assign(new Error('Forbidden'), {status: 403});
+        }
+        if (!poll.createdTopicItem()) {
+          const params = {poll_key: poll.key, kind: 'poll_created', per: 1};
+          // Embedded polls use the API's poll-focus path to locate their own item.
+          if (!poll.isTopicable()) { params.unread_or_newest = 1; }
+          await Records.topicItems.fetch({params});
+        }
+        this.group = poll.group();
+        this.pollTemplate = poll.buildTemplate();
+      }).catch(error => {
+        EventBus.$emit('pageError', error);
+        if (error.status === 403 && !Session.isSignedIn()) {
+          EventBus.$emit('openAuthModal');
+        }
       });
     } else if (
       (groupId = parseInt(this.$route.query.group_id)) &&

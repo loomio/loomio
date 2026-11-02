@@ -351,6 +351,7 @@ it:
       unredact: Ripristinare
       export_json: Esporta in formato JSON
       import_json: Importa JSON
+      save_as_template: Salva come modello
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -1923,6 +1924,8 @@ it:
     comment_length_max_help: Lasciare vuoto per non impostare alcun limite di argomenti
     comment_length_max_description: Incoraggiate commenti concisi impostando una lunghezza massima
     comment_length_max_hint: Numero massimo di caratteri per commento. Lasciare vuoto per nessun limite.
+    only_admins_can_add_attachments: Solo gli amministratori possono aggiungere allegati
+    only_one_poll_at_a_time: Un solo sondaggio alla volta
   delete_thread_form:
     title: Cancella discussione
     body: Sei sicuro/a di voler cancellare questa discussione?
@@ -2153,6 +2156,7 @@ it:
     pct_of_eligible_vote_weight: "% del peso dei voti aventi diritto"
     pct_of_vote_weight_cast: "% del peso dei voti espressi"
     pct_of_assigned_vote_weight: "% del peso dei voti assegnati"
+    reuse_voting_options_and_settings: I modelli permettono a chiunque nel tuo gruppo di riutilizzare opzioni di voto, spiegazioni e impostazioni. Controlla i contenuti di esempio prima di salvare, poi scegli il modello quando avvii un nuovo sondaggio
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

@@ -40,9 +40,7 @@ const discussion = computed(() => props.topic && props.topic.discussion());
 
 const userIsAdmin = computed(() => props.group.adminsInclude(Session.user()));
 
-const userCanCreateTemplates = computed(() => {
-  return userIsAdmin.value || (props.group.membersCanCreateTemplates && props.group.membersInclude(Session.user()));
-});
+const userCanCreateTemplates = computed(() => PollTemplateService.canCreateTemplate(props.group));
 
 const filters = computed(() => {
   const recommendedIcon = (discussionTemplate.value && discussionTemplate.value.pollTemplateKeysOrIds.length && 'mdi-star') || null;

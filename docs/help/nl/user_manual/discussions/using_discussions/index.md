@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 2ae4103e57fac588
   print: c4dc9ddef3a715d1
   markdown: 1947cf64bc1b5b02
-  thread-settings-and-display: c41128b0c18947a4
+  thread-settings-and-display: 68266432d7b18558
   pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
   move-a-thread: 6636c5b668239a0a
   lock-or-unlock-a-thread: 9bf7495059753889
@@ -191,6 +191,38 @@ Om iemand te verwijderen, open je het menu met drie puntjes (**⋯**) naast de n
 
 ![Meldingsgeschiedenis van de discussie](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Threadinstellingen
+
+Threadadmins en groepsadmins kunnen **Draadinstellingen** selecteren om de indeling van antwoorden te wijzigen en andere discussieopties in te stellen.
+
+![](thread_display.png)
+
+![Threadinstellingen met indeling, peilinglimieten, rechten voor bijlagen en een reactielengtelimiet](thread_layout_options.png)
+
+### Indeling
+
+Kies **Chronologisch** om items weer te geven in de volgorde waarin ze zijn geplaatst, of **Genesteld** om antwoorden te groeperen onder het item waarop ze reageren. Dit wijzigt de indeling voor iedereen in de thread.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Slechts één peiling tegelijk
+
+Als dit is aangevinkt, kunnen gebruikers pas een nieuwe peiling starten nadat de huidige peiling is gesloten. Voor nieuwe threads is dit standaard niet aangevinkt. Threads die vanuit een discussiesjabloon worden gestart, gebruiken de instelling van dat sjabloon.
+
+### Alleen admins kunnen bijlagen toevoegen
+
+Schakel deze instelling in zodat alleen threadadmins en groepsadmins nieuwe bestanden en afbeeldingen in de tekst kunnen toevoegen in de hele thread, ook in antwoorden op peilingen en reacties per e-mail. Bestaande bijlagen blijven beschikbaar en deelnemers kunnen hun tekst nog steeds bewerken of bijlagen verwijderen.
+
+Discussie- en peilingsjablonen kunnen deze instelling meegeven aan nieuwe threads. Zie [Discussiesjablonen](/en/user_manual/discussions/templates) en [Peilingsjablonen](/en/user_manual/polls/poll_templates).
+
+### Reactielengtelimiet
+
+Stel een maximumaantal tekens per reactie in om bijdragen beknopt te houden. Laat het veld leeg als je geen limiet wilt. De limiet geldt voor iedereen, ook voor admins.
+
 <!-- translation-section: actions -->
 
 ## Acties
@@ -288,18 +320,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 De koppen en labels gebruiken de taal die je hebt geselecteerd. Tekst die deelnemers hebben geschreven, blijft in de oorspronkelijke taal.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Threadinstellingen en weergave
-
-Groepsadmins kunnen **Draadinstellingen** selecteren om de indeling van antwoorden te wijzigen en andere discussieopties in te stellen.
-
-![](thread_display.png)
-
-Kies **Tijdlijn** om items weer te geven in de volgorde waarin ze zijn geplaatst, of **Met threads** om antwoorden te groeperen onder het item waarop ze antwoorden. Met de threadinstellingen bepaal je ook of meerdere peilingen tegelijk mogen lopen en kun je een maximale reactielengte instellen. Deze instellingen gelden voor iedereen in de discussie.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

@@ -153,6 +153,7 @@ es:
     direct_thread_anonymous_poll: Un hilo que contiene una encuesta anónima no se puede convertir en un hilo directo.
     invitation_rate_limit_reached_contact_support: Se ha alcanzado el límite diario de invitaciones. Póngase en contacto con el servicio de asistencia de inmediato.
     subscription_thread_limit_reached: Esta organización ha alcanzado su límite de hilos. Actualiza tu plan para seguir usando Loomio.
+    attachments_admin_only: Solo los admins del hilo y del grupo pueden añadir archivos adjuntos a este hilo
   group:
     error:
       handle_must_begin_with_parent_handle: Debe empezar con %{parent_handle}-

@@ -1,10 +1,10 @@
 ---
 title: Paramètres
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: ba7b949b80a72354
   setting-up-a-proposal-or-poll: ed8004c6ef8f091b
@@ -34,25 +35,24 @@ generated:
   add-content: 4931f40f13f0eaca
   voting-options: d1893c3bdfa74deb
   edit-voting-options: dfe67094a9cbd0cf
-  opening-time: 6f06b709acf58c46
+  opening-time: 3a78f68d4693f4ec
   more-settings: ea1e48c372fdea5d
   reminder: 31128268a2f87920
   anonymous-voting: 2c174276661756b4
   vote-reason: 4e8a95a3905977c2
-  hide-results: d6766d2c80135984
+  hide-results: 556f1f281afb78f7
   start-the-poll: ca61b5a2672e2066
   managing-polls: d4841c826f9ca251
   edit-poll: ed3ebb4902f5ff63
-  make-a-copy: baa297a7f304d98d
   notification-history: eb53d703cf1c8e5a
   export-poll: e44eea9d9839d374
   print: e4ad8ccc4ccfff16
   delete: 101eacf14a0a98be
   save-bookmark: d5b24c58cd7adffe
+  save-as-template: aa8558d6d0cba97a
+  who-can-vote: 4281a70fb65bbdaf
 title_source: 74a883a037bc227f
 title_generated: '01923df7a446c42f'
-needs_review:
-  opening-time: check the interface label "**Qui peut voter ?**" for "**Who can vote?**"
 ---
 
 <!-- translation-section: introduction -->
@@ -129,11 +129,15 @@ Utilisez l’icône de crayon à côté de l’option de vote pour ouvrir la fen
 
 Par défaut, le vote est ouvert immédiatement lorsque vous créez le sondage. Si vous souhaitez programmer l’ouverture du vote à une date ultérieure, décochez **Le vote est ouvert immédiatement** et choisissez une date et une heure d’ouverture.
 
+Le vote programmé peut s’ouvrir environ une minute après l’heure choisie.
+
 Cela permet de laisser du temps à la discussion avant l’ouverture du vote, ou de vérifier qu’un sondage ou une proposition est correctement configuré et programmé pour le moment voulu.
 
 Par exemple, si votre groupe doit voter sur plusieurs décisions lors d’une prochaine assemblée, vous pouvez préparer les sondages et ajouter les électeurs à l’avance, puis programmer leur ouverture au début de la période de vote. Les personnes peuvent consulter les sondages avant leur ouverture, mais ne peuvent pas voter à l’avance.
 
 Lorsqu’une heure d’ouverture est programmée pour un sondage, vous pouvez ajouter des électeurs avant l’ouverture du vote. Ils recevront une notification à l’ouverture du vote, plutôt qu’au moment de leur ajout.
+
+Pour ouvrir le vote avant l’heure prévue, sélectionnez **Modifier le sondage**, cochez **Le vote est ouvert immédiatement** et enregistrez.
 
 **Notifier les électeurs à l’ouverture du sondage :** Lorsque cette case est cochée (par défaut), tous les électeurs reçoivent une notification à l’ouverture du vote. Décochez-la si vous souhaitez ouvrir le vote sans envoyer de notifications.
 
@@ -141,9 +145,18 @@ Lorsqu’une heure d’ouverture est programmée pour un sondage, vous pouvez aj
 
 Laissez suffisamment de temps aux personnes pour voter. Vous pouvez programmer la clôture de la proposition avant une réunion ou éviter une clôture pendant le week-end, afin que les personnes reçoivent un rappel au moment opportun. Si nécessaire, vous pouvez clôturer le sondage plus tôt ou repousser l’heure de clôture.
 
-**Qui peut voter ?** Invitez toutes les personnes du groupe ou uniquement certaines personnes de votre choix.
+<!-- translation-section: who-can-vote -->
 
-Vous pouvez ajouter des personnes ultérieurement à un sondage réservé aux personnes invitées. Pour les sondages où les votes sont identifiés, vous pouvez également retirer les personnes qui ne doivent plus avoir le droit de voter. Il n’est pas possible de retirer des personnes d’un sondage anonyme.
+### Qui peut voter ?
+
+Choisissez qui peut voter dans le sondage.
+
+- **Quelqu'un dans le groupe** (ou **Toute personne dans le fil**) : toutes les personnes ayant accès au sondage peuvent voter, y compris celles qui rejoignent le groupe ou le fil plus tard.
+- **Personnes sélectionnées uniquement :** seules les personnes que vous ajoutez peuvent voter. Utilisez ce paramètre lorsque seuls certains membres doivent voter, par exemple les membres d’un conseil d’administration ou d’un comité.
+
+![Paramètre Qui peut voter](../manage_voters/invited-people-only.png)
+
+Après le démarrage d’un sondage **Personnes sélectionnées uniquement**, **Gérer les électeurs** s’ouvre pour vous permettre d’ajouter des électeurs. Vous pouvez ajouter ou retirer des électeurs ultérieurement. Consultez [Gérer les électeurs](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -210,6 +223,8 @@ Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, l
 
 Lorsque les résultats sont masqués jusqu’à la clôture du vote, les réponses aux votes et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage. Les membres du fil peuvent toujours commenter le sondage et répondre aux commentaires. Vous pouvez reporter la date de clôture tant que le sondage est ouvert, mais vous ne pouvez pas le rouvrir après sa clôture.
 
+Les personnes autorisées à modifier un sondage peuvent modifier ses détails et ses paramètres, notamment le vote anonyme et la visibilité des résultats, avant l’ouverture du vote. Une fois le vote ouvert, le paramètre d’anonymat ne peut plus être modifié et les résultats masqués jusqu’à la clôture ne peuvent pas être révélés à l’avance.
+
 L’impression et les exports, y compris au format Markdown, ignorent le paramètre « Masquer les résultats jusqu’à ce qu’un vote soit exprimé » et incluent les votes et les réponses. Les résultats et les raisons des votes masqués jusqu’à la clôture restent masqués jusqu’à la clôture du sondage. Les commentaires ordinaires restent accessibles dans le fil, la recherche et les exports.
 
 Les sondages anonymes masquent toujours les résultats jusqu’à la clôture du vote. Le modèle Élection STV active le vote anonyme par défaut.
@@ -233,11 +248,13 @@ Ouvrez le menu à trois points en bas à droite du sondage.
 
 Utilisez **Modifier le sondage** pour modifier le contenu ou les paramètres du sondage.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Faire une copie
+### Enregistrer comme modèle
 
-Utilisez **Faire une copie** pour créer un nouveau sondage en prenant le sondage actuel et ses paramètres comme point de départ.
+Utilisez **Enregistrer comme modèle** dans le menu d’actions d’un sondage pour réutiliser son contenu, ses options de vote, ses explications et ses paramètres. Vérifiez le formulaire de modèle prérempli, donnez un nom et un sous-titre au modèle, puis sélectionnez **Enregistrer le modèle**. Les personnes du groupe peuvent ensuite le choisir lors de la création d’un nouveau sondage.
+
+Les administrateurs du groupe peuvent enregistrer des modèles. Les membres peuvent également le faire lorsque **Les membres peuvent créer des modèles** est activé dans les permissions du groupe. Consultez [Modèles de sondage](/en/user_manual/polls/poll_templates) pour plus de détails.
 
 <!-- translation-section: notification-history -->
 

@@ -1,10 +1,10 @@
 ---
 title: Configurações
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 9e65c25dba50f2d8
   setting-up-a-proposal-or-poll: dfd4131bed6df169
@@ -34,21 +35,22 @@ generated:
   add-content: c438022ad610d57a
   voting-options: ce27d4aa22b6e72a
   edit-voting-options: 649d9c3d8156c05d
-  opening-time: 6b999c1315b28e29
+  opening-time: 77974fabab1393ac
   more-settings: f868cbc69693539f
   reminder: 79c42ede0784f24a
   anonymous-voting: c2727333ef2dbabc
   vote-reason: 70f2e2565d94b6d8
-  hide-results: e637a8d5be5becaa
+  hide-results: c8406da2ec4cd4df
   start-the-poll: 2230fbd6a77fa9f6
   managing-polls: 301e2f77ba8cb7da
   edit-poll: e8a3a23ee27ba8e5
-  make-a-copy: '0668e2a371826ac7'
   notification-history: cbcb5b02bfc2d579
   export-poll: 591f9cc02be87cb2
   print: 26126b674c3fbb7e
   delete: 1e0a0d0a1becaf73
   save-bookmark: a96ae6e16f6024d9
+  save-as-template: 2f1f681d0731b2a3
+  who-can-vote: 1cb1fb6fe9b58bc4
 title_source: 74a883a037bc227f
 title_generated: 76b0fb6ad18939ac
 ---
@@ -127,11 +129,15 @@ Use o ícone de lápis ao lado da opção de voto para abrir a janela de ediçã
 
 Por padrão, a votação começa imediatamente quando você cria a enquete. Se quiser agendar o início da votação para mais tarde, desmarque **A votação começa imediatamente.** e selecione uma data e um horário de abertura.
 
+A votação agendada pode levar cerca de um minuto para começar após o horário selecionado.
+
 Isso é útil para dar tempo à discussão antes do início da votação ou para garantir que uma enquete ou proposta esteja configurada corretamente e agendada para o momento adequado.
 
 Por exemplo, se seu grupo tiver várias decisões para votar em uma próxima assembleia, você pode preparar as enquetes e adicionar os eleitores com antecedência, depois agendar todas para abrir quando o período de votação começar. As pessoas podem ver as enquetes antes da abertura, mas não podem votar antecipadamente.
 
 Quando uma enquete tem um horário de abertura agendado, você pode adicionar eleitores antes do início da votação. Os eleitores receberão uma notificação quando a votação começar, em vez de quando forem adicionados.
+
+Para iniciar a votação antes do horário agendado, selecione **Editar enquete de escolha**, marque **A votação começa imediatamente.** e salve.
 
 **Notificar eleitores quando a enquete abrir:** Quando esta opção está marcada (padrão), todos os eleitores recebem uma notificação quando a votação começa. Desmarque esta opção se quiser iniciar a votação sem enviar notificações.
 
@@ -139,9 +145,18 @@ Quando uma enquete tem um horário de abertura agendado, você pode adicionar el
 
 Dê tempo suficiente para as pessoas votarem. Você pode programar a proposta para encerrar antes de uma reunião ou evitar o encerramento durante um fim de semana, para que as pessoas recebam um lembrete em tempo hábil. Se necessário, você pode encerrar a enquete antecipadamente ou adiar o horário de encerramento.
 
-**Quem pode votar?** Convide todas as pessoas do grupo ou apenas pessoas específicas.
+<!-- translation-section: who-can-vote -->
 
-Você pode adicionar pessoas posteriormente a uma enquete configurada como 'Somente pessoas convidadas'. Nas enquetes identificadas, você também pode remover pessoas que não devem mais ter direito a votar. Não é possível remover pessoas de uma enquete anônima.
+### Quem pode votar?
+
+Escolha quem pode votar na enquete.
+
+- **Alguém no grupo** (ou **Qualquer pessoa no tópico**): todas as pessoas com acesso à enquete podem votar, incluindo aquelas que entrarem depois.
+- **Apenas para pessoas selecionadas:** somente as pessoas que você adicionar podem votar. Use esta opção quando apenas alguns membros devem votar, como um conselho ou um comitê.
+
+![Configuração de quem pode votar](../manage_voters/invited-people-only.png)
+
+Depois que você inicia uma enquete **Apenas para pessoas selecionadas**, a tela **Gerenciar eleitores** é aberta para que você possa adicionar eleitores. Você pode adicionar ou remover eleitores depois. Consulte [Gerenciar eleitores](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -208,6 +223,8 @@ Quando os resultados ficam ocultos até votar, as pessoas podem ver as opções 
 
 Quando os resultados ficam ocultos até o encerramento da votação, as respostas aos votos e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada. Os membros da conversa ainda podem comentar na enquete e responder aos comentários. Você pode prorrogar o prazo de encerramento enquanto a enquete estiver aberta, mas não pode reabri-la depois de encerrada.
 
+Pessoas com permissão para editar uma enquete podem alterar seus detalhes e configurações, incluindo a votação anônima e a visibilidade dos resultados, antes do início da votação. Depois que a votação começa, a configuração de anonimato não pode ser alterada e os resultados ocultos até o encerramento não podem ser revelados antes desse momento.
+
 A impressão e as exportações, incluindo Markdown, ignoram a configuração "ocultar resultados até votar" e incluem votos e respostas. Os resultados e os motivos dos votos ocultos até o encerramento permanecem ocultos até a enquete ser encerrada. Os comentários comuns permanecem disponíveis na conversa, na busca e nas exportações.
 
 Enquetes anônimas sempre ocultam os resultados até o encerramento da votação. O modelo de eleição STV habilita a votação anônima por padrão.
@@ -231,11 +248,13 @@ Abra o menu de três pontos no canto inferior direito da enquete.
 
 Use **Editar enquete de escolha** para editar o conteúdo ou as configurações da enquete.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Fazer uma cópia
+### Salvar como modelo
 
-Use **Faça uma cópia** para criar uma nova enquete usando a enquete atual e suas configurações como ponto de partida.
+Use **Salvar como modelo** no menu de ações de uma enquete para reutilizar seu conteúdo, opções de voto, explicações e configurações. Revise o formulário de modelo preenchido previamente, dê um nome e um subtítulo ao modelo e selecione **Salvar modelo**. As pessoas do grupo poderão então escolhê-lo ao iniciar uma nova enquete.
+
+Admins do grupo podem salvar modelos. Os membros também podem salvá-los quando **Os membros podem criar modelos.** estiver habilitado nas permissões do grupo. Consulte [Modelos de enquete](/en/user_manual/polls/poll_templates) para mais detalhes.
 
 <!-- translation-section: notification-history -->
 

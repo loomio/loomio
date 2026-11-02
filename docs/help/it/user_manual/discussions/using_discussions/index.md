@@ -1,10 +1,10 @@
 ---
 title: Usare le discussioni
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 3734d406e6d88519
   print: 9906ecce47bb8d69
   markdown: b4bc4940294e6465
-  thread-settings-and-display: 8f4144f396e2a271
+  thread-settings-and-display: f515463ad98485ff
   pin-or-unpin-a-thread: 17556b3b4c703f8f
   move-a-thread: 4f09c504b12c910b
   lock-or-unlock-a-thread: f2400d60f1e08e8b
@@ -189,6 +189,38 @@ Per rimuovere una persona, apri il menu con i tre puntini (**⋯**) accanto al s
 
 ![Cronologia delle notifiche della discussione](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Impostazioni della conversazione
+
+Gli amministratori della conversazione e gli amministratori del gruppo possono selezionare **Impostazioni del thread** per cambiare la disposizione delle risposte e configurare altre opzioni della discussione.
+
+![](thread_display.png)
+
+![Impostazioni della conversazione con disposizione, limiti dei sondaggi, permessi per gli allegati e limite di lunghezza dei commenti](thread_layout_options.png)
+
+### Disposizione
+
+Scegli **Cronologico** per elencare gli elementi nell'ordine in cui sono stati pubblicati, oppure **Nidificato** per raggruppare le risposte sotto l'elemento a cui rispondono. Questa modifica cambia la disposizione per tutti i partecipanti alla conversazione.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Un solo sondaggio alla volta
+
+Quando questa opzione è selezionata, gli utenti non possono avviare un altro sondaggio finché quello attuale non si è chiuso. Per le nuove conversazioni, questa opzione non è selezionata per impostazione predefinita. Le conversazioni avviate da un modello di discussione usano l'impostazione del modello.
+
+### Solo gli amministratori possono aggiungere allegati
+
+Attiva questa impostazione per consentire solo agli amministratori della conversazione e agli amministratori del gruppo di aggiungere nuovi file e immagini nel testo in tutta la conversazione, comprese le risposte ai sondaggi e le risposte via email. Gli allegati esistenti restano disponibili e i partecipanti possono continuare a modificare il proprio testo o rimuovere allegati.
+
+I modelli di discussione e di sondaggio possono fornire questa impostazione per le nuove conversazioni. Consulta [Modelli di discussione](/en/user_manual/discussions/templates) e [Modelli di sondaggio](/en/user_manual/polls/poll_templates).
+
+### Limite di lunghezza dei commenti
+
+Imposta un numero massimo di caratteri per commento per mantenere i contributi concisi. Lascia il campo vuoto per non applicare alcun limite. Il limite si applica a tutti, compresi gli amministratori.
+
 <!-- translation-section: actions -->
 
 ## Azioni
@@ -286,18 +318,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 I titoli e le etichette usano la lingua che hai selezionato. I contenuti scritti dai partecipanti rimangono nella lingua originale.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Impostazioni e visualizzazione della conversazione
-
-Gli amministratori del gruppo possono selezionare **Impostazioni del thread** per cambiare la disposizione delle risposte e configurare altre opzioni della discussione.
-
-![](thread_display.png)
-
-Scegli **Cronologia** per elencare gli elementi nell'ordine in cui sono stati pubblicati, oppure **In thread** per raggruppare le risposte sotto l'elemento a cui rispondono. Le impostazioni della conversazione controllano anche se più sondaggi possono essere attivi contemporaneamente e permettono di impostare una lunghezza massima dei commenti. Queste impostazioni si applicano a tutti i partecipanti alla discussione.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

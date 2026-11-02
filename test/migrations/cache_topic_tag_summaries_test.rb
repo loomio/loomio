@@ -6,7 +6,7 @@ class CacheTopicTagSummariesTest < ActiveSupport::TestCase
 
   test 'schema migration defers rebuilding kept tag summaries until the background backfill' do
     topic = topics(:discussion_topic)
-    topic.update!(allow_concurrent_polls: true)
+    topic.update!(polls_one_at_a_time: false)
     actor = users(:admin)
     root = topic.topicable.created_topic_item
     comment = CommentService.create(comment: Comment.new(parent: topic.topicable, body: 'Tagged reply'), actor: actor)

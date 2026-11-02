@@ -36,10 +36,13 @@ Use these framing defaults unless the page needs a deliberate exception:
 
 - Be generous with context. Prefer a larger area with the subject spotlighted over a tight crop around the subject, so the reader can see where it sits on the page. A discussion or proposal example usually needs the full central `.strand-card`, but not the application drawer, top bar, or thread drawer.
 - Do not include the application toolbar or title bar unless the screenshot also includes an application drawer that needs it for orientation.
+- Never capture a button, button row, field, or menu on its own. A strip of controls tells the reader what the buttons look like but not where they are. Capture the surface the control belongs to, such as the whole poll card, comment, form, or modal, and spotlight the control.
 - When the subject is a control inside a form or modal, show the whole form or modal and spotlight the control. If the form is too long for that, show about one screen of the form around the control, with the control spotlighted. Do not crop so tightly that the reader cannot identify where the control belongs.
 - Give compact editor, comment, task, and menu captures about 32 pixels of external padding. Adjust individual images when an overlay or unusually shaped target needs more or less space.
 - For comments, replies, reactions, unread items, and move-item states, prefer a full strand-card capture with the relevant item or composer spotlighted.
 - When documenting a trigger and its menu, show both the activator and the open menu. Crop after the final meaningful action or control instead of retaining a large blank tail.
+- Do not capture large blank areas. If a modal or form has a fixed or minimum height that leaves it mostly empty, raise it with the user as a UI issue: letting the modal take its natural height usually fixes both the app and the screenshot. Do not hide the problem by resizing elements in the spec.
+- Do not crop through an overlay, field label, or dialog title. If a menu would be clipped, enlarge the capture region or the viewport rather than shifting the overlay.
 - Generate screenshots in light mode unless the documentation is specifically teaching theme selection or dark mode.
 - Hide `.flash-root` by default so a previous operation's snackbar does not leak into an unrelated image. Set `showFlash: true` only when the flash message is the subject of the screenshot.
 

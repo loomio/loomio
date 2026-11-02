@@ -557,7 +557,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             help-link.ml-1(path="user_manual/polls/anonymous_voting")
           v-checkbox.poll-settings-anonymous(
             hide-label
-            :disabled="!poll.isNew()"
+            :disabled="!!poll.openedAt"
             v-model="poll.anonymous"
             @update:model-value="setAnonymousVoting"
             :label="$t('poll_common_form.votes_are_anonymous')")
@@ -625,7 +625,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             :label="$t('poll_common_card.hide_results')"
             :items="hideResultsItems"
             v-model="poll.hideResults"
-            :disabled="poll.anonymous || (!poll.isNew() && currentHideResults == 'until_closed')"
+            :disabled="poll.anonymous || (!!poll.openedAt && currentHideResults == 'until_closed')"
           )
 
         template(v-if="poll.config().can_shuffle_options")
@@ -666,35 +666,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="!poll.topicId")
           v-divider.mb-4
           .text-body-large.pb-2(v-t="'thread_arrangement_form.thread_settings'")
-          v-list(bg-color="transparent")
-            v-list-item(
-              lines="two"
-              class="px-0"
-              :title="$t('thread_arrangement_form.allow_comments')"
-              :subtitle="$t('thread_arrangement_form.allow_comments_description')"
-              @click="poll.allowComments = !poll.allowComments"
-            )
-              template(v-slot:prepend)
-                v-checkbox-btn(v-model="poll.allowComments" @click.stop)
-            v-list-item(
-              lines="two"
-              class="px-0"
-              :title="$t('thread_arrangement_form.allow_reactions')"
-              :subtitle="$t('thread_arrangement_form.allow_reactions_description')"
-              @click="poll.allowReactions = !poll.allowReactions"
-            )
-              template(v-slot:prepend)
-                v-checkbox-btn(v-model="poll.allowReactions" @click.stop)
-          .text-body-large.pt-4.pb-2(v-t="'thread_arrangement_form.comment_length_max'")
-          .text-body-medium.pb-4.text-medium-emphasis(v-t="'thread_arrangement_form.comment_length_max_description'")
-          v-number-input(
-            v-model="poll.commentLengthMax"
-            :hint="$t('thread_arrangement_form.comment_length_max_hint')"
-            placeholder="e.g. 500"
-            persistent-hint
-            :min="1"
-            control-variant="hidden"
-          )
+          topic-settings-fields(:model="poll" kind="poll")
 
         common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 

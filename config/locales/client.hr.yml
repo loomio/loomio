@@ -343,6 +343,7 @@ hr:
       unredact: Vratiti
       export_json: Izvoz JSON-a
       import_json: Uvoz JSON-a
+      save_as_template: Spremite kao predložak
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -1899,6 +1900,8 @@ hr:
     comment_length_max_help: Ostavite prazno ako nema ograničenja tema
     comment_length_max_description: Potaknite sažete komentare postavljanjem maksimalne duljine
     comment_length_max_hint: Maksimalan broj znakova po komentaru. Ostavite prazno ako nema ograničenja.
+    only_admins_can_add_attachments: Samo admini mogu dodavati privitke
+    only_one_poll_at_a_time: Samo jedna anketa istovremeno
   delete_thread_form:
     title: Izbriši nit
     body: Jeste li sigurni da želite izbrisati ovu nit?
@@ -2129,6 +2132,7 @@ hr:
     pct_of_eligible_vote_weight: "% težine glasova birača s pravom glasa"
     pct_of_vote_weight_cast: "% težine danih glasova"
     pct_of_assigned_vote_weight: "% dodijeljene težine glasova"
+    reuse_voting_options_and_settings: Predlošci svima u vašoj grupi omogućuju ponovnu upotrebu opcija za glasanje, objašnjenja i postavki. Pregledajte ogledni sadržaj prije spremanja, a zatim odaberite predložak pri pokretanju nove ankete
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:

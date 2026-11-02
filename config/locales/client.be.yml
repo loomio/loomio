@@ -378,6 +378,7 @@ be:
       zoom: Маштаб
       align: Выраўнаваць
       customize: Наладзіць
+      save_as_template: Захаваць як шаблон
     formatting_help:
       label: Фарматаванне
       title: Даведайцеся, як выкарыстоўваць Markdown для фарматавання тэксту
@@ -2001,6 +2002,8 @@ be:
     allow_reactions_description: Дазволіць удзельнікам дадаваць рэакцыі ў выглядзе эмодзі
     topic_settings: Налады тэмы
     thread_settings: Налады тэмы
+    only_admins_can_add_attachments: Толькі адміністратары могуць дадаваць укладанні
+    only_one_poll_at_a_time: Толькі адно апытанне адначасова
   delete_discussion_form:
     body: Вы ўпэўненыя, што хочаце выдаліць гэтую тэму?
     discussion_deleted: Абмеркаванне выдалена
@@ -2252,6 +2255,7 @@ be:
     pct_of_eligible_vote_weight: "% вагі голасу выбаршчыкаў з правам голасу"
     pct_of_vote_weight_cast: "% скарыстанай вагі голасу"
     pct_of_assigned_vote_weight: "% прызначанай вагі голасу"
+    reuse_voting_options_and_settings: Шаблоны дазваляюць усім у вашай групе паўторна выкарыстоўваць варыянты галасавання, тлумачэнні і налады. Праверце змесціва прыкладу перад захаваннем, затым выберыце шаблон пры стварэнні новага апытання
   poll_common_attachment_form:
     label: Укладанні
   poll_common_add_option:

@@ -1,10 +1,10 @@
 ---
 title: Beállítások
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: 3f46afe20f32f7fd
   setting-up-a-proposal-or-poll: 156be3b6b9961477
@@ -34,21 +35,22 @@ generated:
   add-content: f2515c65da92b653
   voting-options: 489cc319033ffdff
   edit-voting-options: 82c565cdbfc42031
-  opening-time: 5cca34e4c90f80ac
+  opening-time: ff93781329629cc3
   more-settings: cb3edf4e3a9ca244
   reminder: 8494c0e55397b4f7
   anonymous-voting: 25122b6c2fa90792
   vote-reason: 33520d3f5b8d0505
-  hide-results: 2f2fbfed5943e292
+  hide-results: 50772d28380245e3
   start-the-poll: 3be52bb7323c5a8b
   managing-polls: 8810d3ffe4b09bf2
   edit-poll: 2158fe8e324cdec9
-  make-a-copy: 3756bf7c4c80f5c5
   notification-history: dbfad733f9e1a396
   export-poll: 821243733130968d
   print: 87bcba63e76e982c
   delete: 7634f55bb4d5c467
   save-bookmark: 177d22e6e3259f71
+  save-as-template: 278d2b7395c6cdb3
+  who-can-vote: 7af32b5918f34bed
 title_source: 74a883a037bc227f
 title_generated: 109d0914682650db
 ---
@@ -128,11 +130,15 @@ Kattints a szavazási lehetőség melletti ceruza ikonra a szerkesztőablak megn
 
 Alapértelmezés szerint a szavazás azonnal megnyílik, amikor létrehozod. Ha későbbi időpontra szeretnéd ütemezni a megnyitást, vedd ki a jelölést az **A szavazás azonnal megnyílik** jelölőnégyzetből, és válaszd ki a megnyitás dátumát és időpontját.
 
+Az ütemezett szavazás megnyitása a kiválasztott időpont után körülbelül egy percet vehet igénybe.
+
 Ez időt adhat a beszélgetésre a szavazás megnyitása előtt, vagy segíthet biztosítani, hogy a szavazás vagy javaslat megfelelően legyen beállítva, és a megfelelő időpontban induljon.
 
 Ha például a csoportodnak több döntésről kell szavaznia egy közelgő gyűlésen, előre elkészítheted a szavazásokat és hozzáadhatod a szavazókat, majd mindegyik megnyitását a szavazási időszak kezdetére ütemezheted. Az emberek a megnyitás előtt is láthatják a szavazásokat, de korábban nem szavazhatnak.
 
 Ha a szavazásnak ütemezett megnyitási időpontja van, már a megnyitás előtt hozzáadhatod a szavazókat. A szavazók a szavazás megnyitásakor kapnak értesítést, nem a hozzáadásukkor.
+
+Ha az ütemezett időpont előtt szeretnéd megnyitni a szavazást, válaszd ki az **A szavazás szerkesztése** menüpontot, jelöld be az **A szavazás azonnal megnyílik** jelölőnégyzetet, és mentsd a módosítást.
 
 **Szavazók értesítése a szavazás megnyitásakor:** Ha be van jelölve (ez az alapértelmezés), minden szavazó értesítést kap a szavazás megnyitásakor. Vedd ki a jelölést, ha értesítések küldése nélkül szeretnéd megnyitni a szavazást.
 
@@ -140,9 +146,18 @@ Ha a szavazásnak ütemezett megnyitási időpontja van, már a megnyitás előt
 
 Adj elegendő időt az embereknek a szavazásra. Úgy is időzítheted a javaslatot, hogy egy találkozó előtt záruljon le, vagy elkerülheted a hétvégi lezárást, hogy az emberek megfelelő időben kapjanak emlékeztetőt. Szükség esetén a tervezett időpont előtt lezárhatod a szavazást, vagy későbbre tolhatod a lezárást.
 
-**Ki szavazhat?** Hívd meg a csoport minden tagját, vagy csak az általad kiválasztott embereket.
+<!-- translation-section: who-can-vote -->
 
-A „Csak meghívottak” szavazáshoz később is hozzáadhatsz embereket. A névvel leadott szavazatokat használó szavazásokból el is távolíthatod azokat, akik már nem jogosultak szavazni. Névtelen szavazásból nem lehet eltávolítani embereket.
+### Ki szavazhat?
+
+Válaszd ki, ki szavazhat a szavazáson.
+
+- **Bárki a csoportban** (vagy **Bárki a témában**): mindenki szavazhat, aki hozzáfér a szavazáshoz, beleértve a később csatlakozókat is.
+- **Csak kiválasztott személyek:** csak azok szavazhatnak, akiket hozzáadsz. Akkor használd ezt, ha csak bizonyos tagoknak kell szavazniuk, például egy vezetőség vagy bizottság tagjainak.
+
+![Ki szavazhat beállítás](../manage_voters/invited-people-only.png)
+
+Miután elindítasz egy **Csak kiválasztott személyek** beállítású szavazást, megnyílik a **Szavazók kezelése**, ahol hozzáadhatod a szavazókat. Később is hozzáadhatsz vagy eltávolíthatsz szavazókat. Lásd: [Szavazók kezelése](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -211,6 +226,8 @@ Ha az eredmények a szavazat leadásáig rejtve vannak, az emberek a szavazatuk 
 
 Ha az eredmények a szavazás lezárásáig rejtve vannak, a lezárásig nem lehet válaszolni a szavazatokra vagy említéseket használni a szavazatok indoklásában. A szál tagjai továbbra is hozzászólhatnak a szavazáshoz és válaszolhatnak a hozzászólásokra. Amíg a szavazás nyitva van, meghosszabbíthatod a határidejét, de a lezárása után nem nyithatod újra.
 
+Akik jogosultak a szavazás szerkesztésére, a szavazás megnyílása előtt módosíthatják annak részleteit és beállításait, beleértve a névtelen szavazást és az eredmények láthatóságát. A szavazás megnyílása után a névtelenség beállítása már nem módosítható, és a lezárásig rejtett eredmények nem fedhetők fel a lezárás előtt.
+
 A nyomtatás és az exportálás, beleértve a Markdown formátumot is, figyelmen kívül hagyja az „Eredmények elrejtése a szavazat leadásáig” beállítást, és tartalmazza a szavazatokat és a válaszokat. A lezárásig rejtett eredmények és a szavazatok indoklásai a szavazás lezárásáig rejtve maradnak. A szokásos hozzászólások továbbra is elérhetők a szálban, a keresésben és az exportált adatokban.
 
 A névtelen szavazások eredményei mindig rejtve maradnak a szavazás lezárásáig. Az STV-választás sablon alapértelmezés szerint engedélyezi a névtelen szavazást.
@@ -234,11 +251,13 @@ Nyisd meg a szavazás jobb alsó sarkában található hárompontos menüt.
 
 Kattints az **A szavazás szerkesztése** menüpontra a szavazás tartalmának vagy beállításainak szerkesztéséhez.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Másolat készítése
+### Mentés sablonként
 
-Kattints a **Készíteni egy másolatot** menüpontra, hogy új szavazást hozz létre a jelenlegi szavazás és annak beállításai alapján.
+Válaszd ki a **Mentés sablonként** menüpontot a szavazás műveleti menüjében, hogy újra felhasználhasd a tartalmát, a szavazási lehetőségeit, a magyarázatait és a beállításait. Ellenőrizd az előre kitöltött sablonűrlapot, adj nevet és alcímet a sablonnak, majd válaszd ki a **Sablon mentése** gombot. A csoport tagjai ezután kiválaszthatják a sablont, amikor új szavazást indítanak.
+
+A csoportadminok menthetnek sablonokat. A tagok is menthetnek sablonokat, ha a csoport jogosultsági beállításaiban engedélyezve van az **A tagok sablonokat hozhatnak létre** beállítás. Részletekért lásd a [Szavazási sablonok](/en/user_manual/polls/poll_templates) oldalt.
 
 <!-- translation-section: notification-history -->
 

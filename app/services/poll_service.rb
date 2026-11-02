@@ -37,6 +37,7 @@ class PollService
   def self.create(params:, actor:, &on_topic_item)
     poll = build(params: params, actor: actor)
     actor.ability.authorize!(:create, poll)
+    AttachmentPermissionService.authorize!(record: poll, actor: actor)
     poll.tags_pending = TagService.permitted_tag_names(poll.group, poll.tags_pending, actor)
     return poll unless TopicService.validate_topicable(poll)
 
@@ -83,22 +84,27 @@ class PollService
     )
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS).slice(*DiscussionService::TOPIC_ATTRS_UPDATE)
-    poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
-
-    # check again, because the group id could be updated to a untrusted group
-    actor.ability.authorize! :update, poll
-
-    poll.prioritise_poll_options!
-
-    unless poll.valid?
-      Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
-      return poll
-    end
+    poll.topic_id = params[:topic_id] if params.key?(:topic_id)
 
     was_opened = false
     topic_item = poll.with_topic_lock do |current_poll|
       actor.ability.authorize! :update, current_poll
+      # Apply edits to current state under the opening/voting lock, so a form
+      # loaded before opening cannot change frozen settings after it opens.
+      poll.reload
+      AttachmentPermissionService.authorize_topic_settings!(topic: poll.topic, params: topic_params, actor: actor)
+      AttachmentPermissionService.authorize!(record: poll, actor: actor, params: params)
+      poll.assign_attributes_and_files(params.except(:poll_template_id, :poll_template_key))
+      if poll.will_save_change_to_anonymous? && poll.anonymous?
+        poll.assign_attributes(hide_results: :until_closed, stance_reason_required: :disabled,
+          notify_on_closing_soon: :voters_uncast, weighted_voting: false)
+      end
       actor.ability.authorize! :update, poll
+      poll.prioritise_poll_options!
+      unless poll.valid?
+        Sentry.metrics.count("poll.update_failed", attributes: { columns: poll.errors.attribute_names.join(',') })
+        next
+      end
       poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
       poll.save!
       poll.update_counts!
@@ -150,6 +156,8 @@ class PollService
       )
       topic_item
     end
+    return poll if poll.errors.any?
+
     MessageChannelService.publish_topic_model(poll) unless topic_item
     publish_topic_if_active(poll) if was_opened
     on_topic_item&.call(topic_item) if topic_item
@@ -236,7 +244,7 @@ class PollService
         audience: params[:recipient_audience]
       )
     else
-      poll.members.humans
+      poll.members.humans.where.not(id: poll.stances.revoked.select(:participant_id))
     end
 
     existing_voter_ids = poll.anonymous_poll_voters.where(voter_id: users.select(:id)).pluck(:voter_id)
@@ -292,6 +300,7 @@ class PollService
         include_actor: include_actor,
         emails: emails
       ).where.not(id: existing_voter_ids)
+      next Stance.none unless users.exists?
 
       reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
 
@@ -316,7 +325,9 @@ class PollService
 
       Stance.import(new_stances, on_duplicate_key_ignore: true)
 
-      poll.reset_latest_stances!
+      # New stances are already latest, and reinvitations retain their revision
+      # flags. Resetting every response here locks unrelated votes and can
+      # deadlock with concurrent membership/account changes.
       poll.update_counts!
 
       Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
@@ -413,10 +424,10 @@ class PollService
 
   def self.open_scheduled_polls
     Poll.kept
-        .where(opened_at: nil)
-        .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
-        .each do |poll|
-          publish_topic_if_active(poll) if open_poll_if_ready(poll)
+        .where(opened_at: nil, closed_at: nil)
+        .where("opening_at <= ?", Time.current)
+        .select(:id).find_each do |poll|
+          OpenScheduledPollWorker.perform_later(poll.id)
         end
   end
 
@@ -473,9 +484,31 @@ class PollService
   end
 
   def self.expire_lapsed_polls
-    Poll.lapsed_but_not_closed.each do |poll|
+    Poll.lapsed_but_not_closed.select(:id).find_each do |poll|
       CloseExpiredPollWorker.perform_later(poll.id)
     end
+  end
+
+  # Recheck the deadline under the voting/editing lock, then commit closing and
+  # its notification together. Retries can repair a previously committed close;
+  # realtime publication happens after this transaction completes.
+  def self.expire(poll:)
+    expired = poll.with_topic_lock do
+      poll.lock!
+      next false unless poll.kept? && poll.closing_at && poll.closing_at <= Time.current
+
+      do_closing_work(poll: poll)
+
+      # A reopened poll gets a new notification for its next voting period.
+      notified = Notification.where(kind: 'poll_expired', subject: poll)
+                             .where(created_at: poll.closing_at..).exists?
+      if NotificationService.group_enabled?(poll) && !notified
+        NotificationService.create!(kind: 'poll_expired', subject: poll, actor: poll.author)
+      end
+      true
+    end
+    publish_topic_if_active(poll) if expired
+    poll
   end
 
   def self.do_closing_work(poll:)
@@ -703,15 +736,18 @@ class PollService
   end
 
   def self.open_poll_if_ready(poll)
-    return false if poll.opened_at
-    return false unless poll.closing_at
-    return false if poll.opening_at.present? && poll.opening_at > Time.now
+    # Share the topic-then-poll lock order with voting, editing and closing.
+    # Recheck persisted times so a queued job respects rescheduling and discard.
+    poll.with_topic_lock do
+      poll.lock!
+      next false if poll.opened? || poll.closed? || poll.discarded?
+      next false unless poll.closing_at && poll.closing_at > Time.current
+      next false if poll.opening_at.present? && poll.opening_at > Time.current
 
-    Poll.transaction do
-      poll.update!(opened_at: Time.now)
+      poll.update!(opened_at: Time.current)
       announce_poll_opened(poll) if poll.notify_on_open
+      true
     end
-    true
   end
 
   def self.publish_topic_if_active(poll)

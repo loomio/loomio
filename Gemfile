@@ -40,7 +40,7 @@ gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
 gem 'premailer-rails'
-gem 'activerecord-import', '3.0.0'
+gem 'activerecord-import', '3.0.1'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'

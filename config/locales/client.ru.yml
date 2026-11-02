@@ -343,6 +343,7 @@ ru:
       unredact: Восстановить
       export_json: Экспорт в формате JSON
       import_json: Импортировать json
+      save_as_template: Сохранить как шаблон
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -1895,6 +1896,8 @@ ru:
     comment_length_max_help: Оставьте поле пустым, если ограничение по количеству тем отсутствует
     comment_length_max_description: Установите максимальную длину комментариев, чтобы они были лаконичными
     comment_length_max_hint: Максимальное количество символов в комментарии. Оставьте поле пустым, чтобы ограничение отсутствовало.
+    only_admins_can_add_attachments: Только администраторы могут добавлять вложения
+    only_one_poll_at_a_time: Только один опрос одновременно
   delete_thread_form:
     title: Удалить тему
     body: Вы уверены, что хотите удалить эту тему?
@@ -2125,6 +2128,7 @@ ru:
     pct_of_eligible_vote_weight: "% доступного веса голосов"
     pct_of_vote_weight_cast: "% веса поданных голосов"
     pct_of_assigned_vote_weight: "% назначенного веса голосов"
+    reuse_voting_options_and_settings: Шаблоны позволяют всем в вашей группе повторно использовать варианты ответа, пояснения и настройки. Проверьте примеры перед сохранением, затем выберите шаблон при создании нового опроса
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:

@@ -1,6 +1,24 @@
 require "test_helper"
 
 class PollSerializerTest < ActiveSupport::TestCase
+  test "normal poll payloads omit tags with and without a response cache" do
+    topic = topics(:discussion_topic)
+    topic.update!(polls_one_at_a_time: false)
+    topic.topicable.created_topic_item.update!(tags: ['Thread category'])
+    [false, true].each do |anonymous|
+      poll = PollService.create(params: {
+        topic_id: topic.id, title: 'Significant decision consent process', poll_type: 'proposal',
+        anonymous: anonymous, tags: ['Consent', 'Significant decisions'],
+        poll_option_names: %w[Consent Objection], closing_at: 3.days.from_now
+      }, actor: users(:admin))
+      cache = RecordCache.for_collection([poll], users(:admin).id)
+      [{}, {cache: cache}].each do |scope|
+        payload = PollSerializer.new(poll, scope: scope).as_json.fetch(:poll)
+        assert_not payload.key?(:tags)
+      end
+    end
+  end
+
   test 'weighted serialization without a response cache uses current vote weights' do
     poll = PollService.create(params: {
       title: 'Live weighted serialization', poll_type: 'proposal', weighted_voting: true,

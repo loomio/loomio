@@ -343,6 +343,7 @@ ca:
       unredact: Restaurar
       export_json: Exporta JSON
       import_json: Importa json
+      save_as_template: Desa com a plantilla
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -1915,6 +1916,8 @@ ca:
     comment_length_max_help: Deixeu-ho en blanc si no hi ha límit de temes
     comment_length_max_description: Fomenta els comentaris concisos establint una longitud màxima
     comment_length_max_hint: Màxim de caràcters per comentari. Deixeu-ho en blanc si no hi ha límit.
+    only_admins_can_add_attachments: Només els admins poden afegir fitxers adjunts
+    only_one_poll_at_a_time: Només una enquesta alhora
   delete_thread_form:
     title: Elimina el fil
     body: Esteu segur que voleu eliminar aquest fil?
@@ -2148,6 +2151,7 @@ ca:
     pct_of_eligible_vote_weight: "% del pes del vot amb dret a vot"
     pct_of_vote_weight_cast: "% del pes del vot emès"
     pct_of_assigned_vote_weight: "% del pes del vot assignat"
+    reuse_voting_options_and_settings: Les plantilles permeten a tothom del teu grup reutilitzar opcions de vot, explicacions i configuració. Revisa el contingut d'exemple abans de desar i tria la plantilla quan iniciïs una enquesta nova
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:

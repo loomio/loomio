@@ -95,7 +95,7 @@ export default {
   methods: {
     setCurrentComponent(options) {
       this.pageError = null;
-      const title = truncate(options.title || this.$t(options.titleKey), {length: 300});
+      const title = truncate(options.title || (options.titleKey ? this.$t(options.titleKey) : ''), {length: 300});
       document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
 
       AppConfig.currentGroup      = options.group;

@@ -5,9 +5,7 @@ class HourlyTaskJob < ApplicationJob
 
     ThrottleService.reset!('hour')
     EventBus.broadcast('loomio_hourly_tick', hour)
-    ExpireLapsedPollsWorker.perform_later
     PublishClosingSoonWorker.perform_later
-    OpenScheduledPollsWorker.perform_later
     SendTaskRemindersWorker.perform_later
     RetryPendingEmailsWorker.perform_later
     LoginToken.where("created_at <= ?", LoginToken::EXPIRATION.minutes.ago).delete_all

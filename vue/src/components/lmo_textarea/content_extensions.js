@@ -75,14 +75,14 @@ const MarkdownMention = CustomMention.extend({
   },
 });
 
-export function contentExtensions({ attachFile, attachImageFile, mentionOptions = {} } = {}) {
+export function contentExtensions({ attachFile, attachImageFile, mentionOptions = {}, canAttachFiles = () => true } = {}) {
   return [
     Blockquote,
     Bold,
     Code,
     BulletList, OrderedList, ListItem, ListKeymap,
     CodeBlock,
-    CustomImage.extend({ renderMarkdown: renderImage }).configure({ attachFile, attachImageFile }),
+    CustomImage.extend({ renderMarkdown: renderImage }).configure({ attachFile, attachImageFile, canAttachFiles }),
     Video.extend({ renderMarkdown: renderMedia }),
     Audio.extend({ renderMarkdown: renderMedia }),
     Document,

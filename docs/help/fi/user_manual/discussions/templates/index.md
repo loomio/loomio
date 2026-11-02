@@ -1,15 +1,15 @@
 ---
 title: Keskustelumallit
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 0c48855c6c3912a5
   how-templates-are-used: 3de0f58a904f29b9
   choose-who-is-notified-by-default: ef2847c229cf399a
-  template-settings: '0029f64c59958918'
+  template-settings: b54ba4785f7ff56d
   example-bottle-trial-review: 3c29e1e27a3f725d
   create-a-template: 808f176c2d832720
   manage-the-template-list: 4d0ccf20ab05a299
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 201e1bba154cdd78
   templates-for-non-members: 63b9924e5d724e7e
   related: a8de70276572a9a7
+  save-an-existing-discussion-as-a-template: 37560b38aefff719
 title_source: 5ac608aa42806d13
 title_generated: 00fbd778c84da62b
 needs_review:
@@ -94,8 +96,9 @@ Ryhmän ylläpitäjät voivat muokata mallia malliluettelossa sen vieressä olev
 - **Konteksti**: keskustelun aloitusteksti. Ohjaa kirjoittamista otsikoilla, kysymyksillä tai linkeillä.
 - **Kutsu**: kutsutaanko kaikki ryhmän jäsenet oletuksena. Katso [Valitse, kenelle ilmoitetaan oletuksena](#choose-who-is-notified-by-default).
 - **Kyselymallit**: tähän prosessiin ehdotettavat kyselyt. Ne näkyvät uuden keskustelun lomakkeessa. Ne näkyvät myös ensimmäisinä, kun joku aloittaa kyselyn keskustelussa. Ne eivät ala automaattisesti.
-- **Salli samanaikaiset kyselyt**: voiko keskustelussa olla avoinna useampi kuin yksi kysely kerrallaan.
+- **Vain yksi kysely kerrallaan**: estää uuden kyselyn aloittamisen, kunnes nykyinen kysely on suljettu. Asetus ei ole oletuksena valittuna uusissa malleissa.
 - **Kommentin pituusrajoitus**: valinnainen kommenttien enimmäispituus.
+- **Vain ylläpitäjät voivat lisätä liitteitä**: vain ketjun ylläpitäjät ja ryhmän ylläpitäjät voivat lisätä uusia tiedostoja ja tekstin sekaan upotettuja kuvia tästä mallista aloitettuihin keskusteluihin.
 
 Käytä oletusotsikkoa vain, jos se pysyy paikkansapitävänä. Muussa tapauksessa kirjoita esimerkki otsikosta, joka ohjaa aloittajaa nimeämään kyseisen arvioinnin, ajanjakson, asiakirjan tai päätöksen.
 
@@ -114,6 +117,14 @@ Tämä toimii mallina, koska tarkoitus ja arvioinnin pohjana oleva aineisto pysy
 Ryhmän ylläpitäjät voivat valita malliluettelosta **Uusi malli**. Valitse esimerkki Loomion galleriasta tai aloita tyhjästä mallista, muokkaa sitä tarpeisiisi ja tallenna se.
 
 Voit hakea galleriasta tai suodattaa sitä. Esimerkki lisätään ryhmääsi vasta, kun tallennat sen.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Tallenna olemassa oleva keskustelu mallina
+
+Valitse **Tallenna mallina** keskustelun kontekstin alla olevasta toimintovalikosta. Uusi malli säilyttää keskustelun otsikon, kontekstin, tunnisteet ja ketjun asetukset. Lisää mallille alaotsikko, tarkista sisältö ja valitse **Tallenna mallipohja**. Tallennettu malli näkyy ryhmän malliluettelossa.
+
+Ryhmän ylläpitäjät voivat käyttää tätä toimintoa. Myös jäsenet voivat käyttää sitä, kun **Jäsenet voivat luoda malleja** on käytössä. Toiminto on käytettävissä ryhmän keskusteluissa.
 
 <!-- translation-section: manage-the-template-list -->
 

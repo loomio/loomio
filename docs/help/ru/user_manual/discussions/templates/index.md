@@ -1,15 +1,15 @@
 ---
 title: Шаблоны обсуждений
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 73cee4fda479bd54
   how-templates-are-used: 18a6b57c7d8c938c
   choose-who-is-notified-by-default: 341babf997cec0de
-  template-settings: 4fa1080456102900
+  template-settings: 116b4d3e9dc9e296
   example-bottle-trial-review: 85d067258e9d7e20
   create-a-template: bec20ae8a530a278
   manage-the-template-list: 488c8c494798fc46
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 1a0acddad65d464f
   templates-for-non-members: e80f2bd3bbf49b79
   related: 61c9672b0386b530
+  save-an-existing-discussion-as-a-template: a925c34a4b2ee0bd
 title_source: 5ac608aa42806d13
 title_generated: b3198917e0574dfe
 ---
@@ -92,8 +94,9 @@ title_generated: b3198917e0574dfe
 - **Описание**: начальный текст обсуждения. Используйте заголовки, вопросы или ссылки, чтобы помочь людям понять, что писать.
 - **Приглашать**: определяет, приглашать ли всех в группе по умолчанию. См. [Выберите, кто получает уведомления по умолчанию](#choose-who-is-notified-by-default).
 - **Шаблоны опросов**: опросы, предлагаемые для этого процесса. Они перечислены в форме нового обсуждения. Они также появляются первыми, когда кто-то начинает опрос в обсуждении. Автоматически они не запускаются.
-- **Разрешить одновременное проведение опросов.**: определяет, может ли в обсуждении одновременно быть открыто несколько опросов.
+- **Только один опрос за раз**: запрещает запуск другого опроса, пока текущий опрос не закрыт. В новых шаблонах по умолчанию отключено.
 - **Ограничение на длину комментария**: необязательное ограничение максимальной длины комментариев.
+- **Только администраторы могут добавлять вложения**: в обсуждениях, начатых по этому шаблону, только администраторы ветки и администраторы группы могут добавлять новые файлы и изображения в тексте.
 
 Используйте заголовок по умолчанию только тогда, когда он будет оставаться точным. В остальных случаях укажите пример заголовка, который подскажет автору, как назвать конкретный анализ, период, документ или решение.
 
@@ -112,6 +115,14 @@ title_generated: b3198917e0574dfe
 Администраторы группы могут выбрать **Новый шаблон** в списке шаблонов. Выберите пример из галереи Loomio или начните с пустого шаблона, затем адаптируйте его и сохраните.
 
 Вы можете искать примеры в галерее или фильтровать их. Пример не добавляется в вашу группу, пока вы его не сохраните.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Сохраните существующее обсуждение как шаблон
+
+Выберите **Сохранить как шаблон** в меню действий под описанием обсуждения. Новый шаблон сохраняет заголовок, описание и теги обсуждения, а также настройки ветки. Добавьте подзаголовок шаблона, проверьте содержимое и нажмите **Сохранить шаблон**. Сохранённый шаблон появится в списке шаблонов группы.
+
+Это действие доступно администраторам группы. Участники также могут использовать его, если включено разрешение **Участники могут создавать шаблоны.** Действие доступно для обсуждений в группе.
 
 <!-- translation-section: manage-the-template-list -->
 

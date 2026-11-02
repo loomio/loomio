@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 593b28e22bf5e368
   print: 5bc1ebb2520dfc04
   markdown: c6b41d1b01dbb950
-  thread-settings-and-display: 5d8b6ed9d60c5134
+  thread-settings-and-display: 709a28d5d541b468
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
   move-a-thread: bef5744e818508c2
   lock-or-unlock-a-thread: 1678a83e9b3aca94
@@ -47,6 +47,7 @@ title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
 needs_review:
   markdown: check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
+  thread-settings-and-display: check the interface label "**Cronológico **" for "**Chronological**"
 ---
 
 <!-- translation-section: introduction -->
@@ -191,6 +192,38 @@ Para eliminar a alguien, abre el menú de tres puntos (**⋯**) junto a su nombr
 
 ![Historial de notificaciones de la discusión](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Configuración del hilo
+
+Los admins del hilo y los admins del grupo pueden seleccionar **Configuración del hilo** para cambiar cómo se organizan las respuestas y configurar otras opciones de la discusión.
+
+![](thread_display.png)
+
+![Configuración del hilo con opciones de diseño, límites de encuestas, permisos para adjuntar archivos y un límite de longitud de los comentarios](thread_layout_options.png)
+
+### Diseño
+
+Elige **Cronológico** para mostrar los elementos en el orden en que se publicaron o **Anidado** para agrupar las respuestas debajo del elemento al que responden. Esto cambia el diseño para todas las personas del hilo.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Solo una encuesta a la vez
+
+Cuando esta opción está marcada, las personas no pueden iniciar otra encuesta hasta que se haya cerrado la encuesta actual. Esta opción está desmarcada de forma predeterminada en los hilos nuevos. Los hilos iniciados a partir de una plantilla de discusión usan la configuración de esa plantilla.
+
+### Solo los admins pueden adjuntar archivos
+
+Activa esta opción para que solo los admins del hilo y los admins del grupo puedan añadir archivos nuevos e imágenes insertadas en todo el hilo, incluidas las respuestas a encuestas y las respuestas por correo electrónico. Los archivos adjuntos existentes siguen disponibles, y los participantes pueden seguir editando su texto o eliminando archivos adjuntos.
+
+Las plantillas de discusión y de encuesta pueden definir esta opción para los hilos nuevos. Consulta [Plantillas de discusión](/en/user_manual/discussions/templates) y [Plantillas de encuesta](/en/user_manual/polls/poll_templates).
+
+### Límite de longitud de los comentarios
+
+Establece un número máximo de caracteres por comentario para que las aportaciones sean concisas. Deja el campo en blanco para no establecer ningún límite. El límite se aplica a todas las personas, incluidos los admins.
+
 <!-- translation-section: actions -->
 
 ## Acciones
@@ -288,18 +321,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Los encabezados y las etiquetas usan el idioma que has seleccionado. El contenido escrito por los participantes permanece en su idioma original.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Configuración y visualización del hilo
-
-Los admins del grupo pueden seleccionar **Configuración del hilo** para cambiar cómo se organizan las respuestas y configurar otras opciones de la discusión.
-
-![](thread_display.png)
-
-Elige **Cronología** para mostrar los elementos en el orden en que se publicaron o **En hilos** para agrupar las respuestas debajo del elemento al que responden. La configuración del hilo también permite controlar si puede haber varias encuestas activas a la vez y establecer una longitud máxima para los comentarios. Estos ajustes se aplican a todas las personas de la discusión.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

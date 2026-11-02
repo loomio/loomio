@@ -73,11 +73,15 @@ Use the pencil icon alongside the voting option to open the edit modal:
 
 By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
 
+Scheduled voting may take about a minute to open after the selected time.
+
 This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
 
 For example, if your group has several decisions to vote on at an upcoming assembly, you can prepare the polls and add voters in advance, then schedule them all to open when the voting period begins. People can see the polls before they open, but cannot vote early.
 
 When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
+
+To open voting before the scheduled time, select **Edit poll**, check **Voting opens immediately**, and save.
 
 **Notify voters when poll opens:** When checked (default), all voters will receive a notification when voting opens. Uncheck this if you want to open voting without sending notifications.
 
@@ -85,11 +89,18 @@ When a poll has a scheduled opening time, you can add voters before voting opens
 
 Give sufficient time for people to vote. You could time the proposal so it closes before a meeting, or avoid closing over a weekend, so that people will receive a timely reminder. If necessary, you can close the poll early or extend the closing time.
 
-**Who can vote?** Invite everyone in the group or only specific people that you invite.
+<!-- translation-section: who-can-vote -->
 
-You can later add people to an 'Invite people only' poll. For identified polls,
-you can also remove people who should no longer be eligible to vote. People
-cannot be removed from an anonymous poll.
+### Who can vote?
+
+Choose who can vote in the poll.
+
+- **Anyone in the group** (or **Anyone in the thread**): everyone with access to the poll can vote, including people who join later.
+- **Selected people only:** only the people you add can vote. Use this when only some members should vote, such as a board or a committee.
+
+![Who can vote setting](../manage_voters/invited-people-only.png)
+
+After you start a **Selected people only** poll, **Manage voters** opens so you can add voters. You can add or remove voters later. See [Manage voters](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -160,6 +171,8 @@ When results are hidden until a vote is cast, people can see vote choices and re
 
 When results are hidden until voting closes, replies to votes and mentions in vote reasons are disabled until the poll closes. Thread members can still comment on the poll and reply to comments. You can extend the closing time while the poll is open, but cannot reopen it after it closes.
 
+People with permission to edit a poll can change its details and settings, including anonymous voting and result visibility, before voting opens. Once voting opens, anonymity is fixed and results hidden until closing cannot be revealed early.
+
 Printing and exports, including Markdown, ignore the "hide until a vote is cast" setting and include votes and replies. Results and vote reasons hidden until closing remain hidden until the poll closes. Ordinary comments remain available in the thread, search, and exports.
 
 Anonymous polls always hide results until voting closes. The STV Election
@@ -184,11 +197,13 @@ Open the three-dot menu at the bottom right of the poll.
 
 Use **Edit poll** to edit poll content or settings.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Make a copy
+### Save as template
 
-Use **Make a copy** to create a new poll using the current poll and settings as a starting point.
+Use **Save as template** in a poll's action menu to reuse its content, voting options, explanations, and settings. Review the prefilled template form, give the template a name and subtitle, and select **Save template**. People in the group can then choose it when starting a new poll.
+
+Group admins can save templates. Members can also save them when **Members can create templates** is enabled in the group's permissions. See [Poll templates](/en/user_manual/polls/poll_templates) for details.
 
 <!-- translation-section: notification-history -->
 

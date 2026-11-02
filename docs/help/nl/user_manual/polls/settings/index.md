@@ -1,10 +1,10 @@
 ---
 title: Instellingen
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: c69922093febe9267eab942aa88abe5a751606f9
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-10-30'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
@@ -12,21 +12,22 @@ sections:
   add-content: f622e36a3ad15e4e
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2fdf358a34805114
+  opening-time: 2cf5055187a4d848
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
   anonymous-voting: 4fde93187ffd1a86
   vote-reason: b1ebf2700ce8248b
-  hide-results: 570a32d6a0966aac
+  hide-results: fc5282924fcae787
   start-the-poll: 8e7d8e81db57f4f8
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
-  make-a-copy: e6d8d4ff9a1325dc
   notification-history: f132def867659f30
   export-poll: 3c015ed01e8e7a6a
   print: dbe152fdea17fc00
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 9acf3c7373bcfc03
 generated:
   introduction: ab2a875c4f826f8e
   setting-up-a-proposal-or-poll: e96f5dcce20c5096
@@ -34,21 +35,22 @@ generated:
   add-content: e6cc73fdb7a701bb
   voting-options: 48f34901246ac268
   edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 77505f12a34aaf09
+  opening-time: 6980ebf17b2c0d8b
   more-settings: ac9de733ac425f3a
   reminder: 830f0f493ba85dbd
   anonymous-voting: 002f8bcf4a9bf4ce
   vote-reason: aee03d9416dd8e86
-  hide-results: 72fb1452e2104887
+  hide-results: ba460f2f885b2a66
   start-the-poll: 78d8c527bf9f760c
   managing-polls: 998a7f2f76a9372a
   edit-poll: e5283692e690b034
-  make-a-copy: ddc154e21c55c776
   notification-history: f7b6b6e8d1d16bb2
   export-poll: a22c90c0ae0a38be
   print: 82896aa5dc7d87eb
   delete: 9acf822e2506248b
   save-bookmark: 641508ba541567f1
+  save-as-template: 9fa218d1889f3517
+  who-can-vote: 911094b3a11038ef
 title_source: 74a883a037bc227f
 title_generated: 2701873dad7cb276
 ---
@@ -127,11 +129,15 @@ Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te open
 
 Standaard opent de stemming direct wanneer je de peiling aanmaakt. Als je de stemming op een later moment wilt laten openen, vink je **De stemming is direct geopend.** uit en selecteer je een openingsdatum en -tijd.
 
+Het kan ongeveer een minuut na het gekozen tijdstip duren voordat de geplande stemming opent.
+
 Zo geef je mensen tijd voor discussie voordat de stemming opent, of zorg je ervoor dat een peiling of voorstel goed is ingesteld en op het juiste moment opent.
 
 Als jouw groep bijvoorbeeld tijdens een komende vergadering over meerdere besluiten gaat stemmen, kun je de peilingen voorbereiden en vooraf kiezers toevoegen. Plan vervolgens alle peilingen zo dat ze openen wanneer de stemperiode begint. Mensen kunnen de peilingen bekijken voordat ze openen, maar kunnen nog niet stemmen.
 
 Als een peiling een geplande openingstijd heeft, kun je kiezers toevoegen voordat de stemming opent. Kiezers krijgen een melding wanneer de stemming opent, in plaats van wanneer ze worden toegevoegd.
+
+Selecteer **Peiling bewerken**, vink **De stemming is direct geopend.** aan en sla de wijzigingen op om de stemming vóór het geplande tijdstip te openen.
 
 **Kiezers een melding sturen wanneer de peiling opent:** Als dit is aangevinkt (standaard), krijgen alle kiezers een melding wanneer de stemming opent. Vink dit uit als je de stemming wilt openen zonder meldingen te sturen.
 
@@ -139,9 +145,18 @@ Als een peiling een geplande openingstijd heeft, kun je kiezers toevoegen voorda
 
 Geef mensen voldoende tijd om te stemmen. Je kunt het voorstel bijvoorbeeld vóór een vergadering laten sluiten, of voorkomen dat het in het weekend sluit, zodat mensen op tijd een herinnering krijgen. Als het nodig is, kun je de peiling eerder sluiten of de sluitingstijd uitstellen.
 
-**Wie mag stemmen?** Nodig iedereen in de groep uit of alleen specifieke mensen.
+<!-- translation-section: who-can-vote -->
 
-Je kunt later mensen toevoegen aan een peiling waarvoor je 'Alleen uitgenodigde mensen' hebt gekozen. Bij peilingen waarin de identiteit van kiezers zichtbaar is, kun je ook mensen verwijderen die niet langer mogen stemmen. Je kunt geen mensen verwijderen uit een anonieme peiling.
+### Wie mag stemmen?
+
+Kies wie in de peiling mag stemmen.
+
+- **Iedereen in de groep** (of **Iedereen in de thread**): iedereen met toegang tot de peiling mag stemmen, ook mensen die later lid worden.
+- **Alleen voor geselecteerde personen.:** alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
+
+![Instelling voor wie mag stemmen](../manage_voters/invited-people-only.png)
+
+Nadat je een peiling met **Alleen voor geselecteerde personen.** start, opent **Kiezers beheren** zodat je kiezers kunt toevoegen. Je kunt later kiezers toevoegen of verwijderen. Zie [Kiezers beheren](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
@@ -208,6 +223,8 @@ Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen
 
 Wanneer het resultaat verborgen is totdat de stemming sluit, zijn antwoorden op stemmen en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit. Threadleden kunnen nog steeds op de peiling reageren en op reacties antwoorden. Je kunt de sluitingstijd verlengen zolang de peiling open is, maar je kunt de peiling na het sluiten niet heropenen.
 
+Mensen met toestemming om een peiling te bewerken, kunnen de details en instellingen wijzigen voordat de stemming opent, waaronder anoniem stemmen en de zichtbaarheid van het resultaat. Zodra de stemming opent, ligt de anonimiteit vast en kan het resultaat dat tot het sluiten verborgen is, niet eerder worden getoond.
+
 Bij afdrukken en exporteren, ook als Markdown, wordt de instelling "Resultaat verbergen totdat een stem is uitgebracht" genegeerd en worden stemmen en antwoorden opgenomen. Het resultaat en stemredenen die tot het sluiten verborgen zijn, blijven verborgen totdat de peiling sluit. Gewone reacties blijven beschikbaar in de thread, zoekresultaten en exports.
 
 Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit. Het sjabloon STV-verkiezing schakelt anoniem stemmen standaard in.
@@ -231,11 +248,13 @@ Open het menu met de drie puntjes rechtsonder in de peiling.
 
 Gebruik **Peiling bewerken** om de inhoud of instellingen van de peiling te bewerken.
 
-<!-- translation-section: make-a-copy -->
+<!-- translation-section: save-as-template -->
 
-### Een kopie maken
+### Opslaan als sjabloon
 
-Gebruik **Een kopie maken** om een nieuwe peiling te maken met de huidige peiling en instellingen als uitgangspunt.
+Gebruik **Opslaan als sjabloon** in het actiemenu van een peiling om de inhoud, stemopties, toelichtingen en instellingen opnieuw te gebruiken. Controleer het vooraf ingevulde sjabloonformulier, geef het sjabloon een naam en ondertitel en selecteer **Sjabloon opslaan**. Mensen in de groep kunnen het dan kiezen wanneer ze een nieuwe peiling starten.
+
+Groepsadmins kunnen sjablonen opslaan. Leden kunnen dit ook als **Leden kunnen sjablonen maken.** is ingeschakeld in de groepsrechten. Zie [Peilingsjablonen](/en/user_manual/polls/poll_templates) voor meer informatie.
 
 <!-- translation-section: notification-history -->
 

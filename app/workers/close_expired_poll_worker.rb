@@ -1,26 +1,10 @@
 class CloseExpiredPollWorker < ApplicationJob
+  limits_concurrency key: ->(poll_id) { poll_id }, on_conflict: :discard
+
   def perform(poll_id)
-    poll = Poll.find(poll_id)
-    PollService.do_closing_work(poll: poll) unless poll.closed_at
+    poll = Poll.find_by(id: poll_id)
+    return unless poll
 
-    publish_expiry(poll)
-    PollService.publish_topic_if_active(poll)
-  end
-
-  private
-
-  # A poll can be reopened and expire again. Treat an expiry notification made
-  # after the current closing_at as belonging to this closing.
-  def publish_expiry(poll)
-    return unless NotificationService.group_enabled?(poll)
-    return if Notification.where(kind: "poll_expired", subject: poll)
-                          .where(created_at: poll.closing_at..)
-                          .exists?
-
-    NotificationService.create!(
-      kind: "poll_expired",
-      subject: poll,
-      actor: poll.author
-    )
+    PollService.expire(poll: poll)
   end
 end

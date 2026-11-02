@@ -24,11 +24,14 @@ import { manualUrl } from '@/shared/helpers/manual_url';
 function mountHelp(component, locale, props = {}) {
   const i18n = createI18n({
     legacy: false, locale, fallbackLocale: 'en',
-    messages: {en: {}}, missingWarn: false, fallbackWarn: false
+    messages: {en: {common: {help: 'Help'}}}, missingWarn: false, fallbackWarn: false
   });
   const wrapper = shallowMount(component, {
     props,
-    global: {plugins: [i18n], stubs: {VList: {template: '<div><slot /></div>'}}}
+    global: {plugins: [i18n], stubs: {
+      VList: {template: '<div><slot /></div>'},
+      VBtn: {template: '<a><slot /></a>'}
+    }}
   });
   return {wrapper, i18n};
 }
@@ -60,6 +63,7 @@ describe('help entry points', () => {
 
   it.each([HelpLink, HelpButton])('updates its URL when the active app language changes', async component => {
     const {wrapper, i18n} = mountHelp(component, 'fr', {path: 'en/user_manual/groups/settings'});
+    if (component === HelpButton) expect(wrapper.find('.help-link').text()).toBe('Help');
     expect(wrapper.find('.help-link').attributes('href'))
       .toBe('https://www.loomio.com/docs/fr/user_manual/groups/settings');
     i18n.global.locale.value = 'de';

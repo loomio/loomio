@@ -70,7 +70,7 @@ export default {
 v-card.poll-remind(:title="$t('announcement.form.'+wipOrEmpty+'poll_reminder.title')")
   template(v-slot:append)
     dismiss-modal-button
-  v-card-item
+  v-card-text
     recipients-autocomplete(
       existingOnly
       :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')"

@@ -157,6 +157,7 @@ zh_TW:
     direct_thread_anonymous_poll: 包含匿名投票的對話串無法轉換為私人對話串
     invitation_rate_limit_reached_contact_support: 每日邀請名額已滿，請立即聯絡客服。
     subscription_thread_limit_reached: 此組織已達到貼文上限。請升級以繼續使用 Loomio。
+    attachments_admin_only: 僅對話串管理員和群組管理員可在此對話串新增附件
   group:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。

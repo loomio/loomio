@@ -343,6 +343,7 @@ nl_NL:
       unredact: Herstellen
       export_json: Exporteer JSON
       import_json: Importeer json
+      save_as_template: Bewaren als sjabloon
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -1913,6 +1914,8 @@ nl_NL:
     comment_length_max_help: Laat dit veld leeg als er geen onderwerplimiet is
     comment_length_max_description: Stimuleer beknopte reacties door een maximale lengte in te stellen
     comment_length_max_hint: Maximaal aantal tekens per reactie. Laat het veld leeg voor geen limiet.
+    only_admins_can_add_attachments: Alleen admins kunnen bijlagen toevoegen
+    only_one_poll_at_a_time: Slechts één peiling tegelijk
   delete_thread_form:
     title: Bord verwijderen
     body: Weet je zeker dat je dit bord wil verwijderen?
@@ -2148,6 +2151,7 @@ nl_NL:
     pct_of_eligible_vote_weight: "% van het stemgerechtigde stemgewicht"
     pct_of_vote_weight_cast: "% van het uitgebrachte stemgewicht"
     pct_of_assigned_vote_weight: "% van het toegewezen stemgewicht"
+    reuse_voting_options_and_settings: Met sjablonen kan iedereen in jouw groep stemopties, uitleg en instellingen hergebruiken. Bekijk de voorbeeldinhoud voordat je die bewaart en kies het sjabloon als je een nieuwe peiling start
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:

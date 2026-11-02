@@ -1,15 +1,15 @@
 ---
 title: Plantillas de discusión
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: a3b7e43580c06c4b
   how-templates-are-used: f10451d9e9732db8
   choose-who-is-notified-by-default: 914a15ff14c3351c
-  template-settings: 8e12ee2bdaf0589b
+  template-settings: 81b37efe654c049a
   example-bottle-trial-review: 2bcaa4a905e96e16
   create-a-template: ad598d12bdf95deb
   manage-the-template-list: 554cbe4f4eec9968
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 9bd189a9f21f1e8b
   templates-for-non-members: e6d4f754f53e8872
   related: 3d0a6f649a610afc
+  save-an-existing-discussion-as-a-template: 575911b25c81f14d
 title_source: 5ac608aa42806d13
 title_generated: 6e52ea675fe98e39
 ---
@@ -92,8 +94,9 @@ Los admins del grupo pueden editar una plantilla desde el menú de acciones que 
 - **Contexto**: el texto inicial de la discusión. Usa encabezados, preguntas o enlaces para orientar lo que escriben las personas.
 - **Invitar**: si se invita a todos en el grupo de forma predeterminada. Consulta [Elige quién recibe notificaciones de forma predeterminada](#choose-who-is-notified-by-default).
 - **Plantillas de encuestas**: encuestas sugeridas para este proceso. Se muestran en el formulario de nueva discusión. También aparecen primero cuando alguien inicia una encuesta en la discusión. No se inician automáticamente.
-- **Permitir sondeos simultáneos**: si puede haber más de una encuesta abierta en la discusión al mismo tiempo.
+- **Solo una encuesta a la vez**: impide que se inicie otra encuesta hasta que se haya cerrado la actual. Esta opción está desmarcada de forma predeterminada en las nuevas plantillas.
 - **Límite de longitud de los comentarios**: una longitud máxima opcional para los comentarios.
+- **Solo los admins pueden añadir archivos adjuntos**: restringe la incorporación de nuevos archivos e imágenes dentro del texto a los admins del hilo y del grupo en las discusiones iniciadas a partir de esta plantilla.
 
 Usa un título predeterminado solo cuando vaya a seguir siendo adecuado. En caso contrario, escribe un título de ejemplo que anime al autor a nombrar la revisión, el período, el documento o la decisión concreta.
 
@@ -112,6 +115,14 @@ Esto funciona como plantilla porque el propósito y la información que se anali
 Los admins del grupo pueden seleccionar **Nueva plantilla** en la lista de plantillas. Elige un ejemplo de la galería de Loomio o empieza con una plantilla en blanco, luego adáptala y guárdala.
 
 Puedes buscar o filtrar la galería. Un ejemplo no se añade a tu grupo hasta que lo guardas.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Guarda una discusión existente como plantilla
+
+Selecciona **Guardar como plantilla** en el menú de acciones situado debajo del contexto de una discusión. La nueva plantilla conserva el título, el contexto, las etiquetas y la configuración del hilo de la discusión. Añade un subtítulo a la plantilla, revisa el contenido y selecciona **Guardar plantilla**. La plantilla guardada aparece en la lista de plantillas del grupo.
+
+Los admins del grupo pueden usar esta acción. Los miembros también pueden usarla cuando está habilitado **Los miembros pueden crear plantillas**. La acción está disponible para las discusiones de un grupo.
 
 <!-- translation-section: manage-the-template-list -->
 

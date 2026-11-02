@@ -119,6 +119,7 @@ export default {
   SubgroupsSelect: 'group/subgroups_select',
   TagsDisplay: 'tags/display',
   TagsField: 'tags/field',
+  TopicSettingsFields: 'topic/settings_fields',
   TopicList: 'topic/list',
   TopicPage: 'topic/page',
   TopicTitle: 'topic/title',

@@ -27,6 +27,27 @@ class InboundEmailServiceTest < ActiveSupport::TestCase
 
   # -- Splitting replies --
 
+  test 'emailed attachments obey the topic restriction for members and thread admins' do
+    topic = topics(:discussion_topic)
+    topic.update!(attachments_admin_only: true)
+
+    %i[member_normal guest_admin_normal].each do |role|
+      user = users(role)
+      mail = Mail.new
+      mail.from = user.email
+      mail.to = "d=#{topic.topicable_id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV.fetch('REPLY_HOSTNAME')}"
+      mail.subject = 'Supporting document'
+      mail.body = 'Please see the attached document'
+      mail.attachments['document.txt'] = 'Supporting document'
+      email = store_inbound_mail(mail)
+
+      assert_difference 'Comment.count', role == :guest_admin_normal ? 1 : 0 do
+        assert_equal role == :guest_admin_normal ? :delivered : :bounced, InboundEmailService.process(email)
+      end
+      assert email.reload.processing_completed_at
+    end
+  end
+
   test "splits spanish text reply" do
     input_body = "Me aparece que cumpla con los Criterio?\n\nEl lun, 3 de jun. de 2024 7:03 a. m., Deborah Mowesley (via Loomio) <\nnotifications@loomio.com> escribió:\n\n> \n>\n> [image: DM] sondeo cerrará en 24 horas\n>"
     output_body = InboundEmailService.extract_reply_body(input_body)

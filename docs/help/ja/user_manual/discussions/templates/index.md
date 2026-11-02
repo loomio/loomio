@@ -1,15 +1,15 @@
 ---
 title: ディスカッションテンプレート
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: f7d37afab38c639f
   how-templates-are-used: 75b8f40cb89c7937
   choose-who-is-notified-by-default: 1a5fb2e0e531bb5e
-  template-settings: 89fc9e0e6c63ee14
+  template-settings: e88219a6b1915558
   example-bottle-trial-review: 8b485a42ce7666b5
   create-a-template: 76a5dbba70d36fd9
   manage-the-template-list: fee48b7fac8bc0f2
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: fbd3d83b296fc2d9
   templates-for-non-members: '0949114935173899'
   related: 598d7dc77dd05b00
+  save-an-existing-discussion-as-a-template: 3b8f862d4d630d9e
 title_source: 5ac608aa42806d13
 title_generated: d90989df1a626938
 ---
@@ -92,8 +94,9 @@ title_generated: d90989df1a626938
 - **背景説明**：ディスカッションに最初から入力される文章です。見出し、質問、リンクを使って、記載する内容を案内します。
 - **招待する**：デフォルトでグループ全員を招待するかどうかを指定します。[デフォルトの通知先を選ぶ](#choose-who-is-notified-by-default)を参照してください。
 - **アンケートテンプレート**：この手順で推奨するアンケートです。新しいディスカッションのフォームに一覧表示されます。また、ディスカッション内でアンケートを始める際にも先頭に表示されます。自動的に開始されることはありません。
-- **同時ポーリングを許可する**：ディスカッション内で複数のアンケートを同時に実施できるかどうかを指定します。
+- **同時に開けるアンケートは1つだけです**：現在のアンケートが締め切られるまで、別のアンケートを開始できないようにします。新しいテンプレートでは、デフォルトでチェックが外れています。
 - **コメントの文字数制限**：必要に応じて設定できるコメントの最大文字数です。
+- **管理者のみ添付ファイルを追加できます**：このテンプレートから始めたディスカッションでは、新しいファイルや本文中の画像を追加できる人を、スレッドの管理者とグループの管理者に限定します。
 
 デフォルトのタイトルは、毎回そのまま使っても正確な場合にのみ設定します。それ以外の場合は、具体的な振り返りの対象、期間、文書、決定の名前を作成者が入力できるよう、タイトルの例を記載します。
 
@@ -112,6 +115,14 @@ Oatmilk Cooperativeでは、回収して再利用する瓶の試験運用を、�
 グループの管理者は、テンプレート一覧から**新しいテンプレート**を選択できます。Loomioのギャラリーから例を選ぶか、空のテンプレートから始めて、必要に応じて編集し、保存します。
 
 ギャラリーでは検索や絞り込みができます。選んだ例は、保存するまでグループに追加されません。
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### 既存のディスカッションをテンプレートとして保存する
+
+ディスカッションの背景説明の下にある操作メニューから**テンプレートとして保存**を選択します。新しいテンプレートには、ディスカッションのタイトル、背景説明、タグ、スレッドの設定が引き継がれます。テンプレートのサブタイトルを追加し、内容を確認して、**テンプレートを保存**を選択します。保存したテンプレートは、グループのテンプレート一覧に表示されます。
+
+この操作はグループの管理者が利用できます。**メンバーはテンプレートを作成できます**が有効な場合は、メンバーも利用できます。この操作は、グループ内のディスカッションで利用できます。
 
 <!-- translation-section: manage-the-template-list -->
 

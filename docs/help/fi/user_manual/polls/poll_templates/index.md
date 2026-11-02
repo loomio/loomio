@@ -1,40 +1,42 @@
 ---
 title: Kyselymallit
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/poll_templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
-  introduction: f11182d62d99dbcc
-  voting-methods-and-templates: 24be471686aa2dfd
-  use-a-template: 8b19cdf141c41c9b
-  who-can-manage-templates: 60218ef791438e19
-  create-a-poll-template: c20dd8c57c3deab0
-  template-title-subtitle-and-help: 3ad53a8b118aabd3
-  voting-method: 761137852812fea8
-  example-title-details-and-tags: 9dbbd0510d2d6cc1
+  introduction: a535465485cdbc13
+  who-can-manage-templates: 6c3d5e693cd1dfdc
+  create-a-poll-template: 0fafc6275b6c9153
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
   response-options: 727afbf0dcea6069
-  duration-and-settings: a364411a3bebb3ae
-  save-and-test-the-template: 8c48386c69ea309a
-  manage-the-template-list: 0c124d7958c3f80a
+  duration-and-settings: f1f3643e94524af9
+  manage-the-template-list: 76e78b8a60f1d08c
+  save-a-poll-as-a-template: 36dc7b5d410d0eea
+  start-a-new-template: 4f14910d88b22de8
+  configure-the-template: 06a5645786f28281
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: ade44dc7a1a25bb9
-  voting-methods-and-templates: 0d648f6bcdbbe08a
-  use-a-template: 73f1e351005db729
-  who-can-manage-templates: b676755b1c4c5cec
-  create-a-poll-template: a77e0716a6ec47bb
-  template-title-subtitle-and-help: 5b0558b1207f0685
-  voting-method: fc44758e336ceebb
-  example-title-details-and-tags: f279060ec84ef2ab
+  introduction: 118c34aa89fee06b
+  who-can-manage-templates: ac0f1499dcd3fdb7
+  create-a-poll-template: 78bc97e104c5da3e
+  template-title-subtitle-and-help: 3ec0fb67dd959f51
+  voting-method: 2162798a730d20e9
+  example-title-details-and-tags: ea5a7b3f71daa65b
   response-options: 328e97027f9e1c75
-  duration-and-settings: 9010fc5abb2793df
-  save-and-test-the-template: 944a8d02e329fcfb
-  manage-the-template-list: 568e84f5d38cd527
+  duration-and-settings: 0c8c9889123f698c
+  manage-the-template-list: 0bf7894caa98552a
+  save-a-poll-as-a-template: 06f4be9e88c10c14
+  start-a-new-template: 5e58489e7152e692
+  configure-the-template: c152ac97758bdc54
+  edit-a-default-template: 4c63b99976fc0d15
 title_source: 114cca246e357304
 title_generated: 22a10edb0e6d9b26
 needs_review:
-  use-a-template: use "vaihtoehto" instead of "asetukset" for "option"
+  introduction: use "vaihtoehto" instead of "asetukset" for "option"
 ---
 
 <!-- translation-section: introduction -->
@@ -45,61 +47,61 @@ Kyselymallit ovat uudelleenkäytettäviä lähtökohtia, jotka näytetään, kun
 
 Tämän sivun ohjeilla voit määrittää, mitkä mallit ovat ryhmän käytettävissä, tai luoda mallin omaa prosessiasi varten. Jos haluat valita mallin tiettyyn äänestykseen, katso [Ehdotukset](../proposals/) tai [Kyselyt](../proposal_types/). Jos haluat ohjata koko päätöksentekoprosessia, katso [Päätösten tekeminen](/en/guides/making_decisions/).
 
-<!-- translation-section: voting-methods-and-templates -->
-
-## Äänestystavat ja mallit
-
-Äänestystapa määrittää, miten osallistujat vastaavat ja miten Loomio laskee tuloksen. Äänestystapoja ovat esimerkiksi Ehdotus, Valinta, Pisteytys, Pistejako, Järjestys, Aikakysely ja STV.
-
-Kyselymalli käyttää jotakin näistä äänestystavoista ja lisää siihen uudelleenkäytettävät oletusarvot. Esimerkiksi Tunnustelu, Neuvonanto, Suostumus ja Konsensus ovat eri malleja, jotka perustuvat Ehdotus-äänestystapaan. Niiden ohjeet ja vastausvaihtoehdot eroavat toisistaan, vaikka Loomio käsittelee niiden äänet samalla tavalla.
-
-<!-- translation-section: use-a-template -->
-
-## Käytä mallia
-
 Kun aloitat äänestyksen, valitse **Ehdotus**- tai **Kysely**-välilehti ja valitse jokin ryhmän käytettävissä olevista malleista.
 
-![](proposal_templates_list.png)
-
-Malli sisältää johdannon, esimerkkisisällön, vaihtoehdot ja asetukset. Tarkista ja muokkaa niitä kyseiseen päätökseen sopiviksi ennen äänestyksen aloittamista. Uuden äänestyksen muokkaaminen ei muuta uudelleenkäytettävää mallia.
-
-<!-- translation-section: who-can-manage-templates -->
-
-## Kuka voi hallita malleja
-
-Ryhmän ylläpitäjät voivat luoda ja hallita kaikkia ryhmänsä kyselymalleja. He voivat ottaa käyttöön asetuksen **Jäsenet voivat luoda malleja** kohdassa **Ryhmäasetukset** → **Käyttöoikeudet**. Kun asetus on käytössä, jäsenet voivat luoda malleja ja hallita itse luomiaan malleja.
+Malli sisältää johdannon, esimerkkisisältöä, vaihtoehdot ja asetukset. Tarkista ja muokkaa ne kyseiseen päätökseen sopiviksi ennen äänestyksen aloittamista. Uuden äänestyksen muokkaaminen ei muuta uudelleenkäytettävää mallia.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## Luo kyselymalli
 
+<!-- translation-section: save-a-poll-as-a-template -->
+
+### Tallenna mallina
+
+Jos haluat käyttää olemassa olevaa ehdotusta tai kyselyä uudelleen, avaa sen toimintovalikko ja valitse **Tallenna mallina**.
+
+![Ehdotus, jonka toimintovalikko on auki ja Tallenna mallina on korostettu](save_as_template.png)
+
+Äänestyksen päivämääriä, äänestäjiä, ääniä, tuloksia ja kyselyn johtopäätöstä ei tallenneta malliin.
+
+<!-- translation-section: start-a-new-template -->
+
+### Aloita uusi malli
+
 Avaa malliluettelo ja valitse **Uusi malli**. Aloita esimerkistä tai tyhjästä mallista ja valitse sitten ryhmä, joka käyttää sitä.
 
 ![](proposal_template_setting.png)
 
-Mallilomakkeessa määritetään ohjeet ja oletusarvot, jotka käyttäjät saavat aloittaessaan äänestyksen.
+<!-- translation-section: edit-a-default-template -->
 
-![](poll_template_new.png)
+### Muokkaa oletusmallia
+
+Jos haluat mukauttaa oletusmallia, kuten **Suostumus**, avaa sen toimintovalikko ja valitse **Muokkaa mallia**. Tämä toiminto on ryhmän ylläpitäjien käytettävissä. Tallentaminen luo ryhmällesi oman mallin ja piilottaa oletusversion ryhmän malliluettelosta.
+
+![Suostumus-oletusmalli, jonka Muokkaa mallia -toiminto on näkyvissä](edit_default_template.png)
+
+<!-- translation-section: configure-the-template -->
+
+## Mallin asetukset
+
+Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käyttää. Voit muokata muitakin kenttiä niin, että ne sopivat paremmin uudelleenkäyttöön. Kun valitset **Tallenna mallipohja**, malli näkyy luettelossa, kun käyttäjät aloittavat uuden ehdotuksen tai kyselyn.
+
+[![Toimintaperiaatteiden muuttamiseen tarkoitetun suostumusprosessin koko mallilomake](poll_template_new.png)](poll_template_new.png)
+
+Itsenäisissä kyselyissä **Vain ylläpitäjät voivat lisätä liitteitä** sallii uusien tiedostojen ja tekstin sekaan lisättävien kuvien lisäämisen vain ketjun ja ryhmän ylläpitäjille. Rajoitus koskee myös kyselyvastauksia ja niihin annettuja vastauksia. Olemassa olevassa ketjussa aloitetut kyselyt noudattavat kyseisen ketjun liiteasetusta. Mallin muuttaminen vaikuttaa vain tuleviin kyselyihin.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
 ### Mallin otsikko, alaotsikko ja ohjeet
 
-- **Mallipohjan otsikko** on malliluettelossa näkyvä lyhyt nimi.
-- **Mallipohjan alaotsikko** kertoo yhdellä lauseella, milloin mallia kannattaa käyttää.
-- **Mallipohjan ohjeet** näkyvät tietopaneelissa, kun joku käyttää mallia. Kerro mallin tarkoitus ja säännöt, jotka osallistujien tulee tuntea, ja lisää linkit asiaankuuluviin toimintaperiaatteisiin tai oppaisiin.
-
-![](template_WAAP_intro.png)
-
-Käytä selkeitä ja täsmällisiä nimiä, jotka erottavat mallin ryhmän muista malleista.
+Kerro otsikossa ja alaotsikossa, milloin malli kannattaa valita. Lisää prosessin ohjeet, päätöksentekosäännöt ja linkit lisämateriaaleihin kohtaan **Mallipohjan ohjeet**.
 
 <!-- translation-section: voting-method -->
 
 ### Äänestystapa
 
 Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan.
-
-![](poll_type_voting_method.png)
 
 - **Ehdotus**: vastaa väittämään ennalta määritetyillä kannoilla;
 - **Valita**: valitse yksi tai useampi vaihtoehto;
@@ -115,11 +117,7 @@ Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan.
 
 ### Esimerkkiotsikko, kuvaus ja tunnisteet
 
-Lisää esimerkkisisältöä, joka auttaa laatijaa muotoilemaan äänestyksen. Nämä arvot kopioidaan uuteen ehdotukseen tai kyselyyn, ja niitä voi muokata ennen sen alkamista.
-
-![](template_WAAP_details.png)
-
-Käytä ohjaavia kysymyksiä tai ohjeita valmiin sisällön sijaan, jos otsikon tai kuvauksen täytyy olla erilainen jokaisella käyttökerralla. Lisää oletusarvoisia luokittelutunnisteita vain, jos ne sopivat mallin jokaiseen käyttökertaan.
+Käytä esimerkkiotsikossa ja kuvauksessa ohjaavia kysymyksiä tai ohjeita, kun jokainen äänestys tarvitsee erilaisen sisällön. Lisää oletusarvoisia luokittelutunnisteita vain, jos ne sopivat mallin jokaiseen käyttökertaan.
 
 <!-- translation-section: response-options -->
 
@@ -142,19 +140,11 @@ Määritä vaihtoehdot niin, että osallistujat ymmärtävät niiden erot arvail
 
 Aseta oletuskesto, joka sopii mallin useimpiin käyttötarkoituksiin. Laatija voi muuttaa yksittäisen äänestyksen päättymisaikaa.
 
-![](poll_type_duration.png)
-
 Muilla oletusasetuksilla voi määrittää tulosten näkyvyyden, anonyymin äänestyksen, [painotetun äänestyksen](../weighted_voting/), äänen perusteluvaatimukset, muistutukset, päätösvaltaisuuden ja äänestystapakohtaisen toiminnan. Katso niiden vaikutukset sivulta [Ehdotusten ja kyselyjen asetukset](../settings/).
-
-<!-- translation-section: save-and-test-the-template -->
-
-### Tallenna ja testaa malli
-
-Kun olet tallentanut mallin, luo siitä äänestysluonnos. Tarkista, että johdanto, ohjaavat kysymykset ja ohjeet, vaihtoehdot ja oletusarvot ovat ymmärrettäviä myös henkilölle, joka ei luonut mallia. Luonnoksen luominen auttaa myös varmistamaan, että valittu äänestystapa tuottaa ryhmän odottaman tuloksen.
 
 <!-- translation-section: manage-the-template-list -->
 
-## Hallitse malliluetteloa
+## Mallien hallinta
 
 Mallin vieressä olevasta toimintovalikosta voit valita seuraavat toiminnot:
 
@@ -163,10 +153,14 @@ Mallin vieressä olevasta toimintovalikosta voit valita seuraavat toiminnot:
 - **Piilottaa**: piilota malli äänestyksiä aloittavilta käyttäjiltä; tai
 - **Poistaa**: poista itse luotu malli, jota ei enää tarvita.
 
-![](template_manage.png)
+![Ryhmän malliluettelo, jossa toimintaperiaatteiden muuttamiseen tarkoitetun suostumusprosessin toimintovalikko on auki](template_manage.png)
 
 Valitse **Näytä piilotetut mallit**, kun haluat tarkastella tai palauttaa piilotettuja malleja. Oletusmallit voi piilottaa tai muokata ryhmälle sopiviksi, mutta niitä ei voi poistaa.
 
-![](template_manage_settings.png)
-
 Mallin muuttaminen ei muuta ehdotuksia tai kyselyjä, jotka on jo aloitettu sen pohjalta.
+
+<!-- translation-section: who-can-manage-templates -->
+
+### Kuka voi hallita malleja
+
+Ryhmän ylläpitäjät voivat luoda ja hallita kaikkia ryhmänsä kyselymalleja. He voivat ottaa käyttöön asetuksen **Jäsenet voivat luoda malleja** kohdassa **Ryhmäasetukset** → **Käyttöoikeudet**. Kun asetus on käytössä, jäsenet voivat luoda malleja ja hallita itse luomiaan malleja.

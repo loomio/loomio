@@ -1,15 +1,15 @@
 ---
 title: Modèles de discussion
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 187a2e572ccfb339
   how-templates-are-used: db5b15b1e79e3885
   choose-who-is-notified-by-default: 124aa359d558dc1b
-  template-settings: 7ab593b2e571177e
+  template-settings: e75d66209522f1b7
   example-bottle-trial-review: '07495be8434faba4'
   create-a-template: 27c009c5f4013f5d
   manage-the-template-list: 5171165d289de886
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: a0ad468c2b8b3361
   templates-for-non-members: 7fef1b42802231ff
   related: c11ae1cbf27daade
+  save-an-existing-discussion-as-a-template: 122c81dd975bfa6a
 title_source: 5ac608aa42806d13
 title_generated: 0a2818116b3c746a
 ---
@@ -92,8 +94,9 @@ Les administrateurs du groupe peuvent modifier un modèle depuis le menu d’act
 - **Contexte** : le texte initial de la discussion. Utilisez des titres, des questions ou des liens pour guider ce que les personnes écrivent.
 - **Inviter** : indique si tout le monde dans le groupe est invité par défaut. Voir [Choisissez qui reçoit une notification par défaut](#choose-who-is-notified-by-default).
 - **Modèles de sondage** : les sondages suggérés pour ce processus. Ils figurent dans le formulaire de nouvelle discussion. Ils apparaissent aussi en premier lorsqu’une personne lance un sondage dans la discussion. Ils ne sont pas lancés automatiquement.
-- **Autoriser les sondages simultanés** : indique si plusieurs sondages peuvent être ouverts en même temps dans la discussion.
+- **Un seul sondage à la fois** : empêche de lancer un autre sondage tant que le sondage en cours n’est pas clôturé. Cette option est décochée par défaut pour les nouveaux modèles.
 - **Limite de longueur des commentaires** : une longueur maximale facultative pour les commentaires.
+- **Seuls les administrateurs peuvent ajouter des pièces jointes** : réserve l’ajout de nouveaux fichiers et d’images intégrées aux administrateurs du fil et aux administrateurs du groupe dans les discussions lancées à partir de ce modèle.
 
 Utilisez un titre par défaut uniquement s’il reste pertinent pour chaque discussion. Sinon, rédigez un exemple de titre qui invite l’auteur à préciser le bilan, la période, le document ou la décision concernés.
 
@@ -112,6 +115,14 @@ Ce processus se prête à un modèle, car l’objectif et les éléments à exam
 Les administrateurs du groupe peuvent sélectionner **Nouveau modèle** dans la liste des modèles. Choisissez un exemple dans la galerie de Loomio ou commencez avec un modèle vierge, puis adaptez-le et enregistrez-le.
 
 Vous pouvez rechercher ou filtrer les modèles de la galerie. Un exemple n’est ajouté à votre groupe que lorsque vous l’enregistrez.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Enregistrez une discussion existante comme modèle
+
+Sélectionnez **Enregistrer comme modèle** dans le menu d’actions sous le contexte d’une discussion. Le nouveau modèle conserve le titre, le contexte et les tags de la discussion, ainsi que les paramètres du fil. Ajoutez un sous-titre au modèle, vérifiez le contenu, puis sélectionnez **Enregistrer le modèle**. Le modèle enregistré apparaît dans la liste des modèles du groupe.
+
+Les administrateurs du groupe peuvent utiliser cette action. Les membres peuvent également l’utiliser lorsque l’option **Les membres peuvent créer des modèles** est activée. Cette action est disponible pour les discussions au sein d’un groupe.
 
 <!-- translation-section: manage-the-template-list -->
 

@@ -210,6 +210,18 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
     assert_includes audience_ids, "group-#{@group.id}"
     refute_includes audience_ids, "voters"
+    refute_includes audience_ids, "topic"
+  end
+
+  test "available audiences for a poll in a group thread omit the thread audience" do
+    poll = create_test_poll
+
+    get :available_audiences, params: { poll_id: poll.id }
+
+    assert_response :success
+    audience_ids = JSON.parse(response.body).fetch("audiences").pluck("id")
+    assert_includes audience_ids, "group-#{@group.id}"
+    refute_includes audience_ids, "topic"
   end
 
   test "available audiences support a direct discussion" do

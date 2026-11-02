@@ -28,6 +28,7 @@
     "haraka-plugin-mailauth": {
       "mailauth": "8.0.4"
     },
+    "joi": "18.3.1",
     "nodemailer": "10.2.1"
   }
 }

@@ -1,10 +1,10 @@
 ---
 title: Threads verwenden
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-01'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -19,7 +19,7 @@ sections:
   actions: c015c12999c5be2f
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
-  thread-settings-and-display: b05e5c1364ceee12
+  thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
   lock-or-unlock-a-thread: d3f671e631c8a0bc
@@ -38,7 +38,7 @@ generated:
   actions: 8c8be25fa54c0adc
   print: a338e05fc2833d18
   markdown: 0b345adabf70ede9
-  thread-settings-and-display: b5e22ab11c5259aa
+  thread-settings-and-display: 5b42fa8ee7f068b6
   pin-or-unpin-a-thread: 5de696dc7828f152
   move-a-thread: 83ffef8883555192
   lock-or-unlock-a-thread: 21e8fde5c6647fd2
@@ -192,6 +192,38 @@ Um eine Person zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben ihrem 
 
 ![Benachrichtigungsverlauf der Diskussion](../notifying_people/thread_notified.png)
 
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Thread-Einstellungen
+
+Thread-Admins und Gruppen-Admins können **Thread-Einstellungen** auswählen, um die Anordnung von Antworten zu ändern und weitere Diskussionsoptionen einzustellen.
+
+![](thread_display.png)
+
+![Thread-Einstellungen mit Layout, Abstimmungsbegrenzungen, Berechtigungen für Anhänge und einer Begrenzung der Kommentarlänge](thread_layout_options.png)
+
+### Layout
+
+Wähle **Chronologisch**, um Beiträge in der Reihenfolge ihrer Veröffentlichung aufzulisten, oder **Verschachtelt**, um Antworten unter dem Beitrag zu gruppieren, auf den sie sich beziehen. Dadurch ändert sich das Layout für alle im Thread.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Nur eine Abstimmung gleichzeitig
+
+Wenn diese Einstellung aktiviert ist, können Teilnehmende erst eine weitere Abstimmung starten, wenn die aktuelle Abstimmung beendet ist. Bei neuen Threads ist diese Einstellung standardmäßig deaktiviert. Threads, die aus einer Diskussionsvorlage erstellt werden, übernehmen die Einstellung dieser Vorlage.
+
+### Nur Admins können Anhänge hinzufügen
+
+Aktiviere diese Einstellung, damit im gesamten Thread nur Thread-Admins und Gruppen-Admins neue Dateien und Bilder im Text hinzufügen können. Das gilt auch für Abstimmungsbeiträge und Antworten per E-Mail. Vorhandene Anhänge bleiben verfügbar, und Teilnehmende können weiterhin ihren Text bearbeiten oder Anhänge entfernen.
+
+Diskussions- und Abstimmungsvorlagen können diese Einstellung für neue Threads vorgeben. Siehe [Diskussionsvorlagen](/en/user_manual/discussions/templates) und [Abstimmungsvorlagen](/en/user_manual/polls/poll_templates).
+
+### Begrenzung der Kommentarlänge
+
+Lege eine maximale Zeichenzahl pro Kommentar fest, um Beiträge kurz zu halten. Lass das Feld leer, wenn du keine Begrenzung möchtest. Die Begrenzung gilt für alle, auch für Admins.
+
 <!-- translation-section: actions -->
 
 ## Aktionen
@@ -289,18 +321,6 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ```
 
 Die Überschriften und Beschriftungen verwenden die von dir ausgewählte Sprache. Inhalte von Teilnehmenden bleiben in ihrer ursprünglichen Sprache.
-
-<!-- translation-section: thread-settings-and-display -->
-
-### Thread-Einstellungen und Anzeige
-
-Gruppen-Admins können **Thread-Einstellungen** auswählen, um die Anordnung von Antworten zu ändern und weitere Diskussionsoptionen einzustellen.
-
-![](thread_display.png)
-
-Wähle **Zeitleiste**, um Beiträge in der Reihenfolge ihrer Veröffentlichung aufzulisten, oder **Als Thread**, um Antworten unter dem Beitrag zu gruppieren, auf den sie antworten. In den Thread-Einstellungen lässt sich außerdem festlegen, ob mehrere Abstimmungen gleichzeitig laufen dürfen und wie lang Kommentare höchstens sein dürfen. Diese Einstellungen gelten für alle in der Diskussion.
-
-![](thread_layout_options.png)
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 

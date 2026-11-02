@@ -341,6 +341,7 @@ ja:
       unredact: 復元する
       export_json: JSONをエクスポート
       import_json: JSONをインポート
+      save_as_template: テンプレートとして保存
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -1894,6 +1895,8 @@ ja:
     comment_length_max_help: トピック制限を設けない場合は空欄のままにしてください
     comment_length_max_description: 最大文字数を設定することで、簡潔なコメントを促しましょう
     comment_length_max_hint: コメントあたりの最大文字数。制限なしの場合は空欄のままにしてください。
+    only_admins_can_add_attachments: 管理者のみ添付ファイルを追加できます
+    only_one_poll_at_a_time: 同時に開けるアンケートは1つだけです
   delete_thread_form:
     title: スレッドの削除
     body: このスレッドを削除してもよろしいですか?
@@ -2124,6 +2127,7 @@ ja:
     pct_of_eligible_vote_weight: 投票可能な票の重みに対する%
     pct_of_vote_weight_cast: 投票済みの票の重みに対する%
     pct_of_assigned_vote_weight: 割り当てられた票の重みに対する%
+    reuse_voting_options_and_settings: テンプレートを使うと、グループの誰でも投票の選択肢や説明、設定を再利用できます。保存前にサンプルの内容を確認し、新しいアンケートを始めるときにテンプレートを選びます
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:

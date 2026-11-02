@@ -343,6 +343,7 @@ he:
       unredact: לְשַׁחְזֵר
       export_json: ייצוא json
       import_json: ייבוא json
+      save_as_template: שמירה כתבנית
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -1909,6 +1910,8 @@ he:
     comment_length_max_help: השאר ריק אם אין הגבלת נושאים
     comment_length_max_description: עודדו הערות תמציתיות על ידי קביעת אורך מקסימלי
     comment_length_max_hint: מספר תווים מקסימלי לכל תגובה. השאר ריק ללא הגבלה.
+    only_admins_can_add_attachments: רק מנהלים יכולים להוסיף קבצים מצורפים
+    only_one_poll_at_a_time: סקר אחד בלבד בכל פעם
   delete_thread_form:
     title: מחיקת שיחה
     body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?
@@ -2144,6 +2147,7 @@ he:
     pct_of_eligible_vote_weight: "% ממשקל ההצבעה של בעלי זכות ההצבעה"
     pct_of_vote_weight_cast: "% ממשקל ההצבעה שמומש"
     pct_of_assigned_vote_weight: "% ממשקל ההצבעה שהוקצה"
+    reuse_voting_options_and_settings: תבניות מאפשרות לכל מי שבקבוצה להשתמש שוב באפשרויות ההצבעה, בהסברים ובהגדרות. יש לבדוק את התוכן לדוגמה לפני השמירה, ואז לבחור בתבנית כשפותחים סקר חדש
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:

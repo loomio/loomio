@@ -2,7 +2,7 @@
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import Flash  from '@/shared/services/flash';
+import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import DiscussionTemplateForm from '@/components/discussion_template/form';
 import { takeImportedTemplate } from '@/shared/helpers/template_file';
 
@@ -27,10 +27,26 @@ export default {
   },
 
   created() {
-    let groupId, templateId, templateKey, importedTemplate;
+    let groupId, templateId, templateKey, importedTemplate, discussionId;
     if (templateId = parseInt(this.$route.params.id)) {
       Records.discussionTemplates.findOrFetchById(templateId).then(template => {
         this.discussionTemplate = template.clone();
+      });
+    } else if ((discussionId = parseInt(this.$route.query.discussion_id))) {
+      Records.discussions.findOrFetchById(discussionId).then(async discussion => {
+        if (discussion.discardedAt || !DiscussionTemplateService.canCreateTemplate(discussion.group())) {
+          throw Object.assign(new Error('Forbidden'), {status: 403});
+        }
+        if (!discussion.createdTopicItem()) {
+          await Records.topicItems.fetch({params: {discussion_key: discussion.key, sequence_id: 0, per: 1}});
+        }
+        this.group = discussion.group();
+        this.discussionTemplate = discussion.buildTemplate();
+      }).catch(error => {
+        EventBus.$emit('pageError', error);
+        if (error.status === 403 && !Session.isSignedIn()) {
+          EventBus.$emit('openAuthModal');
+        }
       });
     } else if (
       (groupId = parseInt(this.$route.query.group_id)) &&

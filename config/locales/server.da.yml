@@ -154,6 +154,7 @@ da:
     direct_thread_anonymous_poll: En tråd, der indeholder en anonym afstemning, kan ikke konverteres til en direkte tråd
     invitation_rate_limit_reached_contact_support: Daglig invitationsgrænse er nået. Kontakt support med det samme.
     subscription_thread_limit_reached: Denne organisation har nået sin trådgrænse. Opgrader venligst for at fortsætte med at bruge Loomio.
+    attachments_admin_only: Kun trådadministratorer og gruppeadministratorer kan vedhæfte filer i denne tråd
   group:
     error:
       handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-

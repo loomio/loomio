@@ -1,15 +1,15 @@
 ---
 title: Modelli di discussione
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
   introduction: 9b2b30212a057b4b
   how-templates-are-used: 7d5681170fe9911e
   choose-who-is-notified-by-default: e9fe4c939442f514
-  template-settings: 2e71090b3d149213
+  template-settings: ca90bf418e92f5b5
   example-bottle-trial-review: 20009020c0b68fdf
   create-a-template: 223eee427ebb52bb
   manage-the-template-list: 9a4957687be2b34d
@@ -17,11 +17,12 @@ sections:
   let-members-create-templates: 0cfd990ff48a1a09
   templates-for-non-members: ebaf610bf85e81a9
   related: 6f4cc2ccf8e709d3
+  save-an-existing-discussion-as-a-template: f858067aab6e4b9b
 generated:
   introduction: 99c0d868c6f66383
   how-templates-are-used: ce39b24829dd3e38
   choose-who-is-notified-by-default: ff962121c0f764c6
-  template-settings: 9c268506d645904b
+  template-settings: 6b5dd4ed77b29e5d
   example-bottle-trial-review: 589d545faca4e8ef
   create-a-template: 2c97964c3151dbca
   manage-the-template-list: dea7c70a5be3627b
@@ -29,6 +30,7 @@ generated:
   let-members-create-templates: 493aff5d847f1e60
   templates-for-non-members: fc85c9de3acd217d
   related: 7c622437a7751c12
+  save-an-existing-discussion-as-a-template: 3d1cfc141f496d8b
 title_source: 5ac608aa42806d13
 title_generated: e69d3a4bcbeae260
 ---
@@ -92,8 +94,9 @@ Gli amministratori del gruppo possono modificare un modello dal menu delle azion
 - **Contesto**: il testo iniziale della discussione. Usa titoli, domande o link per guidare ciò che le persone scrivono.
 - **Invita**: indica se invitare tutti nel gruppo per impostazione predefinita. Vedi [Scegli chi riceve le notifiche per impostazione predefinita](#choose-who-is-notified-by-default).
 - **Modelli di sondaggio**: i sondaggi suggeriti per questo processo. Sono elencati nel modulo per la nuova discussione. Compaiono anche per primi quando qualcuno avvia un sondaggio nella discussione. Non si avviano automaticamente.
-- **Consenti sondaggi simultanei**: indica se nella discussione può essere aperto più di un sondaggio contemporaneamente.
+- **Un solo sondaggio alla volta**: impedisce di avviare un altro sondaggio finché quello attuale non è chiuso. L'opzione è deselezionata per impostazione predefinita nei nuovi modelli.
 - **limite di lunghezza dei commenti**: una lunghezza massima facoltativa per i commenti.
+- **Solo gli amministratori possono aggiungere allegati**: consente solo agli amministratori della conversazione e del gruppo di aggiungere nuovi file e immagini nel testo nelle discussioni avviate da questo modello.
 
 Usa un titolo predefinito solo quando resterà appropriato. Altrimenti, scrivi un titolo di esempio che inviti l'autore a indicare la revisione, il periodo, il documento o la decisione specifici.
 
@@ -112,6 +115,14 @@ Questo funziona come modello perché lo scopo e i dati da esaminare restano gli 
 Gli amministratori del gruppo possono selezionare **Nuovo modello** dall'elenco dei modelli. Scegli un esempio dalla galleria di Loomio oppure parti da un modello vuoto, poi adattalo e salvalo.
 
 Puoi cercare nella galleria o filtrarla. Un esempio viene aggiunto al tuo gruppo solo quando lo salvi.
+
+<!-- translation-section: save-an-existing-discussion-as-a-template -->
+
+### Salva una discussione esistente come modello
+
+Seleziona **Salva come modello** dal menu delle azioni sotto il contesto di una discussione. Il nuovo modello conserva il titolo, il contesto, i tag e le impostazioni della conversazione. Aggiungi un sottotitolo al modello, controlla il contenuto e seleziona **Salva modello**. Il modello salvato appare nell'elenco dei modelli del gruppo.
+
+Gli amministratori del gruppo possono usare questa azione. Anche i membri possono usarla quando **I membri possono creare modelli** è abilitato. L'azione è disponibile per le discussioni in un gruppo.
 
 <!-- translation-section: manage-the-template-list -->
 

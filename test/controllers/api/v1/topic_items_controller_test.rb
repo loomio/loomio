@@ -193,9 +193,31 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     assert_includes json['polls'].map { |p| p['id'] }, poll.id
   end
 
+  test "index loads one poll creation item with tags for template reloads" do
+    sign_in @user
+    [true, false].each do |standalone|
+      poll = PollService.create(params: {
+        title: 'Template source', poll_type: 'proposal', group_id: @group.id,
+        topic_id: (standalone ? nil : @discussion.topic_id),
+        poll_option_names: %w[Agree Disagree], tags: ['Consent'], closing_at: 3.days.from_now
+      }, actor: @admin)
+      CommentService.create(comment: Comment.new(parent: poll, body: 'Later activity'), actor: @admin)
+      TopicReader.for(user: @user, topic: poll.topic).viewed!(poll.topic.items.pluck(:sequence_id))
+
+      params = {poll_key: poll.key, kind: 'poll_created', per: 1}
+      params[:unread_or_newest] = 1 unless standalone
+      get :index, params: params, format: :json
+
+      assert_response :success
+      items = JSON.parse(response.body).fetch('topic_items')
+      assert_equal [poll.created_topic_item.id], items.pluck('id')
+      assert_equal ['Consent'], items.sole.fetch('tags')
+    end
+  end
+
   test "index returns every poll that is not closed, including polls that are not open" do
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
 
     create_poll = lambda do |title|
       PollService.create(params: {
@@ -227,7 +249,7 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
 
   test "index includes polls that are not closed alongside unread topic_items" do
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
     poll = PollService.create(params: {
       title: 'Read but not closed poll',
       poll_type: 'proposal',
@@ -338,7 +360,7 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     # Regression: Outcome lacked topic_id delegation, so comment.topic_id
     # (which delegates to parent.topic_id) raised NoMethodError for Outcome parents.
     sign_in @user
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
 
     poll = PollService.create(params: {
       title: "Test proposal",

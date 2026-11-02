@@ -1,36 +1,38 @@
 ---
 title: Peilingsjablonen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/poll_templates/index.md
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-01'
 sections:
-  introduction: f11182d62d99dbcc
-  voting-methods-and-templates: 24be471686aa2dfd
-  use-a-template: 8b19cdf141c41c9b
-  who-can-manage-templates: 60218ef791438e19
-  create-a-poll-template: c20dd8c57c3deab0
-  template-title-subtitle-and-help: 3ad53a8b118aabd3
-  voting-method: 761137852812fea8
-  example-title-details-and-tags: 9dbbd0510d2d6cc1
+  introduction: a535465485cdbc13
+  who-can-manage-templates: 6c3d5e693cd1dfdc
+  create-a-poll-template: 0fafc6275b6c9153
+  template-title-subtitle-and-help: 5a3f6c78e32fb066
+  voting-method: c645269a1a17d1c8
+  example-title-details-and-tags: 0f0d84a8b9b6ecb2
   response-options: 727afbf0dcea6069
-  duration-and-settings: a364411a3bebb3ae
-  save-and-test-the-template: 8c48386c69ea309a
-  manage-the-template-list: 0c124d7958c3f80a
+  duration-and-settings: f1f3643e94524af9
+  manage-the-template-list: 76e78b8a60f1d08c
+  save-a-poll-as-a-template: 36dc7b5d410d0eea
+  start-a-new-template: 4f14910d88b22de8
+  configure-the-template: 06a5645786f28281
+  edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 8fe8a5ff330cd7c3
-  voting-methods-and-templates: 7a3275620f79fb27
-  use-a-template: 5ff0cf2a84790943
-  who-can-manage-templates: 04efc65b0f5090ce
-  create-a-poll-template: ec192bedf366602e
-  template-title-subtitle-and-help: dd75ceb0e2101521
-  voting-method: da35f1ff505975fc
-  example-title-details-and-tags: 6f368716e43cc568
+  introduction: 602c75aa282bf6e3
+  who-can-manage-templates: 6dcd429a422ca5e1
+  create-a-poll-template: 3dffa179fb78dc1a
+  template-title-subtitle-and-help: c0a0f874a019a625
+  voting-method: 6941930aa07c81eb
+  example-title-details-and-tags: d69b0bf54ef53d5f
   response-options: 1b5c0c8902834a3c
-  duration-and-settings: 5a2ba9d071397908
-  save-and-test-the-template: 65325740864af2f3
-  manage-the-template-list: 863102412e2bbb80
+  duration-and-settings: 34359a391bde66ba
+  manage-the-template-list: c2773799003e5ce8
+  save-a-poll-as-a-template: 3ae361db115248c8
+  start-a-new-template: b72713ccb3dc723a
+  configure-the-template: b5e67de82e90976a
+  edit-a-default-template: 3db420d6c20e1602
 title_source: 114cca246e357304
 title_generated: '0990c400c548d976'
 ---
@@ -43,61 +45,61 @@ Peilingsjablonen zijn herbruikbare uitgangspunten die verschijnen wanneer iemand
 
 Gebruik deze pagina om in te stellen welke sjablonen beschikbaar zijn voor een groep of om een sjabloon voor jouw eigen proces te maken. Om een sjabloon voor een specifieke stemming te kiezen, zie [Voorstellen](../proposals/) of [Peilingen](../proposal_types/). Om een volledig besluitvormingsproces te begeleiden, zie [Besluiten nemen](/en/guides/making_decisions/).
 
-<!-- translation-section: voting-methods-and-templates -->
-
-## Stemmethoden en sjablonen
-
-Een stemmethode bepaalt hoe deelnemers reageren en hoe Loomio het resultaat berekent. Voorbeelden zijn Voorstel, Kiezen, Beoordelen, Verdelen, Rangschikken, Tijdpeiling en STV.
-
-Een peilingsjabloon gebruikt een van deze methoden en voegt herbruikbare standaardwaarden toe. Gevoelscheck, Advies, Consent en Consensus zijn bijvoorbeeld verschillende sjablonen die de stemmethode Voorstel gebruiken. Hun instructies en antwoordopties verschillen, hoewel Loomio hun stemmen op dezelfde manier verwerkt.
-
-<!-- translation-section: use-a-template -->
-
-## Een sjabloon gebruiken
-
 Selecteer bij het starten van een stemming het tabblad **Voorstel** of **Peiling** en kies een van de sjablonen die beschikbaar zijn voor de groep.
 
-![](proposal_templates_list.png)
-
 Het sjabloon bevat een inleiding, voorbeeldinhoud, opties en instellingen. Controleer deze en pas ze aan voor het specifieke besluit voordat je de stemming start. Het bewerken van de nieuwe stemming verandert het herbruikbare sjabloon niet.
-
-<!-- translation-section: who-can-manage-templates -->
-
-## Wie kan sjablonen beheren
-
-Groepsbeheerders kunnen alle peilingsjablonen in hun groep maken en beheren. Ze kunnen **Leden kunnen sjablonen maken.** inschakelen onder **Groepsinstellingen** → **Toestemmingen**. Als dit is ingeschakeld, kunnen leden sjablonen maken en hun eigen sjablonen beheren.
 
 <!-- translation-section: create-a-poll-template -->
 
 ## Een peilingsjabloon maken
 
+<!-- translation-section: save-a-poll-as-a-template -->
+
+### Opslaan als sjabloon
+
+Om een bestaand voorstel of een bestaande peiling opnieuw te gebruiken, open je het actiemenu en selecteer je **Opslaan als sjabloon**.
+
+![Een voorstel met het actiemenu geopend en Opslaan als sjabloon gemarkeerd](save_as_template.png)
+
+Stemdatums, kiezers, stemmen, resultaten en de conclusie van de peiling worden niet in het sjabloon opgeslagen.
+
+<!-- translation-section: start-a-new-template -->
+
+### Een nieuw sjabloon starten
+
 Open de sjablonenlijst en selecteer **Nieuwe sjabloon**. Begin met een voorbeeld of een leeg sjabloon en kies vervolgens de groep die het gaat gebruiken.
 
 ![](proposal_template_setting.png)
 
-Het sjabloonformulier bepaalt welke instructies en standaardwaarden mensen krijgen wanneer ze een stemming starten.
+<!-- translation-section: edit-a-default-template -->
 
-![](poll_template_new.png)
+### Een standaardsjabloon bewerken
+
+Om een standaardsjabloon zoals **Consent** aan te passen, open je het actiemenu en selecteer je **Sjabloon bewerken**. Deze optie is beschikbaar voor groepsadmins. Als je opslaat, wordt een aangepast sjabloon voor jouw groep gemaakt en wordt de standaardversie verborgen in de sjablonenlijst van de groep.
+
+![Het standaardsjabloon Consent met de actie Sjabloon bewerken zichtbaar](edit_default_template.png)
+
+<!-- translation-section: configure-the-template -->
+
+## Sjablooninstellingen
+
+Geef het sjabloon een naam en ondertitel die beschrijven wanneer je het gebruikt. Je kunt alle andere velden aanpassen om ze geschikter te maken voor hergebruik. Nadat je **Sjabloon opslaan** hebt geselecteerd, verschijnt het sjabloon in de lijst wanneer mensen een nieuw voorstel of een nieuwe peiling starten.
+
+[![Het volledige sjabloonformulier voor het consentproces voor beleidswijzigingen](poll_template_new.png)](poll_template_new.png)
+
+Voor op zichzelf staande peilingen zorgt **Alleen admins kunnen bijlagen toevoegen** ervoor dat alleen thread admins en group admins nieuwe bestanden en inline afbeeldingen kunnen toevoegen, ook in reacties en antwoorden. Peilingen die binnen een bestaande thread worden gestart, volgen de bijlage-instelling van die thread. Wijzigingen aan het sjabloon gelden alleen voor toekomstige peilingen.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
 ### Sjabloontitel, ondertitel en hulp
 
-- **Sjabloontitel** is de korte naam die in de sjablonenlijst verschijnt.
-- **Sjabloon ondertitel** legt in één zin uit wanneer je het sjabloon gebruikt.
-- **Sjabloonhulp** verschijnt in het informatiepaneel wanneer iemand het sjabloon gebruikt. Leg het doel uit, vermeld de regels die deelnemers moeten kennen en voeg links naar relevante beleidsdocumenten of handleidingen toe.
-
-![](template_WAAP_intro.png)
-
-Gebruik duidelijke, specifieke namen die het sjabloon onderscheiden van andere sjablonen in de groep.
+Gebruik de titel en ondertitel om uit te leggen wanneer je het sjabloon kiest. Zet procesinstructies, besluitvormingsregels en links naar informatiebronnen in **Sjabloonhulp**.
 
 <!-- translation-section: voting-method -->
 
 ### Stemmethode
 
 Kies wat deelnemers moeten aangeven en hoe het resultaat moet worden berekend.
-
-![](poll_type_voting_method.png)
 
 - **Voorstel**: reageer op een stelling met vooraf bepaalde standpunten;
 - **Kiezen**: selecteer een of meer opties;
@@ -113,11 +115,7 @@ Als je de stemmethode verandert, veranderen ook de beschikbare velden en de resu
 
 ### Voorbeeldtitel, details en labels
 
-Geef voorbeeldinhoud die de maker helpt de stemming te formuleren. Deze waarden worden gekopieerd naar een nieuw voorstel of een nieuwe peiling en kunnen vóór de start worden bewerkt.
-
-![](template_WAAP_details.png)
-
-Gebruik aanwijzingen in plaats van vaste inhoud als er bij elk gebruik een andere titel of andere details nodig zijn. Voeg alleen standaard categorielabels toe als ze bij elk gebruik van het sjabloon van toepassing zijn.
+Gebruik aanwijzingen voor de voorbeeldtitel en details als elke stemming andere inhoud nodig heeft. Voeg alleen standaard categorielabels toe als ze bij elk gebruik van het sjabloon van toepassing zijn.
 
 <!-- translation-section: response-options -->
 
@@ -140,19 +138,11 @@ Formuleer opties zodat deelnemers het verschil ertussen kunnen zien zonder te ho
 
 Stel een standaardduur in die geschikt is voor de meeste toepassingen van het sjabloon. De maker kan het sluitingstijdstip voor een afzonderlijke stemming aanpassen.
 
-![](poll_type_duration.png)
-
 Andere standaardinstellingen kunnen bepalen of resultaten zichtbaar zijn, of mensen anoniem stemmen, of [gewogen stemmen](../weighted_voting/) wordt gebruikt, of een reden bij een stem verplicht is, welke herinneringen worden verstuurd, welk quorum geldt en hoe de gekozen methode werkt. Zie [Instellingen voor voorstellen en peilingen](../settings/) voor hun effecten.
-
-<!-- translation-section: save-and-test-the-template -->
-
-### Het sjabloon opslaan en testen
-
-Start na het opslaan een conceptstemming vanuit het sjabloon. Controleer of de inleiding, aanwijzingen, opties en standaardwaarden duidelijk zijn voor iemand die het sjabloon niet heeft gemaakt. Met een concept kun je ook controleren of de gekozen stemmethode het resultaat oplevert dat de groep verwacht.
 
 <!-- translation-section: manage-the-template-list -->
 
-## De sjablonenlijst beheren
+## Sjablonen beheren
 
 Gebruik het actiemenu naast een sjabloon voor de volgende acties:
 
@@ -161,10 +151,14 @@ Gebruik het actiemenu naast een sjabloon voor de volgende acties:
 - **Verbergen**: verberg het sjabloon voor mensen die een stemming starten; of
 - **Delete**: verwijder een zelfgemaakt sjabloon dat niet meer nodig is.
 
-![](template_manage.png)
+![De sjablonenlijst van de groep met het actiemenu voor het consentproces voor beleidswijzigingen geopend](template_manage.png)
 
 Selecteer **Verborgen sjablonen weergeven** om verborgen sjablonen te bekijken of weer beschikbaar te maken. Standaardsjablonen kunnen worden verborgen of aangepast voor de groep, maar kunnen niet worden verwijderd.
 
-![](template_manage_settings.png)
-
 Het wijzigen van een sjabloon verandert geen voorstellen of peilingen die al vanuit dat sjabloon zijn gestart.
+
+<!-- translation-section: who-can-manage-templates -->
+
+### Wie kan sjablonen beheren
+
+Groepsbeheerders kunnen alle peilingsjablonen in hun groep maken en beheren. Ze kunnen **Leden kunnen sjablonen maken.** inschakelen onder **Groepsinstellingen** → **Toestemmingen**. Als dit is ingeschakeld, kunnen leden sjablonen maken en hun eigen sjablonen beheren.

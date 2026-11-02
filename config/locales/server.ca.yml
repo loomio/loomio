@@ -154,6 +154,7 @@ ca:
     direct_thread_anonymous_poll: Un fil que conté una enquesta anònima no es pot convertir en un fil directe.
     invitation_rate_limit_reached_contact_support: S'ha arribat al límit diari d'invitacions. Contacta amb l'assistència immediatament.
     subscription_thread_limit_reached: Aquesta organització ha arribat al límit de fils. Si us plau, actualitzeu per continuar utilitzant Loomio.
+    attachments_admin_only: Només els admins del fil i del grup poden afegir fitxers adjunts a aquest fil
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
