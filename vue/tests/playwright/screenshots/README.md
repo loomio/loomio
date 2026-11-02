@@ -1,6 +1,6 @@
 # User manual screenshots
 
-These Nightwatch specs generate screenshots in the folder of the manual page
+These Playwright specs generate screenshots in the folder of the manual page
 that uses them. They are separate from the behavioural E2E suite and only run
 when requested.
 
@@ -13,8 +13,8 @@ bin/e2e-screenshots
 Run one spec or testcase:
 
 ```sh
-bin/e2e-screenshots oatmilk_cooperative.js
-bin/e2e-screenshots oatmilk_cooperative.js --testcase proposal_discussion
+bin/e2e-screenshots oatmilk_cooperative
+bin/e2e-screenshots oatmilk_cooperative -g proposal_discussion
 ```
 
 Each spec should:
@@ -24,8 +24,9 @@ Each spec should:
 2. Load a deterministic dev scenario.
 3. Navigate to the documented state using normal E2E actions.
 4. Wait for the content that must appear in the image.
-5. Call `manualScreenshot(test).capture('path/from/user_manual/name')` for a
-   full viewport or `captureElement('path/from/user_manual/name', '.selector')`
+5. Declare the test as `test('name', async ({ lmo: page, manual: screenshot }) => { ... })`
+   and call `await screenshot.capture('path/from/user_manual/name')` for a
+   full viewport or `await screenshot.captureElement('path/from/user_manual/name', '.selector')`
    for a focused UI state.
 
 Set the final viewport before opening a menu or dialog. Vuetify overlays retain
@@ -45,7 +46,7 @@ To spotlight a control, pass its selector with the capture options. The effect
 is applied to the PNG after capture, so it does not alter or obstruct the UI:
 
 ```js
-screenshot.captureElement('groups/settings/group_settings', '.group-page', {
+await screenshot.captureElement('groups/settings/group_settings', '.group-page', {
   spotlight: {
     selector: '.action-menu--btn',
     padding: 16,
@@ -77,7 +78,7 @@ Framing defaults:
 Example discussion and poll text should normally be about three short
 paragraphs and use no more than three deterministic, common formatting features
 per record. Reuse the Oatmilk Cooperative profile, logo, bottle, and warehouse
-box fixtures. Conceptual illustrations do not belong in Nightwatch, and images
+box fixtures. Conceptual illustrations do not belong in the screenshot suite, and images
 that need representative long-running real-group data (currently the
 participation-report graph) remain manual captures.
 To spotlight adjacent controls as one region, pass a `selectors` array instead

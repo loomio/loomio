@@ -12,47 +12,48 @@ For database migrations, prioritize focused regression tests and realistic-data 
 
 ## Running E2E Tests
 
-E2E tests use Nightwatch + headless Chrome against a local Rails server.
+E2E tests use Playwright and headless Chromium against a local Rails server.
 
 ### Prerequisites
+- Install the browser once with `(cd vue && npx playwright install chromium)`.
 - If you get schema related errors it might help to run `dropdb loomio_test; RAILS_ENV=test rake db:setup`
 
 ### Using `bin/e2e`
 
 ```bash
-bin/e2e                                    # run all specs
-bin/e2e notifications.js                   # run one spec file (shorthand)
-bin/e2e vue/tests/e2e/specs/poll.js        # run one spec file (full path)
-bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
-bin/e2e notifications.js --retries 3       # retry failures
+bin/e2e                                  # run all specs
+bin/e2e notifications                    # run spec files whose path matches "notifications"
+bin/e2e poll -g "can_vote_on_a_proposal" # run tests whose title matches
+bin/e2e --headed poll                    # watch the browser
+bin/e2e --skip-build poll                # reuse the existing Vue build
 ```
 
-The script handles: Vue build, db:prepare, starting/stopping the Rails server, and running Nightwatch headlessly.
+The script handles: Vue build, db:prepare, starting/stopping hocuspocus and the Rails server, and running Playwright. Other arguments are passed to `playwright test`.
 
-Always let `bin/e2e` build Vue assets. The build is fast, and running against freshly built assets avoids stale-client failures.
-
-Use `--testcase <name>` to run a single test within a file. This is much faster for confirming fixes.
+Always let `bin/e2e` build Vue assets unless you have just built them. Running against freshly built assets avoids stale-client failures.
 
 ### How it works
 
 1. Dev scenarios in `app/controllers/dev/` and `app/helpers/dev/` set up test data
-2. Nightwatch specs in `vue/tests/e2e/specs/` drive the browser via `pageHelper`
-3. `pageHelper.loadPath('scenario_name')` hits `http://localhost:3000/dev/scenario_name`
+2. Specs in `vue/tests/playwright/specs/` drive the browser through the `lmo` page helper, destructured as `page`: `test('name', async ({ lmo: page }) => { await page.loadPath('setup_group') })`
+3. `page.loadPath('scenario_name')` loads `http://localhost:3001/dev/scenario_name`
 4. The Rails server runs in test mode with `RAILS_ENV=test`
+
+Await every helper call. Helpers address the first element matching a selector. Use `page.first(selector)` with Playwright's `expect` for assertions the helper does not cover, and `page.page` for the raw Playwright page (keyboard, dialogs, other tabs).
 
 ### Fixing test failures
 
-- **"element not interactable" / "click intercepted"**: Usually a z-index or overlay issue. These often pass on retry (`--retries 3`).
-- **"Timed out waiting for .app-is-booted"**: The dev scenario errored. Check Rails server logs for the exception (e.g., `NoMethodError`, `Deadlocked`).
-- **"Expected text to contain X"**: The dev scenario isn't producing the expected data. Check the scenario in `app/helpers/dev/ninties_movies_helper.rb` or `app/helpers/dev/scenarios_helper.rb`.
-- Screenshots on failure are saved to `vue/tests/screenshots/`.
+- **"Timed out waiting for .app-is-booted"**: The dev scenario errored. Check `log/test.log` for the exception (e.g., `NoMethodError`, `Deadlocked`).
+- **"Expected substring ... Received string"**: The dev scenario isn't producing the expected data, or the UI changed. Check the scenario in `app/helpers/dev/ninties_movies_helper.rb` or `app/helpers/dev/scenarios_helper.rb`.
+- Failed tests keep a trace with DOM snapshots, network requests, and console output. Open the report with `(cd vue && npx playwright show-report tests/playwright/report)`. In CI, download the `playwright-report` artifact and open it the same way.
 
 ### Key files
 
 - `bin/e2e` — test runner script
-- `vue/nightwatch.conf.js` — Nightwatch configuration
-- `vue/tests/e2e/specs/` — test specs
-- `vue/tests/e2e/helpers/pageHelper.js` — shared browser helpers
+- `vue/playwright.config.mjs` — Playwright configuration
+- `vue/tests/playwright/specs/` — test specs
+- `vue/tests/playwright/fixtures.mjs` — the `lmo` fixture
+- `vue/tests/playwright/helpers/pageHelper.mjs` — shared browser helpers
 - `app/controllers/dev/` — dev scenario routes
 - `app/helpers/dev/ninties_movies_helper.rb` — main scenario data builder
 - `app/helpers/dev/scenarios_helper.rb` — additional scenario helpers

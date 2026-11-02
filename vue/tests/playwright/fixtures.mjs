@@ -6,8 +6,8 @@ import { pageHelper } from './helpers/pageHelper.mjs';
 // available as `page.page`.
 export const test = base.extend({
   lmo: async ({ page }, use) => {
-    // Nightwatch specs accepted every confirm() with acceptConfirm(); accept
-    // dialogs as they open so the triggering click can complete.
+    // Specs confirm with acceptConfirm() after the triggering click; accept
+    // dialogs as they open so that click can complete.
     page.on('dialog', dialog => dialog.accept());
     await use(pageHelper(page));
   },

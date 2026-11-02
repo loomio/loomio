@@ -20,10 +20,9 @@ export function scenarioUrl(path) {
 
 const escapeRegExp = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-// Wraps a Playwright page with the helper vocabulary the Nightwatch specs
-// used. Every method is async and must be awaited. Selectors address the first
-// match, as Nightwatch did, so specs keep their meaning without strict-mode
-// locator errors.
+// Wraps a Playwright page with Loomio's spec vocabulary. Every method is async
+// and must be awaited. Selectors address the first match, so a selector that
+// matches several elements does not raise a strict-mode locator error.
 export function pageHelper(page) {
   const first = selector => page.locator(selector).first();
 
@@ -253,7 +252,7 @@ export function pageHelper(page) {
     },
 
     // Dialogs are accepted by the fixture as they open; this only lets the
-    // resulting request settle, matching the Nightwatch helper.
+    // resulting request settle.
     async acceptConfirm() {
       await helper.pause();
     },

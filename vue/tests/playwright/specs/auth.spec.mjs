@@ -539,8 +539,6 @@ test('requires_verification_if_email_is_changed', async ({ lmo: page }) => {
   await page.click('.auth-form__create-account')
   await page.clearField('.auth-signup-form__email input')
   await page.fillIn('.auth-signup-form__email input', 'max_von_sydow@merciless.com')
-  // GK: NB: clearValue is not working right now - so the existing input value is being appended to instead
-  // https://github.com/nightwatchjs/nightwatch/issues/1939
   await page.expectText('.auth-signup-form', 'New to')
   await page.click('.auth-signup-form__submit')
   await page.expectText('.auth-complete', 'Check your email')
