@@ -1942,7 +1942,6 @@ be:
   change_picture_form:
     aria_label: Форма фота профілю
     title: Устанавіць фота профілю
-    helptext: Вы можаце загрузіць сваю ўласную фатаграфію профілю, або, калі ў вас ёсць уліковы запіс <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , вы можаце выкарыстаць яе.
     use_initials: Выкарыстоўвайце ініцыялы
     use_gravatar: Выкарыстоўвайце Gravatar
     use_uploaded: Загрузіць новае фота

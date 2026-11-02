@@ -2040,7 +2040,6 @@ en:
   change_picture_form:
     aria_label: Profile photo form
     title: Set profile photo
-    helptext: You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.
     use_initials: Use initials
     use_gravatar: Use Gravatar
     use_uploaded: Upload new photo

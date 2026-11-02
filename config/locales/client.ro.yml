@@ -1840,7 +1840,6 @@ ro:
     insert_embedded_url: Încorporați videoclipul
   change_picture_form:
     title: Setați fotografia de profil
-    helptext: Poți să-ți încarci propria poză de profil sau, dacă ai un cont <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , o poți folosi.
     use_initials: Folosiți inițialele
     use_gravatar: Foloseste Gravatar
     use_uploaded: Încarcă o fotografie nouă

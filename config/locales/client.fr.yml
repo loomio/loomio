@@ -1875,7 +1875,6 @@ fr:
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
     title: Régler la photo de profil
-    helptext: Vous pouvez charger votre propre photo de profil, ou si vous avez un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, vous pouvez l’utiliser.
     use_initials: Utiliser mes initiales
     use_gravatar: Utiliser Gravatar
     use_uploaded: Télécharger une nouvelle photo

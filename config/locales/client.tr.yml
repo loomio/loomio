@@ -1840,7 +1840,6 @@ tr:
     insert_embedded_url: Videoyu yerleştir
   change_picture_form:
     title: Profil fotoğrafını ayarla
-    helptext: Kendi profil resminizi yükleyebilir veya <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> hesabınız varsa onu kullanabilirsiniz.
     use_initials: Baş harfleri kullan
     use_gravatar: Gravatar kullan
     use_uploaded: Yeni fotoğraf yükle

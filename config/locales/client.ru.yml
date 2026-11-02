@@ -1840,7 +1840,6 @@ ru:
     insert_embedded_url: Встроенное видео
   change_picture_form:
     title: Установить фото профиля
-    helptext: Вы можете загрузить собственное изображение профиля или использовать его, если у вас есть учетная запись <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> .
     use_initials: Используйте инициалы
     use_gravatar: Используйте Граватар
     use_uploaded: Загрузить новую фотографию

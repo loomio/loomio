@@ -1840,7 +1840,6 @@ sl:
     insert_embedded_url: Vdelaj video
   change_picture_form:
     title: Nastavite fotografijo profila
-    helptext: Lahko naložite svojo profilno sliko ali pa jo uporabite, če imate račun <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> .
     use_initials: Uporabite začetnice
     use_gravatar: Uporabi Gravatarja
     use_uploaded: Naloži novo fotografijo

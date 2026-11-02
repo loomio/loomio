@@ -1857,7 +1857,6 @@ zh_TW:
     insert_embedded_url: 嵌入影片
   change_picture_form:
     title: 設定簡介照片
-    helptext: 您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。
     use_initials: 使用縮寫
     use_gravatar: 使用 Gravatar 的大頭貼
     use_uploaded: 上傳新照片

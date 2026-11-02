@@ -1,6 +1,6 @@
 ---
 title: Seu perfil
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,24 +9,22 @@ sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
-  time-zone: ceae2068bfaa750e
+  time-zone: e341837e759e4369
 generated:
   introduction: 44ed81f8c238adbd
   edit-profile: d8298b41bd7bbff6
   update-your-personal-info: 6cbd0509b246de92
-  viewing-another-person-s-profile: fdb0fa198a078d7c
-  uploading-a-profile-photo: f0abf2d442bfac7b
-  language-settings: d0cd30cba739fb9f
+  uploading-a-profile-photo: 256bed4d02947cca
+  language-settings: 5819dea88789a75e
   resetting-your-password: e92a6c8b7b3f5c11
   merge-accounts: d78e84c300ccd0af
   deleting-your-account: c824c58db7aac17c
-  time-zone: 2681bc3db8dbf7bb
+  time-zone: d0b9e1333358b71f
 title_source: 528d89ad72cba22e
 title_generated: 9f249d9aa487d528
 ---
@@ -59,39 +57,24 @@ Você pode atualizar suas informações pessoais alterando qualquer um dos segui
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Visualizar o perfil de outra pessoa
-
-Selecione o nome ou o avatar de uma pessoa para abrir o perfil dela. As discussões, os comentários e as enquetes recentes dessa pessoa aparecem junto com os detalhes do perfil e os grupos dela. A lista inclui apenas atividades que você tem permissão para acessar; visitantes que não estão conectados veem apenas atividades públicas.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Enviar uma foto de perfil
 Quando você cria uma conta no Loomio, suas iniciais são a imagem padrão associada ao seu perfil. Você pode enviar uma foto de perfil clicando na sua imagem na página de perfil.
 
-Se você tem um [Gravatar](https://en.gravatar.com/), pode defini-lo como sua imagem de perfil selecionando **Use Gravatar**. Você também pode escolher que o Loomio use a foto que você utiliza em outras plataformas ou ferramentas comuns.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Configurações de idioma
-O Loomio é desenvolvido em inglês, mas [é traduzido por voluntários para vários idiomas](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Idioma
 
 O Loomio detecta as configurações de idioma do seu navegador, mas você pode definir manualmente seu idioma preferido entre as opções disponíveis na página de perfil.
-
-![](profile_language.png)
 
 <!-- translation-section: time-zone -->
 
 ## Fuso horário
 
 As opções de enquetes de horário usam o fuso horário salvo no seu perfil. Ative **Detecção automática de fuso horário** para usar o fuso informado pelo seu navegador ou desative essa configuração e selecione sua região em **Fuso Horário**. Em seguida, selecione **Atualizar perfil**.
-
-A lista de seleção manual inclui regiões conhecidas que abrangem as regras de horário atuais em todo o mundo. Sua região salva ou detectada automaticamente também aparece, mesmo que não seja uma das opções padrão.
-
-Escolha uma região que siga as mudanças de horário locais. Para localidades da Colúmbia Britânica que usam o horário do Pacífico durante todo o ano, escolha **Vancouver (Colúmbia Britânica)**. **Los Angeles (Pacífico dos EUA)** segue as mudanças de horário do Pacífico dos EUA. Mantenha seu navegador e sistema operacional atualizados para que reconheçam as alterações nas regras de horário locais.
 
 <!-- translation-section: resetting-your-password -->
 

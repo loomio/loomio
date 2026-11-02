@@ -1854,7 +1854,6 @@ ca:
     insert_embedded_url: Incrusta un vídeo
   change_picture_form:
     title: Estableix la foto de perfil
-    helptext: Podeu penjar la vostra foto de perfil, o en cas de tenir  a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, utilitzar-lo.
     use_initials: Utilitza les inicials
     use_gravatar: Utilitza el gravatar
     use_uploaded: Penja una foto nova

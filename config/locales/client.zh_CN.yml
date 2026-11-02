@@ -1921,7 +1921,6 @@ zh_CN:
   change_picture_form:
     aria_label: 个人资料照片表单
     title: 设置个人资料照片
-    helptext: 您可以上传自己的个人资料图片，或者如果您有<a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>帐户，也可以使用该帐户。
     use_initials: 使用首字母缩写
     use_gravatar: 使用 Gravatar
     use_uploaded: 上传新照片

@@ -1,6 +1,6 @@
 ---
 title: הפרופיל שלך
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,24 +9,22 @@ sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
-  time-zone: ceae2068bfaa750e
+  time-zone: e341837e759e4369
 generated:
   introduction: 4027638a6b7b6f18
   edit-profile: e9b6a9fcbc689451
   update-your-personal-info: 2e754c9e097727e4
-  viewing-another-person-s-profile: a99bab401d618088
-  uploading-a-profile-photo: a2b4265133d66c7a
-  language-settings: 7948fc10a66e10fc
+  uploading-a-profile-photo: 913bfe19e30ee20d
+  language-settings: 0025e4a36f65deb7
   resetting-your-password: cd5ab0bf29f43ced
   merge-accounts: d4e67d4b07cac895
   deleting-your-account: 25cfef2b62b317f7
-  time-zone: ec90b9024959758d
+  time-zone: 6ad3e43cff753828
 title_source: 528d89ad72cba22e
 title_generated: 9db27d9770fa26f5
 ---
@@ -59,39 +57,24 @@ title_generated: 9db27d9770fa26f5
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## צפייה בפרופיל של אדם אחר
-
-יש לבחור בשם או באווטאר של אדם כדי לפתוח את הפרופיל שלו. הדיונים, התגובות והסקרים האחרונים של אותו אדם מוצגים לצד פרטי הפרופיל והקבוצות שלו. הרשימה כוללת רק פעילות שיש לך הרשאה לגשת אליה; ללא כניסה לחשבון מוצגת פעילות ציבורית בלבד.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## העלאת תמונת פרופיל
 בעת יצירת חשבון Loomio, ראשי התיבות של השם משמשים כתמונת ברירת המחדל של הפרופיל. ניתן להעלות תמונת פרופיל בלחיצה על התמונה בעמוד הפרופיל.
 
-אם קיימת תמונת [Gravatar](https://en.gravatar.com/), ניתן להגדיר אותה כתמונת הפרופיל באמצעות האפשרות **שימוש בGravatar**. ניתן גם להגדיר ל-Loomio להשתמש בתמונה המשמשת בפלטפורמות או בכלים נפוצים אחרים.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## הגדרות שפה
-Loomio מפותח באנגלית, אך [מתורגם לשפות רבות על ידי מתנדבים](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## שפה
 
 Loomio מזהה את הגדרות השפה של הדפדפן, אך ניתן להגדיר ידנית את השפה המועדפת מתוך האפשרויות הזמינות בדף הפרופיל.
-
-![](profile_language.png)
 
 <!-- translation-section: time-zone -->
 
 ## אזור זמן
 
-האפשרויות בסקר זמן משתמשות באזור הזמן שנשמר בפרופיל. יש להפעיל את **זיהוי אוטומטי של אזור זמן** כדי להשתמש באזור הזמן שמדווח הדפדפן, או להשבית את ההגדרה ולבצע בחירה באזור המתאים תחת **אזור זמן**, ולאחר מכן ללחוץ על **עדכן פרופיל**.
-
-הרשימה לבחירה ידנית כוללת אזורים מוכרים המייצגים את כללי השעון הנוכחיים ברחבי העולם. גם האזור שנשמר או זוהה אוטומטית מופיע ברשימה, גם אם אינו אחת מהאפשרויות הרגילות.
-
-יש לבצע בחירה באזור התואם את שינויי השעון המקומיים. עבור מקומות בקולומביה הבריטית המשתמשים בשעון האוקיינוס השקט לאורך כל השנה, יש לבצע בחירה באפשרות **ונקובר (קולומביה הבריטית)**. האפשרות **לוס אנג'לס (חוף האוקיינוס השקט בארה״ב)** פועלת לפי שינויי השעון באזור האוקיינוס השקט בארה״ב. יש לעדכן את הדפדפן ואת מערכת ההפעלה כדי שיזהו שינויים בכללי השעה המקומית.
+האפשרויות בסקר זמן משתמשות באזור הזמן שנשמר בפרופיל. יש להפעיל את **זיהוי אוטומטי של אזור זמן** כדי להשתמש באזור הזמן שמדווח הדפדפן, או להשבית את ההגדרה ולבחור באזור המתאים תחת **אזור זמן**, ולאחר מכן לבחור באפשרות **עדכן פרופיל**.
 
 <!-- translation-section: resetting-your-password -->
 

@@ -1854,7 +1854,6 @@ nl_NL:
     insert_embedded_url: Video integreren
   change_picture_form:
     title: 'Stel profielfoto in '
-    helptext: Je kunt je eigen profiel foto uploaden, of als je een <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account hebt, kun je dat gebruiken.
     use_initials: Gebruik initialen
     use_gravatar: Gebruik Gravatar
     use_uploaded: Upload nieuwe foto

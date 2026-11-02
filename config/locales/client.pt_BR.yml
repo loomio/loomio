@@ -1875,7 +1875,6 @@ pt_BR:
     insert_embedded_url: Anexar video
   change_picture_form:
     title: Escolher a foto do perfil
-    helptext: Você pode enviar sua própria foto de perfil, ou se você tem uma conta de  <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, você pode usar isso.
     use_initials: Usar iniciais
     use_gravatar: Use Gravatar
     use_uploaded: Enviar nova foto

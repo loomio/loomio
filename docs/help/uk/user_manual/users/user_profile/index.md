@@ -1,6 +1,6 @@
 ---
 title: Ваш профіль
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -9,24 +9,22 @@ sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
-  time-zone: ceae2068bfaa750e
+  time-zone: e341837e759e4369
 generated:
   introduction: 94fcb7c9c4646246
   edit-profile: 656dda8db5f7c305
   update-your-personal-info: d8ee8139b15545bd
-  viewing-another-person-s-profile: 7db017d1b6ff752d
-  uploading-a-profile-photo: a82279b1435e2c78
-  language-settings: 8a6281a607d328a9
+  uploading-a-profile-photo: c2ed611703332d5e
+  language-settings: 00c6f7dfc812bd5e
   resetting-your-password: f0994e96d5cd757f
   merge-accounts: db5a0a46c8fe0a7e
   deleting-your-account: aabae7df0f7af278
-  time-zone: 6226750d9e4d1beb
+  time-zone: a042707de8e90bac
 title_source: 528d89ad72cba22e
 title_generated: c5e37ca5d5d3c4fd
 ---
@@ -59,39 +57,24 @@ title_generated: c5e37ca5d5d3c4fd
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Перегляд профілю іншої людини
-
-Виберіть ім’я або аватар людини, щоб відкрити її профіль. Поруч із даними профілю та групами наведено її нещодавні обговорення, коментарі й опитування. Список містить лише дії, до яких ви маєте доступ; відвідувачі, які не ввійшли в обліковий запис, бачать лише публічні дії.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Завантаження фото профілю
 Коли ви створюєте обліковий запис Loomio, початковим зображенням вашого профілю будуть ваші ініціали. Щоб завантажити фото профілю, натисніть на своє зображення на сторінці профілю.
 
-Якщо у вас є [Gravatar](https://en.gravatar.com/), ви можете встановити його як зображення профілю, вибравши **Використати Gravatar**. Також ви можете налаштувати Loomio на використання фото, яке ви використовуєте на інших поширених платформах або в інструментах.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Налаштування мови
-Loomio розробляється англійською мовою, але [волонтери перекладають його багатьма мовами](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Мова
 
 Loomio визначить мовні налаштування вашого браузера, але ви можете вручну вибрати бажану мову з доступних варіантів на сторінці профілю.
-
-![](profile_language.png)
 
 <!-- translation-section: time-zone -->
 
 ## Часовий пояс
 
 Варіанти опитування щодо часу використовують часовий пояс, збережений у вашому профілі. Увімкніть **Автоматичне визначення часового поясу**, щоб використовувати часовий пояс, який повідомляє ваш браузер, або вимкніть його й оберіть свій регіон у полі **Часовий пояс**, а потім натисніть **Оновити профіль**.
-
-Список для ручного вибору містить відомі регіони, що охоплюють чинні правила обчислення часу в усьому світі. Ваш збережений або автоматично визначений регіон також відображається, навіть якщо його немає серед стандартних варіантів.
-
-Оберіть регіон, у якому діють такі самі правила переведення годинників, як у вашій місцевості. Для місцевостей Британської Колумбії, де цілий рік діє тихоокеанський час, оберіть **Ванкувер (Британська Колумбія)**. **Лос-Анджелес (тихоокеанський час США)** дотримується правил переведення годинників для тихоокеанського часу США. Регулярно оновлюйте браузер і операційну систему, щоб вони враховували зміни місцевих правил обчислення часу.
 
 <!-- translation-section: resetting-your-password -->
 
