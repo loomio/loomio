@@ -239,11 +239,23 @@ export default new class TopicService {
         canPerform() {
           return AbilityService.canEditTags(topic);
         },
-        perform() {
+        async perform() {
+          let topicItem = topic.createdTopicItem();
+          // Inbox previews omit timeline items. Resolve the opening item's
+          // explicit assignments before rendering the editor.
+          if (!topicItem) {
+            try {
+              await Records.topicItems.fetch({params: {topic_id: topic.id, sequence_id: 0}});
+              topicItem = topic.createdTopicItem();
+            } catch (error) {
+              Flash.serverError(error);
+              return;
+            }
+          }
           return openModal({
             component: 'TopicTagsDialog',
             persistent: false,
-            props: { topic }
+            props: { topic, topicItem }
           });
         }
       },
