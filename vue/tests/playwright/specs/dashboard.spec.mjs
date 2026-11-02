@@ -1,20 +1,16 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('displays_a_view_of_recent_threads', async ({ lmo: page }) => {
-  await page.loadPath('setup_dashboard')
-  await page.expectText('.dashboard-page__collections', 'Poll discussion')
-  await page.expectText('.dashboard-page__collections', 'Recent discussion')
-  await page.expectNoText('.dashboard-page__collections', 'Old discussion')
+test('displays_a_view_of_recent_threads', async ({ page }) => {
+  await page.goto('/dev/setup_dashboard')
+  await expect(page.locator('.dashboard-page__collections')).toContainText('Poll discussion')
+  await expect(page.locator('.dashboard-page__collections')).toContainText('Recent discussion')
+  await expect(page.locator('.dashboard-page__collections')).not.toContainText('Old discussion')
 });
 
-test('dismisses_a_thread', async ({ lmo: page }) => {
-  await page.loadPath('setup_dashboard_with_one_thread')
-  // page.ensureSidebar()
-  // page.click('.sidebar__list-item-button--recent')
-  await page.expectElement('.topic-previews-container')
+test('dismisses_a_thread', async ({ page }) => {
+  await page.goto('/dev/setup_dashboard_with_one_thread')
+  await expect(page.locator('.topic-previews-container')).toBeVisible()
   await page.click('.action-dock__button--dismiss_thread')
-  // page.expectText('.confirm-modal h1', 'Dismiss thread')
-  // page.click('.confirm-modal__submit')
-  await page.expectFlash('Discussion marked as read')
+  await expect(page.locator('.flash-root__message')).toContainText('Discussion marked as read')
 });
 

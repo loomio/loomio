@@ -1,31 +1,28 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('discussion_form_shows_validation_errors', async ({ lmo: page }) => {
-  await page.loadPath('setup_discussion')
+test('discussion_form_shows_validation_errors', async ({ page }) => {
+  await page.goto('/dev/setup_discussion')
   await page.click('.action-dock__button--edit_thread')
-  await page.clearField('.discussion-form__title-input input')
+  await page.fill('.discussion-form__title-input input', '')
   await page.click('.discussion-form__submit')
-  await page.expectFlash('Please check')
-  await page.expectFlash('title')
+  await expect(page.locator('.flash-root__message')).toContainText('Please check')
+  await expect(page.locator('.flash-root__message')).toContainText('title')
 });
 
-test('group_form_shows_validation_errors', async ({ lmo: page }) => {
-  await page.loadPath('setup_group')
+test('group_form_shows_validation_errors', async ({ page }) => {
+  await page.goto('/dev/setup_group')
   await page.click('.action-menu')
   await page.click('.action-dock__button--edit_group')
-  await page.clearField('#group-name')
+  await page.fill('#group-name', '')
   await page.click('.group-form__submit-button')
-  await page.expectFlash('name')
+  await expect(page.locator('.flash-root__message')).toContainText('name')
 });
 
-test('poll_form_shows_validation_errors', async ({ lmo: page }) => {
-  await page.loadPath('polls/test_discussion')
-  await page.pause(2000)
-  await page.execute("document.querySelector('.activity-panel__add-poll').click()")
-  await page.pause(1000)
-  await page.execute("document.querySelector('.decision-tools-card__poll-type--proposal').click()")
-  await page.waitFor('.poll-common-form-fields__title input')
-  await page.clearField('.poll-common-form-fields__title input')
-  await page.execute("document.querySelector('.poll-common-form__submit').click()")
-  await page.expectFlash('title')
+test('poll_form_shows_validation_errors', async ({ page }) => {
+  await page.goto('/dev/polls/test_discussion')
+  await page.click('.activity-panel__add-poll')
+  await page.click('.decision-tools-card__poll-type--proposal')
+  await page.fill('.poll-common-form-fields__title input', '')
+  await page.click('.poll-common-form__submit')
+  await expect(page.locator('.flash-root__message')).toContainText('title')
 });

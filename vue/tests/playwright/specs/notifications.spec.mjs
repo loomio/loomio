@@ -1,19 +1,18 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('has_all_the_notifications', async ({ lmo: page }) => {
-  await page.loadPath('setup_all_notifications')
-  await page.pause(500)
+test('has_all_the_notifications', async ({ page }) => {
+  await page.goto('/dev/setup_all_notifications')
   await page.click('.notifications__button')
-  await page.expectText('.notifications__dropdown', 'invited you to a group')
-  await page.expectText('.notifications__dropdown', 'accepted your invitation to join')
-  await page.expectText('.notifications__dropdown', 'invited you to join')
-  await page.expectText('.notifications__dropdown', 'approved your request')
-  await page.expectText('.notifications__dropdown', 'requested to join')
-  await page.expectText('.notifications__dropdown', 'mentioned you in')
-  await page.expectText('.notifications__dropdown', 'replied to you in' )
-  await page.expectText('.notifications__dropdown', 'published a proposal outcome')
-  await page.expectText('.notifications__dropdown', 'poll closing in 24 hours')
-  await page.expectText('.notifications__dropdown', 'invited you to vote')
-  await page.expectText('.notifications__dropdown', 'reacted 🙂 to your comment')
-  await page.expectText('.notifications__dropdown', 'made you an admin')
+  await expect(page.locator('.notifications__dropdown')).toContainText('invited you to a group')
+  await expect(page.locator('.notifications__dropdown')).toContainText('accepted your invitation to join')
+  await expect(page.locator('.notifications__dropdown')).toContainText('invited you to join')
+  await expect(page.locator('.notifications__dropdown')).toContainText('approved your request')
+  await expect(page.locator('.notifications__dropdown')).toContainText('requested to join')
+  await expect(page.locator('.notifications__dropdown')).toContainText('mentioned you in')
+  await expect(page.locator('.notifications__dropdown')).toContainText('replied to you in')
+  await expect(page.locator('.notifications__dropdown')).toContainText('published a proposal outcome')
+  await expect(page.locator('.notifications__dropdown')).toContainText('poll closing in 24 hours')
+  await expect(page.locator('.notifications__dropdown')).toContainText('invited you to vote')
+  await expect(page.locator('.notifications__dropdown')).toContainText('reacted 🙂 to your comment')
+  await expect(page.locator('.notifications__dropdown')).toContainText('made you an admin')
 });

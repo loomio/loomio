@@ -1,10 +1,10 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('registers_the_push_worker_and_serves_home_screen_metadata', async ({ lmo: page }) => {
-  await page.loadPath('setup_group')
-  await page.expectElement('.group-page')
+test('registers_the_push_worker_and_serves_home_screen_metadata', async ({ page }) => {
+  await page.goto('/dev/setup_group')
+  await expect(page.locator('.group-page')).toBeVisible()
 
-  const value = await page.execute(async () => {
+  const value = await page.evaluate(async () => {
     const manifestLink = document.querySelector('link[rel="manifest"]')
     const manifest = await (await fetch(manifestLink.href)).json()
     const maskableIcon = manifest.icons.find((icon) => icon.purpose === 'maskable')

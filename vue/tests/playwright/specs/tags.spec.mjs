@@ -1,26 +1,26 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('restricted_member_can_start_a_thread_with_template_tags', async ({ lmo: page }) => {
-  await page.loadPath('setup_member_discussion_with_restricted_tags');
-  await page.expectElement('.tags-field__input.v-autocomplete');
-  await page.expectText('.tags-field__input .v-chip', 'Existing');
-  await page.expectText('.tags-field__input', 'Template default');
-  await page.fillIn('#discussion-title', 'Thread with existing tags');
-  await page.fillIn('.tags-field__input input:not([type="hidden"])', 'Other');
-  await page.click('.v-overlay--active .v-list-item');
-  await page.expectText('.tags-field__input', 'Other');
-  await page.fillIn('.tags-field__input input:not([type="hidden"])', 'Unauthorized new tag');
-  await page.first('.tags-field__input input:not([type="hidden"])').press('Enter');
-  await page.click('#discussion-title');
-  await page.expectNoText('.tags-field__input .v-chip', 'Unauthorized new tag');
-  await page.click('.discussion-form__submit');
-  await page.expectFlash('Discussion started');
-  await page.expectText('.context-panel__heading', 'Thread with existing tags');
-  await page.expectText('.tags-display', 'Existing');
-  await page.expectText('.tags-display', 'Other');
-  await page.expectText('.tags-display', 'Template default');
-  await page.expectNoText('.tags-display', 'Unauthorized new tag');
-  await page.expectCount('.topic-header .tag-color-dot[style*="background-color"]', 3);
-  await page.refreshAndWait();
-  await page.expectText('.tags-display', 'Template default');
+test('restricted_member_can_start_a_thread_with_template_tags', async ({ page }) => {
+  await page.goto('/dev/setup_member_discussion_with_restricted_tags')
+  await expect(page.locator('.tags-field__input.v-autocomplete')).toBeVisible()
+  await expect(page.locator('.tags-field__input .v-chip')).toContainText('Existing')
+  await expect(page.locator('.tags-field__input')).toContainText('Template default')
+  await page.fill('#discussion-title', 'Thread with existing tags')
+  await page.fill('.tags-field__input input:not([type="hidden"])', 'Other')
+  await page.click('.v-overlay--active .v-list-item')
+  await expect(page.locator('.tags-field__input')).toContainText('Other')
+  await page.fill('.tags-field__input input:not([type="hidden"])', 'Unauthorized new tag')
+  await page.locator('.tags-field__input input:not([type="hidden"])').first().press('Enter');
+  await page.click('#discussion-title')
+  await expect(page.locator('.tags-field__input .v-chip')).not.toContainText('Unauthorized new tag')
+  await page.click('.discussion-form__submit')
+  await expect(page.locator('.flash-root__message')).toContainText('Discussion started')
+  await expect(page.locator('.context-panel__heading')).toContainText('Thread with existing tags')
+  await expect(page.locator('.tags-display')).toContainText('Existing')
+  await expect(page.locator('.tags-display')).toContainText('Other')
+  await expect(page.locator('.tags-display')).toContainText('Template default')
+  await expect(page.locator('.tags-display')).not.toContainText('Unauthorized new tag')
+  await expect(page.locator('.topic-header .tag-color-dot[style*="background-color"]')).toHaveCount(3)
+  await page.reload()
+  await expect(page.locator('.tags-display')).toContainText('Template default')
 });

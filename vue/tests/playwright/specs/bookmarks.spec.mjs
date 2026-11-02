@@ -1,21 +1,20 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('can_save_view_and_remove_a_bookmark', async ({ lmo: page }) => {
-  await page.loadPath('setup_discussion')
-  await page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'a comment worth bookmarking')
+test('can_save_view_and_remove_a_bookmark', async ({ page }) => {
+  await page.goto('/dev/setup_discussion')
+  await page.fill('.comment-form .lmo-textarea div[contenteditable=true]', 'a comment worth bookmarking')
   await page.click('.comment-form__submit-button')
-  await page.expectFlash('Comment added')
-  await page.pause()
-  await page.execute("Array.from(document.querySelectorAll('.new-comment')).find(el => el.textContent.includes('a comment worth bookmarking')).querySelector('.action-menu--btn').click()")
-  await page.waitFor('.action-dock__button--save_bookmark')
-  await page.execute("Array.from(document.querySelectorAll('.action-dock__button--save_bookmark')).find(el => el.offsetParent).click()")
-  await page.expectFlash('Bookmark saved')
+  await expect(page.locator('.flash-root__message')).toContainText('Comment added')
+  await page.locator('.new-comment', { hasText: 'a comment worth bookmarking' }).locator('.action-menu--btn').click()
+  await expect(page.locator('.action-dock__button--save_bookmark')).toBeVisible()
+  await page.click('.action-dock__button--save_bookmark:visible')
+  await expect(page.locator('.flash-root__message')).toContainText('Bookmark saved')
 
-  await page.goTo('bookmarks')
-  await page.expectText('.bookmarks-page', 'What star sign are you?')
-  await page.expectText('.bookmarks-page', 'Comment by Patrick Swayze')
+  await page.goto('/bookmarks')
+  await expect(page.locator('.bookmarks-page')).toContainText('What star sign are you?')
+  await expect(page.locator('.bookmarks-page')).toContainText('Comment by Patrick Swayze')
 
   await page.click('.bookmarks-page button[title="Remove bookmark"]')
-  await page.expectFlash('Bookmark removed')
-  await page.expectNoElement('.bookmarks-page .v-list-item')
+  await expect(page.locator('.flash-root__message')).toContainText('Bookmark removed')
+  await expect(page.locator('.bookmarks-page .v-list-item')).toHaveCount(0)
 });

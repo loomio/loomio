@@ -1,11 +1,11 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('displays_unread_threads_by_group', async ({ lmo: page }) => {
-  await page.loadPath('setup_inbox')
-  await page.expectText('.inbox-page__group', 'Dirty Dancing Shoes')
-  await page.expectText('.inbox-page', 'Pinned discussion')
-  await page.expectText('.inbox-page', 'Point Break')
-  await page.expectText('.inbox-page', 'Recent discussion')
-  await page.expectNoText('.inbox-page', 'Muted discussion')
-  await page.expectNoText('.inbox-page', 'Old discussion')
+test('displays_unread_threads_by_group', async ({ page }) => {
+  await page.goto('/dev/setup_inbox')
+  await expect(page.locator('.inbox-page__group')).toContainText('Dirty Dancing Shoes')
+  await expect(page.locator('.inbox-page')).toContainText('Pinned discussion')
+  await expect(page.locator('.inbox-page')).toContainText('Point Break')
+  await expect(page.locator('.inbox-page')).toContainText('Recent discussion')
+  await expect(page.locator('.inbox-page')).not.toContainText('Muted discussion')
+  await expect(page.locator('.inbox-page')).not.toContainText('Old discussion')
 });
