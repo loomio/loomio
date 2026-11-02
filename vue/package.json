@@ -59,7 +59,7 @@
     "@tiptap/markdown": "3.32.0",
     "@tiptap/pm": "3.32.0",
     "@tiptap/suggestion": "3.32.0",
-    "@tiptap/vue-3": "3.32.0",
+    "@tiptap/vue-3": "3.32.1",
     "@tiptap/y-tiptap": "3.0.10",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
