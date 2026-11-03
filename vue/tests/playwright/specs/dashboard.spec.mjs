@@ -10,7 +10,7 @@ test('displays_a_view_of_recent_threads', async ({ page }) => {
 test('dismisses_a_thread', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_with_one_thread')
   await expect(page.locator('.topic-previews-container')).toBeVisible()
-  await page.click('.action-dock__button--dismiss_thread')
+  await page.locator('.action-dock__button--dismiss_thread').click()
   await expect(page.locator('.flash-root__message')).toContainText('Discussion marked as read')
 });
 

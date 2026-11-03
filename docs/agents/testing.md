@@ -35,11 +35,11 @@ Always let `bin/e2e` build Vue assets unless you have just built them. Running a
 ### How it works
 
 1. Dev scenarios in `app/controllers/dev/` and `app/helpers/dev/` set up test data
-2. Specs in `vue/tests/playwright/specs/` drive the browser through the `lmo` page helper, destructured as `page`: `test('name', async ({ lmo: page }) => { await page.loadPath('setup_group') })`
-3. `page.loadPath('scenario_name')` loads `http://localhost:3001/dev/scenario_name`
+2. Specs in `vue/tests/playwright/specs/` drive the browser with plain Playwright: `test('name', async ({ page }) => { await page.goto('/dev/setup_group') })`
+3. `page.goto('/dev/scenario_name')` loads the scenario from `http://localhost:3001`
 4. The Rails server runs in test mode with `RAILS_ENV=test`
 
-Await every helper call. Helpers address the first element matching a selector. Use `page.first(selector)` with Playwright's `expect` for assertions the helper does not cover, and `page.page` for the raw Playwright page (keyboard, dialogs, other tabs).
+Write specs with plain Playwright: `page.goto`, locator actions such as `await page.locator('.poll-common-form__submit').click()`, and web-first assertions such as `await expect(page.locator('.selector')).toContainText('text')`. Actions and assertions wait for the element, so do not add pauses or wait steps before them. Locators are strict: make each one identify a single element, using a more specific selector, `getByRole`, or `{ hasText }`, and use `.first()` only when any matching element will do. Loomio's named classes such as `.poll-common-form__submit` are stable test hooks; prefer them, or role and text locators, to generic Vuetify classes. Pass a `timeout` only when something legitimately takes longer than the 8-second default. Shared multi-step flows, such as signing up, live as plain functions in `vue/tests/playwright/helpers/accounts.mjs`. The `test` fixture from `vue/tests/playwright/fixtures.mjs` accepts `window.confirm()` dialogs.
 
 ### Fixing test failures
 
@@ -52,8 +52,8 @@ Await every helper call. Helpers address the first element matching a selector. 
 - `bin/e2e` — test runner script
 - `vue/playwright.config.mjs` — Playwright configuration
 - `vue/tests/playwright/specs/` — test specs
-- `vue/tests/playwright/fixtures.mjs` — the `lmo` fixture
-- `vue/tests/playwright/helpers/pageHelper.mjs` — shared browser helpers
+- `vue/tests/playwright/fixtures.mjs` — the `test` fixture
+- `vue/tests/playwright/helpers/accounts.mjs` — shared sign-up and sign-in flows
 - `app/controllers/dev/` — dev scenario routes
 - `app/helpers/dev/ninties_movies_helper.rb` — main scenario data builder
 - `app/helpers/dev/scenarios_helper.rb` — additional scenario helpers

@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { baseUrl } from './tests/playwright/helpers/pageHelper.mjs';
+import { baseUrl } from './tests/playwright/helpers/server.mjs';
 
 const screenshotLocale = process.env.DOCS_SCREENSHOT_APP_LOCALE?.replace('_', '-');
 

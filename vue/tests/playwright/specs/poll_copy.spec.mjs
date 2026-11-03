@@ -8,7 +8,7 @@ for (const [state, scenario] of [
   test(`can_copy_${state}_proposal_and_start_voting_immediately`, async ({ page }) => {
     await page.goto(`/dev/${scenario}`)
     // Keep old copy links working even though the poll menu now saves templates.
-    await page.click('.poll-created .action-menu--btn')
+    await page.locator('.poll-created .action-menu--btn').click()
     await expect(page.locator('.action-dock__button--make_a_copy')).toHaveCount(0)
     const templateHref = await page.locator('.action-dock__button--save_as_template').first().getAttribute('href');
     const pollId = new URL(templateHref, page.url()).searchParams.get('poll_id');
@@ -17,16 +17,16 @@ for (const [state, scenario] of [
 
     await expect(page.locator('.poll-common-form__opens-immediately input')).toBeChecked()
     await expect(page.locator('.poll-common-opening-at-field')).toHaveCount(0)
-    await page.click('.poll-common-form__opens-immediately .v-selection-control__wrapper')
+    await page.locator('.poll-common-form__opens-immediately .v-selection-control__wrapper').click()
     await expect(page.locator('.poll-common-opening-at-field')).toBeVisible()
     await expect(page.locator('.poll-common-opening-at-field .v-date-input input')).toBeEnabled()
     await expect(page.locator('.poll-common-opening-at-field__timepicker input')).toBeEnabled()
-    await page.click('.poll-common-form__opens-immediately .v-selection-control__wrapper')
+    await page.locator('.poll-common-form__opens-immediately .v-selection-control__wrapper').click()
     await expect(page.locator('.poll-common-opening-at-field')).toHaveCount(0)
-    await page.click('.poll-common-form .v-radio:first-child .v-selection-control__wrapper')
+    await page.locator('.poll-common-form .v-radio:first-child .v-selection-control__wrapper').click()
 
-    await page.fill('.poll-common-form-fields__title input', `Copy of ${state} proposal`)
-    await page.click('.poll-common-form__submit')
+    await page.locator('.poll-common-form-fields__title input').fill(`Copy of ${state} proposal`)
+    await page.locator('.poll-common-form__submit').click()
     await expect(page.locator('.poll-common-form__submit')).toHaveCount(0)
     await page.reload()
     await expect(page.locator('.context-panel__heading')).toContainText(`Copy of ${state} proposal`)
@@ -39,12 +39,12 @@ for (const [state, scenario] of [
 test('can_open_scheduled_proposal_immediately_by_editing', async ({ page }) => {
   await page.goto('/dev/polls/test_scheduled_poll')
   await expect(page.locator('.poll-common-action-panel__scheduled')).toBeVisible()
-  await page.click('.poll-created .action-menu--btn')
-  await page.click('.action-dock__button--edit_poll')
+  await page.locator('.poll-created .action-menu--btn').click()
+  await page.locator('.action-dock__button--edit_poll').click()
   await expect(page.locator('.poll-common-opening-at-field')).toBeVisible()
-  await page.click('.poll-common-form__opens-immediately .v-selection-control__wrapper')
+  await page.locator('.poll-common-form__opens-immediately .v-selection-control__wrapper').click()
   await expect(page.locator('.poll-common-form__opens-immediately input')).toBeChecked()
-  await page.click('.poll-common-form__submit')
+  await page.locator('.poll-common-form__submit').click()
   await expect(page.locator('.poll-common-form__submit')).toHaveCount(0)
   await page.reload()
   await expect(page.locator('.poll-common-action-panel__scheduled')).toHaveCount(0)

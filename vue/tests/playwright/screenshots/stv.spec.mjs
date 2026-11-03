@@ -1,33 +1,36 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 import richText from '../helpers/oatmilkRichText.mjs';
 
 async function addOption(page, name) {
-  await page.clickAndWait('.poll-common-form__add-option-btn', '.poll-common-option-form');
-  await page.fillIn('.poll-option-form__name input', name);
-  await page.clickAndWait('.poll-option-form__done-btn', '.poll-common-form__add-option-btn');
+  await page.locator('.poll-common-form__add-option-btn').click()
+  await page.locator('.poll-option-form__name input').fill(name)
+  await page.locator('.poll-option-form__done-btn').click()
 }
 
 async function openStvForm(page) {
-  await page.loadPath('setup_manual_oatmilk_new_poll?poll_type=stv');
-  await page.waitFor('.poll-common-form');
-  await page.fillIn('.poll-common-form-fields__title input', 'Elect the reusable packaging committee');
-  await page.fillRichText('.poll-common-form-fields__details [contenteditable=true]', richText.context('new-stv-election', [
+  await page.goto('/dev/setup_manual_oatmilk_new_poll?poll_type=stv')
+  await expect(page.locator('.poll-common-form').first()).toBeVisible()
+  await page.locator('.poll-common-form-fields__title input').fill('Elect the reusable packaging committee')
+  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
+    editor.focus()
+    editor.innerHTML = html
+    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
+  }, richText.context('new-stv-election', [
     'Elect three people to oversee bottle deposits, cafe collections, washing, and the review of the six-week trial.',
     'Rank as many candidates as you can support so your vote can transfer if a candidate is elected or eliminated.',
     'The three elected candidates will report to the cooperative after the trial.'
-  ]));
+  ]))
   ['Samira Patel', 'Alex Morgan', 'Taylor Reed', 'Morgan Price', 'Riley Thompson'].forEach(name => addOption(page, name));
-  await page.clear('.poll-common-form .lmo-number-input input');
-  await page.fillIn('.poll-common-form .lmo-number-input input', '3');
+  await page.locator('.poll-common-form .lmo-number-input input').fill('3')
 }
 
 async function openStvPoll(page, results = false) {
-  await page.loadPath(`setup_manual_oatmilk_stv${results ? '?results=1' : ''}`);
-  await page.expectText('.poll-created', 'Elect the reusable packaging committee');
+  await page.goto(`/dev/setup_manual_oatmilk_stv${results ? '?results=1' : ''}`)
+  await expectLabel(page.locator('.poll-created'), 'Elect the reusable packaging committee')
 }
 
-test('form', async ({ lmo: page, manual: screenshot }) => {
+test('form', async ({ page, manual: screenshot }) => {
   await openStvForm(page);
   await screenshot.captureElement(
     'polls/stv/form',
@@ -36,10 +39,10 @@ test('form', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('vote_in_progress', async ({ lmo: page, manual: screenshot }) => {
+test('vote_in_progress', async ({ page, manual: screenshot }) => {
   await openStvPoll(page);
-  await page.waitFor('.poll-stv-vote-form');
-  await page.execute(`
+  await expect(page.locator('.poll-stv-vote-form').first()).toBeVisible()
+  await page.evaluate(`
     const form = document.querySelector('.poll-stv-vote-form');
     const divider = form.querySelector('.poll-stv-vote-form__divider');
     const list = divider.parentElement;
@@ -53,8 +56,7 @@ test('vote_in_progress', async ({ lmo: page, manual: screenshot }) => {
       list.insertBefore(option, divider);
     });
     form.scrollIntoView({block: 'center'});
-  `);
-  await page.pause(200);
+  `)
   await screenshot.captureElement(
     'polls/stv/stv-vote-in-progress',
     '.poll-stv-vote-form',
@@ -62,10 +64,10 @@ test('vote_in_progress', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('results_summary', async ({ lmo: page, manual: screenshot }) => {
+test('results_summary', async ({ page, manual: screenshot }) => {
   await openStvPoll(page, true);
-  await page.waitFor('.poll-stv-chart-panel');
-  await page.expectText('.poll-stv-chart-panel', 'Scottish STV');
+  await expect(page.locator('.poll-stv-chart-panel').first()).toBeVisible()
+  await expectLabel(page.locator('.poll-stv-chart-panel'), 'Scottish STV')
   await screenshot.captureElement(
     'polls/stv/stv-results-summary',
     '.poll-stv-chart-panel',
@@ -73,10 +75,10 @@ test('results_summary', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('outcome', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_stv?results=1&outcome=1');
-  await page.expectText('.poll-created', 'Elect the reusable packaging committee');
-  await page.waitFor('.poll-common-outcome-panel');
+test('outcome', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_stv?results=1&outcome=1')
+  await expectLabel(page.locator('.poll-created'), 'Elect the reusable packaging committee')
+  await expect(page.locator('.poll-common-outcome-panel').first()).toBeVisible()
   await screenshot.captureRegion(
     'polls/stv/outcome',
     ['.poll-created .poll-common-card__title', '.poll-created .poll-stv-chart-panel', '.poll-created .action-dock'],
@@ -90,10 +92,10 @@ test('outcome', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('round_details', async ({ lmo: page, manual: screenshot }) => {
+test('round_details', async ({ page, manual: screenshot }) => {
   await openStvPoll(page, true);
-  await page.waitFor('.poll-stv-chart-panel');
-  await page.clickAndWait('.poll-stv-chart-panel .v-expansion-panel-title', '.poll-stv-chart-panel .v-expansion-panel-text');
+  await expect(page.locator('.poll-stv-chart-panel').first()).toBeVisible()
+  await page.locator('.poll-stv-chart-panel .v-expansion-panel-title').click()
   await screenshot.captureElement(
     'polls/stv/stv-results',
     '.poll-stv-chart-panel',

@@ -1,9 +1,9 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
-test('discussion_templates_list', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_discussion_templates');
-  await page.waitFor('.discussion-templates-page');
-  await page.expectText('.discussion-templates-page', 'Bottle trial review');
+test('discussion_templates_list', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_discussion_templates')
+  await expect(page.locator('.discussion-templates-page').first()).toBeVisible()
+  await expectLabel(page.locator('.discussion-templates-page'), 'Bottle trial review')
   await screenshot.captureElement(
     'discussions/templates/list',
     '.discussion-templates-page .v-card',
@@ -11,12 +11,12 @@ test('discussion_templates_list', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('discussion_template_form', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_discussion_template_form');
-  await page.waitFor('.discussion-template-form');
-  await page.expectValue('.discussion-template-form-fields__title input', 'Returnable bottle trial review');
-  await page.expectElement('.discussion-template-form-fields__title-placeholder input');
-  await page.expectElement('.discussion-template-form__submit');
+test('discussion_template_form', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_discussion_template_form')
+  await expect(page.locator('.discussion-template-form').first()).toBeVisible()
+  await expect(page.locator('.discussion-template-form-fields__title input')).toHaveValue('Returnable bottle trial review')
+  await expect(page.locator('.discussion-template-form-fields__title-placeholder input').first()).toBeVisible()
+  await expect(page.locator('.discussion-template-form__submit').first()).toBeVisible()
   await screenshot.captureElement(
     'discussions/templates/form',
     '.discussion-template-form',
@@ -24,12 +24,12 @@ test('discussion_template_form', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('discussion_from_template', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_discussion_from_template');
-  await page.waitFor('.discussion-form');
-  await page.expectValue('#discussion-title', 'Returnable bottle trial review');
-  await page.waitFor('.discussion-form .common-notify-fields');
-  await page.expectText('.discussion-form .common-notify-fields', 'Oatmilk Cooperative');
+test('discussion_from_template', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_discussion_from_template')
+  await expect(page.locator('.discussion-form').first()).toBeVisible()
+  await expect(page.locator('#discussion-title')).toHaveValue('Returnable bottle trial review')
+  await expect(page.locator('.discussion-form .common-notify-fields').first()).toBeVisible()
+  await expectLabel(page.locator('.discussion-form .common-notify-fields'), 'Oatmilk Cooperative')
   await screenshot.captureElement(
     'discussions/templates/use',
     '.discussion-form',

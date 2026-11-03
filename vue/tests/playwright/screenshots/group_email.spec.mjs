@@ -1,6 +1,6 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
-async function spotlight(selector) {
+function spotlight(selector) {
   return {
     ...(Array.isArray(selector) ? {selectors: selector} : {selector}),
     padding: 14,
@@ -10,20 +10,20 @@ async function spotlight(selector) {
   };
 }
 
-test('group_email_address', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_group');
-  await page.expectText('.group-page__name', 'Oatmilk Cooperative');
-  await page.expectText('.action-dock__button--email_group', 'oatmilk-cooperative@localhost');
+test('group_email_address', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_group')
+  await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
+  await expectLabel(page.locator('.action-dock__button--email_group'), 'oatmilk-cooperative@localhost')
   await screenshot.capture('groups/email/email_email_button', {
     spotlight: spotlight('.action-dock__button--email_group')
   });
 });
 
-test('unreleased_email_actions', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_unreleased_email');
-  await page.waitFor('.group-emails-panel');
-  await page.expectText('.group-emails-panel', 'Taylor Brooks');
-  await page.expectText('.group-emails-panel', 'Returnable bottle collection proposal');
+test('unreleased_email_actions', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_unreleased_email')
+  await expect(page.locator('.group-emails-panel').first()).toBeVisible()
+  await expectLabel(page.locator('.group-emails-panel'), 'Taylor Brooks')
+  await expectLabel(page.locator('.group-emails-panel'), 'Returnable bottle collection proposal')
   await screenshot.captureElement('groups/email/email_unreleased_emails', '.group-emails-panel', {
     height: 800,
     spotlight: spotlight([

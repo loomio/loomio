@@ -1,6 +1,6 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
-async function spotlight(selectors) {
+function spotlight(selectors) {
   return {
     selectors,
     padding: 16,
@@ -10,11 +10,11 @@ async function spotlight(selectors) {
   };
 }
 
-test('process_run', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_formatting?key=0');
-  await page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  await page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
-  await page.expectText('.decision-tools-card__poll-types', 'Sense check');
+test('process_run', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_formatting?key=0')
+  await expectLabel(page.locator('.context-panel__heading'), 'Returnable bottles for cafe customers')
+  await page.locator('.activity-panel__add-poll').click()
+  await expectLabel(page.locator('.decision-tools-card__poll-types'), 'Sense check')
   await screenshot.captureElement(
     'polls/intro_to_decisions/process_run',
     '.actions-panel',
@@ -22,11 +22,11 @@ test('process_run', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('standalone_poll', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_group');
-  await page.expectText('.group-page__name', 'Oatmilk Cooperative');
-  await page.clickAndWait('.group-page-polls-tab', '.polls-panel__new-poll-button');
-  await page.expectText('.polls-panel__new-poll-button', 'New poll');
+test('standalone_poll', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_group')
+  await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
+  await page.locator('.group-page-polls-tab').click()
+  await expectLabel(page.locator('.polls-panel__new-poll-button'), 'New poll')
   await screenshot.capture('polls/intro_to_decisions/standalone_poll', {
     width: 1280,
     height: 900,

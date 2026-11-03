@@ -5,11 +5,11 @@ test('successfully_updates_a_profile', async ({ page }) => {
   await page.goto('/profile')
   await expect(page.locator('.profile-page__name-input input')).toBeVisible()
 
-  await page.fill('.profile-page__name-input input', 'Ferris Bueller')
-  await page.fill('.profile-page__username-input input', 'ferris_bueller-jr')
-  await page.click('.profile-page .e2e-wysiwyg-btn')
-  await page.fill('.profile-page .lmo-textarea div[contenteditable=true]', 'Save Ferris')
-  await page.click('.profile-page__update-button')
+  await page.locator('.profile-page__name-input input').fill('Ferris Bueller')
+  await page.locator('.profile-page__username-input input').fill('ferris_bueller-jr')
+  await page.locator('.profile-page .e2e-wysiwyg-btn').click()
+  await page.locator('.profile-page .lmo-textarea div[contenteditable=true]').fill('Save Ferris')
+  await page.locator('.profile-page__update-button').click()
   await expect(page.locator('.flash-root__message')).toContainText('Profile updated')
 
   await page.goto('/u/ferris_bueller-jr')
@@ -39,48 +39,48 @@ test('does_not_display_secret_groups_to_visitors', async ({ page }) => {
 
 test('does_not_accept_short_passwords', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
-  await page.click('.navbar__sidenav-toggle')
-  await page.click('.sidebar__user-dropdown')
-  await page.click('.user-dropdown__list-item-button--profile')
-  await page.click('.user-page__change_password')
-  await page.fill('.change-password-form__password input', 'Smush')
-  await page.fill('.change-password-form__password-confirmation input', 'Smush')
-  await page.click('.change-password-form__submit')
+  await page.locator('.navbar__sidenav-toggle').click()
+  await page.locator('.sidebar__user-dropdown').click()
+  await page.locator('.user-dropdown__list-item-button--profile').click()
+  await page.locator('.user-page__change_password').click()
+  await page.locator('.change-password-form__password input').fill('Smush')
+  await page.locator('.change-password-form__password-confirmation input').fill('Smush')
+  await page.locator('.change-password-form__submit').click()
   await expect(page.locator('.change-password-form__password-container .lmo-validation-error__message')).toContainText("is too short")
 });
 
 test('does_not_accept_mismatched_passwords', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
-  await page.click('.navbar__sidenav-toggle')
-  await page.click('.sidebar__user-dropdown')
-  await page.click('.user-dropdown__list-item-button--profile')
-  await page.click('.user-page__change_password')
-  await page.fill('.change-password-form__password input', 'SmushDemBerries')
-  await page.fill('.change-password-form__password-confirmation input', 'SmishDemBorries')
-  await page.click('.change-password-form__submit')
+  await page.locator('.navbar__sidenav-toggle').click()
+  await page.locator('.sidebar__user-dropdown').click()
+  await page.locator('.user-dropdown__list-item-button--profile').click()
+  await page.locator('.user-page__change_password').click()
+  await page.locator('.change-password-form__password input').fill('SmushDemBerries')
+  await page.locator('.change-password-form__password-confirmation input').fill('SmishDemBorries')
+  await page.locator('.change-password-form__submit').click()
   await expect(page.locator('.change-password-form__password-confirmation-container .lmo-validation-error__message')).toContainText("doesn't match")
 });
 
 test('can_set_a_password', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
-  await page.click('.navbar__sidenav-toggle')
-  await page.click('.sidebar__user-dropdown')
-  await page.click('.user-dropdown__list-item-button--profile')
-  await page.click('.user-page__change_password')
-  await page.fill('.change-password-form__password input', 'SmushDemBerries')
-  await page.fill('.change-password-form__password-confirmation input', 'SmushDemBerries')
-  await page.click('.change-password-form__submit')
+  await page.locator('.navbar__sidenav-toggle').click()
+  await page.locator('.sidebar__user-dropdown').click()
+  await page.locator('.user-dropdown__list-item-button--profile').click()
+  await page.locator('.user-page__change_password').click()
+  await page.locator('.change-password-form__password input').fill('SmushDemBerries')
+  await page.locator('.change-password-form__password-confirmation input').fill('SmushDemBerries')
+  await page.locator('.change-password-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Your password has been updated')
 });
 
 test('successfully_deactivates_the_account', async ({ page }) => {
   await page.goto('/dev/setup_group_with_multiple_coordinators')
-  await page.click('.navbar__sidenav-toggle')
+  await page.locator('.navbar__sidenav-toggle').click()
 
-  await page.click('.sidebar__user-dropdown')
-  await page.click('.user-dropdown__list-item-button--profile')
-  await page.click('.user-page__redact_user')
-  await page.click('.confirm-modal__submit')
+  await page.locator('.sidebar__user-dropdown').click()
+  await page.locator('.user-dropdown__list-item-button--profile').click()
+  await page.locator('.user-page__redact_user').click()
+  await page.locator('.confirm-modal__submit').click()
   await page.goto('/dashboard')
   await expect(page.locator('.auth-modal')).toContainText('Sign in to Loomio', { timeout: 20000 })
 });
@@ -88,18 +88,18 @@ test('successfully_deactivates_the_account', async ({ page }) => {
 test('confirms_merge_accounts_from_email', async ({ page }) => {
   await page.goto('/dev/setup_merge_verification_email')
   await page.goto('/dev/last_email')
-  await page.click('.email-button')
-  await page.click('.btn--accent--raised')
+  await page.locator('.email-button').click()
+  await page.locator('.btn--accent--raised').click()
   await expect(page.locator('.header')).toContainText('Merge successful!')
 });
 
 test('signs_out_after_sending_merge_verification', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
   await page.goto('/profile')
-  await page.click('.user-page__merge_accounts')
+  await page.locator('.user-page__merge_accounts').click()
   await expect(page.locator('.merge-accounts-modal')).toBeVisible()
   await page.locator('.merge-accounts-modal__destination-email input').pressSequentially('jennifer@example.com')
-  await page.click('.merge-accounts-modal__submit')
+  await page.locator('.merge-accounts-modal__submit').click()
 
   // Sending the verification email signs the source account out.
   await page.goto('/dashboard')

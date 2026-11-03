@@ -1,55 +1,55 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 import richText from '../helpers/oatmilkRichText.mjs';
 
 async function openTemplates(page) {
-  await page.loadPath('setup_manual_oatmilk_formatting?key=0');
-  await page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  await page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
-  await page.waitFor('.decision-tools-card__template--consent');
+  await page.goto('/dev/setup_manual_oatmilk_formatting?key=0')
+  await expectLabel(page.locator('.context-panel__heading'), 'Returnable bottles for cafe customers')
+  await page.locator('.activity-panel__add-poll').click()
+  await expect(page.locator('.decision-tools-card__template--consent').first()).toBeVisible()
 }
 
 async function openProposalForm(page) {
   await openTemplates(page);
-  await page.click('.decision-tools-card__template--consent');
-  await page.waitFor('.poll-common-form-fields__title input');
-  await page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial plan');
-  await page.fillRichText(
-    '.poll-common-form-fields__details [contenteditable=true]',
-    richText.context('new-proposal', [
+  await page.locator('.decision-tools-card__template--consent').click()
+  await page.locator('.poll-common-form-fields__title input').fill('Approve the returnable bottle trial plan')
+  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
+    editor.focus()
+    editor.innerHTML = html
+    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
+  }, richText.context('new-proposal', [
       'Approve a six-week returnable bottle trial with three cafe partners and one collection from each cafe every week.',
       'Before launch, confirm the collection schedule, washing checks, bottle deposit guidance, and named responsibilities.',
       'At the end of the trial, review return rates, cleaning time, damaged bottles, and transport costs.'
-    ])
-  );
+    ]))
 }
 
 async function markOptions(page) {
-  await page.execute(`
+  await page.evaluate(`
     const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     heading.nextElementSibling.classList.add('manual-options-list');
     const options = Array.from(heading.nextElementSibling.querySelectorAll('.v-list-item'));
     options.at(-1).classList.add('manual-option-last');
-  `);
-  await page.waitFor('.manual-options-list');
+  `)
+  await expect(page.locator('.manual-options-list').first()).toBeVisible()
 }
 
 async function openPoll(page) {
-  await page.loadPath('setup_manual_oatmilk_discussion');
-  await page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
-  await page.execute("document.querySelector('.topic-item__load-more button')?.click()");
-  await page.waitFor('.poll-created');
-  await page.expectText('.poll-created', 'Run a six-week returnable bottle trial');
+  await page.goto('/dev/setup_manual_oatmilk_discussion')
+  await expectLabel(page.locator('.context-panel__heading'), 'Returnable bottles for cafe customers')
+  await page.evaluate("document.querySelector('.topic-item__load-more button')?.click()")
+  await expect(page.locator('.poll-created').first()).toBeVisible()
+  await expectLabel(page.locator('.poll-created'), 'Run a six-week returnable bottle trial')
 }
 
 async function openPollMenu(page) {
   await openPoll(page);
-  await page.click('.poll-created .action-menu--btn');
-  await page.waitFor('.v-overlay--active .v-list');
+  await page.locator('.poll-created .action-menu--btn').click()
+  await expect(page.locator('.v-overlay--active .v-list').first()).toBeVisible()
 }
 
-test('proposal_templates', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_templates', async ({ page, manual: screenshot }) => {
   await openTemplates(page);
   await screenshot.captureElement(
     'polls/settings/proposal_templates',
@@ -58,9 +58,9 @@ test('proposal_templates', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('proposal_new', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_new', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
-  await page.execute(`
+  await page.evaluate(`
     const form = document.querySelector('.poll-common-form');
     const wrapper = document.createElement('div');
     wrapper.className = 'manual-proposal-new-capture';
@@ -75,8 +75,7 @@ test('proposal_new', async ({ lmo: page, manual: screenshot }) => {
       form.querySelector('.poll-common-form-fields__details')
     ].forEach(el => wrapper.append(el.cloneNode(true)));
     document.body.append(wrapper);
-  `);
-  await page.pause(200);
+  `)
   await screenshot.captureElement(
     'polls/settings/proposal_new',
     '.manual-proposal-new-capture',
@@ -84,10 +83,10 @@ test('proposal_new', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('vote_options', async ({ lmo: page, manual: screenshot }) => {
+test('vote_options', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
   await markOptions(page);
-  await page.execute(`
+  await page.evaluate(`
     const heading = document.querySelector('.manual-options-heading');
     const list = document.querySelector('.manual-options-list');
     const wrapper = document.createElement('div');
@@ -98,7 +97,7 @@ test('vote_options', async ({ lmo: page, manual: screenshot }) => {
     });
     wrapper.append(heading.cloneNode(true), list.cloneNode(true));
     document.body.append(wrapper);
-  `);
+  `)
   await screenshot.captureElement(
     'polls/settings/vote_options',
     '.manual-options-capture',
@@ -106,10 +105,10 @@ test('vote_options', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('proposal_edit_option', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_edit_option', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
   await markOptions(page);
-  await page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
+  await page.locator('.manual-options-list .poll-common-form__edit-option').click()
   await screenshot.captureElement(
     'polls/settings/proposal_edit_option',
     '.poll-common-option-form',
@@ -117,9 +116,9 @@ test('proposal_edit_option', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('settings_advanced', async ({ lmo: page, manual: screenshot }) => {
+test('settings_advanced', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
-  await page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
+  await page.locator('.poll-common-form__more-settings').click()
   await screenshot.captureElement(
     'polls/settings/settings_advanced',
     '.poll-common-form .v-expansion-panel',
@@ -127,12 +126,12 @@ test('settings_advanced', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('vote_reason_options', async ({ lmo: page, manual: screenshot }) => {
+test('vote_reason_options', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
-  await page.clickAndWait('.poll-common-form__more-settings', '.poll-common-form .v-expansion-panel-text');
-  await page.click('.poll-common-form__stance-reason-required .v-field');
-  await page.waitFor('.v-overlay--active .v-list');
-  await page.execute(`
+  await page.locator('.poll-common-form__more-settings').click()
+  await page.locator('.poll-common-form__stance-reason-required .v-field').click()
+  await expect(page.locator('.v-overlay--active .v-list').first()).toBeVisible()
+  await page.evaluate(`
     const wrapper = document.createElement('div');
     wrapper.className = 'manual-vote-reason-options-capture';
     Object.assign(wrapper.style, {
@@ -144,7 +143,7 @@ test('vote_reason_options', async ({ lmo: page, manual: screenshot }) => {
       document.querySelector('.v-overlay--active .v-list').cloneNode(true)
     );
     document.body.append(wrapper);
-  `);
+  `)
   await screenshot.captureElement(
     'polls/settings/vote_reason_options',
     '.manual-vote-reason-options-capture',
@@ -152,7 +151,7 @@ test('vote_reason_options', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('proposal_edit', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_edit', async ({ page, manual: screenshot }) => {
   await openPollMenu(page);
   await screenshot.captureRegion(
     'polls/settings/proposal_edit',
@@ -161,10 +160,10 @@ test('proposal_edit', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('proposal_notification_history', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_notification_history', async ({ page, manual: screenshot }) => {
   await openPollMenu(page);
-  await page.clickAndWait('.v-overlay--active .action-dock__button--notification_history', '.modal-launcher .v-card');
-  await page.expectText('.modal-launcher .v-card', 'Poll notification history');
+  await page.locator('.v-overlay--active .action-dock__button--notification_history').click()
+  await expectLabel(page.locator('.modal-launcher .v-card'), 'Poll notification history')
   await screenshot.captureElement(
     'polls/settings/proposal_notification_history',
     '.modal-launcher .v-card',
@@ -172,9 +171,9 @@ test('proposal_notification_history', async ({ lmo: page, manual: screenshot }) 
   );
 });
 
-test('proposal_delete', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_delete', async ({ page, manual: screenshot }) => {
   await openPollMenu(page);
-  await page.clickAndWait('.v-overlay--active .action-dock__button--discard_poll', '.confirm-modal');
+  await page.locator('.v-overlay--active .action-dock__button--discard_poll').click()
   await screenshot.captureElement(
     'polls/settings/proposal_delete',
     '.confirm-modal',
@@ -182,12 +181,11 @@ test('proposal_delete', async ({ lmo: page, manual: screenshot }) => {
   );
 });
 
-test('proposal_print', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_print', async ({ page, manual: screenshot }) => {
   await openPoll(page);
-  await page.waitFor('.topic-sidebar .action-dock__button--export_thread');
-  await page.click('.topic-sidebar .action-dock__button--export_thread');
-  await page.waitForUrlToContain('export=1');
-  await page.waitFor('body');
+  await page.locator('.topic-sidebar .action-dock__button--export_thread').click()
+  await expect(page).toHaveURL(/export=1/)
+  await expect(page.locator('body').first()).toBeVisible()
   await screenshot.capture('polls/settings/proposal_print', {
     width: 1280,
     height: 1200

@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures.mjs';
 
 test('has_all_the_notifications', async ({ page }) => {
   await page.goto('/dev/setup_all_notifications')
-  await page.click('.notifications__button')
+  await page.locator('.notifications__button').click()
   await expect(page.locator('.notifications__dropdown')).toContainText('invited you to a group')
   await expect(page.locator('.notifications__dropdown')).toContainText('accepted your invitation to join')
   await expect(page.locator('.notifications__dropdown')).toContainText('invited you to join')

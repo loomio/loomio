@@ -1,40 +1,44 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 import richText from '../helpers/oatmilkRichText.mjs';
 
 async function openGroup(page) {
-  await page.loadPath('setup_manual_oatmilk_tags');
-  await page.waitFor('.group-page');
-  await page.waitFor('.topic-preview');
+  await page.goto('/dev/setup_manual_oatmilk_tags')
+  await expect(page.locator('.group-page').first()).toBeVisible()
+  await expect(page.locator('.topic-preview').first()).toBeVisible()
 }
 
 async function openTagsFilter(page) {
   await openGroup(page);
-  await page.click('.tags-filter-menu__button');
-  await page.waitFor('.tags-filter-menu__card');
+  await page.locator('.tags-filter-menu__button').click()
+  await expect(page.locator('.tags-filter-menu__card').first()).toBeVisible()
 }
 
 async function openTagsManager(page) {
   await openTagsFilter(page);
-  await page.clickElement('.tags-filter-menu__edit-tags');
-  await page.waitFor('.tags-modal');
+  await page.locator('.tags-filter-menu__edit-tags').click()
+  await expect(page.locator('.tags-modal').first()).toBeVisible()
 }
 
 async function openNewDiscussion(page) {
   await openGroup(page);
-  await page.click('.discussions-panel__new-topic-button');
-  await page.waitFor('.discussion-templates--template');
-  await page.click('.discussion-templates--template-blank');
-  await page.waitFor('.discussion-form');
-  await page.fillIn('.discussion-form__title-input input', 'Compare bottle washing suppliers');
-  await page.fillRichText('.discussion-form .lmo-textarea div[contenteditable=true]', richText.context('tagged-discussion', [
+  await page.locator('.discussions-panel__new-topic-button').click()
+  await expect(page.locator('.discussion-templates--template').first()).toBeVisible()
+  await page.locator('.discussion-templates--template-blank').click()
+  await expect(page.locator('.discussion-form').first()).toBeVisible()
+  await page.locator('.discussion-form__title-input input').fill('Compare bottle washing suppliers')
+  await page.locator('.discussion-form .lmo-textarea div[contenteditable=true]').evaluate((editor, html) => {
+    editor.focus()
+    editor.innerHTML = html
+    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
+  }, richText.context('tagged-discussion', [
     'Compare local bottle washing suppliers before the returnable bottle trial begins.',
     'Check capacity, water use, food-safety records, delivery times, and service support.',
     'Share quotes and note which requirements each supplier can meet.'
-  ]));
+  ]))
 }
 
-test('tags_view', async ({ lmo: page, manual: screenshot }) => {
+test('tags_view', async ({ page, manual: screenshot }) => {
   await openTagsFilter(page);
   await screenshot.captureRegion('discussions/tags/tags_view', [
     '.discussions-panel',
@@ -42,20 +46,20 @@ test('tags_view', async ({ lmo: page, manual: screenshot }) => {
   ], {padding: 16, width: 1280, height: 1000});
 });
 
-test('tags_add_new', async ({ lmo: page, manual: screenshot }) => {
+test('tags_add_new', async ({ page, manual: screenshot }) => {
   await openNewDiscussion(page);
-  await page.click('.tags-field__input .v-field');
-  await page.waitFor('.v-overlay--active .v-list');
+  await page.locator('.tags-field__input .v-field').click()
+  await expect(page.locator('.v-overlay--active .v-list').first()).toBeVisible()
   await screenshot.captureRegion('discussions/tags/tags_add_new', [
     '.discussion-form',
     '.v-overlay--active .v-list'
   ], {padding: 12, width: 1100, height: 1200});
 });
 
-test('tags_create_new', async ({ lmo: page, manual: screenshot }) => {
+test('tags_create_new', async ({ page, manual: screenshot }) => {
   await openNewDiscussion(page);
-  await page.click('.tags-field__input .v-field');
-  await page.fillIn('.tags-field__input input', 'Supplier research');
+  await page.locator('.tags-field__input .v-field').click()
+  await page.locator('.tags-field__input input').fill('Supplier research')
   await screenshot.captureElement('discussions/tags/tags_create_new', '.discussion-form', {
     width: 1100,
     height: 1400,
@@ -63,19 +67,20 @@ test('tags_create_new', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tags_created_new', async ({ lmo: page, manual: screenshot }) => {
+test('tags_created_new', async ({ page, manual: screenshot }) => {
   await openNewDiscussion(page);
-  await page.click('.tags-field__input .v-field');
-  await page.fillInAndEnter('.tags-field__input input', 'Supplier research');
-  await page.click('.discussion-form__title-input input');
-  await page.execute('document.activeElement.blur()');
+  await page.locator('.tags-field__input .v-field').click()
+  await page.locator('.tags-field__input input').fill('Supplier research')
+  await page.locator('.tags-field__input input').press('Enter')
+  await page.locator('.discussion-form__title-input input').click()
+  await page.evaluate('document.activeElement.blur()')
   await screenshot.captureElement('discussions/tags/tags_created_new', '.discussion-form', {
     width: 1100,
     height: 1200
   });
 });
 
-test('tags_edit_new', async ({ lmo: page, manual: screenshot }) => {
+test('tags_edit_new', async ({ page, manual: screenshot }) => {
   await openTagsFilter(page);
   await screenshot.captureRegion('discussions/tags/tags_edit_new', [
     '.discussions-panel',
@@ -88,7 +93,7 @@ test('tags_edit_new', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tags_edit_new_pencil', async ({ lmo: page, manual: screenshot }) => {
+test('tags_edit_new_pencil', async ({ page, manual: screenshot }) => {
   await openTagsManager(page);
   await screenshot.captureElement('discussions/tags/tags_edit_new_pencil', '.tags-modal', {
     spotlight: {selector: '.tag-form__edit-tag', padding: 8, radius: 12},
@@ -97,46 +102,45 @@ test('tags_edit_new_pencil', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tags_edit_name', async ({ lmo: page, manual: screenshot }) => {
+test('tags_edit_name', async ({ page, manual: screenshot }) => {
   await openTagsManager(page);
-  await page.clickElement('.tag-form__edit-tag');
-  await page.waitFor('.tags-modal__tag-name');
-  await page.clearField('.tags-modal__tag-name input');
-  await page.fillIn('.tags-modal__tag-name input', 'Cafe network');
-  await page.clickElement('.tag-color-button:nth-of-type(5)');
+  await page.locator('.tag-form__edit-tag').click()
+  await expect(page.locator('.tags-modal__tag-name').first()).toBeVisible()
+  await page.locator('.tags-modal__tag-name input').fill('Cafe network')
+  await page.locator('.tag-color-button:nth-of-type(5)').click()
   await screenshot.captureElement('discussions/tags/tags_edit_name', '.tags-modal', {
     width: 1100,
     height: 1000
   });
 });
 
-test('tags_delete', async ({ lmo: page, manual: screenshot }) => {
+test('tags_delete', async ({ page, manual: screenshot }) => {
   await openTagsManager(page);
-  await page.clickElement('.tag-form__delete');
-  await page.waitFor('.confirm-modal');
+  await page.locator('.tag-form__delete').click()
+  await expect(page.locator('.confirm-modal').first()).toBeVisible()
   await screenshot.captureElement('discussions/tags/tags_delete', '.confirm-modal', {
     width: 1100,
     height: 1000
   });
 });
 
-test('tags_global_search', async ({ lmo: page, manual: screenshot }) => {
-  await page.resizeWindow(1280, 1000);
+test('tags_global_search', async ({ page, manual: screenshot }) => {
+  await page.setViewportSize({ width: 1280, height: 1000 })
   await openGroup(page);
-  await page.clickAndWait('.v-app-bar .navbar__search', '.search-modal');
-  await page.click('.search-modal .v-select .v-field');
-  await page.waitFor('.v-menu.v-overlay--active .v-list');
-  await page.execute("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Oatmilk Cooperative')).classList.add('manual-parent-group')");
-  await page.click('.manual-parent-group');
-  await page.expectText('.search-modal', 'Any tag');
-  await page.execute("Array.from(document.querySelectorAll('.search-modal .v-select')).find(el => el.textContent.includes('Any tag')).setAttribute('data-manual-search-tags', '')");
-  await page.click('[data-manual-search-tags] .v-field');
-  await page.waitFor('.v-menu.v-overlay--active .v-list');
-  await page.execute("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Packaging')).classList.add('manual-packaging-tag')");
-  await page.click('.manual-packaging-tag');
-  await page.waitFor('.search-results-list .v-list-item');
-  await page.click('[data-manual-search-tags] .v-field');
-  await page.waitFor('.v-menu.v-overlay--active .v-list');
+  await page.locator('.v-app-bar .navbar__search').click()
+  await page.locator('.search-modal .v-select .v-field').click()
+  await expect(page.locator('.v-menu.v-overlay--active .v-list').first()).toBeVisible()
+  await page.evaluate("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Oatmilk Cooperative')).classList.add('manual-parent-group')")
+  await page.locator('.manual-parent-group').click()
+  await expectLabel(page.locator('.search-modal'), 'Any tag')
+  await page.evaluate("Array.from(document.querySelectorAll('.search-modal .v-select')).find(el => el.textContent.includes('Any tag')).setAttribute('data-manual-search-tags', '')")
+  await page.locator('[data-manual-search-tags] .v-field').click()
+  await expect(page.locator('.v-menu.v-overlay--active .v-list').first()).toBeVisible()
+  await page.evaluate("Array.from(document.querySelectorAll('.v-menu.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Packaging')).classList.add('manual-packaging-tag')")
+  await page.locator('.manual-packaging-tag').click()
+  await expect(page.locator('.search-results-list .v-list-item').first()).toBeVisible()
+  await page.locator('[data-manual-search-tags] .v-field').click()
+  await expect(page.locator('.v-menu.v-overlay--active .v-list').first()).toBeVisible()
   await screenshot.captureRegion('discussions/tags/tags_global_search', [
     '.search-modal',
     '.v-menu.v-overlay--active .v-list'
@@ -149,22 +153,22 @@ test('tags_global_search', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tags_thread_sidebar', async ({ lmo: page, manual: screenshot }) => {
-  await page.resizeWindow(1440, 1100);
+test('tags_thread_sidebar', async ({ page, manual: screenshot }) => {
+  await page.setViewportSize({ width: 1440, height: 1100 })
   await openGroup(page);
-  await page.execute("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')");
-  await page.clickElement('.manual-topic');
-  await page.waitFor('.topic-page');
-  await page.waitFor('.new-comment .action-menu--btn');
-  await page.execute("document.querySelector('.new-comment .action-menu--btn').scrollIntoView({block: 'center'})");
-  await page.click('.new-comment .action-menu--btn');
-  await page.click('.v-overlay--active .action-dock__button--edit_item_tags');
-  await page.waitFor('.topic-tags-dialog .topic-tags-picker__tag');
-  await page.execute("Array.from(document.querySelectorAll('.topic-tags-dialog .topic-tags-picker__tag')).find(el => el.textContent.includes('Sustainability')).classList.add('manual-tag')");
-  await page.click('.manual-tag');
-  await page.expectText('.thread-tags', 'Sustainability');
-  await page.click('.topic-tags-dialog .dismiss-modal-button');
-  await page.execute('window.scrollTo(0, 0)');
+  await page.evaluate("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')")
+  await page.locator('.manual-topic').click()
+  await expect(page.locator('.topic-page').first()).toBeVisible()
+  await expect(page.locator('.new-comment .action-menu--btn').first()).toBeVisible()
+  await page.evaluate("document.querySelector('.new-comment .action-menu--btn').scrollIntoView({block: 'center'})")
+  await page.locator('.new-comment .action-menu--btn').click()
+  await page.locator('.v-overlay--active .action-dock__button--edit_item_tags').click()
+  await expect(page.locator('.topic-tags-dialog .topic-tags-picker__tag').first()).toBeVisible()
+  await page.evaluate("Array.from(document.querySelectorAll('.topic-tags-dialog .topic-tags-picker__tag')).find(el => el.textContent.includes('Sustainability')).classList.add('manual-tag')")
+  await page.locator('.manual-tag').click()
+  await expectLabel(page.locator('.thread-tags'), 'Sustainability')
+  await page.locator('.topic-tags-dialog .dismiss-modal-button').click()
+  await page.evaluate('window.scrollTo(0, 0)')
   await screenshot.captureRegion('discussions/tags/tags_thread_sidebar', [
     '.context-panel',
     '.topic-sidebar'
@@ -176,13 +180,13 @@ test('tags_thread_sidebar', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tags_thread_edit', async ({ lmo: page, manual: screenshot }) => {
+test('tags_thread_edit', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await page.execute("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')");
-  await page.clickElement('.manual-topic');
-  await page.waitFor('.topic-page');
-  await page.click('.topic-tags-menu__button');
-  await page.waitFor('.topic-tags-menu__popover');
+  await page.evaluate("Array.from(document.querySelectorAll('.topic-preview')).find(el => el.textContent.includes('Returnable bottles for cafe customers')).classList.add('manual-topic')")
+  await page.locator('.manual-topic').click()
+  await expect(page.locator('.topic-page').first()).toBeVisible()
+  await page.locator('.topic-tags-menu__button').click()
+  await expect(page.locator('.topic-tags-menu__popover').first()).toBeVisible()
   await screenshot.captureRegion('discussions/tags/tags_thread_edit', [
     '.context-panel',
     '.topic-tags-menu__popover'

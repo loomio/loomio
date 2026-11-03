@@ -1,4 +1,4 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 import richText from '../helpers/oatmilkRichText.mjs';
 
@@ -25,22 +25,23 @@ const proposalTitles = {
 };
 
 async function loadForm(page, template) {
-  await page.loadPath(`setup_manual_oatmilk_new_poll?poll_type=${template}`);
-  await page.waitFor('.poll-common-form');
-  await page.fillIn('.poll-common-form-fields__title input', proposalTitles[template]);
-  await page.fillRichText(
-    '.poll-common-form-fields__details [contenteditable=true]',
-    richText.context(`new-${template}-proposal`, [
+  await page.goto(`/dev/setup_manual_oatmilk_new_poll?poll_type=${template}`)
+  await expect(page.locator('.poll-common-form').first()).toBeVisible()
+  await page.locator('.poll-common-form-fields__title input').fill(proposalTitles[template])
+  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
+    editor.focus()
+    editor.innerHTML = html
+    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
+  }, richText.context(`new-${template}-proposal`, [
       'Review the proposal and its supporting information before responding.',
       'Explain the practical experience, risk, or concern behind your response.',
       'The coordinator will publish an outcome that records what happens next.'
-    ])
-  );
+    ]))
 }
 
 async function loadPoll(page, template, mode) {
-  await page.loadPath(`setup_manual_oatmilk_proposal_template_poll?template=${template}${mode ? `&mode=${mode}` : ''}`);
-  await page.waitFor('.poll-common-card__title');
+  await page.goto(`/dev/setup_manual_oatmilk_proposal_template_poll?template=${template}${mode ? `&mode=${mode}` : ''}`)
+  await expect(page.locator('.poll-common-card__title').first()).toBeVisible()
 }
 
 async function captureVoting(screenshot, name) {
@@ -59,19 +60,18 @@ async function captureResults(screenshot, name) {
   );
 }
 
-test('proposal_templates_list', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_formatting?key=0');
-  await page.waitFor('.activity-panel__add-poll');
-  await page.clickAndWait('.activity-panel__add-poll', '.poll-common-templates-list');
+test('proposal_templates_list', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_formatting?key=0')
+  await page.locator('.activity-panel__add-poll').click()
   await screenshot.captureElement('polls/proposals/proposal_templates_list', '.poll-common-templates-list', {width: 1100, height: 1400});
 });
 
-test('proposal_classic_voting', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_classic_voting', async ({ page, manual: screenshot }) => {
   await loadPoll(page, 'majority');
   await captureVoting(screenshot, 'proposal_classic');
 });
 
-test('proposal_question', async ({ lmo: page, manual: screenshot }) => {
+test('proposal_question', async ({ page, manual: screenshot }) => {
   await loadPoll(page, 'question');
   await screenshot.captureRegion(
     'polls/proposals/proposal_question',
@@ -82,7 +82,7 @@ test('proposal_question', async ({ lmo: page, manual: screenshot }) => {
 
 workflows.forEach(([template, name]) => {
   if (defaultProposalDirectories[template]) {
-    test(`${name}_form`, async ({ lmo: page, manual: screenshot }) => {
+    test(`${name}_form`, async ({ page, manual: screenshot }) => {
       await loadForm(page, template);
       await screenshot.captureElement(
         `polls/proposals/${defaultProposalDirectories[template]}/form`,
@@ -92,15 +92,15 @@ workflows.forEach(([template, name]) => {
     });
   }
 
-  test(`${name}_voting`, async ({ lmo: page, manual: screenshot }) => {
+  test(`${name}_voting`, async ({ page, manual: screenshot }) => {
     await loadPoll(page, template);
     await captureVoting(screenshot, name);
   });
 
   if (defaultProposalDirectories[template]) {
-    test(`${name}_outcome`, async ({ lmo: page, manual: screenshot }) => {
+    test(`${name}_outcome`, async ({ page, manual: screenshot }) => {
       await loadPoll(page, template, 'outcome');
-      await page.waitFor('.poll-common-outcome-panel');
+      await expect(page.locator('.poll-common-outcome-panel').first()).toBeVisible()
       await screenshot.captureRegion(
         `polls/proposals/${defaultProposalDirectories[template]}/outcome`,
         ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
@@ -115,9 +115,9 @@ workflows.forEach(([template, name]) => {
     });
   }
 
-  test(`${name}_results`, async ({ lmo: page, manual: screenshot }) => {
+  test(`${name}_results`, async ({ page, manual: screenshot }) => {
     await loadPoll(page, template, 'results');
-    await page.waitFor('.poll-common-chart-panel');
+    await expect(page.locator('.poll-common-chart-panel').first()).toBeVisible()
     await captureResults(screenshot, name);
   });
 });

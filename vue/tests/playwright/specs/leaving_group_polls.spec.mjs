@@ -28,11 +28,11 @@ async function subscribeProbe(page) {
 
 test('leaving a group clears an authored poll needing a vote', async ({ page }) => {
   await page.goto('/dev/setup_group_with_authored_stv_poll')
-  await page.click('.group-page-polls-tab')
+  await page.locator('.group-page-polls-tab').click()
   await expect(page.locator('.polls-panel')).toContainText('Working group election')
-  await page.click('.action-menu')
-  await page.click('.action-dock__button--leave_group')
-  await page.click('.confirm-modal__submit')
+  await page.locator('.action-menu').click()
+  await page.locator('.action-dock__button--leave_group').click()
+  await page.locator('.confirm-modal__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('You have left this group')
   await expect(page.locator('.dashboard-page')).toBeVisible()
   await expect(page.locator('.dashboard-page .poll-common-preview')).toHaveCount(0)

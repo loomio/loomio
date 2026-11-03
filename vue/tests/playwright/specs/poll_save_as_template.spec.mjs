@@ -7,9 +7,9 @@ for (const [state, params] of [
 ]) {
   test(`can_save_${state}_proposal_as_template_and_reuse_it`, async ({ page }) => {
     await page.goto(`/dev/polls/save_poll_as_template${params}`)
-    await page.click('.poll-created .action-menu--btn')
+    await page.locator('.poll-created .action-menu--btn').click()
     await expect(page.locator('.action-dock__button--make_a_copy')).toHaveCount(0)
-    await page.click('.action-dock__button--save_as_template')
+    await page.locator('.action-dock__button--save_as_template').click()
     await page.reload()
     await expect(page.locator('.poll-template-form__help')).toBeVisible()
     await expect(page.locator('.poll-template-form__help')).toContainText('Templates let anyone in your group reuse')
@@ -21,16 +21,16 @@ for (const [state, params] of [
     await expect(page.locator('.poll-template-form-fields__details')).toContainText('Proposed article changes')
     await expect(page.locator('.poll-template-form')).toContainText('I support these changes')
     await expect(page.locator('.poll-template-form')).toContainText('These changes need revision')
-    await page.click('.topic-settings__comments label')
-    await page.click('.topic-settings__attachments-admin-only label')
-    await page.fill('.topic-settings__comment-length input', '120')
-    await page.fill('.poll-template-form-fields__process-subtitle input', 'Reusable article consent process')
-    await page.click('.poll-template-form__submit')
+    await page.locator('.topic-settings__comments label').click()
+    await page.locator('.topic-settings__attachments-admin-only label').click()
+    await page.locator('.topic-settings__comment-length input').fill('120')
+    await page.locator('.poll-template-form-fields__process-subtitle input').fill('Reusable article consent process')
+    await page.locator('.poll-template-form__submit').click()
     await expect(page.locator('.poll-template-form__submit')).toHaveCount(0)
     await expect(page.locator('.context-panel__heading')).toContainText('Article proposal')
 
     // Find the saved template in the group's New poll chooser, then use it.
-    await page.click('.poll-created .action-menu--btn')
+    await page.locator('.poll-created .action-menu--btn').click()
     const templateHref = await page.locator('.action-dock__button--save_as_template').first().getAttribute('href');
     const pollId = new URL(templateHref, page.url()).searchParams.get('poll_id');
     const groupId = await page.evaluate(async pollId => {
@@ -38,22 +38,22 @@ for (const [state, params] of [
       return (await response.json()).polls[0].group_id;
     }, pollId);
     await page.goto(`/p/new?group_id=${groupId}`)
-    if (state === 'stv') { await page.click('.poll-common-choose-template__poll'); }
+    if (state === 'stv') { await page.locator('.poll-common-choose-template__poll').click(); }
     await expect(page.locator('.poll-common-templates-list')).toContainText('Article proposal')
-    await page.click("//*[contains(@class, 'poll-common-templates-list')]//*[normalize-space(text())='Article proposal']")
+    await page.locator("//*[contains(@class, 'poll-common-templates-list')]//*[normalize-space(text())='Article proposal']").click()
     await expect(page.locator('.poll-common-form__opens-immediately')).toBeVisible()
     await expect(page.locator('.poll-common-form__opens-immediately input')).toBeChecked()
     await expect(page.locator('.poll-common-form')).toContainText('I support these changes')
     await expect(page.locator('.poll-common-form')).toContainText('These changes need revision')
-    await page.click('.poll-common-form__more-settings')
+    await page.locator('.poll-common-form__more-settings').click()
     await expect(page.locator('.poll-common-form .topic-settings__comments input')).not.toBeChecked()
     await expect(page.locator('.poll-common-form .topic-settings__attachments-admin-only input')).toBeChecked()
     await expect(page.locator('.poll-common-form .topic-settings__comment-length input')).toHaveValue('120')
-    await page.click('.poll-common-form__submit')
+    await page.locator('.poll-common-form__submit').click()
     await expect(page.locator('.poll-common-form__submit')).toHaveCount(0)
     await expect(page.locator('.topic-header .tags-display')).toContainText('Consent')
     await expect(page.locator('.topic-header .tags-display')).toContainText('Significant decisions')
-    await page.click('.topic-sidebar .action-dock__button--thread_settings')
+    await page.locator('.topic-sidebar .action-dock__button--thread_settings').click()
     await expect(page.locator('.topic-arrangement-form .topic-settings__comments')).toBeVisible()
     await expect(page.locator('.topic-arrangement-form .topic-settings__single-poll')).toHaveCount(0)
     await expect(page.locator('.topic-arrangement-form .topic-settings__comments input')).not.toBeChecked()
@@ -64,7 +64,7 @@ for (const [state, params] of [
 
 test('member_without_template_permission_cannot_save_as_template', async ({ page }) => {
   await page.goto('/dev/polls/save_poll_as_template?member=1')
-  await page.click('.poll-created .action-menu--btn')
+  await page.locator('.poll-created .action-menu--btn').click()
   await expect(page.locator('.action-dock__button--save_as_template')).toHaveCount(0)
   await expect(page.locator('.action-dock__button--make_a_copy')).toHaveCount(0)
 });

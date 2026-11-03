@@ -22,9 +22,11 @@ Each spec should:
 1. Read the complete help page containing the image and identify what the image
    must explain in that context.
 2. Load a deterministic dev scenario.
-3. Navigate to the documented state using normal E2E actions.
-4. Wait for the content that must appear in the image.
-5. Declare the test as `test('name', async ({ lmo: page, manual: screenshot }) => { ... })`
+3. Navigate to the documented state using plain Playwright actions.
+4. Wait for the content that must appear in the image. Check interface text
+   with `expectLabel(locator, text)` from `screenshotFixtures.mjs`, which is
+   strict in English and tolerant of translated labels.
+5. Declare the test as `test('name', async ({ page, manual: screenshot }) => { ... })`
    and call `await screenshot.capture('path/from/user_manual/name')` for a
    full viewport or `await screenshot.captureElement('path/from/user_manual/name', '.selector')`
    for a focused UI state.

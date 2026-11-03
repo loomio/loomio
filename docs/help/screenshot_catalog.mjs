@@ -22,13 +22,12 @@ const screenshot = Object.fromEntries(['capture', 'captureElement', 'captureRegi
   captures.push({ image, ...current });
 }]));
 
-const expectStub = () => stub;
 for (const spec of fs.readdirSync(directory).filter(name => name.endsWith('.spec.mjs')).sort()) {
   globalThis.__manualScreenshotCatalog = { tests: [] };
   await import(pathToFileURL(path.join(directory, spec)).href);
   for (const { title, run } of globalThis.__manualScreenshotCatalog.tests) {
     current = { spec, testcase: title };
-    await run({ lmo: stub, manual: screenshot, page: stub, expect: expectStub });
+    await run({ page: stub, manual: screenshot });
   }
 }
 

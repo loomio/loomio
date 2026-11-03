@@ -1,4 +1,4 @@
-import { test, expect } from '../screenshotFixtures.mjs';
+import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 const editor = '.comment-form .lmo-textarea';
 const proseMirror = `${editor} .ProseMirror`;
@@ -6,40 +6,40 @@ let scenarioKey = 100;
 
 async function openTaskEditor(page) {
   scenarioKey += 1;
-  await page.loadPath(`setup_manual_oatmilk_formatting?key=${scenarioKey}`);
-  await page.waitFor('.topic-page');
-  await page.waitFor(proseMirror);
-  await page.execute("const el = document.querySelector('.comment-form .ProseMirror'); el.focus(); el.innerHTML = '<p><br class=\"ProseMirror-trailingBreak\"></p>'; el.dispatchEvent(new InputEvent('input', {bubbles: true, inputType: 'deleteContentBackward'}))");
-  await page.click(`${editor} .html-editor__expand`);
-  await page.waitFor(`${editor} .text-editor__task-list`);
+  await page.goto(`/dev/setup_manual_oatmilk_formatting?key=${scenarioKey}`)
+  await expect(page.locator('.topic-page').first()).toBeVisible()
+  await expect(page.locator(proseMirror).first()).toBeVisible()
+  await page.evaluate("const el = document.querySelector('.comment-form .ProseMirror'); el.focus(); el.innerHTML = '<p><br class=\"ProseMirror-trailingBreak\"></p>'; el.dispatchEvent(new InputEvent('input', {bubbles: true, inputType: 'deleteContentBackward'}))")
+  await page.locator(`${editor} .html-editor__expand`).click()
+  await expect(page.locator(`${editor} .text-editor__task-list`).first()).toBeVisible()
 }
 
 async function selectEditorText(page) {
-  await page.execute("const el = document.querySelector('.comment-form .ProseMirror'); const range = document.createRange(); range.selectNodeContents(el); const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range)");
+  await page.evaluate("const el = document.querySelector('.comment-form .ProseMirror'); const range = document.createRange(); range.selectNodeContents(el); const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range)")
 }
 
 async function fillTask(page) {
   await openTaskEditor(page);
-  await page.fillIn(proseMirror, 'Confirm bottle washer capacity with suppliers');
+  await page.locator(proseMirror).fill('Confirm bottle washer capacity with suppliers')
   await selectEditorText(page);
-  await page.click(`${editor} .text-editor__task-list`);
-  await page.waitFor(`${editor} .task-item-text`);
-  await page.execute('window.getSelection().removeAllRanges(); document.activeElement.blur()');
+  await page.locator(`${editor} .text-editor__task-list`).click()
+  await expect(page.locator(`${editor} .task-item-text`).first()).toBeVisible()
+  await page.evaluate('window.getSelection().removeAllRanges(); document.activeElement.blur()')
 }
 
 async function fillAssignedTask(page) {
   await openTaskEditor(page);
-  await page.fillIn(proseMirror, 'Confirm bottle washer capacity with suppliers @jamie');
-  await page.waitForPresent('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
-  await page.clickElement('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title');
+  await page.locator(proseMirror).pressSequentially('Confirm bottle washer capacity with suppliers @jamie')
+  await expect(page.locator('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title').first()).toBeAttached()
+  await page.locator('.suggestion-list [data-mention-handle="jamiechen"] .v-list-item-title').click()
   await selectEditorText(page);
-  await page.click(`${editor} .text-editor__task-list`);
-  await page.waitFor(`${editor} .task-item-text`);
-  await page.waitFor(`${editor} .task-item-text + .v-chip`);
-  await page.execute('window.getSelection().removeAllRanges(); document.activeElement.blur()');
+  await page.locator(`${editor} .text-editor__task-list`).click()
+  await expect(page.locator(`${editor} .task-item-text`).first()).toBeVisible()
+  await expect(page.locator(`${editor} .task-item-text + .v-chip`).first()).toBeVisible()
+  await page.evaluate('window.getSelection().removeAllRanges(); document.activeElement.blur()')
 }
 
-test('tasklist1', async ({ lmo: page, manual: screenshot }) => {
+test('tasklist1', async ({ page, manual: screenshot }) => {
   await fillTask(page);
   await screenshot.captureRegion('discussions/tasks/tasklist1', [editor], {
     spotlight: {
@@ -53,7 +53,7 @@ test('tasklist1', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('tasklist2', async ({ lmo: page, manual: screenshot }) => {
+test('tasklist2', async ({ page, manual: screenshot }) => {
   await fillAssignedTask(page);
   await screenshot.captureRegion('discussions/tasks/tasklist2', [editor], {
     padding: 32,
@@ -62,10 +62,10 @@ test('tasklist2', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('task_list', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_tasks');
-  await page.waitFor('.dashboard-page');
-  await page.expectText('.dashboard-page', 'Confirm bottle washer capacity with suppliers');
+test('task_list', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_tasks')
+  await expect(page.locator('.dashboard-page').first()).toBeVisible()
+  await expectLabel(page.locator('.dashboard-page'), 'Confirm bottle washer capacity with suppliers')
   await screenshot.capture('discussions/tasks/task_list', {
     spotlight: {
       selector: '.sidenav-left a[href="/tasks"]',
@@ -77,20 +77,20 @@ test('task_list', async ({ lmo: page, manual: screenshot }) => {
   });
 });
 
-test('taskreminderform', async ({ lmo: page, manual: screenshot }) => {
+test('taskreminderform', async ({ page, manual: screenshot }) => {
   await fillAssignedTask(page);
-  await page.click(`${editor} .task-item-text + .v-chip`);
-  await page.waitFor('.v-dialog .v-card');
+  await page.locator(`${editor} .task-item-text + .v-chip`).click()
+  await expect(page.locator('.v-dialog .v-card').first()).toBeVisible()
   await screenshot.captureElement('discussions/tasks/taskreminderform', '.v-dialog .v-card', {
     width: 1100,
     height: 1200
   });
 });
 
-test('taskdone', async ({ lmo: page, manual: screenshot }) => {
-  await page.loadPath('setup_manual_oatmilk_task_discussion');
-  await page.waitFor('.context-panel__description');
-  await page.expectText('.context-panel__description', 'Share cafe collection dates');
+test('taskdone', async ({ page, manual: screenshot }) => {
+  await page.goto('/dev/setup_manual_oatmilk_task_discussion')
+  await expect(page.locator('.context-panel__description').first()).toBeVisible()
+  await expectLabel(page.locator('.context-panel__description'), 'Share cafe collection dates')
   await screenshot.captureRegion('discussions/tasks/taskdone', ['.context-panel__description'], {
     padding: 32,
     width: 1100,
