@@ -1,22 +1,22 @@
 import { test, expect } from '../fixtures.mjs';
+import { comment, commentForm, postComment } from '../helpers/threads.mjs';
+import { editor } from '../helpers/editor.mjs';
 
-const DRAFT_TEXT  = 'hocuspocus draft persistence test'
-const EDITOR      = '.comment-form .ProseMirror'
-const SUBMIT_BTN  = '.comment-form__submit-button'
+const draft = 'hocuspocus draft persistence test';
 
-  // Confirms auth, WebSocket connection, and model-save all work end-to-end.
-test('submits_content_via_collab_editor', async ({ page }) => {
-  await page.goto('/dev/setup_discussion')
-  await page.locator(EDITOR).fill(DRAFT_TEXT)
-  await page.locator(SUBMIT_BTN).click()
-  await expect(page.locator('.new-comment')).toContainText(DRAFT_TEXT)
+test.beforeEach(async ({ page }) => {
+  await page.goto('/dev/setup_discussion');
 });
 
-  // Types a draft, reloads (IndexedDB intact), and checks the draft survives.
-  // Hocuspocus is a real-time relay; single-user draft persistence is IndexedDB.
-test('restores_draft_after_reload', async ({ page }) => {
-  await page.goto('/dev/setup_discussion')
-  await page.locator(EDITOR).fill(DRAFT_TEXT)
-  await page.reload()
-  await expect(page.locator(EDITOR)).toContainText(DRAFT_TEXT)
+// Covers authentication, the WebSocket connection and saving the model.
+test('posts a comment written in the collaborative editor', async ({ page }) => {
+  await postComment(page, draft);
+  await expect(comment(page, draft)).toBeVisible();
+});
+
+// Hocuspocus relays live edits; a single person's draft persists in IndexedDB.
+test('keeps a draft after reloading', async ({ page }) => {
+  await editor(commentForm(page)).fill(draft);
+  await page.reload();
+  await expect(editor(commentForm(page))).toContainText(draft);
 });

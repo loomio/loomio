@@ -523,11 +523,11 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"
   )
-    v-radio(
+    v-radio.poll-common-settings__all-voters(
       v-if="!poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
-    v-radio(
+    v-radio.poll-common-settings__all-voters(
       v-if="poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_group')")

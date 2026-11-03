@@ -295,7 +295,7 @@ export default
       div(v-else)
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
         v-list(v-else lines="two")
-          v-list-item(v-for="membership in memberships" :key="membership.id")
+          v-list-item.members-panel__member(v-for="membership in memberships" :key="membership.id")
             template(v-slot:prepend)
               user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title

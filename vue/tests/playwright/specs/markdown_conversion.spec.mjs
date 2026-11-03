@@ -1,39 +1,41 @@
 import { test, expect } from '../fixtures.mjs';
+import { editor } from '../helpers/editor.mjs';
+import { comment, commentForm } from '../helpers/threads.mjs';
 
-const editor = '.comment-form .ProseMirror';
-const textarea = '.comment-form .lmo-textarea textarea';
+// Content that is hard to type: coloured text, a mention, a table and a task.
+const richContent = '<p><span style="color: red">Keep this text</span> <span data-mention-id="jennifergrey" data-label="Jennifer Grey">@Jennifer Grey</span></p>' +
+  '<table><tbody><tr><th>Name</th><th>Vote</th></tr><tr><td>Alice</td><td>Yes</td></tr></tbody></table>' +
+  '<ul data-type="taskList"><li data-type="taskItem" data-checked="true"><p>Done</p></li></ul>';
 
-test('switches_modes_without_losing_structure_or_markdown_edits', async ({ page }) => {
-  await page.goto('/dev/setup_discussion')
-  await expect(page.locator(editor)).toBeVisible()
-  await page.locator(editor).evaluate((editor, html) => {
-    editor.focus()
-    editor.innerHTML = html
-    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
-  }, '<p><span style="color: red">Keep this text</span> <span data-mention-id="jennifergrey" data-label="Jennifer Grey">@Jennifer Grey</span></p><table><tbody><tr><th>Name</th><th>Vote</th></tr><tr><td>Alice</td><td>Yes</td></tr></tbody></table><ul data-type="taskList"><li data-type="taskItem" data-checked="true"><p>Done</p></li></ul>')
-  await expect(page.locator(editor)).toContainText('Keep this text')
-  await page.locator('.comment-form .html-editor__expand').click()
-  await page.locator('.comment-form .e2e-markdown-btn').click()
-  await expect(page.locator(textarea)).toBeVisible()
-  const markdown = await page.locator(textarea).first().inputValue();
-  expect(markdown).toContain('Keep this text @jennifergrey');
-  expect(markdown).toContain('| Name');
-  expect(markdown).toContain('- [x] Done');
-  expect(markdown).not.toContain('@null');
-  await page.evaluate(selector => {
-    const field = document.querySelector(selector);
-    const setValue = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
-    setValue.call(field, `${field.value}\n\nEdited in Markdown`);
-    field.dispatchEvent(new Event('input', { bubbles: true }));
-  }, textarea)
-  await page.locator('.comment-form .e2e-wysiwyg-btn').click()
-  await expect(page.locator(editor)).toContainText('Edited in Markdown', { timeout: 10000 })
-  await expect(page.locator(`${editor} table`)).toBeVisible()
-  await expect(page.locator(`${editor} span[data-mention-id="jennifergrey"]`)).toBeVisible()
-  await expect(page.locator(`${editor} .task-item-text`)).toBeVisible()
-  await expect(page.locator('.comment-form .mention-notifications-count')).toContainText('1 person will be notified')
-  await page.locator('.comment-form__submit-button').click()
-  await expect(page.locator('.new-comment')).toContainText('Edited in Markdown')
-  await expect(page.locator('.new-comment table')).toBeVisible()
-  await expect(page.locator('.new-comment li[data-checked="true"]')).toBeVisible()
+test('switching between rich text and Markdown keeps structure and Markdown edits', async ({ page }) => {
+  await page.goto('/dev/setup_discussion');
+  const form = commentForm(page);
+  const richText = editor(form);
+  const markdown = form.locator('.lmo-textarea textarea');
+
+  await richText.evaluate((element, html) => {
+    element.innerHTML = html;
+    element.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }));
+  }, richContent);
+  await expect(richText).toContainText('Keep this text');
+
+  await form.locator('.html-editor__expand').click();
+  await form.locator('.e2e-markdown-btn').click();
+  await expect(markdown).toHaveValue(/Keep this text @jennifergrey/);
+  await expect(markdown).toHaveValue(/\| Name/);
+  await expect(markdown).toHaveValue(/- \[x\] Done/);
+  await expect(markdown).not.toHaveValue(/@null/);
+  await markdown.fill(`${await markdown.inputValue()}\n\nEdited in Markdown`);
+
+  await form.locator('.e2e-wysiwyg-btn').click();
+  await expect(richText).toContainText('Edited in Markdown');
+  await expect(richText.locator('table')).toBeVisible();
+  await expect(richText.locator('[data-mention-id="jennifergrey"]')).toBeVisible();
+  await expect(richText.locator('.task-item-text')).toBeVisible();
+  await expect(form.locator('.mention-notifications-count')).toContainText('1 person will be notified');
+
+  await form.locator('.comment-form__submit-button').click();
+  const posted = comment(page, 'Edited in Markdown');
+  await expect(posted.locator('table')).toBeVisible();
+  await expect(posted.locator('li[data-checked="true"]')).toBeVisible();
 });

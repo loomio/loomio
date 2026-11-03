@@ -1,29 +1,16 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('registers_the_push_worker_and_serves_home_screen_metadata', async ({ page }) => {
-  await page.goto('/dev/setup_group')
-  await expect(page.locator('.group-page')).toBeVisible()
+test('serves home screen metadata and registers the push worker', async ({ page }) => {
+  await page.goto('/dev/setup_group');
+  await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', '/manifest');
 
-  const value = await page.evaluate(async () => {
-    const manifestLink = document.querySelector('link[rel="manifest"]')
-    const manifest = await (await fetch(manifestLink.href)).json()
-    const maskableIcon = manifest.icons.find((icon) => icon.purpose === 'maskable')
-    const iconResponse = await fetch(maskableIcon.src)
-    await navigator.serviceWorker.register('/service-worker.js')
-    const registration = await navigator.serviceWorker.ready
-    return {
-      manifestHref: manifestLink.getAttribute('href'),
-      manifest,
-      maskableIconAvailable: iconResponse.ok,
-      workerScriptUrl: registration.active && registration.active.scriptURL
-    }
-  })
+  const manifest = await (await page.request.get('/manifest')).json();
+  expect(manifest).toMatchObject({ id: '/', scope: '/', display: 'standalone' });
+  const maskable = manifest.icons.find(icon => icon.purpose === 'maskable');
+  expect(maskable).toBeTruthy();
+  expect((await page.request.get(maskable.src)).ok()).toBe(true);
 
-  expect(value.manifestHref).toBe('/manifest')
-  expect(value.manifest.id).toBe('/')
-  expect(value.manifest.scope).toBe('/')
-  expect(value.manifest.display).toBe('standalone')
-  expect(value.manifest.icons.some((icon) => icon.purpose === 'maskable')).toBe(true)
-  expect(value.maskableIconAvailable).toBe(true)
-  expect(value.workerScriptUrl).toMatch(/\/service-worker\.js$/)
+  const worker = page.context().waitForEvent('serviceworker');
+  await page.evaluate(() => navigator.serviceWorker.register('/service-worker.js'));
+  expect((await worker).url()).toMatch(/\/service-worker\.js$/);
 });

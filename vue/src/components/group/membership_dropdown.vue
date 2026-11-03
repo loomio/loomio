@@ -154,7 +154,7 @@ export default
     v-list.group-actions-dropdown__menu-content
       v-list-item.membership-dropdown__view-profile(:to="urlFor(membership.user())")
         v-list-item-title(v-t="'membership_dropdown.view_profile'")
-      v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
+      v-list-item.membership-dropdown__set-name(v-if='canSetName()' @click='setName()')
         v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
         v-list-item-title {{ t('membership_dropdown.set_title') }}
