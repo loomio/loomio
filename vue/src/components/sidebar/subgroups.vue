@@ -43,7 +43,7 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
     v-list-subheader
       span(v-t="'group_page.my_subgroups'")
 
-    v-list-item(v-for="group in mine" nav slim :to="urlFor(group)")
+    v-list-item.sidebar__group(v-for="group in mine" nav slim :to="urlFor(group)")
       v-list-item-title
         plain-text(:model="group" field="name")
         template(v-if='openCounts[group.id]')
@@ -55,7 +55,7 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
       span(v-if="mine.length" v-t="'group_page.more_subgroups'")
       span(v-else v-t="'group_page.subgroups'")
 
-    v-list-item(v-for="group in more" nav slim :to="urlFor(group)")
+    v-list-item.sidebar__group(v-for="group in more" nav slim :to="urlFor(group)")
       v-list-item-title
         plain-text(:model="group" field="name")
         template(v-if='openCounts[group.id]')

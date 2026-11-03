@@ -1,85 +1,99 @@
 import { test, expect } from '../fixtures.mjs';
+import { box } from '../helpers/layout.mjs';
+import { comment, itemAction, thread } from '../helpers/threads.mjs';
 
-test('tag_items_filter_the_thread_and_preserve_opening_tags', async ({ page }) => {
-  await page.goto('/dev/setup_item_tags')
-  await page.setViewportSize({ width: 1440, height: 1100 })
-  await expect(page.locator('.topic-header .tags-display')).toContainText('Governance')
-  await expect(page.locator('.topic-header .tags-display')).not.toContainText('Budget')
-  await expect(page.locator('.thread-tags')).toContainText('Budget')
-  await expect(page.locator('.topic-list').first()).toContainText('An unrelated contribution')
-  await page.locator('.thread-tags .v-chip').click()
-  await expect(page.locator('.tagged-items')).toBeVisible()
-  await expect(page.locator('.tag-filter-toolbar')).toContainText('Budget')
-  await expect(page.locator('.tagged-items .new-comment .tag-color-dot')).toBeVisible()
-  const colors = await page.evaluate(() => ({
-    icon: getComputedStyle(document.querySelector('.tag-filter-toolbar__icon')).color,
-    tag: getComputedStyle(document.querySelector('.new-comment .tag-color-dot')).backgroundColor
-  }));
-  expect(colors.icon, 'Filter icon uses the selected tag color').toBe(colors.tag);
-  await page.setViewportSize({ width: 1440, height: 600 })
-  await page.evaluate('window.scrollTo(0, document.body.scrollHeight)')
-  const bar = await page.evaluate(() => {
-    const bar = document.querySelector('.tag-filter-toolbar');
-    return {position: getComputedStyle(bar).position, top: bar.getBoundingClientRect().top};
-  });
-  expect(bar.position).toBe('sticky');
-  expect(bar.top >= 64 && bar.top < 100, 'Filter toolbar stays below the app bar when scrolling').toBe(true);
-  await page.setViewportSize({ width: 1440, height: 1100 })
-  await expect(page.locator('.tagged-items')).toContainText('Insurance costs need a review')
-  await expect(page.locator('.tagged-items')).not.toContainText('An unrelated contribution')
-  await page.locator('.tagged-items .item-tags .topic-tags-menu__button').click()
-  await expect(page.locator('.topic-tags-menu__popover')).toBeVisible()
-  await page.locator('.topic-tags-menu__popover .topic-tags-picker__tag').click()
-  await page.locator('.topic-header h1').click()
-  await expect(page.locator('.topic-header .tags-display')).toContainText('Governance')
-  await page.locator('.tag-filter-toolbar__close').click()
-  await expect(page.locator('.tag-filter-toolbar')).toHaveCount(0)
-  await expect(page.locator('.topic-list').first()).toContainText('An unrelated contribution')
-  await page.reload()
-  await expect(page.locator('.topic-header .tags-display')).toContainText('Governance')
-  await expect(page.locator('.thread-tags')).not.toContainText('Budget')
+const headerTags = page => page.locator('.topic-header .tags-display');
+const threadTags = page => page.locator('.thread-tags');
+const tagged = page => comment(page, 'Insurance costs need a review');
+const untagged = page => comment(page, 'An unrelated contribution');
+const closeMenus = page => page.locator('.topic-header h1').click();
+
+async function addTag(page, name) {
+  await page.locator('.topic-tags-picker__new-tag').click();
+  await page.locator('.topic-tags-picker__new-tag-input input').fill(name);
+  await page.locator('.topic-tags-picker__new-tag-input input').press('Enter');
+}
+
+test.beforeEach(async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.goto('/dev/setup_item_tags');
 });
 
-test('new_tags_have_colors_without_reload_and_item_tags_share_the_metadata_row', async ({ page }) => {
-  await page.goto('/dev/setup_item_tags')
-  await page.setViewportSize({ width: 1440, height: 1100 })
-  await page.locator('.topic-header .topic-tags-menu__button').click()
-  await expect(page.locator('.topic-tags-menu__popover')).toContainText('Unused')
-  await expect(page.locator('.topic-tags-picker__all-tags')).toHaveCount(0)
-  await page.locator('.topic-tags-picker__new-tag').click()
-  await page.locator('.topic-tags-picker__new-tag-input input').fill('Planning')
-  await page.locator('.topic-tags-picker__new-tag-input input').press('Enter')
-  await expect(page.locator('.topic-header .tags-display')).toContainText('Planning')
-  await expect(page.locator('.thread-tags')).toContainText('Planning')
-  await expect(page.locator('.topic-header .tag-color-dot[style*="background-color"]')).toHaveCount(2)
-  await page.locator('.topic-header h1').click()
+test('item tags filter the thread and keep the thread\'s own tags', async ({ page }) => {
+  await expect(headerTags(page)).toContainText('Governance');
+  await expect(headerTags(page)).not.toContainText('Budget');
+  await expect(threadTags(page)).toContainText('Budget');
+  await expect(thread(page)).toContainText('An unrelated contribution');
 
-  await page.locator('.new-comment:has(.item-tags) .action-menu--btn').click()
-  await expect(page.locator('.v-overlay--active .action-dock__button--edit_item_tags')).toContainText('Apply tags')
-  await page.locator('.v-overlay--active .action-dock__button--edit_item_tags').click()
-  await expect(page.locator('.topic-tags-dialog .v-card-title')).toContainText('Apply tags')
-  await page.locator('.topic-tags-dialog .topic-tags-picker__new-tag').click()
-  await page.locator('.topic-tags-picker__new-tag-input input').fill('Follow up')
-  await page.locator('.topic-tags-picker__new-tag-input input').press('Enter')
-  await expect(page.locator('.new-comment .topic-item__title .item-tags')).toContainText('Follow up')
-  await expect(page.locator('.new-comment .item-tags .tag-color-dot[style*="background-color"]')).toHaveCount(2)
-  await page.locator('.topic-tags-dialog .dismiss-modal-button').click()
-  await page.locator('.topic-header h1').click()
+  await threadTags(page).locator('.v-chip', { hasText: 'Budget' }).click();
+  const toolbar = page.locator('.tag-filter-toolbar');
+  const items = page.locator('.tagged-items');
+  await expect(toolbar).toContainText('Budget');
+  await expect(items).toContainText('Insurance costs need a review');
+  await expect(items).not.toContainText('An unrelated contribution');
 
-  await expect(page.locator('.poll-created .poll-common-details-panel__started-by .item-tags')).toContainText('Decision')
-  await expect(page.locator('.outcome-created .topic-item__title .item-tags')).toContainText('Resolution')
-  const layout = await page.evaluate(() => {
-    const headline = document.querySelector('.new-comment .topic-item__title');
-    const tags = headline.querySelector('.item-tags');
-    const untagged = document.querySelector('.new-comment:not(:has(.item-tags)) .topic-item__title');
-    return {height: headline.getBoundingClientRect().height, heightUntagged: untagged.getBoundingClientRect().height,
-      right: Math.abs(headline.getBoundingClientRect().right - tags.getBoundingClientRect().right),
-      sameRow: Math.abs(headline.querySelector('.actor-link').getBoundingClientRect().top - tags.getBoundingClientRect().top) < 12};
-  });
-  expect(layout.right < 2, 'Comment tags align with the right edge of the headline').toBe(true);
-  expect(layout.sameRow, 'Comment tags share the author and timestamp row').toBe(true);
-  expect(Math.abs(layout.height - layout.heightUntagged) < 1, 'Tags do not increase the headline height').toBe(true);
-  await page.setViewportSize({ width: 390, height: 844 })
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
-    'Tag rows fit the mobile viewport').toBe(true);
+  // The filter icon takes the tag's colour.
+  const dot = items.locator('.new-comment .tag-color-dot');
+  const tagColor = await dot.evaluate(element => getComputedStyle(element).backgroundColor);
+  await expect(toolbar.locator('.tag-filter-toolbar__icon')).toHaveCSS('color', tagColor);
+
+  // The toolbar sticks below the app bar while scrolling.
+  await page.setViewportSize({ width: 1440, height: 600 });
+  await expect(toolbar).toHaveCSS('position', 'sticky');
+  await page.mouse.wheel(0, 5000);
+  await expect.poll(async () => (await box(toolbar)).y).toBeGreaterThanOrEqual(64);
+  expect((await box(toolbar)).y).toBeLessThan(100);
+  await page.setViewportSize({ width: 1440, height: 1100 });
+
+  // Removing the filtered tag from an item leaves the thread's tags alone.
+  await items.locator('.item-tags .topic-tags-menu__button').click();
+  await page.locator('.topic-tags-menu__popover .topic-tags-picker__tag', { hasText: 'Budget' }).click();
+  await closeMenus(page);
+  await expect(headerTags(page)).toContainText('Governance');
+  await page.locator('.tag-filter-toolbar__close').click();
+  await expect(toolbar).toHaveCount(0);
+  await expect(thread(page)).toContainText('An unrelated contribution');
+  await page.reload();
+  await expect(headerTags(page)).toContainText('Governance');
+  await expect(threadTags(page)).not.toContainText('Budget');
+});
+
+test('new tags get colours at once, and item tags share the item\'s metadata row', async ({ page }) => {
+  const coloredDots = scope => scope.locator('.tag-color-dot[style*="background-color"]');
+
+  await page.locator('.topic-header .topic-tags-menu__button').click();
+  await expect(page.locator('.topic-tags-menu__popover')).toContainText('Unused');
+  await expect(page.locator('.topic-tags-picker__all-tags')).toHaveCount(0);
+  await addTag(page, 'Planning');
+  await expect(headerTags(page)).toContainText('Planning');
+  await expect(threadTags(page)).toContainText('Planning');
+  await expect(coloredDots(page.locator('.topic-header'))).toHaveCount(2);
+  await closeMenus(page);
+
+  await itemAction(page, tagged(page), 'edit_item_tags');
+  const dialog = page.locator('.topic-tags-dialog');
+  await expect(dialog.locator('.v-card-title')).toContainText('Apply tags');
+  await addTag(page, 'Follow up');
+  const itemTags = tagged(page).locator('.topic-item__title .item-tags');
+  await expect(itemTags).toContainText('Follow up');
+  await expect(coloredDots(itemTags)).toHaveCount(2);
+  await dialog.locator('.dismiss-modal-button').click();
+  await closeMenus(page);
+
+  await expect(page.locator('.poll-created .poll-common-details-panel__started-by .item-tags')).toContainText('Decision');
+  await expect(page.locator('.outcome-created .topic-item__title .item-tags')).toContainText('Resolution');
+
+  // Tags sit at the right end of the author and time row, without making it taller.
+  const headline = await box(tagged(page).locator('.topic-item__title'));
+  const tags = await box(itemTags);
+  // The author and time links share the row; either will do.
+  const author = await box(tagged(page).locator('.topic-item__title .actor-link').first());
+  const plainHeadline = await box(untagged(page).locator('.topic-item__title'));
+  expect(Math.abs(headline.right - tags.right)).toBeLessThan(2);
+  expect(Math.abs(author.y - tags.y)).toBeLessThan(12);
+  expect(Math.abs(headline.height - plainHeadline.height)).toBeLessThan(1);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow, 'tag rows fit a phone screen').toBeLessThanOrEqual(0);
 });

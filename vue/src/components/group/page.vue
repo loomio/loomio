@@ -116,7 +116,7 @@ v-main
       :model="group"
       field="description")
     link-previews(:model="group")
-    action-dock(
+    action-dock.group-page__actions(
       :model='group'
       :actions='dockActions'
       :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"

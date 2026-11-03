@@ -249,7 +249,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
       v-list-subheader
         span(v-t="'common.groups'")
       template(v-for="group in organizations" :key="group.id")
-        v-list-item(:to="urlFor(group)")
+        v-list-item.sidebar__group(:to="urlFor(group)")
           template(v-slot:prepend)
             group-avatar.mr-2(:group="group")
           v-list-item-title
