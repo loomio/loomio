@@ -46,6 +46,8 @@ test.describe('the sidebar', () => {
     const refreshed = page.waitForResponse('**/api/v1/groups/**');
     await sidebarGroup(page, 'Point Break').click();
     await expect(groupName(page)).toContainText('Point Break');
+    // The old group's panel leaves with a transition.
+    await expect(page.locator('.discussions-panel')).toHaveCount(1);
     const panel = await page.locator('.discussions-panel').elementHandle();
     await refreshed;
     // Let the app handle the response before checking the panel.
