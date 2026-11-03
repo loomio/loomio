@@ -25,6 +25,7 @@ Plain, factual statements: what happened, what the software does, who it's for. 
 Write for people trying to use the feature. Explain the useful steps and consequences that affect their decisions. Keep the prose concise and practical.
 
 - Trust clear UI labels and screenshots. Do not narrate the interface, describe control order, or restate behaviour the reader can already see.
+- Describe available features and why someone might use them, without prescribing optional choices. Prefer “You can attach files to share supporting information” over “Use the formatting tools to support your poll.” Reserve imperatives for steps needed to complete a workflow.
 - Use simple, concrete examples chosen to demonstrate a meaningful difference. Prefer small, easy-to-follow numbers, such as vote weights of `0`, `1`, and `2`.
 - Match the terminology used in the UI and reuse it consistently.
 - Omit redundant reassurances, descriptions of absent settings, and development history. Include edge cases only when readers are likely to encounter them or need to act on them.

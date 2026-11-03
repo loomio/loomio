@@ -1,24 +1,23 @@
 ---
 title: Asetukset
-source_revision: c69922093febe9267eab942aa88abe5a751606f9
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-30'
+  'on': '2026-11-04'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 3a93b6d856307bb6
-  add-content: f622e36a3ad15e4e
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2cf5055187a4d848
+  opening-time: f8544bec7cd35ca5
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
-  anonymous-voting: 4fde93187ffd1a86
+  anonymous-voting: 35f5392ee8870076
   vote-reason: b1ebf2700ce8248b
-  hide-results: fc5282924fcae787
-  start-the-poll: 8e7d8e81db57f4f8
+  hide-results: 6dc7bf0b34c89a68
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
   notification-history: f132def867659f30
@@ -27,21 +26,21 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 9acf3c7373bcfc03
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
 generated:
   introduction: d01973b781822d5c
   setting-up-a-proposal-or-poll: e63f3d4fd70d0824
-  proposal-and-poll-templates: 531aecb0568deed7
-  add-content: 0516e40c5da65837
+  proposal-and-poll-templates: 230aa24a236c5d6e
+  add-content: 680b9d9ae0646858
   voting-options: 988f7a5cad12d9b0
   edit-voting-options: 60fbea7da813d115
-  opening-time: 4a9cebf7458bc8d3
+  opening-time: febfdf03cd8b4db0
   more-settings: 52929ce7488bbd4c
   reminder: 63527fd989980fd2
-  anonymous-voting: 076522c7bd57ad42
+  anonymous-voting: d11ad4be5971a8b9
   vote-reason: b3539bc5be115312
-  hide-results: 7716cb3ed1866061
-  start-the-poll: a18ab01326475ff0
+  hide-results: 5fda2b1f259e9139
   managing-polls: 736846c8c0a7c63a
   edit-poll: c07f20e3666a71bf
   notification-history: 678a71b017d1ba31
@@ -50,7 +49,8 @@ generated:
   delete: 0cda8b7bcda6bdae
   save-bookmark: a8a3baefd1aba243
   save-as-template: 3b67d0904a07c5e1
-  who-can-vote: 1098f8316bb9e01a
+  who-can-vote: e07207935db48df3
+  editing-settings-before-voting-opens: aef5ca667e8767f8
 title_source: 74a883a037bc227f
 title_generated: 8af481aba70ae8df
 needs_review:
@@ -73,25 +73,25 @@ Valitse ehdotusmalli, jota haluat käyttää.
 
 ![](proposal_templates.png)
 
+![Ehdotuslomake otsikosta ja tiedoista äänestysvaihtoehtoihin, kestoon, äänestysoikeuteen ja supistettuun Lisäasetukset-paneeliin](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### Lisää sisältöä
+<a id="add-content"></a>
+
+### Otsikko ja tiedot
 
 **Ryhmä:** Tarkista, että ehdotuksellesi tai kyselyllesi on valittu oikea ryhmä.
 
 **Otsikko:** Anna ehdotuksellesi tai kyselyllesi lyhyt, sisältöä kuvaava otsikko.
 
-**Tiedot:** Selitä, mitä pyydät ihmisiltä, ja anna riittävästi tietoa, jotta kaikki ymmärtävät, mitä äänestäminen tarkoittaa.
+**Tiedot:** Selitä, mitä pyydät ihmisiltä, ja anna riittävästi tietoa, jotta kaikki ymmärtävät, mitä äänestäminen tarkoittaa.  
 
 Valmiissa malleissa on apukysymyksiä hyvän ehdotuksen kirjoittamiseen. Käytä niitä tai lisää omat tietosi.
 
-Vältä monien eri ajatusten yhdistämistä yhteen ehdotukseen, sillä ihmiset voivat olla samaa mieltä joistakin asioista mutta eri mieltä toisista eivätkä siksi tiedä, miten vastata. Voit jakaa monimutkaiset päätökset useiksi ehdotuksiksi.
+Kerro ehdotusta tehdessäsi, mitä odotat, ja kuvaa, mitä vaikutuksia ehdotuksen hyväksymisellä olisi.
 
-Kerro ehdotusta tehdessäsi, mitä odotat, ja kuvaa, mitä vaikutuksia ehdotuksen hyväksymisellä olisi. Jos ehdotus on muodollinen tai sitova, on usein hyödyllistä kuvata myös, mitä ehdotuksen hylkääminen tarkoittaa.
-
-Täydennä kyselyäsi muotoilutyökaluilla. Voit esimerkiksi liittää asiakirjan paperiliitinkuvakkeella, lisätä kuvan, linkittää verkkosivun tai verkossa olevan asiakirjan tai upottaa videon.
-
-![](proposal_new.png)
+Voit liittää tiedostoja, lisätä kuvia ja taulukoita sekä lisätä otsikoita ja luetteloita [muotoilupainikkeilla](/en/user_manual/discussions/formatting). Ne auttavat jakamaan taustatietoa ja tekevät pitkistä ehdotuksista helpompia lukea.
 
 <!-- translation-section: voting-options -->
 
@@ -131,8 +131,6 @@ Avaa muokkausikkuna äänestysvaihtoehdon vieressä olevalla kynäkuvakkeella:
 
 Oletuksena äänestys alkaa heti, kun luot kyselyn. Jos haluat ajastaa äänestyksen alkamaan myöhemmin, poista valinta kohdasta **Äänestys alkaa heti** ja valitse alkamispäivä ja kellonaika.
 
-Ajastettu äänestys voi alkaa noin minuutin viiveellä valitun ajan jälkeen.
-
 Näin voit varata aikaa keskustelulle ennen äänestyksen alkamista tai varmistaa, että kysely tai ehdotus on määritetty oikein ja ajastettu oikeaan hetkeen.
 
 Jos ryhmälläsi on esimerkiksi useita päätöksiä äänestettävänä tulevassa kokouksessa, voit valmistella kyselyt ja lisätä äänestäjät etukäteen sekä ajastaa kaikki kyselyt avautumaan äänestysajan alkaessa. Ihmiset näkevät kyselyt ennen niiden avautumista, mutta eivät voi äänestää etukäteen.
@@ -155,8 +153,6 @@ Valitse, ketkä voivat äänestää kyselyssä.
 
 - **Kuka tahansa ryhmässä** (tai **Kuka tahansa ketjussa**): kaikki, joilla on pääsy kyselyyn, voivat äänestää, myös myöhemmin liittyvät ihmiset.
 - **Vain valitut henkilöt:** vain lisäämäsi ihmiset voivat äänestää. Käytä tätä, kun vain joidenkin jäsenten, kuten hallituksen tai toimikunnan jäsenten, on tarkoitus äänestää.
-
-![Kuka voi äänestää -asetus](../manage_voters/invited-people-only.png)
 
 Kun aloitat kyselyn, jonka asetuksena on **Vain valitut henkilöt**, **Hallitse äänestäjiä** avautuu, jotta voit lisätä äänestäjiä. Voit lisätä tai poistaa äänestäjiä myöhemmin. Katso [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters).
 
@@ -187,10 +183,7 @@ Kun tämä asetus on käytössä, äänet tallennetaan erilleen äänestäjien h
 Katso sivulta [Anonyymi äänestys](/en/user_manual/polls/anonymous_voting), miten äänestäjien henkilöllisyystiedot erotetaan annetuista äänistä, mitä tietoja säilytetään ja mitkä ovat suojauksen rajat.
 
 > [!WARNING]
-> Kun kysely on alkanut, et voi muuttaa sitä anonyymiksi tai poistaa anonyymiä asetusta käytöstä.
-
-> [!WARNING]
-> Et voi avata anonyymiä kyselyä uudelleen sen sulkeuduttua. Annettuja ääniä ei yhdistetä osallistumistietoihin, joista näkyy, ketkä ovat äänestäneet.
+> Kun kysely on alkanut, et voi muuttaa sitä anonyymiksi tai poistaa anonyymiä asetusta käytöstä. Et voi avata anonyymiä kyselyä uudelleen sen sulkeuduttua.
 
 <!-- translation-section: vote-reason -->
 
@@ -214,27 +207,20 @@ Ehdolliset asetukset määräytyvät äänestyskuvakkeen, eivät vaihtoehdon nim
 <!-- translation-section: hide-results -->
 
 ### Piilota tulokset
-Jos haluat ihmisten äänestävän tietämättä, miten muut ovat äänestäneet, voit piilottaa kyselyn tulokset. Tämä on hyödyllistä, jos et halua muiden äänten vaikuttavan ihmisten valintoihin.
 
-Asetuksen vaihtoehdot:
-- Älä piilota tuloksia
-- Piilota tulokset, kunnes ääni on annettu
-- Piilota tulokset, kunnes äänestys päättyy
+Jos haluat ihmisten äänestävän tietämättä, miten muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
 
-Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat nähdä äänivalinnat ja perustelut äänestettyään. Ketjun jäsenet voivat kirjoittaa kommentteja ja vastata ääniin ennen äänestämistä. Kommentit pysyvät näkyvissä tulosten asetuksesta riippumatta.
+Kun tulokset ovat piilossa äänen antamiseen asti, ihmiset voivat nähdä äänivalinnat ja perustelut äänestettyään.
 
-Kun tulokset ovat piilossa äänestyksen päättymiseen asti, ääniin vastaaminen ja maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti. Ketjun jäsenet voivat silti kommentoida kyselyä ja vastata kommentteihin. Voit pidentää äänestysaikaa kyselyn ollessa avoinna, mutta et voi avata kyselyä uudelleen sen sulkeuduttua.
+Kun tulokset ovat piilossa äänestyksen päättymiseen asti, ääniin vastaaminen ja maininnat äänten perusteluissa ovat poissa käytöstä kyselyn sulkeutumiseen asti. Voit pidentää äänestysaikaa kyselyn ollessa avoinna, mutta et voi avata kyselyä uudelleen sen sulkeuduttua.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Asetusten muokkaaminen ennen äänestyksen alkamista
 
 Henkilöt, joilla on oikeus muokata kyselyä, voivat muuttaa sen tietoja ja asetuksia, kuten anonyymiä äänestystä ja tulosten näkyvyyttä, ennen äänestyksen alkamista. Kun äänestys alkaa, anonyymiyttä ei voi enää muuttaa eikä sulkeutumiseen asti piilotettuja tuloksia voi näyttää etuajassa.
 
-Tulostus ja viennit, myös Markdown-muodossa, ohittavat asetuksen ”Piilota tulokset, kunnes ääni on annettu” ja sisältävät äänet ja vastaukset. Sulkeutumiseen asti piilotetut tulokset ja äänten perustelut pysyvät piilossa kyselyn sulkeutumiseen asti. Tavalliset kommentit ovat edelleen saatavilla ketjussa, haussa ja vienneissä.
-
-Anonyymit kyselyt piilottavat tulokset aina äänestyksen päättymiseen asti. STV-vaalit-mallissa anonyymi äänestys on oletusarvoisesti käytössä.
-
-<!-- translation-section: start-the-poll -->
-
-### Aloita kysely
-Valitse **Aloita ehdotus**- tai **Aloita kysely** -painike.
+Anonyymit kyselyt piilottavat tulokset aina äänestyksen päättymiseen asti.
 
 <!-- translation-section: managing-polls -->
 

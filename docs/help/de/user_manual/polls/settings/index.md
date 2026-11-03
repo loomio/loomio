@@ -1,24 +1,23 @@
 ---
 title: Einstellungen
-source_revision: c69922093febe9267eab942aa88abe5a751606f9
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-30'
+  'on': '2026-11-04'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 3a93b6d856307bb6
-  add-content: f622e36a3ad15e4e
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2cf5055187a4d848
+  opening-time: f8544bec7cd35ca5
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
-  anonymous-voting: 4fde93187ffd1a86
+  anonymous-voting: 35f5392ee8870076
   vote-reason: b1ebf2700ce8248b
-  hide-results: fc5282924fcae787
-  start-the-poll: 8e7d8e81db57f4f8
+  hide-results: 6dc7bf0b34c89a68
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
   notification-history: f132def867659f30
@@ -27,21 +26,21 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 9acf3c7373bcfc03
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
 generated:
   introduction: e46bdc13155d0c1d
   setting-up-a-proposal-or-poll: 5d0a4490518b7ba9
-  proposal-and-poll-templates: 2e1d6b9f5d867045
-  add-content: '093813006c859f24'
+  proposal-and-poll-templates: 1e09eea9d5e73b82
+  add-content: c41caf1218790cf6
   voting-options: 0ac7e1fbaf3e6854
   edit-voting-options: 634ce969f2de0e5f
-  opening-time: 6af3534a472c0c1b
+  opening-time: 87a695a2acaa1d46
   more-settings: 1dad0763dce25b73
   reminder: 1e1697411da53f12
-  anonymous-voting: 4c6845651d2367a8
+  anonymous-voting: 7194aee66b512f52
   vote-reason: 8818e6d77a621800
-  hide-results: 1ca8c61a3a34d915
-  start-the-poll: 37b766b2839b4c83
+  hide-results: 3d2afecb82c5d08f
   managing-polls: 84f389087c488b72
   edit-poll: e1e0163b373527b3
   notification-history: 513cf22429d52f3a
@@ -50,7 +49,8 @@ generated:
   delete: 52319f083b275280
   save-bookmark: e5fe80c710dcb4bb
   save-as-template: d7070fb687ff4d39
-  who-can-vote: 06fd93ee0732e549
+  who-can-vote: fb0cb6525823791c
+  editing-settings-before-voting-opens: 60ccffbb1543b247
 title_source: 74a883a037bc227f
 title_generated: f5750a5d7231e1f7
 ---
@@ -71,9 +71,13 @@ Wähle die Vorlage für den Vorschlag aus, die du verwenden möchtest.
 
 ![](proposal_templates.png)
 
+![Das Vorschlagsformular mit Titel und Details, Abstimmungsoptionen, Dauer, der Auswahl der Abstimmenden und dem eingeklappten Bereich „Weitere Einstellungen“](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### Inhalte hinzufügen
+<a id="add-content"></a>
+
+### Titel und Details
 
 **Gruppe:** Prüfe, ob die richtige Gruppe für deinen Vorschlag oder deine Abstimmung ausgewählt ist.
 
@@ -83,13 +87,9 @@ Wähle die Vorlage für den Vorschlag aus, die du verwenden möchtest.
 
 Die vordefinierten Vorlagen enthalten Anregungen, die dir helfen, einen guten Vorschlag zu formulieren. Nutze sie oder füge eigene Details hinzu.
 
-Vermeide es, verschiedene Ideen in einem Vorschlag zu bündeln. Teilnehmende könnten einigen Aspekten zustimmen, anderen aber nicht, und deshalb unsicher sein, wie sie antworten sollen. Du kannst komplexe Entscheidungen in mehrere Vorschläge aufteilen.
+Wenn du einen Vorschlag machst, benenne deine Erwartungen und beschreibe, welche Auswirkungen seine Annahme hätte.
 
-Wenn du einen Vorschlag machst, benenne deine Erwartungen und beschreibe, welche Auswirkungen seine Annahme hätte. Bei einem formellen oder verbindlichen Vorschlag ist es oft sinnvoll, auch zu beschreiben, was es bedeutet, wenn der Vorschlag nicht angenommen wird.
-
-Nutze die Formatierungswerkzeuge für deine Abstimmung. Hänge beispielsweise über das Büroklammersymbol ein Dokument an, füge ein Bild ein, verlinke eine Website oder ein Online-Dokument oder bette ein Video ein.
-
-![](proposal_new.png)
+Du kannst Dateien anhängen, Bilder und Tabellen einfügen und mit den [Formatierungsschaltflächen](/en/user_manual/discussions/formatting) Überschriften und Listen hinzufügen. So kannst du ergänzende Informationen teilen und längere Vorschläge leichter lesbar machen.
 
 <!-- translation-section: voting-options -->
 
@@ -129,8 +129,6 @@ Nutze das Stiftsymbol neben der Abstimmungsoption, um den Bearbeitungsdialog zu 
 
 Standardmäßig beginnt die Abstimmung sofort, wenn du sie erstellst. Wenn du einen späteren Beginn planen möchtest, entferne das Häkchen bei **Die Abstimmung beginnt sofort.** und wähle ein Startdatum und eine Startzeit.
 
-Bei geplanten Abstimmungen kann es nach dem gewählten Zeitpunkt etwa eine Minute dauern, bis sie beginnen.
-
 So kannst du vor Beginn der Abstimmung Zeit für eine Diskussion einplanen oder sicherstellen, dass eine Abstimmung oder ein Vorschlag richtig eingerichtet ist und zum vorgesehenen Zeitpunkt beginnt.
 
 Wenn deine Gruppe beispielsweise bei einer bevorstehenden Versammlung über mehrere Entscheidungen abstimmen soll, kannst du die Abstimmungen vorbereiten und Abstimmende im Voraus hinzufügen. Plane dann alle Abstimmungen so, dass sie zu Beginn des Abstimmungszeitraums starten. Die Teilnehmenden können die Abstimmungen vorher sehen, aber noch nicht abstimmen.
@@ -153,8 +151,6 @@ Wähle aus, wer an der Abstimmung teilnehmen darf.
 
 - **Jeder in der Gruppe** (oder **Jeder im Thread**): Alle mit Zugriff auf die Abstimmung dürfen abstimmen, auch Personen, die später hinzukommen.
 - **Nur für ausgewählte Personen:** Nur die Personen, die du hinzufügst, dürfen abstimmen. Verwende diese Einstellung, wenn nur bestimmte Mitglieder abstimmen sollen, etwa ein Vorstand oder ein Ausschuss.
-
-![Einstellung „Wer darf abstimmen?“](../manage_voters/invited-people-only.png)
 
 Nachdem du eine Abstimmung mit der Einstellung **Nur für ausgewählte Personen** gestartet hast, öffnet sich **Abstimmende verwalten**, damit du Abstimmende hinzufügen kannst. Du kannst später Abstimmende hinzufügen oder entfernen. Siehe [Abstimmende verwalten](/en/user_manual/polls/manage_voters).
 
@@ -185,10 +181,7 @@ Wenn diese Einstellung aktiviert ist, werden Stimmen getrennt von der Identität
 Unter [Anonyme Stimmabgabe](/en/user_manual/polls/anonymous_voting) findest du Details dazu, wie die Identität der Abstimmenden von den abgegebenen Stimmen getrennt wird, welche Informationen erhalten bleiben und welche Grenzen dieser Schutz hat.
 
 > [!WARNING]
-> Sobald eine Abstimmung begonnen hat, kannst du sie nicht mehr auf anonym umstellen oder die anonyme Einstellung rückgängig machen.
-
-> [!WARNING]
-> Du kannst eine anonyme Abstimmung nach ihrem Ende nicht erneut öffnen. Abgegebene Stimmen sind nicht mit den Teilnahmedatensätzen verknüpft, die zeigen, wer abgestimmt hat.
+> Sobald eine Abstimmung begonnen hat, kannst du sie nicht mehr auf anonym umstellen oder die anonyme Einstellung rückgängig machen. Du kannst eine anonyme Abstimmung nach ihrem Ende nicht wieder öffnen.
 
 <!-- translation-section: vote-reason -->
 
@@ -212,27 +205,20 @@ Die bedingten Einstellungen richten sich nach dem Abstimmungssymbol und nicht na
 <!-- translation-section: hide-results -->
 
 ### Ergebnis ausblenden
-Wenn du möchtest, dass Teilnehmende abstimmen, ohne zu wissen, wie andere abgestimmt haben, kannst du das Ergebnis der Abstimmung ausblenden. Das ist hilfreich, wenn du vermeiden möchtest, dass die Stimmen anderer ihre Entscheidung beeinflussen.
 
-Einstellungsoptionen:
-- Ergebnis nicht ausblenden
-- Ergebnis bis zur Abgabe einer Stimme ausblenden
-- Ergebnis bis zum Ende der Abstimmung ausblenden
+Wenn du möchtest, dass Teilnehmende abstimmen, ohne zu wissen, wie andere abgestimmt haben, kannst du das Ergebnis der Abstimmung ausblenden.
 
-Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende nach der Stimmabgabe sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben. Mitglieder des Threads können schon vor der Stimmabgabe Kommentare schreiben und auf Stimmen antworten. Kommentare bleiben unabhängig von der Ergebniseinstellung sichtbar.
+Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende nach der Stimmabgabe sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben.
 
-Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, sind Antworten auf Stimmen und Erwähnungen in Begründungen zu Stimmen deaktiviert, bis die Abstimmung beendet ist. Mitglieder des Threads können weiterhin die Abstimmung kommentieren und auf Kommentare antworten. Du kannst das Enddatum verlängern, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
+Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, sind Antworten auf Stimmen und Erwähnungen in Begründungen zu Stimmen deaktiviert, bis die Abstimmung beendet ist. Du kannst die Endzeit nach hinten verschieben, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Einstellungen vor Beginn der Stimmabgabe bearbeiten
 
 Personen mit der Berechtigung, eine Abstimmung zu bearbeiten, können deren Details und Einstellungen ändern, bevor die Stimmabgabe beginnt. Dazu gehören auch die anonyme Stimmabgabe und die Sichtbarkeit des Ergebnisses. Sobald die Stimmabgabe beginnt, lässt sich die Einstellung zur Anonymität nicht mehr ändern. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, können dann nicht vorzeitig eingeblendet werden.
 
-Beim Drucken und Exportieren, auch als Markdown, wird die Einstellung „Ergebnis bis zur Abgabe einer Stimme ausblenden“ ignoriert. Stimmen und Antworten werden dabei einbezogen. Ergebnisse und Begründungen zu Stimmen, die bis zum Ende der Abstimmung ausgeblendet sind, bleiben ausgeblendet, bis die Abstimmung beendet ist. Gewöhnliche Kommentare bleiben im Thread, in der Suche und in Exporten verfügbar.
-
-Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus. Die Vorlage für eine STV-Wahl aktiviert standardmäßig die anonyme Stimmabgabe.
-
-<!-- translation-section: start-the-poll -->
-
-### Abstimmung starten
-Wähle die Schaltfläche **Abstimmung starten** oder **Abstimmung beginnen**.
+Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus.
 
 <!-- translation-section: managing-polls -->
 
