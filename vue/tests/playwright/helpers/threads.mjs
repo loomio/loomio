@@ -1,6 +1,8 @@
+import { editor } from './editor.mjs';
+
 // The editor of the comment form at the end of a thread.
 export function commentEditor(page) {
-  return page.locator('.comment-form .ProseMirror');
+  return editor(page.locator('.comment-form'));
 }
 
 export async function postComment(page, text) {

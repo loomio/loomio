@@ -1,4 +1,5 @@
 import { expect } from '@playwright/test';
+import { editor } from './editor.mjs';
 
 // Template keys under the chooser's "Poll" filter; the rest are proposals.
 const POLL_TEMPLATES = ['poll', 'score', 'dot_vote', 'ranked_choice', 'stv', 'meeting'];
@@ -15,7 +16,7 @@ export async function openPollForm(page, template) {
 
 export async function fillPollForm(page, { title = 'A new proposal', details = 'Some details', options = [] } = {}) {
   await page.locator('.poll-common-form-fields__title input').fill(title);
-  await page.locator('.poll-common-form-fields__details .ProseMirror').fill(details);
+  await editor(page.locator('.poll-common-form-fields__details')).fill(details);
   for (const option of options) {
     await page.locator('.poll-common-form__add-option-btn').click();
     await page.locator('.poll-option-form__name input').fill(option);
@@ -44,9 +45,17 @@ export async function expectPoll(page, { title = 'A new proposal', details = 'So
 // Submits the vote form, with a reason when given. Choose an option first.
 export async function submitVote(page, reason) {
   if (reason) {
-    await page.locator('.poll-common-vote-form__reason .ProseMirror').fill(reason);
+    await editor(page.locator('.poll-common-vote-form__reason')).fill(reason);
   }
   await page.locator('.poll-common-vote-form__submit').click();
+}
+
+// A proposal's vote option by its icon (agree, abstain, disagree, block), or
+// another poll's option by its name.
+export function voteOption(page, option) {
+  return ['agree', 'abstain', 'disagree', 'block'].includes(option)
+    ? page.locator(`.poll-common-vote-form__button--${option}`)
+    : page.locator('.poll-common-vote-form__button', { hasText: option });
 }
 
 // Runs an action from the poll's own menu (the thread header has another).

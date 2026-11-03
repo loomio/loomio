@@ -58,7 +58,8 @@ const props = defineProps({
 const emit = defineEmits(['is-uploading']);
 
 // Refs
-const loading = ref(true);
+// Set once the document's content has loaded; typing before then is overwritten.
+const synced = ref(false);
 const socket = ref(null);
 const count = ref(0);
 const editor = ref(null);
@@ -332,6 +333,7 @@ onMounted(() => {
         editor.value.commands.setContent(props.model[props.field]);
       }
     }
+    synced.value = true;
   };
 
   hocusProvider = new HocuspocusProvider({
@@ -466,7 +468,7 @@ defineExpose({
 </script>
 
 <template lang="pug">
-div.mb-2
+div.mb-2.collab-editor(:class="{'collab-editor--synced': synced}")
   .v-input--density-default.editor(v-if="editor")
     .v-input__control
       v-field(
