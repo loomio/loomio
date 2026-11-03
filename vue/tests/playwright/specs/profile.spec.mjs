@@ -98,7 +98,7 @@ test('signs_out_after_sending_merge_verification', async ({ page }) => {
   await page.goto('/profile')
   await page.locator('.user-page__merge_accounts').click()
   await expect(page.locator('.merge-accounts-modal')).toBeVisible()
-  await page.locator('.merge-accounts-modal__destination-email input').pressSequentially('jennifer@example.com')
+  await page.locator('.merge-accounts-modal__destination-email input').fill('jennifer@example.com')
   await page.locator('.merge-accounts-modal__submit').click()
 
   // Sending the verification email signs the source account out.

@@ -30,7 +30,7 @@ async function openProposalForm(page) {
   await page.goto('/dev/setup_manual_oatmilk_delegate_poll')
   await expectLabel(page.locator('.context-panel__heading'), 'Weekly production schedule')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('Approve reusable bottle pilot')
   await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
     editor.focus()

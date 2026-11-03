@@ -39,7 +39,19 @@ Always let `bin/e2e` build Vue assets unless you have just built them. Running a
 3. `page.goto('/dev/scenario_name')` loads the scenario from `http://localhost:3001`
 4. The Rails server runs in test mode with `RAILS_ENV=test`
 
-Write specs with plain Playwright: `page.goto`, locator actions such as `await page.locator('.poll-common-form__submit').click()`, and web-first assertions such as `await expect(page.locator('.selector')).toContainText('text')`. Actions and assertions wait for the element, so do not add pauses or wait steps before them. Locators are strict: make each one identify a single element, using a more specific selector, `getByRole`, or `{ hasText }`, and use `.first()` only when any matching element will do. Loomio's named classes such as `.poll-common-form__submit` are stable test hooks; prefer them, or role and text locators, to generic Vuetify classes. Pass a `timeout` only when something legitimately takes longer than the 8-second default. Shared multi-step flows, such as signing up, live as plain functions in `vue/tests/playwright/helpers/accounts.mjs`. The `test` fixture from `vue/tests/playwright/fixtures.mjs` accepts `window.confirm()` dialogs.
+### Writing specs
+
+Write specs with plain Playwright, so each test reads as what a person does and sees.
+
+- **Select elements by CSS class.** Use Loomio's BEM classes, such as `.poll-common-form__submit`, rather than text, roles, or labels. When an element has no suitable class, add a BEM class to the component as a test hook. Match text only where Vuetify internals make a class impractical, such as the options of a select.
+- **Avoid Vuetify internals and position.** Do not select by Vuetify implementation classes (`.v-selection-control__wrapper`, `.v-field__input`), DOM position (`:first-child`, `:nth-child`), or element order. To pick one item of a list rendered in a loop, give the repeated element a class and filter by its text: `page.locator('.members-panel .v-list-item', { hasText: 'Emilio Estevez' })`. Do not add per-item classes or ids for this.
+- **Make each locator match one element.** Locators are strict. Use a more specific class or a `{ hasText }` filter. Use `.first()` only when any match will do, such as checking that a list shows at least one item.
+- **Let Playwright wait.** Actions and web-first assertions wait for their element, so never add pauses, `waitForTimeout`, or a visibility check before acting on the same element. Assert the outcome a person would see, not intermediate states. Pass a `timeout` only when something legitimately takes longer than the 8-second default.
+- **Assert with web-first assertions.** Use `await expect(locator).toContainText(...)`, `toHaveCount(0)` for absence, `toBeChecked`, `toHaveValue`, and `toHaveAttribute`. Check layout with `boundingBox()` (see `helpers/layout.mjs`) rather than measuring in `page.evaluate`.
+- **Use Playwright APIs, not page scripts.** Click and fill with locators, open other tabs with `page.context().newPage()`, and call dev endpoints with `page.request`. Use `page.evaluate` only for browser state that has no Playwright API, such as a WebSocket probe.
+- **Keep it DRY.** Put sequences that several specs repeat in plain functions under `vue/tests/playwright/helpers/`, grouped by area: `accounts.mjs` (sign-up and sign-in), `threads.mjs`, `polls.mjs`, and `vuetify.mjs` (selects). Give repeated elements a named `const` within a test. Do not wrap the page in a general-purpose helper object.
+- **Use the fixtures.** Import `test` and `expect` from `vue/tests/playwright/fixtures.mjs`. Its `page` accepts `window.confirm()` dialogs, and `flash` is the snackbar that reports an action's result: `await expect(flash).toContainText('Comment added')`.
+- **Name tests for behaviour.** Titles describe what the user can do or see, such as `'a member can remove their own vote'`.
 
 ### Fixing test failures
 

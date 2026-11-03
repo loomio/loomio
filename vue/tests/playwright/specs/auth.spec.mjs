@@ -100,7 +100,7 @@ test('can_add_a_passkey_after_signing_in_with_a_code', async ({ page }) => {
   await addVirtualPasskeyAuthenticator(page)
 
   await page.goto('/dev/setup_login_token_user_with_password')
-  await page.locator('.auth-email-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('password-user@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -121,7 +121,7 @@ test('can_add_a_passkey_after_signing_in_with_a_password', async ({ page }) => {
   await addVirtualPasskeyAuthenticator(page)
 
   await page.goto('/dev/setup_login_token_user_with_password')
-  await page.locator('.auth-email-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('password-user@example.com')
   await page.locator('.auth-email-form__password input').fill('veryeasytoguess123')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.credential-prompt')).toContainText('Passkeys')
@@ -138,7 +138,7 @@ test('remembers_when_a_password_user_dismisses_the_passkey_offer', async ({ page
   await addVirtualPasskeyAuthenticator(page)
 
   await page.goto('/dev/setup_login_token_user_with_password')
-  await page.locator('.auth-email-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('password-user@example.com')
   await page.locator('.auth-email-form__password input').fill('veryeasytoguess123')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.credential-prompt__passkey')).toBeVisible()
@@ -151,7 +151,7 @@ test('remembers_when_a_password_user_dismisses_the_passkey_offer', async ({ page
   await page.locator('.sidebar__user-dropdown').last().click()
   await page.locator('.user-dropdown__list-item-button--sign-out').last().click()
   await expect(page.locator('.auth-modal')).toBeVisible({ timeout: 20000 })
-  await page.locator('.auth-email-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('password-user@example.com')
   await page.locator('.auth-email-form__password input').fill('veryeasytoguess123')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -160,7 +160,7 @@ test('remembers_when_a_password_user_dismisses_the_passkey_offer', async ({ page
 
 test('returning_user_without_recorded_legal_acceptance_can_sign_in', async ({ page }) => {
   await page.goto('/dev/setup_returning_user_without_legal_acceptance')
-  await page.locator('.auth-email-form__email input').pressSequentially('returning-no-terms@example.com')
+  await page.locator('.auth-email-form__email input').fill('returning-no-terms@example.com')
   await page.locator('.auth-email-form__password input').fill('veryeasytoguess123')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.dashboard-page')).toBeVisible()
@@ -194,7 +194,7 @@ test('offers_password_and_passkey_after_code_sign_in_when_account_has_a_passkey'
   await addVirtualPasskeyAuthenticator(page)
 
   await page.goto('/dev/setup_login_token_user_with_passkey')
-  await page.locator('.auth-email-form__email input').pressSequentially('passkey-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('passkey-user@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -237,7 +237,7 @@ test('can_sign_up_from_try_and_complete_the_account', async ({ page }) => {
 test('can_sign_up_a_user', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_as_visitor')
   await page.locator('.auth-form__create-account').click()
-  await page.locator('.auth-signup-form__email input').pressSequentially('max_von_sydow@example.com')
+  await page.locator('.auth-signup-form__email input').fill('max_von_sydow@example.com')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
   await expect(page.locator('.auth-complete')).toContainText("We've sent an email to max_von_sydow@example.com")
@@ -254,7 +254,7 @@ test('can_sign_up_a_user', async ({ page }) => {
 test('offers_sign_in_choices_after_completing_an_account_with_a_code', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_as_visitor')
   await page.locator('.auth-form__create-account').click()
-  await page.locator('.auth-signup-form__email input').pressSequentially('new-code-user@example.com')
+  await page.locator('.auth-signup-form__email input').fill('new-code-user@example.com')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
   await enterLastLoginCode(page)
@@ -268,7 +268,7 @@ test('offers_sign_in_choices_after_completing_an_account_with_a_code', async ({ 
 test('shows_signup_code_copy_for_an_existing_email', async ({ page }) => {
   await page.goto('/dev/setup_login_token_user_with_password')
   await page.locator('.auth-form__create-account').click()
-  await page.locator('.auth-signup-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-signup-form__email input').fill('password-user@example.com')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText("We've sent an email to password-user@example.com")
   await expect(page.locator('.auth-complete__submit')).toContainText('Continue')
@@ -278,7 +278,7 @@ test('can_sign_up_a_new_user_through_the_discussion_page', async ({ page }) => {
   await page.goto('/dev/view_open_discussion_as_visitor')
   await page.locator('.add-comment-panel__sign-in-btn').click()
   await page.locator('.auth-form__create-account').click()
-  await page.locator('.auth-signup-form__email input').pressSequentially('max_von_sydow@example.com')
+  await page.locator('.auth-signup-form__email input').fill('max_von_sydow@example.com')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toBeVisible()
   await page.goto('/dev/use_last_login_token')
@@ -299,7 +299,7 @@ test('can_login_via_token', async ({ page }) => {
 test('prompts_login_code_user_without_password_to_set_one', async ({ page }) => {
   await page.goto('/dev/setup_login_token_user_without_password')
   await page.evaluate(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
-  await page.locator('.auth-email-form__email input').pressSequentially('no-password@example.com')
+  await page.locator('.auth-email-form__email input').fill('no-password@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -314,7 +314,7 @@ test('prompts_login_code_user_without_password_to_set_one', async ({ page }) => 
 test('offers_to_reset_an_existing_password_after_code_sign_in', async ({ page }) => {
   await page.goto('/dev/setup_login_token_user_with_password')
   await page.evaluate(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
-  await page.locator('.auth-email-form__email input').pressSequentially('password-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('password-user@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -329,7 +329,7 @@ test('offers_to_reset_an_existing_password_after_code_sign_in', async ({ page })
 test('can_dismiss_password_prompt_after_login_code_sign_in', async ({ page }) => {
   await page.goto('/dev/setup_login_token_user_without_password')
   await page.evaluate(() => Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true }))
-  await page.locator('.auth-email-form__email input').pressSequentially('no-password@example.com')
+  await page.locator('.auth-email-form__email input').fill('no-password@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -345,7 +345,7 @@ test('can_dismiss_password_prompt_after_login_code_sign_in', async ({ page }) =>
 test('can_use_a_shareable_link', async ({ page }) => {
   await page.goto('/dev/view_closed_group_with_shareable_link')
   await page.locator('.auth-form__create-account').click()
-  await page.locator('.auth-signup-form__email input').pressSequentially('max_von_sydow@example.com')
+  await page.locator('.auth-signup-form__email input').fill('max_von_sydow@example.com')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
   await page.goto('/dev/use_last_login_token')
@@ -360,7 +360,7 @@ test('can_use_a_shareable_link', async ({ page }) => {
 test('does_not_log_in_when_password_is_incorrect', async ({ page }) => {
   await page.goto('/dev/setup_explore_as_visitor')
   await page.locator('.navbar__sign-in').click()
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__password input').fill('w0rstmovie')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.lmo-validation-error__message')).toContainText('Unable to sign you in with those details')
@@ -370,14 +370,14 @@ test('opens_an_email_form_when_requesting_a_login_code_without_an_address', asyn
   await page.goto('/dev/setup_dashboard_as_visitor')
   await page.locator('.auth-email-form__login-link').click()
   await expect(page.locator('.auth-email-code-form')).toContainText('We’ll send a six-digit code to your email address')
-  await page.locator('.auth-email-code-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-code-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
 });
 
 test('prefills_the_create_account_form_from_the_sign_in_email', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_as_visitor')
-  await page.locator('.auth-email-form__email input').pressSequentially('new-person@example.com')
+  await page.locator('.auth-email-form__email input').fill('new-person@example.com')
   await page.locator('.auth-form__create-account').click()
   await expect(page.locator('.auth-signup-form__email input')).toHaveValue('new-person@example.com')
 });
@@ -396,7 +396,7 @@ test('does_not_carry_an_invalid_email_into_another_authentication_path', async (
 
 test('can_go_back_and_correct_the_email_for_a_login_code', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_as_visitor')
-  await page.locator('.auth-email-form__email input').pressSequentially('wrong@example.com')
+  await page.locator('.auth-email-form__email input').fill('wrong@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -407,7 +407,7 @@ test('can_go_back_and_correct_the_email_for_a_login_code', async ({ page }) => {
 
 test('can_send_login_code_to_user_with_a_password', async ({ page }) => {
   await page.goto('/dev/setup_dashboard_as_visitor')
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -431,7 +431,7 @@ test('can_login_from_the_dashboard', async ({ page }) => {
 test('can_login_from_a_discussion_page', async ({ page }) => {
   await page.goto('/dev/view_open_discussion_as_visitor')
   await page.locator('.add-comment-panel__sign-in-btn').click()
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__password input').fill('gh0stmovie')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -440,7 +440,7 @@ test('can_login_from_a_discussion_page', async ({ page }) => {
 test('can_login_from_the_explore_page', async ({ page }) => {
   await page.goto('/dev/setup_explore_as_visitor')
   await page.locator('.navbar__sign-in').click()
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__password input').fill('gh0stmovie')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -449,7 +449,7 @@ test('can_login_from_the_explore_page', async ({ page }) => {
 test('can_login_from_the_explore_page_via_link', async ({ page }) => {
   await page.goto('/dev/setup_explore_as_visitor')
   await page.locator('.navbar__sign-in').click()
-  await page.locator('.auth-email-form__email input').pressSequentially('jennifer@example.com')
+  await page.locator('.auth-email-form__email input').fill('jennifer@example.com')
   await page.locator('.auth-email-form__login-link').click()
   await page.locator('.auth-email-code-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -462,7 +462,7 @@ test('can_login_from_the_explore_page_via_link', async ({ page }) => {
 test('can_login_from_a_closed_group_page', async ({ page }) => {
   await page.goto('/dev/view_closed_group_as_visitor')
   await page.locator('.navbar__sign-in').click()
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__password input').fill('gh0stmovie')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -472,7 +472,7 @@ test('can_login_from_a_closed_group_page', async ({ page }) => {
 
 test('can_login_from_a_secret_group_page', async ({ page }) => {
   await page.goto('/dev/view_secret_group_as_visitor')
-  await page.locator('.auth-email-form__email input').pressSequentially('patrick@example.com')
+  await page.locator('.auth-email-form__email input').fill('patrick@example.com')
   await page.locator('.auth-email-form__password input').fill('gh0stmovie')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -508,7 +508,7 @@ test('requires_verification_if_email_is_changed', async ({ page }) => {
   await page.locator('.email-button').click()
   await page.locator('.auth-form__create-account').click()
   await page.locator('.auth-signup-form__email input').fill('')
-  await page.locator('.auth-signup-form__email input').pressSequentially('max_von_sydow@merciless.com')
+  await page.locator('.auth-signup-form__email input').fill('max_von_sydow@merciless.com')
   await expect(page.locator('.auth-signup-form')).toContainText('New to')
   await page.locator('.auth-signup-form__submit').click()
   await expect(page.locator('.auth-complete')).toContainText('Check your email')
@@ -524,7 +524,7 @@ test('invite_existing_user_via_alternative_email_address', async ({ page }) => {
   await page.locator('.email-button').click()
   await expect(page.locator('.auth-form')).toContainText('If you are already a Loomio user, sign in with your existing account')
   await page.locator('.auth-email-form__email input').fill('')
-  await page.locator('.auth-email-form__email input').pressSequentially('existing-user@example.com')
+  await page.locator('.auth-email-form__email input').fill('existing-user@example.com')
   await page.locator('.auth-email-form__password input').fill('veryeasytoguess123')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')

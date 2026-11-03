@@ -20,7 +20,7 @@ for (const [state, scenario] of [
     await page.locator('.poll-common-form__opens-immediately .v-selection-control__wrapper').click()
     await expect(page.locator('.poll-common-opening-at-field')).toBeVisible()
     await expect(page.locator('.poll-common-opening-at-field .v-date-input input')).toBeEnabled()
-    await expect(page.locator('.poll-common-opening-at-field__timepicker input')).toBeEnabled()
+    await expect(page.locator('.poll-common-opening-at-field__timepicker input:not([type=hidden])')).toBeEnabled()
     await page.locator('.poll-common-form__opens-immediately .v-selection-control__wrapper').click()
     await expect(page.locator('.poll-common-opening-at-field')).toHaveCount(0)
     await page.locator('.poll-common-form .v-radio:first-child .v-selection-control__wrapper').click()
@@ -31,7 +31,7 @@ for (const [state, scenario] of [
     await page.reload()
     await expect(page.locator('.context-panel__heading')).toContainText(`Copy of ${state} proposal`)
     await expect(page.locator('.poll-common-action-panel__scheduled')).toHaveCount(0)
-    await expect(page.locator('.poll-common-vote-form__button')).toBeVisible()
+    await expect(page.locator('.poll-common-vote-form__button').first()).toBeVisible()
     await expect(page.locator('.poll-common-vote-form--preview')).toHaveCount(0)
   });
 }

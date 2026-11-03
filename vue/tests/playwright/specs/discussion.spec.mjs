@@ -14,7 +14,7 @@ test('should_display_timestamps_on_content', async ({ page }) => {
   await page.goto('/dev/view_open_group_as_non_member')
   await expect(page.locator('.topic-previews')).toBeVisible()
   await page.locator('.topic-preview__link').click()
-  await expect(page.locator('.time-ago')).toBeVisible()
+  await expect(page.locator('.time-ago').first()).toBeVisible()
 });
 
 test('can_lock_and_unlock_a_thread', async ({ page }) => {
@@ -126,7 +126,7 @@ test('replies_to_a_comment', async ({ page }) => {
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').fill('hi this is my comment')
   await page.locator('.comment-form__submit-button').click()
 
-  await expect(page.locator('.topic-list')).toContainText('hi this is my comment')
+  await expect(page.locator('.topic-list').first()).toContainText('hi this is my comment')
 });
 
 test('can_react_to_a_discussion', async ({ page }) => {
@@ -140,18 +140,21 @@ test('can_react_to_a_discussion', async ({ page }) => {
 test('mentions_a_user_in_wysiwyg', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
   await expect(page.locator('.mention-notifications-count')).toContainText('Type @ to notify people')
+  await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').clear()
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').pressSequentially('Hello @')
   await expect(page.locator('.suggestion-list')).toContainText('Dirty Dancing Shoes')
   await page.locator('.suggestion-list [data-mention-handle="shoes"] .v-list-item-title').click()
   await expect(page.locator('.mention-notifications-count')).toContainText('2 people will be notified')
 
   await page.goto('/dev/setup_discussion')
+  await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').clear()
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').pressSequentially('@patrick')
   await expect(page.locator('.suggestion-list')).toContainText('Patrick Swayze')
   await page.locator('.suggestion-list [data-mention-handle="patrickswayze"] .v-list-item-title').click()
   await expect(page.locator('.mention-notifications-count')).toContainText('1 person will be notified')
 
   await page.goto('/dev/setup_discussion')
+  await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').clear()
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').pressSequentially('@jennifer')
   await expect(page.locator('.suggestion-list')).toContainText('Jennifer Grey')
   await page.locator('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title').click()
@@ -161,6 +164,7 @@ test('mentions_a_user_in_wysiwyg', async ({ page }) => {
 
 test('ranks_mention_prefix_matches_first', async ({ page }) => {
   await page.goto('/dev/setup_discussion_for_mention_ranking')
+  await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').clear()
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').pressSequentially('@sco')
   await expect(page.locator('.suggestion-list .v-list-item:nth-child(1)')).toContainText('Scott Lemmon')
   await expect(page.locator('.suggestion-list .v-list-item:nth-child(2)')).toContainText('Jerry Scott')
@@ -168,6 +172,7 @@ test('ranks_mention_prefix_matches_first', async ({ page }) => {
 
 test('preserves_a_published_mention_when_copying_and_pasting_it', async ({ page }) => {
   await page.goto('/dev/setup_discussion')
+  await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').clear()
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').pressSequentially('@jennifer')
   await page.locator('.suggestion-list [data-mention-handle="jennifergrey"] .v-list-item-title').click()
   await page.locator('.comment-form__submit-button').click()
@@ -286,14 +291,14 @@ test('discards_restores_deletes_a_comment', async ({ page }) => {
 test('sign_in_from_discussion_announced_email', async ({ page }) => {
   await page.goto('/dev/setup_discussion_mailer_discussion_announced_email')
   await expect(page.locator('.email-notification-text')).toContainText("invited you to a discussion")
-  await expect(page.locator('.email-user-content')).toContainText("A description for this discussion. Should this be rich?")
+  await expect(page.getByText('A description for this discussion. Should this be rich?')).toBeVisible()
   await page.locator('main h1 a').click()
   await expect(page.locator('.context-panel__heading')).toContainText('go to the moon')
   await expect(page.locator('.context-panel__description')).toContainText('A description for this discussion')
   await page.locator('.comment-form .lmo-textarea div[contenteditable=true]').fill('Hello world!')
   await page.locator('.comment-form__submit-button').click()
-  await expect(page.locator('.topic-item__title')).toContainText('Jennifer Grey', { timeout: 10000 })
-  await expect(page.locator('.topic-item__body')).toContainText('Hello world!')
+  await expect(page.locator('.new-comment .topic-item__title')).toContainText('Jennifer Grey', { timeout: 10000 })
+  await expect(page.locator('.new-comment__body')).toContainText('Hello world!')
   await expect(page.locator('.context-panel__breadcrumbs')).toContainText('Girdy Dancing Shoes')
 });
 
@@ -302,7 +307,7 @@ test('signed_out_member_signs_in_normally_from_discussion_invitation', async ({ 
   await expect(page.locator('.email-notification-text')).toContainText('invited you to a discussion')
   await page.locator('main h1 a').click()
   await expect(page.locator('.auth-modal')).toBeVisible()
-  await page.locator('.auth-email-form__email input').pressSequentially('discussion-member@example.com')
+  await page.locator('.auth-email-form__email input').fill('discussion-member@example.com')
   await page.locator('.auth-email-form__password input').fill('password')
   await page.locator('.auth-email-form__submit').click()
   await expect(page.locator('.flash-root__message')).toContainText('Signed in successfully')
@@ -312,7 +317,7 @@ test('signed_out_member_signs_in_normally_from_discussion_invitation', async ({ 
 test('sign_up_from_invitation_created_email', async ({ page }) => {
   await page.goto('/dev/setup_discussion_mailer_invitation_created_email')
   await expect(page.locator('.email-notification-text')).toContainText("invited you to a discussion")
-  await expect(page.locator('.email-user-content')).toContainText("A description for this discussion. Should this be rich?")
+  await expect(page.getByText('A description for this discussion. Should this be rich?')).toBeVisible()
   await expect(page.locator('body')).toContainText('Should we go to the moon?')
   await expect(page.locator('main')).toContainText('Poll details for the invitation email.')
   await expect(page.locator('main')).toContainText('Please vote')
@@ -328,8 +333,8 @@ test('sign_up_from_invitation_created_email', async ({ page }) => {
 
 test('can_move_comments_to_another_thread', async ({ page }) => {
   await page.goto('/dev/setup_forkable_discussion')
-  await expect(page.locator('.topic-list')).toContainText('totally on topic')
-  await expect(page.locator('.topic-list')).toContainText('totally off topic')
+  await expect(page.locator('.topic-list').first()).toContainText('totally on topic')
+  await expect(page.locator('.topic-list').first()).toContainText('totally off topic')
   await page.locator('.new-comment .action-menu').click()
   await page.locator('.action-dock__button--move_event').click()
   await expect(page.locator('.discussion-fork-actions')).toBeVisible()
@@ -341,13 +346,13 @@ test('can_move_comments_to_another_thread', async ({ page }) => {
   await expect(page.locator('.context-panel__heading')).toContainText('Waking Up in Reno')
   await page.reload()
   // The moved comment should be in the target thread
-  await expect(page.locator('.topic-list')).toContainText('totally on topic')
+  await expect(page.locator('.topic-list').first()).toContainText('totally on topic')
 });
 
 test('can_add_topical_poll_to_discussion', async ({ page }) => {
   await page.goto('/dev/setup_topical_poll_to_add_to_discussion')
   await expect(page.locator('.context-panel__heading')).toContainText('Topical proposal to move')
-  await expect(page.locator('.topic-list')).toContainText('A comment on the topical poll')
+  await expect(page.locator('.topic-list').first()).toContainText('A comment on the topical poll')
   await page.locator('.poll-created .action-menu--btn:visible').click()
   await page.locator('.action-dock__button--add_to_discussion:visible').click()
   await expect(page.locator('.modal-launcher .v-card')).toContainText('Add to Discussion')
@@ -356,12 +361,12 @@ test('can_add_topical_poll_to_discussion', async ({ page }) => {
   await page.locator('.modal-launcher .v-card-actions .v-btn:last-child').click()
 
   await expect(page.locator('.context-panel__heading')).toContainText('Waking Up in Reno', { timeout: 15000 })
-  await expect(page.locator('.topic-list')).toContainText('Topical proposal to move')
-  await expect(page.locator('.topic-list')).toContainText('A comment on the topical poll')
+  await expect(page.locator('.topic-list').first()).toContainText('Topical proposal to move')
+  await expect(page.locator('.topic-list').first()).toContainText('A comment on the topical poll')
   await page.reload()
   await expect(page.locator('.context-panel__heading')).toContainText('Waking Up in Reno')
-  await expect(page.locator('.topic-list')).toContainText('Topical proposal to move')
-  await expect(page.locator('.topic-list')).toContainText('A comment on the topical poll')
+  await expect(page.locator('.topic-list').first()).toContainText('Topical proposal to move')
+  await expect(page.locator('.topic-list').first()).toContainText('A comment on the topical poll')
 });
 
 test('private_thread', async ({ page }) => {
@@ -370,7 +375,7 @@ test('private_thread', async ({ page }) => {
   await page.locator('.sidebar__list-item-button--private').click()
   await page.locator('.topics-page__new-topic-button').click()
   await page.locator('.discussion-templates--direct-discussion').click()
-  await page.locator('.recipients-autocomplete input[type="text"]').pressSequentially('test@example.com')
+  await page.locator('.recipients-autocomplete input[type="text"]').fill('test@example.com')
   await expect(page.locator('.recipients-autocomplete-suggestion')).toContainText('test@example.com')
   await page.locator('.recipients-autocomplete-suggestion').click()
   await page.locator('.discussion-form__title-input input').fill("private thread")

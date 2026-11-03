@@ -63,7 +63,7 @@ export default {
 
 </script>
 <template lang="pug">
-v-card(:title="$t('email_to_group.add_alias')")
+v-card.member-email-alias-modal(:title="$t('email_to_group.add_alias')")
   template(v-slot:append)
     dismiss-modal-button
   template(v-if="group.isTrialOrDemo()")
@@ -72,7 +72,7 @@ v-card(:title="$t('email_to_group.add_alias')")
   template(v-else)
     .pa-4(v-if="!selectedUser")
       p.text-medium-emphasis {{ t('email_to_group.who_is_the_owner_of_email', {email: pendingEmail.senderEmail}) }}
-      v-text-field(
+      v-text-field.member-email-alias-modal__search(
         v-model="q"
         autofocus
         variant="solo-filled"
@@ -82,7 +82,7 @@ v-card(:title="$t('email_to_group.add_alias')")
         :placeholder="$t('common.action.search')"
       )
       v-list(v-for="user in users")
-        v-list-item(@click="selectedUser = user") {{user.name}}
+        v-list-item.member-email-alias-modal__user(@click="selectedUser = user") {{user.name}}
 
     .pa-4.text-medium-emphasis(v-if="selectedUser")
       p {{ t('email_to_group.is_name_the_owner_of_email', {name: selectedUser.name, email: pendingEmail.senderEmail}) }}
@@ -91,6 +91,6 @@ v-card(:title="$t('email_to_group.add_alias')")
       v-btn(@click="selectedUser = null")
         span(v-t="'common.action.cancel'")
       v-spacer
-      v-btn(color="primary" @click="submit(selectedUser.id)" :loading="loading")
+      v-btn.member-email-alias-modal__confirm(color="primary" @click="submit(selectedUser.id)" :loading="loading")
         span(v-t="'common.action.confirm'")
 </template>

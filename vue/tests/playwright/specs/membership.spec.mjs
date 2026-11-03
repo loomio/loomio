@@ -44,7 +44,7 @@ test('shows_notification_history_for_an_accepted_member', async ({ page }) => {
 test('successfully_removes_a_group_member', async ({ page }) => {
   await page.goto('/dev/setup_group')
   await page.locator('.group-page-members-tab').click()
-  await page.locator('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown').click()
+  await page.locator('.members-panel .v-list-item', { hasText: 'Emilio Estevez' }).locator('.membership-dropdown').click()
   await page.locator('.membership-dropdown__remove').click()
   await expect(page.locator('.confirm-modal')).toContainText('Remove member')
   await page.locator('.confirm-modal__submit').click()
@@ -71,7 +71,7 @@ test('can_remove_coordinator_privileges', async ({ page }) => {
   await page.goto('/dev/setup_group_with_multiple_coordinators')
 
   await page.locator('.group-page-members-tab').click()
-  await page.locator('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown').click()
+  await page.locator('.members-panel .v-list-item', { hasText: 'Emilio Estevez' }).locator('.membership-dropdown').click()
   await page.locator('.membership-dropdown__toggle-admin').click()
   await expect(page.locator('.flash-root__message')).toContainText('Emilio Estevez is no longer an admin')
 });
@@ -79,8 +79,9 @@ test('can_remove_coordinator_privileges', async ({ page }) => {
 test('cannot_self_promote_when_coordinators', async ({ page }) => {
   await page.goto('/dev/setup_group_as_member')
   await page.locator('.group-page-members-tab').click()
-  await page.locator('.membership-dropdown').click()
-  await expect(page.locator('.membership-dropdown')).not.toContainText('Make admin')
+  await page.locator('.members-panel .v-list-item', { hasText: 'Jennifer Grey' }).locator('.membership-dropdown').click()
+  await expect(page.locator('.v-overlay--active .v-list')).toBeVisible()
+  await expect(page.locator('.v-overlay--active .v-list')).not.toContainText('Make admin')
 });
 
 test('can_set_membership_title', async ({ page }) => {
@@ -97,7 +98,6 @@ test('can_edit_group_vote_weights', async ({ page }) => {
   await page.goto('/dev/setup_group_with_vote_weights')
   await page.locator('.group-page-members-tab').click()
   await page.locator('.members-panel__edit-weights').click()
-  await expect(page.locator('.member-weights-page .v-table tbody tr')).toBeVisible()
   await expect(page.locator('.member-weights-page .v-table tbody tr')).toHaveCount(3)
   await expect(page.locator('.member-weights-page .v-table tbody tr:first-child')).toContainText('Emilio')
   await expect(page.locator('.member-weights-page .v-table tbody tr:first-child')).toContainText('emilio@example.com')
@@ -108,7 +108,6 @@ test('can_edit_group_vote_weights', async ({ page }) => {
   await expect(page.locator('.flash-root__message')).toContainText('Vote weights updated')
 
   await page.reload()
-  await expect(page.locator('.member-weights-page .v-table tbody tr')).toBeVisible()
   await expect(page.locator('.member-weights-page .v-table tbody tr:first-child .member-weights-page__weight-input input').first()).toHaveValue('2.5')
 
   await page.locator('.member-weights-page__set-all').click()
@@ -117,7 +116,6 @@ test('can_edit_group_vote_weights', async ({ page }) => {
   await page.locator('.member-weights-page__reset-save').click()
   await expect(page.locator('.flash-root__message')).toContainText('Vote weights updated')
   await page.reload()
-  await expect(page.locator('.member-weights-page .v-table tbody tr')).toBeVisible()
   await expect(page.locator('.member-weights-page .v-table tbody tr:first-child .member-weights-page__weight-input input').first()).toHaveValue('0.75')
 
   await page.locator('.member-weights-page__search input').fill('emilio')

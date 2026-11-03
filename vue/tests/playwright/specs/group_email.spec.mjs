@@ -1,18 +1,19 @@
 import { test, expect } from '../fixtures.mjs';
 
-test('approves_a_stored_message_and_removes_it_from_the_pending_list', async ({ page }) => {
+test('approving a held email assigns its sender and releases it', async ({ page }) => {
   await page.goto('/dev/setup_manual_oatmilk_unreleased_email')
-  await expect(page.locator('.group-emails-panel')).toContainText('Returnable bottle collection proposal')
+  const pending = page.locator('.group-emails-panel')
+  await expect(pending).toContainText('Returnable bottle collection proposal')
+
   await page.locator('.group-emails-panel__approve').click()
-  await expect(page.locator('.v-overlay--active .v-card')).toContainText('Add alias')
-  await page.locator('.v-overlay--active input').fill('Jamie')
-  await expect(page.locator('.v-overlay--active .v-list-item')).toContainText('Jamie Chen')
-  await page.locator('.v-overlay--active .v-card .v-list-item').click()
-  await page.locator('.v-overlay--active .v-card-actions .v-btn:last-child').click()
-  await expect(page.locator('.v-overlay--active .v-card-actions')).toHaveCount(0)
-  await expect(page.locator('.group-emails-panel')).not.toContainText('Returnable bottle collection proposal')
-  await expect(page.locator('.group-emails-panel__approve')).toHaveCount(0)
+  const modal = page.locator('.member-email-alias-modal')
+  await modal.locator('.member-email-alias-modal__search input').fill('Jamie')
+  await modal.locator('.member-email-alias-modal__user', { hasText: 'Jamie Chen' }).click()
+  await modal.locator('.member-email-alias-modal__confirm').click()
+  await expect(modal).toBeHidden()
+  await expect(pending).not.toContainText('Returnable bottle collection proposal')
+
   await page.reload()
-  await expect(page.locator('.group-emails-panel')).toBeVisible()
-  await expect(page.locator('.group-emails-panel')).not.toContainText('Returnable bottle collection proposal')
+  await expect(pending).toBeVisible()
+  await expect(pending).not.toContainText('Returnable bottle collection proposal')
 });

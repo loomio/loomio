@@ -12,7 +12,7 @@ test('identified_vote_form_disappears_after_voting_without_a_reason', async ({ p
 test('can_start_a_proposal_in_a_group', async ({ page }) => {
   await page.goto('/dev/polls/test_discussion')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A new proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
   await page.locator('.poll-common-form__submit').click()
@@ -53,7 +53,7 @@ test('can_start_a_poll_in_a_group', async ({ page }) => {
   await page.locator('.poll-common-vote-form__button-text').click()
   await page.locator('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]').fill('A reason')
   await page.locator('.poll-common-vote-form__submit').click()
-  await expect(page.locator('.poll-common-stance-choice')).toContainText('An option')
+  await expect(page.locator('.poll-common-stance-choice').first()).toContainText('An option')
   await expect(page.locator('.poll-common-stance-created__reason')).toContainText('A reason')
 });
 
@@ -85,7 +85,7 @@ test('can_start_a_dot_vote_in_a_group', async ({ page }) => {
   await page.locator('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]').fill('A reason')
   await page.locator('.poll-common-vote-form__submit').click()
 
-  await expect(page.locator('.poll-common-stance-choice--dot_vote')).toContainText('An option')
+  await expect(page.locator('.poll-common-stance-choice--dot_vote').first()).toContainText('An option')
   await expect(page.locator('.poll-common-stance-created__reason')).toContainText('A reason')
 });
 
@@ -108,7 +108,7 @@ test('can_start_a_score_poll_in_a_group', async ({ page }) => {
   await expect(page.locator('.poll-common-card__title')).toContainText('A new proposal')
   await expect(page.locator('.poll-common-details-panel__details p')).toContainText('Some details')
 
-  await page.locator('.vote-form-number-input').fill(1)
+  await page.locator('.vote-form-number-input').fill('1')
   await page.locator('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]').fill('A reason')
   await page.locator('.poll-common-vote-form__submit').click()
 
@@ -133,7 +133,7 @@ test('can_start_a_time_poll_in_a_group', async ({ page }) => {
 
   await expect(page.locator('.poll-common-card__title')).toContainText('A new proposal')
   await expect(page.locator('.poll-common-details-panel__details p')).toContainText('Some details')
-  await expect(page.locator('.poll-meeting-time')).toContainText('7:30AM')
+  await expect(page.locator('.poll-meeting-time').first()).toContainText('7:30AM')
 
   await page.locator('.poll-meeting-vote-form--box').click()
   await page.locator('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]').fill('A reason')
@@ -189,9 +189,9 @@ test('opens_reminder_form_after_reopening_a_poll', async ({ page }) => {
 });
 
 test('can_start_an_anonymous_poll', async ({ page }) => {
-  await page.goto('/dev//polls/test_discussion')
+  await page.goto('/dev/polls/test_discussion')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A new proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
   await page.locator('.poll-common-form__more-settings').click()
@@ -256,16 +256,15 @@ test('shows_identified_votes_in_a_table', async ({ page }) => {
 });
 
 test('can_start_a_results_hidden_until_closed_poll', async ({ page }) => {
-  await page.goto('/dev//polls/test_discussion')
+  await page.goto('/dev/polls/test_discussion')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A new proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
   // Wait for More settings to finish expanding, so the field stays put while it is clicked.
   await page.locator('.poll-common-form__more-settings').click()
   await expect(page.locator('.expand-transition-enter-active')).toHaveCount(0)
   await page.locator('.poll-common-settings__hide-results .v-field').click()
-  await expect(page.locator('.v-overlay--active .v-list-item')).toBeVisible()
   await page.locator('.v-overlay--active .v-list-item').last().click()
 
 
@@ -312,7 +311,7 @@ test('can_invite_non_member_to_anonymous_proposal_in_a_group', async ({ page }) 
 test('can_start_a_specified_voters_only_proposal', async ({ page }) => {
   await page.goto('/dev/polls/test_discussion')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A new proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
   await page.locator('.poll-common-settings__specified-voters-only .v-selection-control__wrapper').click()
@@ -322,9 +321,9 @@ test('can_start_a_specified_voters_only_proposal', async ({ page }) => {
   await expect(page.locator('.poll-members-form .help-link')).toContainText('Help')
   await expect(page.locator('.poll-members-form__submit')).toHaveCount(0)
   await expect(page.locator('.poll-members-form .v-checkbox')).toHaveCount(0)
-  await page.locator('.recipients-autocomplete input[type="text"]').pressSequentially('test@example.com')
+  await page.locator('.recipients-autocomplete input[type="text"]').fill('test@example.com')
   await expect(page.locator('.recipients-autocomplete-suggestion')).toContainText('test@example.com')
-  await page.locator('.recipients-autocomplete-suggestion').click()
+  await page.locator('.recipients-autocomplete-suggestion').first().click()
   await expect(page.locator('.poll-members-form .help-link')).toContainText('Help')
   await expect(page.locator('.recipients-autocomplete__no-data')).toHaveCount(0)
   await expect(page.locator('.poll-members-form__list')).toHaveCount(0)
@@ -373,7 +372,7 @@ test('can_start_a_specified_voters_only_proposal', async ({ page }) => {
 test('can_create_a_scheduled_proposal', async ({ page }) => {
   await page.goto('/dev/polls/test_discussion')
   await page.locator('.activity-panel__add-poll').click()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A scheduled proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
 
@@ -390,7 +389,7 @@ test('can_create_a_scheduled_proposal', async ({ page }) => {
   // Vote form should show as a non-interactive preview
   await expect(page.locator('.poll-common-vote-form--preview')).toBeVisible()
   // Verify the poll options are visible
-  await expect(page.locator('.poll-common-vote-form__button')).toBeVisible()
+  await expect(page.locator('.poll-common-vote-form__button').first()).toBeVisible()
 });
 
 test('can_view_scheduled_poll_and_add_voters', async ({ page }) => {
@@ -401,7 +400,7 @@ test('can_view_scheduled_poll_and_add_voters', async ({ page }) => {
 
   // Vote form should show as a non-interactive preview with options visible
   await expect(page.locator('.poll-common-vote-form--preview')).toBeVisible()
-  await expect(page.locator('.poll-common-vote-form__button')).toBeVisible()
+  await expect(page.locator('.poll-common-vote-form__button').first()).toBeVisible()
 
   // Open the voter management window
   await page.locator('.action-dock__button--announce_poll').click()
@@ -411,9 +410,9 @@ test('can_view_scheduled_poll_and_add_voters', async ({ page }) => {
 
   await expect(page.locator('.poll-members-form__submit')).toHaveCount(0)
   await expect(page.locator('.poll-members-form .v-checkbox')).toHaveCount(0)
-  await page.locator('.recipients-autocomplete input[type="text"]').pressSequentially('test@example.com')
+  await page.locator('.recipients-autocomplete input[type="text"]').fill('test@example.com')
   await expect(page.locator('.recipients-autocomplete-suggestion')).toContainText('test@example.com')
-  await page.locator('.recipients-autocomplete-suggestion').click()
+  await page.locator('.recipients-autocomplete-suggestion').first().click()
   await expect(page.locator('.recipients-autocomplete__no-data')).toHaveCount(0)
   await expect(page.locator('.poll-members-form .help-link')).toContainText('Help')
   await page.keyboard.press('Escape')
@@ -427,14 +426,13 @@ test('counts_audience_recipients_before_expanding_them', async ({ page }) => {
   await page.goto('/dev/polls/test_scheduled_poll')
   await page.locator('.action-dock__button--announce_poll').click()
   await page.locator('.recipients-autocomplete input[type="text"]').click()
-  await expect(page.locator('.recipients-autocomplete-suggestion')).toBeVisible()
   await expect(page.locator('.v-overlay--active .v-list:has(.recipients-autocomplete-suggestion)')).not.toContainText('Everyone in the thread')
-  await page.locator('.recipients-autocomplete-suggestion').click()
+  await page.locator('.recipients-autocomplete-suggestion').first().click()
   await expect(page.locator('.common-notifications-count')).toContainText('people will be added')
   const countText = (await page.locator('.common-notifications-count').first().innerText()).match(/\d+ people/)[0]
   await expect(page.locator('.poll-members-form__list')).toHaveCount(0)
   await page.locator('.recipients-autocomplete .chip--select-multi').click()
-  await expect(page.locator('.recipients-autocomplete .chip--select-multi [class*=user-avatar]')).toBeVisible()
+  await expect(page.locator('.recipients-autocomplete .chip--select-multi [class*=user-avatar]').first()).toBeVisible()
   expect((await page.locator('.common-notifications-count').first().innerText()).startsWith(countText), 'expanding the audience keeps the count').toBe(true)
   await page.locator('.recipients-autocomplete .v-field__clearable').click()
   await expect(page.locator('.poll-members-form__list')).toBeVisible()
@@ -447,12 +445,12 @@ test('can_page_and_search_poll_voters', async ({ page }) => {
   await expect(page.locator('.poll-members-form')).toContainText('Manage voters')
   await expect(page.locator('.poll-members-form .help-link')).toContainText('Help')
   await expect(page.locator('.poll-members-form__page-count')).toContainText('1–25 of 25')
-  await page.locator('.poll-members-form__weight').click()
+  await page.locator('.poll-members-form__weight').first().click()
   await page.locator('.poll-members-form__weight-input input').fill('2')
   await page.locator('.poll-members-form__weight-input input').press('Enter')
   await expect(page.locator('.flash-root__message')).toContainText('Vote weights updated')
   await expect(page.locator('.poll-members-form__weight-input')).toHaveCount(0)
-  await expect(page.locator('.poll-members-form__weight')).toContainText('2')
+  await expect(page.locator('.poll-members-form__weight').first()).toContainText('2')
   await page.locator('.poll-members-form__set-all').click()
   await expect(page.locator('.poll-members-form__set-all-dialog')).toContainText('Set all vote weights')
   await expect(page.locator('.poll-members-form__set-all-dialog')).toContainText("Set each member's default vote weight")
@@ -491,7 +489,7 @@ test('confirms_removing_a_poll_voter', async ({ page }) => {
 test('keeps_fifty_weighted_voters_inside_the_modal', async ({ page }) => {
   await page.goto('/dev/polls/test_many_weighted_voters')
   await expect(page.locator('.poll-common-chart-panel__variable-vote-weights')).toContainText('Votes in this poll have different weights, so some count more than others.')
-  await expect(page.locator('.poll-common-chart-table .v-avatar-group')).toBeVisible()
+  await expect(page.locator('.poll-common-chart-table .v-avatar-group').first()).toBeVisible()
   await expect(page.locator('.poll-common-chart-table tbody tr:last-child .v-avatar-group__overflow')).toContainText('+33')
   await expect(page.locator('.poll-common-chart-table tbody tr:last-child td:nth-child(3)')).toContainText('70')
   await expect(page.locator('.poll-common-chart-table .poll-proposal-chart path')).toHaveCount(4)
@@ -528,7 +526,7 @@ test('pages_weighted_voters_after_fifty', async ({ page }) => {
 test('can_start_a_standalone_poll', async ({ page }) => {
   await page.goto('/dev/polls/start_poll')
   await expect(page.locator('.poll-common-choose-template')).toBeVisible()
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form-fields__title input').fill('A standalone proposal')
   await page.locator('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]').fill('Some details')
   await page.locator('.poll-common-form__submit').click()
@@ -538,7 +536,7 @@ test('can_start_a_standalone_poll', async ({ page }) => {
 
 test('can_open_vote_weight_settings_in_poll_form', async ({ page }) => {
   await page.goto('/dev/polls/start_poll?weighted=1')
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form__more-settings').click()
   await expect(page.locator('.poll-settings-weighted-voting')).toBeVisible()
   await expect(page.locator('.poll-common-form__anonymous-voting-title ~ .poll-common-form__weighted-voting-title')).toBeVisible()
@@ -577,7 +575,7 @@ test('can_open_vote_weight_settings_in_poll_form', async ({ page }) => {
 
 test('explains_that_anonymous_voting_disables_weighted_voting', async ({ page }) => {
   await page.goto('/dev/polls/start_poll')
-  await page.locator('.decision-tools-card__poll-type--proposal').click()
+  await page.locator('.decision-tools-card__template--check').click()
   await page.locator('.poll-common-form__more-settings').click()
   await page.locator('.poll-settings-weighted-voting input').click()
   await page.locator('.poll-settings-anonymous .v-selection-control__wrapper').click()
