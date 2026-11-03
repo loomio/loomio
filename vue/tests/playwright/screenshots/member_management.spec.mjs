@@ -1,17 +1,17 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
+import { member, openMembers as openMembersTab } from '../helpers/members.mjs';
 
 async function openMembers(page) {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await page.locator('.group-page-members-tab').click()
-  await expect(page.locator('.members-panel').first()).toBeVisible()
+  await openMembersTab(page)
   await expectLabel(page.locator('.members-panel'), 'Samira Patel')
 }
 
 async function openMemberMenu(page, name = 'Samira Patel') {
   await openMembers(page);
-  await page.evaluate(`Array.from(document.querySelectorAll('.members-panel .v-list-item')).find(el => el.textContent.includes('${name}') && el.querySelector('.membership-dropdown__button')).querySelector('.membership-dropdown__button').click()`)
-  await expect(page.locator('.v-overlay .group-actions-dropdown__menu-content').first()).toBeVisible()
+  await member(page, name).locator('.membership-dropdown__button').click()
+  await expect(page.locator('.v-overlay--active .group-actions-dropdown__menu-content')).toBeVisible()
 }
 
 function menuSpotlight(selector) {
@@ -60,8 +60,8 @@ test('remove_member', async ({ page, manual: screenshot }) => {
 test('leave_group', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await page.locator('.group-page .action-dock .action-menu--btn').click()
-  await expect(page.locator('.v-overlay .action-dock__button--leave_group').first()).toBeVisible()
+  await page.locator('.group-page__actions .action-menu--btn').click()
+  await expect(page.locator('.v-overlay--active .action-dock__button--leave_group')).toBeVisible()
   await screenshot.capture('groups/member_management/member_leave_group', {
     spotlight: menuSpotlight('.v-overlay .action-dock__button--leave_group')
   });

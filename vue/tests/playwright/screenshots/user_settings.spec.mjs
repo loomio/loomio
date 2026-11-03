@@ -7,25 +7,45 @@ async function useLightTheme(page) {
 // The drawer can already be open, for example on a wide viewport or when an
 // earlier test left it open, and clicking the toggle would then close it.
 async function openSidebar(page, settings = false) {
-  await expect(page.locator('.navbar__sidenav-toggle').first()).toBeVisible()
-  await page.evaluate("if (!document.querySelector('.sidenav-left.v-navigation-drawer--active')) document.querySelector('.navbar__sidenav-toggle').click()")
-  await expect(page.locator('.sidenav-left').first()).toBeVisible()
+  await expect(page.locator('.navbar__sidenav-toggle')).toBeVisible()
+  if (!await page.locator('.sidenav-left.v-navigation-drawer--active').count()) {
+    await page.locator('.navbar__sidenav-toggle').click()
+  }
+  await expect(page.locator('.sidenav-left')).toBeVisible()
   if (settings) { await page.locator('.sidebar__user-dropdown').click(); }
 }
 
+async function openGroupMenu(page) {
+  await page.goto('/dev/setup_manual_oatmilk_group')
+  await page.locator('.group-page__actions .action-menu--btn').click()
+}
+
+async function openThreadNotifications(page, scenario) {
+  await page.goto(`/dev/${scenario}`)
+  await page.locator('.topic-sidebar__notification-settings').click()
+}
+
+// Email previews render as server pages, in the light theme.
+async function openEmail(page, scenario) {
+  await useLightTheme(page);
+  await page.goto(`/dev/${scenario}`)
+}
+
+const profileCard = '.profile-page > div > .v-card:first-of-type';
+
 async function loadProfile(page) {
   await page.goto('/dev/setup_manual_oatmilk_profile')
-  await expect(page.locator('.profile-page').first()).toBeVisible()
+  await expect(page.locator('.profile-page')).toBeVisible()
 }
 
 async function loadEmailSettings(page) {
   await page.goto('/dev/setup_manual_oatmilk_email_settings')
-  await expect(page.locator('.email-settings-page').first()).toBeVisible()
+  await expect(page.locator('.email-settings-page')).toBeVisible()
 }
 
 async function loadMergeAccounts(page) {
   await page.goto('/dev/setup_manual_oatmilk_merge_accounts')
-  await expect(page.locator('.user-page__merge_accounts').first()).toBeVisible()
+  await expect(page.locator('.user-page__merge_accounts')).toBeVisible()
 }
 
 test('delete_user', async ({ page, manual: screenshot }) => {
@@ -39,7 +59,7 @@ test('delete_user', async ({ page, manual: screenshot }) => {
 
 test('profile_edit', async ({ page, manual: screenshot }) => {
   await loadProfile(page);
-  await screenshot.captureElement('users/deleting_your_account/profile_edit', '.profile-page > div > .v-card:first-of-type', {width: 1100, height: 2200});
+  await screenshot.captureElement('users/deleting_your_account/profile_edit', profileCard, {width: 1100, height: 2200});
 });
 
 test('merge_accounts_profile', async ({ page, manual: screenshot }) => {
@@ -54,7 +74,7 @@ test('merge_accounts_profile', async ({ page, manual: screenshot }) => {
 test('merge_accounts_verify', async ({ page, manual: screenshot }) => {
   await loadMergeAccounts(page);
   await page.locator('.user-page__merge_accounts').click()
-  await page.locator('.merge-accounts-modal__destination-email input').pressSequentially('jamie@oatmilk.example')
+  await page.locator('.merge-accounts-modal__destination-email input').fill('jamie@oatmilk.example')
   await screenshot.captureElement(
     'users/merge_accounts/merge_accounts_verify',
     '.merge-accounts-modal',
@@ -64,7 +84,7 @@ test('merge_accounts_verify', async ({ page, manual: screenshot }) => {
 
 test('merge_accounts_email', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_merge_verification_email')
-  await expect(page.locator('.email-button').first()).toBeVisible()
+  await expect(page.locator('.email-button')).toBeVisible()
   await screenshot.captureRegion(
     'users/merge_accounts/merge_accounts_email',
     ['.email-header', '.email-button'],
@@ -75,7 +95,7 @@ test('merge_accounts_email', async ({ page, manual: screenshot }) => {
 test('merge_accounts_confirm', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_merge_verification_email')
   await page.locator('.email-button').click()
-  await expect(page.locator('main.sistema').first()).toBeVisible()
+  await expect(page.locator('main.sistema')).toBeVisible()
   await screenshot.captureElement(
     'users/merge_accounts/merge_accounts_confirm',
     'main.sistema',
@@ -97,7 +117,7 @@ test('reset_password', async ({ page, manual: screenshot }) => {
 
 test('notification_bell', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_all_notifications')
-  await expect(page.locator('.notifications__button').first()).toBeVisible()
+  await expect(page.locator('.notifications__button')).toBeVisible()
   await screenshot.capture('users/email_settings/notification_bell', {
     width: 1100,
     height: 700,
@@ -122,8 +142,8 @@ test('email_settings', async ({ page, manual: screenshot }) => {
 
 test('digest_email_setting', async ({ page, manual: screenshot }) => {
   await loadEmailSettings(page);
-  await page.locator('.email-settings-page__digest-card .v-select .v-field__input').click()
-  await expect(page.locator('.v-overlay--active .v-list').first()).toBeVisible()
+  await page.locator('.email-settings-page__digest-card .v-select .v-field').click()
+  await expect(page.locator('.v-overlay--active .v-list')).toBeVisible()
   await screenshot.captureRegion(
     'users/email_settings/digest_email_setting',
     ['.email-settings-page__digest-card .v-select .v-field', '.v-overlay--active .v-list'],
@@ -132,25 +152,19 @@ test('digest_email_setting', async ({ page, manual: screenshot }) => {
 });
 
 test('proposal_invitation_email', async ({ page, manual: screenshot }) => {
-  await useLightTheme(page);
-  await page.goto('/dev/setup_manual_oatmilk_proposal_invitation_email')
-  await expect(page.locator('main').first()).toBeVisible()
+  await openEmail(page, 'setup_manual_oatmilk_proposal_invitation_email');
   await expectLabel(page.locator('main'), 'Run a six-week returnable bottle trial')
   await screenshot.captureElement('users/email_settings/proposal_invitation_email', 'main', {width: 1100, height: 2600});
 });
 
 test('proposal_outcome_email', async ({ page, manual: screenshot }) => {
-  await useLightTheme(page);
-  await page.goto('/dev/setup_manual_oatmilk_proposal_outcome_email')
-  await expect(page.locator('main').first()).toBeVisible()
+  await openEmail(page, 'setup_manual_oatmilk_proposal_outcome_email');
   await expectLabel(page.locator('main'), 'Run a six-week returnable bottle trial')
   await screenshot.captureElement('users/email_settings/proposal_outcome_email', 'main', {width: 1100, height: 2800});
 });
 
 test('digest_email_example', async ({ page, manual: screenshot }) => {
-  await useLightTheme(page);
-  await page.goto('/dev/setup_manual_oatmilk_digest_email')
-  await expect(page.locator('main').first()).toBeVisible()
+  await openEmail(page, 'setup_manual_oatmilk_digest_email');
   await expectLabel(page.locator('main'), 'Notifications')
   await expectLabel(page.locator('main'), 'Unread threads')
   await screenshot.captureElement('users/email_settings/digest_email_example', 'main', {width: 1100, height: 2600});
@@ -158,15 +172,15 @@ test('digest_email_example', async ({ page, manual: screenshot }) => {
 
 test('push_notification_settings', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_email_settings_with_push')
-  await expect(page.locator('.push-notifications-settings-card--loaded').first()).toBeVisible()
+  await expect(page.locator('.push-notifications-settings-card--loaded')).toBeVisible()
+  // A push column for each group; any shows the column has loaded.
   await expect(page.locator('.email-settings-page__push-column').first()).toBeVisible()
   await screenshot.captureElement('users/email_settings/push_notification_settings', '.push-notifications-settings-card', {width: 1100, height: 1400});
 });
 
 test('group_notifications', async ({ page, manual: screenshot }) => {
-  await page.goto('/dev/setup_manual_oatmilk_group')
-  await expect(page.locator('.group-page').first()).toBeVisible()
-  await page.locator('.group-page .action-menu--btn').click()
+  await openGroupMenu(page);
+  await expect(page.locator('.v-overlay--active .action-dock__button--change_volume')).toBeVisible()
   await screenshot.capture('users/email_settings/group_notifications', {
     width: 1100,
     height: 1200,
@@ -175,17 +189,14 @@ test('group_notifications', async ({ page, manual: screenshot }) => {
 });
 
 test('group_notification_settings', async ({ page, manual: screenshot }) => {
-  await page.goto('/dev/setup_manual_oatmilk_group')
-  await expect(page.locator('.group-page').first()).toBeVisible()
-  await page.locator('.group-page .action-menu--btn').click()
+  await openGroupMenu(page);
   await page.locator('.v-overlay--active .action-dock__button--change_volume').click()
-  await expect(page.locator('.change-volume-form--push-disabled').first()).toBeVisible()
+  await expect(page.locator('.change-volume-form--push-disabled')).toBeVisible()
   await screenshot.captureElement('users/email_settings/group_notification_settings', '.change-volume-form', {width: 1100, height: 1300});
 });
 
 test('group_follow_updates', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_join_group')
-  await expect(page.locator('.group-follow-button').first()).toBeVisible()
   await expectLabel(page.locator('.group-follow-button'), 'Follow updates')
   await screenshot.captureRegion('groups/settings/group_follow_updates', ['.group-page > div:first-child', '.group-follow-button'], {
     width: 1100,
@@ -197,8 +208,7 @@ test('group_follow_updates', async ({ page, manual: screenshot }) => {
 
 test('thread_subscribe', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_discussion')
-  await expect(page.locator('.topic-sidebar').first()).toBeVisible()
-  await expect(page.locator('.topic-sidebar__notification-settings').first()).toBeVisible()
+  await expect(page.locator('.topic-sidebar__notification-settings')).toBeVisible()
   await screenshot.captureElement('users/email_settings/thread_subscribe', '.topic-sidebar', {
     width: 1100,
     height: 1500,
@@ -207,26 +217,22 @@ test('thread_subscribe', async ({ page, manual: screenshot }) => {
 });
 
 test('thread_notifications', async ({ page, manual: screenshot }) => {
-  await page.goto('/dev/setup_manual_oatmilk_discussion')
-  await expect(page.locator('.topic-sidebar').first()).toBeVisible()
-  await page.locator('.topic-sidebar__notification-settings').click()
-  await expect(page.locator('.change-volume-form--push-disabled').first()).toBeVisible()
+  await openThreadNotifications(page, 'setup_manual_oatmilk_discussion');
+  await expect(page.locator('.change-volume-form--push-disabled')).toBeVisible()
   await screenshot.captureElement('users/email_settings/thread_notifications', '.change-volume-form', {width: 1100, height: 1300});
 });
 
 test('thread_notifications_email_catch_up_push', async ({ page, manual: screenshot }) => {
-  await page.goto('/dev/setup_manual_oatmilk_discussion_with_push')
-  await expect(page.locator('.topic-sidebar').first()).toBeVisible()
-  await page.locator('.topic-sidebar__notification-settings').click()
-  await expect(page.locator('.change-volume-form--push-enabled').first()).toBeVisible()
+  await openThreadNotifications(page, 'setup_manual_oatmilk_discussion_with_push');
+  await expect(page.locator('.change-volume-form--push-enabled')).toBeVisible()
   await screenshot.captureElement('users/email_settings/thread_notifications_email_catch_up_push', '.change-volume-form', {width: 1100, height: 1800});
 });
 
 test('turn_off_all_emails_1', async ({ page, manual: screenshot }) => {
   await loadEmailSettings(page);
   await page.locator('.email-settings-page__digest-card .v-select .v-field').click()
-  await expect(page.locator('.v-overlay--active .v-list').first()).toBeVisible()
   await page.locator('.v-overlay--active .email-settings-page__catch-up-day--never').click()
+  await expect(page.locator('.v-overlay--active')).toHaveCount(0)
   await screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page__digest-card', {
     width: 1100,
     height: 1500,
@@ -236,7 +242,7 @@ test('turn_off_all_emails_1', async ({ page, manual: screenshot }) => {
 
 test('turn_off_all_emails_2', async ({ page, manual: screenshot }) => {
   await loadEmailSettings(page);
-  await expect(page.locator('.email-settings-page__push-status-loaded').first()).toBeVisible()
+  await expect(page.locator('.email-settings-page__push-status-loaded')).toBeVisible()
   await expect(page.locator('.email-settings-page__push-column')).toHaveCount(0)
   await screenshot.captureElement('users/email_settings/turn_off_all_emails_2', '.email-settings-page__group-notifications-card', {
     width: 1100,
@@ -247,7 +253,7 @@ test('turn_off_all_emails_2', async ({ page, manual: screenshot }) => {
 
 test('change_language', async ({ page, manual: screenshot }) => {
   await loadProfile(page);
-  await screenshot.captureElement('users/translation/change_language', '.profile-page > div > .v-card:first-of-type', {
+  await screenshot.captureElement('users/translation/change_language', profileCard, {
     width: 1100,
     height: 2200,
     spotlight: '#user-locale-field'
@@ -256,7 +262,7 @@ test('change_language', async ({ page, manual: screenshot }) => {
 
 test('content_translation', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_translated_comment')
-  await expect(page.locator('.topic-item__new-comment').first()).toBeVisible({ timeout: 15000 })
+  await expect(page.locator('.topic-item__new-comment')).toBeVisible()
   await screenshot.captureRegion(
     'users/translation/content_translation',
     ['.topic-item__new-comment'],
@@ -279,17 +285,14 @@ test('content_translation', async ({ page, manual: screenshot }) => {
 
 test('automatic_translation', async ({ page, manual: screenshot }) => {
   await loadProfile(page);
-  await page.evaluate(`
-    document.querySelector('.profile-page .profile-page__auto-translate').classList.add('manual-automatic-translation');
-  `)
-  await expect(page.locator('.manual-automatic-translation').first()).toBeVisible()
+  await expect(page.locator('.profile-page__auto-translate')).toBeVisible()
   await screenshot.captureElement(
     'users/translation/automatic_translation',
-    '.profile-page > div > .v-card:first-of-type',
+    profileCard,
     {
       width: 1100,
       height: 2200,
-      spotlight: '.manual-automatic-translation'
+      spotlight: '.profile-page .profile-page__auto-translate'
     }
   );
 });
@@ -329,7 +332,7 @@ test('edit_profile', async ({ page, manual: screenshot }) => {
 
 test('user_profile', async ({ page, manual: screenshot }) => {
   await loadProfile(page);
-  await screenshot.captureElement('users/user_profile/user_profile', '.profile-page > div > .v-card:first-of-type', {width: 1100, height: 2200});
+  await screenshot.captureElement('users/user_profile/user_profile', profileCard, {width: 1100, height: 2200});
 });
 
 test('profile_photo', async ({ page, manual: screenshot }) => {

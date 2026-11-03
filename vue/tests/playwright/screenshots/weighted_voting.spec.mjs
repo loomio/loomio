@@ -29,7 +29,6 @@ test('poll_setting', async ({ page, manual: screenshot }) => {
 
 test('poll_manage_voters', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_vote_weights?votes=partial')
-  await expect(page.locator('.poll-created .action-dock__button--announce_poll').first()).toBeVisible()
   await expectLabel(page.locator('.poll-created .action-dock__button--announce_poll'), 'Manage voters')
   await screenshot.captureElement('polls/weighted_voting/poll-manage-voters', '.poll-created', {
     width: 1600,
@@ -51,7 +50,6 @@ test('poll_voter_weights', async ({ page, manual: screenshot }) => {
 
 test('weighted_proposal_result', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_vote_weights?votes=partial')
-  await expect(page.locator('.poll-created .poll-common-chart-panel').first()).toBeVisible()
   await expectLabel(page.locator('.poll-common-chart-panel'), 'Agree')
   await expectLabel(page.locator('.poll-common-chart-panel'), 'Disagree')
   await expectLabel(page.locator('.poll-common-chart-table tbody tr:last-child'), 'Not voted')
@@ -67,6 +65,6 @@ test('weighted_proposal_result', async ({ page, manual: screenshot }) => {
     spotlight: {selector: '.poll-created .poll-common-chart-panel', padding: 16, radius: 16, opacity: 0.4, outlineWidth: 0}
   });
   await page.locator('.poll-common-chart-table thead th:nth-child(3) button').click()
-  await expect(page.locator('.poll-common-chart-table thead th:nth-child(3) button[aria-pressed="true"]').first()).toBeVisible()
+  await expect(page.locator('.poll-common-chart-table thead th:nth-child(3) button[aria-pressed="true"]')).toBeVisible()
   await expectLabel(page.locator('.poll-created .poll-common-chart-panel'), '66% participation')
 });

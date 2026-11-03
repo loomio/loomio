@@ -206,6 +206,8 @@ test.describe('mentions', () => {
   test('a copied and pasted mention stays one mention', async ({ page }) => {
     await mention(page, editor(commentForm(page)), '@jennifer', 'jennifergrey');
     await commentForm(page).locator('.comment-form__submit-button').click();
+    // Wait for the form to clear after posting, or the reset wipes the paste.
+    await expect(mentionCount(page)).toContainText('Type @ to notify people');
 
     await page.locator('.new-comment [data-mention-id="jennifergrey"]').selectText();
     await page.keyboard.press('ControlOrMeta+c');

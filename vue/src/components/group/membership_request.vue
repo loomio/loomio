@@ -80,7 +80,7 @@ v-list.membership-requests(lines="two" density="compact")
         common-icon(name="mdi-close")
 
 v-dialog(:model-value="isDeclining" max-width="600" @update:model-value="value => { if (!value) closeDecline(); }")
-  v-card(:title="t('membership_requests_page.decline_request')")
+  v-card.membership-request__decline-dialog(:title="t('membership_requests_page.decline_request')")
     v-card-text
       p.membership-request__decline-help.mb-4.text-medium-emphasis {{ t('membership_requests_page.decline_help') }}
       v-textarea.membership-request__decline-reason-input(

@@ -21,7 +21,6 @@ test('group_email_address', async ({ page, manual: screenshot }) => {
 
 test('unreleased_email_actions', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_unreleased_email')
-  await expect(page.locator('.group-emails-panel').first()).toBeVisible()
   await expectLabel(page.locator('.group-emails-panel'), 'Taylor Brooks')
   await expectLabel(page.locator('.group-emails-panel'), 'Returnable bottle collection proposal')
   await screenshot.captureElement('groups/email/email_unreleased_emails', '.group-emails-panel', {

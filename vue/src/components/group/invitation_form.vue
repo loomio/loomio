@@ -149,7 +149,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       p
         span(v-t="'invitation_form.already_chatting_somewhere'")
         space
-        a.text-decoration-underline(style="color:inherit" @click="openShareableLinkForm" v-t="'invitation_form.try_the_shareable_link_instead'")
+        a.invitation-form__shareable-link.text-decoration-underline(style="color:inherit" @click="openShareableLinkForm" v-t="'invitation_form.try_the_shareable_link_instead'")
 
     recipients-autocomplete(
       :label="$t('announcement.form.who_to_invite')"

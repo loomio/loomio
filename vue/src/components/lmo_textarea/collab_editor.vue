@@ -352,6 +352,9 @@ onMounted(() => {
     if (contentConverted !== undefined || !ydoc.getMap('config').get('initialContentLoaded')) {
       console.log('Hocuspocus has not synced within 2 seconds, loading from local model');
       onSync();
+    } else {
+      // The local draft has already loaded.
+      synced.value = true;
     }
   }, 2000);
 
@@ -625,10 +628,10 @@ div.mb-2.collab-editor(:class="{'collab-editor--synced': synced}")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
-    input.d-none(ref="filesField" type="file" name="files" multiple=true)
+    input.collab-editor__files-input.d-none(ref="filesField" type="file" name="files" multiple=true)
 
   form(style="display: block", @change="imageSelected")
-    input.d-none(ref="imagesField", type="file", name="files", multiple=true)
+    input.collab-editor__images-input.d-none(ref="imagesField", type="file", name="files", multiple=true)
 </template>
 <style>
 @charset "UTF-8";

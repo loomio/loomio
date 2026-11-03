@@ -1,6 +1,7 @@
-import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
+import { test, expect } from '../screenshotFixtures.mjs';
 
 import richText from '../helpers/oatmilkRichText.mjs';
+import { editor } from '../helpers/editor.mjs';
 
 const workflows = [
   ['advice', 'proposal_advice'],
@@ -25,23 +26,23 @@ const proposalTitles = {
 };
 
 async function loadForm(page, template) {
-  await page.goto(`/dev/setup_manual_oatmilk_new_poll?poll_type=${template}`)
-  await expect(page.locator('.poll-common-form').first()).toBeVisible()
-  await page.locator('.poll-common-form-fields__title input').fill(proposalTitles[template])
-  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
-    editor.focus()
-    editor.innerHTML = html
-    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
+  await page.goto(`/dev/setup_manual_oatmilk_new_poll?poll_type=${template}`);
+  await page.locator('.poll-common-form-fields__title input').fill(proposalTitles[template]);
+  // Rich content is set directly; typing it would be slow and lose formatting.
+  await editor(page.locator('.poll-common-form-fields__details')).evaluate((element, html) => {
+    element.focus();
+    element.innerHTML = html;
+    element.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }));
   }, richText.context(`new-${template}-proposal`, [
       'Review the proposal and its supporting information before responding.',
       'Explain the practical experience, risk, or concern behind your response.',
       'The coordinator will publish an outcome that records what happens next.'
-    ]))
+    ]));
 }
 
 async function loadPoll(page, template, mode) {
-  await page.goto(`/dev/setup_manual_oatmilk_proposal_template_poll?template=${template}${mode ? `&mode=${mode}` : ''}`)
-  await expect(page.locator('.poll-common-card__title').first()).toBeVisible()
+  await page.goto(`/dev/setup_manual_oatmilk_proposal_template_poll?template=${template}${mode ? `&mode=${mode}` : ''}`);
+  await expect(page.locator('.poll-common-card__title')).toBeVisible();
 }
 
 async function captureVoting(screenshot, name) {
@@ -61,8 +62,9 @@ async function captureResults(screenshot, name) {
 }
 
 test('proposal_templates_list', async ({ page, manual: screenshot }) => {
-  await page.goto('/dev/setup_manual_oatmilk_formatting?key=0')
-  await page.locator('.activity-panel__add-poll').click()
+  await page.goto('/dev/setup_manual_oatmilk_formatting?key=0');
+  await page.locator('.activity-panel__add-poll').click();
+  await expect(page.locator('.poll-common-templates-list')).toBeVisible();
   await screenshot.captureElement('polls/proposals/proposal_templates_list', '.poll-common-templates-list', {width: 1100, height: 1400});
 });
 
@@ -100,7 +102,7 @@ workflows.forEach(([template, name]) => {
   if (defaultProposalDirectories[template]) {
     test(`${name}_outcome`, async ({ page, manual: screenshot }) => {
       await loadPoll(page, template, 'outcome');
-      await expect(page.locator('.poll-common-outcome-panel').first()).toBeVisible()
+      await expect(page.locator('.poll-common-outcome-panel')).toBeVisible();
       await screenshot.captureRegion(
         `polls/proposals/${defaultProposalDirectories[template]}/outcome`,
         ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
@@ -117,7 +119,7 @@ workflows.forEach(([template, name]) => {
 
   test(`${name}_results`, async ({ page, manual: screenshot }) => {
     await loadPoll(page, template, 'results');
-    await expect(page.locator('.poll-common-chart-panel').first()).toBeVisible()
+    await expect(page.locator('.poll-common-chart-panel')).toBeVisible();
     await captureResults(screenshot, name);
   });
 });

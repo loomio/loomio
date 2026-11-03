@@ -112,7 +112,7 @@ v-card.move-comments-modal(:title="$t('action_dock.move_items')")
     v-autocomplete.move-comments-modal__thread(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn(color="primary" outlined @click="startNewThread()" :loading="loading")
+    v-btn.move-comments-modal__new-thread(color="primary" outlined @click="startNewThread()" :loading="loading")
       span(v-t="'discussion_fork_actions.start_new_thread'")
     v-btn.move-comments-modal__submit(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
       span(v-t="'common.action.save'")

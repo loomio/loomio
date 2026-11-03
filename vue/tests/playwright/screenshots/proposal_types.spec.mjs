@@ -1,6 +1,8 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
-import richText from '../helpers/oatmilkRichText.mjs';
+import { editor } from '../helpers/editor.mjs';
+import { voteOption } from '../helpers/polls.mjs';
+import richText, { fillRichText } from '../helpers/oatmilkRichText.mjs';
 
 const pollTypeDirectories = {
   poll: 'choose',
@@ -28,15 +30,11 @@ async function openChooseForm(page) {
   await openPollTemplates(page);
   await page.locator('.decision-tools-card__poll-type--poll').click()
   await page.locator('.poll-common-form-fields__title input').fill('Which bottle trial topics need the most meeting time?')
-  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
-    editor.focus()
-    editor.innerHTML = html
-    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
-  }, richText.context('new-choose-poll', [
-      'Choose up to two topics that need the most time at the Oatmilk Cooperative planning meeting.',
-      'Consider which questions affect cafe staff, production work, and the delivery schedule.',
-      'We will use the result to order the agenda and assign preparation before the meeting.'
-    ]))
+  await fillRichText(editor(page.locator('.poll-common-form-fields__details')), richText.context('new-choose-poll', [
+    'Choose up to two topics that need the most time at the Oatmilk Cooperative planning meeting.',
+    'Consider which questions affect cafe staff, production work, and the delivery schedule.',
+    'We will use the result to order the agenda and assign preparation before the meeting.'
+  ]))
   await addOption(page, 'Cafe collection schedule', 'Confirm collection days and the contact at each cafe.');
   await addOption(page, 'Bottle deposit amount', 'Agree on a deposit that is clear for customers and cafe staff.');
   await addOption(page, 'Washing workflow', 'Check capacity, food-safety steps, and who records each batch.');
@@ -100,17 +98,12 @@ const pollTypes = {
 async function openTypeForm(page, pollType) {
   const config = pollTypes[pollType];
   await page.goto(`/dev/setup_manual_oatmilk_new_poll?poll_type=${pollType}`)
-  await expect(page.locator('.poll-common-form').first()).toBeVisible()
   await page.locator('.poll-common-form-fields__title input').fill(config.title)
-  await page.locator('.poll-common-form-fields__details [contenteditable=true]').evaluate((editor, html) => {
-    editor.focus()
-    editor.innerHTML = html
-    editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }))
-  }, richText.context(`new-${pollType}`, [
+  await fillRichText(editor(page.locator('.poll-common-form-fields__details')), richText.context(`new-${pollType}`, [
     config.details,
     ...config.context
   ]))
-  config.options.forEach(([name, meaning]) => addOption(page, name, meaning));
+  for (const [name, meaning] of config.options) { await addOption(page, name, meaning); }
 
   if (pollType === 'dot_vote') {
     await page.locator('.poll-common-form input[type="number"]').fill('10')
@@ -128,8 +121,17 @@ async function openTypeForm(page, pollType) {
 async function openTypePoll(page, pollType, mode) {
   const suffix = mode ? `&mode=${mode}` : '';
   await page.goto(`/dev/setup_manual_oatmilk_poll_type?poll_type=${pollType}${suffix}`)
-  await expect(page.locator('.poll-created').first()).toBeVisible()
   await expectLabel(page.locator('.poll-common-card__title'), pollTypes[pollType]?.title || 'Which bottle trial topics need the most meeting time?')
+}
+
+// Types a score for each of the poll's options, in order. Score polls reuse
+// the allocate form's option class.
+async function enterScores(page, pollType, scores) {
+  const form = { score: '.poll-score-vote-form', dot_vote: '.poll-dot-vote-vote-form' }[pollType];
+  for (const [index, [name]] of pollTypes[pollType].options.entries()) {
+    await page.locator(`${form} .poll-dot-vote-vote-form__option`, { hasText: name })
+      .locator('.vote-form-number-input').fill(String(scores[index]));
+  }
 }
 
 async function captureTypeForm(screenshot, pollType) {
@@ -158,7 +160,7 @@ async function captureResults(screenshot, pollType) {
 
 async function captureOutcome(page, screenshot, pollType) {
   await openTypePoll(page, pollType, 'outcome');
-  await expect(page.locator('.poll-common-outcome-panel').first()).toBeVisible()
+  await expect(page.locator('.poll-common-outcome-panel')).toBeVisible()
   await screenshot.captureRegion(
     `polls/${pollTypeDirectories[pollType]}/outcome`,
     ['.poll-created .poll-common-card__title', '.poll-created .poll-common-chart-panel', '.poll-created .action-dock'],
@@ -183,12 +185,7 @@ test('new_simple_poll', async ({ page, manual: screenshot }) => {
 
 test('poll_edit_option', async ({ page, manual: screenshot }) => {
   await openChooseForm(page);
-  await page.evaluate(`
-    const item = Array.from(document.querySelectorAll('.poll-common-form .v-list-item'))
-      .find(el => el.textContent.includes('Cafe collection schedule'));
-    item.classList.add('manual-cafe-option');
-  `)
-  await page.locator('.manual-cafe-option .poll-common-form__edit-option').click()
+  await page.locator('.poll-common-form__option', { hasText: 'Cafe collection schedule' }).locator('.poll-common-form__edit-option').click()
   await screenshot.captureElement(
     'polls/choose/edit_option',
     '.poll-common-option-form',
@@ -199,19 +196,20 @@ test('poll_edit_option', async ({ page, manual: screenshot }) => {
 test('new_simple_poll_random', async ({ page, manual: screenshot }) => {
   await openChooseForm(page);
   await page.locator('.poll-common-form__more-settings').click()
-  await page.locator('.poll-settings-shuffle-options .v-selection-control__wrapper').click()
-  await page.evaluate(`
-    const checkbox = document.querySelector('.poll-settings-shuffle-options');
-    const heading = checkbox.previousElementSibling.previousElementSibling;
+  await page.locator('.poll-settings-shuffle-options input').check()
+  // Show the setting on its own: copy its title, hint and checkbox into a
+  // panel at the top of the page.
+  await page.locator('.poll-common-form').evaluate(form => {
     const wrapper = document.createElement('div');
     wrapper.className = 'manual-shuffle-capture';
     Object.assign(wrapper.style, {
       position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
       padding: '24px', background: 'white'
     });
-    [heading, heading.nextElementSibling, checkbox].forEach(el => wrapper.append(el.cloneNode(true)));
+    ['.poll-common-form__shuffle-title', '.poll-common-form__shuffle-hint', '.poll-settings-shuffle-options']
+      .forEach(selector => wrapper.append(form.querySelector(selector).cloneNode(true)));
     document.body.append(wrapper);
-  `)
+  })
   await screenshot.captureElement(
     'polls/choose/random_order',
     '.manual-shuffle-capture',
@@ -221,18 +219,11 @@ test('new_simple_poll_random', async ({ page, manual: screenshot }) => {
 
 test('new_simple_poll_voting', async ({ page, manual: screenshot }) => {
   await startChoosePoll(page);
-  await page.evaluate(`
-    Array.from(document.querySelectorAll('.poll-common-vote-form__button'))
-      .find(el => el.textContent.includes('Cafe collection schedule'))
-      .querySelector('label').click();
-  `)
-  await page.evaluate(`
-    Array.from(document.querySelectorAll('.poll-common-vote-form__button'))
-      .find(el => el.textContent.includes('Washing workflow'))
-      .querySelector('label').click();
-  `)
-  await page.locator('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]').fill('These topics affect every cafe collection, so we should confirm them together before the trial starts.')
-  await page.evaluate("document.querySelector('.poll-common-action-panel h3').scrollIntoView({block: 'start'})")
+  for (const option of ['Cafe collection schedule', 'Washing workflow']) {
+    await voteOption(page, option).locator('label').click()
+  }
+  await editor(page.locator('.poll-common-vote-form__reason')).fill('These topics affect every cafe collection, so we should confirm them together before the trial starts.')
+  await page.locator('.poll-common-action-panel h3').evaluate(heading => heading.scrollIntoView({block: 'start'}))
   await screenshot.captureRegion(
     'polls/choose/voting',
     [
@@ -277,8 +268,8 @@ test('score_options', async ({ page, manual: screenshot }) => {
 
 test('score_voting', async ({ page, manual: screenshot }) => {
   await openTypePoll(page, 'score');
-  await page.evaluate("document.querySelectorAll('.vote-form-number-input').forEach((input, index) => { input.value = [8, 6, 7, 5][index]; input.dispatchEvent(new Event('input', {bubbles: true})); })")
-  await page.locator('.poll-score-vote-form .poll-common-vote-form__reason [contenteditable=true]').fill(pollTypes.score.reason)
+  await enterScores(page, 'score', [8, 6, 7, 5]);
+  await editor(page.locator('.poll-score-vote-form .poll-common-vote-form__reason')).fill(pollTypes.score.reason)
   await captureVoteForm(screenshot, 'score', '.poll-score-vote-form');
 });
 
@@ -294,8 +285,8 @@ test('dot_vote_options', async ({ page, manual: screenshot }) => {
 
 test('dot_vote_voting', async ({ page, manual: screenshot }) => {
   await openTypePoll(page, 'dot_vote');
-  await page.evaluate("document.querySelectorAll('.poll-dot-vote-vote-form .vote-form-number-input').forEach((input, index) => { input.value = [3, 3, 0, 2, 2][index]; input.dispatchEvent(new Event('input', {bubbles: true})); })")
-  await page.locator('.poll-dot-vote-vote-form .poll-common-vote-form__reason [contenteditable=true]').fill(pollTypes.dot_vote.reason)
+  await enterScores(page, 'dot_vote', [3, 3, 0, 2, 2]);
+  await editor(page.locator('.poll-dot-vote-vote-form .poll-common-vote-form__reason')).fill(pollTypes.dot_vote.reason)
   await captureVoteForm(screenshot, 'dot_vote', '.poll-dot-vote-vote-form');
 });
 
@@ -311,7 +302,7 @@ test('ranked_choice_options', async ({ page, manual: screenshot }) => {
 
 test('ranked_choice_voting', async ({ page, manual: screenshot }) => {
   await openTypePoll(page, 'ranked_choice');
-  await page.locator('.poll-ranked-choice-vote-form .poll-common-vote-form__reason [contenteditable=true]').fill(pollTypes.ranked_choice.reason)
+  await editor(page.locator('.poll-ranked-choice-vote-form .poll-common-vote-form__reason')).fill(pollTypes.ranked_choice.reason)
   await captureVoteForm(screenshot, 'ranked_choice', '.poll-ranked-choice-vote-form');
 });
 

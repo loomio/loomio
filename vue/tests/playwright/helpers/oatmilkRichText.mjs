@@ -21,4 +21,14 @@ export function context(seed, paragraphs) {
   }
 }
 
+// Puts example rich text into an editor at once, as a paste would. Pass the
+// editor from helpers/editor.mjs, so it waits for the saved content to load.
+export async function fillRichText(input, html) {
+  await input.evaluate((element, content) => {
+    element.focus();
+    element.innerHTML = content;
+    element.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText' }));
+  }, html);
+}
+
 export default {context};
