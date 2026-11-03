@@ -68,8 +68,3 @@ export async function openManageVoters(page) {
   await page.locator('.action-dock__button--announce_poll').click();
   return page.locator('.poll-members-form');
 }
-
-export async function addVoter(page, email) {
-  await page.locator('.recipients-autocomplete input[type="text"]').fill(email);
-  await page.locator('.recipients-autocomplete-suggestion', { hasText: email }).click();
-}

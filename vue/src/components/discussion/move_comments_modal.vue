@@ -104,16 +104,16 @@ export default {
 
 </script>
 <template lang="pug">
-v-card(:title="$t('action_dock.move_items')")
+v-card.move-comments-modal(:title="$t('action_dock.move_items')")
   template(v-slot:append)
     dismiss-modal-button(aria-hidden='true')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-autocomplete.move-comments-modal__thread(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="primary" outlined @click="startNewThread()" :loading="loading")
       span(v-t="'discussion_fork_actions.start_new_thread'")
-    v-btn(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
+    v-btn.move-comments-modal__submit(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
       span(v-t="'common.action.save'")
 </template>

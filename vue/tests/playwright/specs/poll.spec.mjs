@@ -2,8 +2,9 @@ import { test, expect } from '../fixtures.mjs';
 import { choose } from '../helpers/vuetify.mjs';
 import { box } from '../helpers/layout.mjs';
 import { editor } from '../helpers/editor.mjs';
+import { addRecipient } from '../helpers/recipients.mjs';
 import {
-  addVoter, expectPoll, fillPollForm, openManageVoters, openPollForm, pollAction, startPoll, submitPollForm, submitVote, voteOption
+  expectPoll, fillPollForm, openManageVoters, openPollForm, pollAction, startPoll, submitPollForm, submitVote, voteOption
 } from '../helpers/polls.mjs';
 
 const scenario = (pollType, name, extra = '') =>
@@ -145,7 +146,7 @@ test.describe('starting polls in a thread', () => {
     await expect(submit).toHaveCount(0);
     await expect(notify).toHaveCount(0);
 
-    await addVoter(page, 'test@example.com');
+    await addRecipient(page, 'test@example.com');
     await expect(voters.locator('.poll-members-form__list')).toHaveCount(0);
     await expect(voters.locator('.poll-members-form__page-count')).toHaveCount(0);
     await page.keyboard.press('Escape');
@@ -289,7 +290,7 @@ test.describe('managing voters', () => {
     const submit = voters.locator('.poll-members-form__submit');
     await expect(submit).toHaveCount(0);
     await expect(voters.locator('.v-checkbox')).toHaveCount(0);
-    await addVoter(page, 'test@example.com');
+    await addRecipient(page, 'test@example.com');
     await page.keyboard.press('Escape');
     await expect(submit).toContainText('Add voters');
   });

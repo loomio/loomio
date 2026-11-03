@@ -101,16 +101,16 @@ watchRecords({
 </script>
 
 <template lang="pug">
-v-card(:title="$t('add_poll_to_discussion_modal.title')")
+v-card.add-to-discussion-modal(:title="$t('add_poll_to_discussion_modal.title')")
   template(v-slot:append)
     dismiss-modal-button(aria-hidden='true')
   v-card-text
     v-alert(type="info" variant="tonal" class="mb-4")
       | {{ $t('add_poll_to_discussion_modal.explanation', {pollType: poll.translatedPollType()}) }}
     v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('common.discussion')" :loading="loading")
+    v-autocomplete.add-to-discussion-modal__thread(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('common.discussion')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
+    v-btn.add-to-discussion-modal__submit(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
       span(v-t="'common.action.add'")
 </template>
