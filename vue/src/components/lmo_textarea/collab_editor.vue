@@ -7,8 +7,9 @@ import AppConfig from '@/shared/services/app_config';
 import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
-import { convertToMd, takeConvertedContent } from '@/shared/services/format_converter';
+import { convertToMd } from '@/shared/services/format_converter';
 import { contentExtensions } from './content_extensions';
+import { collabSeed, SEED_FIELD } from './collab_seed';
 import { Placeholder, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions';
 
 import { Editor, EditorContent } from '@tiptap/vue-3';
@@ -78,7 +79,7 @@ const editorEmpty = ref(true);
 let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
-let syncFallbackTimeout = null;
+let seedHtml = '';
 let unregisterBeforeSave = () => {};
 
 const btnProps = ref({
@@ -153,10 +154,12 @@ const resetDraft = (content) => {
   editor.value.commands.setContent(content);
 };
 
+// Discarding a draft returns the document to the content it was seeded from:
+// empty for a new record, the saved content otherwise. The document name is
+// fixed by that seed, so the next visit attaches to this same document.
 const deleteDraft = () => {
   if (!editor.value) return;
-  editor.value.chain().clearContent().run();
-  ydoc.getMap('config').set('initialContentLoaded', false);
+  resetDraft(seedHtml);
   resetFiles();
 };
 
@@ -269,7 +272,9 @@ const updateModel = () => {
   updateFiles();
 };
 
-const updateMentionState = () => {
+// Takes the instance from Tiptap's callbacks: a seeded document renders while
+// the Editor is being constructed, before editor.value is assigned.
+const updateMentionState = (instance) => {
   const handles = [];
   const visit = node => {
     if (node.type === 'mention' && node.attrs.id) {
@@ -277,9 +282,9 @@ const updateMentionState = () => {
     }
     Array.from(node.content || []).forEach(visit);
   };
-  visit(editor.value.getJSON());
+  visit(instance.getJSON());
   mentionHandles.value = Array.from(new Set(handles));
-  editorEmpty.value = editor.value.isEmpty;
+  editorEmpty.value = instance.isEmpty;
 };
 
 const removeLinkPreview = (url) => {
@@ -311,47 +316,28 @@ const imageSelected = () => {
 
 // Lifecycle
 onMounted(() => {
-  const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
+  // Seed the document deterministically before the editor and providers
+  // start (see collab_seed.js). Copies of the seed from the server, IndexedDB
+  // or other tabs merge idempotently, so there is nothing to wait for: the
+  // editor is safe to type in immediately, and an unreachable server only
+  // means no live collaboration. Converted Markdown is already in the model,
+  // so it becomes the seed of its own document.
+  const extensions = contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value });
+  seedHtml = props.model[props.field] || '';
+  const seed = collabSeed(seedHtml, extensions);
+  const docname = [props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token)), seed.hash].join('-');
   ydoc = new Y.Doc();
-  let contentConverted = takeConvertedContent(props.model, props.field);
-
-  const onSync = function() {
-    // The provider and fallback timer outlive the editor; a late sync after
-    // the editor is destroyed would hit a null commandManager.
-    if (!editor.value || editor.value.isDestroyed) { return; }
-    if (contentConverted !== undefined) {
-      editor.value.commands.setContent(contentConverted);
-      ydoc.getMap('config').set('initialContentLoaded', true);
-      contentConverted = undefined;
-    } else if (!ydoc.getMap('config').get('initialContentLoaded')) {
-      ydoc.getMap('config').set('initialContentLoaded', true);
-      editor.value.commands.setContent(props.model[props.field]);
-    } else {
-      if (editor.value.storage.characterCount.characters() == 0 && !props.model.attributeIsBlank(props.field)) {
-        console.log(`content blank when it shouldnt be! ${docname}`);
-        editor.value.commands.setContent(props.model[props.field]);
-      }
-    }
-  };
+  Y.applyUpdate(ydoc, seed.update);
 
   hocusProvider = new HocuspocusProvider({
     url: AppConfig.theme.hocuspocus_url,
     name: docname,
     document: ydoc,
     token: (Session.user().id || 0) + "," + AppConfig.channel_token,
-    onSynced: () => { onSync() },
   });
 
   localProvider = new IndexeddbPersistence(docname, ydoc);
   localProvider._db.catch(() => { /* IndexedDB unavailable (e.g. iOS Private Browsing) — collab still works via server */ });
-
-  // Fallback: If server doesn't connect within timeout, load content from local model
-  syncFallbackTimeout = setTimeout(() => {
-    if (contentConverted !== undefined || !ydoc.getMap('config').get('initialContentLoaded')) {
-      console.log('Hocuspocus has not synced within 2 seconds, loading from local model');
-      onSync();
-    }
-  }, 2000);
 
   if (!smAndDown.value) expanded.value = Boolean(Session.user().experiences['html-editor.expanded']);
 
@@ -365,10 +351,11 @@ onMounted(() => {
     },
     autofocus: props.autofocus,
     extensions: [
-      ...contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value }),
+      ...extensions,
       CharacterCount.configure({limit: props.maxLength}),
       Collaboration.configure({
         document: ydoc,
+        field: SEED_FIELD,
       }),
       CollaborationCaret.configure({
         provider: hocusProvider,
@@ -406,9 +393,9 @@ onMounted(() => {
       Gapcursor,
       Placeholder.configure({placeholder: () => props.placeholder}),
     ],
-    onUpdate: () => {
+    onUpdate: ({ editor: instance }) => {
       if (props.maxLength) { checkLength(); }
-      updateMentionState();
+      updateMentionState(instance);
     },
     onFocus: () => {
       focused.value = true;
@@ -416,8 +403,9 @@ onMounted(() => {
     onBlur: () => {
       focused.value = false;
     },
-    onCreate: () => {
-      updateMentionState();
+    onCreate: ({ editor: instance }) => {
+      if (props.maxLength) { checkLength(); }
+      updateMentionState(instance);
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
       }
@@ -452,7 +440,6 @@ onBeforeUnmount(() => {
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
-  if (syncFallbackTimeout) { clearTimeout(syncFallbackTimeout); }
   if (hocusProvider) { hocusProvider.destroy(); }
   if (localProvider) { localProvider.destroy(); }
   if (editor.value) { editor.value.destroy(); }
