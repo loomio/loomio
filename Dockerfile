@@ -1,5 +1,6 @@
 # check=skip=InvalidDefaultArgInFrom
 ARG NODE_VERSION
+ARG RUBY_VERSION
 FROM node:${NODE_VERSION}-slim AS nodebuild
 ARG NPM_VERSION
 
@@ -34,7 +35,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json hocuspocus/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
-FROM ruby:4.0.9-slim
+FROM ruby:${RUBY_VERSION}-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \
