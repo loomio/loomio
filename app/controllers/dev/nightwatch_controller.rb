@@ -31,6 +31,7 @@ class Dev::NightwatchController < Dev::BaseController
     :revoke_secret_group_access,
     :revoke_authored_poll_membership,
     :restore_authored_poll_membership,
+    :update_html_description_elsewhere,
     :publish_private_poll_update_after_removal,
     :view_email_catch_up_settings,
     :view_thread_email_settings,

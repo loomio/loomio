@@ -10,6 +10,27 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_path(create_discussion)
   end
 
+  # A saved HTML description opens in the collaborative rich-text editor.
+  # Pass distinct text per test: the document name derives from the content.
+  def setup_discussion_html_description_edit
+    discussion = DiscussionService.create(params: {
+      group_id: create_group.id,
+      title: 'Collaborative description',
+      description: "<p>#{ERB::Util.h(params.fetch(:text, 'Saved description'))}</p>",
+      description_format: 'html',
+      private: false
+    }, actor: jennifer)
+    sign_in patrick
+    redirect_to "/d/#{discussion.key}/edit"
+  end
+
+  # Someone else saves the description while this browser holds a draft.
+  def update_html_description_elsewhere
+    discussion = Discussion.where(title: 'Collaborative description').order(:id).last
+    discussion.update!(description: '<p>Saved elsewhere</p>')
+    redirect_to "/d/#{discussion.key}/edit"
+  end
+
   def setup_attachment_restricted_discussion
     discussion = create_discussion
     discussion.topic.update!(attachments_admin_only: true)
