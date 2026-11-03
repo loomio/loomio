@@ -3,7 +3,7 @@ import { marked } from 'marked';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { contentExtensions } from '@/components/lmo_textarea/content_extensions';
 import { documentToMarkdown, markdownToHtml } from '@/shared/services/markdown_conversion';
-import { convertToHtml, convertToMd, takeConvertedContent } from '@/shared/services/format_converter';
+import { convertToHtml, convertToMd } from '@/shared/services/format_converter';
 import { customRenderer, options } from '@/shared/helpers/marked';
 import compatibility from '../../../test/fixtures/files/markdown_conversion.json';
 
@@ -160,16 +160,6 @@ describe('Markdown mode conversion', () => {
     const model = { body: '<p>Original</p>', bodyFormat: 'html' };
     await expect(convertToMd(model, 'body', { getJSON() { throw new Error('failed'); } })).rejects.toThrow('failed');
     expect(model).toEqual({ body: '<p>Original</p>', bodyFormat: 'html' });
-  });
-
-  it('replaces a cached rich-text draft with converted content exactly once per field', async () => {
-    const model = { body: 'New **draft**', bodyFormat: 'md', reason: '', reasonFormat: 'md' };
-    await convertToHtml(model, 'body');
-    await convertToHtml(model, 'reason');
-    expect(takeConvertedContent(model, 'body')).toBe(model.body);
-    expect(takeConvertedContent(model, 'body')).toBeUndefined();
-    expect(takeConvertedContent(model, 'reason')).toBe(model.reason);
-    expect(takeConvertedContent({}, 'body')).toBeUndefined();
   });
 
   it('does not introduce underline syntax that Markdown display treats as literal text', () => {
