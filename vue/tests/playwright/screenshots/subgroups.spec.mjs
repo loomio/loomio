@@ -30,7 +30,7 @@ async function editPrivacy(page) {
 test('new_subgroup_action', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await page.locator('.navbar__sidenav-toggle').click()
+  await openSidebar(page)
   await expectLabel(page.locator('.sidebar-start-subgroup'), 'New subgroup')
   await screenshot.capture('groups/subgroups/subgroups-sidebar', {
     spotlight: spotlight('.sidebar-start-subgroup')

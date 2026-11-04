@@ -9,9 +9,14 @@ const directory = path.join(root, 'vue/tests/playwright/screenshots');
 const namePattern = /^[A-Za-z0-9][A-Za-z0-9/_-]*$/;
 
 // Every helper call returns the stub itself, and awaiting it resolves at once.
+// It converts to NaN, so comparisons such as a viewport width check are false.
 let stub;
 stub = new Proxy(function() { return stub; }, {
-  get(target, property) { return property === 'then' ? undefined : stub; }
+  get(target, property) {
+    if (property === 'then') return undefined;
+    if (property === Symbol.toPrimitive) return () => NaN;
+    return stub;
+  }
 });
 
 const captures = [];
