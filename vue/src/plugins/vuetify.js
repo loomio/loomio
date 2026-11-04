@@ -38,6 +38,11 @@ export default createVuetify({
     VCheckbox: {
       color: 'primary',
     },
+    // md3 draws a short, rounded slider under the label. Keep the full-width,
+    // square slider.
+    VTabs: {
+      sliderVariant: 'secondary',
+    },
   },
   icons: {
     defaultSet: 'mdi',

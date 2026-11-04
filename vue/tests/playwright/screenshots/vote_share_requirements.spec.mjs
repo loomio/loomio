@@ -13,8 +13,10 @@ async function openProposalForm(page) {
   await page.setViewportSize({ width: 1200, height: 1600 });
   await page.goto('/dev/setup_manual_oatmilk_quorum?view=edit');
   await expect(page.locator(agreeOption)).toBeVisible();
-  // The capture helper takes selectors; give the last list item one.
-  await page.locator('.poll-common-form .v-list-item').last().evaluate(item => item.classList.add('manual-last-option'));
+  // Agree, abstain and disagree.
+  await expect(page.locator('.poll-common-form .poll-common-form__option')).toHaveCount(3);
+  // The capture helper takes selectors; give the last option one.
+  await page.locator('.poll-common-form .poll-common-form__option').last().evaluate(item => item.classList.add('manual-last-option'));
 }
 
 async function openAgreeOption(page) {
