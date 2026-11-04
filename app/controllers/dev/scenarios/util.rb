@@ -9,6 +9,19 @@ module Dev::Scenarios::Util
     redirect_to(login_token_path(::LoginToken.last.token), allow_other_host: true)
   end
 
+  # Let E2E specs take the collaboration server away and bring it back
+  # empty, as a restart would. Affects only the Puma worker that serves the
+  # request, so E2E runs use one worker.
+  def hocuspocus_stop
+    Hocuspocus.server.stop
+    head :ok
+  end
+
+  def hocuspocus_start
+    Hocuspocus.server.start
+    head :ok
+  end
+
   private
 
 end

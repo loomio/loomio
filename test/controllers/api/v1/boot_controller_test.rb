@@ -84,7 +84,6 @@ class Api::V1::BootControllerTest < ActionController::TestCase
     assert_response :success
     payload = JSON.parse(response.body)
     assert_nil payload['current_user_id']
-    assert_nil payload['channel_token']
     refute_includes payload.fetch('users').map { |record| record['id'] }, user.id
   end
 
@@ -98,6 +97,5 @@ class Api::V1::BootControllerTest < ActionController::TestCase
     assert_response :success
     payload = JSON.parse(response.body)
     assert_equal signed_in_user.id, payload['current_user_id']
-    assert_equal signed_in_user.secret_token, payload['channel_token']
   end
 end

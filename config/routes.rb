@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     mount MissionControl::Jobs::Engine => '/admin/jobs'
   end
 
+  mount Hocuspocus.server => '/hocuspocus'
+
   if !Rails.env.production?
     namespace :dev do
       dev_routes_for(:discussions)
@@ -86,8 +88,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    post 'hocuspocus', to: 'hocuspocus#create'
-
     namespace :s1 do
       post 'webhook', to: 'webhook#create'
       post 'subscriptions/verify', to: 'subscriptions#verify'

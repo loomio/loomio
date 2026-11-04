@@ -6,8 +6,6 @@ script/sync_client_assets
 
 if [ "$TASK" = "worker" ]; then
   exec bin/jobs start
-elif [ "$TASK" = "hocuspocus" ]; then
-  exec node hocuspocus/server.mjs
 else
   # bundle install
   bundle exec rake db:prepare

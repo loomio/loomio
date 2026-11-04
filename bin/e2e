@@ -17,7 +17,6 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RAILS_PID=""
-HOCUSPOCUS_PID=""
 TEST_FILE=""
 HEADLESS=true
 NW_ARGS=()
@@ -52,15 +51,6 @@ if [ ${#NW_ARGS[@]} -gt 0 ]; then
 fi
 
 cleanup() {
-  if [ -n "$HOCUSPOCUS_PID" ]; then
-    echo "Stopping hocuspocus server (pid $HOCUSPOCUS_PID)..."
-    kill "$HOCUSPOCUS_PID" 2>/dev/null || true
-    wait "$HOCUSPOCUS_PID" 2>/dev/null || true
-  fi
-  # Specs may restart hocuspocus (see vue/tests/e2e/helpers/hocuspocusServer.js).
-  if [ -n "${HOCUSPOCUS_PORT:-}" ]; then
-    lsof -ti "tcp:$HOCUSPOCUS_PORT" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null || true
-  fi
   if [ -n "$RAILS_PID" ]; then
     echo "Stopping Rails server (pid $RAILS_PID)..."
     kill "$RAILS_PID" 2>/dev/null || true
@@ -77,31 +67,12 @@ echo "==> Building Vue assets..."
 echo "==> Preparing test database..."
 RAILS_ENV=test bundle exec rails db:prepare
 
-HOCUSPOCUS_PORT="${HOCUSPOCUS_PORT:-4445}"
-
-# 3. Start hocuspocus on its own port (separate from dev's 4444)
-echo "==> Starting hocuspocus server on port $HOCUSPOCUS_PORT..."
-APP_URL="http://localhost:$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" node "$ROOT/hocuspocus/server.mjs" > /tmp/hocuspocus-e2e.log 2>&1 &
-HOCUSPOCUS_PID=$!
-for i in $(seq 1 10); do
-  if nc -z localhost "$HOCUSPOCUS_PORT" 2>/dev/null; then
-    echo "    Hocuspocus is ready."
-    break
-  fi
-  if [ "$i" -eq 10 ]; then
-    echo "    ERROR: hocuspocus did not start within 10 seconds."
-    cat /tmp/hocuspocus-e2e.log
-    exit 1
-  fi
-  sleep 1
-done
-
-# 4. Start Rails server
+# 3. Start Rails server (it also serves the collaboration WebSocket)
 echo "==> Starting Rails server on port $E2E_PORT..."
-CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
+CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
 RAILS_PID=$!
 
-# 5. Wait for server to be ready
+# 4. Wait for server to be ready
 echo "==> Waiting for Rails server..."
 for i in $(seq 1 30); do
   if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then
@@ -115,14 +86,14 @@ for i in $(seq 1 30); do
   sleep 1
 done
 
-# 6. Run Nightwatch
+# 5. Run Nightwatch
 echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
 set +e
-(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
 TEST_EXIT=$?
 set -e
 
-# 7. Cleanup happens via trap; exit with test result
+# 6. Cleanup happens via trap; exit with test result
 if [ "$TEST_EXIT" -ne 0 ]; then
   echo "==> Tests failed (exit code $TEST_EXIT). Screenshots in vue/tests/screenshots/"
 fi
