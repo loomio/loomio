@@ -1,5 +1,5 @@
 require_relative Rails.root.join('test/reset_database_helper')
-class Dev::NightwatchController < Dev::BaseController
+class Dev::ScenariosController < Dev::BaseController
   include ResetDatabaseHelper
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
