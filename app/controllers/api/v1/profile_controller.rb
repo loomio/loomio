@@ -2,7 +2,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   before_action :require_current_user
 
   def index
-    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
+    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].to_s.split('x').map(&:to_i).compact)
     self.collection = User.where(id: ids)
     cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
     respond_with_collection serializer: AuthorSerializer, root: :users, scope: {cache: cache, exclude_types: exclude_types}
