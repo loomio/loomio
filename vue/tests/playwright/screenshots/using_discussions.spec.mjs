@@ -48,7 +48,7 @@ test('thread_navigation', async ({ page, manual: screenshot }) => {
   await openDiscussion(page);
   await screenshot.capture('discussions/using_discussions/thread_navigation', {
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -82,7 +82,7 @@ test('thread_timeline', async ({ page, manual: screenshot }) => {
       radius: 0
     },
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -325,7 +325,7 @@ test('thread_display', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.topic-sidebar .action-dock__button--thread_settings',
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -353,7 +353,7 @@ test('thread_admin', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.topic-sidebar .v-list:last-child',
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -368,6 +368,6 @@ test('thread_print_thread', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.topic-sidebar .action-dock__button--export_thread',
     width: 1280,
-    height: 1000
+    height: 857
   });
 });

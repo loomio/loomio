@@ -31,6 +31,7 @@ test('group_settings_menu', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
   await expect(page.locator('.v-overlay--active .action-dock__button--edit_group')).toBeVisible();
   await screenshot.captureElement('groups/settings/group_settings', '.v-main', {
+    height: 757,
     spotlight: menuSpotlight('.v-overlay .action-dock__button--edit_group')
   });
 });
@@ -100,6 +101,9 @@ test('group_start_new', async ({ page, manual: screenshot }) => {
 });
 
 test('group_start_form', async ({ page, manual: screenshot }) => {
+  // In a narrow window the sidebar is an overlay that closes when the group
+  // page updates its URL after loading. A wide window keeps it open.
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/dev/setup_manual_oatmilk_group');
   await ensureSidebar(page);
   await page.locator('.sidebar-start-group').click();

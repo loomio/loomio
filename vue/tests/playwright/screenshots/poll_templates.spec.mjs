@@ -14,7 +14,10 @@ async function openAdviceForm(page) {
   // is deterministic even though persisted templates do not have key classes.
   await page.locator('.decision-tools-card__poll-type').first().click()
   await page.locator('.poll-common-form-fields__title input').fill('Choose a bottle washing supplier')
-  await page.locator('.poll-common-form-fields__details textarea').fill('We need advice about **capacity, food-safety records, and water use** before selecting a washing supplier. 🧼\n\nCompare response times, batch-record support, and the practical limits of each service.\n\nRead the [supplier questions](https://example.com/oatmilk-supplier-questions) and add anything we should ask before signing an agreement.')
+  const details = page.locator('.poll-common-form-fields__details textarea')
+  await details.fill('We need advice about **capacity, food-safety records, and water use** before selecting a washing supplier. 🧼\n\nCompare response times, batch-record support, and the practical limits of each service.\n\nRead the [supplier questions](https://example.com/oatmilk-supplier-questions) and add anything we should ask before signing an agreement.')
+  // Typing leaves the field scrolled to its end; show the start of the text.
+  await details.evaluate(textarea => { textarea.blur(); textarea.scrollTop = 0; })
 }
 
 async function openTemplateForm(page, custom = false) {

@@ -27,7 +27,10 @@ async function openPoll(page) {
 // Opens the voter suggestions and returns the chatbot's suggestion.
 async function openInviteSuggestions(page) {
   await openPoll(page);
+  // Size the window first: resizing while the menu is open leaves it misplaced.
+  await page.setViewportSize({ width: 1100, height: 1300 });
   await page.locator('.action-dock__button--announce_poll').click();
+  await expect(page.locator('.poll-members-form__list .v-list-item')).toHaveCount(3);
   await page.locator('.poll-members-form .recipients-autocomplete input[type="text"]').click();
   const suggestion = page.locator('.v-overlay--active .recipients-autocomplete-suggestion', { hasText: chatbotName });
   await expect(suggestion).toBeVisible();
@@ -38,7 +41,7 @@ test('loomio-group-settings', async ({ page, manual: screenshot }) => {
   await openGroupMenu(page);
   await screenshot.capture('integrations/chatbots/loomio-group-settings', {
     width: 1280,
-    height: 1000,
+    height: 857,
     spotlight: '.v-overlay--active .action-dock__button--chatbots'
   });
 });
@@ -71,7 +74,7 @@ test('invite_to_vote_1', async ({ page, manual: screenshot }) => {
   await suggestion.evaluate(element => element.classList.add('manual-chatbot-recipient'));
   await screenshot.captureRegion(
     'integrations/chatbots/invite_to_vote_1',
-    ['.poll-members-form .recipients-autocomplete', '.v-overlay--active .v-list'],
+    ['.poll-members-form', '.v-overlay--active .v-list'],
     { width: 1100, height: 1300, padding: 16, spotlight: '.manual-chatbot-recipient' }
   );
 });

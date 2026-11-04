@@ -181,6 +181,6 @@ test('proposal_print', async ({ page, manual: screenshot }) => {
   await expect(page.locator('body')).toBeVisible();
   await screenshot.capture('polls/settings/proposal_print', {
     width: 1280,
-    height: 1200
+    height: 1057
   });
 });

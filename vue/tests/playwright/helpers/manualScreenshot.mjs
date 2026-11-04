@@ -173,6 +173,8 @@ export function manualScreenshot(page, { outputDir } = {}) {
   return {
     async capture(name, options = {}) {
       const outputPath = imagePath(name);
+      // Full-page images keep the 757px page height the manual has always used.
+      options = { height: 757, ...options };
       await prepare(options);
       await scrollIntoView(options);
       const geometry = await spotlightGeometry(options.spotlight, null);
@@ -186,6 +188,13 @@ export function manualScreenshot(page, { outputDir } = {}) {
       const outputPath = imagePath(name);
       await prepare(options);
       await page.locator(selector).first().waitFor({ state: 'visible' });
+      // Grow the window to fit the whole element. A capture that has to scroll
+      // leaves sticky headers floating over the middle of the image.
+      const bottom = await page.locator(selector).first().evaluate(element => Math.ceil(element.getBoundingClientRect().bottom + window.scrollY));
+      const viewport = page.viewportSize();
+      if (bottom > viewport.height) {
+        await page.setViewportSize({ width: viewport.width, height: bottom });
+      }
       await scrollIntoView({ ...options, scrollSelector: options.scrollSelector || selector });
       const geometry = await spotlightGeometry(options.spotlight, selector);
 

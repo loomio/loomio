@@ -70,7 +70,7 @@ test('invite_delegates', async ({ page, manual: screenshot }) => {
   await page.locator('.poll-common-form__submit').click();
   await page.locator('.poll-members-form .recipients-autocomplete input[type="text"]').click();
   await page.locator('.recipients-autocomplete-suggestion--delegates').hover();
-  await screenshot.capture('groups/delegated_voters/poll_invite_delegates_group', {height: 650});
+  await screenshot.capture('groups/delegated_voters/poll_invite_delegates_group', {height: 507});
 });
 
 test('filter_delegates', async ({ page, manual: screenshot }) => {

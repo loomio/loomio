@@ -183,7 +183,7 @@ test('thread_invite_icon', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.topic-sidebar .action-dock__button--announce_thread',
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -268,7 +268,7 @@ test('thread_engagement', async ({ page, manual: screenshot }) => {
       radius: 14
     },
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -303,7 +303,7 @@ test('thread_notification_history', async ({ page, manual: screenshot }) => {
       radius: 14
     },
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -320,7 +320,7 @@ test('comment_notification_history', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.manual-mention-comment',
     width: 1200,
-    height: 1000
+    height: 857
   });
 });
 
@@ -349,7 +349,7 @@ test('poll_notification_history', async ({ page, manual: screenshot }) => {
     },
     scrollSelector: '.poll-created',
     width: 1200,
-    height: 1100
+    height: 957
   });
 });
 
@@ -375,6 +375,6 @@ test('thread_interact', async ({ page, manual: screenshot }) => {
       radius: 14
     },
     width: 1280,
-    height: 1000
+    height: 857
   });
 });

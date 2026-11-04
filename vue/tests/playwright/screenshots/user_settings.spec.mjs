@@ -115,7 +115,7 @@ test('notification_bell', async ({ page, manual: screenshot }) => {
   await expect(page.locator('.notifications__button')).toBeVisible()
   await screenshot.capture('users/email_settings/notification_bell', {
     width: 1100,
-    height: 700,
+    height: 557,
     spotlight: '.notifications__button'
   });
 });
@@ -166,6 +166,9 @@ test('digest_email_example', async ({ page, manual: screenshot }) => {
 });
 
 test('push_notification_settings', async ({ page, manual: screenshot }) => {
+  // Headless Chromium denies notifications. Show a browser that has not been
+  // asked yet, as most readers will see.
+  await page.addInitScript(() => Object.defineProperty(Notification, 'permission', { get: () => 'default' }))
   await page.goto('/dev/setup_manual_oatmilk_email_settings_with_push')
   await expect(page.locator('.push-notifications-settings-card--loaded')).toBeVisible()
   // A push column for each group; any shows the column has loaded.
@@ -178,7 +181,7 @@ test('group_notifications', async ({ page, manual: screenshot }) => {
   await expect(page.locator('.v-overlay--active .action-dock__button--change_volume')).toBeVisible()
   await screenshot.capture('users/email_settings/group_notifications', {
     width: 1100,
-    height: 1200,
+    height: 1057,
     spotlight: '.v-overlay--active .action-dock__button--change_volume'
   });
 });
@@ -296,7 +299,7 @@ test('sidebar_menu', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await screenshot.capture('users/user_profile/sidebar_menu', {
     width: 1100,
-    height: 700,
+    height: 557,
     spotlight: '.navbar__sidenav-toggle'
   });
 });

@@ -97,7 +97,7 @@ test('global_search', async ({ page, manual: screenshot }) => {
   await openGroup(page);
   await screenshot.capture('overview/search_button', {
     width: 1280,
-    height: 900,
+    height: 757,
     spotlight: {
       selector: '.v-app-bar .navbar__search',
       padding: 10,

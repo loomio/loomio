@@ -44,6 +44,6 @@ test('direct_discussion_sidebar', async ({ page, manual: screenshot }) => {
       radius: 12
     },
     width: 1280,
-    height: 900
+    height: 757
   });
 });

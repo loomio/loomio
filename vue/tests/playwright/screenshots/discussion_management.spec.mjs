@@ -158,15 +158,17 @@ test('comment_select', async ({ page, manual: screenshot }) => {
   await selectCommentForMove(page);
   await screenshot.capture('discussions/using_discussions/comment_select', {
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
 test('move_items', async ({ page, manual: screenshot }) => {
   await selectCommentForMove(page);
-  await screenshot.captureElement('discussions/using_discussions/move_items', '.topic-card', {
+  // Include the selection banner, which stays fixed above the thread.
+  await screenshot.captureRegion('discussions/using_discussions/move_items', ['.discussion-fork-actions', '.topic-card'], {
     width: 1100,
-    height: 1600
+    height: 2200,
+    padding: 0
   });
 });
 
@@ -188,7 +190,7 @@ test('new_thread', async ({ page, manual: screenshot }) => {
   // The capture hides flash messages.
   await screenshot.capture('discussions/using_discussions/new_thread', {
     width: 1280,
-    height: 1000
+    height: 857
   });
 });
 
@@ -197,7 +199,7 @@ test('copy_markdown_action', async ({ page, manual: screenshot }) => {
   await expect(page.locator('.topic-sidebar .action-dock__button--thread_markdown')).toBeVisible();
   await screenshot.capture('discussions/discussion_management/copy_markdown_action', {
     width: 1280,
-    height: 1000,
+    height: 857,
     scrollSelector: '.topic-sidebar .action-dock__button--thread_markdown',
     spotlight: {
       selector: '.topic-sidebar .action-dock__button--thread_markdown',
@@ -216,7 +218,7 @@ test('copy_markdown_menu', async ({ page, manual: screenshot }) => {
   await expect(page.locator(`${activeMenu} .v-list-item`)).toHaveCount(2);
   await screenshot.capture('discussions/discussion_management/copy_markdown_menu', {
     width: 1280,
-    height: 1000,
+    height: 857,
     spotlight: {
       selector: '.v-overlay--active .v-list',
       padding: 16,

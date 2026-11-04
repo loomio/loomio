@@ -29,7 +29,7 @@ test('standalone_poll', async ({ page, manual: screenshot }) => {
   await expectLabel(page.locator('.polls-panel__new-poll-button'), 'New poll')
   await screenshot.capture('polls/intro_to_decisions/standalone_poll', {
     width: 1280,
-    height: 900,
+    height: 757,
     spotlight: spotlight(['.group-page-polls-tab', '.polls-panel__new-poll-button'])
   });
 });
