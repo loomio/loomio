@@ -33,6 +33,10 @@ cleanup() {
     kill "$HOCUSPOCUS_PID" 2>/dev/null || true
     wait "$HOCUSPOCUS_PID" 2>/dev/null || true
   fi
+  # Specs may restart hocuspocus (see vue/tests/playwright/helpers/hocuspocusServer.mjs).
+  if [ -n "${HOCUSPOCUS_PORT:-}" ]; then
+    lsof -ti "tcp:$HOCUSPOCUS_PORT" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null || true
+  fi
   if [ -n "$RAILS_PID" ]; then
     kill "$RAILS_PID" 2>/dev/null || true
     wait "$RAILS_PID" 2>/dev/null || true
@@ -76,7 +80,7 @@ done
 
 echo "==> Running Playwright: npx playwright test ${PW_ARGS[*]:-}"
 set +e
-(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx playwright test ${PW_ARGS[@]+"${PW_ARGS[@]}"})
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" RAILS_ENV=test npx playwright test ${PW_ARGS[@]+"${PW_ARGS[@]}"})
 TEST_EXIT=$?
 set -e
 

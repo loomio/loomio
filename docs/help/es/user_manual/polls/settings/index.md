@@ -1,24 +1,23 @@
 ---
 title: Configuración
-source_revision: c69922093febe9267eab942aa88abe5a751606f9
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-30'
+  'on': '2026-11-04'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 3a93b6d856307bb6
-  add-content: f622e36a3ad15e4e
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2cf5055187a4d848
+  opening-time: f8544bec7cd35ca5
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
-  anonymous-voting: 4fde93187ffd1a86
+  anonymous-voting: 35f5392ee8870076
   vote-reason: b1ebf2700ce8248b
-  hide-results: fc5282924fcae787
-  start-the-poll: 8e7d8e81db57f4f8
+  hide-results: 6dc7bf0b34c89a68
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
   notification-history: f132def867659f30
@@ -27,21 +26,21 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 9acf3c7373bcfc03
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
 generated:
   introduction: d6e6465a941f05cc
   setting-up-a-proposal-or-poll: bb36970da131d96f
-  proposal-and-poll-templates: ff09b7e35165271d
-  add-content: c4be9624dffcbb7e
+  proposal-and-poll-templates: ca55b4c9847edf56
+  add-content: 84d0c37d3cca50f4
   voting-options: d66fbd0a4522aa98
   edit-voting-options: e773bdbcc7894d29
-  opening-time: 445c6baffde2eb1d
+  opening-time: 58290dfe7d13b8c4
   more-settings: 3519ac4ed701ef08
   reminder: 56b99642d067b0f0
-  anonymous-voting: 82830bddf2aae95a
+  anonymous-voting: def7ec7e6f0df8b4
   vote-reason: 8a70d40c93b8a51d
-  hide-results: a728576cf7d7b841
-  start-the-poll: 4a14fd3145c3e39b
+  hide-results: 5f6ada48106a9150
   managing-polls: 3711abc9c32d6f77
   edit-poll: 37ec4c799be29490
   notification-history: ffdba555bbd69a46
@@ -50,7 +49,8 @@ generated:
   delete: 308d1e3227e365db
   save-bookmark: 5bdb299d7db4dc71
   save-as-template: 951653bc48b8f1f5
-  who-can-vote: 590b1af3d3c55239
+  who-can-vote: ba22b7b4d702a8ae
+  editing-settings-before-voting-opens: 6e56f3befee2ec67
 title_source: 74a883a037bc227f
 title_generated: bb507137e3631379
 ---
@@ -71,25 +71,25 @@ Elige la plantilla de propuesta que quieras usar.
 
 ![](proposal_templates.png)
 
+![El formulario de propuesta, desde el título y los detalles hasta las opciones de votación, la duración, quién puede votar y el panel Más ajustes contraído](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### Agregar contenido
+<a id="add-content"></a>
+
+### Título y detalles
 
 **Grupo:** Comprueba que esté seleccionado el grupo correcto para tu propuesta o encuesta.
 
 **Título:** Dale a tu propuesta o encuesta un título breve y pertinente.
 
-**Detalles:** Explica qué les pides a las personas e incluye suficientes detalles para que todo el mundo entienda qué significa votar.
+**Detalles:** Explica qué les pides a las personas e incluye suficientes detalles para que todo el mundo entienda qué significa votar.  
 
 Las plantillas predefinidas incluyen algunas indicaciones para ayudarte a redactar una buena propuesta. Úsalas o agrega tus propios detalles.
 
-Evita combinar varias ideas en una sola propuesta, porque las personas podrían estar de acuerdo con algunos aspectos y con otros no, y no saber cómo responder. Puedes dividir las decisiones complejas en varias propuestas.
+Al hacer una propuesta, indica tus expectativas y describe el impacto que tendrá si se adopta.
 
-Al hacer una propuesta, indica tus expectativas y describe el impacto que tendrá si se adopta. Si es una propuesta formal o vinculante, suele ser útil describir qué implica que no se adopte.
-
-Usa las herramientas de formato para complementar tu encuesta. Por ejemplo, adjunta un documento con el icono del clip, inserta una imagen, agrega un enlace a un sitio web o documento en línea, o incluso inserta un vídeo.
-
-![](proposal_new.png)
+Puedes adjuntar archivos, insertar imágenes y tablas, y agregar encabezados y listas con los [botones de formato](/en/user_manual/discussions/formatting). Estos pueden ayudarte a compartir información de apoyo y facilitar la lectura de las propuestas más largas.
 
 <!-- translation-section: voting-options -->
 
@@ -129,8 +129,6 @@ Usa el icono del lápiz junto a la opción de votación para abrir el cuadro de 
 
 De forma predeterminada, la votación se abre inmediatamente cuando creas la encuesta. Si quieres programar la votación para que se abra más adelante, desmarca **La votación se abre inmediatamente** y selecciona una fecha y hora de apertura.
 
-La votación programada puede tardar alrededor de un minuto en abrirse después de la hora seleccionada.
-
 Esto permite dejar tiempo para la discusión antes de que se abra la votación, o asegurarte de que una encuesta o propuesta esté bien configurada y programada para el momento adecuado.
 
 Por ejemplo, si tu grupo tiene varias decisiones que votar en una próxima asamblea, puedes preparar las encuestas y agregar votantes con antelación, y luego programarlas para que todas se abran cuando comience el periodo de votación. Las personas pueden ver las encuestas antes de que se abran, pero no pueden votar antes de tiempo.
@@ -153,8 +151,6 @@ Elige quién puede votar en la encuesta.
 
 - **¿Alguien en el grupo?** (o **Cualquier persona en el hilo**): todas las personas con acceso a la encuesta pueden votar, incluidas las que se unan más adelante.
 - **Solo para personas seleccionadas:** solo pueden votar las personas que agregues. Usa esta opción cuando solo deban votar algunos miembros, como una junta directiva o un comité.
-
-![Configuración de quién puede votar](../manage_voters/invited-people-only.png)
 
 Después de iniciar una encuesta con la opción **Solo para personas seleccionadas**, se abre **Gestionar a los votantes** para que puedas agregar votantes. Puedes agregar o eliminar votantes más adelante. Consulta [Gestionar a los votantes](/en/user_manual/polls/manage_voters).
 
@@ -185,10 +181,7 @@ Si está activada, los votos se almacenan por separado de las identidades de los
 Consulta [Votación anónima](/en/user_manual/polls/anonymous_voting) para conocer cómo se separan las identidades de los votantes de los votos enviados, qué información se conserva y cuáles son los límites de la protección.
 
 > [!WARNING]
-> Una vez que una encuesta ha comenzado, no puedes editarla para hacerla anónima ni desactivar la configuración anónima.
-
-> [!WARNING]
-> No puedes volver a abrir una encuesta anónima después de que se haya cerrado. Los votos enviados no están vinculados a los registros de participación que muestran quién ha votado.
+> Una vez que una encuesta ha comenzado, no puedes editarla para hacerla anónima ni desactivar la configuración anónima. No puedes reabrir una encuesta anónima después de que se haya cerrado.
 
 <!-- translation-section: vote-reason -->
 
@@ -212,27 +205,20 @@ Los ajustes condicionales dependen del icono de votación, no del nombre de la o
 <!-- translation-section: hide-results -->
 
 ### Ocultar resultados
-Si quieres que las personas voten sin saber cómo han votado otras, puedes ocultar los resultados de la encuesta. Esto es útil si quieres evitar que los votos de otras personas influyan en ellas.
 
-Opciones de configuración:
-- No ocultar los resultados
-- Ocultar los resultados hasta emitir un voto
-- Ocultar los resultados hasta que se cierre la votación
+Si quieres que las personas voten sin saber cómo han votado otras, puedes ocultar los resultados de la encuesta.
 
-Cuando los resultados están ocultos hasta emitir un voto, las personas pueden ver las opciones elegidas y los motivos después de votar. Los miembros del hilo pueden escribir comentarios y responder a los votos antes de votar. Los comentarios permanecen visibles independientemente de la configuración de los resultados.
+Cuando los resultados están ocultos hasta emitir un voto, las personas pueden ver las opciones elegidas y los motivos después de votar.
 
-Cuando los resultados están ocultos hasta que se cierre la votación, las respuestas a los votos y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta. Los miembros del hilo pueden seguir comentando en la encuesta y respondiendo a los comentarios. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
+Cuando los resultados están ocultos hasta que se cierre la votación, las respuestas a los votos y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Editar la configuración antes de que se abra la votación
 
 Las personas con permiso para editar una encuesta pueden cambiar los detalles y la configuración, incluidas la votación anónima y la visibilidad de los resultados, antes de que se abra la votación. Una vez que se abre la votación, la configuración de anonimato queda fija y los resultados ocultos hasta el cierre no se pueden revelar antes de tiempo.
 
-La impresión y las exportaciones, incluida la exportación a Markdown, ignoran la configuración «Ocultar los resultados hasta emitir un voto» e incluyen los votos y las respuestas. Los resultados y los motivos de los votos ocultos hasta el cierre permanecen ocultos hasta que se cierre la encuesta. Los comentarios normales siguen disponibles en el hilo, las búsquedas y las exportaciones.
-
-Las encuestas anónimas siempre ocultan los resultados hasta que se cierra la votación. La plantilla de elección STV activa la votación anónima por defecto.
-
-<!-- translation-section: start-the-poll -->
-
-### Iniciar la encuesta
-Selecciona el botón **Inicia una propuesta** o **Iniciar encuesta**.
+Las encuestas anónimas siempre ocultan los resultados hasta que se cierra la votación.
 
 <!-- translation-section: managing-polls -->
 

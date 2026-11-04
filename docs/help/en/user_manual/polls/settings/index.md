@@ -14,9 +14,13 @@ Choose the proposal template you want to use.
 
 ![](proposal_templates.png)
 
+![The proposal form, from its title and details through voting options, duration, who can vote, and the collapsed More settings panel](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### Add content
+<a id="add-content"></a>
+
+### Title and details
 
 **Group:** Check that the correct group is selected for your proposal or poll.
 
@@ -26,13 +30,9 @@ Choose the proposal template you want to use.
 
 The predefined templates include some prompts to help you write a good proposal - use these or add your own details.
 
-Avoid combining a range of ideas in one proposal, because people might agree to some aspects but not others and be unsure how to respond. You can break complex decisions down into multiple proposals.
+When making a proposal, state your expectations and describe the impact the proposal will have if adopted.
 
-When making a proposal, state your expectations and describe the impact the proposal will have if adopted. If it's a formal or binding proposal it's often worth describing what it means if the proposal is not adopted.
-
-Use the formatting tools to support your poll.  For example, attach a document file with the paperclip icon, insert an image, link to a website or online document, or even embed a video.
-
-![](proposal_new.png)
+You can attach files, insert images and tables, and add headings and lists with the [formatting buttons](/en/user_manual/discussions/formatting). These can help you share supporting information and make longer proposals easier to read.
 
 <!-- translation-section: voting-options -->
 
@@ -73,8 +73,6 @@ Use the pencil icon alongside the voting option to open the edit modal:
 
 By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
 
-Scheduled voting may take about a minute to open after the selected time.
-
 This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
 
 For example, if your group has several decisions to vote on at an upcoming assembly, you can prepare the polls and add voters in advance, then schedule them all to open when the voting period begins. People can see the polls before they open, but cannot vote early.
@@ -97,8 +95,6 @@ Choose who can vote in the poll.
 
 - **Anyone in the group** (or **Anyone in the thread**): everyone with access to the poll can vote, including people who join later.
 - **Selected people only:** only the people you add can vote. Use this when only some members should vote, such as a board or a committee.
-
-![Who can vote setting](../manage_voters/invited-people-only.png)
 
 After you start a **Selected people only** poll, **Manage voters** opens so you can add voters. You can add or remove voters later. See [Manage voters](/en/user_manual/polls/manage_voters).
 
@@ -131,10 +127,7 @@ If enabled, votes are stored separately from voter identities. Results appear af
 See [Anonymous voting](/en/user_manual/polls/anonymous_voting) for details about how voter identities are separated from submitted votes, what information is retained, and the limits of the protection.
 
 > [!WARNING]
-> Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting.
-
-> [!WARNING]
-> You cannot re-open an anonymous poll after it has closed. Submitted votes are not linked to the participation records that show who has voted.
+> Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting. You cannot re-open an anonymous poll after it has closed.
 
 <!-- translation-section: vote-reason -->
 
@@ -160,28 +153,20 @@ The conditional settings follow the voting icon rather than the option name. The
 <!-- translation-section: hide-results -->
 
 ### Hide results
-If you want people to vote without knowing how others have voted, you can hide the results of the poll.  Useful if you do not want people to be affected by how other people have voted.
 
-Setting options:
-- Do not hide results
-- Hide results until a vote is cast
-- Hide results until voting closes
+If you want people to vote without knowing how others have voted, you can hide the results of the poll.
 
-When results are hidden until a vote is cast, people can see vote choices and reasons after voting. Thread members can write comments and reply to votes before voting. Comments stay visible regardless of the result setting.
+When results are hidden until a vote is cast, people can see vote choices and reasons after voting.
 
-When results are hidden until voting closes, replies to votes and mentions in vote reasons are disabled until the poll closes. Thread members can still comment on the poll and reply to comments. You can extend the closing time while the poll is open, but cannot reopen it after it closes.
+When results are hidden until voting closes, replies to votes and mentions in vote reasons are disabled until the poll closes. You can extend the closing time while the poll is open, but cannot reopen it after it closes.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Editing settings before voting opens
 
 People with permission to edit a poll can change its details and settings, including anonymous voting and result visibility, before voting opens. Once voting opens, anonymity is fixed and results hidden until closing cannot be revealed early.
 
-Printing and exports, including Markdown, ignore the "hide until a vote is cast" setting and include votes and replies. Results and vote reasons hidden until closing remain hidden until the poll closes. Ordinary comments remain available in the thread, search, and exports.
-
-Anonymous polls always hide results until voting closes. The STV Election
-template enables anonymous voting by default.
-
-<!-- translation-section: start-the-poll -->
-
-### Start the poll
-Select the **Start proposal** or **Start poll** button.
+Anonymous polls always hide results until voting closes.
 
 <!-- translation-section: managing-polls -->
 

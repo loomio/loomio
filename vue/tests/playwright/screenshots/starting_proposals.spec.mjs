@@ -53,48 +53,33 @@ test('proposal_templates', async ({ page, manual: screenshot }) => {
 
 test('proposal_new', async ({ page, manual: screenshot }) => {
   await openProposalForm(page);
-  await page.evaluate(`
+  // Leave the details field, so its toolbar and selection are not shown.
+  await page.locator('.poll-common-form > .v-card-title').click();
+  await expect(page.locator('.poll-common-form__more-settings')).toBeAttached();
+  // Frame the complete live form without including the tabs above it.
+  await page.evaluate(() => {
     const form = document.querySelector('.poll-common-form');
-    const wrapper = document.createElement('div');
-    wrapper.className = 'manual-proposal-new-capture';
-    Object.assign(wrapper.style, {
-      position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
-      padding: '24px', background: 'white'
-    });
-    [
-      form.querySelector('.v-card-title'),
-      form.querySelector('.poll-template-info-panel'),
-      form.querySelector('.poll-common-form-fields__title'),
-      form.querySelector('.poll-common-form-fields__details')
-    ].forEach(el => wrapper.append(el.cloneNode(true)));
-    document.body.append(wrapper);
-  `)
+    const frame = document.createElement('div');
+    frame.className = 'manual-proposal-new-capture';
+    Object.assign(frame.style, { padding: '16px', margin: '-16px', background: 'white' });
+    form.before(frame);
+    frame.append(form);
+  });
   await screenshot.captureElement(
     'polls/settings/proposal_new',
     '.manual-proposal-new-capture',
-    {width: 1200, height: 1100}
+    {width: 1100, height: 2400, clearSelection: true}
   );
 });
 
 test('vote_options', async ({ page, manual: screenshot }) => {
+  await page.setViewportSize({ width: 800, height: 1800 });
   await openProposalForm(page);
-  await expect(optionsList(page)).toBeVisible();
-  await page.evaluate(`
-    const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
-    const list = document.querySelector('.poll-common-form .poll-common-form__options-list');
-    const wrapper = document.createElement('div');
-    wrapper.className = 'manual-options-capture';
-    Object.assign(wrapper.style, {
-      position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
-      padding: '16px', background: 'white'
-    });
-    wrapper.append(heading.cloneNode(true), list.cloneNode(true));
-    document.body.append(wrapper);
-  `)
-  await screenshot.captureElement(
+  await expect(page.locator('.poll-common-form__add-option-btn')).toBeVisible();
+  await screenshot.captureRegion(
     'polls/settings/vote_options',
-    '.manual-options-capture',
-    {width: 1200, height: 1200}
+    ['.poll-common-form .poll-common-form__options-heading', '.poll-common-form .poll-common-form__options-list', '.poll-common-form__add-option-btn'],
+    {width: 800, height: 1800, padding: 16, scrollSelector: '.poll-common-form .poll-common-form__options-heading', clearSelection: true}
   );
 });
 
@@ -145,11 +130,21 @@ test('vote_reason_options', async ({ page, manual: screenshot }) => {
 });
 
 test('proposal_edit', async ({ page, manual: screenshot }) => {
-  await openPollMenu(page);
+  await page.setViewportSize({ width: 800, height: 2400 });
+  await openPoll(page);
+  await page.locator('.poll-created').evaluate(element => element.scrollIntoView({ block: 'center' }));
+  await page.locator('.poll-created .action-menu--btn').click();
+  await expectLabel(page.locator('.v-overlay--active .action-dock__button--save_as_template'), 'Save as template');
   await screenshot.captureRegion(
     'polls/settings/proposal_edit',
-    ['.poll-created .action-dock', '.v-overlay--active .v-list'],
-    {padding: 16, width: 1280, height: 1100}
+    ['.poll-created', '.v-overlay--active .v-list'],
+    {
+      padding: 16,
+      width: 800,
+      height: 2400,
+      clearSelection: true,
+      spotlight: {selectors: ['.poll-created .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+    }
   );
 });
 

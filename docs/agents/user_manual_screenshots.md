@@ -34,10 +34,13 @@ Work through screenshot replacements one image at a time:
 
 Use these framing defaults unless the page needs a deliberate exception:
 
+- Every feature discussed in the manual must have a screenshot showing the relevant interface and state. One overview can illustrate several features; place it before short headings and explanations for each feature it shows. Add another screenshot when a feature needs a different page, form, menu, or state to be understood.
 - Be generous with context. Prefer a larger area with the subject spotlighted over a tight crop around the subject, so the reader can see where it sits on the page. A discussion or proposal example usually needs the full central `.strand-card`, but not the application drawer, top bar, or thread drawer.
 - Do not include the application toolbar or title bar unless the screenshot also includes an application drawer that needs it for orientation.
 - Never capture a button, button row, field, or menu on its own. A strip of controls tells the reader what the buttons look like but not where they are. Capture the surface the control belongs to, such as the whole poll card, comment, form, or modal, and spotlight the control.
 - When the subject is a control inside a form or modal, show the whole form or modal and spotlight the control. If the form is too long for that, show about one screen of the form around the control, with the control spotlighted. Do not crop so tightly that the reader cannot identify where the control belongs.
+- For a settings reference, show an overview of the form followed by short headings and explanations for its settings. A long form can have separate overviews for its basic and advanced settings. Contextual spotlights are also appropriate for individual settings, menu items, and other controls; keep enough of the surrounding interface to show where the target belongs. Capture the actual form; do not clone selected fields into a new layout.
+- Give full-form overview captures about 16 pixels of external padding on each side. Keep a modest margin around the form without making its contents smaller than necessary. The proposal settings overview is the reference for this framing.
 - Give compact editor, comment, task, and menu captures about 32 pixels of external padding. Adjust individual images when an overlay or unusually shaped target needs more or less space.
 - For comments, replies, reactions, unread items, and move-item states, prefer a full strand-card capture with the relevant item or composer spotlighted.
 - When documenting a trigger and its menu, show both the activator and the open menu. Crop after the final meaningful action or control instead of retaining a large blank tail.

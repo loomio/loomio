@@ -172,6 +172,42 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "index returns no users when xids is omitted" do
+    sign_in users(:member_normal)
+
+    get :index, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns no users when xids is empty" do
+    sign_in users(:member_normal)
+
+    get :index, params: { xids: '' }, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns only requested users within the actors invitation scope" do
+    sign_in users(:member_normal)
+    requested = [:member_quiet, :guest_quiet, :alien_quiet, :former_member_loud, :former_guest_loud, :non_guest_loud].map { |name| users(name).id }
+
+    get :index, params: { xids: requested.join('x') }, format: :json
+
+    assert_response :success
+    returned = JSON.parse(response.body).fetch('users')
+    assert_equal [users(:member_quiet).id, users(:guest_quiet).id].sort, returned.pluck('id').sort
+    returned.each { |user| refute_includes user.keys, 'email' }
+  end
+
+  test "index requires an authenticated user even without xids" do
+    get :index, format: :json
+
+    assert_response :unauthorized
+  end
+
   test "show returns the user json" do
     sign_in @user
     get :show, params: { id: @alien.username }, format: :json
