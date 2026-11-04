@@ -21,14 +21,14 @@ module Dev::Scenarios::Discussion
       private: false
     }, actor: jennifer)
     sign_in patrick
-    redirect_to "/d/#{discussion.key}/edit"
+    redirect_to Rails.application.routes.url_helpers.discussion_path(discussion.key, slug: 'edit')
   end
 
   # Someone else saves the description while this browser holds a draft.
   def update_html_description_elsewhere
     discussion = Discussion.where(title: 'Collaborative description').order(:id).last
     discussion.update!(description: '<p>Saved elsewhere</p>')
-    redirect_to "/d/#{discussion.key}/edit"
+    redirect_to Rails.application.routes.url_helpers.discussion_path(discussion.key, slug: 'edit')
   end
 
   def setup_attachment_restricted_discussion
