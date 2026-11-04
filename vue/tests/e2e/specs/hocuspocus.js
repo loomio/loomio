@@ -1,4 +1,5 @@
-pageHelper = require('../helpers/pageHelper')
+const pageHelper = require('../helpers/pageHelper')
+const { randomUUID } = require('node:crypto')
 
 const DRAFT_TEXT  = 'hocuspocus draft persistence test'
 const EDITOR      = '.comment-form .ProseMirror'
@@ -16,10 +17,10 @@ const expectOccurrences = (test, selector, text, count) => {
   }, [selector, text], ({ value }) => test.assert.equal(value, count, `"${text}" appears ${count} time(s)`))
 }
 
-// Each test saves distinct content. The document name derives from it, so
-// drafts from earlier tests in this browser and server can't attach.
+// Each attempt saves distinct content. Database IDs are reused after a reset;
+// the content hash keeps drafts from earlier tests and retries from attaching.
 const openDescriptionEditor = (page, test) => {
-  const text = `${SAVED} ${test.currentTest.name}`
+  const text = `${SAVED} ${test.currentTest.name} ${randomUUID()}`
   page.loadPath(`setup_discussion_html_description_edit?text=${encodeURIComponent(text)}`)
   test.waitForElementPresent(DESCRIPTION, 10000)
 }
@@ -60,6 +61,7 @@ module.exports = {
         test.window.close()
       })
       test.window.switchTo(value[0])
+      test.perform(() => hocuspocusServer.start())
       test.perform(() => done())
     })
   },

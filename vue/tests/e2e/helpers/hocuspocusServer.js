@@ -33,6 +33,7 @@ module.exports = {
   },
 
   start() {
+    if (listening()) return
     spawn('node', [serverPath], {
       env: { ...process.env, APP_URL: `http://localhost:${appPort}`, HOCUSPOCUS_PORT: port },
       detached: true,

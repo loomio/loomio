@@ -22,6 +22,7 @@ jobs:
       PGUSER: postgres
       RAILS_ENV: test
       E2E_PORT: 3001
+      HOCUSPOCUS_PORT: 4445
       E2E_TESTCASE: ${{ inputs.e2e_testcase }}
     services:
       postgres:
@@ -69,15 +70,15 @@ jobs:
         MIN_THREADS: 3
         MAX_THREADS: 3
       run: |
-        CANONICAL_PORT="$E2E_PORT" bundle exec rails server -b 0.0.0.0 -p "$E2E_PORT" &
+        CANONICAL_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" bundle exec rails server -b 0.0.0.0 -p "$E2E_PORT" &
     - name: start hocuspocus server
       run: |
         cd hocuspocus
         npm ci
-        node server.mjs &
+        APP_URL="http://localhost:$E2E_PORT" node server.mjs &
         echo $! > /tmp/hocuspocus.pid
         for i in $(seq 1 30); do
-          if nc -z localhost 4444; then
+          if nc -z localhost "$HOCUSPOCUS_PORT"; then
             echo "hocuspocus is up"
             exit 0
           fi
