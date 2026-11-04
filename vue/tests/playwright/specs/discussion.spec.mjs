@@ -5,7 +5,7 @@ import { pollAction } from '../helpers/polls.mjs';
 import { addRecipient } from '../helpers/recipients.mjs';
 import { comment, commentForm, itemAction, mention, postComment, replyForm, thread } from '../helpers/threads.mjs';
 import { choose, search } from '../helpers/vuetify.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 const heading = page => page.locator('.context-panel__heading');
 const description = page => page.locator('.context-panel__description');
@@ -66,7 +66,7 @@ test.describe('managing a thread', () => {
   });
 
   test('starts a direct thread and comments in it', async ({ page, flash }) => {
-    await openSidebar(page);
+    await ensureSidebar(page);
     await page.locator('.sidebar__list-item-button--private').click();
     await page.locator('.topics-page__new-topic-button').click();
     await page.locator('.discussion-templates--direct-discussion').click();
@@ -129,7 +129,7 @@ test.describe('commenting', () => {
     await page.goto('/dev/setup_discussion_as_guest');
     await postComment(page, 'I am a guest!');
     await expect(flash).toContainText('Comment added');
-    await openSidebar(page);
+    await ensureSidebar(page);
     await page.locator('.sidebar__list-item-button--recent').click();
     await expect(page.locator('.topic-preview')).toContainText('Dirty Dancing Shoes');
   });

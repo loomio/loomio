@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures.mjs';
 import { signUpViaEmail } from '../helpers/accounts.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { groupAction, openSidebar, sidebarGroup } from '../helpers/groups.mjs';
+import { groupAction, ensureSidebar, sidebarGroup } from '../helpers/groups.mjs';
 import { openThreadForm } from '../helpers/threads.mjs';
 
 const groupName = page => page.locator('.group-page__name');
@@ -12,14 +12,14 @@ test.describe('the sidebar', () => {
     await page.goto('/dev/visit_group_as_subgroup_member');
     await expect(groupName(page)).toContainText('Point Break');
     await expect(page.locator('.join-group-button')).toBeVisible();
-    await openSidebar(page);
+    await ensureSidebar(page);
     await expect(sidebarGroup(page, 'Point Break')).toBeVisible();
   });
 
   test('links to an accessible subgroup when its parent is private', async ({ page }) => {
     await page.goto('/dev/visit_subgroup_with_inaccessible_parent');
     await expect(groupName(page)).toContainText('Accessible Subgroup');
-    await openSidebar(page);
+    await ensureSidebar(page);
     await expect(page.locator('.sidebar__groups')).not.toContainText('Private Parent');
     await sidebarGroup(page, 'Accessible Subgroup').click();
     await expect(groupName(page)).toContainText('Accessible Subgroup');
@@ -37,7 +37,7 @@ test.describe('the sidebar', () => {
     });
 
     await page.goto('/dev/setup_group_route_transitions');
-    await openSidebar(page);
+    await ensureSidebar(page);
     // Delay the group refresh until the new group's page has rendered.
     await page.route('**/api/v1/groups/**', async route => {
       await new Promise(resolve => setTimeout(resolve, 200));
@@ -64,7 +64,7 @@ test.describe('visiting a group', () => {
     await page.locator('.join-group-button').click();
     await signUpViaEmail(page, 'new@account.com');
     await page.locator('.join-group-button').click();
-    await openSidebar(page);
+    await ensureSidebar(page);
     await expect(sidebarGroup(page, 'Open Dirty Dancing Shoes')).toBeVisible();
   });
 
@@ -98,14 +98,14 @@ test.describe('visiting a group', () => {
   test('a cached secret group becomes forbidden when access is revoked', async ({ page }) => {
     await page.goto('/dev/setup_secret_group_with_access');
     await expect(groupName(page)).toContainText('Secret Dirty Dancing Shoes');
-    await openSidebar(page);
+    await ensureSidebar(page);
     await expect(sidebarGroup(page, 'Secret Dirty Dancing Shoes')).toBeVisible();
 
     expect((await page.request.get('/dev/revoke_secret_group_access')).ok()).toBe(true);
 
     await page.locator('.sidebar__list-item-button--recent').click();
     await expect(page.locator('.dashboard-page')).toBeVisible();
-    await openSidebar(page);
+    await ensureSidebar(page);
     await sidebarGroup(page, 'Secret Dirty Dancing Shoes').click();
     await expect(forbidden(page)).toContainText('You do not have permission to view this');
     await expect(groupName(page)).toHaveCount(0);
@@ -166,7 +166,7 @@ test('filters group polls by status, type and tag', async ({ page }) => {
 test.describe('starting groups', () => {
   test('starts a group', async ({ page, flash }) => {
     await page.goto('/dev/setup_dashboard');
-    await openSidebar(page);
+    await ensureSidebar(page);
     await page.locator('.sidebar-start-group').click();
     await page.locator('.group-form__name input').fill('Secret please');
     await page.locator('.group-form__category-select .v-field').click();
@@ -184,7 +184,7 @@ test.describe('starting groups', () => {
     test(`starts a ${privacy} subgroup`, async ({ page, flash }) => {
       const shown = visible => visible ? 1 : 0;
       await page.goto('/dev/setup_open_group');
-      await openSidebar(page);
+      await ensureSidebar(page);
       await page.locator('.sidebar-start-subgroup').click();
       await page.locator('.group-form__name input').fill(`${privacy} please`);
       await page.locator(`.group-form__privacy-${privacy}`).click();

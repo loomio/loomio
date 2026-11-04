@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures.mjs';
 import { openPollForm, fillPollForm } from '../helpers/polls.mjs';
 import { addRecipient } from '../helpers/recipients.mjs';
 import { openThreadForm } from '../helpers/threads.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 const recipientsInput = page => page.locator('.recipients-autocomplete input[type="text"]');
 const suggestions = page => page.locator('.recipients-autocomplete-suggestion');
@@ -56,7 +56,7 @@ test.describe('notifying people about a new thread', () => {
 
   test('a direct thread suggests email addresses without a group', async ({ page }) => {
     await page.goto('/dev/setup_discussion');
-    await openSidebar(page);
+    await ensureSidebar(page);
     await page.locator('.sidebar__list-item-button--private').click();
     await page.locator('.topics-page__new-topic-button').click();
     await page.locator('.discussion-templates--direct-discussion').click();

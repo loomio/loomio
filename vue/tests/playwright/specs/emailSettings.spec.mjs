@@ -1,10 +1,10 @@
 import { test, expect } from '../fixtures.mjs';
 import { choose } from '../helpers/vuetify.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 test('updates the catch-up email schedule from the user menu', async ({ page, flash }) => {
   await page.goto('/dev/setup_group')
-  await openSidebar(page)
+  await ensureSidebar(page)
   await page.locator('.sidebar__user-dropdown').click()
   await page.locator('.user-dropdown__list-item-button--email-settings').click()
   await choose(page, '.email-settings-page__digest-card', 'Monday')

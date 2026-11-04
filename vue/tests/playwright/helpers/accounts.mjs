@@ -1,5 +1,5 @@
 import { expect } from '../fixtures.mjs';
-import { openSidebar } from './groups.mjs';
+import { ensureSidebar } from './groups.mjs';
 
 // Sign-in and sign-up steps shared by several specs. Each takes a page showing
 // the sign-in form.
@@ -67,7 +67,7 @@ export async function signInViaEmail(page, address) {
 }
 
 export async function signOut(page) {
-  await openSidebar(page);
+  await ensureSidebar(page);
   await page.locator('.sidebar__user-dropdown').click();
   await page.locator('.user-dropdown__list-item-button--sign-out').click();
   await expect(page.locator('.auth-modal')).toBeVisible();

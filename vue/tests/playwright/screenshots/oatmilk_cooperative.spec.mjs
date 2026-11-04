@@ -1,6 +1,6 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 const menuSpotlight = selector => ({ selector, padding: 14, radius: 14, opacity: 0.4, outlineWidth: 0 });
 
@@ -88,7 +88,7 @@ test('private_submissions_permission', async ({ page, manual: screenshot }) => {
 
 test('group_start_new', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await openSidebar(page);
+  await ensureSidebar(page);
   await expect(page.locator('.sidebar-start-group')).toBeVisible();
   await screenshot.capture('groups/starting_a_group/new_group', {
     spotlight: {
@@ -101,7 +101,7 @@ test('group_start_new', async ({ page, manual: screenshot }) => {
 
 test('group_start_form', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group');
-  await openSidebar(page);
+  await ensureSidebar(page);
   await page.locator('.sidebar-start-group').click();
   const form = page.locator('.group-form');
   await form.locator('.group-form__name input').fill('Oatmilk Producers Network');

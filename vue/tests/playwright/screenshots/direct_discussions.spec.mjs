@@ -3,7 +3,7 @@ import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 import richText from '../helpers/oatmilkRichText.mjs';
 import { editor } from '../helpers/editor.mjs';
 import { addRecipient } from '../helpers/recipients.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 async function openDirectDiscussions(page) {
   await page.goto('/dev/setup_manual_oatmilk_direct_discussions')
@@ -36,7 +36,7 @@ test('direct_discussion_example', async ({ page, manual: screenshot }) => {
 
 test('direct_discussion_sidebar', async ({ page, manual: screenshot }) => {
   await openDirectDiscussions(page);
-  await openSidebar(page)
+  await ensureSidebar(page)
   await screenshot.capture('discussions/direct_discussions/direct-discussion-sidebar', {
     spotlight: {
       selector: '.sidebar__list-item-button--private',

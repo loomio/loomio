@@ -6,9 +6,9 @@ export async function groupAction(page, action) {
   await page.locator(`.v-overlay--active .action-dock__button--${action}`).click();
 }
 
-// Opens the sidebar. Wide windows open it by themselves soon after loading,
-// so only toggle it while it is closed, and retry until it stays open.
-export async function openSidebar(page) {
+// Makes sure the sidebar is open. Wide windows open it by themselves soon after
+// loading, so toggle it only while it is closed, and retry until it stays open.
+export async function ensureSidebar(page) {
   const drawer = page.locator('.sidenav-left');
   await expect(async () => {
     if (!/v-navigation-drawer--active/.test(await drawer.getAttribute('class') || '')) {

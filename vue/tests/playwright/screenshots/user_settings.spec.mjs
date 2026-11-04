@@ -1,15 +1,13 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
-import { openSidebar as openGroupSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 async function useLightTheme(page) {
   await page.emulateMedia({ colorScheme: 'light' });
 }
 
-// The drawer can already be open, for example on a wide viewport or when an
-// earlier test left it open, and clicking the toggle would then close it.
-async function openSidebar(page, settings = false) {
-  await openGroupSidebar(page)
-  if (settings) { await page.locator('.sidebar__user-dropdown').click(); }
+async function openSidebarSettings(page) {
+  await ensureSidebar(page)
+  await page.locator('.sidebar__user-dropdown').click()
 }
 
 async function openGroupMenu(page) {
@@ -124,7 +122,7 @@ test('notification_bell', async ({ page, manual: screenshot }) => {
 
 test('sidebar_notification_settings', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await openSidebar(page, true);
+  await openSidebarSettings(page);
   await screenshot.captureElement('users/email_settings/sidebar_notification_settings', '.sidenav-left', {
     width: 1100,
     height: 1200,
@@ -305,7 +303,7 @@ test('sidebar_menu', async ({ page, manual: screenshot }) => {
 
 test('sidebar_profile', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await openSidebar(page);
+  await ensureSidebar(page);
   await screenshot.captureElement('users/user_profile/sidebar_profile', '.sidenav-left', {
     width: 1100,
     height: 1200,
@@ -315,7 +313,7 @@ test('sidebar_profile', async ({ page, manual: screenshot }) => {
 
 test('edit_profile', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await openSidebar(page, true);
+  await openSidebarSettings(page);
   await screenshot.captureRegion('users/user_profile/edit_profile', [
     '.sidebar-close-settings',
     '.user-dropdown__list-item-button--sign-out'

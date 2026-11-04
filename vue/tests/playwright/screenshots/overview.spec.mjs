@@ -1,6 +1,6 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 import { comment, commentForm, mention } from '../helpers/threads.mjs';
 
 // The first comment, which the capture selectors ('.new-comment') find.
@@ -69,13 +69,13 @@ test('orientation_proposal', async ({ page, manual: screenshot }) => {
 
 test('sidebar', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await openSidebar(page);
+  await ensureSidebar(page);
   await screenshot.captureElement('overview/sidebar', '.sidenav-left', {width: 1100, height: 1700});
 });
 
 test('user_settings_sidebar', async ({ page, manual: screenshot }) => {
   await openGroup(page);
-  await openSidebar(page);
+  await ensureSidebar(page);
   await page.locator('.sidebar__user-dropdown').click();
   await screenshot.captureElement('overview/user_settings_sidebar', '.sidenav-left', {width: 1100, height: 1700});
 });

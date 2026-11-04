@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures.mjs';
-import { groupAction, openSidebar } from '../helpers/groups.mjs';
+import { groupAction, ensureSidebar } from '../helpers/groups.mjs';
 import { choose } from '../helpers/vuetify.mjs';
 
 const privacy = (page, option) => page.locator(`.group-form__privacy-${option}`);
@@ -9,7 +9,7 @@ const submit = page => page.locator('.group-form__submit-button');
 
 async function startSubgroup(page, scenario) {
   await page.goto(`/dev/${scenario}`);
-  await openSidebar(page);
+  await ensureSidebar(page);
   await page.locator('.sidebar-start-subgroup').click();
 }
 

@@ -1,13 +1,13 @@
 import { test, expect } from '../fixtures.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { openSidebar } from '../helpers/groups.mjs';
+import { ensureSidebar } from '../helpers/groups.mjs';
 
 const userPage = page => page.locator('.user-page__content');
 const groups = page => page.locator('.user-page__groups');
 const signInModal = page => page.locator('.auth-modal');
 
 async function openOwnProfile(page) {
-  await openSidebar(page);
+  await ensureSidebar(page);
   await page.locator('.sidebar__user-dropdown').click();
   await page.locator('.user-dropdown__list-item-button--profile').click();
 }

@@ -1,6 +1,6 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { openSidebar, sidebarGroup } from '../helpers/groups.mjs';
+import { ensureSidebar, sidebarGroup } from '../helpers/groups.mjs';
 import { member } from '../helpers/members.mjs';
 
 function spotlight(selector) {
@@ -30,7 +30,7 @@ async function editPrivacy(page) {
 test('new_subgroup_action', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
-  await openSidebar(page)
+  await ensureSidebar(page)
   await expectLabel(page.locator('.sidebar-start-subgroup'), 'New subgroup')
   await screenshot.capture('groups/subgroups/subgroups-sidebar', {
     spotlight: spotlight('.sidebar-start-subgroup')
@@ -39,7 +39,7 @@ test('new_subgroup_action', async ({ page, manual: screenshot }) => {
 
 test('new_subgroup_form', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await openSidebar(page)
+  await ensureSidebar(page)
   await page.locator('.sidebar-start-subgroup').click()
   const form = page.locator('.group-form')
   await form.locator('.group-form__name input').fill('Packaging Working Group')
@@ -95,7 +95,7 @@ test('find_subgroups', async ({ page, manual: screenshot }) => {
 test('invite_to_subgroups', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_subgroup_invitations')
   await expectLabel(page.locator('.group-page__name'), 'Packaging Working Group')
-  await openSidebar(page)
+  await ensureSidebar(page)
   await sidebarGroup(page, 'Oatmilk Cooperative').click()
   await expectLabel(page.locator('.group-page__name'), 'Oatmilk Cooperative')
   await page.locator('.group-page-members-tab').click()
