@@ -1,5 +1,5 @@
 import { createRequire } from 'node:module';
-import { test as e2eTest, expect as playwrightExpect } from './fixtures.mjs';
+import { test as e2eTest, expect } from './fixtures.mjs';
 import { manualScreenshot } from './helpers/manualScreenshot.mjs';
 
 const require = createRequire(import.meta.url);
@@ -35,13 +35,7 @@ export const test = catalogTest || e2eTest.extend({
   },
 });
 
-// Assertions are inert while cataloguing; every matcher accepts any value.
-let inertExpect;
-inertExpect = new Proxy(function() { return inertExpect; }, {
-  get(target, property) { return property === 'then' ? undefined : inertExpect; }
-});
-
-export const expect = catalog ? inertExpect : playwrightExpect;
+export { expect };
 
 // Checks interface text. English runs check it strictly. Translated runs show
 // the label in another language, and the label table cannot always predict the
@@ -50,10 +44,10 @@ export const expect = catalog ? inertExpect : playwrightExpect;
 export async function expectLabel(locator, text) {
   if (catalog) { return; }
   if (!labels) {
-    await playwrightExpect(locator.first()).toContainText(text);
+    await expect(locator.first()).toContainText(text);
     return;
   }
-  await playwrightExpect(locator.first()).toBeVisible();
+  await expect(locator.first()).toBeVisible();
   if (!labels[text]) { return; }
   const candidates = [text, ...labels[text]].map(label => label.toLowerCase());
   const shown = (await locator.first().innerText()).toLowerCase();

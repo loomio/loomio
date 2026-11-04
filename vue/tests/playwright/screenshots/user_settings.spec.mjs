@@ -1,4 +1,5 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
+import { openSidebar as openGroupSidebar } from '../helpers/groups.mjs';
 
 async function useLightTheme(page) {
   await page.emulateMedia({ colorScheme: 'light' });
@@ -7,11 +8,7 @@ async function useLightTheme(page) {
 // The drawer can already be open, for example on a wide viewport or when an
 // earlier test left it open, and clicking the toggle would then close it.
 async function openSidebar(page, settings = false) {
-  await expect(page.locator('.navbar__sidenav-toggle')).toBeVisible()
-  if (!await page.locator('.sidenav-left.v-navigation-drawer--active').count()) {
-    await page.locator('.navbar__sidenav-toggle').click()
-  }
-  await expect(page.locator('.sidenav-left')).toBeVisible()
+  await openGroupSidebar(page)
   if (settings) { await page.locator('.sidebar__user-dropdown').click(); }
 }
 

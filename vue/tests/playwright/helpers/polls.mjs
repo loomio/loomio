@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect } from '../fixtures.mjs';
 import { editor } from './editor.mjs';
 
 // Template keys under the chooser's "Poll" filter; the rest are proposals.

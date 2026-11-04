@@ -39,8 +39,8 @@ test('new_subgroup_action', async ({ page, manual: screenshot }) => {
 
 test('new_subgroup_form', async ({ page, manual: screenshot }) => {
   await page.goto('/dev/setup_manual_oatmilk_group')
-  await page.locator('.navbar__sidenav-toggle').click()
-  await page.locator('.sidebar-start-subgroup').filter({ visible: true }).click()
+  await openSidebar(page)
+  await page.locator('.sidebar-start-subgroup').click()
   const form = page.locator('.group-form')
   await form.locator('.group-form__name input').fill('Packaging Working Group')
   await expect(form.locator('.group-form__handle input')).toHaveValue('oatmilk-cooperative-packaging-working-group')

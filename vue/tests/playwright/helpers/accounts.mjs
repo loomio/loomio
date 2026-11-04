@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect } from '../fixtures.mjs';
 
 // Sign-in and sign-up steps shared by several specs. Each takes a page showing
 // the sign-in form.
