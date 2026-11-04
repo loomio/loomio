@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+# Compress manual screenshots in place as palette PNGs.
+#
+# Screenshots are mostly flat interface colours, so libimagequant (built into
+# libvips) reduces them by about two thirds without a visible difference. The
+# same input and settings always produce the same bytes, which keeps
+# regenerated screenshots stable in git and in content-addressed storage.
+# Change these settings only together with a full recompression.
+#
+# Quantizing is lossy and not idempotent, so images that are already palette
+# PNGs are left unchanged. Running this twice never degrades a screenshot.
+
+require 'vips'
+
+abort 'Usage: bin/compress-screenshot IMAGE_PATH...' if ARGV.empty?
+
+PNG_OPTIONS = {
+  palette: true,
+  Q: 90,
+  effort: 10,
+  dither: 1.0,
+  compression: 9,
+  strip: true
+}.freeze
+
+ARGV.each do |argument|
+  image_path = File.expand_path(argument)
+  abort "Screenshot not found: #{image_path}" unless File.file?(image_path)
+
+  image = Vips::Image.new_from_file(image_path, access: :sequential)
+  next if image.get_typeof('palette').positive?
+
+  temporary_path = "#{image_path}.compress.png"
+  image.pngsave(temporary_path, **PNG_OPTIONS)
+  File.rename(temporary_path, image_path)
+end

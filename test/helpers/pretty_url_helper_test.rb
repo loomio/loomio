@@ -28,13 +28,13 @@ class PrettyUrlHelperTest < ActionView::TestCase
   end
 
   test "returns the group email path for a received email" do
-    received_email = ReceivedEmail.new(group: @group)
+    received_email = PendingEmail.new(group: @group)
 
     assert_equal group_emails_url(@group.key), polymorphic_url(received_email)
   end
 
   test "returns nil for a received email whose group has been cleared" do
-    topic_item = TopicItem.new(kind: "unknown_sender", itemable: ReceivedEmail.new)
+    topic_item = TopicItem.new(kind: "unknown_sender", itemable: PendingEmail.new)
 
     assert_nil topic_item.notification_url
   end

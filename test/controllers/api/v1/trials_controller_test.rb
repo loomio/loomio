@@ -67,13 +67,12 @@ class Api::V1::TrialsControllerTest < ActionController::TestCase
     assert_includes JSON.parse(response.body)["errors"]["user_email"], "Email address is already registered"
   end
 
-  test "creates new user and group and sends login email" do
+  test "creates new user and group without a category and sends login email" do
     post :create, params: {
       user_name: "Jimmy",
       user_email: "jimmy@example.com",
       group_name: "Jim group",
       group_description: "Make decisions",
-      group_category: "boards",
       group_how_did_you_hear_about_loomio: "I work there",
       user_email_newsletter: true,
       user_legal_accepted: true
@@ -89,7 +88,7 @@ class Api::V1::TrialsControllerTest < ActionController::TestCase
     assert_equal "Jim group", group.name
     assert_equal "jim-group", group.handle
     assert_includes group.description, "Make decisions"
-    assert_equal "boards", group.category
+    assert_nil group.category
     assert_equal "I work there", group.info['how_did_you_hear_about_loomio']
   end
 end

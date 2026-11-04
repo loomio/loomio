@@ -25,6 +25,14 @@ function capturePoll(screenshot, name) {
   });
 }
 
+// The board processes guide shows the same examples next to its own pages.
+function captureGuide(screenshot, name) {
+  screenshot.captureElement(`guides/board_processes/${name}`, '.topic-card', {
+    width: 1100,
+    height: 1800
+  });
+}
+
 module.exports = {
   '@tags': ['manual-screenshot'],
 
@@ -58,6 +66,7 @@ module.exports = {
     openExample(page, 'document_introduce');
     page.expectText('.topic-page', 'damaged or missing bottles');
     captureThread(screenshot, 'document_introduce');
+    captureGuide(screenshot, 'document_introduce');
   },
 
   'document_integrate': (test) => {
@@ -66,6 +75,7 @@ module.exports = {
     openExample(page, 'document_integrate');
     revealPoll(page);
     capturePoll(screenshot, 'document_integrate');
+    captureGuide(screenshot, 'document_integrate');
   },
 
   'document_approval': (test) => {
@@ -74,6 +84,7 @@ module.exports = {
     openExample(page, 'document_approval');
     revealPoll(page);
     capturePoll(screenshot, 'document_approval');
+    captureGuide(screenshot, 'document_approval');
   },
 
   'document_outcome': (test) => {
@@ -86,6 +97,33 @@ module.exports = {
       width: 1100,
       height: 1000
     });
+  },
+
+  'poll_minutes': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openExample(page, 'board_minutes');
+    revealPoll(page);
+    page.expectText('.topic-card', 'Not voted');
+    captureGuide(screenshot, 'poll_minutes');
+  },
+
+  'poll_approve_report': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openExample(page, 'board_report');
+    revealPoll(page);
+    page.expectText('.topic-card', 'Not voted');
+    captureGuide(screenshot, 'poll_approve_report');
+  },
+
+  'thread_funding': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    openExample(page, 'board_funding');
+    revealPoll(page);
+    page.expectText('.topic-card', 'Not voted');
+    captureGuide(screenshot, 'thread_funding');
   },
 
   'thread_raise_issue': (test) => {

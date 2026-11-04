@@ -32,9 +32,9 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     useLightTheme(test);
     openSignIn(page);
-    page.fillInAndEnter('.auth-email-form__email input', 'jamie@oatmilk.example');
-    page.waitFor('.auth-signin-form');
-    page.click('.auth-signin-form__login-link');
+    page.fillIn('.auth-email-form__email input', 'jamie@oatmilk.example');
+    page.click('.auth-email-form__login-link');
+    page.click('.auth-email-code-form__submit');
     page.waitFor('.auth-complete');
     screenshot.captureElement('users/signing_in/sign_in_code', '.auth-complete', {
       width: 1100,

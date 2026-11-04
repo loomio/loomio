@@ -8,7 +8,7 @@ class RedactUserWorker < ApplicationJob
     deactivated_at = user.deactivated_at || DateTime.now
     group_ids = Membership.active.where(user_id: user_id).pluck(:group_id)
     User.transaction(requires_new: true) do |transaction|
-      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
+      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at, preserve_cast_votes: true)
 
       User.where(id: user_id).update_all(
         is_admin: false,
@@ -33,6 +33,7 @@ class RedactUserWorker < ApplicationJob
         detected_locale: nil,
         email_verified: false,
         legal_accepted_at: nil,
+        webauthn_id: nil,
         # set an email_sha256 so we can identify redacted accounts if someone provides an email
         email_sha256: Digest::SHA256.hexdigest(email),
         deactivated_at: deactivated_at,
@@ -40,6 +41,9 @@ class RedactUserWorker < ApplicationJob
       )
 
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
+      deliveries = NotificationDelivery.where(recipient_type: 'User', recipient_id: user_id)
+      NotificationDeliveryEvent.where(notification_delivery_id: deliveries.select(:id)).update_all(detail: nil)
+      deliveries.update_all(email_message_id: nil, provider_message_id: nil)
       Identity.where(user_id: user_id).delete_all
       Session.where(user_id: user_id).destroy_all
       user.mobile_devices.active.find_each(&:revoke!)
@@ -47,6 +51,7 @@ class RedactUserWorker < ApplicationJob
       # Destroy any outstanding login credentials so a redacted/merged source
       # account's pending login codes/magic links can never be redeemed.
       LoginToken.where(user_id: user_id).delete_all
+      PasskeyCredential.where(user_id: user_id).delete_all
       MembershipRequest.pending.where(requestor_id: user_id).destroy_all
       SearchService.reindex_by_author_id(user.id)
 

@@ -16,7 +16,290 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     }, actor: @admin)
   end
 
+  test "a former group member cannot cast a retained stance after a closed poll reopens" do
+    member = users(:member_normal)
+    stance = @poll.stances.latest.find_by!(participant: member)
+    PollService.close(poll: @poll, actor: @admin)
+    MembershipService.revoke(membership: @group.membership_for(member), actor: member)
+    PollService.reopen(poll: @poll, params: {closing_at: 3.days.from_now}, actor: @admin)
+    sign_in member
+
+    patch :update, params: {id: stance.id, stance: {
+      stance_choices_attributes: [{poll_option_id: @poll.poll_options.first.id, score: 1}]
+    }}
+
+    assert_response :forbidden
+    assert_nil stance.reload.cast_at
+
+    get :my_stances
+    assert_response :success
+    assert_not JSON.parse(response.body).fetch('polls', []).any? { |poll| poll.fetch('id') == @poll.id }
+    assert_not JSON.parse(response.body).fetch('stances').any? { |item| item.fetch('id') == stance.id }
+  end
+
+  %w[deactivate redact].each do |operation|
+    test "#{operation} preserves a submitted vote without allowing an existing session to change it" do
+      member = users(:member_normal)
+      stance = @poll.stances.latest.find_by!(participant: member)
+      stance.choice = @poll.poll_options.first.name
+      stance.reason = 'Preserved reason'
+      StanceService.create(stance: stance, actor: member)
+      sign_in member
+      session_id = Current.session.id
+      if operation == 'redact'
+        NewsletterService.stub(:unsubscribe, nil) { RedactUserWorker.perform_now(member.id, member.id, false) }
+      else
+        DeactivateUserWorker.perform_now(member.id, member.id)
+      end
+      Current.reset
+
+      patch :update, params: {id: stance.id, stance: {reason: 'Blocked change'}}
+
+      assert_response :forbidden
+      assert_not Session.exists?(session_id)
+      assert_nil stance.reload.revoked_at
+      assert_equal 'Preserved reason', stance.reason
+
+      sign_in @admin
+      get :index, params: {poll_id: @poll.id}
+      assert_response :success
+      serialized_stance = JSON.parse(response.body).fetch('stances').find { |item| item.fetch('id') == stance.id }
+      assert_equal 'Preserved reason', serialized_stance.fetch('reason')
+      assert_equal stance.option_scores, serialized_stance.fetch('option_scores')
+    end
+  end
+
   # -- Index tests --
+
+  test "generic stance index does not include votes page voter details" do
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id, per: 1, from: 0}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('stances').length
+    refute json.fetch('meta').key?('voter_details_by_user_id')
+  end
+
+  test "generic stance index omits voter details for an ordinary voter" do
+    sign_in @user
+
+    get :index, params: {poll_id: @poll.id, per: 1}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    refute json.fetch('meta').key?('show_voter_email')
+    refute json.fetch('meta').key?('voter_details_by_user_id')
+  end
+
+  test "unweighted identified votes serialize the effective weight of one" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.update!(weight: '2.33')
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id}
+
+    assert_response :success
+    serialized_stance = JSON.parse(response.body).fetch('stances').find { |item| item['id'] == stance.id }
+    assert_equal '1', serialized_stance.fetch('weight')
+    assert_equal '1', VoteWeight.format(stance.reload.weight)
+  end
+
+  test "voter management pages users and only includes weights for that page" do
+    @poll.update_column(:weighted_voting, true)
+    sign_in @admin
+
+    get :users, params: {poll_id: @poll.id, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    get :users, params: {poll_id: @poll.id, per: 1, from: 1}
+    second = JSON.parse(response.body)
+
+    assert_response :success
+    assert_operator first.fetch('meta').fetch('total'), :>, 1
+    refute_equal first.fetch('users').first.fetch('id'), second.fetch('users').first.fetch('id')
+    assert_equal first.fetch('users').map { |user| user.fetch('id').to_s }.sort, first.fetch('meta').fetch('weights_by_user_id').keys.sort
+    assert_equal second.fetch('users').map { |user| user.fetch('id').to_s }.sort, second.fetch('meta').fetch('weights_by_user_id').keys.sort
+    assert_equal ['1'], first.fetch('meta').fetch('weights_by_user_id').values
+  end
+
+  test "voter management lists newly added voters first even after another voter revises a vote" do
+    new_voter = users(:alien)
+    @group.add_member!(new_voter)
+    PollService.invite(poll: @poll, actor: @admin, params: {recipient_user_ids: [new_voter.id], notify_recipients: false})
+    sign_in @admin
+
+    get :users, params: {poll_id: @poll.id}
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+
+    older_stance = @poll.stances.latest.where.not(participant_id: new_voter.id).order(:id).first
+    replacement = older_stance.build_replacement
+    older_stance.update!(latest: false)
+    replacement.save!
+
+    get :users, params: {poll_id: @poll.id}
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+  end
+
+  test "voter management lists newly added anonymous poll voters first" do
+    poll = create_detached_anonymous_poll
+    new_voter = users(:alien)
+    @group.add_member!(new_voter)
+    PollService.invite(poll: poll, actor: @admin, params: {recipient_user_ids: [new_voter.id], notify_recipients: false})
+    sign_in @admin
+
+    get :users, params: {poll_id: poll.id}
+
+    assert_response :success
+    assert_equal new_voter.id, JSON.parse(response.body).fetch('users').first.fetch('id')
+  end
+
+  test "voter management searches identified and detached anonymous electorates" do
+    sign_in @admin
+
+    [@poll, create_detached_anonymous_poll].each do |poll|
+      get :users, params: {poll_id: poll.id, query: @user.email}
+
+      assert_response :success
+      json = JSON.parse(response.body)
+      assert_equal [@user.id], json.fetch('users').pluck('id')
+      assert_equal 1, json.fetch('meta').fetch('total')
+    end
+  end
+
+  test "non coordinator cannot page through voter management" do
+    sign_in users(:alien)
+
+    get :users, params: {poll_id: @poll.id, per: 1}
+
+    assert_response :forbidden
+  end
+
+  test "invalid stance weights are rejected" do
+    @poll.update_columns(weighted_voting: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: '-2'}
+    assert_response :unprocessable_entity
+
+    patch :reset_weights, params: {poll_id: @poll.id, mode: 'value', weight: '1e3'}
+    assert_response :unprocessable_entity
+
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin updates stance weight before voting opens" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, weighted_voting: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :success
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "poll admin sets a fractional stance weight" do
+    @poll.update_columns(opened_at: nil, closing_at: nil, weighted_voting: true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: '0.5'}
+
+    assert_response :success
+    assert_equal BigDecimal('0.5'), stance.reload.weight
+  end
+
+  test "poll admin cannot set stance weights when vote weights are disabled" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 2}
+
+    assert_response :forbidden
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin updates stance weight after voting opens" do
+    @poll.update_column(:weighted_voting, true)
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :success
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "poll admin cannot update stance weight after voting closes" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    @poll.update_columns(weighted_voting: true, closed_at: Time.current)
+    sign_in @admin
+
+    patch :set_weight, params: {id: stance.id, weight: 0}
+
+    assert_response :forbidden
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin resets every voter weight" do
+    @poll.update_column(:weighted_voting, true)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '2.33'}
+
+    assert_response :success
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == BigDecimal('2.33') }
+  end
+
+  test "poll admin restores current member weights and defaults other voters to one" do
+    @poll.update_column(:weighted_voting, true)
+    @group.membership_for(@user).update!(weight: '2.33')
+    option = @poll.poll_options.first
+    member_stance = @poll.stances.latest.find_by!(participant: @user)
+    member_stance.update!(weight: '0.5', cast_at: Time.current,
+                          stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+    guest = User.create!(name: 'Guest voter', email: "guest-voter-#{SecureRandom.hex(4)}@example.test")
+    guest_stance = Stance.create!(poll: @poll, participant: guest, inviter: @admin, weight: 3)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, mode: 'membership'}
+
+    assert_response :success
+    assert_equal BigDecimal('2.33'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+    assert_equal BigDecimal('2.33'), option.reload.total_score
+  end
+
+  test "voter cannot reset poll weights" do
+    @poll.update_column(:weighted_voting, true)
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
+
+  test "poll admin cannot reset weights after closing" do
+    @poll.update_columns(weighted_voting: true, closed_at: Time.current)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
+
+  test "poll admin cannot reset weights on an anonymous poll" do
+    @poll.update_columns(anonymous: true)
+    sign_in @admin
+
+    patch :reset_weights, params: {poll_id: @poll.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert @poll.stances.latest.all? { |stance| stance.reload.weight == 1 }
+  end
 
   test "index returns stances for a poll" do
     sign_in @admin
@@ -32,6 +315,50 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert stance.key?('order_at')
   end
 
+  test "index returns voter rows with a total for paginated votes" do
+    sign_in @admin
+
+    get :index, params: {poll_id: @poll.id, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    get :index, params: {poll_id: @poll.id, per: 1, from: 1}
+    second = JSON.parse(response.body)
+
+    assert_response :success
+    assert_equal @poll.stances.latest.count, first.fetch('meta').fetch('total')
+    assert_equal first.fetch('meta').fetch('total'), second.fetch('meta').fetch('total')
+    assert_equal 1, first.fetch('stances').length
+    assert_equal 1, second.fetch('stances').length
+    refute_equal first.fetch('stances').first.fetch('id'), second.fetch('stances').first.fetch('id')
+  end
+
+  test "stance weight is visible to viewers of identified polls" do
+    @poll.update_column(:weighted_voting, true)
+    weighted_stance = @poll.stances.latest.find_by!(participant: @user)
+    weighted_stance.update!(weight: 2)
+
+    sign_in @admin
+    get :index, params: {poll_id: @poll.id}
+    admin_stance = JSON.parse(response.body).fetch('stances').find { |stance| stance['id'] == weighted_stance.id }
+    assert_equal '2', admin_stance.fetch('weight')
+
+    sign_in users(:alien)
+    public_poll = Poll.create!(
+      title: 'Public weighted poll',
+      poll_type: 'proposal',
+      topic: discussions(:public_discussion).topic,
+      author: @admin,
+      weighted_voting: true,
+      poll_option_names: ['Agree', 'Disagree'],
+      closing_at: 1.day.from_now
+    )
+    public_stance = Stance.create!(poll: public_poll, participant: @user, weight: 2)
+    get :index, params: {poll_id: public_poll.id}
+    response_json = JSON.parse(response.body)
+    viewer_stance = response_json.fetch('stances').find { |stance| stance['id'] == public_stance.id }
+    assert_equal '2', viewer_stance.fetch('weight')
+    assert_not response_json.fetch('meta').key?('voter_details_by_user_id')
+  end
+
   test "my_stances serializes the filtered collection" do
     sign_in @admin
 
@@ -40,6 +367,93 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :success
     stance_ids = JSON.parse(response.body).fetch('stances').pluck('id')
     assert_includes stance_ids, @poll.stances.find_by!(participant_id: @admin.id).id
+  end
+
+  test "my_stances loads pending votes once without a primary-key first-row probe" do
+    sign_in @admin
+    queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      sql = payload[:sql]
+      queries << sql if sql.start_with?('SELECT "stances".*') && sql.include?('INNER JOIN "polls"') && !payload[:cached]
+    end
+
+    ActiveRecord::Base.uncached { get :my_stances }
+
+    assert_response :success
+    assert_equal 1, queries.size, queries.join("\n")
+    refute_match(/ORDER BY|LIMIT/, queries.first)
+    assert_includes JSON.parse(response.body).fetch('stances').pluck('id'), @poll.stances.latest.find_by!(participant: @admin).id
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "my_stances keeps group and direct pending votes private to their participant" do
+    participant = users(:guest_normal)
+    other = users(:guest_loud)
+    existing = @poll.stances.latest.find_by!(participant: participant).id
+    pending = [topics(:discussion_topic), topics(:direct_topic)].map do |topic|
+      poll = Poll.create!(title: "Pending vote", poll_type: "proposal", topic: topic, author: @admin,
+                          specified_voters_only: true, opened_at: Time.current, closing_at: 1.day.from_now,
+                          poll_option_names: %w[Agree Disagree])
+      Stance.create!(poll: poll, participant: other, reason: "Another participant's private draft")
+      Stance.create!(poll: poll, participant: participant)
+    end
+    sign_in participant
+
+    %w[off until_vote until_closed].each do |hide_results|
+      pending.each { |stance| stance.poll.update!(hide_results: hide_results) }
+      get :my_stances
+      assert_response :success
+      assert_equal (pending.map(&:id) + [existing]).sort, JSON.parse(response.body).fetch('stances').pluck('id').sort
+      assert_equal [participant.id], JSON.parse(response.body).fetch('stances').pluck('participant_id').uniq
+      refute_includes response.body, "Another participant's private draft"
+    end
+
+    get :my_stances, params: {discussion_id: @discussion.id}
+    assert_response :success
+    assert_equal [existing, pending.first.id].sort, JSON.parse(response.body).fetch('stances').pluck('id').sort
+
+    get :my_stances, params: {group_id: @group.id}
+    assert_response :forbidden
+
+    member = users(:member_normal)
+    sign_in member
+    get :my_stances, params: {group_id: @group.id}
+    assert_response :success
+    assert_equal [@poll.stances.latest.find_by!(participant: member).id], JSON.parse(response.body).fetch('stances').pluck('id')
+
+    sign_in users(:alien_loud)
+    get :my_stances, params: {discussion_id: @discussion.id}
+    assert_response :forbidden
+  end
+
+  test "my_stances is empty for a signed-out visitor" do
+    get :my_stances
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('stances')
+  end
+
+  test "my_stances omits historical revoked and cast votes and polls that are not active" do
+    sign_in @user
+    pending = @poll.stances.latest.find_by!(participant: @user)
+    scenarios = [
+      [pending, {latest: false}],
+      [pending, {revoked_at: Time.current}],
+      [pending, {cast_at: Time.current}],
+      [@poll, {closed_at: Time.current}],
+      [@poll, {discarded_at: Time.current}],
+      [@poll, {opened_at: nil}],
+      [@poll, {closing_at: nil}]
+    ]
+    scenarios.each do |record, attributes|
+      previous = record.attributes.slice(*attributes.keys.map(&:to_s))
+      record.update_columns(attributes)
+      get :my_stances
+      assert_response :success
+      refute_includes JSON.parse(response.body).fetch('stances').pluck('id'), pending.id, attributes.inspect
+      record.update_columns(previous)
+    end
   end
 
   test "until vote has the same backend response as results off" do
@@ -542,7 +956,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.scores_by_option
   end
 
   test "rejects duplicate options as invalid ballot input" do
@@ -564,7 +978,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.scores_by_option
   end
 
   test "rejects options belonging to another poll as invalid ballot input" do
@@ -591,7 +1005,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
     assert_nil stance.reload.cast_at
     assert_empty stance.stance_choices
-    assert_equal [0, 0], @poll.reload.stance_counts
+    assert_equal [0, 0], @poll.reload.scores_by_option
   end
 
   private

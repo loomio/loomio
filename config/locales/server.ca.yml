@@ -1,5 +1,6 @@
 ---
 ca:
+  group_export_started: Ha començar l'exportació de dades del grup
   discussion_templates:
     blank:
       process_name: Plantilla en blanc
@@ -9,7 +10,7 @@ ca:
       title_placeholder: Quin és el tema que voleu tractar?
       process_name: Debat sobre un tema
       process_subtitle: Inicieu una discussió amb el vostre grup
-      process_introduction: "<p>Hi ha algun problema, problema o oportunitat que voleu plantejar amb el vostre grup?</p><p> Presenta el tema, enllaça amb qualsevol informació de fons i demana comentaris, idees i ajuda.</p><p> Convida la gent a participar aportant els seus pensaments i informació rellevant. Utilitzeu la @menció per cridar l'atenció de persones concretes.</p><p> Actualitzeu el context del fil a mesura que avança la discussió per facilitar-lo cap a un resultat.</p><p> No esperis a tenir tota la informació per iniciar un fil. Més aviat utilitzeu el fil per convidar persones perquè us ajudin a explorar el tema i trobar una solució.</p>"
+      process_introduction: "<p>Hi ha cap qüestió, problema o oportunitat que vulguis plantejar al teu grup?</p><p>Presenta el tema, enllaça informació de context i demana comentaris, idees i ajuda.</p><p>Convida la gent a participar aportant idees i informació rellevant. Fes servir @menció per cridar l'atenció de persones concretes.</p><p>Actualitza el context del fil a mesura que avança la discussió per ajudar a arribar a una conclusió.</p><p>No esperis a tenir tota la informació per iniciar un fil. Fes servir el fil per convidar la gent a ajudar-te a explorar el tema i trobar una solució.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Presentar i descriure el tema</h3><p></p><h3 id="why-is-this-important"> Per què és important això?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Com t'agradaria que respongués la gent?</h3><p></p>
     onboarding_to_loomio:
       title: Utilitzant Loomio per al nostre grup
@@ -22,14 +23,14 @@ ca:
       title_placeholder: Desenvolupament de la nostra política de seguretat i salut
       process_name: Procés de consentiment
       process_subtitle: Preneu una decisió que sigui "segur de provar", sense objeccions.
-      process_introduction: '<p>Busqueu el consentiment sobre una decisió que heu de prendre, quan no hi hagi objeccions significatives a la vostra proposta, de manera que podeu prendre una decisió ràpida que sigui "segur de provar" ara.</p><p> Rols típics:</p><ul><li><p> Proposent: la persona que planteja un tema que requereix una decisió.</p></li><li><p> Facilitador: algú que pot ajudar el proposant a fer la seva feina de manera eficient.</p></li></ul><p> Passos comuns del procés:</p><p> Pas 1. Presenta una proposta amb un fil de Loomio.</p><p> Pas 2. Facilita una ronda de preguntes, reaccions i qualsevol comentari per millorar la proposta amb una comprovació de Sense.</p><p> Pas 3. Esmeneu la proposta amb suggeriments i comentaris.</p><p> Pas 4. Pregunteu si algú té una objecció significativa a la proposta esmenada amb una proposta de consentiment.</p><p> Pas 5. Integreu les objeccions vàlides per crear una versió modificada de la proposta que tothom accepti que sigui "segur de provar" i, quan s''hagi completat, indiqueu el resultat de la decisió.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Llegeix més: Procés de consentiment.</a></p>'
+      process_introduction: '<p>Busca el consentiment sobre una decisió que has de prendre, sense objeccions significatives a la teva proposta, per poder prendre una decisió ràpida que sigui ''segura de provar'' ara.</p><p>Rols habituals:</p><ul><li><p>Proposant: la persona que planteja un tema que requereix una decisió.</p></li><li><p>Facilitador: algú que pot ajudar el proposant a fer la seva feina de manera eficient.</p></li></ul><p>Passos habituals del procés:</p><p>Pas 1. Presenta una proposta amb un fil de Loomio.</p><p>Pas 2. Facilita una ronda de preguntes, reaccions i comentaris per millorar la proposta amb un tempteig.</p><p>Pas 3. Modifica la proposta amb suggeriments i comentaris.</p><p>Pas 4. Pregunta si algú té cap objecció significativa a la proposta modificada amb una proposta de consentiment.</p><p>Pas 5. Integra les objeccions vàlides per crear una versió modificada de la proposta que tothom consideri ‘segura de provar’ i, en acabar, indica la conclusió de la decisió.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Llegeix més: Procés de consentiment.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Quina és la decisió que has de prendre?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Per què és important i quin impacte té?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Quina informació necessita la gent per al context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Qui és el facilitador d'aquest procés?</h3><p></p>
       consent: Consentiment
     advice_process:
       title_placeholder: Buscant assessorament per comprar un ordinador nou
       process_name: Procés d'assessorament
       process_subtitle: Busqueu consell sobre una decisió que heu de prendre.
-      process_introduction: '<p>Preneu una decisió amb l''assessorament de persones afectades o que tinguin experiència, perquè pugueu prendre una millor decisió per a la vostra organització.</p><p> Rols típics:</p><ul><li><p> Facilitador: la persona que pren la decisió, o demana a algú que la faciliti.</p></li><li><p> Assessors: persones afectades o amb experiència que convideu.</p></li></ul><p> Passos comuns del procés:</p><p> Pas 1. Busqueu aportacions per aprofundir en perspectives abans de proposar accions.</p><p> Pas 2. Feu una proposta i demaneu assessorament: executeu una proposta d''assessorament.</p><p> Pas 3. Tenint en compte els consells rebuts, preneu una decisió i informeu a les persones que han donat consells: indiqueu un resultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Llegeix més: Procés d''assessorament.</a></p>'
+      process_introduction: '<p>Pren una decisió amb l''assessorament de persones afectades o amb coneixements del tema, per prendre una decisió millor per a la teva organització.</p><p>Rols habituals:</p><ul><li><p>Facilitador: la persona que pren la decisió, o algú a qui demanes que faciliti el procés.</p></li><li><p>Assessors: persones afectades o amb coneixements del tema que convides.</p></li></ul><p>Passos habituals del procés:</p><p>Pas 1. Demana aportacions per conèixer diferents perspectives abans de proposar una acció.</p><p>Pas 2. Fes una proposta i demana assessorament - inicia una proposta d''assessorament.</p><p>Pas 3. Tenint en compte els consells rebuts, pren una decisió i informa les persones que t''han assessorat - indica una conclusió.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Llegeix més: Procés d''assessorament.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Quina és la decisió que has de prendre?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Per què és important i quin impacte té?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Quin consell estàs demanant per ajudar-te a prendre una bona decisió?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Qui és el facilitador d'aquest procés?</h3><p></p>
       advice: Consell
     pass_a_resolution:
@@ -43,7 +44,7 @@ ca:
       title_placeholder: Revisió dels estatuts de la nostra organització
       process_name: Decisió per consens
       process_subtitle: Arribar a un conveni col·lectiu amb tots els implicats.
-      process_introduction: '<p>Construir consens per a una decisió que cal prendre entre tots, per arribar a un acord que satisfà les necessitats i inquietuds de tots els participants.</p><p> Rols típics:</p><ul><li><p> Designeu un facilitador. (A les reunions de la junta aquest és normalment el president).</p></li><li><p> Un quòrum o supermajoria de membres per participar, tal com s''especifica als estatuts de la vostra organització.</p></li></ul><p> Passos comuns del procés:</p><p> Pas 1. Creeu un espai obert per a la discussió sobre un tema o una proposta de decisió.</p><p> Pas 2. Comprova el consens i exposa les objeccions amb una proposta de comprovació Sense.</p><p> Pas 3. Aclarir qualsevol punt, convidar a modificacions constructives i modificar la proposta.</p><p> Pas 4. Prova d''acord i qualsevol objecció restant amb una proposta de consens.</p><p> Pas 5. Anotar la decisió amb un resultat i a l''acta oficial de l''organització.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Llegeix més: Procés de consens.</a></p>'
+      process_introduction: '<p>Construeix consens per a una decisió que heu de prendre conjuntament, per arribar a un acord que satisfaci les necessitats i inquietuds de tots els participants.</p><p>Rols habituals:</p><ul><li><p>Designa un facilitador.&nbsp; (A les reunions de la junta sol ser qui la presideix.)</p></li><li><p>Un quòrum o una majoria qualificada de membres que participin, segons els estatuts de la teva organització.</p></li></ul><p>Passos habituals del procés:</p><p>Pas 1. Crea un espai obert per discutir un tema o una proposta de decisió.</p><p>Pas 2. Comprova el consens i fes visibles les objeccions amb una proposta de tempteig.&nbsp;</p><p>Pas 3. Aclareix els punts que calgui, convida a fer canvis constructius i modifica la proposta.</p><p>Pas 4. Comprova l''acord i les objeccions pendents amb una proposta de consens.</p><p>Pas 5. Registra la decisió amb una conclusió i a l''acta oficial de l''organització.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Llegeix més: Procés de consens.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Quina és la decisió que has de prendre?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Per què és important i quin impacte té?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Quina informació necessita la gent per al context?</h3><p></p><h3 id="who-is-the-facilitator"> Qui és el facilitador?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Quines condicions s'han de complir per prendre una decisió?</h3><h3 id=""></h3>
       consensus: Consens
     share_links_and_info:
@@ -58,7 +59,7 @@ ca:
       process_name: Prepareu-vos per a una reunió
       process_subtitle: Elaboreu una agenda, publiqueu els documents de la junta i organitzeu els assumptes administratius perquè tothom estigui al dia, en context i preparat.
       description: <p><strong>Focus de la reunió</strong></p><p></p><p data-text-align="start"> <strong>Esquema de l'agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Accions de la darrera reunió</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Com s'han de preparar els participants per a la reunió?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Llista de documents per a la reunió</strong></p><p data-text-align="start"></p>
-      process_introduction: <p>Planifiqueu una reunió efectiva implicant la gent des del primer moment, alineant-vos amb els temes més importants i aprofitant millor el vostre preuat temps junts.</p><p> Utilitzeu un fil com a contenidor per a la vostra reunió per establir un focus per a la reunió, establir l'agenda, trobar una data adequada, publicar documents i informes clau, iniciar la discussió sobre els punts de l'agenda, fer un seguiment amb accions i actes.</p><p> Això ajuda a tothom a preparar-se per a la reunió, llegint els materials i pensant en els temes de discussió i les decisions a prendre. Aleshores, és més probable que els membres arribin en context i estiguin preparats per a la reunió.</p><p> Llegiu més sobre <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Preparació per a una reunió</u></a> a la Guia de bon govern de Loomio.</p>
+      process_introduction: <p>Planifiqueu una reunió efectiva implicant la gent des del primer moment, alineant-vos amb els temes més importants i aprofitant millor el vostre preuat temps junts.</p><p> Utilitzeu un fil com a contenidor per a la vostra reunió per establir un focus per a la reunió, establir l'agenda, trobar una data adequada, publicar documents i informes clau, iniciar la discussió sobre els punts de l'agenda, fer un seguiment amb accions i actes.</p><p> Això ajuda a tothom a preparar-se per a la reunió, llegint els materials i pensant en els temes de discussió i les decisions a prendre. Aleshores, és més probable que els membres arribin en context i estiguin preparats per a la reunió.</p><p> Llegiu més sobre <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/board_processes/meeting"><u>Preparació per a una reunió</u></a> a la Guia de bon govern de Loomio.</p>
       meeting: Reunió
     build_a_policy:
       title_placeholder: Revisió de la nostra política de contractació
@@ -71,14 +72,14 @@ ca:
       title_placeholder: Nomenament i elecció del Consell
       process_name: Trieu un càrrec de govern
       process_subtitle: Nominar i triar algú per a una funció de govern en el consell, el comitè o la junta.
-      process_introduction: "<p>Introduïu la funció de govern i els criteris de la posició per ajudar els membres a avaluar els candidats.</p><p> Convocatòria de candidatures amb una enquesta d'acceptació. Convida els nominats a publicar una foto del candidat juntament amb la seva biografia i referències. Insereix un missatge de vídeo del candidat perquè els membres puguin veure i escoltar directament el candidat.</p><p> Si esteu preparat per triar un candidat, feu servir una proposta de consentiment.</p><p> Si teniu diversos candidats per a una posició, utilitzeu la proposta d'elecció classificada on els votants poden classificar els candidats per ordre de preferència.</p>"
+      process_introduction: "<p>Presenta el càrrec de govern i els criteris de la plaça per ajudar els membres a valorar els candidats.</p><p>Demana candidatures amb una enquesta d'inscripció voluntària. Convida els candidats a publicar una foto seva amb la biografia i les referències. Insereix un missatge de vídeo del candidat perquè els membres el puguin veure i escoltar directament.</p><p>Si ja vols elegir un candidat, fes servir una proposta de consentiment.</p><p>Si tens diversos candidats per a una plaça, fes servir una proposta de vot preferencial perquè els votants puguin ordenar els candidats per ordre de preferència.</p>"
       description: '<h3 id="what-position-do-you-need-to-fill">Quina posició necessites ocupar?</h3><p></p><h3 id="why-is-this-important"> Per què és important això?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Quines qualificacions, habilitats i experiències fan un bon candidat?</h3><p></p><h3 id="what-is-the-election-process"> Quin és el procés electoral?</h3><p> Etapa 1: Nominacions: estem convidant a presentar candidatures per als candidats adequats.</p><p> Etapa 2: Presentació dels candidats: inclou una foto, una biografia breu i una referència per a cada candidat.</p><p> Etapa 3: Elecció: vota per nomenar un candidat per al càrrec.</p>'
       election: Elecció
     funding_decision:
       title_placeholder: Sol·licitud de finançament per a Robotics Roadshow
       process_name: Decisió de finançament
       process_subtitle: Tramitar una sol·licitud de subvenció, préstec o inversió i prendre una decisió de finançament.
-      process_introduction: "<p>Presentar una sol·licitud de finançament, adjuntar documents i altres materials de suport.</p><p> Resumeix l'aplicació en el context del fil.</p><p> Convida persones autoritzades a revisar l'aplicació i fer preguntes. Doneu temps suficient per a la discussió.</p><p> Plantejar una proposta de consens per aprovar el finançament.</p><p> Si algú no està d'acord, demaneu un motiu; per exemple, pot ser que calgui més informació. Convida la persona que no està d'acord a canviar el seu vot quan estigui satisfet.</p><p> Quan tingueu una decisió clara sobre la sol·licitud de finançament, indiqueu un resultat per registrar la decisió.</p>"
+      process_introduction: "<p>Presenta una sol·licitud de finançament i adjunta documents i altres materials de suport.</p><p>Resumeix la sol·licitud al context del fil.</p><p>Convida les persones autoritzades a revisar la sol·licitud i fer preguntes. Deixa prou temps per a la discussió.</p><p>Planteja una proposta de consens per aprovar el finançament.</p><p>Si algú està en desacord, demana un motiu - per exemple, potser cal més informació. Convida aquesta persona a canviar el vot quan consideri resolts els seus dubtes.</p><p>Quan tinguis una decisió clara sobre la sol·licitud de finançament, indica una conclusió per registrar la decisió.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Presentar i resumir la sol·licitud de finançament</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Com s'ajusta aquesta aplicació als criteris de finançament?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Qui està autoritzat per aprovar aquesta decisió de finançament?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Convida a preguntes dels responsables de la presa de decisions per processar la sol·licitud</h3><p></p>
       funding: Finançament
     approve_a_document:
@@ -111,6 +112,7 @@ ca:
     add_guests:
       all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats. Alternativament, podeu convidar-los a ser membres del vostre grup.
   errors:
+    item_you_are_replying_to_deleted: L'element al qual respons s'ha eliminat
     clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
     404:
       title: No s'ha trobat
@@ -152,6 +154,7 @@ ca:
     direct_thread_anonymous_poll: Un fil que conté una enquesta anònima no es pot convertir en un fil directe.
     invitation_rate_limit_reached_contact_support: S'ha arribat al límit diari d'invitacions. Contacta amb l'assistència immediatament.
     subscription_thread_limit_reached: Aquesta organització ha arribat al límit de fils. Si us plau, actualitzeu per continuar utilitzant Loomio.
+    attachments_admin_only: Només els admins del fil i del grup poden afegir fitxers adjunts a aquest fil
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
@@ -172,10 +175,10 @@ ca:
         proposal: Proposta
         count: Compte
         choose: Tria
-        allocate: Assignar
+        allocate: Reparteix
         score: Puntuació
         rank: Ordena
-        time: enquesta de temps
+        time: Enquesta d'horari
   user:
     deleted_user: Usuari suprimit
     placeholder_name: Usuari convidat (%{hostname})
@@ -195,7 +198,6 @@ ca:
       poll_options_dont_match: Un error amb Loomio ha impedit que es desés el teu vot. Estem treballant per solucionar-ho. Torna a carregar i intenta-ho de nou.
       opening_at_before_closing_at: La data d'obertura ha de ser anterior a la data de tancament
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
       title: Títol
       author: Autor
       email: Correu electrònic
@@ -210,8 +212,8 @@ ca:
       details: Detalls
       group_name: Nom del grup
       discussion_title: Títol del fil
-      outcome_author: Autor del resultat
-      outcome_created_at: Resultat creat a
+      outcome_author: Autor de la conclusió
+      outcome_created_at: Data de creació de la conclusió
       outcome_statement: Declaració de resultats
       poll_url: URL de l'enquesta
       reason: Motiu
@@ -369,6 +371,23 @@ ca:
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
+    catch_up_link: Configuració del correu electrònic de posada al dia
+    catch_up_title: Configuració del correu electrònic de posada al dia
+    catch_up_description: Trieu amb quina freqüència voleu rebre un resum de l'activitat dels vostres grups
+    catch_up_schedule: Enviar un correu electrònic de posada al dia
+    catch_up_saved: S'ha actualitzat la configuració del correu electrònic de posada al dia
+    catch_up_days:
+      never: Mai
+      every_day: Cada dia
+      every_second_day: Cada dos dies
+      monday: Dilluns
+      tuesday: Dimarts
+      wednesday: Dimecres
+      thursday: dijous
+      friday: Divendres
+      saturday: dissabte
+      sunday: diumenge
+    catch_up_all_groups: Correus electrònics de posada al dia (tots els grups)
   discussion_mailer:
     reply_or_view_online_html: Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Desactiva els correus electrònics</a> per a aquesta discussió."
@@ -435,18 +454,14 @@ ca:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
       view_on_loomio: Veure-ho a %{site_name}
-      create_outcome: Comparteix el resultat
+      create_outcome: Comparteix la conclusió
       your_response: 'Has votat:'
       you_voted: Has votat!
       not_invited: No convidat
       please_respond: Si us plau, respon
       time_zone: "(Les hores es mostren a %{zone})"
-      undecided_members: Membres indecisos (%{count})
-      undecided_visitors: Convidats indecisos (%{count})
-      more_undecided: "%{count} més..."
       vote_now: Votar ara
       you_have_until: Tens fins a %{when} per participar.
-      people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
       voting_opens_and_closes: La votació s'obre %{opens} i es tanca %{closes}. (%{days} dies)
       voting_closes: La votació es tanca %{when}.
       voting_opened_and_closed: La votació s'ha obert %{opens} i s'ha tancat %{closes}. (%{days} dies)
@@ -471,7 +486,7 @@ ca:
       disagree_prompt: Per què no hi esteu d'acord?
     proposal:
       process_subtitle: Plantejar una proposta per prendre una decisió
-      process_introduction: <p>La proposta clàssica de Loomio t'ajuda a prendre una decisió, convertint una discussió en un resultat clar.</p><p> Suggereix un curs d'acció i convida la gent a respondre votant d'acord, abstenció o en desacord.</p><p> A mesura que la gent vota, pot donar una raó per la qual ha votat d'aquesta manera. Pots veure quina és la posició de tothom sobre el tema i per què.</p><p> D'aquesta manera, podeu utilitzar una proposta per incitar la gent a respondre, descobrir nova informació i construir una comprensió compartida, per ajudar el vostre grup a prendre una decisió millor i més informada.</p><p> Una proposta i la discussió associada creen el seu propi registre de com es va prendre la decisió.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Llegiu més informació sobre l'ús de la proposta clàssica de Loomio al procés de decisió simple</u></a> .</p>
+      process_introduction: <p>La proposta clàssica de Loomio t'ajuda a prendre una decisió, convertint una discussió en una conclusió clara.</p><p>Suggereix una línia d'acció i convida la gent a respondre votant D'acord, Abstenció o En desacord.</p><p>Quan la gent vota, pot donar un motiu per explicar el seu vot. Pots veure quina és la posició de tothom sobre el tema i per què.</p><p>Així pots fer servir una proposta per demanar respostes, descobrir informació nova i construir una comprensió compartida - per ajudar el teu grup a prendre una decisió millor i més informada.</p><p>Una proposta i la discussió associada deixen constància de com s'ha pres la decisió.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Llegeix més sobre l'ús de la proposta clàssica de Loomio al procés de decisió simple</u></a>.</p>
       title: Aprovar el nou concepte de marca
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Perquè aquesta proposta s'aprovi, necessitem que la majoria dels membres votin D'acord.</p><p> Si no hi esteu d'acord, digueu per què i què cal canviar perquè hi estigueu d'acord.</p>
       agree: D'acord
@@ -485,7 +500,7 @@ ca:
       abstain_prompt: Per què us absteniu o no us sentiu en condicions de votar sobre aquesta decisió?
     advice:
       process_subtitle: Demana consell sobre una decisió que has de prendre
-      process_introduction: <p>Demana assessorament sobre una decisió que hagis de prendre, amb el consell de persones afectades o que tinguin experiència, per tal de poder prendre una millor decisió per a la teva organització.</p><ul><li><p> L'assessorament t'ajuda a prendre una millor decisió per a la teva organització.</p></li><li><p> Fomentar les relacions, les oportunitats d'aprenentatge i les aportacions diverses.</p></li><li><p> Estimular la iniciativa i la creativitat, i fer una feina més agradable.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Més informació sobre el procés d'assessorament</u></a> .</p>
+      process_introduction: <p>Demana assessorament sobre una decisió que hagis de prendre, amb el consell de persones afectades o que tinguin experiència, per tal de poder prendre una millor decisió per a la teva organització.</p><ul><li><p> L'assessorament t'ajuda a prendre una millor decisió per a la teva organització.</p></li><li><p> Fomentar les relacions, les oportunitats d'aprenentatge i les aportacions diverses.</p></li><li><p> Estimular la iniciativa i la creativitat, i fer una feina més agradable.</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>Més informació sobre el procés d'assessorament</u></a> .</p>
       title: Ajuda a Takashi a comprar un ordinador nou
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Quins consells demanes a la gent per ajudar-te a prendre una bona decisió?</strong></h3><p></p><p> Necessito la vostra opinió per ajudar-me a prendre una bona decisió per a la nostra organització.</p>
       agree: D'acord
@@ -497,7 +512,7 @@ ca:
       outcome_statement: "<p>Gràcies per participar a la meva ronda d'assessorament!</p>"
     consent:
       process_subtitle: Prendre una decisió que sigui "segura d'intentar", sense objeccions
-      process_introduction: <p>Demaneu consentiment sobre una decisió que heu de prendre, on no hi hagi objeccions significatives a la vostra proposta, per tal de poder prendre una decisió ràpida per a la vostra organització que sigui "segura de provar".</p><ul><li><p> Intenta prendre una decisió "prou bona"</p></li><li><p> Involucrar moltes veus per desenvolupar una proposta viable</p></li><li><p> Preguntar si algú té una objecció vàlida</p></li><li><p> Modificar la proposta per resoldre les objeccions</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Més informació sobre el procés de consentiment</a> .</p>
+      process_introduction: <p>Demaneu consentiment sobre una decisió que heu de prendre, on no hi hagi objeccions significatives a la vostra proposta, per tal de poder prendre una decisió ràpida per a la vostra organització que sigui "segura de provar".</p><ul><li><p> Intenta prendre una decisió "prou bona"</p></li><li><p> Involucrar moltes veus per desenvolupar una proposta viable</p></li><li><p> Preguntar si algú té una objecció vàlida</p></li><li><p> Modificar la proposta per resoldre les objeccions</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Més informació sobre el procés de consentiment</a> .</p>
       title: Contracta la Chloe per a un rol de disseny
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Què demanes a la gent amb aquesta proposta?</strong></h3><p></p><p> Si teniu alguna objecció, expliqueu-ne el motiu i proposeu un canvi a la proposta que la faci segura.</p><p> Recordeu que busquem consentiment per a una decisió "prou bona" que sigui "segura de provar", per tal que puguem prendre una bona decisió per a la nostra organització.</p>
       consent: Consentiment
@@ -512,7 +527,7 @@ ca:
       details_v2: "<h3><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3> <strong>Per què és important això?</strong></h3><p></p><h3> <strong>Què demanes a la gent amb aquesta proposta?</strong></h3><p></p><p> No busquem la perfecció: doneu el vostre consentiment si la proposta és prou bona i segura per provar-la. Si teniu alguna objecció, digueu què cal canviar perquè sigui viable.</p>"
     consensus:
       process_subtitle: Arribar a un acord col·lectiu amb tots els implicats
-      process_introduction: <p>Construir consens per a una decisió que cal prendre, per arribar a un acord que satisfaci les necessitats i les preocupacions de tots els participants.</p><ul><li><p> Debatre i desenvolupar una proposta conjuntament</p></li><li><p> Incloure i respectar a tots els implicats</p></li><li><p> Buscar l'acord de la majoria de la gent</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Més informació sobre el procés de consens</a> .</p>
+      process_introduction: <p>Construir consens per a una decisió que cal prendre, per arribar a un acord que satisfaci les necessitats i les preocupacions de tots els participants.</p><ul><li><p> Debatre i desenvolupar una proposta conjuntament</p></li><li><p> Incloure i respectar a tots els implicats</p></li><li><p> Buscar l'acord de la majoria de la gent</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">Més informació sobre el procés de consens</a> .</p>
       title: Aprovar el nou concepte de marca
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Perquè aquesta proposta s'aprovi, necessitem que la majoria dels membres votin D'acord.</p><p> Si no hi esteu d'acord, digueu per què i què cal canviar perquè hi estigueu d'acord.</p>
       outcome_statement: "<p>Gràcies per participar en el procés de consens.</p>"
@@ -524,7 +539,7 @@ ca:
       disagree: En desacord
       disagree_meaning: Cal canviar alguna cosa en aquesta proposta abans que pugui donar-hi suport.
       disagree_prompt: Com es podria millorar aquesta proposta perquè pugueu donar-hi suport?
-      block: Bloc
+      block: Bloqueig
       block_meaning: Bloquejo aquesta proposta i crec que no hauria de tirar endavant.
       block_prompt: Expliqueu la vostra objecció a aquesta proposta i per què no s'hauria de tirar endavant
       details_v2: "<h3><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3> <strong>Per què és important això?</strong></h3><p></p><h3> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Comparteix la teva posició i per què. Si no hi estàs d'acord, explica què caldria canviar perquè ho donessis suport.</p>"
@@ -532,17 +547,17 @@ ca:
       abstain_prompt: Per què us absteniu o no us sentiu en condicions de votar sobre aquesta decisió?
     question_round:
       process_subtitle: Convidar a fer preguntes aclaridores per ajudar la gent a entendre una proposta
-      process_introduction: <p>Una ronda de preguntes és una oportunitat perquè la gent faci preguntes aclaridores sobre la proposta, de manera que tothom l'entengui abans de dir què en pensa.</p><p> La ronda de preguntes de Loomio és una proposta especial sense opcions de votació. Permet als participants fer preguntes dins d'un període que definiu per a la ronda.</p><p> Una ronda de preguntes s'utilitza habitualment com a pas en el procés de consentiment.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Més informació sobre el procés de consentiment</a> .</p>
+      process_introduction: <p>Una ronda de preguntes és una oportunitat perquè la gent faci preguntes aclaridores sobre la proposta, de manera que tothom l'entengui abans de dir què en pensa.</p><p> La ronda de preguntes de Loomio és una proposta especial sense opcions de votació. Permet als participants fer preguntes dins d'un període que definiu per a la ronda.</p><p> Una ronda de preguntes s'utilitza habitualment com a pas en el procés de consentiment.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Més informació sobre el procés de consentiment</a> .</p>
       title: Quines preguntes tens sobre la política de salut i seguretat?
       details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Aquesta és una ronda de preguntes, on esteu convidats a fer preguntes aclaridores.</p><p> Què cal saber per entendre la proposta?</p><p> Si us plau, responeu abans que s'acabi el torn de preguntes.</p>
       reason_prompt: Què cal saber per entendre la proposta?
       outcome_statement: "<p>Gràcies per enviar les vostres preguntes durant aquesta ronda</p>"
     sense_check:
       process_subtitle: Demanar comentaris, preguntes i inquietuds
-      process_introduction: <p>La proposta de comprovació de Sense és una bona manera d'obtenir comentaris, convidar a fer preguntes i descobrir dubtes. Ajuda a aclarir i millorar una proposta abans de prendre una decisió.</p><p> La comprovació de sentit permet a la gent saber que s'està formant una proposta i els anima a participar-hi. És una oportunitat per escoltar la gent, percebre com se senten i respondre-hi adequadament, cosa que obre el potencial per incorporar les seves contribucions per prendre una millor decisió.</p><p> Feu servir la proposta de comprovació de Sense en el procés de consentiment per convidar reaccions i comentaris per millorar la proposta, i en un procés de consens per comprovar el consens.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Llegiu més informació sobre l'ús de la comprovació Sense al procés de decisió simple</u></a> <span>.</span></p>
+      process_introduction: <p>La proposta de tempteig és una bona manera de recollir opinions, convidar a fer preguntes i descobrir inquietuds. Ajuda a aclarir i millorar una proposta abans de prendre una decisió.</p><p>El tempteig fa saber a la gent que s'està preparant una proposta i l'anima a participar-hi. És una oportunitat per escoltar la gent, saber com se sent i respondre adequadament - obrint la possibilitat d'incorporar les seves aportacions per prendre una decisió millor.</p> <p>Fes servir la proposta de tempteig al procés de consentiment per recollir reaccions i comentaris que millorin la proposta, i al procés de consens per comprovar el consens.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Llegeix més sobre l'ús del tempteig al procés de decisió simple</u></a><span>.</span></p>
       title: Què us semblen els nous conceptes de marca?
-      details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Què et sembla la proposta? Deixa un comentari o fes un suggeriment de millora.</p><p> Aquesta comprovació de Sense és una oportunitat per a la vostra aportació i contribució, per ajudar-nos a prendre una millor decisió.</p>
-      outcome_statement: "<p>Gràcies per participar en la comprovació sensorial.</p>"
+      details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Què demanes a la gent que faci?</strong></h3><p></p><p>Què et sembla la proposta?  Deixa un comentari o fes un suggeriment de millora.</p><p>Aquest tempteig és una oportunitat per aportar les teves idees i ajudar-nos a prendre una decisió millor.</p>
+      outcome_statement: "<p>Gràcies per participar en el tempteig.</p>"
       not_sure: No ho sé
       not_sure_meaning: Tinc una pregunta o necessito més temps
       not_sure_prompt: Quines parts no et queden clares? Com es podria resoldre això?
@@ -596,42 +611,46 @@ ca:
       veto_prompt: Per què bloqueges la proposta? Què cal canviar perquè hi puguis donar suport?
     simple_poll:
       process_subtitle: Troba l'opció més popular
-      process_introduction: <p>Abans de prendre una decisió, busqueu quina o quines opcions importen més a la gent.</p><p> Una enquesta senzilla us ajuda a trobar l'opció o opcions més populars amb una o diverses opcions.</p><p> Escriviu els detalls de les opcions al camp de detalls, introduïu el nom de l'opció i feu clic a + per afegir-la.</p><p> Estableix les <strong>opcions mínimes</strong> i <strong>màximes que</strong> un votant pot triar. Deixa l'opció màxima com a 1 per a una enquesta d'una sola opció.</p><p> Podeu utilitzar la icona del llapis al costat de cada opció per afegir-ne el <strong>significat</strong> i explicar-la millor per ajudar la gent a l'hora de votar.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Llegiu-ne més sobre Enquesta simple</a> .</p>
+      process_introduction: <p>Abans de prendre una decisió, busqueu quina o quines opcions importen més a la gent.</p><p> Una enquesta senzilla us ajuda a trobar l'opció o opcions més populars amb una o diverses opcions.</p><p> Escriviu els detalls de les opcions al camp de detalls, introduïu el nom de l'opció i feu clic a + per afegir-la.</p><p> Estableix les <strong>opcions mínimes</strong> i <strong>màximes que</strong> un votant pot triar. Deixa l'opció màxima com a 1 per a una enquesta d'una sola opció.</p><p> Podeu utilitzar la icona del llapis al costat de cada opció per afegir-ne el <strong>significat</strong> i explicar-la millor per ajudar la gent a l'hora de votar.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">Llegiu-ne més sobre Enquesta simple</a> .</p>
       title: On hauria de ser el focus de la nostra direcció estratègica?
       details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Trieu l'opció o opcions que preferiu.</p>
-      process_introduction_v2: <p><strong>L'opció "Triar"</strong> t'ajuda a trobar l'opció més popular. Els participants trien d'una llista; pots configurar si seleccionen una o diverses opcions.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Llegeix més sobre Tria</a> .</p>
+      process_introduction_v2: <p><strong>L'opció "Triar"</strong> t'ajuda a trobar l'opció més popular. Els participants trien d'una llista; pots configurar si seleccionen una o diverses opcions.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">Llegeix més sobre Tria</a> .</p>
+      process_subtitle_v2: Mesura la popularitat amb una enquesta d'opció única o múltiple
     score_poll:
       process_subtitle: Mesurar el grau de suport per a cada opció
-      process_introduction: <p>Feu servir l'enquesta de puntuació quan vulgueu fer una enquesta a la gent sobre el seu desitg, preferència o interès en cada opció.</p><p> <span>Es demana als participants que avaluïn cada opció i assignin una puntuació movent un control lliscant al llarg d'una escala.</span></p><p> <span>Els resultats es mostren gràficament juntament amb una taula per a cada opció que mostra la puntuació total, la mitjana de punts i el nombre de votants.</span></p><p> La configuració avançada inclou "Els vots són anònims" i "Mostra les opcions en ordre aleatori", que s'utilitzen habitualment per a les enquestes de puntuació per reduir qualsevol biaix de votació.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
+      process_introduction: <p>Feu servir l'enquesta de puntuació quan vulgueu fer una enquesta a la gent sobre el seu desitg, preferència o interès en cada opció.</p><p> <span>Es demana als participants que avaluïn cada opció i assignin una puntuació movent un control lliscant al llarg d'una escala.</span></p><p> <span>Els resultats es mostren gràficament juntament amb una taula per a cada opció que mostra la puntuació total, la mitjana de punts i el nombre de votants.</span></p><p> La configuració avançada inclou "Els vots són anònims" i "Mostra les opcions en ordre aleatori", que s'utilitzen habitualment per a les enquestes de puntuació per reduir qualsevol biaix de votació.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
       title: Avaluar com es prenen les decisions a la nostra organització
       details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Trieu l'opció o opcions que preferiu.</p>
       process_subtitle_v2: Mesurar el nivell de suport per a cada opció
-      process_introduction_v2: <p><strong>La puntuació</strong> permet mesurar el nivell de suport del grup per a cada opció. Els participants avaluen cada opció assignant una puntuació en una escala variable, de manera que es pot veure no només què prefereix la gent, sinó també en quina mesura.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
+      process_introduction_v2: <p><strong>La puntuació</strong> permet mesurar el nivell de suport del grup per a cada opció. Els participants avaluen cada opció assignant una puntuació en una escala variable, de manera que es pot veure no només què prefereix la gent, sinó també en quina mesura.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
+      process_subtitle_v3: Demaneu als votants que valorin quant donen suport a cada opció
     dot_vote:
-      process_subtitle: Assignar un pressupost de punts per revelar prioritats
-      process_introduction: <p>El vot per punts és útil per a grups que intenten assignar un recurs limitat a diverses opcions. Va més enllà d'una simple enquesta, ja que ajuda els participants a adonar-se que hi ha una restricció a l'hora de seleccionar opcions.</p><p> A cada participant se li assigna un nombre determinat de punts. Tu decideixes quants.</p><p> Col·loquen punts al costat de les opcions presentades que els agraden. Els participants poden col·locar tots els seus punts en una sola opció o repartir-los per diverses opcions.</p><p> A mesura que els participants assignen punts, poden superar el límit del pressupost de punts, per la qual cosa s'anima a considerar amb cura com gasten els seus punts.</p><p> Les opcions amb més punts "guanyen". La taula de resultats proporciona dades addicionals per ajudar-vos a analitzar els resultats.</p><ul><li><p> % de punts</p></li><li><p> Punts</p></li><li><p> Mitjana</p></li><li><p> Votants</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Llegiu-ne més sobre el vot de Dot</a> .</p>
+      process_subtitle: Reparteix un pressupost de punts per mostrar les prioritats
+      process_introduction: <p>El vot per punts permet repartir un recurs limitat entre diverses opcions. Va més enllà d'una simple enquesta perquè ajuda els participants a entendre que hi ha un límit a l'hora de triar opcions.</p><p>Cada participant rep un pressupost de punts per repartir.</p><p>Els participants poden donar tots els seus punts a una sola opció o repartir-los entre diverses opcions.</p><p>Els participants no poden superar el seu pressupost, de manera que han de pensar bé com reparteixen els punts.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegeix més sobre el vot per punts</a>.</p>
       title: Escollint temes per a la nostra conferència
-      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> En aquesta enquesta tens un pressupost de 8 punts per assignar a les opcions que prefereixes. Pots col·locar tots els punts en una opció o repartir-los.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Què demanes a la gent que faci?</strong></h3><p></p><p>En aquesta enquesta tens un pressupost de punts per repartir entre les opcions que prefereixes. Pots donar tots els punts a una opció o repartir-los.</p>
       process_subtitle_v2: Revelar prioritats quan hi hagi compromisos
-      process_introduction_v2: '<p><strong>L''assignació</strong> us ajuda a entendre les prioritats d''un grup quan hi ha compromisos. Cada participant rep un pressupost de punts per distribuir entre les opcions: poden apostar-ho tot en una opció o distribuir els seus punts entre diverses. Com que el pressupost és limitat, cada punt gastat és un senyal genuí de prioritat.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Llegiu-ne més sobre Assignar</a> .</p>'
+      process_introduction_v2: <p><strong>Reparteix</strong> t'ajuda a entendre les prioritats d'un grup quan cal triar entre opcions. Cada participant rep un pressupost de punts per repartir entre les opcions — pot donar-los tots a una opció o repartir-los entre diverses. Com que el pressupost és limitat, cada punt gastat indica una prioritat real.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Llegeix més sobre Reparteix</a>.</p>
+      process_subtitle_v3: Revelar prioritats quan hi hagi compromisos. També conegut com a votació per punts.
     ranked_choice:
       process_subtitle: Comprendre la preferència ordenada d'opcions
-      process_introduction: <p>L'opció classificada és útil quan tens un gran nombre d'opcions o s'està celebrant una elecció.</p><p> Aquesta plantilla d'enquesta ofereix una sèrie d'opcions perquè la gent voti en l'ordre que prefereixi.</p><p> Podeu definir el nombre d'opcions que té el votant.</p><p> <span>Els votants arrosseguen i deixen anar les opcions per ordre de preferència (la número 1 és l'opció més preferida).</span></p><p> <span>La configuració avançada inclou "Els vots són anònims" i "Mostra les opcions en ordre aleatori", que s'utilitzen habitualment per a</span> les opcions classificades per ordre de classificació per reduir qualsevol biaix de votació.</p><p> Els resultats es mostren en ordre de classificació. La taula de resultats proporciona dades addicionals per ajudar-vos a analitzar els resultats.</p><ul><li><p> Rang</p></li><li><p> % de punts</p></li><li><p> Punts</p></li><li><p> Mitjana</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Llegiu-ne més sobre l'elecció classificada</a> .</p>
+      process_introduction: <p>El vot preferencial és útil quan tens moltes opcions o organitzes unes eleccions.</p><p>Els votants arrosseguen i deixen anar les opcions per ordenar-les segons la seva preferència.</p><p>Els resultats es mostren per ordre de preferència.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Llegeix més sobre el vot preferencial</a>.</p>
       title: Elegir els directors al consell de govern
       details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Vota classificant les opcions per ordre de preferència. Guanya l'opció que quedi primera als resultats.</p>
       process_subtitle_v2: Troba l'ordre de preferència del grup
-      process_introduction_v2: <p><strong>El rànquing</strong> revela l'ordre de preferència del grup. Els participants arrosseguen i deixen anar les opcions per ordenar-les de la més a la menys preferida, i els resultats mostren la classificació general.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Llegeix més sobre Rank</a> .</p>
+      process_introduction_v2: <p><strong>El rànquing</strong> revela l'ordre de preferència del grup. Els participants arrosseguen i deixen anar les opcions per ordenar-les de la més a la menys preferida, i els resultats mostren la classificació general.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Llegeix més sobre Rank</a> .</p>
+      process_subtitle_v3: Ordena les opcions de més a menys preferides
     time_poll:
       process_subtitle: Troba quan hi ha gent disponible per reunir-se
-      process_introduction: <p><span>Estalvieu temps en la planificació de la data per a la vostra reunió o esdeveniment.</span></p><p> L'enquesta horària facilita la visualització de la disponibilitat de tothom i la cerca del millor moment.</p><p> Doneu un títol i detalls a l'enquesta de temps. Introduïu una llista d'opcions de data i hora a la vostra zona horària.</p><p> Quan configureu franges horàries, tingueu en compte les persones de diferents fusos horaris. Els participants veuran les hores localitzades a la seva zona horària.</p><p> Estableix una durada de la reunió.</p><p> Quan es tanqui l'enquesta de temps, defineix un resultat amb el millor moment i les instruccions per a la reunió.</p><p> <span>Loomio inclourà una invitació al calendari amb el correu electrònic de notificació del resultat, perquè els participants puguin afegir-la al seu calendari.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Més informació sobre l'enquesta de Time</a> .</p>
+      process_introduction: <p>Troba ràpidament el millor horari per a la teva reunió o esdeveniment. Afegeix un títol, detalls i opcions de data i hora al teu fus horari. Els participants veuran les hores al seu fus horari.</p><p>Quan es tanqui l'enquesta d'horari, defineix la conclusió amb el millor horari i les instruccions per a la reunió. Loomio enviarà el correu de la conclusió amb una invitació de calendari perquè els participants la puguin afegir als seus calendaris.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Llegeix més sobre l'enquesta d'horari</a>.</p>
       title: Trobem una data per a la nostra propera reunió
       details: <p><strong>Quina és la reunió o l'esdeveniment?</strong></p><p></p><p> <strong>Per què és important això?</strong></p><p></p><p> <strong>Què li demanes a la gent que faci?</strong></p><p></p><p> <span>Marqueu les franges horàries en què esteu disponibles amb la icona verda de "m'agrada" o deixeu la icona vermella de "m'agrada" quan no estigueu disponibles.</span></p><p> <span>Fes servir la icona de "polzes cap als costats" per indicar que estàs disponible "si cal".</span></p>
       reason_prompt: Hi ha alguna cosa que puguis dir per ajudar l'organitzador a trobar un moment adequat?
       process_subtitle_v2: Troba quan hi ha gent disponible
-      process_introduction_v2: <p><strong>L'enquesta horària</strong> t'ajuda a trobar quan hi ha gent disponible. Afegeix les teves hores proposades i els participants les veuran a la seva pròpia zona horària. Quan es tanqui l'enquesta, defineix el resultat i Loomio enviarà a tothom una invitació al calendari.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Més informació sobre l'enquesta de Time</a> .</p>
+      process_introduction_v2: <p><strong>L'enquesta d'horari</strong> t'ajuda a trobar quan la gent està disponible. Afegeix els horaris que proposes i els participants els veuran al seu fus horari. Quan es tanqui l'enquesta, defineix la conclusió i Loomio enviarà a tothom una invitació de calendari.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Llegeix més sobre l'enquesta d'horari</a>.</p>
     opt_in:
       process_subtitle: Troba voluntaris o demana participants
-      process_introduction: '<p>Feu servir l''opció d''inscripció per convidar persones a unir-se a un equip, comitè o grup de treball, o a participar en un esdeveniment.</p><p> L''opció de votació "Opt-in" té dues opcions: Acceptar o Rebutjar.</p><p> Podeu definir un nombre objectiu de persones que busqueu, per exemple, 3 persones per unir-se al vostre grup de treball.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Més informació sobre l''opció de subscriure''s</a> .</p>'
+      process_introduction: '<p>Feu servir l''opció d''inscripció per convidar persones a unir-se a un equip, comitè o grup de treball, o a participar en un esdeveniment.</p><p> L''opció de votació "Opt-in" té dues opcions: Acceptar o Rebutjar.</p><p> Podeu definir un nombre objectiu de persones que busqueu, per exemple, 3 persones per unir-se al vostre grup de treball.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Més informació sobre l''opció de subscriure''s</a> .</p>'
       title: Grup de treball per elaborar la nostra nova política de sostenibilitat
       details: <p><strong>A quin equip, grup de treball o esdeveniment esteu convidant la gent?</strong></p><p></p><p> <strong>Per què és important això?</strong></p><p></p><p> <strong>Què li demanes a la gent que faci?</strong></p><p></p><p> Selecciona "Accepta" per participar!</p>
       accept_meaning: Estic disposat a participar
@@ -644,14 +663,14 @@ ca:
       process_introduction: "<p>Aprofitar al màxim Loomio requereix un compromís de grup. Aquesta proposta ajuda el vostre grup a decidir si invertir el temps i l'esforç necessaris per provar Loomio de debò, ja sigui comprometent-se a un període de prova o inscrivint-se a un pla junts.</p>"
       title: Comprometem-nos a provar Loomio junts
       details: "<p>Fer un bon ús de Loomio requereix un esforç de grup: només funciona quan la gent s'hi presenta i hi participa.</p><p> Aquesta proposta demana a tothom que es comprometi a utilitzar Loomio activament durant el nostre període de prova. Això significa registrar-se, votar les propostes i unir-se a les discussions.</p><p> Si teniu dubtes sobre això, presenteu una objecció i digueu què caldria canviar; per a això serveix l'opció d'objecció.</p>"
-      outcome_statement: "<p>Comparteix el resultat d'aquesta proposta amb el grup: què es va decidir i què passarà a continuació.</p>"
+      outcome_statement: "<p>Comparteix la conclusió d'aquesta proposta amb el grup — què s'ha decidit i què passarà després.</p>"
       consent_meaning: Estic disposat a provar-ho
       consent_prompt: Què esperes de fer servir Loomio?
       objection_meaning: Tinc una preocupació que hem d'abordar primer
       objection_prompt: Què cal canviar abans de poder comprometre's?
     majority:
       process_subtitle: Prendre una decisió amb el nombre més gran de vots
-      process_introduction: "<p><strong>La majoria</strong> és la manera més senzilla de prendre una decisió en grup: els participants voten Sí o No, i la proposta s'aprova si més de la meitat vota Sí. No hi ha abstenció ni bloqueig, de manera que tots els vots tenen el mateix pes.</p><p> La majoria funciona bé per a decisions senzilles on es necessita un resultat clar. Per a decisions on és important que les persones treballin juntes per entendre's i trobar punts en comú, considereu el consentiment o el consens.</p>"
+      process_introduction: "<p><strong>La majoria</strong> és la manera més senzilla de prendre una decisió en grup — els participants voten Sí o No, i la proposta s'aprova si més de la meitat vota Sí. No hi ha abstenció ni bloqueig, de manera que tots els vots tenen el mateix pes.</p><p>La majoria funciona bé per a decisions senzilles on cal una conclusió clara. Per a decisions on és important que les persones treballin juntes per entendre's i trobar punts en comú, considera el consentiment o el consens.</p>"
       title: Aprovar el pressupost del tercer trimestre
       details: "<h3><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3> <strong>Per què és important això?</strong></h3><p></p><h3> <strong>Què li demanes a la gent que faci?</strong></h3><p></p>"
       yes_meaning: Dono suport a aquesta proposta
@@ -661,9 +680,9 @@ ca:
       outcome_statement: "<p>Gràcies per participar en aquesta votació majoritària.</p>"
     stv:
       process_subtitle: Elegir diversos guanyadors proporcionalment
-      process_introduction: <p>El STV (vot únic transferible) és un mètode de representació proporcional per a eleccions amb diversos guanyadors. Els votants classifiquen els candidats per ordre de preferència. Els candidats que arriben a una quota de vot són elegits, i els vots sobrants o eliminats es transfereixen a les següents preferències.</p><p> Configureu el nombre d'escons, el mètode de recompte (escocès o Meek) i el tipus de quota (Droop o Hare). Els resultats mostren un desglossament ronda per ronda de com s'han transferit els vots.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Més informació sobre les eleccions de STV</a> .</p>
+      process_introduction: <p>El STV (vot únic transferible) és un mètode de representació proporcional per a eleccions amb diversos guanyadors. Els votants classifiquen els candidats per ordre de preferència. Els candidats que arriben a una quota de vot són elegits, i els vots sobrants o eliminats es transfereixen a les següents preferències.</p><p> Configureu el nombre d'escons, el mètode de recompte (escocès o Meek) i el tipus de quota (Droop o Hare). Els resultats mostren un desglossament ronda per ronda de com s'han transferit els vots.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/stv">Més informació sobre les eleccions de STV</a> .</p>
       title: Elegir els membres del comitè
-      details: <h3 id="what-is-this-election-about"><strong>De què tracta aquesta elecció?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Quantes places s'estan omplint?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Qui són els candidats?</strong></h3><p></p><p> Vota arrossegant els candidats al teu ordre preferit. El rang 1 és el teu candidat preferit. Pots classificar tants o tan pocs candidats com vulguis.</p>
+      details: <h3 id="what-is-this-election-about"><strong>De què tracta aquesta elecció?</strong></h3><p></p><h3 id="how-many-seats"><strong>Quantes places s'han de cobrir?</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>Qui són els candidats?</strong></h3><p></p><p>Vota arrossegant els candidats en el teu ordre de preferència. La posició 1 és el teu candidat preferit. Pots ordenar tants o tan pocs candidats com vulguis.</p>
   forward_mailer:
     bounce:
       subject: El teu missatge a Loomio no s'ha lliurat.
@@ -671,7 +690,6 @@ ca:
       recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.
     comment_rejected:
       subject: La teva resposta no s'ha publicat
-      reason: La teva resposta no s'ha publicat perquè és més llarga que el límit de %{count} caràcters del fil.
       recommendation: Per evitar més problemes, obre el fil i escriu el teu missatge directament.
       open_thread: Obre el fil
   locale_names:
@@ -730,16 +748,13 @@ ca:
     zh: Xinès (tradicional, taiwanès)
     zh-HK: Xinès (tradicional, taiwanès)
   upload:
+    filename_required: Cal un nom de fitxer
     file_too_large: El fitxer és massa gran. La mida màxima de càrrega és %{limit}.
   merge_users:
     not_target_user: Heu d'haver iniciat la sessió com a compte de destinació per confirmar una fusió.
   thread_markdown:
     poll: Enquesta
     no_activity: Encara no hi ha comentaris, enquestes, vots ni resultats
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Comentari · %{author} %{timestamp}
-    comment_reply: Respon a %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
     status: "**Estat:** %{value}"
     anonymous_voting: "**Vot anònim:** %{value}"
     options: "**Opcions:** %{value}"
@@ -759,10 +774,15 @@ ca:
     anonymous: Anònim
     no_voters: Cap votant
     score: 'puntuació: %{value}'
-    vote: 'Vot: %{response} · %{author} %{timestamp}'
     none_of_the_above: Cap de les anteriors
     no_option_selected: No s'ha seleccionat cap opció
-    outcome: Resultat · %{author} %{timestamp}
     review_date: "**Data de revisió:** %{value}"
+    voted: "%{author} ha votat %{response}"
+    voted_hidden: "%{author} ha votat"
+    vote_removed: "%{author}: vot eliminat"
+    superseded: substituït
+    shared_outcome: "%{author} ha compartit una conclusió"
+    removed: Eliminat
+    not_voted: "%{author}: sense votar"
   error:
     access_denied: No tens permís per fer això

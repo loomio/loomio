@@ -1,5 +1,5 @@
 class TopicReader < ApplicationRecord
-  include CustomCounterCache::Model
+  include HasCountChanges
   include HasVolume
 
   extend HasTokens
@@ -35,8 +35,8 @@ class TopicReader < ApplicationRecord
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  after_save    :update_topic_counters
-  after_destroy :update_topic_counters
+  after_save :update_seen_by_count, if: -> { saved_changes.keys.intersect?(%w[id topic_id last_read_at]) }
+  after_destroy :update_seen_by_count
 
   def self.for(user:, topic:)
     if user&.is_logged_in?
@@ -153,8 +153,13 @@ class TopicReader < ApplicationRecord
     @membership ||= topic.group.membership_for(user)
   end
 
-  def update_topic_counters
-    topic.update_seen_by_count
-    topic.update_members_count
+  def update_seen_by_count
+    before, after = count_states
+    RecordCounts.update!(Topic, :seen_by_count,
+      before: counted_topic_id(before), after: counted_topic_id(after), records: [topic])
+  end
+
+  def counted_topic_id(state)
+    state['topic_id'] if state && state['last_read_at']
   end
 end

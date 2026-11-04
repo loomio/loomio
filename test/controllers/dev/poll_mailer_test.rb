@@ -33,10 +33,10 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   def poll_extra_config(poll_type)
     case poll_type.to_s
-    when 'dot_vote' then {dots_per_person: 10}
+    when 'dot_vote' then {points_per_voter: 10}
     when 'meeting' then {time_zone: 'Asia/Seoul', can_respond_maybe: true}
-    when 'ranked_choice' then {minimum_stance_choices: 3}
-    when 'score' then {max_score: 9, min_score: 0}
+    when 'ranked_choice' then {choice_count_min: 3}
+    when 'score' then {score_max: 9, score_min: 0}
     else {}
     end
   end
@@ -57,7 +57,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   # Cast stance via service (triggers topic_items/emails, requires open poll)
   # Returns the topic_item from StanceService.update
   def cast_stance(poll, user)
-    if poll.detached_anonymous?
+    if poll.anonymous?
       ballot = poll.anonymous_ballots.build(
         anonymous_ballot_choices_attributes: [
           {poll_option_id: poll.poll_options.first.id, score: 1}
@@ -77,11 +77,11 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   # Save stance directly (no authorization check, for closed polls / display purposes)
   def save_cast_stance(poll, user)
-    return cast_stance(poll, user) if poll.detached_anonymous?
+    return cast_stance(poll, user) if poll.anonymous?
 
     stance = poll.stances.find_by(participant_id: user.id, latest: true)
     return unless stance
-    choice = poll.poll_options.limit(poll.minimum_stance_choices).map.with_index do |option, i|
+    choice = poll.poll_options.limit(poll.choice_count_min).map.with_index do |option, i|
       [option.name, fake_score(poll, i)]
     end.to_h
     stance.update!(choice: choice, cast_at: Time.current)
@@ -145,7 +145,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     topic = @poll.topic
     TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!(email: 'loud', push: 'quiet') if topic
     topic_item = nil
-    if @poll.detached_anonymous?
+    if @poll.anonymous?
       topic_item = cast_stance(@poll, @voter)
     else
       stance = @poll.stances.find_by!(participant_id: @voter.id, latest: true)
@@ -184,7 +184,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     # Clear deliveries so we only see emails from the mention, not poll_announced
     ActionMailer::Base.deliveries.clear
-    if @poll.detached_anonymous?
+    if @poll.anonymous?
       @scenario_observer = @mentioned
       @scenario_actor = @voter
       @email = find_email_for(@mentioned)

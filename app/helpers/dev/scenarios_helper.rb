@@ -43,6 +43,23 @@ module Dev::ScenariosHelper
     }
   end
 
+  def poll_vote_conversation_scenario(params)
+    scenario = poll_created_scenario(params.merge(hide_results: 'off'))
+    poll = scenario[:poll]
+    actor = scenario[:actor]
+    poll.topic.update!(max_depth: 2)
+    stance = poll.stances.latest.find_by!(participant: actor)
+    StanceService.update(stance: stance, actor: actor,
+      params: {choice: poll.poll_options.first.name, reason: 'A vote ready for conversation'})
+    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Existing reply under the vote'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: reply, body: 'Nested reply under the vote'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: poll, body: 'Direct comment under the poll'), actor: actor)
+    CommentService.create(comment: Comment.new(parent: scenario[:discussion], body: 'Discussion comment outside the poll'), actor: actor)
+    # Until-closed polls can contain conversations created before settings changed.
+    poll.update!(hide_results: params[:hide_results])
+    scenario
+  end
+
   def poll_none_of_the_above_scenario(params)
     scenario = poll_created_scenario(params.merge(poll_type: "poll"))
     poll = scenario[:poll]
@@ -68,10 +85,8 @@ module Dev::ScenariosHelper
         group_id: group.id,
         wip: params[:wip]),
       actor: observer)
-    Stance.where(poll_id: poll.id, participant_id: observer.id).delete_all
-
-    stance = fake_stance(poll: poll)
-    StanceService.create(stance: stance, actor: observer)
+    stance = poll.stances.latest.find_by!(participant: observer)
+    StanceService.update(stance: stance, actor: observer, params: cast_stance_params(poll))
 
     PollService.close(poll: poll, actor: observer)
 
@@ -93,9 +108,8 @@ module Dev::ScenariosHelper
     Stance.where(poll_id: poll.id).delete_all
     poll.update_columns(
       anonymous: true,
-      voting_system: Poll.voting_systems.fetch("anonymous_ballot"),
-      voters_count: 1,
-      undecided_voters_count: 0
+      vote_count_eligible: 1,
+      vote_count_uncast: 0
     )
     ballot = AnonymousBallot.create!(
       id: SecureRandom.uuid,
@@ -401,6 +415,7 @@ module Dev::ScenariosHelper
         poll_type: params[:poll_type] || 'proposal',
         anonymous: !!params[:anonymous],
         hide_results: (params[:hide_results] || :off),
+        weighted_voting: !!params[:weighted],
         opening_at: 3.days.from_now.beginning_of_hour,
         closing_at: 10.days.from_now.beginning_of_hour,
         specified_voters_only: true,

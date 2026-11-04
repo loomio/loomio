@@ -145,6 +145,8 @@ de:
     manage_subscription: Manage Subscription
     amount: Menge
   loomio_tags:
+    show_tags_from_other_groups: Schlagwörter anderer Gruppen anzeigen
+    parent_group_and_subgroups_in_this_organization: Hauptgruppe und Untergruppen in dieser Organisation
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
     apply_tags: Schlagwörter übernehmen
@@ -171,7 +173,7 @@ de:
     new_named_tag: Neues Schlagwort "%{name}"
     edit_tags: Schlagwörter bearbeiten
     select_tags: Schlagwörter auswählen
-    merge_tag: Merge-Tag
+    merge_tag: Schlagwort zusammenführen
     merge: Verschmelzen
     merge_into: Zusammenführen mit
     merge_helptext: Füge "%{name}" in ein anderes Tag ein. Threads, die "%{name}" verwenden, verwenden stattdessen das ausgewählte Tag.
@@ -182,16 +184,14 @@ de:
   poll_types:
     proposal: Vorschlag
     count: Opt-in
-    check: Sinneskontrolle
+    check: Stimmungsbild
     poll: Abstimmung
     dot_vote: Punktabstimmung
-    meeting: Zeitumfrage
+    meeting: Terminfindung
     ranked_choice: Prioritäten setzen
-    score: Ergebnis
+    score: Bewertung
     question: Fragerunde
     stv: STV-Wahl
-  timezones:
-    local: Ortszeit (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin-Menü
@@ -254,6 +254,7 @@ de:
       open: Offen
       closed: Geschlossen
       private: Privat
+      parent_members: Für die übergeordnete Gruppe sichtbar
       secret: Geheim
     selected: Ausgewählt
     today: heute
@@ -346,10 +347,11 @@ de:
       unredact: Wiederherstellen
       export_json: JSON exportieren
       import_json: JSON importieren
+      save_as_template: Als Vorlage speichern
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
-    thread: Faden
+    thread: Thread
     commercial: Kommerziell
     nonprofit: Gemeinnützig
     opening_in: Öffnet %{time}
@@ -367,11 +369,18 @@ de:
       flash: Bestättigungsmail geschickt!
       helptext_and_signout: Du kannst das Konto unter <strong>%{sourceEmail}</strong> mit dem Konto unter <strong>%{targetEmail}</strong> zusammenführen. Klicke auf „Bestätigen“. Daraufhin wird eine Bestätigungs-E-Mail an %{targetEmail} gesendet, um den Vorgang zu starten. Du wirst abgemeldet, damit du dich mit dem Zielkonto anmelden und die Zusammenführung abschließen kannst.
       flash_and_signout: Eine Bestätigungs-E-Mail wurde an %{targetEmail} gesendet. Du bist nun abgemeldet und kannst dich mit dem Zielkonto anmelden, um die Zusammenführung abzuschließen.
+      generic_helptext: Geben Sie die E-Mail-Adresse des anderen Kontos ein. Falls dieses Konto existiert, sendet Loomio eine E-Mail mit Anweisungen zur Bestätigung der Zusammenführung.
+      email_label: E-Mail-Adresse des anderen Kontos
+      send_verification: Bestätigungs-E-Mail senden
+      generic_flash_and_signout: Wenn dieses Konto diese E-Mail-Adresse verwendet, wurde eine Bestätigungs-E-Mail versendet. Sie sind nun abgemeldet und können mit dem anderen Konto fortfahren.
+      destination_helptext: Dieses Konto (%{sourceEmail}) wird mit dem Zielkonto zusammengeführt. Geben Sie die E-Mail-Adresse des Zielkontos ein. Falls dieses existiert, sendet Loomio eine Bestätigungs-E-Mail an diese Adresse.
+      destination_email_label: E-Mail-Adresse des Zielkontos
     email_taken: Entschuldige, diese Email ist bereits mit einem anderen Nutzerkonto verbunden. Gehört diese Email zu dir?
     find_out_more: Finde mehr heraus.
     placeholder_modal_text: |
       <p>Wenn du zwei Konten zusammenführen willst, gib einfach die Email-Adresse (des anderen Kontos) in dein Profil Email-Feld ein und folge den dann erscheinenden Anweisungen.</p>
       <p>Brauchst du mehr Hilfe? <a href="/contact" target="_blank">Kontaktiere uns</a>.
+    email_may_belong_to_another_account: Wenn diese Adresse zu einem anderen Konto gehört, können Sie die Konten zusammenführen.
   emoji_picker:
     search: Suchen
     common: 'Oft verwendet '
@@ -530,7 +539,7 @@ de:
     what_the_options_mean: Was die Optionen bedeuten
     when_would_you_like_to_be_emailed_discussion: Wann möchtest du über diese Diskussion per E-Mail informiert werden?
     changes_all_discussions_and_polls_in_group: Dies ändert die Einstellungen für alle Diskussionen und Umfragen in der Gruppe.
-    normal_explained: Wenn jemand deinen Namen im Feld "Benachrichtigen" einer Diskussion oder einer Umfrage eingibt oder die Gruppe mit einem @-Zeichen erwähnt.
+    normal_explained: Wenn jemand deinen Namen im Feld "Benachrichtigen" einer Diskussion oder einer Abstimmung eingibt oder die Gruppe mit {'@'} erwähnt.
     aria_label: Formular zum Ändern der E-Mail-Einstellungen
     when_do_you_want_to_be_emailed_thread: Wann möchtest du über diesen Thread per E-Mail benachrichtigt werden?
     loud_option: Jedes Mal, wenn jemand teilnimmt (Alle Aktivitäten)
@@ -624,7 +633,7 @@ de:
     explore: Öffentliche Gruppen
     explore_groups: Gruppen entdecken
     start_thread: Neue Diskussion
-    start_decision: Neue Abstimmung
+    start_decision: Neue Entscheidung
     more_groups: Mehr Gruppen
     template_gallery: Vorlagengalerie
     examples_and_templates: Beispiele & Vorlagen
@@ -720,7 +729,7 @@ de:
     search_discussions_in_group: Suche Diskussionen in %{name}
     thread_nav: Themenmenü
   user_dropdown:
-    pin_sidebar: Seitenleiste verankern
+    pin_sidebar: Seitenleiste anheften
     unpin_sidebar: Seitenleiste lösen
     enable_beta_features: Experimentelle Features aktivieren
     disable_beta_features: Experimentelle Features deaktivieren
@@ -745,7 +754,7 @@ de:
   membership_card:
     group_members: Mitglieder der Gruppe
     poll_members: "%{pollType} Mitglieder"
-    voters: Wähler*innen
+    voters: Abstimmende
     invite_to_group: zur Gruppe einladen
     invite_to_discussion: zur Diskussion einladen
     invite_to_poll: zur Abstimmung einladen
@@ -769,12 +778,6 @@ de:
     revoke_admin: Administrator widerrufen
     make_delegate: Delegieren
     revoke_delegate: Delegierten widerrufen
-  notification_models:
-    comment: kommentieren in
-    poll: Umfrage
-    outcome: 'Fazit:'
-    stance: 'Abstimmen:'
-    discussion: 'Diskussion:'
   notifications:
     header: Benachrichtigungen
     no_notifications: Es liegen keine Benachrichtigungen vor
@@ -827,9 +830,9 @@ de:
       membership_resent: "%{actor} hat dich eingeladen, einer Gruppe beizutreten"
       membership_requested: "%{actor} hat darum gebeten, deiner Gruppe beizutreten"
       membership_request_approved: "%{actor} hat deine Beitrittsanfrage zu %{title} genehmigt"
-      outcome_announced: "%{actor} hat ein Ergebnis von %{poll_type} geteilt"
-      outcome_created: "%{actor} hat ein Ergebnis von %{poll_type} geteilt"
-      outcome_review_due: Es ist Zeit, das Ergebnis von %{poll_type} zu überprüfen
+      outcome_announced: "%{actor} hat ein Fazit zu %{poll_type} geteilt"
+      outcome_created: "%{actor} hat ein Fazit zu %{poll_type} geteilt"
+      outcome_review_due: Es ist Zeit, das Fazit zu %{poll_type} zu überprüfen
       poll_announced_wip: "%{actor} möchte dein Feedback zu einer %{poll_type}"
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen"
       poll_closing_soon: "%{poll_type} schließt in 24 Stunden"
@@ -837,7 +840,7 @@ de:
       poll_created: "%{actor} hat eine %{poll_type} gestartet"
       poll_edited: "%{actor} hat den %{poll_type} aktualisiert"
       poll_expired: "%{poll_type} wurde abgeschlossen"
-      poll_expired_author: Teile das Ergebnis deines %{poll_type}
+      poll_expired_author: Teile dein Fazit zu %{poll_type}
       poll_option_added: "%{actor} hat Optionen zum %{poll_type} hinzugefügt"
       poll_reopened: "%{actor} hat den %{poll_type} erneut geöffnet"
       poll_reminder: "%{actor} erinnert dich daran, abzustimmen"
@@ -855,7 +858,7 @@ de:
       discussion_closed: "%{actor} hat die Diskussion beendet."
       new_discussion: "%{actor} hat eine Diskussion gestartet"
       new_comment: "%{actor} hat in einer Diskussion kommentiert"
-      outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
+      outcome_updated: "%{actor} hat das Fazit aktualisiert"
       thread_locked: "%{actor} hat den Thread gesperrt"
       membership_request_declined: Deine Anfrage zur Mitgliedschaft in %{title} wurde abgelehnt
     hints:
@@ -885,7 +888,7 @@ de:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
       poll_expired: "%{poll_type} wurde geschlossen: %{title}"
-      poll_expired_author: 'Ergebnis veröffentlichen: %{title}'
+      poll_expired_author: 'Fazit veröffentlichen: %{title}'
       poll_option_added: "%{actor} hat Optionen zu %{title} hinzugefügt."
       poll_reopened: 'Abstimmung verlängert: %{title}'
       poll_reminder: "%{actor} erinnert dich daran, für %{title} abzustimmen."
@@ -897,7 +900,7 @@ de:
       user_added_to_group: "%{actor} hat dich der Gruppe hinzugefügt: %{title}"
       user_mentioned: "%{actor} erwähnte dich in: %{title}"
       group_mentioned: "%{actor} erwähnte die Gruppe in: %{title}"
-      poll_announced: 'Abstimmung: %{title}'
+      poll_announced: 'Stimme ab: %{title}'
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       user_reminded: "%{actor} erinnert dich daran, über Folgendes abzustimmen: %{title}"
@@ -964,7 +967,7 @@ de:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen
     send_poll: "%{type} schicken "
-    send_outcome: 'Ergebnis senden '
+    send_outcome: Fazit senden
     cannot_reveal_when_anonymous: Leider können wir nicht offenlegen, wer an einer anonymen Umfrage teilgenommen hat und wer nicht.
     group_notification_history: Gruppeneinladungen-Verlauf
     poll_notification_history: Umfragebenachrichtigungen-Verlauf
@@ -988,24 +991,24 @@ de:
     new_discussion: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     discussion_announced: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     poll_created: "%{name} hat %{length} Personen zur Umfrage einladen:"
-    outcome_created: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
-    outcome_announced: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
+    outcome_created: "%{name} hat ein Fazit mit %{length} Personen geteilt:"
+    outcome_announced: "%{name} hat ein Fazit mit %{length} Personen geteilt:"
     announcement_created: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     discussion_edited: "%{name} hat die Diskussion bearbeitet und %{length} Personen darüber benachrichtigt:"
     poll_edited: "%{name} hat eine Abstimmung bearbeitet und %{length} Personen darüber benachrichtigt:"
-    outcome_edited: "%{name} hat ein Ergebnis bearbeitet und %{length} Personen darüber benachrichtigt:"
-    outcome_updated: "%{name} hat ein Ergebnis bearbeitet und %{length} Personen darüber benachrichtigt:"
-    poll_closing_soon: 'Die Erinnerung an die Schließung der Umfrage von %{name} hat %{length} Personen benachrichtigt:'
+    outcome_edited: "%{name} hat ein Fazit bearbeitet und %{length} Personen darüber benachrichtigt:"
+    outcome_updated: "%{name} hat ein Fazit bearbeitet und %{length} Personen darüber benachrichtigt:"
+    poll_closing_soon: 'Die Erinnerung an das Ende der Abstimmung von %{name} hat %{length} Personen benachrichtigt:'
     poll_reminder: "%{name} hat %{length} Personen daran erinnert zu wählen:"
     audiences:
       group: Mitglieder von %{name}
       everyone_in_the_group: Jeder in der Gruppe
       topic: Jeder in der Diskussion
       voters: Alle zur Abstimmung Eingeladenen
-      decided_voters: Alle, die abgestimmt haben
-      undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
       delegates_of_group: Delegierte von %{name}
+      everyone_who_voted: Alle, die abgestimmt haben
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     form:
       group_has_no_members_yet: Du bist das einzige Mitglied deiner Gruppe. Möglicherweise möchtest du einige Personen in deine Gruppe einladen, bevor du einen Thread oder eine Entscheidung startest.
       invite_people_to_evaluate_loomio: Lade einige Leute in deine Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
@@ -1047,7 +1050,7 @@ de:
         title: Über Änderungen benachrichtigen
         helptext: Wen möchtest du über diese Aktualisierung benachrichtigen?
       outcome_announced:
-        title: Ergebnis bekanntgeben
+        title: Fazit bekanntgeben
         helptext: Fasse die Ergebnisse des Prozesses zusammen, einschließlich aller neuen Erkenntnisse oder aufgedeckten Probleme.
       anyone_can_participate: Alle, die Zugriff auf den Link haben, können abstimmen
       placeholder: Du kannst Namen oder E-Mail-Adressen eingeben
@@ -1077,7 +1080,7 @@ de:
       has_not_read_thread: Hat den Thread nicht angesehen
       has_not_joined_yet: Ist noch nicht beigetreten
       has_not_joined_yet_hint: Dieser Benutzer hat die Einladung zur Teilnahme an Loomio nicht angenommen und erhält keine weiteren Benachrichtigungen, bis er dies tut.
-      discussion_admin: Diskussionsadministrator
+      discussion_admin: Diskussionsadmin
       has_not_read_discussion: Hat die Diskussion nicht angesehen
     group_form:
       search_placeholder: Nach Personen suchen...
@@ -1091,6 +1094,8 @@ de:
     topic_notification_history: Thread-Benachrichtigungsverlauf
     notification_history: Benachrichtigungsverlauf
   action_dock:
+    add_to_timeline: Zur Timeline hinzufügen
+    remove_from_timeline: Aus Timeline entfernen
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
     react: Reagieren
@@ -1103,13 +1108,13 @@ de:
     announce_thread: Diskussion teilen
     invite_guests: Gäste einladen
     translate_thread: Beschreibung übersetzen
-    edit_poll: Umfrage bearbeiten
+    edit_poll: Abstimmung bearbeiten
     edit_poll_type: Bearbeite %{pollType}
     new_poll_type: Neu %{pollType}
     move_items: Einträge bewegen
     announce_poll: Personen zur Umfrage einladen
     announce_poll_active: "(bis jetzt wurde niemand eingeladen)"
-    translate_poll: Umfrage übersetzen
+    translate_poll: Abstimmung übersetzen
     edit_stance: Stimme ändern
     translate_stance: Stimme übersetzen
     edit_comment: Kommentar bearbeiten
@@ -1117,10 +1122,10 @@ de:
     reply_to_comment: Antworten
     fork_comment: Diskussion spalten
     translate_comment: Kommentar übersetzen
-    edit_outcome: Ergebnis bearbeiten
-    announce_outcome: Andere über dieses Ergebnis benachrichtigen
-    announce_outcome_active: "(Bisher wurde noch niemand über dieses Ergebnis benachrichtigt)"
-    translate_outcome: Ergebnis übersetzen
+    edit_outcome: Fazit bearbeiten
+    announce_outcome: Andere über dieses Fazit benachrichtigen
+    announce_outcome_active: "(Bisher wurde noch niemand über dieses Fazit benachrichtigt)"
+    translate_outcome: Fazit übersetzen
     show_history: Bearbeitungsverlauf anzeigen
     edited: Bearbeitet
     show_edits: Zeige Bearbeitungen
@@ -1141,7 +1146,7 @@ de:
     move_item: Eintrag bewegen
     add_poll_to_thread: Zur Diskussion hinzufügen
     count_members: "%{count} Mitglieder "
-    count_voters: "%{count} Wähler"
+    count_voters: "%{count} Abstimmende"
     pin_discussion: Diskussion anpinnen
     unpin_discussion: Diskussion abpinnen
     delete_discussion: Diskussion löschen
@@ -1167,8 +1172,11 @@ de:
     copy_markdown: Markdown kopieren
     copy_markdown_description: Kopiere den Thread als strukturiertes Markdown – ideal für die Verwendung mit einem KI-Agenten oder zum Erstellen eines einfachen Dokuments aus dem Thread-Inhalt.
     thread_markdown_copied: Thread-Markdown kopiert
-    move_thread_v2: Thema verschieben
+    move_thread_v2: Thread verschieben
     more: Mehr
+    download_markdown: Markdown herunterladen
+    markdown: Markdown
+    vote_before_export: Stimme vor dem Export ab. In diesem Thread gibt es eine Umfrage, deren Ergebnisse erst nach deiner Stimmabgabe sichtbar sind.
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -1324,7 +1332,7 @@ de:
     options:
       label: Optionen
       edit_group: Gruppeneinstellungen bearbeiten
-      become_coordinator: Gruppenmoderator werden
+      become_coordinator: Admin werden
       export_data: Gruppendaten exportieren
       export_data_as_json: Gruppendaten exportieren als JSON
       export_data_as_csv: Gruppendaten exportieren als CSV
@@ -1341,7 +1349,7 @@ de:
       loud_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Laut". Du wirst per E-Mail benachrichtigt, sobald etwas in der Gruppe geschieht.
       loud_message: Du wirst über alles in "%{name}" per E-Mail benachrichtigt.
       normal: 'Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc.'
-      normal_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe stehen derzeit auf "Normal". Du wirst per E-Mail über wichtige Meldungen informiert, z. B. wenn jemand eine neue Diskussion beginnt, eine Abstimmung eröffnet oder ein Abstimmungsergebnis bekanntgibt.
+      normal_aria_description: Deine Benachrichtigungseinstellungen für diese Gruppe stehen derzeit auf "Normal". Du wirst per E-Mail über wichtige Aktivitäten informiert, z. B. wenn jemand einen neuen Thread beginnt, einen Vorschlag einbringt oder ein Fazit veröffentlicht.
       normal_message: Du wirst in "%{name}" nur über wichtige Geschehnisse per E-Mail benachrichtigt.
       quiet: Keine E-Mail-Benachrichtigungen für diese Gruppe senden. Aktivitäten werden auf dem Dashboard angezeigt.
       quiet_aria_description: Deine Benachrichtigungseinstellung für diese Gruppe ist auf "Leise" gestellt. Du erhältst keine Benachrichtigungen über Aktivitäten in dieser Gruppe. Aktivitäten werden aber im Dashboard angezeigt.
@@ -1432,6 +1440,9 @@ de:
     confirm_change_to_public: Wenn du fortfährst alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
     profile: Profil
+    subgroup_name_and_content_are_public: Alle können diese Untergruppe finden und ihre Threads lesen
+    subgroup_name_is_public_and_threads_are_private: Alle können diese Untergruppe finden; ihre Threads sind privat
+    subgroup_is_visible_to_parent_members: Mitglieder von %{parent} können diese Untergruppe finden; ihre Threads sind privat
     subgroup_privacy_is_open_description: Jeder kann diese Gruppe finden und dich nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind öffentlich.
     subgroup_privacy_is_closed_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Alle Diskussionen sind privat.
     subgroup_privacy_is_closed_public_threads_description: Jeder kann diese Untergruppe finden und nach Beitritt fragen. Nur Mitglieder können sehen wer in der Gruppe ist. Diskussionen können öffentlich oder privat sein.
@@ -1439,10 +1450,9 @@ de:
     subgroup_privacy_is_secret_description: Nur eingeladene Mitglieder können diese Untergruppe finden und die Teilnehmer und Diskussionsbeiträge sehen.
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann man teilnehmen?
-    membership_granted_upon_request: Die Gruppe ist zugänglich für alle.
-    membership_granted_upon_approval: Jeder kann um Beitritt bitten. Dieser wird dann geprüft.
-    membership_granted_upon_invitation: Nur Einladungen.
-    membership_granted_upon_approval_secret_parent: Jede.r von %{parent} kann<strong>auf Anfrage</strong> um Aufnahme in die Gruppe bitten.
+    join_without_approval: Ohne Genehmigung beitreten
+    request_to_join: Beitritt anfragen
+    invitation_only: Nur auf Einladung
     permissions: Berechtigungen
     thread_privacy: Diskussions-Sichtbarkeit
     public_threads: Nur öffentliche Diskussionen
@@ -1450,10 +1460,10 @@ de:
     public_or_private_threads: Öffentliche und private Diskussionen erlauben
     private_threads: Nur Mitglieder können Diskussionen sehen
     allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
-    parent_members_can_see_discussions: Mitglieder von %{parent} können private Diskussionen sehen
-    parent_members_can_see_discussions_help: Mitgliedern der übergeordneten Gruppe erlauben, Diskussionen und Umfragen innerhalb dieser Gruppe zu sehen, aber nicht daran teilzunehmen
+    parent_group_members_can_see_private_threads: Mitglieder der Hauptgruppe können private Threads sehen
+    parent_group_members_can_see_private_threads_help: Erlaube Mitgliedern von %{parent}, Threads und Abstimmungen in dieser Gruppe zu sehen, ohne daran teilzunehmen
     members_can_announce: Mitglieder können alle Mitglieder der Gruppe benachrichtigen
-    members_can_announce_help: Mitgliedern erlauben, alle Mitglieder der Gruppe über ein Thema oder eine Umfrage zu benachrichtigen
+    members_can_announce_help: Mitgliedern erlauben, alle in der Gruppe über einen Thread oder eine Abstimmung zu benachrichtigen
     members_can_add_members: Mitglieder können andere Mitglieder einladen
     members_can_add_members_help: Erlaube Mitgliedern, andere Mitglieder in diese Gruppe einzuladen
     members_can_add_guests: Mitglieder können Gäste einladen
@@ -1614,8 +1624,9 @@ de:
     title_helptext:
       group: Dieser Titel wird neben dem Namen von %{name} angezeigt, um die offizielle Funktion innerhalb der Gruppe näher zu beschreiben.
     title_label: Titel
-    title_placeholder: z. B. "Projektkoordinator" oder "Moderator"
+    title_placeholder: Z. B. „Admin“ oder „Moderator“
     updated: Mitgliedstchaftstitel überarbeitet
+    weight_label: Stimmgewicht
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen
@@ -1671,6 +1682,7 @@ de:
     updated_on_sign_in: Wird von deinem Browser bereitgestellt und aktualisiert, wenn du dich anmeldest
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
     bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
+    translations_are_made_by_machine: Die Übersetzungen werden maschinell erstellt. Wenn ein Wort falsch oder unklar ist, schreib an %{email} und wir korrigieren es.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wähle den zu verlinkenden Text aus und versuche es erneut
@@ -1678,7 +1690,6 @@ de:
     insert_embedded_url: Video einfügen
   change_picture_form:
     title: Profilbild ändern
-    helptext: Du kannst ein eigenes Profilbild hochladen oder ein <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>-Konto verwenden (sofern vorhanden).
     use_initials: Initialien verwenden
     use_gravatar: Gravatar verwenden
     use_uploaded: Neues Profilbild hochladen
@@ -1772,7 +1783,7 @@ de:
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
-      dropdown_heading: Aktuelles filtern
+      dropdown_heading: Übersicht filtern
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
       proposals: Vorschläge
@@ -1784,7 +1795,6 @@ de:
       all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
-      undecided: Du bist unentschlossen
     threads_from:
       group: Diskussionen von
       pinned: Angeheftete Diskussionen
@@ -1800,7 +1810,7 @@ de:
     view_recent: Alle aktuellen Diskussionen ansehen?
     discussion_marked_as_read: Diskussion als gelesen markiert
     discussion_marked_as_unread: Diskussion als ungelesen markiert
-    polls_to_vote_on_count: Umfragen zur Abstimmung (%{count})
+    polls_to_vote_on_count: Abstimmungen, bei denen du abstimmen kannst (%{count})
   threads_page:
     no_direct_threads: Du hast keine direkten Diskussionen
     no_invite_only_threads: Es gibt keine Threads, die nur auf Einladung zugänglich sind.
@@ -1841,8 +1851,8 @@ de:
       unmute_message: Diskussion stummgeschaltet
     direct: Direkt
     locked:
-      unlocked: Thema entsperrt
-      locked: Thema gesperrt
+      unlocked: Thread entsperrt
+      locked: Thread gesperrt
   discussion_last_seen_by:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
@@ -1863,8 +1873,8 @@ de:
     n_previous: Lade %{count} vorherige Antworten
     n_more: Lade %{count} Antworten
     add_comment: 'Kommentar hinzufügen '
-    add_poll: Umfrage hinzufügen
-    add_outcome: Ergebnis hinzufügen
+    add_poll: Abstimmung hinzufügen
+    add_outcome: Fazit hinzufügen
     comment: Kommentieren
     facilitate: Ermöglichen
     start_decision: Entscheidung starten
@@ -1909,6 +1919,8 @@ de:
     comment_length_max_help: Lassen Sie dieses Feld leer, wenn keine Themenbeschränkung gewünscht ist
     comment_length_max_description: Fördern Sie prägnante Kommentare, indem Sie eine maximale Länge festlegen
     comment_length_max_hint: Maximale Zeichenanzahl pro Kommentar. Für keine Zeichenbegrenzung leer lassen.
+    only_admins_can_add_attachments: Nur Admins können Anhänge hinzufügen
+    only_one_poll_at_a_time: Nur eine Abstimmung gleichzeitig
   delete_thread_form:
     title: Diskussion löschen
     body: Möchtest du diesen Thread wirklich löschen?
@@ -1967,12 +1979,12 @@ de:
     recommended: Empfohlen
     question_title: Fragerunde
     advice_title: Beratung
-    consent_title: Zustimmung
+    consent_title: Konsent
     consensus_title: Konsens
     proposal_title: Vorschläge
     count_title: Opt-in
-    check_title: Sinnesprüfung
-    poll_title: Umfrage
+    check_title: Stimmungsbild
+    poll_title: Abstimmung
     meeting: Treffen
     score_title: Bewertung
     dot_vote_title: Punktabstimmung
@@ -1991,7 +2003,7 @@ de:
     please_select_an_icon: Bitte wähle ein Symbol aus
     meaning_hint: Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet
     prompt: Grundaufforderung
-    prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
+    prompt_hint: Eine Frage, die Abstimmende anregt, ihre Begründung zu teilen oder ihre Position zu überdenken. Optional
     thumb_up: Daumen hoch
     thumb_down: Daumen runter
     thumb_sideways: Daumen seitlich
@@ -2012,6 +2024,19 @@ de:
     vote_share_requirement: Stimmenanteilsanforderung
     for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
     for_the_poll_to_be_valid: Damit %{poll_type} gültig ist, muss diese Option … erhalten.
+    points_cast: Vergebene Punkte
+    eligible_vote_weight: Stimmgewicht der Stimmberechtigten
+    vote_weight_cast: Abgegebenes Stimmgewicht
+    name_gte_eligible_vote_weight: "%{name} benötigt mindestens %{percent}% des Stimmgewichts der Stimmberechtigten"
+    name_lte_eligible_vote_weight: "%{name} darf %{percent}% des Stimmgewichts der Stimmberechtigten nicht überschreiten"
+    name_gte_vote_weight_cast: "%{name} benötigt mindestens %{percent}% des abgegebenen Stimmgewichts"
+    name_lte_vote_weight_cast: "%{name} darf %{percent}% des abgegebenen Stimmgewichts nicht überschreiten"
+    total_assigned_vote_weight: Gesamtes zugewiesenes Stimmgewicht
+    weighted_votes_cast: Abgegebene gewichtete Stimmen
+    name_gte_assigned_vote_weight: "%{name} benötigt mindestens %{percent}% des gesamten zugewiesenen Stimmgewichts"
+    name_lte_assigned_vote_weight: "%{name} darf %{percent}% des gesamten zugewiesenen Stimmgewichts nicht überschreiten"
+    name_gte_weighted_votes_cast: "%{name} benötigt mindestens %{percent}% der abgegebenen gewichteten Stimmen"
+    name_lte_weighted_votes_cast: "%{name} darf %{percent}% der abgegebenen gewichteten Stimmen nicht überschreiten"
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -2019,7 +2044,7 @@ de:
     categorize_poll_templates: Umfragevorlagen kategorisieren
     show_all_templates_in_one_list: Alle Vorlagen in einer Liste anzeigen
     advice_process: Beratungsprozess
-    consent_process: Einwilligungsprozess
+    consent_process: Konsentverfahren
     consensus_process: Konsensprozess
     question_round: Fragerunde
     edit_template: Vorlage bearbeiten
@@ -2028,8 +2053,8 @@ de:
     proposal_templates: Angebotsvorlagen
     custom: Brauch
     custom_process: Benutzerdefinierter Prozess
-    custom_poll: Benutzerdefinierte Umfrage
-    delete_poll: Umfrage löschen
+    custom_poll: Benutzerdefinierte Abstimmung
+    delete_poll: Abstimmung löschen
     select_count_options: Wähle %{count} Optionen aus
     select_minimum_to_maximum_options: Wähle die Optionen %{minimum} bis %{maximum} aus
     custom_poll_types: Benutzerdefinierte Umfragetypen
@@ -2044,11 +2069,11 @@ de:
     edit_poll_template: Umfragevorlage bearbeiten
     new_poll_type: Neuer Umfragetyp
     edit_poll_type: Umfragetyp bearbeiten
-    new_custom_poll: Neue benutzerdefinierte Umfrage
-    edit_custom_poll: Benutzerdefinierte Umfrage bearbeiten
+    new_custom_poll: Neue benutzerdefinierte Abstimmung
+    edit_custom_poll: Benutzerdefinierte Abstimmung bearbeiten
     create_a_custom_poll_type: Erstelle einen neuen Umfragetyp mit benutzerdefinierter Terminologie und Einstellungen
     create_a_custom_process: Erstelle einen neuen Prozess mit deiner eigenen Terminologie und Optionen
-    create_a_custom_poll: Erstelle eine Umfrage mit benutzerdefinierter Terminologie und Einstellungen
+    create_a_custom_poll: Erstelle eine Abstimmung mit benutzerdefinierter Terminologie und Einstellungen
     decision: Entscheidung
     decision_templates: Entscheidungsvorlagen
     remove_your_vote: Entferne deine Stimme
@@ -2072,8 +2097,8 @@ de:
     participate: 'Teilnehmen '
     vote: Abstimmen
     votes: Abstimmungsbeiträge
-    update_outcome: Ergebnis aktualisieren
-    outcome: Abstimmungsergebnis
+    update_outcome: Fazit aktualisieren
+    outcome: Fazit
     outcomes: Ergebnisse
     statement: Einschätzung
     change_your_stance: Antwort bearbeiten
@@ -2090,17 +2115,17 @@ de:
     share_count: Bestätigung teilen
     start_poll: Entscheidung vorbereiten
     publish_poll: Abstimmung teilen
-    share_outcome: Ergebnis bekanntgeben
+    share_outcome: Fazit teilen
     view_all: Alles sehen
     save_changes: Speichern
     change_vote: Ändere deine Stimmabgabe
     change_response: Antwort ändern
-    max_score: Maximale Ergebnis
-    min_score: Minimale Ergebnis
+    max_score: Höchste Bewertung
+    min_score: Niedrigste Bewertung
     too_long: Zu lang
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese %{pollType} und beginne eine neue. '
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
-    post_outcome: Ergebnis veröffentlichen
+    post_outcome: Fazit veröffentlichen
     view_all_votes: Alle Abstimmungen ansehen
     you_voted: Du hast abgestimmt
     these_are_templates: Dies sind die Entscheidungsvorlagen deiner Gruppe. Klicke auf eine Vorlage, um eine neue Entscheidung zu erstellen. Administratoren können alle Details einer Vorlage anpassen, sodass sie den Vorgehensweisen deiner Organisation entspricht und für Mitglieder leicht auffindbar und nutzbar ist.
@@ -2108,7 +2133,7 @@ de:
     example_poll_templates: Beispielvorlagen für Umfragen
     browse_example_templates: Beispielvorlagen ansehen
     browse_example_templates_hint: Erstelle eine neue Umfragevorlage von Grund auf oder verwende ein Beispiel als Ausgangspunkt.
-    browse_example_use_hint: Klicke auf den Vorlagentitel, um <b>eine Umfrage zu starten</b> .
+    browse_example_use_hint: Klicke auf den Vorlagentitel, um <b>eine Abstimmung zu starten</b>.
     browse_example_fork_hint: "<b>Klicke auf das Gabelsymbol</b> , um eine neue Umfragevorlage zu erstellen. Das Beispiel dient dabei als Ausgangspunkt."
     browse_unsure_help: Du bist dir nicht sicher, wie du Umfragevorlagen verwendest?
     all_templates_hidden: Alle Vorlagen wurden ausgeblendet
@@ -2117,11 +2142,21 @@ de:
     new_template_from_blank_subtitle: Erstelle eine neue Vorlage, die zu einem Prozess in deiner Organisation passt.
     blank: Neu
     blank_subtitle: Erstelle eine neue Umfragevorlage für einen bestimmten Prozess
-    start_a_poll: Starte eine Umfrage
+    start_a_poll: Starte eine Abstimmung
     export_blt: Wahlzettel exportieren (BLT)
     status: Status
     your_vote_is_requested: Deine Stimme wird erbeten.
     browse_example_make_a_copy_hint: "<b>Klicke auf das Kopiersymbol</b>, um eine neue Umfragevorlage zu erstellen und das Beispiel als Ausgangspunkt zu verwenden"
+    view_votes: Stimmen ansehen
+    weighted_votes: Gewichtete Stimmen
+    weighted_points: Gewichtete Punkte
+    pct_of_weighted_votes: "% der gewichteten Stimmen"
+    pct_of_weighted_points: "% der gewichteten Punkte"
+    weighted_mean: Gewichteter Mittelwert
+    pct_of_eligible_vote_weight: "% des Stimmgewichts der Stimmberechtigten"
+    pct_of_vote_weight_cast: "% des abgegebenen Stimmgewichts"
+    pct_of_assigned_vote_weight: "% des zugewiesenen Stimmgewichts"
+    reuse_voting_options_and_settings: Mit Vorlagen können alle in deiner Gruppe Optionen, Erklärungen und Einstellungen wiederverwenden. Prüfe die Beispielinhalte vor dem Speichern und wähle dann die Vorlage, wenn du eine neue Abstimmung startest
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2190,14 +2225,16 @@ de:
     delegate: Delegieren
     delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
     delegates: Delegierte
+    edit_vote_weights: Stimmgewichte bearbeiten
+    vote_weights_are_defaults: Diese Standardgewichtungen gelten für neue Abstimmungen. Änderungen hier haben keine Auswirkungen auf bereits vergebene Gewichtungen.
   polls_panel:
-    new_poll: Neue Umfrage
+    new_poll: Neue Abstimmung
     any_type: Alle Typen
     any_status: Alle Stati
     all: Alle
     open: Offen
     closed: Geschlossen
-    need_vote: Brauchst du eine Abstimmung
+    need_vote: Stimme ausstehend
     no_polls: 'Keine Umfragen gefunden '
   group_files_panel:
     no_files: 'Keine Dateien gefunden '
@@ -2225,23 +2262,24 @@ de:
     basic_templates: Grundlegende Vorlagen
     anonymous: Stimmabgaben sind anonym
     results_hidden_until_closed: Die Ergebnisse werden nach Abschluss der Abstimmung angezeigt
-    results_hidden_until_vote: Die Ergebnisse werden nach Ihrer Abstimmung angezeigt
+    results_hidden_until_vote: Die Ergebnisse werden angezeigt, nachdem du abgestimmt hast
     draft_mode: Abstimmung deaktiviert. Hier kann noch nicht abgestimmt werden.
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
-    unable_to_vote: Du wurdest nicht zur Abstimmung über diesen %{poll_type} eingeladen.
+    unable_to_vote: Du wurdest nicht zum Abstimmen eingeladen (%{poll_type})
     anonymous_votes_are_stored_separately_from_voter_identities: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht.
     anonymous_vote_cannot_be_changed: Du kannst deine Stimme nach dem Absenden nicht mehr überprüfen oder ändern
     anonymous_vote_recorded: Deine Stimme wurde erfasst
     legacy_vote_reasons: Begründungen früherer Stimmen
     legacy_vote_reasons_description: Die Begründungen der im alten anonymen Abstimmungsformat abgegebenen Stimmen werden als reiner Text angezeigt
     anonymous_voting_participant_notice: Die Abstimmung ist anonym. Du kannst deine Stimme nach dem Absenden weder einsehen noch ändern. Die Ergebnisse sind erst nach Ende der Abstimmung verfügbar.
+    votes_have_different_weights: Bei dieser Umfrage haben die einzelnen Stimmen unterschiedliche Gewichtungen, manche zählen mehr als andere.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
-    calendar_invite: Kalendereinladung zu diesem Ergebnis hinzufügen
+    calendar_invite: Kalendereinladung zu diesem Fazit hinzufügen
     poll_option_id: Meeting-Zeit
     helptext_on: Benutzer können dieses Meeting zu ihrem Kalender hinzufügen
     helptext_off: Es wird keine Besprechungseinladung gesendet
@@ -2254,7 +2292,7 @@ de:
     location_placeholder: Wo wird das Meeting stattfinden?
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
-    helptext: Bist du sicher, dass du diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchtest?
+    helptext: Bist du sicher, dass du diese %{poll_type} vorzeitig schließen und ein Fazit teilen möchtest?
     close_poll_type: Schließen %{poll_type}
     poll_type_closed: "%{poll_type} geschlossen"
   poll_common_reopen_form:
@@ -2276,62 +2314,54 @@ de:
     this_is_ready_for_voting: Dieser %{poll_type} ist zur Abstimmung bereit
   poll_common_closing_at_field:
     closing: Schluss
-    no_closing_date: Kein Abschlussdatum
-    closing_date: Abschlussdatum
+    no_closing_date: Kein Enddatum
+    closing_date: Enddatum
     closing_hour: 'Endet am  '
     invalid_date: Ungültiges Datum
   poll_card:
     poll_type_by_name: "%{poll_type} von %{name}"
     started_by: Erstellt von %{name}
   poll_common_votes_panel:
-    vote_removed: Abstimmung entfernt
-    undecided: Unentschieden
+    vote_removed: Stimme entfernt
     newest_first: Neueste zuerst
     oldest_first: Älteste zuerst
     priority_first: Zustimmende zuerst
     priority_last: Ablehnende zuerst
-    undecided_first: Unentschlossene zuerst
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
     name_or_username: Name oder Benutzername
-    cast: Abgegeben
-    uncast: Nicht abgegeben
     reason_redacted: Grund geschwärzt
     redact_reason_title: Grund für die Schwärzungsabstimmung?
-    redact_reason_helptext: Der Begründungstext und die Anhänge werden ausgeblendet, die Abstimmung bleibt jedoch im Ergebnis sichtbar.
+    redact_reason_helptext: Der Begründungstext und die Anhänge werden ausgeblendet, die Stimme bleibt jedoch im Ergebnis sichtbar
     redact_reason_confirm: Grund für die Schwärzung
     redact_reason_success: Abstimmungsgrund geschwärzt
     unredact_reason_title: Abstimmungsgrund wiederherstellen?
     unredact_reason_helptext: Der Grundtext und die Anhänge werden wieder sichtbar gemacht.
     unredact_reason_confirm: Wiederherstellungsgrund
     unredact_reason_success: Abstimmungsgrund wiederhergestellt
-  poll_common_undecided_panel:
-    show_undecided: Zeige %{count} unentschlossen
-    show_invitations: Ausstehende Einladungen anzeigen
-    undecided_users: Unentschlossen (%{count})
-    invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
-    invitation_count_plural: "%{count} weitere Personen wurden per E-Mail zur Teilnahme eingeladen"
-  poll_common_undecided_user:
-    reminded: Erinnerung gesendet!
-    reminder_sent: Erinnerungsbenachrichtigung gesendet
+    all_voters: Alle Abstimmenden
+    vote_weight_column: Stimmgewicht
+    stance: Stimme
+    participation_records_restricted: Du kannst nach Schließung der Abstimmung sehen, wer teilgenommen hat
+    vote_weight: Stimmgewicht %{weight}
   poll_common_set_outcome_panel:
     enter_outcome: Abstimmungsergebnis eingeben
     poll_type: Dieser %{poll_type} wurde geschlossen. Nimm dir Zeit, über die Ergebnisse nachzudenken und teile dann ein Ergebnis mit, damit die Leute wissen, was als nächstes passieren wird.
-    enter_an_outcome: Ergebnis eingeben
+    enter_an_outcome: Fazit eingeben
   poll_common_outcome_form:
     review_due_in_days: Überprüfe die Entscheidung nach wie vielen Tagen?
     review_date: Prüfungsdatum
     review_date_hint: Lege einen Termin für die Überprüfung der Entscheidung fest (optional)
-    who_to_notify: Wen möchtest du über dieses Ergebnis informieren? (Optional)
+    who_to_notify: Wen möchtest du über dieses Fazit informieren? (Optional)
     outcome_statement_template: Vorlage für eine Ergebniserklärung
-    new_title: 'Ergebnis einfügen '
-    update_title: Abstimmungsergebnis aktualisieren
-    outcome_created: Ergebnis erschaffen
-    outcome_updated: Ergebnis aktualisiert
+    new_title: Fazit teilen
+    update_title: Fazit aktualisieren
+    outcome_created: Fazit erstellt
+    outcome_updated: Fazit aktualisiert
     statement_placeholder: Fasse das Abstimmungsergebnis zusammen und gebe bekannt, was als nächstes passieren wird.
     you_will_be_notified: Du wirst am Überprüfungsdatum benachrichtigt.
-    submit: Ergebnis bekanntgeben
+    submit: Fazit bekanntgeben
     review_due_in_days_hint: Anzahl der Tage, die vor der Überprüfung der Entscheidung gewartet werden soll (optional).
     statement_template_hint: Stelle eine Vorlage zum Aufschreiben des Ergebnisses der Entscheidung bereit. (optional)
     statement_template_placeholder: Vielen Dank für deine Teilnahme! Das Quorum wurde erreicht und wir haben Unterstützung, um fortzufahren.
@@ -2343,7 +2373,7 @@ de:
     success: Erfolgreich gelöscht
   poll_proposal_form:
     start_header: Abstimmung starten
-    edit_header: Angebot bearbeiten
+    edit_header: Vorschlag bearbeiten
     title_placeholder: z. B. Lasst uns zum Mond fliegen!
     details_placeholder: Wie lauten die Einzelheiten deines Vorschlags?
     proposal_created: Vorschlag gestartet
@@ -2362,8 +2392,8 @@ de:
     transcript_included: Ein Transkript der Aufzeichnung wird Ihrer Nachricht beigefügt
   poll_poll_form:
     multiple_choice_subtitle: Eine einfache Möglichkeit, die Beliebtheit von Optionen einzuschätzen
-    start_header: Umfrage beginnen
-    edit_header: Umfrage bearbeiten
+    start_header: Abstimmung beginnen
+    edit_header: Abstimmung bearbeiten
     tip: Biete eine Options-Auswahl an
     title_placeholder: z. B. In welchem Land wollen wir unseren Urlaub verbringen?
     details_placeholder: Zusätzliche Details, die die Teilnehmer benötigen, um die Abstimmungsfrage beantworten zu können.
@@ -2371,10 +2401,10 @@ de:
     new_option: Neue Option
     add_option_hint: Gib einen Kurznamen für die Option ein
     remove_option: Option entfernt
-    poll_created: Umfrage erschaffen
-    poll_updated: Umfrage aktualisiert
+    poll_created: Abstimmung erstellt
+    poll_updated: Abstimmung aktualisiert
     option_added: Option hinzugefügt
-    option_already_added: Option bereits zur Umfrage hinzugefügt
+    option_already_added: Option bereits zur Abstimmung hinzugefügt
   poll_dot_vote_form:
     dots_per_person: Punkte pro Person
     dots_per_person_helptext: Die Gesamtanzahl an Punkten, die jede Person vergeben soll.
@@ -2394,7 +2424,7 @@ de:
     minimum_stance_choices_hint: Das heißt, bewerte deine drei besten Eissorten
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
-    rank: Rang
+    rank: Ordnen
     points: Punkte
     average: Durchschnitt
     mean: Bedeuten
@@ -2403,8 +2433,8 @@ de:
     pct_of_votes_cast: "% der abgegebenen Stimmen"
     pct_of_voters: "% der Wahlberechtigten"
     number_of_choices: Anzahl der Auswahlmöglichkeiten
-    how_many_ranking_positions_explained: 'Beispiel: Bei der Einstellung 3 kann jeder Wähler drei Optionen bewerten. Die erste Wahl erhält 3 Punkte, die zweite 2 und die dritte 1 Punkt. Alle nicht bewerteten Optionen erhalten 0 Punkte.'
-    minimum_stance_choices_helptext: Wie viele Auswahlmöglichkeiten hat jeder Wähler?
+    how_many_ranking_positions_explained: 'Beispiel: Bei der Einstellung 3 können alle Abstimmenden drei Optionen in eine Rangfolge bringen. Die erste Wahl erhält 3 Punkte, die zweite 2 und die dritte 1 Punkt. Alle Optionen ohne Rang erhalten 0 Punkte.'
+    minimum_stance_choices_helptext: Wie viele Auswahlmöglichkeiten haben die einzelnen Abstimmenden?
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster
@@ -2422,11 +2452,11 @@ de:
     select_an_option: Wähle eine Option
     'yes': Ja
     'no': Nein
-    agree: Dafür
-    consent: Zustimmung
+    agree: Zustimmung
+    consent: Konsent
     abstain: Enthaltung
     unsure: Unsicher
-    disagree: Dagegen
+    disagree: Widerspruch
     objection: Einwand
     object: Objekt
     block: Veto
@@ -2448,13 +2478,17 @@ de:
     votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
     quorum_reached: Quorum von %{pct}% wurde erreicht
     pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Wahlbeteiligung)"
+    pct_vote_weight_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des Stimmgewichts)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% des Stimmgewichts der Stimmberechtigten müssen abgegeben werden"
+    pct_weighted_participation: "%{num} von %{total} Stimmen abgegeben (%{pct}% des zugewiesenen Stimmgewichts abgegeben)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden"
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:
     title: Deine Stimme entfernen?
-    helptext: Bist du sicher, dass du deine Stimme entfernen möchtest? Du wirst als unentschlossen aufgeführt und kannst auf Wunsch später noch einmal abstimmen.
     confirm: Stimme entfernen
-    success: Abstimmung entfernt
+    success: Stimme entfernt
+    helptext_not_voted: Möchtest du deine Stimme wirklich entfernen? Dein Status wird „Noch nicht abgestimmt“ und du kannst später erneut abstimmen, wenn du möchtest.
   poll_poll_vote_form:
     stance_created: Wahl erstellt
     stance_updated: Wahl aktualisiert
@@ -2492,7 +2526,7 @@ de:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die Diskussion geschlossen"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die Diskussion wiedereröffnet"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat ein Ergebnis geteilt "
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat ein Fazit geteilt"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die/das %{polltype} wieder geöffnet"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die/das %{polltype} geschlossen"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat ein/eine %{polltype} gestartet"
@@ -2500,7 +2534,7 @@ de:
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat Optionen zu %{polltype} ergänzt"
     poll_expired: "%{polltype} beendet"
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat abgestimmt zu: <strong>%{title}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat seine Abstimmung aktualisiert am: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat die eigene Stimme aktualisiert zu: <strong>%{title}</strong>"
     event_removed: Von der Diskussion entfernt
     new: neu
     thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat den Thread gesperrt."
@@ -2523,9 +2557,11 @@ de:
     sign_up_as: Erstelle Benutzerkonto als %{email}
     sign_in_as: als %{name} einloggen
     continue_with_provider: Weiter mit %{provider}
+    sign_in_with_provider: Mit %{provider} anmelden
     continue_with_email: Weiter mit E-Mail
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen
+    invitation_required_title: Einladung erforderlich
     invitation_required: Um ein Konto zu erstellen, benötigst du eine Einladung. Folge dem Link in deiner Einladungs-E-Mail, um fortzufahren.
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
@@ -2581,6 +2617,22 @@ de:
     invalid_login: Anmeldung mit diesen Daten nicht möglich
     login_link_rate_limited: Es wurden zu viele Anmelde-E-Mails von diesem Netzwerk angefordert. Bitte warte eine Stunde und versuche es erneut.
     send_login_link_error: Beim Senden der Anmelde-E-Mail ist ein Fehler aufgetreten. Bitte versuche es erneut.
+    sign_in_with_passkey: Mit einem Passkey anmelden
+    passkey_authentication_failed: Wir konnten Sie mit diesem Passwort nicht anmelden.
+    passkey_registration_failed: Wir konnten den Passkey nicht speichern.
+    passkey_default_name: Passkey
+    local_login_disabled: Diese Website erfordert Single Sign-On.
+    email_me_a_sign_in_code: Senden Sie mir bitte einen Anmeldecode per E-Mail.
+    sign_in_with_code: Mit einem Code anmelden
+    new_to_site: Neu hier?
+    passkey_recent_authentication_required: Melden Sie sich erneut an, bevor Sie Ihre Passwörter ändern.
+    email_code_help: Gib deine E-Mail-Adresse ein und wir senden dir einen sechsstelligen Anmeldecode
+    or_sign_in_with_password: Oder mit Passwort anmelden
+    login_link_sent_if_account_exists: Falls für %{email} ein Konto existiert, senden wir dir einen Anmeldecode
+    use_a_passkey: Passkey verwenden
+    send_me_a_code: Schick mir einen Code
+    email_code_help_short: Wir senden einen sechsstelligen Code an deine E-Mail-Adresse
+    login_link_sent_if_account_exists_sentence: Falls für %{email} bereits ein Konto existiert, senden wir einen Anmeldecode.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -2651,13 +2703,13 @@ de:
       new_comment: Ein Kommentar wurde erstellt
       poll_created: Eine Abstimmung wurde gestartet
       stance_created: Eine Stimme wurde abgegeben
-      stance_updated: Eine Abstimmung wird geändert
-      poll_closing_soon: Eine Umfrage endet bald
+      stance_updated: Eine Stimme wird geändert
+      poll_closing_soon: Eine Abstimmung endet bald
       poll_expired: Eine Abstimmung läuft ab
       poll_closed_by_user: Eine Abstimmung wurde manuell geschlossen
       poll_reopened: Eine Abstimmung wurde erneut für die Stimmabgabe geöffnet
-      outcome_created: Ein Ergebnis wurde geteilt
-      outcome_updated: Ein Ergebnis wird aktualisiert
+      outcome_created: Ein Fazit wird geteilt
+      outcome_updated: Ein Fazit wird aktualisiert
       outcome_review_due: Eine Ergebnisüberprüfung ist fällig
       new_discussion: Eine Diskussion wird begonnen
       discussion_edited: Eine Diskussion wird bearbeitet
@@ -2763,9 +2815,12 @@ de:
         helptext: "<p>In Loomio verwenden wir Vorschläge, um Unterstützung für eine Entscheidung aufzuzeigen oder Wege zu finden, sie zu verbessern.</p><p> Lass uns einen Vorschlag einreichen und die Mitglieder deiner Gruppe bitten, darüber abzustimmen.</p><p> Wir haben eine Vorlage für einen <b>Praxisvorschlag</b> für dich erstellt.</p>"
         submit: Siehe Angebotsvorlagen
       share_an_outcome:
-        title: Teile das Ergebnis eines Vorschlags
-        helptext: "<p>Um Entscheidungen zu beschleunigen, gibt es für Vorschläge eine Frist zur Abstimmung. Nach Ablauf dieser Frist wird die Abstimmung geschlossen und du wirst benachrichtigt, um das Ergebnis des Vorschlags mitzuteilen.</p><p> Das Ergebnis bietet die Möglichkeit zu sagen, ob der Vorschlag erfolgreich war und was als nächstes passieren wird.</p><p> Wenn die Frist für deinen Vorschlag noch nicht abgelaufen ist, du aber trotzdem fortfahren möchtest, kannst du auf <b>„Vorzeitig schließen“</b> klicken.</p><p> <b>Gib zum richtigen Zeitpunkt ein Ergebnis</b> für deinen Vorschlag ein.</p>"
-        submit: Angebot ansehen
+        title: Teile das Fazit eines Vorschlags
+        helptext: |
+          <p>Wenn die Frist des Vorschlags abläuft, endet die Stimmabgabe und du wirst aufgefordert, ein Fazit zu teilen.</p>
+          <p>Im Fazit erklärst du nach Durchsicht der Stimmen und Kommentare, was du entschieden hast (oder was als Nächstes passiert).</p>
+          <p>Wenn die Frist noch nicht abgelaufen ist, du aber bereit bist, weiterzumachen, kannst du <b>Vorzeitig beenden</b> wählen.</p>
+        submit: Vorschlag ansehen
         cancel: Mach das später
       start_a_discussion:
         title: Starte eine Diskussion
@@ -2787,7 +2842,7 @@ de:
       helptext_on: Bei Auswahl können die Teilnehmer mehrere Optionen auswählen.
     anyone_can_participate:
       title: Jeder mit Link kann teilnehmen
-      helptext_on: Wenn diese Option ausgewählt ist, kann jeder mit dem Link zur Umfrage teilnehmen.
+      helptext_on: Wenn diese Option ausgewählt ist, kann jeder mit dem Link zur Abstimmung teilnehmen.
     notify_on_closing_soon:
       voting_closes_too_soon: Da die Abstimmung innerhalb von 24 Stunden endet, werden keine Erinnerungen an die baldige Schließung gesendet.
       closes_too_soon: Da dieser %{pollType} innerhalb von 24 Stunden geschlossen wird, werden keine Erinnerungen für eine baldige Schließung gesendet.
@@ -2795,16 +2850,16 @@ de:
       voting_title: 24 Stunden vor Ende der Abstimmung eine Erinnerung senden an
       nobody: Niemand
       author: Autor (ich)
-      undecided_voters: Unentschlossene Wähler
-      voters: Alle Wähler
+      voters: Alle Abstimmenden
+      people_who_have_not_voted: Alle, die noch nicht abgestimmt haben
     notify_on_participate:
       title: Benachrichtige mich, wenn Personen teilnehmen
       helptext_on: Wenn du diese Option auswählst, wirst du benachrichtigt, wenn jemand teilnimmt.
     anonymous:
-      title: Anonyme Wähler
+      title: Anonyme Abstimmende
       helptext_on: Wenn diese Option ausgewählt ist, werden die Teilnehmerinformationen nicht bei jeder Antwort angezeigt.
     can_respond_maybe:
-      title: Wähler können „bei Bedarf“ reagieren
+      title: Abstimmende können "bei Bedarf" antworten
     allow_long_reason:
       title: Der Abstimmungsgrund darf länger als 500 Zeichen sein.
     hide_results_until_closed:
@@ -2816,14 +2871,14 @@ de:
   poll_common_form:
     quorum: Quorum
     participation_quorum: Teilnahmequorum
-    quorum_hint: Wie viel Prozent der Wähler müssen teilnehmen, damit das Ergebnis gültig ist? Optional, bei fehlender Beschlussfähigkeit leer lassen.
+    quorum_hint: Wie viel Prozent der Abstimmenden müssen teilnehmen, damit das Ergebnis gültig ist? Optional, für kein Quorum leer lassen.
     quorum_placeholder: Leer lassen oder eine Zahl zwischen 0 und 100 eingeben
     deadline: Frist
     notify_everyone_when_poll_starts: Alle benachrichtigen, wenn %{poll_type} beginnt
     option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Möchtest du sie wirklich löschen?
     example_title: Beispieltitel
     example_title_hint: Gib ein Beispiel für einen guten Vorschlagstitel
-    example_details_placeholder: Gib einen Ausgangspunkt für einen Vorschlag oder eine Umfrage. Fragen können hilfreich sein, um die Teilnehmer zum Schreiben zu animieren. Füge Regeln oder Hinweise hinzu, die die Teilnehmer kennen sollten.
+    example_details_placeholder: Gib einen Ausgangspunkt für einen Vorschlag oder eine Abstimmung. Fragen können hilfreich sein, um die Teilnehmenden zum Schreiben zu animieren. Füge Regeln oder Hinweise hinzu, die die Teilnehmenden kennen sollten.
     confirm_delete: Möchtest du diese Umfragevorlage wirklich löschen? Dies kann nicht rückgängig gemacht werden.
     advanced_settings: Erweiterte Einstellungen
     show_advanced_settings: Erweiterte Einstellungen anzeigen
@@ -2833,7 +2888,7 @@ de:
     please_review_the_form: Bitte überprüfe das Formular
     option_added_please_add_details: Option hinzugefügt! Bitte füge einige Details hinzu, damit die Leute wissen, was es bedeutet.
     default_duration_in_days: Standarddauer in Tagen
-    how_many_options_can_a_voter_choose: Aus wie vielen Optionen kann ein Wähler wählen?
+    how_many_options_can_a_voter_choose: Wie viele Optionen dürfen Abstimmende wählen?
     minimum_choices: Mindestauswahl
     maximum_choices: Maximale Auswahl
     content: Inhalt
@@ -2849,19 +2904,19 @@ de:
       question: Fragerunde
       question_hint: Bitte um Fragen und Kommentare zu deinem Vorschlag
       show_thumbs: Daumen zeigen
-      show_thumbs_hint: Die Wähler wählen Daumen hoch, runter, zur Seite oder Hand hoch
+      show_thumbs_hint: Die Abstimmenden wählen Daumen hoch, runter, zur Seite oder Hand hoch
       choose: Wählen
-      simple_poll: Einfache Umfrage
-      choose_hint: Die Wähler wählen die beste Option (oder Optionen)
-      score: Punktzahl
-      score_hint: Die Wähler vergeben für jede Option eine Punktzahl
-      allocate: Zuweisen
-      allocate_hint: Die Wähler verteilen ein Punktebudget auf die Optionen
-      ranked_choice: Ranglistenauswahl
-      ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von der am meisten bevorzugten bis zur am wenigsten bevorzugten Option an.
-      time_poll: Zeitumfrage
-      time_poll_hint: Wähler geben an, wann sie für ein Treffen verfügbar sind
-      rank: Rang
+      simple_poll: Einfache Abstimmung
+      choose_hint: Die Abstimmenden wählen die beste Option (oder Optionen)
+      score: Bewerten
+      score_hint: Die Abstimmenden vergeben für jede Option eine Punktzahl
+      allocate: Verteilen
+      allocate_hint: Die Abstimmenden verteilen ein Punktebudget auf die Optionen
+      ranked_choice: Rangfolge
+      ranked_choice_hint: Die Abstimmenden ordnen die Optionen von der beliebtesten bis zur unbeliebtesten
+      time_poll: Terminfindung
+      time_poll_hint: Abstimmende geben an, wann sie für ein Treffen verfügbar sind
+      rank: Ordnen
       time: Zeit
       stv: STV-Wahl
       stv_hint: Mehrere Gewinner proportional mittels übertragbarer Einzelstimme wählen
@@ -2876,7 +2931,7 @@ de:
     chart_type: Diagrammtyp
     title: Titel
     title_hint: Welche Entscheidung musst du treffen?
-    no_options_add_some: Diese Umfrage hat keine Optionen. Füge unten welche hinzu.
+    no_options_add_some: Diese Abstimmung hat keine Optionen. Füge unten welche hinzu.
     details: Details
     example_details: Beispieldetails
     details_placeholder: Dies ist deine Gelegenheit zu erklären, worüber die Leute abstimmen
@@ -2886,21 +2941,21 @@ de:
     closing: Schließen
     closed: Geschlossen
     start: Start
-    start_poll: Umfrage starten
+    start_poll: Abstimmung starten
     stance_reason_required_label: Die Angabe eines Grundes bei der Stimmabgabe ist ...
     stance_reason_required: Erforderlich
     stance_reason_optional: Optional
     stance_reason_disabled: Deaktiviert
     stance_reason_is_required: Bitte begründe deine Stimme
     limit_reason_length: Beschränke den Grund auf maximal 500 Zeichen
-    save_poll: Umfrage speichern
+    save_poll: Abstimmung speichern
     start_poll_type: Starte %{poll_type}
     share_poll_type: "%{poll_type} teilen"
     update: Aktualisieren
-    add_voters: Wähler hinzufügen
+    add_voters: Abstimmende hinzufügen
     notify_invitees: Benachrichtigungen senden
-    no_notifications_warning: Die Wähler werden nicht benachrichtigt. Dies ist nützlich, wenn du viele Umfragen durchführst und planst, alle später zu benachrichtigen.
-    count_voters_added: "%{count} Wähler hinzugefügt"
+    no_notifications_warning: Die Abstimmenden werden nicht benachrichtigt. Dies ist nützlich, wenn du viele Abstimmungen durchführst und planst, alle später zu benachrichtigen.
+    count_voters_added: "%{count} Abstimmende hinzugefügt"
     poll_type_created: "%{poll_type} erstellt"
     poll_type_started: "%{poll_type} gestartet"
     poll_type_updated: "%{poll_type} aktualisiert"
@@ -2912,30 +2967,62 @@ de:
     quorum_tip_vote_share_requirement: 'Tipp: Du kannst auch den Grad der Zustimmung angeben, der für die Annahme eines Vorschlags erforderlich ist. Bearbeite eine Option, um die Anforderung des Stimmenanteils zu definieren'
     how_much_time_to_vote: Wie viel Zeit gibst du den Leuten zum Abstimmen?
     default_duration_in_days_hint: Wie viele Tage haben die Menschen Zeit, ihre Stimme abzugeben?
-    define_minimum_and_maxmimum_score: Definiere die Mindest- und Höchstpunktzahl, die ein Wähler einer Option geben kann
-    how_many_points_does_each_voter_have_to_allocate: Wie viele Punkte muss jeder Wähler vergeben?
+    define_minimum_and_maxmimum_score: Definiere die Mindest- und Höchstpunktzahl, die Abstimmende einer Option geben können
+    how_many_points_does_each_voter_have_to_allocate: Wie viele Punkte haben Abstimmende jeweils zu vergeben?
     anonymous_voting_description: Stimmen und Gründe anzeigen, aber nicht, wer sie abgegeben hat. Dies kann nach dem Start von %{poll_type} nicht mehr geändert werden.
-    vote_reason_description: Bitte die Leute, bei der Abstimmung ihre Gründe mitzuteilen oder weitere Informationen bereitzustellen.
+    vote_reason_description: Bitte die Leute, beim Abstimmen ihre Begründung mitzuteilen oder weitere Informationen bereitzustellen.
     hide_results_description: Wenn du möchtest, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, kannst du die Ergebnisse ausblenden.
-    process_helptext: Benenne und beschreibe den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
+    process_helptext: Benenne und beschreibe den Prozess, der zur Durchführung dieser Abstimmung verwendet wird.
     reminder_helptext: Sende 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
     voting_duration: Dauer
     voting_duration_hint: Wann beginnt und wann endet die Abstimmung?
     more_settings: Weitere Einstellungen
     create_poll_type: Erstelle %{poll_type}
-    notify_voters_when_voting_opens: Wähler benachrichtigen, wenn die Wahllokale geöffnet sind
-    voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
+    notify_voters_when_voting_opens: Abstimmende benachrichtigen, wenn die Abstimmung beginnt
+    voters_notified_when_opens: Die Abstimmenden werden benachrichtigt, sobald die Abstimmung beginnt
     who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
-    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Wählerdaten gespeichert. Die Ergebnisse werden nach Schließung der Wahllokale veröffentlicht. Wähler können keine Gründe hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
-    anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Wähleridentitäten erfasst. Die Ergebnisse werden erst nach Schließung der Wahllokale veröffentlicht. Wähler können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
+    anonymous_votes_are_stored_separately_from_voter_identities_description: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse erscheinen nach Ende der Stimmabgabe. Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern
+    anonymous_voting_explanation: Es soll unmöglich sein, die Stimmabgabe einer Person nachzuvollziehen. Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden erfasst. Die Ergebnisse erscheinen erst nach Ende der Stimmabgabe. Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe nicht mehr überprüfen oder ändern.
     anonymous_voting_risk_explanation: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse werden erst nach Ende der Abstimmung angezeigt, und Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe einsehen oder ändern. Diese Maßnahmen verringern das Risiko, eine Person mit einer Stimme zu verknüpfen. Ergebnisse können jedoch weiterhin Rückschlüsse zulassen, wenn nur wenige Personen teilnahmeberechtigt sind oder abstimmen, das Ergebnis einstimmig ist, Abstimmungsmuster auffällig sind oder Abstimmende ihre Auswahl offenlegen.
     anonymous_votes_stored_separately: Anonyme Stimmen werden getrennt von den Identitäten der Abstimmenden gespeichert. Ergebnisse werden erst nach Ende der Abstimmung angezeigt, und Abstimmende können keine Begründungen hinzufügen, ihre Stimme nach der Abgabe einsehen oder ändern.
     stance_reason_required_when_disagreeing: Erforderlich bei Meinungsverschiedenheiten
     stance_reason_required_for_disagree_or_block: Erforderlich, um abzulehnen oder zu blockieren
     stance_reason_required_for_block: Erforderlich bei einem Veto
+    voters: Abstimmende
+    manage_voters: Abstimmende verwalten
+    remove_voter: Abstimmende entfernen
+    voter_page_count: "%{first}–%{last} von %{total}"
+    vote_weight_for: Stimmgewichtung für %{name}
+    save_vote_weights: Stimmengewichte speichern
+    vote_weights_updated: Stimmgewichte aktualisiert
+    set_all: Alle festlegen
+    find_or_invite_voters: Abstimmende finden oder einladen
+    remove_voter_named: Entferne %{name} aus der Abstimmung
+    remove_voter_and_any_vote_confirmation: "%{name} aus dieser Umfrage entfernen? Dadurch werden auch alle von dieser Person abgegebenen Stimmen entfernt."
+    edit_vote_weight: Stimmgewicht bearbeiten
+    edit_vote_weight_for: Gewichtung der Stimmen für %{name} bearbeiten (derzeit %{weight})
+    set_all_vote_weights_title: Alle Stimmgewichte festlegen
+    set_all_vote_weights_search_note: Dies ändert die Gewichtung der Stimmen aller Wähler in der Umfrage, einschließlich derjenigen außerhalb deiner Suchergebnisse
+    set_each_member_default_vote_weight: Lege das Standard-Stimmengewicht jedes Mitglieds fest
+    voters_will_not_be_notified: Die Abstimmenden werden nicht benachrichtigt. Informiere sie auf anderem Weg über die Abstimmung.
+    give_voters_different_vote_weights: Gib Wählern unterschiedliche Stimmgewichte. Die Ergebnisse zeigen sowohl die einfachen als auch die gewichteten Summen.
+    issued_vote_weights_will_change: Die bereits festgelegten Stimmgewichte werden sich ändern.
+    weight_for_all: Stimmgewicht für alle
+    set_all_vote_weights: Alle Stimmgewichte festlegen
+    set_all_vote_weights_the_same: Alle Stimmengewichte gleich setzen
+    member_vote_weights_hint: Abstimmende ohne aktuelle Gruppenmitgliedschaft erhalten ein Stimmgewicht von 1
+    weighted_voting: Gewichtete Abstimmung
+    weighted_voting_is_not_available_with_anonymous_voting: Gewichtete Abstimmung ist bei anonymer Abstimmung nicht verfügbar
+    use_weighted_voting: Gewichtete Abstimmung verwenden
+    weighted_voting_off_warning: Wenn du die gewichtete Abstimmung deaktivierst, wird jedes Stimmgewicht auf 1 gesetzt. Alle Stimmgewichte, die du für diese Umfrage geändert hast, gehen verloren.
+    weighted_voting_on_group: Wenn du die gewichtete Abstimmung aktivierst, wird das Standardstimmgewicht jedes Mitglieds übernommen. Andere Wähler erhalten ein Stimmgewicht von 1.
+    weighted_voting_on_direct: Wenn du die gewichtete Abstimmung aktivierst, wird jedes Stimmgewicht auf 1 gesetzt
+    quorum_vote_weight_hint: Wie viel Prozent des Stimmgewichts der Stimmberechtigten müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
+    quorum_vote_weight_placeholder: Prozent des Stimmgewichts der Stimmberechtigten (0–100)
+    quorum_voters_placeholder: Prozent der Stimmberechtigten (0–100)
+    quorum_weighted_hint: Wie viel Prozent des gesamten zugewiesenen Stimmgewichts müssen abgegeben werden, damit das Ergebnis gültig ist? Optional, lass das Feld leer, wenn kein Quorum gelten soll.
   poll_receipts_page:
     participation_status_requires_min_votes: Hier wird angezeigt, wer teilnahmeberechtigt war. Ob die einzelnen Personen abgestimmt haben, wird nur angezeigt, wenn mindestens %{count} Personen abgestimmt haben.
-    verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, siehst du, wer seine Stimme abgegeben hat.
     voter_name: Name des Wählers
     voter_email: Wähler-E-Mail
@@ -2943,10 +3030,11 @@ de:
     member_since: Mitglied seit
     invited_by: Eingeladen von
     invited_on: Eingeladen am
-    no_receipts: Diese anonyme Umfrage wurde geschlossen, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.
+    no_receipts: Diese anonyme Abstimmung endete, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.
     participation_records_explanation: Hier wird angezeigt, wer wahlberechtigt war und ob diese Personen abgestimmt haben. Es wird nicht angezeigt, wie die einzelnen Personen abgestimmt haben.
     voted: Abgestimmt
     not_voted: Nicht abgestimmt
+    email_addresses_only_for_group_admins: E-Mail-Adressen werden nur Gruppenadministratoren angezeigt.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:
@@ -3022,10 +3110,10 @@ de:
     confirm_change_to_private: "%{groupName} ist eine offene Gruppe. Wenn du fortfährst, wird diese Diskussion öffentlich sein."
     messages:
       success: Die Diskussion wurde nach %{name} verlegt.
-    move_thread_title: Thema verschieben
+    move_thread_title: Thread verschieben
     destination: Ziel
     direct_thread: Direkter Thread
-    direct_thread_hint: Alle Teilnehmenden behalten den Zugriff. Du und die Person, die das Thema erstellt hat, werdet zu Administratoren des Themas.
+    direct_thread_hint: Alle Teilnehmenden behalten den Zugriff. Du und die Person, die den Thread erstellt hat, werdet zu Thread-Admins.
     direct_thread_anonymous_poll: Threads mit anonymen Umfragen können nicht in direkte Threads umgewandelt werden, da dies offenlegen könnte, wer abgestimmt hat.
   auth:
     oauth_cancelled: Anmeldung abgebrochen
@@ -3034,12 +3122,18 @@ de:
     voting_opens_immediately: Die Abstimmung beginnt sofort.
     opening_date: Eröffnungsdatum
     opening_hour: Öffnungszeit
-    scheduled_hint: Die Umfrage wird vor dem Öffnungszeitpunkt sichtbar, aber erst abstimmungsbereit sein.
-    draft_hint: Diese Umfrage wird als Entwurf gespeichert. Lege ein Startdatum fest oder aktiviere „Die Abstimmung beginnt sofort“, wenn du mit der Abstimmung beginnen möchtest.
+    scheduled_hint: Die Abstimmung ist bis zum Startzeitpunkt sichtbar, aber du kannst noch nicht abstimmen.
+    draft_hint: Diese Abstimmung wird als Entwurf gespeichert. Lege ein Startdatum fest oder aktiviere „Die Abstimmung beginnt sofort“, wenn du mit der Abstimmung beginnen möchtest.
   strand_members_list:
     notify_members_or_invite_guests_info: Benachrichtige Gruppenmitglieder namentlich oder lade Nicht-Mitglieder per E-Mail-Adresse ein. Eingeladene Gäste können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
     notify_members_info: Gib die Namen der Gruppenmitglieder ein, um sie über diesen Thread zu benachrichtigen.
     specified_voters_only_warning: In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen abstimmen können. Wenn du jemanden mit diesem Formular hinzufügst, erhält diese Person keine Stimme, sondern nur die Möglichkeit, mitzulesen und zu kommentieren. Wenn du Stimmen vergeben möchtest, verwende in der Umfrage „Wähler hinzufügen“.
+    manage_thread_members: Thread-Mitglieder verwalten
+    find_or_invite_people: Finde oder lade Leute ein
+    invite_or_notify_explanation: Neue Teilnehmer werden zum Thread eingeladen. Diejenigen, die bereits im Thread sind, werden erneut benachrichtigt.
+    invite_or_notify: Einladen oder benachrichtigen
+    member_page_count: "%{first}–%{last} von %{total}"
+    guest_access_info: Gäste, die per E-Mail eingeladen wurden, können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
   poll_common_details_meta:
     opened: Geöffnet
     opens: Öffnet
@@ -3050,10 +3144,10 @@ de:
     closed_at: Geschlossen um
     closing_at: Schließt um
   poll_stv_vote_form:
-    helptext: Ziehe die Kandidaten über die Linie, um sie zu sortieren. Elemente unterhalb der Linie sind nicht sortiert. Rang 1 ist dein Favorit.
+    helptext: Ziehe die Kandidierenden über die Linie, um sie zu ordnen. Elemente unterhalb der Linie sind nicht geordnet. Platz 1 ist dein Favorit.
     divider_text: Ziehe die Kandidaten oberhalb dieser Linie, um sie zu sortieren.
-    stance_created: Abstimmung protokolliert
-    stance_updated: Abstimmung aktualisiert
+    stance_created: Stimme gespeichert
+    stance_updated: Stimme aktualisiert
   poll_stv_form:
     settings_title: STV-Wahleinstellungen
     settings_helptext: Konfiguriere die Anzahl der zu besetzenden Sitze, die Zählmethode und den Quotentyp für diese Wahl.
@@ -3105,9 +3199,9 @@ de:
     subtitle: "%{type} von %{name}"
     types:
       Discussion: Diskussion
-      Poll: Umfrage
+      Poll: Abstimmung
       Comment: Kommentar
-      Stance: Abstimmung
+      Stance: Stimme
       Outcome: Fazit
   set_password_prompt:
     title: Ein Passwort festlegen?
@@ -3138,3 +3232,52 @@ de:
     unfollow: Updates nicht mehr folgen
     followed: Du folgst jetzt den Aktualisierungen dieser Gruppe
     unfollowed: Du erhältst keine Aktualisierungen mehr von dieser Gruppe
+  passkey_settings:
+    title: Passkeys
+    helptext: Mit Passkeys können Sie sich mit Ihrem Gerät anmelden, ohne Ihre E-Mail-Adresse oder Ihr Passwort eingeben zu müssen.
+    none: Sie haben keinen Passkey hinzugefügt.
+    name: Passkey-Name
+    name_placeholder: Zum Beispiel ein Arbeitslaptop
+    add: Passkey hinzufügen
+    added: Passkey hinzugefügt
+    created_at: Hinzugefügt %{date}
+    remove_named: Entferne %{name}
+    remove_confirm: Den Passkey mit dem Namen %{name} entfernen?
+    removed: Passkey entfernt
+    remove_failed: Der Passkey konnte nicht entfernt werden.
+  credential_prompt:
+    title: Fügen Sie eine weitere Anmeldemöglichkeit hinzu.
+    helptext: Fügen Sie einen Passkey hinzu oder legen Sie ein Passwort fest, damit Sie sich anmelden können, ohne auf einen per E-Mail zugesendeten Code warten zu müssen.
+    add_passkey: Fügen Sie einen Passkey hinzu
+    set_password: Legen Sie ein Passwort fest
+    not_now: Nicht jetzt.
+    passkey_description: Mit einem Passkey meldest du dich schnell per Fingerabdruck, Gesichtserkennung oder Bildschirmsperre deines Geräts an
+    set_new_password: Neues Passwort festlegen
+  account_completion:
+    complete_your_account: Vervollständigen Sie Ihr Konto
+    continue: Weitermachen
+  notification_nouns:
+    comment: Kommentar
+    discussion: Diskussion
+    outcome: Fazit
+    stance: Stimme
+  membership_notification_history:
+    invitation_delivery_history: Zustellverlauf der Einladung
+    email_delivery_blocked: Loomio hat die E-Mail-Zustellung an diese Adresse gestoppt
+    delivery_result:
+      delivered: Zugestellt
+      failed: Fehlgeschlagen
+    could_not_load_history: Benachrichtigungsverlauf konnte nicht geladen werden
+    no_invitations_recorded: Keine Einladungen erfasst
+    membership_created: Einladung
+    membership_resent: Einladung erneut gesendet
+    no_custom_message: Keine persönliche Nachricht
+    pending: E-Mail ausstehend
+    not_sent: Keine E-Mail-Zustellung erfasst
+    sent: An E-Mail-Dienst übergeben
+    delivered: Vom empfangenden Mailserver angenommen
+    delayed: Zustellverzögerung gemeldet
+    rejected: E-Mail abgelehnt
+    bounced: Unzustellbarkeit gemeldet
+    complained: Spam-Beschwerde gemeldet
+    skipped: E-Mail nicht gesendet

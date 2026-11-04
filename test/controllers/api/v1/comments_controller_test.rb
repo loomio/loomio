@@ -24,6 +24,41 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal comment_params[:body], @admin_comment.reload.body
   end
 
+  test 'attachment restrictions reject API uploads and inline images while allowing text replies' do
+    @discussion.topic.update!(attachments_admin_only: true)
+    blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new('document'), filename: 'document.txt', content_type: 'text/plain')
+    sign_in @user
+
+    [{files: [blob.signed_id]}, {image_files: [blob.signed_id]},
+     {body: '![image](https://example.com/reply.png)', body_format: 'md'}].each do |attributes|
+      assert_no_difference ['Comment.count', 'ActiveStorage::Attachment.count'] do
+        post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Reply'}.merge(attributes)}
+      end
+      assert_response :forbidden
+    end
+
+    post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Text reply'}}
+    assert_response :success
+    assert_equal 'Text reply', Comment.last.body
+
+    sign_in users(:guest_admin_normal)
+    post :create, params: {comment: {parent_id: @discussion.id, parent_type: 'Discussion', body: 'Supporting material', files: [blob.signed_id]}}
+    assert_response :success
+    assert_equal [blob.id], Comment.last.files.blobs.ids
+  end
+
+  test 'attachment restrictions apply to API edits before files are saved' do
+    @discussion.topic.update!(attachments_admin_only: true)
+    blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new('document'), filename: 'document.txt', content_type: 'text/plain')
+    sign_in @user
+
+    assert_no_difference 'ActiveStorage::Attachment.count' do
+      put :update, params: {id: @user_comment.id, comment: {body: 'Changed', image_files: [blob.signed_id]}}
+    end
+    assert_response :forbidden
+    assert_equal 'User comment', @user_comment.reload.body
+  end
+
   test "update admins can edit user content true" do
     sign_in @admin
     @group.update(admins_can_edit_user_content: true)
@@ -78,14 +113,34 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_equal "User comment", @user_comment.body
   end
 
-  test "destroy removes a discarded comment and serializes its reparented siblings" do
+  test "destroy removes a discarded comment and returns its remaining sibling items" do
     sign_in @user
     CommentService.discard(comment: @user_comment, actor: @user)
+    deleted_item_id = @user_comment.created_topic_item.id
 
     delete :destroy, params: { id: @user_comment.id }
 
     assert_response :success
     refute Comment.exists?(@user_comment.id)
+    item_ids = response.parsed_body.fetch('topic_items').pluck('id')
+    assert_includes item_ids, @admin_comment.created_topic_item.id
+    refute_includes item_ids, deleted_item_id
+  end
+
+  test "stance replies are forbidden until hidden results are revealed by closing" do
+    poll = PollService.create(params: {topic_id: topics(:discussion_topic).id, title: 'Reply permissions',
+      poll_type: 'proposal', poll_option_names: ['Agree'], closing_at: 2.days.from_now,
+      hide_results: 'until_closed'}, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+    sign_in @admin
+    params = {comment: {parent_type: 'Stance', parent_id: stance.id, body: 'Reply'}}
+    assert_no_difference(['Comment.count', 'TopicItem.count']) { post :create, params: params }
+    assert_response :forbidden
+    PollService.close(poll: poll, actor: @admin)
+    assert_difference('Comment.count') { post :create, params: params }
+    assert_response :success
   end
 
   test "create success" do
@@ -95,6 +150,81 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
       post :create, params: { comment: comment_params }
     end
     assert_response :success
+  end
+
+  test "posting and editing return successfully without running search indexing" do
+    sign_in @user
+    Comment.stub(:pg_search_insert_statement, ->(**) { raise 'search indexing unavailable' }) do
+      post :create, params: {comment: {parent_type: 'Discussion', parent_id: @discussion.id, body: 'Deferred search'}}
+      assert_response :success
+      comment = Comment.find_by!(body: 'Deferred search')
+      assert_not PgSearch::Document.exists?(searchable: comment)
+      assert_enqueued_with(job: ReindexSearchDocumentWorker, args: ['Comment', comment.id])
+
+      put :update, params: {id: comment.id, comment: {body: 'Deferred search edited'}}
+      assert_response :success
+      assert_equal 'Deferred search edited', comment.reload.body
+      assert_not PgSearch::Document.exists?(searchable: comment)
+    end
+  end
+
+  test "create warns the reply author when the original comment is deleted" do
+    parent_id = @user_comment.id
+    CommentService.destroy(comment: @user_comment, actor: @user)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Comment", parent_id: parent_id, body: "Stale reply" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the reply author when the original comment is discarded" do
+    CommentService.discard(comment: @user_comment, actor: @admin)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: {
+        locale: "es",
+        comment: { parent_type: "Comment", parent_id: @user_comment.id, body: "Stale reply" }
+      }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted", locale: :es), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the comment author when a legacy topicless discussion is discarded" do
+    @discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Discussion", parent_id: @discussion.id, body: "Stale comment" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
+  end
+
+  test "create warns the comment author when the poll is discarded" do
+    poll = PollService.create(params: {
+      title: "Comment target",
+      poll_type: "poll",
+      topic_id: @discussion.topic_id,
+      poll_option_names: %w[Agree Disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    PollService.discard(poll: poll, actor: @admin)
+    sign_in @user
+
+    assert_no_difference ["Comment.count", "TopicItem.count", "Notification.count"] do
+      post :create, params: { comment: { parent_type: "Poll", parent_id: poll.id, body: "Stale comment" } }
+    end
+
+    assert_response :unprocessable_entity
+    assert_equal I18n.t("errors.item_you_are_replying_to_deleted"), JSON.parse(response.body).fetch("flash").fetch("error")
   end
 
   test "create prevents xss src" do
@@ -189,6 +319,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @admin_comment.reload
     assert @admin_comment.discarded?
     assert_equal @admin.id, @admin_comment.discarded_by
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @admin_comment.id }
+    assert_not_nil serialized.fetch('discarded_at')
+    assert_equal @admin.id, serialized.fetch('discarded_by')
   end
 
   test "discard not allowed" do
@@ -218,6 +351,9 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_not @user_comment.reload.discarded?
+    serialized = response.parsed_body.fetch('comments').find { |comment| comment['id'] == @user_comment.id }
+    assert_nil serialized.fetch('discarded_at')
+    assert_equal @user_comment.body, serialized.fetch('body')
   end
 
   test "create denied when allow_comments is false" do

@@ -1,0 +1,28 @@
+site_title: Ayuda de Loomio
+menu: Menú
+open_navigation: Abrir navegación
+close_navigation: Cerrar navegación
+search: Buscar
+search_label: Buscar en la ayuda de Loomio
+help_contents: Contenido de la ayuda
+on_this_page: En esta página
+page_navigation: Navegación entre páginas
+previous: Anterior
+next: Siguiente
+image_alt: Ayuda y documentación de Loomio
+languages: Idiomas
+copy: Copiar
+copy_label: Copiar el código al portapapeles
+copied: Copiado
+copy_failed: No se pudo copiar
+machine_translation_notice: "Esta página se tradujo automáticamente. Si alguna palabra es incorrecta o poco clara, escribe a %{email} y la corregiremos."
+alerts:
+  note: Nota
+  tip: Consejo
+  important: Importante
+  warning: Advertencia
+  caution: Precaución
+sections:
+  User manual: Manual de usuario
+  Guides: Guías
+  Customer information: Información para clientes

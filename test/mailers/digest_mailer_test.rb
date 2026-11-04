@@ -63,7 +63,7 @@ class DigestMailerTest < ActionMailer::TestCase
     assert_includes document.at_css("main > h1").text, "Your #{AppConfig.theme[:site_name]} catch-up"
     assert_nil document.at_css(".email-header-logo")
     assert document.at_css(".email-footer-logo")
-    assert document.at_css('a[href*="email_preferences"]')
+    assert document.at_css('a[href*="email_actions/catch_up"]')
     assert_operator body.index("Notifications"), :<, body.index("Unread threads")
     assert_nil document.at_css(".email-notification-content")
     assert_equal 1, document.text.scan(discussion_body).count
@@ -99,7 +99,7 @@ class DigestMailerTest < ActionMailer::TestCase
   test "digest renders an unknown sender notification" do
     @user.update!(email_catch_up_day: 7)
     @group.add_admin!(@user)
-    received_email = ReceivedEmail.create!(
+    received_email = create_pending_email(
       group: @group,
       headers: { "From" => "Unknown Sender <unknown@example.com>" }
     )
@@ -200,6 +200,20 @@ class DigestMailerTest < ActionMailer::TestCase
       assert_no_difference 'ActionMailer::Base.deliveries.count' do
         SendDigestEmailWorker.new.perform
       end
+    end
+  end
+
+  test "the mailer itself suppresses an opted-out recipient who has unread content" do
+    @group.add_member!(@user)
+    discussion = DiscussionService.create(params: { title: 'Unread but opted out', group_id: @group.id }, actor: @inviter)
+    @user.update!(email_catch_up_day: nil)
+    query = DigestQuery.new(user: @user, time_start: 1.day.ago)
+    assert_includes query.topics, discussion.topic
+    assert_not query.empty?
+    ActionMailer::Base.deliveries.clear
+
+    assert_no_difference 'ActionMailer::Base.deliveries.count' do
+      DigestMailer.digest(@user.id).deliver_now
     end
   end
 

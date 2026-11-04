@@ -1,0 +1,231 @@
+<!-- translation-section: introduction -->
+
+# Proposal and poll settings
+
+<!-- translation-section: setting-up-a-proposal-or-poll -->
+
+## Setting up a proposal or poll
+
+<!-- translation-section: proposal-and-poll-templates -->
+
+### Proposal and poll templates
+
+Choose the proposal template you want to use. 
+
+![](proposal_templates.png)
+
+![The proposal form, from its title and details through voting options, duration, who can vote, and the collapsed More settings panel](proposal_new.png)
+
+<!-- translation-section: add-content -->
+
+<a id="add-content"></a>
+
+### Title and details
+
+**Group:** Check that the correct group is selected for your proposal or poll.
+
+**Title:** Give your proposal or poll a short, relevant title.
+
+**Details:** Explain what you are asking of people and include enough details so everyone knows what it means to vote.  
+
+The predefined templates include some prompts to help you write a good proposal - use these or add your own details.
+
+When making a proposal, state your expectations and describe the impact the proposal will have if adopted.
+
+You can attach files, insert images and tables, and add headings and lists with the [formatting buttons](/en/user_manual/discussions/formatting). These can help you share supporting information and make longer proposals easier to read.
+
+<!-- translation-section: voting-options -->
+
+### Voting options
+
+Each proposal and poll template provides options for voting.
+
+Depending on the template, you can edit, remove, reorder, or add voting options to suit the decision process you are running.
+
+- Use the pencil icon to edit voting option 
+- Use the trash can icon to remove unwanted voting options
+- Use the handle to move the order of voting options
+- Add voting options with **Add option** when the template allows custom options
+
+![](vote_options.png)
+
+
+<!-- translation-section: edit-voting-options -->
+
+### Edit voting options
+There is a lot of flexibility to configure voting options to suit the way your organization makes decisions.
+
+Use the pencil icon alongside the voting option to open the edit modal:
+
+**Option name:** A short name for the option.
+
+**Icon:** Select an icon for the option, such as thumbs up, thumbs down, abstain, or block.
+
+**Meaning:** A sentence that explains what choosing this options means.
+
+**Reason prompt:** A question to prompt voters to provide their reasoning or reconsider their position. 
+
+![](proposal_edit_option.png)
+
+<!-- translation-section: opening-time -->
+
+### Duration
+
+By default, voting opens immediately when you create the poll. If you want to schedule voting to open at a later time, uncheck **Voting opens immediately** and select an opening date and time.
+
+This is useful to give time for discussion before voting opens, or to ensure a poll or proposal is correctly set up and scheduled to happen at the right time.
+
+For example, if your group has several decisions to vote on at an upcoming assembly, you can prepare the polls and add voters in advance, then schedule them all to open when the voting period begins. People can see the polls before they open, but cannot vote early.
+
+When a poll has a scheduled opening time, you can add voters before voting opens. Voters will be notified when voting opens, rather than when they are added.
+
+To open voting before the scheduled time, select **Edit poll**, check **Voting opens immediately**, and save.
+
+**Notify voters when poll opens:** When checked (default), all voters will receive a notification when voting opens. Uncheck this if you want to open voting without sending notifications.
+
+**Closing date and time:** Select the closing date and time for your poll.
+
+Give sufficient time for people to vote. You could time the proposal so it closes before a meeting, or avoid closing over a weekend, so that people will receive a timely reminder. If necessary, you can close the poll early or extend the closing time.
+
+<!-- translation-section: who-can-vote -->
+
+### Who can vote?
+
+Choose who can vote in the poll.
+
+- **Anyone in the group** (or **Anyone in the thread**): everyone with access to the poll can vote, including people who join later.
+- **Selected people only:** only the people you add can vote. Use this when only some members should vote, such as a board or a committee.
+
+After you start a **Selected people only** poll, **Manage voters** opens so you can add voters. You can add or remove voters later. See [Manage voters](/en/user_manual/polls/manage_voters).
+
+<!-- translation-section: more-settings -->
+
+## More settings
+
+![](settings_advanced.png)
+
+<!-- translation-section: reminder -->
+
+### Reminder
+Send a 'Closing soon' notification 24 hours before the poll closes. This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
+
+Setting options:
+- Nobody
+- Author
+- People who haven't voted (default)
+- All voters
+
+For an anonymous poll lasting at least 24 hours, Loomio automatically reminds
+eligible people who have not voted during the final 24 hours. This reminder
+cannot be changed in the poll settings.
+
+<!-- translation-section: anonymous-voting -->
+
+### Anonymous voting
+If enabled, votes are stored separately from voter identities. Results appear after voting closes, and voters cannot add reasons, review their submitted vote, or change it.
+
+See [Anonymous voting](/en/user_manual/polls/anonymous_voting) for details about how voter identities are separated from submitted votes, what information is retained, and the limits of the protection.
+
+> [!WARNING]
+> Once a poll has started you cannot edit the poll to make it anonymous or to undo the anonymous setting. You cannot re-open an anonymous poll after it has closed.
+
+<!-- translation-section: vote-reason -->
+
+### Vote reason
+It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
+
+Available settings depend on the template:
+
+- **Optional** lets voters choose whether to give a reason
+- **Required for disagree or block** requires a reason when the selected option
+  uses the Disagree or Block voting icon
+- **Required for block** requires a reason when the selected option uses the
+  Block voting icon
+- **Required** requires every voter to give a reason
+- **Disabled** removes the vote-reason field
+
+![](vote_reason_options.png)
+
+The conditional settings follow the voting icon rather than the option name. They still apply if you rename Disagree to a term such as Objection. The Consent template defaults to **Required for disagree or block**, while the Consensus template defaults to **Required for block**. Other templates default to **Optional**. The poll author can change the setting for an individual poll.
+
+**Limit reason to maximum 500 characters:** Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.  This setting is ticked by default. Untick to allow for longer reasons.
+
+<!-- translation-section: hide-results -->
+
+### Hide results
+
+If you want people to vote without knowing how others have voted, you can hide the results of the poll.
+
+When results are hidden until a vote is cast, people can see vote choices and reasons after voting.
+
+When results are hidden until voting closes, replies to votes and mentions in vote reasons are disabled until the poll closes. You can extend the closing time while the poll is open, but cannot reopen it after it closes.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Editing settings before voting opens
+
+People with permission to edit a poll can change its details and settings, including anonymous voting and result visibility, before voting opens. Once voting opens, anonymity is fixed and results hidden until closing cannot be revealed early.
+
+Anonymous polls always hide results until voting closes.
+
+<!-- translation-section: managing-polls -->
+
+## Managing polls
+
+Open the three-dot menu at the bottom right of the poll.
+
+![](proposal_edit.png)
+
+<!-- translation-section: edit-poll -->
+
+### Edit poll
+
+Use **Edit poll** to edit poll content or settings.
+
+<!-- translation-section: save-as-template -->
+
+### Save as template
+
+Use **Save as template** in a poll's action menu to reuse its content, voting options, explanations, and settings. Review the prefilled template form, give the template a name and subtitle, and select **Save template**. People in the group can then choose it when starting a new poll.
+
+Group admins can save templates. Members can also save them when **Members can create templates** is enabled in the group's permissions. See [Poll templates](/en/user_manual/polls/poll_templates) for details.
+
+<!-- translation-section: notification-history -->
+
+### Notification history
+
+**Notification history** shows who was notified and whether each notification has been read.
+
+![](proposal_notification_history.png)
+
+<!-- translation-section: export-poll -->
+
+### Export poll
+
+**Export** poll status and results to a spreadsheet (.csv) file, to download unformatted poll data for analysis or archive.
+
+<!-- translation-section: print -->
+
+### Print
+
+Use **Print** in the thread actions to open a printable HTML document. You can print it or save it as a PDF for publishing and archiving.
+
+![](proposal_print.png#width-80)
+
+<!-- translation-section: delete -->
+
+### Delete
+
+**Delete** will delete the poll.  You will first be asked to confirm you want to delete the poll.
+
+Make sure you want to delete the poll.  There is no 'restore' option.
+
+After deletion, an **Item removed** marker remains in the thread.
+
+![](proposal_delete.png)
+
+<!-- translation-section: save-bookmark -->
+
+### Save bookmark
+
+Use **Save bookmark** to add the poll to your bookmarks for quick access later.

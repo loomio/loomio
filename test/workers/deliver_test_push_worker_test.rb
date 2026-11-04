@@ -12,6 +12,7 @@ class DeliverTestPushWorkerTest < ActiveSupport::TestCase
   end
 
   test "delivers the localized test payload" do
+    @user.update!(selected_locale: "fr")
     delivery = nil
 
     WebPushService.stub(:deliver!, ->(**args) { delivery = args; true }) do
@@ -28,8 +29,10 @@ class DeliverTestPushWorkerTest < ActiveSupport::TestCase
     @subscription.revoke!
 
     assert_no_changes -> { @subscription.reload.failure_count } do
-      WebPushService.stub(:deliver!, ->(**) { flunk "test push should not be sent" }) do
-        DeliverTestPushWorker.perform_now(@subscription.id)
+      assert_no_enqueued_jobs(only: DeliverTestPushWorker) do
+        WebPushService.stub(:deliver!, ->(**) { flunk "test push should not be sent" }) do
+          DeliverTestPushWorker.perform_now(@subscription.id)
+        end
       end
     end
   end

@@ -8,6 +8,7 @@ import MentionNotificationsCount from '@/components/common/mention_notifications
 import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
 import { useAttaching } from './composables/useAttaching';
 import { useI18n } from 'vue-i18n';
+import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs';
 
 const props = defineProps({
   model: Object,
@@ -31,6 +32,7 @@ const { t } = useI18n();
 
 // Refs
 const preview = ref(false);
+const converting = ref(false);
 const fieldRef = ref(null);
 const filesField = ref(null);
 
@@ -78,6 +80,7 @@ const {
 );
 
 const {
+  canAttachFiles,
   files,
   imageFiles,
   resetFiles,
@@ -96,25 +99,28 @@ const reset = () => {
   resetFiles();
 };
 
-const convertToHtmlHandler = () => {
-  convertToHtml(props.model, props.field);
-  Records.users.saveExperience('html-editor.uses-markdown', false);
+const convertToHtmlHandler = async () => {
+  if (converting.value) return;
+  converting.value = true;
+  try {
+    await convertToHtml(props.model, props.field);
+    Records.users.saveExperience('html-editor.uses-markdown', false);
+  } finally {
+    converting.value = false;
+  }
 };
 
 const onPaste = (event) => {
-  const items = Array.from(event.clipboardData.items);
+  const files = clipboardUploadFiles(event.clipboardData);
 
-  if (items.filter(item => item.getAsFile()).length === 0) { return; }
+  if (files.length === 0) { return; }
 
   event.preventDefault();
-  handleUploads(items.map(item => {
-    return new File([item.getAsFile()],
-             event.clipboardData.getData('text/plain') || Date.now(),
-             {lastModified: Date.now(), type: item.type});
-  }));
+  handleUploads(files);
 };
 
 const handleUploads = (uploadFiles) => {
+  if (!canAttachFiles.value) { return; }
   Array.from(uploadFiles).forEach(file => {
     if ((/image/i).test(file.type)) {
       insertImage(file);
@@ -208,19 +214,19 @@ div(style="position: relative")
       @paste="onPaste"
       @drop="onDrop"
       @dragover.prevent="onDragOver")
-    mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
+    mention-notifications-count(v-if="allowMentions" :model="model" :handles="mentionHandles" :empty="editorEmpty")
   formatted-text(v-if="preview" :model="model" :field="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
   .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
-    v-btn(icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
+    v-btn(v-if="canAttachFiles" icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
-    v-btn.e2e-wysiwyg-btn(variant="text" size="small" @click="convertToHtmlHandler" v-t="'formatting.wysiwyg'")
+    v-btn.e2e-wysiwyg-btn(variant="text" size="small" :loading="converting" @click="convertToHtmlHandler") {{ t('formatting.wysiwyg') }}
     v-spacer
     v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")
-  suggestion-list(:query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
+  suggestion-list(v-if="allowMentions" :query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

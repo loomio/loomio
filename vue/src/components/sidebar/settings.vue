@@ -49,7 +49,7 @@ v-list(nav density="comfortable")
     template(v-slot:prepend)
       common-icon(name="mdi-cellphone-cog")
     v-list-item-title(v-t="'user_dropdown.mobile_app_settings'")
-  v-list-item(@click="signOut()")
+  v-list-item.user-dropdown__list-item-button--sign-out(@click="signOut()")
     template(v-slot:prepend)
       common-icon(name="mdi-exit-to-app")
     v-list-item-title(v-t="'user_dropdown.sign_out'")
@@ -67,7 +67,7 @@ v-list(nav density="comfortable")
 
   v-divider
   v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")
-  v-list-item(href="https://help.loomio.com/en/user_manual/changelog/" target="_blank" :title="$t('user_dropdown.whats_new')")
+  v-list-item(href="/docs/en/user_manual/changelog/" target="_blank" rel="noopener noreferrer" :title="$t('user_dropdown.whats_new')")
   v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two" title="Loomio version" :subtitle="version")
 
 </template>

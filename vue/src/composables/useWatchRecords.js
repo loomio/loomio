@@ -1,5 +1,6 @@
 import { ref, onUnmounted } from 'vue';
 import Records from '@/shared/services/records';
+import { nextWatchRecordsName } from '@/shared/helpers/watch_records_name';
 
 export function useWatchRecords() {
   const watchedRecords = ref([]);
@@ -7,7 +8,7 @@ export function useWatchRecords() {
   const watchRecords = (...args) => {
     const obj = args[0];
     const { collections, query, key } = obj;
-    const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
+    const name = nextWatchRecordsName(collections, key);
     watchedRecords.value.push(name);
     Records.view({
       name,

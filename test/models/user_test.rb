@@ -1,11 +1,78 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test "parent members can browse public and parent-visible subgroups without inheriting secret groups" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    parent_roles = %i[admin member_normal reader_normal member_guest_loud]
+    outsider_roles = %i[alien guest_normal non_guest_loud former_member_loud former_member_guest]
+
+    %w[open closed parent_members secret].each do |privacy|
+      subgroup.update!(group_privacy: privacy)
+      (parent_roles + outsider_roles).each do |role|
+        ids = users(role).browseable_group_ids
+        expected = parent_roles.include?(role) && privacy != 'secret'
+        assert_equal expected, ids.include?(subgroup.id), "#{role}, #{privacy}"
+        assert_not_includes ids, groups(:public_group).id
+      end
+      assert_empty LoggedOutUser.new.browseable_group_ids
+    end
+  end
+
   setup do
     @user = users(:user)
     @admin = users(:admin)
     @discussion = discussions(:discussion)
     @group = groups(:group)
+  end
+
+  test 'browseable group IDs are collections for members and signed-out users' do
+    ids = users(:member_normal).browseable_group_ids
+    assert_includes ids, groups(:group).id
+    assert_not_includes ids, groups(:alien_group).id
+    assert_empty LoggedOutUser.new.browseable_group_ids
+  end
+
+  test "active? matches the active scope and logged-out users are inactive" do
+    assert @user.active?
+    assert_not @user.deactivated?
+    assert_includes User.active, @user
+
+    @user.update!(deactivated_at: Time.current)
+
+    assert_not @user.active?
+    assert @user.deactivated?
+    assert_not_includes User.active, @user
+    assert_not LoggedOutUser.new.active?
+    assert_not LoggedOutUser.new.deactivated?
+  end
+
+  test "terms acceptance is deferred for previously active accounts until enabled" do
+    terms_url_before = ENV['TERMS_URL']
+    enforce_before = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+
+    newcomer = User.new(email: 'new-terms-user@example.com')
+    returning = User.new(email: 'returning-terms-user@example.com', current_sign_in_at: 1.week.ago)
+    previously_seen = User.new(email: 'seen-terms-user@example.com', last_seen_at: 1.week.ago)
+
+    assert_predicate newcomer, :legal_acceptance_required?
+    assert_not_predicate returning, :legal_acceptance_required?
+    assert_not_predicate previously_seen, :legal_acceptance_required?
+    assert_not_predicate LoggedOutUser.new, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    assert_predicate returning, :legal_acceptance_required?
+    assert_predicate previously_seen, :legal_acceptance_required?
+
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '0'
+    assert_predicate returning, :legal_acceptance_required?
+
+    returning.legal_accepted_at = Time.current
+    assert_not_predicate returning, :legal_acceptance_required?
+  ensure
+    restore_env('TERMS_URL', terms_url_before)
+    restore_env('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS', enforce_before)
   end
 
   # Password validations
@@ -175,15 +242,35 @@ class UserTest < ActiveSupport::TestCase
   end
 
   # Gravatar/avatar
-  test "sets avatar_kind to initials by default in test env" do
+  test "new accounts default to initials without a Gravatar lookup in production" do
     user = User.new(
       name: "Gravatar User",
-      email: "gravatar_#{SecureRandom.hex(4)}@test.com",
-      password: "a_good_password"
+      email: "gravatar_#{SecureRandom.hex(4)}@test.com"
     )
-    # has_gravatar? returns false in test env, so avatar_kind defaults to initials
-    user.save!
+    Rails.stub(:env, ActiveSupport::EnvironmentInquirer.new('production')) { user.save! }
     assert_equal "initials", user.avatar_kind
+    assert_nil user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
+  end
+
+  test "missing uploaded avatars fall back to initials without a Gravatar lookup" do
+    @user.update!(avatar_kind: 'uploaded')
+
+    Rails.stub(:env, ActiveSupport::EnvironmentInquirer.new('production')) do
+      assert_nil @user.avatar_url
+    end
+
+    assert_equal 'initials', @user.reload.avatar_kind
+    assert_not_requested :any, /gravatar\.com/
+  end
+
+  test "existing Gravatar selections survive account updates" do
+    @user.update!(avatar_kind: 'gravatar')
+    @user.update!(name: 'Updated Name')
+
+    assert_equal 'gravatar', @user.reload.avatar_kind
+    assert_match %r{\Ahttps://secure\.gravatar\.com/avatar/}, @user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
   end
 
   test "email can have an apostrophe" do
@@ -289,5 +376,12 @@ class UserTest < ActiveSupport::TestCase
 
   def restore_env(key, value)
     value.nil? ? ENV.delete(key) : ENV[key] = value
+  end
+
+  test "email catch-up day must be a known schedule" do
+    @user.email_catch_up_day = 9
+    assert_not @user.valid?
+    @user.email_catch_up_day = nil
+    assert @user.valid?
   end
 end

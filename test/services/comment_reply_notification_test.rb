@@ -48,14 +48,41 @@ class CommentReplyNotificationTest < ActiveSupport::TestCase
     end
   end
 
-  test "a comment author does not notify themselves" do
+  %w[md html].each do |format|
+    %i[discussion own_comment].each do |parent_type|
+      test "a #{format} self mention on #{parent_type} delivers a mention email" do
+        body = if format == "md"
+          "Self mention @#{@parent_author.username}"
+        else
+          %(<p>Self mention <span data-mention-id="#{@parent_author.username}">@#{@parent_author.username}</span></p>)
+        end
+        comment = Comment.new(
+          body: body,
+          body_format: format,
+          parent: parent_type == :discussion ? @discussion : @parent
+        )
+
+        CommentService.create(comment: comment, actor: @parent_author)
+
+        notification = Notification.about(comment).find_by!(kind: "user_mentioned")
+        assert_equal [@parent_author.id], notification.recipient_user_ids
+        assert_equal %w[email in_app], notification.notification_deliveries.order(:channel).pluck(:channel)
+        delivery = notification.notification_deliveries.find_by!(channel: "email")
+        assert_predicate delivery, :delivered_at?
+        assert_equal [@parent_author.email], ActionMailer::Base.deliveries.last.to
+        assert_not Notification.about(comment).exists?(kind: "comment_replied_to")
+      end
+    end
+  end
+
+  test "replying to your own comment without a mention does not notify yourself" do
     comment = Comment.new(
-      body: "Self mention @#{@parent_author.username}",
+      body: "Another thought",
       body_format: "md",
       parent: @parent
     )
 
-    assert_no_difference -> { Notification.where(kind: "comment_replied_to").count } do
+    assert_no_difference -> { Notification.where(kind: %w[user_mentioned comment_replied_to]).count } do
       CommentService.create(comment: comment, actor: @parent_author)
     end
   end

@@ -19,6 +19,15 @@ class Api::V1::BookmarksControllerTest < ActionController::TestCase
     assert Bookmark.exists?(user: user, bookmarkable: comment)
   end
 
+  test "create rejects a record type outside the bookmark allowlist" do
+    sign_in users(:member_normal)
+    assert_no_difference 'Bookmark.count' do
+      post :create, params: { bookmark: { bookmarkable_id: groups(:group).id, bookmarkable_type: 'Group' } }
+    end
+
+    assert_response :not_found
+  end
+
   test "create is idempotent — bookmarking twice keeps a single bookmark" do
     user = users(:admin)
     comment = build_comment(user)

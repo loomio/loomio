@@ -16,7 +16,7 @@ module Null::User
   end
 
   def false_methods
-    [:auto_translate, :is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :api_key_changed?,
+    [:active?, :deactivated?, :auto_translate, :is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :api_key_changed?,
      :has_password, :bot, :bot?, :is_paying?, :is_paying,
      :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
   end
@@ -62,12 +62,8 @@ module Null::User
     "html"
   end
 
-  def complaints_count
-    0
-  end
-
-  def bounces_count
-    0
+  def email_delivery_blocked?
+    false
   end
 
   def short_bio_format

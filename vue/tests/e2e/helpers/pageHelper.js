@@ -1,5 +1,15 @@
 const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080');
 const base_url = `http://localhost:${port}`;
+const screenshotLabels = process.env.DOCS_SCREENSHOT_LABELS
+  ? require(process.env.DOCS_SCREENSHOT_LABELS) : null;
+
+function scenarioUrl(path) {
+  const url = new URL(`${base_url}/dev/${path}`);
+  if (process.env.DOCS_SCREENSHOT_APP_LOCALE) {
+    url.searchParams.set('locale', process.env.DOCS_SCREENSHOT_APP_LOCALE);
+  }
+  return url.toString();
+}
 
 module.exports = function(test, browser) {
   test.resizeWindow(1000, 2000);
@@ -18,12 +28,12 @@ module.exports = function(test, browser) {
     },
 
     loadPath(path, opts = {}) {
-      test.url(`${base_url}/dev/${path}`);
+      test.url(scenarioUrl(path));
       return test.waitForElementPresent('.app-is-booted', 20000);
     },
 
     loadPathNoApp(path, opts = {}) {
-      return test.url(`${base_url}/dev/${path}`);
+      return test.url(scenarioUrl(path));
     },
 
     loadLastEmail() {
@@ -213,6 +223,20 @@ module.exports = function(test, browser) {
 
     expectText(selector, value, wait) {
       this.waitFor(selector, wait);
+      if (screenshotLabels) {
+        // Translated screenshot runs show interface text in another language,
+        // and the label table cannot always predict the exact wording, case
+        // or inflection. The English run checks the text strictly; translated
+        // runs wait for the element and only report a label they cannot find.
+        if (!screenshotLabels[value]) { return; }
+        const candidates = [value, ...screenshotLabels[value]].map(text => text.toLowerCase());
+        return test.getText(selector, result => {
+          const text = result.value.toLowerCase();
+          if (!candidates.some(candidate => text.includes(candidate))) {
+            console.log(`Screenshot text not found in ${selector}: ${value}`);
+          }
+        });
+      }
       return test.expect.element(selector).text.to.contain(value);
     },
 
@@ -236,15 +260,14 @@ module.exports = function(test, browser) {
     signInViaPassword(email, password) {
       const page = pageHelper(test);
       if (email) { page.fillIn('.auth-email-form__email input', email); }
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signin-form__password input', password);
-      return page.click('.auth-signin-form__submit');
+      page.fillIn('.auth-email-form__password input', password);
+      return page.click('.auth-email-form__submit');
     },
 
     signInViaEmail(email) {
       page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.click('.auth-signin-form__submit');
+      page.click('.auth-email-form__login-link');
+      page.click('.auth-email-code-form__submit');
       page.expectText('.auth-complete', 'Check your email');
       page.loadPath('use_last_login_token');
       page.click('.auth-signin-form__submit');
@@ -254,22 +277,27 @@ module.exports = function(test, browser) {
 
     signUpViaEmail(email = "new@account.com") {
       const page = pageHelper(test);
-      page.fillIn('.auth-email-form__email input', email);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
+      page.click('.auth-form__create-account');
+      page.fillIn('.auth-signup-form__email input', email);
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
-      return page.click('.auth-signin-form__submit');
+      page.click('.auth-signin-form__submit');
+      return page.completeAccount();
+    },
+
+    completeAccount(name = "New Account") {
+      const page = pageHelper(test);
+      page.fillIn('.account-completion__name input', name);
+      page.click('.account-completion__legal-accepted .v-selection-control__wrapper');
+      return page.click('.account-completion__submit');
     },
 
     signUpViaInvitation(name = "New person") {
       const page = pageHelper(test);
-      page.click('.auth-email-form__submit');
-      page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
-      return page.click('.auth-signup-form__submit');
+      page.click('.auth-form__create-account');
+      page.click('.auth-signup-form__submit');
+      return page.completeAccount(name);
     },
 
     waitFor(selector, wait = 8000) {

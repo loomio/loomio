@@ -78,7 +78,7 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
       topic_id: @source.topic_id
     }, actor: @admin)
 
-    stance = poll.stances.undecided.find_by(participant_id: @user.id, latest: true)
+    stance = poll.stances.uncast.find_by(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     StanceService.create(stance: stance, actor: @user)
 
@@ -110,6 +110,26 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     poll.reload; poll_event.reload
     assert_equal @target.topic_id, poll.topic_id
     assert_equal @target.topic_id, poll_event.topic_id
+    assert_equal 0, @source.topic.reload.active_polls_count
+    assert_equal 1, @target.topic.reload.active_polls_count
+  end
+
+  test "moving a poll between groups transfers content and active counts" do
+    target_group = groups(:alien_group)
+    target = DiscussionService.create(params: { title: 'Cross-group target', group_id: target_group.id }, actor: users(:alien))
+    poll = PollService.create(params: {
+      title: 'Cross-group poll', poll_type: 'proposal', closing_at: 3.days.from_now,
+      poll_option_names: %w[agree disagree], topic_id: @source.topic_id
+    }, actor: @admin)
+    source_count = @group.reload.polls_count
+    target_count = target_group.reload.polls_count
+
+    MoveCommentsWorker.new.perform([poll.created_topic_item.id], @source.topic_id, target.topic_id)
+
+    assert_equal source_count - 1, @group.reload.polls_count
+    assert_equal target_count + 1, target_group.reload.polls_count
+    assert_equal 0, @source.topic.reload.active_polls_count
+    assert_equal 1, target.topic.reload.active_polls_count
   end
 
   test "moves topical poll and children to target thread then discards source topic" do
@@ -126,7 +146,9 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     comment_event = nil
     CommentService.create(comment: comment, actor: @user) { |created_topic_item| comment_event = created_topic_item }
 
-    MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
+    SearchService.stub(:reindex_by_discussion_id, ->(*) { raise 'search indexing unavailable' }) do
+      MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
+    end
 
     poll.reload; poll_event.reload; comment_event.reload
     source_topic = Topic.find(source_topic_id)

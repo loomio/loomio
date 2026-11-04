@@ -18,7 +18,7 @@ module StvCountService
   end
 
   def self.extract_ballots(poll)
-    if poll.detached_anonymous?
+    if poll.anonymous?
       return poll.anonymous_ballots.includes(:anonymous_ballot_choices).map do |ballot|
         ballot.anonymous_ballot_choices
               .sort_by(&:score)
@@ -26,7 +26,7 @@ module StvCountService
       end
     end
 
-    poll.stances.latest.decided.includes(:stance_choices).map do |stance|
+    poll.stances.latest.cast.includes(:stance_choices).map do |stance|
       stance.stance_choices
             .sort_by { |sc| sc.score }
             .map(&:poll_option_id)

@@ -63,13 +63,16 @@ export default class RecordStore {
       }
     });
 
+    this.updateViews(keys(data));
+    return data;
+  }
+
+  updateViews(collectionNames) {
     each(this.views, view => {
-      if (intersection( map(view.collectionNames, camelCase) , map(keys(data), camelCase) ).length) {
+      if (intersection(map(view.collectionNames, camelCase), map(collectionNames, camelCase)).length) {
         view.query(this);
       }
-      return true;
     });
-    return data;
   }
 
   view({name, collections, query}) {

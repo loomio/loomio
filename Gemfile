@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '4.0.5'
+ruby file: '.ruby-version'
 gem 'rails', '~> 8.1.0'
 # Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
 gem 'json', '< 3'
-gem 'uri', '1.1.1'
+gem 'uri', '1.1.2'
 gem 'rake'
 gem 'pg'
 gem 'phlex-rails'
@@ -21,14 +21,15 @@ gem 'paper_trail', '~> 17.0.0'
 gem 'solid_queue'
 gem 'mission_control-jobs'
 gem 'friendly_id', '~> 5.7.0'
-gem 'faraday', '~> 2.14'
+gem 'faraday', '~> 2.15'
 gem 'faraday-follow_redirects', '~> 0.5'
 gem 'csv'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
+gem "aws-sdk-sesv2", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
-gem 'image_processing', '~> 2.1'
+gem 'image_processing', '~> 2.2'
 gem 'mini_magick', '~> 5.4'
 gem "ruby-vips"
 gem "stackprof"
@@ -38,9 +39,8 @@ gem 'propshaft', '~> 1.3'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
-gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '2.3.0'
+gem 'activerecord-import', '3.0.1'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
@@ -61,6 +61,7 @@ gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
 gem 'web-push'
+gem 'webauthn'
 
 group :development, :test do
   gem 'byebug'
@@ -74,7 +75,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'solargraph', require: false
   gem 'web-console'
 end
 

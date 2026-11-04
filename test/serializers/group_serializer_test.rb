@@ -19,4 +19,16 @@ class GroupSerializerTest < ActiveSupport::TestCase
     payload = GroupSerializer.new(group.reload, scope: { exclude_types: [] }).as_json.fetch(:group)
     assert_equal true, payload[:enabled]
   end
+
+  test "shared payloads omit follow state instead of reporting false" do
+    group = groups(:public_group)
+    user = users(:user)
+    GroupFollow.create!(group: group, user: user)
+
+    shared = GroupSerializer.new(group, scope: { exclude_types: [] }).as_json.fetch(:group)
+    assert_not shared.key?(:current_user_followed)
+
+    personal = GroupSerializer.new(group, scope: { exclude_types: [], current_user_id: user.id }).as_json.fetch(:group)
+    assert_equal true, personal[:current_user_followed]
+  end
 end

@@ -62,6 +62,22 @@ class Admin::SubscriptionsControllerTest < ActionController::TestCase
     assert_equal Time.zone.parse(expires_at), @subscription.expires_at
   end
 
+  test "Chargify subscription ID links to its admin page" do
+    sign_in @admin
+    previous_app_name = ENV["CHARGIFY_APP_NAME"]
+    ENV["CHARGIFY_APP_NAME"] = "test-app"
+
+    get :show, params: { id: @subscription.id }
+
+    document = Nokogiri::HTML(response.body)
+    link = document.at_css(".admin-definition-list a[href='https://test-app.chargify.com/subscriptions/12345']")
+    assert_equal "12345", link&.text
+    assert_equal "_blank", link["target"]
+    assert_equal "noopener noreferrer", link["rel"]
+  ensure
+    ENV["CHARGIFY_APP_NAME"] = previous_app_name
+  end
+
   test "admin can update the Chargify ID and refresh in one action" do
     sign_in @admin
     payload = { "subscription" => { "state" => "active" } }

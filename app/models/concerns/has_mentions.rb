@@ -9,7 +9,7 @@ module HasMentions
 
   def mentioned_usernames
     if text_format == "md"
-      MentionParser.usernames(mentionable_text) - [self.author&.username]
+      MentionParser.usernames(mentionable_text)
     else
       Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
         el['data-mention-id']

@@ -1,5 +1,5 @@
 class Outcome < ApplicationRecord
-  include CustomCounterCache::Model
+  include HasVersionsCount
   extend  HasCustomFields
   include HasTopicItems
   include HasNotifications
@@ -33,7 +33,7 @@ class Outcome < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        t.tags AS tags,
+        #{TopicItem.tags_sql_for(Outcome)} AS tags,
         outcomes.author_id AS author_id,
         outcomes.created_at as authored_at,
         #{content_str} AS content,
@@ -66,7 +66,6 @@ class Outcome < ApplicationRecord
   is_translatable on: :statement
 
   has_paper_trail only: [:statement, :statement_format, :author_id, :review_on, :attachments]
-  define_counter_cache(:versions_count) { |d| d.versions.count }
   validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 

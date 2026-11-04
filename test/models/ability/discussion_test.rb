@@ -18,7 +18,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     discussion = DiscussionService.create(params: discussion_params, actor: other)
     discussion.topic.topic_readers.create!(user_id: user.id, admin: false, guest: true, inviter_id: other.id)
     assert_not user.can?(:announce, discussion)
-    assert_not user.can?(:add_guests, discussion)
+    assert_not user.can?(:add_guests, discussion.topic)
     assert user.can?(:update, discussion)
   end
 
@@ -27,7 +27,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     other = users(:alien)
     discussion = DiscussionService.create(params: discussion_params, actor: other)
     assert_not user.can?(:announce, discussion)
-    assert_not user.can?(:add_guests, discussion)
+    assert_not user.can?(:add_guests, discussion.topic)
     assert_not user.can?(:update, discussion)
   end
 
@@ -57,7 +57,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     group.update_columns(members_can_add_guests: false)
     discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
     discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
-    assert_not user.can?(:add_guests, discussion)
+    assert_not user.can?(:add_guests, discussion.topic)
   end
 
   test "group member topic admin with members_can_announce true" do

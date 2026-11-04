@@ -91,10 +91,9 @@ module.exports = {
     page.click('.group-page-members-tab');
     page.waitFor('.members-panel');
     page.expectText('.membership-card__invite', 'Invite');
-    page.expectText('.members-panel__shareable-link-btn', 'Shareable Link');
     screenshot.capture('groups/settings/group_join_group_invite', {
       spotlight: {
-        selectors: ['.membership-card__invite', '.members-panel__shareable-link-btn'],
+        selector: '.membership-card__invite',
         padding: 14,
         radius: 14,
         opacity: 0.4,
@@ -175,11 +174,7 @@ module.exports = {
     page.expectValue('.group-form__handle input', 'oatmilk-producers-network');
     page.click('.group-form__category-select .v-field');
     page.waitFor('.v-overlay .v-select__content .v-list-item');
-    page.execute(`
-      Array.from(document.querySelectorAll('.v-overlay .v-select__content .v-list-item'))
-        .find((item) => item.textContent.includes('Self-managing organization'))
-        .click()
-    `);
+    page.click('.v-overlay .group-form__category--self_managing');
     page.fillIn(
       '.group-form__group-description .ProseMirror',
       'We coordinate shared purchasing, distribution, and training for regional oat milk producers.'

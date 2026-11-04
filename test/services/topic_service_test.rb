@@ -235,7 +235,7 @@ class TopicServiceTest < ActiveSupport::TestCase
     )
 
     poll = @topic.polls.first!
-    stance = poll.stances.undecided.find_by!(participant: voter, latest: true)
+    stance = poll.stances.uncast.find_by!(participant: voter, latest: true)
     stance.choice = poll.poll_option_names.first
     StanceService.create(stance:, actor: voter)
 
@@ -258,7 +258,7 @@ class TopicServiceTest < ActiveSupport::TestCase
   end
 
   test "move does not convert a thread containing an anonymous poll to direct" do
-    @topic.update!(allow_concurrent_polls: true)
+    @topic.update!(polls_one_at_a_time: false)
     PollService.create(params: {
       title: "Anonymous poll",
       poll_type: "proposal",
@@ -341,5 +341,22 @@ class TopicServiceTest < ActiveSupport::TestCase
         actor: @user
       )
     end
+  end
+
+  test "guests invited before a scheduled poll opens get a stance" do
+    guest_email = "scheduled-guest-#{SecureRandom.hex(4)}@example.com"
+    poll = PollService.create(params: {
+      title: "Scheduled poll",
+      poll_type: "proposal",
+      poll_option_names: [ "Agree", "Disagree" ],
+      group_id: @group.id,
+      opening_at: 3.days.from_now,
+      closing_at: 7.days.from_now
+    }, actor: @user)
+
+    TopicService.invite(topic: poll.topic, actor: @user, params: { recipient_emails: [ guest_email ] })
+
+    guest = User.find_by!(email: guest_email)
+    assert poll.stances.latest.exists?(participant_id: guest.id)
   end
 end

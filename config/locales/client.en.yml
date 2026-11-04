@@ -188,6 +188,8 @@ en:
     manage_subscription: Manage Subscription
     amount: Amount
   loomio_tags:
+    show_tags_from_other_groups: "Show tags from other groups"
+    parent_group_and_subgroups_in_this_organization: "Parent group and subgroups in this organization"
     all_tags: All tags
     show_all_tags_in_organization: Show all tags in organization
     show_tags_used_in_this_group: Show tags used in this group
@@ -233,8 +235,6 @@ en:
     stv: STV election
     score: score poll
     question: question round
-  timezones:
-    local: Local time (%{value})
   mention_notifications_count:
     nobody_will_be_notified: Nobody will be notified
     one_person_will_be_notified: 1 person will be notified
@@ -311,6 +311,7 @@ en:
       open: Open
       closed: Closed
       private: Private
+      parent_members: "Visible to parent group"
       secret: Secret
     selected: Selected
     today: today
@@ -342,6 +343,7 @@ en:
       add: Add
       save: Save
       save_template: Save template
+      save_as_template: Save as template
       fork_template: Fork template
       export_json: Export json
       import_json: Import json
@@ -406,6 +408,7 @@ en:
       label: Formatting
       title: Learn how to use Markdown to format your text
   merge_accounts:
+    email_may_belong_to_another_account: If this address belongs to another account, you can merge the accounts
     modal:
       title: Merge accounts
       helptext: You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process.
@@ -413,6 +416,12 @@ en:
       submit: Verify
       flash: Verification email sent!
       flash_and_signout: Verification email sent to %{targetEmail}. You are now signed out so you can sign in as the target account to complete the merge.
+      generic_helptext: Enter the email address for the other account. If that account exists, Loomio will send it an email with instructions to confirm the merge.
+      email_label: Other account email
+      send_verification: Send verification email
+      generic_flash_and_signout: If an account uses that email address, a verification email has been sent. You are now signed out so you can continue with the other account
+      destination_helptext: This account (%{sourceEmail}) will be merged into the destination account. Enter the destination account's email address. If it exists, Loomio will send that address an email to confirm the merge.
+      destination_email_label: Destination account email
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
     find_out_more: Find out more.
     placeholder_modal_text: |
@@ -783,6 +792,12 @@ en:
     beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
   strand_members_list:
+    manage_thread_members: Manage thread members
+    find_or_invite_people: Find or invite people
+    invite_or_notify_explanation: New people will be invited to the thread. People already in the thread will be notified again.
+    invite_or_notify: Invite or notify
+    member_page_count: "%{first}–%{last} of %{total}"
+    guest_access_info: Guests invited by email can participate in this thread without access to other group threads
     notify_members_or_invite_guests_info: Notify group members by name, or invite non-members by email address. Invited guests can participate in this thread but won't have access to other group threads.
     notify_members_info: Enter names of group members to notify them about this thread.
     specified_voters_only_warning: This thread has polls where only selected people can vote. Adding someone here won't give them a vote — use "add voters" on the poll instead.
@@ -797,6 +812,26 @@ en:
     invite_to_poll: Invite to vote
     invite_to_wip_poll: Invite to give feedback
     invitations: Invitations
+  membership_notification_history:
+    invitation_delivery_history: Invitation delivery history
+    email_delivery_blocked: Loomio has blocked email delivery to this address
+    delivery_result:
+      delivered: Delivered
+      failed: Failed
+    could_not_load_history: Could not load notification history
+    no_invitations_recorded: No invitations recorded
+    membership_created: Invitation
+    membership_resent: Invitation resent
+    no_custom_message: No custom message
+    pending: Email pending
+    not_sent: No email delivery recorded
+    sent: Submitted to email service
+    delivered: Accepted by recipient's mail server
+    delayed: Delivery delay reported
+    rejected: Email rejected
+    bounced: Bounce reported
+    complained: Spam complaint reported
+    skipped: Email not sent
   membership_dropdown:
     view_profile: View profile
     set_name_and_username: Set name and username
@@ -813,12 +848,11 @@ en:
       group: Remove from group
       poll: Remove from %{pollType}
     cancel_invitation: Cancel invitation
-  notification_models:
-    discussion: 'discussion: '
-    comment: 'comment in '
-    poll: 'poll: '
-    outcome: 'outcome: '
-    stance: 'vote: '
+  notification_nouns:
+    comment: comment
+    discussion: discussion
+    outcome: outcome
+    stance: vote
   notifications:
     header: Notifications
     no_notifications: You don't have any notifications
@@ -1095,8 +1129,8 @@ en:
       everyone_in_the_group: Everyone in the group
       topic: Everyone in the thread
       voters: Everyone invited to vote
-      decided_voters: Everyone who voted
-      undecided_voters: Undecided voters
+      everyone_who_voted: Everyone who voted
+      people_who_have_not_voted: "People who haven't voted"
       non_voters: Members of %{name} not yet invited
     form:
       group_has_no_members_yet: You are the only member of your group. You may want to invite some people to your group before starting a thread or decision.
@@ -1162,7 +1196,7 @@ en:
       not_notified: Not notified yet
       no_members: This hasn't been shared with anyone yet!
       group_admin: Group admin
-      discussion_admin: Discussion admin
+      discussion_admin: "Thread admin"
       thread_admin: Thread admin
       last_read_at: Last viewed %{time}
       has_not_read_discussion: Has not viewed discussion
@@ -1174,8 +1208,13 @@ en:
     flash:
       success: "%{count} notifications sent"
   action_dock:
+    add_to_timeline: Add to timeline
+    remove_from_timeline: Remove from timeline
     copy_markdown: Copy Markdown
     copy_markdown_description: Copy the thread as structured Markdown — ideal for use with an AI agent or for creating a simple document from the thread content.
+    download_markdown: Download Markdown
+    markdown: Markdown
+    vote_before_export: Vote before exporting. This thread has a poll that hides results until you vote.
     thread_markdown_copied: Thread Markdown copied
     copy_thread_for_ai: Copy for AI
     thread_copied_for_ai: Thread copied for AI
@@ -1594,6 +1633,9 @@ en:
     confirm_change_to_public: If you proceed, all threads in this group will be made public on the web.
     confirm_change_to_private_discussions_only: If you proceed, any public threads in this group will be made private.
     profile: Profile
+    subgroup_name_and_content_are_public: "Anyone can find this subgroup and read its threads"
+    subgroup_name_is_public_and_threads_are_private: "Anyone can find this subgroup; its threads are private"
+    subgroup_is_visible_to_parent_members: "Members of %{parent} can find this subgroup; its threads are private"
     subgroup_privacy_is_open_description: Anyone can find this subgroup and ask to join. All threads are public.
     subgroup_privacy_is_closed_description: Anyone can find this subgroup and ask to join. All threads are private.
     subgroup_privacy_is_closed_public_threads_description: Anyone can find this subgroup and ask to join. Threads can be public or private.
@@ -1601,10 +1643,9 @@ en:
     subgroup_privacy_is_secret_description: Only invited members can see this subgroup.
     advanced_settings: Advanced settings
     how_do_people_join: How do people join?
-    membership_granted_upon_request: Anyone can join the group.
-    membership_granted_upon_approval: Anyone can request to join but must be approved.
-    membership_granted_upon_invitation: Invitation only.
-    membership_granted_upon_approval_secret_parent: "<strong>By request</strong>  anyone from %{parent} can ask to join the group."
+    join_without_approval: Join without approval
+    request_to_join: Request to join
+    invitation_only: Invitation only
     permissions: Permissions
     thread_privacy: Thread privacy
     public_threads: Public threads only
@@ -1612,8 +1653,8 @@ en:
     public_or_private_threads: Allow public and private threads
     private_threads: Only members can see discussions
     allow_public_threads: Allow public threads in this group.
-    parent_members_can_see_discussions: Members of %{parent} can see private threads
-    parent_members_can_see_discussions_help: Allow members of the parent group to see, but not participate in, threads and polls within this group
+    parent_group_members_can_see_private_threads: Parent group members can see private threads
+    parent_group_members_can_see_private_threads_help: Allow members of %{parent} to see, but not participate in, threads and polls within this group
     members_can_announce: Members can notify everyone in the group
     members_can_announce_help: Allow members to notify everyone in the group about a thread or poll
     members_can_add_members: Members can invite members
@@ -1760,8 +1801,9 @@ en:
     title_helptext:
       group: This title will appear beside %{name}'s name within this group. Use it to let people know their role.
     title_label: title
-    title_placeholder: E.g. 'Coordinator', or 'Facilitator'
+    title_placeholder: "E.g. 'Admin' or 'Facilitator'"
     updated: Membership title updated
+    weight_label: Vote weight
   user_name_modal:
     user_name_updated: User name updated
     set_user_name: Set user name
@@ -1810,6 +1852,7 @@ en:
     locale_label: Language
     short_bio_placeholder: Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations
     locale_placeholder: Select your preferred language
+    translations_are_made_by_machine: Translations are made by machine. If a word is wrong or unclear, email %{email} and we'll fix it.
     location_label: Location
     location_placeholder: Where are you based?
     update_profile: Update profile
@@ -1825,7 +1868,6 @@ en:
   change_picture_form:
     aria_label: Profile photo form
     title: Set profile photo
-    helptext: You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.
     use_initials: Use initials
     use_gravatar: Use Gravatar
     use_uploaded: Upload new photo
@@ -1836,10 +1878,34 @@ en:
     set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
     password_changed: Your password has been updated
+  passkey_settings:
+    title: Passkeys
+    helptext: Passkeys let you sign in with your device without entering your email address or password
+    none: You have not added a passkey
+    name: Passkey name
+    name_placeholder: For example, Work laptop
+    add: Add passkey
+    added: Passkey added
+    created_at: Added %{date}
+    remove_named: Remove %{name}
+    remove_confirm: Remove the passkey named %{name}?
+    removed: Passkey removed
+    remove_failed: Passkey could not be removed
   set_password_prompt:
     title: Set a password?
     helptext: You can use a password to sign in next time, instead of waiting for an email link.
     no_thanks: No thanks
+  credential_prompt:
+    title: Add another way to sign in
+    helptext: Add a passkey or set a password so you can sign in without waiting for an emailed code
+    passkey_description: A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock
+    add_passkey: Add a passkey
+    set_password: Set a password
+    set_new_password: Set a new password
+    not_now: Not now
+  account_completion:
+    complete_your_account: Complete your account
+    continue: Continue
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'
@@ -1939,7 +2005,6 @@ en:
       muted_description: View only threads which have been muted
     thread_preview:
       you_voted: You voted %{position}
-      undecided: You are undecided
     threads_from:
       group: Threads from
       pinned: Pinned threads
@@ -2026,6 +2091,7 @@ en:
   pin_discussion_modal:
     helptext: Pinned discussions always appear at the the group's list of discussions.
   thread_arrangement_form:
+    only_admins_can_add_attachments: Only admins can add attachments
     edit: Edit layout
     title: Thread layout
     layout: Layout
@@ -2051,6 +2117,7 @@ en:
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
     allow_concurrent_polls: Allow concurrent polls
     allow_multiple_polls: Allow multiple polls at the same time
+    only_one_poll_at_a_time: Only one poll at a time
     allow_concurrent_polls_description: Allow more than one poll to be open at the same time
     allow_comments: Allow comments
     allow_comments_description: Allow participants to post comments in this thread
@@ -2122,12 +2189,12 @@ en:
 
   poll_receipts_page:
     no_receipts: This anonymous poll closed before the verification feature existed, so verification is not possible.
-    verify_participants: Verify participants
     participation_records_explanation: This shows who was eligible and whether they voted. It does not show how anyone voted.
     participation_status_requires_min_votes: This shows who was eligible. Whether each person voted is shown only when at least %{count} people have voted.
     see_votes_if_quorum_reached: If the poll has closed and quorum was reached, you will see who voted
     voter_name: Name
     voter_email: Email
+    email_addresses_only_for_group_admins: Email addresses are shown only to group admins
     vote_cast: Vote cast
     voted: Voted
     not_voted: Not voted
@@ -2178,7 +2245,20 @@ en:
     for_the_proposal_to_pass: For the proposal to pass, this option must receive…
     for_the_poll_to_be_valid: For the %{poll_type} to be valid, this option must receive…
     votes_cast: Votes cast
+    points_cast: Points cast
     eligible_voters: Eligible voters
+    eligible_vote_weight: Eligible vote weight
+    vote_weight_cast: Vote weight cast
+    name_gte_eligible_vote_weight: "%{name} needs at least %{percent}% of eligible vote weight"
+    name_lte_eligible_vote_weight: "%{name} must not exceed %{percent}% of eligible vote weight"
+    name_gte_vote_weight_cast: "%{name} needs at least %{percent}% of vote weight cast"
+    name_lte_vote_weight_cast: "%{name} must not exceed %{percent}% of vote weight cast"
+    total_assigned_vote_weight: Total assigned vote weight
+    weighted_votes_cast: Weighted votes cast
+    name_gte_assigned_vote_weight: "%{name} needs at least %{percent}% of the total assigned vote weight"
+    name_lte_assigned_vote_weight: "%{name} must not exceed %{percent}% of the total assigned vote weight"
+    name_gte_weighted_votes_cast: "%{name} needs at least %{percent}% of weighted votes cast"
+    name_lte_weighted_votes_cast: "%{name} must not exceed %{percent}% of weighted votes cast"
     gte_score_percent: Needs at least %{percent}% of votes cast
     gte_voter_percent: Needs at least %{percent}% of eligible voters
     lte_score_percent: Must not exceed %{percent}% of votes cast
@@ -2188,6 +2268,14 @@ en:
     name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
+    weighted_votes: Weighted votes
+    weighted_points: Weighted points
+    pct_of_weighted_votes: "% of weighted votes"
+    pct_of_eligible_vote_weight: "% of eligible vote weight"
+    pct_of_vote_weight_cast: "% of vote weight cast"
+    pct_of_assigned_vote_weight: "% of assigned vote weight"
+    pct_of_weighted_points: "% of weighted points"
+    weighted_mean: Weighted mean
     your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
@@ -2228,6 +2316,7 @@ en:
     blank_subtitle: Create a new poll template for a specific process
     poll_template: Poll template
     poll_template_saved: Poll template saved
+    reuse_voting_options_and_settings: Templates let anyone in your group reuse voting options, explanations, and settings. Review the example content before saving, then choose the template when starting a new poll
     poll_templates: Poll templates
     start_a_poll: Start a poll
     poll_types: Poll types
@@ -2260,6 +2349,7 @@ en:
     message: Message
     results: Results
     view_all_votes: View all votes
+    view_votes: View votes
     current_results: Current results
     responses: Responses
     close_poll_type: Close %{pollType}
@@ -2330,6 +2420,8 @@ en:
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion
   members_panel:
+    edit_vote_weights: Edit vote weights
+    vote_weights_are_defaults: These default vote weights apply to new votes. Changes here do not affect vote weights already issued.
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
@@ -2390,6 +2482,7 @@ en:
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
     upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
+    votes_have_different_weights: Votes in this poll have different weights, so some count more than others.
     from_the_group: From the group
     default_templates: Default templates
     default_template: Default template
@@ -2451,7 +2544,7 @@ en:
       voting_title: 24 hours before voting closes, send a reminder to
       nobody: Nobody
       author: Author (me)
-      undecided_voters: Undecided voters
+      people_who_have_not_voted: "People who haven't voted"
       voters: All voters
     notify_on_participate:
       title: Notify me when people participate
@@ -2504,8 +2597,10 @@ en:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
   poll_common_votes_panel:
-    cast: Cast
-    uncast: Uncast
+    all_voters: All voters
+    vote_weight_column: Vote weight
+    stance: Vote
+    participation_records_restricted: You can see who took part after voting closes
     vote_removed: Vote removed
     reason_redacted: Reason redacted
     redact_reason_title: Redact vote reason?
@@ -2516,15 +2611,14 @@ en:
     unredact_reason_helptext: The reason text and attachments will be made visible again
     unredact_reason_confirm: Restore reason
     unredact_reason_success: Vote reason restored
-    undecided: Undecided
     newest_first: Newest first
     oldest_first: Oldest first
     priority_first: Agree first
     priority_last: Block first
-    undecided_first: Undecided first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
+    vote_weight: Vote weight %{weight}
   poll_common_details_meta:
     opened: Opened
     opens: Opens
@@ -2534,15 +2628,6 @@ en:
     opening_at: Opening at
     closed_at: Closed at
     closing_at: Closing at
-  poll_common_undecided_panel:
-    show_undecided: Show %{count} undecided
-    show_invitations: Show Pending Invitations
-    undecided_users: Undecided (%{count})
-    invitation_count_singular: 1 additional person has been invited to participate via email
-    invitation_count_plural: "%{count} additional people have been invited to participate via email"
-  poll_common_undecided_user:
-    reminded: Reminder sent!
-    reminder_sent: Reminder notification sent
   poll_common_set_outcome_panel:
     enter_an_outcome: Enter an outcome
     poll_type: This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next.
@@ -2569,8 +2654,40 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    voters: Voters
+    find_or_invite_voters: Find or invite voters
+    manage_voters: Manage voters
+    remove_voter: Remove voter
+    remove_voter_named: Remove %{name} from poll
+    remove_voter_and_any_vote_confirmation: Remove %{name} from this poll? This also removes any vote they cast.
+    voter_page_count: "%{first}–%{last} of %{total}"
+    weighted_voting: Weighted voting
+    weighted_voting_is_not_available_with_anonymous_voting: "Weighted voting is not available with anonymous voting"
+    give_voters_different_vote_weights: Give voters different vote weights. Results show both the plain and the weighted totals.
+    use_weighted_voting: Use weighted voting
+    weighted_voting_off_warning: Turning off weighted voting sets every vote weight to 1. Any vote weights you changed for this poll will be lost.
+    issued_vote_weights_will_change: Vote weights already issued will change.
+    weighted_voting_on_group: Turning on weighted voting copies each member's default vote weight. Other voters get a vote weight of 1.
+    weighted_voting_on_direct: Turning on weighted voting sets every vote weight to 1
+    vote_weight_for: Vote weight for %{name}
+    edit_vote_weight: Edit vote weight
+    edit_vote_weight_for: Edit vote weight for %{name} (currently %{weight})
+    save_vote_weights: Save vote weights
+    vote_weights_updated: Vote weights updated
+    weight_for_all: Vote weight for all
+    set_all_vote_weights: Set all vote weights
+    set_all_vote_weights_title: Set all vote weights
+    set_all_vote_weights_search_note: This changes the vote weights of all voters in the poll, including those outside your search results
+    set_all: Set all
+    set_each_member_default_vote_weight: Set each member's default vote weight
+    set_all_vote_weights_the_same: Set all vote weights the same
+    member_vote_weights_hint: Voters without a current group membership get a vote weight of 1
     anonymous_votes_are_stored_separately_from_voter_identities_description: Anonymous votes are stored separately from voter identities. Results appear after voting closes. Voters cannot add reasons, review their vote after submitting it, or change their vote
     quorum: Quorum
+    quorum_vote_weight_hint: What percentage of eligible vote weight must participate for the result to be valid? Optional, leave blank for no quorum.
+    quorum_vote_weight_placeholder: Percentage of eligible vote weight (0–100)
+    quorum_voters_placeholder: Percentage of eligible voters (0–100)
+    quorum_weighted_hint: What percentage of the total assigned vote weight must participate for the result to be valid? Optional, leave blank for no quorum.
     participation_quorum: Participation quorum
     quorum_hint: What percentage of voters must participate for the result to be valid? Optional, leave blank for no quorum.
     quorum_placeholder: Leave blank or enter a number between 0 and 100
@@ -2669,6 +2786,7 @@ en:
     add_voters: Add voters
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
+    voters_will_not_be_notified: Voters will not be notified. Let them know about the poll another way.
     count_voters_added: "%{count} voters added"
     notify_voters_when_voting_opens: Notify voters when voting opens
     voters_notified_when_opens: Voters will be notified when voting opens
@@ -2790,6 +2908,10 @@ en:
     'yes': 'Yes'
     'no': 'No'
   poll_common_percent_voted:
+    pct_vote_weight_participation: "%{num} of %{total} votes cast (%{pct}% of vote weight)"
+    pct_of_eligible_vote_weight_must_participate: "%{pct}% of eligible vote weight must participate"
+    pct_weighted_participation: "%{num} of %{total} votes cast (%{pct}% of assigned vote weight participated)"
+    pct_of_assigned_vote_weight_must_participate: "%{pct}% of the total assigned vote weight must participate"
     pct_of_eligible_voters_must_participate: "%{pct}% of eligible voters must participate"
     pct_participation: "%{num} of %{total} votes cast (%{pct}% participation)"
     vote_short_of_quorum: "1 more vote needed to reach quorum of %{pct}%"
@@ -2799,7 +2921,7 @@ en:
     total: Total
   poll_remove_vote:
     title: Remove your vote?
-    helptext: Are you sure you want to remove your vote? You will be listed as undecided and can vote again later if you wish.
+    helptext_not_voted: Are you sure you want to remove your vote? Your status will be “Not voted” and you can vote again later if you wish.
     confirm: Remove vote
     success: Vote removed
   poll_poll_vote_form:
@@ -2910,12 +3032,17 @@ en:
     sign_up_as: Create account as %{email}
     sign_in_as: Sign in as %{name}
     continue_with_provider: Continue with %{provider}
+    sign_in_with_provider: Sign in with %{provider}
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
+    or_sign_in_with_password: Or sign in with a password
     enter_your_name: Enter your name
+    invitation_required_title: Invitation required
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required
+    email_code_help: Enter your email address and we’ll send you a six-digit sign-in code
+    email_code_help_short: We’ll send a six-digit code to your email address
     invalid_email: Sorry, that doesn't look like a valid email address
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
@@ -2953,6 +3080,8 @@ en:
     link_accounts: Link accounts
     check_your_email: Check your email!
     login_link_sent: We've sent an email to %{email}
+    login_link_sent_if_account_exists: If an account exists for %{email}, we'll send a sign-in code
+    login_link_sent_if_account_exists_sentence: If an account exists for %{email}, we'll send a sign-in code.
     instructions: 'Click the link to sign in, or enter the code below:'
     instructions_code: 'Enter the code from that email:'
     too_many_attempts: Too many attempts; try clicking the link in the email to sign in.
@@ -2967,6 +3096,17 @@ en:
     name: Name
     email: Email
     password: Password
+    use_a_passkey: Use a passkey
+    send_me_a_code: Send me a code
+    sign_in_with_passkey: Sign in with a passkey
+    passkey_authentication_failed: We could not sign you in with that passkey
+    passkey_registration_failed: We could not save that passkey
+    passkey_recent_authentication_required: Sign in again before changing your passkeys
+    passkey_default_name: Passkey
+    local_login_disabled: This site requires single sign-on
+    email_me_a_sign_in_code: Email me a sign-in code
+    sign_in_with_code: Sign in with a code
+    new_to_site: New here?
     reactivate: Reactivate account
   chatbot:
     chat_integrations: Chat integrations

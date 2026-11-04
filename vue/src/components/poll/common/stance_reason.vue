@@ -33,6 +33,7 @@ const reasonPrompt = computed(() => {
     :label="$t(label)"
     :placeholder="reasonPrompt"
     :max-length='maxLength'
+    :allow-mentions="poll.hideResults !== 'until_closed' || !!poll.closedAt"
   )
   validation-errors(:subject="stance" field="reason")
 

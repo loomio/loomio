@@ -11,64 +11,74 @@ const route = useRoute();
 const discussion = ref(null);
 const user = ref(null);
 
-const init = () => {
+const loadDiscussion = async () => {
   let discussionId, templateId, templateKey, userId;
-  discussion.value = null;
 
   if (route.params.key) {
-    Records.discussions.findOrFetchById(route.params.key).then(d => {
-      discussion.value = d.clone();
-    });
+    const discussion = await Records.discussions.findOrFetchById(route.params.key);
+    return discussion.clone();
 
   } else if ((templateId = parseInt(route.query.template_id))) {
-    Records.discussionTemplates.findOrFetchById(templateId).then(template => {
-      discussion.value = template.buildDiscussion();
-      if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
-        discussion.value.groupId = parseInt(route.query.group_id);
-      }
-    });
+    const template = await Records.discussionTemplates.findOrFetchById(templateId);
+    const discussion = template.buildDiscussion();
+    if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
+      discussion.groupId = parseInt(route.query.group_id);
+    }
+    return discussion;
 
   } else if ((templateKey = route.query.template_key)) {
-    Records.discussionTemplates.findOrFetchByKey(route.query.template_key, route.query.group_id).then(template => {
-      discussion.value = template.buildDiscussion();
-      if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
-        discussion.value.groupId = parseInt(route.query.group_id);
-      }
-    });
+    const template = await Records.discussionTemplates.findOrFetchByKey(templateKey, route.query.group_id);
+    const discussion = template.buildDiscussion();
+    if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
+      discussion.groupId = parseInt(route.query.group_id);
+    }
+    return discussion;
 
   } else if ((discussionId = parseInt(route.query.discussion_id))) {
-    Records.discussions.findOrFetchById(discussionId).then(dt => {
-      discussion.value = dt.buildCopy();
-      if (dt.groupId && Session.user().groupIds().includes(dt.groupId)) {
-        discussion.value.groupId = dt.groupId;
-      }
-    });
+    const original = await Records.discussions.findOrFetchById(discussionId);
+    const discussion = original.buildCopy();
+    if (original.groupId && Session.user().groupIds().includes(original.groupId)) {
+      discussion.groupId = original.groupId;
+    }
+    return discussion;
 
   } else if (parseInt(route.query.group_id)) {
     const groupId = parseInt(route.query.group_id);
-    Records.groups.findOrFetchById(groupId).then(() => {
-      discussion.value = Records.discussions.build({
-        title: route.query.title,
-        groupId: groupId,
-        descriptionFormat: Session.defaultFormat()
-      });
+    await Records.groups.findOrFetchById(groupId);
+    return Records.discussions.build({
+      title: route.query.title,
+      groupId: groupId,
+      descriptionFormat: Session.defaultFormat()
     });
 
   } else if ((userId = parseInt(route.query.user_id))) {
-    Records.users.findOrFetchById(userId).then(u => {
-      user.value = u;
-      discussion.value = Records.discussions.build({
-        title: route.query.title,
-        groupId: null,
-        descriptionFormat: Session.defaultFormat()
-      });
+    user.value = await Records.users.findOrFetchById(userId);
+    return Records.discussions.build({
+      title: route.query.title,
+      groupId: null,
+      descriptionFormat: Session.defaultFormat()
     });
 
   } else {
-    discussion.value = Records.discussions.build({
+    return Records.discussions.build({
       title: route.query.title,
       descriptionFormat: Session.defaultFormat()
     });
+  }
+};
+
+// Every route-based load must show access failures instead of leaving a blank
+// form. Signing in clears the app's error page and retries the current route.
+const init = async () => {
+  discussion.value = null;
+  try {
+    discussion.value = await loadDiscussion();
+  } catch (error) {
+    if (!error.status) { throw error; }
+    EventBus.$emit('pageError', error);
+    if (error.status === 403 && !Session.isSignedIn()) {
+      EventBus.$emit('openAuthModal');
+    }
   }
 };
 

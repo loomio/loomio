@@ -10,6 +10,32 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
+  test "member lists omit email block status without querying suppressions for any role" do
+    blocked = users(:member_normal)
+    unblocked = users(:member_loud)
+    EmailSuppressionService.record!(email: blocked.email, reason: 'complaint', source_key: 'test:member-list')
+    memberships(:user_membership).update!(admin: true)
+    queries = []
+    callback = ->(_name, _start, _finish, _id, payload) { queries << payload[:sql] if payload[:sql].include?('email_suppressions') }
+
+    [users(:member), @user, @admin].each do |viewer|
+      sign_in viewer
+      queries.clear
+      ActiveSupport::Notifications.subscribed(callback, 'sql.active_record') do
+        get :index, params: {group_id: @test_group.id, user_ids: [blocked.id, unblocked.id]}
+      end
+      assert_response :success
+      assert_empty queries
+      payloads = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
+      [blocked, unblocked].each do |user|
+        payload = payloads.fetch(user.id)
+        %w[email_delivery_blocked email_suppressions bounces_count complaints_count].each do |key|
+          refute payload.key?(key), "unexpected #{key} for viewer #{viewer.id}"
+        end
+      end
+    end
+  end
+
   test "join group responds with the created membership" do
     group = Group.create!(
       name: "Open group #{SecureRandom.hex(4)}",
@@ -26,6 +52,81 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   # ===== Membership Creation Tests =====
+  test "parent members can join leave and rejoin without approval or admin rights" do
+    group = groups(:parent_join_subgroup)
+    user = users(:member_normal)
+    sign_in user
+
+    assert_no_difference "MembershipRequest.count" do
+      post :join_group, params: { group_id: group.id }
+    end
+    assert_response :success
+    membership = group.membership_for(user)
+    assert membership.accepted_at.present?
+    assert_not membership.admin?
+    assert_equal membership.id, JSON.parse(response.body).fetch('memberships').first.fetch('id')
+
+    delete :destroy, params: {id: membership.id}
+    assert_response :success
+    assert membership.reload.revoked_at.present?
+
+    post :join_group, params: {group_id: group.id}
+    assert_response :success
+    assert_nil membership.reload.revoked_at
+    assert_not membership.admin?
+  end
+
+  test "outsiders and revoked parent members cannot join a subgroup visible only to parent members" do
+    group = groups(:parent_join_subgroup)
+
+    %i[alien guest_normal former_member_loud non_guest_loud].each do |role|
+      sign_in users(role)
+      assert_no_difference "Membership.count" do
+        post :join_group, params: {group_id: group.id}
+      end
+      assert_response :forbidden
+    end
+  end
+
+  test "any verified active user can join a publicly visible subgroup with immediate joining" do
+    group = groups(:parent_join_subgroup)
+    group.parent.update!(group_privacy: 'closed')
+    group.update!(is_visible_to_public: true)
+    sign_in @alien
+
+    post :join_group, params: {group_id: group.id}
+
+    assert_response :success
+    membership = group.membership_for(@alien)
+    assert membership.accepted_at.present?
+    assert_not membership.admin?
+  end
+
+  test "joining clears an earlier pending approval request" do
+    group = groups(:parent_join_subgroup)
+    user = users(:member_normal)
+    request = MembershipRequest.create!(group: group, requestor: user, introduction: 'I can help')
+    sign_in user
+
+    post :join_group, params: {group_id: group.id}
+
+    assert_response :success
+    assert group.membership_for(user).present?
+    assert_not MembershipRequest.exists?(request.id)
+  end
+
+  test "parent membership joining does not allow signed out users or bypass secret subgroup privacy" do
+    group = groups(:parent_join_subgroup)
+    sign_out @user
+    post :join_group, params: {group_id: group.id}
+    assert_response :forbidden
+
+    sign_in users(:member_normal)
+    group.update!(group_privacy: 'secret')
+    post :join_group, params: {group_id: group.id}
+    assert_response :forbidden
+  end
+
 
   test 'sets the membership volume to user default' do
     new_group = Group.create!(
@@ -60,6 +161,42 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'dr', m.reload.title
   end
 
+  test 'member updates their own title without changing vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Member'}}
+
+    assert_response :success
+    assert_equal 'Member', membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  # Vote weights are only edited together on the weights page, so the
+  # per-member update rejects a weight even from a group admin.
+  test 'membership update rejects a vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :update, params: {id: membership.id, membership: {title: 'Chair', weight: '0.5'}}
+
+    assert_response :bad_request
+    assert_nil membership.reload.title
+    assert_equal 1, membership.weight
+  end
+
+  test 'invalid weights are rejected by the bulk weight endpoints' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 'abc'}}
+    assert_response :unprocessable_entity
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '1000000000'}
+    assert_response :unprocessable_entity
+
+    assert_equal 1, membership.reload.weight
+  end
+
   test 'user_name updates name but not username' do
     sign_in @admin
     member_user = User.create!(
@@ -77,7 +214,184 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'pendingmember', member_user.username
   end
 
+  test 'coordinators can name verified nameless members and rename unverified named members' do
+    coordinator = users(:member_normal)
+    @test_group.add_admin!(coordinator)
+    member = users(:member_loud)
+    sign_in coordinator
+
+    [{name: nil, email_verified: true}, {name: 'Invited name', email_verified: false}].each do |profile|
+      member.update!(profile)
+
+      post :user_name, params: {id: member.id, name: 'Member supplied name'}
+
+      assert_response :success
+      assert_equal 'Member supplied name', member.reload.name
+    end
+  end
+
+  test 'coordinators cannot rename verified named members or people outside their groups' do
+    coordinator = users(:member_normal)
+    @test_group.add_admin!(coordinator)
+    sign_in coordinator
+
+    [[users(:member_loud), true], [users(:alien), false]].each do |member, verified|
+      member.update!(email_verified: verified)
+      original_name = member.name
+
+      post :user_name, params: {id: member.id, name: 'Forbidden name'}
+
+      assert_response :forbidden
+      assert_equal original_name, member.reload.name
+    end
+  end
+
+  test 'filtered membership lists expose peer emails only to group coordinators' do
+    coordinator = users(:member_normal)
+    member = users(:member_quiet)
+    peer = users(:member_loud)
+    @test_group.add_admin!(coordinator)
+    membership = @test_group.membership_for(peer)
+
+    [[coordinator, true], [member, false]].each do |actor, may_see_email|
+      sign_in actor
+      get :index, params: {group_id: @test_group.id, user_xids: peer.id.to_s}
+
+      assert_response :success
+      rows = response.parsed_body.fetch('memberships')
+      assert_equal [membership.id], rows.map { |row| row.fetch('id') }
+      if may_see_email
+        assert_equal peer.email, rows.first.fetch('user_email')
+      else
+        assert_not rows.first.key?('user_email')
+        assert_not rows.first.key?('weight')
+        peer_user = response.parsed_body.fetch('users').find { |user| user.fetch('id') == peer.id }
+        assert_not peer_user.key?('email')
+      end
+    end
+  end
+
   # ===== Set Volume Tests =====
+
+  test 'weight editor pages active memberships by name with a total' do
+    sign_in @admin
+    ordered_ids = @test_group.memberships.active.joins(:user).order('users.name, memberships.id').pluck(:id)
+
+    get :weights, params: {group_id: @test_group.id, offset: 1, limit: 2}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal ordered_ids.length, json.fetch('total')
+    assert_equal ordered_ids[1, 2], json.fetch('memberships').map { |row| row.fetch('id') }
+    assert_equal %w[avatar_initials avatar_url delegate email id name title user_id weight], json.fetch('memberships').first.keys.sort
+  end
+
+  test 'weight editor filters by name or email' do
+    sign_in @admin
+    member = User.create!(name: 'Zebedee Quorum', email: 'zq-weights@example.com', email_verified: true)
+    @test_group.add_member!(member)
+
+    get :weights, params: {group_id: @test_group.id, q: 'Quorum'}
+    json = JSON.parse(response.body)
+    assert_equal 1, json.fetch('total')
+    assert_equal [member.name], json.fetch('memberships').map { |row| row.fetch('name') }
+
+    get :weights, params: {group_id: @test_group.id, q: 'zq-weights'}
+    assert_equal [member.email], JSON.parse(response.body).fetch('memberships').map { |row| row.fetch('email') }
+  end
+
+  test 'group admin weight updates leave revoked memberships unchanged' do
+    sign_in @admin
+    revoked = @test_group.add_member!(User.create!(name: 'Former member', email: 'former-weights@example.com', email_verified: true))
+    revoked.update!(revoked_at: Time.current, weight: 4)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {revoked.id => 2}}
+    assert_equal 4, revoked.reload.weight
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+    assert_equal 4, revoked.reload.weight
+  end
+
+  test 'member cannot load the weight editor' do
+    get :weights, params: {group_id: @test_group.id}
+
+    assert_response :forbidden
+  end
+
+  test 'group admin updates membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
+
+    assert_response :success
+    assert_equal 2, membership.reload.weight
+  end
+
+  test 'group admin sets a fractional membership vote weight' do
+    sign_in @admin
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => '0.5'}}
+
+    assert_response :success
+    assert_equal BigDecimal('0.5'), membership.reload.weight
+  end
+
+  test 'member cannot update their own membership vote weight' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 0}}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin updates member weights together' do
+    sign_in @admin
+    first = @test_group.membership_for(@user)
+    second = @test_group.membership_for(@admin)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {first.id => 0, second.id => 3}}
+
+    assert_response :success
+    assert_equal [0, 3], [first.reload.weight, second.reload.weight]
+  end
+
+  test 'member cannot update member weights together' do
+    membership = @test_group.membership_for(@user)
+
+    patch :set_weights, params: {group_id: @test_group.id, weights: {membership.id => 2}}
+
+    assert_response :forbidden
+    assert_equal 1, membership.reload.weight
+  end
+
+  test 'group admin resets every active member weight' do
+    sign_in @admin
+    @test_group.membership_for(@user).update!(weight: 2)
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.375'}
+
+    assert_response :success
+    assert @test_group.memberships.active.all? { |membership| membership.reload.weight == BigDecimal('0.375') }
+  end
+
+  test 'member cannot reset group member weights' do
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.5'}
+
+    assert_response :forbidden
+    assert_equal 1, @test_group.membership_for(@user).reload.weight
+  end
+
+  test 'reset stores weights at the column precision' do
+    sign_in @admin
+
+    patch :reset_weights, params: {group_id: @test_group.id, weight: '0.0001'}
+
+    assert_response :success
+    assert_equal 0, @test_group.membership_for(@user).reload.weight
+  end
 
   test 'updates volume for single membership' do
     membership = @test_group.membership_for(@user)
@@ -94,6 +408,17 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_equal 'loud', membership.volume_email
     assert_equal 'normal', membership.volume_push
     assert_not_equal 'loud', second_membership.volume_email
+  end
+
+  test 'an unsubscribe token cannot change membership volume through the API' do
+    membership = @test_group.membership_for(@user)
+    original_volume = membership.volume_email
+    sign_out
+
+    put :set_volume, params: {id: membership.id, unsubscribe_token: @user.unsubscribe_token, volume_email: 'quiet'}, format: :json
+
+    assert_response :forbidden
+    assert_equal original_volume, membership.reload.volume_email
   end
 
   test 'updates email volume without changing push volume when push is omitted' do

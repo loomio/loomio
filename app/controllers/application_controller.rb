@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   helper_method :bundle_asset_path
   helper_method :supported_locales
 
+  rescue_from(CurrentUserHelper::InactiveUserError) { respond_with_error(401) }
+
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404
   end
@@ -65,10 +67,8 @@ class ApplicationController < ActionController::Base
     @recipient = current_user
     if current_user.can? :show, resource
       assign_resource
-      @pagination = pagination_params
       respond_to do |format|
-        format.html
-        format.xml
+        format.html { boot_app }
       end
     else
       respond_with_error 403
@@ -132,8 +132,11 @@ class ApplicationController < ActionController::Base
     return 'noindex,follow' if resource.is_a?(Group) && resource.group_privacy == 'secret'
   end
 
+  # Set through Rails rather than the raw header: Rails rebuilds Cache-Control
+  # from its own directives and drops no-store when another one, such as
+  # expires_now, is set.
   def prevent_caching
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate' # HTTP 1.1.
+    response.cache_control.replace(no_store: true) # HTTP 1.1.
     response.headers['Pragma'] = 'no-cache' # HTTP 1.0.
     response.headers['Expires'] = '0' # Proxies.
   end
@@ -150,7 +153,6 @@ class ApplicationController < ActionController::Base
   end
 
   def boot_app(status: 200)
-    expires_now
     prevent_caching
     render Views::Application::Boot.new(
       metadata: application_metadata,

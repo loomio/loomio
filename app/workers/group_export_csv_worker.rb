@@ -1,7 +1,10 @@
 class GroupExportCsvWorker < ApplicationJob
   def perform(group_id, requestor_id, recipient_email = nil)
-    requestor = User.find(requestor_id)
-    group = Group.find(group_id)
+    group = Group.find_by(id: group_id)
+    requestor = User.find_by(id: requestor_id)
+    return unless group && requestor
+    return unless GroupService.export_permitted?(group: group, actor: requestor, recipient_email: recipient_email)
+
     csv = GroupExporter.new(group).to_csv
     filename = "#{group.full_name} CSV export #{DateTime.now.iso8601}".parameterize + ".csv"
     blob = ActiveStorage::Blob.create_and_upload!(

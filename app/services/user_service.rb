@@ -8,8 +8,7 @@ class UserService
     end
 
     user = User.where(email_verified: false, email: params[:email]).first_or_create
-    user.attributes = params.slice(:name, :email, :legal_accepted, :email_newsletter)
-    user.require_valid_signup = true
+    user.attributes = params.slice(:email)
     user.save
     if user.persisted?
       Sentry.metrics.count("user.sign_up")
@@ -48,12 +47,27 @@ class UserService
 
   def self.reactivate(user_id)
     user = User.find(user_id)
-    deactivated_at = user.deactivated_at
-    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
-    group_ids = Membership.where(user_id: user.id).pluck(:group_id)
-    Group.where(id: group_ids).map(&:update_memberships_count)
-    Group.update_org_members_count_for_group_ids(group_ids)
-    user.update(deactivated_at: nil)
+    restored_group_ids = []
+    user.with_write_lock do
+      deactivated_at = user.deactivated_at
+      restored_group_ids = Membership.where(user_id: user.id, revoked_at: deactivated_at).pluck(:group_id)
+      Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
+
+      # Deactivation revoked the user's stances in open polls with the same
+      # timestamp. Restore those, leaving stances an admin removed revoked.
+      stances = Stance.joins(:poll).where(participant_id: user.id, revoked_at: deactivated_at, polls: { closed_at: nil })
+      poll_ids = stances.pluck(:poll_id)
+      stances.update_all(revoked_at: nil, revoker_id: nil)
+      Poll.where(id: poll_ids).find_each(&:update_counts!)
+
+      group_ids = Membership.where(user_id: user.id).pluck(:group_id)
+      Group.where(id: group_ids).order(:id).each(&:update_membership_counts)
+      Group.update_org_members_count_for_group_ids(group_ids)
+      user.update_memberships_count
+      user.update!(deactivated_at: nil)
+    end
+    # Polls started while the user was deactivated give them stances here.
+    restored_group_ids.each { |group_id| PollGroupMembersAddedWorker.perform_later(group_id) }
     ReindexAuthorWorker.perform_later(user.id)
   end
 
@@ -89,14 +103,17 @@ class UserService
       user.memberships.update_all(membership_attributes)
       user.topic_readers.update_all(membership_attributes)
     end
-    EventBus.broadcast('user_set_volume', user, actor, params)
   end
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    
+
+    # Provisional accounts are created with only a verified email address.
+    # Their first profile update must complete the identity and consent fields
+    # together; client-side modal controls are not the security boundary.
+    user.require_valid_signup = true if user.incomplete?
     remove_externally_managed_profile_fields(params) if disable_edit_user_profile?
-    
+
     user.assign_attributes_and_files(params)
     unless user.valid?
       Sentry.metrics.count("user.update_failed", attributes: { columns: user.errors.attribute_names.join(',') })
@@ -108,14 +125,26 @@ class UserService
       rotate_credentials_after_password_change(user)
       Sentry.metrics.count("user.password_changed")
     end
-    EventBus.broadcast('user_update', user, actor, params)
     ReindexAuthorWorker.perform_later(user.id) if user.name_previously_changed?
     user
   end
 
+  # A detected time zone is a preference, so saving it must not revalidate
+  # unrelated legacy profile fields or bypass the normal signup completion flow.
+  def self.set_time_zone(user:, actor:, time_zone:)
+    actor.ability.authorize! :update, user
+
+    unless time_zone.is_a?(String) && ActiveSupport::TimeZone[time_zone]
+      user.errors.add(:time_zone, :invalid)
+      return user
+    end
+
+    user.update_columns(time_zone: time_zone, updated_at: Time.current)
+    user
+  end
+
   def self.disable_edit_user_profile?
-    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
-      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
+    AppConfig.sso_disable_edit_user_profile?
   end
 
   def self.remove_externally_managed_profile_fields(params)
@@ -152,6 +181,5 @@ class UserService
     end
     user.experiences[name] = value
     user.save!
-    EventBus.broadcast('user_save_experience', user, actor, params)
   end
 end

@@ -138,12 +138,35 @@ class UserQueryTest < ActiveSupport::TestCase
   test "inviting to group shows subgroup members" do
     Membership.where(user: @actor, group: @group).update(admin: true)
     names = UserQuery.invitable_search(model: @group, actor: @actor).pluck(:name)
+    assert_includes names, @member.name
     assert_includes names, @subgroup_member.name
+    assert_includes names, @other_member.name
+    refute_includes names, @unrelated.name
+  end
+
+  test "group invitation discovery excludes other organizations when guests are disabled" do
+    @group.update_column(:members_can_add_guests, false)
+
+    names = UserQuery.invitable_search(model: @group, actor: @actor).pluck(:name)
+
+    assert_includes names, @member.name
+    assert_includes names, @subgroup_member.name
+    refute_includes names, @other_member.name
+    refute_includes names, @unrelated.name
   end
 
   test "inviting to subgroup shows parent members" do
     Membership.where(user: @actor, group: @subgroup).update(admin: true)
     names = UserQuery.invitable_search(model: @subgroup, actor: @actor).pluck(:name)
     assert_includes names, @member.name
+  end
+
+  test "invitation search applies query exclusions and active-account filtering to the fixture matrix" do
+    actor = users(:member_normal)
+    guest = users(:guest_quiet)
+
+    assert_equal [guest.id], UserQuery.invitable_search(model: nil, actor: actor, q: guest.email).pluck(:id)
+    assert_empty UserQuery.invitable_search(model: nil, actor: actor, q: guest.email, exclude_user_ids: [guest.id])
+    assert_empty UserQuery.invitable_search(model: nil, actor: actor, q: users(:inactive_member_loud).email)
   end
 end

@@ -1,26 +1,38 @@
 class Api::V1::SessionsController < ApplicationController
   include PrettyUrlHelper
+  include RequiresLocalLogin
+  skip_before_action :require_local_login, only: :destroy
 
   def create
     unless turnstile_ok?
       render json: { errors: { turnstile: [I18n.t('auth_form.turnstile_required')] } }, status: 403
       return
     end
-    if user = attempt_login
-      sign_in(user)
-      flash[:notice] = t('auth_form.signed_in')
-      user.update(name: resource_params[:name]) if resource_params[:name]
-      user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
-      method = resource_params[:code].present? ? "login_code" : (session[:pending_login_token].present? ? "magic_link" : "password")
-      Sentry.metrics.count("auth.sign_in", attributes: { method: method })
-      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
-        signed_in_via_login_code: resource_params[:code].present?,
-        authentication_redirect: authentication_return_path
-      ).compact
-      EventBus.broadcast('session_create', user)
-    else
+    # Authentication consumes the token, so identify the method first.
+    method = sign_in_method
+    user = attempt_login
+    if user.nil? || user.deactivated?
       Sentry.metrics.count("auth.sign_in_failed", attributes: { reason: failure_reason })
       render json: { errors: failure_message }, status: 401
+    elsif user.incomplete?
+      stage_account_completion(user, authentication_method: method)
+      render json: {
+        incomplete: true,
+        email: user.email,
+        name: user.name,
+        legal_acceptance_required: user.legal_acceptance_required?,
+        email_newsletter: user.email_newsletter
+      }
+    else
+      user = sign_in(user)
+      flash[:notice] = t('auth_form.signed_in')
+      EmailSuppressionService.clear!(user: user, actor: user, method: 'sign_in')
+      Sentry.metrics.count("auth.sign_in", attributes: { method: method })
+      render json: Boot::User.new(user, root_url: URI(root_url).origin, flash: flash).payload.merge(
+        signed_in_via_login_code: method == "login_code",
+        signed_in_via_password: method == "password",
+        authentication_redirect: authentication_return_path
+      ).compact
     end
     session.delete(:pending_login_token)
   end
@@ -36,27 +48,37 @@ class Api::V1::SessionsController < ApplicationController
 
   private
 
-  def failure_reason
-    if resource_params[:password] && login_user&.access_locked?
-      "account_locked"
-    elsif session[:pending_login_token].present?
-      "invalid_token"
-    elsif resource_params[:password] && login_user.nil?
-      "email_not_found"
+  def require_local_login
+    # Existing links, including admin sign-in links, remain usable on SSO-only
+    # sites. Requesting a new link still requires local login to be enabled.
+    return if pending_login_token&.useable?
+
+    super
+  end
+
+  def sign_in_method
+    if pending_login_token&.useable?
+      "login_token"
+    elsif resource_params[:code].present?
+      "login_code"
     else
-      "invalid_password"
+      "password"
+    end
+  end
+
+  def failure_reason
+    if session[:pending_login_token].present?
+      "invalid_token"
+    else
+      "invalid_login"
     end
   end
 
   def failure_message
-    if resource_params[:password] && login_user&.access_locked?
-      { password: [I18n.t('auth_form.account_locked')] }
-    elsif session[:pending_login_token].present?
+    if session[:pending_login_token].present?
       { token: [I18n.t('auth_form.invalid_token')] }
-    elsif resource_params[:password] && login_user.nil?
-      { email: [I18n.t('auth_form.email_not_found')] }
     else
-      { password: [I18n.t('auth_form.invalid_password')] }
+      { password: [I18n.t('auth_form.invalid_login')] }
     end
   end
 
@@ -66,7 +88,11 @@ class Api::V1::SessionsController < ApplicationController
 
   def attempt_login
     if pending_login_token&.useable?
-      pending_login_token.user
+      login_link_user
+    elsif !AppConfig.local_login_enabled?
+      # A token may expire or be consumed after the before-action checks it.
+      # Never fall back to local credentials on an SSO-only site.
+      nil
     elsif resource_params[:code]
       login_token_user
     else
@@ -74,10 +100,25 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
+  # Consume links before staging account completion as well as signing in.
+  # Locking and rechecking prevents concurrent requests from reusing a link.
+  def login_link_user
+    LoginToken.transaction do
+      token = LoginToken.lock.find_by(token: session[:pending_login_token])
+      next unless token&.useable?
+
+      token.update!(used: true)
+      token.user
+    end
+  end
+
   def password_user
     return unless resource_params[:password].present?
-    return unless login_user
-    return if login_user.access_locked?
+
+    unless login_user&.has_password && !login_user.access_locked?
+      BCrypt::Password.create(resource_params[:password])
+      return
+    end
 
     if login_user.valid_password?(resource_params[:password])
       login_user
@@ -104,7 +145,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def login_token_matches?(token)
-    resource_params[:email].present? && token&.useable? && token.user.email == resource_params[:email]
+    resource_params[:email].present? && token&.useable? && token.user.email.casecmp?(resource_params[:email])
   end
 
   # Used only to decide whether a fresh turnstile is required. A matching code

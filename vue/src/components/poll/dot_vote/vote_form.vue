@@ -61,7 +61,7 @@ export default {
     },
 
     percentageFor(choice) {
-      const max = dotsPerPerson;
+      const max = pointsPerVoter;
       if (!(max > 0)) { return; }
       return `${(100 * choice.score) / max}% 100%`;
     },
@@ -83,7 +83,7 @@ export default {
     },
 
     maxForChoice(choice) {
-      return this.dotsPerPerson - sum(map(without(this.stanceChoices, choice), 'score'));
+      return this.pointsPerVoter - sum(map(without(this.stanceChoices, choice), 'score'));
     }
   },
 
@@ -91,11 +91,11 @@ export default {
     poll() { return this.stance.poll(); },
 
     dotsRemaining() {
-      return this.dotsPerPerson - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
+      return this.pointsPerVoter - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
     },
 
-    dotsPerPerson() {
-      return this.stance.poll().dotsPerPerson;
+    pointsPerVoter() {
+      return this.stance.poll().pointsPerVoter;
     },
 
     alertColor() {
@@ -134,7 +134,7 @@ div
           track-color="grey"
           :height="4"
           :min="0"
-          :max="dotsPerPerson"
+          :max="pointsPerVoter"
           :readonly="false")
       validation-errors(:subject='stance' field='stanceChoices')
     poll-common-stance-reason(:stance='stance', :poll='poll')

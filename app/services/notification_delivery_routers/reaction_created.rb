@@ -7,7 +7,7 @@ module NotificationDeliveryRouters
         name: actor_name,
         title: TranslationService.plain_text(subject_model.title_model, :title, notification.actor),
         reaction: subject_model.reaction.downcase,
-        model: I18n.t("notification_models.#{subject_model.reactable.class.to_s.downcase}")
+        model: model_noun
       }
     end
 
@@ -22,6 +22,15 @@ module NotificationDeliveryRouters
         User.none
       end
       recipients(users)
+    end
+
+    private
+
+    def model_noun
+      reactable = subject_model.reactable
+      return I18n.t("poll_types.#{reactable.poll_type}") if reactable.is_a?(Poll)
+
+      I18n.t("notification_nouns.#{reactable.class.to_s.downcase}")
     end
   end
 end

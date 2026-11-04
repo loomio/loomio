@@ -4,13 +4,19 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import Records  from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
-import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
+import { groupPrivacy, groupPrivacyOptions, groupPrivacyStatement, groupMembershipGrantedUpon } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
 
 export default
 {
   props: {
     group: Object
+  },
+
+  setup() {
+    const { t } = useI18n();
+    return { t };
   },
 
   data() {
@@ -47,6 +53,7 @@ export default
   },
 
   methods: {
+    groupMembershipGrantedUpon,
     validate(field) {
       return [ () => this.group.errors[field] === undefined || this.group.errors[field][0] ];
     },
@@ -61,6 +68,7 @@ export default
       this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return true;
         case 'closed': return this.group.parentMembersCanSeeDiscussions;
+        case 'parent_members': return this.group.parentMembersCanSeeDiscussions;
         case 'secret': return false;
       } })();
 
@@ -135,23 +143,28 @@ export default
   },
 
   watch: {
-    'group.groupPrivacy'(val) {
-      if (this.group.groupPrivacy != 'open' && this.group.membershipGrantedUpon == 'request') {
+    'group.groupPrivacy'() {
+      if (this.group.membershipGrantedUpon == 'request' &&
+          (this.group.groupPrivacy == 'secret' || (!this.group.parentId && this.group.groupPrivacy != 'open'))) {
         this.group.membershipGrantedUpon = 'approval';
       }
     }
   },
 
   computed: {
+    guidePath() {
+      return `user_manual/groups/settings/${this.tab}`;
+    },
+
     cardTitle() {
       return this.group.parentId ? 'group_form.subgroup_settings' : 'group_form.group_settings'
     },
 
     membershipGrantedUponOptions() {
-      if (AppConfig.features.app.create_user) {
-        return ['approval', 'invitation']
+      if (AppConfig.features.app.create_user && !this.group.parentId) {
+        return ['approval', 'invitation'];
       } else {
-        return ['request', 'approval', 'invitation']
+        return ['request', 'approval', 'invitation'];
       }
     },
 
@@ -168,11 +181,7 @@ export default
     },
 
     privacyOptions() {
-      if (this.group.parentId && (this.group.parent().groupPrivacy === 'secret')) {
-        return ['closed', 'secret'];
-      } else {
-        return ['open', 'closed', 'secret'];
-      }
+      return groupPrivacyOptions(this.group);
     },
 
     privacyStatement() {
@@ -258,7 +267,7 @@ v-form(ref="form" @submit.prevent="submit")
         .mt-8.px-4
           .group-form__section.group-form__privacy
             v-list-subheader(v-t="'group_form.privacy'")
-            p.text-medium-emphasis.text-body-small.mb-4(v-t="'group_form.privacy_statement.private_to_group'")
+            p.text-medium-emphasis.text-body-small.mb-4 {{ privacyStatement }}
             v-radio-group(v-model='group.groupPrivacy' :rules='validate("groupPrivacy")')
               v-radio(
                 v-for='privacy in privacyOptions'
@@ -269,7 +278,7 @@ v-form(ref="form" @submit.prevent="submit")
               )
                 template(v-slot:label)
                   .group-form__privacy-title
-                    strong(v-t="'common.privacy.' + privacy")
+                    strong {{ t('common.privacy.' + privacy) }}
                     mid-dot
                     span {{ privacyStringFor(privacy) }}
 
@@ -293,7 +302,7 @@ v-form(ref="form" @submit.prevent="submit")
                 :value='granted'
               )
                 template(v-slot:label)
-                  span(v-t="'group_form.membership_granted_upon_' + granted")
+                  span {{ t(groupMembershipGrantedUpon(granted)) }}
           v-text-field(
             v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon != 'invitation'"
             read-only
@@ -319,12 +328,12 @@ v-form(ref="form" @submit.prevent="submit")
       v-tabs-window-item(value="permissions")
         .mt-8.px-4.group-form__section.group-form__permissions
           p.text-body-medium.pb-4.group-form__privacy-statement.text-medium-emphasis(v-t="'group_form.permissions_explaination'")
-          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && group.privacyIsClosed()')
+          v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && (group.privacyIsClosed() || group.privacyIsParentMembers())')
             template(v-slot:label)
               div
-                span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
+                span {{ t('group_form.parent_group_members_can_see_private_threads') }}
                 br
-                span.text-body-small(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
+                span.text-body-small {{ t('group_form.parent_group_members_can_see_private_threads_help', {parent: group.parent().name}) }}
           v-checkbox.group-form__members-can-add-members(hide-details v-model='group.membersCanAddMembers')
             template(v-slot:label)
               div
@@ -413,7 +422,7 @@ v-form(ref="form" @submit.prevent="submit")
                 span.text-body-small(v-t="'group_form.admins_can_edit_user_content_help'")
 
     v-card-actions
-      help-btn(path="en/user_manual/groups/settings")
+      help-btn.group-form__guide-link(:path="guidePath")
       v-spacer
       v-btn.group-form__submit-button(color="primary" variant="elevated" type="submit")
         span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")

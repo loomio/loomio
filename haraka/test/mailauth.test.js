@@ -29,6 +29,7 @@ const resolver = async (name, type) => {
 
   const records = {
     'forwarder.example': [['v=spf1 -all']],
+    'partner.example': [['v=spf1 ip4:192.0.2.10 -all']],
     '_dmarc.partner.example': [['v=DMARC1; p=reject']],
     'loomio-test._domainkey.partner.example': [[`v=DKIM1; k=rsa; p=${publicKeyDns}`]],
   };
@@ -37,7 +38,7 @@ const resolver = async (name, type) => {
   return records[name];
 };
 
-const authenticate = async (message) => {
+const authenticate = async (message, sender = 'bounce@forwarder.example') => {
   const authenticationResults = [];
   const recordedResults = [];
   const headers = {};
@@ -77,7 +78,7 @@ const authenticate = async (message) => {
       plugin,
       (status) => resolve(status),
       connection,
-      [{ get address() { return 'bounce@forwarder.example'; } }],
+      [{ get address() { return sender; } }],
     );
   });
 
@@ -90,6 +91,7 @@ const authenticate = async (message) => {
     dataStatus,
     headers,
     mailStatus,
+    mailauth: transaction.notes.mailauth,
     recordedResults,
   };
 };
@@ -135,4 +137,56 @@ test('reports DMARC pass when aligned DKIM authenticates mail that fails SPF', a
   assert.match(header, /\bspf=fail\b/);
   assert.match(header, /\bdkim=pass\b/);
   assert.match(header, /\bdmarc=pass\b/);
+});
+
+test('authenticates the From mailbox rather than an address inside nested comments', async () => {
+  const commentedMessage = message.replace(
+    'From: Alice <alice@partner.example>',
+    'From: Alice (x(y) <spoof@attacker.example>) <alice@partner.example>',
+  );
+  const result = await authenticate(commentedMessage);
+
+  assert.deepEqual(result.mailauth.dkim.headerFrom, ['alice@partner.example']);
+  assert.equal(result.mailauth.dmarc.domain, 'partner.example');
+  assert.match(result.authenticationResults.join('; '), /\bdmarc=fail\b/);
+});
+
+test('keeps an angle bracket inside a quoted local part out of the From domain', async () => {
+  const quotedMessage = message.replace(
+    'From: Alice <alice@partner.example>',
+    'From: <"alice@attacker.example>"@partner.example>',
+  );
+  const result = await authenticate(quotedMessage);
+
+  assert.deepEqual(result.mailauth.dkim.headerFrom, ['"alice@attacker.example>"@partner.example']);
+  assert.equal(result.mailauth.dmarc.domain, 'partner.example');
+  assert.match(result.authenticationResults.join('; '), /\bdmarc=fail\b/);
+});
+
+test('reports DMARC pass for an aligned SPF sender without DKIM', async () => {
+  const result = await authenticate(message, 'bounce@partner.example');
+
+  assert.match(result.authenticationResults.join('; '), /\bspf=pass\b/);
+  assert.match(result.authenticationResults.join('; '), /\bdmarc=pass\b/);
+});
+
+test('reports authentication failure for duplicate From fields despite aligned SPF', async () => {
+  const duplicateFromMessage = `From: Other <other@partner.example>\r\n${message}`;
+  const result = await authenticate(duplicateFromMessage, 'bounce@partner.example');
+
+  assert.equal(result.mailauth.dkim.fromFields, 2);
+  assert.match(result.authenticationResults.join('; '), /\bdmarc=fail\b/);
+  assert.doesNotMatch(result.authenticationResults.join('; '), /\bdmarc=pass\b/);
+});
+
+test('reports authentication failure for malformed From syntax despite aligned SPF', async () => {
+  const malformedMessage = message.replace(
+    'From: Alice <alice@partner.example>',
+    'From: alice@partner.example garbage',
+  );
+  const result = await authenticate(malformedMessage, 'bounce@partner.example');
+
+  assert.equal(result.mailauth.dkim.fromSyntax, 'invalid');
+  assert.match(result.authenticationResults.join('; '), /\bdmarc=fail\b/);
+  assert.doesNotMatch(result.authenticationResults.join('; '), /\bdmarc=pass\b/);
 });

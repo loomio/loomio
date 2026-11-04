@@ -1,25 +1,8 @@
 class Api::V1::ProfileController < Api::V1::RestfulController
-  # A "restricted" current_user is one authenticated ONLY by an unsubscribe_token
-  # (a permanent bearer token embedded in every notification email), not by a
-  # real session. Such a request may manage email/notification preferences, but
-  # must NEVER reach account-destructive or credential-bearing actions, nor edit
-  # identity fields (name/email/password/username/avatar) via update_profile.
-  RESTRICTED_USER_FORBIDDEN_ACTIONS = %w[
-    email_api_key reset_email_api_key deactivate destroy
-    send_merge_verification_email remind upload_avatar use_provider_avatar
-  ].freeze
-
-  # The only user fields update_profile may change for a restricted user.
-  RESTRICTED_USER_UPDATABLE_FIELDS = %i[
-    email_newsletter email_catch_up_day volume_email_default volume_push_default
-    selected_locale autodetect_time_zone time_zone date_time_pref
-  ].freeze
-
-  before_action :require_current_user, except: [:email_status]
-  before_action :forbid_restricted_user_actions
+  before_action :require_current_user
 
   def index
-    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
+    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].to_s.split('x').map(&:to_i).compact)
     self.collection = User.where(id: ids)
     cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
     respond_with_collection serializer: AuthorSerializer, root: :users, scope: {cache: cache, exclude_types: exclude_types}
@@ -50,12 +33,13 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def all_time_zones
-    zones = ActiveSupport::TimeZone.all.map do |tz|
+    # Keep manual choices compact while showing any saved or detected region.
+    zones = (AppConfig.time_zones | [current_user.time_zone]).map do |zone|
       {
-        title: I18n.t("timezones.#{tz.name}", default: tz.name, locale: params[:selected_locale]),
-        value: tz.tzinfo.name
+        title: I18n.t("timezones.regions.#{zone}", default: zone, locale: params[:selected_locale]),
+        value: zone
       }
-    end
+    end.sort_by { |zone| zone[:title] }
     render json: zones, root: false
   end
 
@@ -82,6 +66,15 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   def update_profile
     service.update(**current_user_params)
     respond_with_resource
+  end
+
+  def set_time_zone
+    user = service.set_time_zone(user: current_user, actor: current_user, time_zone: params[:time_zone])
+    if user.errors.any?
+      render json: { errors: user.errors.to_hash }, status: :unprocessable_entity
+    else
+      render json: { time_zone: user.time_zone }
+    end
   end
 
   def set_volume
@@ -132,14 +125,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def email_status
-    respond_with_resource(serializer: Pending::UserSerializer, scope: {})
-  end
-
-  def email_exists
-    render json: {email: params[:email], exists: User.where(email: params[:email]).any?}
-  end
-
   def send_merge_verification_email
     unless ThrottleService.can?(key: 'MergeVerificationEmail', id: current_user.id, max: 5, per: 'hour')
       render json: { error: 'Rate limit exceeded' }, status: 429
@@ -150,8 +135,9 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def contactable
-    current_user.ability.authorize!(:contact, User.find(params[:user_id]))
-    success_response
+    render json: {
+      contactable: current_user.can?(:contact, User.find(params[:user_id]))
+    }
   end
 
   private
@@ -164,10 +150,6 @@ class Api::V1::ProfileController < Api::V1::RestfulController
     return AppConfig.theme[:oauth_login_provider_name] if identity.identity_type == 'oauth'
 
     identity.identity_type.titleize
-  end
-
-  def current_user
-    restricted_user || super
   end
 
   def model
@@ -200,18 +182,9 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def profile_update_params
-    return permitted_params.user unless current_user.restricted
-
-    # Restricted (unsubscribe-token) users may only update notification prefs —
-    # strip identity/credential fields so the token cannot be used to change
-    # name, email, password, username, or avatar.
-    permitted_params.user.slice(*RESTRICTED_USER_UPDATABLE_FIELDS.map(&:to_s))
-  end
-
-  def forbid_restricted_user_actions
-    return unless RESTRICTED_USER_FORBIDDEN_ACTIONS.include?(action_name) && current_user.restricted
-
-    raise CanCan::AccessDenied.new("unsubscribe-token users may not perform #{action_name}")
+    profile_params = permitted_params.user
+    profile_params = profile_params.except(:password, :password_confirmation, :current_password) unless AppConfig.local_login_enabled?
+    profile_params
   end
 
   def resource_class
@@ -219,11 +192,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def serializer_class
-    if current_user.restricted
-      Restricted::UserSerializer
-    else
-      CurrentUserSerializer
-    end
+    CurrentUserSerializer
   end
 
   def serializer_root

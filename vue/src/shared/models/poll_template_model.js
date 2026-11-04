@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import { pick }            from 'lodash-es';
+import { pick, camelCase } from 'lodash-es';
 import { startOfHour, addDays } from 'date-fns';
 import { I18n }             from '@/i18n';
 import Records from '@/shared/services/records';
@@ -19,6 +19,7 @@ export default class PollTemplateModel extends BaseModel {
   defaultValues() {
     return {
       anonymous: false,
+      weightedVoting: false,
       groupId: null,
       title: '',
       details: '',
@@ -27,11 +28,11 @@ export default class PollTemplateModel extends BaseModel {
       specifiedVotersOnly: false,
       pollType: null,
       chartType: null,
-      minScore: null,
-      maxScore: null,
-      minimumStanceChoices: null,
-      maximumStanceChoices: null,
-      dotsPerPerson: null,
+      scoreMin: null,
+      scoreMax: null,
+      choiceCountMin: null,
+      choiceCountMax: null,
+      pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
       limitReasonLength: true,
@@ -41,7 +42,7 @@ export default class PollTemplateModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       reasonPrompt: null,
       processName: null,
       processSubtitle: null,
@@ -62,6 +63,10 @@ export default class PollTemplateModel extends BaseModel {
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,
+      attachmentsAdminOnly: false,
+      stvSeats: 1,
+      stvMethod: 'scottish',
+      stvQuota: 'droop',
       hiddenAt: null,
       discardedAt: null
     };
@@ -79,7 +84,11 @@ export default class PollTemplateModel extends BaseModel {
   buildPoll() {
     const poll = Records.polls.build();
 
-    const attrs = pick(this, Object.keys(this.defaultValues()));
+    // Options are copied as nested attributes below, not as a plain setting.
+    const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
+    const attrs = pick(this, settings.map(camelCase));
+    attrs.tags = this.tags.slice();
+    attrs.groupId = this.groupId;
     attrs.pollTemplateId = this.id;
     attrs.pollTemplateKey = this.key;
     attrs.authorId = Session.user().id;

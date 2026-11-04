@@ -40,9 +40,7 @@ const discussion = computed(() => props.topic && props.topic.discussion());
 
 const userIsAdmin = computed(() => props.group.adminsInclude(Session.user()));
 
-const userCanCreateTemplates = computed(() => {
-  return userIsAdmin.value || (props.group.membersCanCreateTemplates && props.group.membersInclude(Session.user()));
-});
+const userCanCreateTemplates = computed(() => PollTemplateService.canCreateTemplate(props.group));
 
 const filters = computed(() => {
   const recommendedIcon = (discussionTemplate.value && discussionTemplate.value.pollTemplateKeysOrIds.length && 'mdi-star') || null;
@@ -176,7 +174,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
       sortable-list(v-model:list="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
         sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
           v-list-item.decision-tools-card__poll-type(
-            :class="'decision-tools-card__poll-type--' + template.pollType"
+            :class="['decision-tools-card__poll-type--' + template.pollType, template.key && 'decision-tools-card__template--' + template.key]"
             :key='template.id || template.key'
             lines="two"
           )
@@ -191,7 +189,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
       v-list-item.decision-tools-card__poll-type(
         v-for='(template, i) in pollTemplates'
         @click="cloneTemplate(template)"
-        :class="'decision-tools-card__poll-type--' + template.pollType"
+        :class="['decision-tools-card__poll-type--' + template.pollType, template.key && 'decision-tools-card__template--' + template.key]"
         :key="template.id || template.key"
         lines="two"
       )
@@ -210,7 +208,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
       v-list-item.decision-tools-card__poll-type(
         v-for='(template, i) in hiddenTemplates'
         @click="cloneTemplate(template)"
-        :class="'decision-tools-card__poll-type--' + template.pollType"
+        :class="['decision-tools-card__poll-type--' + template.pollType, template.key && 'decision-tools-card__template--' + template.key]"
         :key="template.id || template.key"
         lines="two"
       )

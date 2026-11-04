@@ -1,6 +1,12 @@
 module Null::Group
   include Null::Object
 
+  Subscription = Struct.new(
+    :max_members, :max_threads, :allow_subgroups, :plan, :state,
+    :is_active?, :renews_at, :expires_at, :members_count,
+    keyword_init: true
+  )
+
   def group
     self
   end
@@ -17,6 +23,14 @@ module Null::Group
 
   def membership_for(_user)
     nil
+  end
+
+  def update_membership_counts
+    raise ArgumentError, 'Membership counts require a real group'
+  end
+
+  def update_content_counts
+    raise ArgumentError, 'Content counts require a real group'
   end
 
   def full_name
@@ -37,11 +51,6 @@ module Null::Group
       id
       key
       locale
-      update_polls_count
-      update_closed_polls_count
-      update_discussions_count
-      update_discussion_templates_count
-      update_org_members_count
       content_locale
       handle
       description
@@ -119,18 +128,14 @@ module Null::Group
     %w[
       memberships_count
       polls_count
-      closed_polls_count
       discussions_count
       pending_memberships_count
-      discussion_templates_count
       poll_templates_count
-      delegates_count
       accepted_memberships_count
       memberships_count
       pending_memberships_count
       admin_memberships_count
       org_members_count
-      subgroups_count
     ]
   end
 
@@ -211,7 +216,7 @@ module Null::Group
 
 
   def subscription
-    OpenStruct.new(
+    Subscription.new(
       max_members:     nil,
       max_threads:     nil,
       allow_subgroups: true,

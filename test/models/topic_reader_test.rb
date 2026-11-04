@@ -80,9 +80,17 @@ class TopicReaderTest < ActiveSupport::TestCase
     assert_equal :loud, @reader.reload.volume_email.to_sym
   end
 
-  test "defaults to the memberships volume when nil" do
-    assert_equal @membership.volume_email, @reader.computed_volume_email
-    assert_equal @membership.volume_push, @reader.computed_volume_push
+  test "new readers use membership defaults and persisted readers keep topic preferences" do
+    @admin.update!(volume_email_default: :quiet, volume_push_default: :loud)
+    @membership.update!(volume_email: :loud, volume_push: :quiet)
+    @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
+
+    assert_equal 'loud', @reader.computed_volume_email
+    assert_equal 'quiet', @reader.computed_volume_push
+
+    @reader.set_volume!(email: :normal, push: :normal)
+    assert_equal 'normal', @reader.reload.computed_volume_email
+    assert_equal 'normal', @reader.computed_volume_push
   end
 
   # Viewed

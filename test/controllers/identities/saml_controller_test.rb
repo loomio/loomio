@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class Identities::SamlControllerTest < ActionController::TestCase
+  SamlResponse = Data.define(:nameid, :is_valid?, :attributes)
+
   setup do
     @saved_env = {}
     %w[
@@ -8,11 +10,13 @@ class Identities::SamlControllerTest < ActionController::TestCase
       SAML_IDP_METADATA
       SAML_IDP_METADATA_URL
       SAML_ISSUER
+      SAML_ALLOW_IDP_INITIATED
       SAML_ATTR_EMAIL
       SAML_ATTR_NAME
       SAML_ATTR_GIVEN_NAME
       SAML_ATTR_FAMILY_NAME
       LOOMIO_SSO_FORCE_USER_ATTRS
+      TERMS_URL
     ].each do |key|
       @saved_env[key] = ENV[key]
       ENV.delete(key)
@@ -22,7 +26,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     ENV['SAML_ISSUER'] = 'https://loomio.test/saml/metadata'
 
     # Build mock SAML settings
-    @mock_settings = OpenStruct.new(security: {})
+    @mock_settings = OneLogin::RubySaml::Settings.new
 
     # Stub IdpMetadataParser to return mock settings
     @mock_parser = Minitest::Mock.new
@@ -40,7 +44,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -51,13 +55,39 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal '/some/path', session[:back_to]
     assert_equal '_saml_request', session[:saml_request_id]
     assert_redirected_to 'https://saml.provider.com/login?SAMLRequest=...'
+    assert_equal saml_oauth_callback_url, @mock_settings.assertion_consumer_service_url
+    assert_equal ENV.fetch('SAML_ISSUER'), @mock_settings.issuer
+    assert_equal saml_unauthorize_url, @mock_settings.assertion_consumer_logout_service_url
+    assert_equal 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress', @mock_settings.name_identifier_format
+    assert_equal XMLSecurity::Document::SHA256, @mock_settings.security[:digest_method]
+    assert_equal XMLSecurity::Document::RSA_SHA256, @mock_settings.security[:signature_method]
+    assert_equal true, @mock_settings.security[:want_assertions_signed]
+  end
+
+  test "uses configured inline metadata and the default issuer without fetching remote metadata" do
+    ENV['SAML_IDP_METADATA'] = '<metadata/>'
+    ENV.delete('SAML_ISSUER')
+    parser = Minitest::Mock.new
+    parser.expect(:parse, @mock_settings, [ENV.fetch('SAML_IDP_METADATA')])
+    auth_request = Minitest::Mock.new
+    auth_request.expect(:uuid, '_saml_request')
+    auth_request.expect(:create, 'https://saml.provider.com/login', [@mock_settings])
+
+    OneLogin::RubySaml::IdpMetadataParser.stub(:new, parser) do
+      OneLogin::RubySaml::Authrequest.stub(:new, auth_request) { get :oauth }
+    end
+
+    assert_redirected_to 'https://saml.provider.com/login'
+    assert_equal saml_metadata_url, @mock_settings.issuer
+    parser.verify
+    auth_request.verify
   end
 
   test "stores referrer as back_to when it is a relative path" do
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -73,7 +103,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
-                              [OpenStruct])
+                              [@mock_settings])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
@@ -85,21 +115,34 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_nil session[:back_to]
   end
 
+  test "rejects protocol-relative and backslash referrers as back_to" do
+    [ '//evil.example/phishing', '/\\evil.example/phishing' ].each do |referrer|
+      mock_auth_request = Minitest::Mock.new
+      mock_auth_request.expect(:uuid, '_saml_request')
+      mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...', [@mock_settings])
+      parser = Minitest::Mock.new
+      parser.expect(:parse_remote, @mock_settings, [String])
+
+      OneLogin::RubySaml::IdpMetadataParser.stub(:new, parser) do
+        OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
+          request.env['HTTP_REFERER'] = referrer
+          get :oauth
+        end
+      end
+
+      assert_nil session[:back_to]
+    end
+  end
+
   # Create tests helpers
   private
 
   def mock_saml_response(valid: true, nameid: 'samltest@example.com', name: 'SAML User', attributes: nil)
-    response = OpenStruct.new(
+    SamlResponse.new(
       nameid: nameid,
-      is_valid?: valid
+      is_valid?: valid,
+      attributes: attributes || { 'displayName' => name }
     )
-    response.define_singleton_method(:attributes) do
-      attributes || { 'displayName' => name }
-    end
-    response.define_singleton_method(:settings=) do |s|
-      # no-op
-    end
-    response
   end
 
   def with_saml_mocks(saml_response: nil, &block)
@@ -115,6 +158,22 @@ class Identities::SamlControllerTest < ActionController::TestCase
   public
 
   # Create tests - user does not exist
+  [true, false].each do |complete|
+    test "rejects an inactive SAML owner with complete profile #{complete}" do
+      user = users(:inactive_guest_loud)
+      user.update_columns(name: nil) unless complete
+      Identity.create!(identity_type: 'saml', uid: user.email, email: user.email, user: user)
+
+      with_saml_mocks(saml_response: mock_saml_response(nameid: user.email, attributes: {})) do
+        assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+          post :create, params: { SAMLResponse: 'signed-response' }, format: :json
+        end
+      end
+      assert_response :unauthorized
+      assert_not @controller.current_user.is_logged_in?
+    end
+  end
+
   test "creates user and signs in when user does not exist" do
     session[:back_to] = '/dashboard'
 
@@ -260,12 +319,18 @@ class Identities::SamlControllerTest < ActionController::TestCase
     response = mock_saml_response(attributes: { 'displayName' => 'Fallback Name' })
 
     with_saml_mocks(saml_response: response) do
-      assert_no_difference 'User.count' do
-        post :create, params: { SAMLResponse: 'base64_encoded' }
+      assert_difference ['Identity.where(identity_type: "saml").count', 'User.count'], 1 do
+        assert_no_difference "Session.count" do
+          post :create, params: { SAMLResponse: 'base64_encoded' }
+        end
       end
     end
 
-    assert_nil Identity.where(identity_type: 'saml').last.name
+    user = User.find_by!(email: 'samltest@example.com')
+    assert_nil user.name
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal false, session.dig(:pending_account_completion, :name_managed)
+    assert_redirected_to dashboard_path
   end
 
   test "does not use email fallbacks when a SAML email attribute is configured" do
@@ -283,22 +348,22 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_not Identity.where(identity_type: 'saml', email: 'fallback@example.com').exists?
   end
 
-  test "starts account creation when SAML does not provide a name" do
-    session[:back_to] = '/dashboard'
+  test "stages account completion when SAML does not provide a name" do
     response = mock_saml_response(attributes: {})
 
     with_saml_mocks(saml_response: response) do
-      assert_difference 'Identity.where(identity_type: "saml").count', 1 do
-        assert_no_difference 'User.count' do
+      assert_difference ['Identity.where(identity_type: "saml").count', 'User.count'], 1 do
+        assert_no_difference "Session.count" do
           post :create, params: { SAMLResponse: 'base64_encoded' }
         end
       end
     end
 
-    identity = Identity.where(identity_type: 'saml').last
-    assert_nil identity.user
-    assert_equal identity.id, session[:pending_identity_id]
-    assert_redirected_to '/dashboard'
+    user = User.find_by!(email: 'samltest@example.com')
+    assert_nil user.name
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal false, session.dig(:pending_account_completion, :name_managed)
+    assert_redirected_to dashboard_path
   end
 
   # Create - verified user with same email exists
@@ -452,7 +517,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_redirected_to '/dashboard'
   end
 
-  test "signs in an existing linked user when SAML omits profile attributes" do
+  test "signs in an existing linked user when SAML omits their name" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(
       name: 'Existing Name',
@@ -521,6 +586,20 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_response 401
     json = JSON.parse(response.body)
     assert_equal 'SAML request state missing', json['error']
+  end
+
+  test "allows identity-provider initiated login only when explicitly configured" do
+    # Any value enables the flag; '0' guards against comparing with '1' or 'true'.
+    ENV['SAML_ALLOW_IDP_INITIATED'] = '0'
+    with_saml_mocks do
+      session.delete(:saml_request_id)
+      assert_difference 'Session.count', 1 do
+        post :create, params: { SAMLResponse: 'signed-provider-response' }, format: :json
+      end
+    end
+
+    assert_redirected_to dashboard_path
+    assert @controller.current_user.is_logged_in?
   end
 
   test "returns html error when SAML request state is missing" do

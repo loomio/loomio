@@ -2,7 +2,8 @@
 import TopicTagsPicker from '@/components/tags/topic_tags_picker';
 import { ref, watch } from 'vue';
 
-const { topic, buttonSize, buttonVariant } = defineProps({
+const { topic, topicItem, buttonSize, buttonDensity, buttonVariant } = defineProps({
+  topicItem: Object,
   topic: {
     type: Object,
     required: true
@@ -11,6 +12,7 @@ const { topic, buttonSize, buttonVariant } = defineProps({
     type: String,
     default: 'small'
   },
+  buttonDensity: String,
   buttonVariant: {
     type: String,
     default: 'text'
@@ -33,8 +35,9 @@ v-menu.topic-tags-menu(v-model="open" :close-on-content-click="false" location="
         v-bind="props"
         icon
         :size="buttonSize"
+        :density="buttonDensity"
         :variant="buttonVariant"
-        :title="$t('loomio_tags.select_tags')"
+        :title="$t('loomio_tags.apply_tags')"
         @click.prevent.stop
       )
         common-icon.text-medium-emphasis(name="mdi-tag-plus-outline")
@@ -42,6 +45,7 @@ v-menu.topic-tags-menu(v-model="open" :close-on-content-click="false" location="
     topic-tags-picker(
       ref="picker"
       :topic="topic"
+      :topic-item="topicItem"
       :watch-key="'topicTagsMenu' + topic.id"
     )
 </template>

@@ -80,6 +80,37 @@ class NotificationServiceTest < ActiveSupport::TestCase
     assert_predicate delivery.reload, :viewed?
   end
 
+  test "reading a previously read comment clears its reactions only for the reader's in-app delivery" do
+    comment = comments(:public_discussion_comment)
+    item = topic_items(:public_discussion_comment_topic_item)
+    reader = TopicReader.for(user: @user, topic: comment.topic)
+    reader.viewed!([[0, item.sequence_id]])
+    reaction = Reaction.create!(reactable: comment, user: @admin, reaction: "🙂")
+    notification, delivery = create_notification_delivery(user: @user, subject: reaction)
+    other_user_delivery = NotificationDelivery.create!(
+      notification: notification, recipient: @admin, channel: "in_app", delivered_at: Time.current
+    )
+    email_delivery = NotificationDelivery.create!(
+      notification: notification, recipient: @user, channel: "email", delivered_at: Time.current
+    )
+    _other_notification, other_item_delivery = create_notification_delivery(user: @user, subject: @topic_item)
+    root_reaction = Reaction.create!(reactable: comment.topic.topicable, user: @admin, reaction: "🙂")
+    _root_notification, root_delivery = create_notification_delivery(user: @user, subject: root_reaction)
+    publications = []
+
+    MessageChannelService.stub(:publish_models, ->(models, **options) { publications << [models, options] }) do
+      TopicService.mark_as_read(topic: comment.topic, params: {ranges: item.sequence_id}, actor: @user)
+    end
+
+    assert_predicate delivery.reload, :viewed?
+    assert_not_predicate other_user_delivery.reload, :viewed?
+    assert_not_predicate email_delivery.reload, :viewed?
+    assert_not_predicate other_item_delivery.reload, :viewed?
+    assert_not_predicate root_delivery.reload, :viewed?
+    assert_equal [[0, item.sequence_id]], reader.reload.read_ranges
+    assert publications.any? { |models, options| models == [notification] && options == {user_id: @user.id} }
+  end
+
   private
 
   def create_notification_delivery(user:, subject:, viewed_at: nil)

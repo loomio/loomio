@@ -3,10 +3,12 @@ import Records from '@/shared/services/records';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, watch } from 'vue';
 
-const { tags, group, selected, size } = defineProps({
+const { tags, group, selected, size, density, tagRoute } = defineProps({
   tags: Array,
+  tagRoute: Function,
   group: Object,
   selected: String,
+  density: String,
   size: {
     type: String,
     default: 'small'
@@ -43,7 +45,7 @@ const tagObjects = computed(() => {
       id: i,
       name,
       color: (byName.value[name] || {}).color,
-      to: groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
+      to: tagRoute ? tagRoute(name) : groupKey.value ? '/g/'+groupKey.value+'/tags/'+encodeURIComponent(name) : null
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
 });
@@ -58,8 +60,10 @@ span.tags-display
     v-for="tag in tagObjects"
     :key="tag.id || tag.name"
     :size="size"
+    :density="density"
     :to="tag.to"
-    variant="tonal"
+    :variant="selected === tag.name ? 'flat' : 'tonal'"
+    :aria-pressed="selected === undefined ? undefined : selected === tag.name"
   )
     .tag-color-dot(:style="tagDotStyle(tag)")
     plain-text(:model="tag" field="name")

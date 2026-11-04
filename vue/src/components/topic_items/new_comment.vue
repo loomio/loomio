@@ -51,11 +51,11 @@ export default {
 
     menuActions() {
       const actions = assign(
-        pick(this.eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url'])
+        pick(this.eventActions, ['edit_item_tags', 'pin_event', 'unpin_event', 'move_event', 'copy_url'])
       ,
         pickBy(this.commentActions, v => v.menu)
       );
-      return pick(actions, ['save_bookmark', 'remove_bookmark', 'pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
+      return pick(actions, ['save_bookmark', 'remove_bookmark', 'edit_item_tags', 'pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
     }
   }
 };

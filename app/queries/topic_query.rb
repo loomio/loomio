@@ -14,7 +14,8 @@ class TopicQuery
                       or_subgroups: true,
                       only_direct: false,
                       only_unread: false,
-                      topic_id: nil)
+                      topic_id: nil,
+                      topic_ids: nil)
     visible_scope(
       chain: chain,
       user: user,
@@ -24,7 +25,8 @@ class TopicQuery
       only_direct: only_direct,
       only_unread: only_unread,
       public_group_ids: nil,
-      topic_id: topic_id
+      topic_id: topic_id,
+      topic_ids: topic_ids
     )
   end
 
@@ -47,7 +49,8 @@ class TopicQuery
                          only_direct:,
                          only_unread:,
                          public_group_ids:,
-                         topic_id: nil)
+                         topic_id: nil,
+                         topic_ids: nil)
     return chain.none if user.deactivated_at.present?
 
     group_ids = Array(group_ids).compact.map(&:to_i)
@@ -74,7 +77,9 @@ class TopicQuery
     member_visibility << "topics.private = false AND topics.group_id IN (:public_group_ids)" if public_group_ids&.any?
     member_visibility << "topics.group_id IN (:user_group_ids)"
     member_visibility << "groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)" if or_subgroups
-    member_params = { user_group_ids: user.group_ids }
+    # Authorization must see current memberships even when the user's cached
+    # group IDs were loaded before revocation or expanded by another query.
+    member_params = { user_group_ids: user.groups.select(:id) }
     member_params[:public_group_ids] = public_group_ids if public_group_ids&.any?
 
     arm1 = Topic.select("topics.*")
@@ -94,6 +99,7 @@ class TopicQuery
 
     arms = [arm1, arm2].map do |arm|
       arm = arm.where(Topic.arel_table[:id].eq(topic_id)) if topic_id
+      arm = arm.where(id: topic_ids) unless topic_ids.nil?
       arm = arm.where("topics.group_id IN (?)", group_ids) if group_ids.any?
       arm = arm.where("topics.group_id IS NULL")            if only_direct
       arm = arm.where("topics.tags @> ARRAY[?]::varchar[]", tags) if tags.any?

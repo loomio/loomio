@@ -72,16 +72,16 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         :color="choice.option.color"
         :thumb-color="choice.option.color"
         :height="4"
-        :min="poll.minScore"
-        :max="poll.maxScore"
+        :min="poll.scoreMin"
+        :max="poll.scoreMax"
         :step="1"
       )
       template(v-slot:append)
         input.vote-form-number-input(
           :style="{'background-color': choice.option.color}"
           type="number"
-          :min="poll.minScore"
-          :max="poll.maxScore"
+          :min="poll.scoreMin"
+          :max="poll.scoreMax"
           v-model="choice.score")
 
   validation-errors(:subject='stance', field='stanceChoices')

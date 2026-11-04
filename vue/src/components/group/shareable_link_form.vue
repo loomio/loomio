@@ -59,7 +59,7 @@ v-card.shareable-link-modal(:title="$t('invitation_form.shareable_link_to_join_g
     v-alert.mb-2(color="info" variant="tonal")
       span(v-t="'invitation_form.shareable_invitation_explanation'")
       space
-      help-link(path="user_manual/groups/membership/#share-a-link-to-your-group")
+      help-link(path="user_manual/groups/inviting_people#share-a-link-to-your-group")
     v-text-field.shareable-link-modal__shareable-link(:value='invitationLink' readonly variant="outlined" color="info")
       template(v-slot:append-inner)
         v-tooltip(location="bottom")

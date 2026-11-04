@@ -7,6 +7,7 @@ import Records from '@/shared/services/records';
 export default class MembershipModel extends BaseModel {
   static singular = 'membership';
   static plural = 'memberships';
+  static serializableAttributes = ['title'];
   static indices = ['userId', 'groupId'];
   static uniqueIndices = ['id'];
   static searchableFields = ['userName', 'userUsername'];
@@ -44,8 +45,7 @@ export default class MembershipModel extends BaseModel {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     const params = {
-      apply_to_all: applyToAll,
-      unsubscribe_token: this.user().unsubscribeToken
+      apply_to_all: applyToAll
     };
     if (volumeEmail != null) params.volume_email = volumeEmail;
     if (volumePush != null) params.volume_push = volumePush;
@@ -79,6 +79,16 @@ export default class MembershipModel extends BaseModel {
 
   isMuted() {
     return this.volumeEmail === 'quiet' && this.volumePush === 'quiet';
+  }
+
+  destroy() {
+    const groupIds = this.group().selfAndSubgroupIds();
+    return super.destroy().then(response => {
+      if (this.userId !== AppConfig.currentUserId) { return response; }
+
+      Records.memberships.revokeGroupAccess(groupIds);
+      return response;
+    });
   }
 
   beforeRemove() {

@@ -20,7 +20,7 @@ class Views::Chatbot::Matrix::Notification < Views::Chatbot::Base
     raw t("notifications.with_title.#{@topic_item.kind}", **values).html_safe
 
     if @poll
-      render Views::Chatbot::Matrix::Undecided.new(poll: @poll)
+      render Views::Chatbot::Matrix::Uncast.new(poll: @poll)
     end
   end
 end

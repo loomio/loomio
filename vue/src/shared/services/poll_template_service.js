@@ -11,6 +11,13 @@ import { hardReload } from '@/shared/helpers/window';
 import { exportTemplateFile } from '@/shared/helpers/template_file';
 
 export default new class PollTemplateService {
+  canCreateTemplate(group) {
+    return Session.isSignedIn() && !!group.id && (
+      group.adminsInclude(Session.user()) ||
+      (group.membersCanCreateTemplates && group.membersInclude(Session.user()))
+    );
+  }
+
   canEditTemplate(pollTemplate, group) {
     return group.adminsInclude(Session.user()) ||
       (group.membersCanCreateTemplates && pollTemplate.authorId === Session.user().id);

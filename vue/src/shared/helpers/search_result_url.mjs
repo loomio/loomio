@@ -7,7 +7,8 @@ export function urlForSearchResult(result) {
     case 'Discussion':
       return `/d/${result.discussion_key}/${stub(result.discussion_title)}`;
     case 'Comment':
-      return `/d/${result.discussion_key}/comment/${result.searchable_id}`;
+      return result.discussion_key ? `/d/${result.discussion_key}/comment/${result.searchable_id}` :
+        `/p/${result.poll_key}/comment/${result.searchable_id}`;
     case 'Poll': case 'Outcome': case 'Stance':
       if (result.discussion_key && result.discussion_title != null && result.sequence_id != null) {
         return `/d/${result.discussion_key}/${stub(result.discussion_title)}/${result.sequence_id}`;

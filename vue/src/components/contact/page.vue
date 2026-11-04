@@ -11,7 +11,6 @@ export default {
     return {
       message: Records.contactMessages.build(),
       isDisabled: false,
-      helpLink: "https://help.loomio.com",
       contactEmail: AppConfig.contactEmail,
       needMessage: false
     };

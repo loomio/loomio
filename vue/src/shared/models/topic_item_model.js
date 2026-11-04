@@ -14,12 +14,14 @@ export default class TopicItemModel extends BaseModel {
 
   relationships() {
     this.belongsTo('parent', { from: 'topicItems' });
+    this.belongsTo('replyParent', { from: 'topicItems' });
     this.belongsTo('actor', { from: 'users' });
   }
 
   defaultValues() {
     return {
       pinned: false,
+      tags: [],
       itemableId: null,
       itemableType: null,
       topicId: null,

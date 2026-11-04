@@ -123,7 +123,7 @@ module.exports = {
     page.click('.confirm-modal__submit')
     page.pause(2000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   },
 
   // e2e broken, function works fine
@@ -164,27 +164,16 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.pause(500)
     page.goTo('profile')
-    page.waitFor('.profile-page__email-input input')
+    page.click('.user-page__merge_accounts')
+    page.waitFor('.merge-accounts-modal')
+    page.fillIn('.merge-accounts-modal__destination-email input', 'jennifer@example.com')
+    page.click('.merge-accounts-modal__submit')
 
-    // Enter an email that belongs to another user and trigger the existence check
-    page.execute("var el = document.querySelector('.profile-page__email-input input'); el.value = 'jennifer@example.com'; el.dispatchEvent(new Event('input', {bubbles: true})); el.dispatchEvent(new Event('keyup', {bubbles: true}));")
-    page.pause(1000)
-
-    page.expectElement('.profile-page__email-taken')
-    page.click('.email-taken-find-out-more')
-    page.waitFor('.confirm-modal')
-
-    // Confirm dialog should explain the user will be signed out
-    page.expectText('.confirm-modal', 'You will be signed out')
-
-    page.click('.confirm-modal__submit')
-
-    // After sign out + hardReload to /, user should see the auth modal on any authenticated page
+    // Sending the verification email signs the source account out.
     page.pause(3000)
     page.goTo('dashboard')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
+    page.expectText('.auth-modal', 'Sign in to Loomio', 20000)
   }
 
 }

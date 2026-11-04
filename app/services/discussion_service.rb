@@ -1,5 +1,5 @@
 class DiscussionService
-  TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls allow_comments allow_reactions comment_length_max locked_at pinned_at tags].freeze
+  TOPIC_ATTRS = %w[group_id private max_depth newest_first polls_one_at_a_time allow_comments allow_reactions comment_length_max attachments_admin_only locked_at pinned_at tags].freeze
   TOPIC_ATTRS_UPDATE = (TOPIC_ATTRS - %w[group_id tags]).freeze
 
   def self.build(params:, actor:)
@@ -13,6 +13,7 @@ class DiscussionService
     discussion.assign_attributes_and_files(params)
     discussion.author = actor
 
+    discussion.tags_pending = Array(topic_params.delete(:tags))
     topic = Topic.new(topic_params)
     topic.topicable = discussion
 
@@ -23,14 +24,8 @@ class DiscussionService
   def self.create(params:, actor:, &on_topic_item)
     discussion = build(params: params, actor: actor)
     actor.ability.authorize!(:create, discussion)
-    # A group template may prescribe tags the guest cannot ordinarily create. Only
-    # additional client-supplied tags pass through the normal tag authorization.
-    tag_names = if discussion.created_from_group_template? && !discussion.group.members.exists?(actor.id)
-      discussion.tag_names_not_from_template
-    else
-      discussion.topic.tags
-    end
-    TagService.authorize_create_tag_names!(discussion.group, tag_names, actor)
+    AttachmentPermissionService.authorize!(record: discussion, actor: actor)
+    discussion.tags_pending = TagService.permitted_tag_names(discussion.group, discussion.tags_pending, actor)
     return discussion unless TopicService.validate_topicable(discussion)
 
     topic_item = Discussion.transaction do
@@ -70,7 +65,7 @@ class DiscussionService
 
       Sentry.metrics.count("discussion.create")
 
-      topic_item = TopicItems::NewDiscussion.create!(itemable: discussion)
+      topic_item = TopicItems::NewDiscussion.create!(itemable: discussion, tags: discussion.tags_pending)
 
       if users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
         NotificationService.create!(
@@ -91,7 +86,6 @@ class DiscussionService
       )
       topic_item
     end
-    EventBus.broadcast('discussion_create', discussion, actor)
     on_topic_item&.call(topic_item)
     discussion
   end
@@ -108,17 +102,18 @@ class DiscussionService
 
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*TOPIC_ATTRS).slice(*TOPIC_ATTRS_UPDATE)
+    AttachmentPermissionService.authorize_topic_settings!(topic: discussion.topic, params: topic_params, actor: actor)
+    AttachmentPermissionService.authorize!(record: discussion, actor: actor, params: params)
     discussion.assign_attributes_and_files(params)
     unless discussion.valid?
       Sentry.metrics.count("discussion.update_failed", attributes: { columns: discussion.errors.attribute_names.join(',') })
       return discussion
     end
     topic_item = nil
-    Discussion.transaction do
+    discussion.topic.with_write_lock do
+      actor.ability.authorize! :update, discussion
       discussion.topic.update!(topic_params) if topic_params.any?
       discussion.save!
-
-      discussion.update_versions_count
 
       users = TopicService.add_users(topic: discussion.topic,
                                      actor: actor,

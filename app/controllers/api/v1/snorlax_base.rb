@@ -6,6 +6,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
   rescue_from(ActiveRecord::RecordInvalid)             { |e| respond_with_errors(e.record) }
+  rescue_from(VoteWeight::Invalid)                     { render json: {errors: {weight: [I18n.t('errors.messages.invalid')]}}, root: false, status: 422 }
   rescue_from(ThrottleService::LimitReached)            { respond_with_invitation_limit_reached }
   attr_accessor :collection_count
 
@@ -111,7 +112,10 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def serializer_class
-    record = records_to_serialize.first
+    # Serialize the entire filtered collection. A separate first-row probe adds
+    # an unnecessary ORDER BY id LIMIT 1 that can make PostgreSQL scan the primary
+    # key instead of using the participant/filter indexes on large collections.
+    record = records_to_serialize.to_a.first
     if record.nil?
       TopicItemSerializer
     elsif record.is_a? TopicItem
@@ -122,7 +126,7 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def serializer_root
-    record = records_to_serialize.first
+    record = records_to_serialize.to_a.first
     if record.nil?
       controller_name.to_sym
     elsif record.is_a? TopicItem
@@ -207,6 +211,13 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def page_collection(collection)
     offset = (params[:offset] || params[:from]).to_i
     limit  = (params[:limit] || params[:per] || default_page_size).to_i
+    collection.offset(offset).limit(limit)
+  end
+
+  # New endpoints page with offset and limit only, and cap the page size.
+  def page_collection_bounded(collection, limit_max: 50, limit_default: limit_max)
+    offset = [params[:offset].to_i, 0].max
+    limit  = (params[:limit] || limit_default).to_i.clamp(1, limit_max)
     collection.offset(offset).limit(limit)
   end
 

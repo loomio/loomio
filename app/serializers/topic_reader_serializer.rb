@@ -15,7 +15,7 @@ class TopicReaderSerializer < ApplicationSerializer
   has_one :user, serializer: AuthorSerializer, root: :users
 
   def last_read_at
-    if object.topic.anonymous_polls_count.positive?
+    if anonymous_polls?
       nil
     else
       object.last_read_at
@@ -23,10 +23,20 @@ class TopicReaderSerializer < ApplicationSerializer
   end
 
   def read_ranges
-    if object.topic.anonymous_polls_count.positive?
+    if anonymous_polls?
       []
     else
       object.read_ranges
+    end
+  end
+
+  private
+
+  def anonymous_polls?
+    return @anonymous_polls if defined?(@anonymous_polls)
+
+    @anonymous_polls = cache_fetch(:anonymous_polls_by_topic_id, object.topic_id) do
+      object.topic.has_anonymous_polls?
     end
   end
 

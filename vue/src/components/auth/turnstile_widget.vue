@@ -50,6 +50,7 @@ export default {
       if (!window.turnstile || !this.$refs.container) return;
       this.widgetId = window.turnstile.render(this.$refs.container, {
         sitekey: this.siteKey,
+        appearance: 'interaction-only',
         callback: (token) => this.$emit('update:modelValue', token),
         'expired-callback': () => this.$emit('update:modelValue', ''),
         'error-callback': () => this.$emit('update:modelValue', '')

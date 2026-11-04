@@ -31,6 +31,15 @@ class Api::HocuspocusControllerTest < ActionController::TestCase
   end
 
   # New comment tests
+  test "unsupported document types are rejected before granting access to new documents" do
+    ["0,anything", "#{@user.id},#{@user.secret_token}"].each do |secret|
+      error = assert_raises RuntimeError do
+        post :create, params: { user_secret: secret, document_name: "membership-new-#{@user.id}" }
+      end
+      assert_match "invalid record type membership", error.message
+    end
+  end
+
   test "new comment valid secret_token returns 200" do
     post :create, params: {
       user_secret: "#{@user.id},#{@user.secret_token}",

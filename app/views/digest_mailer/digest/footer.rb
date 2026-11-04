@@ -12,7 +12,7 @@ class Views::DigestMailer::Digest::Footer < Views::ApplicationMailer::Component
         br
         a(
 
-          href: email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token)
+          href: email_actions_catch_up_url(unsubscribe_token: @recipient.unsubscribe_token)
         ) { plain t(:"common.action.unsubscribe") }
       end
 

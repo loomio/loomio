@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::BaseController
-  before_action :load_user, only: %i[show edit update login_as merge redact deactivate reactivate delete_spam delete_identity]
+  before_action :load_user, only: %i[show edit update login_as merge redact deactivate reactivate delete_spam delete_identity clear_email_suppressions check_email_provider]
 
   def index
     users, pagination = paginate(filtered_users)
@@ -22,6 +22,24 @@ class Admin::UsersController < Admin::BaseController
     else
       render Views::Admin::Users::Edit.new(user: @user), status: :unprocessable_entity
     end
+  end
+
+  def clear_email_suppressions
+    EmailSuppressionService.clear!(user: @user, actor: current_user, method: 'administrator')
+    redirect_to admin_user_path(@user), notice: "Loomio email delivery blocks cleared"
+  end
+
+  def check_email_provider
+    return head :not_found unless ENV['SES_SUPPRESSION_REGION'].present? && @user.email.present?
+
+    begin
+      suppression = SesEmailSuppressionService.suppression_for(@user.email, client: SesEmailSuppressionService.client)
+      provider_status = suppression ? "SES account suppression list entry: #{suppression.reason} (updated #{suppression.last_update_time})" :
+        "No SES account suppression found for this address in #{ENV.fetch('SES_SUPPRESSION_REGION')}"
+    rescue Aws::Errors::ServiceError, Aws::Errors::MissingCredentialsError, Seahorse::Client::NetworkingError
+      provider_status = "SES account suppression could not be checked. Try again later."
+    end
+    render Views::Admin::Users::Show.new(user: @user, provider_status: provider_status)
   end
 
   def login_as
@@ -106,7 +124,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :username, :complaints_count, :bounces_count, :is_admin, :bot)
+    params.require(:user).permit(:name, :email, :username, :is_admin, :bot)
   end
 
   def selected_user_ids

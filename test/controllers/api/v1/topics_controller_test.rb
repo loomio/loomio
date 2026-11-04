@@ -11,6 +11,23 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
 
   # Test index action
+  test 'only thread and group admins can change attachment and sequential-poll restrictions' do
+    %i[member_normal guest_normal alien server_admin admin guest_admin_normal].each do |role|
+      @topic.update!(attachments_admin_only: false, polls_one_at_a_time: false)
+      sign_in users(role)
+      put :update, params: {id: @topic.id, topic: {attachments_admin_only: true, polls_one_at_a_time: true}}
+      allowed = %i[admin guest_admin_normal].include?(role)
+      assert_response allowed ? :success : :forbidden, role.to_s
+      assert_equal allowed, @topic.reload.attachments_admin_only?, role.to_s
+      assert_equal allowed, @topic.polls_one_at_a_time?, role.to_s
+      if allowed
+        serialized = response.parsed_body.fetch('topics').find { |topic| topic['id'] == @topic.id }
+        assert_equal true, serialized.fetch('attachments_admin_only')
+        assert_equal true, serialized.fetch('polls_one_at_a_time')
+      end
+    end
+  end
+
   test "index responds with success for logged out users" do
     get :index
 
@@ -58,6 +75,38 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
     assert_response :forbidden
     refute_includes response.body, "Private markdown security marker"
+  end
+
+  test "markdown is available before the reader votes" do
+    poll = PollService.create(
+      params: {topic_id: @topic.id, title: "Hidden until vote", poll_type: "proposal",
+               poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: "until_vote"},
+      actor: @admin
+    )
+    sign_in @user
+
+    get :markdown, params: {id: @topic.id}
+    assert_response :success
+
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = "Agree"
+    StanceService.create(stance: stance, actor: @user)
+
+    get :markdown, params: {id: @topic.id}
+    assert_response :success
+  end
+
+  test "markdown is available while results are hidden until the poll closes" do
+    PollService.create(
+      params: {topic_id: @topic.id, title: "Hidden until closed", poll_type: "proposal",
+               poll_option_names: ["Agree", "Disagree"], closing_at: 3.days.from_now, hide_results: "until_closed"},
+      actor: @admin
+    )
+    sign_in @user
+
+    get :markdown, params: {id: @topic.id}
+
+    assert_response :success
   end
 
   test "mark as read does not return a topic after guest access is revoked" do
@@ -199,26 +248,34 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes topic_ids, topic_id
   end
 
-  test "tags updates only topic tags" do
+  test "tags updates opening assignments and returns their colors immediately" do
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['urgent', 'new'] }
 
     assert_response :success
     assert_equal ['new', 'urgent'], @topic.reload.tags
-    assert_equal({}, JSON.parse(response.body))
+    json = JSON.parse(response.body)
+    assert_equal ['new', 'urgent'], json.fetch('topics').find { |row| row['id'] == @topic.id }.fetch('tags')
+    assert_equal ['new', 'urgent'], @topic.topicable.created_topic_item.tags
+    assert_not json.fetch('topics').find { |row| row['id'] == @topic.id }.key?('root_tags')
+    %w[new urgent].each do |name|
+      tag = @group.tags.find_by!(name: name)
+      assert_includes Tag::COLORS, tag.color
+      assert_equal tag.color, json.fetch('tags').find { |row| row['id'] == tag.id }.fetch('color')
+    end
   end
 
   test "tags can clear all topic tags" do
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: [] }
 
     assert_response :success
     assert_equal [], @topic.reload.tags
-    assert_equal({}, JSON.parse(response.body))
+    assert_empty @topic.topicable.created_topic_item.tags
   end
 
   test "tags can be updated by users who can edit the topicable" do
@@ -241,7 +298,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "tags can be updated by members who can edit discussions" do
     @group.update!(members_can_edit_discussions: true)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new', 'urgent'] }
 
@@ -254,7 +311,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     Tag.find_or_create_by!(group: @group, name: 'apple')
     Tag.find_or_create_by!(group: @group, name: 'banana')
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['apple', 'banana'] }
 
@@ -262,21 +319,22 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal ['apple', 'banana'], @topic.reload.tags
   end
 
-  test "members cannot create new tags when members cannot create tags" do
+  test "disallowed tag names are dropped when members cannot create tags" do
     @group.update!(members_can_edit_discussions: true, members_can_create_tags: false)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 
-    assert_response :forbidden
-    assert_equal ['old'], @topic.reload.tags
+    assert_response :success
+    assert_empty @topic.reload.tags
+    assert_not Tag.exists?(group: @group, name: 'new')
   end
 
   test "admins can create new tags when members cannot create tags" do
     @group.update!(members_can_create_tags: false)
     sign_in @admin
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 
@@ -287,7 +345,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "tags cannot be updated by members who cannot edit discussions" do
     @group.update!(members_can_edit_discussions: false)
     sign_in @user
-    @topic.update!(tags: ['old'])
+    @topic.topicable.created_topic_item.update!(tags: ['old'])
 
     patch :tags, params: { id: @topic.id, tags: ['new'] }
 
@@ -535,6 +593,31 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     get :history, params: { id: @topic.id }
 
     assert_response :forbidden
+  end
+
+  test "discarded anonymous polls keep history private across the access matrix" do
+    [:discussion_topic, :public_discussion_topic].each do |fixture|
+      topic = topics(fixture)
+      actor = topic.topicable.author
+      topic.group.add_admin!(actor) if fixture == :public_discussion_topic
+      poll = PollService.create(params: {
+        title: "Discarded secret vote", poll_type: "proposal", topic_id: topic.id,
+        anonymous: true, poll_option_names: %w[agree disagree], closing_at: 1.day.from_now
+      }, actor: actor)
+      PollService.discard(poll: poll, actor: actor)
+      assert poll.reload.discarded?
+
+      users(:user, :admin, :server_admin, :alien, :guest_normal, :guest_admin_normal, :non_guest_loud,
+            :former_guest_loud, :former_member_loud, :inactive_member_loud).each do |viewer|
+        sign_in viewer
+        get :history, params: { id: topic.id }
+        assert_response(viewer.active? ? :forbidden : :unauthorized)
+        assert_not JSON.parse(response.body).key?('data'), "#{fixture}: #{viewer.id}"
+        sign_out viewer
+      end
+      get :history, params: { id: topic.id }
+      assert_response :unauthorized
+    end
   end
 
   test "history denied to non-members" do

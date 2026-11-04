@@ -6,6 +6,15 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 export default new class TopicItemService {
   actions(topic_item, vm) {
     return {
+      edit_item_tags: {
+        name: 'loomio_tags.apply_tags',
+        icon: 'mdi-tag-outline',
+        menu: true,
+        canPerform() { return AbilityService.canTagTopicItem(topic_item); },
+        perform() {
+          return openModal({component: 'TopicTagsDialog', props: {topic: topic_item.topic(), topicItem: topic_item}});
+        }
+      },
       move_event: {
         name: 'action_dock.move_item',
         menu: true,
@@ -25,8 +34,8 @@ export default new class TopicItemService {
       },
 
       pin_event: {
-        name: 'action_dock.pin_event',
-        icon: 'mdi-pin-outline',
+        name: 'action_dock.add_to_timeline',
+        icon: 'mdi-timeline-plus-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
         canPerform() { return !topic_item.model().discardedAt && AbilityService.canPinEvent(topic_item); },
@@ -38,8 +47,8 @@ export default new class TopicItemService {
       },
 
       unpin_event: {
-        name: 'action_dock.unpin_event',
-        icon: 'mdi-pin-off',
+        name: 'action_dock.remove_from_timeline',
+        icon: 'mdi-timeline-remove-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
         canPerform() { return !topic_item.model().discardedAt && AbilityService.canUnpinEvent(topic_item); },

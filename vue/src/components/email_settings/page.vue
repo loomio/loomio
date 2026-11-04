@@ -55,9 +55,8 @@ function submit() {
 }
 
 function init() {
-  if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
+  if (!Session.isSignedIn()) { return; }
   loadGroups();
-  Session.user().attributeNames.push('unsubscribeToken');
   user.value = Session.user().clone();
 }
 
@@ -126,6 +125,7 @@ v-main
         v-select#digest-email-day(
           solo
           :items="emailDays"
+          :item-props="item => ({class: 'email-settings-page__catch-up-day--' + (item.value ?? 'never')})"
           :label="$t('email_settings_page.catch_up_email')"
           v-model="user.emailCatchUpDay")
 

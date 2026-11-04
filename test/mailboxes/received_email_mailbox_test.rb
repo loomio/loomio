@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ReceivedEmailMailboxTest < ActionMailbox::TestCase
-  inline_jobs "email from alias creates notification",
+  inline_jobs "duplicate Message-ID forwards one copy to a staff mailbox",
+              "email from alias creates notification",
               "mailing list envelope recipient creates an unknown sender notification"
   setup do
     hex = SecureRandom.hex(4)
@@ -57,8 +58,8 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
       receive_inbound_email_from_source(raw_email.to_s)
     end
 
-    email = ReceivedEmail.last
-    assert_equal 'Café discussion about naïve approach', email.headers['Subject']
+    email = InboundEmailMessage.new(ActionMailbox::InboundEmail.order(:id).last)
+    assert_equal 'Café discussion about naïve approach', email.subject
     assert_equal 'Café discussion about naïve approach', Discussion.last.title
   end
 
@@ -76,8 +77,8 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
       receive_inbound_email_from_source(raw_email.to_s)
     end
 
-    email = ReceivedEmail.last
-    assert_includes email.headers['From'], 'Björk'
+    email = InboundEmailMessage.new(ActionMailbox::InboundEmail.order(:id).last)
+    assert_equal 'Björk', email.sender_name
   end
 
   test "creates a reply to comment via email" do
@@ -149,9 +150,8 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     assert_equal @user, d.author
     assert_equal @group.handle, d.group.handle
     assert_equal "greetings earthlings", d.body
-    e = ReceivedEmail.last
-    assert_equal true, e.released
-    assert_equal @group.id, e.group_id
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
+    assert_empty PendingEmail.all
   end
 
   test "duplicate Message-ID creates one discussion" do
@@ -178,7 +178,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
       receive_inbound_email_from_source(source.call('retried-delivery'))
     end
 
-    assert_equal 1, ReceivedEmail.where(message_id: message_id).count
+    assert_equal 1, ActionMailbox::InboundEmail.where(message_id: message_id).where.not(processing_completed_at: nil).count
     assert_equal ['delivered', 'delivered'], ActionMailbox::InboundEmail.where(message_id: message_id).order(:id).map(&:status)
   end
 
@@ -207,7 +207,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     delivered = ActionMailer::Base.deliveries.last
     assert_equal [rule.email], delivered.to
     assert_equal [sender], delivered.reply_to
-    assert ReceivedEmail.find_by!(message_id: message_id).released
+    assert ActionMailbox::InboundEmail.where(message_id: message_id).where.not(processing_completed_at: nil).exists?
   end
 
   test "email from alias creates notification" do
@@ -218,7 +218,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
       body: "greetings earthlings"
     )
 
-    email = ReceivedEmail.last
+    email = PendingEmail.last
     assert_equal false, email.released
     assert_equal @group.id, email.group_id
     notification = Notification.find_by!(kind: "unknown_sender", subject: email)
@@ -241,7 +241,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
       receive_inbound_email_from_source(raw_email.to_s)
     end
 
-    email = ReceivedEmail.last
+    email = PendingEmail.last
     assert_equal false, email.released
     assert_equal @group.id, email.group_id
     assert_equal 'mailing-list-sender@example.com', email.sender_email
@@ -269,9 +269,8 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     assert_equal @user, d.author
     assert_equal @group.handle, d.group.handle
     assert_equal "greetings earthlings", d.body
-    e = ReceivedEmail.last
-    assert_equal true, e.released
-    assert_equal @group.id, e.group_id
+    assert ActionMailbox::InboundEmail.order(:id).last.processing_completed_at
+    assert_empty PendingEmail.all
   end
 
   test "blocked member alias does not start discussion" do
@@ -290,8 +289,21 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
         body: "greetings earthlings"
       )
     end
-    e = ReceivedEmail.last
-    assert_equal false, e.released
-    assert_nil e.group_id
+    e = PendingEmail.last
+    assert e.blocked?
+    assert_equal @group.id, e.group_id
   end
+  test 'personal reply tokens do not bypass revoked membership or inactive account boundaries' do
+    discussion = discussions(:discussion)
+    %i[member_normal former_member_loud inactive_member_loud alien].each do |role|
+      actor = users(role)
+      token = role == :member_normal ? 'invalid-key' : actor.email_api_key
+      assert_no_difference ['Comment.count', 'PendingEmail.count'] do
+        receive_inbound_email_from_mail(from: actor.email,
+          to: "d=#{discussion.id}&u=#{actor.id}&k=#{token}@#{ENV.fetch('REPLY_HOSTNAME')}",
+          subject: 'Unauthorized reply', body: 'Must not publish')
+      end
+    end
+  end
+
 end

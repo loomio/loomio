@@ -6,6 +6,7 @@ module Ability::Comment
       topic = comment.topic
       !topic.locked_at &&
       topic.allow_comments &&
+      comment.parent_allows_replies? &&
       topic.members.exists?(user.id)
     end
 

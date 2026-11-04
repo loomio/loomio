@@ -98,6 +98,13 @@ class DigestQueryTest < ActiveSupport::TestCase
     assert_not_includes digest.notifications, notification
   end
 
+  test "notifications exclude discarded legacy discussions without topics" do
+    create_notification(kind: "discussion_edited", subject: @discussion)
+    @discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+
+    assert_empty digest.notifications
+  end
+
   private
 
   def digest

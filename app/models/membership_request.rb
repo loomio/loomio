@@ -64,10 +64,6 @@ class MembershipRequest < ApplicationRecord
     save!
   end
 
-  def convert_to_membership!
-    group.add_member!(requestor)
-  end
-
   def content_locale
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(introduction, tags: [])
     result = CLD.detect_language stripped_text

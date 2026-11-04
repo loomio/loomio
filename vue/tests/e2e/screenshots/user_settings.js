@@ -7,8 +7,13 @@ function useLightTheme(test) {
   });
 }
 
+// The drawer can already be open, for example on a wide viewport or when an
+// earlier test left it open, and clicking the toggle would then close it.
 function openSidebar(page, settings = false) {
-  page.clickAndWait('.navbar__sidenav-toggle', '.sidenav-left');
+  page.waitFor('.navbar__sidenav-toggle');
+  page.pause(500);
+  page.execute("if (!document.querySelector('.sidenav-left.v-navigation-drawer--active')) document.querySelector('.navbar__sidenav-toggle').click()");
+  page.waitFor('.sidenav-left');
   if (settings) page.clickAndWait('.sidebar__user-dropdown', '.sidebar-close-settings');
 }
 
@@ -24,14 +29,7 @@ function loadEmailSettings(page) {
 
 function loadMergeAccounts(page) {
   page.loadPath('setup_manual_oatmilk_merge_accounts');
-  page.waitFor('.profile-page__email-input input');
-  page.execute(`
-    const input = document.querySelector('.profile-page__email-input input');
-    input.value = 'jamie@oatmilk.example';
-    input.dispatchEvent(new Event('input', {bubbles: true}));
-    input.dispatchEvent(new Event('keyup', {bubbles: true}));
-  `);
-  page.waitFor('.profile-page__email-taken');
+  page.waitFor('.user-page__merge_accounts');
 }
 
 module.exports = {
@@ -58,30 +56,23 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadMergeAccounts(page);
-    screenshot.captureRegion(
-      'users/merge_accounts/merge_accounts_profile',
-      [
-        '.profile-page > div > .v-card:first-of-type .v-card-title',
-        '.profile-page__details > .d-sm-flex'
-      ],
-      {
-        width: 1100,
-        height: 1200,
-        padding: 0,
-        spotlight: {selectors: ['.profile-page__email-input', '.profile-page__email-taken']}
-      }
-    );
+    screenshot.captureElement('users/merge_accounts/merge_accounts_profile', '.profile-page-card', {
+      width: 1100,
+      height: 900,
+      spotlight: '.user-page__merge_accounts'
+    });
   },
 
   'merge_accounts_verify': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     loadMergeAccounts(page);
-    page.clickAndWait('.email-taken-find-out-more', '.confirm-modal');
+    page.clickAndWait('.user-page__merge_accounts', '.merge-accounts-modal');
+    page.fillIn('.merge-accounts-modal__destination-email input', 'jamie@oatmilk.example');
     screenshot.captureElement(
       'users/merge_accounts/merge_accounts_verify',
-      '.confirm-modal',
-      {width: 1100, height: 1000, spotlight: '.confirm-modal__submit'}
+      '.merge-accounts-modal',
+      {width: 1100, height: 1000, spotlight: '.merge-accounts-modal__submit'}
     );
   },
 
@@ -92,7 +83,7 @@ module.exports = {
     page.waitFor('.email-button');
     screenshot.captureRegion(
       'users/merge_accounts/merge_accounts_email',
-      ['.mailer__header', 'body > div:last-of-type'],
+      ['.email-header', '.email-button'],
       {width: 1100, height: 1200, padding: 24, spotlight: '.email-button'}
     );
   },
@@ -286,7 +277,7 @@ module.exports = {
     loadEmailSettings(page);
     page.click('.email-settings-page__digest-card .v-select .v-field');
     page.waitFor('.v-overlay--active .v-list');
-    page.execute("Array.from(document.querySelectorAll('.v-overlay--active .v-list-item')).find(el => el.textContent.includes('Never')).click()");
+    page.click('.v-overlay--active .email-settings-page__catch-up-day--never');
     screenshot.captureElement('users/email_settings/turn_off_all_emails_1', '.email-settings-page__digest-card', {
       width: 1100,
       height: 1500,
@@ -348,9 +339,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     loadProfile(page);
     page.execute(`
-      const control = Array.from(document.querySelectorAll('.profile-page .v-checkbox'))
-        .find((element) => element.textContent.includes('Translate content to my language automatically'));
-      control?.classList.add('manual-automatic-translation');
+      document.querySelector('.profile-page .profile-page__auto-translate').classList.add('manual-automatic-translation');
     `);
     page.waitFor('.manual-automatic-translation');
     screenshot.captureElement(
@@ -392,9 +381,13 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_group');
     openSidebar(page, true);
-    screenshot.captureElement('users/user_profile/edit_profile', '.sidenav-left', {
+    screenshot.captureRegion('users/user_profile/edit_profile', [
+      '.sidebar-close-settings',
+      '.user-dropdown__list-item-button--sign-out'
+    ], {
       width: 1100,
       height: 1200,
+      padding: 12,
       spotlight: '.user-dropdown__list-item-button--profile'
     });
   },
@@ -412,18 +405,5 @@ module.exports = {
     loadProfile(page);
     page.clickAndWait('.profile-page__avatar', '.change-picture-form');
     screenshot.captureElement('users/user_profile/profile_photo', '.change-picture-form', {width: 1100, height: 1300});
-  },
-
-  'profile_language': (test) => {
-    const page = pageHelper(test);
-    const screenshot = manualScreenshot(test);
-    loadProfile(page);
-    page.execute("document.querySelector('#user-locale-field').scrollIntoView({block: 'center'})");
-    page.pause(200);
-    screenshot.captureElement('users/user_profile/profile_language', '#user-locale-field', {
-      width: 1100,
-      height: 900,
-      spotlight: '#user-locale-field'
-    });
   }
 };

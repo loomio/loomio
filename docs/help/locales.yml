@@ -1,0 +1,53 @@
+# Languages the user manual and guides are translated into. English is the
+# source. A published language must have every page translated, or the build
+# fails. Machine translations may publish after automated validation; human
+# review is optional. Unpublished languages build complete, current pages for preview.
+#
+# The key is the URL directory. `hreflang` (default: the key) is the language
+# tag used in HTML and search. `app_locale` (default: the key) names the
+# config/locales files that supply interface labels. Each language's style
+# (register and conventions) and terminology come from that app locale's entry
+# in config/locales/glossary.yml, which the app strings share.
+es:
+  name: Español
+  published: true
+fr:
+  name: Français
+  published: true
+de:
+  name: Deutsch
+  published: true
+it:
+  name: Italiano
+  published: true
+pt-br:
+  name: Português (Brasil)
+  hreflang: pt-BR
+  app_locale: pt_BR
+  published: true
+nl:
+  name: Nederlands
+  app_locale: nl_NL
+  published: true
+ru:
+  name: Русский
+  published: true
+uk:
+  name: Українська
+  published: true
+fi:
+  name: Suomi
+  published: true
+hu:
+  name: Magyar
+  published: true
+he:
+  name: עברית
+  dir: rtl
+  published: true
+ja:
+  name: 日本語
+  published: true
+be:
+  name: Беларуская
+  published: true

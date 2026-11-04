@@ -22,6 +22,20 @@ class Notification < ApplicationRecord
     subject.is_a?(TopicItem) ? subject.itemable : subject
   end
 
+  # A reaction is read with the item it reacts to; timeline notifications keep
+  # their exact occurrence. Derive this location so it follows moved comments.
+  def read_subject
+    model = subject_model
+    model.is_a?(Reaction) ? model.reactable : model
+  end
+
+  def read_topic_item
+    return subject if subject.is_a?(TopicItem)
+
+    model = read_subject
+    model.created_topic_item if model.respond_to?(:created_topic_item)
+  end
+
   def self.about(record_or_type, record_id = nil)
     subject_type, subject_id = if record_id
       [ record_or_type, record_id ]

@@ -173,7 +173,7 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
       topic.discussion => %i[show print update update_version announce destroy discard],
       topic => %i[show update move move_comments pin close reopen discard update_tags announce members_autocomplete add_members add_guests],
       comment => %i[show update discard undiscard destroy],
-      poll => %i[show export receipts update announce remind add_voters close reopen destroy],
+      poll => %i[show export view_anonymous_voters update announce remind add_voters close reopen destroy],
       outcome => %i[show create update announce add_members add_guests],
       comment.created_topic_item => %i[pin unpin],
       PollTemplate.new(group: topic.group, author: admin) => %i[create update],
@@ -187,6 +187,7 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
     assert admin.can?(:update, topic.discussion)
     assert admin.can?(:remind, poll)
     assert admin.can?(:make_admin, reader)
+    assert admin.can?(:redeem, reader)
     group = topic.group
     group.discard!
     records.each_key { |record| record.reload if record.persisted? }

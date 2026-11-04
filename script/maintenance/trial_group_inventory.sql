@@ -65,7 +65,7 @@ other_references AS (
   UNION ALL SELECT group_id FROM membership_requests
   UNION ALL SELECT group_id FROM chatbots
   UNION ALL SELECT group_id FROM tags
-  UNION ALL SELECT group_id FROM received_emails
+  UNION ALL SELECT group_id FROM pending_emails
   UNION ALL SELECT group_id FROM group_surveys
   UNION ALL SELECT group_id FROM demos
   UNION ALL SELECT group_id FROM webhooks

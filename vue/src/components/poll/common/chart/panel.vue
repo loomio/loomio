@@ -4,8 +4,13 @@ import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollStvChartPanel from '@/components/poll/stv/chart_panel';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
@@ -14,12 +19,21 @@ export default {
 
   props: {
     poll: Object,
-    hideViewAllVotes: Boolean,
     hideVoters: Boolean
   },
 
   data() {
-    return { votersByOptionId: {} };
+    return { votersByOptionId: {}, chartMetric: null };
+  },
+
+  computed: {
+    participationWeighted() {
+      return this.poll.weightedVoting && !['votes', 'vote_count', 'unweighted_score'].includes(this.chartMetric);
+    },
+    participationPct() {
+      if (!this.poll.weightedVoting || this.participationWeighted) return this.poll.participationPct;
+      return this.poll.voteCountEligible > 0 ? Math.floor(this.poll.voteCountCast / this.poll.voteCountEligible * 100) : 0;
+    }
   },
 
   created() {
@@ -35,7 +49,7 @@ export default {
 .poll-common-chart-panel.mt-8
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
-      v-if='!!poll.closingAt && poll.hideResults == "until_closed" && !poll.detachedAnonymousVoting()'
+      v-if='!!poll.closingAt && poll.hideResults == "until_closed" && !poll.anonymous'
       density="compact"
       variant="tonal"
       type="info"
@@ -55,35 +69,30 @@ export default {
       ul(style="list-style-type: none; padding-left: 0;")
         li.text-medium-emphasis.d-flex.align-center(v-if="poll.quorumPct")
           common-icon.mr-1(
-            :name="poll.quorumVotesRequired <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
-            :color="poll.quorumVotesRequired <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+            :name="poll.quorumReached ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="poll.quorumReached ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', args: {pct: poll.quorumPct}}")
+          span {{ t(poll.weightedVoting ? 'poll_common_percent_voted.pct_of_eligible_vote_weight_must_participate' : 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', {pct: poll.quorumPct}) }}
         li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
           common-icon.mr-1(
             :name="option.test_result ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
             :color="option.test_result ? 'success' : (poll.isClosed() ? 'error' : undefined)"
           )
-          span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
+          span {{ t(option.test_requirement_key, {percent: option.test_percent, name: option.name}) }}
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
-      poll-common-chart-table(v-else-if="poll.chartType != 'grid'" :poll="poll" :hide-voters="hideVoters")
+      template(v-else-if="poll.chartType != 'grid'")
+        v-alert.poll-common-chart-panel__variable-vote-weights.mb-4(
+          v-if="poll.weightedVoting"
+          density="compact"
+          variant="tonal"
+          type="info"
+        )
+          span {{ $t('poll_common_action_panel.votes_have_different_weights') }}
+          help-link.ml-1(path="user_manual/polls/weighted_voting")
+        poll-common-chart-table(:poll="poll" :hide-voters="hideVoters" @metric-change="chartMetric = $event")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
-    span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
-    template(v-if="poll.legacyAnonymousVoteReasonsCount > 0 && !hideViewAllVotes")
-      mid-dot
-      router-link.poll-common-chart-panel__view-legacy-vote-reasons.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
-        span(v-t="'poll_common_action_panel.legacy_vote_reasons'")
-    template(v-else-if="poll.decidedVotersCount > 0 && !hideViewAllVotes && !poll.detachedAnonymousVoting()")
-      mid-dot
-      router-link.poll-common-chart-panel__view-all-votes.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
-        span(v-t="'poll_common.view_all_votes'")
-    //template(v-if="poll.quorumPct")
-    //  br
-    //  span(v-if="poll.quorumVotesRequired <= 0" v-t="{ path: 'poll_common_percent_voted.quorum_reached', args: { pct: poll.quorumPct }  }" )
-    //  span(v-if="poll.quorumVotesRequired == 1" v-t="{ path: 'poll_common_percent_voted.vote_short_of_quorum', args: { pct: poll.quorumPct } }" )
-    //  span(v-if="poll.quorumVotesRequired > 1" v-t="{ path: 'poll_common_percent_voted.votes_short_of_quorum', args: { num: poll.quorumVotesRequired, pct: poll.quorumPct } }" )
-
+    span {{ t(participationWeighted ? 'poll_common_percent_voted.pct_vote_weight_participation' : 'poll_common_percent_voted.pct_participation', {num: poll.voteCountCast, total: poll.voteCountEligible, pct: participationPct}) }}
 </template>

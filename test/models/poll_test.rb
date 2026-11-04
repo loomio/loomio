@@ -51,6 +51,12 @@ class PollTest < ActiveSupport::TestCase
     ), actor: @admin)
   end
 
+  test "totals numeric poll scores stored as JSON strings or numbers" do
+    poll = Poll.new(scores_by_option: ["1.25", 2, "0.75"])
+
+    assert_equal BigDecimal("4"), poll.total_score
+  end
+
   test "destroying a poll's topic destroys the poll (no orphaned topic_id)" do
     poll = create_poll
     topic = poll.topic
@@ -80,20 +86,16 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "database rejects anonymous stance voting" do
-    poll = create_poll
+  test "anonymity cannot change after voting opens" do
+    named_poll = create_poll
+    named_poll.anonymous = true
+    assert_not named_poll.valid?
+    assert named_poll.errors.added?(:anonymous, :invalid)
 
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: true, voting_system: Poll.voting_systems.fetch("stance"))
-    end
-  end
-
-  test "database rejects identified anonymous-ballot voting" do
-    poll = create_poll
-
-    assert_raises(ActiveRecord::StatementInvalid) do
-      poll.update_columns(anonymous: false, voting_system: Poll.voting_systems.fetch("anonymous_ballot"))
-    end
+    anonymous_poll = create_poll(anonymous: true)
+    anonymous_poll.anonymous = false
+    assert_not anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:anonymous, :cannot_deanonymize)
   end
 
   test "vote is needed from an eligible identified voter until their current stance is cast" do
@@ -119,6 +121,62 @@ class PollTest < ActiveSupport::TestCase
     membership.update!(revoked_at: Time.current)
 
     assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "leaving while a private poll is closed does not preserve voting rights when it reopens" do
+    voter = users(:member_normal)
+    poll = create_poll(group_id: @group.id, private: true)
+    stance = poll.stances.latest.find_by!(participant: voter)
+    PollService.close(poll: poll, actor: @admin)
+
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+    PollService.reopen(poll: poll, params: {closing_at: 3.days.from_now}, actor: @admin)
+
+    assert poll.active?
+    assert_nil stance.reload.revoked_at, 'the closed poll retains its historical voter record'
+    assert_not voter.can?(:show, poll)
+    assert_not voter.can?(:vote_in, poll)
+    assert_not poll.vote_needed_from?(voter)
+    assert_raises(CanCan::AccessDenied) do
+      StanceService.update(stance: stance, actor: voter, params: {choice: {'engage' => 1}})
+    end
+    assert_nil stance.reload.cast_at
+  end
+
+  test "retained anonymous electorate records do not authorize voters after private access is revoked" do
+    voter = users(:member_normal)
+    poll = create_poll(group_id: @group.id, private: true, anonymous: true)
+    assert voter.can?(:vote_in, poll)
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+
+    assert poll.anonymous_poll_voters.exists?(voter: voter)
+    assert_not voter.can?(:vote_in, poll)
+    assert_not poll.vote_needed_from?(voter)
+  end
+
+  test "public polls remain readable after leaving but retained voters cannot vote" do
+    voter = users(:member_normal)
+    @group.update!(is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
+    named = create_poll(group_id: @group.id, private: false)
+    anonymous = create_poll(group_id: @group.id, private: false, anonymous: true)
+    PollService.close(poll: named, actor: @admin)
+
+    MembershipService.revoke(membership: @group.membership_for(voter), actor: voter)
+    PollService.reopen(poll: named, params: {closing_at: 3.days.from_now}, actor: @admin)
+
+    [named, anonymous].each do |poll|
+      assert voter.can?(:show, poll)
+      assert_not voter.can?(:vote_in, poll)
+      assert_not poll.vote_needed_from?(voter)
+      assert_not PollQuery.filter(chain: PollQuery.visible_to(user: voter),
+                                 params: {status: 'vote', group_key: @group.key}, user: voter).exists?(poll.id)
+    end
+
+    @group.add_member!(voter)
+    [named, anonymous].each do |poll|
+      assert voter.can?(:vote_in, poll)
+      assert poll.vote_needed_from?(voter)
+    end
   end
 
   test "vote is needed from an anonymous voter until their ballot is submitted" do
@@ -177,26 +235,26 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "score bounds must be nonnegative and ordered" do
-    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], min_score: -1)
+    invalid_poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange], score_min: -1)
 
     assert_predicate invalid_poll, :invalid?
     assert_not invalid_poll.persisted?
 
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
 
-    poll.min_score = -1
+    poll.score_min = -1
     refute poll.valid?
-    assert poll.errors.added?(:min_score, :invalid)
+    assert poll.errors.added?(:score_min, :invalid)
 
-    poll.min_score = 5
-    poll.max_score = 4
+    poll.score_min = 5
+    poll.score_max = 4
     refute poll.valid?
-    assert poll.errors.added?(:max_score, :invalid)
+    assert poll.errors.added?(:score_max, :invalid)
   end
 
   test "a legacy negative-score poll can be discarded" do
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
-    poll.update_column(:min_score, -1)
+    poll.update_column(:score_min, -1)
 
     PollService.discard(poll: poll, actor: @admin)
 
@@ -205,10 +263,10 @@ class PollTest < ActiveSupport::TestCase
 
   test "an existing negative scale does not validate again for unrelated edits" do
     poll = create_poll(poll_type: "score", poll_option_names: %w[apple orange])
-    poll.update_columns(min_score: -1, closed_at: Time.current)
+    poll.update_columns(score_min: -1, closed_at: Time.current)
 
     assert poll.update(title: "Edited historical score poll")
-    assert_equal(-1, poll.reload.min_score)
+    assert_equal(-1, poll.reload.score_min)
   end
 
   test "does not allow changing poll options if the template does not allow" do
@@ -219,35 +277,36 @@ class PollTest < ActiveSupport::TestCase
 
   test "does not allow higher minimum stance choices than number of poll options" do
     ranked_choice = create_ranked_choice
-    ranked_choice.minimum_stance_choices = ranked_choice.poll_options.length + 1
+    ranked_choice.choice_count_min = ranked_choice.poll_options.length + 1
     ranked_choice.valid?
-    assert_equal ranked_choice.poll_options.length, ranked_choice.minimum_stance_choices
+    assert_equal ranked_choice.poll_options.length, ranked_choice.choice_count_min
   end
 
-  test "ranked choice keeps its maximum choices synchronized with its ranking positions" do
+  test "ranked choice accepts a full ranking despite a stored maximum choices" do
     ranked_choice = create_ranked_choice(
-      minimum_stance_choices: 2,
-      maximum_stance_choices: 1
+      choice_count_min: 2,
+      choice_count_max: 1
     )
 
-    assert_equal 2, ranked_choice.maximum_stance_choices
-
-    ranked_choice.update!(minimum_stance_choices: 3)
-
-    assert_equal 3, ranked_choice.reload.maximum_stance_choices
+    stance = ranked_choice.stances.build(
+      participant: @admin,
+      cast_at: Time.current,
+      stance_choices_attributes: ranked_choice.poll_options.first(2).each_with_index.map { |option, index| { poll_option_id: option.id, score: index + 1 } }
+    )
+    assert_predicate stance, :valid?
   end
 
   test "meeting derives required choice bounds when dates are added" do
     meeting = create_meeting(
       poll_option_names: %w[01-01-2015 01-02-2015],
-      minimum_stance_choices: 2,
-      maximum_stance_choices: 2
+      choice_count_min: 2,
+      choice_count_max: 2
     )
 
     meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015])
 
-    assert_equal 3, meeting.reload.minimum_stance_choices
-    assert_equal 3, meeting.maximum_stance_choices
+    assert_equal 3, meeting.reload.choice_count_min
+    assert_equal 3, meeting.choice_count_max
 
     stance = meeting.stances.build(
       participant: @admin,
@@ -260,42 +319,66 @@ class PollTest < ActiveSupport::TestCase
   test "meeting derives required choice bounds when dates are removed" do
     meeting = create_meeting(
       poll_option_names: %w[01-01-2015 01-02-2015 01-03-2015],
-      minimum_stance_choices: 3,
-      maximum_stance_choices: 3
+      choice_count_min: 3,
+      choice_count_max: 3
     )
 
     meeting.update!(poll_option_names: %w[01-01-2015 01-02-2015])
 
-    assert_equal 2, meeting.reload.minimum_stance_choices
-    assert_equal 2, meeting.maximum_stance_choices
+    assert_equal 2, meeting.reload.choice_count_min
+    assert_equal 2, meeting.choice_count_max
+  end
+
+  test "poll types without a maximum choices setting derive it from their options" do
+    ballots = {
+      "dot_vote" => [3, 3, 2],
+      "score" => [5, 4, 3],
+      "stv" => [1, 2, 3]
+    }
+
+    ballots.each do |poll_type, scores|
+      poll = create_poll(poll_type: poll_type, poll_option_names: %w[apple banana])
+      poll.update_columns(choice_count_max: 2)
+
+      poll.update!(poll_option_names: %w[apple banana orange])
+
+      assert_equal 3, poll.reload.choice_count_max, poll_type
+
+      stance = poll.stances.build(
+        participant: @admin,
+        cast_at: Time.current,
+        stance_choices_attributes: poll.poll_options.zip(scores).map { |option, score| { poll_option_id: option.id, score: score } }
+      )
+      assert_predicate stance, :valid?, poll_type
+    end
   end
 
   test "ballot configuration ignores JSON custom fields" do
     poll = create_poll(poll_type: "dot_vote", poll_option_names: %w[apple banana orange])
     poll.update_columns(
-      min_score: nil,
-      max_score: nil,
-      dots_per_person: nil,
-      minimum_stance_choices: nil,
-      maximum_stance_choices: nil,
+      score_min: nil,
+      score_max: nil,
+      points_per_voter: nil,
+      choice_count_min: nil,
+      choice_count_max: nil,
       custom_fields: poll.custom_fields.merge(
-        "min_score" => 3,
-        "max_score" => 3,
-        "dots_per_person" => 1,
-        "minimum_stance_choices" => 2,
-        "maximum_stance_choices" => 2
+        "score_min" => 3,
+        "score_max" => 3,
+        "points_per_voter" => 1,
+        "choice_count_min" => 2,
+        "choice_count_max" => 2
       )
     )
 
     poll.reload
-    assert_equal 0, poll.min_score
-    assert_nil poll.max_score
-    assert_equal 8, poll.dots_per_person
-    assert_equal 0, poll.minimum_stance_choices
-    assert_equal 3, poll.maximum_stance_choices
+    assert_equal 0, poll.score_min
+    assert_nil poll.score_max
+    assert_equal 8, poll.points_per_voter
+    assert_equal 0, poll.choice_count_min
+    assert_equal 3, poll.choice_count_max
 
-    poll.update!(min_score: 2)
-    assert_equal 3, poll.reload.custom_fields["min_score"]
+    poll.update!(score_min: 2)
+    assert_equal 3, poll.reload.custom_fields["score_min"]
   end
 
   test "allows closing dates in the future" do
@@ -307,6 +390,253 @@ class PollTest < ActiveSupport::TestCase
       closing_at: 1.day.from_now
     )
     assert poll.valid?
+  end
+
+  test "vote weights are disabled by default" do
+    poll = create_poll
+
+    refute poll.weighted_voting?
+  end
+
+  test "anonymous participation needs the quorum or half the electorate, and at least three votes" do
+    assert_equal 5, Poll.new(vote_count_eligible: 10).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_eligible: 4).participation_status_votes_required
+    assert_equal 6, Poll.new(vote_count_eligible: 10, quorum_pct: 60).participation_status_votes_required
+    assert_equal 3, Poll.new(vote_count_eligible: 20, quorum_pct: 10).participation_status_votes_required
+  end
+
+  test "unweighted results keep master's columns and headings" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal')
+
+    assert_equal %w[chart name votes votes_cast_percent voter_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'votes_cast_percent' => 'poll_ranked_choice_form.pct_of_votes_cast',
+      'voter_percent' => 'poll_ranked_choice_form.pct_of_voters'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted one-point results list counts before percentages" do
+    poll = create_poll(group_id: @group.id, poll_type: 'proposal', weighted_voting: true)
+
+    assert_equal %w[chart name votes score voter_percent votes_cast_percent voters], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'votes' => 'poll_common.votes',
+      'score' => 'poll_common.weighted_votes',
+      'votes_cast_percent' => 'poll_common.pct_of_vote_weight_cast',
+      'voter_percent' => 'poll_common.pct_of_eligible_vote_weight'
+    }, poll.result_heading_keys)
+  end
+
+  test "weighted multi-point results list points before percentages" do
+    poll = create_poll(
+      group_id: @group.id, poll_type: 'dot_vote', weighted_voting: true,
+      poll_option_names: %w[Alpha Beta], points_per_voter: 8
+    )
+
+    assert_equal %w[chart name unweighted_score score score_percent average vote_count], poll.result_columns
+    assert_equal({
+      'name' => 'common.option',
+      'score_percent' => 'poll_common.pct_of_weighted_points',
+      'unweighted_score' => 'poll_ranked_choice_form.points',
+      'score' => 'poll_common.weighted_points',
+      'average' => 'poll_common.weighted_mean',
+      'vote_count' => 'membership_card.voters'
+    }, poll.result_heading_keys)
+    assert_equal 0, poll.results.find { |row| row['id'] == -1 }.fetch('score')
+  end
+
+  test "a zero-weight vote appears in plain counts but adds no weighted participation or score" do
+    voters = [users(:admin), users(:user)]
+    poll = create_poll(
+      group_id: @group.id,
+      poll_option_names: %w[Agree Disagree],
+      weighted_voting: true,
+      specified_voters_only: true,
+      quorum_pct: 100
+    )
+    agree = poll.poll_options.find_by!(name: 'Agree')
+    disagree = poll.poll_options.find_by!(name: 'Disagree')
+
+    Stance.create!(
+      poll: poll, participant: voters.first, weight: 0, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: agree.id, score: 1}]
+    )
+    Stance.create!(
+      poll: poll, participant: voters.last, weight: 3, cast_at: Time.current,
+      stance_choices_attributes: [{poll_option_id: disagree.id, score: 1}]
+    )
+    poll.update_counts!
+
+    assert_equal 2, poll.vote_count_eligible
+    assert_equal 2, poll.vote_count_cast
+    assert_equal 100, poll.participation_pct
+    assert_equal 3, poll.quorum_threshold
+    assert poll.quorum_reached?
+    assert_equal 1, agree.reload.vote_count
+    assert_equal 0, agree.total_score
+    assert_equal 3, disagree.reload.total_score
+    assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:voter_percent]
+    assert_equal 0, poll.results.find { |result| result[:id] == agree.id }[:score_percent]
+  end
+
+  test "identified supported polls can enable vote weights" do
+    poll = create_poll(weighted_voting: true)
+
+    assert poll.weighted_voting?
+  end
+
+  test "switching vote weights after opening resets issued votes" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.5')
+    poll = create_poll(group_id: @group.id)
+    stance = poll.stances.latest.find_by!(participant: member)
+    option = poll.poll_options.first
+    stance.update!(cast_at: Time.current, stance_choices_attributes: [{poll_option_id: option.id, score: 1}])
+
+    PollService.update(poll: poll, params: {weighted_voting: true}, actor: @admin)
+    assert_equal BigDecimal('2.5'), stance.reload.weight
+    assert stance.cast_at
+    assert_equal BigDecimal('2.5'), option.reload.total_score
+
+    stance.update_columns(weight: '3')
+    PollService.update(poll: poll, params: {weighted_voting: false}, actor: @admin)
+    assert_equal 1, stance.reload.weight
+    assert stance.cast_at
+    assert_equal 1, option.reload.total_score
+  end
+
+  test "vote weights can be enabled before voting opens" do
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+
+    assert poll.update(weighted_voting: true)
+  end
+
+  test "disabling vote weights before opening clamps existing stances" do
+    poll = create_poll(closing_at: nil, group_id: @group.id, weighted_voting: true)
+    stance = poll.stances.latest.first
+    stance.update!(weight: '2.33')
+
+    assert poll.update!(weighted_voting: false)
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "enabling vote weights copies current membership defaults and replaces old overrides" do
+    member = users(:user)
+    membership = @group.membership_for(member)
+    membership.update!(weight: '2.33')
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+    member_stance = poll.stances.latest.find_by!(participant: member)
+    guest = create_voter('guest')
+    guest_stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    poll.update!(weighted_voting: true)
+    assert_equal BigDecimal('2.33'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+
+    member_stance.update!(weight: '5')
+    poll.update!(weighted_voting: false)
+    assert_equal 1, member_stance.reload.weight
+
+    membership.update!(weight: '0.5')
+    poll.update!(weighted_voting: true)
+    assert_equal BigDecimal('0.5'), member_stance.reload.weight
+    assert_equal 1, guest_stance.reload.weight
+  end
+
+  test "a group poll can enable vote weights" do
+    poll = create_poll(closing_at: nil, group_id: @group.id)
+
+    assert poll.update(weighted_voting: true)
+    assert poll.reload.weighted_voting?
+  end
+
+  test "anonymous, STV, and time polls cannot enable vote weights" do
+    anonymous_poll = Poll.new(poll_params(anonymous: true, weighted_voting: true))
+    refute anonymous_poll.valid?
+    assert anonymous_poll.errors.added?(:weighted_voting, :invalid)
+
+    stv_poll = Poll.new(poll_params(poll_type: 'stv', stv_seats: 1, weighted_voting: true))
+    refute stv_poll.valid?
+    assert stv_poll.errors.added?(:weighted_voting, :invalid)
+
+    time_poll = Poll.new(poll_params(poll_type: 'meeting', weighted_voting: true))
+    refute time_poll.valid?
+    assert time_poll.errors.added?(:weighted_voting, :invalid)
+  end
+
+  test "STV polls need between one seat and one fewer than the candidates" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    assert Poll.new(stv_params.merge(stv_seats: 1)).valid?
+    assert Poll.new(stv_params.merge(stv_seats: 2)).valid?
+
+    [0, -1].each do |seats|
+      poll = Poll.new(stv_params.merge(stv_seats: seats))
+      refute poll.valid?, "#{seats} seats should be invalid"
+      assert poll.errors.added?(:stv_seats, :greater_than_or_equal_to, count: 1)
+    end
+
+    poll = Poll.new(stv_params.merge(stv_seats: 3))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 3)
+  end
+
+  test "STV polls only accept supported counting methods and quotas" do
+    stv_params = poll_params(poll_type: 'stv', poll_option_names: %w[Alice Bob Carol])
+
+    %w[scottish meek].each { |method| assert Poll.new(stv_params.merge(stv_method: method)).valid? }
+    %w[droop hare].each { |quota| assert Poll.new(stv_params.merge(stv_quota: quota)).valid? }
+
+    poll = Poll.new(stv_params.merge(stv_method: 'irish', stv_quota: 'imperiali'))
+    refute poll.valid?
+    assert poll.errors.added?(:stv_method, :inclusion)
+    assert poll.errors.added?(:stv_quota, :inclusion)
+  end
+
+  test "STV polls revalidate seats when candidates are removed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 2, poll_option_names: %w[Alice Bob Carol])
+    assert poll.persisted?
+
+    poll.poll_options.last.mark_for_destruction
+    refute poll.valid?
+    assert poll.errors.added?(:stv_seats, :less_than, count: 2)
+  end
+
+  test "an existing STV poll with invalid settings can still be closed" do
+    poll = create_poll(poll_type: 'stv', stv_seats: 1, poll_option_names: %w[Alice Bob])
+    poll.update_columns(stv_seats: 2)
+
+    PollService.close(poll: poll, actor: @admin)
+
+    assert poll.reload.closed_at
+  end
+
+  test "an existing anonymous poll rejects enabling vote weights" do
+    poll = create_poll
+    poll.update_columns(anonymous: true)
+
+    refute poll.reload.update(weighted_voting: true)
+    assert poll.errors.added?(:weighted_voting, :invalid)
+    refute poll.reload.weighted_voting?
+  end
+
+  test "direct polls can enable vote weights" do
+    poll = Poll.new(poll_params(topic: topics(:direct_topic), author: @admin, weighted_voting: true))
+
+    assert poll.valid?
+  end
+
+  test "enabling weights in a draft direct poll sets every voter to one" do
+    poll = Poll.create!(poll_params(topic: topics(:direct_topic), author: @admin, closing_at: nil))
+    stance = Stance.create!(poll: poll, participant: @admin, inviter: @admin)
+
+    poll.update!(weighted_voting: true)
+
+    assert_equal 1, stance.reload.weight
   end
 
   test "disallows closing dates in the past" do
@@ -351,6 +681,22 @@ class PollTest < ActiveSupport::TestCase
     poll.update!(closed_at: Time.current)
     assert poll.results_available?
     assert poll.results_visible?(voted: false)
+  end
+
+  test "scheduled anonymous polls must keep results hidden until closing" do
+    poll = create_poll(anonymous: true, opening_at: 3.days.from_now, hide_results: 'until_closed')
+    poll.hide_results = 'off'
+    assert_not poll.valid?
+    assert poll.errors.added?(:hide_results, :invalid)
+    assert_equal 'until_closed', poll.reload.hide_results
+  end
+
+  test "clearing the opening timestamp cannot unlock result visibility" do
+    poll = create_poll(hide_results: 'until_closed')
+    assert poll.opened?
+    poll.assign_attributes(opened_at: nil, hide_results: 'off')
+    assert_not poll.valid?
+    assert poll.errors.added?(:hide_results, :cannot_show_results_early)
   end
 
   test "assigns poll options" do
@@ -402,18 +748,18 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not increment decided_voters without a choice" do
+  test "does not increment voters_cast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.decided_voters.count } do
+    assert_no_difference -> { poll.voters_cast.count } do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
-  test "increments undecided_voters without a choice" do
+  test "increments voters_uncast without a choice" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.undecided_voters.count }, 1 do
+    assert_difference -> { poll.voters_uncast.count }, 1 do
       Stance.create!(poll: poll, participant: voter)
     end
   end
@@ -426,18 +772,18 @@ class PollTest < ActiveSupport::TestCase
     end
   end
 
-  test "cast vote increments decided_voters" do
+  test "cast vote increments voters_cast" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_difference -> { poll.decided_voters.count }, 1 do
+    assert_difference -> { poll.voters_cast.count }, 1 do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end
 
-  test "cast vote does not increment undecided voters" do
+  test "cast vote does not increment uncast votes" do
     poll = create_poll(group_id: @group.id, specified_voters_only: true)
     voter = users(:alien)
-    assert_no_difference -> { poll.undecided_voters.count } do
+    assert_no_difference -> { poll.voters_uncast.count } do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end

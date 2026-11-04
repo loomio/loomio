@@ -14,6 +14,7 @@ class StanceServiceTest < ActiveSupport::TestCase
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
       group_id: @group.id,
+      weighted_voting: true,
       poll_option_names: ['Agree', 'Disagree']
     }, actor: @admin)
   end
@@ -24,7 +25,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     reader = TopicReader.for(user: @user, topic: @poll.topic)
     reader.viewed!(@poll.topic.ranges)
 
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "I agree"
 
@@ -40,7 +41,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   test "visible stance topic item sends loud subscriber email without a notification row" do
     subscriber = users(:member)
     TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Visible response"
 
@@ -56,7 +57,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   test "visible blank stance is eventless and does not create subscription notification" do
     subscriber = users(:member)
     TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
 
     ActionMailer::Base.deliveries.clear
@@ -72,7 +73,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     subscriber = users(:member)
     TopicReader.for(user: subscriber, topic: @poll.topic).set_volume!(email: :loud, push: :quiet)
     @poll.update!(hide_results: :until_closed)
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Hidden response"
 
@@ -86,7 +87,7 @@ class StanceServiceTest < ActiveSupport::TestCase
 
   test "a hidden stance reason becomes a topic item only when the poll closes" do
     @poll.update!(hide_results: :until_closed)
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Reveal after close"
 
@@ -101,7 +102,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "eventless stance creation does not depend on notification creation" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
 
     NotificationService.stub(:create!, ->(**) { raise "notification creation is not expected" }) do
@@ -115,7 +116,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "an in-place stance edit does not create a notification" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     option = @poll.poll_options.first
     stance.choice = option.name
     stance.reason = "Initial response"
@@ -138,7 +139,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "rolls back stance creation when topic_item creation fails" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "Create a timeline item"
 
@@ -164,10 +165,10 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "invalid ballot update preserves the previous vote and result counts" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     agree = @poll.poll_options.find_by!(name: "Agree")
     StanceService.create(stance: stance.tap { |record| record.choice = "Agree" }, actor: @user)
-    counts_before = @poll.reload.stance_counts
+    counts_before = @poll.reload.scores_by_option
     topic_items_before = TopicItem.count
 
     updated_stance = StanceService.update(
@@ -179,7 +180,7 @@ class StanceServiceTest < ActiveSupport::TestCase
     assert_same stance, updated_stance
     assert_predicate updated_stance, :invalid?
     assert_equal({ agree.id.to_s => 1 }, stance.reload.option_scores)
-    assert_equal counts_before, @poll.reload.stance_counts
+    assert_equal counts_before, @poll.reload.scores_by_option
     assert_equal topic_items_before, TopicItem.count
   end
 
@@ -196,7 +197,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   test "sets topic_item parent to the poll created topic_item" do
     poll_created_topic_item = @poll.created_topic_item
 
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = @poll.poll_option_names.first
     stance.reason = "hello"
     topic_item = nil
@@ -206,15 +207,112 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "updates total_score on the poll" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     StanceService.create(stance: stance, actor: @user)
 
     assert @poll.reload.total_score >= 1
   end
 
+  test "copies membership weight to a new poll stance" do
+    membership = @group.membership_for(@user)
+    membership.update!(weight: 2)
+
+    poll = PollService.create(params: {
+      title: 'Weighted Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      weighted_voting: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+
+    assert_equal 2, poll.stances.latest.find_by!(participant: @user).weight
+  end
+
+  test "membership weight changes do not alter existing poll stances" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+
+    @group.membership_for(@user).update!(weight: 0)
+
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "poll admin sets stance weight before voting opens" do
+    poll = PollService.create(params: {
+      title: 'Draft Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      weighted_voting: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+
+    StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+
+    assert_equal 0, stance.reload.weight
+  end
+
+  test "stance weight can be changed after voting opens" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+    option = @poll.poll_options.find_by!(name: 'Agree')
+    assert_equal 1, option.reload.total_score
+
+    StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+
+    assert_equal 0, stance.reload.weight
+    assert_equal 0, option.reload.total_score
+  end
+
+  test "stance weight cannot be changed after voting closes" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    @poll.update_columns(closed_at: Time.current)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.set_weight(stance: stance, weight: 0, actor: @admin)
+    end
+
+    assert_equal 1, stance.reload.weight
+  end
+
+  test "voter cannot set their own stance weight" do
+    poll = PollService.create(params: {
+      title: 'Draft Poll',
+      poll_type: 'proposal',
+      closing_at: nil,
+      group_id: @group.id,
+      weighted_voting: true,
+      poll_option_names: ['Agree', 'Disagree']
+    }, actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @user)
+
+    assert_raises CanCan::AccessDenied do
+      StanceService.set_weight(stance: stance, weight: 0, actor: @user)
+    end
+  end
+
+  test "replacement stance preserves vote weight" do
+    stance = @poll.stances.latest.find_by!(participant: @user)
+    stance.update!(weight: 2, updated_at: 1.hour.ago)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: @user)
+
+    StanceService.update(
+      stance: stance,
+      actor: @user,
+      params: {
+        stance_choices_attributes: [{poll_option_id: @poll.poll_options.find_by!(name: 'Disagree').id}]
+      }
+    )
+
+    assert_equal 2, @poll.stances.latest.find_by!(participant: @user).weight
+  end
+
   test "redacts a stance reason" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     stance.reason = "This should be hidden"
     StanceService.create(stance: stance, actor: @user)
@@ -228,7 +326,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "does not allow a non-admin to redact a stance reason" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     stance.reason = "This should be hidden"
     StanceService.create(stance: stance, actor: @user)
@@ -241,7 +339,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "unredacts a stance reason" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     stance.reason = "This was hidden"
     StanceService.create(stance: stance, actor: @user)
@@ -251,11 +349,12 @@ class StanceServiceTest < ActiveSupport::TestCase
     StanceService.unredact(stance: stance, actor: @admin)
     assert_nil stance.reload.redacted_at
     assert_nil stance.redactor_id
+    ReindexSearchDocumentWorker.perform_now('Stance', stance.id)
     assert PgSearch::Document.exists?(searchable_type: 'Stance', searchable_id: stance.id)
   end
 
   test "does not allow a non-admin to unredact a stance reason" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     stance.reason = "This was hidden"
     StanceService.create(stance: stance, actor: @user)
@@ -269,7 +368,7 @@ class StanceServiceTest < ActiveSupport::TestCase
   end
 
   test "update cannot move a stance to another poll" do
-    stance = @poll.stances.undecided.find_by!(participant_id: @user.id, latest: true)
+    stance = @poll.stances.uncast.find_by!(participant_id: @user.id, latest: true)
     stance.choice = 'Agree'
     StanceService.create(stance: stance, actor: @user)
 

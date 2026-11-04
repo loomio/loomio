@@ -28,5 +28,24 @@ module.exports = {
     page.expectText('.context-panel__heading', 'Sam Rivera — Board chair')
     page.expectText('.context-panel__description', 'Why is this person suitable?')
     page.expectNoElement('.action-dock__button--announce_thread')
+  },
+
+  'member_loading_a_template_form_directly_can_notify_the_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_member_nomination_form')
+    page.expectText('.discussion-form', 'Who are you nominating, and for which position?')
+    page.expectElement('.discussion-form .tags-field__input')
+    page.expectText('.discussion-form .common-notify-fields', 'Dirty Dancing Shoes')
+  },
+
+  'nonmember_loading_a_template_form_directly_cannot_notify_the_group': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_nonmember_nomination_form')
+    page.expectText('.discussion-form', 'Who are you nominating, and for which position?')
+    page.pause(2000)
+    page.expectNoElement('.discussion-form .tags-field__input')
+    page.expectNoElement('.common-notify-fields')
   }
 }

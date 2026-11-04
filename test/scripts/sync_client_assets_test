@@ -7,8 +7,14 @@ trap 'rm -rf "$test_path"' EXIT
 
 assets_source_path="$test_path/source"
 assets_destination_path="$test_path/destination"
+ln -s "$assets_destination_path" "$test_path/vue"
+ln -s "$assets_destination_path/docs-screenshots" "$test_path/docs-screenshots"
 
 mkdir -p "$assets_source_path/assets" "$assets_destination_path/assets"
+mkdir -p "$assets_destination_path/docs-screenshots/fr"
+printf '%s\n' "translated screenshot" > "$assets_destination_path/docs-screenshots/fr/example.png"
+printf '%s\n' '{}' > "$assets_destination_path/docs-screenshots/.generation.json"
+touch -t 200001010000 "$assets_destination_path/docs-screenshots/fr/example.png" "$assets_destination_path/docs-screenshots/.generation.json"
 
 printf '%s\n' "new index" > "$assets_source_path/index.html"
 printf '%s\n' "new chunk" > "$assets_source_path/assets/new-hash.js"
@@ -32,5 +38,10 @@ grep -Fxq "new index" "$assets_destination_path/index.html"
 grep -Fxq "new chunk" "$assets_destination_path/assets/new-hash.js"
 grep -Fxq "old chunk" "$assets_destination_path/assets/old-hash.js"
 test ! -e "$assets_destination_path/assets/expired-hash.js"
+test -e "$assets_destination_path/docs-screenshots/fr/example.png"
+test -e "$assets_destination_path/docs-screenshots/.generation.json"
+grep -Fxq "old chunk" "$test_path/vue/assets/old-hash.js"
+grep -Fxq "new chunk" "$test_path/vue/assets/new-hash.js"
+grep -Fxq "translated screenshot" "$test_path/docs-screenshots/fr/example.png"
 
 echo "Client asset sync test passed"

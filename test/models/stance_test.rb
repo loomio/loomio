@@ -16,10 +16,50 @@ class StanceTest < ActiveSupport::TestCase
     }.merge(overrides)
   end
 
+  test "guest invitation is not redeemable after the user joins the poll group" do
+    guest = User.create!(name: "Invited voter", email: "invited-voter-#{SecureRandom.hex(4)}@example.test")
+    poll = PollService.create(params: poll_params(group_id: @group.id), actor: @admin)
+    stance = Stance.create!(poll: poll, participant: guest, inviter: @admin)
+
+    assert_includes Stance.redeemable, stance
+
+    @group.add_member!(guest)
+
+    refute_includes Stance.redeemable, stance
+  end
+
   test "allows no stance choices for polls" do
     poll = PollService.create(params: poll_params, actor: @admin)
     stance = Stance.new(poll: poll, participant: @admin)
     assert stance.valid?
+  end
+
+  test "vote weight is nonnegative and rounds to the column precision" do
+    poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
+    stance = poll.stances.latest.find_by!(participant: @admin)
+    stance.weight = 0
+
+    assert stance.valid?
+    stance.weight = 0.5
+    assert stance.valid?
+    stance.weight = '0.0001'
+    stance.save!
+    assert_equal 0, stance.reload.weight
+    stance.update!(weight: 1_000_001)
+    assert_raises ActiveRecord::StatementInvalid do
+      stance.update_columns(weight: -1)
+    end
+  end
+
+  test "unweighted stances clamp any supplied weight to one" do
+    poll = PollService.create(params: poll_params, actor: @admin)
+    stance = Stance.new(poll: poll, participant: @admin, weight: '2.33')
+
+    assert stance.valid?
+    assert_equal 1, stance.weight
+    stance.weight = -1
+    assert stance.valid?
+    assert_equal 1, stance.weight
   end
 
   test "does not allow a stance for an anonymous poll" do
@@ -69,7 +109,7 @@ class StanceTest < ActiveSupport::TestCase
   test "dot vote ballots reject negative scores and totals above the dot limit" do
     poll = PollService.create(params: poll_params(
       poll_type: "dot_vote",
-      dots_per_person: 3,
+      points_per_voter: 3,
       poll_option_names: %w[apple orange]
     ), actor: @admin)
 
@@ -83,7 +123,7 @@ class StanceTest < ActiveSupport::TestCase
       poll_type: "score",
       poll_option_names: %w[apple orange]
     ), actor: @admin)
-    poll.update_column(:min_score, -10)
+    poll.update_column(:score_min, -10)
 
     stance = cast_stance(poll.reload, [[poll.poll_options.first, -1]])
 
@@ -94,7 +134,7 @@ class StanceTest < ActiveSupport::TestCase
   test "rank ballots require the configured number of contiguous unique scores" do
     poll = PollService.create(params: poll_params(
       poll_type: "ranked_choice",
-      minimum_stance_choices: 3,
+      choice_count_min: 3,
       poll_option_names: %w[apple orange banana]
     ), actor: @admin)
     options = poll.poll_options
@@ -105,7 +145,7 @@ class StanceTest < ActiveSupport::TestCase
     assert_not cast_stance(poll, options.first(2).zip([2, 1])).valid?
   end
 
-  test "STV ballots allow partial rankings with contiguous unique scores" do
+  test "STV ballots allow partial rankings with contiguous unique scores but not blank ballots" do
     poll = PollService.create(params: poll_params(
       poll_type: "stv",
       poll_option_names: %w[apple orange banana]
@@ -113,21 +153,40 @@ class StanceTest < ActiveSupport::TestCase
     options = poll.poll_options
 
     assert cast_stance(poll, options.first(2).zip([1, 2])).valid?
-    assert cast_stance(poll, []).valid?
+    assert_not cast_stance(poll, []).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 9999])).valid?
     assert_not cast_stance(poll, options.first(2).zip([1, 1])).valid?
   end
 
   test "reason has a length validation" do
-    poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin, reason: "a" * 505, cast_at: Time.zone.now)
+    poll = PollService.create(params: poll_params(limit_reason_length: true), actor: @admin)
+    stance = cast_stance(poll, [[poll.poll_options.first, 1]])
+    stance.reason_format = "html"
+    stance.reason = "a" * 500
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    stance.reason += "a"
     assert_not stance.valid?
+    assert_includes stance.errors[:reason], I18n.t(:"poll_common.too_long")
+
+    poll.limit_reason_length = false
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    poll.limit_reason_length = true
+    stance.cast_at = nil
+    assert stance.valid?, stance.errors.full_messages.to_sentence
   end
 
   test "reason length validation counts like javascript string length" do
-    poll = PollService.create(params: poll_params, actor: @admin)
-    stance = Stance.new(poll: poll, participant: @admin, reason: "😄" * 251, cast_at: Time.zone.now)
+    poll = PollService.create(params: poll_params(limit_reason_length: true), actor: @admin)
+    stance = cast_stance(poll, [[poll.poll_options.first, 1]])
+    stance.reason_format = "html"
+    stance.reason = "😄" * 250
+    assert stance.valid?, stance.errors.full_messages.to_sentence
+
+    stance.reason += "😄"
     assert_not stance.valid?
+    assert_includes stance.errors[:reason], I18n.t(:"poll_common.too_long")
   end
 
   test "requires a reason for disagree and block options when configured" do
@@ -187,6 +246,14 @@ class StanceTest < ActiveSupport::TestCase
 
     poll.stance_reason_required = "required"
     assert_not stance_for(poll, icon: "agree").valid?
+    short_reason = stance_for(poll, icon: "agree", reason: "12345")
+    short_reason.reason_format = "html"
+    assert_not short_reason.valid?
+    short_reason.reason = "123456"
+    assert short_reason.valid?, short_reason.errors.full_messages.to_sentence
+    draft = stance_for(poll, icon: "agree")
+    draft.cast_at = nil
+    assert draft.valid?, draft.errors.full_messages.to_sentence
 
     poll.stance_reason_required = "disabled"
     assert stance_for(poll, icon: "disagree").valid?
@@ -194,24 +261,24 @@ class StanceTest < ActiveSupport::TestCase
 
   test "choice shorthand with string" do
     poll = PollService.create(params: poll_params(
-      maximum_stance_choices: 2,
+      choice_count_max: 2,
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: 'dog')
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: 'dog')
     poll.update_counts!
-    assert_equal [1, 0], poll.stance_counts
+    assert_equal [1, 0], poll.scores_by_option
   end
 
   test "choice shorthand with array" do
     poll = PollService.create(params: poll_params(
-      maximum_stance_choices: 2,
+      choice_count_max: 2,
       title: 'which pet?',
       poll_option_names: %w[dog cat]
     ), actor: @admin)
-    Stance.create!(poll: poll, participant: @admin, choice: ['dog', 'cat'])
+    poll.stances.latest.find_by!(participant: @admin).update!(choice: ['dog', 'cat'])
     poll.update_counts!
-    assert_equal [1, 1], poll.stance_counts
+    assert_equal [1, 1], poll.scores_by_option
   end
 
   private

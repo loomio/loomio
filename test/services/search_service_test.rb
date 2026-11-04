@@ -14,7 +14,7 @@ class SearchServiceTest < ActiveSupport::TestCase
   test "reindex_by_discussion_id creates a pg_search document for the discussion" do
     SearchService.reindex_by_discussion_id(@discussion.id)
 
-    assert PgSearch::Document.where(searchable_type: 'Discussion', searchable_id: @discussion.id).exists?
+    assert_equal [@discussion.id], PgSearch::Document.where(searchable_type: 'Discussion').pluck(:searchable_id)
   end
 
   test "reindex_by_discussion_id replaces an existing document" do
@@ -59,7 +59,7 @@ class SearchServiceTest < ActiveSupport::TestCase
     comment = comments(:public_discussion_comment)
     SearchService.reindex_by_comment_id(comment.id)
 
-    assert PgSearch::Document.where(searchable_type: 'Comment', searchable_id: comment.id).exists?
+    assert_equal [comment.id], PgSearch::Document.where(searchable_type: 'Comment').pluck(:searchable_id)
   end
 
   test "reindex_by_comment_id replaces an existing document" do
@@ -78,7 +78,7 @@ class SearchServiceTest < ActiveSupport::TestCase
   test "reindex_by_author_id creates pg_search documents for discussions authored by the user" do
     SearchService.reindex_by_author_id(@admin.id)
 
-    assert PgSearch::Document.where(author_id: @admin.id).exists?
+    assert_equal [@admin.id], PgSearch::Document.distinct.pluck(:author_id)
   end
 
   test "reindex_by_author_id clears previous documents before reindexing" do
@@ -109,7 +109,7 @@ class SearchServiceTest < ActiveSupport::TestCase
 
     SearchService.reindex_by_poll_id(poll.id)
 
-    assert PgSearch::Document.where(searchable_type: 'Poll', searchable_id: poll.id).exists?
+    assert_equal [poll.id], PgSearch::Document.where(searchable_type: 'Poll').pluck(:searchable_id)
   end
 
   test "rebuild_words retains established multilingual words" do

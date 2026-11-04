@@ -66,6 +66,14 @@ export const CustomTaskItem = TaskItem.extend({
     ]
   },
 
+  parseMarkdown(token, helpers) {
+    const node = this.parent(token, helpers)
+    // Markdown has no task identity. Allocate one per imported task rather
+    // than sharing the schema's default uid across the entire list.
+    node.attrs.uid = Math.floor(Math.random() * 90000000)
+    return node
+  },
+
   addNodeView() {
     return VueNodeViewRenderer(TaskItemComponent)
   },

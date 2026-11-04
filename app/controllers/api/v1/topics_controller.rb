@@ -47,7 +47,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   end
 
   def markdown
-    self.resource = load_and_authorize(:topic)
+    self.resource = load_and_authorize(:topic, :export)
     render json: {markdown: ThreadMarkdownService.render(topic: resource, user: current_user)}
   end
 
@@ -88,7 +88,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def tags
     load_resource
     TopicService.update_tags(topic: resource, tags: params[:tags], actor: current_user)
-    respond_ok
+    respond_with_resource
   end
 
   def pin
@@ -136,7 +136,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def history
     topic = load_and_authorize(:topic)
 
-    if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
+    if topic.has_anonymous_polls?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
       readers = TopicReader.joins(:user)

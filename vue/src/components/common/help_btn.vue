@@ -1,15 +1,23 @@
 <script setup lang="js">
-defineProps({
+import { useI18n } from 'vue-i18n';
+import { manualUrl } from '@/shared/helpers/manual_url';
+
+const { path, label } = defineProps({
   path: String,
   label: {
     type: String,
-    default: 'common.user_guide'
+    default: 'common.help'
+  },
+  variant: {
+    type: String,
+    default: 'plain'
   }
 });
+const { t, locale } = useI18n();
 </script>
 
 <template lang="pug">
-v-btn.help-link(variant="plain" :href="'https://www.loomio.com/docs/'+path" target="_blank")
-  span(v-t="label")
-  common-icon.ml-1(size="small" name="mdi-open-in-new")
+v-btn.help-link(:variant="variant" :href="manualUrl(path, locale)" target="_blank" rel="noopener noreferrer")
+  span {{ t(label) }}
+  common-icon.ml-2(:size="24" name="mdi-open-in-new" aria-hidden="true")
 </template>

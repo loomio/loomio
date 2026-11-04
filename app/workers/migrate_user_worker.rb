@@ -32,6 +32,7 @@ class MigrateUserWorker < ApplicationJob
     # destination. They are destroyed with the source user in RedactUserWorker.
     membership_requests: [:requestor_id, :responder_id],
     memberships: [:user_id, :inviter_id],
+    passkey_credentials: :user_id,
     omniauth_identities: :user_id,
     outcomes: :author_id,
     polls: :author_id,
@@ -97,10 +98,9 @@ class MigrateUserWorker < ApplicationJob
 
   def update_counters
     destination.reload.groups.each do |group|
-      group.update_memberships_count
-      group.update_admin_memberships_count
-      group.update_pending_memberships_count
+      group.update_membership_counts
     end
+    Group.update_org_members_count_for_group_ids(destination.groups.pluck(:id))
 
     [
       destination.authored_polls,

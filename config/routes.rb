@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     session_record = Session.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
     user = session_record&.user
 
-    user&.active_for_authentication? && user.is_admin?
+    user&.active? && user.is_admin?
   end
 
   constraints admin_session_constraint do
@@ -73,6 +73,8 @@ Rails.application.routes.draw do
         put :reactivate
         delete :delete_spam
         post :delete_identity
+        post :clear_email_suppressions
+        post :check_email_provider
       end
     end
 
@@ -91,7 +93,9 @@ Rails.application.routes.draw do
       post 'subscriptions/verify', to: 'subscriptions#verify'
     end
 
-    namespace :b2 do
+    # The user and server APIs share routes with their legacy b2 and b3 paths.
+    # Bump the numeric suffix when a release breaks one of these APIs.
+    user_api_routes = lambda do
       resources :groups, only: [:show, :index]
       resources :discussions, only: [:create, :show, :index, :update, :destroy]
       resources :polls, only: [:create, :show, :index, :update, :destroy]
@@ -108,7 +112,9 @@ Rails.application.routes.draw do
       end
     end
 
-    namespace :b3, only: [] do
+    server_api_routes = lambda do
+      resources :groups, only: [ :index ]
+      resources :memberships, only: [ :index, :create, :update, :destroy ]
       get    'users/identity/:identity_type/:uid',            to: 'users#show_by_identity'
       patch  'users/identity/:identity_type/:uid',            to: 'users#update_by_identity'
       delete 'users/identity/:identity_type/:uid',            to: 'users#destroy_by_identity'
@@ -116,7 +122,7 @@ Rails.application.routes.draw do
       post   'users/identity/:identity_type/:uid/reactivate', to: 'users#reactivate_by_identity'
       post   'users/identity/:identity_type/:uid/redact',     to: 'users#redact_by_identity'
 
-      resources :users, only: [:index, :show, :update, :destroy] do
+      resources :users, only: [ :index, :show, :create, :update, :destroy ] do
         member do
           post :deactivate
           post :reactivate
@@ -129,6 +135,11 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    namespace :user0, &user_api_routes
+    scope 'b2', module: 'user0', as: 'b2', &user_api_routes
+    namespace :server0, &server_api_routes
+    scope 'b3', module: 'server0', as: 'b3', &server_api_routes
 
     namespace :v1 do
       namespace :mobile do
@@ -186,6 +197,7 @@ Rails.application.routes.draw do
           get :subgroups
           post :export
           post :export_csv
+          post :export_html
           post 'upload_photo/:kind', action: :upload_photo
           delete 'remove_photo/:kind', action: :remove_photo
         end
@@ -197,13 +209,16 @@ Rails.application.routes.draw do
 
       resources :memberships, only: [:index, :create, :update, :destroy] do
         collection do
+          get :weights
+          patch :set_weights
+          patch :reset_weights
           post :user_name
           post :join_group
           get :for_user
           get :autocomplete, action: :index
           get :my_memberships
           get :invitables
-          get :undecided
+          get :uncast
         end
         member do
           post :make_admin
@@ -212,6 +227,7 @@ Rails.application.routes.draw do
           post :remove_delegate
           post :save_experience
           post :resend
+          get :notification_history
           patch :set_volume
         end
       end
@@ -239,14 +255,13 @@ Rails.application.routes.draw do
           get  :all_time_zones
           get  :me
           get  :groups
-          get  :email_status
-          get  :email_exists
           post :send_merge_verification_email
           get  :contactable
           get  :avatar_uploaded
           get  :email_api_key
           post :reset_email_api_key
           post :update_profile
+          post :set_time_zone
           post :set_volume
           post :upload_avatar
           post :use_provider_avatar
@@ -258,8 +273,17 @@ Rails.application.routes.draw do
       end
 
       resources :login_tokens, only: [:create]
+      resources :passkey_credentials, only: [:index, :create, :destroy] do
+        collection do
+          post :registration_options
+          post :authentication_options
+          post :authenticate
+        end
+      end
 
       resources :topic_items, only: :index do
+        patch :tags, on: :member
+        get :tagged, on: :collection
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
@@ -291,7 +315,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :received_emails, only: [:index] do
+      resources :pending_emails, only: [:index] do
         collection do
           get :aliases
           delete :destroy_alias
@@ -327,7 +351,7 @@ Rails.application.routes.draw do
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
-          get :receipts
+          get :votes
           post :remind
           delete :discard
           post :close
@@ -356,6 +380,7 @@ Rails.application.routes.draw do
           patch :uncast
           patch :redact
           patch :unredact
+          patch :set_weight
         end
 
         collection do
@@ -363,6 +388,7 @@ Rails.application.routes.draw do
           get :users
           get :my_stances
           post :revoke
+          patch :reset_weights
         end
       end
 
@@ -406,7 +432,7 @@ Rails.application.routes.draw do
       namespace(:sessions)        { get :unauthorized }
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create do
-        post :oauth, on: :collection
+        post :complete, on: :collection
       end
       # identities command route removed (dead code)
     end
@@ -444,6 +470,8 @@ Rails.application.routes.draw do
 
   namespace :email_actions do
     get :unsubscribe
+    get :catch_up
+    put :set_catch_up
     put :set_group_volume
     put :set_discussion_volume
     get 'mark_digest_as_read', action: 'mark_digest_as_read', as: :mark_digest_as_read
@@ -475,6 +503,7 @@ Rails.application.routes.draw do
   get 'g/:key/emails'                      => 'application#index', as: :group_emails
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
+  get 'g/:key/members/weights'             => 'application#index', as: :group_member_weights
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
   get 'g/:key/settings'                    => 'application#index', as: :group_settings
   get 'g/:key/previous_polls'              => 'application#index', as: :group_previous_polls

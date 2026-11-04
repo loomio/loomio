@@ -151,7 +151,7 @@ class StanceChoiceCleanupService
         INNER JOIN polls ON polls.id = poll_options.poll_id
         LEFT JOIN stance_choices ON stance_choices.poll_option_id = poll_options.id
         LEFT JOIN stances ON stances.id = stance_choices.stance_id
-        WHERE polls.voting_system = 0
+        WHERE polls.anonymous = false
         GROUP BY poll_options.id
       )
       SELECT expected.id

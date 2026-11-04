@@ -2,8 +2,8 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import { I18n }             from '@/i18n';
-import { addDays, startOfHour } from 'date-fns';
-import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
+import { addDays, startOfHour, differenceInHours } from 'date-fns';
+import { snakeCase, camelCase, cloneDeep, mapKeys, pick, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
 import Records from '@/shared/services/records';
 
 export default class PollModel extends BaseModel {
@@ -48,18 +48,18 @@ export default class PollModel extends BaseModel {
       customize: false,
       details: '',
       detailsFormat: 'html',
-      decidedVotersCount: 0,
+      voteCountCast: 0,
       defaultDurationInDays: null,
       specifiedVotersOnly: false,
       pollOptionNames: [],
       pollType: 'proposal',
       chartColumn: null,
       chartType: null,
-      minScore: null,
-      maxScore: null,
-      minimumStanceChoices: null,
-      maximumStanceChoices: null,
-      dotsPerPerson: null,
+      scoreMin: null,
+      scoreMax: null,
+      choiceCountMin: null,
+      choiceCountMax: null,
+      pointsPerVoter: null,
       canRespondMaybe: true,
       meetingDuration: null,
       limitReasonLength: true,
@@ -69,7 +69,7 @@ export default class PollModel extends BaseModel {
       imageFiles: null,
       attachments: [],
       linkPreviews: [],
-      notifyOnClosingSoon: 'undecided_voters',
+      notifyOnClosingSoon: 'voters_uncast',
       notifyOnOpen: true,
       results: [],
       meetingDuration: null,
@@ -87,15 +87,17 @@ export default class PollModel extends BaseModel {
       showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
-      votingSystem: 'stance',
       legacyAnonymousVoteReasonsCount: 0,
       anonymousVoterEligible: false,
       anonymousBallotSubmitted: false,
-      stanceCounts: [],
+      voterHasAccess: false,
+      weightedVoting: false,
+      scoresByOption: [],
       topicId: null,
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,
+      attachmentsAdminOnly: false,
       stvSeats: 1,
       stvMethod: 'scottish',
       stvQuota: 'droop',
@@ -135,11 +137,13 @@ export default class PollModel extends BaseModel {
       });
     }
 
+    clone.openingAt = null;
+    clone.openedAt = null;
     clone.closedAt = null;
     clone.createdAt = null;
     clone.updatedAt = null;
-    clone.decidedVotersCount = null;
-    clone.undecidedVotersCount = null;
+    clone.voteCountCast = null;
+    clone.voteCountUncast = null;
     return clone;
   }
 
@@ -156,6 +160,29 @@ export default class PollModel extends BaseModel {
         testAgainst: o.testAgainst
       };
     });
+  }
+
+  buildTemplate() {
+    // Copy reusable configuration only; voting records, results, and lifecycle
+    // timestamps belong to the source poll and must never become template data.
+    const template = Records.pollTemplates.build();
+    const settings = AppConfig.templateSettings.poll_template.filter(name => name !== 'poll_options');
+    const attrs = cloneDeep(pick(this, settings.map(camelCase)));
+    const topic = this.topic();
+    Object.assign(attrs, pick(topic, ['allowComments', 'allowReactions', 'commentLengthMax', 'attachmentsAdminOnly']));
+    attrs.tags = this.createdTopicItem().tags.slice();
+    attrs.groupId = this.groupId;
+    attrs.processName = this.title;
+    // Polls may leave election settings implicit; templates store their defaults.
+    ['stvSeats', 'stvMethod', 'stvQuota'].forEach(name => attrs[name] = this[name] ?? template[name]);
+    const openingAt = this.openedAt || this.openingAt;
+    attrs.defaultDurationInDays = openingAt && this.closingAt
+      ? Math.max(1, Math.ceil(differenceInHours(this.closingAt, openingAt) / 24))
+      : 7;
+    const optionSettings = AppConfig.templateSettings.poll_option.map(camelCase);
+    attrs.pollOptions = this.pollOptions().map(option => mapKeys(pick(option, optionSettings), (_, key) => snakeCase(key)));
+    template.update(attrs);
+    return template;
   }
 
   defaulted(attr) {
@@ -272,14 +299,10 @@ export default class PollModel extends BaseModel {
   }
 
   iHaveVoted() {
-    if (this.detachedAnonymousVoting()) {
+    if (this.anonymous) {
       return this.anonymousBallotSubmitted;
     }
     return this.myStanceId && this.myStance() && this.myStance().castAt;
-  }
-
-  detachedAnonymousVoting() {
-    return this.anonymous && this.votingSystem === 'anonymous_ballot';
   }
 
   showResults() {
@@ -299,10 +322,11 @@ export default class PollModel extends BaseModel {
   }
 
   iCanVote() {
-    if (this.detachedAnonymousVoting()) {
+    if (!this.voterHasAccess) { return false; }
+    if (this.anonymous) {
       return this.isVotable() && this.anonymousVoterEligible && !this.anonymousBallotSubmitted;
     }
-    return this.isVotable() && (this.myStance() || (!this.specifiedVotersOnly && this.membersInclude(Session.user())));
+    return this.isVotable() && !!this.myStance();
   }
 
   isBlank() {
@@ -317,13 +341,13 @@ export default class PollModel extends BaseModel {
     return Records.reactions.find({reactableId: this.id, reactableType: "Poll"});
   }
 
-  decidedVoterIds() {
+  votersCastIds() {
     return uniq(flatten(this.results.map(o => o.voter_ids)));
   }
 
   // who's voted?
-  decidedVoters() {
-    return Records.users.find(this.decidedVoterIds());
+  votersCast() {
+    return Records.users.find(this.votersCastIds());
   }
 
   outcome() {
@@ -396,12 +420,12 @@ export default class PollModel extends BaseModel {
   }
 
   hasVariableScore() {
-    return this.defaulted('minScore') !== this.defaulted('maxScore');
+    return this.defaulted('scoreMin') !== this.defaulted('scoreMax');
   }
 
   singleChoice() {
     let middle;
-    return this.defaulted('minimumStanceChoices') === (middle = this.defaulted('maximumStanceChoices')) && middle === 1;
+    return this.defaulted('choiceCountMin') === (middle = this.defaulted('choiceCountMax')) && middle === 1;
   }
 
   hasOptionIcon() {
@@ -429,6 +453,6 @@ export default class PollModel extends BaseModel {
 
   maxDepth() {
     const topic = this.topic();
-    return topic ? topic.maxDepth : 2;
+    return topic ? topic.maxDepth : 3;
   }
 };

@@ -2,8 +2,13 @@
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
+import { useI18n } from 'vue-i18n';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     pollOption: Object,
     poll: Object,
@@ -44,7 +49,7 @@ export default {
   },
   mounted() {
     this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
-    this.pollOption.testPercent = this.pollOption.testPercent || 50;
+    this.pollOption.testPercent = this.pollOption.testPercent ?? 50;
     this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
   },
 
@@ -102,7 +107,7 @@ form(v-on:submit.prevent='submit()')
 
       template(v-if="poll.config().allow_vote_share_requirement")
         v-divider.pb-4
-        .text-body-large.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+        .text-body-large.pb-2.poll-option-form__vote-share-heading(v-t="'poll_option_form.vote_share_requirement'")
         v-checkbox(
           v-model="testEnabled"
           :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"
@@ -131,7 +136,8 @@ form(v-on:submit.prevent='submit()')
           v-select(
             :disabled="!testEnabled"
             v-model="pollOption.testAgainst"
-            :items="[{title: $t('poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+            :items="[{title: t(poll.weightedVoting ? 'poll_option_form.vote_weight_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: t(poll.weightedVoting ? 'poll_option_form.eligible_vote_weight' : 'poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+            :item-props="item => ({class: 'poll-option-form__test-against--' + item.value})"
           )
 
     v-divider

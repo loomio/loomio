@@ -53,7 +53,9 @@ class EventTest < ActiveSupport::TestCase
     @group.add_member!(@user_membership_mute).set_volume!(email: :quiet, push: :quiet)
 
     # Webhook
-    @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
+    # WebMock handles delivery; use a public literal IP so inline publication
+    # jobs exercise the HTTP guard without waiting on real DNS lookups.
+    @webhook_url = "https://93.184.216.34/hook/#{SecureRandom.hex(4)}"
     WebMock.stub_request(:post, @webhook_url).to_return(status: 200)
     SafeHttpService.stub(:safe_to_fetch?, true) do
       @webhook = Chatbot.create!(
@@ -391,8 +393,8 @@ class EventTest < ActiveSupport::TestCase
     assert_equal [ @user_thread_loud.id, @user_thread_normal.id ].sort, emailed_ids.sort
   end
 
-  test "poll_closing_soon notify_on_closing_soon undecided_voters" do
-    @poll.update!(notify_on_closing_soon: 'undecided_voters')
+  test "poll_closing_soon notify_on_closing_soon voters_uncast" do
+    @poll.update!(notify_on_closing_soon: 'voters_uncast')
     Stance.create!(poll: @poll, cast_at: Time.current, choice: 'Agree', participant: @user_thread_loud)
     Stance.create!(poll: @poll, participant: @user_thread_normal)
 
@@ -500,7 +502,7 @@ class EventTest < ActiveSupport::TestCase
     assert_not Notification.about(stance).exists?(kind: "stance_created")
 
     publish_count = 0
-    MessageChannelService.stub(:publish_models, ->(*) { publish_count += 1 }) do
+    MessageChannelService.stub(:publish_serialized_records, ->(*, **) { publish_count += 1 }) do
       PublishLiveUpdateTopicItemWorker.perform_now(topic_item.id)
     end
     assert_operator publish_count, :>, 0

@@ -82,38 +82,25 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert Subscription.exists?(subscription.id)
   end
 
-  test "group deletion cascades metadata while preserving live and unassigned records" do
+  test "group deletion cascades pending approvals while preserving other sources" do
     group = groups(:group)
-    removed_group = Group.create!(name: "Removed group", creator: @user, group_privacy: 'secret')
-    models = [ReceivedEmail, Tag]
-    records = models.map do |model|
-      attributes = { group_id: removed_group.id }
-      attributes[:name] = "orphan #{@hex}" if model == Tag
-      orphan = model.find(model.insert_all!([attributes]).rows.first.first)
-      live = model.create!(attributes.merge(group_id: group.id))
-      [orphan, live]
-    end
-    unassigned_email = ReceivedEmail.create!
-    email = records[0].first
-    tag = records[1].first
-    tagging_id = Tagging.insert_all!([{ tag_id: tag.id, taggable_type: 'Group', taggable_id: group.id }]).rows.first.first
-    blob = ActiveStorage::Blob.create!(key: "orphan-email-#{@hex}", filename: 'message.txt', byte_size: 0, checksum: 'empty', service_name: ActiveStorage::Blob.service.name)
-    attachment_id = ActiveStorage::Attachment.insert_all!([{ name: 'attachments', record_type: 'ReceivedEmail', record_id: email.id, blob_id: blob.id, created_at: Time.current }]).rows.first.first
+    removed_group = Group.create!(name: 'Removed group', creator: @user, group_privacy: 'secret')
+    removed = create_pending_email(group: removed_group, headers: {from: 'unknown@example.test'})
+    live = create_pending_email(group: group, headers: {from: 'unknown@example.test'})
+    blocked = create_pending_email(group: group, headers: {from: 'blocked@example.test'})
+    blocked.blocked!
+    tag = Tag.create!(group: removed_group, name: "orphan #{@hex}")
+    tagging_id = Tagging.insert_all!([{tag_id: tag.id, taggable_type: 'Group', taggable_id: group.id}]).rows.first.first
 
     removed_group.destroy!
-    records.each { |orphan, _| assert_not orphan.class.exists?(orphan.id) }
-    assert_not Tagging.exists?(tagging_id)
-
     CleanupService.delete_orphan_records
 
-    records.each do |orphan, live|
-      assert_not orphan.class.exists?(orphan.id)
-      assert live.class.exists?(live.id)
-    end
-    assert ReceivedEmail.exists?(unassigned_email.id)
-    assert_not Tagging.exists?(tagging_id)
-    assert_not ActiveStorage::Attachment.exists?(attachment_id)
-    assert ActiveStorage::Blob.exists?(blob.id)
+    refute PendingEmail.exists?(removed.id)
+    assert ActionMailbox::InboundEmail.exists?(removed.inbound_email_id)
+    assert PendingEmail.exists?(live.id)
+    assert PendingEmail.exists?(blocked.id)
+    refute Tag.exists?(tag.id)
+    refute Tagging.exists?(tagging_id)
     assert Group.exists?(group.id)
   end
 

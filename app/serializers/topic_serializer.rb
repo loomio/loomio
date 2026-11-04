@@ -5,10 +5,11 @@ class TopicSerializer < ApplicationSerializer
              :replies_count,
              :ranges,
              :max_depth,
-             :allow_concurrent_polls,
+             :polls_one_at_a_time,
              :allow_comments,
              :allow_reactions,
              :comment_length_max,
+             :attachments_admin_only,
              :active_polls_count,
              :last_activity_at,
              :discarded_at,
@@ -17,11 +18,10 @@ class TopicSerializer < ApplicationSerializer
              :pinned_at,
              :topicable_id,
              :topicable_type,
-             :members_count,
-             :anonymous_polls_count,
-             :closed_polls_count,
+             :has_anonymous_polls,
              :seen_by_count,
-             :tags
+             :tags,
+             :has_tagged_replies
 
   # Reader attributes
   attributes :topic_reader_id,
@@ -64,6 +64,10 @@ class TopicSerializer < ApplicationSerializer
 
   def replies_count
     object.items_count - 1
+  end
+
+  def has_anonymous_polls
+    cache_fetch(:anonymous_polls_by_topic_id, object.id) { object.has_anonymous_polls? }
   end
 
   def ranges

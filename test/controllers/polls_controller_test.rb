@@ -22,6 +22,37 @@ class PollsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  test "shows a poll page titled with the poll title" do
+    sign_in @user
+    get :show, params: { key: @poll.key }
+    assert_response 200
+    assert_includes response.body, "<title>#{@poll.title}</title>"
+  end
+
+  test "does not show a poll page to users who cannot see the poll" do
+    @discussion.topic.update!(private: true)
+    sign_in @alien
+    get :show, params: { key: @poll.key }
+    assert_response 403
+    assert_not_includes response.body, @poll.title
+  end
+
+  test "former group members cannot open or export their own private polls" do
+    @discussion.topic.update!(private: true)
+    MembershipService.revoke(membership: @group.membership_for(@user), actor: @user)
+    sign_in @user.reload
+
+    get :show, params: {key: @poll.key}
+    assert_response :forbidden
+    assert_not_includes response.body, @poll.title
+
+    %i[html csv blt].each do |format|
+      get :export, params: {key: @poll.key}, format: format
+      assert_response :redirect
+      assert_not_includes response.body, @poll.title
+    end
+  end
+
   test "displays html export" do
     sign_in @user
     get :export, params: { key: @poll.key }
@@ -34,6 +65,27 @@ class PollsControllerTest < ActionController::TestCase
     get :export, params: { key: @poll.key }, format: :csv
     assert_response 200
     assert_includes response.body, @poll.title
+  end
+
+  test 'until-vote HTML and CSV exports include votes before the reader votes' do
+    @poll.update!(hide_results: 'until_vote')
+    voter = @poll.stances.latest.find_by!(participant_id: @user.id)
+    voter.choice = @poll.poll_option_names.first
+    voter.reason = 'Export before voting marker'
+    StanceService.create(stance: voter, actor: @user)
+    @group.add_member!(@alien)
+    sign_in @alien
+
+    [:html, :csv].each do |format|
+      get :export, params: {key: @poll.key}, format: format
+      assert_response :success
+      assert_includes response.body, 'Export before voting marker'
+    end
+
+    @poll.update!(hide_results: 'until_closed')
+    get :export, params: {key: @poll.key}, format: :csv
+    assert_response :redirect
+    refute_includes response.body, 'Export before voting marker'
   end
 
   test "unsubscribe token does not authorize a private poll export" do

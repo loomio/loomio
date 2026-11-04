@@ -19,8 +19,13 @@ export default class TopicModel extends BaseModel {
     this.unlock = this.unlock.bind(this);
     this.discard = this.discard.bind(this);
     this.saveVolume = this.saveVolume.bind(this);
+    this.readRangesPending = [];
     this.updateReadRanges = throttle(function() {
-      return Records.topics.remote.patchMember(this.id, 'mark_as_read', {ranges: RangeSet.serialize(this.readRanges)});
+      // Submit only this viewing batch: historical read ranges must not clear
+      // new notifications about other items that have not been revisited.
+      const ranges = RangeSet.reduce(this.readRangesPending);
+      this.readRangesPending = [];
+      return Records.topics.remote.patchMember(this.id, 'mark_as_read', {ranges: RangeSet.serialize(ranges)});
     }, 2000);
   }
 
@@ -32,10 +37,11 @@ export default class TopicModel extends BaseModel {
       readRanges: [],
       maxDepth: 3,
       newestFirst: false,
-      allowConcurrentPolls: false,
+      pollsOneAtATime: false,
       allowComments: true,
       allowReactions: true,
       commentLengthMax: null,
+      attachmentsAdminOnly: false,
       activePollsCount: 0,
       lastActivityAt: null,
       topicableId: null,
@@ -45,6 +51,7 @@ export default class TopicModel extends BaseModel {
       recipientChatbotIds: [],
       recipientEmails: [],
       tags: [],
+      hasTaggedReplies: false,
       selectedTopicItemIds: [],
       discardedAt: null,
       lockedAt: null,
@@ -96,9 +103,14 @@ export default class TopicModel extends BaseModel {
   }
 
   markAsRead(id) {
-    if (this.hasRead(id)) { return; }
-    this.readRanges.push([id, id]);
-    this.readRanges = RangeSet.reduce(this.readRanges);
+    // A new reaction can notify us about an item whose content is already read.
+    if (this.hasRead(id) && !Records.notifications.unreadForTopicItem(this.id, id).length) { return; }
+    if (!this.hasRead(id)) {
+      this.readRanges.push([id, id]);
+      this.readRanges = RangeSet.reduce(this.readRanges);
+    }
+    this.readRangesPending.push([id, id]);
+    Records.notifications.viewedForTopicItem(this.id, id);
     return this.updateReadRanges();
   }
 

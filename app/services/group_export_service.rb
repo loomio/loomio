@@ -13,6 +13,35 @@ class GroupExportService
     stance_choices
   ].freeze
 
+  # Old archives include these derived fields. Ignore them after their columns
+  # are retired; retained counts are rebuilt from the records actually imported.
+  COUNTER_COLUMNS_RETIRED = {
+    'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
+    'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+    'polls' => %w[voters_count undecided_voters_count none_of_the_above_count stance_counts],
+    'tags' => %w[taggings_count],
+    'users' => %w[bounces_count complaints_count]
+  }.freeze
+
+  # Archives from earlier releases use the column names before these renames.
+  POLL_SETTING_COLUMNS_RENAMED = {
+    'min_score' => 'score_min',
+    'max_score' => 'score_max',
+    'minimum_stance_choices' => 'choice_count_min',
+    'maximum_stance_choices' => 'choice_count_max',
+    'dots_per_person' => 'points_per_voter'
+  }.freeze
+  COLUMNS_RENAMED = {
+    'polls' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_templates' => POLL_SETTING_COLUMNS_RENAMED,
+    'poll_options' => {
+      'voter_count' => 'vote_count',
+      'voter_scores' => 'scores_by_voter',
+      'voter_weight_total' => 'vote_weight',
+      'score_counts' => 'vote_counts_by_score'
+    }
+  }.freeze
+
   RELATIONS = %w[
     all_users
     all_topic_items
@@ -35,12 +64,14 @@ class GroupExportService
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
-    poll_stance_receipts
     topic_readers
     comments
   ]
 
   JSON_PARAMS = {
+    # Delivery transport identity belongs to the sending instance. Reusing it
+    # after import can conflict with existing IDs.
+    notification_deliveries: {except: %w[email_message_id provider_message_id]},
     groups:      {except: [:token], methods: []},
     users:       {except: [:api_key,
                            :password_digest,
@@ -121,7 +152,6 @@ class GroupExportService
       anonymous_poll_voters: %w[poll_id],
       comments: %w[parent],
       topics: %w[topicable],
-      stance_receipts: %w[poll_id],
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
@@ -131,7 +161,6 @@ class GroupExportService
     },
     users: {
       anonymous_poll_voters: %w[voter_id inviter_id],
-      stance_receipts: %w[voter_id inviter_id],
       topic_items: %w[itemable user_id],
       discussions: %w[author_id discarded_by],
       discussion_templates: %w[author_id discarded_by hider_id],
@@ -208,7 +237,6 @@ class GroupExportService
       outcomes,
       stances,
       StanceChoice.where(stance_id: stances.select(:id)),
-      StanceReceipt.where(poll_id: polls.select(:id)),
       topic.items,
       topic.topic_readers,
       comments
@@ -354,6 +382,9 @@ class GroupExportService
       datas = URI.parse(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
     end
 
+    # Older group archives can contain receipts. Identified stances and migrated
+    # anonymous electorates are the supported participation records now.
+    datas.reject! { |data| data['table'] == 'stance_receipts' }
     datas_by_table = datas.group_by { |data| data['table'] }
     tables = datas_by_table.keys - ['attachments']
     # Archive row order is not a dependency contract. Restore known parent tables
@@ -369,42 +400,94 @@ class GroupExportService
       migrate_ids = build_migrate_ids(datas_by_table, tables)
       existing_user_ids = User.where(id: migrate_ids['users']&.values || []).pluck(:id)
       existing_tag_ids = Tag.where(id: migrate_ids['tags']&.values || []).pluck(:id)
-
-      tables.each do |table|
-        klass = table.classify.constantize
-        pk = klass.primary_key
-        inserted_tag_ids = Set.new
-        datas_by_table[table].each do |data|
-          old_id = data['record'][pk]
-          new_id = migrate_ids[table][old_id]
-          next if table == 'users' && existing_user_ids.include?(new_id)
-          next if table == 'tags' && existing_tag_ids.include?(new_id)
-          next if table == 'tags' && !inserted_tag_ids.add?(new_id)
-
-          attrs = data['record'].deep_dup
-          translate_foreign_keys!(attrs, table, migrate_ids)
-          attrs[pk] = new_id if pk
-          translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'
-          record = klass.new(attrs)
-          prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
-          klass.import([record], validate: false)
-        end
+      membership_user_ids = datas_by_table.fetch('memberships', []).map do |data|
+        resolve_id('users', data['record']['user_id'], migrate_ids)
       end
+      User.where(id: membership_user_ids).order(:id).with_write_lock(:id) do
 
-      # if tables.include?('attachments')
-      #   datas.each do |data|
-      #     next unless (data['table'] == 'attachments')
-      #     table = data['record']['record_type'].tableize
-      #     new_id = migrate_ids[table][data['record']['record_id']]
-      #     DownloadAttachmentWorker.perform_later(data['record'], new_id)
-      #   end
-      # end
+        tables.each do |table|
+          klass = table.classify.constantize
+          pk = klass.primary_key
+          inserted_tag_ids = Set.new
+          datas_by_table[table].each do |data|
+            old_id = data['record'][pk]
+            new_id = migrate_ids[table][old_id]
+            next if table == 'users' && existing_user_ids.include?(new_id)
+            next if table == 'tags' && existing_tag_ids.include?(new_id)
+            next if table == 'tags' && !inserted_tag_ids.add?(new_id)
 
-      datas.each do |data|
-        if data['table'] == 'polls'
-          new_id = migrate_ids['polls'][data['record']['id']]
-          Poll.find(new_id).update_counts!
-          Poll.find(new_id).stances.each(&:update_option_scores!)
+            attrs = data['record'].deep_dup
+            attrs.except!(*COUNTER_COLUMNS_RETIRED.fetch(table, []))
+            COLUMNS_RENAMED.fetch(table, {}).each do |before, after|
+              attrs[after] = attrs.delete(before) if attrs.key?(before)
+            end
+            if %w[polls poll_templates].include?(table) && attrs['notify_on_closing_soon'] == 'undecided_voters'
+              attrs['notify_on_closing_soon'] = 'voters_uncast'
+            end
+            if %w[notifications discussion_templates].include?(table)
+              attrs['recipient_audience'] = {
+                'decided_voters' => 'voters_cast',
+                'undecided_voters' => 'voters_uncast'
+              }.fetch(attrs['recipient_audience'], attrs['recipient_audience'])
+            end
+            translate_foreign_keys!(attrs, table, migrate_ids)
+            attrs[pk] = new_id if pk
+            translate_notification_payload!(attrs, migrate_ids) if table == 'notifications'
+            record = klass.new(attrs)
+            prepare_record_for_import!(record, table, data['record'], klass, reset_keys)
+            klass.import([record], validate: false)
+          end
+        end
+
+        # if tables.include?('attachments')
+        #   datas.each do |data|
+        #     next unless (data['table'] == 'attachments')
+        #     table = data['record']['record_type'].tableize
+        #     new_id = migrate_ids[table][data['record']['record_id']]
+        #     DownloadAttachmentWorker.perform_later(data['record'], new_id)
+        #   end
+        # end
+
+        datas.each do |data|
+          if data['table'] == 'polls'
+            new_id = migrate_ids['polls'][data['record']['id']]
+            Poll.find(new_id).update_counts!
+            Poll.find(new_id).stances.each(&:update_option_scores!)
+          end
+        end
+
+        # Imports bypass callbacks and omit records that cannot be exported
+        # (including open anonymous polls). Rebuild from the imported records
+        # instead of retaining the source's counts for those omitted records.
+        imported_memberships = Membership.where(id: migrate_ids['memberships']&.values || [])
+        group_ids = (migrate_ids['groups']&.values || []) + imported_memberships.distinct.pluck(:group_id)
+        Group.where(id: group_ids).order(:id).each do |group|
+          group.update_membership_counts
+          group.update_content_counts
+        end
+        Group.update_org_members_count_for_group_ids(group_ids)
+        User.update_membership_counts_for_ids((migrate_ids['users']&.values || []) + membership_user_ids)
+        topic_ids = migrate_ids['topics']&.values || []
+        Topic.where(id: topic_ids).order(:id).each do |topic|
+          topic.recount_active_polls!
+          RecordCounts.recount!(topic) { { seen_by_count: topic.topic_readers.where.not(last_read_at: nil).count } }
+        end
+        legacy_root_ids = datas.filter_map do |data|
+          next unless data['table'] == 'topic_items' && !data['record'].key?('tags')
+          next unless %w[new_discussion poll_created].include?(data['record']['kind'])
+
+          migrate_ids.fetch('topic_items')[data['record']['id']]
+        end
+        TopicItem.where(id: legacy_root_ids).update_all(tags: Arel.sql(
+          "COALESCE((SELECT topics.tags FROM topics WHERE topics.id = topic_items.topic_id AND topics.topicable_type = topic_items.itemable_type AND topics.topicable_id = topic_items.itemable_id), ARRAY[]::varchar[])")) if legacy_root_ids.any?
+        TagService.refresh_topic_tags!(topic_ids)
+        TopicItem.where(topic_id: topic_ids).update_all(child_count: Arel.sql(
+          '(SELECT COUNT(*) FROM topic_items children WHERE children.parent_id = topic_items.id)'))
+        # Revision history is not part of ordinary group archives. Count any
+        # versions actually restored instead of advertising missing revisions.
+        [Discussion, Comment, Outcome].each do |model|
+          model.where(id: migrate_ids[model.table_name]&.values || []).update_all(versions_count: Arel.sql(
+            "(SELECT COUNT(*) FROM versions WHERE item_type = #{model.connection.quote(model.name)} AND item_id = #{model.quoted_table_name}.id)"))
         end
       end
     end

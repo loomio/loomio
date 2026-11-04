@@ -139,6 +139,8 @@ uk:
     manage_subscription: Керувати підпискою
     amount: Сума
   loomio_tags:
+    show_tags_from_other_groups: Покажіть теги з інших груп
+    parent_group_and_subgroups_in_this_organization: Батьківська група та підгрупи цієї організації
     all_tags: Всі мітки
     tags: Мітки
     apply_tags: Застосувати мітки
@@ -152,7 +154,7 @@ uk:
     destroy_tag: Видалити мітку
     destroy_helptext: Цю мітку буде видалено з усіх ланцюжків у групі. Ви впевнені?
     helptext: Мітки дозволяють класифікувати розмови та легко знаходити їх пізніше
-    discussions_count_singular: "(%{count} потік)"
+    discussions_count_singular: "(%{count} тема)"
     discussions_count_plural: "(%{count} тем)"
     tag_created: Мітку збережено
     tag_destroyed: Мітку видалено
@@ -175,17 +177,15 @@ uk:
     only_show_tags_in_this_group: Показувати лише теги в цій групі
   poll_types:
     proposal: пропозиція
-    count: вибрати в
-    check: перевірка сенсу
+    count: запис охочих
+    check: перевірка думок
     poll: опитування
-    dot_vote: відбіркове голосування
+    dot_vote: розподіл балів
     meeting: опитування щодо часу
     ranked_choice: ранговий вибір
     score: оціночне опитування
     question: раунд питань
-    stv: Вибори на СТВ
-  timezones:
-    local: За місцевим часом (%{value})
+    stv: вибори за STV
   common:
     value: "%{value}"
     admin_menu: Меню адміністратора
@@ -248,6 +248,7 @@ uk:
       open: Відкрита
       closed: Закрита
       private: Приватна
+      parent_members: Видима батьківській групі
       secret: Таємна
     selected: Вибрані
     today: сьогодні
@@ -275,7 +276,7 @@ uk:
       back: Назад
       next: Наступна
       close: Закрити
-      reopen: Відновити
+      reopen: Відкрити знову
       save: Зберегти
       move: Перемістити
       save_changes: Зберегти зміни
@@ -340,10 +341,11 @@ uk:
       unredact: Відновити
       export_json: Експортувати JSON
       import_json: Імпорт JSON
+      save_as_template: Зберегти як шаблон
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
-    thread: Нитка
+    thread: Тема
     commercial: Комерційний
     nonprofit: Некомерційна організація
     opening_in: Відкриття %{time}
@@ -361,12 +363,19 @@ uk:
       flash: Лист для підтвердження надіслано!
       helptext_and_signout: Ви можете об’єднати обліковий запис <strong>%{sourceEmail}</strong> з обліковим записом <strong>%{targetEmail}</strong> . Натисніть «Підтвердити», і на адресу %{targetEmail} буде надіслано електронний лист із підтвердженням, щоб розпочати процес. Ви вийдете з системи, щоб мати змогу увійти як цільовий обліковий запис для завершення об’єднання.
       flash_and_signout: Лист із підтвердженням надіслано на адресу %{targetEmail}. Ви вийшли з системи, тож можете увійти як цільовий обліковий запис, щоб завершити об’єднання.
+      generic_helptext: Введіть адресу електронної пошти іншого облікового запису. Якщо такий обліковий запис існує, Loomio надішле йому електронного листа з інструкціями для підтвердження об’єднання.
+      email_label: Інша електронна адреса облікового запису
+      send_verification: Надіслати електронний лист з підтвердженням
+      generic_flash_and_signout: Якщо обліковий запис використовує цю адресу електронної пошти, було надіслано електронний лист із підтвердженням. Ви вийшли з системи, тож можете продовжити роботу з іншим обліковим записом.
+      destination_helptext: Цей обліковий запис (%{sourceEmail}) буде об’єднано з обліковим записом призначення. Введіть адресу електронної пошти облікового запису призначення. Якщо вона існує, Loomio надішле на цю адресу електронного листа для підтвердження об’єднання.
+      destination_email_label: Електронна адреса цільового облікового запису
     email_taken: Перепрошую, але ця електронна адреса вже пов’язана з іншим користувачем. Ця адреса належить вам?
     find_out_more: Дізнатися більше.
     placeholder_modal_text: |+
       <p>Якщо ви хочете об’єднати два облікові записи, просто введіть відповідну адресу електронної пошти (що належить іншому обліковому запису) у поле електронної пошти на сторінці профілю та дотримуйтесь інструкцій, що з’явиться.</p>
       <p>Потрібна допомога? <a href="/contact" target="_blank">Зв'яжіться з нами</a>.
 
+    email_may_belong_to_another_account: Якщо ця адреса належить іншому обліковому запису, ви можете об’єднати облікові записи
   emoji_picker:
     search: Пошук
     common: Часто використовується
@@ -465,7 +474,7 @@ uk:
     loud_label: Всі оновлення
     normal_label: Оголошення
     quiet_label: Без поштових сповіщень
-    mute_label: Беззвучно
+    mute_label: Вимкнути звук
     saved: Налаштування сповіщень оновлено
     discussion:
       loud_description: Вам буде надіслано сповіщення поштою про всі оновлення в цій темі.
@@ -764,12 +773,6 @@ uk:
     revoke_admin: Відкликати адміністратора
     make_delegate: Делегувати
     revoke_delegate: Відкликати делегата
-  notification_models:
-    comment: прокоментувати в
-    poll: 'опитування:'
-    outcome: 'висновок:'
-    stance: 'голосування:'
-    discussion: 'обговорення:'
   notifications:
     header: Сповіщення
     no_notifications: У Вас нема жодних сповіщень
@@ -785,7 +788,7 @@ uk:
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
       outcome_announced: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_created: "%{actor} поділився результатом %{poll_type}: %{title}"
-      outcome_updated: "%{actor} оновив результат %{poll_type}: %{title}"
+      outcome_updated: "%{actor} оновив висновок %{poll_type}: %{title}"
       outcome_review_due: 'Настав час переглянути результати: %{title}'
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
@@ -850,7 +853,7 @@ uk:
       discussion_closed: "%{actor} закрив обговорення"
       new_discussion: "%{actor} розпочав обговорення"
       new_comment: "%{actor} прокоментував в обговоренні"
-      outcome_updated: "%{actor} оновив результат"
+      outcome_updated: "%{actor} оновив висновок"
       thread_locked: "%{actor} заблокував тему"
       membership_request_declined: Ваш запит на приєднання до %{title} було відхилено
     hints:
@@ -870,17 +873,17 @@ uk:
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
       new_delegate: "%{actor} зробив вас делегатом з правом голосу в %{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'Результат %{poll_type}: %{title}'
-      outcome_created: 'Результат %{poll_type}: %{title}'
-      outcome_updated: 'Результат %{poll_type} оновлено: %{title}'
-      outcome_review_due: 'Час переглянути результат: %{title}'
+      outcome_announced: 'Висновок %{poll_type}: %{title}'
+      outcome_created: 'Висновок %{poll_type}: %{title}'
+      outcome_updated: 'Висновок %{poll_type} оновлено: %{title}'
+      outcome_review_due: 'Час переглянути висновок: %{title}'
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} оновив %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрито: %{title}"
-      poll_expired_author: 'Опублікувати результат: %{title}'
+      poll_expired_author: 'Опублікуйте висновок: %{title}'
       poll_option_added: "%{actor} додав опції до %{title}"
       poll_reopened: 'Голосування продовжено: %{title}'
       poll_reminder: "%{actor} нагадує вам проголосувати за %{title}"
@@ -983,13 +986,13 @@ uk:
     new_discussion: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_announced: "%{name} запросив(ла) %{length} людей до теми:"
     poll_created: "%{name} запросив(ла) %{length} людей до голосування:"
-    outcome_created: "%{name} поширив результат з %{length} людьми:"
-    outcome_announced: "%{name} поширив результат з %{length} людьми:"
+    outcome_created: "%{name} поділився висновком із %{length} людьми:"
+    outcome_announced: "%{name} поділився висновком із %{length} людьми:"
     announcement_created: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_edited: "%{name} відредагував(ла) тему, повідомивши %{length} людей:"
     poll_edited: "%{name} відредагував(ла) опитування, повідомивши %{length} людей:"
-    outcome_edited: "%{name} відредагував(ла) результат, повідомивши %{length} людей:"
-    outcome_updated: "%{name} відредагував(ла) результат, повідомивши %{length} людей:"
+    outcome_edited: "%{name} відредагував(ла) висновок, повідомивши %{length} людей:"
+    outcome_updated: "%{name} відредагував(ла) висновок, повідомивши %{length} людей:"
     poll_closing_soon: 'Нагадування про завершення опитування від %{name} сповістило %{length} людей:'
     poll_reminder: "%{name} нагадав %{length} людям проголосувати:"
     audiences:
@@ -997,10 +1000,10 @@ uk:
       everyone_in_the_group: Всі в групі
       topic: Усім в темі
       voters: Усім запрошеним до голосування
-      decided_voters: Усім, хто голосував
-      undecided_voters: Виборцям, які не визначилися
       non_voters: Учасників %{name} ще не запросили
       delegates_of_group: Делегати %{name}
+      everyone_who_voted: Усі, хто проголосували
+      people_who_have_not_voted: Ті, хто ще не проголосували
     form:
       group_has_no_members_yet: Ви єдиний учасник вашої групи. Можливо, ви захочете запросити кількох людей до своєї групи, перш ніж розпочинати ланцюжок або приймати рішення.
       invite_people_to_evaluate_loomio: Запросіть кількох людей до вашої групи Loomio, щоб разом прийняти рішення
@@ -1042,7 +1045,7 @@ uk:
         title: Повідомити про зміни
         helptext: Кого б ви хотіли повідомити про це оновлення?
       outcome_announced:
-        title: Поширити результат
+        title: Поширити висновок
         helptext: Підсумуйте результати процесу, включаючи будь-яке знайдене розуміння або виявлені проблеми.
       anyone_can_participate: Будь-хто може долучитись за посиланням
       placeholder: Ви можете ввести імена або електронні адреси
@@ -1072,7 +1075,7 @@ uk:
       has_not_read_thread: Не переглянув тему
       has_not_joined_yet: Ще не приєднався
       has_not_joined_yet_hint: Цей користувач не прийняв запрошення приєднатися до Loomio і не отримуватиме подальших сповіщень, доки не прийме
-      discussion_admin: Адміністратор обговорення
+      discussion_admin: Адміністратор теми
       has_not_read_discussion: Не переглянув обговорення
     group_form:
       search_placeholder: Шукати людину...
@@ -1086,6 +1089,8 @@ uk:
     topic_notification_history: Історія сповіщень про теми
     notification_history: Історія сповіщень
   action_dock:
+    add_to_timeline: Додайте на часову шкалу
+    remove_from_timeline: Видаліть із часової шкали
     actions_menu: Меню дій
     more_actions: Більше дій
     react: Оцінити
@@ -1114,7 +1119,7 @@ uk:
     translate_comment: Перекласти коментар
     edit_outcome: Редагувати висновок
     announce_outcome: Повідомити людей про цей висновок
-    announce_outcome_active: "(Ще нікого не було сповіщено про цей результат)"
+    announce_outcome_active: "(Ще нікого не було сповіщено про цей висновок)"
     translate_outcome: Перекласти висновок
     show_history: Показати історію змін
     edited: Відредаговано
@@ -1164,6 +1169,9 @@ uk:
     thread_markdown_copied: Розмітка теми скопійована
     move_thread_v2: Перемістити тему
     more: Більше
+    download_markdown: Завантажити Markdown
+    markdown: Markdown
+    vote_before_export: Проголосуйте перед експортом. У цій темі є опитування, результати якого приховуються, доки ви не проголосуєте.
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -1427,6 +1435,9 @@ uk:
     confirm_change_to_public: Якщо ви продовжите, всі теми в цій групі стануть загальнодоступними в мережі.
     confirm_change_to_private_discussions_only: Якщо ви продовжите, всі загальнодоступні теми в цій групі буде змінено на приватні.
     profile: Профіль
+    subgroup_name_and_content_are_public: Будь-хто може знайти цю підгрупу й читати її теми
+    subgroup_name_is_public_and_threads_are_private: Будь-хто може знайти цю підгрупу; її теми приватні
+    subgroup_is_visible_to_parent_members: Учасники %{parent} можуть знайти цю підгрупу; її теми приватні
     subgroup_privacy_is_open_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є загальнодоступними. '
     subgroup_privacy_is_closed_description: 'Будь-хто може знайти групу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Всі теми є приватними. '
     subgroup_privacy_is_closed_public_threads_description: 'Будь-хто може знайти цю підгрупу та зробити запит на участь. Тільки учасники можуть бачити хто входить до групи. Теми можуть бути загальнодоступними та приватними. '
@@ -1434,10 +1445,9 @@ uk:
     subgroup_privacy_is_secret_description: Тільки запрошені учасники можуть знайти цю підгрупу, бачити перелік ії учасників та теми.
     advanced_settings: Додаткові налаштування
     how_do_people_join: Як люди можуть приєднатися?
-    membership_granted_upon_request: Будь-хто може приєднатися до групи.
-    membership_granted_upon_approval: Будь-хто може зробити запит на участь, але воно має бути схвалено.
-    membership_granted_upon_invitation: Тільки запрошення.
-    membership_granted_upon_approval_secret_parent: "<strong>За запитом</strong> будь-хто з %{parent} може попросити приєднатися до групи."
+    join_without_approval: Вступ без схвалення
+    request_to_join: Запит на вступ
+    invitation_only: Лише за запрошенням
     permissions: Дозволи
     thread_privacy: Конфіденційність тем
     public_threads: Тільки загальнодоступні теми
@@ -1445,8 +1455,8 @@ uk:
     public_or_private_threads: Дозволити загальнодоступні та приватні теми
     private_threads: Тільки учасники можуть бачити обговорення
     allow_public_threads: Дозволити загальнодоступні теми в цій групі.
-    parent_members_can_see_discussions: Учасники %{parent} можуть бачити приватні теми.
-    parent_members_can_see_discussions_help: Дозволити учасникам батьківської групи бачити теми та опитування в цій групі, але не брати в них участі.
+    parent_group_members_can_see_private_threads: Учасники батьківської групи можуть бачити приватні теми
+    parent_group_members_can_see_private_threads_help: Дозволити учасникам групи %{parent} переглядати теми й опитування в цій групі, але не брати в них участі
     members_can_announce: Учасники можуть повідомити усіх в групі.
     members_can_announce_help: Дозволити учасникам повідомляти усіх в групі щодо тем та опитувань
     members_can_add_members: Учасники можуть запрошувати нових учасників
@@ -1577,14 +1587,14 @@ uk:
   memberships_page:
     members: Учасники
     name_label: Ім’я
-    coordinator_label: Координатор
+    coordinator_label: Адміністратор
     remove_member_label: Видалити
     fragment_placeholder: Фільтрувати користувачів за власним іменем або за іменем користувача...
-    only_one_admin: У цій групі лише один координатор. Рекомендується призначити принаймні ще одного учасника в якості координатора.
+    only_one_admin: У цій групі лише один адміністратор. Рекомендується призначити принаймні ще одного учасника адміністратором.
     messages:
       remove_member_success: "%{name} вилучено"
-      make_admin_success: "%{name} тепер координатор"
-      remove_admin_success: "%{name} більше не координатор"
+      make_admin_success: "%{name} тепер адміністратор"
+      remove_admin_success: "%{name} більше не адміністратор"
     remove_admin_from_self:
       question: Ви впевнені що більше не бажаєте бути координатором?
   membership_remove_modal:
@@ -1609,8 +1619,9 @@ uk:
     title_helptext:
       group: Ця назва з'явиться поруч із іменем %{name} у цій групі. Використовуйте її щоб люди розуміли свою роль.
     title_label: назва
-    title_placeholder: Напр. "Координатор" або "Фасілітатор"
+    title_placeholder: Наприклад, «Адміністратор» або «Фасилітатор»
     updated: Назву учасника оновлено
+    weight_label: Вага голосу
   user_name_modal:
     user_name_updated: Ім'я користувача оновлено
     set_user_name: Встановити ім'я користувача
@@ -1666,6 +1677,7 @@ uk:
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     translate_content_automatically: Автоматично перекладати контент моєю мовою
     bot_account_warning: Облікові записи ботів не будуть запрошені до голосування в опитуваннях або участі в обговореннях.
+    translations_are_made_by_machine: Переклади зроблено автоматично. Якщо слово неправильне чи незрозуміле, напишіть на %{email}, і ми його виправимо.
   text_editor:
     x_of_y_characters: "%{x} / %{y} символів"
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
@@ -1673,7 +1685,6 @@ uk:
     insert_embedded_url: Додати відео
   change_picture_form:
     title: Виберіть фото профілю
-    helptext: Ви можете завантажити ваш власний малюнок профілю, або якщо ви зареєстровані на <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, можете використати його.
     use_initials: Використовувати ініціали
     use_gravatar: Використати Gravatar
     use_uploaded: Завантажити нове фото
@@ -1728,15 +1739,15 @@ uk:
       updated: Налаштування електронної пошти оновлено
     learn_more: Дізнатись більше про налаштування електронної пошти...
     mentioned_description: Коли хтось {'@'}згадує вас у коментарі, ви отримуєте сповіщення електронною поштою
-    daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
-    digest_email_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
+    daily_summary_description: Вибір часу отримання електронного листа з підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
+    digest_email_description: Вибір часу отримання підсумкового листа з непереглянутими сповіщеннями та непрочитаними оновленнями
     never: Ніколи
     send_email: Надіслати електронного листа
     group_notifications: Групові сповіщення
     group_notifications_description: Змініть рівень активності та канал для своїх груп
     choose_email_and_push_updates: Виберіть окремі налаштування для електронної пошти та push-повідомлень
     catch_up_email: Електронна пошта для надолуження зниклих подій
-    catch_up_email_description: Виберіть, коли отримувати сповіщення про непереглянуті сповіщення та непрочитану активність
+    catch_up_email_description: Вибір часу отримання підсумкового листа з непереглянутими сповіщеннями та непрочитаними оновленнями
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
@@ -1779,7 +1790,6 @@ uk:
       all: Нещодавні обговорення
     thread_preview:
       you_voted: Ви проголосували %{position}
-      undecided: Ви не визначились з рішенням
     threads_from:
       group: Теми від
       pinned: Закріплені теми
@@ -1790,7 +1800,7 @@ uk:
       thisweek: Цього тижня
       thismonth: Цього місяця
       older: Більше ніж місяць тому
-    dashboard: Інформаційна панель
+    dashboard: Стрічка
     recent_discussions: Нещодавні обговорення
     view_recent: Переглянути всі останні обговорення?
     discussion_marked_as_read: Обговорення позначено як прочитане
@@ -1904,6 +1914,8 @@ uk:
     comment_length_max_help: Залиште поле порожнім, якщо обмеження за темами немає
     comment_length_max_description: Заохочуйте стислих коментарів, встановлюючи максимальну довжину
     comment_length_max_hint: Максимальна кількість символів у коментарі. Залиште порожнім, якщо обмеження немає.
+    only_admins_can_add_attachments: Лише адміністратори можуть додавати вкладення
+    only_one_poll_at_a_time: Лише одне опитування за раз
   delete_thread_form:
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?
@@ -1965,19 +1977,19 @@ uk:
     consent_title: Згода
     consensus_title: Консенсус
     proposal_title: Пропозиція
-    count_title: Вибрати в
-    check_title: Перевірка сенсу
+    count_title: Запис охочих
+    check_title: Перевірка думок
     poll_title: Опитування
     meeting: Зустріч
     score_title: Оціночне опитування
-    dot_vote_title: Голосування крапкою
+    dot_vote_title: Розподіл балів
     meeting_title: Опитування щодо часу
     ranked_choice_title: Ранговий вибір
     gradients_of_agreement_title: Градієнти згоди
     majority_title: Більшість
-    stv_title: Вибори на СТВ
+    stv_title: Вибори за STV
   poll_option_form:
-    edit_option: Опція редагування
+    edit_option: Редагувати варіант
     option_name: Назва опції
     option_name_hint: Коротка назва цієї опції
     option_name_validation: Найкраще, щоб назва була короткою, а деталі вказували в полі «Значення».
@@ -2007,6 +2019,19 @@ uk:
     vote_share_requirement: Вимога щодо частки голосів
     for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
     for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
+    points_cast: Очки нараховані
+    eligible_vote_weight: Вага голосу виборців із правом голосу
+    vote_weight_cast: Віддана вага голосу
+    name_gte_eligible_vote_weight: "%{name} потребує щонайменше %{percent}% ваги голосу виборців із правом голосу"
+    name_lte_eligible_vote_weight: "%{name} не повинен перевищувати %{percent}% ваги голосу виборців із правом голосу"
+    name_gte_vote_weight_cast: "%{name} потребує щонайменше %{percent}% відданої ваги голосу"
+    name_lte_vote_weight_cast: "%{name} не повинен перевищувати %{percent}% відданої ваги голосу"
+    total_assigned_vote_weight: Загальна призначена вага голосу
+    weighted_votes_cast: Віддані зважені голоси
+    name_gte_assigned_vote_weight: "%{name} потребує щонайменше %{percent}% загальної призначеної ваги голосу"
+    name_lte_assigned_vote_weight: "%{name} не повинен перевищувати %{percent}% загальної призначеної ваги голосу"
+    name_gte_weighted_votes_cast: "%{name} потребує щонайменше %{percent}% відданих зважених голосів"
+    name_lte_weighted_votes_cast: "%{name} не повинен перевищувати %{percent}% відданих зважених голосів"
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2085,7 +2110,7 @@ uk:
     share_count: Поширити контрольний список
     start_poll: Розпочати процес прийняття рішення
     publish_poll: Поширити опитування
-    share_outcome: Поширити результат
+    share_outcome: Поширити висновок
     view_all: Переглянути всі
     save_changes: Зберегти
     change_vote: Змінити ваш голос
@@ -2095,7 +2120,7 @@ uk:
     too_long: Занадто довгий
     edit_warning: Редагування рекомендується лише для незначних змін або виправлення орфографічних помилок. Для суттєвих змін закрийте це %{pollType} і почніть нове.
     no_voting: Лише для обговореннь, голосування вимкнено
-    post_outcome: Опублікувати результат
+    post_outcome: Опублікувати висновок
     view_all_votes: Переглянути всі голоси
     you_voted: Ви проголосували
     these_are_templates: Це шаблони рішень у вашій групі. Натисніть шаблон, щоб розпочати нове рішення. Адміністратори можуть налаштувати всі деталі шаблону, щоб він відповідав практикам вашої організації та був легким для пошуку та використання учасниками.
@@ -2117,6 +2142,16 @@ uk:
     status: Статус
     your_vote_is_requested: Запитується ваш голос
     browse_example_make_a_copy_hint: "<b>Натисніть значок копіювання</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
+    view_votes: Переглянути голоси
+    weighted_votes: Зважені голоси
+    weighted_points: Зважені бали
+    pct_of_weighted_votes: "% зважених голосів"
+    pct_of_weighted_points: "% зважених балів"
+    weighted_mean: Середньозважене значення
+    pct_of_eligible_vote_weight: "% ваги голосу виборців із правом голосу"
+    pct_of_vote_weight_cast: "% відданої ваги голосу"
+    pct_of_assigned_vote_weight: "% призначеної ваги голосу"
+    reuse_voting_options_and_settings: Шаблони дають усім у вашій групі змогу повторно використовувати варіанти голосування, пояснення й налаштування. Перегляньте приклад вмісту перед збереженням, а потім виберіть шаблон, коли створюватимете нове опитування
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2174,7 +2209,7 @@ uk:
     directory: Каталог
     invitations: Запрошення
     requests: Запити
-    admin: Координатор
+    admin: Адміністратор
     guest: Гість
     sharable_link: Посилання для запрошення
     last_seen: Востанне переглянуто %{date}
@@ -2185,6 +2220,8 @@ uk:
     delegate: Делегувати
     delegate_popover: Делегат — це член групи з правом голосу
     delegates: Делегати
+    edit_vote_weights: Редагувати вагу голосів
+    vote_weights_are_defaults: Ці значення ваги голосів за замовчуванням застосовуються до нових голосів. Зміни, зазначені тут, не впливають на вже надані значення ваги голосів.
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи
@@ -2233,6 +2270,7 @@ uk:
     legacy_vote_reasons: Причини попередніх голосів
     legacy_vote_reasons_description: Причини голосів, поданих із використанням застарілого формату анонімного голосування, відображаються як звичайний текст
     anonymous_voting_participant_notice: Голосування анонімне. Ви не можете переглянути або змінити свій голос після його подання. Результати будуть доступні лише після завершення голосування.
+    votes_have_different_weights: Голоси в цьому опитуванні мають різну вагу, тому деякі важать більше, ніж інші.
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2280,18 +2318,14 @@ uk:
     started_by: Розпочато %{name}
   poll_common_votes_panel:
     vote_removed: Голос видалено
-    undecided: Не визначено
     newest_first: Спочатку нові
     oldest_first: Спочатку старі
     priority_first: Спочатку узгоджені
     priority_last: Спочатку заблоковані
-    undecided_first: Не визначені першими
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
     name_or_username: Ім'я або ім'я користувача
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Причину вилучено
     redact_reason_title: Викреслити причину голосування?
     redact_reason_helptext: Текст причини та вкладення будуть приховані, але голосування залишиться в результатах
@@ -2301,15 +2335,11 @@ uk:
     unredact_reason_helptext: Причина, чому текст і вкладення знову стануть видимими
     unredact_reason_confirm: Причина відновлення
     unredact_reason_success: Причину голосування відновлено
-  poll_common_undecided_panel:
-    show_undecided: Показати %{count} не визначилися
-    show_invitations: Показати запрошення в очікувані
-    undecided_users: Не визначився (%{count})
-    invitation_count_singular: 1 особа запрошена до участі електронною поштою
-    invitation_count_plural: Ще %{count} осіб було запрошено взяти участь електронною поштою
-  poll_common_undecided_user:
-    reminded: Нагадування відправлено!
-    reminder_sent: Сповіщення з нагадуванням відправлено
+    all_voters: Усі виборці
+    vote_weight_column: Вага голосу
+    stance: Голосувати
+    participation_records_restricted: Ви можете побачити, хто взяв участь, після завершення голосування
+    vote_weight: Вага голосу %{weight}
   poll_common_set_outcome_panel:
     enter_outcome: Введіть висновок
     poll_type: Цей %{poll_type} закрито. Знайдіть час, щоб розглянути результати, а потім поділіться результатом, щоб люди знали, що буде далі.
@@ -2318,15 +2348,15 @@ uk:
     review_due_in_days: Через скільки днів переглянути рішення?
     review_date: Дата перегляду
     review_date_hint: Встановити дату нагадування для перегляду результату (необов’язково)
-    who_to_notify: Кого ви хочете повідомити про цей результат? (необов'язково)
+    who_to_notify: Кого ви хочете повідомити про цей висновок? (необов'язково)
     outcome_statement_template: Шаблон звіту про результати
-    new_title: Введіть результат
-    update_title: Оновити результат
+    new_title: Поширити висновок
+    update_title: Оновити висновок
     outcome_created: Висновок створено
     outcome_updated: Висновок оновлено
     statement_placeholder: Узагальнити відповіді і пояснити що буде відбуватися далі.
     you_will_be_notified: Ви отримаєте повідомлені про дату підсумків.
-    submit: Поширити результат
+    submit: Поширити висновок
     review_due_in_days_hint: Кількість днів очікування до перегляду рішення (необов'язково).
     statement_template_hint: Надайте шаблон для написання результату рішення (необов'язково).
     statement_template_placeholder: Дякуємо за участь! Кворум досягнуто, і ми маємо підтримку для продовження.
@@ -2368,7 +2398,7 @@ uk:
     remove_option: Видалити варіант відповіді
     poll_created: Опитування створено
     poll_updated: Опитування оновлено
-    option_added: Опція додана
+    option_added: Варіант додано
     option_already_added: Варіант уже додано до опитування
   poll_dot_vote_form:
     dots_per_person: Балів на людину
@@ -2421,8 +2451,8 @@ uk:
     consent: Згода
     abstain: Утриматись
     unsure: Не впевнений
-    disagree: Проти
-    objection: Несхвалення
+    disagree: Не погоджуюся
+    objection: Заперечення
     object: Об'єкт
     block: Блокувати
     no_voting: Не проголосували
@@ -2443,13 +2473,17 @@ uk:
     votes_short_of_quorum: Для досягнення кворуму %{pct}% потрібно ще %{num} голосів
     quorum_reached: Досягнуто кворуму %{pct}%
     pct_participation: "%{num} з %{total} голосів (%{pct}% участі)"
+    pct_vote_weight_participation: Віддано %{num} із %{total} голосів (%{pct}% ваги голосу)
+    pct_of_eligible_vote_weight_must_participate: Має бути віддано %{pct}% ваги голосу виборців із правом голосу
+    pct_weighted_participation: Віддано %{num} із %{total} голосів (віддано %{pct}% призначеної ваги голосу)
+    pct_of_assigned_vote_weight_must_participate: Має бути віддано %{pct}% загальної призначеної ваги голосу
   poll_meeting_chart_panel:
     total: Разом
   poll_remove_vote:
     title: Видалити свій голос?
-    helptext: Ви впевнені, що хочете видалити свій голос? Ви будете внесені до списку як не визначилися та зможете проголосувати пізніше, якщо забажаєте.
     confirm: Зняти голос
     success: Голос видалено
+    helptext_not_voted: Ви впевнені, що хочете видалити свій голос? Ваш статус буде “Не проголосували”, і ви зможете проголосувати пізніше, якщо захочете.
   poll_poll_vote_form:
     stance_created: Голосування створено
     stance_updated: Голосування оновлено
@@ -2487,7 +2521,7 @@ uk:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> закрив(ла) тему"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> знову відкрив(ла) тему"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> поширив(ла) результат"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> поширив(ла) висновок"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> відкрив(ла) знов %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> закрив(ла) %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> почав(ла) %{polltype}"
@@ -2518,9 +2552,11 @@ uk:
     sign_up_as: Створити обліковий запис як %{email}
     sign_in_as: Увійти як %{name}
     continue_with_provider: Продовжити через %{provider}
+    sign_in_with_provider: Увійти через %{provider}
     continue_with_email: Продовжити з електронною поштою
     or_enter_your_email: Або введіть свою адресу електронної пошти
     enter_your_name: Введіть ваше ім'я
+    invitation_required_title: Потрібне запрошення
     invitation_required: Для створення облікового запису вам потрібне запрошення. Щоб продовжити, перейдіть за посиланням у вашому електронному листі із запрошенням.
     more_providers: Бiльше
     email_not_present: Потрібна адреса електронної пошти
@@ -2576,6 +2612,22 @@ uk:
     invalid_login: Не вдається увійти з цими даними
     login_link_rate_limited: Забагато електронних адрес для входу запитується з цієї мережі. Зачекайте годину та спробуйте ще раз.
     send_login_link_error: Сталася помилка під час надсилання електронного листа для входу. Спробуйте ще раз.
+    sign_in_with_passkey: Увійти за допомогою ключа доступу
+    passkey_authentication_failed: Нам не вдалося ввійти за допомогою цього ключа доступу
+    passkey_registration_failed: Нам не вдалося зберегти цей ключ доступу
+    passkey_default_name: Ключ доступу
+    local_login_disabled: Цей сайт вимагає єдиного входу
+    email_me_a_sign_in_code: Надіслати мені код для входу електронною поштою
+    sign_in_with_code: Увійти за допомогою коду
+    new_to_site: Новий тут?
+    passkey_recent_authentication_required: Увійдіть ще раз, перш ніж змінювати свої паролі
+    email_code_help: Введіть свою адресу електронної пошти, і ми надішлемо вам шестизначний код для входу
+    or_sign_in_with_password: Або увійдіть за допомогою пароля
+    login_link_sent_if_account_exists: Якщо обліковий запис для %{email} існує, ми надішлемо код входу
+    use_a_passkey: Використовуйте ключ доступу
+    send_me_a_code: Надіслати мені код
+    email_code_help_short: Ми надішлемо шестизначний код на вашу адресу електронної пошти
+    login_link_sent_if_account_exists_sentence: Якщо обліковий запис для %{email} існує, ми надішлемо код входу.
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення
@@ -2651,8 +2703,8 @@ uk:
       poll_expired: Опитування закінчується
       poll_closed_by_user: Опитування закриваєте вручну
       poll_reopened: Опитування знову відкрито для голосування
-      outcome_created: Результат поширено
-      outcome_updated: Результат оновлюється
+      outcome_created: Висновок поширено
+      outcome_updated: Висновок оновлюється
       outcome_review_due: Має бути перевірка результатів
       new_discussion: Розпочато обговорення
       discussion_edited: Обговорення відредаговано
@@ -2759,7 +2811,10 @@ uk:
         submit: Див. шаблони пропозицій
       share_an_outcome:
         title: Поділитися результатом пропозиції
-        helptext: "<p>Щоб допомогти просунути рішення, пропозиції мають термін голосування. Після досягнення терміну голосування буде закрито, і вам буде повідомлено про можливість поділитися результатами пропозиції.</p><p> Результат — це можливість сказати, чи була пропозиція успішною та що буде далі.</p><p> Якщо термін подання вашої пропозиції ще не минув, але ви все одно хочете продовжити, ви можете натиснути кнопку <b>«Закрити раніше»</b> .</p><p> Коли настане слушний час, <b>введіть результат</b> своєї пропозиції.</p>"
+        helptext: |
+          <p>Коли настає дата закриття пропозиції, голосування завершується й вам пропонують поділитися висновком.</p>
+          <p>У висновку ви пояснюєте, що вирішили (або що буде далі), переглянувши голоси та коментарі.</p>
+          <p>Якщо термін ще не минув, але ви готові рухатися далі, можете <b>Закрити раніше</b>.</p>
         submit: Переглянути пропозицію
         cancel: Зробіть це пізніше
       start_a_discussion:
@@ -2790,8 +2845,8 @@ uk:
       voting_title: За 24 години до завершення голосування надішліть нагадування
       nobody: Ніхто
       author: Автор (я)
-      undecided_voters: Виборці, які не визначилися
       voters: Усі виборці
+      people_who_have_not_voted: Ті, хто ще не проголосували
     notify_on_participate:
       title: Повідомити мене, коли люди беруть участь
       helptext_on: Після обрання ви отримуватимете сповіщення щоразу, коли хтось братиме участь.
@@ -2843,22 +2898,22 @@ uk:
     voting_methods:
       question: Раунд питань
       question_hint: Запрошуємо вас поставити запитання та коментувати вашу пропозицію
-      show_thumbs: Показ великих пальців
+      show_thumbs: Великий палець
       show_thumbs_hint: Виборці обирають великий палець вгору, вниз, вбік або руку вгору
-      choose: Виберіть
+      choose: Вибір
       simple_poll: Просте опитування
       choose_hint: Виборці обирають найкращий варіант (або варіанти)
-      score: Рахунок
+      score: Оцінка
       score_hint: Виборці присвоюють бал кожному варіанту
-      allocate: Виділити
+      allocate: Розподіл
       allocate_hint: Виборці розподіляють певний бюджет балів між варіантами
       ranked_choice: Рейтинговий вибір
       ranked_choice_hint: Виборці розташовують варіанти в порядку від найбільш бажаного до найменш бажаного
-      time_poll: Опитування часу
+      time_poll: Опитування щодо часу
       time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
-      rank: Ранг
+      rank: Ранжування
       time: Час
-      stv: Вибори на СТВ
+      stv: Вибори за STV
       stv_hint: Оберіть кількох переможців пропорційно, використовуючи один передаваний голос
     process: Процес
     process_name: Назва шаблону
@@ -2879,7 +2934,7 @@ uk:
     options_placeholder: Перелічіть доступні варіанти
     no_options: Ви ще не додали жодних опцій.
     closing: Закриття
-    closed: ЗАЧИНЕНО
+    closed: Закрито
     start: Початок
     start_poll: Розпочати опитування
     stance_reason_required_label: Надання причини під час голосування...
@@ -2928,9 +2983,41 @@ uk:
     stance_reason_required_when_disagreeing: Обов'язково у разі незгоди
     stance_reason_required_for_disagree_or_block: Обов'язково для незгоди або блокування
     stance_reason_required_for_block: Обов'язково для блокування
+    voters: Виборці
+    manage_voters: Керування виборцями
+    remove_voter: Видалити виборця
+    voter_page_count: "%{first}–%{last} від %{total}"
+    vote_weight_for: Вага голосу для %{name}
+    save_vote_weights: Зберегти вагу голосів
+    vote_weights_updated: Ваги голосів оновлено
+    set_all: Встановити все
+    find_or_invite_voters: Знайти або запросити виборців
+    remove_voter_named: Видалити %{name} з опитування
+    remove_voter_and_any_vote_confirmation: Видалити %{name} з цього опитування? Це також видаляє будь-які голоси, віддані цим користувачем.
+    edit_vote_weight: Змінити вагу голосів
+    edit_vote_weight_for: Редагувати вагу голосу для %{name} (наразі %{weight})
+    set_all_vote_weights_title: Встановити всі ваги голосів
+    set_all_vote_weights_search_note: Це змінює вагу голосів усіх виборців в опитуванні, включаючи тих, хто не входить до результатів пошуку.
+    set_each_member_default_vote_weight: Встановити вагу голосу кожного учасника за замовчуванням
+    voters_will_not_be_notified: Виборців не буде повідомлено. Повідомте їх про опитування іншим способом.
+    give_voters_different_vote_weights: Надайте виборцям різну вагу голосів. Результати показують як звичайні, так і зважені підсумки.
+    issued_vote_weights_will_change: Вже оприлюднені вагові коефіцієнти голосування зміняться.
+    weight_for_all: Вага голосу для всіх
+    set_all_vote_weights: Встановити всі ваги голосів
+    set_all_vote_weights_the_same: Встановити однакову вагу голосів для всіх
+    member_vote_weights_hint: Виборці, які не мають поточного членства в групі, отримують вагу голосу 1
+    weighted_voting: Зважене голосування
+    weighted_voting_is_not_available_with_anonymous_voting: Зважене голосування недоступне при анонімному голосуванні
+    use_weighted_voting: Використовуйте зважене голосування
+    weighted_voting_off_warning: Вимкнення зваженого голосування встановлює вагу кожного голосу на 1. Будь-які ваги голосів, які ви змінили для цього опитування, будуть втрачені.
+    weighted_voting_on_group: Увімкнення зваженого голосування копіює вагу голосу кожного члена за замовчуванням. Інші виборці отримують вагу голосу, що дорівнює 1.
+    weighted_voting_on_direct: Увімкнення зваженого голосування встановлює вагу кожного голосу на 1
+    quorum_vote_weight_hint: Який відсоток ваги голосу виборців із правом голосу має бути віддано, щоб результат був дійсним? Необов’язково, залиште поле порожнім, якщо кворум не потрібен.
+    quorum_vote_weight_placeholder: Відсоток ваги голосу виборців із правом голосу (0–100)
+    quorum_voters_placeholder: Відсоток виборців із правом голосу (0–100)
+    quorum_weighted_hint: Який відсоток загальної призначеної ваги голосу має бути віддано, щоб результат був дійсним? Необов’язково, залиште поле порожнім, якщо кворум не потрібен.
   poll_receipts_page:
     participation_status_requires_min_votes: Тут показано, хто мав право голосувати. Інформація про те, чи проголосувала кожна людина, відображається лише після того, як проголосують щонайменше %{count} людини.
-    verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
     voter_name: Ім'я виборця
     voter_email: Електронна адреса виборця
@@ -2942,6 +3029,7 @@ uk:
     participation_records_explanation: Це показує, хто мав право голосувати і чи голосував він. Це не показує, як хто голосував.
     voted: Проголосував(-ла)
     not_voted: Не проголосував(-ла)
+    email_addresses_only_for_group_admins: Адреси електронної пошти відображаються лише адміністраторам групи
   comment_reply_form:
     aria_label: Додати відповідь
   discussion_template:
@@ -3019,7 +3107,7 @@ uk:
       success: Обговорення перенесено до %{name}
     move_thread_title: Перемістити тему
     destination: Пункт призначення
-    direct_thread: Пряма нитка
+    direct_thread: Пряма тема
     direct_thread_hint: Усі, хто брав участь, збережуть доступ. Ви та автор теми будете адміністраторами теми.
     direct_thread_anonymous_poll: Теми, що містять анонімні опитування, не можна перетворити на прямі теми, оскільки це може розкрити, хто голосував
   auth:
@@ -3035,17 +3123,23 @@ uk:
     notify_members_or_invite_guests_info: Повідомляти учасників групи за іменем або запрошувати тих, хто не є учасниками, за адресою електронної пошти. Запрошені гості можуть брати участь у цьому обговоренні, але не матимуть доступу до інших обговорень групи.
     notify_members_info: Введіть імена учасників групи, щоб повідомити їх про цей обговорення.
     specified_voters_only_warning: У цій темі є опитування, де можуть голосувати лише вибрані люди. Додавання когось за допомогою цієї форми не дасть йому голосу, а лише можливість стежити за обговоренням і коментувати. Якщо ви хочете надати голоси, використовуйте в опитуванні "додати голосувальників".
+    manage_thread_members: Керування учасниками ланцюжка повідомлень
+    find_or_invite_people: Знайти або запросити людей
+    invite_or_notify_explanation: Нові учасники будуть запрошені до теми. Учасники, які вже беруть участь у темі, отримають сповіщення.
+    invite_or_notify: Запросити або повідомити
+    member_page_count: "%{first}–%{last} від %{total}"
+    guest_access_info: Гості, запрошені електронною поштою, можуть брати участь у цьому обговоренні без доступу до інших обговорень групи
   poll_common_details_meta:
     opened: Відкрито
     opens: Відкривається
-    closed: ЗАЧИНЕНО
+    closed: Закрито
     closes: Закривається
     opened_at: Відкрито о
     opening_at: Відкриття о
-    closed_at: Зачинено о
+    closed_at: Закрито о
     closing_at: Закриття о
   poll_stv_vote_form:
-    helptext: Перетягніть кандидатів вище лінії, щоб ранжувати їх. Елементи нижче лінії не ранжуються. Перший ранг – ваш найбажаніший.
+    helptext: Перетягніть кандидатів вище лінії, щоб ранжувати їх. Елементи нижче лінії не ранжуються. Перше місце — ваш найбажаніший кандидат.
     divider_text: перетягніть кандидатів вище цієї лінії, щоб ранжувати їх
     stance_created: Голосування записано
     stance_updated: Голосування оновлено
@@ -3133,3 +3227,52 @@ uk:
     unfollow: Скасувати підписку на оновлення
     followed: Тепер ви слідкуєте за оновленнями від цієї групи
     unfollowed: Ви більше не слідкуєте за оновленнями цієї групи
+  passkey_settings:
+    title: Ключі доступу
+    helptext: Ключі доступу дозволяють вам входити за допомогою пристрою, не вводячи адресу електронної пошти чи пароль
+    none: Ви не додали ключ доступу
+    name: Ім'я ключа доступу
+    name_placeholder: Наприклад, робочий ноутбук
+    add: Додати ключ доступу
+    added: Ключ доступу додано
+    created_at: Додано %{date}
+    remove_named: Видалити %{name}
+    remove_confirm: Видалити ключ доступу з назвою %{name}?
+    removed: Ключ доступу видалено
+    remove_failed: Не вдалося видалити ключ доступу
+  credential_prompt:
+    title: Додати ще один спосіб входу
+    helptext: Додайте ключ доступу або встановіть пароль, щоб ви могли входити, не чекаючи на код, надісланий електронною поштою
+    add_passkey: Додати ключ доступу
+    set_password: Встановити пароль
+    not_now: Не зараз
+    passkey_description: Ключ доступу дозволяє швидко входити в систему за допомогою відбитка пальця, розпізнавання обличчя або блокування екрана вашого пристрою
+    set_new_password: Встановити новий пароль
+  account_completion:
+    complete_your_account: Заповніть свій обліковий запис
+    continue: Продовжити
+  notification_nouns:
+    comment: коментар
+    discussion: обговорення
+    outcome: висновок
+    stance: голос
+  membership_notification_history:
+    invitation_delivery_history: Історія доставки запрошень
+    email_delivery_blocked: Loomio заблокував доставку листів на цю адресу
+    delivery_result:
+      delivered: Доставлено
+      failed: Не вдалося доставити
+    could_not_load_history: Не вдалося завантажити історію сповіщень
+    no_invitations_recorded: Немає записів про запрошення
+    membership_created: Запрошення
+    membership_resent: Запрошення надіслано повторно
+    no_custom_message: Без власного повідомлення
+    pending: Лист очікує надсилання
+    not_sent: Немає даних про доставку листа
+    sent: Передано поштовому сервісу
+    delivered: Прийнято поштовим сервером одержувача
+    delayed: Повідомлено про затримку доставки
+    rejected: Лист відхилено
+    bounced: Повідомлено про повернення листа
+    complained: Отримано скаргу на спам
+    skipped: Лист не надіслано

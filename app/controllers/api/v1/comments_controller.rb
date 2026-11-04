@@ -1,4 +1,10 @@
 class Api::V1::CommentsController < Api::V1::RestfulController
+  rescue_from CommentService::ParentDeleted do
+    render json: {
+      flash: { error: I18n.t("errors.item_you_are_replying_to_deleted", locale: preferred_locale) }
+    }, status: :unprocessable_entity
+  end
+
   def discard
     load_resource
     service.discard(comment: resource, actor: current_user) { |topic_item| @topic_item = topic_item }

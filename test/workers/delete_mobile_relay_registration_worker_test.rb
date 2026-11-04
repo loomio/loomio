@@ -34,6 +34,16 @@ class DeleteMobileRelayRegistrationWorkerTest < ActiveSupport::TestCase
     assert_equal [ registration_id, delivery_key ], captured
   end
 
+  test "deletes a retained local registration after its device was revoked" do
+    registration = create_registration
+    registration.mobile_device.update!(revoked_at: Time.current)
+    Mobile::RelayService.stub(:delete!, ->(registration:) { assert_predicate registration.mobile_device, :revoked_at?; true }) do
+      DeleteMobileRelayRegistrationWorker.perform_now(registration.id, registration.registration_id, registration.delivery_key_ciphertext)
+    end
+
+    refute MobilePushRegistration.exists?(registration.id)
+  end
+
   private
 
   def create_registration

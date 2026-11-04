@@ -33,6 +33,22 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
     assert_includes notification.notification_deliveries.where(channel: "email").pluck(:recipient_id), @actor.id
   end
 
+  test "visible groups reject membership requests when joining does not require approval" do
+    requestor = users(:alien)
+    assert requestor.can?(:show, @group)
+
+    %w[request invitation].each do |mode|
+      @group.update!(membership_granted_upon: mode)
+      request = MembershipRequest.new(group: @group, introduction: 'Please let me join')
+
+      assert_no_difference ['MembershipRequest.count', 'Notification.count'] do
+        assert_raises(CanCan::AccessDenied) do
+          MembershipRequestService.create(membership_request: request, actor: requestor)
+        end
+      end
+    end
+  end
+
   test "requesting membership without an account name identifies the requestor by email" do
     requestor = User.create!(email: "nameless-#{SecureRandom.hex(4)}@example.com", email_verified: true)
     request = MembershipRequest.new(group: @group, introduction: "Please let me join")
@@ -93,6 +109,26 @@ class MembershipRequestNotificationTest < ActiveSupport::TestCase
       subject: membership
     )
     assert_equal @group.full_name, notification.translation_values["title"]
+  end
+
+  test "approving a former member restores topic access and active poll voting" do
+    member = users(:member_normal)
+    poll = PollService.create(params: {
+      title: 'Return through an approved request', poll_type: 'poll', group_id: @group.id,
+      poll_option_names: %w[Yes No], closing_at: 3.days.from_now
+    }, actor: @actor)
+    stance = poll.stances.latest.find_by!(participant: member)
+    reader = TopicReader.for(user: member, topic: topics(:discussion_topic))
+    reader.update!(guest: true)
+    MembershipService.revoke(membership: @group.membership_for(member), actor: member)
+    request = MembershipRequest.create!(group: @group, requestor: member)
+
+    MembershipRequestService.approve(membership_request: request, actor: @actor)
+
+    assert_not_nil request.reload.approved_at
+    assert_nil reader.reload.revoked_at
+    assert_nil stance.reload.revoked_at
+    assert member.can?(:vote_in, poll)
   end
 
   test "notification failure rolls back request creation" do

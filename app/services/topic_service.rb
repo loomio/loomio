@@ -22,7 +22,7 @@ class TopicService
                            model: topic,
                            actor: actor)
 
-    Topic.transaction do
+    topic.with_write_lock do
       users = add_users(topic: topic,
                         actor: actor,
                         user_ids: params[:recipient_user_ids],
@@ -30,7 +30,9 @@ class TopicService
                         audience: params[:recipient_audience])
 
       recipient_user_ids = users.pluck(:id)
-      stances_by_poll_id = topic.polls.active.where(specified_voters_only: false).each_with_object({}) do |poll, memo|
+      # Guests vote only through a stance, so they get one in every unclosed
+      # poll, including scheduled and draft polls that open later.
+      stances_by_poll_id = topic.polls.kept.where(closed_at: nil, specified_voters_only: false).each_with_object({}) do |poll, memo|
         memo[poll.id] = PollService.create_anyone_can_vote_stances(poll)
       end
 
@@ -62,19 +64,22 @@ class TopicService
 
   def self.update(topic:, params:, actor:)
     actor.ability.authorize! :update, topic
-    topic.assign_attributes(params)
+    params = params.to_h.with_indifferent_access
+    topic.assign_attributes(params.except(:tags))
     rearrange = topic.max_depth_changed?
     return topic unless topic.valid?
 
-    topic.save!
+    Topic.transaction do
+      topic.save!
+      update_tags(topic: topic, tags: params[:tags], actor: actor) if params.key?(:tags)
+    end
     RepairTopicWorker.perform_later(topic.id) if rearrange
     topic
   end
 
   def self.update_tags(topic:, tags:, actor:)
-    actor.ability.authorize! :update_tags, topic
-    TagService.authorize_create_tag_names!(topic.group, tags, actor)
-    topic.update!(tags: TagService.clean_tag_names(tags))
+    TopicItemService.update_tags(topic_item: topic.topicable.created_topic_item, tags: tags, actor: actor)
+    topic.reload
   end
 
   def self.lock(topic:, actor:)
@@ -95,7 +100,8 @@ class TopicService
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, topic
 
-    topic_item = Topic.transaction do
+    topic_item = topic.with_write_lock do
+      actor.ability.authorize! :move, topic
       direct_participants_retain!(topic:, actor:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
@@ -105,12 +111,18 @@ class TopicService
       ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
-      ReindexDiscussionWorker.perform_later(topic.id)
       TopicItems::DiscussionMoved.create!(
         itemable: topic.topicable,
         user: actor,
         created_at: Time.current
       )
+    end
+    ActiveRecord.after_all_transactions_commit do
+      if topic.topicable_type == 'Discussion'
+        ReindexDiscussionWorker.perform_later(topic.topicable_id)
+      else
+        ReindexPollWorker.perform_later(topic.topicable_id)
+      end
     end
     on_topic_item&.call(topic_item)
     topic
@@ -122,7 +134,7 @@ class TopicService
       topic.polls
         .where(anonymous: false)
         .joins(:stances)
-        .merge(Stance.latest.decided)
+        .merge(Stance.latest.cast)
         .pluck("stances.participant_id")
     )
 
@@ -147,7 +159,7 @@ class TopicService
   end
 
   def self.direct_participants_retain!(topic:, actor:)
-    if topic.polls.where(anonymous: true).exists?
+    if topic.has_anonymous_polls?
       topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
       raise ActiveRecord::RecordInvalid, topic
     end
@@ -176,7 +188,6 @@ class TopicService
       reader.save!
     end
 
-    topic.update_members_count
   end
 
   def self.pin(topic:, actor:)
@@ -225,14 +236,12 @@ class TopicService
     actor.ability.authorize! :dismiss, topic
     reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.dismiss!
-    EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
   def self.recall(topic:, actor:, params: {})
     actor.ability.authorize! :dismiss, topic
     reader = TopicReader.find_or_create_for!(user: actor, topic: topic)
     reader.recall!
-    EventBus.broadcast('discussion_recall', reader, actor)
   end
 
   def self.discard(topic:, actor:)
@@ -247,9 +256,11 @@ class TopicService
       topic.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topicable.update!(discarded_at: discarded_at, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: discarded_at, discarded_by: actor.id)
+      topic.update_column(:active_polls_count, 0)
+    end
+    ActiveRecord.after_all_transactions_commit do
       ReindexDiscussionWorker.perform_later(topicable.id) if topicable.is_a?(Discussion)
     end
-    EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
     topicable
   end
 
@@ -332,7 +343,10 @@ class TopicService
     topicable = topic.topicable
     return unless topicable
 
-    Topic.transaction { repair_topic(topic, topicable) }
+    Topic.where(id: topic.id).with_write_lock(:id) do |ids|
+      next if ids.empty?
+      repair_topic(topic, topicable)
+    end
   end
 
   def self.repair_topic(topic, topicable)
@@ -386,6 +400,9 @@ class TopicService
       child_count: created_topic_item.children.count
     )
     topic.update_sequence_info!
+
+    # Repair can change which contribution occupies the root sequence.
+    TagService.refresh_topic_tags!([topic.id])
 
     # ensure all the topic_readers have valid read_ranges values
     TopicReader.where(topic_id: topic.id).each do |reader|
@@ -468,6 +485,17 @@ class TopicService
                                          model: topic,
                                          audience: audience)
 
+    add_readers(topic: topic, actor: actor, users: users)
+  end
+
+  # Grant resolved invitees topic access with the same guest status and volume
+  # defaults across discussion and poll invitations. Audience notification
+  # permission does not itself authorize granting new guest access.
+  def self.add_readers(topic:, actor:, users:)
+    if users.where.not(id: topic.members.select(:id)).exists?
+      actor.ability.authorize!(:add_guests, topic)
+    end
+
     volume_by_user_id = {}
 
     if topic.group_id
@@ -500,7 +528,6 @@ class TopicService
 
     TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
 
-    topic.update_members_count
     users
   end
 end

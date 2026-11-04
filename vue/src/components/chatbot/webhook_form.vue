@@ -4,6 +4,7 @@ import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import Flash  from '@/shared/services/flash';
 import ChatbotService from '@/shared/services/chatbot_service';
+import { manualUrl } from '@/shared/helpers/manual_url';
 
 export default {
   props: {
@@ -54,11 +55,11 @@ export default {
   computed: {
     url() {
       switch (this.chatbot.webhookKind) {
-      case "slack": return "https://help.loomio.com/en/user_manual/integrations/slack";
-      case "discord": return "https://help.loomio.com/en/user_manual/integrations/discord";
-      case "microsoft": return "https://help.loomio.com/en/user_manual/integrations/microsoft_teams";
-      case "mattermost": return "https://help.loomio.com/en/user_manual/integrations/mattermost";
-      case "webex": return "https://help.loomio.com/en/user_manual/integrations/webex";
+      case "slack": return manualUrl('user_manual/integrations/slack', this.$i18n.locale);
+      case "discord": return manualUrl('user_manual/integrations/discord', this.$i18n.locale);
+      case "microsoft": return manualUrl('user_manual/integrations/microsoft_teams', this.$i18n.locale);
+      case "mattermost": return manualUrl('user_manual/integrations/mattermost', this.$i18n.locale);
+      case "webex": return manualUrl('user_manual/integrations/webex', this.$i18n.locale);
       }
     }
   }

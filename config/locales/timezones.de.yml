@@ -1,0 +1,174 @@
+---
+de:
+  timezones:
+    local: Ortszeit (%{value})
+    regions:
+      Africa/Algiers: Afrika / Algier
+      Africa/Cairo: Afrika / Kairo
+      Africa/Casablanca: Afrika / Casablanca
+      Africa/Harare: Afrika / Harare (Simbabwe)
+      Africa/Johannesburg: Afrika / Johannesburg (Südafrika)
+      Africa/Monrovia: Afrika / Monrovia
+      Africa/Nairobi: Afrika / Nairobi
+      America/Adak: Amerika / Adak (Aleuten)
+      America/Argentina/Buenos_Aires: Amerika / Argentinien / Buenos Aires
+      America/Asuncion: Amerika / Asunción
+      America/Bogota: Amerika / Bogotá
+      America/Cambridge_Bay: Amerika / Cambridge Bay (Nunavut)
+      America/Caracas: Amerika / Caracas
+      America/Chicago: Amerika / Chicago (US-Zentralzeit)
+      America/Chihuahua: Amerika / Chihuahua
+      America/Dawson: Amerika / Dawson (Yukon)
+      America/Dawson_Creek: Amerika / Dawson Creek (British Columbia)
+      America/Denver: Amerika / Denver (US-Gebirgszeit)
+      America/Edmonton: Amerika / Edmonton (Alberta)
+      America/Fort_Nelson: Amerika / Fort Nelson (British Columbia)
+      America/Glace_Bay: Amerika / Glace Bay (Nova Scotia)
+      America/Goose_Bay: Amerika / Goose Bay (Labrador)
+      America/Guatemala: Amerika / Guatemala
+      America/Guyana: Amerika / Guyana
+      America/Halifax: Amerika / Halifax (Nova Scotia)
+      America/Havana: Amerika / Havanna
+      America/Indiana/Indianapolis: Amerika / Indiana / Indianapolis (Indiana)
+      America/Inuvik: Amerika / Inuvik (Nordwest-Territorien)
+      America/Iqaluit: Amerika / Iqaluit (Nunavut)
+      America/Juneau: Amerika / Juneau (Alaska)
+      America/La_Paz: Amerika / La Paz
+      America/Lima: Amerika / Lima
+      America/Los_Angeles: Amerika / Los Angeles (US-Pazifikzeit)
+      America/Mazatlan: Amerika / Mazatlán
+      America/Mexico_City: Amerika / Mexiko-Stadt
+      America/Miquelon: Amerika / Saint-Pierre und Miquelon
+      America/Moncton: Amerika / Moncton (New Brunswick)
+      America/Monterrey: Amerika / Monterrey
+      America/Montevideo: Amerika / Montevideo
+      America/New_York: Amerika / New York (US-Ostküstenzeit)
+      America/Nuuk: Amerika / Nuuk
+      America/Panama: Amerika / Panama
+      America/Phoenix: Amerika / Phoenix (Arizona)
+      America/Puerto_Rico: Amerika / Puerto Rico
+      America/Rankin_Inlet: Amerika / Rankin Inlet (Nunavut)
+      America/Regina: Amerika / Regina (Saskatchewan)
+      America/Resolute: Amerika / Resolute (Nunavut)
+      America/Santiago: Amerika / Santiago
+      America/Sao_Paulo: Amerika / São Paulo
+      America/St_Johns: Amerika / St. John's (Neufundland)
+      America/Swift_Current: Amerika / Swift Current (Saskatchewan)
+      America/Tijuana: Amerika / Tijuana
+      America/Toronto: Amerika / Toronto (Ontario)
+      America/Vancouver: Amerika / Vancouver (Britisch-Kolumbien)
+      America/Whitehorse: Amerika / Whitehorse (Yukon)
+      America/Winnipeg: Amerika / Winnipeg (Manitoba)
+      Antarctica/Troll: Antarktis / Troll-Station (Antarktis)
+      Asia/Almaty: Asien / Almaty
+      Asia/Baghdad: Asien / Bagdad
+      Asia/Baku: Asien / Baku
+      Asia/Bangkok: Asien / Bangkok
+      Asia/Beirut: Asien / Beirut
+      Asia/Chongqing: Asien / Chongqing
+      Asia/Colombo: Asien / Colombo
+      Asia/Dhaka: Asien / Dhaka
+      Asia/Gaza: Asien / Gaza
+      Asia/Hong_Kong: Asien / Hongkong
+      Asia/Irkutsk: Asien / Irkutsk
+      Asia/Jakarta: Asien / Jakarta
+      Asia/Jerusalem: Asien / Jerusalem
+      Asia/Kabul: Asien / Kabul
+      Asia/Kamchatka: Asien / Kamtschatka
+      Asia/Karachi: Asien / Karatschi
+      Asia/Kathmandu: Asien / Kathmandu
+      Asia/Kolkata: Asien / Kolkata (Indien)
+      Asia/Krasnoyarsk: Asien / Krasnojarsk
+      Asia/Kuala_Lumpur: Asien / Kuala Lumpur
+      Asia/Kuwait: Asien / Kuwait
+      Asia/Magadan: Asien / Magadan
+      Asia/Muscat: Asien / Maskat
+      Asia/Novosibirsk: Asien / Nowosibirsk
+      Asia/Rangoon: Asien / Yangon (Myanmar)
+      Asia/Riyadh: Asien / Riad
+      Asia/Seoul: Asien / Seoul
+      Asia/Shanghai: Asien / Shanghai
+      Asia/Singapore: Asien / Singapur
+      Asia/Srednekolymsk: Asien / Srednekolymsk
+      Asia/Taipei: Asien / Taipeh
+      Asia/Tashkent: Asien / Taschkent
+      Asia/Tbilisi: Asien / Tiflis
+      Asia/Tehran: Asien / Teheran
+      Asia/Tokyo: Asien / Tokio
+      Asia/Ulaanbaatar: Asien / Ulaanbaatar
+      Asia/Urumqi: Asien / Ürümqi
+      Asia/Vladivostok: Asien / Wladiwostok
+      Asia/Yakutsk: Asien / Jakutsk
+      Asia/Yekaterinburg: Asien / Jekaterinburg
+      Asia/Yerevan: Asien / Jerewan
+      Atlantic/Azores: Atlantik / Azoren
+      Atlantic/Cape_Verde: Atlantik / Kap Verde
+      Atlantic/South_Georgia: Atlantik / Südgeorgien
+      Australia/Adelaide: Australien / Adelaide (Südaustralien)
+      Australia/Brisbane: Australien / Brisbane (Queensland)
+      Australia/Canberra: Australien / Canberra (Australisches Hauptstadtterritorium)
+      Australia/Darwin: Australien / Darwin (Northern Territory)
+      Australia/Eucla: Australien / Eucla (Westaustralien)
+      Australia/Hobart: Australien / Hobart (Tasmanien)
+      Australia/Lord_Howe: Australien / Lord-Howe-Insel
+      Australia/Melbourne: Australien / Melbourne (Victoria)
+      Australia/Perth: Australien / Perth (Westaustralien)
+      Australia/Sydney: Australien / Sydney (New South Wales)
+      Etc/GMT+12: Sonstige / Internationale Datumsgrenze West (UTC−12)
+      Etc/UTC: Sonstige / Koordinierte Weltzeit (UTC)
+      Europe/Amsterdam: Europa / Amsterdam
+      Europe/Athens: Europa / Athen
+      Europe/Belgrade: Europa / Belgrad
+      Europe/Berlin: Europa / Berlin
+      Europe/Bratislava: Europa / Bratislava
+      Europe/Brussels: Europa / Brüssel
+      Europe/Bucharest: Europa / Bukarest
+      Europe/Budapest: Europa / Budapest
+      Europe/Copenhagen: Europa / Kopenhagen
+      Europe/Dublin: Europa / Dublin
+      Europe/Helsinki: Europa / Helsinki
+      Europe/Istanbul: Europa / Istanbul
+      Europe/Kaliningrad: Europa / Kaliningrad
+      Europe/Kiev: Europa / Kyjiw (Ukraine)
+      Europe/Lisbon: Europa / Lissabon
+      Europe/Ljubljana: Europa / Ljubljana
+      Europe/London: Europa / London
+      Europe/Madrid: Europa / Madrid
+      Europe/Minsk: Europa / Minsk
+      Europe/Moscow: Europa / Moskau
+      Europe/Paris: Europa / Paris
+      Europe/Prague: Europa / Prag
+      Europe/Riga: Europa / Riga
+      Europe/Rome: Europa / Rom
+      Europe/Samara: Europa / Samara
+      Europe/Sarajevo: Europa / Sarajevo
+      Europe/Skopje: Europa / Skopje
+      Europe/Sofia: Europa / Sofia
+      Europe/Stockholm: Europa / Stockholm
+      Europe/Tallinn: Europa / Tallinn
+      Europe/Vienna: Europa / Wien
+      Europe/Vilnius: Europa / Vilnius
+      Europe/Volgograd: Europa / Wolgograd
+      Europe/Warsaw: Europa / Warschau
+      Europe/Zagreb: Europa / Zagreb
+      Europe/Zurich: Europa / Zürich
+      Pacific/Apia: Pazifik / Apia
+      Pacific/Auckland: Pazifik / Auckland (Neuseeland)
+      Pacific/Chatham: Pazifik / Chathaminseln (Neuseeland)
+      Pacific/Easter: Pazifik / Osterinsel (Chile)
+      Pacific/Fakaofo: Pazifik / Fakaofo (Tokelau)
+      Pacific/Fiji: Pazifik / Fidschi
+      Pacific/Gambier: Pazifik / Gambierinseln
+      Pacific/Guadalcanal: Pazifik / Guadalcanal (Salomonen)
+      Pacific/Guam: Pazifik / Guam
+      Pacific/Honolulu: Pazifik / Honolulu (Hawaii)
+      Pacific/Kiritimati: Pazifik / Kiritimati (Kiribati)
+      Pacific/Majuro: Pazifik / Majuro (Marshallinseln)
+      Pacific/Marquesas: Pazifik / Marquesas-Inseln
+      Pacific/Midway: Pazifik / Midwayinseln
+      Pacific/Norfolk: Pazifik / Norfolkinsel
+      Pacific/Noumea: Pazifik / Nouméa (Neukaledonien)
+      Pacific/Pago_Pago: Pazifik / Pago Pago (Amerikanisch-Samoa)
+      Pacific/Pitcairn: Pazifik / Pitcairninseln
+      Pacific/Port_Moresby: Pazifik / Port Moresby (Papua-Neuguinea)
+      Pacific/Tongatapu: Pazifik / Tongatapu (Tonga)

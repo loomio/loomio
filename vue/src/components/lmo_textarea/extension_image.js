@@ -9,6 +9,7 @@ import {
 
 let count = 0;
 import FileUploader from '@/shared/services/file_uploader'
+import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs'
 
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
@@ -212,6 +213,7 @@ export const CustomImage = Image.extend({
     ]
   },
   addProseMirrorPlugins() {
+    const canAttachFiles = this.options.canAttachFiles || (() => true)
     const attachFile = this.options.attachFile
     const attachImageFile = this.options.attachImageFile
     return [
@@ -220,18 +222,14 @@ export const CustomImage = Image.extend({
         props: {
           handleDOMEvents: {
             paste(view, event) {
-              const items = Array.from(event.clipboardData.items)
+              const files = clipboardUploadFiles(event.clipboardData)
 
-              if (items.filter(item => item.getAsFile()).length == 0) {
+              if (files.length === 0) {
                 return
               }
 
               event.preventDefault()
-              const files = items.map(item =>
-                new File([item.getAsFile()],
-                         event.clipboardData.getData('text/plain') || Date.now(),
-                         {lastModified: Date.now(), type: item.type})
-              )
+              if (!canAttachFiles()) { return true }
               const coordinates = null;
               handleUploads({files, view, attachFile, attachImageFile, coordinates})
             },
@@ -247,6 +245,7 @@ export const CustomImage = Image.extend({
               }
               event.preventDefault()
 
+              if (!canAttachFiles()) { return true }
               const coordinates = view.posAtCoords({ left: event.clientX, top: event.clientY })
 
               handleUploads({files: event.dataTransfer.files, view, attachFile, attachImageFile, coordinates})

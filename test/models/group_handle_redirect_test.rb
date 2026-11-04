@@ -117,7 +117,7 @@ class GroupHandleRedirectTest < ActiveSupport::TestCase
       name: "Sub #{hex}",
       parent: @group,
       handle: "#{@group.handle}-sub#{hex}",
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
 
     old_sub_handle = subgroup.handle
@@ -136,13 +136,13 @@ class GroupHandleRedirectTest < ActiveSupport::TestCase
       name: "Sub #{hex}",
       parent: @group,
       handle: "#{@group.handle}-sub#{hex}",
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
     subsubgroup = Group.create!(
       name: "SubSub #{hex}",
       parent: subgroup,
       handle: "#{subgroup.handle}-subsub#{hex}",
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
 
     old_subsub_handle = subsubgroup.handle
@@ -162,7 +162,7 @@ class GroupHandleRedirectTest < ActiveSupport::TestCase
       name: "Sub #{hex}",
       parent: @group,
       handle: "#{@group.handle}-sub#{hex}",
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
 
     old_sub_handle = subgroup.handle

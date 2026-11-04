@@ -8,7 +8,7 @@ class PollTemplateService
         template
       end
     ).concat(
-      example_templates.map do |template|
+      public_example_templates.map do |template|
         template.group_id = group.id
         template.example = true
         template
@@ -22,6 +22,10 @@ class PollTemplateService
 
   def self.example_templates
     build_templates_from(AppConfig.poll_templates.select { |_key, attrs| attrs['example'] })
+  end
+
+  def self.public_example_templates
+    example_templates.reject { |template| template.key == 'question' }
   end
 
   private
@@ -70,12 +74,18 @@ class PollTemplateService
 
     return poll_template unless poll_template.valid?
 
-    if poll_template.key
-      poll_template.group.hidden_poll_templates += Array(poll_template.key)
-      poll_template.key = nil
-    end
+    # Customizing a built-in template replaces it, so hide the original for
+    # the group in the same transaction.
+    PollTemplate.transaction do
+      if poll_template.key
+        group = poll_template.group
+        group.hidden_poll_templates |= [poll_template.key]
+        group.save!
+        poll_template.key = nil
+      end
 
-    poll_template.save!
+      poll_template.save!
+    end
     poll_template
   end
 

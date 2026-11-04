@@ -98,7 +98,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert @another_group.members.exists?(@jennifer.id)
     assert_equal 2, @jennifer.memberships_count
 
-    assert_equal 1, @poll.reload.voters_count
+    assert_equal 1, @poll.reload.vote_count_eligible
     assert_equal 2, @group.reload.memberships_count
     assert_equal 1, @group.reload.pending_memberships_count
     assert_equal 1, @group.reload.admin_memberships_count
@@ -108,6 +108,20 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
 
     assert @patrick.reload.deactivated_at.present?
     assert_equal 2, @jennifer.reload.sign_in_count
+  end
+
+  test "merging people in different subgroups rebuilds the distinct organization total" do
+    subgroup = Group.create!(name: 'Account merge subgroup', parent: @another_group, group_privacy: 'parent_members')
+    subgroup.add_member!(@jennifer)
+    assert_equal 2, @another_group.reload.org_members_count
+
+    MigrateUserWorker.perform_now(@patrick.id, @jennifer.id)
+
+    assert_equal 1, @another_group.reload.org_members_count
+    assert_equal 1, @another_group.memberships_count
+    assert_equal 1, subgroup.reload.memberships_count
+    assert_equal 3, @jennifer.reload.memberships_count
+    assert_equal 0, @patrick.reload.memberships_count
   end
 
   test "does not migrate source login tokens to destination; destroys them" do
@@ -123,5 +137,33 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert_not LoginToken.exists?(token_id), "source login token must be destroyed on merge, not reassigned"
     assert_not LoginToken.where(user_id: @jennifer.id, code: source_code).exists?,
                "the source account's login code must not become valid for the destination"
+  end
+
+  test "migrates source passkeys while preserving each credential user handle" do
+    PasskeyService.ensure_webauthn_id!(@patrick)
+    PasskeyService.ensure_webauthn_id!(@jennifer)
+    source_handle = @patrick.webauthn_id
+    destination_handle = @jennifer.webauthn_id
+    source_passkey = @patrick.passkey_credentials.create!(
+      external_id: "source-passkey-#{SecureRandom.hex(4)}",
+      public_key: "source-public-key",
+      user_handle: source_handle,
+      sign_count: 0,
+      name: "Source passkey"
+    )
+    destination_passkey = @jennifer.passkey_credentials.create!(
+      external_id: "destination-passkey-#{SecureRandom.hex(4)}",
+      public_key: "destination-public-key",
+      user_handle: destination_handle,
+      sign_count: 0,
+      name: "Destination passkey"
+    )
+
+    MigrateUserWorker.perform_later(@patrick.id, @jennifer.id)
+
+    assert_equal @jennifer, source_passkey.reload.user
+    assert_equal source_handle, source_passkey.user_handle
+    assert_equal @jennifer, destination_passkey.reload.user
+    assert_equal destination_handle, destination_passkey.user_handle
   end
 end

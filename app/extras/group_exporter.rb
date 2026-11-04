@@ -63,9 +63,9 @@ class GroupExporter
                         .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
                         .where(topics: { group_id: group_ids })
                when :polls
-                 Poll.kept.joins(:topic).where(topics: { group_id: group_ids })
+                 Poll.kept.includes(:author).joins(:topic).where(topics: { group_id: group_ids })
                when :stances
-                 Stance.joins(:poll)
+                 Stance.includes(:participant).joins(:poll)
                        .joins("LEFT JOIN topics ON topics.id = polls.topic_id")
                        .where(topics: { group_id: group_ids })
                when :outcomes

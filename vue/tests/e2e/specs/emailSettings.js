@@ -12,22 +12,6 @@ module.exports = {
     testUpdate(page)
   },
 
-  'lets_you_update_email_settings_while_logged_out': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('email_settings_as_restricted_user')
-    page.expectNoElement('.email-settings-page__deactivate-card')
-    testUpdate(page)
-  },
-
-  'update_the_email_settings_as_a_restricted_user': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('email_settings_as_restricted_user')
-    page.expectNoElement('.email-settings-page__deactivate-card')
-    testUpdate(page)
-  },
-
   'hides_push_group_settings_without_a_registered_device': (test) => {
     page = pageHelper(test)
 

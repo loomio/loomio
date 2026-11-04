@@ -1,4 +1,37 @@
 module Dev::Scenarios::Group
+  def setup_subgroup_privacy_parent_switching
+    public_parent = create_group
+    secret_parent = Group.new(name: 'Secret planning group', handle: 'secret-planning', group_privacy: 'secret')
+    GroupService.create(group: secret_parent, actor: patrick)
+    sign_in patrick
+    redirect_to group_path(public_parent)
+  end
+
+  def setup_subgroup_parent_member_joining
+    parent = create_group
+    parent.update!(group_privacy: 'closed')
+    subgroup = Group.create!(name: 'Volunteer subgroup', parent: parent, group_privacy: 'parent_members', membership_granted_upon: 'request')
+    subgroup.add_admin! patrick
+    sign_in jennifer
+    redirect_to group_path(subgroup)
+  end
+
+  def setup_subgroup_parent_member_joining_as_outsider
+    setup_subgroup_parent_member_joining
+    sign_in max
+  end
+
+  def setup_public_subgroup_immediate_joining_as_outsider
+    setup_subgroup_parent_member_joining_as_outsider
+    Group.find_by!(name: 'Volunteer subgroup').update!(group_privacy: 'closed')
+  end
+
+  def setup_subgroup_parent_member_joining_with_pending_request
+    setup_subgroup_parent_member_joining
+    subgroup = Group.find_by!(name: 'Volunteer subgroup')
+    MembershipRequest.create!(group: subgroup, requestor: jennifer, introduction: 'I would like to volunteer')
+  end
+
   def setup_secret_group_with_access
     sign_in patrick
     group = Group.create!(name: 'Secret Dirty Dancing Shoes', group_privacy: 'secret')
@@ -27,33 +60,31 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
-  def setup_nonmember_nomination
+  def setup_group_with_vote_weights
     group = create_group
-    group.update!(
-      discussion_privacy_options: 'private_only',
-      membership_granted_upon: 'invitation',
-      non_members_can_start_discussions: true
-    )
-    DiscussionTemplate.create!(
-      group: group,
-      author: patrick,
-      position: -1,
-      process_name: 'Nominate a candidate',
-      process_subtitle: 'Nominate yourself or someone else for a position',
-      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
-      process_introduction_format: 'html',
-      title_placeholder: 'Candidate name and position',
-      description: <<~HTML,
-        <p><strong>Who are you nominating, and for which position?</strong></p>
-        <p>State whether you are nominating yourself or someone else.</p>
-        <p><strong>Why is this person suitable?</strong></p>
-        <p>Describe their relevant experience and the reasons for the nomination.</p>
-      HTML
-      description_format: 'html'
-    )
-
-    sign_in max
+    group.membership_for(emilio).update!(weight: 2, title: 'Treasurer', delegate: true)
+    sign_in patrick
     redirect_to group_path(group)
+  end
+
+  def setup_nonmember_nomination
+    create_nomination_template
+    sign_in max
+    redirect_to group_path(create_group)
+  end
+
+  # Load the new discussion form directly, so the current user's memberships
+  # arrive after the form mounts.
+  def setup_nonmember_nomination_form
+    template = create_nomination_template
+    sign_in max
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{create_group.id}"
+  end
+
+  def setup_member_nomination_form
+    template = create_nomination_template
+    sign_in patrick
+    redirect_to "/d/new?template_id=#{template.id}&group_id=#{create_group.id}"
   end
 
   def setup_group_route_transitions
@@ -68,7 +99,7 @@ module Dev::Scenarios::Group
     group.tags.create!(name: 'Important', color: '#1565c0')
     group.tags.create!(name: 'Other', color: '#2e7d32')
 
-    PollService.create(
+    pending_poll = PollService.create(
       params: {
         group_id: group.id,
         poll_type: 'proposal',
@@ -78,6 +109,11 @@ module Dev::Scenarios::Group
         closing_at: 3.days.from_now
       },
       actor: patrick
+    )
+    StanceService.update(
+      stance: pending_poll.stances.latest.find_by!(participant: emilio),
+      actor: emilio,
+      params: {choice: {'agree' => 1}}
     )
 
     voted_poll = PollService.create(
@@ -126,7 +162,8 @@ module Dev::Scenarios::Group
     create_group.add_member! emilio
     5.times do
       name = Faker::Name.name
-      email = ReceivedEmail.create(
+      create_pending_email(
+        group: create_group,
         body_html: "<html><body>hello everyone.</body></html>",
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
@@ -135,7 +172,6 @@ module Dev::Scenarios::Group
         }
       )
     end
-    ReceivedEmailService.route_all
     redirect_to group_emails_path(create_group)
   end
 
@@ -151,7 +187,8 @@ module Dev::Scenarios::Group
     create_group.add_member! emilio
     5.times do
       name = Faker::Name.name
-      email = ReceivedEmail.create(
+      create_pending_email(
+        group: create_group,
         body_html: "<html><body>hello everyone.</body></html>",
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
@@ -160,7 +197,6 @@ module Dev::Scenarios::Group
         }
       )
     end
-    ReceivedEmailService.route_all
     redirect_to group_emails_path(create_group)
   end
 
@@ -213,6 +249,14 @@ module Dev::Scenarios::Group
     create_subgroup.add_member! jennifer
     another_create_subgroup.add_member! jennifer
     redirect_to group_path(create_another_group)
+  end
+
+  def visit_subgroup_with_inaccessible_parent
+    parent = Group.create!(name: 'Private Parent', group_privacy: 'secret')
+    subgroup = Group.create!(name: 'Accessible Subgroup', parent: parent, group_privacy: 'secret')
+    subgroup.add_member! jennifer
+    sign_in jennifer
+    redirect_to group_path(subgroup)
   end
 
   def setup_group_with_subgroups
@@ -301,6 +345,39 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_with_authored_stv_poll
+    group = create_group
+    group.add_admin! emilio
+    create_another_group
+    PollService.create(params: {
+      title: 'Working group election', poll_type: 'stv', group_id: group.id,
+      poll_option_names: %w[Alex Blair Casey], stv_seats: 1,
+      closing_at: 3.days.from_now
+    }, actor: patrick)
+    sign_in patrick
+    redirect_to group_path(group)
+  end
+
+  def revoke_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    actor = params[:by_admin].present? ? emilio : current_user
+    MembershipService.revoke(membership: poll.group.membership_for(poll.author), actor: actor)
+    head :ok
+  end
+
+  def restore_authored_poll_membership
+    poll = Poll.find_by!(title: 'Working group election')
+    MembershipService.add_users_to_group(users: [poll.author], group: poll.group, inviter: emilio)
+    head :ok
+  end
+
+  def publish_private_poll_update_after_removal
+    poll = Poll.find_by!(title: 'Working group election')
+    PollService.update(poll: poll, actor: emilio, params: {title: 'Private update after removal'})
+    MessageChannelService.publish_models([poll], group_id: poll.group_id)
+    head :ok
+  end
+
   def setup_group_with_no_coordinators
     create_group
     @group.admin_memberships.each{|m| m.update(admin: false)}
@@ -350,5 +427,33 @@ module Dev::Scenarios::Group
   def setup_start_poll_form_from_url
     sign_in patrick
     redirect_to "/p/new/count?group_id=#{create_group.id}&title=testing title"
+  end
+
+  private
+
+  def create_nomination_template
+    create_group.update!(
+      discussion_privacy_options: 'private_only',
+      membership_granted_upon: 'invitation',
+      non_members_can_start_discussions: true
+    )
+    DiscussionTemplate.create!(
+      group: create_group,
+      author: patrick,
+      position: -1,
+      process_name: 'Nominate a candidate',
+      process_subtitle: 'Nominate yourself or someone else for a position',
+      process_introduction: 'Provide the information the selection group needs to understand and compare this nomination.',
+      process_introduction_format: 'html',
+      title_placeholder: 'Candidate name and position',
+      recipient_audience: 'group',
+      description: <<~HTML,
+        <p><strong>Who are you nominating, and for which position?</strong></p>
+        <p>State whether you are nominating yourself or someone else.</p>
+        <p><strong>Why is this person suitable?</strong></p>
+        <p>Describe their relevant experience and the reasons for the nomination.</p>
+      HTML
+      description_format: 'html'
+    )
   end
 end

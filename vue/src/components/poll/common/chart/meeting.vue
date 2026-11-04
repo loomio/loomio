@@ -12,14 +12,14 @@ export default {
   },
 
   data() {
-    return {decidedVoters: []};
+    return {votersCast: []};
   },
 
   created() {
     return this.watchRecords({
       collections: ['users'],
       query: store => {
-        this.decidedVoters = this.poll.decidedVoters();
+        this.votersCast = this.poll.votersCast();
       }
     });
   },
@@ -66,7 +66,7 @@ export default {
       tr
         td.text-medium-emphasis.text-body-medium(v-if="datesAsOptions") {{currentUserTimeZone}}
         td.pr-2.total.text-medium-emphasis.text-body-medium(v-t="'poll_common.votes'")
-        td(v-for="user in decidedVoters" :key="user.id")
+        td(v-for="user in votersCast" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
       tr(v-for="option in poll.results" :key="option.id")
@@ -77,8 +77,8 @@ export default {
         td.total.text-right.pr-2.text-body-medium
           span(v-if="poll.canRespondMaybe") {{option.score/2}}
           span(v-else="poll.canRespondMaybe") {{option.score}}
-        td(v-for="user in decidedVoters" :key="user.id")
-          .poll-meeting-chart__cell(:class="classForScore(option.voter_scores[user.id])")
+        td(v-for="user in votersCast" :key="user.id")
+          .poll-meeting-chart__cell(:class="classForScore(option.scores_by_voter[user.id])")
             | &nbsp;
 </template>
 

@@ -9,6 +9,7 @@ class AppConfig
     providers
     doctypes
     locales
+    time_zones
   ]
 
   BANNED_CHARS = %(\\s:,;\\[\\]'"`<>)
@@ -32,6 +33,60 @@ class AppConfig
 
   def self.default_onboarding_group_id
     ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i
+  end
+
+  def self.local_login_enabled?
+    !ENV.key?('FEATURES_DISABLE_LOCAL_LOGIN') && !ENV.key?('FEATURES_DISABLE_EMAIL_LOGIN')
+  end
+
+  def self.sso_update_user_profile_on_login?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_SSO_UPDATE_USER_PROFILE_ON_LOGIN'].present?
+  end
+
+  def self.sso_disable_edit_user_profile?
+    ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? ||
+      ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?
+  end
+
+  def self.oauth_authorization_url
+    ENV.fetch('OAUTH_AUTH_URL')
+  end
+
+  def self.oauth_scope
+    ENV.fetch('OAUTH_SCOPE')
+  end
+
+  def self.saml_allow_idp_initiated?
+    ENV['SAML_ALLOW_IDP_INITIATED'].present?
+  end
+
+  def self.saml_attribute_email
+    ENV['SAML_ATTR_EMAIL'].presence
+  end
+
+  def self.saml_attribute_name
+    ENV['SAML_ATTR_NAME'].presence
+  end
+
+  def self.saml_attribute_given_name
+    ENV['SAML_ATTR_GIVEN_NAME'].presence
+  end
+
+  def self.saml_attribute_family_name
+    ENV['SAML_ATTR_FAMILY_NAME'].presence
+  end
+
+  def self.saml_idp_metadata
+    ENV['SAML_IDP_METADATA']
+  end
+
+  def self.saml_idp_metadata_url
+    ENV.fetch('SAML_IDP_METADATA_URL')
+  end
+
+  def self.saml_issuer
+    ENV.fetch('SAML_ISSUER', nil)
   end
 
   def self.image_regex
@@ -110,7 +165,7 @@ class AppConfig
       privacy_url: ENV['PRIVACY_URL'],
       canonical_host: ENV['CANONICAL_HOST'],
       reply_hostname: ENV['REPLY_HOSTNAME'],
-      help_url: ENV.fetch('HELP_URL', 'https://help.loomio.com/'),
+      help_url: ENV.fetch('HELP_URL', '/docs/en'),
       icon_src: ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent.svg"),
       favicon16_src: ENV.fetch('THEME_FAVICON_16_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-16.png")),
       favicon32_src: ENV.fetch('THEME_FAVICON_32_SRC', ENV.fetch('THEME_ICON_SRC', "/brand/favicon-yellow-on-transparent-32.png")),
@@ -145,6 +200,13 @@ class AppConfig
     }
   end
 
+  def self.demo_groups_enabled?
+    return false if ENV['LOOMIO_DISABLE_DEMO_GROUPS'].present?
+
+    host = ENV['CANONICAL_HOST'].to_s.downcase
+    host.present?
+  end
+
   def self.app_features
     loomio_subscriptions = ENV['LOOMIO_SUBSCRIPTIONS'].present?
 
@@ -152,13 +214,14 @@ class AppConfig
       env: Rails.env,
       subscriptions: ENV['CHARGIFY_API_KEY'].present? || loomio_subscriptions,
       loomio_subscriptions: loomio_subscriptions,
-      demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
+      demos: demo_groups_enabled?,
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button: !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
-      email_login: !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
+      local_login: local_login_enabled?,
       create_user: !ENV['FEATURES_DISABLE_CREATE_USER'],
+      reveal_email_account_status: ENV['FEATURES_REVEAL_EMAIL_ACCOUNT_STATUS'].present?,
       create_group: !ENV['FEATURES_DISABLE_CREATE_GROUP'],
       public_groups: !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
       help_link: !ENV['FEATURES_DISABLE_HELP_LINK'],
@@ -169,12 +232,11 @@ class AppConfig
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
-      sso_disable_edit_profile: ENV['LOOMIO_SSO_FORCE_USER_ATTRS'].present? || ENV['LOOMIO_DISABLE_EDIT_USER_PROFILE'].present?,
-      sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
+      sso_disable_edit_profile: sso_disable_edit_user_profile?,
+      sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.05).to_f,
       hidden_poll_templates: [],
       transcription: TranscriptionService.available?,
-      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
-      verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
+      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000)
     }
   end
 

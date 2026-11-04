@@ -10,7 +10,7 @@ import BookmarkService from '@/shared/services/bookmark_service';
 
 export default new class StanceService {
   revoke = {
-    name: 'membership_dropdown.remove_from.poll',
+    name: 'poll_common_form.remove_voter',
     canPerform(poll, user) {
       return poll.adminsInclude(Session.user());
     },
@@ -66,18 +66,16 @@ export default new class StanceService {
         dock: 3,
         canPerform() {
           const poll = stance.poll();
-          const topic = poll ? poll.topic() : null;
+          const topic = poll.topic();
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
-          poll && !poll.anonymous &&
-          poll.showResults() &&
-          topic && topic.membersInclude(Session.user()) &&
-          !topic.lockedAt;
+          !poll.anonymous &&
+          (poll.hideResults !== 'until_closed' || poll.closedAt) &&
+          AbilityService.canAddComment(topic);
         },
         perform() {
-          const topic = stance.poll() ? stance.poll().topic() : null;
-          const maxDepth = topic ? topic.maxDepth : 2;
+          const maxDepth = stance.poll().topic().maxDepth;
           if (topic_item.depth === maxDepth) {
             return EventBus.$emit('toggle-reply', stance, topic_item.parentId);
           } else {
@@ -202,7 +200,7 @@ export default new class StanceService {
           },
           text: {
             title: 'poll_remove_vote.title',
-            helptext: 'poll_remove_vote.helptext',
+            helptext: 'poll_remove_vote.helptext_not_voted',
             submit: 'poll_remove_vote.confirm',
             flash: 'poll_remove_vote.success'
           }

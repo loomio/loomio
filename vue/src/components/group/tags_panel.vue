@@ -50,7 +50,7 @@ export default
 
     findRecords() {
       this.topics = Records.topics.collection.chain().
-        find({groupId: {$in: this.group.selfAndSubgroupIds()}}).
+        find({groupId: {$in: this.group.selfAndSubgroupIds()}, discardedAt: null}).
         find({tags: {$contains: this.$route.params.tag}}).
         simplesort('lastActivityAt', true).data();
     }

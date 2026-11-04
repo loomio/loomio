@@ -1,0 +1,27 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 6 - North East, official CandidateVotesPerStageReport_V0001_Ward-6---North-East_06052022_150210.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 3,
+ "valid_votes": 3789,
+ "quota": "948",
+ "stages": [
+  {
+   "votes": {
+    "Jax FINNEGAN": "1007.00000",
+    "Lisa FRANCHI": "313.00000",
+    "Heather MCLEAN": "102.00000",
+    "Steven ROME": "1150.00000",
+    "Willie SAWERS": "991.00000",
+    "Mark SMITH": "100.00000",
+    "Stuart WHITE": "126.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "Jax FINNEGAN",
+    "Steven ROME",
+    "Willie SAWERS"
+   ],
+   "excluded": [],
+   "surplus": null
+  }
+ ]
+}

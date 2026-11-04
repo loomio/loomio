@@ -58,6 +58,43 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     assert results.any? { |r| r['searchable_type'] == 'Outcome' }
   end
 
+  test 'searching a group while signed out returns no results' do
+    discussion = discussions(:public_discussion)
+    discussion.update!(title: 'findme public discussion')
+
+    get :index, params: { query: 'findme', group_id: discussion.group_id }
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('search_results')
+  end
+
+  test 'poll comments stay searchable while until-closed vote reasons wait for closing' do
+    @poll.update!(closed_at: nil, hide_results: 'until_closed')
+    stance = @poll.stances.create!(participant: @user, inviter: @user, latest: true)
+    stance.choice = @poll.poll_option_names.first
+    stance.reason = 'confidential vote reason'
+    StanceService.create(stance: stance, actor: @user)
+    comment = CommentService.create(comment: Comment.new(parent: @poll, body: 'findme ordinary comment'), actor: @user)
+    nested = CommentService.create(comment: Comment.new(parent: comment, body: 'findme nested comment'), actor: @user)
+    ReindexPollWorker.perform_now(@poll.id)
+    assert_not PgSearch::Document.exists?(searchable: stance)
+    sign_in users(:admin)
+
+    [{query: 'findme'}, {author_id: @user.id}].each do |params|
+      get :index, params: params
+      assert_response :success
+      ids = response.parsed_body.fetch('search_results').filter_map { |row| row['searchable_id'] if row['searchable_type'] == 'Comment' }
+      assert_includes ids, comment.id
+      assert_includes ids, nested.id
+      refute_includes response.body, 'confidential'
+    end
+
+    PollService.close(poll: @poll, actor: @user)
+    ReindexPollWorker.perform_now(@poll.id)
+    get :index, params: {query: 'confidential'}
+    assert response.parsed_body.fetch('search_results').any? { |row| row['searchable_type'] == 'Stance' && row['searchable_id'] == stance.id }
+  end
+
   test "standalone poll results do not advertise a discussion sequence" do
     poll = PollService.create(params: {
       title: "standalonefindme poll",
@@ -109,6 +146,34 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
 
     results = JSON.parse(response.body)['search_results']
     refute results.any? { |result| result['discussion_key'] == @discussion.key }
+  end
+
+  test "parent members find public subgroup threads without gaining private thread access" do
+    subgroup = groups(:parent_join_subgroup)
+    subgroup.parent.update!(group_privacy: 'closed')
+    subgroup.update!(group_privacy: 'closed', discussion_privacy_options: 'public_or_private')
+    discussions = [false, true].map do |private|
+      discussion = DiscussionService.create(
+        params: {group_id: subgroup.id, title: 'findme subgroup thread', private: private},
+        actor: users(:subgroup_user)
+      )
+      discussion.update_pg_search_document
+      discussion
+    end
+    public_discussion, private_discussion = discussions
+    assert_not subgroup.is_visible_to_parent_members?
+    sign_in users(:member_normal)
+
+    [{}, {group_id: subgroup.id}, {org_id: subgroup.parent_id}].each do |scope|
+      get :index, params: scope.merge(query: 'findme')
+      assert_response :success
+      ids = JSON.parse(response.body).fetch('search_results').filter_map do |result|
+        result['searchable_id'] if result['searchable_type'] == 'Discussion'
+      end
+      assert_includes ids, public_discussion.id, scope.inspect
+      assert_not_includes ids, private_discussion.id, scope.inspect
+    end
+    assert_not users(:member_normal).can?(:show, private_discussion)
   end
 
   test "respects parent member access to private subgroup discussions" do
@@ -378,7 +443,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
   end
 
   test "applies tag filters to fuzzy matches" do
-    @discussion.topic.update!(tags: [ 'planning' ])
+    @discussion.created_topic_item.update!(tags: [ 'planning' ])
     [ Discussion, Comment, Poll, Outcome ].each(&:rebuild_pg_search_documents)
 
     sign_in @user

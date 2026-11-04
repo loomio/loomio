@@ -32,7 +32,7 @@ export default {
     updateResults() {
       const frag = this.searchFragment.toLowerCase();
       this.searchResults = Records.topics.collection.chain()
-        .find({groupId: this.groupId, topicableType: 'Discussion'})
+        .find({groupId: this.groupId, topicableType: 'Discussion', discardedAt: null})
         .where(t => {
           if (t.id === this.topic.id || !AbilityService.canMoveTopicItems(t)) { return false; }
           if (!frag) { return true; }

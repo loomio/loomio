@@ -1,4 +1,22 @@
 class Api::V1::TopicItemsController < Api::V1::RestfulController
+  def tags
+    item = TopicItem.find(params[:id])
+    TopicItemService.update_tags(topic_item: item, tags: params[:tags], actor: current_user)
+    self.resource = item
+    respond_with_resource
+  end
+
+  # Page matches, then let RecordCache include their bounded display ancestry.
+  # Context rows do not count towards the match page or change its ordering.
+  def tagged
+    load_and_authorize_topic
+    matches = TopicItem.tags_visible.where(topic_id: @topic.id)
+      .where('topic_items.tags @> ARRAY[?]::varchar[]', [params.require(:tag)])
+      .order(:position_key, :id)
+    self.collection = page_collection_bounded(matches)
+    respond_with_collection
+  end
+
   def index
     instantiate_collection
     if params[:include_polls_not_closed].present?

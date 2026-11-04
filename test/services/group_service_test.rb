@@ -49,7 +49,7 @@ class GroupServiceTest < ActiveSupport::TestCase
     subgroup = Group.new(
       name: "Parent-visible subgroup #{SecureRandom.hex(4)}",
       parent: parent,
-      group_privacy: 'closed'
+      group_privacy: 'parent_members'
     )
 
     assert subgroup.is_visible_to_parent_members?
@@ -70,21 +70,31 @@ class GroupServiceTest < ActiveSupport::TestCase
     refute publications.any? { |models, options| models == [subgroup] && options[:group_id] == parent.id }
   end
 
-  test "exports open and closed subgroups for a parent group admin" do
-    parent = create_parent_group(group_privacy: 'secret')
+  test "exports public and parent visible subgroups for a parent group admin" do
+    parent = create_parent_group(group_privacy: 'closed')
     closed_subgroup = create_subgroup(parent: parent, group_privacy: 'closed')
     open_subgroup = create_subgroup(parent: parent, group_privacy: 'open')
+    internal_subgroup = create_subgroup(parent: parent, group_privacy: 'parent_members')
     secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
     joined_secret_subgroup = create_subgroup(parent: parent, group_privacy: 'secret')
     joined_secret_subgroup.add_member!(@user, inviter: joined_secret_subgroup.creator)
 
-    group_ids = capture_group_export_ids(parent, @user)
+    group_ids = GroupService.export_group_ids(group: parent, actor: @user)
 
     assert_includes group_ids, parent.id
     assert_includes group_ids, closed_subgroup.id
     assert_includes group_ids, open_subgroup.id
+    assert_includes group_ids, internal_subgroup.id
     assert_includes group_ids, joined_secret_subgroup.id
     refute_includes group_ids, secret_subgroup.id
+  end
+
+  test "export queues the group so the job selects groups when it runs" do
+    parent = create_parent_group(group_privacy: 'closed')
+
+    assert_enqueued_with(job: GroupExportWorker, args: [parent.id, @user.id]) do
+      GroupService.export(group: parent, actor: @user)
+    end
   end
 
   test "only group admins can export a group" do
@@ -327,15 +337,6 @@ class GroupServiceTest < ActiveSupport::TestCase
       parent: parent,
       group_privacy: group_privacy
     )
-  end
-
-  def capture_group_export_ids(group, actor)
-    group_ids = nil
-    perform_later = ->(ids, _name, _actor_id) { group_ids = ids }
-    GroupExportWorker.stub(:perform_later, perform_later) do
-      GroupService.export(group: group, actor: actor)
-    end
-    group_ids
   end
 
   def assert_subgroup_published_to_parent(subgroup, parent)

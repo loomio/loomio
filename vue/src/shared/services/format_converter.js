@@ -1,30 +1,18 @@
-import {marked} from 'marked';
-import {customRenderer, options} from '@/shared/helpers/marked';
+// Load conversion support only when switching modes. Update the format last,
+// so failed conversion leaves the source and active editor intact. The
+// converted HTML becomes the rich-text editor's seed, which names a fresh
+// collaborative document, so cached drafts from before the switch don't return.
 
-export var convertToHtml = function(model, field) {
-  marked.setOptions(Object.assign({renderer: customRenderer()}, options));
-  model[`${field}Format`] = "html";
-  return model[field] = marked(model[field] || '');
-};
+export async function convertToHtml(model, field) {
+  const { markdownToHtml } = await import('./markdown_conversion');
+  const html = markdownToHtml(model[field] || '');
+  model[field] = html;
+  model[`${field}Format`] = 'html';
+}
 
-export var convertToMd = (model, field) => import('turndown').then(function(Turndown) {
-  // import('turndown-plugin-gfm').then (TurndownPluginGfm) ->
-  //   gfm = TurndownPluginGfm.gfm
-
-  const converter = Turndown.default({
-    headingStyle: 'atx',
-    hr: '---',
-    codeBlockStyle: 'fenced'
-  });
-
-  converter.addRule('mentions', {
-    filter: 'span',
-    replacement(content, node, options) {
-      return '@' + node.getAttribute('data-mention-id');
-    }
-  }
-  );
-
-  model[`${field}Format`] = "md";
-  return model[field] = converter.turndown(model[field] || '');
-});
+export async function convertToMd(model, field, editor) {
+  const { documentToMarkdown } = await import('./markdown_conversion');
+  const markdown = documentToMarkdown(editor.getJSON());
+  model[field] = markdown;
+  model[`${field}Format`] = 'md';
+}

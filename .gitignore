@@ -111,3 +111,7 @@ yarn-error.log*
 
 # Generated help site
 /public/docs/
+
+# Localized documentation screenshots are generated into the client asset cache.
+/public/docs-screenshots/
+/public/vue/

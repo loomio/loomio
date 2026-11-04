@@ -1,12 +1,120 @@
 require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
+  test 'legacy archives rebuild renamed participation counters and preserve notification audiences' do
+    group, admin, voter = create_detached_export_group
+    poll_template = PollTemplate.create!(title: 'Legacy reminder', poll_type: 'poll', group: group, author: admin,
+      process_name: 'Decision', process_subtitle: 'Choose an option', notify_on_closing_soon: 'voters_uncast')
+    poll = PollService.create(params: {
+      title: 'Legacy participation export', poll_type: 'poll', group_id: group.id,
+      poll_template_id: poll_template.id, notify_on_closing_soon: 'voters_uncast',
+      poll_option_names: %w[Yes No], closing_at: 1.day.from_now, notify_on_open: false
+    }, actor: admin)
+    stance = poll.stances.latest.find_by!(participant: voter)
+    stance.choice = 'Yes'
+    StanceService.create(stance: stance, actor: voter)
+    template = DiscussionTemplate.create!(title: 'Legacy recipients', group: group, author: admin,
+      process_name: 'Discussion', process_subtitle: 'Share ideas', recipient_audience: 'voters_uncast')
+    notification = Notification.create!(kind: 'poll_announced', subject: poll, actor: admin,
+      recipient_audience: 'voters_cast', recipient_user_ids: [voter.id])
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    archive.each do |item|
+      record = item.fetch('record')
+      if %w[polls poll_templates].include?(item['table'])
+        record['notify_on_closing_soon'] = 'undecided_voters'
+      end
+      if item['table'] == 'polls'
+        {'vote_count_eligible' => 'voters_count', 'vote_count_uncast' => 'undecided_voters_count',
+         'vote_count_none_of_the_above' => 'none_of_the_above_count', 'scores_by_option' => 'stance_counts'}.each do |current, legacy|
+          record[legacy] = record.delete(current)
+        end
+        GroupExportService::POLL_SETTING_COLUMNS_RENAMED.each { |legacy, current| record[legacy] = record.delete(current) }
+      elsif item['table'] == 'notifications' && record['id'] == notification.id
+        record['recipient_audience'] = 'decided_voters'
+      elsif item['table'] == 'discussion_templates' && record['id'] == template.id
+        record['recipient_audience'] = 'undecided_voters'
+      end
+    end
+    File.write(filename, archive.map(&:to_json).join("\n"))
+
+    group.destroy!
+    GroupExportService.import(filename)
+    imported = Poll.where.not(id: poll.id).find_by!(title: poll.title)
+    assert_equal 2, imported.vote_count_eligible
+    assert_equal 1, imported.vote_count_cast
+    assert_equal 1, imported.vote_count_uncast
+    assert_equal [1, 0], imported.scores_by_option
+    assert_equal 'voters_uncast', imported.notify_on_closing_soon
+    assert_equal poll.slice(:score_min, :score_max, :choice_count_min, :choice_count_max, :points_per_voter),
+      imported.slice(:score_min, :score_max, :choice_count_min, :choice_count_max, :points_per_voter)
+    assert_equal 'voters_uncast', PollTemplate.find_by!(group_id: imported.group_id, title: poll_template.title).notify_on_closing_soon
+    imported_notification = Notification.find_by!(subject: imported, kind: 'poll_announced')
+    assert_equal 'voters_cast', imported_notification.recipient_audience
+    assert_equal [voter.id], imported_notification.recipient_user_ids
+    assert_equal 'voters_uncast', DiscussionTemplate.where.not(id: template.id).find_by!(title: template.title).recipient_audience
+  end
+
+  test 'portable exports do not copy delivery transport identity' do
+    group, admin, member = create_detached_export_group
+    notification = Notification.create!(kind: 'membership_created', subject: group, actor: admin,
+      recipient_user_ids: [member.id])
+    delivery = NotificationDelivery.create!(notification: notification, recipient: member, channel: 'email',
+      email_message_id: 'unique-local-message@loomio.test',
+      provider_message_id: 'ses-transport-identity', delivered_at: Time.current)
+    event = delivery.events.create!(kind: 'complained', source_key: 'test:complaint', occurred_at: Time.current)
+    EmailSuppressionService.record!(email: member.email, reason: 'complaint', source_key: 'test:export', event: event)
+    filename = GroupExportService.export(group.all_groups, group.name)
+    archive = File.readlines(filename, chomp: true).map { |line| JSON.parse(line) }
+    refute archive.any? { |item| %w[email_suppressions notification_delivery_events].include?(item['table']) }
+    record = archive.find { |item| item['table'] == 'notification_deliveries' && item.dig('record', 'id') == delivery.id }.fetch('record')
+    %w[email_message_id provider_message_id].each do |column|
+      refute record.key?(column), column
+    end
+    assert record.fetch('delivered_at')
+
+    assert_difference 'NotificationDelivery.count', 1 do
+      GroupExportService.import(filename, reset_keys: true)
+    end
+    imported = NotificationDelivery.where.not(id: delivery.id).order(:id).last!
+    assert_nil imported.email_message_id
+    assert_nil imported.provider_message_id
+  end
+
+  test 'old user exports cannot restore retired email counters or transport blocks' do
+    user = users(:member_normal)
+    record = GroupExportService.export_record(user, 'users').merge('bounces_count' => 9, 'complaints_count' => 3)
+    record['key'] = "legacy-email-export-#{SecureRandom.hex(8)}"
+    record['email'] = "legacy-email-import-#{SecureRandom.hex(4)}@example.com"
+    record['username'] = nil
+    Tempfile.create(['legacy-email-counts', '.json']) do |file|
+      file.puts({table: 'users', record: record}.to_json)
+      file.flush
+      assert_no_difference 'EmailSuppression.count' do
+        GroupExportService.import(file.path)
+      end
+    end
+    imported = User.find_by!(key: record.fetch('key'))
+    refute imported.email_delivery_blocked?
+  end
+
   test "simultaneous same-name exports never share a temporary file" do
     freeze_time do
       filenames = 2.times.map { GroupExportService.export_filename_for("Same group") }
       assert_equal 2, filenames.uniq.length
     end
   end
+
+  test "export filenames stay in the temporary directory for group names containing path separators" do
+    ['../../etc/passwd', '/etc/passwd', '..\\..\\secrets', 'A group/with\\separators'].each do |name|
+      filename = GroupExportService.export_filename_for(name)
+
+      assert_equal '/tmp', File.dirname(File.expand_path(filename)), name
+      assert_equal '.json', File.extname(filename), name
+      assert_match(/\A[\w-]+\.json\z/, File.basename(filename), name)
+    end
+  end
+
   test "notification recipient audiences remap embedded group ids" do
     migrate_ids = { "users" => {}, "groups" => { 42 => 84 } }
 
@@ -244,6 +352,30 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert_empty archive.select { |item| %w[anonymous_ballots anonymous_ballot_choices anonymous_poll_voters legacy_anonymous_vote_reasons].include?(item["table"]) }
   end
 
+  test "import rebuilds counts when an open anonymous poll is omitted from its thread" do
+    group, admin, voter = create_detached_export_group
+    discussion = DiscussionService.create(params: {title: 'Imported thread', group_id: group.id}, actor: admin)
+    create_detached_export_poll(
+      group: group, admin: admin, voter: voter, topic_id: discussion.topic_id,
+      title: 'Omitted open anonymous poll', close: false
+    )
+    assert_equal 1, group.reload.polls_count
+    assert_equal 1, discussion.topic.reload.active_polls_count
+
+    filename = GroupExportService.export(group.all_groups, group.name)
+    GroupExportService.import(filename, reset_keys: true)
+    imported_group = Group.where(name: group.name).where.not(id: group.id).sole
+    assert_equal 0, imported_group.polls_count
+    assert_equal 2, imported_group.memberships_count
+    assert_equal 1, imported_group.admin_memberships_count
+    assert_equal 0, imported_group.pending_memberships_count
+    assert_equal 2, imported_group.org_members_count
+    imported_group.topics.each do |topic|
+      assert_equal 0, topic.active_polls_count
+      assert_equal topic.topic_readers.where.not(last_read_at: nil).count, topic.seen_by_count
+    end
+  end
+
   test "direct-topic export and import preserve detached anonymous records" do
     group, admin, voter = create_detached_export_group
     discussion = DiscussionService.create(
@@ -311,6 +443,10 @@ class GroupExportServiceTest < ActiveSupport::TestCase
 
     assert_equal user.id, User.find_by!(key: user.key).id
     assert Membership.find_by!(user: user, group: group)
+    assert_equal 1, group.reload.memberships_count
+    assert_equal 0, group.pending_memberships_count
+    assert_equal 1, group.org_members_count
+    assert_equal 1, user.reload.memberships_count
   end
 
   test "export, truncate specific records, and import recreates the scenario" do
@@ -322,6 +458,16 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     filename = GroupExportService.export(group.all_groups, group.name)
     # Exercise archives that list dependent records before their parents.
     archive = File.readlines(filename).map { |line| JSON.parse(line) }
+    # Exports from before counter retirement must still import. These stale
+    # derived values must not override the actual imported records.
+    archive.each do |data|
+      columns = {
+        'groups' => %w[closed_polls_count delegates_count discussion_templates_count subgroups_count],
+        'topics' => %w[anonymous_polls_count closed_polls_count members_count],
+        'tags' => %w[taggings_count]
+      }.fetch(data['table'], [])
+      columns.each { |column| data['record'][column] = 999 }
+    end
     archive.sort_by! do |record|
       if record['table'] == 'stance_choices'
         0
@@ -353,7 +499,6 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
     comment_ids = TopicItem.where(topic_id: group_topic_ids, itemable_type: 'Comment').pluck(:itemable_id)
 
-    StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
     NotificationDelivery.where(
       recipient_type: "User",
@@ -443,12 +588,28 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     imported_poll.update_counts!
     imported_sub_poll.update_counts!
 
-    assert_equal [1, 1], imported_poll.stance_counts
-    assert_equal [0, 0], imported_sub_poll.stance_counts
+    assert_equal [1, 1], imported_poll.scores_by_option
+    assert_equal [0, 0], imported_sub_poll.scores_by_option
 
     # Templates
     DiscussionTemplate.find_by!(title: 'discussion_template', group: imported_group, author: imported_admin)
     PollTemplate.find_by!(title: 'poll_template', group: imported_group, author: imported_admin)
+
+    assert_equal 2, imported_group.memberships_count
+    assert_equal 2, imported_group.org_members_count
+    assert_equal 1, imported_group.admin_memberships_count
+    assert_equal 0, imported_group.pending_memberships_count
+    assert_equal 2, imported_group.polls_count
+    assert_equal 1, imported_group.discussions_count
+    assert_equal 1, imported_group.poll_templates_count
+    assert_equal 1, GroupSerializer.new(imported_group).subgroups_count
+    assert_equal 2, imported_admin.memberships_count
+    assert_equal 2, imported_member.memberships_count
+    assert_equal 0, imported_discussion.versions_count
+    assert_equal 0, imported_comment.versions_count
+    imported_group.all_topic_items.each do |item|
+      assert_equal item.children.count, item.child_count
+    end
 
     # Reactions
     Reaction.find_by!(reactable: imported_discussion, user: imported_member)

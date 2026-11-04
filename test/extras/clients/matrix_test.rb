@@ -16,6 +16,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
 
   def stub_join(room_id_or_alias, returned_room_id: nil)
     stub_request(:post, "#{@server}/_matrix/client/v3/join/#{CGI.escape(room_id_or_alias)}")
+      .with(headers: { "Authorization" => "Bearer #{@token}" })
       .to_return(
         status: 200,
         body: {room_id: returned_room_id || room_id_or_alias}.to_json,
@@ -30,6 +31,7 @@ class Clients::MatrixTest < ActiveSupport::TestCase
       %r{#{Regexp.escape(@server)}/_matrix/client/v3/rooms/.+/send/m.room.message/.+}
     end
     stub_request(:put, pattern)
+      .with(headers: { "Authorization" => "Bearer #{@token}" })
       .to_return(status: 200, body: {topic_item_id: "$evt"}.to_json)
   end
 

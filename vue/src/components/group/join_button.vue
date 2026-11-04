@@ -74,7 +74,7 @@ export default
 
   computed: {
     label() {
-      if (this.hasRequestedMembership) {
+      if (this.hasRequestedMembership && !this.canJoinGroup) {
         return 'join_group_button.membership_requested';
       } else if (this.declineReason) {
         return 'join_group_button.request_membership_again';
@@ -122,6 +122,6 @@ v-alert.my-4.text-center(
     v-if="canJoinGroup || canRequestMembership || hasRequestedMembership"
     color="primary"
     @click="join"
-    :disabled="hasRequestedMembership"
+    :disabled="hasRequestedMembership && !canJoinGroup"
   ) {{ t(label) }}
 </template>

@@ -1,0 +1,283 @@
+---
+title: Paramètres
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_file: docs/help/en/user_manual/polls/settings/index.md
+translated:
+  provider: codex/gpt-6.1-sol
+  'on': '2026-11-04'
+sections:
+  introduction: 145c23b2412eff98
+  setting-up-a-proposal-or-poll: 9e0347d976f79179
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
+  voting-options: d0ea31745ce8b651
+  edit-voting-options: ef0d61585b34fbd6
+  opening-time: f8544bec7cd35ca5
+  more-settings: fd837a51b81cbc13
+  reminder: c11a5bdd82cd3b84
+  anonymous-voting: 35f5392ee8870076
+  vote-reason: b1ebf2700ce8248b
+  hide-results: 6dc7bf0b34c89a68
+  managing-polls: b26fc41e19371d54
+  edit-poll: ddf392426410ec5a
+  notification-history: f132def867659f30
+  export-poll: 3c015ed01e8e7a6a
+  print: dbe152fdea17fc00
+  delete: fa13f1461f6b4e5f
+  save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
+generated:
+  introduction: ba7b949b80a72354
+  setting-up-a-proposal-or-poll: ed8004c6ef8f091b
+  proposal-and-poll-templates: 21ec25830a8b53c7
+  add-content: 67c956be3f2d00e6
+  voting-options: d1893c3bdfa74deb
+  edit-voting-options: dfe67094a9cbd0cf
+  opening-time: 29f7963773c02155
+  more-settings: ea1e48c372fdea5d
+  reminder: 31128268a2f87920
+  anonymous-voting: 02a8f51bddbacd9b
+  vote-reason: 4e8a95a3905977c2
+  hide-results: 01cff7cf95d67fe9
+  managing-polls: d4841c826f9ca251
+  edit-poll: ed3ebb4902f5ff63
+  notification-history: eb53d703cf1c8e5a
+  export-poll: e44eea9d9839d374
+  print: e4ad8ccc4ccfff16
+  delete: 101eacf14a0a98be
+  save-bookmark: d5b24c58cd7adffe
+  save-as-template: aa8558d6d0cba97a
+  who-can-vote: 89075dbf5f00dc55
+  editing-settings-before-voting-opens: 8501b7f1b4ce1f34
+title_source: 74a883a037bc227f
+title_generated: '01923df7a446c42f'
+---
+
+<!-- translation-section: introduction -->
+
+# Paramètres des propositions et des sondages
+
+<!-- translation-section: setting-up-a-proposal-or-poll -->
+
+## Configurer une proposition ou un sondage
+
+<!-- translation-section: proposal-and-poll-templates -->
+
+### Modèles de propositions et de sondages
+
+Choisissez le modèle de proposition que vous souhaitez utiliser.
+
+![](proposal_templates.png)
+
+![Le formulaire de proposition, du titre et des détails aux options de vote, à la durée, aux personnes autorisées à voter et au panneau Plus de paramètres replié](proposal_new.png)
+
+<!-- translation-section: add-content -->
+
+<a id="add-content"></a>
+
+### Titre et détails
+
+**Groupe :** Vérifiez que le bon groupe est sélectionné pour votre proposition ou votre sondage.
+
+**Titre :** Donnez à votre proposition ou à votre sondage un titre court et pertinent.
+
+**Détails :** Expliquez ce que vous demandez aux personnes et fournissez suffisamment de détails pour que chacun comprenne ce que signifie son vote.  
+
+Les modèles prédéfinis contiennent des indications pour vous aider à rédiger une proposition. Utilisez-les ou ajoutez vos propres détails.
+
+Lorsque vous faites une proposition, précisez vos attentes et décrivez les effets qu’elle aura si elle est adoptée.
+
+Vous pouvez joindre des fichiers, insérer des images et des tableaux, et ajouter des titres et des listes avec les [boutons de mise en forme](/en/user_manual/discussions/formatting). Ces outils vous permettent de partager des informations complémentaires et de faciliter la lecture des propositions plus longues.
+
+<!-- translation-section: voting-options -->
+
+### Options de vote
+
+Chaque modèle de proposition ou de sondage propose des options de vote.
+
+Selon le modèle, vous pouvez modifier, supprimer, réorganiser ou ajouter des options de vote pour les adapter à votre processus de décision.
+
+- Utilisez l’icône de crayon pour modifier une option de vote
+- Utilisez l’icône de corbeille pour supprimer les options de vote dont vous n’avez pas besoin
+- Utilisez la poignée pour changer l’ordre des options de vote
+- Ajoutez des options de vote avec **Ajouter une option** lorsque le modèle permet des options personnalisées
+
+![](vote_options.png)
+
+<!-- translation-section: edit-voting-options -->
+
+### Modifier les options de vote
+Vous pouvez configurer les options de vote de nombreuses façons pour les adapter à la manière dont votre organisation prend ses décisions.
+
+Utilisez l’icône de crayon à côté de l’option de vote pour ouvrir la fenêtre de modification :
+
+**Nom de l’option :** Un nom court pour l’option.
+
+**Icône :** Choisissez une icône pour l’option, comme un pouce levé, un pouce baissé, une abstention ou un blocage.
+
+**Signification :** Une phrase qui explique ce que signifie le choix de cette option.
+
+**Question sur la raison du vote :** Une question qui invite les électeurs à expliquer leur raisonnement ou à reconsidérer leur position.
+
+![](proposal_edit_option.png)
+
+<!-- translation-section: opening-time -->
+
+### Durée
+
+Par défaut, le vote est ouvert immédiatement lorsque vous créez le sondage. Si vous souhaitez programmer l’ouverture du vote à une date ultérieure, décochez **Le vote est ouvert immédiatement** et choisissez une date et une heure d’ouverture.
+
+Cela permet de laisser du temps à la discussion avant l’ouverture du vote, ou de vérifier qu’un sondage ou une proposition est correctement configuré et programmé pour le moment voulu.
+
+Par exemple, si votre groupe doit voter sur plusieurs décisions lors d’une prochaine assemblée, vous pouvez préparer les sondages et ajouter les électeurs à l’avance, puis programmer leur ouverture au début de la période de vote. Les personnes peuvent consulter les sondages avant leur ouverture, mais ne peuvent pas voter à l’avance.
+
+Lorsqu’une heure d’ouverture est programmée pour un sondage, vous pouvez ajouter des électeurs avant l’ouverture du vote. Ils recevront une notification à l’ouverture du vote, plutôt qu’au moment de leur ajout.
+
+Pour ouvrir le vote avant l’heure prévue, sélectionnez **Modifier le sondage**, cochez **Le vote est ouvert immédiatement** et enregistrez.
+
+**Notifier les électeurs à l’ouverture du sondage :** Lorsque cette case est cochée (par défaut), tous les électeurs reçoivent une notification à l’ouverture du vote. Décochez-la si vous souhaitez ouvrir le vote sans envoyer de notifications.
+
+**Date et heure de clôture :** Choisissez la date et l’heure de clôture de votre sondage.
+
+Laissez suffisamment de temps aux personnes pour voter. Vous pouvez programmer la clôture de la proposition avant une réunion ou éviter une clôture pendant le week-end, afin que les personnes reçoivent un rappel au moment opportun. Si nécessaire, vous pouvez clôturer le sondage plus tôt ou repousser l’heure de clôture.
+
+<!-- translation-section: who-can-vote -->
+
+### Qui peut voter ?
+
+Choisissez qui peut voter dans le sondage.
+
+- **Quelqu'un dans le groupe** (ou **Toute personne dans le fil**) : toutes les personnes ayant accès au sondage peuvent voter, y compris celles qui rejoignent le groupe ou le fil plus tard.
+- **Personnes sélectionnées uniquement :** seules les personnes que vous ajoutez peuvent voter. Utilisez ce paramètre lorsque seuls certains membres doivent voter, par exemple les membres d’un conseil d’administration ou d’un comité.
+
+Après le démarrage d’un sondage **Personnes sélectionnées uniquement**, **Gérer les électeurs** s’ouvre pour vous permettre d’ajouter des électeurs. Vous pouvez ajouter ou retirer des électeurs ultérieurement. Consultez [Gérer les électeurs](/en/user_manual/polls/manage_voters).
+
+<!-- translation-section: more-settings -->
+
+## Autres paramètres
+
+![](settings_advanced.png)
+
+<!-- translation-section: reminder -->
+
+### Rappel
+Envoyez une notification « Clôture prochaine » 24 heures avant la clôture du sondage. Cela peut permettre aux personnes de voir comment les autres ont voté et de reconsidérer leur propre vote, ou simplement d’augmenter la participation au sondage.
+
+Options du paramètre :
+- Personne
+- Auteur
+- Personnes en attente (par défaut)
+- Tous les électeurs
+
+Pour un sondage anonyme d’une durée d’au moins 24 heures, Loomio envoie automatiquement un rappel aux personnes ayant le droit de voter qui n’ont pas encore voté, au cours des dernières 24 heures. Ce rappel ne peut pas être modifié dans les paramètres du sondage.
+
+<!-- translation-section: anonymous-voting -->
+
+### Vote anonyme
+Si cette option est activée, les votes sont enregistrés séparément de l’identité des électeurs. Les résultats apparaissent après la clôture du vote, et les électeurs ne peuvent pas ajouter de raison, consulter le vote qu’ils ont soumis ou le modifier.
+
+Consultez [Vote anonyme](/en/user_manual/polls/anonymous_voting) pour savoir comment l’identité des électeurs est séparée des votes soumis, quelles informations sont conservées et quelles sont les limites de cette protection.
+
+> [!WARNING]
+> Une fois le sondage démarré, vous ne pouvez pas le modifier pour le rendre anonyme ou désactiver le paramètre anonyme. Vous ne pouvez pas rouvrir un sondage anonyme après sa clôture.
+
+<!-- translation-section: vote-reason -->
+
+### Raison du vote
+Il peut être utile de comprendre pourquoi les personnes ont voté comme elles l’ont fait. Ce paramètre vous permet de les inviter à partager leurs réflexions lorsqu’elles votent.
+
+Les paramètres disponibles dépendent du modèle :
+
+- **Facultatif** laisse les électeurs choisir s’ils souhaitent donner une raison
+- **Nécessaire pour être en désaccord ou bloquer** exige une raison lorsque l’option choisie utilise l’icône de vote Désaccord ou Blocage
+- **Requis en cas de veto** exige une raison lorsque l’option choisie utilise l’icône de vote Blocage
+- **Requis** exige que chaque électeur donne une raison
+- **Désactivé** supprime le champ de raison du vote
+
+![](vote_reason_options.png)
+
+Les paramètres conditionnels dépendent de l’icône de vote plutôt que du nom de l’option. Ils s’appliquent toujours si vous renommez Désaccord en Objection, par exemple. Le modèle Consentement utilise par défaut **Nécessaire pour être en désaccord ou bloquer**, tandis que le modèle Consensus utilise par défaut **Requis en cas de veto**. Les autres modèles utilisent par défaut **Facultatif**. L’auteur du sondage peut modifier ce paramètre pour un sondage donné.
+
+**Limiter la raison à 500 caractères maximum :** Des raisons de vote courtes sont plus faciles à comprendre. Un ensemble de raisons concises constitue une ressource utile pour prendre une décision. Ce paramètre est coché par défaut. Décochez-le pour autoriser des raisons plus longues.
+
+<!-- translation-section: hide-results -->
+
+### Masquer les résultats
+
+Si vous souhaitez que les personnes votent sans savoir comment les autres ont voté, vous pouvez masquer les résultats du sondage.
+
+Lorsque les résultats sont masqués jusqu’à ce qu’un vote soit exprimé, les personnes peuvent voir les choix de vote et les raisons après avoir voté.
+
+Lorsque les résultats sont masqués jusqu’à la clôture du vote, les réponses aux votes et les mentions dans les raisons des votes sont désactivées jusqu’à la clôture du sondage. Vous pouvez repousser l’heure de clôture tant que le sondage est ouvert, mais vous ne pouvez pas le rouvrir après sa clôture.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Modifier les paramètres avant l’ouverture du vote
+
+Les personnes autorisées à modifier un sondage peuvent modifier ses détails et ses paramètres, notamment le vote anonyme et la visibilité des résultats, avant l’ouverture du vote. Une fois le vote ouvert, le paramètre d’anonymat ne peut plus être modifié et les résultats masqués jusqu’à la clôture ne peuvent pas être révélés à l’avance.
+
+Les sondages anonymes masquent toujours les résultats jusqu’à la clôture du vote.
+
+<!-- translation-section: managing-polls -->
+
+## Gérer les sondages
+
+Ouvrez le menu à trois points en bas à droite du sondage.
+
+![](proposal_edit.png)
+
+<!-- translation-section: edit-poll -->
+
+### Modifier le sondage
+
+Utilisez **Modifier le sondage** pour modifier le contenu ou les paramètres du sondage.
+
+<!-- translation-section: save-as-template -->
+
+### Enregistrer comme modèle
+
+Utilisez **Enregistrer comme modèle** dans le menu d’actions d’un sondage pour réutiliser son contenu, ses options de vote, ses explications et ses paramètres. Vérifiez le formulaire de modèle prérempli, donnez un nom et un sous-titre au modèle, puis sélectionnez **Enregistrer le modèle**. Les personnes du groupe peuvent ensuite le choisir lors de la création d’un nouveau sondage.
+
+Les administrateurs du groupe peuvent enregistrer des modèles. Les membres peuvent également le faire lorsque **Les membres peuvent créer des modèles** est activé dans les permissions du groupe. Consultez [Modèles de sondage](/en/user_manual/polls/poll_templates) pour plus de détails.
+
+<!-- translation-section: notification-history -->
+
+### Historique des notifications
+
+L’**Historique des notifications** indique qui a reçu une notification et si chaque notification a été lue.
+
+![](proposal_notification_history.png)
+
+<!-- translation-section: export-poll -->
+
+### Exporter le sondage
+
+Utilisez **Exporter** pour télécharger l’état et les résultats du sondage dans un fichier de tableur (.csv), afin d’obtenir des données sans mise en forme pour les analyser ou les archiver.
+
+<!-- translation-section: print -->
+
+### Imprimer
+
+Utilisez **Imprimer** dans les actions du fil pour ouvrir un document HTML imprimable. Vous pouvez l’imprimer ou l’enregistrer au format PDF pour le publier ou l’archiver.
+
+![](proposal_print.png#width-80)
+
+<!-- translation-section: delete -->
+
+### Supprimer
+
+L’action **Supprimer** supprime le sondage. Il vous sera d’abord demandé de confirmer que vous souhaitez supprimer le sondage.
+
+Assurez-vous de vouloir supprimer le sondage. Il n’existe aucune option de restauration.
+
+Après la suppression, un marqueur **Elément supprimé** reste dans le fil.
+
+![](proposal_delete.png)
+
+<!-- translation-section: save-bookmark -->
+
+### Enregistrer le signet
+
+Utilisez **Enregistrer le signet** pour ajouter le sondage à vos signets et y accéder rapidement par la suite.

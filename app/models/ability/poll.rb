@@ -4,13 +4,18 @@ module Ability::Poll
 
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
+      user.deactivated_at.nil? &&
       poll.active? &&
+      user.can?(:show, poll) &&
+      # Public visibility does not preserve a departed group member's vote.
+      (poll.group_id.nil? || poll.topic.members_include?(user)) &&
       (
-        if poll.detached_anonymous?
+        if poll.anonymous?
           poll.anonymous_poll_voters.where(ballot_submitted: false).exists?(voter_id: user.id)
         else
-          poll.unmasked_voters.exists?(user.id) ||
-            (!poll.specified_voters_only && poll.members.exists?(user.id))
+          # Voting always updates an existing stance. Members of open polls get
+          # theirs when they join, which fixes their vote weight up front.
+          poll.voters_unmasked.exists?(user.id)
         end
       )
     end
@@ -18,26 +23,18 @@ module Ability::Poll
     can [:export], ::Poll do |poll|
       next false unless user.can?(:show, poll)
 
-      voted = poll.stances.latest.decided.exists?(participant_id: user.id)
-      poll.results_visible?(voted: voted)
+      poll.results_available?
     end
 
-    can :receipts, ::Poll do |poll|
-      next false unless poll.group_id
-      next poll.admins.exists?(user.id) if poll.detached_anonymous?
-
-      if AppConfig.app_features[:verify_participants_admin_only]
-        poll.anonymous? && poll.admins.exists?(user.id)
-      else
-        poll.anonymous? && (
-          poll.members.exists?(user.id) ||
-          poll.stances.latest.exists?(participant_id: user.id)
-        )
-      end
+    # The anonymous electorate is visible to everyone who can see the results.
+    # Anonymous polls hide results until they close, so this is after
+    # closing. Rows never include ballot choices or voting times.
+    can :view_anonymous_voters, ::Poll do |poll|
+      poll.anonymous? && user.can?(:show, poll) && poll.results_available?
     end
 
     can [:show], ::Poll do |poll|
-      PollQuery.visible_to(user: user).exists?(poll.id)
+      PollQuery.visible_to(user: user, topic_id: poll.topic_id).exists?(poll.id)
     end
 
     can [ :create ], ::Poll do |poll|
@@ -46,7 +43,7 @@ module Ability::Poll
       (topic.topicable_type != 'Poll' || topic.topicable_id.nil?) &&
       group.enabled? &&
       !topic.locked_at &&
-      (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
+      (!topic.polls_one_at_a_time? || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
       (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user)) ||
        topic.admins_include?(user) || (topic.members_can_raise_motions && topic.members_include?(user)))
@@ -96,6 +93,7 @@ module Ability::Poll
 
     can :reopen, ::Poll do |poll|
       poll.closed? &&
+      poll.hide_results != 'until_closed' &&
       !poll.anonymous? &&
       !poll.topic.locked_at &&
       poll.admins.exists?(user.id)

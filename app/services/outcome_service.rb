@@ -9,7 +9,7 @@ class OutcomeService
                            actor: actor)
 
     users = nil
-    Outcome.transaction do
+    outcome.poll.with_topic_lock do
       users = UserInviter.where_or_create!(actor: actor,
                                            model: outcome,
                                            emails: params[:recipient_emails],
@@ -37,12 +37,13 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
+    AttachmentPermissionService.authorize!(record: outcome, actor: actor)
     outcome.assign_attributes(author: actor)
     unless outcome.valid?
       Sentry.metrics.count("outcome.create_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
       return outcome
     end
-    topic_item = Outcome.transaction do
+    topic_item = outcome.poll.with_topic_lock do
       outcome.poll.outcomes.update_all(latest: false)
       outcome.save!
 
@@ -75,7 +76,6 @@ class OutcomeService
     end
 
     Sentry.metrics.count("outcome.create")
-    EventBus.broadcast 'outcome_create', outcome, actor
     on_topic_item&.call(topic_item)
     outcome
   end
@@ -89,15 +89,15 @@ class OutcomeService
                            model: outcome,
                            actor: actor)
 
+    AttachmentPermissionService.authorize!(record: outcome, actor: actor, params: params)
     outcome.assign_attributes_and_files(params.slice(:review_on, :statement, :statement_format, :event_summary, :event_location, :files, :image_files, :link_previews, :poll_option_id))
     unless outcome.valid?
       Sentry.metrics.count("outcome.update_failed", attributes: { columns: outcome.errors.attribute_names.join(',') })
       return outcome
     end
 
-    Outcome.transaction do
+    outcome.poll.with_topic_lock do
       outcome.save!
-      outcome.update_versions_count
 
       users = UserInviter.where_or_create!(actor: actor,
                                            emails: params[:recipient_emails],
@@ -126,7 +126,6 @@ class OutcomeService
     end
 
     Sentry.metrics.count("outcome.update")
-    EventBus.broadcast 'outcome_update', outcome, actor
     MessageChannelService.publish_topic_model(outcome)
     outcome
   end

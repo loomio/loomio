@@ -79,7 +79,7 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: false,
       },
-      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|files|img|join|invitations|system|rails|slack|oauth|facebook|google|docs|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|contact_messages|css)': {
+      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|files|img|join|invitations|system|rails|slack|oauth|facebook|google|docs|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|contact_messages|css|vuetify-layers.css)': {
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
@@ -120,8 +120,9 @@ export default defineConfig({
     // iOS 16.3, so transpile syntax that its module parser cannot load.
     target: 'safari16',
     sourcemap: true,
+    // Vite owns this directory; generated docs screenshots live separately.
     emptyOutDir: true,
-    outDir: '../public/client3',
+    outDir: '../public/vue',
 
     // Prevent Vite from treating Nightwatch HTML reports as entries
     rollupOptions: {
@@ -134,7 +135,7 @@ export default defineConfig({
 
   experimental: {
     renderBuiltUrl(filename) {
-      return '/client3/' + filename;
+      return '/vue/' + filename;
     }
   }
 });

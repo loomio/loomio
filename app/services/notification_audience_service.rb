@@ -43,17 +43,17 @@ class NotificationAudienceService
       raise CanCan::AccessDenied unless topic&.readers&.exists?
       topic.readers
     when "voters"
-      raise CanCan::AccessDenied unless poll && poll.voters_count.to_i.positive?
-      poll.unmasked_voters
-    when "decided_voters"
+      raise CanCan::AccessDenied unless poll && poll.vote_count_eligible.to_i.positive?
+      poll.voters_unmasked
+    when "voters_cast"
       authorize_voter_status_audience!(poll)
-      poll.unmasked_decided_voters
-    when "undecided_voters"
+      poll.voters_cast_unmasked
+    when "voters_uncast"
       authorize_voter_status_audience!(poll)
-      poll.unmasked_undecided_voters
+      poll.voters_uncast_unmasked
     when "non_voters"
       raise CanCan::AccessDenied unless poll
-      raise CanCan::AccessDenied if poll.detached_anonymous?
+      raise CanCan::AccessDenied if poll.anonymous?
       poll.non_voters
     when nil then User.none
     else
@@ -84,13 +84,14 @@ class NotificationAudienceService
     topic = topic_for(model)
     poll = poll_for(model)
 
-    candidates << { id: "topic", kind: "topic" } if topic&.readers&.exists?
+    # Group threads offer the group instead; "Everyone in the thread" only makes sense in direct threads.
+    candidates << { id: "topic", kind: "topic" } if topic && topic.group_id.blank? && topic.readers.exists?
 
-    if poll&.persisted? && poll.voters_count.to_i.positive?
+    if poll&.persisted? && poll.vote_count_eligible.to_i.positive?
       candidates << { id: "voters", kind: "voters" }
-      if !poll.detached_anonymous? && poll.decided_voters_count.to_i.positive? && poll.undecided_voters_count.to_i.positive?
-        candidates << { id: "decided_voters", kind: "decided_voters" }
-        candidates << { id: "undecided_voters", kind: "undecided_voters" }
+      if !poll.anonymous? && poll.vote_count_cast.to_i.positive? && poll.vote_count_uncast.to_i.positive?
+        candidates << { id: "voters_cast", kind: "voters_cast" }
+        candidates << { id: "voters_uncast", kind: "voters_uncast" }
       end
     end
 
@@ -114,8 +115,8 @@ class NotificationAudienceService
 
   def self.authorize_voter_status_audience!(poll)
     raise CanCan::AccessDenied unless poll
-    raise CanCan::AccessDenied if poll.detached_anonymous?
-    unless poll.decided_voters_count.to_i.positive? && poll.undecided_voters_count.to_i.positive?
+    raise CanCan::AccessDenied if poll.anonymous?
+    unless poll.vote_count_cast.to_i.positive? && poll.vote_count_uncast.to_i.positive?
       raise CanCan::AccessDenied
     end
   end

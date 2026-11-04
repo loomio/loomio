@@ -139,6 +139,8 @@ ca:
     manage_subscription: Gestiona la subscripció
     amount: Import
   loomio_tags:
+    show_tags_from_other_groups: Mostra etiquetes d'altres grups
+    parent_group_and_subgroups_in_this_organization: Grup principal i subgrups d'aquesta organització
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
@@ -175,17 +177,15 @@ ca:
     only_show_tags_in_this_group: Mostra només les etiquetes d'aquest grup
   poll_types:
     proposal: proposta
-    count: optar a
-    check: control de sentit
+    count: inscripció
+    check: tempteig
     poll: enquesta
-    dot_vote: vot limitat
-    meeting: enquesta de temps
+    dot_vote: vot per punts
+    meeting: enquesta d'horari
     ranked_choice: vot preferencial
     score: vot amb puntuació
     question: ronda de preguntes
     stv: Eleccions STV
-  timezones:
-    local: Hora local (%{value})
   common:
     value: "%{value}"
     admin_menu: Menú d'administració
@@ -248,6 +248,7 @@ ca:
       open: Obert
       closed: Tancat
       private: Privat
+      parent_members: Visible al grup principal
       secret: Secret
     selected: Seleccionat
     today: avui
@@ -340,6 +341,7 @@ ca:
       unredact: Restaurar
       export_json: Exporta JSON
       import_json: Importa json
+      save_as_template: Desa com a plantilla
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -361,11 +363,18 @@ ca:
       flash: S'ha enviat un correu electrònic de verificació!
       helptext_and_signout: Podeu fusionar el compte de <strong>%{sourceEmail}</strong> amb el de <strong>%{targetEmail}</strong> . Feu clic a Verifica i s'enviarà un correu electrònic de verificació a %{targetEmail} per iniciar el procés. Es tancarà la sessió perquè pugueu iniciar la sessió com a compte de destinació per completar la fusió.
       flash_and_signout: Correu electrònic de verificació enviat a %{targetEmail}. Ara has tancat la sessió i pots iniciar-la com a compte de destinació per completar la combinació.
+      generic_helptext: Introduïu l'adreça electrònica de l'altre compte. Si aquest compte existeix, Loomio li enviarà un correu electrònic amb instruccions per confirmar la fusió.
+      email_label: Correu electrònic d'un altre compte
+      send_verification: Enviar correu electrònic de verificació
+      generic_flash_and_signout: Si un compte utilitza aquesta adreça electrònica, s'ha enviat un correu electrònic de verificació. Ara has tancat la sessió i pots continuar amb l'altre compte.
+      destination_helptext: Aquest compte (%{sourceEmail}) es fusionarà amb el compte de destinació. Introduïu l'adreça electrònica del compte de destinació. Si existeix, Loomio enviarà un correu electrònic a aquesta adreça per confirmar la fusió.
+      destination_email_label: Correu electrònic del compte de destinació
     email_taken: Aquest correu ja està associat a un altre usuari. És el vostre correu electrònic?
     find_out_more: Troba'n més.
     placeholder_modal_text: |
       <p> Si voleu combinar dos comptes, introduiu la direcció de correu electrònic (la que pertany a l'altre compte) al camp de correu electrònic del vostre perfil, i seguiu les intruccions que apareixeran a continuació.</p>
       <p>Necessiteu ajuda? <a href="/contact" target="_blank">Contacti amb nosaltres</a>.
+    email_may_belong_to_another_account: Si aquesta adreça pertany a un altre compte, podeu fusionar els comptes
   emoji_picker:
     search: Cerca
     common: Usats sovint
@@ -763,12 +772,6 @@ ca:
     revoke_admin: Revoca l'administrador
     make_delegate: Fer delegat
     revoke_delegate: Revocar delegat
-  notification_models:
-    comment: Comenta a
-    poll: 'enquesta:'
-    outcome: 'resultat:'
-    stance: 'votar:'
-    discussion: 'discussió:'
   notifications:
     header: Notificacions
     no_notifications: No teniu cap notificació
@@ -782,17 +785,17 @@ ca:
       membership_request_approved: "%{actor} ha aprovat la teva sol·licitud per unir-te a %{title}"
       new_comment: "%{actor} ha comentat a: %{title}"
       new_coordinator: "%{actor} et va convertir en administrador de %{title}"
-      outcome_announced: "%{actor} ha compartit un resultat de %{poll_type}: %{title}"
-      outcome_created: "%{actor} ha compartit un resultat de %{poll_type}: %{title}"
-      outcome_updated: "%{actor} ha actualitzat el resultat %{poll_type}: %{title}"
-      outcome_review_due: 'És hora de revisar el resultat de: %{title}'
+      outcome_announced: "%{actor} ha publicat una conclusió de %{poll_type}: %{title}"
+      outcome_created: "%{actor} ha publicat una conclusió de %{poll_type}: %{title}"
+      outcome_updated: "%{actor} ha actualitzat la conclusió de %{poll_type}: %{title}"
+      outcome_review_due: 'És hora de revisar la conclusió de: %{title}'
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tancant en 24 hores: %{title}"
       poll_closing_soon_author: 'El teu %{poll_type} tancarà d''aquí a 24 hores: %{title}'
       poll_created: "%{actor} va iniciar un %{poll_type}: %{title}"
       poll_edited: "%{actor} ha actualitzat el %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha tancat: %{title}"
-      poll_expired_author: 'Comparteix el resultat del teu %{poll_type}: %{title}'
+      poll_expired_author: 'Comparteix la conclusió de la teva %{poll_type}: %{title}'
       poll_option_added: "%{actor} ha afegit opcions a %{title}"
       poll_reopened: "%{actor} ha reobert el %{poll_type}: %{title}"
       poll_reminder: "%{actor} us recorda que voteu a %{title}"
@@ -849,7 +852,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió"
       new_discussion: "%{actor} ha iniciat una discussió"
       new_comment: "%{actor} ha comentat en una discussió"
-      outcome_updated: "%{actor} ha actualitzat el resultat"
+      outcome_updated: "%{actor} ha actualitzat la conclusió"
       thread_locked: "%{actor} ha bloquejat el fil"
       membership_request_declined: La teva sol·licitud per unir-te a %{title} ha estat rebutjada
     hints:
@@ -958,7 +961,7 @@ ca:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
     send_poll: Envia %{type}
-    send_outcome: Envia resultat
+    send_outcome: Envia la conclusió
     cannot_reveal_when_anonymous: Ho sentim, no podem revelar qui ha votat o no en una enquesta anònima.
     group_notification_history: Historial d'invitacions del grup
     poll_notification_history: Historial de notificacions de les enquestes
@@ -982,13 +985,13 @@ ca:
     new_discussion: "%{name} ha convidat %{length} persones al fil:"
     discussion_announced: "%{name} ha convidat %{length} persones al fil:"
     poll_created: "%{name} ha convidat %{length} persones a votar:"
-    outcome_created: "%{name} ha compartit un resultat amb %{length} persones:"
-    outcome_announced: "%{name} ha compartit un resultat amb %{length} persones:"
+    outcome_created: "%{name} ha compartit una conclusió amb %{length} persones:"
+    outcome_announced: "%{name} ha compartit una conclusió amb %{length} persones:"
     announcement_created: "%{name} ha convidat %{length} persones al fil:"
     discussion_edited: "%{name} ha editat el fil i ha notificat a %{length} persones:"
     poll_edited: "%{name} ha editat una enquesta i ha notificat a %{length} persones:"
-    outcome_edited: "%{name} ha editat un resultat i ha notificat a %{length} persones:"
-    outcome_updated: "%{name} ha editat un resultat i ha notificat a %{length} persones:"
+    outcome_edited: "%{name} ha editat una conclusió i ha notificat %{length} persones:"
+    outcome_updated: "%{name} ha editat una conclusió i ha notificat %{length} persones:"
     poll_closing_soon: 'El recordatori de tancament de l''enquesta de %{name} va notificar a %{length} persones:'
     poll_reminder: "%{name} va recordar a %{length} persones que votessin:"
     audiences:
@@ -996,10 +999,10 @@ ca:
       everyone_in_the_group: Tothom del grup
       topic: Tothom que sigui part del fil
       voters: Tothom que estigui convidat a la votació
-      decided_voters: Tothom que ja hagi votat
-      undecided_voters: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
       delegates_of_group: Delegats de %{name}
+      everyone_who_voted: Tothom que ha votat
+      people_who_have_not_voted: Persones que no han votat
     form:
       group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
       invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
@@ -1041,7 +1044,7 @@ ca:
         title: Notifica les edicions
         helptext: A qui voleu notificar aquesta actualització?
       outcome_announced:
-        title: Comparteix el resultat
+        title: Comparteix la conclusió
         helptext: Resumiu els resultats del procés, incloent acords als que s'ha arribat o qüestions que hagin sortit a la llum.
       anyone_can_participate: Tothom que tingui l'enllaç pot participar
       placeholder: Podeu introduir noms o adreces de correu
@@ -1071,7 +1074,7 @@ ca:
       has_not_read_thread: No ha visualitzat el fil
       has_not_joined_yet: Encara no s'ha unit
       has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
-      discussion_admin: Administrador de la discussió
+      discussion_admin: Admin del fil
       has_not_read_discussion: No ha vist la discussió
     group_form:
       search_placeholder: Busca gent...
@@ -1085,6 +1088,8 @@ ca:
     topic_notification_history: Historial de notificacions de fils
     notification_history: Historial de notificacions
   action_dock:
+    add_to_timeline: Afegeix a la línia de temps
+    remove_from_timeline: Elimina de la línia de temps
     actions_menu: Menú d'accions
     more_actions: Més accions
     react: Reacciona
@@ -1111,10 +1116,10 @@ ca:
     reply_to_comment: Respon
     fork_comment: Bifurca el fil
     translate_comment: Tradueix el comentari
-    edit_outcome: Edita el resultat
-    announce_outcome: Notifica gent d'aquest resultat
-    announce_outcome_active: "(Encara no s'ha notificat a ningú d'aquest resultat)"
-    translate_outcome: Tradueix el resultat
+    edit_outcome: Edita la conclusió
+    announce_outcome: Notifica aquesta conclusió
+    announce_outcome_active: "(Encara no s'ha notificat aquesta conclusió a ningú)"
+    translate_outcome: Tradueix la conclusió
     show_history: Mostra l'historial d'edició
     edited: Editat
     show_edits: Mostra les edicions
@@ -1163,6 +1168,9 @@ ca:
     thread_markdown_copied: S'ha copiat el Markdown del fil
     move_thread_v2: Mou el fil
     more: Més
+    download_markdown: Descarregar Markdown
+    markdown: Markdown
+    vote_before_export: Vota abans d'exportar. Aquest fil té una enquesta que amaga els resultats fins que votes.
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -1335,7 +1343,7 @@ ca:
       loud_aria_description: 'Heu configurat les notificacions d''aquest grup en volum alt. Rebreu correus electrònics sempre que que hi hagi activitat. '
       loud_message: Rebreu correus electrònics de tota l'activitat de "%{name}."
       normal: 'Rebre correus només per l''activitat important: Fils nous, propostes, resultats,etc.'
-      normal_aria_description: Heu configurat les notificacions d'aquest grup en volum normal. Només rebreu correus electrònics quan hi hagi activitat important, com ara que es crei un fil nou, es plantegi una proposta, o s'estableixi un resultat.
+      normal_aria_description: Has configurat les notificacions d'aquest grup en volum normal. Només rebràs correus electrònics quan hi hagi activitat important, com ara que es creï un fil nou, es plantegi una proposta o s'estableixi una conclusió.
       normal_message: Només rebre correus electrònics dels esdeveniments importants de "%{name}."
       quiet: No rebreu correus amb relació a aquest grup. Es mostrarà l'activitat a la consola.
       quiet_aria_description: Heu configurat les notificacions d'aquest grup en volum baix. No rebreu correus electrònics amb relació a aquest grup. Es mostrarà l'activitat del grup  al vostre tauler
@@ -1384,7 +1392,7 @@ ca:
     change_cover_image: canviar la imatge de la portada
     change_logo: canviar el logotip
     permissions_explaination: 'Hi ha dos nivells de pertinença que una persona pot tenir a un grup: administrador i membre. Els administradors poden editar la configuració del grup, convertir altres persones en administradors i realitzar totes les accions que s''indiquen a continuació.'
-    parent_group: Grup de pares
+    parent_group: Grup principal
     new_organisation: Nova organització
     new_group: Nou grup
     new_subgroup: Nou subgrup
@@ -1424,6 +1432,9 @@ ca:
     confirm_change_to_public: Si continueu, tots els fils d'aquest grup es faran públics a internet.
     confirm_change_to_private_discussions_only: Si continueu, tots els fils públics d'aquest grup passaran a ser privats.
     profile: Perfil
+    subgroup_name_and_content_are_public: Qualsevol pot trobar aquest subgrup i llegir-ne els fils
+    subgroup_name_is_public_and_threads_are_private: Qualsevol pot trobar aquest subgrup; els fils són privats
+    subgroup_is_visible_to_parent_members: Els membres de %{parent} poden trobar aquest subgrup; els fils són privats
     subgroup_privacy_is_open_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són públics.
     subgroup_privacy_is_closed_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Tots els fils són privats.
     subgroup_privacy_is_closed_public_threads_description: Tothom pot trobar aquest subgrup i demanar unir-s'hi. Només els membres poden veure qui pertany al grup. Els fils poden ser públics o privats.
@@ -1431,10 +1442,9 @@ ca:
     subgroup_privacy_is_secret_description: Només els membres convidats poden trobar aquest grup, veure qui hi pertany i veure els fils.
     advanced_settings: Configuració avançada
     how_do_people_join: Com s'uneix la gent?
-    membership_granted_upon_request: Tothom es pot unir al grup.
-    membership_granted_upon_approval: Tothom pot sol·licitar unir-se però és necessària l'aprovació.
-    membership_granted_upon_invitation: Només amb invitació.
-    membership_granted_upon_approval_secret_parent: 'Tothom de  %{parent}  pot demanar d''unir-se al grup<strong>enviant una sol·licitud</strong>  '
+    join_without_approval: Uneix-te sense aprovació
+    request_to_join: Demana unir-te
+    invitation_only: Només amb invitació
     permissions: Permisos
     thread_privacy: Privacitat dels fils
     public_threads: Només fils públics
@@ -1442,8 +1452,8 @@ ca:
     public_or_private_threads: Permet fils públics i privats
     private_threads: Només els membres poden veure els fils
     allow_public_threads: Permet els fils públics en aquest grup.
-    parent_members_can_see_discussions: Els membres de %{parent} poden veure els fils privats
-    parent_members_can_see_discussions_help: Permet als membres del grup principal veure, però no participar-hi, fils i enquestes dins d'aquest grup
+    parent_group_members_can_see_private_threads: Els membres del grup principal poden veure els fils privats
+    parent_group_members_can_see_private_threads_help: Permet als membres de %{parent} veure els fils i les enquestes d'aquest grup, però no participar-hi
     members_can_announce: Els membres poden notificar a tots els membres del grup
     members_can_announce_help: Permet als membres notificar a tots els membres del grup sobre un fil o una enquesta
     members_can_add_members: Els membres poden convidar membres
@@ -1527,7 +1537,7 @@ ca:
       request_ignored_success: Sol·licitud d'afiliació ignorada
       request_declined_success: Sol·licitud d'adhesió rebutjada
     decline: Rebutjar
-    decline_request: Rebutjar la sol·licitud de membre
+    decline_request: Rebutja la sol·licitud d'afiliació
     decline_reason: Motiu del rebuig
     decline_help: Si rebutges, envia el motiu al sol·licitant per correu electrònic. Pot enviar una nova sol·licitud. Si ignores, tanca la sol·licitud sense notificar-li-ho.
   invitation_form:
@@ -1606,8 +1616,9 @@ ca:
     title_helptext:
       group: Aquest títol es mostrarà al costat del nom de %{name} dins d'aquest grup. Utilitzeu la funció per fer saber el seu rol als usuaris.
     title_label: Títol
-    title_placeholder: 'Per exemple: "coordinador" o "moderador"'
+    title_placeholder: 'Per exemple: «Admin» o «Facilitador»'
     updated: S'ha actualitzat el títol de membre
+    weight_label: Pes del vot
   user_name_modal:
     user_name_updated: Nom d'usuari actualitzat
     set_user_name: Estableix el nom d'usuari
@@ -1663,6 +1674,7 @@ ca:
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
     bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
+    translations_are_made_by_machine: Les traduccions són automàtiques. Si una paraula és incorrecta o poc clara, escriu a %{email} i ho corregirem.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -1670,7 +1682,6 @@ ca:
     insert_embedded_url: Incrusta un vídeo
   change_picture_form:
     title: Estableix la foto de perfil
-    helptext: Podeu penjar la vostra foto de perfil, o en cas de tenir  a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, utilitzar-lo.
     use_initials: Utilitza les inicials
     use_gravatar: Utilitza el gravatar
     use_uploaded: Penja una foto nova
@@ -1778,7 +1789,6 @@ ca:
       all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
-      undecided: Esteu indecís
     threads_from:
       group: FIls de
       pinned: Fils fixats
@@ -1858,7 +1868,7 @@ ca:
     n_more: Carrega %{count} respostes
     add_comment: Afegeix comentari
     add_poll: Afegeix enquesta
-    add_outcome: Afegeix resultat
+    add_outcome: Afegeix una conclusió
     comment: Comentari
     facilitate: Organitza
     start_decision: Començar la decisió
@@ -1903,6 +1913,8 @@ ca:
     comment_length_max_help: Deixeu-ho en blanc si no hi ha límit de temes
     comment_length_max_description: Fomenta els comentaris concisos establint una longitud màxima
     comment_length_max_hint: Màxim de caràcters per comentari. Deixeu-ho en blanc si no hi ha límit.
+    only_admins_can_add_attachments: Només els admins poden afegir fitxers adjunts
+    only_one_poll_at_a_time: Només una enquesta alhora
   delete_thread_form:
     title: Elimina el fil
     body: Esteu segur que voleu eliminar aquest fil?
@@ -1962,13 +1974,13 @@ ca:
     consent_title: Consentiment
     consensus_title: Consens
     proposal_title: Proposta
-    count_title: Optar a
-    check_title: Comprovació de sentit
+    count_title: Inscripció
+    check_title: Tempteig
     poll_title: Enquesta
     meeting: Reunió
     score_title: Enquesta per puntuació
-    dot_vote_title: Punt votar
-    meeting_title: enquesta de temps
+    dot_vote_title: Vot per punts
+    meeting_title: Enquesta d'horari
     ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
     majority_title: Majoria
@@ -2004,6 +2016,19 @@ ca:
     vote_share_requirement: Requisit de quota de vot
     for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
     for_the_poll_to_be_valid: Perquè %{poll_type} sigui vàlid, aquesta opció ha de rebre…
+    points_cast: Punts emesos
+    eligible_vote_weight: Pes del vot amb dret a vot
+    vote_weight_cast: Pes del vot emès
+    name_gte_eligible_vote_weight: "%{name} necessita com a mínim un %{percent}% del pes del vot amb dret a vot"
+    name_lte_eligible_vote_weight: "%{name} no pot superar el %{percent}% del pes del vot amb dret a vot"
+    name_gte_vote_weight_cast: "%{name} necessita com a mínim un %{percent}% del pes del vot emès"
+    name_lte_vote_weight_cast: "%{name} no pot superar el %{percent}% del pes del vot emès"
+    total_assigned_vote_weight: Pes total del vot assignat
+    weighted_votes_cast: Vots ponderats emesos
+    name_gte_assigned_vote_weight: "%{name} necessita com a mínim un %{percent}% del pes total del vot assignat"
+    name_lte_assigned_vote_weight: "%{name} no pot superar el %{percent}% del pes total del vot assignat"
+    name_gte_weighted_votes_cast: "%{name} necessita com a mínim un %{percent}% dels vots ponderats emesos"
+    name_lte_weighted_votes_cast: "%{name} no pot superar el %{percent}% dels vots ponderats emesos"
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -2064,8 +2089,8 @@ ca:
     participate: Participeu
     vote: Vota
     votes: Vots
-    update_outcome: Actualitza el resultat
-    outcome: Resultat
+    update_outcome: Actualitza la conclusió
+    outcome: Conclusió
     outcomes: Resultats
     statement: Declaració
     change_your_stance: Edita la resposta
@@ -2082,7 +2107,7 @@ ca:
     share_count: Comparteix la verificació
     start_poll: Comença una decissió
     publish_poll: Comparteix l'enquesta
-    share_outcome: Comparteix el resultat
+    share_outcome: Comparteix la conclusió
     view_all: Visualitza-ho tot
     save_changes: Desa
     change_vote: Canvia el teu vot
@@ -2114,6 +2139,16 @@ ca:
     status: Estat
     your_vote_is_requested: Es demana el vostre vot
     browse_example_make_a_copy_hint: "<b>Feu clic a la icona de còpia</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
+    view_votes: Veure vots
+    weighted_votes: Vots ponderats
+    weighted_points: Punts ponderats
+    pct_of_weighted_votes: "% de vots ponderats"
+    pct_of_weighted_points: "% de punts ponderats"
+    weighted_mean: Mitjana ponderada
+    pct_of_eligible_vote_weight: "% del pes del vot amb dret a vot"
+    pct_of_vote_weight_cast: "% del pes del vot emès"
+    pct_of_assigned_vote_weight: "% del pes del vot assignat"
+    reuse_voting_options_and_settings: Les plantilles permeten a tothom del teu grup reutilitzar opcions de vot, explicacions i configuració. Revisa el contingut d'exemple abans de desar i tria la plantilla quan iniciïs una enquesta nova
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2171,7 +2206,7 @@ ca:
     invitations: Invitacions
     requests: Sol·licituds
     admin: Admin
-    guest: Visita
+    guest: Convidat
     sharable_link: Enllaç per compartir
     last_seen: Vist per darrer cop %{date}
     invited_by_name: Convidat per %{name}
@@ -2182,6 +2217,8 @@ ca:
     delegate_popover: Un delegat és un membre del grup amb dret de vot
     delegates: Delegats
     no_results: No s'han trobat membres
+    edit_vote_weights: Edita el pes dels vots
+    vote_weights_are_defaults: Aquests pesos de vot predeterminats s'apliquen als vots nous. Els canvis aquí no afecten els pesos de vot ja emesos.
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus
@@ -2230,10 +2267,11 @@ ca:
     legacy_vote_reasons: Motius dels vots anteriors
     legacy_vote_reasons_description: Els motius dels vots emesos mitjançant el format de votació anònima antic es mostren com a text sense format
     anonymous_voting_participant_notice: La votació és anònima. No podeu revisar ni canviar el vostre vot després d'enviar-lo. Els resultats no estaran disponibles fins que s'hagi tancat la votació.
+    votes_have_different_weights: Els vots en aquesta enquesta tenen pesos diferents, per la qual cosa alguns compten més que altres.
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
-    calendar_invite: 'Inclou una invitació al calendari en aquest resultat '
+    calendar_invite: Inclou una invitació de calendari amb aquesta conclusió
     poll_option_id: Hora de la reunió
     helptext_on: Els usuaris podran afegir aquesta reunió al seu calendari
     helptext_off: No s'enviarà cap invitació per la reunió
@@ -2246,7 +2284,7 @@ ca:
     location_placeholder: On tindrà lloc aquesta reunió?
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
-    helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
+    helptext: Segur que vols tancar aquesta %{poll_type} abans d'hora i compartir una conclusió?
     close_poll_type: Tanca %{poll_type}
     poll_type_closed: "%{poll_type} tancat"
   poll_common_reopen_form:
@@ -2277,18 +2315,14 @@ ca:
     started_by: Iniciat per %{name}
   poll_common_votes_panel:
     vote_removed: S'ha eliminat el vot
-    undecided: Indecís
     newest_first: El més recent primer
     oldest_first: El més antic primer
-    priority_first: Accepta primer
+    priority_first: D'acord primer
     priority_last: Bloqueja primer
-    undecided_first: Indecisos primer
     no_votes_yet: Encara no s'ha votat
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
     name_or_username: Nom o nom d'usuari
-    cast: Emès
-    uncast: No emès
     reason_redacted: Motiu redactat
     redact_reason_title: Voleu eliminar el motiu del vot?
     redact_reason_helptext: El motiu pel qual el text i els fitxers adjunts s'ocultaran, però el vot romandrà als resultats
@@ -2298,34 +2332,30 @@ ca:
     unredact_reason_helptext: El motiu pel qual el text i els fitxers adjunts tornaran a ser visibles
     unredact_reason_confirm: Restaurar la raó
     unredact_reason_success: Motiu del vot restaurat
-  poll_common_undecided_panel:
-    show_undecided: Mostra %{count} indecisos
-    show_invitations: Mostra les invitacions pendents
-    undecided_users: Indecis (%{count})
-    invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
-    invitation_count_plural: "%{count} persones addicionals han estat convidades a participar-hi per correu electrònic"
-  poll_common_undecided_user:
-    reminded: Recordatori enviat!
-    reminder_sent: S'ha enviat la notificació de recordatori
+    all_voters: Tots els votants
+    vote_weight_column: Pes del vot
+    stance: Vota
+    participation_records_restricted: Podeu veure qui hi ha participat després del tancament de la votació
+    vote_weight: Pes del vot %{weight}
   poll_common_set_outcome_panel:
     enter_outcome: Introduir resultat
     poll_type: Aquest %{poll_type} s'ha tancat. Preneu-vos el temps per considerar els resultats i compartir-ne un perquè la gent sàpiga què passarà després.
-    enter_an_outcome: Introdueix un resultat
+    enter_an_outcome: Introdueix una conclusió
   poll_common_outcome_form:
     review_due_in_days: Revisar la decisió al cap de quants dies?
     review_date: Data de revisió
     review_date_hint: Estableix una data per revisar la decisió (opcional)
-    who_to_notify: A qui voleu notificar aquest resultat? (opcional)
+    who_to_notify: A qui vols notificar aquesta conclusió? (opcional)
     outcome_statement_template: Plantilla de declaració de resultats
-    new_title: Introdueix un resultat
-    update_title: Actualitza el resultat
-    outcome_created: Resultat creat
-    outcome_updated: Resultat actualitzat
+    new_title: Comparteix la conclusió
+    update_title: Actualitza la conclusió
+    outcome_created: Conclusió creada
+    outcome_updated: Conclusió actualitzada
     statement_placeholder: Resumiu les respostes i expliqueu què passarà després
     you_will_be_notified: Se't notificarà el dia de la revisió.
-    submit: Comparteix el resultat
+    submit: Comparteix la conclusió
     review_due_in_days_hint: Nombre de dies d'espera abans de revisar la decisió (opcional).
-    statement_template_hint: Proporcioneu una plantilla per escriure el resultat de la decisió (opcional).
+    statement_template_hint: Proporciona una plantilla per escriure la conclusió de la decisió. (opcional)
     statement_template_placeholder: Gràcies per participar! S'ha arribat al quòrum i tenim suport per continuar.
   poll_common_outcome_panel:
     authored_by: De %{name}
@@ -2440,13 +2470,17 @@ ca:
     votes_short_of_quorum: Es necessiten %{num} vots més per assolir el quòrum del %{pct}%
     quorum_reached: S'ha assolit el quòrum del %{pct}%
     pct_participation: "%{num} de %{total} vots emesos (%{pct}% de participació)"
+    pct_vote_weight_participation: "%{num} de %{total} vots emesos (%{pct}% del pes del vot)"
+    pct_of_eligible_vote_weight_must_participate: Ha de participar el %{pct}% del pes del vot amb dret a vot
+    pct_weighted_participation: "%{num} de %{total} vots emesos (ha participat el %{pct}% del pes del vot assignat)"
+    pct_of_assigned_vote_weight_must_participate: Ha de participar el %{pct}% del pes total del vot assignat
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: Eliminar el teu vot?
-    helptext: Esteu segur que voleu eliminar el vostre vot? Apareixeràs com a indecís i podràs tornar a votar més tard si ho desitja.
     confirm: Elimina el vot
     success: S'ha eliminat el vot
+    helptext_not_voted: Segur que vols eliminar el teu vot? El teu estat serà “Sense votar” i podràs tornar a votar més endavant si vols.
   poll_poll_vote_form:
     stance_created: S'ha creat el vot
     stance_updated: S'ha actualitzat el vot
@@ -2484,7 +2518,7 @@ ca:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha tancat el fil"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert el fil "
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha compartit un resultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha compartit una conclusió"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha tancat %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha obert una %{polltype}"
@@ -2515,9 +2549,11 @@ ca:
     sign_up_as: Crea un compte com a %{email}
     sign_in_as: Inicia la sessió com %{name}
     continue_with_provider: Continua amb %{provider}
+    sign_in_with_provider: Inicia la sessió amb %{provider}
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom
+    invitation_required_title: Cal una invitació
     invitation_required: Necessites una invitació per crear un compte. Seguiu l'enllaç del correu electrònic d'invitació per continuar.
     more_providers: Més
     email_not_present: És necessari introduir una adreça de correu electrònic
@@ -2573,6 +2609,22 @@ ca:
     invalid_login: No es pot iniciar la sessió amb aquestes dades
     login_link_rate_limited: S'han sol·licitat massa correus electrònics d'inici de sessió des d'aquesta xarxa. Espereu una hora i torneu-ho a provar.
     send_login_link_error: S'ha produït un error en enviar el correu electrònic d'inici de sessió. Torna-ho a provar.
+    sign_in_with_passkey: Inicia la sessió amb una clau d'accés
+    passkey_authentication_failed: No hem pogut iniciar la sessió amb aquesta clau d'accés
+    passkey_registration_failed: No hem pogut desar aquesta clau d'accés
+    passkey_default_name: Clau d'accés
+    local_login_disabled: Aquest lloc requereix un inici de sessió únic
+    email_me_a_sign_in_code: Envia'm un codi d'inici de sessió per correu electrònic
+    sign_in_with_code: Inicia la sessió amb un codi
+    new_to_site: Ets nou aquí?
+    passkey_recent_authentication_required: Torna a iniciar la sessió abans de canviar les claus d'accés
+    email_code_help: Introdueix la teva adreça electrònica i t'enviarem un codi d'inici de sessió de sis dígits
+    or_sign_in_with_password: O inicia la sessió amb una contrasenya
+    login_link_sent_if_account_exists: Si existeix un compte per a %{email}, us enviarem un codi d'inici de sessió.
+    use_a_passkey: Utilitza una clau d'accés
+    send_me_a_code: Envia'm un codi
+    email_code_help_short: T'enviarem un codi de sis dígits a la teva adreça de correu electrònic
+    login_link_sent_if_account_exists_sentence: Si existeix un compte per a %{email}, t'enviarem un codi d'inici de sessió.
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió
@@ -2648,8 +2700,8 @@ ca:
       poll_expired: Una enquesta finalitza
       poll_closed_by_user: S'ha tancat manualment una enquesta
       poll_reopened: S'ha reobert la votació d'una enquesta
-      outcome_created: S'ha compartit un resultat
-      outcome_updated: S'actualitza un resultat
+      outcome_created: Es comparteix una conclusió
+      outcome_updated: S'actualitza una conclusió
       outcome_review_due: S'ha de fer una revisió dels resultats
       new_discussion: S'inicia una discussió
       discussion_edited: S'ha editat una discussió
@@ -2755,8 +2807,11 @@ ca:
         helptext: "<p>A Loomio fem servir propostes per revelar suport a una decisió o trobar maneres de millorar-la.</p><p> Comencem una proposta i demanem als membres del vostre grup que la votin.</p><p> Hem creat una plantilla <b>de proposta de pràctica</b> perquè la pugueu fer servir.</p>"
         submit: Veure plantilles de propostes
       share_an_outcome:
-        title: Comparteix el resultat d'una proposta
-        helptext: "<p>Per ajudar a fer avançar les decisions, les propostes tenen una data límit per a la votació. Quan s'arribi a la data límit, la votació es tancarà i se us notificarà que compartiu el resultat d'una proposta.</p><p> El resultat és una oportunitat per dir si la proposta ha tingut èxit i què passarà a continuació.</p><p> Si la data límit per a la proposta encara no ha passat, però voleu continuar igualment, podeu fer clic <b>a Tanca abans d'hora</b> .</p><p> Quan sigui el moment adequat, <b>introdueix un resultat</b> per a la teva proposta.</p>"
+        title: Comparteix la conclusió d'una proposta
+        helptext: |
+          <p>Quan arriba la data límit de la proposta, la votació es tanca i se't demana que comparteixis una conclusió.</p>
+          <p>A la conclusió expliques què has decidit (o què passarà després) un cop revisats els vots i comentaris.</p>
+          <p>Si la data límit encara no ha passat però ja vols avançar, pots <b>Tancar abans d'hora</b>.</p>
         submit: Veure proposta
         cancel: Fes això més tard
       start_a_discussion:
@@ -2787,8 +2842,8 @@ ca:
       voting_title: 24 hores abans que es tanqui la votació, envieu un recordatori a
       nobody: Ningú
       author: Autor (jo)
-      undecided_voters: Votants indecisos
       voters: Tots els votants
+      people_who_have_not_voted: Persones que no han votat
     notify_on_participate:
       title: Notifica'm quan la gent participi
       helptext_on: Quan siguis seleccionat, rebràs una notificació sempre que algú hi participi.
@@ -2847,13 +2902,13 @@ ca:
       choose_hint: Els votants trien la millor opció (o opcions)
       score: Puntuació
       score_hint: Els votants assignen una puntuació a cada opció
-      allocate: Assignar
+      allocate: Reparteix
       allocate_hint: Els votants assignen un pressupost de punts entre les opcions
-      ranked_choice: Elecció classificada
+      ranked_choice: Vot preferencial
       ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
-      time_poll: Enquesta de temps
+      time_poll: Enquesta d'horari
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
-      rank: Rang
+      rank: Ordena
       time: Temps
       stv: Eleccions STV
       stv_hint: Elegir diversos guanyadors proporcionalment mitjançant el vot únic transferible
@@ -2905,7 +2960,7 @@ ca:
     how_much_time_to_vote: Quant de temps donareu a la gent per votar?
     default_duration_in_days_hint: Quants dies tindrà la gent per votar?
     define_minimum_and_maxmimum_score: Defineix les puntuacions mínimes i màximes que un votant pot donar a una opció
-    how_many_points_does_each_voter_have_to_allocate: Quants punts ha d'assignar cada votant?
+    how_many_points_does_each_voter_have_to_allocate: Quants punts té cada votant per repartir?
     anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
     vote_reason_description: Demaneu a la gent que comparteixi les seves raons quan votin o que proporcionin més informació.
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
@@ -2925,9 +2980,41 @@ ca:
     stance_reason_required_when_disagreeing: Obligatori quan no hi ha acord
     stance_reason_required_for_disagree_or_block: Obligatori per a desacord o bloqueig
     stance_reason_required_for_block: Obligatori per bloqueig
+    voters: Votants
+    manage_voters: Gestiona els votants
+    remove_voter: Eliminar votant
+    voter_page_count: "%{first}–%{last} de %{total}"
+    vote_weight_for: Pes del vot per a %{name}
+    save_vote_weights: Desa el pes dels vots
+    vote_weights_updated: Ponderació dels vots actualitzada
+    set_all: Defineix-ho tot
+    find_or_invite_voters: Trobar o convidar votants
+    remove_voter_named: Elimina %{name} de l'enquesta
+    remove_voter_and_any_vote_confirmation: Voleu eliminar %{name} d'aquesta enquesta? Això també elimina qualsevol vot que hagin emès.
+    edit_vote_weight: Edita el pes dels vots
+    edit_vote_weight_for: Edita el pes dels vots per a %{name} (actualment %{weight})
+    set_all_vote_weights_title: Estableix tots els pesos dels vots
+    set_all_vote_weights_search_note: Això canvia el pes dels vots de tots els votants de l'enquesta, inclosos els que no apareixen als resultats de la cerca.
+    set_each_member_default_vote_weight: Estableix el pes de vot predeterminat de cada membre
+    voters_will_not_be_notified: Els votants no rebran notificacions. Feu-los saber sobre l'enquesta d'una altra manera.
+    give_voters_different_vote_weights: Doneu als votants diferents pesos de vot. Els resultats mostren tant els totals normals com els ponderats.
+    issued_vote_weights_will_change: Els pesos dels vots ja emesos canviaran.
+    weight_for_all: Pes de vot per a tothom
+    set_all_vote_weights: Estableix tots els pesos dels vots
+    set_all_vote_weights_the_same: Establir tots els pesos de vot iguals
+    member_vote_weights_hint: Els votants que no són membres d'un grup actual reben un pes de vot d'1
+    weighted_voting: Vot ponderat
+    weighted_voting_is_not_available_with_anonymous_voting: El vot ponderat no està disponible amb la votació anònima
+    use_weighted_voting: Utilitza el vot ponderat
+    weighted_voting_off_warning: Si desactiveu la votació ponderada, el pes de cada vot serà d'1. Es perdrà qualsevol pes de vot que hàgiu canviat per a aquesta enquesta.
+    weighted_voting_on_group: En activar el vot ponderat, es copia el pes de vot predeterminat de cada membre. Els altres votants reben un pes de vot d'1.
+    weighted_voting_on_direct: En activar el vot ponderat, cada vot té un pes d'1
+    quorum_vote_weight_hint: Quin percentatge del pes del vot amb dret a vot ha de participar perquè el resultat sigui vàlid? Opcional, deixa-ho en blanc si no cal quòrum.
+    quorum_vote_weight_placeholder: Percentatge del pes del vot amb dret a vot (0–100)
+    quorum_voters_placeholder: Percentatge de votants amb dret a vot (0–100)
+    quorum_weighted_hint: Quin percentatge del pes total del vot assignat ha de participar perquè el resultat sigui vàlid? Opcional, deixa-ho en blanc si no cal quòrum.
   poll_receipts_page:
     participation_status_requires_min_votes: Això mostra qui tenia dret a votar. Només es mostra si cada persona ha votat quan almenys %{count} persones han votat.
-    verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
     voter_name: Nom del votant
     voter_email: Correu electrònic del votant
@@ -2939,6 +3026,7 @@ ca:
     participation_records_explanation: Això mostra qui era elegible i si va votar. No mostra com va votar cadascú.
     voted: Votat
     not_voted: No votat
+    email_addresses_only_for_group_admins: Les adreces de correu electrònic només es mostren als administradors del grup
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:
@@ -3032,6 +3120,12 @@ ca:
     notify_members_or_invite_guests_info: Notifica els membres del grup pel seu nom o convida els que no són membres per correu electrònic. Els convidats poden participar en aquest fil però no tindran accés a altres fils del grup.
     notify_members_info: Introduïu els noms dels membres del grup per notificar-los sobre aquest fil.
     specified_voters_only_warning: Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir "afegir votants" a l'enquesta.
+    manage_thread_members: Gestiona els membres del fil
+    find_or_invite_people: Trobar o convidar persones
+    invite_or_notify_explanation: Es convidarà gent nova al fil. Es notificarà de nou a les persones que ja hi siguin.
+    invite_or_notify: Convidar o notificar
+    member_page_count: "%{first}–%{last} de %{total}"
+    guest_access_info: Els convidats per correu electrònic poden participar en aquest fil sense accés a altres fils de grup.
   poll_common_details_meta:
     opened: Obert
     opens: Obreix
@@ -3042,7 +3136,7 @@ ca:
     closed_at: Tancat a les
     closing_at: Tancament a les
   poll_stv_vote_form:
-    helptext: Arrossega els candidats per sobre de la línia per classificar-los. Els elements que hi ha a sota de la línia no estan classificats. El rang 1 és el que prefereixes.
+    helptext: Arrossega els candidats per sobre de la línia per ordenar-los. Els elements de sota la línia queden sense ordenar. La posició 1 és la teva primera preferència.
     divider_text: arrossega els candidats per sobre d'aquesta línia per classificar-los
     stance_created: Vot enregistrat
     stance_updated: Vot actualitzat
@@ -3087,7 +3181,7 @@ ca:
     title: Afegeix a la discussió
     discussion: Discussió
     success: Èxit, %{pollType} afegit a la discussió!
-    explanation: El %{pollType} i qualsevol vot, comentari i resultat s'afegiran al fil de discussió seleccionat.
+    explanation: L'enquesta de tipus %{pollType} i tots els vots, comentaris i la conclusió s'afegiran al fil de la discussió seleccionada.
   bookmarks:
     bookmarks: Adreces d'interès
     saved: Adreça d'interès desada
@@ -3130,3 +3224,52 @@ ca:
     unfollow: Deixa de seguir les actualitzacions
     followed: Ara segueixes les actualitzacions d'aquest grup
     unfollowed: Ja no segueixes les actualitzacions d'aquest grup
+  passkey_settings:
+    title: Claus d'accés
+    helptext: Les claus d'accés et permeten iniciar la sessió amb el dispositiu sense introduir la teva adreça electrònica ni la contrasenya
+    none: No has afegit cap contrasenya
+    name: Nom de la clau d'accés
+    name_placeholder: Per exemple, ordinador portàtil de la feina
+    add: Afegeix una contrasenya
+    added: Clau d'accés afegida
+    created_at: Afegit %{date}
+    remove_named: Elimina %{name}
+    remove_confirm: Voleu eliminar la clau d'accés anomenada %{name}?
+    removed: Clau d'accés eliminada
+    remove_failed: No s'ha pogut eliminar la clau d'accés
+  credential_prompt:
+    title: Afegeix una altra manera d'iniciar la sessió
+    helptext: Afegeix una clau d'accés o estableix una contrasenya per poder iniciar la sessió sense esperar un codi enviat per correu electrònic
+    add_passkey: Afegeix una clau d'accés
+    set_password: Establir una contrasenya
+    not_now: Ara no
+    passkey_description: Una clau d'accés et permet iniciar la sessió ràpidament amb l'empremta digital, la cara o el bloqueig de pantalla del dispositiu
+    set_new_password: Estableix una contrasenya nova
+  account_completion:
+    complete_your_account: Completa el teu compte
+    continue: Continua
+  notification_nouns:
+    comment: comentari
+    discussion: discussió
+    outcome: conclusió
+    stance: vot
+  membership_notification_history:
+    invitation_delivery_history: Historial de lliurament d'invitacions
+    email_delivery_blocked: Loomio ha bloquejat l'enviament de correus a aquesta adreça
+    delivery_result:
+      delivered: Lliurada
+      failed: Fallida
+    could_not_load_history: No s'ha pogut carregar l'historial de notificacions
+    no_invitations_recorded: No hi ha invitacions registrades
+    membership_created: Invitació
+    membership_resent: Invitació reenviada
+    no_custom_message: Sense missatge personalitzat
+    pending: Correu pendent
+    not_sent: Cap lliurament de correu registrat
+    sent: Enviat al servei de correu
+    delivered: Acceptat pel servidor de correu del destinatari
+    delayed: Retard de lliurament notificat
+    rejected: Correu rebutjat
+    bounced: Retorn notificat
+    complained: Queixa per correu brossa notificada
+    skipped: Correu no enviat

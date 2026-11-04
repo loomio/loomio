@@ -6,12 +6,12 @@ function openTemplates(page) {
   page.loadPath('setup_manual_oatmilk_formatting?key=0');
   page.expectText('.context-panel__heading', 'Returnable bottles for cafe customers');
   page.clickAndWait('.activity-panel__add-poll', '.decision-tools-card__poll-types');
-  page.expectText('.decision-tools-card__poll-types', 'Consent');
+  page.waitFor('.decision-tools-card__template--consent');
 }
 
 function openProposalForm(page) {
   openTemplates(page);
-  page.execute("Array.from(document.querySelectorAll('.decision-tools-card__poll-type')).find(el => el.textContent.includes('Consent')).click()");
+  page.click('.decision-tools-card__template--consent');
   page.waitFor('.poll-common-form-fields__title input');
   page.fillIn('.poll-common-form-fields__title input', 'Approve the returnable bottle trial plan');
   page.fillRichText(
@@ -26,8 +26,7 @@ function openProposalForm(page) {
 
 function markOptions(page) {
   page.execute(`
-    const heading = Array.from(document.querySelectorAll('.poll-common-form .text-body-large'))
-      .find(el => el.textContent.trim() === 'Options');
+    const heading = document.querySelector('.poll-common-form .poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     heading.nextElementSibling.classList.add('manual-options-list');
     const options = Array.from(heading.nextElementSibling.querySelectorAll('.v-list-item'));
@@ -70,27 +69,23 @@ module.exports = {
     const screenshot = manualScreenshot(test);
 
     openProposalForm(page);
+    page.click('.poll-common-form > .v-card-title');
+    page.waitFor('.poll-common-form__more-settings');
+    // Frame the complete live form without including the tabs above it.
     page.execute(`
       const form = document.querySelector('.poll-common-form');
-      const wrapper = document.createElement('div');
-      wrapper.className = 'manual-proposal-new-capture';
-      Object.assign(wrapper.style, {
-        position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
-        padding: '24px', background: 'white'
+      const frame = document.createElement('div');
+      frame.className = 'manual-proposal-new-capture';
+      Object.assign(frame.style, {
+        padding: '16px', margin: '-16px', background: 'white'
       });
-      [
-        form.querySelector('.v-card-title'),
-        form.querySelector('.poll-template-info-panel'),
-        form.querySelector('.poll-common-form-fields__title'),
-        form.querySelector('.poll-common-form-fields__details')
-      ].forEach(el => wrapper.append(el.cloneNode(true)));
-      document.body.append(wrapper);
+      form.before(frame);
+      frame.append(form);
     `);
-    page.pause(200);
     screenshot.captureElement(
       'polls/settings/proposal_new',
       '.manual-proposal-new-capture',
-      {width: 1200, height: 1100}
+      {width: 1100, height: 2400, clearSelection: true}
     );
   },
 
@@ -98,24 +93,14 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
+    page.resizeWindow(800, 1800);
     openProposalForm(page);
     markOptions(page);
-    page.execute(`
-      const heading = document.querySelector('.manual-options-heading');
-      const list = document.querySelector('.manual-options-list');
-      const wrapper = document.createElement('div');
-      wrapper.className = 'manual-options-capture';
-      Object.assign(wrapper.style, {
-        position: 'fixed', top: '0', left: '0', width: '100%', zIndex: '9999',
-        padding: '16px', background: 'white'
-      });
-      wrapper.append(heading.cloneNode(true), list.cloneNode(true));
-      document.body.append(wrapper);
-    `);
-    screenshot.captureElement(
+    page.waitFor('.poll-common-form__add-option-btn');
+    screenshot.captureRegion(
       'polls/settings/vote_options',
-      '.manual-options-capture',
-      {width: 1200, height: 1200}
+      ['.manual-options-heading', '.manual-options-list', '.poll-common-form__add-option-btn'],
+      {width: 800, height: 1800, padding: 16, scrollSelector: '.manual-options-heading', clearSelection: true}
     );
   },
 
@@ -125,7 +110,7 @@ module.exports = {
 
     openProposalForm(page);
     markOptions(page);
-    page.clickAndWait('.manual-options-list button[title="Edit"]', '.poll-common-option-form');
+    page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
     screenshot.captureElement(
       'polls/settings/proposal_edit_option',
       '.poll-common-option-form',
@@ -178,11 +163,21 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
 
-    openPollMenu(page);
+    page.resizeWindow(800, 2400);
+    openPoll(page);
+    page.execute("document.querySelector('.poll-created').scrollIntoView({block: 'center'})");
+    page.clickAndWait('.poll-created .action-menu--btn', '.v-overlay--active .action-dock__button--save_as_template');
+    page.expectText('.v-overlay--active .action-dock__button--save_as_template', 'Save as template');
     screenshot.captureRegion(
       'polls/settings/proposal_edit',
-      ['.poll-created .action-dock', '.v-overlay--active .v-list'],
-      {padding: 16, width: 1280, height: 1100}
+      ['.poll-created', '.v-overlay--active .v-list'],
+      {
+        padding: 16,
+        width: 800,
+        height: 2400,
+        clearSelection: true,
+        spotlight: {selectors: ['.poll-created .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
     );
   },
 

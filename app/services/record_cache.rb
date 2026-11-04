@@ -6,7 +6,9 @@ class RecordCache
     memberships_by_group_id
     outcomes_by_poll_id
     topic_readers_by_topic_id
-    undecided_voter_ids_by_poll_id
+    voter_ids_uncast_by_poll_id
+    voter_ids_none_of_the_above_by_poll_id
+    change_notes_by_topic_item_id
   ].freeze
 
   LOADERS = {
@@ -86,6 +88,21 @@ class RecordCache
     scope[key].merge!(collection.index_by(&:id))
   end
 
+  # Personal voting state needs membership even when a compact response omits
+  # groups. Load the user's group IDs once per response, rather than per poll.
+  def member_group_ids
+    @member_group_ids ||= Membership.active.where(user_id: current_user_id).pluck(:group_id).to_set
+  end
+
+  def member_of_group?(group_id)
+    # Full responses already cache membership presence or absence. Compact
+    # responses fall back to one membership query shared by every poll.
+    memberships = scope.fetch(:memberships_by_group_id, {})
+    return memberships[group_id].present? if memberships.key?(group_id)
+
+    member_group_ids.include?(group_id)
+  end
+
   def add_known_missing(key, ids)
     unless KNOWN_MISSING_KEYS.include?(key.to_sym)
       raise ArgumentError, "#{key} is not a known-missing cache key"
@@ -96,7 +113,7 @@ class RecordCache
   end
 
   def add_topic_items_complete(collection)
-    topic_items = TopicItem.includes(:itemable, :topic).where(id: collection.map(&:id))
+    topic_items = topic_items_with_parents(collection)
     topics = topic_items.map(&:topic).compact.uniq
     itemables = topic_items.map(&:itemable).compact.uniq
 
@@ -122,17 +139,80 @@ class RecordCache
     add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: group_ids)
   end
 
+  # Include one actual reply parent per requested item, plus the capped display
+  # ancestry needed to render those records. Resolve their IDs in the existing
+  # bulk query so database round trips do not grow with actual reply depth.
+  def topic_items_with_parents(collection)
+    requested_ids = collection.map(&:id).to_set
+    requested = TopicItem.where(id: requested_ids.to_a)
+    # Restrict actual parents to the same topic, including after a branch moves.
+    reply_parent_ids = requested.where(kind: 'new_comment', itemable_type: 'Comment')
+      .joins('INNER JOIN comments replies ON replies.id = topic_items.itemable_id')
+      .joins(<<~SQL.squish)
+        INNER JOIN topic_items reply_parents ON replies.parent_type = 'Comment'
+          AND reply_parents.topic_id = topic_items.topic_id
+          AND reply_parents.kind = 'new_comment'
+          AND reply_parents.itemable_type = 'Comment'
+          AND reply_parents.itemable_id = replies.parent_id
+      SQL
+      .group('topic_items.id').select('MIN(reply_parents.id)')
+    # Union IDs before fetching rows so the seed lookup can use the primary key.
+    context_ids = requested.select(:id).arel.union(reply_parent_ids.arel)
+    context = TopicItem.where(TopicItem.arel_table[:id].in(context_ids)).select(:id, :parent_id)
+    display_parents = TopicItem.joins('INNER JOIN topic_item_context ON topic_items.id = topic_item_context.parent_id')
+                              .select(:id, :parent_id)
+    items = TopicItem.with_recursive(topic_item_context: [context, display_parents])
+                    .where('topic_items.id IN (SELECT id FROM topic_item_context)')
+                    .includes(:itemable, :topic).order(:id).to_a
+    parents_by_comment = items.select { |item| item.kind == 'new_comment' }
+                              .group_by { |item| [item.topic_id, item.itemable_id] }
+
+    scope[:reply_parents_by_topic_item_id] ||= {}
+    items.select { |item| requested_ids.include?(item.id) }.each do |item|
+      reply_parent = if item.kind == 'new_comment' && item.itemable.parent_type == 'Comment'
+        parents_by_comment[[item.topic_id, item.itemable.parent_id]]&.first
+      end
+      reply_parent = nil if reply_parent&.id == item.parent_id
+      scope[:reply_parents_by_topic_item_id][item.id] = reply_parent
+    end
+
+    items
+  end
+  private :topic_items_with_parents
+
   def add_topic_items(collection)
     return [] if exclude_types.include?('topic_item')
     scope[:topic_items_by_id] ||= {}
     scope[:topic_items_by_kind_and_itemable_id] ||= {}
 
+    edited_items = {}
+    cached_notes = scope[:change_notes_by_topic_item_id]
     collection.each do |topic_item|
       @user_ids.push topic_item.user_id if topic_item.user_id
       scope[:topic_items_by_id][topic_item.id] = topic_item
       scope[:topic_items_by_kind_and_itemable_id][topic_item.kind] ||= {}
       scope[:topic_items_by_kind_and_itemable_id][topic_item.kind][topic_item.itemable_id] = topic_item
+
+      if TopicItem::CHANGE_NOTE_KINDS.include?(topic_item.kind) && !cached_notes&.key?(topic_item.id)
+        edited_items[topic_item.id] = topic_item
+      end
     end
+
+    if edited_items.any?
+      # Batch only uncached edit notes, including known missing notes. Ordinary
+      # timeline items need neither this query nor a note cache allocation.
+      # Store only the note, never the notification or its private recipients.
+      add_known_missing(:change_notes_by_topic_item_id, edited_items.keys)
+      Notification.where(subject_type: 'TopicItem', subject_id: edited_items.keys,
+                         kind: TopicItem::CHANGE_NOTE_KINDS)
+                  .order(:id).pluck(:subject_id, :kind, :actor_id, :recipient_message).each do |id, kind, actor_id, note|
+        item = edited_items.fetch(id)
+        next unless item.kind == kind && item.user_id == actor_id
+
+        scope[:change_notes_by_topic_item_id][id] ||= note
+      end
+    end
+    collection
   end
 
   def add_itemables(collection)
@@ -182,6 +262,12 @@ class RecordCache
     return [] if exclude_types.include?('group')
     @user_ids.concat collection.map(&:creator_id)
     merge_index(:groups_by_id, collection)
+    scope[:subgroups_counts_by_group_id] ||= {}
+    ids = collection.map(&:id).compact.uniq - scope[:subgroups_counts_by_group_id].keys
+    unless ids.empty?
+      counts = Group.kept.where(parent_id: ids).group(:parent_id).count
+      scope[:subgroups_counts_by_group_id].merge!(ids.index_with { |id| counts.fetch(id, 0) })
+    end
   end
 
   # this is a colleciton of groups joined to subscription.. crazy I know
@@ -216,22 +302,43 @@ class RecordCache
     add_poll_options PollOption.where(poll_id: collection_ids)
     add_stances Stance.latest.where(poll_id: collection_ids, participant_id: current_user_id)
     add_outcomes(Outcome.latest.where(poll_id: collection_ids), poll_ids: collection_ids)
-    add_undecided_voter_ids(collection)
+    add_voter_ids_uncast(collection)
+    add_voter_ids_none_of_the_above(collection)
   end
 
-  def add_undecided_voter_ids(polls)
-    poll_ids = polls.reject(&:detached_anonymous?).select(&:results_include_undecided).map(&:id)
-    scope[:undecided_voter_ids_by_poll_id] ||= {}
-    add_known_missing(:undecided_voter_ids_by_poll_id, polls.map(&:id))
+  def add_voter_ids_uncast(polls)
+    poll_ids = polls.reject(&:anonymous?).select(&:results_include_uncast_row?).map(&:id)
+    add_result_voter_ids(:voter_ids_uncast_by_poll_id, polls, poll_ids) { |ids| Stance.latest.uncast.where(poll_id: ids) }
+  end
 
-    Stance.latest.undecided.where(poll_id: poll_ids).pluck(:poll_id, :participant_id).each do |poll_id, participant_id|
-      scope[:undecided_voter_ids_by_poll_id][poll_id] ||= []
-      scope[:undecided_voter_ids_by_poll_id][poll_id] << participant_id
-    end
+  def add_voter_ids_none_of_the_above(polls)
+    poll_ids = polls.reject(&:anonymous?).select(&:show_none_of_the_above).map(&:id)
+    add_result_voter_ids(:voter_ids_none_of_the_above_by_poll_id, polls, poll_ids) { |ids| Stance.latest.none_of_the_above.where(poll_id: ids) }
+  end
+
+  # Results show at most RESULT_VOTER_IDS_MAX voters per row, so load only that
+  # many participant ids per poll in one query instead of every matching voter.
+  # Skip the query entirely when no listed poll shows these voters.
+  def add_result_voter_ids(key, polls, poll_ids)
+    add_known_missing(key, polls.map(&:id))
+    return if poll_ids.empty?
+
+    ranked = yield(poll_ids).select(
+      'stances.poll_id, stances.participant_id',
+      'ROW_NUMBER() OVER (PARTITION BY stances.poll_id ORDER BY stances.id) AS voter_rank'
+    )
+    Stance.unscoped.from(ranked, :stances)
+      .where('stances.voter_rank <= ?', Poll::RESULT_VOTER_IDS_MAX)
+      .pluck('stances.poll_id', 'stances.participant_id').each do |poll_id, participant_id|
+        scope[key][poll_id] ||= []
+        scope[key][poll_id] << participant_id
+      end
   end
 
   def add_polls(collection)
     return if exclude_types.include?('poll')
+    collection = collection.to_a
+    add_poll_vote_weights_eligible(collection)
     scope[:polls_by_topic_id] ||= {}
     scope[:polls_by_id] ||= {}
     collection.each do |poll|
@@ -239,6 +346,39 @@ class RecordCache
       scope[:polls_by_id][poll.id] = poll
       scope[:polls_by_topic_id][poll.topic_id] ||= []
       scope[:polls_by_topic_id][poll.topic_id].push poll
+    end
+  end
+
+  # One grouped query supplies all weighted participation/result totals for a
+  # batch. Retain zero totals for empty electorates and reuse earlier batches.
+  def add_poll_vote_weights_eligible(polls)
+    weighted_polls = polls.select(&:weighted_voting?).reject(&:anonymous?)
+    return if weighted_polls.empty?
+
+    scope[:vote_weight_eligible_by_poll_id] ||= {}
+    scope[:vote_weight_cast_by_poll_id] ||= {}
+    scope[:vote_weight_uncast_by_poll_id] ||= {}
+    scope[:vote_weight_none_of_the_above_by_poll_id] ||= {}
+    poll_ids = weighted_polls.map(&:id).uniq - scope[:vote_weight_eligible_by_poll_id].keys
+    return if poll_ids.empty?
+
+    poll_ids.each do |id|
+      scope[:vote_weight_eligible_by_poll_id][id] = 0
+      scope[:vote_weight_cast_by_poll_id][id] = 0
+      scope[:vote_weight_uncast_by_poll_id][id] = 0
+      scope[:vote_weight_none_of_the_above_by_poll_id][id] = 0
+    end
+    Stance.latest.where(poll_id: poll_ids).group(:poll_id).pluck(
+      :poll_id,
+      Arel.sql('SUM(weight)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NOT NULL), 0)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NULL), 0)'),
+      Arel.sql('COALESCE(SUM(weight) FILTER (WHERE cast_at IS NOT NULL AND none_of_the_above), 0)')
+    ).each do |id, total, cast, uncast, none_of_the_above|
+      scope[:vote_weight_eligible_by_poll_id][id] = total
+      scope[:vote_weight_cast_by_poll_id][id] = cast
+      scope[:vote_weight_uncast_by_poll_id][id] = uncast
+      scope[:vote_weight_none_of_the_above_by_poll_id][id] = none_of_the_above
     end
   end
 
@@ -374,6 +514,16 @@ class RecordCache
   def add_topics(collection)
     return if exclude_types.include?('topic')
     merge_index(:topics_by_id, collection)
+    add_anonymous_poll_flags(collection.map(&:id))
+  end
+
+  def add_anonymous_poll_flags(topic_ids)
+    scope[:anonymous_polls_by_topic_id] ||= {}
+    ids = topic_ids.compact.uniq - scope[:anonymous_polls_by_topic_id].keys
+    return if ids.empty?
+
+    anonymous_ids = Topic.where(id: ids).with_anonymous_polls.pluck(:id).to_set
+    scope[:anonymous_polls_by_topic_id].merge!(ids.index_with { |id| anonymous_ids.include?(id) })
   end
 
   def add_discussions(collection)

@@ -13,6 +13,16 @@ class Identity < ApplicationRecord
   scope :pending, -> { where(user: nil) }
   scope :stale, ->(days: 7) { pending.where('created_at < ?', days.days.ago) }
 
+  # Pending cookie state may be replayed, and two sign-ins may race to consume
+  # it. Recheck ownership under the row lock before assigning the first owner.
+  def link_to_user!(user)
+    with_lock do
+      return false if user_id.present? || !user.active?
+
+      update!(user: user)
+    end
+  end
+
   def assign_logo!
     return unless user && logo
 

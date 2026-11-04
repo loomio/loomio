@@ -9,7 +9,7 @@ module ApplicationCable
     private
 
     def find_verified_user
-      if (user = user_from_session_cookie)&.active_for_authentication?
+      if (user = user_from_session_cookie)&.active?
         user
       else
         reject_unauthorized_connection

@@ -45,7 +45,7 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
                               "index_notifications_on_subject"
 
       # Preserve valid descendants if an old malformed event was used as their
-      # parent. Topic repair reconstructs their ancestry from itemable records.
+      # parent. The legacy repair reconnects orphaned items to the topic root.
       execute <<~SQL.squish
         UPDATE events children
         SET parent_id = NULL, depth = 0
@@ -54,6 +54,10 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
           AND (#{unpublishable_event_condition('parents')})
       SQL
       execute "DELETE FROM events WHERE #{unpublishable_event_condition('events')}"
+      # Repair under the legacy schema so this migration does not load current
+      # models that depend on columns added by later migrations.
+      require Rails.root.join("db/migrate/support/legacy_topic_event_repair_service")
+      topic_ids_to_repair.each { |topic_id| LegacyTopicEventRepairService.repair!(topic_id) }
       change_column_null :events, :topic_id, false
       change_column_null :events, :kind, false
       change_column_null :events, :eventable_type, false
@@ -85,7 +89,6 @@ class CutOverEventsToTopicItems < ActiveRecord::Migration[8.1]
       rename_index_if_present :topic_items, "index_events_on_unique_discussion_created_event", "index_topic_items_on_unique_discussion_root"
       rename_index_if_present :topic_items, "index_events_on_unique_poll_created_event", "index_topic_items_on_unique_poll_root"
 
-      topic_ids_to_repair.each { |topic_id| TopicService.repair(topic_id) }
       drop_table :notification_consolidation_states
     end
   end

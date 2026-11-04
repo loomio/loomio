@@ -1,0 +1,2 @@
+# Preserve RFC email line endings in the captured message fixtures.
+*.eml -text whitespace=cr-at-eol

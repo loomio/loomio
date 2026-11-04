@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class Ability::PollTest < ActiveSupport::TestCase
-  test "until vote exports are available only after the user votes" do
+  test "until vote exports are available before the user votes" do
     user = users(:user)
     poll = PollService.create(params: poll_params(group_id: groups(:group).id, hide_results: 'until_vote'), actor: users(:admin))
 
-    assert_not user.can?(:export, poll)
+    assert user.can?(:export, poll)
     stance = poll.stances.latest.find_by!(participant_id: user.id)
     stance.choice = poll.poll_option_names.first
     StanceService.create(stance: stance, actor: user)
@@ -26,7 +26,9 @@ class Ability::PollTest < ActiveSupport::TestCase
     user = users(:user)
     other = users(:alien)
     poll = PollService.create(params: poll_params(specified_voters_only: true), actor: other)
-    poll.stances.create!(participant_id: user.id, inviter: other, latest: true)
+    PollService.invite(poll: poll, actor: other, params: {recipient_emails: [user.email], notify_recipients: false})
+    assert poll.topic.guests.exists?(user.id), 'inviting a direct poll voter grants topic access'
+    assert poll.voters_unmasked.exists?(user.id), 'the invited voter has an active stance'
     assert user.can?(:vote_in, poll)
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
@@ -41,6 +43,32 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
     assert_not user.can?(:add_guests, poll.topic)
+  end
+
+  test "direct poll voter records require current topic guest access" do
+    poll = PollService.create(params: poll_params(topic: topics(:direct_topic), specified_voters_only: true), actor: users(:guest_admin_normal))
+
+    %i[guest_quiet guest_normal guest_admin_normal guest_loud alien non_guest_loud former_guest_loud inactive_guest_loud].each do |role|
+      voter = users(role)
+      poll.stances.create!(participant: voter, latest: true)
+      expected = %i[guest_quiet guest_normal guest_admin_normal guest_loud].include?(role)
+
+      assert_equal expected, voter.can?(:vote_in, poll), role.to_s
+    end
+  end
+
+  test "group members vote only through their stance" do
+    member = users(:user)
+    poll = PollService.create(params: poll_params(group_id: groups(:group).id), actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant_id: member.id)
+    assert member.can?(:vote_in, poll)
+
+    stance.update!(revoked_at: Time.current)
+    assert_not member.can?(:vote_in, poll.reload), "a member whose stance was revoked cannot vote"
+
+    stance.destroy!
+    assert_not member.can?(:vote_in, poll.reload), "a member without a stance cannot vote"
+    assert poll.members.exists?(member.id)
   end
 
   # Poll in group - as group admin

@@ -1,4 +1,6 @@
 class NotificationMailer < ApplicationMailer
+  around_deliver :track_notification_delivery, if: -> { action_name == "notification" }
+
   REPLY_DELIMITER = "\uFEFF\uFEFF"*4 # surprise! this is actually U+FEFF
 
   def topic_item(recipient_id, topic_item_id)
@@ -8,13 +10,13 @@ class NotificationMailer < ApplicationMailer
   end
 
   def notification(notification_delivery_id)
-    delivery = NotificationDelivery.find_by!(
+    @notification_delivery = NotificationDelivery.find_by!(
       id: notification_delivery_id,
       channel: "email",
       recipient_type: "User"
     )
-    recipient = User.active.find_by!(id: delivery.recipient_id)
-    notification = delivery.notification
+    recipient = User.active.find_by!(id: @notification_delivery.recipient_id)
+    notification = @notification_delivery.notification
     topic_item = NotificationRenderingContext.new(notification)
 
     deliver_notification(topic_item: topic_item, recipient: recipient, notification: notification)
@@ -81,14 +83,18 @@ class NotificationMailer < ApplicationMailer
       Views::NotificationMailer::MembershipRequest.new(
         topic_item: topic_item, recipient: recipient, event_key: event_key, utm_hash: utm_hash
       )
-    when 'ReceivedEmail'
-      Views::ReceivedEmailMailer.new(
+    when 'PendingEmail'
+      Views::PendingEmailMailer.new(
         topic_item: topic_item, recipient: recipient, event_key: event_key
       )
     end
   end
 
   private
+
+  def track_notification_delivery(&send_message)
+    NotificationEmailDelivery.new(@notification_delivery, message).deliver(&send_message)
+  end
 
   def deliver_notification(topic_item:, recipient:, notification:)
     return if topic_item.itemable.nil?

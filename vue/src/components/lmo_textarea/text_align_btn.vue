@@ -35,7 +35,7 @@ export default
 </script>
 
 <template lang="pug">
-v-btn(v-bind="btnProps" :variant="showOutline ? 'tonal' : 'text'" :title="$t('formatting.alignment')")
+v-btn.text-editor__alignment(v-bind="btnProps" :variant="showOutline ? 'tonal' : 'text'" :title="$t('formatting.alignment')")
   common-icon(v-bind="iconProps" :name="'mdi-format-align-'+current")
   v-menu(activator="parent")
     v-list(density="compact")

@@ -34,15 +34,102 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     reader = TopicReader.for(user: @user, topic: @poll.topic)
     reader.viewed!(@poll.topic.ranges)
 
+    @new_outcome.author = users(:alien)
     topic_item = nil
     assert_difference 'Outcome.count', 1 do
       OutcomeService.create(outcome: @new_outcome, actor: @user) { |created_topic_item| topic_item = created_topic_item }
     end
 
     assert_equal @new_outcome.statement, @poll.reload.current_outcome.statement
-    assert_equal @new_outcome.author, @poll.current_outcome.author
+    assert_equal @user, @poll.current_outcome.author
     assert reader.reload.has_read?(topic_item.sequence_id)
     assert_equal 0, reader.unread_items_count
+  end
+
+  test "unauthorized actors cannot create update or announce an outcome" do
+    actor = users(:alien)
+    original_statement = @outcome.statement
+    assert_no_difference ['Outcome.count', 'Notification.count', 'TopicItem.count'] do
+      assert_raises(CanCan::AccessDenied) { OutcomeService.create(outcome: @new_outcome, actor: actor) }
+      assert_raises(CanCan::AccessDenied) do
+        OutcomeService.update(outcome: @outcome, actor: actor, params: {statement: 'Forbidden'})
+      end
+      assert_raises(CanCan::AccessDenied) do
+        OutcomeService.invite(outcome: @outcome, actor: actor, params: {recipient_user_ids: [@user.id]})
+      end
+    end
+    assert_equal original_statement, @outcome.reload.statement
+  end
+
+  test "outcome operations enforce topic guest invitation permission before changing records" do
+    @poll.group.update!(members_can_add_guests: false)
+    params = {recipient_emails: ['new-outcome-guest@example.com']}
+    assert @user.can?(:create, @new_outcome)
+    assert @user.can?(:update, @outcome)
+    assert @user.can?(:announce, @outcome)
+    assert_not @user.can?(:add_guests, @poll.topic)
+    original_statement = @outcome.statement
+
+    assert_no_difference ['User.count', 'Outcome.count', 'Notification.count', 'TopicItem.count'] do
+      assert_raises(CanCan::AccessDenied) { OutcomeService.create(outcome: @new_outcome, actor: @user, params: params) }
+      assert_raises(CanCan::AccessDenied) do
+        OutcomeService.update(outcome: @outcome, actor: @user, params: params.merge(statement: 'Forbidden'))
+      end
+      assert_raises(CanCan::AccessDenied) { OutcomeService.invite(outcome: @outcome, actor: @user, params: params) }
+    end
+    assert_equal original_statement, @outcome.reload.statement
+  end
+
+  test "announcing an outcome returns recipients and associates its notification with the creation item" do
+    OutcomeService.create(outcome: @new_outcome, actor: @user)
+    recipient = users(:member)
+
+    recipients = OutcomeService.invite(outcome: @new_outcome, actor: @user,
+      params: {recipient_user_ids: [recipient.id]})
+
+    assert_equal [recipient.id], recipients.pluck(:id)
+    notification = Notification.find_by!(kind: 'outcome_announced', subject: @new_outcome.created_topic_item)
+    assert_equal [recipient.id], notification.recipient_user_ids
+  end
+
+  test "reopening a poll prevents outcome announcements even when its author may invite recipients" do
+    PollService.reopen(poll: @poll, actor: @user, params: {closing_at: 2.days.from_now})
+    assert_predicate @poll.reload, :active?
+    assert @user.can?(:announce, @poll)
+    assert @user.can?(:add_members, @poll.topic)
+
+    assert_no_difference 'Notification.count' do
+      assert_raises(CanCan::AccessDenied) do
+        OutcomeService.invite(outcome: @outcome, actor: @user,
+          params: {recipient_user_ids: [users(:member).id]})
+      end
+    end
+  end
+
+  test "ordinary group editors can create and update a closed poll outcome without poll coordination" do
+    topic = topics(:discussion_topic)
+    editor = users(:member_normal)
+    topic.group.update!(members_can_edit_discussions: true)
+    poll = PollService.create(params: {
+      title: 'Editable outcome', poll_type: 'proposal', poll_option_names: ['Yes', 'No'],
+      closing_at: 3.days.from_now, topic_id: topic.id
+    }, actor: users(:admin))
+    PollService.close(poll: poll, actor: users(:admin))
+    outcome = Outcome.new(poll: poll, author: editor, statement: 'Member conclusion')
+    assert_not outcome.admins.exists?(editor.id)
+    assert outcome.members.exists?(editor.id)
+
+    OutcomeService.create(outcome: outcome, actor: editor)
+    assert_predicate outcome, :persisted?
+    OutcomeService.update(outcome: outcome, actor: editor, params: { statement: 'Revised member conclusion' })
+    assert_equal 'Revised member conclusion', outcome.reload.statement
+
+    topic.group.update!(members_can_edit_discussions: false)
+    outcome = Outcome.find(outcome.id)
+    assert_raises CanCan::AccessDenied do
+      OutcomeService.update(outcome: outcome, actor: editor, params: { statement: 'Forbidden revision' })
+    end
+    assert_equal 'Revised member conclusion', outcome.reload.statement
   end
 
   test "rolls back outcome creation when topic_item creation fails" do
@@ -84,7 +171,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
     TopicReader.for(user: recipient, topic: @poll.topic).set_volume!(email: :normal, push: :quiet)
 
     assert_no_difference -> { TopicItem.where(kind: "outcome_updated").count } do
-      OutcomeService.update(
+      updated_outcome = OutcomeService.update(
         outcome: @outcome,
         actor: @user,
         params: {
@@ -92,6 +179,7 @@ class OutcomeServiceTest < ActiveSupport::TestCase
           recipient_user_ids: [ recipient.id ]
         }
       )
+      assert_same @outcome, updated_outcome
     end
     notification = Notification.find_by!(kind: "outcome_updated", subject: @outcome)
 

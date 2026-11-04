@@ -1,0 +1,367 @@
+---
+title: Utiliser les fils de discussion
+source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
+translated:
+  provider: codex/gpt-6.1-sol
+  'on': '2026-11-01'
+sections:
+  introduction: fe8ab54791a49e01
+  thread-anatomy: fca9ec9af6718a99
+  discussion-context: ebefd7274a307dd0
+  notify-people-about-context-changes: 3fe9320d33fff8f6
+  navigation: c0ccc79744ae2c33
+  notifications-and-members: ac51f2bbe3642155
+  email-notifications-for-this-thread: 69076a17d7457ba0
+  invite-people: 94ab00a27cec065d
+  seen-by: 1d0bfd812ca11782
+  notified: 6139bdcaae32a1db
+  actions: c015c12999c5be2f
+  print: 8fac34ad532e8cb5
+  markdown: c6434ed486db8be4
+  thread-settings-and-display: 175b9e93cfc4f736
+  pin-or-unpin-a-thread: 1e17228e5de01a1e
+  move-a-thread: 8490a5a22970925c
+  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  delete-a-thread: 9b4c6437ff8102eb
+generated:
+  introduction: 3b64d53cca0abd7b
+  thread-anatomy: 6aa601425faa8a82
+  discussion-context: 99e3529bd2439488
+  notify-people-about-context-changes: f088603dc91cd570
+  navigation: ad1f53227d872140
+  notifications-and-members: ef403b4c0ca77cca
+  email-notifications-for-this-thread: 643de5cea948aec0
+  invite-people: c29b7dceb92b98b2
+  seen-by: 9da96dad4e5c94d0
+  notified: 6a9b539b8cbe56b5
+  actions: c27c64d76d724643
+  print: 0f31c6373354dabb
+  markdown: 7a818d7100143305
+  thread-settings-and-display: d8bdb5e8ee279a5a
+  pin-or-unpin-a-thread: 3cb7608b7a17df07
+  move-a-thread: 3015baa5dae6c908
+  lock-or-unlock-a-thread: '4369712522914425'
+  delete-a-thread: 9911a93fdee3bbac
+title_source: 99e2d1eb313f35c4
+title_generated: f56dc994cbc2ff13
+needs_review:
+  notify-people-about-context-changes: check the interface label "**Qu'est ce qui a changé ? **" for "**What's changed?**"
+---
+
+<!-- translation-section: introduction -->
+
+# Utiliser les fils
+
+Une discussion rassemble son contexte, ses commentaires, ses décisions et ses conclusions dans un même fil. Cette page explique comment participer à un fil et utiliser sa navigation et ses actions.
+
+<!-- translation-section: thread-anatomy -->
+
+## Structure d’un fil
+
+Voici à quoi ressemble un fil habituel :
+
+![](thread_navigation.png)
+
+Depuis le haut de la page, un fil contient :
+
+**Nom du groupe** - En haut à gauche de la page de discussion se trouve le nom du groupe ou du sous-groupe auquel appartient la discussion. Cliquez sur ce nom pour revenir à la page du groupe.
+
+**Accès à la discussion** - L’icône d’accès en haut à droite ouvre les paramètres d’accès de la discussion. Une discussion de groupe est accessible aux membres du groupe et aux personnes qui y sont expressément invitées, selon les paramètres de confidentialité du groupe.
+
+**Titre de la discussion** - Le nom de la discussion.
+
+**Classement par tags** - La discussion peut avoir un ou plusieurs tags de classement. Des tags simples aident les personnes à trouver plus facilement des discussions du même type.
+
+**Auteur de la discussion** - Le nom et l’avatar de la personne qui a démarré la discussion, affichés sous le titre.
+
+**Date** - Survolez la date pour voir la date et l’heure complètes du début de la discussion.
+
+**Vu par** - Dans la barre latérale droite, indique qui a lu la discussion et quand.
+
+**Notifié⋅e(s)** - Dans la barre latérale droite, indique qui a reçu une notification concernant la discussion et si chaque notification a été lue ou si l’e-mail correspondant a été ouvert.
+
+**Contexte de la discussion** - Le contenu qui donne un cadre à la discussion.
+
+**Outils d’interaction et d’administration de la discussion** - Le contexte de la discussion comporte des commandes permettant d’y réagir et de le modifier. La barre latérale droite contient des actions de notification, de gestion des membres et d’administration.
+
+**Commentaires** - Les commentaires sont affichés sous le contexte de la discussion. Le nom de l’auteur, son avatar et l’heure de publication indiquent qui a écrit chaque commentaire et quand. Des outils d’interaction et d’administration sont disponibles sur chaque commentaire.
+
+**Navigation, notifications et actions** - La barre latérale droite contient des raccourcis vers les activités et les jalons, des informations sur les notifications et les membres, ainsi que les actions disponibles pour vous dans le fil.
+
+<!-- translation-section: discussion-context -->
+
+## Contexte de la discussion
+
+Le **contexte** de la discussion se trouve toujours en haut de la discussion. Utilisez le contexte pour donner un cadre à la discussion ou à la décision.
+
+Pensez à votre groupe lorsque vous rédigez le contexte de la discussion. Votre objectif est de lancer une discussion : réfléchissez donc à la manière d’encourager les personnes à participer. En général, gardez le contexte de la discussion simple et clair.
+
+![](thread_context.png)
+
+Rédigez le contexte lorsque vous démarrez ou modifiez une discussion. Utilisez l’icône en forme de crayon pour **Modifier** une discussion.
+
+À mesure que la discussion avance, mettez son contexte à jour. Considérez le contexte comme un tableau blanc dans votre salle de réunion, où vous pouvez écrire l’ordre du jour, les conclusions souhaitées et la manière dont vous comptez y parvenir.
+
+Au bas du panneau de contexte se trouve une barre de mise en forme qui vous permet de mettre en forme le texte, de joindre des fichiers et des images, et d’intégrer une vidéo.
+
+![](thread_context_edit.png)
+
+<!-- translation-section: notify-people-about-context-changes -->
+
+### Notifier les personnes des modifications du contexte
+
+Lorsque vous modifiez le contexte de la discussion, utilisez **Qu'est ce qui a changé ? ** pour résumer les modifications et choisir les personnes à notifier.
+
+![Modification du contexte d’une discussion avec un résumé des modifications et les destinataires des notifications](../notifying_people/thread_editcontext.png)
+
+Le fil indique que vous avez modifié le contexte. Les personnes que vous notifiez reçoivent votre résumé avec la notification.
+
+![Élément du fil indiquant que le contexte de la discussion a été modifié](../notifying_people/thread_edit_comment.png)
+
+<!-- translation-section: navigation -->
+
+## Navigation
+
+La section **Aller à** de la barre latérale droite vous aide à parcourir un fil :
+
+- **Démarrer** mène au contexte de la discussion
+- **Nouveau pour vous** apparaît lorsque le fil contient des activités que vous n’avez pas lues
+- **Dernier** apparaît lorsque des activités plus récentes sont disponibles au-delà des éléments actuellement chargés
+- les liens vers les jalons mènent directement aux commentaires importants, aux sondages et aux conclusions
+- **Fin** mène au dernier élément du fil
+
+Les commentaires contenant un titre H2 ou H3, les sondages et les propositions sont automatiquement inclus dans les liens vers les jalons. Sélectionnez un jalon pour y accéder directement.
+
+![](thread_timeline_1.png)
+
+Lorsque vous ajoutez un commentaire, un sondage, un vote ou une conclusion, Loomio marque votre nouvel élément comme lu. Il n’apparaîtra pas comme un nouvel élément à consulter.
+
+<!-- translation-section: notifications-and-members -->
+
+## Notifications et membres
+
+La barre latérale droite vous permet de gérer vos notifications par e-mail et indique qui a été invité, qui a vu le fil et qui a reçu une notification.
+
+<!-- translation-section: email-notifications-for-this-thread -->
+
+### Notifications par e-mail pour ce fil
+
+Sélectionnez le paramètre de notification actuel pour choisir si Loomio vous envoie des e-mails pour toutes les activités, uniquement pour les activités qui vous notifient expressément, ou pour aucune activité. Recevoir des e-mails pour toutes les activités peut générer de nombreux messages dans un fil actif.
+
+![Option d’envoi d’un e-mail en cas de notification sélectionnée dans la barre latérale de la discussion](../notifying_people/thread_interact.png)
+
+<!-- translation-section: invite-people -->
+
+### Inviter des personnes
+
+Sélectionnez **Inviter des personnes** pour ajouter des personnes après le démarrage du fil.
+
+![Inviter des personnes dans la barre latérale du fil](../notifying_people/thread_invite_icon.png)
+
+Sélectionnez un groupe ou un sous-groupe, saisissez les noms de membres individuels ou saisissez une adresse e-mail pour inviter un invité.
+
+Le champ **Trouver ou inviter des personnes** filtre également la liste des personnes déjà présentes dans le fil. Effacez le contenu du champ pour afficher à nouveau la liste complète et utilisez les commandes de pagination s’il y a plus de 50 personnes. Après la sélection des destinataires, la liste des membres laisse place au champ de message facultatif. Les nouvelles personnes sont invitées ; celles qui ont déjà accès reçoivent une nouvelle notification lorsque vous sélectionnez **Inviter ou notifier**.
+
+![Fenêtre d’invitation avec un champ pour les noms et les adresses e-mail](../notifying_people/thread_invite.png)
+
+Un invité peut voir ce fil et y participer, mais ne peut pas voir les autres discussions du groupe sans y être invité séparément.
+
+Vous pouvez fermer les messages d’aide en haut de la fenêtre. Loomio mémorise les messages que vous avez fermés pour votre compte.
+
+![Invitation d’un invité par adresse e-mail](../notifying_people/invite_guest.png)
+
+Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de son nom et sélectionnez **Retirer de la discussion**.
+
+<!-- translation-section: seen-by -->
+
+### Vu par
+
+**Vu par** indique qui a ouvert le fil et quand. Cela peut vous aider à repérer les personnes qui n’ont peut-être pas encore vu des informations importantes.
+
+![Vu par et Notifié⋅e(s) dans la section des membres du fil](../notifying_people/thread_engagement.png)
+
+![Fenêtre Vu par affichant la liste des membres du fil](../notifying_people/thread_seenby.png)
+
+<!-- translation-section: notified -->
+
+### Notifié⋅e(s)
+
+**Notifié⋅e(s)** ouvre l’historique des notifications de la discussion. Il comprend les invitations, les mentions et les réponses, et indique qui a reçu une notification et si chaque notification a été lue, lorsque cette information est disponible.
+
+![Historique des notifications de la discussion](../notifying_people/thread_notified.png)
+
+<!-- translation-section: thread-settings-and-display -->
+
+<a id="thread-settings-and-display"></a>
+
+## Paramètres du fil
+
+Les administrateurs du fil et les administrateurs du groupe peuvent sélectionner **Paramètres du fil de discussion** pour modifier l’agencement des réponses et configurer d’autres options de la discussion.
+
+![](thread_display.png)
+
+![Paramètres du fil avec l’agencement, les limites des sondages, les autorisations relatives aux pièces jointes et la limite de longueur des commentaires](thread_layout_options.png)
+
+### Agencement
+
+Choisissez **Chronologique** pour afficher les éléments dans leur ordre de publication, ou **Imbriqué** pour regrouper les réponses sous l’élément auquel elles répondent. Ce choix modifie l’agencement pour toutes les personnes qui participent au fil.
+
+<a id="allow-multiple-polls-at-the-same-time"></a>
+
+### Un seul sondage à la fois
+
+Lorsque cette option est cochée, les utilisateurs ne peuvent pas démarrer un autre sondage tant que le sondage en cours n’est pas clôturé. Cette option est décochée par défaut pour les nouveaux fils. Les fils créés à partir d’un modèle de discussion utilisent le réglage de ce modèle.
+
+### Seuls les administrateurs peuvent ajouter des pièces jointes
+
+Activez ce paramètre pour réserver l’ajout de fichiers et d’images intégrées aux administrateurs du fil et aux administrateurs du groupe dans l’ensemble du fil, y compris dans les réponses aux sondages et les réponses par e-mail. Les pièces jointes existantes restent disponibles, et les participants peuvent toujours modifier leur texte ou supprimer des pièces jointes.
+
+Les modèles de discussion et de sondage peuvent définir ce paramètre pour les nouveaux fils. Consultez [Modèles de discussion](/en/user_manual/discussions/templates) et [Modèles de sondage](/en/user_manual/polls/poll_templates).
+
+### Limite de longueur des commentaires
+
+Définissez un nombre maximal de caractères par commentaire pour que les contributions restent concises. Laissez le champ vide pour ne pas imposer de limite. La limite s’applique à tout le monde, y compris aux administrateurs.
+
+<!-- translation-section: actions -->
+
+## Actions
+
+La barre latérale droite contient des actions pour l’ensemble du fil. Certaines actions sont également disponibles dans le menu à trois points (**⋯**) à côté d’un fil sur la page du groupe.
+
+Les actions affichées dépendent de vos permissions. Les administrateurs du groupe peuvent gérer les fils, et les paramètres du groupe peuvent autoriser les membres à effectuer certaines actions de gestion. Consultez les [Permissions du groupe](/en/user_manual/groups/settings/permissions).
+
+![](thread_admin.png)
+
+<!-- translation-section: print -->
+
+### Imprimer
+
+Sélectionnez **Imprimer** pour générer une page adaptée à l’impression. Utilisez la boîte de dialogue d’impression de votre navigateur pour l’enregistrer au format PDF.
+
+![](thread_print_thread.png)
+
+<!-- translation-section: markdown -->
+
+### Markdown
+
+Sélectionnez **Markdown** pour enregistrer le fil complet au format Markdown structuré. Choisissez **Copier le Markdown** pour le copier dans votre presse-papiers, ou **Télécharger Markdown** pour l’enregistrer dans un fichier `.md`. Vous pouvez l’utiliser pour un compte rendu de réunion, un document, une archive de décisions, un assistant IA ou un autre outil prenant en charge Markdown.
+
+![](../discussion_management/copy_markdown_menu.png)
+
+Le document commence par un en-tête YAML contenant la clé du fil, l’URL d’origine, le groupe, la date de création, la date de dernière activité et les tags. Utilisez l’URL pour revenir au fil dans Loomio. Il comprend ensuite le contexte de la discussion et chaque commentaire, sondage, vote et conclusion, dans le même ordre et avec la même imbrication que dans la vue en fils.
+
+Chaque sondage constitue une section. Les commentaires, votes et conclusions sont présentés sous forme de citations, et les réponses sont citées sous l’élément auquel elles répondent. Cela permet de voir où commence et où se termine le texte de chaque personne. Chaque citation commence par une ligne indiquant la personne, la date et l’heure de publication, le numéro de l’élément dans le fil et les éventuelles réactions. Les votes et les conclusions sont également identifiés comme tels. La clé du fil et le numéro de l’élément identifient chaque élément dans Loomio.
+
+Loomio applique les mêmes règles de visibilité que dans le fil. Les résultats et les raisons des votes que vous ne pouvez pas voir ne sont pas inclus, et les électeurs ne sont pas identifiés dans les sondages anonymes. Si un sondage ouvert masque les résultats jusqu’à ce que vous votiez, votez avant d’exporter le fil. **Markdown** et **Imprimer** restent indisponibles tant que vous n’avez pas voté.
+
+Par exemple, une discussion contenant un commentaire, des réactions, une proposition, deux votes, une réponse et une conclusion produit ce Markdown :
+
+```markdown
+---
+key: "fi2TAgeC"
+url: "https://www.loomio.com/d/fi2TAgeC/returnable-bottles-for-cafe-customers"
+group: "Oatmilk Cooperative"
+created: "2026-09-10T23:28:30Z"
+last_activity: "2026-09-10T23:28:30Z"
+---
+
+# Discussion: Returnable bottles for cafe customers · Samira Patel · 2026-09-10 23:28
+
+Several cafe customers have asked whether we can supply oat milk in returnable glass bottles. This thread is for working through the practical questions before we decide whether to run a trial. 🥛
+
+**We need a plan that cafe staff can explain easily** , including the deposit, collection days, and what happens when a bottle is damaged or not returned.
+
+Please read the [draft bottle return guide](https://example.com/oatmilk-bottle-return-guide) and add any questions about washing capacity, food-safety checks, transport costs, or weekly reporting.
+
+> **Alex Morgan** · 2026-09-10 23:28 · #1 · 👍 Jamie Chen, Samira Patel
+>
+> I can ask three cafes to track how many bottles are returned each week.
+
+## Proposal: Run a six-week returnable bottle trial · Jamie Chen · 2026-09-10 23:28 · #2
+
+- **Status:** Closed 2026-09-10T23:28:30Z
+- **Options:** Agree; Abstain; Disagree
+
+Supply returnable glass bottles to three cafe customers for six weeks, with one collection from each cafe every week.
+
+<mark>Before launch, confirm the deposit guidance and the food-safety record for every washed batch.</mark>
+
+| Measure | Review |
+| --- | --- |
+| Return rate | Weekly |
+| Cleaning time | Each batch |
+| Transport cost | End of trial |
+
+### Current results
+
+| Option | Votes | % of votes cast | % of eligible voters | Voters |
+| --- | --- | --- | --- | --- |
+| Agree | 1 | 50% | 33% | Samira Patel |
+| Abstain | 1 | 50% | 33% | Alex Morgan |
+| Disagree | 0 | 0% | 0% | No voters |
+| Not voted | 1 |  | 33% | Jamie Chen |
+
+> **Samira Patel** voted **Agree** · 2026-09-10 23:28 · #3 · ❤️ Jamie Chen
+>
+> The six-week trial gives us enough time to test collections and washing capacity.
+>
+> > **Alex Morgan** · 2026-09-10 23:28 · #4
+> >
+> > Could we confirm which cafes will participate before the trial starts?
+
+> **Alex Morgan** voted **Abstain** · 2026-09-10 23:28 · #5
+>
+> I can support the trial once the collection dates are confirmed with each cafe.
+
+> **Jamie Chen** shared an outcome · 2026-09-10 23:28 · #7
+>
+> Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
+```
+
+Les titres et les libellés utilisent la langue que vous avez sélectionnée. Le contenu rédigé par les participants reste dans sa langue d’origine.
+
+<!-- translation-section: pin-or-unpin-a-thread -->
+
+### Épingler ou désépingler un fil
+
+Les fils épinglés apparaissent au-dessus des autres fils sur la page du groupe. Les discussions de bienvenue, les actualités et les annonces sont des usages courants des fils épinglés.
+
+Ouvrez le menu à trois points (**⋯**) à côté du fil sur la page du groupe et sélectionnez **Épingler le fil**. Les fils épinglés sont classés selon le moment où ils ont été épinglés. Pour modifier leur ordre, désépinglez-les puis épinglez-les à nouveau.
+
+Sélectionnez **Désépingler le fil** pour replacer un fil dans l’ordre fondé sur l’activité.
+
+![](../discussion_management/pin_thread.png)
+
+<!-- translation-section: move-a-thread -->
+
+### Déplacer un fil
+
+Sélectionnez **Déplacer le sujet** pour déplacer un fil vers un autre groupe, un sous-groupe ou un fil direct. Il sera visible par les membres du groupe de destination et par toute personne qui y a été spécifiquement invitée.
+
+![](../discussion_management/move_thread_select.png)
+
+>[!Tip]
+>Commencez un brouillon dans un fil direct ou dans un sous-groupe privé, puis déplacez-le vers le groupe lorsqu’il est prêt.
+
+Pour déplacer certains éléments plutôt que le fil entier, consultez [Déplacer des éléments entre les fils](/en/user_manual/discussions/moving_items/).
+
+<!-- translation-section: lock-or-unlock-a-thread -->
+
+### Verrouiller ou déverrouiller un fil
+
+Verrouillez un fil pour empêcher l’ajout de commentaires ou toute autre modification. Un fil ne peut être verrouillé qu’une fois ses sondages actifs clôturés.
+
+Sélectionnez **Verrouiller la discussion** dans **Actions**. Les fils verrouillés sont retirés de la liste des discussions ouvertes et portent le tag **Verrouillé**.
+
+Pour retrouver un fil verrouillé, ouvrez le filtre des discussions sur la page du groupe et sélectionnez **Verrouillé**. Ouvrez le fil et sélectionnez **Déverrouiller le fil de discussion** pour autoriser à nouveau les commentaires et les modifications.
+
+<!-- translation-section: delete-a-thread -->
+
+### Supprimer un fil
+
+La suppression d’un fil est définitive et ne peut pas être annulée. Verrouillez le fil si vous pensez en avoir encore besoin.
+
+Sélectionnez **Supprimer la discussion** et confirmez la suppression.
+
+![](../discussion_management/thread_delete.png)

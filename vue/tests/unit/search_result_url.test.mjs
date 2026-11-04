@@ -3,6 +3,10 @@ import test from 'node:test';
 
 import { urlForSearchResult } from '../../src/shared/helpers/search_result_url.mjs';
 
+test('comments on standalone polls open the comment in its poll thread', () => {
+  assert.equal(urlForSearchResult({searchable_type: 'Comment', searchable_id: 7, discussion_key: null, poll_key: 'poll-key'}), '/p/poll-key/comment/7');
+});
+
 test('standalone polls use their poll route even when a sequence is present', () => {
   assert.equal(urlForSearchResult({
     searchable_type: 'Poll',

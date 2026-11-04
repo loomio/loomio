@@ -142,6 +142,8 @@ docker compose run --rm app rails runner 'User.last.update!(is_admin: true)'
 
 You can now access the admin interface at https://loomio.example.com/admin.
 
+Instance administrators can use **Sign in as** on a user's admin page to create a one-time sign-in link. Open the link in a private browser window. These links also work when local login is disabled for an SSO-only site; users cannot request emailed sign-in links or codes on those sites.
+
 ## If something goes wrong
 
 To see system error messages as they happen run `docker compose logs -f` and make a request against the server.

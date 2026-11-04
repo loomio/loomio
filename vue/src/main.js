@@ -26,6 +26,7 @@ import router from './routes'
 import boot from '@/shared/helpers/boot';
 import { beforeSend } from '@/shared/helpers/sentry_event.mjs';
 import Session from '@/shared/services/session';
+import AccountCompletionService from '@/shared/services/account_completion_service';
 import { plugin as Slicksort } from 'vue-slicksort';
 
 boot(function(data) {
@@ -77,6 +78,10 @@ boot(function(data) {
   app.directive('marked', markedDirective)
   app.directive('submit-on-mod-enter', submitOnModEnterDirective)
   app.mount("#app")
+
+  // SSO returns and page reloads do not pass through AuthService, so check
+  // account completion only after the modal launcher has mounted.
+  AccountCompletionService.maybeOpen();
 
   const reconcilePushSubscription = () => PushSubscriptionService.reconcile().catch(() => {});
   EventBus.$on('signedIn', reconcilePushSubscription);

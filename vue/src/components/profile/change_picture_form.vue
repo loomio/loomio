@@ -1,10 +1,9 @@
 <script setup lang="js">
-import { ref, computed, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash    from '@/shared/services/flash';
-import md5      from "md5";
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -17,16 +16,14 @@ const progress                = ref(0);
 const previous_uploaded_avatar = ref(undefined);
 const pictureProvider          = ref(undefined);
 
-const gravatarUrl = computed(() => {
-  const hash = md5(user.value.email.trim().toLowerCase());
-  return `https://www.gravatar.com/avatar/${hash}?s=256`;
-});
-
 function selectFile() {
   fileInput.value.click();
 }
 
-function uploadFile() {
+function uploadFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
   uploading.value = true;
   Records.users.remote.onUploadSuccess = response => {
     Records.importJSON(response);
@@ -34,7 +31,7 @@ function uploadFile() {
     EventBus.$emit('closeModal');
     uploading.value = false;
   };
-  Records.users.remote.upload('upload_avatar', fileInput.value.files[0], {}, args => { progress.value = (args.loaded / args.total) * 100; });
+  Records.users.remote.upload('upload_avatar', file, {}, args => { progress.value = (args.loaded / args.total) * 100; });
 }
 
 function useProviderPicture() {
@@ -72,7 +69,6 @@ v-card.change-picture-form(:title="$t('change_picture_form.title')")
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
   v-card-text
-    p.text-medium-emphasis(v-html="$t('change_picture_form.helptext')")
     v-list.change-picture-form__options-list
       v-list-item.change-picture-form__option(@click='selectFile()')
         template(v-slot:prepend)
@@ -93,8 +89,8 @@ v-card.change-picture-form(:title="$t('change_picture_form.title')")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         template(v-slot:prepend)
           v-avatar
-            v-img(:src="gravatarUrl")
-        v-list-item-title(v-t="'change_picture_form.use_gravatar'")
+            common-icon(name="mdi-account-circle")
+        v-list-item-title {{ t('change_picture_form.use_gravatar') }}
       v-list-item.change-picture-form__option(@click="submit('initials')")
         template(v-slot:prepend).user-avatar
           v-avatar.user-avatar__initials--small {{user.avatarInitials}}

@@ -2,10 +2,14 @@ require 'ipaddr'
 require 'resolv'
 require 'net/http'
 require 'stringio'
+require 'timeout'
 
 module SafeHttpService
   MAX_REDIRECTS = 3
   REQUEST_TIMEOUT_SECONDS = 5
+  PREVIEW_COUNT_MAX = 5
+  PREVIEW_BYTES_MAX = 1.megabyte
+  PREVIEW_TIMEOUT_SECONDS = 10
 
   # Any resolved host IP in these ranges short-circuits the fetch. Covers loopback,
   # private networks, link-local (including AWS/GCP metadata at 169.254.169.254),
@@ -36,7 +40,7 @@ module SafeHttpService
   ].freeze
 
   def self.fetch(url, redirect_depth: 0)
-    response = pinned_get(url)
+    response = pinned_get(url, max_bytes: PREVIEW_BYTES_MAX)
     return nil unless response
 
     if [301, 302, 303, 307, 308].include?(response.code.to_i) && response['location']
@@ -75,19 +79,20 @@ module SafeHttpService
      hostname: URI(url).host}
   end
 
+  # Bound the work of one preview batch, including DNS, redirects and slow
+  # responses. Sequential fetches keep the deadline in the request thread;
+  # previews completed before it expires can still be returned.
   def self.fetch_urls(urls)
     previews = []
-    threads = []
-    Array(urls).compact.each do |u|
-      # spawn a new thread for each url
-      threads << Thread.new do
-        previews.push fetch(u)
+    Timeout.timeout(PREVIEW_TIMEOUT_SECONDS) do
+      Array(urls).compact.uniq.first(PREVIEW_COUNT_MAX).each do |url|
+        preview = fetch(url)
+        previews << preview if preview
       end
     end
-    threads.each { |t| t.join }
-    previews.compact
-  rescue SocketError, URI::InvalidURIError
-    []
+    previews
+  rescue Timeout::Error, SocketError, URI::InvalidURIError
+    previews
   end
 
   def self.safe_to_fetch?(url)
@@ -106,16 +111,14 @@ module SafeHttpService
   # pinned to the validated address). Returns nil if the URL is unsafe or the
   # request fails. Used for fetching remote avatars/logos.
   def self.safe_open(url, max_bytes: 10.megabytes)
-    response = pinned_get(url)
+    response = pinned_get(url, max_bytes: max_bytes)
     return nil unless response && response.code.to_i == 200
     body = response.body.to_s
-    return nil if body.bytesize > max_bytes
-
     StringIO.new(body)
   end
 
-  def self.pinned_get(url)
-    pinned_request(:get, url)
+  def self.pinned_get(url, max_bytes: nil)
+    pinned_request(:get, url, max_bytes: max_bytes)
   end
 
   # Performs an HTTP request while defeating DNS rebinding: the host is resolved
@@ -126,7 +129,7 @@ module SafeHttpService
   # follow must re-validate each hop). Returns a Net::HTTPResponse or nil.
   # Use this for ANY outbound request to a user/provider-controlled URL
   # (link previews, chatbot webhooks/Matrix, remote avatars).
-  def self.pinned_request(method, url, headers: {}, body: nil, timeout: REQUEST_TIMEOUT_SECONDS)
+  def self.pinned_request(method, url, headers: {}, body: nil, timeout: REQUEST_TIMEOUT_SECONDS, max_bytes: nil)
     uri = URI.parse(url.to_s)
     return nil unless %w[http https].include?(uri.scheme)
     return nil if uri.host.to_s.empty?
@@ -147,7 +150,22 @@ module SafeHttpService
     headers.each { |k, v| request[k] = v }
     request.body = body if body
 
-    http.start { |h| h.request(request) }
+    http.start do |h|
+      return h.request(request) unless max_bytes
+
+      h.request(request) do |response|
+        return nil if response['Content-Length'].to_i > max_bytes
+
+        # Count streamed, decompressed bytes even when Content-Length is absent
+        # or inaccurate. Stop before retaining or parsing an oversized body.
+        response_body = +''.b
+        response.read_body do |chunk|
+          return nil if response_body.bytesize + chunk.bytesize > max_bytes
+          response_body << chunk
+        end
+        response.body = response_body
+      end
+    end
   rescue URI::InvalidURIError, KeyError, SocketError, SystemCallError, Net::OpenTimeout, Net::ReadTimeout, OpenSSL::SSL::SSLError, IOError
     nil
   end

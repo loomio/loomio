@@ -8,30 +8,9 @@ import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
 import { convertToMd } from '@/shared/services/format_converter';
-import Blockquote from '@tiptap/extension-blockquote';
-import Bold from '@tiptap/extension-bold';
-import CodeBlock from '@tiptap/extension-code-block';
-import Document from '@tiptap/extension-document';
-import HardBreak from '@tiptap/extension-hard-break';
-import Heading from '@tiptap/extension-heading';
-import HorizontalRule from '@tiptap/extension-horizontal-rule';
-import Italic from '@tiptap/extension-italic';
-import Paragraph from '@tiptap/extension-paragraph';
-import Strike from '@tiptap/extension-strike';
-import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
-import { BulletList, OrderedList, ListItem, ListKeymap } from '@tiptap/extension-list'
-import { Focus, Placeholder, UndoRedo, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions'
-import {CustomTaskItem} from './extension_custom_task_item';
-import {CustomTaskList} from './extension_custom_task_list';
-import { TextStyle } from '@tiptap/extension-text-style';
-import Text from '@tiptap/extension-text';
-import Underline from '@tiptap/extension-underline';
-import {CustomMention} from './extension_mention';
-import {CustomLink} from './extension_link';
-import {CustomImage} from './extension_image';
-import {Video} from './extension_image';
-import {Audio} from './extension_image';
-import {Iframe} from './extension_iframe';
+import { contentExtensions } from './content_extensions';
+import { collabSeed, SEED_FIELD } from './collab_seed';
+import { Placeholder, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions';
 
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
@@ -43,8 +22,6 @@ import MentionNotificationsCount from '@/components/common/mention_notifications
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
-import { TextAlign } from './extension_text_align';
-import { Highlight } from './extension_highlight';
 
 import Collaboration from '@tiptap/extension-collaboration';
 import CollaborationCaret from '@tiptap/extension-collaboration-caret'
@@ -89,6 +66,7 @@ const editor = ref(null);
 const editorContentRef = ref(null);
 const focused = ref(false);
 const expanded = ref(false);
+const converting = ref(false);
 const linkUrl = ref("");
 const iframeUrl = ref("");
 const linkDialogIsOpen = ref(false);
@@ -101,7 +79,7 @@ const editorEmpty = ref(true);
 let ydoc = null;
 let hocusProvider = null;
 let localProvider = null;
-let syncFallbackTimeout = null;
+let seedHtml = '';
 let unregisterBeforeSave = () => {};
 
 const btnProps = ref({
@@ -121,6 +99,7 @@ const modelRef = toRef(props, 'model');
 const mentionOptions = useMentionSuggestion(modelRef, toRef(props, 'allowMentions'));
 
 const {
+  canAttachFiles,
   files,
   imageFiles,
   resetFiles,
@@ -175,10 +154,12 @@ const resetDraft = (content) => {
   editor.value.commands.setContent(content);
 };
 
+// Discarding a draft returns the document to the content it was seeded from:
+// empty for a new record, the saved content otherwise. The document name is
+// fixed by that seed, so the next visit attaches to this same document.
 const deleteDraft = () => {
   if (!editor.value) return;
-  editor.value.chain().clearContent().run();
-  ydoc.getMap('config').set('initialContentLoaded', false);
+  resetDraft(seedHtml);
   resetFiles();
 };
 
@@ -242,11 +223,15 @@ const selectedText = () => {
   return state.doc.textBetween(from, to, ' ');
 };
 
-const convertToMdHandler = () => {
-  if (confirm(I18n.global.t('formatting.markdown_confirm'))) {
-    updateModel();
-    convertToMd(props.model, props.field);
+const convertToMdHandler = async () => {
+  if (converting.value || !confirm(I18n.global.t('formatting.markdown_confirm'))) return;
+  converting.value = true;
+  try {
+    updateFiles();
+    await convertToMd(props.model, props.field, editor.value);
     Records.users.saveExperience('html-editor.uses-markdown');
+  } finally {
+    converting.value = false;
   }
 };
 
@@ -287,7 +272,9 @@ const updateModel = () => {
   updateFiles();
 };
 
-const updateMentionState = () => {
+// Takes the instance from Tiptap's callbacks: a seeded document renders while
+// the Editor is being constructed, before editor.value is assigned.
+const updateMentionState = (instance) => {
   const handles = [];
   const visit = node => {
     if (node.type === 'mention' && node.attrs.id) {
@@ -295,9 +282,9 @@ const updateMentionState = () => {
     }
     Array.from(node.content || []).forEach(visit);
   };
-  visit(editor.value.getJSON());
+  visit(instance.getJSON());
   mentionHandles.value = Array.from(new Set(handles));
-  editorEmpty.value = editor.value.isEmpty;
+  editorEmpty.value = instance.isEmpty;
 };
 
 const removeLinkPreview = (url) => {
@@ -329,42 +316,28 @@ const imageSelected = () => {
 
 // Lifecycle
 onMounted(() => {
-  const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
+  // Seed the document deterministically before the editor and providers
+  // start (see collab_seed.js). Copies of the seed from the server, IndexedDB
+  // or other tabs merge idempotently, so there is nothing to wait for: the
+  // editor is safe to type in immediately, and an unreachable server only
+  // means no live collaboration. Converted Markdown is already in the model,
+  // so it becomes the seed of its own document.
+  const extensions = contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value });
+  seedHtml = props.model[props.field] || '';
+  const seed = collabSeed(seedHtml, extensions);
+  const docname = [props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token)), seed.hash].join('-');
   ydoc = new Y.Doc();
-
-  const onSync = function() {
-    // The provider and fallback timer outlive the editor; a late sync after
-    // the editor is destroyed would hit a null commandManager.
-    if (!editor.value || editor.value.isDestroyed) { return; }
-    if (!ydoc.getMap('config').get('initialContentLoaded')) {
-      ydoc.getMap('config').set('initialContentLoaded', true);
-      editor.value.commands.setContent(props.model[props.field]);
-    } else {
-      if (editor.value.storage.characterCount.characters() == 0 && !props.model.attributeIsBlank(props.field)) {
-        console.log(`content blank when it shouldnt be! ${docname}`);
-        editor.value.commands.setContent(props.model[props.field]);
-      }
-    }
-  };
+  Y.applyUpdate(ydoc, seed.update);
 
   hocusProvider = new HocuspocusProvider({
     url: AppConfig.theme.hocuspocus_url,
     name: docname,
     document: ydoc,
     token: (Session.user().id || 0) + "," + AppConfig.channel_token,
-    onSynced: () => { onSync() },
   });
 
   localProvider = new IndexeddbPersistence(docname, ydoc);
   localProvider._db.catch(() => { /* IndexedDB unavailable (e.g. iOS Private Browsing) — collab still works via server */ });
-
-  // Fallback: If server doesn't connect within timeout, load content from local model
-  syncFallbackTimeout = setTimeout(() => {
-    if (!ydoc.getMap('config').get('initialContentLoaded')) {
-      console.log('Hocuspocus server unavailable, loading from local model');
-      onSync();
-    }
-  }, 2000);
 
   if (!smAndDown.value) expanded.value = Boolean(Session.user().experiences['html-editor.expanded']);
 
@@ -378,14 +351,11 @@ onMounted(() => {
     },
     autofocus: props.autofocus,
     extensions: [
-      Blockquote,
-      Bold,
-      BulletList, OrderedList, ListItem, ListKeymap,
-      CodeBlock,
+      ...extensions,
       CharacterCount.configure({limit: props.maxLength}),
-      CustomImage.configure({attachFile: attachFile, attachImageFile: attachImageFile}),
       Collaboration.configure({
         document: ydoc,
+        field: SEED_FIELD,
       }),
       CollaborationCaret.configure({
         provider: hocusProvider,
@@ -419,36 +389,13 @@ onMounted(() => {
           return cursor;
         }
       }),
-      Video,
-      Audio,
-      Document,
       Dropcursor,
       Gapcursor,
-      HardBreak,
-      Heading,
-      Highlight.configure({ multicolor: true }),
-      HorizontalRule,
-      Italic,
-      Iframe,
-      CustomLink,
-      Paragraph,
       Placeholder.configure({placeholder: () => props.placeholder}),
-      Strike,
-      Text,
-      Table,
-      TableHeader,
-      TableRow,
-      TableCell,
-      CustomTaskList,
-      CustomTaskItem,
-      CustomMention.configure(mentionOptions),
-      TextStyle,
-      TextAlign.configure({ types: ['heading', 'paragraph'] }),
-      Underline
     ],
-    onUpdate: () => {
+    onUpdate: ({ editor: instance }) => {
       if (props.maxLength) { checkLength(); }
-      updateMentionState();
+      updateMentionState(instance);
     },
     onFocus: () => {
       focused.value = true;
@@ -456,8 +403,9 @@ onMounted(() => {
     onBlur: () => {
       focused.value = false;
     },
-    onCreate: () => {
-      updateMentionState();
+    onCreate: ({ editor: instance }) => {
+      if (props.maxLength) { checkLength(); }
+      updateMentionState(instance);
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
       }
@@ -492,7 +440,6 @@ onBeforeUnmount(() => {
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
-  if (syncFallbackTimeout) { clearTimeout(syncFallbackTimeout); }
   if (hocusProvider) { hocusProvider.destroy(); }
   if (localProvider) { localProvider.destroy(); }
   if (editor.value) { editor.value.destroy(); }
@@ -523,7 +470,7 @@ div.mb-2
             ref="editorContentRef"
             :editor="editor"
           )
-          mention-notifications-count(:model="model" :handles="mentionHandles" :empty="editorEmpty")
+          mention-notifications-count(v-if="allowMentions" :model="model" :handles="mentionHandles" :empty="editorEmpty")
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
         v-btn(v-bind="btnProps" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
@@ -550,19 +497,19 @@ div.mb-2
             v-menu(activator="parent")
               emoji-picker(:insert="emojiPicked")
 
-          v-btn(v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
+          v-btn.text-editor__attach(v-if="canAttachFiles" v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
             common-icon(v-bind="iconProps" name="mdi-paperclip")
 
-          v-btn(v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
+          v-btn.text-editor__insert-image(v-if="canAttachFiles" v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
             common-icon(v-bind="iconProps" name="mdi-image")
 
           //- link
           template(v-if="editor.isActive('link')")
-            v-btn(v-bind="btnProps" variant="tonal" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
+            v-btn.text-editor__link(v-bind="btnProps" variant="tonal" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
               common-icon(v-bind="iconProps" name="mdi-link-variant")
 
           template(v-else)
-            v-btn(v-bind="btnProps" :title="$t('formatting.link')")
+            v-btn.text-editor__link(v-bind="btnProps" :title="$t('formatting.link')")
               common-icon(v-bind="iconProps" name="mdi-link-variant")
               v-menu(activator="parent" :close-on-content-click="!selectedText()" v-model="linkDialogIsOpen")
                 template(v-if="selectedText()")
@@ -577,17 +524,17 @@ div.mb-2
                   v-card(:title="$t('text_editor.select_text_to_link')")
 
           template(v-if="expanded")
-            v-btn(v-bind="btnProps" @click='openRecordAudioModal' :title="$t('record_modal.record_audio')")
+            v-btn(v-if="canAttachFiles" v-bind="btnProps" @click='openRecordAudioModal' :title="$t('record_modal.record_audio')")
               common-icon(v-bind="iconProps" name="mdi-microphone")
 
             //v-btn(v-bind="btnProps" @click='openRecordVideoModal' :title="$t('record_modal.record_video')")
             //  common-icon(name="mdi-video")
 
             template(v-for="i in [1,2,3]")
-              v-btn(v-bind="btnProps" :variant="editor.isActive('heading', { level: i }) ? 'tonal' :'text' " @click='editor.chain().focus().toggleHeading({ level: i }).run()' :title="$t('formatting.heading'+i)")
+              v-btn(v-bind="btnProps" :class="'text-editor__heading' + i" :variant="editor.isActive('heading', { level: i }) ? 'tonal' :'text' " @click='editor.chain().focus().toggleHeading({ level: i }).run()' :title="$t('formatting.heading'+i)")
                 common-icon(v-bind="iconProps" :name="'mdi-format-header-'+i")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('bold') ? 'tonal' : 'text'" @click='editor.chain().toggleBold().focus().run()' :title="$t('formatting.bold')")
+            v-btn.text-editor__bold(v-bind="btnProps" :variant="editor.isActive('bold') ? 'tonal' : 'text'" @click='editor.chain().toggleBold().focus().run()' :title="$t('formatting.bold')")
               common-icon(v-bind="iconProps" name="mdi-format-bold")
 
             v-btn(v-bind="btnProps" :variant="editor.isActive('italic') ? 'tonal' : 'text'" @click='editor.chain().toggleItalic().focus().run()' :title="$t('formatting.italicize')")
@@ -598,20 +545,20 @@ div.mb-2
 
             //- v-btn(icon variant="text" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
             //-   common-icon(name="mdi-format-underline")
-            v-btn(v-bind="btnProps" :variant="editor.isActive('bulletList') ? 'tonal' : 'text'" @click='editor.chain().toggleBulletList().focus().run()' :title="$t('formatting.bullet_list')")
+            v-btn.text-editor__bullet-list(v-bind="btnProps" :variant="editor.isActive('bulletList') ? 'tonal' : 'text'" @click='editor.chain().toggleBulletList().focus().run()' :title="$t('formatting.bullet_list')")
               common-icon(v-bind="iconProps" name="mdi-format-list-bulleted")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('orderedList') ? 'tonal' : 'text'" @click='editor.chain().toggleOrderedList().focus().run()' :title="$t('formatting.number_list')")
+            v-btn.text-editor__number-list(v-bind="btnProps" :variant="editor.isActive('orderedList') ? 'tonal' : 'text'" @click='editor.chain().toggleOrderedList().focus().run()' :title="$t('formatting.number_list')")
               common-icon(v-bind="iconProps" name="mdi-format-list-numbered")
 
-            v-btn(v-bind="btnProps" :variant="editor.isActive('taskList') ? 'tonal' : 'text'" @click='editor.chain().toggleTaskList().focus().run()' :title="$t('formatting.task_list')")
+            v-btn.text-editor__task-list(v-bind="btnProps" :variant="editor.isActive('taskList') ? 'tonal' : 'text'" @click='editor.chain().toggleTaskList().focus().run()' :title="$t('formatting.task_list')")
               common-icon(v-bind="iconProps" name="mdi-checkbox-marked-outline")
 
             text-highlight-btn(:editor="editor" :btnProps="btnProps" :iconProps="iconProps")
             text-align-btn(:editor="editor" :btnProps="btnProps" :iconProps="iconProps")
 
             //- strikethrough
-            v-btn(v-bind="btnProps" :title="$t('formatting.embed')")
+            v-btn.text-editor__embed(v-bind="btnProps" :title="$t('formatting.embed')")
               common-icon(v-bind="iconProps" name="mdi-youtube")
               v-menu(activator="parent" :close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
                 template(v-slot:activator="{ props }")
@@ -624,19 +571,19 @@ div.mb-2
                     v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
 
             //- blockquote
-            v-btn(v-bind="btnProps" :variant="editor.isActive('blockquote') ? 'tonal' : 'text'" @click='editor.chain().toggleBlockquote().focus().run()' :title="$t('formatting.blockquote')")
+            v-btn.text-editor__blockquote(v-bind="btnProps" :variant="editor.isActive('blockquote') ? 'tonal' : 'text'" @click='editor.chain().toggleBlockquote().focus().run()' :title="$t('formatting.blockquote')")
               common-icon(v-bind="iconProps" name="mdi-format-quote-close")
             //- //- code block
-            v-btn(v-bind="btnProps" :variant="editor.isActive('codeBlock') ? 'tonal' : 'text'" @click='editor.chain().toggleCodeBlock().focus().run()' :title="$t('formatting.code_block')")
+            v-btn.text-editor__code-block(v-bind="btnProps" :variant="editor.isActive('codeBlock') ? 'tonal' : 'text'" @click='editor.chain().toggleCodeBlock().focus().run()' :title="$t('formatting.code_block')")
               common-icon(v-bind="iconProps" name="mdi-code-braces")
             //- embded
-            v-btn(v-bind="btnProps" @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
+            v-btn.text-editor__divider(v-bind="btnProps" @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
               common-icon(v-bind="iconProps" name="mdi-minus")
             //- table
-            v-btn(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
+            v-btn.text-editor__add-table(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
               common-icon(v-bind="iconProps" name="mdi-table")
             //- markdown (save experience)
-            v-btn.e2e-markdown-btn(v-bind="btnProps" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")
+            v-btn.e2e-markdown-btn(v-bind="btnProps" :loading="converting" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")
               common-icon(v-bind="iconProps" name="mdi-language-markdown-outline")
 
             v-btn.html-editor__expand(v-bind="btnProps" @click="toggleExpanded" :title="$t('formatting.collapse')")

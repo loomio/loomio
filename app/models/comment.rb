@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   include Discard::Model
-  include CustomCounterCache::Model
+  include HasVersionsCount
   include Translatable
   include Reactable
   include Bookmarkable
@@ -10,12 +10,13 @@ class Comment < ApplicationRecord
   include HasRichText
   include Searchable
 
-  def self.pg_search_insert_statement(id: nil, author_id: nil, topic_id: nil)
+  def self.pg_search_insert_statement(id: nil, author_id: nil, topic_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', comments.body, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
         searchable_type,
         searchable_id,
+        poll_id,
         group_id,
         discussion_id,
         topic_id,
@@ -28,10 +29,11 @@ class Comment < ApplicationRecord
         updated_at)
       SELECT 'Comment' AS searchable_type,
         comments.id AS searchable_id,
+        CASE WHEN topics.topicable_type = 'Poll' THEN topics.topicable_id ELSE NULL END AS poll_id,
         topics.group_id as group_id,
         CASE WHEN topics.topicable_type = 'Discussion' THEN topics.topicable_id ELSE NULL END AS discussion_id,
         topic_items.topic_id AS topic_id,
-        COALESCE(topics.tags, ARRAY[]::varchar[]) AS tags,
+        #{TopicItem.tags_sql_for(Comment)} AS tags,
         comments.user_id AS author_id,
         comments.created_at AS authored_at,
         #{content_str} AS content,
@@ -45,6 +47,7 @@ class Comment < ApplicationRecord
         LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
       WHERE comments.discarded_at IS NULL
+        AND comments.id NOT IN (#{under_polls(Poll.discarded).select(:id).to_sql})
         AND topics.discarded_at IS NULL
         AND (
           (topics.topicable_type = 'Discussion' AND discussions.discarded_at IS NULL) OR
@@ -53,6 +56,7 @@ class Comment < ApplicationRecord
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
         #{topic_id ? " AND topic_items.topic_id = #{topic_id.to_i}" : ""}
+        #{poll_id ? " AND comments.id IN (#{under_polls(Poll.where(id: poll_id)).select(:id).to_sql})" : ""}
     SQL
   end
 
@@ -68,6 +72,7 @@ class Comment < ApplicationRecord
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_cannot_change, on: :update
+  validate :parent_allows_replies, on: :create
   validate :has_body_or_attachment
   validate :body_within_topic_limit
 
@@ -78,7 +83,6 @@ class Comment < ApplicationRecord
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :topic, :topic_id, :group, :group_id, :members, :guests, to: :parent
 
-  define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
   def title
     topic.topicable.title
@@ -117,7 +121,36 @@ class Comment < ApplicationRecord
     edited_at.present?
   end
 
+  def parent_allows_replies?
+    parent_type != 'Stance' || parent.poll.results_available?
+  end
+
+  # Follow domain parents so conversations remain complete when the display
+  # depth cap makes a reply a sibling of its actual parent or enclosing poll.
+  def self.under_polls(polls)
+    where("comments.id IN (#{<<~SQL.squish})")
+      WITH RECURSIVE poll_comments AS (
+        SELECT id FROM comments
+        WHERE (parent_type = 'Poll' AND parent_id IN (#{polls.select(:id).to_sql}))
+          OR (parent_type = 'Stance' AND parent_id IN (
+            SELECT id FROM stances WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
+          OR (parent_type = 'Outcome' AND parent_id IN (
+            SELECT id FROM outcomes WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
+        UNION
+        SELECT comments.id FROM comments
+        JOIN poll_comments ON comments.parent_type = 'Comment' AND comments.parent_id = poll_comments.id
+      )
+      SELECT id FROM poll_comments
+    SQL
+  end
+
   private
+
+  def parent_allows_replies
+    errors.add(:parent, :invalid) unless parent_allows_replies?
+  end
 
   def has_body_or_attachment
     if !discarded_at && body_blank? && files.empty? && image_files.empty?

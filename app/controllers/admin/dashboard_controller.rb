@@ -2,7 +2,10 @@
 
 class Admin::DashboardController < Admin::BaseController
   def show
-    render Views::Admin::Dashboard.new(stats: dashboard_stats)
+    render Views::Admin::Dashboard.new(
+      stats: dashboard_stats,
+      authentication_stats: UserAuthenticationStats.counts(since: 30.days.ago)
+    )
   end
 
   private

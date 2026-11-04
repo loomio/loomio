@@ -2,11 +2,13 @@ class Api::V1::LinkPreviewsController < Api::V1::RestfulController
   before_action :require_current_user
 
   def create
-    unless ThrottleService.can?(key: 'LinkPreviews', id: current_user.id, max: 20, per: 'hour')
+    urls = filtered_urls
+    unless ThrottleService.can?(key: 'LinkPreviews', id: current_user.id, max: 20, per: 'hour') &&
+           ThrottleService.can?(key: 'LinkPreviewsGlobal', max: 100, per: 'hour')
       render json: { error: 'Rate limit exceeded' }, status: 429
       return
     end
-    previews = SafeHttpService.fetch_urls(filtered_urls)
+    previews = SafeHttpService.fetch_urls(urls)
     render json: {previews: previews}
   end
 

@@ -116,12 +116,12 @@ module.exports = {
       width: 1280,
       height: 900,
       spotlight: {
-        selector: '.v-app-bar button[title="Search"]',
+        selector: '.v-app-bar .navbar__search',
         padding: 10,
         radius: 24
       }
     });
-    page.clickAndWait('.v-app-bar button[title="Search"]', '.search-modal');
+    page.clickAndWait('.v-app-bar .navbar__search', '.search-modal');
     page.waitFor('.search-modal');
     page.fillInAndEnter('.search-modal input', 'bottle');
     page.pause(500);

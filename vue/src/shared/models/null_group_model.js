@@ -70,6 +70,7 @@ export default class NullGroupModel {
   parentName() { return null; }
   privacyIsOpen() { return false; }
   privacyIsClosed() { return false; }
+  privacyIsParentMembers() { return false; }
   privacyIsSecret() { return true; }
   isDiscarded() { return false; }
   isEnabled() { return true; }

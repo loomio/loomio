@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-assets_source_path="${1:-/loomio/client3-build}"
+assets_source_path="${1:-/loomio/vue-build}"
 assets_destination_path="${2:-/loomio/public/client3}"
 assets_retention_days="${3:-90}"
 
@@ -11,5 +11,7 @@ if [[ ! "$assets_retention_days" =~ ^[0-9]+$ ]]; then
 fi
 
 mkdir -p "$assets_destination_path"
-find "$assets_destination_path" -type f -mtime "+$assets_retention_days" -delete
+# Generated documentation images have stable names and remain valid until the
+# optional screenshot command overwrites them, regardless of their age.
+find "$assets_destination_path" -path "$assets_destination_path/docs-screenshots" -prune -o -type f -mtime "+$assets_retention_days" -exec rm -f {} +
 cp -a "$assets_source_path/." "$assets_destination_path/"

@@ -16,7 +16,6 @@ module GroupExportRelations
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
     has_many :exportable_stance_choices,        through: :exportable_stances, source: :stance_choices
-    has_many :poll_stance_receipts, through: :exportable_polls, source: :stance_receipts
 
     # attachments
     has_many :comment_files,          through: :comments,            source: :files_attachments

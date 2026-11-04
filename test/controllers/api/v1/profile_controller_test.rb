@@ -7,6 +7,9 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @alien = users(:alien)
     @group = groups(:group)
     @disable_edit_user_profile_previous = ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
+    @disable_local_login_previous = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @terms_url_previous = ENV['TERMS_URL']
+    @enforce_existing_terms_previous = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
   end
 
   teardown do
@@ -15,6 +18,194 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     else
       ENV.delete('LOOMIO_DISABLE_EDIT_USER_PROFILE')
     end
+    @disable_local_login_previous.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_previous
+    @terms_url_previous.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_previous
+    @enforce_existing_terms_previous.nil? ? ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS') : ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = @enforce_existing_terms_previous
+  end
+
+  test "account completion requires name and legal acceptance together" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User' } }, format: :json
+
+    assert_response :unprocessable_entity
+    assert_nil @user.reload.name
+    assert_nil @user.legal_accepted_at
+  end
+
+  test "account completion saves name and legal acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    @user.update_columns(name: nil, legal_accepted_at: nil)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User', legal_accepted: true, email_newsletter: true } }, format: :json
+
+    assert_response :success
+    assert_equal 'Completed User', @user.reload.name
+    assert @user.legal_accepted_at.present?
+    assert @user.email_newsletter?
+  end
+
+  test "previously active account can complete its name without asserting legal acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    @user.update_columns(name: nil, legal_accepted_at: nil, current_sign_in_at: 1.week.ago)
+    sign_in @user
+
+    post :update_profile, params: { user: { name: 'Completed User' } }, format: :json
+
+    assert_response :success
+    assert_equal 'Completed User', @user.reload.name
+    assert_nil @user.legal_accepted_at
+  end
+
+  test "time zone choices include Canadian regions separately from US Pacific time" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'America / Vancouver (British Columbia)', 'value' => 'America/Vancouver' }
+    assert_includes zones, { 'title' => 'America / Whitehorse (Yukon)', 'value' => 'America/Whitehorse' }
+    assert_includes zones, { 'title' => 'America / Los Angeles (US Pacific)', 'value' => 'America/Los_Angeles' }
+    assert_equal 1, zones.count { |zone| zone['value'] == 'America/Vancouver' }
+  end
+
+  test "time zone choices use the selected language without translating identifiers" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'fr' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Europe / Londres', 'value' => 'Europe/London' }
+    assert_includes zones, { 'title' => 'Asie / Tokyo', 'value' => 'Asia/Tokyo' }
+    assert_includes zones, { 'title' => 'Amériques / Argentine / Buenos Aires', 'value' => 'America/Argentina/Buenos_Aires' }
+    refute_includes zones.pluck('title'), 'Europe / London'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
+  test "time zone choices require an authenticated user" do
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "time zone choices retain the current users detected alias without changing the profile" do
+    @user.update_columns(time_zone: 'Canada/Pacific', autodetect_time_zone: true)
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Canada/Pacific', 'value' => 'Canada/Pacific' }
+    assert_equal 'Canada/Pacific', @user.reload.time_zone
+    assert @user.autodetect_time_zone?
+  end
+
+  test "manual time zone choices are compact and omit unselected aliases" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_operator zones.length, :<=, 175
+    assert_equal zones.pluck('value').uniq, zones.pluck('value')
+    refute_includes zones.pluck('value'), 'Canada/Pacific'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
+  test "detected time zone saves without revalidating unrelated profile fields" do
+    sign_in @user
+    @user.update_columns(username: 'invalid username')
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_equal 'invalid username', @user.username
+  end
+
+  test "time zone update does not complete a legacy account with a missing name" do
+    sign_in @user
+    @user.update_columns(name: nil)
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_predicate @user, :incomplete?
+  end
+
+  test "time zone update rejects invalid zones and ignores identity fields" do
+    sign_in @user
+    email = @user.email
+    previous_time_zone = @user.time_zone
+
+    post :set_time_zone, params: { time_zone: 'Invalid/Zone', user: { email: 'other@example.com' } }, format: :json
+
+    assert_response :unprocessable_entity
+    assert_equal previous_time_zone, @user.reload.time_zone
+    assert_equal email, @user.email
+  end
+
+  test "time zone update only changes the current user" do
+    sign_in @user
+    previous_time_zone = @alien.time_zone
+
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest', id: @alien.id }, format: :json
+
+    assert_response :success
+    assert_equal 'Europe/Budapest', @user.reload.time_zone
+    assert_equal previous_time_zone, @alien.reload.time_zone
+  end
+
+  test "time zone update requires an authenticated user" do
+    post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "index returns no users when xids is omitted" do
+    sign_in users(:member_normal)
+
+    get :index, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns no users when xids is empty" do
+    sign_in users(:member_normal)
+
+    get :index, params: { xids: '' }, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns only requested users within the actors invitation scope" do
+    sign_in users(:member_normal)
+    requested = [:member_quiet, :guest_quiet, :alien_quiet, :former_member_loud, :former_guest_loud, :non_guest_loud].map { |name| users(name).id }
+
+    get :index, params: { xids: requested.join('x') }, format: :json
+
+    assert_response :success
+    returned = JSON.parse(response.body).fetch('users')
+    assert_equal [users(:member_quiet).id, users(:guest_quiet).id].sort, returned.pluck('id').sort
+    returned.each { |user| refute_includes user.keys, 'email' }
+  end
+
+  test "index requires an authenticated user even without xids" do
+    get :index, format: :json
+
+    assert_response :unauthorized
   end
 
   test "show returns the user json" do
@@ -42,6 +233,18 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_equal @user.id, json.dig('users', 0, 'id')
   end
 
+  test "boot reports required legal acceptance when existing-user enforcement is enabled" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    @user.update_columns(legal_accepted_at: nil, current_sign_in_at: 1.week.ago)
+    sign_in @user
+
+    payload = Boot::User.new(@user.reload, root_url: 'http://test.host').payload.deep_stringify_keys
+
+    assert_equal true, payload.dig('users', 0, 'legal_acceptance_required')
+    assert_nil @user.reload.legal_accepted_at
+  end
+
   test "me returns unauthorized for visitors" do
     get :me, format: :json
     assert_response :unauthorized
@@ -55,6 +258,32 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal({ 'provider' => 'OAUTH' }, JSON.parse(response.body).fetch('provider_picture'))
+  end
+
+  test "Gravatar is enabled only by an explicit update to the current users profile" do
+    sign_in @user
+    assert_nil @user.thumb_url
+
+    post :update_profile, params: {id: @alien.id, user: {avatar_kind: 'gravatar'}}, format: :json
+
+    assert_response :success
+    assert_equal 'gravatar', @user.reload.avatar_kind
+    assert_equal 'initials', @alien.reload.avatar_kind
+    assert_match %r{\Ahttps://secure\.gravatar\.com/avatar/}, @user.thumb_url
+    assert_not_requested :any, /gravatar\.com/
+
+    post :update_profile, params: {user: {avatar_kind: 'initials'}}, format: :json
+
+    assert_response :success
+    assert_equal 'initials', @user.reload.avatar_kind
+    assert_nil @user.thumb_url
+  end
+
+  test "Gravatar selection requires a signed in user" do
+    post :update_profile, params: {user: {avatar_kind: 'gravatar'}}, format: :json
+
+    assert_response :unauthorized
+    assert_equal 'initials', @user.reload.avatar_kind
   end
 
   test "user can select an available provider picture" do
@@ -88,13 +317,13 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-  test "restricted user cannot select a provider picture" do
+  test "an unsubscribe token cannot select a provider picture" do
     @user.identities.create!(identity_type: 'oauth', uid: 'profile-picture', logo: 'https://example.com/picture.png')
     @user.update_columns(unsubscribe_token: UNSUB)
 
     post :use_provider_avatar, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   test "email and push defaults can be applied independently" do
@@ -159,13 +388,28 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     @group.add_member!(@alien) unless @group.members.include?(@alien)
     get :contactable, params: { user_id: @alien.id }
     assert_response :success
+    assert_equal true, JSON.parse(response.body).fetch("contactable")
   end
 
-  test "contactable denies access for unrelated users" do
+  test "contactable reports false for unrelated users" do
     sign_in @user
     other_user = User.create!(name: "Other User", username: "otheruser1234", email: "other@example.com")
     get :contactable, params: { user_id: other_user.id }
-    assert_response :forbidden
+    assert_response :success
+    assert_equal false, JSON.parse(response.body).fetch("contactable")
+  end
+
+  test "contactable requires a signed in user" do
+    get :contactable, params: { user_id: @alien.id }
+    assert_response :unauthorized
+  end
+
+  test "contactable does not grant instance administrators access to unrelated users" do
+    sign_in users(:admin)
+    other_user = User.create!(name: "Unrelated User", username: "unrelateduser1234", email: "unrelated@example.com")
+    get :contactable, params: { user_id: other_user.id }
+    assert_response :success
+    assert_equal false, JSON.parse(response.body).fetch("contactable")
   end
 
   test "updating password signs out other sessions" do
@@ -212,14 +456,28 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     refute LoginToken.exists?(unused_login_token.id)
   end
 
-  # -- unsubscribe-token (restricted user) authorization --
-  # An attacker who obtains a victim's permanent unsubscribe_token (present in
-  # the footer of every notification email) must not be able to take over or
-  # destroy the account. These prove the restricted-user guardrails.
+  test "SSO-only mode does not register a local password" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    sign_in @user
+    original_digest = @user.password_digest
+
+    post :update_profile, params: {
+      user: {
+        password: 'new_complex_password',
+        password_confirmation: 'new_complex_password'
+      }
+    }
+
+    assert_response :success
+    assert_equal original_digest, @user.reload.password_digest
+  end
+
+  # An unsubscribe token authenticates email action pages only. It must not
+  # grant access to the profile API or account credentials.
 
   UNSUB = 'unsub-secret-token-for-tests'
 
-  test "restricted user cannot change password via update_profile" do
+  test "an unsubscribe token cannot change a password via update_profile" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original_digest = @user.password_digest
 
@@ -228,10 +486,11 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { password: 'attacker_password_123', password_confirmation: 'attacker_password_123' }
     }, format: :json
 
-    assert_equal original_digest, @user.reload.password_digest, "restricted user must not change password"
+    assert_response :unauthorized
+    assert_equal original_digest, @user.reload.password_digest
   end
 
-  test "restricted user cannot change email via update_profile" do
+  test "an unsubscribe token cannot change an email via update_profile" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original_email = @user.email
 
@@ -240,45 +499,63 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { email: 'attacker@evil.test' }
     }, format: :json
 
-    assert_equal original_email, @user.reload.email, "restricted user must not change email"
+    assert_response :unauthorized
+    assert_equal original_email, @user.reload.email
   end
 
-  test "restricted user cannot deactivate the account" do
+  test "an unsubscribe token cannot deactivate an account" do
     @user.update_columns(unsubscribe_token: UNSUB, deactivated_at: nil)
 
     post :deactivate, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
     assert_nil @user.reload.deactivated_at
   end
 
-  test "restricted user cannot redact/destroy the account" do
+  test "an unsubscribe token cannot redact an account" do
     @user.update_columns(unsubscribe_token: UNSUB)
 
     delete :destroy, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
-  test "restricted user cannot read the email_api_key" do
+  test "an unsubscribe token cannot read the email_api_key" do
     @user.update_columns(unsubscribe_token: UNSUB)
 
     get :email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
-  test "restricted user cannot reset the email_api_key" do
+  test "an unsubscribe token cannot reset the email_api_key" do
     @user.update_columns(unsubscribe_token: UNSUB)
     original = @user.email_api_key
 
     post :reset_email_api_key, params: { unsubscribe_token: UNSUB }, format: :json
 
-    assert_response :forbidden
+    assert_response :unauthorized
     assert_equal original, @user.reload.email_api_key
   end
 
-  test "restricted user CAN still update notification preferences" do
+  test "merge verification has the same response whether the email belongs to an account" do
+    sign_in @user
+    target = User.create!(email: "merge-target@example.com", email_verified: true)
+
+    assert_difference "ActionMailer::Base.deliveries.count", 1 do
+      post :send_merge_verification_email, params: { target_email: target.email }, format: :json
+    end
+    existing_response = response.body
+    assert_response :success
+
+    assert_no_difference "ActionMailer::Base.deliveries.count" do
+      post :send_merge_verification_email, params: { target_email: "missing-merge@example.com" }, format: :json
+    end
+    assert_response :success
+    assert_equal existing_response, response.body
+  end
+
+  test "an unsubscribe token cannot update notification preferences through the profile API" do
     @user.update_columns(
       unsubscribe_token: UNSUB,
       volume_email_default: User.volume_email_defaults[:quiet],
@@ -290,8 +567,20 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
       user: { volume_email_default: "normal", volume_push_default: "normal" }
     }, format: :json
 
-    assert_response :success
-    assert_predicate @user.reload, :email_default_normal?
-    assert_predicate @user, :push_default_normal?
+    assert_response :unauthorized
+    assert_predicate @user.reload, :email_default_quiet?
+    assert_predicate @user, :push_default_quiet?
+  end
+
+  test "an unsubscribe token cannot change the time zone" do
+    @user.update_columns(unsubscribe_token: UNSUB, time_zone: 'Pacific/Auckland')
+
+    post :set_time_zone, params: {
+      unsubscribe_token: UNSUB,
+      time_zone: 'Europe/Budapest'
+    }, format: :json
+
+    assert_response :unauthorized
+    assert_equal 'Pacific/Auckland', @user.reload.time_zone
   end
 end

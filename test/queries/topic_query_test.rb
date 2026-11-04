@@ -17,6 +17,33 @@ class TopicQueryTest < ActiveSupport::TestCase
     assert_empty TopicQuery.visible_to(user: user)
   end
 
+  test "membership revocation takes effect even when groups and group IDs are cached" do
+    member = users(:member_normal)
+    topic = topics(:discussion_topic)
+    assert_includes member.group_ids, topic.group_id
+    assert_includes member.groups.load, groups(:group)
+    assert TopicQuery.visible_to(user: member).exists?(topic.id)
+
+    groups(:group).membership_for(member).update!(revoked_at: Time.current)
+
+    assert_includes member.group_ids, topic.group_id
+    assert_not TopicQuery.visible_to(user: member).exists?(topic.id)
+    assert_not TopicQuery.relevant_to(user: member).exists?(topic.id)
+  end
+
+  test "revoked parent membership does not grant subgroup access through cached group IDs" do
+    member = users(:member_normal)
+    topic = topics(:subgroup_discussion_topic)
+    groups(:subgroup).update_column(:parent_members_can_see_discussions, true)
+    assert_includes member.group_ids, groups(:group).id
+    assert TopicQuery.visible_to(user: member).exists?(topic.id)
+
+    groups(:group).membership_for(member).update!(revoked_at: Time.current)
+
+    assert_not TopicQuery.visible_to(user: member).exists?(topic.id)
+    assert_not TopicQuery.relevant_to(user: member, group_ids: [topic.group_id]).exists?(topic.id)
+  end
+
   test "logged out can see public topics" do
     pub_group = Group.new(name: "PubGroup #{SecureRandom.hex(4)}", is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
     pub_group.save(validate: false)

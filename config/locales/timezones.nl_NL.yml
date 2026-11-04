@@ -1,0 +1,174 @@
+---
+nl_NL:
+  timezones:
+    local: Plaatselijke tijd (%{value})
+    regions:
+      Africa/Algiers: Afrika / Algiers
+      Africa/Cairo: Afrika / Caïro
+      Africa/Casablanca: Afrika / Casablanca
+      Africa/Harare: Afrika / Harare (Zimbabwe)
+      Africa/Johannesburg: Afrika / Johannesburg (Zuid-Afrika)
+      Africa/Monrovia: Afrika / Monrovia
+      Africa/Nairobi: Afrika / Nairobi
+      America/Adak: Amerika / Adak (Aleoeten)
+      America/Argentina/Buenos_Aires: Amerika / Argentinië / Buenos Aires
+      America/Asuncion: Amerika / Asunción
+      America/Bogota: Amerika / Bogotá
+      America/Cambridge_Bay: Amerika / Cambridge Bay (Nunavut)
+      America/Caracas: Amerika / Caracas
+      America/Chicago: Amerika / Chicago (centrale VS)
+      America/Chihuahua: Amerika / Chihuahua
+      America/Dawson: Amerika / Dawson (Yukon)
+      America/Dawson_Creek: Amerika / Dawson Creek (Brits-Columbia)
+      America/Denver: Amerika / Denver (berggebied VS)
+      America/Edmonton: Amerika / Edmonton (Alberta)
+      America/Fort_Nelson: Amerika / Fort Nelson (Brits-Columbia)
+      America/Glace_Bay: Amerika / Glace Bay (Nova Scotia)
+      America/Goose_Bay: Amerika / Goose Bay (Labrador)
+      America/Guatemala: Amerika / Guatemala
+      America/Guyana: Amerika / Guyana
+      America/Halifax: Amerika / Halifax (Nova Scotia)
+      America/Havana: Amerika / Havana
+      America/Indiana/Indianapolis: Amerika / Indiana / Indianapolis (Indiana)
+      America/Inuvik: Amerika / Inuvik (Northwest Territories)
+      America/Iqaluit: Amerika / Iqaluit (Nunavut)
+      America/Juneau: Amerika / Juneau (Alaska)
+      America/La_Paz: Amerika / La Paz
+      America/Lima: Amerika / Lima
+      America/Los_Angeles: Amerika / Los Angeles (westkust VS)
+      America/Mazatlan: Amerika / Mazatlán
+      America/Mexico_City: Amerika / Mexico-Stad
+      America/Miquelon: Amerika / Saint-Pierre en Miquelon
+      America/Moncton: Amerika / Moncton (New Brunswick)
+      America/Monterrey: Amerika / Monterrey
+      America/Montevideo: Amerika / Montevideo
+      America/New_York: Amerika / New York (oostkust VS)
+      America/Nuuk: Amerika / Nuuk
+      America/Panama: Amerika / Panama
+      America/Phoenix: Amerika / Phoenix (Arizona)
+      America/Puerto_Rico: Amerika / Puerto Rico
+      America/Rankin_Inlet: Amerika / Rankin Inlet (Nunavut)
+      America/Regina: Amerika / Regina (Saskatchewan)
+      America/Resolute: Amerika / Resolute (Nunavut)
+      America/Santiago: Amerika / Santiago
+      America/Sao_Paulo: Amerika / São Paulo
+      America/St_Johns: Amerika / St. John's (Newfoundland)
+      America/Swift_Current: Amerika / Swift Current (Saskatchewan)
+      America/Tijuana: Amerika / Tijuana
+      America/Toronto: Amerika / Toronto (Ontario)
+      America/Vancouver: Amerika / Vancouver (Brits-Columbia)
+      America/Whitehorse: Amerika / Whitehorse (Yukon)
+      America/Winnipeg: Amerika / Winnipeg (Manitoba)
+      Antarctica/Troll: Antarctica / Trollstation (Antarctica)
+      Asia/Almaty: Azië / Almaty
+      Asia/Baghdad: Azië / Bagdad
+      Asia/Baku: Azië / Bakoe
+      Asia/Bangkok: Azië / Bangkok
+      Asia/Beirut: Azië / Beiroet
+      Asia/Chongqing: Azië / Chongqing
+      Asia/Colombo: Azië / Colombo
+      Asia/Dhaka: Azië / Dhaka
+      Asia/Gaza: Azië / Gaza
+      Asia/Hong_Kong: Azië / Hongkong
+      Asia/Irkutsk: Azië / Irkoetsk
+      Asia/Jakarta: Azië / Jakarta
+      Asia/Jerusalem: Azië / Jeruzalem
+      Asia/Kabul: Azië / Kabul
+      Asia/Kamchatka: Azië / Kamtsjatka
+      Asia/Karachi: Azië / Karachi
+      Asia/Kathmandu: Azië / Kathmandu
+      Asia/Kolkata: Azië / Kolkata (India)
+      Asia/Krasnoyarsk: Azië / Krasnojarsk
+      Asia/Kuala_Lumpur: Azië / Kuala Lumpur
+      Asia/Kuwait: Azië / Koeweit
+      Asia/Magadan: Azië / Magadan
+      Asia/Muscat: Azië / Muscat
+      Asia/Novosibirsk: Azië / Novosibirsk
+      Asia/Rangoon: Azië / Yangon (Myanmar)
+      Asia/Riyadh: Azië / Riyad
+      Asia/Seoul: Azië / Seoel
+      Asia/Shanghai: Azië / Shanghai
+      Asia/Singapore: Azië / Singapore
+      Asia/Srednekolymsk: Azië / Srednekolymsk
+      Asia/Taipei: Azië / Taipei
+      Asia/Tashkent: Azië / Tasjkent
+      Asia/Tbilisi: Azië / Tbilisi
+      Asia/Tehran: Azië / Teheran
+      Asia/Tokyo: Azië / Tokio
+      Asia/Ulaanbaatar: Azië / Ulaanbaatar
+      Asia/Urumqi: Azië / Ürümqi
+      Asia/Vladivostok: Azië / Vladivostok
+      Asia/Yakutsk: Azië / Jakoetsk
+      Asia/Yekaterinburg: Azië / Jekaterinenburg
+      Asia/Yerevan: Azië / Jerevan
+      Atlantic/Azores: Atlantische Oceaan / Azoren
+      Atlantic/Cape_Verde: Atlantische Oceaan / Kaapverdië
+      Atlantic/South_Georgia: Atlantische Oceaan / Zuid-Georgia
+      Australia/Adelaide: Australië / Adelaide (Zuid-Australië)
+      Australia/Brisbane: Australië / Brisbane (Queensland)
+      Australia/Canberra: Australië / Canberra (Australisch Hoofdstedelijk Territorium)
+      Australia/Darwin: Australië / Darwin (Noordelijk Territorium)
+      Australia/Eucla: Australië / Eucla (West-Australië)
+      Australia/Hobart: Australië / Hobart (Tasmanië)
+      Australia/Lord_Howe: Australië / Lord Howe-eiland
+      Australia/Melbourne: Australië / Melbourne (Victoria)
+      Australia/Perth: Australië / Perth (West-Australië)
+      Australia/Sydney: Australië / Sydney (Nieuw-Zuid-Wales)
+      Etc/GMT+12: Overig / Internationale datumgrens west (UTC−12)
+      Etc/UTC: Overig / Gecoördineerde wereldtijd (UTC)
+      Europe/Amsterdam: Europa / Amsterdam
+      Europe/Athens: Europa / Athene
+      Europe/Belgrade: Europa / Belgrado
+      Europe/Berlin: Europa / Berlijn
+      Europe/Bratislava: Europa / Bratislava
+      Europe/Brussels: Europa / Brussel
+      Europe/Bucharest: Europa / Boekarest
+      Europe/Budapest: Europa / Boedapest
+      Europe/Copenhagen: Europa / Kopenhagen
+      Europe/Dublin: Europa / Dublin
+      Europe/Helsinki: Europa / Helsinki
+      Europe/Istanbul: Europa / Istanbul
+      Europe/Kaliningrad: Europa / Kaliningrad
+      Europe/Kiev: Europa / Kyiv (Oekraïne)
+      Europe/Lisbon: Europa / Lissabon
+      Europe/Ljubljana: Europa / Ljubljana
+      Europe/London: Europa / Londen
+      Europe/Madrid: Europa / Madrid
+      Europe/Minsk: Europa / Minsk
+      Europe/Moscow: Europa / Moskou
+      Europe/Paris: Europa / Parijs
+      Europe/Prague: Europa / Praag
+      Europe/Riga: Europa / Riga
+      Europe/Rome: Europa / Rome
+      Europe/Samara: Europa / Samara
+      Europe/Sarajevo: Europa / Sarajevo
+      Europe/Skopje: Europa / Skopje
+      Europe/Sofia: Europa / Sofia
+      Europe/Stockholm: Europa / Stockholm
+      Europe/Tallinn: Europa / Tallinn
+      Europe/Vienna: Europa / Wenen
+      Europe/Vilnius: Europa / Vilnius
+      Europe/Volgograd: Europa / Wolgograd
+      Europe/Warsaw: Europa / Warschau
+      Europe/Zagreb: Europa / Zagreb
+      Europe/Zurich: Europa / Zürich
+      Pacific/Apia: Stille Oceaan / Apia
+      Pacific/Auckland: Stille Oceaan / Auckland (Nieuw-Zeeland)
+      Pacific/Chatham: Stille Oceaan / Chathameilanden (Nieuw-Zeeland)
+      Pacific/Easter: Stille Oceaan / Paaseiland (Chili)
+      Pacific/Fakaofo: Stille Oceaan / Fakaofo (Tokelau)
+      Pacific/Fiji: Stille Oceaan / Fiji
+      Pacific/Gambier: Stille Oceaan / Gambiereilanden
+      Pacific/Guadalcanal: Stille Oceaan / Guadalcanal (Salomonseilanden)
+      Pacific/Guam: Stille Oceaan / Guam
+      Pacific/Honolulu: Stille Oceaan / Honolulu (Hawaï)
+      Pacific/Kiritimati: Stille Oceaan / Kiritimati (Kiribati)
+      Pacific/Majuro: Stille Oceaan / Majuro (Marshalleilanden)
+      Pacific/Marquesas: Stille Oceaan / Marquesaseilanden
+      Pacific/Midway: Stille Oceaan / Midway-eilanden
+      Pacific/Norfolk: Stille Oceaan / Norfolkeiland
+      Pacific/Noumea: Stille Oceaan / Nouméa (Nieuw-Caledonië)
+      Pacific/Pago_Pago: Stille Oceaan / Pago Pago (Amerikaans-Samoa)
+      Pacific/Pitcairn: Stille Oceaan / Pitcairneilanden
+      Pacific/Port_Moresby: Stille Oceaan / Port Moresby (Papoea-Nieuw-Guinea)
+      Pacific/Tongatapu: Stille Oceaan / Tongatapu (Tonga)

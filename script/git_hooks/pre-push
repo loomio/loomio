@@ -4,29 +4,28 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
-# ── Brakeman ────────────────────────────────────────────────────────────
+# Brakeman and dependency auditing run in .github/workflows/security.yml.
+# Keep local push checks fast and independent of advisory-database updates.
 
-if [ "${SKIP_BRAKEMAN:-}" = "1" ]; then
-  echo "Skipping Brakeman because SKIP_BRAKEMAN=1."
-else
-  echo "==> Running Brakeman before push..."
-  bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
-fi
+# Git lists each pushed ref on stdin. Branch deletions push no commits, so they
+# need no checks.
+ZERO_SHA_PATTERN='^0+$'
+PUSHED_REF_COUNT=0
+while read -r _local_ref local_sha _remote_ref _remote_sha; do
+  if [[ ! "$local_sha" =~ $ZERO_SHA_PATTERN ]]; then
+    PUSHED_REF_COUNT=$((PUSHED_REF_COUNT + 1))
+  fi
+done
 
-# ── Bundler Audit ───────────────────────────────────────────────────────
-
-if [ "${SKIP_BUNDLER_AUDIT:-}" = "1" ]; then
-  echo "Skipping Bundler Audit because SKIP_BUNDLER_AUDIT=1."
-else
-  echo ""
-  echo "==> Running Bundler Audit before push..."
-  bundle exec bundler-audit check --update
+if [ "$PUSHED_REF_COUNT" -eq 0 ]; then
+  echo "No commits pushed; skipping push checks."
+  exit 0
 fi
 
 # ── Translation checks ──────────────────────────────────────────────────
 
-if [ "${SKIP_TRANSLATIONS:-}" = "1" ]; then
-  echo "Skipping translation checks because SKIP_TRANSLATIONS=1."
+if [ -n "${SKIP_TRANSLATIONS+x}" ]; then
+  echo "Skipping translation checks because SKIP_TRANSLATIONS is set."
 else
   BASE_REF="$(git rev-parse --abbrev-ref '@{upstream}' 2>/dev/null || echo 'origin/master')"
 
@@ -36,5 +35,17 @@ else
 
   echo ""
   echo "==> Checking translations against $BASE_REF..."
-  bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
+  bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client config/locales:timezones
+
+  # The installed hook is shared by worktrees, including older branches. It only
+  # checks; translating is a separate step so a push never generates files.
+  if [ -f docs/help/sync_translations.rb ]; then
+    echo ""
+    echo "==> Checking user_manual translations..."
+    if ! bundle exec ruby docs/help/sync_translations.rb --check; then
+      echo ""
+      echo "Run 'bundle exec ruby docs/help/sync_translations.rb', commit the changed translations, then push again."
+      exit 1
+    fi
+  fi
 fi

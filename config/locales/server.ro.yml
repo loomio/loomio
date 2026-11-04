@@ -1,5 +1,6 @@
 ---
 ro:
+  group_export_started: Exportul datelor de grup a început
   discussion_templates:
     blank:
       process_name: Șablon gol
@@ -9,7 +10,7 @@ ro:
       title_placeholder: Care este subiectul pe care doriți să îl discutați?
       process_name: Discutați un subiect
       process_subtitle: Începeți o discuție cu grupul dvs
-      process_introduction: "<p>Există vreo problemă, problemă sau oportunitate pe care doriți să o abordați cu grupul dvs.?</p><p> Introduceți subiectul, trimiteți la orice informații de fundal și cereți comentarii, idei și ajutor.</p><p> Invitați oamenii să participe contribuind cu gândurile și informațiile relevante. Folosiți @mention pentru a atrage atenția anumitor persoane.</p><p> Actualizați contextul firului pe măsură ce discuția progresează pentru a o facilita spre un rezultat.</p><p> Nu așteptați până când aveți toate informațiile pentru a începe un thread. Mai degrabă folosiți firul pentru a invita oameni să vă ajute să explorați subiectul și să găsiți o soluție.</p>"
+      process_introduction: "<p>Există un subiect, o problemă sau o oportunitate pe care vrei să o aduci în atenția grupului tău?</p><p>Prezintă subiectul, adaugă linkuri către informații de context și cere comentarii, idei și ajutor.</p><p>Invită oamenii să participe cu idei și informații relevante. Folosește @mențiuni pentru a atrage atenția anumitor persoane.</p><p>Actualizează contextul firului pe măsură ce discuția avansează, pentru a o îndruma spre o concluzie.</p><p>Nu aștepta să ai toate informațiile pentru a începe un fir. Folosește firul pentru a invita oamenii să te ajute să explorezi subiectul și să găsești o soluție.</p>"
       description: <h3 id="introduce-and-describe-the-topic">Introduceți și descrieți subiectul</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Cum ați dori să răspundă oamenii?</h3><p></p>
     onboarding_to_loomio:
       title: Folosind Loomio pentru grupul nostru
@@ -22,14 +23,14 @@ ro:
       title_placeholder: Dezvoltarea politicii noastre de sănătate și siguranță
       process_name: Procesul de consimțământ
       process_subtitle: Luați o decizie „sigur de încercat”, fără obiecții.
-      process_introduction: '<p>Cereți consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dvs., astfel încât să puteți lua o decizie rapidă care este „sigur de încercat” acum.</p><p> Roluri tipice:</p><ul><li><p> Proponer: Persoana care ridică un subiect care necesită o decizie.</p></li><li><p> Facilitator: cineva care poate ajuta solicitantul să-și facă treaba eficient.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Prezentați o propunere cu un fir Loomio.</p><p> Pasul 2. Facilitați o rundă de întrebări, reacții și orice comentarii pentru a îmbunătăți propunerea cu o verificare Sense.</p><p> Pasul 3. Modificați propunerea cu sugestii și comentarii.</p><p> Pasul 4. Întrebați dacă cineva are o obiecție semnificativă la propunerea modificată cu o propunere de consimțământ.</p><p> Pasul 5. Integrați obiecțiile valide pentru a crea o versiune modificată a propunerii pe care toată lumea consimțând că este „încercată în siguranță” și, când este finalizată, precizați rezultatul deciziei.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Citește mai mult: Procesul de consimțământ.</a></p>'
+      process_introduction: '<p>Cereți consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dvs., astfel încât să puteți lua o decizie rapidă care este „sigur de încercat” acum.</p><p> Roluri tipice:</p><ul><li><p> Proponer: Persoana care ridică un subiect care necesită o decizie.</p></li><li><p> Facilitator: cineva care poate ajuta solicitantul să-și facă treaba eficient.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Prezentați o propunere cu un fir Loomio.</p><p> Pasul 2. Facilitați o rundă de întrebări, reacții și orice comentarii pentru a îmbunătăți propunerea cu o verificare Sense.</p><p> Pasul 3. Modificați propunerea cu sugestii și comentarii.</p><p> Pasul 4. Întrebați dacă cineva are o obiecție semnificativă la propunerea modificată cu o propunere de consimțământ.</p><p> Pasul 5. Integrați obiecțiile valide pentru a crea o versiune modificată a propunerii pe care toată lumea consimțând că este „încercată în siguranță” și, când este finalizată, precizați rezultatul deciziei.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">Citește mai mult: Procesul de consimțământ.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-information-do-people-need-for-context"> De ce informații au nevoie oamenii pentru context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Cine este facilitatorul acestui proces?</h3><p></p>
       consent: Consimţământ
     advice_process:
       title_placeholder: Caut sfaturi pentru a cumpăra un computer nou
       process_name: Procesul de consiliere
       process_subtitle: Cere sfaturi cu privire la o decizie pe care trebuie să o iei.
-      process_introduction: '<p>Luați o decizie cu sfatul persoanelor afectate sau care au experiență, astfel încât să puteți lua o decizie mai bună pentru organizația dvs.</p><p> Roluri tipice:</p><ul><li><p> Facilitator: Persoana care ia decizia sau cere cuiva să faciliteze.</p></li><li><p> Consilieri: oameni care sunt afectați sau au expertiză pe care le invitați.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Căutați contribuții pentru a analiza perspectivele înainte de a propune acțiuni.</p><p> Pasul 2. Faceți o propunere și căutați sfaturi - rulați o propunere de sfaturi.</p><p> Pasul 3. Luând în considerare sfaturile primite, luați o decizie și informați persoanele care au dat sfaturi - declarați un rezultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Citește mai mult: Procesul de consiliere.</a></p>'
+      process_introduction: '<p>Ia o decizie cu sfaturile persoanelor afectate sau cu expertiză, pentru a lua o decizie mai bună pentru organizația ta.</p><p>Roluri tipice:</p><ul><li><p>Facilitator: Persoana care ia decizia sau cineva căruia îi ceri să faciliteze procesul.</p></li><li><p>Consilieri: Persoanele afectate sau cu expertiză pe care le inviți.</p></li></ul><p>Etape obișnuite ale procesului:</p><p>Pasul 1. Cere opinii pentru a afla perspectivele înainte de a propune o acțiune.</p><p>Pasul 2. Fă o propunere și cere sfaturi - lansează o propunere pentru consultare.</p><p>Pasul 3. Ținând cont de sfaturile primite, ia o decizie și informează persoanele care au oferit sfaturi - formulează o concluzie.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">Citește mai mult: Procesul de consultare.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Ce sfaturi cereți pentru a vă ajuta să luați o decizie bună?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Cine este facilitatorul acestui proces?</h3><p></p>
       advice: Sfat
     pass_a_resolution:
@@ -43,7 +44,7 @@ ro:
       title_placeholder: Revizuirea constituției organizației noastre
       process_name: Decizie prin consens
       process_subtitle: Ajungeți la un acord colectiv cu toți cei implicați.
-      process_introduction: '<p>Creați un consens pentru o decizie pe care trebuie să o luați împreună, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><p> Roluri tipice:</p><ul><li><p> Numiți un facilitator. (În reuniunile consiliului, acesta este de obicei președintele.)</p></li><li><p> Un cvorum sau o supramajoritate de membri care să participe, conform prevederilor din statutul organizației dvs.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Creați un spațiu deschis pentru discuții despre o problemă sau o decizie propusă.</p><p> Pasul 2. Testați pentru consens și expuneți obiecțiile cu o propunere de verificare Sense.</p><p> Pasul 3. Clarificați orice puncte, invitați modificări constructive și modificați propunerea.</p><p> Pasul 4. Testați acordul și orice obiecții rămase cu o propunere de consens.</p><p> Pasul 5. Înregistrați decizia cu un rezultat și în procesele verbale oficiale ale organizației.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Citește mai mult: Proces de consens.</a></p>'
+      process_introduction: '<p>Construiește un consens pentru o decizie pe care trebuie să o luați împreună, pentru a ajunge la un acord care răspunde nevoilor și preocupărilor tuturor participanților.</p><p>Roluri tipice:</p><ul><li><p>Numește un facilitator.&nbsp; (În ședințele consiliului, acesta este de obicei președintele.)</p></li><li><p>Participarea unui cvorum sau a unei majorități calificate de membri, conform statutului organizației tale.</p></li></ul><p>Etape obișnuite ale procesului:</p><p>Pasul 1. Creează un spațiu deschis pentru discuții despre o problemă sau o decizie propusă.</p><p>Pasul 2. Verifică dacă există consens și identifică obiecțiile cu o propunere de tatonare.&nbsp;</p><p>Pasul 3. Clarifică punctele neclare, cere modificări constructive și ajustează propunerea.</p><p>Pasul 4. Verifică acordul și obiecțiile rămase cu o propunere de consens.</p><p>Pasul 5. Consemnează decizia într-o concluzie și în procesul-verbal oficial al organizației.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">Citește mai mult: Procesul de consens.</a></p>'
       description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-information-do-people-need-for-context"> De ce informații au nevoie oamenii pentru context?</h3><p></p><h3 id="who-is-the-facilitator"> Cine este facilitatorul?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Ce condiții trebuie îndeplinite pentru o decizie?</h3><h3 id=""></h3>
       consensus: Consens
     share_links_and_info:
@@ -58,7 +59,7 @@ ro:
       process_name: Pregătiți-vă pentru o întâlnire
       process_subtitle: Construiește o agendă, postează documentele de bord și organizează chestiunile administrative, astfel încât toată lumea să fie la curent, în context și pregătit.
       description: <p><strong>Focalizarea întâlnirii</strong></p><p></p><p data-text-align="start"> <strong>Schițați agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Acțiuni de la ultima întâlnire</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Cum ar trebui să se pregătească participanții pentru întâlnire?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Lista documentelor pentru întâlnire</strong></p><p data-text-align="start"></p>
-      process_introduction: <p>Planificați o întâlnire eficientă prin implicarea oamenilor de la început, aliniându-vă la cele mai importante subiecte și profitați mai bine de timpul prețios împreună.</p><p> Utilizați un fir ca container pentru întâlnirea dvs. pentru a stabili un punct focal pentru întâlnire, pentru a stabili agenda, pentru a găsi o dată potrivită, pentru a posta documente și rapoarte cheie, pentru a începe discuția cu privire la punctele de pe ordinea de zi, pentru a continua cu acțiuni și minute.</p><p> Acest lucru îi ajută pe toți să se pregătească pentru întâlnire, citind materialele și gândindu-se la subiectele de discuție și la deciziile care trebuie luate. Atunci este mai probabil ca membrii să ajungă în context și să fie pregătiți pentru întâlnire.</p><p> Citiți mai multe despre <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Pregătirea pentru o întâlnire</u></a> în Ghidul de bună guvernare pentru Loomio.</p>
+      process_introduction: <p>Planificați o întâlnire eficientă prin implicarea oamenilor de la început, aliniându-vă la cele mai importante subiecte și profitați mai bine de timpul prețios împreună.</p><p> Utilizați un fir ca container pentru întâlnirea dvs. pentru a stabili un punct focal pentru întâlnire, pentru a stabili agenda, pentru a găsi o dată potrivită, pentru a posta documente și rapoarte cheie, pentru a începe discuția cu privire la punctele de pe ordinea de zi, pentru a continua cu acțiuni și minute.</p><p> Acest lucru îi ajută pe toți să se pregătească pentru întâlnire, citind materialele și gândindu-se la subiectele de discuție și la deciziile care trebuie luate. Atunci este mai probabil ca membrii să ajungă în context și să fie pregătiți pentru întâlnire.</p><p> Citiți mai multe despre <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/board_processes/meeting"><u>Pregătirea pentru o întâlnire</u></a> în Ghidul de bună guvernare pentru Loomio.</p>
       meeting: Întâlnire
     build_a_policy:
       title_placeholder: Revizuirea politicii noastre de angajare
@@ -78,7 +79,7 @@ ro:
       title_placeholder: Cerere de finanțare pentru Robotics Roadshow
       process_name: Decizia de finanțare
       process_subtitle: Procesați o cerere de grant, împrumut sau investiție și luați o decizie de finanțare.
-      process_introduction: "<p>Introduceți o cerere de finanțare, atașați documente și alte materiale justificative.</p><p> Rezumați aplicația în contextul firului.</p><p> Invitați persoane autorizate să examineze aplicația și să pună întrebări. Acordați suficient timp pentru discuții.</p><p> Ridicați o propunere de consens pentru aprobarea finanțării.</p><p> Dacă cineva nu este de acord, întrebați un motiv - de exemplu, poate fi nevoie de mai multe informații. Invitați persoana care nu este de acord să-și schimbe votul atunci când este mulțumit.</p><p> Când aveți o decizie clară cu privire la cererea de finanțare, indicați un rezultat pentru a înregistra decizia.</p>"
+      process_introduction: "<p>Prezintă o cerere de finanțare, atașează documente și alte materiale justificative.</p><p>Rezumă cererea în contextul firului.</p><p>Invită persoanele autorizate să analizeze cererea și să pună întrebări. Acordă suficient timp pentru discuții.</p><p>Lansează o propunere de consens pentru aprobarea finanțării.</p><p>Dacă cineva nu este de acord, cere un motiv - de exemplu, poate fi nevoie de mai multe informații. Invită persoana să își schimbe votul când consideră că problema s-a rezolvat.</p><p>Când ai o decizie clară privind cererea de finanțare, formulează o concluzie pentru a consemna decizia.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Introduceți și rezumați cererea de finanțare</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Cum se potrivește această aplicație cu criteriile de finanțare?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Cine este autorizat să aprobe această decizie de finanțare?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Invitați întrebări de la factorii de decizie pentru a procesa cererea</h3><p></p>
       funding: Finanțarea
     approve_a_document:
@@ -111,6 +112,7 @@ ro:
     add_guests:
       all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
+    item_you_are_replying_to_deleted: Elementul la care răspunzi a fost șters
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
       title: Nu am găsit
@@ -152,6 +154,7 @@ ro:
     direct_thread_anonymous_poll: Un fir de discuție care conține un sondaj anonim nu poate fi convertit într-un fir de discuție direct
     invitation_rate_limit_reached_contact_support: Limita zilnică de invitații a fost atinsă. Contactați imediat serviciul de asistență.
     subscription_thread_limit_reached: Această organizație a atins limita de fire de discuție. Treci la un plan superior pentru a continua să folosești Loomio.
+    attachments_admin_only: Doar adminii firului și adminii grupului pot adăuga atașamente în acest fir
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
@@ -172,9 +175,9 @@ ro:
         proposal: Propunere
         count: Numara
         choose: Alege
-        allocate: Aloca
+        allocate: Distribuie
         score: Scor
-        rank: Rang
+        rank: Ordonează
         time: Sondaj de timp
   user:
     deleted_user: Utilizator șters
@@ -195,7 +198,6 @@ ro:
       poll_options_dont_match: O eroare cu Loomio a împiedicat salvarea votului tău. Lucrăm la remedierea acestei probleme. Te rugăm să reîncarci pagina și să încerci din nou.
       opening_at_before_closing_at: Data de deschidere trebuie să fie anterioară datei de închidere
     export:
-      percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
       title: Titlu
       author: Autor
       email: Email
@@ -210,9 +212,9 @@ ro:
       details: Detalii
       group_name: Numele Grupului
       discussion_title: Titlul subiectului
-      outcome_author: Autor de rezultat
-      outcome_created_at: Rezultat creat la
-      outcome_statement: Declarație de rezultat
+      outcome_author: Autorul concluziei
+      outcome_created_at: Concluzie creată la
+      outcome_statement: Textul concluziei
       poll_url: Adresa URL a sondajului
       reason: Motiv
       participant: Participant
@@ -367,6 +369,23 @@ ro:
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
+    catch_up_link: Setări pentru e-mailuri de recuperare
+    catch_up_title: Setări pentru e-mailuri de recuperare
+    catch_up_description: Alegeți cât de des doriți să primiți un rezumat al activității din grupurile dvs.
+    catch_up_schedule: Trimite un e-mail de rezumat
+    catch_up_saved: Setările pentru e-mailurile de recuperare au fost actualizate
+    catch_up_days:
+      never: Nu
+      every_day: În fiecare zi
+      every_second_day: În fiecare a doua zi
+      monday: luni
+      tuesday: marţi
+      wednesday: miercuri
+      thursday: joi
+      friday: vineri
+      saturday: sâmbătă
+      sunday: duminică
+    catch_up_all_groups: E-mailuri de recuperare (toate grupurile)
   discussion_mailer:
     reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
@@ -439,12 +458,8 @@ ro:
       not_invited: Nu sunt invitate
       please_respond: Vă rugăm să răspundeți
       time_zone: "(Ore afișate în %{zone})"
-      undecided_members: Membri nehotărâți (%{count})
-      undecided_visitors: Oaspeți nehotărâți (%{count})
-      more_undecided: Încă %{count}...
       vote_now: Voteaza acum
       you_have_until: Ai timp până la %{when} pentru a participa.
-      people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
       voting_opens_and_closes: Votarea se deschide %{opens} și se închide %{closes}. (%{days} zile)
       voting_closes: Votarea se încheie la %{when}.
       voting_opened_and_closed: Votarea s-a deschis %{opens} și s-a închis %{closes}. (%{days} zile)
@@ -469,7 +484,7 @@ ro:
       disagree_prompt: De ce nu ești de acord?
     proposal:
       process_subtitle: Faceți o propunere pentru a lua o decizie
-      process_introduction: <p>Propunerea clasică Loomio te ajută să iei o decizie, transformând o discuție într-un rezultat clar.</p><p> Sugerați o cale de acțiune și invitați oamenii să răspundă votând pentru a fi de acord, abținere sau dezacord.</p><p> Pe măsură ce oamenii votează, pot oferi un motiv pentru care au votat în acest fel. Poți vedea care este poziția fiecăruia în această privință și de ce.</p><p> În acest fel, puteți folosi o propunere pentru a determina oamenii să răspundă, a descoperi informații noi și a construi o înțelegere comună - pentru a ajuta grupul să ia o decizie mai bună și mai informată.</p><p> O propunere și discuția aferentă creează propria evidență a modului în care a fost luată decizia.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea propunerii clasice Loomio în Procesul decizional simplu</u></a> .</p>
+      process_introduction: <p>Propunerea clasică Loomio te ajută să iei o decizie, transformând o discuție într-o concluzie clară.</p><p>Sugerează o acțiune și invită oamenii să răspundă votând De acord, Abținere sau Dezacord.</p><p>Când votează, oamenii pot explica motivul votului lor. Poți vedea poziția fiecăruia și de ce o susține.</p><p>Astfel, poți folosi o propunere pentru a cere răspunsuri, a descoperi informații noi și a construi o înțelegere comună - pentru a ajuta grupul tău să ia o decizie mai bună și mai informată.</p><p>Propunerea și discuția aferentă păstrează o evidență a modului în care s-a ajuns la decizie.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Citește mai mult despre folosirea propunerii clasice Loomio în procesul simplu de luare a deciziilor</u></a>.</p>
       title: Aprobați noul concept de brand
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să fie adoptată, avem nevoie ca majoritatea membrilor să voteze „De acord”.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie schimbat pentru a fi de acord.</p>
       agree: De acord
@@ -483,7 +498,7 @@ ro:
       abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     advice:
       process_subtitle: Cereți sfaturi cu privire la o decizie pe care trebuie să o luați
-      process_introduction: <p>Cereți sfaturi cu privire la o decizie pe care trebuie să o luați, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să puteți lua o decizie mai bună pentru organizația dumneavoastră.</p><ul><li><p> Sfaturile te ajută să iei o decizie mai bună pentru organizația ta.</p></li><li><p> Să cultivăm relații, oportunități de învățare și contribuții diverse.</p></li><li><p> Stimulează inițiativa și creativitatea și oferă o muncă mai plăcută.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
+      process_introduction: <p>Cereți sfaturi cu privire la o decizie pe care trebuie să o luați, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să puteți lua o decizie mai bună pentru organizația dumneavoastră.</p><ul><li><p> Sfaturile te ajută să iei o decizie mai bună pentru organizația ta.</p></li><li><p> Să cultivăm relații, oportunități de învățare și contribuții diverse.</p></li><li><p> Stimulează inițiativa și creativitatea și oferă o muncă mai plăcută.</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
       title: Ajutați-l pe Takashi să cumpere un computer nou
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Ce sfaturi ceri oamenilor care să te ajute să iei o decizie bună?</strong></h3><p></p><p> Aștept cu nerăbdare părerea dumneavoastră pentru a mă ajuta să iau o decizie bună pentru organizația noastră.</p>
       agree: De acord
@@ -495,7 +510,7 @@ ro:
       outcome_statement: "<p>Mulțumesc că ai participat la runda mea de consiliere!</p>"
     consent:
       process_subtitle: Ia o decizie care este „sigură de încercat”, fără obiecții
-      process_introduction: <p>Solicitați consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dumneavoastră, astfel încât să puteți lua rapid o decizie pentru organizația dumneavoastră, care să fie „sigură de încercat”.</p><ul><li><p> Vizați spre o decizie „suficient de bună”</p></li><li><p> Implică mai multe voci pentru a dezvolta o propunere fezabilă</p></li><li><p> Întrebați dacă cineva are o obiecție validă.</p></li><li><p> Modificați propunerea pentru a rezolva obiecțiile</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      process_introduction: <p>Solicitați consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dumneavoastră, astfel încât să puteți lua rapid o decizie pentru organizația dumneavoastră, care să fie „sigură de încercat”.</p><ul><li><p> Vizați spre o decizie „suficient de bună”</p></li><li><p> Implică mai multe voci pentru a dezvolta o propunere fezabilă</p></li><li><p> Întrebați dacă cineva are o obiecție validă.</p></li><li><p> Modificați propunerea pentru a rezolva obiecțiile</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Citiți mai multe despre procesul de consimțământ</a> .</p>
       title: Angajează-o pe Chloe pentru un rol de design
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Ce le cereți oamenilor în această propunere?</strong></h3><p></p><p> Dacă aveți o obiecție, vă rugăm să explicați motivul și să propuneți o modificare a propunerii care să o facă sigură.</p><p> Nu uitați că solicităm consimțământul pentru o decizie „suficient de bună” care este „sigură de încercat”, astfel încât să putem lua o decizie bună pentru organizația noastră.</p>
       consent: Consimţământ
@@ -510,7 +525,7 @@ ro:
       details_v2: "<h3><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3> <strong>De ce este important acest lucru?</strong></h3><p></p><h3> <strong>Ce le cereți oamenilor în această propunere?</strong></h3><p></p><p> Nu țintim spre perfecțiune — dați-vă consimțământul dacă propunerea este suficient de bună și sigură pentru a fi încercată. Dacă aveți o obiecție, spuneți ce trebuie schimbat pentru a o face fezabilă.</p>"
     consensus:
       process_subtitle: Ajungeți la un acord colectiv cu toți cei implicați
-      process_introduction: <p>Construiți un consens pentru o decizie pe care trebuie să o luați, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><ul><li><p> Discutați și dezvoltați o propunere împreună</p></li><li><p> Includeți și respectați pe toți cei implicați</p></li><li><p> Căutați acordul majorității oamenilor</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Citiți mai multe despre procesul de consens</a> .</p>
+      process_introduction: <p>Construiți un consens pentru o decizie pe care trebuie să o luați, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><ul><li><p> Discutați și dezvoltați o propunere împreună</p></li><li><p> Includeți și respectați pe toți cei implicați</p></li><li><p> Căutați acordul majorității oamenilor</p></li></ul><p> <a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">Citiți mai multe despre procesul de consens</a> .</p>
       title: Aprobați noul concept de brand
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să fie adoptată, avem nevoie ca majoritatea membrilor să voteze „De acord”.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie schimbat pentru a fi de acord.</p>
       outcome_statement: "<p>Mulțumesc pentru participarea la procesul de consens.</p>"
@@ -522,7 +537,7 @@ ro:
       disagree: Nu sunt de acord
       disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
       disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
-      block: Bloc
+      block: Veto
       block_meaning: Blochez această propunere și cred că nu ar trebui să fie implementată.
       block_prompt: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să fie adoptată.
       details_v2: "<h3><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3> <strong>De ce este important acest lucru?</strong></h3><p></p><h3> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Împărtășește-ți poziția și de ce. Dacă nu ești de acord, explică ce ar trebui schimbat pentru a susține acest lucru.</p>"
@@ -530,17 +545,17 @@ ro:
       abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     question_round:
       process_subtitle: Invitați la adresarea de întrebări clarificatoare pentru a ajuta oamenii să înțeleagă o propunere
-      process_introduction: <p>O rundă de întrebări este o oportunitate pentru participanți de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a-și exprima părerea despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Aceasta permite participanților să pună întrebări într-o durată stabilită de dumneavoastră pentru rundă.</p><p> O rundă de întrebări este utilizată în mod obișnuit ca o etapă în procesul de consimțământ.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      process_introduction: <p>O rundă de întrebări este o oportunitate pentru participanți de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a-și exprima părerea despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Aceasta permite participanților să pună întrebări într-o durată stabilită de dumneavoastră pentru rundă.</p><p> O rundă de întrebări este utilizată în mod obișnuit ca o etapă în procesul de consimțământ.</p><p> <a target="_blank" href="/docs/en/guides/making_decisions/consent_process">Citiți mai multe despre procesul de consimțământ</a> .</p>
       title: Ce întrebări aveți despre politica de sănătate și securitate?
       details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Aceasta este o rundă de întrebări, în care sunteți invitați să adresați întrebări clarificatoare.</p><p> Ce trebuie să știi ca să înțelegi propunerea?</p><p> Vă rugăm să răspundeți înainte de încheierea rundei de întrebări.</p>
       reason_prompt: Ce trebuie să știi ca să înțelegi propunerea?
       outcome_statement: "<p>Vă mulțumim că ați trimis întrebările în timpul acestei runde</p>"
     sense_check:
       process_subtitle: Cere feedback, întrebări și nelămuriri
-      process_introduction: <p>Propunerea de verificare a Sense este o modalitate bună de a obține feedback, de a invita întrebări și de a descoperi nelămuriri. Ajută la clarificarea și îmbunătățirea unei propuneri înainte de a lua o decizie.</p><p> Verificarea simțului le permite oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p><p> Folosește propunerea de verificare Sense în procesul de consimțământ pentru a invita reacții și comentarii în vederea îmbunătățirii propunerii și, într-un proces de consens, pentru a testa consensul.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea verificării Sense în procesul decizional simplu</u></a> <span>.</span></p>
+      process_introduction: <p>Propunerea de tatonare este o modalitate bună de a primi feedback, de a invita întrebări și de a afla preocupările oamenilor. Ajută la clarificarea și îmbunătățirea unei propuneri înainte de a lua o decizie.</p><p>Tatonarea le arată oamenilor că o propunere prinde contur și îi încurajează să se implice. Este o ocazie să îi asculți, să înțelegi ce simt și să răspunzi potrivit - pentru a putea include contribuțiile lor și a lua o decizie mai bună.</p> <p>Folosește propunerea de tatonare în procesul de consimțământ pentru a invita reacții și comentarii care îmbunătățesc propunerea, iar în procesul de consens pentru a verifica dacă există consens.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>Citește mai mult despre folosirea tatonării în procesul simplu de luare a deciziilor</u></a><span>.</span></p>
       title: Ce părere ai despre noile concepte de brand?
       details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Ce părere ai despre propunere? Lasă un comentariu sau fă o sugestie de îmbunătățire.</p><p> Această verificare Sense este o oportunitate pentru sugestiile și contribuțiile dumneavoastră, care ne vor ajuta să luăm o decizie mai bună.</p>
-      outcome_statement: "<p>Mulțumesc pentru participarea la verificarea simțurilor.</p>"
+      outcome_statement: "<p>Mulțumesc pentru participarea la tatonare.</p>"
       not_sure: Nu sunt sigur
       not_sure_meaning: Am o întrebare sau am nevoie de mai mult timp
       not_sure_prompt: Ce părți îți sunt neclare? Cum s-ar putea rezolva acest lucru?
@@ -594,42 +609,46 @@ ro:
       veto_prompt: De ce blochezi propunerea? Ce trebuie să se schimbe pentru ca tu să o susții?
     simple_poll:
       process_subtitle: Găsiți cea mai populară opțiune
-      process_introduction: <p>Înainte de a lua o decizie, află care opțiune (opțiuni) îi interesează cel mai mult pe oameni.</p><p> Un sondaj simplu te ajută să găsești cea mai populară opțiune sau opțiuni cu o singură sau mai multe variante.</p><p> Scrieți orice detalii despre opțiuni în câmpul cu detalii, apoi introduceți numele opțiunii și faceți clic pe + pentru a o adăuga.</p><p> Setați <strong>opțiunile Minime</strong> și <strong>Maxime pe care</strong> un alegător le poate alege. Lăsați opțiunea maximă la 1 pentru un sondaj cu o singură opțiune.</p><p> Puteți folosi pictograma creion de lângă fiecare opțiune pentru a adăuga o <strong>semnificație</strong> a opțiunii, o detaliere suplimentară a opțiunii pentru a ajuta oamenii atunci când votează.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Citește mai multe despre Sondaj simplu</a> .</p>
+      process_introduction: <p>Înainte de a lua o decizie, află care opțiune (opțiuni) îi interesează cel mai mult pe oameni.</p><p> Un sondaj simplu te ajută să găsești cea mai populară opțiune sau opțiuni cu o singură sau mai multe variante.</p><p> Scrieți orice detalii despre opțiuni în câmpul cu detalii, apoi introduceți numele opțiunii și faceți clic pe + pentru a o adăuga.</p><p> Setați <strong>opțiunile Minime</strong> și <strong>Maxime pe care</strong> un alegător le poate alege. Lăsați opțiunea maximă la 1 pentru un sondaj cu o singură opțiune.</p><p> Puteți folosi pictograma creion de lângă fiecare opțiune pentru a adăuga o <strong>semnificație</strong> a opțiunii, o detaliere suplimentară a opțiunii pentru a ajuta oamenii atunci când votează.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">Citește mai multe despre Sondaj simplu</a> .</p>
       title: Unde ar trebui să se concentreze direcția noastră strategică?
       details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) pe care le preferați.</p>
-      process_introduction_v2: <p><strong>Funcția „Alege”</strong> vă ajută să găsiți cea mai populară opțiune. Participanții aleg dintr-o listă — puteți configura dacă selectează una sau mai multe opțiuni.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Citește mai multe despre Alege</a> .</p>
+      process_introduction_v2: <p><strong>Funcția „Alege”</strong> vă ajută să găsiți cea mai populară opțiune. Participanții aleg dintr-o listă — puteți configura dacă selectează una sau mai multe opțiuni.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">Citește mai multe despre Alege</a> .</p>
+      process_subtitle_v2: Măsoară popularitatea cu un sondaj cu una sau mai multe variante
     score_poll:
       process_subtitle: Măsurați gradul de susținere pentru fiecare opțiune
-      process_introduction: <p>Folosește Sondajul Scor atunci când vrei să-i chestionezi pe oameni despre dorințele, preferințele sau interesul lor pentru fiecare opțiune.</p><p> <span>Participanții sunt rugați să evalueze fiecare opțiune și să atribuie un scor mutând un cursor de-a lungul unei scale.</span></p><p> <span>Rezultatele sunt afișate grafic, împreună cu un tabel pentru fiecare opțiune, care arată totalul punctelor, media punctelor și numărul de alegători.</span></p><p> Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru sondajul Scor pentru a reduce orice părtinire a votului.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Citește mai multe despre Sondajul de scor</a> .</p>
+      process_introduction: <p>Folosește Sondajul Scor atunci când vrei să-i chestionezi pe oameni despre dorințele, preferințele sau interesul lor pentru fiecare opțiune.</p><p> <span>Participanții sunt rugați să evalueze fiecare opțiune și să atribuie un scor mutând un cursor de-a lungul unei scale.</span></p><p> <span>Rezultatele sunt afișate grafic, împreună cu un tabel pentru fiecare opțiune, care arată totalul punctelor, media punctelor și numărul de alegători.</span></p><p> Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru sondajul Scor pentru a reduce orice părtinire a votului.</p><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">Citește mai multe despre Sondajul de scor</a> .</p>
       title: Evaluarea modului în care se iau deciziile în organizația noastră
       details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) pe care le preferați.</p>
       process_subtitle_v2: Măsurați nivelul de sprijin pentru fiecare opțiune
-      process_introduction_v2: <p><strong>Scorul</strong> vă permite să măsurați nivelul de susținere al grupului pentru fiecare opțiune. Participanții evaluează fiecare opțiune atribuind un scor pe o scală variabilă, astfel încât să puteți vedea nu doar ce preferă oamenii, ci și în ce măsură.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Citește mai multe despre Sondajul Scor</a> .</p>
+      process_introduction_v2: <p><strong>Scorul</strong> vă permite să măsurați nivelul de susținere al grupului pentru fiecare opțiune. Participanții evaluează fiecare opțiune atribuind un scor pe o scală variabilă, astfel încât să puteți vedea nu doar ce preferă oamenii, ci și în ce măsură.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">Citește mai multe despre Sondajul Scor</a> .</p>
+      process_subtitle_v3: Rugați alegătorii să evalueze cât de mult susțin fiecare opțiune
     dot_vote:
       process_subtitle: Alocă un buget de puncte pentru a identifica prioritățile
-      process_introduction: <p>Votul cu puncte este util pentru grupurile care încearcă să aloce o resursă limitată unui număr de opțiuni. Depășește un simplu sondaj, ajutând participanții să înțeleagă că există o constrângere atunci când selectează opțiuni.</p><p> Fiecare participant primește un număr fix de puncte. Tu decizi câte.</p><p> Ei plasează puncte lângă opțiunile prezentate care le plac. Participanții își pot plasa toate punctele pe o singură opțiune sau le pot distribui pe mai multe opțiuni.</p><p> Pe măsură ce participanții alocă puncte, este posibil să depășească limita bugetului pentru puncte, așa că sunt încurajați să analizeze cu atenție modul în care își cheltuiesc punctele.</p><p> Opțiunile cu cele mai multe puncte „câștigă”. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li><li><p> Alegătorii</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Citește mai multe despre votul Dot</a> .</p>
+      process_introduction: <p>Votul cu puncte este util pentru grupurile care încearcă să aloce o resursă limitată unui număr de opțiuni. Depășește un simplu sondaj, ajutând participanții să înțeleagă că există o constrângere atunci când selectează opțiuni.</p><p> Fiecare participant primește un număr fix de puncte. Tu decizi câte.</p><p> Ei plasează puncte lângă opțiunile prezentate care le plac. Participanții își pot plasa toate punctele pe o singură opțiune sau le pot distribui pe mai multe opțiuni.</p><p> Pe măsură ce participanții alocă puncte, este posibil să depășească limita bugetului pentru puncte, așa că sunt încurajați să analizeze cu atenție modul în care își cheltuiesc punctele.</p><p> Opțiunile cu cele mai multe puncte „câștigă”. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li><li><p> Alegătorii</p></li></ul><p> <a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">Citește mai multe despre votul Dot</a> .</p>
       title: Alegerea temelor pentru conferința noastră
-      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> În acest sondaj aveți un buget de 8 puncte pe care le puteți aloca opțiunilor preferate. Puteți plasa toate punctele pe o singură opțiune sau le puteți dispersa.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"><strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p>În acest sondaj ai un buget de puncte de distribuit opțiunilor preferate. Poți distribui toate punctele unei singure opțiuni sau le poți împărți.</p>
       process_subtitle_v2: Dezvăluiți prioritățile atunci când există compromisuri
-      process_introduction_v2: <p>Funcția <strong>„Alocare”</strong> vă ajută să înțelegeți prioritățile unui grup atunci când există compromisuri. Fiecare participant primește un buget de puncte pe care să le distribuie între opțiuni — poate miza all-in pe o singură opțiune sau își poate distribui punctele pe mai multe. Deoarece bugetul este limitat, fiecare punct cheltuit este un semnal real de prioritate.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Citește mai multe despre Alocare</a> .</p>
+      process_introduction_v2: <p>Funcția <strong>„Alocare”</strong> vă ajută să înțelegeți prioritățile unui grup atunci când există compromisuri. Fiecare participant primește un buget de puncte pe care să le distribuie între opțiuni — poate miza all-in pe o singură opțiune sau își poate distribui punctele pe mai multe. Deoarece bugetul este limitat, fiecare punct cheltuit este un semnal real de prioritate.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">Citește mai multe despre Alocare</a> .</p>
+      process_subtitle_v3: Dezvăluie prioritățile atunci când există compromisuri. Cunoscut și sub denumirea de vot cu puncte.
     ranked_choice:
       process_subtitle: Înțelegerea preferințelor ordonate ale opțiunilor
-      process_introduction: <p>Alegerea clasificată este utilă atunci când aveți un număr mare de opțiuni sau organizați alegeri.</p><p> Acest șablon de sondaj oferă o serie de opțiuni pentru ca oamenii să voteze în ordinea preferată.</p><p> Puteți seta numărul de opțiuni pe care le primește alegătorul.</p><p> <span>Votanții trageți și plasați opțiunile în ordinea preferințelor (#1 fiind opțiunea preferată).</span></p><p> <span>Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru</span> alegerile clasificate pentru a reduce orice părtinire a votului.</p><p> Rezultatele sunt afișate în ordine ierarhică. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> Rang</p></li><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Citește mai multe despre alegerea clasată</a> .</p>
+      process_introduction: <p>Votul preferențial este util când ai multe opțiuni sau organizezi alegeri.</p><p>Alegătorii trag și plasează opțiunile pentru a le aranja în ordinea preferințelor.</p><p>Rezultatele sunt afișate în ordinea clasamentului.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre votul preferențial</a>.</p>
       title: Alegerea directorilor în consiliul de administrație
       details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Votează ierarhizarea opțiunilor în ordinea preferințelor tale. Opțiunea care se clasează pe primul loc în rezultate câștigă.</p>
       process_subtitle_v2: Găsiți ordinea de preferințe a grupului
-      process_introduction_v2: <p><strong>Clasamentul</strong> dezvăluie ordinea preferințelor grupului. Participanții trag și plasează opțiunile pentru a le aranja de la cele mai preferate la cele mai puțin preferate, iar rezultatele arată clasamentul general.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Citește mai multe despre Rang</a> .</p>
+      process_introduction_v2: <p><strong>Ordonează</strong> arată ordinea preferințelor grupului. Participanții trag și plasează opțiunile pentru a le aranja de la cea mai preferată la cea mai puțin preferată, iar rezultatele arată clasamentul general.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">Citește mai multe despre Ordonează</a>.</p>
+      process_subtitle_v3: Ordonați opțiunile de la cea mai preferată la cea mai puțin preferată
     time_poll:
       process_subtitle: Află când sunt disponibile persoane pentru întâlniri
-      process_introduction: <p><span>Economisiți timp la stabilirea datei pentru întâlnire sau eveniment.</span></p><p> Sondajul de timp facilitează verificarea disponibilității tuturor și găsirea celui mai bun moment.</p><p> Dați sondajului dvs. Time un titlu și detalii. Introduceți o listă de opțiuni de dată și oră în fusul dvs. orar.</p><p> Când setați intervalele orare, luați în considerare persoanele din diferite fusuri orare. Participanții vor vedea orele localizate în fusul lor orar.</p><p> Setați o durată a întâlnirii.</p><p> Când sondajul Time se închide, setează un rezultat cu cel mai bun moment și orice instrucțiuni pentru întâlnire.</p><p> <span>Loomio va include o invitație în calendar împreună cu e-mailul de notificare a rezultatului, astfel încât participanții să poată adăuga informații în calendarul lor.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Citește mai multe despre sondajul Time</a> .</p>
+      process_introduction: <p>Găsește rapid cel mai bun moment pentru întâlnirea sau evenimentul tău. Adaugă un titlu, detalii și opțiuni de dată și oră în fusul tău orar. Participanții vor vedea orele în fusul lor orar.</p><p>Când sondajul tău de timp se închide, stabilește concluzia cu cel mai bun moment și instrucțiunile pentru întâlnire. Loomio va trimite concluzia prin e-mail, cu o invitație în calendar, astfel încât participanții să poată adăuga întâlnirea în calendarele lor.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Citește mai multe despre sondajul de timp</a>.</p>
       title: Hai să găsim o dată pentru următoarea noastră întâlnire
       details: "<p><strong>Ce este întâlnirea sau evenimentul?</strong></p><p></p><p> <strong>De ce este important acest lucru?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> <span>Marcați intervalele orare în care sunteți disponibil cu pictograma verde „degetul mare în sus” sau lăsați pictograma roșie „degetul mare în jos” activă atunci când nu sunteți disponibil.</span></p><p> <span>Folosește pictograma „degetul mare înclinat lateral” pentru a spune că ești disponibil „dacă este nevoie”.</span></p>"
       reason_prompt: Există ceva ce puteți spune pentru a ajuta organizatorul să găsească un moment potrivit?
       process_subtitle_v2: Află când sunt disponibili oamenii
-      process_introduction_v2: <p><strong>Sondajul orar</strong> te ajută să afli când sunt disponibili oamenii. Adaugă orele propuse, iar participanții îi vor vedea în propriul fus orar. Când sondajul se închide, setează rezultatul, iar Loomio va trimite tuturor o invitație în calendar.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Citește mai multe despre sondajul Time</a> .</p>
+      process_introduction_v2: <p><strong>Sondajul orar</strong> te ajută să afli când sunt disponibili oamenii. Adaugă orele propuse, iar participanții îi vor vedea în propriul fus orar. Când sondajul se închide, setează rezultatul, iar Loomio va trimite tuturor o invitație în calendar.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">Citește mai multe despre sondajul Time</a> .</p>
     opt_in:
       process_subtitle: Găsiți voluntari sau cereți participanți
-      process_introduction: '<p>Folosește opțiunea de înscriere pentru a invita persoane să se alăture unei echipe, unui comitet sau unui grup de lucru sau să participe la un eveniment.</p><p> „Opt-in” are două opțiuni de vot: Acceptare sau Refuzare.</p><p> Poți defini un număr țintă de persoane pe care le cauți, să zicem 3 persoane care să se alăture grupului tău de lucru.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Citește mai multe despre opțiunea de înscriere</a> .</p>'
+      process_introduction: '<p>Folosește opțiunea de înscriere pentru a invita persoane să se alăture unei echipe, unui comitet sau unui grup de lucru sau să participe la un eveniment.</p><p> „Opt-in” are două opțiuni de vot: Acceptare sau Refuzare.</p><p> Poți defini un număr țintă de persoane pe care le cauți, să zicem 3 persoane care să se alăture grupului tău de lucru.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">Citește mai multe despre opțiunea de înscriere</a> .</p>'
       title: Grup de lucru pentru elaborarea noii noastre politici de sustenabilitate
       details: "<p><strong>La ce echipă, grup de lucru sau eveniment invitați oameni?</strong></p><p></p><p> <strong>De ce este important acest lucru?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> Selectați „Accept” pentru a participa!</p>"
       accept_meaning: Sunt dispus să particip
@@ -649,7 +668,7 @@ ro:
       objection_prompt: Ce trebuie să se schimbe înainte să te poți angaja?
     majority:
       process_subtitle: Ia o decizie cu cele mai multe voturi
-      process_introduction: "<p><strong>Majoritatea</strong> este cea mai simplă modalitate de a lua o decizie de grup — participanții votează Da sau Nu, iar propunerea este adoptată dacă mai mult de jumătate votează Da. Nu există abțineri sau blocaje, așadar fiecare vot are aceeași pondere.</p><p> Majoritatea funcționează bine pentru decizii simple în care este nevoie de un rezultat clar. Pentru deciziile în care este important ca oamenii să colaboreze pentru a se înțelege reciproc și a găsi un teren comun, luați în considerare Consimțământul sau Consensul.</p>"
+      process_introduction: "<p><strong>Majoritatea</strong> este cea mai simplă modalitate de a lua o decizie de grup — participanții votează Da sau Nu, iar propunerea este adoptată dacă mai mult de jumătate votează Da. Nu există abținere sau veto, așadar fiecare vot are aceeași pondere.</p><p>Majoritatea funcționează bine pentru decizii simple în care este nevoie de o concluzie clară. Pentru deciziile în care este important ca oamenii să colaboreze pentru a se înțelege reciproc și a găsi puncte comune, ia în considerare Consimțământul sau Consensul.</p>"
       title: Aprobați bugetul pentru trimestrul 3
       details: "<h3><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3> <strong>De ce este important acest lucru?</strong></h3><p></p><h3> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p>"
       yes_meaning: Susțin această propunere
@@ -659,7 +678,7 @@ ro:
       outcome_statement: "<p>Mulțumesc pentru participarea la acest vot majoritar.</p>"
     stv:
       process_subtitle: Alegeți mai mulți câștigători proporțional
-      process_introduction: <p>STV (Votul Unic Transferabil) este o metodă de reprezentare proporțională pentru alegerile cu mai mulți câștigători. Alegătorii clasifică candidații în ordinea preferințelor. Candidații care ating o cotă de voturi sunt aleși, iar voturile excedentare sau eliminate se transferă la următoarele preferințe.</p><p> Configurați numărul de locuri, metoda de numărare (Scoțiană sau Meek) și tipul de cotă (Droop sau Hare). Rezultatele arată o defalcare rundă cu rundă a modului în care au fost transferate voturile.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Citește mai multe despre alegerile STV</a> .</p>
+      process_introduction: <p>STV (Votul Unic Transferabil) este o metodă de reprezentare proporțională pentru alegerile cu mai mulți câștigători. Alegătorii clasifică candidații în ordinea preferințelor. Candidații care ating o cotă de voturi sunt aleși, iar voturile excedentare sau eliminate se transferă la următoarele preferințe.</p><p> Configurați numărul de locuri, metoda de numărare (Scoțiană sau Meek) și tipul de cotă (Droop sau Hare). Rezultatele arată o defalcare rundă cu rundă a modului în care au fost transferate voturile.</p><p> <a target="_blank" href="/docs/en/user_manual/polls/stv">Citește mai multe despre alegerile STV</a> .</p>
       title: Alegeți membrii comitetului
       details: <h3 id="what-is-this-election-about"><strong>Despre ce este vorba în aceste alegeri?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Câte locuri se ocupă?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Cine sunt candidații?</strong></h3><p></p><p> Votați trăgând candidații în ordinea preferată. Locul 1 este candidatul preferat. Puteți clasa oricât de mulți sau de puțini candidați doriți.</p>
   forward_mailer:
@@ -669,7 +688,6 @@ ro:
       recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.
     comment_rejected:
       subject: Răspunsul tău nu a fost postat
-      reason: Răspunsul tău nu a fost postat deoarece este mai lung decât limita de %{count} caractere a firului de discuție.
       recommendation: Pentru a evita alte probleme, deschideți firul de discuție și introduceți direct mesajul.
       open_thread: Deschide firul de discuție
   locale_names:
@@ -728,16 +746,13 @@ ro:
     zh: Chineză (tradițională, taiwaneză)
     zh-HK: Chineză (tradițională, taiwaneză)
   upload:
+    filename_required: Este necesar un nume de fișier
     file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.
   merge_users:
     not_target_user: Trebuie să fii conectat ca contul țintă pentru a confirma o îmbinare.
   thread_markdown:
     poll: Sondaj
-    no_activity: Niciun comentariu, sondaj, vot sau rezultat încă
-    thread_title: "%{type}: %{title} · %{author} %{timestamp}"
-    comment: Comentariu · %{author} %{timestamp}
-    comment_reply: Răspuns către %{reply_author} · %{author} %{timestamp}
-    poll_title: "%{type}: %{title} · %{author} %{timestamp}"
+    no_activity: Niciun comentariu, sondaj, vot sau concluzie încă
     status: "**Stare:** %{value}"
     anonymous_voting: "**Vot anonim:** %{value}"
     options: "**Opțiuni:** %{value}"
@@ -757,10 +772,15 @@ ro:
     anonymous: Anonim
     no_voters: Niciun alegător
     score: 'scor: %{value}'
-    vote: 'Vot: %{response} · %{author} %{timestamp}'
     none_of_the_above: Nici una dintre cele de mai sus
     no_option_selected: Nicio opțiune selectată
-    outcome: Rezultat · %{author} %{timestamp}
     review_date: "**Data revizuirii:** %{value}"
+    voted: "%{author} a votat %{response}"
+    voted_hidden: "%{author} a votat"
+    vote_removed: "%{author}: vot eliminat"
+    superseded: înlocuit
+    shared_outcome: "%{author} a distribuit o concluzie"
+    removed: Eliminat
+    not_voted: "%{author}: nu a votat"
   error:
     access_denied: Nu aveți permisiunea să faceți asta

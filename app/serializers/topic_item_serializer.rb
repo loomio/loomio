@@ -1,15 +1,39 @@
 class TopicItemSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :kind,
     :topic_id, :created_at, :itemable_id, :itemable_type,
-    :pinned, :pinned_title, :parent_id, :actor_id, :position_key
+    :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :change_note, :tags
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :itemable, polymorphic: true
   has_one :parent, serializer: TopicItemSerializer, root: :parent_topic_items
+  has_one :reply_parent, serializer: TopicItemSerializer, root: :parent_topic_items
+
+  def tags
+    object.tags
+  end
 
   def parent
     cache_fetch(:topic_items_by_id, object.parent_id) { object.parent }
+  end
+
+  def reply_parent
+    cache_fetch(:reply_parents_by_topic_item_id, object.id) { object.reply_parent }
+  end
+
+  # Context records do not expand their own reply parents. Omit the relationship
+  # rather than clearing a reply_parent_id already loaded by another client page.
+  def include_reply_parent?
+    cache = scope[:cache]
+    cache && cache.scope.fetch(:reply_parents_by_topic_item_id, {}).key?(object.id)
+  end
+
+  def change_note
+    cache_fetch(:change_notes_by_topic_item_id, object.id) { object.change_note }
+  end
+
+  def include_change_note?
+    TopicItem::CHANGE_NOTE_KINDS.include?(object.kind)
   end
 
   def include_itemable?

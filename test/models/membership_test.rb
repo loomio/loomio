@@ -52,6 +52,16 @@ class MembershipTest < ActiveSupport::TestCase
     assert_predicate TopicReader.new, :push_normal?
   end
 
+  test "new memberships inherit account delivery preferences and preserve later choices" do
+    @alien.update!(volume_email_default: :quiet, volume_push_default: :loud)
+    membership = Membership.create!(group: @group, user: @alien)
+    assert_equal ["quiet", "loud"], membership.attributes.values_at('volume_email', 'volume_push')
+
+    @alien.update!(volume_email_default: :normal, volume_push_default: :quiet)
+    membership.update!(title: 'Treasurer')
+    assert_equal ["quiet", "loud"], membership.reload.attributes.values_at('volume_email', 'volume_push')
+  end
+
   test "active and admin scopes match the fixture membership matrix exactly" do
     active = users(
       :admin,
@@ -112,5 +122,19 @@ class MembershipTest < ActiveSupport::TestCase
     membership.set_volume!(email: :quiet, push: :normal)
     assert_equal :quiet, membership.reload.volume_email.to_sym
     assert_equal :normal, membership.volume_push.to_sym
+  end
+
+  test "vote weight is nonnegative and rounds to the column precision" do
+    membership = @group.add_member!(@user)
+
+    assert_equal 1, membership.weight
+    assert membership.update(weight: 2)
+    assert membership.update(weight: '0.5')
+    assert membership.update(weight: '0.0001')
+    assert_equal 0, membership.reload.weight
+    assert membership.update(weight: 1_000_001)
+    assert_raises ActiveRecord::StatementInvalid do
+      membership.update_columns(weight: -1)
+    end
   end
 end

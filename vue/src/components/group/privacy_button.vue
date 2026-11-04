@@ -7,11 +7,12 @@ export default
     group: Object
   },
   computed: {
-    privacyDescription() { return this.$t(groupPrivacy(this.group)); },
+    privacyDescription() { return this.$t(groupPrivacy(this.group), {parent: this.group.parentName()}); },
     iconClass() {
       switch (this.group.groupPrivacy) {
         case 'open':   return 'mdi-earth';
         case 'closed': return 'mdi-lock-outline';
+        case 'parent_members': return 'mdi-account-group-outline';
         case 'secret': return 'mdi-lock-outline';
       }
     }

@@ -39,7 +39,10 @@ class MembershipReferenceIntegrityTest < ActiveSupport::TestCase
   test "database cascades remove memberships with deleted users and groups" do
     group = Group.create!(name: "Membership lifecycle", creator: users(:admin), group_privacy: "secret")
     group_membership = group.add_member!(users(:member))
-    user_membership = memberships(:admin_membership)
+    # Delete a user with only this membership so unrelated poll references do
+    # not prevent the raw database deletion used to exercise the foreign key.
+    user = User.create!(name: "Membership lifecycle", email: "membership-lifecycle@example.com")
+    user_membership = groups(:group).add_member!(user)
 
     Group.where(id: group_membership.group_id).delete_all
     User.where(id: user_membership.user_id).delete_all

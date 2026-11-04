@@ -32,6 +32,14 @@ class UserInviter
       actor.ability.authorize!(:add_members, g)
     end
 
+    check_members_limit!(parent_group: parent_group, emails: emails, user_ids: user_ids)
+  end
+
+  # Server provisioning checks the same subscription constraints after its
+  # controller has authenticated the server key, without inventing a user actor.
+  def self.check_members_limit!(parent_group:, emails:, user_ids:)
+    subscription = Subscription.for(parent_group)
+    raise Subscription::NotActive unless subscription.is_active?
     return if subscription.max_members.nil?
 
     new_count = new_members_count(parent_group: parent_group, user_ids: user_ids, emails: emails)

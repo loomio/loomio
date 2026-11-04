@@ -1,0 +1,174 @@
+---
+he:
+  timezones:
+    local: זמן מקומי (%{value})
+    regions:
+      Africa/Algiers: אפריקה / אלג'יר
+      Africa/Cairo: אפריקה / קהיר
+      Africa/Casablanca: אפריקה / קזבלנקה
+      Africa/Harare: אפריקה / הרארה (זימבבואה)
+      Africa/Johannesburg: אפריקה / יוהנסבורג (דרום אפריקה)
+      Africa/Monrovia: אפריקה / מונרוביה
+      Africa/Nairobi: אפריקה / ניירובי
+      America/Adak: אמריקה / אדאק (האיים האלאוטיים)
+      America/Argentina/Buenos_Aires: אמריקה / ארגנטינה / בואנוס איירס
+      America/Asuncion: אמריקה / אסונסיון
+      America/Bogota: אמריקה / בוגוטה
+      America/Cambridge_Bay: אמריקה / קיימברידג' ביי (נונאווט)
+      America/Caracas: אמריקה / קראקס
+      America/Chicago: אמריקה / שיקגו (מרכז ארה״ב)
+      America/Chihuahua: אמריקה / צ'יוואווה
+      America/Dawson: אמריקה / דוסון (יוקון)
+      America/Dawson_Creek: אמריקה / דוסון קריק (קולומביה הבריטית)
+      America/Denver: אמריקה / דנוור (אזור ההרים בארה״ב)
+      America/Edmonton: אמריקה / אדמונטון (אלברטה)
+      America/Fort_Nelson: אמריקה / פורט נלסון (קולומביה הבריטית)
+      America/Glace_Bay: אמריקה / גלייס ביי (נובה סקוטיה)
+      America/Goose_Bay: אמריקה / גוס ביי (לברדור)
+      America/Guatemala: אמריקה / גואטמלה
+      America/Guyana: אמריקה / גיאנה
+      America/Halifax: אמריקה / הליפקס (נובה סקוטיה)
+      America/Havana: אמריקה / הוואנה
+      America/Indiana/Indianapolis: אמריקה / אינדיאנה / אינדיאנפוליס (אינדיאנה)
+      America/Inuvik: אמריקה / אינוויק (הטריטוריות הצפון־מערביות)
+      America/Iqaluit: אמריקה / איקאלואיט (נונאווט)
+      America/Juneau: אמריקה / ג'ונו (אלסקה)
+      America/La_Paz: אמריקה / לה פאס
+      America/Lima: אמריקה / לימה
+      America/Los_Angeles: אמריקה / לוס אנג'לס (חוף האוקיינוס השקט בארה״ב)
+      America/Mazatlan: אמריקה / מסטלאן
+      America/Mexico_City: אמריקה / מקסיקו סיטי
+      America/Miquelon: אמריקה / סן פייר ומיקלון
+      America/Moncton: אמריקה / מונקטון (ניו ברנזוויק)
+      America/Monterrey: אמריקה / מונטריי
+      America/Montevideo: אמריקה / מונטווידאו
+      America/New_York: אמריקה / ניו יורק (מזרח ארה״ב)
+      America/Nuuk: אמריקה / נוק
+      America/Panama: אמריקה / פנמה
+      America/Phoenix: אמריקה / פיניקס (אריזונה)
+      America/Puerto_Rico: אמריקה / פוארטו ריקו
+      America/Rankin_Inlet: אמריקה / רנקין אינלט (נונאווט)
+      America/Regina: אמריקה / רג'יינה (ססקצ'ואן)
+      America/Resolute: אמריקה / רזולוט (נונאווט)
+      America/Santiago: אמריקה / סנטיאגו
+      America/Sao_Paulo: אמריקה / סאו פאולו
+      America/St_Johns: אמריקה / סנט ג'ונס (ניופאונדלנד)
+      America/Swift_Current: אמריקה / סוויפט קרנט (ססקצ'ואן)
+      America/Tijuana: אמריקה / טיחואנה
+      America/Toronto: אמריקה / טורונטו (אונטריו)
+      America/Vancouver: אמריקה / ונקובר (קולומביה הבריטית)
+      America/Whitehorse: אמריקה / וייטהורס (יוקון)
+      America/Winnipeg: אמריקה / ויניפג (מניטובה)
+      Antarctica/Troll: אנטארקטיקה / תחנת טרול (אנטארקטיקה)
+      Asia/Almaty: אסיה / אלמטי
+      Asia/Baghdad: אסיה / בגדאד
+      Asia/Baku: אסיה / באקו
+      Asia/Bangkok: אסיה / בנגקוק
+      Asia/Beirut: אסיה / ביירות
+      Asia/Chongqing: אסיה / צ'ונגצ'ינג
+      Asia/Colombo: אסיה / קולומבו
+      Asia/Dhaka: אסיה / דאקה
+      Asia/Gaza: אסיה / עזה
+      Asia/Hong_Kong: אסיה / הונג קונג
+      Asia/Irkutsk: אסיה / אירקוטסק
+      Asia/Jakarta: אסיה / ג'קרטה
+      Asia/Jerusalem: אסיה / ירושלים
+      Asia/Kabul: אסיה / קאבול
+      Asia/Kamchatka: אסיה / קמצ'טקה
+      Asia/Karachi: אסיה / קראצ'י
+      Asia/Kathmandu: אסיה / קטמנדו
+      Asia/Kolkata: אסיה / קולקטה (הודו)
+      Asia/Krasnoyarsk: אסיה / קרסנויארסק
+      Asia/Kuala_Lumpur: אסיה / קואלה לומפור
+      Asia/Kuwait: אסיה / כווית
+      Asia/Magadan: אסיה / מגדן
+      Asia/Muscat: אסיה / מסקט
+      Asia/Novosibirsk: אסיה / נובוסיבירסק
+      Asia/Rangoon: אסיה / יאנגון (מיאנמר)
+      Asia/Riyadh: אסיה / ריאד
+      Asia/Seoul: אסיה / סיאול
+      Asia/Shanghai: אסיה / שנגחאי
+      Asia/Singapore: אסיה / סינגפור
+      Asia/Srednekolymsk: אסיה / סרדנקולימסק
+      Asia/Taipei: אסיה / טאיפיי
+      Asia/Tashkent: אסיה / טשקנט
+      Asia/Tbilisi: אסיה / טביליסי
+      Asia/Tehran: אסיה / טהראן
+      Asia/Tokyo: אסיה / טוקיו
+      Asia/Ulaanbaatar: אסיה / אולן בטור
+      Asia/Urumqi: אסיה / אורומצ'י
+      Asia/Vladivostok: אסיה / ולדיווסטוק
+      Asia/Yakutsk: אסיה / יקוטסק
+      Asia/Yekaterinburg: אסיה / יקטרינבורג
+      Asia/Yerevan: אסיה / ירוואן
+      Atlantic/Azores: האוקיינוס האטלנטי / האיים האזוריים
+      Atlantic/Cape_Verde: האוקיינוס האטלנטי / כף ורדה
+      Atlantic/South_Georgia: האוקיינוס האטלנטי / האי ג'ורג'יה הדרומית
+      Australia/Adelaide: אוסטרליה / אדלייד (אוסטרליה הדרומית)
+      Australia/Brisbane: אוסטרליה / בריזבן (קווינסלנד)
+      Australia/Canberra: אוסטרליה / קנברה (טריטוריית הבירה האוסטרלית)
+      Australia/Darwin: אוסטרליה / דרווין (הטריטוריה הצפונית)
+      Australia/Eucla: אוסטרליה / יוקלה (אוסטרליה המערבית)
+      Australia/Hobart: אוסטרליה / הובארט (טסמניה)
+      Australia/Lord_Howe: אוסטרליה / האי לורד האו
+      Australia/Melbourne: אוסטרליה / מלבורן (ויקטוריה)
+      Australia/Perth: אוסטרליה / פרת' (אוסטרליה המערבית)
+      Australia/Sydney: אוסטרליה / סידני (ניו סאות' ויילס)
+      Etc/GMT+12: אחר / קו התאריך הבינלאומי מערב (UTC−12)
+      Etc/UTC: אחר / זמן אוניברסלי מתואם (UTC)
+      Europe/Amsterdam: אירופה / אמסטרדם
+      Europe/Athens: אירופה / אתונה
+      Europe/Belgrade: אירופה / בלגרד
+      Europe/Berlin: אירופה / ברלין
+      Europe/Bratislava: אירופה / ברטיסלבה
+      Europe/Brussels: אירופה / בריסל
+      Europe/Bucharest: אירופה / בוקרשט
+      Europe/Budapest: אירופה / בודפשט
+      Europe/Copenhagen: אירופה / קופנהגן
+      Europe/Dublin: אירופה / דבלין
+      Europe/Helsinki: אירופה / הלסינקי
+      Europe/Istanbul: אירופה / איסטנבול
+      Europe/Kaliningrad: אירופה / קלינינגרד
+      Europe/Kiev: אירופה / קייב (אוקראינה)
+      Europe/Lisbon: אירופה / ליסבון
+      Europe/Ljubljana: אירופה / ליובליאנה
+      Europe/London: אירופה / לונדון
+      Europe/Madrid: אירופה / מדריד
+      Europe/Minsk: אירופה / מינסק
+      Europe/Moscow: אירופה / מוסקבה
+      Europe/Paris: אירופה / פריז
+      Europe/Prague: אירופה / פראג
+      Europe/Riga: אירופה / ריגה
+      Europe/Rome: אירופה / רומא
+      Europe/Samara: אירופה / סמרה
+      Europe/Sarajevo: אירופה / סרייבו
+      Europe/Skopje: אירופה / סקופיה
+      Europe/Sofia: אירופה / סופיה
+      Europe/Stockholm: אירופה / סטוקהולם
+      Europe/Tallinn: אירופה / טאלין
+      Europe/Vienna: אירופה / וינה
+      Europe/Vilnius: אירופה / וילנה
+      Europe/Volgograd: אירופה / וולגוגרד
+      Europe/Warsaw: אירופה / ורשה
+      Europe/Zagreb: אירופה / זאגרב
+      Europe/Zurich: אירופה / ציריך
+      Pacific/Apia: האוקיינוס השקט / אפיה
+      Pacific/Auckland: האוקיינוס השקט / אוקלנד (ניו זילנד)
+      Pacific/Chatham: האוקיינוס השקט / איי צ'טהאם (ניו זילנד)
+      Pacific/Easter: האוקיינוס השקט / אי הפסחא (צ'ילה)
+      Pacific/Fakaofo: האוקיינוס השקט / פקאופו (טוקלאו)
+      Pacific/Fiji: האוקיינוס השקט / פיג'י
+      Pacific/Gambier: האוקיינוס השקט / איי גמבייה
+      Pacific/Guadalcanal: האוקיינוס השקט / גוודלקנל (איי שלמה)
+      Pacific/Guam: האוקיינוס השקט / גואם
+      Pacific/Honolulu: האוקיינוס השקט / הונולולו (הוואי)
+      Pacific/Kiritimati: האוקיינוס השקט / קיריטימטי (קיריבטי)
+      Pacific/Majuro: האוקיינוס השקט / מג'ורו (איי מרשל)
+      Pacific/Marquesas: האוקיינוס השקט / איי מרקיז
+      Pacific/Midway: האוקיינוס השקט / איי מידוויי
+      Pacific/Norfolk: האוקיינוס השקט / האי נורפוק
+      Pacific/Noumea: האוקיינוס השקט / נומאה (קלדוניה החדשה)
+      Pacific/Pago_Pago: האוקיינוס השקט / פאגו פאגו (סמואה האמריקנית)
+      Pacific/Pitcairn: האוקיינוס השקט / איי פיטקרן
+      Pacific/Port_Moresby: האוקיינוס השקט / פורט מורסבי (פפואה גינאה החדשה)
+      Pacific/Tongatapu: האוקיינוס השקט / טונגטפו (טונגה)

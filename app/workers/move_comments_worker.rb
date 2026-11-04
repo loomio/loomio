@@ -8,7 +8,7 @@ class MoveCommentsWorker < ApplicationJob
     # Moving a branch changes both its domain records and its projected topic
     # tree. Keep those changes atomic; the deferred same-topic parent constraint
     # verifies the rebuilt tree when this transaction commits.
-    ActiveRecord::Base.transaction do
+    Topic.where(id: [source_topic_id, target_topic_id]).order(:id).with_write_lock(:id) do
       ActiveRecord::Base.connection.execute("SET CONSTRAINTS topic_items_parent_same_topic DEFERRED")
 
       # sanitize topic_item_ids (so they cannot be from another topic), and ensure we have any children
@@ -21,6 +21,11 @@ class MoveCommentsWorker < ApplicationJob
 
       # update polls to point to target topic
       all_polls.update_all(topic_id: target_topic_id)
+      source_topic.recount_active_polls!
+      target_topic.recount_active_polls!
+      if source_topic.group_id != target_topic.group_id
+        Group.where(id: [source_topic.group_id, target_topic.group_id]).order(:id).each(&:update_content_counts)
+      end
 
       # reparent comments whose parent is not also being moved
       moved_itemable_ids = all_topic_items.pluck(:itemable_type, :itemable_id).map { |t, id| [ t, id ] }
@@ -33,16 +38,22 @@ class MoveCommentsWorker < ApplicationJob
       all_topic_items.update_all(topic_id: target_topic_id, sequence_id: nil)
 
       TopicService.repair(target_topic_id)
+      TagService.refresh_topic_tags!([source_topic_id, target_topic_id])
       source_was_discarded = source_topic.topicable_type == 'Poll' &&
                              all_polls.exists?(source_topic.topicable_id) &&
                              !TopicItem.exists?(topic_id: source_topic_id)
       source_topic.update!(discarded_at: Time.current, discarded_by: actor_id) if source_was_discarded
       TopicService.repair(source_topic_id) unless source_was_discarded
 
-      SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
-      SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
-
       ActiveStorage::Attachment.where(record: all_topic_items.map(&:itemable).compact).update_all(group_id: target_topic.group_id)
+    end
+
+    ActiveRecord.after_all_transactions_commit do
+      ReindexDiscussionWorker.perform_later(target_topicable.id) if target_topicable.is_a?(Discussion)
+      ReindexDiscussionWorker.perform_later(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
+      # Bulk topic-item updates bypass Poll's indexing callback.
+      Poll.where(id: TopicItem.where(id: topic_item_ids, itemable_type: 'Poll').select(:itemable_id))
+        .pluck(:id).each { |poll_id| ReindexPollWorker.perform_later(poll_id) }
     end
 
     MessageChannelService.publish_models([ source_topic ], group_id: source_topic.group_id)

@@ -6,9 +6,10 @@ class DevMainPhlexTest < ActiveSupport::TestCase
   end
 
   test "scenario index renders routes and poll formats" do
-    output = render_phlex(Views::Dev::Main::Index.new(routes: %w[test_zebra test_alpha]))
+    output = render_phlex(Views::Dev::Main::Index.new(routes: %w[/dev/polls/test_zebra /dev/polls/test_alpha /dev/discussions/test_sampled_comments]))
 
     assert_operator output.index("test_alpha"), :<, output.index("test_zebra")
+    assert_includes output, 'href="/dev/discussions/test_sampled_comments"'
     assert_includes output, "/dev/polls/test_poll_scenario?poll_type=proposal"
     assert_includes output, "format=markdown"
   end
@@ -40,5 +41,15 @@ class DevMainPhlexTest < ActiveSupport::TestCase
     assert_includes output, "recipient@example.com"
     assert_includes output, "Rendered email"
     assert_includes output, "<p>Email body</p>"
+  end
+end
+
+class DevIndexRoutesTest < ActionDispatch::IntegrationTest
+  test "main dev index links to poll and discussion scenarios" do
+    get '/dev/'
+
+    assert_response :success
+    assert_select 'a[href="/dev/polls/test_vote_table_matrix"]'
+    assert_select 'a[href="/dev/discussions/test_sampled_comments"]'
   end
 end

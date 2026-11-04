@@ -4,6 +4,8 @@ require "rails/test_help"
 require "webmock/minitest"
 require "minitest/mock"
 require_relative "./reset_database_helper"
+require_relative "support/inbound_email_helper"
+require_relative "../db/migrate/support/retained_record_count_rebuild"
 
 # Minitest 6 parallelises by default (10 threads) which causes PG deadlocks
 # against the shared test DB. Force single-threaded execution.
@@ -24,6 +26,7 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
     include ActiveJob::TestHelper
+    include InboundEmailHelper
 
     class_attribute :jobs_inline, default: false
     class_attribute :jobs_inline_names, default: []
@@ -37,11 +40,22 @@ module ActiveSupport
     end
 
 
-    # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
-    ResetDatabaseHelper.reset_database
-
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
+
+    # Real-commit tests leave rows in tables without fixture files. Reset the
+    # whole dataset before reloading fixtures so recycled IDs cannot attach old
+    # votes, notifications, or revisions to another test's records. Fixtures
+    # bypass model callbacks, so rebuild their derived counts after loading.
+    def load_fixtures(config)
+      ActiveRecord::FixtureSet.reset_cache
+      ResetDatabaseHelper.reset_database
+      super.tap do
+        connection = ActiveRecord::Base.connection
+        RetainedRecordCountRebuild.run(connection)
+      end
+    end
+    private :load_fixtures
 
 
     def create_push_subscription(user:, session: nil, **attributes)
@@ -108,8 +122,6 @@ module ActiveSupport
         to_return(status: 200)
       WebMock.stub_request(:post, /outlook.office.com/).
         to_return(status: 200)
-      WebMock.stub_request(:head, /www.gravatar.com/).
-        to_return(status: 200, body: "stubbed response", headers: {})
     end
 
     teardown do

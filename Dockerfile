@@ -1,5 +1,6 @@
 # check=skip=InvalidDefaultArgInFrom
 ARG NODE_VERSION
+ARG RUBY_VERSION
 FROM node:${NODE_VERSION}-slim AS nodebuild
 ARG NPM_VERSION
 
@@ -19,6 +20,7 @@ COPY vue ./
 # Copy Rails locale files that Vite depends on
 WORKDIR /build/
 COPY config ./config
+COPY docs/help/locales.yml ./docs/help/locales.yml
 WORKDIR /build/vue
 
 # Build Vite assets
@@ -33,7 +35,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json hocuspocus/package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
-FROM ruby:4.0.5-slim
+FROM ruby:${RUBY_VERSION}-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \
@@ -64,7 +66,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
 # Copy Ruby dependency metadata first (better cache)
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock .ruby-version ./
 
 # Install Ruby gems
 RUN bundle install && \
@@ -75,11 +77,18 @@ COPY . .
 
 COPY --from=nodebuild /tmp/pagefind /usr/local/bin/pagefind
 COPY --from=nodebuild /tmp/pagefind-LICENSE /usr/local/share/licenses/pagefind/LICENSE
+COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 
-# Render the static help site under /public/docs.
-RUN PAGEFIND_BINARY=/usr/local/bin/pagefind \
-    PAGEFIND_LICENSE=/usr/local/share/licenses/pagefind/LICENSE \
-    bundle exec ruby docs/build.rb
+# Build the static site from this checkout. CI reports documentation failures;
+# deployment continues without serving an incomplete site if this build fails.
+RUN if PAGEFIND_BINARY=/usr/local/bin/pagefind \
+       PAGEFIND_LICENSE=/usr/local/share/licenses/pagefind/LICENSE \
+       bundle exec ruby docs/help/build.rb; then \
+      :; \
+    else \
+      rm -rf public/docs && \
+      echo 'WARNING: Documentation build failed; check documentation CI' >&2; \
+    fi
 
 # Compile Propshaft assets into the image. Production does not serve assets
 # dynamically, so the manifest and digested files must exist at build time.
@@ -87,15 +96,20 @@ RUN DATABASE_URL=postgresql://localhost/loomio_build \
     SECRET_KEY_BASE_DUMMY=1 \
     bundle exec rails assets:precompile
 
-# Keep assets at their served path for Kamal's asset bridge.
-COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+# Seed the existing persistent client3 volume. Older clients retain their
+# /client3 URLs; new clients use /vue over the same accumulated asset files.
+COPY --from=nodebuild /build/public/vue /loomio/public/client3
 
 # Also keep an immutable staging copy for Docker Compose. Its startup script
 # copies this release over the mounted volume while retaining old hashed files.
-COPY --from=nodebuild /build/public/client3 /loomio/client3-build
+COPY --from=nodebuild /build/public/vue /loomio/vue-build
+
+# Reuse the existing volume for new URLs without changing deployment mounts.
+# Locally these are independent directories; Vite never sees the screenshot cache.
+RUN ln -s client3 /loomio/public/vue && \
+    ln -s client3/docs-screenshots /loomio/public/docs-screenshots
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
-COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
 COPY --from=nodebuild /build/hocuspocus/node_modules /loomio/hocuspocus/node_modules
 
 EXPOSE 80

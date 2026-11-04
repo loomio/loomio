@@ -57,6 +57,10 @@ cleanup() {
     kill "$HOCUSPOCUS_PID" 2>/dev/null || true
     wait "$HOCUSPOCUS_PID" 2>/dev/null || true
   fi
+  # Specs may restart hocuspocus (see vue/tests/e2e/helpers/hocuspocusServer.js).
+  if [ -n "${HOCUSPOCUS_PORT:-}" ]; then
+    lsof -ti "tcp:$HOCUSPOCUS_PORT" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null || true
+  fi
   if [ -n "$RAILS_PID" ]; then
     echo "Stopping Rails server (pid $RAILS_PID)..."
     kill "$RAILS_PID" 2>/dev/null || true
@@ -94,7 +98,7 @@ done
 
 # 4. Start Rails server
 echo "==> Starting Rails server on port $E2E_PORT..."
-E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
+CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
 RAILS_PID=$!
 
 # 5. Wait for server to be ready
@@ -114,7 +118,7 @@ done
 # 6. Run Nightwatch
 echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
 set +e
-(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
 TEST_EXIT=$?
 set -e
 

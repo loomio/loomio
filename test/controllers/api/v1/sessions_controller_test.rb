@@ -4,17 +4,193 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   setup do
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
     @original_force_ssl = Rails.application.config.force_ssl
+    @disable_local_login_before = ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN')
+    @terms_url_before = ENV['TERMS_URL']
+    @enforce_existing_terms_before = ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS')
   end
 
   teardown do
     ENV['TURNSTILE_SECRET_KEY'] = @original_turnstile_secret
     Rails.application.config.force_ssl = @original_force_ssl
+    @disable_local_login_before.nil? ? ENV.delete('FEATURES_DISABLE_LOCAL_LOGIN') : ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = @disable_local_login_before
+    @terms_url_before.nil? ? ENV.delete('TERMS_URL') : ENV['TERMS_URL'] = @terms_url_before
+    @enforce_existing_terms_before.nil? ? ENV.delete('LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS') : ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = @enforce_existing_terms_before
+  end
+
+  test "only a completed successful local sign-in clears blocks for the current address" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = users(:user)
+    user.update!(password: 'Suppression-test-password')
+    record = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: 'test:current')
+    old = EmailSuppressionService.record!(email: 'old-address@example.com', reason: 'complaint', source_key: 'test:old')
+
+    post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+    assert_response :unauthorized
+    assert_nil record.reload.cleared_at
+
+    SesEmailSuppressionService.stub(:client, -> { raise 'sign-in must not depend on SES' }) do
+      assert_difference 'Session.count', 1 do
+        post :create, params: { user: { email: user.email, password: 'Suppression-test-password' } }
+      end
+    end
+    assert_response :success
+    assert_equal user.id, record.reload.cleared_by_id
+    assert_equal 'sign_in', record.clear_method
+    assert_nil old.reload.cleared_at
+  end
+
+  test "incomplete and deactivated accounts cannot clear email blocks by attempting sign-in" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    [User.create!(email: 'incomplete-blocked@example.com', email_verified: true), users(:orphan_deactivated_user)].each do |user|
+      token = LoginToken.create!(user: user)
+      record = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: "test:#{user.id}")
+      session[:pending_login_token] = token.token
+      post :create
+      assert_nil record.reload.cleared_at
+    end
   end
 
   test "turnstile is not required when TURNSTILE_SECRET_KEY is unset" do
     ENV['TURNSTILE_SECRET_KEY'] = nil
     user = User.create!(email: "nocaptcha@example.com", email_verified: true, password: "s3curepassword123")
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+    assert_response :success
+  end
+
+  test "SSO-only mode rejects password and email-code sessions" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = User.create!(email: "sso-only@example.com", email_verified: true, password: "s3curepassword123")
+    token = LoginToken.create!(user: user)
+
+    assert_no_difference "Session.count" do
+      post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+      assert_response :forbidden
+
+      post :create, params: { user: { email: user.email, code: token.code } }
+      assert_response :forbidden
+    end
+    refute token.reload.used
+  end
+
+  test "SSO-only mode accepts an existing sign-in link" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = users(:user)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_difference 'Session.count', 1 do
+      post :create
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert token.reload.used
+    assert_nil session[:pending_login_token]
+  end
+
+  test "SSO-only mode rejects invalid, expired, and used sign-in links" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = users(:user)
+    tokens = [
+      'missing-token',
+      LoginToken.create!(user: user, created_at: (LoginToken::EXPIRATION + 1).minutes.ago).token,
+      LoginToken.create!(user: user, used: true).token
+    ]
+
+    tokens.each do |token|
+      session[:pending_login_token] = token
+      assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+        post :create
+      end
+      assert_response :forbidden
+    end
+  end
+
+  test "SSO-only mode rejects a sign-in link for a deactivated user" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    user = users(:orphan_deactivated_user)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create
+    end
+
+    assert_response :unauthorized
+  end
+
+  test "SSO-only mode does not fall back to local credentials if a link becomes unusable" do
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+    token = LoginToken.create!(user: users(:user))
+    session[:pending_login_token] = token.token
+    code_token = LoginToken.create!(user: users(:member))
+    checks = 0
+
+    # The link passes the SSO guard, then another request consumes it before
+    # credential selection. A supplied valid code must not bypass SSO.
+    @controller.stub(:pending_login_token, token) do
+      token.stub(:useable?, -> { checks += 1; checks == 1 }) do
+        assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+          post :create, params: { user: { email: users(:member).email, code: code_token.code } }
+        end
+      end
+    end
+
+    assert_response :unauthorized
+    refute code_token.reload.used
+  end
+
+  test "SSO-only mode still allows an existing session to sign out" do
+    user = User.create!(email: "sso-logout@example.com", email_verified: true)
+    sign_in user
+    ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
+
+    assert_difference "Session.count", -1 do
+      delete :destroy
+    end
+
+    assert_response :success
+    assert_nil Current.session
+  end
+
+  test "sign out clears pending authentication and invitation state from the cookie session" do
+    user = User.create!(email: "clear-session@example.com", name: "Clear Session", email_verified: true)
+    sign_in user
+    @controller.stage_account_completion(user)
+    proof = @controller.pending_account_completion_proof
+    session[:passkey_registration_challenge] = { value: "registration" }
+    session[:passkey_authentication_challenge] = { value: "authentication" }
+    session[:pending_identity_id] = 123
+    session[:pending_membership_token] = "membership"
+    session[:pending_topic_reader_token] = "reader"
+    session[:pending_stance_token] = "stance"
+
+    delete :destroy
+
+    assert_response :success
+    assert_not AccountCompletionProof.exists?(proof.id)
+    %w[
+      pending_account_completion
+      passkey_registration_challenge
+      passkey_authentication_challenge
+      pending_identity_id
+      pending_membership_token
+      pending_topic_reader_token
+      pending_stance_token
+    ].each { |key| assert_nil session[key] }
+  end
+
+  test "sign out deletes outstanding server-side passkey challenges" do
+    user = User.create!(email: "challenge-cleanup@example.com", name: "Challenge Cleanup", email_verified: true)
+    sign_in user
+    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_REGISTRATION, SecureRandom.urlsafe_base64(32), user: user)
+    PasskeyService.issue_challenge!(session, PasskeyService::CHALLENGE_AUTHENTICATION, SecureRandom.urlsafe_base64(32))
+
+    assert_difference "PasskeyChallenge.count", -2 do
+      delete :destroy
+    end
+
     assert_response :success
   end
 
@@ -117,9 +293,12 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   test "signs in with password" do
     user = User.create!(
       email: "sessionsuser@example.com",
+      name: "Session User",
+      legal_accepted_at: Time.current,
       email_verified: true,
       password: "s3curepassword123"
     )
+    block = EmailSuppressionService.record!(email: user.email, reason: 'permanent_bounce', source_key: 'test:password-bounce')
     
     assert_difference 'Session.count', 1 do
       post :create, params: { user: { email: "sessionsuser@example.com", password: "s3curepassword123" } }
@@ -128,12 +307,19 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+    assert_equal false, json.dig('users', 0, 'has_passkey')
     assert_equal false, json['signed_in_via_login_code']
+    assert_equal true, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert block.reload.cleared_at
+    assert_equal user.id, block.cleared_by_id
+    assert_equal 'sign_in', block.clear_method
+    assert_not user.email_delivery_blocked?
+    assert_equal 1, user.reload.sign_in_count
   end
 
   test "returns the server-recorded authentication destination after sign in" do
-    user = User.create!(email: "returnmobile@example.com", email_verified: true, password: "s3curepassword123")
+    user = User.create!(email: "returnmobile@example.com", name: "Returning User", legal_accepted_at: Time.current, email_verified: true, password: "s3curepassword123")
     session[:return_to_after_authenticating] = "/mobile/authorize?state=server-owned"
 
     post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
@@ -154,6 +340,9 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_equal true, cookie_writes.dig(:session_id, :secure)
     assert_equal true, cookie_writes.dig(:signed_in, :secure)
+    assert_equal true, cookie_writes.dig(:session_id, :httponly)
+    assert_equal :lax, cookie_writes.dig(:session_id, :same_site)
+    assert_equal :lax, cookie_writes.dig(:signed_in, :same_site)
   end
 
   test "does not mark authentication cookies secure when force_ssl is disabled" do
@@ -167,9 +356,35 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_equal false, cookie_writes.dig(:session_id, :secure)
     assert_equal false, cookie_writes.dig(:signed_in, :secure)
+    assert_equal true, cookie_writes.dig(:session_id, :httponly)
+    assert_equal :lax, cookie_writes.dig(:session_id, :same_site)
+    assert_equal :lax, cookie_writes.dig(:signed_in, :same_site)
   end
 
-  test "bridges a legacy devise session into a session record" do
+  test "shared sign in rejects inactive accounts before and after verification" do
+    inactive_user = users(:inactive_member_loud)
+    assert_no_difference 'Session.count' do
+      assert_raises(CurrentUserHelper::InactiveUserError) { @controller.sign_in(inactive_user) }
+
+      # A provisional identity can resolve to an existing verified account.
+      provisional_user = User.new(name: 'Provisional account', email: inactive_user.email, email_verified: false)
+      assert_raises(CurrentUserHelper::InactiveUserError) { @controller.sign_in(provisional_user) }
+    end
+    assert_nil Current.session
+  end
+
+  test "shared sign in cannot expose a nameless account" do
+    user = users(:member_normal)
+    user.update_column(:name, nil)
+
+    assert_no_difference ['Session.count', -> { user.reload.sign_in_count.to_i }] do
+      error = assert_raises(ActiveRecord::RecordInvalid) { @controller.sign_in(user) }
+      assert error.record.errors.added?(:name, :blank)
+    end
+    assert_nil Current.session
+  end
+
+  test "legacy authentication state cannot create a session" do
     user = User.create!(
       email: "legacy-session@example.com",
       email_verified: true,
@@ -177,16 +392,48 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     )
     session['warden.user.user.key'] = [[user.id], nil]
 
-    assert_difference 'Session.count', 1 do
-      assert_equal user.id, @controller.current_user.id
+    assert_no_difference 'Session.count' do
+      assert_not @controller.current_user.is_logged_in?
     end
-    assert_equal user.id, Current.session.user_id
-    assert_nil session['warden.user.user.key']
+    assert_nil Current.session
+  end
+
+  test "password failures lock the account until the lock expires" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = users(:user)
+    user.update!(password: 'lockout-password-123')
+
+    User::MAXIMUM_LOGIN_ATTEMPTS.times do |attempt|
+      post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+      assert_response :unauthorized
+      assert_equal attempt + 1, user.reload.failed_attempts
+    end
+    assert user.access_locked?
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: 'lockout-password-123' } }
+    end
+    assert_response :unauthorized
+
+    travel User::UNLOCK_IN + 1.second do
+      post :create, params: { user: { email: user.email, password: 'wrong-password' } }
+      assert_response :unauthorized
+      assert_equal 1, user.reload.failed_attempts
+      assert_nil user.locked_at
+
+      post :create, params: { user: { email: user.email, password: 'lockout-password-123' } }
+      assert_response :success
+      assert_equal user.id, JSON.parse(response.body)['current_user_id']
+      assert_equal 0, user.reload.failed_attempts
+      assert_nil user.locked_at
+    end
   end
 
   test "sign out destroys the current session" do
     user = User.create!(
       email: "destroy-session@example.com",
+      name: "Destroy Session",
+      legal_accepted_at: Time.current,
       email_verified: true,
       password: "s3curepassword123"
     )
@@ -195,6 +442,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
 
     terminated_session = Current.session
+    secret_token_before = user.reload.secret_token
     subscription = create_push_subscription(
       user: user,
       session: terminated_session,
@@ -208,6 +456,16 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
     assert_response :success
     refute PushSubscription.exists?(subscription.id)
+    refute_equal secret_token_before, user.reload.secret_token
+    assert_equal 'ok', JSON.parse(response.body).fetch('success')
+    assert_nil cookies[:session_id]
+    assert_nil cookies[:signed_in]
+    assert_nil Current.session
+
+    assert_no_difference 'Session.count' do
+      delete :destroy
+    end
+    assert_response :success
 
     assert_raises ActiveRecord::RecordNotFound do
       PushSubscriptionService.create_or_update!(
@@ -235,36 +493,52 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "does not sign in a blank password" do
-    User.create!(email: "sessionsuser2@example.com", email_verified: true)
+    user = User.create!(email: "sessionsuser2@example.com", email_verified: true, password: 'real-password-123')
     
     post :create, params: { user: { email: "sessionsuser2@example.com", password: "" } }
     assert_response :unauthorized
+    assert_equal 0, user.reload.failed_attempts
   end
 
-  test "returns account locked failure for locked accounts" do
+  test "does not distinguish locked accounts from other invalid credentials" do
     user = User.create!(email: "lockedlogin@example.com", email_verified: true, password: "s3curepassword123")
     user.update!(locked_at: Time.current)
 
     post :create, params: { user: { email: user.email, password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.account_locked')], JSON.parse(response.body).dig('errors', 'password')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
-  test "returns email not found when password login account does not exist" do
+  test "deactivated account cannot sign in with a valid password or code" do
+    ENV.delete('TURNSTILE_SECRET_KEY')
+    user = User.create!(email: "deactivated-login@example.com", name: "Deactivated User", email_verified: true, password: "s3curepassword123")
+    token = LoginToken.create!(user: user)
+    user.update!(deactivated_at: Time.current)
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: "s3curepassword123" } }
+      assert_response :unauthorized
+
+      post :create, params: { user: { email: user.email, code: token.code } }
+      assert_response :unauthorized
+    end
+  end
+
+  test "does not distinguish an unknown email from other invalid credentials" do
     post :create, params: { user: { email: "missinglogin@example.com", password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.email_not_found')], JSON.parse(response.body).dig('errors', 'email')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
-  test "returns invalid password when password does not match" do
+  test "returns the same invalid login response when the password does not match" do
     user = User.create!(email: "wrongpasswordlogin@example.com", email_verified: true, password: "s3curepassword123")
 
     post :create, params: { user: { email: user.email, password: "wrongpassword" } }
 
     assert_response :unauthorized
-    assert_equal [I18n.t('auth_form.invalid_password')], JSON.parse(response.body).dig('errors', 'password')
+    assert_equal [I18n.t('auth_form.invalid_login')], JSON.parse(response.body).dig('errors', 'password')
   end
 
   test "returns invalid token failure for invalid pending tokens" do
@@ -274,6 +548,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_response :unauthorized
     assert_equal [I18n.t('auth_form.invalid_token')], JSON.parse(response.body).dig('errors', 'token')
+    assert_nil session[:pending_login_token]
   end
 
   test "does not sign in a nil password" do
@@ -284,7 +559,8 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in a user via token" do
-    user = User.create!(email: "tokenuser@example.com", email_verified: true)
+    user = User.create!(email: "tokenuser@example.com", name: "Token User", legal_accepted_at: Time.current, email_verified: true)
+    block = EmailSuppressionService.record!(email: user.email, reason: 'complaint', source_key: 'test:token-complaint')
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
     
@@ -295,11 +571,57 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
     assert_equal false, json['signed_in_via_login_code']
+    assert_equal false, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+    assert block.reload.cleared_at
+    assert_equal user.id, block.cleared_by_id
+    assert_equal 'sign_in', block.clear_method
+    assert_not user.email_delivery_blocked?
+  end
+
+  test "a sign-in link is consumed before staging an incomplete account" do
+    user = users(:member_normal)
+    user.update!(name: nil)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+
+    assert_difference 'AccountCompletionProof.count', 1 do
+      assert_no_difference 'Session.count' do
+        post :create
+      end
+    end
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body).fetch('incomplete')
+    assert token.reload.used?
+    assert_nil session[:pending_login_token]
+  end
+
+  test "a link consumed after initial lookup cannot create a session" do
+    user = users(:member_normal)
+    token = LoginToken.create!(user: user)
+    session[:pending_login_token] = token.token
+    assert token.useable?
+    transaction = LoginToken.method(:transaction)
+    consume_before_lock = ->(*args, **options, &block) do
+      LoginToken.where(id: token.id).update_all(used: true)
+      transaction.call(*args, **options, &block)
+    end
+
+    @controller.stub(:pending_login_token, token) do
+      LoginToken.stub(:transaction, consume_before_lock) do
+        assert_no_difference 'Session.count' do
+          post :create
+        end
+      end
+    end
+
+    assert_response :unauthorized
+    assert_nil session[:pending_login_token]
   end
 
   test "signs in a user via code and marks the token used" do
-    user = User.create!(email: "codeuser@example.com", email_verified: true)
+    user = User.create!(email: "codeuser@example.com", name: "Code User", legal_accepted_at: Time.current, email_verified: true)
     token = LoginToken.create!(user: user)
 
     post :create, params: { user: { email: user.email, code: token.code } }
@@ -309,7 +631,112 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
     assert_equal true, json['signed_in_via_login_code']
+    assert_equal false, json['signed_in_via_password']
     assert_equal I18n.t('auth_form.signed_in'), json.dig('flash', 'notice')
+  end
+
+  test "email code sign-in accepts mixed-case input for a lowercase stored address" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: 'casecode@example.com', name: 'Code User', legal_accepted_at: Time.current, email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: 'CaseCode@EXAMPLE.COM', code: token.code } }
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert_equal true, response.parsed_body['signed_in_via_login_code']
+    assert token.reload.used
+    assert_equal 0, token.failed_attempts
+  end
+
+  test "email code sign-in accepts lowercase input for a mixed-case stored address" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: 'StoredCase@EXAMPLE.COM', name: 'Code User', legal_accepted_at: Time.current, email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: 'storedcase@example.com', code: token.code } }
+    end
+
+    assert_response :success
+    assert_equal user.id, response.parsed_body['current_user_id']
+    assert token.reload.used
+    assert_equal 0, token.failed_attempts
+  end
+
+  test "a mixed-case email cannot use another account's code or bypass turnstile" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    owner = users(:user)
+    other = users(:member)
+    owner_token = LoginToken.create!(user: owner, code: 123456)
+    other_token = LoginToken.create!(user: other, code: 654321)
+    credentials = { email: other.email.upcase, code: owner_token.code }
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create, params: { user: credentials }
+    end
+    assert_response :forbidden
+    assert_equal 0, owner_token.reload.failed_attempts
+    assert_equal 0, other_token.reload.failed_attempts
+
+    WebMock.stub_request(:post, TurnstileService::SITEVERIFY_URL).
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
+
+    assert_no_difference ['Session.count', 'AccountCompletionProof.count'] do
+      post :create, params: { user: credentials.merge(turnstile_token: 'cf-ok') }
+    end
+    assert_response :unauthorized
+    refute owner_token.reload.used
+    assert_equal 0, owner_token.failed_attempts
+    refute other_token.reload.used
+    assert_equal 1, other_token.failed_attempts
+  end
+
+  test "valid code stages account completion without signing in an incomplete user" do
+    user = User.create!(email: "incomplete-code-user@example.com", email_verified: false)
+    token = LoginToken.create!(user: user)
+
+    assert_no_difference "Session.count" do
+      post :create, params: { user: { email: user.email, code: token.code } }
+    end
+
+    assert_response :success
+    assert token.reload.used
+    assert_nil Current.session
+    assert_equal true, JSON.parse(response.body)['incomplete']
+    assert_equal user.id, session.dig(:pending_account_completion, :user_id)
+    assert_equal 'login_code', session.dig(:pending_account_completion, :authentication_method)
+  end
+
+  test "returning accounts without recorded terms acceptance can sign in by default" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    user = User.create!(email: 'returning-no-terms@example.com', name: 'Returning Person', email_verified: true, password: 's3curepassword123', current_sign_in_at: 1.week.ago)
+
+    assert_difference 'Session.count', 1 do
+      post :create, params: { user: { email: user.email, password: 's3curepassword123' } }
+    end
+
+    assert_response :success
+    assert_equal false, response.parsed_body.dig('users', 0, 'legal_acceptance_required')
+    assert_nil user.reload.legal_accepted_at
+  end
+
+  test "enforcement setting stages returning accounts missing terms acceptance" do
+    ENV['TERMS_URL'] = 'https://example.com/terms'
+    ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'] = '1'
+    user = User.create!(email: 'enforced-terms@example.com', name: 'Returning Person', email_verified: true, password: 's3curepassword123', current_sign_in_at: 1.week.ago)
+
+    assert_no_difference 'Session.count' do
+      post :create, params: { user: { email: user.email, password: 's3curepassword123' } }
+    end
+
+    assert_response :success
+    assert_equal true, response.parsed_body['incomplete']
+    assert_equal true, response.parsed_body['legal_acceptance_required']
+    assert_equal 'password', session.dig(:pending_account_completion, :authentication_method)
+    assert_nil user.reload.legal_accepted_at
   end
 
   test "does not sign in with an expired code" do
@@ -355,7 +782,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "finds a verified user to sign in" do
-    user = User.create!(email: "verified@example.com", email_verified: true)
+    user = User.create!(email: "verified@example.com", name: "Verified User", legal_accepted_at: Time.current, email_verified: true)
     User.create!(email: "unverified@example.com", email_verified: false)
     token = LoginToken.create!(user: user)
     session[:pending_login_token] = token.token
@@ -368,7 +795,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   end
 
   test "signs in an unverified user" do
-    unverified_user = User.create!(email: "unverified2@example.com", email_verified: false)
+    unverified_user = User.create!(email: "unverified2@example.com", name: "Unverified User", legal_accepted_at: Time.current, email_verified: false)
     token = LoginToken.create!(user: unverified_user)
     session[:pending_login_token] = token.token
     

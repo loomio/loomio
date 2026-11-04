@@ -73,7 +73,7 @@ class Views::NotificationMailer::Poll::PollOption < Views::ApplicationMailer::Co
       end
     when 'ranked_choice'
       if score
-        div(class: "email-poll-score") { plain "##{@poll.minimum_stance_choices - score + 1}" }
+        div(class: "email-poll-score") { plain "##{@poll.choice_count_min - score + 1}" }
       else
         selection_indicator("☐")
       end

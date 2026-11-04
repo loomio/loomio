@@ -13,7 +13,7 @@ class MobileDevice < ApplicationRecord
   scope :active, -> { where(revoked_at: nil) }
 
   def active?
-    revoked_at.nil? && user&.active_for_authentication?
+    revoked_at.nil? && user&.active?
   end
 
   def revoke!(at: Time.current)

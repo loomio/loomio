@@ -1,0 +1,1 @@
+Group admins can now request an HTML group data export and receive a download link by email when it is ready. This allows large exports to finish without keeping a browser tab open. The link is available for one week.

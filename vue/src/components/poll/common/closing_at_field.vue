@@ -27,6 +27,8 @@ export default {
   methods: {
     exact,
     updateClosingAt() {
+      // Clearing or partially typing a date must preserve the last valid deadline.
+      if (!isValid(this.closingDate)) { return; }
       const date = parse(`${format(this.closingDate, "yyyy-MM-dd")} ${this.closingHour}`, "yyyy-MM-dd HH:mm", new Date());
       if (isValid(date)) {
         this.poll.closingAt = date;

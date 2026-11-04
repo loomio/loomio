@@ -1,0 +1,178 @@
+{
+ "source": "Dundee City Council, 2022 local government election, Ward 8 - The Ferry, official CandidateVotesPerStageReport_V0001_Ward-8---The-Ferry_06052022_160635.pdf: https://www.dundeecity.gov.uk/local-elections-2022/local-elections-2022-results",
+ "seats": 4,
+ "valid_votes": 8979,
+ "quota": "1796",
+ "stages": [
+  {
+   "votes": {
+    "Thomas BYRNE": "92.00000",
+    "Kevin CORDELL": "1806.00000",
+    "Craig DUNCAN": "3112.00000",
+    "Qaiser HABIB": "674.00000",
+    "Mark PARSONS": "269.00000",
+    "DEREK SCOTT": "1661.00000",
+    "PHILIP SCOTT": "407.00000",
+    "Pete SHEARS": "899.00000",
+    "Carole SMITH": "59.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "Kevin CORDELL",
+    "Craig DUNCAN"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "108.91480",
+    "Kevin CORDELL": "1806.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "819.04441",
+    "Mark PARSONS": "398.39822",
+    "DEREK SCOTT": "2064.41798",
+    "PHILIP SCOTT": "459.43588",
+    "Pete SHEARS": "1150.18478",
+    "Carole SMITH": "87.33229"
+   },
+   "non_transferable": "289.27164",
+   "elected": [
+    "DEREK SCOTT"
+   ],
+   "excluded": [],
+   "surplus": "Craig DUNCAN"
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "109.31972",
+    "Kevin CORDELL": "1806.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "820.41445",
+    "Mark PARSONS": "400.04316",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "705.73100",
+    "Pete SHEARS": "1156.18948",
+    "Carole SMITH": "87.75727"
+   },
+   "non_transferable": "301.54492",
+   "elected": [],
+   "excluded": [],
+   "surplus": "DEREK SCOTT"
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "109.45244",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "828.73157",
+    "Mark PARSONS": "400.52980",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "705.77524",
+    "Pete SHEARS": "1156.58764",
+    "Carole SMITH": "87.80151"
+   },
+   "non_transferable": "302.12180",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Kevin CORDELL"
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "113.29818",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "832.00571",
+    "Mark PARSONS": "412.97880",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "729.55683",
+    "Pete SHEARS": "1167.81634",
+    "Carole SMITH": "0.00000"
+   },
+   "non_transferable": "335.34414",
+   "elected": [],
+   "excluded": [
+    "Carole SMITH"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "0.00000",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "866.92735",
+    "Mark PARSONS": "422.86325",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "744.88595",
+    "Pete SHEARS": "1180.36462",
+    "Carole SMITH": "0.00000"
+   },
+   "non_transferable": "375.95883",
+   "elected": [],
+   "excluded": [
+    "Thomas BYRNE"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "0.00000",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "1029.54433",
+    "Mark PARSONS": "0.00000",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "762.61960",
+    "Pete SHEARS": "1292.38788",
+    "Carole SMITH": "0.00000"
+   },
+   "non_transferable": "506.44819",
+   "elected": [],
+   "excluded": [
+    "Mark PARSONS"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "0.00000",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "1043.30682",
+    "Mark PARSONS": "0.00000",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "0.00000",
+    "Pete SHEARS": "1462.04264",
+    "Carole SMITH": "0.00000"
+   },
+   "non_transferable": "1085.65054",
+   "elected": [],
+   "excluded": [
+    "PHILIP SCOTT"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Thomas BYRNE": "0.00000",
+    "Kevin CORDELL": "1796.00000",
+    "Craig DUNCAN": "1796.00000",
+    "Qaiser HABIB": "0.00000",
+    "Mark PARSONS": "0.00000",
+    "DEREK SCOTT": "1796.00000",
+    "PHILIP SCOTT": "0.00000",
+    "Pete SHEARS": "1829.03059",
+    "Carole SMITH": "0.00000"
+   },
+   "non_transferable": "1761.96941",
+   "elected": [
+    "Pete SHEARS"
+   ],
+   "excluded": [
+    "Qaiser HABIB"
+   ],
+   "surplus": null
+  }
+ ]
+}

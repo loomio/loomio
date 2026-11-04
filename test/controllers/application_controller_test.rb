@@ -16,7 +16,11 @@ class ApplicationControllerTest < ActionController::TestCase
 
     get :index
 
+    assert_response :success
+    assert_select "div#app", count: 1
     assert_equal 'noindex', response.headers['X-Robots-Tag']
+    assert_equal 'no-cache', response.headers['Pragma']
+    assert_equal '0', response.headers['Expires']
   end
 
   test "allows indexing on configured self-hosted installations" do
@@ -56,5 +60,17 @@ class ApplicationControllerTest < ActionController::TestCase
 
     assert_response :success
     refute_includes response.body, "This is an independently operated Loomio server"
+  end
+
+  test "does not create a session for a user without a name" do
+    user = User.create!(email: "incomplete@example.com", email_verified: true)
+
+    assert_no_difference "Session.count" do
+      assert_raises ActiveRecord::RecordInvalid do
+        @controller.send(:sign_in, user)
+      end
+    end
+
+    assert_nil Current.session
   end
 end

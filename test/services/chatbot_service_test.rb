@@ -38,14 +38,12 @@ class ChatbotServiceTest < ActiveSupport::TestCase
     # Delivery now resolves + IP-pins the host (SSRF guard), so stub DNS.
     Resolv.stub(:getaddresses, ->(host) { host == 'hooks.example.test' ? ['93.184.216.34'] : [] }) do
       ChatbotService.publish_topic_item!(@topic_item.id)
+      assert_requested :post, matching_url, times: 1
+      assert_not_requested :post, non_matching_url
+
+      Notification.create!(kind: @topic_item.kind, subject: @topic_item, actor: @topic_item.actor)
+      ChatbotService.publish_topic_item!(@topic_item.id)
     end
-
-    assert_requested :post, matching_url, times: 1
-    assert_not_requested :post, non_matching_url
-
-    Notification.create!(kind: @topic_item.kind, subject: @topic_item, actor: @topic_item.actor)
-    ChatbotService.publish_topic_item!(@topic_item.id)
-
     assert_requested :post, matching_url, times: 1
   end
 

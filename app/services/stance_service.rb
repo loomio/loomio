@@ -2,13 +2,16 @@ class StanceService
   def self.create(stance:, actor:, &on_topic_item)
     actor.ability.authorize!(:vote_in, stance.poll)
 
+    AttachmentPermissionService.authorize!(record: stance, actor: actor)
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.revoker_id = nil
     return stance unless stance.valid?
 
-    publication = Stance.transaction do
+    publication = stance.poll.with_topic_lock do
+      stance.poll.reload
+      actor.ability.authorize! :vote_in, stance.poll
       stance.save!
       stance.poll.update_counts!
       publish_stance_change!(stance: stance, kind: "stance_created")
@@ -24,17 +27,19 @@ class StanceService
     actor.ability.authorize!(:uncast, stance)
 
     new_stance = stance.build_replacement
-    Stance.transaction do
+    stance.poll.with_topic_lock do
+      stance.poll.reload
+      actor.ability.authorize! :uncast, stance
       stance.update_columns(latest: false)
       new_stance.save!
+      new_stance.poll.update_counts!
     end
-
-    new_stance.poll.update_counts!
   end
 
   def self.update(stance: , actor: , params: , &on_topic_item)
     actor.ability.authorize!(:update, stance)
     params = params.to_h.with_indifferent_access.except(:poll_id)
+    AttachmentPermissionService.authorize!(record: stance, actor: actor, params: params)
     is_update = !!stance.cast_at
 
     new_stance = stance.build_replacement
@@ -53,7 +58,9 @@ class StanceService
 
     stance_to_publish = nil
     metric_name = nil
-    publication = Stance.transaction do
+    publication = stance.poll.with_topic_lock do
+      stance.poll.reload
+      actor.ability.authorize! :update, stance
       if creates_replacement
         # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
@@ -84,6 +91,36 @@ class StanceService
     Sentry.metrics.count(metric_name, attributes: { poll_type: stance.poll.poll_type })
     on_topic_item&.call(publication[:topic_item]) if publication[:topic_item]
     stance_changed
+  end
+
+  def self.set_weight(stance:, weight:, actor:)
+    stance.poll.with_topic_lock do
+      stance.poll.lock!
+      actor.ability.authorize! :set_weight, stance
+      stance.poll.stances.latest.where(id: stance.id).update_all(weight: VoteWeight.parse!(weight))
+      stance.poll.update_counts!
+    end
+    stance.reload
+  end
+
+  # Reset every current voter, including voters outside the visible page, and
+  # recalculate the tally once within the same poll lock.
+  def self.reset_weights(poll:, actor:, mode: 'value', weight: nil)
+    poll.with_topic_lock do
+      poll.lock!
+      actor.ability.authorize! :set_weight, Stance.new(poll: poll)
+      case mode
+      when 'membership'
+        raise ActionController::BadRequest, 'group membership weights require a group poll' unless poll.group_id
+        poll.reset_stance_weights_from_memberships!
+      when 'value'
+        poll.stances.latest.update_all(weight: VoteWeight.parse!(weight))
+      else
+        raise ActionController::BadRequest, 'invalid weight mode'
+      end
+      poll.update_counts!
+    end
+    poll
   end
 
   def self.redeem(stance:, actor:)
@@ -122,7 +159,6 @@ class StanceService
   def self.redact(stance:, actor:)
     actor.ability.authorize!(:redact, stance)
     stance.update!(redacted_at: Time.zone.now, redactor_id: actor.id)
-    stance.update_pg_search_document
     if stance.shared_update_visible?
       MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
     end
@@ -131,7 +167,6 @@ class StanceService
   def self.unredact(stance:, actor:)
     actor.ability.authorize!(:unredact, stance)
     stance.update!(redacted_at: nil, redactor_id: nil)
-    stance.update_pg_search_document
     if stance.shared_update_visible?
       MessageChannelService.publish_models([stance], group_id: stance.poll.group_id, topic_id: stance.poll.topic_id)
     end
@@ -140,6 +175,5 @@ class StanceService
   # def self.destroy(stance:, actor:)
   #   actor.ability.authorize! :destroy, stance
   #   stance.destroy
-  #   EventBus.broadcast 'stance_destroy', stance, actor
   # end
 end

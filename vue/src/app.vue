@@ -92,7 +92,7 @@ export default {
   methods: {
     setCurrentComponent(options) {
       this.pageError = null;
-      const title = truncate(options.title || this.$t(options.titleKey), {length: 300});
+      const title = truncate(options.title || (options.titleKey ? this.$t(options.titleKey) : ''), {length: 300});
       document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
 
       AppConfig.currentGroup      = options.group;
@@ -106,7 +106,7 @@ export default {
       if (Session.isSignedIn()) { return false; }
 
       switch (this.$route.path) {
-        case '/email_preferences': return (Session.user().restricted == null);
+        case '/email_preferences': return true;
         case '/dashboard': return true;
         case '/notifications': return true;
         case '/inbox':

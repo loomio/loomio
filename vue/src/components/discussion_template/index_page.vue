@@ -210,6 +210,7 @@ watch(showHidden, () => { query(); });
                     span.text-medium-emphasis(v-t="'discussion_form.new_template'")
               v-list-item.discussion-templates--template(
                 v-for="(template, i) in templates"
+                :class="template.key && 'discussion-templates--template-' + template.key"
                 :key="template.id"
                 :to="'/d/new?template_id='+template.id+'&group_id='+ $route.query.group_id + '&return_to='+returnTo"
               )
@@ -226,6 +227,7 @@ watch(showHidden, () => { query(); });
               v-list-subheader(v-t="'discussion_template.hidden_templates'")
               v-list-item.discussion-templates--template(
                 v-for="(template, i) in hiddenTemplates"
+                :class="template.key && 'discussion-templates--template-' + template.key"
                 :key="template.id"
                 :to="'/d/new?template_id='+template.id+'&group_id='+ $route.query.group_id + '&return_to='+returnTo"
               )

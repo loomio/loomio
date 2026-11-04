@@ -2,9 +2,10 @@
 
 class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::Component
 
-  def initialize(poll:, current_user:)
+  def initialize(poll:, current_user:, for_export: false)
     @poll = poll
     @current_user = current_user
+    @for_export = for_export
   end
 
   def view_template
@@ -12,9 +13,9 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
 
     my_stance = @current_user && ::Stance.latest.find_by(poll_id: @poll.id, participant_id: @current_user.id)
 
-    if @poll.has_options && (@poll.decided_voters_count > 0 || @poll.closed_at)
+    if @poll.has_options && (@poll.vote_count_cast > 0 || @poll.closed_at)
       div do
-        if @poll.results_visible?(voted: my_stance&.cast_at.present?)
+        if @poll.results_visible?(voted: @for_export || my_stance&.cast_at.present?)
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
           if @poll.poll_type == "meeting"
             render Views::NotificationMailer::Poll::Results::Meeting.new(poll: @poll, recipient: @current_user)
@@ -30,6 +31,6 @@ class Views::NotificationMailer::Poll::ResultsPanel < Views::ApplicationMailer::
       end
     end
 
-    render Views::NotificationMailer::Poll::Undecided.new(poll: @poll)
+    render Views::NotificationMailer::Poll::Uncast.new(poll: @poll)
   end
 end

@@ -349,10 +349,22 @@ export default class TopicLoader {
       this.records = this.records.concat(chain.data());
     });
 
-    const parentsd1 = compact(this.records.map(o => o.parent()))
-    const parentsd2 = compact(parentsd1.map(o => o.parent()))
-    const parentsd3 = compact(parentsd2.map(o => o.parent()))
-    this.records = uniq(this.records.concat(parentsd1).concat(parentsd2).concat(parentsd3));
+    // Include the immediate reply parents of requested records, then follow only
+    // display ancestry so context does not pull in the entire actual reply chain.
+    const recordsById = new Map(this.records.map(item => [item.id, item]));
+    this.records.forEach(item => {
+      const parent = item.replyParent();
+      if (parent) { recordsById.set(parent.id, parent); }
+    });
+    const pending = [...recordsById.values()];
+    for (let i = 0; i < pending.length; i++) {
+      const parent = pending[i].parent();
+      if (parent && !recordsById.has(parent.id)) {
+        recordsById.set(parent.id, parent);
+        pending.push(parent);
+      }
+    }
+    this.records = [...recordsById.values()];
     this.records = orderBy(this.records, 'positionKey');
 
     const topicItemIds = this.records.map(topic_item => topic_item.id);

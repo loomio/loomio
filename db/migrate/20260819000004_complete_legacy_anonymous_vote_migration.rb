@@ -24,9 +24,10 @@ class CompleteLegacyAnonymousVoteMigration < ActiveRecord::Migration[8.1]
   private
 
   def open_legacy_polls
+    # A later migration removes the voting_system enum; 0 was stance voting.
     Poll.where(
       anonymous: true,
-      voting_system: Poll.voting_systems.fetch("stance"),
+      voting_system: 0,
       closed_at: nil
     )
   end

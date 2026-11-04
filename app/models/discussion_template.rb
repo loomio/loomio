@@ -2,16 +2,40 @@ class DiscussionTemplate < ApplicationRecord
   include Hideable
   include DiscardableBy
   include HasRichText
-  include CustomCounterCache::Model
 
   # Task items in a template describe future work. They become Task records only when
   # the template body is saved as a discussion with a real author and participants.
   is_rich_text on: :description, materialize_tasks: false
 
+  # Settings a template carries to the discussions started from it. This single
+  # list drives template files, permitted params, the serializer and the client.
+  SETTINGS = %w[
+    title
+    title_placeholder
+    description
+    description_format
+    process_name
+    process_subtitle
+    process_introduction
+    process_introduction_format
+    recipient_audience
+    newest_first
+    max_depth
+    polls_one_at_a_time
+    allow_comments
+    allow_reactions
+    comment_length_max
+    attachments_admin_only
+    public
+    default_to_direct_discussion
+    poll_template_keys_or_ids
+    tags
+    content_locale
+  ].freeze
+
   belongs_to :author, class_name: "User", optional: true
   belongs_to :group, class_name: "Group"
 
-  update_counter_cache :group, :discussion_templates_count
 
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
 
@@ -31,6 +55,7 @@ class DiscussionTemplate < ApplicationRecord
     :group_id,
     :tags,
     :comment_length_max,
+    :attachments_admin_only,
     :hidden_at,
     :discarded_at,
     :attachments

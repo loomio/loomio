@@ -1,4 +1,5 @@
 <script setup lang="js">
+import ThreadTags from '@/components/tags/thread_tags.vue';
 import EventBus      from '@/shared/services/event_bus';
 import Records       from '@/shared/services/records';
 import TopicService  from '@/shared/services/topic_service';
@@ -170,6 +171,7 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
     v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd")
+  thread-tags(:topic="topic")
   template(v-if="isSignedIn")
 
     v-list(nav slim density="compact" :lines="false")
@@ -193,15 +195,40 @@ v-navigation-drawer.lmo-no-print.disable-select.topic-sidebar(v-if="topic" v-mod
 
     v-list(nav slim density="compact" :lines="false" v-if="menuActions.length")
       v-list-subheader(v-t="'members_panel.header_actions'")
-      v-list-item(
-        v-for="{ key, action } in menuActions"
-        :key="key"
-        :class="`action-dock__button--${key}`"
-        :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
-        :to="action.to && action.to()"
-        @click="action.perform && action.perform()")
-        template(v-slot:prepend)
-          common-icon(:name="action.icon")
+      template(v-for="{ key, action } in menuActions" :key="key")
+        v-tooltip(v-if="action.disabled && action.disabled()" location="start" :text="$t(action.disabledReason)")
+          template(v-slot:activator="{ props }")
+            div(v-bind="props")
+              v-list-item(
+                disabled
+                :class="`action-dock__button--${key}`"
+                :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})")
+                template(v-slot:prepend)
+                  common-icon(:name="action.icon")
+        v-menu(v-else-if="action.menu" location="start")
+          template(v-slot:activator="{ props }")
+            v-list-item(
+              v-bind="props"
+              :class="`action-dock__button--${key}`"
+              :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})")
+              template(v-slot:prepend)
+                common-icon(:name="action.icon")
+          v-list(density="compact")
+            v-list-item(
+              v-for="item in action.menu"
+              :key="item.name"
+              :title="$t(item.name)"
+              @click="item.perform()")
+              template(v-slot:prepend)
+                common-icon(:name="item.icon")
+        v-list-item(
+          v-else
+          :class="`action-dock__button--${key}`"
+          :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
+          :to="action.to && action.to()"
+          @click="action.perform && action.perform()")
+          template(v-slot:prepend)
+            common-icon(:name="action.icon")
 </template>
 
 <style>

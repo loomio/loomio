@@ -2,6 +2,10 @@ require 'test_helper'
 
 class PollServiceTest < ActiveSupport::TestCase
   inline_jobs "expires a lapsed poll",
+              "scheduled polls open at the selected minute",
+              "open_scheduled_polls opens scheduled polls and sends poll_announced when notify_on_open is true",
+              "open_scheduled_polls opens scheduled polls without poll_announced when notify_on_open is false",
+              "open_scheduled_polls delivers no emails to voters when notify_on_open is false",
               "open_scheduled_polls delivers emails to voters when notify_on_open is true",
               "poll opening notification owns loud recipient email over topic publication"
   setup do
@@ -64,6 +68,32 @@ class PollServiceTest < ActiveSupport::TestCase
     assert Stance.where(participant_id: member.id, poll: poll).exists?
   end
 
+  test "reinviting a voter preserves their latest vote and historical revisions" do
+    poll = create_poll
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = poll.poll_options.first.name
+    stance.reason = 'Original vote'
+    StanceService.create(stance: stance, actor: @user)
+    assert stance.reload.cast_at
+    stance.update_column(:updated_at, 20.minutes.ago)
+    current_stance = StanceService.update(stance: stance, actor: @user,
+      params: { stance_choices_attributes: [{ poll_option_id: poll.poll_options.last.id }], reason: 'Changed vote' })
+    revisions = poll.stances.where(participant_id: @user.id).order(:id)
+    original = revisions.pluck(:id, :latest, :option_scores, :cast_at)
+    revisions.update_all(revoked_at: Time.current, revoker_id: @admin.id)
+    poll.update_counts!
+    assert_not @user.can?(:vote_in, poll)
+
+    invited = PollService.create_stances(poll: poll, actor: @admin, user_ids: [@user.id])
+
+    assert_equal [current_stance.id], invited.pluck(:id)
+    assert_equal original, revisions.pluck(:id, :latest, :option_scores, :cast_at)
+    assert revisions.all? { |revision| revision.revoked_at.nil? }
+    assert @user.can?(:vote_in, poll.reload)
+    assert_equal poll.voters.count, poll.vote_count_eligible
+    assert_equal 1, poll.poll_options.last.reload.total_score.to_i
+  end
+
   test "notified invitation rolls back its stance when notification creation fails" do
     poll = create_poll(specified_voters_only: true)
     member = create_unique_user("atomicpollinvite")
@@ -108,7 +138,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     reader = TopicReader.active.find_by!(topic: poll.topic, user: former_member)
     assert membership.reload.revoked_at
-    assert poll.unmasked_voters.exists?(former_member.id)
+    assert poll.voters_unmasked.exists?(former_member.id)
     assert reader.guest
     assert former_member.can?(:show, poll)
     assert former_member.can?(:vote_in, poll)
@@ -118,7 +148,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: former_member
     )
-    assert poll.unmasked_decided_voters.exists?(former_member.id)
+    assert poll.voters_cast_unmasked.exists?(former_member.id)
     assert_not former_member.can?(:show, unrelated_discussion)
     assert_not users(:alien).can?(:show, poll)
     assert_not users(:alien).can?(:vote_in, poll)
@@ -155,6 +185,36 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   # -- create --
+
+  test "creating a poll preserves an end-of-day deadline in different time zones" do
+    [ '+00:00', '+05:45', '-03:30' ].each do |offset|
+      deadline = Time.iso8601("#{3.days.from_now.to_date}T23:59:00#{offset}")
+      poll = create_poll(closing_at: deadline.iso8601)
+
+      assert_equal deadline, poll.reload.closing_at
+      travel_to(deadline - 1.second) { assert @user.can?(:vote_in, poll) }
+      travel_to(deadline) { assert_not @user.can?(:vote_in, poll) }
+    end
+  end
+
+  test "scheduled polls open at the selected minute" do
+    opening = 3.days.from_now.change(hour: 23, min: 59, sec: 0)
+    deadline = opening + 1.day
+    poll = create_poll(opening_at: opening.iso8601, closing_at: deadline.iso8601)
+
+    assert_equal opening, poll.reload.opening_at
+    assert_equal deadline, poll.closing_at
+    travel_to(opening - 1.second) do
+      PollService.open_scheduled_polls
+      assert_not poll.reload.opened?
+      assert_not @user.can?(:vote_in, poll)
+    end
+    travel_to(opening) do
+      PollService.open_scheduled_polls
+      assert poll.reload.opened?
+      assert @user.can?(:vote_in, poll)
+    end
+  end
 
   test "creates a new poll" do
     poll = nil
@@ -193,7 +253,7 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    assert poll.detached_anonymous?
+    assert poll.anonymous?
     assert poll.anonymous_poll_voters.exists?(voter: voter)
     assert_not Stance.exists?(poll: poll, participant: voter)
     assert_not Notification.about(poll).exists?(kind: "poll_created")
@@ -281,6 +341,17 @@ class PollServiceTest < ActiveSupport::TestCase
   # (poll_mailer/vote-button-.png). Mention notifications are covered in discussion_service_test.
 
   # -- update --
+
+  test "editing a poll preserves an end-of-day deadline" do
+    poll = create_poll
+    deadline = 5.days.from_now.change(hour: 23, min: 59, sec: 0)
+
+    PollService.update(poll: poll, params: { closing_at: deadline.iso8601 }, actor: @user)
+
+    assert_equal deadline, poll.reload.closing_at
+    travel_to(deadline - 1.second) { assert @user.can?(:vote_in, poll) }
+    travel_to(deadline) { assert_not @user.can?(:vote_in, poll) }
+  end
 
   test "updates an existing poll" do
     poll = create_poll
@@ -473,17 +544,92 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal topic_item.id, TopicItem.find_by!(kind: "poll_closed_by_user", itemable: poll).id
   end
 
-  test "does not allow change from anonymous to normal" do
+  test "closing reveals hidden reasons with one parent count update per batch" do
+    poll = create_poll(hide_results: :until_closed)
+    voters = users(:user, :admin, :member)
+    voters.each do |voter|
+      stance = poll.stances.latest.find_by!(participant_id: voter.id)
+      stance.choice = poll.poll_option_names.first
+      stance.reason = "Hidden response from #{voter.id}"
+      StanceService.create(stance: stance, actor: voter)
+      assert_not TopicItem.exists?(itemable: stance, kind: 'stance_created')
+    end
+    updates = []
+    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*, payload|
+      updates << payload[:sql] if payload[:sql].match?(/UPDATE "topic_items" SET "child_count" = COALESCE/)
+    end
+
+    PollService.close(poll: poll, actor: @user)
+
+    # One combined increment for all reasons, then one for the closing item.
+    assert_equal 2, updates.length
+    parent = poll.created_topic_item.reload
+    assert_equal 4, parent.child_count
+    assert_equal 3, parent.children.where(kind: 'stance_created').count
+    TopicService.verify_integrity!(poll.topic_id)
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "does not allow change from anonymous to normal after voting opens" do
     poll = create_poll(anonymous: true)
     poll.anonymous = false
     assert_not poll.save
   end
 
-  test "does not allow hiding results change after creation" do
+  test "does not allow revealing results after voting opens" do
     poll = create_poll
     poll.update!(hide_results: :until_closed)
     poll.hide_results = :off
     assert_not poll.save
+  end
+
+  test "allows changing details and result visibility before voting opens" do
+    %w[off until_vote].each do |visibility|
+      poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+      assert_not poll.opened?
+
+      PollService.update(poll: poll, actor: @user, params: {
+        title: 'Revised scheduled vote', details: '<p>Updated before opening</p>', hide_results: visibility
+      })
+
+      assert_empty poll.errors
+      poll.reload
+      assert_equal visibility, poll.hide_results
+      assert_equal 'Revised scheduled vote', poll.title
+      assert_equal '<p>Updated before opening</p>', poll.details
+      assert_not poll.opened?
+    end
+  end
+
+  test "result visibility can change in the same edit that opens a scheduled poll" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+    PollService.update(poll: poll, actor: @user, params: {hide_results: 'off', opening_at: nil})
+    assert_empty poll.errors
+    assert poll.reload.opened?
+    assert_equal 'off', poll.hide_results
+  end
+
+  test "an edit loaded before opening cannot reveal results after voting opens" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'until_closed')
+    stale = Poll.find(poll.id)
+    PollService.update(poll: poll, actor: @user, params: {opening_at: nil})
+    assert poll.reload.opened?
+
+    PollService.update(poll: stale, actor: @user, params: {hide_results: 'off'})
+    assert stale.errors.added?(:hide_results, :cannot_show_results_early)
+    assert_equal 'until_closed', poll.reload.hide_results
+  end
+
+  test "a stale result setting cannot bypass the current privacy lock" do
+    poll = create_poll(opening_at: 3.days.from_now, closing_at: 5.days.from_now, hide_results: 'off')
+    stale = Poll.find(poll.id)
+    PollService.update(poll: poll, actor: @user, params: {opening_at: nil, hide_results: 'until_closed'})
+    assert poll.reload.opened?
+
+    PollService.update(poll: stale, actor: @user, params: {hide_results: 'until_vote'})
+    assert stale.errors.added?(:hide_results, :cannot_show_results_early)
+    assert_equal 'until_closed', poll.reload.hide_results
   end
 
   test "disallows new stances after close" do
@@ -515,6 +661,53 @@ class PollServiceTest < ActiveSupport::TestCase
     original_closed_at = poll.reload.closed_at
     PollService.expire_lapsed_polls
     assert_equal original_closed_at, poll.reload.closed_at
+  end
+
+  # -- members who join after a poll starts --
+
+  test "members who join before a scheduled poll opens get a stance and a live update" do
+    poll = create_poll(closing_at: 7.days.from_now, opening_at: 3.days.from_now)
+    member = create_unique_user("latejoiner")
+    @group.add_member!(member)
+    assert_not poll.stances.latest.exists?(participant_id: member.id)
+
+    published_user_ids = []
+    publish = ->(models, user_id: nil, **) { published_user_ids << user_id if models == [ poll ] }
+    MessageChannelService.stub(:publish_models, publish) do
+      PollService.group_members_added(@group.id)
+    end
+
+    assert poll.stances.latest.exists?(participant_id: member.id)
+    assert_equal [ member.id ], published_user_ids
+  end
+
+  test "members who join a weighted poll's group vote with their membership weight" do
+    poll = PollService.create(params: poll_params(weighted_voting: true), actor: @admin)
+    member = create_unique_user("weightedjoiner")
+    @group.add_member!(member).update!(weight: 2.5)
+
+    PollService.group_members_added(@group.id)
+
+    stance = poll.stances.latest.find_by!(participant_id: member.id)
+    assert_equal 2.5, stance.weight
+    assert member.can?(:vote_in, poll.reload)
+  end
+
+  test "members who join an anonymous poll's group get a voter record and a live update" do
+    poll = create_poll(anonymous: true)
+    member = create_unique_user("anonjoiner")
+    @group.add_member!(member)
+    assert_not member.can?(:vote_in, poll.reload)
+
+    published_user_ids = []
+    publish = ->(models, user_id: nil, **) { published_user_ids << user_id if models == [ poll ] }
+    MessageChannelService.stub(:publish_models, publish) do
+      PollService.group_members_added(@group.id)
+    end
+
+    assert poll.anonymous_poll_voters.exists?(voter_id: member.id)
+    assert_equal [ member.id ], published_user_ids
+    assert member.can?(:vote_in, poll.reload)
   end
 
   # -- scheduled opening (opening_at) --
@@ -612,6 +805,52 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_not topic_item_was_yielded
   end
 
+  test "until-closed polls can be extended while active but cannot reopen after closing" do
+    poll = create_poll(hide_results: 'until_closed')
+    deadline = 7.days.from_now.beginning_of_hour
+    PollService.update(poll: poll, params: {closing_at: deadline}, actor: @user)
+    assert_equal deadline, poll.reload.closing_at
+    assert_nil poll.closed_at
+    PollService.close(poll: poll, actor: @user)
+    closed_at = poll.reload.closed_at
+
+    assert_no_difference ['TopicItem.count', 'Notification.count'] do
+      assert_raises(CanCan::AccessDenied) do
+        PollService.reopen(poll: poll, params: {closing_at: 10.days.from_now}, actor: @user)
+      end
+    end
+    assert_equal closed_at, poll.reload.closed_at
+    poll.closed_at = nil
+    assert_not poll.valid?, 'model writes must also reject reopening'
+    assert_includes poll.errors.attribute_names, :closed_at
+  end
+
+  test "reopening checks stored result settings instead of stale poll attributes" do
+    poll = create_poll
+    PollService.close(poll: poll, actor: @user)
+    stale = Poll.find(poll.id)
+    poll.update!(hide_results: 'until_closed')
+
+    assert_raises(CanCan::AccessDenied) do
+      PollService.reopen(poll: stale, params: {closing_at: 7.days.from_now}, actor: @user)
+    end
+    assert poll.reload.closed?
+  end
+
+  test "failed reopening rolls back the poll when timeline creation fails" do
+    travel_to(Time.current.change(nsec: 123_456_789), with_usec: true) do
+      poll = create_poll(hide_results: 'until_vote')
+      PollService.close(poll: poll, actor: @user)
+      closed_at = poll.reload.closed_at
+      TopicItems::PollReopened.stub(:create!, ->(**) { raise 'Timeline failed' }) do
+        assert_raises(RuntimeError) do
+          PollService.reopen(poll: poll, params: {closing_at: 7.days.from_now}, actor: @user)
+        end
+      end
+      assert_equal closed_at, poll.reload.closed_at
+    end
+  end
+
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do
@@ -698,16 +937,16 @@ class PollServiceTest < ActiveSupport::TestCase
       ),
       actor: @user
     )
-    voters_count = poll.reload.voters_count
-    undecided_voters_count = poll.undecided_voters_count
+    vote_count_eligible = poll.reload.vote_count_eligible
+    vote_count_uncast = poll.vote_count_uncast
 
     new_member = create_unique_user("newanonymousmember")
     Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
 
     assert poll.anonymous_poll_voters.exists?(voter: new_member, ballot_submitted: false)
-    assert_equal voters_count + 1, poll.reload.voters_count
-    assert_equal undecided_voters_count + 1, poll.undecided_voters_count
+    assert_equal vote_count_eligible + 1, poll.reload.vote_count_eligible
+    assert_equal vote_count_uncast + 1, poll.vote_count_uncast
   end
 
   test "does not add bot users to polls" do

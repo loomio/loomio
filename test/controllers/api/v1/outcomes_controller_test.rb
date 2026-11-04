@@ -8,7 +8,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     @non_member_user = User.create!(name: "Non Member", username: "nonmember", email: "nonmember@example.com")
     @group = groups(:group)
     @discussion = discussions(:discussion)
-    @discussion.topic.update!(allow_concurrent_polls: true)
+    @discussion.topic.update!(polls_one_at_a_time: false)
 
     # Create poll
     @poll = PollService.create(params: {
@@ -257,7 +257,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
       id: outcome.id,
       outcome: {
         statement: "This must not be saved",
-        recipient_audience: "decided_voters"
+        recipient_audience: "voters_cast"
       }
     }
 

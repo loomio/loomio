@@ -1,10 +1,8 @@
 class User < ApplicationRecord
-  include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include HasExperiences
   include HasAvatar
   include SelfReferencing
-  include CustomCounterCache::Model
   include HasRichText
   include LocalesHelper
 
@@ -23,7 +21,6 @@ class User < ApplicationRecord
   UNLOCK_IN = 6.hours
 
   has_secure_password validations: false
-  attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
   attr_accessor :group_token
@@ -38,6 +35,8 @@ class User < ApplicationRecord
   before_save :set_legal_accepted_at, if: :legal_accepted
 
   validates :email, presence: true, email: true, length: { maximum: 200 }
+  # 0-6 are weekdays (Sunday first), 7 is every day, 8 every second day, nil never.
+  validates :email_catch_up_day, inclusion: { in: 0..8 }, allow_nil: true
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
@@ -106,6 +105,7 @@ class User < ApplicationRecord
   has_many :notifications, through: :notification_deliveries
   has_many :comments, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
+  has_many :passkey_credentials, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :mobile_devices, dependent: :destroy
   has_many :mobile_push_registrations, through: :mobile_devices
@@ -126,9 +126,19 @@ class User < ApplicationRecord
   enum :volume_push_default, {quiet: 1, normal: 2, loud: 3}, prefix: :push_default
 
   scope :active, -> { where(deactivated_at: nil) }
-  scope :no_spam_complaints, -> { where(complaints_count: 0) }
-  scope :has_spam_complaints, -> { where("complaints_count > 0") }
-  scope :has_bounces, -> { where("bounces_count > 0") }
+  scope :email_deliverable, -> {
+    where(<<~SQL)
+      NOT EXISTS (
+        SELECT 1 FROM email_suppressions
+        WHERE email_suppressions.cleared_at IS NULL
+          AND email_suppressions.email_sha256 = encode(digest(lower(btrim(users.email)), 'sha256'), 'hex')
+      )
+    SQL
+  }
+
+  def email_delivery_blocked?
+    EmailSuppression.for_address(email).active.exists?
+  end
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
@@ -152,6 +162,9 @@ class User < ApplicationRecord
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
+  def has_passkey?
+    passkey_credentials.exists?
+  end
 
   def default_format
     if experiences['html-editor.uses-markdown']
@@ -170,7 +183,7 @@ class User < ApplicationRecord
   end
 
   def is_paying?
-    group_ids = self.group_ids.concat(self.groups.pluck(:parent_id).compact).uniq
+    group_ids = (self.group_ids + self.groups.pluck(:parent_id).compact).uniq
     Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
   end
 
@@ -191,7 +204,8 @@ class User < ApplicationRecord
   def browseable_group_ids
     Group.where(
       "id in (:group_ids) OR
-      (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
+      (parent_id in (:group_ids) AND
+       (is_visible_to_public = TRUE OR is_visible_to_parent_members = TRUE))",
       group_ids: self.group_ids).pluck(:id)
   end
 
@@ -203,7 +217,7 @@ class User < ApplicationRecord
   def join_default_onboarding_group
     return unless AppConfig.default_onboarding_group_id
 
-    Group.enabled.find(AppConfig.default_onboarding_group_id).add_member!(self)
+    MembershipService.add_member(group: Group.enabled.find(AppConfig.default_onboarding_group_id), user: self)
   end
 
   def became_registered_user?
@@ -211,7 +225,21 @@ class User < ApplicationRecord
   end
 
   def require_legal_accepted
-    self.require_valid_signup && ENV['TERMS_URL']
+    self.require_valid_signup && legal_acceptance_required?
+  end
+
+  # Existing accounts without a recorded acceptance can continue using Loomio
+  # until an operator explicitly enables enforcement for them. New accounts
+  # still complete the terms step before their first session.
+  def legal_acceptance_required?
+    return false if ENV['TERMS_URL'].blank? || legal_accepted_at.present?
+    return true if ENV['LOOMIO_ENFORCE_TERMS_FOR_EXISTING_USERS'].present?
+
+    current_sign_in_at.blank? && last_seen_at.blank? && sign_in_count.to_i.zero?
+  end
+
+  def incomplete?
+    name.blank? || legal_acceptance_required?
   end
 
   def self.email_status_for(email)
@@ -228,13 +256,25 @@ class User < ApplicationRecord
 
   def self.authenticate_by(attributes)
     user = find_for_database_authentication(email: attributes[:email] || attributes[:email_address])
-    return unless user&.active_for_authentication?
+    return unless user&.active?
     return if user.access_locked?
 
     user if user.valid_password?(attributes[:password])
   end
 
-  define_counter_cache(:memberships_count) {|user| user.memberships.count }
+  def update_memberships_count
+    RecordCounts.recount!(self) { { memberships_count: memberships.count } }
+  end
+
+  def self.update_membership_counts_for_ids(ids)
+    users = where(id: ids)
+    users.order(:id).with_write_lock(:id) do
+      users.update_all(memberships_count: Arel.sql(<<~SQL.squish))
+        (SELECT COUNT(*) FROM memberships
+         WHERE memberships.user_id = users.id AND memberships.revoked_at IS NULL)
+      SQL
+    end
+  end
 
   def first_name
     name.split(' ').first
@@ -266,8 +306,12 @@ class User < ApplicationRecord
     password.present? || password_confirmation.present?
   end
 
-  def active_for_authentication?
-    !deactivated_at
+  def active?
+    !deactivated?
+  end
+
+  def deactivated?
+    deactivated_at.present?
   end
 
   def access_locked?
@@ -280,7 +324,7 @@ class User < ApplicationRecord
 
   def increment_failed_attempts!
     with_lock do
-      unlock_access! unless access_locked?
+      unlock_access! if locked_at.present? && !access_locked?
       increment!(:failed_attempts)
       lock_access! if failed_attempts >= MAXIMUM_LOGIN_ATTEMPTS
     end
@@ -332,8 +376,7 @@ class User < ApplicationRecord
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
             email_verified: true,
-            bot: true,
-            avatar_kind: :gravatar)
+            bot: true)
   end
 
   def name

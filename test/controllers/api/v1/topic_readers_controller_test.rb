@@ -21,6 +21,58 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     assert_includes reader_ids, TopicReader.find_by!(topic: @discussion.topic, user: @alien).id
   end
 
+  test "index pages active readers newest first and counts matching readers" do
+    topic = @discussion.topic
+    topic.add_guest!(@alien, @admin)
+    newest = TopicReader.find_by!(topic: topic, user: @alien)
+    sign_in @admin
+
+    get :index, params: {topic_id: topic.id, active_only: 1, per: 1, from: 0}
+    first = JSON.parse(response.body)
+    assert_response :success
+    assert_equal newest.id, first.fetch('topic_readers').first.fetch('id')
+    assert_operator first.fetch('meta').fetch('total'), :>, 1
+
+    newest.update!(revoked_at: Time.current, revoker_id: @admin.id)
+    get :index, params: {topic_id: topic.id, active_only: 1, per: 1, from: 0}
+    active = JSON.parse(response.body)
+    assert_equal first.fetch('meta').fetch('total') - 1, active.fetch('meta').fetch('total')
+    assert_not_equal newest.id, active.fetch('topic_readers').first.fetch('id')
+
+    get :index, params: {topic_id: topic.id, per: 1, from: 0}
+    assert_response :success
+    assert_equal newest.id, response.parsed_body.fetch('topic_readers').first.fetch('id')
+  end
+
+  test "only topic coordinators can see other readers email addresses on group and direct topics" do
+    %i[discussion_topic direct_topic].each do |fixture|
+      {guest_normal: false, guest_admin_normal: true}.each do |role, coordinator|
+        actor = users(role)
+        sign_in actor
+        get :index, params: {topic_id: topics(fixture).id, per: 50}
+
+        assert_response :success
+        serialized = response.parsed_body.fetch('users').index_by { |user| user.fetch('id') }
+        assert_equal actor.email, serialized.fetch(actor.id).fetch('email')
+        other = serialized.fetch(users(:guest_loud).id)
+        if coordinator
+          assert_equal users(:guest_loud).email, other.fetch('email')
+        else
+          refute other.key?('email')
+          refute_includes response.body, users(:guest_loud).email
+        end
+      end
+    end
+  end
+
+  test "index does not reveal private thread members to an unrelated user" do
+    sign_in @alien
+
+    get :index, params: {topic_id: @discussion.topic_id, active_only: 1, per: 50}
+
+    assert_response :forbidden
+  end
+
   # -- make_admin --
 
   test "make_admin with permission makes user admin of topic" do
@@ -31,6 +83,8 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     post :make_admin, params: { id: reader.id }
     assert_response :success
     assert reader.reload.admin
+    assert_equal reader.id, response.parsed_body.fetch('topic_readers').first.fetch('id')
+    assert_equal true, response.parsed_body.fetch('topic_readers').first.fetch('admin')
   end
 
   test "make_admin denied for non-admin" do
@@ -54,6 +108,8 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     post :remove_admin, params: { id: reader.id }
     assert_response :success
     assert_not reader.reload.admin
+    assert_equal reader.id, response.parsed_body.fetch('topic_readers').first.fetch('id')
+    assert_equal false, response.parsed_body.fetch('topic_readers').first.fetch('admin')
   end
 
   test "remove_admin denied for non-admin" do
@@ -79,6 +135,9 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     post :revoke, params: { id: reader.id }
     assert_response :success
     assert_not_nil reader.reload.revoked_at
+    assert_equal @admin.id, reader.revoker_id
+    assert_equal reader.id, response.parsed_body.fetch('topic_readers').first.fetch('id')
+    assert_not_nil response.parsed_body.fetch('topic_readers').first.fetch('revoked_at')
   end
 
   test "revoke denied for non-admin" do

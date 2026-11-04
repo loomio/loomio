@@ -20,7 +20,7 @@ export default {
     },
 
     watch: {
-      'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
+      'poll.scoresByOption'() { this.slices = this.poll.pieSlices(); }
     },
 
     computed: {

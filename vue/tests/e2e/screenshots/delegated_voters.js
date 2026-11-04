@@ -37,7 +37,10 @@ function openProposalForm(page) {
     'The proposal covers the cafe collection schedule, washing checks, deposit guidance, and reporting responsibilities.',
     'Delegates should consult the members they represent and explain any concern in their vote reason.'
   ]));
-  page.click('.poll-common-settings__specified-voters-only .v-selection-control__wrapper');
+  // Click the input itself: longer translated text moves the radio, and a click
+  // on its wrapper can land on another element.
+  page.execute("document.querySelector('.poll-common-settings__specified-voters-only input').click()");
+  page.waitFor('.poll-common-settings__specified-voters-only.v-selection-control--dirty');
 }
 
 module.exports = {
@@ -77,7 +80,7 @@ module.exports = {
     page.click('.poll-members-form .recipients-autocomplete input[type="text"]');
     page.waitFor('.recipients-autocomplete-suggestion');
     page.pause(300);
-    page.execute("Array.from(document.querySelectorAll('.recipients-autocomplete-suggestion')).find(el => el.textContent.includes('Delegates of Oatmilk Cooperative')).classList.add('manual-delegates-option')");
+    page.execute("document.querySelector('.recipients-autocomplete-suggestion--delegates').classList.add('manual-delegates-option')");
     test.moveToElement('css selector', '.manual-delegates-option', 10, 10);
     screenshot.capture('groups/delegated_voters/poll_invite_delegates_group', {height: 650});
   },

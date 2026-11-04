@@ -9,9 +9,17 @@ module StvCountService
     # as if they were never in the race.
     #
     # The method iterates until keep values converge (change < OMEGA per iteration).
+    #
+    # Arithmetic is fixed point with nine decimal places, as in the Hill,
+    # Wichmann and Woodall reference algorithm: votes and keep values are
+    # Integers counting 0.000000001 units. Each share a candidate takes from a
+    # ballot and each new keep value is rounded up, so the ballot's remaining
+    # weight never goes negative and comparisons with the quota are exact.
 
-    PRECISION = 9
-    OMEGA = 1e-7       # convergence threshold
+    include TieExploration
+
+    SCALE = 1_000_000_000
+    OMEGA = 100        # convergence threshold, 0.0000001 votes
     MAX_ITERATIONS = 1000
 
     def initialize(ballots, seats, quota_type, poll_options)
@@ -20,21 +28,27 @@ module StvCountService
       @candidate_ids = poll_options.map(&:id)
       @candidate_names = poll_options.each_with_object({}) { |po, h| h[po.id] = po.name }
 
-      # Each ballot is an ordered array of poll_option_ids
-      @ballots = ballots.map { |prefs| prefs.dup }
+      # Each ballot is an ordered array of poll_option_ids. Blank ballots hold
+      # no votes. Identical ballots follow identical paths,
+      # so count them together.
+      @ballots = ballots.reject(&:empty?).tally.map { |prefs, count| [prefs.dup, count] }
     end
 
-    def count
+    # One pass of the count, choosing from `tie_choices` at each tie that
+    # earlier rounds cannot break (see TieExploration).
+    def count_pass(tie_choices)
       return empty_result if @ballots.empty?
 
+      @tie_choices = tie_choices.dup
+      @history = []
+      @unresolved_tie = nil
       @elected = []
-      @tied = []
       @eliminated_set = Set.new
       @rounds = []
       @continuing = Set.new(@candidate_ids)
 
       # Keep values: elected candidates < 1.0, eliminated = 0.0, continuing = 1.0
-      @keep = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 1.0 }
+      @keep = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = SCALE }
 
       loop do
         break if @elected.size >= @seats
@@ -42,14 +56,16 @@ module StvCountService
 
         # Iterate to find stable vote distribution
         tallies, quota, excess = iterate_to_stability
+        @history << tallies
 
         round_data = {
           round: @rounds.size + 1,
           tallies: format_tallies(tallies),
           elected: [],
           eliminated: [],
-          quota: round_to(PRECISION, quota),
-          keep_values: @keep.transform_values { |v| round_to(PRECISION, v) }.transform_keys(&:to_s)
+          quota: format_number(quota),
+          non_transferable: format_number(@exhausted),
+          keep_values: @keep.transform_values { |v| format_number(v) }.transform_keys(&:to_s)
         }
 
         # If remaining candidates <= remaining seats, elect them all
@@ -63,8 +79,8 @@ module StvCountService
           break
         end
 
-        # Elect any candidate at or above quota
-        newly_elected = tallies.select { |cid, votes| @continuing.include?(cid) && votes >= quota }
+        # Elect any candidate reaching the quota
+        newly_elected = tallies.select { |cid, votes| @continuing.include?(cid) && reached_quota?(votes, quota) }
                                .sort_by { |_cid, votes| -votes }
 
         if newly_elected.any?
@@ -73,26 +89,28 @@ module StvCountService
             elect_candidate(cid, round_data)
             @continuing.delete(cid)
             # Update keep value: candidate keeps only quota-worth
-            @keep[cid] = @keep[cid] * quota / votes if votes > 0
+            @keep[cid] = ceil_div(@keep[cid] * quota, votes) if votes > 0
           end
         else
           # Eliminate candidate with fewest votes
-          continuing_tallies = tallies.select { |cid, _| @continuing.include?(cid) }
-          min_votes = continuing_tallies.values.min
-          tied_cids = continuing_tallies.select { |_cid, v| v == min_votes }.keys
+          min_votes = @continuing.map { |cid| tallies[cid] }.min
+          tied_cids = @continuing.select { |cid| tallies[cid] == min_votes }.sort
 
-          if tied_cids.size > 1 && @continuing.size - 1 <= (@seats - @elected.size)
-            # Tie affects the outcome: record tie and stop counting
-            @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
-            round_data[:tied] = @continuing.to_a
-            @rounds << round_data
-            break
+          # Excluding candidates with no votes moves no votes, so when none of
+          # them can be elected the order they go in cannot matter.
+          if min_votes.zero? && @continuing.size - tied_cids.size >= @seats - @elected.size
+            eliminated_cid = tied_cids.min
+          else
+            eliminated_cid = break_tie(tied_cids, :min, round_data)
+            unless eliminated_cid
+              @rounds << round_data
+              break
+            end
           end
 
-          eliminated_cid = tied_cids.min
           @eliminated_set.add(eliminated_cid)
           @continuing.delete(eliminated_cid)
-          @keep[eliminated_cid] = 0.0
+          @keep[eliminated_cid] = 0
           round_data[:eliminated] << eliminated_cid
         end
 
@@ -108,9 +126,10 @@ module StvCountService
         method: 'meek',
         quota_type: @quota_type,
         elected: @elected,
-        tied: @tied,
-        rounds: @rounds
-      }
+        tied: [],
+        rounds: @rounds,
+        unresolved_tie: @unresolved_tie
+      }.compact
     end
 
     private
@@ -147,7 +166,7 @@ module StvCountService
           next unless @elected.any? { |e| e[:poll_option_id] == cid }
           next if votes == 0
 
-          new_keep = @keep[cid] * quota / votes
+          new_keep = ceil_div(@keep[cid] * quota, votes)
           if (new_keep - @keep[cid]).abs > OMEGA
             changed = true
           end
@@ -161,42 +180,58 @@ module StvCountService
     end
 
     def distribute_votes
-      tallies = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 0.0 }
-      @exhausted = 0.0
+      tallies = @candidate_ids.each_with_object({}) { |cid, h| h[cid] = 0 }
+      @exhausted = 0
 
-      @ballots.each do |prefs|
-        weight = 1.0
+      @ballots.each do |prefs, count|
+        weight = SCALE
 
         prefs.each do |cid|
           keep = @keep[cid]
-          next if keep == 0.0  # eliminated, skip
+          next if keep == 0  # eliminated, skip
 
-          tallies[cid] += weight * keep
-          weight *= (1.0 - keep)
-          break if weight < OMEGA
+          share = [ceil_div(weight * keep, SCALE), weight].min
+          tallies[cid] += share * count
+          weight -= share
+          break if weight == 0
         end
 
-        @exhausted += weight  # whatever didn't go to any candidate
+        @exhausted += weight * count  # whatever didn't go to any candidate
       end
 
       tallies
     end
 
+    # Meek recomputes the quota from the votes still held by candidates on
+    # each iteration, without rounding: the Droop quota is exactly
+    # active / (seats + 1) and the Hare quota active / seats.
     def compute_quota(total_active)
-      # In Meek, quota is recomputed from active votes each iteration
-      # total_active = sum of all votes held by candidates (not exhausted)
-      # We use the same formula but based on active vote total
-      QuotaCalculator.calculate(total_active, @seats, @quota_type)
+      case @quota_type.to_s
+      when 'hare' then Rational(total_active, @seats)
+      else Rational(total_active, @seats + 1)
+      end
+    end
+
+    # The exact Droop quota can be held by seats + 1 candidates at once, so a
+    # candidate must exceed it. The Hare quota can only be held by `seats`
+    # candidates, so reaching it is enough.
+    def reached_quota?(votes, quota)
+      @quota_type.to_s == 'hare' ? votes >= quota : votes > quota
+    end
+
+    def ceil_div(numerator, denominator)
+      -(-numerator).div(denominator)
     end
 
     def format_tallies(hash)
       hash.select { |cid, _| @continuing.include?(cid) || @elected.any? { |e| e[:poll_option_id] == cid } }
           .transform_keys(&:to_s)
-          .transform_values { |v| round_to(PRECISION, v) }
+          .transform_values { |v| format_number(v) }
     end
 
-    def round_to(precision, value)
-      value.round(precision)
+    # Stored results are JSON, so convert fixed-point units to numbers there.
+    def format_number(units)
+      (units % SCALE).zero? ? (units / SCALE).to_i : (units.to_f / SCALE).round(9)
     end
   end
 end

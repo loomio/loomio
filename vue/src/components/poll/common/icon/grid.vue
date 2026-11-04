@@ -15,7 +15,7 @@ export default {
       query: store => {
         const max = 10;
         this.results = slice(this.poll.results, 0, max);
-        this.voterIds = slice(this.poll.decidedVoterIds(), 0, max);
+        this.voterIds = slice(this.poll.votersCastIds(), 0, max);
       }
     });
   },
@@ -46,7 +46,7 @@ div.poll-common-icon-grid.d-flex.align-center.justify-center
   table(v-if="voterIds.length")
     tr(v-for="option in results" :key="option.id")
       td( v-for="id in voterIds" :key="id")
-        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voter_scores[id])")
+        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.scores_by_voter[id])")
           | &nbsp;
   table(v-if="voterIds.length == 0")
     tr(v-for="option in results" :key="option.id")

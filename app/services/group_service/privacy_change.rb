@@ -12,9 +12,14 @@ class GroupService::PrivacyChange
         if group.is_hidden_from_public?
           make_discussions_private_in(group)
           make_discussions_private_in(group.subgroups)
-          group.subgroups.each do |subgroup|
-            subgroup.group_privacy = 'closed'
+          # Hiding the parent restricts public subgroups, while preserving the
+          # separate access boundaries of Secret and already parent-visible ones.
+          group.subgroups.where(is_visible_to_public: true).each do |subgroup|
+            subgroup.group_privacy = 'parent_members'
+            # Apply the same boundary throughout nested subgroup trees.
+            privacy_change = self.class.new(subgroup)
             subgroup.save!
+            privacy_change.commit!
           end
         end
       when 'discussion_privacy_options'

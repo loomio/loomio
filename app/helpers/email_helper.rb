@@ -51,7 +51,7 @@ module EmailHelper
 
     if recipient
       if model.is_a?(Poll) or model.is_a?(Outcome)
-        if stance = model.poll.stances.latest.find_by(participant: recipient)
+        if stance = model.poll.stances.redeemable.find_by(participant: recipient)
           args.merge!(stance_token: stance.token)
         end
       end
@@ -64,10 +64,6 @@ module EmailHelper
     end
 
     polymorphic_url(model, args)
-  end
-
-  def preferences_url(recipient:)
-    email_preferences_url(unsubscribe_token: recipient.unsubscribe_token)
   end
 
   def unsubscribe_url(itemable, recipient:)

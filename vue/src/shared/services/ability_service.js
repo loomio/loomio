@@ -4,8 +4,6 @@ import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import {intersection} from 'lodash-es';
 
-let user = () => Session.user();
-
 export default new class AbilityService {
   isNotEmailVerified() {
     return Session.isSignedIn() && !Session.user().emailVerified;
@@ -31,6 +29,14 @@ export default new class AbilityService {
 
   canAddReaction(topic) {
     return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
+  }
+
+  canAttachFiles(model) {
+    const kind = model.constructor.singular;
+    if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }
+    if (['discussion', 'poll'].includes(kind) && !model.topicId) { return true; }
+    const topic = kind === 'outcome' ? model.poll().topic() : model.topic();
+    return !topic.attachmentsAdminOnly || topic.adminsInclude(Session.user());
   }
 
   canRespondToComment(comment) {
@@ -81,12 +87,31 @@ export default new class AbilityService {
   }
 
   canEditTags(topic) {
-    return topic.group().isEnabled() && this.canEdit(topic.topicable());
+    const user = Session.user();
+    return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
+      topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
+        topic.group().membersCanEditDiscussions);
+  }
+
+  canTagTopicItem(item) {
+    if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
+    const topic = item.topic();
+    const user = Session.user();
+    if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
+    return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
+      topic.group().membersCanEditDiscussions);
   }
 
   canAdminTags(topic) {
     const group = topic.group();
     return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
+  }
+
+  canCreateTags(group) {
+    const user = Session.user();
+    return group.parentOrSelf().adminsInclude(user) ||
+      group.adminsInclude(user) ||
+      !!(group.membersCanCreateTags && group.membersInclude(user));
   }
 
   canPinEvent(topic_item) {
@@ -173,7 +198,7 @@ export default new class AbilityService {
   }
 
   canAnnouncePoll(poll) {
-    user = Session.user();
+    const user = Session.user();
     if (poll.discardedAt) { return false; }
     if (poll.groupId) {
       return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
@@ -303,7 +328,9 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return !group.isDiscarded() && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
+    return !group.isDiscarded() && (group.isVisibleToPublic ||
+      group.membersInclude(Session.user()) ||
+      (group.isVisibleToParentMembers && group.parent().membersInclude(Session.user())));
   }
 
   canViewPrivateContent(group) {
@@ -339,16 +366,10 @@ export default new class AbilityService {
 
   canStartPoll(topic) {
     if (topic.topicableType === 'Poll') { return false; }
-    if (topic.activePollsCount > 0 && !topic.allowConcurrentPolls) { return false; }
+    if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
            (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
     )
-  }
-
-  canParticipateInPoll(poll) {
-    if (!poll) { return false; }
-    if (poll.closedAt) { return false; }
-    return poll.group().isEnabled() && (poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user())));
   }
 
   canEditPoll(poll) {
@@ -365,6 +386,11 @@ export default new class AbilityService {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
   }
 
+  // Matches the server's view_anonymous_voters: everyone who can see the results.
+  canViewAnonymousVoters(poll) {
+    return poll.anonymous && poll.showResults();
+  }
+
   canSetPollOutcome(poll) {
     return poll.group().isEnabled() && !poll.topic().closedAt &&
     !poll.discardedAt &&
@@ -377,6 +403,6 @@ export default new class AbilityService {
   }
 
   canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

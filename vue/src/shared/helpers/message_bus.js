@@ -16,6 +16,16 @@ export var initLiveUpdate = function() {
         if (data.records) {
           Records.importJSON(data.records);
         }
+        if (data.membership_access) {
+          const {group_ids: groupIds, revoked} = data.membership_access;
+          if (revoked) {
+            Records.memberships.revokeGroupAccess(groupIds);
+          } else {
+            Records.memberships.restoreGroupAccess(groupIds).catch(error => {
+              console.warn('Could not refresh restored group access:', error);
+            });
+          }
+        }
       }
     });
 

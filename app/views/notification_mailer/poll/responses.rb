@@ -2,16 +2,17 @@
 
 class Views::NotificationMailer::Poll::Responses < Views::ApplicationMailer::Component
 
-  def initialize(topic_item:, recipient:)
+  def initialize(topic_item:, recipient:, for_export: false)
     @topic_item = topic_item
     @recipient = recipient
+    @for_export = for_export
   end
 
   def view_template
     poll = @topic_item.itemable.poll
     my_stance = @recipient && ::Stance.latest.find_by(poll_id: poll.id, participant_id: @recipient.id)
 
-    if poll.results_visible?(voted: my_stance&.cast_at.present?)
+    if poll.results_visible?(voted: @for_export || my_stance&.cast_at.present?)
       div do
         if poll.anonymous?
           p { plain t(:"poll_common_action_panel.anonymous") }

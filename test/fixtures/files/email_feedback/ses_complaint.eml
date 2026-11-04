@@ -1,0 +1,53 @@
+Date: Thu, 01 Jan 2026 12:00:00 +0000
+From: complaints@email-abuse.amazonses.com
+To: notifications@loomio.test
+Message-ID: <ses_complaint-feedback@email.amazonses.com>
+Subject: Complaint notification
+MIME-Version: 1.0
+Content-Type: multipart/report;
+ boundary="fixture-ses_complaint-boundary";
+ report-type=feedback-report
+Content-Transfer-Encoding: 7bit
+Authentication-Results: mx.loomio.test; iprev=pass; spf=pass (loomio.com:
+ domain of mailer-daemon@amazonses.com designates 192.0.2.10 as permitted
+ sender) smtp.mailfrom=mailer-daemon@amazonses.com
+ smtp.helo=a14-90.smtp-out.amazonses.com; dkim=pass header.i=@amazonses.com
+ header.s=224i4yxa5dv7c2xz3womw6peuasteono header.a=rsa-sha256
+ header.b=redacted; dmarc=pass (p=QUARANTINE arc=none)
+ header.from=amazonses.com header.d=email-abuse.amazonses.com; bimi=none
+
+
+--fixture-ses_complaint-boundary
+Content-Type: text/plain;
+ charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Anonymized email feedback report
+--fixture-ses_complaint-boundary
+Content-Type: message/feedback-report
+Content-Transfer-Encoding: 7bit
+
+Feedback-Type: abuse
+User-Agent: Simple Email Service - SES
+Version: 0.1
+Received-Date: Thu, 01 Jan 2026 12:00:00 +0000
+Original-Mail-From: notifications@loomio.test
+Original-Rcpt-To: recipient@example.test
+Source-IP: 192.0.2.10
+
+--fixture-ses_complaint-boundary
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 7bit
+
+Date: Thu, 01 Jan 2026 12:00:00 +0000
+From: notifications@loomio.test
+To: recipient@example.test
+Message-ID: <ses_complaint-original@email.amazonses.com>
+Subject: Example group invitation
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Original message content removed
+--fixture-ses_complaint-boundary--

@@ -117,20 +117,20 @@ module Views::Chatbot::Markdown::Concerns
     md "**#{t('poll_common_action_panel.for_this_poll_type_to_be_valid', poll_type: t("poll_types.#{poll.poll_type}"))}**\n"
 
     if poll.quorum_pct
-      met = poll.quorum_votes_required <= 0
-      md "- #{met ? '✓' : '✗'} #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: poll.quorum_pct)}\n"
+      met = poll.quorum_reached?
+      md "- #{met ? '✓' : '✗'} #{t(poll.quorum_requirement_key, pct: poll.quorum_pct)}\n"
     end
 
     poll.results.select { |r| r['test_operator'] }.each do |option|
       met = option['test_result']
-      md "- #{met ? '✓' : '✗'} #{t("poll_option_form.name_#{option['test_operator']}_#{option['test_against']}", percent: option['test_percent'], name: option['name'])}\n"
+      md "- #{met ? '✓' : '✗'} #{t(option['test_requirement_key'], percent: option['test_percent'], name: option['name'])}\n"
     end
   end
 
   def render_results(poll)
     return if poll.scheduled?
 
-    if (poll.decided_voters_count > 0) || poll.closed_at
+    if (poll.vote_count_cast > 0) || poll.closed_at
       if poll.results_visible?
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"
         md "\n"
@@ -148,7 +148,7 @@ module Views::Chatbot::Markdown::Concerns
         md "**#{t('poll_common_action_panel.results_hidden_until_closed')}**\n"
       end
 
-      render_undecided(poll)
+      render_uncast(poll)
     end
   end
 
@@ -170,12 +170,12 @@ module Views::Chatbot::Markdown::Concerns
 
     table = Terminal::Table.new do |tbl|
       tbl.style = { border: :unicode }
-      tbl.headings = [poll.time_zone, votes_label, *poll.decided_voters.map(&:avatar_initials)]
+      tbl.headings = [poll.time_zone, votes_label, *poll.voters_cast.map(&:avatar_initials)]
       poll.poll_options.each do |poll_option|
         tbl << [
           option_name(poll_option.name, poll.poll_option_name_format, @recipient.time_zone, @recipient.date_time_pref),
           ((poll_option.total_score.to_f) / 2).to_s.gsub('.0', ''),
-          *poll.decided_voters.map { |user| blocks[poll_option.voter_scores.fetch(user.id.to_s, 0)] }
+          *poll.voters_cast.map { |user| blocks[poll_option.scores_by_voter.fetch(user.id.to_s, 0)] }
         ]
       end
     end
@@ -314,20 +314,20 @@ module Views::Chatbot::Markdown::Concerns
     value == value.to_i ? value.to_i.to_s : value.round(2).to_s
   end
 
-  def render_undecided(poll)
-    nom = poll.decided_voters_count
-    dnom = poll.voters_count
-    pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0
+  def render_uncast(poll)
+    nom = poll.vote_count_cast
+    dnom = poll.vote_count_eligible
+    pct = poll.participation_pct
 
-    md "#{t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)}\n"
+    md "#{t(poll.participation_key, num: nom, total: dnom, pct: pct)}\n"
 
-    if poll.active? && poll.undecided_voters.any?
-      md "**#{t('poll.waiting_for_votes_from')}**: #{poll.undecided_voters.map(&:username).join(', ')}\n"
+    if poll.active? && poll.voters_uncast.any?
+      md "**#{t('poll.waiting_for_votes_from')}**: #{poll.voters_uncast.map(&:username).join(', ')}\n"
     end
   end
 
-  def render_discussion_undecided(itemable)
-    usernames = itemable.polls.map(&:undecided_voters).flatten.uniq.map(&:username)
+  def render_discussion_uncast(itemable)
+    usernames = itemable.polls.map(&:voters_uncast).flatten.uniq.map(&:username)
     return unless usernames.any?
 
     md "**#{t('poll.waiting_for_votes_from')}**: #{usernames.join(', ')}\n"
@@ -361,16 +361,9 @@ module Views::Chatbot::Markdown::Concerns
   def simple_heading_for(col)
     case col
     when 'chart' then t(:"poll_common.results")
-    when 'name' then t('common.option')
-    when 'score_percent' then t('poll_ranked_choice_form.pct_of_points')
-    when 'votes_cast_percent' then t('poll_ranked_choice_form.pct_of_votes_cast')
-    when 'voter_percent' then t('poll_ranked_choice_form.pct_of_voters')
-    when 'rank' then t('poll_ranked_choice_form.rank')
-    when 'score' then t('poll_ranked_choice_form.points')
-    when 'average' then t('poll_ranked_choice_form.mean')
-    when 'stv_status' then t('poll_common.status')
-    when 'voter_count' then t('membership_card.voters')
-    when 'votes' then t('poll_common.votes')
+    when 'name', 'score_percent', 'votes_cast_percent', 'voter_percent', 'rank', 'score',
+         'unweighted_score', 'average', 'stv_status', 'vote_count', 'votes'
+      t(@poll.result_heading_key(col))
     when 'voters' then nil
     end
   end
@@ -388,7 +381,8 @@ module Views::Chatbot::Markdown::Concerns
       { value: status ? t("poll_stv_results.#{status}") : '', alignment: :right }
     when 'rank' then { value: option[:rank], alignment: :right }
     when 'score' then { value: option[:score], alignment: :right }
-    when 'voter_count', 'votes' then { value: option[:voter_count], alignment: :right }
+    when 'unweighted_score' then { value: option[:unweighted_score], alignment: :right }
+    when 'vote_count', 'votes' then { value: option[:vote_count], alignment: :right }
     when 'average' then { value: option[:average].round(1), alignment: :right }
     when 'voter_percent' then { value: option[:voter_percent].round, alignement: :right }
     when 'score_percent', 'votes_cast_percent'

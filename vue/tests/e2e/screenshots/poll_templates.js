@@ -24,8 +24,7 @@ function openAdviceForm(page) {
 function markPollOptions(page, root = '.poll-common-form') {
   page.execute(`
     const root = document.querySelector('${root}');
-    const heading = Array.from(root.querySelectorAll('.text-body-large'))
-      .find(el => el.textContent.trim() === 'Options');
+    const heading = root.querySelector('.poll-common-form__options-heading');
     heading.classList.add('manual-options-heading');
     heading.nextElementSibling.classList.add('manual-options-list');
   `);
@@ -40,10 +39,9 @@ function openTemplateForm(page, custom = false) {
   page.waitFor('.poll-template-form__submit');
 }
 
-function markTemplateField(page, label, className) {
+function markTemplateField(page, fieldClass, className) {
   page.execute(`
-    const field = Array.from(document.querySelectorAll('#poll-template-form .v-input'))
-      .find(el => el.textContent.includes(${JSON.stringify(label)}));
+    const field = document.querySelector(${JSON.stringify(`#poll-template-form .${fieldClass}`)});
     if (field) field.classList.add(${JSON.stringify(className)});
   `);
   page.waitFor(`.${className}`);
@@ -64,6 +62,30 @@ function openCustomTemplateInChooser(page) {
 
 module.exports = {
   '@tags': ['manual-screenshot'],
+
+  'save_as_template': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_consent_process');
+    page.expectText('.poll-created', 'Require two approvals for payments over $2,000');
+    page.expectText('.poll-created', 'We will review the policy after three months');
+    page.expectText('.poll-created .tags-display', 'Policy');
+    page.resizeWindow(800, 1800);
+    page.pause(500);
+    page.execute('window.scrollTo(0, 0)');
+    page.clickAndWait('.poll-created .action-menu--btn', '.v-overlay--active .action-dock__button--save_as_template');
+    page.expectText('.v-overlay--active .action-dock__button--save_as_template', 'Save as template');
+    screenshot.captureRegion(
+      'polls/poll_templates/save_as_template',
+      ['section.poll-created .topic-header', 'section.poll-created .action-dock', '.v-overlay--active .v-list'],
+      {
+        width: 800,
+        height: 1800,
+        padding: 32,
+        spotlight: {selectors: ['.poll-created .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
+    );
+  },
 
   'proposal_templates_list': (test) => {
     const page = pageHelper(test);
@@ -126,7 +148,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     page.loadPath('setup_manual_oatmilk_advice_poll');
     page.waitFor('.poll-common-vote-form');
-    page.execute("Array.from(document.querySelectorAll('.poll-common-vote-form__button')).find(el => el.textContent.includes('Agree')).querySelector('label').click()");
+    page.execute("document.querySelector('.poll-common-vote-form__button--agree label').click()");
     page.fillIn(
       '.poll-common-vote-form__reason [contenteditable=true]',
       'Confirm service response times and batch-record support before signing the supplier agreement.'
@@ -163,8 +185,21 @@ module.exports = {
   'poll_template_new': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openTemplateForm(page);
-    screenshot.captureElement('polls/poll_templates/poll_template_new', '.poll-template-form', {width: 1100, height: 2400});
+    page.loadPath('setup_manual_oatmilk_custom_poll_template?view=new');
+    page.waitFor('.poll-template-form__help');
+    page.expectElement('.poll-template-form-fields__details [contenteditable=true]');
+    page.fillIn('.poll-template-form-fields__process-name input', 'Policy change consent process');
+    page.expectValue('.poll-template-form-fields__process-subtitle input', 'Reach consent on changes to group policies');
+    page.expectText('.poll-template-form .tags-field__input', 'Policy');
+    page.expectText('.poll-template-form', 'Consent with concerns');
+    screenshot.captureRegion('polls/poll_templates/poll_template_new', ['.poll-template-form'], {
+      width: 1100,
+      height: 6400,
+      padding: 32,
+      scrollSelector: '.poll-template-form',
+      scrollBlock: 'start',
+      clearSelection: true
+    });
   },
 
   'poll_type_voting_method': (test) => {
@@ -184,9 +219,11 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Template title', 'manual-template-title');
-    markTemplateField(page, 'Template subtitle', 'manual-template-subtitle');
-    markTemplateField(page, 'Template help', 'manual-template-help');
+    page.expectElement('.poll-template-form-fields__process-introduction [contenteditable=true]');
+    page.expectText('.poll-template-form-fields__process-introduction', 'Use this process when a proposed change affects group policies');
+    markTemplateField(page, 'poll-template-form-fields__process-name', 'manual-template-title');
+    markTemplateField(page, 'poll-template-form-fields__process-subtitle', 'manual-template-subtitle');
+    markTemplateField(page, 'poll-template-form-fields__process-introduction', 'manual-template-help');
     screenshot.captureRegion(
       'polls/poll_templates/template_WAAP_intro',
       ['.manual-template-title', '.manual-template-subtitle', '.manual-template-help'],
@@ -198,8 +235,10 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Example title', 'manual-example-title');
-    markTemplateField(page, 'Details', 'manual-example-details');
+    page.expectElement('.poll-template-form-fields__details [contenteditable=true]');
+    page.expectText('.poll-template-form-fields__details', 'Proposed policy change');
+    markTemplateField(page, 'poll-template-form-fields__title-placeholder', 'manual-example-title');
+    markTemplateField(page, 'poll-template-form-fields__details', 'manual-example-details');
     screenshot.captureRegion(
       'polls/poll_templates/template_WAAP_details',
       ['.manual-example-title', '.manual-example-details'],
@@ -212,7 +251,7 @@ module.exports = {
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
     markPollOptions(page, '#poll-template-form');
-    page.clickAndWait('.manual-options-list button[title="Edit"]', '.poll-common-option-form');
+    page.clickAndWait('.manual-options-list .poll-common-form__edit-option', '.poll-common-option-form');
     captureTemplateSection(screenshot, 'poll_type_edit_option', '.poll-common-option-form', {height: 1400});
   },
 
@@ -220,7 +259,7 @@ module.exports = {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
     openTemplateForm(page, true);
-    markTemplateField(page, 'Default duration in days', 'manual-template-duration');
+    markTemplateField(page, 'poll-template-form-fields__duration', 'manual-template-duration');
     captureTemplateSection(screenshot, 'poll_type_duration', '.manual-template-duration', {height: 900});
   },
 
@@ -243,15 +282,48 @@ module.exports = {
     );
   },
 
+  'edit_default_template': (test) => {
+    const page = pageHelper(test);
+    const screenshot = manualScreenshot(test);
+    page.loadPath('setup_manual_oatmilk_custom_poll_template?view=list');
+    page.expectText('.poll-common-templates-list', 'Policy change consent process');
+    page.resizeWindow(1100, 1300);
+    page.pause(300);
+    page.execute(`document.querySelector('.poll-common-templates-list').closest('.v-card').classList.add('manual-template-list-card')`);
+    page.clickAndWait('.decision-tools-card__template--consent .action-menu--btn', '.v-overlay--active .action-dock__button--edit_default_template');
+    screenshot.captureRegion(
+      'polls/poll_templates/edit_default_template',
+      ['.poll-form-page .v-breadcrumbs a', '.manual-template-list-card', '.v-overlay--active .v-list'],
+      {
+        width: 1100,
+        height: 1300,
+        padding: 24,
+        spotlight: {selectors: ['.decision-tools-card__template--consent .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
+    );
+    page.clickAndWait('.action-dock__button--edit_default_template', '.poll-template-form');
+    page.expectValue('.poll-template-form-fields__process-name input', '');
+    page.expectText('.poll-template-form', 'Consent');
+  },
+
   'template_manage': (test) => {
     const page = pageHelper(test);
     const screenshot = manualScreenshot(test);
-    openCustomTemplateInChooser(page);
+    page.loadPath('setup_manual_oatmilk_custom_poll_template?view=list');
+    page.expectText('.poll-common-templates-list', 'Policy change consent process');
+    page.resizeWindow(1100, 1300);
+    page.pause(300);
+    page.execute(`document.querySelector('.poll-common-templates-list').closest('.v-card').classList.add('manual-template-list-card')`);
     page.clickAndWait('.decision-tools-card__poll-type .action-menu--btn', '.v-overlay--active .v-list');
     screenshot.captureRegion(
       'polls/poll_templates/template_manage',
-      ['.poll-common-templates-list', '.v-overlay--active .v-list'],
-      {width: 1100, height: 1800, padding: 16}
+      ['.poll-form-page .v-breadcrumbs a', '.manual-template-list-card', '.v-overlay--active .v-list'],
+      {
+        width: 1100,
+        height: 1300,
+        padding: 24,
+        spotlight: {selectors: ['.decision-tools-card__poll-type .action-menu--btn', '.v-overlay--active .v-list'], padding: 12, radius: 16, opacity: 0.4, outlineWidth: 0}
+      }
     );
   },
 

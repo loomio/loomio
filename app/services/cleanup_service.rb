@@ -41,7 +41,6 @@ module CleanupService
     poll_templates: %i[author_id discarded_by hider_id],
     polls: %i[author_id discarded_by],
     reactions: %i[user_id],
-    stance_receipts: %i[voter_id inviter_id],
     stances: %i[participant_id inviter_id revoker_id redactor_id],
     subscriptions: %i[owner_id],
     tasks: %i[author_id doer_id],

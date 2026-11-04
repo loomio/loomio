@@ -4,7 +4,8 @@ class UserServiceTest < ActiveSupport::TestCase
   inline_jobs "deactivates the user",
               "deactivation revokes mobile devices",
               "redacts user and removes personally identifying information",
-              "redaction removes mobile credentials"
+              "redaction removes mobile credentials",
+              "reactivation restores voting in open polls"
   setup do
     @user = users(:user)
     @group = groups(:group)
@@ -19,14 +20,11 @@ class UserServiceTest < ActiveSupport::TestCase
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @original_default_onboarding_group_id
   end
 
-  test "new users join the configured onboarding group" do
+  test "new users join the configured onboarding group when account completion supplies a name" do
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
 
-    user = UserService.create(params: {
-      name: 'Onboarding User',
-      email: 'onboarding-user@example.com',
-      legal_accepted: true
-    })
+    user = UserService.create(params: { email: 'onboarding-user@example.com' })
+    UserService.update(user: user, actor: user, params: { name: 'Onboarding User', legal_accepted: true })
 
     membership = Membership.find_by!(group: @group, user: user)
     assert membership.accepted_at
@@ -37,11 +35,8 @@ class UserServiceTest < ActiveSupport::TestCase
     invited_user = User.create!(email: 'invited-onboarding-user@example.com')
     ENV['DEFAULT_ONBOARDING_GROUP_ID'] = @group.id.to_s
 
-    user = UserService.create(params: {
-      name: 'Invited Onboarding User',
-      email: invited_user.email,
-      legal_accepted: true
-    })
+    user = UserService.create(params: { email: invited_user.email })
+    UserService.update(user: user, actor: user, params: { name: 'Invited Onboarding User', legal_accepted: true })
 
     assert_equal invited_user, user
     assert Membership.exists?(group: @group, user: user, accepted_at: ...Time.current)
@@ -58,6 +53,27 @@ class UserServiceTest < ActiveSupport::TestCase
     UserService.deactivate(user: new_user, actor: new_user)
 
     assert_not_nil new_user.reload.deactivated_at
+  end
+
+  test "reactivation restores voting in open polls" do
+    admin = users(:admin)
+    member = User.create!(name: "Returning member", email: "returning-#{SecureRandom.hex(4)}@example.com", email_verified: true)
+    @group.add_member!(member)
+    poll_params = -> { { title: "Poll #{SecureRandom.hex(4)}", poll_type: "proposal", poll_option_names: [ "Agree", "Disagree" ], closing_at: 3.days.from_now, group_id: @group.id } }
+    voted_poll = PollService.create(params: poll_params.call, actor: admin)
+    removed_poll = PollService.create(params: poll_params.call, actor: admin)
+    removed_poll.stances.latest.find_by!(participant_id: member.id).update!(revoked_at: 1.day.ago, revoker_id: admin.id)
+
+    UserService.deactivate(user: member, actor: member)
+    assert_not member.reload.can?(:vote_in, voted_poll.reload)
+    new_poll = PollService.create(params: poll_params.call, actor: admin)
+
+    UserService.reactivate(member.id)
+
+    member.reload
+    assert member.can?(:vote_in, voted_poll.reload), "stance revoked by deactivation is restored"
+    assert member.can?(:vote_in, new_poll.reload), "poll started while deactivated gives a stance"
+    assert_not member.can?(:vote_in, removed_poll.reload), "stance an admin removed stays revoked"
   end
 
   test "deactivation revokes mobile devices" do

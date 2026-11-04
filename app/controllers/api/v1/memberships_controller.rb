@@ -1,5 +1,6 @@
 class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
+  before_action :require_current_user, only: [ :notification_history ]
 
   def index
     model
@@ -45,6 +46,35 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def notification_history
+    # Batch invitation records contain other recipients. Project only this
+    # membership's deliveries and recorded feedback after coordinator checks.
+    membership = load_resource
+    current_user.ability.authorize! :notification_history, membership
+    notifications = page_collection_bounded(MembershipNotificationHistory.for(membership)).to_a
+    deliveries = NotificationDelivery.where(notification_id: notifications.map(&:id),
+      recipient_type: 'User', recipient_id: membership.user_id).includes(:events).group_by(&:notification_id)
+    actors = User.where(id: notifications.map(&:actor_id)).index_by(&:id)
+
+    rows = notifications.map do |notification|
+      email = Array(deliveries[notification.id]).find { |delivery| delivery.channel == 'email' }
+      {
+        id: notification.id,
+        kind: notification.kind,
+        created_at: notification.created_at,
+        sender_name: actors[notification.actor_id]&.name_or_username,
+        message: notification.recipient_message,
+        email_sent_at: email&.delivered_at,
+        email_status: email ? email.email_status :
+          (notification.deliveries_generated_at ? 'not_sent' : 'pending'),
+        email_events: email ? email.events.sort_by { |event| [ event.occurred_at, event.id ] }.map { |event|
+          { id: event.id, kind: event.kind, occurred_at: event.occurred_at, detail: event.detail }
+        } : []
+      }
+    end
+    render json: { history: rows, email_delivery_blocked: membership.user.email_delivery_blocked? }
+  end
+
   def make_admin
     service.make_admin(membership: load_resource, actor: current_user)
     respond_with_resource
@@ -69,9 +99,49 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     service.set_volume(
       membership: resource,
       params: params.slice(:volume_email, :volume_push, :apply_to_all),
-      actor: (restricted_user || current_user)
+      actor: current_user
     )
     respond_with_resource
+  end
+
+  def set_weights
+    service.set_weights(
+      group: Group.find(params.require(:group_id)),
+      weights_by_membership_id: params.require(:weights).to_unsafe_h,
+      actor: current_user
+    )
+    render json: {updated: true}
+  end
+
+  # Large groups page and search the weight editor on the server. Order by name
+  # with the membership id as a tiebreak so offsets stay stable.
+  def weights
+    group = Group.find(params.require(:group_id))
+    current_user.ability.authorize! :set_weight, Membership.new(group: group)
+    memberships = group.memberships.active.joins(:user)
+    memberships = memberships.merge(User.invitable_search(params[:q])) if params[:q].present?
+    total = memberships.count
+    rows = page_collection_bounded(memberships.includes(user: {uploaded_avatar_attachment: :blob})
+      .order('users.name, memberships.id')).map do |membership|
+        user = membership.user
+        {
+          id: membership.id,
+          user_id: user.id,
+          name: user.name.presence || user.email,
+          email: user.email,
+          avatar_url: user.thumb_url,
+          avatar_initials: user.avatar_initials,
+          title: membership.title,
+          delegate: membership.delegate,
+          weight: VoteWeight.format(membership.weight)
+        }
+      end
+    render json: {memberships: rows, total:}
+  end
+
+  def reset_weights
+    service.reset_weights(group: Group.find(params.require(:group_id)), weight: params.require(:weight), actor: current_user)
+    render json: {updated: true}
   end
 
   def save_experience

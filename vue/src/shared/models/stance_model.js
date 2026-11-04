@@ -29,6 +29,7 @@ export default class StanceModel extends BaseModel {
       participantId: null,
       pollId: null,
       optionScores: {},
+      weight: 1,
       castAt: null
     };
   }
@@ -118,7 +119,7 @@ export default class StanceModel extends BaseModel {
     let choices = map(this.optionScores, (score, pollOptionId) => {
       return {
         score,
-        rank: (poll.pollType === 'ranked_choice') && ((poll.minimumStanceChoices - score) + 1),
+        rank: (poll.pollType === 'ranked_choice') && ((poll.choiceCountMin - score) + 1),
         show: (score > 0) || (poll.pollType === "score"),
         pollOption: optionsById[pollOptionId]
       };
@@ -144,11 +145,11 @@ export default class StanceModel extends BaseModel {
   }
 
   scoreFor(option) {
-    return this.optionScores[option.id] || this.poll().minScore;
+    return this.optionScores[option.id] || this.poll().scoreMin;
   }
 
   save() {
-    if (!this.poll().detachedAnonymousVoting()) {
+    if (!this.poll().anonymous) {
       return super.save().then(data => {
         EventBus.$emit('stanceSaved', this.pollId);
         return data;

@@ -43,6 +43,20 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_equal template.id, json['poll_templates'][0]['id']
   end
 
+  test "built-in Question Round is absent from template discovery" do
+    sign_in @admin
+
+    get :index, params: {group_id: @group.id}
+    assert_response :success
+    refute_includes JSON.parse(response.body).fetch('poll_templates').pluck('key'), 'question'
+
+    get :browse, params: {group_id: @group.id}
+    assert_response :success
+    refute_includes JSON.parse(response.body).pluck('key'), 'question'
+
+    assert PollTemplateService.example_templates.any? { |template| template.key == 'question' }
+  end
+
   # === SHOW ===
 
   test "show returns a template in user group" do
@@ -91,6 +105,89 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute template.hidden?, "admin-created template should not be auto-hidden"
   end
 
+  test "customizing a built-in template hides the original for the group" do
+    @group.update!(hidden_poll_templates: [])
+    sign_in @admin
+
+    assert_difference 'PollTemplate.count', 1 do
+      post :create, params: { poll_template: {
+        group_id: @group.id, key: 'consent', poll_type: 'proposal',
+        process_name: 'Our consent process', process_subtitle: 'Customized process',
+        default_duration_in_days: 3
+      } }
+    end
+
+    assert_response :success
+    assert_nil PollTemplate.last.key
+    assert_equal ['consent'], @group.reload.hidden_poll_templates
+  end
+
+  test "create saves STV settings in a poll template" do
+    sign_in @admin
+
+    post :create, params: {
+      poll_template: {
+        group_id: @group.id,
+        process_name: "Board election",
+        process_subtitle: "Elect three seats",
+        poll_type: "stv",
+        default_duration_in_days: 7,
+        stv_seats: 3,
+        stv_method: "meek",
+        stv_quota: "hare"
+      }
+    }
+
+    assert_response :success
+    template = PollTemplate.last
+    assert_equal [ 3, "meek", "hare" ], [ template.stv_seats, template.stv_method, template.stv_quota ]
+
+    get :export, params: { id: template.id, group_id: @group.id }
+    exported = JSON.parse(response.body).dig("loomio_template", "template")
+    assert_equal [ 3, "meek", "hare" ], exported.values_at("stv_seats", "stv_method", "stv_quota")
+  end
+
+  # Groups save weighted voting in templates for established processes, and
+  # polls started from the template copy it.
+  test "create saves weighted voting in a poll template" do
+    sign_in @admin
+
+    post :create, params: {
+      poll_template: {
+        group_id: @group.id,
+        process_name: "Board vote",
+        process_subtitle: "Weighted by board seat",
+        poll_type: "proposal",
+        default_duration_in_days: 5,
+        weighted_voting: true
+      }
+    }
+
+    assert_response :success
+    assert PollTemplate.last.weighted_voting?
+    assert_equal true, JSON.parse(response.body).fetch('poll_templates').first.fetch('weighted_voting')
+  end
+
+  test "create rejects weighted voting with anonymous voting" do
+    sign_in @admin
+
+    assert_no_difference 'PollTemplate.count' do
+      post :create, params: {
+        poll_template: {
+          group_id: @group.id,
+          process_name: "Secret board vote",
+          process_subtitle: "Anonymous",
+          poll_type: "proposal",
+          default_duration_in_days: 5,
+          anonymous: true,
+          weighted_voting: true
+        }
+      }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test "create denies non-admin when setting disabled" do
     sign_in @user
     post :create, params: {
@@ -103,6 +200,20 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
       }
     }
     assert_response :forbidden
+  end
+
+  test "template creation permission does not extend to topic guests former members or other groups" do
+    @group.update!(members_can_create_templates: true)
+    %i[guest_normal guest_admin_normal former_member_loud alien].each do |role|
+      sign_in users(role)
+      assert_no_difference 'PollTemplate.count', role.to_s do
+        post :create, params: {poll_template: {
+          group_id: @group.id, process_name: 'Reusable proposal', process_subtitle: 'Group process',
+          poll_type: 'proposal', default_duration_in_days: 3
+        }}
+      end
+      assert_response :forbidden, role.to_s
+    end
   end
 
   # === EXPORT ===
@@ -131,6 +242,17 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     refute data["template"].key?("id")
     refute data["template"].key?("group_id")
     refute data["template"].key?("author_id")
+  end
+
+  test "export keeps weighted voting and attachment restrictions" do
+    template = create_poll_template(process_name: "Weighted", weighted_voting: true, attachments_admin_only: true)
+
+    sign_in @user
+    get :export, params: { id: template.id, group_id: @group.id }
+
+    assert_response :success
+    assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "weighted_voting")
+    assert_equal true, JSON.parse(response.body).dig("loomio_template", "template", "attachments_admin_only")
   end
 
   test "export supports built-in poll templates" do

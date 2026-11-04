@@ -1,12 +1,32 @@
 require_relative "legacy_event_record"
 
-# Repairs the legacy events timeline without loading the final TopicItem model,
-# whose table and polymorphic columns do not exist until the cutover migration.
+# Repairs the legacy events timeline using migration-only records. Current
+# application models may require tables, columns, enums, or callbacks introduced
+# after these repairs run, including the delivery-channel volume columns.
 class LegacyTopicEventRepairService
   class IntegrityError < StandardError; end
 
+  class TopicRecord < ActiveRecord::Base
+    self.table_name = "topics"
+  end
+
+  class TopicReaderRecord < ActiveRecord::Base
+    self.table_name = "topic_readers"
+  end
+
+  class DiscussionRecord < ActiveRecord::Base
+    self.table_name = "discussions"
+  end
+
+  class PollRecord < ActiveRecord::Base
+    self.table_name = "polls"
+  end
+
+  TOPICABLE_RECORDS = { "Discussion" => DiscussionRecord, "Poll" => PollRecord }.freeze
+  ROOT_EVENT_KINDS = { "Discussion" => "new_discussion", "Poll" => "poll_created" }.freeze
+
   def self.repair!(topic_id)
-    topic = Topic.find_by(id: topic_id)
+    topic = TopicRecord.find_by(id: topic_id)
     return unless topic
 
     root = root_event_for(topic) || create_root_event!(topic)
@@ -101,21 +121,20 @@ class LegacyTopicEventRepairService
   end
 
   def self.root_event_for(topic)
-    topicable = topic.topicable
     LegacyEventRecord.where(
       topic_id: topic.id,
-      eventable_type: topicable.class.polymorphic_name,
-      eventable_id: topicable.id,
-      kind: topicable.created_topic_item_kind.to_s
+      eventable_type: topic.topicable_type,
+      eventable_id: topic.topicable_id,
+      kind: root_event_kind(topic)
     ).order(:id).first
   end
   private_class_method :root_event_for
 
   def self.create_root_event!(topic)
-    topicable = topic.topicable
+    topicable = topicable_record_for(topic)
     LegacyEventRecord.create!(
-      kind: topicable.created_topic_item_kind,
-      eventable_type: topicable.class.polymorphic_name,
+      kind: root_event_kind(topic),
+      eventable_type: topic.topicable_type,
       eventable_id: topicable.id,
       user_id: topicable.author_id,
       topic_id: topic.id,
@@ -125,18 +144,30 @@ class LegacyTopicEventRepairService
   end
   private_class_method :create_root_event!
 
+  def self.topicable_record_for(topic)
+    TOPICABLE_RECORDS.fetch(topic.topicable_type).find(topic.topicable_id)
+  end
+  private_class_method :topicable_record_for
+
+  def self.root_event_kind(topic)
+    ROOT_EVENT_KINDS.fetch(topic.topicable_type) do
+      raise IntegrityError, "Legacy topic #{topic.id} has unsupported topicable type #{topic.topicable_type.inspect}"
+    end
+  end
+  private_class_method :root_event_kind
+
   def self.update_topic_sequence_info!(topic)
     items = LegacyEventRecord.where(topic_id: topic.id).order(:sequence_id)
     sequence_ids = items.pluck(:sequence_id).compact
-    ranges = RangeSet.serialize(RangeSet.reduce(RangeSet.ranges_from_list(sequence_ids)))
+    ranges = RangeSet.reduce(RangeSet.ranges_from_list(sequence_ids))
     topic.update_columns(
       items_count: sequence_ids.length,
-      ranges_string: ranges,
-      last_activity_at: items.last&.created_at || topic.topicable.created_at
+      ranges_string: RangeSet.serialize(ranges),
+      last_activity_at: items.last&.created_at || topicable_record_for(topic).created_at
     )
-    TopicReader.where(topic_id: topic.id).find_each do |reader|
+    TopicReaderRecord.where(topic_id: topic.id).find_each do |reader|
       reader.update_columns(
-        read_ranges_string: RangeSet.serialize(RangeSet.intersect_ranges(reader.read_ranges, topic.reload.ranges))
+        read_ranges_string: RangeSet.serialize(RangeSet.intersect_ranges(RangeSet.parse(reader.read_ranges_string), ranges))
       )
     end
   end

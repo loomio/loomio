@@ -31,6 +31,50 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     notifications.each { |notification| assert_includes ids, notification.id }
   end
 
+  test "index includes read locations for comment reactions" do
+    comment = comments(:public_discussion_comment)
+    reaction = Reaction.create!(reactable: comment, user: @admin, reaction: "🙂")
+    notification = create_notification(user: @user, actor: @admin, subject: reaction)
+    sign_in @user
+
+    assert_no_record_cache_fallbacks { get :index }
+
+    assert_response :success
+    serialized = JSON.parse(response.body)["notifications"].find { |record| record["id"] == notification.id }
+    assert_equal comment.created_topic_item.topic_id, serialized["topic_id"]
+    assert_equal comment.created_topic_item.sequence_id, serialized["sequence_id"]
+    assert_equal false, serialized["viewed"]
+  end
+
+  test "reaction read locations respect the group and direct topic access matrix" do
+    [:discussion_topic, :direct_topic].each do |fixture|
+      topic = topics(fixture)
+      topic.topicable.create_missing_created_topic_item! unless topic.topicable.created_topic_item
+      comment = CommentService.create(
+        comment: Comment.new(parent: topic.topicable, body: "Read location access matrix"),
+        actor: users(:guest_normal)
+      )
+      reaction = Reaction.create!(reactable: comment, user: @admin, reaction: "🙂")
+
+      {guest_normal: true, former_guest_loud: false, non_guest_loud: false}.each do |role, accessible|
+        recipient = users(role)
+        notification = create_notification(user: recipient, actor: @admin, subject: reaction)
+        sign_in recipient
+
+        get :index
+
+        assert_response :success
+        serialized = JSON.parse(response.body)["notifications"].find { |record| record["id"] == notification.id }
+        if accessible
+          assert_equal topic.id, serialized.fetch("topic_id")
+          assert_equal comment.created_topic_item.sequence_id, serialized.fetch("sequence_id")
+        else
+          assert_nil serialized, "#{role} must not receive #{fixture} reaction read locations"
+        end
+      end
+    end
+  end
+
   test "index preloads direct notification topic paths" do
     discussion = discussions(:discussion)
     poll = PollService.create(params: {
@@ -46,8 +90,10 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     end
 
     record_query_counts = Hash.new(0)
+    visibility_queries = []
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
       sql = payload[:sql].to_s
+      visibility_queries << sql if sql.include?('AS topics') || sql.include?('LEFT OUTER JOIN topics t ON t.id = polls.topic_id')
       if match = sql.match(/SELECT "(topics|groups|discussions|polls|comments)"\.\*/)
         record_query_counts[match[1]] += 1
       end
@@ -58,6 +104,44 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert record_query_counts.values.all? { |count| count <= 4 }, record_query_counts.inspect
+    assert_equal 2, visibility_queries.length, visibility_queries.join("\n")
+  ensure
+    ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+  end
+
+  test "index batches creation items for poll outcome and stance URLs" do
+    topics(:discussion_topic).update!(polls_one_at_a_time: false)
+    notifications = 3.times.flat_map do |index|
+      poll = PollService.create(params: {
+        title: "Notification URL poll #{index}",
+        poll_type: "poll",
+        topic: topics(:discussion_topic),
+        closing_at: 5.days.from_now,
+        poll_option_names: ["Agree", "Disagree"]
+      }, actor: @admin)
+      outcome = Outcome.create!(poll: poll, author: @admin, statement: "Conclusion")
+      outcome.create_missing_created_topic_item!
+      stance = poll.stances.find_by!(participant: @admin)
+      [poll, outcome, stance].map do |subject|
+        notification = create_notification(user: @user, actor: @admin, subject: subject)
+        [notification, notification.notification_url]
+      end
+    end
+    creation_queries = []
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
+      sql = payload[:sql].to_s
+      creation_queries << sql if sql.include?('FROM "topic_items"')
+    end
+    sign_in @user
+
+    get :index
+
+    assert_response :success
+    serialized = JSON.parse(response.body)["notifications"].index_by { |record| record["id"] }
+    notifications.each do |notification, expected_url|
+      assert_equal expected_url, serialized.fetch(notification.id).fetch("url")
+    end
+    assert_equal 1, creation_queries.length, creation_queries.join("\n")
   ensure
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
@@ -80,6 +164,64 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     assert_response :success
     ids = JSON.parse(response.body)['notifications'].map { |n| n['id'] }
     assert_not_includes ids, notification.id
+  end
+
+  test "index excludes discarded legacy discussions without topics" do
+    recipient = users(:guest_normal)
+    notifications = [:discussion_topic, :direct_topic].flat_map do |fixture|
+      discussion = topics(fixture).topicable
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+      records = [discussion, discussion.created_topic_item].map do |subject|
+        create_notification(user: recipient, actor: @admin, subject: subject)
+      end
+      # Reproduce the historical cleanup that retained discarded discussion rows.
+      discussion.update_columns(topic_id: nil, discarded_at: Time.current)
+      records
+    end
+    visible = create_notification(user: recipient, actor: @admin, subject: discussions(:public_discussion))
+    sign_in recipient
+
+    get :index
+
+    assert_response :success
+    ids = JSON.parse(response.body)["notifications"].pluck("id")
+    assert_includes ids, visible.id
+    notifications.each { |notification| assert_not_includes ids, notification.id }
+  end
+
+  test "discarding group and direct discussions hides their retained notifications" do
+    recipient = users(:guest_normal)
+    sign_in recipient
+
+    [:discussion_topic, :direct_topic].each do |fixture|
+      topic = topics(fixture)
+      discussion = topic.topicable
+      discussion.create_missing_created_topic_item! unless discussion.created_topic_item
+      comment = CommentService.create(
+        comment: Comment.new(parent: discussion, body: "Discard notification coverage"),
+        actor: recipient
+      )
+      notifications = [discussion, discussion.created_topic_item, comment.created_topic_item].map do |subject|
+        create_notification(user: recipient, actor: @admin, subject: subject)
+      end
+      delivery_ids = NotificationDelivery.where(notification: notifications).pluck(:id)
+
+      get :index
+      assert_response :success
+      ids = JSON.parse(response.body)["notifications"].pluck("id")
+      notifications.each { |notification| assert_includes ids, notification.id }
+
+      DiscussionService.discard(discussion: discussion, actor: discussion.author)
+
+      get :index
+      assert_response :success
+      ids = JSON.parse(response.body)["notifications"].pluck("id")
+      notifications.each { |notification| assert_not_includes ids, notification.id }
+      assert_equal topic.id, discussion.reload.topic_id
+      assert_not_nil topic.reload.discarded_at
+      assert_equal notifications.map(&:id).sort, Notification.where(id: notifications.map(&:id)).order(:id).pluck(:id)
+      assert_equal delivery_ids.sort, NotificationDelivery.where(id: delivery_ids).order(:id).pluck(:id)
+    end
   end
 
   test "index batches poll visibility checks without weakening topic access" do
@@ -128,7 +270,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     poll_visibility_queries = []
     subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |_name, _started, _finished, _id, payload|
       sql = payload[:sql].to_s
-      poll_visibility_queries << sql if sql.include?('LEFT OUTER JOIN topics t ON t.id = polls.topic_id')
+      poll_visibility_queries << sql if sql.match?(/\ASELECT (?:DISTINCT )?"polls"\."id" FROM "polls"/) && !payload[:cached]
     end
 
     sign_in @user
@@ -199,6 +341,7 @@ class Api::V1::NotificationsControllerTest < ActionController::TestCase
     post :viewed
 
     assert_response :success
+    assert_equal({ "success" => "ok" }, JSON.parse(response.body))
     assert_not_nil user_delivery.reload.viewed_at
     assert_nil admin_delivery.reload.viewed_at
   end

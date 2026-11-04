@@ -26,6 +26,14 @@ class TopicItems::NewCommentTest < ActiveSupport::TestCase
     assert_equal parent_topic_item.id, child_topic_item.parent_id
   end
 
+  test "posting to a discussion or comment marks the author's parent notifications read" do
+    [@discussion, @comment].each do |parent|
+      assert_enqueued_with(job: MarkNotificationsAsReadWorker, args: [parent.class.name, parent.id, @user.id]) do
+        CommentService.create(comment: Comment.new(parent: parent, body: "Read parent notifications"), actor: @user)
+      end
+    end
+  end
+
   test "returns an topic_item" do
     comment = Comment.new(parent: @discussion, body: "Yet another", author: @user)
     result = TopicItems::NewComment.create!(

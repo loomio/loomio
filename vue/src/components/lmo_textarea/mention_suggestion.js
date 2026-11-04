@@ -51,6 +51,7 @@ export function useMentionSuggestion(model, allowMentions = true) {
       class: 'mention'
     },
     suggestion: {
+      shouldShow: () => unref(allowMentions),
       debounce: 500,
       initialItems: itemsCached,
       items: ({ query }) => query ? loadItems(query.toLowerCase()) : loadInitialItems(),

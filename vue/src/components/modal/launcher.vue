@@ -10,7 +10,6 @@ export default
     EditCommentForm: asyncComponent(() => import('@/components/topic/edit_comment_form.vue')),
     ConfirmModal: asyncComponent(() => import('@/components/common/confirm_modal.vue')),
     InfoModal: asyncComponent(() => import('@/components/common/info_modal.vue')),
-    CopyForAiModal: asyncComponent(() => import('@/components/common/copy_for_ai_modal.vue')),
     TopicForm: asyncComponent(() => import('@/components/topic/topic_form.vue')),
     ChangeVolumeForm: asyncComponent(() => import('@/components/common/change_volume_form')),
     PollCommonModal: asyncComponent(() => import('@/components/poll/common/modal')),
@@ -21,7 +20,9 @@ export default
     EmailToGroupSettings: asyncComponent(() => import('@/components/group/email_to_group_settings')),
     MemberEmailAliasModal: asyncComponent(() => import('@/components/group/member_email_alias_modal')),
     ChangePasswordForm: asyncComponent(() => import('@/components/profile/change_password_form')),
-    SetPasswordPrompt: asyncComponent(() => import('@/components/profile/set_password_prompt')),
+    CredentialPrompt: asyncComponent(() => import('@/components/profile/credential_prompt')),
+    AccountCompletion: asyncComponent(() => import('@/components/profile/account_completion')),
+    MergeAccountsModal: asyncComponent(() => import('@/components/user/merge_accounts_modal')),
     ChatbotList: asyncComponent(() => import('@/components/chatbot/list')),
     ChatbotMatrixForm: asyncComponent(() => import('@/components/chatbot/matrix_form')),
     ChatbotWebhookForm: asyncComponent(() => import('@/components/chatbot/webhook_form')),
@@ -48,6 +49,7 @@ export default
     GroupInvitationForm: asyncComponent(() => import('@/components/group/invitation_form')),
     GroupShareableLinkForm: asyncComponent(() => import('@/components/group/shareable_link_form')),
     AnnouncementHistory: asyncComponent(() => import('@/components/common/announcement_history')),
+    MembershipNotificationHistory: asyncComponent(() => import('@/components/group/notification_history')),
     SearchModal: asyncComponent(() => import('@/components/search/modal')),
     UserNameModal: asyncComponent(() => import('@/components/group/user_name_modal')),
     RecordVideoModal: asyncComponent(() => import('@/components/lmo_textarea/record_video_modal')),
@@ -78,9 +80,7 @@ export default
 
   methods: {
     openModal(opts) {
-      if (opts.hasOwnProperty('persistent')) {
-        this.persistent = opts.persistent;
-      }
+      this.persistent = opts.persistent ?? true;
       this.scrollable = opts.scrollable || false;
       this.maxWidth = opts.maxWidth || 720;
       this.componentName = opts.component;

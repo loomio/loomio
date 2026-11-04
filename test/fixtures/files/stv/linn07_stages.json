@@ -1,0 +1,219 @@
+{
+ "source": "Glasgow City Council, 2007 local government election, ward 1 (Linn), official eSTV 2.0.16 stage report: https://web.archive.org/web/20121004213938/http://www.glasgow.gov.uk/en/YourCouncil/Elections_Voting/Election_Results/ElectionScotland2007/LGWardResults.htm?ward=1&wardname=1%20-%20Linn",
+ "seats": 4,
+ "valid_votes": 9567,
+ "quota": "1914.00000",
+ "stages": [
+  {
+   "votes": {
+    "Esme H Clark": "898.00000",
+    "Margot Clark": "1284.00000",
+    "Sadie Docherty": "1782.00000",
+    "Chris Lang": "219.00000",
+    "Harry McArthur": "165.00000",
+    "John McKenzie": "1381.00000",
+    "David Ritchie": "2043.00000",
+    "Alan Stewart": "955.00000",
+    "Chloe Helen Stewart": "296.00000",
+    "Gordon Thomson": "149.00000",
+    "Frank Young": "395.00000"
+   },
+   "non_transferable": "0.00000",
+   "elected": [
+    "David Ritchie"
+   ],
+   "excluded": [],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "905.13482",
+    "Margot Clark": "1302.94200",
+    "Sadie Docherty": "1789.19796",
+    "Chris Lang": "224.61946",
+    "Harry McArthur": "166.83106",
+    "John McKenzie": "1389.27134",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "961.44028",
+    "Chloe Helen Stewart": "310.77476",
+    "Gordon Thomson": "156.82936",
+    "Frank Young": "409.77476"
+   },
+   "non_transferable": "36.18420",
+   "elected": [],
+   "excluded": [],
+   "surplus": "David Ritchie"
+  },
+  {
+   "votes": {
+    "Esme H Clark": "906.45052",
+    "Margot Clark": "1311.32084",
+    "Sadie Docherty": "1798.70308",
+    "Chris Lang": "229.80888",
+    "Harry McArthur": "170.02048",
+    "John McKenzie": "1395.65018",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "970.56656",
+    "Chloe Helen Stewart": "328.78500",
+    "Gordon Thomson": "0.00000",
+    "Frank Young": "469.48978"
+   },
+   "non_transferable": "72.20468",
+   "elected": [],
+   "excluded": [
+    "Gordon Thomson"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "961.76622",
+    "Margot Clark": "1318.44712",
+    "Sadie Docherty": "1807.82936",
+    "Chris Lang": "239.06144",
+    "Harry McArthur": "0.00000",
+    "John McKenzie": "1417.83960",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "980.69284",
+    "Chloe Helen Stewart": "338.97442",
+    "Gordon Thomson": null,
+    "Frank Young": "478.67920"
+   },
+   "non_transferable": "109.70980",
+   "elected": [],
+   "excluded": [
+    "Harry McArthur"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "991.39762",
+    "Margot Clark": "1350.20480",
+    "Sadie Docherty": "1826.01878",
+    "Chris Lang": "0.00000",
+    "Harry McArthur": null,
+    "John McKenzie": "1433.90274",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "990.00854",
+    "Chloe Helen Stewart": "359.36350",
+    "Gordon Thomson": null,
+    "Frank Young": "498.31060"
+   },
+   "non_transferable": "203.79342",
+   "elected": [],
+   "excluded": [
+    "Chris Lang"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "1005.34472",
+    "Margot Clark": "1458.48808",
+    "Sadie Docherty": "1849.71332",
+    "Chris Lang": null,
+    "Harry McArthur": null,
+    "John McKenzie": "1459.28158",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "1001.51366",
+    "Chloe Helen Stewart": "0.00000",
+    "Gordon Thomson": null,
+    "Frank Young": "547.47784"
+   },
+   "non_transferable": "331.18080",
+   "elected": [],
+   "excluded": [
+    "Chloe Helen Stewart"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "1015.91298",
+    "Margot Clark": "1532.33962",
+    "Sadie Docherty": "1896.91298",
+    "Chris Lang": null,
+    "Harry McArthur": null,
+    "John McKenzie": "1514.35496",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "1078.47100",
+    "Chloe Helen Stewart": null,
+    "Gordon Thomson": null,
+    "Frank Young": "0.00000"
+   },
+   "non_transferable": "615.00846",
+   "elected": [],
+   "excluded": [
+    "Frank Young"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": "0.00000",
+    "Margot Clark": "1866.00174",
+    "Sadie Docherty": "1947.35496",
+    "Chris Lang": null,
+    "Harry McArthur": null,
+    "John McKenzie": "1530.60752",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "1105.84984",
+    "Chloe Helen Stewart": null,
+    "Gordon Thomson": null,
+    "Frank Young": null
+   },
+   "non_transferable": "1203.18594",
+   "elected": [
+    "Sadie Docherty"
+   ],
+   "excluded": [
+    "Esme H Clark"
+   ],
+   "surplus": null
+  },
+  {
+   "votes": {
+    "Esme H Clark": null,
+    "Margot Clark": "1868.39022",
+    "Sadie Docherty": "1914.00000",
+    "Chris Lang": null,
+    "Harry McArthur": null,
+    "John McKenzie": "1547.18432",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "1111.65708",
+    "Chloe Helen Stewart": null,
+    "Gordon Thomson": null,
+    "Frank Young": null
+   },
+   "non_transferable": "1211.76838",
+   "elected": [],
+   "excluded": [],
+   "surplus": "Sadie Docherty"
+  },
+  {
+   "votes": {
+    "Esme H Clark": null,
+    "Margot Clark": "2008.75096",
+    "Sadie Docherty": "1914.00000",
+    "Chris Lang": null,
+    "Harry McArthur": null,
+    "John McKenzie": "2174.90506",
+    "David Ritchie": "1914.00000",
+    "Alan Stewart": "0.00000",
+    "Chloe Helen Stewart": null,
+    "Gordon Thomson": null,
+    "Frank Young": null
+   },
+   "non_transferable": "1555.34398",
+   "elected": [
+    "Margot Clark",
+    "John McKenzie"
+   ],
+   "excluded": [
+    "Alan Stewart"
+   ],
+   "surplus": null
+  }
+ ]
+}

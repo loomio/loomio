@@ -139,6 +139,8 @@ ro:
     manage_subscription: Gestionați abonamentul
     amount: Cantitate
   loomio_tags:
+    show_tags_from_other_groups: Arată etichetele din alte grupuri
+    parent_group_and_subgroups_in_this_organization: Grupul părinte și subgrupurile acestei organizații
     all_tags: Toate etichetele
     tags: Etichete
     apply_tags: Aplica etichete
@@ -176,7 +178,7 @@ ro:
   poll_types:
     proposal: propunere
     count: înscriere
-    check: verificarea sensului
+    check: tatonare
     poll: sondaj
     dot_vote: vot cu puncte
     meeting: sondaj pe perioadă
@@ -184,8 +186,6 @@ ro:
     score: sondaj cu scor
     question: runda de intrebari
     stv: Alegerile STV
-  timezones:
-    local: Ora locala (%{value})
   common:
     value: "%{value}"
     admin_menu: meniul admin
@@ -248,6 +248,7 @@ ro:
       open: Deschis
       closed: Inchis
       private: Confidential
+      parent_members: Vizibil pentru grupul părinte
       secret: Secret
     selected: Selectat
     today: astăzi
@@ -340,6 +341,7 @@ ro:
       unredact: Restabili
       export_json: Exportați JSON
       import_json: Importați json
+      save_as_template: Salvează ca șablon
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -361,9 +363,16 @@ ro:
       flash: Email de verificare trimis!
       helptext_and_signout: Puteți îmbina contul de sub <strong>%{sourceEmail}</strong> cu cel al contului <strong>%{targetEmail}</strong> . Faceți clic pe Verificare și un e-mail de verificare va fi trimis la %{targetEmail} pentru a începe procesul. Veți fi deconectat, astfel încât să vă puteți conecta ca și contul țintă pentru a finaliza îmbinarea.
       flash_and_signout: E-mail de verificare trimis la %{targetEmail}. Acum sunteți deconectat, așa că vă puteți conecta ca și cont țintă pentru a finaliza îmbinarea.
+      generic_helptext: Introduceți adresa de e-mail pentru celălalt cont. Dacă acel cont există, Loomio îi va trimite un e-mail cu instrucțiuni pentru a confirma îmbinarea.
+      email_label: Adresă de e-mail a altei conturi
+      send_verification: Trimiteți e-mailul de verificare
+      generic_flash_and_signout: Dacă un cont folosește acea adresă de e-mail, ți s-a trimis un e-mail de verificare. Acum ești deconectat, astfel încât să poți continua cu celălalt cont.
+      destination_helptext: Acest cont (%{sourceEmail}) va fi îmbinat cu contul de destinație. Introduceți adresa de e-mail a contului de destinație. Dacă există, Loomio va trimite acelei adrese un e-mail pentru a confirma îmbinarea.
+      destination_email_label: Adresa de e-mail a contului de destinație
     email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
     find_out_more: Află mai multe.
     placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .
+    email_may_belong_to_another_account: Dacă această adresă aparține unui alt cont, puteți îmbina conturile
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
@@ -761,12 +770,6 @@ ro:
     revoke_admin: Revocați admin
     make_delegate: Faceți delegat
     revoke_delegate: Revocați delegatul
-  notification_models:
-    comment: comenta in
-    poll: 'sondaj:'
-    outcome: 'concluzie:'
-    stance: 'vot:'
-    discussion: 'discuţie:'
   notifications:
     header: Notificari
     no_notifications: Nu ai nici o notificare
@@ -780,8 +783,8 @@ ro:
       membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
       new_comment: "%{actor} a comentat în: %{title}"
       new_coordinator: "%{actor} te-a făcut administrator al lui %{title}"
-      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
-      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
+      outcome_announced: "%{actor} a publicat o concluzie pentru %{poll_type}: %{title}"
+      outcome_created: "%{actor} a publicat o concluzie pentru %{poll_type}: %{title}"
       outcome_updated: "%{actor} a actualizat rezultatul %{poll_type}: %{title}"
       outcome_review_due: 'Este timpul să revizuim rezultatul: %{title}'
       poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
@@ -819,8 +822,8 @@ ro:
       membership_resent: "%{actor} v-a invitat să vă alăturați unui grup"
       membership_requested: "%{actor} a solicitat să se alăture grupului dvs"
       membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
-      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}"
-      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}"
+      outcome_announced: "%{actor} a distribuit o concluzie pentru %{poll_type}"
+      outcome_created: "%{actor} a distribuit o concluzie pentru %{poll_type}"
       outcome_review_due: Este timpul să revizuim rezultatul %{poll_type}
       poll_announced_wip: "%{actor} dorește feedbackul dvs. la un %{poll_type}"
       poll_closed_by_user: "%{actor} a închis %{poll_type}"
@@ -877,7 +880,7 @@ ro:
       poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} a actualizat %{poll_type}: %{title}"
       poll_expired: "%{poll_type} s-a închis: %{title}"
-      poll_expired_author: 'Publică un rezultat: %{title}'
+      poll_expired_author: 'Publică o concluzie: %{title}'
       poll_option_added: "%{actor} a adăugat opțiuni la %{title}"
       poll_reopened: 'Votarea a fost prelungită: %{title}'
       poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
@@ -994,10 +997,10 @@ ro:
       everyone_in_the_group: Toți cei din grup
       topic: Toată lumea din fir
       voters: Toți sunt invitați la vot
-      decided_voters: Toți cei care au votat
-      undecided_voters: Alegători nehotărâți
       non_voters: Membrii grupului %{name} nu au fost încă invitați
       delegates_of_group: Delegații ai %{name}
+      everyone_who_voted: Toți cei care au votat
+      people_who_have_not_voted: Cei care nu au votat
     form:
       group_has_no_members_yet: Sunteți singurul membru al grupului dvs. Poate doriți să invitați câteva persoane în grupul dvs. înainte de a începe o discuție sau o decizie.
       invite_people_to_evaluate_loomio: Invitați câteva persoane în grupul dvs. Loomio pentru a lua o decizie împreună
@@ -1065,7 +1068,7 @@ ro:
       has_not_read_thread: Nu a văzut firul
       has_not_joined_yet: Nu s-a alăturat încă
       has_not_joined_yet_hint: Acest utilizator nu și-a acceptat invitația de a se alătura Loomio și nu va mai primi notificări până nu o va face
-      discussion_admin: Administrator discuții
+      discussion_admin: Admin subiect
       has_not_read_discussion: Nu a vizualizat discuția
     group_form:
       search_placeholder: Cauta oameni...
@@ -1079,6 +1082,8 @@ ro:
     topic_notification_history: Istoricul notificărilor firului de discuție
     notification_history: Istoricul notificărilor
   action_dock:
+    add_to_timeline: Adaugă în cronologie
+    remove_from_timeline: Elimină din cronologie
     actions_menu: Meniul Acțiuni
     more_actions: Mai multe actiuni
     react: Reacţiona
@@ -1105,10 +1110,10 @@ ro:
     reply_to_comment: Raspunde
     fork_comment: File de furcă
     translate_comment: Traducere comentariu
-    edit_outcome: Editare rezultat
-    announce_outcome: Anunțați oamenii despre acest rezultat
-    announce_outcome_active: "(Nimeni nu a fost anunțat încă despre acest rezultat)"
-    translate_outcome: Traducere rezultat
+    edit_outcome: Editează concluzia
+    announce_outcome: Anunță oamenii despre această concluzie
+    announce_outcome_active: "(Nimeni nu a fost anunțat încă despre această concluzie)"
+    translate_outcome: Tradu concluzia
     show_history: Arata istorie editari
     edited: Editat
     show_edits: Afișează editările
@@ -1157,6 +1162,9 @@ ro:
     thread_markdown_copied: Markdown-ul firului de discuție a fost copiat
     move_thread_v2: Mută firul de discuție
     more: Mai mult
+    download_markdown: Descărcați Markdown
+    markdown: Markdown
+    vote_before_export: Votează înainte de a exporta. Acest fir de discuție are un sondaj care ascunde rezultatele până când votezi.
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -1329,7 +1337,7 @@ ro:
       loud_aria_description: Volumul notificărilor pentru acest grup este setat la Tare. Veți primi un e-mail ori de câte ori există activitate.
       loud_message: Veți primi un e-mail despre toată activitatea din „%{name}”.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
-      normal_aria_description: Volumul notificarilor pentru acest grup este pozitionat la Normal. Vei primi emailuri doar pentru activitatea importanta, cum ar fi initierea unei discutii noi, ridicarea unei propuneri sau  stabilirea unui rezultat.
+      normal_aria_description: Nivelul notificărilor tale pentru acest grup este setat la Normal. Vei primi e-mailuri doar despre activități importante, cum ar fi când cineva începe un fir nou, face o propunere sau stabilește o concluzie.
       normal_message: Veți primi doar un e-mail despre evenimente importante din „%{name}”.
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       quiet_aria_description: Volumul notificărilor pentru acest grup este setat la Silențios. Nu veți primi e-mailuri despre activitatea din acest grup. Activitatea grupului va fi afișată pe tabloul de bord.
@@ -1378,7 +1386,7 @@ ro:
     change_cover_image: schimba imaginea de copertă
     change_logo: schimba sigla
     permissions_explaination: 'Există două niveluri de apartenență pe care o persoană le poate avea la un grup: administrator și membru. Administratorii pot edita setările de grup, pot face alte persoane administratori și pot efectua toate acțiunile enumerate mai jos.'
-    parent_group: Grupul de părinți
+    parent_group: Grup părinte
     new_organisation: Noua organizare
     new_group: Grup nou
     new_subgroup: Grup nou subordonat
@@ -1418,6 +1426,9 @@ ro:
     confirm_change_to_public: Daca vei continua, toate discutiile vor deveni publice pe web.
     confirm_change_to_private_discussions_only: Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.
     profile: Profil
+    subgroup_name_and_content_are_public: Oricine poate găsi acest subgrup și îi poate citi firele
+    subgroup_name_is_public_and_threads_are_private: Oricine poate găsi acest subgrup; firele sale sunt private
+    subgroup_is_visible_to_parent_members: Membrii %{parent} pot găsi acest subgrup; firele sale sunt private
     subgroup_privacy_is_open_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt publice.
     subgroup_privacy_is_closed_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt private.
     subgroup_privacy_is_closed_public_threads_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Firele pot fi publice sau private.
@@ -1425,10 +1436,9 @@ ro:
     subgroup_privacy_is_secret_description: Numai membrii invitați pot găsi acest subgrup, pot vedea cine face parte din el și pot vedea firele.
     advanced_settings: Setari avansate
     how_do_people_join: Cum se alătură oamenii?
-    membership_granted_upon_request: Oricine se poate alătura grupului.
-    membership_granted_upon_approval: Oricine poate solicita înscrierea, dar trebuie să fie aprobat.
-    membership_granted_upon_invitation: Doar cu invitație.
-    membership_granted_upon_approval_secret_parent: "<strong>La cerere,</strong> oricine din %{parent} poate cere să se alăture grupului."
+    join_without_approval: Alătură-te fără aprobare
+    request_to_join: Cere să te alături
+    invitation_only: Doar cu invitație
     permissions: Permisiuni
     thread_privacy: Confidentialitatea discutiei
     public_threads: Doar discutii publice
@@ -1436,8 +1446,8 @@ ro:
     public_or_private_threads: Permite discutii publice si private
     private_threads: Numai membrii pot vedea discuțiile
     allow_public_threads: Permite discutii publice in acest grup
-    parent_members_can_see_discussions: Membrii %{parent} pot vedea firele private
-    parent_members_can_see_discussions_help: Permiteți membrilor grupului părinte să vadă, dar să nu participe la, fire și sondaje din cadrul acestui grup
+    parent_group_members_can_see_private_threads: Membrii grupului părinte pot vedea firele private
+    parent_group_members_can_see_private_threads_help: Permite membrilor din %{parent} să vadă firele și sondajele din acest grup, fără să participe
     members_can_announce: Membrii pot notifica pe toți membrii grupului
     members_can_announce_help: Permiteți membrilor să notifice pe toți cei din grup despre o discuție sau un sondaj
     members_can_add_members: Membrii pot invita membri
@@ -1592,8 +1602,9 @@ ro:
     title_helptext:
       group: Acest titlu va apărea lângă numele lui %{name} în cadrul acestui grup. Folosiți-l pentru a le informa oamenilor rolul lor.
     title_label: titlu
-    title_placeholder: De exemplu, „coordonator” sau „facilitator”
+    title_placeholder: De exemplu, „Admin” sau „Facilitator”
     updated: Titlul de membru a fost actualizat
+    weight_label: Ponderea voturilor
   user_name_modal:
     user_name_updated: Numele de utilizator a fost actualizat
     set_user_name: Setați numele de utilizator
@@ -1649,6 +1660,7 @@ ro:
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     translate_content_automatically: Traduceți automat conținutul în limba mea
     bot_account_warning: Conturile de bot nu vor fi invitate să voteze în sondaje sau să participe la discuții.
+    translations_are_made_by_machine: Traducerile sunt automate. Dacă un cuvânt e greșit sau neclar, scrie-ne la %{email} și îl vom corecta.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractere"
     select_text_to_link: Selectați textul de conectat și încercați din nou
@@ -1656,7 +1668,6 @@ ro:
     insert_embedded_url: Încorporați videoclipul
   change_picture_form:
     title: Setați fotografia de profil
-    helptext: Poți să-ți încarci propria poză de profil sau, dacă ai un cont <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , o poți folosi.
     use_initials: Folosiți inițialele
     use_gravatar: Foloseste Gravatar
     use_uploaded: Încarcă o fotografie nouă
@@ -1718,7 +1729,7 @@ ro:
     group_notifications: Notificări de grup
     group_notifications_description: Schimbă nivelul de activitate și canalul pentru grupurile tale
     choose_email_and_push_updates: Alegeți setări separate pentru e-mail și push
-    catch_up_email: E-mail de recuperare
+    catch_up_email: E-mail de rezumat
     catch_up_email_description: Alege când vrei să primești o actualizare cu notificări nevăzute și activitate necitită
   thread_preview:
     replies_count: "%{count} răspunsuri"
@@ -1750,7 +1761,7 @@ ro:
     filtering:
       filter_threads: Filtreaza discutiile
       filter_threads_aria_label: Filtreaza discutiile
-      dropdown_heading: Filtru de bord
+      dropdown_heading: Filtrează tabloul de bord
       all_aria_label: Discutii recente in curs
       all_description: Vezi discuțiile recente
       proposals: Propuneri
@@ -1762,7 +1773,6 @@ ro:
       all: Discuții recente
     thread_preview:
       you_voted: Ai votat %{position}
-      undecided: Esti indecis
     threads_from:
       group: Discutii de la
       pinned: Fire fixate
@@ -1773,7 +1783,7 @@ ro:
       thisweek: În această săptămână
       thismonth: Luna aceasta
       older: Mai vechi de o lună
-    dashboard: Bord
+    dashboard: Tablou de bord
     recent_discussions: Discuții recente
     view_recent: Vizualizați toate discuțiile recente?
     discussion_marked_as_read: Discuție marcată ca citită
@@ -1883,6 +1893,8 @@ ro:
     comment_length_max_help: Lăsați necompletat dacă nu există limită de subiecte
     comment_length_max_description: Încurajați comentariile concise prin stabilirea unei lungimi maxime
     comment_length_max_hint: Număr maxim de caractere per comentariu. Lăsați necompletat dacă nu există limită.
+    only_admins_can_add_attachments: Doar adminii pot adăuga atașamente
+    only_one_poll_at_a_time: Un singur sondaj odată
   delete_thread_form:
     title: Sterge discutia
     body: Esti sigur ca doresti sa stergi aceasta discutie?
@@ -1940,13 +1952,13 @@ ro:
     consensus_title: Consens
     proposal_title: Propunere
     count_title: Înscrieți-vă
-    check_title: Verificarea simțului
+    check_title: Tatonare
     poll_title: Sondaj
     meeting: Întâlnire
-    score_title: Scor sondaj
-    dot_vote_title: Dot votează
+    score_title: Sondaj cu scor
+    dot_vote_title: Vot cu puncte
     meeting_title: Sondaj de timp
-    ranked_choice_title: Alegere clasată
+    ranked_choice_title: Vot preferențial
     gradients_of_agreement_title: Gradiente de acord
     majority_title: Majoritate
     stv_title: Alegeri STV
@@ -1981,6 +1993,19 @@ ro:
     vote_share_requirement: Cerința privind cota de vot
     for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească…
     for_the_poll_to_be_valid: Pentru ca %{poll_type} să fie valid, această opțiune trebuie să primească…
+    points_cast: Puncte distribuite
+    eligible_vote_weight: Ponderea voturilor eligibile
+    vote_weight_cast: Ponderea voturilor exprimate
+    name_gte_eligible_vote_weight: "%{name} are nevoie de cel puțin %{percent}% din ponderea voturilor eligibile"
+    name_lte_eligible_vote_weight: "%{name} nu trebuie să depășească %{percent}% din ponderea voturilor eligibile"
+    name_gte_vote_weight_cast: "%{name} are nevoie de cel puțin %{percent}% din ponderea voturilor exprimate"
+    name_lte_vote_weight_cast: "%{name} nu trebuie să depășească %{percent}% din ponderea voturilor exprimate"
+    total_assigned_vote_weight: Ponderea totală alocată a voturilor
+    weighted_votes_cast: Voturi ponderate exprimate
+    name_gte_assigned_vote_weight: "%{name} are nevoie de cel puțin %{percent}% din ponderea totală alocată a voturilor"
+    name_lte_assigned_vote_weight: "%{name} nu trebuie să depășească %{percent}% din ponderea totală alocată a voturilor"
+    name_gte_weighted_votes_cast: "%{name} are nevoie de cel puțin %{percent}% din voturile ponderate exprimate"
+    name_lte_weighted_votes_cast: "%{name} nu trebuie să depășească %{percent}% din voturile ponderate exprimate"
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -2091,6 +2116,16 @@ ro:
     status: Stare
     your_vote_is_requested: Votul dumneavoastră este solicitat
     browse_example_make_a_copy_hint: "<b>Faceți clic pe pictograma de copiere</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
+    view_votes: Vedeți voturile
+    weighted_votes: Voturi ponderate
+    weighted_points: Puncte ponderate
+    pct_of_weighted_votes: "% din voturile ponderate"
+    pct_of_weighted_points: "% din punctele ponderate"
+    weighted_mean: Medie ponderată
+    pct_of_eligible_vote_weight: "% din ponderea voturilor eligibile"
+    pct_of_vote_weight_cast: "% din ponderea voturilor exprimate"
+    pct_of_assigned_vote_weight: "% din ponderea alocată a voturilor"
+    reuse_voting_options_and_settings: Șabloanele permit oricui din grupul tău să refolosească opțiunile de vot, explicațiile și setările. Verifică conținutul de exemplu înainte de a salva, apoi alege șablonul când începi un sondaj nou
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2149,7 +2184,7 @@ ro:
     invitations: Invitații
     requests: Cereri
     admin: Admin
-    guest: Oaspete
+    guest: Invitat
     sharable_link: Link care poate fi partajat
     last_seen: Văzut ultima dată %{date}
     invited_by_name: Invitat de %{name}
@@ -2159,6 +2194,8 @@ ro:
     delegate: Delega
     delegate_popover: Un delegat este un membru al grupului cu drept de vot
     delegates: Delegații
+    edit_vote_weights: Editați ponderile voturilor
+    vote_weights_are_defaults: Aceste ponderi implicite ale voturilor se aplică voturilor noi. Modificările de aici nu afectează ponderile voturilor deja emise.
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile
@@ -2205,10 +2242,11 @@ ro:
     legacy_vote_reasons: Motivele voturilor anterioare
     legacy_vote_reasons_description: Motivele voturilor exprimate folosind formatul de vot anonim tradițional sunt afișate ca text simplu
     anonymous_voting_participant_notice: Votarea este anonimă. Nu puteți revizui sau modifica votul după ce l-ați trimis. Rezultatele nu sunt disponibile până la închiderea votării.
+    votes_have_different_weights: Voturile din acest sondaj au ponderi diferite, așa că unele contează mai mult decât altele.
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
-    calendar_invite: Includeți o invitație în calendar cu acest rezultat
+    calendar_invite: Include o invitație în calendar cu această concluzie
     poll_option_id: Ora întâlnirii
     helptext_on: Utilizatorii vor putea adăuga această întâlnire în calendarul lor
     helptext_off: Nu va fi trimisă nicio invitație la întâlnire
@@ -2221,7 +2259,7 @@ ro:
     location_placeholder: Unde va avea loc această întâlnire?
   poll_common_close_form:
     title: Închideți %{poll_type} acum?
-    helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
+    helptext: Sigur vrei să închizi acest %{poll_type} mai devreme și să distribui o concluzie?
     close_poll_type: Închide %{poll_type}
     poll_type_closed: "%{poll_type} închis"
   poll_common_reopen_form:
@@ -2252,18 +2290,14 @@ ro:
     started_by: Început de %{name}
   poll_common_votes_panel:
     vote_removed: Votul a fost eliminat
-    undecided: Nehotărât
     newest_first: Cel mai nou primul
     oldest_first: Cei mai in varsta primii
     priority_first: Mai întâi de acord
     priority_last: Blocați mai întâi
-    undecided_first: Mai întâi nehotărât
     no_votes_yet: Nu au fost plasate încă voturi.
     change_results_order: Modificați ordinea rezultatelor
     none_of_the_above: "(Nici una dintre cele de mai sus)"
     name_or_username: Nume sau nume de utilizator
-    cast: Cast
-    uncast: Uncast
     reason_redacted: Motivul a fost redactat
     redact_reason_title: Se elimină motivul votului?
     redact_reason_helptext: Motivul pentru care textul și atașamentele vor fi ascunse, dar votul va rămâne în rezultate
@@ -2273,25 +2307,21 @@ ro:
     unredact_reason_helptext: Motivul pentru care textul și atașamentele vor fi din nou vizibile
     unredact_reason_confirm: Restaurați motivul
     unredact_reason_success: Motivul votului a fost restabilit
-  poll_common_undecided_panel:
-    show_undecided: Afișați %{count} nehotărâți
-    show_invitations: Afișați invitațiile în așteptare
-    undecided_users: Nehotărât (%{count})
-    invitation_count_singular: O persoană suplimentară a fost invitată să participe prin e-mail
-    invitation_count_plural: "%{count} persoane suplimentare au fost invitate să participe prin e-mail"
-  poll_common_undecided_user:
-    reminded: Memento trimis!
-    reminder_sent: Notificare de memento trimisă
+    all_voters: Toți alegătorii
+    vote_weight_column: Ponderea voturilor
+    stance: Vot
+    participation_records_restricted: Puteți vedea cine a participat după închiderea votului
+    vote_weight: Ponderea voturilor %{weight}
   poll_common_set_outcome_panel:
     enter_outcome: Introduceți rezultatul
-    poll_type: Acest %{poll_type} s-a închis. Fă-ți timp pentru a lua în considerare rezultatele, apoi împărtășește un rezultat, astfel încât oamenii să știe ce se va întâmpla în continuare.
-    enter_an_outcome: Introduceți un rezultat
+    poll_type: Acest %{poll_type} s-a închis. Fă-ți timp să analizezi rezultatele, apoi distribuie o concluzie ca oamenii să știe ce urmează.
+    enter_an_outcome: Introdu o concluzie
   poll_common_outcome_form:
     review_due_in_days: Revizuiți decizia după câte zile?
     review_date: Data revizuirii
     review_date_hint: Stabiliți o dată pentru a revizui decizia (opțional)
-    who_to_notify: Pe cine vrei să anunți despre acest rezultat? (optional)
-    outcome_statement_template: Șablon de declarație de rezultat
+    who_to_notify: Pe cine vrei să anunți despre această concluzie? (opțional)
+    outcome_statement_template: Șablon pentru concluzie
     new_title: Rezultatul de stat
     update_title: Actualizați rezultatul
     outcome_created: Rezultatul creat
@@ -2361,7 +2391,7 @@ ro:
     minimum_stance_choices_hint: Adică Clasează-ți primele 3 arome de înghețată
     ranked_choice_created: S-a creat alegerea clasată
     ranked_choice_updated: Alegerea clasată a fost actualizată
-    rank: Rang
+    rank: Ordonează
     points: Puncte
     average: In medie
     mean: Rău
@@ -2396,7 +2426,7 @@ ro:
     disagree: Dezacord
     objection: Obiecţie
     object: Obiect
-    block: bloc
+    block: Veto
     no_voting: Fără vot
   poll_count_form:
     pct_of_target: "% din țintă"
@@ -2415,13 +2445,17 @@ ro:
     votes_short_of_quorum: Sunt necesare încă %{num} voturi pentru a atinge cvorumul de %{pct}%
     quorum_reached: Cvorumul de %{pct}% a fost atins
     pct_participation: "%{num} din %{total} voturi exprimate (%{pct}% participare)"
+    pct_vote_weight_participation: "%{num} din %{total} voturi exprimate (%{pct}% din ponderea voturilor)"
+    pct_of_eligible_vote_weight_must_participate: Trebuie exprimat %{pct}% din ponderea voturilor eligibile
+    pct_weighted_participation: "%{num} din %{total} voturi exprimate (%{pct}% din ponderea alocată a voturilor a fost exprimată)"
+    pct_of_assigned_vote_weight_must_participate: Trebuie exprimat %{pct}% din ponderea totală alocată a voturilor
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     title: Îți elimini votul?
-    helptext: Sigur doriți să vă eliminați votul? Veți fi listat ca indecis și puteți vota din nou mai târziu, dacă doriți.
     confirm: Eliminați votul
     success: Vot sters
+    helptext_not_voted: Sigur vrei să îți elimini votul? Vei apărea la “Nu au votat” și poți vota din nou mai târziu dacă vrei.
   poll_poll_vote_form:
     stance_created: Vot creat
     stance_updated: Vot actualizat
@@ -2459,7 +2493,7 @@ ro:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis firul"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis firul"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit un rezultat"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a distribuit o concluzie"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a redeschis %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a închis %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a început un %{polltype}"
@@ -2490,9 +2524,11 @@ ro:
     sign_up_as: Creează cont ca %{email}
     sign_in_as: Conectați-vă ca %{name}
     continue_with_provider: Continuați cu %{provider}
+    sign_in_with_provider: Conectați-vă cu %{provider}
     continue_with_email: Continuați cu e-mailul
     or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
     enter_your_name: Introdu numele tau
+    invitation_required_title: Este necesară o invitație
     invitation_required: Aveți nevoie de o invitație pentru a vă crea un cont. Urmați linkul din e-mailul de invitație pentru a continua.
     more_providers: Mai mult
     email_not_present: Este necesară o adresă de e-mail
@@ -2548,6 +2584,22 @@ ro:
     invalid_login: Nu te pot conecta cu aceste detalii
     login_link_rate_limited: Prea multe adrese de e-mail de conectare solicitate din această rețea. Vă rugăm să așteptați o oră și să încercați din nou.
     send_login_link_error: Ceva nu a funcționat la trimiterea e-mailului de conectare. Vă rugăm să încercați din nou.
+    sign_in_with_passkey: Conectați-vă cu o cheie de acces
+    passkey_authentication_failed: Nu te-am putut conecta cu acea parolă.
+    passkey_registration_failed: Nu am putut salva acea cheie de acces
+    passkey_default_name: Cheie de acces
+    local_login_disabled: Acest site necesită autentificare unică
+    email_me_a_sign_in_code: Trimiteți-mi prin e-mail un cod de conectare
+    sign_in_with_code: Conectați-vă cu un cod
+    new_to_site: Nou pe aici?
+    passkey_recent_authentication_required: Conectați-vă din nou înainte de a schimba cheile de acces
+    email_code_help: Introdu adresa ta de e-mail și îți vom trimite un cod de conectare din șase cifre
+    or_sign_in_with_password: Sau conectați-vă cu o parolă
+    login_link_sent_if_account_exists: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
+    use_a_passkey: Folosește o cheie de acces
+    send_me_a_code: Trimite-mi un cod
+    email_code_help_short: Vă vom trimite un cod de șase cifre la adresa dvs. de e-mail
+    login_link_sent_if_account_exists_sentence: Dacă există un cont pentru %{email}, vă vom trimite un cod de conectare.
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune
@@ -2621,8 +2673,8 @@ ro:
       poll_expired: Un sondaj expiră
       poll_closed_by_user: Un sondaj este închis manual
       poll_reopened: Un sondaj este redeschis pentru vot
-      outcome_created: Un rezultat este împărtășit
-      outcome_updated: Un rezultat este actualizat
+      outcome_created: O concluzie este distribuită
+      outcome_updated: O concluzie este actualizată
       outcome_review_due: Urmează o analiză a rezultatului
       new_discussion: Se începe o discuție
       discussion_edited: O discuție este editată
@@ -2729,7 +2781,10 @@ ro:
         submit: Vedeți șabloanele de propuneri
       share_an_outcome:
         title: Distribuiți rezultatul unei propuneri
-        helptext: "<p>Pentru a facilita luarea deciziilor, propunerile au un termen limită pentru votare. Când termenul limită este atins, votarea se va închide și veți fi notificat(ă) să împărtășiți rezultatul propunerii.</p><p> Rezultatul este o oportunitate de a spune dacă propunerea a avut succes și ce se va întâmpla în continuare.</p><p> Dacă termenul limită pentru propunerea dvs. nu a expirat încă, dar doriți să continuați oricum, puteți face clic <b>pe Închidere mai devreme</b> .</p><p> Când este momentul potrivit, <b>introduceți un rezultat</b> pentru propunerea dvs.</p>"
+        helptext: |
+          <p>Când se ajunge la data limită a propunerii, votarea se închide și ți se va cere să distribui o concluzie.</p>
+          <p>În concluzie explici ce ai decis (sau ce urmează) după ce ai analizat voturile și comentariile.</p>
+          <p>Dacă data limită nu a trecut, dar ești gata să mergi mai departe, poți alege <b>Închide mai devreme</b>.</p>
         submit: Vizualizați propunerea
         cancel: Fă asta mai târziu
       start_a_discussion:
@@ -2760,8 +2815,8 @@ ro:
       voting_title: Cu 24 de ore înainte de închiderea votării, trimiteți o reamintire către
       nobody: Nimeni
       author: Autor (eu)
-      undecided_voters: Alegătorii nehotărâți
       voters: Toți alegătorii
+      people_who_have_not_voted: Cei care nu au votat
     notify_on_participate:
       title: Anunță-mă când participă alții
       helptext_on: Când ești selectat, vei fi notificat de fiecare dată când cineva participă.
@@ -2820,13 +2875,13 @@ ro:
       choose_hint: Alegătorii aleg cea mai bună opțiune (sau opțiuni)
       score: Scor
       score_hint: Alegătorii atribuie un scor fiecărei opțiuni
-      allocate: Aloca
+      allocate: Distribuie
       allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
-      ranked_choice: Alegere clasată
+      ranked_choice: Vot preferențial
       ranked_choice_hint: Alegătorii își ordonează opțiunile de la cea mai preferată la cea mai puțin preferată
       time_poll: Sondaj de timp
       time_poll_hint: Alegătorii indică când sunt disponibili să se întâlnească
-      rank: Rang
+      rank: Ordonează
       time: Timp
       stv: Alegeri STV
       stv_hint: Alegeți mai mulți câștigători proporțional folosind votul unic transferabil
@@ -2898,9 +2953,41 @@ ro:
     stance_reason_required_when_disagreeing: Necesar în caz de dezacord
     stance_reason_required_for_disagree_or_block: Obligatoriu pentru dezacord sau blocare
     stance_reason_required_for_block: Necesar pentru blocare
+    voters: Alegătorii
+    manage_voters: Gestionați alegătorii
+    remove_voter: Eliminați votantul
+    voter_page_count: "%{first}–%{last} din %{total}"
+    vote_weight_for: Ponderea voturilor pentru %{name}
+    save_vote_weights: Salvați ponderile voturilor
+    vote_weights_updated: Ponderile voturilor au fost actualizate
+    set_all: Setează tot
+    find_or_invite_voters: Găsiți sau invitați alegători
+    remove_voter_named: Eliminați %{name} din sondaj
+    remove_voter_and_any_vote_confirmation: Elimină-l pe %{name} din acest sondaj? Această acțiune elimină și orice vot exprimat de acesta.
+    edit_vote_weight: Editați ponderea voturilor
+    edit_vote_weight_for: Editați ponderea voturilor pentru %{name} (în prezent %{weight})
+    set_all_vote_weights_title: Setați toate ponderile voturilor
+    set_all_vote_weights_search_note: Aceasta modificare modifică ponderile voturilor tuturor alegătorilor din sondaj, inclusiv ale celor din afara rezultatelor căutării.
+    set_each_member_default_vote_weight: Setați ponderea implicită a voturilor pentru fiecare membru
+    voters_will_not_be_notified: Alegătorii nu vor fi notificați. Anunțați-i despre sondaj în alt mod.
+    give_voters_different_vote_weights: Dați alegătorilor ponderi diferite ale voturilor. Rezultatele arată atât totalul simplu, cât și totalul ponderat.
+    issued_vote_weights_will_change: Ponderile voturilor deja emise se vor schimba.
+    weight_for_all: Ponderea votului pentru toți
+    set_all_vote_weights: Setați toate ponderile voturilor
+    set_all_vote_weights_the_same: Setați toate ponderile voturilor la fel
+    member_vote_weights_hint: Votanții care nu sunt membri ai unui grup primesc o pondere de vot de 1
+    weighted_voting: Votul ponderat
+    weighted_voting_is_not_available_with_anonymous_voting: Votul ponderat nu este disponibil cu votul anonim
+    use_weighted_voting: Folosește votul ponderat
+    weighted_voting_off_warning: Dezactivarea votului ponderat setează ponderea fiecărei voturi la 1. Orice ponderi ale votului modificate pentru acest sondaj se vor pierde.
+    weighted_voting_on_group: Activarea votului ponderat copiază ponderea implicită a voturilor fiecărui membru. Ceilalți votanți primesc o pondere de 1.
+    weighted_voting_on_direct: Activarea votului ponderat setează ponderea fiecărui vot la 1
+    quorum_vote_weight_hint: Ce procent din ponderea voturilor eligibile trebuie exprimat pentru ca rezultatul să fie valid? Opțional, lasă necompletat pentru a nu cere cvorum.
+    quorum_vote_weight_placeholder: Procent din ponderea voturilor eligibile (0–100)
+    quorum_voters_placeholder: Procent din alegătorii eligibili (0–100)
+    quorum_weighted_hint: Ce procent din ponderea totală alocată a voturilor trebuie exprimat pentru ca rezultatul să fie valid? Opțional, lasă necompletat pentru a nu cere cvorum.
   poll_receipts_page:
     participation_status_requires_min_votes: Aceasta arată cine a avut drept de vot. Informația despre participarea fiecărei persoane este afișată numai după ce au votat cel puțin %{count} persoane.
-    verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
     voter_name: Numele alegătorului
     voter_email: Adresa de e-mail a alegătorului
@@ -2912,6 +2999,7 @@ ro:
     participation_records_explanation: Asta arată cine a fost eligibil și dacă a votat. Nu arată cum a votat fiecare.
     voted: A votat
     not_voted: Nu a votat
+    email_addresses_only_for_group_admins: Adresele de e-mail sunt afișate doar administratorilor grupului
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:
@@ -3005,6 +3093,12 @@ ro:
     notify_members_or_invite_guests_info: Anunță membrii grupului pe nume sau invită persoane care nu sunt membre prin adresa de e-mail. Persoanele invitate pot participa la acest fir de discuție, dar nu vor avea acces la alte fire de discuție ale grupului.
     notify_members_info: Introduceți numele membrilor grupului pentru a-i notifica despre acest fir de discuție.
     specified_voters_only_warning: Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva cu acest formular nu îi va oferi un vot, ci doar posibilitatea de a urmări discuția și de a comenta. Dacă vrei să aloci voturi, folosește "adăugați votanți" în sondaj.
+    manage_thread_members: Gestionează membrii firului de discuție
+    find_or_invite_people: Găsește sau invită persoane
+    invite_or_notify_explanation: Noi persoane vor fi invitate în firul de discuție. Persoanele deja prezente în firul de discuție vor fi notificate din nou.
+    invite_or_notify: Invitați sau notificați
+    member_page_count: "%{first}–%{last} din %{total}"
+    guest_access_info: Invitații prin e-mail pot participa la acest fir de discuție fără acces la alte fire de discuție ale grupului.
   poll_common_details_meta:
     opened: Deschis
     opens: Se deschide
@@ -3103,3 +3197,52 @@ ro:
     unfollow: Anulează urmărirea actualizărilor
     followed: Urmărești acum actualizările de la acest grup
     unfollowed: Nu mai urmăriți actualizările de la acest grup
+  passkey_settings:
+    title: Chei de acces
+    helptext: Cheile de acces vă permit să vă conectați cu dispozitivul fără a introduce adresa de e-mail sau parola
+    none: Nu ați adăugat o cheie de acces
+    name: Numele cheii de acces
+    name_placeholder: De exemplu, laptopul de serviciu
+    add: Adăugați o cheie de acces
+    added: Cheie de acces adăugată
+    created_at: Adăugat %{date}
+    remove_named: Eliminați %{name}
+    remove_confirm: Eliminați cheia de acces numită %{name}?
+    removed: Cheia de acces a fost eliminată
+    remove_failed: Cheia de acces nu a putut fi eliminată
+  credential_prompt:
+    title: Adăugați o altă modalitate de conectare
+    helptext: Adăugați o cheie de acces sau setați o parolă pentru a vă putea conecta fără a aștepta un cod trimis prin e-mail
+    add_passkey: Adăugați o cheie de acces
+    set_password: Setați o parolă
+    not_now: Nu acum
+    passkey_description: O cheie de acces vă permite să vă conectați rapid cu amprenta, fața sau blocarea ecranului dispozitivului
+    set_new_password: Setați o parolă nouă
+  account_completion:
+    complete_your_account: Completează-ți contul
+    continue: Continua
+  notification_nouns:
+    comment: comentariu
+    discussion: discuție
+    outcome: concluzie
+    stance: vot
+  membership_notification_history:
+    invitation_delivery_history: Istoricul livrării invitațiilor
+    email_delivery_blocked: Loomio a blocat trimiterea e-mailurilor către această adresă
+    delivery_result:
+      delivered: Livrat
+      failed: Eșuat
+    could_not_load_history: Nu s-a putut încărca istoricul notificărilor
+    no_invitations_recorded: Nicio invitație înregistrată
+    membership_created: Invitație
+    membership_resent: Invitație retrimisă
+    no_custom_message: Fără mesaj personalizat
+    pending: E-mail în așteptare
+    not_sent: Nicio livrare de e-mail înregistrată
+    sent: Trimis către serviciul de e-mail
+    delivered: Acceptat de serverul de e-mail al destinatarului
+    delayed: Întârziere la livrare raportată
+    rejected: E-mail respins
+    bounced: Returnare raportată
+    complained: Reclamație de spam raportată
+    skipped: E-mail netrimis

@@ -220,6 +220,10 @@ export default class GroupModel extends BaseModel {
     return this.groupPrivacy === 'closed';
   }
 
+  privacyIsParentMembers() {
+    return this.groupPrivacy === 'parent_members';
+  }
+
   privacyIsSecret() {
     return this.groupPrivacy === 'secret';
   }
@@ -242,6 +246,10 @@ export default class GroupModel extends BaseModel {
 
   exportCSV() {
     return Records.groups.remote.postMember(this.id, 'export_csv');
+  }
+
+  exportHTML() {
+    return Records.groups.remote.postMember(this.id, 'export_html');
   }
 
   uploadLogo(file) {

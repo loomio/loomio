@@ -6,8 +6,10 @@ import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import ItemTags from '@/components/tags/item_tags.vue';
 
 export default {
+  components: { ItemTags },
   mixins: [WatchRecords, UrlFor],
   props: {
     topic_item: Object,
@@ -41,7 +43,8 @@ export default {
         pollActions = omit(pollActions, "edit_stance");
       }
       const topic = this.poll.topic();
-      const eventActions = (topic && topic.topicableType === 'Discussion') ? {} : TopicItemService.actions(this.topic_item, this);
+      const allEventActions = TopicItemService.actions(this.topic_item, this);
+      const eventActions = topic.topicableType === 'Discussion' ? {edit_item_tags: allEventActions.edit_item_tags} : allEventActions;
       this.myStance = this.poll.myStance();
       this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
       this.dockActions = pickBy(pollActions, v => v.dock);
@@ -67,11 +70,13 @@ export default {
 <template lang="pug">
 section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
   topic-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
-  .d-flex.justify-space-between(v-if="!poll.isTopicable()")
+  .d-flex.flex-wrap.align-center.justify-space-between(v-if="!poll.isTopicable()")
     .poll-common-card__title.text-title-large.pb-1(tabindex="-1")
       plain-text(:model="poll" field="title")
+    item-tags.ml-auto(v-if="collapsed" :topic-item="topic_item")
   div(v-if="!collapsed")
     poll-common-details-meta(:poll="poll")
+      item-tags.ml-auto(v-if="!poll.isTopicable()" :topic-item="topic_item")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")

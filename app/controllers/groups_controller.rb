@@ -51,10 +51,9 @@ class GroupsController < ApplicationController
   end
 
   def export
-    @exporter = GroupExporter.new(load_and_authorize(:group, :export))
-    respond_to do |format|
-      format.html { render Views::Groups::Export.new(exporter: @exporter) }
-    end
+    group = load_and_authorize(:group, :export)
+    GroupExportHtmlWorker.perform_later(group.id, current_user.id)
+    redirect_to group_path(group), notice: I18n.t('group_export_started')
   end
 
   private

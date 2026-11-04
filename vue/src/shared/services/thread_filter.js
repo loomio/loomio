@@ -4,7 +4,7 @@ import { subWeeks } from 'date-fns';
 import { each, compact } from 'lodash-es';
 
 export default function(options) {
-  let chain = Records.topics.collection.chain();
+  let chain = Records.topics.collection.chain().find({discardedAt: null});
   if (options.group) { chain = chain.find({groupId: { $in: options.group.organisationIds() }}); }
   if (options.from) { chain = chain.find({lastActivityAt: { $gt: options.from }}); }
   if (options.to) { chain = chain.find({lastActivityAt: { $lt: options.to }}); }

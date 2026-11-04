@@ -10,6 +10,10 @@ module Ability::Membership
       membership.user_id == user.id || membership.group.admins.exists?(user.id)
     end
 
+    can :set_weight, ::Membership do |membership|
+      membership.group.admins.exists?(user.id)
+    end
+
     can [:make_admin], ::Membership do |membership|
       membership.group.admins.exists?(user.id) ||
       (user_is_member_of?(membership.group_id) && membership.user == user && membership.group.admin_memberships.count == 0) ||
@@ -22,6 +26,10 @@ module Ability::Membership
 
     can :resend, ::Membership do |membership|
       !membership.accepted_at? && user_is_admin_of?(membership.group_id)
+    end
+
+    can :notification_history, ::Membership do |membership|
+      user_is_admin_of?(membership.group_id) && Group.enabled.exists?(membership.group_id)
     end
 
     can [:remove_admin, :revoke, :destroy], ::Membership do |membership|

@@ -3,6 +3,8 @@ require 'test_helper'
 class LocalesHelperTest < ActiveSupport::TestCase
   include LocalesHelper
 
+  Request = Struct.new(:env, keyword_init: true)
+
   setup do
     @user = users(:user)
     @params = {}
@@ -19,7 +21,7 @@ class LocalesHelperTest < ActiveSupport::TestCase
   end
 
   def request
-    OpenStruct.new(env: @request_env)
+    Request.new(env: @request_env)
   end
 
   test "can set locale via query parameter" do

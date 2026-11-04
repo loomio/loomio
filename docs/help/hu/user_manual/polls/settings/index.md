@@ -1,0 +1,285 @@
+---
+title: Beállítások
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_file: docs/help/en/user_manual/polls/settings/index.md
+translated:
+  provider: codex/gpt-6.1-sol
+  'on': '2026-11-04'
+sections:
+  introduction: 145c23b2412eff98
+  setting-up-a-proposal-or-poll: 9e0347d976f79179
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
+  voting-options: d0ea31745ce8b651
+  edit-voting-options: ef0d61585b34fbd6
+  opening-time: f8544bec7cd35ca5
+  more-settings: fd837a51b81cbc13
+  reminder: c11a5bdd82cd3b84
+  anonymous-voting: 35f5392ee8870076
+  vote-reason: b1ebf2700ce8248b
+  hide-results: 6dc7bf0b34c89a68
+  managing-polls: b26fc41e19371d54
+  edit-poll: ddf392426410ec5a
+  notification-history: f132def867659f30
+  export-poll: 3c015ed01e8e7a6a
+  print: dbe152fdea17fc00
+  delete: fa13f1461f6b4e5f
+  save-bookmark: 45a250076a3fd7e1
+  save-as-template: f8080c0dbd5dcf56
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
+generated:
+  introduction: 3f46afe20f32f7fd
+  setting-up-a-proposal-or-poll: 156be3b6b9961477
+  proposal-and-poll-templates: 340646c47f80a80f
+  add-content: dda85c49461ebd2c
+  voting-options: 489cc319033ffdff
+  edit-voting-options: 82c565cdbfc42031
+  opening-time: d0b3d03ad7dfeaa1
+  more-settings: cb3edf4e3a9ca244
+  reminder: 8494c0e55397b4f7
+  anonymous-voting: 1079ff6e0e3ce2a7
+  vote-reason: 33520d3f5b8d0505
+  hide-results: 9b95446be939d2e2
+  managing-polls: 8810d3ffe4b09bf2
+  edit-poll: 2158fe8e324cdec9
+  notification-history: dbfad733f9e1a396
+  export-poll: 821243733130968d
+  print: 87bcba63e76e982c
+  delete: 7634f55bb4d5c467
+  save-bookmark: 177d22e6e3259f71
+  save-as-template: 278d2b7395c6cdb3
+  who-can-vote: 3e6b870df96f386f
+  editing-settings-before-voting-opens: 9ae26b53b94019bb
+title_source: 74a883a037bc227f
+title_generated: 109d0914682650db
+---
+
+<!-- translation-section: introduction -->
+
+# Javaslatok és szavazások beállításai
+
+<!-- translation-section: setting-up-a-proposal-or-poll -->
+
+## Javaslat vagy szavazás beállítása
+
+<!-- translation-section: proposal-and-poll-templates -->
+
+### Javaslat- és szavazássablonok
+
+Válaszd ki a használni kívánt javaslatsablont.
+
+![](proposal_templates.png)
+
+![A javaslat űrlapja a címtől és a részletektől a szavazási lehetőségeken, az időtartamon és a szavazásra jogosultak körén át az összecsukott További beállítások panelig](proposal_new.png)
+
+<!-- translation-section: add-content -->
+
+<a id="add-content"></a>
+
+### Cím és részletek
+
+**Csoport:** Ellenőrizd, hogy a megfelelő csoport van-e kiválasztva a javaslatodhoz vagy szavazásodhoz.
+
+**Cím:** Adj a javaslatodnak vagy szavazásodnak rövid, a tartalomhoz illő címet.
+
+**Részletek:** Magyarázd el, mit kérsz az emberektől, és adj meg elég részletet ahhoz, hogy mindenki értse, mit jelent a szavazata.  
+
+Az előre megadott sablonok néhány segítő kérdést is tartalmaznak a javaslat megírásához. Használd ezeket, vagy add meg a saját részleteidet.
+
+Javaslat készítésekor fogalmazd meg az elvárásaidat, és írd le, milyen hatása lesz a javaslatnak, ha elfogadják.
+
+A [formázási gombokkal](/en/user_manual/discussions/formatting) fájlokat csatolhatsz, képeket és táblázatokat szúrhatsz be, valamint címsorokat és listákat adhatsz hozzá. Ezek segítenek megosztani a háttérinformációkat, és olvashatóbbá tenni a hosszabb javaslatokat.
+
+<!-- translation-section: voting-options -->
+
+### Szavazási lehetőségek
+
+Minden javaslat- és szavazássablon tartalmaz szavazási lehetőségeket.
+
+A sablontól függően szerkesztheted, eltávolíthatod és átrendezheted a szavazási lehetőségeket, vagy újakat adhatsz hozzá, hogy megfeleljenek az általad használt döntési folyamatnak.
+
+- A ceruza ikonnal szerkesztheted a szavazási lehetőséget
+- A kuka ikonnal eltávolíthatod a nem kívánt szavazási lehetőségeket
+- A fogantyúval átrendezheted a szavazási lehetőségeket
+- A **Lehetőség hozzáadása** gombbal új szavazási lehetőségeket adhatsz hozzá, ha a sablon engedi az egyéni lehetőségeket
+
+![](vote_options.png)
+
+<!-- translation-section: edit-voting-options -->
+
+### Szavazási lehetőségek szerkesztése
+
+A szavazási lehetőségeket sokféleképpen beállíthatod a szervezeted döntéshozatali módjához.
+
+Kattints a szavazási lehetőség melletti ceruza ikonra a szerkesztőablak megnyitásához:
+
+**Lehetőség neve:** A lehetőség rövid neve.
+
+**Ikon:** Válassz ikont a lehetőséghez, például felfelé vagy lefelé mutató hüvelykujjat, a Tartózkodom vagy a Vétózom ikont.
+
+**Jelentés:** Egy mondat, amely elmagyarázza, mit jelent ennek a lehetőségnek a kiválasztása.
+
+**Indoklást segítő kérdés:** Egy kérdés, amely arra ösztönzi a szavazókat, hogy megadják az indoklásukat, vagy átgondolják az álláspontjukat.
+
+![](proposal_edit_option.png)
+
+<!-- translation-section: opening-time -->
+
+### Időtartam
+
+Alapértelmezés szerint a szavazás azonnal megnyílik, amikor létrehozod. Ha későbbi időpontra szeretnéd ütemezni a megnyitást, vedd ki a jelölést az **A szavazás azonnal megnyílik** jelölőnégyzetből, és válaszd ki a megnyitás dátumát és időpontját.
+
+Ez időt adhat a beszélgetésre a szavazás megnyitása előtt, vagy segíthet biztosítani, hogy a szavazás vagy javaslat megfelelően legyen beállítva, és a megfelelő időpontban induljon.
+
+Ha például a csoportodnak több döntésről kell szavaznia egy közelgő gyűlésen, előre elkészítheted a szavazásokat és hozzáadhatod a szavazókat, majd mindegyik megnyitását a szavazási időszak kezdetére ütemezheted. Az emberek a megnyitás előtt is láthatják a szavazásokat, de korábban nem szavazhatnak.
+
+Ha a szavazásnak ütemezett megnyitási időpontja van, már a megnyitás előtt hozzáadhatod a szavazókat. A szavazók a szavazás megnyitásakor kapnak értesítést, nem a hozzáadásukkor.
+
+Ha az ütemezett időpont előtt szeretnéd megnyitni a szavazást, válaszd ki az **A szavazás szerkesztése** menüpontot, jelöld be az **A szavazás azonnal megnyílik** jelölőnégyzetet, és mentsd a módosítást.
+
+**Szavazók értesítése a szavazás megnyitásakor:** Ha be van jelölve (ez az alapértelmezés), minden szavazó értesítést kap a szavazás megnyitásakor. Vedd ki a jelölést, ha értesítések küldése nélkül szeretnéd megnyitni a szavazást.
+
+**Záró dátum és időpont:** Válaszd ki a szavazásod záró dátumát és időpontját.
+
+Adj elegendő időt az embereknek a szavazásra. Úgy is időzítheted a javaslatot, hogy egy találkozó előtt záruljon le, vagy elkerülheted a hétvégi lezárást, hogy az emberek megfelelő időben kapjanak emlékeztetőt. Szükség esetén a tervezett időpont előtt lezárhatod a szavazást, vagy későbbre tolhatod a lezárást.
+
+<!-- translation-section: who-can-vote -->
+
+### Ki szavazhat?
+
+Válaszd ki, ki szavazhat a szavazáson.
+
+- **Bárki a csoportban** (vagy **Bárki a témában**): mindenki szavazhat, aki hozzáfér a szavazáshoz, beleértve a később csatlakozókat is.
+- **Csak kiválasztott személyek:** csak azok szavazhatnak, akiket hozzáadsz. Akkor használd ezt, ha csak bizonyos tagoknak kell szavazniuk, például egy vezetőség vagy bizottság tagjainak.
+
+Miután elindítasz egy **Csak kiválasztott személyek** beállítású szavazást, megnyílik a **Szavazók kezelése**, ahol hozzáadhatod a szavazókat. Később is hozzáadhatsz vagy eltávolíthatsz szavazókat. Lásd: [Szavazók kezelése](/en/user_manual/polls/manage_voters).
+
+<!-- translation-section: more-settings -->
+
+## További beállítások
+
+![](settings_advanced.png)
+
+<!-- translation-section: reminder -->
+
+### Emlékeztető
+Küldj „Hamarosan lezárul” értesítést 24 órával a szavazás lezárása előtt. Ez lehetőséget ad az embereknek arra, hogy megnézzék, hogyan szavaztak mások, és átgondolják a saját szavazatukat, vagy egyszerűen növelheti a szavazásban való részvételt.
+
+Beállítási lehetőségek:
+- Senki
+- Szerző
+- Még nem szavaztak (alapértelmezett)
+- Minden szavazó
+
+Legalább 24 órán át tartó névtelen szavazás esetén a Loomio az utolsó 24 órában automatikusan emlékezteti azokat a szavazásra jogosult embereket, akik még nem szavaztak. Ezt az emlékeztetőt nem módosíthatod a szavazás beállításaiban.
+
+<!-- translation-section: anonymous-voting -->
+
+### Névtelen szavazás
+Ha engedélyezed, a szavazatokat a szavazók személyazonosságától elkülönítve tároljuk. Az eredmények a szavazás lezárása után jelennek meg, és a szavazók nem adhatnak meg indoklást, nem nézhetik meg a leadott szavazatukat, és nem módosíthatják azt.
+
+A [Névtelen szavazás](/en/user_manual/polls/anonymous_voting) oldalon megtudhatod, hogyan különül el a szavazók személyazonossága a leadott szavazatoktól, milyen információkat őriz meg a rendszer, és mik a védelem korlátai.
+
+> [!WARNING]
+> A szavazás elindulása után már nem módosíthatod úgy a szavazást, hogy névtelenné váljon, és a névtelen beállítást sem vonhatod vissza. A névtelen szavazást a lezárása után nem nyithatod újra.
+
+<!-- translation-section: vote-reason -->
+
+### A szavazat indoklása
+
+Hasznos lehet megérteni, miért szavaztak az emberek úgy, ahogy. Ezzel a beállítással arra kérheted őket, hogy szavazáskor osszák meg a gondolataikat.
+
+Az elérhető beállítások a sablontól függnek:
+
+- **Választható**: a szavazók eldönthetik, adnak-e indoklást
+- **Kötelező a nemetmondáshoz vagy a blokkoláshoz**: indoklást kér, ha a kiválasztott lehetőség a Nem értek egyet vagy a Vétózom szavazási ikont használja
+- **Kötelező a blokkoláshoz**: indoklást kér, ha a kiválasztott lehetőség a Vétózom szavazási ikont használja
+- **Kívánt**: minden szavazónak indoklást kell adnia
+- **Mozgáskorlátozott**: eltávolítja a szavazat indoklására szolgáló mezőt
+
+![](vote_reason_options.png)
+
+A feltételes beállítások a szavazási ikont követik, nem a lehetőség nevét. Akkor is érvényesek, ha a Nem értek egyet lehetőséget például Kifogásra nevezed át. A Beleegyezés sablon alapértelmezett beállítása a **Kötelező a nemetmondáshoz vagy a blokkoláshoz**, a konszenzus sabloné pedig a **Kötelező a blokkoláshoz**. A többi sablon alapértelmezett beállítása a **Választható**. A szavazás szerzője az egyes szavazásoknál módosíthatja ezt a beállítást.
+
+**Az indoklás korlátozása legfeljebb 500 karakterre:** A rövid indoklások könnyebben érthetők. A tömör indoklások gyűjteménye segíti a döntéshozatalt. Ez a beállítás alapértelmezés szerint be van jelölve. Vedd ki a jelölést, ha hosszabb indoklásokat szeretnél engedélyezni.
+
+<!-- translation-section: hide-results -->
+
+### Eredmények elrejtése
+
+Ha azt szeretnéd, hogy az emberek úgy szavazzanak, hogy nem tudják, hogyan szavaztak mások, elrejtheted a szavazás eredményeit.
+
+Ha az eredmények a szavazat leadásáig rejtve vannak, az emberek a szavazatuk leadása után láthatják, hogy mások melyik lehetőséget választották, és milyen indoklást adtak.
+
+Ha az eredmények a szavazás lezárásáig rejtve vannak, a lezárásig nem lehet válaszolni a szavazatokra vagy említéseket használni a szavazatok indoklásában. Amíg a szavazás nyitva van, későbbre tolhatod a lezárást, de a lezárása után nem nyithatod újra.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Beállítások szerkesztése a szavazás megnyílása előtt
+
+Akik jogosultak a szavazás szerkesztésére, a szavazás megnyílása előtt módosíthatják annak részleteit és beállításait, beleértve a névtelen szavazást és az eredmények láthatóságát. A szavazás megnyílása után a névtelenség beállítása már nem módosítható, és a lezárásig rejtett eredmények nem fedhetők fel a lezárás előtt.
+
+A névtelen szavazások eredményei mindig rejtve maradnak a szavazás lezárásáig.
+
+<!-- translation-section: managing-polls -->
+
+## Szavazások kezelése
+
+Nyisd meg a szavazás jobb alsó sarkában található hárompontos menüt.
+
+![](proposal_edit.png)
+
+<!-- translation-section: edit-poll -->
+
+### A szavazás szerkesztése
+
+Kattints az **A szavazás szerkesztése** menüpontra a szavazás tartalmának vagy beállításainak szerkesztéséhez.
+
+<!-- translation-section: save-as-template -->
+
+### Mentés sablonként
+
+Válaszd ki a **Mentés sablonként** menüpontot a szavazás műveleti menüjében, hogy újra felhasználhasd a tartalmát, a szavazási lehetőségeit, a magyarázatait és a beállításait. Ellenőrizd az előre kitöltött sablonűrlapot, adj nevet és alcímet a sablonnak, majd válaszd ki a **Sablon mentése** gombot. A csoport tagjai ezután kiválaszthatják a sablont, amikor új szavazást indítanak.
+
+A csoportadminok menthetnek sablonokat. A tagok is menthetnek sablonokat, ha a csoport jogosultsági beállításaiban engedélyezve van az **A tagok sablonokat hozhatnak létre** beállítás. Részletekért lásd a [Szavazási sablonok](/en/user_manual/polls/poll_templates) oldalt.
+
+<!-- translation-section: notification-history -->
+
+### Értesítési előzmények
+
+Az **Értesítési előzmények** megmutatja, ki kapott értesítést, és hogy az egyes értesítéseket elolvasták-e.
+
+![](proposal_notification_history.png)
+
+<!-- translation-section: export-poll -->
+
+### A szavazás exportálása
+
+A **Letölt** menüponttal exportáld a szavazás állapotát és eredményeit egy táblázatfájlba (.csv), hogy elemzéshez vagy archiváláshoz letölthesd a szavazás formázatlan adatait.
+
+<!-- translation-section: print -->
+
+### Nyomtatás
+
+Kattints a szál műveletei között a **Nyomtatás** menüpontra egy nyomtatható HTML-dokumentum megnyitásához. Kinyomtathatod, vagy PDF-ként mentheted közzétételhez és archiváláshoz.
+
+![](proposal_print.png#width-80)
+
+<!-- translation-section: delete -->
+
+### Törlés
+
+A **Törlés** menüpont törli a szavazást. Először meg kell erősítened, hogy törölni szeretnéd a szavazást.
+
+Győződj meg róla, hogy valóban törölni szeretnéd a szavazást. A törlés nem vonható vissza.
+
+A törlés után egy **Elem törölve** jelölés marad a szálban.
+
+![](proposal_delete.png)
+
+<!-- translation-section: save-bookmark -->
+
+### Könyvjelző mentése
+
+Kattints a **Könyvjelző mentése** menüpontra, hogy hozzáadd a szavazást a könyvjelzőidhez, és később gyorsan elérhesd.

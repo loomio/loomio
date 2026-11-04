@@ -46,9 +46,7 @@ You need to set the following ENV's
 Haraka and its transitive dependencies are locked in `package-lock.json` and
 updated by Dependabot.
 
-`haraka-plugin-mailauth` currently pins an older `mailauth` release. The
-overrides in `package.json` keep its authentication libraries on audited
-versions; the SPF/DKIM/DMARC tests cover compatibility with those overrides.
+`haraka-plugin-mailauth` provides configuration and result logging. The local adapter uses Mailauth's combined authentication API so message parsing and DMARC checks share the same metadata. Overrides in `package.json` select Mailauth 8 and patched Nodemailer; the authentication tests cover compatibility.
 
 Run the Action Mailbox delivery tests with:
 

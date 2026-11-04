@@ -30,6 +30,20 @@ class Mobile::WebSessionsControllerTest < ActionController::TestCase
     assert_response :bad_request
   end
 
+  test "rejects a JSON ticket without consuming it or creating a web session" do
+    ticket = Mobile::AuthenticationService.issue_web_session_ticket!(device: @device)
+    assert_no_difference 'Session.count' do
+      post :create, params: { ticket: ticket }, as: :json
+    end
+    assert_response :bad_request
+    assert_nil Current.session
+
+    @request.headers["CONTENT_TYPE"] = "application/x-www-form-urlencoded"
+    post :create, params: { ticket: ticket }
+    assert_response :see_other
+    assert_equal @user, Current.session.user
+  end
+
   test "rejects a ticket in the query string" do
     ticket = Mobile::AuthenticationService.issue_web_session_ticket!(device: @device)
     @request.query_string = "ticket=#{CGI.escape(ticket)}"
@@ -38,5 +52,7 @@ class Mobile::WebSessionsControllerTest < ActionController::TestCase
 
     assert_response :bad_request
     assert_nil Current.session
+    assert_equal "no-store", response.headers["Cache-Control"]
+    assert_equal "no-referrer", response.headers["Referrer-Policy"]
   end
 end

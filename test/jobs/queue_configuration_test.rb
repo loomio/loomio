@@ -1,7 +1,41 @@
 require "test_helper"
 
 class QueueConfigurationTest < ActiveSupport::TestCase
-  test "group destruction has one dedicated worker even when the general pool scales" do
+  test "the general worker claims search indexing before ordinary jobs and mail delivery" do
+    config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
+    workers = config.fetch("production").fetch("workers")
+    indexing_jobs = [ ReindexSearchDocumentWorker, ReindexCommentWorker, ReindexPollWorker,
+                     ReindexDiscussionWorker, ReindexAuthorWorker ]
+    indexing_jobs.each { |job_class| assert_equal "search_index", job_class.new.queue_name }
+
+    ordinary = ready_execution("default")
+    mail = ready_execution("mailers")
+    search = ready_execution("search_index")
+    relation = SolidQueue::ReadyExecution.where(id: [ ordinary.id, mail.id, search.id ])
+    queues = workers.first.fetch("queues")
+    selected = SolidQueue::QueueSelector.new(queues, relation).scoped_relations.filter_map(&:first)
+
+    assert_equal [ "search_index", "default", "mailers" ], selected.map(&:queue_name)
+  end
+
+  test "every production recurring task has a worker that can claim its jobs" do
+    config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
+    workers = config.fetch("production").fetch("workers")
+    tasks = YAML.safe_load(Rails.root.join("config/recurring.yml").read).fetch("production")
+
+    tasks.each do |key, options|
+      task = SolidQueue::RecurringTask.from_configuration(key, **options.symbolize_keys)
+      active_job = task.enqueue(at: Time.current)
+      execution = ready_execution(active_job.queue_name)
+
+      assert workers.any? { |worker|
+        SolidQueue::QueueSelector.new(worker.fetch("queues"), SolidQueue::ReadyExecution.where(id: execution.id))
+                                 .scoped_relations.any?(&:exists?)
+      }, "No worker serves recurring task #{key} on #{active_job.queue_name}"
+    end
+  end
+
+  test "group destruction and count repair each have a dedicated worker when the general pool scales" do
     previous = ENV["JOB_CONCURRENCY"]
     ENV["JOB_CONCURRENCY"] = "4"
     config = YAML.safe_load(ERB.new(Rails.root.join("config/queue.yml").read).result, aliases: true)
@@ -9,20 +43,26 @@ class QueueConfigurationTest < ActiveSupport::TestCase
 
     # Use Solid Queue's selector to verify the actual routing, including wildcard
     # selectors that would accidentally let the general pool claim deletion jobs.
-    destruction = ready_execution(DestroyGroupWorker.new.queue_name)
-    workers_for_destruction = workers.select do |worker|
-      SolidQueue::QueueSelector.new(worker.fetch("queues"), SolidQueue::ReadyExecution.where(id: destruction.id))
-                               .scoped_relations.any?(&:exists?)
+    [DestroyGroupWorker, RepairRecordCountsWorker].each do |job_class|
+      job = ready_execution(job_class.new.queue_name)
+      selected_workers = workers.select do |worker|
+        SolidQueue::QueueSelector.new(worker.fetch("queues"), SolidQueue::ReadyExecution.where(id: job.id))
+                                 .scoped_relations.any?(&:exists?)
+      end
+      assert_equal 1, selected_workers.size, job_class.name
+      assert_equal 1, selected_workers.first.fetch("threads"), job_class.name
+      assert_equal 1, selected_workers.first.fetch("processes"), job_class.name
     end
-    assert_equal 1, workers_for_destruction.size
-    assert_equal 1, workers_for_destruction.first.fetch("threads")
-    assert_equal 1, workers_for_destruction.first.fetch("processes")
 
     job_classes = Rails.root.glob("app/{jobs,workers}/**/*.rb").map { |path| path.basename(".rb").to_s.camelize.constantize }
     job_classes += [ActiveStorage::AnalyzeJob, ActiveStorage::PurgeJob,
                     ActiveStorage::MirrorJob, ActiveStorage::TransformJob, ActiveStorage::PreviewImageJob,
                     ActionMailbox::RoutingJob, ActionMailbox::IncinerationJob]
-    queue_names = job_classes.map { |klass| klass.new.queue_name }
+    # Mail delivery jobs, including subclasses, resolve their queue from a mailer argument.
+    queue_names = job_classes.map do |klass|
+      job = klass <= ActionMailer::MailDeliveryJob ? klass.new("ForwardMailer") : klass.new
+      job.queue_name
+    end
     queue_names << ActionMailer::MailDeliveryJob.new("UserMailer").queue_name
     queue_names.uniq.each do |queue_name|
       job = ready_execution(queue_name)

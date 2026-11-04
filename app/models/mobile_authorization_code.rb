@@ -5,6 +5,6 @@ class MobileAuthorizationCode < ApplicationRecord
   validates :token_digest, uniqueness: true
 
   def usable?
-    used_at.nil? && expires_at.future? && user.active_for_authentication?
+    used_at.nil? && expires_at.future? && user.active?
   end
 end

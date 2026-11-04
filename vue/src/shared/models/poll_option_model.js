@@ -12,7 +12,7 @@ export default class PollOptionModel extends BaseModel {
 
   defaultValues() {
     return {
-      voterScores: {},
+      scoresByVoter: {},
       name: null,
       icon: null,
       meaning: null,
