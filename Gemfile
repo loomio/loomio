@@ -62,6 +62,8 @@ gem 'actionpack-cloudflare'
 gem 'victor', require: false
 gem 'web-push'
 gem 'webauthn'
+gem 'websocket-driver' # lib/hocuspocus
+gem 'nio4r' # lib/hocuspocus
 
 group :development, :test do
   gem 'byebug'
