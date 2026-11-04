@@ -66,7 +66,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
 # Copy Ruby dependency metadata first (better cache)
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock .ruby-version ./
 
 # Install Ruby gems
 RUN bundle install && \
