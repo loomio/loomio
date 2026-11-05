@@ -2,9 +2,9 @@ import { randomUUID } from 'node:crypto';
 import { test, expect } from '../fixtures.mjs';
 import { comment, commentForm, postComment } from '../helpers/threads.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { startHocuspocus, stopHocuspocus } from '../helpers/hocuspocusServer.mjs';
+import { startCollabServer, stopCollabServer } from '../helpers/collabServer.mjs';
 
-const draft = 'hocuspocus draft persistence test';
+const draft = 'collaborative draft persistence test';
 const saved = 'Saved description';
 
 const description = page => editor(page.locator('.discussion-form'));
@@ -62,7 +62,7 @@ async function openSecondTab(page) {
 }
 
 test.afterEach(async () => {
-  await startHocuspocus();
+  await startCollabServer();
 });
 
 test.describe('comments', () => {
@@ -76,7 +76,7 @@ test.describe('comments', () => {
     await expect(comment(page, draft)).toBeVisible();
   });
 
-  // Hocuspocus relays live edits; a single person's draft persists in IndexedDB.
+  // The collaboration server relays live edits; a single person's draft persists in IndexedDB.
   test('keeps a draft after reloading', async ({ page }) => {
     await editor(commentForm(page)).fill(draft);
     await page.reload();
@@ -105,13 +105,13 @@ test.describe('saved descriptions', () => {
   // With the server down there is no sync to wait for; text typed straight
   // away must survive, then reach the server when it returns.
   test('keeps text typed while the server is down', async ({ page }) => {
-    await stopHocuspocus();
+    await stopCollabServer();
     await openDescriptionEditor(page);
     await typeAtEnd(page, ' typed offline');
     await expect(description(page)).toContainText('typed offline');
     await expectOccurrences(page, saved, 1);
 
-    await startHocuspocus();
+    await startCollabServer();
     await expect(serverSynced(page)).toBeAttached({ timeout: 30_000 });
     await expect(description(page)).toContainText('typed offline');
     await expectOccurrences(page, saved, 1);
@@ -140,8 +140,8 @@ test.describe('saved descriptions', () => {
     const editUrl = page.url();
 
     await page.goto('/dashboard');
-    await stopHocuspocus();
-    await startHocuspocus();
+    await stopCollabServer();
+    await startCollabServer();
     await page.goto(editUrl);
     await expect(description(page)).toContainText('kept draft');
     await expect(serverSynced(page)).toBeAttached({ timeout: 30_000 });
@@ -154,13 +154,13 @@ test.describe('saved descriptions', () => {
   test('syncs edits made while the server was down', async ({ page }) => {
     await openDescriptionEditor(page);
     const other = await openSecondTab(page);
-    await stopHocuspocus();
+    await stopCollabServer();
 
     await typeAtEnd(other, ' B offline');
     await typeAtEnd(page, ' A offline');
     await expect(description(page)).not.toContainText('B offline');
 
-    await startHocuspocus();
+    await startCollabServer();
     await expect(description(page)).toContainText('B offline', { timeout: 30_000 });
     await expectOccurrences(page, saved, 1);
     await expect(description(other)).toContainText('A offline', { timeout: 30_000 });
