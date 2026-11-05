@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Dev::EmailSettingsTest < ActionController::TestCase
-  tests Dev::NightwatchController
+  tests Dev::ScenariosController
 
   test "thread email settings preview reuses the sample group" do
     recipient = User.create!(name: 'Patrick Swayze', email: 'patrick@example.com', username: 'patrickswayze', email_verified: true)

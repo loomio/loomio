@@ -7,8 +7,8 @@ on:
   pull_request:
   workflow_dispatch:
     inputs:
-      e2e_testcase:
-        description: 'Run one testcase from auth.js (leave empty for the full suite)'
+      e2e_args:
+        description: 'Arguments for playwright test, such as a spec name or -g "test title" (leave empty for the full suite)'
         required: false
         type: string
 
@@ -22,7 +22,7 @@ jobs:
       PGUSER: postgres
       RAILS_ENV: test
       E2E_PORT: 3001
-      E2E_TESTCASE: ${{ inputs.e2e_testcase }}
+      CI: 1
     services:
       postgres:
         image: postgres:latest
@@ -38,7 +38,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
-    - uses: nanasess/setup-chromedriver@v2
     - name: install libvips
       run: |
         sudo apt-get update
@@ -79,33 +78,24 @@ jobs:
         npm run build
     - name: collaboration server provider compatibility
       run: node --test test/lib/collab_server/provider_compat.test.mjs
-    - name: run e2es
-      env:
-        DISPLAY: ':99'
-      run: |
-        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
-        cd vue
-        if [ -n "$E2E_TESTCASE" ]; then
-          set +e
-          npx nightwatch --headless --test tests/e2e/specs/auth.js --testcase "$E2E_TESTCASE"
-          test_status=$?
-          if [ -f ../log/test.log ]; then
-            rg 'Passkey registration failed' ../log/test.log || true
-          fi
-          exit "$test_status"
-        else
-          npm run test
-        fi
-    - name: summarize e2es
-      if: ${{ always() }}
+    - name: install playwright browser
       working-directory: vue
-      run: node tests/nightwatch_summary.mjs
-    - name: upload e2e failure screenshots
+      run: npx playwright install --with-deps chromium
+    - name: run e2es
+      working-directory: vue
+      env:
+        PW_ARGS: ${{ inputs.e2e_args }}
+      run: |
+        eval "set -- $PW_ARGS"
+        npx playwright test "$@"
+    - name: upload playwright report
       uses: actions/upload-artifact@v4
-      if: ${{ always() }}
+      if: ${{ failure() }}
       with:
-        name: e2e-report-${{ matrix.runs-on }}
-        path: vue/tests/screenshots
+        name: playwright-report
+        path: |
+          vue/tests/playwright/report
+          vue/tests/playwright/results
     - name: upload rails test log
       uses: actions/upload-artifact@v4
       if: ${{ failure() }}

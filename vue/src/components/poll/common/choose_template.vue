@@ -200,7 +200,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
           action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
     .d-flex.justify-center.my-2(v-if="userIsAdmin && hasHiddenTemplates && !showHidden && filter !== 'recommended'")
-      v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true")
+      v-btn.poll-common-templates-list__show-hidden.text-medium-emphasis(variant="text" size="small" @click="showHidden = true")
         span(v-t="'discussion_template.show_hidden_templates'")
 
     template(v-if="userIsAdmin && showHidden")

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Dev::OatmilkNotificationMailerTest < ActionController::TestCase
-  tests Dev::NightwatchController
+  tests Dev::ScenariosController
 
   setup do
     Rails.application.routes.default_url_options[:host] = "https://loomio.test"

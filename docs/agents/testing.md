@@ -12,47 +12,60 @@ For database migrations, prioritize focused regression tests and realistic-data 
 
 ## Running E2E Tests
 
-E2E tests use Nightwatch + headless Chrome against a local Rails server.
+E2E tests use Playwright and headless Chromium against a local Rails server.
 
 ### Prerequisites
+- Install the browser once with `(cd vue && npx playwright install chromium)`.
 - If you get schema related errors it might help to run `dropdb loomio_test; RAILS_ENV=test rake db:setup`
 
 ### Using `bin/e2e`
 
 ```bash
-bin/e2e                                    # run all specs
-bin/e2e notifications.js                   # run one spec file (shorthand)
-bin/e2e vue/tests/e2e/specs/poll.js        # run one spec file (full path)
-bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
-bin/e2e notifications.js --retries 3       # retry failures
+bin/e2e                                  # run all specs
+bin/e2e notifications                    # run spec files whose path matches "notifications"
+bin/e2e poll -g "can_vote_on_a_proposal" # run tests whose title matches
+bin/e2e --headed poll                    # watch the browser
+bin/e2e --skip-build poll                # reuse the existing Vue build
 ```
 
-The script handles: Vue build, db:prepare, starting/stopping the Rails server, and running Nightwatch headlessly.
+The script handles: Vue build, db:prepare, starting and stopping the Rails server (which also serves collaborative editing), and running Playwright. Other arguments are passed to `playwright test`.
 
-Always let `bin/e2e` build Vue assets. The build is fast, and running against freshly built assets avoids stale-client failures.
-
-Use `--testcase <name>` to run a single test within a file. This is much faster for confirming fixes.
+Always let `bin/e2e` build Vue assets unless you have just built them. Running against freshly built assets avoids stale-client failures.
 
 ### How it works
 
 1. Dev scenarios in `app/controllers/dev/` and `app/helpers/dev/` set up test data
-2. Nightwatch specs in `vue/tests/e2e/specs/` drive the browser via `pageHelper`
-3. `pageHelper.loadPath('scenario_name')` hits `http://localhost:3000/dev/scenario_name`
+2. Specs in `vue/tests/playwright/specs/` drive the browser with plain Playwright: `test('name', async ({ page }) => { await page.goto('/dev/setup_group') })`
+3. `page.goto('/dev/scenario_name')` loads the scenario from `http://localhost:3001`
 4. The Rails server runs in test mode with `RAILS_ENV=test`
+
+### Writing specs
+
+Write specs with plain Playwright, so each test reads as what a person does and sees.
+
+- **Select elements by CSS class.** Use Loomio's BEM classes, such as `.poll-common-form__submit`, rather than text, roles, or labels. When an element has no suitable class, add a BEM class to the component as a test hook. Match text only where Vuetify internals make a class impractical, such as the options of a select.
+- **Avoid Vuetify internals and position.** Do not select by Vuetify implementation classes (`.v-selection-control__wrapper`, `.v-field__input`), DOM position (`:first-child`, `:nth-child`), or element order. To pick one item of a list rendered in a loop, give the repeated element a class and filter by its text: `page.locator('.members-panel .v-list-item', { hasText: 'Emilio Estevez' })`. Do not add per-item classes or ids for this.
+- **Make each locator match one element.** Locators are strict. Use a more specific class or a `{ hasText }` filter. Use `.first()` only when any match will do, such as checking that a list shows at least one item.
+- **Let Playwright wait.** Actions and web-first assertions wait for their element, so never add pauses, `waitForTimeout`, or a visibility check before acting on the same element. Assert the outcome a person would see, not intermediate states. Pass a `timeout` only when something legitimately takes longer than the 8-second default.
+- **Assert with web-first assertions.** Use `await expect(locator).toContainText(...)`, `toHaveCount(0)` for absence, `toBeChecked`, `toHaveValue`, and `toHaveAttribute`. Check layout with `boundingBox()` (see `helpers/layout.mjs`) rather than measuring in `page.evaluate`.
+- **Use Playwright APIs, not page scripts.** Click and fill with locators, open other tabs with `page.context().newPage()`, and call dev endpoints with `page.request`. Use `page.evaluate` only for browser state that has no Playwright API, such as a WebSocket probe.
+- **Keep it DRY.** Put sequences that several specs repeat in plain functions under `vue/tests/playwright/helpers/`, grouped by area: `accounts.mjs` (sign-up and sign-in), `threads.mjs` (comments and item menus), `polls.mjs`, `groups.mjs`, `members.mjs`, `recipients.mjs`, `editor.mjs` (rich text), `passkeys.mjs`, and `vuetify.mjs` (selects and autocompletes). Give repeated elements a named `const` within a test. Do not wrap the page in a general-purpose helper object.
+- **Use the fixtures.** Import `test` and `expect` from `vue/tests/playwright/fixtures.mjs`. Its `page` accepts `window.confirm()` dialogs, and `flash` is the snackbar that reports an action's result: `await expect(flash).toContainText('Comment added')`.
+- **Name tests for behaviour.** Titles describe what the user can do or see, such as `'a member can remove their own vote'`.
 
 ### Fixing test failures
 
-- **"element not interactable" / "click intercepted"**: Usually a z-index or overlay issue. These often pass on retry (`--retries 3`).
-- **"Timed out waiting for .app-is-booted"**: The dev scenario errored. Check Rails server logs for the exception (e.g., `NoMethodError`, `Deadlocked`).
-- **"Expected text to contain X"**: The dev scenario isn't producing the expected data. Check the scenario in `app/helpers/dev/ninties_movies_helper.rb` or `app/helpers/dev/scenarios_helper.rb`.
-- Screenshots on failure are saved to `vue/tests/screenshots/`.
+- **"Timed out waiting for .app-is-booted"**: The dev scenario errored. Check `log/test.log` for the exception (e.g., `NoMethodError`, `Deadlocked`).
+- **"Expected substring ... Received string"**: The dev scenario isn't producing the expected data, or the UI changed. Check the scenario in `app/helpers/dev/ninties_movies_helper.rb` or `app/helpers/dev/scenarios_helper.rb`.
+- Failed tests keep a trace with DOM snapshots, network requests, and console output. Open the report with `(cd vue && npx playwright show-report tests/playwright/report)`. In CI, download the `playwright-report` artifact and open it the same way.
 
 ### Key files
 
 - `bin/e2e` — test runner script
-- `vue/nightwatch.conf.js` — Nightwatch configuration
-- `vue/tests/e2e/specs/` — test specs
-- `vue/tests/e2e/helpers/pageHelper.js` — shared browser helpers
+- `vue/playwright.config.mjs` — Playwright configuration
+- `vue/tests/playwright/specs/` — test specs
+- `vue/tests/playwright/fixtures.mjs` — the `test` fixture
+- `vue/tests/playwright/helpers/accounts.mjs` — shared sign-up and sign-in flows
 - `app/controllers/dev/` — dev scenario routes
 - `app/helpers/dev/ninties_movies_helper.rb` — main scenario data builder
 - `app/helpers/dev/scenarios_helper.rb` — additional scenario helpers

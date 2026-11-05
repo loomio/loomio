@@ -71,7 +71,7 @@ v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
-    v-text-field(
+    v-text-field.webhook-form__name(
       :label="$t('chatbot.name')"
       autocomplete="off"
       v-model="chatbot.name"

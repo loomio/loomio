@@ -3,8 +3,8 @@ description: |
   We make oat milk for local cafes and shops. This group shows how we discuss an idea, check what people think, and prepare for a meeting.
 group_privacy: closed
 membership_granted_upon: invitation
-cover_photo: vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-cover.jpg
-logo: vue/tests/e2e/fixtures/avatars/oatmilk-cooperative-logo.png
+cover_photo: vue/tests/playwright/assets/avatars/oatmilk-cooperative-cover.jpg
+logo: vue/tests/playwright/assets/avatars/oatmilk-cooperative-logo.png
 tags: [Start here, Board meetings, Office planning]
 
 facilitator: jamie
@@ -13,17 +13,17 @@ people:
     name: Jamie Chen
     email: jamie@oatmilk.example
     username: jamie_oatmilk
-    avatar: vue/tests/e2e/fixtures/avatars/jamie-chen.png
+    avatar: vue/tests/playwright/assets/avatars/jamie-chen.png
   - key: samira
     name: Samira Patel
     email: samira@oatmilk.example
     username: samira_oatmilk
-    avatar: vue/tests/e2e/fixtures/avatars/samira-patel.png
+    avatar: vue/tests/playwright/assets/avatars/samira-patel.png
   - key: alex
     name: Alex Morgan
     email: alex@oatmilk.example
     username: alex_oatmilk
-    avatar: vue/tests/e2e/fixtures/avatars/alex-morgan.png
+    avatar: vue/tests/playwright/assets/avatars/alex-morgan.png
 
 discussions:
   - key: bottle_trial

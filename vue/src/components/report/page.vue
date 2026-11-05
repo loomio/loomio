@@ -561,7 +561,7 @@ v-main
             hide-details
             clearable
           )
-          v-checkbox.flex-grow-0.ml-4(
+          v-checkbox.report-actions-per-user__delegates-only.flex-grow-0.ml-4(
             v-model="delegates_only"
             color="primary"
             density="compact"

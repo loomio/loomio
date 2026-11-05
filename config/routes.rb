@@ -32,11 +32,11 @@ Rails.application.routes.draw do
     namespace :dev do
       dev_routes_for(:discussions)
       dev_routes_for(:polls)
-      dev_routes_for(:nightwatch)
+      dev_routes_for(:scenarios)
 
-      get '/', to: 'nightwatch#index'
-      get 'last_email', to: 'nightwatch#last_email'
-      dev_actions_for(:nightwatch).map { |action| get action, to: "nightwatch##{action}" }
+      get '/', to: 'scenarios#index'
+      get 'last_email', to: 'scenarios#last_email'
+      dev_actions_for(:scenarios).map { |action| get action, to: "scenarios##{action}" }
     end
   end
 

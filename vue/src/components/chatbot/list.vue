@@ -68,7 +68,7 @@ v-card.chatbot-list(:title="$t('chatbot.chat_integrations')")
     template(v-if="!loading")
       v-alert(v-if="chatbots.length === 0" type="info" variant="tonal" :icon="false")
         p.mb-3(v-t="'chatbot.no_chat_integrations_yet'")
-      v-list-item(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
+      v-list-item.chatbot-list__chatbot(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
         template(v-slot:prepend)
           common-icon(:name="chatbotIcon(bot)")
         v-list-item-title {{bot.name}}

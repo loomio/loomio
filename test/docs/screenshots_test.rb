@@ -8,7 +8,7 @@ class DocsScreenshotsTest < Minitest::Test
   end
 
   def test_catalog_resolves_composed_names_and_excludes_unapproved_assets
-    assert_equal "bookmarks.js", recipe.fetch("spec")
+    assert_equal "bookmarks.spec.mjs", recipe.fetch("spec")
     assert_equal "save_bookmark", recipe.fetch("testcase")
     assert Docs::Screenshots.images.key?("guides/making_decisions/proposal_consensus_process_refresh_brand.png")
     refute Docs::Screenshots.images.key?("guides/facilitators_guide/collaboration-process.png")

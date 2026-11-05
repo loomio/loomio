@@ -10,7 +10,7 @@ class Views::NotificationMailer::Common::Title < Views::ApplicationMailer::Compo
 
   def view_template
     public_send(@heading_tag) do
-      a(href: tracked_url(@itemable, recipient: @recipient)) { plain TranslationService.plain_text(@itemable, :title, @recipient) }
+      a(class: "notification-title__link notification-title__link--#{@itemable.class.name.underscore}", href: tracked_url(@itemable, recipient: @recipient)) { plain TranslationService.plain_text(@itemable, :title, @recipient) }
     end
   end
 end

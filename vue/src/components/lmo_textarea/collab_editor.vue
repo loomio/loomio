@@ -58,7 +58,8 @@ const props = defineProps({
 const emit = defineEmits(['is-uploading']);
 
 // Refs
-const loading = ref(true);
+// Whether the collaboration server holds this browser's copy of the document.
+const serverSynced = ref(false);
 const socket = ref(null);
 const count = ref(0);
 const editor = ref(null);
@@ -333,6 +334,8 @@ onMounted(() => {
     url: `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/collab_server`,
     name: docname,
     document: ydoc,
+    onSynced: () => { serverSynced.value = true; },
+    onClose: () => { serverSynced.value = false; },
   });
 
   localProvider = new IndexeddbPersistence(docname, ydoc);
@@ -452,7 +455,7 @@ defineExpose({
 </script>
 
 <template lang="pug">
-div.mb-2
+div.mb-2.collab-editor(:class="{'collab-editor--server-synced': serverSynced}")
   .v-input--density-default.editor(v-if="editor")
     .v-input__control
       v-field(
@@ -609,10 +612,10 @@ div.mb-2
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
-    input.d-none(ref="filesField" type="file" name="files" multiple=true)
+    input.collab-editor__files-input.d-none(ref="filesField" type="file" name="files" multiple=true)
 
   form(style="display: block", @change="imageSelected")
-    input.d-none(ref="imagesField", type="file", name="files", multiple=true)
+    input.collab-editor__images-input.d-none(ref="imagesField", type="file", name="files", multiple=true)
 </template>
 <style>
 @charset "UTF-8";
