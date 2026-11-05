@@ -5,7 +5,7 @@ const DRAFT_TEXT  = 'collaborative draft persistence test'
 const EDITOR      = '.comment-form .ProseMirror'
 const SUBMIT_BTN  = '.comment-form__submit-button'
 
-const collabServer = require('../helpers/collab_serverServer')
+const collabServer = require('../helpers/collabServer')
 
 const DESCRIPTION = '.discussion-form .ProseMirror'
 const SAVED       = 'Saved description'
