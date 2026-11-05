@@ -20,7 +20,7 @@ module Docs
 
     def self.catalog
       @catalog ||= begin
-        output, status = Open3.capture2("node", ROOT.join("docs/help/screenshot_catalog.js").to_s)
+        output, status = Open3.capture2("node", ROOT.join("docs/help/screenshot_catalog.mjs").to_s)
         raise "Cannot discover screenshot recipes" unless status.success?
         JSON.parse(output)
       end

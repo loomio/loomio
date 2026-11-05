@@ -108,18 +108,18 @@ form(v-on:submit.prevent='submit()')
       template(v-if="poll.config().allow_vote_share_requirement")
         v-divider.pb-4
         .text-body-large.pb-2.poll-option-form__vote-share-heading(v-t="'poll_option_form.vote_share_requirement'")
-        v-checkbox(
+        v-checkbox.poll-option-form__vote-share-enabled(
           v-model="testEnabled"
           :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"
         )
-        .d-flex.flex-column.flex-sm-row
+        .poll-option-form__vote-share-fields.d-flex.flex-column.flex-sm-row
           v-select.mr-4(
             :disabled="!testEnabled"
             v-model="pollOption.testOperator"
             :items="[{title: $t('poll_option_form.at_least'), value: 'gte'}, {title: $t('poll_option_form.no_more_than'), value: 'lte'}]"
           )
 
-          v-number-input(
+          v-number-input.poll-option-form__test-percent(
             :disabled="!testEnabled"
             v-model="pollOption.testPercent"
             :min="0"
@@ -133,7 +133,7 @@ form(v-on:submit.prevent='submit()')
             template(v-slot:append)
               span.mr-4(v-t="'poll_option_form.of'")
 
-          v-select(
+          v-select.poll-option-form__test-against(
             :disabled="!testEnabled"
             v-model="pollOption.testAgainst"
             :items="[{title: t(poll.weightedVoting ? 'poll_option_form.vote_weight_cast' : 'poll_option_form.votes_cast'), value: 'score_percent'}, {title: t(poll.weightedVoting ? 'poll_option_form.eligible_vote_weight' : 'poll_option_form.eligible_voters'), value: 'voter_percent'}]"

@@ -153,7 +153,7 @@ v-card.search-modal(:title="$t('common.action.search')")
     dismiss-modal-button
   v-card-text
     .d-flex.align-center
-      v-text-field(
+      v-text-field.search-modal__query(
         :append-inner-icon="mdiMagnify"
         @click:append-inner="fetch"
         color="info"
@@ -166,9 +166,9 @@ v-card.search-modal(:title="$t('common.action.search')")
       )
 
     .d-flex.align-center.pt-4
-      v-select.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
+      v-select.search-modal__organization.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
       v-select.mr-2(variant="solo-filled" density="compact" v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
-      v-select.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
+      v-select.search-modal__tag.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
       v-select.mr-2(variant="solo-filled" density="compact" v-model="type" :items="typeItems")
       v-select(variant="solo-filled" density="compact" v-model="order" :items="orderItems")
     search-results-list(

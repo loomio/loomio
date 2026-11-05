@@ -203,7 +203,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
       :rules='[rules.required]'
       maxlength='255'
       :label="$t(groupNameLabel)"
-      @keyup="suggestHandle()")
+      @update:model-value="suggestHandle()")
     validation-errors(:subject="group", field="name")
 
     div(v-if="!group.parentId || (group.parentId && group.parent().handle)")

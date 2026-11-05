@@ -3,8 +3,8 @@ class Dev::BaseController < ApplicationController
   after_action :set_screenshot_locale
 
   def index
-    controllers = if self.class == Dev::NightwatchController
-      {nightwatch: Dev::NightwatchController, discussions: Dev::DiscussionsController, polls: Dev::PollsController}
+    controllers = if self.class == Dev::ScenariosController
+      {scenarios: Dev::ScenariosController, discussions: Dev::DiscussionsController, polls: Dev::PollsController}
     else
       {controller_name.to_sym => self.class}
     end

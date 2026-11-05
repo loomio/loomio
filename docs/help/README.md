@@ -45,7 +45,7 @@ English images and downloads are shared. Only English screenshots are committed.
 
 ## Optional translated screenshots
 
-Generation runs separately from Docker builds and deployment. It uses the existing Nightwatch recipes and isolated test application to capture translated interface labels, with fixed fictional example content. It never runs against the production database. The default output is the ignored `public/docs-screenshots/` directory. Vite builds directly into its own `public/vue/` directory, so a frontend rebuild cannot clear the screenshot cache.
+Generation runs separately from Docker builds and deployment. It uses the existing Playwright screenshot recipes and isolated test application to capture translated interface labels, with fixed fictional example content. It never runs against the production database. The default output is the ignored `public/docs-screenshots/` directory. Vite builds directly into its own `public/vue/` directory, so a frontend rebuild cannot clear the screenshot cache.
 
 ```bash
 bin/docs-screenshots all --status

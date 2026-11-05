@@ -60,7 +60,7 @@ v-main
     template(v-else)
       v-card.mb-2(v-if='bookmarks.length > 0')
         v-list(lines="two")
-          v-list-item(
+          v-list-item.bookmarks-page__bookmark(
             v-for="bookmark in bookmarks"
             :key="bookmark.id"
             :to="bookmark.url"
@@ -70,7 +70,7 @@ v-main
             v-list-item-title {{ bookmark.title }}
             v-list-item-subtitle {{ $t('bookmarks.subtitle', {type: bookmark.typeLabel(), name: bookmark.authorName}) }}
             template(v-slot:append)
-              v-btn(
+              v-btn.bookmarks-page__remove(
                 icon
                 variant="text"
                 :title="$t('action_dock.remove_bookmark')"

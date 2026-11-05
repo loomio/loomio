@@ -43,22 +43,19 @@ generate = lambda do
 
     Dir.mktmpdir("docs-screenshots-") do |directory|
       staging = Pathname(directory)
-      suite = staging.join("suite")
-      suite.mkpath
-      pending.group_by { |recipe, _| recipe.fetch("spec") }.each do |spec, captures|
-        cases = captures.map { |recipe, _| recipe.fetch("testcase") }.uniq
-        original = Docs::Screenshots::ROOT.join("vue/tests/e2e/screenshots", spec).to_s
-        suite.join(spec).write("const original = require(#{JSON.generate(original)});\nmodule.exports = Object.fromEntries(#{JSON.generate(cases)}.map(name => [name, original[name]]));\n")
-      end
+      # Select the pending specs and, within them, their test titles.
+      specs = pending.map { |recipe, _| "tests/playwright/screenshots/#{recipe.fetch("spec")}" }.uniq
+      titles = pending.map { |recipe, _| Regexp.escape(recipe.fetch("testcase")) }.uniq
       labels = staging.join("labels.json")
       labels.write(JSON.generate(Docs::Screenshots.labels(locale.app_locale)))
       environment = {
         "DOCS_SCREENSHOT_LOCALE" => locale.code, "DOCS_SCREENSHOT_APP_LOCALE" => locale.app_locale,
         "DOCS_SCREENSHOT_OUTPUT" => staging.join("images").to_s,
-        "DOCS_SCREENSHOT_LABELS" => labels.to_s, "NIGHTWATCH_SRC_FOLDERS" => suite.to_s,
-        "NIGHTWATCH_DEVICE_SCALE_FACTOR" => "2"
+        "DOCS_SCREENSHOT_LABELS" => labels.to_s,
+        "SCREENSHOT_DEVICE_SCALE_FACTOR" => "2"
       }
-      success = system(environment, Docs::Screenshots::ROOT.join("bin/e2e-screenshots").to_s, chdir: Docs::Screenshots::ROOT.to_s)
+      arguments = [*specs, "--grep", "(?:^| )(?:#{titles.join("|")})$"]
+      success = system(environment, Docs::Screenshots::ROOT.join("bin/e2e-screenshots").to_s, *arguments, chdir: Docs::Screenshots::ROOT.to_s)
       # A capture is written only after its test reached the documented state,
       # so keep every completed image even if the rest of the run failed.
       captured = pending.select { |recipe, _| staging.join("images", recipe.fetch("image")).file? }

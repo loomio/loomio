@@ -128,7 +128,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: '../public/vue',
 
-    // Prevent Vite from treating Nightwatch HTML reports as entries
+    // Prevent Vite from treating Playwright HTML reports as entries
     rollupOptions: {
       input: {
         app: path.resolve(__dirname, 'index.html'),
