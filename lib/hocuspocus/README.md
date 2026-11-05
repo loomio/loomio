@@ -50,7 +50,7 @@ Awareness carries presence: cursors and user names. `awareness.rb` follows the r
 
 Each Puma worker holds its own documents. Two people editing the same record may be connected to different workers, or different servers. Each process therefore subscribes to an Action Cable pub/sub channel for each document it has open. It publishes new updates and awareness changes there and applies what other processes publish.
 
-When a process opens a document, it asks the others for their state. Yjs merges are commutative and idempotent, so duplicate or reordered messages between processes are harmless. Loomio's Action Cable adapter is solid_cable, or Redis when it is configured.
+Pub/sub only delivers to subscriptions that are already active, and they activate some time after a process subscribes. So once its subscription is active, a process publishes its whole state with a greeting. Every peer that hears it merges that state and replies with its own. Whichever process subscribes last therefore exchanges state with all the others, including edits made while subscriptions were starting. If a publish fails, for example during a Redis or database outage, the process greets again with its whole state every few seconds until a greeting succeeds. That way processes catch up once pub/sub recovers. Yjs merges are commutative and idempotent, so duplicate or reordered messages between processes are harmless. Loomio's Action Cable adapter is solid_cable, or Redis when it is configured.
 
 ### Protocol coverage
 

@@ -105,6 +105,7 @@ module Hocuspocus
         next false unless @documents[document.name].equal?(document) && document.idle?
 
         @documents.delete(document.name)
+        @unsynced.delete(document)
       end
       unsubscribe(document) if unloaded
     end
@@ -124,17 +125,42 @@ module Hocuspocus
     end
 
     # Cross-process fan-out. Each process subscribes to a channel per loaded
-    # document. A newly loaded document asks the others for their state, and
-    # local updates and awareness changes are relayed to them. Remote messages
-    # are applied in order on a per-document queue; the CRDT makes duplicates
-    # and reordering between processes harmless.
+    # document, relays local updates and awareness changes there, and applies
+    # what the others publish, in order on a per-document queue. The CRDT
+    # makes duplicates and reordering between processes harmless.
+    #
+    # Subscriptions become active some time after they are requested, and
+    # messages published before then are not delivered. So once its
+    # subscription is active, a process publishes a "hello" carrying its whole
+    # state, and every process that receives it merges that state and replies
+    # with its own. Whichever process subscribes last therefore exchanges
+    # state with all the others, including edits made while subscriptions
+    # were starting.
+    #
+    # A failed publish loses that message for the other processes, and later
+    # updates may depend on it. The document is marked, and the ticker greets
+    # again with the whole state until a greeting goes through, so processes
+    # catch up once pub/sub recovers. Each outage is reported once per document.
+    #
+    # Returns true when the message was handed to pub/sub.
     def publish(document, type, data)
-      return unless config.pubsub
+      return true unless config.pubsub
 
       payload = JSON.generate("o" => @process_id, "t" => type, "d" => Base64.strict_encode64(data))
       config.pubsub.broadcast(channel(document), payload)
+      true
     rescue StandardError => e
-      report(e, document: document.name)
+      first_failure = @mutex.synchronize { @unsynced.add?(document) }
+      first_failure ? report(e, document: document.name) : logger&.debug("hocuspocus: publish still failing for #{document.name}")
+      false
+    end
+
+    # Greets again for documents whose messages failed to publish.
+    def resync
+      documents = @mutex.synchronize { @unsynced.select { |document| @documents[document.name].equal?(document) } }
+      documents.each do |document|
+        @mutex.synchronize { @unsynced.delete(document) } if greet(document)
+      end
     end
 
     private
@@ -149,6 +175,7 @@ module Hocuspocus
         @documents = {}
         @clients = Set.new
         @subscriptions = {}
+        @unsynced = Set.new
         @accepting = true
         @process_id = SecureRandom.hex(8)
         @executor = config.executor ||
@@ -174,6 +201,7 @@ module Hocuspocus
           update = document.expire_awareness
           publish(document, "awareness", update) if update
         end
+        resync
       rescue StandardError => e
         report(e, thread: "ticker")
       end
@@ -189,7 +217,7 @@ module Hocuspocus
       queue = SerialQueue.new(@executor, ->(error) { report(error, document: document.name) })
       callback = ->(payload) { queue.post { receive_remote(document, payload) } }
       @mutex.synchronize { @subscriptions[document] = callback }
-      config.pubsub.subscribe(channel(document), callback, -> { publish(document, "query", "") })
+      config.pubsub.subscribe(channel(document), callback, -> { queue.post { greet(document) } })
     rescue StandardError => e
       report(e, document: document.name)
     end
@@ -209,11 +237,22 @@ module Hocuspocus
       case message["t"]
       when "update" then document.apply_update(data)
       when "awareness" then document.apply_awareness(data)
-      when "query"
-        publish(document, "update", document.state)
-        awareness = document.awareness_update
-        publish(document, "awareness", awareness) if awareness
+      when "hello"
+        document.apply_update(data)
+        publish_state(document, "update")
       end
+    end
+
+    def greet(document)
+      publish_state(document, "hello")
+    end
+
+    # Returns true when the state was published.
+    def publish_state(document, type)
+      published = publish(document, type, document.state)
+      awareness = document.awareness_update
+      publish(document, "awareness", awareness) if awareness
+      published
     end
 
     def text_response(status, text)

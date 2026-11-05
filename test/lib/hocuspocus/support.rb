@@ -50,23 +50,35 @@ module HocuspocusTestSupport
     end
   end
 
-  # Delivers synchronously, like a pub/sub adapter shared by several servers.
+  # A pub/sub adapter shared by several servers. Messages reach only active
+  # subscriptions. With `deferred: true`, subscriptions stay inactive until
+  # #activate_next, as real adapters activate them some time after subscribe.
   class FakePubSub
-    def initialize
-      @subscribers = Hash.new { |hash, key| hash[key] = [] }
+    def initialize(deferred: false)
+      @deferred = deferred
+      @active = Hash.new { |hash, key| hash[key] = [] }
+      @pending = []
     end
 
     def subscribe(channel, callback, success_callback = nil)
-      @subscribers[channel] << callback
+      @pending << [channel, callback, success_callback]
+      activate_next unless @deferred
+    end
+
+    def activate_next
+      channel, callback, success_callback = @pending.shift
+      @active[channel] << callback
       success_callback&.call
     end
 
     def unsubscribe(channel, callback)
-      @subscribers[channel].delete(callback)
+      @active[channel].delete(callback)
     end
 
     def broadcast(channel, payload)
-      @subscribers[channel].dup.each { |callback| callback.call(payload) }
+      raise IOError, "pub/sub unavailable" if @failing
+
+      @active[channel].dup.each { |callback| callback.call(payload) }
     end
   end
 
@@ -85,6 +97,9 @@ module HocuspocusTestSupport
   def connect(server, env = {})
     socket = FakeSocket.new
     client = Hocuspocus::ClientConnection.new(server: server, socket: socket, env: env)
+    # Makes broadcasts raise, as during a Redis or database outage.
+    attr_writer :failing
+
     server.client_opened(client)
     [client, socket]
   end

@@ -150,6 +150,52 @@ class Hocuspocus::ServerTest < ActiveSupport::TestCase
     assert_includes bob_socket.decoded, ["doc", :sync, P::SYNC_UPDATE, @updates.second]
   end
 
+  test "processes exchange edits made while their subscriptions were starting" do
+    pubsub = FakePubSub.new(deferred: true)
+    first = build_server(pubsub: pubsub)
+    second = build_server(pubsub: pubsub)
+
+    alice, = connect(first)
+    alice.receive(auth_message("doc"))
+    alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.first))
+    bob, bob_socket = connect(second)
+    bob.receive(auth_message("doc"))
+    bob.receive(sync_message("doc", P::SYNC_UPDATE, @updates.second))
+
+    # Both edits were published before any subscription was active.
+    pubsub.activate_next
+    pubsub.activate_next
+
+    expected = Hocuspocus::Yjs.encode_state_vector_from_update(Hocuspocus::Yjs.merge_updates(@updates.first(2)))
+    assert_equal expected, first.documents["doc"].state_vector
+    assert_equal expected, second.documents["doc"].state_vector
+    assert(bob_socket.decoded.any? { |message| message[1] == :sync && message[2] == P::SYNC_UPDATE && message[3] != @updates.second })
+  end
+
+  test "processes catch up after publishing fails, once pub/sub recovers" do
+    pubsub = FakePubSub.new
+    errors = []
+    first = build_server(pubsub: pubsub) { |config| config.error_handler = ->(error, _context) { errors << error } }
+    second = build_server(pubsub: pubsub)
+    alice, = connect(first)
+    alice.receive(auth_message("doc"))
+    bob, = connect(second)
+    bob.receive(auth_message("doc"))
+
+    pubsub.failing = true
+    alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.first))
+    alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.second))
+    first.resync
+    assert_equal 1, errors.size, "an outage is reported once"
+
+    pubsub.failing = false
+    alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.third))
+    refute_equal first.documents["doc"].state_vector, second.documents["doc"].state_vector
+
+    first.resync
+    assert_equal first.documents["doc"].state_vector, second.documents["doc"].state_vector
+  end
+
   private
 
   def websocket_env(extra = {})
