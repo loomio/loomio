@@ -1,11 +1,15 @@
-// Generates yjs_vectors.json: random Yjs edits plus the results
+// Generates Yjs test vectors: random Yjs edits plus the results
 // of Yjs's own update operations, which the Ruby port must reproduce exactly.
 //
-//   node test/lib/hocuspocus/generate_yjs_vectors.mjs
+//   node test/lib/hocuspocus/generate_yjs_vectors.mjs [output path]
+//
+// The Ruby tests run this when the vectors are missing or out of date
+// (support.rb); the output goes to tmp/hocuspocus/yjs_vectors.json.
 //
 // Uses the yjs package installed for the Vue client.
 import { createRequire } from 'node:module';
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(new URL('../../../vue/package.json', import.meta.url));
@@ -81,7 +85,6 @@ function scenario(name, clientCount, steps, gc) {
     peer_state_vector: b64(peerVector),
     diff: b64(Y.diffUpdate(merged, peerVector)),
     diff_partial: b64(Y.diffUpdate(Y.mergeUpdates(partial), peerVector)),
-    full_state: b64(Y.encodeStateAsUpdate(docs[docs.length - 1])),
   };
 }
 
@@ -91,6 +94,8 @@ const scenarios = [
   scenario('five clients without gc', 5, 150, false),
   scenario('five clients with gc', 5, 150, true),
 ];
-const output = fileURLToPath(new URL('yjs_vectors.json', import.meta.url));
-writeFileSync(output, JSON.stringify({ yjs: require('yjs/package.json').version, scenarios }, null, 1) + '\n');
+const output = process.argv[2] || fileURLToPath(new URL('../../../tmp/hocuspocus/yjs_vectors.json', import.meta.url));
+mkdirSync(dirname(output), { recursive: true });
+const generator = readFileSync(fileURLToPath(import.meta.url), 'utf8');
+writeFileSync(output, JSON.stringify({ yjs: require('yjs/package.json').version, generator, scenarios }) + '\n');
 console.log(`wrote ${output}`);

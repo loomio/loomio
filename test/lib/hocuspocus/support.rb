@@ -2,7 +2,27 @@ require "base64"
 require_relative "../../../lib/hocuspocus"
 
 module HocuspocusTestSupport
-  VECTORS = JSON.parse(File.read(File.expand_path("yjs_vectors.json", __dir__)))
+  # Yjs's own results for random edits (see generate_yjs_vectors.mjs). They
+  # are generated into tmp/ rather than committed, and regenerated when Yjs in
+  # vue/node_modules or the generator changes.
+  def self.load_vectors
+    path = Rails.root.join("tmp/hocuspocus/yjs_vectors.json")
+    generator = File.read(File.expand_path("generate_yjs_vectors.mjs", __dir__))
+    yjs_package = Rails.root.join("vue/node_modules/yjs/package.json")
+    unless yjs_package.exist?
+      raise "Yjs test vectors need the Vue client's packages: run npm ci in vue/"
+    end
+
+    yjs_version = JSON.parse(yjs_package.read)["version"]
+    vectors = JSON.parse(path.read) if path.exist?
+    if vectors.nil? || vectors["yjs"] != yjs_version || vectors["generator"] != generator
+      system("node", File.expand_path("generate_yjs_vectors.mjs", __dir__), path.to_s, exception: true)
+      vectors = JSON.parse(path.read)
+    end
+    vectors
+  end
+
+  VECTORS = load_vectors
 
   class ImmediateExecutor
     def post
@@ -75,6 +95,9 @@ module HocuspocusTestSupport
       @active[channel].delete(callback)
     end
 
+    # Makes broadcasts raise, as during a Redis or database outage.
+    attr_writer :failing
+
     def broadcast(channel, payload)
       raise IOError, "pub/sub unavailable" if @failing
 
@@ -97,9 +120,6 @@ module HocuspocusTestSupport
   def connect(server, env = {})
     socket = FakeSocket.new
     client = Hocuspocus::ClientConnection.new(server: server, socket: socket, env: env)
-    # Makes broadcasts raise, as during a Redis or database outage.
-    attr_writer :failing
-
     server.client_opened(client)
     [client, socket]
   end
