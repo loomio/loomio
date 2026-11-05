@@ -106,6 +106,7 @@ module Hocuspocus
 
         @documents.delete(document.name)
         @unsynced.delete(document)
+        true
       end
       unsubscribe(document) if unloaded
     end

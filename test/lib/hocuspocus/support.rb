@@ -95,6 +95,10 @@ module HocuspocusTestSupport
       @active[channel].delete(callback)
     end
 
+    def subscriptions_count
+      @active.values.sum(&:size) + @pending.size
+    end
+
     # Makes broadcasts raise, as during a Redis or database outage.
     attr_writer :failing
 

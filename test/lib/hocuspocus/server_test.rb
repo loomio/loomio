@@ -89,15 +89,20 @@ class Hocuspocus::ServerTest < ActiveSupport::TestCase
     assert_equal [[], [], [42]], peer.apply(removal.last)
   end
 
-  test "unloads a document when its last connection closes" do
-    alice, = connect(@server, user: "member")
-    bob, = connect(@server, user: "member")
+  test "unloads a document and unsubscribes when its last connection closes" do
+    pubsub = FakePubSub.new
+    server = build_server(pubsub: pubsub)
+    alice, = connect(server)
+    bob, = connect(server)
     [alice, bob].each { |client| client.receive(auth_message("doc")) }
+    assert_equal 1, pubsub.subscriptions_count
 
     alice.socket_closed
-    assert @server.documents.key?("doc")
+    assert server.documents.key?("doc")
+    assert_equal 1, pubsub.subscriptions_count
     bob.receive(client_message("doc", P::CLOSE))
-    assert_empty @server.documents
+    assert_empty server.documents
+    assert_equal 0, pubsub.subscriptions_count
   end
 
   test "closes sockets that send malformed messages" do
