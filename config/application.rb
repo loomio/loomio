@@ -42,7 +42,7 @@ module Loomio
     config.force_ssl = ENV['FORCE_SSL'].present?
     config.assume_ssl = ENV['ASSUME_SSL'].present?
 
-    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(email_processor|up|hocuspocus|inbound_emails)/ } } }
+    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(email_processor|up|inbound_emails)/ } } }
 
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
@@ -132,6 +132,6 @@ module Loomio
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.add_autoload_paths_to_load_path = false
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.autoload_lib(ignore: %w[assets tasks collab_server collab_server.rb])
   end
 end

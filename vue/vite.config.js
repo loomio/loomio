@@ -87,6 +87,10 @@ export default defineConfig({
         target: 'ws://localhost:3000',
         ws: true,
       },
+      '/collab_server': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
     },
   },
 

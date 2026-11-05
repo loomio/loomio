@@ -20,7 +20,7 @@ Keep `backup.sh` and `restore.sh` in `/root/loomio-deploy`.
 
 ```sh
 cd /root/loomio-deploy
-docker compose stop app worker haraka hocuspocus
+docker compose stop app worker haraka
 bash ./backup.sh
 docker compose up -d
 ```

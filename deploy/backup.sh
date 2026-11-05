@@ -41,7 +41,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 docker compose ps --services --status running > "$stage/running"
 while IFS= read -r service; do
-  case "$service" in app|worker|haraka|hocuspocus) stopped+=("$service");; esac
+  case "$service" in app|worker|haraka) stopped+=("$service");; esac
 done < "$stage/running"
 echo "Stopping application services while copying database and deployment files..." >&2
 if ((${#stopped[@]})); then docker compose stop -t 120 "${stopped[@]}"; fi

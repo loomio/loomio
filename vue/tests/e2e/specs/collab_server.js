@@ -1,11 +1,11 @@
 const pageHelper = require('../helpers/pageHelper')
 const { randomUUID } = require('node:crypto')
 
-const DRAFT_TEXT  = 'hocuspocus draft persistence test'
+const DRAFT_TEXT  = 'collaborative draft persistence test'
 const EDITOR      = '.comment-form .ProseMirror'
 const SUBMIT_BTN  = '.comment-form__submit-button'
 
-const hocuspocusServer = require('../helpers/hocuspocusServer')
+const collabServer = require('../helpers/collabServer')
 
 const DESCRIPTION = '.discussion-form .ProseMirror'
 const SAVED       = 'Saved description'
@@ -61,7 +61,7 @@ module.exports = {
         test.window.close()
       })
       test.window.switchTo(value[0])
-      test.perform(() => hocuspocusServer.start())
+      test.perform(() => collabServer.start())
       test.perform(() => done())
     })
   },
@@ -76,7 +76,7 @@ module.exports = {
   },
 
   // Types a draft, reloads (IndexedDB intact), and checks the draft survives.
-  // Hocuspocus is a real-time relay; single-user draft persistence is IndexedDB.
+  // The collaboration server is a real-time relay; single-user draft persistence is IndexedDB.
   'restores_draft_after_reload': (test) => {
     const page = pageHelper(test)
     page.loadPath('setup_discussion')
@@ -110,13 +110,13 @@ module.exports = {
   // away must survive, then reach the server when it returns.
   'keeps_text_typed_while_server_is_down': (test) => {
     const page = pageHelper(test)
-    test.perform(() => hocuspocusServer.stop())
+    test.perform(() => collabServer.stop())
     openDescriptionEditor(page, test)
     typeAtEnd(test, DESCRIPTION, ' typed offline')
     page.pause(3000)
     test.expect.element(DESCRIPTION).text.to.contain('typed offline')
     expectOccurrences(test, DESCRIPTION, SAVED, 1)
-    test.perform(() => hocuspocusServer.start())
+    test.perform(() => collabServer.start())
     page.pause(3000)
     test.expect.element(DESCRIPTION).text.to.contain('typed offline')
     expectOccurrences(test, DESCRIPTION, SAVED, 1)
@@ -150,8 +150,8 @@ module.exports = {
     test.url(({ value: editUrl }) => {
       page.goTo('dashboard')
       test.waitForElementPresent('.app-is-booted', 15000)
-      test.perform(() => hocuspocusServer.stop())
-      test.perform(() => hocuspocusServer.start())
+      test.perform(() => collabServer.stop())
+      test.perform(() => collabServer.start())
       test.url(editUrl)
     })
     test.waitForElementPresent(DESCRIPTION, 15000)
@@ -167,7 +167,7 @@ module.exports = {
     const page = pageHelper(test)
     openDescriptionEditor(page, test)
     openSecondTab(test)
-    test.perform(() => hocuspocusServer.stop())
+    test.perform(() => collabServer.stop())
 
     typeAtEnd(test, DESCRIPTION, ' B offline')
     switchToTab(test, 0)
@@ -175,7 +175,7 @@ module.exports = {
     page.pause(2000)
     test.expect.element(DESCRIPTION).text.to.not.contain('B offline')
 
-    test.perform(() => hocuspocusServer.start())
+    test.perform(() => collabServer.start())
     test.expect.element(DESCRIPTION).text.to.contain('B offline').before(30000)
     expectOccurrences(test, DESCRIPTION, SAVED, 1)
 

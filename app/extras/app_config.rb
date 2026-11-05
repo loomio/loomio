@@ -113,7 +113,6 @@ class AppConfig
       grey800: "#121212",
       white: "#FFFFFF"
     }
-    default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:4444"
 
     light = {
       background: ENV['THEME_LIGHT_BACKGROUND'],
@@ -160,7 +159,6 @@ class AppConfig
       site_name: ENV.fetch('SITE_NAME', 'Loomio'),
       site_short_name: ENV.fetch('SITE_SHORT_NAME', ENV.fetch('SITE_NAME', 'Loomio')),
       site_description: ENV.fetch('SITE_DESCRIPTION', I18n.t('email.loomio_app_description')),
-      hocuspocus_url: ENV.fetch('HOCUSPOCUS_URL', default_hocuspocus_url),
       terms_url: ENV['TERMS_URL'],
       privacy_url: ENV['PRIVACY_URL'],
       canonical_host: ENV['CANONICAL_HOST'],

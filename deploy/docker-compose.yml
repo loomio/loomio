@@ -129,18 +129,6 @@ services:
     volumes:
       - certs:/etc/nginx/certs:ro
 
-  hocuspocus:
-    container_name: loomio-hocuspocus
-    image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
-    restart: unless-stopped
-    networks:
-      - main
-    env_file: ./.env
-    environment:
-      - TASK=hocuspocus
-      - VIRTUAL_HOST=hocuspocus.${CANONICAL_HOST}
-      - ACME_HOST=hocuspocus.${CANONICAL_HOST}
-
 networks:
   main:
 
