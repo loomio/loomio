@@ -98,8 +98,17 @@ module HocuspocusTestSupport
     # Makes broadcasts raise, as during a Redis or database outage.
     attr_writer :failing
 
+    # Runs once, just before the next greeting is delivered.
+    attr_writer :before_hello
+
     def broadcast(channel, payload)
       raise IOError, "pub/sub unavailable" if @failing
+
+      if @before_hello && JSON.parse(payload)["t"] == "hello"
+        hook = @before_hello
+        @before_hello = nil
+        hook.call
+      end
 
       @active[channel].dup.each { |callback| callback.call(payload) }
     end

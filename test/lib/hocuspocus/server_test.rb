@@ -196,6 +196,32 @@ class Hocuspocus::ServerTest < ActiveSupport::TestCase
     assert_equal first.documents["doc"].state_vector, second.documents["doc"].state_vector
   end
 
+  test "a publish that fails while a resync is under way is repaired by the next one" do
+    pubsub = FakePubSub.new
+    first = build_server(pubsub: pubsub)
+    second = build_server(pubsub: pubsub)
+    alice, = connect(first)
+    alice.receive(auth_message("doc"))
+    bob, = connect(second)
+    bob.receive(auth_message("doc"))
+
+    pubsub.failing = true
+    alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.first))
+    pubsub.failing = false
+
+    # After the greeting's state is taken, another edit fails to publish.
+    pubsub.before_hello = lambda do
+      pubsub.failing = true
+      alice.receive(sync_message("doc", P::SYNC_UPDATE, @updates.second))
+      pubsub.failing = false
+    end
+    first.resync
+    refute_equal first.documents["doc"].state_vector, second.documents["doc"].state_vector
+
+    first.resync
+    assert_equal first.documents["doc"].state_vector, second.documents["doc"].state_vector
+  end
+
   private
 
   def websocket_env(extra = {})

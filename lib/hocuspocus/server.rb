@@ -141,6 +141,8 @@ module Hocuspocus
     # updates may depend on it. The document is marked, and the ticker greets
     # again with the whole state until a greeting goes through, so processes
     # catch up once pub/sub recovers. Each outage is reported once per document.
+    # The mark counts failures, so one that happens while a greeting is under
+    # way keeps the document marked for the next attempt.
     #
     # Returns true when the message was handed to pub/sub.
     def publish(document, type, data)
@@ -150,16 +152,22 @@ module Hocuspocus
       config.pubsub.broadcast(channel(document), payload)
       true
     rescue StandardError => e
-      first_failure = @mutex.synchronize { @unsynced.add?(document) }
+      first_failure = @mutex.synchronize do
+        failures = @unsynced[document]
+        @unsynced[document] = failures.to_i + 1
+        failures.nil?
+      end
       first_failure ? report(e, document: document.name) : logger&.debug("hocuspocus: publish still failing for #{document.name}")
       false
     end
 
     # Greets again for documents whose messages failed to publish.
     def resync
-      documents = @mutex.synchronize { @unsynced.select { |document| @documents[document.name].equal?(document) } }
-      documents.each do |document|
-        @mutex.synchronize { @unsynced.delete(document) } if greet(document)
+      pending = @mutex.synchronize { @unsynced.select { |document, _failures| @documents[document.name].equal?(document) } }
+      pending.each do |document, failures|
+        next unless greet(document)
+
+        @mutex.synchronize { @unsynced.delete(document) if @unsynced[document] == failures }
       end
     end
 
@@ -175,7 +183,7 @@ module Hocuspocus
         @documents = {}
         @clients = Set.new
         @subscriptions = {}
-        @unsynced = Set.new
+        @unsynced = {} # document => failed publishes since its last greeting
         @accepting = true
         @process_id = SecureRandom.hex(8)
         @executor = config.executor ||
