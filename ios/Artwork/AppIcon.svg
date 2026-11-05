@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#fff"/>
+  <!-- Use the existing Loomio mark with the same inset as public/brand/icon-maskable-512.png. -->
+  <g transform="translate(152 152) scale(11.25)" fill="#F5C401">
+    <path d="M8 10h8v36h26v8H8z"/>
+    <circle cx="54" cy="49" r="5"/>
+  </g>
+</svg>

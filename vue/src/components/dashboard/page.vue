@@ -4,6 +4,7 @@ import Records        from '@/shared/services/records';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import RecordLoader   from '@/shared/services/record_loader';
+import { dashboardParams } from '@/shared/services/navigation_data';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const { watchRecords } = useWatchRecords();
@@ -55,10 +56,7 @@ function refresh() {
 function init() {
   loader.value = new RecordLoader({
     collection: 'topics',
-    params: {
-      per: 30,
-      exclude_types: 'reaction'
-    }
+    params: dashboardParams
   });
 
   watchRecords({
@@ -127,6 +125,4 @@ v-main
                 v-for="topic in topics"
                 :key="topic.id"
                 :topic="topic")
-          .dashboard-page__footer(v-if='!loader.exhausted')
-          loading(v-show='loader.loading')
 </template>

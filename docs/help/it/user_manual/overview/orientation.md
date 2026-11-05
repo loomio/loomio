@@ -1,26 +1,28 @@
 ---
 title: Panoramica rapida
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: 05ee70f7762cd79c
 generated:
   introduction: f3bb6a4c8087a22b
   group-page: b00fd40a5e58b279
   tabs: a818e3ed0a0c20a8
-  sidebar: 4a41faf2745b15fe
+  sidebar: ad5d3db7aaf7a4cb
   user-settings: 899e59b9e128b1e8
-  notifications: '0767490815e4b9ae'
+  notifications: f07fbdf02f1f7cdd
   what-to-do-next: 1f6b6022f77503a7
+  mobile-navigation: 0f2317a21ac11bf6
 title_source: c41a33370cd580dd
 title_generated: 1567395c8aacbba6
 ---
@@ -59,7 +61,7 @@ Consulta [Trovare contenuti](/en/user_manual/overview/finding-content) per infor
 
 ## Barra laterale
 
-Apri la barra laterale con il pulsante del menu (**☰**) in alto a sinistra.
+Apri la barra laterale con il pulsante del menu (**☰**) in alto a sinistra sul computer o nella barra di navigazione in basso sui dispositivi mobili.
 
 ![](sidebar.png)
 
@@ -79,11 +81,21 @@ Usa questo menu per modificare il tuo profilo, cambiare le impostazioni delle no
 
 ## Notifiche
 
-Il pulsante con la campanella in alto a destra apre le tue notifiche nell'app. Un indicatore appare quando hai notifiche che non hai ancora visualizzato.
+Il pulsante con la campanella in alto a destra sul computer o nella barra di navigazione in basso sui dispositivi mobili apre le tue notifiche nell'app. Un indicatore appare quando hai notifiche che non hai ancora visualizzato.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Consulta [Notifiche](/en/user_manual/users/email_settings) per informazioni sulle notifiche nell'app, sulle preferenze email e sulle impostazioni delle notifiche per gruppi e discussioni.
+
+<!-- translation-section: mobile-navigation -->
+
+## Navigazione sui dispositivi mobili e caricamento
+
+Le icone nella barra di navigazione in basso aprono la barra laterale, la dashboard e le notifiche. Quando leggi una conversazione, la barra include anche un pulsante che apre il menu della conversazione, con i contenuti e le azioni disponibili. La ricerca è disponibile dalla dashboard. La barra del titolo mostra il titolo della pagina quando, scorrendo, l'intestazione non è più visibile.
+
+Loomio mostra i contenuti già presenti nella sessione corrente mentre verifica la disponibilità di aggiornamenti. Un indicatore di caricamento in alto a destra nella barra del titolo segnala quando vengono recuperati i dati. La dashboard, i sondaggi in attesa del tuo voto e le notifiche vengono caricati in background dopo l'avvio; il recupero delle notifiche non le contrassegna come visualizzate.
+
+Le conversazioni si aprono dall'inizio. Seleziona **Più recente** per passare all'attività più recente. I collegamenti a un commento o a un sondaggio specifico continuano ad aprire direttamente quell'elemento.
 
 <!-- translation-section: what-to-do-next -->
 

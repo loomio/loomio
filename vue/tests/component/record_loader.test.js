@@ -9,6 +9,18 @@ vi.mock('@/shared/services/records', () => ({
 import RecordLoader from '@/shared/services/record_loader';
 
 describe('RecordLoader.fetchRecords', () => {
+  it('advances and resets limit/offset pagination without legacy parameters', async () => {
+    mocks.fetch.mockResolvedValue({meta: {total: 31}});
+    const loader = new RecordLoader({collection: 'attachments', params: {limit: 30}});
+    await loader.fetchRecords();
+    expect(loader.params).toEqual({limit: 30, offset: 30, order: 'id'});
+    expect(loader.exhausted).toBe(false);
+    await loader.fetchRecords();
+    expect(loader.exhausted).toBe(true);
+    loader.reset();
+    expect(loader.params.offset).toBe(0);
+  });
+
   it('clears a network error once a later request succeeds', async () => {
     const loader = new RecordLoader({collection: 'attachments'});
 

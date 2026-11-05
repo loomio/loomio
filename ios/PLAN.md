@@ -14,7 +14,7 @@ Start with one host, but model connections by host ID/origin so multi-host suppo
 - Notification links open the exact page inside the contained Loomio application. Unrelated external links open in the system browser.
 - Authenticate through an Apple system web-authentication session rather than inside `WKWebView`. This is required because Cloudflare challenges can block or loop in embedded browsers.
 - Register an unauthenticated `loomio://connect?config=...` URL for websites and QR codes to propose a host configuration. Always validate and confirm it before fetching configuration or starting authentication.
-- Build and operate a separate push relay that can serve Loomio Cloud and private hosts. The relay does not currently exist and is part of this project.
+- Build and operate a separate push relay that can serve Loomio Cloud and private hosts. The implementation is under `push-relay/`; production deployment remains pending.
 - Do not use Capacitor `server.url`; it is documented as a development/live-reload facility rather than a production remote-app architecture.
 
 ## Authentication architecture
@@ -86,6 +86,9 @@ Hide subscription purchase, upgrade, checkout, and other external-purchase calls
 The development machine has Xcode 26.2, Swift 6.2.3, and iOS 26.3 simulator devices available through CoreSimulator. The app targets iOS 26, and its current unit/UI suite passes on an iPhone 17 Pro simulator. Production signing, Apple Developer agreements, bundle registration, App Store metadata, relay hosting, APNs key provisioning, and release remain human-approved actions. Do not commit certificates, provisioning profiles, relay secrets, APNs signing keys, or Apple credentials.
 
 ## Open decisions
+
+- Apple push notifications: provision separate production and sandbox APNs keys, deploy and configure the production relay, then verify delivery and notification links on the connected iPhone. The native registration, host integration, environment-specific signing keys, and deployment stack already exist. On 2026-10-20, the 17 iOS unit tests, 2 UI tests (including the default host choices), and 15 relay tests passed; the deployment configuration and an isolated Nginx rate-limit/client-address probe also passed. No production relay or host configuration was changed.
+- Later interface idea: hide the mobile title bar while scrolling down, and reveal it when scrolling up or while data is loading. Keep content position stable during these transitions.
 
 - Final production bundle identifier/client ID and callback scheme replacing the provisional values in the v1 mobile-auth specification.
 - Cloudflare rules for the mobile-auth endpoints and how equivalent controls are documented for private hosts using other edge providers.

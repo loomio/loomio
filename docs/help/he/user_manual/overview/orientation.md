@@ -1,26 +1,28 @@
 ---
 title: סיור קצר
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-10-22'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: 05ee70f7762cd79c
 generated:
   introduction: 3e9287ac4d78b250
   group-page: 98765f293b742554
   tabs: 1e4c11b6090a90d8
-  sidebar: e80242dca9ba089f
+  sidebar: 7eaad5263bbc88d8
   user-settings: c5c5ba855c72c8b8
-  notifications: 2e669a4b04e1e1df
+  notifications: 5a577912e35ca24c
   what-to-do-next: f0b31faa552ccb51
+  mobile-navigation: 4635cc5797179921
 title_source: c41a33370cd580dd
 title_generated: 5352bebcbe636bfe
 needs_review:
@@ -62,7 +64,7 @@ needs_review:
 
 ## סרגל הצד
 
-כדי לפתוח את סרגל הצד, יש להשתמש בכפתור התפריט (**☰**) שבפינה השמאלית העליונה.
+כדי לפתוח את סרגל הצד, יש להשתמש בכפתור התפריט (**☰**) שבפינה השמאלית העליונה במחשב, או בסרגל הניווט התחתון בנייד.
 
 ![](sidebar.png)
 
@@ -82,11 +84,21 @@ needs_review:
 
 ## התראות
 
-כפתור הפעמון שבפינה הימנית העליונה פותח את ההתראות בתוך היישום. כאשר יש התראות שטרם נצפו, מופיע סימון על הכפתור.
+כפתור הפעמון שבפינה הימנית העליונה במחשב, או בסרגל הניווט התחתון בנייד, פותח את ההתראות בתוך היישום. כאשר יש התראות שטרם נצפו, מופיע סימון על הכפתור.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 למידע על התראות בתוך היישום, העדפות דוא״ל והגדרות התראות לקבוצות ולדיונים, ניתן לעיין בעמוד [התראות](/en/user_manual/users/email_settings).
+
+<!-- translation-section: mobile-navigation -->
+
+## ניווט וטעינה בנייד
+
+הסמלים בסרגל הניווט התחתון פותחים את סרגל הצד, לוח הבקרה וההתראות. בעת קריאת שרשור, מופיע בו גם כפתור תפריט השרשור, המאפשר גישה לתוכן העניינים ולפעולות בשרשור. ניתן לחפש דרך לוח הבקרה. סרגל הכותרת מציג את כותרת העמוד כאשר הכותרת נגללת אל מחוץ לתצוגה.
+
+Loomio מציג תוכן שכבר נשמר בהפעלה הנוכחית בזמן בדיקת עדכונים. מחוון טעינה בפינה הימנית העליונה של סרגל הכותרת מציין מתי מתבצעת שליפת נתונים. לוח הבקרה, סקרים הממתינים להצבעה והתראות נטענים ברקע לאחר ההפעלה; שליפת התראות אינה מסמנת אותן ככאלה שנצפו.
+
+שרשורים נפתחים בתחילתם. כדי לעבור לפעילות החדשה ביותר, יש לבחור **אחרונים**. קישורים לתגובה או לסקר מסוימים ממשיכים לפתוח את הפריט שאליו הם מפנים.
 
 <!-- translation-section: what-to-do-next -->
 

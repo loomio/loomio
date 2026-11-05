@@ -1,9 +1,28 @@
 import crypto from "node:crypto";
+import fs from "node:fs";
 
 function required(name, env) {
   const value = env[name]?.trim();
   if (!value) throw new Error(`${name} is required`);
   return value;
+}
+
+function signingKey(env, keyIdName, privateKeyName) {
+  const keyId = required(keyIdName, env);
+  if (!/^[A-Z0-9]{10}$/.test(keyId)) throw new Error(`${keyIdName} must be a 10-character Apple key ID`);
+
+  const keyFileName = `${privateKeyName}_FILE`;
+  if (env[privateKeyName]?.trim() && env[keyFileName]?.trim()) {
+    throw new Error(`Set only one of ${privateKeyName} or ${keyFileName}`);
+  }
+  const privateKey = env[keyFileName]?.trim()
+    ? fs.readFileSync(env[keyFileName].trim(), "utf8").trim()
+    : required(privateKeyName, env).replaceAll("\\n", "\n");
+  let parsedPrivateKey;
+  try { parsedPrivateKey = crypto.createPrivateKey(privateKey); }
+  catch { throw new Error(`${privateKeyName} must be a valid private key`); }
+  if (parsedPrivateKey.asymmetricKeyType !== "ec") throw new Error(`${privateKeyName} must be an EC private key`);
+  return { keyId, privateKey };
 }
 
 export function loadConfig(env = process.env) {
@@ -16,15 +35,11 @@ export function loadConfig(env = process.env) {
   if (!Number.isInteger(port) || port < 1 || port > 65_535) throw new Error("PORT must be an integer from 1 to 65535");
 
   const teamId = required("APNS_TEAM_ID", env);
-  const keyId = required("APNS_KEY_ID", env);
   if (!/^[A-Z0-9]{10}$/.test(teamId)) throw new Error("APNS_TEAM_ID must be a 10-character Apple team ID");
-  if (!/^[A-Z0-9]{10}$/.test(keyId)) throw new Error("APNS_KEY_ID must be a 10-character Apple key ID");
-
-  const privateKey = required("APNS_PRIVATE_KEY", env).replaceAll("\\n", "\n");
-  let parsedPrivateKey;
-  try { parsedPrivateKey = crypto.createPrivateKey(privateKey); }
-  catch { throw new Error("APNS_PRIVATE_KEY must be a valid private key"); }
-  if (parsedPrivateKey.asymmetricKeyType !== "ec") throw new Error("APNS_PRIVATE_KEY must be an EC private key");
+  const production = signingKey(env, "APNS_KEY_ID", "APNS_PRIVATE_KEY");
+  const sandboxConfigured = ["APNS_SANDBOX_KEY_ID", "APNS_SANDBOX_PRIVATE_KEY", "APNS_SANDBOX_PRIVATE_KEY_FILE"]
+    .some(name => env[name]?.trim());
+  const sandbox = sandboxConfigured ? signingKey(env, "APNS_SANDBOX_KEY_ID", "APNS_SANDBOX_PRIVATE_KEY") : null;
 
   return {
     port,
@@ -33,8 +48,8 @@ export function loadConfig(env = process.env) {
     allowPrivateHosts: Object.hasOwn(env, "ALLOW_PRIVATE_HOSTS"),
     apns: {
       teamId,
-      keyId,
-      privateKey,
+      ...production,
+      sandbox,
       topic: required("APNS_TOPIC", env)
     }
   };

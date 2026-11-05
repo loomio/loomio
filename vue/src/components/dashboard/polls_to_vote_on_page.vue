@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { escapeRegExp, filter } from 'lodash-es';
 import { subDays } from 'date-fns';
@@ -8,23 +8,14 @@ import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
+import { votePollParams } from '@/shared/services/navigation_data';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
 
 const votePolls = ref([]);
 const loader = ref(null);
-const watchedRecords = ref([]);
-
-const watchRecordsFunc = (options) => {
-  const { collections, query, key } = options;
-  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
-  watchedRecords.value.push(name);
-  Records.view({
-    name,
-    collections,
-    query
-  });
-};
+const { watchRecords } = useWatchRecords();
 
 const findRecords = () => {
   const groupIds = Session.user().groupIds();
@@ -47,15 +38,12 @@ const findRecords = () => {
 
 loader.value = new RecordLoader({
   collection: 'polls',
-  params: {
-    exclude_types: 'group reaction',
-    status: 'recent'
-  }
+  params: votePollParams
 });
 
 loader.value.fetchRecords();
 
-watchRecordsFunc({
+watchRecords({
   collections: ['polls', 'groups', 'memberships', 'stances'],
   query: () => findRecords()
 });
@@ -65,10 +53,6 @@ onMounted(() => {
     titleKey: 'dashboard_page.polls_to_vote_on',
     page: 'pollsToVoteOnPage'
   });
-});
-
-onUnmounted(() => {
-  watchedRecords.value.forEach(name => delete Records.views[name]);
 });
 
 const titleVisible = (visible) => {
