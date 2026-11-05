@@ -35,6 +35,8 @@ class Dev::ScenariosController < Dev::BaseController
     :publish_private_poll_update_after_removal,
     :view_email_catch_up_settings,
     :view_thread_email_settings,
+    :collab_server_stop,
+    :collab_server_start,
   ].freeze
   before_action :reset_transient_state, except: CONTINUATION_ACTIONS
   before_action :reset_database, except: CONTINUATION_ACTIONS

@@ -28,7 +28,7 @@ bin/e2e --headed poll                    # watch the browser
 bin/e2e --skip-build poll                # reuse the existing Vue build
 ```
 
-The script handles: Vue build, db:prepare, starting/stopping hocuspocus and the Rails server, and running Playwright. Other arguments are passed to `playwright test`.
+The script handles: Vue build, db:prepare, starting and stopping the Rails server (which also serves collaborative editing), and running Playwright. Other arguments are passed to `playwright test`.
 
 Always let `bin/e2e` build Vue assets unless you have just built them. Running against freshly built assets avoids stale-client failures.
 

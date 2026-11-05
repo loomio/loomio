@@ -8,7 +8,7 @@ import { collabSeed, SEED_FIELD } from '@/components/lmo_textarea/collab_seed';
 vi.mock('@/shared/services/session', () => ({ default: { user: () => ({ id: 42 }) } }));
 
 // Opening a saved discussion description can find draft state in two places:
-// the hocuspocus server's in-memory document and this browser's IndexedDB.
+// the collaboration server's in-memory document and this browser's IndexedDB.
 // Each may be absent or hold edits made on top of the saved content. Whatever
 // combination arrives, in whatever order, the saved content must appear once
 // and every edit must survive.
@@ -91,7 +91,7 @@ describe('opening a collaborative discussion description', () => {
     expect(tabB.editor.getHTML()).toBe(tabA.editor.getHTML());
   });
 
-  // The hocuspocus sync protocol: each side sends what the other lacks.
+  // The Hocuspocus sync protocol: each side sends what the other lacks.
   const connect = (client, server) => {
     Y.applyUpdate(server, Y.encodeStateAsUpdate(client.doc, Y.encodeStateVector(server)));
     Y.applyUpdate(client.doc, Y.encodeStateAsUpdate(server, Y.encodeStateVector(client.doc)));

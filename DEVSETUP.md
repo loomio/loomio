@@ -106,7 +106,7 @@ rake db:setup
 
 ## Launch rails and npm serve
 
-We have a Procfile.dev that can start rails, vite and hocuspocus all at once.
+We have a Procfile.dev that can start rails, the job worker and vite all at once.
 
 ```
 bin/dev

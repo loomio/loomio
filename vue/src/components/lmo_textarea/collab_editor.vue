@@ -3,7 +3,6 @@ import { ref, computed, watch, onMounted, onBeforeUnmount, toRef } from 'vue';
 import { useDisplay } from 'vuetify';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import AppConfig from '@/shared/services/app_config';
 import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
@@ -326,15 +325,15 @@ onMounted(() => {
   const extensions = contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value });
   seedHtml = props.model[props.field] || '';
   const seed = collabSeed(seedHtml, extensions);
-  const docname = [props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token)), seed.hash].join('-');
+  const docname = [props.model.collabKey(props.field, Session.user().id), seed.hash].join('-');
   ydoc = new Y.Doc();
   Y.applyUpdate(ydoc, seed.update);
 
   hocusProvider = new HocuspocusProvider({
-    url: AppConfig.theme.hocuspocus_url,
+    // Served by Rails (lib/collab_server), which identifies the user by session cookie.
+    url: `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/collab_server`,
     name: docname,
     document: ydoc,
-    token: (Session.user().id || 0) + "," + AppConfig.channel_token,
     onSynced: () => { serverSynced.value = true; },
     onClose: () => { serverSynced.value = false; },
   });

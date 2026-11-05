@@ -78,7 +78,7 @@ class Rack::Attack
   end
 
   # Allowlist for first-party services that egress over the public internet
-  # (hocuspocus auth callbacks, hakara inbound-email relay, etc). Set
+  # (the haraka inbound-email relay, etc). Set
   # TRUSTED_INGRESS_IPS to a comma-separated list of IPs or CIDRs.
   TRUSTED_INGRESS_IPS = ENV.fetch('TRUSTED_INGRESS_IPS', '')
                           .split(',')

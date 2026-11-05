@@ -30,11 +30,6 @@ RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
 RUN cp "$(node -e "const name = '@pagefind/' + process.platform + '-' + process.arch + '/bin/pagefind_extended'; process.stdout.write(require.resolve(name))")" /tmp/pagefind
 RUN cp node_modules/pagefind/LICENSE/LICENSE /tmp/pagefind-LICENSE
 
-# Install hocuspocus dependencies
-WORKDIR /build/hocuspocus
-COPY hocuspocus/package.json hocuspocus/package-lock.json ./
-RUN npm ci --no-audit --no-fund
-
 FROM ruby:${RUBY_VERSION}-slim
 
 ENV MALLOC_ARENA_MAX=2 \
@@ -109,8 +104,6 @@ COPY --from=nodebuild /build/public/vue /loomio/vue-build
 RUN ln -s client3 /loomio/public/vue && \
     ln -s client3/docs-screenshots /loomio/public/docs-screenshots
 
-# Copy Node.js binary and hocuspocus dependencies from nodebuild stage
-COPY --from=nodebuild /build/hocuspocus/node_modules /loomio/hocuspocus/node_modules
 
 EXPOSE 80
 

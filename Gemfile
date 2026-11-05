@@ -62,6 +62,8 @@ gem 'actionpack-cloudflare'
 gem 'victor', require: false
 gem 'web-push'
 gem 'webauthn'
+gem 'websocket-driver' # lib/collab_server
+gem 'nio4r' # lib/collab_server
 
 group :development, :test do
   gem 'byebug'

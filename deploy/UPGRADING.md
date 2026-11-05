@@ -15,6 +15,18 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 ./update.sh
 ```
 
+## Collaborative editing runs in the app
+
+The app container now serves collaborative editing at `/collab_server` on your main hostname. The separate `hocuspocus` container is gone.
+
+After upgrading:
+
+- Remove `HOCUSPOCUS_URL` from `.env`.
+- Run `docker compose up -d --remove-orphans` to remove the old `hocuspocus` container.
+- Remove the `hocuspocus.` DNS record if nothing else uses it.
+
+If a proxy sits in front of the app, it must pass WebSocket upgrades for `/collab_server` as it does for `/cable`.
+
 ## User and Server API paths
 
 The User API moves to `/api/user0` and the Server API to `/api/server0`. The number increases when a release breaks one of these APIs. `/api/b2` and `/api/b3` still work and will be removed in a later release.

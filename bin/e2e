@@ -14,11 +14,9 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RAILS_PID=""
-HOCUSPOCUS_PID=""
 BUILD=true
 PW_ARGS=()
 E2E_PORT="${E2E_PORT:-3001}"
-HOCUSPOCUS_PORT="${HOCUSPOCUS_PORT:-4445}"
 
 for arg in "$@"; do
   if [ "$arg" = "--skip-build" ]; then
@@ -29,14 +27,6 @@ for arg in "$@"; do
 done
 
 cleanup() {
-  if [ -n "$HOCUSPOCUS_PID" ]; then
-    kill "$HOCUSPOCUS_PID" 2>/dev/null || true
-    wait "$HOCUSPOCUS_PID" 2>/dev/null || true
-  fi
-  # Specs may restart hocuspocus (see vue/tests/playwright/helpers/hocuspocusServer.mjs).
-  if [ -n "${HOCUSPOCUS_PORT:-}" ]; then
-    lsof -ti "tcp:$HOCUSPOCUS_PORT" -sTCP:LISTEN 2>/dev/null | xargs kill 2>/dev/null || true
-  fi
   if [ -n "$RAILS_PID" ]; then
     kill "$RAILS_PID" 2>/dev/null || true
     wait "$RAILS_PID" 2>/dev/null || true
@@ -52,21 +42,9 @@ fi
 echo "==> Preparing test database..."
 RAILS_ENV=test bundle exec rails db:prepare
 
-echo "==> Starting hocuspocus server on port $HOCUSPOCUS_PORT..."
-APP_URL="http://localhost:$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" node "$ROOT/hocuspocus/server.mjs" > "$ROOT/tmp/hocuspocus-e2e.log" 2>&1 &
-HOCUSPOCUS_PID=$!
-for i in $(seq 1 10); do
-  if nc -z localhost "$HOCUSPOCUS_PORT" 2>/dev/null; then break; fi
-  if [ "$i" -eq 10 ]; then
-    echo "    ERROR: hocuspocus did not start within 10 seconds."
-    cat "$ROOT/tmp/hocuspocus-e2e.log"
-    exit 1
-  fi
-  sleep 1
-done
-
+# Rails also serves the collaboration WebSocket at /collab_server.
 echo "==> Starting Rails server on port $E2E_PORT..."
-CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" HOCUSPOCUS_URL="ws://localhost:$HOCUSPOCUS_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 -P "$ROOT/tmp/pids/e2e-server.pid" &
+CANONICAL_PORT="$E2E_PORT" E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 -P "$ROOT/tmp/pids/e2e-server.pid" &
 RAILS_PID=$!
 
 for i in $(seq 1 30); do
@@ -80,7 +58,7 @@ done
 
 echo "==> Running Playwright: npx playwright test ${PW_ARGS[*]:-}"
 set +e
-(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" HOCUSPOCUS_PORT="$HOCUSPOCUS_PORT" RAILS_ENV=test npx playwright test ${PW_ARGS[@]+"${PW_ARGS[@]}"})
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx playwright test ${PW_ARGS[@]+"${PW_ARGS[@]}"})
 TEST_EXIT=$?
 set -e
 

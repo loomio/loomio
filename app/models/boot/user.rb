@@ -15,9 +15,7 @@ module Boot
         pending_identity: @identity,
         flash:            @flash,
         root_url:         @root_url
-      ).tap do |payload|
-        payload[:channel_token] = user.secret_token if user.is_logged_in?
-      end
+      )
     end
 
     private

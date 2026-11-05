@@ -743,6 +743,7 @@ DEPENDENCIES
   minitest (~> 6.0)
   minitest-mock
   mission_control-jobs
+  nio4r
   nokogiri
   paper_trail (~> 17.0.0)
   pg
@@ -781,6 +782,7 @@ DEPENDENCIES
   web-push
   webauthn
   webmock
+  websocket-driver
 
 RUBY VERSION
   ruby 4.0.9p0
