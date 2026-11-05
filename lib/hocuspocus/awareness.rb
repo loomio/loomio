@@ -33,7 +33,8 @@ module Hocuspocus
     # and removed.
     def apply(update, now: monotonic_now)
       decoder = Lib0::Decoder.new(update)
-      changes = Array.new(decoder.read_var_uint) do
+      # Each entry is at least a client id, a clock and a state.
+      changes = Array.new(decoder.read_count(3)) do
         client = decoder.read_var_uint
         clock = decoder.read_var_uint
         json = decoder.read_var_string

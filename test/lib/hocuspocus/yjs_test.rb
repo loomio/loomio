@@ -36,6 +36,17 @@ class Hocuspocus::YjsTest < ActiveSupport::TestCase
     assert_equal ["a�", "�b"], Yjs::ContentString.split("a😀b", 2)
   end
 
+  test "rejects counts in updates that the message cannot hold" do
+    big = Hocuspocus::Lib0::Encoder.new.write_var_uint(2**40).to_s
+    # client count; one client with a huge struct count; a huge JSON list; a huge state vector
+    [big,
+     "\x01".b + Hocuspocus::Lib0::Encoder.new.write_var_uint(2**40).write_var_uint(1).write_var_uint(0).to_s,
+     "\x01\x01\x07\x00".b + "\x02\x01\x04text".b + Hocuspocus::Lib0::Encoder.new.write_var_uint(2**40).to_s].each do |update|
+      assert_raises(Hocuspocus::Lib0::DecodeError) { Yjs.parse_update(update) }
+    end
+    assert_raises(Hocuspocus::Lib0::DecodeError) { Yjs.decode_state_vector(big) }
+  end
+
   test "rejects truncated updates" do
     merged = vector_bytes(VECTORS["scenarios"].first["merged"])
     assert_raises(Hocuspocus::Lib0::DecodeError) { Yjs.parse_update(merged.byteslice(0, merged.bytesize / 2)) }

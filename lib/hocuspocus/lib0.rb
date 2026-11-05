@@ -98,6 +98,16 @@ module Hocuspocus
         end
       end
 
+      # Reads the number of entries that follow. Each entry takes at least
+      # `bytes_min` bytes, so a count the rest of the message cannot hold is
+      # rejected before anything is allocated for it.
+      def read_count(bytes_min = 1)
+        count = read_var_uint
+        raise DecodeError, "count exceeds message length" if count * bytes_min > @bytes.bytesize - @pos
+
+        count
+      end
+
       def read_bytes(length)
         raise DecodeError, "unexpected end of array" if @pos + length > @bytes.bytesize
 
@@ -145,11 +155,11 @@ module Hocuspocus
         when 123, 122 then read_bytes(8) # float64, bigint64
         when 119 then read_var_string
         when 118
-          read_var_uint.times do
+          read_count(2).times do
             read_var_string
             skip_any(depth + 1)
           end
-        when 117 then read_var_uint.times { skip_any(depth + 1) }
+        when 117 then read_count.times { skip_any(depth + 1) }
         when 116 then read_var_uint8_array
         else raise DecodeError, "unknown any type"
         end

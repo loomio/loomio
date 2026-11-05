@@ -28,6 +28,14 @@ class Hocuspocus::AwarenessTest < ActiveSupport::TestCase
     assert_equal [7], @awareness.outdated_client_ids(now: 30)
   end
 
+  test "rejects entry counts the message cannot hold, before allocating for them" do
+    [2**20, 2**40, 2**53 - 1].each do |count|
+      encoder = Hocuspocus::Lib0::Encoder.new
+      encoder.write_var_uint(count)
+      assert_raises(Hocuspocus::Lib0::DecodeError) { @awareness.apply(encoder.to_s) }
+    end
+  end
+
   test "rejects states that are not JSON" do
     encoder = Hocuspocus::Lib0::Encoder.new
     encoder.write_var_uint(1).write_var_uint(7).write_var_uint(1).write_var_string("{nope")

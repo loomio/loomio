@@ -247,7 +247,7 @@ module Hocuspocus
       def initialize(decoder, filter_skips)
         @decoder = decoder
         @filter_skips = filter_skips
-        @clients_remaining = decoder.read_var_uint
+        @clients_remaining = decoder.read_count(3)
         @structs_remaining = 0
         self.next
       end
@@ -267,7 +267,7 @@ module Hocuspocus
           return nil if @clients_remaining.zero?
 
           @clients_remaining -= 1
-          @structs_remaining = @decoder.read_var_uint
+          @structs_remaining = @decoder.read_count
           @client = @decoder.read_var_uint
           @clock = @decoder.read_var_uint
         end
@@ -309,9 +309,9 @@ module Hocuspocus
       def read_content(ref)
         case ref
         when 1 then ContentDeleted.new(@decoder.read_var_uint)
-        when 2 then ContentList.new(2, Array.new(@decoder.read_var_uint) { @decoder.read_var_string })
+        when 2 then ContentList.new(2, Array.new(@decoder.read_count) { @decoder.read_var_string })
         when 4 then ContentString.new(@decoder.read_var_string)
-        when 8 then ContentList.new(8, Array.new(@decoder.read_var_uint) { @decoder.read_any_raw })
+        when 8 then ContentList.new(8, Array.new(@decoder.read_count) { @decoder.read_any_raw })
         when 3, 5, 6, 7, 9 then ContentOpaque.new(ref, read_opaque_bytes(ref))
         else raise Lib0::DecodeError, "unknown content type #{ref}"
         end
@@ -390,9 +390,9 @@ module Hocuspocus
 
       def read(decoder)
         clients = {}
-        decoder.read_var_uint.times do
+        decoder.read_count(2).times do
           client = decoder.read_var_uint
-          count = decoder.read_var_uint
+          count = decoder.read_count(2)
           next if count.zero?
 
           ranges = (clients[client] ||= [])
@@ -579,7 +579,7 @@ module Hocuspocus
 
     def decode_state_vector(state_vector)
       decoder = Lib0::Decoder.new(state_vector)
-      Array.new(decoder.read_var_uint) { [decoder.read_var_uint, decoder.read_var_uint] }.to_h
+      Array.new(decoder.read_count(2)) { [decoder.read_var_uint, decoder.read_var_uint] }.to_h
     end
 
     # Decodes a whole update, rejecting malformed input. Returns the clock
