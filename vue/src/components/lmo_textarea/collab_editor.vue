@@ -329,8 +329,8 @@ onMounted(() => {
   Y.applyUpdate(ydoc, seed.update);
 
   hocusProvider = new HocuspocusProvider({
-    // Served by Rails (lib/hocuspocus), which identifies the user by session cookie.
-    url: `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/hocuspocus`,
+    // Served by Rails (lib/collab_server), which identifies the user by session cookie.
+    url: `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/collab_server`,
     name: docname,
     document: ydoc,
   });

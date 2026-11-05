@@ -12,13 +12,13 @@ module Dev::Scenarios::Util
   # Let E2E specs take the collaboration server away and bring it back
   # empty, as a restart would. Affects only the Puma worker that serves the
   # request, so E2E runs use one worker.
-  def hocuspocus_stop
-    Hocuspocus.server.stop
+  def collab_server_stop
+    CollabServer.server.stop
     head :ok
   end
 
-  def hocuspocus_start
-    Hocuspocus.server.start
+  def collab_server_start
+    CollabServer.server.start
     head :ok
   end
 

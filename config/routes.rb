@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     mount MissionControl::Jobs::Engine => '/admin/jobs'
   end
 
-  mount Hocuspocus.server => '/hocuspocus'
+  mount CollabServer.server => '/collab_server'
 
   if !Rails.env.production?
     namespace :dev do

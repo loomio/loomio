@@ -17,7 +17,7 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 
 ## Collaborative editing runs in the app
 
-The app container now serves collaborative editing at `/hocuspocus` on your main hostname. The separate `hocuspocus` container is gone.
+The app container now serves collaborative editing at `/collab_server` on your main hostname. The separate `hocuspocus` container is gone.
 
 After upgrading:
 
@@ -25,7 +25,7 @@ After upgrading:
 - Run `docker compose up -d --remove-orphans` to remove the old `hocuspocus` container.
 - Remove the `hocuspocus.` DNS record if nothing else uses it.
 
-If a proxy sits in front of the app, it must pass WebSocket upgrades for `/hocuspocus` as it does for `/cable`.
+If a proxy sits in front of the app, it must pass WebSocket upgrades for `/collab_server` as it does for `/cable`.
 
 ## User and Server API paths
 

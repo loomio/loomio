@@ -87,7 +87,7 @@ export default defineConfig({
         target: 'ws://localhost:3000',
         ws: true,
       },
-      '/hocuspocus': {
+      '/collab_server': {
         target: 'ws://localhost:3000',
         ws: true,
       },

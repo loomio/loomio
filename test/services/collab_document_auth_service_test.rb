@@ -50,15 +50,15 @@ class CollabDocumentAuthServiceTest < ActiveSupport::TestCase
   test "a signed-out session cannot open records after logout" do
     session_record = @user.sessions.create!(user_agent: 'test', ip_address: '127.0.0.1')
     env = env_with_session(session_record.id)
-    assert Hocuspocus.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
+    assert CollabServer.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
 
     session_record.destroy!
-    refute Hocuspocus.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
-    assert Hocuspocus.config.authenticate.call(document_name: "group-new-0-1", env: env)
+    refute CollabServer.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
+    assert CollabServer.config.authenticate.call(document_name: "group-new-0-1", env: env)
   end
 
   test "only pages from this host may connect" do
-    allowed = Hocuspocus.config.allowed_origin
+    allowed = CollabServer.config.allowed_origin
     assert allowed.call("https://#{ENV['CANONICAL_HOST']}")
     assert allowed.call("http://localhost:8080")
     refute allowed.call("https://#{ENV['CANONICAL_HOST']}.evil.example")
