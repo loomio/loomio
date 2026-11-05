@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class Views::Application::Boot < Views::Application::Component
-  def initialize(metadata: nil, export: false, bot: false, theme_name: nil)
+  def initialize(metadata: nil, export: false, bot: false, theme_name: nil, initial_data: nil, canonical_url: nil, robots: nil)
     @metadata = metadata
     @export = export
     @bot = bot
     @theme_name = theme_name
+    @initial_data = initial_data
+    @canonical_url = canonical_url
+    @robots = robots
   end
 
   def view_template
@@ -13,6 +16,11 @@ class Views::Application::Boot < Views::Application::Component
     html(lang: I18n.locale) do
       head { render_head }
       body do
+        if @initial_data
+          script(id: "initial-data", type: "application/json") do
+            raw ERB::Util.json_escape(@initial_data.to_json).html_safe
+          end
+        end
         div(id: "app") do
           div(id: "loading-placeholder") do
             svg = logo_svg
@@ -49,6 +57,9 @@ class Views::Application::Boot < Views::Application::Component
     meta name: "apple-mobile-web-app-title", content: AppConfig.theme[:site_short_name]
     meta content: meta_hash[:title], property: "og:title"
     meta content: meta_hash[:description], name: "description", property: "og:description"
+    meta name: "robots", content: @robots if @robots
+    link rel: "canonical", href: @canonical_url if @canonical_url
+    meta content: @canonical_url, property: "og:url" if @canonical_url
     Array(meta_hash[:image_urls]).each do |image_url|
       meta content: image_url, property: "og:image"
     end

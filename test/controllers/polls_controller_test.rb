@@ -27,6 +27,11 @@ class PollsControllerTest < ActionController::TestCase
     get :show, params: { key: @poll.key }
     assert_response 200
     assert_includes response.body, "<title>#{@poll.title}</title>"
+    assert_select '#initial-data', count: 1
+    data = JSON.parse(Nokogiri::HTML(response.body).at_css('#initial-data').text)
+    window = data['requests'].find { |request| request['params'].key?('poll_key') }
+    assert_includes window['records']['polls'].pluck('id'), @poll.id
+    assert_includes window['records']['topics'].pluck('id'), @discussion.topic_id
   end
 
   test "does not show a poll page to users who cannot see the poll" do

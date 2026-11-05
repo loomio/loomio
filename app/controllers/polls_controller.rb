@@ -5,6 +5,18 @@ class PollsController < ApplicationController
 
   helper :email
 
+  def show
+    @poll = ModelLocator.new(:poll, params).locate!
+    return respond_with_error(403) unless current_user.can?(:show, @poll)
+
+    respond_to do |format|
+      format.html do
+        data = initial_page_data(topicable: @poll) unless params[:export] || browser.bot?
+        boot_app(initial_data: data)
+      end
+    end
+  end
+
   def export
     @poll = load_and_authorize(:poll, :export)
     @exporter = PollExporter.new(@poll)

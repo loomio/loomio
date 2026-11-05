@@ -8,11 +8,21 @@ class DiscussionsController < ApplicationController
       @pagination = pagination_params
       respond_to do |format|
         format.html do
-          render Views::Topics::Show.new(
-            topic: @topic, recipient: @recipient, pagination: @pagination,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
-            canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion)
-          )
+          if params[:export] || browser.bot?
+            render Views::Topics::Show.new(
+              topic: @topic, recipient: @recipient, pagination: @pagination,
+              metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+              canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion)
+            )
+          else
+            prevent_caching
+            render Views::Application::Boot.new(
+              metadata: application_metadata,
+              theme_name: current_user.experiences['theme'],
+              canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion),
+              initial_data: initial_page_data(topicable: @discussion)
+            )
+          end
         end
         format.xml { render 'topics/show' }
       end

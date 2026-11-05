@@ -86,7 +86,7 @@ v-main
         v-card-text
           span(v-t="'inbox_page.no_discussions'")
           span 🙌
-      v-card.mb-3(v-show='groups.length == 0')
+      v-card.mb-3(v-show='groups.length == 0 && Session.user().membershipsCount === 0')
         v-card-text
         p(v-t="'inbox_page.no_groups.explanation'")
         button.lmo-btn-link--blue(v-t="'inbox_page.no_groups.start'", @click='startGroup()')

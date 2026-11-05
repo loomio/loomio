@@ -27,10 +27,14 @@ import boot from '@/shared/helpers/boot';
 import { beforeSend } from '@/shared/helpers/sentry_event.mjs';
 import Session from '@/shared/services/session';
 import AccountCompletionService from '@/shared/services/account_completion_service';
+import { clearInitialData } from '@/shared/services/initial_data';
 import { plugin as Slicksort } from 'vue-slicksort';
 
 boot(function(data) {
   Session.apply(data);
+  router.afterEach((_to, from) => {
+    if (from.matched.length) clearInitialData();
+  });
 
   const app = createApp(App);
   if (AppConfig.sentry_dsn) {

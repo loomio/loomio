@@ -1,6 +1,7 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
+import { takeInitialResponse } from '@/shared/services/initial_data';
 
 const getCSRF = () => decodeURIComponent(document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/)?.[1] || '');
 
@@ -87,7 +88,10 @@ export default class RestfulClient {
 
   // NB: get requests place their params into the query string, rather than the request body
   get(path, params) {
-    return this.request(this.buildUrl(path, this.paramsFor(params)), 'GET');
+    params = this.paramsFor(params);
+    const initial = takeInitialResponse(this.buildUrl(path), params);
+    if (initial) return Promise.resolve(initial).then(this.onSuccess);
+    return this.request(this.buildUrl(path, params), 'GET');
   }
 
   async request(path, method, body = {}) {

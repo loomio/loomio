@@ -131,7 +131,7 @@ function initialFetchParams() {
       ...remoteTopicParams,
       sequence_id_gte: Math.max(sequenceId - parseInt(padding / 2), 0),
       order: 'sequence_id',
-      per: padding
+      limit: padding
     };
   }
 
@@ -140,14 +140,14 @@ function initialFetchParams() {
       ...remoteTopicParams,
       comment_id: commentId,
       order: 'sequence_id',
-      per: padding
+      limit: padding
     };
   }
 
   return {
     ...remoteTopicParams,
     unread_or_newest: 1,
-    per: padding
+    limit: padding
   };
 }
 
