@@ -23,10 +23,11 @@ class GroupDirectory
     @scope ||= {cache: cache, current_user_id: @user.id, exclude_types: @exclude_types}
   end
 
-  def serialize(groups = records)
+  def serialize(groups = records, exclude_types: @exclude_types)
     loaded = cache.scope.fetch(:groups_by_id, {})
     groups = groups.map { |group| loaded.fetch(group.id, group) }
-    ActiveModel::ArraySerializer.new(groups, each_serializer: GroupSerializer, root: :groups, scope: scope).as_json
+    ActiveModel::ArraySerializer.new(groups, each_serializer: GroupSerializer, root: :groups,
+      scope: scope.merge(exclude_types: exclude_types)).as_json
   end
 
   def payload

@@ -44,7 +44,7 @@ module Boot
       identifier = @params[:key] || @params[:id]
       if @groups
         @requests << {path: "/api/v1/groups/#{identifier}", params: {},
-          records: @groups.serialize([group]).merge(meta: {root: 'groups', total: nil})}
+          records: @groups.serialize([group], exclude_types: []).merge(meta: {root: 'groups', total: nil})}
       else
         add("groups/#{identifier}", {}, [group], GroupSerializer, root: 'groups', total: nil)
       end
