@@ -80,12 +80,11 @@ test.describe('changing a password', () => {
   });
 });
 
-test('deactivating the account signs you out', async ({ page }) => {
+test('deleting the account signs you out', async ({ page }) => {
   await page.goto('/dev/setup_group_with_multiple_coordinators');
   await openOwnProfile(page);
   await page.locator('.user-page__redact_user').click();
   await page.locator('.confirm-modal__submit').click();
-  await page.goto('/dashboard');
   await expect(signInModal(page)).toContainText('Sign in to Loomio');
 });
 
