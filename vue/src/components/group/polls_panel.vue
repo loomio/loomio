@@ -119,7 +119,7 @@ const findRecords = () => {
     if (page.value === 1) {
       chain = chain.find({createdAt: {$gte: loader.value.pageWindow[page.value][0]}});
     } else {
-      chain = chain.find({createdAt: {$jbetween: loader.value.pageWindow[page.value]}});
+      chain = chain.find({createdAt: {$between: loader.value.pageWindow[page.value]}});
     }
     polls.value = chain.simplesort('createdAt', true).data();
   } else {

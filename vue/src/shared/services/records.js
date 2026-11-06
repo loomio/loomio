@@ -1,6 +1,6 @@
 import RecordStore from '@/shared/record_store/record_store';
 import AppConfig   from '@/shared/services/app_config';
-import loki from 'lokijs'
+import Database from '@/shared/record_store/db';
 
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface';
 import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interface';
@@ -34,7 +34,7 @@ import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
 import PendingEmailRecordsInterface from '@/shared/interfaces/pending_email_records_interface';
 
-const db      = new loki('default.db');
+const db      = new Database();
 const records = new RecordStore(db);
 
 records.addRecordsInterface(CommentRecordsInterface);

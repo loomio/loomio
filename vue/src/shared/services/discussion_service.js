@@ -104,7 +104,7 @@ export default new class DiscussionService {
       if (page === 1) {
         chain = chain.find({lastActivityAt: {$gte: loader.pageWindow[page][0]}});
       } else {
-        chain = chain.find({lastActivityAt: {$jbetween: loader.pageWindow[page]}});
+        chain = chain.find({lastActivityAt: {$between: loader.pageWindow[page]}});
       }
       discussions = chain.data();
     }
