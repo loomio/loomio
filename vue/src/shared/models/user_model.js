@@ -10,7 +10,7 @@ export default class UserModel extends BaseModel {
   static uniqueIndices = ['id'];
 
   relationships() {
-    return this.hasMany('memberships');
+    return this.hasMany('memberships', {find: {revokedAt: null}});
   }
 
   defaultValues() {
@@ -45,7 +45,7 @@ export default class UserModel extends BaseModel {
   }
 
   adminMemberships() {
-    return Records.memberships.find({userId: this.id, admin: true});
+    return Records.memberships.find({userId: this.id, admin: true, revokedAt: null});
   }
 
   groupIds() {
@@ -83,7 +83,7 @@ export default class UserModel extends BaseModel {
 
   membershipFor(group) {
     if (!group) { return; }
-    return Records.memberships.find({groupId: group.id, userId: this.id})[0];
+    return Records.memberships.find({groupId: group.id, userId: this.id, revokedAt: null})[0];
   }
 
   firstName() {

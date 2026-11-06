@@ -93,7 +93,7 @@ export default
     },
 
     query() {
-      let chain = Records.memberships.collection.chain();
+      let chain = Records.memberships.collection.chain().find({revokedAt: null});
       switch (this.$route.query.subgroups) {
         case 'mine':
           chain = chain.find({groupId: {$in: intersection(this.group.organisationIds(), Session.user().groupIds())}});

@@ -11,15 +11,15 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
   }
 
   forUser(user) {
-    return this.collection.find({userId: user.id});
+    return this.find({userId: user.id, revokedAt: null});
   }
 
   forModel(model) {
-    return this.collection.find({groupId: {$in: model.groupIds()}});
+    return this.find({groupId: {$in: model.groupIds()}, revokedAt: null});
   }
 
   forGroup(group) {
-    return this.collection.find({groupId: group.id});
+    return this.find({groupId: group.id, revokedAt: null});
   }
 
   joinGroup(group) {
@@ -32,7 +32,9 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
   revokeGroupAccess(groupIds) {
     const records = this.recordStore;
     const userId = AppConfig.currentUserId;
-    invokeMap(this.find({userId, groupId: {$in: groupIds}}), 'remove');
+    this.find({userId, groupId: {$in: groupIds}}).forEach(membership => {
+      membership.update({revokedAt: new Date()});
+    });
     records.topics.find({groupId: {$in: groupIds}}).forEach(topic => {
       topic.update({readerGuest: false, readerAdmin: false});
     });
@@ -52,7 +54,7 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
       const group = await records.groups.findOrFetch(groupId);
       // Restore access on cached closed polls too, so a later reopen works
       // even when the poll is older than the recent-polls fetch below.
-      const voterHasAccess = this.find({userId: AppConfig.currentUserId, groupId}).length > 0;
+      const voterHasAccess = this.find({userId: AppConfig.currentUserId, groupId, revokedAt: null}).length > 0;
       records.polls.find({groupId}).forEach(poll => poll.update({voterHasAccess}));
       records.updateViews(['polls']);
       let offset = 0;

@@ -3,6 +3,7 @@ import AppConfig from '@/shared/services/app_config';
 import compareAsc from 'date-fns/compareAsc';
 import {each, invokeMap} from 'lodash-es';
 import Records from '@/shared/services/records';
+import {reactive} from 'vue';
 
 export default class MembershipModel extends BaseModel {
   static singular = 'membership';
@@ -17,6 +18,7 @@ export default class MembershipModel extends BaseModel {
       userId: null,
       groupId: null,
       archivedAt: null,
+      revokedAt: null,
       inviterId: null,
       volumeEmail: null,
       volumePush: null
@@ -83,11 +85,18 @@ export default class MembershipModel extends BaseModel {
 
   destroy() {
     const groupIds = this.group().selfAndSubgroupIds();
-    return super.destroy().then(response => {
-      if (this.userId !== AppConfig.currentUserId) { return response; }
-
-      Records.memberships.revokeGroupAccess(groupIds);
+    reactive(this).processing = true;
+    return Records.memberships.remote.destroy(this.keyOrId()).then(response => {
+      // Match the server's retained record so membership lookups stay reactive.
+      this.update({revokedAt: new Date()});
+      if (this.userId === AppConfig.currentUserId) {
+        Records.memberships.revokeGroupAccess(groupIds);
+      } else {
+        Records.updateViews(['memberships']);
+      }
       return response;
+    }).finally(() => {
+      reactive(this).processing = false;
     });
   }
 
