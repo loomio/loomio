@@ -65,6 +65,14 @@ test.describe('starting polls in a thread', () => {
     await expect(reason(page)).toContainText('A reason');
   });
 
+  test('a ranked choice poll', async ({ page }) => {
+    await startPoll(page, 'ranked_choice', { options: ['An option', 'Another option'] });
+    await expectPoll(page);
+    await expect(page.locator('.poll-ranked-choice-vote-form')).toBeVisible();
+    await submitVote(page, 'My ranking');
+    await expect(reason(page)).toContainText('My ranking');
+  });
+
   test('a time poll in the author\'s time zone', async ({ page }) => {
     await page.goto('/dev/polls/test_discussion?time_zone=America%2FLos_Angeles');
     await openPollForm(page, 'meeting');

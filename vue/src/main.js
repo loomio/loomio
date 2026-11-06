@@ -1,4 +1,4 @@
-import 'vuetify/styles'
+import '@/css/vuetify_styles.scss'
 import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';

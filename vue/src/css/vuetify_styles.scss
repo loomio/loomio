@@ -1,0 +1,40 @@
+// Keep Vuetify's component CSS precompiled. Only global utilities need Sass.
+// Audited against Vue components, Rails views and Vuetify's internal helpers.
+@use 'vuetify' with (
+  $color-pack: false,
+  $utilities: (
+    // Layouts use responsive px, pr and ml; other spacing is breakpoint-independent.
+    "margin": (responsive: false),
+    "margin-x": (responsive: false),
+    "margin-y": (responsive: false),
+    "margin-top": (responsive: false),
+    "margin-right": (responsive: false),
+    "margin-bottom": (responsive: false),
+    "padding": (responsive: false),
+    "padding-y": (responsive: false),
+    "padding-top": (responsive: false),
+    "padding-bottom": (responsive: false),
+    "padding-left": (responsive: false),
+    "negative-margin-top": (responsive: false),
+    "negative-margin-left": (responsive: false),
+    "typography": (responsive: false),
+
+    // These utility families are unused. Re-enable here when adding a use.
+    "margin-start": false,
+    "margin-end": false,
+    "padding-start": false,
+    "padding-end": false,
+    "negative-margin": false,
+    "negative-margin-x": false,
+    "negative-margin-y": false,
+    "negative-margin-right": false,
+    "negative-margin-bottom": false,
+    "negative-margin-start": false,
+    "negative-margin-end": false,
+    "float:rtl": false,
+    "float:ltr": false,
+    "justify-items": false,
+    "gap-row": false,
+    "gap-column": false,
+  )
+);
