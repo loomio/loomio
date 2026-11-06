@@ -99,6 +99,7 @@ test.describe('joining a subgroup', () => {
     await expect(page.locator('.action-dock__button--edit_group')).toHaveCount(0);
     await page.locator('.confirm-modal__submit').click();
     await expect(flash).toContainText('You have left');
+    await expect(page.locator('.group-page__name')).toContainText('Dirty Dancing Shoes');
     await page.goBack();
     await page.locator('.join-group-button').click();
     await expect(flash).toContainText('You are now a member');

@@ -343,6 +343,83 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   # Index tests
+  test "pending poll index includes identified and anonymous group and direct invitations without disclosing ballots" do
+    viewer = users(:guest_normal)
+    other = users(:guest_loud)
+    polls = [topics(:discussion_topic), topics(:direct_topic)].flat_map do |topic|
+      topic.update!(polls_one_at_a_time: false)
+      [false, true].map do |anonymous|
+        actor = topic.group_id ? @admin : users(:guest_admin_normal)
+        poll = PollService.create(params: {
+          title: 'Pending invitation', poll_type: 'proposal', topic_id: topic.id,
+          anonymous: anonymous, specified_voters_only: true,
+          recipient_user_ids: [viewer.id, other.id], hide_results: 'until_closed',
+          poll_option_names: %w[Agree Disagree], closing_at: 3.days.from_now
+        }, actor: actor)
+        PollService.invite(poll: poll, actor: actor,
+                           params: {recipient_user_ids: [viewer.id, other.id]}) unless anonymous
+        poll
+      end
+    end
+    sign_in viewer
+
+    get :index, params: {status: 'vote', exclude_types: 'reaction', limit: 100, offset: 0}
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_equal polls.map(&:id).sort, json.fetch('polls').pluck('id').sort
+    assert_equal 4, json.fetch('meta').fetch('total')
+    assert_equal [viewer.id], json.fetch('stances').pluck('participant_id').uniq
+    assert_equal polls.reject(&:anonymous?).map(&:id).sort, json.fetch('stances').pluck('poll_id').sort
+    json.fetch('polls').each do |row|
+      assert row.fetch('voter_has_access')
+      next unless row.fetch('anonymous')
+
+      assert row.fetch('anonymous_voter_eligible')
+      refute row.fetch('anonymous_ballot_submitted')
+      refute row.key?('my_stance_id')
+    end
+    refute json.key?('anonymous_ballots')
+    refute json.key?('anonymous_poll_voters')
+
+    polls.each do |poll|
+      if poll.anonymous?
+        create_anonymous_ballot(poll: poll, voter: viewer)
+      else
+        StanceService.update(stance: poll.stances.latest.find_by!(participant: viewer),
+                            actor: viewer, params: {choice: {'Agree' => 1}})
+      end
+    end
+    get :index, params: {status: 'vote', limit: 100, offset: 0}
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('polls')
+  end
+
+  test "pending poll index excludes retained invitations after guest access is revoked" do
+    viewer = users(:guest_normal)
+    topic = topics(:discussion_topic)
+    topic.update!(polls_one_at_a_time: false)
+    [false, true].each do |anonymous|
+      poll = PollService.create(params: {
+        title: 'Revoked invitation', poll_type: 'proposal', topic_id: topic.id,
+        anonymous: anonymous, specified_voters_only: true, recipient_user_ids: [viewer.id],
+        poll_option_names: %w[Agree Disagree], closing_at: 3.days.from_now
+      }, actor: @admin)
+      PollService.invite(poll: poll, actor: @admin,
+                         params: {recipient_user_ids: [viewer.id]}) unless anonymous
+    end
+    sign_in viewer
+    get :index, params: {status: 'vote', limit: 100, offset: 0}
+    assert_response :success
+    assert_equal 2, JSON.parse(response.body).fetch('polls').size
+    topic.topic_readers.find_by!(user: viewer).update!(revoked_at: Time.current)
+
+    get :index, params: {status: 'vote', limit: 100, offset: 0}
+
+    assert_response :success
+    assert_empty JSON.parse(response.body).fetch('polls')
+  end
+
   test "index responds successfully" do
     PollService.create(params: {
       title: "POLL!",

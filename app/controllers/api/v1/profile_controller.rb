@@ -14,15 +14,8 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def groups
-    self.collection = GroupQuery.visible_to(user: current_user)
-
-    cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
-
-    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {
-      cache: cache,
-      current_user_id: current_user.id,
-      exclude_types: exclude_types
-    }
+    directory = GroupDirectory.new(user: current_user, exclude_types: exclude_types)
+    render json: directory.payload.merge(meta: {root: 'groups', total: nil})
   end
 
   def time_zones

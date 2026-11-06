@@ -4,14 +4,17 @@ import { useDisplay } from 'vuetify';
 import { useRoute } from 'vue-router';
 
 import EventBus from '@/shared/services/event_bus';
-import RecordLoader from '@/shared/services/record_loader';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserNotifications } from '@/composables/useCurrentUserNotifications';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
 const display = useDisplay();
 const route = useRoute();
 const { watchRecords } = useWatchRecords();
+const { loadNotifications } = useCurrentUserNotifications();
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 
 const signedIn = ref(Session.isSignedIn());
 const unreadNotifications = ref(0);
@@ -28,29 +31,14 @@ const activeItem = computed(() => {
 
 function updateCounts() {
   unreadNotifications.value = Records.notifications.find({viewed: {$ne: true}}).length;
-  const groupIds = Session.user().groupIds();
-  const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
-  const polls = Records.polls.collection.chain()
-    .find({discardedAt: null, closingAt: {$ne: null}, closedAt: null})
-    .find({$or: [
-      {groupId: {$in: groupIds}},
-      {id: {$in: pollIds}},
-      {authorId: Session.user().id}
-    ]})
-    .data();
-  pollsToVoteOn.value = polls
-    .filter(poll => poll.iCanVote() && !poll.iHaveVoted()).length;
+  pollsToVoteOn.value = findPendingPolls().length;
 }
 
 function fetchData() {
   if (fetched || !Session.isSignedIn()) return;
   fetched = true;
-  Records.notifications.fetchNotifications();
-  Records.stances.fetch({path: 'my_stances'});
-  new RecordLoader({
-    collection: 'polls',
-    params: {exclude_types: 'group reaction', status: 'recent'}
-  }).fetchRecords();
+  loadNotifications();
+  loadPendingPolls();
 }
 
 function handleSignedIn() {

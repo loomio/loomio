@@ -1,15 +1,16 @@
-// Block only the requests needed for main content. Navigation and notification
-// requests remain asynchronous, including the separate pinned-items request.
+// Main content and the group directory boot together. Notifications and the
+// separate pinned-items request remain asynchronous.
 export async function blockMainContentRequests(page, {group = false} = {}) {
   const requests = [];
-  await page.route(/\/api\/v1\/(boot\/site|topic_items|topics|polls|groups\/[^/?]+)(\?|$)/, route => {
+  await page.route(/\/api\/v1\/(boot\/site|profile\/groups|topic_items|topics|polls|groups\/[^/?]+)(\?|$)/, route => {
     const url = new URL(route.request().url());
     const params = url.searchParams;
     const mainContent = url.pathname.endsWith('/boot/site') ||
+      url.pathname.endsWith('/profile/groups') ||
       (group && /\/groups\/[^/]+$/.test(url.pathname)) ||
       (url.pathname.endsWith('/topic_items') && params.has('include_polls_not_closed')) ||
       (url.pathname.endsWith('/topics') && !params.has('last_activity_gte')) ||
-      (url.pathname.endsWith('/polls') && params.get('exclude_types') === 'reaction');
+      (url.pathname.endsWith('/polls') && params.get('status') !== 'vote');
     if (!mainContent) return route.continue();
     requests.push(url.toString());
     return route.abort();

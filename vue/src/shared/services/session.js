@@ -29,6 +29,7 @@ export default new class Session {
     AppConfig['currentUserId'] = data.current_user_id
     AppConfig['pendingIdentity'] = data.pending_identity;
     Records.importJSON(data);
+    AppConfig.groupsLoaded = !!data.groups_loaded;
     this.userId = data.current_user_id;
     const user = this.user();
     loadLocaleMessages(I18n, user.locale);

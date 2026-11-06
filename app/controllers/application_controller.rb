@@ -158,9 +158,15 @@ class ApplicationController < ActionController::Base
   end
 
   def initial_page_data(page:, resource:)
-    Boot::Page.new(user: current_user, page: page, resource: resource, params: params.to_unsafe_h).payload.merge(
-      boot: Boot::Site.new.payload.merge(Boot::User.new(current_user,
-        root_url: URI(root_url).origin, identity: serialized_pending_identity, flash: flash).payload)
+    context_group = case resource
+    when Group then resource
+    when Discussion, Poll then resource.group.presence
+    end
+    user_boot = Boot::User.new(current_user, root_url: URI(root_url).origin,
+      identity: serialized_pending_identity, flash: flash, context_group: context_group)
+    Boot::Page.new(user: current_user, page: page, resource: resource, params: params.to_unsafe_h,
+      groups: user_boot.groups).payload.merge(
+      boot: Boot::Site.new.payload.merge(user_boot.payload)
     )
   end
 

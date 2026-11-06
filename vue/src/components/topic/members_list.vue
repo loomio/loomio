@@ -174,7 +174,7 @@ function updateReaders() {
   membershipsByUserId.value = {};
   if (group.value) {
     Records.memberships.collection.find({userId: {$in: readerUserIds.value},
-                                         groupId: group.value.id}).forEach(m => {
+                                         groupId: group.value.id, revokedAt: null}).forEach(m => {
       membershipsByUserId.value[m.userId] = m;
     });
   }

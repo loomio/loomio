@@ -1,7 +1,6 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import ReactionService from '@/shared/services/reaction_service';
 
 import { merge, capitalize, difference, keys, startsWith, each, compact } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
@@ -32,7 +31,6 @@ export default {
 
 
   mounted() {
-    ReactionService.enqueueFetch(this.model);
     this.watchRecords({
       collections: ['reactions'],
       query: this.runQuery

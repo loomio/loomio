@@ -20,6 +20,7 @@ import SidebarHelp from '@/components/sidebar/help';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import { useBookmarks } from '@/composables/useBookmarks';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
 import { mdiCog } from '@mdi/js';
 
@@ -46,6 +47,7 @@ const canStartGroups = ref(AbilityService.canStartGroups());
 const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 const { loadBookmarks } = useBookmarks();
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 
 // Computed properties
 const greySidebarLogo = computed(() =>
@@ -104,8 +106,8 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction', last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
-  Records.stances.fetch({ path: 'my_stances' })
+  Records.topics.fetch({ params: { unread: 1, last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
+  loadPendingPolls();
   loadBookmarks();
 };
 
@@ -144,10 +146,7 @@ const updateUnreadCounts = () => {
 }
 
 const updatePollsToVoteOnCount = () => {
-  pollsToVoteOnCount.value = Records.polls.collection.chain()
-    .find({discardedAt: null, closingAt: {$ne: null}, closedAt: null, myStanceId: {$ne: null}})
-    .data()
-    .filter(p => p.iCanVote() && !p.iHaveVoted()).length;
+  pollsToVoteOnCount.value = findPendingPolls().length;
 }
 
 watchRecords({
@@ -166,7 +165,7 @@ watchRecords({
 });
 
 watchRecords({
-  collections: ['stances'],
+  collections: ['polls', 'stances'],
   query: () => { updatePollsToVoteOnCount() }
 });
 

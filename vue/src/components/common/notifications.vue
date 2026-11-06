@@ -2,6 +2,7 @@
 import Records   from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
 import WatchRecords from '@/mixins/watch_records';
+import { useCurrentUserNotifications } from '@/composables/useCurrentUserNotifications';
 
 export default {
   mixins: [WatchRecords],
@@ -37,7 +38,8 @@ export default {
   },
 
   created() {
-    Records.notifications.fetchNotifications();
+    const { loadNotifications } = useCurrentUserNotifications();
+    loadNotifications();
     this.watchRecords({
       collections: ['notifications'],
       query: store => {

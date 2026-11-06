@@ -178,7 +178,7 @@ export default class TopicModel extends BaseModel {
   }
 
   membership() {
-    return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId})[0];
+    return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId, revokedAt: null})[0];
   }
 
   savePin() {

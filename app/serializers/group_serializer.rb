@@ -87,12 +87,17 @@ class GroupSerializer < ApplicationSerializer
 
   def include_subscription?
     return false unless scope[:current_user_id]
-    return true if User.where(id: scope[:current_user_id], is_admin: true).exists?
+    unless scope.key?(:subscription_viewer_is_admin)
+      scope[:subscription_viewer_is_admin] = User.where(id: scope[:current_user_id], is_admin: true).exists?
+    end
+    return true if scope[:subscription_viewer_is_admin]
 
-    Membership.active.where(
-      group_id: object.parent_or_self.id_and_subgroup_ids,
-      user_id: scope[:current_user_id]
-    ).exists?
+    # A membership anywhere in an organisation permits its subscription view.
+    # Share this set across all groups and nested parent serializers in a response.
+    scope[:subscription_visible_org_ids] ||= Membership.active.joins(:group)
+      .where(user_id: scope[:current_user_id])
+      .pluck(Arel.sql('COALESCE(groups.parent_id, groups.id)')).to_set
+    scope[:subscription_visible_org_ids].include?(object.parent_id || object.id)
   end
 
   def subscription

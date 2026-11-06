@@ -115,7 +115,6 @@ export default new class TipService {
                       group_id: group.id,
                       topicable_type: 'Discussion',
                       subgroups: 'none',
-                      exclude_types: 'reaction'
                     }
                   }).then(() => {
                     const topic = Records.topics.collection.chain()

@@ -12,6 +12,7 @@ class MembershipSerializer < ApplicationSerializer
              :title,
              :created_at,
              :accepted_at,
+             :revoked_at,
              :user_email
 
   has_one :group, serializer: GroupSerializer, root: :groups

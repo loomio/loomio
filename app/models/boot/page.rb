@@ -1,13 +1,14 @@
 module Boot
-  # Preload only the main page content. Navigation and notifications stay async.
+  # Preload main content using the group directory shared with signed-in boot.
   # Keep the API's query scopes, serializer exclusions and pagination metadata:
   # these responses enter the client through its normal record import path.
   class Page
-    def initialize(user:, page:, params:, resource: nil)
+    def initialize(user:, page:, params:, resource: nil, groups: nil)
       @user = user
       @page = page
       @params = params
       @resource = resource
+      @groups = groups
       @requests = []
     end
 
@@ -22,10 +23,10 @@ module Boot
       if @user.is_logged_in?
         case @page
         when 'dashboard'
-          add_topics({from: 0, per: 30, order: 'id', exclude_types: 'reaction'}, limit: 30)
-          params = {from: 0, per: 25, order: 'id', exclude_types: 'reaction', status: 'recent'}
+          add_topics({from: 0, per: 30, order: 'id'}, limit: 30)
+          params = {status: 'vote', limit: 100, offset: 0}
           polls = PollQuery.filter(chain: PollQuery.relevant_to(user: @user), params: params, user: @user).order(created_at: :desc, id: :desc)
-          add('polls', params, polls.limit(25), PollSerializer, total: polls.count)
+          add('polls', params, polls.limit(100), PollSerializer, total: polls.count)
         when 'inbox'
           add_topics({unread: 1, per: 50}, limit: 50)
         end
@@ -41,13 +42,18 @@ module Boot
     def add_group(group)
       @user.ability.authorize!(:show, group)
       identifier = @params[:key] || @params[:id]
-      add("groups/#{identifier}", {}, [group], GroupSerializer, root: 'groups', total: nil)
+      if @groups
+        @requests << {path: "/api/v1/groups/#{identifier}", params: {},
+          records: @groups.serialize([group], exclude_types: []).merge(meta: {root: 'groups', total: nil})}
+      else
+        add("groups/#{identifier}", {}, [group], GroupSerializer, root: 'groups', total: nil)
+      end
       return unless @page == 'group_discussions'
 
       page = @params[:page].to_i
       offset = [page - 1, 0].max * 25
       params = {
-        group_id: group.id, exclude_types: 'reaction', topicable_type: 'Discussion',
+        group_id: group.id, topicable_type: 'Discussion',
         subgroups: 'mine', per: 25, from: offset
       }
       params[:filter] = @params[:t].presence || 'unlocked' unless @params[:t] == 'all'
@@ -56,11 +62,13 @@ module Boot
     end
 
     def add_topics(params, limit:, offset: 0)
+      params = params.merge(exclude_types: 'group') if @user.is_logged_in?
       topics = TopicListQuery.new(user: @user, params: params).records
       add('topics', params, topics.limit(limit).offset(offset), TopicSerializer, total: topics.count)
     end
 
     def add(path, params, records, serializer, total:, root: path)
+      params = params.merge(exclude_types: 'group') if @user.is_logged_in? && path == 'polls'
       records = records.to_a
       exclude_types = params.fetch(:exclude_types, '').split(' ')
       scope = {cache: RecordCache.for_collection(records, @user.id, exclude_types), current_user_id: @user.id, exclude_types: exclude_types}

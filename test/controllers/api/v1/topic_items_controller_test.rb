@@ -41,6 +41,9 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     comments = 35.times.map do |i|
       CommentService.create(comment: Comment.new(parent: @discussion, body: "Reply #{i}"), actor: @admin)
     end
+    discussion_reaction = Reaction.create!(reactable: @discussion, user: @admin, reaction: '👍')
+    poll_reaction = Reaction.create!(reactable: poll, user: @admin, reaction: '❤️')
+    comment_reaction = Reaction.create!(reactable: comments.last, user: @admin, reaction: '🎉')
     topic = @discussion.topic.reload
     reader = TopicReader.for(user: @user, topic: topic)
     [[], (0..15).to_a, topic.items.pluck(:sequence_id)].each do |read_ids|
@@ -50,6 +53,12 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
         get :index, params: payload['params'], format: :json
         assert_response :success
         assert_equal JSON.parse(response.body).except('meta'), payload['records']
+        reaction_ids = payload['records'].fetch('reactions').pluck('id')
+        assert_includes reaction_ids, discussion_reaction.id
+        assert_includes reaction_ids, poll_reaction.id
+        if payload['records'].fetch('comments').pluck('id').include?(comments.last.id)
+          assert_includes reaction_ids, comment_reaction.id
+        end
         assert_includes payload['records']['polls'].pluck('id'), poll.id
         assert_operator payload['records']['topic_items'].size, :<=, 26
       end

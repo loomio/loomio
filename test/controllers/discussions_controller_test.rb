@@ -35,6 +35,18 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_includes response.headers['Cache-Control'], 'no-store'
   end
 
+  test "signed-in public thread boot includes its group outside the viewer's directory" do
+    sign_in users(:alien)
+    discussion = discussions(:public_discussion)
+
+    get :show, params: {key: discussion.key}
+
+    assert_response :success
+    assert_includes initial_data.fetch('boot').fetch('groups').pluck('id'), discussion.group_id
+    refute thread_records.key?('groups')
+    assert_equal 'group', initial_data.fetch('requests').first.fetch('params').fetch('exclude_types')
+  end
+
   test "thread bootstrap respects group and direct topic access and reader scope" do
     %i[discussion_topic direct_topic].each do |name|
       topic = topics(name)

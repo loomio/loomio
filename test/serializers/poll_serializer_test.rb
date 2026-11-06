@@ -146,19 +146,20 @@ class PollSerializerTest < ActiveSupport::TestCase
         poll_option_names: %w[Yes No], closing_at: 3.days.from_now
       }, actor: users(:admin))
     end
-    cache = RecordCache.for_collection(polls, member.id, %w[group reaction])
     queries = []
     subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |_name, _start, _end, _id, payload|
-      queries << payload[:sql] if payload[:sql].start_with?('SELECT "memberships"."group_id" FROM "memberships"') && !payload[:cached]
+      sql = payload[:sql]
+      queries << sql if sql.start_with?('SELECT "memberships".* FROM "memberships"') && !sql.include?('LIMIT') && !payload[:cached]
     end
 
     ActiveRecord::Base.uncached do
+      cache = RecordCache.for_collection(polls, member.id, %w[group reaction])
       polls.each do |poll|
         data = PollSerializer.new(poll, scope: {cache: cache, current_user_id: member.id, exclude_types: %w[group reaction]}).as_json
         assert_equal true, data.fetch(:poll).fetch(:voter_has_access)
       end
     end
-    assert_equal 1, queries.length
+    assert_equal 1, queries.length, queries.join("\n")
   ensure
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
