@@ -44,7 +44,12 @@ module PendingActionsHelper
   def accept_pending_membership
     group = @group || @discussion&.group || @poll&.group
     return unless group
-    MembershipService.redeem_if_pending!(group.membership_for(current_user))
+    membership = group.membership_for(current_user)
+    return unless membership && membership.accepted_at.nil?
+
+    MembershipService.redeem_if_pending!(membership)
+    # Redemption updates counters through another group instance.
+    group.reload
   end
 
   def consume_pending_topic_reader(user)

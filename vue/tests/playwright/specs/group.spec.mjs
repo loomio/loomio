@@ -3,9 +3,60 @@ import { signUpViaEmail } from '../helpers/accounts.mjs';
 import { editor } from '../helpers/editor.mjs';
 import { groupAction, ensureSidebar, sidebarGroup } from '../helpers/groups.mjs';
 import { openThreadForm } from '../helpers/threads.mjs';
+import { blockMainContentRequests } from '../helpers/initialPage.mjs';
 
 const groupName = page => page.locator('.group-page__name');
 const forbidden = page => page.locator('.error-page__forbidden');
+
+test('a group opens its discussion list without startup API requests', async ({ page }) => {
+  const requests = await blockMainContentRequests(page, {group: true});
+  await page.goto('/dev/setup_group_with_discussion');
+  await expect(groupName(page)).toContainText('Dirty Dancing Shoes');
+  await expect(page.locator('.discussions-panel__list')).toContainText('What star sign are you?');
+  await page.reload();
+  await expect(page.locator('.discussions-panel__list')).toContainText('What star sign are you?');
+  expect(requests).toEqual([]);
+});
+
+test('a visitor opens a public group without startup API requests', async ({ page }) => {
+  const requests = await blockMainContentRequests(page, {group: true});
+  await page.goto('/dev/view_open_group_as_visitor');
+  await expect(groupName(page)).toContainText('Open Dirty Dancing Shoes');
+  await expect(page.locator('.discussions-panel__list')).toContainText('I carried a watermelon');
+  expect(requests).toEqual([]);
+});
+
+test('a group handle boots without startup API requests', async ({ page }) => {
+  const requests = await blockMainContentRequests(page, {group: true});
+  await page.goto('/dev/setup_group_with_handle');
+  await expect(groupName(page)).toContainText('Ghostbusters');
+  await page.goto('/ghostbusters');
+  await expect(groupName(page)).toContainText('Ghostbusters');
+  await expect(page.locator('.discussions-panel__new-topic-button')).toBeVisible();
+  expect(requests).toEqual([]);
+});
+
+test('a filtered group discussion page boots without startup API requests', async ({ page }) => {
+  const requests = await blockMainContentRequests(page, {group: true});
+  await page.goto('/dev/setup_open_and_closed_discussions');
+  await expect(page.locator('.discussions-panel__list')).toContainText('What star sign are you?');
+  const groupUrl = page.url();
+  await page.goto(`${groupUrl}?t=locked`);
+  await expect(page.locator('.discussions-panel__list')).toContainText('This thread is old and closed');
+  await expect(page.locator('.discussions-panel__list')).not.toContainText('What star sign are you?');
+  expect(requests).toEqual([]);
+});
+
+test('other app pages boot without fetching site configuration', async ({ page }) => {
+  const requests = await blockMainContentRequests(page, {group: true});
+  await page.goto('/dev/setup_group_with_discussion');
+  await expect(groupName(page)).toContainText('Dirty Dancing Shoes');
+  for (const [path, selector] of [['/profile', '.profile-page'], ['/bookmarks', '.bookmarks-page'], ['/notifications', '.notifications-page']]) {
+    await page.goto(path);
+    await expect(page.locator(selector)).toBeVisible();
+  }
+  expect(requests).toEqual([]);
+});
 
 test.describe('the sidebar', () => {
   test('shows the parent group of a subgroup member', async ({ page }) => {

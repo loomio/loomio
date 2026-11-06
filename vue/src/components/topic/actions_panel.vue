@@ -3,12 +3,14 @@ import { ref, computed, watch, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
 import AbilityService from '@/shared/services/ability_service';
-import PollCommonForm from '@/components/poll/common/form';
-import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
+import asyncComponent from '@/shared/services/async_component';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+
+const PollCommonForm = asyncComponent(() => import('@/components/poll/common/form'));
+const PollCommonChooseTemplateWrapper = asyncComponent(() => import('@/components/poll/common/choose_template_wrapper'));
 
 const { topic } = defineProps({
   topic: { type: Object, required: true }

@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
   before_action :require_signed_in_user_for_explore, only: [:index]
 
   def index
+    return boot_app unless params[:export] || browser.bot?
+
     groups = Queries::ExploreGroups.new.search_for(params[:q]).order('groups.memberships_count DESC')
     total = groups.count
     limit = params.fetch(:limit, 50).to_i
@@ -30,24 +32,7 @@ class GroupsController < ApplicationController
       end
     end
 
-    # existing fallback behavior
-    resource = ModelLocator.new(resource_name, params).locate!
-    @recipient = current_user
-    if current_user.can? :show, resource
-      assign_resource
-      respond_to do |format|
-        format.html do
-          render Views::Groups::Show.new(
-            group: @group, recipient: @recipient,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
-            canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
-          )
-        end
-        format.xml
-      end
-    else
-      respond_with_error 403
-    end
+    render_group(ModelLocator.new(resource_name, params).locate!)
   end
 
   def export
@@ -64,11 +49,17 @@ class GroupsController < ApplicationController
     if current_user.can? :show, @group
       respond_to do |format|
         format.html do
-          render Views::Groups::Show.new(
-            group: @group, recipient: @recipient,
-            metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
-            canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
-          )
+          if params[:export] || browser.bot?
+            render Views::Groups::Show.new(
+              group: @group, recipient: @recipient,
+              metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+              canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
+            )
+          else
+            accept_pending_membership
+            page = 'group_discussions' unless %w[polls members files emails membership_requests].include?(params[:slug])
+            boot_app(page: page, resource: @group)
+          end
         end
         format.xml
       end

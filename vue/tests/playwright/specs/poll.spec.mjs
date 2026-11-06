@@ -1,4 +1,5 @@
 import { test, expect } from '../fixtures.mjs';
+import { blockMainContentRequests } from '../helpers/initialPage.mjs';
 import { choose } from '../helpers/vuetify.mjs';
 import { box } from '../helpers/layout.mjs';
 import { editor } from '../helpers/editor.mjs';
@@ -10,6 +11,18 @@ import {
 const scenario = (pollType, name, extra = '') =>
   `/dev/polls/test_poll_scenario?scenario=${name}&poll_type=${pollType}${extra}`;
 const reason = page => page.locator('.poll-common-stance-created__reason');
+
+for (const [name, url, selector] of [
+  ['standalone', '/dev/polls/test_scheduled_settings?opened=1', '.context-panel__heading'],
+  ['embedded', scenario('proposal', 'poll_created'), '.poll-common-card__title']
+]) {
+  test(`${name} poll boots with its initial topic records`, async ({ page }) => {
+    const requests = await blockMainContentRequests(page);
+    await page.goto(url);
+    await expect(page.locator(selector)).toBeVisible();
+    expect(requests).toEqual([]);
+  });
+}
 
 test.describe('starting polls in a thread', () => {
   test.beforeEach(async ({ page }) => {
@@ -50,6 +63,14 @@ test.describe('starting polls in a thread', () => {
     await submitVote(page, 'A reason');
     await expect(page.locator('.poll-common-current-vote')).toContainText('An option');
     await expect(reason(page)).toContainText('A reason');
+  });
+
+  test('a ranked choice poll', async ({ page }) => {
+    await startPoll(page, 'ranked_choice', { options: ['An option', 'Another option'] });
+    await expectPoll(page);
+    await expect(page.locator('.poll-ranked-choice-vote-form')).toBeVisible();
+    await submitVote(page, 'My ranking');
+    await expect(reason(page)).toContainText('My ranking');
   });
 
   test('a time poll in the author\'s time zone', async ({ page }) => {

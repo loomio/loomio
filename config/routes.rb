@@ -514,6 +514,8 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
+  get 'bookmarks'                          => 'application#index', as: :bookmarks
+  get 'notifications'                      => 'application#index', as: :notifications
   get 'poll_templates/browse'              => 'application#index'
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'

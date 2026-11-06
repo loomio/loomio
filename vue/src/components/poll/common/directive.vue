@@ -1,19 +1,15 @@
 <script lang="js">
 import PollCommonVoteForm from '@/components/poll/common/vote_form.vue';
-import PollDotVoteVoteForm from '@/components/poll/dot_vote/vote_form.vue';
-import PollScoreVoteForm from '@/components/poll/score/vote_form.vue';
-import PollRankedChoiceVoteForm from '@/components/poll/ranked_choice/vote_form.vue';
-import PollMeetingVoteForm from '@/components/poll/meeting/vote_form.vue';
-import PollStvVoteForm from '@/components/poll/stv/vote_form.vue';
+import asyncComponent from '@/shared/services/async_component';
 
 export default {
   components: {
     'poll-common-vote-form': PollCommonVoteForm,
-    'poll-dot_vote-vote-form': PollDotVoteVoteForm,
-    'poll-score-vote-form': PollScoreVoteForm,
-    'poll-ranked_choice-vote-form': PollRankedChoiceVoteForm,
-    'poll-meeting-vote-form': PollMeetingVoteForm,
-    'poll-stv-vote-form': PollStvVoteForm
+    'poll-dot_vote-vote-form': asyncComponent(() => import('@/components/poll/dot_vote/vote_form.vue')),
+    'poll-score-vote-form': asyncComponent(() => import('@/components/poll/score/vote_form.vue')),
+    'poll-ranked_choice-vote-form': asyncComponent(() => import('@/components/poll/ranked_choice/vote_form.vue')),
+    'poll-meeting-vote-form': asyncComponent(() => import('@/components/poll/meeting/vote_form.vue')),
+    'poll-stv-vote-form': asyncComponent(() => import('@/components/poll/stv/vote_form.vue'))
   },
 
   props: {

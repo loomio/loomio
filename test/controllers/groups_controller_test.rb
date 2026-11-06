@@ -16,7 +16,7 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response 200
   end
 
-  test "index pages matching groups by member count and clamps pages beyond the end" do
+  test "static index pages matching groups by member count and clamps pages beyond the end" do
     prefix = "Pagination #{SecureRandom.hex(4)}"
     members = users(:member_normal, :guest_quiet, :guest_normal)
     groups = 3.times.map do |index|
@@ -25,12 +25,12 @@ class GroupsControllerTest < ActionController::TestCase
       group
     end
 
-    get :index, params: {q: prefix, limit: 2, page: 1}
+    get :index, params: {q: prefix, limit: 2, page: 1, export: 1}
     assert_response :success
     assert_equal groups.first(2).map(&:name), css_select('.v-card__title').map(&:text)
 
     [2, 99].each do |page|
-      get :index, params: {q: prefix, limit: 2, page: page}
+      get :index, params: {q: prefix, limit: 2, page: page, export: 1}
       assert_response :success
       assert_equal [groups.last.name], css_select('.v-card__title').map(&:text)
     end
@@ -117,7 +117,8 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response 200
     assert_select "link[rel='canonical'][href=?]", group_url(@group)
     assert_select "meta[name='robots'][content='noindex,follow']"
-    assert_select "a.navbar__sign-in[href='/dashboard']"
+    assert_select '#initial-data', count: 1
+    assert_select '#loading-placeholder', count: 1
   end
 
   test "show closed group 200 for non-member" do
@@ -127,7 +128,7 @@ class GroupsControllerTest < ActionController::TestCase
     assert_equal @group, assigns(:group)
   end
 
-  test "show lists public discussions and excludes private discussions" do
+  test "static export lists public discussions and excludes private discussions" do
     @group.update!(discussion_privacy_options: "public_or_private")
     @group.add_admin!(@user)
     public_discussions = 2.times.map do |index|
@@ -150,11 +151,12 @@ class GroupsControllerTest < ActionController::TestCase
     )
     sign_in @user
 
-    get :show, params: { id: @group.handle }
+    get :show, params: { id: @group.handle, export: 1 }
 
     assert_response :success
     public_discussions.each { |discussion| assert_includes response.body, discussion.title }
     refute_includes response.body, private_discussion.title
+    assert_select '#initial-data', count: 0
   end
 
   test "show closed group 404 for non-existent" do

@@ -1,4 +1,5 @@
 import { test, expect } from '../fixtures.mjs';
+import { blockMainContentRequests } from '../helpers/initialPage.mjs';
 import { signUpViaInvitation, signInViaPassword } from '../helpers/accounts.mjs';
 import { editor } from '../helpers/editor.mjs';
 import { pollAction } from '../helpers/polls.mjs';
@@ -12,12 +13,27 @@ const description = page => page.locator('.context-panel__description');
 const mentionCount = page => page.locator('.mention-notifications-count');
 
 test.describe('viewing threads', () => {
+  test('a thread boots with its records when the startup API requests are unavailable', async ({ page }) => {
+    const requests = await blockMainContentRequests(page);
+    await page.goto('/dev/setup_discussion');
+    await expect(heading(page)).toContainText('What star sign are you?');
+    await expect(page.locator('.comment-form')).toBeVisible();
+    expect(requests).toEqual([]);
+    await page.reload();
+    await expect(heading(page)).toContainText('What star sign are you?');
+    expect(requests).toEqual([]);
+  });
+
   test('a visitor reads a public thread', async ({ page }) => {
     await page.goto('/dev/view_open_group_as_visitor');
     await expect(page.locator('.group-page__name')).toContainText('Open Dirty Dancing Shoes');
     await expect(page.locator('.navbar__sign-in')).toBeVisible();
     await page.locator('.topic-preview__link', { hasText: 'I carried a watermelon' }).click();
     await expect(heading(page)).toContainText('I carried a watermelon');
+    const requests = await blockMainContentRequests(page);
+    await page.reload();
+    await expect(heading(page)).toContainText('I carried a watermelon');
+    expect(requests).toEqual([]);
   });
 
   test('content shows timestamps', async ({ page }) => {

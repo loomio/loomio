@@ -7,11 +7,116 @@ class DiscussionsControllerTest < ActionController::TestCase
     @discussion = discussions(:discussion)
   end
 
-  test "show 200 ssr and boot for signed in member" do
+  test "member receives the app shell with session and thread records without SSR" do
     sign_in @user
     get :show, params: { key: @discussion.key }
     assert_response 200
     assert_equal @discussion, assigns(:discussion)
+    assert_select '#loading-placeholder'
+    assert_select '.context-panel', count: 0
+    data = initial_data
+    assert_equal @user.id, data.dig('boot', 'current_user_id')
+    assert_equal @user.email, data['boot']['users'].find { |user| user['id'] == @user.id }['email']
+    assert_includes thread_records['discussions'].pluck('id'), @discussion.id
+    assert_includes response.headers['Cache-Control'], 'no-store'
+    assert_select "link[rel='canonical'][href=?]", discussion_url(@discussion)
+  end
+
+  test "public bootstrap is signed out and JSON cannot escape its script element" do
+    discussion = discussions(:public_discussion)
+    text = '</script><script id="injected">alert(1)</script>&'
+    discussion.update_column(:description, text)
+    get :show, params: { key: discussion.key }
+
+    assert_response :success
+    assert_nil initial_data.dig('boot', 'current_user_id')
+    assert_equal text, thread_records['discussions'].find { |row| row['id'] == discussion.id }['description']
+    assert_select 'script#injected', count: 0
+    assert_includes response.headers['Cache-Control'], 'no-store'
+  end
+
+  test "thread bootstrap respects group and direct topic access and reader scope" do
+    %i[discussion_topic direct_topic].each do |name|
+      topic = topics(name)
+      allowed = name == :discussion_topic ? %i[member_normal admin guest_normal guest_admin_normal] : %i[guest_normal guest_admin_normal]
+      allowed.each do |role|
+        user = users(role)
+        sign_in user
+        get :show, params: { key: topic.topicable.key }
+        assert_response :success
+        assert_equal user.id, initial_data.dig('boot', 'current_user_id')
+        row = thread_records['topics'].find { |record| record['id'] == topic.id }
+        assert_equal TopicReader.for(user: user, topic: topic).admin, row['reader_admin']
+        sign_out
+      end
+      %i[alien former_member_loud former_guest_loud non_guest_loud server_admin].each do |role|
+        sign_in users(role)
+        get :show, params: { key: topic.topicable.key }
+        assert_response :forbidden
+        assert_select '#initial-data', count: 0
+        sign_out
+      end
+      get :show, params: { key: topic.topicable.key }
+      assert_response :forbidden
+      assert_select '#initial-data', count: 0
+    end
+  end
+
+  test "crawler and export responses retain static content without personal bootstrap data" do
+    discussion = discussions(:public_discussion)
+    get :show, params: { key: discussion.key, export: 1 }
+    assert_select '.context-panel__heading', text: discussion.title
+    assert_select '#initial-data', count: 0
+
+    @request.user_agent = 'Googlebot'
+    get :show, params: { key: discussion.key }
+    assert_select '.context-panel__heading', text: discussion.title
+    assert_select '#initial-data', count: 0
+  end
+
+  test "embedded poll records respect hidden results and anonymous ballots before and after closing" do
+    @discussion.topic.update!(polls_one_at_a_time: false)
+    [false, true].each do |anonymous|
+      modes = anonymous ? ['until_closed'] : %w[off until_vote until_closed]
+      modes.each do |mode|
+        poll = PollService.create(params: {
+          topic_id: @discussion.topic_id, title: "Results #{anonymous} #{mode}", poll_type: 'proposal',
+          anonymous: anonymous, hide_results: mode, poll_option_names: %w[Agree Disagree], closing_at: 3.days.from_now
+        }, actor: users(:admin))
+        if anonymous
+          ballot = poll.anonymous_ballots.build(anonymous_ballot_choices_attributes: [{poll_option_id: poll.poll_options.first.id, score: 1}])
+          AnonymousBallotService.create(anonymous_ballot: ballot, actor: @user)
+        else
+          stance = poll.stances.latest.find_by!(participant: users(:admin))
+          stance.choice = 'Agree'
+          stance.reason = 'Sensitive vote reason'
+          StanceService.create(stance: stance, actor: users(:admin))
+        end
+
+        sign_in @user
+        get :show, params: { key: @discussion.key }
+        assert_response :success
+        records = thread_records
+        data = records['polls'].find { |row| row['id'] == poll.id }
+        assert_equal mode != 'until_closed', data.key?('scores_by_option')
+        if mode == 'until_closed' && !anonymous
+          refute_includes records.fetch('stances', []).select { |row| row['poll_id'] == poll.id }.to_json, 'Sensitive vote reason'
+        end
+        if anonymous
+          assert_equal true, data['anonymous_ballot_submitted']
+          refute data.key?('vote_count_cast')
+          refute records.key?('anonymous_ballots')
+          refute records.key?('anonymous_poll_voters')
+          assert_empty records.fetch('stances', []).select { |row| row['poll_id'] == poll.id }
+        end
+
+        PollService.close(poll: poll, actor: users(:admin))
+        get :show, params: { key: @discussion.key }
+        data = thread_records['polls'].find { |row| row['id'] == poll.id }
+        assert_equal [1, 0], data['scores_by_option']
+        sign_out
+      end
+    end
   end
 
   test "private discussion pages and feeds reject revoked and unrelated accounts" do
@@ -128,5 +233,15 @@ class DiscussionsControllerTest < ActionController::TestCase
     get :show, params: { key: discussion.key }, format: :xml
     assert_response 200
     assert_match %r{/d/#{discussion.key}\?comment_id=\d+}, @response.body
+  end
+
+  private
+
+  def thread_records
+    initial_data['requests'].find { |request| request['params'].key?('discussion_key') }['records']
+  end
+
+  def initial_data
+    JSON.parse(Nokogiri::HTML(response.body).at_css('#initial-data').text)
   end
 end

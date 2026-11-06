@@ -12,7 +12,7 @@ const dashboardLoaded = ref(Records.topics.collection.data.length > 0);
 const topics = ref([]);
 const loader = ref(null);
 
-const noGroups = computed(() => Session.user().groups().length === 0);
+const noGroups = computed(() => Session.user().membershipsCount === 0 && Session.user().groups().length === 0);
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
