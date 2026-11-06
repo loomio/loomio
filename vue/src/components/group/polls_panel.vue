@@ -72,7 +72,7 @@ const initLoader = () => {
     path: 'polls',
     order: 'createdAt',
     params: {
-      exclude_types: 'group reaction',
+      exclude_types: 'group',
       group_key: route.params.key,
       status: route.query.status,
       poll_type: route.query.poll_type,

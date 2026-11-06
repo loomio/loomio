@@ -65,6 +65,7 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
         offset += 100;
       } while (offset < total);
     }
+    await records.users.refreshGroups();
   }
 
   fetchMyMemberships() {

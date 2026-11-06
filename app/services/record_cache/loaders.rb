@@ -87,7 +87,7 @@ module RecordCache::Loaders
 
   class Group < RecordCache::Loader
     def load
-      add_groups(records.map(&:id))
+      add_groups(records.map(&:id), records: records)
     end
   end
 

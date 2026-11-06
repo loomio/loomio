@@ -66,7 +66,6 @@ export default
         order: 'lastActivityAt',
         params: {
           group_id: this.group.id,
-          exclude_types: 'reaction',
           topicable_type: 'Discussion',
           subgroups: 'mine',
           filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),

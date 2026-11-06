@@ -74,11 +74,22 @@ test.describe('managing a thread', () => {
   });
 
   test('reacts to the thread', async ({ page }) => {
+    const deferredRequests = [];
+    await page.route('**/api/v1/reactions?*', route => {
+      deferredRequests.push(route.request().url());
+      return route.abort();
+    });
     await expect(page.locator('.reactions-display')).toHaveCount(0);
     await page.locator('.context-panel .emoji-picker__toggle').click();
     // Hearts show in the quick picks and the full list; either will do.
     await page.locator('.v-overlay--active .emoji-picker__emoji[data-shortcode="red_heart"]').first().click();
     await expect(page.locator('.context-panel .reactions-display')).toBeVisible();
+    await page.reload();
+    await expect(page.locator('.context-panel .reactions-display')).toBeVisible();
+    await page.locator('.context-panel__breadcrumbs a', {hasText: 'Dirty Dancing Shoes'}).click();
+    await page.locator('.topic-preview__link', {hasText: 'What star sign are you?'}).click();
+    await expect(page.locator('.context-panel .reactions-display')).toBeVisible();
+    expect(deferredRequests).toEqual([]);
   });
 
   test('starts a direct thread and comments in it', async ({ page, flash }) => {

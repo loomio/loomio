@@ -11,6 +11,22 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
 
   # Test index action
+  test "compact topics retain membership notification defaults without serializing groups" do
+    viewer = users(:member_normal)
+    @group.membership_for(viewer).update!(volume_email: :quiet, volume_push: :loud)
+    TopicReader.where(user: viewer, topic: @topic).delete_all
+    sign_in viewer
+
+    get :index, params: {group_id: @group.id, exclude_types: 'group'}
+
+    assert_response :success
+    json = response.parsed_body
+    row = json.fetch('topics').find { |topic| topic['id'] == @topic.id }
+    assert_equal 'quiet', row.fetch('reader_volume_email')
+    assert_equal 'loud', row.fetch('reader_volume_push')
+    refute json.key?('groups')
+  end
+
   test 'only thread and group admins can change attachment and sequential-poll restrictions' do
     %i[member_normal guest_normal alien server_admin admin guest_admin_normal].each do |role|
       @topic.update!(attachments_admin_only: false, polls_one_at_a_time: false)
@@ -47,12 +63,14 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
   test "index serializes without record cache fallbacks" do
     sign_in @user
+    reaction = Reaction.create!(reactable: @discussion, user: @admin, reaction: '👍')
 
     assert_no_record_cache_fallbacks do
       get :index
     end
 
     assert_response :success
+    assert_includes response.parsed_body.fetch('reactions').pluck('id'), reaction.id
   end
 
   test "index does not return topics from groups user is not a member of" do

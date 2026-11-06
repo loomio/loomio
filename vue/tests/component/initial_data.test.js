@@ -20,6 +20,23 @@ function embed() {
 }
 
 describe('initial response data', () => {
+  it('omits groups from content reads after boot while keeping explicit group fetches', async () => {
+    const {default: AppConfig} = await import('@/shared/services/app_config');
+    const {default: RestfulClient} = await import('@/shared/record_store/restful_client');
+    AppConfig.groupsLoaded = true;
+    const client = new RestfulClient('topic_items');
+    client.request = vi.fn().mockResolvedValue({});
+    await client.get('', {exclude_types: 'topic'});
+    expect(new URL(client.request.mock.calls[0][0], location.origin).searchParams.get('exclude_types')).toBe('topic group');
+    const groupClient = new RestfulClient('groups');
+    groupClient.request = vi.fn().mockResolvedValue({});
+    await groupClient.get('some-group', {});
+    expect(new URL(groupClient.request.mock.calls[0][0], location.origin).searchParams.has('exclude_types')).toBe(false);
+    AppConfig.groupsLoaded = false;
+    await client.get('', {});
+    expect(new URL(client.request.mock.calls[1][0], location.origin).searchParams.has('exclude_types')).toBe(false);
+  });
+
   it('consumes the matching window once, allowing later visits to fetch fresh records', async () => {
     embed();
     const {bootData, takeInitialResponse} = await import('@/shared/services/initial_data');

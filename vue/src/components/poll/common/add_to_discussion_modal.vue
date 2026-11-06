@@ -54,7 +54,7 @@ const fetchTopics = debounce(() => {
   const params = {
     group_id: groupId.value,
     topicable_type: 'Discussion',
-    exclude_types: 'reaction group',
+    exclude_types: 'group',
     per: 50
   };
   if (searchFragment.value) {

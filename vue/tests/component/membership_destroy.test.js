@@ -117,12 +117,14 @@ describe('membership removal', () => {
       .mockResolvedValueOnce({meta: {total: 201}});
     const findOrFetch = vi.fn().mockResolvedValue({key: 'group-key'});
     const closed = record({id: 99, groupId: 10, voterHasAccess: false});
-    const records = {groups: {findOrFetch}, polls: {fetch, ...collection([closed])}, updateViews: vi.fn()};
+    const refreshGroups = vi.fn().mockResolvedValue({});
+    const records = {groups: {findOrFetch}, users: {refreshGroups}, polls: {fetch, ...collection([closed])}, updateViews: vi.fn()};
     const restore = MembershipRecordsInterface.prototype.restoreGroupAccess.bind({recordStore: records, find: () => [{}]});
 
     await restore([10]);
 
     expect(findOrFetch).toHaveBeenCalledWith(10);
+    expect(refreshGroups).toHaveBeenCalledOnce();
     expect(closed.voterHasAccess).toBe(true);
     expect(fetch.mock.calls.map(([request]) => request.params)).toEqual([0, 100, 200].map(offset => ({
       group_key: 'group-key', subgroups: 'none', status: 'recent', limit: 100, offset

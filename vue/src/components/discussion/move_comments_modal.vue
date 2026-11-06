@@ -48,7 +48,7 @@ export default {
       const params = {
         group_id: this.groupId,
         topicable_type: 'Discussion',
-        exclude_types: 'reaction group',
+        exclude_types: 'group',
         per: 50
       };
       if (this.searchFragment) {

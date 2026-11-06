@@ -57,7 +57,6 @@ function init() {
     collection: 'topics',
     params: {
       per: 30,
-      exclude_types: 'reaction'
     }
   });
 

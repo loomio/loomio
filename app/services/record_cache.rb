@@ -136,7 +136,7 @@ class RecordCache
     add_topic_readers(topic_readers, topic_ids: topics.map(&:id))
     add_polls_options_stances_outcomes(Poll.where(id: poll_ids)) if poll_ids.any?
     add_reactions_for_itemables(itemables)
-    add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: group_ids)
+    load_groups(group_ids)
   end
 
   # Include one actual reply parent per requested item, plus the capped display
@@ -250,7 +250,35 @@ class RecordCache
     [parent_ids, all_parent_ids_for(klass, parent_ids)].flatten.compact.uniq
   end
 
-  # remember to join subscriptions for this call
+  # Hydrate one set of groups and ancestors, reusing primary group records.
+  # Connect parents to these same instances so serializers never reload them.
+  def load_groups(ids, memberships: true, records: nil)
+    ids = ids.compact.uniq
+    if exclude_types.include?('group')
+      # Reader defaults and voting access still need fresh viewer memberships.
+      add_memberships(Membership.active.where(group_id: ids, user_id: current_user_id), group_ids: ids) if memberships
+      return
+    end
+
+    groups = records || Group.where(id: ids).to_a
+    parents = groups.filter_map(&:parent_id).uniq
+    while (missing = parents - groups.map(&:id)).any?
+      ancestors = Group.where(id: missing).to_a
+      groups = groups + ancestors
+      parents = ancestors.filter_map(&:parent_id).uniq
+    end
+    associations = Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).includes_values
+    ActiveRecord::Associations::Preloader.new(records: groups, associations: associations).call
+    by_id = groups.index_by(&:id)
+    groups.each { |group| group.association(:parent).target = by_id[group.parent_id] }
+
+    if memberships
+      add_groups_subscriptions_memberships(groups)
+    else
+      add_groups(groups)
+    end
+  end
+
   def add_groups_subscriptions_memberships(collection)
     return [] if exclude_types.include?('group')
     add_groups collection
@@ -279,7 +307,7 @@ class RecordCache
     end
   end
 
-  def add_memberships(collection)
+  def add_memberships(collection, group_ids: self.group_ids)
     return if exclude_types.include?('membership')
     scope[:memberships_by_group_id] ||= {}
     scope[:memberships_by_id] ||= {}
