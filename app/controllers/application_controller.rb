@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     elsif request.path == '/' || request.path == '/dashboard' || (request.path.start_with?('/dashboard/') && !%w[polls_to_vote_on direct_discussions].include?(params[:filter]))
       'dashboard'
     end
-    boot_app(initial_data: page ? initial_page_data(page: page) : nil)
+    boot_app(page: page)
   end
 
   def show
@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
     if current_user.can? :show, resource
       assign_resource
       respond_to do |format|
-        format.html { boot_app }
+        format.html { boot_app(resource: resource) }
       end
     else
       respond_with_error 403
@@ -157,20 +157,25 @@ class ApplicationController < ActionController::Base
     Sentry.metrics.count("http.request", attributes: attrs)
   end
 
-  def initial_page_data(page: nil, topicable: nil)
-    Boot::Page.new(user: current_user, page: page, topicable: topicable, params: params.to_unsafe_h).payload.merge(
+  def initial_page_data(page:, resource:)
+    Boot::Page.new(user: current_user, page: page, resource: resource, params: params.to_unsafe_h).payload.merge(
       boot: Boot::Site.new.payload.merge(Boot::User.new(current_user,
         root_url: URI(root_url).origin, identity: serialized_pending_identity, flash: flash).payload)
     )
   end
 
-  def boot_app(status: 200, initial_data: nil)
+  def boot_app(status: 200, page: nil, resource: nil)
     prevent_caching
+    if status == 200 && !params[:export] && !browser.bot?
+      initial_data = initial_page_data(page: page, resource: resource)
+    end
     render Views::Application::Boot.new(
       metadata: application_metadata,
       export: !!params[:export],
       bot: browser.bot?,
       initial_data: initial_data,
+      canonical_url: canonical_url_for(resource),
+      robots: robots_directive_for(resource),
       theme_name: current_user.experiences['theme']
     ), status: status
   end

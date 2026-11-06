@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { createMemoryHistory, createRouter } from 'vue-router';
 
 const params = {discussion_key: 'thread-key', include_polls_not_closed: 1, limit: 25, unread_or_newest: 1};
 const path = '/api/v1/topic_items';
@@ -44,12 +45,33 @@ describe('initial response data', () => {
     expect(takeInitialResponse(path, params)).toBeUndefined();
   });
 
-  it('discards unused responses after navigation', async () => {
+  async function initialRouter() {
+    const {clearInitialDataAfterNavigation} = await import('@/shared/services/initial_data');
+    const router = createRouter({history: createMemoryHistory(), routes: [
+      {path: '/', redirect: '/dashboard'},
+      {path: '/dashboard', component: {}},
+      {path: '/inbox', component: {}}
+    ]});
+    router.afterEach(clearInitialDataAfterNavigation);
+    await router.replace('/');
+    return router;
+  }
+
+  it('retains initial responses through the initial root redirect', async () => {
     embed();
     const {takeInitialResponse} = await import('@/shared/services/initial_data');
-    history.pushState({}, '', '/inbox');
+    const router = await initialRouter();
+    expect(router.currentRoute.value.path).toBe('/dashboard');
+    expect(takeInitialResponse(path, params)).toEqual(records);
+  });
+
+  it('discards unused responses after navigation and does not restore them on return', async () => {
+    embed();
+    const {takeInitialResponse} = await import('@/shared/services/initial_data');
+    const router = await initialRouter();
+    await router.push('/inbox');
     expect(takeInitialResponse(path, params)).toBeUndefined();
-    history.pushState({}, '', '/dashboard');
+    await router.push('/dashboard');
     expect(takeInitialResponse(path, params)).toBeUndefined();
   });
 

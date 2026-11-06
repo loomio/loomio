@@ -56,29 +56,27 @@ export default
     },
 
     refresh() {
-      Records.groups.findOrFetch(this.$route.params.key).then(group => {
-        this.group = group;
-        this.isMember = !!Session.user().membershipFor(this.group);
+      // GroupPage loads the group before mounting this panel.
+      const group = Records.groups.fuzzyFind(this.$route.params.key);
+      this.group = group;
+      this.isMember = !!Session.user().membershipFor(this.group);
 
-        this.loader = new PageLoader({
-          path: 'topics',
-          order: 'lastActivityAt',
-          params: {
-            group_id: this.group.id,
-            exclude_types: 'reaction',
-            topicable_type: 'Discussion',
-            subgroups: 'mine',
-            filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
-            tags: this.$route.query.tag,
-            per: this.per
-          }
-        });
-
-        this.fetch();
-        this.query();
-      }).catch(() => {
-        // GroupPage owns route-level group fetch error handling.
+      this.loader = new PageLoader({
+        path: 'topics',
+        order: 'lastActivityAt',
+        params: {
+          group_id: this.group.id,
+          exclude_types: 'reaction',
+          topicable_type: 'Discussion',
+          subgroups: 'mine',
+          filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
+          tags: this.$route.query.tag,
+          per: this.per
+        }
       });
+
+      this.fetch();
+      this.query();
     },
 
     query() {
@@ -183,12 +181,7 @@ export default
   },
 
   watch: {
-    '$route.params': 'refresh',
-    '$route.query': 'refresh',
-    'page'() {
-      this.fetch();
-      this.query();
-    }
+    '$route.query': 'refresh'
   },
 
   computed: {

@@ -3,17 +3,20 @@ module Boot
   # Keep the API's query scopes, serializer exclusions and pagination metadata:
   # these responses enter the client through its normal record import path.
   class Page
-    def initialize(user:, page:, params:, topicable: nil)
+    def initialize(user:, page:, params:, resource: nil)
       @user = user
       @page = page
       @params = params
-      @topicable = topicable
+      @resource = resource
       @requests = []
     end
 
     def payload
-      if @topicable
-        @requests << Boot::Topic.new(topicable: @topicable, user: @user, params: @params).payload.merge(path: '/api/v1/topic_items')
+      case @resource
+      when ::Group
+        add_group(@resource)
+      when ::Discussion, ::Poll
+        @requests << Boot::Topic.new(topicable: @resource, user: @user, params: @params).payload.merge(path: '/api/v1/topic_items')
       end
 
       if @user.is_logged_in?
@@ -35,17 +38,34 @@ module Boot
 
     private
 
-    def add_topics(params, limit:)
-      topics = TopicQuery.relevant_to(user: @user, or_subgroups: false, only_unread: params.key?(:unread)).recent_activity_first
-      add('topics', params, topics.limit(limit), TopicSerializer, total: topics.count)
+    def add_group(group)
+      @user.ability.authorize!(:show, group)
+      identifier = @params[:key] || @params[:id]
+      add("groups/#{identifier}", {}, [group], GroupSerializer, root: 'groups', total: nil)
+      return unless @page == 'group_discussions'
+
+      page = @params[:page].to_i
+      offset = [page - 1, 0].max * 25
+      params = {
+        group_id: group.id, exclude_types: 'reaction', topicable_type: 'Discussion',
+        subgroups: 'mine', per: 25, from: offset
+      }
+      params[:filter] = @params[:t].presence || 'unlocked' unless @params[:t] == 'all'
+      params[:tags] = @params[:tag] if @params[:tag]
+      add_topics(params, limit: 25, offset: offset)
     end
 
-    def add(path, params, records, serializer, total:)
+    def add_topics(params, limit:, offset: 0)
+      topics = TopicListQuery.new(user: @user, params: params).records
+      add('topics', params, topics.limit(limit).offset(offset), TopicSerializer, total: topics.count)
+    end
+
+    def add(path, params, records, serializer, total:, root: path)
       records = records.to_a
       exclude_types = params.fetch(:exclude_types, '').split(' ')
       scope = {cache: RecordCache.for_collection(records, @user.id, exclude_types), current_user_id: @user.id, exclude_types: exclude_types}
-      json = ActiveModel::ArraySerializer.new(records, each_serializer: serializer, root: path, scope: scope,
-        meta: {root: path, total: total}).as_json
+      json = ActiveModel::ArraySerializer.new(records, each_serializer: serializer, root: root, scope: scope,
+        meta: {root: root, total: total}).as_json
       @requests << {path: "/api/v1/#{path}", params: params, records: json}
     end
   end

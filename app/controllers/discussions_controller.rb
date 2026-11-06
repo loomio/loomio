@@ -15,13 +15,7 @@ class DiscussionsController < ApplicationController
               canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion)
             )
           else
-            prevent_caching
-            render Views::Application::Boot.new(
-              metadata: application_metadata,
-              theme_name: current_user.experiences['theme'],
-              canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion),
-              initial_data: initial_page_data(topicable: @discussion)
-            )
+            boot_app(resource: @discussion)
           end
         end
         format.xml { render 'topics/show' }
