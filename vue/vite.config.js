@@ -98,6 +98,13 @@ export default defineConfig({
     alias: [
       { find: /^~/, replacement: '' },
       { find: '@', replacement: path.resolve(__dirname, 'src') },
+      // CommonJS dependencies (vue-slicksort) require('vue'), which resolves to
+      // the full build with the template compiler. Templates are precompiled,
+      // so every import uses the runtime-only build.
+      { find: /^vue$/, replacement: 'vue/dist/vue.runtime.esm-bundler.js' },
+      // date-fns 2 has no exports map. date-fns-tz imports CommonJS file paths
+      // such as date-fns/format/index.js, which would bundle a second copy.
+      { find: /^date-fns\/(?!esm\/)(.*)$/, replacement: 'date-fns/esm/$1' },
     ],
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
