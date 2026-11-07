@@ -4,7 +4,6 @@ import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import AppConfig from '@/shared/services/app_config';
 
 export default class TopicLoader {
   constructor(topic) {
@@ -130,7 +129,7 @@ export default class TopicLoader {
     this.addRule({
       local: {
         find: {
-          actorId: AppConfig.currentUserId,
+          actorId: Session.userId,
           topicId: this.topic.id,
           createdAt: { $gte: new Date() }
         }

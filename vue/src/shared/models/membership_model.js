@@ -1,5 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model';
-import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
 import compareAsc from 'date-fns/compareAsc';
 import {each, invokeMap} from 'lodash-es';
 import Records from '@/shared/services/records';
@@ -88,7 +88,7 @@ export default class MembershipModel extends BaseModel {
     return Records.memberships.remote.destroy(this.keyOrId()).then(response => {
       // Match the server's retained record so membership lookups stay reactive.
       this.update({revokedAt: new Date()});
-      if (this.userId === AppConfig.currentUserId) {
+      if (this.userId === Session.userId) {
         Records.memberships.revokeGroupAccess(groupIds);
       }
       return response;

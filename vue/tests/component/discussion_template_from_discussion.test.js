@@ -13,7 +13,7 @@ vi.mock('@/shared/services/records', () => ({default: {
   topicItems: {find: mocks.findTopicItems, fetch: mocks.fetchTopicItems}
 }}));
 vi.mock('@/shared/services/session', () => ({default: {
-  user: () => mocks.user, isSignedIn: () => mocks.signedIn, returnTo: () => '/d/source'
+  user: () => mocks.user, get userId() { return mocks.user.id; }, isSignedIn: () => mocks.signedIn, returnTo: () => '/d/source'
 }}));
 vi.mock('@/shared/services/app_config', () => ({default: {
   templateSettings: {discussion_template: [

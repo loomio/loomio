@@ -18,7 +18,7 @@ export default {
 
   data() {
     return {
-      userId: Session.user().id,
+      userId: Session.userId,
       diameter: (this.size == 'x-small' && 20) || 24,
       maxNamesCount: 10
     };
@@ -61,7 +61,7 @@ export default {
     removeMine(reaction) {
       if (!this.canEdit) { return; }
       const mine = Records.reactions.find(merge({}, this.reactionParams, {
-        userId:   Session.user().id,
+        userId:   Session.userId,
         reaction
       }
       ))[0];

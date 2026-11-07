@@ -64,7 +64,7 @@ export default
 
     membershipRequest() {
       const requests = this.group.membershipRequests()
-        .filter(request => request.requestorId === Session.user().id);
+        .filter(request => request.requestorId === Session.userId);
       return requests.find(request => request.isPending()) ||
         requests.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''))[0];
     },

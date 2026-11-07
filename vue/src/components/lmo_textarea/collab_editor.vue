@@ -325,7 +325,7 @@ onMounted(() => {
   const extensions = contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value });
   seedHtml = props.model[props.field] || '';
   const seed = collabSeed(seedHtml, extensions);
-  const docname = [props.model.collabKey(props.field, Session.user().id), seed.hash].join('-');
+  const docname = [props.model.collabKey(props.field, Session.userId), seed.hash].join('-');
   ydoc = new Y.Doc();
   Y.applyUpdate(ydoc, seed.update);
 

@@ -24,7 +24,7 @@ export default {
         } else {
           let body = ""; 
           const op = itemable.author();
-          if (op.id !== Session.user().id) {
+          if (op.id !== Session.userId) {
             if (Session.defaultFormat() === 'html') {
               body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span>&thinsp;</p>`;
             } else {
@@ -35,7 +35,7 @@ export default {
           this.newComment = Records.comments.build({
             bodyFormat: Session.defaultFormat(),
             body,
-            authorId: Session.user().id,
+            authorId: Session.userId,
             topicId: itemable.topic().id,
             parentId: itemable.id,
             parentType: startCase(itemable.constructor.singular)

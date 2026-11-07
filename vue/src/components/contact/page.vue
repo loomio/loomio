@@ -27,7 +27,7 @@ export default {
     if (this.isLoggedIn) {
       this.message.name = Session.user().name;
       this.message.email = Session.user().email;
-      this.message.userId = Session.user().id;
+      this.message.userId = Session.userId;
       this.message.subject = this.$route.query.subject
     }
   },
@@ -43,7 +43,7 @@ export default {
           if (this.isLoggedIn) {
             this.message.name = Session.user().name;
             this.message.email = Session.user().email;
-            this.message.userId = Session.user().id;
+            this.message.userId = Session.userId;
           }
           this.needMessage = false;
         });

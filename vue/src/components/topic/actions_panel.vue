@@ -30,7 +30,7 @@ const resetComment = () => {
     topicId: topic.id,
     parentType: topic.topicableType,
     parentId: topic.topicableId,
-    authorId: Session.user().id
+    authorId: Session.userId
   });
 };
 

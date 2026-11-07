@@ -8,7 +8,7 @@ export default {
   computed: {
     $pollTypes() { return AppConfig.pollTypes; },
     currentUser() { return Session.user(); },
-    currentUserId() { return AppConfig.currentUserId; }
+    currentUserId() { return Session.userId; }
   },
 
   methods: {

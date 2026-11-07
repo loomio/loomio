@@ -1,6 +1,6 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
+import Session from '@/shared/services/session';
 import MemberhipModel       from '@/shared/models/membership_model';
-import AppConfig from '@/shared/services/app_config';
 import {invokeMap} from 'lodash-es';
 
 export default class MemberhipRecordsInterface extends BaseRecordsInterface {
@@ -31,7 +31,7 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
   // revocation received in another tab or after an administrator removes us.
   revokeGroupAccess(groupIds) {
     const records = this.recordStore;
-    const userId = AppConfig.currentUserId;
+    const userId = Session.userId;
     this.find({userId, groupId: {$in: groupIds}}).forEach(membership => {
       membership.update({revokedAt: new Date()});
     });
@@ -53,7 +53,7 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
       const group = await records.groups.findOrFetch(groupId);
       // Restore access on cached closed polls too, so a later reopen works
       // even when the poll is older than the recent-polls fetch below.
-      const voterHasAccess = this.find({userId: AppConfig.currentUserId, groupId, revokedAt: null}).length > 0;
+      const voterHasAccess = this.find({userId: Session.userId, groupId, revokedAt: null}).length > 0;
       records.polls.find({groupId}).forEach(poll => poll.update({voterHasAccess}));
       let offset = 0;
       let total;
