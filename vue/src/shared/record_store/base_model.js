@@ -13,6 +13,9 @@ function sameValue(current, value) {
   return isEqual(current, value);
 }
 
+// Model prototypes whose relationship helpers have been defined.
+const relationshipsBuilt = new WeakSet();
+
 export default class BaseModel {
   static singular = 'undefinedSingular';
   static plural = 'undefinedPlural';
@@ -154,9 +157,15 @@ export default class BaseModel {
 
   relationships() {}
 
+  // Relationship helpers are defined once per model class, on its prototype,
+  // the first time a record of that class is built. relationships() must only
+  // call hasMany, belongsTo and belongsToPolymorphic. The helpers read through
+  // `this`, so they are reactive when called on a record.
   buildRelationships() {
-    this.views = {};
-    return this.relationships();
+    const prototype = this.constructor.prototype;
+    if (relationshipsBuilt.has(prototype)) { return; }
+    relationshipsBuilt.add(prototype);
+    this.relationships();
   }
 
   hasMany(name, userArgs) {
@@ -168,9 +177,8 @@ export default class BaseModel {
       find: {}
     });
 
-    const record = reactive(this);
-    return this[name] = () => {
-      const find = Object.assign({}, {[args.with]: record[args.of]},  args.find);
+    this.constructor.prototype[name] = function() {
+      const find = Object.assign({}, {[args.with]: this[args.of]},  args.find);
       if (userArgs.orderBy) {
         return orderBy(Records[args.from].find(find), userArgs.orderBy);
       } else {
@@ -180,35 +188,21 @@ export default class BaseModel {
   }
 
   belongsTo(name, userArgs) {
-    const values = {
-      from: name + 's',
-      by: name + 'Id'
-    };
+    const args = assign({from: name + 's', by: name + 'Id'}, userArgs);
 
-    const args = assign(values, userArgs);
-
-    const record = reactive(this);
-    this[name] = () => {
-      if (record[args.by]) {
-        let obj;
-        if (obj = Records[args.from].find(record[args.by])) { return obj; }
-        if (this.constructor.lazyLoad) {
-          obj = Records[args.from].create({id: record[args.by]});
-          Records[args.from].addMissing(record[args.by]);
-          return obj;
-        }
-      }
-      return Records[args.from].nullModel();
+    this.constructor.prototype[name] = function() {
+      return (this[args.by] && Records[args.from].find(this[args.by])) || Records[args.from].nullModel();
     };
-    this[name+'Is'] = obj => Records[args.from].find(record[args.by]) === obj;
+    this.constructor.prototype[name+'Is'] = function(obj) {
+      return Records[args.from].find(this[args.by]) === obj;
+    };
   }
 
   belongsToPolymorphic(name) {
-    const record = reactive(this);
-    this[name] = () => {
-      const typeColumn = `${name}Type`;
-      const idColumn = `${name}Id`;
-      return Records[BaseModel.itemTypeMap[record[typeColumn]]].find(record[idColumn]);
+    const typeColumn = `${name}Type`;
+    const idColumn = `${name}Id`;
+    this.constructor.prototype[name] = function() {
+      return Records[BaseModel.itemTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
 

@@ -74,4 +74,13 @@ describe('record import', () => {
     Records.importJSON({bookmarks: [{id: 1, user_id: 501, bookmarkable_id: 1, bookmarkable_type: 'Topic'}]});
     expect(bookmarks.value()).toBe(1);
   });
+
+  it('defines relationship helpers once per model class', () => {
+    Records.importJSON({users: [{id: 6001, name: 'Author'}], comments: [commentJSON(601, {author_id: 6001}), commentJSON(602)]});
+    const [first, second] = [Records.comments.find(601), Records.comments.find(602)];
+    expect(Object.hasOwn(first, 'author')).toBe(false);
+    expect(first.author).toBe(second.author);
+    expect(first.authorIs(first.author())).toBe(true);
+  });
+
 });
