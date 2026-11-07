@@ -1,44 +1,29 @@
 <script setup lang="js">
-import { ref, watch, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { VAutocomplete, VCombobox } from 'vuetify/components';
 import { uniq } from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const { model, template } = defineProps({ model: Object, template: Boolean });
 const { t } = useI18n();
-const { watchRecords } = useWatchRecords();
-const items = ref([]);
-const canCreateTags = ref(false);
 
-// Memberships and group permissions can arrive after the form mounts. Refresh
+// Memberships and group permissions can arrive after the form mounts. Read
 // from the record store so the field uses the same permissions as the server.
-function refresh() {
-  if (template) {
-    items.value = [];
-    canCreateTags.value = true;
-    return;
-  }
-  const group = model.group();
-  items.value = uniq(group.tags().map(tag => tag.name));
-  canCreateTags.value = !model.groupId || AbilityService.canCreateTags(group);
-}
+const items = computed(() => {
+  if (template) { return []; }
+  return uniq(model.group().tags().map(tag => tag.name));
+});
+
+const canCreateTags = computed(() => {
+  if (template) { return true; }
+  return !model.groupId || AbilityService.canCreateTags(model.group());
+});
 
 function colorFor(name) {
   if (template) { return; }
   return model.group().tags().find(tag => tag.name === name)?.color;
 }
-
-watch(() => model.groupId, refresh, { immediate: true });
-onMounted(() => {
-  if (template) { return; }
-  watchRecords({
-    key: 'tagsField',
-    collections: ['tags', 'groups', 'memberships'],
-    query: refresh
-  });
-});
 </script>
 
 <template lang="pug">

@@ -1,16 +1,9 @@
 <script setup lang="js">
-import { ref } from 'vue';
-import { useWatchRecords } from '@/composables/useWatchRecords';
+import { computed } from 'vue';
 import { usePendingPolls } from '@/composables/usePendingPolls';
 
-const { watchRecords } = useWatchRecords();
 const { loadPendingPolls, findPendingPolls, loading } = usePendingPolls();
-const votePolls = ref([]);
-
-watchRecords({
-  collections: ['polls', 'memberships', 'stances'],
-  query: () => { votePolls.value = findPendingPolls(); }
-});
+const votePolls = computed(() => findPendingPolls());
 
 loadPendingPolls();
 </script>

@@ -7,7 +7,6 @@ import asyncComponent from '@/shared/services/async_component';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const PollCommonForm = asyncComponent(() => import('@/components/poll/common/form'));
 const PollCommonChooseTemplateWrapper = asyncComponent(() => import('@/components/poll/common/choose_template_wrapper'));
@@ -17,10 +16,9 @@ const { topic } = defineProps({
 });
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 
-const canAddComment = ref(false);
-const canStartPoll = ref(false);
+const canAddComment = computed(() => AbilityService.canAddComment(topic));
+const canStartPoll = computed(() => AbilityService.canStartPoll(topic));
 const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);
@@ -32,7 +30,7 @@ const resetComment = () => {
     topicId: topic.id,
     parentType: topic.topicableType,
     parentId: topic.topicableId,
-    authorId: Session.user().id
+    authorId: Session.userId
   });
 };
 
@@ -62,15 +60,6 @@ watch(() => route.query.current_action, (val) => {
 watch(() => topic.id, () => {
   resetComment();
   resetPoll();
-});
-
-watchRecords({
-  key: topic.id,
-  collections: ['topics', 'groups', 'memberships', 'polls', 'stances'],
-  query: () => {
-    canAddComment.value = AbilityService.canAddComment(topic);
-    canStartPoll.value = AbilityService.canStartPoll(topic);
-  }
 });
 
 resetComment();

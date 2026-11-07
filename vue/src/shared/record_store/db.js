@@ -36,6 +36,21 @@
 // indexed field of a stored document must call collection.update(doc);
 // BaseModel#update does this for imported records.
 //
+// REACTIVITY
+//
+// Reads are tracked by Vue, so a query inside computed(), a template or a
+// watcher re-runs when the documents it could return change:
+//
+//   by(field, value)       tracks that one value of the unique index
+//   indexed find()         tracks the index sets it started from
+//   scans and data         track membership (any insert or remove)
+//
+// insert, remove and update trigger only what they change: membership, the
+// unique values and the index sets a document enters or leaves. Field values
+// are tracked by the reactive documents themselves, so a query that filters or
+// sorts by an unindexed field re-runs when a document it read changes that
+// field. has() and collectionOf() are not tracked.
+//
 // RESULT SETS
 //
 //   collection.chain()
@@ -101,7 +116,7 @@
 // definitions: saving can serialise `data`, and loading can insert the
 // documents into fresh collections so the indices are rebuilt.
 
-import { toRaw } from 'vue';
+import { shallowReactive, shallowRef, toRaw } from 'vue';
 
 // raw doc -> {collection, doc, sequence, uniqueValues, hashValues}
 const entries = new WeakMap();
@@ -271,23 +286,33 @@ class Resultset {
 class Collection {
   constructor(name, {indices = []} = {}) {
     this.name = name;
-    this.data = [];
+    this.documents = [];
+    this.membershipChanges = 0;
+    this.membership = shallowRef(0); // set on insert and remove; never read while writing
     this.nextSequence = 0;
+    // Index maps and sets are shallowReactive so Vue tracks each key. Internal
+    // reads go through toRaw so imports inside an effect do not subscribe it.
     this.uniqueIndices = new Map(); // field -> Map(String(value) -> doc)
     this.hashIndices = new Map();   // field -> Map(value -> Set(entry))
     indices.forEach(field => this.ensureIndex(field));
   }
 
+  // Every document, in insertion order. Do not change the array.
+  get data() {
+    this.membership.value;
+    return this.documents;
+  }
+
   ensureUniqueIndex(field) {
     if (this.uniqueIndices.has(field)) { return; }
-    this.uniqueIndices.set(field, new Map());
-    this.data.forEach(doc => this.addUnique(field, this.entry(doc)));
+    this.uniqueIndices.set(field, shallowReactive(new Map()));
+    this.documents.forEach(doc => this.addUnique(field, this.entry(doc)));
   }
 
   ensureIndex(field) {
     if (this.hashIndices.has(field)) { return; }
-    this.hashIndices.set(field, new Map());
-    this.data.forEach(doc => this.addHashed(field, this.entry(doc), doc[field]));
+    this.hashIndices.set(field, shallowReactive(new Map()));
+    this.documents.forEach(doc => this.addHashed(field, this.entry(doc), doc[field]));
   }
 
   hasUniqueIndex(field) {
@@ -306,7 +331,8 @@ class Collection {
     entries.set(toRaw(doc), entry);
     this.uniqueIndices.forEach((index, field) => this.addUnique(field, entry));
     this.hashIndices.forEach((index, field) => this.addHashed(field, entry, doc[field]));
-    this.data.push(doc);
+    this.documents.push(doc);
+    this.membership.value = ++this.membershipChanges;
     return doc;
   }
 
@@ -321,7 +347,7 @@ class Collection {
       this.addUnique(field, entry);
     });
     this.hashIndices.forEach((index, field) => {
-      const value = entry.doc[field];
+      const value = toRaw(entry.doc[field]);
       if (value === entry.hashValues[field]) { return; }
       this.removeHashed(field, entry);
       this.addHashed(field, entry, value);
@@ -333,8 +359,9 @@ class Collection {
     const entry = this.requireEntry(doc);
     this.uniqueIndices.forEach((index, field) => this.removeUnique(field, entry));
     this.hashIndices.forEach((index, field) => this.removeHashed(field, entry));
-    this.data.splice(this.data.indexOf(entry.doc), 1);
+    this.documents.splice(this.documents.indexOf(entry.doc), 1);
     entries.delete(toRaw(entry.doc));
+    this.membership.value = ++this.membershipChanges;
     return entry.doc;
   }
 
@@ -342,7 +369,7 @@ class Collection {
     const index = this.uniqueIndices.get(field);
     if (!index) { throw new Error(`${this.name} has no unique index on ${field}`); }
     if (value === null || value === undefined) { return undefined; }
-    return index.get(String(value));
+    return index.get(String(value)); // tracked
   }
 
   chain() {
@@ -364,11 +391,11 @@ class Collection {
     let smallest = null;
     indexedEqualities(query, this.hashIndices).forEach(([field, values]) => {
       const index = this.hashIndices.get(field);
-      const sets = [...new Set(values)].map(value => index.get(value)).filter(Boolean);
+      const sets = [...new Set(values.map(value => toRaw(value)))].map(value => index.get(value)).filter(Boolean);
       const size = sets.reduce((total, entries) => total + entries.size, 0);
       if (smallest === null || size < smallest.size) { smallest = {sets, size}; }
     });
-    if (smallest === null) { return this.data; }
+    if (smallest === null) { return this.data; } // tracks membership
     // Sets keep insertion order, which only departs from collection order
     // after an indexed field changes or when several sets are combined.
     const found = [];
@@ -392,7 +419,7 @@ class Collection {
 
   checkUnique(field, entry, value) {
     if (value === null || value === undefined) { return; }
-    const existing = this.uniqueIndices.get(field).get(String(value));
+    const existing = toRaw(this.uniqueIndices.get(field)).get(String(value));
     if (existing && existing !== entry.doc) {
       throw new Error(`Duplicate key for property ${field}: ${value}`);
     }
@@ -411,19 +438,26 @@ class Collection {
     this.uniqueIndices.get(field).delete(String(value));
   }
 
+  // Hash keys are raw values. Reading an object or array field through a reactive
+  // document returns a proxy, and reactive Maps key by the raw value.
   addHashed(field, entry, value) {
+    value = toRaw(value);
     entry.hashValues[field] = value;
     const index = this.hashIndices.get(field);
-    if (!index.has(value)) { index.set(value, new Set()); }
-    index.get(value).add(entry);
+    const docs = toRaw(index).get(value);
+    if (docs) {
+      docs.add(entry);
+    } else {
+      index.set(value, shallowReactive(new Set([entry])));
+    }
   }
 
   removeHashed(field, entry) {
     const index = this.hashIndices.get(field);
     const value = entry.hashValues[field];
-    const entries = index.get(value);
-    entries.delete(entry);
-    if (entries.size === 0) { index.delete(value); }
+    const docs = toRaw(index).get(value);
+    docs.delete(entry);
+    if (toRaw(docs).size === 0) { index.delete(value); }
   }
 }
 

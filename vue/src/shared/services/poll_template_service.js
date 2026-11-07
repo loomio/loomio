@@ -19,8 +19,9 @@ export default new class PollTemplateService {
   }
 
   canEditTemplate(pollTemplate, group) {
+    // Signed out, Session.userId and an authorless template's authorId are both null.
     return group.adminsInclude(Session.user()) ||
-      (group.membersCanCreateTemplates && pollTemplate.authorId === Session.user().id);
+      (group.membersCanCreateTemplates && Session.isSignedIn() && pollTemplate.authorId === Session.userId);
   }
 
   actions(pollTemplate, group) {

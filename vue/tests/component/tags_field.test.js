@@ -4,9 +4,8 @@ import { createVuetify } from 'vuetify';
 import { VAutocomplete, VCombobox } from 'vuetify/components';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 
-const mocks = vi.hoisted(() => ({watchRecords: vi.fn(), user: {id: 1}}));
+const mocks = vi.hoisted(() => ({user: {id: 1}}));
 vi.mock('@/shared/services/session', () => ({default: {user: () => mocks.user}}));
-vi.mock('@/composables/useWatchRecords', () => ({useWatchRecords: () => ({watchRecords: mocks.watchRecords})}));
 vi.mock('vue-i18n', async importOriginal => ({
   ...await importOriginal(),
   useI18n: () => ({t: key => key})
@@ -23,15 +22,14 @@ describe('tags field', () => {
     vi.stubGlobal('ResizeObserver', class { observe() {} unobserve() {} disconnect() {} });
     vi.stubGlobal('visualViewport', undefined);
     vi.stubGlobal('matchMedia', () => ({matches: false, addEventListener() {}, removeEventListener() {}}));
-    mocks.watchRecords.mockClear();
-    group = {
+    group = reactive({
       id: 1,
       membersCanCreateTags: false,
       membersInclude: () => true,
       adminsInclude: () => false,
       parentOrSelf: () => group,
       tags: () => [{name: 'Existing', color: '#123456'}]
-    };
+    });
     model = reactive({groupId: 1, tags: [], group: () => group});
   });
 
@@ -100,7 +98,6 @@ describe('tags field', () => {
     expect(wrapper.findComponent(VAutocomplete).exists()).toBe(true);
     group.membersCanCreateTags = true;
     group.tags = () => [{name: 'Added later'}];
-    mocks.watchRecords.mock.calls[0][0].query();
     await nextTick();
 
     expect(wrapper.findComponent(VCombobox).exists()).toBe(true);
@@ -134,6 +131,5 @@ describe('tags field', () => {
     expect(model.tags).toEqual(['Independent default']);
     expect(wrapper.findComponent(VCombobox).props('items')).toEqual([]);
     expect(group.tags).not.toHaveBeenCalled();
-    expect(mocks.watchRecords).not.toHaveBeenCalled();
   });
 });

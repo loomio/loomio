@@ -1,34 +1,23 @@
 <script setup lang="js">
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { orderBy } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
-const { watchRecords } = useWatchRecords();
-
-const bookmarks = ref([]);
 const loading = ref(true);
 
-const findRecords = () => {
-  bookmarks.value = orderBy(
-    Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
-    ['createdAt'],
-    ['desc']
-  );
-};
+const bookmarks = computed(() => orderBy(
+  Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
+  ['createdAt'],
+  ['desc']
+));
 
 const remove = (bookmark) => {
   bookmark.destroy().then(() => Flash.success('bookmarks.removed'));
 };
-
-watchRecords({
-  collections: ['bookmarks'],
-  query: () => findRecords()
-});
 
 onMounted(() => {
   EventBus.$emit('currentComponent', {
@@ -38,7 +27,6 @@ onMounted(() => {
 
   Records.bookmarks.fetch({}).finally(() => {
     loading.value = false;
-    findRecords();
   });
 });
 

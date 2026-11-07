@@ -57,7 +57,7 @@ export default class DiscussionTemplateModel extends BaseModel {
     attrs.tags = this.tags.slice();
     attrs.discussionTemplateId = this.id;
     attrs.discussionTemplateKey = this.key;
-    attrs.authorId = Session.user().id;
+    attrs.authorId = Session.userId;
 
     discussion.update(attrs);
 

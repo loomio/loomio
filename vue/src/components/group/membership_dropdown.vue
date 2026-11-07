@@ -104,7 +104,7 @@ export default
               flash:    `membership_remove_modal.${namespace}.flash`,
               submit:   `membership_remove_modal.${namespace}.submit`
             },
-            submit:     this.membership.destroy,
+            submit:     () => this.membership.destroy(),
             redirect:   ((this.membership.user() === Session.user() ? 'dashboard' : undefined))
           }
         }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { reactive, toRaw } from 'vue';
+import { computed, reactive, toRaw } from 'vue';
 import Database, { collectionOf } from '@/shared/record_store/db';
 
 function collection(indices = ['topicId']) {
@@ -129,5 +129,82 @@ describe('record store database', () => {
     items.insert({id: 1});
     expect(() => items.find({id: {$jgt: 0}})).toThrow('Unsupported query operator $jgt on id');
     expect(() => items.find({id: {$gt: 0, $lt: 5}})).toThrow('Query conditions take one operator');
+  });
+
+  describe('reactivity', () => {
+    // Count how often a computed query evaluates, reading it after each change.
+    function counted(query) {
+      let runs = 0;
+      const result = computed(() => { runs++; return query(); });
+      return {value: () => result.value, runs: () => runs};
+    }
+
+    it('re-runs a unique lookup when that value is inserted, and not for other values', () => {
+      const items = collection();
+      const lookup = counted(() => items.by('id', 2));
+      expect(lookup.value()).toBeUndefined();
+      items.insert(reactive({id: 1, topicId: 1}));
+      expect(lookup.value()).toBeUndefined();
+      expect(lookup.runs()).toBe(1);
+      items.insert(reactive({id: 2, topicId: 1}));
+      expect(lookup.value().id).toBe(2);
+      expect(lookup.runs()).toBe(2);
+    });
+
+    it('re-runs an indexed query only when a document enters or leaves its sets', () => {
+      const items = collection();
+      const first = reactive({id: 1, topicId: 1});
+      items.insert(first);
+      const query = counted(() => ids(items.find({topicId: 1})));
+      expect(query.value()).toEqual([1]);
+
+      items.insert(reactive({id: 2, topicId: 2}));
+      expect(query.value()).toEqual([1]);
+      expect(query.runs()).toBe(1);
+
+      const third = reactive({id: 3, topicId: 2});
+      items.insert(third);
+      third.topicId = 1;
+      items.update(third);
+      expect(query.value()).toEqual([1, 3]);
+
+      first.topicId = 2;
+      items.update(first);
+      expect(query.value()).toEqual([3]);
+
+      items.remove(third);
+      expect(query.value()).toEqual([]);
+    });
+
+    it('re-runs a scan on insert and remove, and when a document it read changes', () => {
+      const items = collection();
+      const first = reactive({id: 1, topicId: 1, title: 'b'});
+      items.insert(first);
+      const query = counted(() => items.chain().find({title: {$regex: '^b'}}).data().map(doc => doc.title));
+      expect(query.value()).toEqual(['b']);
+      items.insert(reactive({id: 2, topicId: 1, title: 'bb'}));
+      expect(query.value()).toEqual(['b', 'bb']);
+      first.title = 'a';
+      expect(query.value()).toEqual(['bb']);
+      expect(query.runs()).toBe(3);
+    });
+
+    it('updates and removes reactive documents indexed by an array field', () => {
+      const tags = new Database().addCollection('tags', {indices: ['usedGroupIds']});
+      const tag = reactive({id: 1, usedGroupIds: [1, 2]});
+      tags.insert(tag);
+      tag.usedGroupIds = [3];
+      tags.update(tag);
+      tags.remove(tag);
+      expect(tags.data).toEqual([]);
+    });
+
+    it('does not subscribe a computed that inserts documents to its own writes', () => {
+      const items = collection();
+      const created = counted(() => items.insert(reactive({id: 1, topicId: 1})).id);
+      expect(created.value()).toBe(1);
+      expect(created.value()).toBe(1);
+      expect(created.runs()).toBe(1);
+    });
   });
 });

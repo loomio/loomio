@@ -21,7 +21,6 @@ vi.mock('@/shared/services/records', () => ({
 vi.mock('@/shared/services/flash', () => ({default: {success: mocks.success, fromServer: mocks.fromServer}}));
 vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 1})}}));
 vi.mock('@/shared/services/stance_service', () => ({default: {}}));
-vi.mock('@/composables/useWatchRecords', () => ({useWatchRecords: () => ({watchRecords: vi.fn()})}));
 vi.mock('@/components/common/recipients_autocomplete', () => ({default: {template: '<div />'}}));
 vi.mock('vue-i18n', async importOriginal => ({
   ...await importOriginal(),

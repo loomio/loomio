@@ -46,7 +46,7 @@ export default {
       recipients: [],
       menu: false,
       loading: false,
-      currentUserId: Session.user().id
+      currentUserId: Session.userId
     };
   },
 

@@ -19,7 +19,7 @@ export default new class AttachmentService {
             component: 'ConfirmModal',
             props: {
               confirm: {
-                submit: attachment.destroy,
+                submit: () => attachment.destroy(),
                 text: {
                   title: 'comment_form.attachments.remove_attachment',
                   helptext: 'group_files_panel.delete_confirmation',

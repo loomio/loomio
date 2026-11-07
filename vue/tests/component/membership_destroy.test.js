@@ -59,7 +59,6 @@ describe('membership revocation', () => {
       },
       topics: collection(topics), polls: collection(polls), stances: collection(stances)
     });
-    mocks.records.updateViews = vi.fn();
   });
 
   it('clears current-user eligibility in the group and its subgroups after success', async () => {
@@ -79,7 +78,6 @@ describe('membership revocation', () => {
     });
     expect(memberships[0].revokedAt).toBeInstanceOf(Date);
     expect(memberships[0].remove).not.toHaveBeenCalled();
-    expect(mocks.records.updateViews).toHaveBeenCalledWith(['memberships', 'topics', 'polls', 'stances']);
     memberships.slice(1).forEach(member => expect(member.remove).not.toHaveBeenCalled());
     polls.slice(2, 4).forEach(poll => expect(poll.update).not.toHaveBeenCalled());
     expect(polls[4].update).toHaveBeenCalledWith({voterHasAccess: false});
@@ -136,7 +134,7 @@ describe('membership revocation', () => {
     const findOrFetch = vi.fn().mockResolvedValue({key: 'group-key'});
     const closed = record({id: 99, groupId: 10, voterHasAccess: false});
     const refreshGroups = vi.fn().mockResolvedValue({});
-    const records = {groups: {findOrFetch}, users: {refreshGroups}, polls: {fetch, ...collection([closed])}, updateViews: vi.fn()};
+    const records = {groups: {findOrFetch}, users: {refreshGroups}, polls: {fetch, ...collection([closed])}};
     const restore = MembershipRecordsInterface.prototype.restoreGroupAccess.bind({recordStore: records, find: () => [{}]});
 
     await restore([10]);

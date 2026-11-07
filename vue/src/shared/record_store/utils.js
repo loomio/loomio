@@ -1,48 +1,44 @@
-let Utils;
 import { parseISO } from 'date-fns';
-import { each, keys, map, camelCase, isArray} from 'lodash-es';
-
-const transformKeys = function(attributes, transformFn) {
-  const result = {};
-  each(keys(attributes), function(key) {
-    result[transformFn(key)] = attributes[key];
-    return true;
-  });
-  return result;
-};
+import { camelCase } from 'lodash-es';
 
 const isTimeAttribute = attributeName => /(On|At)$/.test(attributeName);
 
-export default new (Utils = class Utils {
+// Server JSON uses a small, fixed set of snake_case keys, and lodash camelCase
+// is slow, so convert each key once.
+const fieldNames = new Map();
+function fieldNameFor(key) {
+  let field = fieldNames.get(key);
+  if (field === undefined) {
+    const name = camelCase(key);
+    field = {name, isTime: isTimeAttribute(name)};
+    fieldNames.set(key, field);
+  }
+  return field;
+}
+
+function parseJSON(json) { // parse a single record
+  const attributes = {};
+  Object.keys(json).forEach(key => {
+    const field = fieldNameFor(key);
+    const value = json[key];
+    attributes[field.name] = (field.isTime && value != null) ? parseISO(value) : value;
+  });
+  return attributes;
+}
+
+export default {
   deserialize(json) {
     const result = {};
-    const attributes = transformKeys(json, camelCase);
-    each(keys(attributes), name => {
-      if (isArray(attributes[name])) {
-        return result[name] = map(attributes[name], this.parseJSON);
-      } else {
-        return result[name] = attributes[name];
-      }
-  });
-    return result;
-  }
-
-  parseJSON(json) { // parse a single record
-    const attributes = transformKeys(json, camelCase);
-    each(keys(attributes), function(name) {
-      if (attributes[name] != null) {
-        if (isTimeAttribute(name)) {
-          attributes[name] = parseISO(attributes[name]);
-        } else {
-          attributes[name] = attributes[name];
-        }
-      }
-      return true;
+    Object.keys(json).forEach(key => {
+      const value = json[key];
+      result[fieldNameFor(key).name] = Array.isArray(value) ? value.map(parseJSON) : value;
     });
-    return attributes;
-  }
+    return result;
+  },
+
+  parseJSON,
 
   isTimeAttribute(attributeName) {
     return isTimeAttribute(attributeName);
   }
-});
+};

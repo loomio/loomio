@@ -3,7 +3,6 @@ import Records from '@/shared/services/records';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
-import WatchRecords from '@/mixins/watch_records';
 import { useI18n } from 'vue-i18n';
 import { VAvatarGroup } from 'vuetify/components/VAvatarGroup';
 
@@ -17,7 +16,6 @@ export default {
     const { t } = useI18n();
     return { t, METRIC_COLUMNS, VOTER_AVATARS_MAX };
   },
-  mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon, VAvatarGroup},
   props: {
     poll: Object,
@@ -27,9 +25,7 @@ export default {
 
   data() {
     return {
-      users: {},
       selectedMetric: this.defaultChartMetric(),
-      slices: [],
     };
   },
 
@@ -53,23 +49,6 @@ export default {
     },
     selectMetric(column) {
       this.selectedMetric = column;
-      this.updateSlices();
-    },
-    updateSlices() {
-      if (this.poll.chartType !== 'pie') return;
-      if (!this.selectedMetric) {
-        this.slices = this.poll.pieSlices();
-        return;
-      }
-      const countMetric = ['votes', 'vote_count'].includes(this.selectedMetric);
-      const scoreMetric = ['score', 'unweighted_score'].includes(this.selectedMetric);
-      const totalScore = scoreMetric ? this.poll.results.reduce((sum, option) => sum + Number(option[this.selectedMetric]), 0) : 0;
-      this.slices = this.poll.results.map(option => ({
-        color: option.color,
-        value: scoreMetric
-          ? (totalScore ? Number(option[this.selectedMetric]) / totalScore * 100 : 0)
-          : (countMetric ? this.voterCountPercent(option) : Number(option[this.selectedMetric === 'voter_percent' ? 'voter_percent' : 'score_percent'] || 0))
-      })).filter(slice => slice.value > 0);
     },
     barPercent(option) {
       const metric = this.selectedMetric;
@@ -109,27 +88,36 @@ export default {
     'poll.resultColumns'(columns) {
       if (this.selectedMetric && !columns.includes(this.selectedMetric)) {
         this.selectedMetric = this.defaultChartMetric();
-        this.updateSlices();
       }
     }
   },
 
-  created() {
-    this.updateSlices();
-    this.watchRecords({
-      collections: ['users', 'stances', 'polls'],
-      query: () => {
-        this.updateSlices();
-        this.poll.results.forEach(option => {
-          option.voter_ids.forEach(id => {
-            let user;
-            if ((user = Records.users.find(id))) {
-              this.users[id] = user
-            }
-          });
+  computed: {
+    slices() {
+      if (this.poll.chartType !== 'pie') return [];
+      if (!this.selectedMetric) return this.poll.pieSlices();
+      const countMetric = ['votes', 'vote_count'].includes(this.selectedMetric);
+      const scoreMetric = ['score', 'unweighted_score'].includes(this.selectedMetric);
+      const totalScore = scoreMetric ? this.poll.results.reduce((sum, option) => sum + Number(option[this.selectedMetric]), 0) : 0;
+      return this.poll.results.map(option => ({
+        color: option.color,
+        value: scoreMetric
+          ? (totalScore ? Number(option[this.selectedMetric]) / totalScore * 100 : 0)
+          : (countMetric ? this.voterCountPercent(option) : Number(option[this.selectedMetric === 'voter_percent' ? 'voter_percent' : 'score_percent'] || 0))
+      })).filter(slice => slice.value > 0);
+    },
+    users() {
+      const users = {};
+      this.poll.results.forEach(option => {
+        option.voter_ids.forEach(id => {
+          let user;
+          if ((user = Records.users.find(id))) {
+            users[id] = user
+          }
         });
-      }
-    });
+      });
+      return users;
+    }
   }
 };
 

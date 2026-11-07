@@ -1,19 +1,21 @@
 <script setup lang="js">
-import { ref, onUnmounted, watch } from 'vue';
+import { ref, computed, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import RecordLoader from '@/shared/services/record_loader';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
 const { t } = useI18n();
-const topics = ref([]);
 const loader = ref({});
-
-const { watchRecords } = useWatchRecords();
+const topics = computed(() =>
+  Records.topics.collection.chain()
+    .find({groupId: null, discardedAt: null})
+    .simplesort('lastActivityAt', true)
+    .data()
+);
 
 function init() {
   loader.value = new RecordLoader({
@@ -21,17 +23,6 @@ function init() {
     params: { direct: 1 }
   });
   loader.value.fetchRecords();
-
-  watchRecords({
-    key: 'direct-topics',
-    collections: ['topics'],
-    query: () => {
-      topics.value = Records.topics.collection.chain()
-        .find({groupId: null, discardedAt: null})
-        .simplesort('lastActivityAt', true)
-        .data();
-    }
-  });
 }
 
 function titleVisible(visible) {

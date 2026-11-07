@@ -7,12 +7,10 @@ import TaggedItems from '@/components/topic/tagged_items.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
 import ScrollService     from '@/shared/services/scroll_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 
 const topic            = ref(null);
 const loadedKey        = ref(null);
@@ -23,6 +21,7 @@ const anchorOffset     = ref(null);
 const lastAnchorSelector = ref(null);
 const focusedItemVisible = ref(false);
 let cancelSettledAnchorScroll = null;
+let stopCollectionWatch = null;
 
 onMounted(() => {
   EventBus.$on('setAnchor', onSetAnchor);
@@ -35,6 +34,7 @@ onUnmounted(() => {
   EventBus.$off('setAnchor', onSetAnchor);
   EventBus.$off('visibleKeys', onVisibleKeys);
   cancelSettledScroll();
+  stopCollectionUpdates();
 });
 
 watch(() => route.params.key, init);
@@ -49,6 +49,15 @@ watch(() => route.query.current_action, respondToRoute);
 function scrollToFocused() {
   if (focusSelector.value) {
     ScrollService.scrollTo(focusSelector.value, anchorOffset.value);
+  }
+}
+
+// Created after the async fetch resolves, so it is outside the component's
+// effect scope and must be stopped manually.
+function stopCollectionUpdates() {
+  if (stopCollectionWatch) {
+    stopCollectionWatch();
+    stopCollectionWatch = null;
   }
 }
 
@@ -82,6 +91,7 @@ function onVisibleKeys(keys) {
 
 function init() {
   cancelSettledScroll();
+  stopCollectionUpdates();
   topic.value = null;
   loadedKey.value = null;
   loader.value = null;
@@ -184,12 +194,12 @@ function fetchInitialContent() {
     });
 
     let scrolledToUnread = false;
-    watchRecords({
-      key: 'topic' + topic.value.id,
-      collections: ['topic_items', 'polls', 'stances'],
-      query: () => {
-        if (!loader.value) { return; }
-        loader.value.updateCollection();
+    stopCollectionUpdates();
+    // Rebuild the collection whenever the records it reads change; the
+    // callback is untracked so anchor and scroll state don't retrigger it.
+    stopCollectionWatch = watch(
+      () => loader.value.updateCollection(),
+      () => {
         if (!scrolledToUnread && !anchorSelector.value && !focusSelector.value && loader.value.lastReadAt) {
           const firstUnread = loader.value.firstUnreadSequenceId();
           if (firstUnread) {
@@ -205,8 +215,9 @@ function fetchInitialContent() {
           scrolledToUnread = true;
         }
         nextTick(() => scrollToAnchorIfNew());
-      }
-    });
+      },
+      { immediate: true }
+    );
 
     nextTick(() => scrollToAnchorIfPresent());
   }).catch(error => {

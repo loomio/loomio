@@ -16,7 +16,6 @@ import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { mdiCogOutline, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
@@ -35,8 +34,6 @@ const { t } = useI18n();
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 const mergeQuery = (obj) => ({query: pickBy(Object.assign({}, route.query, obj), identity)});
 
-// watch_records composable
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 // Template refs
@@ -47,7 +44,6 @@ const loading = ref(false);
 const newOption = ref(null);
 const lastPollType = ref(props.poll.pollType);
 const pollOptions = ref(props.poll.pollOptionsAttributes || props.poll.clonePollOptions());
-const groupItems = ref([]);
 const pollTemplate = ref(null);
 const currentHideResults = ref(props.poll.hideResults);
 const initialWeightedVoting = ref(props.poll.weightedVoting);
@@ -255,6 +251,15 @@ const closingSoonItems = computed(() => pollReminderItems(t));
 const optionFormat = computed(() => props.poll.pollOptionNameFormat);
 const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 
+const groupItems = computed(() => {
+  return [
+    {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
+  ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
+    title: g.fullName,
+    value: g.id
+  })));
+});
+
 // Lifecycle
 onMounted(() => {
   if (props.redirectOnSave) {
@@ -265,18 +270,6 @@ onMounted(() => {
 
   Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
     pollTemplate.value = template;
-  });
-
-  watchRecords({
-    collections: ['groups', 'memberships'],
-    query: () => {
-      return groupItems.value = [
-        {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
-      ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
-        title: g.fullName,
-        value: g.id
-      })));
-    }
   });
 });
 

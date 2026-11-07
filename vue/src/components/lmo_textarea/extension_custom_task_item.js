@@ -44,7 +44,7 @@ export const CustomTaskItem = TaskItem.extend({
       },
 
       authorId: {
-        default: Session.user().id,
+        default: Session.userId,
         parseHTML: element => ( parseInt(element.getAttribute('data-author-id')) ),
         renderHTML: attributes => ({
           'data-author-id': attributes.authorId,

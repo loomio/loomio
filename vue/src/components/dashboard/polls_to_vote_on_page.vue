@@ -1,32 +1,23 @@
 <script setup lang="js">
-import { ref, onMounted, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { escapeRegExp } from 'lodash-es';
 
 import EventBus from '@/shared/services/event_bus';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { usePendingPolls } from '@/composables/usePendingPolls';
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 const { loadPendingPolls, findPendingPolls, loading } = usePendingPolls();
-const votePolls = ref([]);
 
-function findRecords() {
+const votePolls = computed(() => {
   const polls = findPendingPolls();
   if (route.query.q) {
     const rx = new RegExp(escapeRegExp(route.query.q), 'i');
-    votePolls.value = polls.filter(poll => rx.test(poll.title) || rx.test(poll.description));
+    return polls.filter(poll => rx.test(poll.title) || rx.test(poll.description));
   } else {
-    votePolls.value = polls;
+    return polls;
   }
-}
-
-watchRecords({
-  collections: ['polls', 'memberships', 'stances'],
-  query: findRecords
 });
-watch(() => route.query.q, findRecords);
 
 loadPendingPolls();
 

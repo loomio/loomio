@@ -30,7 +30,6 @@ export default new class Session {
     AppConfig['pendingIdentity'] = data.pending_identity;
     Records.importJSON(data);
     AppConfig.groupsLoaded = !!data.groups_loaded;
-    this.userId = data.current_user_id;
     const user = this.user();
     loadLocaleMessages(I18n, user.locale);
 
@@ -55,6 +54,11 @@ export default new class Session {
       destroySession: () => Records.sessions.remote.destroy(''),
       reload: () => hardReload('/')
     });
+  }
+
+  // Read from AppConfig so computed queries re-run when the signed-in user changes.
+  get userId() {
+    return AppConfig.currentUserId;
   }
 
   isSignedIn() {

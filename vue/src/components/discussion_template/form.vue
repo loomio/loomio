@@ -9,7 +9,6 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import { I18n } from '@/i18n';
 import { compact } from 'lodash-es';
 import { HandleDirective } from 'vue-slicksort';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const vHandle = HandleDirective;
 
@@ -30,14 +29,10 @@ const route = useRoute();
 // url_for mixin functionality
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
-// watch_records composable
-const { watchRecords } = useWatchRecords();
-
 // Template refs
 const form = ref(null);
 
 // Data
-const pollTemplateItems = ref([]);
 const selectedPollTemplate = ref(null);
 const pollTemplates = ref([]);
 const recipientAudienceItems = ref([
@@ -66,8 +61,8 @@ const validate = (field) => {
 
 const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
 
-const updatePollTemplateItems = () => {
-  pollTemplateItems.value = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
+const pollTemplateItems = computed(() => {
+  return [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
     Records.pollTemplates.find({groupId: props.discussionTemplate.group().id}).filter(pt => {
       return !pollTemplates.value.includes(pt);
     }).map(pt => ({
@@ -75,7 +70,7 @@ const updatePollTemplateItems = () => {
       value: pt.id || pt.key
     }))
   );
-};
+});
 
 const submit = () => {
   props.discussionTemplate.setErrors();
@@ -96,23 +91,16 @@ const pollTemplateSelected = (keyOrId) => {
   pollTemplates.value.push(Records.pollTemplates.find(keyOrId));
   setTimeout(() => {
     selectedPollTemplate.value = null;
-    updatePollTemplateItems();
   });
 };
 
 const removePollTemplate = (pollTemplate) => {
   pollTemplates.value.splice(pollTemplates.value.indexOf(pollTemplate), 1);
-  updatePollTemplateItems();
 };
 
 // created logic (runs immediately in script setup)
 pollTemplates.value = props.discussionTemplate.pollTemplates();
 Records.pollTemplates.fetchByGroupId(props.discussionTemplate.groupId);
-
-watchRecords({
-  collections: ["pollTemplates"],
-  query: records => updatePollTemplateItems()
-});
 
 </script>
 <template lang="pug">
