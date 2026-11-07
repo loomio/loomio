@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Views::Topics::TopicItem < Views::Application::Component
-  def initialize(item:, current_user:)
+  def initialize(item:, current_user:, topicable: nil)
     @item = item
     @current_user = current_user
+    @topicable = topicable
   end
 
   def view_template
@@ -14,7 +15,7 @@ class Views::Topics::TopicItem < Views::Application::Component
       when "new_comment"
         render Views::Topics::TopicItems::NewComment.new(item: @item, current_user: @current_user)
       when "poll_created"
-        render Views::Topics::TopicItems::PollCreated.new(item: @item, current_user: @current_user)
+        render Views::Topics::TopicItems::PollCreated.new(item: @item, current_user: @current_user, show_title: @item.itemable != @topicable)
       when "stance_created"
         render Views::Topics::TopicItems::StanceCreated.new(item: @item, current_user: @current_user, kind: :created)
       when "stance_updated"

@@ -154,7 +154,7 @@ ACTIVE_STORAGE_SERVICE=local
 # Restrict explore page to signed-in users only
 # LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS=1
 
-# Enable search engines to index public content
+# Enable search engines to index public content, and serve /sitemap.xml
 # ALLOW_ROBOTS=1
 
 # Sentry DSN

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
   before_action :set_sentry_context
-  before_action :set_noindex_header, unless: -> { ENV['ALLOW_ROBOTS'] }
+  before_action :set_noindex_header, unless: -> { ENV.key?('ALLOW_ROBOTS') }
 
   helper_method :current_user
   helper_method :current_version
@@ -109,25 +109,39 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  BOT_PAGE_SIZE = 50
+
   def pagination_params
-    default_limit = params[:export] ? 2000 : 10
+    default_limit = params[:export] ? 2000 : BOT_PAGE_SIZE
     limit = params.fetch(:limit, default_limit).to_i.clamp(1, default_limit)
     offset = [params.fetch(:offset, 0).to_i, 0].max
     { limit: limit, offset: offset }
+  end
+
+  # Crawlers and exports get the topic as server-rendered HTML; people get the app.
+  # Later pages of a topic are their own canonical URL, so crawlers index every item.
+  def render_topic(topic, canonical:)
+    @pagination = pagination_params
+    page_params = @pagination[:offset] > 0 ? { offset: @pagination[:offset] } : {}
+    render Views::Topics::Show.new(
+      topic: topic, recipient: current_user, pagination: @pagination,
+      metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
+      canonical_url: canonical_url_for(canonical, page_params), robots: robots_directive_for(topic)
+    )
   end
 
   def set_noindex_header
     response.headers['X-Robots-Tag'] = 'noindex'
   end
 
-  def canonical_url_for(resource)
+  def canonical_url_for(resource, url_params = {})
     case resource
     when Discussion
-      discussion_url(resource)
+      discussion_url(resource, url_params)
     when Group
-      group_url(resource)
+      group_url(resource, url_params)
     when Poll
-      poll_url(resource)
+      poll_url(resource, url_params)
     end
   end
 

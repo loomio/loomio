@@ -10,6 +10,6 @@ class Metadata::UserSerializer < MetadataSerializer
   end
 
   def image_urls
-    [object.avatar_url]
+    absolute_image_urls(object.avatar_url)
   end
 end

@@ -5,6 +5,20 @@ class PollsController < ApplicationController
 
   helper :email
 
+  def show
+    resource = ModelLocator.new(resource_name, params).locate!
+    @recipient = current_user
+    return respond_with_error 403 unless current_user.can?(:show, resource)
+
+    assign_resource
+    return boot_app(resource: @poll) unless params[:export] || browser.bot?
+
+    # The poll page shows the poll's topic. A poll in a thread shares the thread's
+    # topic, so its canonical URL is the thread's, to avoid indexing it twice.
+    topicable = @poll.topic.topicable
+    render_topic(@poll.topic, canonical: topicable.is_a?(Discussion) ? topicable : @poll)
+  end
+
   def export
     @poll = load_and_authorize(:poll, :export)
     @exporter = PollExporter.new(@poll)

@@ -143,7 +143,7 @@ class Views::Topics::StanceBody < Views::Application::Component
 
   def render_score
     div(class: "layout align-center wrap") do
-      h3(class: "topic-item__title text-body-2", id: "topic_item-1473") do
+      h3(class: "topic-item__title text-body-2") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
           span("aria-hidden": "true") { plain " ·" }

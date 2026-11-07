@@ -7,11 +7,11 @@ class Metadata::GroupSerializer < MetadataSerializer
 
   def description
     if object.is_visible_to_public?
-      MarkdownService.render_plain_text(object.description, object.description_format)
+      description_excerpt(object.description, object.description_format)
     end
   end
 
   def image_urls
-    [object.group.cover_url, object.group.logo_url]
+    absolute_image_urls(object.cover_url, object.logo_url)
   end
 end

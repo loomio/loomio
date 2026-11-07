@@ -35,17 +35,17 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, @discussion.author.name
   end
 
-  test "discussion pagination link is nofollow" do
+  test "export pagination links stay in the export and are nofollow" do
     2.times do |index|
       comment = Comment.create!(body: "Pagination comment #{index}", body_format: "md", parent: @discussion, author: @user)
       comment.topic_items.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
     end
 
     output = render_phlex(Views::Topics::Show.new(
-      topic: @discussion.topic, recipient: @recipient, pagination: { limit: 1, offset: 0 }
+      topic: @discussion.topic, recipient: @recipient, pagination: { limit: 1, offset: 0 }, export: true
     ))
 
-    assert_match(/<a[^>]+href="\?offset=1&limit=1&export=1"[^>]+rel="nofollow"/, output)
+    assert_match(/<a[^>]+href="\?offset=1&limit=1&export=1"[^>]+rel="next nofollow"/, output)
   end
 
   test "discussion show excludes hidden stances before pagination" do

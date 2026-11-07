@@ -8,9 +8,9 @@ class Views::Topics::TopicItems::NewComment < Views::Application::Component
 
   def view_template
     comment = @item.itemable
-    div(class: "new-comment", id: "comment-#{comment.id}") do
+    article(class: "new-comment", id: "comment-#{comment.id}") do
       div(class: "topic-item px-3 pb-1") do
-        div(id: "sequence-2", class: "d-flex lmo-action-dock-wrapper", style: "margin-left: 0px;") do
+        div(id: "sequence-#{@item.sequence_id}", class: "d-flex lmo-action-dock-wrapper", style: "margin-left: 0px;") do
           div(class: "topic-item__avatar mr-3 mt-0") do
             render Views::NotificationMailer::Common::Avatar.new(user: comment.author)
           end

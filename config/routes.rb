@@ -481,6 +481,9 @@ Rails.application.routes.draw do
   end
 
   get '/robots'     => 'robots#show'
+  get '/sitemap' => 'sitemaps#index', as: :sitemap, constraints: { format: :xml }
+  get '/sitemap/groups' => 'sitemaps#groups', as: :sitemap_groups, constraints: { format: :xml }
+  get '/sitemap/topics/:page' => 'sitemaps#topics', as: :sitemap_topics, constraints: { format: :xml }
   get '/manifest'   => 'manifest#show', format: :json
   get '/start_group', to: redirect('/try')
 
