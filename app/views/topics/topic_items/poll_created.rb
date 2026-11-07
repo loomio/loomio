@@ -1,22 +1,26 @@
 # frozen_string_literal: true
 
 class Views::Topics::TopicItems::PollCreated < Views::Application::Component
-  def initialize(item:, current_user:)
+  # The topic page already headlines a poll that is its own topic.
+  def initialize(item:, current_user:, show_title: true)
     @item = item
     @current_user = current_user
+    @show_title = show_title
   end
 
   def view_template
     poll = @item.itemable
-    div(class: "poll-created") do
+    article(class: "poll-created") do
       div(class: "topic-item px-3 pb-1") do
-        div(id: "sequence-3", class: "v-layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
+        div(id: "sequence-#{@item.sequence_id}", class: "v-layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
           div(class: "topic-item__avatar mr-3 mt-0") do
             render Views::NotificationMailer::Common::Avatar.new(user: poll.user)
           end
           div(class: "topic-item__body") do
-            h1(class: "poll-common-card__title text-h5 pb-1") do
-              span { plain poll.title }
+            if @show_title
+              h2(class: "poll-common-card__title text-h5 pb-1") do
+                span { plain poll.title }
+              end
             end
             p(class: "text-medium-emphasis text-body-2 pb-1") do
               plain t("poll_card.poll_type_by_name", name: poll.author_name, poll_type: t("poll_types.#{poll.poll_type}"))
@@ -47,13 +51,13 @@ class Views::Topics::TopicItems::PollCreated < Views::Application::Component
                     end
                   end
                   div(class: "lmo-markdown-wrapper text-body-1 pb-1") do
-                    p { raw MarkdownService.render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format) }
+                    raw MarkdownService.render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
                   end
                 end
               end
             end
             div(class: "lmo-markdown-wrapper text-body-1 poll-common-details-panel__details pb-1") do
-              p { raw MarkdownService.render_rich_text(poll.details, poll.details_format) }
+              raw MarkdownService.render_rich_text(poll.details, poll.details_format)
             end
             render Views::NotificationMailer::Poll::ResultsPanel.new(poll: poll, current_user: @current_user)
           end

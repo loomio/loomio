@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 
-class Views::Chatbot::Base < Views::Application::Component
+# Chatbot and webhook messages have their own base, so changes to the web page
+# base (Views::Application::Component) cannot alter message output.
+class Views::Chatbot::Base < Phlex::HTML
+  include Phlex::Rails::Helpers::Routes
+  include PrettyUrlHelper
+  include PollHelper
+  include FormattedDateHelper
+  include Phlex::Rails::Helpers::T
+  include Phlex::Rails::Helpers::LinkTo
+  include Phlex::Rails::Helpers::ImageTag
+  include Phlex::Rails::Helpers::ImagePath
+  include Phlex::Rails::Helpers::Sanitize
+
+  def cache_store = Rails.cache
+
   private
 
   def markdown_escape(text)

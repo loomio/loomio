@@ -11,7 +11,7 @@ class Views::Topics::TopicItems::StanceCreated < Views::Application::Component
     stance = @item.itemable
     poll = stance.poll
     voter = stance.participant
-    div(class: "stance-created#{' mt-2' if @kind == :created}") do
+    article(class: "stance-created#{' mt-2' if @kind == :created}", id: "sequence-#{@item.sequence_id}") do
       div(class: "topic-item #{@kind == :created ? 'pl-2' : 'px-3'} pb-1") do
         div(class: "#{@kind == :created ? 'v-layout' : 'layout'} lmo-action-dock-wrapper ml-5") do
           div(class: "topic-item__avatar mr-3 mt-0") do

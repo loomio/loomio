@@ -12,7 +12,7 @@ class Views::Topics::TopicItems::Removed < Views::Application::Component
         div do
           div(class: "layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
             div(class: "topic-item__avatar mr-3 mt-0") do
-              div(class: "user-avatar", style: "width: 40px; margin: 0px;", to: "/u/undefined") do
+              div(class: "user-avatar", style: "width: 40px; margin: 0px;") do
                 div(class: "v-avatar", style: "height: 40px; min-width: 40px; width: 40px;") do
                   i(class: "v-icon notranslate mdi mdi-account theme--auto")
                 end

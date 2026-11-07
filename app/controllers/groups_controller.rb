@@ -50,10 +50,11 @@ class GroupsController < ApplicationController
       respond_to do |format|
         format.html do
           if params[:export] || browser.bot?
+            page = [params[:page].to_i, 1].max
             render Views::Groups::Show.new(
-              group: @group, recipient: @recipient,
+              group: @group, recipient: @recipient, page: page,
               metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
-              canonical_url: canonical_url_for(@group), robots: robots_directive_for(@group)
+              canonical_url: canonical_url_for(@group, page > 1 ? { page: page } : {}), robots: robots_directive_for(@group)
             )
           else
             accept_pending_membership

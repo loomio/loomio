@@ -49,6 +49,20 @@ module MarkdownService
 
   # stripped of any user generated html
   # newlines converted to brs
+  # Readable plain text for link previews and structured data: no headings,
+  # paragraphs kept apart, whitespace collapsed, cut at a word boundary.
+  def self.render_excerpt(text, format = 'md', length: 200)
+    return "" if text.blank?
+    html = format == 'md' ? render_html(text) : text.to_s
+    fragment = Nokogiri::HTML5.fragment(html)
+    fragment.css('h1, h2, h3, h4, h5, h6, script, style').remove
+    fragment.css('p, div, li, br, blockquote, pre, tr, hr').each do |node|
+      node.add_previous_sibling(' ')
+      node.add_next_sibling(' ')
+    end
+    fragment.text.squish.truncate(length, separator: ' ')
+  end
+
   def self.render_plain_text(text, format = 'md')
     return "".html_safe unless text
     ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe

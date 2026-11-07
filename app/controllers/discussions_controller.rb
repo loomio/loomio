@@ -5,15 +5,10 @@ class DiscussionsController < ApplicationController
     if current_user.can? :show, resource
       assign_resource
       @topic = @discussion.topic
-      @pagination = pagination_params
       respond_to do |format|
         format.html do
           if params[:export] || browser.bot?
-            render Views::Topics::Show.new(
-              topic: @topic, recipient: @recipient, pagination: @pagination,
-              metadata: application_metadata, export: !!params[:export], bot: browser.bot?,
-              canonical_url: canonical_url_for(@discussion), robots: robots_directive_for(@discussion)
-            )
+            render_topic(@topic, canonical: @discussion)
           else
             boot_app(resource: @discussion)
           end
