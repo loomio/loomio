@@ -1,6 +1,6 @@
 import {beforeEach, describe, expect, it, vi} from 'vitest';
 import {computed} from 'vue';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 const mocks = vi.hoisted(() => ({destroy: vi.fn(), records: {}}));
 vi.mock('@/shared/services/app_config', () => ({default: {currentUserId: 1}}));
@@ -152,7 +152,7 @@ describe('membership revocation', () => {
 
 describe('retained memberships', () => {
   it('reactively removes access and group listings, then restores the same record on rejoin', () => {
-    const store = new RecordStore(new Loki('membership-access'));
+    const store = new RecordStore(new Database());
     store.addRecordsInterface(MembershipRecordsInterface);
     for (const model of [UserModel, GroupModel]) {
       const records = new BaseRecordsInterface(store);

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 const mocks = vi.hoisted(() => ({fetch: vi.fn(), polls: null, stances: null}));
 vi.mock('@/shared/services/records', () => ({default: {
@@ -26,7 +26,7 @@ function poll(id, attributes = {}) {
 beforeEach(() => {
   vi.resetModules();
   mocks.fetch.mockReset();
-  const db = new Loki('pending-polls');
+  const db = new Database();
   mocks.polls = db.addCollection('polls');
   mocks.stances = db.addCollection('stances');
 });
