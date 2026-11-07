@@ -347,7 +347,7 @@ class Collection {
       this.addUnique(field, entry);
     });
     this.hashIndices.forEach((index, field) => {
-      const value = entry.doc[field];
+      const value = toRaw(entry.doc[field]);
       if (value === entry.hashValues[field]) { return; }
       this.removeHashed(field, entry);
       this.addHashed(field, entry, value);
@@ -391,7 +391,7 @@ class Collection {
     let smallest = null;
     indexedEqualities(query, this.hashIndices).forEach(([field, values]) => {
       const index = this.hashIndices.get(field);
-      const sets = [...new Set(values)].map(value => index.get(value)).filter(Boolean);
+      const sets = [...new Set(values.map(value => toRaw(value)))].map(value => index.get(value)).filter(Boolean);
       const size = sets.reduce((total, entries) => total + entries.size, 0);
       if (smallest === null || size < smallest.size) { smallest = {sets, size}; }
     });
@@ -438,7 +438,10 @@ class Collection {
     this.uniqueIndices.get(field).delete(String(value));
   }
 
+  // Hash keys are raw values. Reading an object or array field through a reactive
+  // document returns a proxy, and reactive Maps key by the raw value.
   addHashed(field, entry, value) {
+    value = toRaw(value);
     entry.hashValues[field] = value;
     const index = this.hashIndices.get(field);
     const docs = toRaw(index).get(value);

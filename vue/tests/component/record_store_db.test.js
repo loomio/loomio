@@ -189,6 +189,16 @@ describe('record store database', () => {
       expect(query.runs()).toBe(3);
     });
 
+    it('updates and removes reactive documents indexed by an array field', () => {
+      const tags = new Database().addCollection('tags', {indices: ['usedGroupIds']});
+      const tag = reactive({id: 1, usedGroupIds: [1, 2]});
+      tags.insert(tag);
+      tag.usedGroupIds = [3];
+      tags.update(tag);
+      tags.remove(tag);
+      expect(tags.data).toEqual([]);
+    });
+
     it('does not subscribe a computed that inserts documents to its own writes', () => {
       const items = collection();
       const created = counted(() => items.insert(reactive({id: 1, topicId: 1})).id);
