@@ -14,6 +14,27 @@ class PollServiceTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  # -- discard --
+
+  test "discarding a standalone poll discards its topic" do
+    poll = create_poll
+
+    PollService.discard(poll: poll, actor: @user)
+
+    assert poll.reload.discarded?
+    assert poll.topic.reload.discarded_at.present?
+  end
+
+  test "discarding a poll in a thread leaves the thread's topic" do
+    topic = discussions(:discussion).topic
+    poll = create_poll(topic_id: topic.id)
+
+    PollService.discard(poll: poll, actor: @user)
+
+    assert poll.reload.discarded?
+    assert_nil topic.reload.discarded_at
+  end
+
   # -- create_stances --
   # Note: Use specified_voters_only polls so auto-creation doesn't preempt create_stances
 

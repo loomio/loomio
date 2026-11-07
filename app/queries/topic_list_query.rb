@@ -15,7 +15,7 @@ class TopicListQuery
       group_ids: group_ids,
       only_direct: params.has_key?(:direct),
       only_unread: params.has_key?(:unread)
-    ).recent_activity_first.order(id: :desc)
+    ).with_topicable.recent_activity_first.order(id: :desc)
 
     if params[:topicable_type].present?
       records = records.where(topicable_type: params[:topicable_type])

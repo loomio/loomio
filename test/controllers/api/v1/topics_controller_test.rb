@@ -61,6 +61,16 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_includes topic_ids, @topic.id
   end
 
+  test "index skips a topic whose thread no longer exists" do
+    sign_in @user
+    Discussion.where(id: @discussion.id).delete_all
+
+    get :index, params: { group_id: @group.id }
+
+    assert_response :success
+    assert_not_includes JSON.parse(response.body)['topics'].map { |t| t['id'] }, @topic.id
+  end
+
   test "index serializes without record cache fallbacks" do
     sign_in @user
     reaction = Reaction.create!(reactable: @discussion, user: @admin, reaction: '👍')

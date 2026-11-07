@@ -156,6 +156,20 @@ namespace :loomio do
     puts Version.current
   end
 
+  desc "Report topics whose thread or poll no longer exists, and destroy them when DESTROY_ORPHAN_TOPICS is present"
+  task orphan_topics: :environment do
+    orphans = Topic.where.not(id: Topic.with_topicable.select(:id))
+    orphans.order(:id).pluck(:id, :topicable_type, :topicable_id, :group_id, :private, :discarded_at).each do |row|
+      puts row.join("\t")
+    end
+    puts "#{orphans.count} topics without their thread or poll"
+
+    if ENV.key?("DESTROY_ORPHAN_TOPICS")
+      destroyed = orphans.find_each.count(&:destroy!)
+      puts "Destroyed #{destroyed}"
+    end
+  end
+
   desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
   task repair_inline_image_attachments: :environment do
     if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
