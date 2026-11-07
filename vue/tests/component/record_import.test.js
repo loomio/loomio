@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { computed, isReactive } from 'vue';
 import Records from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
@@ -83,4 +83,11 @@ describe('record import', () => {
     expect(first.authorIs(first.author())).toBe(true);
   });
 
+  it('warns once when keyed records are imported into a collection without a key index', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    Records.importJSON({users: [{id: 701, key: 'u701'}, {id: 702, key: 'u702'}]});
+    expect(warn).toHaveBeenCalledOnce();
+    expect(warn.mock.calls[0][0]).toContain('users');
+    warn.mockRestore();
+  });
 });

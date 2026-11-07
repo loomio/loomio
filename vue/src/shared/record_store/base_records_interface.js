@@ -2,6 +2,16 @@ import RestfulClient from './restful_client';
 import {each, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash-es';
 import { reactive } from 'vue';
 
+// Looking a record up by key without a unique key index scans the collection,
+// so importing many keyed records becomes quadratic. Add 'key' to the model's
+// uniqueIndices when its JSON includes key.
+const collectionsWarned = new Set();
+function warnUnindexedKey(collection) {
+  if (collection.hasUniqueIndex('key') || collectionsWarned.has(collection.name)) { return; }
+  collectionsWarned.add(collection.name);
+  console.warn(`Imported ${collection.name} include key, but ${collection.name} has no unique key index`);
+}
+
 export default class BaseRecordsInterface {
   constructor(recordStore) {
     this.model = 'undefinedModel';
@@ -9,7 +19,6 @@ export default class BaseRecordsInterface {
   }
 
   baseConstructor(recordStore) {
-    this.views = [];
     this.missingIds = [];
     this.fetchedIds = [];
 
@@ -82,7 +91,10 @@ export default class BaseRecordsInterface {
 
   importRecord(attributes) {
     let record;
-    if (attributes.key != null) { record = this.find(attributes.key); }
+    if (attributes.key != null) {
+      if (import.meta.env.DEV) { warnUnindexedKey(this.collection); }
+      record = this.find(attributes.key);
+    }
     if ((attributes.id != null) && (record == null)) { record = this.find(attributes.id); }
     if (record) {
       record.update(attributes);
