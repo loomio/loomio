@@ -1,9 +1,17 @@
 import utils from './utils';
-import { camelCase, compact, union, each, isArray, keys, snakeCase, defaults, orderBy, assign, includes } from 'lodash-es';
+import { camelCase, compact, each, isArray, isEqual, snakeCase, defaults, orderBy, assign, includes } from 'lodash-es';
 
 import Records from '@/shared/services/records';
-import { reactive } from 'vue';
+import { reactive, toRaw } from 'vue';
 import { collectionOf } from '@/shared/record_store/db';
+
+// Equal for import purposes: same primitive, or same contents for dates,
+// arrays and plain objects.
+function sameValue(current, value) {
+  if (Object.is(current, value)) { return true; }
+  if (current === null || value === null || typeof current !== 'object' || typeof value !== 'object') { return false; }
+  return isEqual(current, value);
+}
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -38,18 +46,9 @@ export default class BaseModel {
   // what is the key to use when serializing the record?
   static serializationRoot = null;
 
+  // Returns the record's reactive proxy, so `this` in subclass constructors and
+  // in methods called on the record is reactive, and writes to it update the UI.
   constructor(attributes) {
-    this.inCollection = this.inCollection.bind(this);
-    this.remove = this.remove.bind(this);
-    this.destroy = this.destroy.bind(this);
-    this.beforeDestroy = this.beforeDestroy.bind(this);
-    this.beforeRemove = this.beforeRemove.bind(this);
-    this.discard = this.discard.bind(this);
-    this.undiscard = this.undiscard.bind(this);
-    this.save = this.save.bind(this);
-    this.saveSuccess = this.saveSuccess.bind(this);
-    this.saveError = this.saveError.bind(this);
-    this.setErrors = this.setErrors.bind(this);
     if (attributes == null) { attributes = {}; }
     this.processing = false; // not returning/throwing on already processing rn
     this._version = 0;
@@ -63,6 +62,7 @@ export default class BaseModel {
     this.update(this.defaultValues());
     this.update(attributes);
     this.afterConstruction();
+    return reactive(this);
   }
 
   collabKeyParams() {
@@ -102,13 +102,23 @@ export default class BaseModel {
     return this.baseUpdate(attributes);
   }
 
+  // Assign only the attributes that changed. Imported JSON always carries new
+  // Date objects and arrays, so assigning equal values would re-run every
+  // computed, watcher and render that reads them.
   baseUpdate(attributes) {
-    this.attributeNames = union(this.attributeNames, keys(attributes));
-    each(attributes, (value, key) => {
-      reactive(this)[key] = value;
-      return true;
+    const raw = toRaw(this);
+    const record = reactive(this);
+    let changed = false;
+    let namesAdded = null;
+    Object.keys(attributes).forEach(key => {
+      const value = attributes[key];
+      if (!raw.attributeNames.includes(key)) { (namesAdded ||= []).push(key); }
+      if (sameValue(raw[key], value)) { return; }
+      record[key] = value;
+      changed = true;
     });
-    if (this.inCollection()) { collectionOf(this).update(this); }
+    if (namesAdded) { raw.attributeNames = raw.attributeNames.concat(namesAdded); }
+    if (changed && this.inCollection()) { collectionOf(this).update(this); }
   }
 
   attributeIsBlank(attributeName) {
@@ -158,8 +168,9 @@ export default class BaseModel {
       find: {}
     });
 
+    const record = reactive(this);
     return this[name] = () => {
-      const find = Object.assign({}, {[args.with]: this[args.of]},  args.find);
+      const find = Object.assign({}, {[args.with]: record[args.of]},  args.find);
       if (userArgs.orderBy) {
         return orderBy(Records[args.from].find(find), userArgs.orderBy);
       } else {
@@ -176,26 +187,28 @@ export default class BaseModel {
 
     const args = assign(values, userArgs);
 
+    const record = reactive(this);
     this[name] = () => {
-      if (this[args.by]) {
+      if (record[args.by]) {
         let obj;
-        if (obj = Records[args.from].find(this[args.by])) { return obj; }
+        if (obj = Records[args.from].find(record[args.by])) { return obj; }
         if (this.constructor.lazyLoad) {
-          obj = Records[args.from].create({id: this[args.by]});
-          Records[args.from].addMissing(this[args.by]);
+          obj = Records[args.from].create({id: record[args.by]});
+          Records[args.from].addMissing(record[args.by]);
           return obj;
         }
       }
       return Records[args.from].nullModel();
     };
-    this[name+'Is'] = obj => Records[args.from].find(this[args.by]) === obj;
+    this[name+'Is'] = obj => Records[args.from].find(record[args.by]) === obj;
   }
 
   belongsToPolymorphic(name) {
+    const record = reactive(this);
     this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
-      return Records[BaseModel.itemTypeMap[this[typeColumn]]].find(this[idColumn]);
+      return Records[BaseModel.itemTypeMap[record[typeColumn]]].find(record[idColumn]);
     };
   }
 
@@ -231,12 +244,12 @@ export default class BaseModel {
   }
 
   destroy() {
-    reactive(this).processing = true;
+    this.processing = true;
     this.beforeDestroy();
     this.remove();
     return Records[this.constructor.plural].remote.destroy(this.keyOrId())
     .finally(() => {
-      reactive(this).processing = false;
+      this.processing = false;
     });
   }
 
@@ -245,18 +258,18 @@ export default class BaseModel {
   beforeRemove() {}
 
   discard() {
-    reactive(this).processing = true;
+    this.processing = true;
     return Records[this.constructor.plural].remote.discard(this.keyOrId())
     .finally(() => {
-      reactive(this).processing = false;
+      this.processing = false;
     });
   }
 
   undiscard() {
-    reactive(this).processing = true;
+    this.processing = true;
     return Records[this.constructor.plural].remote.undiscard(this.keyOrId())
     .finally(() => {
-      reactive(this).processing = false;
+      this.processing = false;
     });
   }
 
@@ -268,37 +281,37 @@ export default class BaseModel {
   }
 
   save() {
-    reactive(this).processing = true;
+    this.processing = true;
     this.prepareForSave();
 
     if (this.isNew()) {
       return Records[this.constructor.plural].remote.create(this.serialize())
-      .then(this.saveSuccess, this.saveError)
-      .finally(() => { reactive(this).processing = false; });
+      .then(data => this.saveSuccess(data), data => this.saveError(data))
+      .finally(() => { this.processing = false; });
     } else {
       return Records[this.constructor.plural].remote.update(this.keyOrId(), this.serialize())
-      .then(this.saveSuccess, this.saveError)
-      .finally(() => { reactive(this).processing = false; });
+      .then(data => this.saveSuccess(data), data => this.saveError(data))
+      .finally(() => { this.processing = false; });
     }
   }
 
   saveSuccess(data) {
-    reactive(this).saveFailed = false;
+    this.saveFailed = false;
     return data;
   }
 
   saveError(data) {
-    reactive(this).saveFailed = true;
+    this.saveFailed = true;
     this.setErrors(data.errors);
     throw data;
   }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }
-    reactive(this).errors = {}
+    this.errors = {}
 
     each(errorList, (errors, key) => {
-      reactive(this).errors[camelCase(key)] = errors
+      this.errors[camelCase(key)] = errors
       return true
     });
   }

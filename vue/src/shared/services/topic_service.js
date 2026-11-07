@@ -328,7 +328,7 @@ export default new class TopicService {
             component: 'ConfirmModal',
             props: {
               confirm: {
-                submit: topic.discard,
+                submit: () => topic.discard(),
                 text: {
                   title: 'action_dock.delete_thread',
                   helptext: 'delete_discussion_form.body',

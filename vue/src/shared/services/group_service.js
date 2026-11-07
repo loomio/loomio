@@ -239,7 +239,7 @@ export default new class GroupService {
             component: 'ConfirmModal',
             props: {
               confirm: {
-                submit: group.destroy,
+                submit: () => group.destroy(),
                 text: {
                   title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
                   helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',

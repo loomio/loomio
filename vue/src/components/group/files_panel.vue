@@ -6,19 +6,17 @@ import AbilityService    from '@/shared/services/ability_service';
 
 import { mdiMagnify } from '@mdi/js';
 import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
 export default
 {
-  mixins: [WatchRecords, UrlFor, FormatDate],
+  mixins: [UrlFor, FormatDate],
   data() {
     return {
       group: null,
       attachmentLoader: null,
       searchQuery: '',
-      items: [],
       attachmentIds: [],
       per: 25,
       from: 0,
@@ -51,11 +49,6 @@ export default
       }
     });
 
-    this.watchRecords({
-      collections: ['attachments'],
-      query: () => this.query()
-    });
-
     this.searchQuery = this.$route.query.q || '';
     this.fetch();
   },
@@ -64,26 +57,16 @@ export default
     '$route.query.q'(val) {
       this.searchQuery = val || '';
       this.fetch();
-      this.query();
     }
   },
 
   methods: {
-    query() {
-      const attachments = Records.attachments.collection.chain().
-                     find({id: {$in: this.attachmentIds}}).
-                     find({filename: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
-                     data();
-
-      this.items = orderBy(attachments, 'createdAt', 'desc');
-    },
-
     fetch() {
       this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
         // RecordLoader resolves a failed request after recording its error.
         if (this.attachmentLoader.err) { return; }
         this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
-      }).then(() => this.query());
+      });
     },
 
     deleteAttachment(item) {
@@ -91,7 +74,7 @@ export default
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: item.destroy,
+            submit: () => item.destroy(),
             text: {
               title: 'comment_form.attachments.remove_attachment',
               helptext: 'group_files_panel.delete_confirmation',
@@ -105,6 +88,14 @@ export default
   },
 
   computed: {
+    items() {
+      const attachments = Records.attachments.collection.chain().
+                     find({id: {$in: this.attachmentIds}}).
+                     find({filename: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
+                     data();
+
+      return orderBy(attachments, 'createdAt', 'desc');
+    },
     showLoadMore() { return !this.attachmentLoader.exhausted; },
     loading() { return this.attachmentLoader.loading; },
     canAdminister() { return AbilityService.canAdminister(this.group); }
