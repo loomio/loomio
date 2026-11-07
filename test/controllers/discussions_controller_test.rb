@@ -35,6 +35,28 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_includes response.headers['Cache-Control'], 'no-store'
   end
 
+  test 'browser and bot metadata contain a short excerpt without the context heading' do
+    discussion = discussions(:public_discussion)
+    description = '<h2>Context</h2><p>Clarify responsibilities &amp; share "progress".</p>' \
+      '<p>' + ('More useful information. ' * 30) + '</p>'
+    discussion.update_columns(description: description, description_format: 'html')
+
+    ['Mozilla/5.0', 'Googlebot'].each do |agent|
+      @request.user_agent = agent
+      get :show, params: {key: discussion.key}
+      assert_response :success
+      assert_select 'meta[name="description"][property="og:description"]', count: 1 do |tags|
+        excerpt = tags.first['content']
+        assert excerpt.start_with?('Clarify responsibilities & share "progress".')
+        assert_operator excerpt.length, :<=, 200
+        refute_includes excerpt, 'Context'
+        refute_includes excerpt, '<br>'
+      end
+    end
+
+    assert_equal description, discussion.reload.description
+  end
+
   test "signed-in public thread boot includes its group outside the viewer's directory" do
     sign_in users(:alien)
     discussion = discussions(:public_discussion)
