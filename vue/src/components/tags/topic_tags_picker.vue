@@ -10,11 +10,7 @@ const { topic, topicItem } = defineProps({
     type: Object,
     required: true
   },
-  topicItem: Object,
-  watchKey: {
-    type: String,
-    required: true
-  }
+  topicItem: Object
 });
 
 const { t } = useI18n();

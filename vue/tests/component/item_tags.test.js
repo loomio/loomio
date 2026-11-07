@@ -57,7 +57,7 @@ describe('item tagging', () => {
 
   function mountPicker(topicItem) {
     taggedItem = topicItem;
-    wrapper = mount(TopicTagsPicker, {props: {topic, topicItem, watchKey: 'test'}, global: {
+    wrapper = mount(TopicTagsPicker, {props: {topic, topicItem}, global: {
       plugins: [createVuetify({components})], mocks: {$t: key => key}, stubs: {'common-icon': true}
     }});
   }
