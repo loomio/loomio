@@ -124,7 +124,7 @@ export default
         if (this.page === 1) {
           chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
         } else {
-          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
+          chain = chain.find({lastActivityAt: {$between: this.loader.pageWindow[this.page]}});
         }
         topics = chain.data();
       }

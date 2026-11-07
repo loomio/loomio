@@ -3,6 +3,7 @@ import { camelCase, compact, union, each, isArray, keys, snakeCase, defaults, or
 
 import Records from '@/shared/services/records';
 import { reactive } from 'vue';
+import { collectionOf } from '@/shared/record_store/db';
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -22,10 +23,10 @@ export default class BaseModel {
     PollTemplate: 'pollTemplates',
   };
 
-  // indicate to Loki our 'primary keys' - it promises to make these fast to lookup by.
+  // fields with one record per value, looked up with collection.by(field, value)
   static uniqueIndices = ['id'];
 
-  // list of other attributes to index
+  // fields that queries commonly filter by equality or $in (see record_store/db.js)
   static indices = [];
 
   static searchableFields = [];
@@ -94,7 +95,7 @@ export default class BaseModel {
   }
 
   inCollection() {
-    return this['$loki'];
+    return collectionOf(this) !== undefined;
   }
 
   update(attributes) {
@@ -107,7 +108,7 @@ export default class BaseModel {
       reactive(this)[key] = value;
       return true;
     });
-    if (this.inCollection()) { Records[this.constructor.plural].collection.update(this); }
+    if (this.inCollection()) { collectionOf(this).update(this); }
   }
 
   attributeIsBlank(attributeName) {
@@ -225,7 +226,7 @@ export default class BaseModel {
   remove() {
     this.beforeRemove();
     if (this.inCollection()) {
-      return Records[this.constructor.plural].collection.remove(this);
+      return collectionOf(this).remove(this);
     }
   }
 

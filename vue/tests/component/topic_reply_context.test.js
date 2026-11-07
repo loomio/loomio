@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 const mocks = vi.hoisted(() => ({items: null}));
 vi.mock('@/shared/services/records', () => ({default: {
@@ -19,7 +19,7 @@ describe('reply context at the nesting limit', () => {
   let loader;
 
   beforeEach(() => {
-    mocks.items = new TopicItemRecordsInterface({db: new Loki('reply-context')});
+    mocks.items = new TopicItemRecordsInterface({db: new Database()});
     loader = new TopicLoader({id: 42, ranges: [[0, 10]], readRanges: [[0, 9]], lastReadAt: new Date()});
     item({id: 1, parentId: null, depth: 0, position: 0, positionKey: '00000', itemableType: 'Discussion'});
     item({id: 2, parentId: 1, depth: 1, position: 1, positionKey: '00000-00001'});

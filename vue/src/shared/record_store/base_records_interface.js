@@ -144,7 +144,7 @@ export default class BaseRecordsInterface {
   }
 
   findByKey(key) {
-    if (this.collection.constraints.unique['key'] != null) {
+    if (this.collection.hasUniqueIndex('key')) {
       return this.collection.by('key', key);
     } else {
       return this.collection.findOne({key});

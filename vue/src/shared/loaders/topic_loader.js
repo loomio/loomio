@@ -88,16 +88,16 @@ export default class TopicLoader {
     }
 
     if (args.position_key_lt) {
-      andParts.push({positionKey: {$jlt: args.position_key_lt}})
+      andParts.push({positionKey: {$lt: args.position_key_lt}})
     }
     if (args.position_key_lte) {
-      andParts.push({positionKey: {$jlte: args.position_key_lte}})
+      andParts.push({positionKey: {$lte: args.position_key_lte}})
     }
     if (args.position_key_gt) {
-      andParts.push({positionKey: {$jgt: args.position_key_gt}})
+      andParts.push({positionKey: {$gt: args.position_key_gt}})
     }
     if (args.position_key_gte) {
-      andParts.push({positionKey: {$jgte: args.position_key_gte}})
+      andParts.push({positionKey: {$gte: args.position_key_gte}})
     }
     if (args.position_key_sw) {
       andParts.push({positionKey: {$regex: `^${args.position_key_sw}`}})
@@ -106,8 +106,8 @@ export default class TopicLoader {
       name: `addLoadArgsRule`,
       local: {
         find: {$and: andParts},
-        sortByPositionKey: args.order_by == 'position_key' && !args.order_desc,
-        sortByPositionKeyDesc: args.order_by == 'position_key' && !!args.order_desc,
+        simplesort: args.order_by == 'position_key' ? 'positionKey' : null,
+        simplesortDesc: !!args.order_desc,
         limit: this.padding
       },
       remote: pickBy({
@@ -328,18 +328,6 @@ export default class TopicLoader {
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
-      } else if (rule.local.sortByPositionKey) {
-        chain = chain.sort((a,b) => {
-          if (a.positionKey == b.positionKey) { return 0 }
-          if (a.positionKey > b.positionKey) { return 1 }
-          if (a.positionKey < b.positionKey) { return -1 }
-        })
-      } else if (rule.local.sortByPositionKeyDesc) {
-        chain = chain.sort((a,b) => {
-          if (a.positionKey == b.positionKey) { return 0 }
-          if (a.positionKey > b.positionKey) { return -1 }
-          if (a.positionKey < b.positionKey) { return 1 }
-        })
       }
 
       if (rule.local.limit) {

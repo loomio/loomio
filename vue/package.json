@@ -67,7 +67,6 @@
     "date-fns-tz": "2.0.1",
     "emojibase-data": "^18.0.0",
     "lodash-es": "latest",
-    "lokijs": "1.5.12",
     "marked": "^4.3.0",
     "md5": "2.3.0",
     "plausible-tracker": "^0.3.9",
