@@ -397,7 +397,7 @@ export default new class TopicService {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: topic.lock,
+            submit: () => topic.lock(),
             text: {
               title: 'action_dock.lock_thread',
               helptext: 'lock_thread_modal.explanation',
@@ -443,7 +443,7 @@ export default new class TopicService {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: topic.savePin,
+            submit: () => topic.savePin(),
             text: {
               title: 'action_dock.pin_discussion',
               flash: 'discussion.pin.pinned',

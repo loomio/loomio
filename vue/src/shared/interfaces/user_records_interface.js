@@ -6,10 +6,6 @@ import AppConfig from '@/shared/services/app_config';
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
     super(recordStore);
-    this.updateProfile = this.updateProfile.bind(this);
-    this.uploadAvatar = this.uploadAvatar.bind(this);
-    this.destroy = this.destroy.bind(this);
-    this.saveExperience = this.saveExperience.bind(this);
     this.model = UserModel;
     this.apiEndPoint = 'profile';
     this.baseConstructor(recordStore)

@@ -7,11 +7,6 @@ export default class MembershipRequestModel extends BaseModel {
   static plural = 'membershipRequests';
   static indices = ['id', 'groupId'];
 
-  constructor(...args){
-    super(...args);
-    this.isPending = this.isPending.bind(this);
-  }
-
   defaultValues() {
     return {
       introduction: null,

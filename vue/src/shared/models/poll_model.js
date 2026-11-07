@@ -12,14 +12,6 @@ export default class PollModel extends BaseModel {
   static uniqueIndices = ['id', 'key'];
   static indices = ['authorId', 'groupId', 'topicId'];
 
-  constructor(...args) {
-    super(...args);
-    this.close = this.close.bind(this);
-    this.reopen = this.reopen.bind(this);
-    this.addOption = this.addOption.bind(this);
-    this.poll = this.poll.bind(this);
-  }
-
   collabKeyParams() {
     return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
   }

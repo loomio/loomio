@@ -8,14 +8,6 @@ export default class GroupModel extends BaseModel {
   static uniqueIndices = ['id', 'key'];
   static indices = ['parentId'];
 
-  constructor(...args) {
-    super(...args);
-    this.export = this.export.bind(this);
-    this.exportCSV = this.exportCSV.bind(this);
-    this.uploadLogo = this.uploadLogo.bind(this);
-    this.uploadCover = this.uploadCover.bind(this);
-  }
-
   defaultValues() {
     return {
       parentId: null,

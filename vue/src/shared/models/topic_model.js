@@ -12,12 +12,6 @@ export default class TopicModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
-    this.savePin = this.savePin.bind(this);
-    this.saveUnpin = this.saveUnpin.bind(this);
-    this.lock = this.lock.bind(this);
-    this.unlock = this.unlock.bind(this);
-    this.discard = this.discard.bind(this);
-    this.saveVolume = this.saveVolume.bind(this);
     this.readRangesPending = [];
     this.updateReadRanges = throttle(function() {
       // Submit only this viewing batch: historical read ranges must not clear
