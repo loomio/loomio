@@ -2,41 +2,40 @@ import DashboardPage from './components/dashboard/page';
 import GroupPage from './components/group/page.vue';
 import TopicPage from './components/topic/page';
 
-const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
-const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/polls_to_vote_on_page'));
-const NotificationsPage = wrapAsyncLoader(() => import('./components/notifications/page'));
-const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
-const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
-const PollVotesPage = wrapAsyncLoader(() => import('./components/poll/votes_page'));
-const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
-const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
-const PollTemplateBrowsePage = wrapAsyncLoader(() => import('./components/poll_template/browse_page'));
-const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
-const BookmarksPage = wrapAsyncLoader(() => import('./components/bookmarks/page'));
-const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
-const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
-const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
-const MembersPanel = wrapAsyncLoader(() => import('./components/group/members_panel'));
-const MemberWeightsPage = wrapAsyncLoader(() => import('./components/group/member_weights_page.vue'));
-const GroupTagsPanel = wrapAsyncLoader(() => import('./components/group/tags_panel'));
-const GroupFilesPanel = wrapAsyncLoader(() => import('./components/group/files_panel'));
-const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group/requests_panel'));
-const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/page'));
-const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
-const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
-const DiscussionFormPage = wrapAsyncLoader(() => import('./components/discussion/form_page'));
-const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
-const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
-const DiscussionTemplateBrowsePage = wrapAsyncLoader(() => import('./components/discussion_template/browse_page'));
-const UserPage = wrapAsyncLoader(() => import('./components/user/page'));
-const TopicsPage = wrapAsyncLoader(() => import('./components/topics/page'));
-const StartTrialPage = wrapAsyncLoader(() => import('./components/start_trial/page.vue'));
-const ReportPage = wrapAsyncLoader(() => import('./components/report/page.vue'));
+const InboxPage = () => import('./components/inbox/page');
+const PollsToVoteOnPage = () => import('./components/dashboard/polls_to_vote_on_page');
+const NotificationsPage = () => import('./components/notifications/page');
+const ExplorePage = () => import('./components/explore/page');
+const ProfilePage = () => import('./components/profile/page');
+const PollVotesPage = () => import('./components/poll/votes_page');
+const PollFormPage = () => import('./components/poll/form_page');
+const PollTemplateFormPage = () => import('./components/poll_template/form_page');
+const PollTemplateBrowsePage = () => import('./components/poll_template/browse_page');
+const TasksPage = () => import('./components/tasks/page');
+const BookmarksPage = () => import('./components/bookmarks/page');
+const GroupDiscussionsPanel = () => import('./components/group/discussions_panel');
+const GroupPollsPanel = () => import('./components/group/polls_panel');
+const GroupEmailsPanel = () => import('./components/group/emails_panel');
+const MembersPanel = () => import('./components/group/members_panel');
+const MemberWeightsPage = () => import('./components/group/member_weights_page.vue');
+const GroupTagsPanel = () => import('./components/group/tags_panel');
+const GroupFilesPanel = () => import('./components/group/files_panel');
+const MembershipRequestsPanel = () => import('./components/group/requests_panel');
+const StartGroupPage = () => import('./components/start_group/page');
+const ContactPage = () => import('./components/contact/page');
+const EmailSettingsPage = () => import('./components/email_settings/page');
+const DiscussionFormPage = () => import('./components/discussion/form_page');
+const DiscussionTemplateFormPage = () => import('./components/discussion_template/form_page');
+const DiscussionTemplateIndexPage = () => import('./components/discussion_template/index_page');
+const DiscussionTemplateBrowsePage = () => import('./components/discussion_template/browse_page');
+const UserPage = () => import('./components/user/page');
+const TopicsPage = () => import('./components/topics/page');
+const StartTrialPage = () => import('./components/start_trial/page.vue');
+const ReportPage = () => import('./components/report/page.vue');
 
 // import './config/catch_navigation_duplicated.js';
 
 import { createRouter, createWebHistory } from 'vue-router'
-import { wrapAsyncLoader, installRouterChunkErrorHandler } from '@/shared/services/chunk_error_handling'
 
 const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
@@ -119,5 +118,4 @@ const router = createRouter({
     {path: '/', redirect: '/dashboard' }
   ]});
 
-installRouterChunkErrorHandler(router)
 export default router;

@@ -1,7 +1,7 @@
 <script lang="js">
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 import { format, utcToZonedTime } from 'date-fns-tz';
-import asyncComponent from '@/shared/services/async_component';
+import { defineAsyncComponent } from 'vue';
 
 export default
 {
@@ -9,7 +9,7 @@ export default
     NodeViewWrapper,
     NodeViewContent,
     // Task text needs no calendar until its due-date dialog opens.
-    TaskDatePicker: asyncComponent(() => import('vuetify/components/VDatePicker').then(module => module.VDatePicker))
+    TaskDatePicker: defineAsyncComponent(() => import('vuetify/components/VDatePicker').then(module => module.VDatePicker))
   },
 
   props: nodeViewProps,

@@ -7,11 +7,8 @@ import submitOnModEnterDirective from '@/submit_on_mod_enter_directive';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
 import PlausibleService from '@/shared/services/plausible_service';
-import { installVitePreloadErrorHandler } from '@/shared/services/chunk_error_handling';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import EventBus from '@/shared/services/event_bus';
-
-installVitePreloadErrorHandler();
 
 try {
   document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();
@@ -56,7 +53,6 @@ boot(function(data) {
         "ResizeObserver loop completed with undelivered notifications",
         "TypeError: cancelled",
         "UnhandledRejection: Non-Error promise rejection captured with value",
-        "ChunkLoadError: Loading chunk chunk-",
         "TypeError: annulé",
         "Permission denied to access property \"dispatchEvent\" on cross-origin object",
         "TypeError: Failed to fetch",

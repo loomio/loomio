@@ -1,15 +1,14 @@
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { ref, computed, watch, onUnmounted, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
 import AbilityService from '@/shared/services/ability_service';
-import asyncComponent from '@/shared/services/async_component';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 
-const PollCommonForm = asyncComponent(() => import('@/components/poll/common/form'));
-const PollCommonChooseTemplateWrapper = asyncComponent(() => import('@/components/poll/common/choose_template_wrapper'));
+const PollCommonForm = defineAsyncComponent(() => import('@/components/poll/common/form'));
+const PollCommonChooseTemplateWrapper = defineAsyncComponent(() => import('@/components/poll/common/choose_template_wrapper'));
 
 const { topic } = defineProps({
   topic: { type: Object, required: true }
