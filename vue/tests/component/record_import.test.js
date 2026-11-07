@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { computed, isReactive } from 'vue';
 import Records from '@/shared/services/records';
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
 
 // Count how often a computed evaluates, reading it after each change.
 function counted(read) {
@@ -61,5 +63,15 @@ describe('record import', () => {
 
     comment.setErrors({body: ['is too long']});
     expect(errors.value()).toEqual(['is too long']);
+  });
+
+  it('re-runs a query on the signed-in user when someone signs in', () => {
+    AppConfig.currentUserId = null;
+    const bookmarks = counted(() => Records.bookmarks.find({userId: Session.userId}).length);
+    expect(bookmarks.value()).toBe(0);
+
+    AppConfig.currentUserId = 501;
+    Records.importJSON({bookmarks: [{id: 1, user_id: 501, bookmarkable_id: 1, bookmarkable_type: 'Topic'}]});
+    expect(bookmarks.value()).toBe(1);
   });
 });
