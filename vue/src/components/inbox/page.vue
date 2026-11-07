@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, onUnmounted } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 import { sumBy, sortBy } from 'lodash-es';
 
 import Session       from '@/shared/services/session';
@@ -7,7 +7,6 @@ import Records       from '@/shared/services/records';
 import EventBus      from '@/shared/services/event_bus';
 import ThreadFilter  from '@/shared/services/thread_filter';
 import TopicPreviewCollection from '@/components/topic/preview_collection';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const topicLimit = 50;
@@ -18,12 +17,8 @@ const filters = [
   'hide_dismissed'
 ];
 
-const groups = ref([]);
-const viewsByGroup = ref({});
-const unreadCount = ref(0);
 const loading = ref(false);
 
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 function fetchInbox() {
@@ -35,16 +30,17 @@ function fetchInbox() {
   }).finally(() => { loading.value = false; });
 }
 
-function query() {
-  const newGroups = sortBy(Session.user().inboxGroups(), 'name');
-  const newViews = {};
-  newGroups.forEach(group => {
-    newViews[group.key] = ThreadFilter({ filters, group });
+const groups = computed(() => sortBy(Session.user().inboxGroups(), 'name'));
+
+const viewsByGroup = computed(() => {
+  const views = {};
+  groups.value.forEach(group => {
+    views[group.key] = ThreadFilter({ filters, group });
   });
-  groups.value = newGroups;
-  viewsByGroup.value = newViews;
-  unreadCount.value = sumBy(newGroups, g => newViews[g.key].length);
-}
+  return views;
+});
+
+const unreadCount = computed(() => sumBy(groups.value, g => viewsByGroup.value[g.key].length));
 
 function startGroup() {
   EventBus.$emit('openModal', {
@@ -56,12 +52,6 @@ function startGroup() {
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
 }
-
-watchRecords({
-  key: 'inbox',
-  collections: ['topics', 'groups', 'memberships'],
-  query
-});
 
 EventBus.$emit('currentComponent', {
   titleKey: 'inbox_page.unread_threads',

@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -7,7 +7,6 @@ import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { sortBy, debounce } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const props = defineProps({
@@ -19,7 +18,6 @@ const urlFor = (model, action, params) => LmoUrlService.route({model, action, pa
 
 const selectedTopic = ref(null);
 const searchFragment = ref('');
-const searchResults = ref([]);
 const groupId = ref(props.poll.topic().groupId);
 const groups = ref([]);
 const loading = ref(false);
@@ -35,9 +33,9 @@ const canMoveTo = (topic) => {
          topic.adminsInclude(Session.user());
 };
 
-const updateResults = () => {
+const searchResults = computed(() => {
   const frag = searchFragment.value.toLowerCase();
-  searchResults.value = Records.topics.collection.chain()
+  return Records.topics.collection.chain()
     .find({groupId: groupId.value, topicableType: 'Discussion', discardedAt: null})
     .where(t => {
       if (!canMoveTo(t)) { return false; }
@@ -47,7 +45,7 @@ const updateResults = () => {
     })
     .simplesort('lastActivityAt', true)
     .data();
-};
+});
 
 const fetchTopics = debounce(() => {
   loading.value = true;
@@ -62,7 +60,6 @@ const fetchTopics = debounce(() => {
   }
   Records.topics.fetch({params}).finally(() => {
     loading.value = false;
-    updateResults();
   });
 }, 500);
 
@@ -92,12 +89,6 @@ watch(groupId, fetchTopics);
 
 // init
 fetchTopics();
-
-const { watchRecords } = useWatchRecords();
-watchRecords({
-  collections: ['topics'],
-  query: () => updateResults()
-});
 </script>
 
 <template lang="pug">

@@ -6,20 +6,22 @@ import EventBus                     from '@/shared/services/event_bus';
 import LmoUrlService                from '@/shared/services/lmo_url_service';
 import { isEmpty }                  from 'lodash-es';
 import { approximate }              from '@/shared/helpers/format_time';
-import { useWatchRecords }          from '@/composables/useWatchRecords';
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
 const user                      = ref({});
-const groups                    = ref([]);
 const canContactUser            = ref(false);
 const loadingGroupsForExecuting = ref(false);
 const activity                  = ref([]);
 const loadingActivity           = ref(true);
 
 const isEmptyUser = computed(() => isEmpty(user.value));
+
+const groups = computed(() => {
+  if (isEmptyUser.value) { return []; }
+  return user.value.groups();
+});
 
 function init() {
   user.value = (Records.users.find(route.params.key) || Records.users.find({username: route.params.key}))[0];
@@ -29,13 +31,6 @@ function init() {
       canContactUser.value = data.contactable;
     });
     loadGroupsFor(user.value);
-    watchRecords({
-      key: user.value.id,
-      collections: ['groups', 'memberships'],
-      query: () => {
-        groups.value = user.value.groups();
-      }
-    });
   }
 }
 

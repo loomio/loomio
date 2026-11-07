@@ -2,11 +2,10 @@
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { topic, topicItem, watchKey } = defineProps({
+const { topic, topicItem } = defineProps({
   topic: {
     type: Object,
     required: true
@@ -18,14 +17,13 @@ const { topic, topicItem, watchKey } = defineProps({
   }
 });
 
-const { watchRecords } = useWatchRecords();
 const { t } = useI18n();
 const assignedItem = () => topicItem || topic.createdTopicItem();
 const assignedTags = () => assignedItem().tags;
 
 const selectedTags = ref([]);
-const orgTags = ref([]);
 const tagGroup = ref(null);
+const useAssignedTagNames = ref(false);
 const addingTag = ref(false);
 const newTagName = ref('');
 const showOtherGroupTags = ref(false);
@@ -72,10 +70,11 @@ function tagDotStyle(tag) {
   return tag.color ? {backgroundColor: tag.color} : {};
 }
 
-function loadGroup(group) {
-  tagGroup.value = group;
-  orgTags.value = sortedTags(group.tags());
-}
+const orgTags = computed(() => {
+  if (tagGroup.value) { return sortedTags(tagGroup.value.tags()); }
+  if (useAssignedTagNames.value) { return sortedTags(tagsFromNames(assignedTags())); }
+  return [];
+});
 
 function fetchTemplateGroup(template) {
   if (!template || !template.groupId) { return Promise.resolve(null); }
@@ -104,17 +103,18 @@ function fetchDirectTemplateGroup() {
 }
 
 function loadTags() {
+  useAssignedTagNames.value = false;
   if (topic.groupId) {
-    loadGroup(topic.group());
+    tagGroup.value = topic.group();
     return;
   }
 
   tagGroup.value = null;
   fetchDirectTemplateGroup().then(group => {
     if (usableGroup(group)) {
-      loadGroup(group);
+      tagGroup.value = group;
     } else {
-      orgTags.value = sortedTags(tagsFromNames(assignedTags()));
+      useAssignedTagNames.value = true;
     }
   });
 }
@@ -131,11 +131,6 @@ defineExpose({ reset });
 onMounted(() => {
   selectedTags.value = cleanTagNames(assignedTags());
   loadTags();
-  watchRecords({
-    key: watchKey,
-    collections: ['tags'],
-    query: () => { loadTags(); }
-  });
 });
 
 const canCreateTags = computed(() => {

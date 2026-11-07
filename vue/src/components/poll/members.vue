@@ -7,17 +7,15 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { voteWeightValid } from '@/shared/helpers/vote_weight';
 
 const { poll } = defineProps({ poll: Object });
 const { t } = useI18n();
-const { watchRecords } = useWatchRecords();
 
 const limit = 50;
 const initialRecipients = [];
-const users = ref([]);
 const userIds = ref([]);
+const users = computed(() => userIds.value.map(id => Records.users.findById(id)));
 const isGuest = ref({});
 const isGroupAdmin = ref({});
 const isTopicAdmin = ref({});
@@ -63,10 +61,6 @@ function toHash(ids) {
   return Object.fromEntries(ids.map(id => [id, true]));
 }
 
-function updateStances() {
-  users.value = userIds.value.map(id => Records.users.findById(id));
-}
-
 // Keep the server's page, total, and voter metadata together; ignore responses
 // from an older search or page.
 const fetchStances = debounce(() => {
@@ -98,7 +92,6 @@ const fetchStances = debounce(() => {
       Object.assign(weightsByUserId.value, data.meta.weights_by_user_id);
     }
     userIds.value = map(data.users, 'id');
-    updateStances();
   }).catch(error => {
     Flash.fromServer(error);
   }).finally(() => {
@@ -111,7 +104,6 @@ function newQuery(value) {
   query.value = value;
   page.value = 1;
   userIds.value = [];
-  users.value = [];
   voterTotal.value = 0;
   loading.value = true;
   fetchStances();
@@ -120,7 +112,6 @@ function newQuery(value) {
 function changePage(value) {
   page.value = value;
   userIds.value = [];
-  users.value = [];
   loading.value = true;
   fetchStances();
 }
@@ -216,11 +207,6 @@ function inviteRecipients() {
 onMounted(() => {
   poll.notifyRecipients = !(poll.openingAt && !poll.openedAt);
   fetchStances();
-  updateStances();
-  watchRecords({
-    collections: ['stances', 'memberships', 'users'],
-    query: () => updateStances()
-  });
 });
 </script>
 

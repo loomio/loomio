@@ -4,13 +4,12 @@ import Session    from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import ItemTags from '@/components/tags/item_tags.vue';
 
 export default {
   components: { ItemTags },
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   props: {
     topic_item: Object,
     collapsed: Boolean,
@@ -19,49 +18,39 @@ export default {
 
   data() {
     return {
-      buttonPressed: false,
-      myStance: null,
-      dockActions: [],
-      menuActions: []
+      buttonPressed: false
     };
   },
 
-  created() {
-    this.watchRecords({
-      collections: ["stances", "polls"],
-      query: () => {
-        this.rebuildActions();
-      }
-    });
-  },
-
   methods: {
-    rebuildActions() {
-      let pollActions = PollService.actions(this.poll, this, this.topic_item);
-      this.editStanceAction = pollActions["edit_stance"]
-      if (this.poll.pollType != 'meeting') {
-        pollActions = omit(pollActions, "edit_stance");
-      }
-      const topic = this.poll.topic();
-      const allEventActions = TopicItemService.actions(this.topic_item, this);
-      const eventActions = topic.topicableType === 'Discussion' ? {edit_item_tags: allEventActions.edit_item_tags} : allEventActions;
-      this.myStance = this.poll.myStance();
-      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
-      this.dockActions = pickBy(pollActions, v => v.dock);
-    },
-
     viewed(seen) {
       if (seen &&
           Session.isSignedIn() &&
           Session.user().autoTranslate &&
           this.dockActions['translate_poll'].canPerform()) {
-        this.dockActions['translate_poll'].perform().then(() => this.rebuildActions());
+        this.dockActions['translate_poll'].perform();
       }
     },
   },
 
   computed: {
     poll() { return this.itemable; },
+    allPollActions() { return PollService.actions(this.poll, this, this.topic_item); },
+    editStanceAction() { return this.allPollActions["edit_stance"]; },
+    pollActions() {
+      if (this.poll.pollType != 'meeting') {
+        return omit(this.allPollActions, "edit_stance");
+      }
+      return this.allPollActions;
+    },
+    eventActions() {
+      const topic = this.poll.topic();
+      const allEventActions = TopicItemService.actions(this.topic_item, this);
+      return topic.topicableType === 'Discussion' ? {edit_item_tags: allEventActions.edit_item_tags} : allEventActions;
+    },
+    myStance() { return this.poll.myStance(); },
+    menuActions() { return assign( pickBy(this.pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) ); },
+    dockActions() { return pickBy(this.pollActions, v => v.dock); },
   }
 };
 

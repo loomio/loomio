@@ -4,12 +4,10 @@ import Records         from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
 import AbilityService  from '@/shared/services/ability_service';
 import Flash           from '@/shared/services/flash';
-import WatchRecords    from '@/mixins/watch_records';
 import { useI18n }     from 'vue-i18n';
 
 export default
 {
-  mixins: [WatchRecords],
   props: {
     group: {
       required: true,
@@ -26,8 +24,6 @@ export default
 
   data() {
     return {
-      membership: null,
-      membershipRequest: null,
       membershipRequestLoaded: !Session.isSignedIn()
     };
   },
@@ -39,17 +35,6 @@ export default
     } else {
       this.membershipRequestLoaded = true;
     }
-
-    this.watchRecords({
-      collections: ['memberships', "membershipRequests"],
-      query: () => {
-        const requests = this.group.membershipRequests()
-          .filter(request => request.requestorId === Session.user().id);
-        this.membershipRequest = requests.find(request => request.isPending()) ||
-          requests.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''))[0];
-        return this.membership = Session.user().membershipFor(this.group);
-      }
-    });
   },
 
   methods: {
@@ -73,6 +58,17 @@ export default
   },
 
   computed: {
+    membership() {
+      return Session.user().membershipFor(this.group);
+    },
+
+    membershipRequest() {
+      const requests = this.group.membershipRequests()
+        .filter(request => request.requestorId === Session.user().id);
+      return requests.find(request => request.isPending()) ||
+        requests.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''))[0];
+    },
+
     label() {
       if (this.hasRequestedMembership && !this.canJoinGroup) {
         return 'join_group_button.membership_requested';

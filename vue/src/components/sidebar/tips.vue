@@ -5,19 +5,16 @@ import EventBus       from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import GroupService   from '@/shared/services/group_service';
 import TipService   from '@/shared/services/tip_service';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 import { sortBy } from 'lodash-es';
 import { addDays } from 'date-fns';
 
 export default {
-  mixins: [WatchRecords, UrlFor, FormatDate],
+  mixins: [UrlFor, FormatDate],
   data() {
     return {
       user: Session.user(),
-      group: null,
-      tips: [],
       spin: false,
       show: false,
       menuOpen: false
@@ -29,13 +26,6 @@ export default {
     if (this.group) {
       Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id } });
     }
-    this.watchRecords({
-      collections: ['groups', 'polls'],
-      query: () => {
-        this.group = sortBy(this.user.parentGroups().filter( g => addDays(g.createdAt, 28) > (new Date) && g.creatorId == this.user.id && g.subscription.plan != "demo" ), g => (- g.id))[0]
-        this.tips = TipService.tips(this.user, this.group, this).filter(t => t.show())
-      }
-    });
   },
 
   methods: {
@@ -64,6 +54,12 @@ export default {
     }
   },
   computed: {
+    group() {
+      return sortBy(this.user.parentGroups().filter( g => addDays(g.createdAt, 28) > (new Date) && g.creatorId == this.user.id && g.subscription.plan != "demo" ), g => (- g.id))[0];
+    },
+    tips() {
+      return TipService.tips(this.user, this.group, this).filter(t => t.show());
+    },
     pctComplete() {
       if (this.tips.length == 0) { return 100 }
       return Math.round((this.tips.filter(t => t.completed()).length / this.tips.length) * 100)

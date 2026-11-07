@@ -4,13 +4,12 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import WatchRecords   from '@/mixins/watch_records';
+import { watchEffect } from 'vue';
 import { marked }     from 'marked';
 import { exact }      from '@/shared/helpers/format_time';
 
 export default
 {
-  mixins: [WatchRecords],
   props: {
     poll: Object,
     editStanceAction: Object
@@ -49,41 +48,38 @@ export default
     });
     EventBus.$on('stanceSaved', this.handleStanceSaved);
 
-    this.watchRecords({
-      collections: ["stances", "polls"],
-      query: () => {
-        if (this.poll.anonymous) {
-          if (this.poll.anonymousVoterEligible && !this.poll.anonymousBallotSubmitted && !this.stance) {
-            this.stance = Records.stances.build({pollId: this.poll.id});
-          }
-          if (this.poll.anonymousBallotSubmitted) {
-            this.stance = null;
-          }
-          return;
-        }
-        // we need to maintain a clone of our stance, so live updates don't clobber our form.
-        if (this.poll.myStance()) {
-          // we have been issued a vote for this poll
-          if (!this.stance) {
-            // we have not made a clone yet. clone the vote for use in the form
-            this.makeCloneStance();
-          } else {
-            // we've already made a clone, which may need replacing in these cases:
-            // clone is not cast, but real is cast
-            // clone is cast but the real is not
-            // both are cast, but real is newer
-            if (
-              (!this.stance.castAt && this.poll.myStance().castAt) ||
-              (this.stance.castAt  && !this.poll.myStance().castAt) ||
-              (this.stance.castAt  && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt)
-            ) {
-              this.makeCloneStance();
-            }
-          }
-        } else if (this.isScheduled && !this.stance) {
-          // build a temporary stance so the vote form preview can render
+    // Keep a clone of the voter's stance for the form, so live updates don't clobber edits in progress.
+    watchEffect(() => {
+      if (this.poll.anonymous) {
+        if (this.poll.anonymousVoterEligible && !this.poll.anonymousBallotSubmitted && !this.stance) {
           this.stance = Records.stances.build({pollId: this.poll.id});
         }
+        if (this.poll.anonymousBallotSubmitted) {
+          this.stance = null;
+        }
+        return;
+      }
+      if (this.poll.myStance()) {
+        // we have been issued a vote for this poll
+        if (!this.stance) {
+          // we have not made a clone yet. clone the vote for use in the form
+          this.makeCloneStance();
+        } else {
+          // we've already made a clone, which may need replacing in these cases:
+          // clone is not cast, but real is cast
+          // clone is cast but the real is not
+          // both are cast, but real is newer
+          if (
+            (!this.stance.castAt && this.poll.myStance().castAt) ||
+            (this.stance.castAt  && !this.poll.myStance().castAt) ||
+            (this.stance.castAt  && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt)
+          ) {
+            this.makeCloneStance();
+          }
+        }
+      } else if (this.isScheduled && !this.stance) {
+        // build a temporary stance so the vote form preview can render
+        this.stance = Records.stances.build({pollId: this.poll.id});
       }
     });
   },

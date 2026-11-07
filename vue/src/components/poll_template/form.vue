@@ -4,7 +4,6 @@ import { mapKeys, snakeCase, compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 import { useI18n } from 'vue-i18n';
 import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
@@ -14,7 +13,7 @@ export default {
     const { t } = useI18n();
     return { t };
   },
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   directives: { handle: HandleDirective },
 
   props: {

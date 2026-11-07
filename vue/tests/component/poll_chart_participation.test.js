@@ -7,7 +7,6 @@ vi.mock('@/shared/services/records', () => ({default: {
 }}));
 vi.mock('@/shared/services/session', () => ({default: {isSignedIn: () => false}}));
 vi.mock('@/i18n', () => ({I18n: {global: {t: key => key}}}));
-vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: () => {}}}}));
 vi.mock('vue-i18n', () => ({useI18n: () => ({
   t: (key, args) => args?.pct === undefined ? key : `${key}: ${args.num}/${args.total}, ${args.pct}%`
 })}));

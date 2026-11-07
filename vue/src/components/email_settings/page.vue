@@ -7,21 +7,23 @@ import { I18n } from '@/i18n';
 import { pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import PushNotificationsSettingsCard from '@/components/push_notifications/settings_card';
 import { notificationVolumeOptionTitleKey } from '@/shared/helpers/notification_volume_options';
 
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 const user = ref(null);
-const memberships = ref([]);
 const loading = ref(false);
 const pushEnabled = ref(false);
 const pushStatusLoaded = ref(false);
 const allGroupsVolumeEmail = ref(null);
 const allGroupsVolumePush = ref(null);
+
+const memberships = computed(() => {
+  const currentUser = Session.user();
+  return currentUser.groups().map(group => currentUser.membershipFor(group));
+});
 
 const catchUpEnabled = computed(() => user.value?.emailCatchUpDay != null);
 
@@ -88,14 +90,6 @@ function allGroupsVolumeChanged(channel) {
 
 init();
 EventBus.$on('signedIn', init);
-
-watchRecords({
-  collections: ['groups', 'memberships'],
-  query: () => {
-    const currentUser = Session.user();
-    memberships.value = currentUser.groups().map(group => currentUser.membershipFor(group));
-  }
-});
 
 onMounted(() => {
   EventBus.$emit('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'});

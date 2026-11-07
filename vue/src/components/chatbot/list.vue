@@ -2,17 +2,14 @@
 import EventBus from '@/shared/services/event_bus';
 import ChatbotService from '@/shared/services/chatbot_service';
 import Records from '@/shared/services/records';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     group: Object
   },
 
   data() {
     return {
-      chatbots: [],
       loading: true,
       addActions: {}
     };
@@ -21,16 +18,15 @@ export default {
   mounted() {
     this.addActions = ChatbotService.addActions(this.group);
 
-    this.watchRecords({
-      collections: ["chatbots"],
-      query: records => {
-        this.chatbots = Records.chatbots.find({groupId: this.group.id});
-      }
-    });
-
     Records.chatbots.fetch({params: {group_id: this.group.id}}).then(() => {
       this.loading = false;
     });
+  },
+
+  computed: {
+    chatbots() {
+      return Records.chatbots.find({groupId: this.group.id});
+    }
   },
 
   methods: {

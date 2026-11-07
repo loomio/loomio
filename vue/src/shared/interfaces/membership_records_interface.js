@@ -43,7 +43,6 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
     const polls = groupPolls.filter(poll => poll.isVotable());
     polls.forEach(poll => poll.update({myStanceId: null, anonymousVoterEligible: false}));
     invokeMap(records.stances.find({participantId: userId, pollId: {$in: polls.map(poll => poll.id)}}), 'remove');
-    records.updateViews(['memberships', 'topics', 'polls', 'stances']);
   }
 
   async restoreGroupAccess(groupIds) {
@@ -56,7 +55,6 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
       // even when the poll is older than the recent-polls fetch below.
       const voterHasAccess = this.find({userId: AppConfig.currentUserId, groupId, revokedAt: null}).length > 0;
       records.polls.find({groupId}).forEach(poll => poll.update({voterHasAccess}));
-      records.updateViews(['polls']);
       let offset = 0;
       let total;
       do {

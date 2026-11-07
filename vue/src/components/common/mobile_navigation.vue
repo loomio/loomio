@@ -6,19 +6,15 @@ import { useRoute } from 'vue-router';
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserNotifications } from '@/composables/useCurrentUserNotifications';
 import { usePendingPolls } from '@/composables/usePendingPolls';
 
 const display = useDisplay();
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 const { loadNotifications } = useCurrentUserNotifications();
 const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 
 const signedIn = ref(Session.isSignedIn());
-const unreadNotifications = ref(0);
-const pollsToVoteOn = ref(0);
 let fetched = false;
 
 const visible = computed(() => display.smAndDown.value && signedIn.value);
@@ -29,10 +25,8 @@ const activeItem = computed(() => {
   return undefined;
 });
 
-function updateCounts() {
-  unreadNotifications.value = Records.notifications.find({viewed: {$ne: true}}).length;
-  pollsToVoteOn.value = findPendingPolls().length;
-}
+const unreadNotifications = computed(() => Records.notifications.find({viewed: {$ne: true}}).length);
+const pollsToVoteOn = computed(() => findPendingPolls().length);
 
 function fetchData() {
   if (fetched || !Session.isSignedIn()) return;
@@ -49,12 +43,6 @@ function handleSignedIn() {
 function refreshNotifications() {
   if (Session.isSignedIn()) Records.notifications.fetchNotifications();
 }
-
-watchRecords({
-  key: 'mobile-navigation',
-  collections: ['memberships', 'notifications', 'polls', 'stances'],
-  query: updateCounts
-});
 
 onMounted(() => {
   fetchData();

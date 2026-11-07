@@ -107,7 +107,6 @@ export default new class DiscussionTemplateService {
                 submit() {
                   return discussionTemplate.destroy().then(() => {
                     EventBus.$emit('closeModal');
-                    EventBus.$emit('reloadDiscussionTemplates');
                   });
                 },
                 text: {

@@ -6,7 +6,6 @@ import Flash              from '@/shared/services/flash';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
 import { taskRecordTitle } from '@/shared/helpers/task_record_title.mjs';
 import { manualUrl } from '@/shared/helpers/manual_url';
@@ -14,7 +13,7 @@ import { manualUrl } from '@/shared/helpers/manual_url';
 import {groupBy} from 'lodash-es';
 
 export default {
-  mixins: [UrlFor, WatchRecords, FormatDate],
+  mixins: [UrlFor, FormatDate],
   data() {
     return {
       records: {},

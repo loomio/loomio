@@ -1,29 +1,18 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import { find } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default {
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   props: {
     discussion: Object
   },
 
-  data() {
-    return {poll: null};
-  },
-
-  created() {
-    this.watchRecords({
-      collections: ['polls', 'stances'],
-      query: store => {
-        this.poll = find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.iCanVote() && !poll.iHaveVoted());
-      }
-    });
-  },
-
   computed: {
+    poll() {
+      return find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.iCanVote() && !poll.iHaveVoted());
+    },
     styles() {
       // const { bar, top } = this.$vuetify.application;
       return{

@@ -6,14 +6,13 @@ import { createRouter, createMemoryHistory } from 'vue-router';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
-  patchItem: vi.fn(), serverError: vi.fn(), watchRecords: vi.fn(), user: {id: 1}
+  patchItem: vi.fn(), serverError: vi.fn(), user: {id: 1}
 }));
 vi.mock('@/shared/services/records', () => ({default: {
   topicItems: {remote: {patchMember: mocks.patchItem}}
 }}));
 vi.mock('@/shared/services/flash', () => ({default: {serverError: mocks.serverError}}));
 vi.mock('@/shared/services/session', () => ({default: {user: () => mocks.user, isSignedIn: () => true}}));
-vi.mock('@/composables/useWatchRecords', () => ({useWatchRecords: () => ({watchRecords: mocks.watchRecords})}));
 vi.mock('vue-i18n', () => ({useI18n: () => ({t: key => key})}));
 
 import TopicTagsPicker from '@/components/tags/topic_tags_picker.vue';

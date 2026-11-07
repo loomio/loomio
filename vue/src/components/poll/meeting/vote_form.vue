@@ -3,10 +3,9 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
-import WatchRecords from '@/mixins/watch_records';
+import { watchEffect } from 'vue';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -16,7 +15,6 @@ export default {
       stanceChoices: [],
       pollOptions: [],
       zone: null,
-      stanceValues: [],
       loading: false
     };
   },
@@ -27,20 +25,17 @@ export default {
 
   created() {
     EventBus.$on('timeZoneSelected', this.setTimeZone);
-    this.watchRecords({
-      collections: ['pollOptions'],
-      query: records => {
-        this.stanceValues = this.poll.canRespondMaybe ? [2,1,0] : [2, 0];
-        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
-          this.pollOptions = this.stance.poll().pollOptionsForVoting();
-          this.stanceChoices = this.pollOptions.map(option => {
-            return {
-              pollOption: option,
-              poll_option_id: option.id,
-              score: this.stance.scoreFor(option)
-            };
-          });
-        }
+    // Rebuild only when the poll's option set changes, so the voter's edits are kept.
+    watchEffect(() => {
+      if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+        this.pollOptions = this.stance.poll().pollOptionsForVoting();
+        this.stanceChoices = this.pollOptions.map(option => {
+          return {
+            pollOption: option,
+            poll_option_id: option.id,
+            score: this.stance.scoreFor(option)
+          };
+        });
       }
     });
   },
@@ -94,6 +89,7 @@ export default {
 
   computed: {
     poll() { return this.stance.poll(); },
+    stanceValues() { return this.poll.canRespondMaybe ? [2,1,0] : [2, 0]; },
     currentUserTimeZone() {
       return Session.user().timeZone;
     }

@@ -2,17 +2,15 @@
 import Records  from '@/shared/services/records';
 import EventBus from "@/shared/services/event_bus";
 import Flash from "@/shared/services/flash";
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   data() {
     return {
       requests: [],
       group: null,
-      emails: [],
       aliases: []
     };
   },
@@ -23,17 +21,16 @@ export default
 
       this.fetchEmails();
       this.fetchAliases();
-
-      this.watchRecords({
-        key: "pendingEmails#{group.id}",
-        collections: ['pendingEmails'],
-        query: store => {
-          this.emails = store.pendingEmails.find({groupId: this.group.id, released: false})
-        }
-      });
     }).catch(() => {
       // GroupPage owns route-level group fetch error handling.
     });
+  },
+
+  computed: {
+    emails() {
+      if (!this.group) { return []; }
+      return Records.pendingEmails.find({groupId: this.group.id, released: false});
+    }
   },
 
   methods: {

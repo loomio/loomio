@@ -9,7 +9,6 @@ import Session       from '@/shared/services/session';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 import { notificationCatchUpTitleKey } from '@/shared/helpers/notification_volume_options';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
@@ -36,13 +35,30 @@ const route = useRoute();
 const router = useRouter();
 const display = useDisplay();
 const theme = useTheme();
-const { watchRecords } = useWatchRecords();
 
 const open        = ref(null);
 const deviceNotificationsAvailable = ref(false);
-const pinnedItems = ref([]);
 const baseUrl     = ref('');
-const topicActions = ref({});
+const topicActions = computed(() => TopicService.actions(props.topic));
+const pinnedItems = computed(() =>
+  Records.topicItems.collection.chain()
+    .find({ topicId: props.topic.id, pinned: true })
+    .simplesort('positionKey')
+    .data()
+    .filter(e => !e.model()?.discardedAt)
+    .map(topic_item => {
+      const model = topic_item.model();
+      const isPoll = topic_item.kind === 'poll_created';
+      const poll = isPoll ? model.poll() : null;
+      return {
+        key: topic_item.positionKey,
+        sequenceId: topic_item.sequenceId,
+        title: (model && model.title) || topic_item.pinnedTitle || topic_item.suggestedTitle(),
+        poll,
+        user: !isPoll && topic_item.actor() || null
+      };
+    })
+);
 
 const selectedSequenceId = computed(() => parseInt(route.params.sequence_id));
 const selectedCommentId  = computed(() => parseInt(route.params.comment_id));
@@ -116,7 +132,6 @@ onMounted(() => {
     .then(subscriptions => { deviceNotificationsAvailable.value = subscriptions.length > 0; })
     .catch(() => {});
 
-  topicActions.value = TopicService.actions(props.topic);
   props.topic.fetchUsersNotifiedCount();
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
   EventBus.$on('toggleTopicNav', () => { open.value = !open.value; });
@@ -127,31 +142,6 @@ onMounted(() => {
       topic_id: props.topic.id,
       pinned: true,
       per: 200
-    }
-  });
-
-  watchRecords({
-    key: 'topic-nav' + props.topic.id,
-    collections: ['topic_items', 'discussions', 'polls', 'topics', 'memberships'],
-    query: () => {
-      topicActions.value = TopicService.actions(props.topic);
-      pinnedItems.value = Records.topicItems.collection.chain()
-        .find({ topicId: props.topic.id, pinned: true })
-        .simplesort('positionKey')
-        .data()
-        .filter(e => !e.model()?.discardedAt)
-        .map(topic_item => {
-          const model = topic_item.model();
-          const isPoll = topic_item.kind === 'poll_created';
-          const poll = isPoll ? model.poll() : null;
-          return {
-            key: topic_item.positionKey,
-            sequenceId: topic_item.sequenceId,
-            title: (model && model.title) || topic_item.pinnedTitle || topic_item.fillPinnedTitle(),
-            poll,
-            user: !isPoll && topic_item.actor() || null
-          };
-        });
     }
   });
 });
