@@ -147,7 +147,8 @@ class Views::Topics::Show < Views::Application::Layout
 
   def render_structured_data
     topicable = @topic.topicable
-    comments = @items.filter_map { |item| item.itemable if item.kind == "new_comment" }
+    # Removed comments render only a placeholder, so omit their content and authors here too.
+    comments = @items.filter_map { |item| item.itemable if item.kind == "new_comment" && item.itemable.kept? }
     data = {
       "@context": "https://schema.org",
       "@type": "DiscussionForumPosting",
@@ -176,7 +177,8 @@ class Views::Topics::Show < Views::Application::Layout
   end
 
   def person(user)
-    { "@type": "Person", name: user.name, url: user_url(user) }
+    user = author_or_deactivated(user)
+    { "@type": "Person", name: user.name, url: (user_url(user) if user.persisted?) }.compact
   end
 
   def stance_ids_hidden_from_activity
