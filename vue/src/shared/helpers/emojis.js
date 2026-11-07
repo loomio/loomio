@@ -1,5 +1,3 @@
-import englishEmojiData from 'emojibase-data/en/compact.json';
-
 const emojiDataLoaders = {
   bn: () => import('emojibase-data/bn/compact.json'),
   da: () => import('emojibase-data/da/compact.json'),
@@ -172,14 +170,27 @@ function canonicalEntryFor(english) {
   };
 }
 
-const canonicalEntries = englishEmojiData.filter(emojiIsSelectable).map(canonicalEntryFor);
-const englishMetadata = metadataByEmoji(englishEmojiData);
+// English data defines the selectable emoji and their shortcodes for every
+// locale. It is loaded on first use so it stays out of the initial bundle.
+let englishPromise = null;
+
+function loadEnglish() {
+  englishPromise ||= emojiDataLoaders.en().then(({ default: data }) => ({
+    data,
+    canonicalEntries: data.filter(emojiIsSelectable).map(canonicalEntryFor),
+    metadata: metadataByEmoji(data)
+  })).catch(error => {
+    englishPromise = null;
+    throw error;
+  });
+  return englishPromise;
+}
 
 function aliasesFor(shortcode) {
   return Object.keys(legacyAliases).filter(alias => legacyAliases[alias].includes(shortcode));
 }
 
-function entryFor(canonicalEntry, localizedMetadata) {
+function entryFor(canonicalEntry, localizedMetadata, englishMetadata) {
   const key = metadataKey(canonicalEntry.unicode);
   const english = englishMetadata[key] || {};
   const localized = localizedMetadata[key] || english;
@@ -206,27 +217,16 @@ export async function loadEmojiEntries(locale) {
   const emojiLocale = normalizeLocale(locale);
   if (emojiEntriesByLocale[emojiLocale]) { return emojiEntriesByLocale[emojiLocale]; }
 
-  const data = emojiLocale === 'en'
-    ? englishEmojiData
-    : (await emojiDataLoaders[emojiLocale]()).default;
-  const localizedMetadata = metadataByEmoji(data);
-  const entries = canonicalEntries.map(entry => entryFor(entry, localizedMetadata));
+  const [english, localizedData] = await Promise.all([
+    loadEnglish(),
+    emojiLocale === 'en' ? null : emojiDataLoaders[emojiLocale]().then(module => module.default)
+  ]);
+  const localizedMetadata = localizedData ? metadataByEmoji(localizedData) : english.metadata;
+  const entries = english.canonicalEntries.map(entry => entryFor(entry, localizedMetadata, english.metadata));
 
   emojiEntriesByLocale[emojiLocale] = entries;
   return entries;
 }
-
-export const emojis = canonicalEntries.reduce((out, entry) => {
-  out[entry.shortcode] = entry.unicode;
-  return out;
-}, {});
-
-export const frequentEmojis = frequentShortcodes
-  .map(code => {
-    const entry = canonicalEntries.find(candidate => candidate.shortcode === code);
-    return entry && { ...entry, label: entry.shortcode.replaceAll('_', ' ') };
-  })
-  .filter(Boolean);
 
 export function frequentEmojiEntries(entries) {
   const entriesByShortcode = {};
