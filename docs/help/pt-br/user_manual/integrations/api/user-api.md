@@ -1,10 +1,10 @@
 ---
 title: API do usuário
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: eeeae517d3002285
   show-poll: 2e81ffdbcc8c759a
   example-13: b16a87f2e8ccf075
-  list-polls: 59d5036a15a87d58
+  list-polls: 073d52a0ed96aecb
   params-10: 76b14acda97d08eb
   example-14: f40b75bdaf5a3911
   edit-poll: f1104840e4e24080
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Listar enquetes
 
-Liste as enquetes de um grupo visíveis ao usuário da chave de API. Em um grupo visível publicamente, uma pessoa que não seja membro pode listar suas enquetes públicas; as enquetes privadas continuam restritas aos usuários que podem lê-las no Loomio. A resposta inclui a conclusão atual de cada enquete visível, então você pode usar `status=closed` para listar propostas já decididas.
+Liste as enquetes de um grupo visíveis ao usuário da chave de API, incluindo enquetes independentes e enquetes dentro de discussões. Em um grupo visível publicamente, uma pessoa que não seja membro pode listar suas enquetes públicas; as enquetes privadas continuam restritas aos usuários que podem lê-las no Loomio. A resposta inclui a conclusão atual de cada enquete visível, então você pode usar `status=closed` para listar enquetes encerradas e ler suas conclusões, quando houver.
+
+Para exibir o status da decisão junto às discussões, obtenha as discussões e as enquetes do mesmo grupo, usando `status=all` para as enquetes, e associe seus valores de `topic_id`. Obtenha todas as páginas usando `limit` e `offset`. Uma discussão pode ter várias enquetes, então escolha qual enquete determina o status exibido, por exemplo, a enquete criada mais recentemente. Um valor de `closed_at` diferente de null identifica uma enquete encerrada; um valor null em `closing_at` indica um rascunho. Quando uma enquete tem uma conclusão, seu `current_outcome_id` identifica um registro no array `outcomes` da resposta; associe o `poll_id` desse registro ao `id` da enquete.
+
+Para uma única discussão, você também pode [ler os itens da conversa](#read-thread) usando `GET /api/user0/threads/:topic_id/items`. Isso retorna as enquetes e as conclusões da conversa junto com seus outros itens. Obtenha todas as páginas para incluir a conversa completa.
 
 `GET /api/user0/polls`
 

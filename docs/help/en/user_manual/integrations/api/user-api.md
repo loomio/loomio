@@ -717,7 +717,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### List Polls
 
-List polls visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list decided proposals.
+List polls visible to the API-key user in a group, including standalone polls and polls within discussions. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list closed polls and read their outcomes where one has been set.
+
+To display decision status alongside discussions, fetch discussions and polls for the same group, using `status=all` for polls, and match their `topic_id` values. Fetch every page using `limit` and `offset`. A discussion can have several polls, so choose which poll determines your displayed status, for example the most recently created poll. A non-null `closed_at` identifies a closed poll; a null `closing_at` indicates a draft. When a poll has an outcome, its `current_outcome_id` identifies a record in the response's `outcomes` array; match that record's `poll_id` to the poll's `id`.
+
+For a single discussion, you can also [read its thread items](#read-thread) using `GET /api/user0/threads/:topic_id/items`. This returns the thread's polls and outcomes alongside its other items. Fetch every page to include the complete thread.
 
 `GET /api/user0/polls`
 
