@@ -368,8 +368,11 @@ export default class PollModel extends BaseModel {
     return !!this.openedAt;
   }
 
+  // Match the server's Poll#active?: voting ends at closingAt, even before the
+  // expiry job sets closedAt.
   isVotable() {
-    return !this.discardedAt && this.closingAt && (this.closedAt == null) && this.isOpened();
+    return !this.discardedAt && !!this.closingAt && (this.closingAt > new Date()) &&
+      (this.closedAt == null) && this.isOpened();
   }
 
   isClosed() {

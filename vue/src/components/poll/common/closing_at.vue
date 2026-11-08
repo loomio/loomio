@@ -26,8 +26,9 @@ export default {
 
     time() {
       if (this.isScheduled) { return this.poll.openingAt; }
-      const key = this.poll.isVotable() ? 'closingAt' : 'closedAt';
-      return this.poll[key];
+      if (this.poll.isVotable()) { return this.poll.closingAt; }
+      // A lapsed poll has no closedAt until the expiry job runs.
+      return this.poll.closedAt || this.poll.closingAt;
     },
 
     translationKey() {
