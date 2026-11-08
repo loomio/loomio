@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_09_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1156,7 +1156,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
     t.datetime "created_at", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "doer_id"
-    t.boolean "done", null: false
     t.datetime "done_at", precision: nil
     t.date "due_on"
     t.string "name", null: false
@@ -1169,7 +1168,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["doer_id"], name: "index_tasks_on_doer_id"
-    t.index ["done"], name: "index_tasks_on_done"
     t.index ["due_on"], name: "index_tasks_on_due_on"
     t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
     t.index ["remind_at"], name: "index_tasks_on_remind_at"

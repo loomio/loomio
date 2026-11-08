@@ -9,7 +9,6 @@ class TaskService
 
   def self.update_done(task, actor, done)
 
-    task.done = done
     task.done_at = (done && Time.now) || nil
     task.doer = (done && actor) || nil
 
@@ -104,10 +103,9 @@ class TaskService
       task.update!(name: data[:name],
                    due_on: data[:due_on],
                    users: mentioned_users,
-                   done: data[:done],
                    remind: data[:remind],
                    remind_at: data[:remind_at],
-                   done_at: data[:done] ? ((task.done && task.done_at) || Time.now) : nil,
+                   done_at: data[:done] ? (task.done_at || Time.now) : nil,
                    author: model.members.find_by('users.id': data[:author_id]) || model.author)
     end
 
@@ -123,7 +121,6 @@ class TaskService
         remind: data[:remind],
         remind_at: data[:remind_at],
         users: users,
-        done: data[:done],
         done_at: (data[:done] ? Time.now : nil),
         author: model.members.find_by('users.id': data[:author_id]) || model.author
       )

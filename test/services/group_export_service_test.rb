@@ -98,6 +98,29 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     refute imported.email_delivery_blocked?
   end
 
+  test 'old task exports keep completion in done_at' do
+    discussion = discussions(:discussion)
+    updated_at = 2.days.ago.change(usec: 0)
+    records = [
+      [true, nil],
+      [false, 3.days.ago.change(usec: 0)]
+    ].each_with_index.map do |(done, done_at), index|
+      task = Task.create!(record: discussion, author: discussion.author, name: "Legacy #{index}", uid: 900 + index)
+      GroupExportService.export_record(task, 'tasks')
+        .merge('done' => done, 'done_at' => done_at, 'updated_at' => updated_at)
+        .tap { task.destroy! }
+    end
+
+    Tempfile.create(['legacy-tasks', '.json']) do |file|
+      records.each { |record| file.puts({table: 'tasks', record: record}.to_json) }
+      file.flush
+      GroupExportService.import(file.path)
+    end
+
+    assert_equal updated_at, Task.find_by!(uid: 900).done_at
+    assert_nil Task.find_by!(uid: 901).done_at
+  end
+
   test "simultaneous same-name exports never share a temporary file" do
     freeze_time do
       filenames = 2.times.map { GroupExportService.export_filename_for("Same group") }
