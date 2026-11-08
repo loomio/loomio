@@ -1,10 +1,16 @@
 // Checks client poll abilities against the server's answers recorded by
 // test/contracts/poll_ability_contract_test.rb. Each case gives the poll fields
 // the client receives, so AbilityService must reach the server's answer from
-// that raw state alone.
+// that raw state alone. Generate the cases first with:
+//   bin/rails test test/contracts/poll_ability_contract_test.rb
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { camelCase } from 'lodash-es';
-import contract from '../contracts/poll_abilities.json';
+
+const CONTRACT_PATH = resolve(__dirname, '../../../tmp/contracts/poll_abilities.json');
+const contractGenerated = existsSync(CONTRACT_PATH);
+const contract = contractGenerated ? JSON.parse(readFileSync(CONTRACT_PATH, 'utf8')) : {cases: []};
 
 vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 1})}}));
 vi.mock('@/shared/services/records', () => ({default: {}}));
@@ -37,7 +43,12 @@ function buildPoll(testCase) {
   return poll;
 }
 
-describe('poll abilities match the server contract', () => {
+// CI generates the cases before this suite, so a missing file must fail there.
+it.runIf(process.env.CI)('has generated server cases to check against', () => {
+  expect(contractGenerated).toBe(true);
+});
+
+describe.runIf(contractGenerated)('poll abilities match the server contract', () => {
   beforeAll(() => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date(contract.contract_time));

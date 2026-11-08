@@ -1,15 +1,13 @@
 require "test_helper"
 
 # The client interprets raw poll state itself to decide which poll actions to
-# offer. This contract records the server's Ability answers for a matrix of
-# poll states, results settings, thread locks and roles, together with the poll
-# fields the client receives from PollSerializer. vue/tests/component/poll_ability_contract.test.js
-# checks AbilityService against the same cases, so either side drifting fails.
-#
-# Regenerate after an intended server rule change:
-#   UPDATE_CONTRACTS=1 bin/rails test test/contracts/poll_ability_contract_test.rb
+# offer. This test records the server's Ability answers for a matrix of poll
+# states, results settings, thread locks and roles, together with the poll
+# fields the client receives from PollSerializer, in tmp/contracts.
+# vue/tests/component/poll_ability_contract.test.js checks AbilityService
+# against the same cases. The file is generated, so it is not committed.
 class PollAbilityContractTest < ActiveSupport::TestCase
-  CONTRACT_PATH = Rails.root.join("vue/tests/contracts/poll_abilities.json")
+  CONTRACT_PATH = Rails.root.join("tmp/contracts/poll_abilities.json")
   CONTRACT_TIME = Time.utc(2026, 1, 1, 12)
   POLL_FIELDS = %w[closed_at closing_at opened_at opening_at discarded_at hide_results anonymous results_available].freeze
   STATES = %w[scheduled open lapsed closed discarded].freeze
@@ -21,16 +19,14 @@ class PollAbilityContractTest < ActiveSupport::TestCase
   }.freeze
   ROLES = {"admin" => :admin, "member" => :user}.freeze
 
-  test "poll ability contract matches the server" do
+  test "writes the poll ability contract for the client" do
     contract = JSON.parse(travel_to(CONTRACT_TIME) { build_contract }.to_json)
+    CONTRACT_PATH.dirname.mkpath
+    CONTRACT_PATH.write(JSON.pretty_generate(contract) + "\n")
 
-    if ENV["UPDATE_CONTRACTS"].present?
-      CONTRACT_PATH.dirname.mkpath
-      CONTRACT_PATH.write(JSON.pretty_generate(contract) + "\n")
-    end
-
-    assert_equal JSON.parse(CONTRACT_PATH.read), contract,
-                 "Server poll abilities changed. Regenerate with UPDATE_CONTRACTS=1 and update AbilityService to match."
+    cases = contract.fetch("cases")
+    assert_equal STATES.size * RESULTS.size * 2 * ROLES.size, cases.size
+    assert_equal cases.size, cases.map { |c| c.fetch("name") }.uniq.size
   end
 
   private
