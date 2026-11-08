@@ -123,6 +123,21 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_nil task.done_at
   end
 
+  test "unchecking a task in the editor clears its completion timestamp" do
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='true'>Done task</li>"
+    TaskService.update_model(@discussion, TaskService.parse_tasks(rich_text, @member))
+    task = @discussion.tasks.sole
+    assert task.done
+    assert_not_nil task.done_at
+
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='false'>Done task</li>"
+    TaskService.update_model(@discussion, TaskService.parse_tasks(rich_text, @member))
+
+    task.reload
+    assert_not task.done
+    assert_nil task.done_at
+  end
+
   test "updating tasks preserves authors who can access group and direct topics" do
     [topics(:discussion_topic), topics(:direct_topic)].each do |topic|
       author = users(:guest_normal)

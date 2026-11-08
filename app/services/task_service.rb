@@ -107,7 +107,7 @@ class TaskService
                    done: data[:done],
                    remind: data[:remind],
                    remind_at: data[:remind_at],
-                   done_at: (!task.done && data[:done]) ? Time.now : task.done_at,
+                   done_at: data[:done] ? ((task.done && task.done_at) || Time.now) : nil,
                    author: model.members.find_by('users.id': data[:author_id]) || model.author)
     end
 
