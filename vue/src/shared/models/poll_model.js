@@ -297,10 +297,15 @@ export default class PollModel extends BaseModel {
     return this.myStanceId && this.myStance() && this.myStance().castAt;
   }
 
-  // The server decides whether results are available to anyone; until-vote
-  // polls also wait for this user's vote.
+  // Matches the server's Poll#results_available?: until-closed polls hide
+  // results from everyone until they close.
+  resultsAvailable() {
+    return this.hideResults !== 'until_closed' || !!this.closedAt;
+  }
+
+  // Until-vote polls also wait for this user's vote.
   showResults() {
-    return !!this.closingAt && !!this.resultsAvailable &&
+    return !!this.closingAt && this.resultsAvailable() &&
       (this.hideResults !== 'until_vote' || !!this.closedAt || !!this.iHaveVoted());
   }
 

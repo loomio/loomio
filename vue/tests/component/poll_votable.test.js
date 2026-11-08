@@ -52,10 +52,11 @@ describe('poll voting window', () => {
 
 describe('poll results visibility', () => {
   it.each([
-    ['results the server has not made available', {hideResults: 'until_closed', resultsAvailable: false}, false],
-    ['available results', {hideResults: 'off', resultsAvailable: true}, true],
-    ['until-vote results before this user votes', {hideResults: 'until_vote', resultsAvailable: true}, false],
-    ['until-vote results after the poll closes', {hideResults: 'until_vote', resultsAvailable: true, closedAt: new Date(now - hour)}, true]
+    ['until-closed results while the poll is open', {hideResults: 'until_closed'}, false],
+    ['until-closed results after the poll closes', {hideResults: 'until_closed', closedAt: new Date(now - hour)}, true],
+    ['unhidden results', {hideResults: 'off'}, true],
+    ['until-vote results before this user votes', {hideResults: 'until_vote'}, false],
+    ['until-vote results after the poll closes', {hideResults: 'until_vote', closedAt: new Date(now - hour)}, true]
   ])('shows %s accordingly', (_case, attributes, visible) => {
     expect(poll(attributes).showResults()).toBe(visible);
   });

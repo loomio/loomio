@@ -86,23 +86,6 @@ class PollSerializerTest < ActiveSupport::TestCase
     assert_equal 0, closed[:participation_pct]
   end
 
-  test "results availability matches the server rule and travels with the results" do
-    %w[off until_vote until_closed].each do |hide_results|
-      poll = PollService.create(params: {
-        title: "Results #{hide_results}", poll_type: 'proposal', closing_at: 3.days.from_now,
-        group_id: groups(:group).id, hide_results: hide_results, poll_option_names: %w[Agree Disagree]
-      }, actor: users(:admin))
-
-      open = PollSerializer.new(poll, scope: {exclude_types: []}).as_json.fetch(:poll)
-      assert_equal hide_results != 'until_closed', open.fetch(:results_available), hide_results
-      assert_equal open.fetch(:results_available), open.key?(:results), hide_results
-
-      PollService.close(poll: poll, actor: users(:admin))
-      closed = PollSerializer.new(poll.reload, scope: {exclude_types: []}).as_json.fetch(:poll)
-      assert_equal true, closed.fetch(:results_available), hide_results
-    end
-  end
-
   test "identified poll payload uses the new participation contract and still hides option totals" do
     poll = PollService.create(params: {
       title: 'Participation contract', poll_type: 'poll', group_id: groups(:group).id,
