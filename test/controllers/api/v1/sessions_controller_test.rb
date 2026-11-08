@@ -69,7 +69,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       post :create, params: { user: { email: user.email, code: token.code } }
       assert_response :forbidden
     end
-    refute token.reload.used
+    assert_nil token.reload.used_at
   end
 
   test "SSO-only mode accepts an existing sign-in link" do
@@ -85,7 +85,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal user.id, response.parsed_body['current_user_id']
-    assert token.reload.used
+    assert token.reload.used_at
     assert_nil session[:pending_login_token]
   end
 
@@ -95,7 +95,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     tokens = [
       'missing-token',
       LoginToken.create!(user: user, created_at: (LoginToken::EXPIRATION + 1).minutes.ago).token,
-      LoginToken.create!(user: user, used: true).token
+      LoginToken.create!(user: user, used_at: Time.current).token
     ]
 
     tokens.each do |token|
@@ -138,7 +138,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
 
     assert_response :unauthorized
-    refute code_token.reload.used
+    assert_nil code_token.reload.used_at
   end
 
   test "SSO-only mode still allows an existing session to sign out" do
@@ -286,8 +286,11 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     post :create, params: { user: { email: user.email, code: token.code + 1, turnstile_token: "cf-ok" } }
 
     assert_response :unauthorized
-    assert token.reload.used
-    assert_not token.useable?
+    assert_not token.reload.useable?
+    assert_nil token.used_at, "an exhausted token was never redeemed"
+
+    post :create, params: { user: { email: user.email, code: token.code, turnstile_token: "cf-ok" } }
+    assert_response :unauthorized
   end
 
   test "signs in with password" do
@@ -565,7 +568,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     session[:pending_login_token] = token.token
     
     post :create
-    assert token.reload.used
+    assert token.reload.used_at
     assert_response :success
     
     json = JSON.parse(response.body)
@@ -593,7 +596,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal true, JSON.parse(response.body).fetch('incomplete')
-    assert token.reload.used?
+    assert token.reload.used_at
     assert_nil session[:pending_login_token]
   end
 
@@ -604,7 +607,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert token.useable?
     transaction = LoginToken.method(:transaction)
     consume_before_lock = ->(*args, **options, &block) do
-      LoginToken.where(id: token.id).update_all(used: true)
+      LoginToken.where(id: token.id).update_all(used_at: Time.current)
       transaction.call(*args, **options, &block)
     end
 
@@ -625,7 +628,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     token = LoginToken.create!(user: user)
 
     post :create, params: { user: { email: user.email, code: token.code } }
-    assert token.reload.used
+    assert token.reload.used_at
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -647,7 +650,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal user.id, response.parsed_body['current_user_id']
     assert_equal true, response.parsed_body['signed_in_via_login_code']
-    assert token.reload.used
+    assert token.reload.used_at
     assert_equal 0, token.failed_attempts
   end
 
@@ -662,7 +665,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal user.id, response.parsed_body['current_user_id']
-    assert token.reload.used
+    assert token.reload.used_at
     assert_equal 0, token.failed_attempts
   end
 
@@ -688,9 +691,9 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       post :create, params: { user: credentials.merge(turnstile_token: 'cf-ok') }
     end
     assert_response :unauthorized
-    refute owner_token.reload.used
+    assert_nil owner_token.reload.used_at
     assert_equal 0, owner_token.failed_attempts
-    refute other_token.reload.used
+    assert_nil other_token.reload.used_at
     assert_equal 1, other_token.failed_attempts
   end
 
@@ -703,7 +706,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
 
     assert_response :success
-    assert token.reload.used
+    assert token.reload.used_at
     assert_nil Current.session
     assert_equal true, JSON.parse(response.body)['incomplete']
     assert_equal user.id, session.dig(:pending_account_completion, :user_id)
@@ -744,13 +747,13 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     token = LoginToken.create!(user: user, created_at: 25.hours.ago)
 
     post :create, params: { user: { email: user.email, code: token.code } }
-    refute token.reload.used
+    assert_nil token.reload.used_at
     assert_response :unauthorized
   end
 
   test "does not sign in with a used code" do
     user = User.create!(email: "usedcodeuser@example.com", email_verified: true)
-    token = LoginToken.create!(user: user, used: true)
+    token = LoginToken.create!(user: user, used_at: Time.current)
 
     post :create, params: { user: { email: user.email, code: token.code } }
     assert_response :unauthorized
@@ -758,7 +761,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
 
   test "does not sign in a user with a used token" do
     user = User.create!(email: "usedtoken@example.com", email_verified: true)
-    token = LoginToken.create!(user: user, used: true)
+    token = LoginToken.create!(user: user, used_at: Time.current)
     session[:pending_login_token] = token.token
     
     post :create

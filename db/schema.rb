@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_09_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_09_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -343,8 +343,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_09_000000) do
     t.string "redirect"
     t.string "token"
     t.datetime "updated_at", precision: nil
-    t.boolean "used", default: false, null: false
     t.integer "user_id"
+    t.datetime "used_at"
     t.index ["token"], name: "index_login_tokens_on_token"
   end
 

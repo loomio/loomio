@@ -165,7 +165,7 @@ module Dev::Scenarios::Auth
   end
 
   def setup_used_login_token
-    login_token = LoginToken.create!(user: patrick, used: true)
+    login_token = LoginToken.create!(user: patrick, used_at: Time.current)
     redirect_to(login_token_path(login_token.token))
   end
 

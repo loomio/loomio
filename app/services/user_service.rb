@@ -160,7 +160,7 @@ class UserService
       secret_token: User.generate_unique_secure_token,
       unsubscribe_token: User.generate_unique_secure_token
     )
-    user.login_tokens.unused.destroy_all
+    user.login_tokens.redeemable.destroy_all
     user.mobile_devices.active.find_each(&:revoke!)
     sign_out_other_sessions(user)
   end
