@@ -1,0 +1,59 @@
+// Checks client poll abilities against the server's answers recorded by
+// test/contracts/poll_ability_contract_test.rb. Each case gives the poll fields
+// the client receives, so AbilityService must reach the server's answer from
+// that raw state alone.
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { camelCase } from 'lodash-es';
+import contract from '../contracts/poll_abilities.json';
+
+vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 1})}}));
+vi.mock('@/shared/services/records', () => ({default: {}}));
+vi.mock('@/i18n', () => ({I18n: {}}));
+
+import AbilityService from '@/shared/services/ability_service';
+import PollModel from '@/shared/models/poll_model';
+
+const CLIENT_ABILITIES = {
+  update: poll => AbilityService.canEditPoll(poll),
+  destroy: poll => AbilityService.canDeletePoll(poll),
+  close: poll => AbilityService.canClosePoll(poll),
+  reopen: poll => AbilityService.canReopenPoll(poll),
+  export: poll => AbilityService.canExportPoll(poll),
+  create_outcome: poll => AbilityService.canSetPollOutcome(poll)
+};
+
+const clientAttributes = attributes => Object.fromEntries(Object.entries(attributes).map(([key, value]) =>
+  [camelCase(key), key.endsWith('_at') && value ? new Date(value) : value]
+));
+
+function buildPoll(testCase) {
+  const poll = new PollModel(clientAttributes(testCase.poll));
+  const topic = clientAttributes(testCase.topic);
+  const group = {isEnabled: () => true, ...clientAttributes(testCase.group)};
+  poll.topic = () => topic;
+  poll.group = () => group;
+  poll.adminsInclude = () => testCase.role === 'admin';
+  poll.membersInclude = () => true;
+  return poll;
+}
+
+describe('poll abilities match the server contract', () => {
+  beforeAll(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(contract.contract_time));
+  });
+
+  afterAll(() => vi.useRealTimers());
+
+  it('covers every recorded server action', () => {
+    expect(Object.keys(contract.cases[0].expected).sort()).toEqual(Object.keys(CLIENT_ABILITIES).sort());
+  });
+
+  it.each(contract.cases.map(testCase => [testCase.name, testCase]))('%s', (_name, testCase) => {
+    const poll = buildPoll(testCase);
+    const actual = Object.fromEntries(Object.keys(CLIENT_ABILITIES).map(action =>
+      [action, !!CLIENT_ABILITIES[action](poll)]
+    ));
+    expect(actual).toEqual(testCase.expected);
+  });
+});
