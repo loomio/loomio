@@ -40,7 +40,7 @@ const voterTotal = ref(0);
 const page = ref(1);
 let fetchSequence = 0;
 
-const isScheduled = computed(() => poll.openingAt && !poll.openedAt);
+const isScheduled = computed(() => poll.isScheduled());
 const someRecipients = computed(() => poll.recipientAudience ||
   poll.recipientUserIds.length ||
   poll.recipientEmails.length ||
@@ -205,7 +205,7 @@ function inviteRecipients() {
 }
 
 onMounted(() => {
-  poll.notifyRecipients = !(poll.openingAt && !poll.openedAt);
+  poll.notifyRecipients = !poll.isScheduled();
   fetchStances();
 });
 </script>

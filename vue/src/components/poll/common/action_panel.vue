@@ -90,7 +90,7 @@ export default
 
   computed: {
     isScheduled() {
-      return this.poll.openingAt && !this.poll.openedAt;
+      return this.poll.isScheduled();
     },
 
     strippedReason() {

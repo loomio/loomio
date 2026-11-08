@@ -60,3 +60,13 @@ describe('poll results visibility', () => {
     expect(poll(attributes).showResults()).toBe(visible);
   });
 });
+
+describe('poll scheduling', () => {
+  it.each([
+    ['waiting for its opening time', {openedAt: null, openingAt: new Date(now.getTime() + hour)}, true],
+    ['opened after being scheduled', {openingAt: new Date(now - hour)}, false],
+    ['a draft without an opening time', {openedAt: null, openingAt: null}, false]
+  ])('is scheduled only when %s', (_case, attributes, scheduled) => {
+    expect(poll(attributes).isScheduled()).toBe(scheduled);
+  });
+});

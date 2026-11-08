@@ -363,6 +363,11 @@ export default class PollModel extends BaseModel {
     return !!this.openedAt;
   }
 
+  // Matches the server's Poll#scheduled?.
+  isScheduled() {
+    return !!this.openingAt && !this.isOpened();
+  }
+
   // Match the server's Poll#active?: voting ends at closingAt, even before the
   // expiry job sets closedAt.
   isVotable() {

@@ -25,6 +25,8 @@ function pollActions(overrides = {}) {
     openedAt: '2026-09-24T00:00:00Z',
     openingAt: null,
     config: () => ({has_options: true}),
+    isOpened() { return !!this.openedAt; },
+    isScheduled() { return !!this.openingAt && !this.openedAt; },
     ...overrides
   };
   return PollService.actions(poll);
