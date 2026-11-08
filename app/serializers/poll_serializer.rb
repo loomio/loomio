@@ -34,6 +34,7 @@ class PollSerializer < ApplicationSerializer
              :poll_option_names,
              :poll_option_name_format,
              :results,
+             :results_available,
              :result_columns,
              :result_heading_keys,
              :reason_prompt,
@@ -96,6 +97,7 @@ class PollSerializer < ApplicationSerializer
     :poll_option_names,
     :mentioned_usernames,
     :results,
+    :results_available,
     :shuffle_options,
     :scores_by_option,
     :total_score,
@@ -208,6 +210,12 @@ class PollSerializer < ApplicationSerializer
 
   def include_stv_results?
     object.poll_type == 'stv' && results_visible?
+  end
+
+  # The same for every recipient, so shared payloads can carry it. The client
+  # applies the per-user until-vote rule on top.
+  def results_available
+    object.results_available?
   end
 
   def results_visible?

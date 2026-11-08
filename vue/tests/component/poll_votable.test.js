@@ -49,3 +49,14 @@ describe('poll voting window', () => {
     expect(wrapper.vm.time).toEqual(lapsed.closingAt);
   });
 });
+
+describe('poll results visibility', () => {
+  it.each([
+    ['results the server has not made available', {hideResults: 'until_closed', resultsAvailable: false}, false],
+    ['available results', {hideResults: 'off', resultsAvailable: true}, true],
+    ['until-vote results before this user votes', {hideResults: 'until_vote', resultsAvailable: true}, false],
+    ['until-vote results after the poll closes', {hideResults: 'until_vote', resultsAvailable: true, closedAt: new Date(now - hour)}, true]
+  ])('shows %s accordingly', (_case, attributes, visible) => {
+    expect(poll(attributes).showResults()).toBe(visible);
+  });
+});

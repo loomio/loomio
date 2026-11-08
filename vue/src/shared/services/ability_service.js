@@ -383,7 +383,7 @@ export default new class AbilityService {
   }
 
   canExportPoll(poll) {
-    return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
+    return !poll.discardedAt && poll.membersInclude(Session.user()) && !!poll.resultsAvailable;
   }
 
   // Matches the server's view_anonymous_voters: everyone who can see the results.
