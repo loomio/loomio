@@ -15,7 +15,7 @@
 
 ## Record state
 
-- **Store state as timestamps.** Record lifecycle changes in nullable timestamps such as `closed_at`, `revoked_at` and `accepted_at`, with their actor ids. Derive the current state from them. Do not add status columns or a state-machine library. A status copied from an external system, such as `Subscription#state`, is the exception.
+- **Store state as timestamps.** Record lifecycle changes in nullable timestamps such as `closed_at`, `revoked_at` and `accepted_at`, with their actor ids. Derive the current state from them. Do not add status columns or a state-machine library. A status copied from an external system, such as `Subscription#state`, is an exception. A boolean is also right when a timestamp would disclose something. For example, `anonymous_poll_voters.ballot_submitted` has no submission time, because that time could be matched against anonymous ballots.
 - **Remove duplicate state fields.** When two fields record one fact, such as `done` and `done_at`, remove one and derive it from the other. Take the time to migrate the callers and data; a clear, correct schema is worth the work. Do not keep both in step with application code or constraints.
 - **Rule out impossible combinations in the database.** Use check constraints for combinations that must never occur, such as a membership request that is both approved and declined.
 - **Define each derived state once.** When a state depends on several columns or the clock, write one server definition and build both the predicate and the scope from it. If a query needs a different meaning, give it a different name. For example, a stored count cannot depend on the current time, so it needs its own scope.

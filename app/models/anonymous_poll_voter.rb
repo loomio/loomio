@@ -1,3 +1,5 @@
+# ballot_submitted is a boolean on purpose: a submission time could be matched
+# against anonymous ballots to reveal how someone voted.
 class AnonymousPollVoter < ApplicationRecord
   belongs_to :poll
   belongs_to :voter, class_name: "User"
