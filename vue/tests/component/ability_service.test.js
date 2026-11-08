@@ -9,6 +9,7 @@ vi.mock('@/shared/services/session', () => ({
 }));
 
 import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 describe('AbilityService.canCreateTags', () => {
@@ -160,15 +161,15 @@ describe('poll actions in a locked thread', () => {
   });
 
   it('lets a poll admin edit, delete and reopen polls in an unlocked thread', () => {
-    expect(AbilityService.canEditPoll(poll())).toBe(true);
-    expect(AbilityService.canDeletePoll(poll())).toBe(true);
-    expect(AbilityService.canReopenPoll(poll({closed: true}))).toBe(true);
+    expect(PollAbility.update(poll())).toBe(true);
+    expect(PollAbility.destroy(poll())).toBe(true);
+    expect(PollAbility.reopen(poll({closed: true}))).toBe(true);
   });
 
   it('matches the server by blocking edit, delete and reopen once the thread is locked', () => {
-    expect(AbilityService.canEditPoll(poll({locked: true}))).toBe(false);
-    expect(AbilityService.canDeletePoll(poll({locked: true}))).toBe(false);
-    expect(AbilityService.canReopenPoll(poll({locked: true, closed: true}))).toBe(false);
+    expect(PollAbility.update(poll({locked: true}))).toBe(false);
+    expect(PollAbility.destroy(poll({locked: true}))).toBe(false);
+    expect(PollAbility.reopen(poll({locked: true, closed: true}))).toBe(false);
   });
 
   it('still lets a poll admin set an outcome in a locked thread, as the server does', () => {

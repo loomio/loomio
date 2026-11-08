@@ -2,6 +2,7 @@ import AppConfig     from '@/shared/services/app_config';
 import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import PollAbility   from '@/shared/abilities/poll_ability';
 import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
@@ -53,7 +54,7 @@ export default new class AbilityService {
 
     return (model.isA('discussion') && this.canEditDiscussion(model)) ||
     (model.isA('comment') && this.canEditComment(model)) ||
-    (model.isA('poll') && this.canEditPoll(model)) ||
+    (model.isA('poll') && PollAbility.update(model)) ||
     (model.isA('stance') && this.canEditStance(model));
   }
 
@@ -372,20 +373,6 @@ export default new class AbilityService {
     )
   }
 
-  canEditPoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().lockedAt &&
-    !poll.discardedAt && poll.adminsInclude(Session.user()) && !poll.closedAt;
-  }
-
-  canDeletePoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().lockedAt &&
-    !poll.discardedAt && poll.adminsInclude(Session.user());
-  }
-
-  canExportPoll(poll) {
-    return !poll.discardedAt && poll.membersInclude(Session.user()) && poll.resultsAvailable();
-  }
-
   // Matches the server's view_anonymous_voters: everyone who can see the results.
   canViewAnonymousVoters(poll) {
     return poll.anonymous && poll.showResults();
@@ -397,15 +384,5 @@ export default new class AbilityService {
     !!poll.closedAt &&
     (poll.adminsInclude(Session.user()) ||
      (poll.group().membersCanEditDiscussions && poll.membersInclude(Session.user())));
-  }
-
-  // Closing ends voting early, which a locked thread does not prevent.
-  canClosePoll(poll) {
-    return poll.group().isEnabled() && poll.isVotable() && poll.adminsInclude(Session.user());
-  }
-
-  canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().lockedAt && !poll.discardedAt && poll.closedAt &&
-      poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

@@ -24,6 +24,7 @@ import PollModel from '@/shared/models/poll_model';
 import TopicItemModel from '@/shared/models/topic_item_model';
 import StanceService from '@/shared/services/stance_service';
 import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import TopicList from '@/components/topic/list.vue';
 import StanceReason from '@/components/poll/common/stance_reason.vue';
 
@@ -98,11 +99,11 @@ describe('conversation beneath votes', () => {
     poll.closedAt = '2026-10-03';
     for (const mode of ['off', 'until_vote', 'until_closed']) {
       poll.hideResults = mode;
-      expect(Boolean(AbilityService.canReopenPoll(poll))).toBe(mode !== 'until_closed');
+      expect(Boolean(PollAbility.reopen(poll))).toBe(mode !== 'until_closed');
     }
     poll.hideResults = 'until_vote';
     poll.anonymous = true;
-    expect(AbilityService.canReopenPoll(poll)).toBeFalsy();
+    expect(PollAbility.reopen(poll)).toBeFalsy();
   });
 
   it('leaves comments elsewhere in the discussion visible', () => {

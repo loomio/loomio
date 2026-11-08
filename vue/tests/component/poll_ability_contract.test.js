@@ -1,7 +1,7 @@
 // Checks client poll abilities against the server's answers recorded by
 // test/contracts/poll_ability_contract_test.rb. Each case gives the poll fields
 // the client receives, so AbilityService must reach the server's answer from
-// that raw state alone. Generate the cases first with:
+// that raw state alone, through PollAbility. Generate the cases first with:
 //   bin/rails test test/contracts/poll_ability_contract_test.rb
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -17,14 +17,15 @@ vi.mock('@/shared/services/records', () => ({default: {}}));
 vi.mock('@/i18n', () => ({I18n: {}}));
 
 import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import PollModel from '@/shared/models/poll_model';
 
 const CLIENT_ABILITIES = {
-  update: poll => AbilityService.canEditPoll(poll),
-  destroy: poll => AbilityService.canDeletePoll(poll),
-  close: poll => AbilityService.canClosePoll(poll),
-  reopen: poll => AbilityService.canReopenPoll(poll),
-  export: poll => AbilityService.canExportPoll(poll),
+  update: poll => PollAbility.update(poll),
+  destroy: poll => PollAbility.destroy(poll),
+  close: poll => PollAbility.close(poll),
+  reopen: poll => PollAbility.reopen(poll),
+  export: poll => PollAbility.export(poll),
   create_outcome: poll => AbilityService.canSetPollOutcome(poll)
 };
 
