@@ -394,12 +394,14 @@ export default new class AbilityService {
   canSetPollOutcome(poll) {
     return poll.group().isEnabled() &&
     !poll.discardedAt &&
-    poll.closedAt &&
-    poll.adminsInclude(Session.user());
+    !!poll.closedAt &&
+    (poll.adminsInclude(Session.user()) ||
+     (poll.group().membersCanEditDiscussions && poll.membersInclude(Session.user())));
   }
 
+  // Closing ends voting early, which a locked thread does not prevent.
   canClosePoll(poll) {
-    return poll.isVotable() && this.canEditPoll(poll);
+    return poll.group().isEnabled() && poll.isVotable() && poll.adminsInclude(Session.user());
   }
 
   canReopenPoll(poll) {
