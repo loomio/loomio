@@ -1,10 +1,10 @@
 ---
 title: Gebruikers-API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 1e6a6817c4dcbc48
   show-poll: a920e725b0dd4a54
   example-13: b1a654227f638c2c
-  list-polls: f3169fd07a5efa26
+  list-polls: ef6bf091ea3c23cc
   params-10: 3fa33e4f881d81ed
   example-14: 564e2b68fc9bca98
   edit-poll: f4620cdf3b9c2f3e
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Peilingen weergeven
 
-Geef de peilingen in een groep weer die zichtbaar zijn voor de gebruiker van de API-sleutel. Bij een openbaar zichtbare groep kan iemand die geen lid is de openbare peilingen weergeven; privépeilingen blijven alleen toegankelijk voor gebruikers die ze in Loomio kunnen lezen. Het antwoord bevat de huidige conclusie van elke zichtbare peiling, zodat je met `status=closed` voorstellen kunt weergeven waarover een besluit is genomen.
+Geef de peilingen in een groep weer die zichtbaar zijn voor de gebruiker van de API-sleutel, inclusief zelfstandige peilingen en peilingen binnen discussies. Bij een openbaar zichtbare groep kan iemand die geen lid is de openbare peilingen weergeven; privépeilingen blijven alleen toegankelijk voor gebruikers die ze in Loomio kunnen lezen. Het antwoord bevat de huidige conclusie van elke zichtbare peiling, zodat je met `status=closed` gesloten peilingen kunt weergeven en hun conclusies kunt lezen als die zijn vastgelegd.
+
+Om de besluitstatus naast discussies weer te geven, haal je discussies en peilingen voor dezelfde groep op, met `status=all` voor peilingen, en koppel je ze op basis van hun `topic_id`-waarden. Haal elke pagina op met `limit` en `offset`. Een discussie kan meerdere peilingen hebben, dus kies welke peiling de weergegeven status bepaalt, bijvoorbeeld de laatst aangemaakte peiling. Een `closed_at`-waarde die niet null is, duidt op een gesloten peiling; een `closing_at`-waarde die null is, duidt op een concept. Als een peiling een conclusie heeft, verwijst de bijbehorende `current_outcome_id` naar een record in de `outcomes`-array van het antwoord; koppel de `poll_id` van dat record aan de `id` van de peiling.
+
+Voor een afzonderlijke discussie kun je ook [de items in de thread lezen](#read-thread) met `GET /api/user0/threads/:topic_id/items`. Dit geeft de peilingen en conclusies van de thread terug, samen met de andere items. Haal elke pagina op om de volledige thread te krijgen.
 
 `GET /api/user0/polls`
 

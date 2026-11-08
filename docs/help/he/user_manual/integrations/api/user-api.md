@@ -1,10 +1,10 @@
 ---
 title: API למשתמש
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: e22b71f1d652c7fe
   show-poll: 38cfb054fbfa3b41
   example-13: f320c0e4b17cb0ec
-  list-polls: dd494c3833afeea6
+  list-polls: a46a0c101f47b41b
   params-10: 742166bcb3fef909
   example-14: 0f3d83f38a422c75
   edit-poll: f859af198d6cbb10
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### רשימת סקרים
 
-הצגת רשימת הסקרים בקבוצה הגלויים לחשבון שמפתח ה־API שייך לו. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הסקרים הציבוריים גם ללא חברות בקבוצה; הגישה לסקרים פרטיים נשארת מוגבלת למשתמשים שיש להם הרשאה לקרוא אותם ב־Loomio. התשובה כוללת את המסקנה הנוכחית של כל סקר גלוי, כך שניתן להשתמש ב־`status=closed` לקבלת רשימת הצעות שהתקבלה לגביהן החלטה.
+הצגת רשימת הסקרים בקבוצה הגלויים לחשבון שמפתח ה־API שייך לו, כולל סקרים עצמאיים וסקרים בתוך דיונים. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הסקרים הציבוריים גם ללא חברות בקבוצה; הגישה לסקרים פרטיים נשארת מוגבלת למשתמשים שיש להם הרשאה לקרוא אותם ב־Loomio. התשובה כוללת את המסקנה הנוכחית של כל סקר גלוי, כך שניתן להשתמש ב־`status=closed` לקבלת רשימת סקרים סגורים ולקריאת המסקנות שלהם, אם הוגדרו.
+
+כדי להציג את מצב ההחלטה לצד דיונים, יש לאחזר דיונים וסקרים מאותה קבוצה, להשתמש ב־`status=all` עבור הסקרים ולהתאים בין ערכי ה־`topic_id` שלהם. יש לאחזר את כל עמודי התוצאות באמצעות `limit` ו־`offset`. דיון יכול לכלול כמה סקרים, ולכן יש לבחור איזה סקר יקבע את המצב המוצג, למשל הסקר שנוצר לאחרונה. ערך שאינו null בשדה `closed_at` מציין סקר סגור; ערך null בשדה `closing_at` מציין טיוטה. כאשר יש לסקר מסקנה, השדה `current_outcome_id` שלו מזהה רשומה במערך `outcomes` שבתשובה; יש להתאים את השדה `poll_id` של הרשומה לשדה `id` של הסקר.
+
+עבור דיון יחיד, ניתן גם [לקרוא את פריטי השרשור שלו](#read-thread) באמצעות `GET /api/user0/threads/:topic_id/items`. פעולה זו מחזירה את הסקרים והמסקנות שבשרשור לצד שאר הפריטים שבו. יש לאחזר את כל עמודי התוצאות כדי לכלול את השרשור המלא.
 
 `GET /api/user0/polls`
 

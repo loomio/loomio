@@ -1,10 +1,10 @@
 ---
 title: ユーザーAPI
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 9caac9b478ea55c5
   show-poll: d361bd6fa74339d7
   example-13: 717c34541ea8142c
-  list-polls: 25e8a49c9f0451dc
+  list-polls: 2b68665edca68d3f
   params-10: d63c307be555d850
   example-14: '01695dc83aa0cfa8'
   edit-poll: 5c6e3a9ebd483296
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### アンケートの一覧取得
 
-グループ内でAPIキーのユーザーが閲覧できるアンケートの一覧を取得します。公開されているグループでは、メンバーでなくても公開アンケートの一覧を取得できます。非公開アンケートは、Loomioで閲覧権限を持つユーザーだけが取得できます。レスポンスには、閲覧可能な各アンケートの現在の結論が含まれるため、`status=closed` を使用すると、決定済みの提案の一覧を取得できます。
+グループ内でAPIキーのユーザーが閲覧できるアンケートの一覧を取得します。単独のアンケートとディスカッション内のアンケートの両方が含まれます。公開されているグループでは、メンバーでなくても公開アンケートの一覧を取得できます。非公開アンケートは、Loomioで閲覧権限を持つユーザーだけが取得できます。レスポンスには、閲覧可能な各アンケートの現在の結論が含まれるため、`status=closed` を使用すると、締め切り済みのアンケートの一覧を取得し、結論が設定されている場合はその内容を確認できます。
+
+ディスカッションと並べて決定の状況を表示するには、同じグループのディスカッションとアンケートを取得し、`topic_id` の値を照合します。アンケートの取得には `status=all` を使用します。`limit` と `offset` を使用して、すべてのページを取得します。1つのディスカッションに複数のアンケートがある場合があるため、表示する状況の判断に使用するアンケートを選びます。例えば、最も新しく作成されたアンケートを使用できます。`closed_at` が null でない場合は締め切り済みのアンケートで、`closing_at` が null の場合は下書きです。アンケートに結論がある場合、`current_outcome_id` はレスポンスの `outcomes` 配列内のレコードを示します。そのレコードの `poll_id` をアンケートの `id` と照合します。
+
+個別のディスカッションについては、`GET /api/user0/threads/:topic_id/items` を使用して[スレッド内の項目を取得する](#read-thread)こともできます。スレッド内のアンケートと結論が、その他の項目とともに返されます。スレッド全体を取得するには、すべてのページを取得します。
 
 `GET /api/user0/polls`
 

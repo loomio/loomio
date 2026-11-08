@@ -252,6 +252,116 @@ class Api::User0::PollsControllerTest < ActionController::TestCase
     assert_includes titles, 'closed one'
   end
 
+  test "index includes discussion polls with their topic and current outcome for each status" do
+    topic = topics(:discussion_topic)
+    open_poll = make_poll(group: @group, topic: topic, title: 'Discussion open poll')
+    closed_poll = make_poll(group: @group, topic: topic, title: 'Discussion closed poll', closed_at: 1.day.ago)
+    outcome = OutcomeService.create(outcome: Outcome.new(poll: closed_poll, statement: 'Consented'), actor: @admin)
+    discarded_poll = make_poll(group: @group, topic: topic, title: 'Discarded discussion poll')
+    PollService.discard(poll: discarded_poll, actor: @admin)
+    standalone_poll = make_poll(group: @group, title: 'Standalone poll')
+    @request.headers['Authorization'] = "Bearer #{@bot.api_key}"
+
+    {
+      'active' => [open_poll.id, standalone_poll.id],
+      'closed' => [closed_poll.id],
+      'all' => [open_poll.id, closed_poll.id, standalone_poll.id]
+    }.each do |status, expected_ids|
+      get :index, params: { group_id: @group.id, status: status, limit: 250 }
+
+      assert_response :success
+      assert_equal expected_ids.sort, json.fetch('polls').pluck('id').sort, status
+      assert_equal expected_ids.size, json.fetch('meta').fetch('total'), status
+      json.fetch('polls').reject { |poll| poll.fetch('id') == standalone_poll.id }.each do |poll|
+        assert_equal topic.id, poll.fetch('topic_id')
+      end
+      if expected_ids.include?(closed_poll.id)
+        assert_equal outcome.id, json.fetch('polls').find { |poll| poll.fetch('id') == closed_poll.id }.fetch('current_outcome_id')
+        assert_equal 'Consented', json.fetch('outcomes').find { |record| record.fetch('id') == outcome.id }.fetch('statement')
+      end
+    end
+  end
+
+  test "index applies topic visibility to discussion polls for the access-control matrix" do
+    @group.update!(group_privacy: 'closed', discussion_privacy_options: 'public_or_private')
+    private_poll = make_poll(group: @group, topic: topics(:discussion_topic), title: 'Private discussion poll')
+    public_poll = make_poll(group: @group, title: 'Public control poll', private: false)
+
+    %i[admin member_normal member_guest_loud guest_normal guest_admin_normal former_member_guest alien non_guest_loud former_guest_loud former_member_loud server_admin inactive_member_loud].each do |role|
+      actor = users(role)
+      actor.update_columns(api_key: "index-poll-#{SecureRandom.hex(8)}")
+      @request.headers['Authorization'] = "Bearer #{actor.api_key}"
+
+      get :index, params: { group_id: @group.id, status: 'all' }
+
+      if role == :inactive_member_loud
+        assert_response :forbidden
+        refute_includes response.body, private_poll.title
+        next
+      end
+
+      assert_response :success
+      expected_ids = [public_poll.id]
+      expected_ids << private_poll.id if %i[admin member_normal member_guest_loud guest_normal guest_admin_normal former_member_guest].include?(role)
+      assert_equal expected_ids.sort, json.fetch('polls').pluck('id').sort, role.to_s
+      assert_equal expected_ids.size, json.fetch('meta').fetch('total'), role.to_s
+      refute_includes response.body, private_poll.title unless expected_ids.include?(private_poll.id)
+    end
+  end
+
+  test "index excludes polls in other groups, direct threads and discarded topics" do
+    group_poll = make_poll(group: @group, topic: topics(:discussion_topic))
+    subgroup_poll = make_poll(group: groups(:subgroup), topic: topics(:subgroup_discussion_topic))
+    direct_poll = PollService.create(params: {
+      topic_id: topics(:direct_topic).id, title: 'Direct discussion poll', poll_type: 'poll',
+      poll_option_names: ['engage'], closing_at: 3.days.from_now
+    }, actor: users(:guest_admin_normal))
+    TopicReader.for(user: @admin, topic: direct_poll.topic).update!(guest: true)
+    discarded_topic_poll = make_poll(group: @group)
+    discarded_topic_poll.topic.update!(discarded_at: Time.current)
+    @admin.update_columns(api_key: "adminkey#{SecureRandom.hex(8)}")
+    @request.headers['Authorization'] = "Bearer #{@admin.api_key}"
+    assert @admin.can?(:show, subgroup_poll)
+    assert @admin.can?(:show, direct_poll)
+
+    get :index, params: { group_id: @group.id, status: 'all' }
+
+    assert_response :success
+    assert_equal [group_poll.id], json.fetch('polls').pluck('id')
+    assert_equal 1, json.fetch('meta').fetch('total')
+  end
+
+  test "index preserves result visibility for open and closed discussion polls" do
+    @request.headers['Authorization'] = "Bearer #{@bot.api_key}"
+    [false, true].each do |anonymous|
+      poll = PollService.create(params: {
+        topic_id: topics(:discussion_topic).id, title: 'Discussion result visibility', poll_type: 'poll',
+        anonymous: anonymous, poll_option_names: ['engage'], closing_at: 3.days.from_now
+      }, actor: @admin)
+
+      (anonymous ? %w[until_closed] : %w[off until_vote until_closed]).each do |hide_results|
+        [nil, Time.current].each do |closed_at|
+          poll.update_columns(hide_results: hide_results, closed_at: closed_at)
+
+          get :index, params: { group_id: @group.id, status: 'all' }
+
+          assert_response :success
+          payload = json.fetch('polls').find { |record| record.fetch('id') == poll.id }
+          assert payload, "anonymous=#{anonymous}, hide_results=#{hide_results}, closed=#{closed_at.present?}"
+          results_visible = hide_results != 'until_closed' || closed_at.present?
+          %w[results scores_by_option total_score].each do |field|
+            assert_equal results_visible, payload.key?(field), field
+          end
+          if anonymous && closed_at.nil?
+            %w[vote_count_cast vote_count_uncast participation_pct quorum_reached quorum_shortfall].each do |field|
+              assert_not payload.key?(field), field
+            end
+          end
+        end
+      end
+    end
+  end
+
   test "index respects limit pagination" do
     3.times { |i| make_poll(title: "poll #{i}", group: @group) }
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
@@ -351,7 +461,7 @@ class Api::User0::PollsControllerTest < ActionController::TestCase
     end
   end
 
-  def make_poll(group:, title: "test poll #{SecureRandom.hex(4)}", closed_at: nil, private: nil)
+  def make_poll(group:, title: "test poll #{SecureRandom.hex(4)}", closed_at: nil, private: nil, topic: nil)
     params = {
       poll_type: 'poll',
       title: title,
@@ -360,6 +470,7 @@ class Api::User0::PollsControllerTest < ActionController::TestCase
       closing_at: 3.days.from_now,
       notify_on_closing_soon: 'nobody'
     }
+    params[:topic_id] = topic.id if topic
     params[:private] = private unless private.nil?
     poll = PollService.create(params: params, actor: @admin)
     poll.update!(closed_at: closed_at) if closed_at

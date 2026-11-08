@@ -1,10 +1,10 @@
 ---
 title: API de usuario
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 4e93dc26627a6fd4
   show-poll: f853ba0eb1702b7c
   example-13: 15f9cb73460815ca
-  list-polls: e25d3fd0de83bcc3
+  list-polls: 56a1beb442879b53
   params-10: f87fe79e309333f4
   example-14: 48fb25df253268d3
   edit-poll: 5c64b8aaa512f9d2
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Listar encuestas
 
-Lista las encuestas de un grupo visibles para el usuario de la clave de API. En un grupo visible públicamente, una persona que no sea miembro puede listar las encuestas públicas; las encuestas privadas siguen restringidas a los usuarios que pueden leerlas en Loomio. La respuesta incluye la conclusión actual de cada encuesta visible, por lo que puedes usar `status=closed` para listar las propuestas sobre las que ya se ha tomado una decisión.
+Lista las encuestas de un grupo visibles para el usuario de la clave de API, incluidas las encuestas independientes y las encuestas dentro de discusiones. En un grupo visible públicamente, una persona que no sea miembro puede listar las encuestas públicas; las encuestas privadas siguen restringidas a los usuarios que pueden leerlas en Loomio. La respuesta incluye la conclusión actual de cada encuesta visible, por lo que puedes usar `status=closed` para listar las encuestas cerradas y leer las conclusiones que se hayan establecido.
+
+Para mostrar el estado de las decisiones junto a las discusiones, obtén las discusiones y las encuestas del mismo grupo, usando `status=all` para las encuestas, y relaciona los registros mediante sus valores de `topic_id`. Obtén todas las páginas usando `limit` y `offset`. Una discusión puede tener varias encuestas, así que elige qué encuesta determina el estado que muestras, por ejemplo, la encuesta creada más recientemente. Un valor de `closed_at` distinto de null identifica una encuesta cerrada; un valor de `closing_at` igual a null indica un borrador. Cuando una encuesta tiene una conclusión, su `current_outcome_id` identifica un registro en el array `outcomes` de la respuesta; relaciona el `poll_id` de ese registro con el `id` de la encuesta.
+
+Para una sola discusión, también puedes [leer los elementos de su hilo](#read-thread) usando `GET /api/user0/threads/:topic_id/items`. Esto devuelve las encuestas y las conclusiones del hilo junto con los demás elementos. Obtén todas las páginas para incluir el hilo completo.
 
 `GET /api/user0/polls`
 
