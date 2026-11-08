@@ -37,7 +37,7 @@ describe('conversation beneath votes', () => {
     mocks.polls.clear();
     mocks.items.clear();
     mocks.stances.clear();
-    poll = new PollModel({id: 10, hideResults: 'until_vote', resultsAvailable: true, closingAt: '2026-12-01', myStanceId: 1});
+    poll = new PollModel({id: 10, hideResults: 'until_vote', closingAt: '2026-12-01', myStanceId: 1});
     mocks.polls.set(poll.id, poll);
     topic = {group: () => ({isEnabled: () => true}), maxDepth: 2, membersInclude: () => true, lockedAt: null, allowComments: true};
     poll.topic = () => topic;
@@ -69,12 +69,9 @@ describe('conversation beneath votes', () => {
     expect(reply.canPerform()).toBeTruthy();
     mocks.vote.castAt = '2026-10-02';
     expect(reply.canPerform()).toBeTruthy();
-    // The server reports results unavailable until an until-closed poll closes.
     poll.hideResults = 'until_closed';
-    poll.resultsAvailable = false;
     expect(reply.canPerform()).toBeFalsy();
     poll.closedAt = '2026-10-03';
-    poll.resultsAvailable = true;
     expect(reply.canPerform()).toBeTruthy();
     poll.anonymous = true;
     expect(reply.canPerform()).toBeFalsy();
@@ -117,7 +114,6 @@ describe('conversation beneath votes', () => {
 
   it('disables mention suggestions in vote reasons until an until-closed poll closes', async () => {
     poll.hideResults = 'until_closed';
-    poll.resultsAvailable = false;
     const wrapper = shallowMount(StanceReason, {
       props: {poll, stance}, global: {mocks: {$t: key => key}, stubs: {
         LmoTextarea: true, ValidationErrors: true
@@ -125,9 +121,9 @@ describe('conversation beneath votes', () => {
     });
     const editor = () => wrapper.findComponent('.poll-common-vote-form__reason');
     expect(editor().props('allowMentions')).toBe(false);
-    await wrapper.setProps({poll: new PollModel({id: 10, hideResults: 'until_closed', closedAt: '2026-10-03', resultsAvailable: true})});
+    await wrapper.setProps({poll: new PollModel({id: 10, hideResults: 'until_closed', closedAt: '2026-10-03'})});
     expect(editor().props('allowMentions')).toBe(true);
-    await wrapper.setProps({poll: new PollModel({id: 10, hideResults: 'until_vote', resultsAvailable: true})});
+    await wrapper.setProps({poll: new PollModel({id: 10, hideResults: 'until_vote'})});
     expect(editor().props('allowMentions')).toBe(true);
     wrapper.unmount();
   });
