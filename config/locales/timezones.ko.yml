@@ -1,0 +1,174 @@
+---
+ko:
+  timezones:
+    local: 현지 시간 (%{value})
+    regions:
+      Africa/Algiers: 아프리카 / 알제
+      Africa/Cairo: 아프리카 / 카이로
+      Africa/Casablanca: 아프리카 / 카사블랑카
+      Africa/Harare: 아프리카 / 하라레 (짐바브웨)
+      Africa/Johannesburg: 아프리카 / 요하네스버그 (남아프리카공화국)
+      Africa/Monrovia: 아프리카 / 몬로비아
+      Africa/Nairobi: 아프리카 / 나이로비
+      America/Adak: 아메리카 / 애닥 (알류샨 열도)
+      America/Argentina/Buenos_Aires: 아메리카 / 아르헨티나 / 부에노스아이레스
+      America/Asuncion: 아메리카 / 아순시온
+      America/Bogota: 아메리카 / 보고타
+      America/Cambridge_Bay: 아메리카 / 케임브리지베이 (누나부트)
+      America/Caracas: 아메리카 / 카라카스
+      America/Chicago: 아메리카 / 시카고 (미국 중부)
+      America/Chihuahua: 아메리카 / 치와와
+      America/Dawson: 아메리카 / 도슨 (유콘)
+      America/Dawson_Creek: 아메리카 / 도슨크리크 (브리티시컬럼비아)
+      America/Denver: 아메리카 / 덴버 (미국 산악)
+      America/Edmonton: 아메리카 / 에드먼턴 (앨버타)
+      America/Fort_Nelson: 아메리카 / 포트넬슨 (브리티시컬럼비아)
+      America/Glace_Bay: 아메리카 / 글레이스베이 (노바스코샤)
+      America/Goose_Bay: 아메리카 / 구스베이 (래브라도)
+      America/Guatemala: 아메리카 / 과테말라
+      America/Guyana: 아메리카 / 가이아나
+      Asia/Dhaka: 아시아 / 다카
+      Asia/Gaza: 아시아 / 가자
+      Asia/Hong_Kong: 아시아 / 홍콩
+      Asia/Irkutsk: 아시아 / 이르쿠츠크
+      Asia/Jakarta: 아시아 / 자카르타
+      Asia/Jerusalem: 아시아 / 예루살렘
+      Asia/Kabul: 아시아 / 카불
+      Asia/Kamchatka: 아시아 / 캄차카
+      Asia/Karachi: 아시아 / 카라치
+      Asia/Kathmandu: 아시아 / 카트만두
+      Asia/Kolkata: 아시아 / 콜카타 (인도)
+      Asia/Krasnoyarsk: 아시아 / 크라스노야르스크
+      Asia/Kuala_Lumpur: 아시아 / 쿠알라룸푸르
+      Asia/Kuwait: 아시아 / 쿠웨이트
+      Asia/Magadan: 아시아 / 마가단
+      Asia/Muscat: 아시아 / 무스카트
+      Asia/Novosibirsk: 아시아 / 노보시비르스크
+      Asia/Rangoon: 아시아 / 양곤 (미얀마)
+      Asia/Riyadh: 아시아 / 리야드
+      Asia/Seoul: 아시아 / 서울
+      Asia/Shanghai: 아시아 / 상하이
+      Asia/Singapore: 아시아 / 싱가포르
+      Asia/Srednekolymsk: 아시아 / 스레드네콜림스크
+      Asia/Taipei: 아시아 / 타이베이
+      Asia/Tashkent: 아시아 / 타슈켄트
+      Asia/Tbilisi: 아시아 / 트빌리시
+      Asia/Tehran: 아시아 / 테헤란
+      Asia/Tokyo: 아시아 / 도쿄
+      Asia/Ulaanbaatar: 아시아 / 울란바토르
+      Asia/Urumqi: 아시아 / 우루무치
+      Asia/Vladivostok: 아시아 / 블라디보스토크
+      Asia/Yakutsk: 아시아 / 야쿠츠크
+      Asia/Yekaterinburg: 아시아 / 예카테린부르크
+      Asia/Yerevan: 아시아 / 예레반
+      Atlantic/Azores: 대서양 / 아조레스
+      Atlantic/Cape_Verde: 대서양 / 카보베르데
+      Atlantic/South_Georgia: 대서양 / 사우스조지아섬
+      Australia/Adelaide: 오스트레일리아 / 애들레이드 (사우스오스트레일리아주)
+      Australia/Brisbane: 오스트레일리아 / 브리즈번 (퀸즐랜드주)
+      Australia/Canberra: 오스트레일리아 / 캔버라 (오스트레일리아 수도 준주)
+      America/Halifax: 아메리카 / 핼리팩스 (노바스코샤)
+      America/Havana: 아메리카 / 아바나
+      America/Indiana/Indianapolis: 아메리카 / 인디애나 / 인디애나폴리스 (인디애나)
+      America/Inuvik: 아메리카 / 이누빅 (노스웨스트 준주)
+      America/Iqaluit: 아메리카 / 이칼루이트 (누나부트)
+      America/Juneau: 아메리카 / 주노 (알래스카)
+      America/La_Paz: 아메리카 / 라파스
+      America/Lima: 아메리카 / 리마
+      America/Los_Angeles: 아메리카 / 로스앤젤레스 (미국 태평양)
+      America/Mazatlan: 아메리카 / 마사틀란
+      America/Mexico_City: 아메리카 / 멕시코시티
+      America/Miquelon: 아메리카 / 생피에르 미클롱
+      America/Moncton: 아메리카 / 멍크턴 (뉴브런즈윅)
+      America/Monterrey: 아메리카 / 몬테레이
+      America/Montevideo: 아메리카 / 몬테비데오
+      America/New_York: 아메리카 / 뉴욕 (미국 동부)
+      America/Nuuk: 아메리카 / 누크
+      America/Panama: 아메리카 / 파나마
+      America/Phoenix: 아메리카 / 피닉스 (애리조나)
+      America/Puerto_Rico: 아메리카 / 푸에르토리코
+      America/Rankin_Inlet: 아메리카 / 랭킨인렛 (누나부트)
+      America/Regina: 아메리카 / 리자이나 (서스캐처원)
+      America/Resolute: 아메리카 / 레졸루트 (누나부트)
+      America/Santiago: 아메리카 / 산티아고
+      America/Sao_Paulo: 아메리카 / 상파울루
+      America/St_Johns: 아메리카 / 세인트존스 (뉴펀들랜드)
+      America/Swift_Current: 아메리카 / 스위프트커런트 (서스캐처원)
+      America/Tijuana: 아메리카 / 티후아나
+      America/Toronto: 아메리카 / 토론토 (온타리오)
+      America/Vancouver: 아메리카 / 밴쿠버 (브리티시컬럼비아)
+      America/Whitehorse: 아메리카 / 화이트호스 (유콘)
+      America/Winnipeg: 아메리카 / 위니펙 (매니토바)
+      Antarctica/Troll: 남극 / 트롤 기지 (남극)
+      Asia/Almaty: 아시아 / 알마티
+      Asia/Baghdad: 아시아 / 바그다드
+      Asia/Baku: 아시아 / 바쿠
+      Asia/Bangkok: 아시아 / 방콕
+      Asia/Beirut: 아시아 / 베이루트
+      Asia/Chongqing: 아시아 / 충칭
+      Asia/Colombo: 아시아 / 콜롬보
+      Europe/Vilnius: 유럽 / 빌뉴스
+      Europe/Volgograd: 유럽 / 볼고그라드
+      Europe/Warsaw: 유럽 / 바르샤바
+      Europe/Zagreb: 유럽 / 자그레브
+      Europe/Zurich: 유럽 / 취리히
+      Pacific/Apia: 태평양 / 아피아
+      Pacific/Auckland: 태평양 / 오클랜드 (뉴질랜드)
+      Pacific/Chatham: 태평양 / 채텀 제도 (뉴질랜드)
+      Pacific/Easter: 태평양 / 이스터섬 (칠레)
+      Pacific/Fakaofo: 태평양 / 파카오포 (토켈라우)
+      Pacific/Fiji: 태평양 / 피지
+      Pacific/Gambier: 태평양 / 감비에 제도
+      Pacific/Guadalcanal: 태평양 / 과달카날 (솔로몬 제도)
+      Pacific/Guam: 태평양 / 괌
+      Pacific/Honolulu: 태평양 / 호놀룰루 (하와이)
+      Pacific/Kiritimati: 태평양 / 키리티마티 (키리바시)
+      Pacific/Majuro: 태평양 / 마주로 (마셜 제도)
+      Pacific/Marquesas: 태평양 / 마르키즈 제도
+      Pacific/Midway: 태평양 / 미드웨이 제도
+      Pacific/Norfolk: 태평양 / 노퍽섬
+      Pacific/Noumea: 태평양 / 누메아 (뉴칼레도니아)
+      Pacific/Pago_Pago: 태평양 / 파고파고 (아메리칸사모아)
+      Pacific/Pitcairn: 태평양 / 핏케언 제도
+      Pacific/Port_Moresby: 태평양 / 포트모르즈비 (파푸아뉴기니)
+      Pacific/Tongatapu: 태평양 / 통가타푸 (통가)
+      Australia/Darwin: 호주 / 다윈 (노던 준주)
+      Australia/Eucla: 호주 / 유클라 (웨스턴오스트레일리아주)
+      Australia/Hobart: 호주 / 호바트 (태즈메이니아주)
+      Australia/Lord_Howe: 호주 / 로드하우섬
+      Australia/Melbourne: 호주 / 멜버른 (빅토리아주)
+      Australia/Perth: 호주 / 퍼스 (웨스턴오스트레일리아주)
+      Australia/Sydney: 호주 / 시드니 (뉴사우스웨일스주)
+      Etc/GMT+12: 기타 / 국제 날짜 변경선 서쪽 (UTC−12)
+      Etc/UTC: 기타 / 협정 세계시 (UTC)
+      Europe/Amsterdam: 유럽 / 암스테르담
+      Europe/Athens: 유럽 / 아테네
+      Europe/Belgrade: 유럽 / 베오그라드
+      Europe/Berlin: 유럽 / 베를린
+      Europe/Bratislava: 유럽 / 브라티슬라바
+      Europe/Brussels: 유럽 / 브뤼셀
+      Europe/Bucharest: 유럽 / 부쿠레슈티
+      Europe/Budapest: 유럽 / 부다페스트
+      Europe/Copenhagen: 유럽 / 코펜하겐
+      Europe/Dublin: 유럽 / 더블린
+      Europe/Helsinki: 유럽 / 헬싱키
+      Europe/Istanbul: 유럽 / 이스탄불
+      Europe/Kaliningrad: 유럽 / 칼리닌그라드
+      Europe/Kiev: 유럽 / 키이우 (우크라이나)
+      Europe/Lisbon: 유럽 / 리스본
+      Europe/Ljubljana: 유럽 / 류블랴나
+      Europe/London: 유럽 / 런던
+      Europe/Madrid: 유럽 / 마드리드
+      Europe/Minsk: 유럽 / 민스크
+      Europe/Moscow: 유럽 / 모스크바
+      Europe/Paris: 유럽 / 파리
+      Europe/Prague: 유럽 / 프라하
+      Europe/Riga: 유럽 / 리가
+      Europe/Rome: 유럽 / 로마
+      Europe/Samara: 유럽 / 사마라
+      Europe/Sarajevo: 유럽 / 사라예보
+      Europe/Skopje: 유럽 / 스코페
+      Europe/Sofia: 유럽 / 소피아
+      Europe/Stockholm: 유럽 / 스톡홀름
+      Europe/Tallinn: 유럽 / 탈린
+      Europe/Vienna: 유럽 / 빈
