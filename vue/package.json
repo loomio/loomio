@@ -93,7 +93,7 @@
     "pug": "latest",
     "sass-embedded": "^1.107.1",
     "unplugin-vue-components": "latest",
-    "vite": "8.3.5",
+    "vite": "8.3.6",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "vitest": "^5.0.5",
