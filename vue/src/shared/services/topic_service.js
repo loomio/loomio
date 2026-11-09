@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ScrollService  from '@/shared/services/scroll_service';
 import openModal      from '@/shared/helpers/open_modal';
@@ -228,7 +229,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Poll' && AbilityService.canEditPoll(topic.topicable());
+          return topic.topicableType === 'Poll' && PollAbility.update(topic.topicable());
         },
         to() { return `/p/${topic.topicable().key}/edit`; }
       },

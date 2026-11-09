@@ -555,6 +555,7 @@ class EventTest < ActiveSupport::TestCase
                             poll_option_names: ["2026-02-15"], specified_voters_only: true)
     meeting_poll.save!
     meeting_poll.create_missing_created_topic_item!
+    meeting_poll.update_columns(opened_at: 1.day.ago, closed_at: Time.current)
 
     outcome = Outcome.new(poll: meeting_poll, author: @admin, statement: @user_mentioned_text)
     OutcomeService.create(
