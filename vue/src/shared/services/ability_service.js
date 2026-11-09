@@ -123,23 +123,6 @@ export default new class AbilityService {
     }
   }
 
-  canLeaveGroup(group) {
-    return (Session.user().membershipFor(group) != null);
-  }
-
-  canRemoveMembership(membership) {
-    return membership &&
-    ((membership.user() === Session.user()) || membership.group().adminsInclude(Session.user()));
-  }
-
-  canSetMembershipTitle(membership) {
-    return membership.group().isEnabled() && ((Session.user() === membership.user()) || this.canAdminister(membership.group()));
-  }
-
-  canResendMembership(membership) {
-    return membership && membership.group().isEnabled() && !membership.acceptedAt && this.canAdminister(membership.group());
-  }
-
   canStartGroups() {
     return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
   }

@@ -2,6 +2,7 @@
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
+import MembershipAbility from '@/shared/abilities/membership_ability';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
@@ -35,7 +36,7 @@ export default
     },
 
     canSetTitle() {
-      return AbilityService.canSetMembershipTitle(this.membership);
+      return MembershipAbility.update(this.membership);
     },
 
     setName() {
@@ -57,7 +58,7 @@ export default
     },
 
     canResendMembership() {
-      return AbilityService.canResendMembership(this.membership);
+      return MembershipAbility.resend(this.membership);
     },
 
     canViewNotificationHistory() {
@@ -78,7 +79,7 @@ export default
     },
 
     canRemoveMembership() {
-      return AbilityService.canRemoveMembership(this.membership);
+      return MembershipAbility.destroy(this.membership);
     },
 
     removeMembership() {

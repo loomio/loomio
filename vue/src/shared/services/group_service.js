@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import MembershipAbility from '@/shared/abilities/membership_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -195,7 +196,7 @@ export default new class GroupService {
         icon: 'mdi-exit-to-app',
         menu: true,
         canPerform() {
-          return AbilityService.canRemoveMembership(membership);
+          return MembershipAbility.destroy(membership);
         },
         perform() {
           let returnUrl = '/dashboard'
