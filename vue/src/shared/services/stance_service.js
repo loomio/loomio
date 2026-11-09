@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import CommentAbility from '@/shared/abilities/comment_ability';
 import StanceAbility from '@/shared/abilities/stance_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
@@ -72,7 +73,7 @@ export default new class StanceService {
           !stance.revokedAt &&
           !poll.anonymous &&
           poll.resultsAvailable() &&
-          AbilityService.canAddComment(topic);
+          CommentAbility.create(topic);
         },
         perform() {
           const maxDepth = stance.poll().topic().maxDepth;

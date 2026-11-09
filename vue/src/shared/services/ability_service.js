@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import PollAbility   from '@/shared/abilities/poll_ability';
+import CommentAbility from '@/shared/abilities/comment_ability';
 import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
@@ -24,10 +25,6 @@ export default new class AbilityService {
     intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
-  canAddComment(topic) {
-    return topic.group().isEnabled() && !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
-  }
-
   canAddReaction(topic) {
     return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
@@ -40,20 +37,11 @@ export default new class AbilityService {
     return !topic.attachmentsAdminOnly || topic.adminsInclude(Session.user());
   }
 
-  canRespondToComment(comment) {
-    const topic = comment.topic();
-    return topic &&
-    topic.group().isEnabled() &&
-    !topic.lockedAt &&
-    !comment.discardedAt &&
-    topic.membersInclude(Session.user());
-  }
-
   canEdit(model) {
     if (!model) { return false; }
 
     return (model.isA('discussion') && this.canEditDiscussion(model)) ||
-    (model.isA('comment') && this.canEditComment(model)) ||
+    (model.isA('comment') && CommentAbility.update(model)) ||
     (model.isA('poll') && PollAbility.update(model)) ||
     (model.isA('stance') && this.canEditStance(model));
   }
@@ -244,48 +232,6 @@ export default new class AbilityService {
 
   canDeleteGroup(group) {
     return group.adminsInclude(Session.user());
-  }
-
-  canEditOwnComment(comment) {
-    return comment.authorIs(Session.user()) && this.canEditComment(comment);
-  }
-
-  canEditComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt && !comment.discardedAt && (
-      (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
-      (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
-    );
-  }
-
-  canDeleteComment(comment) {
-    const topic = comment.topic();
-    return (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) &&
-    comment.discardedAt &&
-    topic && topic.group().isEnabled() &&
-    (
-      topic.adminsInclude(Session.user()) ||
-      (comment.group() && comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
-    );
-  }
-
-  canDiscardComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    !comment.discardedAt &&
-    (
-      comment.authorIs(Session.user()) ||
-      topic.adminsInclude(Session.user())
-    );
-  }
-
-  canUndiscardComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    comment.discardedAt && (
-      (comment.authorIs(Session.user()) && comment.discardedBy === Session.userId) ||
-      topic.adminsInclude(Session.user())
-    );
   }
 
   canRemoveMembership(membership) {

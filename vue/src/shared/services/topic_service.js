@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import CommentAbility from '@/shared/abilities/comment_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ScrollService  from '@/shared/services/scroll_service';
@@ -77,7 +78,7 @@ export default new class TopicService {
         dockDisplay: 'icon',
         // collection: 'actions',
         canPerform() {
-          return AbilityService.canAddComment(topic);
+          return CommentAbility.create(topic);
         },
         perform() {
           EventBus.$emit('show-add-comment-form');

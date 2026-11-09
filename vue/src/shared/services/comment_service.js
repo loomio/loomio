@@ -1,5 +1,6 @@
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import CommentAbility from '@/shared/abilities/comment_ability';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import openModal from '@/shared/helpers/open_modal';
@@ -68,7 +69,7 @@ export default new class CommentService {
         name: 'common.action.reply',
         icon: 'mdi-reply',
         dock: 3,
-        canPerform() { return AbilityService.canRespondToComment(comment); },
+        canPerform() { return !comment.discardedAt && CommentAbility.reply(comment); },
         perform() {
           const topic = comment.topic();
           if (topic_item.depth === (topic ? topic.maxDepth : 3)) {
@@ -83,7 +84,7 @@ export default new class CommentService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 3,
-        canPerform() { return !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment); },
+        canPerform() { return comment.authorIs(Session.user()) && CommentAbility.update(comment); },
         perform() {
           return openModal({
             component: 'EditCommentForm',
@@ -100,7 +101,7 @@ export default new class CommentService {
         icon: 'mdi-pencil',
         menu: true,
         canPerform() {
-          return !comment.authorIs(Session.user()) && AbilityService.canEditComment(comment);
+          return !comment.authorIs(Session.user()) && CommentAbility.update(comment);
         },
         perform() {
           return openModal({
@@ -135,7 +136,7 @@ export default new class CommentService {
         name: 'common.action.discard',
         icon: 'mdi-delete-outline',
         menu: true,
-        canPerform() { return AbilityService.canDiscardComment(comment); },
+        canPerform() { return !comment.discardedAt && CommentAbility.discard(comment); },
         perform() { return comment.discard(); }
       },
 
@@ -143,7 +144,7 @@ export default new class CommentService {
         name: 'common.action.restore',
         icon: 'mdi-delete-restore',
         menu: true,
-        canPerform() { return AbilityService.canUndiscardComment(comment); },
+        canPerform() { return !!comment.discardedAt && CommentAbility.undiscard(comment); },
         perform() { return comment.undiscard(); }
       },
 
@@ -151,7 +152,7 @@ export default new class CommentService {
         name: 'common.action.delete',
         icon: 'mdi-delete',
         menu: true,
-        canPerform() { return AbilityService.canDeleteComment(comment); },
+        canPerform() { return !!comment.discardedAt && CommentAbility.destroy(comment); },
         perform() {
           return openModal({
             component: 'ConfirmModal',
