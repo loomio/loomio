@@ -7,7 +7,6 @@ import CommentAbility from '@/shared/abilities/comment_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import TopicAbility from '@/shared/abilities/topic_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
-import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
   isNotEmailVerified() {
@@ -20,12 +19,6 @@ export default new class AbilityService {
 
   isUser() {
     return Session.isSignedIn();
-  }
-
-  canContactUser(user) {
-    return Session.isSignedIn() &&
-    (Session.userId !== user.id) &&
-    intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
   canAttachFiles(model) {
@@ -47,18 +40,6 @@ export default new class AbilityService {
 
   canEditStance(stance) {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
-  }
-
-  canAdminTags(topic) {
-    const group = topic.group();
-    return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
-  }
-
-  canCreateTags(group) {
-    const user = Session.user();
-    return group.parentOrSelf().adminsInclude(user) ||
-      group.adminsInclude(user) ||
-      !!(group.membersCanCreateTags && group.membersInclude(user));
   }
 
   canAdminister(model) {

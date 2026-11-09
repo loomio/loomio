@@ -8,14 +8,14 @@ vi.mock('@/shared/services/session', () => ({
   default: {user: () => mocks.currentUser}
 }));
 
-import AbilityService from '@/shared/services/ability_service';
+import TagAbility from '@/shared/abilities/tag_ability';
 import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
 import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
-describe('AbilityService.canCreateTags', () => {
+describe('TagAbility.create', () => {
   beforeEach(() => {
     mocks.currentUser = {id: 1};
   });
@@ -38,7 +38,7 @@ describe('AbilityService.canCreateTags', () => {
 
     // Viewing a poll before opening the discussion form must not break tags.
     PollAbility.announce({groupId: 1, group: () => group});
-    expect(AbilityService.canCreateTags(group)).toBe(allowed);
+    expect(TagAbility.create(group)).toBe(allowed);
   });
 
   it.each([
@@ -61,17 +61,17 @@ describe('AbilityService.canCreateTags', () => {
     };
 
     expect(PollAbility.announce(poll)).toBe(canAnnounce);
-    expect(AbilityService.canCreateTags(group)).toBe(true);
+    expect(TagAbility.create(group)).toBe(true);
 
     mocks.currentUser = {id: 2};
-    expect(AbilityService.canCreateTags(group)).toBe(false);
+    expect(TagAbility.create(group)).toBe(false);
 
     mocks.currentUser = {id: null};
-    expect(AbilityService.canCreateTags(group)).toBe(false);
+    expect(TagAbility.create(group)).toBe(false);
   });
 
   it('returns false for the null group', () => {
-    expect(AbilityService.canCreateTags(new NullGroupModel())).toBe(false);
+    expect(TagAbility.create(new NullGroupModel())).toBe(false);
   });
 });
 

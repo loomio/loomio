@@ -1,7 +1,7 @@
 <script setup lang="js">
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
-import AbilityService from '@/shared/services/ability_service';
+import TagAbility from '@/shared/abilities/tag_ability';
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -134,7 +134,7 @@ const canCreateTags = computed(() => {
 
   if (!usableGroup(tagGroup.value)) { return false; }
 
-  return AbilityService.canCreateTags(tagGroup.value);
+  return TagAbility.create(tagGroup.value);
 });
 
 const hasOtherGroups = computed(() => usableGroup(tagGroup.value) && tagGroup.value.parentOrSelf().subgroupsCount > 0);
