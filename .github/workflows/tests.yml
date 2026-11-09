@@ -68,7 +68,7 @@ jobs:
         TEST_DATABASE_URL: postgresql://postgres@localhost/loomio_contracts
       run: |
         bundle exec rake db:create db:schema:load
-        bundle exec rails test test/contracts/poll_ability_contract_test.rb
+        bundle exec rails test test/contracts
     - name: start rails server
       env:
         PUMA_WORKERS: 1

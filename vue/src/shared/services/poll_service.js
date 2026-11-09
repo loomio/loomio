@@ -2,6 +2,7 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import PollAbility from '@/shared/abilities/poll_ability';
+import StanceAbility from '@/shared/abilities/stance_ability';
 import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
@@ -69,7 +70,7 @@ export default new class PollService {
         name: (poll.config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
         icon: 'mdi-pencil',
         dock: 2,
-        canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
+        canPerform() { return StanceAbility.update(poll.myStance()) && !!poll.iHaveVoted(); },
         perform() { return StanceService.updateStance(poll.myStance()); }
       },
 
@@ -77,7 +78,7 @@ export default new class PollService {
         name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         menu: true,
-        canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
+        canPerform() { return StanceAbility.uncast(poll.myStance()); },
         perform: () => StanceService.uncastStance(poll.myStance())
       },
 

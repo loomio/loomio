@@ -62,25 +62,6 @@ export default new class AbilityService {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
   }
 
-  canRedactStance(stance) {
-    const poll = stance.poll();
-    const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
-    return poll &&
-    poll.group().isEnabled() &&
-    hasContent &&
-    !stance.redactedAt &&
-    !stance.revokedAt &&
-    poll.adminsInclude(Session.user());
-  }
-
-  canUnredactStance(stance) {
-    const poll = stance.poll();
-    return poll &&
-    poll.group().isEnabled() &&
-    !!stance.redactedAt &&
-    poll.adminsInclude(Session.user());
-  }
-
   canEditDiscussion(discussion) {
     const topic = discussion.topic();
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
