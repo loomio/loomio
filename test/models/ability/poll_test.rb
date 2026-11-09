@@ -12,7 +12,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert user.can?(:export, poll)
   end
 
-  test "only thread members can export, not visitors to public threads" do
+  test "visitors to public threads can export, as with thread markdown" do
     topic = topics(:public_discussion_topic)
     member = users(:user)
     Membership.create!(user: member, group: topic.group, admin: true, accepted_at: Time.current)
@@ -20,7 +20,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     visitor = users(:alien)
 
     assert visitor.can?(:show, poll), "the visitor can see the public poll"
-    assert_not visitor.can?(:export, poll)
+    assert visitor.can?(:export, poll)
     assert member.can?(:export, poll)
   end
 

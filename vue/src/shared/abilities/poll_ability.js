@@ -25,8 +25,9 @@ export default {
       poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   },
 
+  // Anyone who can see the poll, which is every poll the client holds.
   export(poll) {
-    return !poll.discardedAt && poll.membersInclude(Session.user()) && poll.resultsAvailable();
+    return !poll.discardedAt && poll.resultsAvailable();
   },
 
   // Starting a new poll in the topic.
