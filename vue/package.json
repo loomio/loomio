@@ -29,7 +29,7 @@
   "dependencies": {
     "@hocuspocus/provider": "^4.8.0",
     "@mdi/js": "^6.9.96",
-    "@rails/actioncable": "^8.1.400",
+    "@rails/actioncable": "^8.1.401",
     "@sentry/vue": "^11.10.0",
     "@tiptap/core": "3.33.0",
     "@tiptap/extension-blockquote": "3.33.0",
