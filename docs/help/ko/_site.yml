@@ -1,0 +1,28 @@
+site_title: Loomio 도움말
+menu: 메뉴
+open_navigation: 탐색 메뉴 열기
+close_navigation: 탐색 메뉴 닫기
+search: 검색
+search_label: Loomio 도움말 검색
+help_contents: 도움말 목차
+on_this_page: 이 페이지의 내용
+page_navigation: 페이지 탐색
+previous: 이전
+next: 다음
+image_alt: Loomio 도움말 및 문서
+languages: 언어
+copy: 복사
+copy_label: 클립보드에 코드 복사
+copied: 복사됨
+copy_failed: 복사하지 못했습니다
+machine_translation_notice: "이 페이지는 기계 번역되었습니다. 잘못되거나 불분명한 표현이 있으면 %{email}로 알려 주세요. 수정하겠습니다."
+alerts:
+  note: 참고
+  tip: 팁
+  important: 중요
+  warning: 경고
+  caution: 주의
+sections:
+  User manual: 사용자 매뉴얼
+  Guides: 가이드
+  Customer information: 고객 안내

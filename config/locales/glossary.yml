@@ -66,6 +66,9 @@ locales:
   ja:
     name: Japanese
     style: Use polite です/ます style. Avoid addressing the reader with あなた; describe actions directly.
+  ko:
+    name: Korean
+    style: Write standard South Korean (한국어) in Hangul, using contemporary South Korean spelling and vocabulary, not regional dialect or North Korean variants. Use polite 해요/하세요 requests and 합니다/습니다 statements consistently; keep button and menu labels short action nouns (저장, 취소, 투표). Omit unnecessary pronouns such as 당신. Do not add 님 to interpolation variables or change their spelling. Keep Loomio unchanged. Distinguish an author-written outcome (결론) from vote results (결과), a thread (스레드) from a discussion (토론), and consent (이의 없음) from consensus (합의). Keep all time zone path segments in order, separated by /; translate Etc as 기타.
   nl_NL:
     name: Dutch
     style: Address the reader informally with je and jouw and informal imperatives (Selecteer, Kies). Never u or uw.
@@ -102,6 +105,10 @@ locales:
 
 terms:
   group:
+    ko:
+      use: 그룹
+      stems:
+      - 그룹
     means: "An organisation or team using Loomio. Members belong to it and its admins manage it."
     be:
       use: "група"
@@ -179,6 +186,10 @@ terms:
       stems: ["群組"]
       note: "Avoid bare 組 in labels such as 新組."
   subgroup:
+    ko:
+      use: 하위 그룹
+      stems:
+      - 하위 그룹
     means: "A group inside a parent group, such as a committee or working group."
     be:
       use: "падгрупа"
@@ -258,6 +269,10 @@ terms:
       avoid: ["亞組"]
       stems: ["子群組"]
   "parent group":
+    ko:
+      use: 상위 그룹
+      stems:
+      - 상위 그룹
     means: "The group that contains a subgroup."
     be:
       use: "бацькоўская група"
@@ -363,6 +378,10 @@ terms:
       use: "上層群組"
       stems: ["上層群組"]
   member:
+    ko:
+      use: 멤버
+      stems:
+      - 멤버
     means: "A person who belongs to a group."
     be:
       use: "удзельнік"
@@ -450,6 +469,14 @@ terms:
       stems: ["成員"]
       note: "會員 suggests a paying or club membership."
   admin:
+    ko:
+      use: 관리자
+      note: Use 그룹 관리자 and 스레드 관리자 for the two roles; never 조정자 or 코디네이터.
+      stems:
+      - 관리자
+      avoid:
+      - 조정자
+      - 코디네이터
     means: "A permission role: a group admin manages the group, its members and settings; a thread admin manages a thread and its contributions. Use group admin and thread admin, or administrator in longer prose. Never call either role coordinator or translate it as a coordination or facilitation role, including when a legacy translation key contains coordinator."
     be:
       use: "адміністратар"
@@ -566,6 +593,10 @@ terms:
       avoid: ["協調員", "協調者"]
       stems: ["管理員"]
   guest:
+    ko:
+      use: 게스트
+      stems:
+      - 게스트
     means: "A person invited to a single thread or poll without joining the group."
     be:
       use: "госць"
@@ -646,6 +677,10 @@ terms:
       use: "訪客"
       stems: ["訪客"]
   invitation:
+    ko:
+      use: 초대
+      stems:
+      - 초대
     means: "A message inviting someone to join a group, thread or poll."
     be:
       use: "запрашэнне"
@@ -727,6 +762,10 @@ terms:
       stems: ["邀請"]
       note: "邀請函 is acceptable for a sent invitation."
   "membership request":
+    ko:
+      use: 가입 요청
+      stems:
+      - 가입 요청
     means: "A request from a person asking to join a group, for the group's admins to approve."
     be:
       use: "запыт на ўступленне"
@@ -826,6 +865,11 @@ terms:
       stems: ["加入申請"]
       note: "Avoid 會員; the request is to join the group."
   thread:
+    ko:
+      use: 스레드
+      note: Use 스레드 for the container, as in Korean Slack. Keep distinct from 토론 (discussion).
+      stems:
+      - 스레드
     means: "The page that holds one conversation in Loomio: its context, comments, polls and votes. A thread can be a discussion thread or a poll thread, so thread must stay distinct from discussion. Use the word popular apps use for a thread (Slack, Teams, Gmail and messaging apps). Not a strand of fibre."
     be:
       use: "тэма"
@@ -945,6 +989,11 @@ terms:
       stems: ["對話串"]
       note: "Slack zh-TW term (使用對話串整理討論). 討論串 contains 討論 and would blur thread with discussion; 主題 and 貼文 should also converge on 對話串."
   discussion:
+    ko:
+      use: 토론
+      note: Use 토론 for discussion content; keep distinct from 스레드 (thread).
+      stems:
+      - 토론
     means: "Content started to talk something through, as opposed to a poll. A discussion lives in a thread (a discussion thread), so discussion must stay distinct from thread."
     be:
       use: "абмеркаванне"
@@ -1037,6 +1086,10 @@ terms:
       stems: ["討論"]
       note: "A discussion lives in a thread: 討論對話串 vs 投票對話串."
   "direct thread":
+    ko:
+      use: 다이렉트 스레드
+      stems:
+      - 다이렉트 스레드
     means: "A thread between specific people that does not belong to any group. Builds on the word for thread."
     be:
       use: "прамая тэма"
@@ -1140,6 +1193,10 @@ terms:
       stems: ["私人對話串"]
       note: "直接 is a literal rendering; 私密 is reserved for group privacy settings."
   context:
+    ko:
+      use: 배경
+      stems:
+      - 배경
     means: "The introduction at the top of a thread that explains what it is about."
     be:
       use: "кантэкст"
@@ -1233,6 +1290,10 @@ terms:
       stems: ["背景"]
       note: "論述 means discourse and 上下文 is a technical sense; the thread context is its background introduction."
   comment:
+    ko:
+      use: 댓글
+      stems:
+      - 댓글
     means: "A message posted in a thread."
     be:
       use: "каментарый"
@@ -1312,6 +1373,10 @@ terms:
       stems: ["評論"]
       note: "意見 (opinion) also appears; converge on 評論."
   reply:
+    ko:
+      use: 답글
+      stems:
+      - 답글
     means: "A comment responding to another comment, or the action of writing one."
     be:
       use: "адказ"
@@ -1407,6 +1472,10 @@ terms:
       use: "回覆"
       stems: ["回覆"]
   reaction:
+    ko:
+      use: 반응
+      stems:
+      - 반응
     means: "An emoji response to a comment, poll or vote."
     be:
       use: "рэакцыя"
@@ -1490,6 +1559,10 @@ terms:
       stems: ["反應"]
       note: "表情反應 where the emoji sense needs stating."
   mention:
+    ko:
+      use: 멘션
+      stems:
+      - 멘션
     means: "Naming a person with @ so they are notified."
     be:
       use: "згадка"
@@ -1583,6 +1656,10 @@ terms:
       use: "提及"
       stems: ["提及", "提到"]
   tag:
+    ko:
+      use: 태그
+      stems:
+      - 태그
     means: "A label used to organise threads and polls."
     be:
       use: "тэг"
@@ -1671,6 +1748,10 @@ terms:
       use: "標籤"
       stems: ["標籤"]
   task:
+    ko:
+      use: 할 일
+      stems:
+      - 할 일
     means: "A to-do item with an optional due date, created in rich text."
     be:
       use: "задача"
@@ -1750,6 +1831,10 @@ terms:
       stems: ["工作"]
       note: "Taiwan software convention for to-do items, as in Microsoft TW."
   template:
+    ko:
+      use: 템플릿
+      stems:
+      - 템플릿
     means: "A reusable starting point for a new thread or poll."
     be:
       use: "шаблон"
@@ -1831,6 +1916,10 @@ terms:
       stems: ["範本"]
       note: "Taiwan software convention; 模板 is mainland usage."
   notification:
+    ko:
+      use: 알림
+      stems:
+      - 알림
     means: "A message telling a person about activity, in the app or by email."
     be:
       use: "апавяшчэнне"
@@ -1908,6 +1997,10 @@ terms:
       use: "通知"
       stems: ["通知"]
   decision:
+    ko:
+      use: 결정
+      stems:
+      - 결정
     means: "A choice made by a group, usually by a poll. General term covering all poll types."
     be:
       use: "рашэнне"
@@ -1992,6 +2085,11 @@ terms:
       stems: ["決定", "決策"]
       note: "決策 is acceptable in list headings such as 決策範本."
   poll:
+    ko:
+      use: 투표
+      note: 투표 names the complete decision tool; distinguish the activity or individual response through natural Korean context.
+      stems:
+      - 투표
     means: "The general Loomio decision tool, and also the poll type for choosing among options. Not a public opinion survey."
     be:
       use: "апытанне"
@@ -2101,6 +2199,10 @@ terms:
       stems: ["投票"]
       note: "Chinese uses 投票 for both poll and vote; 輪詢 is computer polling and 民意調查 is an opinion survey."
   proposal:
+    ko:
+      use: 제안
+      stems:
+      - 제안
     means: "A poll type asking people to agree, abstain, disagree or block on a proposed course of action."
     be:
       use: "прапанова"
@@ -2185,6 +2287,11 @@ terms:
       stems: ["提案"]
       note: "Majority usage; converge 提議 on 提案."
   vote:
+    ko:
+      use: 표
+      note: Use 투표 for the action, 투표하기 on action buttons, and 표 for an individual ballot or vote count where natural.
+      stems:
+      - 표
     means: "A person's response to a poll (noun), or giving that response (verb)."
     be:
       use: "голас"
@@ -2287,6 +2394,10 @@ terms:
       stems: ["投票", "票"]
       note: "Same word as poll; use 票 when counting votes (%{count} 票)."
   voter:
+    ko:
+      use: 투표자
+      stems:
+      - 투표자
     means: "A person who can vote, or has voted, in a poll."
     be:
       use: "выбаршчык"
@@ -2375,6 +2486,10 @@ terms:
       stems: ["投票者"]
       note: "Replaces the majority 選民, which suggests a political electorate."
   participant:
+    ko:
+      use: 참여자
+      stems:
+      - 참여자
     means: "A person taking part in a thread or poll."
     be:
       use: "удзельнік"
@@ -2455,6 +2570,10 @@ terms:
       use: "參與者"
       stems: ["參與者"]
   option:
+    ko:
+      use: 선택지
+      stems:
+      - 선택지
     means: "One of the choices people vote on in a poll."
     be:
       use: "варыянт"
@@ -2541,6 +2660,10 @@ terms:
       use: "選項"
       stems: ["選項"]
   reason:
+    ko:
+      use: 이유
+      stems:
+      - 이유
     means: "The explanation a person gives with their vote."
     be:
       use: "прычына"
@@ -2638,6 +2761,13 @@ terms:
       stems: ["理由"]
       note: "理由 is the justification a voter gives; 原因 means a cause."
   outcome:
+    ko:
+      use: 결론
+      note: 'The author-written conclusion after a poll: what was decided and what happens next. Never 결과, which is reserved for the vote tally (results).'
+      stems:
+      - 결론
+      avoid:
+      - 결과
     means: "The statement a poll's author writes after it closes, saying what was decided and what happens next. Translate it with the word for \"conclusion\", which translates reliably and stays distinct from the vote tally (results). Never use the word for \"result\"."
     be:
       use: "выснова"
@@ -2756,6 +2886,13 @@ terms:
       stems: ["結論"]
       note: "Per translation_corrections.md; 結果 is reserved for results."
   results:
+    ko:
+      use: 결과
+      note: The vote tally, counts and percentages. Never 결론, which is the author-written outcome.
+      stems:
+      - 결과
+      avoid:
+      - 결론
     means: "The vote tally of a poll, such as counts and percentages for each option."
     be:
       use: "вынікі"
@@ -2837,6 +2974,10 @@ terms:
       use: "結果"
       stems: ["結果"]
   "closing date":
+    ko:
+      use: 마감일
+      stems:
+      - 마감일
     means: "The date and time a poll stops accepting votes. Not a financial or accounting close."
     be:
       use: "дата закрыцця"
@@ -2924,6 +3065,10 @@ terms:
       avoid: ["結算日期", "決算日"]
       stems: ["截止"]
   quorum:
+    ko:
+      use: 정족수
+      stems:
+      - 정족수
     means: "The share of voters who must vote for a poll's result to count."
     be:
       use: "кворум"
@@ -3010,6 +3155,10 @@ terms:
       use: "法定人數"
       stems: ["法定人數"]
   anonymous:
+    ko:
+      use: 익명
+      stems:
+      - 익명
     means: "A poll setting where votes are not linked to the people who cast them."
     be:
       use: "ананімны"
@@ -3084,6 +3233,10 @@ terms:
       use: "匿名"
       stems: ["匿名"]
   agree:
+    ko:
+      use: 동의
+      stems:
+      - 동의
     means: "A proposal option meaning the person supports the proposal."
     be:
       use: "Пагаджаюся"
@@ -3193,6 +3346,10 @@ terms:
       stems: ["贊同"]
       note: "Agree-with sense, as in Chinese consensus-process guides; 贊成 is \"in favour\" (for/against). 同意 is kept for consent."
   abstain:
+    ko:
+      use: 기권
+      stems:
+      - 기권
     means: "A proposal option meaning the person deliberately takes no side."
     be:
       use: "Устрымліваюся"
@@ -3286,6 +3443,10 @@ terms:
       use: "棄權"
       stems: ["棄權"]
   disagree:
+    ko:
+      use: 반대
+      stems:
+      - 반대
     means: "A proposal option meaning the person is against the proposal but will not stop it."
     be:
       use: "Не пагаджаюся"
@@ -3389,6 +3550,13 @@ terms:
       stems: ["不贊同"]
       note: "Pairs with 贊同; 反對 is \"against\" and 不同意 reads as withholding consent (同意)."
   block:
+    ko:
+      use: 거부
+      note: A serious objection that prevents a proposal proceeding, not blocking a person; never 차단 for this proposal option.
+      stems:
+      - 거부
+      avoid:
+      - 차단
     means: "A proposal option meaning the person has a serious objection and believes the proposal should not go ahead. Like a veto, not a lump of material."
     be:
       use: "Блакую"
@@ -3505,6 +3673,11 @@ terms:
       stems: ["否決"]
       note: "A veto; 阻擋 means physically obstruct and 堵塞 means clog."
   consent:
+    ko:
+      use: 이의 없음
+      note: The absence of a reasoned objection, not consensus or enthusiastic agreement. Use 이의 없음 for the proposal option; 이의 없는 의사결정 for the process.
+      stems:
+      - 이의 없음
     means: "A proposal option in the consent process, meaning the person can live with the proposal."
     be:
       use: "Згода"
@@ -3601,6 +3774,10 @@ terms:
       use: "同意"
       stems: ["同意"]
   objection:
+    ko:
+      use: 이의
+      stems:
+      - 이의
     means: "A proposal option in the consent process, meaning the person has a reasoned concern that must be resolved."
     be:
       use: "Пярэчанне"
@@ -3685,6 +3862,10 @@ terms:
       use: "異議"
       stems: ["異議"]
   "sense check":
+    ko:
+      use: 의견 확인
+      stems:
+      - 의견 확인
     means: "A poll type for quickly testing how people feel about an idea."
     be:
       use: "праверка меркаванняў"
@@ -3805,6 +3986,10 @@ terms:
       avoid: ["感覺檢查", "感官檢查"]
       stems: ["意見徵詢"]
   "time poll":
+    ko:
+      use: 일정 투표
+      stems:
+      - 일정 투표
     means: "A poll type for finding a meeting time that suits people."
     be:
       use: "апытанне пра час"
@@ -3917,6 +4102,10 @@ terms:
       avoid: ["時間調查"]
       stems: ["時間投票"]
   "dot vote":
+    ko:
+      use: 점 배분 투표
+      stems:
+      - 점 배분 투표
     means: "A poll type where each person distributes a fixed number of points among options."
     be:
       use: "размеркаванне балаў"
@@ -4017,6 +4206,10 @@ terms:
       use: "點投票"
       stems: ["點投票"]
   "score poll":
+    ko:
+      use: 점수 투표
+      stems:
+      - 점수 투표
     means: "A poll type where each person gives each option a score."
     be:
       use: "ацэначнае апытанне"
@@ -4118,6 +4311,10 @@ terms:
       stems: ["評分投票"]
       note: "Matches the Score method name (評分)."
   "ranked choice":
+    ko:
+      use: 선호 순위 투표
+      stems:
+      - 선호 순위 투표
     means: "A poll type where people rank options in order of preference."
     be:
       use: "рэйтынгавы выбар"
@@ -4220,6 +4417,10 @@ terms:
       use: "排序選擇"
       stems: ["排序選擇"]
   "STV election":
+    ko:
+      use: 단기이양식 선거
+      stems:
+      - 단기이양식 선거
     means: "A poll type electing several candidates by single transferable vote."
     be:
       use: "выбары па STV"
@@ -4310,6 +4511,10 @@ terms:
       stems: ["stv"]
       note: "Spell out 單記可轉移投票 only in explanatory prose."
   "question round":
+    ko:
+      use: 질문 라운드
+      stems:
+      - 질문 라운드
     means: "A poll type where each person answers a question in turn."
     be:
       use: "раўнд пытанняў"
@@ -4394,6 +4599,10 @@ terms:
       avoid: ["問題輪", "提問輪"]
       stems: ["問答環節"]
   seat:
+    ko:
+      use: 의석
+      stems:
+      - 의석
     means: "One of the positions to be filled in an STV election."
     be:
       use: "месца"
@@ -4480,6 +4689,11 @@ terms:
       avoid: ["座位"]
       stems: ["席次"]
   quota:
+    ko:
+      use: 당선 기준표
+      note: The vote threshold needed to win a seat in an STV election, not a resource allowance.
+      stems:
+      - 당선 기준표
     means: "The number of votes a candidate needs to be elected in an STV election."
     be:
       use: "квота"
@@ -4567,6 +4781,10 @@ terms:
       stems: ["配額"]
       note: "Droop and Hare stay untranslated; 當選所需票數 can explain it in prose."
   round:
+    ko:
+      use: 라운드
+      stems:
+      - 라운드
     means: "One step of counting in an STV election or a round of a question round."
     be:
       use: "раўнд"
@@ -4651,6 +4869,10 @@ terms:
       stems: ["輪"]
       note: "Counting rounds use 第 %{round} 輪; question round uses 環節 instead."
   elected:
+    ko:
+      use: 당선
+      stems:
+      - 당선
     means: "Having won a seat in an STV election."
     be:
       use: "абраны"
@@ -4731,6 +4953,10 @@ terms:
       use: "當選"
       stems: ["當選"]
   eliminated:
+    ko:
+      use: 탈락
+      stems:
+      - 탈락
     means: "Removed from the count in an STV election because of having the fewest votes."
     be:
       use: "выбывае"
@@ -4816,6 +5042,10 @@ terms:
       use: "淘汰"
       stems: ["淘汰"]
   "vote weight":
+    ko:
+      use: 투표 가중치
+      stems:
+      - 투표 가중치
     means: "How much one person's vote counts in a weighted poll. A number, not a physical weight."
     be:
       use: "вага голасу"
@@ -4914,6 +5144,10 @@ terms:
       use: "投票權重"
       stems: ["投票權重", "權重"]
   "voting method":
+    ko:
+      use: 투표 방식
+      stems:
+      - 투표 방식
     means: "How people answer a poll, such as Choose, Score, Allocate or Rank. Shown when choosing what kind of poll to start."
     be:
       use: "спосаб галасавання"
@@ -4990,6 +5224,10 @@ terms:
       use: "投票方式"
       stems: ["投票方式"]
   "Choose":
+    ko:
+      use: 선택
+      stems:
+      - 선택
     means: "The voting method where people pick the best option (or options). A feature name on a button or menu."
     be:
       use: "Выбар"
@@ -5097,6 +5335,10 @@ terms:
       stems: ["選擇"]
       note: "Feature name; the poll type (choose among options)."
   "Allocate":
+    ko:
+      use: 배분
+      stems:
+      - 배분
     means: "The voting method where people share out a budget of points between options. A feature name."
     be:
       use: "Размеркаванне"
@@ -5213,6 +5455,10 @@ terms:
       stems: ["分配"]
       note: "Same feature as dot vote (點投票); prefer 分配 as the method name."
   "Rank":
+    ko:
+      use: 순위
+      stems:
+      - 순위
     means: "The voting method where people put options in order of preference. A feature name."
     be:
       use: "Ранжыраванне"
@@ -5333,6 +5579,10 @@ terms:
       stems: ["排序"]
       note: "秩 is a mathematical rank/order; matches ranked choice (排序選擇)."
   "Score":
+    ko:
+      use: 점수
+      stems:
+      - 점수
     means: "The voting method where people give each option a score. A feature name."
     be:
       use: "Ацэнка"
@@ -5444,6 +5694,10 @@ terms:
       stems: ["評分"]
       note: "Matches score poll (評分投票); 分數 is a number, not the act of scoring."
   "show of thumbs":
+    ko:
+      use: 엄지 투표
+      stems:
+      - 엄지 투표
     means: "A quick poll where people answer thumb up, down, sideways or hand up."
     be:
       use: "вялікі палец"
@@ -5553,6 +5807,10 @@ terms:
       stems: ["拇指"]
       note: "豎起大拇指 means \"give a thumbs up\" (praise)."
   "opt-in":
+    ko:
+      use: 참여 신청
+      stems:
+      - 참여 신청
     means: "A poll type where people say whether they will take part, and it goes ahead once enough people opt in."
     be:
       use: "запіс ахвотных"
@@ -5664,6 +5922,11 @@ terms:
       stems: ["報名"]
       note: "報名 is the everyday word for signing up to take part."
   consensus:
+    ko:
+      use: 합의
+      note: A process seeking a decision everyone can support; do not add unanimity unless the English explicitly requires it.
+      stems:
+      - 합의
     means: "A decision process that seeks agreement everyone can support. Distinct from consent, which asks only that nobody has a reasoned objection."
     be:
       use: "кансенсус"
@@ -5766,6 +6029,11 @@ terms:
       stems: ["共識"]
       note: "Distinct from consent (同意)."
   "open group":
+    ko:
+      use: 공개 그룹
+      note: Discoverable and open to join or request membership.
+      stems:
+      - 공개 그룹
     means: "A group anyone can find and ask to join, or join directly."
     be:
       use: "адкрытая група"
@@ -5867,6 +6135,11 @@ terms:
       stems: ["公開"]
       note: "Facebook TW group privacy level 公開."
   "closed group":
+    ko:
+      use: 비공개 그룹
+      note: Discoverable but joining requires invitation or approval; distinguish from a hidden group.
+      stems:
+      - 비공개 그룹
     means: "A group people can find but must be invited or approved to join."
     be:
       use: "закрытая група"
@@ -5957,6 +6230,11 @@ terms:
       stems: ["不公開"]
       note: "Facebook TW's 不公開社團; 封閉 is understood but less familiar."
   "secret group":
+    ko:
+      use: 숨김 그룹
+      note: Visible only to members; distinguish from a discoverable closed group.
+      stems:
+      - 숨김 그룹
     means: "A group only its members can see."
     be:
       use: "сакрэтная група"
@@ -6046,6 +6324,10 @@ terms:
       stems: ["私密"]
       note: "Facebook TW's 私密社團."
   close:
+    ko:
+      use: 마감
+      stems:
+      - 마감
     means: "To end a poll so it stops accepting votes (verb), as in close a poll early. Also closed, describing an ended poll."
     be:
       use: "закрыць"
@@ -6152,6 +6434,10 @@ terms:
       stems: ["結束"]
       note: "Polls end (投票結束, 提早結束, 已結束); avoids 關閉, which blurs with closed group."
   reopen:
+    ko:
+      use: 다시 열기
+      stems:
+      - 다시 열기
     means: "To start voting again on a closed poll."
     be:
       use: "адкрыць зноў"
@@ -6247,6 +6533,10 @@ terms:
       avoid: ["重新打開"]
       stems: ["重新開放"]
   not voted:
+    ko:
+      use: 미투표
+      stems:
+      - 미투표
     means: "Invited voters who have not voted yet."
     be:
       use: "не прагаласавалі"
@@ -6369,6 +6659,10 @@ terms:
       stems: ["未投票"]
       note: "Means not yet voted; 未決定 reads as \"still making up their mind\"."
   "results hidden":
+    ko:
+      use: 결과 숨김
+      stems:
+      - 결과 숨김
     means: "A poll setting that hides the results until the poll closes."
     be:
       use: "вынікі схаваныя"
@@ -6450,6 +6744,10 @@ terms:
       stems: ["隱藏"]
       note: "For the status form use 結果已隱藏."
   "weighted voting":
+    ko:
+      use: 가중 투표
+      stems:
+      - 가중 투표
     means: "A poll setting where some people's votes count more than others, by their vote weight."
     be:
       use: "узважанае галасаванне"
@@ -6528,6 +6826,10 @@ terms:
       use: "加權投票"
       stems: ["加權"]
   pin:
+    ko:
+      use: 고정
+      stems:
+      - 고정
     means: "To keep a thread at the top of the group's thread list so people see it first. Adding an item to a thread's timeline is a separate action."
     be:
       use: "замацаваць"
@@ -6637,6 +6939,10 @@ terms:
       stems: ["置頂"]
       note: "LINE, Messenger and Facebook TW use 置頂; 釘選 (Microsoft/Slack) is acceptable but less everyday."
   mute:
+    ko:
+      use: 알림 끄기
+      stems:
+      - 알림 끄기
     means: "To stop notifications about a thread or group."
     be:
       use: "адключыць гук"
@@ -6744,6 +7050,10 @@ terms:
       use: "靜音"
       stems: ["靜音"]
   "catch-up email":
+    ko:
+      use: 활동 요약 이메일
+      stems:
+      - 활동 요약 이메일
     means: "A regular email summarising recent activity in a person's groups."
     be:
       use: "зводка"
@@ -6857,6 +7167,10 @@ terms:
       stems: ["摘要"]
       note: "A summary of recent activity, not a resent or progress email (see translation_corrections.md)."
   dashboard:
+    ko:
+      use: 대시보드
+      stems:
+      - 대시보드
     means: "The page listing recent threads and polls from all of a person's groups."
     be:
       use: "стужка"
@@ -6955,6 +7269,10 @@ terms:
       use: "儀表板"
       stems: ["儀表板"]
   inbox:
+    ko:
+      use: 받은 편지함
+      stems:
+      - 받은 편지함
     means: "The page listing unread threads for a person to catch up on."
     be:
       use: "уваходныя"

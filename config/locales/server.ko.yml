@@ -1,0 +1,814 @@
+---
+ko:
+  group_export_started: 그룹 데이터 내보내기가 시작되었습니다
+  error:
+    access_denied: 이 작업을 수행할 권한이 없습니다
+  thread_markdown:
+    poll: 투표
+    no_activity: 아직 댓글, 투표, 표, 결론이 없습니다
+    voted: "%{author}: %{response}에 투표했습니다"
+    voted_hidden: "%{author}: 투표했습니다"
+    vote_removed: "%{author}: 표 삭제됨"
+    not_voted: "%{author}: 미투표"
+    superseded: 대체됨
+    shared_outcome: "%{author}: 결론을 공유했습니다"
+    removed: 삭제됨
+    status: "**상태:** %{value}"
+    anonymous_voting: "**익명 투표:** %{value}"
+    options: "**선택지:** %{value}"
+    'yes': 예
+    closed: '마감: %{value}'
+    scheduled_to_open: '시작 예정: %{value}'
+    open_until: '진행 중; 마감: %{value}'
+    open: 진행 중
+    current_results: 현재 결과
+    hidden_until_closed: 투표 마감까지 숨김
+    hidden_until_voted: 열람자가 투표할 때까지 숨김
+    voters: 투표자
+    target: 목표
+    available: 가능
+    available_if_needed: 필요하면 가능
+    unavailable: 불가능
+    anonymous: 익명
+    no_voters: 투표자 없음
+    score: '점수: %{value}'
+    none_of_the_above: 해당 없음
+    no_option_selected: 선택한 선택지 없음
+    review_date: "**검토일:** %{value}"
+  locale_names:
+    en: 영어
+    be-BY: 벨라루스어
+    bg-BG: 불가리아어
+    ca: 카탈루냐어
+    cs: 체코어
+    zh-TW: 중국어 (번체, 대만)
+    da: 덴마크어
+    de: 독일어
+    es: 스페인어
+    eo: 에스페란토어
+    el: 그리스어
+    fr: 프랑스어
+    he: 히브리어
+    id: 인도네시아어
+    it: 이탈리아어
+    hu: 헝가리어
+    ja: 일본어
+    ko: 한국어
+    ml: 말라얄람어
+    nl-NL: 네덜란드어
+    pl: 폴란드어
+    pt-BR: 포르투갈어 (브라질)
+    ro: 루마니아어
+    sr: 세르비아어 (라틴 문자)
+    sr-RS: 세르비아어 (키릴 문자)
+    sk: 슬로바키아어
+    sv: 스웨덴어
+    vi: 베트남어
+    tr: 튀르키예어
+    uk: 우크라이나어
+    an: 아라곤어
+    ar: 아랍어
+    cmn: 중국어 (표준 중국어)
+    hr: 크로아티아어
+    it-CH: 이탈리아어 (스위스)
+    fi: 핀란드어
+    gl: 갈리시아어
+    ga-IE: 게일어 (아일랜드)
+    hi: 힌디어
+    km: 크메르어
+    lv: 라트비아어
+    mk: 마케도니아어
+    mi: 마오리어
+    fa-IR: 페르시아어 (이란)
+    pt-PT: 포르투갈어
+    ru: 러시아어
+    sl: 슬로베니아어
+    te: 텔루구어
+    ur: 우르두어
+    ur-PK: 우르두어 (파키스탄)
+    be: 벨라루스어
+    pt: 포르투갈어
+    zh: 중국어(번체, 대만)
+    zh-HK: 중국어(번체, 대만)
+  poll_templates:
+    sense_check:
+      concerned_meaning: 이의 없음이나 동의를 표하려면 일부가 바뀌어야 할 것 같습니다
+      concerned_prompt: 어떤 점이 우려되고 어떻게 해결할 수 있을까요?
+      details_v2: "<h3><strong>무엇을 제안하나요?</strong></h3><p></p><h3><strong>왜 중요한가요?</strong></h3><p></p><h3><strong>사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>좋은지, 개선이 필요한지, 다시 생각해 봐야 하는지 밝히고 이유를 나눠 주세요.</p>"
+      looks_good_meaning_v2: 방향이 마음에 듭니다
+      looks_good_prompt_v2: 어떤 점이 마음에 드나요?
+      could_be_better: 개선 필요
+      could_be_better_meaning: 가능성은 있지만 제안할 점이 있습니다
+      could_be_better_prompt: 어떤 점을 바꾸고 싶나요?
+      needs_a_rethink: 재검토 필요
+      needs_a_rethink_meaning: 접근 방식이 잘못됐다고 생각합니다
+      needs_a_rethink_prompt: 어떤 점이 우려되나요?
+      process_subtitle: 의견, 질문, 우려 사항 받기
+      process_subtitle_v2: 방향이 맞는지 확인하기
+      process_introduction_v2: "<p><strong>의견 확인</strong>은 결정을 확정하기 전에 초기 의견을 받는 데 도움이 됩니다. 참여자는 방향이 좋아 보이는지 말하거나 우려를 알려 주므로, 정식 제안으로 넘어가기 전에 방향을 조정할 수 있습니다. 결정을 내리는 단계가 아니라 분위기를 살피는 단계입니다.</p>"
+      process_introduction: <p>의견 확인 제안은 의견과 질문을 받고 우려 사항을 파악하기 좋은 방법입니다. 결정을 내리기 전에 제안을 명확히 하고 개선하는 데 도움이 됩니다.</p><p>의견 확인은 제안을 준비 중임을 알리고 참여를 독려합니다. 사람들의 이야기를 듣고 생각을 살펴 적절히 대응할 기회이며, 그 의견을 반영해 더 나은 결정을 내릴 수 있습니다.</p> <p>이의 없는 의사결정 과정에서는 의견 확인 제안으로 반응과 댓글을 받아 제안을 개선하고, 합의 과정에서는 합의 여부를 확인하세요.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/simple_decision_process"><u>간단한 의사결정 과정에서 의견 확인을 사용하는 방법 알아보기</u></a><span>.</span></p>
+      title: 새 브랜드 구상에 대해 어떻게 생각하나요?
+      details: <h3 id="what-are-you-proposing"><strong>무엇을 제안하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>이것이 왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>제안에 대해 어떻게 생각하나요?  댓글을 남기거나 개선할 점을 제안하세요.</p><p>이번 의견 확인은 더 나은 결정을 내릴 수 있도록 의견을 보태고 기여하는 기회입니다.</p>
+      outcome_statement: "<p>의견 확인에 참여해 주셔서 감사합니다.</p>"
+      not_sure: 잘 모르겠음
+      not_sure_meaning: 질문이 있거나 시간이 더 필요합니다
+      not_sure_prompt: 어떤 부분이 불분명한가요? 어떻게 해결하면 좋을까요?
+      looks_good: 좋아 보임
+      looks_good_meaning: 현재 방향이 좋습니다
+      looks_good_prompt: 제안을 개선할 의견이나 제안이 있나요?
+      abstain: 기권
+      abstain_meaning: 덧붙일 의견도, 이 작업에 대한 이의도 없습니다.
+      abstain_prompt: 기권은 이 제안의 방향에 이의가 없음을 뜻합니다. 기권에 투표하는 이유가 있나요?
+      concerned: 우려됨
+    gradients_of_agreement:
+      process_subtitle: 제안에 대한 지지 정도를 8단계로 표현
+      process_introduction: "<p>단계별 동의 제안은 그룹 멤버가 제안에 대한 지지 정도를 척도로 표현할 수 있게 합니다. 단순히 “동의”나 “반대”를 고르는 것보다 다양한 방식으로 지지를 표현할 수 있습니다.</p> <p>공식 합의에 앞서 제안에 대한 지지를 확인하는 예비 라운드로 단계별 동의를 사용하세요.</p><p>단계별 동의는 제안을 다듬는 중임을 알리고 참여를 유도합니다. 사람들의 의견을 듣고 생각을 파악해 적절히 대응할 기회입니다. 이를 통해 사람들의 의견을 반영해 더 나은 결정을 내릴 수 있습니다.</p>"
+      title: 새 가치 선언문이 어떤가요?
+      details: <h3 id="what-are-you-proposing"><strong>무엇을 제안하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>제안이 어떤가요?  아래 척도로 지지 정도를 표현하고 댓글이나 개선 의견을 남겨 주세요.</p><p>이 단계별 동의 제안은 제안에 대한 지지를 확인하고, 공식 합의에 앞서 의견을 낼 기회입니다.</p>
+      whole_hearted_endorsement: 전폭적 지지
+      whole_hearted_endorsement_meaning: 정말 마음에 듭니다
+      whole_hearted_endorsement_prompt: 어떤 점이 마음에 드나요?
+      agreement_with_minor_contention: 사소한 이견이 있지만 동의
+      agreement_with_minor_contention_meaning: 완벽하지는 않지만 충분히 좋습니다
+      agreement_with_minor_contention_prompt: 어떤 점이 우려되나요?
+      support_with_reservations: 유보적 지지
+      support_with_reservations_meaning: 받아들일 만합니다
+      support_with_reservations_prompt: 어떤 점이 걸리나요?
+      abstain_meaning: 이 사안은 제게 영향을 주지 않습니다
+      abstain_prompt: 덧붙이고 싶은 말이 있나요?
+      more_discussion_needed: 추가 토론 필요
+      more_discussion_needed_meaning: 아직 쟁점을 충분히 이해하지 못했습니다
+      more_discussion_needed_prompt: 어떤 점이 이해되지 않나요?
+      don_t_like_but_will_support: 마음에 들지 않지만 지지
+      don_t_like_but_will_support_meaning: 썩 좋지는 않지만 그룹의 진행을 막고 싶지는 않습니다
+      don_t_like_but_will_support_prompt: 어떤 점이 개선되면 좋겠나요?
+      serious_disagreement: 강한 반대
+      serious_disagreement_meaning: 동참할 뜻이 없습니다 - 제 참여를 기대하지 마세요
+      serious_disagreement_prompt: 어떤 점에 반대하나요?
+      veto: 거부
+      veto_meaning: 이 제안을 거부합니다
+      veto_prompt: 왜 제안을 거부하나요? 지지하려면 무엇이 바뀌어야 하나요?
+    simple_poll:
+      process_subtitle: 가장 인기 있는 선택지 찾기
+      process_subtitle_v2: 단일 또는 복수 선택 투표로 선호도 확인
+      process_introduction: <p>단일 선택 또는 복수 선택 투표로 가장 인기 있는 선택지를 찾아보세요.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#simple-poll">단순 투표 자세히 알아보기</a>.</p>
+      process_introduction_v2: <p><strong>선택</strong>으로 가장 인기 있는 선택지를 찾을 수 있습니다. 참여자는 목록에서 선택하며, 하나만 고를지 여러 개를 고를지 설정할 수 있습니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#simple-poll">선택 자세히 알아보기</a>.</p>
+      title: 우리의 전략 방향은 어디에 초점을 맞춰야 할까요?
+      details: <h3 id="what-is-this-poll-about"><strong>이 투표는 무엇에 관한 것인가요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>선호하는 선택지를 고르세요.</p>
+    practice_proposal:
+      title: 이제 조금씩 익숙해지고 있습니다
+      process_name: 연습용 제안
+      process_subtitle: 제안을 직접 해 보며 사용법을 익히세요
+      process_introduction: "<p>그룹이 Loomio의 제안 기능에 익숙해지도록 도와주세요. 부담 없이 간단하게 투표를 해 보며 전체 과정을 익힐 수 있습니다.</p>"
+      details: "<p>모두가 Loomio의 제안 방식에 익숙해지도록 하는 연습입니다.</p><p>투표하고, 원하면 이유도 남겨 주세요.</p><p>부담도, 실제로 영향을 미칠 일도 없습니다. 제안이 어떻게 진행되는지 알아보는 연습일 뿐입니다.</p>"
+      outcome_statement: "<p>연습용 제안에 참여해 주셔서 감사합니다. \U0001F389</p><p>Loomio에서 투표하고 댓글을 다는 방법을 알아보는 시간이었습니다. 실제 결정은 내리지 않았지만, 모두가 과정에 익숙해지는 데 도움이 되었기를 바랍니다.</p>"
+      title_v2: 피자에는 파인애플이 어울립니다
+      process_subtitle_v2: 제안을 직접 해 보며 투표 방법을 익히세요
+      process_introduction_v2: "<p>그룹이 Loomio에서 재미있게 투표를 연습하는 방법입니다. 가벼운 질문을 골라 투표하고 이유를 남겨 보세요. 실제 결정 없이 연습만 합니다.</p>"
+      details_v2: "<p>연습용 제안으로, 실제 결정은 내리지 않습니다.</p><p>투표하고 이유를 남기며 Loomio에서 제안이 어떻게 진행되는지 알아보세요.</p>"
+      outcome_statement_v2: "<p>제안을 체험해 주셔서 감사합니다. 이제 Loomio에서 투표하는 방법을 알게 되셨습니다.</p>"
+      agree_meaning: 동의합니다
+      agree_prompt: 왜 동의하시나요?
+      abstain_meaning: 별다른 의견이 없습니다
+      abstain_prompt: 의견이 있나요?
+      disagree_meaning: 반대합니다
+      disagree_prompt: 왜 반대하시나요?
+    try_loomio:
+      process_name: Loomio 사용해 보기
+      process_subtitle: 그룹이 함께 Loomio를 써 보기로 약속하세요
+      process_introduction: "<p>Loomio를 잘 활용하려면 그룹이 함께 참여하기로 약속해야 합니다. 이 제안은 체험 기간 동안 사용하거나 함께 요금제에 가입하는 등, Loomio를 제대로 써 보는 데 시간과 노력을 들일지 그룹이 결정하도록 돕습니다.</p>"
+      title: 함께 Loomio를 써 보기로 약속합시다
+      details: "<p>Loomio를 잘 쓰려면 그룹이 함께 노력해야 합니다. 사람들이 찾아와 참여해야 효과가 있습니다.</p><p>이 제안은 체험 기간 동안 모두가 Loomio를 적극적으로 사용하기로 약속하자는 내용입니다. 새 소식을 확인하고, 제안에 투표하고, 토론에 참여하는 것을 뜻합니다.</p><p>우려되는 점이 있다면 이의를 제기하고 무엇이 바뀌어야 할지 알려 주세요. 이의 선택지는 이럴 때 사용합니다.</p>"
+      outcome_statement: "<p>이 제안의 결론을 그룹에 공유하세요. 무엇을 결정했고 다음에 무엇을 할지 알려 주세요.</p>"
+      consent_meaning: 써 볼 의향이 있습니다
+      consent_prompt: Loomio를 쓰면서 어떤 점이 기대되나요?
+      objection_meaning: 먼저 해결해야 할 우려가 있습니다
+      objection_prompt: 참여를 약속하려면 무엇이 바뀌어야 하나요?
+    proposal:
+      process_subtitle: 결정을 내리기 위한 제안을 올리세요
+      process_introduction: <p>Loomio의 기본 제안은 토론을 명확한 결론으로 이어 주어 결정을 돕습니다.</p><p>실행할 방안을 제안하고 사람들이 동의, 기권, 반대 중 하나에 투표하도록 초대하세요.</p><p>투표할 때는 선택한 이유를 남길 수 있습니다. 다른 사람들의 입장과 그 이유를 확인할 수 있습니다.</p><p>이처럼 제안으로 사람들의 응답을 이끌어 내고, 새로운 정보를 발견하고, 서로의 이해를 넓힐 수 있습니다. 그룹이 더 충분한 정보를 바탕으로 더 나은 결정을 내리는 데 도움이 됩니다.</p><p>제안과 관련 토론에는 결정이 이루어진 과정이 기록됩니다.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/simple_decision_process"><u>간단한 결정 과정에서 Loomio의 기본 제안을 사용하는 방법 자세히 알아보기</u></a>.</p>
+      title: 새 브랜드 콘셉트 승인
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>무엇을 결정해야 하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>사람들에게 무엇을 요청하나요?</strong></h3><p></p> <p>이 제안이 통과되려면 멤버 과반수가 동의에 투표해야 합니다.</p><p>반대한다면 이유와 동의하려면 무엇이 바뀌어야 할지 알려 주세요.</p>
+      agree: 동의
+      agree_meaning: 제안을 지지합니다
+      agree_prompt: 제안의 어떤 점이 좋고 그룹에 어떤 도움이 되나요?
+      abstain: 기권
+      abstain_meaning: 이 결정에 투표하지 않기로 했거나 투표할 수 없습니다.
+      abstain_prompt: 기권하거나 이 결정에 투표하기 어렵다고 느끼는 이유는 무엇인가요?
+      disagree: 반대
+      disagree_meaning: 이 제안을 지지하려면 일부 내용이 바뀌어야 합니다.
+      disagree_prompt: 이 제안을 지지할 수 있도록 어떻게 개선하면 좋을까요?
+    consensus:
+      abstain_meaning: 이 결정은 제게 영향을 주지 않으며 그룹이 어떤 결정을 내려도 괜찮습니다
+      abstain_prompt: 기권하거나 이 결정에 투표하기 어렵다고 느끼는 이유는 무엇인가요?
+      disagree: 반대
+      disagree_meaning: 이 제안을 지지하려면 바뀌어야 할 부분이 있습니다
+      disagree_prompt: 이 제안을 지지할 수 있도록 어떻게 개선하면 좋을까요?
+      block: 거부
+      block_meaning: 이 제안을 거부하며 진행해서는 안 된다고 생각합니다
+      block_prompt: 이 제안에 이의를 제기하는 이유와 진행해서는 안 되는 이유를 설명하세요
+      process_subtitle: 모든 관계자가 함께 합의에 도달하세요
+      process_introduction_v2: "<p><strong>합의</strong>는 모두의 적극적인 동의가 중요한 결정에 쓰입니다. 참여자들은 서로의 필요를 이해하고 그룹 전체가 지지할 수 있을 때까지 함께 제안을 다듬습니다. 대화가 진행되는 동안 표를 바꿀 수 있으므로, 한 번의 투표로 결정하기보다 진솔한 대화를 나누게 됩니다. 다른 방법보다 인내가 더 필요하지만 가장 강한 실천 의지를 이끌어 냅니다.</p><p>이 템플릿에는 기본으로 <strong>거부</strong> 선택지가 포함됩니다. 거부가 모든 그룹에 적합한 것은 아닙니다. 논란이 되거나 오용될 수 있습니다. 의사결정 과정에서 거부를 사용하지 않는다면 템플릿을 편집해 삭제하는 것이 좋습니다.</p>"
+      process_introduction: <p>내려야 할 결정에 대해 합의를 이루어 모든 참여자의 필요와 우려를 반영하는 결정을 내리세요.</p><ul><li><p>함께 토론하고 제안을 다듬으세요</p></li><li><p>관계자 모두를 참여시키고 존중하세요</p></li><li><p>대다수의 동의를 구하세요&nbsp;</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/consensus_process">합의 절차 자세히 알아보기</a>.</p>
+      title: 새 브랜드 콘셉트 승인
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>이 제안이 통과되려면 멤버 과반수가 동의에 투표해야 합니다. </p><p>반대한다면 이유와 동의하기 위해 바뀌어야 할 점을 알려 주세요.</p>
+      details_v2: "<h3><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3><strong>왜 중요한가요?</strong></h3><p></p><h3><strong>사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>입장과 이유를 알려 주세요. 반대한다면 지지할 수 있도록 무엇이 바뀌어야 하는지 설명해 주세요.</p>"
+      outcome_statement: "<p>합의 절차에 참여해 주셔서 감사합니다.</p>"
+      agree: 동의
+      agree_meaning: 제안을 지지합니다
+      agree_prompt: 제안의 어떤 점이 좋으며 조직에 어떤 도움이 될까요?
+      abstain: 기권
+    majority:
+      process_subtitle: 가장 많은 표로 결정하기
+      process_introduction: "<p><strong>다수결</strong>은 그룹이 결정하는 가장 간단한 방법입니다. 참여자가 찬성이나 반대에 투표하고, 과반수가 찬성하면 제안이 통과됩니다. 기권이나 거부가 없어 모든 표의 투표 가중치가 같습니다.</p><p>다수결은 명확한 결론이 필요한 간단한 결정에 적합합니다. 서로 이해하고 공통점을 찾기 위해 함께 노력하는 것이 중요한 결정이라면 이의 없는 의사결정이나 합의를 고려하세요.</p>"
+      title: 3분기 예산 승인
+      details: "<h3><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3><strong>이것이 왜 중요한가요?</strong></h3><p></p><h3><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p>"
+      yes_meaning: 이 제안을 지지합니다
+      yes_prompt: 이 제안을 지지하는 이유는 무엇인가요?
+      no_meaning: 이 제안을 지지하지 않습니다
+      no_prompt: 이 제안을 지지하지 않는 이유는 무엇인가요?
+      outcome_statement: "<p>이번 다수결 투표에 참여해 주셔서 감사합니다.</p>"
+    question_round:
+      process_subtitle: 제안을 이해하는 데 도움이 되는 질문 받기
+      process_introduction: <p>질문 라운드는 제안에 대한 의견을 말하기 전에 모두가 제안을 이해할 수 있도록 궁금한 점을 묻는 기회입니다.</p><p>Loomio 질문 라운드는 투표 선택지가 없는 특별한 제안입니다. 참여자는 라운드에 설정된 기간 동안 질문할 수 있습니다.</p><p>질문 라운드는 보통 이의 없는 의사결정 과정의 한 단계로 사용됩니다.</p><p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">이의 없는 의사결정 과정 자세히 알아보기</a>.</p>
+      title: 보건 및 안전 정책에 대해 어떤 질문이 있나요?
+      details: <h3 id="what-are-you-proposing"><strong>무엇을 제안하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>이것이 왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>제안을 이해하는 데 필요한 질문을 하는 질문 라운드입니다.</p> <p>제안을 이해하려면 무엇을 알아야 하나요?</p> <p>질문 라운드가 마감되기 전에 답변하세요.</p>
+      reason_prompt: 제안을 이해하려면 무엇을 알아야 하나요?
+      outcome_statement: "<p>이번 라운드에서 질문해 주셔서 감사합니다</p>"
+    advice:
+      process_subtitle: 내려야 할 결정에 대해 조언을 구하세요
+      process_introduction: <p>내려야 할 결정에 대해 영향을 받는 사람이나 전문 지식이 있는 사람에게 조언을 구해 조직을 위한 더 나은 결정을 내리세요.</p><ul><li><p>조언은 조직을 위한 더 나은 결정을 내리는 데 도움이 됩니다.</p></li><li><p>관계를 쌓고 배움의 기회와 다양한 의견을 나누세요.&nbsp;&nbsp;</p></li><li><p>주도성과 창의성을 키우고 더 즐겁게 일하세요.</p></li></ul><p><a target="_blank" href="/docs/en/guides/making_decisions/advice_process"><u>조언 절차 자세히 알아보기</u></a>.</p>
+      title: 다카시의 새 컴퓨터 구매 돕기
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>좋은 결정을 내리기 위해 어떤 조언을 구하나요?</strong></h3><p></p><p>우리 조직을 위한 좋은 결정을 내리고자 의견을 구합니다.</p>
+      agree: 동의
+      agree_meaning: 이 결정에 대해 조언했습니다
+      agree_prompt: 조언을 요약하거나 도움이 될 댓글을 남겨 주세요
+      abstain: 기권
+      abstain_meaning: 드릴 조언이 없습니다
+      abstain_prompt: 도움이 될 의견이 있나요?
+      outcome_statement: "<p>조언 라운드에 참여해 주셔서 감사합니다!</p>"
+    consent:
+      process_subtitle: 이의 없이 ‘안전하게 시도할 수 있는’ 결정을 내리세요
+      process_subtitle_v2: 이의가 없으면 진행하세요
+      process_introduction_v2: "<p><strong>이의 없음</strong>은 제안이 완벽한지가 아니라 안전하게 시도할 수 있는지를 묻습니다. 타당한 이의가 없으면 제안이 통과됩니다. 이의가 있으면 그룹이 함께 해결합니다. 참여자는 제안이 바뀌는 동안 표를 바꿀 수 있으므로, 이의는 걸림돌이 아닌 개선 도구가 됩니다.</p>"
+      process_introduction: <p>내려야 할 결정에 대해 제안에 타당한 이의가 없는지 확인해, 조직을 위해 '안전하게 시도할 수 있는' 결정을 빠르게 내리세요.</p><ul><li><p>‘충분히 괜찮은’ 결정을 목표로 하세요</p></li><li><p>다양한 의견을 모아 실행 가능한 제안을 만드세요</p></li><li><p>타당한 이의가 있는지 물어보세요</p></li><li><p>제안을 수정해 이의를 해결하세요</p></li></ul> <p><a target="_blank" href="/docs/en/guides/making_decisions/consent_process">이의 없는 의사결정 절차 자세히 알아보기</a>.</p>
+      title: 클로이를 디자이너로 채용
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>이 제안에서 사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>이의가 있으면 이유를 설명하고 제안을 안전하게 만들 수정안을 제시해 주세요.</p><p>조직을 위한 좋은 결정을 내리고자, '안전하게 시도할 수 있는' ‘충분히 괜찮은’ 결정에 이의가 없는지 확인하는 과정임을 기억해 주세요.</p>
+      consent: 이의 없음
+      consent_meaning: 안전하게 시도할 수 있는 제안입니다
+      consent_prompt: 제안의 어떤 점이 좋으며 조직에 어떤 도움이 될까요?
+      objection: 이의
+      objection_meaning: 타당한 이의가 있으며 제안이 해를 끼칠 것이라고 생각합니다
+      objection_prompt: 이 제안을 지지할 수 있도록 '안전하게 시도할 수 있는' 제안으로 만들려면 무엇을 바꿔야 하나요?
+      details_v2: "<h3><strong>어떤 결정을 내려야 하나요?</strong></h3><p></p><h3><strong>왜 중요한가요?</strong></h3><p></p><h3><strong>이 제안에서 사람들에게 무엇을 요청하나요?</strong></h3><p></p><p>완벽함을 목표로 하지는 않습니다. 제안이 충분히 괜찮고 안전하게 시도할 수 있다면 이의 없음을 선택하세요. 이의가 있으면 실행 가능하도록 무엇을 바꿔야 하는지 알려 주세요.</p>"
+      outcome_statement: "<p>이의 없는 의사결정 절차에 참여해 주셔서 감사합니다.</p>"
+    opt_in:
+      accept_meaning: 참여할 의향이 있습니다
+      accept_prompt: 참여하려는 이유는 무엇인가요?
+      decline_meaning: 참여할 수 없습니다
+      decline_prompt: 하고 싶은 말이 있나요?
+      process_subtitle: 지원자 찾기 또는 참여자 모집
+      process_introduction: '<p>참여 신청으로 팀, 위원회, 실무 그룹이나 행사에 사람들을 초대하세요.&nbsp;&nbsp;</p><p>‘참여 신청’에는 수락과 거절, 두 가지 투표 선택지가 있습니다.&nbsp;</p><p>실무 그룹에 참여할 3명처럼 모집할 인원수를 정할 수 있습니다.</p> <p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#opt-in">참여 신청 자세히 알아보기</a>.</p> '
+      title: 새 지속가능성 정책 초안을 작성할 실무 그룹
+      details: "<p><strong>어떤 팀, 실무 그룹 또는 행사에 초대하나요?</strong></p><p></p><p><strong>왜 중요한가요?</strong></p><p></p><p><strong>참여자에게 무엇을 요청하나요?</strong></p><p></p><p>참여하려면 '수락'을 선택하세요</p>"
+    score_poll:
+      process_subtitle: 선택지별 지지 정도 측정
+      process_subtitle_v2: 선택지별 지지 수준 측정
+      process_subtitle_v3: 투표자에게 각 선택지의 지지 정도 평가 요청
+      process_introduction: <p>각 선택지에 대한 바람, 선호도, 관심도를 알아보려면 점수 투표를 사용하세요.</p><p><span>참여자는 각 선택지를 평가하고 슬라이더를 움직여 점수를 매깁니다.</span></p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#score-poll">점수 투표 자세히 알아보기</a>.</p>
+      process_introduction_v2: <p><strong>점수</strong>로 각 선택지에 대한 그룹의 지지 수준을 측정할 수 있습니다. 참여자는 슬라이더로 모든 선택지에 점수를 매깁니다. 무엇을 선호하는지뿐 아니라 얼마나 선호하는지도 알 수 있습니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#score-poll">점수 투표 자세히 알아보기</a>.</p>
+      title: 우리 조직의 결정 방식 평가
+      details: <h3 id="what-is-this-poll-about"><strong>이 투표는 무엇에 관한 것인가요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>선호하는 선택지를 고르세요.</p>
+    dot_vote:
+      process_subtitle: 주어진 점수를 배분해 우선순위 파악
+      process_subtitle_v2: 모두 선택할 수 없을 때 우선순위 파악
+      process_subtitle_v3: 모두 선택할 수 없을 때 우선순위를 파악합니다. 점 투표라고도 합니다.
+      process_introduction: <p>점 배분 투표로 한정된 자원을 여러 선택지에 배분할 수 있습니다. 단순 투표에서 더 나아가, 참여자가 선택할 때 제약을 고려하도록 돕습니다.</p><p>참여자는 각자 배분할 점수를 받습니다.</p><p>모든 점수를 하나의 선택지에 주거나 여러 선택지에 나눠 줄 수 있습니다.</p><p>주어진 점수를 넘길 수 없으므로 배분 방식을 신중하게 생각해야 합니다.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#dot-vote">점 배분 투표 자세히 알아보기</a>.</p>
+      process_introduction_v2: <p><strong>배분</strong>으로 모두 선택할 수 없는 상황에서 그룹의 우선순위를 알 수 있습니다. 참여자는 각자 주어진 점수를 선택지에 배분합니다. 하나에 모두 주거나 여러 개에 나눠 줄 수 있습니다. 점수가 한정되어 있어 배분한 점수마다 우선순위가 드러납니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#dot-vote">배분 자세히 알아보기</a>.</p>
+      title: 우리 콘퍼런스의 주제 선정
+      details: <h3 id="what-is-this-poll-about"><strong>이 투표는 무엇에 관한 것인가요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>이 투표에서는 주어진 점수를 선호하는 선택지에 배분합니다. 하나에 모두 주거나 여러 개에 나눠 줄 수 있습니다.</p>
+    ranked_choice:
+      process_subtitle: 선택지의 선호 순위 파악
+      process_subtitle_v2: 그룹의 선호 순위 파악
+      process_subtitle_v3: 선호하는 순서대로 선택지 정렬
+      process_introduction: <p>선호 순위 투표는 선택지가 많거나 선거를 진행할 때 유용합니다.</p><p>투표자는 선택지를 끌어다 놓아 선호하는 순서로 정렬합니다.</p><p>결과는 순위순으로 표시됩니다.</p><p><a target="_blank"  href="/docs/en/user_manual/polls/proposal_types#ranked-choice">선호 순위 투표 자세히 알아보기</a>.</p>
+      process_introduction_v2: <p><strong>순위</strong>로 그룹의 선호 순위를 알 수 있습니다. 참여자는 선택지를 끌어다 놓아 가장 선호하는 것부터 차례로 정렬하며, 결과에는 전체 순위가 표시됩니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/proposal_types#ranked-choice">순위 자세히 알아보기</a>.</p>
+      title: 이사회 이사 선출
+      details: <h3 id="what-is-this-poll-about"><strong>이 투표는 무엇에 관한 것인가요?</strong></h3><p></p><h3 id="why-is-this-important"><strong>왜 중요한가요?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>참여자에게 무엇을 요청하나요?</strong></h3><p></p><p>선호하는 순서대로 선택지에 순위를 매겨 투표하세요.  결과에서 1위를 차지한 선택지가 선정됩니다.</p>
+    stv:
+      process_subtitle: 득표 비율에 따라 여러 당선자 선출
+      process_introduction: <p>STV(단기이양식 투표)는 여러 당선자를 뽑는 비례대표 선거 방식입니다. 투표자는 선호하는 순서대로 후보에 순위를 매깁니다. 당선 기준표에 도달한 후보가 당선되며, 초과 득표나 탈락한 후보의 표는 다음 순위 후보에게 이전됩니다.</p><p>의석 수, 개표 방식(스코틀랜드식 또는 미크식), 당선 기준표 유형(드룹식 또는 헤어식)을 설정하세요. 결과에는 라운드별 표 이전 내역이 표시됩니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/stv">단기이양식 선거 자세히 알아보기</a>.</p>
+      title: 위원 선출
+      details: <h3 id="what-is-this-election-about"><strong>이 선거는 무엇에 관한 것인가요?</strong></h3><p></p><h3 id="how-many-seats"><strong>몇 의석을 채우나요?</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>후보는 누구인가요?</strong></h3><p></p><p>후보를 끌어다 놓아 선호하는 순서대로 투표하세요. 1순위는 가장 선호하는 후보입니다. 원하는 수만큼 후보에 순위를 매길 수 있습니다.</p>
+    time_poll:
+      process_subtitle: 가장 적합한 회의 시간 찾기
+      process_subtitle_v2: 참석 가능한 시간 찾기
+      process_introduction: <p>회의나 행사에 가장 적합한 시간을 빠르게 찾아보세요. 제목, 세부 내용, 날짜와 시간 선택지를 본인의 시간대로 추가하세요. 참여자에게는 각자의 시간대로 표시됩니다.</p><p>일정 투표가 마감되면 가장 적합한 시간과 회의 안내를 결론으로 작성하세요. Loomio가 결론 이메일에 캘린더 초대를 함께 보내므로 참여자가 캘린더에 추가할 수 있습니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">일정 투표 자세히 알아보기</a>.</p>
+      process_introduction_v2: <p><strong>일정 투표</strong>로 참석 가능한 시간을 찾을 수 있습니다. 제안할 시간을 추가하면 참여자에게 각자의 시간대로 표시됩니다. 투표가 마감된 뒤 결론을 작성하면 Loomio가 모두에게 캘린더 초대를 보냅니다.</p><p><a target="_blank" href="/docs/en/user_manual/polls/meeting_polls#time-poll">일정 투표 자세히 알아보기</a>.</p>
+      title: 다음 회의 날짜를 정해요
+      details: "<p><strong>어떤 회의나 행사인가요?</strong></p><p></p><p><strong>왜 중요한가요?</strong></p><p></p><p><strong>참여자에게 무엇을 요청하나요?</strong></p><p></p><p><span>참석 가능한 시간대에는 초록색 '엄지 올림' 아이콘을 표시하고, 불가능한 시간대에는 빨간색 '엄지 내림'을 그대로 두세요. </span></p><p><span>'필요하면' 참석할 수 있는 시간대에는 '엄지 옆으로' 아이콘을 사용하세요.</span></p>"
+      reason_prompt: 주최자가 적합한 시간을 찾는 데 도움이 될 말이 있나요?
+  errors:
+    messages:
+      email: 올바른 이메일 주소가 아닙니다
+      spoofed_media_type: 파일 내용이 파일명과 일치하지 않습니다
+      pwned_password: 이 비밀번호는 과거에 유출된 적이 있으므로 사용하면 안 됩니다
+    attachments_admin_only: 스레드 관리자와 그룹 관리자만 이 스레드에 첨부 파일을 추가할 수 있습니다
+    item_you_are_replying_to_deleted: 답글을 달려는 항목이 삭제되었습니다
+    invitation_rate_limit_reached_contact_support: 일일 초대 한도에 도달했습니다. 즉시 고객 지원팀에 문의하세요.
+    subscription_thread_limit_reached: 이 조직의 스레드 수가 한도에 도달했습니다. Loomio를 계속 사용하려면 업그레이드하세요.
+    new_account_trial_group_limit: 새 계정은 그룹을 하나만 만들 수 있습니다. 더 필요하면 고객 지원팀에 문의하세요.
+    clear_cache: 불러오는 중 문제가 발생했습니다. Shift 키를 누른 채 새로고침하거나 브라우저 캐시를 지우세요.
+    direct_thread_anonymous_poll: 익명 투표가 포함된 스레드는 다이렉트 스레드로 전환할 수 없습니다
+    '400':
+      title: 잘못된 요청
+      body: 죄송합니다. 요청을 이해할 수 없습니다
+    '401':
+      title: 인증 필요
+      body: 이 페이지에 접근할 권한이 없습니다. 로그인이 필요할 수 있습니다.
+    '403':
+      title: 접근 금지
+      body: 이 페이지에 접근할 권한이 없습니다. 로그인이 필요할 수 있습니다.
+    '404':
+      title: 찾을 수 없음
+      body: 요청한 항목을 찾을 수 없습니다. 토론이나 투표가 삭제되었을 수 있습니다.
+    '410':
+      title: 삭제됨
+      body: 이 페이지는 더 이상 존재하지 않습니다
+    '417':
+      title: 지원하지 않는 브라우저
+      body: Loomio를 사용하려면 <a href="https://browser-update.org/update.html?force_outdated=true">브라우저를 업그레이드</a>하세요
+    '422':
+      title: 처리할 수 없는 요청
+      body: 요청한 변경이 거부되었습니다. 접근 권한이 없는 항목을 변경하려 했을 수 있습니다.
+    '429':
+      title: 요청이 너무 많음
+      body: 죄송합니다. 이 작업의 분당 최대 요청 횟수를 초과했습니다. 잠시 후 다시 시도하세요.
+    '500':
+      title: 서버 내부 오류
+      body: 죄송합니다. 문제가 발생했습니다. 문제가 접수되었으며 곧 확인하겠습니다.
+    noscript: Loomio를 사용하려면 JavaScript가 필요합니다! 계속하려면 브라우저에서 JavaScript를 활성화하세요
+    return_home: 홈으로 돌아가기
+    not_found: 404 파일을 찾을 수 없습니다.
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "%{parent_handle}-로 시작해야 합니다"
+      handle_must_be_url_friendly: 영문 소문자(a-z), 숫자(0-9), 하이픈(-)만 사용하세요
+      no_public_trials: 그룹 공개 설정을 변경하려면 체험판에서 유료 요금제로 업그레이드하세요
+    stats:
+      group_stats: 그룹 통계
+      org_stats: 조직 통계(하위 그룹 포함)
+      visits: 방문 수
+      members: 멤버
+      subgroups: 하위 그룹
+      threads: 스레드
+      polls: 투표
+      votes: 표 수
+      comments: 댓글
+      general: 일반
+      poll_types:
+        proposal: 제안
+        count: 인원 확인
+        choose: 선택
+        allocate: 배분
+        score: 점수
+        rank: 순위
+        time: 일정 투표
+  user:
+    deleted_user: 삭제된 사용자
+    placeholder_name: 초대된 사용자(%{hostname})
+    error:
+      sign_in_required_html: |
+        계속하려면 로그인해야 합니다.
+        <a href="/dashboard" target="_blank">로그인</a>한 뒤 이 페이지를 새로고침하세요.
+      bad_login: 비밀번호가 등록된 비밀번호와 일치하지 않습니다
+      username_must_be_alphanumeric: 사용자명에는 영문 소문자와 숫자만 사용할 수 있습니다
+      username_must_use_valid_characters: 사용자명에는 영문 소문자, 숫자, 밑줄과 처음이나 끝을 제외한 위치의 하이픈만 사용할 수 있습니다
+  poll:
+    error:
+      cannot_add_options: 이 투표에는 선택지를 추가할 수 없습니다
+      cannot_remove_options: 이 투표에서는 선택지를 삭제할 수 없습니다
+      must_have_options: 투표 선택지가 하나 이상 있어야 합니다
+      must_be_in_the_future: 현재보다 이후여야 합니다
+      templates_cannot_close: 템플릿은 마감할 수 없습니다
+      opening_at_before_closing_at: 시작일은 마감일보다 빨라야 합니다
+      poll_options_dont_match: Loomio 오류로 표를 저장하지 못했습니다. 오류를 수정하고 있습니다. 새로고침한 뒤 다시 시도하세요.
+    export:
+      title: 제목
+      author: 작성자
+      email: 이메일
+      user_id: 사용자 ID
+      created_at: 생성 일시
+      closing_at: 마감 예정 일시
+      closed_at: 마감 일시
+      is_latest: 최신 여부
+      engagement: 참여도
+      stances: 투표 응답
+      participants: 참여자
+      details: 상세 내용
+      group_name: 그룹 이름
+      discussion_title: 스레드 제목
+      outcome_author: 결론 작성자
+      outcome_created_at: 결론 작성 일시
+      outcome_statement: 결론 내용
+      poll_url: 투표 URL
+      reason: 이유
+      participant: 참여자
+      also_available: 다음 시간에도 가능
+      total: 합계
+    waiting_for_votes_from: 투표 대기 중인 참여자
+  discussion_templates:
+    funding_decision:
+      funding: 자금 지원
+      title_placeholder: 로봇 순회 행사 자금 신청
+      process_name: 자금 지원 결정
+      process_subtitle: 보조금, 대출, 투자 신청을 검토하고 자금 지원을 결정하세요.
+      process_introduction: "<p>자금 지원 신청을 소개하고 문서와 기타 증빙 자료를 첨부하세요.</p><p>스레드 배경에 신청 내용을 요약하세요.</p><p>권한이 있는 사람들이 신청서를 검토하고 질문하도록 안내하세요. 토론할 시간을 충분히 주세요.</p><p>합의 제안을 올려 자금 지원을 승인하세요.</p><p>반대하는 사람이 있으면 이유를 물어보세요. 예를 들어 정보가 더 필요할 수 있습니다. 우려가 해소되면 표를 바꾸도록 안내하세요.</p><p>자금 지원 신청에 대한 결정이 명확해지면 결론을 작성해 결정을 기록하세요.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">자금 지원 신청을 소개하고 요약하세요</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">이 신청은 자금 지원 기준에 어떻게 부합하나요?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">이 자금 지원 결정을 승인할 권한은 누구에게 있나요?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">신청을 검토할 수 있도록 결정권자들의 질문을 받으세요</h3><p></p>
+    approve_a_document:
+      title_placeholder: 브랜드 전략 수립
+      process_name: 문서 승인
+      process_subtitle: 중요한 문서, 정책 또는 합의문을 소개하고 토론하며 발전시키세요.
+      process_introduction: "<p>배경 정보와 함께 문서를 소개하세요. 초점을 유지할 수 있도록 문서의 목적을 밝히세요.</p><p>참여자들이 정보와 전문 지식을 나누도록 요청하고, 이를 바탕으로 문서의 틀을 잡으세요. 참여자들의 의견과 기여를 인정하고 검토하세요.</p><p>참여자들의 기여를 반영해 초안을 작성하고, 승인할 준비가 될 때까지 수정하세요.</p><p>의견 확인 투표로 의견을 모으고 초안의 쟁점을 명확히 하세요.</p><p>의견을 검토하고 문서에 반영한 뒤, 이의 없음 또는 합의 제안으로 승인이나 합의를 진행하세요.</p><p>스레드에는 문서 작성 과정과 결정 사항이 명확하게 기록됩니다.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">문서의 목적은 무엇인가요?</h3><p></p><h3 id="why-is-this-important">왜 중요한가요?</h3><p></p><h3 id="what-are-you-asking-people-to-do">참여자들에게 무엇을 요청하나요?</h3><p></p>
+      document: 문서
+    practice_thread:
+      process_name: 토론 연습
+      process_subtitle: 그룹에 온 사람들을 환영하고 Loomio 사용을 연습하세요
+      process_introduction: "<p>새 멤버를 환영하고 처음부터 참여하도록 격려하세요. 자기소개를 부탁하고 Loomio의 기능을 함께 살펴보세요.</p>"
+      title: "\U0001F44B 환영합니다. 인사하고 기능을 사용해 보세요"
+      description: "<p>Loomio 그룹에 오신 것을 환영합니다. 함께하게 되어 반갑습니다.</p><p>이 스레드에서 다음을 해 보세요:</p><ul>\n<li><p>그룹에 자기소개하기</p></li>\n<li><p>Loomio의 기능 사용해 보기 - 예: 반응 남기기 \U0001F44D</p></li>\n<li><p>지금 궁금한 점 질문하기</p></li>\n</ul><p>무슨 말을 할지 모르겠다면 간단한 인사도 좋습니다 \U0001F642</p>"
+      process_subtitle_v2: 서로 환영하고 함께 Loomio 사용에 익숙해지세요
+      process_introduction_v2: "<p>새 그룹을 위한 환영 스레드입니다. 서로 소개하고, 댓글과 반응 같은 기능을 써 보고, 첫 제안을 진행합니다.</p>"
+      title_v2: 환영합니다. 자기소개하고 기능을 사용해 보세요
+      description_v2: "<p>그룹에 오신 것을 환영합니다. 이 스레드에서 인사하고, 질문하고, 기능을 써 보며 Loomio에 익숙해지세요.</p><p>댓글이나 반응을 남기거나 아래 제안 중 하나를 시작하세요.</p><p>무슨 말을 할지 모르겠다면 간단한 인사도 좋습니다. 아래 투표 도구 중 하나를 사용해 보셔도 좋습니다.</p>"
+    blank:
+      process_name: 빈 템플릿
+      process_subtitle: 어떤 주제로든 새 토론을 시작하세요
+      process_introduction: "<p>원하는 주제로 그룹에서 토론을 시작하세요.</p> <p>기본적으로 토론을 시작하면 그룹의 모든 멤버에게 알림이 갑니다. 아래 '초대' 항목을 수정해 변경할 수 있습니다.</p>"
+    discuss_a_topic:
+      title_placeholder: 어떤 주제로 토론하고 싶나요?
+      process_name: 주제 토론
+      process_subtitle: 그룹과 토론을 시작하세요
+      process_introduction: "<p>그룹에서 다루고 싶은 사안, 문제 또는 기회가 있나요?</p><p>주제를 소개하고, 배경 정보 링크를 추가하고, 댓글과 아이디어, 도움을 요청하세요.</p><p>생각과 관련 정보를 나누며 참여하도록 사람들을 초대하세요. 특정 사람의 관심이 필요하면 @멘션을 사용하세요.</p><p>토론이 결론으로 이어지도록 진행 상황에 맞춰 스레드 배경을 업데이트하세요.</p><p>모든 정보가 모일 때까지 기다리지 말고 스레드를 시작하세요. 스레드에서 함께 주제를 살펴보고 해결책을 찾도록 도움을 요청하세요.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">주제를 소개하고 설명하세요</h3><p></p><h3 id="why-is-this-important">왜 중요한가요?</h3><p></p><h3 id="how-would-you-like-people-to-respond">어떤 응답을 원하나요?</h3><p></p>
+    onboarding_to_loomio:
+      title: 우리 그룹의 Loomio 활용
+      process_name: 함께 Loomio 사용해 보기
+      process_subtitle: Loomio를 처음 쓰는 사람들이 댓글 작성과 투표를 연습하는 스레드입니다.
+      process_introduction: "<p>사람들에게 Loomio를 소개하세요.</p><p>간단한 자기소개 스레드와 연습용 제안으로 Loomio를 경험해 보세요</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Loomio를 사용하려는 이유는 무엇인가요?</h3><p>우리 조직의 결정에 사람들이 참여하도록 Loomio를 사용하려고 합니다.</p><h3 id="what-are-you-asking-people-to-do">어떤 참여를 요청하나요?</h3><p>생각을 들려주세요. 아래에 댓글을 남기고 제안에 투표하세요.</p><p>댓글 오른쪽 아래의 답글 아이콘을 클릭하면 답글을 쓸 수 있습니다.</p><p>@멘션으로 사람들에게 알림을 보내세요.</p>
+      onboarding: 시작 안내
+    consent_process:
+      title_placeholder: 우리 조직의 보건·안전 정책 수립
+      process_name: 이의 없는 의사결정
+      process_subtitle: 이의 없이 ‘시도해도 안전한’ 결정을 내리세요.
+      process_introduction: '<p>제안에 타당한 이의가 없는지 확인해, 지금 ''시도해도 안전한'' 결정을 빠르게 내리세요.</p><p>주요 역할:</p><ul><li><p>제안자: 결정이 필요한 주제를 꺼내는 사람입니다.</p></li><li><p>진행자: 제안자가 일을 효율적으로 진행하도록 돕는 사람입니다.</p></li></ul><p>일반적인 진행 단계:</p><p>1단계. Loomio 스레드로 제안을 소개하세요.</p><p>2단계. 의견 확인으로 질문, 반응, 댓글을 나누는 라운드를 진행해 제안을 개선하세요.</p><p>3단계. 제시된 의견과 댓글을 반영해 제안을 수정하세요.</p><p>4단계. 이의 없음 제안으로 수정된 제안에 타당한 이의가 있는지 물어보세요.</p><p>5단계. 타당한 이의를 반영해 모두가 ‘시도해도 안전하다’고 이의 없이 받아들이는 제안으로 수정하고, 마무리되면 결정의 결론을 작성하세요.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consent_process">자세히 보기: 이의 없는 의사결정.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">어떤 결정을 내려야 하나요?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">왜 중요하며 어떤 영향이 있나요?</h3><p></p><h3 id="what-information-do-people-need-for-context">배경을 이해하는 데 어떤 정보가 필요한가요?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">이 과정의 진행자는 누구인가요?</h3><p></p>
+      consent: 이의 없음
+    advice_process:
+      title_placeholder: 새 컴퓨터 구매를 위한 조언 구하기
+      process_name: 조언 절차
+      process_subtitle: 내려야 할 결정에 관해 조언을 구하세요.
+      process_introduction: '<p>영향을 받는 사람이나 전문 지식이 있는 사람의 조언을 바탕으로 조직에 더 나은 결정을 내리세요.</p><p>주요 역할:</p><ul><li><p>진행자: 결정을 내리는 사람이 맡거나 다른 사람에게 진행을 부탁하세요.</p></li><li><p>조언자: 영향을 받거나 전문 지식이 있어 초대한 사람들입니다.</p></li></ul><p>일반적인 진행 단계:</p><p>1단계. 행동을 제안하기 전에 의견을 구해 여러 관점을 살펴보세요.</p><p>2단계. 제안을 작성하고 조언을 구하세요 - 조언 제안을 진행하세요.</p><p>3단계. 받은 조언을 고려해 결정을 내리고 조언한 사람들에게 알리세요 - 결론을 작성하세요.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/advice_process">자세히 보기: 조언 절차.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">어떤 결정을 내려야 하나요?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">왜 중요하며 어떤 영향이 있나요?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">좋은 결정을 내리기 위해 어떤 조언을 구하나요?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">이 과정의 진행자는 누구인가요?</h3><p></p>
+      advice: 조언
+    pass_a_resolution:
+      title_placeholder: 전략 승인 결의안
+      process_name: 결의안 통과
+      process_subtitle: 배경 정보와 함께 결의안을 소개하고, 질문에 답한 뒤 결의안 통과를 위한 제안을 올리세요.
+      process_introduction: <p>로버트 의사규칙은 다수의 뜻을 따르면서도 소수의 의견을 들을 수 있도록 그룹이 질서 있게 회의를 진행하는 데 도움이 되는 규정과 윤리 규칙입니다. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> 멤버가 “다음과 같이 동의합니다…”라고 말하며 행동이나 결정을 제안합니다. 다른 멤버가 “그 동의에 재청합니다.”라고 말해 재청해야 합니다. 재청이 있으면 그룹은 해당 동의안을 표결합니다. 정관에 정한 규칙에 따라 과반수 찬성이나 정족수 충족으로 통과됩니다.</p>
+      description: "<p><strong>통과시킬 결의안을 적으세요</strong></p><p></p><p><strong>배경 정보를 간략히 적으세요</strong></p><p></p><p><strong>멤버들이 질문하고, 댓글을 남기고, 정보를 보태 함께 이해를 넓히도록 안내하세요</strong></p><p></p>"
+      resolution: 결의안
+    decision_by_consensus:
+      title_placeholder: 우리 단체 정관 개정
+      process_name: 합의로 결정
+      process_subtitle: 관련된 모든 사람과 함께 합의에 이르세요.
+      process_introduction: '<p>함께 내려야 할 결정에 대해 합의를 이루어 모든 참여자의 필요와 우려를 충족하세요.</p><p>일반적인 역할:</p><ul><li><p>진행자를 정하세요.&nbsp; (이사회 회의에서는 보통 의장이 맡습니다.)</p></li><li><p>단체 정관에 명시된 정족수 또는 특별다수에 해당하는 멤버가 참여해야 합니다.</p></li></ul><p>일반적인 진행 단계:</p><p>1단계. 쟁점이나 결정안에 대해 자유롭게 토론할 자리를 마련하세요.</p><p>2단계. 의견 확인 제안으로 합의 여부를 확인하고 이의를 파악하세요.&nbsp;</p><p>3단계. 불분명한 점을 설명하고, 건설적인 수정 의견을 받아 제안을 수정하세요.</p><p>4단계. 합의 제안으로 동의 여부와 남은 이의를 확인하세요.</p><p>5단계. 결론과 단체의 공식 회의록에 결정을 기록하세요.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/making_decisions/consensus_process">자세히 보기: 합의 절차.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">어떤 결정을 내려야 하나요?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">왜 중요하며 어떤 영향이 있나요?</h3><p></p><h3 id="what-information-do-people-need-for-context">배경을 이해하려면 어떤 정보가 필요한가요?</h3><p></p><h3 id="who-is-the-facilitator">진행자는 누구인가요?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">결정하려면 어떤 조건을 충족해야 하나요?</h3><h3 id=""></h3>
+      consensus: 합의
+    share_links_and_info:
+      title_placeholder: 링크와 정보 공유
+      process_name: 링크와 정보 공유
+      process_subtitle: 정보, 링크, 보고서를 올려 공유하고 댓글과 토론으로 의견을 나누세요.
+      process_introduction: "<p>스레드를 그룹의 '담벼락'이나 '게시판'으로 사용해 서로 나누고 싶은 정보, 소식, 아이디어를 올리세요.</p><p>그룹이 Loomio 안에서 정보를 볼 수 있도록 <strong>링크 삽입</strong>과 <strong>동영상 삽입</strong> 서식 도구를 사용하도록 안내하세요. 댓글에 <strong>제목</strong>을 사용하면 스레드 타임라인에 표시되어 쉽게 찾을 수 있습니다.</p><p>스레드를 <strong>고정</strong>해 계속 눈에 띄게 하고, <strong>반응</strong>으로 게시물을 봤다는 것을 알려 활발한 참여를 이끌어 보세요.</p><p>이 스레드의 기본 정렬은 <strong>최신순</strong>으로, 가장 최근 댓글이 스레드 맨 위에 표시됩니다.</p>"
+      description: <p>이 스레드에 정보, 공지, 나누고 싶은 내용을 올리세요. 어떤 일이 있는지 살펴보고 참여할 수 있는 공간입니다.</p><p data-text-align="start">행사, 보고서, 팟캐스트 등 흥미로운 온라인 정보를 공유하세요.</p><p data-text-align="start">Loomio 안에서 정보를 볼 수 있도록 <strong>링크 삽입</strong>과 <strong>동영상 삽입</strong> 서식 도구를 사용하세요.</p>
+      information: 정보
+    prepare_for_a_meeting:
+      title_placeholder: 다음 회의 준비
+      process_name: 회의 준비
+      process_subtitle: 안건을 정하고, 이사회 자료를 올리고, 행정 사항을 정리해 모두가 최신 상황과 배경을 파악하고 준비하도록 하세요.
+      description: <p><strong>회의의 핵심 주제</strong></p><p></p><p data-text-align="start"><strong>주요 안건</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>지난 회의의 실행 사항</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>참여자는 회의를 어떻게 준비해야 하나요?</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>회의 자료 목록</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>처음부터 사람들을 참여시키고 가장 중요한 주제에 집중해 효과적인 회의를 계획하고, 함께하는 소중한 시간을 알차게 쓰세요.</p> <p>스레드를 회의 공간으로 활용해 핵심 주제와 안건을 정하고, 적절한 날짜를 찾고, 주요 문서와 보고서를 올리고, 안건 토론을 시작하고, 실행 사항과 회의록을 공유하세요.</p><p>이렇게 하면 모두가 자료를 읽고 토론 주제와 내려야 할 결정을 생각하며 회의를 준비할 수 있습니다. 멤버들이 배경을 파악하고 준비된 상태로 회의에 참석하는 데 도움이 됩니다.</p> <p>Loomio의 좋은 거버넌스 가이드에서 <a target="_blank" rel="noopener noreferrer nofollow" href="/docs/en/guides/board_processes/meeting"><u>회의 준비</u></a>에 대해 자세히 알아보세요.</p>
+      meeting: 회의
+    build_a_policy:
+      title_placeholder: 채용 정책 개정
+      process_name: 정책 수립
+      process_subtitle: 팀과 함께 정책이나 절차 문서를 만들고 합의하세요.
+      process_introduction: "<p><span>스레드는 정책을 토론하는 공간으로, 요구 사항과 원칙에 합의하고 문서 초안을 올려 의견을 받을 수 있습니다.</span></p><p><span>이 템플릿으로 소수의 사람들과 정책을 만들거나, 단체 전체에 과정을 공개하고 문서가 수정될 때마다 의견을 받아 보세요.</span></p><p><span>의견 확인 제안으로 그룹 멤버에게 초안을 검토할 준비가 되었다고 알리고, 문서를 읽은 뒤 의견이나 질문을 남기도록 안내하세요.</span></p><p><span>'최종' 초안이 준비되면 이의 없음 또는 합의 제안을 올려 문서를 승인하세요.</span></p>"
+      description: "<p><strong><span>어떤 정책이나 문서를 만들어야 하나요?</span></strong></p><p></p><p><strong><span>왜 중요한가요?</span></strong></p><p></p><p><strong><span>사람들에게 무엇을 요청하나요?</span></strong></p><p></p>"
+      policy: 정책
+    elect_a_governance_position:
+      title_placeholder: 평의회 후보 추천 및 선거
+      process_name: 임원 선출
+      process_subtitle: 평의회, 위원회, 이사회의 임원 후보를 추천하고 선출하세요.
+      process_introduction: "<p>멤버들이 후보자를 평가할 수 있도록 직책의 역할과 자격 요건을 소개하세요.</p><p>참여 신청 투표로 후보 추천을 받으세요. 추천된 후보자에게 사진, 약력, 추천서를 올리도록 안내하세요. 후보자의 동영상 메시지를 삽입해 멤버들이 후보자의 이야기를 직접 보고 들을 수 있게 하세요.</p><p>후보자를 선출할 준비가 되면 이의 없음 제안을 사용하세요.</p><p>한 자리에 후보자가 여럿이면 투표자가 선호하는 순서대로 후보자의 순위를 정할 수 있는 선호 순위 투표 제안을 사용하세요.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">어떤 직책을 맡을 사람을 선출하나요?</h3><p></p><h3 id="why-is-this-important">왜 중요한가요?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">적합한 후보자는 어떤 자격, 역량, 경험을 갖춰야 하나요?</h3><p></p><h3 id="what-is-the-election-process">선거 절차는 어떻게 되나요?</h3><p>1단계: 후보 추천 - 적합한 후보자를 추천받습니다.</p><p>2단계: 후보 소개 - 각 후보자의 사진, 짧은 약력, 추천서를 포함하세요.</p><p>3단계: 선거 - 투표로 해당 직책을 맡을 후보자를 선출합니다.</p>'
+      election: 선거
+  explore:
+    header: 공개 그룹 둘러보기
+  activerecord:
+    errors:
+      messages:
+        blank: 비워 둘 수 없습니다
+        invalid: 유효한 값이 아닙니다
+  unauthorized:
+    manage:
+      all: "%{subject}에 대해 %{action} 작업을 할 권한이 없습니다."
+    add_guests:
+      all: 게스트를 추가하려면 Loomio 구독을 업그레이드해야 합니다. 또는 그룹 멤버로 초대할 수 있습니다.
+  stance:
+    error:
+      too_short: 항목을 선택하세요
+  invitation:
+    invitation_cancelled: 죄송합니다. 그룹 관리자가 이 초대를 취소했습니다. 그룹에 새 초대를 요청하세요.
+    invitation_already_used: 이미 사용한 초대입니다. 그룹으로 이동하려면 Loomio에 직접 로그인하세요.
+  subscriptions:
+    active: 활성
+    inactive: 비활성
+  base_mailer:
+    via_loomio: "%{name} (%{site_name} 경유)"
+  event_mailer:
+    notification_reason:
+      group_subscribed: 그룹의 모든 활동을 구독하고 있어 이 알림을 받았습니다.
+      discussion_subscribed: 토론을 구독하고 있어 이 알림을 받았습니다.
+      thread_subscribed: 스레드를 구독하고 있어 이 알림을 받았습니다.
+      poll_subscribed: 투표를 구독하고 있어 이 알림을 받았습니다.
+      group_mentioned: 그룹이 @멘션되어 이 알림을 받았습니다.
+      user_mentioned: "@멘션되어 이 알림을 받았습니다."
+      notified: 작성자가 알림을 보내 이 알림을 받았습니다.
+    received_email:
+      explaination_html: |
+        <p>Loomio 그룹 %{group}의 그룹 관리자이므로 이 이메일을 받았습니다.</p>
+        <p>그룹에 알 수 없는 이메일 주소로 보낸 이메일이 도착했습니다.</p>
+        <p>그룹 멤버가 보낸 메시지라면 이메일을 검토하고 해당 멤버를 선택하세요.</p>
+        <p>원치 않는 메시지라면 해당 주소에서 오는 이메일 수신을 거부할 수 있습니다.</p>
+  user_mailer:
+    group_export_ready:
+      subject: "%{group_name} 그룹 데이터 내보내기"
+      body_html: <a href="%{url}">여기</a>에서 그룹 데이터를 다운로드하세요. 이 링크는 일주일 후 만료됩니다.
+    redacted:
+      subject: "%{site_name} 사용자 계정이 삭제되었습니다"
+      body_html: |
+        <p>%{site_name} 사용자 계정이 삭제되었습니다.</p>
+        <p>개인을 식별할 수 있는 모든 데이터가 삭제되었습니다.</p>
+        <p>삭제를 요청하지 않았다면 %{support_email}로 문의하세요</p>
+    accounts_merged:
+      subject: "%{site_name} 사용자 계정이 통합되었습니다."
+      body_html: |
+        안녕하세요, %{name}.
+        두 Loomio 계정이 하나로 통합되었습니다.
+        앞으로 Loomio에 로그인할 때는 <strong>%{email}</strong>을 사용하세요.
+    merge_verification:
+      subject: 계정 통합을 위해 %{site_name} 이메일 주소를 인증하세요
+      body_html: |
+        <p>안녕하세요, %{name},</p>
+        <p><strong>%{source_email}</strong> 계정을 이 주소의 계정인 <strong>%{target_email}</strong> 계정과 통합해 달라는 요청이 있었습니다.</p>
+        <p>통합이 완료되면 <strong>%{source_email}</strong>로는 더 이상 로그인할 수 없으며, <strong>%{target_email}</strong>로만 로그인할 수 있습니다.</p>
+        <p>계정을 통합하려는 것이 맞는지 확인하세요.</p>
+      verify: 이메일 인증 후 계속
+      confirm_page:
+        confirm: 통합 확인
+        body_html: |
+          <p><strong>%{source_email}</strong> 계정을 <strong>%{target_email}</strong> 계정으로 통합하려는 것이 맞는지 확인하세요.</p>
+          <p><strong>%{source_email}</strong> 계정은 삭제되며, 이후에는 <strong>%{target_email}</strong>로만 로그인할 수 있습니다.</p>
+          <p>이 변경은 되돌릴 수 없습니다.</p>
+        merge: 계정 통합
+      complete_page:
+        title: 통합 완료
+        body_html: |
+          <p>계정이 통합되었습니다. 곧 <strong>%{target_email}</strong>로 확인 이메일이 발송됩니다.</p>
+          <p>추가 질문이 있으면 <a href="/contact" target="_blank">문의하세요</a>.</p>
+  email:
+    group_membership_approved:
+      subject: "%{group_name} 가입 요청이 승인되었습니다"
+      join_group: 그룹 가입
+      intro: "%{group_name} 그룹 가입 요청이 승인되었습니다."
+      intro_html: "<strong>%{group_name}</strong> 그룹 가입 요청이 승인되었습니다."
+      link_help: '아래 링크를 클릭해 %{group_name}에 가입하고 시작하세요:'
+    membership_request:
+      intro_html: 그룹에 가입을 요청했습니다.
+      subject: "%{who}: %{which_group} 가입을 요청했습니다"
+      view_group: 여기서 요청을 승인하거나 거절할 수 있습니다
+      button_text: 요청 보기
+    membership_request_declined:
+      button_text: 다시 신청
+    unsubscribe: '구독 해지 또는 이메일 설정 변경:'
+    unsubscribe_html: 구독을 해지하거나 이메일 설정을 변경하려면 <a href='%{link_path}'>%{link_text}</a>.
+    catch_up:
+      daily_subject: "%{site_name}의 어제 소식"
+      weekly_subject: "%{site_name}의 지난주 소식"
+      other_subject: "%{site_name}의 최근 소식"
+      catch_up_heading: "%{site_name} 소식 모아보기"
+      do_not_reply: 이 이메일에는 답장하지 마세요.
+      mark_as_read: 읽음으로 표시
+      thanks_for_reading: 읽어 주셔서 감사합니다. 좋은 하루 보내세요
+      marked_as_read_success: 이메일의 모든 내용을 읽음으로 표시했습니다
+      click_here: 여기를 클릭하세요
+      subject:
+        votes_to_cast:
+          one: 참여할 투표가 1개 있습니다
+          other: 참여할 투표가 %{count}개 있습니다
+        people_mentioned:
+          one: 1명이 멘션했습니다
+          other: "%{count}명이 멘션했습니다"
+        polls_closing_soon:
+          one: 투표 1개가 곧 마감됩니다
+          other: 투표 %{count}개가 곧 마감됩니다
+        separator: " · "
+      unread_topics: 읽지 않은 주제
+      unread_threads: 읽지 않은 스레드
+      mark_catch_up_as_read: 모아본 소식을 읽음으로 표시
+    digest:
+      daily_subject: "%{site_name}의 어제 소식"
+      weekly_subject: "%{site_name}의 지난주 소식"
+      other_subject: "%{site_name}의 최근 소식"
+      do_not_reply: 이 이메일에는 답장하지 마세요.
+      thanks_for_reading: 읽어 주셔서 감사합니다. 좋은 하루 보내세요
+      marked_as_read_success: 이메일의 모든 내용을 읽음으로 표시했습니다
+      click_here: 여기를 클릭하세요
+      subject:
+        votes_to_cast:
+          one: 참여할 투표가 1개 있습니다
+          other: 참여할 투표가 %{count}개 있습니다
+        people_mentioned:
+          one: 1명이 멘션했습니다
+          other: "%{count}명이 멘션했습니다"
+        polls_closing_soon:
+          one: 투표 1개가 곧 마감됩니다
+          other: 투표 %{count}개가 곧 마감됩니다
+        separator: " · "
+      unread_topics: 읽지 않은 주제
+      mark_as_read: 요약을 읽음으로 표시
+    content_was_translated_html: 이 콘텐츠는 %{source_locale}에서 번역되었습니다. <a href="%{profile_url}">설정 보기<a>
+    common:
+      or_enter_code: 또는 아래 코드를 입력하세요
+      resend: 24시간 후 만료되며 한 번만 사용할 수 있습니다
+    login:
+      subject: "%{site_name} 로그인"
+      intro: "%{site_name} 로그인 링크입니다"
+      intro_code: "%{site_name} 로그인 코드입니다"
+      login: "%{name}(으)로 로그인"
+    reactivate:
+      subject: "%{site_name} 계정 재활성화"
+      intro: 안녕하세요, %{name}, %{site_name} 계정을 다시 활성화하는 링크입니다
+      login: "%{name} 재활성화"
+    contact_request:
+      subject: "%{name}의 %{site_name} 연결 요청"
+      intro: "%{name}(%{email})의 연결 요청이 도착했습니다."
+      footer: 이 이메일에 답장하면 %{name}에게 직접 답변할 수 있습니다.
+    reset_password:
+      greeting: |
+        안녕하세요, %{name}
+        Loomio 계정의 비밀번호를 재설정할 수 있는 링크입니다:
+      link_text: 비밀번호 재설정
+      signoff: |
+        %{hostname}의 "비밀번호 찾기" 양식에 이메일 주소가 입력되어 이 이메일이 발송되었습니다.
+        위 링크를 열고 양식을 작성해야 비밀번호가 변경됩니다.
+        로그인 문제가 계속되면 이 이메일에 답장해 지원 담당자에게 문의하세요.
+    by_who: '작성: %{person}'
+    reply_to_this_discussion: 이 토론에 답글 작성
+    loomio_app_description: 협력하는 조직이 함께 결정하는 공간입니다.
+    view_group: 그룹 보기
+    to_join_group:
+      subject: "%{member}의 %{site_name} 내 %{group_name} 그룹 가입 초대"
+      invitation_text: "%{member}의 %{group_name} 그룹 가입 초대가 도착했습니다."
+      invitation_text_html: 의 그룹 가입 초대가 도착했습니다
+      link_help: '초대를 수락하려면 아래 링크를 클릭하세요:'
+      accept_invitation: 초대 수락
+      stop_emails: "%{site_name} 이메일 수신 중지"
+      accepting_is_important: 관련된 결정의 알림을 놓치지 않도록 초대를 수락하세요.
+    resend_to_join_group:
+      subject: "%{member}이(가) %{site_name}에서 %{group_name} 그룹 가입을 기다리고 있습니다"
+    user_added_to_group:
+      subject: "%{who}이(가) %{site_name}의 %{which_group} 그룹에 추가했습니다"
+      content: "%{who}이(가) %{which_group} 그룹에 추가했습니다."
+      content_html: "<strong>%{who}</strong>이(가) <strong>%{which_group}</strong> 그룹에 추가했습니다."
+      link_help: '그룹으로 이동하려면 아래 링크를 클릭하세요:'
+  announcement_count_emails: 이메일 %{count}개
+  email_actions:
+    unfollowed_discussion: 이 스레드의 이메일 수신을 껐습니다.
+    catch_up_all_groups: 활동 요약 이메일(모든 그룹)
+    catch_up_link: 활동 요약 이메일 설정
+    catch_up_title: 활동 요약 이메일 설정
+    catch_up_description: 그룹 활동 요약을 받을 주기를 선택하세요
+    catch_up_schedule: 활동 요약 이메일 발송
+    catch_up_saved: 활동 요약 이메일 설정이 변경되었습니다
+    catch_up_days:
+      never: 받지 않음
+      every_day: 매일
+      every_second_day: 이틀마다
+      monday: 월요일
+      tuesday: 화요일
+      wednesday: 수요일
+      thursday: 목요일
+      friday: 금요일
+      saturday: 토요일
+      sunday: 일요일
+  discussion_mailer:
+    reply_or_view_online_html: 이 이메일에 답장하거나 <a href='%{url}'>%{hostname}에서 확인하세요</a>.
+    turn_off_notifications_html: 이 토론의 <a href='%{url}'>이메일 수신을 끄세요</a>.
+    change_email_preferences_html: "<a href='%{email_preferences_url}'>이메일 설정</a>을 변경하세요."
+    unsubscribe_from_discussion_announced_html: 이 스레드의 추가 공지 <a href='%{url}'>수신을 해지하세요</a>.
+    unsubscribe_from_new_comment_html: 이 스레드의 댓글 <a href='%{url}'>수신을 해지하세요</a>.
+    unsubscribe_from_user_mentioned_html: "@멘션되어 이 이메일을 받았습니다."
+    discussion_edited:
+      inline: "%{actor}: 스레드 배경을 수정했습니다"
+    discussion_closed:
+      inline: "%{actor}: 스레드를 닫았습니다"
+  footer:
+    about: 소개
+    blog: 블로그
+    contact: 문의
+    help: 도움말
+    privacy: 개인정보 보호
+    pricing: 요금
+    public_groups: 공개 그룹
+    terms: 이용약관
+    independent_install_html: '%{hostname}에서는 Loomio를 독립적으로 운영합니다: <a href="http://github.com/loomio/loomio">자세히 알아보기</a>.'
+  merge_users:
+    not_target_user: 통합을 확인하려면 통합 대상 계정으로 로그인해야 합니다.
+  password_reset:
+    change_your_password: 비밀번호 변경
+    change_my_password: 비밀번호 변경
+    confirm_new_password: 비밀번호 확인
+    new_password: 새 비밀번호
+    email_guidelines_html: |
+      <p>이메일 주소를 입력하면 비밀번호 재설정 링크를 보내드립니다.</p>
+      <p>평소 Facebook이나 Google로 로그인한다면 해당 계정에 연결된 이메일 주소를 입력하세요.</p>
+    reset_email_timeframe: 이메일이 도착하기까지 최대 5분이 걸릴 수 있습니다. 도착하지 않으면 스팸함도 확인하세요.
+    length_restriction: 비밀번호는 8자 이상이어야 합니다.
+    forbidden_passwords: 계정 보호를 위해 “password”처럼 흔한 비밀번호는 사용할 수 없습니다.
+  task_mailer:
+    task_due_reminder:
+      subject: '할 일 알림: %{name}'
+      greeting: '안녕하세요, %{name}. 다음 할 일의 마감은 %{due}입니다:'
+      view_task: "%{site_name}에서 보기"
+      update_or_comment: 이미 마친 할 일이라면 완료로 표시하세요. 아직 마치지 않았다면 진행 상황을 공유하세요.
+      due_today: 오늘
+      due_in_count_days: "%{count}일 후"
+  group_mailer:
+    resend: '알림: %{member}이(가) %{group_name} 가입을 기다리고 있습니다'
+    destroy_warning:
+      subject: Loomio 그룹이 삭제될 예정입니다.
+      body: |
+        %{deletor}이(가) Loomio 그룹 "%{group}"의 삭제를 예약했습니다.
+        그룹 삭제를 원하지 않으면 이 이메일에 답장하세요.
+        그룹을 삭제하려면 아무 조치도 필요하지 않습니다.
+        감사합니다.
+    destroy_warning_with_usage:
+      subject: Loomio 그룹이 삭제될 예정입니다
+      requested: '%{requestor}이 Loomio 그룹 "%{group}"의 삭제를 예약했습니다. %{days}일 후 영구 삭제됩니다.'
+      trial_expired_warning: Loomio 그룹 "%{group}"의 체험 기간이 %{expired_days}일 전에 끝났습니다. 연락이 없으면 %{grace_days}일 후 삭제됩니다.
+      trial_expired_process: 삭제 예정인 그룹은 이용할 수 없습니다. 그룹에서 계속 토론하고 결정할 공간이 필요하다면 아직 다시 시작할 수 있습니다. 체험 기간 연장이나 유료 구독 전환을 원하거나 데이터 내보내기에 시간이 더 필요하면 %{grace_days}일 이내에 이 이메일에 답장하세요. 그 이후에는 그룹과 데이터가 영구 삭제됩니다.
+      usage_heading: '그룹 데이터 요약:'
+      subgroups: 하위 그룹
+      members: 현재 멤버
+      discussions: 토론
+      polls: 투표
+      comments: 댓글
+      export: 그룹을 유지하거나 데이터 사본을 내보내려면 %{days}일 이내에 이 이메일에 답장하세요. 삭제 전에 이용 권한을 복구할 수 있습니다.
+      export_link: 그룹 데이터 내보내기 안내
+      group_key: '그룹 키: %{key}'
+    trial_expired:
+      subject: 활동이 없어 Loomio 그룹이 삭제될 예정입니다.
+      body: |
+        Loomio 그룹 "%{group}"에 활동이 없어 2주 후 삭제됩니다.
+        그룹 삭제를 원하지 않으면 이 이메일에 답장하세요.
+  forward_mailer:
+    bounce:
+      subject: Loomio에 보낸 메시지가 전달되지 않았습니다
+      reason: 이메일 앱이 제공된 “답장받을 주소(Reply‑To)” 대신 “보낸 사람(From)” 주소로 메시지를 보내서 발생했습니다.
+      recommendation: 브라우저에서 Loomio를 열고 메시지를 직접 작성하세요.
+    comment_rejected:
+      subject: 답글이 게시되지 않았습니다
+      recommendation: 문제가 반복되지 않도록 스레드를 열고 메시지를 직접 입력하세요
+      open_thread: 스레드 열기
+  poll_mailer:
+    common:
+      why_send_this: "%{reason} 사유로 이 이메일을 받으셨습니다"
+      view_on_loomio: "%{site_name}에서 보기"
+      create_outcome: 결론 공유
+      your_response: '투표한 내용:'
+      you_voted: 투표했습니다
+      not_invited: 초대받지 않음
+      please_respond: 응답해 주세요
+      time_zone: "(%{zone} 기준 시간)"
+      vote_now: 지금 투표하기
+      you_have_until: "%{when}까지 참여할 수 있습니다."
+      voting_opens_and_closes: 투표는 %{opens}에 시작해 %{closes}에 마감됩니다. (%{days}일)
+      voting_closes: 투표는 %{when}에 마감됩니다.
+      voting_opened_and_closed: 투표는 %{opens}에 시작해 %{closes}에 마감되었습니다. (%{days}일)
+  upload:
+    file_too_large: 파일이 너무 큽니다. 업로드 가능한 최대 크기는 %{limit}입니다.
+    filename_required: 파일 이름이 필요합니다

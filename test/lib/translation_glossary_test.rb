@@ -122,4 +122,12 @@ class TranslationGlossaryTest < ActiveSupport::TestCase
       assert_empty TranslationGlossary.missing_terms("Objection", "İtiraz", "tr")
     end
   end
+  test "Korean outcome checks include attached particles without confusing vote results" do
+    assert_not_empty TranslationGlossary.wrong_terms("Share the outcome", "결과를 공유하세요", "ko")
+    assert_not_empty TranslationGlossary.wrong_terms("The outcome was shared", "결과가 공유되었습니다", "ko")
+    assert_empty TranslationGlossary.wrong_terms("Share the outcome", "결론을 공유하세요", "ko")
+    assert_empty TranslationGlossary.wrong_terms("Share the outcome and results", "결론과 결과를 공유하세요", "ko")
+    assert_empty TranslationGlossary.wrong_terms("Show results", "결과를 표시하세요", "ko")
+  end
+
 end
