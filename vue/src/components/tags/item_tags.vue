@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import AbilityService from '@/shared/services/ability_service';
+import TopicItemAbility from '@/shared/abilities/topic_item_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import TagsDisplay from './display.vue';
 import TopicTagsMenu from './topic_tags_menu.vue';
@@ -9,7 +9,7 @@ import TopicTagsMenu from './topic_tags_menu.vue';
 const { topicItem } = defineProps({topicItem: {type: Object, required: true}});
 const { t } = useI18n();
 const topic = computed(() => topicItem.topic());
-const canEdit = computed(() => AbilityService.canTagTopicItem(topicItem));
+const canEdit = computed(() => TopicItemAbility.updateTags(topicItem));
 const tagRoute = tag => ({path: LmoUrlService.route({model: topic.value.topicable()}), query: {tag}});
 </script>
 

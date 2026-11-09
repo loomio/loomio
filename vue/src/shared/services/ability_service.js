@@ -52,15 +52,6 @@ export default new class AbilityService {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
   }
 
-  canTagTopicItem(item) {
-    if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
-    const topic = item.topic();
-    const user = Session.user();
-    if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
-    return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
-      topic.group().membersCanEditDiscussions);
-  }
-
   canAdminTags(topic) {
     const group = topic.group();
     return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
@@ -71,22 +62,6 @@ export default new class AbilityService {
     return group.parentOrSelf().adminsInclude(user) ||
       group.adminsInclude(user) ||
       !!(group.membersCanCreateTags && group.membersInclude(user));
-  }
-
-  canPinEvent(topic_item) {
-    const topic = topic_item.topic();
-    return (topic_item.depth === 1) &&
-    topic.group().isEnabled() &&
-    !topic_item.model().discardedAt &&
-    !topic_item.pinned &&
-    topic && !topic.lockedAt &&
-    topic.adminsInclude(Session.user());
-  }
-
-  canUnpinEvent(topic_item) {
-    const topic = topic_item.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    topic_item.pinned && topic.adminsInclude(Session.user());
   }
 
   canChangeGroupVolume(group) {

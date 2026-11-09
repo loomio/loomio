@@ -1,5 +1,6 @@
 import AbilityService from '@/shared/services/ability_service';
 import TopicAbility from '@/shared/abilities/topic_ability';
+import TopicItemAbility from '@/shared/abilities/topic_item_ability';
 import Flash from '@/shared/services/flash';
 import openModal from '@/shared/helpers/open_modal';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -11,7 +12,7 @@ export default new class TopicItemService {
         name: 'loomio_tags.apply_tags',
         icon: 'mdi-tag-outline',
         menu: true,
-        canPerform() { return AbilityService.canTagTopicItem(topic_item); },
+        canPerform() { return TopicItemAbility.updateTags(topic_item); },
         perform() {
           return openModal({component: 'TopicTagsDialog', props: {topic: topic_item.topic(), topicItem: topic_item}});
         }
@@ -39,7 +40,10 @@ export default new class TopicItemService {
         icon: 'mdi-timeline-plus-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
-        canPerform() { return !topic_item.model().discardedAt && AbilityService.canPinEvent(topic_item); },
+        canPerform() {
+          return topic_item.depth === 1 && !topic_item.pinned && !topic_item.model().discardedAt &&
+            TopicItemAbility.pin(topic_item);
+        },
         perform() {
           return openModal({
             component: 'PinEventForm',
@@ -52,7 +56,7 @@ export default new class TopicItemService {
         icon: 'mdi-timeline-remove-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
-        canPerform() { return !topic_item.model().discardedAt && AbilityService.canUnpinEvent(topic_item); },
+        canPerform() { return topic_item.pinned && !topic_item.model().discardedAt && TopicItemAbility.unpin(topic_item); },
         perform() { return topic_item.unpin().then(() => Flash.success('activity_card.event_unpinned')); }
       },
 
