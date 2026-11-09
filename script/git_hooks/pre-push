@@ -35,7 +35,7 @@ else
 
   echo ""
   echo "==> Checking translations against $BASE_REF..."
-  bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client
+  bundle exec ruby script/check_translations.rb "$BASE_REF" config/locales:server config/locales:client config/locales:timezones
 
   # The installed hook is shared by worktrees, including older branches. It only
   # checks; translating is a separate step so a push never generates files.

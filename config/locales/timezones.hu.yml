@@ -1,0 +1,174 @@
+---
+hu:
+  timezones:
+    local: Helyi idő (%{value})
+    regions:
+      Africa/Algiers: Afrika / Algír
+      Africa/Cairo: Afrika / Kairó
+      Africa/Casablanca: Afrika / Casablanca
+      Africa/Harare: Afrika / Harare (Zimbabwe)
+      Africa/Johannesburg: Afrika / Johannesburg (Dél-Afrika)
+      Africa/Monrovia: Afrika / Monrovia
+      Africa/Nairobi: Afrika / Nairobi
+      America/Adak: Amerika / Adak (Aleut-szigetek)
+      America/Argentina/Buenos_Aires: Amerika / Argentína / Buenos Aires
+      America/Asuncion: Amerika / Asunción
+      America/Bogota: Amerika / Bogotá
+      America/Cambridge_Bay: Amerika / Cambridge Bay (Nunavut)
+      America/Caracas: Amerika / Caracas
+      America/Chicago: Amerika / Chicago (USA középső része)
+      America/Chihuahua: Amerika / Chihuahua
+      America/Dawson: Amerika / Dawson (Yukon)
+      America/Dawson_Creek: Amerika / Dawson Creek (Brit Columbia)
+      America/Denver: Amerika / Denver (USA hegyvidéki része)
+      America/Edmonton: Amerika / Edmonton (Alberta)
+      America/Fort_Nelson: Amerika / Fort Nelson (Brit Columbia)
+      America/Glace_Bay: Amerika / Glace Bay (Új-Skócia)
+      America/Goose_Bay: Amerika / Goose Bay (Labrador)
+      America/Guatemala: Amerika / Guatemala
+      America/Guyana: Amerika / Guyana
+      America/Halifax: Amerika / Halifax (Új-Skócia)
+      America/Havana: Amerika / Havanna
+      America/Indiana/Indianapolis: Amerika / Indiana / Indianapolis (Indiana)
+      America/Inuvik: Amerika / Inuvik (Északnyugati területek)
+      America/Iqaluit: Amerika / Iqaluit (Nunavut)
+      America/Juneau: Amerika / Juneau (Alaszka)
+      America/La_Paz: Amerika / La Paz
+      America/Lima: Amerika / Lima
+      America/Los_Angeles: Amerika / Los Angeles (USA csendes-óceáni partvidéke)
+      America/Mazatlan: Amerika / Mazatlán
+      America/Mexico_City: Amerika / Mexikóváros
+      America/Miquelon: Amerika / Saint-Pierre és Miquelon
+      America/Moncton: Amerika / Moncton (Új-Brunswick)
+      America/Monterrey: Amerika / Monterrey
+      America/Montevideo: Amerika / Montevideo
+      America/New_York: Amerika / New York (USA keleti része)
+      America/Nuuk: Amerika / Nuuk
+      America/Panama: Amerika / Panama
+      America/Phoenix: Amerika / Phoenix (Arizona)
+      America/Puerto_Rico: Amerika / Puerto Rico
+      America/Rankin_Inlet: Amerika / Rankin Inlet (Nunavut)
+      America/Regina: Amerika / Regina (Saskatchewan)
+      America/Resolute: Amerika / Resolute (Nunavut)
+      America/Santiago: Amerika / Santiago
+      America/Sao_Paulo: Amerika / São Paulo
+      America/St_Johns: Amerika / St. John's (Új-Fundland)
+      America/Swift_Current: Amerika / Swift Current (Saskatchewan)
+      America/Tijuana: Amerika / Tijuana
+      America/Toronto: Amerika / Toronto (Ontario)
+      America/Vancouver: Amerika / Vancouver (Brit Columbia)
+      America/Whitehorse: Amerika / Whitehorse (Yukon)
+      America/Winnipeg: Amerika / Winnipeg (Manitoba)
+      Antarctica/Troll: Antarktisz / Troll kutatóállomás (Antarktisz)
+      Asia/Almaty: Ázsia / Almati
+      Asia/Baghdad: Ázsia / Bagdad
+      Asia/Baku: Ázsia / Baku
+      Asia/Bangkok: Ázsia / Bangkok
+      Asia/Beirut: Ázsia / Bejrút
+      Asia/Chongqing: Ázsia / Csungking
+      Asia/Colombo: Ázsia / Colombo
+      Asia/Dhaka: Ázsia / Dakka
+      Asia/Gaza: Ázsia / Gáza
+      Asia/Hong_Kong: Ázsia / Hongkong
+      Asia/Irkutsk: Ázsia / Irkutszk
+      Asia/Jakarta: Ázsia / Jakarta
+      Asia/Jerusalem: Ázsia / Jeruzsálem
+      Asia/Kabul: Ázsia / Kabul
+      Asia/Kamchatka: Ázsia / Kamcsatka
+      Asia/Karachi: Ázsia / Karacsi
+      Asia/Kathmandu: Ázsia / Katmandu
+      Asia/Kolkata: Ázsia / Kalkutta (India)
+      Asia/Krasnoyarsk: Ázsia / Krasznojarszk
+      Asia/Kuala_Lumpur: Ázsia / Kuala Lumpur
+      Asia/Kuwait: Ázsia / Kuvait
+      Asia/Magadan: Ázsia / Magadan
+      Asia/Muscat: Ázsia / Maszkat
+      Asia/Novosibirsk: Ázsia / Novoszibirszk
+      Asia/Rangoon: Ázsia / Jangon (Mianmar)
+      Asia/Riyadh: Ázsia / Rijád
+      Asia/Seoul: Ázsia / Szöul
+      Asia/Shanghai: Ázsia / Sanghaj
+      Asia/Singapore: Ázsia / Szingapúr
+      Asia/Srednekolymsk: Ázsia / Szrednyekolimszk
+      Asia/Taipei: Ázsia / Tajpej
+      Asia/Tashkent: Ázsia / Taskent
+      Asia/Tbilisi: Ázsia / Tbiliszi
+      Asia/Tehran: Ázsia / Teherán
+      Asia/Tokyo: Ázsia / Tokió
+      Asia/Ulaanbaatar: Ázsia / Ulánbátor
+      Asia/Urumqi: Ázsia / Ürümcsi
+      Asia/Vladivostok: Ázsia / Vlagyivosztok
+      Asia/Yakutsk: Ázsia / Jakutszk
+      Asia/Yekaterinburg: Ázsia / Jekatyerinburg
+      Asia/Yerevan: Ázsia / Jereván
+      Atlantic/Azores: Atlanti-óceán / Azori-szigetek
+      Atlantic/Cape_Verde: Atlanti-óceán / Zöld-foki-szigetek
+      Atlantic/South_Georgia: Atlanti-óceán / Déli-Georgia-sziget
+      Australia/Adelaide: Ausztrália / Adelaide (Dél-Ausztrália)
+      Australia/Brisbane: Ausztrália / Brisbane (Queensland)
+      Australia/Canberra: Ausztrália / Canberra (Ausztráliai fővárosi terület)
+      Australia/Darwin: Ausztrália / Darwin (Északi terület)
+      Australia/Eucla: Ausztrália / Eucla (Nyugat-Ausztrália)
+      Australia/Hobart: Ausztrália / Hobart (Tasmania)
+      Australia/Lord_Howe: Ausztrália / Lord Howe-sziget
+      Australia/Melbourne: Ausztrália / Melbourne (Victoria)
+      Australia/Perth: Ausztrália / Perth (Nyugat-Ausztrália)
+      Australia/Sydney: Ausztrália / Sydney (Új-Dél-Wales)
+      Etc/GMT+12: Egyéb / Nemzetközi dátumválasztó vonal, nyugat (UTC−12)
+      Etc/UTC: Egyéb / Koordinált világidő (UTC)
+      Europe/Amsterdam: Európa / Amszterdam
+      Europe/Athens: Európa / Athén
+      Europe/Belgrade: Európa / Belgrád
+      Europe/Berlin: Európa / Berlin
+      Europe/Bratislava: Európa / Pozsony
+      Europe/Brussels: Európa / Brüsszel
+      Europe/Bucharest: Európa / Bukarest
+      Europe/Budapest: Európa / Budapest
+      Europe/Copenhagen: Európa / Koppenhága
+      Europe/Dublin: Európa / Dublin
+      Europe/Helsinki: Európa / Helsinki
+      Europe/Istanbul: Európa / Isztambul
+      Europe/Kaliningrad: Európa / Kalinyingrád
+      Europe/Kiev: Európa / Kijev (Ukrajna)
+      Europe/Lisbon: Európa / Lisszabon
+      Europe/Ljubljana: Európa / Ljubljana
+      Europe/London: Európa / London
+      Europe/Madrid: Európa / Madrid
+      Europe/Minsk: Európa / Minszk
+      Europe/Moscow: Európa / Moszkva
+      Europe/Paris: Európa / Párizs
+      Europe/Prague: Európa / Prága
+      Europe/Riga: Európa / Riga
+      Europe/Rome: Európa / Róma
+      Europe/Samara: Európa / Szamara
+      Europe/Sarajevo: Európa / Szarajevó
+      Europe/Skopje: Európa / Szkopje
+      Europe/Sofia: Európa / Szófia
+      Europe/Stockholm: Európa / Stockholm
+      Europe/Tallinn: Európa / Tallinn
+      Europe/Vienna: Európa / Bécs
+      Europe/Vilnius: Európa / Vilnius
+      Europe/Volgograd: Európa / Volgográd
+      Europe/Warsaw: Európa / Varsó
+      Europe/Zagreb: Európa / Zágráb
+      Europe/Zurich: Európa / Zürich
+      Pacific/Apia: Csendes-óceán / Apia
+      Pacific/Auckland: Csendes-óceán / Auckland (Új-Zéland)
+      Pacific/Chatham: Csendes-óceán / Chatham-szigetek (Új-Zéland)
+      Pacific/Easter: Csendes-óceán / Húsvét-sziget (Chile)
+      Pacific/Fakaofo: Csendes-óceán / Fakaofo (Tokelau)
+      Pacific/Fiji: Csendes-óceán / Fidzsi
+      Pacific/Gambier: Csendes-óceán / Gambier-szigetek
+      Pacific/Guadalcanal: Csendes-óceán / Guadalcanal (Salamon-szigetek)
+      Pacific/Guam: Csendes-óceán / Guam
+      Pacific/Honolulu: Csendes-óceán / Honolulu (Hawaii)
+      Pacific/Kiritimati: Csendes-óceán / Kiritimati (Kiribati)
+      Pacific/Majuro: Csendes-óceán / Majuro (Marshall-szigetek)
+      Pacific/Marquesas: Csendes-óceán / Marquesas-szigetek
+      Pacific/Midway: Csendes-óceán / Midway-szigetek
+      Pacific/Norfolk: Csendes-óceán / Norfolk-sziget
+      Pacific/Noumea: Csendes-óceán / Nouméa (Új-Kaledónia)
+      Pacific/Pago_Pago: Csendes-óceán / Pago Pago (Amerikai Szamoa)
+      Pacific/Pitcairn: Csendes-óceán / Pitcairn-szigetek
+      Pacific/Port_Moresby: Csendes-óceán / Port Moresby (Pápua Új-Guinea)
+      Pacific/Tongatapu: Csendes-óceán / Tongatapu (Tonga)

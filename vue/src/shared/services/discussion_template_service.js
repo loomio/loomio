@@ -19,8 +19,9 @@ export default new class DiscussionTemplateService {
   }
 
   canEditTemplate(discussionTemplate, group) {
+    // Signed out, Session.userId and an authorless template's authorId are both null.
     return group.adminsInclude(Session.user()) ||
-      (group.membersCanCreateTemplates && discussionTemplate.authorId === Session.user().id);
+      (group.membersCanCreateTemplates && Session.isSignedIn() && discussionTemplate.authorId === Session.userId);
   }
 
   actions(discussionTemplate, group) {
@@ -107,7 +108,6 @@ export default new class DiscussionTemplateService {
                 submit() {
                   return discussionTemplate.destroy().then(() => {
                     EventBus.$emit('closeModal');
-                    EventBus.$emit('reloadDiscussionTemplates');
                   });
                 },
                 text: {

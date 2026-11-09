@@ -186,8 +186,6 @@ pl:
     score: ocena
     question: runda pytań
     stv: Wybory STV
-  timezones:
-    local: Czas lokalny (%{value})
   common:
     value: "%{value}"
     admin_menu: Menu administratora
@@ -1684,7 +1682,6 @@ pl:
     insert_embedded_url: Wstaw wideo
   change_picture_form:
     title: Ustaw zdjęcie profilowe
-    helptext: Możesz przesłać własne zdjęcie profilowe lub jeśli masz konto <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, możesz z niego skorzystać.
     use_initials: Użyj inicjałów
     use_gravatar: Użyj Gravatar
     use_uploaded: Prześlij nowe zdjęcie

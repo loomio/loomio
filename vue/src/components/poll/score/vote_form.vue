@@ -3,10 +3,9 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { map } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
+import { watchEffect } from 'vue';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -20,18 +19,16 @@ export default {
   },
 
   created() {
-    this.watchRecords({
-      collections: ['pollOptions'],
-      query: records => {
-        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
-          this.pollOptions = this.poll.pollOptionsForVoting();
-          this.stanceChoices = map(this.pollOptions, option => {
-            return {
-              score: this.stance.scoreFor(option),
-              option
-            };
-          });
-        }
+    // Rebuild only when the poll's option set changes, so the voter's edits are kept.
+    watchEffect(() => {
+      if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+        this.pollOptions = this.poll.pollOptionsForVoting();
+        this.stanceChoices = map(this.pollOptions, option => {
+          return {
+            score: this.stance.scoreFor(option),
+            option
+          };
+        });
       }
     });
   },

@@ -19,7 +19,7 @@ vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 import TopicModel from '@/shared/models/topic_model';
 import TopicLoader from '@/shared/loaders/topic_loader';
 import NotificationRecordsInterface from '@/shared/interfaces/notification_records_interface';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 describe('notifications for viewed topic items', () => {
   let topic;
@@ -30,13 +30,25 @@ describe('notifications for viewed topic items', () => {
     vi.useFakeTimers();
     vi.clearAllMocks();
     mocks.isSignedIn.mockReturnValue(true);
-    mocks.notifications = new NotificationRecordsInterface({db: new Loki('notifications')});
+    mocks.notifications = new NotificationRecordsInterface({db: new Database()});
     topic = new TopicModel({id: 42, ranges: [[0, 2]], readRanges: [[0, 1]]});
     loader = new TopicLoader(topic);
   });
 
   afterEach(() => {
     vi.useRealTimers();
+  });
+
+  it('keeps body preview eligibility at its original read state as visibility marks new items read', () => {
+    const read = loader.bodyPreview(1);
+    const unread = loader.bodyPreview(2);
+    read.reveal();
+    loader.setVisible(true, {sequenceId: 2, positionKey: '00000-00002'});
+    vi.advanceTimersByTime(500);
+    expect(topic.hasRead(2)).toBe(true);
+    expect(loader.bodyPreview(2).readBeforeVisit).toBe(false);
+    expect(unread.readBeforeVisit).toBe(false);
+    expect(loader.bodyPreview(1).revealed).toBe(true);
   });
 
   it('updates notification read state when an already-read comment becomes visible', () => {

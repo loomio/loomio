@@ -18,6 +18,5 @@ v-card.topic-tags-dialog(:title="$t('loomio_tags.apply_tags')")
   topic-tags-picker(
     :topic="topic"
     :topic-item="topicItem"
-    :watch-key="'topicTagsDialog' + topic.id"
   )
 </template>

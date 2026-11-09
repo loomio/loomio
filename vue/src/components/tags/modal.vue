@@ -31,7 +31,7 @@ export default {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: tag.destroy,
+            submit: () => tag.destroy(),
             text: {
               title:    'loomio_tags.destroy_tag',
               helptext: 'loomio_tags.destroy_helptext',

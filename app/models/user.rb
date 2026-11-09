@@ -80,7 +80,12 @@ class User < ApplicationRecord
 
   has_many :discussions, through: :groups
 
-  has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id', dependent: :destroy
+  # A topic owns its thread or standalone poll, so deleting a user deletes the
+  # topics they started rather than the records under them. Callbacks run in
+  # declaration order: this must stay above authored_polls, which removes their
+  # remaining polls in other people's threads.
+  before_destroy :destroy_started_topics
+  has_many :authored_discussions, class_name: 'Discussion', foreign_key: 'author_id'
   has_many :authored_polls, class_name: 'Poll', foreign_key: :author_id, dependent: :destroy
   has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
@@ -97,6 +102,12 @@ class User < ApplicationRecord
 
   def guest_topic_ids
     guest_topic_readers.pluck(:topic_id)
+  end
+
+  def destroy_started_topics
+    Topic.where(topicable_type: 'Discussion', topicable_id: authored_discussions.select(:id))
+         .or(Topic.where(topicable_type: 'Poll', topicable_id: authored_polls.select(:id)))
+         .find_each(&:destroy!)
   end
 
   has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id

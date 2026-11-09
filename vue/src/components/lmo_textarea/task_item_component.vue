@@ -1,10 +1,16 @@
 <script lang="js">
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 import { format, utcToZonedTime } from 'date-fns-tz';
+import { defineAsyncComponent } from 'vue';
 
 export default
 {
-  components: { NodeViewWrapper, NodeViewContent },
+  components: {
+    NodeViewWrapper,
+    NodeViewContent,
+    // Task text needs no calendar until its due-date dialog opens.
+    TaskDatePicker: defineAsyncComponent(() => import('vuetify/components/VDatePicker').then(module => module.VDatePicker))
+  },
 
   props: nodeViewProps,
 
@@ -74,7 +80,7 @@ export default
 node-view-wrapper(as="li")
   v-checkbox-btn(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
   node-view-content(as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')")
-  v-chip.ml-2(v-if="hasMention" contenteditable="false" color="primary" size="x-small" @click="openModal")
+  v-chip.task-item__due-date.ml-2(v-if="hasMention" contenteditable="false" color="primary" size="x-small" @click="openModal")
     | 📅
     span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
     span.ml-1(v-else v-t="'tasks.add_due_date'")
@@ -83,14 +89,14 @@ node-view-wrapper(as="li")
       template(v-slot:append)
         v-btn(icon variant="flat" @click="modalOpen = false")
           common-icon(name="mdi-close")
-      v-date-picker(v-model="date" hide-header scrollable :show-current="false" :min="(new Date())")
+      task-date-picker.task-item__date-picker(v-model="date" hide-header scrollable :show-current="false" :min="(new Date())")
       v-card-text
         v-select(v-model="remind" :label="$t('tasks.send_reminder')" :items="reminders")
       v-card-actions
         v-btn(variant="text" color="primary" @click="clearAndClose")
           span(v-t="'common.action.remove'")
         v-spacer
-        v-btn(variant="elevated" color="primary" @click="saveAndClose" :disabled="!date")
+        v-btn.task-item__save-date(variant="elevated" color="primary" @click="saveAndClose" :disabled="!date")
           span(v-t="'common.action.ok'")
 </template>
 

@@ -10,14 +10,11 @@ import PageLoader from '@/shared/services/page_loader';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import TagsFilterMenu from '@/components/tags/filter_menu';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
 const router = useRouter();
-const { watchRecords } = useWatchRecords();
 
 const group = ref(Records.groups.find(route.params.key));
-const polls = ref([]);
 const loader = ref(null);
 const pollTypes = AppConfig.pollTypes;
 const per = 25;
@@ -72,7 +69,7 @@ const initLoader = () => {
     path: 'polls',
     order: 'createdAt',
     params: {
-      exclude_types: 'group reaction',
+      exclude_types: 'group',
       group_key: route.params.key,
       status: route.query.status,
       poll_type: route.query.poll_type,
@@ -83,7 +80,7 @@ const initLoader = () => {
   });
 };
 
-const findRecords = () => {
+const polls = computed(() => {
   const groupIds = (() => { switch (route.query.subgroups || 'mine') {
     case 'all': return group.value.organisationIds();
     case 'none': return [group.value.id];
@@ -119,22 +116,17 @@ const findRecords = () => {
     if (page.value === 1) {
       chain = chain.find({createdAt: {$gte: loader.value.pageWindow[page.value][0]}});
     } else {
-      chain = chain.find({createdAt: {$jbetween: loader.value.pageWindow[page.value]}});
+      chain = chain.find({createdAt: {$between: loader.value.pageWindow[page.value]}});
     }
-    polls.value = chain.simplesort('createdAt', true).data();
+    return chain.simplesort('createdAt', true).data();
   } else {
-    polls.value = [];
+    return [];
   }
-};
+});
 
-const fetch = () => loader.value.fetch(page.value).then(findRecords);
+const fetch = () => loader.value.fetch(page.value);
 
 initLoader();
-
-watchRecords({
-  collections: ['polls', 'groups', 'stances'],
-  query: findRecords
-});
 
 fetch().then(() => {
   EventBus.$emit('currentComponent', {

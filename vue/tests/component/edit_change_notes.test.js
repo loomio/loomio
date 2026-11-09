@@ -3,7 +3,7 @@ import { reactive, nextTick } from 'vue';
 import { createVuetify } from 'vuetify';
 import { createRouter, createMemoryHistory } from 'vue-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 const mocks = vi.hoisted(() => ({
   fetch: vi.fn(),
@@ -88,10 +88,10 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
       membersInclude: () => true,
       chatbots: () => [{id: 91, name: 'Planning webhook'}]
     };
-    mocks.users = new Loki('edit-note-users').addCollection('users');
+    mocks.users = new Database().addCollection('users');
     mocks.user = new UserModel({id: 1, name: 'Alex Editor', username: 'alex', avatarKind: 'initials', avatarInitials: 'AE'});
     recipient = new UserModel({id: 2, name: 'Jamie Recipient', username: 'jamie', email: 'jamie@example.test', avatarKind: 'initials', avatarInitials: 'JR'});
-    mocks.users.insert([mocks.user, recipient]);
+    [mocks.user, recipient].forEach(user => mocks.users.insert(user));
     model = reactive(new Model({id: 41, key: 'editing-thread', groupId: 7, topicId: 61, title: 'Planning meeting'}));
     mocks.itemable = model;
     mocks.topic = {topicable: () => model};

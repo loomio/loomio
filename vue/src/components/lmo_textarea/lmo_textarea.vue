@@ -1,5 +1,5 @@
 <script lang="js">
-import asyncComponent from '@/shared/services/async_component'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   props: {
@@ -17,8 +17,8 @@ export default {
   },
 
   components: {
-    'md-editor': asyncComponent(() => import('@/components/lmo_textarea/md_editor.vue')),
-    'collab-editor': asyncComponent(() => import('@/components/lmo_textarea/collab_editor.vue'))
+    'md-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/md_editor.vue')),
+    'collab-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/collab_editor.vue'))
   },
 
   computed: {

@@ -1,18 +1,19 @@
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
+import { usePendingPolls } from '@/composables/usePendingPolls';
+import { useCurrentUserNotifications } from '@/composables/useCurrentUserNotifications';
 
-export const dashboardParams = {offset: 0, limit: 30, order: 'id', exclude_types: 'reaction'};
-export const votePollParams = {offset: 0, limit: 25, order: 'id', exclude_types: 'group reaction', status: 'recent'};
+export const dashboardParams = {offset: 0, limit: 30, order: 'id'};
 
-// Warm the first page only. Fetching notifications must not mark them viewed;
+// Warm the dashboard and share the pending-vote load with navigation counts.
+// Fetching notifications must not mark them viewed;
 // that belongs to opening the notifications page or reading the actual items.
-export function prefetchNavigation() {
+export function prefetchNavigation(path) {
   if (!Session.isSignedIn()) return Promise.resolve([]);
   return Promise.allSettled([
-    Records.topics.fetch({params: dashboardParams}),
-    Records.polls.fetch({params: votePollParams}),
-    Records.stances.fetch({path: 'my_stances'}),
-    Records.notifications.fetchNotifications(),
+    ...(path === '/dashboard' ? [] : [Records.topics.fetch({params: dashboardParams})]),
+    usePendingPolls().loadPendingPolls(),
+    useCurrentUserNotifications().loadNotifications(),
     import('@/components/notifications/page.vue'),
     import('@/components/dashboard/polls_to_vote_on_page.vue')
   ]);

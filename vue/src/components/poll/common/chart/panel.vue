@@ -63,7 +63,7 @@ export default {
     )
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
   template(v-else)
-    v-alert.mb-4(v-if="poll.quorumPct || poll.results.some(r => r.test_operator)" color="info" variant="tonal")
+    v-alert.poll-common-chart-panel__requirements.mb-4(v-if="poll.quorumPct || poll.results.some(r => r.test_operator)" color="info" variant="tonal")
       p(v-if="poll.pollType == 'proposal'" v-t="'poll_common_action_panel.for_this_proposal_to_pass'")
       p(v-else v-t="{path: 'poll_common_action_panel.for_this_poll_type_to_be_valid', args: {poll_type: poll.translatedPollType()}}")
       ul(style="list-style-type: none; padding-left: 0;")

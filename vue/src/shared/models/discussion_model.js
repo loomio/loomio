@@ -58,7 +58,7 @@ export default class DiscussionModel extends BaseModel {
     clone.id = null;
     clone.key = null;
     clone.title = I18n.global.t('templates.copy_of_title', {title: clone.title});
-    clone.authorId = Session.user().id;
+    clone.authorId = Session.userId;
     clone.pinnedAt = null;
     clone.selectedTopicItemIds = [];
     clone.groupId = null;

@@ -26,15 +26,17 @@ Rails.application.routes.draw do
     mount MissionControl::Jobs::Engine => '/admin/jobs'
   end
 
+  mount CollabServer.server => '/collab_server'
+
   if !Rails.env.production?
     namespace :dev do
       dev_routes_for(:discussions)
       dev_routes_for(:polls)
-      dev_routes_for(:nightwatch)
+      dev_routes_for(:scenarios)
 
-      get '/', to: 'nightwatch#index'
-      get 'last_email', to: 'nightwatch#last_email'
-      dev_actions_for(:nightwatch).map { |action| get action, to: "nightwatch##{action}" }
+      get '/', to: 'scenarios#index'
+      get 'last_email', to: 'scenarios#last_email'
+      dev_actions_for(:scenarios).map { |action| get action, to: "scenarios##{action}" }
     end
   end
 
@@ -86,8 +88,6 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    post 'hocuspocus', to: 'hocuspocus#create'
-
     namespace :s1 do
       post 'webhook', to: 'webhook#create'
       post 'subscriptions/verify', to: 'subscriptions#verify'
@@ -481,6 +481,9 @@ Rails.application.routes.draw do
   end
 
   get '/robots'     => 'robots#show'
+  get '/sitemap' => 'sitemaps#index', as: :sitemap, constraints: { format: :xml }
+  get '/sitemap/groups' => 'sitemaps#groups', as: :sitemap_groups, constraints: { format: :xml }
+  get '/sitemap/topics/:page' => 'sitemaps#topics', as: :sitemap_topics, constraints: { format: :xml }
   get '/manifest'   => 'manifest#show', format: :json
   get '/start_group', to: redirect('/try')
 
@@ -514,6 +517,8 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
+  get 'bookmarks'                          => 'application#index', as: :bookmarks
+  get 'notifications'                      => 'application#index', as: :notifications
   get 'poll_templates/browse'              => 'application#index'
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'

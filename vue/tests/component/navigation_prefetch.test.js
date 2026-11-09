@@ -3,6 +3,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const mocks = vi.hoisted(() => ({
   signedIn: vi.fn(), topics: vi.fn(), polls: vi.fn(), stances: vi.fn(), notifications: vi.fn(), viewed: vi.fn()
 }));
+vi.mock('@/composables/usePendingPolls', () => ({usePendingPolls: () => ({loadPendingPolls: mocks.polls})}));
+vi.mock('@/composables/useCurrentUserNotifications', () => ({useCurrentUserNotifications: () => ({loadNotifications: mocks.notifications})}));
 vi.mock('@/shared/services/session', () => ({default: {isSignedIn: mocks.signedIn}}));
 vi.mock('@/shared/services/records', () => ({default: {
   topics: {fetch: mocks.topics}, polls: {fetch: mocks.polls}, stances: {fetch: mocks.stances},
@@ -16,11 +18,11 @@ import { prefetchNavigation } from '@/shared/services/navigation_data';
 describe('navigation prefetch', () => {
   beforeEach(() => { vi.clearAllMocks(); mocks.signedIn.mockReturnValue(true); });
 
-  it('warms bounded first pages without marking notifications viewed', async () => {
+  it('warms the dashboard and shares pending votes without marking notifications viewed', async () => {
     await prefetchNavigation();
-    expect(mocks.topics).toHaveBeenCalledWith({params: {limit: 30, offset: 0, order: 'id', exclude_types: 'reaction'}});
-    expect(mocks.polls).toHaveBeenCalledWith({params: {limit: 25, offset: 0, order: 'id', exclude_types: 'group reaction', status: 'recent'}});
-    expect(mocks.stances).toHaveBeenCalledWith({path: 'my_stances'});
+    expect(mocks.topics).toHaveBeenCalledWith({params: {limit: 30, offset: 0, order: 'id'}});
+    expect(mocks.polls).toHaveBeenCalledOnce();
+    expect(mocks.stances).not.toHaveBeenCalled();
     expect(mocks.notifications).toHaveBeenCalledOnce();
     expect(mocks.viewed).not.toHaveBeenCalled();
   });
@@ -32,6 +34,13 @@ describe('navigation prefetch', () => {
     expect(mocks.polls).not.toHaveBeenCalled();
     expect(mocks.stances).not.toHaveBeenCalled();
     expect(mocks.notifications).not.toHaveBeenCalled();
+  });
+
+  it('does not repeat the dashboard page load while already on the dashboard', async () => {
+    await prefetchNavigation('/dashboard');
+    expect(mocks.topics).not.toHaveBeenCalled();
+    expect(mocks.polls).toHaveBeenCalledOnce();
+    expect(mocks.notifications).toHaveBeenCalledOnce();
   });
 
   it('allows other prefetches to finish if one fails', async () => {

@@ -1,7 +1,6 @@
 <script setup lang="js">
 import Records from '@/shared/services/records';
-import { useWatchRecords } from '@/composables/useWatchRecords';
-import { ref, computed, onMounted, watch } from 'vue';
+import { computed } from 'vue';
 
 const { tags, group, selected, size, density, tagRoute } = defineProps({
   tags: Array,
@@ -15,21 +14,7 @@ const { tags, group, selected, size, density, tagRoute } = defineProps({
   }
 });
 
-const { watchRecords } = useWatchRecords();
-const allTags = ref([]);
-
-const refreshTags = () => {
-  allTags.value = group ? group.tags() : [];
-};
-
-watch(() => group, refreshTags, { immediate: true });
-
-onMounted(() => {
-  watchRecords({
-    collections: ['tags'],
-    query: refreshTags
-  });
-});
+const allTags = computed(() => group ? group.tags() : []);
 
 const groupKey = computed(() => group?.key);
 

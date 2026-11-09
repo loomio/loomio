@@ -2,7 +2,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   before_action :require_current_user
 
   def index
-    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
+    ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].to_s.split('x').map(&:to_i).compact)
     self.collection = User.where(id: ids)
     cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
     respond_with_collection serializer: AuthorSerializer, root: :users, scope: {cache: cache, exclude_types: exclude_types}
@@ -14,15 +14,8 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def groups
-    self.collection = GroupQuery.visible_to(user: current_user)
-
-    cache = RecordCache.for_collection(collection, current_user.id, exclude_types)
-
-    respond_with_collection serializer: GroupSerializer, root: :groups, scope: {
-      cache: cache,
-      current_user_id: current_user.id,
-      exclude_types: exclude_types
-    }
+    directory = GroupDirectory.new(user: current_user, exclude_types: exclude_types)
+    render json: directory.payload.merge(meta: {root: 'groups', total: nil})
   end
 
   def time_zones
@@ -33,12 +26,13 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def all_time_zones
-    zones = ActiveSupport::TimeZone.all.map do |tz|
+    # Keep manual choices compact while showing any saved or detected region.
+    zones = (AppConfig.time_zones | [current_user.time_zone]).map do |zone|
       {
-        title: I18n.t("timezones.#{tz.name}", default: tz.name, locale: params[:selected_locale]),
-        value: tz.tzinfo.name
+        title: I18n.t("timezones.regions.#{zone}", default: zone, locale: params[:selected_locale]),
+        value: zone
       }
-    end
+    end.sort_by { |zone| zone[:title] }
     render json: zones, root: false
   end
 

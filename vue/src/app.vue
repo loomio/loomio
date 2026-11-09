@@ -72,12 +72,12 @@ export default {
 
   mounted() {
     if (Session.isSignedIn()) { initLiveUpdate(); }
-    // Let the initial page mount before warming the other navigation views.
-    setTimeout(prefetchNavigation, 0);
+    // Wait for the initial route before warming the other navigation views.
+    this.$router.isReady().then(() => prefetchNavigation(this.$route.path));
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
-    EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); prefetchNavigation(); });
+    EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); prefetchNavigation(this.$route.path); });
     Flash.fromServer(AppConfig.flash);
   },
 

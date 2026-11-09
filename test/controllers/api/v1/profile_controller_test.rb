@@ -62,6 +62,65 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_nil @user.legal_accepted_at
   end
 
+  test "time zone choices include Canadian regions separately from US Pacific time" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'America / Vancouver (British Columbia)', 'value' => 'America/Vancouver' }
+    assert_includes zones, { 'title' => 'America / Whitehorse (Yukon)', 'value' => 'America/Whitehorse' }
+    assert_includes zones, { 'title' => 'America / Los Angeles (US Pacific)', 'value' => 'America/Los_Angeles' }
+    assert_equal 1, zones.count { |zone| zone['value'] == 'America/Vancouver' }
+  end
+
+  test "time zone choices use the selected language without translating identifiers" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'fr' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Europe / Londres', 'value' => 'Europe/London' }
+    assert_includes zones, { 'title' => 'Asie / Tokyo', 'value' => 'Asia/Tokyo' }
+    assert_includes zones, { 'title' => 'Amériques / Argentine / Buenos Aires', 'value' => 'America/Argentina/Buenos_Aires' }
+    refute_includes zones.pluck('title'), 'Europe / London'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
+  test "time zone choices require an authenticated user" do
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "time zone choices retain the current users detected alias without changing the profile" do
+    @user.update_columns(time_zone: 'Canada/Pacific', autodetect_time_zone: true)
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_includes zones, { 'title' => 'Canada/Pacific', 'value' => 'Canada/Pacific' }
+    assert_equal 'Canada/Pacific', @user.reload.time_zone
+    assert @user.autodetect_time_zone?
+  end
+
+  test "manual time zone choices are compact and omit unselected aliases" do
+    sign_in @user
+
+    get :all_time_zones, params: { selected_locale: 'en' }, format: :json
+
+    assert_response :success
+    zones = JSON.parse(response.body)
+    assert_operator zones.length, :<=, 175
+    assert_equal zones.pluck('value').uniq, zones.pluck('value')
+    refute_includes zones.pluck('value'), 'Canada/Pacific'
+    assert_equal zones.pluck('title').sort, zones.pluck('title')
+  end
+
   test "detected time zone saves without revalidating unrelated profile fields" do
     sign_in @user
     @user.update_columns(username: 'invalid username')
@@ -109,6 +168,42 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
   test "time zone update requires an authenticated user" do
     post :set_time_zone, params: { time_zone: 'Europe/Budapest' }, format: :json
+
+    assert_response :unauthorized
+  end
+
+  test "index returns no users when xids is omitted" do
+    sign_in users(:member_normal)
+
+    get :index, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns no users when xids is empty" do
+    sign_in users(:member_normal)
+
+    get :index, params: { xids: '' }, format: :json
+
+    assert_response :success
+    assert_equal [], JSON.parse(response.body).fetch('users')
+  end
+
+  test "index returns only requested users within the actors invitation scope" do
+    sign_in users(:member_normal)
+    requested = [:member_quiet, :guest_quiet, :alien_quiet, :former_member_loud, :former_guest_loud, :non_guest_loud].map { |name| users(name).id }
+
+    get :index, params: { xids: requested.join('x') }, format: :json
+
+    assert_response :success
+    returned = JSON.parse(response.body).fetch('users')
+    assert_equal [users(:member_quiet).id, users(:guest_quiet).id].sort, returned.pluck('id').sort
+    returned.each { |user| refute_includes user.keys, 'email' }
+  end
+
+  test "index requires an authenticated user even without xids" do
+    get :index, format: :json
 
     assert_response :unauthorized
   end

@@ -1,26 +1,15 @@
 <script lang="js">
 import { slice } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     poll: Object,
     size: Number
   },
 
-  created() {
-    this.watchRecords({
-      collections: ['pollOptions'],
-      query: store => {
-        const max = 10;
-        this.results = slice(this.poll.results, 0, max);
-        this.voterIds = slice(this.poll.votersCastIds(), 0, max);
-      }
-    });
-  },
-
   computed: {
+    results() { return slice(this.poll.results, 0, 10); },
+    voterIds() { return slice(this.poll.votersCastIds(), 0, 10); },
     cellHeight() { return this.size / this.results.length; },
     cellWidth() { return this.size / this.voterIds.length; },
     cellSize() { if (this.cellHeight > this.cellWidth) { return this.cellWidth; } else { return this.cellHeight; } }

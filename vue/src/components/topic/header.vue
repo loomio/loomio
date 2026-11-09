@@ -5,10 +5,12 @@ import AbilityService from '@/shared/services/ability_service';
 import TopicTagsMenu from '@/components/tags/topic_tags_menu';
 import { computed } from 'vue';
 
-const { topicable, subpageTitle, subpageParentTo } = defineProps({
+const { topicable, subpageTitle, subpageParentTo, showTags } = defineProps({
   topicable: Object,
   subpageTitle: String,
-  subpageParentTo: String
+  subpageParentTo: String,
+  // Cached topicables can render before their root activity item is loaded.
+  showTags: {type: Boolean, default: true}
 });
 
 const topic = computed(() => topicable.topic());
@@ -56,8 +58,8 @@ function titleVisible(visible) {
     v-breadcrumbs.ml-n3.context-panel__breadcrumbs.flex-grow-1(color="anchor" :items="breadcrumbs")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
-    tags-display(v-if="!subpageTitle" :tags="tags" :group="group")
-    topic-tags-menu(v-if="!subpageTitle && canEditTags" :topic="topic")
+    tags-display(v-if="!subpageTitle && showTags" :tags="tags" :group="group")
+    topic-tags-menu(v-if="!subpageTitle && showTags && canEditTags" :topic="topic")
   h1.text-headline-large.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
     span(v-if="subpageTitle") {{ subpageTitle }}
     plain-text(v-else :model='topicable' field='title')

@@ -1,20 +1,20 @@
 ---
 title: Sondaggio appuntamento
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 04a7143f15135690
   time-poll: 6735d0e5c18f6bfc
   voting: 629ad7cef1a319a5
-  outcome: '079d5da99232b5f9'
+  outcome: 287b715a17138d1f
 title_source: 8e2a07d7257fbc04
 title_generated: 8cb720b199ee4928
 needs_review:
@@ -73,7 +73,7 @@ Quando il sondaggio appuntamento si chiude, scegli l'orario migliore e condividi
 
 **Notificare**: Aggiungi le persone che inviti all'incontro o all'evento
 
-**Ora dell'incontro**: Seleziona l'orario più adatto
+**Ora dell'incontro**: Seleziona l'orario più adatto. Le opzioni usano il [fuso orario del tuo profilo](/en/user_manual/users/user_profile#time-zone)
 
 **Nome dell'incontro**: Dai un nome al tuo incontro. Per impostazione predefinita viene usato il titolo del sondaggio appuntamento
 

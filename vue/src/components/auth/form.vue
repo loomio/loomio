@@ -1,10 +1,9 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import WatchRecords from '@/mixins/watch_records';
+import Records from '@/shared/services/records';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     user: Object,
     preventClose: Boolean
@@ -15,19 +14,8 @@ export default {
       localLogin: AppConfig.features.app.local_login,
       siteName: AppConfig.theme.site_name,
       privacyUrl: AppConfig.theme.privacy_url,
-      isDisabled: false,
-      pendingGroup: null
+      isDisabled: false
     };
-  },
-
-  created() {
-    this.watchRecords({
-      key: 'authForm',
-      collections: ['groups'],
-      query: store => {
-        this.pendingGroup = store.groups.find(this.pendingIdentity.group_id);
-      }
-    });
   },
 
   methods: {
@@ -71,6 +59,10 @@ export default {
 
     pendingIdentity() {
       return (AppConfig.pending_identity || {});
+    },
+
+    pendingGroup() {
+      return Records.groups.find(this.pendingIdentity.group_id);
     },
   }
 }

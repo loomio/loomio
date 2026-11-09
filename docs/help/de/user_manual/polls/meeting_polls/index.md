@@ -1,20 +1,20 @@
 ---
 title: Zeitumfrage
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 6975e94bc0aaea5a
   time-poll: baf9add7df68a810
   voting: f1e43cadb54d3f32
-  outcome: ae59b78443b634a8
+  outcome: ecba25dc0955b106
 title_source: 8e2a07d7257fbc04
 title_generated: 26b082e376938b2b
 needs_review:
@@ -73,7 +73,7 @@ Wenn die Terminfindung beendet ist, wähle den besten Termin und teile ein Fazit
 
 **Benachrichtigen**: Füge die Personen hinzu, die du zum Treffen oder zur Veranstaltung einlädst
 
-**Meeting-Zeit**: Wähle den Termin, der am besten passt
+**Meeting-Zeit**: Wähle den Termin, der am besten passt. Die Optionen verwenden die [Zeitzone in deinem Profil](/en/user_manual/users/user_profile#time-zone)
 
 **Name des Treffens**: Gib deinem Treffen einen Namen. Standardmäßig wird der Titel der Terminfindung verwendet
 

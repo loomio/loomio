@@ -6,7 +6,6 @@ import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
 import { pickBy } from 'lodash-es';
 import { HandleDirective } from 'vue-slicksort';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, watch } from 'vue';
 
 const vHandle = HandleDirective;
@@ -20,14 +19,10 @@ const emit = defineEmits(['setPoll']);
 
 const isSorting = ref(false);
 const showHidden = ref(false);
-const hasHiddenTemplates = ref(false);
 const hiddenAlert = ref(Session.user().hasExperienced('dismissPollTemplatesAlert'));
 const returnTo = Session.returnTo();
 const pollTemplates = ref([]);
-const hiddenTemplates = ref([]);
 const discussionTemplate = ref(null);
-const actions = ref({});
-const hiddenActions = ref({});
 const filter = ref('proposal');
 
 const filterLabels = {
@@ -51,48 +46,61 @@ const filters = computed(() => {
   }, v => !!v);
 });
 
-function query() {
-  if (filter.value === 'recommended') {
-    pollTemplates.value = discussionTemplate.value.pollTemplates();
-  } else {
-    const pollTypeFilter = (() => { switch (filter.value) {
-      case 'proposal':
-        return {pollType: {$in: ['proposal', 'question']}};
-      case 'poll':
-        return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count', 'stv']}};
-    } })();
-
-    pollTemplates.value = Records.pollTemplates.collection.chain().
-      find({groupId: props.group.id || null}).
-      find({example: {$ne: true}}).
-      find({hiddenAt: null, discardedAt: null}).
-      find(pollTypeFilter).
-      simplesort('position').data();
-
-    hiddenTemplates.value = Records.pollTemplates.collection.chain().
-      find({groupId: props.group.id || null}).
-      find({example: {$ne: true}}).
-      find({hiddenAt: {$ne: null}, discardedAt: null}).
-      find(pollTypeFilter).
-      simplesort('position').data();
-
-    hasHiddenTemplates.value = hiddenTemplates.value.length > 0;
+const pollTypeFilter = computed(() => {
+  switch (filter.value) {
+    case 'proposal':
+      return {pollType: {$in: ['proposal', 'question']}};
+    case 'poll':
+      return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count', 'stv']}};
   }
+});
 
-  actions.value = {};
+const queriedPollTemplates = computed(() => {
+  if (filter.value === 'recommended') {
+    return discussionTemplate.value.pollTemplates();
+  }
+  return Records.pollTemplates.collection.chain().
+    find({groupId: props.group.id || null}).
+    find({example: {$ne: true}}).
+    find({hiddenAt: null, discardedAt: null}).
+    find(pollTypeFilter.value).
+    simplesort('position').data();
+});
+
+// Sorting rewrites the list locally through v-model, so keep a ref synced from the query.
+watch(queriedPollTemplates, templates => { pollTemplates.value = templates; }, {immediate: true});
+
+const hiddenTemplates = computed(() => {
+  if (filter.value === 'recommended') { return []; }
+  return Records.pollTemplates.collection.chain().
+    find({groupId: props.group.id || null}).
+    find({example: {$ne: true}}).
+    find({hiddenAt: {$ne: null}, discardedAt: null}).
+    find(pollTypeFilter.value).
+    simplesort('position').data();
+});
+
+const hasHiddenTemplates = computed(() => hiddenTemplates.value.length > 0);
+
+const actions = computed(() => {
+  const result = {};
   pollTemplates.value.forEach((pollTemplate, i) => {
     if (filter.value === 'recommended') {
-      actions.value[i] = {};
+      result[i] = {};
     } else {
-      actions.value[i] = PollTemplateService.actions(pollTemplate, props.group);
+      result[i] = PollTemplateService.actions(pollTemplate, props.group);
     }
   });
+  return result;
+});
 
-  hiddenActions.value = {};
+const hiddenActions = computed(() => {
+  const result = {};
   hiddenTemplates.value.forEach((pollTemplate, i) => {
-    hiddenActions.value[i] = PollTemplateService.actions(pollTemplate, props.group);
+    result[i] = PollTemplateService.actions(pollTemplate, props.group);
   });
-}
+  return result;
+});
 
 function dismissAlert() {
   hiddenAlert.value = true;
@@ -118,23 +126,13 @@ function sortEnded() {
 
 watch(filter, () => {
   showHidden.value = false;
-  query();
 });
-watch(showHidden, query);
-watch(discussionTemplate, query);
 
 // init
-const { watchRecords } = useWatchRecords();
-watchRecords({
-  collections: ["pollTemplates"],
-  query: () => query()
-});
-
 if (discussion.value && discussion.value.discussionTemplateId) {
   Records.discussionTemplates.findOrFetchById(discussion.value.discussionTemplateId).then(dt => {
     discussionTemplate.value = dt;
     if (dt.pollTemplateKeysOrIds.length) { filter.value = 'recommended'; }
-    return query();
   });
 }
 
@@ -200,7 +198,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
           action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
     .d-flex.justify-center.my-2(v-if="userIsAdmin && hasHiddenTemplates && !showHidden && filter !== 'recommended'")
-      v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true")
+      v-btn.poll-common-templates-list__show-hidden.text-medium-emphasis(variant="text" size="small" @click="showHidden = true")
         span(v-t="'discussion_template.show_hidden_templates'")
 
     template(v-if="userIsAdmin && showHidden")

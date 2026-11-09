@@ -54,4 +54,41 @@ class Dev::DiscussionsController < Dev::BaseController
     sign_in discussion.author
     redirect_to discussion_url(discussion)
   end
+
+  def test_body_previews
+    group = create_group_with_members
+    reader = group.admins.first
+    author = group.members.where.not(id: reader.id).first
+    paragraph = '<p>We need enough context to understand how the delivery schedule affects our members. The morning route gives the warehouse team time to prepare orders, while the afternoon route makes it easier for volunteers to help.</p>'
+    discussion = DiscussionService.create(params: {
+      group_id: group.id, title: 'Planning our next delivery',
+      description: '<p>Long read context</p>' + paragraph * 12,
+      description_format: 'html'
+    }, actor: reader)
+    parent = CommentService.create(comment: Comment.new(parent: discussion,
+      body: '<p>Long read parent</p>' + paragraph * 12 + '<p><a href="https://example.com/delivery">Delivery details</a></p>',
+      body_format: 'html'), actor: author)
+    CommentService.create(comment: Comment.new(parent: parent,
+      body: '<p>Unread reply: could we try the morning route next week?</p>', body_format: 'html'), actor: author)
+    short = CommentService.create(comment: Comment.new(parent: discussion,
+      body: '<p>Short read comment</p>', body_format: 'html'), actor: author)
+    moderate = CommentService.create(comment: Comment.new(parent: discussion,
+      body: '<p>Moderately long read comment</p>' + '<p>A delivery note.</p>' * 9, body_format: 'html'), actor: author)
+    CommentService.create(comment: Comment.new(parent: discussion,
+      body: '<p>Long unread comment</p>' + paragraph * 12, body_format: 'html'), actor: author)
+    topic = discussion.topic.reload
+    read_ids = [0, parent.created_topic_item.sequence_id, short.created_topic_item.sequence_id, moderate.created_topic_item.sequence_id]
+    read_ids = topic.items.pluck(:sequence_id) if params[:all_read].present?
+    TopicReader.for(topic: topic, user: reader).viewed!(read_ids)
+    if params[:context_edited].present?
+      TopicReader.for(topic: topic, user: reader).update!(last_read_at: 1.minute.ago)
+      edit = {description: '<p>Updated read context</p>' + paragraph * 12}
+      edit[:recipient_message] = 'Please review the updated delivery plan' unless params[:context_edited].in?(%w[quiet notify])
+      edit[:recipient_user_ids] = [author.id] if params[:context_edited].in?(%w[notify both])
+      DiscussionService.update(discussion: discussion, actor: reader, params: edit)
+    end
+    sign_in reader
+    destination = params[:focus].present? ? discussion_url(discussion, comment_id: parent.id) : discussion_url(discussion)
+    redirect_to destination
+  end
 end

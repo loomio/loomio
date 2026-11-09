@@ -32,6 +32,39 @@ class Api::V1::TopicItemsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'topic_items'
   end
 
+  test "thread bootstrap matches the API for unread newest and focused windows including open polls" do
+    sign_in @user
+    poll = PollService.create(params: {
+      topic_id: @discussion.topic_id, title: 'Open poll outside the window', poll_type: 'proposal',
+      poll_option_names: %w[Agree Disagree], closing_at: 3.days.from_now
+    }, actor: @admin)
+    comments = 35.times.map do |i|
+      CommentService.create(comment: Comment.new(parent: @discussion, body: "Reply #{i}"), actor: @admin)
+    end
+    discussion_reaction = Reaction.create!(reactable: @discussion, user: @admin, reaction: '👍')
+    poll_reaction = Reaction.create!(reactable: poll, user: @admin, reaction: '❤️')
+    comment_reaction = Reaction.create!(reactable: comments.last, user: @admin, reaction: '🎉')
+    topic = @discussion.topic.reload
+    reader = TopicReader.for(user: @user, topic: topic)
+    [[], (0..15).to_a, topic.items.pluck(:sequence_id)].each do |read_ids|
+      reader.update!(read_ranges: RangeSet.to_ranges(read_ids), last_read_at: read_ids.any? ? Time.current : nil)
+      [{}, {sequence_id: 30}, {comment_id: comments.last.id}].each do |focus|
+        payload = JSON.parse(Boot::Topic.new(topicable: @discussion, user: @user, params: focus).payload.to_json)
+        get :index, params: payload['params'], format: :json
+        assert_response :success
+        assert_equal JSON.parse(response.body).except('meta'), payload['records']
+        reaction_ids = payload['records'].fetch('reactions').pluck('id')
+        assert_includes reaction_ids, discussion_reaction.id
+        assert_includes reaction_ids, poll_reaction.id
+        if payload['records'].fetch('comments').pluck('id').include?(comments.last.id)
+          assert_includes reaction_ids, comment_reaction.id
+        end
+        assert_includes payload['records']['polls'].pluck('id'), poll.id
+        assert_operator payload['records']['topic_items'].size, :<=, 26
+      end
+    end
+  end
+
   test "index serializes without record cache fallbacks" do
     sign_in @user
     CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)

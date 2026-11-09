@@ -1,7 +1,6 @@
 import BaseModel  from '@/shared/record_store/base_model';
 import RangeSet   from '@/shared/services/range_set';
 import Records    from '@/shared/services/records';
-import AppConfig  from '@/shared/services/app_config';
 import Session    from '@/shared/services/session';
 import { head, last, isArray, isEqual, throttle } from 'lodash-es';
 
@@ -13,12 +12,6 @@ export default class TopicModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
-    this.savePin = this.savePin.bind(this);
-    this.saveUnpin = this.saveUnpin.bind(this);
-    this.lock = this.lock.bind(this);
-    this.unlock = this.unlock.bind(this);
-    this.discard = this.discard.bind(this);
-    this.saveVolume = this.saveVolume.bind(this);
     this.readRangesPending = [];
     this.updateReadRanges = throttle(function() {
       // Submit only this viewing batch: historical read ranges must not clear
@@ -166,19 +159,19 @@ export default class TopicModel extends BaseModel {
   }
 
   membersInclude(user) {
-    if (this.readerGuest && AppConfig.currentUserId === user.id) { return true; }
+    if (this.readerGuest && Session.userId === user.id) { return true; }
     const group = this.group();
     return group && group.membersInclude(user);
   }
 
   adminsInclude(user) {
-    if (this.readerAdmin && AppConfig.currentUserId === user.id) { return true; }
+    if (this.readerAdmin && Session.userId === user.id) { return true; }
     const group = this.group();
     return group && group.adminsInclude(user);
   }
 
   membership() {
-    return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId})[0];
+    return Records.memberships.find({userId: Session.userId, groupId: this.groupId, revokedAt: null})[0];
   }
 
   savePin() {

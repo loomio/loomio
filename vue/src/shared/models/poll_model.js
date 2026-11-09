@@ -12,14 +12,6 @@ export default class PollModel extends BaseModel {
   static uniqueIndices = ['id', 'key'];
   static indices = ['authorId', 'groupId', 'topicId'];
 
-  constructor(...args) {
-    super(...args);
-    this.close = this.close.bind(this);
-    this.reopen = this.reopen.bind(this);
-    this.addOption = this.addOption.bind(this);
-    this.poll = this.poll.bind(this);
-  }
-
   collabKeyParams() {
     return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
   }
@@ -114,7 +106,7 @@ export default class PollModel extends BaseModel {
     clone.id = null;
     clone.key = null;
     clone.sourceTemplateId = this.id;
-    clone.authorId = Session.user().id;
+    clone.authorId = Session.userId;
     clone.groupId = null;
     clone.topicId = null;
 
@@ -287,7 +279,7 @@ export default class PollModel extends BaseModel {
   }
 
   stanceFor(user) {
-    if (user.id === AppConfig.currentUserId) {
+    if (user.id === Session.userId) {
       return this.myStance();
     } else {
       return head(orderBy(Records.stances.find({pollId: this.id, participantId: user.id, latest: true, revokedAt: null}), 'createdAt', 'desc'));

@@ -1,4 +1,4 @@
-class Dev::PollsController < Dev::NightwatchController
+class Dev::PollsController < Dev::ScenariosController
   include Dev::ScenariosHelper
 
   def test_scheduled_settings

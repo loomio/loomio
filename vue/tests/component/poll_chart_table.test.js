@@ -4,9 +4,8 @@ import { describe, expect, it, vi } from 'vitest';
 import { reactive, nextTick } from 'vue';
 
 vi.mock('@/shared/services/records', () => ({
-  default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: () => null, build: () => ({})}}
+  default: {pollOptions: {find: () => ({name: 'Yes', meaning: ''})}, users: {find: id => ({id, name: `Voter ${id}`}), build: () => ({})}}
 }));
-vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: () => {}}}}));
 vi.mock('@/components/user/avatar', () => ({default: {
   name: 'UserAvatar', props: {user: Object, size: Number, noLink: Boolean},
   template: '<div class="v-avatar test-voter-avatar" :title="user.name">{{ user.name }}</div>'
@@ -227,7 +226,6 @@ describe('weighted poll results table', () => {
 
     return mount(ChartTable, {
       props: {poll, hideVoters},
-      data: () => ({users: Object.fromEntries(ids.map(id => [id, {id, name: `Voter ${id}`}]))}),
       global: {
         plugins: [createVuetify()],
         directives: {t: () => {}},

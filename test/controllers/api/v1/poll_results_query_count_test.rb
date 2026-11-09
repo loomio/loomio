@@ -15,7 +15,8 @@ require 'test_helper'
 # Loading the collection before choosing its serializer removed three more
 # poll-index queries, lowering that baseline from 35 to 32. Showing a poll
 # looks up the viewer's membership once to accept a pending invitation, which
-# raised the show baseline from 26 to 27.
+# raised the show baseline from 26 to 27. Reusing hydrated groups removed
+# a parent-ID lookup, lowering the show/index baselines to 26/31.
 #
 # Weighted polls may add a constant number of queries, but their cost must not
 # grow with the number of options, voters, or polls faster than unweighted
@@ -39,13 +40,13 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
 
     assert_equal 2, calculate_results_queries(small)
     assert_equal 2, calculate_results_queries(large)
-    assert_equal 27, show_queries(small)
-    assert_equal 27, show_queries(large)
+    assert_equal 26, show_queries(small)
+    assert_equal 26, show_queries(large)
   end
 
   test "unweighted poll index does not grow with the number of polls" do
-    assert_equal 32, index_queries(polls_count: 1)
-    assert_equal 32, index_queries(polls_count: 4)
+    assert_equal 31, index_queries(polls_count: 1)
+    assert_equal 31, index_queries(polls_count: 4)
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do

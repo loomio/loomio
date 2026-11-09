@@ -23,12 +23,6 @@ Loomio supports "Reply by email" and to enable this you need an MX record so mai
 MX loomio.example.com, loomio.example.com, priority 0
 ```
 
-Additionally, create a CNAME record for the collaborative editing server.
-
-```
-CNAME hocuspocus.loomio.example.com, loomio.example.com
-```
-
 ### Firewall
 It's up to you to configure a firewall, but Loomio needs inbound traffic on ports 25, 80 and 443
 

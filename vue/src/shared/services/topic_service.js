@@ -239,11 +239,23 @@ export default new class TopicService {
         canPerform() {
           return AbilityService.canEditTags(topic);
         },
-        perform() {
+        async perform() {
+          let topicItem = topic.createdTopicItem();
+          // Inbox previews omit timeline items. Resolve the opening item's
+          // explicit assignments before rendering the editor.
+          if (!topicItem) {
+            try {
+              await Records.topicItems.fetch({params: {topic_id: topic.id, sequence_id: 0}});
+              topicItem = topic.createdTopicItem();
+            } catch (error) {
+              Flash.serverError(error);
+              return;
+            }
+          }
           return openModal({
             component: 'TopicTagsDialog',
             persistent: false,
-            props: { topic }
+            props: { topic, topicItem }
           });
         }
       },
@@ -316,7 +328,7 @@ export default new class TopicService {
             component: 'ConfirmModal',
             props: {
               confirm: {
-                submit: topic.discard,
+                submit: () => topic.discard(),
                 text: {
                   title: 'action_dock.delete_thread',
                   helptext: 'delete_discussion_form.body',
@@ -385,7 +397,7 @@ export default new class TopicService {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: topic.lock,
+            submit: () => topic.lock(),
             text: {
               title: 'action_dock.lock_thread',
               helptext: 'lock_thread_modal.explanation',
@@ -431,7 +443,7 @@ export default new class TopicService {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: topic.savePin,
+            submit: () => topic.savePin(),
             text: {
               title: 'action_dock.pin_discussion',
               flash: 'discussion.pin.pinned',

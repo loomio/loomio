@@ -7,7 +7,6 @@ import { I18n } from '@/i18n';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { hardReload } from '@/shared/helpers/window';
 
 const { topic } = defineProps({
@@ -15,9 +14,8 @@ const { topic } = defineProps({
 });
 
 const router = useRouter();
-const { watchRecords } = useWatchRecords();
 const destinationId = ref(null);
-const availableGroups = ref([]);
+const availableGroups = computed(() => Session.user().groups());
 const loading = ref(false);
 
 const directAllowed = computed(() => topic.hasAnonymousPolls === false);
@@ -73,13 +71,6 @@ const moveThread = () => {
     submit();
   }
 };
-
-watchRecords({
-  collections: ['groups', 'memberships'],
-  query: () => {
-    availableGroups.value = Session.user().groups();
-  }
-});
 </script>
 
 <template lang="pug">

@@ -8,16 +8,12 @@ export default
   props: {
     group: Object
   },
-  data() {
-    return {membershipRequests: []};
+  computed: {
+    membershipRequests() {
+      return this.group.pendingMembershipRequests();
+    }
   },
   created() {
-    this.watchRecords({
-      collections: ['membershipRequests'],
-      query: store => {
-        this.membershipRequests = this.group.pendingMembershipRequests();
-      }
-    });
     this.init();
   },
   methods: {

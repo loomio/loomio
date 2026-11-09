@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '4.0.9'
+ruby file: '.ruby-version'
 gem 'rails', '~> 8.1.0'
 # Active Support 8.1 passes JSON.parse options as a positional hash, which json 3 rejects.
 gem 'json', '< 3'
@@ -62,6 +62,8 @@ gem 'actionpack-cloudflare'
 gem 'victor', require: false
 gem 'web-push'
 gem 'webauthn'
+gem 'websocket-driver' # lib/collab_server
+gem 'nio4r' # lib/collab_server
 
 group :development, :test do
   gem 'byebug'

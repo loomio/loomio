@@ -17,9 +17,9 @@ import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import { useBookmarks } from '@/composables/useBookmarks';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
 import { mdiCog } from '@mdi/js';
 
@@ -28,24 +28,15 @@ const route = useRoute();
 const display = useDisplay();
 const theme = useTheme();
 
-const user = ref(Session.user());
 const page = ref('dashboardPage');
 const organization = ref(null);
 const open = ref(false);
 const group = ref(null);
-const organizations = ref([]);
-const unreadTopicCounts = ref({});
-const pollsToVoteOnCount = ref(0);
-const openGroups = ref([]);
-const openCounts = ref({});
 const showSettings = ref(false);
-const bookmarksCount = ref(0);
-const isSignedIn = ref(Session.isSignedIn());
-const canStartGroups = ref(AbilityService.canStartGroups());
 
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 const { loadBookmarks } = useBookmarks();
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 
 // Computed properties
 const greySidebarLogo = computed(() =>
@@ -60,14 +51,44 @@ const logoInline = computed(() => logoUrl.value === '/brand/logo-current-color.s
 const logoSvg = ref('');
 const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
 
+const user = computed(() => Session.user());
+const isSignedIn = computed(() => Session.isSignedIn());
+const canStartGroups = computed(() => AbilityService.canStartGroups());
+
+const organizations = computed(() => {
+  const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
+    const parent = subgroup.parent();
+    return parent.isVisibleToPublic ? parent : subgroup;
+  });
+  return uniqBy(Session.user().parentGroups().concat(orphanOrganizations), 'id');
+});
+
+const openCounts = computed(() => {
+  const counts = {};
+  const recentCutoff = subWeeks(new Date(), 6);
+  Session.user().groups().forEach(g => {
+    counts[g.id] = g.topics().filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
+  });
+  return counts;
+});
+
+const unreadTopicCounts = computed(() => {
+  const counts = {};
+  const recentCutoff = subWeeks(new Date, 6);
+  Records.topics.collection.chain().find({discardedAt: null, lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
+    counts['total'] = (counts['total'] || 0) + 1;
+    const groupId = t.groupId || 'direct'
+    counts[groupId] = (counts[groupId] || 0) + 1;
+  });
+  return counts;
+});
+
+const pollsToVoteOnCount = computed(() => findPendingPolls().length);
+
+const bookmarksCount = computed(() => Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length);
+
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
-};
-
-const updateSessionState = () => {
-  user.value = Session.user();
-  isSignedIn.value = Session.isSignedIn();
-  canStartGroups.value = AbilityService.canStartGroups();
 };
 
 const openIfPinned = () => {
@@ -104,76 +125,10 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction', last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
-  Records.stances.fetch({ path: 'my_stances' })
+  Records.topics.fetch({ params: { unread: 1, last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
+  loadPendingPolls();
   loadBookmarks();
 };
-
-const updateBookmarks = () => {
-  bookmarksCount.value = Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length;
-};
-
-
-const updateGroups = () => {
-  const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
-    const parent = subgroup.parent();
-    return parent.isVisibleToPublic ? parent : subgroup;
-  });
-  organizations.value = uniqBy(Session.user().parentGroups().concat(orphanOrganizations), 'id');
-  openCounts.value = {};
-  openGroups.value = [];
-  const recentCutoff = subWeeks(new Date(), 6);
-  Session.user().groups().forEach(g => {
-    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
-  });
-  Session.user().parentGroups().forEach(g => {
-    if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
-      openGroups.value[g.id] = true;
-    }
-  });
-};
-
-const updateUnreadCounts = () => {
-  unreadTopicCounts.value = {};
-  const recentCutoff = subWeeks(new Date, 6);
-  Records.topics.collection.chain().find({discardedAt: null, lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
-    unreadTopicCounts.value['total'] = (unreadTopicCounts.value['total'] || 0) + 1;
-    const groupId = t.groupId || 'direct'
-    unreadTopicCounts.value[groupId] = (unreadTopicCounts.value[groupId] || 0) + 1;
-  });
-}
-
-const updatePollsToVoteOnCount = () => {
-  pollsToVoteOnCount.value = Records.polls.collection.chain()
-    .find({discardedAt: null, closingAt: {$ne: null}, closedAt: null, myStanceId: {$ne: null}})
-    .data()
-    .filter(p => p.iCanVote() && !p.iHaveVoted()).length;
-}
-
-watchRecords({
-  collections: ['users'],
-  query: () => { updateSessionState() }
-});
-
-watchRecords({
-  collections: ['memberships'],
-  query: () => { updateGroups() }
-});
-
-watchRecords({
-  collections: ['topics'],
-  query: () => { updateUnreadCounts(); updateGroups(); }
-});
-
-watchRecords({
-  collections: ['stances'],
-  query: () => { updatePollsToVoteOnCount() }
-});
-
-watchRecords({
-  collections: ['bookmarks'],
-  query: () => { updateBookmarks() }
-});
 
 let hasFetched = false;
 const fetchOnce = () => {
@@ -183,12 +138,10 @@ const fetchOnce = () => {
 };
 
 EventBus.$on('signedIn', u => {
-  updateSessionState();
   openIfPinned();
 });
 
 onMounted(() => {
-  updateSessionState();
   openIfPinned();
   if (open.value) fetchOnce();
   if (logoInline.value) {
@@ -199,7 +152,6 @@ onMounted(() => {
   }
 });
 
-watch(organization, () => { updateGroups() });
 watch(open, (val) => {
   if (val) fetchOnce();
   EventBus.$emit("sidebarOpen", val);
@@ -249,7 +201,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
       v-list-subheader
         span(v-t="'common.groups'")
       template(v-for="group in organizations" :key="group.id")
-        v-list-item(:to="urlFor(group)")
+        v-list-item.sidebar__group(:to="urlFor(group)")
           template(v-slot:prepend)
             group-avatar.mr-2(:group="group")
           v-list-item-title

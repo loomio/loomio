@@ -22,7 +22,7 @@ export default {
 <template lang="pug">
 .common-notify-fields
   v-divider.my-6
-  v-text-field(
+  v-text-field.common-notify-fields__change-log(
     v-if="model.id"
     :label="$t('discussion_form.change_log_label')"
     :placeholder="$t('discussion_form.change_log_placeholder')"

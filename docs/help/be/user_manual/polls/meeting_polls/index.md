@@ -1,20 +1,20 @@
 ---
 title: Апытанне часу
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: aadfcf410f321a42
   time-poll: aec862ebba84a78a
   voting: 3d0437e5ae385845
-  outcome: aa3676c9e6304f06
+  outcome: 4e6d5adb044d7b68
 title_source: 8e2a07d7257fbc04
 title_generated: d9104328ca98655e
 ---
@@ -71,7 +71,7 @@ _Даведайцеся, калі людзі могуць сустрэцца_
 
 **Паведаміць**: Дадайце людзей, якіх вы запрашаеце на сустрэчу або мерапрыемства
 
-**Час сустрэчы**: Выберыце час, які падыходзіць найлепш
+**Час сустрэчы**: Выберыце час, які падыходзіць найлепш. Варыянты выкарыстоўваюць [часавы пояс у вашым профілі](/en/user_manual/users/user_profile#time-zone)
 
 **Назва сустрэчы**: Дайце сустрэчы назву. Па змаўчанні выкарыстоўваецца назва апытання пра час
 

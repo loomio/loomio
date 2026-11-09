@@ -7,15 +7,12 @@ import { useI18n } from 'vue-i18n';
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const display = useDisplay();
 const route = useRoute();
 const { t } = useI18n();
-const { watchRecords } = useWatchRecords();
 
 const signedIn = ref(Session.isSignedIn());
-const unreadNotifications = ref(0);
 const sidebarOpen = ref(false);
 const page = ref(null);
 
@@ -26,9 +23,7 @@ const activeItem = computed(() => {
   return undefined;
 });
 
-function updateCounts() {
-  unreadNotifications.value = Records.notifications.find({viewed: {$ne: true}}).length;
-}
+const unreadNotifications = computed(() => Records.notifications.find({viewed: {$ne: true}}).length);
 
 function handleSignedIn() {
   signedIn.value = true;
@@ -40,12 +35,6 @@ function handlePage(data) { page.value = data.page; }
 function refreshNotifications() {
   if (Session.isSignedIn()) Records.notifications.fetchNotifications().catch(() => {});
 }
-
-watchRecords({
-  key: 'mobile-navigation',
-  collections: ['notifications'],
-  query: updateCounts
-});
 
 onMounted(() => {
   EventBus.$on('signedIn', handleSignedIn);
@@ -70,18 +59,18 @@ v-bottom-navigation.mobile-navigation.lmo-no-print(
   color="primary"
   bg-color="surface"
 )
-  v-btn(value="sidebar" :active="sidebarOpen" @click="EventBus.$emit('toggleSidebar')" :aria-expanded="sidebarOpen" :aria-label="t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
+  v-btn.mobile-navigation__sidebar(value="sidebar" :active="sidebarOpen" @click="EventBus.$emit('toggleSidebar')" :aria-expanded="sidebarOpen" :aria-label="t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     common-icon(name="mdi-menu")
 
-  v-btn(value="dashboard" to="/dashboard" :aria-label="t('dashboard_page.dashboard')")
+  v-btn.mobile-navigation__dashboard(value="dashboard" to="/dashboard" :aria-label="t('dashboard_page.dashboard')")
     common-icon(name="mdi-view-dashboard-outline")
 
-  v-btn(value="notifications" to="/notifications" :aria-label="t('notifications.header')")
+  v-btn.mobile-navigation__notifications(value="notifications" to="/notifications" :aria-label="t('notifications.header')")
     v-badge(color="primary" :content="unreadNotifications" v-if="unreadNotifications")
       common-icon(name="mdi-bell-outline")
     common-icon(v-else name="mdi-bell-outline")
 
-  v-btn(v-if="page === 'topicPage'" value="contents" @click="EventBus.$emit('toggleTopicNav')" :aria-label="t('navbar.thread_nav')")
+  v-btn.mobile-navigation__contents(v-if="page === 'topicPage'" value="contents" @click="EventBus.$emit('toggleTopicNav')" :aria-label="t('navbar.thread_nav')")
     common-icon(name="mdi-menu-open")
 </template>
 

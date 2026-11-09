@@ -1,14 +1,11 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import UserModel            from '@/shared/models/user_model';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
+import AppConfig from '@/shared/services/app_config';
 
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
     super(recordStore);
-    this.updateProfile = this.updateProfile.bind(this);
-    this.uploadAvatar = this.uploadAvatar.bind(this);
-    this.destroy = this.destroy.bind(this);
-    this.saveExperience = this.saveExperience.bind(this);
     this.model = UserModel;
     this.apiEndPoint = 'profile';
     this.baseConstructor(recordStore)
@@ -21,12 +18,21 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
   }
 
   fetchGroups() {
-    return this.fetch({
+    if (AppConfig.groupsLoaded) return Promise.resolve();
+    return this.refreshGroups();
+  }
+
+  refreshGroups() {
+    this.groupsPromise ||= this.fetch({
       path: "groups",
       params: {
         exclude_types: 'user'
       }
-    });
+    }).then(data => {
+      AppConfig.groupsLoaded = true;
+      return data;
+    }).finally(() => { this.groupsPromise = null; });
+    return this.groupsPromise;
   }
 
   updateProfile(user) {

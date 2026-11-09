@@ -26,6 +26,24 @@ class UserTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  test "deleting a user removes the topics they started and their polls in other threads" do
+    author = User.create!(name: 'Spammer', email: "spammer#{SecureRandom.hex(4)}@example.com", email_verified: true)
+    @group.add_member!(author)
+    poll_params = { poll_type: 'proposal', poll_option_names: %w[Agree Disagree], closing_at: 3.days.from_now, group_id: @group.id }
+    thread = DiscussionService.create(params: { title: 'Their thread', group_id: @group.id, private: true }, actor: author)
+    standalone = PollService.create(params: poll_params.merge(title: 'Their poll'), actor: author)
+    in_other_thread = PollService.create(params: poll_params.merge(title: 'Their reply poll', topic_id: @discussion.topic_id), actor: author)
+
+    DestroyUserWorker.perform_now(author.id)
+
+    assert_not Topic.exists?(thread.topic_id)
+    assert_not Discussion.exists?(thread.id)
+    assert_not Topic.exists?(standalone.topic_id)
+    assert_not Poll.exists?(standalone.id)
+    assert_not Poll.exists?(in_other_thread.id)
+    assert Topic.exists?(@discussion.topic_id)
+  end
+
   test 'browseable group IDs are collections for members and signed-out users' do
     ids = users(:member_normal).browseable_group_ids
     assert_includes ids, groups(:group).id

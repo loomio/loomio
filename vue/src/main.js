@@ -1,4 +1,4 @@
-import 'vuetify/styles'
+import '@/css/vuetify_styles.scss'
 import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';
@@ -7,11 +7,8 @@ import submitOnModEnterDirective from '@/submit_on_mod_enter_directive';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
 import PlausibleService from '@/shared/services/plausible_service';
-import { installVitePreloadErrorHandler } from '@/shared/services/chunk_error_handling';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import EventBus from '@/shared/services/event_bus';
-
-installVitePreloadErrorHandler();
 
 try {
   document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();
@@ -27,10 +24,12 @@ import boot from '@/shared/helpers/boot';
 import { beforeSend } from '@/shared/helpers/sentry_event.mjs';
 import Session from '@/shared/services/session';
 import AccountCompletionService from '@/shared/services/account_completion_service';
+import { clearInitialDataAfterNavigation } from '@/shared/services/initial_data';
 import { plugin as Slicksort } from 'vue-slicksort';
 
 boot(function(data) {
   Session.apply(data);
+  router.afterEach(clearInitialDataAfterNavigation);
 
   const app = createApp(App);
   if (AppConfig.sentry_dsn) {
@@ -54,7 +53,6 @@ boot(function(data) {
         "ResizeObserver loop completed with undelivered notifications",
         "TypeError: cancelled",
         "UnhandledRejection: Non-Error promise rejection captured with value",
-        "ChunkLoadError: Loading chunk chunk-",
         "TypeError: annulé",
         "Permission denied to access property \"dispatchEvent\" on cross-origin object",
         "TypeError: Failed to fetch",

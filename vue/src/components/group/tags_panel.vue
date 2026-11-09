@@ -5,26 +5,18 @@ import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
-  mixins: [WatchRecords],
   data() {
     return {
       group: null,
-      topicsLoader: null,
-      topics: []
+      topicsLoader: null
     };
   },
 
   created() {
     this.init();
-
-    return this.watchRecords({
-      collections: ['topics', 'groups', 'discussions', 'polls'],
-      query: () => this.findRecords()
-    });
   },
 
   watch: {
@@ -45,11 +37,12 @@ export default
       });
 
       this.topicsLoader.fetchRecords();
-      this.findRecords();
-    },
+    }
+  },
 
-    findRecords() {
-      this.topics = Records.topics.collection.chain().
+  computed: {
+    topics() {
+      return Records.topics.collection.chain().
         find({groupId: {$in: this.group.selfAndSubgroupIds()}, discardedAt: null}).
         find({tags: {$contains: this.$route.params.tag}}).
         simplesort('lastActivityAt', true).data();

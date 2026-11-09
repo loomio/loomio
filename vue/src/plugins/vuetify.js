@@ -22,6 +22,7 @@ const colors = {
   grey50: "#F5F5F5",
   grey75: "#F2F2F2",
   grey100: "#E8E8E8",
+  grey500: "#9E9E9E",
   white: "#FFFFFF",
 }
 
@@ -37,6 +38,11 @@ export default createVuetify({
     },
     VCheckbox: {
       color: 'primary',
+    },
+    // md3 draws a short, rounded slider under the label. Keep the full-width,
+    // square slider.
+    VTabs: {
+      sliderVariant: 'secondary',
     },
   },
   icons: {
@@ -59,6 +65,8 @@ export default createVuetify({
           error: colors.red500,
           warning: colors.yellow425,
           anchor: colors.blue500,
+          // Used by vote sliders and membership alerts without the stock colour pack.
+          grey: colors.grey500,
         },
       },
 
@@ -72,6 +80,7 @@ export default createVuetify({
           error: colors.red500,
           warning: colors.yellow425,
           anchor: colors.yellow425,
+          grey: colors.grey500,
         },
       },
     },

@@ -1,50 +1,11 @@
-<script lang="js">
-import Records from '@/shared/services/records';
-import RecordLoader from '@/shared/services/record_loader';
-import Session       from '@/shared/services/session';
-import { filter } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
-import { votePollParams } from '@/shared/services/navigation_data';
+<script setup lang="js">
+import { computed } from 'vue';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
-export default
-{
-  mixins: [WatchRecords],
-  data() {
-    return {
-      votePolls: [],
-      loader: null
-    };
-  },
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
+const votePolls = computed(() => findPendingPolls());
 
-  created() {
-    this.loader = new RecordLoader({
-      collection: 'polls',
-      params: votePollParams
-    });
-
-    this.loader.fetchRecords();
-
-    this.watchRecords({
-      collections: ['polls', 'groups', 'memberships', 'stances'],
-      query: () => this.findRecords()
-    });
-  },
-
-  methods: {
-    findRecords() {
-      const groupIds = Session.user().groupIds();
-      const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
-
-      let chain = Records.polls.collection.chain();
-      chain = chain.find({discardedAt: null, closingAt: {$ne: null}, closedAt: null});
-      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}]});
-
-      const votable = p => p.iCanVote() && !p.iHaveVoted();
-      this.votePolls = filter(chain.simplesort('closingAt', true).data(), votable);
-    }
-  }
-};
-
+loadPendingPolls();
 </script>
 
 <template lang="pug">

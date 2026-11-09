@@ -2,17 +2,14 @@
 import EventBus from '@/shared/services/event_bus';
 import ChatbotService from '@/shared/services/chatbot_service';
 import Records from '@/shared/services/records';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     group: Object
   },
 
   data() {
     return {
-      chatbots: [],
       loading: true,
       addActions: {}
     };
@@ -21,16 +18,15 @@ export default {
   mounted() {
     this.addActions = ChatbotService.addActions(this.group);
 
-    this.watchRecords({
-      collections: ["chatbots"],
-      query: records => {
-        this.chatbots = Records.chatbots.find({groupId: this.group.id});
-      }
-    });
-
     Records.chatbots.fetch({params: {group_id: this.group.id}}).then(() => {
       this.loading = false;
     });
+  },
+
+  computed: {
+    chatbots() {
+      return Records.chatbots.find({groupId: this.group.id});
+    }
   },
 
   methods: {
@@ -68,7 +64,7 @@ v-card.chatbot-list(:title="$t('chatbot.chat_integrations')")
     template(v-if="!loading")
       v-alert(v-if="chatbots.length === 0" type="info" variant="tonal" :icon="false")
         p.mb-3(v-t="'chatbot.no_chat_integrations_yet'")
-      v-list-item(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
+      v-list-item.chatbot-list__chatbot(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
         template(v-slot:prepend)
           common-icon(:name="chatbotIcon(bot)")
         v-list-item-title {{bot.name}}

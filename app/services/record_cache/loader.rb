@@ -23,16 +23,7 @@ class RecordCache::Loader
     )
   end
 
-  def add_groups(group_ids, memberships: true)
-    groups = Group.with_attached_logo
-                  .with_attached_cover_photo
-                  .includes(:subscription)
-                  .where(id: RecordCache.ids_and_parent_ids(Group, group_ids))
-
-    if memberships
-      cache.add_groups_subscriptions_memberships(groups)
-    else
-      cache.add_groups(groups)
-    end
+  def add_groups(group_ids, memberships: true, records: nil)
+    cache.load_groups(group_ids, memberships: memberships, records: records)
   end
 end

@@ -7,14 +7,12 @@ import { orderBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
-  mixins: [UrlFor, WatchRecords],
+  mixins: [UrlFor],
   data() {
     return {
-      requests: [],
       group: null
     };
   },
@@ -26,10 +24,6 @@ export default
       if (AbilityService.canManageMembershipRequests(this.group)) {
         Records.membershipRequests.fetchPendingByGroup(this.group.key, {per: 100});
         Records.membershipRequests.fetchPreviousByGroup(this.group.key, {per: 100});
-        this.watchRecords({
-          collections: ['membershipRequests'],
-          query: store => {this.requests = this.group.membershipRequests(); }
-        });
       }
     }).catch(() => {
       // GroupPage owns route-level group fetch error handling.
@@ -37,6 +31,11 @@ export default
   },
 
   computed: {
+    requests() {
+      if (!this.group || !AbilityService.canManageMembershipRequests(this.group)) { return []; }
+      return this.group.membershipRequests();
+    },
+
     unapprovedRequestsByOldestFirst() {
       const unapproved = this.requests.filter(request => request.isPending());
       return orderBy(unapproved, ['createdAt'], ['asc']);

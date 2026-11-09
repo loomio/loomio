@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { addDays, startOfHour } from 'date-fns';
 
 vi.mock('@/shared/services/records', () => ({default: {}}));
-vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 2})}}));
+vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 2}), userId: 2}}));
 vi.mock('@/i18n', () => ({I18n: {}}));
 
 import PollModel from '@/shared/models/poll_model';

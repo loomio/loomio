@@ -8,11 +8,6 @@ export default class NotificationModel extends BaseModel {
   static plural = 'notifications';
   static uniqueIndices = ['id'];
 
-  constructor(...args) {
-    super(...args)
-    this.href = this.href.bind(this);
-  }
-
   defaultValues() {
     return {
       title: null,

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Dev::DiscussionMailerTest < ActionController::TestCase
   inline_jobs
-  tests Dev::NightwatchController
+  tests Dev::ScenariosController
 
   setup do
     Rails.application.routes.default_url_options[:host] = "https://loomio.test"

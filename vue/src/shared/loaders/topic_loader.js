@@ -4,7 +4,6 @@ import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import AppConfig from '@/shared/services/app_config';
 
 export default class TopicLoader {
   constructor(topic) {
@@ -23,6 +22,8 @@ export default class TopicLoader {
     this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
+    this.revealedBodies = reactive(new Set());
+    this.bodyPreviews = new Map();
     this.loading = false;
     this.isFirstLoad = true
     this.padding = 25;
@@ -72,6 +73,25 @@ export default class TopicLoader {
     return !RangeSet.includesValue(this.readRanges, id);
   }
 
+  // Each body keeps one preview state for the visit. Read status comes from the
+  // visit's read snapshot; reveals are stored by sequence ID so cached context
+  // and its loaded root item share the same state.
+  bodyPreview(sequenceId) {
+    if (!this.bodyPreviews.has(sequenceId)) {
+      const loader = this;
+      this.bodyPreviews.set(sequenceId, {
+        readBeforeVisit: !this.sequenceIdIsUnread(sequenceId),
+        get revealed() { return loader.revealedBodies.has(sequenceId); },
+        get announcedSinceRead() {
+          return sequenceId === 0 && loader.topic.topicableType === 'Discussion' &&
+            loader.topic.topicable().contextAnnouncedAt > loader.lastReadAt;
+        },
+        reveal: () => this.revealedBodies.add(sequenceId)
+      });
+    }
+    return this.bodyPreviews.get(sequenceId);
+  }
+
   expand(topic_item) {
     return this.collapsed[topic_item.id] = false;
   }
@@ -88,16 +108,16 @@ export default class TopicLoader {
     }
 
     if (args.position_key_lt) {
-      andParts.push({positionKey: {$jlt: args.position_key_lt}})
+      andParts.push({positionKey: {$lt: args.position_key_lt}})
     }
     if (args.position_key_lte) {
-      andParts.push({positionKey: {$jlte: args.position_key_lte}})
+      andParts.push({positionKey: {$lte: args.position_key_lte}})
     }
     if (args.position_key_gt) {
-      andParts.push({positionKey: {$jgt: args.position_key_gt}})
+      andParts.push({positionKey: {$gt: args.position_key_gt}})
     }
     if (args.position_key_gte) {
-      andParts.push({positionKey: {$jgte: args.position_key_gte}})
+      andParts.push({positionKey: {$gte: args.position_key_gte}})
     }
     if (args.position_key_sw) {
       andParts.push({positionKey: {$regex: `^${args.position_key_sw}`}})
@@ -106,8 +126,8 @@ export default class TopicLoader {
       name: `addLoadArgsRule`,
       local: {
         find: {$and: andParts},
-        sortByPositionKey: args.order_by == 'position_key' && !args.order_desc,
-        sortByPositionKeyDesc: args.order_by == 'position_key' && !!args.order_desc,
+        simplesort: args.order_by == 'position_key' ? 'positionKey' : null,
+        simplesortDesc: !!args.order_desc,
         limit: this.padding
       },
       remote: pickBy({
@@ -130,7 +150,7 @@ export default class TopicLoader {
     this.addRule({
       local: {
         find: {
-          actorId: AppConfig.currentUserId,
+          actorId: Session.userId,
           topicId: this.topic.id,
           createdAt: { $gte: new Date() }
         }
@@ -301,7 +321,7 @@ export default class TopicLoader {
     const promises = this.rules.filter(rule => rule.remote)
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
-      const params = Object.assign({}, rule.remote, this.isFirstLoad ? {exclude_types: 'reaction'} : {exclude_types: 'topic reaction'});
+      const params = Object.assign({}, rule.remote, this.isFirstLoad ? {} : {exclude_types: 'topic'});
       return Records.topicItems.fetch({params}).then(data => {
         // Failed windows must remain retryable, including a jump to activity
         // that has not yet been cached.
@@ -332,18 +352,6 @@ export default class TopicLoader {
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
-      } else if (rule.local.sortByPositionKey) {
-        chain = chain.sort((a,b) => {
-          if (a.positionKey == b.positionKey) { return 0 }
-          if (a.positionKey > b.positionKey) { return 1 }
-          if (a.positionKey < b.positionKey) { return -1 }
-        })
-      } else if (rule.local.sortByPositionKeyDesc) {
-        chain = chain.sort((a,b) => {
-          if (a.positionKey == b.positionKey) { return 0 }
-          if (a.positionKey > b.positionKey) { return -1 }
-          if (a.positionKey < b.positionKey) { return 1 }
-        })
       }
 
       if (rule.local.limit) {

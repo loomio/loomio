@@ -1,34 +1,23 @@
 <script setup lang="js">
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { orderBy } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
-const { watchRecords } = useWatchRecords();
-
-const bookmarks = ref([]);
 const loading = ref(true);
 
-const findRecords = () => {
-  bookmarks.value = orderBy(
-    Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
-    ['createdAt'],
-    ['desc']
-  );
-};
+const bookmarks = computed(() => orderBy(
+  Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
+  ['createdAt'],
+  ['desc']
+));
 
 const remove = (bookmark) => {
   bookmark.destroy().then(() => Flash.success('bookmarks.removed'));
 };
-
-watchRecords({
-  collections: ['bookmarks'],
-  query: () => findRecords()
-});
 
 onMounted(() => {
   EventBus.$emit('currentComponent', {
@@ -38,7 +27,6 @@ onMounted(() => {
 
   Records.bookmarks.fetch({}).finally(() => {
     loading.value = false;
-    findRecords();
   });
 });
 
@@ -60,7 +48,7 @@ v-main
     template(v-else)
       v-card.mb-2(v-if='bookmarks.length > 0')
         v-list(lines="two")
-          v-list-item(
+          v-list-item.bookmarks-page__bookmark(
             v-for="bookmark in bookmarks"
             :key="bookmark.id"
             :to="bookmark.url"
@@ -70,7 +58,7 @@ v-main
             v-list-item-title {{ bookmark.title }}
             v-list-item-subtitle {{ $t('bookmarks.subtitle', {type: bookmark.typeLabel(), name: bookmark.authorName}) }}
             template(v-slot:append)
-              v-btn(
+              v-btn.bookmarks-page__remove(
                 icon
                 variant="text"
                 :title="$t('action_dock.remove_bookmark')"

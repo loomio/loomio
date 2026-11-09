@@ -91,7 +91,7 @@ export default class PollTemplateModel extends BaseModel {
     attrs.groupId = this.groupId;
     attrs.pollTemplateId = this.id;
     attrs.pollTemplateKey = this.key;
-    attrs.authorId = Session.user().id;
+    attrs.authorId = Session.userId;
     attrs.closingAt = startOfHour(addDays(new Date(), this.defaultDurationInDays));
     attrs.pollOptionsAttributes = this.pollOptionsAttributes();
 

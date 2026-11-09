@@ -6,11 +6,13 @@ export default {
   props: {
     topic_item: Object,
     itemable: Object,
-    collapsed: Boolean
+    collapsed: Boolean,
+    focused: Boolean,
+    bodyPreview: Object
   }
 };
 </script>
 
 <template lang="pug">
-stance-updated(:topic_item="topic_item" :itemable="itemable" :collapsed="collapsed")
+stance-updated(:topic_item="topic_item" :itemable="itemable" :collapsed="collapsed" :focused="focused" :body-preview="bodyPreview")
 </template>

@@ -2,10 +2,9 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { compact } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
+import { watchEffect } from 'vue';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -21,12 +20,10 @@ export default {
   },
 
   created() {
-    this.watchRecords({
-      collections: ['pollOptions'],
-      query: () => {
-        if (this.poll.optionsDiffer(this.options)) {
-          this.options = this.poll.pollOptionsForVoting();
-        }
+    // Rebuild only when the poll's option set changes, so the voter's edits are kept.
+    watchEffect(() => {
+      if (this.poll.optionsDiffer(this.options)) {
+        this.options = this.poll.pollOptionsForVoting();
       }
     });
   },

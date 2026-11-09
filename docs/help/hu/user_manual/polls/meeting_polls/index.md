@@ -1,20 +1,20 @@
 ---
 title: Időpont választás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: c02fbf46cae78eba
   time-poll: e7d5ab9e3ae4e9b4
   voting: ec2612f9dfd6d420
-  outcome: 2d2f420ba57acff5
+  outcome: e1b52c7a72463bb6
 title_source: 8e2a07d7257fbc04
 title_generated: 1f347de25527b6bc
 ---
@@ -71,7 +71,7 @@ Amikor az időpontszavazás lezárul, válaszd ki a legjobb időpontot, és oszd
 
 **Értesít**: Add hozzá azokat, akiket meghívsz a találkozóra vagy eseményre
 
-**Találkozási idő**: Válaszd ki a legmegfelelőbb időpontot
+**Találkozási idő**: Válaszd ki a legmegfelelőbb időpontot. A lehetőségek a [profilodban megadott időzóna](/en/user_manual/users/user_profile#time-zone) szerint jelennek meg
 
 **Találkozás neve**: Adj nevet a találkozódnak. Alapértelmezés szerint az időpontszavazás címe lesz a neve
 

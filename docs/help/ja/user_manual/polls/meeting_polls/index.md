@@ -1,20 +1,20 @@
 ---
 title: タイムポーリング
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 82448f6509e204f4
   time-poll: c219175777c3e064
   voting: cac522a8d9f91908
-  outcome: ca1fe72dc6f6f640
+  outcome: 3e9ffb1c68e303d9
 title_source: 8e2a07d7257fbc04
 title_generated: ff7640acbf589312
 needs_review:
@@ -73,7 +73,7 @@ _参加者が集まれる日時を探します_
 
 **通知する**: 会議やイベントに招待する人を追加します
 
-**会議の時間**: 最適な日時を選択します
+**会議の時間**: 最適な日時を選択します。選択肢には[プロフィールのタイムゾーン](/en/user_manual/users/user_profile#time-zone)が使われます
 
 **会議名**: 会議に名前を付けます。既定では日程調整のタイトルが使われます
 

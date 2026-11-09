@@ -2,20 +2,14 @@
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { mdiTagOutline } from '@mdi/js';
-import { computed, ref, watch } from 'vue';
-import { useWatchRecords } from '@/composables/useWatchRecords';
+import { computed } from 'vue';
 
 const { tag, group } = defineProps({tag: {type: String, required: true}, group: {type: Object, required: true}});
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
-const { watchRecords } = useWatchRecords();
-const tags = ref([]);
+const tags = computed(() => group.tags());
 const tagColor = computed(() => tags.value.find(record => record.name === tag)?.color);
-const refreshTags = () => { tags.value = group.tags(); };
-
-watch(() => group, refreshTags, {immediate: true});
-watchRecords({collections: ['tags'], query: refreshTags});
 
 function close() {
   const query = {...route.query};

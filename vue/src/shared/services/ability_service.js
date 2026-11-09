@@ -14,12 +14,12 @@ export default new class AbilityService {
   }
 
   isUser() {
-    return (AppConfig.currentUserId != null);
+    return Session.isSignedIn();
   }
 
   canContactUser(user) {
     return Session.isSignedIn() &&
-    (Session.user().id !== user.id) &&
+    (Session.userId !== user.id) &&
     intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
@@ -301,7 +301,7 @@ export default new class AbilityService {
     const topic = comment.topic();
     return topic && topic.group().isEnabled() && !topic.lockedAt &&
     comment.discardedAt && (
-      (comment.authorIs(Session.user()) && comment.discardedBy === Session.user().id) ||
+      (comment.authorIs(Session.user()) && comment.discardedBy === Session.userId) ||
       topic.adminsInclude(Session.user())
     );
   }

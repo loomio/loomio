@@ -1,7 +1,7 @@
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import { reactive, nextTick } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import Loki from 'lokijs';
+import Database from '@/shared/record_store/db';
 
 const mocks = vi.hoisted(() => ({
   route: null, records: null, cached: true,
@@ -16,6 +16,8 @@ vi.mock('@/shared/services/scroll_service', () => ({default: {scrollTo: mocks.sc
 vi.mock('vue-router', () => ({useRoute: () => mocks.route}));
 vi.mock('vue-i18n', () => ({useI18n: () => ({t: key => key})}));
 vi.mock('@/components/topic/actions_panel', () => ({default: {template: '<div />'}}));
+vi.mock('@/components/topic/tagged_items.vue', () => ({default: {template: '<div />'}}));
+vi.mock('@/components/topic/tag_filter_toolbar.vue', () => ({default: {template: '<div />'}}));
 vi.mock('@/components/topic/list.vue', () => ({default: {name: 'TopicList', props: ['collection'], template: '<div class="cached-items">{{ collection.length }}</div>'}}));
 vi.mock('@/components/topic/toc_nav.vue', () => ({default: {template: '<div />'}}));
 vi.mock('@/components/discussion/fork_actions.vue', () => ({default: {template: '<div />'}}));
@@ -57,10 +59,9 @@ describe('cached thread navigation', () => {
     discussion = {id: 10, title: 'Cached discussion', description: 'Saved content', attachments: [], topic: () => topic};
     topic = {id: 1, topicableId: 10, topicableType: 'Discussion', itemsCount: 41, ranges: [[0, 40]], readRanges: [[0, 39]], lastReadAt: new Date(),
       group: () => ({}), topicable: () => discussion, lastSequenceId: () => 40};
-    const collection = new Loki('topic-page').addCollection('topic_items');
-    collection.insert([item(0), item(1)]);
+    const collection = new Database().addCollection('topic_items');
+    [item(0), item(1)].forEach(record => collection.insert(record));
     mocks.records = {
-      views: {}, view: ({name, query}) => { mocks.records.views[name] = query; query(); },
       discussions: {findByKey: () => mocks.cached ? discussion : null},
       polls: {findByKey: () => null, find: () => null},
       topics: {find: () => topic},
@@ -78,7 +79,7 @@ describe('cached thread navigation', () => {
     await nextTick();
     expect(wrapper.find('.cached-items').text()).toBe('2');
     expect(mocks.emit).toHaveBeenCalledWith('currentComponent', expect.objectContaining({title: 'Cached discussion'}));
-    expect(mocks.fetch).toHaveBeenCalledWith({params: {discussion_key: 'thread', include_polls_not_closed: 1, order_by: 'sequence_id', per: 25}});
+    expect(mocks.fetch).toHaveBeenCalledWith({params: {discussion_key: 'thread', include_polls_not_closed: 1, order_by: 'sequence_id', limit: 25}});
     expect(mocks.scroll).not.toHaveBeenCalled();
     expect(mocks.settled).not.toHaveBeenCalled();
     response.resolve({topics: [{id: 1}]});
@@ -89,11 +90,42 @@ describe('cached thread navigation', () => {
   });
 
   it('shows cached description even before any timeline items are available', async () => {
-    mocks.records.topicItems.collection.clear();
+    const collection = mocks.records.topicItems.collection;
+    [...collection.data].forEach(record => collection.remove(record));
     mountPage();
     await nextTick();
     expect(wrapper.find('.topic-page__cached-context').exists()).toBe(true);
     expect(mocks.emit).toHaveBeenCalledWith('currentComponent', expect.objectContaining({title: discussion.title}));
+  });
+
+  it('cancels an initial deep-link scroll without starting a replacement scroll', async () => {
+    mocks.route.params.sequence_id = '17';
+    mountPage();
+    await nextTick();
+    const cancelAutoScroll = mocks.on.mock.calls.find(([name]) => name === 'cancelAutoScroll')[1];
+    mocks.scroll.mockClear();
+    mocks.settled.mockClear();
+    cancelAutoScroll();
+    expect(mocks.cancel).toHaveBeenCalled();
+    expect(mocks.scroll).not.toHaveBeenCalled();
+    expect(mocks.settled).not.toHaveBeenCalled();
+  });
+
+  it('updates cached activity as records arrive while the refresh is pending', async () => {
+    mountPage();
+    mocks.records.topicItems.collection.insert(item(2));
+    await nextTick();
+    expect(wrapper.find('.cached-items').text()).toBe('3');
+  });
+
+  it('stops watching activity when the page is left', async () => {
+    mountPage();
+    await nextTick();
+    wrapper.unmount();
+    mocks.emit.mockClear();
+    mocks.records.topicItems.collection.insert(item(2));
+    await nextTick();
+    expect(mocks.emit).not.toHaveBeenCalled();
   });
 
   it.each([
@@ -180,7 +212,7 @@ describe('cached thread navigation', () => {
     mocks.route.params.key = 'poll';
     mountPage();
     await nextTick();
-    expect(mocks.fetch).toHaveBeenCalledWith({params: {poll_key: 'poll', include_polls_not_closed: 1, order_by: 'sequence_id', per: 25}});
+    expect(mocks.fetch).toHaveBeenCalledWith({params: {poll_key: 'poll', include_polls_not_closed: 1, order_by: 'sequence_id', limit: 25}});
     response.resolve({topics: [{id: 1}]});
     await flushPromises();
     expect(mocks.fetch).toHaveBeenCalledOnce();

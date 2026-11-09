@@ -192,8 +192,6 @@ de:
     score: Bewertung
     question: Fragerunde
     stv: STV-Wahl
-  timezones:
-    local: Ortszeit (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin-Menü
@@ -1692,7 +1690,6 @@ de:
     insert_embedded_url: Video einfügen
   change_picture_form:
     title: Profilbild ändern
-    helptext: Du kannst ein eigenes Profilbild hochladen oder ein <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>-Konto verwenden (sofern vorhanden).
     use_initials: Initialien verwenden
     use_gravatar: Gravatar verwenden
     use_uploaded: Neues Profilbild hochladen

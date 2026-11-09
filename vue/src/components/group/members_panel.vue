@@ -9,11 +9,10 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiClose, mdiMagnify } from '@mdi/js';
 import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
-  mixins: [UrlFor, WatchRecords],
+  mixins: [UrlFor],
   data() {
     return {
       mdiMagnify,
@@ -28,7 +27,6 @@ export default
         {title: this.$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
         {title: this.$t('members_panel.order_by_admin_desc'), value:'admin desc' }
       ],
-      memberships: [],
       searchOpen: Boolean(this.$route.query.q),
       searchQuery: this.$route.query.q || '',
       searchQueryPushed: this.$route.query.q || ''
@@ -65,11 +63,6 @@ export default
         }
       });
 
-      this.watchRecords({
-        collections: ['memberships', 'groups'],
-        query: this.query
-      });
-
       this.refresh();
     }).catch(() => {
       // GroupPage owns route-level group fetch error handling.
@@ -92,8 +85,30 @@ export default
       this.$router.replace(this.mergeQuery({q: null}));
     },
 
-    query() {
-      let chain = Records.memberships.collection.chain();
+    refresh() {
+      this.loader.fetchRecords({
+        from: 0,
+        q: this.$route.query.q,
+        order: this.order,
+        filter: this.$route.query.filter,
+        subgroups: this.$route.query.subgroups
+      });
+    },
+    invite() {
+      EventBus.$emit('openModal', {
+        component: 'GroupInvitationForm',
+        props: {
+          group: this.group
+        }
+      });
+    }
+  },
+
+  computed: {
+    memberships() {
+      if (!this.group) { return []; }
+
+      let chain = Records.memberships.collection.chain().find({revokedAt: null});
       switch (this.$route.query.subgroups) {
         case 'mine':
           chain = chain.find({groupId: {$in: intersection(this.group.organisationIds(), Session.user().groupIds())}});
@@ -160,30 +175,9 @@ export default
 
       chain = chain.simplesort('id', true);
 
-      this.memberships = chain.data();
+      return chain.data();
     },
 
-    refresh() {
-      this.loader.fetchRecords({
-        from: 0,
-        q: this.$route.query.q,
-        order: this.order,
-        filter: this.$route.query.filter,
-        subgroups: this.$route.query.subgroups
-      });
-      this.query();
-    },
-    invite() {
-      EventBus.$emit('openModal', {
-        component: 'GroupInvitationForm',
-        props: {
-          group: this.group
-        }
-      });
-    }
-  },
-
-  computed: {
     membershipRequestsPath() { return LmoUrlService.membershipRequest(this.group); },
     showLoadMore() { return !this.loader.exhausted; },
     totalRecords() {
@@ -295,7 +289,7 @@ export default
       div(v-else)
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
         v-list(v-else lines="two")
-          v-list-item(v-for="membership in memberships" :key="membership.id")
+          v-list-item.members-panel__member(v-for="membership in memberships" :key="membership.id")
             template(v-slot:prepend)
               user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title

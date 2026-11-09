@@ -1,28 +1,17 @@
 <script setup lang="js">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 
-const { watchRecords } = useWatchRecords();
-const notifications = ref([]);
 const unreadIds = ref([]);
 const loading = ref(true);
 
-function query() {
-  notifications.value = Records.notifications.collection.chain().simplesort('id', true).data();
-}
+const notifications = computed(() => Records.notifications.collection.chain().simplesort('id', true).data());
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
 }
-
-watchRecords({
-  key: 'notifications-page',
-  collections: ['notifications'],
-  query
-});
 
 onMounted(async () => {
   EventBus.$emit('currentComponent', {

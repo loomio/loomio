@@ -4,7 +4,7 @@ require "json"
 require_relative "codex_translator"
 require_relative "translation_glossary"
 
-# Translates Loomio's interface strings (config/locales/{client,server}.en.yml)
+# Translates Loomio's interface strings (config/locales/*.en.yml)
 # into one locale with the codex translator and Loomio's glossary.
 #
 # Strings go in batches, each with the existing translations of neighbouring

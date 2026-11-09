@@ -1,14 +1,12 @@
-import RecordView from '@/shared/record_store/record_view';
 import RestfulClient from './restful_client';
 import utils         from '@/shared/record_store/utils';
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, pick } from 'lodash-es';
+import { snakeCase, isEmpty, camelCase, map, each, pick } from 'lodash-es';
 
 export default class RecordStore {
 
   constructor(db) {
     this.db = db;
     this.collectionNames = [];
-    this.views = {};
     this.remote = new RestfulClient;
     this.remote.onSuccess = data => {
       this.importJSON(data);
@@ -63,25 +61,6 @@ export default class RecordStore {
       }
     });
 
-    this.updateViews(keys(data));
     return data;
-  }
-
-  updateViews(collectionNames) {
-    each(this.views, view => {
-      if (intersection(map(view.collectionNames, camelCase), map(collectionNames, camelCase)).length) {
-        view.query(this);
-      }
-    });
-  }
-
-  view({name, collections, query}) {
-    if (!this.views[name]) {
-      this.views[name] = new RecordView({name, recordStore: this, collections, query});
-    } else {
-      console.warn(`Records.view exists: ${name}`);
-    }
-    this.views[name].query(this);
-    return this.views[name];
   }
 };

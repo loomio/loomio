@@ -188,8 +188,6 @@ hu:
     score: pontozás
     question: kérdezési kör
     stv: STV-választás
-  timezones:
-    local: Helyi idő (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin menü
@@ -1676,7 +1674,6 @@ hu:
     insert_embedded_url: Videó beágyazása
   change_picture_form:
     title: Profilkép beállítása
-    helptext: Feltöltheted a saját profilképed, vagy ha van egy <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>fiókod, akkor használhatod azt.
     use_initials: Használj kezdőbetűket
     use_gravatar: Használj Gravatart
     use_uploaded: Tölts fel új fényképet

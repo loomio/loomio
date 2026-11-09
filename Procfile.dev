@@ -1,4 +1,3 @@
 web:        bundle exec puma -C config/puma.rb
 solid_queue: bin/jobs start
-hocuspocus: node hocuspocus/server.mjs
 vite:       cd vue && npm run serve

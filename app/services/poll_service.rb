@@ -339,7 +339,13 @@ class PollService
 
     Sentry.metrics.count("poll.discard", attributes: { poll_type: poll.poll_type })
     Poll.transaction do
-      poll.update(discarded_at: Time.now, discarded_by: actor.id)
+      if poll.topic.topicable == poll
+        # A standalone poll owns its topic, so discard from the topic down, as threads do.
+        TopicService.discard_without_authorization(topic: poll.topic, actor: actor)
+        poll.reload
+      else
+        poll.update(discarded_at: Time.now, discarded_by: actor.id)
+      end
       TopicItem.where(
         kind: [ "stance_created", "stance_updated" ],
         itemable_type: "Stance",

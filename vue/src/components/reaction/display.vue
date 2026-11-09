@@ -1,14 +1,10 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import ReactionService from '@/shared/services/reaction_service';
 
 import { merge, capitalize, difference, keys, startsWith, each, compact } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
-
   props: {
     model: Object,
     canEdit: Boolean,
@@ -22,21 +18,10 @@ export default {
 
   data() {
     return {
-      userId: Session.user().id,
+      userId: Session.userId,
       diameter: (this.size == 'x-small' && 20) || 24,
-      maxNamesCount: 10,
-      reactions: [],
-      reactionHash: {all: []}
+      maxNamesCount: 10
     };
-  },
-
-
-  mounted() {
-    ReactionService.enqueueFetch(this.model);
-    this.watchRecords({
-      collections: ['reactions'],
-      query: this.runQuery
-    });
   },
 
   computed: {
@@ -47,37 +32,40 @@ export default {
       };
     },
 
+    reactions() {
+      return Records.reactions.find(this.reactionParams);
+    },
+
+    reactionHash() {
+      const reactionHash = {all: []};
+      each(this.reactions, reaction => {
+        let user;
+        if (reactionHash[reaction.reaction] == null) {
+          reactionHash[reaction.reaction] = [];
+        }
+        if (user = Records.users.find(reaction.userId)) {
+          reactionHash[reaction.reaction].push(user);
+          reactionHash['all'].push(user);
+        }
+        return true;
+      });
+      return reactionHash;
+    },
+
     reactionTypes() {
       return difference(keys(this.reactionHash), ['all']);
     }
   },
 
   methods: {
-    runQuery() {
-      this.reactionHash = {all: []};
-      this.reactions = []
-      each(Records.reactions.find(this.reactionParams), reaction => {
-        this.reactions.push(reaction);
-        let user;
-        if (this.reactionHash[reaction.reaction] == null) {
-          this.reactionHash[reaction.reaction] = [];
-        }
-        if (user = Records.users.find(reaction.userId)) {
-          this.reactionHash[reaction.reaction].push(user);
-          this.reactionHash['all'].push(user);
-        }
-        return true;
-      });
-    },
     removeMine(reaction) {
       if (!this.canEdit) { return; }
       const mine = Records.reactions.find(merge({}, this.reactionParams, {
-        userId:   Session.user().id,
+        userId:   Session.userId,
         reaction
       }
       ))[0];
       if (mine) { mine.destroy(); }
-      this.runQuery();
     },
 
     translate(shortname) {

@@ -5,7 +5,6 @@ vi.mock('@/shared/services/session', () => ({default: {user: vi.fn()}}));
 vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 vi.mock('@/shared/services/record_loader', () => ({default: vi.fn()}));
-vi.mock('@/mixins/watch_records', () => ({default: {methods: {watchRecords: vi.fn()}}}));
 vi.mock('@/mixins/url_for', () => ({default: {}}));
 
 import MembersPanel from '@/components/group/members_panel.vue';

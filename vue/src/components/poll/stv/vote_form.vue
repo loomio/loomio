@@ -2,12 +2,11 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sortBy } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
+import { watchEffect } from 'vue';
 
 const DIVIDER = { id: 'divider', isDivider: true };
 
 export default {
-  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -17,13 +16,11 @@ export default {
   },
 
   created() {
-    this.watchRecords({
-      collections: ['pollOptions'],
-      query: records => {
-        const realOptions = this.pollOptions.filter(o => !o.isDivider);
-        if (this.stance.poll().optionsDiffer(realOptions)) {
-          this.pollOptions = this.sortPollOptions();
-        }
+    // Rebuild only when the poll's option set changes, so the voter's edits are kept.
+    watchEffect(() => {
+      const realOptions = this.pollOptions.filter(o => !o.isDivider);
+      if (this.stance.poll().optionsDiffer(realOptions)) {
+        this.pollOptions = this.sortPollOptions();
       }
     });
   },

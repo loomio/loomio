@@ -162,7 +162,7 @@ onMounted(async () => {
           th(scope="col") {{ t('auth_form.email') }}
           th.text-right(scope="col") {{ t('membership_form.weight_label') }}
       tbody
-        tr(v-for="membership in memberships" :key="membership.id")
+        tr.member-weights-page__member(v-for="membership in memberships" :key="membership.id")
           td
             .d-flex.align-center.ga-2
               user-avatar(:user="avatarUser(membership)" :size="36" no-link)

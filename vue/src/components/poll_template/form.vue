@@ -4,7 +4,6 @@ import { mapKeys, snakeCase, compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 import { useI18n } from 'vue-i18n';
 import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
@@ -14,7 +13,7 @@ export default {
     const { t } = useI18n();
     return { t };
   },
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   directives: { handle: HandleDirective },
 
   props: {
@@ -250,7 +249,7 @@ export default {
         span {{ t('poll_common.reuse_voting_options_and_settings') }}
         help-link.ml-1(path="user_manual/polls/poll_templates")
       v-form#poll-template-form(ref="form" @submit.prevent="submit")
-        v-select(
+        v-select.poll-template-form__voting-method(
           :label="$t('poll_common_form.voting_method')"
           v-model="pollTemplate.pollType"
           :items="votingMethodsItems"
@@ -309,7 +308,7 @@ export default {
           .text-body-large.py-2.poll-common-form__options-heading(v-t="'poll_common_form.options'")
           v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
             span(v-t="'poll_common_form.no_options_add_some'")
-          sortable-list(
+          sortable-list.poll-common-form__options-list(
             v-model:list="pollOptions"
             append-to=".app-is-booted"
             use-drag-handle

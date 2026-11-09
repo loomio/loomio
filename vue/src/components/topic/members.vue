@@ -8,22 +8,10 @@ export default {
     discussion: Object
   },
 
-  data() {
-    return {readers: []};
-  },
-
   mounted() {
     Records.topicReaders.fetch({
       params: {
         discussion_id: this.discussion.id
-      }
-    });
-
-    this.watchRecords({
-      collections: ['topicReaders'],
-      query: records => {
-        this.readers = Records.topicReaders.collection.chain().
-          find({topicId: this.discussion.topicId}).simplesort('lastReadAt', true).limit(20).data();
       }
     });
   },
@@ -38,6 +26,10 @@ export default {
   },
 
   computed: {
+    readers() {
+      return Records.topicReaders.collection.chain().
+        find({topicId: this.discussion.topicId}).simplesort('lastReadAt', true).limit(20).data();
+    },
     canInvitePeople() {
       return AbilityService.canAnnounceTopic(this.discussion.topic()) || AbilityService.canAddGuestsTopic(this.discussion.topic());
     }

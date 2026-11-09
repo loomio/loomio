@@ -1,25 +1,24 @@
 <script setup>
-import { ref, computed, watch, nextTick, onUnmounted } from 'vue';
+import { ref, computed, watch, nextTick, onUnmounted, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
 import AbilityService from '@/shared/services/ability_service';
-import PollCommonForm from '@/components/poll/common/form';
-import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import ScrollService from '@/shared/services/scroll_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
+
+const PollCommonForm = defineAsyncComponent(() => import('@/components/poll/common/form'));
+const PollCommonChooseTemplateWrapper = defineAsyncComponent(() => import('@/components/poll/common/choose_template_wrapper'));
 
 const { topic } = defineProps({
   topic: { type: Object, required: true }
 });
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 
-const canAddComment = ref(false);
-const canStartPoll = ref(false);
+const canAddComment = computed(() => AbilityService.canAddComment(topic));
+const canStartPoll = computed(() => AbilityService.canStartPoll(topic));
 const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);
@@ -46,7 +45,7 @@ const resetComment = () => {
     topicId: topic.id,
     parentType: topic.topicableType,
     parentId: topic.topicableId,
-    authorId: Session.user().id
+    authorId: Session.userId
   });
 };
 
@@ -80,15 +79,6 @@ watch(() => topic.id, () => {
   pollFormWasOpened.value = false;
 });
 
-watchRecords({
-  key: topic.id,
-  collections: ['topics', 'groups', 'memberships', 'polls', 'stances'],
-  query: () => {
-    canAddComment.value = AbilityService.canAddComment(topic);
-    canStartPoll.value = AbilityService.canStartPoll(topic);
-  }
-});
-
 resetComment();
 
 EventBus.$on('show-add-comment-form', () => { forceShowCommentForm.value = true; currentAction.value = 'add-comment'; });
@@ -114,7 +104,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
         @comment-submitted="resetComment")
     template(v-else)
       v-tabs.activity-panel__actions.mb-3(grow :model-value="currentAction" @update:model-value="selectAction")
-        v-tab(value='add-comment' :id="`topic-${topic.id}-comment-tab`" :aria-controls="`topic-${topic.id}-comment-panel`")
+        v-tab.activity-panel__add-comment(value='add-comment' :id="`topic-${topic.id}-comment-tab`" :aria-controls="`topic-${topic.id}-comment-panel`")
           span(v-t="'comment_form.add_a_comment'")
         v-tab.activity-panel__add-poll(value='add-poll' :id="`topic-${topic.id}-poll-tab`" :aria-controls="`topic-${topic.id}-poll-panel`")
           span(v-t="'discussion_context.start_a_vote'")

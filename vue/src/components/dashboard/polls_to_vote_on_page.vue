@@ -1,52 +1,25 @@
 <script setup lang="js">
-import { ref, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { escapeRegExp, filter } from 'lodash-es';
-import { subDays } from 'date-fns';
+import { escapeRegExp } from 'lodash-es';
 
-import Records from '@/shared/services/records';
-import RecordLoader from '@/shared/services/record_loader';
 import EventBus from '@/shared/services/event_bus';
-import Session from '@/shared/services/session';
-import { votePollParams } from '@/shared/services/navigation_data';
-import { useWatchRecords } from '@/composables/useWatchRecords';
+import { usePendingPolls } from '@/composables/usePendingPolls';
 
 const route = useRoute();
+const { loadPendingPolls, findPendingPolls, loading } = usePendingPolls();
 
-const votePolls = ref([]);
-const loader = ref(null);
-const { watchRecords } = useWatchRecords();
-
-const findRecords = () => {
-  const groupIds = Session.user().groupIds();
-  const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
-
-  let chain = Records.polls.collection.chain();
-  chain = chain.find({discardedAt: null, closingAt: {$ne: null}});
-  chain = chain.find({$or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}]});
-  chain = chain.find({$or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}]});
-
+const votePolls = computed(() => {
+  const polls = findPendingPolls();
   if (route.query.q) {
     const rx = new RegExp(escapeRegExp(route.query.q), 'i');
-    chain = chain.find({$or: [{'title': {'$regex': rx}},
-                             {'description': {'$regex': rx}}]});
+    return polls.filter(poll => rx.test(poll.title) || rx.test(poll.description));
+  } else {
+    return polls;
   }
-
-  const votable = p => p.iCanVote() && !p.iHaveVoted();
-  votePolls.value = filter(chain.simplesort('closingAt', true).data(), votable);
-};
-
-loader.value = new RecordLoader({
-  collection: 'polls',
-  params: votePollParams
 });
 
-loader.value.fetchRecords();
-
-watchRecords({
-  collections: ['polls', 'groups', 'memberships', 'stances'],
-  query: () => findRecords()
-});
+loadPendingPolls();
 
 onMounted(() => {
   EventBus.$emit('currentComponent', {
@@ -55,9 +28,9 @@ onMounted(() => {
   });
 });
 
-const titleVisible = (visible) => {
+function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
-};
+}
 </script>
 
 <template lang="pug">
@@ -65,12 +38,12 @@ v-main
   v-container.polls-to-vote-on-page.max-width-1024.px-0.px-sm-3
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.polls_to_vote_on'")
 
-    section.polls-to-vote-on-page__loading(v-if='loader.loading && votePolls.length == 0')
+    section.polls-to-vote-on-page__loading(v-if='loading && votePolls.length == 0')
       v-card.mb-2(variant="flat")
         v-list(lines="two")
           loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index')
 
-    section.polls-to-vote-on-page__content(v-if='!loader.loading || votePolls.length > 0')
+    section.polls-to-vote-on-page__content(v-if='!loading || votePolls.length > 0')
       v-card.mb-2(v-if='votePolls.length > 0' variant="flat")
         v-list(lines="two")
           poll-common-preview(
@@ -81,6 +54,6 @@ v-main
             :key="poll.id"
           )
 
-      v-card.mb-2(v-if='votePolls.length == 0 && !loader.loading' variant="flat")
+      v-card.mb-2(v-if='votePolls.length == 0 && !loading' variant="flat")
         v-card-text(v-t="'dashboard_page.no_polls_to_vote_on'")
 </template>

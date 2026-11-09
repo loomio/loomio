@@ -4,11 +4,14 @@ import { pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { computed, onMounted, ref } from 'vue';
+import BodyPreview from '@/components/topic/body_preview.vue';
 
 const props = defineProps({
   topic_item: Object,
   itemable: Object,
-  collapsed: Boolean
+  collapsed: Boolean,
+  focused: Boolean,
+  bodyPreview: Object
 });
 
 const actions = ref([]);
@@ -54,7 +57,8 @@ onMounted(() => {
       time-ago(:date='discussion.createdAt')
 
   template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" field="description")
+    body-preview(:state="bodyPreview" :focused="focused")
+      formatted-text.context-panel__description(:model="discussion" field="description")
     link-previews(:model="discussion")
     attachment-list(:attachments="discussion.attachments")
     action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' variant="tonal")

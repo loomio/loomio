@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
 import { reactive } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -13,7 +13,6 @@ vi.mock('@/shared/services/records', () => ({default: {comments: {build: mocks.b
 vi.mock('@/shared/services/session', () => ({default: {defaultFormat: () => 'html', user: () => ({id: 1}), isSignedIn: () => true}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$on: vi.fn(), $off: vi.fn()}}));
 vi.mock('@/shared/services/scroll_service', () => ({default: {scrollTo: mocks.scroll}}));
-vi.mock('@/composables/useWatchRecords', () => ({useWatchRecords: () => ({watchRecords: ({query}) => query()})}));
 vi.mock('@/components/poll/common/form', () => ({default: {name: 'PollCommonForm', props: ['poll'], template: '<div />'}}));
 vi.mock('@/components/poll/common/choose_template_wrapper', () => ({default: {name: 'PollCommonChooseTemplateWrapper', template: '<div />'}}));
 vi.mock('@/components/topic/comment_form.vue', () => ({default: {name: 'CommentForm', props: ['comment'], template: '<textarea v-model="comment.body" />'}}));
@@ -28,6 +27,8 @@ function mountPanel() {
     directives: {t: () => {}},
     stubs: {
       VTabs: {name: 'VTabs', template: '<div><slot /></div>'},
+      PollCommonForm: {name: 'PollCommonForm', props: ['poll'], template: '<div />'},
+      PollCommonChooseTemplateWrapper: {name: 'PollCommonChooseTemplateWrapper', template: '<div />'},
       CommentForm: false,
       JoinGroupButton: true
     }
@@ -37,6 +38,7 @@ function mountPanel() {
 async function selectTab(action) {
   wrapper.findComponent({name: 'VTabs'}).vm.$emit('update:modelValue', action);
   await wrapper.vm.$nextTick();
+  await flushPromises();
 }
 
 describe('thread action panels', () => {

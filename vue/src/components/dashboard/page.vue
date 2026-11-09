@@ -5,12 +5,8 @@ import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import RecordLoader   from '@/shared/services/record_loader';
 import { dashboardParams } from '@/shared/services/navigation_data';
-import { useWatchRecords } from '@/composables/useWatchRecords';
-
-const { watchRecords } = useWatchRecords();
 
 const dashboardLoaded = ref(Records.topics.collection.data.length > 0);
-const topics = ref([]);
 const loader = ref(null);
 
 const noGroups = computed(() => Session.user().groups().length === 0);
@@ -28,7 +24,7 @@ function openSearchModal() {
   });
 }
 
-function query() {
+const topics = computed(() => {
   const groupIds = Session.user().groupIds();
   let chain = Records.topics.collection.chain();
   chain = chain.find({lockedAt: null});
@@ -39,8 +35,8 @@ function query() {
   ]});
   chain = chain.simplesort('lastActivityAt', true);
   chain = chain.limit(30);
-  topics.value = chain.data();
-}
+  return chain.data();
+});
 
 function fetch() {
   if (!loader.value) { return; }
@@ -50,19 +46,12 @@ function fetch() {
 function refresh() {
   if (!Session.isSignedIn()) { return; }
   fetch();
-  query();
 }
 
 function init() {
   loader.value = new RecordLoader({
     collection: 'topics',
     params: dashboardParams
-  });
-
-  watchRecords({
-    key: 'dashboard',
-    collections: ['topics', 'memberships'],
-    query
   });
 
   refresh();

@@ -186,8 +186,6 @@ el:
     score: δημοσκόπηση βαθμολογίας
     question: γύρος ερωτήσεων
     stv: Εκλογές STV
-  timezones:
-    local: Τοπική ώρα (%{value})
   common:
     value: "%{value}"
     admin_menu: Μενού διαχειριστή
@@ -1670,7 +1668,6 @@ el:
     insert_embedded_url: Ενσωμάτωση βίντεο
   change_picture_form:
     title: Ορισμός φωτογραφίας προφίλ
-    helptext: Μπορείτε να ανεβάσετε τη δική σας εικόνα προφίλ ή εάν έχετε λογαριασμό <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , μπορείτε να τη χρησιμοποιήσετε.
     use_initials: Χρησιμοποιήστε αρχικά
     use_gravatar: Χρησιμοποιήστε Gravatar
     use_uploaded: Ανεβάστε νέα φωτογραφία

@@ -2,11 +2,8 @@
 import Records      from '@/shared/services/records';
 import Session      from '@/shared/services/session';
 import EventBus     from '@/shared/services/event_bus';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
-
   props: {
     group: {
       type: Object,
@@ -15,28 +12,8 @@ export default {
     close: Function
   },
 
-  data() {
-    return {allTags: this.sortedTags()};
-  },
-
-  mounted() {
-    this.watchRecords({
-      key: 'tags'+this.group.id,
-      collections: ['tags'],
-      query: () => {
-        return this.allTags = this.sortedTags();
-      }
-    });
-  },
-
   computed: {
-    canAdminTags() {
-      return this.group.parentOrSelf().adminsInclude(Session.user());
-    }
-  },
-
-  methods: {
-    sortedTags() {
+    allTags() {
       const seen = {};
       return this.group.tags().filter(tag => {
         const name = tag.name.toLowerCase();
@@ -46,10 +23,12 @@ export default {
       }).sort((a, b) => a.name.localeCompare(b.name));
     },
 
-    query() {
-      this.allTags = this.sortedTags();
-    },
+    canAdminTags() {
+      return this.group.parentOrSelf().adminsInclude(Session.user());
+    }
+  },
 
+  methods: {
     openNewTagModal() {
       EventBus.$emit('openModal', {
         component: 'TagsModal',
@@ -86,7 +65,7 @@ export default {
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: tag.destroy,
+            submit: () => tag.destroy(),
             successCallback: () => this.openTagsSelect(),
             text: {
               title:    'loomio_tags.destroy_tag',

@@ -19,7 +19,7 @@ const parentChecked = ref(true);
 
 const isFocused = (topic_item) => {
   return props.focusSelector == `.sequenceId-${topic_item.sequenceId || 0}` ||
-    (topic_item.itemableType === 'Comment' && props.focusSelector == `.comment-${topic_item.itemableId || 0}`);
+    (topic_item.itemableType === 'Comment' && props.focusSelector == `#comment-${topic_item.itemableId}`);
 };
 
 </script>

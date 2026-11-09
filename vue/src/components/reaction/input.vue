@@ -19,7 +19,7 @@ export default {
       const params = {
         reactableType: capitalize(this.model.constructor.singular),
         reactableId: this.model.id,
-        userId: Session.user().id
+        userId: Session.userId
       };
 
       const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);

@@ -10,13 +10,12 @@ import Flash   from '@/shared/services/flash';
 import { isEmpty, debounce } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { I18n } from '@/i18n';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import { useI18n } from 'vue-i18n';
 
 export default
 {
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   props: {
     group: Object
   },
@@ -32,26 +31,11 @@ export default
         required(value) { return !!value || 'Required.'; }
       },
       hostname: AppConfig.theme.canonical_host,
-      parentGroups: [],
       loadingHandle: false
     };
   },
 
   created() {
-    this.watchRecords({
-      collections: ['groups', 'memberships'],
-      query: records => {
-        this.parentGroups = [{value: null, title: this.$t('common.none')}];
-        this.parentGroups = this.parentGroups.concat(Session.user().parentGroups().
-          filter(g => AbilityService.canCreateSubgroups(g)).
-          map(g => ({
-          value: g.id,
-          title: g.name
-        }))
-        );
-      }
-    });
-
     this.suggestHandle = debounce(function() {
       // if group is new, suggest handle whenever name changes
       // if group is old, suggest handle only if handle is empty
@@ -126,6 +110,16 @@ export default
   },
 
   computed: {
+    parentGroups() {
+      return [{value: null, title: this.$t('common.none')}].concat(Session.user().parentGroups().
+        filter(g => AbilityService.canCreateSubgroups(g)).
+        map(g => ({
+        value: g.id,
+        title: g.name
+      }))
+      );
+    },
+
     categoryItems() {
       // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
       return ['board', 'membership', 'self_managing', 'cohousing', 'other'].map(category => ({
@@ -203,7 +197,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading
       :rules='[rules.required]'
       maxlength='255'
       :label="$t(groupNameLabel)"
-      @keyup="suggestHandle()")
+      @update:model-value="suggestHandle()")
     validation-errors(:subject="group", field="name")
 
     div(v-if="!group.parentId || (group.parentId && group.parent().handle)")

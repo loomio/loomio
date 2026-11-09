@@ -1,6 +1,41 @@
 require "test_helper"
 
 class AppConfigTest < ActiveSupport::TestCase
+  test "every manual time zone has a label in every supported language" do
+    AppConfig.locales.fetch('supported').each do |locale|
+      labels = YAML.load_file(Rails.root.join('config', 'locales', "timezones.#{locale}.yml")).fetch(locale).fetch('timezones').fetch('regions', {})
+
+      assert_equal AppConfig.time_zones.sort, labels.keys.sort, "Time zone labels are incomplete for #{locale}"
+      assert labels.values.all? { |label| label.is_a?(String) && label.present? }, "Time zone labels must be nonempty strings for #{locale}"
+      labels.each do |identifier, label|
+        assert_equal identifier.split('/').length, label.split(' / ').length, "Time zone labels must preserve every geographic path segment for #{identifier} in #{locale}"
+      end
+      client = YAML.load_file(Rails.root.join('config', 'locales', "client.#{locale}.yml")).fetch(locale)
+      refute client.key?('timezones'), "Time zone labels must stay out of the client bundle for #{locale}"
+    end
+  end
+
+  test "manual time zones cover every current clock rule" do
+    now = Time.current
+    # Compare transition dates as well as offsets: sharing today's offset alone
+    # does not imply sharing seasonal rules. Ignore abbreviation-only changes.
+    clock_rule = lambda do |zone|
+      offset = zone.period_for_utc(now).utc_total_offset
+      rule = [offset]
+      zone.transitions_up_to(now + 20.years, now).each do |transition|
+        next if transition.offset.utc_total_offset == offset
+
+        offset = transition.offset.utc_total_offset
+        rule << [transition.at.to_i, offset]
+      end
+      rule
+    end
+    selected_rules = AppConfig.time_zones.map { |identifier| clock_rule.call(TZInfo::Timezone.get(identifier)) }.to_set
+    uncovered = TZInfo::Timezone.all_data_zones.reject { |zone| selected_rules.include?(clock_rule.call(zone)) }
+
+    assert_empty uncovered.map(&:identifier), "Add a representative for each uncovered clock rule to config/time_zones.yml"
+  end
+
   test "group deletion grace period is ninety days" do
     assert_equal 90, AppConfig.group_deletion_delay_days
   end

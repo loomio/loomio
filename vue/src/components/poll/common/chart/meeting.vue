@@ -2,26 +2,11 @@
 import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
   props: {
     poll: Object,
     zone: Object
-  },
-
-  data() {
-    return {votersCast: []};
-  },
-
-  created() {
-    return this.watchRecords({
-      collections: ['users'],
-      query: store => {
-        this.votersCast = this.poll.votersCast();
-      }
-    });
   },
 
   methods: {
@@ -51,6 +36,7 @@ export default {
   },
 
   computed: {
+    votersCast() { return this.poll.votersCast(); },
     datesAsOptions() { return this.poll.datesAsOptions(); },
     currentUserTimeZone() {
       return Session.user().timeZone;

@@ -38,6 +38,15 @@ class Topic < ApplicationRecord
     where(discarded_at: nil)
   }
 
+  # Topics are deleted from the top down, but older deletions could leave a
+  # topic whose thread or poll is gone; keep those out of lists.
+  scope :with_topicable, -> {
+    where(<<~SQL.squish)
+      (topics.topicable_type = 'Discussion' AND EXISTS (SELECT 1 FROM discussions WHERE discussions.id = topics.topicable_id))
+      OR (topics.topicable_type = 'Poll' AND EXISTS (SELECT 1 FROM polls WHERE polls.id = topics.topicable_id))
+    SQL
+  }
+
   scope :group_kept, -> {
     where(group_kept_condition)
   }

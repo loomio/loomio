@@ -194,8 +194,6 @@ it:
     score: punteggio
     question: giro di domande
     stv: elezioni STV
-  timezones:
-    local: Ora locale (%{value})
   common:
     value: "%{value}"
     admin_menu: Menù amministratore
@@ -1696,7 +1694,6 @@ it:
     insert_embedded_url: Incorporare video
   change_picture_form:
     title: Imposta la foto del profilo
-    helptext: Puoi caricare la foto sul tuo profilo, o se disponi di un account su <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, puoi usare quella foto.
     use_initials: Usa iniziali
     use_gravatar: Usa Gravatar
     use_uploaded: Carica una nuova foto

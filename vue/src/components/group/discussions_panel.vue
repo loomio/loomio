@@ -6,20 +6,13 @@ import PageLoader         from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
 import TagsFilterMenu from '@/components/tags/filter_menu';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
   components: { TagsFilterMenu },
-  mixins: [WatchRecords, UrlFor],
+  mixins: [UrlFor],
   created() {
-    this.watchRecords({
-      key: this.$route.params.key,
-      collections: ['topics', 'groups', 'memberships'],
-      query: this.query
-    });
-
     this.refresh();
     EventBus.$on('signedIn', this.hardRefresh);
     EventBus.$on('joinedGroup', this.hardRefresh);
@@ -33,7 +26,6 @@ export default
   data() {
     return {
       group: null,
-      topics: [],
       loader: null,
       isMember: false,
       per: 25,
@@ -56,33 +48,82 @@ export default
     },
 
     refresh() {
-      Records.groups.findOrFetch(this.$route.params.key).then(group => {
-        this.group = group;
-        this.isMember = !!Session.user().membershipFor(this.group);
+      // GroupPage loads the group before mounting this panel.
+      const group = Records.groups.fuzzyFind(this.$route.params.key);
+      this.group = group;
+      this.isMember = !!Session.user().membershipFor(this.group);
 
-        this.loader = new PageLoader({
-          path: 'topics',
-          order: 'lastActivityAt',
-          params: {
-            group_id: this.group.id,
-            exclude_types: 'reaction',
-            topicable_type: 'Discussion',
-            subgroups: 'mine',
-            filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
-            tags: this.$route.query.tag,
-            per: this.per
-          }
-        });
+      this.loader = new PageLoader({
+        path: 'topics',
+        order: 'lastActivityAt',
+        params: {
+          group_id: this.group.id,
+          topicable_type: 'Discussion',
+          subgroups: 'mine',
+          filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
+          tags: this.$route.query.tag,
+          per: this.per
+        }
+      });
 
-        this.fetch();
-        this.query();
-      }).catch(() => {
-        // GroupPage owns route-level group fetch error handling.
+      this.fetch();
+
+      EventBus.$emit('currentComponent', {
+        page: 'groupPage',
+        title: this.group.name,
+        group: this.group,
+        search: {
+          placeholder: this.$t('navbar.search_discussions_in_group', {name: this.group.parentOrSelf().name})
+        }
       });
     },
 
-    query() {
-      if (!this.group) { return }
+    fetch() {
+      this.loader.fetch(this.page);
+    },
+
+    filterName(filter) {
+      switch (filter) {
+        case 'unread': return 'discussions_panel.unread';
+        case 'locked': return 'discussions_panel.locked';
+        case 'all': return 'discussions_panel.all';
+        default:
+          return 'discussions_panel.unlocked';
+      }
+    },
+
+    openSearchModal() {
+      let initialOrgId = null;
+      let initialGroupId = null;
+
+      if (this.group.isParent()) {
+        initialOrgId = this.group.id;
+      } else {
+        initialOrgId = this.group.parentId;
+        initialGroupId = this.group.id;
+      }
+
+      EventBus.$emit('openModal', {
+        component: 'SearchModal',
+        persistent: false,
+        maxWidth: 900,
+        props: {
+          initialOrgId,
+          initialGroupId,
+          initialQuery: this.dummyQuery
+        }
+      }
+      );
+    }
+  },
+
+  watch: {
+    '$route.query': 'refresh'
+  },
+
+  computed: {
+    topics() {
+      if (!this.group) { return []; }
 
       const groupIds = this.group.organisationIds();
 
@@ -127,71 +168,13 @@ export default
         if (this.page === 1) {
           chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
         } else {
-          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
+          chain = chain.find({lastActivityAt: {$between: this.loader.pageWindow[this.page]}});
         }
         topics = chain.data();
       }
-      this.topics = pinnedTopics.concat(topics);
-
-      EventBus.$emit('currentComponent', {
-        page: 'groupPage',
-        title: this.group.name,
-        group: this.group,
-        search: {
-          placeholder: this.$t('navbar.search_discussions_in_group', {name: this.group.parentOrSelf().name})
-        }
-      });
+      return pinnedTopics.concat(topics);
     },
 
-    fetch() {
-      this.loader.fetch(this.page).then(this.query);
-    },
-
-    filterName(filter) {
-      switch (filter) {
-        case 'unread': return 'discussions_panel.unread';
-        case 'locked': return 'discussions_panel.locked';
-        case 'all': return 'discussions_panel.all';
-        default:
-          return 'discussions_panel.unlocked';
-      }
-    },
-
-    openSearchModal() {
-      let initialOrgId = null;
-      let initialGroupId = null;
-
-      if (this.group.isParent()) {
-        initialOrgId = this.group.id;
-      } else {
-        initialOrgId = this.group.parentId;
-        initialGroupId = this.group.id;
-      }
-
-      EventBus.$emit('openModal', {
-        component: 'SearchModal',
-        persistent: false,
-        maxWidth: 900,
-        props: {
-          initialOrgId,
-          initialGroupId,
-          initialQuery: this.dummyQuery
-        }
-      }
-      );
-    }
-  },
-
-  watch: {
-    '$route.params': 'refresh',
-    '$route.query': 'refresh',
-    'page'() {
-      this.fetch();
-      this.query();
-    }
-  },
-
-  computed: {
     page: {
       get() { return parseInt(this.$route.query.page) || 1; },
       set(val) {

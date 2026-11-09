@@ -1,30 +1,30 @@
 ---
 title: A profilod
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: e341837e759e4369
 generated:
   introduction: 47f4e3a3a1dad64b
   edit-profile: a02d1a8842a23142
   update-your-personal-info: afcf4c68514140f2
-  viewing-another-person-s-profile: 7851b89ed2cf359c
-  uploading-a-profile-photo: 75621b2526e9e93a
-  language-settings: 8385d85673ae5bd8
+  uploading-a-profile-photo: 98afdbd630c02dae
+  language-settings: 89bdfecb67535d16
   resetting-your-password: d9cfdade65632795
   merge-accounts: e3ee843bad709830
   deleting-your-account: a3cb1463fd028b6d
+  time-zone: 89013e9343e6a047
 title_source: 528d89ad72cba22e
 title_generated: b0abe97f76d97f5e
 ---
@@ -57,29 +57,24 @@ Személyes adataidat az alábbi mezők módosításával frissítheted:
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Mások profiljának megtekintése
-
-Válaszd ki valakinek a nevét vagy avatárját a profilja megnyitásához. A profiladatai és csoportjai mellett a legutóbbi beszélgetései, hozzászólásai és szavazásai is megjelennek. A listán csak olyan tevékenységek szerepelnek, amelyekhez van hozzáférési jogosultságod; a be nem jelentkezett látogatók csak a nyilvános tevékenységeket látják.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Profilkép feltöltése
 Amikor létrehozod a Loomio-fiókodat, alapértelmezés szerint a neved kezdőbetűi jelennek meg profilképként. Profilképet a profiloldaladon a képedre kattintva tölthetsz fel.
 
-Ha van [Gravatarod](https://en.gravatar.com/), a **Használj Gravatart** lehetőség kiválasztásával beállíthatod profilképként. Azt is választhatod, hogy a Loomio a más elterjedt platformokon vagy eszközökben használt fényképedet használja.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Nyelvi beállítások
-A Loomio angol nyelven készül, de [önkéntesek számos nyelvre lefordítják](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Nyelv
 
 A Loomio felismeri a böngésződ nyelvi beállításait, de a profiloldaladon kézzel is kiválaszthatod a kívánt nyelvet az elérhető lehetőségek közül.
 
-![](profile_language.png)
+<!-- translation-section: time-zone -->
+
+## Időzóna
+
+Az időpontszavazás lehetőségei a profilodban mentett időzónát használják. Kapcsold be az **Időzóna automatikus felismerése** beállítást a böngésződ által jelzett időzóna használatához, vagy kapcsold ki, és válaszd ki a régiódat az **Időzóna** mezőben, majd válaszd a **Profil frissítése** gombot.
 
 <!-- translation-section: resetting-your-password -->
 

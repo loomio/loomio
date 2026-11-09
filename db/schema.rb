@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_08_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -213,6 +213,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_31_000002) do
     t.integer "topic_id"
     t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
+    t.datetime "context_announced_at"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"

@@ -87,6 +87,10 @@ export default defineConfig({
         target: 'ws://localhost:3000',
         ws: true,
       },
+      '/collab_server': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
     },
   },
 
@@ -94,6 +98,13 @@ export default defineConfig({
     alias: [
       { find: /^~/, replacement: '' },
       { find: '@', replacement: path.resolve(__dirname, 'src') },
+      // CommonJS dependencies (vue-slicksort) require('vue'), which resolves to
+      // the full build with the template compiler. Templates are precompiled,
+      // so every import uses the runtime-only build.
+      { find: /^vue$/, replacement: 'vue/dist/vue.runtime.esm-bundler.js' },
+      // date-fns 2 has no exports map. date-fns-tz imports CommonJS file paths
+      // such as date-fns/format/index.js, which would bundle a second copy.
+      { find: /^date-fns\/(?!esm\/)(.*)$/, replacement: 'date-fns/esm/$1' },
     ],
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
@@ -124,7 +135,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: '../public/vue',
 
-    // Prevent Vite from treating Nightwatch HTML reports as entries
+    // Prevent Vite from treating Playwright HTML reports as entries
     rollupOptions: {
       input: {
         app: path.resolve(__dirname, 'index.html'),

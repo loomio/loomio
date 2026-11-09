@@ -6,8 +6,9 @@ import TopicLoader       from '@/shared/loaders/topic_loader';
 import TaggedItems from '@/components/topic/tagged_items.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
+import TopicHeader from '@/components/topic/header';
+import BodyPreview from '@/components/topic/body_preview.vue';
 import ScrollService     from '@/shared/services/scroll_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
@@ -15,7 +16,6 @@ import { mdiArrowDown } from '@mdi/js';
 
 const route = useRoute();
 const { t } = useI18n();
-const { watchRecords } = useWatchRecords();
 
 const topic            = ref(null);
 const loadedKey        = ref(null);
@@ -30,19 +30,11 @@ const jumping = ref(false);
 const showLatest = computed(() => topic.value && topic.value.itemsCount > 1 && !latestVisible.value);
 let pageGeneration = 0;
 let cancelSettledAnchorScroll = null;
-
-watchRecords({
-  key: 'topic-page',
-  collections: ['topic_items', 'polls', 'stances'],
-  query: () => {
-    if (!loader.value) return;
-    loader.value.updateCollection();
-    nextTick(scrollToAnchorIfNew);
-  }
-});
+let stopCollectionWatch = null;
 
 onMounted(() => {
   EventBus.$on('setAnchor', onSetAnchor);
+  EventBus.$on('cancelAutoScroll', cancelSettledScroll);
   EventBus.$on('visibleKeys', onVisibleKeys);
 
   init();
@@ -50,8 +42,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   EventBus.$off('setAnchor', onSetAnchor);
+  EventBus.$off('cancelAutoScroll', cancelSettledScroll);
   EventBus.$off('visibleKeys', onVisibleKeys);
   cancelSettledScroll();
+  stopCollectionUpdates();
   pageGeneration += 1;
   loader.value = null;
   anchorSelector.value = null;
@@ -72,6 +66,15 @@ function scrollToFocused() {
   }
 }
 
+// The watcher may be created after an async fetch resolves, outside the
+// component's effect scope, so stop it explicitly when leaving the thread.
+function stopCollectionUpdates() {
+  if (stopCollectionWatch) {
+    stopCollectionWatch();
+    stopCollectionWatch = null;
+  }
+}
+
 function cancelSettledScroll() {
   if (cancelSettledAnchorScroll) {
     cancelSettledAnchorScroll();
@@ -79,9 +82,8 @@ function cancelSettledScroll() {
   }
 }
 
-// Fired by load_more.vue before prepending items above the viewport.
-// Stores the current top-visible item's selector + screen offset so
-// scrollToAnchorIfNew can restore the visual position after insertion.
+// Fired before loading earlier items. Restore this viewport offset after the
+// collection updates.
 function onSetAnchor(selector, offset) {
   cancelSettledScroll();
   anchorSelector.value = selector;
@@ -106,6 +108,7 @@ function onVisibleKeys(keys) {
 
 function init() {
   cancelSettledScroll();
+  stopCollectionUpdates();
   pageGeneration += 1;
   topic.value = null;
   loadedKey.value = null;
@@ -154,7 +157,13 @@ function displayTopic(record) {
   loadedKey.value = route.params.key;
   loader.value = new TopicLoader(record);
   loadContent(routeTopicParams());
-  loader.value.updateCollection();
+  // Record-store queries track their dependencies; scroll state stays outside
+  // the tracked query so scrolling cannot retrigger collection updates.
+  stopCollectionWatch = watch(
+    () => loader.value.updateCollection(),
+    () => nextTick(scrollToAnchorIfNew),
+    { immediate: true }
+  );
   setAnchorFromRoute();
   publishTitle();
   const generation = pageGeneration;
@@ -186,7 +195,7 @@ function initialFetchParams() {
       ...remoteTopicParams,
       sequence_id_gte: Math.max(sequenceId - parseInt(padding / 2), 0),
       order: 'sequence_id',
-      per: padding
+      limit: padding
     };
   }
 
@@ -195,7 +204,7 @@ function initialFetchParams() {
       ...remoteTopicParams,
       comment_id: commentId,
       order: 'sequence_id',
-      per: padding
+      limit: padding
     };
   }
 
@@ -205,7 +214,7 @@ function initialFetchParams() {
     ...remoteTopicParams,
     // The server resolves an embedded poll's position when its key is used.
     ...(embeddedOrUnknownPoll ? {unread_or_newest: 1} : {order_by: 'sequence_id'}),
-    per: padding
+    limit: padding
   };
 }
 
@@ -400,8 +409,9 @@ function shouldSettleAnchorScroll() {
         tagged-items(v-if="route.query.tag" :key="topic.id" :topic="topic" :loader="loader" :tag="route.query.tag")
         template(v-else)
           .topic-page__cached-context.sequenceId-0.pa-3#context(v-if="!loader.collection.length")
-            topic-header(:topicable="topic.topicable()")
-            formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
+            topic-header(:topicable="topic.topicable()" :show-tags="false")
+            body-preview(:state="loader.bodyPreview(0)" :focused="focusSelector === '.sequenceId-0'")
+              formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
             attachment-list(:attachments="topic.topicable().attachments")
           topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         topic-actions-panel(:topic="topic")

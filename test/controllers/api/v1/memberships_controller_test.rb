@@ -64,7 +64,9 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     membership = group.membership_for(user)
     assert membership.accepted_at.present?
     assert_not membership.admin?
-    assert_equal membership.id, JSON.parse(response.body).fetch('memberships').first.fetch('id')
+    json = response.parsed_body.fetch('memberships').first
+    assert_equal membership.id, json.fetch('id')
+    assert_nil json.fetch('revoked_at')
 
     delete :destroy, params: {id: membership.id}
     assert_response :success
@@ -74,6 +76,9 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil membership.reload.revoked_at
     assert_not membership.admin?
+    json = response.parsed_body.fetch('memberships').first
+    assert_equal membership.id, json.fetch('id')
+    assert_nil json.fetch('revoked_at')
   end
 
   test "outsiders and revoked parent members cannot join a subgroup visible only to parent members" do

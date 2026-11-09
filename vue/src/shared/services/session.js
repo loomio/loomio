@@ -8,6 +8,7 @@ import { compact } from 'lodash-es';
 import { I18n, loadLocaleMessages } from '@/i18n';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import { signOutSession } from '@/shared/services/session_logout.mjs';
+import { bootData, clearInitialData } from '@/shared/services/initial_data';
 
 export default new class Session {
   returnTo() {
@@ -24,10 +25,11 @@ export default new class Session {
   }
 
   apply(data) {
+    if (data !== bootData) clearInitialData();
     AppConfig['currentUserId'] = data.current_user_id
     AppConfig['pendingIdentity'] = data.pending_identity;
     Records.importJSON(data);
-    this.userId = data.current_user_id;
+    AppConfig.groupsLoaded = !!data.groups_loaded;
     const user = this.user();
     loadLocaleMessages(I18n, user.locale);
 
@@ -52,6 +54,11 @@ export default new class Session {
       destroySession: () => Records.sessions.remote.destroy(''),
       reload: () => hardReload('/')
     });
+  }
+
+  // Read from AppConfig so computed queries re-run when the signed-in user changes.
+  get userId() {
+    return AppConfig.currentUserId;
   }
 
   isSignedIn() {

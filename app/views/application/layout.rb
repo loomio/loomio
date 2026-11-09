@@ -37,8 +37,17 @@ class Views::Application::Layout < Views::Application::Component
     }
   end
 
+  # Views override this to describe the page to crawlers and link previews.
+  def page_meta
+    { type: "website" }
+  end
+
+  def page_title
+    [meta_hash[:title], AppConfig.theme[:site_name]].compact_blank.uniq.join(" | ")
+  end
+
   def render_head
-    title { plain meta_hash[:title] }
+    title { plain page_title }
     meta charset: "utf-8"
     meta name: "viewport", content: "width=device-width, initial-scale=1.0, viewport-fit=cover"
     meta name: "theme-color", content: AppConfig.theme[:primary_color]
@@ -54,7 +63,14 @@ class Views::Application::Layout < Views::Application::Component
       meta content: image_url, property: "og:image"
     end
     meta content: AppConfig.theme[:site_name], property: "og:site_name"
-    meta content: "website", property: "og:type"
+    meta content: page_meta[:type], property: "og:type"
+    meta content: I18n.locale.to_s.tr("-", "_"), property: "og:locale"
+    if page_meta[:published_time]
+      meta content: page_meta[:published_time].iso8601, property: "article:published_time"
+    end
+    if page_meta[:modified_time]
+      meta content: page_meta[:modified_time].iso8601, property: "article:modified_time"
+    end
     link rel: "icon", type: "image/png", sizes: "16x16", href: AppConfig.theme[:favicon16_src]
     link rel: "icon", type: "image/png", sizes: "32x32", href: AppConfig.theme[:favicon32_src]
     link rel: "icon", href: AppConfig.theme[:icon_src]

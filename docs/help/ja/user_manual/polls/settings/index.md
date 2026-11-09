@@ -1,24 +1,23 @@
 ---
 title: 設定
-source_revision: c69922093febe9267eab942aa88abe5a751606f9
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-30'
+  'on': '2026-11-04'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 3a93b6d856307bb6
-  add-content: f622e36a3ad15e4e
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2cf5055187a4d848
+  opening-time: f8544bec7cd35ca5
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
-  anonymous-voting: 4fde93187ffd1a86
+  anonymous-voting: 35f5392ee8870076
   vote-reason: b1ebf2700ce8248b
-  hide-results: fc5282924fcae787
-  start-the-poll: 8e7d8e81db57f4f8
+  hide-results: 6dc7bf0b34c89a68
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
   notification-history: f132def867659f30
@@ -27,21 +26,21 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 9acf3c7373bcfc03
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
 generated:
   introduction: 38d903c510503cbb
   setting-up-a-proposal-or-poll: 16beec14d33069d9
-  proposal-and-poll-templates: 5a507d11337a10bb
-  add-content: 71443d304edbb235
+  proposal-and-poll-templates: 28f5761ff8682f03
+  add-content: 29ae56597dc47b1f
   voting-options: 6e953b9fa9039b42
   edit-voting-options: 244706d5d94bb2dd
-  opening-time: 6166dd2aae4586a1
+  opening-time: af1cac618d7b924e
   more-settings: ee685758816f701f
   reminder: 61136dac07544bb7
-  anonymous-voting: a2ecf3255db05030
+  anonymous-voting: 5c3bf3e2ad104a1b
   vote-reason: 62318725e7487f0d
-  hide-results: b9e4a0a80655e6cc
-  start-the-poll: cd4c593025090505
+  hide-results: 9e7d19d52628f0b2
   managing-polls: 98a208666a4101b9
   edit-poll: f00e83972b06e9ec
   notification-history: 9608d471484a177d
@@ -50,7 +49,8 @@ generated:
   delete: ee4b24e9252915cf
   save-bookmark: 178e06901c45c1d0
   save-as-template: 9cc5ab3e34df5da1
-  who-can-vote: 61162d9364087f97
+  who-can-vote: 968ea927d0063422
+  editing-settings-before-voting-opens: c53a5a3f0aeb5d0f
 title_source: 74a883a037bc227f
 title_generated: 0d8619aae051ae34
 needs_review:
@@ -73,25 +73,25 @@ needs_review:
 
 ![](proposal_templates.png)
 
+![タイトルと詳細、投票の選択肢、投票期間、投票できる人、折りたたまれた「その他の設定」パネルを含む提案フォーム](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### 内容の追加
+<a id="add-content"></a>
+
+### タイトルと詳細
 
 **グループ:** 提案やアンケートに適切なグループが選択されていることを確認します。
 
 **タイトル:** 提案やアンケートの内容に合った短いタイトルを付けます。
 
-**詳細:** 参加者に何を求めているかを説明し、投票することの意味を全員が理解できるように、十分な情報を記載します。
+**詳細:** 参加者に何を求めているかを説明し、投票することの意味を全員が理解できるように、十分な情報を記載します。  
 
 用意されているテンプレートには、提案を作成するための説明のヒントが含まれています。これらを使うか、独自の詳細を追加します。
 
-1つの提案にさまざまな考えをまとめることは避けます。一部には賛成でも、ほかの部分には賛成できず、どう回答すればよいか迷う場合があるためです。複雑な決定は、複数の提案に分けることができます。
+提案を作成するときは、期待することを明示し、採択された場合の影響を説明します。
 
-提案を作成するときは、期待することを明示し、採択された場合の影響を説明します。正式な提案や拘束力のある提案では、採択されなかった場合にどうなるかも説明すると役立ちます。
-
-書式設定ツールを使って、アンケートに必要な情報を追加します。例えば、クリップのアイコンで文書ファイルを添付したり、画像を挿入したり、ウェブサイトやオンライン文書へのリンクを追加したり、動画を埋め込んだりできます。
-
-![](proposal_new.png)
+[書式設定ボタン](/en/user_manual/discussions/formatting)を使って、ファイルの添付、画像や表の挿入、見出しやリストの追加ができます。補足情報を共有したり、長い提案を読みやすくしたりするのに役立ちます。
 
 <!-- translation-section: voting-options -->
 
@@ -131,8 +131,6 @@ needs_review:
 
 初期設定では、アンケートを作成するとすぐに投票が開始されます。後で投票を開始するように予約する場合は、**投票はすぐに開始されます**のチェックを外し、開始日時を選択します。
 
-予約した投票は、指定した時刻から開始までに1分ほどかかる場合があります。
-
 投票開始前にディスカッションの時間を設けたり、アンケートや提案を適切に設定して予定の時間に開始したりする場合に役立ちます。
 
 例えば、今後の総会でグループが複数の決定について投票する場合、あらかじめアンケートを準備して投票者を追加し、投票期間の開始時にすべてのアンケートが開始されるように予約できます。開始前でもアンケートを閲覧できますが、投票はできません。
@@ -155,8 +153,6 @@ needs_review:
 
 - **グループ内の誰でも**（または**スレッド内の誰でも**）: 後から参加する人も含め、アンケートにアクセスできる全員が投票できます。
 - **選ばれた人のみ:** 追加した人だけが投票できます。理事会や委員会など、一部のメンバーだけが投票する場合に使用します。
-
-![投票できる人の設定](../manage_voters/invited-people-only.png)
 
 **選ばれた人のみ**のアンケートを開始すると、**有権者の管理**が開き、投票者を追加できます。投票者は後から追加または削除できます。[投票者の管理](/en/user_manual/polls/manage_voters)を参照してください。
 
@@ -187,10 +183,7 @@ needs_review:
 投票者を特定する情報と送信済みの投票を分離する仕組み、保持される情報、保護の限界については、[匿名投票](/en/user_manual/polls/anonymous_voting)を参照してください。
 
 > [!WARNING]
-> アンケートの開始後は、アンケートを編集して匿名に変更したり、匿名の設定を解除したりすることはできません。
-
-> [!WARNING]
-> 匿名のアンケートは、締め切られた後に再開できません。送信済みの投票は、誰が投票したかを示す参加記録とは関連付けられていません。
+> アンケートの開始後は、アンケートを編集して匿名に変更したり、匿名の設定を解除したりすることはできません。匿名のアンケートは、締め切られた後に再開できません。
 
 <!-- translation-section: vote-reason -->
 
@@ -214,27 +207,20 @@ needs_review:
 <!-- translation-section: hide-results -->
 
 ### 結果を非表示にする
-他の人の投票内容を知らずに投票できるように、アンケートの結果を非表示にできます。他の人の投票内容が投票に影響するのを避けたい場合に役立ちます。
 
-設定できる内容：
-- 結果を非表示にしない
-- 投票するまで結果を非表示にする
-- 投票が締め切られるまで結果を非表示にする
+他の人の投票内容を知らずに投票できるように、アンケートの結果を非表示にできます。
 
-投票するまで結果が非表示になる設定の場合は、投票後に選択肢ごとの投票内容と理由を確認できます。スレッドのメンバーは、投票前でもコメントを投稿したり、投票に返信したりできます。結果の設定にかかわらず、コメントは表示されます。
+投票するまで結果が非表示になる設定の場合は、投票後に選択肢ごとの投票内容と理由を確認できます。
 
-投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、投票への返信と投票理由内のメンションが無効になります。スレッドのメンバーは、引き続きアンケートにコメントしたり、コメントに返信したりできます。アンケートの受付中は締め切り日時を延長できますが、締め切り後は再開できません。
+投票が締め切られるまで結果が非表示になる設定の場合は、アンケートが締め切られるまで、投票への返信と投票理由内のメンションが無効になります。アンケートの受付中は締め切り日時を延長できますが、締め切り後は再開できません。
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### 投票開始前の設定の編集
 
 アンケートを編集する権限を持つ人は、投票開始前であれば、匿名投票や結果の表示設定を含む詳細と設定を変更できます。投票が始まると匿名設定は変更できなくなり、締め切りまで非表示にする設定の結果を早めに公開することもできません。
 
-印刷やMarkdownを含むエクスポートでは、「投票するまで結果を非表示にする」設定にかかわらず、投票と返信が含まれます。締め切りまで非表示にする設定の結果と投票理由は、アンケートが締め切られるまで非表示のままです。通常のコメントは、引き続きスレッド、検索、エクスポートで確認できます。
-
-匿名アンケートでは、投票が締め切られるまで結果が常に非表示になります。STV選挙テンプレートでは、初期設定で匿名投票が有効になっています。
-
-<!-- translation-section: start-the-poll -->
-
-### アンケートを開始する
-**提案を開始する**または**投票を開始する**ボタンを選択します。
+匿名アンケートでは、投票が締め切られるまで結果が常に非表示になります。
 
 <!-- translation-section: managing-polls -->
 

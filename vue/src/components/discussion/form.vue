@@ -13,7 +13,6 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import SubscriptionService from '@/shared/services/subscription_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionTemplateHelpPanel from '@/components/discussion_template/help_panel';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const props = defineProps({
@@ -28,8 +27,6 @@ const route = useRoute();
 // url_for mixin functionality
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
-// watch_records composable
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 // Template refs
@@ -41,7 +38,6 @@ const upgradeUrl = SubscriptionService.upgradeUrl();
 const submitIsDisabled = ref(false);
 const searchResults = ref([]);
 const subscription = ref(props.discussion.group().parentOrSelf().subscription);
-const groupItems = ref([]);
 const initialRecipients = ref([]);
 const discussionTemplate = ref(null);
 const loaded = ref(false);
@@ -57,27 +53,22 @@ const validate = (field) => {
   return [ () => props.discussion.errors[field] === undefined || props.discussion.errors[field][0] ];
 };
 
-const updateGroupItems = () => {
+const groupItems = computed(() => {
   const groups = Session.user().groups().slice();
   const selectedGroup = props.discussion.groupId && props.discussion.group();
   if (selectedGroup && !groups.some(group => group.id === selectedGroup.id)) {
     groups.push(selectedGroup);
   }
-  groupItems.value = [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(groups.map(g => ({
+  return [{title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}].concat(groups.map(g => ({
     title: g.fullName,
     value: g.id
   })));
-};
+});
 
-// The record store is not reactive, so a computed membership check would keep
-// the value from before the current user's memberships loaded. Track it in a
-// ref and refresh it when groups or memberships change.
-const isGroupMember = ref(false);
-
-const updateIsGroupMember = () => {
-  isGroupMember.value = !!props.discussion.groupId &&
+const isGroupMember = computed(() => {
+  return !!props.discussion.groupId &&
     props.discussion.group().membersInclude(Session.user());
-};
+});
 
 const isNonMemberDiscussion = computed(() => {
   return props.discussion.isNew() &&
@@ -147,7 +138,6 @@ const isMovingItems = computed(() => {
 
 // Watcher
 watch(() => props.discussion.groupId, (groupId) => {
-  updateIsGroupMember();
   subscription.value = props.discussion.group().parentOrSelf().subscription;
   const users = compact([props.user]).map(u => ({
     id: u.id,
@@ -163,7 +153,6 @@ watch(() => props.discussion.groupId, (groupId) => {
 // Mounted
 onMounted(() => {
   loadGroups().then(() => {
-    updateIsGroupMember();
     if (isNonMemberDiscussion.value) {
       props.discussion.update({
         recipientAudience: null,
@@ -199,14 +188,6 @@ onMounted(() => {
       .finally(() => { loaded.value = true; });
     } else {
       loaded.value = true;
-    }
-  });
-
-  watchRecords({
-    collections: ['groups', 'memberships'],
-    query: records => {
-      updateGroupItems();
-      updateIsGroupMember();
     }
   });
 });

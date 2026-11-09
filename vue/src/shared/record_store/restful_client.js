@@ -2,6 +2,8 @@ import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
 import { trackRead } from '@/shared/services/loading_state';
+import { takeInitialResponse } from '@/shared/services/initial_data';
+import AppConfig from '@/shared/services/app_config';
 
 const getCSRF = () => decodeURIComponent(document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/)?.[1] || '');
 
@@ -89,7 +91,14 @@ export default class RestfulClient {
 
   // NB: get requests place their params into the query string, rather than the request body
   get(path, params) {
-    const url = new URL(this.buildUrl(path, this.paramsFor(params)), window.location.origin);
+    params = this.paramsFor(params);
+    if (AppConfig.groupsLoaded && /^\/api\/v1\/(topics|topic_items|discussions|polls|stances|outcomes)(\/|$)/.test(this.buildUrl(path))) {
+      params.exclude_types = [...new Set([...(params.exclude_types || '').split(' ').filter(Boolean), 'group'])].join(' ');
+    }
+    const initial = takeInitialResponse(this.buildUrl(path), params);
+    if (initial) return Promise.resolve(initial).then(this.onSuccess);
+
+    const url = new URL(this.buildUrl(path, params), window.location.origin);
     url.searchParams.sort();
     const key = url.pathname + url.search;
     if (this.pendingGets.has(key)) return this.pendingGets.get(key);

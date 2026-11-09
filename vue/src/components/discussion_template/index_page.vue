@@ -8,25 +8,17 @@ import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const route = useRoute();
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 // Data
 const templates = ref([]);
 const directTemplates = ref([]);
-const hiddenTemplates = ref([]);
-const actions = ref({});
-const hiddenActions = ref({});
-const group = ref(null);
-const groups = ref([]);
 const returnTo = Session.returnTo();
 const isSorting = ref(false);
 const showHidden = ref(false);
-const hasHiddenTemplates = ref(false);
 const hiddenAlert = ref(Session.user().hasExperienced('dismissDiscussionTemplatesAlert'));
 
 const dismissAlert = () => {
@@ -41,6 +33,11 @@ const urlFor = (model, action, params) => {
 
 const groupId = computed(() => {
   return parseInt(route.query.group_id);
+});
+
+const group = computed(() => {
+  if (!groupId.value) { return null; }
+  return Records.groups.findById(groupId.value);
 });
 
 const userIsAdmin = computed(() => {
@@ -70,26 +67,28 @@ const queryDirect = () => {
   directTemplates.value = [...blank, ...rest];
 };
 
-const query = () => {
-  if (!groupId.value) { return }
+const visibleTemplates = computed(() => {
+  if (!group.value) { return []; }
+  return Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: null, discardedAt: null }).simplesort('position').data();
+});
 
-  group.value = Records.groups.findById(groupId.value);
-  if (!group.value) { return }
+// templates is reordered locally by the sortable list, so it stays a ref.
+watch(visibleTemplates, (value) => { templates.value = value; }, { immediate: true });
 
-  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: null, discardedAt: null }).simplesort('position').data();
-  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: { $ne: null }, discardedAt: null }).simplesort('position').data();
-  hasHiddenTemplates.value = hiddenTemplates.value.length > 0;
+const hiddenTemplates = computed(() => {
+  if (!group.value) { return []; }
+  return Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, hiddenAt: { $ne: null }, discardedAt: null }).simplesort('position').data();
+});
 
-  actions.value = {};
-  templates.value.forEach((template, i) => {
-    actions.value[i] = DiscussionTemplateService.actions(template, group.value);
-  });
+const hasHiddenTemplates = computed(() => hiddenTemplates.value.length > 0);
 
-  hiddenActions.value = {};
-  hiddenTemplates.value.forEach((template, i) => {
-    hiddenActions.value[i] = DiscussionTemplateService.actions(template, group.value);
-  });
-};
+const actions = computed(() => {
+  return templates.value.map(template => DiscussionTemplateService.actions(template, group.value));
+});
+
+const hiddenActions = computed(() => {
+  return hiddenTemplates.value.map(template => DiscussionTemplateService.actions(template, group.value));
+});
 
 const sortEnded = () => {
   isSorting.value = false;
@@ -101,11 +100,9 @@ const sortEnded = () => {
 
 // EventBus listeners
 EventBus.$on('sortDiscussionTemplates', () => { isSorting.value = true; });
-EventBus.$on('reloadDiscussionTemplates', () => { query(); });
 
 onUnmounted(() => {
   EventBus.$off('sortDiscussionTemplates');
-  EventBus.$off('reloadDiscussionTemplates');
 });
 
 const titleVisible = (visible) => EventBus.$emit('content-title-visible', visible);
@@ -130,18 +127,6 @@ onMounted(() => {
       queryDirect();
     });
   }
-
-  watchRecords({
-    key: `discussionTemplates`,
-    collections: ['discussionTemplates', 'groups', 'memberships'],
-    query: () => query()
-  });
-
-  watchRecords({
-    key: 'discussionTemplateGroups',
-    collections: ['groups', 'memberships'],
-    query: () => { groups.value = Session.user().parentGroups(); }
-  });
 });
 
 watch(() => route.query.group_id, () => {
@@ -153,8 +138,6 @@ watch(() => route.query.group_id, () => {
     }
   });
 });
-
-watch(showHidden, () => { query(); });
 </script>
 <template lang="pug">
 .discussion-templates-page

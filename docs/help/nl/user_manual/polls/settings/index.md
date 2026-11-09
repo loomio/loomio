@@ -1,24 +1,23 @@
 ---
 title: Instellingen
-source_revision: c69922093febe9267eab942aa88abe5a751606f9
+source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-30'
+  'on': '2026-11-04'
 sections:
   introduction: 145c23b2412eff98
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 3a93b6d856307bb6
-  add-content: f622e36a3ad15e4e
+  proposal-and-poll-templates: 59bad3e1e0c4605e
+  add-content: ec0c0742f6465e9c
   voting-options: d0ea31745ce8b651
   edit-voting-options: ef0d61585b34fbd6
-  opening-time: 2cf5055187a4d848
+  opening-time: f8544bec7cd35ca5
   more-settings: fd837a51b81cbc13
   reminder: c11a5bdd82cd3b84
-  anonymous-voting: 4fde93187ffd1a86
+  anonymous-voting: 35f5392ee8870076
   vote-reason: b1ebf2700ce8248b
-  hide-results: fc5282924fcae787
-  start-the-poll: 8e7d8e81db57f4f8
+  hide-results: 6dc7bf0b34c89a68
   managing-polls: b26fc41e19371d54
   edit-poll: ddf392426410ec5a
   notification-history: f132def867659f30
@@ -27,21 +26,21 @@ sections:
   delete: fa13f1461f6b4e5f
   save-bookmark: 45a250076a3fd7e1
   save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 9acf3c7373bcfc03
+  who-can-vote: 4e0c2bd8db67a4d8
+  editing-settings-before-voting-opens: 9d1f5122db7998a3
 generated:
   introduction: ab2a875c4f826f8e
   setting-up-a-proposal-or-poll: e96f5dcce20c5096
-  proposal-and-poll-templates: 31c3022d133d21a2
-  add-content: e6cc73fdb7a701bb
+  proposal-and-poll-templates: b407c7d5f8d1e2da
+  add-content: 814d327a7229cd39
   voting-options: 48f34901246ac268
   edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 6980ebf17b2c0d8b
+  opening-time: 563eb11777681dc8
   more-settings: ac9de733ac425f3a
   reminder: 830f0f493ba85dbd
-  anonymous-voting: 002f8bcf4a9bf4ce
+  anonymous-voting: 206f60ffc95d7752
   vote-reason: aee03d9416dd8e86
-  hide-results: ba460f2f885b2a66
-  start-the-poll: 78d8c527bf9f760c
+  hide-results: 32c8f34fc9312ac4
   managing-polls: 998a7f2f76a9372a
   edit-poll: e5283692e690b034
   notification-history: f7b6b6e8d1d16bb2
@@ -50,7 +49,8 @@ generated:
   delete: 9acf822e2506248b
   save-bookmark: 641508ba541567f1
   save-as-template: 9fa218d1889f3517
-  who-can-vote: 911094b3a11038ef
+  who-can-vote: 8e1a09deed2389b5
+  editing-settings-before-voting-opens: 3e947ff245059065
 title_source: 74a883a037bc227f
 title_generated: 2701873dad7cb276
 ---
@@ -71,25 +71,25 @@ Kies het voorstelsjabloon dat je wilt gebruiken.
 
 ![](proposal_templates.png)
 
+![Het voorstelformulier, van de titel en details tot de stemopties, looptijd, wie mag stemmen en het ingeklapte paneel Meer instellingen](proposal_new.png)
+
 <!-- translation-section: add-content -->
 
-### Inhoud toevoegen
+<a id="add-content"></a>
+
+### Titel en details
 
 **Groep:** Controleer of de juiste groep is geselecteerd voor jouw voorstel of peiling.
 
 **Titel:** Geef jouw voorstel of peiling een korte, relevante titel.
 
-**Details:** Leg uit wat je van mensen vraagt en geef voldoende details zodat iedereen weet wat stemmen betekent.
+**Details:** Leg uit wat je van mensen vraagt en geef voldoende details zodat iedereen weet wat stemmen betekent.  
 
 De vooraf ingestelde sjablonen bevatten aanwijzingen om je te helpen een goed voorstel te schrijven - gebruik deze of voeg je eigen details toe.
 
-Combineer niet allerlei ideeën in één voorstel, omdat mensen het met sommige onderdelen eens kunnen zijn en met andere niet, waardoor ze niet weten hoe ze moeten reageren. Je kunt complexe besluiten opsplitsen in meerdere voorstellen.
+Beschrijf bij het maken van een voorstel jouw verwachtingen en de gevolgen als het voorstel wordt aangenomen.
 
-Beschrijf bij het maken van een voorstel jouw verwachtingen en de gevolgen als het voorstel wordt aangenomen. Bij een formeel of bindend voorstel is het vaak nuttig om ook te beschrijven wat het betekent als het voorstel niet wordt aangenomen.
-
-Gebruik de opmaaktools om jouw peiling te ondersteunen. Voeg bijvoorbeeld een document toe met het paperclippictogram, voeg een afbeelding in, plaats een link naar een website of online document, of sluit een video in.
-
-![](proposal_new.png)
+Je kunt bestanden bijvoegen, afbeeldingen en tabellen invoegen en koppen en lijsten toevoegen met de [opmaakknoppen](/en/user_manual/discussions/formatting). Hiermee kun je ondersteunende informatie delen en langere voorstellen makkelijker leesbaar maken.
 
 <!-- translation-section: voting-options -->
 
@@ -129,8 +129,6 @@ Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te open
 
 Standaard opent de stemming direct wanneer je de peiling aanmaakt. Als je de stemming op een later moment wilt laten openen, vink je **De stemming is direct geopend.** uit en selecteer je een openingsdatum en -tijd.
 
-Het kan ongeveer een minuut na het gekozen tijdstip duren voordat de geplande stemming opent.
-
 Zo geef je mensen tijd voor discussie voordat de stemming opent, of zorg je ervoor dat een peiling of voorstel goed is ingesteld en op het juiste moment opent.
 
 Als jouw groep bijvoorbeeld tijdens een komende vergadering over meerdere besluiten gaat stemmen, kun je de peilingen voorbereiden en vooraf kiezers toevoegen. Plan vervolgens alle peilingen zo dat ze openen wanneer de stemperiode begint. Mensen kunnen de peilingen bekijken voordat ze openen, maar kunnen nog niet stemmen.
@@ -152,9 +150,7 @@ Geef mensen voldoende tijd om te stemmen. Je kunt het voorstel bijvoorbeeld vó�
 Kies wie in de peiling mag stemmen.
 
 - **Iedereen in de groep** (of **Iedereen in de thread**): iedereen met toegang tot de peiling mag stemmen, ook mensen die later lid worden.
-- **Alleen voor geselecteerde personen.:** alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
-
-![Instelling voor wie mag stemmen](../manage_voters/invited-people-only.png)
+- **Alleen voor geselecteerde personen.**: alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
 
 Nadat je een peiling met **Alleen voor geselecteerde personen.** start, opent **Kiezers beheren** zodat je kiezers kunt toevoegen. Je kunt later kiezers toevoegen of verwijderen. Zie [Kiezers beheren](/en/user_manual/polls/manage_voters).
 
@@ -185,10 +181,7 @@ Als dit is ingeschakeld, worden stemmen apart van de identiteit van kiezers opge
 Zie [Anoniem stemmen](/en/user_manual/polls/anonymous_voting) voor details over hoe de identiteit van kiezers gescheiden wordt van ingediende stemmen, welke informatie bewaard blijft en wat de grenzen van de bescherming zijn.
 
 > [!WARNING]
-> Zodra een peiling is gestart, kun je de peiling niet meer bewerken om deze anoniem te maken of de instelling voor anoniem stemmen ongedaan te maken.
-
-> [!WARNING]
-> Je kunt een anonieme peiling niet opnieuw openen nadat deze is gesloten. Ingediende stemmen zijn niet gekoppeld aan de deelnameregistraties die laten zien wie heeft gestemd.
+> Zodra een peiling is gestart, kun je de peiling niet meer bewerken om deze anoniem te maken of de instelling voor anoniem stemmen ongedaan te maken. Je kunt een anonieme peiling niet heropenen nadat deze is gesloten.
 
 <!-- translation-section: vote-reason -->
 
@@ -212,27 +205,20 @@ De voorwaardelijke instellingen volgen het stempictogram en niet de optienaam. Z
 <!-- translation-section: hide-results -->
 
 ### Resultaat verbergen
-Als je wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kun je het resultaat van de peiling verbergen. Dit is nuttig als je wilt voorkomen dat mensen worden beïnvloed door de stemmen van anderen.
 
-Instellingsopties:
-- Resultaat niet verbergen
-- Resultaat verbergen totdat een stem is uitgebracht
-- Resultaat verbergen totdat de stemming sluit
+Als je wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kun je het resultaat van de peiling verbergen.
 
-Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen na het stemmen de stemkeuzes en redenen zien. Threadleden kunnen reacties schrijven en op stemmen antwoorden voordat ze zelf stemmen. Reacties blijven zichtbaar, ongeacht de instelling voor het resultaat.
+Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen na het stemmen de stemkeuzes en redenen zien.
 
-Wanneer het resultaat verborgen is totdat de stemming sluit, zijn antwoorden op stemmen en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit. Threadleden kunnen nog steeds op de peiling reageren en op reacties antwoorden. Je kunt de sluitingstijd verlengen zolang de peiling open is, maar je kunt de peiling na het sluiten niet heropenen.
+Wanneer het resultaat verborgen is totdat de stemming sluit, zijn antwoorden op stemmen en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit. Je kunt de sluitingstijd verlengen zolang de peiling open is, maar je kunt de peiling na het sluiten niet heropenen.
+
+<!-- translation-section: editing-settings-before-voting-opens -->
+
+### Instellingen bewerken voordat de stemming opent
 
 Mensen met toestemming om een peiling te bewerken, kunnen de details en instellingen wijzigen voordat de stemming opent, waaronder anoniem stemmen en de zichtbaarheid van het resultaat. Zodra de stemming opent, ligt de anonimiteit vast en kan het resultaat dat tot het sluiten verborgen is, niet eerder worden getoond.
 
-Bij afdrukken en exporteren, ook als Markdown, wordt de instelling "Resultaat verbergen totdat een stem is uitgebracht" genegeerd en worden stemmen en antwoorden opgenomen. Het resultaat en stemredenen die tot het sluiten verborgen zijn, blijven verborgen totdat de peiling sluit. Gewone reacties blijven beschikbaar in de thread, zoekresultaten en exports.
-
-Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit. Het sjabloon STV-verkiezing schakelt anoniem stemmen standaard in.
-
-<!-- translation-section: start-the-poll -->
-
-### De peiling starten
-Selecteer de knop **'Voorstel' starten** of **Start peiling**.
+Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit.
 
 <!-- translation-section: managing-polls -->
 

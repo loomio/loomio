@@ -39,13 +39,18 @@ namespace :loomio do
     ENV["LOCALES"].present? ? ENV["LOCALES"].split(",") : AppConfig.locales["supported"] - ["en"]
   end
 
-  # Runs the codex translator over each locale's client and server strings, in
+  def app_locale_kinds
+    Dir.glob("config/locales/*.en.yml").map { |path| File.basename(path, ".en.yml") }.sort
+  end
+
+  # Runs the codex translator over each locale's app strings, in
   # parallel across locales. The block picks the strings to translate from the
   # English and the locale's current strings, returning them as
   # {key => English}, and current translations to revise as {key => text}.
-  # Keys are "client.…" or "server.…". Each file is saved after every batch.
+  # Keys start with the locale file's kind, e.g. "client.…" or "timezones.…".
+  # Each file is saved after every batch.
   def translate_app_strings(locales)
-    english = %w[client server].each_with_object({}) do |kind, strings|
+    english = app_locale_kinds.each_with_object({}) do |kind, strings|
       flatten_strings(YAML.load_file("config/locales/#{kind}.en.yml")["en"], kind, strings)
     end
     output_mutex = Mutex.new
@@ -67,7 +72,7 @@ namespace :loomio do
   end
 
   def translate_locale_strings(locale, english, output_mutex, failures)
-    files = %w[client server].to_h do |kind|
+    files = app_locale_kinds.to_h do |kind|
       filename = "config/locales/#{kind}.#{locale}.yml"
       [kind, File.exist?(filename) ? YAML.load_file(filename).fetch(locale, {}) : {}]
     end
@@ -151,6 +156,20 @@ namespace :loomio do
     puts Version.current
   end
 
+  desc "Report topics whose thread or poll no longer exists, and destroy them when DESTROY_ORPHAN_TOPICS is present"
+  task orphan_topics: :environment do
+    orphans = Topic.where.not(id: Topic.with_topicable.select(:id))
+    orphans.order(:id).pluck(:id, :topicable_type, :topicable_id, :group_id, :private, :discarded_at).each do |row|
+      puts row.join("\t")
+    end
+    puts "#{orphans.count} topics without their thread or poll"
+
+    if ENV.key?("DESTROY_ORPHAN_TOPICS")
+      destroyed = orphans.find_each.count(&:destroy!)
+      puts "Destroyed #{destroyed}"
+    end
+  end
+
   desc "Audit missing inline image attachments, or queue repair when APPLY_INLINE_IMAGE_REPAIR is present"
   task repair_inline_image_attachments: :environment do
     if ENV.key?("APPLY_INLINE_IMAGE_REPAIR")
@@ -167,7 +186,7 @@ namespace :loomio do
   end
 
   task check_translations: :environment do
-    %w[server client].each do |source_name|
+    app_locale_kinds.each do |source_name|
       source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
       source_paths = list_paths(source, [])
 
@@ -191,7 +210,7 @@ namespace :loomio do
   end
 
   task check_placeholder_consistency: :environment do
-    %w[server client].each do |source_name|
+    app_locale_kinds.each do |source_name|
       source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
       source_paths = list_paths(source, [])
 
@@ -218,7 +237,7 @@ namespace :loomio do
     # edit tmp/delete_translations.txt with one dotted key path per line
     unwanted = File.readlines("tmp/delete_translations.txt").map(&:strip).reject(&:empty?)
 
-    %w[client server].each do |source_name|
+    app_locale_kinds.each do |source_name|
       AppConfig.locales['supported'].each do |locale|
         next if locale == 'en'
         foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
@@ -237,12 +256,12 @@ namespace :loomio do
 
   desc "Report app strings that break config/locales/glossary.yml to tmp/glossary/<locale>.csv (optional LOCALES)"
   task check_glossary: :environment do
-    english = %w[client server].each_with_object({}) do |kind, strings|
+    english = app_locale_kinds.each_with_object({}) do |kind, strings|
       flatten_strings(YAML.load_file("config/locales/#{kind}.en.yml")["en"], kind, strings)
     end
     FileUtils.mkdir_p("tmp/glossary")
     translation_locales.each do |locale|
-      current = %w[client server].each_with_object({}) do |kind, strings|
+      current = app_locale_kinds.each_with_object({}) do |kind, strings|
         flatten_strings(YAML.load_file("config/locales/#{kind}.#{locale}.yml").fetch(locale, {}), kind, strings)
       end
       problems = glossary_problems(locale, english, current, missing: true)

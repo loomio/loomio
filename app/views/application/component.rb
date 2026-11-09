@@ -24,6 +24,10 @@ class Views::Application::Component < Phlex::HTML
 
   private
 
+  def author_or_deactivated(user)
+    user || LoggedOutUser.new(name: t("profile_page.deactivated_user"))
+  end
+
   def vue_index
     File.read(Rails.root.join('public/vue/index.html'))
   end
@@ -46,7 +50,7 @@ class Views::Application::Component < Phlex::HTML
   end
 
   def time_ago(time, current_user)
-    abbr(class: "time-ago", title: time.to_s) do
+    time(class: "time-ago", datetime: time.iso8601, title: time.to_s) do
       plain format_date_for_humans(time, current_user.time_zone, current_user.date_time_pref)
     end
   end

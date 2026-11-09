@@ -3,10 +3,11 @@ import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import { forEach, snakeCase } from 'lodash-es';
 import { merge } from 'lodash-es';
+import { bootData } from '@/shared/services/initial_data';
 
 export default function(callback) {
   const client = new RestfulClient('boot');
-  client.get('site').then(function(appConfig) {
+  (bootData ? Promise.resolve(bootData) : client.get('site')).then(function(appConfig) {
     merge(AppConfig, appConfig)
 
     AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;

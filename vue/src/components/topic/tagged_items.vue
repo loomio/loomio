@@ -1,26 +1,22 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
 import TopicList from './list.vue';
 
 const { topic, loader, tag } = defineProps({topic: Object, loader: Object, tag: String});
 const { t } = useI18n();
-const { watchRecords } = useWatchRecords();
 const matchedIds = ref([]);
 const offset = ref(0);
 const loading = ref(false);
 const hasMore = ref(false);
-const revision = ref(0);
 const limit = 25;
 let request = 0;
 
 // The server pages matches; serialized parent records provide context without
 // bringing unrelated siblings into the filtered view or consuming page slots.
 const collection = computed(() => {
-  revision.value;
   const items = new Map();
   for (const id of matchedIds.value) {
     let item = Records.topicItems.find(id);
@@ -68,7 +64,6 @@ async function fetchPage(reset = false) {
 }
 
 watch(() => tag, () => fetchPage(true), {immediate: true});
-watchRecords({key: 'taggedItems' + topic.id, collections: ['topic_items'], query: () => revision.value++});
 </script>
 
 <template lang="pug">

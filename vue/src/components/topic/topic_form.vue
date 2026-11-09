@@ -27,7 +27,7 @@ export default {
 <template lang="pug">
 v-card.topic-arrangement-form(:title="$t('thread_arrangement_form.thread_settings')")
   template(v-slot:append)
-    help-btn.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#thread-settings" variant="text")
+    help-btn.topic-arrangement-form__help.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#thread-settings" variant="text")
     dismiss-modal-button(aria-hidden='true', :close='close')
   v-card-text
     .text-body-large.pb-2(v-t="'thread_arrangement_form.layout'")
@@ -47,6 +47,6 @@ v-card.topic-arrangement-form(:title="$t('thread_arrangement_form.thread_setting
     topic-settings-fields(:model="clone" :kind="topic.topicableType === 'Poll' ? 'poll' : 'discussion'")
   v-card-actions
     v-spacer
-    v-btn(color="primary" variant="elevated" @click="submit()" :loading="clone.processing")
+    v-btn.topic-arrangement-form__submit(color="primary" variant="elevated" @click="submit()" :loading="clone.processing")
       span(v-t="'common.action.save'")
 </template>

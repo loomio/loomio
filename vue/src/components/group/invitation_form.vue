@@ -9,11 +9,9 @@ import Flash   from '@/shared/services/flash';
 import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
 import { mdiAccountMultiplePlus } from '@mdi/js';
-import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
-  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -30,10 +28,7 @@ export default
       reset: false,
       saving: false,
       groupIds: [this.group.id],
-      excludedUserIds: [],
       message: null,
-      subscription: this.group.parentOrSelf().subscription,
-      cannotInvite: false,
       upgradeUrl: SubscriptionService.upgradeUrl(this.group.parentOrSelf()),
       invitationsRemaining: ((this.subscription && this.subscription.max_members) || 0) - this.group.parentOrSelf().orgMembersCount
     };
@@ -41,15 +36,6 @@ export default
 
   mounted() {
     this.message = AppConfig.theme.default_invitation_message || I18n.global.t('announcement.form.invitation_message_default');
-    this.updateSuggestions();
-    this.watchRecords({
-      collections: ['memberships', 'groups'],
-      query: records => {
-        this.updateSuggestions();
-        this.subscription = this.group.parentOrSelf().subscription;
-        return this.cannotInvite = !this.subscription.active || (this.subscription.max_members && (this.invitationsRemaining < 1));
-      }
-    });
   },
 
   methods: {
@@ -101,16 +87,11 @@ export default
     newQuery(query) {
       this.query = query;
       this.fetchMemberships();
-      this.updateSuggestions();
     },
 
     newRecipients(recipients) {
       this.recipients = recipients;
       this.updateInvitationsRemaining();
-    },
-
-    updateSuggestions() {
-      this.excludedUserIds = this.group.memberIds();
     },
 
     openShareableLinkForm() {
@@ -124,6 +105,15 @@ export default
   },
 
   computed: {
+    subscription() {
+      return this.group.parentOrSelf().subscription;
+    },
+    cannotInvite() {
+      return !this.subscription.active || (this.subscription.max_members && (this.invitationsRemaining < 1));
+    },
+    excludedUserIds() {
+      return this.group.memberIds();
+    },
     invitableGroups() {
       return this.group.parentOrSelf().selfAndSubgroups().filter(g => AbilityService.canAddMembersToGroup(g));
     },
@@ -149,7 +139,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       p
         span(v-t="'invitation_form.already_chatting_somewhere'")
         space
-        a.text-decoration-underline(style="color:inherit" @click="openShareableLinkForm" v-t="'invitation_form.try_the_shareable_link_instead'")
+        a.invitation-form__shareable-link.text-decoration-underline(style="color:inherit" @click="openShareableLinkForm" v-t="'invitation_form.try_the_shareable_link_instead'")
 
     recipients-autocomplete(
       :label="$t('announcement.form.who_to_invite')"

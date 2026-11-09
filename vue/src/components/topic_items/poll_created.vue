@@ -4,64 +4,56 @@ import Session    from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import ItemTags from '@/components/tags/item_tags.vue';
+import BodyPreview from '@/components/topic/body_preview.vue';
 
 export default {
-  components: { ItemTags },
-  mixins: [WatchRecords, UrlFor],
+  components: { ItemTags, BodyPreview },
+  mixins: [UrlFor],
   props: {
     topic_item: Object,
     collapsed: Boolean,
-    itemable: Object
+    itemable: Object,
+    focused: Boolean,
+    bodyPreview: Object
   },
 
   data() {
     return {
-      buttonPressed: false,
-      myStance: null,
-      dockActions: [],
-      menuActions: []
+      buttonPressed: false
     };
   },
 
-  created() {
-    this.watchRecords({
-      collections: ["stances", "polls"],
-      query: () => {
-        this.rebuildActions();
-      }
-    });
-  },
-
   methods: {
-    rebuildActions() {
-      let pollActions = PollService.actions(this.poll, this, this.topic_item);
-      this.editStanceAction = pollActions["edit_stance"]
-      if (this.poll.pollType != 'meeting') {
-        pollActions = omit(pollActions, "edit_stance");
-      }
-      const topic = this.poll.topic();
-      const allEventActions = TopicItemService.actions(this.topic_item, this);
-      const eventActions = topic.topicableType === 'Discussion' ? {edit_item_tags: allEventActions.edit_item_tags} : allEventActions;
-      this.myStance = this.poll.myStance();
-      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(eventActions, v => v.menu) );
-      this.dockActions = pickBy(pollActions, v => v.dock);
-    },
-
     viewed(seen) {
       if (seen &&
           Session.isSignedIn() &&
           Session.user().autoTranslate &&
           this.dockActions['translate_poll'].canPerform()) {
-        this.dockActions['translate_poll'].perform().then(() => this.rebuildActions());
+        this.dockActions['translate_poll'].perform();
       }
     },
   },
 
   computed: {
     poll() { return this.itemable; },
+    allPollActions() { return PollService.actions(this.poll, this, this.topic_item); },
+    editStanceAction() { return this.allPollActions["edit_stance"]; },
+    pollActions() {
+      if (this.poll.pollType != 'meeting') {
+        return omit(this.allPollActions, "edit_stance");
+      }
+      return this.allPollActions;
+    },
+    eventActions() {
+      const topic = this.poll.topic();
+      const allEventActions = TopicItemService.actions(this.topic_item, this);
+      return topic.topicableType === 'Discussion' ? {edit_item_tags: allEventActions.edit_item_tags} : allEventActions;
+    },
+    myStance() { return this.poll.myStance(); },
+    menuActions() { return assign( pickBy(this.pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) ); },
+    dockActions() { return pickBy(this.pollActions, v => v.dock); },
   }
 };
 
@@ -79,7 +71,8 @@ section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
       item-tags.ml-auto(v-if="!poll.isTopicable()" :topic-item="topic_item")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    formatted-text.poll-common-details-panel__details(:model="poll" field="details")
+    body-preview(:state="bodyPreview" :focused="focused")
+      formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')

@@ -2,6 +2,20 @@ module ResetDatabaseHelper
   module_function
 
   def reset_database
+    attempts = 0
+    begin
+      truncate_tables
+    rescue ActiveRecord::Deadlocked
+      # A request left over from the previous browser scenario can still be
+      # reading tables while they are truncated. Postgres aborts one side of
+      # the deadlock; once the other finishes, truncating again succeeds.
+      attempts += 1
+      retry if attempts < 3
+      raise
+    end
+  end
+
+  def truncate_tables
     conn = ActiveRecord::Base.connection
     tables = conn.tables - %w[ar_internal_metadata schema_migrations]
     # A running Solid Cable poller remembers the last message ID. Restarting

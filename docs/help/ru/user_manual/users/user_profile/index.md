@@ -1,30 +1,30 @@
 ---
 title: Ваш профиль
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: e341837e759e4369
 generated:
   introduction: 3e1ff88b32d33023
   edit-profile: 61c3cb1cc1fa0edf
   update-your-personal-info: 173e6d04762e0389
-  viewing-another-person-s-profile: f31abf3178ff09cd
-  uploading-a-profile-photo: a5676ce04995a059
-  language-settings: e285176fc04b0ebe
+  uploading-a-profile-photo: 0a9a903f2e0dcc16
+  language-settings: 1b6012380d4842cc
   resetting-your-password: 17eab5269289a4c1
   merge-accounts: ea3efc584c9a833f
   deleting-your-account: 8590155c0d953101
+  time-zone: e82380083d2b2c91
 title_source: 528d89ad72cba22e
 title_generated: dfd010e16a4d6366
 ---
@@ -57,29 +57,24 @@ title_generated: dfd010e16a4d6366
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Просмотр профиля другого человека
-
-Выберите имя или аватар человека, чтобы открыть его профиль. Рядом с информацией профиля и группами перечислены его недавние обсуждения, комментарии и опросы. В список включены только действия, к которым у вас есть доступ; посетители, не вошедшие в систему, видят только общедоступные действия.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Загрузка фотографии профиля
 При создании учётной записи Loomio изображением вашего профиля по умолчанию будут ваши инициалы. Чтобы загрузить фотографию профиля, нажмите на своё изображение на странице профиля.
 
-Если у вас есть [Gravatar](https://en.gravatar.com/), вы можете использовать его как изображение профиля, выбрав **Используйте Граватар**. Вы также можете выбрать для Loomio фотографию, которую используете на других распространённых платформах или в инструментах.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Настройки языка
-Loomio разрабатывается на английском языке, но [волонтёры переводят его на многие языки](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Язык
 
 Loomio определяет языковые настройки вашего браузера, но вы можете вручную выбрать предпочитаемый язык из доступных на странице профиля.
 
-![](profile_language.png)
+<!-- translation-section: time-zone -->
+
+## Часовой пояс
+
+Варианты опроса времени используют часовой пояс, сохранённый в вашем профиле. Включите **Автоопределение часового пояса**, чтобы использовать часовой пояс, определённый вашим браузером, или отключите эту настройку и выберите свой регион в поле **Часовой пояс**, затем нажмите **Обновить профиль**.
 
 <!-- translation-section: resetting-your-password -->
 

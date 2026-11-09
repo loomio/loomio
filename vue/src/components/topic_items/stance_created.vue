@@ -4,8 +4,10 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import UrlFor from '@/mixins/url_for';
 import { pickBy } from 'lodash-es';
 import { useI18n } from 'vue-i18n';
+import BodyPreview from '@/components/topic/body_preview.vue';
 
 export default {
+  components: { BodyPreview },
   setup() { return { t: useI18n().t }; },
   mixins: [UrlFor],
 
@@ -13,7 +15,9 @@ export default {
     topic_item: Object,
     itemable: Object,
     collapsed: Boolean,
-    unread: Boolean
+    unread: Boolean,
+    focused: Boolean,
+    bodyPreview: Object
   },
 
   computed: {
@@ -60,7 +64,8 @@ section.topic-item__stance-created.stance-created
       poll-common-stance-choices(:stance="itemable")
       .text-medium-emphasis(v-if="itemable.redactedAt" v-t="'poll_common_votes_panel.reason_redacted'")
       template(v-else)
-        formatted-text.poll-common-stance-created__reason(:model="itemable" field="reason")
+        body-preview(:state="bodyPreview" :focused="focused")
+          formatted-text.poll-common-stance-created__reason(:model="itemable" field="reason")
         link-previews(:model="itemable")
         attachment-list(:attachments="itemable.attachments")
     action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' size="small" left)

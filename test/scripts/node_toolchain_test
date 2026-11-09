@@ -8,7 +8,7 @@ const nodeVersion = readVersion(".node-version");
 const npmVersion = readVersion(".npm-version");
 const failures = [];
 
-for (const packagePath of ["vue/package.json", "hocuspocus/package.json", "haraka/package.json"]) {
+for (const packagePath of ["vue/package.json", "haraka/package.json"]) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(repositoryPath, packagePath), "utf8"));
 
   expectEqual(packagePath, "engines.node", packageJson.engines?.node, nodeVersion);

@@ -8,14 +8,6 @@ export default class GroupModel extends BaseModel {
   static uniqueIndices = ['id', 'key'];
   static indices = ['parentId'];
 
-  constructor(...args) {
-    super(...args);
-    this.export = this.export.bind(this);
-    this.exportCSV = this.exportCSV.bind(this);
-    this.uploadLogo = this.uploadLogo.bind(this);
-    this.uploadCover = this.uploadCover.bind(this);
-  }
-
   defaultValues() {
     return {
       parentId: null,
@@ -62,7 +54,7 @@ export default class GroupModel extends BaseModel {
     this.hasMany('discussions', {find: {discardedAt: null}});
     this.hasMany('polls', {find: {discardedAt: null}});
     this.hasMany('membershipRequests');
-    this.hasMany('memberships');
+    this.hasMany('memberships', {find: {revokedAt: null}});
     this.hasMany('chatbots');
     this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
     this.belongsTo('parent', {from: 'groups'});
@@ -153,7 +145,7 @@ export default class GroupModel extends BaseModel {
   }
 
   membershipFor(user) {
-    return Records.memberships.find({groupId: this.id, userId: user.id})[0];
+    return Records.memberships.find({groupId: this.id, userId: user.id, revokedAt: null})[0];
   }
 
   members() {
@@ -169,7 +161,7 @@ export default class GroupModel extends BaseModel {
   }
 
   parentAndSelfMemberships() {
-    return Records.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}});
+    return Records.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}, revokedAt: null});
   }
 
   parentAndSelfMembershipIds() {
@@ -189,11 +181,11 @@ export default class GroupModel extends BaseModel {
   }
 
   adminsInclude(user) {
-    return !!Records.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
+    return !!Records.memberships.find({groupId: this.id, userId: user.id, admin: true, revokedAt: null})[0] || false;
   }
 
   adminMemberships() {
-    return Records.memberships.find({groupId: this.id, admin: true});
+    return Records.memberships.find({groupId: this.id, admin: true, revokedAt: null});
   }
 
   admins() {

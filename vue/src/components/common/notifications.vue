@@ -1,14 +1,11 @@
 <script lang="js">
 import Records   from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
-import WatchRecords from '@/mixins/watch_records';
+import { useCurrentUserNotifications } from '@/composables/useCurrentUserNotifications';
 
 export default {
-  mixins: [WatchRecords],
   data() {
     return {
-      notifications: [],
-      unread: [],
       unreadCount: 0,
       unreadIds: [],
       open: false
@@ -25,7 +22,6 @@ export default {
   watch: {
     open(val) {
       if (val) {
-        this.unread = Records.notifications.find({viewed: { $ne: true }});
         this.unreadIds = this.unread.map(n => n.id);
         Records.notifications.viewed();
         Records.notifications.fetchNotifications();
@@ -37,15 +33,18 @@ export default {
   },
 
   created() {
-    Records.notifications.fetchNotifications();
-    this.watchRecords({
-      collections: ['notifications'],
-      query: store => {
-        this.notifications = store.notifications.collection.chain().simplesort('id', true).data();
-        this.unread = store.notifications.find({viewed: { $ne: true }});
-        this.unreadCount = this.unreadCount;
-      }
-    });
+    const { loadNotifications } = useCurrentUserNotifications();
+    loadNotifications();
+  },
+
+  computed: {
+    notifications() {
+      return Records.notifications.collection.chain().simplesort('id', true).data();
+    },
+
+    unread() {
+      return Records.notifications.find({viewed: { $ne: true }});
+    }
   }
 };
 

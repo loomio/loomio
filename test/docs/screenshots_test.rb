@@ -8,7 +8,7 @@ class DocsScreenshotsTest < Minitest::Test
   end
 
   def test_catalog_resolves_composed_names_and_excludes_unapproved_assets
-    assert_equal "bookmarks.js", recipe.fetch("spec")
+    assert_equal "bookmarks.spec.mjs", recipe.fetch("spec")
     assert_equal "save_bookmark", recipe.fetch("testcase")
     assert Docs::Screenshots.images.key?("guides/making_decisions/proposal_consensus_process_refresh_brand.png")
     refute Docs::Screenshots.images.key?("guides/facilitators_guide/collaboration-process.png")
@@ -70,6 +70,7 @@ class DocsScreenshotsTest < Minitest::Test
 
   def test_literal_interface_expectations_use_the_selected_language
     assert_includes Docs::Screenshots.labels("fr").fetch("Bookmarks"), "Signets"
+    assert_includes Docs::Screenshots.labels("fr").fetch("Europe / London"), "Europe / Londres"
   end
 
   def test_local_publishing_uploads_only_selected_images_and_the_language_manifest

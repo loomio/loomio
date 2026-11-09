@@ -186,8 +186,6 @@ hr:
     score: ocjenjivanje
     question: krug pitanja
     stv: STV izbori
-  timezones:
-    local: Lokalno vrijeme (%{value})
   common:
     value: "%{value}"
     admin_menu: Admin menu
@@ -1672,7 +1670,6 @@ hr:
     insert_embedded_url: Ugradi video
   change_picture_form:
     title: Postavite profilnu sliku
-    helptext: Možete učitati svoju profilnu sliku ili ako imate <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> račun, možete ga koristiti.
     use_initials: Koristite inicijale
     use_gravatar: Koristite Gravatar
     use_uploaded: Učitaj novu fotografiju

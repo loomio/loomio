@@ -1,32 +1,34 @@
 ---
 title: Tu perfil
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: 157d1a371459ea8e9348fb838541980f2f797205
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-02'
 sections:
   introduction: 80eccb0578990d75
   edit-profile: f782a6a3a9b074b2
   update-your-personal-info: b5792b6600f971b0
-  viewing-another-person-s-profile: 97816a7b0c57fddf
-  uploading-a-profile-photo: 7dd7e7acbc688060
-  language-settings: 1ad963467eb5b1aa
+  uploading-a-profile-photo: ac78b9c659ca4c1f
+  language-settings: aa4b9c1287ea427e
   resetting-your-password: a72e15b6e19412a7
   merge-accounts: e1190f5e224e1047
   deleting-your-account: 2799d5bcc8d5b528
+  time-zone: e341837e759e4369
 generated:
   introduction: e71cd5946e36dd0f
   edit-profile: 30961921c1b989c8
   update-your-personal-info: 7a0d637722711958
-  viewing-another-person-s-profile: 6208ef50f963d24e
-  uploading-a-profile-photo: 8bf819e6a11b62b4
-  language-settings: 8d5873ca8e2877fa
+  uploading-a-profile-photo: 2552469144e19407
+  language-settings: 5deb206dd31282f5
   resetting-your-password: a85e7b1b734767c0
   merge-accounts: c693348e39c2d3bc
   deleting-your-account: 563bc72b118724dd
+  time-zone: 78b179272d6db281
 title_source: 528d89ad72cba22e
 title_generated: 3d45976ea1815628
+needs_review:
+  time-zone: check the interface label "**Zona horaria **" for "**Time zone**"
 ---
 
 <!-- translation-section: introduction -->
@@ -57,29 +59,24 @@ Puedes actualizar tus datos personales modificando cualquiera de los siguientes 
 
 ![](user_profile.png)
 
-<!-- translation-section: viewing-another-person-s-profile -->
-
-## Ver el perfil de otra persona
-
-Selecciona el nombre o el avatar de una persona para abrir su perfil. Sus discusiones, comentarios y encuestas recientes aparecen junto a los datos de su perfil y sus grupos. La lista solo incluye actividad a la que tienes permiso para acceder; quienes visitan Loomio sin iniciar sesión solo ven actividad pública.
-
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Subir una foto de perfil
 Cuando creas una cuenta de Loomio, tus iniciales son la imagen predeterminada de tu perfil. Puedes subir una foto de perfil haciendo clic en tu imagen en la página de perfil.
 
-Si tienes un [Gravatar](https://en.gravatar.com/), puedes usarlo como imagen de perfil seleccionando **Usar Gravatar**. También puedes elegir que Loomio use la foto que utilizas en otras plataformas o herramientas habituales.
-
 ![](profile_photo.png)
 
 <!-- translation-section: language-settings -->
 
-## Configuración de idioma
-Loomio se desarrolla en inglés, pero [personas voluntarias lo traducen a muchos idiomas](https://www.loomio.com/g/cpaM3Hsv/loomio-community-translation).
+## Idioma
 
 Loomio detectará la configuración de idioma de tu navegador, pero puedes seleccionar manualmente tu idioma preferido entre las opciones disponibles en la página de perfil.
 
-![](profile_language.png)
+<!-- translation-section: time-zone -->
+
+## Zona horaria
+
+Las opciones de las encuestas de horario usan la zona horaria guardada en tu perfil. Activa **Detectar automáticamente zona horaria** para usar la zona que indica tu navegador, o desactiva esta función y selecciona tu región en **Zona horaria**. Después, selecciona **Actualizar perfil**.
 
 <!-- translation-section: resetting-your-password -->
 

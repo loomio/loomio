@@ -1,24 +1,24 @@
 ---
 title: Encuesta de tiempo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: 4014aeb5dd151fb0
   time-poll: cba4f9f92efc61a5
   voting: ecf8e5b24c5e0ec6
-  outcome: de78cc210b81d4cf
+  outcome: 2538dbbd2470f26b
 title_source: 8e2a07d7257fbc04
 title_generated: 878240a5be52ffbf
 needs_review:
-  outcome: use "conclusión" instead of "resultado" for "outcome"
+  outcome: check the interface label "**Horario de reunión **" for "**Meeting time**"
 ---
 
 <!-- translation-section: introduction -->
@@ -73,12 +73,12 @@ Cuando se cierre la encuesta de horario, elige el mejor horario y comparte una c
 
 **Notificar**: Añade a las personas que invitas a la reunión o al evento
 
-**Horario de reunión **: Selecciona el horario que mejor encaje
+**Horario de reunión**: Selecciona el horario que mejor encaje. Las opciones usan la [zona horaria de tu perfil](/en/user_manual/users/user_profile#time-zone)
 
 **Nombre de la reunión**: Dale un nombre a tu reunión. Se usa el título de la encuesta de horario de forma predeterminada
 
-**Ubicación **: Añade una ubicación física o un enlace a la reunión
+**Ubicación**: Añade una ubicación física o un enlace a la reunión
 
-**Declaración**: Resume el resultado y añade las instrucciones para la reunión
+**Declaración**: Resume la conclusión y añade las instrucciones para la reunión
 
 Loomio incluye el horario seleccionado, el nombre de la reunión, la duración, la ubicación y la declaración en la notificación de la conclusión y en la invitación de calendario.

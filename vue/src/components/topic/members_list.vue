@@ -6,7 +6,6 @@ import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import TopicReaderService from '@/shared/services/topic_reader_service';
 import {debounce} from 'lodash-es';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { approximate } from '@/shared/helpers/format_time';
 import { useI18n } from 'vue-i18n';
 import { ref, computed } from 'vue';
@@ -22,7 +21,6 @@ const hasSpecifiedVotersOnlyPolls = computed(() =>
   Records.polls.collection.find({topicId: topic.id, specifiedVotersOnly: true}).length > 0
 );
 
-const readers = ref([]);
 const readerIds = ref([]);
 const readerTotal = ref(0);
 const page = ref(1);
@@ -31,8 +29,6 @@ const loading = ref(false);
 let fetchSequence = 0;
 const query = ref('');
 const recipients = ref([]);
-const membershipsByUserId = ref({});
-const readerUserIds = ref([]);
 const reset = ref(false);
 const saving = ref(false);
 const message = ref('');
@@ -114,7 +110,6 @@ function newQuery(q) {
   page.value = 1;
   readerIds.value = [];
   readerTotal.value = 0;
-  readers.value = [];
   loading.value = true;
   fetchReaders();
 }
@@ -122,7 +117,6 @@ function newQuery(q) {
 function changePage(nextPage) {
   page.value = nextPage;
   readerIds.value = [];
-  readers.value = [];
   loading.value = true;
   fetchReaders();
 }
@@ -151,7 +145,6 @@ const fetchReaders = debounce(function() {
       return;
     }
     readerIds.value = data.topic_readers.map(reader => reader.id);
-    updateReaders();
     const userIds = readers.value.map(reader => reader.userId);
     if (group.value) {
       Records.memberships.fetch({
@@ -167,27 +160,24 @@ const fetchReaders = debounce(function() {
   });
 } , 300);
 
-function updateReaders() {
-  readers.value = readerIds.value.map(id => Records.topicReaders.findById(id)).filter(reader => reader && !reader.revokedAt);
-  readerUserIds.value = readers.value.map(reader => reader.userId);
+const readers = computed(() =>
+  readerIds.value.map(id => Records.topicReaders.findById(id)).filter(reader => reader && !reader.revokedAt)
+);
+const readerUserIds = computed(() => readers.value.map(reader => reader.userId));
 
-  membershipsByUserId.value = {};
+const membershipsByUserId = computed(() => {
+  const byUserId = {};
   if (group.value) {
     Records.memberships.collection.find({userId: {$in: readerUserIds.value},
-                                         groupId: group.value.id}).forEach(m => {
-      membershipsByUserId.value[m.userId] = m;
+                                         groupId: group.value.id, revokedAt: null}).forEach(m => {
+      byUserId[m.userId] = m;
     });
   }
-}
+  return byUserId;
+});
 
 // init
 fetchReaders();
-
-const { watchRecords } = useWatchRecords();
-watchRecords({
-  collections: ['topicReaders', 'memberships', 'polls'],
-  query: () => updateReaders()
-});
 </script>
 
 <template lang="pug">

@@ -24,7 +24,7 @@ class TopicItem < ApplicationRecord
 
   after_create  :update_sequence_info!
   after_create  :mark_actor_as_read!
-  after_destroy :update_sequence_info!
+  after_destroy :update_sequence_info!, unless: :destroyed_with_topic?
 
   after_update :update_parent_child_counts, if: :saved_change_to_parent_id?
   around_update :with_topic_write_lock_for_tree_change, if: -> { will_save_change_to_parent_id? || will_save_change_to_tags? }, prepend: true

@@ -1,20 +1,20 @@
 ---
 title: Опрос времени
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/meeting_polls/index.md
+source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-02'
 sections:
   introduction: 8ab9108683132085
   time-poll: d5d5d81f7de10419
   voting: c50083234167a0f9
-  outcome: 74db36d36fa18798
+  outcome: 9f1bb3dee66382d2
 generated:
   introduction: ce66b200aa23078b
   time-poll: 603a0147fc56059e
   voting: 2c38ff47913f55a4
-  outcome: fab84cc2674d18ba
+  outcome: bbbadf16ea51da03
 title_source: 8e2a07d7257fbc04
 title_generated: 311367f75967ec43
 ---
@@ -71,7 +71,7 @@ _Узнайте, когда участники могут встретиться
 
 **Поставить в известность**: Добавьте людей, которых вы приглашаете на встречу или мероприятие
 
-**Время встречи**: Выберите наиболее подходящее время
+**Время встречи**: Выберите наиболее подходящее время. Варианты отображаются в [часовом поясе вашего профиля](/en/user_manual/users/user_profile#time-zone)
 
 **Название встречи**: Укажите название встречи. По умолчанию используется название опроса времени
 

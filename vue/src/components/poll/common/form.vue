@@ -16,7 +16,6 @@ import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { mdiCogOutline, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { useWatchRecords } from '@/composables/useWatchRecords';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 import { pollReminderItems } from '@/shared/helpers/poll_reminder_items';
 
@@ -35,8 +34,6 @@ const { t } = useI18n();
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 const mergeQuery = (obj) => ({query: pickBy(Object.assign({}, route.query, obj), identity)});
 
-// watch_records composable
-const { watchRecords } = useWatchRecords();
 const { loadGroups } = useCurrentUserGroups();
 
 // Template refs
@@ -47,7 +44,6 @@ const loading = ref(false);
 const newOption = ref(null);
 const lastPollType = ref(props.poll.pollType);
 const pollOptions = ref(props.poll.pollOptionsAttributes || props.poll.clonePollOptions());
-const groupItems = ref([]);
 const pollTemplate = ref(null);
 const currentHideResults = ref(props.poll.hideResults);
 const initialWeightedVoting = ref(props.poll.weightedVoting);
@@ -255,6 +251,15 @@ const closingSoonItems = computed(() => pollReminderItems(t));
 const optionFormat = computed(() => props.poll.pollOptionNameFormat);
 const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 
+const groupItems = computed(() => {
+  return [
+    {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
+  ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
+    title: g.fullName,
+    value: g.id
+  })));
+});
+
 // Lifecycle
 onMounted(() => {
   if (props.redirectOnSave) {
@@ -265,18 +270,6 @@ onMounted(() => {
 
   Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
     pollTemplate.value = template;
-  });
-
-  watchRecords({
-    collections: ['groups', 'memberships'],
-    query: () => {
-      return groupItems.value = [
-        {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
-      ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
-        title: g.fullName,
-        value: g.id
-      })));
-    }
   });
 });
 
@@ -330,7 +323,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     //p.text-body-small.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
-    sortable-list(
+    sortable-list.poll-common-form__options-list(
       v-model:list="pollOptions"
       append-to=".app-is-booted"
       use-drag-handle
@@ -391,7 +384,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         )
           span(v-t="'poll_poll_form.add_option_placeholder'")
       .d-flex.align-center.mt-4
-        v-text-field.flex-grow-1(
+        v-text-field.poll-meeting-form__duration.flex-grow-1(
           :label="$t('poll_meeting_form.meeting_duration')"
           v-model="poll.meetingDuration"
           :hint="formattedDuration ? formattedDuration : null"
@@ -519,15 +512,15 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   v-divider.my-4
   .text-body-large.pb-2.poll-common-form__voters-heading(v-t="'poll_common_settings.who_can_vote'")
-  v-radio-group(
+  v-radio-group.poll-common-form__who-can-vote(
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"
   )
-    v-radio(
+    v-radio.poll-common-settings__all-voters(
       v-if="!poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
-    v-radio(
+    v-radio.poll-common-settings__all-voters(
       v-if="poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_group')")
@@ -584,7 +577,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         template(v-if="poll.config().allow_quorum")
           v-divider.mb-4(v-if="allowAnonymous || allowWeightedVoting")
           .poll-common-form__quorum-title.text-body-large.pb-2 {{ t('poll_common_form.quorum') }}
-          .text-body-medium.pb-4.text-medium-emphasis
+          .poll-common-form__quorum-hint.text-body-medium.pb-4.text-medium-emphasis
             span {{ t(poll.weightedVoting ? 'poll_common_form.quorum_vote_weight_hint' : 'poll_common_form.quorum_hint') }}
             help-link.ml-1(path="user_manual/polls/quorum")
           v-number-input.poll-common-form__quorum.mb-4(
@@ -598,7 +591,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           )
             template(v-slot:append-inner)
               span.mr-4 %
-          .text-body-medium.mt-n4.pb-4.font-italic.text-medium-emphasis(
+          .poll-common-form__quorum-tip.text-body-medium.mt-n4.pb-4.font-italic.text-medium-emphasis(
             v-if="poll.quorumPct && poll.pollType == 'proposal' && poll.config().allow_vote_share_requirement"
           ) {{ t('poll_common_form.quorum_tip_vote_share_requirement') }}
 
@@ -630,8 +623,8 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
         template(v-if="poll.config().can_shuffle_options")
           v-divider.pb-4
-          .text-body-large.pb-2(v-t="'poll_common_settings.shuffle_options'")
-          .text-body-medium.pb-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
+          .poll-common-form__shuffle-title.text-body-large.pb-2(v-t="'poll_common_settings.shuffle_options'")
+          .poll-common-form__shuffle-hint.text-body-medium.pb-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
           v-checkbox.poll-settings-shuffle-options(
             hide-details
             v-model="poll.shuffleOptions"

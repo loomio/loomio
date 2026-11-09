@@ -1,7 +1,7 @@
 require "test_helper"
 
 class Dev::GroupMailerTest < ActionController::TestCase
-  tests Dev::NightwatchController
+  tests Dev::ScenariosController
 
   test "expired trial deletion warning preview" do
     get :setup_group_mailer_expired_trial_deletion_warning
