@@ -48,7 +48,7 @@ class LoginTokensControllerTest < ActionController::TestCase
   end
 
   test "stores a used token in session so auth form can show invalid token error" do
-    @token.update!(used: true)
+    @token.update!(used_at: Time.current)
     get :show, params: { token: @token.token }
     assert_equal @token.token, session[:pending_login_token]
     assert_redirected_to dashboard_path

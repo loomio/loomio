@@ -17,7 +17,7 @@ class TaskUserIntegrityTest < ActiveSupport::TestCase
   end
 
   test "deleting a task cascades to task user rows" do
-    task = Task.create!(name: "Test task", author: @user, done: false, uid: 1)
+    task = Task.create!(name: "Test task", author: @user, uid: 1)
     task_user = TasksUser.create!(task: task, user: @user)
 
     Task.where(id: task.id).delete_all

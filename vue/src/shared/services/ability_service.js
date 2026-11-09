@@ -160,7 +160,7 @@ export default new class AbilityService {
   }
 
   canAnnounceDiscussion(discussion) {
-    if (discussion.discardedAt || discussion.closedAt) { return false; }
+    if (discussion.discardedAt) { return false; }
     if (discussion.groupId) {
       return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user())));
@@ -373,17 +373,17 @@ export default new class AbilityService {
   }
 
   canEditPoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
-    poll.adminsInclude(Session.user()) && !poll.closedAt;
+    return poll.group().isEnabled() && !poll.topic().lockedAt &&
+    !poll.discardedAt && poll.adminsInclude(Session.user()) && !poll.closedAt;
   }
 
   canDeletePoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
+    return poll.group().isEnabled() && !poll.topic().lockedAt &&
     !poll.discardedAt && poll.adminsInclude(Session.user());
   }
 
   canExportPoll(poll) {
-    return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
+    return !poll.discardedAt && poll.membersInclude(Session.user()) && poll.resultsAvailable();
   }
 
   // Matches the server's view_anonymous_voters: everyone who can see the results.
@@ -392,7 +392,7 @@ export default new class AbilityService {
   }
 
   canSetPollOutcome(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
+    return poll.group().isEnabled() &&
     !poll.discardedAt &&
     poll.closedAt &&
     poll.adminsInclude(Session.user());
@@ -403,6 +403,7 @@ export default new class AbilityService {
   }
 
   canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
+    return poll.group().isEnabled() && !poll.topic().lockedAt && !poll.discardedAt && poll.closedAt &&
+      poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   }
 }

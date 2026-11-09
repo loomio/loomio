@@ -12,7 +12,7 @@ export default class TaskModel extends BaseModel {
 
   toggleDone() {
     this.processing = true
-    if (this.done) {
+    if (this.doneAt) {
       return Records.tasks.remote.postMember(this.id, 'mark_as_not_done').finally(() => this.processing = false);
     } else {
       return Records.tasks.remote.postMember(this.id, 'mark_as_done').finally(() => this.processing = false);

@@ -14,6 +14,8 @@ For database migrations, prioritize focused regression tests and realistic-data 
 
 E2E tests use Playwright and headless Chromium against a local Rails server.
 
+**Don't run the full E2E suite locally.** It takes too long to be worth it. Run single specs locally when they help. For the full suite, push the branch, open a pull request, and let GitHub Actions run it. Check on the run with `gh pr checks` and move on to the next task while it runs.
+
 ### Prerequisites
 - Install the browser once with `(cd vue && npx playwright install chromium)`.
 - If you get schema related errors it might help to run `dropdb loomio_test; RAILS_ENV=test rake db:setup`

@@ -18,7 +18,7 @@ module PendingActionsHelper
   end
 
   def consume_pending_login_token
-    pending_login_token.update(used: true) if pending_login_token
+    pending_login_token.update(used_at: Time.current) if pending_login_token
   end
 
   def consume_pending_identity(user)

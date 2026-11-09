@@ -147,3 +147,31 @@ describe('AbilityService.canJoinGroup', () => {
     expect(AbilityService.canJoinGroup(group)).toBe(false);
   });
 });
+
+describe('poll actions in a locked thread', () => {
+  const poll = ({locked = false, closed = false} = {}) => ({
+    group: () => ({isEnabled: () => true}),
+    topic: () => ({lockedAt: locked ? new Date(2026, 10, 1) : null}),
+    discardedAt: null,
+    closedAt: closed ? new Date(2026, 10, 2) : null,
+    hideResults: 'off',
+    anonymous: false,
+    adminsInclude: () => true
+  });
+
+  it('lets a poll admin edit, delete and reopen polls in an unlocked thread', () => {
+    expect(AbilityService.canEditPoll(poll())).toBe(true);
+    expect(AbilityService.canDeletePoll(poll())).toBe(true);
+    expect(AbilityService.canReopenPoll(poll({closed: true}))).toBe(true);
+  });
+
+  it('matches the server by blocking edit, delete and reopen once the thread is locked', () => {
+    expect(AbilityService.canEditPoll(poll({locked: true}))).toBe(false);
+    expect(AbilityService.canDeletePoll(poll({locked: true}))).toBe(false);
+    expect(AbilityService.canReopenPoll(poll({locked: true, closed: true}))).toBe(false);
+  });
+
+  it('still lets a poll admin set an outcome in a locked thread, as the server does', () => {
+    expect(AbilityService.canSetPollOutcome(poll({locked: true, closed: true}))).toBeTruthy();
+  });
+});

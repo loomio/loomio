@@ -3,7 +3,6 @@ class TaskSerializer < ApplicationSerializer
              :name,
              :author_id,
              :uid,
-             :done,
              :done_at,
              :due_on,
              :record_type,

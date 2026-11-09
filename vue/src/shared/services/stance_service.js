@@ -70,7 +70,7 @@ export default new class StanceService {
           !stance.discardedAt &&
           !stance.revokedAt &&
           !poll.anonymous &&
-          (poll.hideResults !== 'until_closed' || poll.closedAt) &&
+          poll.resultsAvailable() &&
           AbilityService.canAddComment(topic);
         },
         perform() {

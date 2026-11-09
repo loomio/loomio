@@ -134,7 +134,7 @@ export default new class PollService {
         name: 'poll_common_form.manage_voters',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || (!poll.openedAt && !poll.openingAt)) { return false; }
+          if (poll.discardedAt || poll.closedAt || (!poll.isOpened() && !poll.isScheduled())) { return false; }
           return AbilityService.canAddMembersPoll(poll);
         },
         perform() {
