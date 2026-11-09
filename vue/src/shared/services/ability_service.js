@@ -28,10 +28,6 @@ export default new class AbilityService {
     intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
-  canAddReaction(topic) {
-    return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
-  }
-
   canAttachFiles(model) {
     const kind = model.constructor.singular;
     if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }

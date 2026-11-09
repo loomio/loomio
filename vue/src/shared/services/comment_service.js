@@ -1,5 +1,6 @@
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import ReactionAbility from '@/shared/abilities/reaction_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
@@ -17,7 +18,7 @@ export default new class CommentService {
         dock: 1,
         canPerform() {
           const topic = comment.topic();
-          return !comment.discardedAt && topic && AbilityService.canAddReaction(topic);
+          return !comment.discardedAt && topic && ReactionAbility.create(topic);
         }
       },
 
