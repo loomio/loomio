@@ -115,7 +115,7 @@ export default
       return this.group.memberIds();
     },
     invitableGroups() {
-      return this.group.parentOrSelf().selfAndSubgroups().filter(g => GroupAbility.addMembers(g));
+      return this.group.parentOrSelf().selfAndSubgroups().filter(g => GroupAbility.canAddMembers(g));
     },
     tooManyInvitations() {
       return this.subscription.max_members && (this.invitationsRemaining < 0);

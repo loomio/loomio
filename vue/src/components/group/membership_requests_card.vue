@@ -28,7 +28,7 @@ export default
     },
 
     canManageMembershipRequests() {
-      return GroupAbility.manageMembershipRequests(this.group);
+      return GroupAbility.canManageMembershipRequests(this.group);
     }
   }
 };

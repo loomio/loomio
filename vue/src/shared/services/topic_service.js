@@ -65,7 +65,7 @@ export default new class TopicService {
         icon: 'mdi-thumbs-up-down-outline',
         // collection: 'actions',
         canPerform() {
-          return PollAbility.create(topic);
+          return PollAbility.canCreate(topic);
         },
         perform() {
           EventBus.$emit('show-add-poll-form');
@@ -79,7 +79,7 @@ export default new class TopicService {
         dockDisplay: 'icon',
         // collection: 'actions',
         canPerform() {
-          return CommentAbility.create(topic);
+          return CommentAbility.canCreate(topic);
         },
         perform() {
           EventBus.$emit('show-add-comment-form');
@@ -94,7 +94,7 @@ export default new class TopicService {
         dock: 3,
         collection: 'members',
         canPerform() {
-          return (!topic.lockedAt && TopicAbility.announce(topic)) || TopicAbility.addGuests(topic);
+          return (!topic.lockedAt && TopicAbility.canAnnounce(topic)) || TopicAbility.canAddGuests(topic);
         },
         perform() {
           return EventBus.$emit('openModal', {
@@ -219,7 +219,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         // collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Discussion' && DiscussionAbility.update(topic.topicable());
+          return topic.topicableType === 'Discussion' && DiscussionAbility.canUpdate(topic.topicable());
   },
 
         to() { return `/d/${topic.topicable().key}/edit`; }
@@ -231,7 +231,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Poll' && PollAbility.update(topic.topicable());
+          return topic.topicableType === 'Poll' && PollAbility.canUpdate(topic.topicable());
         },
         to() { return `/p/${topic.topicable().key}/edit`; }
       },
@@ -240,7 +240,7 @@ export default new class TopicService {
         icon: 'mdi-tag-plus-outline',
         name: 'loomio_tags.select_tags',
         canPerform() {
-          return TopicAbility.updateTags(topic);
+          return TopicAbility.canUpdateTags(topic);
         },
         async perform() {
           let topicItem = topic.createdTopicItem();
@@ -267,7 +267,7 @@ export default new class TopicService {
         name: 'action_dock.move_thread_v2',
         collection: 'actions',
         icon: 'mdi-file-move-outline',
-        canPerform() { return TopicAbility.move(topic); },
+        canPerform() { return TopicAbility.canMove(topic); },
         perform() {
           return openModal({
             component: 'MoveTopicForm',

@@ -44,7 +44,7 @@ describe('starting from a template', () => {
     const topic = new TopicModel({topicableType: 'Discussion', activePollsCount: 1, ...attributes});
     topic.group = () => ({isEnabled: () => true});
     topic.adminsInclude = () => true;
-    expect(PollAbility.create(topic)).toBe(expected);
+    expect(PollAbility.canCreate(topic)).toBe(expected);
   });
 
   it('copies every poll template setting onto the poll', () => {

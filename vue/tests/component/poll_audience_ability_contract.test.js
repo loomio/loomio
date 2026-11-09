@@ -11,13 +11,13 @@ import PollModel from '@/shared/models/poll_model';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('poll_audience_abilities', {
-  create: poll => PollAbility.create(poll.topic()),
-  announce: poll => PollAbility.announce(poll),
-  remind: poll => PollAbility.remind(poll),
-  add_voters: poll => PollAbility.addVoters(poll),
-  add_guests: poll => PollAbility.addGuests(poll),
-  view_anonymous_voters: poll => PollAbility.viewAnonymousVoters(poll),
-  create_outcome: poll => OutcomeAbility.create(poll)
+  create: poll => PollAbility.canCreate(poll.topic()),
+  announce: poll => PollAbility.canAnnounce(poll),
+  remind: poll => PollAbility.canRemind(poll),
+  add_voters: poll => PollAbility.canAddVoters(poll),
+  add_guests: poll => PollAbility.canAddGuests(poll),
+  view_anonymous_voters: poll => PollAbility.canViewAnonymousVoters(poll),
+  create_outcome: poll => OutcomeAbility.canCreate(poll)
 }, (testCase, roles) => {
   let group;
   if (Object.keys(testCase.group).length) {

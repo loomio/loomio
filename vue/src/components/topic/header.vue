@@ -43,7 +43,7 @@ const breadcrumbs = computed(() => {
 });
 const tags = computed(() => topic.value.createdTopicItem().tags);
 const isPinned = computed(() => !!topic.value.pinnedAt);
-const canEditTags = computed(() => TopicAbility.updateTags(topic.value));
+const canEditTags = computed(() => TopicAbility.canUpdateTags(topic.value));
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);

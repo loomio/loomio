@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 // receives. test/contracts/reaction_ability_contract_test.rb checks these rules.
 export default {
   // Reacting to something in the topic.
-  create(topic) {
+  canCreate(topic) {
     return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 };

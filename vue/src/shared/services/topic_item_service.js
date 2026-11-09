@@ -12,7 +12,7 @@ export default new class TopicItemService {
         name: 'loomio_tags.apply_tags',
         icon: 'mdi-tag-outline',
         menu: true,
-        canPerform() { return TopicItemAbility.updateTags(topic_item); },
+        canPerform() { return TopicItemAbility.canUpdateTags(topic_item); },
         perform() {
           return openModal({component: 'TopicTagsDialog', props: {topic: topic_item.topic(), topicItem: topic_item}});
         }
@@ -31,7 +31,7 @@ export default new class TopicItemService {
           return topic &&
           !topic_item.model().discardedAt &&
           !topic.lockedAt &&
-          TopicAbility.moveComments(topic);
+          TopicAbility.canMoveComments(topic);
         }
       },
 
@@ -42,7 +42,7 @@ export default new class TopicItemService {
         kinds: ['new_comment', 'poll_created'],
         canPerform() {
           return topic_item.depth === 1 && !topic_item.pinned && !topic_item.model().discardedAt &&
-            TopicItemAbility.pin(topic_item);
+            TopicItemAbility.canPin(topic_item);
         },
         perform() {
           return openModal({
@@ -56,7 +56,7 @@ export default new class TopicItemService {
         icon: 'mdi-timeline-remove-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
-        canPerform() { return topic_item.pinned && !topic_item.model().discardedAt && TopicItemAbility.unpin(topic_item); },
+        canPerform() { return topic_item.pinned && !topic_item.model().discardedAt && TopicItemAbility.canUnpin(topic_item); },
         perform() { return topic_item.unpin().then(() => Flash.success('activity_card.event_unpinned')); }
       },
 

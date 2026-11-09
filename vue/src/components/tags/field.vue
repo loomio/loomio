@@ -17,7 +17,7 @@ const items = computed(() => {
 
 const canCreateTags = computed(() => {
   if (template) { return true; }
-  return !model.groupId || TagAbility.create(model.group());
+  return !model.groupId || TagAbility.canCreate(model.group());
 });
 
 function colorFor(name) {

@@ -9,9 +9,9 @@ import TopicItemAbility from '@/shared/abilities/topic_item_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('topic_item_abilities', {
-  pin: item => TopicItemAbility.pin(item),
-  unpin: item => TopicItemAbility.unpin(item),
-  update_tags: item => TopicItemAbility.updateTags(item)
+  pin: item => TopicItemAbility.canPin(item),
+  unpin: item => TopicItemAbility.canUnpin(item),
+  update_tags: item => TopicItemAbility.canUpdateTags(item)
 }, (testCase, roles) => {
   const group = Object.keys(testCase.group).length
     ? {...clientAttributes(testCase.group), isEnabled: () => true}

@@ -22,7 +22,7 @@ export default new class DiscussionService {
 
       react: {
         dock: 1,
-        canPerform() { return ReactionAbility.create(discussion.topic()); }
+        canPerform() { return ReactionAbility.canCreate(discussion.topic()); }
       },
       translate_thread: {
         icon: 'mdi-translate',
@@ -44,7 +44,7 @@ export default new class DiscussionService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 3,
-        canPerform() { return DiscussionAbility.update(discussion); },
+        canPerform() { return DiscussionAbility.canUpdate(discussion); },
         to() { return `/d/${discussion.key}/edit`; }
       },
 

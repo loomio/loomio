@@ -7,7 +7,7 @@ vi.mock('@/shared/services/records', () => ({default: {}}));
 import ReactionAbility from '@/shared/abilities/reaction_ability';
 
 abilityContract('reaction_abilities', {
-  create: topic => ReactionAbility.create(topic)
+  create: topic => ReactionAbility.canCreate(topic)
 }, (testCase, roles) => ({
   ...clientAttributes(testCase.topic),
   group: () => ({isEnabled: () => true}),

@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 // receives. test/contracts/poll_audience_ability_contract_test.rb checks it.
 export default {
   // Outcomes conclude a vote, so they need a closed poll that still exists.
-  create(poll) {
+  canCreate(poll) {
     return poll.group().isEnabled() && !poll.discardedAt && !!poll.closedAt &&
       (poll.adminsInclude(Session.user()) ||
         (poll.group().membersCanEditDiscussions && poll.membersInclude(Session.user())));

@@ -31,12 +31,12 @@ export default
     },
 
     canSetName() {
-      return GroupAbility.update(this.membership.group()) &&
+      return GroupAbility.canUpdate(this.membership.group()) &&
       (!this.membership.user().name || !this.membership.user().emailVerified);
     },
 
     canSetTitle() {
-      return MembershipAbility.update(this.membership);
+      return MembershipAbility.canUpdate(this.membership);
     },
 
     setName() {
@@ -58,11 +58,11 @@ export default
     },
 
     canResendMembership() {
-      return MembershipAbility.resend(this.membership);
+      return MembershipAbility.canResend(this.membership);
     },
 
     canViewNotificationHistory() {
-      return GroupAbility.update(this.membership.group());
+      return GroupAbility.canUpdate(this.membership.group());
     },
 
     viewNotificationHistory() {
@@ -79,7 +79,7 @@ export default
     },
 
     canRemoveMembership() {
-      return MembershipAbility.destroy(this.membership);
+      return MembershipAbility.canDestroy(this.membership);
     },
 
     removeMembership() {
@@ -114,16 +114,16 @@ export default
 
     canToggleAdmin() {
       return ((this.membership.group().adminMembershipsCount === 0) && (this.membership.user() === Session.user())) ||
-      (GroupAbility.update(this.membership.group()) && (!this.membership.admin || this.canRemoveMembership(this.membership))) ||
+      (GroupAbility.canUpdate(this.membership.group()) && (!this.membership.admin || this.canRemoveMembership(this.membership))) ||
       (this.membership.userIs(Session.user()) && this.membership.group().parentOrSelf().adminsInclude(Session.user()));
     },
 
     canMakeDelegate() {
-      return !this.membership.delegate && GroupAbility.update(this.membership.group())
+      return !this.membership.delegate && GroupAbility.canUpdate(this.membership.group())
     },
 
     canRemoveDelegate() {
-      return this.membership.delegate && GroupAbility.update(this.membership.group())
+      return this.membership.delegate && GroupAbility.canUpdate(this.membership.group())
     },
 
     makeDelegate() {

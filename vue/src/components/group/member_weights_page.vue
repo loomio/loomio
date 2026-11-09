@@ -123,7 +123,7 @@ async function resetWeights() {
 onMounted(async () => {
   try {
     group.value = await Records.groups.findOrFetch(route.params.key);
-    if (!GroupAbility.update(group.value)) {
+    if (!GroupAbility.canUpdate(group.value)) {
       await router.replace(membersPath.value);
       return;
     }

@@ -200,11 +200,11 @@ export default
     },
 
     canViewPrivateContent() {
-      return GroupAbility.seePrivateContent(this.group);
+      return GroupAbility.canSeePrivateContent(this.group);
     },
 
     canStartThread() {
-      return DiscussionAbility.create(this.group);
+      return DiscussionAbility.canCreate(this.group);
     },
 
     isLoggedIn() {

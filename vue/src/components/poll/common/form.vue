@@ -254,7 +254,7 @@ const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 const groupItems = computed(() => {
   return [
     {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
-  ].concat(Session.user().groups().filter(g => PollAbility.create(g)).map(g => ({
+  ].concat(Session.user().groups().filter(g => PollAbility.canCreate(g)).map(g => ({
     title: g.fullName,
     value: g.id
   })));

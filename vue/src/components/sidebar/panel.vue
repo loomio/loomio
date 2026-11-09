@@ -53,7 +53,7 @@ const showTemplateGallery = computed(() => AppConfig.features.app.template_galle
 
 const user = computed(() => Session.user());
 const isSignedIn = computed(() => Session.isSignedIn());
-const canStartGroups = computed(() => GroupAbility.create());
+const canStartGroups = computed(() => GroupAbility.canCreate());
 
 const organizations = computed(() => {
   const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
@@ -117,7 +117,7 @@ EventBus.$on('currentComponent', data => {
 const fetchData = () => {
   loadGroups().then(() => {
     if (route.path === "/dashboard") {
-      if (Session.user().groups().length === 0 && GroupAbility.create()) {
+      if (Session.user().groups().length === 0 && GroupAbility.canCreate()) {
         router.replace("/g/new");
       }
       if (Session.user().groups().length === 1) {

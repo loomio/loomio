@@ -34,7 +34,7 @@ export default {
       this.searchResults = Records.topics.collection.chain()
         .find({groupId: this.groupId, topicableType: 'Discussion', discardedAt: null})
         .where(t => {
-          if (t.id === this.topic.id || !TopicAbility.moveComments(t)) { return false; }
+          if (t.id === this.topic.id || !TopicAbility.canMoveComments(t)) { return false; }
           if (!frag) { return true; }
           const disc = t.discussion();
           return disc && disc.title.toLowerCase().includes(frag);

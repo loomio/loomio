@@ -7,7 +7,7 @@ vi.mock('@/shared/services/records', () => ({default: {}}));
 import TagAbility from '@/shared/abilities/tag_ability';
 
 abilityContract('tag_abilities', {
-  create: group => TagAbility.create(group)
+  create: group => TagAbility.canCreate(group)
 }, (testCase, roles) => {
   const parent = {adminsInclude: () => roles.parent_admin};
   return {

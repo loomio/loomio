@@ -9,18 +9,18 @@ import GroupAbility from '@/shared/abilities/group_ability';
 import GroupModel from '@/shared/models/group_model';
 
 abilityContract('group_abilities', {
-  show: group => GroupAbility.show(group),
-  see_private_content: group => GroupAbility.seePrivateContent(group),
-  update: group => GroupAbility.update(group),
-  destroy: group => GroupAbility.destroy(group),
-  set_volume: group => GroupAbility.setVolume(group),
-  add_members: group => GroupAbility.addMembers(group),
-  add_guests: group => GroupAbility.addGuests(group),
-  manage_membership_requests: group => GroupAbility.manageMembershipRequests(group),
-  notify: group => GroupAbility.notify(group),
-  add_subgroup: group => GroupAbility.addSubgroup(group),
-  join: group => GroupAbility.join(group),
-  request_membership: group => GroupAbility.requestMembership(group)
+  show: group => GroupAbility.canShow(group),
+  see_private_content: group => GroupAbility.canSeePrivateContent(group),
+  update: group => GroupAbility.canUpdate(group),
+  destroy: group => GroupAbility.canDestroy(group),
+  set_volume: group => GroupAbility.canSetVolume(group),
+  add_members: group => GroupAbility.canAddMembers(group),
+  add_guests: group => GroupAbility.canAddGuests(group),
+  manage_membership_requests: group => GroupAbility.canManageMembershipRequests(group),
+  notify: group => GroupAbility.canNotify(group),
+  add_subgroup: group => GroupAbility.canAddSubgroup(group),
+  join: group => GroupAbility.canJoin(group),
+  request_membership: group => GroupAbility.canRequestMembership(group)
 }, (testCase, roles) => {
   const {enabled, ...attributes} = testCase.group;
   const group = new GroupModel({...clientAttributes(attributes), enabled, subscription: {active: enabled}});

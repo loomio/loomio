@@ -26,15 +26,15 @@ export default new class AbilityService {
     if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }
     if (['discussion', 'poll'].includes(kind) && !model.topicId) { return true; }
     const topic = kind === 'outcome' ? model.poll().topic() : model.topic();
-    return TopicAbility.attachFiles(topic);
+    return TopicAbility.canAttachFiles(topic);
   }
 
   canEdit(model) {
     if (!model) { return false; }
 
-    return (model.isA('discussion') && DiscussionAbility.update(model)) ||
-    (model.isA('comment') && CommentAbility.update(model)) ||
-    (model.isA('poll') && PollAbility.update(model)) ||
+    return (model.isA('discussion') && DiscussionAbility.canUpdate(model)) ||
+    (model.isA('comment') && CommentAbility.canUpdate(model)) ||
+    (model.isA('poll') && PollAbility.canUpdate(model)) ||
     (model.isA('stance') && this.canEditStance(model));
   }
 
@@ -43,16 +43,16 @@ export default new class AbilityService {
   }
 
   canAnnounce(model) {
-    if (model.isA('group')) { return GroupAbility.notify(model); }
-    if (model.isA('poll')) { return PollAbility.announce(model); }
-    if (model.isA('topic')) { return !model.lockedAt && TopicAbility.announce(model); }
-    return DiscussionAbility.announce(model);
+    if (model.isA('group')) { return GroupAbility.canNotify(model); }
+    if (model.isA('poll')) { return PollAbility.canAnnounce(model); }
+    if (model.isA('topic')) { return !model.lockedAt && TopicAbility.canAnnounce(model); }
+    return DiscussionAbility.canAnnounce(model);
   }
 
   canAddGuests(model) {
-    if (model.isA('group')) { return GroupAbility.addMembers(model); }
-    if (model.isA('poll')) { return PollAbility.addGuests(model); }
-    if (model.isA('topic')) { return TopicAbility.addGuests(model); }
+    if (model.isA('group')) { return GroupAbility.canAddMembers(model); }
+    if (model.isA('poll')) { return PollAbility.canAddGuests(model); }
+    if (model.isA('topic')) { return TopicAbility.canAddGuests(model); }
     return this.canAddGuestsDiscussion(model);
   }
 

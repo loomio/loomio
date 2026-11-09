@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 // Conditions that only shape the interface, such as offering "change vote"
 // after a vote is cast, belong in the action that calls these.
 export default {
-  update(stance) {
+  canUpdate(stance) {
     return !!stance &&
       stance.latest &&
       !stance.revokedAt &&
@@ -13,16 +13,16 @@ export default {
       stance.poll().isVotable();
   },
 
-  uncast(stance) {
-    return this.update(stance) && !!stance.castAt;
+  canUncast(stance) {
+    return this.canUpdate(stance) && !!stance.castAt;
   },
 
-  redact(stance) {
+  canRedact(stance) {
     const poll = stance.poll();
     return poll.group().isEnabled() && !stance.redactedAt && poll.adminsInclude(Session.user());
   },
 
-  unredact(stance) {
+  canUnredact(stance) {
     const poll = stance.poll();
     return poll.group().isEnabled() && !!stance.redactedAt && poll.adminsInclude(Session.user());
   }

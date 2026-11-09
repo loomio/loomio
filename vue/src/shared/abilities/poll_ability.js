@@ -2,43 +2,43 @@ import Session from '@/shared/services/session';
 import TopicAbility from '@/shared/abilities/topic_ability';
 
 // Mirrors the server's Ability::Poll using the raw poll state the client
-// receives. Method names match the server actions, and
+// receives. Each method is a server action with a can prefix, and
 // test/contracts/poll_ability_contract_test.rb checks these rules against it.
 export default {
-  update(poll) {
+  canUpdate(poll) {
     return poll.group().isEnabled() && !poll.topic().lockedAt &&
       !poll.discardedAt && poll.adminsInclude(Session.user()) && !poll.closedAt;
   },
 
-  destroy(poll) {
+  canDestroy(poll) {
     return poll.group().isEnabled() && !poll.topic().lockedAt &&
       !poll.discardedAt && poll.adminsInclude(Session.user());
   },
 
   // Closing ends voting early, which a locked thread does not prevent.
-  close(poll) {
+  canClose(poll) {
     return poll.group().isEnabled() && poll.isVotable() && poll.adminsInclude(Session.user());
   },
 
-  reopen(poll) {
+  canReopen(poll) {
     return poll.group().isEnabled() && !poll.topic().lockedAt && !poll.discardedAt && !!poll.closedAt &&
       poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
   },
 
   // Anyone who can see the poll, which is every poll the client holds.
-  export(poll) {
+  canExport(poll) {
     return !poll.discardedAt && poll.resultsAvailable();
   },
 
   // Starting a new poll in the topic.
-  create(topic) {
+  canCreate(topic) {
     if (topic.topicableType === 'Poll') { return false; }
     if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
       (topic.group().membersCanRaiseMotions && topic.membersInclude(Session.user())));
   },
 
-  announce(poll) {
+  canAnnounce(poll) {
     const user = Session.user();
     if (poll.discardedAt) { return false; }
     if (poll.groupId) {
@@ -49,20 +49,20 @@ export default {
     }
   },
 
-  remind(poll) {
-    return poll.isOpened() && this.announce(poll);
+  canRemind(poll) {
+    return poll.isOpened() && this.canAnnounce(poll);
   },
 
-  addVoters(poll) {
+  canAddVoters(poll) {
     return poll.group().isEnabled() && poll.adminsInclude(Session.user());
   },
 
   // Poll guests join the poll's thread, so the thread's rule applies.
-  addGuests(poll) {
-    return TopicAbility.addGuests(poll.topic());
+  canAddGuests(poll) {
+    return TopicAbility.canAddGuests(poll.topic());
   },
 
-  viewAnonymousVoters(poll) {
+  canViewAnonymousVoters(poll) {
     return poll.anonymous && poll.showResults();
   }
 };

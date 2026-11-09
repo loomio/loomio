@@ -17,10 +17,10 @@ const stanceFor = attributes => {
 };
 
 abilityContract('stance_abilities', {
-  update: stance => StanceAbility.update(stance),
-  uncast: stance => StanceAbility.uncast(stance),
-  redact: stance => StanceAbility.redact(stance),
-  unredact: stance => StanceAbility.unredact(stance)
+  update: stance => StanceAbility.canUpdate(stance),
+  uncast: stance => StanceAbility.canUncast(stance),
+  redact: stance => StanceAbility.canRedact(stance),
+  unredact: stance => StanceAbility.canUnredact(stance)
 }, (testCase, roles) => {
   const poll = new PollModel(clientAttributes(testCase.poll));
   const stance = stanceFor(testCase.stance);

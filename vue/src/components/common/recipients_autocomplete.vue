@@ -315,7 +315,7 @@ export default {
   },
 
   computed: {
-    canAnnounceDiscussion() { return DiscussionAbility.announce(this.model) },
+    canAnnounceDiscussion() { return DiscussionAbility.canAnnounce(this.model) },
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },

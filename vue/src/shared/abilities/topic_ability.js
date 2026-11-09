@@ -3,16 +3,16 @@ import Session from '@/shared/services/session';
 // Mirrors the server's Ability::Topic using the raw state the client
 // receives. test/contracts/topic_ability_contract_test.rb checks these rules.
 export default {
-  update(topic) {
+  canUpdate(topic) {
     return topic.group().isEnabled() && topic.adminsInclude(Session.user());
   },
 
-  attachFiles(topic) {
+  canAttachFiles(topic) {
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
       (!topic.attachmentsAdminOnly && topic.membersInclude(Session.user())));
   },
 
-  announce(topic) {
+  canAnnounce(topic) {
     if (topic.groupId) {
       return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
         (topic.group().membersCanAnnounce && topic.group().membersInclude(Session.user())));
@@ -22,7 +22,7 @@ export default {
   },
 
   // The organisation's subscription decides whether guests are allowed at all.
-  addGuests(topic) {
+  canAddGuests(topic) {
     if (topic.groupId) {
       return topic.group().isEnabled() && !!topic.group().parentOrSelf().subscription?.allow_guests &&
         (topic.group().adminsInclude(Session.user()) ||
@@ -32,15 +32,15 @@ export default {
     }
   },
 
-  move(topic) {
+  canMove(topic) {
     return topic.group().isEnabled() && topic.adminsInclude(Session.user());
   },
 
-  moveComments(topic) {
+  canMoveComments(topic) {
     return topic.group().isEnabled() && topic.adminsInclude(Session.user());
   },
 
-  updateTags(topic) {
+  canUpdateTags(topic) {
     const user = Session.user();
     return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
       topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||

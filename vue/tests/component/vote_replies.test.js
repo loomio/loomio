@@ -99,11 +99,11 @@ describe('conversation beneath votes', () => {
     poll.closedAt = '2026-10-03';
     for (const mode of ['off', 'until_vote', 'until_closed']) {
       poll.hideResults = mode;
-      expect(Boolean(PollAbility.reopen(poll))).toBe(mode !== 'until_closed');
+      expect(Boolean(PollAbility.canReopen(poll))).toBe(mode !== 'until_closed');
     }
     poll.hideResults = 'until_vote';
     poll.anonymous = true;
-    expect(PollAbility.reopen(poll)).toBeFalsy();
+    expect(PollAbility.canReopen(poll)).toBeFalsy();
   });
 
   it('leaves comments elsewhere in the discussion visible', () => {

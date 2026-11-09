@@ -8,66 +8,66 @@ const isServerAdmin = () => !!Session.user().isAdmin;
 
 export default {
   // Starting a new top-level group.
-  create() {
+  canCreate() {
     const user = Session.user();
     return Session.isSignedIn() && !!user.emailVerified && (AppConfig.features.app.create_group || !!user.isAdmin);
   },
 
-  show(group) {
+  canShow(group) {
     return !group.isDiscarded() && (group.isVisibleToPublic ||
       group.membersInclude(Session.user()) ||
       (group.isVisibleToParentMembers && group.parent().membersInclude(Session.user())));
   },
 
-  seePrivateContent(group) {
+  canSeePrivateContent(group) {
     return !group.isDiscarded() && (group.privacyIsOpen() || group.membersInclude(Session.user()) ||
       (group.isVisibleToParentMembers && group.parentOrSelf().membersInclude(Session.user())));
   },
 
-  update(group) {
+  canUpdate(group) {
     return group.isEnabled() && group.adminsInclude(Session.user());
   },
 
-  destroy(group) {
+  canDestroy(group) {
     return isServerAdmin() || group.adminsInclude(Session.user());
   },
 
-  setVolume(group) {
+  canSetVolume(group) {
     return group.membersInclude(Session.user());
   },
 
-  addMembers(group) {
+  canAddMembers(group) {
     return group.isEnabled() && (isServerAdmin() || group.adminsInclude(Session.user()) ||
       (group.membersInclude(Session.user()) && group.membersCanAddMembers));
   },
 
-  addGuests(group) {
+  canAddGuests(group) {
     const user = Session.user();
     return !!user.emailVerified && !!group.subscription?.active &&
       (group.adminsInclude(user) || (group.membersCanAddGuests && group.membersInclude(user)));
   },
 
-  manageMembershipRequests(group) {
+  canManageMembershipRequests(group) {
     return group.isEnabled() && (isServerAdmin() || (group.membersCanAddMembers && group.membersInclude(Session.user())) ||
       group.adminsInclude(Session.user()));
   },
 
-  notify(group) {
+  canNotify(group) {
     return group.isEnabled() && (group.adminsInclude(Session.user()) ||
       (group.membersCanAnnounce && group.membersInclude(Session.user())));
   },
 
-  addSubgroup(group) {
+  canAddSubgroup(group) {
     return group.isEnabled() && group.isParent() && (group.adminsInclude(Session.user()) ||
       (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
   },
 
-  join(group) {
-    if (!group.isEnabled() || !this.show(group) || !Session.user().emailVerified) { return false; }
+  canJoin(group) {
+    if (!group.isEnabled() || !this.canShow(group) || !Session.user().emailVerified) { return false; }
     return (group.membershipGrantedUpon === 'request') || (!!group.parentId && group.parent().adminsInclude(Session.user()));
   },
 
-  requestMembership(group) {
-    return (group.membershipGrantedUpon === 'approval') && this.show(group);
+  canRequestMembership(group) {
+    return (group.membershipGrantedUpon === 'approval') && this.canShow(group);
   }
 };

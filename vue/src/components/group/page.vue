@@ -44,7 +44,7 @@ export default
     },
 
     canEditGroup() {
-      return GroupAbility.update(this.group);
+      return GroupAbility.canUpdate(this.group);
     },
 
     tabs() {

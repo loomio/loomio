@@ -16,7 +16,7 @@ const { topic } = defineProps({
 });
 
 const group = computed(() => topic.group());
-const canAddGuests = computed(() => TopicAbility.addGuests(topic));
+const canAddGuests = computed(() => TopicAbility.canAddGuests(topic));
 const hasSpecifiedVotersOnlyPolls = computed(() =>
   Records.polls.collection.find({topicId: topic.id, specifiedVotersOnly: true}).length > 0
 );

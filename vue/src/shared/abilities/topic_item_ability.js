@@ -6,16 +6,16 @@ const TAGGABLE_KINDS = ['new_discussion', 'poll_created', 'outcome_created', 'ne
 // receives. test/contracts/topic_item_ability_contract_test.rb checks these rules.
 // Thread admins moderate pins, even in locked threads.
 export default {
-  pin(item) {
+  canPin(item) {
     const topic = item.topic();
     return topic.group().isEnabled() && topic.adminsInclude(Session.user());
   },
 
-  unpin(item) {
-    return this.pin(item);
+  canUnpin(item) {
+    return this.canPin(item);
   },
 
-  updateTags(item) {
+  canUpdateTags(item) {
     if (!TAGGABLE_KINDS.includes(item.kind)) { return false; }
     const topic = item.topic();
     const user = Session.user();

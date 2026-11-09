@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock('@/shared/services/records', () => ({default: {fetch: mocks.fetch}}));
-vi.mock('@/shared/abilities/poll_ability', () => ({default: {viewAnonymousVoters: mocks.canViewAnonymousVoters}}));
+vi.mock('@/shared/abilities/poll_ability', () => ({default: {canViewAnonymousVoters: mocks.canViewAnonymousVoters}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: mocks.event}}));
 vi.mock('vue-router', () => ({
   useRoute: () => ({query: mocks.routeQuery}),

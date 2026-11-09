@@ -98,7 +98,7 @@ export default
     },
     showLoadMore() { return !this.attachmentLoader.exhausted; },
     loading() { return this.attachmentLoader.loading; },
-    canAdminister() { return GroupAbility.update(this.group); }
+    canAdminister() { return GroupAbility.canUpdate(this.group); }
   }
 };
 

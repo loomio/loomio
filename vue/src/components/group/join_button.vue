@@ -95,16 +95,16 @@ export default
       if (!this.group || this.group.membersInclude(Session.user())) { return false; }
       // Visitors see the button so they can sign in, then the server rule applies.
       if (!Session.isSignedIn()) {
-        return this.group.isEnabled() && this.group.membershipGrantedUpon === 'request' && GroupAbility.show(this.group);
+        return this.group.isEnabled() && this.group.membershipGrantedUpon === 'request' && GroupAbility.canShow(this.group);
       }
-      return GroupAbility.join(this.group);
+      return GroupAbility.canJoin(this.group);
     },
 
     canRequestMembership() {
       return this.membershipRequestLoaded &&
         !this.wasIgnored &&
         this.group.isEnabled() && !this.group.membersInclude(Session.user()) && !this.canJoinGroup &&
-        GroupAbility.requestMembership(this.group);
+        GroupAbility.canRequestMembership(this.group);
     }
   }
 };

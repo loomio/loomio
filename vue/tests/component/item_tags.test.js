@@ -242,7 +242,7 @@ describe('item tagging', () => {
     for (const hideResults of ['off', 'until_vote', 'until_closed']) {
       const parent = {itemableType: 'Poll', model: () => ({hideResults, closedAt: null})};
       const item = {kind: 'new_comment', topic: () => topic, model: () => ({authorId: 1}), parent: () => parent};
-      expect(TopicItemAbility.updateTags(item)).toBe(true);
+      expect(TopicItemAbility.canUpdateTags(item)).toBe(true);
     }
   });
 
@@ -250,49 +250,49 @@ describe('item tagging', () => {
     topic.adminsInclude = () => true;
     const model = {authorId: 2, closedAt: new Date()};
     const item = {kind: 'poll_created', topic: () => topic, model: () => model};
-    expect(TopicItemAbility.updateTags(item)).toBe(true);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(true);
     topic.lockedAt = new Date();
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
     topic.lockedAt = null;
     item.kind = 'stance_updated';
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
   });
 
   it.each(['new_discussion', 'poll_created', 'outcome_created', 'new_comment'])('lets context editors tag another author’s %s', kind => {
     const item = {kind, topic: () => topic, model: () => ({authorId: 2})};
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
     group.membersCanEditDiscussions = true;
-    expect(TopicItemAbility.updateTags(item)).toBe(true);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(true);
 
     topic.membersInclude = () => false;
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
   });
 
   it('keeps context editors subject to thread and contribution restrictions', () => {
     group.membersCanEditDiscussions = true;
     const model = {authorId: 2};
     const item = {kind: 'new_comment', topic: () => topic, model: () => model};
-    expect(TopicItemAbility.updateTags(item)).toBe(true);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(true);
     topic.lockedAt = new Date();
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
     topic.lockedAt = null;
     topic.discardedAt = new Date();
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
     topic.discardedAt = null;
     model.discardedAt = new Date();
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
     model.discardedAt = null;
     group.isEnabled = () => false;
-    expect(TopicItemAbility.updateTags(item)).toBe(false);
+    expect(TopicItemAbility.canUpdateTags(item)).toBe(false);
   });
 
   it.each(['Discussion', 'Poll'])('lets context editors tag the opening %s', type => {
     topic.topicableType = type;
     topic.topicable = () => ({authorId: 2});
-    expect(TopicAbility.updateTags(topic)).toBe(false);
+    expect(TopicAbility.canUpdateTags(topic)).toBe(false);
     group.membersCanEditDiscussions = true;
-    expect(TopicAbility.updateTags(topic)).toBe(true);
+    expect(TopicAbility.canUpdateTags(topic)).toBe(true);
     topic.membersInclude = () => false;
-    expect(TopicAbility.updateTags(topic)).toBe(false);
+    expect(TopicAbility.canUpdateTags(topic)).toBe(false);
   });
 });

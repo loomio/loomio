@@ -7,16 +7,16 @@ import Session from '@/shared/services/session';
 // after a comment is discarded, belong in the action that calls these.
 export default {
   // A new top-level comment in the topic.
-  create(topic) {
+  canCreate(topic) {
     return topic.group().isEnabled() && !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
   },
 
   // A reply to an existing comment.
-  reply(comment) {
-    return this.create(comment.topic());
+  canReply(comment) {
+    return this.canCreate(comment.topic());
   },
 
-  update(comment) {
+  canUpdate(comment) {
     const topic = comment.topic();
     return topic.group().isEnabled() && !topic.lockedAt && !comment.discardedAt && (
       (topic.adminsInclude(Session.user()) && comment.group().adminsCanEditUserContent) ||
@@ -24,7 +24,7 @@ export default {
     );
   },
 
-  discard(comment) {
+  canDiscard(comment) {
     const topic = comment.topic();
     return topic.group().isEnabled() && !topic.lockedAt && (
       (comment.authorIs(Session.user()) && topic.membersInclude(Session.user())) ||
@@ -32,7 +32,7 @@ export default {
     );
   },
 
-  undiscard(comment) {
+  canUndiscard(comment) {
     const topic = comment.topic();
     return topic.group().isEnabled() && !topic.lockedAt && (
       (comment.authorIs(Session.user()) && comment.discardedBy === Session.userId && topic.membersInclude(Session.user())) ||
@@ -40,7 +40,7 @@ export default {
     );
   },
 
-  destroy(comment) {
+  canDestroy(comment) {
     const topic = comment.topic();
     return topic.group().isEnabled() && !topic.lockedAt &&
       (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) && (

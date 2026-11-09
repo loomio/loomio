@@ -39,7 +39,7 @@ export default
     },
 
     canAddMembers() {
-      return GroupAbility.addMembers(this.group) && !this.pending;
+      return GroupAbility.canAddMembers(this.group) && !this.pending;
     }
   },
 

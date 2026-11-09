@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 // receives. test/contracts/discussion_ability_contract_test.rb checks these rules.
 export default {
   // Starting a new thread in the group.
-  create(group) {
+  canCreate(group) {
     const user = Session.user();
     return group.isEnabled() && (group.adminsInclude(user) ||
       (group.membersInclude(user) && group.membersCanStartDiscussions) ||
@@ -14,14 +14,14 @@ export default {
 
   // Thread admins can always edit. Others need current access to an unlocked
   // thread, and either authorship or the members-can-edit setting.
-  update(discussion) {
+  canUpdate(discussion) {
     const topic = discussion.topic();
     return topic.group().isEnabled() && !discussion.discardedAt && (topic.adminsInclude(Session.user()) ||
       (!topic.lockedAt && topic.membersInclude(Session.user()) &&
         (discussion.authorIs(Session.user()) || topic.group().membersCanEditDiscussions)));
   },
 
-  announce(discussion) {
+  canAnnounce(discussion) {
     if (discussion.discardedAt) { return false; }
     if (discussion.groupId) {
       return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||

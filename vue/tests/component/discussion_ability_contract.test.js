@@ -9,9 +9,9 @@ import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('discussion_abilities', {
-  create: discussion => DiscussionAbility.create(discussion.group()),
-  update: discussion => DiscussionAbility.update(discussion),
-  announce: discussion => DiscussionAbility.announce(discussion)
+  create: discussion => DiscussionAbility.canCreate(discussion.group()),
+  update: discussion => DiscussionAbility.canUpdate(discussion),
+  announce: discussion => DiscussionAbility.canAnnounce(discussion)
 }, (testCase, roles) => {
   const group = Object.keys(testCase.group).length ? {
     ...clientAttributes(testCase.group),

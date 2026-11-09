@@ -189,10 +189,10 @@ export default
     },
 
     canAddMembers() {
-      return GroupAbility.addMembers(this.group);
+      return GroupAbility.canAddMembers(this.group);
     },
     canManageWeights() {
-      return GroupAbility.update(this.group);
+      return GroupAbility.canUpdate(this.group);
     },
 
     showAdminWarning() {

@@ -12,7 +12,7 @@ export default new class AttachmentService {
         icon: 'mdi-delete',
         name: 'common.action.delete',
         canPerform() {
-          return attachment.isA('attachment') && GroupAbility.update(group);
+          return attachment.isA('attachment') && GroupAbility.canUpdate(group);
         },
         perform() {
           return EventBus.$emit('openModal', {

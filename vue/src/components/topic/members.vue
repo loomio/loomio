@@ -32,7 +32,7 @@ export default {
     },
     canInvitePeople() {
       const topic = this.discussion.topic();
-      return (!topic.lockedAt && TopicAbility.announce(topic)) || TopicAbility.addGuests(topic);
+      return (!topic.lockedAt && TopicAbility.canAnnounce(topic)) || TopicAbility.canAddGuests(topic);
     }
   }
 };

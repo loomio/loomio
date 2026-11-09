@@ -9,7 +9,7 @@ import TopicTagsMenu from './topic_tags_menu.vue';
 const { topicItem } = defineProps({topicItem: {type: Object, required: true}});
 const { t } = useI18n();
 const topic = computed(() => topicItem.topic());
-const canEdit = computed(() => TopicItemAbility.updateTags(topicItem));
+const canEdit = computed(() => TopicItemAbility.canUpdateTags(topicItem));
 const tagRoute = tag => ({path: LmoUrlService.route({model: topic.value.topicable()}), query: {tag}});
 </script>
 

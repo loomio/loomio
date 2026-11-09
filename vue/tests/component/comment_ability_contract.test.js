@@ -13,12 +13,12 @@ import CommentAbility from '@/shared/abilities/comment_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('comment_abilities', {
-  create: comment => CommentAbility.create(comment.topic()),
-  reply: comment => CommentAbility.reply(comment),
-  update: comment => CommentAbility.update(comment),
-  discard: comment => CommentAbility.discard(comment),
-  undiscard: comment => CommentAbility.undiscard(comment),
-  destroy: comment => CommentAbility.destroy(comment)
+  create: comment => CommentAbility.canCreate(comment.topic()),
+  reply: comment => CommentAbility.canReply(comment),
+  update: comment => CommentAbility.canUpdate(comment),
+  discard: comment => CommentAbility.canDiscard(comment),
+  undiscard: comment => CommentAbility.canUndiscard(comment),
+  destroy: comment => CommentAbility.canDestroy(comment)
 }, (testCase, roles) => {
   replies.count = testCase.reply_count;
   const group = Object.keys(testCase.group).length

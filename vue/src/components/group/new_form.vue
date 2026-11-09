@@ -112,7 +112,7 @@ export default
   computed: {
     parentGroups() {
       return [{value: null, title: this.$t('common.none')}].concat(Session.user().parentGroups().
-        filter(g => GroupAbility.addSubgroup(g)).
+        filter(g => GroupAbility.canAddSubgroup(g)).
         map(g => ({
         value: g.id,
         title: g.name

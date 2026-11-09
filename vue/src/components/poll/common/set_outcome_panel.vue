@@ -17,7 +17,7 @@ export default {
 
   methods: {
     showPanel() {
-      return OutcomeAbility.create(this.poll);
+      return OutcomeAbility.canCreate(this.poll);
     },
 
     openOutcomeForm() {

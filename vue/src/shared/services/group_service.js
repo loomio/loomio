@@ -23,7 +23,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         dock: 2,
         canPerform() {
-          return group.handle && DiscussionAbility.create(group) && AppConfig.features.app.thread_from_mail;
+          return group.handle && DiscussionAbility.canCreate(group) && AppConfig.features.app.thread_from_mail;
         },
         perform() {
           EventBus.$emit('openModal', {
@@ -66,7 +66,7 @@ export default new class GroupService {
         icon: 'mdi-cog',
         menu: true,
         canPerform() {
-          return GroupAbility.update(group);
+          return GroupAbility.canUpdate(group);
         },
         perform() {
           return openModal({
@@ -84,7 +84,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         menu: true,
         canPerform() {
-          return GroupAbility.setVolume(group);
+          return GroupAbility.canSetVolume(group);
         },
         perform() {
           return openModal({
@@ -110,7 +110,7 @@ export default new class GroupService {
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
         menu: true,
-        canPerform() { return GroupAbility.update(group); },
+        canPerform() { return GroupAbility.canUpdate(group); },
         perform() {
           EventBus.$emit('openModal', {
             component: 'TagsSelect',
@@ -196,7 +196,7 @@ export default new class GroupService {
         icon: 'mdi-exit-to-app',
         menu: true,
         canPerform() {
-          return MembershipAbility.destroy(membership);
+          return MembershipAbility.canDestroy(membership);
         },
         perform() {
           let returnUrl = '/dashboard'
@@ -230,7 +230,7 @@ export default new class GroupService {
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
-          return GroupAbility.destroy(group);
+          return GroupAbility.canDestroy(group);
         },
         perform() {
           const confirmText = group.handle || group.name.trim();

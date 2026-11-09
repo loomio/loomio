@@ -21,7 +21,7 @@ export default
     Records.groups.findOrFetch(this.$route.params.key).then(group => {
       this.group = group;
 
-      if (GroupAbility.manageMembershipRequests(this.group)) {
+      if (GroupAbility.canManageMembershipRequests(this.group)) {
         Records.membershipRequests.fetchPendingByGroup(this.group.key, {per: 100});
         Records.membershipRequests.fetchPreviousByGroup(this.group.key, {per: 100});
       }
@@ -32,7 +32,7 @@ export default
 
   computed: {
     requests() {
-      if (!this.group || !GroupAbility.manageMembershipRequests(this.group)) { return []; }
+      if (!this.group || !GroupAbility.canManageMembershipRequests(this.group)) { return []; }
       return this.group.membershipRequests();
     },
 

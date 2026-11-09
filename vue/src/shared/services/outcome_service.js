@@ -49,7 +49,7 @@ export default new class OutcomeService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 1,
-        canPerform() { return OutcomeAbility.create(poll); },
+        canPerform() { return OutcomeAbility.canCreate(poll); },
         perform() {
           return openModal({
             component: 'PollCommonOutcomeModal',

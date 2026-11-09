@@ -17,8 +17,8 @@ const { topic } = defineProps({
 
 const route = useRoute();
 
-const canAddComment = computed(() => CommentAbility.create(topic));
-const canStartPoll = computed(() => PollAbility.create(topic));
+const canAddComment = computed(() => CommentAbility.canCreate(topic));
+const canStartPoll = computed(() => PollAbility.canCreate(topic));
 const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);

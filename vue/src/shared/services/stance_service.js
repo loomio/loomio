@@ -73,7 +73,7 @@ export default new class StanceService {
           !stance.revokedAt &&
           !poll.anonymous &&
           poll.resultsAvailable() &&
-          CommentAbility.create(topic);
+          CommentAbility.canCreate(topic);
         },
         perform() {
           const maxDepth = stance.poll().topic().maxDepth;
@@ -89,7 +89,7 @@ export default new class StanceService {
         name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
         icon: 'mdi-pencil',
         dock: 3,
-        canPerform: () => StanceAbility.update(stance) && !!stance.castAt,
+        canPerform: () => StanceAbility.canUpdate(stance) && !!stance.castAt,
         perform: () => this.updateStance(stance)
       },
 
@@ -97,7 +97,7 @@ export default new class StanceService {
         name: (stance.poll().config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         dock: 1,
-        canPerform: () => StanceAbility.uncast(stance),
+        canPerform: () => StanceAbility.canUncast(stance),
         perform: () => this.uncastStance(stance)
       },
 
@@ -136,7 +136,7 @@ export default new class StanceService {
         menu: true,
         canPerform() {
           const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
-          return !!hasContent && !stance.revokedAt && StanceAbility.redact(stance);
+          return !!hasContent && !stance.revokedAt && StanceAbility.canRedact(stance);
         },
         perform() {
           return openModal({
@@ -162,7 +162,7 @@ export default new class StanceService {
         name: 'common.action.unredact',
         icon: 'mdi-eye',
         menu: true,
-        canPerform() { return StanceAbility.unredact(stance); },
+        canPerform() { return StanceAbility.canUnredact(stance); },
         perform() {
           return openModal({
             component: 'ConfirmModal',

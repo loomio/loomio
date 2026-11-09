@@ -134,7 +134,7 @@ const canCreateTags = computed(() => {
 
   if (!usableGroup(tagGroup.value)) { return false; }
 
-  return TagAbility.create(tagGroup.value);
+  return TagAbility.canCreate(tagGroup.value);
 });
 
 const hasOtherGroups = computed(() => usableGroup(tagGroup.value) && tagGroup.value.parentOrSelf().subgroupsCount > 0);

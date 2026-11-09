@@ -9,13 +9,13 @@ import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('topic_abilities', {
-  update: topic => TopicAbility.update(topic),
-  attach_files: topic => TopicAbility.attachFiles(topic),
-  announce: topic => TopicAbility.announce(topic),
-  add_guests: topic => TopicAbility.addGuests(topic),
-  move: topic => TopicAbility.move(topic),
-  move_comments: topic => TopicAbility.moveComments(topic),
-  update_tags: topic => TopicAbility.updateTags(topic)
+  update: topic => TopicAbility.canUpdate(topic),
+  attach_files: topic => TopicAbility.canAttachFiles(topic),
+  announce: topic => TopicAbility.canAnnounce(topic),
+  add_guests: topic => TopicAbility.canAddGuests(topic),
+  move: topic => TopicAbility.canMove(topic),
+  move_comments: topic => TopicAbility.canMoveComments(topic),
+  update_tags: topic => TopicAbility.canUpdateTags(topic)
 }, (testCase, roles) => {
   let group;
   if (Object.keys(testCase.group).length) {

@@ -174,7 +174,7 @@ onMounted(() => {
         if ( props.discussion.isNew() &&
              (template.recipientAudience === 'group') &&
              props.discussion.groupId &&
-             DiscussionAbility.announce(props.discussion) )
+             DiscussionAbility.canAnnounce(props.discussion) )
         {
           initialRecipients.value = [{
             type: 'audience',

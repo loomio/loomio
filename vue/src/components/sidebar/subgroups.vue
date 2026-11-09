@@ -12,8 +12,8 @@ const props = defineProps(['organization', 'openCounts']);
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
 const mine = computed(() => props.organization.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user())));
-const more = computed(() => props.organization.subgroups().filter(g => GroupAbility.show(g) && !g.membershipFor(Session.user())));
-const canStartSubgroup = computed(() => GroupAbility.addSubgroup(props.organization));
+const more = computed(() => props.organization.subgroups().filter(g => GroupAbility.canShow(g) && !g.membershipFor(Session.user())));
+const canStartSubgroup = computed(() => GroupAbility.canAddSubgroup(props.organization));
 </script>
 
 <template lang="pug">
