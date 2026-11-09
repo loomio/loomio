@@ -1,4 +1,5 @@
 import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import Flash from '@/shared/services/flash';
 import openModal from '@/shared/helpers/open_modal';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -29,7 +30,7 @@ export default new class TopicItemService {
           return topic &&
           !topic_item.model().discardedAt &&
           !topic.lockedAt &&
-          AbilityService.canMoveTopicItems(topic);
+          TopicAbility.moveComments(topic);
         }
       },
 

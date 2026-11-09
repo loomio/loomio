@@ -1,7 +1,7 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 
 export default {
   props: {
@@ -31,7 +31,8 @@ export default {
         find({topicId: this.discussion.topicId}).simplesort('lastReadAt', true).limit(20).data();
     },
     canInvitePeople() {
-      return AbilityService.canAnnounceTopic(this.discussion.topic()) || AbilityService.canAddGuestsTopic(this.discussion.topic());
+      const topic = this.discussion.topic();
+      return (!topic.lockedAt && TopicAbility.announce(topic)) || TopicAbility.addGuests(topic);
     }
   }
 };

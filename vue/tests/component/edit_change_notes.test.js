@@ -86,6 +86,8 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
       isEnabled: () => true,
       adminsInclude: () => true,
       membersInclude: () => true,
+      subscription: {allow_guests: true},
+      parentOrSelf() { return this; },
       chatbots: () => [{id: 91, name: 'Planning webhook'}]
     };
     mocks.users = new Database().addCollection('users');

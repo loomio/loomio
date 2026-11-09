@@ -1,7 +1,7 @@
 <script setup>
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import TopicReaderService from '@/shared/services/topic_reader_service';
@@ -16,7 +16,7 @@ const { topic } = defineProps({
 });
 
 const group = computed(() => topic.group());
-const canAddGuests = computed(() => AbilityService.canAddGuestsTopic(topic));
+const canAddGuests = computed(() => TopicAbility.addGuests(topic));
 const hasSpecifiedVotersOnlyPolls = computed(() =>
   Records.polls.collection.find({topicId: topic.id, specifiedVotersOnly: true}).length > 0
 );

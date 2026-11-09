@@ -5,6 +5,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import PollAbility   from '@/shared/abilities/poll_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
@@ -51,13 +52,6 @@ export default new class AbilityService {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
   }
 
-  canEditTags(topic) {
-    const user = Session.user();
-    return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
-      topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
-        topic.group().membersCanEditDiscussions);
-  }
-
   canTagTopicItem(item) {
     if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
     const topic = item.topic();
@@ -95,17 +89,6 @@ export default new class AbilityService {
     topic_item.pinned && topic.adminsInclude(Session.user());
   }
 
-  canMoveTopic(topic) {
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) || (
-      topic.membersInclude(Session.user()) &&
-      topic.group().membersCanEditDiscussions
-    ))
-  }
-
-  canMoveTopicItems(topic) {
-    return topic.group().isEnabled() && topic.adminsInclude(Session.user());
-  }
-
   canChangeGroupVolume(group) {
     return group.membersInclude(Session.user());
   }
@@ -126,20 +109,21 @@ export default new class AbilityService {
   canAnnounce(model) {
     if (model.isA('group')) { return this.canNotifyGroup(model); }
     if (model.isA('poll')) { return this.canAnnouncePoll(model); }
-    if (model.isA('topic')) { return this.canAnnounceTopic(model); }
+    if (model.isA('topic')) { return !model.lockedAt && TopicAbility.announce(model); }
     return DiscussionAbility.announce(model);
   }
 
   canAddGuests(model) {
     if (model.isA('group')) { return this.canAddMembersToGroup(model); }
     if (model.isA('poll')) { return this.canAddGuestsPoll(model); }
-    if (model.isA('topic')) { return this.canAddGuestsTopic(model); }
+    if (model.isA('topic')) { return TopicAbility.addGuests(model); }
     return this.canAddGuestsDiscussion(model);
   }
 
   canAddGuestsDiscussion(discussion) {
     if (discussion.groupId) {
-      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
+      return discussion.group().isEnabled() && !!discussion.group().parentOrSelf().subscription?.allow_guests &&
+      (discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user())));
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
@@ -164,29 +148,11 @@ export default new class AbilityService {
 
   canAddGuestsPoll(poll) {
     if (poll.groupId) {
-      return poll.group().isEnabled() && (poll.group().adminsInclude(Session.user()) ||
+      return poll.group().isEnabled() && !!poll.group().parentOrSelf().subscription?.allow_guests &&
+      (poll.group().adminsInclude(Session.user()) ||
       (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user())));
     } else {
       return poll.adminsInclude(Session.user());
-    }
-  }
-
-  canAnnounceTopic(topic) {
-    if (topic.lockedAt) { return false; }
-    if (topic.groupId) {
-      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAnnounce && topic.group().membersInclude(Session.user())));
-    } else {
-      return topic.adminsInclude(Session.user());
-    }
-  }
-
-  canAddGuestsTopic(topic) {
-    if (topic.groupId) {
-      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAddGuests && topic.group().membersInclude(Session.user())));
-    } else {
-      return topic.adminsInclude(Session.user());
     }
   }
 

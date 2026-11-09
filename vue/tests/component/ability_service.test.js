@@ -10,6 +10,7 @@ vi.mock('@/shared/services/session', () => ({
 
 import AbilityService from '@/shared/services/ability_service';
 import PollAbility from '@/shared/abilities/poll_ability';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 describe('AbilityService.canCreateTags', () => {
@@ -72,7 +73,7 @@ describe('AbilityService.canCreateTags', () => {
   });
 });
 
-describe('AbilityService.canMoveTopicItems', () => {
+describe('TopicAbility.moveComments', () => {
   let group;
   let topic;
 
@@ -85,20 +86,20 @@ describe('AbilityService.canMoveTopicItems', () => {
   });
 
   it('allows topic administrators to move items', () => {
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(true);
+    expect(TopicAbility.moveComments(topic)).toBe(true);
     expect(topic.adminsInclude).toHaveBeenCalledWith(mocks.currentUser);
   });
 
   it('does not allow ordinary topic members to move items', () => {
     topic.adminsInclude.mockReturnValue(false);
 
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(false);
+    expect(TopicAbility.moveComments(topic)).toBe(false);
   });
 
   it('does not allow moves involving a disabled group', () => {
     group.isEnabled.mockReturnValue(false);
 
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(false);
+    expect(TopicAbility.moveComments(topic)).toBe(false);
     expect(topic.adminsInclude).not.toHaveBeenCalled();
   });
 });

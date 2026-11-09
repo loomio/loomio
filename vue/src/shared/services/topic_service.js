@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
@@ -94,7 +95,7 @@ export default new class TopicService {
         dock: 3,
         collection: 'members',
         canPerform() {
-          return AbilityService.canAnnounceTopic(topic) || AbilityService.canAddGuestsTopic(topic);
+          return (!topic.lockedAt && TopicAbility.announce(topic)) || TopicAbility.addGuests(topic);
         },
         perform() {
           return EventBus.$emit('openModal', {
@@ -240,7 +241,7 @@ export default new class TopicService {
         icon: 'mdi-tag-plus-outline',
         name: 'loomio_tags.select_tags',
         canPerform() {
-          return AbilityService.canEditTags(topic);
+          return TopicAbility.updateTags(topic);
         },
         async perform() {
           let topicItem = topic.createdTopicItem();
@@ -267,7 +268,7 @@ export default new class TopicService {
         name: 'action_dock.move_thread_v2',
         collection: 'actions',
         icon: 'mdi-file-move-outline',
-        canPerform() { return AbilityService.canMoveTopic(topic); },
+        canPerform() { return TopicAbility.move(topic); },
         perform() {
           return openModal({
             component: 'MoveTopicForm',

@@ -2,7 +2,6 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import Session from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import DiscussionService from '@/shared/services/discussion_service';
 import { compact } from 'lodash-es';

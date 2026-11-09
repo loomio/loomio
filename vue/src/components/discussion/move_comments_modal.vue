@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
 import { sortBy, debounce } from 'lodash-es';
@@ -34,7 +34,7 @@ export default {
       this.searchResults = Records.topics.collection.chain()
         .find({groupId: this.groupId, topicableType: 'Discussion', discardedAt: null})
         .where(t => {
-          if (t.id === this.topic.id || !AbilityService.canMoveTopicItems(t)) { return false; }
+          if (t.id === this.topic.id || !TopicAbility.moveComments(t)) { return false; }
           if (!frag) { return true; }
           const disc = t.discussion();
           return disc && disc.title.toLowerCase().includes(frag);

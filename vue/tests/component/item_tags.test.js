@@ -19,6 +19,7 @@ import TopicTagsPicker from '@/components/tags/topic_tags_picker.vue';
 import ThreadTags from '@/components/tags/thread_tags.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 
 describe('item tagging', () => {
   let wrapper;
@@ -287,10 +288,10 @@ describe('item tagging', () => {
   it.each(['Discussion', 'Poll'])('lets context editors tag the opening %s', type => {
     topic.topicableType = type;
     topic.topicable = () => ({authorId: 2});
-    expect(AbilityService.canEditTags(topic)).toBe(false);
+    expect(TopicAbility.updateTags(topic)).toBe(false);
     group.membersCanEditDiscussions = true;
-    expect(AbilityService.canEditTags(topic)).toBe(true);
+    expect(TopicAbility.updateTags(topic)).toBe(true);
     topic.membersInclude = () => false;
-    expect(AbilityService.canEditTags(topic)).toBe(false);
+    expect(TopicAbility.updateTags(topic)).toBe(false);
   });
 });
