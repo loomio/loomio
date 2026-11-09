@@ -125,7 +125,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           return !poll.discardedAt && (poll.anonymous
-            ? AbilityService.canViewAnonymousVoters(poll)
+            ? PollAbility.viewAnonymousVoters(poll)
             : poll.voteCountCast > 0);
         },
         to() { return `/p/${poll.key}/votes`; }
@@ -137,7 +137,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt || (!poll.isOpened() && !poll.isScheduled())) { return false; }
-          return AbilityService.canAddMembersPoll(poll);
+          return PollAbility.addVoters(poll);
         },
         perform() {
           return openModal({
@@ -154,7 +154,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.voteCountEligible < 2)) { return false; }
-          return AbilityService.canAnnouncePoll(poll);
+          return PollAbility.remind(poll);
         },
         perform() {
           return openModal({

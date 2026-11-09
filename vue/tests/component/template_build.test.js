@@ -25,7 +25,7 @@ vi.mock('@/i18n', () => ({ I18n: { global: { t: (key) => key } } }));
 import PollTemplateModel from '@/shared/models/poll_template_model';
 import DiscussionTemplateModel from '@/shared/models/discussion_template_model';
 import TopicModel from '@/shared/models/topic_model';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 
 describe('starting from a template', () => {
   it.each([
@@ -44,7 +44,7 @@ describe('starting from a template', () => {
     const topic = new TopicModel({topicableType: 'Discussion', activePollsCount: 1, ...attributes});
     topic.group = () => ({isEnabled: () => true});
     topic.adminsInclude = () => true;
-    expect(AbilityService.canStartPoll(topic)).toBe(expected);
+    expect(PollAbility.create(topic)).toBe(expected);
   });
 
   it('copies every poll template setting onto the poll', () => {

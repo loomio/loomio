@@ -9,7 +9,7 @@ import { I18n } from '@/i18n';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { addMinutes, intervalToDuration, format, formatDuration, addHours, isAfter } from 'date-fns';
 import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
@@ -254,7 +254,7 @@ const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
 const groupItems = computed(() => {
   return [
     {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
-  ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
+  ].concat(Session.user().groups().filter(g => PollAbility.create(g)).map(g => ({
     title: g.fullName,
     value: g.id
   })));

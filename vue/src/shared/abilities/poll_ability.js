@@ -1,4 +1,5 @@
 import Session from '@/shared/services/session';
+import TopicAbility from '@/shared/abilities/topic_ability';
 
 // Mirrors the server's Ability::Poll using the raw poll state the client
 // receives. Method names match the server actions, and
@@ -26,5 +27,41 @@ export default {
 
   export(poll) {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && poll.resultsAvailable();
+  },
+
+  // Starting a new poll in the topic.
+  create(topic) {
+    if (topic.topicableType === 'Poll') { return false; }
+    if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
+    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
+      (topic.group().membersCanRaiseMotions && topic.membersInclude(Session.user())));
+  },
+
+  announce(poll) {
+    const user = Session.user();
+    if (poll.discardedAt) { return false; }
+    if (poll.groupId) {
+      return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
+        (poll.group().membersCanAnnounce && poll.adminsInclude(user)));
+    } else {
+      return poll.adminsInclude(user) || (!poll.specifiedVotersOnly && poll.membersInclude(user));
+    }
+  },
+
+  remind(poll) {
+    return poll.isOpened() && this.announce(poll);
+  },
+
+  addVoters(poll) {
+    return poll.group().isEnabled() && poll.adminsInclude(Session.user());
+  },
+
+  // Poll guests join the poll's thread, so the thread's rule applies.
+  addGuests(poll) {
+    return TopicAbility.addGuests(poll.topic());
+  },
+
+  viewAnonymousVoters(poll) {
+    return poll.anonymous && poll.showResults();
   }
 };

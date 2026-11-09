@@ -2,7 +2,7 @@
 import { ref, computed, watch, onUnmounted, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
@@ -18,7 +18,7 @@ const { topic } = defineProps({
 const route = useRoute();
 
 const canAddComment = computed(() => CommentAbility.create(topic));
-const canStartPoll = computed(() => AbilityService.canStartPoll(topic));
+const canStartPoll = computed(() => PollAbility.create(topic));
 const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);

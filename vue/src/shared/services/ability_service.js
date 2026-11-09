@@ -75,14 +75,14 @@ export default new class AbilityService {
 
   canAnnounce(model) {
     if (model.isA('group')) { return GroupAbility.notify(model); }
-    if (model.isA('poll')) { return this.canAnnouncePoll(model); }
+    if (model.isA('poll')) { return PollAbility.announce(model); }
     if (model.isA('topic')) { return !model.lockedAt && TopicAbility.announce(model); }
     return DiscussionAbility.announce(model);
   }
 
   canAddGuests(model) {
     if (model.isA('group')) { return GroupAbility.addMembers(model); }
-    if (model.isA('poll')) { return this.canAddGuestsPoll(model); }
+    if (model.isA('poll')) { return PollAbility.addGuests(model); }
     if (model.isA('topic')) { return TopicAbility.addGuests(model); }
     return this.canAddGuestsDiscussion(model);
   }
@@ -94,32 +94,6 @@ export default new class AbilityService {
       (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user())));
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
-    }
-  }
-
-  canAnnouncePoll(poll) {
-    const user = Session.user();
-    if (poll.discardedAt) { return false; }
-    if (poll.groupId) {
-      return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user)))
-    } else {
-      return poll.adminsInclude(user) ||
-      (!poll.specifiedVotersOnly && poll.membersInclude(user));
-    }
-  }
-
-  canAddMembersPoll(poll) {
-    return poll.group().isEnabled() && poll.adminsInclude(Session.user());
-  }
-
-  canAddGuestsPoll(poll) {
-    if (poll.groupId) {
-      return poll.group().isEnabled() && !!poll.group().parentOrSelf().subscription?.allow_guests &&
-      (poll.group().adminsInclude(Session.user()) ||
-      (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user())));
-    } else {
-      return poll.adminsInclude(Session.user());
     }
   }
 
@@ -139,19 +113,6 @@ export default new class AbilityService {
 
   canUntranslate(model) {
     return !!model.translationId
-  }
-
-  canStartPoll(topic) {
-    if (topic.topicableType === 'Poll') { return false; }
-    if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
-           (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
-    )
-  }
-
-  // Matches the server's view_anonymous_voters: everyone who can see the results.
-  canViewAnonymousVoters(poll) {
-    return poll.anonymous && poll.showResults();
   }
 
   canSetPollOutcome(poll) {

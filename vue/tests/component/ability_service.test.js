@@ -36,7 +36,7 @@ describe('AbilityService.canCreateTags', () => {
     };
 
     // Viewing a poll before opening the discussion form must not break tags.
-    AbilityService.canAnnouncePoll({groupId: 1, group: () => group});
+    PollAbility.announce({groupId: 1, group: () => group});
     expect(AbilityService.canCreateTags(group)).toBe(allowed);
   });
 
@@ -59,7 +59,7 @@ describe('AbilityService.canCreateTags', () => {
       membersCanCreateTags: true
     };
 
-    expect(AbilityService.canAnnouncePoll(poll)).toBe(canAnnounce);
+    expect(PollAbility.announce(poll)).toBe(canAnnounce);
     expect(AbilityService.canCreateTags(group)).toBe(true);
 
     mocks.currentUser = {id: 2};

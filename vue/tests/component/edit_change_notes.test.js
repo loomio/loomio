@@ -96,7 +96,7 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     [mocks.user, recipient].forEach(user => mocks.users.insert(user));
     model = reactive(new Model({id: 41, key: 'editing-thread', groupId: 7, topicId: 61, title: 'Planning meeting'}));
     mocks.itemable = model;
-    mocks.topic = {topicable: () => model};
+    mocks.topic = {topicable: () => model, groupId: 7, group: () => mocks.group, adminsInclude: () => true, membersInclude: () => true};
     mocks.fetch.mockImplementation(({path}) => {
       if (path === 'chatbots') return Promise.resolve({});
       if (path === 'announcements/available_audiences') return Promise.resolve({audiences: [
