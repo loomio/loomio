@@ -92,7 +92,12 @@ export default
     },
 
     canJoinGroup() {
-      return !!this.group && !this.group.membersInclude(Session.user()) && GroupAbility.join(this.group);
+      if (!this.group || this.group.membersInclude(Session.user())) { return false; }
+      // Visitors see the button so they can sign in, then the server rule applies.
+      if (!Session.isSignedIn()) {
+        return this.group.isEnabled() && this.group.membershipGrantedUpon === 'request' && GroupAbility.show(this.group);
+      }
+      return GroupAbility.join(this.group);
     },
 
     canRequestMembership() {
