@@ -73,7 +73,7 @@
     "pretty-bytes": "^7.2.0",
     "textarea-caret": "^3.1.0",
     "tiny-emitter": "latest",
-    "vue": "3.5.44",
+    "vue": "3.5.45",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "^11.4.17",
     "vue-router": "^5.4.0",
