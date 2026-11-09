@@ -6,6 +6,7 @@ import PollAbility   from '@/shared/abilities/poll_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import TopicAbility from '@/shared/abilities/topic_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
 import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
@@ -64,32 +65,23 @@ export default new class AbilityService {
       !!(group.membersCanCreateTags && group.membersInclude(user));
   }
 
-  canChangeGroupVolume(group) {
-    return group.membersInclude(Session.user());
-  }
-
   canAdminister(model) {
     if (model.constructor.singular == 'group') {
-      return model.isEnabled() && model.adminsInclude(Session.user());
+      return GroupAbility.update(model);
     } else {
       return model.topic().group().isEnabled() && model.topic().adminsInclude(Session.user());
     }
   }
 
-  canNotifyGroup(model) {
-    return model.isEnabled() && (model.adminsInclude(Session.user()) ||
-    (model.membersCanAnnounce && model.membersInclude(Session.user())));
-  }
-
   canAnnounce(model) {
-    if (model.isA('group')) { return this.canNotifyGroup(model); }
+    if (model.isA('group')) { return GroupAbility.notify(model); }
     if (model.isA('poll')) { return this.canAnnouncePoll(model); }
     if (model.isA('topic')) { return !model.lockedAt && TopicAbility.announce(model); }
     return DiscussionAbility.announce(model);
   }
 
   canAddGuests(model) {
-    if (model.isA('group')) { return this.canAddMembersToGroup(model); }
+    if (model.isA('group')) { return GroupAbility.addMembers(model); }
     if (model.isA('poll')) { return this.canAddGuestsPoll(model); }
     if (model.isA('topic')) { return TopicAbility.addGuests(model); }
     return this.canAddGuestsDiscussion(model);
@@ -131,27 +123,8 @@ export default new class AbilityService {
     }
   }
 
-  canAddMembersToGroup(group) {
-    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanAddMembers));
-  }
-
-  canCreateSubgroups(group) {
-    return group.isEnabled() && group.isParent() &&
-    (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
-  }
-
-  canEditGroup(group) {
-    return group.isEnabled() && group.adminsInclude(Session.user());
-  }
-
   canLeaveGroup(group) {
     return (Session.user().membershipFor(group) != null);
-  }
-
-  canDeleteGroup(group) {
-    return group.adminsInclude(Session.user());
   }
 
   canRemoveMembership(membership) {
@@ -167,35 +140,8 @@ export default new class AbilityService {
     return membership && membership.group().isEnabled() && !membership.acceptedAt && this.canAdminister(membership.group());
   }
 
-  canManageMembershipRequests(group) {
-    return group.isEnabled() && ((group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user()));
-  }
-
   canStartGroups() {
     return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
-  }
-
-  canViewGroup(group) {
-    return !group.isDiscarded() && (group.isVisibleToPublic ||
-      group.membersInclude(Session.user()) ||
-      (group.isVisibleToParentMembers && group.parent().membersInclude(Session.user())));
-  }
-
-  canViewPrivateContent(group) {
-    return group.membersInclude(Session.user());
-  }
-
-  canJoinGroup(group) {
-    if (!group.isEnabled() || !this.canViewGroup(group) || group.membersInclude(Session.user())) { return false; }
-    return (group.membershipGrantedUpon === 'request') || group.parentOrSelf().adminsInclude(Session.user());
-  }
-
-  canRequestMembership(group) {
-    return group.isEnabled() &&
-    (group.membershipGrantedUpon === 'approval') &&
-    this.canViewGroup(group) &&
-    !group.membersInclude(Session.user()) &&
-    !this.canJoinGroup(group);
   }
 
   canTranslate(model) {

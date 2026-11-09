@@ -10,6 +10,7 @@ vi.mock('@/shared/services/session', () => ({
 
 import AbilityService from '@/shared/services/ability_service';
 import PollAbility from '@/shared/abilities/poll_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
 import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
@@ -104,13 +105,16 @@ describe('TopicAbility.moveComments', () => {
   });
 });
 
-describe('AbilityService.canJoinGroup', () => {
+// Joining is offered only to non-members; GroupAbility.join matches the server.
+describe('GroupAbility.join', () => {
+  beforeEach(() => { mocks.currentUser = {id: 1, emailVerified: true}; });
+
   it.each([
     ['parent member', true, false, false, true, false, true],
     ['outsider', false, false, false, true, false, false],
     ['outsider in public subgroup', false, false, false, true, true, true],
     ['parent administrator', true, true, false, true, false, true],
-    ['existing subgroup member', true, false, true, true, false, false],
+    ['existing subgroup member', true, false, true, true, false, true],
     ['discarded subgroup', true, false, false, false, false, false]
   ])('checks immediate joining for a %s', (_role, parentMember, parentAdmin, member, enabled, publicVisibility, allowed) => {
     const parent = {membersInclude: () => parentMember, adminsInclude: () => parentAdmin};
@@ -127,8 +131,8 @@ describe('AbilityService.canJoinGroup', () => {
       membershipGrantedUpon: 'request'
     };
 
-    expect(AbilityService.canJoinGroup(group)).toBe(allowed);
-    expect(AbilityService.canRequestMembership(group)).toBe(false);
+    expect(GroupAbility.join(group)).toBe(allowed);
+    expect(GroupAbility.requestMembership(group)).toBe(false);
   });
 
   it('does not allow ordinary parent members to self join a secret subgroup', () => {
@@ -146,7 +150,7 @@ describe('AbilityService.canJoinGroup', () => {
       membershipGrantedUpon: 'invitation'
     };
 
-    expect(AbilityService.canJoinGroup(group)).toBe(false);
+    expect(GroupAbility.join(group)).toBe(false);
   });
 });
 

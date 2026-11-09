@@ -2,7 +2,7 @@
 import Session         from '@/shared/services/session';
 import Records         from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
-import AbilityService  from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Flash           from '@/shared/services/flash';
 import { useI18n }     from 'vue-i18n';
 
@@ -92,13 +92,14 @@ export default
     },
 
     canJoinGroup() {
-      return this.group && !!AbilityService.canJoinGroup(this.group);
+      return !!this.group && !this.group.membersInclude(Session.user()) && GroupAbility.join(this.group);
     },
 
     canRequestMembership() {
       return this.membershipRequestLoaded &&
         !this.wasIgnored &&
-        !!AbilityService.canRequestMembership(this.group);
+        this.group.isEnabled() && !this.group.membersInclude(Session.user()) && !this.canJoinGroup &&
+        GroupAbility.requestMembership(this.group);
     }
   }
 };

@@ -1,6 +1,6 @@
 <script lang="js">
 import Records            from '@/shared/services/records';
-import AbilityService     from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import EventBus           from '@/shared/services/event_bus';
 import PageLoader         from '@/shared/services/page_loader';
@@ -200,7 +200,7 @@ export default
     },
 
     canViewPrivateContent() {
-      return AbilityService.canViewPrivateContent(this.group);
+      return GroupAbility.seePrivateContent(this.group);
     },
 
     canStartThread() {

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { mdiPlus } from '@mdi/js';
 
@@ -12,8 +12,8 @@ const props = defineProps(['organization', 'openCounts']);
 const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
 const mine = computed(() => props.organization.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user())));
-const more = computed(() => props.organization.subgroups().filter(g => AbilityService.canViewGroup(g) && !g.membershipFor(Session.user())));
-const canStartSubgroup = computed(() => AbilityService.canCreateSubgroups(props.organization));
+const more = computed(() => props.organization.subgroups().filter(g => GroupAbility.show(g) && !g.membershipFor(Session.user())));
+const canStartSubgroup = computed(() => GroupAbility.addSubgroup(props.organization));
 </script>
 
 <template lang="pug">

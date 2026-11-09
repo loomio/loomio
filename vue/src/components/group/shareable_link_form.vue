@@ -1,6 +1,6 @@
 <script lang="js">
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Flash   from '@/shared/services/flash';
 
 export default
@@ -39,7 +39,7 @@ export default
     },
 
     canAddMembers() {
-      return AbilityService.canAddMembersToGroup(this.group) && !this.pending;
+      return GroupAbility.addMembers(this.group) && !this.pending;
     }
   },
 

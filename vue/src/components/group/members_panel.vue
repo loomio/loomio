@@ -1,6 +1,7 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
@@ -189,7 +190,7 @@ export default
     },
 
     canAddMembers() {
-      return AbilityService.canAddMembersToGroup(this.group);
+      return GroupAbility.addMembers(this.group);
     },
     canManageWeights() {
       return AbilityService.canAdminister(this.group);

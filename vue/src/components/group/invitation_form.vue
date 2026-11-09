@@ -4,7 +4,7 @@ import EventBus from '@/shared/services/event_bus';
 import AppConfig      from '@/shared/services/app_config';
 import SubscriptionService from '@/shared/services/subscription_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Flash   from '@/shared/services/flash';
 import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
@@ -115,7 +115,7 @@ export default
       return this.group.memberIds();
     },
     invitableGroups() {
-      return this.group.parentOrSelf().selfAndSubgroups().filter(g => AbilityService.canAddMembersToGroup(g));
+      return this.group.parentOrSelf().selfAndSubgroups().filter(g => GroupAbility.addMembers(g));
     },
     tooManyInvitations() {
       return this.subscription.max_members && (this.invitationsRemaining < 0);

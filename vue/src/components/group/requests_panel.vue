@@ -1,6 +1,6 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import { orderBy } from 'lodash-es';
@@ -21,7 +21,7 @@ export default
     Records.groups.findOrFetch(this.$route.params.key).then(group => {
       this.group = group;
 
-      if (AbilityService.canManageMembershipRequests(this.group)) {
+      if (GroupAbility.manageMembershipRequests(this.group)) {
         Records.membershipRequests.fetchPendingByGroup(this.group.key, {per: 100});
         Records.membershipRequests.fetchPreviousByGroup(this.group.key, {per: 100});
       }
@@ -32,7 +32,7 @@ export default
 
   computed: {
     requests() {
-      if (!this.group || !AbilityService.canManageMembershipRequests(this.group)) { return []; }
+      if (!this.group || !GroupAbility.manageMembershipRequests(this.group)) { return []; }
       return this.group.membershipRequests();
     },
 

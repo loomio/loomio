@@ -1,6 +1,6 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import { slice, orderBy } from 'lodash-es';
 
 export default
@@ -28,7 +28,7 @@ export default
     },
 
     canManageMembershipRequests() {
-      return AbilityService.canManageMembershipRequests(this.group);
+      return GroupAbility.manageMembershipRequests(this.group);
     }
   }
 };
