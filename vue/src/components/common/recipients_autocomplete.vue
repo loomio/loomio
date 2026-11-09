@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records';
 import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import NotificationsCount from './notifications_count';
 import Session from '@/shared/services/session';
 
@@ -314,7 +315,7 @@ export default {
   },
 
   computed: {
-    canAnnounceDiscussion() { return AbilityService.canAnnounceDiscussion(this.model) },
+    canAnnounceDiscussion() { return DiscussionAbility.announce(this.model) },
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },

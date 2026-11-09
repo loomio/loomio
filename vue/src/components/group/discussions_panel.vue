@@ -1,6 +1,7 @@
 <script lang="js">
 import Records            from '@/shared/services/records';
 import AbilityService     from '@/shared/services/ability_service';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import EventBus           from '@/shared/services/event_bus';
 import PageLoader         from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
@@ -203,7 +204,7 @@ export default
     },
 
     canStartThread() {
-      return AbilityService.canStartThread(this.group);
+      return DiscussionAbility.create(this.group);
     },
 
     isLoggedIn() {

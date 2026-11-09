@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -218,7 +219,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         // collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Discussion' && AbilityService.canEditDiscussion(topic.topicable());
+          return topic.topicableType === 'Discussion' && DiscussionAbility.update(topic.topicable());
   },
 
         to() { return `/d/${topic.topicable().key}/edit`; }

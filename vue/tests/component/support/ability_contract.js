@@ -54,18 +54,19 @@ export function abilityContract(name, actions, build) {
     afterAll(() => vi.useRealTimers());
 
     it('covers every recorded server action', () => {
-      expect(Object.keys(actions).sort()).toEqual(Object.keys(contract.cases[0].expected).sort());
+      const recorded = new Set(contract.cases.flatMap(testCase => Object.keys(testCase.expected)));
+      expect(Object.keys(actions).sort()).toEqual([...recorded].sort());
     });
 
     it.each(contract.cases.map(testCase => [testCase.name, testCase]))('%s', (_name, testCase) => {
       session.current = userFor(testCase.roles);
       const subject = build(testCase, testCase.roles);
-      const differences = Object.keys(actions).flatMap(action => {
+      const differences = Object.keys(testCase.expected).flatMap(action => {
         const client = !!actions[action](subject);
         const server = testCase.expected[action];
         return client === server ? [] : [`${action}: server ${server}, client ${client}`];
       });
-      expect(differences.join('; ')).toBe('');
+      if (differences.length) { throw new Error(differences.join('; ')); }
     });
   });
 }

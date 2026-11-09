@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
@@ -20,7 +21,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         dock: 2,
         canPerform() {
-          return group.handle && AbilityService.canStartThread(group) && AppConfig.features.app.thread_from_mail;
+          return group.handle && DiscussionAbility.create(group) && AppConfig.features.app.thread_from_mail;
         },
         perform() {
           EventBus.$emit('openModal', {

@@ -4,6 +4,7 @@ import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import PollAbility   from '@/shared/abilities/poll_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import {intersection} from 'lodash-es';
 
 export default new class AbilityService {
@@ -40,7 +41,7 @@ export default new class AbilityService {
   canEdit(model) {
     if (!model) { return false; }
 
-    return (model.isA('discussion') && this.canEditDiscussion(model)) ||
+    return (model.isA('discussion') && DiscussionAbility.update(model)) ||
     (model.isA('comment') && CommentAbility.update(model)) ||
     (model.isA('poll') && PollAbility.update(model)) ||
     (model.isA('stance') && this.canEditStance(model));
@@ -48,12 +49,6 @@ export default new class AbilityService {
 
   canEditStance(stance) {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
-  }
-
-  canEditDiscussion(discussion) {
-    const topic = discussion.topic();
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
-    (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user())));
   }
 
   canEditTags(topic) {
@@ -123,22 +118,6 @@ export default new class AbilityService {
     }
   }
 
-  canStartThread(group) {
-    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions) ||
-    (this.isEmailVerified() && !group.privacyIsSecret() && group.nonMembersCanStartDiscussions && !group.membersInclude(Session.user())));
-  }
-
-  canAnnounceDiscussion(discussion) {
-    if (discussion.discardedAt) { return false; }
-    if (discussion.groupId) {
-      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
-      (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user())));
-    } else {
-      return !discussion.id || discussion.topic().adminsInclude(Session.user());
-    }
-  }
-
   canNotifyGroup(model) {
     return model.isEnabled() && (model.adminsInclude(Session.user()) ||
     (model.membersCanAnnounce && model.membersInclude(Session.user())));
@@ -148,7 +127,7 @@ export default new class AbilityService {
     if (model.isA('group')) { return this.canNotifyGroup(model); }
     if (model.isA('poll')) { return this.canAnnouncePoll(model); }
     if (model.isA('topic')) { return this.canAnnounceTopic(model); }
-    return this.canAnnounceDiscussion(model);
+    return DiscussionAbility.announce(model);
   }
 
   canAddGuests(model) {
