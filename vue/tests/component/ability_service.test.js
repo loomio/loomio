@@ -9,6 +9,7 @@ vi.mock('@/shared/services/session', () => ({
 }));
 
 import AbilityService from '@/shared/services/ability_service';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
 import TopicAbility from '@/shared/abilities/topic_ability';
@@ -178,6 +179,6 @@ describe('poll actions in a locked thread', () => {
   });
 
   it('still lets a poll admin set an outcome in a locked thread, as the server does', () => {
-    expect(AbilityService.canSetPollOutcome(poll({locked: true, closed: true}))).toBeTruthy();
+    expect(OutcomeAbility.create(poll({locked: true, closed: true}))).toBeTruthy();
   });
 });

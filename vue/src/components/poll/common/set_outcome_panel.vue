@@ -1,6 +1,6 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import Session        from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import PollService from '@/shared/services/poll_service';
@@ -17,7 +17,7 @@ export default {
 
   methods: {
     showPanel() {
-      return AbilityService.canSetPollOutcome(this.poll);
+      return OutcomeAbility.create(this.poll);
     },
 
     openOutcomeForm() {

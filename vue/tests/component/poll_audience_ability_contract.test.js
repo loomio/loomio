@@ -6,6 +6,7 @@ vi.mock('@/shared/services/records', () => ({default: {}}));
 vi.mock('@/i18n', () => ({I18n: {global: {t: key => key}}}));
 
 import PollAbility from '@/shared/abilities/poll_ability';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import PollModel from '@/shared/models/poll_model';
 import NullGroupModel from '@/shared/models/null_group_model';
 
@@ -15,7 +16,8 @@ abilityContract('poll_audience_abilities', {
   remind: poll => PollAbility.remind(poll),
   add_voters: poll => PollAbility.addVoters(poll),
   add_guests: poll => PollAbility.addGuests(poll),
-  view_anonymous_voters: poll => PollAbility.viewAnonymousVoters(poll)
+  view_anonymous_voters: poll => PollAbility.viewAnonymousVoters(poll),
+  create_outcome: poll => OutcomeAbility.create(poll)
 }, (testCase, roles) => {
   let group;
   if (Object.keys(testCase.group).length) {

@@ -9,8 +9,8 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
 
   POLL_FIELDS = %w[group_id closed_at closing_at opened_at opening_at discarded_at hide_results anonymous specified_voters_only].freeze
   SETTINGS = {
-    "permissive" => {members_can_announce: true, members_can_add_guests: true, members_can_raise_motions: true},
-    "restrictive" => {members_can_announce: false, members_can_add_guests: false, members_can_raise_motions: false}
+    "permissive" => {members_can_announce: true, members_can_add_guests: true, members_can_raise_motions: true, members_can_edit_discussions: true},
+    "restrictive" => {members_can_announce: false, members_can_add_guests: false, members_can_raise_motions: false, members_can_edit_discussions: false}
   }.freeze
   STATES = %w[open closed closed_anonymous].freeze
 
@@ -65,7 +65,8 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
           announce: ability.can?(:announce, poll),
           remind: ability.can?(:remind, poll),
           add_voters: ability.can?(:add_voters, poll),
-          add_guests: ability.can?(:add_guests, poll.topic)
+          add_guests: ability.can?(:add_guests, poll.topic),
+          create_outcome: ability.can?(:create, Outcome.new(poll: poll, author: user))
         }.merge(visible_answers(ability, poll))
       }
     end

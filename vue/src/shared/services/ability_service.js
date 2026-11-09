@@ -115,11 +115,4 @@ export default new class AbilityService {
     return !!model.translationId
   }
 
-  canSetPollOutcome(poll) {
-    return poll.group().isEnabled() &&
-    !poll.discardedAt &&
-    !!poll.closedAt &&
-    (poll.adminsInclude(Session.user()) ||
-     (poll.group().membersCanEditDiscussions && poll.membersInclude(Session.user())));
-  }
 }
