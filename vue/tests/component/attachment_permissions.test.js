@@ -13,7 +13,10 @@ import { useAttaching } from '@/components/lmo_textarea/composables/useAttaching
 import { contentExtensions } from '@/components/lmo_textarea/content_extensions';
 import { Editor } from '@tiptap/core';
 
-const topic = {attachmentsAdminOnly: true, adminsInclude: user => user.id === 1};
+const topic = {
+  attachmentsAdminOnly: true, adminsInclude: user => user.id === 1, membersInclude: () => true,
+  group: () => ({isEnabled: () => true})
+};
 const modelFor = kind => ({
   constructor: {singular: kind}, attachments: [], files: null, imageFiles: null,
   topicId: 7, topic: () => topic, poll: () => ({topic: () => topic})

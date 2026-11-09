@@ -110,7 +110,7 @@ export default new class GroupService {
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
         menu: true,
-        canPerform() { return AbilityService.canAdminister(group); },
+        canPerform() { return GroupAbility.update(group); },
         perform() {
           EventBus.$emit('openModal', {
             component: 'TagsSelect',

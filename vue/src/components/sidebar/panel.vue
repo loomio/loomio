@@ -10,7 +10,7 @@ import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 
@@ -53,7 +53,7 @@ const showTemplateGallery = computed(() => AppConfig.features.app.template_galle
 
 const user = computed(() => Session.user());
 const isSignedIn = computed(() => Session.isSignedIn());
-const canStartGroups = computed(() => AbilityService.canStartGroups());
+const canStartGroups = computed(() => GroupAbility.create());
 
 const organizations = computed(() => {
   const orphanOrganizations = Session.user().orphanSubgroups().map(subgroup => {
@@ -117,7 +117,7 @@ EventBus.$on('currentComponent', data => {
 const fetchData = () => {
   loadGroups().then(() => {
     if (route.path === "/dashboard") {
-      if (Session.user().groups().length === 0 && AbilityService.canStartGroups()) {
+      if (Session.user().groups().length === 0 && GroupAbility.create()) {
         router.replace("/g/new");
       }
       if (Session.user().groups().length === 1) {

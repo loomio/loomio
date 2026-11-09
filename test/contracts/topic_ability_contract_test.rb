@@ -7,7 +7,7 @@ require_relative "ability_contract_helper"
 class TopicAbilityContractTest < ActiveSupport::TestCase
   include AbilityContractHelper
 
-  ACTIONS = %i[announce add_guests move move_comments update_tags].freeze
+  ACTIONS = %i[update announce add_guests move move_comments update_tags attach_files].freeze
   GROUP_SETTINGS = {
     "permissive" => {members_can_announce: true, members_can_add_guests: true, members_can_edit_discussions: true},
     "restrictive" => {members_can_announce: false, members_can_add_guests: false, members_can_edit_discussions: false}
@@ -34,7 +34,8 @@ class TopicAbilityContractTest < ActiveSupport::TestCase
       topic.group.update_columns(group_settings)
       Subscription.for(topic.group).update_columns(allow_guests: guests)
     end
-    topic.update_columns(locked_at: (locked ? 1.day.ago : nil), discarded_at: (discarded ? 1.hour.ago : nil))
+    topic.update_columns(locked_at: (locked ? 1.day.ago : nil), discarded_at: (discarded ? 1.hour.ago : nil),
+                         attachments_admin_only: setting == "restrictive")
     discussion = topic.topicable
     original_author_id = discussion.author_id
 
@@ -46,7 +47,7 @@ class TopicAbilityContractTest < ActiveSupport::TestCase
         name: "#{role} #{topic_name} #{setting}#{" guests-#{guests}" unless guests.nil?}" \
               "#{' locked' if locked}#{' discarded' if discarded} #{authorship} thread",
         roles: role_facts(user, topic),
-        topic: raw(topic, %i[locked_at discarded_at group_id]),
+        topic: raw(topic, %i[locked_at discarded_at group_id attachments_admin_only]),
         topicable: {author_id: discussion.author_id},
         group: topic.group_id ? raw(topic.group, group_settings.keys).merge(allow_guests: guests) : {},
         expected: answers(user, topic, ACTIONS)

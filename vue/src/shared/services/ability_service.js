@@ -26,7 +26,7 @@ export default new class AbilityService {
     if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }
     if (['discussion', 'poll'].includes(kind) && !model.topicId) { return true; }
     const topic = kind === 'outcome' ? model.poll().topic() : model.topic();
-    return !topic.attachmentsAdminOnly || topic.adminsInclude(Session.user());
+    return TopicAbility.attachFiles(topic);
   }
 
   canEdit(model) {
@@ -40,14 +40,6 @@ export default new class AbilityService {
 
   canEditStance(stance) {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
-  }
-
-  canAdminister(model) {
-    if (model.constructor.singular == 'group') {
-      return GroupAbility.update(model);
-    } else {
-      return model.topic().group().isEnabled() && model.topic().adminsInclude(Session.user());
-    }
   }
 
   canAnnounce(model) {
@@ -72,10 +64,6 @@ export default new class AbilityService {
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
-  }
-
-  canStartGroups() {
-    return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
   }
 
   canTranslate(model) {

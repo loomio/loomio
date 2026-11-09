@@ -1,3 +1,4 @@
+import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 
 // Mirrors the server's Ability::Group, and MembershipRequest :create, using the
@@ -6,6 +7,12 @@ import Session from '@/shared/services/session';
 const isServerAdmin = () => !!Session.user().isAdmin;
 
 export default {
+  // Starting a new top-level group.
+  create() {
+    const user = Session.user();
+    return Session.isSignedIn() && !!user.emailVerified && (AppConfig.features.app.create_group || !!user.isAdmin);
+  },
+
   show(group) {
     return !group.isDiscarded() && (group.isVisibleToPublic ||
       group.membersInclude(Session.user()) ||

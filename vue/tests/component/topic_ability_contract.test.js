@@ -9,6 +9,8 @@ import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 abilityContract('topic_abilities', {
+  update: topic => TopicAbility.update(topic),
+  attach_files: topic => TopicAbility.attachFiles(topic),
   announce: topic => TopicAbility.announce(topic),
   add_guests: topic => TopicAbility.addGuests(topic),
   move: topic => TopicAbility.move(topic),

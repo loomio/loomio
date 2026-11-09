@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { debounce } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import Records from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Flash from '@/shared/services/flash';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { voteWeightValid } from '@/shared/helpers/vote_weight';
@@ -123,7 +123,7 @@ async function resetWeights() {
 onMounted(async () => {
   try {
     group.value = await Records.groups.findOrFetch(route.params.key);
-    if (!AbilityService.canAdminister(group.value)) {
+    if (!GroupAbility.update(group.value)) {
       await router.replace(membersPath.value);
       return;
     }

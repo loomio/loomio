@@ -3,6 +3,15 @@ import Session from '@/shared/services/session';
 // Mirrors the server's Ability::Topic using the raw state the client
 // receives. test/contracts/topic_ability_contract_test.rb checks these rules.
 export default {
+  update(topic) {
+    return topic.group().isEnabled() && topic.adminsInclude(Session.user());
+  },
+
+  attachFiles(topic) {
+    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
+      (!topic.attachmentsAdminOnly && topic.membersInclude(Session.user())));
+  },
+
   announce(topic) {
     if (topic.groupId) {
       return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||

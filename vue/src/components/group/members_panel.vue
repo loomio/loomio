@@ -1,6 +1,5 @@
 <script lang="js">
 import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
 import GroupAbility from '@/shared/abilities/group_ability';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
@@ -193,7 +192,7 @@ export default
       return GroupAbility.addMembers(this.group);
     },
     canManageWeights() {
-      return AbilityService.canAdminister(this.group);
+      return GroupAbility.update(this.group);
     },
 
     showAdminWarning() {
