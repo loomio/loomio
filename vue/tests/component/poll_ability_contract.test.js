@@ -41,7 +41,7 @@ function buildPoll(testCase) {
   poll.topic = () => topic;
   poll.group = () => group;
   poll.adminsInclude = () => testCase.role === 'admin';
-  poll.membersInclude = () => true;
+  poll.membersInclude = () => testCase.role !== 'visitor';
   return poll;
 }
 

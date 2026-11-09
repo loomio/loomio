@@ -20,8 +20,9 @@ module Ability::Poll
       )
     end
 
+    # Thread members only, so visitors to public threads cannot export.
     can [:export], ::Poll do |poll|
-      next false unless user.can?(:show, poll)
+      next false unless user.can?(:show, poll) && poll.topic.members_include?(user)
 
       poll.results_available?
     end
