@@ -163,6 +163,34 @@ describe.each(modelCases)('$kind edit notes and Notify controls', ({kind, Model,
     }));
   }
 
+  if (kind === 'discussion') {
+    it('lists, counts and expands the current group before saving', async () => {
+      model.id = null;
+      model.topicId = null;
+      mocks.fetch.mockResolvedValue({audiences: [{id: 'group', kind: 'group', name: 'Planning group', size: 3}]});
+      await mountFields();
+
+      const audienceRequest = mocks.fetch.mock.calls.find(([request]) => request.path === 'announcements/available_audiences')[0];
+      expect(audienceRequest.params).toMatchObject({group_id: 7});
+
+      await selectSuggestion('Planning group');
+      expect(model.recipientAudience).toBe('group');
+      expect(mocks.count).toHaveBeenLastCalledWith(expect.objectContaining({
+        params: expect.objectContaining({group_id: 7, recipient_audience: 'group'})
+      }));
+
+      mocks.fetch.mockResolvedValue({users: [{id: recipient.id}]});
+      await wrapper.get('.chip--select-multi').trigger('click');
+      await flushPromises();
+      expect(mocks.fetch).toHaveBeenLastCalledWith(expect.objectContaining({
+        path: 'announcements/audience',
+        params: expect.objectContaining({group_id: 7, recipient_audience: 'group'})
+      }));
+      expect(model.recipientUserIds).toEqual([recipient.id]);
+      expect(model.recipientAudience).toBeUndefined();
+    });
+  }
+
   it('sends the typed change note through the real model save path with nobody selected', async () => {
     await mountFields();
     expect(wrapper.text()).toContain("What's changed?");

@@ -11,5 +11,7 @@
 
 ## Pull requests
 
+- For changes to translated documentation, get user approval of the English changes before translating, then complete translations, freshness checks, and the full documentation build before opening a pull request, including a draft. Follow [user_manual.md](user_manual.md) and [user_manual_translations.md](user_manual_translations.md).
+
 - Include a `Performance impact` section in pull-requests that have significant potential for changing performance. Explain the effects that matter to a web application: database query count and cost, request and background-job latency, response and realtime payload size, server memory, and browser requests, processing, and rendering. State when there is no meaningful impact.
 - Describe both ordinary use and the worst case, including how cost scales with page size, conversation depth, or other relevant inputs and whether it is bounded. Use measurements when practical; distinguish measured results from estimates and identify what was not measured. Do not describe batched queries as a constant overhead when the number of batches grows with the input.

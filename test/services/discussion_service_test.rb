@@ -11,6 +11,25 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   # -- Create --
 
+  test "creating a discussion notifies the selected current group" do
+    discussion = DiscussionService.create(params: {
+      title: "Group invitation",
+      group_id: @group.id,
+      recipient_audience: "group"
+    }, actor: @admin)
+
+    notification = Notification.find_by!(kind: "new_discussion", subject: discussion.created_topic_item)
+    expected_ids = @group.members.active.humans.where.not(id: @admin.id).pluck(:id).sort
+    assert_equal expected_ids, notification.recipient_user_ids.sort
+    RouteNotificationDeliveriesWorker.perform_now(notification.id)
+    assert_equal expected_ids, notification.notification_deliveries.where(channel: "in_app").pluck(:recipient_id).sort
+    email_ids = notification.notification_deliveries.where(channel: "email").pluck(:recipient_id)
+    assert_includes email_ids, users(:member_normal).id
+    assert_includes email_ids, users(:member_loud).id
+    refute_includes email_ids, users(:member_quiet).id
+    refute_includes email_ids, @admin.id
+  end
+
   test "creates a discussion" do
     topic_item = nil
     discussion = DiscussionService.create(params: {
