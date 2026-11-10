@@ -1,6 +1,23 @@
 require "test_helper"
 
 class HourlyTaskJobTest < ActiveSupport::TestCase
+  test "expires ended-session history without depending on optional orphan cleanup" do
+    cleanup_before = ENV.delete("CLEANUP_ENABLED")
+    retention_before = ENV.delete("LOOMIO_SESSION_RETENTION_DAYS")
+    freeze_time do
+      expired = users(:user).sessions.create!(created_at: 90.days.ago, revoked_at: 60.days.ago)
+      retained = users(:user).sessions.create!(created_at: 90.days.ago, revoked_at: 1.day.ago)
+
+      HourlyTaskJob.perform_now
+
+      refute Session.exists?(expired.id)
+      assert Session.exists?(retained.id)
+    end
+  ensure
+    cleanup_before.nil? ? ENV.delete("CLEANUP_ENABLED") : ENV["CLEANUP_ENABLED"] = cleanup_before
+    retention_before.nil? ? ENV.delete("LOOMIO_SESSION_RETENTION_DAYS") : ENV["LOOMIO_SESSION_RETENTION_DAYS"] = retention_before
+  end
+
   test "deletes expired login tokens and retains valid login tokens" do
     valid_token = LoginToken.create!(
       user: users(:user),

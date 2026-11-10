@@ -1,10 +1,10 @@
 ---
 title: Se connecter
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 418dd46405279971
   sign-in-with-a-passkey: 1ec5fce659a05b13
@@ -22,7 +22,7 @@ generated:
   create-an-account: 623b824964a0e7bf
   sign-in-with-google: 10cf1f6cda167ff8
   other-loomio-sites: 6381b4f0de586051
-  sign-out: 6430dcfafc8035a1
+  sign-out: dba4dfc4fa0132c9
 title_source: 824a1d703ce676bb
 title_generated: 0ac3d2cb30052ced
 ---
@@ -94,3 +94,5 @@ Un site privé utilisant uniquement l’authentification unique (SSO) affiche se
 ## Se déconnecter
 
 Ouvrez la barre latérale, sélectionnez votre nom, puis sélectionnez **Se déconnecter**. Sur un ordinateur partagé, déconnectez-vous lorsque vous avez terminé plutôt que de fermer uniquement l’onglet du navigateur.
+
+La déconnexion met immédiatement fin à la session de ce navigateur. Loomio conserve l’adresse IP, les informations du navigateur ainsi que les heures de début et de fin de la session pendant 60 jours par défaut pour les enquêtes de sécurité. Les responsables de sites privés peuvent configurer cette durée. La suppression définitive de votre compte supprime cet historique des sessions.

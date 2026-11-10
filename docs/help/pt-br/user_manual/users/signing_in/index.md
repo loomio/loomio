@@ -1,10 +1,10 @@
 ---
 title: Entrar
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: fba8fb9d2e1684da
   sign-in-with-a-passkey: 68ce1d79aca17621
@@ -22,7 +22,7 @@ generated:
   create-an-account: 68698119d0bd0e92
   sign-in-with-google: 7d4e8b7f38c94f97
   other-loomio-sites: 1f2bf224481dc4c5
-  sign-out: 5cc8716021591f75
+  sign-out: da516a62d2e53475
 title_source: 824a1d703ce676bb
 title_generated: 4105811890aee724
 ---
@@ -94,3 +94,5 @@ Um site privado que permite acesso somente por SSO mostra apenas a opção de ac
 ## Sair
 
 Abra a barra lateral, selecione seu nome e selecione **Sair**. Em um computador compartilhado, saia da conta quando terminar, em vez de apenas fechar a aba do navegador.
+
+Sair da conta encerra imediatamente a sessão nesse navegador. Por padrão, o Loomio mantém o endereço IP, as informações do navegador e os horários de início e término da sessão por 60 dias para investigações de segurança. Os responsáveis por sites privados podem configurar esse período. A exclusão permanente da sua conta remove esse histórico de sessões.

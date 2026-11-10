@@ -65,3 +65,5 @@ An SSO-only private site shows only its organization sign-in option. It does not
 ## Sign out
 
 Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.
+
+Signing out ends that browser's session immediately. Loomio retains the session's IP address, browser information, and start and end times for security investigations for 60 days by default. Private-site operators can configure this period. Permanently deleting your account removes this session history.

@@ -27,7 +27,7 @@ class CollabDocumentAuthService
     session_id = ActionDispatch::Request.new(env).cookie_jar.signed[:session_id]
     return if session_id.blank?
 
-    user = Session.includes(:user).find_by(id: session_id)&.user
+    user = Session.active.includes(:user).find_by(id: session_id)&.user
     user if user&.active?
   end
 end

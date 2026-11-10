@@ -17,7 +17,7 @@ module ApplicationCable
     end
 
     def user_from_session_cookie
-      Session.includes(:user).find_by(id: cookies.signed[:session_id])&.user if cookies.signed[:session_id]
+      Session.active.includes(:user).find_by(id: cookies.signed[:session_id])&.user if cookies.signed[:session_id]
     end
   end
 end

@@ -19,6 +19,9 @@ class PushSubscriptionService
 
       PushSubscription.transaction do
         user.lock!
+        session.lock!
+        raise ActiveRecord::RecordNotFound unless session.active?
+
         scope = user.push_subscriptions.active.lock
         subscription = if endpoint.present?
           scope.find_by!(endpoint_digest: endpoint_digest(endpoint))
@@ -48,6 +51,7 @@ class PushSubscriptionService
         PushSubscription.transaction do
           user.lock!
           session.lock!
+          raise ActiveRecord::RecordNotFound unless session.active?
 
           if explicit_enable
             subscription = PushSubscription.lock.find_by(endpoint_digest: digest, revoked_at: nil)

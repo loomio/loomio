@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_09_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_10_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -859,9 +859,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_09_000001) do
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
+    t.datetime "revoked_at"
     t.datetime "updated_at", null: false
     t.string "user_agent"
     t.bigint "user_id", null: false
+    t.index ["revoked_at"], name: "index_sessions_on_revoked_at", where: "(revoked_at IS NOT NULL)"
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
