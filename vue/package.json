@@ -91,7 +91,7 @@
     "jsdom": "^31.0.0",
     "pagefind": "1.6.0",
     "pug": "latest",
-    "sass-embedded": "^1.107.1",
+    "sass-embedded": "^1.108.0",
     "unplugin-vue-components": "latest",
     "vite": "8.3.6",
     "vite-plugin-env-compatible": "latest",
