@@ -2007,6 +2007,11 @@ ru:
     name_gte_weighted_votes_cast: "%{name} необходимо набрать не менее %{percent}% поданных голосов с учётом веса"
     name_lte_weighted_votes_cast: "%{name} не должен превышать %{percent}% поданных голосов с учётом веса"
   poll_common:
+    write_your_response: Напишите ваш ответ
+    rank_at_least_one_candidate: Включите в ранжирование хотя бы одного кандидата
+    check_scores: Проверьте оценки
+    check_allocation: Проверьте распределение баллов
+    reduce_allocation_by_points: Уменьшите сумму баллов на %{count} | Уменьшите сумму баллов на %{count}
     superseded: Заменено
     outdated: Устаревший
     need_help_with_templates: Нужна помощь в создании собственных шаблонов решений?

@@ -4,7 +4,7 @@ sections:
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -12,17 +12,17 @@ generated:
   when-to-use-allocate: 815a1e2b7e507f00
   example-set-priorities-for-an-annual-strategy-review: b1d4f85c325f3823
   set-up-the-poll: 87f3742ee65650d2
-  vote: 9d5f0991782e0fbb
+  vote: 9cd70167f33c8145
   read-the-results: 79ff7bac48b3bf8c
   share-an-outcome: dc1e0df106d1b719
 title: 배분
 title_source: c927a8a7c2ce230c
 title_generated: 1979cce0f7660628
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
 source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-11'
 needs_review:
   share-an-outcome: use "결론" instead of "결과" for "outcome"
 ---
@@ -68,6 +68,8 @@ Oatmilk Cooperative는 연례 전략 검토를 계획하고 있습니다. 검토
 ## 투표하기
 
 참여자는 슬라이더를 움직여 점수를 배분합니다. Loomio는 남은 점수를 표시하며, 배분이 유효한 조건을 충족해야 제출할 수 있습니다.
+
+점수를 모두 사용하지 않아도 됩니다.
 
 ![](voting.png)
 

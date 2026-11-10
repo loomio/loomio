@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import { I18n } from '@/i18n';
 
 const { poll, stance, selectedOptionId } = defineProps({ poll: Object, stance: Object, selectedOptionId: Number });
+const emit = defineEmits(['draft-text']);
 
 const label = computed(() => poll.config().has_options ? 'poll_common.reason' : 'poll_common.response');
 const maxLength = computed(() => poll.limitReasonLength ? 500 : undefined);
@@ -34,6 +35,7 @@ const reasonPrompt = computed(() => {
     :placeholder="reasonPrompt"
     :max-length='maxLength'
     :allow-mentions="poll.resultsAvailable()"
+    @draft-text="emit('draft-text', $event)"
   )
   validation-errors(:subject="stance" field="reason")
 

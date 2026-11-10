@@ -2033,6 +2033,11 @@ zh_TW:
     name_gte_weighted_votes_cast: "%{name} 需要至少 %{percent}% 的已投加權票數"
     name_lte_weighted_votes_cast: "%{name} 不得超過已投加權票數的 %{percent}%"
   poll_common:
+    write_your_response: 填寫回覆
+    rank_at_least_one_candidate: 至少為一位候選人排序
+    check_scores: 檢查分數
+    check_allocation: 檢查點數分配
+    reduce_allocation_by_points: 將分配點數減少 %{count} 點 | 將分配點數減少 %{count} 點
     superseded: 取代
     outdated: 過時的
     need_help_with_templates: 需要協助建立自己的決策範本嗎？

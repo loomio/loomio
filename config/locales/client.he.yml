@@ -2026,6 +2026,11 @@ he:
     name_gte_weighted_votes_cast: ל־%{name} נדרשים לפחות %{percent}% מהקולות המשוקללים שניתנו
     name_lte_weighted_votes_cast: מספר הקולות המשוקללים של %{name} לא יעלה על %{percent}% מהקולות המשוקללים שניתנו
   poll_common:
+    write_your_response: יש לכתוב תגובה
+    rank_at_least_one_candidate: יש לדרג לפחות מועמד אחד
+    check_scores: יש לבדוק את הציונים
+    check_allocation: יש לבדוק את חלוקת הנקודות
+    reduce_allocation_by_points: יש להפחית מהחלוקה %{count} נקודה | יש להפחית מהחלוקה %{count} נקודות
     superseded: הוחלף
     outdated: מְיוּשָׁן
     need_help_with_templates: זקוק לעזרה ביצירת תבניות החלטה משלך?

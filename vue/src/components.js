@@ -92,6 +92,8 @@ export default {
   PollCommonStanceChoices: 'poll/common/stance_choices',
   PollCommonStanceIcon: 'poll/common/stance_icon',
   PollCommonStanceReason: 'poll/common/stance_reason',
+  PollCommonSubmitButton: 'poll/common/submit_button',
+  PollCommonScoreInput: 'poll/common/score_input',
   PollCommonForm: 'poll/common/form',
   PollCommonModal: 'poll/common/modal',
   PollCommonMoveForm: 'poll/common/move_form',

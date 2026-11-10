@@ -55,7 +55,7 @@ const props = defineProps({
   autofocus: Boolean
 });
 
-const emit = defineEmits(['is-uploading']);
+const emit = defineEmits(['is-uploading', 'draft-text']);
 
 // Refs
 // Whether the collaboration server holds this browser's copy of the document.
@@ -398,6 +398,7 @@ onMounted(() => {
     onUpdate: ({ editor: instance }) => {
       if (props.maxLength) { checkLength(); }
       updateMentionState(instance);
+      emit('draft-text', instance.getText({blockSeparator: ''}));
     },
     onFocus: () => {
       focused.value = true;
@@ -408,6 +409,7 @@ onMounted(() => {
     onCreate: ({ editor: instance }) => {
       if (props.maxLength) { checkLength(); }
       updateMentionState(instance);
+      emit('draft-text', instance.getText({blockSeparator: ''}));
       if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
         editor.value.commands.focus('end');
       }

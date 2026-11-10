@@ -1,16 +1,16 @@
 ---
 title: Kiosztás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: 2baba6a5c0f7653d
   example-set-priorities-for-an-annual-strategy-review: 16ad9130d6e0cda5
   set-up-the-poll: 3ab06701a04aca47
-  vote: 91961f87dd4ee618
+  vote: 423362ed862bb4c1
   read-the-results: f9a23c26f3dadb05
   share-an-outcome: cd329f5027e05aca
 title_source: c927a8a7c2ce230c
@@ -66,6 +66,8 @@ A túl nagy pontkeret a pontosság hamis látszatát keltheti. A hasznos pontker
 ## Szavazz
 
 A résztvevők a csúszkákkal osztják el a pontkeretüket. A Loomio megmutatja, hány pont maradt, és csak akkor engedi beküldeni a szavazatot, ha a pontelosztás érvényes.
+
+Nem kell minden pontot felhasználnod.
 
 ![](voting.png)
 

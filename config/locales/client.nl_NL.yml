@@ -2030,6 +2030,11 @@ nl_NL:
     name_gte_weighted_votes_cast: "%{name} heeft minimaal %{percent}% van de uitgebrachte gewogen stemmen nodig"
     name_lte_weighted_votes_cast: "%{name} mag niet meer dan %{percent}% van de uitgebrachte gewogen stemmen bedragen"
   poll_common:
+    write_your_response: Schrijf je reactie
+    rank_at_least_one_candidate: Rangschik minstens één kandidaat
+    check_scores: Controleer scores
+    check_allocation: Controleer de puntenverdeling
+    reduce_allocation_by_points: Wijs %{count} punt minder toe | Wijs %{count} punten minder toe
     superseded: Vervangen
     outdated: Verouderd
     need_help_with_templates: Hulp nodig bij het maken van uw eigen processjablonen?

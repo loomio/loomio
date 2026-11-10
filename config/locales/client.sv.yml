@@ -2015,6 +2015,11 @@ sv:
     name_gte_weighted_votes_cast: "%{name} behöver minst %{percent}% av de avgivna viktade rösterna"
     name_lte_weighted_votes_cast: "%{name} får inte överstiga %{percent}% av de avgivna viktade rösterna"
   poll_common:
+    write_your_response: Skriv ditt svar
+    rank_at_least_one_candidate: Rangordna minst en kandidat
+    check_scores: Kontrollera poängen
+    check_allocation: Kontrollera poängfördelningen
+    reduce_allocation_by_points: Minska fördelningen med %{count} poäng | Minska fördelningen med %{count} poäng
     superseded: Ersatt
     outdated: Föråldrad
     need_help_with_templates: Behöver du hjälp med att skapa dina egna beslutsmallar?

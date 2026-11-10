@@ -3,8 +3,15 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { compact } from 'lodash-es';
 import { watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { responseText } from './vote_form_helpers';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
+
   props: {
     stance: Object
   },
@@ -15,6 +22,7 @@ export default {
       selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [queryId]),
       selectedOptionId: this.stance.pollOptionIds()[0] || queryId,
       loading: false,
+      draftReasonText: null,
       options: []
     };
   },
@@ -33,23 +41,21 @@ export default {
     hasOptionIcon() { return this.poll.config().has_option_icon; },
     poll() { return this.stance.poll(); },
     optionSelected() { return this.selectedOptionIds.length || this.selectedOptionId; },
-    submitText() {
-      if (this.stance.castAt) {
-        if (this.poll.config().has_options) {
-          return 'poll_common.update_vote';
-        } else {
-          return 'poll_common.update_response';
-        }
-      } else {
-        if (this.poll.config().has_options) {
-          return 'poll_common.submit_vote';
-        } else {
-          return 'poll_common.submit_response';
-        }
+    voteGuidance() {
+      if (!this.poll.config().has_options) {
+        // Rich text drafts are written to the model only immediately before
+        // saving. Use editor feedback to validate without changing saved state.
+        const text = this.stance.reasonFormat === 'html' && this.draftReasonText !== null
+          ? this.draftReasonText : responseText(this.stance);
+        if (this.poll.limitReasonLength && text.length > 500) return this.t('poll_common.too_long');
+        return Array.from(text.trim()).length > 5 ? '' : this.t('poll_common.write_your_response');
       }
-    },
-    optionCountAlertColor() {
-      if (!this.singleChoice && this.selectedOptionIds.length && ((this.selectedOptionIds.length < this.poll.choiceCountMin) || (this.selectedOptionIds.length > this.poll.choiceCountMax))) { return 'warning'; }
+      if (this.optionCountValid) return '';
+      if (this.singleChoice) return this.t('poll_proposal_options.select_an_option');
+      if (this.poll.choiceCountMin === this.poll.choiceCountMax) {
+        return this.t('poll_common.select_count_options', {count: this.poll.choiceCountMin});
+      }
+      return this.t('poll_common.select_minimum_to_maximum_options', {minimum: this.poll.choiceCountMin, maximum: this.poll.choiceCountMax});
     },
     optionCountValid() {
       return this.stance.noneOfTheAbove ||
@@ -133,16 +139,9 @@ export default {
 
 <template lang="pug">
 form.poll-common-vote-form(@submit.prevent="submit()" v-submit-on-mod-enter="submit")
-  v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
-    span(
-      v-if="poll.choiceCountMin == poll.choiceCountMax"
-      v-t="{path: 'poll_common.select_count_options', args: {count: poll.choiceCountMin}}")
-    span(
-      v-else
-      v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.choiceCountMin, maximum: poll.choiceCountMax}}")
-
   v-card.poll-common-vote-form__button.mb-2.rounded(
     variant="tonal"
+    border
     :color="selectedOptionColor(option)"
     v-for='option in options'
     :key='option.id'
@@ -171,10 +170,10 @@ form.poll-common-vote-form(@submit.prevent="submit()" v-submit-on-mod-enter="sub
             v-avatar.poll-common-vote-form__option-icon(size="48")
               img(aria-hidden="true" :src="'/img/' + option.icon + '.svg?v=20260721'")
           template(v-else)
-            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)")
-            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" color="primary")
-            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)")
-            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" color="primary")
+            common-icon.poll-common-vote-form__selection-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" color="on-surface")
+            common-icon.poll-common-vote-form__selection-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" color="primary")
+            common-icon.poll-common-vote-form__selection-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" color="on-surface")
+            common-icon.poll-common-vote-form__selection-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" color="primary")
         v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
         v-list-item-subtitle
           plain-text.poll-common-vote-form__allow-wrap(:model="option" field="meaning")
@@ -188,18 +187,15 @@ form.poll-common-vote-form(@submit.prevent="submit()" v-submit-on-mod-enter="sub
     :stance='stance'
     :poll='poll'
     :selectedOptionId="selectedOptionId"
+    @draft-text="draftReasonText = $event"
   )
 
   v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      type="submit"
-      :disabled='!optionCountValid || !poll.isVotable()'
+    poll-common-submit-button(
+      :stance="stance"
+      :guidance="voteGuidance"
       :loading="loading"
-      color="primary"
-      variant="elevated"
-      block
     )
-      span(v-t="submitText")
 </template>
 
 <style>
@@ -221,7 +217,12 @@ form.poll-common-vote-form(@submit.prevent="submit()" v-submit-on-mod-enter="sub
 }
 
 .poll-common-vote-form__button--brand-selected {
-  background-color: rgb(var(--v-theme-primary)/0.12) !important;
+  background-color: rgba(var(--v-theme-primary), 0.12) !important;
+  border-color: rgb(var(--v-theme-primary));
+}
+
+.poll-common-vote-form__selection-icon {
+  opacity: 1;
 }
 
 .poll-common-vote-form__button--not-selected {

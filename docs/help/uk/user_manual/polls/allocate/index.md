@@ -1,16 +1,16 @@
 ---
 title: Розподіл балів
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: ce3ba9017a93a234
   example-set-priorities-for-an-annual-strategy-review: 00a6e36076f7bce5
   set-up-the-poll: 0b273277fd3e5eae
-  vote: be57a1d06c3dbf51
+  vote: 72cb4b9ee9e90700
   read-the-results: f2311e90fdee11fa
   share-an-outcome: 7a069af93b166f3c
 title_source: c927a8a7c2ce230c
@@ -66,6 +66,8 @@ title_generated: 7ad0974d1d711655
 ## Голосуйте
 
 Учасники пересувають повзунки, щоб розподілити свої бали. Loomio показує, скільки балів залишилося, і не дозволяє надіслати голос, доки розподіл не відповідатиме умовам.
+
+Ви можете залишити частину балів невикористаною.
 
 ![](voting.png)
 

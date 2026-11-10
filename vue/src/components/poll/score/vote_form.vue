@@ -4,8 +4,14 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { map } from 'lodash-es';
 import { watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { scoresWithinRange, sliderTicks } from '../common/vote_form_helpers';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     stance: Object
   },
@@ -52,7 +58,13 @@ export default {
   },
 
   computed: {
-    poll() { return this.stance.poll(); }
+    poll() { return this.stance.poll(); },
+    scoreTicks() {
+      return sliderTicks(this.poll.scoreMin, this.poll.scoreMax);
+    },
+    voteGuidance() {
+      return scoresWithinRange(this.stanceChoices, this.poll.scoreMin, this.poll.scoreMax) ? '' : this.t('poll_common.check_scores');
+    }
   }
 };
 </script>
@@ -60,63 +72,37 @@ export default {
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
-    v-list-item.poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
+    v-list-item.poll-score-vote-form__option.mb-2.px-0(v-for='choice in stanceChoices', :key='choice.option.id')
       v-list-item-title {{ choice.option.name }}
       v-list-item-subtitle(style="white-space: inherit") {{ choice.option.meaning }}
-      v-slider.poll-score-vote-form__score-slider.mt-4(
-        :disabled="!poll.isVotable()"
-        v-model='choice.score'
-        :color="choice.option.color"
-        :thumb-color="choice.option.color"
-        :height="4"
-        :min="poll.scoreMin"
-        :max="poll.scoreMax"
-        :step="1"
-      )
-      template(v-slot:append)
-        input.vote-form-number-input(
-          :style="{'background-color': choice.option.color}"
-          type="number"
+      .d-flex.align-center.ga-4.mt-4.mb-6
+        v-slider.poll-score-vote-form__score-slider.mx-4(
+          :disabled="!poll.isVotable()"
+          v-model='choice.score'
+          color="info"
+          :height="4"
           :min="poll.scoreMin"
           :max="poll.scoreMax"
+          :step="1"
+          show-ticks="always"
+          :ticks="scoreTicks"
+          :tick-size="4"
+          thumb-label
+          hide-details
+        )
+        poll-common-score-input.poll-score-vote-form__score-input.mb-1(
+          v-if="poll.scoreMax > 10"
+          :label="choice.option.name"
+          :minimum="poll.scoreMin"
+          :maximum="poll.scoreMax"
           v-model="choice.score")
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      :disabled="!poll.isVotable()"
+    poll-common-submit-button(
+      :stance="stance"
+      :guidance="voteGuidance"
       :loading="loading"
-      variant="elevated"
-      color="primary"
-      type='submit'
     )
-      span(v-t="'poll_common.submit_vote'")
 </template>
-<style>
-.poll-dot-vote-vote-form__option {
-  padding-left: 0;
-  padding-right: 0;
-}
-.v-text-field.number-input input {
-  width: 80px;
-  text-align: right;
-}
-input.vote-form-number-input[type='number']::-webkit-inner-spin-button,
-input.vote-form-number-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input.vote-form-number-input[type=number] {
-    -moz-appearance:textfield;
-    appearance:textfield;
-}
-.vote-form-number-input {
-  text-align: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 100%;
-  color: #000;
-}
-</style>

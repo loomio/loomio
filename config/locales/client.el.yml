@@ -2007,6 +2007,11 @@ el:
     name_gte_weighted_votes_cast: "%{name} χρειάζεται τουλάχιστον %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
     name_lte_weighted_votes_cast: "%{name} δεν πρέπει να υπερβαίνει το %{percent}% των σταθμισμένων ψήφων που κατατέθηκαν"
   poll_common:
+    write_your_response: Γράψτε την απάντησή σας
+    rank_at_least_one_candidate: Κατατάξτε τουλάχιστον έναν υποψήφιο
+    check_scores: Ελέγξτε τις βαθμολογίες
+    check_allocation: Ελέγξτε την κατανομή πόντων
+    reduce_allocation_by_points: Μειώστε την κατανομή κατά %{count} πόντο | Μειώστε την κατανομή κατά %{count} πόντους
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος
     need_help_with_templates: Χρειάζεστε βοήθεια για τη δημιουργία των δικών σας προτύπων αποφάσεων;

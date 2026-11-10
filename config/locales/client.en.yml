@@ -2297,6 +2297,11 @@ en:
     export_blt: Export ballots (BLT)
     select_count_options: Select %{count} options
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
+    write_your_response: Write your response
+    rank_at_least_one_candidate: Rank at least one candidate
+    check_scores: Check scores
+    check_allocation: Check point allocation
+    reduce_allocation_by_points: Reduce allocation by %{count} point | Reduce allocation by %{count} points
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
     these_are_templates: These are the proposal and poll templates in your group.

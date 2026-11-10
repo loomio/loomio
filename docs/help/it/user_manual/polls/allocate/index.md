@@ -1,16 +1,16 @@
 ---
 title: Assegnare
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: 332b197a07dd36cc
   example-set-priorities-for-an-annual-strategy-review: eb56ba5a89de0cc8
   set-up-the-poll: '03972c1f87c377b9'
-  vote: 60386c3e594b2335
+  vote: 6e80fa3333e49071
   read-the-results: c195535b51d2b955
   share-an-outcome: 44871c950cca92de
 title_source: c927a8a7c2ce230c
@@ -68,6 +68,8 @@ Un numero molto elevato di punti può creare una falsa precisione. Di solito, un
 ## Vota
 
 I partecipanti spostano i cursori per distribuire i propri punti. Loomio mostra quanti punti rimangono e impedisce l'invio del voto finché la ripartizione non è valida.
+
+Puoi lasciare dei punti inutilizzati.
 
 ![](voting.png)
 
