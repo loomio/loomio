@@ -421,6 +421,10 @@ class GroupExportService
             COLUMNS_RENAMED.fetch(table, {}).each do |before, after|
               attrs[after] = attrs.delete(before) if attrs.key?(before)
             end
+            # Older exports record task completion in both done and done_at.
+            if table == 'tasks' && attrs.key?('done')
+              attrs['done_at'] = attrs.delete('done') ? (attrs['done_at'] || attrs['updated_at']) : nil
+            end
             if %w[polls poll_templates].include?(table) && attrs['notify_on_closing_soon'] == 'undecided_voters'
               attrs['notify_on_closing_soon'] = 'voters_uncast'
             end

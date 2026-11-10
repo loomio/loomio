@@ -112,9 +112,9 @@ module TranslationGlossary
   end
 
   # Whole-word match where words are separated by spaces; substring match for
-  # scripts written without spaces, such as Japanese and Chinese.
+  # scripts written without spaces, such as Japanese and Chinese, and Korean words with attached particles.
   def self.contains_word?(text, word)
-    return text.include?(word) if word.match?(/\p{Han}|\p{Hiragana}|\p{Katakana}/)
+    return text.include?(word) if word.match?(/\p{Han}|\p{Hiragana}|\p{Katakana}|\p{Hangul}/)
 
     text.match?(/(?<![\p{L}\p{M}])#{Regexp.escape(word)}(?![\p{L}\p{M}])/)
   end

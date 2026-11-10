@@ -2,7 +2,10 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
+import CommentAbility from '@/shared/abilities/comment_ability';
+import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ScrollService  from '@/shared/services/scroll_service';
 import openModal      from '@/shared/helpers/open_modal';
@@ -62,7 +65,7 @@ export default new class TopicService {
         icon: 'mdi-thumbs-up-down-outline',
         // collection: 'actions',
         canPerform() {
-          return AbilityService.canStartPoll(topic);
+          return PollAbility.canCreate(topic);
         },
         perform() {
           EventBus.$emit('show-add-poll-form');
@@ -76,7 +79,7 @@ export default new class TopicService {
         dockDisplay: 'icon',
         // collection: 'actions',
         canPerform() {
-          return AbilityService.canAddComment(topic);
+          return CommentAbility.canCreate(topic);
         },
         perform() {
           EventBus.$emit('show-add-comment-form');
@@ -91,7 +94,7 @@ export default new class TopicService {
         dock: 3,
         collection: 'members',
         canPerform() {
-          return AbilityService.canAnnounceTopic(topic) || AbilityService.canAddGuestsTopic(topic);
+          return (!topic.lockedAt && TopicAbility.canAnnounce(topic)) || TopicAbility.canAddGuests(topic);
         },
         perform() {
           return EventBus.$emit('openModal', {
@@ -216,7 +219,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         // collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Discussion' && AbilityService.canEditDiscussion(topic.topicable());
+          return topic.topicableType === 'Discussion' && DiscussionAbility.canUpdate(topic.topicable());
   },
 
         to() { return `/d/${topic.topicable().key}/edit`; }
@@ -228,7 +231,7 @@ export default new class TopicService {
         icon: 'mdi-pencil',
         collection: 'actions',
         canPerform() {
-          return topic.topicableType === 'Poll' && AbilityService.canEditPoll(topic.topicable());
+          return topic.topicableType === 'Poll' && PollAbility.canUpdate(topic.topicable());
         },
         to() { return `/p/${topic.topicable().key}/edit`; }
       },
@@ -237,7 +240,7 @@ export default new class TopicService {
         icon: 'mdi-tag-plus-outline',
         name: 'loomio_tags.select_tags',
         canPerform() {
-          return AbilityService.canEditTags(topic);
+          return TopicAbility.canUpdateTags(topic);
         },
         async perform() {
           let topicItem = topic.createdTopicItem();
@@ -264,7 +267,7 @@ export default new class TopicService {
         name: 'action_dock.move_thread_v2',
         collection: 'actions',
         icon: 'mdi-file-move-outline',
-        canPerform() { return AbilityService.canMoveTopic(topic); },
+        canPerform() { return TopicAbility.canMove(topic); },
         perform() {
           return openModal({
             component: 'MoveTopicForm',

@@ -434,7 +434,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert_nil session[:pending_login_token]
     assert_equal reader.token, session[:pending_topic_reader_token]
     complete_pending_account
-    assert_not stale_token.reload.used?
+    assert_nil stale_token.reload.used_at
     assert_not_nil reader.reload.accepted_at
   end
 
@@ -638,7 +638,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   test "turnstile bypass: used login token is not accepted" do
     ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
     login_user = User.create(email: "usedsignup@example.com", email_verified: false)
-    login_token = LoginToken.create(user: login_user, used: true)
+    login_token = LoginToken.create(user: login_user, used_at: Time.current)
     session[:pending_login_token] = login_token.token
 
     post :create, params: {

@@ -107,7 +107,7 @@ class Api::V1::SessionsController < ApplicationController
       token = LoginToken.lock.find_by(token: session[:pending_login_token])
       next unless token&.useable?
 
-      token.update!(used: true)
+      token.update!(used_at: Time.current)
       token.user
     end
   end
@@ -130,9 +130,9 @@ class Api::V1::SessionsController < ApplicationController
 
   def login_token_user
     LoginToken.transaction do
-      token = LoginToken.unused.lock.find_by(code: resource_params.require(:code))
+      token = LoginToken.redeemable.lock.find_by(code: resource_params.require(:code))
       if login_token_matches?(token)
-        token.update!(used: true)
+        token.update!(used_at: Time.current)
         token.user
       else
         # This path only runs once the request has cleared turnstile_ok?, so a
@@ -157,7 +157,7 @@ class Api::V1::SessionsController < ApplicationController
   def usable_login_token_for_code
     return unless resource_params[:code].present?
 
-    token = LoginToken.unused.find_by(code: resource_params[:code])
+    token = LoginToken.redeemable.find_by(code: resource_params[:code])
     token if login_token_matches?(token)
   end
 
@@ -166,7 +166,7 @@ class Api::V1::SessionsController < ApplicationController
 
     LoginToken.transaction do
       user = User.find_by(email: resource_params[:email])
-      token = user&.login_tokens&.unused&.lock&.order(created_at: :desc)&.find(&:useable?)
+      token = user&.login_tokens&.redeemable&.lock&.order(created_at: :desc)&.find(&:useable?)
       token&.record_failed_code_attempt!
     end
   end

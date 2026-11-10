@@ -48,7 +48,6 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
       record: comment,
       author: @doer,
       doer: @doer,
-      done: false,
       name: "Follow up on the comment",
       uid: "comment-task"
     )
@@ -80,7 +79,7 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
 
     tasks = JSON.parse(response.body)['tasks']
     assert_equal task.id, tasks[0]['id']
-    assert tasks[0]['done']
+    assert tasks[0]['done_at']
     assert_not_nil tasks[0]['done_at']
     assert_equal 1, tasks.size
 
@@ -110,7 +109,7 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
 
     tasks = JSON.parse(response.body)['tasks']
     assert_equal task.id, tasks[0]['id']
-    assert tasks[0]['done']
+    assert tasks[0]['done_at']
     assert_not_nil tasks[0]['done_at']
     assert_equal 1, tasks.size
 
@@ -126,7 +125,7 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
 
     tasks = JSON.parse(response.body)['tasks']
     assert_equal task.id, tasks[0]['id']
-    refute tasks[0]['done']
+    assert_nil tasks[0]['done_at']
     assert_nil tasks[0]['done_at']
     assert_equal 1, tasks.size
 
@@ -145,7 +144,7 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
 
     tasks = JSON.parse(response.body)['tasks']
     assert_equal task.id, tasks[0]['id']
-    refute tasks[0]['done']
+    assert_nil tasks[0]['done_at']
     assert_nil tasks[0]['done_at']
     assert_equal 1, tasks.size
 

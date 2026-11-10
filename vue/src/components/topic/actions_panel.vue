@@ -2,7 +2,8 @@
 import { ref, computed, watch, nextTick, onUnmounted, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 import { mdiLockOutline } from '@mdi/js';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
+import CommentAbility from '@/shared/abilities/comment_ability';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -17,8 +18,8 @@ const { topic } = defineProps({
 
 const route = useRoute();
 
-const canAddComment = computed(() => AbilityService.canAddComment(topic));
-const canStartPoll = computed(() => AbilityService.canStartPoll(topic));
+const canAddComment = computed(() => CommentAbility.canCreate(topic));
+const canStartPoll = computed(() => PollAbility.canCreate(topic));
 const forceShowCommentForm = ref(false);
 const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
 const newComment = ref(null);

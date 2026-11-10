@@ -13,6 +13,16 @@
 - **Document complex methods that are more than framework boilerplate.** Add a concise high-level comment explaining the problem, important invariants, and non-obvious decisions or phases. Comment decision points where the reason is not evident from the code. Do not narrate straightforward Ruby or Rails operations line by line.
 - **Page with `limit` and `offset`.** The `from` and `per` parameters are deprecated: keep supporting them where they are already established, but use `limit` and `offset` in all new API endpoints and client code. In API controllers, page new endpoints with `page_collection_bounded`, which reads only `limit` and `offset` and caps the page size. Order paged queries by a unique tiebreak (such as `id`) so rows do not repeat or disappear between pages.
 
+## Record state
+
+- **Store state as timestamps.** Record lifecycle changes in nullable timestamps such as `closed_at`, `revoked_at` and `accepted_at`, with their actor ids. Derive the current state from them. Do not add status columns or a state-machine library. A status copied from an external system, such as `Subscription#state`, is an exception. A boolean is also right when a timestamp would disclose something. For example, `anonymous_poll_voters.ballot_submitted` has no submission time, because that time could be matched against anonymous ballots.
+- **Remove duplicate state fields.** When two fields record one fact, such as `done` and `done_at`, remove one and derive it from the other. Take the time to migrate the callers and data; a clear, correct schema is worth the work. Do not keep both in step with application code or constraints.
+- **Rule out impossible combinations in the database.** Use check constraints for combinations that must never occur, such as a membership request that is both approved and declined.
+- **Define each derived state once.** When a state depends on several columns or the clock, write one server definition and build both the predicate and the scope from it. If a query needs a different meaning, give it a different name. For example, a stored count cannot depend on the current time, so it needs its own scope.
+- **Send raw state and let the client interpret it.** Don't serialize derived values or per-user answers. The current time and the current user can't be precomputed for shared realtime payloads. Define each client rule once in its model, match the server definition exactly, including comparisons with the current time, and guard rules that copy server permissions with a contract test in `test/contracts/`. The server remains the authority.
+- **Name states that exist only by convention.** When a combination of fields means something distinct, give it a predicate or scope and a short comment. For example, an ignored membership request is a decline without a reason. Don't make callers repeat the combination.
+- **Guard transitions in the service.** Recheck the current state under the record's lock before changing it, as `PollService.open_poll_if_ready` does.
+
 ## Phlex / Mailers
 
 - Write new Rails views and mailer views as Phlex components under `app/views`, not ERB templates.

@@ -18,7 +18,7 @@ class LoginTokenTest < ActiveSupport::TestCase
 
   test "is not useable if it has been used before" do
     token = LoginToken.create!(user: users(:user))
-    token.update!(used: true)
+    token.update!(used_at: Time.current)
     assert_not token.useable?
   end
 
@@ -34,7 +34,18 @@ class LoginTokenTest < ActiveSupport::TestCase
     token.record_failed_code_attempt!
 
     assert_equal LoginToken::MAX_FAILED_CODE_ATTEMPTS, token.failed_attempts
-    assert token.used
+    assert_not token.useable?
+    assert_not LoginToken.redeemable.exists?(token.id)
+    assert_nil token.reload.used_at
+  end
+
+  test "redeemed tokens are no longer redeemable" do
+    token = LoginToken.create!(user: users(:user))
+    assert LoginToken.redeemable.exists?(token.id)
+
+    token.update!(used_at: Time.current)
+
+    assert_not LoginToken.redeemable.exists?(token.id)
   end
 
   test "failed attempts below the limit preserve the remaining opportunity" do
@@ -43,7 +54,7 @@ class LoginTokenTest < ActiveSupport::TestCase
     token.record_failed_code_attempt!
 
     assert_equal LoginToken::MAX_FAILED_CODE_ATTEMPTS - 1, token.reload.failed_attempts
-    assert_not token.used
+    assert_nil token.used_at
     assert token.useable?
   end
 

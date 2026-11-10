@@ -344,8 +344,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000001) do
     t.string "redirect"
     t.string "token"
     t.datetime "updated_at", precision: nil
-    t.boolean "used", default: false, null: false
     t.integer "user_id"
+    t.datetime "used_at"
     t.index ["token"], name: "index_login_tokens_on_token"
   end
 
@@ -1159,7 +1159,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000001) do
     t.datetime "created_at", null: false
     t.datetime "discarded_at", precision: nil
     t.integer "doer_id"
-    t.boolean "done", null: false
     t.datetime "done_at", precision: nil
     t.date "due_on"
     t.string "name", null: false
@@ -1172,7 +1171,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000001) do
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["doer_id"], name: "index_tasks_on_doer_id"
-    t.index ["done"], name: "index_tasks_on_done"
     t.index ["due_on"], name: "index_tasks_on_due_on"
     t.index ["record_type", "record_id"], name: "index_tasks_on_record_type_and_record_id"
     t.index ["remind_at"], name: "index_tasks_on_remind_at"

@@ -58,6 +58,11 @@ class LocalesHelperTest < ActiveSupport::TestCase
     assert_equal :be, preferred_locale.to_sym
   end
 
+  test "uses Korean for a South Korean browser locale" do
+    @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'ko-KR,ko;q=0.9,en;q=0.8' }
+    assert_equal :ko, preferred_locale.to_sym
+  end
+
   test "does not set a bad locale via http header" do
     @request_env = { 'HTTP_ACCEPT_LANGUAGE' => 'notagoodone' }
     assert_equal I18n.default_locale, preferred_locale.to_sym

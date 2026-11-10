@@ -44,6 +44,25 @@ class TopicSerializerTest < ActiveSupport::TestCase
     end
   end
 
+  test "revoked readers are no longer guests or thread admins to the client" do
+    viewer = users(:guest_admin_normal)
+    %i[discussion_topic direct_topic].each do |fixture|
+      topic = topics(fixture)
+      reader = TopicReader.find_by!(topic: topic, user: viewer)
+      # Api::V1::TopicReadersController#revoke keeps the flags.
+      reader.update!(revoked_at: 1.hour.ago)
+      assert reader.guest && reader.admin
+      refute topic.members_include?(viewer)
+
+      cache = RecordCache.for_collection([topic], viewer.id)
+      serializer = TopicSerializer.new(topic, scope: {cache: cache, current_user_id: viewer.id, exclude_types: []})
+      payload = JSON.parse(serializer.to_json, symbolize_names: true).fetch(:topic)
+
+      assert_equal false, payload.fetch(:reader_guest), fixture
+      assert_equal false, payload.fetch(:reader_admin), fixture
+    end
+  end
+
   test "shared topic payloads omit each viewers private reader state" do
     %i[discussion_topic direct_topic].each do |fixture|
       topic = topics(fixture)

@@ -30,7 +30,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
     end
     browser.assert_response :success
     assert_equal users(:user).id, browser.response.parsed_body['current_user_id']
-    assert token.reload.used
+    assert token.reload.used_at
 
     assert_difference 'Session.active.count', -1 do
       browser.delete '/api/v1/sessions', headers: csrf_headers(browser), as: :json
@@ -91,7 +91,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
       browser.post '/api/v1/sessions', as: :json
     end
     browser.assert_response :unprocessable_entity
-    refute token.reload.used
+    assert_nil token.reload.used_at
   end
 
   test 'an existing link can complete an incomplete account on an SSO-only site' do
@@ -106,7 +106,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert response.parsed_body['incomplete']
-    assert token.reload.used
+    assert token.reload.used_at
 
     browser = open_session
     browser.get login_token_path(token.token)
@@ -121,7 +121,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert_equal user.id, response.parsed_body['current_user_id']
-    assert token.reload.used
+    assert token.reload.used_at
     assert_empty AccountCompletionProof.where(user: user)
   end
 

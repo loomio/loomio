@@ -52,7 +52,7 @@ export default {
 
     toggleDone(task) {
       return task.toggleDone().then(function() {
-        if (task.done) {
+        if (task.doneAt) {
           Flash.success('tasks.task_updated_done');
         } else {
           Flash.success('tasks.task_updated_not_done');
@@ -77,7 +77,7 @@ v-main
           v-list-item(v-for="task in tasks" :key="task.id" :title="task.name")
             template(v-slot:prepend)
               v-btn(color="accent" icon variant="flat" @click="toggleDone(task)" :loading="task.processing")
-                common-icon(v-if="task.done" name="mdi-checkbox-marked")
+                common-icon(v-if="task.doneAt" name="mdi-checkbox-marked")
                 common-icon(v-else name="mdi-checkbox-blank-outline")
     p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
     .d-flex.justify-center

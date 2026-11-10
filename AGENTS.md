@@ -12,6 +12,7 @@
 - Large migrations: keep schema locks short, build indexes concurrently, and move bulk backfills to idempotent background jobs scheduled 10 minutes later. Prefer newest records first so active content is corrected sooner. Keep the app usable before backfill completes. Commit small batches, persist progress for retries, and verify lock behavior on production-sized data with concurrent read/write checks before deploying to loomio.com.
 - Changes touching voting, anonymous polls, permissions, authentication, or sessions require an explicit security review and focused regression tests. Read the security instructions below before working on these areas.
 - For user-visible features and behaviour changes, read the user-manual instructions below and update relevant documentation.
+- Record lasting lessons for agents in these instructions, not in an agent's private memory, so every tool and contributor sees them.
 - Do not hard-wrap prose in Markdown documents. Keep each paragraph and list item on one source line; preserve deliberate line breaks required by Markdown syntax or the content.
 
 ## Read the instructions for your task
@@ -20,7 +21,7 @@ Before starting an applicable task, read every matching document below. These ar
 
 | Task | Required instructions |
 | --- | --- |
-| Writing, changing, or reviewing application code | [Code style and domain invariants](docs/agents/code_style.md) |
+| Writing, changing, or reviewing application code or database schema | [Code style and domain invariants](docs/agents/code_style.md) |
 | Branches, commits, attribution, or pull requests | [Git and pull requests](docs/agents/git_workflow.md) |
 | Voting, anonymous polls, permissions, authentication, sessions, or security review | [Security review](docs/agents/security.md) |
 | User-facing copy, documentation, changelog entries, emails, or onboarding text | [Writing and Markdown](docs/agents/writing.md) |

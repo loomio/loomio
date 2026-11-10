@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { VAutocomplete, VCombobox } from 'vuetify/components';
 import { uniq } from 'lodash-es';
-import AbilityService from '@/shared/services/ability_service';
+import TagAbility from '@/shared/abilities/tag_ability';
 
 const { model, template } = defineProps({ model: Object, template: Boolean });
 const { t } = useI18n();
@@ -17,7 +17,7 @@ const items = computed(() => {
 
 const canCreateTags = computed(() => {
   if (template) { return true; }
-  return !model.groupId || AbilityService.canCreateTags(model.group());
+  return !model.groupId || TagAbility.canCreate(model.group());
 });
 
 function colorFor(name) {

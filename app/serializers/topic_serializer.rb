@@ -157,8 +157,10 @@ class TopicSerializer < ApplicationSerializer
     reader.present?
   end
 
+  # Revoked readers keep their flags so access can be restored, but they are
+  # no longer guests or thread admins.
   def reader_guest
-    reader&.guest
+    reader.revoked_at.nil? && reader.guest
   end
 
   def include_reader_guest?
@@ -166,7 +168,7 @@ class TopicSerializer < ApplicationSerializer
   end
 
   def reader_admin
-    reader&.admin
+    reader.revoked_at.nil? && reader.admin
   end
 
   def include_reader_admin?

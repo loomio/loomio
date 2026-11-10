@@ -8,7 +8,8 @@ const mocks = vi.hoisted(() => ({
   comment: null, scroll: vi.fn()
 }));
 vi.mock('vue-router', () => ({useRoute: () => mocks.route}));
-vi.mock('@/shared/services/ability_service', () => ({default: {canAddComment: mocks.canAddComment, canStartPoll: mocks.canStartPoll}}));
+vi.mock('@/shared/abilities/comment_ability', () => ({default: {canCreate: mocks.canAddComment}}));
+vi.mock('@/shared/abilities/poll_ability', () => ({default: {canCreate: mocks.canStartPoll}}));
 vi.mock('@/shared/services/records', () => ({default: {comments: {build: mocks.buildComment}}}));
 vi.mock('@/shared/services/session', () => ({default: {defaultFormat: () => 'html', user: () => ({id: 1}), isSignedIn: () => true}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$on: vi.fn(), $off: vi.fn()}}));

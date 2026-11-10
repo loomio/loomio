@@ -8,15 +8,14 @@ class LoginToken < ApplicationRecord
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 24.hours.in_minutes).to_i
   MAX_FAILED_CODE_ATTEMPTS = 5
 
-  scope :unused, -> { where(used: false) }
+  scope :redeemable, -> { where(used_at: nil).where('failed_attempts < ?', MAX_FAILED_CODE_ATTEMPTS) }
 
   def useable?
-    !used && failed_attempts < MAX_FAILED_CODE_ATTEMPTS && expires_at > DateTime.now && user.present?
+    used_at.nil? && failed_attempts < MAX_FAILED_CODE_ATTEMPTS && expires_at > DateTime.now && user.present?
   end
 
   def record_failed_code_attempt!
     increment!(:failed_attempts)
-    update!(used: true) if failed_attempts >= MAX_FAILED_CODE_ATTEMPTS
   end
 
   def expires_at
