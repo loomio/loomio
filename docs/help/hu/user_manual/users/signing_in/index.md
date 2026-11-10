@@ -1,10 +1,10 @@
 ---
 title: Bejelentkezés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 5d131418eb0ef50b
   sign-in-with-a-passkey: 83b0e4b78d929bfa
@@ -22,7 +22,7 @@ generated:
   create-an-account: 1f5e3f04df0a0a7a
   sign-in-with-google: 26773c02c542a9d2
   other-loomio-sites: 66f9da877c6486a8
-  sign-out: c32dce0c1bde14c2
+  sign-out: 890933f1573a81e9
 title_source: 824a1d703ce676bb
 title_generated: 1338de4e9c32ed95
 ---
@@ -94,3 +94,5 @@ A kizárólag egyszeri bejelentkezést (SSO) használó privát oldal csak a sze
 ## Kijelentkezés
 
 Nyisd meg az oldalsávot, válaszd ki a nevedet, majd a **Kijelentkezés** lehetőséget. Közösen használt számítógépen jelentkezz ki, amikor végeztél; ne csak a böngésző lapját zárd be.
+
+A kijelentkezés azonnal lezárja az adott böngésző munkamenetét. A Loomio biztonsági vizsgálatok céljából alapértelmezés szerint 60 napig megőrzi a munkamenet IP-címét, a böngésző adatait, valamint a munkamenet kezdési és befejezési időpontját. A privát oldalak üzemeltetői módosíthatják ezt az időtartamot. A fiókod végleges törlésével ezek a munkamenetadatok is törlődnek.

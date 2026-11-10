@@ -5,6 +5,7 @@
 - Use **group admin** and **thread admin** for Loomio's permission roles. **Administrator** is also acceptable; never call these roles **coordinator**. Follow `config/locales/glossary.yml` for translations, including when legacy identifiers contain `coordinator`.
 - Do not run `git commit` unless the user explicitly asks for a specific commit. Permission to commit once does not authorize a later commit, including after more work is requested.
 - Do not self-reference or market the agent in branch names, commit messages, PR titles, PR descriptions, or other project-facing metadata.
+- Prefix every new environment variable with `LOOMIO_`. Preserve existing environment variable names unless a rename is explicitly requested.
 - Boolean env vars: **presence is truthy**. Set the var to enable, omit it to disable. Check with `ENV["VAR"].present?` (Rails) or `ENV.key?("VAR")` (plain Ruby) — never compare against `"true"` or `"1"`.
 - Run Rails tests with escalated sandbox permissions on the first attempt; the local PostgreSQL test database is not reachable from the filesystem sandbox. Use the existing approved `bin/rails test` permission.
 - Never run Rails tests and E2E tests in parallel. Run one suite at a time because they can share the test database.

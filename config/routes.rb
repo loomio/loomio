@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
 
   admin_session_constraint = lambda do |request|
-    session_record = Session.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
+    session_record = Session.active.includes(:user).find_by(id: request.cookie_jar.signed[:session_id])
     user = session_record&.user
 
     user&.active? && user.is_admin?

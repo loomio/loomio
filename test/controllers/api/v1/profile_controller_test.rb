@@ -446,7 +446,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert_response :success
     @user.reload
     assert Session.exists?(current_session.id)
-    refute Session.exists?(other_session.id)
+    refute other_session.reload.active?
     assert PushSubscription.exists?(current_subscription.id)
     refute PushSubscription.exists?(other_subscription.id)
     refute_equal original_api_key, @user.api_key

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SessionSecurityTest < ActionDispatch::IntegrationTest
   setup do
-    @saved_env = %w[FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TURNSTILE_SECRET_KEY TERMS_URL].to_h { |key| [key, ENV.delete(key)] }
+    @saved_env = %w[FEATURES_DISABLE_LOCAL_LOGIN FEATURES_DISABLE_EMAIL_LOGIN TURNSTILE_SECRET_KEY TERMS_URL].to_h { |key| [ key, ENV.delete(key) ] }
     @forgery_before = ActionController::Base.allow_forgery_protection
     ActionController::Base.allow_forgery_protection = true
   end
@@ -24,7 +24,7 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
         end
         get '/dashboard'
 
-        assert_no_difference ['Session.count', 'AccountCompletionProof.count', -> { user.reload.sign_in_count.to_i }] do
+        assert_no_difference [ 'Session.count', 'AccountCompletionProof.count', -> { user.reload.sign_in_count.to_i } ] do
           post '/api/v1/sessions', params: { user: { email: user.email, **credentials } }, headers: csrf_headers, as: :json
         end
         assert_response :unauthorized
@@ -33,7 +33,7 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'deactivation denies the first protected request and destroys its session and push subscriptions' do
+  test 'deactivation denies the first protected request and revokes its session and push subscriptions' do
     user = users(:member_loud)
     authenticate(user)
     session_record = user.sessions.last
@@ -45,7 +45,7 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
     refute_includes response.body, user.email_api_key
-    assert_not Session.exists?(session_record.id)
+    refute session_record.reload.active?
     assert_not PushSubscription.exists?(subscription.id)
 
     cookies['session_id'] = saved_cookie
@@ -63,6 +63,46 @@ class SessionSecurityTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
     assert_equal original_name, user.reload.name
+  end
+
+  test 'logout retains the same revoked row without allowing the old cookie to authenticate' do
+    user = users(:member_loud)
+    authenticate(user)
+    session_record = user.sessions.last
+    saved_cookie = cookies['session_id']
+
+    assert_no_difference 'Session.count' do
+      delete '/api/v1/sessions', headers: csrf_headers, as: :json
+    end
+    assert_response :success
+    refute session_record.reload.active?
+    assert_equal user.id, session_record.user_id
+
+    cookies['session_id'] = saved_cookie
+    get '/api/v1/profile/email_api_key', as: :json
+    assert_response :unauthorized
+    refute_includes response.body, user.email_api_key
+  end
+
+  test 'a retained revoked session cannot access the job administration engine' do
+    user = users(:server_admin)
+    authenticate(user)
+    record = user.sessions.last
+    applications_before = MissionControl::Jobs.applications
+    adapter = ActiveJob::QueueAdapters::AsyncAdapter.new
+    MissionControl::Jobs.applications = MissionControl::Jobs::Applications.new.tap do |applications|
+      applications.add('Session security', default: adapter)
+    end
+    get '/admin/jobs'
+    assert request.path_parameters[:controller].to_s.start_with?('mission_control/jobs/')
+
+    record.revoke!
+    get '/admin/jobs'
+
+    refute request.path_parameters[:controller].to_s.start_with?('mission_control/jobs/')
+  ensure
+    MissionControl::Jobs.applications = applications_before if applications_before
+    adapter&.shutdown
   end
 
   test 'clearing an email block requires a valid administrator session and CSRF token' do

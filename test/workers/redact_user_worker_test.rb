@@ -21,7 +21,7 @@ class RedactUserWorkerTest < ActiveSupport::TestCase
     assert_equal 'bounced', event.kind
     assert_equal address_digest, suppression.reload.email_sha256
     assert_equal event.id, suppression.notification_delivery_event_id
-    assert_no_difference ['NotificationDeliveryEvent.count', 'EmailSuppression.count'] do
+    assert_no_difference [ 'NotificationDeliveryEvent.count', 'EmailSuppression.count' ] do
       NotificationEmailEventService.record!(delivery: delivery, kind: 'complained', source_key: 'late-feedback',
         occurred_at: Time.current, detail: 'Personal information from a late report')
     end
@@ -43,5 +43,16 @@ class RedactUserWorkerTest < ActiveSupport::TestCase
     end
 
     assert_nil user.reload.webauthn_id
+  end
+
+  test 'redaction permanently removes both active and retained session metadata' do
+    user = users(:member_normal)
+    user.sessions.create!(ip_address: '192.0.2.1', user_agent: 'Redacted browser')
+    user.sessions.create!(ip_address: '192.0.2.2', user_agent: 'Previous browser',
+      created_at: 2.days.ago, revoked_at: 1.day.ago)
+
+    RedactUserWorker.perform_now(user.id, user.id, false)
+
+    assert_empty Session.where(user_id: user.id)
   end
 end

@@ -34,7 +34,7 @@ class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
 
   test "unknown and revoked session cookies cannot connect" do
     session_record = users(:member_normal).sessions.create!(user_agent: "Cable test", ip_address: "127.0.0.1")
-    session_record.destroy!
+    session_record.revoke!
     [session_record.id, Session.maximum(:id).to_i + 1].each do |session_id|
       cookies.signed[:session_id] = session_id
 

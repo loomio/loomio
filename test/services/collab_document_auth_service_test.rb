@@ -52,7 +52,7 @@ class CollabDocumentAuthServiceTest < ActiveSupport::TestCase
     env = env_with_session(session_record.id)
     assert CollabServer.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
 
-    session_record.destroy!
+    session_record.revoke!
     refute CollabServer.config.authenticate.call(document_name: "discussion-#{@discussion.id}-description", env: env)
     assert CollabServer.config.authenticate.call(document_name: "group-new-0-1", env: env)
   end

@@ -1,10 +1,10 @@
 ---
 title: Вхід
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 62c7f5b3867c1745
   sign-in-with-a-passkey: 844add9fb96f5adb
@@ -22,7 +22,7 @@ generated:
   create-an-account: 3c5050094f07ec13
   sign-in-with-google: d32e026d7e980d0f
   other-loomio-sites: 3c7c7edc3fe891cb
-  sign-out: eab51353be38f372
+  sign-out: f42223d7e88e09ba
 title_source: 824a1d703ce676bb
 title_generated: f3414839a0f1b888
 ---
@@ -94,3 +94,5 @@ title_generated: f3414839a0f1b888
 ## Вихід
 
 Відкрийте бічну панель, виберіть своє ім’я, а потім виберіть **Вийти**. Якщо ви користуєтеся спільним комп’ютером, після завершення роботи вийдіть з облікового запису, а не лише закрийте вкладку браузера.
+
+Вихід негайно завершує сеанс у цьому браузері. За замовчуванням Loomio зберігає IP-адресу сеансу, інформацію про браузер, а також час початку й завершення сеансу протягом 60 днів для розслідування інцидентів безпеки. Оператори приватних сайтів можуть налаштувати цей термін. Остаточне видалення вашого облікового запису видаляє цю історію сеансів.

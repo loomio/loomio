@@ -32,7 +32,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
     assert_equal users(:user).id, browser.response.parsed_body['current_user_id']
     assert token.reload.used_at
 
-    assert_difference 'Session.count', -1 do
+    assert_difference 'Session.active.count', -1 do
       browser.delete '/api/v1/sessions', headers: csrf_headers(browser), as: :json
     end
     browser.assert_response :success
@@ -45,7 +45,7 @@ class SsoLoginTokenTest < ActionDispatch::IntegrationTest
     browser.assert_response :forbidden
   end
 
-  test 'signed-out users, members, and group coordinators cannot generate admin sign-in links' do
+  test 'signed-out users, members, and group admins cannot generate admin sign-in links' do
     get '/dashboard'
     assert_no_difference 'LoginToken.count' do
       post login_as_admin_user_path(users(:user)), headers: csrf_headers
