@@ -229,6 +229,27 @@ class PollOptionTest < ActiveSupport::TestCase
     assert_equal 0, poll.poll_options.last.average_score
   end
 
+  test "results sample voter avatars from all voters in a stable order per option" do
+    poll = PollService.create(params: {
+      poll_type: 'poll', title: 'Many voters', group_id: groups(:group).id,
+      poll_option_names: %w[Alpha Beta], notify_on_open: false
+    }, actor: users(:admin))
+    options = poll.poll_options.to_a
+    voter_ids = (100...100 + Poll::RESULT_VOTER_IDS_MAX * 2).to_a
+    scores = voter_ids.index_with(1).merge(99 => 0)
+    options.each { |option| option.update_columns(scores_by_voter: scores) }
+
+    avatars_by_option = poll.results.to_h { |row| [row[:id], row[:voter_ids]] }
+    options.each do |option|
+      avatars = avatars_by_option.fetch(option.id)
+      assert_equal Poll::RESULT_VOTER_IDS_MAX, avatars.uniq.size
+      assert_empty avatars - voter_ids
+      assert_not_empty avatars - voter_ids.take(Poll::RESULT_VOTER_IDS_MAX)
+    end
+    assert_not_equal avatars_by_option.fetch(options.first.id), avatars_by_option.fetch(options.last.id)
+    assert_equal avatars_by_option, poll.reload.results.to_h { |row| [row[:id], row[:voter_ids]] }
+  end
+
   test "anonymous choices freeze option changes only after a ballot exists" do
     poll = PollService.create(params: {
       poll_type: 'proposal', title: 'Frozen options', group_id: groups(:group).id,
