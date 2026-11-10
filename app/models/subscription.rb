@@ -5,12 +5,15 @@ class Subscription < ApplicationRecord
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 
   PAYMENT_METHODS = %w[barter none chargify loomio_subscriptions manual paypal].freeze
-  STATES = %w[active on_hold pending past_due canceled].freeze
+  # Billing services map their own states onto these when updates arrive.
+  # Active and pending subscriptions keep their groups working until expires_at.
+  # Past due, on hold and canceled subscriptions make their groups read-only.
+  STATES = %w[active pending past_due on_hold canceled].freeze
   ACTIVE_STATES = %w[active pending].freeze
 
-  scope :active, -> { where(state: ACTIVE_STATES).where("expires_at is null OR expires_at > ?", Time.current) }
-  scope :expired, -> { where(state: ACTIVE_STATES).where("expires_at < ?", Time.current) }
-  scope :canceled, -> { where(state: :canceled) }
+  validates :state, inclusion: { in: STATES }
+
+  scope :active, -> { where(active_sql) }
 
   has_many :groups
   belongs_to :owner, class_name: 'User'
@@ -19,29 +22,31 @@ class Subscription < ApplicationRecord
 
   has_paper_trail
 
+  # The organisation's subscription, or the unsaved free tier when it has none.
   def self.for(group)
+    group.parent_or_self.subscription || Subscription.new
+  end
+
+  # The organisation's subscription, created and linked when it has none.
+  def self.for!(group)
     parent = group.parent_or_self
-    parent.subscription || begin
-      parent.subscription = Subscription.new
-      parent.save
-      parent.subscription
-    end
+    parent.subscription || parent.create_subscription!.tap { parent.save! }
   end
 
-  def level
-    SubscriptionService::PLANS[self.plan][:level]
-  end
-
-  def config
-    SubscriptionService::PLANS[Subscription.last.plan.to_sym]
+  # The single definition of an active subscription, shared by is_active?,
+  # Group.enabled and Group#subscription_active?.
+  def self.active_sql(table = table_name)
+    sanitize_sql_array([
+      "#{table}.state IN (:states) AND (#{table}.expires_at IS NULL OR #{table}.expires_at > :now)",
+      { states: ACTIVE_STATES, now: Time.current }
+    ])
   end
 
   def is_active?
-    ACTIVE_STATES.include?(state) && (self.expires_at.nil? || self.expires_at > Time.current)
+    ACTIVE_STATES.include?(state) && (expires_at.nil? || expires_at > Time.current)
   end
 
   def management_link
     (self.info || {})['chargify_management_link']
   end
-
 end

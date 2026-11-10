@@ -32,7 +32,7 @@ class TopicAbilityContractTest < ActiveSupport::TestCase
     topic = Topic.find(topics(topic_name).id)
     if topic.group_id
       topic.group.update_columns(group_settings)
-      Subscription.for(topic.group).update_columns(allow_guests: guests)
+      Subscription.for!(topic.group).update_columns(allow_guests: guests)
     end
     topic.update_columns(locked_at: (locked ? 1.day.ago : nil), discarded_at: (discarded ? 1.hour.ago : nil),
                          attachments_admin_only: setting == "restrictive")

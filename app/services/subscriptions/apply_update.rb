@@ -42,7 +42,7 @@ module Subscriptions
 
         group = Group.parents_only.find_by!(key: target.fetch("group_id"))
         group.lock!
-        subscription = Subscription.for(group)
+        subscription = Subscription.for!(group)
         raise InvalidUpdate if subscription.chargify_subscription_id.present? || subscription.payment_method == "chargify"
 
         receipt = SubscriptionUpdateReceipt.create!(event_id: @event_id, payload_digest: @payload_digest)
