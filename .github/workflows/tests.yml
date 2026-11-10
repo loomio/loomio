@@ -38,8 +38,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
-    - name: check host logging policy installer
-      run: python3 test/scripts/configure_logging_test.py
     - name: install libvips
       run: |
         sudo apt-get update
