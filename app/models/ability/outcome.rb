@@ -6,8 +6,9 @@ module Ability::Outcome
       can? :show, outcome.poll
     end
 
+    # Outcomes conclude a vote, so they need a closed poll that still exists.
     can [:create, :update], ::Outcome do |outcome|
-      !outcome.poll.active? &&
+      outcome.poll.closed? && outcome.poll.kept? &&
       (outcome.admins.exists?(user.id) || (outcome.group.members_can_edit_discussions && outcome.members.exists?(user.id)))
     end
 

@@ -8,18 +8,23 @@ class Views::Topics::TopicItems::NewComment < Views::Application::Component
 
   def view_template
     comment = @item.itemable
+    author = author_or_deactivated(comment.author)
     article(class: "new-comment", id: "comment-#{comment.id}") do
       div(class: "topic-item px-3 pb-1") do
         div(id: "sequence-#{@item.sequence_id}", class: "d-flex lmo-action-dock-wrapper", style: "margin-left: 0px;") do
           div(class: "topic-item__avatar mr-3 mt-0") do
-            render Views::NotificationMailer::Common::Avatar.new(user: comment.author)
+            render Views::NotificationMailer::Common::Avatar.new(user: author)
           end
           div(class: "layout topic-item__body column") do
             div(class: "layout align-center wrap") do
               h3(class: "topic-item__title text-body-2", id: "topic_item-#{@item.id}") do
                 span do
                   strong do
-                    a(href: user_url(comment.author)) { plain comment.author.name }
+                    if author.persisted?
+                      a(href: user_url(author)) { plain author.name }
+                    else
+                      plain author.name
+                    end
                   end
                 end
                 span do

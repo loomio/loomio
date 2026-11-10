@@ -118,6 +118,45 @@ class CrawlerPagesTest < ActionDispatch::IntegrationTest
     assert_equal ['Reply 0', 'Reply 1'], data['comment'].map { |comment| comment['text'] }.last(2)
   end
 
+  test 'crawler pages omit removed comments from structured data even when their author is gone' do
+    add_comments(3)
+    comments = @discussion.comments.order(:id).last(3)
+    comments[1].update_columns(discarded_at: Time.current)
+    comments[2].update_columns(discarded_at: Time.current, user_id: nil)
+
+    get discussion_path(@discussion), headers: BOT
+
+    assert_response :success
+    assert_equal 2, page.css('.item-removed').size
+    assert_includes page.at_css('.activity-panel').text, 'Reply 0'
+    assert_not_includes response.body, 'Reply 1'
+    assert_not_includes response.body, 'Reply 2'
+    data = json_ld
+    assert_equal ['Reply 0'], data['comment'].map { |comment| comment['text'] }.grep(/Reply/)
+    assert_equal @admin.name, data['comment'].find { |comment| comment['text'] == 'Reply 0' }.dig('author', 'name')
+  end
+
+  test 'a comment without an author is shown as a deactivated user on crawler and export pages' do
+    add_comments(1)
+    comment = @discussion.comments.order(:id).last
+    comment.update_columns(user_id: nil)
+    selector = "#comment-#{comment.id}"
+
+    get discussion_path(@discussion), headers: BOT
+
+    assert_response :success
+    assert_includes page.at_css(selector).text, I18n.t('profile_page.deactivated_user')
+    assert_nil page.at_css("#{selector} .topic-item__title a")
+    author = json_ld['comment'].find { |entry| entry['text'] == 'Reply 0' }.fetch('author')
+    assert_equal({ '@type' => 'Person', 'name' => I18n.t('profile_page.deactivated_user') }, author)
+
+    get "#{discussion_path(@discussion)}?export=1"
+
+    assert_response :success
+    assert_includes page.at_css(selector).text, I18n.t('profile_page.deactivated_user')
+    assert_nil page.at_css('script[type="application/ld+json"]')
+  end
+
   test 'link previews get absolute image URLs and a plain-text group excerpt' do
     @group.cover_photo.attach(io: File.open(Rails.root.join('public/brand/icon-yellow-on-white-256.png')), filename: 'cover.png')
     @group.update!(description: "First line\n\nSecond **line**", description_format: 'md')

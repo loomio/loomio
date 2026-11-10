@@ -1,10 +1,10 @@
 ---
 title: Käyttäjän API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-09'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 1b6548c1968d0597
   show-poll: 4d572c3f54c99239
   example-13: a983068cc0f86562
-  list-polls: 0bc967eba69998d6
+  list-polls: 745a31f00cf2e8e8
   params-10: 5e7c92669349a80e
   example-14: b12d281344b3d767
   edit-poll: d99856e72f782e4d
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Listaa kyselyt
 
-Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle. Julkisesti näkyvän ryhmän julkiset kyselyt voi listata myös henkilö, joka ei ole ryhmän jäsen. Yksityiset kyselyt näkyvät vain käyttäjille, jotka voivat lukea niitä Loomiossa. Vastaus sisältää kunkin näkyvän kyselyn nykyisen johtopäätöksen, joten voit listata ratkaistut ehdotukset parametrilla `status=closed`.
+Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle, mukaan lukien itsenäiset kyselyt ja keskusteluihin sisältyvät kyselyt. Julkisesti näkyvän ryhmän julkiset kyselyt voi listata myös henkilö, joka ei ole ryhmän jäsen. Yksityiset kyselyt näkyvät vain käyttäjille, jotka voivat lukea niitä Loomiossa. Vastaus sisältää kunkin näkyvän kyselyn nykyisen johtopäätöksen, joten voit listata suljetut kyselyt parametrilla `status=closed` ja lukea niiden johtopäätökset, jos ne on asetettu.
+
+Voit näyttää päätöksen tilan keskustelujen yhteydessä hakemalla saman ryhmän keskustelut ja kyselyt sekä yhdistämällä ne `topic_id`-arvojen perusteella. Käytä kyselyille parametria `status=all`. Hae kaikki sivut parametreilla `limit` ja `offset`. Keskustelussa voi olla useita kyselyjä, joten valitse, mikä kysely määrittää näytettävän tilan, esimerkiksi viimeksi luotu kysely. Jos `closed_at` ei ole null, kysely on suljettu. Jos `closing_at` on null, kysely on luonnos. Kun kyselyllä on johtopäätös, sen `current_outcome_id` yksilöi tietueen vastauksen `outcomes`-taulukossa. Yhdistä kyseisen tietueen `poll_id` kyselyn `id`-arvoon.
+
+Voit myös [lukea yksittäisen keskustelun ketjun kohteet](#read-thread) kutsulla `GET /api/user0/threads/:topic_id/items`. Se palauttaa ketjun kyselyt ja johtopäätökset muiden kohteiden ohella. Hae kaikki sivut, jotta saat koko ketjun.
 
 `GET /api/user0/polls`
 

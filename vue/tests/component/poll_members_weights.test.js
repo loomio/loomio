@@ -34,6 +34,7 @@ function buildPoll(overrides = {}) {
     id: 42, groupId: 8, weightedVoting: true, closedAt: null, openingAt: null, openedAt: '2026-09-28',
     recipientAudience: null, recipientUserIds: [], recipientEmails: [], recipientChatbotIds: [],
     adminsInclude: () => true, anonymous: false, group: () => ({id: 8}),
+    isScheduled() { return !!this.openingAt && !this.openedAt; },
     ...overrides
   };
 }

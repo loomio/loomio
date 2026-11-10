@@ -43,6 +43,8 @@ class Dev::ScenariosController < Dev::BaseController
 
 
   def reset_transient_state
+    # End the previous browser session before truncation removes its row.
+    sign_out
     Rails.cache.clear
     ActionMailer::Base.deliveries.clear
     flash.clear

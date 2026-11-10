@@ -25,11 +25,8 @@ for (const [name, url, selector] of [
 }
 
 test.describe('starting polls in a thread', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/dev/polls/test_discussion');
-  });
-
   test('a proposal, then voting with a reason', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'check');
     await expectPoll(page);
     await voteOption(page, 'agree').click();
@@ -39,6 +36,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a choose poll', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'poll', { options: ['An option', 'Another option'] });
     await expectPoll(page);
     await voteOption(page, 'An option').click();
@@ -48,6 +46,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('an allocate poll', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'dot_vote', { options: ['An option'] });
     await expectPoll(page);
     await page.locator('.poll-dot-vote-vote-form__option .v-slider').click();
@@ -57,6 +56,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a score poll', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'score', { options: ['An option'] });
     await expectPoll(page);
     await page.locator('.vote-form-number-input').fill('1');
@@ -66,6 +66,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a ranked choice poll', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'ranked_choice', { options: ['An option', 'Another option'] });
     await expectPoll(page);
     await expect(page.locator('.poll-ranked-choice-vote-form')).toBeVisible();
@@ -93,6 +94,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a proposal with results hidden until voting closes', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await openPollForm(page, 'check');
     await fillPollForm(page);
     await page.locator('.poll-common-form__more-settings').click();
@@ -104,6 +106,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('an anonymous proposal hides voters and reasons until it closes', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await openPollForm(page, 'check');
     await fillPollForm(page);
     await page.locator('.poll-common-form__more-settings').click();
@@ -154,6 +157,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a proposal for selected voters only', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await openPollForm(page, 'check');
     await fillPollForm(page);
     await page.locator('.poll-common-settings__specified-voters-only input').check();
@@ -202,6 +206,7 @@ test.describe('starting polls in a thread', () => {
   });
 
   test('a scheduled proposal shows a preview until voting opens', async ({ page }) => {
+    await page.goto('/dev/polls/test_discussion');
     await openPollForm(page, 'check');
     await fillPollForm(page, { title: 'A scheduled proposal' });
     await page.locator('.poll-common-form__opens-immediately input').uncheck();

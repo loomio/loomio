@@ -81,6 +81,9 @@ class NotificationAudienceService
 
   def self.audience_candidates(model)
     candidates = []
+    # Unsaved discussions and polls preview recipients through their group.
+    # Membership invitations exclude this audience through exclude_members.
+    candidates << { id: "group", kind: "group", name: model.name } if model.is_a?(Group)
     topic = topic_for(model)
     poll = poll_for(model)
 

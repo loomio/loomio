@@ -1,10 +1,10 @@
 ---
 title: サインイン
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 786e73209ab68c9e
   sign-in-with-a-passkey: ea16cb975c79ff0e
@@ -22,7 +22,7 @@ generated:
   create-an-account: a5c1491409c9ee87
   sign-in-with-google: ba348912f2a2651d
   other-loomio-sites: a82824ee018b16fe
-  sign-out: 4fba661cb68f15ca
+  sign-out: 1e7e6428164f45e7
 title_source: 824a1d703ce676bb
 title_generated: 343ffb055585a6be
 ---
@@ -94,3 +94,5 @@ SSO専用の非公開サイトには、その組織のサインイン方法だ�
 ## サインアウトする
 
 サイドバーを開き、自分の名前を選択してから、**サインアウト**を選択します。共有のパソコンでは、利用を終えたらブラウザーのタブを閉じるだけでなく、サインアウトしてください。
+
+サインアウトすると、そのブラウザーのセッションは直ちに終了します。Loomioは、セキュリティ調査のために、セッションのIPアドレス、ブラウザー情報、開始時刻と終了時刻を、初期設定では60日間保持します。プライベートサイトの運営者は、この期間を設定できます。アカウントを完全に削除すると、このセッション履歴も削除されます。

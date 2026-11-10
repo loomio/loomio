@@ -19,6 +19,68 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   # Count tests
+  test "new discussion previews offer and expand the current group without creating a thread" do
+    @group.update!(members_can_announce: true, members_can_add_members: false)
+    sign_in users(:user)
+    target = { group_id: @group.id }
+    audience = "group"
+    expected_ids = @group.members.active.humans.where.not(id: users(:user).id).pluck(:id).sort
+
+    assert_no_difference ["Discussion.count", "Topic.count", "Notification.count"] do
+      get :available_audiences, params: target
+      assert_response :success
+      assert_includes JSON.parse(response.body).fetch("audiences").pluck("id"), audience
+
+      get :audience, params: target.merge(recipient_audience: audience)
+      assert_response :success
+      assert_equal expected_ids, JSON.parse(response.body).fetch("users").pluck("id").sort
+
+      get :count, params: target.merge(recipient_audience: audience)
+      assert_response :success
+      assert_equal expected_ids.size, JSON.parse(response.body).fetch("count")
+
+      get :search, params: target.merge(q: @admin.username)
+      assert_response :success
+      assert_includes JSON.parse(response.body).fetch("users").pluck("id"), @admin.id
+    end
+  end
+
+  test "new discussion previews enforce group notification permission" do
+    @group.update!(members_can_announce: false)
+    sign_in users(:user)
+    target = { group_id: @group.id }
+    audience = "group"
+
+    get :available_audiences, params: target
+    assert_response :success
+    refute_includes JSON.parse(response.body).fetch("audiences").pluck("id"), audience
+
+    [:audience, :count].each do |action|
+      get action, params: target.merge(recipient_audience: audience)
+      assert_response :forbidden
+    end
+  end
+
+  test "new discussion previews deny nonmembers even when they can start public group threads" do
+    group = groups(:public_group)
+    group.update!(non_members_can_start_discussions: true)
+    sign_in @alien
+
+    [:available_audiences, :audience, :count, :search].each do |action|
+      get action, params: { group_id: group.id, recipient_audience: "group", q: @admin.username }
+      assert_response :forbidden
+    end
+  end
+
+  test "new discussion previews require sign in and reject unrelated audiences" do
+    get :audience, params: { group_id: @group.id, recipient_audience: "group-#{groups(:alien_group).id}" }
+    assert_response :not_found
+
+    sign_out @admin
+    get :available_audiences, params: { group_id: @group.id }
+    assert_response :unauthorized
+  end
+
   test "count returns a count of recipients" do
     hex = SecureRandom.hex(4)
     bill = User.create!(name: "bill#{hex}", email: "bill#{hex}@example.com", username: "bill#{hex}")
@@ -280,6 +342,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
     assert_equal subgroup.name, subgroup_audience.fetch("name")
     assert_equal 1, subgroup_audience.fetch("size")
+    refute_includes audiences.pluck("id"), "group"
     refute audiences.any? { |audience| audience["id"] == "group-#{@group.id}" }
   end
 

@@ -2,7 +2,7 @@
 
 Read [writing.md](writing.md) before writing documentation. Paths in these instructions are relative to the repository root unless a Markdown link specifies otherwise.
 
-- Read [user_manual_translations.md](user_manual_translations.md) when translating the manual or changing its translation tooling, and when preparing a feature for merge.
+- Read [user_manual_translations.md](user_manual_translations.md) when translating the manual or changing its translation tooling, and before opening a pull request or preparing a feature for merge.
 - Read [user_manual_screenshots.md](user_manual_screenshots.md) when generating, changing, reviewing, or publishing manual screenshots, and when preparing a feature for merge.
 - Follow [release_notes.md](release_notes.md) for release notes and release preparation.
 - These instruction files live under `docs/agents/`; they are repository guidance, not help-site pages. Do not add them to `docs/help/SUMMARY.md`.
@@ -10,7 +10,7 @@ Read [writing.md](writing.md) before writing documentation. Paths in these instr
 ## User manual
 
 - Loomio publishes `docs/help/en/user_manual/` with its own documentation site builder in `docs/help/build.rb`. When developing user-visible features or behaviour changes, consider the user manual's audience and update the relevant pages so the documentation stays in sync with the application. Follow `docs/AGENTS.md` when editing documentation.
-- During feature development, update the English manual only. Defer user-manual translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English changes with `DOCS_LOCALES=en bundle exec ruby docs/help/build.rb`; complete translations, affected documentation screenshots, and the full documentation build when preparing the feature for merge.
+- During feature development, draft and validate the English documentation first. Present the actual English changes to the user and get their approval before translating them. A request to push or open a pull request does not by itself approve unseen English changes. After approval, complete translations and validate the full documentation build before opening the pull request. If the English wording changes after approval, get approval of the revised wording before updating its translations. Defer documentation screenshot generation until the feature is ready for merge, unless explicitly requested earlier.
 
 ## Changelog
 
@@ -53,13 +53,13 @@ The source and builder for the public help site live under `docs/help/`. The sta
 - Write internal help links from the help-site root, beginning with `/en/`, and omit `.html`, `index.html`, and trailing slashes, for example `/en/user_manual/groups/settings`. The builder adds the configured hosting base path and rewrites relative asset paths where necessary.
 - Redirect source keys in `docs/help/redirects.yml` are relative to the generated `/en/` directory and must not start with `/en/`. Redirect targets should use the complete help-site path beginning with `/en/`.
 - When a public page path changes, retain its old URL in `docs/help/redirects.yml`. The Cloudflare export includes both current and legacy help URLs, and the `/docs` build includes static redirects for legacy paths.
-- During feature development, update the English manual and defer translations and documentation screenshot generation until the feature is ready for merge, unless the user explicitly requests them earlier. Validate English links, images, redirects, metadata, and the sitemap after changing manual pages, navigation, assets, or redirects:
+- Validate English links, images, redirects, metadata, and the sitemap before presenting the English changes for approval:
 
   ```bash
   DOCS_LOCALES=en bundle exec ruby docs/help/build.rb
   ```
 
-- When the feature is ready for merge, complete the affected translations and documentation screenshots, then validate the full site:
+- After the user approves the English changes, complete the affected translations and validate the full site before opening a pull request. Complete affected documentation screenshots when preparing for merge and rerun the full build after screenshot changes:
 
   ```bash
   bundle exec ruby docs/help/build.rb

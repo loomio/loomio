@@ -2,7 +2,11 @@ import AppConfig     from '@/shared/services/app_config';
 import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import {intersection} from 'lodash-es';
+import PollAbility   from '@/shared/abilities/poll_ability';
+import CommentAbility from '@/shared/abilities/comment_ability';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
+import TopicAbility from '@/shared/abilities/topic_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
 
 export default new class AbilityService {
   isNotEmailVerified() {
@@ -17,43 +21,20 @@ export default new class AbilityService {
     return Session.isSignedIn();
   }
 
-  canContactUser(user) {
-    return Session.isSignedIn() &&
-    (Session.userId !== user.id) &&
-    intersection(Session.user().groupIds(), user.groupIds()).length;
-  }
-
-  canAddComment(topic) {
-    return topic.group().isEnabled() && !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
-  }
-
-  canAddReaction(topic) {
-    return topic.group().isEnabled() && !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
-  }
-
   canAttachFiles(model) {
     const kind = model.constructor.singular;
     if (!['discussion', 'poll', 'comment', 'stance', 'outcome'].includes(kind)) { return true; }
     if (['discussion', 'poll'].includes(kind) && !model.topicId) { return true; }
     const topic = kind === 'outcome' ? model.poll().topic() : model.topic();
-    return !topic.attachmentsAdminOnly || topic.adminsInclude(Session.user());
-  }
-
-  canRespondToComment(comment) {
-    const topic = comment.topic();
-    return topic &&
-    topic.group().isEnabled() &&
-    !topic.lockedAt &&
-    !comment.discardedAt &&
-    topic.membersInclude(Session.user());
+    return TopicAbility.canAttachFiles(topic);
   }
 
   canEdit(model) {
     if (!model) { return false; }
 
-    return (model.isA('discussion') && this.canEditDiscussion(model)) ||
-    (model.isA('comment') && this.canEditComment(model)) ||
-    (model.isA('poll') && this.canEditPoll(model)) ||
+    return (model.isA('discussion') && DiscussionAbility.canUpdate(model)) ||
+    (model.isA('comment') && CommentAbility.canUpdate(model)) ||
+    (model.isA('poll') && PollAbility.canUpdate(model)) ||
     (model.isA('stance') && this.canEditStance(model));
   }
 
@@ -61,293 +42,28 @@ export default new class AbilityService {
     return stance.poll().group().isEnabled() && Session.user() === stance.author();
   }
 
-  canRedactStance(stance) {
-    const poll = stance.poll();
-    const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
-    return poll &&
-    poll.group().isEnabled() &&
-    hasContent &&
-    !stance.redactedAt &&
-    !stance.revokedAt &&
-    poll.adminsInclude(Session.user());
-  }
-
-  canUnredactStance(stance) {
-    const poll = stance.poll();
-    return poll &&
-    poll.group().isEnabled() &&
-    !!stance.redactedAt &&
-    poll.adminsInclude(Session.user());
-  }
-
-  canEditDiscussion(discussion) {
-    const topic = discussion.topic();
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
-    (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user())));
-  }
-
-  canEditTags(topic) {
-    const user = Session.user();
-    return Session.isSignedIn() && topic.group().isEnabled() && !topic.lockedAt && !topic.discardedAt &&
-      topic.membersInclude(user) && (topic.adminsInclude(user) || topic.topicable().authorId === user.id ||
-        topic.group().membersCanEditDiscussions);
-  }
-
-  canTagTopicItem(item) {
-    if (!['new_discussion', 'poll_created', 'outcome_created', 'new_comment'].includes(item.kind)) { return false; }
-    const topic = item.topic();
-    const user = Session.user();
-    if (!Session.isSignedIn() || !topic.group().isEnabled() || topic.lockedAt || topic.discardedAt || item.model().discardedAt) { return false; }
-    return topic.membersInclude(user) && (topic.adminsInclude(user) || item.model().authorId === user.id ||
-      topic.group().membersCanEditDiscussions);
-  }
-
-  canAdminTags(topic) {
-    const group = topic.group();
-    return group.isEnabled() && group.parentOrSelf().adminsInclude(Session.user());
-  }
-
-  canCreateTags(group) {
-    const user = Session.user();
-    return group.parentOrSelf().adminsInclude(user) ||
-      group.adminsInclude(user) ||
-      !!(group.membersCanCreateTags && group.membersInclude(user));
-  }
-
-  canPinEvent(topic_item) {
-    const topic = topic_item.topic();
-    return (topic_item.depth === 1) &&
-    topic.group().isEnabled() &&
-    !topic_item.model().discardedAt &&
-    !topic_item.pinned &&
-    topic && !topic.lockedAt &&
-    topic.adminsInclude(Session.user());
-  }
-
-  canUnpinEvent(topic_item) {
-    const topic = topic_item.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    topic_item.pinned && topic.adminsInclude(Session.user());
-  }
-
-  canMoveTopic(topic) {
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) || (
-      topic.membersInclude(Session.user()) &&
-      topic.group().membersCanEditDiscussions
-    ))
-  }
-
-  canMoveTopicItems(topic) {
-    return topic.group().isEnabled() && topic.adminsInclude(Session.user());
-  }
-
-  canChangeGroupVolume(group) {
-    return group.membersInclude(Session.user());
-  }
-
-  canAdminister(model) {
-    if (model.constructor.singular == 'group') {
-      return model.isEnabled() && model.adminsInclude(Session.user());
-    } else {
-      return model.topic().group().isEnabled() && model.topic().adminsInclude(Session.user());
-    }
-  }
-
-  canStartThread(group) {
-    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanStartDiscussions) ||
-    (this.isEmailVerified() && !group.privacyIsSecret() && group.nonMembersCanStartDiscussions && !group.membersInclude(Session.user())));
-  }
-
-  canAnnounceDiscussion(discussion) {
-    if (discussion.discardedAt || discussion.closedAt) { return false; }
-    if (discussion.groupId) {
-      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
-      (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user())));
-    } else {
-      return !discussion.id || discussion.topic().adminsInclude(Session.user());
-    }
-  }
-
-  canNotifyGroup(model) {
-    return model.isEnabled() && (model.adminsInclude(Session.user()) ||
-    (model.membersCanAnnounce && model.membersInclude(Session.user())));
-  }
-
   canAnnounce(model) {
-    if (model.isA('group')) { return this.canNotifyGroup(model); }
-    if (model.isA('poll')) { return this.canAnnouncePoll(model); }
-    if (model.isA('topic')) { return this.canAnnounceTopic(model); }
-    return this.canAnnounceDiscussion(model);
+    if (model.isA('group')) { return GroupAbility.canNotify(model); }
+    if (model.isA('poll')) { return PollAbility.canAnnounce(model); }
+    if (model.isA('topic')) { return !model.lockedAt && TopicAbility.canAnnounce(model); }
+    return DiscussionAbility.canAnnounce(model);
   }
 
   canAddGuests(model) {
-    if (model.isA('group')) { return this.canAddMembersToGroup(model); }
-    if (model.isA('poll')) { return this.canAddGuestsPoll(model); }
-    if (model.isA('topic')) { return this.canAddGuestsTopic(model); }
+    if (model.isA('group')) { return GroupAbility.canAddMembers(model); }
+    if (model.isA('poll')) { return PollAbility.canAddGuests(model); }
+    if (model.isA('topic')) { return TopicAbility.canAddGuests(model); }
     return this.canAddGuestsDiscussion(model);
   }
 
   canAddGuestsDiscussion(discussion) {
     if (discussion.groupId) {
-      return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
+      return discussion.group().isEnabled() && !!discussion.group().parentOrSelf().subscription?.allow_guests &&
+      (discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user())));
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
-  }
-
-  canAnnouncePoll(poll) {
-    const user = Session.user();
-    if (poll.discardedAt) { return false; }
-    if (poll.groupId) {
-      return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user)))
-    } else {
-      return poll.adminsInclude(user) ||
-      (!poll.specifiedVotersOnly && poll.membersInclude(user));
-    }
-  }
-
-  canAddMembersPoll(poll) {
-    return poll.group().isEnabled() && poll.adminsInclude(Session.user());
-  }
-
-  canAddGuestsPoll(poll) {
-    if (poll.groupId) {
-      return poll.group().isEnabled() && (poll.group().adminsInclude(Session.user()) ||
-      (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user())));
-    } else {
-      return poll.adminsInclude(Session.user());
-    }
-  }
-
-  canAnnounceTopic(topic) {
-    if (topic.lockedAt) { return false; }
-    if (topic.groupId) {
-      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAnnounce && topic.group().membersInclude(Session.user())));
-    } else {
-      return topic.adminsInclude(Session.user());
-    }
-  }
-
-  canAddGuestsTopic(topic) {
-    if (topic.groupId) {
-      return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
-      (topic.group().membersCanAddGuests && topic.group().membersInclude(Session.user())));
-    } else {
-      return topic.adminsInclude(Session.user());
-    }
-  }
-
-  canAddMembersToGroup(group) {
-    return group.isEnabled() && (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanAddMembers));
-  }
-
-  canCreateSubgroups(group) {
-    return group.isEnabled() && group.isParent() &&
-    (group.adminsInclude(Session.user()) ||
-    (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
-  }
-
-  canEditGroup(group) {
-    return group.isEnabled() && group.adminsInclude(Session.user());
-  }
-
-  canLeaveGroup(group) {
-    return (Session.user().membershipFor(group) != null);
-  }
-
-  canDeleteGroup(group) {
-    return group.adminsInclude(Session.user());
-  }
-
-  canEditOwnComment(comment) {
-    return comment.authorIs(Session.user()) && this.canEditComment(comment);
-  }
-
-  canEditComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt && !comment.discardedAt && (
-      (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
-      (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
-    );
-  }
-
-  canDeleteComment(comment) {
-    const topic = comment.topic();
-    return (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) &&
-    comment.discardedAt &&
-    topic && topic.group().isEnabled() &&
-    (
-      topic.adminsInclude(Session.user()) ||
-      (comment.group() && comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
-    );
-  }
-
-  canDiscardComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    !comment.discardedAt &&
-    (
-      comment.authorIs(Session.user()) ||
-      topic.adminsInclude(Session.user())
-    );
-  }
-
-  canUndiscardComment(comment) {
-    const topic = comment.topic();
-    return topic && topic.group().isEnabled() && !topic.lockedAt &&
-    comment.discardedAt && (
-      (comment.authorIs(Session.user()) && comment.discardedBy === Session.userId) ||
-      topic.adminsInclude(Session.user())
-    );
-  }
-
-  canRemoveMembership(membership) {
-    return membership &&
-    ((membership.user() === Session.user()) || membership.group().adminsInclude(Session.user()));
-  }
-
-  canSetMembershipTitle(membership) {
-    return membership.group().isEnabled() && ((Session.user() === membership.user()) || this.canAdminister(membership.group()));
-  }
-
-  canResendMembership(membership) {
-    return membership && membership.group().isEnabled() && !membership.acceptedAt && this.canAdminister(membership.group());
-  }
-
-  canManageMembershipRequests(group) {
-    return group.isEnabled() && ((group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user()));
-  }
-
-  canStartGroups() {
-    return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
-  }
-
-  canViewGroup(group) {
-    return !group.isDiscarded() && (group.isVisibleToPublic ||
-      group.membersInclude(Session.user()) ||
-      (group.isVisibleToParentMembers && group.parent().membersInclude(Session.user())));
-  }
-
-  canViewPrivateContent(group) {
-    return group.membersInclude(Session.user());
-  }
-
-  canJoinGroup(group) {
-    if (!group.isEnabled() || !this.canViewGroup(group) || group.membersInclude(Session.user())) { return false; }
-    return (group.membershipGrantedUpon === 'request') || group.parentOrSelf().adminsInclude(Session.user());
-  }
-
-  canRequestMembership(group) {
-    return group.isEnabled() &&
-    (group.membershipGrantedUpon === 'approval') &&
-    this.canViewGroup(group) &&
-    !group.membersInclude(Session.user()) &&
-    !this.canJoinGroup(group);
   }
 
   canTranslate(model) {
@@ -364,45 +80,4 @@ export default new class AbilityService {
     return !!model.translationId
   }
 
-  canStartPoll(topic) {
-    if (topic.topicableType === 'Poll') { return false; }
-    if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
-    return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
-           (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
-    )
-  }
-
-  canEditPoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
-    poll.adminsInclude(Session.user()) && !poll.closedAt;
-  }
-
-  canDeletePoll(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
-    !poll.discardedAt && poll.adminsInclude(Session.user());
-  }
-
-  canExportPoll(poll) {
-    return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
-  }
-
-  // Matches the server's view_anonymous_voters: everyone who can see the results.
-  canViewAnonymousVoters(poll) {
-    return poll.anonymous && poll.showResults();
-  }
-
-  canSetPollOutcome(poll) {
-    return poll.group().isEnabled() && !poll.topic().closedAt &&
-    !poll.discardedAt &&
-    poll.closedAt &&
-    poll.adminsInclude(Session.user());
-  }
-
-  canClosePoll(poll) {
-    return poll.isVotable() && this.canEditPoll(poll);
-  }
-
-  canReopenPoll(poll) {
-    return poll.group().isEnabled() && !poll.discardedAt && poll.closedAt && poll.hideResults !== 'until_closed' && !poll.anonymous && poll.adminsInclude(Session.user());
-  }
 }

@@ -12,6 +12,18 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert user.can?(:export, poll)
   end
 
+  test "visitors to public threads can export, as with thread markdown" do
+    topic = topics(:public_discussion_topic)
+    member = users(:user)
+    Membership.create!(user: member, group: topic.group, admin: true, accepted_at: Time.current)
+    poll = PollService.create(params: poll_params(topic_id: topic.id), actor: member)
+    visitor = users(:alien)
+
+    assert visitor.can?(:show, poll), "the visitor can see the public poll"
+    assert visitor.can?(:export, poll)
+    assert member.can?(:export, poll)
+  end
+
   # Poll without group
   test "poll without group as topic admin can vote and manage" do
     user = users(:user)

@@ -23,13 +23,15 @@ class Api::User0::BaseController < Api::V1::SnorlaxBase
     group = Group.find(params[:group_id])
     raise CanCan::AccessDenied unless current_user.can?(:show, group)
 
-    topicable_ids = TopicQuery.visible_to(
+    # Polls can share a discussion's topic; topicable identifies only the
+    # record that started the thread, not every record within it.
+    topic_ids = TopicQuery.visible_to(
       user: current_user,
       group_ids: [ group.id ],
       or_subgroups: false
-    ).where(topicable_type: resource_class.name).select(:topicable_id)
+    ).except(:includes).select(:id)
 
-    resource_class.where(id: topicable_ids)
+    resource_class.where(topic_id: topic_ids)
   end
 
   def permitted_params

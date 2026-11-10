@@ -6,9 +6,10 @@ const mocks = vi.hoisted(() => ({
   openModal: vi.fn()
 }));
 
-vi.mock('@/shared/services/ability_service', () => ({default: {
+vi.mock('@/shared/services/ability_service', () => ({default: {}}));
+vi.mock('@/shared/abilities/poll_ability', () => ({default: {
   canViewAnonymousVoters: mocks.canViewAnonymousVoters,
-  canAddMembersPoll: mocks.canAddMembersPoll
+  canAddVoters: mocks.canAddMembersPoll
 }}));
 vi.mock('@/shared/services/bookmark_service', () => ({default: {actions: () => ({})}}));
 vi.mock('@/shared/helpers/open_modal', () => ({default: mocks.openModal}));
@@ -25,6 +26,8 @@ function pollActions(overrides = {}) {
     openedAt: '2026-09-24T00:00:00Z',
     openingAt: null,
     config: () => ({has_options: true}),
+    isOpened() { return !!this.openedAt; },
+    isScheduled() { return !!this.openingAt && !this.openedAt; },
     ...overrides
   };
   return PollService.actions(poll);

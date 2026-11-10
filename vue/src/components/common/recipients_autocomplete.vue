@@ -2,6 +2,7 @@
 import Records from '@/shared/services/records';
 import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import NotificationsCount from './notifications_count';
 import Session from '@/shared/services/session';
 
@@ -305,7 +306,7 @@ export default {
 
       // Order: poll voter audiences, this group and its delegates, chat rooms, then other groups.
       const group = this.model.isA('group') ? this.model : this.model.group();
-      const ownGroupIds = group ? [`group-${group.id}`, `delegates-${group.id}`] : [];
+      const ownGroupIds = group ? ['group', `group-${group.id}`, `delegates-${group.id}`] : [];
       const otherGroups = audiences.filter(a => ['group', 'delegates'].includes(a.kind) && !ownGroupIds.includes(a.id));
       const leading = audiences.filter(a => !otherGroups.includes(a));
 
@@ -314,7 +315,7 @@ export default {
   },
 
   computed: {
-    canAnnounceDiscussion() { return AbilityService.canAnnounceDiscussion(this.model) },
+    canAnnounceDiscussion() { return DiscussionAbility.canAnnounce(this.model) },
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },

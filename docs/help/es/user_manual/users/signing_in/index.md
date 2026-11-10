@@ -1,10 +1,10 @@
 ---
 title: Iniciar sesión
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 954ecdc1ddd7610d
   sign-in-with-a-passkey: b0048f1e5517e924
@@ -22,7 +22,7 @@ generated:
   create-an-account: 045dda76d205a30c
   sign-in-with-google: e386cb1f49601f02
   other-loomio-sites: 3b58296fee2e151c
-  sign-out: c839baa3e457c705
+  sign-out: 495335b9b91c9ce8
 title_source: 824a1d703ce676bb
 title_generated: 8d518bb65ea3dedb
 ---
@@ -94,3 +94,5 @@ Un sitio privado que solo permite el inicio de sesión único (SSO) muestra úni
 ## Cerrar sesión
 
 Abre la barra lateral, selecciona tu nombre y, después, selecciona **Salir**. En un ordenador compartido, cierra sesión cuando termines en lugar de cerrar solo la pestaña del navegador.
+
+Al cerrar sesión, la sesión de ese navegador finaliza inmediatamente. Loomio conserva la dirección IP, la información del navegador y las horas de inicio y fin de la sesión para investigaciones de seguridad durante 60 días de forma predeterminada. Quienes administran sitios privados pueden configurar este periodo. Al eliminar tu cuenta de forma permanente, se elimina este historial de sesiones.

@@ -3,6 +3,9 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import MembershipAbility from '@/shared/abilities/membership_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
@@ -20,7 +23,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         dock: 2,
         canPerform() {
-          return group.handle && AbilityService.canStartThread(group) && AppConfig.features.app.thread_from_mail;
+          return group.handle && DiscussionAbility.canCreate(group) && AppConfig.features.app.thread_from_mail;
         },
         perform() {
           EventBus.$emit('openModal', {
@@ -63,7 +66,7 @@ export default new class GroupService {
         icon: 'mdi-cog',
         menu: true,
         canPerform() {
-          return AbilityService.canEditGroup(group);
+          return GroupAbility.canUpdate(group);
         },
         perform() {
           return openModal({
@@ -81,7 +84,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         menu: true,
         canPerform() {
-          return AbilityService.canChangeGroupVolume(group);
+          return GroupAbility.canSetVolume(group);
         },
         perform() {
           return openModal({
@@ -107,7 +110,7 @@ export default new class GroupService {
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
         menu: true,
-        canPerform() { return AbilityService.canAdminister(group); },
+        canPerform() { return GroupAbility.canUpdate(group); },
         perform() {
           EventBus.$emit('openModal', {
             component: 'TagsSelect',
@@ -193,7 +196,7 @@ export default new class GroupService {
         icon: 'mdi-exit-to-app',
         menu: true,
         canPerform() {
-          return AbilityService.canRemoveMembership(membership);
+          return MembershipAbility.canDestroy(membership);
         },
         perform() {
           let returnUrl = '/dashboard'
@@ -227,7 +230,7 @@ export default new class GroupService {
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
-          return AbilityService.canDeleteGroup(group);
+          return GroupAbility.canDestroy(group);
         },
         perform() {
           const confirmText = group.handle || group.name.trim();

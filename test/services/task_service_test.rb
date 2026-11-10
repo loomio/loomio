@@ -67,7 +67,7 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_equal "this is a task for Sam Sammy", @discussion.tasks.first.name
     assert_equal Date.parse("2022-05-02"), @discussion.tasks.first.due_on
     assert_includes @discussion.tasks.first.users, @member
-    assert_equal true, @discussion.tasks.first.done
+    assert @discussion.tasks.first.done?
     assert_equal @member, @discussion.tasks.first.author
     assert_nil @discussion.tasks.first.remind
   end
@@ -84,7 +84,7 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_equal Date.parse("2022-05-02"), task.due_on
     assert_empty task.users
     assert_equal @member, task.author
-    assert_equal false, task.done
+    assert_not task.done?
     assert_nil task.done_at
     assert_equal 1, task.remind
 
@@ -98,7 +98,7 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_equal "this is a task for Sam Sammy", task.name
     assert_equal Date.parse("2022-06-01"), task.due_on
     assert_includes task.users, @member
-    assert_equal true, task.done
+    assert task.done?
     assert_not_nil task.done_at
 
     done_at = task.done_at
@@ -119,7 +119,22 @@ class TaskServiceTest < ActiveSupport::TestCase
     TaskService.update_model(@discussion, tasks_data)
 
     assert_equal 'Edited task', task.reload.name
-    assert_not task.done
+    assert_not task.done?
+    assert_nil task.done_at
+  end
+
+  test "unchecking a task in the editor clears its completion timestamp" do
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='true'>Done task</li>"
+    TaskService.update_model(@discussion, TaskService.parse_tasks(rich_text, @member))
+    task = @discussion.tasks.sole
+    assert task.done?
+    assert_not_nil task.done_at
+
+    rich_text = "<li data-uid='123' data-type='taskItem' data-checked='false'>Done task</li>"
+    TaskService.update_model(@discussion, TaskService.parse_tasks(rich_text, @member))
+
+    task.reload
+    assert_not task.done?
     assert_nil task.done_at
   end
 
@@ -166,8 +181,8 @@ class TaskServiceTest < ActiveSupport::TestCase
     freeze_time do
       TaskService.update_done(task, @member, true)
 
-      assert task.done
-      assert task.reload.done
+      assert task.done?
+      assert task.reload.done?
       assert_equal @member, task.doer
       assert_equal Time.current, task.done_at
       document = Nokogiri::HTML.fragment(@discussion.reload.description)
@@ -183,8 +198,8 @@ class TaskServiceTest < ActiveSupport::TestCase
 
     TaskService.update_done(task, @member, false)
 
-    assert_not task.done
-    assert_not task.reload.done
+    assert_not task.done?
+    assert_not task.reload.done?
     assert_nil task.doer
     assert_nil task.done_at
     document = Nokogiri::HTML.fragment(@discussion.reload.description)

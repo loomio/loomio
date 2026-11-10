@@ -24,6 +24,10 @@ class Views::Application::Component < Phlex::HTML
 
   private
 
+  def author_or_deactivated(user)
+    user || LoggedOutUser.new(name: t("profile_page.deactivated_user"))
+  end
+
   def vue_index
     File.read(Rails.root.join('public/vue/index.html'))
   end

@@ -1,10 +1,10 @@
 ---
 title: Уваход
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: cf193791069c0f8a
   sign-in-with-a-passkey: b4e97a9cdc8bfbea
@@ -22,7 +22,7 @@ generated:
   create-an-account: b4c349b7d4199238
   sign-in-with-google: 53a53f051334e245
   other-loomio-sites: 625b9e1ce47136fb
-  sign-out: 03252a28d01c8a22
+  sign-out: 9adf619a7021c747
 title_source: 824a1d703ce676bb
 title_generated: 5598e3d49090ed95
 ---
@@ -94,3 +94,5 @@ title_generated: 5598e3d49090ed95
 ## Выхад
 
 Адкрыйце бакавую панэль, выберыце сваё імя, затым выберыце **Выйсці**. На агульным камп’ютары пасля заканчэння працы выйдзіце з уліковага запісу, а не проста закрыйце ўкладку браўзера.
+
+Выхад неадкладна завяршае сесію ў гэтым браўзеры. Loomio па змаўчанні захоўвае IP-адрас сесіі, звесткі пра браўзер і час пачатку і заканчэння сесіі на працягу 60 дзён для расследавання інцыдэнтаў бяспекі. Аператары прыватных сайтаў могуць наладзіць гэты тэрмін. Пры незваротным выдаленні вашага ўліковага запісу гэтая гісторыя сесій выдаляецца.

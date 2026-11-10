@@ -1,10 +1,10 @@
 ---
 title: כניסה למערכת
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 80c211a6dd57bcb5
   sign-in-with-a-passkey: 64a4182b2b6179b2
@@ -22,7 +22,7 @@ generated:
   create-an-account: aab66754232565db
   sign-in-with-google: ee53782c7e77d63a
   other-loomio-sites: 3dcfd4042cb87425
-  sign-out: 0e3e0621f1a66e45
+  sign-out: 7b3cf9726bffae8c
 title_source: 824a1d703ce676bb
 title_generated: de483f49d72b6e0d
 ---
@@ -94,3 +94,5 @@ title_generated: de483f49d72b6e0d
 ## יציאה מהמערכת
 
 יש לפתוח את סרגל הצד, לבחור את השם המוצג ואז לבחור **יציאה מהמערכת**. במחשב משותף, יש לצאת מהמערכת בסיום השימוש ולא להסתפק בסגירת לשונית הדפדפן.
+
+יציאה מהמערכת מסיימת מיד את ההתחברות באותו דפדפן. כברירת מחדל, Loomio שומרת את כתובת ה-IP, פרטי הדפדפן וזמני ההתחלה והסיום של ההתחברות למשך 60 יום לצורך חקירת אירועי אבטחה. ניתן להגדיר את משך התקופה באתרים פרטיים באמצעות הגדרות האתר. מחיקה לצמיתות של החשבון מסירה את היסטוריית ההתחברויות הזו.

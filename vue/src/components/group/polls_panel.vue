@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { intersection, pickBy, identity, uniq } from 'lodash-es';
 
 import AppConfig from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
 import EventBus from '@/shared/services/event_bus';
@@ -26,7 +26,7 @@ const page = computed({
 });
 
 const totalPages = computed(() => Math.max(1, Math.ceil((loader.value.total || 0) / per)));
-const canStartPoll = computed(() => AbilityService.canStartPoll(group.value));
+const canStartPoll = computed(() => PollAbility.canCreate(group.value));
 
 const mergeQuery = (obj) => ({
   query: pickBy(Object.assign({}, route.query, obj), identity)

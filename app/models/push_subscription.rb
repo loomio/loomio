@@ -22,10 +22,10 @@ class PushSubscription < ApplicationRecord
   validates :failure_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validate :endpoint_is_trusted
 
-  scope :active, -> { where(revoked_at: nil).where("expires_at IS NULL OR expires_at > ?", Time.current) }
+  scope :active, -> { where(revoked_at: nil, session_id: Session.active.select(:id)).where("expires_at IS NULL OR expires_at > ?", Time.current) }
 
   def active?
-    revoked_at.nil? && (expires_at.nil? || expires_at.future?)
+    revoked_at.nil? && session.active? && (expires_at.nil? || expires_at.future?)
   end
 
   def revoke!

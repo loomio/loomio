@@ -1,10 +1,10 @@
 ---
 title: Вход в систему
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: c37e3298c3c2acc8
   sign-in-with-a-passkey: 34547fe5fe4f3fa5
@@ -22,7 +22,7 @@ generated:
   create-an-account: 335c6afeb734fcf1
   sign-in-with-google: 3695e9cc55e1a3a1
   other-loomio-sites: 9d9583f252fdda0b
-  sign-out: 45b8d478d74b9fbd
+  sign-out: 76fb77232cb1362a
 title_source: 824a1d703ce676bb
 title_generated: 6755f4d23b8d4b1a
 ---
@@ -94,3 +94,5 @@ title_generated: 6755f4d23b8d4b1a
 ## Выход из системы
 
 Откройте боковую панель, выберите своё имя, затем выберите **Выйти**. Если вы пользуетесь общим компьютером, выйдите из системы после завершения работы, а не просто закройте вкладку браузера.
+
+Выход из системы немедленно завершает сеанс в этом браузере. По умолчанию Loomio хранит IP-адрес сеанса, сведения о браузере, а также время начала и окончания сеанса в течение 60 дней для расследования инцидентов безопасности. Операторы частных сайтов могут настроить этот срок. При безвозвратном удалении вашей учётной записи эта история сеансов удаляется.

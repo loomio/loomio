@@ -109,7 +109,7 @@ module CurrentUserHelper
   end
 
   def resume_session
-    return Current.session if Current.session&.user&.active?
+    return Current.session if Current.session&.active? && Current.session.user.active?
 
     Current.session = find_session_by_cookie
   end
@@ -117,10 +117,10 @@ module CurrentUserHelper
   def find_session_by_cookie
     return unless cookies.signed[:session_id]
 
-    session_record = Session.includes(:user).find_by(id: cookies.signed[:session_id])
+    session_record = Session.active.includes(:user).find_by(id: cookies.signed[:session_id])
     return session_record if session_record&.user&.active?
 
-    session_record&.destroy!
+    session_record&.revoke!
     nil
   end
 
@@ -144,7 +144,7 @@ module CurrentUserHelper
   end
 
   def terminate_session
-    Current.session&.destroy
+    Current.session&.revoke!
     Current.session = nil
     cookies.delete(:session_id)
     cookies.delete(:signed_in)

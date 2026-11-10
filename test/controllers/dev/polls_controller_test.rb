@@ -21,3 +21,23 @@ class Dev::PollsControllerTest < ActionController::TestCase
     assert_includes response.body, "is reminding you to vote"
   end
 end
+
+class Dev::PollScenarioSessionsTest < ActionDispatch::IntegrationTest
+  self.use_transactional_tests = false
+
+  test "rebuilding a scenario replaces the browser's previous session" do
+    get '/dev/polls/test_discussion'
+    assert_response :redirect
+    get URI(response.location).request_uri
+    assert_response :success
+
+    get '/dev/polls/test_discussion', params: { time_zone: 'America/Los_Angeles' }
+    assert_response :redirect
+    get URI(response.location).request_uri
+    assert_response :success
+    assert_equal 'America/Los_Angeles', Session.active.sole.user.time_zone
+
+    get '/api/v1/profile/email_api_key', as: :json
+    assert_response :success
+  end
+end

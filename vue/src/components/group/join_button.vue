@@ -2,7 +2,7 @@
 import Session         from '@/shared/services/session';
 import Records         from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
-import AbilityService  from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Flash           from '@/shared/services/flash';
 import { useI18n }     from 'vue-i18n';
 
@@ -92,13 +92,19 @@ export default
     },
 
     canJoinGroup() {
-      return this.group && !!AbilityService.canJoinGroup(this.group);
+      if (!this.group || this.group.membersInclude(Session.user())) { return false; }
+      // Visitors see the button so they can sign in, then the server rule applies.
+      if (!Session.isSignedIn()) {
+        return this.group.isEnabled() && this.group.membershipGrantedUpon === 'request' && GroupAbility.canShow(this.group);
+      }
+      return GroupAbility.canJoin(this.group);
     },
 
     canRequestMembership() {
       return this.membershipRequestLoaded &&
         !this.wasIgnored &&
-        !!AbilityService.canRequestMembership(this.group);
+        this.group.isEnabled() && !this.group.membersInclude(Session.user()) && !this.canJoinGroup &&
+        GroupAbility.canRequestMembership(this.group);
     }
   }
 };

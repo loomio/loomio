@@ -1,5 +1,5 @@
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import openModal from '@/shared/helpers/open_modal';
@@ -12,7 +12,7 @@ export default new class AttachmentService {
         icon: 'mdi-delete',
         name: 'common.action.delete',
         canPerform() {
-          return attachment.isA('attachment') && AbilityService.canAdminister(group);
+          return attachment.isA('attachment') && GroupAbility.canUpdate(group);
         },
         perform() {
           return EventBus.$emit('openModal', {

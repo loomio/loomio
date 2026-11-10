@@ -1,10 +1,10 @@
 ---
 title: Accedere
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 64e85f03c5d01223
   sign-in-with-a-passkey: d6f5a9eefa54e471
@@ -22,7 +22,7 @@ generated:
   create-an-account: 5ca4f2036246ad1c
   sign-in-with-google: 8b4743f32236959d
   other-loomio-sites: f8906de976d918d6
-  sign-out: 5942295bc99f3cc5
+  sign-out: '0782015789eb23e3'
 title_source: 824a1d703ce676bb
 title_generated: 32acad1cd57d9b09
 ---
@@ -94,3 +94,5 @@ Un sito privato con accesso esclusivamente tramite SSO mostra solo l'opzione di 
 ## Uscire
 
 Apri la barra laterale, seleziona il tuo nome, poi seleziona **Esci**. Su un computer condiviso, esci quando hai finito invece di chiudere soltanto la scheda del browser.
+
+L'uscita termina immediatamente la sessione di quel browser. Per le indagini sulla sicurezza, Loomio conserva l'indirizzo IP, le informazioni sul browser e gli orari di inizio e fine della sessione per un periodo predefinito di 60 giorni. I gestori dei siti privati possono configurare questo periodo. L'eliminazione definitiva del tuo account rimuove questa cronologia delle sessioni.

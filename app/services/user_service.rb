@@ -160,15 +160,15 @@ class UserService
       secret_token: User.generate_unique_secure_token,
       unsubscribe_token: User.generate_unique_secure_token
     )
-    user.login_tokens.unused.destroy_all
+    user.login_tokens.redeemable.destroy_all
     user.mobile_devices.active.find_each(&:revoke!)
     sign_out_other_sessions(user)
   end
 
   def self.sign_out_other_sessions(user)
-    sessions = user.sessions
+    sessions = user.sessions.active
     sessions = sessions.where.not(id: Current.session.id) if Current.session
-    sessions.destroy_all
+    sessions.find_each(&:revoke!)
   end
 
   def self.save_experience(user:, actor:, params:)

@@ -1,10 +1,10 @@
 ---
 title: Einloggen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 33402cb3cb0f1fee
   sign-in-with-a-passkey: d07e976de4c59602
@@ -22,7 +22,7 @@ generated:
   create-an-account: 6de7e6aab0df92c8
   sign-in-with-google: 2ccbd4c6219c891f
   other-loomio-sites: 16e8a2fe37f99839
-  sign-out: d4ffd0c8432e03d7
+  sign-out: 7710b26a7b751888
 title_source: 824a1d703ce676bb
 title_generated: 9131cb0805a32339
 ---
@@ -94,3 +94,5 @@ Eine private Website, die ausschließlich SSO verwendet, zeigt nur die Anmeldeop
 ## Abmelden
 
 Öffne die Seitenleiste, wähle deinen Namen und dann **Abmelden**. Melde dich auf einem gemeinsam genutzten Computer ab, wenn du fertig bist, statt nur den Browser-Tab zu schließen.
+
+Durch das Abmelden wird die Sitzung in diesem Browser sofort beendet. Loomio speichert die IP-Adresse, Browserinformationen sowie die Start- und Endzeit der Sitzung standardmäßig 60 Tage lang für Sicherheitsuntersuchungen. Wer eine private Loomio-Website betreibt, kann diesen Zeitraum konfigurieren. Wenn du dein Benutzerkonto endgültig löschst, wird auch dieser Sitzungsverlauf gelöscht.

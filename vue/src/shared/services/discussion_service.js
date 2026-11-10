@@ -1,6 +1,8 @@
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
+import ReactionAbility from '@/shared/abilities/reaction_ability';
+import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import openModal      from '@/shared/helpers/open_modal';
 import BookmarkService from '@/shared/services/bookmark_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
@@ -20,7 +22,7 @@ export default new class DiscussionService {
 
       react: {
         dock: 1,
-        canPerform() { return AbilityService.canAddReaction(discussion.topic()); }
+        canPerform() { return ReactionAbility.canCreate(discussion.topic()); }
       },
       translate_thread: {
         icon: 'mdi-translate',
@@ -42,7 +44,7 @@ export default new class DiscussionService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 3,
-        canPerform() { return AbilityService.canEditDiscussion(discussion); },
+        canPerform() { return DiscussionAbility.canUpdate(discussion); },
         to() { return `/d/${discussion.key}/edit`; }
       },
 

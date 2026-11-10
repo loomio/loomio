@@ -1,7 +1,7 @@
 <script setup lang="js">
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import TopicTagsMenu from '@/components/tags/topic_tags_menu';
 import { computed } from 'vue';
 
@@ -43,7 +43,7 @@ const breadcrumbs = computed(() => {
 });
 const tags = computed(() => topic.value.createdTopicItem().tags);
 const isPinned = computed(() => !!topic.value.pinnedAt);
-const canEditTags = computed(() => AbilityService.canEditTags(topic.value));
+const canEditTags = computed(() => TopicAbility.canUpdateTags(topic.value));
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);

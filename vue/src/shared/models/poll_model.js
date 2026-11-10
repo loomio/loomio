@@ -263,19 +263,9 @@ export default class PollModel extends BaseModel {
     return this.topic().adminsInclude(user);
   }
 
-  votersInclude(user) {
-    if (specifiedVotersOnly) {
-      return this.stanceFor(user);
-    } else {
-      return this.membersInclude(user);
-    }
-  }
-
+  // Thread members, as on the server. Voting rights come from stances.
   membersInclude(user) {
-    return !!(
-      this.stanceFor(user) ||
-      this.topic().membersInclude(user)
-    );
+    return this.topic().membersInclude(user);
   }
 
   stanceFor(user) {
@@ -297,16 +287,16 @@ export default class PollModel extends BaseModel {
     return this.myStanceId && this.myStance() && this.myStance().castAt;
   }
 
+  // Matches the server's Poll#results_available?: until-closed polls hide
+  // results from everyone until they close.
+  resultsAvailable() {
+    return this.hideResults !== 'until_closed' || !!this.closedAt;
+  }
+
+  // Until-vote polls also wait for this user's vote.
   showResults() {
-    return !!this.closingAt &&
-    (() => { switch (this.hideResults) {
-      case "until_closed":
-        return this.closedAt;
-      case "until_vote":
-        return this.closedAt || this.iHaveVoted();
-      default:
-        return true;
-    } })();
+    return !!this.closingAt && this.resultsAvailable() &&
+      (this.hideResults !== 'until_vote' || !!this.closedAt || !!this.iHaveVoted());
   }
 
   optionsDiffer(options) {
@@ -368,8 +358,16 @@ export default class PollModel extends BaseModel {
     return !!this.openedAt;
   }
 
+  // Matches the server's Poll#scheduled?.
+  isScheduled() {
+    return !!this.openingAt && !this.isOpened();
+  }
+
+  // Match the server's Poll#active?: voting ends at closingAt, even before the
+  // expiry job sets closedAt.
   isVotable() {
-    return !this.discardedAt && this.closingAt && (this.closedAt == null) && this.isOpened();
+    return !this.discardedAt && !!this.closingAt && (this.closingAt > new Date()) &&
+      (this.closedAt == null) && this.isOpened();
   }
 
   isClosed() {
