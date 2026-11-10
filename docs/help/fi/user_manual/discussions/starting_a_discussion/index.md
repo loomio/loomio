@@ -1,15 +1,15 @@
 ---
 title: Aloita keskustelu
-source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
-source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-10-01'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 3972d86f93bcc6ec
+  invite-and-notify: 40c5557d5679d9ea
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: d423d1521d4d4415
   new-discussion: a464d3acde80aa60
   group: e0b489e75a69326d
-  invite-and-notify: 0d10bab091bbd76e
+  invite-and-notify: 488a4eb233cbc1cb
   tags: 78f6efb2505b74a4
   title: 8f931b9369f96a66
   context: db8c2bfb2d0a6779
@@ -65,7 +65,7 @@ Tarkista, että ryhmän tai alaryhmän nimi on oikea keskustelullesi. Kaikki tä
 
 Ryhmän jäsenet voivat nähdä ryhmänsä keskustelun, vaikka et ilmoittaisi siitä heille. Kun lisäät ryhmän jäsenen **Kutsu**-kenttään, hän saa sähköposti-ilmoituksen ja ilmoituksen Loomiossa.
 
-Valitse ryhmä, johon olet julkaisemassa keskustelun, ilmoittaaksesi sen jäsenille, tai valitse jokin aiheeseen liittyvä ryhmä. Voit avata ryhmän jäsenluettelon valitaksesi yksittäisiä jäseniä. Valitse nimen vieressä oleva ×, jos haluat poistaa henkilön ilmoituksen vastaanottajista. Sähköpostin toimitus riippuu kunkin vastaanottajan ilmoitusasetuksista.
+Valitse ryhmä ilmoittaaksesi kaikille sen jäsenille tai avaa ryhmän jäsenluettelo valitaksesi yksittäisiä jäseniä. Valitse nimen vieressä oleva ×, jos haluat poistaa henkilön ilmoituksen vastaanottajista.
 
 ![Kutsu-kenttä avattuna näyttämään yksittäiset vastaanottajat](../notifying_people/thread_notification.png)
 

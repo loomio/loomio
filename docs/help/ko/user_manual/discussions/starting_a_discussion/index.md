@@ -3,7 +3,7 @@ sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 3972d86f93bcc6ec
+  invite-and-notify: 40c5557d5679d9ea
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -11,18 +11,18 @@ generated:
   introduction: 9538ad03767af484
   new-discussion: 550768e4bdcfa400
   group: 32c847484c329684
-  invite-and-notify: 1a774da5460dc85b
+  invite-and-notify: 175736cd9d41be54
   tags: cd3c53f3964b650c
   title: 964ed39a6018b303
   context: 6ce578f9f3374866
 title: 토론 시작
 title_source: 7373febfac25054c
 title_generated: cb3e738667b3bb46
-source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-09'
 ---
 
 <!-- translation-section: introduction -->
@@ -65,7 +65,7 @@ Loomio 그룹이나 하위 그룹에서 토론을 시작할 수 있습니다.
 
 그룹 멤버는 알림을 받지 않아도 그룹의 토론을 볼 수 있습니다. **초대**에 그룹 멤버를 추가하면 해당 멤버에게 이메일 알림과 Loomio 내 알림이 전송됩니다.
 
-토론을 게시하는 그룹의 멤버에게 알림을 보내려면 해당 그룹을 선택하거나, 관련 그룹을 선택하세요. 그룹을 펼쳐 개별 멤버를 선택할 수 있습니다. 알림 대상에서 제외하려면 이름 옆의 ×를 선택하세요. 이메일 전송 여부는 각 수신자의 알림 설정에 따라 달라집니다.
+그룹의 모든 멤버에게 알림을 보내려면 그룹을 선택하세요. 개별 멤버를 선택하려면 그룹을 펼치세요. 알림 대상에서 제외하려면 이름 옆의 ×를 선택하세요.
 
 ![개별 수신자가 표시되도록 펼친 초대 필드](../notifying_people/thread_notification.png)
 

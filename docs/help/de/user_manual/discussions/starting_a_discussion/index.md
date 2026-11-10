@@ -1,15 +1,15 @@
 ---
 title: Diskussion starten
-source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
-source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
+source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-10-01'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 3972d86f93bcc6ec
+  invite-and-notify: 40c5557d5679d9ea
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: 905d1b76c5ccdacf
   new-discussion: 21cebc2962751c6e
   group: 34d4cfb31f10bfca
-  invite-and-notify: ed08c8af6b03a898
+  invite-and-notify: 5d6cb99524291918
   tags: 98cd3aefbceef967
   title: e428deefaca4d096
   context: e14590d179547f2e
@@ -65,7 +65,7 @@ Das Feld **Einladen** legt fest, wer die neue Diskussion sofort erhält.
 
 Gruppenmitglieder können eine Diskussion in ihrer Gruppe sehen, auch wenn du sie nicht benachrichtigst. Wenn du ein Gruppenmitglied zu **Einladen** hinzufügst, erhält es eine E-Mail-Benachrichtigung und eine Benachrichtigung in Loomio.
 
-Wähle die Gruppe aus, in der du die Diskussion startest, um ihre Mitglieder zu benachrichtigen, oder wähle eine zugehörige Gruppe aus. Du kannst eine Gruppe aufklappen, um einzelne Mitglieder auszuwählen. Klicke auf das × neben einem Namen, damit diese Person keine Benachrichtigung erhält. Der E-Mail-Versand hängt von den Benachrichtigungseinstellungen der jeweiligen empfangenden Person ab.
+Wähle eine Gruppe aus, um alle Mitglieder darin zu benachrichtigen, oder klappe die Gruppe auf, um einzelne Mitglieder auszuwählen. Klicke auf das × neben einem Namen, damit diese Person keine Benachrichtigung erhält.
 
 ![Aufgeklapptes Feld Einladen mit einzelnen empfangenden Personen](../notifying_people/thread_notification.png)
 

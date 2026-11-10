@@ -1,15 +1,15 @@
 ---
 title: Пачаць дыскусію
-source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
-source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-10-01'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 3972d86f93bcc6ec
+  invite-and-notify: 40c5557d5679d9ea
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,12 +17,14 @@ generated:
   introduction: 1e2ff139dbd22651
   new-discussion: 10b793e93b408d74
   group: a158e075bf385ca3
-  invite-and-notify: 9573a939b0690a6d
+  invite-and-notify: 9bab0630e87b60c5
   tags: f2645c79c9225bec
   title: bf524db3f4b7aded
   context: 06632ef647069dfd
 title_source: 7373febfac25054c
 title_generated: d70109704d6673d4
+needs_review:
+  invite-and-notify: use "Выбар" instead of "Выберыце" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
@@ -65,7 +67,7 @@ title_generated: d70109704d6673d4
 
 Удзельнікі групы могуць бачыць абмеркаванне ў сваёй групе, нават калі вы іх не апавяшчаеце. Калі дадаць удзельнікаў групы ў поле **Запрасіць**, яны атрымаюць апавяшчэнне па электроннай пошце і ў Loomio.
 
-Выберыце групу, у якой вы публікуеце абмеркаванне, каб апавясціць яе ўдзельнікаў, або выберыце звязаную групу. Вы можаце разгарнуць групу, каб выбраць асобных удзельнікаў. Націсніце × побач з імем, каб выключыць чалавека са спісу атрымальнікаў апавяшчэння. Дастаўка электроннай пошты залежыць ад налад апавяшчэнняў кожнага з атрымальнікаў.
+Выберыце групу, каб апавясціць усіх яе ўдзельнікаў, або разгарніце групу, каб выбраць асобных удзельнікаў. Націсніце × побач з імем, каб выключыць чалавека са спісу атрымальнікаў апавяшчэння.
 
 ![Поле «Запрасіць», разгорнутае для паказу асобных атрымальнікаў](../notifying_people/thread_notification.png)
 

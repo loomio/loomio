@@ -1,15 +1,15 @@
 ---
 title: Beszélgetés indítása
-source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
-source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
+source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-10-01'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 3972d86f93bcc6ec
+  invite-and-notify: 40c5557d5679d9ea
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: 1307e0ea52a37f9d
   new-discussion: d5299224ec4edd9d
   group: 4b51648355d2263f
-  invite-and-notify: 2f16782bb95de6ea
+  invite-and-notify: 11ea46eef09f521a
   tags: afa72419dc66bc5d
   title: efc33cf05e527597
   context: 6cf53481a8c187b4
@@ -65,7 +65,7 @@ A **Meghív** mező határozza meg, hogy ki kapja meg azonnal az új beszélget�
 
 A csoport tagjai akkor is láthatják a csoportjukban indított beszélgetést, ha nem értesíted őket. Ha hozzáadsz egy csoporttagot a **Meghív** mezőhöz, e-mailes értesítést és Loomio-értesítést kap.
 
-Válaszd ki azt a csoportot, amelyben közzéteszed a beszélgetést, ha értesíteni szeretnéd a tagjait, vagy válassz egy kapcsolódó csoportot. Nyisd le a csoportot az egyes tagok kiválasztásához. Kattints a név melletti × jelre, ha az adott személyt el szeretnéd távolítani az értesítés címzettjei közül. Az e-mail kézbesítése az egyes címzettek értesítési beállításaitól függ.
+Válaszd ki a csoportot, ha minden tagját értesíteni szeretnéd, vagy nyisd le a csoportot az egyes tagok kiválasztásához. Kattints a név melletti × jelre, ha az adott személyt el szeretnéd távolítani az értesítés címzettjei közül.
 
 ![A Meghív mező lenyitva, az egyes címzettekkel](../notifying_people/thread_notification.png)
 
