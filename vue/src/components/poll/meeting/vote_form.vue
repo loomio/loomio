@@ -104,10 +104,11 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
     v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
   )
   .poll-common-vote-form__options
-    v-layout.poll-common-vote-form__option(
+    v-sheet.poll-common-vote-form__option.d-flex.flex-wrap.align-center.pa-2.mb-2(
       v-for='choice in stanceChoices'
       :key='choice.id'
-      wrap
+      border
+      rounded
     )
       poll-common-stance-choice(
         :poll="stance.poll()"
@@ -129,13 +130,8 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      variant="elevated"
-      :disabled="!poll.isVotable()"
+    poll-common-submit-button(
+      :stance="stance"
       :loading="loading"
-      color="primary"
-      type='submit'
     )
-      span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

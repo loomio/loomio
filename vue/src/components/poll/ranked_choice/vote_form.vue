@@ -76,9 +76,9 @@ export default {
         //  v-list-item
         //    v-list-item-icon
         .mb-2.poll-ranked-choice-vote-form__option
-          v-list-item.rounded(variant="tonal" :disabled="stance.noneOfTheAbove")
+          v-list-item.rounded(variant="tonal" border :disabled="stance.noneOfTheAbove")
             template(v-slot:prepend)
-              common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
+              common-icon.poll-ranked-choice-vote-form__drag-handle(color="info" name="mdi-drag")
             v-list-item-title {{option.name}}
             v-list-item-subtitle {{option.meaning}}
             template(v-slot:append)
@@ -93,15 +93,11 @@ export default {
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      variant="elevated"
-      :disabled="!poll.isVotable()"
+    poll-common-submit-button(
+      :stance="stance"
       @click='submit()'
       :loading="stance.processing"
-      color="primary"
     )
-      span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 
 <style>
@@ -111,6 +107,15 @@ export default {
 
 .poll-ranked-choice-vote-form__option {
   user-select: none;
+  cursor: grab;
+}
+
+.poll-ranked-choice-vote-form__option:active {
+  cursor: grabbing;
+}
+
+.poll-ranked-choice-vote-form__drag-handle {
+  opacity: 1;
 }
 
 .app-is-booted > .sortable-list-item {

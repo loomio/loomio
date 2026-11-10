@@ -47,6 +47,8 @@ Under **More settings**, **Show options in random order** can reduce the effect 
 
 The vote form tells participants how many options they may select. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
 
+The vote button stays disabled and shows the selection limits when you select too few or too many options. Once your choices are within the allowed range, select **Submit vote** to record them.
+
 ![](voting.png)
 
 A reason can reveal why an option matters and what work participants expect it to cover. If reasons are important to the decision, configure the vote-reason setting before starting the poll.
