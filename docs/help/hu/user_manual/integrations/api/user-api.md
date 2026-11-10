@@ -1,10 +1,10 @@
 ---
 title: Felhasználói API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-10'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 1feeabac751473fd
   show-poll: '0683180c186571fe'
   example-13: bc3d9974c8a4b82f
-  list-polls: 9fe9fe8358719c37
+  list-polls: 9e37aea0d7de6e34
   params-10: 5080adb448889d76
   example-14: 63630211b3171020
   edit-poll: 69d53e7d23ecdc63
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Szavazások listázása
 
-Listázd egy csoport szavazásait, amelyek láthatók az API-kulcshoz tartozó felhasználó számára. Egy nyilvánosan látható csoport nyilvános szavazásait olyan felhasználó is listázhatja, aki nem tagja a csoportnak; a privát szavazásokhoz továbbra is csak azok a felhasználók férhetnek hozzá, akik a Loomióban is olvashatják őket. A válasz minden látható szavazás aktuális következtetését tartalmazza, így a `status=closed` használatával listázhatod azokat a javaslatokat, amelyekről már döntés született.
+Listázd egy csoport szavazásait, amelyek láthatók az API-kulcshoz tartozó felhasználó számára, beleértve az önálló szavazásokat és a beszélgetéseken belüli szavazásokat is. Egy nyilvánosan látható csoport nyilvános szavazásait olyan felhasználó is listázhatja, aki nem tagja a csoportnak; a privát szavazásokhoz továbbra is csak azok a felhasználók férhetnek hozzá, akik a Loomióban is olvashatják őket. A válasz minden látható szavazás aktuális következtetését tartalmazza, így a `status=closed` használatával listázhatod a lezárt szavazásokat, és elolvashatod a következtetésüket, ha már megadták azt.
+
+Ha a beszélgetések mellett a döntés állapotát is meg szeretnéd jeleníteni, kérd le ugyanannak a csoportnak a beszélgetéseit és szavazásait, a szavazásoknál használd a `status=all` paramétert, és párosítsd őket a `topic_id` értékük alapján. Kérd le az összes oldalt a `limit` és az `offset` használatával. Egy beszélgetéshez több szavazás is tartozhat, ezért válaszd ki, melyik szavazás határozza meg a megjelenített állapotot, például a legutóbb létrehozott szavazás. A nem null értékű `closed_at` lezárt szavazást jelöl; a null értékű `closing_at` piszkozatot jelez. Ha egy szavazáshoz tartozik következtetés, a `current_outcome_id` értéke a válasz `outcomes` tömbjének egyik rekordját azonosítja; párosítsd ennek a rekordnak a `poll_id` értékét a szavazás `id` értékével.
+
+Egyetlen beszélgetés esetén a `GET /api/user0/threads/:topic_id/items` használatával [a szál elemeit is elolvashatod](#read-thread). Ez a szál szavazásait és következtetéseit is visszaadja a többi elem mellett. Kérd le az összes oldalt, hogy a teljes szálat megkapd.
 
 `GET /api/user0/polls`
 

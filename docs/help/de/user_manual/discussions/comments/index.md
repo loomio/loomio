@@ -1,13 +1,13 @@
 ---
 title: Kommentare
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 1b6de764b7ce3d8e
-  reading-comments: a0cc1f023ed48423
+  reading-comments: ba1f1555c2af60ab
   writing-a-comment: b022650bef742254
   mentioning-people: 4f26cf65038e02f8
   replying-to-a-comment: 4cbcad7dc56c5380
@@ -47,11 +47,13 @@ Kommentare sind die wichtigste Möglichkeit, sich an einer Diskussion zu beteili
 
 ## Kommentare lesen
 
-Wenn du eine Diskussion öffnest, führt dich Loomio zu den Aktivitäten, die für dich neu sind.
+Threads öffnen sich beim Kontext der Diskussion. Du kannst im Thread-Menü **Neu für dich** verwenden, um ungelesene Aktivitäten zu finden, oder **Letzte**, um zu den neuesten Aktivitäten zu springen.
 
 Ungelesene Kommentare haben neben ihrer Veröffentlichungszeit eine blaue Kennzeichnung **neu**.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Lange Beiträge, die du bereits gelesen hast, erscheinen als Vorschau, damit die umgebende Unterhaltung im Blick bleibt. Wähle **Mehr anzeigen**, um den vollständigen Text für den Rest deines Besuchs im Thread anzuzeigen. Ungelesene Beiträge und Kommentare, die du über einen direkten Link öffnest, bleiben ausgeklappt. Wenn jemand einen Änderungshinweis hinzufügt oder andere über eine Bearbeitung benachrichtigt, wird der Kontext der Diskussion wieder vollständig angezeigt, sofern du den Thread seit dieser Mitteilung nicht gelesen hast.
 
 <!-- translation-section: writing-a-comment -->
 

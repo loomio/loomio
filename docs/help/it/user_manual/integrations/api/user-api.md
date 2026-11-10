@@ -1,10 +1,10 @@
 ---
 title: API utente
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-10'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: ce6697249194c81c
   show-poll: f3ef7928c7c0891e
   example-13: 8e071107fdac7a98
-  list-polls: dc0c55204f343fee
+  list-polls: '0298fde6c1ce115f'
   params-10: 1290c7d5f0446b29
   example-14: 9fb08ad647c1b7d5
   edit-poll: 512cb22b8e1e2eac
@@ -882,7 +882,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Elenca i sondaggi
 
-Elenca i sondaggi di un gruppo visibili all'utente titolare della chiave API. Se il gruppo è visibile pubblicamente, anche chi non è membro può elencarne i sondaggi pubblici; i sondaggi privati restano accessibili solo agli utenti che possono leggerli in Loomio. La risposta include la conclusione attuale di ogni sondaggio visibile, quindi puoi usare `status=closed` per elencare le proposte su cui è stata presa una decisione.
+Elenca i sondaggi di un gruppo visibili all'utente titolare della chiave API, inclusi i sondaggi autonomi e quelli all'interno delle discussioni. Se il gruppo è visibile pubblicamente, anche chi non è membro può elencarne i sondaggi pubblici; i sondaggi privati restano accessibili solo agli utenti che possono leggerli in Loomio. La risposta include la conclusione attuale di ogni sondaggio visibile, quindi puoi usare `status=closed` per elencare i sondaggi chiusi e leggerne le conclusioni, se sono state definite.
+
+Per mostrare lo stato della decisione accanto alle discussioni, recupera le discussioni e i sondaggi dello stesso gruppo, usando `status=all` per i sondaggi, e associa i rispettivi valori di `topic_id`. Recupera tutte le pagine usando `limit` e `offset`. Una discussione può avere più sondaggi, quindi scegli quale sondaggio determina lo stato da mostrare, ad esempio quello creato più di recente. Un valore di `closed_at` diverso da null identifica un sondaggio chiuso; un valore null di `closing_at` indica una bozza. Quando un sondaggio ha una conclusione, il suo `current_outcome_id` identifica un record nell'array `outcomes` della risposta; associa il `poll_id` di quel record all'`id` del sondaggio.
+
+Per una singola discussione, puoi anche [leggere gli elementi della sua conversazione](#read-thread) usando `GET /api/user0/threads/:topic_id/items`. Questo restituisce i sondaggi e le conclusioni della conversazione insieme agli altri elementi. Recupera tutte le pagine per includere la conversazione completa.
 
 `GET /api/user0/polls`
 

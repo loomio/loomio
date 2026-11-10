@@ -1,13 +1,13 @@
 ---
 title: Reacties
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: e4d051e26528c26a
-  reading-comments: c1713e8d763e1c97
+  reading-comments: d335eff01fbf0867
   writing-a-comment: 20efc1896b68bc45
   mentioning-people: d4ff0f2cbaed802c
   replying-to-a-comment: 5777b66598d6fe95
@@ -47,11 +47,13 @@ Reacties zijn de belangrijkste manier waarop mensen deelnemen aan een discussie.
 
 ## Reacties lezen
 
-Wanneer je een discussie opent, brengt Loomio je naar activiteit die nieuw voor je is.
+Threads openen bij de context van de discussie. Je kunt **Nieuw voor jou** in het threadmenu gebruiken om ongelezen activiteit te vinden, of **Laatste** om naar de nieuwste activiteit te springen.
 
 Ongelezen reacties hebben een blauw label **nieuw** naast het tijdstip waarop ze zijn geplaatst.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Lange bijdragen die je al hebt gelezen, worden als voorbeeldweergave getoond, zodat de omliggende conversatie in beeld blijft. Selecteer **Laat meer zien** om de volledige tekst te tonen voor de rest van je bezoek aan de thread. Ongelezen bijdragen en reacties die je via een directe link opent, blijven uitgeklapt. Wanneer iemand een wijzigingsnotitie toevoegt of mensen op de hoogte stelt van een bewerking, wordt de context van de discussie weer volledig getoond als je de thread sinds die aankondiging niet hebt gelezen.
 
 <!-- translation-section: writing-a-comment -->
 

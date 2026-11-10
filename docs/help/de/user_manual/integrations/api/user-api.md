@@ -1,10 +1,10 @@
 ---
 title: Benutzer-API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-10'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e52282b2b9fe775b
+  list-polls: e32f486c3c675327
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -133,7 +133,7 @@ generated:
   example-12: 7dbf0f7d05d764f2
   show-poll: 5fb354af6b512b53
   example-13: eacbce94f01152be
-  list-polls: 306064fb7db96809
+  list-polls: 9b7d0cc187530d58
   params-10: 3fb1ec0ee2ec56b6
   example-14: c1433ca8961065fa
   edit-poll: fcee506fc6cfefa2
@@ -885,7 +885,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### Abstimmungen auflisten
 
-Liste die Abstimmungen einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft deren öffentliche Abstimmungen auflisten; private Abstimmungen bleiben auf Personen beschränkt, die sie in Loomio lesen können. Die Antwort enthält das aktuelle Fazit jeder sichtbaren Abstimmung. Mit `status=closed` kannst du daher Vorschläge auflisten, über die bereits entschieden wurde.
+Liste die Abstimmungen einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird, einschließlich eigenständiger Abstimmungen und Abstimmungen innerhalb von Diskussionen. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft deren öffentliche Abstimmungen auflisten; private Abstimmungen bleiben auf Personen beschränkt, die sie in Loomio lesen können. Die Antwort enthält das aktuelle Fazit jeder sichtbaren Abstimmung. Mit `status=closed` kannst du daher beendete Abstimmungen auflisten und deren Fazits lesen, sofern diese bereits verfasst wurden.
+
+Um den Entscheidungsstatus neben Diskussionen anzuzeigen, rufe Diskussionen und Abstimmungen derselben Gruppe ab. Verwende dabei `status=all` für die Abstimmungen und ordne sie anhand ihrer `topic_id`-Werte zu. Rufe mit `limit` und `offset` jede Seite ab. Eine Diskussion kann mehrere Abstimmungen enthalten. Wähle daher aus, welche Abstimmung den angezeigten Status bestimmt, zum Beispiel die zuletzt erstellte Abstimmung. Ein Wert ungleich null für `closed_at` kennzeichnet eine beendete Abstimmung; ein null-Wert für `closing_at` kennzeichnet einen Entwurf. Wenn eine Abstimmung ein Fazit hat, verweist ihre `current_outcome_id` auf einen Datensatz im `outcomes`-Array der Antwort. Ordne diesen Datensatz anhand seiner `poll_id` der `id` der Abstimmung zu.
+
+Für eine einzelne Diskussion kannst du auch mit `GET /api/user0/threads/:topic_id/items` [die Elemente ihres Threads lesen](#read-thread). Dadurch werden die Abstimmungen und Fazits des Threads zusammen mit seinen übrigen Elementen zurückgegeben. Rufe jede Seite ab, um den vollständigen Thread zu erhalten.
 
 `GET /api/user0/polls`
 

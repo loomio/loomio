@@ -1,13 +1,13 @@
 ---
 title: Commentaires
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 883f6b72430f73e1
-  reading-comments: 0227724ac5165196
+  reading-comments: 601621eb16231c38
   writing-a-comment: 31f0b84efc45c358
   mentioning-people: 44fb418e031a4215
   replying-to-a-comment: 716b4bbb92ea4681
@@ -47,11 +47,13 @@ Les commentaires sont le principal moyen de participer à une discussion. Ils so
 
 ## Lire les commentaires
 
-Lorsque vous ouvrez une discussion, Loomio vous dirige vers l’activité que vous n’avez pas encore vue.
+Les fils s’ouvrent sur le contexte de la discussion. Vous pouvez utiliser **Nouveau pour vous** dans le menu du fil pour trouver l’activité non lue, ou **Dernier** pour accéder à l’activité la plus récente.
 
 Les commentaires non lus portent une étiquette bleue **nouveau** à côté de leur heure de publication.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Les longues contributions que vous avez déjà lues s’affichent sous forme d’aperçu, ce qui permet de garder la conversation environnante en vue. Sélectionnez **Afficher davantage** pour afficher le texte intégral pendant le reste de votre visite dans le fil. Les contributions non lues et les commentaires ouverts à partir d’un lien direct restent dépliés. Lorsqu’une personne ajoute une note de modification ou informe d’autres personnes d’une modification, le contexte de la discussion s’affiche à nouveau en entier si vous n’avez pas lu le fil depuis cette annonce.
 
 <!-- translation-section: writing-a-comment -->
 

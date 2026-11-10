@@ -1,13 +1,13 @@
 ---
 title: Каментарыі
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 2a9be19cc1eaf7b4
-  reading-comments: 67a218a92e928516
+  reading-comments: 37f98875c34380d8
   writing-a-comment: 42e85fef61be73e8
   mentioning-people: e97e72641b34e8c8
   replying-to-a-comment: e12846e6cfd7ee27
@@ -47,11 +47,13 @@ title_generated: 679e02dd9f48539b
 
 ## Чытанне каментарыяў
 
-Калі вы адкрываеце абмеркаванне, Loomio пераходзіць да дзеянняў, якіх вы яшчэ не бачылі.
+Тэмы адкрываюцца на кантэксце абмеркавання. Вы можаце выбраць **Новае для цябе** ў меню тэмы, каб знайсці непрачытаныя дзеянні, або **Апошнія**, каб перайсці да самых новых дзеянняў.
 
 Непрачытаныя каментарыі маюць сінюю пазнаку **новы** побач з часам публікацыі.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Доўгія допісы, якія вы ўжо прачыталі, паказваюцца ў скарочаным выглядзе, каб навакольная размова заставалася ў полі зроку. Выберыце **Паказаць больш**, каб бачыць поўны тэкст да канца бягучага наведвання тэмы. Непрачытаныя допісы і каментарыі, адкрытыя па прамой спасылцы, застаюцца разгорнутымі. Калі дадаецца нататка пра змены або ўдзельнікам дасылаецца апавяшчэнне пра рэдагаванне, кантэкст абмеркавання зноў адкрываецца цалкам, калі вы не чыталі тэму пасля гэтага паведамлення.
 
 <!-- translation-section: writing-a-comment -->
 

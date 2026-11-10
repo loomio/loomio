@@ -1,13 +1,13 @@
 ---
 title: Коментарі
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 21871fadd65162e0
-  reading-comments: f91710d22d18b0da
+  reading-comments: 9d446b9bf8e214dc
   writing-a-comment: 420f7dc544c7ae20
   mentioning-people: 9f1a0204f89206f6
   replying-to-a-comment: b9870d6e7ead0c6a
@@ -47,11 +47,13 @@ title_generated: 36555c1f9aead291
 
 ## Читання коментарів
 
-Коли ви відкриваєте обговорення, Loomio переходить до активності, яку ви ще не бачили.
+Теми відкриваються на контексті обговорення. Скористайтеся пунктом **Новий для тебе** в меню теми, щоб знайти непрочитану активність, або пунктом **Найновіші**, щоб перейти до найновішої активності.
 
 Непрочитані коментарі мають синю позначку **новий** біля часу публікації.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Довгі дописи, які ви вже прочитали, відображаються у скороченому вигляді, щоб навколишня розмова залишалася в полі зору. Виберіть **Показати більше**, щоб бачити повний текст до кінця поточного відвідування теми. Непрочитані дописи та коментарі, відкриті за прямим посиланням, залишаються розгорнутими. Коли хтось додає примітку про зміни або сповіщає людей про редагування, контекст обговорення знову відкривається повністю, якщо ви не читали тему після цього повідомлення.
 
 <!-- translation-section: writing-a-comment -->
 
