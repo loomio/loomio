@@ -165,6 +165,10 @@ ACTIVE_STORAGE_SERVICE=local
 # Sentry logs are off by default. Omit this variable to keep them disabled.
 # SENTRY_ENABLE_LOGS=1
 
+# Keep revoked session rows for 60 days after logout; they cannot authenticate.
+# Set to 0 to purge revoked sessions on the next hourly cleanup.
+# LOOMIO_SESSION_RETENTION_DAYS=60
+
 # Plausible metrics
 # PLAUSIBLE_SRC=https://plausible.io
 # PLAUSIBLE_SITE=REPLACE_WITH_HOSTNAME

@@ -146,7 +146,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     sign_in user
     ENV['FEATURES_DISABLE_LOCAL_LOGIN'] = '1'
 
-    assert_difference "Session.count", -1 do
+    assert_difference "Session.active.count", -1 do
       delete :destroy
     end
 
@@ -429,7 +429,7 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     end
   end
 
-  test "sign out destroys the current session" do
+  test "sign out retains the revoked session and destroys its push subscription" do
     user = User.create!(
       email: "destroy-session@example.com",
       name: "Destroy Session",
@@ -451,10 +451,11 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
       auth_key: "auth-key"
     )
 
-    assert_difference [ "Session.count", "PushSubscription.count" ], -1 do
+    assert_difference [ "Session.active.count", "PushSubscription.count" ], -1 do
       delete :destroy
     end
     assert_response :success
+    refute terminated_session.reload.active?
     refute PushSubscription.exists?(subscription.id)
     refute_equal secret_token_before, user.reload.secret_token
     assert_equal 'ok', JSON.parse(response.body).fetch('success')

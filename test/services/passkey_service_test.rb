@@ -63,4 +63,12 @@ class PasskeyServiceTest < ActiveSupport::TestCase
       assert_not PasskeyService.recently_authenticated?(session_record)
     end
   end
+
+  test "a revoked session cannot satisfy recent authentication" do
+    session_record = users(:member_normal).sessions.create!
+    session_record.revoke!
+
+    refute PasskeyService.recently_authenticated?(session_record)
+    refute PasskeyService.recently_authenticated?(nil)
+  end
 end

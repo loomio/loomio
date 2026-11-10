@@ -166,9 +166,9 @@ class UserService
   end
 
   def self.sign_out_other_sessions(user)
-    sessions = user.sessions
+    sessions = user.sessions.active
     sessions = sessions.where.not(id: Current.session.id) if Current.session
-    sessions.destroy_all
+    sessions.find_each(&:revoke!)
   end
 
   def self.save_experience(user:, actor:, params:)

@@ -56,7 +56,11 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
       patch :update, params: {id: stance.id, stance: {reason: 'Blocked change'}}
 
       assert_response :forbidden
-      assert_not Session.exists?(session_id)
+      if operation == 'redact'
+        assert_not Session.exists?(session_id)
+      else
+        refute Session.find(session_id).active?
+      end
       assert_nil stance.reload.revoked_at
       assert_equal 'Preserved reason', stance.reason
 

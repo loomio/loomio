@@ -23,7 +23,7 @@ module PasskeyService
   end
 
   def self.recently_authenticated?(session_record)
-    session_record&.created_at && session_record.created_at >= RECENT_AUTHENTICATION_TTL.ago
+    session_record&.active? && session_record.created_at >= RECENT_AUTHENTICATION_TTL.ago
   end
 
   def self.ensure_webauthn_id!(user)
