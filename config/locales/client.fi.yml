@@ -2007,6 +2007,11 @@ fi:
     name_gte_weighted_votes_cast: "%{name} tarvitsee vähintään %{percent}% annetuista painotetuista äänistä"
     name_lte_weighted_votes_cast: "%{name} ei saa ylittää %{percent}% annetuista painotetuista äänistä"
   poll_common:
+    write_your_response: Kirjoita vastauksesi
+    rank_at_least_one_candidate: Aseta vähintään yksi ehdokas järjestykseen
+    check_scores: Tarkista pisteet
+    check_allocation: Tarkista pistejako
+    reduce_allocation_by_points: Vähennä jaettuja pisteitä %{count} pisteellä | Vähennä jaettuja pisteitä %{count} pisteellä
     superseded: Korvattu
     outdated: Vanhentunut
     need_help_with_templates: Tarvitsetko apua omien päätösmallien luomisessa?

@@ -2007,6 +2007,11 @@ tr:
     name_gte_weighted_votes_cast: "%{name}, verilen ağırlıklı oyların en az %{percent}%'ini almalı"
     name_lte_weighted_votes_cast: "%{name}, verilen ağırlıklı oyların %{percent}%'ini aşmamalı"
   poll_common:
+    write_your_response: Yanıtınızı yazın
+    rank_at_least_one_candidate: En az bir adayı sıralayın
+    check_scores: Puanları kontrol edin
+    check_allocation: Puan dağılımını kontrol edin
+    reduce_allocation_by_points: Dağılımı %{count} puan azaltın | Dağılımı %{count} puan azaltın
     superseded: Değiştirildi
     outdated: Modası geçmiş
     need_help_with_templates: Kendi karar şablonlarınızı oluşturma konusunda yardıma mı ihtiyacınız var?

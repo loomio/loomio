@@ -2007,6 +2007,11 @@ sl:
     name_gte_weighted_votes_cast: "%{name} potrebuje vsaj %{percent}% oddanih uteženih glasov"
     name_lte_weighted_votes_cast: "%{name} ne sme preseči %{percent}% oddanih uteženih glasov"
   poll_common:
+    write_your_response: Napišite svoj odgovor
+    rank_at_least_one_candidate: Razvrstite vsaj enega kandidata
+    check_scores: Preverite ocene
+    check_allocation: Preverite razdelitev točk
+    reduce_allocation_by_points: Zmanjšajte vsoto točk za %{count} | Zmanjšajte vsoto točk za %{count}
     superseded: Nadomeščeno
     outdated: Zastarelo
     need_help_with_templates: Potrebujete pomoč pri ustvarjanju lastnih predlog za odločitev?

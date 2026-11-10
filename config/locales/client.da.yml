@@ -2019,6 +2019,11 @@ da:
     name_gte_weighted_votes_cast: "%{name} skal have mindst %{percent}% af de afgivne vægtede stemmer"
     name_lte_weighted_votes_cast: "%{name} må ikke overstige %{percent}% af de afgivne vægtede stemmer"
   poll_common:
+    write_your_response: Skriv dit svar
+    rank_at_least_one_candidate: Ranger mindst én kandidat
+    check_scores: Tjek point
+    check_allocation: Tjek pointfordelingen
+    reduce_allocation_by_points: Fordel %{count} point mindre | Fordel %{count} point mindre
     superseded: Afløst
     outdated: Forældet
     need_help_with_templates: Har du brug for hjælp til at lave dine egne beslutningsskabeloner?

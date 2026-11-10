@@ -1,16 +1,16 @@
 ---
 title: Punkte verteilen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: 9980e9be043add80
   example-set-priorities-for-an-annual-strategy-review: ca42555f14488733
   set-up-the-poll: def48656bc2b8c89
-  vote: f24236513ae6fef6
+  vote: 81d557d5178e1b8d
   read-the-results: 3f647e09fa7899c8
   share-an-outcome: ef1ca6b574714e77
 title_source: c927a8a7c2ce230c
@@ -69,6 +69,8 @@ Ein sehr großes Punktebudget kann eine falsche Genauigkeit vermitteln. Ein sinn
 ## Stimme ab
 
 Die Teilnehmenden bewegen die Schieberegler, um ihr Punktebudget zu verteilen. Loomio zeigt an, wie viele Punkte übrig sind, und lässt die Abgabe der Stimme erst zu, wenn die Verteilung gültig ist.
+
+Du kannst Punkte übrig lassen.
 
 ![](voting.png)
 

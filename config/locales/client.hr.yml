@@ -2011,6 +2011,11 @@ hr:
     name_gte_weighted_votes_cast: "%{name} treba barem %{percent}% danih ponderiranih glasova"
     name_lte_weighted_votes_cast: "%{name} ne smije prelaziti %{percent}% danih ponderiranih glasova"
   poll_common:
+    write_your_response: Napišite svoj odgovor
+    rank_at_least_one_candidate: Rangirajte barem jednog kandidata
+    check_scores: Provjerite ocjene
+    check_allocation: Provjerite raspodjelu bodova
+    reduce_allocation_by_points: Smanjite ukupan broj bodova za %{count} | Smanjite ukupan broj bodova za %{count}
     superseded: Zamijenjeno
     outdated: Zastario
     need_help_with_templates: Trebate li pomoć u izradi vlastitih predložaka odluka?

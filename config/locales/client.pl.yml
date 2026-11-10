@@ -2030,6 +2030,11 @@ pl:
     name_gte_weighted_votes_cast: "%{name} potrzebuje co najmniej %{percent}% oddanych głosów ważonych"
     name_lte_weighted_votes_cast: "%{name} nie może przekroczyć %{percent}% oddanych głosów ważonych"
   poll_common:
+    write_your_response: Napisz odpowiedź
+    rank_at_least_one_candidate: Umieść w rankingu co najmniej jednego kandydata
+    check_scores: Sprawdź oceny
+    check_allocation: Sprawdź przydział punktów
+    reduce_allocation_by_points: Zmniejsz przydział punktów o %{count} | Zmniejsz przydział punktów o %{count}
     superseded: zastąpione
     outdated: Przestarzały
     need_help_with_templates: Potrzebujesz pomocy w tworzeniu własnych szablonów procesów?

@@ -1,16 +1,16 @@
 ---
 title: Распределение баллов
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: f39a8fa962369e89
   example-set-priorities-for-an-annual-strategy-review: eae81a3ac9584834
   set-up-the-poll: fd0b3128955eb8dc
-  vote: 1573bff645ecc8ff
+  vote: d594bfb316ab3bbc
   read-the-results: 7aced35afba4bd56
   share-an-outcome: '0429e04d480d446c'
 title_source: c927a8a7c2ce230c
@@ -66,6 +66,8 @@ title_generated: 83c8158e13d12449
 ## Голосуйте
 
 Участники перемещают ползунки, чтобы распределить свои баллы. Loomio показывает, сколько баллов осталось, и не позволяет отправить голос, пока баллы не будут распределены корректно.
+
+Вы можете оставить часть баллов неиспользованными.
 
 ![](voting.png)
 

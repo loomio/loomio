@@ -2134,6 +2134,11 @@ be:
     name_gte_weighted_votes_cast: "%{name} патрабуе як мінімум %{percent}% аддадзеных узважаных галасоў"
     name_lte_weighted_votes_cast: "%{name}: не больш за %{percent}% аддадзеных узважаных галасоў"
   poll_common:
+    write_your_response: Напішыце ваш адказ
+    rank_at_least_one_candidate: Ранжыруйце хаця б адну кандыдатуру
+    check_scores: Праверце балы
+    check_allocation: Праверце размеркаванне балаў
+    reduce_allocation_by_points: Паменшыце суму балаў на %{count} | Паменшыце суму балаў на %{count}
     your_vote_is_requested: Запытваецца ваш голас
     superseded: Заменена
     outdated: Састарэлае
