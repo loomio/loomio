@@ -1,10 +1,10 @@
 ---
 title: Inloggen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 48de4009b9d5771f
   sign-in-with-a-passkey: 3b54344bf82d2a5a
@@ -22,7 +22,7 @@ generated:
   create-an-account: 47229193de9f7c01
   sign-in-with-google: 56441929efd24f4f
   other-loomio-sites: 419d135636005724
-  sign-out: b240f902682f362e
+  sign-out: c258f88c8cda5273
 title_source: 824a1d703ce676bb
 title_generated: 902a4c2ada7bc751
 ---
@@ -94,3 +94,5 @@ Een besloten site waarop je alleen via SSO kunt inloggen, toont alleen de inlogo
 ## Uitloggen
 
 Open de zijbalk, selecteer je naam en selecteer vervolgens **Uitloggen**. Log op een gedeelde computer uit wanneer je klaar bent, in plaats van alleen het browsertabblad te sluiten.
+
+Uitloggen beëindigt de sessie van die browser onmiddellijk. Loomio bewaart het IP-adres, de browserinformatie en de begin- en eindtijd van de sessie standaard 60 dagen voor beveiligingsonderzoek. Beheerders van privésites kunnen deze periode instellen. Als je jouw account permanent verwijdert, wordt deze sessiegeschiedenis verwijderd.

@@ -859,9 +859,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000010) do
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
+    t.datetime "revoked_at"
     t.datetime "updated_at", null: false
     t.string "user_agent"
     t.bigint "user_id", null: false
+    t.index ["revoked_at"], name: "index_sessions_on_revoked_at", where: "(revoked_at IS NOT NULL)"
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
@@ -1196,10 +1198,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000010) do
     t.integer "position", default: 0, null: false
     t.string "position_key"
     t.integer "sequence_id"
+    t.string "tags", default: [], null: false, array: true
     t.integer "topic_id", null: false
     t.datetime "updated_at", precision: nil
     t.integer "user_id"
-    t.string "tags", default: [], null: false, array: true
     t.index ["created_at"], name: "index_topic_items_on_created_at"
     t.index ["id", "topic_id"], name: "index_topic_items_on_id_and_topic_id", unique: true
     t.index ["itemable_id", "kind"], name: "index_topic_items_on_itemable_id_and_kind"
@@ -1259,6 +1261,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000010) do
     t.datetime "discarded_at"
     t.integer "discarded_by"
     t.integer "group_id"
+    t.boolean "has_tagged_replies", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "last_activity_at", precision: nil
     t.datetime "locked_at", precision: nil
@@ -1274,7 +1277,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_10_000010) do
     t.integer "topicable_id", null: false
     t.string "topicable_type", null: false
     t.datetime "updated_at", null: false
-    t.boolean "has_tagged_replies", default: false, null: false
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["discarded_by"], name: "index_topics_on_discarded_by"
     t.index ["group_id", "last_activity_at"], name: "index_topics_on_group_last_activity_inbox", order: { last_activity_at: :desc }, where: "(discarded_at IS NULL)"

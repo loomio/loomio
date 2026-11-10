@@ -5,12 +5,13 @@
 - Use **group admin** and **thread admin** for Loomio's permission roles. **Administrator** is also acceptable; never call these roles **coordinator**. Follow `config/locales/glossary.yml` for translations, including when legacy identifiers contain `coordinator`.
 - Do not run `git commit` unless the user explicitly asks for a specific commit. Permission to commit once does not authorize a later commit, including after more work is requested.
 - Do not self-reference or market the agent in branch names, commit messages, PR titles, PR descriptions, or other project-facing metadata.
+- Prefix every new environment variable with `LOOMIO_`. Preserve existing environment variable names unless a rename is explicitly requested.
 - Boolean env vars: **presence is truthy**. Set the var to enable, omit it to disable. Check with `ENV["VAR"].present?` (Rails) or `ENV.key?("VAR")` (plain Ruby) — never compare against `"true"` or `"1"`.
 - Run Rails tests with escalated sandbox permissions on the first attempt; the local PostgreSQL test database is not reachable from the filesystem sandbox. Use the existing approved `bin/rails test` permission.
 - Never run Rails tests and E2E tests in parallel. Run one suite at a time because they can share the test database.
 - Large migrations: keep schema locks short, build indexes concurrently, and move bulk backfills to idempotent background jobs scheduled 10 minutes later. Prefer newest records first so active content is corrected sooner. Keep the app usable before backfill completes. Commit small batches, persist progress for retries, and verify lock behavior on production-sized data with concurrent read/write checks before deploying to loomio.com.
 - Changes touching voting, anonymous polls, permissions, authentication, or sessions require an explicit security review and focused regression tests. Read the security instructions below before working on these areas.
-- For user-visible features and behaviour changes, read the user-manual instructions below and update relevant documentation.
+- For user-visible features and behaviour changes, read the user-manual instructions below and update relevant documentation. Get user approval of the English documentation changes before translating them, and complete translations before opening a pull request.
 - Record lasting lessons for agents in these instructions, not in an agent's private memory, so every tool and contributor sees them.
 - Do not hard-wrap prose in Markdown documents. Keep each paragraph and list item on one source line; preserve deliberate line breaks required by Markdown syntax or the content.
 
@@ -28,7 +29,7 @@ Before starting an applicable task, read every matching document below. These ar
 | Frontend or Vue work | [Frontend and Vue](docs/agents/frontend.md) |
 | Adding, changing, running, or debugging tests; mutation audits or test-suite cleanup | [Tests](docs/agents/testing.md) |
 | User-visible features or behaviour changes; user manual, guides, API reference, help-site builder, navigation, links, or redirects | [User manual and help site](docs/agents/user_manual.md) |
-| Manual translations or translation tooling; preparing a feature for merge | [User-manual translations](docs/agents/user_manual_translations.md), alongside the user-manual instructions |
+| Manual translations or translation tooling; preparing a pull request or merge | [User-manual translations](docs/agents/user_manual_translations.md), alongside the user-manual instructions |
 | Manual screenshots; preparing a feature for merge | [User-manual screenshots](docs/agents/user_manual_screenshots.md), alongside the user-manual instructions |
 | Release notes, version bumps, release tags, publishing releases, or deployment as part of a release | [Release notes](docs/agents/release_notes.md) |
 

@@ -1,10 +1,10 @@
 ---
 title: Kirjautuminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/signing_in/index.md
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 9aa03b133cc213ce
   sign-in-with-a-passkey: c685bd268243f8f5
@@ -13,7 +13,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 6b9552e20d898e04
   sign-in-with-a-passkey: f1c7e2a921c18ace
@@ -22,7 +22,7 @@ generated:
   create-an-account: 38bbe6ce8fd43930
   sign-in-with-google: 31b2b279ee474c02
   other-loomio-sites: 761f8f1c419b868f
-  sign-out: 9793eee3659a87f1
+  sign-out: 83e0647a03e88028
 title_source: 824a1d703ce676bb
 title_generated: d368933632e1d251
 ---
@@ -94,3 +94,5 @@ Yksityinen sivusto, joka käyttää vain kertakirjautumista (SSO), näyttää ai
 ## Kirjaudu ulos
 
 Avaa sivupalkki, valitse nimesi ja valitse sitten **Kirjaudu ulos**. Kun käytät yhteistä tietokonetta, kirjaudu ulos lopetettuasi käytön. Pelkkä selaimen välilehden sulkeminen ei riitä.
+
+Uloskirjautuminen päättää kyseisen selaimen istunnon välittömästi. Loomio säilyttää istunnon IP-osoitteen, selaimen tiedot sekä istunnon alkamis- ja päättymisajat tietoturvaselvityksiä varten oletusarvoisesti 60 päivän ajan. Yksityisten Loomio-sivustojen ylläpitäjät voivat määrittää tämän säilytysajan. Tilisi poistaminen pysyvästi poistaa myös nämä istuntotiedot.
