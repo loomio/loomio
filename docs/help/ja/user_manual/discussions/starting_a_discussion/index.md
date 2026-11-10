@@ -1,15 +1,15 @@
 ---
 title: 議論を始める
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: ef38c72b04ca89f6
   new-discussion: 54956cf5660273a5
   group: 047037d7e9a19dc9
-  invite-and-notify: 167bb732944f7997
+  invite-and-notify: ee2a233006963182
   tags: aa2bd6ee70ca3d54
   title: eea4726bb0126f9e
   context: 4b0517a0a4b7ed8b
@@ -65,7 +65,7 @@ Loomioのグループや、いずれかのサブグループでディスカッ�
 
 グループのメンバーは、通知を受け取らなくてもグループ内のディスカッションを閲覧できます。**招待する**欄にグループのメンバーを追加すると、そのメンバーにメール通知とLoomio内の通知が届きます。
 
-グループ全員に通知するにはグループを選択します。個別のメンバーを選ぶには、グループを展開します。名前の横にある×を選択すると、その人を通知先から外せます。
+投稿先のグループのメンバーに通知するには、そのグループを選択します。関連するグループを選択することもできます。個別のメンバーを選ぶには、グループを展開します。名前の横にある×を選択すると、その人を通知先から外せます。メールの配信は、各受信者の通知設定によって異なります。
 
 ![個別の通知先を表示するために展開した「招待する」欄](../notifying_people/thread_notification.png)
 

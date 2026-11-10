@@ -38,7 +38,7 @@ The **Invite** field controls who receives the new discussion immediately.
 
 Group members can see a discussion in their group even if you do not notify them. Adding a group member to **Invite** sends them an email notification and a notification in Loomio.
 
-Select a group to notify everyone in it, or expand the group to choose individual members. Select the × beside a name to remove that person from the notification.
+Select the group you are posting in to notify its members, or select a related group. You can expand a group to choose individual members. Select the × beside a name to remove that person from the notification. Email delivery depends on each recipient's notification settings.
 
 ![Invite field expanded to show individual recipients](../notifying_people/thread_notification.png)
 

@@ -1,15 +1,15 @@
 ---
 title: Начать обсуждение
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: cf3665c3207588bf
   new-discussion: c139881ab69bdab0
   group: 62a2f8cc5e88d8b9
-  invite-and-notify: f8b7b7cbc0274486
+  invite-and-notify: 555fe7bb40c1ce86
   tags: aaf20444ff3ae2d7
   title: 569a785130c3b75d
   context: 0b0d4b125076ce42
@@ -65,7 +65,7 @@ title_generated: 7092f54c95df33cb
 
 Участники группы могут видеть обсуждение в своей группе, даже если вы их не уведомляете. При добавлении участника группы в поле **Приглашать** ему отправляется уведомление по электронной почте и уведомление в Loomio.
 
-Выберите группу, чтобы уведомить всех её участников, или раскройте список группы, чтобы выбрать отдельных участников. Нажмите × рядом с именем, чтобы не отправлять уведомление этому человеку.
+Выберите группу, в которой вы публикуете обсуждение, чтобы уведомить её участников, или выберите связанную группу. Вы можете раскрыть список группы, чтобы выбрать отдельных участников. Нажмите × рядом с именем, чтобы не отправлять уведомление этому человеку. Доставка по электронной почте зависит от настроек уведомлений каждого получателя.
 
 ![Раскрытое поле «Приглашать» со списком отдельных получателей](../notifying_people/thread_notification.png)
 

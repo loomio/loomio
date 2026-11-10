@@ -1,15 +1,15 @@
 ---
 title: Iniciar uma discussão
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: 8e74336026544503
   new-discussion: bf4bdc078aea4603
   group: '08b4bc471221aa14'
-  invite-and-notify: bbe22028f07335ad
+  invite-and-notify: 471498bfadf0a117
   tags: a1d84238cbafcfc2
   title: a115dd81a9f4691f
   context: 33c0788dc474d1be
@@ -65,7 +65,7 @@ O campo **Convidar** controla quem recebe a nova discussão imediatamente.
 
 Os membros do grupo podem ver uma discussão no seu grupo mesmo que você não os notifique. Adicionar um membro do grupo ao campo **Convidar** envia a ele uma notificação por e-mail e uma notificação no Loomio.
 
-Selecione um grupo para notificar todas as pessoas nele ou expanda o grupo para escolher membros individualmente. Selecione o × ao lado de um nome para remover essa pessoa da notificação.
+Selecione o grupo em que você está publicando para notificar seus membros ou selecione um grupo relacionado. Você pode expandir um grupo para escolher membros individualmente. Selecione o × ao lado de um nome para remover essa pessoa da notificação. A entrega de e-mails depende das configurações de notificação de cada destinatário.
 
 ![Campo Convidar expandido para mostrar os destinatários individuais](../notifying_people/thread_notification.png)
 

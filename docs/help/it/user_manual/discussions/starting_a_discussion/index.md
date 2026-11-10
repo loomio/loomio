@@ -1,15 +1,15 @@
 ---
 title: Avvia una discussione
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: ffab345a0661d41e
   new-discussion: 617c13d5012f597e
   group: d769332762044eb3
-  invite-and-notify: 7483bdd6ad3d4003
+  invite-and-notify: 687bfedb8591a15a
   tags: 2287d5eaa1bc258e
   title: 463027d762752a49
   context: 79c70129bc372f7c
@@ -65,7 +65,7 @@ Il campo **Invita** determina chi riceve subito la nuova discussione.
 
 I membri del gruppo possono vedere una discussione nel loro gruppo anche se non invii loro una notifica. Aggiungere un membro del gruppo al campo **Invita** gli invia una notifica via email e una notifica su Loomio.
 
-Seleziona un gruppo per inviare una notifica a tutti i suoi membri, oppure espandi il gruppo per scegliere singoli membri. Seleziona la × accanto a un nome per escludere quella persona dall'invio della notifica.
+Seleziona il gruppo in cui stai pubblicando per inviare una notifica ai suoi membri, oppure seleziona un gruppo correlato. Puoi espandere un gruppo per scegliere singoli membri. Seleziona la × accanto a un nome per escludere quella persona dall'invio della notifica. La consegna delle email dipende dalle impostazioni delle notifiche di ciascun destinatario.
 
 ![Campo Invita espanso per mostrare i singoli destinatari](../notifying_people/thread_notification.png)
 

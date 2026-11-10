@@ -1,15 +1,15 @@
 ---
 title: Розпочати обговорення
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,14 +17,13 @@ generated:
   introduction: '09345d0143269349'
   new-discussion: dc656a8ff03727b7
   group: 2c3aa565edbf24f7
-  invite-and-notify: f0b8b3b0f6391d6b
+  invite-and-notify: 3650dcbda6b9cf29
   tags: 17f01c3380bc90b7
   title: 2cb3589a1ec49df2
   context: b8676d5e778c4692
 title_source: 7373febfac25054c
 title_generated: 6637be1d688b43d8
 needs_review:
-  invite-and-notify: use "Вибір" instead of "Виберіть" for "Choose"
   context: use "висновок" instead of "рішення" for "outcome"
 ---
 
@@ -68,7 +67,7 @@ needs_review:
 
 Учасники групи можуть бачити обговорення у своїй групі, навіть якщо ви їх не сповіщаєте. Додавання учасника групи до поля **Запросити** надсилає йому сповіщення електронною поштою та сповіщення в Loomio.
 
-Виберіть групу, щоб сповістити всіх її учасників, або розгорніть групу, щоб вибрати окремих учасників. Натисніть × поруч з іменем, щоб вилучити цю людину зі списку одержувачів сповіщення.
+Виберіть групу, у якій ви публікуєте обговорення, щоб сповістити її учасників, або виберіть пов’язану групу. Ви можете розгорнути групу, щоб вибрати окремих учасників. Натисніть × поруч з іменем, щоб вилучити цю людину зі списку одержувачів сповіщення. Доставка електронної пошти залежить від налаштувань сповіщень кожного одержувача.
 
 ![Поле «Запросити», розгорнуте для показу окремих одержувачів](../notifying_people/thread_notification.png)
 
@@ -80,7 +79,7 @@ needs_review:
 
 ![Додавання адреси електронної пошти гостя до поля «Запросити»](../notifying_people/thread_notify_email.png)
 
-Ви також можете розпочати обговорення, нікого не сповіщаючи. Учасники групи все одно можуть знайти його в Loomio та побачити у своєму дайджесті залежно від налаштувань сповіщень.
+Також ви можете розпочати обговорення, нікого не сповіщаючи. Учасники групи все одно можуть знайти його в Loomio та побачити у своєму дайджесті залежно від налаштувань сповіщень.
 
 <!-- translation-section: tags -->
 

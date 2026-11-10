@@ -1,15 +1,15 @@
 ---
 title: Start een discussie
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: d22f47e583a74b25
   new-discussion: bf6de4cab1f2af5f
   group: 527c18ff43512d8a
-  invite-and-notify: a64305957bdad042
+  invite-and-notify: 29898e6feaf13567
   tags: bdbcf43f53a24ce5
   title: 156353477869f82a
   context: 3ede6a014ff80742
@@ -65,7 +65,7 @@ Het veld **Uitnodigen** bepaalt wie de nieuwe discussie meteen ontvangt.
 
 Groepsleden kunnen een discussie in hun groep zien, ook als je ze geen melding stuurt. Als je een groepslid toevoegt aan **Uitnodigen**, ontvangt dat lid een melding per e-mail en een melding in Loomio.
 
-Selecteer een groep om alle leden een melding te sturen, of klap de groep uit om individuele leden te kiezen. Selecteer de × naast een naam om die persoon uit de lijst met ontvangers te verwijderen.
+Selecteer de groep waarin je de discussie plaatst om de leden een melding te sturen, of selecteer een gerelateerde groep. Je kunt een groep uitklappen om individuele leden te kiezen. Selecteer de × naast een naam om die persoon uit de lijst met ontvangers te verwijderen. De bezorging per e-mail hangt af van de meldingsinstellingen van elke ontvanger.
 
 ![Uitgeklapt veld Uitnodigen met individuele ontvangers](../notifying_people/thread_notification.png)
 

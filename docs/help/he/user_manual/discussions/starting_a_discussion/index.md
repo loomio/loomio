@@ -1,15 +1,15 @@
 ---
 title: פתיחת דיון
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: 29d78a7aa09a7daf391329d3eb5bde9f92957cc4
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-10'
 sections:
   introduction: 3789fc666aaa1648
   new-discussion: 523c99827f192f72
   group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
+  invite-and-notify: 3972d86f93bcc6ec
   tags: 2d888580fa809f70
   title: ba80a903c4ecc7d1
   context: 9dbd5adda4ef4a04
@@ -17,7 +17,7 @@ generated:
   introduction: a68b87ba12c93a62
   new-discussion: '08c0de3fe772cadd'
   group: 6e5a1ae8f49974c2
-  invite-and-notify: f4291b4714b8fe1d
+  invite-and-notify: d22f5d282f308675
   tags: 1089ea307e29eb0c
   title: 1d1c020fe230e988
   context: 52bbd972cdfa5ebd
@@ -25,7 +25,6 @@ title_source: 7373febfac25054c
 title_generated: 29dd27187652bdc2
 needs_review:
   introduction: use "הקשר" instead of "תוכן" for "context"
-  invite-and-notify: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
@@ -68,7 +67,7 @@ needs_review:
 
 חברי הקבוצה יכולים לראות דיון בקבוצה שלהם גם ללא קבלת התראה. הוספת חבר קבוצה לשדה **הזמן** שולחת אליו התראה במייל והתראה ב-Loomio.
 
-יש לבחור קבוצה כדי לשלוח התראה לכל חבריה, או להרחיב את הקבוצה לבחירה של חברים מסוימים. יש לבחור בסימן × לצד שם כדי להסיר את האדם מרשימת הנמענים להתראה.
+יש לבחור את הקבוצה שבה מתפרסם הדיון כדי לשלוח התראה לחבריה, או לבחור קבוצה קשורה. ניתן להרחיב קבוצה כדי לבחור חברים מסוימים. יש לבחור בסימן × לצד שם כדי להסיר את האדם מרשימת הנמענים להתראה. שליחת המייל תלויה בהגדרות ההתראות של כל נמען.
 
 ![השדה הזמן מורחב להצגת נמענים בודדים](../notifying_people/thread_notification.png)
 

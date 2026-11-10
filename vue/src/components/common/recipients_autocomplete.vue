@@ -306,7 +306,7 @@ export default {
 
       // Order: poll voter audiences, this group and its delegates, chat rooms, then other groups.
       const group = this.model.isA('group') ? this.model : this.model.group();
-      const ownGroupIds = group ? [`group-${group.id}`, `delegates-${group.id}`] : [];
+      const ownGroupIds = group ? ['group', `group-${group.id}`, `delegates-${group.id}`] : [];
       const otherGroups = audiences.filter(a => ['group', 'delegates'].includes(a.kind) && !ownGroupIds.includes(a.id));
       const leading = audiences.filter(a => !otherGroups.includes(a));
 
