@@ -81,7 +81,7 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 6.0'
+  gem 'minitest', '~> 6.1'
   gem 'minitest-mock'
   gem 'webmock'
   gem 'rack_session_access'
