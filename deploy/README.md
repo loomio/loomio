@@ -97,6 +97,18 @@ Edit the `.env` and look for the vars starting with SMTP_
 
 You might also need to add an SPF DNS record to indicate that the SMTP can send mail for your domain.
 
+### Configure local logs
+
+Install the [local log rotation and retention policy](LOGGING.md) before starting the containers. Download the host-policy installer alongside the other deployment files:
+
+```sh
+curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/configure_logging.py
+sudo python3 configure_logging.py --profile private
+sudo python3 configure_logging.py --profile private --apply
+```
+
+The default Compose configuration retains filtered web access metadata on the host for up to 30 days, with daily/size rotation targeting about 1 GiB. Ordinary container logs are limited to 20 MB × 3 files each. Access history survives container replacement; the [logging guide](LOGGING.md) covers fields, limitations, existing-host migration and rollback. This setup requires Ubuntu with systemd, rsyslog and logrotate.
+
 ### Initialize the database
 
 This command initializes a new database for your Loomio instance to use.

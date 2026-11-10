@@ -1,7 +1,25 @@
 name: loomio
 
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "20m"
+    max-file: "3"
+
 services:
   nginx-proxy:
+    # Install configure_logging.py before starting this service; see LOGGING.md.
+    logging:
+      driver: syslog
+      options:
+        syslog-address: unixgram:///var/spool/rsyslog/loomio-access.sock
+        syslog-format: rfc5424micro
+        tag: loomio-access
+        cache-max-size: "20m"
+        cache-max-file: "3"
+    environment:
+      LOG_FORMAT_ESCAPE: json
+      LOG_FORMAT: '{"method":"$$request_method","path":"$$uri","status":$$status,"remote_addr":"$$remote_addr","request_id":"$$upstream_http_x_request_id","user_agent":"$$http_user_agent"}'
     image: nginxproxy/nginx-proxy:${NGINX_PROXY_CONTAINER_TAG}
     labels:
       - "com.github.nginx-proxy.nginx"
@@ -21,6 +39,7 @@ services:
     restart: unless-stopped
 
   nginx-proxy-acme:
+    logging: *logging
     image: nginxproxy/acme-companion:${ACME_COMPANION_CONTAINER_TAG}
     environment:
       - DEFAULT_EMAIL=${SUPPORT_EMAIL}
@@ -37,6 +56,7 @@ services:
     restart: unless-stopped
 
   app:
+    logging: *logging
     container_name: loomio-app
     image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
     restart: unless-stopped
@@ -63,6 +83,7 @@ services:
       - redis
 
   worker:
+    logging: *logging
     container_name: loomio-worker
     image: ${LOOMIO_CONTAINER_IMAGE}:${LOOMIO_CONTAINER_TAG}
     restart: always
@@ -82,6 +103,7 @@ services:
       - ./tmp:/loomio/tmp
 
   db:
+    logging: *logging
     container_name: loomio-db
     image: postgres:${POSTGRES_CONTAINER_TAG}
     restart: unless-stopped
@@ -96,6 +118,7 @@ services:
      - PGDATA=/pgdata
 
   redis:
+    logging: *logging
     container_name: loomio-redis
     image: redis:8.4
     restart: unless-stopped
@@ -115,6 +138,7 @@ services:
       - main
 
   haraka:
+    logging: *logging
     container_name: loomio-haraka
     image: ${HARAKA_CONTAINER_IMAGE}:${HARAKA_CONTAINER_TAG}
     restart: unless-stopped
