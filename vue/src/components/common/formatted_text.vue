@@ -4,7 +4,7 @@ import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
-import AbilityService from '@/shared/services/ability_service';
+import TaskAbility from '@/shared/abilities/task_ability';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
@@ -24,7 +24,7 @@ const RICH_TEXT_IMAGE_MAX_HEIGHT = 600;
 const RICH_TEXT_IMAGE_STYLE_CANDIDATE = /<img\b(?=[^>]*\bwidth\s*=)(?=[^>]*\bheight\s*=)(?![^>]*\baspect-ratio\s*:)/i;
 const htmlContent = ref(null);
 
-const canEdit = computed(() => AbilityService.canEdit(props.model));
+const canEdit = computed(() => TaskAbility.canUpdate(props.model));
 
 const content = computed(() => {
   if (props.model.translationId) {

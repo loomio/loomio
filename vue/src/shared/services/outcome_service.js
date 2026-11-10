@@ -1,5 +1,5 @@
 import openModal from '@/shared/helpers/open_modal';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -18,7 +18,7 @@ export default new class OutcomeService {
         icon: 'mdi-translate',
         dock: 3,
         canPerform() {
-          return AbilityService.canTranslate(outcome);
+          return TranslationAbility.canTranslate(outcome);
         },
         perform() {
           return Records.translations.addTo(outcome, Session.user().locale)
@@ -30,7 +30,7 @@ export default new class OutcomeService {
         icon: 'mdi-translate',
         dock: 3,
         canPerform() {
-          return AbilityService.canUntranslate(outcome);
+          return TranslationAbility.canUntranslate(outcome);
         },
         perform() {
           return outcome.translationId = null;

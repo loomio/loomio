@@ -1,6 +1,5 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
 import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
 import EventBus from '@/shared/services/event_bus';

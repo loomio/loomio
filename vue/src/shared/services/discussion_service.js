@@ -1,6 +1,6 @@
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import ReactionAbility from '@/shared/abilities/reaction_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import openModal      from '@/shared/helpers/open_modal';
@@ -28,7 +28,7 @@ export default new class DiscussionService {
         icon: 'mdi-translate',
         name: 'common.action.translate',
         dock: 3,
-        canPerform() { return AbilityService.canTranslate(discussion); },
+        canPerform() { return TranslationAbility.canTranslate(discussion); },
         perform() { return Records.translations.addTo(discussion, Session.user().locale) }
       },
 
@@ -36,7 +36,7 @@ export default new class DiscussionService {
         icon: 'mdi-translate',
         name: 'common.action.original',
         dock: 3,
-        canPerform() { return AbilityService.canUntranslate(discussion); },
+        canPerform() { return TranslationAbility.canUntranslate(discussion); },
         perform() { discussion.translationId = null }
       },
 

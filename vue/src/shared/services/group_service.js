@@ -2,7 +2,7 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import MembershipAbility from '@/shared/abilities/membership_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
@@ -42,7 +42,7 @@ export default new class GroupService {
         icon: 'mdi-translate',
         dock: 3,
         canPerform() {
-          return AbilityService.canTranslate(group);
+          return TranslationAbility.canTranslate(group);
         },
         perform() {
           return Records.translations.addTo(group, Session.user().locale)
@@ -54,7 +54,7 @@ export default new class GroupService {
         icon: 'mdi-translate',
         dock: 3,
         canPerform() {
-          return AbilityService.canUntranslate(group);
+          return TranslationAbility.canUntranslate(group);
         },
         perform() {
           group.translationId = null;

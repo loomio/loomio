@@ -2,7 +2,7 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import StanceAbility from '@/shared/abilities/stance_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -108,7 +108,7 @@ export default new class StanceService {
         canPerform() {
           return (stance.author() && Session.user()) &&
           (stance.author().locale !== Session.user().locale) &&
-          AbilityService.canTranslate(stance);
+          TranslationAbility.canTranslate(stance);
         },
         perform() {
           return stance.translate(Session.user().locale);

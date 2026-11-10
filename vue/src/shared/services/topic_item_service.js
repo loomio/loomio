@@ -1,4 +1,3 @@
-import AbilityService from '@/shared/services/ability_service';
 import TopicAbility from '@/shared/abilities/topic_ability';
 import TopicItemAbility from '@/shared/abilities/topic_item_ability';
 import Flash from '@/shared/services/flash';

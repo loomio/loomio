@@ -2,7 +2,6 @@ import { createI18n } from 'vue-i18n';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/shared/services/app_config', () => ({default: {theme: {site_name: 'Loomio'}}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/services/session', () => ({default: {}}));
 vi.mock('@/shared/services/flash', () => ({default: {}}));
 vi.mock('@/shared/helpers/message_bus', () => ({initLiveUpdate: vi.fn(), closeLiveUpdate: vi.fn()}));

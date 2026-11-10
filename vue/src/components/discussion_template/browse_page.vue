@@ -3,7 +3,6 @@ import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import { importTemplateFile } from '@/shared/helpers/template_file';
 import utils         from '@/shared/record_store/utils';
