@@ -40,7 +40,7 @@ A very large budget can create false precision. A useful budget is usually large
 
 Participants move the sliders to distribute their budget. Loomio shows how many points remain and prevents submission until the allocation is valid.
 
-You can leave points unspent. If the total exceeds your budget, the vote button shows how many points to remove. Budgets greater than 10 also show number fields for entering exact allocations. Empty, negative, or fractional entries must be corrected before you can submit.
+You can leave points unspent.
 
 ![](voting.png)
 

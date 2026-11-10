@@ -42,8 +42,6 @@ Anonymous voting and showing options in random order can be useful when you want
 
 Participants move a slider to score every option. In this example, the voter scores Central Station cafe at 8, Riverside market at 6, the University food court at 7, and Harbour offices at 5.
 
-The slider labels show the score scale. You can keep an option's initial score. When the maximum score is greater than 10, a number field also lets you enter an exact score. The vote button shows **Check scores** and stays disabled until invalid or empty entries are corrected.
-
 ![](voting.png)
 
 The reason explains how the voter applied the scale. This helps the group distinguish a low score caused by missing information from one caused by substantive concern.

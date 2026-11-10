@@ -105,8 +105,6 @@ When voting opens, Loomio notifies the people you invited. See [Invite to vote](
 
 While it is open, people can vote, explain their vote, and change their vote. Results update as people vote, unless results are hidden until it closes. By default, people who have not voted get a reminder a day before it closes.
 
-If your response needs a change before it can be submitted, the vote button explains what to do, such as selecting an option, reducing a point allocation, or ranking a candidate. When the response is ready, select **Submit vote**, or **Update vote** when changing a previous vote. Question rounds use **Submit response** and **Update response**.
-
 <!-- translation-section: 4-it-closes -->
 
 ### 4. It closes
