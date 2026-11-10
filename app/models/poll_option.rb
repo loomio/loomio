@@ -79,14 +79,17 @@ class PollOption < ApplicationRecord
     poll.poll_type == 'meeting' ? scores_by_voter : {}
   end
 
-  def voter_ids
-    # this is a hack, we both know this
-    # some polls 0 is a vote, others it is not
-    if poll.poll_type == 'meeting'
-      scores_by_voter.keys.map(&:to_i)
-    else
-      scores_by_voter.filter { |id, score| score != 0 }.keys.map(&:to_i)
-    end
+  def result_voter_ids
+    return [] if poll.anonymous?
+
+    # A zero score is an availability response in time polls.
+    include_zero_scores = poll.poll_type == 'meeting'
+    voter_ids = scores_by_voter.filter_map { |voter_id, score| voter_id.to_i if include_zero_scores || score != 0 }
+    return voter_ids if voter_ids.size < 2
+
+    # Sample before applying the result limit, using a stable order per option
+    # so the same set of voters renders consistently across requests.
+    voter_ids.sort!.sample(Poll::RESULT_VOTER_IDS_MAX, random: Random.new(id.to_i))
   end
 
   def average_score

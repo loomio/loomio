@@ -630,7 +630,7 @@ class PollService
         voter_percent: voter_percent.to_f,
         average: weighted_results ? option.weighted_average_score : option.average_score,
         scores_by_voter: option.scores_by_voter_for_results,
-        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
+        voter_ids: option.result_voter_ids,
         vote_count: option.vote_count,
         color: option.color,
         test_operator: option.test_operator,
@@ -733,7 +733,7 @@ class PollService
         voter_percent: poll.vote_count_eligible > 0 ? ((option.vote_count.to_f / poll.vote_count_eligible.to_f) * 100) : 0,
         average: option.average_score,
         scores_by_voter: option.scores_by_voter_for_results,
-        voter_ids: option.voter_ids.take(Poll::RESULT_VOTER_IDS_MAX),
+        voter_ids: option.result_voter_ids,
         vote_count: option.vote_count,
         color: option.color,
         test_result: nil
