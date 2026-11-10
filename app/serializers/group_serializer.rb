@@ -1,6 +1,5 @@
 class GroupSerializer < ApplicationSerializer
   attributes :id,
-             :enabled,
              :key,
              :handle,
              :name,
@@ -90,9 +89,7 @@ class GroupSerializer < ApplicationSerializer
   # for the organisation's members and server admins.
   def subscription
     sub = subscription_record
-    # TODO: remove active and enabled once clients loaded before this release
-    # have reloaded; current clients derive both from state and expires_at.
-    status = {state: sub.state, expires_at: sub.expires_at, active: sub.is_active?}
+    status = {state: sub.state, expires_at: sub.expires_at}
     return status unless subscription_details_visible?
 
     status.merge(
@@ -104,10 +101,6 @@ class GroupSerializer < ApplicationSerializer
       renews_at:       sub.renews_at,
       members_count:   sub.members_count
     )
-  end
-
-  def enabled
-    object.kept? && subscription_record.is_active?
   end
 
   def subscription_details_visible?

@@ -46,12 +46,12 @@ class GroupSerializerTest < ActiveSupport::TestCase
 
     payload = GroupSerializer.new(group, scope: { exclude_types: [] }).as_json.fetch(:group)
 
-    assert_equal({state: "past_due", expires_at: expires_at, active: false}, payload[:subscription])
-    assert_equal false, payload[:enabled]
+    assert_equal({state: "past_due", expires_at: expires_at}, payload[:subscription])
+    assert_not payload.key?(:enabled)
 
     group.update!(subscription: nil)
     payload = GroupSerializer.new(group.reload, scope: { exclude_types: [] }).as_json.fetch(:group)
-    assert_equal({state: "active", expires_at: nil, active: true}, payload[:subscription])
+    assert_equal({state: "active", expires_at: nil}, payload[:subscription])
   end
 
   test "shared payloads omit follow state instead of reporting false" do
