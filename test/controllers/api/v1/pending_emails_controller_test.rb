@@ -187,7 +187,7 @@ class Api::V1::PendingEmailsControllerTest < ActionController::TestCase
       body_text: "hello there"
     )
 
-    Subscription.for(@group).update(plan: 'trial')
+    Subscription.for!(@group).update(plan: 'trial')
 
     assert_difference 'MemberEmailAlias.count', 0 do
       post :allow, params: { id: pending_email.id, user_id: @admin.id }

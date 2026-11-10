@@ -216,7 +216,7 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
     assert admin.can?(:destroy, Chatbot.new(group: group))
   end
 
-  test "server admins can move or merge disabled but not discarded groups" do
+  test "server admins can move or merge disabled but not discarded groups, without bypassing read-only" do
     server_admin = users(:server_admin)
     group = groups(:group)
 
@@ -230,7 +230,12 @@ class Ability::GroupStateTest < ActiveSupport::TestCase
 
     assert server_admin.can?(:move, group)
     assert server_admin.can?(:merge, group)
-    assert server_admin.can?(:add_members, group)
+    # Disabled groups are read-only for everyone; admins work through the admin panel.
+    assert_not server_admin.can?(:add_members, group)
+    group_and_server_admin = users(:admin)
+    assert group_and_server_admin.is_admin?
+    assert_not group_and_server_admin.can?(:update, group)
+    assert_not group_and_server_admin.can?(:create, Comment.new(parent: topics(:discussion_topic).discussion))
 
     group.subscription.update!(state: "active")
     group.discard!

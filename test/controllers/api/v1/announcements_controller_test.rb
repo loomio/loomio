@@ -976,7 +976,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "topic create explains when subscription does not allow guests" do
-    Subscription.for(@group).update!(allow_guests: false)
+    Subscription.for!(@group).update!(allow_guests: false)
 
     post :create, params: { topic_id: @discussion.topic_id, recipient_emails: ['jim@example.com'] }
 

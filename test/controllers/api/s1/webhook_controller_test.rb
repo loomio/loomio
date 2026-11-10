@@ -95,7 +95,7 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "does not overwrite a subscription that is still managed by Chargify" do
-    subscription = Subscription.for(@group)
+    subscription = Subscription.for!(@group)
     subscription.update!(
       plan: "legacy-product",
       state: "active",

@@ -19,8 +19,8 @@ class GroupAbilityContractTest < ActiveSupport::TestCase
 
   test "writes the group ability contract for the client" do
     cases = travel_to(CONTRACT_TIME) do
-      GROUPS.product(%w[open closed secret], SETTINGS.keys).flat_map do |name, privacy, setting|
-        cases_for(name, privacy, setting)
+      GROUPS.product(%w[open closed secret], SETTINGS.keys, %w[active on_hold]).flat_map do |name, privacy, setting, state|
+        cases_for(name, privacy, setting, state)
       end
     end
     write_ability_contract("group_abilities", cases)
@@ -28,8 +28,9 @@ class GroupAbilityContractTest < ActiveSupport::TestCase
 
   private
 
-  def cases_for(name, privacy, setting)
+  def cases_for(name, privacy, setting, state)
     group = Group.find(groups(name).id)
+    Subscription.for!(group).update_columns(state: state)
     group.assign_attributes(SETTINGS.fetch(setting))
     group.group_privacy = privacy
     group.save!(validate: false)
@@ -40,13 +41,14 @@ class GroupAbilityContractTest < ActiveSupport::TestCase
       user = users(role)
       request = MembershipRequest.new(group: group, requestor: user)
       {
-        name: "#{role} #{name} #{privacy} #{setting}",
+        name: "#{role} #{name} #{privacy} #{setting}#{' on_hold' if state == 'on_hold'}",
         roles: {
           user_id: user.id, signed_in: user.is_logged_in?, email_verified: user.email_verified?, server_admin: user.is_admin?,
           group_admin: group.admins.exists?(user.id), group_member: group.members.exists?(user.id),
           parent_admin: parent.admins.exists?(user.id), parent_member: parent.members.exists?(user.id)
         },
-        group: raw(group, GROUP_FIELDS).merge("group_privacy" => group.group_privacy, "enabled" => group.enabled?),
+        group: raw(group, GROUP_FIELDS).merge("group_privacy" => group.group_privacy,
+                                                  "subscription" => {"state" => state, "expires_at" => nil}),
         expected: answers(user, group, ACTIONS).merge(request_membership: Ability::Base.new(user).can?(:create, request))
       }
     end

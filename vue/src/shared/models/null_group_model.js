@@ -31,7 +31,6 @@ export default class NullGroupModel {
       attachments: [],
       linkPreviews: [],
       subscription: {active: true},
-      enabled: true,
       specifiedVotersOnly: false,
       isNullGroup: true,
       categorizePollTemplates: true
@@ -74,6 +73,7 @@ export default class NullGroupModel {
   privacyIsSecret() { return true; }
   isDiscarded() { return false; }
   isEnabled() { return true; }
+  subscriptionActive() { return true; }
   isParent() { return true; }
   hasSubscription() { return false; }
   isSubgroupOfSecretParent() { return false; }
