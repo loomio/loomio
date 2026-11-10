@@ -1,6 +1,6 @@
 <script lang="js">
 import AppConfig      from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import Records  from '@/shared/services/records';
 import EventBus  from '@/shared/services/event_bus';
 import Session  from '@/shared/services/session';
@@ -112,7 +112,7 @@ export default
   computed: {
     parentGroups() {
       return [{value: null, title: this.$t('common.none')}].concat(Session.user().parentGroups().
-        filter(g => AbilityService.canCreateSubgroups(g)).
+        filter(g => GroupAbility.canAddSubgroup(g)).
         map(g => ({
         value: g.id,
         title: g.name

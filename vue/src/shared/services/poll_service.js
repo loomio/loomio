@@ -2,6 +2,7 @@ import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import PollAbility from '@/shared/abilities/poll_ability';
+import StanceAbility from '@/shared/abilities/stance_ability';
 import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
@@ -69,7 +70,7 @@ export default new class PollService {
         name: (poll.config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
         icon: 'mdi-pencil',
         dock: 2,
-        canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
+        canPerform() { return StanceAbility.canUpdate(poll.myStance()) && !!poll.iHaveVoted(); },
         perform() { return StanceService.updateStance(poll.myStance()); }
       },
 
@@ -77,7 +78,7 @@ export default new class PollService {
         name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         menu: true,
-        canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
+        canPerform() { return StanceAbility.canUncast(poll.myStance()); },
         perform: () => StanceService.uncastStance(poll.myStance())
       },
 
@@ -86,7 +87,7 @@ export default new class PollService {
         menu: true,
         nameArgs() { return {pollType: poll.translatedPollType()}; },
         icon: 'mdi-pencil',
-        canPerform() { return PollAbility.update(poll); },
+        canPerform() { return PollAbility.canUpdate(poll); },
         to() { return `/p/${poll.key}/edit`; }
       },
 
@@ -124,7 +125,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           return !poll.discardedAt && (poll.anonymous
-            ? AbilityService.canViewAnonymousVoters(poll)
+            ? PollAbility.canViewAnonymousVoters(poll)
             : poll.voteCountCast > 0);
         },
         to() { return `/p/${poll.key}/votes`; }
@@ -136,7 +137,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt || (!poll.isOpened() && !poll.isScheduled())) { return false; }
-          return AbilityService.canAddMembersPoll(poll);
+          return PollAbility.canAddVoters(poll);
         },
         perform() {
           return openModal({
@@ -153,7 +154,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.voteCountEligible < 2)) { return false; }
-          return AbilityService.canAnnouncePoll(poll);
+          return PollAbility.canRemind(poll);
         },
         perform() {
           return openModal({
@@ -170,7 +171,7 @@ export default new class PollService {
         name: 'poll_common.close_early',
         dock: 2,
         canPerform() {
-          return PollAbility.close(poll);
+          return PollAbility.canClose(poll);
         },
         perform() {
 
@@ -202,7 +203,7 @@ export default new class PollService {
         name: 'common.action.reopen',
         dock: 3,
         canPerform() {
-          return PollAbility.reopen(poll);
+          return PollAbility.canReopen(poll);
         },
         perform() {
           return openModal({
@@ -264,7 +265,7 @@ export default new class PollService {
         icon: 'mdi-database-arrow-right-outline',
         menu: true,
         canPerform() {
-          return PollAbility.export(poll);
+          return PollAbility.canExport(poll);
         },
         perform() {
           return hardReload(LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'csv', absolute: true}));
@@ -276,7 +277,7 @@ export default new class PollService {
         icon: 'mdi-database-export',
         menu: true,
         canPerform() {
-          return PollAbility.export(poll) && poll.pollType === 'stv';
+          return PollAbility.canExport(poll) && poll.pollType === 'stv';
         },
         perform() {
           return hardReload(LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'blt', absolute: true}));
@@ -286,7 +287,7 @@ export default new class PollService {
       // delete_poll:
       //   name: 'common.action.delete'
       //   canPerform: ->
-      //     PollAbility.destroy(poll)
+      //     PollAbility.canDestroy(poll)
       //   perform: ->
       //     openModal
       //       component: 'ConfirmModal'
@@ -304,7 +305,7 @@ export default new class PollService {
         menu: true,
         icon: 'mdi-delete',
         canPerform() {
-          return !poll.isTopicable() && PollAbility.destroy(poll);
+          return !poll.isTopicable() && PollAbility.canDestroy(poll);
         },
         perform() {
           return openModal({

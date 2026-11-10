@@ -11,7 +11,7 @@ vi.mock('@/shared/services/records', () => ({
 }));
 vi.mock('@/shared/services/session', () => ({default: {isSignedIn: () => false}}));
 vi.mock('@/shared/services/event_bus', () => ({default: mocks.eventBus}));
-vi.mock('@/shared/services/ability_service', () => ({default: {canEditGroup: () => false}}));
+vi.mock('@/shared/abilities/group_ability', () => ({default: {canUpdate: () => false}}));
 vi.mock('@/shared/services/group_service', () => ({default: {actions: () => ({})}}));
 vi.mock('@/mixins/url_for', () => ({default: {methods: {urlFor: () => '/group'}}}));
 vi.mock('@/mixins/format_date', () => ({default: {}}));

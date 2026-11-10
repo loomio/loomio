@@ -1,5 +1,6 @@
 import openModal from '@/shared/helpers/open_modal';
 import AbilityService from '@/shared/services/ability_service';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import BookmarkService from '@/shared/services/bookmark_service';
@@ -48,7 +49,7 @@ export default new class OutcomeService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 1,
-        canPerform() { return AbilityService.canSetPollOutcome(poll); },
+        canPerform() { return OutcomeAbility.canCreate(poll); },
         perform() {
           return openModal({
             component: 'PollCommonOutcomeModal',

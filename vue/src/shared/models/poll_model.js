@@ -263,19 +263,9 @@ export default class PollModel extends BaseModel {
     return this.topic().adminsInclude(user);
   }
 
-  votersInclude(user) {
-    if (specifiedVotersOnly) {
-      return this.stanceFor(user);
-    } else {
-      return this.membersInclude(user);
-    }
-  }
-
+  // Thread members, as on the server. Voting rights come from stances.
   membersInclude(user) {
-    return !!(
-      this.stanceFor(user) ||
-      this.topic().membersInclude(user)
-    );
+    return this.topic().membersInclude(user);
   }
 
   stanceFor(user) {

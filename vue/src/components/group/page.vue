@@ -2,7 +2,7 @@
 import Session           from '@/shared/services/session';
 import Records           from '@/shared/services/records';
 import EventBus          from '@/shared/services/event_bus';
-import AbilityService    from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
 import GroupService    from '@/shared/services/group_service';
 import { pickBy } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
@@ -44,7 +44,7 @@ export default
     },
 
     canEditGroup() {
-      return AbilityService.canEditGroup(this.group);
+      return GroupAbility.canUpdate(this.group);
     },
 
     tabs() {

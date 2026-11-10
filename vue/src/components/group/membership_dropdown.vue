@@ -1,7 +1,8 @@
 <script lang="js">
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import GroupAbility from '@/shared/abilities/group_ability';
+import MembershipAbility from '@/shared/abilities/membership_ability';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
@@ -30,12 +31,12 @@ export default
     },
 
     canSetName() {
-      return AbilityService.canAdminister(this.membership.group()) &&
+      return GroupAbility.canUpdate(this.membership.group()) &&
       (!this.membership.user().name || !this.membership.user().emailVerified);
     },
 
     canSetTitle() {
-      return AbilityService.canSetMembershipTitle(this.membership);
+      return MembershipAbility.canUpdate(this.membership);
     },
 
     setName() {
@@ -57,11 +58,11 @@ export default
     },
 
     canResendMembership() {
-      return AbilityService.canResendMembership(this.membership);
+      return MembershipAbility.canResend(this.membership);
     },
 
     canViewNotificationHistory() {
-      return AbilityService.canAdminister(this.membership.group());
+      return GroupAbility.canUpdate(this.membership.group());
     },
 
     viewNotificationHistory() {
@@ -78,7 +79,7 @@ export default
     },
 
     canRemoveMembership() {
-      return AbilityService.canRemoveMembership(this.membership);
+      return MembershipAbility.canDestroy(this.membership);
     },
 
     removeMembership() {
@@ -113,16 +114,16 @@ export default
 
     canToggleAdmin() {
       return ((this.membership.group().adminMembershipsCount === 0) && (this.membership.user() === Session.user())) ||
-      (AbilityService.canAdminister(this.membership.group()) && (!this.membership.admin || this.canRemoveMembership(this.membership))) ||
+      (GroupAbility.canUpdate(this.membership.group()) && (!this.membership.admin || this.canRemoveMembership(this.membership))) ||
       (this.membership.userIs(Session.user()) && this.membership.group().parentOrSelf().adminsInclude(Session.user()));
     },
 
     canMakeDelegate() {
-      return !this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+      return !this.membership.delegate && GroupAbility.canUpdate(this.membership.group())
     },
 
     canRemoveDelegate() {
-      return this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+      return this.membership.delegate && GroupAbility.canUpdate(this.membership.group())
     },
 
     makeDelegate() {

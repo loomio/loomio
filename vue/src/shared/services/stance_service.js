@@ -3,6 +3,8 @@ import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import CommentAbility from '@/shared/abilities/comment_ability';
+import StanceAbility from '@/shared/abilities/stance_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import BookmarkService from '@/shared/services/bookmark_service';
@@ -71,7 +73,7 @@ export default new class StanceService {
           !stance.revokedAt &&
           !poll.anonymous &&
           poll.resultsAvailable() &&
-          AbilityService.canAddComment(topic);
+          CommentAbility.canCreate(topic);
         },
         perform() {
           const maxDepth = stance.poll().topic().maxDepth;
@@ -87,7 +89,7 @@ export default new class StanceService {
         name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
         icon: 'mdi-pencil',
         dock: 3,
-        canPerform: () => !!this.canUpdateStance(stance),
+        canPerform: () => StanceAbility.canUpdate(stance) && !!stance.castAt,
         perform: () => this.updateStance(stance)
       },
 
@@ -95,7 +97,7 @@ export default new class StanceService {
         name: (stance.poll().config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         dock: 1,
-        canPerform: () => this.canUpdateStance(stance),
+        canPerform: () => StanceAbility.canUncast(stance),
         perform: () => this.uncastStance(stance)
       },
 
@@ -132,7 +134,10 @@ export default new class StanceService {
         name: 'common.action.redact',
         icon: 'mdi-eye-off',
         menu: true,
-        canPerform() { return AbilityService.canRedactStance(stance); },
+        canPerform() {
+          const hasContent = !stance.isBlank() || stance.attachments.length || stance.linkPreviews.length;
+          return !!hasContent && !stance.revokedAt && StanceAbility.canRedact(stance);
+        },
         perform() {
           return openModal({
             component: 'ConfirmModal',
@@ -157,7 +162,7 @@ export default new class StanceService {
         name: 'common.action.unredact',
         icon: 'mdi-eye',
         menu: true,
-        canPerform() { return AbilityService.canUnredactStance(stance); },
+        canPerform() { return StanceAbility.canUnredact(stance); },
         perform() {
           return openModal({
             component: 'ConfirmModal',
@@ -206,14 +211,5 @@ export default new class StanceService {
         }
       }
     });
-  }
-
-  canUpdateStance(stance) {
-    return stance &&
-    stance.latest &&
-    !stance.revokedAt &&
-    (stance.poll().myStanceId === stance.id) &&
-    stance.poll().isVotable() &&
-    stance.poll().iHaveVoted();
   }
 };

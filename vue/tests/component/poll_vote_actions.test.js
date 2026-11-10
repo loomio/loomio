@@ -6,9 +6,10 @@ const mocks = vi.hoisted(() => ({
   openModal: vi.fn()
 }));
 
-vi.mock('@/shared/services/ability_service', () => ({default: {
+vi.mock('@/shared/services/ability_service', () => ({default: {}}));
+vi.mock('@/shared/abilities/poll_ability', () => ({default: {
   canViewAnonymousVoters: mocks.canViewAnonymousVoters,
-  canAddMembersPoll: mocks.canAddMembersPoll
+  canAddVoters: mocks.canAddMembersPoll
 }}));
 vi.mock('@/shared/services/bookmark_service', () => ({default: {actions: () => ({})}}));
 vi.mock('@/shared/helpers/open_modal', () => ({default: mocks.openModal}));

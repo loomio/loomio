@@ -1,6 +1,35 @@
 require 'test_helper'
 
 class Ability::DiscussionTest < ActiveSupport::TestCase
+  test "editing a thread needs current access, and only thread admins can edit a locked one" do
+    discussion = discussions(:discussion)
+    topic = discussion.topic
+    group = topic.group
+    group.update_columns(members_can_edit_discussions: false)
+
+    discussion.update_columns(author_id: users(:user).id)
+    assert users(:user).can?(:update, discussion.reload), "authors can edit their own thread"
+
+    discussion.update_columns(author_id: users(:former_member_loud).id)
+    assert_not users(:former_member_loud).can?(:update, discussion.reload), "authors who lost access cannot edit"
+
+    group.update_columns(members_can_edit_discussions: true)
+    topic.update_columns(locked_at: 1.day.ago)
+    assert_not users(:user).can?(:update, discussion.reload), "members cannot edit a locked thread"
+    assert users(:admin).can?(:update, discussion), "thread admins can edit a locked thread"
+  end
+
+  test "thread guests cannot announce to the group, and deleted threads cannot be announced" do
+    discussion = discussions(:discussion)
+    discussion.topic.group.update_columns(members_can_announce: true)
+
+    assert users(:user).can?(:announce, discussion), "group members can announce when allowed"
+    assert_not users(:guest_normal).can?(:announce, discussion), "thread guests are not group members"
+
+    discussion.update_columns(discarded_at: 1.hour.ago)
+    assert_not users(:admin).can?(:announce, discussion.reload), "deleted threads cannot be announced"
+  end
+
   # Discussion without group
   test "discussion without group as admin" do
     user = users(:user)
