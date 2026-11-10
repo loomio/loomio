@@ -8,7 +8,7 @@ vi.mock('@/shared/services/file_uploader', () => ({default: class {
   upload(file) { return mocks.upload(file); }
 }}));
 
-import AbilityService from '@/shared/services/ability_service';
+import AttachmentAbility from '@/shared/abilities/attachment_ability';
 import { useAttaching } from '@/components/lmo_textarea/composables/useAttaching';
 import { contentExtensions } from '@/components/lmo_textarea/content_extensions';
 import { Editor } from '@tiptap/core';
@@ -31,17 +31,17 @@ beforeEach(() => {
 describe('attachment permissions in editors', () => {
   it.each(['discussion', 'poll', 'comment', 'stance', 'outcome'])('uses the containing topic for a %s', kind => {
     const model = modelFor(kind);
-    expect(AbilityService.canAttachFiles(model)).toBe(false);
+    expect(AttachmentAbility.canAttach(model)).toBe(false);
     mocks.user = {id: 1};
-    expect(AbilityService.canAttachFiles(model)).toBe(true);
+    expect(AttachmentAbility.canAttach(model)).toBe(true);
     mocks.user = {id: 2};
     topic.attachmentsAdminOnly = false;
-    expect(AbilityService.canAttachFiles(model)).toBe(true);
+    expect(AttachmentAbility.canAttach(model)).toBe(true);
   });
 
   it('allows initial context files and template editing', () => {
     for (const kind of ['discussion', 'poll', 'discussionTemplate', 'pollTemplate', 'user', 'group']) {
-      expect(AbilityService.canAttachFiles({...modelFor(kind), topicId: null})).toBe(true);
+      expect(AttachmentAbility.canAttach({...modelFor(kind), topicId: null})).toBe(true);
     }
   });
 

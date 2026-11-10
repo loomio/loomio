@@ -1,6 +1,6 @@
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
 import StanceAbility from '@/shared/abilities/stance_ability';
 import StanceService from '@/shared/services/stance_service';
@@ -51,7 +51,7 @@ export default new class PollService {
         icon: 'mdi-translate',
         name: 'common.action.translate',
         dock: 3,
-        canPerform() { return AbilityService.canTranslate(poll); },
+        canPerform() { return TranslationAbility.canTranslate(poll); },
         perform() {
           poll.pollOptions().forEach((po) => Records.translations.addTo(po, Session.user().locale));
           return Records.translations.addTo(poll, Session.user().locale);
@@ -62,7 +62,7 @@ export default new class PollService {
         icon: 'mdi-translate',
         name: 'common.action.original',
         dock: 3,
-        canPerform() { return AbilityService.canUntranslate(poll); },
+        canPerform() { return TranslationAbility.canUntranslate(poll); },
         perform() { poll.translationId = null;  poll.pollOptions().forEach((po) => po.translationId = null)}
       },
 
@@ -211,20 +211,6 @@ export default new class PollService {
             props: { poll }});
         }
       },
-
-      // add_comment: {
-      //   name: 'activity_card.add_comment',
-      //   icon: 'mdi-reply',
-      //   menu: true,
-      //   canPerform() {
-      //     const topic = poll.topic();
-      //     return !poll.discardedAt && topic && AbilityService.canAddComment(topic);
-      //   },
-      //   perform() {
-      //     EventBus.$emit('show-add-comment-form');
-      //     document.querySelector('#add-comment')?.scrollIntoView({behavior: 'smooth'});
-      //   }
-      // },
 
       show_history: {
         icon: 'mdi-history',

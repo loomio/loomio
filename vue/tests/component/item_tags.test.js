@@ -18,7 +18,6 @@ vi.mock('vue-i18n', () => ({useI18n: () => ({t: key => key})}));
 import TopicTagsPicker from '@/components/tags/topic_tags_picker.vue';
 import ThreadTags from '@/components/tags/thread_tags.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
-import AbilityService from '@/shared/services/ability_service';
 import TopicAbility from '@/shared/abilities/topic_ability';
 import TopicItemAbility from '@/shared/abilities/topic_item_ability';
 

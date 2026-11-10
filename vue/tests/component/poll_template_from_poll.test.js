@@ -32,7 +32,6 @@ vi.mock('@/shared/services/app_config', () => ({default: {
   }
 }}));
 vi.mock('@/i18n', () => ({I18n: {global: {t: key => key}}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/services/flash', () => ({default: {}}));
 vi.mock('@/shared/services/bookmark_service', () => ({default: {actions: () => ({})}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: mocks.emit}}));
