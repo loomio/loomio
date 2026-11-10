@@ -37,7 +37,6 @@ const tab = ref(0);
 const upgradeUrl = SubscriptionService.upgradeUrl();
 const submitIsDisabled = ref(false);
 const searchResults = ref([]);
-const subscription = ref(props.discussion.group().parentOrSelf().subscription);
 const initialRecipients = ref([]);
 const discussionTemplate = ref(null);
 const loaded = ref(false);
@@ -117,12 +116,7 @@ const titlePlaceholder = computed(() => {
   }
 });
 
-const subscriptionActive = computed(() => {
-  if (isNonMemberDiscussion.value) {
-    return props.discussion.group().isEnabled();
-  }
-  return subscription.value.active;
-});
+const subscriptionActive = computed(() => props.discussion.group().isEnabled());
 
 const canStartThread = computed(() => {
   return subscriptionActive.value;
@@ -138,7 +132,6 @@ const isMovingItems = computed(() => {
 
 // Watcher
 watch(() => props.discussion.groupId, (groupId) => {
-  subscription.value = props.discussion.group().parentOrSelf().subscription;
   const users = compact([props.user]).map(u => ({
     id: u.id,
     type: 'user',

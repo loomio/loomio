@@ -109,7 +109,7 @@ export default
       return this.group.parentOrSelf().subscription;
     },
     cannotInvite() {
-      return !this.subscription.active || (this.subscription.max_members && (this.invitationsRemaining < 1));
+      return !this.group.subscriptionActive() || (this.subscription.max_members && (this.invitationsRemaining < 1));
     },
     excludedUserIds() {
       return this.group.memberIds();
@@ -129,7 +129,7 @@ export default
 v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group.name})")
   template(v-slot:append)
     dismiss-modal-button
-  div.py-8(v-if="!subscription.active")
+  div.py-8(v-if="!group.subscriptionActive()")
     .announcement-form__invite
       //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
       p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")

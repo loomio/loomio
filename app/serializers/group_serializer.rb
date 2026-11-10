@@ -1,5 +1,6 @@
 class GroupSerializer < ApplicationSerializer
   attributes :id,
+             :enabled,
              :key,
              :handle,
              :name,
@@ -37,7 +38,6 @@ class GroupSerializer < ApplicationSerializer
              :admin_memberships_count,
              :discarded_at,
              :discarded_by,
-             :enabled,
              :attachments,
              :link_previews,
              :has_custom_cover_photo,
@@ -85,7 +85,32 @@ class GroupSerializer < ApplicationSerializer
     cache_fetch(:groups_by_id, object.parent_id) { object.parent }
   end
 
-  def include_subscription?
+  # Everyone who can see the group gets the raw subscription state, so the
+  # client can tell whether the group is enabled. The plan and its limits are
+  # for the organisation's members and server admins.
+  def subscription
+    sub = subscription_record
+    # TODO: remove active and enabled once clients loaded before this release
+    # have reloaded; current clients derive both from state and expires_at.
+    status = {state: sub.state, expires_at: sub.expires_at, active: sub.is_active?}
+    return status unless subscription_details_visible?
+
+    status.merge(
+      max_members:     sub.max_members,
+      max_threads:     sub.max_threads,
+      allow_subgroups: sub.allow_subgroups,
+      allow_guests:    sub.allow_guests,
+      plan:            sub.plan,
+      renews_at:       sub.renews_at,
+      members_count:   sub.members_count
+    )
+  end
+
+  def enabled
+    object.kept? && subscription_record.is_active?
+  end
+
+  def subscription_details_visible?
     return false unless scope[:current_user_id]
     unless scope.key?(:subscription_viewer_is_admin)
       scope[:subscription_viewer_is_admin] = User.where(id: scope[:current_user_id], is_admin: true).exists?
@@ -100,35 +125,11 @@ class GroupSerializer < ApplicationSerializer
     scope[:subscription_visible_org_ids].include?(object.parent_id || object.id)
   end
 
-  def subscription
-    sub = subscription_record
-    {
-      max_members:     sub.max_members,
-      max_threads:     sub.max_threads,
-      allow_subgroups: sub.allow_subgroups,
-      allow_guests:    sub.allow_guests,
-      plan:            sub.plan,
-      state:           sub.state,
-      active:          subscription_active?,
-      renews_at:       sub.renews_at,
-      expires_at:      sub.expires_at,
-      members_count:   sub.members_count
-    }
-  end
-
-  def enabled
-    object.kept? && subscription_active?
-  end
-
   def subscription_record
     group = object.parent_or_self
     @subscription_record ||= cache_fetch(:subscriptions_by_group_id, group.id) do
       group.subscription || Subscription.new
     end
-  end
-
-  def subscription_active?
-    subscription_record.is_active?
   end
 
   def logo_url

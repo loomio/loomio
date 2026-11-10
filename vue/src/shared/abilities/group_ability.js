@@ -43,7 +43,7 @@ export default {
 
   canAddGuests(group) {
     const user = Session.user();
-    return !!user.emailVerified && !!group.subscription?.active &&
+    return !!user.emailVerified && group.subscriptionActive() &&
       (group.adminsInclude(user) || (group.membersCanAddGuests && group.membersInclude(user)));
   },
 
@@ -68,6 +68,6 @@ export default {
   },
 
   canRequestMembership(group) {
-    return (group.membershipGrantedUpon === 'approval') && this.canShow(group);
+    return group.isEnabled() && (group.membershipGrantedUpon === 'approval') && this.canShow(group);
   }
 };

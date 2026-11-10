@@ -22,8 +22,8 @@ abilityContract('group_abilities', {
   join: group => GroupAbility.canJoin(group),
   request_membership: group => GroupAbility.canRequestMembership(group)
 }, (testCase, roles) => {
-  const {enabled, ...attributes} = testCase.group;
-  const group = new GroupModel({...clientAttributes(attributes), enabled, subscription: {active: enabled}});
+  const {subscription, ...attributes} = testCase.group;
+  const group = new GroupModel({...clientAttributes(attributes), subscription});
   const parent = new GroupModel({id: 1});
   parent.membersInclude = () => roles.parent_member;
   parent.adminsInclude = () => roles.parent_admin;
