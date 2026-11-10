@@ -59,7 +59,7 @@ test.describe('starting polls in a thread', () => {
     await page.goto('/dev/polls/test_discussion');
     await startPoll(page, 'score', { options: ['An option'] });
     await expectPoll(page);
-    await page.locator('.vote-form-number-input').fill('1');
+    await page.locator('.poll-score-vote-form__score-slider').click();
     await submitVote(page, 'A reason');
     await expect(page.locator('.poll-common-current-vote')).toContainText('An option');
     await expect(reason(page)).toContainText('A reason');
