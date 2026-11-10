@@ -20,6 +20,8 @@ module Ability::Poll
       )
     end
 
+    # Exports hold nothing the viewer cannot already see, so visitors to
+    # public threads can export too, as with thread markdown.
     can [:export], ::Poll do |poll|
       next false unless user.can?(:show, poll)
 

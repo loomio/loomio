@@ -8,11 +8,14 @@ vi.mock('@/shared/services/session', () => ({
   default: {user: () => mocks.currentUser}
 }));
 
-import AbilityService from '@/shared/services/ability_service';
+import TagAbility from '@/shared/abilities/tag_ability';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import PollAbility from '@/shared/abilities/poll_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import NullGroupModel from '@/shared/models/null_group_model';
 
-describe('AbilityService.canCreateTags', () => {
+describe('TagAbility.canCreate', () => {
   beforeEach(() => {
     mocks.currentUser = {id: 1};
   });
@@ -34,8 +37,8 @@ describe('AbilityService.canCreateTags', () => {
     };
 
     // Viewing a poll before opening the discussion form must not break tags.
-    AbilityService.canAnnouncePoll({groupId: 1, group: () => group});
-    expect(AbilityService.canCreateTags(group)).toBe(allowed);
+    PollAbility.canAnnounce({groupId: 1, group: () => group});
+    expect(TagAbility.canCreate(group)).toBe(allowed);
   });
 
   it.each([
@@ -57,22 +60,22 @@ describe('AbilityService.canCreateTags', () => {
       membersCanCreateTags: true
     };
 
-    expect(AbilityService.canAnnouncePoll(poll)).toBe(canAnnounce);
-    expect(AbilityService.canCreateTags(group)).toBe(true);
+    expect(PollAbility.canAnnounce(poll)).toBe(canAnnounce);
+    expect(TagAbility.canCreate(group)).toBe(true);
 
     mocks.currentUser = {id: 2};
-    expect(AbilityService.canCreateTags(group)).toBe(false);
+    expect(TagAbility.canCreate(group)).toBe(false);
 
     mocks.currentUser = {id: null};
-    expect(AbilityService.canCreateTags(group)).toBe(false);
+    expect(TagAbility.canCreate(group)).toBe(false);
   });
 
   it('returns false for the null group', () => {
-    expect(AbilityService.canCreateTags(new NullGroupModel())).toBe(false);
+    expect(TagAbility.canCreate(new NullGroupModel())).toBe(false);
   });
 });
 
-describe('AbilityService.canMoveTopicItems', () => {
+describe('TopicAbility.canMoveComments', () => {
   let group;
   let topic;
 
@@ -85,31 +88,34 @@ describe('AbilityService.canMoveTopicItems', () => {
   });
 
   it('allows topic administrators to move items', () => {
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(true);
+    expect(TopicAbility.canMoveComments(topic)).toBe(true);
     expect(topic.adminsInclude).toHaveBeenCalledWith(mocks.currentUser);
   });
 
   it('does not allow ordinary topic members to move items', () => {
     topic.adminsInclude.mockReturnValue(false);
 
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(false);
+    expect(TopicAbility.canMoveComments(topic)).toBe(false);
   });
 
   it('does not allow moves involving a disabled group', () => {
     group.isEnabled.mockReturnValue(false);
 
-    expect(AbilityService.canMoveTopicItems(topic)).toBe(false);
+    expect(TopicAbility.canMoveComments(topic)).toBe(false);
     expect(topic.adminsInclude).not.toHaveBeenCalled();
   });
 });
 
-describe('AbilityService.canJoinGroup', () => {
+// Joining is offered only to non-members; GroupAbility.canJoin matches the server.
+describe('GroupAbility.canJoin', () => {
+  beforeEach(() => { mocks.currentUser = {id: 1, emailVerified: true}; });
+
   it.each([
     ['parent member', true, false, false, true, false, true],
     ['outsider', false, false, false, true, false, false],
     ['outsider in public subgroup', false, false, false, true, true, true],
     ['parent administrator', true, true, false, true, false, true],
-    ['existing subgroup member', true, false, true, true, false, false],
+    ['existing subgroup member', true, false, true, true, false, true],
     ['discarded subgroup', true, false, false, false, false, false]
   ])('checks immediate joining for a %s', (_role, parentMember, parentAdmin, member, enabled, publicVisibility, allowed) => {
     const parent = {membersInclude: () => parentMember, adminsInclude: () => parentAdmin};
@@ -126,8 +132,8 @@ describe('AbilityService.canJoinGroup', () => {
       membershipGrantedUpon: 'request'
     };
 
-    expect(AbilityService.canJoinGroup(group)).toBe(allowed);
-    expect(AbilityService.canRequestMembership(group)).toBe(false);
+    expect(GroupAbility.canJoin(group)).toBe(allowed);
+    expect(GroupAbility.canRequestMembership(group)).toBe(false);
   });
 
   it('does not allow ordinary parent members to self join a secret subgroup', () => {
@@ -145,7 +151,7 @@ describe('AbilityService.canJoinGroup', () => {
       membershipGrantedUpon: 'invitation'
     };
 
-    expect(AbilityService.canJoinGroup(group)).toBe(false);
+    expect(GroupAbility.canJoin(group)).toBe(false);
   });
 });
 
@@ -161,18 +167,18 @@ describe('poll actions in a locked thread', () => {
   });
 
   it('lets a poll admin edit, delete and reopen polls in an unlocked thread', () => {
-    expect(PollAbility.update(poll())).toBe(true);
-    expect(PollAbility.destroy(poll())).toBe(true);
-    expect(PollAbility.reopen(poll({closed: true}))).toBe(true);
+    expect(PollAbility.canUpdate(poll())).toBe(true);
+    expect(PollAbility.canDestroy(poll())).toBe(true);
+    expect(PollAbility.canReopen(poll({closed: true}))).toBe(true);
   });
 
   it('matches the server by blocking edit, delete and reopen once the thread is locked', () => {
-    expect(PollAbility.update(poll({locked: true}))).toBe(false);
-    expect(PollAbility.destroy(poll({locked: true}))).toBe(false);
-    expect(PollAbility.reopen(poll({locked: true, closed: true}))).toBe(false);
+    expect(PollAbility.canUpdate(poll({locked: true}))).toBe(false);
+    expect(PollAbility.canDestroy(poll({locked: true}))).toBe(false);
+    expect(PollAbility.canReopen(poll({locked: true, closed: true}))).toBe(false);
   });
 
   it('still lets a poll admin set an outcome in a locked thread, as the server does', () => {
-    expect(AbilityService.canSetPollOutcome(poll({locked: true, closed: true}))).toBeTruthy();
+    expect(OutcomeAbility.canCreate(poll({locked: true, closed: true}))).toBeTruthy();
   });
 });

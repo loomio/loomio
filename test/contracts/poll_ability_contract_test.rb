@@ -17,7 +17,8 @@ class PollAbilityContractTest < ActiveSupport::TestCase
     "until_closed" => {hide_results: "until_closed"},
     "anonymous" => {hide_results: "until_closed", anonymous: true}
   }.freeze
-  ROLES = {"admin" => :admin, "member" => :user}.freeze
+  # Visitors see the polls in public threads without being members.
+  ROLES = {"admin" => :admin, "member" => :user, "visitor" => :alien}.freeze
 
   test "writes the poll ability contract for the client" do
     contract = JSON.parse(travel_to(CONTRACT_TIME) { build_contract }.to_json)
@@ -33,6 +34,7 @@ class PollAbilityContractTest < ActiveSupport::TestCase
 
   def build_contract
     group = groups(:group)
+    group.update_columns(is_visible_to_public: true, discussion_privacy_options: "public_or_private")
     cases = STATES.product(RESULTS.keys, [false, true]).flat_map do |state, results, locked|
       poll = build_poll(group, state, RESULTS.fetch(results), locked)
       ROLES.map do |role, fixture|
@@ -62,6 +64,7 @@ class PollAbilityContractTest < ActiveSupport::TestCase
     when "closed" then PollService.close(poll: poll, actor: users(:admin))
     when "discarded" then PollService.discard(poll: poll, actor: users(:admin))
     end
+    poll.topic.update_columns(private: false)
     poll.topic.update_columns(locked_at: 1.day.ago) if locked
     poll.reload
   end

@@ -106,6 +106,7 @@ class GroupSerializer < ApplicationSerializer
       max_members:     sub.max_members,
       max_threads:     sub.max_threads,
       allow_subgroups: sub.allow_subgroups,
+      allow_guests:    sub.allow_guests,
       plan:            sub.plan,
       state:           sub.state,
       active:          subscription_active?,

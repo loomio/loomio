@@ -27,20 +27,24 @@ module Ability::Discussion
       )
     end
 
+    # Matches Topic :announce: thread guests cannot notify the group.
     can [ :announce ], ::Discussion do |discussion|
+      discussion.kept? &&
       if discussion.group_id
         discussion.group.admins.exists?(user.id) ||
-        (discussion.group.members_can_announce && discussion.members.exists?(user.id))
+        (discussion.group.members_can_announce && discussion.group.members.exists?(user.id))
       else
         discussion.topic.admins_include?(user)
       end
     end
 
+    # Thread admins can always edit. Others need current access to an unlocked
+    # thread, and either authorship or the members-can-edit setting.
     can [ :update ], ::Discussion do |discussion|
       discussion.discarded_at.nil? &&
-      (discussion.author == user ||
-      discussion.admins.exists?(user.id) ||
-      (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
+      (discussion.admins.exists?(user.id) ||
+        (!discussion.topic.locked_at && discussion.members.exists?(user.id) &&
+          (discussion.author == user || discussion.group.members_can_edit_discussions)))
     end
 
     can [ :destroy, :discard ], ::Discussion do |discussion|

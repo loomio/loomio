@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
+import PollAbility from '@/shared/abilities/poll_ability';
 import EventBus from '@/shared/services/event_bus';
 import Flash  from '@/shared/services/flash';
 import { map } from 'lodash-es';
@@ -20,7 +20,7 @@ export default {
   },
 
   mounted() {
-    this.groups = Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => {
+    this.groups = Session.user().groups().filter(g => PollAbility.canCreate(g)).map(g => {
       return {
         title: g.fullName,
         value: g.id,

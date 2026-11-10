@@ -18,15 +18,16 @@ vi.mock('@/i18n', () => ({I18n: {}}));
 
 import AbilityService from '@/shared/services/ability_service';
 import PollAbility from '@/shared/abilities/poll_ability';
+import OutcomeAbility from '@/shared/abilities/outcome_ability';
 import PollModel from '@/shared/models/poll_model';
 
 const CLIENT_ABILITIES = {
-  update: poll => PollAbility.update(poll),
-  destroy: poll => PollAbility.destroy(poll),
-  close: poll => PollAbility.close(poll),
-  reopen: poll => PollAbility.reopen(poll),
-  export: poll => PollAbility.export(poll),
-  create_outcome: poll => AbilityService.canSetPollOutcome(poll)
+  update: poll => PollAbility.canUpdate(poll),
+  destroy: poll => PollAbility.canDestroy(poll),
+  close: poll => PollAbility.canClose(poll),
+  reopen: poll => PollAbility.canReopen(poll),
+  export: poll => PollAbility.canExport(poll),
+  create_outcome: poll => OutcomeAbility.canCreate(poll)
 };
 
 const clientAttributes = attributes => Object.fromEntries(Object.entries(attributes).map(([key, value]) =>
@@ -40,7 +41,7 @@ function buildPoll(testCase) {
   poll.topic = () => topic;
   poll.group = () => group;
   poll.adminsInclude = () => testCase.role === 'admin';
-  poll.membersInclude = () => true;
+  poll.membersInclude = () => testCase.role !== 'visitor';
   return poll;
 }
 
