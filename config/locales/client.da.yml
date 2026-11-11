@@ -3099,7 +3099,6 @@ da:
     direct_thread_anonymous_poll: Tråde, der indeholder anonyme afstemninger, kan ikke konverteres til direkte tråde, da dette kan afsløre, hvem der har stemt.
     members_losing_access: 'Personer, der vil miste retten til at deltage: %{count}'
     keep_members_as_guests: Behold disse personer som gæster i tråden
-    guest_permission_required: Du har ikke tilladelse til at invitere gæster i destinationsgruppen
     access_preview_error: Kunne ikke tjekke, hvem der vil miste retten til at deltage
     guest_access_unavailable: Gæsteadgang kan ikke gives ved denne flytning
   auth:

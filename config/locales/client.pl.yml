@@ -3114,7 +3114,6 @@ pl:
     direct_thread_anonymous_poll: Wątków zawierających anonimowe ankiety nie można przekształcić w wątki bezpośrednie, ponieważ mogłoby to ujawnić, kto głosował
     members_losing_access: 'Osoby, które stracą prawo do udziału: %{count}'
     keep_members_as_guests: Zachowaj te osoby jako gości tego wątku
-    guest_permission_required: Nie masz uprawnień do zapraszania gości w grupie docelowej
     access_preview_error: Nie można sprawdzić, kto straci prawo do udziału
     guest_access_unavailable: Przy tym przeniesieniu nie można przyznać dostępu gościom
   auth:

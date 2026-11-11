@@ -2018,7 +2018,6 @@ be:
       success: Абмеркаванне перамешчана ў %{name}
     members_losing_access: 'Людзі, якія страцяць права ўдзельнічаць: %{count}'
     keep_members_as_guests: Пакінуць гэтых людзей гасцямі гэтай тэмы
-    guest_permission_required: У вас няма дазволу запрашаць гасцей у групу прызначэння
     access_preview_error: Не ўдалося праверыць, хто страціць права ўдзельнічаць
     guest_access_unavailable: Пры гэтым пераносе нельга даць доступ гасцям
   delete_comment_dialog:

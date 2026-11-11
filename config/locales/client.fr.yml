@@ -3132,7 +3132,6 @@ fr:
     direct_thread_anonymous_poll: Les discussions contenant des sondages anonymes ne peuvent pas être converties en discussions directes car cela pourrait révéler qui a voté.
     members_losing_access: 'Personnes qui perdraient le droit de participer : %{count}'
     keep_members_as_guests: Garder ces personnes comme invités de ce fil
-    guest_permission_required: Vous n’avez pas le droit d’inviter des invités dans le groupe de destination
     access_preview_error: Impossible de vérifier qui perdrait le droit de participer
     guest_access_unavailable: L’accès invité ne peut pas être accordé pour ce déplacement
   auth:

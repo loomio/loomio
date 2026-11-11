@@ -3095,7 +3095,6 @@ sv:
     direct_thread_anonymous_poll: Trådar som innehåller anonyma omröstningar kan inte konverteras till direkta trådar eftersom det kan avslöja vem som röstade.
     members_losing_access: 'Personer som skulle förlora rätten att delta: %{count}'
     keep_members_as_guests: Behåll dessa personer som gäster i tråden
-    guest_permission_required: Du har inte behörighet att bjuda in gäster i destinationsgruppen
     access_preview_error: Kunde inte kontrollera vilka som skulle förlora rätten att delta
     guest_access_unavailable: Gäståtkomst kan inte ges vid den här flytten
   auth:

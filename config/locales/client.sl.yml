@@ -3087,7 +3087,6 @@ sl:
     direct_thread_anonymous_poll: Niti, ki vsebujejo anonimne ankete, ni mogoče pretvoriti v neposredne niti, ker bi to lahko razkrilo, kdo je glasoval
     members_losing_access: 'Osebe, ki bi izgubile pravico do sodelovanja: %{count}'
     keep_members_as_guests: Ohranite te osebe kot goste te niti
-    guest_permission_required: Nimate dovoljenja za vabljenje gostov v ciljno skupino
     access_preview_error: Ni mogoče preveriti, kdo bi izgubil pravico do sodelovanja
     guest_access_unavailable: Pri tem premiku ni mogoče omogočiti dostopa gostom
   auth:

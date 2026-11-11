@@ -3106,7 +3106,6 @@ he:
     direct_thread_anonymous_poll: לא ניתן להמיר שרשורים המכילים סקרים אנונימיים לשרשורים ישירים מכיוון שזה עלול לחשוף מי הצביע
     members_losing_access: 'מספר האנשים שיאבדו הרשאה להשתתף: %{count}'
     keep_members_as_guests: להשאיר את האנשים האלה כאורחים בשרשור הזה
-    guest_permission_required: אין הרשאה להזמין אורחים בקבוצת היעד
     access_preview_error: לא ניתן לבדוק מי יאבד הרשאה להשתתף
     guest_access_unavailable: לא ניתן להעניק גישת אורח בהעברה זו
   auth:

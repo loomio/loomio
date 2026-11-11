@@ -195,10 +195,9 @@ class TopicService
         )
       end
 
-    direct_participant_ids
-      .concat([actor.id, topic.topicable.author_id])
-      .compact
-      .uniq
+    direct_participant_ids.concat([actor.id, topic.topicable.author_id])
+    # Historical contributions must not restore access revoked before the move.
+    topic.members.where(id: direct_participant_ids.compact.uniq).pluck(:id)
   end
 
   def self.validate_direct_move!(topic:)
@@ -213,7 +212,7 @@ class TopicService
     validate_direct_move!(topic: topic)
     direct_participant_ids = direct_participant_ids(topic:, actor:)
     # Snapshot current access before revoking readers. Reading alone must not
-    # silently become an invitation, and former/revoked guests must stay excluded.
+    # silently become an invitation, and revoked guests must stay excluded.
     direct_participant_ids |= topic.members.pluck(:id) if retain_members
     direct_admin_ids = [actor.id, topic.topicable.author_id].compact.uniq
     direct_revoked_at = Time.current

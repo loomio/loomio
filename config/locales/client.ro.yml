@@ -3087,7 +3087,6 @@ ro:
     direct_thread_anonymous_poll: Subiectele care conțin sondaje anonime nu pot fi convertite în subiecte directe, deoarece acest lucru ar putea dezvălui cine a votat.
     members_losing_access: 'Persoane care ar pierde dreptul de a participa: %{count}'
     keep_members_as_guests: Păstrează aceste persoane ca invitați în acest fir
-    guest_permission_required: Nu ai permisiunea să inviți persoane în grupul de destinație
     access_preview_error: Nu se poate verifica cine ar pierde dreptul de a participa
     guest_access_unavailable: Nu se poate acorda acces ca invitat la această mutare
   auth:

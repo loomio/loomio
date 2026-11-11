@@ -2347,7 +2347,6 @@ ko:
       success: 토론을 %{name}(으)로 이동했습니다
     members_losing_access: '참여 권한을 잃을 사람: %{count}명'
     keep_members_as_guests: 이 사람들을 이 스레드의 게스트로 유지
-    guest_permission_required: 이동할 그룹에 게스트를 초대할 권한이 없습니다
     access_preview_error: 누가 참여 권한을 잃을지 확인할 수 없습니다
     guest_access_unavailable: 이번 이동에서는 게스트 접근 권한을 부여할 수 없습니다
   delete_comment_dialog:

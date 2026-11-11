@@ -3114,7 +3114,6 @@ nl_NL:
     direct_thread_anonymous_poll: Discussies met anonieme peilingen kunnen niet worden omgezet naar directe discussies, omdat dit zou kunnen onthullen wie er heeft gestemd.
     members_losing_access: 'Mensen die niet meer zouden mogen deelnemen: %{count}'
     keep_members_as_guests: Behoud deze mensen als gasten van deze thread
-    guest_permission_required: Je mag geen gasten uitnodigen in de bestemmingsgroep
     access_preview_error: Kan niet controleren wie niet meer zou mogen deelnemen
     guest_access_unavailable: Bij deze verplaatsing kan geen gasttoegang worden verleend
   auth:

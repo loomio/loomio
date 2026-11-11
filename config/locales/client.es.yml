@@ -3123,7 +3123,6 @@ es:
     direct_thread_anonymous_poll: Los hilos que contienen encuestas anónimas no se pueden convertir en hilos directos porque esto podría revelar quién votó.
     members_losing_access: 'Personas que perderían el permiso para participar: %{count}'
     keep_members_as_guests: Mantener a estas personas como invitadas de este hilo
-    guest_permission_required: No tienes permiso para invitar a personas al grupo de destino
     access_preview_error: No se pudo comprobar quién perdería el permiso para participar
     guest_access_unavailable: No se puede dar acceso a invitados al mover este hilo
   auth:

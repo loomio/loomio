@@ -3098,7 +3098,6 @@ hu:
     direct_thread_anonymous_poll: A névtelen szavazásokat tartalmazó szálak nem alakíthatók át közvetlen szálakká, mert ez felfedheti, hogy ki szavazott.
     members_losing_access: 'Akik elveszítenék a részvételi jogosultságukat: %{count}'
     keep_members_as_guests: Maradjanak ezek az emberek a szál vendégei
-    guest_permission_required: Nincs jogosultságod vendégeket meghívni a célcsoportba
     access_preview_error: Nem sikerült ellenőrizni, ki veszítené el a részvételi jogosultságát
     guest_access_unavailable: Ennél az áthelyezésnél nem adható vendéghozzáférés
   auth:

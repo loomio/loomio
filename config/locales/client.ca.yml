@@ -3114,7 +3114,6 @@ ca:
     direct_thread_anonymous_poll: Els fils que contenen enquestes anònimes no es poden convertir en fils directes perquè això podria revelar qui ha votat.
     members_losing_access: 'Persones que perdrien el permís per participar: %{count}'
     keep_members_as_guests: Mantén aquestes persones com a convidades del fil
-    guest_permission_required: No tens permís per convidar persones al grup de destinació
     access_preview_error: No s'ha pogut comprovar qui perdria el permís per participar
     guest_access_unavailable: No es pot donar accés com a convidat en moure aquest fil
   auth:

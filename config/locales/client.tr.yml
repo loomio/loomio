@@ -3084,7 +3084,6 @@ tr:
     direct_thread_anonymous_poll: Anonim anketler içeren konular, kimin oy kullandığını ortaya çıkarabileceği için doğrudan konulara dönüştürülemez.
     members_losing_access: 'Katılım iznini kaybedecek kişiler: %{count}'
     keep_members_as_guests: Bu kişileri bu ileti dizisinde misafir olarak tut
-    guest_permission_required: Hedef grupta misafir davet etme izniniz yok
     access_preview_error: Kimlerin katılım iznini kaybedeceği kontrol edilemedi
     guest_access_unavailable: Bu taşıma işleminde misafir erişimi verilemez
   auth:

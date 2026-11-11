@@ -3115,7 +3115,6 @@ zh_TW:
     direct_thread_anonymous_poll: 包含匿名投票的對話串不能轉換為私人對話串，因為這可能會洩露投票者的身分
     members_losing_access: 將失去參與權限的人數：%{count}
     keep_members_as_guests: 將這些人保留為此對話串的訪客
-    guest_permission_required: 您沒有在目標群組邀請訪客的權限
     access_preview_error: 無法確認哪些人將失去參與權限
     guest_access_unavailable: 此次移動無法授予訪客存取權限
   auth:

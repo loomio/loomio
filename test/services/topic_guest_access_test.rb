@@ -10,7 +10,7 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
   test 'inviting a non-guest reader grants commenting access without changing preferences or history' do
     reader = topic_readers(:non_guest_loud_reader)
     reader.update!(last_read_at: 1.hour.ago, read_ranges_string: '0-0', admin: true)
-    preserved = reader.attributes.slice('volume_email', 'volume_push', 'last_read_at', 'read_ranges_string', 'admin', 'token')
+    preserved = reader.reload.attributes.slice('volume_email', 'volume_push', 'last_read_at', 'read_ranges_string', 'admin', 'token')
     refute reader.user.can?(:create, Comment.new(parent: @topic.topicable))
 
     invite(reader.user)
@@ -40,7 +40,7 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
     guest = topic_readers(:guest_normal_reader)
     member = topic_readers(:reader_normal_reader)
     guest.update!(accepted_at: 1.day.ago)
-    preserved = guest.attributes.slice('guest', 'accepted_at', 'inviter_id', 'volume_email', 'volume_push')
+    preserved = guest.reload.attributes.slice('guest', 'accepted_at', 'inviter_id', 'volume_email', 'volume_push')
     member_preferences = member.attributes.slice('volume_email', 'volume_push')
 
     invite(guest.user, member.user)
@@ -187,7 +187,7 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
     current_member_ids = @topic.members.pluck(:id)
     guest = topic_readers(:guest_normal_reader)
     guest.update!(accepted_at: 2.days.ago, last_read_at: 1.hour.ago, read_ranges_string: '0-0')
-    preserved = guest.attributes.slice('volume_email', 'volume_push', 'accepted_at', 'last_read_at', 'read_ranges_string', 'token', 'inviter_id')
+    preserved = guest.reload.attributes.slice('volume_email', 'volume_push', 'accepted_at', 'last_read_at', 'read_ranges_string', 'token', 'inviter_id')
 
     assert_no_difference -> { Notification.count } do
       assert_no_difference -> { ActionMailer::Base.deliveries.count } do
@@ -215,6 +215,22 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
     refute users(:guest_normal).can?(:show, @topic)
     refute users(:member_normal).can?(:create, Comment.new(parent: @topic.topicable))
     assert @admin.can?(:add_guests, @topic)
+  end
+
+  [false, true].each do |retain_members|
+    test "direct conversion with retention #{retain_members} does not restore revoked contributors" do
+      guest = users(:guest_normal)
+      CommentService.create(comment: Comment.new(body: 'Earlier contribution', parent: @topic.topicable), actor: guest)
+      reader = topic_readers(:guest_normal_reader)
+      reader.update!(revoked_at: Time.current, revoker_id: @admin.id)
+
+      TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: retain_members}, actor: @admin)
+
+      assert_nil @topic.reload.group_id
+      assert reader.reload.revoked_at
+      refute @topic.members.exists?(guest.id)
+      refute guest.can?(:show, @topic)
+    end
   end
 
   test 'direct retention does not turn parent-group viewing into participation rights' do

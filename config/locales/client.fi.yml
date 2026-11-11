@@ -3087,7 +3087,6 @@ fi:
     direct_thread_anonymous_poll: Anonyymejä kyselyitä sisältäviä ketjuja ei voida muuntaa suoriksi ketjuiksi, koska se voisi paljastaa, kuka äänesti.
     members_losing_access: 'Osallistumisoikeuden menettäviä henkilöitä: %{count}'
     keep_members_as_guests: Pidä nämä henkilöt ketjun vieraina
-    guest_permission_required: Sinulla ei ole oikeutta kutsua vieraita kohderyhmään
     access_preview_error: Ei voitu tarkistaa, ketkä menettäisivät osallistumisoikeuden
     guest_access_unavailable: Vieraille ei voi antaa pääsyä tässä siirrossa
   auth:
