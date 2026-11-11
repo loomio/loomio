@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 0614f2e1f3127dea
   thread-settings-and-display: f6ef2902fe2b2436
   pin-or-unpin-a-thread: d81d501c2b75c9e9
-  move-a-thread: dd5351e432525826
+  move-a-thread: 80f3ebd2763de661
   lock-or-unlock-a-thread: 24ced382ed939a20
   delete-a-thread: 38f65e0e18241eda
 title_source: 99e2d1eb313f35c4
@@ -340,7 +340,9 @@ Valitse **Irrota ketju**, kun haluat palauttaa ketjun toiminnan mukaiseen järje
 
 Valitse **Siirrä ketju**, kun haluat siirtää ketjun toiseen ryhmään, alaryhmään tai suoraksi ketjuksi. Se näkyy kohderyhmän jäsenille ja kaikille siihen erikseen kutsutuille.
 
-Kun siirrät ketjun toiseen ryhmään tai alaryhmään, Loomio näyttää, kuinka moni menettäisi osallistumisoikeutensa. Voit säilyttää heidät ketjun vieraina, jos sinulla on oikeus kutsua vieraita kohderyhmään. Näin he voivat edelleen osallistua ilman, että heitä lisätään kohderyhmään tai heille lähetetään kutsuilmoituksia. Nykyiset vieraat säilyttävät pääsyoikeutensa.
+Kun siirrät ketjua, Loomio näyttää, kuinka moni menettäisi osallistumisoikeutensa. Voit säilyttää heidät vieraina lähettämättä kutsuilmoituksia. Kun siirrät ketjun toiseen ryhmään tai alaryhmään, tämä edellyttää oikeutta kutsua vieraita kohderyhmään. Nykyiset vieraat säilyttävät pääsyoikeutensa.
+
+Kun muutat ketjun suoraksi ketjuksi, siihen osallistuneet säilyttävät pääsyoikeutensa automaattisesti. Valitsemalla vieraiden säilyttämisen myös muut nykyiset jäsenet ja vieraat säilyttävät pääsyoikeutensa. Sinusta ja ketjun luojasta tulee ketjun ylläpitäjiä.
 
 ![](../discussion_management/move_thread_select.png)
 

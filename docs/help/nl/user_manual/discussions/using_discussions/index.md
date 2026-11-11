@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 1947cf64bc1b5b02
   thread-settings-and-display: 68266432d7b18558
   pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
-  move-a-thread: f79d2fab9e64cffc
+  move-a-thread: 9c44ce214041421e
   lock-or-unlock-a-thread: 39608ede659235cd
   delete-a-thread: 78c4a9c45e4b5cf3
 title_source: 99e2d1eb313f35c4
@@ -339,7 +339,9 @@ Selecteer **Thread losmaken** om een thread terug te plaatsen in de volgorde op 
 
 Selecteer **Verplaats discussie** om een thread naar een andere groep of subgroep te verplaatsen, of er een directe thread van te maken. De thread is zichtbaar voor leden van de bestemmingsgroep en iedereen die er specifiek voor is uitgenodigd.
 
-Bij het verplaatsen naar een andere groep of subgroep laat Loomio zien hoeveel mensen hun toestemming om deel te nemen zouden verliezen. Je kunt hen als gasten van de thread behouden als je toestemming hebt om gasten uit te nodigen in de bestemmingsgroep. Zo kunnen ze blijven deelnemen zonder dat ze aan de bestemmingsgroep worden toegevoegd of meldingen over uitnodigingen ontvangen. Bestaande gasten behouden hun toegang.
+Bij het verplaatsen van een thread laat Loomio zien hoeveel mensen hun toestemming om deel te nemen zouden verliezen. Je kunt hen als gasten behouden zonder meldingen over uitnodigingen te versturen. Bij een verplaatsing naar een andere groep of subgroep heb je hiervoor toestemming nodig om gasten uit te nodigen in de bestemmingsgroep; bestaande gasten behouden hun toegang.
+
+Als je er een directe thread van maakt, behouden mensen die hebben deelgenomen automatisch hun toegang. Als je de gastoptie selecteert, behouden ook de overige huidige leden en gasten hun toegang. Jij en de maker van de thread worden thread admins.
 
 ![](../discussion_management/move_thread_select.png)
 

@@ -1,10 +1,10 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 7a818d7100143305
   thread-settings-and-display: d8bdb5e8ee279a5a
   pin-or-unpin-a-thread: 3cb7608b7a17df07
-  move-a-thread: 7efee18b537c71ae
+  move-a-thread: 1f15eec34b9f8fcb
   lock-or-unlock-a-thread: 1eaa3fcefd3d8498
   delete-a-thread: 9911a93fdee3bbac
 title_source: 99e2d1eb313f35c4
@@ -339,7 +339,9 @@ Sélectionnez **Désépingler le fil** pour replacer un fil dans l’ordre fond�
 
 Sélectionnez **Déplacer le sujet** pour déplacer un fil vers un autre groupe, un sous-groupe ou un fil direct. Il sera visible par les membres du groupe de destination et par toute personne qui y a été spécifiquement invitée.
 
-Lors du déplacement vers un autre groupe ou sous-groupe, Loomio indique combien de personnes perdraient l’autorisation de participer. Vous pouvez les conserver comme invités du fil si vous avez l’autorisation d’inviter des invités dans le groupe de destination. Elles peuvent ainsi continuer à participer sans être ajoutées au groupe de destination et sans recevoir de notifications d’invitation. Les invités existants conservent leur accès.
+Lors du déplacement d’un fil, Loomio indique combien de personnes perdraient l’autorisation de participer. Vous pouvez les conserver comme invités sans envoyer de notifications d’invitation. Pour un déplacement vers un autre groupe ou sous-groupe, vous devez avoir l’autorisation d’inviter des invités dans le groupe de destination ; les invités existants conservent leur accès.
+
+Lors de la conversion en fil direct, les personnes qui ont participé conservent automatiquement leur accès. Sélectionner l’option relative aux invités permet également de conserver l’accès des autres membres et invités actuels. Vous et la personne qui a créé le fil devenez administrateurs du fil.
 
 ![](../discussion_management/move_thread_select.png)
 

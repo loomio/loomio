@@ -1,10 +1,10 @@
 ---
 title: Threads verwenden
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 0b345adabf70ede9
   thread-settings-and-display: 5b42fa8ee7f068b6
   pin-or-unpin-a-thread: 5de696dc7828f152
-  move-a-thread: 6980db317ed26639
+  move-a-thread: fd3f909b96542527
   lock-or-unlock-a-thread: f08214c2f5020b17
   delete-a-thread: 3c5ba71bef15b9ef
 title_source: 99e2d1eb313f35c4
@@ -340,7 +340,9 @@ Wähle **Thread lösen**, um einen Thread wieder nach Aktivität einzuordnen.
 
 Wähle **Thread verschieben**, um einen Thread in eine andere Gruppe oder Untergruppe zu verschieben oder in einen direkten Thread umzuwandeln. Er ist dann für Mitglieder der Zielgruppe und alle ausdrücklich dazu eingeladenen Personen sichtbar.
 
-Beim Verschieben in eine andere Gruppe oder Untergruppe zeigt Loomio an, wie viele Personen die Berechtigung zur Teilnahme verlieren würden. Du kannst sie als Gäste des Threads behalten, wenn du in der Zielgruppe Gäste einladen darfst. So können sie weiterhin teilnehmen, ohne dass sie der Zielgruppe hinzugefügt oder Einladungsbenachrichtigungen versendet werden. Bestehende Gäste behalten ihren Zugang.
+Beim Verschieben eines Threads zeigt Loomio an, wie viele Personen die Berechtigung zur Teilnahme verlieren würden. Du kannst sie als Gäste behalten, ohne Einladungsbenachrichtigungen zu versenden. Beim Verschieben in eine andere Gruppe oder Untergruppe benötigst du dafür die Berechtigung, Gäste in die Zielgruppe einzuladen. Bestehende Gäste behalten ihren Zugang.
+
+Beim Umwandeln in einen direkten Thread behalten Personen, die bereits teilgenommen haben, automatisch ihren Zugang. Wenn du die Option zum Beibehalten der Gäste wählst, behalten auch die übrigen bisherigen Mitglieder und Gäste ihren Zugang. Du und die Person, die den Thread erstellt hat, werdet Thread-Admins.
 
 ![](../discussion_management/move_thread_select.png)
 

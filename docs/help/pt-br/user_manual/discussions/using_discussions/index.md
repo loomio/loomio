@@ -1,10 +1,10 @@
 ---
 title: Como usar as discussões
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: dbf2601cd0fe1ca6
   thread-settings-and-display: 689564700a3d06f6
   pin-or-unpin-a-thread: 2be1f71e8e31ba5e
-  move-a-thread: d7f20d8594889e49
+  move-a-thread: da6cc7b681f22d7d
   lock-or-unlock-a-thread: 522680737dbcc17a
   delete-a-thread: d1e86ae44674198e
 title_source: 99e2d1eb313f35c4
@@ -339,7 +339,9 @@ Selecione **Desafixar conversa** para que a conversa volte à ordem baseada na a
 
 Selecione **Mover tópico** para mover uma conversa para outro grupo, subgrupo ou transformá-la em uma conversa direta. Ela ficará visível para os membros do grupo de destino e para qualquer pessoa especificamente convidada para ela.
 
-Ao mover uma conversa para outro grupo ou subgrupo, o Loomio mostra quantas pessoas perderiam a permissão para participar. Você pode mantê-las como convidadas da conversa se tiver permissão para convidar pessoas como convidadas no grupo de destino. Isso preserva a capacidade dessas pessoas de participar sem adicioná-las ao grupo de destino nem enviar notificações de convite. Quem já participa como convidado mantém seu acesso.
+Ao mover uma conversa, o Loomio mostra quantas pessoas perderiam a permissão para participar. Você pode mantê-las como convidadas sem enviar notificações de convite. Para mover uma conversa para outro grupo ou subgrupo, isso exige permissão para convidar pessoas como convidadas no grupo de destino; quem já participa como convidado mantém seu acesso.
+
+Ao transformar uma conversa em uma conversa direta, as pessoas que já participaram mantêm o acesso automaticamente. Selecionar a opção de manter convidados também mantém o acesso dos demais membros e convidados atuais. Você e a pessoa que criou a conversa se tornam admins da conversa.
 
 ![](../discussion_management/move_thread_select.png)
 

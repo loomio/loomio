@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: c6b41d1b01dbb950
   thread-settings-and-display: 709a28d5d541b468
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
-  move-a-thread: 82d82b92f6f9307d
+  move-a-thread: 2dc6a9f212af0b65
   lock-or-unlock-a-thread: 79e3384c08b80cdf
   delete-a-thread: 5cc4e2d79f1f9d61
 title_source: 99e2d1eb313f35c4
@@ -340,7 +340,9 @@ Selecciona **Desanclar hilo** para devolver un hilo al orden basado en la activi
 
 Selecciona **Mover hilo** para mover un hilo a otro grupo, a un subgrupo o convertirlo en un hilo directo. Será visible para los miembros del grupo de destino y para cualquier persona invitada específicamente al hilo.
 
-Al mover un hilo a otro grupo o subgrupo, Loomio muestra cuántas personas perderían el permiso para participar. Puedes mantenerlas como invitadas del hilo si tienes permiso para invitar a personas invitadas en el grupo de destino. Así pueden seguir participando sin que se añadan al grupo de destino ni se envíen notificaciones de invitación. Las personas que ya eran invitadas conservan el acceso.
+Al mover un hilo, Loomio muestra cuántas personas perderían el permiso para participar. Puedes mantenerlas como invitadas sin enviar notificaciones de invitación. Para moverlo a otro grupo o subgrupo, necesitas permiso para invitar a personas invitadas en el grupo de destino; las personas que ya eran invitadas conservan el acceso.
+
+Al convertirlo en un hilo directo, las personas que han participado conservan el acceso automáticamente. Si seleccionas la opción de mantener a las personas como invitadas, los demás miembros e invitados actuales también conservan el acceso. Tú y la persona que creó el hilo pasáis a ser admins del hilo.
 
 ![](../discussion_management/move_thread_select.png)
 

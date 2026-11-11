@@ -1,10 +1,10 @@
 ---
 title: Témák használata
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: fbfa134ed8e40413
   thread-settings-and-display: cc9526a648d01124
   pin-or-unpin-a-thread: 85f49bd712d7c920
-  move-a-thread: 692cfccf546b07f1
+  move-a-thread: 73bdc7d4c6b2cd65
   lock-or-unlock-a-thread: 66f831df801b3f45
   delete-a-thread: f8b84a81b49e6777
 title_source: 99e2d1eb313f35c4
@@ -339,7 +339,9 @@ Válaszd ki a **Szál kitűzésének megszüntetése** lehetőséget, hogy a sz�
 
 Válaszd ki a **Szál áthelyezése** lehetőséget, ha egy szálat másik csoportba vagy alcsoportba szeretnél áthelyezni, vagy közvetlen szállá szeretnél alakítani. A célcsoport tagjai és a külön meghívott személyek láthatják majd.
 
-Másik csoportba vagy alcsoportba történő áthelyezéskor a Loomio megmutatja, hányan veszítenék el a részvételi jogosultságukat. Megtarthatod őket a szál vendégeiként, ha a célcsoportban jogosult vagy vendégeket meghívni. Így továbbra is részt vehetnek a szálban anélkül, hogy a célcsoport tagjaivá válnának vagy meghívóról szóló értesítést kapnának. A meglévő vendégek megtartják a hozzáférésüket.
+Szál áthelyezésekor a Loomio megmutatja, hányan veszítenék el a részvételi jogosultságukat. Megtarthatod őket vendégként anélkül, hogy meghívóról szóló értesítést küldenél nekik. Másik csoportba vagy alcsoportba történő áthelyezés esetén ehhez jogosultnak kell lenned vendégeket meghívni a célcsoportba; a meglévő vendégek megtartják a hozzáférésüket.
+
+Közvetlen szállá alakításkor azok, akik már részt vettek a szálban, automatikusan megtartják a hozzáférésüket. Ha a vendégek megtartását választod, a többi jelenlegi tag és vendég is megtartja a hozzáférését. Te és a szál létrehozója a szál adminjai lesztek.
 
 ![](../discussion_management/move_thread_select.png)
 

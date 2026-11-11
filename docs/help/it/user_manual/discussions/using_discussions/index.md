@@ -1,10 +1,10 @@
 ---
 title: Usare le discussioni
-source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 488184c8e68531dd
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: b4bc4940294e6465
   thread-settings-and-display: f515463ad98485ff
   pin-or-unpin-a-thread: 17556b3b4c703f8f
-  move-a-thread: 277bd9aa1e758cee
+  move-a-thread: d62f8b4274c00110
   lock-or-unlock-a-thread: 2ae1e542f9689190
   delete-a-thread: 31d4454edc4599c8
 title_source: 99e2d1eb313f35c4
@@ -337,7 +337,9 @@ Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione n
 
 Seleziona **Sposta discussione** per spostare una conversazione in un altro gruppo, in un sottogruppo o trasformarla in una conversazione diretta. Sarà visibile ai membri del gruppo di destinazione e a chiunque sia stato invitato specificamente a partecipare.
 
-Quando sposti una conversazione in un altro gruppo o sottogruppo, Loomio mostra quante persone perderebbero il permesso di partecipare. Puoi mantenerle come ospiti della conversazione se hai il permesso di invitare ospiti nel gruppo di destinazione. In questo modo possono continuare a partecipare senza essere aggiunte al gruppo di destinazione e senza ricevere notifiche di invito. Gli ospiti già presenti mantengono l'accesso.
+Quando sposti una conversazione, Loomio mostra quante persone perderebbero il permesso di partecipare. Puoi mantenerle come ospiti senza inviare notifiche di invito. Per uno spostamento in un altro gruppo o sottogruppo, devi avere il permesso di invitare ospiti nel gruppo di destinazione; gli ospiti già presenti mantengono l'accesso.
+
+Quando trasformi una conversazione in una conversazione diretta, le persone che hanno partecipato mantengono automaticamente l'accesso. Selezionando l'opzione per mantenere gli ospiti, mantieni anche l'accesso degli altri membri e ospiti attuali. Tu e la persona che ha creato la conversazione diventate amministratori della conversazione.
 
 ![](../discussion_management/move_thread_select.png)
 
