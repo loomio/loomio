@@ -3085,6 +3085,10 @@ ro:
     direct_thread: Fir direct
     direct_thread_hint: Toți cei care au participat vor păstra accesul. Tu și creatorul firului de discuție veți fi administratori ai firului de discuție.
     direct_thread_anonymous_poll: Subiectele care conțin sondaje anonime nu pot fi convertite în subiecte directe, deoarece acest lucru ar putea dezvălui cine a votat.
+    members_losing_access: 'Persoane care ar pierde dreptul de a participa: %{count}'
+    keep_members_as_guests: Păstrează aceste persoane ca invitați în acest fir
+    guest_permission_required: Nu ai permisiunea să inviți persoane în grupul de destinație
+    access_preview_error: Nu se poate verifica cine ar pierde dreptul de a participa
   auth:
     oauth_cancelled: Conectarea a fost anulată
     switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.

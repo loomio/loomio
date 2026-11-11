@@ -3113,6 +3113,10 @@ it:
     direct_thread: Conversazione diretta
     direct_thread_hint: Tutti coloro che hanno partecipato manterranno l'accesso. Tu e l'autore della discussione sarete gli amministratori della discussione.
     direct_thread_anonymous_poll: Le discussioni contenenti sondaggi anonimi non possono essere convertite in discussioni dirette perché ciò potrebbe rivelare chi ha votato
+    members_losing_access: 'Persone che perderebbero il permesso di partecipare: %{count}'
+    keep_members_as_guests: Mantieni queste persone come ospiti della conversazione
+    guest_permission_required: Non hai il permesso di invitare ospiti nel gruppo di destinazione
+    access_preview_error: Impossibile verificare chi perderebbe il permesso di partecipare
   auth:
     oauth_cancelled: L'accesso è stato annullato
     switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.

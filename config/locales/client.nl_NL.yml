@@ -3112,6 +3112,10 @@ nl_NL:
     direct_thread: Directe discussie
     direct_thread_hint: Iedereen die heeft deelgenomen, behoudt toegang. Jij en de maker van het topic worden de topicbeheerders.
     direct_thread_anonymous_poll: Discussies met anonieme peilingen kunnen niet worden omgezet naar directe discussies, omdat dit zou kunnen onthullen wie er heeft gestemd.
+    members_losing_access: 'Mensen die niet meer zouden mogen deelnemen: %{count}'
+    keep_members_as_guests: Behoud deze mensen als gasten van deze thread
+    guest_permission_required: Je mag geen gasten uitnodigen in de bestemmingsgroep
+    access_preview_error: Kan niet controleren wie niet meer zou mogen deelnemen
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.

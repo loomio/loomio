@@ -3112,6 +3112,10 @@ pl:
     direct_thread: Bezpośredni wątek
     direct_thread_hint: Każdy, kto wziął udział, zachowa dostęp. Ty i twórca wątku będziecie administratorami wątku.
     direct_thread_anonymous_poll: Wątków zawierających anonimowe ankiety nie można przekształcić w wątki bezpośrednie, ponieważ mogłoby to ujawnić, kto głosował
+    members_losing_access: 'Osoby, które stracą prawo do udziału: %{count}'
+    keep_members_as_guests: Zachowaj te osoby jako gości tego wątku
+    guest_permission_required: Nie masz uprawnień do zapraszania gości w grupie docelowej
+    access_preview_error: Nie można sprawdzić, kto straci prawo do udziału
   auth:
     oauth_cancelled: Logowanie zostało anulowane
     switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.

@@ -1994,6 +1994,10 @@ zh_CN:
     direct_thread: 私人帖子
     direct_thread_hint: 所有参与者都将保留访问权限。您和帖子创建者将成为帖子管理员。
     direct_thread_anonymous_poll: 包含匿名投票的帖子不能转换为私人帖子，因为这可能会泄露投票者的身份
+    members_losing_access: 将失去参与权限的人数：%{count}
+    keep_members_as_guests: 将这些人保留为此帖子的访客
+    guest_permission_required: 您无权在目标群组中邀请访客
+    access_preview_error: 无法检查哪些人将失去参与权限
   delete_comment_dialog:
     title: 删除评论
     question: 这将永久删除此评论。如果您继续操作，则无法恢复。

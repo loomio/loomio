@@ -292,8 +292,6 @@ Select **Move thread** to move a thread to another group, subgroup, or to a dire
 
 When moving to another group or subgroup, Loomio shows how many people would lose permission to participate. You can keep them as guests of the thread if you have permission to invite guests in the destination group. This preserves their ability to participate without adding them to the destination group or sending invitation notifications. Existing guests retain their access.
 
-Parent-group visibility allows people to read a subgroup's threads, but they need subgroup membership or guest access to comment.
-
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]

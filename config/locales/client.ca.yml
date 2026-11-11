@@ -3112,6 +3112,10 @@ ca:
     direct_thread: Fil directe
     direct_thread_hint: Tothom qui ha participat conservarà l'accés. Tu i el creador del fil sereu administradors del fil.
     direct_thread_anonymous_poll: Els fils que contenen enquestes anònimes no es poden convertir en fils directes perquè això podria revelar qui ha votat.
+    members_losing_access: 'Persones que perdrien el permís per participar: %{count}'
+    keep_members_as_guests: Mantén aquestes persones com a convidades del fil
+    guest_permission_required: No tens permís per convidar persones al grup de destinació
+    access_preview_error: No s'ha pogut comprovar qui perdria el permís per participar
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.

@@ -3097,6 +3097,10 @@ da:
     direct_thread: Direkte tråd
     direct_thread_hint: Alle, der har deltaget, vil beholde adgangen. Du og trådens opretter vil være trådadministratorer.
     direct_thread_anonymous_poll: Tråde, der indeholder anonyme afstemninger, kan ikke konverteres til direkte tråde, da dette kan afsløre, hvem der har stemt.
+    members_losing_access: 'Personer, der vil miste retten til at deltage: %{count}'
+    keep_members_as_guests: Behold disse personer som gæster i tråden
+    guest_permission_required: Du har ikke tilladelse til at invitere gæster i destinationsgruppen
+    access_preview_error: Kunne ikke tjekke, hvem der vil miste retten til at deltage
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.

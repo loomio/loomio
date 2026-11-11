@@ -3113,6 +3113,10 @@ zh_TW:
     direct_thread: 私人對話串
     direct_thread_hint: 所有參與者都將保留存取權限。您和對話串建立者將成為對話串管理員。
     direct_thread_anonymous_poll: 包含匿名投票的對話串不能轉換為私人對話串，因為這可能會洩露投票者的身分
+    members_losing_access: 將失去參與權限的人數：%{count}
+    keep_members_as_guests: 將這些人保留為此對話串的訪客
+    guest_permission_required: 您沒有在目標群組邀請訪客的權限
+    access_preview_error: 無法確認哪些人將失去參與權限
   auth:
     oauth_cancelled: 登入已取消
     switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。

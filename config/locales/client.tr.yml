@@ -3082,6 +3082,10 @@ tr:
     direct_thread: Doğrudan konu
     direct_thread_hint: Katılan herkes erişim hakkını koruyacak. Siz ve konuyu oluşturan kişi, konunun yöneticileri olacaksınız.
     direct_thread_anonymous_poll: Anonim anketler içeren konular, kimin oy kullandığını ortaya çıkarabileceği için doğrudan konulara dönüştürülemez.
+    members_losing_access: 'Katılım iznini kaybedecek kişiler: %{count}'
+    keep_members_as_guests: Bu kişileri bu ileti dizisinde misafir olarak tut
+    guest_permission_required: Hedef grupta misafir davet etme izniniz yok
+    access_preview_error: Kimlerin katılım iznini kaybedeceği kontrol edilemedi
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.

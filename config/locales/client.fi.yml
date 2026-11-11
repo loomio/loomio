@@ -3085,6 +3085,10 @@ fi:
     direct_thread: Suora ketju
     direct_thread_hint: Kaikki osallistuneet säilyttävät käyttöoikeuden. Sinusta ja ketjun luojasta tulee ketjun ylläpitäjiä.
     direct_thread_anonymous_poll: Anonyymejä kyselyitä sisältäviä ketjuja ei voida muuntaa suoriksi ketjuiksi, koska se voisi paljastaa, kuka äänesti.
+    members_losing_access: 'Osallistumisoikeuden menettäviä henkilöitä: %{count}'
+    keep_members_as_guests: Pidä nämä henkilöt ketjun vieraina
+    guest_permission_required: Sinulla ei ole oikeutta kutsua vieraita kohderyhmään
+    access_preview_error: Ei voitu tarkistaa, ketkä menettäisivät osallistumisoikeuden
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.
