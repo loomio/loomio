@@ -196,7 +196,7 @@ export default new class GroupService {
         icon: 'mdi-exit-to-app',
         menu: true,
         canPerform() {
-          return MembershipAbility.canDestroy(membership);
+          return !!membership && MembershipAbility.canDestroy(membership);
         },
         perform() {
           let returnUrl = '/dashboard'
