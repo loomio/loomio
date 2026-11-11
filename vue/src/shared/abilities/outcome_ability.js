@@ -8,5 +8,10 @@ export default {
     return poll.group().isEnabled() && !poll.discardedAt && !!poll.closedAt &&
       (poll.adminsInclude(Session.user()) ||
         (poll.group().membersCanEditDiscussions && poll.membersInclude(Session.user())));
+  },
+
+  // The server uses one rule for creating and updating an outcome.
+  canUpdate(outcome) {
+    return this.canCreate(outcome.poll());
   }
 };

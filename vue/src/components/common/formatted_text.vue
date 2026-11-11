@@ -24,8 +24,6 @@ const RICH_TEXT_IMAGE_MAX_HEIGHT = 600;
 const RICH_TEXT_IMAGE_STYLE_CANDIDATE = /<img\b(?=[^>]*\bwidth\s*=)(?=[^>]*\bheight\s*=)(?![^>]*\baspect-ratio\s*:)/i;
 const htmlContent = ref(null);
 
-const canEdit = computed(() => TaskAbility.canUpdate(props.model));
-
 const content = computed(() => {
   if (props.model.translationId) {
     return props.model.translation().fields[props.field];
@@ -75,11 +73,16 @@ function onClick(e) {
     e.offsetX < target.offsetLeft &&
     !target.classList.contains('task-item-busy')
   ) {
-    const mentioned = target.querySelectorAll(
-      'span[data-mention-id="' + Session.user().username + '"]'
-    ).length;
+    // Matches TaskService: a task's author is its data-author-id, or the
+    // record's author, and mentions name a user by username or id.
+    const user = Session.user();
+    const mentionIds = [...target.querySelectorAll('span[data-mention-id]')].map(el => el.getAttribute('data-mention-id'));
+    const task = {
+      authorId: Number(target.getAttribute('data-author-id')) || props.model.authorId,
+      mentioned: mentionIds.includes(user.username) || mentionIds.includes(String(user.id))
+    };
 
-    if (canEdit.value || mentioned) {
+    if (TaskAbility.canUpdate(props.model, task)) {
       target.classList.add('task-item-busy');
       const uid = target.getAttribute('data-uid');
       const checked = target.getAttribute('data-checked') === 'true';
