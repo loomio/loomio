@@ -1,6 +1,6 @@
 ---
 title: Користування темами
-source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 132ed1c2bbbb8e16
   thread-settings-and-display: 3c412b80fbf779f5
   pin-or-unpin-a-thread: 534e7035423407a5
-  move-a-thread: 6f5d4d00322a74e4
+  move-a-thread: b89015efb9e9e31b
   lock-or-unlock-a-thread: 5a4e2574073e7eac
   delete-a-thread: b356196243d18f44
 title_source: 99e2d1eb313f35c4
@@ -326,6 +326,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### Переміщення теми
 
 Виберіть **Перемістити тему**, щоб перемістити тему до іншої групи чи підгрупи або зробити її прямою темою. Вона буде видима учасникам групи, до якої її переміщено, і всім, кого запросили безпосередньо до неї.
+
+Під час переміщення теми Loomio показує, скільки людей втратять право брати участь. Ви можете залишити їх гостями без надсилання сповіщень із запрошеннями. Для переміщення до іншої групи чи підгрупи потрібен дозвіл запрошувати гостей у групі, до якої переміщуєте тему; наявні гості зберігають доступ.
+
+Під час перетворення на пряму тему люди, які брали в ній участь, автоматично зберігають доступ. Вибір варіанта збереження гостей також зберігає доступ для решти поточних учасників і гостей. Ви та автор теми стаєте адміністраторами теми.
 
 ![](../discussion_management/move_thread_select.png)
 

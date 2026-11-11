@@ -3120,6 +3120,10 @@ de:
     direct_thread: Direkter Thread
     direct_thread_hint: Alle Teilnehmenden behalten den Zugriff. Du und die Person, die den Thread erstellt hat, werdet zu Thread-Admins.
     direct_thread_anonymous_poll: Threads mit anonymen Umfragen können nicht in direkte Threads umgewandelt werden, da dies offenlegen könnte, wer abgestimmt hat.
+    members_losing_access: 'Personen, die nicht mehr teilnehmen dürften: %{count}'
+    keep_members_as_guests: Diese Personen als Gäste dieses Threads behalten
+    access_preview_error: Es konnte nicht geprüft werden, wer nicht mehr teilnehmen dürfte
+    guest_access_unavailable: Bei diesem Verschieben kann kein Gastzugriff gewährt werden
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melde dich mit deinen neuen Kontodaten an.

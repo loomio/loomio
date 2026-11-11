@@ -3130,6 +3130,10 @@ pt_BR:
     direct_thread: Tópico direto
     direct_thread_hint: Todos que participaram manterão o acesso. Você e o criador do tópico serão os administradores do tópico.
     direct_thread_anonymous_poll: Tópicos contendo enquetes anônimas não podem ser convertidos em tópicos diretos, pois isso poderia revelar quem votou.
+    members_losing_access: 'Pessoas que perderiam a permissão para participar: %{count}'
+    keep_members_as_guests: Manter essas pessoas como convidadas desta conversa
+    access_preview_error: Não foi possível verificar quem perderia a permissão para participar
+    guest_access_unavailable: Não é possível conceder acesso a convidados nesta mudança
   auth:
     oauth_cancelled: O login foi cancelado.
     switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.

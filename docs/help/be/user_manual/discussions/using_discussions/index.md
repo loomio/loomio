@@ -1,6 +1,6 @@
 ---
 title: Як карыстацца тэмамі
-source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 86fdb421456b4eff
   thread-settings-and-display: 05e3f52b750f1b72
   pin-or-unpin-a-thread: ed70cd9dcf814000
-  move-a-thread: c8eb1990f10957f0
+  move-a-thread: d21126ac415efdfc
   lock-or-unlock-a-thread: 264a15f23b22eb36
   delete-a-thread: 5b5257f9d7933575
 title_source: 99e2d1eb313f35c4
@@ -322,6 +322,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### Перамясціць тэму
 
 Выберыце **Перамясціць тэму**, каб перамясціць тэму ў іншую групу ці падгрупу або зрабіць яе прамой тэмай. Яна будзе бачная ўдзельнікам групы прызначэння і ўсім, каго запрасілі непасрэдна ў яе.
+
+Пры перамяшчэнні тэмы Loomio паказвае, колькі людзей страцяць права ўдзельнічаць. Вы можаце пакінуць іх гасцямі без адпраўкі апавяшчэнняў аб запрашэнні. Для перамяшчэння ў іншую групу ці падгрупу гэта патрабуе дазволу запрашаць гасцей у групу прызначэння; людзі, якія ўжо ўдзельнічаюць як госці, захоўваюць доступ.
+
+Пры пераўтварэнні ў прамую тэму людзі, якія ўдзельнічалі ў ёй, аўтаматычна захоўваюць доступ. Калі выбраць захаванне доступу для гасцей, астатнія цяперашнія ўдзельнікі групы і госці таксама захаваюць доступ. Вы і аўтары тэмы становіцеся адміністратарамі тэмы.
 
 ![](../discussion_management/move_thread_select.png)
 

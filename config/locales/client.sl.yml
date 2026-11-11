@@ -3085,6 +3085,10 @@ sl:
     direct_thread: Neposredna nit
     direct_thread_hint: Vsi, ki so sodelovali, bodo ohranili dostop. Vi in ustvarjalec teme bosta skrbnika teme.
     direct_thread_anonymous_poll: Niti, ki vsebujejo anonimne ankete, ni mogoče pretvoriti v neposredne niti, ker bi to lahko razkrilo, kdo je glasoval
+    members_losing_access: 'Osebe, ki bi izgubile pravico do sodelovanja: %{count}'
+    keep_members_as_guests: Ohranite te osebe kot goste te niti
+    access_preview_error: Ni mogoče preveriti, kdo bi izgubil pravico do sodelovanja
+    guest_access_unavailable: Pri tem premiku ni mogoče omogočiti dostopa gostom
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.

@@ -1,6 +1,6 @@
 ---
 title: スレッドの使い方
-source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: f01e47537dc12d37
   thread-settings-and-display: 31491e0a1edb4745
   pin-or-unpin-a-thread: dd96e104a57fbd03
-  move-a-thread: d1e130cbb12d7b27
+  move-a-thread: 3ea157966709faab
   lock-or-unlock-a-thread: 4f3659d2fde72f52
   delete-a-thread: 1e6f9b883306a42e
 title_source: 99e2d1eb313f35c4
@@ -322,6 +322,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### スレッドの移動
 
 **スレッドを移動**を選択すると、スレッドを別のグループやサブグループに移動したり、ダイレクトスレッドに変更したりできます。移動先のグループのメンバーと、そのスレッドに個別に招待された人が閲覧できるようになります。
+
+スレッドを移動する際、Loomioは参加権限を失う人数を表示します。招待の通知を送信せずに、その人たちをゲストとして残すことができます。別のグループやサブグループに移動する場合は、移動先のグループでゲストを招待する権限が必要です。既存のゲストは引き続きアクセスできます。
+
+ダイレクトスレッドに変更する場合、参加したことがある人は自動的に引き続きアクセスできます。ゲストとして残す設定を選択すると、その他の現在のメンバーとゲストも引き続きアクセスできます。変更を行った人とスレッドの作成者がスレッド管理者になります。
 
 ![](../discussion_management/move_thread_select.png)
 

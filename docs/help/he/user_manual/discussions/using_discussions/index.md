@@ -1,6 +1,6 @@
 ---
 title: שימוש בשרשורים
-source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 026a0e786deda944
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 15369657b0c43e23
   thread-settings-and-display: 7c943d2adb2ea7ce
   pin-or-unpin-a-thread: d1557b5934abb66e
-  move-a-thread: 80077f6c5a1fc0a7
+  move-a-thread: 64954812a03504fb
   lock-or-unlock-a-thread: fc46198e3fbd2c30
   delete-a-thread: fd7ecef644490437
 title_source: 99e2d1eb313f35c4
@@ -325,6 +325,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### העברת שרשור
 
 יש לבחור **הזזת שרשור** כדי להעביר שרשור לקבוצה אחרת, לתת־קבוצה או להפוך אותו לשרשור ישיר. השרשור יהיה גלוי לחברי קבוצת היעד ולכל מי שהוזמנו אליו במפורש.
+
+בעת העברת שרשור, Loomio מציג כמה אנשים יאבדו את ההרשאה להשתתף. ניתן להשאיר אותם כאורחים בלי לשלוח התראות על הזמנה. בהעברה לקבוצה אחרת או לתת־קבוצה, נדרשת לשם כך הרשאה להזמין אורחים בקבוצת היעד; הגישה של אורחים קיימים נשמרת.
+
+בעת הפיכת שרשור לשרשור ישיר, הגישה של מי שכבר השתתפו בו נשמרת אוטומטית. בחירה באפשרות להשאיר אורחים משמרת גם את הגישה של שאר החברים והאורחים הנוכחיים. מי שביצעו את ההמרה ומי שיצרו את השרשור הופכים למנהלי השרשור.
 
 ![](../discussion_management/move_thread_select.png)
 
