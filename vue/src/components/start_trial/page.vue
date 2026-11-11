@@ -59,9 +59,9 @@ const submit = () => {
       router.push(data.group_path)
     }
   }).catch((data) => {
-    errors.value = data.errors
+    errors.value = data.errors || {};
     form.value.validate();
-    Flash.error('common.check_for_errors_and_try_again');
+    Flash.error(data.errors ? 'common.check_for_errors_and_try_again' : 'common.please_try_again');
   }).finally(() => {
     loading.value = false
   });
