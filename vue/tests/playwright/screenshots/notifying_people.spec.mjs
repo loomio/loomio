@@ -175,7 +175,7 @@ test('reaction', async ({ page, manual: screenshot }) => {
 test('thread_invite_icon', async ({ page, manual: screenshot }) => {
   await openDiscussion(page);
   await expect(page.locator('.topic-sidebar .action-dock__button--announce_thread')).toBeVisible()
-  await screenshot.capture('discussions/notifying_people/thread_invite_icon', {
+  await screenshot.capture('discussions/inviting_people/thread_invite_icon', {
     spotlight: {
       selector: '.topic-sidebar .action-dock__button--announce_thread',
       padding: 12,
@@ -187,28 +187,23 @@ test('thread_invite_icon', async ({ page, manual: screenshot }) => {
   });
 });
 
-test('thread_invite', async ({ page, manual: screenshot }) => {
-  await openDiscussion(page);
-  await page.locator('.topic-sidebar .action-dock__button--announce_thread').click()
-  await page.locator('.topic-members-list > .v-list').evaluate(list => { list.style.display = 'none'; })
-  await screenshot.captureElement('discussions/notifying_people/thread_invite', '.topic-members-list', {
-    width: 1100,
-    height: 1200
-  });
-});
-
 test('invite_guest', async ({ page, manual: screenshot }) => {
+  await page.setViewportSize({ width: 1100, height: 800 });
   await openDiscussion(page);
-  await page.locator('.topic-sidebar .action-dock__button--announce_thread').click()
-  const members = page.locator('.topic-members-list')
-  await members.locator('.recipients-autocomplete input[type="text"]').pressSequentially('guest@cafecircle.example')
-  await page.locator('.v-overlay--active .recipients-autocomplete-suggestion').click()
-  await members.locator('textarea').click()
-  // Adding a guest usually hides the member list; hide it if it is still there.
-  await members.locator(':scope > .v-list').evaluateAll(lists => lists.forEach(list => { list.style.display = 'none'; }))
-  await screenshot.captureElement('discussions/notifying_people/invite_guest', '.topic-members-list', {
+  await page.locator('.topic-sidebar .action-dock__button--announce_thread').click();
+  const members = page.locator('.topic-members-list');
+  await members.locator('.recipients-autocomplete input[type="text"]').pressSequentially('guest@cafecircle.example');
+  await page.locator('.v-overlay--active .recipients-autocomplete-suggestion', { hasText: 'guest@cafecircle.example' }).click();
+  await members.locator('textarea').fill('Please share your cafe’s experience with bottle returns. Your advice will help us plan collections and explain the deposit to customers.');
+  await members.locator('.v-card-title').click();
+  await expect(members.locator('.topic-members-list__readers')).toHaveCount(0);
+  await expect(members.locator('.common-notifications-count')).toContainText('1');
+  await expect(members.locator('.topic-members-list__submit')).toBeVisible();
+  await screenshot.captureRegion('discussions/inviting_people/invite_guest', ['.topic-members-list'], {
     width: 1100,
-    height: 1200
+    height: 800,
+    padding: 24,
+    spotlight: { selector: '.topic-members-list .recipients-autocomplete', padding: 14, radius: 16, opacity: 0.3, outlineWidth: 0 }
   });
 });
 

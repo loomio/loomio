@@ -106,23 +106,7 @@ Select the current notification setting to choose whether Loomio emails you abou
 
 ### Invite people
 
-Select **Invite people** to add people after the thread has started.
-
-![Invite people in the thread sidebar](../notifying_people/thread_invite_icon.png)
-
-Select a group or subgroup, enter the names of individual members, or enter an email address to invite a guest.
-
-The **Find or invite people** field also filters the list of people already in the thread. Clear the field to show the full list again, and use the page controls if there are more than 50 people. After you select recipients, the member list gives way to the optional message field. New people are invited; people who already have access receive another notification when you select **Invite or notify**.
-
-![Invite people window with a field for names and email addresses](../notifying_people/thread_invite.png)
-
-A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
-
-You can dismiss the guidance notices at the top of the window. Loomio remembers which notices you dismissed for your account.
-
-![Inviting a guest by email address](../notifying_people/invite_guest.png)
-
-To remove someone, open the three-dot menu (**⋯**) beside their name and select **Remove from discussion**.
+Select **Invite people** in the right sidebar to invite people or notify them about the discussion. See [Inviting people to a discussion](/en/user_manual/discussions/inviting_people) for groups, parent groups, guests, chat rooms, and invitation notifications.
 
 <!-- translation-section: seen-by -->
 

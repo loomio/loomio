@@ -7,7 +7,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   thread-settings-and-display: 175b9e93cfc4f736
@@ -26,7 +26,7 @@ generated:
   navigation: d42610687b58d3ca
   notifications-and-members: b9e1b82797d36807
   email-notifications-for-this-thread: c795dbf534e07e99
-  invite-people: 317131505bef54f3
+  invite-people: d041f863d9c4a16b
   seen-by: 5966996f2f6e9892
   notified: 9cdc759a741dddc4
   thread-settings-and-display: e85e9cc96d155695
@@ -42,8 +42,8 @@ title_source: 99e2d1eb313f35c4
 title_generated: f9f56e0b6f80016d
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+  'on': '2026-11-12'
+source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 needs_review:
   markdown: check the interface label "**동의**" for "**Agree**"; check the interface label "**기권**" for "**Abstain**"
@@ -155,23 +155,7 @@ H2 또는 H3 제목이 포함된 댓글, 투표, 제안은 주요 항목 링크�
 
 ### 초대
 
-스레드를 시작한 후 사람을 추가하려면 **초대**를 선택하세요.
-
-![스레드 사이드바의 초대](../notifying_people/thread_invite_icon.png)
-
-그룹이나 하위 그룹을 선택하거나, 개별 멤버의 이름을 입력하거나, 이메일 주소를 입력해 게스트를 초대하세요.
-
-**사람 찾기 또는 초대** 입력란으로 이미 스레드에 참여 중인 사람의 목록을 필터링할 수도 있습니다. 입력란을 비우면 전체 목록이 다시 표시되며, 사람이 50명을 넘으면 페이지 이동 기능을 사용하세요. 수신자를 선택하면 멤버 목록 대신 메시지를 선택적으로 입력할 수 있는 입력란이 나타납니다. **초대 또는 알림**을 선택하면 새로 추가한 사람에게는 초대가 전송되고, 이미 접근 권한이 있는 사람에게는 알림이 다시 전송됩니다.
-
-![이름과 이메일 주소 입력란이 있는 초대 창](../notifying_people/thread_invite.png)
-
-게스트는 이 스레드를 보고 참여할 수 있지만, 별도로 초대받지 않으면 그룹의 다른 토론은 볼 수 없습니다.
-
-창 위쪽의 안내문은 닫을 수 있습니다. Loomio는 계정별로 어떤 안내문을 닫았는지 기억합니다.
-
-![이메일 주소로 게스트 초대](../notifying_people/invite_guest.png)
-
-누군가를 제외하려면 이름 옆의 점 세 개 메뉴(**⋯**)를 열고 **토론에서 제외**를 선택하세요.
+사람을 초대하거나 토론에 대해 알리려면 오른쪽 사이드바에서 **초대**를 선택하세요. 그룹, 상위 그룹, 게스트, 채팅방, 초대 알림에 대한 내용은 [토론에 초대하기](/en/user_manual/discussions/inviting_people)를 참고하세요.
 
 <!-- translation-section: seen-by -->
 

@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 86e7cd6d837054c3
   notifications-and-members: 16cfc54f179bdd17
   email-notifications-for-this-thread: a9100f04d60b3728
-  invite-people: 17f2f939cfe06257
+  invite-people: bce6bdf0e76ccfae
   seen-by: 87fecfc34c4a9764
   notified: 4ce9c68d90ac8756
   actions: 2ae4103e57fac588
@@ -155,23 +155,7 @@ Selecteer de huidige meldingsinstelling om te kiezen of Loomio je e-mails stuurt
 
 ### Mensen uitnodigen
 
-Selecteer **Mensen uitnodigen** om mensen toe te voegen nadat de thread is gestart.
-
-![Mensen uitnodigen in de zijbalk van de thread](../notifying_people/thread_invite_icon.png)
-
-Selecteer een groep of subgroep, voer de namen van individuele leden in of voer een e-mailadres in om een gast uit te nodigen.
-
-Het veld **Zoek of nodig mensen uit** filtert ook de lijst met mensen die al in de thread zitten. Maak het veld leeg om de volledige lijst weer te tonen en gebruik de paginaknoppen als er meer dan 50 mensen zijn. Nadat je ontvangers hebt geselecteerd, maakt de ledenlijst plaats voor het optionele berichtveld. Nieuwe mensen worden uitgenodigd; mensen die al toegang hebben, ontvangen opnieuw een melding wanneer je **Uitnodigen of opnieuw informeren** selecteert.
-
-![Venster Mensen uitnodigen met een veld voor namen en e-mailadressen](../notifying_people/thread_invite.png)
-
-Een gast kan deze thread bekijken en eraan deelnemen, maar kan andere discussies in de groep alleen zien als die daar afzonderlijk voor is uitgenodigd.
-
-Je kunt de uitlegmeldingen bovenaan het venster sluiten. Loomio onthoudt voor jouw account welke meldingen je hebt gesloten.
-
-![Een gast uitnodigen via een e-mailadres](../notifying_people/invite_guest.png)
-
-Om iemand te verwijderen, open je het menu met drie puntjes (**⋯**) naast de naam en selecteer je **Verwijderen uit discussie**.
+Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of hun een melding over de discussie te sturen. Zie [Mensen uitnodigen voor een discussie](/en/user_manual/discussions/inviting_people) voor informatie over groepen, hoofdgroepen, gasten, chatruimtes en meldingen van uitnodigingen.
 
 <!-- translation-section: seen-by -->
 

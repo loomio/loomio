@@ -1,10 +1,10 @@
 ---
 title: Como usar as discussões
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 628f6f18d2494ad0
   notifications-and-members: 2de36de88364451b
   email-notifications-for-this-thread: cf7d475299a877e0
-  invite-people: 691cf4e1f0e4b7e1
+  invite-people: dcd22869f7a31c57
   seen-by: 839a2ae64a956eb8
   notified: 36804139e906d46d
   actions: 299b467b99d9605d
@@ -155,23 +155,7 @@ Selecione a configuração atual de notificações para escolher se o Loomio env
 
 ### Convidar pessoas
 
-Selecione **Convidar pessoas** para adicionar pessoas depois que a conversa tiver começado.
-
-![Convidar pessoas na barra lateral da conversa](../notifying_people/thread_invite_icon.png)
-
-Selecione um grupo ou subgrupo, digite os nomes de membros individuais ou digite um endereço de email para convidar um convidado.
-
-O campo **Encontre ou convide pessoas** também filtra a lista de pessoas que já estão na conversa. Limpe o campo para exibir a lista completa novamente e use os controles de paginação se houver mais de 50 pessoas. Depois que você selecionar os destinatários, a lista de membros será substituída pelo campo opcional de mensagem. Novas pessoas recebem um convite; pessoas que já têm acesso recebem outra notificação quando você seleciona **Convidar ou notificar**.
-
-![Janela Convidar pessoas com um campo para nomes e endereços de email](../notifying_people/thread_invite.png)
-
-Um convidado pode ver esta conversa e participar dela, mas não pode ver outras discussões do grupo sem receber um convite separado.
-
-Você pode dispensar os avisos de orientação no topo da janela. O Loomio lembra quais avisos você dispensou na sua conta.
-
-![Convite a um convidado pelo endereço de email](../notifying_people/invite_guest.png)
-
-Para remover alguém, abra o menu de três pontos (**⋯**) ao lado do nome da pessoa e selecione **Remover da discussão**.
+Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou notificá-las sobre a discussão. Consulte [Convidar pessoas para uma discussão](/en/user_manual/discussions/inviting_people) para saber mais sobre grupos, grupos principais, convidados, salas de bate-papo e notificações de convite.
 
 <!-- translation-section: seen-by -->
 

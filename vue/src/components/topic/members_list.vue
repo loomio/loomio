@@ -181,7 +181,7 @@ fetchReaders();
 </script>
 
 <template lang="pug">
-v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')" style="height: 760px; max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
+v-card.topic-members-list(:title="t('strand_members_list.manage_thread_members')" style="max-height: 90vh; flex: none; display: flex; flex-direction: column; overflow-y: auto")
   template(v-slot:append)
     help-btn.text-medium-emphasis.mr-2(path="en/user_manual/discussions/using_discussions#invite-people" variant="text")
     dismiss-modal-button

@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: e05a8fa5898d12a846ead7e14ecdac2961c3abee
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 2394827457461d6f
   notifications-and-members: c968956946ff5866
   email-notifications-for-this-thread: c3d20c7d1ae7be2b
-  invite-people: fd1610d4ad7b356c
+  invite-people: 6788136c21b439f6
   seen-by: 825e81733ff2b1c9
   notified: 077cdb228ecb0c3a
   actions: 7640a063f929b3ab
@@ -156,23 +156,7 @@ Valitse nykyinen ilmoitusasetus määrittääksesi, lähettääkö Loomio sinull
 
 ### Kutsu ihmisiä
 
-Valitse **Kutsu ihmisiä** lisätäksesi ihmisiä ketjun aloittamisen jälkeen.
-
-![Kutsu ihmisiä ketjun sivupalkissa](../notifying_people/thread_invite_icon.png)
-
-Valitse ryhmä tai alaryhmä, kirjoita yksittäisten jäsenten nimet tai kirjoita sähköpostiosoite kutsuaksesi vieraan.
-
-**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös ketjussa jo olevien ihmisten luetteloa. Tyhjennä kenttä näyttääksesi koko luettelon uudelleen ja käytä sivutuspainikkeita, jos ihmisiä on yli 50. Kun olet valinnut vastaanottajat, jäsenluettelon tilalle tulee vapaaehtoinen viestikenttä. Uudet ihmiset saavat kutsun, ja ihmiset, joilla on jo käyttöoikeus, saavat uuden ilmoituksen, kun valitset **Kutsu tai ilmoita**.
-
-![Kutsu ihmisiä -ikkuna, jossa on kenttä nimille ja sähköpostiosoitteille](../notifying_people/thread_invite.png)
-
-Vieras voi nähdä tämän ketjun ja osallistua siihen, mutta hän ei näe ryhmän muita keskusteluja ilman erillistä kutsua.
-
-Voit sulkea ikkunan yläosassa olevat ohjeet. Loomio muistaa tililläsi, mitkä ohjeet olet sulkenut.
-
-![Vieraan kutsuminen sähköpostiosoitteella](../notifying_people/invite_guest.png)
-
-Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko (**⋯**) ja valitsemalla **Poista keskustelusta**.
+Valitse oikeasta sivupalkista **Kutsu ihmisiä** kutsuaksesi ihmisiä keskusteluun tai ilmoittaaksesi heille siitä. Katso ryhmiä, pääryhmiä, vieraita, chat-huoneita ja kutsuilmoituksia koskevat ohjeet sivulta [Ihmisten kutsuminen keskusteluun](/en/user_manual/discussions/inviting_people).
 
 <!-- translation-section: seen-by -->
 
