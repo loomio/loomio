@@ -124,13 +124,17 @@ async function openTypePoll(page, pollType, mode) {
   await expectLabel(page.locator('.poll-common-card__title'), pollTypes[pollType]?.title || 'Which bottle trial topics need the most meeting time?')
 }
 
-// Types a score for each of the poll's options, in order. Score polls reuse
-// the allocate form's option class.
+// Sets a score for each of the poll's options, in order, with the slider's
+// keyboard controls.
 async function enterScores(page, pollType, scores) {
-  const form = { score: '.poll-score-vote-form', dot_vote: '.poll-dot-vote-vote-form' }[pollType];
+  const option = { score: '.poll-score-vote-form__option', dot_vote: '.poll-dot-vote-vote-form__option' }[pollType];
   for (const [index, [name]] of pollTypes[pollType].options.entries()) {
-    await page.locator(`${form} .poll-dot-vote-vote-form__option`, { hasText: name })
-      .locator('.vote-form-number-input').fill(String(scores[index]));
+    const thumb = page.locator(option, { hasText: name })
+      .locator('.v-slider [role="slider"]');
+    await thumb.press('Home');
+    const minimum = Number(await thumb.getAttribute('aria-valuemin'));
+    for (let score = minimum; score < scores[index]; score++) await thumb.press('ArrowRight');
+    await expect(thumb).toHaveAttribute('aria-valuenow', String(scores[index]));
   }
 }
 
@@ -228,7 +232,6 @@ test('new_simple_poll_voting', async ({ page, manual: screenshot }) => {
     'polls/choose/voting',
     [
       '.poll-common-action-panel h3',
-      '.poll-common-vote-form > .v-alert',
       '.poll-common-vote-form__button:has(input[aria-label="Cafe collection schedule"])',
       '.poll-common-vote-form__button:has(input[aria-label="Bottle deposit amount"])',
       '.poll-common-vote-form__button:has(input[aria-label="Washing workflow"])',

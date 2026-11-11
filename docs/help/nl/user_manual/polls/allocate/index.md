@@ -1,16 +1,16 @@
 ---
 title: Toewijzen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/allocate/index.md
+source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: d097e3a7d91324c9
   when-to-use-allocate: 25c91f8c05c1ec80
   example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
   set-up-the-poll: 772846c919c6af97
-  vote: b6d1dab4c7743034
+  vote: a76285146a3b1d2e
   read-the-results: 3a66507bd8387273
   share-an-outcome: abb46bfca8b73b7a
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-allocate: 1d50aa591b796da4
   example-set-priorities-for-an-annual-strategy-review: 3d36fe707ef3096e
   set-up-the-poll: 66dc1bfd453738cf
-  vote: 4a1e975f8ce0f78d
+  vote: c40b33c04b9ab986
   read-the-results: 4cb59102b453bf7c
   share-an-outcome: 354b894bf60fae90
 title_source: c927a8a7c2ce230c
@@ -68,6 +68,8 @@ Een heel groot puntenbudget kan schijnprecisie opleveren. Een bruikbaar puntenbu
 ## Stem
 
 Deelnemers verplaatsen de schuifregelaars om hun puntenbudget te verdelen. Loomio laat zien hoeveel punten er over zijn en voorkomt dat de stem wordt ingediend zolang de verdeling niet geldig is.
+
+Je hoeft niet alle punten te gebruiken.
 
 ![](voting.png)
 

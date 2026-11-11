@@ -2114,6 +2114,11 @@ zh_CN:
     name_gte_weighted_votes_cast: "%{name} 需获得至少 %{percent}% 的已投加权票数"
     name_lte_weighted_votes_cast: "%{name} 不得超过已投加权票数的 %{percent}%"
   poll_common:
+    write_your_response: 填写回应
+    rank_at_least_one_candidate: 为至少一名候选人排名
+    check_scores: 检查评分
+    check_allocation: 检查点数分配
+    reduce_allocation_by_points: 减少分配 %{count} 点 | 减少分配 %{count} 点
     superseded: 被取代
     outdated: 过时的
     need_help_with_templates: 需要帮助创建您自己的决策模板吗？

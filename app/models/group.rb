@@ -377,12 +377,11 @@ class Group < ApplicationRecord
   def self.subscription_active_sql
     subscription_id = "COALESCE(groups.subscription_id, " \
                       "(SELECT parent.subscription_id FROM groups parent WHERE parent.id = groups.parent_id))"
-    sanitize_sql_array([ <<~SQL.squish, { states: Subscription::ACTIVE_STATES, now: Time.current } ])
+    <<~SQL.squish
       (#{subscription_id} IS NULL OR EXISTS (
         SELECT 1 FROM subscriptions enabled_subscriptions
         WHERE enabled_subscriptions.id = #{subscription_id}
-          AND enabled_subscriptions.state IN (:states)
-          AND (enabled_subscriptions.expires_at IS NULL OR enabled_subscriptions.expires_at > :now)
+          AND #{Subscription.active_sql("enabled_subscriptions")}
       ))
     SQL
   end

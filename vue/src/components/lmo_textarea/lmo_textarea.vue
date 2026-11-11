@@ -2,6 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 
 export default {
+  emits: ['draft-text'],
   props: {
     focusId: String,
     model: Object,
@@ -42,6 +43,7 @@ div
       :maxLength="maxLength"
       :autofocus="autofocus"
       :allow-mentions="allowMentions"
+      @draft-text="$emit('draft-text', $event)"
     )
       template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
         slot(v-if="slotProps" :name="name" v-bind="slotProps")

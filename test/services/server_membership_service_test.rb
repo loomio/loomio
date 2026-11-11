@@ -56,7 +56,7 @@ class ServerMembershipServiceTest < ActiveSupport::TestCase
   end
 
   test 'member limit failures roll back provisioning and new accounts' do
-    subscription = Subscription.for(@group)
+    subscription = Subscription.for!(@group)
     subscription.update!(plan: 'community', state: 'active', max_members: 0)
     assert_no_difference [ 'User.count', 'Membership.count', 'Notification.count' ] do
       assert_raises Subscription::MaxMembersExceeded do
@@ -66,7 +66,7 @@ class ServerMembershipServiceTest < ActiveSupport::TestCase
   end
 
   test 'expired subscriptions reject additions and role changes but permit access revocation' do
-    subscription = Subscription.for(@group)
+    subscription = Subscription.for!(@group)
     subscription.update!(expires_at: 1.day.ago)
     assert_raises Subscription::NotActive do
       ServerMembershipService.sync(group: @group, emails: [ 'expired-provisioning@example.org' ])

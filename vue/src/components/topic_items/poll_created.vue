@@ -1,7 +1,6 @@
 <script lang="js">
 import PollService    from '@/shared/services/poll_service';
 import Session    from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
 import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';

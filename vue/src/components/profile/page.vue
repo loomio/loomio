@@ -3,7 +3,6 @@ import AppConfig      from '@/shared/services/app_config';
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';

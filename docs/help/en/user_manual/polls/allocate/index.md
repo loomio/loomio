@@ -40,6 +40,8 @@ A very large budget can create false precision. A useful budget is usually large
 
 Participants move the sliders to distribute their budget. Loomio shows how many points remain and prevents submission until the allocation is valid.
 
+You can leave points unspent.
+
 ![](voting.png)
 
 In this example, the voter assigns three points each to **Member participation** and **Financial sustainability**, two each to **Environmental impact** and **Staff development**, and none to **Products and services**. A zero does not necessarily mean an area has no value; it means the voter used their limited points elsewhere.

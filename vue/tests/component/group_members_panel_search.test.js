@@ -2,7 +2,6 @@ import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@/shared/services/records', () => ({default: {}}));
 vi.mock('@/shared/services/session', () => ({default: {user: vi.fn()}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 vi.mock('@/shared/services/record_loader', () => ({default: vi.fn()}));
 vi.mock('@/mixins/url_for', () => ({default: {}}));

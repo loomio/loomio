@@ -16,7 +16,9 @@ class GroupSerializerTest < ActiveSupport::TestCase
       cache = RecordCache.for_collection(collection, user.id, ['user'])
       json = ActiveModel::ArraySerializer.new(collection, each_serializer: GroupSerializer, root: :groups,
         scope: {cache: cache, current_user_id: user.id, exclude_types: ['user']}).as_json
-      assert_equal allowed_ids.sort, json.fetch(:groups).select { |row| row.key?(:subscription) }.pluck(:id).sort, role.to_s
+      rows = json.fetch(:groups)
+      assert_equal allowed_ids.sort, rows.select { |row| row[:subscription].key?(:plan) }.pluck(:id).sort, role.to_s
+      rows.each { |row| assert_equal %i[expires_at state], row[:subscription].keys.first(2).sort, role.to_s }
     end
   end
 
@@ -37,23 +39,19 @@ class GroupSerializerTest < ActiveSupport::TestCase
     ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
   end
 
-  test "enabled state is present even when subscription details are hidden" do
+  test "visitors get the raw subscription state but not the plan details" do
     group = groups(:public_group)
-    group.update!(subscription: Subscription.create!(plan: "free", state: "active"))
-    serializer = GroupSerializer.new(group, scope: { exclude_types: [] })
+    expires_at = 3.days.from_now.change(usec: 0)
+    group.update!(subscription: Subscription.create!(plan: "pro", state: "past_due", expires_at: expires_at, max_members: 50))
 
-    payload = serializer.as_json.fetch(:group)
+    payload = GroupSerializer.new(group, scope: { exclude_types: [] }).as_json.fetch(:group)
 
-    assert_equal true, payload[:enabled]
-    assert_not payload.key?(:subscription)
-
-    group.subscription.update!(state: "on_hold")
-    payload = GroupSerializer.new(group.reload, scope: { exclude_types: [] }).as_json.fetch(:group)
-    assert_equal false, payload[:enabled]
+    assert_equal({state: "past_due", expires_at: expires_at}, payload[:subscription])
+    assert_not payload.key?(:enabled)
 
     group.update!(subscription: nil)
     payload = GroupSerializer.new(group.reload, scope: { exclude_types: [] }).as_json.fetch(:group)
-    assert_equal true, payload[:enabled]
+    assert_equal({state: "active", expires_at: nil}, payload[:subscription])
   end
 
   test "shared payloads omit follow state instead of reporting false" do

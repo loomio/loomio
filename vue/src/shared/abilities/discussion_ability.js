@@ -29,5 +29,15 @@ export default {
     } else {
       return !discussion.id || discussion.topic().adminsInclude(Session.user());
     }
+  },
+
+  canAddGuests(discussion) {
+    if (discussion.groupId) {
+      const group = discussion.group();
+      return group.isEnabled() && !!group.parentOrSelf().subscription?.allow_guests &&
+        (group.adminsInclude(Session.user()) || (group.membersCanAddGuests && group.membersInclude(Session.user())));
+    } else {
+      return !discussion.id || discussion.topic().adminsInclude(Session.user());
+    }
   }
 };

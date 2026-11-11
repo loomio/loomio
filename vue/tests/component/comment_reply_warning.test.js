@@ -6,7 +6,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.hoisted(() => { window.Loomio = {}; });
 vi.mock('@/shared/services/session', () => ({default: {user: () => ({id: 1})}}));
 vi.mock('@/shared/services/records', () => ({default: {}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/services/subscription_service', () => ({default: {upgradeUrl: () => '/upgrade'}}));
 vi.mock('@sentry/vue', () => ({metrics: {count: vi.fn()}}));
 vi.mock('@/components/user/avatar.vue', () => ({default: {template: '<div />'}}));

@@ -2033,6 +2033,11 @@ uk:
     name_gte_weighted_votes_cast: "%{name} потребує щонайменше %{percent}% відданих зважених голосів"
     name_lte_weighted_votes_cast: "%{name} не повинен перевищувати %{percent}% відданих зважених голосів"
   poll_common:
+    write_your_response: Напишіть вашу відповідь
+    rank_at_least_one_candidate: Ранжуйте принаймні одного кандидата
+    check_scores: Перевірте оцінки
+    check_allocation: Перевірте розподіл балів
+    reduce_allocation_by_points: Зменште суму балів на %{count} | Зменште суму балів на %{count}
     superseded: Замінено
     outdated: Застаріла
     need_help_with_templates: Потрібна допомога у створенні власних шаблонів процесу?

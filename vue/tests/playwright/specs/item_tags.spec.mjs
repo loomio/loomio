@@ -93,7 +93,11 @@ test('new tags get colours at once, and item tags share the item\'s metadata row
   expect(Math.abs(author.y - tags.y)).toBeLessThan(12);
   expect(Math.abs(headline.height - plainHeadline.height)).toBeLessThan(1);
 
+  // Vuetify 4.3.2 keeps the desktop drawer offsets for a frame after the
+  // drawers switch to mobile, so wait for the layout to settle.
   await page.setViewportSize({ width: 390, height: 844 });
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-  expect(overflow, 'tag rows fit a phone screen').toBeLessThanOrEqual(0);
+  await expect.poll(
+    () => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth),
+    {message: 'tag rows fit a phone screen'}
+  ).toBeLessThanOrEqual(0);
 });

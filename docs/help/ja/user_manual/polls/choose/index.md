@@ -1,16 +1,16 @@
 ---
 title: 選ぶ
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: cdadd31baef171f6
   example-set-a-planning-meeting-agenda: 0151a3d67174538e
   set-up-the-poll: 1b973800e276bbe7
-  vote: 19c43cca7d25ba0f
+  vote: d53965760a3fae05
   read-the-results: c752b2f5ec86faeb
   share-an-outcome: 817a376075b161c8
 title_source: c7f937836f5d82d5
@@ -74,7 +74,7 @@ Oatmilk Cooperativeでは、回収して再利用するボトルの試験運用�
 
 ## 投票する
 
-投票フォームには、選べる選択肢の数が表示されます。この例では、投票者は**カフェからの回収日程**と**洗浄の作業手順**を選び、その選択と試験運用を結び付ける理由を記載します。
+選んだ選択肢の数が許容範囲外の場合、送信ボタンに修正方法が表示されます。この例では、投票者は**カフェからの回収日程**と**洗浄の作業手順**を選び、その選択と試験運用を結び付ける理由を記載します。
 
 ![](voting.png)
 

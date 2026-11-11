@@ -2007,6 +2007,11 @@ ro:
     name_gte_weighted_votes_cast: "%{name} are nevoie de cel puțin %{percent}% din voturile ponderate exprimate"
     name_lte_weighted_votes_cast: "%{name} nu trebuie să depășească %{percent}% din voturile ponderate exprimate"
   poll_common:
+    write_your_response: Scrie răspunsul tău
+    rank_at_least_one_candidate: Ordonează cel puțin un candidat
+    check_scores: Verifică scorurile
+    check_allocation: Verifică alocarea punctelor
+    reduce_allocation_by_points: Redu alocarea cu %{count} punct | Redu alocarea cu %{count} puncte
     superseded: Inlocuit
     outdated: Învechit
     need_help_with_templates: Aveți nevoie de ajutor pentru a vă crea propriile șabloane de decizie?

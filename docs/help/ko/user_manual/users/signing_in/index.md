@@ -7,7 +7,7 @@ sections:
   create-an-account: 9ac55c48d388b8a9
   sign-in-with-google: 1e8bfdcee244d0bd
   other-loomio-sites: 123e31828ab49002
-  sign-out: 96c8936d1a7aef07
+  sign-out: e46344eaf7e35c15
 generated:
   introduction: 25ed07d1b84e5bdb
   sign-in-with-a-passkey: f61a5035125c9715
@@ -16,15 +16,15 @@ generated:
   create-an-account: e15418537ab91057
   sign-in-with-google: 053cafe2ee0f7716
   other-loomio-sites: f395ddc8d92764d8
-  sign-out: 3072f51ce775495d
+  sign-out: 41a57343f5eb34ec
 title: 로그인
 title_source: 824a1d703ce676bb
 title_generated: 6d253673db906e71
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: b6fe91997184db91fd60a92f1cede9f333ddad2d
 source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-10'
 ---
 
 <!-- translation-section: introduction -->
@@ -94,3 +94,5 @@ SSO 전용 비공개 사이트에는 해당 조직의 로그인 선택지만 표
 ## 로그아웃
 
 사이드바를 열고 이름을 선택한 다음 **로그아웃**을 선택하세요. 공용 컴퓨터에서는 사용을 마치면 브라우저 탭만 닫지 말고 로그아웃하세요.
+
+로그아웃하면 해당 브라우저의 세션이 즉시 종료됩니다. Loomio는 보안 조사를 위해 세션의 IP 주소, 브라우저 정보, 시작 및 종료 시간을 기본적으로 60일 동안 보관합니다. 비공개 사이트 운영자는 이 기간을 설정할 수 있습니다. 계정을 영구적으로 삭제하면 이 세션 기록도 삭제됩니다.

@@ -1,5 +1,5 @@
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import TranslationAbility from '@/shared/abilities/translation_ability';
 import ReactionAbility from '@/shared/abilities/reaction_ability';
 import CommentAbility from '@/shared/abilities/comment_ability';
 import Session from '@/shared/services/session';
@@ -27,7 +27,7 @@ export default new class CommentService {
         name: 'common.action.original',
         dock: 3,
         canPerform() {
-          return AbilityService.canUntranslate(comment);
+          return TranslationAbility.canUntranslate(comment);
         },
         perform() {
           return comment.translationId = null;
@@ -39,7 +39,7 @@ export default new class CommentService {
         name: 'common.action.translate',
         dock: 3,
         canPerform() {
-          return AbilityService.canTranslate(comment);
+          return TranslationAbility.canTranslate(comment);
         },
         perform() {
           return Records.translations.addTo(comment, Session.user().locale);

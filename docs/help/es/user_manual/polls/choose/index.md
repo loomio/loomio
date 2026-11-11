@@ -1,16 +1,16 @@
 ---
 title: Elegir
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 81028832153bbf7a
   example-set-a-planning-meeting-agenda: bd9d0aa98c4c67e5
   set-up-the-poll: eeab0f186228d129
-  vote: a0de412a8507ea9e
+  vote: f7cd1cd0e5c867eb
   read-the-results: 168553420666c4f7
   share-an-outcome: 428b860046d01d86
 title_source: c7f937836f5d82d5
@@ -72,7 +72,7 @@ En **Más configuraciones**, **Mostrar opciones en orden aleatorio** puede reduc
 
 ## Vota
 
-El formulario de votación indica a los participantes cuántas opciones pueden seleccionar. En este ejemplo, el votante selecciona **Horario de recogida en cafeterías** y **Proceso de lavado**, y después da un motivo que relaciona esas elecciones con la prueba.
+Si el número de opciones seleccionadas está fuera de los límites permitidos, el botón de envío indica cómo corregirlo. En este ejemplo, el votante selecciona **Horario de recogida en cafeterías** y **Proceso de lavado**, y después da un motivo que relaciona esas elecciones con la prueba.
 
 ![](voting.png)
 

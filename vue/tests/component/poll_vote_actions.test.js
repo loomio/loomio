@@ -6,7 +6,6 @@ const mocks = vi.hoisted(() => ({
   openModal: vi.fn()
 }));
 
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/shared/abilities/poll_ability', () => ({default: {
   canViewAnonymousVoters: mocks.canViewAnonymousVoters,
   canAddVoters: mocks.canAddMembersPoll

@@ -38,7 +38,7 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
     topic.update_columns(polls_one_at_a_time: false, locked_at: nil)
     if topic.group_id
       topic.group.update_columns(group_settings)
-      Subscription.for(topic.group).update_columns(allow_guests: true)
+      Subscription.for!(topic.group).update_columns(allow_guests: true)
     end
     coordinator = topic.admins.order(:id).first!
     anonymous = state == "closed_anonymous"

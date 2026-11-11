@@ -1,8 +1,10 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
-import AbilityService from '@/shared/services/ability_service';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
+import GroupAbility from '@/shared/abilities/group_ability';
+import PollAbility from '@/shared/abilities/poll_ability';
+import TopicAbility from '@/shared/abilities/topic_ability';
 import NotificationsCount from './notifications_count';
 import Session from '@/shared/services/session';
 
@@ -306,7 +308,7 @@ export default {
 
       // Order: poll voter audiences, this group and its delegates, chat rooms, then other groups.
       const group = this.model.isA('group') ? this.model : this.model.group();
-      const ownGroupIds = group ? [`group-${group.id}`, `delegates-${group.id}`] : [];
+      const ownGroupIds = group ? ['group', `group-${group.id}`, `delegates-${group.id}`] : [];
       const otherGroups = audiences.filter(a => ['group', 'delegates'].includes(a.kind) && !ownGroupIds.includes(a.id));
       const leading = audiences.filter(a => !otherGroups.includes(a));
 
@@ -316,8 +318,20 @@ export default {
 
   computed: {
     canAnnounceDiscussion() { return DiscussionAbility.canAnnounce(this.model) },
-    canAddGuests() { return AbilityService.canAddGuests(this.model); },
-    canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
+    canAddGuests() {
+      const model = this.model;
+      if (model.isA('group')) { return GroupAbility.canAddMembers(model); }
+      if (model.isA('poll')) { return PollAbility.canAddGuests(model); }
+      if (model.isA('topic')) { return TopicAbility.canAddGuests(model); }
+      return DiscussionAbility.canAddGuests(model);
+    },
+    canNotifyGroup() {
+      const model = this.model;
+      if (model.isA('group')) { return GroupAbility.canNotify(model); }
+      if (model.isA('poll')) { return PollAbility.canAnnounce(model); }
+      if (model.isA('topic')) { return !model.lockedAt && TopicAbility.canAnnounce(model); }
+      return DiscussionAbility.canAnnounce(model);
+    },
     modelName() { return this.model.constructor.singular; },
     // Bind menu only in hideEmptyMenu mode: Vuetify treats any bound menu prop,
     // even undefined, as controlled, which would keep other forms' menus closed.

@@ -1,16 +1,16 @@
 ---
 title: Választás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 77fc741d5d26dbef
   example-set-a-planning-meeting-agenda: 1453ff1263a30eaa
   set-up-the-poll: faefe9996fbe3526
-  vote: 304f0ee15e6d81e5
+  vote: 1123810ab5019a3d
   read-the-results: 1d670f65188d9421
   share-an-outcome: b17bfe8437d03002
 title_source: c7f937836f5d82d5
@@ -72,7 +72,7 @@ A **További beállítások** között az **Opciók megjelenítése véletlensze
 
 ## Szavazz
 
-A szavazat leadására szolgáló űrlap jelzi a résztvevőknek, hány lehetőséget választhatnak ki. Ebben a példában a szavazó a **Begyűjtési ütemterv a kávézóknál** és a **Mosási munkafolyamat** lehetőséget választja ki, majd indoklásában összekapcsolja ezeket a választásokat a próbával.
+Ha a kiválasztott lehetőségek száma kívül esik a megengedett tartományon, a küldés gomb jelzi, hogyan javíthatod ezt. Ebben a példában a szavazó a **Begyűjtési ütemterv a kávézóknál** és a **Mosási munkafolyamat** lehetőséget választja ki, majd indoklásában összekapcsolja ezeket a választásokat a próbával.
 
 ![](voting.png)
 

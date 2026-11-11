@@ -1,16 +1,16 @@
 ---
 title: Choix
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 4d258ba9f97cadd6
   example-set-a-planning-meeting-agenda: b31f180e639473c7
   set-up-the-poll: 674a0892011031b2
-  vote: 1b189aad5bab4195
+  vote: e3c7fb1f1b5dba11
   read-the-results: f7d5acfbdd898dd1
   share-an-outcome: ead3cca4c308b173
 title_source: c7f937836f5d82d5
@@ -74,7 +74,7 @@ Dans **Plus de paramètres**, **Afficher les options dans un ordre aléatoire** 
 
 ## Votez
 
-Le formulaire de vote indique aux participants combien d’options ils peuvent sélectionner. Dans cet exemple, l’électeur sélectionne **Calendrier de collecte auprès des cafés** et **Organisation du lavage**, puis donne une raison reliant ces choix à l’essai.
+Si le nombre d’options sélectionnées ne respecte pas les limites autorisées, le bouton d’envoi indique comment corriger la sélection. Dans cet exemple, l’électeur sélectionne **Calendrier de collecte auprès des cafés** et **Organisation du lavage**, puis donne une raison reliant ces choix à l’essai.
 
 ![](voting.png)
 

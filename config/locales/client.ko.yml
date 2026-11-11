@@ -2162,6 +2162,11 @@ ko:
     majority_title: 다수결
     gradients_of_agreement_title: 동의 수준
   poll_common:
+    write_your_response: 응답을 작성하세요
+    rank_at_least_one_candidate: 후보 하나 이상에 순위를 매기세요
+    check_scores: 점수 확인
+    check_allocation: 배점 확인
+    reduce_allocation_by_points: 배점을 %{count}점 줄이세요 | 배점을 %{count}점 줄이세요
     response: 응답
     reason_placeholder: 이렇게 투표한 이유를 간단히 설명한 뒤 '투표 제출'을 클릭하세요
     message: 메시지

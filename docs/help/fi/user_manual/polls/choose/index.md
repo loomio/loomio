@@ -1,16 +1,16 @@
 ---
 title: Valitse
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 908a8bde5b540cee
   example-set-a-planning-meeting-agenda: ad0db79663f8feaf
   set-up-the-poll: accd1abb7f5a5eaf
-  vote: '0448b12d4ec940fc'
+  vote: 3da82ebe37a85134
   read-the-results: 44b91df51d19b5e3
   share-an-outcome: 07c48004c7ef0120
 title_source: c7f937836f5d82d5
@@ -74,7 +74,7 @@ Napsauta vaihtoehdon vieressä olevaa kynäkuvaketta ja lisää selitys vaihtoeh
 
 ## Äänestä
 
-Äänestyslomake kertoo osallistujille, kuinka monta vaihtoehtoa he voivat valita. Tässä esimerkissä äänestäjä valitsee **Kahviloiden noutoaikataulu** ja **Pesun työnkulku** ja antaa sitten perustelun, joka yhdistää nämä valinnat kokeiluun.
+Jos valitset sallittua määrää vähemmän tai enemmän vaihtoehtoja, lähetyspainike kertoo, miten korjaat valinnan. Tässä esimerkissä äänestäjä valitsee vaihtoehdot **Kahviloiden noutoaikataulu** ja **Pesun työnkulku** ja antaa sitten perustelun, joka yhdistää nämä valinnat kokeiluun.
 
 ![](voting.png)
 

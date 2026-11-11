@@ -103,7 +103,7 @@ export default
     canRequestMembership() {
       return this.membershipRequestLoaded &&
         !this.wasIgnored &&
-        this.group.isEnabled() && !this.group.membersInclude(Session.user()) && !this.canJoinGroup &&
+        !this.group.membersInclude(Session.user()) && !this.canJoinGroup &&
         GroupAbility.canRequestMembership(this.group);
     }
   }

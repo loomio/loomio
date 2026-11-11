@@ -4,8 +4,14 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sum, map, without } from 'lodash-es';
 import { watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { scoresWithinRange, sliderTicks } from '../common/vote_form_helpers';
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     stance: Object
   },
@@ -36,14 +42,10 @@ export default {
   methods: {
     submit() {
       this.loading = true;
-      if (sum(map(this.stanceChoices, 'score')) > 0) {
-        this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
-          return {
-            poll_option_id: choice.option.id,
-            score: choice.score
-          };
-        });
-      }
+      this.stance.stanceChoicesAttributes = this.stanceChoices.map(choice => ({
+        poll_option_id: choice.option.id,
+        score: Number(choice.score)
+      }));
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
@@ -88,17 +90,21 @@ export default {
     poll() { return this.stance.poll(); },
 
     dotsRemaining() {
-      return this.pointsPerVoter - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
+      return this.pointsPerVoter - sum(this.stanceChoices.map(choice => Number(choice.score)));
     },
 
     pointsPerVoter() {
       return this.stance.poll().pointsPerVoter;
     },
 
-    alertColor() {
-      if (this.dotsRemaining === 0) { return 'success'; }
-      if (this.dotsRemaining > 0) { return 'primary'; }
-      if (this.dotsRemaining < 0) { return 'error'; }
+    allocationTicks() {
+      return sliderTicks(0, this.pointsPerVoter);
+    },
+
+    voteGuidance() {
+      if (!scoresWithinRange(this.stanceChoices, 0)) return this.t('poll_common.check_allocation');
+      if (this.dotsRemaining < 0) return this.t('poll_common.reduce_allocation_by_points', {count: -this.dotsRemaining});
+      return '';
     }
   }
 };
@@ -108,43 +114,42 @@ export default {
 <template lang="pug">
 div
   v-form.poll-dot-vote-vote-form(ref="form" @submit.prevent="submit()")
-    v-alert.poll-dot-vote-vote-form__dots-remaining.mb-4(density="compact" variant="tonal" :color="alertColor" )
-      span(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
+    p.poll-dot-vote-vote-form__dots-remaining.text-medium-emphasis.mb-4 {{ t('poll_dot_vote_vote_form.dots_remaining', {count: dotsRemaining}) }}
     .poll-dot-vote-vote-form__options
-      v-list-item.poll-dot-vote-vote-form__option(
+      v-list-item.poll-dot-vote-vote-form__option.mb-2.px-0(
         v-for='choice in stanceChoices'
         :key='choice.option.id'
         :title="choice.option.name"
         :subtitle="choice.option.meaning"
       )
-        template(v-slot:append)
-          input.vote-form-number-input(
-            :style="{'background-color': choice.option.color}"
-            type="text"
-            inputmode="numeric"
+        .d-flex.align-center.ga-4.mt-4.mb-6
+          v-slider.poll-dot-vote-vote-form__slider.mx-4(
+            :disabled="!poll.isVotable()"
+            v-model='choice.score'
+            color="info"
+            :step="1"
+            :height="4"
+            :min="0"
+            :max="pointsPerVoter"
+            show-ticks="always"
+            :ticks="allocationTicks"
+            :tick-size="4"
+            thumb-label
+            hide-details
+          )
+          poll-common-score-input.poll-dot-vote-vote-form__score-input.mb-1(
+            v-if="pointsPerVoter > 10"
+            :label="choice.option.name"
+            :maximum="pointsPerVoter"
             v-model="choice.score")
-        v-slider.poll-dot-vote-vote-form__slider.mb-6.px-3(
-          :disabled="!poll.isVotable()"
-          v-model='choice.score'
-          :color="choice.option.color"
-          :step="1"
-          track-color="grey"
-          :height="4"
-          :min="0"
-          :max="pointsPerVoter"
-          :readonly="false")
       validation-errors(:subject='stance' field='stanceChoices')
     poll-common-stance-reason(:stance='stance', :poll='poll')
     v-card-actions.poll-common-form-actions
-      v-btn.poll-common-vote-form__submit(
-        block
-        variant="elevated"
-        type="submit"
-        :disabled="(dotsRemaining < 0) || !poll.isVotable()"
+      poll-common-submit-button(
+        :stance="stance"
+        :guidance="voteGuidance"
         :loading="loading"
-        color="primary"
       )
-        span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 
 <style lang="css">

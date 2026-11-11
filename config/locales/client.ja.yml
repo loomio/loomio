@@ -2006,6 +2006,11 @@ ja:
     name_gte_weighted_votes_cast: "%{name}には重み付きの投票数の%{percent}%以上が必要です"
     name_lte_weighted_votes_cast: "%{name}は重み付きの投票数の%{percent}%を超えてはいけません"
   poll_common:
+    write_your_response: 回答を入力してください
+    rank_at_least_one_candidate: 候補を1つ以上ランク付けしてください
+    check_scores: 点数を確認してください
+    check_allocation: ポイントの配分を確認してください
+    reduce_allocation_by_points: 配分を%{count}ポイント減らしてください | 配分を%{count}ポイント減らしてください
     superseded: 置き換えられました
     outdated: 時代遅れ
     need_help_with_templates: 独自の意思決定テンプレートを作成する際にサポートが必要ですか?

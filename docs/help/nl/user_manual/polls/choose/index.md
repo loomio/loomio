@@ -1,16 +1,16 @@
 ---
 title: Kiezen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 9186d733457e67c5
   example-set-a-planning-meeting-agenda: 855f5675ba8af1d4
   set-up-the-poll: eac19974d38fdedc
-  vote: a960c0a4818f434f
+  vote: b76482cf536ef0a4
   read-the-results: c8a191db27df2f51
   share-an-outcome: 24ce6abb9c47d9e2
 title_source: c7f937836f5d82d5
@@ -74,7 +74,7 @@ Onder **Meer instellingen** kan **Opties in willekeurige volgorde weergeven** he
 
 ## Stemmen
 
-Het stemformulier vertelt deelnemers hoeveel opties ze mogen selecteren. In dit voorbeeld selecteert de kiezer **Ophaalschema voor cafés** en **Wasproces** en geeft vervolgens een reden die deze keuzes aan de proef koppelt.
+Als het aantal geselecteerde opties buiten de toegestane grenzen valt, geeft de verzendknop aan hoe je dit kunt aanpassen. In dit voorbeeld selecteert de kiezer **Ophaalschema voor cafés** en **Wasproces** en geeft vervolgens een reden die deze keuzes aan de proef koppelt.
 
 ![](voting.png)
 

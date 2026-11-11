@@ -40,13 +40,13 @@ class Api::V1::PollResultsQueryCountTest < ActionController::TestCase
 
     assert_equal 2, calculate_results_queries(small)
     assert_equal 2, calculate_results_queries(large)
-    assert_equal 26, show_queries(small)
-    assert_equal 26, show_queries(large)
+    assert_equal 25, show_queries(small)
+    assert_equal 25, show_queries(large)
   end
 
   test "unweighted poll index does not grow with the number of polls" do
-    assert_equal 31, index_queries(polls_count: 1)
-    assert_equal 31, index_queries(polls_count: 4)
+    assert_equal 30, index_queries(polls_count: 1)
+    assert_equal 30, index_queries(polls_count: 4)
   end
 
   test "weighted poll results cost a bounded constant more than unweighted results" do

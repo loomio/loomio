@@ -1,7 +1,6 @@
 <script lang="js">
 import AppConfig           from '@/shared/services/app_config';
 import EventBus            from '@/shared/services/event_bus';
-import AbilityService      from '@/shared/services/ability_service';
 import AuthModalMixin      from '@/mixins/auth_modal';
 import Session             from '@/shared/services/session';
 import FormatDate from '@/mixins/format_date';

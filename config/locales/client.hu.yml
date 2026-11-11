@@ -2018,6 +2018,11 @@ hu:
     name_gte_weighted_votes_cast: "%{name}: a leadott súlyozott szavazatok legalább %{percent}%-a szükséges"
     name_lte_weighted_votes_cast: "%{name}: nem haladhatja meg a leadott súlyozott szavazatok %{percent}%-át"
   poll_common:
+    write_your_response: Írd meg a válaszod
+    rank_at_least_one_candidate: Rangsorolj legalább egy jelöltet
+    check_scores: Ellenőrizd a pontszámokat
+    check_allocation: Ellenőrizd a pontelosztást
+    reduce_allocation_by_points: Ossz ki %{count} ponttal kevesebbet | Ossz ki %{count} ponttal kevesebbet
     superseded: Felváltva
     outdated: Elavult
     need_help_with_templates: Segítségre van szüksége saját folyamatsablonok létrehozásához?

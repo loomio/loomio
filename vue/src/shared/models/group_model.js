@@ -36,7 +36,6 @@ export default class GroupModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       subscription: {},
-      enabled: false,
       specifiedVotersOnly: false,
       recipientMessage: null,
       recipientAudience: null,
@@ -224,8 +223,17 @@ export default class GroupModel extends BaseModel {
     return (this.discardedAt != null);
   }
 
+  // Mirrors Group#enabled? from the raw subscription state, so a subscription
+  // that expires while the page is open disables the group without a reload.
   isEnabled() {
-    return this.enabled;
+    return !this.discardedAt && this.subscriptionActive();
+  }
+
+  // Mirrors Subscription#is_active?. Subgroups receive their organisation's
+  // subscription, and a group with none receives the active free tier.
+  subscriptionActive() {
+    const {state, expires_at} = this.subscription || {};
+    return ['active', 'pending'].includes(state) && (!expires_at || new Date(expires_at) > new Date());
   }
 
   isParent() {

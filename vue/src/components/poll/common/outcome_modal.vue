@@ -3,7 +3,6 @@ import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
 
 import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';

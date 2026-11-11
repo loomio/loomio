@@ -2041,6 +2041,11 @@ es:
     name_gte_weighted_votes_cast: "%{name} necesita al menos el %{percent}% de los votos ponderados emitidos"
     name_lte_weighted_votes_cast: "%{name} no debe superar el %{percent}% de los votos ponderados emitidos"
   poll_common:
+    write_your_response: Escribe tu respuesta
+    rank_at_least_one_candidate: Ordena al menos un candidato
+    check_scores: Revisa las puntuaciones
+    check_allocation: Revisa el reparto de puntos
+    reduce_allocation_by_points: Reduce el reparto en %{count} punto | Reduce el reparto en %{count} puntos
     superseded: Reemplazado
     outdated: Anticuado
     need_help_with_templates: "¿Necesitas ayuda para crear tus propias plantillas de proceso?"

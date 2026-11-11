@@ -2030,6 +2030,11 @@ ca:
     name_gte_weighted_votes_cast: "%{name} necessita com a mínim un %{percent}% dels vots ponderats emesos"
     name_lte_weighted_votes_cast: "%{name} no pot superar el %{percent}% dels vots ponderats emesos"
   poll_common:
+    write_your_response: Escriu la teva resposta
+    rank_at_least_one_candidate: Ordena almenys un candidat
+    check_scores: Revisa les puntuacions
+    check_allocation: Revisa el repartiment de punts
+    reduce_allocation_by_points: Redueix el repartiment en %{count} punt | Redueix el repartiment en %{count} punts
     superseded: Substituït
     outdated: Antiquat
     need_help_with_templates: Necessites ajuda per crear les teves pròpies plantilles de decisió?

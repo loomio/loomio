@@ -11,7 +11,6 @@ vi.mock('@/shared/services/session', () => ({default: {
 vi.mock('@/shared/services/records', () => ({default: {}}));
 vi.mock('@/shared/services/flash', () => ({default: {}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {}}));
-vi.mock('@/shared/services/ability_service', () => ({default: {}}));
 vi.mock('@/components/common/recipients_autocomplete', () => ({default: {render: () => null}}));
 vi.mock('@/i18n', () => ({
   I18n: {global: {t: key => key}},

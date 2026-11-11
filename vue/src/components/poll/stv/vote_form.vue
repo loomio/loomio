@@ -3,10 +3,15 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sortBy } from 'lodash-es';
 import { watchEffect } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const DIVIDER = { id: 'divider', isDivider: true };
 
 export default {
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   props: {
     stance: Object
   },
@@ -87,14 +92,14 @@ export default {
           .poll-stv-vote-form__divider.my-2
             v-divider
             .poll-stv-vote-form__divider-text.text-medium-emphasis
-              common-icon(name="mdi-drag" style="cursor: pointer")
+              common-icon.poll-stv-vote-form__drag-handle(name="mdi-drag" color="info")
               span(v-t="'poll_stv_vote_form.divider_text'")
             v-divider
         template(v-else)
           .mb-2.poll-stv-vote-form__option(:class="{'poll-stv-vote-form__option--unranked': !isAboveDivider(index)}")
-            v-list-item.rounded(variant="tonal")
+            v-list-item.rounded(variant="tonal" border)
               template(v-slot:prepend)
-                common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
+                common-icon.poll-stv-vote-form__drag-handle(color="info" name="mdi-drag")
               v-list-item-title {{option.name}}
               v-list-item-subtitle(v-if="option.meaning") {{option.meaning}}
               template(v-slot:append)
@@ -103,23 +108,22 @@ export default {
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      variant="elevated"
-      :disabled="!poll.isVotable() || !hasRanking"
+    poll-common-submit-button(
+      :stance="stance"
+      :guidance="hasRanking ? '' : t('poll_common.rank_at_least_one_candidate')"
       @click='submit()'
       :loading="stance.processing"
-      color="primary"
     )
-      span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>
 
 <style>
 .poll-stv-vote-form__option {
   user-select: none;
+  cursor: grab;
 }
 
-.poll-stv-vote-form__option--unranked {
+.poll-stv-vote-form__option--unranked .v-list-item-title,
+.poll-stv-vote-form__option--unranked .v-list-item-subtitle {
   opacity: 0.5;
 }
 
@@ -128,7 +132,16 @@ export default {
   align-items: center;
   gap: 8px;
   user-select: none;
-  cursor: pointer;
+  cursor: grab;
+}
+
+.poll-stv-vote-form__option:active,
+.poll-stv-vote-form__divider-text:active {
+  cursor: grabbing;
+}
+
+.poll-stv-vote-form__drag-handle {
+  opacity: 1;
 }
 .poll-stv-vote-form__divider .v-divider {
   flex: 1;
