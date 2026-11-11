@@ -1,10 +1,10 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 3b64d53cca0abd7b
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: d8bdb5e8ee279a5a
   pin-or-unpin-a-thread: 3cb7608b7a17df07
   move-a-thread: 3015baa5dae6c908
-  lock-or-unlock-a-thread: '4369712522914425'
+  lock-or-unlock-a-thread: 1eaa3fcefd3d8498
   delete-a-thread: 9911a93fdee3bbac
 title_source: 99e2d1eb313f35c4
 title_generated: f56dc994cbc2ff13
@@ -350,7 +350,7 @@ Pour déplacer certains éléments plutôt que le fil entier, consultez [Déplac
 
 ### Verrouiller ou déverrouiller un fil
 
-Verrouillez un fil pour empêcher l’ajout de commentaires ou toute autre modification. Un fil ne peut être verrouillé qu’une fois ses sondages actifs clôturés.
+Verrouillez un fil pour l’archiver en l’état. Personne ne peut ajouter de contenu à un fil verrouillé, le modifier, ni inviter ou notifier des personnes depuis ce fil. Vous ne pouvez verrouiller un fil qu’une fois ses sondages actifs clôturés.
 
 Sélectionnez **Verrouiller la discussion** dans **Actions**. Les fils verrouillés sont retirés de la liste des discussions ouvertes et portent le tag **Verrouillé**.
 

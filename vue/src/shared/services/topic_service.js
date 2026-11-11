@@ -94,7 +94,7 @@ export default new class TopicService {
         dock: 3,
         collection: 'members',
         canPerform() {
-          return (!topic.lockedAt && TopicAbility.canAnnounce(topic)) || TopicAbility.canAddGuests(topic);
+          return TopicAbility.canAnnounce(topic) || TopicAbility.canAddGuests(topic);
         },
         perform() {
           return EventBus.$emit('openModal', {

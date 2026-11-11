@@ -107,6 +107,12 @@ class UserInviter
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
+    # Nobody can notify people from a locked thread, including thread admins
+    # who can still edit it.
+    topic = model.is_a?(Topic) ? model : (model.topic if model.respond_to?(:topic))
+    if topic&.locked_at && (audience.present? || user_ids.any? || emails.any?)
+      raise CanCan::AccessDenied
+    end
     if audience.present?
       NotificationAudienceService.resolve(model: model, kind: audience, actor: actor)
     end

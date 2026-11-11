@@ -27,9 +27,10 @@ module Ability::Discussion
       )
     end
 
-    # Matches Topic :announce: thread guests cannot notify the group.
+    # Matches Topic :announce: thread guests cannot notify the group, and
+    # nobody can notify from a locked thread.
     can [ :announce ], ::Discussion do |discussion|
-      discussion.kept? &&
+      discussion.kept? && !discussion.topic&.locked_at &&
       if discussion.group_id
         discussion.group.admins.exists?(user.id) ||
         (discussion.group.members_can_announce && discussion.group.members.exists?(user.id))

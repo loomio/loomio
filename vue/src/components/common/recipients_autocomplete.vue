@@ -329,7 +329,7 @@ export default {
       const model = this.model;
       if (model.isA('group')) { return GroupAbility.canNotify(model); }
       if (model.isA('poll')) { return PollAbility.canAnnounce(model); }
-      if (model.isA('topic')) { return !model.lockedAt && TopicAbility.canAnnounce(model); }
+      if (model.isA('topic')) { return TopicAbility.canAnnounce(model); }
       return DiscussionAbility.canAnnounce(model);
     },
     modelName() { return this.model.constructor.singular; },

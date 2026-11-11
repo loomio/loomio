@@ -1,10 +1,10 @@
 ---
 title: Como usar as discussões
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 0fa2447325469ee1
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 689564700a3d06f6
   pin-or-unpin-a-thread: 2be1f71e8e31ba5e
   move-a-thread: 4b11a891de925dac
-  lock-or-unlock-a-thread: f5199f5d2e466f55
+  lock-or-unlock-a-thread: 522680737dbcc17a
   delete-a-thread: d1e86ae44674198e
 title_source: 99e2d1eb313f35c4
 title_generated: df7c7d68c5161ede
@@ -350,7 +350,7 @@ Para mover atividades selecionadas em vez da conversa inteira, consulte [Mover i
 
 ### Bloquear ou desbloquear uma conversa
 
-Bloqueie uma conversa para impedir comentários ou outras alterações. Uma conversa só pode ser bloqueada depois que suas enquetes ativas forem encerradas.
+Bloqueie uma conversa para arquivá-la como está. Ninguém pode adicionar conteúdo a uma conversa bloqueada, alterá-la ou usá-la para convidar ou notificar pessoas. Você só pode bloquear uma conversa depois que suas enquetes ativas forem encerradas.
 
 Selecione **Bloquear tópico** em **Ações**. As conversas bloqueadas são removidas da lista de discussões abertas e marcadas com a tag **Bloqueado**.
 

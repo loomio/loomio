@@ -1,10 +1,10 @@
 ---
 title: Работа с темами
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: e92af0b4ef4d6c38
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 5e35484b28c7ea02
   pin-or-unpin-a-thread: 3b67f4d169fa2338
   move-a-thread: b564da470c0e37f0
-  lock-or-unlock-a-thread: ae810096e622e610
+  lock-or-unlock-a-thread: 87e86635c61fa6f2
   delete-a-thread: 5979e8981d1a0cef
 title_source: 99e2d1eb313f35c4
 title_generated: a4735aad0164704e
@@ -350,7 +350,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### Блокировка и разблокировка ветки
 
-Заблокируйте ветку, чтобы запретить комментарии и дальнейшие изменения. Ветку можно заблокировать только после закрытия всех активных опросов в ней.
+Заблокируйте ветку, чтобы сохранить её в архиве в текущем виде. Никто не сможет добавлять в заблокированную ветку новый контент, изменять её, приглашать в неё людей или отправлять из неё уведомления. Ветку можно заблокировать только после закрытия всех активных опросов в ней.
 
 Выберите **Заблокировать тему** в разделе **Действия**. Заблокированные ветки удаляются из списка открытых обсуждений и отмечаются тегом **Заблокировано**.
 

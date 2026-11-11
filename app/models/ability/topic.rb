@@ -26,6 +26,7 @@ module Ability::Topic
 
     can [:announce], ::Topic do |topic|
       group = topic.group
+      next false if topic.locked_at
       if topic.group_id
         group.admins_include?(user) ||
         (group.members_can_announce && group.members_include?(user))
@@ -38,8 +39,10 @@ module Ability::Topic
       topic.members_include?(user) && (topic.group_id.nil? || user.email_verified?)
     end
 
+    # A locked thread cannot invite anyone.
     can [:add_members], ::Topic do |topic|
       group = topic.group
+      next false if topic.locked_at
       if topic.group_id
         group.members_include?(user)
       else
@@ -49,6 +52,7 @@ module Ability::Topic
 
     can [:add_guests], ::Topic do |topic|
       group = topic.group
+      next false if topic.locked_at
       if topic.group_id
         Subscription.for(group).allow_guests &&
         (group.admins_include?(user) || (group.members_can_add_guests && group.members_include?(user)))

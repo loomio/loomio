@@ -7,7 +7,7 @@ require_relative "ability_contract_helper"
 class PollAudienceAbilityContractTest < ActiveSupport::TestCase
   include AbilityContractHelper
 
-  POLL_FIELDS = %w[group_id closed_at closing_at opened_at opening_at discarded_at hide_results anonymous specified_voters_only].freeze
+  POLL_FIELDS = %w[group_id topic_id closed_at closing_at opened_at opening_at discarded_at hide_results anonymous specified_voters_only].freeze
   SETTINGS = {
     "permissive" => {members_can_announce: true, members_can_add_guests: true, members_can_raise_motions: true, members_can_edit_discussions: true},
     "restrictive" => {members_can_announce: false, members_can_add_guests: false, members_can_raise_motions: false, members_can_edit_discussions: false}
@@ -18,8 +18,8 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
     cases = travel_to(CONTRACT_TIME) do
       TOPICS.flat_map do |topic_name|
         settings = topics(topic_name).group_id ? SETTINGS : {"defaults" => {}}
-        settings.keys.product(STATES, [false, true]).flat_map do |setting, state, specified|
-          cases_for(topic_name, setting, settings.fetch(setting), state, specified)
+        settings.keys.product(STATES, [false, true], [false, true]).flat_map do |setting, state, specified, locked|
+          cases_for(topic_name, setting, settings.fetch(setting), state, specified, locked)
         end
       end
     end
@@ -33,7 +33,7 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
     ability.can?(:show, poll) ? {view_anonymous_voters: ability.can?(:view_anonymous_voters, poll)} : {}
   end
 
-  def cases_for(topic_name, setting, group_settings, state, specified)
+  def cases_for(topic_name, setting, group_settings, state, specified, locked)
     topic = Topic.find(topics(topic_name).id)
     topic.update_columns(polls_one_at_a_time: false, locked_at: nil)
     if topic.group_id
@@ -48,6 +48,7 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
       anonymous: anonymous, hide_results: (anonymous ? "until_closed" : "off")
     }, actor: coordinator)
     PollService.close(poll: poll, actor: coordinator) if state.start_with?("closed")
+    topic.update_columns(locked_at: 1.day.ago) if locked
     topic.reload
 
     ROLES.map do |role|
@@ -55,10 +56,10 @@ class PollAudienceAbilityContractTest < ActiveSupport::TestCase
       ability = Ability::Base.new(user)
       serialized = PollSerializer.new(poll.reload, scope: {current_user_id: user.id}).as_json.fetch(:poll).stringify_keys
       {
-        name: "#{role} #{topic_name} #{setting} #{state}#{' specified-voters' if specified} poll",
+        name: "#{role} #{topic_name} #{setting} #{state}#{' specified-voters' if specified}#{' locked' if locked} poll",
         roles: role_facts(user, topic).merge(poll_admin: poll.admins.exists?(user.id), poll_member: poll.members.exists?(user.id)),
         poll: serialized.slice(*POLL_FIELDS).merge("group_id" => topic.group_id, "anonymous_ballot_submitted" => false),
-        topic: raw(topic, %i[group_id topicable_type active_polls_count polls_one_at_a_time]),
+        topic: raw(topic, %i[group_id locked_at topicable_type active_polls_count polls_one_at_a_time]),
         group: topic.group_id ? raw(topic.group, group_settings.keys).merge(allow_guests: true) : {},
         expected: {
           create: ability.can?(:create, Poll.new(topic: topic, author: user)),

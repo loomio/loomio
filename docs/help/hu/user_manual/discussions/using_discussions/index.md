@@ -1,10 +1,10 @@
 ---
 title: Témák használata
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 9b5e6b9c1c67ff4c
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: cc9526a648d01124
   pin-or-unpin-a-thread: 85f49bd712d7c920
   move-a-thread: c28c9825e4fd4e31
-  lock-or-unlock-a-thread: df3e8f559d2e1d15
+  lock-or-unlock-a-thread: 66f831df801b3f45
   delete-a-thread: f8b84a81b49e6777
 title_source: 99e2d1eb313f35c4
 title_generated: 34d29fa6046f953a
@@ -350,7 +350,7 @@ Ha a teljes szál helyett csak kiválasztott elemeket szeretnél áthelyezni, l�
 
 ### Szál zárolása vagy zárolásának feloldása
 
-Zárold a szálat a hozzászólások és a további módosítások megakadályozásához. Egy szálat csak akkor lehet zárolni, ha az aktív szavazásai már lezárultak.
+Zárold a szálat, hogy a jelenlegi állapotában archiváld. Zárolt szálhoz senki sem adhat hozzá tartalmat, nem módosíthatja, és nem hívhat meg vagy értesíthet belőle embereket. Egy szálat csak akkor lehet zárolni, ha az aktív szavazásai már lezárultak.
 
 Válaszd ki a **Téma zárolása** lehetőséget a **Műveletek** alatt. A zárolt szálak kikerülnek a nyitott beszélgetések listájából, és **Zárolva** címkét kapnak.
 

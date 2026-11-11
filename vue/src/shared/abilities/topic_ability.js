@@ -13,6 +13,7 @@ export default {
   },
 
   canAnnounce(topic) {
+    if (topic.lockedAt) { return false; }
     if (topic.groupId) {
       return topic.group().isEnabled() && (topic.group().adminsInclude(Session.user()) ||
         (topic.group().membersCanAnnounce && topic.group().membersInclude(Session.user())));
@@ -23,6 +24,7 @@ export default {
 
   // The organisation's subscription decides whether guests are allowed at all.
   canAddGuests(topic) {
+    if (topic.lockedAt) { return false; }
     if (topic.groupId) {
       return topic.group().isEnabled() && !!topic.group().parentOrSelf().subscription?.allow_guests &&
         (topic.group().adminsInclude(Session.user()) ||

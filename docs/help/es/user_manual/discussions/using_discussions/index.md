@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: ef0054fdbb9040a0
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 709a28d5d541b468
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
   move-a-thread: bef5744e818508c2
-  lock-or-unlock-a-thread: 1678a83e9b3aca94
+  lock-or-unlock-a-thread: 79e3384c08b80cdf
   delete-a-thread: 5cc4e2d79f1f9d61
 title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
@@ -351,7 +351,7 @@ Para mover solo algunos elementos de actividad en lugar del hilo completo, consu
 
 ### Bloquear o desbloquear un hilo
 
-Bloquea un hilo para impedir comentarios o nuevos cambios. Solo puedes bloquear un hilo cuando se hayan cerrado todas las encuestas activas que contiene.
+Bloquea un hilo para archivarlo tal como está. Nadie puede añadir contenido a un hilo bloqueado, modificarlo ni invitar o notificar a personas desde él. Solo puedes bloquear un hilo cuando se hayan cerrado todas las encuestas activas que contiene.
 
 Selecciona **Bloquear hilo** en **Acciones**. Los hilos bloqueados se eliminan de la lista de discusiones abiertas y se marcan con la etiqueta **Bloqueado**.
 

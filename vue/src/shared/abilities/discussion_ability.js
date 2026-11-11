@@ -22,7 +22,7 @@ export default {
   },
 
   canAnnounce(discussion) {
-    if (discussion.discardedAt) { return false; }
+    if (discussion.discardedAt || (discussion.topicId && discussion.topic().lockedAt)) { return false; }
     if (discussion.groupId) {
       return discussion.group().isEnabled() && (discussion.group().adminsInclude(Session.user()) ||
         (discussion.group().membersCanAnnounce && discussion.group().membersInclude(Session.user())));

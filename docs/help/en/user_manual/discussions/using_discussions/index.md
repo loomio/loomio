@@ -301,7 +301,7 @@ To move selected activity rather than the whole thread, see [Moving items betwee
 
 ### Lock or unlock a thread
 
-Lock a thread to prevent comments or further changes. A thread can only be locked after its active polls have closed.
+Lock a thread to archive it as it is. Nobody can add to a locked thread, change it, or invite or notify people from it. You can only lock a thread after its active polls have closed.
 
 Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
 

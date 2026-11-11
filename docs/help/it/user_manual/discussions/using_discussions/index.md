@@ -1,10 +1,10 @@
 ---
 title: Usare le discussioni
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: e9d86e0b50198559
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: f515463ad98485ff
   pin-or-unpin-a-thread: 17556b3b4c703f8f
   move-a-thread: 4f09c504b12c910b
-  lock-or-unlock-a-thread: f2400d60f1e08e8b
+  lock-or-unlock-a-thread: 2ae1e542f9689190
   delete-a-thread: 31d4454edc4599c8
 title_source: 99e2d1eb313f35c4
 title_generated: d64715f4f6e924c8
@@ -348,7 +348,7 @@ Per spostare solo alcuni elementi dell'attività anziché l'intera conversazione
 
 ### Bloccare o sbloccare una conversazione
 
-Blocca una conversazione per impedire commenti o ulteriori modifiche. Una conversazione può essere bloccata solo dopo la chiusura dei suoi sondaggi attivi.
+Blocca una conversazione per archiviarla così com'è. Nessuno può aggiungere contenuti a una conversazione bloccata, modificarla o usarla per invitare o notificare persone. Puoi bloccare una conversazione solo dopo la chiusura dei suoi sondaggi attivi.
 
 Seleziona **Blocca discussione** sotto **Azioni**. Le conversazioni bloccate vengono rimosse dall'elenco delle discussioni aperte e contrassegnate con il tag **Bloccate**.
 

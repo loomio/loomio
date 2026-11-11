@@ -58,7 +58,7 @@ class DiscussionAbilityContractTest < ActiveSupport::TestCase
         roles: role_facts(user, topic).merge(author: discussion.author_id == user.id),
         topic: raw(topic, %i[locked_at]),
         group: topic.group_id ? raw(topic.group, GROUP_FIELDS).merge("group_privacy" => topic.group.group_privacy) : {},
-        discussion: raw(discussion, %i[discarded_at]).merge("id" => discussion.id, "group_id" => topic.group_id),
+        discussion: raw(discussion, %i[discarded_at]).merge("id" => discussion.id, "group_id" => topic.group_id, "topic_id" => topic.id),
         expected: expected
       }
     end.tap { discussion.update_columns(author_id: original_author_id) }

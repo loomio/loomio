@@ -16,7 +16,7 @@ sections:
   markdown: c6434ed486db8be4
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 55a505b2fc5c056b
@@ -35,15 +35,15 @@ generated:
   markdown: b9f673a7f0626f42
   pin-or-unpin-a-thread: d35b3e903d5f1eb4
   move-a-thread: 9b7e4d72a93bcc37
-  lock-or-unlock-a-thread: cbd8c814bdedb6e2
+  lock-or-unlock-a-thread: 2b553eb73c89f019
   delete-a-thread: fff257c822d4232f
 title: 스레드 사용하기
 title_source: 99e2d1eb313f35c4
 title_generated: f9f56e0b6f80016d
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-11'
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 needs_review:
   markdown: check the interface label "**동의**" for "**Agree**"; check the interface label "**기권**" for "**Abstain**"
@@ -350,7 +350,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### 스레드 잠금 또는 잠금 해제
 
-댓글 작성이나 추가 변경을 막으려면 스레드를 잠그세요. 스레드에서 진행 중인 투표가 모두 마감된 후에만 스레드를 잠글 수 있습니다.
+스레드를 현재 상태로 보관하려면 잠그세요. 잠긴 스레드에서는 누구도 내용을 추가하거나 변경할 수 없으며, 사람을 초대하거나 알림을 보낼 수도 없습니다. 스레드에서 진행 중인 투표가 모두 마감된 후에만 스레드를 잠글 수 있습니다.
 
 **작업**에서 **스레드 잠금**을 선택하세요. 잠긴 스레드는 진행 중인 토론 목록에서 제외되고 **잠김** 태그가 표시됩니다.
 

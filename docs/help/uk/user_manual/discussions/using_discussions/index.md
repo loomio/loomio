@@ -1,10 +1,10 @@
 ---
 title: Користування темами
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 8824de90a0fd5674
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 3c412b80fbf779f5
   pin-or-unpin-a-thread: 534e7035423407a5
   move-a-thread: 6f5d4d00322a74e4
-  lock-or-unlock-a-thread: e8e52c59631ff335
+  lock-or-unlock-a-thread: 5a4e2574073e7eac
   delete-a-thread: b356196243d18f44
 title_source: 99e2d1eb313f35c4
 title_generated: c13b1d31f2ae614b
@@ -354,7 +354,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### Блокування та розблокування теми
 
-Заблокуйте тему, щоб заборонити коментарі й подальші зміни. Тему можна заблокувати лише після закриття всіх її активних опитувань.
+Заблокуйте тему, щоб зберегти її в архіві в поточному вигляді. Ніхто не зможе додавати вміст до заблокованої теми, змінювати її, запрошувати людей до неї або надсилати з неї сповіщення. Тему можна заблокувати лише після закриття всіх її активних опитувань.
 
 Виберіть **Заблокувати тему** в розділі **Дії**. Заблоковані теми вилучаються зі списку відкритих обговорень і позначаються тегом **Заблоковано**.
 

@@ -1,10 +1,10 @@
 ---
 title: スレッドの使い方
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: f6e9afa79482ac70
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 31491e0a1edb4745
   pin-or-unpin-a-thread: dd96e104a57fbd03
   move-a-thread: d1e130cbb12d7b27
-  lock-or-unlock-a-thread: c6a71b989ce0cbab
+  lock-or-unlock-a-thread: 4f3659d2fde72f52
   delete-a-thread: 1e6f9b883306a42e
 title_source: 99e2d1eb313f35c4
 title_generated: 1a2d46d8965028c7
@@ -350,7 +350,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### スレッドのロックと解除
 
-スレッドをロックすると、コメントや追加の変更を防げます。スレッドをロックできるのは、実施中のアンケートがすべて締め切られた後です。
+スレッドをロックすると、そのままの状態で保存できます。ロックされたスレッドでは、誰も内容の追加や変更、そのスレッドからの招待や通知を行えません。スレッドをロックできるのは、実施中のアンケートがすべて締め切られた後です。
 
 **行動**の下にある**スレッドをロック**を選択します。ロックされたスレッドは、進行中のディスカッションの一覧から除外され、**ロック済み**のタグが付きます。
 

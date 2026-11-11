@@ -54,6 +54,7 @@ module Ability::Poll
     can [ :announce ], ::Poll do |poll|
       topic = poll.topic
       group = topic.group
+      next false if topic.locked_at
       if topic.group_id
         group.admins.exists?(user.id) || (group.members_can_announce && topic.admins.exists?(user.id))
       else
@@ -62,7 +63,7 @@ module Ability::Poll
     end
 
     can [ :remind ], ::Poll do |poll|
-      poll.opened? &&
+      poll.opened? && !poll.topic.locked_at &&
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
         (poll.group.members_can_announce && poll.admins.exists?(user.id))

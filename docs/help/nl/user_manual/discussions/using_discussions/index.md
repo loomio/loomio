@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 1451dd3b0ad2020c
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 68266432d7b18558
   pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
   move-a-thread: 6636c5b668239a0a
-  lock-or-unlock-a-thread: 9bf7495059753889
+  lock-or-unlock-a-thread: 39608ede659235cd
   delete-a-thread: 78c4a9c45e4b5cf3
 title_source: 99e2d1eb313f35c4
 title_generated: 58e0940112bb0af1
@@ -350,7 +350,7 @@ Zie [Items tussen threads verplaatsen](/en/user_manual/discussions/moving_items/
 
 ### Een thread vergrendelen of ontgrendelen
 
-Vergrendel een thread om reacties of verdere wijzigingen te voorkomen. Een thread kan pas worden vergrendeld nadat de actieve peilingen zijn gesloten.
+Vergrendel een thread om deze in de huidige staat te archiveren. Niemand kan iets aan een vergrendelde thread toevoegen, deze wijzigen of vanuit de thread mensen uitnodigen of meldingen sturen. Je kunt een thread pas vergrendelen nadat de actieve peilingen zijn gesloten.
 
 Selecteer **Discussie vergrendelen** onder **Acties**. Vergrendelde threads worden uit de lijst met open discussies verwijderd en krijgen het label **Vergrendeld**.
 

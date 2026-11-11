@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 5733d122ff3586fc
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: f6ef2902fe2b2436
   pin-or-unpin-a-thread: d81d501c2b75c9e9
   move-a-thread: f0b7a83519058ef4
-  lock-or-unlock-a-thread: 18b3090e8625fb81
+  lock-or-unlock-a-thread: 24ced382ed939a20
   delete-a-thread: 38f65e0e18241eda
 title_source: 99e2d1eb313f35c4
 title_generated: cf8604cd3cd81e88
@@ -351,7 +351,7 @@ Jos haluat siirtää valittuja kohteita koko ketjun sijaan, katso [Kohteiden sii
 
 ### Lukitse ketju tai avaa sen lukitus
 
-Lukitse ketju, kun haluat estää kommentoinnin ja muut muutokset. Ketjun voi lukita vasta, kun sen käynnissä olevat kyselyt on suljettu.
+Lukitse ketju, kun haluat arkistoida sen sellaisenaan. Kukaan ei voi lisätä lukittuun ketjuun sisältöä, muuttaa sitä tai kutsua ihmisiä tai lähettää heille ilmoituksia sen kautta. Voit lukita ketjun vasta, kun sen käynnissä olevat kyselyt on suljettu.
 
 Valitse **Lukitse ketju** kohdasta **Toiminnot**. Lukitut ketjut poistetaan avoimien keskustelujen luettelosta ja merkitään **Lukittu**-tunnisteella.
 

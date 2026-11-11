@@ -1,10 +1,10 @@
 ---
 title: Як карыстацца тэмамі
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-11'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -22,7 +22,7 @@ sections:
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
   move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 232103dde4d737b0
@@ -41,7 +41,7 @@ generated:
   thread-settings-and-display: 05e3f52b750f1b72
   pin-or-unpin-a-thread: ed70cd9dcf814000
   move-a-thread: c8eb1990f10957f0
-  lock-or-unlock-a-thread: 0c5ca1a752f9bf8a
+  lock-or-unlock-a-thread: 264a15f23b22eb36
   delete-a-thread: 5b5257f9d7933575
 title_source: 99e2d1eb313f35c4
 title_generated: 1e95954cdbe49c21
@@ -350,7 +350,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### Заблакіраваць або разблакіраваць тэму
 
-Заблакіруйце тэму, каб спыніць даданне каментарыяў і далейшыя змены. Тэму можна заблакіраваць толькі пасля закрыцця ўсіх актыўных апытанняў у ёй.
+Заблакіруйце тэму, каб захаваць яе ў архіве ў цяперашнім выглядзе. Ніхто не можа дадаваць змесціва ў заблакіраваную тэму, змяняць яе, запрашаць людзей у яе або адпраўляць з яе апавяшчэнні. Тэму можна заблакіраваць толькі пасля закрыцця ўсіх актыўных апытанняў у ёй.
 
 Выберыце **Заблакіраваць тэму** ў раздзеле **Дзеянні**. Заблакіраваныя тэмы выдаляюцца са спіса адкрытых абмеркаванняў і пазначаюцца тэгам **Заблакіравана**.
 
