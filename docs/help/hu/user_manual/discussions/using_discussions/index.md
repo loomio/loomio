@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 46068dff287bd6ba
   notifications-and-members: 467edc2330c0c48a
   email-notifications-for-this-thread: 8685521ee36888e2
-  invite-people: 646cc519de0a6fe3
+  invite-people: 0b518f042fdd99b4
   seen-by: 68972002f77ea8e6
   notified: 7046f5aa76c8ea31
   actions: 01e122860b46a4af
@@ -155,23 +155,7 @@ Válaszd ki az aktuális értesítési beállítást, és állítsd be, hogy a L
 
 ### Hívj meg embereket
 
-Válaszd a **Hívj meg embereket** lehetőséget, hogy a szál elindítása után további embereket adj hozzá.
-
-![A Hívj meg embereket lehetőség a szál oldalsávjában](../notifying_people/thread_invite_icon.png)
-
-Válassz ki egy csoportot vagy alcsoportot, írd be az egyes tagok nevét, vagy adj meg egy e-mail-címet egy vendég meghívásához.
-
-A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Töröld a mező tartalmát, hogy ismét a teljes listát lásd, és használd a lapozókat, ha több mint 50 ember szerepel rajta. A címzettek kiválasztása után a tagok listájának helyén megjelenik a nem kötelező üzenetmező. A **Meghívás vagy értesítés** kiválasztásakor az új emberek meghívót kapnak, a már hozzáféréssel rendelkezők pedig újabb értesítést.
-
-![Az emberek meghívására szolgáló ablak a nevek és e-mail-címek mezőjével](../notifying_people/thread_invite.png)
-
-A vendég láthatja ezt a szálat, és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha azokba külön meghívják.
-
-Az ablak tetején lévő útmutatókat bezárhatod. A Loomio megjegyzi a fiókodhoz, mely útmutatókat zártad be.
-
-![Vendég meghívása e-mail-címmel](../notifying_people/invite_guest.png)
-
-Valaki eltávolításához nyisd meg a neve melletti hárompontos menüt (**⋯**), és válaszd az **Eltávolítás a beszélgetésből** lehetőséget.
+Válaszd a jobb oldalsávban a **Hívj meg embereket** lehetőséget, hogy embereket hívj meg a beszélgetésbe, vagy értesítsd őket róla. A csoportokról, szülőcsoportokról, vendégekről, csevegőszobákról és a meghívókhoz kapcsolódó értesítésekről az [Emberek meghívása egy beszélgetésbe](/en/user_manual/discussions/inviting_people) oldalon olvashatsz.
 
 <!-- translation-section: seen-by -->
 

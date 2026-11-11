@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 3e8fc23a3a8cf2e5
   notifications-and-members: c3e86d113a420a3c
   email-notifications-for-this-thread: 8ef242e55d892a7c
-  invite-people: be2b7a497f0046f8
+  invite-people: f25025b54202abee
   seen-by: 2de7381b0d70fd91
   notified: ea98543142d6e416
   actions: 8c8be25fa54c0adc
@@ -156,23 +156,7 @@ Wähle die aktuelle Benachrichtigungseinstellung aus, um festzulegen, ob Loomio 
 
 ### Leute einladen
 
-Wähle **Leute einladen**, um nach dem Start des Threads weitere Personen hinzuzufügen.
-
-![Leute einladen in der Thread-Seitenleiste](../notifying_people/thread_invite_icon.png)
-
-Wähle eine Gruppe oder Untergruppe aus, gib die Namen einzelner Mitglieder ein oder gib eine E-Mail-Adresse ein, um einen Gast einzuladen.
-
-Das Feld **Finde oder lade Leute ein** filtert auch die Liste der Personen, die bereits im Thread sind. Leere das Feld, um wieder die vollständige Liste anzuzeigen. Nutze die Seitennavigation, wenn es mehr als 50 Personen gibt. Nachdem du die zu benachrichtigenden Personen ausgewählt hast, wird die Mitgliederliste durch das optionale Nachrichtenfeld ersetzt. Neue Personen werden eingeladen. Personen, die bereits Zugang haben, erhalten eine weitere Benachrichtigung, wenn du **Einladen oder benachrichtigen** auswählst.
-
-![Fenster zum Einladen von Personen mit einem Feld für Namen und E-Mail-Adressen](../notifying_people/thread_invite.png)
-
-Ein Gast kann diesen Thread sehen und daran teilnehmen, aber keine anderen Diskussionen in der Gruppe sehen, sofern er nicht gesondert dazu eingeladen wurde.
-
-Du kannst die Hinweise oben im Fenster ausblenden. Loomio merkt sich für dein Konto, welche Hinweise du ausgeblendet hast.
-
-![Einladung eines Gastes über eine E-Mail-Adresse](../notifying_people/invite_guest.png)
-
-Um eine Person zu entfernen, öffne das Drei-Punkte-Menü (**⋯**) neben ihrem Namen und wähle **Aus der Diskussion entfernen**.
+Wähle **Leute einladen** in der rechten Seitenleiste, um Personen einzuladen oder sie über die Diskussion zu benachrichtigen. Informationen zu Gruppen, Hauptgruppen, Gästen, Chatrooms und Einladungsbenachrichtigungen findest du unter [Personen zu einer Diskussion einladen](/en/user_manual/discussions/inviting_people).
 
 <!-- translation-section: seen-by -->
 

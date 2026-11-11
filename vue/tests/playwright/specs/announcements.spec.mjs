@@ -3,6 +3,7 @@ import { openPollForm, fillPollForm } from '../helpers/polls.mjs';
 import { addRecipient } from '../helpers/recipients.mjs';
 import { openThreadForm } from '../helpers/threads.mjs';
 import { ensureSidebar } from '../helpers/groups.mjs';
+import { box } from '../helpers/layout.mjs';
 
 const recipientsInput = page => page.locator('.recipients-autocomplete input[type="text"]');
 const suggestions = page => page.locator('.recipients-autocomplete-suggestion');
@@ -88,6 +89,29 @@ test.describe('managing thread members', () => {
     await expect(suggestions(page).filter({ hasText: 'Emilio Estevez' })).toBeVisible();
   });
 
+  test('keeps invitations compact and long member lists scrollable', async ({ page }) => {
+    await page.setViewportSize({ width: 1100, height: 700 });
+    await openMembers(page, 'setup_discussion_many_members');
+    const readers = page.locator('.topic-members-list__readers');
+    await expect(readers).toContainText('Thread member 50');
+    await readers.locator('.v-list-item', { hasText: 'Thread member 50' }).scrollIntoViewIfNeeded();
+    const listDialog = await box(members(page));
+    const footer = await box(page.locator('.topic-members-list__page-count'));
+    expect(listDialog.y).toBeGreaterThanOrEqual(0);
+    expect(listDialog.bottom).toBeLessThanOrEqual(700);
+    expect(footer.bottom).toBeLessThanOrEqual(listDialog.bottom);
+
+    await addRecipient(page, 'test@example.com');
+    await page.keyboard.press('Escape');
+    await expect(readers).toHaveCount(0);
+    const submit = page.locator('.topic-members-list__submit');
+    await expect(submit).toBeVisible();
+    const invitationDialog = await box(members(page));
+    const submitButton = await box(submit);
+    expect(invitationDialog.height).toBeLessThan(listDialog.height);
+    expect(invitationDialog.bottom - submitButton.bottom).toBeLessThanOrEqual(32);
+  });
+
   test('pages and filters the members', async ({ page }) => {
     await openMembers(page, 'setup_discussion_many_members');
     const pageCount = page.locator('.topic-members-list__page-count');
@@ -107,7 +131,7 @@ test.describe('managing thread members', () => {
     // Typing filters the members; clicking elsewhere keeps the filter.
     await recipientsInput(page).fill('Thread member 50');
     await expect(pageCount).toContainText('1–1 of 1');
-    await pageCount.click();
+    await members(page).locator('.v-card-title').click();
     await expect(recipientsInput(page)).toHaveValue('Thread member 50');
     await clear.click();
     await expect(pageCount).toContainText('1–50 of 52');

@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: b04552874a610780
   notifications-and-members: 25aa0c5dc6de7f9e
   email-notifications-for-this-thread: 8c89b5bfdb61217f
-  invite-people: 39742ef482af7b73
+  invite-people: eb9f35f76b01aa25
   seen-by: '080b0ef037480024'
   notified: e060e674a288eb40
   actions: 7ce501c7a92745cc
@@ -155,23 +155,7 @@ H2またはH3の見出しを含むコメント、アンケート、提案は、�
 
 ### 人を招待する
 
-スレッドの開始後に人を追加するには、**メンバーを招待する**を選択します。
-
-![スレッドのサイドバーにあるメンバーを招待する操作](../notifying_people/thread_invite_icon.png)
-
-グループまたはサブグループを選択するか、個々のメンバーの名前を入力します。ゲストを招待する場合は、メールアドレスを入力します。
-
-**人を探したり招待したりする**欄では、すでにスレッドに参加している人の一覧も絞り込めます。入力を消すと、一覧全体が再び表示されます。50人を超える場合は、ページ切り替えの操作を使います。通知先を選択すると、メンバー一覧に代わって、任意のメッセージを入力する欄が表示されます。**招待または通知する**を選択すると、新しい人には招待が送られ、すでにアクセスできる人には再度通知が送られます。
-
-![名前やメールアドレスの入力欄がある招待ウィンドウ](../notifying_people/thread_invite.png)
-
-ゲストはこのスレッドを閲覧して参加できますが、別途招待されない限り、グループ内のほかのディスカッションは閲覧できません。
-
-ウィンドウ上部の案内は非表示にできます。Loomioは、非表示にした案内をアカウントごとに記憶します。
-
-![メールアドレスでゲストを招待する画面](../notifying_people/invite_guest.png)
-
-参加者を削除するには、名前の横にある三点メニュー（**⋯**）を開き、**ディスカッションから削除**を選択します。
+人を招待したり、ディスカッションについて通知したりするには、右サイドバーの**メンバーを招待する**を選択します。グループ、親グループ、ゲスト、チャットルーム、招待通知については、[ディスカッションに人を招待する](/en/user_manual/discussions/inviting_people)を参照してください。
 
 <!-- translation-section: seen-by -->
 

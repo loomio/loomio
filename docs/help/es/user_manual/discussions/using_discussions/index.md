@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -32,7 +32,7 @@ generated:
   navigation: 9a4474170051f7f9
   notifications-and-members: 428315b531acbaa8
   email-notifications-for-this-thread: 718f5e7157408089
-  invite-people: 83d00587009435ab
+  invite-people: 1aa65ee0b6aa003c
   seen-by: a8f1f401773fa1f1
   notified: 120c01df31b886db
   actions: 593b28e22bf5e368
@@ -156,23 +156,7 @@ Selecciona la configuración actual de notificaciones para elegir si Loomio te e
 
 ### Invitar personas
 
-Selecciona **Invitar personas** para añadir personas después de que se haya iniciado el hilo.
-
-![Invitar personas en la barra lateral del hilo](../notifying_people/thread_invite_icon.png)
-
-Selecciona un grupo o subgrupo, introduce los nombres de miembros individuales o introduce una dirección de correo electrónico para invitar a un invitado.
-
-El campo **Encuentra o invita a personas** también filtra la lista de personas que ya están en el hilo. Vacía el campo para volver a mostrar la lista completa y usa los controles de paginación si hay más de 50 personas. Después de seleccionar los destinatarios, el campo de mensaje opcional sustituye a la lista de miembros. Las personas nuevas reciben una invitación; las personas que ya tienen acceso reciben otra notificación cuando seleccionas **Invitar o notificar**.
-
-![Ventana para invitar personas con un campo para nombres y direcciones de correo electrónico](../notifying_people/thread_invite.png)
-
-Un invitado puede ver este hilo y participar en él, pero no puede ver otras discusiones del grupo a menos que reciba una invitación aparte.
-
-Puedes descartar los avisos de orientación de la parte superior de la ventana. Loomio recuerda qué avisos has descartado en tu cuenta.
-
-![Invitación a un invitado mediante una dirección de correo electrónico](../notifying_people/invite_guest.png)
-
-Para eliminar a alguien, abre el menú de tres puntos (**⋯**) junto a su nombre y selecciona **Eliminar de la discusión**.
+Selecciona **Invitar personas** en la barra lateral derecha para invitar a personas o notificarles sobre la discusión. Consulta [Invitar personas a una discusión](/en/user_manual/discussions/inviting_people) para obtener información sobre grupos, grupos principales, invitados, salas de chat y notificaciones de invitación.
 
 <!-- translation-section: seen-by -->
 
