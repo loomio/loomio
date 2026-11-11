@@ -1,7 +1,7 @@
 ---
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -15,7 +15,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 89fe779941b14996
-  reading-comments: 6e005d16d683cf92
+  reading-comments: 54917d49b81e890e
   writing-a-comment: d0b6ea1a38700de7
   mentioning-people: c2d2d3a2510cf8bc
   replying-to-a-comment: f236d45ea3274200
@@ -32,8 +32,8 @@ title_source: 355f79f29d7d3c2d
 title_generated: c9fff683ae2d5fc6
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
-source_revision: 87da2f54604789b430479cfbf7ed9b9dcc5c2e2f
+  'on': '2026-11-09'
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 ---
 
@@ -47,11 +47,13 @@ source_file: docs/help/en/user_manual/discussions/comments/index.md
 
 ## 댓글 읽기
 
-토론을 열면 Loomio가 아직 보지 않은 활동으로 이동합니다.
+스레드를 열면 토론의 배경이 표시됩니다. 스레드 메뉴에서 **아직 안 본 내용**을 선택하면 읽지 않은 활동을 찾을 수 있고, **최신**을 선택하면 가장 최근 활동으로 바로 이동할 수 있습니다.
 
 읽지 않은 댓글은 게시 시간 옆에 파란색 **새 항목** 표시가 있습니다.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+이미 읽은 긴 게시물은 미리 보기로 표시되어 주변 대화도 함께 볼 수 있습니다. **더 보기**를 선택하면 스레드에 머무는 동안 전체 내용이 표시됩니다. 읽지 않은 게시물과 직접 링크로 연 댓글은 펼쳐진 상태로 유지됩니다. 누군가 변경 메모를 추가하거나 수정 사실을 알린 뒤 아직 스레드를 읽지 않았다면, 토론의 배경이 다시 전체 내용으로 표시됩니다.
 
 <!-- translation-section: writing-a-comment -->
 

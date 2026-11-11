@@ -318,11 +318,13 @@ module Dev::FakeDataHelper
   end
 
   def fake_comment(args = {})
-    Comment.new({
-      parent: fake_discussion,
+    attributes = {
       body: Faker::ChuckNorris.fact,
       author: fake_user
-    }.merge(args))
+    }
+    # Building the default discussion also persists its group and author.
+    attributes[:parent] = fake_discussion unless args.key?(:parent)
+    Comment.new(attributes.merge(args))
   end
 
   def fake_reaction(args = {})
