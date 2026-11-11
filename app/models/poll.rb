@@ -267,10 +267,22 @@ class Poll < ApplicationRecord
     :notify_on_closing_soon,
     :notify_on_open,
     :weighted_voting,
-    :poll_option_names,
     :hide_results,
+    :opening_at,
+    :quorum_pct,
+    :agree_target,
+    :choice_count_min,
+    :choice_count_max,
+    :score_min,
+    :score_max,
+    :points_per_voter,
+    :stv_method,
+    :stv_quota,
+    :stv_seats,
+    :show_none_of_the_above,
     :attachments]
 
+  after_save :record_poll_option_names_change
   after_save :update_poll_counts, if: -> { saved_changes.keys.intersect?(%w[id topic_id opened_at closed_at discarded_at]) }
   after_destroy :update_poll_counts
   around_create :with_topics_write_lock_for_counts, prepend: true
@@ -331,7 +343,8 @@ class Poll < ApplicationRecord
     return unless saved_change_to_weighted_voting?
 
     unless weighted_voting?
-      stances.where.not(weight: 1).update_all(weight: 1)
+      scope = stances.where.not(weight: 1)
+      record_stance_weights(scope) { scope.update_all(weight: 1) }
       return
     end
 
@@ -341,14 +354,20 @@ class Poll < ApplicationRecord
   # Copy current group defaults into issued votes in one statement. Voters
   # without an active membership, including direct-poll voters, receive 1.
   def reset_stance_weights_from_memberships!
-    return stances.latest.update_all(weight: 1) unless group_id
+    scope = stances.latest
+    return record_stance_weights(scope) { scope.update_all(weight: 1) } unless group_id
 
     member_weight = Membership.active.where(group_id: group_id)
       .where('memberships.user_id = stances.participant_id')
       .select(:weight)
       .limit(1)
-    stances.latest.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)"))
+    record_stance_weights(scope) { scope.update_all(weight: Arel.sql("COALESCE((#{member_weight.to_sql}), 1)")) }
   end
+
+  def record_stance_weights(scope, &update)
+    WeightHistory.record(scope, actor_id: PaperTrail.request.whodunnit, event: Stance::WEIGHT_EVENT, &update)
+  end
+  private :record_stance_weights
 
   def update_poll_counts
     before, after = count_states
@@ -800,11 +819,33 @@ class Poll < ApplicationRecord
     !!closed_at
   end
 
+  # Options live in their own table, so PaperTrail cannot see them. Add the
+  # change to the version this save created, or record one if it made none.
+  # PaperTrail versions every create, and updates that change a tracked column.
+  def record_poll_option_names_change
+    before, @poll_option_names_before = @poll_option_names_before, nil
+    return if before.nil? || !PaperTrail.enabled? || !PaperTrail.request.enabled_for_model?(Poll)
+    after = poll_options.reject { |option| option.destroyed? || option.marked_for_destruction? }
+                        .sort_by { |option| option.priority.to_i }.map(&:name)
+    return if before == after
+
+    change = {"poll_option_names" => [before, after]}
+    if previously_new_record? || saved_changes.keys.intersect?(paper_trail_options[:only].map(&:to_s))
+      version = versions.reorder(:id).last
+      version.update_columns(object_changes: version.object_changes.merge(change))
+    else
+      versions.create!(event: "update", whodunnit: PaperTrail.request.whodunnit, object_changes: change)
+      update_column(:versions_count, versions.count)
+    end
+  end
+  private :record_poll_option_names_change
+
   def poll_option_names
     poll_options.map(&:name)
   end
 
   def poll_option_names=(names)
+    @poll_option_names_before ||= persisted? ? poll_options.reject(&:new_record?).map(&:name) : []
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
     names = names.sort if poll_type == 'meeting'

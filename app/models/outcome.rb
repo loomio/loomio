@@ -65,7 +65,7 @@ class Outcome < ApplicationRecord
   is_mentionable on: :statement
   is_translatable on: :statement
 
-  has_paper_trail only: [:statement, :statement_format, :author_id, :review_on, :attachments]
+  has_paper_trail only: [:statement, :statement_format, :author_id, :review_on, :poll_option_id, :attachments]
   validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 

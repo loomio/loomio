@@ -9,7 +9,7 @@ class Topic < ApplicationRecord
   end
   private :with_tree_write_lock_for_destruction
 
-  has_paper_trail only: [:group_id, :attachments_admin_only]
+  has_paper_trail only: [:group_id, :private, :allow_comments, :allow_reactions, :attachments_admin_only, :locked_at, :locker_id, :discarded_at, :discarded_by]
 
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true

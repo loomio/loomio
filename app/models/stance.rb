@@ -68,7 +68,11 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :redacted_at, :redactor_id, :inviter_id, :attachments]
+  # Weight changes are recorded by WeightHistory under their own event and kept
+  # out of the vote's revision history.
+  WEIGHT_EVENT = "weight".freeze
+  has_paper_trail only: [:reason, :option_scores, :none_of_the_above, :revoked_at, :revoker_id, :redacted_at, :redactor_id, :inviter_id, :attachments],
+                  versions: {scope: -> { where.not(event: WEIGHT_EVENT).order(:created_at) }}
 
   accepts_nested_attributes_for :stance_choices
 
