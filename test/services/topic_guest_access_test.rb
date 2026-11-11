@@ -147,6 +147,19 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
     refute topic_readers(:reader_normal_reader).reload.guest?
   end
 
+  test 'a locked thread cannot grant guests during a move' do
+    @topic.update!(locked_at: Time.current)
+    preview = TopicService.move_access(topic: @topic, params: {group_id: @destination.id}, actor: @admin)
+    refute preview[:can_retain_members_as_guests]
+
+    assert_raises(CanCan::AccessDenied) do
+      TopicService.move(topic: @topic, params: {group_id: @destination.id, retain_members_as_guests: true}, actor: @admin)
+    end
+
+    assert_equal groups(:group).id, @topic.reload.group_id
+    refute topic_readers(:reader_normal_reader).reload.guest?
+  end
+
   test 'move preview and retention require source and destination permissions' do
     assert_raises(CanCan::AccessDenied) do
       TopicService.move_access(topic: @topic, params: {group_id: @destination.id}, actor: users(:member_normal))

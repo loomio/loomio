@@ -144,7 +144,7 @@ class TopicService
     actor.ability.authorize!(:move, topic)
     destination = ModelLocator.new(:group, params).locate!
     actor.ability.authorize!(:move_discussions_to, destination)
-    target = Topic.new(group: destination)
+    target = Topic.new(group: destination, locked_at: topic.locked_at)
     {
       members_losing_access_count: members_losing_access(topic: topic, destination: destination).count,
       can_retain_members_as_guests: actor.can?(:add_guests, target)
