@@ -1,6 +1,6 @@
 ---
 title: Threads verwenden
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 0b345adabf70ede9
   thread-settings-and-display: 5b42fa8ee7f068b6
   pin-or-unpin-a-thread: 5de696dc7828f152
-  move-a-thread: 83ffef8883555192
+  move-a-thread: 6980db317ed26639
   lock-or-unlock-a-thread: f08214c2f5020b17
   delete-a-thread: 3c5ba71bef15b9ef
 title_source: 99e2d1eb313f35c4
@@ -339,6 +339,8 @@ Wähle **Thread lösen**, um einen Thread wieder nach Aktivität einzuordnen.
 ### Einen Thread verschieben
 
 Wähle **Thread verschieben**, um einen Thread in eine andere Gruppe oder Untergruppe zu verschieben oder in einen direkten Thread umzuwandeln. Er ist dann für Mitglieder der Zielgruppe und alle ausdrücklich dazu eingeladenen Personen sichtbar.
+
+Beim Verschieben in eine andere Gruppe oder Untergruppe zeigt Loomio an, wie viele Personen die Berechtigung zur Teilnahme verlieren würden. Du kannst sie als Gäste des Threads behalten, wenn du in der Zielgruppe Gäste einladen darfst. So können sie weiterhin teilnehmen, ohne dass sie der Zielgruppe hinzugefügt oder Einladungsbenachrichtigungen versendet werden. Bestehende Gäste behalten ihren Zugang.
 
 ![](../discussion_management/move_thread_select.png)
 

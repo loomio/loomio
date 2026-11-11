@@ -1,6 +1,6 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: 7a818d7100143305
   thread-settings-and-display: d8bdb5e8ee279a5a
   pin-or-unpin-a-thread: 3cb7608b7a17df07
-  move-a-thread: 3015baa5dae6c908
+  move-a-thread: 7efee18b537c71ae
   lock-or-unlock-a-thread: 1eaa3fcefd3d8498
   delete-a-thread: 9911a93fdee3bbac
 title_source: 99e2d1eb313f35c4
@@ -338,6 +338,8 @@ Sélectionnez **Désépingler le fil** pour replacer un fil dans l’ordre fond�
 ### Déplacer un fil
 
 Sélectionnez **Déplacer le sujet** pour déplacer un fil vers un autre groupe, un sous-groupe ou un fil direct. Il sera visible par les membres du groupe de destination et par toute personne qui y a été spécifiquement invitée.
+
+Lors du déplacement vers un autre groupe ou sous-groupe, Loomio indique combien de personnes perdraient l’autorisation de participer. Vous pouvez les conserver comme invités du fil si vous avez l’autorisation d’inviter des invités dans le groupe de destination. Elles peuvent ainsi continuer à participer sans être ajoutées au groupe de destination et sans recevoir de notifications d’invitation. Les invités existants conservent leur accès.
 
 ![](../discussion_management/move_thread_select.png)
 

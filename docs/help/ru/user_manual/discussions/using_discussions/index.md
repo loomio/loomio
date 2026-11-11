@@ -1,6 +1,6 @@
 ---
 title: Работа с темами
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: cee19bd1db4f1ab0
   thread-settings-and-display: 5e35484b28c7ea02
   pin-or-unpin-a-thread: 3b67f4d169fa2338
-  move-a-thread: b564da470c0e37f0
+  move-a-thread: 3e7becb7fe7addc9
   lock-or-unlock-a-thread: 87e86635c61fa6f2
   delete-a-thread: 5979e8981d1a0cef
 title_source: 99e2d1eb313f35c4
@@ -338,6 +338,8 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### Перемещение ветки
 
 Выберите **Переместить тему**, чтобы переместить ветку в другую группу, подгруппу или сделать её личной веткой. Она будет видна участникам группы, в которую вы её переместили, и всем, кого пригласили непосредственно в эту ветку.
+
+При перемещении в другую группу или подгруппу Loomio показывает, сколько людей потеряют право участвовать в ветке. Вы можете сохранить их в качестве гостей ветки, если у вас есть разрешение приглашать гостей в группу назначения. Так они смогут продолжить участие без добавления в группу назначения и без отправки уведомлений о приглашении. Существующие гости сохраняют доступ.
 
 ![](../discussion_management/move_thread_select.png)
 

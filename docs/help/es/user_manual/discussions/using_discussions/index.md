@@ -1,6 +1,6 @@
 ---
 title: Usar los hilos
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: c6b41d1b01dbb950
   thread-settings-and-display: 709a28d5d541b468
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
-  move-a-thread: bef5744e818508c2
+  move-a-thread: 82d82b92f6f9307d
   lock-or-unlock-a-thread: 79e3384c08b80cdf
   delete-a-thread: 5cc4e2d79f1f9d61
 title_source: 99e2d1eb313f35c4
@@ -339,6 +339,8 @@ Selecciona **Desanclar hilo** para devolver un hilo al orden basado en la activi
 ### Mover un hilo
 
 Selecciona **Mover hilo** para mover un hilo a otro grupo, a un subgrupo o convertirlo en un hilo directo. Será visible para los miembros del grupo de destino y para cualquier persona invitada específicamente al hilo.
+
+Al mover un hilo a otro grupo o subgrupo, Loomio muestra cuántas personas perderían el permiso para participar. Puedes mantenerlas como invitadas del hilo si tienes permiso para invitar a personas invitadas en el grupo de destino. Así pueden seguir participando sin que se añadan al grupo de destino ni se envíen notificaciones de invitación. Las personas que ya eran invitadas conservan el acceso.
 
 ![](../discussion_management/move_thread_select.png)
 

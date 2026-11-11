@@ -15,7 +15,7 @@ sections:
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -34,7 +34,7 @@ generated:
   print: b06ea4e6a45b0203
   markdown: b9f673a7f0626f42
   pin-or-unpin-a-thread: d35b3e903d5f1eb4
-  move-a-thread: 9b7e4d72a93bcc37
+  move-a-thread: 6825422021d57625
   lock-or-unlock-a-thread: 2b553eb73c89f019
   delete-a-thread: fff257c822d4232f
 title: 스레드 사용하기
@@ -43,7 +43,7 @@ title_generated: f9f56e0b6f80016d
 translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-11-11'
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 needs_review:
   markdown: check the interface label "**동의**" for "**Agree**"; check the interface label "**기권**" for "**Abstain**"
@@ -338,6 +338,8 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 ### 스레드 이동
 
 **스레드 이동**을 선택하면 스레드를 다른 그룹이나 하위 그룹으로 이동하거나 다이렉트 스레드로 전환할 수 있습니다. 이동한 그룹의 멤버와 해당 스레드에 개별적으로 초대된 사람이 스레드를 볼 수 있습니다.
+
+다른 그룹이나 하위 그룹으로 이동할 때 Loomio는 참여 권한을 잃게 되는 사람의 수를 표시합니다. 대상 그룹에서 게스트를 초대할 권한이 있으면 이 사람들을 스레드의 게스트로 유지할 수 있습니다. 이렇게 하면 대상 그룹에 추가하거나 초대 알림을 보내지 않고도 계속 참여할 수 있습니다. 기존 게스트의 접근 권한은 유지됩니다.
 
 ![](../discussion_management/move_thread_select.png)
 

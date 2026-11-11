@@ -1,6 +1,6 @@
 ---
 title: Usare le discussioni
-source_revision: 43395b065c6d9fc1362c6e08d6e535a39a93bf07
+source_revision: 13599db2c64c114b0d5b56e06e29b7b6ec98bfa3
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
@@ -21,7 +21,7 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
+  move-a-thread: 488184c8e68531dd
   lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
@@ -40,7 +40,7 @@ generated:
   markdown: b4bc4940294e6465
   thread-settings-and-display: f515463ad98485ff
   pin-or-unpin-a-thread: 17556b3b4c703f8f
-  move-a-thread: 4f09c504b12c910b
+  move-a-thread: 277bd9aa1e758cee
   lock-or-unlock-a-thread: 2ae1e542f9689190
   delete-a-thread: 31d4454edc4599c8
 title_source: 99e2d1eb313f35c4
@@ -336,6 +336,8 @@ Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione n
 ### Spostare una conversazione
 
 Seleziona **Sposta discussione** per spostare una conversazione in un altro gruppo, in un sottogruppo o trasformarla in una conversazione diretta. Sarà visibile ai membri del gruppo di destinazione e a chiunque sia stato invitato specificamente a partecipare.
+
+Quando sposti una conversazione in un altro gruppo o sottogruppo, Loomio mostra quante persone perderebbero il permesso di partecipare. Puoi mantenerle come ospiti della conversazione se hai il permesso di invitare ospiti nel gruppo di destinazione. In questo modo possono continuare a partecipare senza essere aggiunte al gruppo di destinazione e senza ricevere notifiche di invito. Gli ospiti già presenti mantengono l'accesso.
 
 ![](../discussion_management/move_thread_select.png)
 
