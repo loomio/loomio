@@ -3089,6 +3089,7 @@ sl:
     keep_members_as_guests: Ohranite te osebe kot goste te niti
     guest_permission_required: Nimate dovoljenja za vabljenje gostov v ciljno skupino
     access_preview_error: Ni mogoče preveriti, kdo bi izgubil pravico do sodelovanja
+    guest_access_unavailable: Pri tem premiku ni mogoče omogočiti dostopa gostom
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.

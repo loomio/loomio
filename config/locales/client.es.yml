@@ -3125,6 +3125,7 @@ es:
     keep_members_as_guests: Mantener a estas personas como invitadas de este hilo
     guest_permission_required: No tienes permiso para invitar a personas al grupo de destino
     access_preview_error: No se pudo comprobar quién perdería el permiso para participar
+    guest_access_unavailable: No se puede dar acceso a invitados al mover este hilo
   auth:
     oauth_cancelled: Se canceló el inicio de sesión
     switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.

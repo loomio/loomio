@@ -3116,6 +3116,7 @@ ca:
     keep_members_as_guests: Mantén aquestes persones com a convidades del fil
     guest_permission_required: No tens permís per convidar persones al grup de destinació
     access_preview_error: No s'ha pogut comprovar qui perdria el permís per participar
+    guest_access_unavailable: No es pot donar accés com a convidat en moure aquest fil
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.

@@ -2141,6 +2141,7 @@ en:
     members_losing_access: "People who would lose permission to participate: %{count}"
     keep_members_as_guests: Keep these people as guests of this thread
     guest_permission_required: You do not have permission to invite guests in the destination group
+    guest_access_unavailable: Guest access cannot be granted for this move
     access_preview_error: Unable to check who would lose permission to participate
     destination: Destination
     direct_thread: Direct thread

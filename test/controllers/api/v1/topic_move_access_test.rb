@@ -70,4 +70,43 @@ class Api::V1::TopicMoveAccessTest < ActionController::TestCase
     assert_response :not_found
     assert_equal groups(:group).id, @topic.reload.group_id
   end
+
+  test 'direct conversion preview and submission retain unparticipating guests' do
+    sign_in @admin
+    get :move_access, params: {id: @topic.id, make_direct: true}
+    assert_response :success
+    assert_equal({'members_losing_access_count' => 14, 'can_retain_members_as_guests' => true}, response.parsed_body)
+
+    assert_no_difference -> { Notification.count } do
+      patch :move, params: {id: @topic.id, make_direct: true, retain_members_as_guests: true}
+    end
+
+    assert_response :success
+    assert_nil @topic.reload.group_id
+    assert_nil topic_readers(:guest_normal_reader).reload.revoked_at
+    assert users(:guest_normal).can?(:create, Comment.new(parent: @topic.topicable))
+  end
+
+  test 'direct retention recalculates access after preview without reviving revoked guests' do
+    sign_in @admin
+    get :move_access, params: {id: @topic.id, make_direct: true}
+    assert_response :success
+    reader = topic_readers(:guest_normal_reader)
+    reader.update!(revoked_at: Time.current, revoker_id: @admin.id)
+
+    patch :move, params: {id: @topic.id, make_direct: true, retain_members_as_guests: true}
+
+    assert_response :success
+    assert reader.reload.revoked_at
+    refute @topic.reload.members.exists?(reader.user_id)
+  end
+
+  test 'ordinary members cannot preview or execute direct guest retention' do
+    sign_in users(:member_normal)
+    get :move_access, params: {id: @topic.id, make_direct: true}
+    assert_response :forbidden
+    patch :move, params: {id: @topic.id, make_direct: true, retain_members_as_guests: true}
+    assert_response :forbidden
+    assert_equal groups(:group).id, @topic.reload.group_id
+  end
 end

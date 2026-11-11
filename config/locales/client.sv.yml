@@ -3097,6 +3097,7 @@ sv:
     keep_members_as_guests: Behåll dessa personer som gäster i tråden
     guest_permission_required: Du har inte behörighet att bjuda in gäster i destinationsgruppen
     access_preview_error: Kunde inte kontrollera vilka som skulle förlora rätten att delta
+    guest_access_unavailable: Gäståtkomst kan inte ges vid den här flytten
   auth:
     oauth_cancelled: Inloggningen avbröts
     switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.

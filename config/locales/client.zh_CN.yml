@@ -1998,6 +1998,7 @@ zh_CN:
     keep_members_as_guests: 将这些人保留为此帖子的访客
     guest_permission_required: 您无权在目标群组中邀请访客
     access_preview_error: 无法检查哪些人将失去参与权限
+    guest_access_unavailable: 此次移动无法授予访客访问权限
   delete_comment_dialog:
     title: 删除评论
     question: 这将永久删除此评论。如果您继续操作，则无法恢复。

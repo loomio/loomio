@@ -290,7 +290,9 @@ Select **Unpin thread** to return a thread to the activity-based order.
 
 Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
 
-When moving to another group or subgroup, Loomio shows how many people would lose permission to participate. You can keep them as guests of the thread if you have permission to invite guests in the destination group. This preserves their ability to participate without adding them to the destination group or sending invitation notifications. Existing guests retain their access.
+When moving a thread, Loomio shows how many people would lose permission to participate. You can choose to keep them as guests without sending invitation notifications. For a move to another group or subgroup, this requires permission to invite guests in the destination group; existing guests retain access.
+
+When converting to a direct thread, people who have participated retain access automatically. Selecting the guest option also keeps the other current members and guests. You and the thread creator become thread admins.
 
 ![](../discussion_management/move_thread_select.png)
 

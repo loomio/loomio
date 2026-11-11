@@ -172,6 +172,123 @@ class TopicGuestAccessTest < ActiveSupport::TestCase
     end
   end
 
+  test 'direct move preview includes current guests and members who have not participated' do
+    preview = TopicService.move_access(topic: @topic, params: {make_direct: true}, actor: @admin)
+    expected = %i[user member member_quiet member_normal member_loud reader_quiet reader_normal reader_loud
+                  guest_quiet guest_normal guest_admin_normal guest_loud member_guest_loud former_member_guest]
+
+    assert_equal expected.length, preview[:members_losing_access_count]
+    assert preview[:can_retain_members_as_guests]
+    assert_nil topic_readers(:guest_normal_reader).reload.revoked_at
+    assert_equal groups(:group).id, @topic.reload.group_id
+  end
+
+  test 'direct conversion can retain all current members and guests silently' do
+    current_member_ids = @topic.members.pluck(:id)
+    guest = topic_readers(:guest_normal_reader)
+    guest.update!(accepted_at: 2.days.ago, last_read_at: 1.hour.ago, read_ranges_string: '0-0')
+    preserved = guest.attributes.slice('volume_email', 'volume_push', 'accepted_at', 'last_read_at', 'read_ranges_string', 'token', 'inviter_id')
+
+    assert_no_difference -> { Notification.count } do
+      assert_no_difference -> { ActionMailer::Base.deliveries.count } do
+        TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: @admin)
+      end
+    end
+
+    assert_nil @topic.reload.group_id
+    assert_equal current_member_ids.sort, @topic.members.pluck(:id).sort
+    assert_equal preserved, guest.reload.attributes.slice(*preserved.keys)
+    assert users(:guest_normal).can?(:create, Comment.new(parent: @topic.topicable))
+    assert users(:member_normal).can?(:create, Comment.new(parent: @topic.topicable))
+    assert_nil topic_readers(:reader_quiet_reader).reload.revoked_at
+    assert topic_readers(:reader_quiet_reader).guest?
+    assert topic_readers(:former_guest_loud_reader).reload.revoked_at
+    assert topic_readers(:inactive_guest_loud_reader).reload.revoked_at
+    assert topic_readers(:non_guest_loud_reader).reload.revoked_at
+    assert_equal [@admin.id, @topic.topicable.author_id].uniq.sort, @topic.admins.pluck(:id).sort
+  end
+
+  test 'direct conversion without retention removes unparticipating guests' do
+    TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: 'false'}, actor: @admin)
+
+    assert topic_readers(:guest_normal_reader).reload.revoked_at
+    refute users(:guest_normal).can?(:show, @topic)
+    refute users(:member_normal).can?(:create, Comment.new(parent: @topic.topicable))
+    assert @admin.can?(:add_guests, @topic)
+  end
+
+  test 'direct retention does not turn parent-group viewing into participation rights' do
+    @destination.update!(is_visible_to_parent_members: true, parent_members_can_see_discussions: true)
+    TopicService.move(topic: @topic, params: {group_id: @destination.id}, actor: @admin)
+    parent_viewer = users(:reader_normal)
+    assert parent_viewer.can?(:show, @topic)
+    refute parent_viewer.can?(:create, Comment.new(parent: @topic.topicable))
+
+    TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: @admin)
+
+    refute parent_viewer.can?(:create, Comment.new(parent: @topic.topicable))
+    assert topic_readers(:reader_normal_reader).reload.revoked_at
+    assert users(:guest_normal).can?(:create, Comment.new(parent: @topic.topicable))
+  end
+
+  test 'direct retention uses direct-thread admin permission rather than source subscription guest limits' do
+    subscription = subscriptions(:cleanup_active_paid)
+    subscription.update!(allow_guests: false)
+    groups(:group).update!(subscription: subscription)
+    mover = users(:guest_admin_normal)
+
+    preview = TopicService.move_access(topic: @topic, params: {make_direct: true}, actor: mover)
+    assert preview[:can_retain_members_as_guests]
+    TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: mover)
+
+    assert_nil @topic.reload.group_id
+    assert mover.can?(:add_guests, @topic)
+    assert users(:guest_normal).can?(:create, Comment.new(parent: @topic.topicable))
+  end
+
+  test 'locked direct conversion cannot grant guest access and rolls back conversion' do
+    @topic.update!(locked_at: Time.current)
+    preview = TopicService.move_access(topic: @topic, params: {make_direct: true}, actor: @admin)
+    refute preview[:can_retain_members_as_guests]
+    before = @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+
+    assert_raises(CanCan::AccessDenied) do
+      TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: @admin)
+    end
+
+    assert_equal groups(:group).id, @topic.reload.group_id
+    assert_equal before, @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+  end
+
+  test 'failed direct move event creation rolls back retained guests and reader roles' do
+    before = @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+    TopicItems::DiscussionMoved.stub(:create!, ->(**) { raise 'event failed' }) do
+      assert_raises(RuntimeError) do
+        TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: @admin)
+      end
+    end
+    assert_equal groups(:group).id, @topic.reload.group_id
+    assert_equal before, @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+  end
+
+  test 'anonymous polls prohibit direct move preview and retention' do
+    PollService.create(params: {
+      title: 'Anonymous poll', poll_type: 'proposal', anonymous: true,
+      topic_id: @topic.id, poll_option_names: %w[Agree Disagree], closing_at: 1.day.from_now
+    }, actor: @admin)
+    before = @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+
+    assert_raises(ActiveRecord::RecordInvalid) do
+      TopicService.move_access(topic: @topic, params: {make_direct: true}, actor: @admin)
+    end
+    assert_raises(ActiveRecord::RecordInvalid) do
+      TopicService.move(topic: @topic, params: {make_direct: true, retain_members_as_guests: true}, actor: @admin)
+    end
+
+    assert_equal groups(:group).id, @topic.reload.group_id
+    assert_equal before, @topic.topic_readers.order(:id).pluck(:id, :guest, :admin, :revoked_at)
+  end
+
   private
 
   def invite(*people, actor: @admin)

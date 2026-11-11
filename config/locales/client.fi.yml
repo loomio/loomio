@@ -3089,6 +3089,7 @@ fi:
     keep_members_as_guests: Pidä nämä henkilöt ketjun vieraina
     guest_permission_required: Sinulla ei ole oikeutta kutsua vieraita kohderyhmään
     access_preview_error: Ei voitu tarkistaa, ketkä menettäisivät osallistumisoikeuden
+    guest_access_unavailable: Vieraille ei voi antaa pääsyä tässä siirrossa
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.

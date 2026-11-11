@@ -3116,6 +3116,7 @@ nl_NL:
     keep_members_as_guests: Behoud deze mensen als gasten van deze thread
     guest_permission_required: Je mag geen gasten uitnodigen in de bestemmingsgroep
     access_preview_error: Kan niet controleren wie niet meer zou mogen deelnemen
+    guest_access_unavailable: Bij deze verplaatsing kan geen gasttoegang worden verleend
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.

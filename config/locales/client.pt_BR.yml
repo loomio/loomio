@@ -3134,6 +3134,7 @@ pt_BR:
     keep_members_as_guests: Manter essas pessoas como convidadas desta conversa
     guest_permission_required: Você não tem permissão para convidar pessoas no grupo de destino
     access_preview_error: Não foi possível verificar quem perderia a permissão para participar
+    guest_access_unavailable: Não é possível conceder acesso a convidados nesta mudança
   auth:
     oauth_cancelled: O login foi cancelado.
     switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.

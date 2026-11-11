@@ -94,7 +94,7 @@ describe('moving a thread with guest retention', () => {
     mountForm();
     await chooseDestination(2);
     expect(retainCheckbox().exists()).toBe(false);
-    expect(wrapper.find('.move-topic-form__access-warning').text()).toContain('You do not have permission');
+    expect(wrapper.find('.move-topic-form__access-warning').text()).toContain('Guest access cannot be granted');
     expect(submitButton().props('disabled')).toBe(false);
   });
 
@@ -139,15 +139,51 @@ describe('moving a thread with guest retention', () => {
     expect(submitButton().props('disabled')).toBe(false);
   });
 
-  it('keeps direct-thread conversion on its existing participation policy', async () => {
+  it('previews direct conversion and keeps contributors by default', async () => {
     mountForm();
     await chooseDestination('direct');
-    expect(mocks.preview).not.toHaveBeenCalled();
-    expect(retainCheckbox().exists()).toBe(false);
+    expect(mocks.preview).toHaveBeenCalledWith(10, 'move_access', {make_direct: true});
+    expect(wrapper.find('.move-topic-form__access-warning').text()).toContain('7');
+    expect(retainCheckbox().props('modelValue')).toBe(false);
     expect(submitButton().props('disabled')).toBe(false);
     await submit();
-    expect(mocks.move).toHaveBeenCalledWith(10, 'move', {group_id: null, make_direct: true});
+    expect(mocks.move).toHaveBeenCalledWith(10, 'move', {group_id: null, make_direct: true, retain_members_as_guests: false});
     expect(mocks.hardReload).toHaveBeenCalledWith('/d/thread');
+  });
+
+  it('lets a direct conversion keep the other current members and guests', async () => {
+    mountForm();
+    await chooseDestination('direct');
+    retainCheckbox().vm.$emit('update:modelValue', true);
+    await flushPromises();
+    await submit();
+    expect(mocks.move).toHaveBeenCalledWith(10, 'move', {group_id: null, make_direct: true, retain_members_as_guests: true});
+  });
+
+  it('does not offer direct conversion for anonymous polls or an already direct thread', async () => {
+    mountForm();
+    mocks.topic.hasAnonymousPolls = true;
+    await chooseDestination('direct');
+    expect(mocks.preview).not.toHaveBeenCalled();
+    expect(submitButton().props('disabled')).toBe(true);
+    mocks.topic.hasAnonymousPolls = false;
+    mocks.topic.groupId = null;
+    await wrapper.vm.$nextTick();
+    expect(submitButton().props('disabled')).toBe(true);
+    expect(wrapper.findComponent('.move-topic-form__group-dropdown').props('items')[0].props.disabled).toBe(true);
+  });
+
+  it('ignores a group preview that finishes after switching to direct conversion', async () => {
+    let resolveGroup;
+    mocks.preview.mockImplementationOnce(() => new Promise(resolve => { resolveGroup = resolve; }));
+    mountForm();
+    await chooseDestination(2);
+    await chooseDestination('direct');
+    expect(retainCheckbox().props('modelValue')).toBe(false);
+    resolveGroup({members_losing_access_count: 99, can_retain_members_as_guests: false});
+    await flushPromises();
+    expect(wrapper.find('.move-topic-form__access-warning').text()).not.toContain('99');
+    expect(retainCheckbox().exists()).toBe(true);
   });
 
   it('leaves the dialog open when the server rejects a move', async () => {

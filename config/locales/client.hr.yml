@@ -3090,6 +3090,7 @@ hr:
     keep_members_as_guests: Zadržite ove osobe kao goste ove niti
     guest_permission_required: Nemate dopuštenje za pozivanje gostiju u odredišnoj grupi
     access_preview_error: Nije moguće provjeriti tko bi izgubio pravo sudjelovanja
+    guest_access_unavailable: Pri ovom premještanju nije moguće dodijeliti pristup gostima
   auth:
     oauth_cancelled: Prijava je otkazana
     switching_accounts: Prebacivanje računa. Prijavite se s novim podacima računa.

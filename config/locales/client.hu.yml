@@ -3100,6 +3100,7 @@ hu:
     keep_members_as_guests: Maradjanak ezek az emberek a szál vendégei
     guest_permission_required: Nincs jogosultságod vendégeket meghívni a célcsoportba
     access_preview_error: Nem sikerült ellenőrizni, ki veszítené el a részvételi jogosultságát
+    guest_access_unavailable: Ennél az áthelyezésnél nem adható vendéghozzáférés
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
     switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.

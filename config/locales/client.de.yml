@@ -3124,6 +3124,7 @@ de:
     keep_members_as_guests: Diese Personen als Gäste dieses Threads behalten
     guest_permission_required: Du darfst in der Zielgruppe keine Gäste einladen
     access_preview_error: Es konnte nicht geprüft werden, wer nicht mehr teilnehmen dürfte
+    guest_access_unavailable: Bei diesem Verschieben kann kein Gastzugriff gewährt werden
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melde dich mit deinen neuen Kontodaten an.

@@ -3108,6 +3108,7 @@ he:
     keep_members_as_guests: להשאיר את האנשים האלה כאורחים בשרשור הזה
     guest_permission_required: אין הרשאה להזמין אורחים בקבוצת היעד
     access_preview_error: לא ניתן לבדוק מי יאבד הרשאה להשתתף
+    guest_access_unavailable: לא ניתן להעניק גישת אורח בהעברה זו
   auth:
     oauth_cancelled: הכניסה בוטלה
     switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.

@@ -30,14 +30,16 @@ const isDirect = computed(() => destinationId.value === 'direct');
 const destinationItems = computed(() => [{
   title: I18n.global.t('move_discussion_form.direct_thread'),
   value: 'direct',
-  props: { disabled: !directAllowed.value }
+  props: { disabled: !directAllowed.value || !topic.groupId }
 }].concat(availableGroups.value.map(group => ({
   title: group.fullName,
   value: group.id
 }))));
 
 const targetGroup = () => Records.groups.find(destinationId.value);
-const needsAccessPreview = computed(() => destinationId.value && !isDirect.value && destinationId.value !== topic.groupId);
+const needsAccessPreview = computed(() => destinationId.value && (isDirect.value
+  ? directAllowed.value && !!topic.groupId
+  : destinationId.value !== topic.groupId));
 
 watch([destinationId, accessRetry], async ([id], previous, onCleanup) => {
   let cancelled = false;
@@ -50,7 +52,8 @@ watch([destinationId, accessRetry], async ([id], previous, onCleanup) => {
 
   accessLoading.value = true;
   try {
-    const result = await Records.topics.remote.getMember(topic.id, 'move_access', {group_id: id});
+    const params = isDirect.value ? {make_direct: true} : {group_id: id};
+    const result = await Records.topics.remote.getMember(topic.id, 'move_access', params);
     if (!cancelled) { moveAccess.value = result; }
   } catch (error) {
     if (!cancelled) { accessError.value = true; }
@@ -62,7 +65,7 @@ watch([destinationId, accessRetry], async ([id], previous, onCleanup) => {
 const submit = () => {
   loading.value = true;
   const params = isDirect.value
-    ? { group_id: null, make_direct: true }
+    ? { group_id: null, make_direct: true, retain_members_as_guests: retainMembersAsGuests.value }
     : { group_id: destinationId.value, retain_members_as_guests: retainMembersAsGuests.value };
 
   Records.topics.remote.patchMember(topic.id, 'move', params).then(() => {
@@ -127,7 +130,7 @@ v-card.move-topic-form(:title="$t('move_discussion_form.move_thread_title')")
         :disabled="loading"
         :label="t('move_discussion_form.keep_members_as_guests')"
         hide-details)
-      p(v-else) {{ t('move_discussion_form.guest_permission_required') }}
+      p(v-else) {{ t('move_discussion_form.guest_access_unavailable') }}
     v-alert.move-topic-form__direct-hint(
       v-if="isDirect"
       type="info"
@@ -143,7 +146,7 @@ v-card.move-topic-form(:title="$t('move_discussion_form.move_thread_title')")
   v-card-actions
     v-spacer
     v-btn.move-topic-form__submit(
-      :disabled="loading || !destinationId || (!isDirect && topic.groupId == destinationId) || (needsAccessPreview && !moveAccess)"
+      :disabled="loading || !destinationId || (isDirect && (!directAllowed || !topic.groupId)) || (!isDirect && topic.groupId == destinationId) || (needsAccessPreview && !moveAccess)"
       :loading="loading"
       color="primary"
       variant="tonal"

@@ -3086,6 +3086,7 @@ tr:
     keep_members_as_guests: Bu kişileri bu ileti dizisinde misafir olarak tut
     guest_permission_required: Hedef grupta misafir davet etme izniniz yok
     access_preview_error: Kimlerin katılım iznini kaybedeceği kontrol edilemedi
+    guest_access_unavailable: Bu taşıma işleminde misafir erişimi verilemez
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.

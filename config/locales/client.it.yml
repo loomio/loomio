@@ -3117,6 +3117,7 @@ it:
     keep_members_as_guests: Mantieni queste persone come ospiti della conversazione
     guest_permission_required: Non hai il permesso di invitare ospiti nel gruppo di destinazione
     access_preview_error: Impossibile verificare chi perderebbe il permesso di partecipare
+    guest_access_unavailable: Non è possibile concedere l'accesso agli ospiti per questo spostamento
   auth:
     oauth_cancelled: L'accesso è stato annullato
     switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.

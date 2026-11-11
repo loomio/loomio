@@ -3088,6 +3088,7 @@ ja:
     keep_members_as_guests: この人たちをスレッドのゲストとして残します
     guest_permission_required: 移動先のグループでゲストを招待する権限がありません
     access_preview_error: 参加権限を失う人を確認できませんでした
+    guest_access_unavailable: この移動ではゲストに参加権限を付与できません
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。

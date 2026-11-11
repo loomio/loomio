@@ -103,17 +103,19 @@ class TopicService
     topic_item = topic.with_write_lock do
       actor.ability.authorize! :move, topic
       destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
-      retain_members = !direct && ActiveModel::Type::Boolean.new.cast(params[:retain_members_as_guests])
-      members_to_retain = members_losing_access(topic: topic, destination: destination) if retain_members
-      direct_participants_retain!(topic:, actor:) if direct
+      retain_members = ActiveModel::Type::Boolean.new.cast(params[:retain_members_as_guests])
+      members_to_retain = members_losing_access(topic: topic, destination: destination) if retain_members && !direct
+      direct_participants_retain!(topic:, actor:, retain_members:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
                     private: moved_discussion_privacy_for(topic, destination))
 
       if retain_members
         actor.ability.authorize!(:add_guests, topic)
-        members_to_retain.in_batches(of: 500) do |users|
-          add_readers(topic: topic, actor: actor, users: users)
+        unless direct
+          members_to_retain.in_batches(of: 500) do |users|
+            add_readers(topic: topic, actor: actor, users: users)
+          end
         end
       end
 
@@ -139,9 +141,20 @@ class TopicService
   end
 
   # Count participation access, including members who can still read through
-  # parent-group visibility. Existing guests keep access across a group move.
+  # parent-group visibility. Direct conversion retains contributors by default;
+  # other current members and guests can be kept through the same explicit choice.
   def self.move_access(topic:, params:, actor:)
     actor.ability.authorize!(:move, topic)
+    if ActiveModel::Type::Boolean.new.cast(params[:make_direct])
+      validate_direct_move!(topic: topic)
+      return {
+        members_losing_access_count: topic.members.where.not(id: direct_participant_ids(topic:, actor:)).count,
+        # The mover becomes a direct-thread admin. Execution checks the real
+        # destination topic's guest permission after conversion, inside the lock.
+        can_retain_members_as_guests: !topic.locked_at
+      }
+    end
+
     destination = ModelLocator.new(:group, params).locate!
     actor.ability.authorize!(:move_discussions_to, destination)
     target = Topic.new(group: destination, locked_at: topic.locked_at)
@@ -188,13 +201,20 @@ class TopicService
       .uniq
   end
 
-  def self.direct_participants_retain!(topic:, actor:)
+  def self.validate_direct_move!(topic:)
     if topic.has_anonymous_polls?
       topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
       raise ActiveRecord::RecordInvalid, topic
     end
+  end
+  private_class_method :validate_direct_move!
 
+  def self.direct_participants_retain!(topic:, actor:, retain_members: false)
+    validate_direct_move!(topic: topic)
     direct_participant_ids = direct_participant_ids(topic:, actor:)
+    # Snapshot current access before revoking readers. Reading alone must not
+    # silently become an invitation, and former/revoked guests must stay excluded.
+    direct_participant_ids |= topic.members.pluck(:id) if retain_members
     direct_admin_ids = [actor.id, topic.topicable.author_id].compact.uniq
     direct_revoked_at = Time.current
 
