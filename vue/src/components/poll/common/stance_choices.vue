@@ -27,15 +27,16 @@ export default {
       v-for="choice in choices"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
-      common-icon(size="small" color="primary" v-if="!variableScore" name="mdi-check-circle")
+      common-icon.mr-1(size="small" color="primary" v-if="!variableScore" name="mdi-check-circle")
       span.text-medium-emphasis(v-if="choice.rank")
         span {{choice.rank}}
         mid-dot
         span.text-high-emphasis {{ choice.pollOption.optionName() }}
       span.text-medium-emphasis(v-else)
         span.text-high-emphasis| {{ choice.pollOption.optionName() }}
-        mid-dot
-        span {{choice.score}}
+        template(v-if="variableScore")
+          mid-dot
+          span {{choice.score}}
 </template>
 <style>
 .poll-common-stance-choices {
