@@ -1,8 +1,7 @@
 require "test_helper"
 
-# A locked thread cannot notify or invite anyone: not by announcing the thread,
-# its discussion, a poll or an outcome, not by reminding voters, not by adding
-# members or guests, and not by adding recipients while a thread admin edits it.
+# A locked thread is archived as it is: nobody can edit it, add an outcome,
+# or notify or invite anyone from it. Thread admins can unlock it.
 class Ability::LockedThreadTest < ActiveSupport::TestCase
   setup do
     @topic = topics(:discussion_topic)
@@ -58,21 +57,21 @@ class Ability::LockedThreadTest < ActiveSupport::TestCase
     assert_not @group_admin.can?(:announce, outcome.reload)
   end
 
-  test "a thread admin can edit a locked thread but cannot add recipients" do
+  test "nobody can edit a locked thread or add an outcome, but thread admins can unlock it" do
+    PollService.close(poll: @poll, actor: @group_admin)
     @topic.update_columns(locked_at: 1.hour.ago)
     discussion = @topic.reload.topicable
-    recipient = users(:member_loud)
+    @poll.reload
 
-    assert_raises(CanCan::AccessDenied) do
-      DiscussionService.update(discussion: discussion, actor: @thread_admin,
-                               params: {title: "Edited", recipient_user_ids: [recipient.id]})
+    [@group_admin, @thread_admin].each do |user|
+      assert_not user.can?(:update, discussion), user.name
+      assert_not user.can?(:create, Outcome.new(poll: @poll, author: user)), user.name
     end
     assert_raises(CanCan::AccessDenied) do
-      DiscussionService.update(discussion: discussion, actor: @thread_admin,
-                               params: {title: "Edited", recipient_audience: "group"})
+      DiscussionService.update(discussion: discussion, actor: @thread_admin, params: {title: "Edited"})
     end
 
-    DiscussionService.update(discussion: discussion.reload, actor: @thread_admin, params: {title: "Edited"})
-    assert_equal "Edited", discussion.reload.title
+    TopicService.unlock(topic: @topic, actor: @thread_admin)
+    assert @thread_admin.can?(:update, @topic.reload.topicable)
   end
 end

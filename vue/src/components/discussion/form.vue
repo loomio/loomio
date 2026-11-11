@@ -70,7 +70,6 @@ const isGroupMember = computed(() => {
 });
 
 // A locked thread cannot notify anyone, even when a thread admin edits it.
-const isLocked = computed(() => !!props.discussion.topicId && !!props.discussion.topic().lockedAt);
 
 const isNonMemberDiscussion = computed(() => {
   return props.discussion.isNew() &&
@@ -251,7 +250,7 @@ v-form(ref="form" @submit.prevent="submit")
               v-list-item-subtitle {{ pt.processSubtitle }}
             v-divider
 
-        common-notify-fields(v-if="loaded && !isNonMemberDiscussion && !isLocked" :model="discussion" :initial-recipients="initialRecipients")
+        common-notify-fields(v-if="loaded && !isNonMemberDiscussion" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/discussions/starting_a_discussion')
       v-spacer

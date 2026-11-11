@@ -39,12 +39,12 @@ module Ability::Discussion
       end
     end
 
-    # Thread admins can always edit. Others need current access to an unlocked
-    # thread, and either authorship or the members-can-edit setting.
+    # Nobody edits a locked thread; thread admins unlock it first. Otherwise
+    # thread admins can edit, and members need authorship or the members-can-edit setting.
     can [ :update ], ::Discussion do |discussion|
-      discussion.discarded_at.nil? &&
+      discussion.discarded_at.nil? && !discussion.topic.locked_at &&
       (discussion.admins.exists?(user.id) ||
-        (!discussion.topic.locked_at && discussion.members.exists?(user.id) &&
+        (discussion.members.exists?(user.id) &&
           (discussion.author == user || discussion.group.members_can_edit_discussions)))
     end
 

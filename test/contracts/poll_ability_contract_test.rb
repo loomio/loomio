@@ -9,7 +9,7 @@ require "test_helper"
 class PollAbilityContractTest < ActiveSupport::TestCase
   CONTRACT_PATH = Rails.root.join("tmp/contracts/poll_abilities.json")
   CONTRACT_TIME = Time.utc(2026, 1, 1, 12)
-  POLL_FIELDS = %w[closed_at closing_at opened_at opening_at discarded_at hide_results anonymous].freeze
+  POLL_FIELDS = %w[topic_id closed_at closing_at opened_at opening_at discarded_at hide_results anonymous].freeze
   STATES = %w[scheduled open lapsed closed discarded].freeze
   RESULTS = {
     "off" => {hide_results: "off"},
