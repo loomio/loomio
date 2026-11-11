@@ -4,7 +4,7 @@ sections:
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -12,17 +12,17 @@ generated:
   when-to-use-choose: f7e5999accadebf2
   example-set-a-planning-meeting-agenda: 1699fb64f7257bc5
   set-up-the-poll: c6e3912840f2ce13
-  vote: d6b28e51afcbeb76
+  vote: 0151fc086189689e
   read-the-results: 1a5fef0baa2fa844
   share-an-outcome: aa054261d7223823
 title: 선택
 title_source: c7f937836f5d82d5
 title_generated: 8d1a750c9351d1b8
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
 source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-11'
 needs_review:
   share-an-outcome: use "결론" instead of "결과" for "outcome"
 ---
@@ -74,7 +74,7 @@ needs_review:
 
 ## 투표하기
 
-투표 양식에는 참여자가 선택지를 몇 개까지 고를 수 있는지 표시됩니다. 이 예시에서 투표자는 **카페 수거 일정**과 **세척 작업 절차**를 고른 다음, 이 선택들이 시범 운영과 어떤 관련이 있는지 이유를 작성합니다.
+선택한 선택지 수가 허용 범위를 벗어나면 제출 버튼에 수정 방법이 표시됩니다. 이 예시에서 투표자는 **카페 수거 일정**과 **세척 작업 절차**를 고른 다음, 이 선택들이 시범 운영과 어떤 관련이 있는지 이유를 작성합니다.
 
 ![](voting.png)
 

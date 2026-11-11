@@ -45,7 +45,7 @@ Under **More settings**, **Show options in random order** can reduce the effect 
 
 ## Vote
 
-The vote form tells participants how many options they may select. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
+If the selection is outside the allowed number of options, the submit button says how to fix it. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
 
 ![](voting.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Wählen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,13 +18,12 @@ generated:
   when-to-use-choose: 2a6757d9d44dc26d
   example-set-a-planning-meeting-agenda: 5f4397d8a8e2fc1f
   set-up-the-poll: e0f516e3930bd9be
-  vote: a1d8c64de3ca3263
+  vote: 9f0eed945fbc66ec
   read-the-results: 3806bf047596a58a
   share-an-outcome: 1ade3f43b17af736
 title_source: c7f937836f5d82d5
 title_generated: eda09c087d4db24d
 needs_review:
-  vote: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
   share-an-outcome: use "Fazit" instead of "Ergebnis" for "outcome"
 ---
 
@@ -75,7 +74,7 @@ Unter **Weitere Einstellungen** kann **Optionen in zufälliger Reihenfolge anzei
 
 ## Stimme abgeben
 
-Das Formular zur Stimmabgabe zeigt Teilnehmenden, wie viele Optionen sie auswählen dürfen. In diesem Beispiel wählt die abstimmende Person **Zeitplan für die Abholung bei Cafés** und **Ablauf der Reinigung** und gibt anschließend eine Begründung, die diese Auswahl mit dem Test verknüpft.
+Wenn die Anzahl der ausgewählten Optionen außerhalb der zulässigen Grenzen liegt, zeigt die Schaltfläche zum Absenden an, wie du die Auswahl korrigieren kannst. In diesem Beispiel wählt die abstimmende Person **Zeitplan für die Abholung bei Cafés** und **Ablauf der Reinigung** und gibt anschließend eine Begründung, die diese Auswahl mit dem Test verknüpft.
 
 ![](voting.png)
 

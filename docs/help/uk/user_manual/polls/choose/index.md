@@ -1,16 +1,16 @@
 ---
 title: Виберіть
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 7129600c52bba6d2
   example-set-a-planning-meeting-agenda: 6686bf2b4e0fa70e
   set-up-the-poll: c64512a388e44fbc
-  vote: c8d1b599d1ecbecf
+  vote: c10e5cc48143f7cb
   read-the-results: 60aed55b97628628
   share-an-outcome: 5abaa9d583cdab20
 title_source: c7f937836f5d82d5
@@ -72,7 +72,7 @@ title_generated: 6d14ab6d4dc97e52
 
 ## Голосуйте
 
-Форма голосування повідомляє учасникам, скільки варіантів вони можуть вибрати. У цьому прикладі виборець вибирає **Графік збору пляшок із кафе** та **Процес миття**, а потім указує причину, що пов’язує цей вибір із пробним впровадженням.
+Якщо кількість вибраних варіантів виходить за дозволені межі, кнопка надсилання підказує, як це виправити. У цьому прикладі виборець вибирає **Графік збору пляшок із кафе** та **Процес миття**, а потім указує причину, що пов’язує цей вибір із пробним впровадженням.
 
 ![](voting.png)
 

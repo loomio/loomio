@@ -1,16 +1,16 @@
 ---
 title: Выберыце
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: 991e8c7f86276c70
   example-set-a-planning-meeting-agenda: 2949effc411fb25d
   set-up-the-poll: 0baeebe3f7ed2b6c
-  vote: 5fc3fdf04899b8f2
+  vote: d3896728382909a6
   read-the-results: ced77f0febe7cc37
   share-an-outcome: 8404be7e4e129dce
 title_source: c7f937836f5d82d5
@@ -72,7 +72,7 @@ title_generated: d2a6b690e2efed9c
 
 ## Голас
 
-Форма галасавання паведамляе ўдзельнікам, колькі варыянтаў яны могуць выбраць. У гэтым прыкладзе выбаршчыкі выбіраюць **Графік збору бутэлек у кавярнях** і **Працэс мыцця**, затым указваюць прычыну, якая звязвае гэты выбар з выпрабаваннем.
+Калі колькасць выбраных варыянтаў выходзіць за дазволеныя межы, кнопка адпраўкі паведамляе, як гэта выправіць. У гэтым прыкладзе выбаршчыкі выбіраюць **Графік збору бутэлек у кавярнях** і **Працэс мыцця**, затым указваюць прычыну, якая звязвае гэты выбар з выпрабаваннем.
 
 ![](voting.png)
 

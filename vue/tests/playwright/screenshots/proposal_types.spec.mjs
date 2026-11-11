@@ -232,7 +232,6 @@ test('new_simple_poll_voting', async ({ page, manual: screenshot }) => {
     'polls/choose/voting',
     [
       '.poll-common-action-panel h3',
-      '.poll-common-vote-form > .v-alert',
       '.poll-common-vote-form__button:has(input[aria-label="Cafe collection schedule"])',
       '.poll-common-vote-form__button:has(input[aria-label="Bottle deposit amount"])',
       '.poll-common-vote-form__button:has(input[aria-label="Washing workflow"])',

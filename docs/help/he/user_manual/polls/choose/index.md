@@ -1,16 +1,16 @@
 ---
 title: בחירה
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/choose/index.md
+source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-11'
 sections:
   introduction: f9d6a5bfb7445de0
   when-to-use-choose: f8a798497cac5a43
   example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
   set-up-the-poll: a16095b63c57e0c9
-  vote: d170451131c544cf
+  vote: '09940fa2f063a6bc'
   read-the-results: e675d12da1a4ba8a
   share-an-outcome: f6afc1713b921265
 generated:
@@ -18,7 +18,7 @@ generated:
   when-to-use-choose: d04d568921e85355
   example-set-a-planning-meeting-agenda: 314d8e724c9a6024
   set-up-the-poll: c868677da931f9cf
-  vote: 866ff1e5e253c892
+  vote: 3128f8a697f90521
   read-the-results: 99b3ce1f065aa24e
   share-an-outcome: dff2dca8949e79e6
 title_source: c7f937836f5d82d5
@@ -72,7 +72,7 @@ title_generated: a46bb2a3ba94baa0
 
 ## הצבעה
 
-טופס ההצבעה מציין כמה אפשרויות ניתן לבחור. בדוגמה זו, ההצבעה כוללת את **לוח הזמנים לאיסוף מבתי קפה** ואת **תהליך השטיפה**, ולאחר מכן נימוק המקשר בין הבחירות האלה לניסוי.
+אם מספר האפשרויות שנבחרו חורג מהטווח המותר, כפתור השליחה מציין כיצד לתקן זאת. בדוגמה זו, ההצבעה כוללת את **לוח הזמנים לאיסוף מבתי קפה** ואת **תהליך השטיפה**, ולאחר מכן נימוק המקשר בין הבחירות האלה לניסוי.
 
 ![](voting.png)
 
