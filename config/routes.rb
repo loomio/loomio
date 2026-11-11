@@ -345,6 +345,7 @@ Rails.application.routes.draw do
         patch :lock, on: :member
         patch :unlock, on: :member
         patch :move, on: :member
+        get :move_access, on: :member
         patch :move_comments, on: :member
         delete :discard, on: :member
       end

@@ -2138,6 +2138,10 @@ en:
     confirm: Move discussion
     confirm_change_to_private: "%{groupName} is an open group. If you proceed, this discussion will be public."
     move_thread_title: Move thread
+    members_losing_access: "People who would lose permission to participate: %{count}"
+    keep_members_as_guests: Keep these people as guests of this thread
+    guest_permission_required: You do not have permission to invite guests in the destination group
+    access_preview_error: Unable to check who would lose permission to participate
     destination: Destination
     direct_thread: Direct thread
     direct_thread_hint: Everyone who has participated will retain access. You and the thread creator will be thread administrators.

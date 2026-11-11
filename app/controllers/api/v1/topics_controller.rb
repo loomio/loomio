@@ -91,6 +91,11 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def move_access
+    load_resource
+    render root: false, json: TopicService.move_access(topic: resource, params: params, actor: current_user)
+  end
+
   def move_comments
     load_resource
     TopicItemService.move_comments(topic: resource, params: params, actor: current_user)
