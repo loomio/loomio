@@ -1,10 +1,10 @@
 ---
 title: Témák használata
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 9b5e6b9c1c67ff4c
@@ -32,7 +32,7 @@ generated:
   navigation: 46068dff287bd6ba
   notifications-and-members: 467edc2330c0c48a
   email-notifications-for-this-thread: 8685521ee36888e2
-  invite-people: 646cc519de0a6fe3
+  invite-people: 0b518f042fdd99b4
   seen-by: 68972002f77ea8e6
   notified: 7046f5aa76c8ea31
   actions: 01e122860b46a4af
@@ -40,8 +40,8 @@ generated:
   markdown: fbfa134ed8e40413
   thread-settings-and-display: cc9526a648d01124
   pin-or-unpin-a-thread: 85f49bd712d7c920
-  move-a-thread: c28c9825e4fd4e31
-  lock-or-unlock-a-thread: df3e8f559d2e1d15
+  move-a-thread: 73bdc7d4c6b2cd65
+  lock-or-unlock-a-thread: 66f831df801b3f45
   delete-a-thread: f8b84a81b49e6777
 title_source: 99e2d1eb313f35c4
 title_generated: 34d29fa6046f953a
@@ -155,23 +155,7 @@ Válaszd ki az aktuális értesítési beállítást, és állítsd be, hogy a L
 
 ### Hívj meg embereket
 
-Válaszd a **Hívj meg embereket** lehetőséget, hogy a szál elindítása után további embereket adj hozzá.
-
-![A Hívj meg embereket lehetőség a szál oldalsávjában](../notifying_people/thread_invite_icon.png)
-
-Válassz ki egy csoportot vagy alcsoportot, írd be az egyes tagok nevét, vagy adj meg egy e-mail-címet egy vendég meghívásához.
-
-A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Töröld a mező tartalmát, hogy ismét a teljes listát lásd, és használd a lapozókat, ha több mint 50 ember szerepel rajta. A címzettek kiválasztása után a tagok listájának helyén megjelenik a nem kötelező üzenetmező. A **Meghívás vagy értesítés** kiválasztásakor az új emberek meghívót kapnak, a már hozzáféréssel rendelkezők pedig újabb értesítést.
-
-![Az emberek meghívására szolgáló ablak a nevek és e-mail-címek mezőjével](../notifying_people/thread_invite.png)
-
-A vendég láthatja ezt a szálat, és részt vehet benne, de a csoport többi beszélgetését csak akkor láthatja, ha azokba külön meghívják.
-
-Az ablak tetején lévő útmutatókat bezárhatod. A Loomio megjegyzi a fiókodhoz, mely útmutatókat zártad be.
-
-![Vendég meghívása e-mail-címmel](../notifying_people/invite_guest.png)
-
-Valaki eltávolításához nyisd meg a neve melletti hárompontos menüt (**⋯**), és válaszd az **Eltávolítás a beszélgetésből** lehetőséget.
+Válaszd a jobb oldalsávban a **Hívj meg embereket** lehetőséget, hogy embereket hívj meg a beszélgetésbe, vagy értesítsd őket róla. A csoportokról, szülőcsoportokról, vendégekről, csevegőszobákról és a meghívókhoz kapcsolódó értesítésekről az [Emberek meghívása egy beszélgetésbe](/en/user_manual/discussions/inviting_people) oldalon olvashatsz.
 
 <!-- translation-section: seen-by -->
 
@@ -339,6 +323,10 @@ Válaszd ki a **Szál kitűzésének megszüntetése** lehetőséget, hogy a sz�
 
 Válaszd ki a **Szál áthelyezése** lehetőséget, ha egy szálat másik csoportba vagy alcsoportba szeretnél áthelyezni, vagy közvetlen szállá szeretnél alakítani. A célcsoport tagjai és a külön meghívott személyek láthatják majd.
 
+Szál áthelyezésekor a Loomio megmutatja, hányan veszítenék el a részvételi jogosultságukat. Megtarthatod őket vendégként anélkül, hogy meghívóról szóló értesítést küldenél nekik. Másik csoportba vagy alcsoportba történő áthelyezés esetén ehhez jogosultnak kell lenned vendégeket meghívni a célcsoportba; a meglévő vendégek megtartják a hozzáférésüket.
+
+Közvetlen szállá alakításkor azok, akik már részt vettek a szálban, automatikusan megtartják a hozzáférésüket. Ha a vendégek megtartását választod, a többi jelenlegi tag és vendég is megtartja a hozzáférését. Te és a szál létrehozója a szál adminjai lesztek.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -350,7 +338,7 @@ Ha a teljes szál helyett csak kiválasztott elemeket szeretnél áthelyezni, l�
 
 ### Szál zárolása vagy zárolásának feloldása
 
-Zárold a szálat a hozzászólások és a további módosítások megakadályozásához. Egy szálat csak akkor lehet zárolni, ha az aktív szavazásai már lezárultak.
+Zárold a szálat, hogy a jelenlegi állapotában archiváld. Zárolt szálhoz senki sem adhat hozzá tartalmat, nem módosíthatja, és nem hívhat meg vagy értesíthet belőle embereket. Egy szálat csak akkor lehet zárolni, ha az aktív szavazásai már lezárultak.
 
 Válaszd ki a **Téma zárolása** lehetőséget a **Műveletek** alatt. A zárolt szálak kikerülnek a nyitott beszélgetések listájából, és **Zárolva** címkét kapnak.
 

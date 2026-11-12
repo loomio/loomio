@@ -321,6 +321,23 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_nil discussion.topic.reload.locked_at
   end
 
+  test "lock and unlock are recorded in the topic's version history" do
+    discussion = DiscussionService.create(params: {title: 'Audited lock', group_id: @group.id}, actor: @user)
+    topic = discussion.topic
+
+    assert_difference -> { topic.versions.count }, 2 do
+      TopicService.lock(topic: topic, actor: @user)
+      TopicService.unlock(topic: topic.reload, actor: @user)
+    end
+
+    locked, unlocked = topic.versions.last(2)
+    assert_equal @user.id, locked.whodunnit
+    assert_equal [nil, @user.id], locked.changeset["locker_id"]
+    assert_nil locked.changeset["locked_at"].first
+    assert_equal @user.id, unlocked.whodunnit
+    assert_equal [@user.id, nil], unlocked.changeset["locker_id"]
+  end
+
   # -- Mark as read --
 
   test "mark_as_read_simple_params ignores a topic the actor can no longer view" do

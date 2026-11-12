@@ -1,10 +1,10 @@
 ---
 title: Como usar as discussões
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 0fa2447325469ee1
@@ -32,7 +32,7 @@ generated:
   navigation: 628f6f18d2494ad0
   notifications-and-members: 2de36de88364451b
   email-notifications-for-this-thread: cf7d475299a877e0
-  invite-people: 691cf4e1f0e4b7e1
+  invite-people: dcd22869f7a31c57
   seen-by: 839a2ae64a956eb8
   notified: 36804139e906d46d
   actions: 299b467b99d9605d
@@ -40,8 +40,8 @@ generated:
   markdown: dbf2601cd0fe1ca6
   thread-settings-and-display: 689564700a3d06f6
   pin-or-unpin-a-thread: 2be1f71e8e31ba5e
-  move-a-thread: 4b11a891de925dac
-  lock-or-unlock-a-thread: f5199f5d2e466f55
+  move-a-thread: da6cc7b681f22d7d
+  lock-or-unlock-a-thread: 522680737dbcc17a
   delete-a-thread: d1e86ae44674198e
 title_source: 99e2d1eb313f35c4
 title_generated: df7c7d68c5161ede
@@ -155,23 +155,7 @@ Selecione a configuração atual de notificações para escolher se o Loomio env
 
 ### Convidar pessoas
 
-Selecione **Convidar pessoas** para adicionar pessoas depois que a conversa tiver começado.
-
-![Convidar pessoas na barra lateral da conversa](../notifying_people/thread_invite_icon.png)
-
-Selecione um grupo ou subgrupo, digite os nomes de membros individuais ou digite um endereço de email para convidar um convidado.
-
-O campo **Encontre ou convide pessoas** também filtra a lista de pessoas que já estão na conversa. Limpe o campo para exibir a lista completa novamente e use os controles de paginação se houver mais de 50 pessoas. Depois que você selecionar os destinatários, a lista de membros será substituída pelo campo opcional de mensagem. Novas pessoas recebem um convite; pessoas que já têm acesso recebem outra notificação quando você seleciona **Convidar ou notificar**.
-
-![Janela Convidar pessoas com um campo para nomes e endereços de email](../notifying_people/thread_invite.png)
-
-Um convidado pode ver esta conversa e participar dela, mas não pode ver outras discussões do grupo sem receber um convite separado.
-
-Você pode dispensar os avisos de orientação no topo da janela. O Loomio lembra quais avisos você dispensou na sua conta.
-
-![Convite a um convidado pelo endereço de email](../notifying_people/invite_guest.png)
-
-Para remover alguém, abra o menu de três pontos (**⋯**) ao lado do nome da pessoa e selecione **Remover da discussão**.
+Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou notificá-las sobre a discussão. Consulte [Convidar pessoas para uma discussão](/en/user_manual/discussions/inviting_people) para saber mais sobre grupos, grupos principais, convidados, salas de bate-papo e notificações de convite.
 
 <!-- translation-section: seen-by -->
 
@@ -339,6 +323,10 @@ Selecione **Desafixar conversa** para que a conversa volte à ordem baseada na a
 
 Selecione **Mover tópico** para mover uma conversa para outro grupo, subgrupo ou transformá-la em uma conversa direta. Ela ficará visível para os membros do grupo de destino e para qualquer pessoa especificamente convidada para ela.
 
+Ao mover uma conversa, o Loomio mostra quantas pessoas perderiam a permissão para participar. Você pode mantê-las como convidadas sem enviar notificações de convite. Para mover uma conversa para outro grupo ou subgrupo, isso exige permissão para convidar pessoas como convidadas no grupo de destino; quem já participa como convidado mantém seu acesso.
+
+Ao transformar uma conversa em uma conversa direta, as pessoas que já participaram mantêm o acesso automaticamente. Selecionar a opção de manter convidados também mantém o acesso dos demais membros e convidados atuais. Você e a pessoa que criou a conversa se tornam admins da conversa.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -350,7 +338,7 @@ Para mover atividades selecionadas em vez da conversa inteira, consulte [Mover i
 
 ### Bloquear ou desbloquear uma conversa
 
-Bloqueie uma conversa para impedir comentários ou outras alterações. Uma conversa só pode ser bloqueada depois que suas enquetes ativas forem encerradas.
+Bloqueie uma conversa para arquivá-la como está. Ninguém pode adicionar conteúdo a uma conversa bloqueada, alterá-la ou usá-la para convidar ou notificar pessoas. Você só pode bloquear uma conversa depois que suas enquetes ativas forem encerradas.
 
 Selecione **Bloquear tópico** em **Ações**. As conversas bloqueadas são removidas da lista de discussões abertas e marcadas com a tag **Bloqueado**.
 

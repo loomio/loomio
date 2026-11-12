@@ -2345,6 +2345,10 @@ ko:
     direct_thread_anonymous_poll: 익명 투표가 있는 스레드는 투표한 사람이 드러날 수 있어 다이렉트 스레드로 바꿀 수 없습니다
     messages:
       success: 토론을 %{name}(으)로 이동했습니다
+    members_losing_access: '참여 권한을 잃을 사람: %{count}명'
+    keep_members_as_guests: 이 사람들을 이 스레드의 게스트로 유지
+    access_preview_error: 누가 참여 권한을 잃을지 확인할 수 없습니다
+    guest_access_unavailable: 이번 이동에서는 게스트 접근 권한을 부여할 수 없습니다
   delete_comment_dialog:
     title: 댓글 삭제
     question: 이 댓글을 영구 삭제합니다. 계속하면 복구할 수 없습니다.

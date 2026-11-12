@@ -25,6 +25,7 @@
 - [Discussions](user_manual/discussions/index.md)
   - [Start a discussion](user_manual/discussions/starting_a_discussion/index.md)
   - [Using threads](user_manual/discussions/using_discussions/index.md)
+  - [Inviting people](user_manual/discussions/inviting_people/index.md)
   - [Comments](user_manual/discussions/comments/index.md)
   - [Discussion templates](user_manual/discussions/templates/index.md)
   - [Collect private submissions](user_manual/discussions/private_submissions/index.md)

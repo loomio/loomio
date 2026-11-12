@@ -97,7 +97,10 @@ class StanceService
     stance.poll.with_topic_lock do
       stance.poll.lock!
       actor.ability.authorize! :set_weight, stance
-      stance.poll.stances.latest.where(id: stance.id).update_all(weight: VoteWeight.parse!(weight))
+      scope = stance.poll.stances.latest.where(id: stance.id)
+      WeightHistory.record(scope, actor_id: actor.id, event: Stance::WEIGHT_EVENT) do
+        scope.update_all(weight: VoteWeight.parse!(weight))
+      end
       stance.poll.update_counts!
     end
     stance.reload
@@ -112,9 +115,12 @@ class StanceService
       case mode
       when 'membership'
         raise ActionController::BadRequest, 'group membership weights require a group poll' unless poll.group_id
-        poll.reset_stance_weights_from_memberships!
+        PaperTrail.request(whodunnit: actor.id) { poll.reset_stance_weights_from_memberships! }
       when 'value'
-        poll.stances.latest.update_all(weight: VoteWeight.parse!(weight))
+        scope = poll.stances.latest
+        WeightHistory.record(scope, actor_id: actor.id, event: Stance::WEIGHT_EVENT) do
+          scope.update_all(weight: VoteWeight.parse!(weight))
+        end
       else
         raise ActionController::BadRequest, 'invalid weight mode'
       end

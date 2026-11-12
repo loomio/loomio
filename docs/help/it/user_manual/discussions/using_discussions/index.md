@@ -1,10 +1,10 @@
 ---
 title: Usare le discussioni
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: e9d86e0b50198559
@@ -32,7 +32,7 @@ generated:
   navigation: fe388c59c614041d
   notifications-and-members: a526edf3f2b9ef15
   email-notifications-for-this-thread: 1378f06800e6b092
-  invite-people: 47902f0aeb2a230b
+  invite-people: 98d8ef790f4def73
   seen-by: 10f2cba747fbd1d2
   notified: afc4d72f20379934
   actions: 3734d406e6d88519
@@ -40,8 +40,8 @@ generated:
   markdown: b4bc4940294e6465
   thread-settings-and-display: f515463ad98485ff
   pin-or-unpin-a-thread: 17556b3b4c703f8f
-  move-a-thread: 4f09c504b12c910b
-  lock-or-unlock-a-thread: f2400d60f1e08e8b
+  move-a-thread: d62f8b4274c00110
+  lock-or-unlock-a-thread: 2ae1e542f9689190
   delete-a-thread: 31d4454edc4599c8
 title_source: 99e2d1eb313f35c4
 title_generated: d64715f4f6e924c8
@@ -153,23 +153,7 @@ Seleziona l'impostazione attuale delle notifiche per scegliere se Loomio deve in
 
 ### Invita persone
 
-Seleziona **Invita persone** per aggiungere persone dopo l'avvio della conversazione.
-
-![Invita persone nella barra laterale della conversazione](../notifying_people/thread_invite_icon.png)
-
-Seleziona un gruppo o sottogruppo, inserisci i nomi dei singoli membri oppure inserisci un indirizzo email per invitare un ospite.
-
-Il campo **Trova o invita persone** filtra anche l'elenco delle persone già presenti nella conversazione. Svuota il campo per mostrare di nuovo l'elenco completo e usa i comandi di paginazione se ci sono più di 50 persone. Dopo aver selezionato i destinatari, l'elenco dei membri lascia il posto al campo del messaggio facoltativo. Le nuove persone vengono invitate; quelle che hanno già accesso ricevono un'altra notifica quando selezioni **Invita o notifica**.
-
-![Finestra Invita persone con un campo per nomi e indirizzi email](../notifying_people/thread_invite.png)
-
-Un ospite può vedere questa conversazione e parteciparvi, ma non può vedere le altre discussioni del gruppo a meno che non riceva un invito separato.
-
-Puoi chiudere gli avvisi con le istruzioni nella parte superiore della finestra. Loomio ricorda quali avvisi hai chiuso per il tuo account.
-
-![Invito di un ospite tramite indirizzo email](../notifying_people/invite_guest.png)
-
-Per rimuovere una persona, apri il menu con i tre puntini (**⋯**) accanto al suo nome e seleziona **Rimuovi dalla discussione**.
+Seleziona **Invita persone** nella barra laterale destra per invitare persone o inviare loro una notifica sulla discussione. Consulta [Invitare persone a una discussione](/en/user_manual/discussions/inviting_people) per informazioni su gruppi, gruppi principali, ospiti, chat e notifiche di invito.
 
 <!-- translation-section: seen-by -->
 
@@ -337,6 +321,10 @@ Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione n
 
 Seleziona **Sposta discussione** per spostare una conversazione in un altro gruppo, in un sottogruppo o trasformarla in una conversazione diretta. Sarà visibile ai membri del gruppo di destinazione e a chiunque sia stato invitato specificamente a partecipare.
 
+Quando sposti una conversazione, Loomio mostra quante persone perderebbero il permesso di partecipare. Puoi mantenerle come ospiti senza inviare notifiche di invito. Per uno spostamento in un altro gruppo o sottogruppo, devi avere il permesso di invitare ospiti nel gruppo di destinazione; gli ospiti già presenti mantengono l'accesso.
+
+Quando trasformi una conversazione in una conversazione diretta, le persone che hanno partecipato mantengono automaticamente l'accesso. Selezionando l'opzione per mantenere gli ospiti, mantieni anche l'accesso degli altri membri e ospiti attuali. Tu e la persona che ha creato la conversazione diventate amministratori della conversazione.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -348,7 +336,7 @@ Per spostare solo alcuni elementi dell'attività anziché l'intera conversazione
 
 ### Bloccare o sbloccare una conversazione
 
-Blocca una conversazione per impedire commenti o ulteriori modifiche. Una conversazione può essere bloccata solo dopo la chiusura dei suoi sondaggi attivi.
+Blocca una conversazione per archiviarla così com'è. Nessuno può aggiungere contenuti a una conversazione bloccata, modificarla o usarla per invitare o notificare persone. Puoi bloccare una conversazione solo dopo la chiusura dei suoi sondaggi attivi.
 
 Seleziona **Blocca discussione** sotto **Azioni**. Le conversazioni bloccate vengono rimosse dall'elenco delle discussioni aperte e contrassegnate con il tag **Bloccate**.
 

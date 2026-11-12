@@ -3084,6 +3084,10 @@ ja:
     direct_thread: ダイレクトスレッド
     direct_thread_hint: 参加者全員が引き続きアクセスできます。あなたとスレッド作成者がスレッド管理者となります。
     direct_thread_anonymous_poll: 匿名投票を含むスレッドは、誰が投票したかが明らかになる可能性があるため、直接投票スレッドに変換することはできません。
+    members_losing_access: '参加権限を失う人: %{count}'
+    keep_members_as_guests: この人たちをスレッドのゲストとして残します
+    access_preview_error: 参加権限を失う人を確認できませんでした
+    guest_access_unavailable: この移動ではゲストに参加権限を付与できません
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。

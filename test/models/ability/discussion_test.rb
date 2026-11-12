@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Ability::DiscussionTest < ActiveSupport::TestCase
-  test "editing a thread needs current access, and only thread admins can edit a locked one" do
+  test "editing a thread needs current access, and nobody can edit a locked one" do
     discussion = discussions(:discussion)
     topic = discussion.topic
     group = topic.group
@@ -16,7 +16,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     group.update_columns(members_can_edit_discussions: true)
     topic.update_columns(locked_at: 1.day.ago)
     assert_not users(:user).can?(:update, discussion.reload), "members cannot edit a locked thread"
-    assert users(:admin).can?(:update, discussion), "thread admins can edit a locked thread"
+    assert_not users(:admin).can?(:update, discussion), "thread admins cannot edit a locked thread"
   end
 
   test "thread guests cannot announce to the group, and deleted threads cannot be announced" do

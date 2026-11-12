@@ -32,7 +32,7 @@ export default {
 
   // Starting a new poll in the topic.
   canCreate(topic) {
-    if (topic.topicableType === 'Poll') { return false; }
+    if (topic.topicableType === 'Poll' || topic.lockedAt) { return false; }
     if (topic.activePollsCount > 0 && topic.pollsOneAtATime) { return false; }
     return topic.group().isEnabled() && (topic.adminsInclude(Session.user()) ||
       (topic.group().membersCanRaiseMotions && topic.membersInclude(Session.user())));
@@ -40,7 +40,7 @@ export default {
 
   canAnnounce(poll) {
     const user = Session.user();
-    if (poll.discardedAt) { return false; }
+    if (poll.discardedAt || (poll.topicId && poll.topic().lockedAt)) { return false; }
     if (poll.groupId) {
       return poll.group().isEnabled() && (poll.group().adminsInclude(user) ||
         (poll.group().membersCanAnnounce && poll.adminsInclude(user)));

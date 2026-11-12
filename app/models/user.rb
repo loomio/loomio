@@ -14,7 +14,7 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name, :email
 
-  has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
+  has_paper_trail only: [:name, :username, :email, :email_newsletter, :email_verified, :is_admin, :bot, :locked_at, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   MAXIMUM_LOGIN_ATTEMPTS = ENV.fetch('MAX_LOGIN_ATTEMPTS', 10).to_i

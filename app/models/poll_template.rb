@@ -140,8 +140,7 @@ class PollTemplate < ApplicationRecord
     :comment_length_max,
     :attachments_admin_only,
     :hidden_at,
-    :discarded_at,
-    :attachments
+    :discarded_at
   ]
 
   def dump_i18n

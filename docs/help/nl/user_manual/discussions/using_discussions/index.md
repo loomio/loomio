@@ -1,10 +1,10 @@
 ---
 title: Threads gebruiken
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 1451dd3b0ad2020c
@@ -32,7 +32,7 @@ generated:
   navigation: 86e7cd6d837054c3
   notifications-and-members: 16cfc54f179bdd17
   email-notifications-for-this-thread: a9100f04d60b3728
-  invite-people: 17f2f939cfe06257
+  invite-people: bce6bdf0e76ccfae
   seen-by: 87fecfc34c4a9764
   notified: 4ce9c68d90ac8756
   actions: 2ae4103e57fac588
@@ -40,8 +40,8 @@ generated:
   markdown: 1947cf64bc1b5b02
   thread-settings-and-display: 68266432d7b18558
   pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
-  move-a-thread: 6636c5b668239a0a
-  lock-or-unlock-a-thread: 9bf7495059753889
+  move-a-thread: 9c44ce214041421e
+  lock-or-unlock-a-thread: 39608ede659235cd
   delete-a-thread: 78c4a9c45e4b5cf3
 title_source: 99e2d1eb313f35c4
 title_generated: 58e0940112bb0af1
@@ -155,23 +155,7 @@ Selecteer de huidige meldingsinstelling om te kiezen of Loomio je e-mails stuurt
 
 ### Mensen uitnodigen
 
-Selecteer **Mensen uitnodigen** om mensen toe te voegen nadat de thread is gestart.
-
-![Mensen uitnodigen in de zijbalk van de thread](../notifying_people/thread_invite_icon.png)
-
-Selecteer een groep of subgroep, voer de namen van individuele leden in of voer een e-mailadres in om een gast uit te nodigen.
-
-Het veld **Zoek of nodig mensen uit** filtert ook de lijst met mensen die al in de thread zitten. Maak het veld leeg om de volledige lijst weer te tonen en gebruik de paginaknoppen als er meer dan 50 mensen zijn. Nadat je ontvangers hebt geselecteerd, maakt de ledenlijst plaats voor het optionele berichtveld. Nieuwe mensen worden uitgenodigd; mensen die al toegang hebben, ontvangen opnieuw een melding wanneer je **Uitnodigen of opnieuw informeren** selecteert.
-
-![Venster Mensen uitnodigen met een veld voor namen en e-mailadressen](../notifying_people/thread_invite.png)
-
-Een gast kan deze thread bekijken en eraan deelnemen, maar kan andere discussies in de groep alleen zien als die daar afzonderlijk voor is uitgenodigd.
-
-Je kunt de uitlegmeldingen bovenaan het venster sluiten. Loomio onthoudt voor jouw account welke meldingen je hebt gesloten.
-
-![Een gast uitnodigen via een e-mailadres](../notifying_people/invite_guest.png)
-
-Om iemand te verwijderen, open je het menu met drie puntjes (**⋯**) naast de naam en selecteer je **Verwijderen uit discussie**.
+Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of hun een melding over de discussie te sturen. Zie [Mensen uitnodigen voor een discussie](/en/user_manual/discussions/inviting_people) voor informatie over groepen, hoofdgroepen, gasten, chatruimtes en meldingen van uitnodigingen.
 
 <!-- translation-section: seen-by -->
 
@@ -339,6 +323,10 @@ Selecteer **Thread losmaken** om een thread terug te plaatsen in de volgorde op 
 
 Selecteer **Verplaats discussie** om een thread naar een andere groep of subgroep te verplaatsen, of er een directe thread van te maken. De thread is zichtbaar voor leden van de bestemmingsgroep en iedereen die er specifiek voor is uitgenodigd.
 
+Bij het verplaatsen van een thread laat Loomio zien hoeveel mensen hun toestemming om deel te nemen zouden verliezen. Je kunt hen als gasten behouden zonder meldingen over uitnodigingen te versturen. Bij een verplaatsing naar een andere groep of subgroep heb je hiervoor toestemming nodig om gasten uit te nodigen in de bestemmingsgroep; bestaande gasten behouden hun toegang.
+
+Als je er een directe thread van maakt, behouden mensen die hebben deelgenomen automatisch hun toegang. Als je de gastoptie selecteert, behouden ook de overige huidige leden en gasten hun toegang. Jij en de maker van de thread worden thread admins.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -350,7 +338,7 @@ Zie [Items tussen threads verplaatsen](/en/user_manual/discussions/moving_items/
 
 ### Een thread vergrendelen of ontgrendelen
 
-Vergrendel een thread om reacties of verdere wijzigingen te voorkomen. Een thread kan pas worden vergrendeld nadat de actieve peilingen zijn gesloten.
+Vergrendel een thread om deze in de huidige staat te archiveren. Niemand kan iets aan een vergrendelde thread toevoegen, deze wijzigen of vanuit de thread mensen uitnodigen of meldingen sturen. Je kunt een thread pas vergrendelen nadat de actieve peilingen zijn gesloten.
 
 Selecteer **Discussie vergrendelen** onder **Acties**. Vergrendelde threads worden uit de lijst met open discussies verwijderd en krijgen het label **Vergrendeld**.
 

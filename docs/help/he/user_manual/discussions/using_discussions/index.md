@@ -1,10 +1,10 @@
 ---
 title: שימוש בשרשורים
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 1ae7b20bef6dbde7
@@ -32,7 +32,7 @@ generated:
   navigation: f223b31c7de2e125
   notifications-and-members: f73e0575f26942a3
   email-notifications-for-this-thread: f4d46e8ba0d90d65
-  invite-people: 9b77f28cfb826a7f
+  invite-people: 42075c6c1ede1221
   seen-by: 2ebe4a3c6ad80256
   notified: 7ca96a31d5e4916f
   actions: 4abaa67a88c8ef75
@@ -40,8 +40,8 @@ generated:
   markdown: 15369657b0c43e23
   thread-settings-and-display: 7c943d2adb2ea7ce
   pin-or-unpin-a-thread: d1557b5934abb66e
-  move-a-thread: 80077f6c5a1fc0a7
-  lock-or-unlock-a-thread: bc13d28b92075e83
+  move-a-thread: 64954812a03504fb
+  lock-or-unlock-a-thread: fc46198e3fbd2c30
   delete-a-thread: fd7ecef644490437
 title_source: 99e2d1eb313f35c4
 title_generated: 17fa81d3e6d46882
@@ -158,23 +158,7 @@ needs_review:
 
 ### הזמנת אנשים
 
-יש לבחור **הזמינו אנשים** כדי להוסיף אנשים לאחר פתיחת השרשור.
-
-![הזמנת אנשים בסרגל הצד של השרשור](../notifying_people/thread_invite_icon.png)
-
-יש לבחור קבוצה או תת־קבוצה, להזין שמות של חברים מסוימים, או להזין כתובת דוא״ל כדי להזמין אורח.
-
-השדה **מצא או הזמן אנשים** מסנן גם את רשימת האנשים שכבר נמצאים בשרשור. יש לנקות את השדה כדי להציג שוב את הרשימה המלאה, ולהשתמש בפקדי העימוד אם יש יותר מ־50 אנשים. לאחר בחירת הנמענים, במקום רשימת החברים מופיע שדה להודעה שאפשר להוסיף. אנשים חדשים מקבלים הזמנה; אנשים שכבר יש להם גישה מקבלים התראה נוספת בעת בחירת **הזמנה או הודעה**.
-
-![חלון הזמנת אנשים עם שדה לשמות ולכתובות דוא״ל](../notifying_people/thread_invite.png)
-
-לאורח יש אפשרות לראות את השרשור הזה ולהשתתף בו, אך אין גישה לדיונים אחרים בקבוצה ללא הזמנה נפרדת.
-
-ניתן לסגור את הודעות ההדרכה בראש החלון. Loomio זוכר בחשבון אילו הודעות נסגרו.
-
-![הזמנת אורח באמצעות כתובת דוא״ל](../notifying_people/invite_guest.png)
-
-כדי להסיר מישהו מהדיון, יש לפתוח את תפריט שלוש הנקודות (**⋯**) לצד השם ולבחור **הסר מהדיון**.
+יש לבחור **הזמינו אנשים** בסרגל הצד הימני כדי להזמין אנשים או לשלוח להם התראה על הדיון. למידע על קבוצות, קבוצות אם, אורחים, חדרי צ׳אט והתראות על הזמנות, ראו [הזמנת אנשים לדיון](/en/user_manual/discussions/inviting_people).
 
 <!-- translation-section: seen-by -->
 
@@ -342,6 +326,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 יש לבחור **הזזת שרשור** כדי להעביר שרשור לקבוצה אחרת, לתת־קבוצה או להפוך אותו לשרשור ישיר. השרשור יהיה גלוי לחברי קבוצת היעד ולכל מי שהוזמנו אליו במפורש.
 
+בעת העברת שרשור, Loomio מציג כמה אנשים יאבדו את ההרשאה להשתתף. ניתן להשאיר אותם כאורחים בלי לשלוח התראות על הזמנה. בהעברה לקבוצה אחרת או לתת־קבוצה, נדרשת לשם כך הרשאה להזמין אורחים בקבוצת היעד; הגישה של אורחים קיימים נשמרת.
+
+בעת הפיכת שרשור לשרשור ישיר, הגישה של מי שכבר השתתפו בו נשמרת אוטומטית. בחירה באפשרות להשאיר אורחים משמרת גם את הגישה של שאר החברים והאורחים הנוכחיים. מי שביצעו את ההמרה ומי שיצרו את השרשור הופכים למנהלי השרשור.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -353,7 +341,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### נעילה או ביטול נעילה של שרשור
 
-ניתן לנעול שרשור כדי למנוע תגובות או שינויים נוספים. אפשר לנעול שרשור רק לאחר שכל הסקרים הפעילים בו נסגרו.
+ניתן לנעול שרשור כדי לשמור אותו בארכיון כפי שהוא. אין אפשרות להוסיף תוכן לשרשור נעול, לשנות אותו, להזמין אליו אנשים או לשלוח ממנו הודעות לאנשים. אפשר לנעול שרשור רק לאחר שכל הסקרים הפעילים בו נסגרו.
 
 יש לבחור **נעילת שרשור** תחת **פעולות**. שרשורים נעולים מוסרים מרשימת הדיונים הפתוחים ומסומנים בתגית **נָעוּל**.
 

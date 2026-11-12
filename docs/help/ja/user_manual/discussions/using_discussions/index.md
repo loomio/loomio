@@ -1,10 +1,10 @@
 ---
 title: スレッドの使い方
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: f6e9afa79482ac70
@@ -32,7 +32,7 @@ generated:
   navigation: b04552874a610780
   notifications-and-members: 25aa0c5dc6de7f9e
   email-notifications-for-this-thread: 8c89b5bfdb61217f
-  invite-people: 39742ef482af7b73
+  invite-people: eb9f35f76b01aa25
   seen-by: '080b0ef037480024'
   notified: e060e674a288eb40
   actions: 7ce501c7a92745cc
@@ -40,8 +40,8 @@ generated:
   markdown: f01e47537dc12d37
   thread-settings-and-display: 31491e0a1edb4745
   pin-or-unpin-a-thread: dd96e104a57fbd03
-  move-a-thread: d1e130cbb12d7b27
-  lock-or-unlock-a-thread: c6a71b989ce0cbab
+  move-a-thread: 3ea157966709faab
+  lock-or-unlock-a-thread: 4f3659d2fde72f52
   delete-a-thread: 1e6f9b883306a42e
 title_source: 99e2d1eb313f35c4
 title_generated: 1a2d46d8965028c7
@@ -155,23 +155,7 @@ H2またはH3の見出しを含むコメント、アンケート、提案は、�
 
 ### 人を招待する
 
-スレッドの開始後に人を追加するには、**メンバーを招待する**を選択します。
-
-![スレッドのサイドバーにあるメンバーを招待する操作](../notifying_people/thread_invite_icon.png)
-
-グループまたはサブグループを選択するか、個々のメンバーの名前を入力します。ゲストを招待する場合は、メールアドレスを入力します。
-
-**人を探したり招待したりする**欄では、すでにスレッドに参加している人の一覧も絞り込めます。入力を消すと、一覧全体が再び表示されます。50人を超える場合は、ページ切り替えの操作を使います。通知先を選択すると、メンバー一覧に代わって、任意のメッセージを入力する欄が表示されます。**招待または通知する**を選択すると、新しい人には招待が送られ、すでにアクセスできる人には再度通知が送られます。
-
-![名前やメールアドレスの入力欄がある招待ウィンドウ](../notifying_people/thread_invite.png)
-
-ゲストはこのスレッドを閲覧して参加できますが、別途招待されない限り、グループ内のほかのディスカッションは閲覧できません。
-
-ウィンドウ上部の案内は非表示にできます。Loomioは、非表示にした案内をアカウントごとに記憶します。
-
-![メールアドレスでゲストを招待する画面](../notifying_people/invite_guest.png)
-
-参加者を削除するには、名前の横にある三点メニュー（**⋯**）を開き、**ディスカッションから削除**を選択します。
+人を招待したり、ディスカッションについて通知したりするには、右サイドバーの**メンバーを招待する**を選択します。グループ、親グループ、ゲスト、チャットルーム、招待通知については、[ディスカッションに人を招待する](/en/user_manual/discussions/inviting_people)を参照してください。
 
 <!-- translation-section: seen-by -->
 
@@ -339,6 +323,10 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 **スレッドを移動**を選択すると、スレッドを別のグループやサブグループに移動したり、ダイレクトスレッドに変更したりできます。移動先のグループのメンバーと、そのスレッドに個別に招待された人が閲覧できるようになります。
 
+スレッドを移動する際、Loomioは参加権限を失う人数を表示します。招待の通知を送信せずに、その人たちをゲストとして残すことができます。別のグループやサブグループに移動する場合は、移動先のグループでゲストを招待する権限が必要です。既存のゲストは引き続きアクセスできます。
+
+ダイレクトスレッドに変更する場合、参加したことがある人は自動的に引き続きアクセスできます。ゲストとして残す設定を選択すると、その他の現在のメンバーとゲストも引き続きアクセスできます。変更を行った人とスレッドの作成者がスレッド管理者になります。
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -350,7 +338,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### スレッドのロックと解除
 
-スレッドをロックすると、コメントや追加の変更を防げます。スレッドをロックできるのは、実施中のアンケートがすべて締め切られた後です。
+スレッドをロックすると、そのままの状態で保存できます。ロックされたスレッドでは、誰も内容の追加や変更、そのスレッドからの招待や通知を行えません。スレッドをロックできるのは、実施中のアンケートがすべて締め切られた後です。
 
 **行動**の下にある**スレッドをロック**を選択します。ロックされたスレッドは、進行中のディスカッションの一覧から除外され、**ロック済み**のタグが付きます。
 

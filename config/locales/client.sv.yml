@@ -3093,6 +3093,10 @@ sv:
     direct_thread: Direkt tråd
     direct_thread_hint: Alla som har deltagit kommer att behålla åtkomst. Du och trådskaparen kommer att vara trådadministratörer.
     direct_thread_anonymous_poll: Trådar som innehåller anonyma omröstningar kan inte konverteras till direkta trådar eftersom det kan avslöja vem som röstade.
+    members_losing_access: 'Personer som skulle förlora rätten att delta: %{count}'
+    keep_members_as_guests: Behåll dessa personer som gäster i tråden
+    access_preview_error: Kunde inte kontrollera vilka som skulle förlora rätten att delta
+    guest_access_unavailable: Gäståtkomst kan inte ges vid den här flytten
   auth:
     oauth_cancelled: Inloggningen avbröts
     switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.

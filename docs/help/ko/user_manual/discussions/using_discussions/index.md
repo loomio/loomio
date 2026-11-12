@@ -7,7 +7,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   thread-settings-and-display: 175b9e93cfc4f736
@@ -15,8 +15,8 @@ sections:
   print: 8fac34ad532e8cb5
   markdown: c6434ed486db8be4
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 55a505b2fc5c056b
@@ -26,7 +26,7 @@ generated:
   navigation: d42610687b58d3ca
   notifications-and-members: b9e1b82797d36807
   email-notifications-for-this-thread: c795dbf534e07e99
-  invite-people: 317131505bef54f3
+  invite-people: d041f863d9c4a16b
   seen-by: 5966996f2f6e9892
   notified: 9cdc759a741dddc4
   thread-settings-and-display: e85e9cc96d155695
@@ -34,16 +34,16 @@ generated:
   print: b06ea4e6a45b0203
   markdown: b9f673a7f0626f42
   pin-or-unpin-a-thread: d35b3e903d5f1eb4
-  move-a-thread: 9b7e4d72a93bcc37
-  lock-or-unlock-a-thread: cbd8c814bdedb6e2
+  move-a-thread: f0be637b4246781b
+  lock-or-unlock-a-thread: 2b553eb73c89f019
   delete-a-thread: fff257c822d4232f
 title: 스레드 사용하기
 title_source: 99e2d1eb313f35c4
 title_generated: f9f56e0b6f80016d
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-12'
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 needs_review:
   markdown: check the interface label "**동의**" for "**Agree**"; check the interface label "**기권**" for "**Abstain**"
@@ -155,23 +155,7 @@ H2 또는 H3 제목이 포함된 댓글, 투표, 제안은 주요 항목 링크�
 
 ### 초대
 
-스레드를 시작한 후 사람을 추가하려면 **초대**를 선택하세요.
-
-![스레드 사이드바의 초대](../notifying_people/thread_invite_icon.png)
-
-그룹이나 하위 그룹을 선택하거나, 개별 멤버의 이름을 입력하거나, 이메일 주소를 입력해 게스트를 초대하세요.
-
-**사람 찾기 또는 초대** 입력란으로 이미 스레드에 참여 중인 사람의 목록을 필터링할 수도 있습니다. 입력란을 비우면 전체 목록이 다시 표시되며, 사람이 50명을 넘으면 페이지 이동 기능을 사용하세요. 수신자를 선택하면 멤버 목록 대신 메시지를 선택적으로 입력할 수 있는 입력란이 나타납니다. **초대 또는 알림**을 선택하면 새로 추가한 사람에게는 초대가 전송되고, 이미 접근 권한이 있는 사람에게는 알림이 다시 전송됩니다.
-
-![이름과 이메일 주소 입력란이 있는 초대 창](../notifying_people/thread_invite.png)
-
-게스트는 이 스레드를 보고 참여할 수 있지만, 별도로 초대받지 않으면 그룹의 다른 토론은 볼 수 없습니다.
-
-창 위쪽의 안내문은 닫을 수 있습니다. Loomio는 계정별로 어떤 안내문을 닫았는지 기억합니다.
-
-![이메일 주소로 게스트 초대](../notifying_people/invite_guest.png)
-
-누군가를 제외하려면 이름 옆의 점 세 개 메뉴(**⋯**)를 열고 **토론에서 제외**를 선택하세요.
+사람을 초대하거나 토론에 대해 알리려면 오른쪽 사이드바에서 **초대**를 선택하세요. 그룹, 상위 그룹, 게스트, 채팅방, 초대 알림에 대한 내용은 [토론에 초대하기](/en/user_manual/discussions/inviting_people)를 참고하세요.
 
 <!-- translation-section: seen-by -->
 
@@ -337,7 +321,11 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### 스레드 이동
 
-**스레드 이동**을 선택하면 스레드를 다른 그룹이나 하위 그룹으로 이동하거나 다이렉트 스레드로 전환할 수 있습니다. 이동한 그룹의 멤버와 해당 스레드에 개별적으로 초대된 사람이 스레드를 볼 수 있습니다.
+**스레드 이동**을 선택하면 스레드를 다른 그룹이나 하위 그룹으로 이동하거나 다이렉트 스레드로 전환할 수 있습니다. 대상 그룹의 멤버와 해당 스레드에 개별적으로 초대된 사람이 스레드를 볼 수 있습니다.
+
+스레드를 이동할 때 Loomio는 참여 권한을 잃게 되는 사람의 수를 표시합니다. 초대 알림을 보내지 않고 이 사람들을 게스트로 유지하도록 선택할 수 있습니다. 다른 그룹이나 하위 그룹으로 이동하는 경우에는 대상 그룹에서 게스트를 초대할 권한이 필요합니다. 기존 게스트의 접근 권한은 유지됩니다.
+
+다이렉트 스레드로 전환하면 참여한 적이 있는 사람의 접근 권한은 자동으로 유지됩니다. 게스트 유지 선택지를 선택하면 현재 다른 멤버와 게스트의 접근 권한도 유지됩니다. 이동하는 사람과 스레드 작성자는 스레드 관리자가 됩니다.
 
 ![](../discussion_management/move_thread_select.png)
 
@@ -350,7 +338,7 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 
 ### 스레드 잠금 또는 잠금 해제
 
-댓글 작성이나 추가 변경을 막으려면 스레드를 잠그세요. 스레드에서 진행 중인 투표가 모두 마감된 후에만 스레드를 잠글 수 있습니다.
+스레드를 현재 상태로 보관하려면 잠그세요. 잠긴 스레드에서는 누구도 내용을 추가하거나 변경할 수 없으며, 사람을 초대하거나 알림을 보낼 수도 없습니다. 스레드에서 진행 중인 투표가 모두 마감된 후에만 스레드를 잠글 수 있습니다.
 
 **작업**에서 **스레드 잠금**을 선택하세요. 잠긴 스레드는 진행 중인 토론 목록에서 제외되고 **잠김** 태그가 표시됩니다.
 

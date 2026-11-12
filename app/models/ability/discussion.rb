@@ -27,9 +27,10 @@ module Ability::Discussion
       )
     end
 
-    # Matches Topic :announce: thread guests cannot notify the group.
+    # Matches Topic :announce: thread guests cannot notify the group, and
+    # nobody can notify from a locked thread.
     can [ :announce ], ::Discussion do |discussion|
-      discussion.kept? &&
+      discussion.kept? && !discussion.topic&.locked_at &&
       if discussion.group_id
         discussion.group.admins.exists?(user.id) ||
         (discussion.group.members_can_announce && discussion.group.members.exists?(user.id))
@@ -38,12 +39,12 @@ module Ability::Discussion
       end
     end
 
-    # Thread admins can always edit. Others need current access to an unlocked
-    # thread, and either authorship or the members-can-edit setting.
+    # Nobody edits a locked thread; thread admins unlock it first. Otherwise
+    # thread admins can edit, and members need authorship or the members-can-edit setting.
     can [ :update ], ::Discussion do |discussion|
-      discussion.discarded_at.nil? &&
+      discussion.discarded_at.nil? && !discussion.topic.locked_at &&
       (discussion.admins.exists?(user.id) ||
-        (!discussion.topic.locked_at && discussion.members.exists?(user.id) &&
+        (discussion.members.exists?(user.id) &&
           (discussion.author == user || discussion.group.members_can_edit_discussions)))
     end
 

@@ -26,7 +26,7 @@ class Api::V1::TrialsController < Api::V1::RestfulController
     params.delete(:trial)
     params.delete(:format) # I really dont know where these params come from
     params.delete(:turnstile_token) # consumed by the Turnstile check above
-    params.permit(
+    params.except(:locale).permit(
       :user_name,
       :user_email,
       :user_email_newsletter,

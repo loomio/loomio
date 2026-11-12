@@ -84,13 +84,13 @@ class TopicService
 
   def self.lock(topic:, actor:)
     actor.ability.authorize! :update, topic
-    topic.update(locked_at: Time.now, locker_id: actor.id)
+    PaperTrail.request(whodunnit: actor.id) { topic.update(locked_at: Time.now, locker_id: actor.id) }
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
   def self.unlock(topic:, actor:)
     actor.ability.authorize! :update, topic
-    topic.update(locked_at: nil, locker_id: nil)
+    PaperTrail.request(whodunnit: actor.id) { topic.update(locked_at: nil, locker_id: nil) }
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
@@ -102,10 +102,22 @@ class TopicService
 
     topic_item = topic.with_write_lock do
       actor.ability.authorize! :move, topic
-      direct_participants_retain!(topic:, actor:) if direct
+      destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
+      retain_members = ActiveModel::Type::Boolean.new.cast(params[:retain_members_as_guests])
+      members_to_retain = members_losing_access(topic: topic, destination: destination) if retain_members && !direct
+      direct_participants_retain!(topic:, actor:, retain_members:) if direct
 
       topic.update!(group_id: destination.present? ? destination.id : nil,
                     private: moved_discussion_privacy_for(topic, destination))
+
+      if retain_members
+        actor.ability.authorize!(:add_guests, topic)
+        unless direct
+          members_to_retain.in_batches(of: 500) do |users|
+            add_readers(topic: topic, actor: actor, users: users)
+          end
+        end
+      end
 
       # TODO we gotta stop adding group_id to activestorage attachment
       ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
@@ -127,6 +139,37 @@ class TopicService
     on_topic_item&.call(topic_item)
     topic
   end
+
+  # Count participation access, including members who can still read through
+  # parent-group visibility. Direct conversion retains contributors by default;
+  # other current members and guests can be kept through the same explicit choice.
+  def self.move_access(topic:, params:, actor:)
+    actor.ability.authorize!(:move, topic)
+    if ActiveModel::Type::Boolean.new.cast(params[:make_direct])
+      validate_direct_move!(topic: topic)
+      return {
+        members_losing_access_count: topic.members.where.not(id: direct_participant_ids(topic:, actor:)).count,
+        # The mover becomes a direct-thread admin. Execution checks the real
+        # destination topic's guest permission after conversion, inside the lock.
+        can_retain_members_as_guests: !topic.locked_at
+      }
+    end
+
+    destination = ModelLocator.new(:group, params).locate!
+    actor.ability.authorize!(:move_discussions_to, destination)
+    target = Topic.new(group: destination, locked_at: topic.locked_at)
+    {
+      members_losing_access_count: members_losing_access(topic: topic, destination: destination).count,
+      can_retain_members_as_guests: actor.can?(:add_guests, target)
+    }
+  end
+
+  def self.members_losing_access(topic:, destination:)
+    topic.members
+      .where.not(id: destination.members.select(:id))
+      .where.not(id: topic.topic_readers.guests.select(:user_id))
+  end
+  private_class_method :members_losing_access
 
   def self.direct_participant_ids(topic:, actor:)
     direct_participant_ids = topic.items.where.not(user_id: nil).distinct.pluck(:user_id)
@@ -152,19 +195,25 @@ class TopicService
         )
       end
 
-    direct_participant_ids
-      .concat([actor.id, topic.topicable.author_id])
-      .compact
-      .uniq
+    direct_participant_ids.concat([actor.id, topic.topicable.author_id])
+    # Historical contributions must not restore access revoked before the move.
+    topic.members.where(id: direct_participant_ids.compact.uniq).pluck(:id)
   end
 
-  def self.direct_participants_retain!(topic:, actor:)
+  def self.validate_direct_move!(topic:)
     if topic.has_anonymous_polls?
       topic.errors.add(:base, I18n.t("errors.direct_thread_anonymous_poll"))
       raise ActiveRecord::RecordInvalid, topic
     end
+  end
+  private_class_method :validate_direct_move!
 
+  def self.direct_participants_retain!(topic:, actor:, retain_members: false)
+    validate_direct_move!(topic: topic)
     direct_participant_ids = direct_participant_ids(topic:, actor:)
+    # Snapshot current access before revoking readers. Reading alone must not
+    # silently become an invitation, and revoked guests must stay excluded.
+    direct_participant_ids |= topic.members.pluck(:id) if retain_members
     direct_admin_ids = [actor.id, topic.topicable.author_id].compact.uniq
     direct_revoked_at = Time.current
 
@@ -507,6 +556,15 @@ class TopicService
         ]
       end
     end
+
+    # Reading a visible thread creates a non-guest reader. Inviting that person
+    # later must grant access on the existing row, preserving delivery settings,
+    # read history and admin status. Renew revoked guest invitations as well.
+    guest_user_ids = users.pluck(:id) - volume_by_user_id.keys
+    TopicReader.where(topic_id: topic.id, user_id: guest_user_ids)
+      .where('guest = FALSE OR revoked_at IS NOT NULL')
+      .update_all(guest: true, inviter_id: actor.id, accepted_at: nil,
+                  revoked_at: nil, revoker_id: nil, updated_at: Time.current)
 
     TopicReader.
       where(topic_id: topic.id, user_id: users.map(&:id)).

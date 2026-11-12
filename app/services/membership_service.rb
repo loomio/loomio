@@ -211,13 +211,15 @@ class MembershipService
 
     weight_by_id = Arel::Nodes::Case.new(Membership.arel_table[:id])
     weights.each { |id, weight| weight_by_id.when(id.to_i).then(weight) }
-    Membership.where(id: membership_ids).update_all(weight: weight_by_id, updated_at: Time.current)
+    scope = Membership.where(id: membership_ids)
+    WeightHistory.record(scope, actor_id: actor.id) { scope.update_all(weight: weight_by_id, updated_at: Time.current) }
   end
 
   # Apply one weight to every active member in a single update.
   def self.reset_weights(group:, weight:, actor:)
     actor.ability.authorize! :set_weight, Membership.new(group: group)
-    group.memberships.active.update_all(weight: VoteWeight.parse!(weight), updated_at: Time.current)
+    scope = group.memberships.active
+    WeightHistory.record(scope, actor_id: actor.id) { scope.update_all(weight: VoteWeight.parse!(weight), updated_at: Time.current) }
   end
 
   def self.resend(membership:, actor:)

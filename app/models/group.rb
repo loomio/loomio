@@ -157,6 +157,8 @@ class Group < ApplicationRecord
                          :is_visible_to_parent_members,
                          :discussion_privacy_options,
                          :members_can_add_members,
+                         :members_can_add_guests,
+                         :members_can_vote,
                          :membership_granted_upon,
                          :members_can_edit_discussions,
                          :members_can_edit_comments,

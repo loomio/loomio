@@ -69,6 +69,8 @@ const isGroupMember = computed(() => {
     props.discussion.group().membersInclude(Session.user());
 });
 
+// A locked thread cannot notify anyone, even when a thread admin edits it.
+
 const isNonMemberDiscussion = computed(() => {
   return props.discussion.isNew() &&
     !!props.discussion.groupId &&

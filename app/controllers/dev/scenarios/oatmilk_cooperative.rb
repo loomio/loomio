@@ -13,6 +13,41 @@ module Dev::Scenarios::OatmilkCooperative
     redirect_to discussion_path(discussion)
   end
 
+  def setup_manual_oatmilk_invite_thread
+    group, admin, discussion = create_manual_oatmilk_cooperative
+    subgroup = Group.new(
+      name: 'Bottle Trial Board',
+      description: 'Oversee the returnable bottle trial and report back to the cooperative.',
+      parent: group,
+      group_privacy: 'closed',
+      creator: admin
+    )
+    GroupService.create(group: subgroup, actor: admin)
+    subgroup.add_member!(User.find_by!(email: 'samira@oatmilk.example'))
+    mark_manual_oatmilk_delegates(group)
+    create_manual_oatmilk_chatbot(group, admin)
+
+    if params[:view] == 'subgroup'
+      discussion = DiscussionService.create(
+        params: {
+          group_id: subgroup.id,
+          title: 'Bottle trial feedback from the cooperative',
+          description: <<~HTML,
+            <p>The Bottle Trial Board is preparing the six-week returnable bottle trial. We would like the rest of the cooperative to help us check the plan before collections begin.</p>
+            <p><strong>Please share questions about bottle deposits, collection days, and washing capacity.</strong> We will use the feedback to update the cafe guide and assign any remaining work.</p>
+            <p>Read the <a href="https://example.com/oatmilk-bottle-return-guide">draft bottle return guide</a> and add your suggestions below. The board will review them at its next meeting.</p>
+          HTML
+          description_format: 'html',
+          private: true
+        },
+        actor: admin
+      )
+    end
+
+    sign_in admin
+    redirect_to discussion_path(discussion)
+  end
+
   def setup_manual_oatmilk_copy_markdown
     _group, coordinator, discussion = create_manual_oatmilk_cooperative
     production_lead = User.find_by!(email: 'samira@oatmilk.example')

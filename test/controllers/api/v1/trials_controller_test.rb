@@ -57,6 +57,39 @@ class Api::V1::TrialsControllerTest < ActionController::TestCase
     assert_includes JSON.parse(response.body)["errors"]["user_email"], "Not a valid email"
   end
 
+  test "creates a trial with the locale sent by the signup page" do
+    assert_difference ['User.count', 'Group.count'], 1 do
+      post :create, params: {
+        locale: 'ru',
+        user_name: 'Alex',
+        user_email: 'alex-locale@example.com',
+        user_email_newsletter: false,
+        user_legal_accepted: false,
+        group_name: 'Council'
+      }
+      assert_response :success
+    end
+
+    user = User.find_by!(email: 'alex-locale@example.com')
+    group = user.adminable_groups.first
+    assert_equal 'Council', group.name
+    assert_equal "/#{group.handle}", JSON.parse(response.body)['group_path']
+  end
+
+  test "rejects unexpected trial attributes even when a locale is supplied" do
+    assert_no_difference ['User.count', 'Group.count'] do
+      post :create, params: {
+        locale: 'ru',
+        user_name: 'Alex',
+        user_email: 'alex-unexpected@example.com',
+        group_name: 'Council',
+        admin: true
+      }
+    end
+
+    assert_response :bad_request
+  end
+
   test "existing email returns error" do
     User.create!(email: "verified@example.com", email_verified: true)
     post :create, params: {

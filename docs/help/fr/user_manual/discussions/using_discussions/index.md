@@ -1,10 +1,10 @@
 ---
 title: Utiliser les fils de discussion
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 3b64d53cca0abd7b
@@ -32,7 +32,7 @@ generated:
   navigation: ad1f53227d872140
   notifications-and-members: ef403b4c0ca77cca
   email-notifications-for-this-thread: 643de5cea948aec0
-  invite-people: c29b7dceb92b98b2
+  invite-people: '038a1126fbfe2233'
   seen-by: 9da96dad4e5c94d0
   notified: 6a9b539b8cbe56b5
   actions: c27c64d76d724643
@@ -40,8 +40,8 @@ generated:
   markdown: 7a818d7100143305
   thread-settings-and-display: d8bdb5e8ee279a5a
   pin-or-unpin-a-thread: 3cb7608b7a17df07
-  move-a-thread: 3015baa5dae6c908
-  lock-or-unlock-a-thread: '4369712522914425'
+  move-a-thread: 1f15eec34b9f8fcb
+  lock-or-unlock-a-thread: 1eaa3fcefd3d8498
   delete-a-thread: 9911a93fdee3bbac
 title_source: 99e2d1eb313f35c4
 title_generated: f56dc994cbc2ff13
@@ -155,23 +155,7 @@ Sélectionnez le paramètre de notification actuel pour choisir si Loomio vous e
 
 ### Inviter des personnes
 
-Sélectionnez **Inviter des personnes** pour ajouter des personnes après le démarrage du fil.
-
-![Inviter des personnes dans la barre latérale du fil](../notifying_people/thread_invite_icon.png)
-
-Sélectionnez un groupe ou un sous-groupe, saisissez les noms de membres individuels ou saisissez une adresse e-mail pour inviter un invité.
-
-Le champ **Trouver ou inviter des personnes** filtre également la liste des personnes déjà présentes dans le fil. Effacez le contenu du champ pour afficher à nouveau la liste complète et utilisez les commandes de pagination s’il y a plus de 50 personnes. Après la sélection des destinataires, la liste des membres laisse place au champ de message facultatif. Les nouvelles personnes sont invitées ; celles qui ont déjà accès reçoivent une nouvelle notification lorsque vous sélectionnez **Inviter ou notifier**.
-
-![Fenêtre d’invitation avec un champ pour les noms et les adresses e-mail](../notifying_people/thread_invite.png)
-
-Un invité peut voir ce fil et y participer, mais ne peut pas voir les autres discussions du groupe sans y être invité séparément.
-
-Vous pouvez fermer les messages d’aide en haut de la fenêtre. Loomio mémorise les messages que vous avez fermés pour votre compte.
-
-![Invitation d’un invité par adresse e-mail](../notifying_people/invite_guest.png)
-
-Pour retirer une personne, ouvrez le menu à trois points (**⋯**) à côté de son nom et sélectionnez **Retirer de la discussion**.
+Sélectionnez **Inviter des personnes** dans la barre latérale droite pour inviter des personnes ou leur envoyer une notification concernant la discussion. Consultez [Inviter des personnes à une discussion](/en/user_manual/discussions/inviting_people) pour en savoir plus sur les groupes, les groupes parents, les invités, les salons de discussion et les notifications d’invitation.
 
 <!-- translation-section: seen-by -->
 
@@ -339,6 +323,10 @@ Sélectionnez **Désépingler le fil** pour replacer un fil dans l’ordre fond�
 
 Sélectionnez **Déplacer le sujet** pour déplacer un fil vers un autre groupe, un sous-groupe ou un fil direct. Il sera visible par les membres du groupe de destination et par toute personne qui y a été spécifiquement invitée.
 
+Lors du déplacement d’un fil, Loomio indique combien de personnes perdraient l’autorisation de participer. Vous pouvez les conserver comme invités sans envoyer de notifications d’invitation. Pour un déplacement vers un autre groupe ou sous-groupe, vous devez avoir l’autorisation d’inviter des invités dans le groupe de destination ; les invités existants conservent leur accès.
+
+Lors de la conversion en fil direct, les personnes qui ont participé conservent automatiquement leur accès. Sélectionner l’option relative aux invités permet également de conserver l’accès des autres membres et invités actuels. Vous et la personne qui a créé le fil devenez administrateurs du fil.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -350,7 +338,7 @@ Pour déplacer certains éléments plutôt que le fil entier, consultez [Déplac
 
 ### Verrouiller ou déverrouiller un fil
 
-Verrouillez un fil pour empêcher l’ajout de commentaires ou toute autre modification. Un fil ne peut être verrouillé qu’une fois ses sondages actifs clôturés.
+Verrouillez un fil pour l’archiver en l’état. Personne ne peut ajouter de contenu à un fil verrouillé, le modifier, ni inviter ou notifier des personnes depuis ce fil. Vous ne pouvez verrouiller un fil qu’une fois ses sondages actifs clôturés.
 
 Sélectionnez **Verrouiller la discussion** dans **Actions**. Les fils verrouillés sont retirés de la liste des discussions ouvertes et portent le tag **Verrouillé**.
 

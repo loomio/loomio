@@ -1,10 +1,10 @@
 ---
 title: Usar los hilos
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: ef0054fdbb9040a0
@@ -32,7 +32,7 @@ generated:
   navigation: 9a4474170051f7f9
   notifications-and-members: 428315b531acbaa8
   email-notifications-for-this-thread: 718f5e7157408089
-  invite-people: 83d00587009435ab
+  invite-people: 1aa65ee0b6aa003c
   seen-by: a8f1f401773fa1f1
   notified: 120c01df31b886db
   actions: 593b28e22bf5e368
@@ -40,8 +40,8 @@ generated:
   markdown: c6b41d1b01dbb950
   thread-settings-and-display: 709a28d5d541b468
   pin-or-unpin-a-thread: 91b6cf9d16287aaf
-  move-a-thread: bef5744e818508c2
-  lock-or-unlock-a-thread: 1678a83e9b3aca94
+  move-a-thread: 2dc6a9f212af0b65
+  lock-or-unlock-a-thread: 79e3384c08b80cdf
   delete-a-thread: 5cc4e2d79f1f9d61
 title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
@@ -156,23 +156,7 @@ Selecciona la configuración actual de notificaciones para elegir si Loomio te e
 
 ### Invitar personas
 
-Selecciona **Invitar personas** para añadir personas después de que se haya iniciado el hilo.
-
-![Invitar personas en la barra lateral del hilo](../notifying_people/thread_invite_icon.png)
-
-Selecciona un grupo o subgrupo, introduce los nombres de miembros individuales o introduce una dirección de correo electrónico para invitar a un invitado.
-
-El campo **Encuentra o invita a personas** también filtra la lista de personas que ya están en el hilo. Vacía el campo para volver a mostrar la lista completa y usa los controles de paginación si hay más de 50 personas. Después de seleccionar los destinatarios, el campo de mensaje opcional sustituye a la lista de miembros. Las personas nuevas reciben una invitación; las personas que ya tienen acceso reciben otra notificación cuando seleccionas **Invitar o notificar**.
-
-![Ventana para invitar personas con un campo para nombres y direcciones de correo electrónico](../notifying_people/thread_invite.png)
-
-Un invitado puede ver este hilo y participar en él, pero no puede ver otras discusiones del grupo a menos que reciba una invitación aparte.
-
-Puedes descartar los avisos de orientación de la parte superior de la ventana. Loomio recuerda qué avisos has descartado en tu cuenta.
-
-![Invitación a un invitado mediante una dirección de correo electrónico](../notifying_people/invite_guest.png)
-
-Para eliminar a alguien, abre el menú de tres puntos (**⋯**) junto a su nombre y selecciona **Eliminar de la discusión**.
+Selecciona **Invitar personas** en la barra lateral derecha para invitar a personas o notificarles sobre la discusión. Consulta [Invitar personas a una discusión](/en/user_manual/discussions/inviting_people) para obtener información sobre grupos, grupos principales, invitados, salas de chat y notificaciones de invitación.
 
 <!-- translation-section: seen-by -->
 
@@ -340,6 +324,10 @@ Selecciona **Desanclar hilo** para devolver un hilo al orden basado en la activi
 
 Selecciona **Mover hilo** para mover un hilo a otro grupo, a un subgrupo o convertirlo en un hilo directo. Será visible para los miembros del grupo de destino y para cualquier persona invitada específicamente al hilo.
 
+Al mover un hilo, Loomio muestra cuántas personas perderían el permiso para participar. Puedes mantenerlas como invitadas sin enviar notificaciones de invitación. Para moverlo a otro grupo o subgrupo, necesitas permiso para invitar a personas invitadas en el grupo de destino; las personas que ya eran invitadas conservan el acceso.
+
+Al convertirlo en un hilo directo, las personas que han participado conservan el acceso automáticamente. Si seleccionas la opción de mantener a las personas como invitadas, los demás miembros e invitados actuales también conservan el acceso. Tú y la persona que creó el hilo pasáis a ser admins del hilo.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -351,7 +339,7 @@ Para mover solo algunos elementos de actividad en lugar del hilo completo, consu
 
 ### Bloquear o desbloquear un hilo
 
-Bloquea un hilo para impedir comentarios o nuevos cambios. Solo puedes bloquear un hilo cuando se hayan cerrado todas las encuestas activas que contiene.
+Bloquea un hilo para archivarlo tal como está. Nadie puede añadir contenido a un hilo bloqueado, modificarlo ni invitar o notificar a personas desde él. Solo puedes bloquear un hilo cuando se hayan cerrado todas las encuestas activas que contiene.
 
 Selecciona **Bloquear hilo** en **Acciones**. Los hilos bloqueados se eliminan de la lista de discusiones abiertas y se marcan con la etiqueta **Bloqueado**.
 

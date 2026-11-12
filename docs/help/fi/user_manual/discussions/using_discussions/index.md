@@ -1,10 +1,10 @@
 ---
 title: Keskusteluketjujen käyttö
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-12'
 sections:
   introduction: fe8ab54791a49e01
   thread-anatomy: fca9ec9af6718a99
@@ -13,7 +13,7 @@ sections:
   navigation: c0ccc79744ae2c33
   notifications-and-members: ac51f2bbe3642155
   email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 94ab00a27cec065d
+  invite-people: 12ac7562e5c561ac
   seen-by: 1d0bfd812ca11782
   notified: 6139bdcaae32a1db
   actions: c015c12999c5be2f
@@ -21,8 +21,8 @@ sections:
   markdown: c6434ed486db8be4
   thread-settings-and-display: 175b9e93cfc4f736
   pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 8490a5a22970925c
-  lock-or-unlock-a-thread: d3f671e631c8a0bc
+  move-a-thread: 026a0e786deda944
+  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
   delete-a-thread: 9b4c6437ff8102eb
 generated:
   introduction: 5733d122ff3586fc
@@ -32,7 +32,7 @@ generated:
   navigation: 2394827457461d6f
   notifications-and-members: c968956946ff5866
   email-notifications-for-this-thread: c3d20c7d1ae7be2b
-  invite-people: fd1610d4ad7b356c
+  invite-people: 6788136c21b439f6
   seen-by: 825e81733ff2b1c9
   notified: 077cdb228ecb0c3a
   actions: 7640a063f929b3ab
@@ -40,8 +40,8 @@ generated:
   markdown: 0614f2e1f3127dea
   thread-settings-and-display: f6ef2902fe2b2436
   pin-or-unpin-a-thread: d81d501c2b75c9e9
-  move-a-thread: f0b7a83519058ef4
-  lock-or-unlock-a-thread: 18b3090e8625fb81
+  move-a-thread: 80f3ebd2763de661
+  lock-or-unlock-a-thread: 24ced382ed939a20
   delete-a-thread: 38f65e0e18241eda
 title_source: 99e2d1eb313f35c4
 title_generated: cf8604cd3cd81e88
@@ -156,23 +156,7 @@ Valitse nykyinen ilmoitusasetus määrittääksesi, lähettääkö Loomio sinull
 
 ### Kutsu ihmisiä
 
-Valitse **Kutsu ihmisiä** lisätäksesi ihmisiä ketjun aloittamisen jälkeen.
-
-![Kutsu ihmisiä ketjun sivupalkissa](../notifying_people/thread_invite_icon.png)
-
-Valitse ryhmä tai alaryhmä, kirjoita yksittäisten jäsenten nimet tai kirjoita sähköpostiosoite kutsuaksesi vieraan.
-
-**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös ketjussa jo olevien ihmisten luetteloa. Tyhjennä kenttä näyttääksesi koko luettelon uudelleen ja käytä sivutuspainikkeita, jos ihmisiä on yli 50. Kun olet valinnut vastaanottajat, jäsenluettelon tilalle tulee vapaaehtoinen viestikenttä. Uudet ihmiset saavat kutsun, ja ihmiset, joilla on jo käyttöoikeus, saavat uuden ilmoituksen, kun valitset **Kutsu tai ilmoita**.
-
-![Kutsu ihmisiä -ikkuna, jossa on kenttä nimille ja sähköpostiosoitteille](../notifying_people/thread_invite.png)
-
-Vieras voi nähdä tämän ketjun ja osallistua siihen, mutta hän ei näe ryhmän muita keskusteluja ilman erillistä kutsua.
-
-Voit sulkea ikkunan yläosassa olevat ohjeet. Loomio muistaa tililläsi, mitkä ohjeet olet sulkenut.
-
-![Vieraan kutsuminen sähköpostiosoitteella](../notifying_people/invite_guest.png)
-
-Poista henkilö avaamalla hänen nimensä vieressä oleva kolmen pisteen valikko (**⋯**) ja valitsemalla **Poista keskustelusta**.
+Valitse oikeasta sivupalkista **Kutsu ihmisiä** kutsuaksesi ihmisiä keskusteluun tai ilmoittaaksesi heille siitä. Katso ryhmiä, pääryhmiä, vieraita, chat-huoneita ja kutsuilmoituksia koskevat ohjeet sivulta [Ihmisten kutsuminen keskusteluun](/en/user_manual/discussions/inviting_people).
 
 <!-- translation-section: seen-by -->
 
@@ -340,6 +324,10 @@ Valitse **Irrota ketju**, kun haluat palauttaa ketjun toiminnan mukaiseen järje
 
 Valitse **Siirrä ketju**, kun haluat siirtää ketjun toiseen ryhmään, alaryhmään tai suoraksi ketjuksi. Se näkyy kohderyhmän jäsenille ja kaikille siihen erikseen kutsutuille.
 
+Kun siirrät ketjua, Loomio näyttää, kuinka moni menettäisi osallistumisoikeutensa. Voit säilyttää heidät vieraina lähettämättä kutsuilmoituksia. Kun siirrät ketjun toiseen ryhmään tai alaryhmään, tämä edellyttää oikeutta kutsua vieraita kohderyhmään. Nykyiset vieraat säilyttävät pääsyoikeutensa.
+
+Kun muutat ketjun suoraksi ketjuksi, siihen osallistuneet säilyttävät pääsyoikeutensa automaattisesti. Valitsemalla vieraiden säilyttämisen myös muut nykyiset jäsenet ja vieraat säilyttävät pääsyoikeutensa. Sinusta ja ketjun luojasta tulee ketjun ylläpitäjiä.
+
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
@@ -351,7 +339,7 @@ Jos haluat siirtää valittuja kohteita koko ketjun sijaan, katso [Kohteiden sii
 
 ### Lukitse ketju tai avaa sen lukitus
 
-Lukitse ketju, kun haluat estää kommentoinnin ja muut muutokset. Ketjun voi lukita vasta, kun sen käynnissä olevat kyselyt on suljettu.
+Lukitse ketju, kun haluat arkistoida sen sellaisenaan. Kukaan ei voi lisätä lukittuun ketjuun sisältöä, muuttaa sitä tai kutsua ihmisiä tai lähettää heille ilmoituksia sen kautta. Voit lukita ketjun vasta, kun sen käynnissä olevat kyselyt on suljettu.
 
 Valitse **Lukitse ketju** kohdasta **Toiminnot**. Lukitut ketjut poistetaan avoimien keskustelujen luettelosta ja merkitään **Lukittu**-tunnisteella.
 
