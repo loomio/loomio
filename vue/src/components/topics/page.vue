@@ -42,9 +42,17 @@ init();
 v-main
   v-container.topics-page.max-width-1024.px-0.px-sm-3
     h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.direct_discussions'")
-    v-layout.pb-3
-      v-spacer
-      v-btn.topics-page__new-topic-button(color="primary" to="/discussion_templates/" v-t="'discussions_panel.new_discussion'")
+    .d-flex.justify-end.pb-3
+      v-menu
+        template(v-slot:activator="{ props }")
+          v-btn.topics-page__new-topic-button(v-bind="props" color="primary")
+            span {{ t('discussion_form.blank') }}
+            common-icon(name="mdi-menu-down")
+        v-list
+          v-list-item.topics-page__new-discussion-button(to="/discussion_templates/")
+            v-list-item-title {{ t('discussions_panel.new_discussion') }}
+          v-list-item.topics-page__new-poll-button(to="/p/new")
+            v-list-item-title {{ t('polls_panel.new_poll') }}
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && topics.length == 0' aria-hidden='true')
       v-list(lines="two")

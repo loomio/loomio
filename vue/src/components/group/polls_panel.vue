@@ -26,7 +26,7 @@ const page = computed({
 });
 
 const totalPages = computed(() => Math.max(1, Math.ceil((loader.value.total || 0) / per)));
-const canStartPoll = computed(() => PollAbility.canCreate(group.value));
+const canStartPoll = computed(() => PollAbility.canCreateInGroup(group.value));
 
 const mergeQuery = (obj) => ({
   query: pickBy(Object.assign({}, route.query, obj), identity)

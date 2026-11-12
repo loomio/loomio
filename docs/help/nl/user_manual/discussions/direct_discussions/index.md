@@ -1,15 +1,15 @@
 ---
 title: Directe discussies
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/direct_discussions/index.md
+source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
-  introduction: d84ab1e9a167cdee
+  introduction: 20f5211c8472a136
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: b0dae6767dd0e39f
+  introduction: eeb29a634df31d84
   contacting-someone-via-a-direct-discussion: 2458a7ecb77583b8
 title_source: ccfab058f1f7c146
 title_generated: 90913ba5a7c017ab
@@ -29,7 +29,9 @@ Directe discussies ondersteunen dezelfde reacties, peilingen en andere hulpmidde
 
 ![Een formulier voor een directe discussie waarin geen groep is geselecteerd en Samira Patel in het veld Uitnodigen staat](direct-discussion-example.png)
 
-Selecteer **Directe threads** in de zijbalk om jouw directe discussies te bekijken. Selecteer **Nieuwe discussie** op die pagina om een nieuwe te starten.
+Selecteer **Directe threads** in de zijbalk om jouw directe discussies en peilingen te bekijken. Open het menu **Nieuw** en kies **Nieuwe discussie** om een discussie te starten, of **Nieuwe peiling** om een peiling zonder groep te starten.
+
+Een directe peiling is alleen toegankelijk voor de mensen die je uitnodigt. Gebruik na het aanmaken [**Kiezers beheren**](/en/user_manual/polls/manage_voters) om mensen of e-mailadressen uit te nodigen.
 
 ![Het item Directe threads in de zijbalk en de lijst met directe discussies](direct-discussion-sidebar.png)
 

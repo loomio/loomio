@@ -20,7 +20,7 @@ export default {
   },
 
   mounted() {
-    this.groups = Session.user().groups().filter(g => PollAbility.canCreate(g)).map(g => {
+    this.groups = Session.user().groups().filter(g => PollAbility.canCreateInGroup(g)).map(g => {
       return {
         title: g.fullName,
         value: g.id,

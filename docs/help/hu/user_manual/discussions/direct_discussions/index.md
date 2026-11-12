@@ -1,15 +1,15 @@
 ---
 title: Közvetlen beszélgetések
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/direct_discussions/index.md
+source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
-  introduction: d84ab1e9a167cdee
+  introduction: 20f5211c8472a136
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 6518594f52812eb3
+  introduction: efd26cd5aadb1038
   contacting-someone-via-a-direct-discussion: 6199650f6f8ebbe0
 title_source: ccfab058f1f7c146
 title_generated: fc6f5a73d24b3be3
@@ -29,7 +29,9 @@ A közvetlen beszélgetésekben ugyanúgy használhatók hozzászólások, szava
 
 ![Közvetlen beszélgetés űrlapja kiválasztott csoport nélkül, Samira Patellel a Meghív mezőben](direct-discussion-example.png)
 
-Válaszd ki az oldalsávban a **Közvetlen szálak** menüpontot a közvetlen beszélgetéseid megtekintéséhez. Újabb beszélgetés indításához válaszd ki ezen az oldalon az **Új beszélgetés** lehetőséget.
+Válaszd ki az oldalsávban a **Közvetlen szálak** menüpontot a közvetlen beszélgetéseid és szavazásaid megtekintéséhez. Nyisd meg az **Új** menüt, és válaszd az **Új beszélgetés** lehetőséget beszélgetés indításához, vagy az **Új szavazás** lehetőséget csoport nélküli szavazás indításához.
+
+A közvetlen szavazás csak azok számára elérhető, akiket meghívsz. A létrehozása után a [**Szavazók kezelése**](/en/user_manual/polls/manage_voters) lehetőséggel hívhatsz meg embereket vagy e-mail-címeket.
 
 ![A Közvetlen szálak menüpont az oldalsávban és a közvetlen beszélgetések listája](direct-discussion-sidebar.png)
 

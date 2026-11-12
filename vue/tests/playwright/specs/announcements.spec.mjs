@@ -60,6 +60,7 @@ test.describe('notifying people about a new thread', () => {
     await ensureSidebar(page);
     await page.locator('.sidebar__list-item-button--private').click();
     await page.locator('.topics-page__new-topic-button').click();
+    await page.locator('.topics-page__new-discussion-button').click();
     await page.locator('.discussion-templates--direct-discussion').click();
     await recipientsInput(page).fill('test@example.com');
     await expect(suggestions(page)).toContainText(['test@example.com']);

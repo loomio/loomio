@@ -13,6 +13,7 @@ async function openDirectDiscussions(page) {
 test('direct_discussion_example', async ({ page, manual: screenshot }) => {
   await openDirectDiscussions(page);
   await page.locator('.topics-page__new-topic-button').click()
+  await page.locator('.topics-page__new-discussion-button').click()
   await page.locator('.discussion-templates--direct-discussion').click()
   const form = page.locator('.discussion-form')
   await form.locator('.discussion-form__title-input input').fill('Cafe bottle collection planning')

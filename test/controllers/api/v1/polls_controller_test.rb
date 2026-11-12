@@ -501,6 +501,39 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   # Create tests
+  test "create direct poll gives its author private access without granting access to group members" do
+    sign_in @user
+
+    assert_difference ["Poll.count", "Topic.count"], 1 do
+      post :create, params: {poll: {
+        title: "Direct decision", poll_type: "proposal", options: %w[agree disagree],
+        closing_at: 3.days.from_now
+      }}
+    end
+
+    assert_response :success
+    poll = Poll.last
+    assert_nil poll.group_id
+    assert_equal poll, poll.topic.topicable
+    assert poll.topic.private?
+    assert poll.topic.admins_include?(@user)
+    assert @user.can?(:show, poll)
+    assert @user.can?(:vote_in, poll)
+
+    [@member, @alien, users(:guest_admin_normal), LoggedOutUser.new].each do |outsider|
+      assert_not outsider.can?(:show, poll)
+      assert_not outsider.can?(:vote_in, poll)
+      assert_not outsider.can?(:update, poll)
+    end
+  end
+
+  test "signed out visitors cannot create direct polls" do
+    assert_no_difference ["Poll.count", "Topic.count"] do
+      post :create, params: {poll: {title: "Direct decision", poll_type: "proposal", options: %w[agree disagree]}}
+    end
+    assert_response :unauthorized
+  end
+
   test "create creates a poll in discussion" do
     thread_count = Topic.where(group_id: @group.id_and_subgroup_ids).count
     @group.update!(subscription: Subscription.create!(owner: @admin, max_threads: thread_count))

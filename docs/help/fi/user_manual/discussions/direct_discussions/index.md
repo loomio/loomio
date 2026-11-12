@@ -1,15 +1,15 @@
 ---
 title: Suorat keskustelut
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/direct_discussions/index.md
+source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
-  introduction: d84ab1e9a167cdee
+  introduction: 20f5211c8472a136
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 8b5e593504b352b5
+  introduction: 8c6ea430f6f5bc5b
   contacting-someone-via-a-direct-discussion: bcb5007d43000f63
 title_source: ccfab058f1f7c146
 title_generated: be5bd9cd1da45f5b
@@ -29,7 +29,9 @@ Suorissa keskusteluissa voit käyttää samoja kommentteja, kyselyjä ja muita t
 
 ![Suoran keskustelun lomake, jossa ryhmää ei ole valittu ja Kutsu-kentässä on Samira Patel](direct-discussion-example.png)
 
-Valitse sivupalkista **Suorat säikeet**, niin näet suorat keskustelusi. Aloita uusi keskustelu valitsemalla kyseisellä sivulla **Uusi keskustelu**.
+Valitse sivupalkista **Suorat säikeet**, niin näet suorat keskustelusi ja kyselysi. Avaa **Uusi**-valikko ja valitse **Uusi keskustelu**, kun haluat aloittaa keskustelun, tai **Uusi kysely**, kun haluat aloittaa kyselyn ilman ryhmää.
+
+Suora kysely on yksityinen, ja vain kutsumasi ihmiset pääsevät siihen. Kun olet luonut kyselyn, kutsu ihmisiä tai sähköpostiosoitteita [**Hallitse äänestäjiä**](/en/user_manual/polls/manage_voters) -toiminnolla.
 
 ![Sivupalkin Suorat säikeet -kohta ja suorien keskustelujen luettelo](direct-discussion-sidebar.png)
 
