@@ -1,16 +1,18 @@
 ---
 title: Кворум
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: e18d772d10c7844d
   example-scenario: dc77f339577abaf2
+  overview-and-examples: 734c85066186407e
 title_source: 18ed8b6c5ab90343
 title_generated: 5b82398b6644b3f1
 ---
@@ -54,3 +56,9 @@ title_generated: 5b82398b6644b3f1
 Потім Алекс вибирає «Погоджуюся». Троє з п’яти виборців, які мають право голосувати, взяли участь, тож кворуму 60 відсотків досягнуто. Тепер біля вимоги відображається зелена позначка. Джеймі може закрити опитування достроково або зачекати на решту виборців.
 
 ![Подано три з п’яти голосів, і кворуму 60 відсотків досягнуто](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Огляд і приклади
+
+Перегляньте [кворум у Loomio](https://www.loomio.com/features/quorum/), щоб ознайомитися з оглядом і прикладами.

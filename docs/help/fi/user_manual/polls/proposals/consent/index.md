@@ -1,10 +1,10 @@
 ---
 title: Suostumus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 014e6b6a17024adc
   when-to-use-consent: '0779d7db8559653b'
@@ -21,6 +22,7 @@ generated:
   vote: d74c06b5a82ea107
   read-the-results: 3fa7d9b5fffe6924
   share-an-outcome: 660820dd7b9ecf4a
+  overview-and-examples: 69bc53a93209b20c
 title_source: d37e0cd00f18a366
 title_generated: af1f0573cc38933f
 ---
@@ -78,3 +80,9 @@ Kaavio tuo vastaväitteet näkyviin, mutta ryhmän on tarkasteltava perusteluja.
 Kun ehdotus sulkeutuu, jaa johtopäätös. Kirjaa sovittu toiminta, miten mahdolliset vastaväitteet ratkaistiin, kuka vastaa toteutuksesta ja milloin ryhmä arvioi toimintaa. Katso [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) saadaksesi tietoa johtopäätösten käytöstä.
 
 ![Johtopäätös, johon on kirjattu ratkaistu vastaväite, aloituspäivä ja arvioinnin ajankohta](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Yleiskatsaus ja esimerkkejä
+
+Tutustu yleiskatsaukseen ja esimerkkeihin sivulla [suostumukseen perustuva päätöksenteko Loomiossa](https://www.loomio.com/features/consent-decision-making/).

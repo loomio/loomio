@@ -2,17 +2,19 @@
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: '038ef13d1764d1d0'
   example-scenario: 46ff6f7aeea0ca09
+  overview-and-examples: 3504a8dbb738e877
 title: 정족수
 title_source: 18ed8b6c5ab90343
 title_generated: 0c00db34647264a6
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-12'
 ---
 
 <!-- translation-section: introduction -->
@@ -54,3 +56,9 @@ Jamie는 동의에, Samira는 반대에 투표합니다. 차트가 업데이트�
 이어서 Alex가 동의에 투표합니다. 투표 자격이 있는 다섯 명 중 세 명이 참여하여 60퍼센트 정족수를 충족합니다. 이제 정족수 요건 옆에 녹색 체크 표시가 나타납니다. Jamie는 투표를 조기에 마감하거나 나머지 투표자들을 기다릴 수 있습니다.
 
 ![다섯 명 중 세 명이 투표하여 60퍼센트 정족수가 충족된 상태](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 개요 및 예시
+
+개요와 예시는 [Loomio의 정족수](https://www.loomio.com/features/quorum/)를 참고하세요.

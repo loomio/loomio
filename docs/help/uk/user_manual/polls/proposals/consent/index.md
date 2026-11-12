@@ -1,10 +1,10 @@
 ---
 title: Згода
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 5e76f69bb67cf653
   when-to-use-consent: 9ad3f0dcde3f368c
@@ -21,6 +22,7 @@ generated:
   vote: 615a163d91a70cd0
   read-the-results: 9cdac2727343ef6f
   share-an-outcome: 2472c225a72f9012
+  overview-and-examples: b760400c7feab480
 title_source: d37e0cd00f18a366
 title_generated: 7cf278790f9c9792
 needs_review:
@@ -80,3 +82,9 @@ needs_review:
 Коли пропозицію буде закрито, поділіться висновком. Запишіть узгоджені дії, як було врегульовано заперечення, хто відповідає за виконання та коли група перегляне ці дії. Докладніше про висновки читайте в розділі [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Висновок із записом про врегульоване заперечення, дату початку та термін перегляду](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Огляд і приклади
+
+Огляд і приклади наведено на сторінці [ухвалення рішень за згодою в Loomio](https://www.loomio.com/features/consent-decision-making/).

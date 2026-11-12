@@ -1,10 +1,10 @@
 ---
 title: Konsensus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: 6dced5b475f7a9ee
   when-to-use-consensus: 4051c3c7b650dfa9
@@ -21,6 +22,7 @@ generated:
   vote: ed4cebf5e7934091
   read-the-results: 2bdc5e89cabb638c
   share-an-outcome: 246dc738f04b4f47
+  overview-and-examples: a59a60e4717c843c
 title_source: 8abe09bf65aefdb8
 title_generated: '09e6a5abb4573a2d'
 ---
@@ -78,3 +80,9 @@ Kaavio näyttää vastausten jakauman. Käy läpi kaikki Eri mieltä- ja Veto-ä
 Kun ehdotus sulkeutuu, jaa johtopäätös. Jos ryhmä pääsi sopimukseen, kirjaa lopullinen sopimus ja vastuuhenkilöt. Muussa tapauksessa kirjaa, mitä muutetaan ja milloin ryhmä palaa ehdotukseen. Katso [Jaa johtopäätös](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome), jossa kerrotaan johtopäätösten käytöstä.
 
 ![Johtopäätös, jossa kerrotaan, ettei konsensusta saavutettu ja että standardia muokataan](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Yleiskatsaus ja esimerkkejä
+
+Katso yleiskatsaus ja esimerkkejä sivulta [Konsensukseen perustuva päätöksenteko Loomiossa](https://www.loomio.com/features/consensus-decision-making/).

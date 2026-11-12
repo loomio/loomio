@@ -17,6 +17,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 36600e2baedce7da
   how-anonymous-voting-protects-voters: 48c652e7b8c7fdbb
@@ -35,13 +36,14 @@ generated:
   will-i-receive-an-email-confirming-my-vote: 337adbfc58431298
   does-a-public-poll-reveal-more-information: '0878f7b9474247ae'
   is-anonymous-voting-suitable-for-every-election: f60660c2f8c489e2
+  overview-and-examples: 54b290e6d6e95c98
 title: 익명 투표
 title_source: 1bc4567506ad4d51
 title_generated: 3e2363e2c990f607
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-12'
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 ---
 
@@ -204,3 +206,9 @@ source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 ### 익명 투표는 모든 선거에 적합한가요?
 
 아니요. 익명 투표는 애플리케이션 수준에서 신원과 표를 분리합니다. 시스템 운영자로부터의 보호가 필요한 결정이나 독립적으로 검증할 수 있는 암호 기술 기반 선거에는 해당 요구 사항에 맞게 설계된 시스템이 필요합니다.
+
+<!-- translation-section: overview-and-examples -->
+
+## 개요 및 예시
+
+개요와 예시는 [Loomio의 익명 투표](https://www.loomio.com/features/anonymous-voting/)를 참고하세요.

@@ -1,10 +1,10 @@
 ---
 title: STV選挙
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: cd5a7bcff6ec37dd
   when-to-use-stv: 17f3d69a63bb59bb
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 3d26cb2dd0234757
   exporting-ballots: 0f541a4e61a9f369
   share-an-outcome: 6248104ff3584c2b
+  overview-and-examples: 7780d8dc3161a3dc
 title_source: cd3e1a4cdc2456a6
 title_generated: 834e0eeeefc92e8e
 ---
@@ -195,3 +197,9 @@ Meek式STVでは、クォータを丸めずに計算します。Droopの場合�
 ## 投票用紙のエクスポート
 
 選挙を締め切った後、結果を閲覧できる人は、独立した再集計や監査のために投票用紙をBLT形式でエクスポートできます。エクスポートには候補者の順位が含まれ、同じ順位の投票用紙は、その枚数とともに1行にまとめられます。匿名の選挙では、投票者を特定する情報、投票用紙の識別子、送信時刻、送信順序は含まれません。
+
+<!-- translation-section: overview-and-examples -->
+
+## 概要と例
+
+概要と例については、[LoomioのSTV選挙](https://www.loomio.com/features/stv-elections/)をご覧ください。

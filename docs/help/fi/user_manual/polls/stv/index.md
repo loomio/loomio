@@ -1,10 +1,10 @@
 ---
 title: STV-vaalit
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 68b8b8feb6549c78
   when-to-use-stv: 59b07f03d2112224
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 697065e385581a07
   exporting-ballots: d226f324af38bbd6
   share-an-outcome: 89428b23fffa8b24
+  overview-and-examples: 640a9f901bb89561
 title_source: cd3e1a4cdc2456a6
 title_generated: 5db74b13bec93710
 ---
@@ -195,3 +197,9 @@ Kun vaalit suljetaan, jaa johtopäätös. Nimeä valitut henkilöt ja kerro, mil
 ## Äänestyslippujen vienti
 
 Kun vaalit on suljettu, tulokset näkevät henkilöt voivat viedä äänestysliput BLT-muodossa riippumatonta uudelleenlaskentaa tai tarkastusta varten. Vienti sisältää ehdokkaiden suosituimmuusjärjestykset ja yhdistää samat järjestykset yhdeksi riviksi, jolla ilmoitetaan äänestyslippujen määrä. Anonyymeissä vaaleissa vienti ei sisällä äänestäjien henkilöllisyyksiä, äänestyslippujen tunnisteita, lähetysaikoja tai lähetysjärjestystä.
+
+<!-- translation-section: overview-and-examples -->
+
+## Yleiskatsaus ja esimerkkejä
+
+Katso yleiskatsaus ja esimerkkejä sivulta [STV-vaalit Loomiossa](https://www.loomio.com/features/stv-elections/).

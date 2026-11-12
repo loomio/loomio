@@ -1,16 +1,18 @@
 ---
 title: Quorum
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: '0499fe59b4b6e641'
   example-scenario: 185ee1c540ea0187
+  overview-and-examples: 62717fa6f04d0841
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
 ---
@@ -54,3 +56,9 @@ Jamie vote Accord et Samira vote Désaccord. Le graphique se met à jour, mais l
 Alex vote ensuite Accord. Trois des cinq électeurs habilités à voter ont participé, atteignant ainsi le quorum de 60 %. Une coche verte indique désormais que l’exigence est satisfaite. Jamie peut clôturer le sondage avant la date prévue ou attendre les électeurs restants.
 
 ![Trois votes exprimés sur cinq et quorum de 60 % atteint](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Présentation et exemples
+
+Consultez [le quorum dans Loomio](https://www.loomio.com/features/quorum/) pour une présentation et des exemples.

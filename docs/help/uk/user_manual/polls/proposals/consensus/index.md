@@ -1,10 +1,10 @@
 ---
 title: Консенсус
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: a4b19adfdced5366
   when-to-use-consensus: 7cc15f7a9077155f
@@ -21,6 +22,7 @@ generated:
   vote: 0162b64302f79bcb
   read-the-results: '0013882186a2a506'
   share-an-outcome: 366410673a6a8e08
+  overview-and-examples: 268caabd5b8e3412
 title_source: 8abe09bf65aefdb8
 title_generated: 04ab62fbb8467490
 ---
@@ -78,3 +80,9 @@ title_generated: 04ab62fbb8467490
 Коли пропозицію буде закрито, поділіться висновком. Якщо група досягла згоди, зафіксуйте остаточну домовленість і відповідальних за її виконання. Інакше зазначте, що буде переглянуто й коли група повернеться до пропозиції. Про те, як працюють висновки, читайте на сторінці [Поділіться висновком](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Висновок про те, що консенсусу не досягнуто і стандарт буде переглянуто](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Огляд і приклади
+
+Перегляньте [ухвалення рішень на основі консенсусу в Loomio](https://www.loomio.com/features/consensus-decision-making/), щоб ознайомитися з оглядом і прикладами.

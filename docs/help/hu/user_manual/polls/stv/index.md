@@ -1,10 +1,10 @@
 ---
 title: STV-választások
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 39a8c51c88f61b36
   when-to-use-stv: 375f96d4ca550eab
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 577de8c35e762e8e
   exporting-ballots: aeed7970ab0bc490
   share-an-outcome: 710f776206e6db13
+  overview-and-examples: fe3feeb298c6a6de
 title_source: cd3e1a4cdc2456a6
 title_generated: 67607ab7fbcfa361
 ---
@@ -195,3 +197,9 @@ Amikor a választás lezárul, ossz meg egy következtetést. Nevezd meg a megv�
 ## Szavazólapok exportálása
 
 A választás lezárása után azok, akik megtekinthetik az eredményeket, BLT formátumban exportálhatják a szavazólapokat független újraszámlálás vagy ellenőrzés céljából. Az export tartalmazza a jelöltek rangsorolását, és az azonos rangsorolásokat egyetlen sorba vonja össze, feltüntetve a szavazólapok számát. Névtelen választások esetén nem tartalmazza a szavazók személyazonosságát, a szavazólapok azonosítóit, a beküldés időpontját vagy sorrendjét.
+
+<!-- translation-section: overview-and-examples -->
+
+## Áttekintés és példák
+
+Áttekintésért és példákért nézd meg az [STV-választások a Loomióban](https://www.loomio.com/features/stv-elections/) oldalt.

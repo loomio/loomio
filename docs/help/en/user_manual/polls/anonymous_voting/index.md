@@ -159,3 +159,9 @@ After a public poll closes, anyone can see its results and who took part. They c
 ### Is anonymous voting suitable for every election?
 
 No. It provides application-level separation between identities and votes. Decisions requiring protection from system operators or independently verifiable cryptographic elections need a system designed for those requirements.
+
+<!-- translation-section: overview-and-examples -->
+
+## Overview and examples
+
+See [anonymous voting in Loomio](https://www.loomio.com/features/anonymous-voting/) for an overview and examples.

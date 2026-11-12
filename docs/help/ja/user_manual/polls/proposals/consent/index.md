@@ -1,10 +1,10 @@
 ---
 title: 同意
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 8adecd1b91be2de1
   when-to-use-consent: 6b8e61a43a989d98
@@ -21,6 +22,7 @@ generated:
   vote: 3ce7493644b630cd
   read-the-results: 9a42cf29c0be64e4
   share-an-outcome: de7150845cf55efc
+  overview-and-examples: 5922cac0d641f583
 title_source: d37e0cd00f18a366
 title_generated: 905819e2e3a059a0
 ---
@@ -78,3 +80,9 @@ Oatmilk Cooperativeは、来月から6週間、回収・再利用できるボト
 提案を締め切ったら、結論を共有してください。合意した行動、異議をどのように解決したか、担当者、グループで見直す時期を記録してください。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
 
 ![異議の解決内容、開始日、見直しの時点を記録した結論](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 概要と例
+
+概要と例については、[Loomioでの同意による意思決定](https://www.loomio.com/features/consent-decision-making/)をご覧ください。

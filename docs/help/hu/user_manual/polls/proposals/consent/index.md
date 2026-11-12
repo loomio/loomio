@@ -1,10 +1,10 @@
 ---
 title: Beleegyezés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: df146c428125d103
   when-to-use-consent: ad32ed198322ffee
@@ -21,6 +22,7 @@ generated:
   vote: 37ea77c20b8e8a41
   read-the-results: e454b5fe7d4b2d54
   share-an-outcome: b428793c9084f564
+  overview-and-examples: 9a133291e7d414cd
 title_source: d37e0cd00f18a366
 title_generated: be644c8e955e17da
 ---
@@ -78,3 +80,9 @@ A diagram láthatóvá teszi a kifogásokat, de a csoportnak az indoklásokat is
 Amikor a javaslat lezárul, ossz meg egy következtetést. Rögzítsd a megállapodás szerinti lépést, a kifogások feloldásának módját, a felelőst és azt, hogy a csoport mikor vizsgálja felül a döntést. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
 
 ![Egy feloldott kifogást, kezdési dátumot és felülvizsgálati időpontot rögzítő következtetés](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Áttekintés és példák
+
+Áttekintésért és példákért nézd meg a [beleegyezésen alapuló döntéshozatalt a Loomióban](https://www.loomio.com/features/consent-decision-making/).

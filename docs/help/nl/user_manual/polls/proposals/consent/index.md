@@ -1,10 +1,10 @@
 ---
 title: Toestemming
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 683f72e06ad9b153
   when-to-use-consent: fa8c1f0ff13ed6e6
@@ -21,6 +22,7 @@ generated:
   vote: 37915c2c510af3ec
   read-the-results: af3b6f6ef13f6f39
   share-an-outcome: 12cb619576983a71
+  overview-and-examples: f1d98eb6a5feac01
 title_source: d37e0cd00f18a366
 title_generated: 56e6d8448fa58951
 ---
@@ -78,3 +80,9 @@ De grafiek maakt bezwaren zichtbaar, maar de groep moet de redenen onderzoeken. 
 Deel een conclusie wanneer het voorstel sluit. Leg vast welke actie is afgesproken, hoe eventuele bezwaren zijn opgelost, wie verantwoordelijk is en wanneer de groep de actie zal evalueren. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
 ![Een conclusie waarin een opgelost bezwaar, een startdatum en een evaluatiemoment zijn vastgelegd](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Overzicht en voorbeelden
+
+Zie [besluitvorming met consent in Loomio](https://www.loomio.com/features/consent-decision-making/) voor een overzicht en voorbeelden.

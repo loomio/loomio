@@ -1,10 +1,10 @@
 ---
 title: קוֹנסֶנזוּס
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: 3877da1d2c3d2d1f
   when-to-use-consensus: 879a595e767d5745
@@ -21,6 +22,7 @@ generated:
   vote: 971d6ce85737d601
   read-the-results: bc7300e3f24c73ef
   share-an-outcome: 376d8c461229ca55
+  overview-and-examples: 756c99a65aa9d3f5
 title_source: 8abe09bf65aefdb8
 title_generated: 3e2d28c3aaacf416
 needs_review:
@@ -80,3 +82,9 @@ needs_review:
 לאחר סגירת ההצעה, יש לשתף מסקנה. אם הקבוצה הגיעה להסכמה, יש לתעד את ההסכמה הסופית ואת חלוקת האחריות. אחרת, יש לתעד מה יתוקן ומתי הקבוצה תחזור להצעה. להסבר על אופן השימוש במסקנות, ניתן לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![מסקנה המציינת שלא הושג קונצנזוס ושהתקן יתוקן](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## סקירה ודוגמאות
+
+לסקירה ודוגמאות, ניתן לעיין ב[קבלת החלטות בקונצנזוס ב־Loomio](https://www.loomio.com/features/consensus-decision-making/).

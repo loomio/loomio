@@ -1,10 +1,10 @@
 ---
 title: Consensus
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: 175acfee711411fe
   when-to-use-consensus: b1c397c648f44fa2
@@ -21,6 +22,7 @@ generated:
   vote: 586236a8bc43949b
   read-the-results: 4b464af73f008a78
   share-an-outcome: be9462f2d14571d3
+  overview-and-examples: 85019fef68370239
 title_source: 8abe09bf65aefdb8
 title_generated: 8abe09bf65aefdb8
 ---
@@ -78,3 +80,9 @@ Le graphique montre la répartition des réponses. Examinez les raisons de chaqu
 Lorsque la proposition est clôturée, partagez une conclusion. Si le groupe est parvenu à un accord, consignez l’accord final et indiquez qui en est responsable. Sinon, consignez ce qui sera révisé et quand le groupe réexaminera la proposition. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
 ![Une conclusion indiquant que le consensus n’a pas été atteint et que la norme sera révisée](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Présentation et exemples
+
+Consultez la page [Prendre des décisions par consensus dans Loomio](https://www.loomio.com/features/consensus-decision-making/) pour une présentation et des exemples.

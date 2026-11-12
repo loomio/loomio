@@ -1,10 +1,10 @@
 ---
 title: הַסכָּמָה
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: c9c4a2bfc79cd1a2
   when-to-use-consent: f3192d71fc02986c
@@ -21,6 +22,7 @@ generated:
   vote: cd18013ac247fa88
   read-the-results: 862cff0cd9ffe28b
   share-an-outcome: a618adbe7fa696fe
+  overview-and-examples: b0d35c4b79280d75
 title_source: d37e0cd00f18a366
 title_generated: 210959582691b501
 ---
@@ -78,3 +80,9 @@ title_generated: 210959582691b501
 לאחר סגירת ההצעה, יש לשתף מסקנה. יש לתעד את הפעולה המוסכמת, כיצד ניתן מענה להתנגדויות, על מי מוטלת האחריות ומתי הקבוצה תבחן את הפעולה מחדש. להסבר על השימוש במסקנות, יש לעיין ב[שיתוף מסקנה](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![מסקנה המתעדת התנגדות שניתן לה מענה, תאריך התחלה ומועד לבחינה מחדש](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## סקירה כללית ודוגמאות
+
+לסקירה כללית ולדוגמאות, ניתן לעיין בעמוד [קבלת החלטות בהסכמה ב־Loomio](https://www.loomio.com/features/consent-decision-making/).

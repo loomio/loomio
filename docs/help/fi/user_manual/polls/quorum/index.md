@@ -1,16 +1,18 @@
 ---
 title: Päätösvaltaisuus
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: d33bd535ffd2646e
   example-scenario: 7ee0a7a527876382
+  overview-and-examples: d822002cb24d572c
 title_source: 18ed8b6c5ab90343
 title_generated: 231a357976471e5a
 ---
@@ -54,3 +56,9 @@ Jamie valitsee Samaa mieltä ja Samira valitsee Eri mieltä. Kaavio päivittyy, 
 Alex valitsee sitten Samaa mieltä. Kolme viidestä äänioikeutetusta äänestäjästä on osallistunut, joten 60 prosentin päätösvaltaisuus on saavutettu. Vaatimuksen kohdalla näkyy nyt vihreä valintamerkki. Jamie voi sulkea kyselyn etuajassa tai odottaa muiden äänestäjien ääniä.
 
 ![Kolme viidestä äänestä on annettu, ja 60 prosentin päätösvaltaisuus on saavutettu](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Yleiskatsaus ja esimerkkejä
+
+Katso yleiskatsaus ja esimerkkejä sivulta [Päätösvaltaisuus Loomiossa](https://www.loomio.com/features/quorum/).

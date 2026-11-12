@@ -1,10 +1,10 @@
 ---
 title: Anonyme Abstimmung
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: b8afdb08e55b22ea
   how-anonymous-voting-protects-voters: fae2e30be5c03422
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: e8fc2f9252ff4b45
   does-a-public-poll-reveal-more-information: a7d6779921949378
   is-anonymous-voting-suitable-for-every-election: 81863080a1e7cb8e
+  overview-and-examples: e47ce6adefca5e7b
 title_source: 1bc4567506ad4d51
 title_generated: 911f939f43e472e8
 needs_review:
@@ -212,3 +214,9 @@ Nachdem eine öffentliche Abstimmung beendet wurde, können alle ihr Ergebnis se
 ### Eignet sich anonymes Abstimmen für jede Wahl?
 
 Nein. Die Anwendung hält Identitäten und Stimmen getrennt. Entscheidungen, die Schutz vor Systembetreibenden erfordern, oder unabhängig überprüfbare kryptografische Wahlen benötigen ein System, das für diese Anforderungen entwickelt wurde.
+
+<!-- translation-section: overview-and-examples -->
+
+## Überblick und Beispiele
+
+Einen Überblick und Beispiele findest du unter [Anonyme Abstimmung in Loomio](https://www.loomio.com/features/anonymous-voting/).

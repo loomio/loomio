@@ -1,10 +1,10 @@
 ---
 title: Consentement
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 8a5cf485acff9e8f
   when-to-use-consent: 53abac6c30f92ce4
@@ -21,6 +22,7 @@ generated:
   vote: 8eb657ebcef22392
   read-the-results: 044f8b93ce9a6efa
   share-an-outcome: 1087265975ab4dc0
+  overview-and-examples: 5f86cdbd5ab0d6b2
 title_source: d37e0cd00f18a366
 title_generated: 64a281ac3a69713f
 ---
@@ -78,3 +80,9 @@ Le graphique rend les objections visibles, mais le groupe doit examiner les rais
 Lorsque la proposition est clôturée, partagez une conclusion. Consignez l’action convenue, la manière dont les objections ont été résolues, les personnes responsables et le moment où le groupe réexaminera la décision. Consultez [Partager une conclusion](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) pour comprendre le fonctionnement des conclusions.
 
 ![Une conclusion consignant une objection résolue, une date de début et un moment prévu pour le réexamen](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Présentation et exemples
+
+Consultez la page [Prise de décision par consentement dans Loomio](https://www.loomio.com/features/consent-decision-making/) pour une présentation et des exemples.

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "phlex"
+require "nokogiri"
 require_relative "localization"
 
 class DocsTemplate < Phlex::HTML
@@ -8,6 +9,8 @@ class DocsTemplate < Phlex::HTML
   # docs/help/<locale>/_site.yml, which must define every key.
   STRINGS = {
     "site_title" => "Loomio Help",
+    "trial_heading" => "Try Loomio with your group",
+    "trial_action" => "Start your free trial",
     "menu" => "Menu",
     "open_navigation" => "Open navigation",
     "close_navigation" => "Close navigation",
@@ -61,7 +64,8 @@ class DocsTemplate < Phlex::HTML
 
         div(class: "page") do
           div(class: "content-grid") do
-            main(**pagefind_attributes) { raw safe(@page.html) }
+            main(**pagefind_attributes) { raw safe(localized_marketing_links) }
+            render_trial_invitation
             render_translation_notice
             render_page_toc
             render_page_navigation
@@ -90,6 +94,29 @@ class DocsTemplate < Phlex::HTML
 
   def pagefind_attributes
     @page.search_indexed? ? {data_pagefind_body: true} : {}
+  end
+
+  def localized_marketing_links
+    return @page.html if @page.locale == "en"
+
+    content = Nokogiri::HTML.fragment(@page.html)
+    content.css("a[href]").each do |link|
+      href = link["href"]
+      next unless href.start_with?("https://www.loomio.com/features/")
+
+      link["href"] = "https://www.loomio.com/#{@page.locale}#{href.delete_prefix("https://www.loomio.com")}"
+    end
+    content.to_html
+  end
+
+  def render_trial_invitation
+    return unless @page.source_path.start_with?("user_manual/")
+
+    section(class: "help-trial", hidden: true, data_signed_out_trial: true, data_pagefind_ignore: true) do
+      h2 { plain t("trial_heading") }
+      prefix = @page.locale == "en" ? "" : "/#{@page.locale}"
+      a(href: "https://www.loomio.com#{prefix}/choose-server/", class: "help-trial-action") { plain t("trial_action") }
+    end
   end
 
   def render_plausible

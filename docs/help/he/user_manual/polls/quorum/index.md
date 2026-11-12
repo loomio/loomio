@@ -1,16 +1,18 @@
 ---
 title: מניין השתתפות
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: 4d8bc16b5f1f1fa1
   example-scenario: 1e9e334ee3f4080f
+  overview-and-examples: 24b377aa59680613
 title_source: 18ed8b6c5ab90343
 title_generated: 2423bb1ca41f3c1c
 ---
@@ -54,3 +56,9 @@ title_generated: 2423bb1ca41f3c1c
 לאחר מכן נרשמת הצבעה של אלכס: מסכים/ה. שלושה מתוך חמישה מצביעים בעלי זכות הצבעה השתתפו, וכך הושג המניין של 60 אחוז. כעת מופיע סימן אישור ירוק לצד דרישת המניין. באפשרות ג'יימי לסגור את הסקר מוקדם או להמתין לשאר המצביעים.
 
 ![נרשמו שלוש הצבעות מתוך חמש והושג המניין של 60 אחוז](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## סקירה כללית ודוגמאות
+
+לסקירה כללית ולדוגמאות, ניתן לעיין בעמוד [מניין ב־Loomio](https://www.loomio.com/features/quorum/).

@@ -1,10 +1,10 @@
 ---
 title: Konszenzus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: 82794f3ded137c11
   when-to-use-consensus: 2a9d54fbe49e3d65
@@ -21,6 +22,7 @@ generated:
   vote: 36c74251efbc6c47
   read-the-results: f823779d1a2711d1
   share-an-outcome: 5bf285284f651f08
+  overview-and-examples: b6b6e1d5aed042c6
 title_source: 8abe09bf65aefdb8
 title_generated: 7f64315ae26feb4c
 ---
@@ -78,3 +80,9 @@ A diagram a válaszok megoszlását mutatja. Tekints át minden egyet nem értő
 Amikor a javaslat lezárul, ossz meg egy következtetést. Ha a csoport megállapodásra jutott, rögzítsd a végleges megállapodást és a felelősöket. Ha nem, rögzítsd, mit fogtok módosítani, és mikor tér vissza a csoport a javaslathoz. A következtetések működéséről a [Következtetés megosztása](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) oldalon olvashatsz.
 
 ![Következtetés arról, hogy nem született konszenzus, és a szabványt módosítani fogják](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Áttekintés és példák
+
+Áttekintésért és példákért nézd meg a [konszenzusos döntéshozatalt a Loomióban](https://www.loomio.com/features/consensus-decision-making/).

@@ -37,3 +37,9 @@ Jamie agrees and Samira disagrees. The chart updates, but two of five eligible v
 Alex then agrees. Three of five eligible voters have participated, reaching the 60 percent quorum. The requirement now shows a green check mark. Jamie can close the poll early or wait for the remaining voters.
 
 ![Three of five votes cast and the 60 percent quorum reached](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Overview and examples
+
+See [quorum in Loomio](https://www.loomio.com/features/quorum/) for an overview and examples.

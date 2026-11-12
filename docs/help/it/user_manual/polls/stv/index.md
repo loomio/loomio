@@ -1,10 +1,10 @@
 ---
 title: Elezioni STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: c9e2c919c10aedf8
   when-to-use-stv: d9c75f94d7d9e482
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 501f97ebed57b7eb
   exporting-ballots: 73ae31297d03a5eb
   share-an-outcome: c0801e969ee1b116
+  overview-and-examples: 111a15a73fe988a2
 title_source: cd3e1a4cdc2456a6
 title_generated: b856531da2becf44
 ---
@@ -195,3 +197,9 @@ Quando le elezioni si chiudono, condividi una conclusione. Indica i nomi delle p
 ## Esportare le schede
 
 Dopo la chiusura delle elezioni, le persone che possono visualizzare i risultati possono esportare le schede in formato BLT per un riconteggio o una verifica indipendente. L'esportazione contiene le preferenze ordinate per i candidati e raggruppa gli ordinamenti identici in un'unica riga con il numero di schede corrispondenti. Per le elezioni anonime, non contiene le identità degli elettori, gli identificativi delle schede, gli orari di invio o l'ordine di invio.
+
+<!-- translation-section: overview-and-examples -->
+
+## Panoramica ed esempi
+
+Consulta [Elezioni STV in Loomio](https://www.loomio.com/features/stv-elections/) per una panoramica ed esempi.

@@ -14,6 +14,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   share-an-outcome: 6a02aed173b368b9
   exporting-ballots: 582555dd13633bf0
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: eb68ab74e239c762
   when-to-use-stv: dec13ae15b04aee1
@@ -29,13 +30,14 @@ generated:
   round-by-round-details: 842639afe02e8a8b
   share-an-outcome: b81c1c7fa708fbfe
   exporting-ballots: ea0f93179f5acf83
+  overview-and-examples: 2d486d7bf7e4490b
 title: 단기이양식 선거
 title_source: cd3e1a4cdc2456a6
 title_generated: 2ae8a42d74c65803
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-12'
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/stv/index.md
 ---
 
@@ -195,3 +197,9 @@ Meek STV는 반올림하지 않고 당선 기준표를 계산하며, Droop의 �
 ## 투표용지 내보내기
 
 선거가 마감되면 결과를 볼 수 있는 사람은 독립적인 재검표나 감사를 위해 투표용지를 BLT 형식으로 내보낼 수 있습니다. 내보낸 파일에는 후보의 선호 순위가 포함되며, 순위가 동일한 투표용지는 하나의 행으로 합쳐져 투표용지 수와 함께 표시됩니다. 익명 선거의 경우 투표자의 신원, 투표용지 식별자, 제출 시각 또는 제출 순서는 포함되지 않습니다.
+
+<!-- translation-section: overview-and-examples -->
+
+## 개요 및 예시
+
+개요와 예시는 [Loomio의 단기이양식 선거](https://www.loomio.com/features/stv-elections/)를 참고하세요.

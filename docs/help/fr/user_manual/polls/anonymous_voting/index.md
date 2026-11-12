@@ -1,10 +1,10 @@
 ---
 title: Vote anonyme
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: b97bdf2862e4ec7a
   how-anonymous-voting-protects-voters: d136bc2501a72059
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: e731feb06a287566
   does-a-public-poll-reveal-more-information: 592c8c7da22ac750
   is-anonymous-voting-suitable-for-every-election: 145abfba67f35287
+  overview-and-examples: 7b53b31b83d35686
 title_source: 1bc4567506ad4d51
 title_generated: bbc8939bb7f73487
 ---
@@ -204,3 +206,9 @@ Après la clôture d’un sondage public, tout le monde peut voir ses résultats
 ### Le vote anonyme convient-il à toutes les élections ?
 
 Non. Il sépare les identités des votes au sein de l’application. Les décisions nécessitant une protection contre les opérateurs du système ou des élections cryptographiques vérifiables de manière indépendante exigent un système conçu pour répondre à ces besoins.
+
+<!-- translation-section: overview-and-examples -->
+
+## Présentation et exemples
+
+Consultez la page [Vote anonyme dans Loomio](https://www.loomio.com/features/anonymous-voting/) pour une présentation et des exemples.

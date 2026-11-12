@@ -1,10 +1,10 @@
 ---
 title: Anonyymi äänestys
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 615af5fab336f767
   how-anonymous-voting-protects-voters: d8b855653cb914cc
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: '0774488371988065'
   does-a-public-poll-reveal-more-information: 7862431a049c36a5
   is-anonymous-voting-suitable-for-every-election: 61afee66a0f733e6
+  overview-and-examples: b7b2ee45c3ee27ee
 title_source: 1bc4567506ad4d51
 title_generated: 5c4eec1fb34c2a8c
 ---
@@ -204,3 +206,9 @@ Kun julkinen kysely suljetaan, kuka tahansa voi nähdä sen tulokset ja osallist
 ### Sopiiko anonyymi äänestys kaikkiin vaaleihin?
 
 Ei. Se pitää henkilöllisyydet ja äänet erillään sovelluksen tasolla. Päätökset, jotka edellyttävät suojaa järjestelmän ylläpitäjiltä, ja riippumattomasti todennettavat kryptografiset vaalit tarvitsevat järjestelmän, joka on suunniteltu näitä vaatimuksia varten.
+
+<!-- translation-section: overview-and-examples -->
+
+## Yleiskatsaus ja esimerkkejä
+
+Katso yleiskatsaus ja esimerkkejä sivulta [anonyymi äänestys Loomiossa](https://www.loomio.com/features/anonymous-voting/).

@@ -1,10 +1,10 @@
 ---
 title: Анонимное голосование
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: e85fd93ff585b3d2
   how-anonymous-voting-protects-voters: 6f443b79b4263466
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: f4a6d5bc01c302b7
   does-a-public-poll-reveal-more-information: fa2e325067c8aaf3
   is-anonymous-voting-suitable-for-every-election: 5bd8b8e0a43ad596
+  overview-and-examples: a20a5340903da9f1
 title_source: 1bc4567506ad4d51
 title_generated: 594e50e8ce3a747f
 ---
@@ -204,3 +206,9 @@ title_generated: 594e50e8ce3a747f
 ### Подходит ли анонимное голосование для любых выборов?
 
 Нет. Оно отделяет сведения о людях от их голосов на уровне приложения. Для решений, требующих защиты от операторов системы, или криптографических выборов с независимой проверкой нужна система, разработанная с учётом этих требований.
+
+<!-- translation-section: overview-and-examples -->
+
+## Обзор и примеры
+
+Обзор и примеры приведены на странице [анонимного голосования в Loomio](https://www.loomio.com/features/anonymous-voting/).

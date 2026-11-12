@@ -1,10 +1,10 @@
 ---
 title: Anoniem stemmen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 1e3cef0a3dc2c06b
   how-anonymous-voting-protects-voters: 5f12d500b3bc5efb
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: f4eec68f623b6648
   does-a-public-poll-reveal-more-information: 794c52537bcfd296
   is-anonymous-voting-suitable-for-every-election: 0b719cf43e85d53e
+  overview-and-examples: 21b4733b8c0ecd00
 title_source: 1bc4567506ad4d51
 title_generated: a092c185ab7f2e64
 ---
@@ -204,3 +206,9 @@ Nadat een openbare peiling is gesloten, kan iedereen het resultaat bekijken en z
 ### Is anoniem stemmen geschikt voor elke verkiezing?
 
 Nee. Het houdt identiteiten en stemmen binnen de applicatie gescheiden. Voor besluiten die bescherming tegen systeembeheerders vereisen of voor onafhankelijk verifieerbare cryptografische verkiezingen is een systeem nodig dat voor die eisen is ontworpen.
+
+<!-- translation-section: overview-and-examples -->
+
+## Overzicht en voorbeelden
+
+Zie [anoniem stemmen in Loomio](https://www.loomio.com/features/anonymous-voting/) voor een overzicht en voorbeelden.

@@ -1,10 +1,10 @@
 ---
 title: Ананімнае галасаванне
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 54422fca03553027
   how-anonymous-voting-protects-voters: bce0a2835f778607
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: 8eb33869acc34520
   does-a-public-poll-reveal-more-information: ecb06b08a331e6e5
   is-anonymous-voting-suitable-for-every-election: 0157676fa09fea86
+  overview-and-examples: 60116c93e01a44f1
 title_source: 1bc4567506ad4d51
 title_generated: 9dfbd5bbbb70bfe8
 ---
@@ -204,3 +206,9 @@ title_generated: 9dfbd5bbbb70bfe8
 ### Ці падыходзіць ананімнае галасаванне для любых выбараў?
 
 Не. Яно аддзяляе звесткі пра людзей ад іх галасоў на ўзроўні праграмы. Для рашэнняў, якія патрабуюць абароны ад аператараў сістэмы, або крыптаграфічных выбараў з магчымасцю незалежнай праверкі патрэбна сістэма, распрацаваная з улікам гэтых патрабаванняў.
+
+<!-- translation-section: overview-and-examples -->
+
+## Агляд і прыклады
+
+Агляд і прыклады глядзіце на старонцы [ананімнага галасавання ў Loomio](https://www.loomio.com/features/anonymous-voting/).

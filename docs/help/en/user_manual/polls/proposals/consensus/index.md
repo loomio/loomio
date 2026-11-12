@@ -51,3 +51,9 @@ The chart shows the balance of responses. Review every disagreement and block re
 When the proposal closes, share an outcome. If the group reached agreement, record the final agreement and who is responsible. Otherwise, record what will be revised and when the group will return to the proposal. See [Share an outcome](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) for how outcomes work.
 
 ![An outcome saying consensus was not reached and the standard will be revised](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Overview and examples
+
+See [consensus decision-making in Loomio](https://www.loomio.com/features/consensus-decision-making/) for an overview and examples.

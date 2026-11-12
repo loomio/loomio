@@ -1,10 +1,10 @@
 ---
 title: Консенсус
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: a362ed4fcce8bc2d
   when-to-use-consensus: 3e1dc635e972807c
@@ -21,6 +22,7 @@ generated:
   vote: 6e50b2ce58488e6d
   read-the-results: 8d8a809aaf2139ef
   share-an-outcome: a5f47fee1bc0acb8
+  overview-and-examples: f125a444b21e7195
 title_source: 8abe09bf65aefdb8
 title_generated: 04ab62fbb8467490
 needs_review:
@@ -80,3 +82,9 @@ needs_review:
 Когда предложение будет закрыто, опубликуйте выводы. Если группа достигла согласия, зафиксируйте окончательную договорённость и ответственных за её выполнение. В противном случае укажите, что будет пересмотрено и когда группа вернётся к предложению. Подробнее о выводах читайте в разделе [Поделитесь выводами](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Выводы о том, что консенсус не достигнут и стандарт будет пересмотрен](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Обзор и примеры
+
+Обзор и примеры см. на странице [Принятие решений консенсусом в Loomio](https://www.loomio.com/features/consensus-decision-making/).

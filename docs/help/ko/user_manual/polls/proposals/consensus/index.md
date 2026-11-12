@@ -7,6 +7,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: '0938d96dd20eb615'
   when-to-use-consensus: f5bc869dc04fa0e8
@@ -15,14 +16,15 @@ generated:
   vote: 40953c40516b23ec
   read-the-results: 653b8ef836216f0a
   share-an-outcome: 3bff8aa0e8b5da42
+  overview-and-examples: 7d47a25f568782a2
 title: 합의
 title_source: 8abe09bf65aefdb8
 title_generated: cf567a25ffbe55ad
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-12'
 ---
 
 <!-- translation-section: introduction -->
@@ -78,3 +80,9 @@ Oatmilk Cooperative는 보증금, 수거, 세척, 식품 안전 기록, 보고�
 제안이 마감되면 결론을 공유하세요. 그룹이 합의에 도달했다면 최종 합의 내용과 담당자를 기록하세요. 그렇지 않다면 수정할 내용과 그룹이 제안을 다시 검토할 시점을 기록하세요. 결론 기능을 사용하는 방법은 [결론 공유](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)를 참고하세요.
 
 ![합의에 도달하지 못했으며 기준을 수정할 예정이라고 명시한 결론](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 개요 및 예시
+
+개요와 예시는 [Loomio에서 합의로 결정하기](https://www.loomio.com/features/consensus-decision-making/)를 참고하세요.

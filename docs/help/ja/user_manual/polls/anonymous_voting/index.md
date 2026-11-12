@@ -1,10 +1,10 @@
 ---
 title: 匿名投票
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: df1cf938f21a4d2d
   how-anonymous-voting-protects-voters: 17f221ab45a10ad8
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: 39b2895bae07d643
   does-a-public-poll-reveal-more-information: 9754d85f71ac46f7
   is-anonymous-voting-suitable-for-every-election: 182483fac6c7640d
+  overview-and-examples: 3dafcf68e4529405
 title_source: 1bc4567506ad4d51
 title_generated: 55edffe99178b192
 ---
@@ -204,3 +206,9 @@ title_generated: 55edffe99178b192
 ### 匿名投票はすべての選挙に適していますか？
 
 いいえ。匿名投票は、アプリケーション上で投票者の身元と投票を分離します。システム運用者からの保護が必要な決定や、独立した検証が可能な暗号技術を用いた選挙には、それらの要件を満たすように設計されたシステムが必要です。
+
+<!-- translation-section: overview-and-examples -->
+
+## 概要と例
+
+概要と例は、[Loomioの匿名投票](https://www.loomio.com/features/anonymous-voting/)をご覧ください。

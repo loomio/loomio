@@ -1,10 +1,10 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: c452e71c79d888ee
   when-to-use-consensus: 63c95fecaf4cccca
@@ -21,6 +22,7 @@ generated:
   vote: d0a0681ffaa50852
   read-the-results: bcb5f08bff92b1bb
   share-an-outcome: db7a16c2c2b9ca27
+  overview-and-examples: b1a4c1ef8657724c
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -78,3 +80,9 @@ Il grafico mostra la distribuzione delle risposte. Esamina ogni disaccordo e ogn
 Quando la proposta si chiude, condividi una conclusione. Se il gruppo ha raggiunto un accordo, registra l'accordo finale e chi ne è responsabile. Altrimenti, registra cosa verrà modificato e quando il gruppo tornerà sulla proposta. Consulta [Condividi una conclusione](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) per sapere come funzionano le conclusioni.
 
 ![Una conclusione che indica che il consenso unanime non è stato raggiunto e che lo standard verrà modificato](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Panoramica ed esempi
+
+Consulta [il processo decisionale per consenso unanime in Loomio](https://www.loomio.com/features/consensus-decision-making/) per una panoramica ed esempi.

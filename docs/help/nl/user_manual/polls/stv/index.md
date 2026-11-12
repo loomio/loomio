@@ -1,10 +1,10 @@
 ---
 title: STV-verkiezingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 4af9f5ad46589ab3
   when-to-use-stv: 32f567a427cde35e
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 7345b7559b885044
   exporting-ballots: 110c9ead88cd2893
   share-an-outcome: 15d37559d2ae21f8
+  overview-and-examples: 3c43504adbe6d176
 title_source: cd3e1a4cdc2456a6
 title_generated: 9791a584c9d8c54a
 needs_review:
@@ -197,3 +199,9 @@ Deel een conclusie wanneer de verkiezing sluit. Noem de gekozen personen en geef
 ## Stembiljetten exporteren
 
 Nadat de verkiezing is gesloten, kunnen mensen die het resultaat kunnen bekijken de stembiljetten in BLT-formaat exporteren voor een onafhankelijke hertelling of controle. De export bevat de voorkeursvolgorde van kandidaten en voegt identieke voorkeursvolgordes samen tot één rij met het aantal stembiljetten. Bij anonieme verkiezingen bevat de export geen identiteiten van kiezers, identificatiecodes van stembiljetten, tijdstippen van indienen of volgorde van indienen.
+
+<!-- translation-section: overview-and-examples -->
+
+## Overzicht en voorbeelden
+
+Bekijk [STV-verkiezingen in Loomio](https://www.loomio.com/features/stv-elections/) voor een overzicht en voorbeelden.

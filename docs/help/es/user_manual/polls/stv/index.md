@@ -1,10 +1,10 @@
 ---
 title: Elecciones STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 9810a117bfd928a0
   when-to-use-stv: cba880a8e6647d60
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: ea0d04a4e87eba29
   exporting-ballots: fc777d2fb850f764
   share-an-outcome: f6d9c30671fdfbc1
+  overview-and-examples: c47068d56c5165e3
 title_source: cd3e1a4cdc2456a6
 title_generated: ac82e1e9db982f29
 ---
@@ -195,3 +197,9 @@ Cuando se cierre la elección, comparte una conclusión. Nombra a las personas e
 ## Exportar papeletas
 
 Cuando se cierre la elección, las personas que pueden ver los resultados podrán exportar las papeletas en formato BLT para realizar un recuento independiente o una auditoría. La exportación contiene las clasificaciones de los candidatos por orden de preferencia y agrupa las clasificaciones idénticas en una sola fila con el número de papeletas. En las elecciones anónimas, no contiene identidades de votantes, identificadores de papeletas, horas de envío ni orden de envío.
+
+<!-- translation-section: overview-and-examples -->
+
+## Descripción general y ejemplos
+
+Consulta [Elecciones STV en Loomio](https://www.loomio.com/features/stv-elections/) para ver una descripción general y ejemplos.

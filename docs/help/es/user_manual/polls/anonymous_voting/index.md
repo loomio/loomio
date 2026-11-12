@@ -1,10 +1,10 @@
 ---
 title: Votación anónima
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 610c51e5cc6e6692
   how-anonymous-voting-protects-voters: 89da0ae00ae0dbea
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: bb743905df8e6df0
   does-a-public-poll-reveal-more-information: 69cb502e59b7e419
   is-anonymous-voting-suitable-for-every-election: 9a4f2e2964470923
+  overview-and-examples: 72ed46274a5e877d
 title_source: 1bc4567506ad4d51
 title_generated: 4eeca685a9619ad5
 ---
@@ -204,3 +206,9 @@ Cuando se cierra una encuesta pública, cualquier persona puede ver los resultad
 ### ¿La votación anónima es adecuada para todas las elecciones?
 
 No. Separa las identidades de los votos dentro de la aplicación. Las decisiones que requieren protección frente a quienes operan el sistema o elecciones criptográficas verificables de forma independiente necesitan un sistema diseñado para esos requisitos.
+
+<!-- translation-section: overview-and-examples -->
+
+## Descripción general y ejemplos
+
+Consulta [la votación anónima en Loomio](https://www.loomio.com/features/anonymous-voting/) para ver una descripción general y ejemplos.

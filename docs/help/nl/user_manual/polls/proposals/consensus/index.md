@@ -1,10 +1,10 @@
 ---
 title: Consensus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: e0ce65a27be05dcb
   when-to-use-consensus: 77c70e4e03c611e7
@@ -21,6 +22,7 @@ generated:
   vote: cc11c5dac6cf89e8
   read-the-results: 45d42fba0d0b6ac5
   share-an-outcome: 33a460e441569f09
+  overview-and-examples: ce5c2469185160c4
 title_source: 8abe09bf65aefdb8
 title_generated: 8abe09bf65aefdb8
 ---
@@ -78,3 +80,9 @@ De grafiek toont de verdeling van de antwoorden. Bekijk elke stem voor Oneens en
 Deel een conclusie wanneer het voorstel sluit. Als de groep overeenstemming heeft bereikt, leg dan de definitieve afspraak vast en vermeld wie verantwoordelijk is. Leg anders vast wat wordt aangepast en wanneer de groep het voorstel opnieuw bespreekt. Bekijk [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
 ![Een conclusie waarin staat dat er geen consensus is bereikt en dat de norm wordt aangepast](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Overzicht en voorbeelden
+
+Zie [besluitvorming op basis van consensus in Loomio](https://www.loomio.com/features/consensus-decision-making/) voor een overzicht en voorbeelden.

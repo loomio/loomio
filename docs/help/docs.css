@@ -674,3 +674,22 @@ thead {
     padding: 0;
   }
 }
+
+.help-trial {
+  grid-column: 1;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-block: 24px;
+}
+
+.help-trial h2 { margin-block: 0 16px; }
+.help-trial-action {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 12px 24px;
+  background: #1f87ff;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}

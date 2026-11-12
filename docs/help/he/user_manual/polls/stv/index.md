@@ -1,10 +1,10 @@
 ---
 title: בחירות STV
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 89919127dc8d4227
   when-to-use-stv: 7db5a27fb09f584e
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: ef0aa4f4795d792d
   exporting-ballots: f662fc67fe578fe5
   share-an-outcome: 8853e719891a2a39
+  overview-and-examples: 43d8b76843e2ced5
 title_source: cd3e1a4cdc2456a6
 title_generated: 205a2c4b5a77b85a
 ---
@@ -195,3 +197,9 @@ Meek STV מחשבת את המכסה ללא עיגול, לפי votes ÷ (seats + 
 ## ייצוא פתקי הצבעה
 
 לאחר סגירת הבחירות, מי שיש להם הרשאה לצפות בתוצאות יכולים לייצא את פתקי ההצבעה בפורמט BLT לצורך ספירה חוזרת או ביקורת עצמאית. הייצוא כולל את דירוגי המועמדים ומאחד דירוגים זהים לשורה אחת המציינת את מספר פתקי ההצבעה. בבחירות אנונימיות, הייצוא אינו כולל את זהות המצביעים, מזהי פתקי ההצבעה, זמני הגשתם או סדר הגשתם.
+
+<!-- translation-section: overview-and-examples -->
+
+## סקירה כללית ודוגמאות
+
+לסקירה כללית ולדוגמאות, ניתן לעיין ב[בחירות STV ב־Loomio](https://www.loomio.com/features/stv-elections/).

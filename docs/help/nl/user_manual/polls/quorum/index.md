@@ -1,16 +1,18 @@
 ---
 title: Quorum
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: 03a5fa855b4516fb
   example-scenario: 61056903a5078f68
+  overview-and-examples: 3d431a80543362be
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
 ---
@@ -54,3 +56,9 @@ Jamie is het eens en Samira is het oneens. De grafiek wordt bijgewerkt, maar twe
 Daarna is Alex het eens. Drie van de vijf stemgerechtigde kiezers hebben deelgenomen, waarmee het quorum van 60 procent is bereikt. Bij de vereiste staat nu een groen vinkje. Jamie kan de peiling vroegtijdig sluiten of wachten op de overige kiezers.
 
 ![Drie van de vijf stemmen uitgebracht en het quorum van 60 procent bereikt](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Overzicht en voorbeelden
+
+Bekijk [quorum in Loomio](https://www.loomio.com/features/quorum/) voor een overzicht en voorbeelden.

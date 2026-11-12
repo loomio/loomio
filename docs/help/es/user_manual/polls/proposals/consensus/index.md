@@ -1,10 +1,10 @@
 ---
 title: Consenso
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: d5c465c0b39b8248
   when-to-use-consensus: 81b881b55c789ee3
@@ -21,6 +22,7 @@ generated:
   vote: '08567f0e23dccb1e'
   read-the-results: 38ec00728feadc9b
   share-an-outcome: 94d8f2309a4bec4d
+  overview-and-examples: a151d029fdcfdac0
 title_source: 8abe09bf65aefdb8
 title_generated: a633645d078dc2da
 ---
@@ -78,3 +80,9 @@ El gráfico muestra la distribución de las respuestas. Revisa los motivos de ca
 Cuando se cierre la propuesta, comparte una conclusión. Si el grupo llegó a un acuerdo, registra el acuerdo final y quién se responsabiliza de llevarlo a cabo. En caso contrario, registra qué se revisará y cuándo el grupo retomará la propuesta. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
 
 ![Una conclusión que indica que no se alcanzó el consenso y que se revisará la norma](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Descripción general y ejemplos
+
+Consulta [la toma de decisiones por consenso en Loomio](https://www.loomio.com/features/consensus-decision-making/) para ver una descripción general y ejemplos.

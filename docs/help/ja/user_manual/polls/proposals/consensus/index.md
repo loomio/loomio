@@ -1,10 +1,10 @@
 ---
 title: コンセンサス
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: 02b2c15438e03d15
   when-to-use-consensus: d52e4fa352b4b39f
@@ -21,6 +22,7 @@ generated:
   vote: 1b74fc552c272731
   read-the-results: '0092530eb6d52bc0'
   share-an-outcome: c59f4020d71fb4dd
+  overview-and-examples: ab343daac58695e1
 title_source: 8abe09bf65aefdb8
 title_generated: 68459d5f02d9cc17
 ---
@@ -78,3 +80,9 @@ Oatmilk協同組合は、預かり金、回収、洗浄、食品安全に関す�
 提案を締め切ったら、結論を共有します。グループが合意に達した場合は、最終的な合意内容と担当者を記録します。合意に達しなかった場合は、修正する内容と、グループが提案を再検討する時期を記録します。結論の仕組みについては、[結論を共有する](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)を参照してください。
 
 ![コンセンサスに達しなかったため、基準を修正すると記載された結論](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 概要と事例
+
+概要と事例については、[Loomioでのコンセンサスによる意思決定](https://www.loomio.com/features/consensus-decision-making/)をご覧ください。

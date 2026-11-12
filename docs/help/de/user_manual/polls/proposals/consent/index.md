@@ -1,10 +1,10 @@
 ---
 title: Zustimmung
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 641dd209fad1f01d
   when-to-use-consent: 796db1807ca6e5ac
@@ -21,6 +22,7 @@ generated:
   vote: 2196bb6cf81b57ac
   read-the-results: d5fc6baa48d7d859
   share-an-outcome: 744f7cb005e59669
+  overview-and-examples: 34e81fbde4613bf5
 title_source: d37e0cd00f18a366
 title_generated: c6aedb5180fd8789
 ---
@@ -78,3 +80,9 @@ Das Diagramm macht Einwände sichtbar, aber die Gruppe muss die Begründungen pr
 Teile ein Fazit, wenn der Vorschlag beendet ist. Halte fest, welche Maßnahme vereinbart wurde, wie etwaige Einwände ausgeräumt wurden, wer verantwortlich ist und wann die Gruppe die Maßnahme überprüfen wird. Unter [Ein Fazit teilen](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) erfährst du, wie Fazits funktionieren.
 
 ![Ein Fazit, das einen ausgeräumten Einwand, ein Startdatum und einen Zeitpunkt für die Überprüfung festhält](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Überblick und Beispiele
+
+Einen Überblick und Beispiele findest du unter [Entscheidungsfindung im Konsentverfahren in Loomio](https://www.loomio.com/features/consent-decision-making/).

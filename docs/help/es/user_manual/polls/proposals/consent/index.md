@@ -1,10 +1,10 @@
 ---
 title: Consentir
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: b38146f81ca00225
   when-to-use-consent: b829ec140ff9bd85
@@ -21,6 +22,7 @@ generated:
   vote: eed9fb59efa528e7
   read-the-results: c5cc85e8fff1c817
   share-an-outcome: cc5c7d30652d60ee
+  overview-and-examples: 10cd277cecfcfc50
 title_source: d37e0cd00f18a366
 title_generated: 5df2c7d72db8a39e
 ---
@@ -78,3 +80,9 @@ El gráfico muestra las objeciones, pero el grupo debe examinar los motivos. Res
 Cuando se cierre la propuesta, comparte una conclusión. Registra la acción acordada, cómo se resolvieron las objeciones, quién es responsable y cuándo la revisará el grupo. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
 
 ![Una conclusión que registra una objeción resuelta, una fecha de inicio y un momento de revisión](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Descripción general y ejemplos
+
+Consulta [la toma de decisiones por consentimiento en Loomio](https://www.loomio.com/features/consent-decision-making/) para ver una descripción general y ejemplos.

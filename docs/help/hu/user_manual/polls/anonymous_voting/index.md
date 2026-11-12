@@ -1,10 +1,10 @@
 ---
 title: Névtelen szavazás
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: 2adb64c67ec4a37b
   how-anonymous-voting-protects-voters: 6148b5938f7b434e
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: f88c509d3d45bafa
   does-a-public-poll-reveal-more-information: 4e3512d8c036f81c
   is-anonymous-voting-suitable-for-every-election: 231378ba745c0662
+  overview-and-examples: 6c2fccba48799e4e
 title_source: 1bc4567506ad4d51
 title_generated: afeda824cbeb1a7d
 ---
@@ -204,3 +206,9 @@ Egy nyilvános szavazás lezárása után bárki láthatja az eredményeket és 
 ### Minden választáshoz megfelelő a névtelen szavazás?
 
 Nem. Az alkalmazáson belül elkülöníti a személyazonosságokat a szavazatoktól. A rendszer üzemeltetőivel szembeni védelmet igénylő döntésekhez vagy a függetlenül ellenőrizhető kriptográfiai választásokhoz olyan rendszerre van szükség, amelyet ezekre a követelményekre terveztek.
+
+<!-- translation-section: overview-and-examples -->
+
+## Áttekintés és példák
+
+Áttekintésért és példákért nézd meg a [névtelen szavazás a Loomióban](https://www.loomio.com/features/anonymous-voting/) oldalt.

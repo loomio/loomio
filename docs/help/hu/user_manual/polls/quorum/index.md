@@ -1,16 +1,18 @@
 ---
 title: Határozatképesség
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: adb84d888e40b51c
   example-scenario: 89acd8cce4fff1cd
+  overview-and-examples: 13609cd928c353b7
 title_source: 18ed8b6c5ab90343
 title_generated: 6c41db0de288697e
 ---
@@ -54,3 +56,9 @@ Jamie az Egyetértek, Samira pedig a Nem értek egyet lehetőségre szavaz. A di
 Ezután Alex is az Egyetértek lehetőségre szavaz. Az öt jogosult szavazóból hárman részt vettek, így a szavazás elérte a 60 százalékos határozatképességi küszöböt. A követelmény mellett most zöld pipa jelenik meg. Jamie azonnal lezárhatja a szavazást, vagy várhat a többi szavazóra.
 
 ![Ötből három szavazatot adtak le, és a szavazás elérte a 60 százalékos határozatképességi küszöböt](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Áttekintés és példák
+
+Áttekintésért és példákért nézd meg a [határozatképesség a Loomióban](https://www.loomio.com/features/quorum/) oldalt.

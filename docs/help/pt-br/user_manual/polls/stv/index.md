@@ -1,10 +1,10 @@
 ---
 title: Eleições STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 20d679a4c85f2464
   when-to-use-stv: 7563e05fb4e9249e
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 8f190cc44dff2a40
   exporting-ballots: 31ac75dca582af77
   share-an-outcome: 075d355e0dc7a4b7
+  overview-and-examples: 9a44444ad4e8954a
 title_source: cd3e1a4cdc2456a6
 title_generated: 7f35326f1d4107d5
 ---
@@ -195,3 +197,9 @@ Quando a eleição for encerrada, compartilhe uma conclusão. Informe os nomes d
 ## Exportação de cédulas
 
 Após o encerramento da eleição, as pessoas que podem visualizar os resultados podem exportar as cédulas no formato BLT para uma recontagem ou auditoria independente. A exportação contém as classificações dos candidatos por preferência e reúne classificações idênticas em uma única linha com a contagem de cédulas. Em eleições anônimas, ela não contém identidades dos eleitores, identificadores das cédulas, horários de envio nem ordem de envio.
+
+<!-- translation-section: overview-and-examples -->
+
+## Visão geral e exemplos
+
+Veja [Eleições STV no Loomio](https://www.loomio.com/features/stv-elections/) para uma visão geral e exemplos.

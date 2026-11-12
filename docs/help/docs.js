@@ -138,3 +138,20 @@ document.querySelectorAll("pre > code").forEach((code) => {
     }, 1600);
   });
 });
+
+// Show the invitation only after the existing app endpoint confirms no signed-in user.
+const trialInvitation = document.querySelector("[data-signed-out-trial]");
+if (trialInvitation) {
+  window.plausible = window.plausible || function () {
+    (window.plausible.q = window.plausible.q || []).push(arguments);
+  };
+  trialInvitation.querySelector("a").addEventListener("click", () => {
+    window.plausible("Trial CTA Click", {props: {position: "help"}});
+  });
+  fetch("/api/v1/boot/site", {credentials: "same-origin", headers: {Accept: "application/json"}})
+    .then(response => response.ok ? response.json() : null)
+    .then(boot => {
+      if (boot && Object.hasOwn(boot, "current_user_id")) trialInvitation.hidden = Boolean(boot.current_user_id);
+    })
+    .catch(() => {});
+}

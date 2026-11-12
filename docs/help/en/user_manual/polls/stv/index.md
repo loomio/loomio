@@ -154,3 +154,9 @@ When the election closes, share an outcome. Name the people elected and say when
 ## Exporting ballots
 
 After the election closes, people who can view the results can export the ballots in BLT format for an independent recount or audit. The export contains candidate rankings and combines identical rankings into a single row with a ballot count. For anonymous elections it does not contain voter identities, ballot identifiers, submission times, or submission order.
+
+<!-- translation-section: overview-and-examples -->
+
+## Overview and examples
+
+See [STV elections in Loomio](https://www.loomio.com/features/stv-elections/) for an overview and examples.

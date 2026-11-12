@@ -1,16 +1,18 @@
 ---
 title: 定足数
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: 3a8d3d302c0803fd
   example-scenario: 71fabdc5dd7acf29
+  overview-and-examples: 036bac12cf54c1fa
 title_source: 18ed8b6c5ab90343
 title_generated: cc555d51b9c1ff66
 ---
@@ -54,3 +56,9 @@ Jamieは賛成、Samiraは反対に投票します。グラフは更新されま
 続いてAlexが賛成に投票します。投票資格を持つ5人のうち3人が参加し、60％の定足数に達しました。定足数の要件に緑色のチェックマークが表示されます。Jamieはアンケートを早めに締め切ることも、残りの投票者の投票を待つこともできます。
 
 ![5人のうち3人が投票し、60％の定足数に達した状態](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 概要と例
+
+概要と例については、[Loomioの定足数](https://www.loomio.com/features/quorum/)を参照してください。

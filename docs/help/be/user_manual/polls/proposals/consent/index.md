@@ -1,10 +1,10 @@
 ---
 title: Згода
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consent/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 7c6301775b6655f2
   when-to-use-consent: 32ea681182001a9a
@@ -13,6 +13,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: f82d121b36563f1d
   when-to-use-consent: 4bdd2f4b22d84ece
@@ -21,6 +22,7 @@ generated:
   vote: 9d74c7dac297fb88
   read-the-results: '09011c39b781df7e'
   share-an-outcome: f844797dc0a21116
+  overview-and-examples: bdfa664577f1f3fa
 title_source: d37e0cd00f18a366
 title_generated: 7cf278790f9c9792
 ---
@@ -78,3 +80,9 @@ title_generated: 7cf278790f9c9792
 Калі прапанова закрыецца, падзяліцеся высновай. Запішыце ўзгодненыя дзеянні, як былі вырашаны пярэчанні, хто нясе адказнасць і калі група ацэніць рашэнне. Пра тое, як працуюць высновы, глядзіце на старонцы [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Выснова, у якой запісаны вырашанае пярэчанне, дата пачатку і момант ацэнкі](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Агляд і прыклады
+
+Агляд і прыклады глядзіце на старонцы [Прыняцце рашэнняў праз згоду ў Loomio](https://www.loomio.com/features/consent-decision-making/).

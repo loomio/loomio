@@ -1,10 +1,10 @@
 ---
 title: Вибори на СТВ
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: f8ac0c3521b05675
   when-to-use-stv: af1962b0ae59241a
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 110bb5c7ca385028
   exporting-ballots: 1bccbab66e7f0493
   share-an-outcome: 582c7d0c535e79b6
+  overview-and-examples: c1ac957a60b6dfb7
 title_source: cd3e1a4cdc2456a6
 title_generated: 6ad14bc5678c2627
 ---
@@ -195,3 +197,9 @@ Meek STV обчислює квоту без округлення: для Droop �
 ## Експорт бюлетенів
 
 Після закриття виборів люди, які можуть переглядати результати, можуть експортувати бюлетені у форматі BLT для незалежного повторного підрахунку або аудиту. Експорт містить порядок уподобань кандидатів і об’єднує однакові порядки в один рядок із кількістю бюлетенів. Для анонімних виборів він не містить даних про особи виборців, ідентифікаторів бюлетенів, часу чи порядку їх подання.
+
+<!-- translation-section: overview-and-examples -->
+
+## Огляд і приклади
+
+Перегляньте [Вибори за STV у Loomio](https://www.loomio.com/features/stv-elections/), щоб ознайомитися з оглядом і прикладами.

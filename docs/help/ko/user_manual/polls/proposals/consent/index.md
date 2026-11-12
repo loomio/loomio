@@ -7,6 +7,7 @@ sections:
   vote: 496a824e20def5e2
   read-the-results: 710fb80144e56ea9
   share-an-outcome: 8f8b3f701dc4f516
+  overview-and-examples: d668c22d2e775d54
 generated:
   introduction: 5591edea1bdbb636
   when-to-use-consent: 482534e10680f249
@@ -15,14 +16,15 @@ generated:
   vote: eb7df837c1b68e2b
   read-the-results: 508a0bf312c23b73
   share-an-outcome: 2da773aef3fbe46f
+  overview-and-examples: 7180bb5dbdfa222f
 title: 이의 없음
 title_source: d37e0cd00f18a366
 title_generated: e39d62da386f15df
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/proposals/consent/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-12'
 ---
 
 <!-- translation-section: introduction -->
@@ -78,3 +80,9 @@ Oatmilk Cooperative는 다음 달부터 6주간 회수용 병을 시범 운영�
 제안이 마감되면 결론을 공유하세요. 합의한 행동, 제기된 이의를 해결한 방법, 담당자, 그룹의 검토 시점을 기록하세요. 결론 기능을 사용하는 방법은 [결론 공유](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome)를 참고하세요.
 
 ![해결된 이의, 시작일, 검토 시점을 기록한 결론](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## 개요와 예시
+
+개요와 예시는 [Loomio의 이의 없는 의사결정](https://www.loomio.com/features/consent-decision-making/)을 참고하세요.

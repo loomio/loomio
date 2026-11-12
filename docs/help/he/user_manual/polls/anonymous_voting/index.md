@@ -1,10 +1,10 @@
 ---
 title: הצבעה אנונימית
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-12'
 sections:
   introduction: 2b9b7da01da020b3
   how-anonymous-voting-protects-voters: f2be8477636489af
@@ -23,6 +23,7 @@ sections:
   will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
   does-a-public-poll-reveal-more-information: 27acfa7744a0790d
   is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  overview-and-examples: a761c62b5ad04915
 generated:
   introduction: d5f3bf403e8e6080
   how-anonymous-voting-protects-voters: 8f032efddf476154
@@ -41,6 +42,7 @@ generated:
   will-i-receive-an-email-confirming-my-vote: 94486fc88e2106b4
   does-a-public-poll-reveal-more-information: e37318ca3e00da4c
   is-anonymous-voting-suitable-for-every-election: 20343c77468005bf
+  overview-and-examples: 4bc09eb94bb2b576
 title_source: 1bc4567506ad4d51
 title_generated: 1097c4f1c00530f0
 ---
@@ -204,3 +206,9 @@ title_generated: 1097c4f1c00530f0
 ### האם הצבעה אנונימית מתאימה לכל מערכת בחירות?
 
 לא. היא מספקת הפרדה ברמת היישום בין זהויות להצבעות. החלטות המחייבות הגנה מפני מפעילי המערכת, או בחירות קריפטוגרפיות שניתן לאמת באופן עצמאי, דורשות מערכת שתוכננה לעמוד בדרישות אלה.
+
+<!-- translation-section: overview-and-examples -->
+
+## סקירה כללית ודוגמאות
+
+לסקירה כללית ודוגמאות, ניתן לעיין בעמוד [הצבעה אנונימית ב־Loomio](https://www.loomio.com/features/anonymous-voting/).

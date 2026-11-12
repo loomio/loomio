@@ -1,10 +1,10 @@
 ---
 title: STV-Wahlen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 61a1095de89ba748
   when-to-use-stv: '08ec5f91f20d3515'
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: f6ede0a3c0b682a0
   exporting-ballots: 422a14ecb67f3754
   share-an-outcome: 2965e0166adfb19e
+  overview-and-examples: 051f77abf3f8582a
 title_source: cd3e1a4cdc2456a6
 title_generated: d3db61f29b5753db
 needs_review:
@@ -197,3 +199,9 @@ Teile ein Fazit, wenn die Wahl beendet ist. Nenne die gewählten Personen und gi
 ## Stimmzettel exportieren
 
 Nachdem die Wahl beendet ist, können Personen, die das Ergebnis sehen dürfen, die Stimmzettel im BLT-Format für eine unabhängige Nachzählung oder Prüfung exportieren. Der Export enthält die Rangfolgen der Kandidierenden und fasst identische Rangfolgen in einer einzigen Zeile mit der Anzahl der Stimmzettel zusammen. Bei anonymen Wahlen enthält er keine Identitäten der Abstimmenden, Stimmzettelkennungen, Abgabezeitpunkte oder Angaben zur Reihenfolge der Abgabe.
+
+<!-- translation-section: overview-and-examples -->
+
+## Überblick und Beispiele
+
+Unter [STV-Wahlen in Loomio](https://www.loomio.com/features/stv-elections/) findest du einen Überblick und Beispiele.

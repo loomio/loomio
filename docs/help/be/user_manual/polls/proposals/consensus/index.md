@@ -1,10 +1,10 @@
 ---
 title: Кансенсус
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/proposals/consensus/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/proposals/consensus/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: af2e2a50e8c0b440
   when-to-use-consensus: fc7f6180345f73a3
@@ -13,6 +13,7 @@ sections:
   vote: f7dbea12e2d6261a
   read-the-results: e60abb3a43a86d6e
   share-an-outcome: a7febe19484c20b3
+  overview-and-examples: 00d3e018025c371d
 generated:
   introduction: af103d5e047facb4
   when-to-use-consensus: 0fb1edaad3e2fc3d
@@ -21,6 +22,7 @@ generated:
   vote: 0326b2f5f05db32b
   read-the-results: 0abfbc8b8ad6b8fc
   share-an-outcome: a5523d47607f27ab
+  overview-and-examples: b942e4df029606cc
 title_source: 8abe09bf65aefdb8
 title_generated: d4cc0911c6b0e078
 ---
@@ -78,3 +80,9 @@ title_generated: d4cc0911c6b0e078
 Калі галасаванне па прапанове закрыецца, падзяліцеся высновай. Калі група дасягнула згоды, запішыце канчатковае пагадненне і хто адказвае за яго выкананне. У адваротным выпадку запішыце, што будзе перагледжана і калі група вернецца да прапановы. Пра тое, як працуюць высновы, чытайце на старонцы [Падзяліцеся высновай](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome).
 
 ![Выснова, у якой паведамляецца, што кансенсусу не дасягнулі і стандарт будзе перагледжаны](outcome.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Агляд і прыклады
+
+Агляд і прыклады глядзіце на старонцы [прыняцце рашэнняў праз кансенсус у Loomio](https://www.loomio.com/features/consensus-decision-making/).

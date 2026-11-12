@@ -1,10 +1,10 @@
 ---
 title: Élections STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: 6c43a75f60922bb6
   when-to-use-stv: e37de389c27f7d87
@@ -20,6 +20,7 @@ sections:
   round-by-round-details: c0ccc83e51dcaa1a
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
+  overview-and-examples: c69ce96637117f71
 generated:
   introduction: 6a0ecdf5501a7a52
   when-to-use-stv: 8926b0dfb0383c49
@@ -35,6 +36,7 @@ generated:
   round-by-round-details: 805148b929d66947
   exporting-ballots: 6498997f3f958bd0
   share-an-outcome: 66899b4d714a2c2f
+  overview-and-examples: 1ec09c75d3bd25fe
 title_source: cd3e1a4cdc2456a6
 title_generated: b63ff19253676749
 ---
@@ -195,3 +197,9 @@ Lorsque l’élection est clôturée, partagez une conclusion. Nommez les person
 ## Exporter les bulletins
 
 Une fois l’élection clôturée, les personnes qui peuvent consulter les résultats peuvent exporter les bulletins au format BLT pour un recomptage ou un audit indépendant. L’export contient les classements des candidats et regroupe les classements identiques sur une seule ligne en indiquant le nombre de bulletins. Pour les élections anonymes, il ne contient ni l’identité des électeurs, ni les identifiants des bulletins, ni les heures de soumission, ni l’ordre de soumission.
+
+<!-- translation-section: overview-and-examples -->
+
+## Présentation et exemples
+
+Consultez [Les élections STV dans Loomio](https://www.loomio.com/features/stv-elections/) pour une présentation et des exemples.

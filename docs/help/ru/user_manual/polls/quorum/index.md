@@ -1,16 +1,18 @@
 ---
 title: Кворум
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: 860bff7d4bf1e5ee
   example-scenario: bedb1042ec967f7d
+  overview-and-examples: c189f4eb63b40c3a
 title_source: 18ed8b6c5ab90343
 title_generated: 5b82398b6644b3f1
 ---
@@ -54,3 +56,9 @@ title_generated: 5b82398b6644b3f1
 Затем Алекс выбирает «Согласен». Трое из пяти людей, имеющих право голосовать, приняли участие, и кворум в 60 процентов достигнут. Теперь выполнение требования отмечено зелёной галочкой. Джейми может закрыть опрос досрочно или дождаться остальных голосующих.
 
 ![Поданы три голоса из пяти, кворум в 60 процентов достигнут](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Обзор и примеры
+
+Обзор и примеры см. на странице [«Кворум в Loomio»](https://www.loomio.com/features/quorum/).

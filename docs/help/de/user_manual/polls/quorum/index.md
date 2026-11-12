@@ -1,16 +1,18 @@
 ---
 title: Quorum
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: eb6a475137c9aac4
   example-scenario: 2e0638205c9cdf83
+  overview-and-examples: db83cbe6211df538
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
 ---
@@ -54,3 +56,9 @@ Jamie stimmt zu und Samira widerspricht. Das Diagramm wird aktualisiert, aber zw
 Alex stimmt ebenfalls zu. Drei von fünf stimmberechtigten Personen haben teilgenommen. Damit ist das Quorum von 60 Prozent erreicht. Die Anforderung wird nun mit einem grünen Häkchen angezeigt. Jamie kann die Abstimmung vorzeitig beenden oder auf die übrigen Abstimmenden warten.
 
 ![Drei von fünf Stimmen abgegeben und das Quorum von 60 Prozent erreicht](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Überblick und Beispiele
+
+Unter [Quorum in Loomio](https://www.loomio.com/features/quorum/) findest du einen Überblick und Beispiele.

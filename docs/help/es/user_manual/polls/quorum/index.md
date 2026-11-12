@@ -1,16 +1,18 @@
 ---
 title: Cuórum
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: 82853c73875ee63265d588fc0dae6eafffa81b41
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-12'
 sections:
   introduction: dbfdebe6e23060db
   example-scenario: d247e0866095c321
+  overview-and-examples: 9097cf14e7f9bd68
 generated:
   introduction: ea81dc9ced09cc1a
   example-scenario: f603603a6afb6bd8
+  overview-and-examples: '0690aaedc6b3e5b0'
 title_source: 18ed8b6c5ab90343
 title_generated: 654fa046f1980103
 ---
@@ -54,3 +56,9 @@ Jamie vota De acuerdo y Samira vota En desacuerdo. El gráfico se actualiza, per
 A continuación, Alex vota De acuerdo. Han participado tres de los cinco votantes con derecho a votar, lo que alcanza el quórum del 60 por ciento. El requisito ahora muestra una marca de verificación verde. Jamie puede cerrar la encuesta antes de tiempo o esperar a los votantes restantes.
 
 ![Tres de los cinco votos emitidos y el quórum del 60 por ciento alcanzado](pie-chart-60.png)
+
+<!-- translation-section: overview-and-examples -->
+
+## Descripción general y ejemplos
+
+Consulta [quórum en Loomio](https://www.loomio.com/features/quorum/) para ver una descripción general y ejemplos.
