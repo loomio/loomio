@@ -1,10 +1,10 @@
 ---
 title: Pikakierros
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 295f556ce787407f
   group-page: 20ebbf5f68b41673
@@ -22,7 +22,7 @@ generated:
   user-settings: 37cbf030c2d41e85
   notifications: 02fc3b4860376409
   what-to-do-next: '0652697dff629d8d'
-  mobile-navigation: 7dea8152972cb94c
+  mobile-navigation: e0cbaaf783fbc526
 title_source: c41a33370cd580dd
 title_generated: fa2ae81ceb5a86cf
 ---
@@ -89,13 +89,9 @@ Lue [Ilmoitukset](/en/user_manual/users/email_settings), niin saat tietoa sovell
 
 <!-- translation-section: mobile-navigation -->
 
-## Mobiilinavigointi ja lataaminen
+## Mobiilinavigointi
 
-Alareunan navigointipalkin kuvakkeista voit avata sivupalkin, yleiskatsauksen ja ilmoitukset. Kun luet ketjua, palkissa on myös ketjun valikkopainike, josta voit avata sisällysluettelon ja ketjun toiminnot. Haku on käytettävissä yleiskatsauksessa. Otsikkopalkki näyttää sivun otsikon, kun sivun otsikko vierittyy pois näkyvistä.
-
-Loomio näyttää nykyisessä istunnossa jo ladatun sisällön samalla, kun se tarkistaa päivityksiä. Otsikkopalkin oikeassa yläkulmassa näkyvä latausilmaisin kertoo, milloin tietoja haetaan. Yleiskatsaus, ääntäsi odottavat kyselyt ja ilmoitukset latautuvat taustalla käynnistyksen jälkeen. Ilmoitusten hakeminen ei merkitse niitä katsotuiksi.
-
-Ketjut avautuvat alusta. Siirry uusimpaan toimintaan valitsemalla **Uusin**. Tiettyyn kommenttiin tai kyselyyn osoittavat linkit avaavat edelleen kyseisen kohteen.
+Mobiililaitteella alareunan navigointipalkista voit avata nopeasti sivupalkin, yleiskatsauksen ja ilmoitukset. Kun luet keskustelua, ketjun valikosta voit avata sisällysluettelon ja ketjun toiminnot.
 
 <!-- translation-section: what-to-do-next -->
 

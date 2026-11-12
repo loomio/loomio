@@ -1,10 +1,10 @@
 ---
 title: Visita rápida
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 1f2aa998e80dc027
   group-page: 5c6dc3eaeff87ab6
@@ -22,7 +22,7 @@ generated:
   user-settings: b7cd63433073a8b1
   notifications: 87a89d21f6640fce
   what-to-do-next: 3552ba2afa5b40d9
-  mobile-navigation: e1760ba385f69deb
+  mobile-navigation: fc19b0f4fe5906a2
 title_source: c41a33370cd580dd
 title_generated: fee22aa81fb97856
 ---
@@ -89,13 +89,9 @@ Consulta [Notificaciones](/en/user_manual/users/email_settings) para conocer las
 
 <!-- translation-section: mobile-navigation -->
 
-## Navegación móvil y carga
+## Navegación móvil
 
-Los iconos de la barra de navegación inferior abren la barra lateral, el panel y las notificaciones. Mientras lees un hilo, la barra también incluye un botón de menú del hilo para acceder a su contenido y a las acciones del hilo. La búsqueda está disponible desde el panel. La barra de título muestra el título de la página cuando el encabezado queda fuera de la vista al desplazarte.
-
-Loomio muestra el contenido que ya está disponible en la sesión actual mientras comprueba si hay actualizaciones. Un indicador de carga en la esquina superior derecha de la barra de título muestra cuándo se están obteniendo datos. El panel, las encuestas pendientes de tu voto y las notificaciones se cargan en segundo plano tras el inicio; obtener las notificaciones no las marca como vistas.
-
-Los hilos se abren al principio. Selecciona **Últimos** para ir a la actividad más reciente. Los enlaces a un comentario o una encuesta específicos siguen abriendo ese elemento.
+En el móvil, la barra de navegación inferior te permite acceder rápidamente a la barra lateral, al panel y a las notificaciones. Mientras lees una discusión, el menú del hilo te permite acceder al contenido y a las acciones del hilo.
 
 <!-- translation-section: what-to-do-next -->
 

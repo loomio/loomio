@@ -1,10 +1,10 @@
 ---
 title: Kurzer Rundgang
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: d05f7bc67c11cd2a
   group-page: b3f49d6f969273a8
@@ -22,7 +22,7 @@ generated:
   user-settings: 6f02090d5a174568
   notifications: 0d4126824feebb30
   what-to-do-next: 75df598e43c0f218
-  mobile-navigation: 5d39bf5e80ade7ab
+  mobile-navigation: 8740ca90beaadcea
 title_source: c41a33370cd580dd
 title_generated: 60a9792e09ce832a
 ---
@@ -89,13 +89,9 @@ Unter [Benachrichtigungen](/en/user_manual/users/email_settings) erfährst du me
 
 <!-- translation-section: mobile-navigation -->
 
-## Mobile Navigation und Laden von Inhalten
+## Mobile Navigation
 
-Die Symbole in der unteren Navigationsleiste öffnen die Seitenleiste, die Übersicht und die Benachrichtigungen. Wenn du einen Thread liest, enthält die Navigationsleiste außerdem eine Schaltfläche für das Thread-Menü mit dem Inhaltsverzeichnis und den Thread-Aktionen. Die Suche ist über die Übersicht verfügbar. Die Titelleiste zeigt den Seitentitel an, sobald die Überschrift beim Scrollen aus dem sichtbaren Bereich verschwindet.
-
-Loomio zeigt Inhalte an, die bereits in der aktuellen Sitzung gespeichert sind, während es nach Aktualisierungen sucht. Eine Ladeanzeige oben rechts in der Titelleiste zeigt an, wenn Daten abgerufen werden. Die Übersicht, Abstimmungen, bei denen deine Stimme noch aussteht, und Benachrichtigungen werden nach dem Start im Hintergrund geladen. Das Abrufen von Benachrichtigungen markiert sie nicht als angesehen.
-
-Threads öffnen sich am Anfang. Wähle **Letzte**, um zur neuesten Aktivität zu springen. Links zu einem bestimmten Kommentar oder einer bestimmten Abstimmung öffnen weiterhin direkt den jeweiligen Inhalt.
+Auf Mobilgeräten bietet dir die untere Navigationsleiste schnellen Zugriff auf die Seitenleiste, die Übersicht und die Benachrichtigungen. Wenn du eine Diskussion liest, öffnet das Thread-Menü das Inhaltsverzeichnis und die Thread-Aktionen.
 
 <!-- translation-section: what-to-do-next -->
 

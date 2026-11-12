@@ -1,10 +1,10 @@
 ---
 title: Gyors áttekintés
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: f2a5bb1e6c78251c
   group-page: 8fac2eb11db76b9b
@@ -22,7 +22,7 @@ generated:
   user-settings: 020fdc0d2317d35d
   notifications: 0a5134bed9bc27c5
   what-to-do-next: c106e04cbffabed6
-  mobile-navigation: 2df3359cd1a62430
+  mobile-navigation: 75a560db1a76a929
 title_source: c41a33370cd580dd
 title_generated: 4c340dbdce7d1abd
 ---
@@ -89,13 +89,9 @@ Az alkalmazáson belüli értesítésekről, az e-mail-beállításokról, valam
 
 <!-- translation-section: mobile-navigation -->
 
-## Mobilos navigáció és betöltés
+## Mobilos navigáció
 
-Az alsó navigációs sáv ikonjai az oldalsávot, az áttekintést és az értesítéseket nyitják meg. Amikor egy szálat olvasol, a sávban a szál menügombja is megjelenik, amellyel elérheted a tartalomjegyzéket és a szálhoz kapcsolódó műveleteket. A keresés az áttekintésből érhető el. A címsáv megjeleníti az oldal címét, amikor az oldal címsora görgetés közben kikerül a képernyőről.
-
-A Loomio a frissítések keresése közben megjeleníti az aktuális munkamenetben már tárolt tartalmat. A címsáv jobb felső sarkában egy betöltésjelző mutatja, amikor az adatok lekérése folyamatban van. Az áttekintés, a szavazatodra váró szavazások és az értesítések az indítás után a háttérben töltődnek be; az értesítések lekérése nem jelöli meg őket megtekintettként.
-
-A szálak az elejüknél nyílnak meg. Válaszd ki a **Legutóbbi** lehetőséget, hogy a legújabb tevékenységhez ugorj. Az adott hozzászólásra vagy szavazásra mutató hivatkozások továbbra is közvetlenül azt nyitják meg.
+Mobilon az alsó navigációs sávból gyorsan elérheted az oldalsávot, az áttekintést és az értesítéseket. Amikor egy beszélgetést olvasol, a szál menüjéből elérheted a tartalomjegyzéket és a szálhoz kapcsolódó műveleteket.
 
 <!-- translation-section: what-to-do-next -->
 

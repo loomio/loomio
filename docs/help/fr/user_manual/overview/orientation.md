@@ -1,10 +1,10 @@
 ---
 title: Visite rapide
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 59ee6bb0ad1eed69
   group-page: 13cfcd25b08f7bd2
@@ -22,7 +22,7 @@ generated:
   user-settings: 441510e7051415a9
   notifications: '08c9a9a580d9626f'
   what-to-do-next: 213b0f6a819f21c8
-  mobile-navigation: 0c012637b372846b
+  mobile-navigation: 05742fc59e9148d7
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
 ---
@@ -89,13 +89,9 @@ Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir p
 
 <!-- translation-section: mobile-navigation -->
 
-## Navigation mobile et chargement
+## Navigation mobile
 
-Les icônes de la barre de navigation inférieure ouvrent la barre latérale, le tableau de bord et les notifications. Lorsque vous consultez un fil, cette barre comporte également un bouton de menu permettant d’accéder au contenu du fil et aux actions associées. La recherche est accessible depuis le tableau de bord. La barre de titre affiche le titre de la page lorsque son en-tête disparaît de l’écran lors du défilement.
-
-Loomio affiche le contenu déjà conservé dans la session en cours tout en recherchant des mises à jour. Un indicateur de chargement en haut à droite de la barre de titre signale la récupération de données. Le tableau de bord, les sondages en attente de votre vote et les notifications se chargent en arrière-plan après le démarrage ; la récupération des notifications ne les marque pas comme consultées.
-
-Les fils s’ouvrent au début. Sélectionnez **Dernier** pour accéder à l’activité la plus récente. Les liens vers un commentaire ou un sondage précis ouvrent toujours l’élément concerné.
+Sur mobile, la barre de navigation inférieure vous donne un accès rapide à la barre latérale, au tableau de bord et aux notifications. Lorsque vous consultez une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -1,10 +1,10 @@
 ---
 title: クイックツアー
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 2dd1c6165086df1d
   group-page: c3ae1c6e2c785f8e
@@ -22,7 +22,7 @@ generated:
   user-settings: '09404ab82b2190f6'
   notifications: 0d93711d493b4d44
   what-to-do-next: bd778b745000029e
-  mobile-navigation: 4d436e75515f2795
+  mobile-navigation: bdad9a9889be368f
 title_source: c41a33370cd580dd
 title_generated: 3c52848186e9f407
 ---
@@ -89,13 +89,9 @@ title_generated: 3c52848186e9f407
 
 <!-- translation-section: mobile-navigation -->
 
-## モバイルのナビゲーションと読み込み
+## モバイルのナビゲーション
 
-下部のナビゲーションバーにあるアイコンから、サイドバー、ダッシュボード、通知を開けます。スレッドを読んでいる間は、目次やスレッドの操作にアクセスするためのスレッドメニューボタンも表示されます。検索はダッシュボードから利用できます。ページの見出しがスクロールで画面外に移動すると、タイトルバーにページタイトルが表示されます。
-
-Loomioは、更新を確認している間、現在のセッションにすでに保持されているコンテンツを表示します。データの取得中は、タイトルバーの右上に読み込みインジケーターが表示されます。ダッシュボード、投票待ちのアンケート、通知は、起動後にバックグラウンドで読み込まれます。通知を取得しても、確認済みにはなりません。
-
-スレッドは先頭から開きます。**最新**を選択すると、最新のアクティビティに移動します。特定のコメントやアンケートへのリンクは、引き続きその項目を開きます。
+モバイルでは、下部のナビゲーションバーからサイドバー、ダッシュボード、通知にすばやくアクセスできます。ディスカッションを読んでいる間は、スレッドメニューから目次やスレッドの操作を開けます。
 
 <!-- translation-section: what-to-do-next -->
 

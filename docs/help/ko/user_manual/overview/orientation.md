@@ -6,7 +6,7 @@ sections:
   sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
   what-to-do-next: 2946260092e30e4e
 generated:
   introduction: f592cf60937f3a12
@@ -15,16 +15,16 @@ generated:
   sidebar: 848e5a5776de24a1
   user-settings: 4f8dafd18110070d
   notifications: cd3d012ea9e5a0e0
-  mobile-navigation: e60b38bd1c498f38
+  mobile-navigation: 6e1f4a128d2f8e83
   what-to-do-next: 6c44855e55414e6a
 title: 둘러보기
 title_source: c41a33370cd580dd
 title_generated: 1d71c370510428ee
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-12'
 ---
 
 <!-- translation-section: introduction -->
@@ -89,13 +89,9 @@ translated:
 
 <!-- translation-section: mobile-navigation -->
 
-## 모바일 탐색과 불러오기
+## 모바일 탐색
 
-하단 탐색 모음의 아이콘으로 사이드바, 대시보드, 알림을 열 수 있습니다. 스레드를 읽는 동안에는 목차와 스레드 관련 작업을 위한 스레드 메뉴 버튼도 표시됩니다. 검색은 대시보드에서 사용할 수 있습니다. 페이지의 제목이 스크롤되어 화면에서 사라지면 제목 표시줄에 페이지 제목이 표시됩니다.
-
-Loomio는 업데이트를 확인하는 동안 현재 세션에 이미 저장된 콘텐츠를 표시합니다. 데이터를 가져오는 동안 제목 표시줄 오른쪽 위에 불러오기 표시가 나타납니다. 대시보드, 참여를 기다리는 투표, 알림은 앱 시작 후 백그라운드에서 불러옵니다. 알림을 가져오는 것만으로는 확인한 것으로 표시되지 않습니다.
-
-스레드는 처음부터 열립니다. 가장 최근 활동으로 이동하려면 **최신**을 선택하세요. 특정 댓글이나 투표로 연결되는 링크는 해당 항목을 바로 엽니다.
+모바일에서는 하단 탐색 모음에서 사이드바, 대시보드, 알림에 빠르게 접근할 수 있습니다. 토론을 읽는 동안에는 스레드 메뉴에서 목차와 스레드 관련 작업을 열 수 있습니다.
 
 <!-- translation-section: what-to-do-next -->
 

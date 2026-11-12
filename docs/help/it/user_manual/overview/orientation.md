@@ -1,10 +1,10 @@
 ---
 title: Panoramica rapida
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: f3bb6a4c8087a22b
   group-page: b00fd40a5e58b279
@@ -22,7 +22,7 @@ generated:
   user-settings: 899e59b9e128b1e8
   notifications: f07fbdf02f1f7cdd
   what-to-do-next: 1f6b6022f77503a7
-  mobile-navigation: 0f2317a21ac11bf6
+  mobile-navigation: ee1aa753d94e950e
 title_source: c41a33370cd580dd
 title_generated: 1567395c8aacbba6
 ---
@@ -89,13 +89,9 @@ Consulta [Notifiche](/en/user_manual/users/email_settings) per informazioni sull
 
 <!-- translation-section: mobile-navigation -->
 
-## Navigazione sui dispositivi mobili e caricamento
+## Navigazione sui dispositivi mobili
 
-Le icone nella barra di navigazione in basso aprono la barra laterale, la dashboard e le notifiche. Quando leggi una conversazione, la barra include anche un pulsante che apre il menu della conversazione, con i contenuti e le azioni disponibili. La ricerca è disponibile dalla dashboard. La barra del titolo mostra il titolo della pagina quando, scorrendo, l'intestazione non è più visibile.
-
-Loomio mostra i contenuti già presenti nella sessione corrente mentre verifica la disponibilità di aggiornamenti. Un indicatore di caricamento in alto a destra nella barra del titolo segnala quando vengono recuperati i dati. La dashboard, i sondaggi in attesa del tuo voto e le notifiche vengono caricati in background dopo l'avvio; il recupero delle notifiche non le contrassegna come visualizzate.
-
-Le conversazioni si aprono dall'inizio. Seleziona **Più recente** per passare all'attività più recente. I collegamenti a un commento o a un sondaggio specifico continuano ad aprire direttamente quell'elemento.
+Sui dispositivi mobili, la barra di navigazione in basso ti dà accesso rapido alla barra laterale, alla dashboard e alle notifiche. Quando leggi una discussione, il menu della conversazione ne mostra i contenuti e le azioni disponibili.
 
 <!-- translation-section: what-to-do-next -->
 

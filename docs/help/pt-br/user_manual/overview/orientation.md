@@ -1,10 +1,10 @@
 ---
 title: Visão geral rápida
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: e1154a67cbbaa4b9
   group-page: 5096228542dbbefb
@@ -22,7 +22,7 @@ generated:
   user-settings: ec431f015f8d7e38
   notifications: b90e512178cb7e5a
   what-to-do-next: 11dce04a938e9ff0
-  mobile-navigation: 158d2a2974794826
+  mobile-navigation: 12df5bb4d4ea388b
 title_source: c41a33370cd580dd
 title_generated: 7332722d7395c1a6
 ---
@@ -89,13 +89,9 @@ Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais 
 
 <!-- translation-section: mobile-navigation -->
 
-## Navegação e carregamento no celular
+## Navegação no celular
 
-Os ícones na barra de navegação inferior abrem a barra lateral, o painel e as notificações. Ao ler uma conversa, essa barra também inclui um botão de menu da conversa para acessar seu conteúdo e suas ações. A busca está disponível no painel. A barra de título mostra o título da página quando o cabeçalho sai da área visível durante a rolagem.
-
-O Loomio mostra o conteúdo já armazenado na sessão atual enquanto verifica se há atualizações. Um indicador de carregamento no canto superior direito da barra de título mostra quando os dados estão sendo buscados. O painel, as enquetes que aguardam seu voto e as notificações são carregados em segundo plano após a inicialização; buscar notificações não as marca como visualizadas.
-
-As conversas abrem no início. Selecione **Mais recente** para ir à atividade mais recente. Links para um comentário ou uma enquete específicos continuam abrindo esse item.
+No celular, a barra de navegação inferior oferece acesso rápido à barra lateral, ao painel e às notificações. Ao ler uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
 
 <!-- translation-section: what-to-do-next -->
 

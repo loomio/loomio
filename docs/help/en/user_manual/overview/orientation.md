@@ -60,13 +60,9 @@ See [Notifications](/en/user_manual/users/email_settings) to learn about in-app 
 
 <!-- translation-section: mobile-navigation -->
 
-## Mobile navigation and loading
+## Mobile navigation
 
-The icons in the bottom navigation bar open the sidebar, dashboard, and notifications. While reading a thread, it also has a thread menu button for the contents and thread actions. Search is available from the dashboard. The title bar shows the page title when its heading scrolls out of view.
-
-Loomio shows content already held in the current session while checking for updates. A loading indicator at the top right of the title bar shows when data is being fetched. The dashboard, polls awaiting your vote, and notifications load in the background after startup; fetching notifications does not mark them as viewed.
-
-Threads open at the start. Select **Latest** to jump to the newest activity. Links to a specific comment or poll still open that item.
+On mobile, the bottom navigation bar gives you quick access to the sidebar, dashboard, and notifications. When reading a discussion, the thread menu opens its contents and actions.
 
 <!-- translation-section: what-to-do-next -->
 

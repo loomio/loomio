@@ -1,10 +1,10 @@
 ---
 title: Snel overzicht
-source_revision: 1a2ac5e1612196c7e30f194d3b5324462265effd
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
@@ -13,7 +13,7 @@ sections:
   user-settings: f28c7bdfc7562d01
   notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: 05ee70f7762cd79c
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 37661474614d0302
   group-page: 4456025528178efb
@@ -22,7 +22,7 @@ generated:
   user-settings: 72c322120115e1fa
   notifications: 366b22778d1b6d7c
   what-to-do-next: 9ad93f652345617a
-  mobile-navigation: 3f5d9d8315339cf4
+  mobile-navigation: 57749e61ca032914
 title_source: c41a33370cd580dd
 title_generated: '057569e85df4c620'
 ---
@@ -89,13 +89,9 @@ Zie [Meldingen](/en/user_manual/users/email_settings) voor informatie over meldi
 
 <!-- translation-section: mobile-navigation -->
 
-## Mobiele navigatie en laden
+## Mobiele navigatie
 
-De pictogrammen in de onderste navigatiebalk openen de zijbalk, het dashboard en de meldingen. Terwijl je een thread leest, bevat de navigatiebalk ook een menuknop voor de inhoudsopgave en acties voor de thread. Je kunt zoeken vanuit het dashboard. De titelbalk toont de paginatitel wanneer de kop uit beeld scrolt.
-
-Loomio toont inhoud die al in de huidige sessie beschikbaar is terwijl het op updates controleert. Een laadindicator rechtsboven in de titelbalk geeft aan wanneer gegevens worden opgehaald. Het dashboard, peilingen die op jouw stem wachten en meldingen worden na het opstarten op de achtergrond geladen; het ophalen van meldingen markeert ze niet als bekeken.
-
-Threads openen aan het begin. Selecteer **Laatste** om naar de nieuwste activiteit te gaan. Links naar een specifieke reactie of peiling openen nog steeds dat item.
+Op mobiel geeft de onderste navigatiebalk je snel toegang tot de zijbalk, het dashboard en meldingen. Wanneer je een discussie leest, opent het threadmenu de inhoudsopgave en acties voor de thread.
 
 <!-- translation-section: what-to-do-next -->
 
