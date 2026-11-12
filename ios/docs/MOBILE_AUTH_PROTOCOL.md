@@ -33,6 +33,21 @@ The app treats a selected host as untrusted input. All discovered endpoints must
 
 The client ID and callback become release constants when the production bundle identifier is selected. A callback received for any other path is rejected.
 
+## Desktop client
+
+Desktop apps use the same protocol with their own registration:
+
+| Item | Value |
+| --- | --- |
+| Client ID | `org.loomio.desktop` |
+| Callback | `http://127.0.0.1:<port>/oauth/callback` |
+| Device platform | `desktop` |
+| Scopes | `activity:read activity:write web_session:create device:revoke` |
+
+Following RFC 8252, the desktop app opens the authorization URL in the user's default browser and receives the callback on a loopback listener. The app binds `127.0.0.1` on any free port from 1024 to 65535 and sends that exact callback as `redirect_uri`. The host rejects `localhost`, IPv6 loopback, HTTPS, other paths, query strings, fragments, and user information before login. The authorization code stores the exact callback, including its port, and the token exchange must repeat it. A refresh token can only be refreshed by the client whose platform matches its device. Desktop tokens have no `notifications:manage` or `relay:register` scope, so desktop devices cannot register with the push relay; the app polls the activity endpoint instead.
+
+The listener accepts a single `GET /oauth/callback` request, validates `state` as in step 3, answers with a short page asking the user to return to the app, and then closes. It never follows the callback to another location.
+
 ## Website-to-app connection link
 
 The installed app registers `loomio` as a custom URL scheme. A Loomio website can offer a button or QR code containing:
@@ -284,7 +299,7 @@ This bridge is not a general RPC mechanism. New actions require an app release, 
 | `web_session:create` | Create one-time WebView bootstrap tickets. |
 | `device:revoke` | Revoke the current device grant. |
 
-The first release uses this fixed scope set. The host confirmation page shows it in user-facing language. Future protocol versions may negotiate smaller sets.
+The iOS client receives this whole set. The desktop client receives every scope except `notifications:manage` and `relay:register`. Each client's set is fixed, and the host confirmation page shows it in user-facing language. Future protocol versions may negotiate smaller sets.
 
 ## Server persistence
 

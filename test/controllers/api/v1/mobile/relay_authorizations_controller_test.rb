@@ -79,6 +79,17 @@ class Api::V1::Mobile::RelayAuthorizationsControllerTest < ActionDispatch::Integ
     assert_equal "insufficient_scope", JSON.parse(response.body)["error"]
   end
 
+  test "desktop devices cannot request relay registration" do
+    desktop_redirect_uri = "http://127.0.0.1:53682/oauth/callback"
+    @pair = authorize_device(client: Mobile::Client::DESKTOP, redirect_uri: desktop_redirect_uri)
+
+    post "/api/v1/mobile/relay-authorizations", headers: bearer_headers, as: :json
+
+    assert_response :forbidden
+    assert_equal "insufficient_scope", JSON.parse(response.body)["error"]
+    assert_empty @pair[:device].mobile_relay_authorizations
+  end
+
   test "verification rejects other media types without consuming a valid authorization" do
     authorization = Mobile::RelayAuthorizationService.issue!(device: @pair[:device]).fetch(:authorization)
 
@@ -113,15 +124,15 @@ class Api::V1::Mobile::RelayAuthorizationsControllerTest < ActionDispatch::Integ
     { "HTTP_AUTHORIZATION" => "Bearer #{@pair[:access_token]}" }
   end
 
-  def authorize_device
+  def authorize_device(client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI)
     verifier = "v" * 43
     challenge = Base64.urlsafe_encode64(Digest::SHA256.digest(verifier), padding: false)
-    code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: challenge)
+    code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: client, redirect_uri: redirect_uri, code_challenge: challenge)
     Mobile::AuthenticationService.exchange_authorization_code!(
       code: code,
       code_verifier: verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: client.id,
+      redirect_uri: redirect_uri,
       device_name: "Relay Test iPhone"
     )
   end

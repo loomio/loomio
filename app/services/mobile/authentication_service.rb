@@ -3,9 +3,6 @@ require "openssl"
 
 class Mobile::AuthenticationService
   PROTOCOL_VERSION = 1
-  CLIENT_ID = "org.loomio.mobile.ios"
-  REDIRECT_URI = "org.loomio.mobile:/oauth/callback"
-  SCOPES = "activity:read activity:write notifications:manage relay:register web_session:create device:revoke"
 
   AUTHORIZATION_CODE_TTL = 2.minutes
   ACCESS_TOKEN_TTL = 15.minutes
@@ -24,13 +21,15 @@ class Mobile::AuthenticationService
   end
 
   class << self
-    def issue_authorization_code!(user:, code_challenge:)
+    def issue_authorization_code!(user:, client:, redirect_uri:, code_challenge:)
+      raise ArgumentError, "unregistered redirect URI" unless client.redirect_uri_valid?(redirect_uri)
+
       raw = random_token("lm_ac_")
       MobileAuthorizationCode.create!(
         user: user,
         token_digest: digest(raw, :authorization_code),
-        client_id: CLIENT_ID,
-        redirect_uri: REDIRECT_URI,
+        client_id: client.id,
+        redirect_uri: redirect_uri,
         code_challenge: code_challenge,
         expires_at: AUTHORIZATION_CODE_TTL.from_now
       )
@@ -38,7 +37,7 @@ class Mobile::AuthenticationService
     end
 
     def exchange_authorization_code!(code:, code_verifier:, client_id:, redirect_uri:, device_name:)
-      validate_public_client!(client_id: client_id, redirect_uri: redirect_uri)
+      client = validated_public_client!(client_id: client_id, redirect_uri: redirect_uri)
       validate_code_verifier!(code_verifier)
 
       MobileAuthorizationCode.transaction do
@@ -50,8 +49,8 @@ class Mobile::AuthenticationService
         authorization.update!(used_at: Time.current)
         device = MobileDevice.create!(
           user: authorization.user,
-          name: normalized_device_name(device_name),
-          platform: "ios",
+          name: normalized_device_name(device_name, client: client),
+          platform: client.platform,
           protocol_version: PROTOCOL_VERSION,
           last_seen_at: Time.current
         )
@@ -60,12 +59,13 @@ class Mobile::AuthenticationService
     end
 
     def refresh!(refresh_token:, client_id:)
-      raise Error.new("invalid_client", status: :unauthorized) unless client_id == CLIENT_ID
+      client = registered_client!(client_id)
 
       reused = false
       pair = MobileRefreshToken.transaction do
         token = MobileRefreshToken.lock.find_by(token_digest: digest(refresh_token, :refresh_token))
         invalid_grant! unless token
+        invalid_grant! unless token.mobile_device.platform == client.platform
 
         if token.consumed_at.present?
           token.mobile_device.revoke!
@@ -134,7 +134,7 @@ class Mobile::AuthenticationService
           id: pair.fetch(:device).id,
           name: pair.fetch(:device).name
         },
-        scope: SCOPES
+        scope: pair.fetch(:scopes)
       }
     end
 
@@ -147,11 +147,12 @@ class Mobile::AuthenticationService
     def issue_token_pair!(device:, parent: nil, absolute_expires_at: REFRESH_ABSOLUTE_TTL.from_now)
       access_raw = random_token("lm_at_")
       refresh_raw = random_token("lm_rt_")
+      scopes = Mobile::Client.for_platform(device.platform).scopes
       now = Time.current
 
       device.mobile_access_tokens.create!(
         token_digest: digest(access_raw, :access_token),
-        scopes: SCOPES,
+        scopes: scopes,
         expires_at: now + ACCESS_TOKEN_TTL
       )
       device.mobile_refresh_tokens.create!(
@@ -167,13 +168,19 @@ class Mobile::AuthenticationService
         access_token: access_raw,
         refresh_token: refresh_raw,
         refresh_expires_at: absolute_expires_at,
+        scopes: scopes,
         device: device
       }
     end
 
-    def validate_public_client!(client_id:, redirect_uri:)
-      raise Error.new("invalid_client", status: :unauthorized) unless client_id == CLIENT_ID
-      invalid_grant! unless redirect_uri == REDIRECT_URI
+    def registered_client!(client_id)
+      Mobile::Client.find(client_id) || raise(Error.new("invalid_client", status: :unauthorized))
+    end
+
+    def validated_public_client!(client_id:, redirect_uri:)
+      client = registered_client!(client_id)
+      invalid_grant! unless client.redirect_uri_valid?(redirect_uri)
+      client
     end
 
     def validate_code_verifier!(verifier)
@@ -185,8 +192,8 @@ class Mobile::AuthenticationService
       Base64.urlsafe_encode64(Digest::SHA256.digest(verifier), padding: false)
     end
 
-    def normalized_device_name(name)
-      name.to_s.strip.presence&.first(100) || "iPhone"
+    def normalized_device_name(name, client:)
+      name.to_s.strip.presence&.first(100) || client.device_name_default
     end
 
     def random_token(prefix)

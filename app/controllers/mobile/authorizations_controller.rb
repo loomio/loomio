@@ -17,7 +17,11 @@ class Mobile::AuthorizationsController < ApplicationController
     return unless authenticate_user!
 
     prevent_caching
-    render Views::Mobile::Authorization.new(user: current_user, host: request.host)
+    render Views::Mobile::Authorization.new(
+      user: current_user,
+      host: request.host,
+      client: Mobile::Client.find(authorization_request.fetch("client_id"))
+    )
   end
 
   def create
@@ -29,6 +33,8 @@ class Mobile::AuthorizationsController < ApplicationController
     if params[:decision] == "approve"
       code = Mobile::AuthenticationService.issue_authorization_code!(
         user: current_user,
+        client: Mobile::Client.find(authorization_request.fetch("client_id")),
+        redirect_uri: authorization_request.fetch("redirect_uri"),
         code_challenge: authorization_request.fetch("code_challenge")
       )
       redirect_to callback_url(authorization_request, code: code), allow_other_host: true
@@ -49,8 +55,7 @@ class Mobile::AuthorizationsController < ApplicationController
 
     request_params = AUTHORIZATION_PARAMETER_LIMITS.keys.index_with { |name| values.fetch(name).first.last }
     valid = request_params["response_type"] == "code" &&
-      request_params["client_id"] == Mobile::AuthenticationService::CLIENT_ID &&
-      request_params["redirect_uri"] == Mobile::AuthenticationService::REDIRECT_URI &&
+      registered_redirect?(request_params) &&
       request_params["code_challenge_method"] == "S256" &&
       request_params["code_challenge"].match?(/\A[A-Za-z0-9_-]{43}\z/) &&
       request_params["state"].match?(/\A[A-Za-z0-9_-]{43}\z/)
@@ -67,14 +72,21 @@ class Mobile::AuthorizationsController < ApplicationController
   def pending_request_valid?(request_data)
     request_data.is_a?(Hash) &&
       request_data["expires_at"].to_i > Time.current.to_i &&
-      request_data["client_id"] == Mobile::AuthenticationService::CLIENT_ID &&
-      request_data["redirect_uri"] == Mobile::AuthenticationService::REDIRECT_URI
+      registered_redirect?(request_data)
+  end
+
+  # The callback can only go to the redirect registered for the requesting client.
+  # This is checked before login and again on approval, because the session value
+  # is the only record of where the code will be sent.
+  def registered_redirect?(request_data)
+    client = Mobile::Client.find(request_data["client_id"])
+    client.present? && client.redirect_uri_valid?(request_data["redirect_uri"])
   end
 
   def callback_url(request_data, code: nil, error: nil)
     query = { state: request_data.fetch("state") }
     query[:code] = code if code
     query[:error] = error if error
-    "#{Mobile::AuthenticationService::REDIRECT_URI}?#{URI.encode_www_form(query)}"
+    "#{request_data.fetch("redirect_uri")}?#{URI.encode_www_form(query)}"
   end
 end

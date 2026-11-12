@@ -12,8 +12,8 @@ class Mobile::AuthorizationsControllerTest < ActionController::TestCase
     )
     @params = {
       response_type: "code",
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       code_challenge: "c" * 43,
       code_challenge_method: "S256",
       state: "s" * 43
@@ -33,6 +33,7 @@ class Mobile::AuthorizationsControllerTest < ActionController::TestCase
     assert_response :success
     assert_includes response.body, @user.email
     assert_includes response.body, "Connect this device"
+    assert_includes response.body, I18n.t("mobile_auth.authorize.ios.notifications")
     assert_includes response.headers.fetch('Cache-Control'), 'no-store'
 
     post :create, params: { decision: "approve" }
@@ -50,6 +51,40 @@ class Mobile::AuthorizationsControllerTest < ActionController::TestCase
       post :create, params: {decision: 'approve'}
     end
     assert_response :bad_request
+  end
+
+  test "a desktop client is redirected to the loopback callback it requested" do
+    redirect_uri = "http://127.0.0.1:53682/oauth/callback"
+    sign_in @user
+    get :show, params: @params.merge(client_id: Mobile::Client::DESKTOP.id, redirect_uri: redirect_uri)
+    assert_response :success
+    assert_includes response.body, "Connect Loomio Desktop?"
+    assert_not_includes response.body, I18n.t("mobile_auth.authorize.ios.notifications")
+
+    post :create, params: { decision: "approve" }
+    uri = URI.parse(response.location)
+    query = URI.decode_www_form(uri.query).to_h
+    assert_equal redirect_uri, "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}"
+    assert_equal "s" * 43, query["state"]
+    assert query["code"].start_with?("lm_ac_")
+    authorization = MobileAuthorizationCode.sole
+    assert_equal Mobile::Client::DESKTOP.id, authorization.client_id
+    assert_equal redirect_uri, authorization.redirect_uri
+  end
+
+  test "rejects a callback registered to another client before authentication" do
+    [
+      [ Mobile::Client::IOS.id, "http://127.0.0.1:53682/oauth/callback" ],
+      [ Mobile::Client::DESKTOP.id, Mobile::Client::IOS_REDIRECT_URI ],
+      [ Mobile::Client::DESKTOP.id, "http://localhost:53682/oauth/callback" ],
+      [ Mobile::Client::DESKTOP.id, "http://127.0.0.1:53682@evil.example/oauth/callback" ]
+    ].each do |client_id, redirect_uri|
+      get :show, params: @params.merge(client_id: client_id, redirect_uri: redirect_uri)
+
+      assert_response :bad_request, "#{client_id} #{redirect_uri}"
+      assert_nil session[:return_to_after_authenticating]
+      assert_nil session[:mobile_authorization_request]
+    end
   end
 
   test "rejects plain PKCE before authentication" do

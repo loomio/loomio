@@ -10,14 +10,14 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
     )
     @verifier = "v" * 43
     challenge = Base64.urlsafe_encode64(Digest::SHA256.digest(@verifier), padding: false)
-    @code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: challenge)
+    @code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: challenge)
   end
 
   test "exchanges and refreshes credentials over the public native-client endpoint" do
     post "/api/v1/mobile/token", params: {
       grant_type: "authorization_code",
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       code: @code,
       code_verifier: @verifier,
       device_name: "HTTP iPhone"
@@ -33,7 +33,7 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
 
     post "/api/v1/mobile/token", params: {
       grant_type: "refresh_token",
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
+      client_id: Mobile::Client::IOS.id,
       refresh_token: token["refresh_token"]
     }
 
@@ -46,8 +46,8 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
   test "rejects JSON token exchange bodies" do
     post "/api/v1/mobile/token", params: {
       grant_type: "authorization_code",
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       code: @code,
       code_verifier: @verifier
     }, as: :json
@@ -59,8 +59,8 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
   test "rejects duplicated token parameters" do
     body = URI.encode_www_form(
       grant_type: "authorization_code",
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       code: @code,
       code_verifier: @verifier
     ) + "&code=second-code"
@@ -74,8 +74,8 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "rejects an oversized token body before consuming its authorization code and accepts the byte limit" do
-    body = URI.encode_www_form(grant_type: 'authorization_code', client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI, code: @code, code_verifier: @verifier) + '&padding='
+    body = URI.encode_www_form(grant_type: 'authorization_code', client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code: @code, code_verifier: @verifier) + '&padding='
     body += 'x' * (4_096 - body.bytesize)
     headers = { 'CONTENT_TYPE' => 'application/x-www-form-urlencoded' }
 
@@ -95,7 +95,7 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
   test "missing and oversized required parameters are invalid requests" do
     ['', 'x' * 513].each do |client_id|
       post '/api/v1/mobile/token', params: { grant_type: 'authorization_code', client_id: client_id,
-        redirect_uri: Mobile::AuthenticationService::REDIRECT_URI, code: @code, code_verifier: @verifier }
+        redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code: @code, code_verifier: @verifier }
       assert_response :bad_request
       assert_equal 'invalid_request', response.parsed_body.fetch('error')
       assert_equal 'no-store', response.headers['Cache-Control']
@@ -107,8 +107,8 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
     pair = Mobile::AuthenticationService.exchange_authorization_code!(
       code: @code,
       code_verifier: @verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       device_name: "HTTP iPhone"
     )
 
@@ -127,8 +127,8 @@ class Api::V1::Mobile::TokensControllerTest < ActionDispatch::IntegrationTest
     pair = Mobile::AuthenticationService.exchange_authorization_code!(
       code: @code,
       code_verifier: @verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       device_name: "Scoped iPhone"
     )
     pair[:device].mobile_access_tokens.update_all(scopes: "activity:read")

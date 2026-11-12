@@ -3,8 +3,10 @@
 class Views::Mobile::Authorization < Views::BasicLayout
   include Phlex::Rails::Helpers::FormTag
 
-  def initialize(user:, host:)
-    super(title: I18n.t("mobile_auth.authorize.title"), robots: "noindex,nofollow")
+  def initialize(user:, host:, client:)
+    @copy_scope = "mobile_auth.authorize.#{client.platform}"
+    @manages_notifications = client.scopes.split.include?("notifications:manage")
+    super(title: I18n.t("#{@copy_scope}.title"), robots: "noindex,nofollow")
     @user = user
     @host = host
   end
@@ -24,18 +26,18 @@ class Views::Mobile::Authorization < Views::BasicLayout
 
     main(class: "mobile-auth") do
       section(class: "mobile-auth__card", aria_labelledby: "mobile-auth-heading") do
-        h1(id: "mobile-auth-heading") { I18n.t("mobile_auth.authorize.heading") }
-        p { I18n.t("mobile_auth.authorize.introduction", host: @host) }
+        h1(id: "mobile-auth-heading") { I18n.t("#{@copy_scope}.heading") }
+        p { I18n.t("#{@copy_scope}.introduction", host: @host) }
         div(class: "mobile-auth__account") do
           strong { @user.name }
           br
           span { @user.email }
         end
-        p { I18n.t("mobile_auth.authorize.access") }
+        p { I18n.t("#{@copy_scope}.access") }
         ul do
           li { I18n.t("mobile_auth.authorize.activity") }
-          li { I18n.t("mobile_auth.authorize.notifications") }
-          li { I18n.t("mobile_auth.authorize.web_session") }
+          li { I18n.t("#{@copy_scope}.notifications") } if @manages_notifications
+          li { I18n.t("#{@copy_scope}.web_session") }
         end
         form_tag(mobile_authorize_path, method: :post) do
           div(class: "mobile-auth__actions") do
