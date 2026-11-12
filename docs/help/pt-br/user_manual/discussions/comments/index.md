@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 456d08a6bd092611
-  reading-comments: e3d69ca215029452
+  reading-comments: 778972fc1a70c521
   writing-a-comment: 697bb8045499436f
   mentioning-people: 733085bc8e2a7e85
   replying-to-a-comment: 49b0b703b50f2032
@@ -52,8 +52,6 @@ As conversas abrem no contexto da discussão. Você pode usar **Novo para você*
 Os comentários não lidos têm uma etiqueta azul **novo** ao lado do horário de publicação.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-As contribuições longas que você já leu aparecem como uma prévia, mantendo visível o restante da conversa. Selecione **Mostrar mais** para exibir o texto completo durante o restante da sua visita à conversa. As contribuições não lidas e os comentários abertos por um link direto permanecem expandidos. Quando alguém adiciona uma nota sobre uma alteração ou notifica as pessoas sobre uma edição, o contexto da discussão volta a ser exibido por completo se você não tiver lido a conversa desde esse aviso.
 
 <!-- translation-section: writing-a-comment -->
 

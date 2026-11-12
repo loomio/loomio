@@ -7,7 +7,6 @@ import TaggedItems from '@/components/topic/tagged_items.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
 import TopicHeader from '@/components/topic/header';
-import BodyPreview from '@/components/topic/body_preview.vue';
 import ScrollService     from '@/shared/services/scroll_service';
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
@@ -34,7 +33,6 @@ let stopCollectionWatch = null;
 
 onMounted(() => {
   EventBus.$on('setAnchor', onSetAnchor);
-  EventBus.$on('cancelAutoScroll', cancelSettledScroll);
   EventBus.$on('visibleKeys', onVisibleKeys);
 
   init();
@@ -42,7 +40,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   EventBus.$off('setAnchor', onSetAnchor);
-  EventBus.$off('cancelAutoScroll', cancelSettledScroll);
   EventBus.$off('visibleKeys', onVisibleKeys);
   cancelSettledScroll();
   stopCollectionUpdates();
@@ -410,8 +407,7 @@ function shouldSettleAnchorScroll() {
         template(v-else)
           .topic-page__cached-context.sequenceId-0.pa-3#context(v-if="!loader.collection.length")
             topic-header(:topicable="topic.topicable()" :show-tags="false")
-            body-preview(:state="loader.bodyPreview(0)" :focused="focusSelector === '.sequenceId-0'")
-              formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
+            formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
             attachment-list(:attachments="topic.topicable().attachments")
           topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         topic-actions-panel(:topic="topic")

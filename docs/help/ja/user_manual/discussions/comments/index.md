@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: f5436faff2a24b17
-  reading-comments: 231f995105937d20
+  reading-comments: 23c0bd2ff3ec70f0
   writing-a-comment: 6c70895c401ec94a
   mentioning-people: f28c797f06f3adec
   replying-to-a-comment: f1f91d56a5ef723f
@@ -52,8 +52,6 @@ title_generated: 6b9190f59aa3a51f
 未読のコメントには、投稿時刻の横に青い**新しい**ラベルが表示されます。
 
 ![](../using_discussions/thread_unread_comments.png)
-
-既読の長い投稿はプレビューで表示されるため、前後の会話も確認できます。**もっと見せる**を選択すると、そのスレッドを開いている間は全文が表示されます。未読の投稿や、直接リンクから開いたコメントは、全文が表示されたままになります。変更メモが追加されたり、編集についての通知が送られたりした場合、そのお知らせ以降にスレッドを読んでいなければ、ディスカッションの背景説明が再び全文表示されます。
 
 <!-- translation-section: writing-a-comment -->
 

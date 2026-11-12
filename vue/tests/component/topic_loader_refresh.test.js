@@ -7,38 +7,6 @@ vi.mock('@/shared/services/session', () => ({default: {}}));
 vi.mock('@/shared/services/event_bus', () => ({default: {$emit: vi.fn()}}));
 import TopicLoader from '@/shared/loaders/topic_loader';
 
-describe('significant context changes', () => {
-  function contextLoader(changedAt) {
-    const discussion = {contextChangedAt: new Date(changedAt), updatedAt: new Date('2026-11-08T12:00:00Z')};
-    const topic = {id: 1, topicableType: 'Discussion', ranges: [[0, 2]], readRanges: [[0, 1]],
-      lastReadAt: new Date('2026-11-08T10:00:00Z'), topicable: () => discussion};
-    return {loader: new TopicLoader(topic), topic, discussion};
-  }
-
-  it('shows context edited since the previous read in full from the first render', () => {
-    const {loader} = contextLoader('2026-11-08T11:00:00Z');
-    expect(loader.bodyPreview(0)).toMatchObject({readBeforeVisit: true, revealed: false, changedSinceRead: true});
-    expect(loader.bodyPreview(1)).toMatchObject({readBeforeVisit: true, revealed: false});
-    expect(loader.revealedBodies.size).toBe(0);
-  });
-
-  it('keeps context read after the edit eligible for a preview', () => {
-    const {loader} = contextLoader('2026-11-08T09:00:00Z');
-    expect(loader.bodyPreview(0)).toMatchObject({readBeforeVisit: true, revealed: false, changedSinceRead: false});
-  });
-
-  it('reveals an edit arriving during the visit and keeps it revealed as read state changes', () => {
-    const {loader, topic, discussion} = contextLoader('2026-11-08T09:00:00Z');
-    const preview = loader.bodyPreview(0);
-    expect(preview.revealed).toBe(false);
-    discussion.contextChangedAt = new Date('2026-11-08T11:00:00Z');
-    expect(loader.bodyPreview(0).changedSinceRead).toBe(true);
-    loader.bodyPreview(0).reveal();
-    topic.lastReadAt = new Date('2026-11-08T12:00:00Z');
-    expect(loader.bodyPreview(0).revealed).toBe(true);
-  });
-});
-
 describe('thread refresh windows', () => {
   it('retries a failed latest window while keeping successful windows fetched', async () => {
     const topic = {id: 1, ranges: [[0, 40]], readRanges: []};

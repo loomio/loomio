@@ -22,8 +22,6 @@ export default class TopicLoader {
     this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
-    this.revealedBodies = reactive(new Set());
-    this.bodyPreviews = new Map();
     this.loading = false;
     this.isFirstLoad = true
     this.padding = 25;
@@ -71,25 +69,6 @@ export default class TopicLoader {
 
   sequenceIdIsUnread(id) {
     return !RangeSet.includesValue(this.readRanges, id);
-  }
-
-  // Each body keeps one preview state for the visit. Read status comes from the
-  // visit's read snapshot; reveals are stored by sequence ID so cached context
-  // and its loaded root item share the same state.
-  bodyPreview(sequenceId) {
-    if (!this.bodyPreviews.has(sequenceId)) {
-      const loader = this;
-      this.bodyPreviews.set(sequenceId, {
-        readBeforeVisit: !this.sequenceIdIsUnread(sequenceId),
-        get revealed() { return loader.revealedBodies.has(sequenceId); },
-        get changedSinceRead() {
-          return sequenceId === 0 && loader.topic.topicableType === 'Discussion' &&
-            loader.topic.topicable().contextChangedAt > loader.lastReadAt;
-        },
-        reveal: () => this.revealedBodies.add(sequenceId)
-      });
-    }
-    return this.bodyPreviews.get(sequenceId);
   }
 
   expand(topic_item) {

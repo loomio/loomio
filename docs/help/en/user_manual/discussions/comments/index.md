@@ -14,8 +14,6 @@ Unread comments have a blue **new** label beside their posting time.
 
 ![](../using_discussions/thread_unread_comments.png)
 
-Long contributions you have already read appear as a preview, keeping the surrounding conversation in view. Select **Show more** to reveal the full text for the rest of your visit to the thread. Unread contributions and comments opened from a direct link remain expanded. When someone adds a change note or notifies people about an edit, the discussion context opens in full again if you have not read the thread since that announcement.
-
 <!-- translation-section: writing-a-comment -->
 
 ## Writing a comment

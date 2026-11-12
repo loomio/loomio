@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 6e557d4f9746f041
-  reading-comments: 55f358a147e411e2
+  reading-comments: 848773bd442b39dc
   writing-a-comment: 5480dfb6fd852644
   mentioning-people: d8d001548f99c3f7
   replying-to-a-comment: e64910cded7f6f90
@@ -52,8 +52,6 @@ title_generated: 7b2f493e410a5f4f
 לצד זמן הפרסום של תגובות שטרם נקראו מופיעה תווית כחולה עם הכיתוב **חָדָשׁ**.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-קטעים ארוכים שכבר נקראו מוצגים בתצוגה מקדימה, כך שהשיחה שסביבם נשארת גלויה. יש לבחור באפשרות **הראה עוד** כדי להציג את הטקסט המלא למשך שאר הביקור בשרשור. קטעים שטרם נקראו ותגובות שנפתחו מקישור ישיר נשארים מוצגים במלואם. כאשר מתווספת הערה על שינוי או נשלחת התראה על עריכה, הקשר הדיון נפתח שוב במלואו אם השרשור לא נקרא מאז ההודעה.
 
 <!-- translation-section: writing-a-comment -->
 
