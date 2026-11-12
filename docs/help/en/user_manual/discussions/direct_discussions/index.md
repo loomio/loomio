@@ -12,7 +12,9 @@ Direct discussions support the same comments, polls and other tools as group dis
 
 ![A direct discussion form with no group selected and Samira Patel in the Invite field](direct-discussion-example.png)
 
-Select **Direct threads** in the sidebar to see your direct discussions. Select **New discussion** on that page to start another one.
+Select **Direct threads** in the sidebar to see your direct discussions and polls. Open the **New** menu and choose **New discussion** to start a discussion, or **New poll** to start a poll without a group.
+
+A direct poll is private to the people you invite. After creating it, use [**Manage voters**](/en/user_manual/polls/manage_voters) to invite people or email addresses.
 
 ![The Direct threads sidebar item and the list of direct discussions](direct-discussion-sidebar.png)
 

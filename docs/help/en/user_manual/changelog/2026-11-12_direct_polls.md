@@ -1,0 +1,1 @@
+You can now start a poll without a group from **Direct threads**. Open the **New** menu, select **New poll**, choose a poll template, and create your poll. Use **Manage voters** to invite people or email addresses. Only invited people can see the poll, and it appears alongside your direct discussions.

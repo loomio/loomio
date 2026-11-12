@@ -12,6 +12,29 @@ const scenario = (pollType, name, extra = '') =>
   `/dev/polls/test_poll_scenario?scenario=${name}&poll_type=${pollType}${extra}`;
 const reason = page => page.locator('.poll-common-stance-created__reason');
 
+test('starts a direct poll from Direct threads and invites voters', async ({ page }) => {
+  await page.goto('/dev/setup_discussion');
+  await page.goto('/dashboard/direct_discussions');
+  await page.locator('.topics-page__new-topic-button').click();
+  await page.locator('.topics-page__new-poll-button').click();
+  await page.locator('.poll-common-choose-template__poll').click();
+  await page.locator('.decision-tools-card__template--poll').click();
+  await expect(page.locator('.poll-common-form__group-select')).toContainText('None (direct discussion)');
+  await fillPollForm(page, {title: 'Direct decision', options: ['Library', 'Town hall']});
+  await submitPollForm(page);
+  await expect(page.locator('.context-panel__breadcrumbs')).toContainText('Direct');
+  await voteOption(page, 'Library').click();
+  await submitVote(page);
+  await expect(page.locator('.poll-common-current-vote')).toContainText('Library');
+  const voters = await openManageVoters(page);
+  await addRecipient(page, 'test@example.com');
+  await voters.locator('.poll-members-form__submit').click();
+  await expect(voters.locator('.poll-members-form__list')).toContainText('test@example.com');
+  await voters.locator('.dismiss-modal-button').click();
+  await page.goto('/dashboard/direct_discussions');
+  await expect(page.locator('.topic-preview', {hasText: 'Direct decision'})).toBeVisible();
+});
+
 for (const [name, url, selector] of [
   ['standalone', '/dev/polls/test_scheduled_settings?opened=1', '.context-panel__heading'],
   ['embedded', scenario('proposal', 'poll_created'), '.poll-common-card__title']

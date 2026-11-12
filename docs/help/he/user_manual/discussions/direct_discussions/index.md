@@ -1,15 +1,15 @@
 ---
 title: דיונים ישירים
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/direct_discussions/index.md
+source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
-  introduction: d84ab1e9a167cdee
+  introduction: 20f5211c8472a136
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 203ad3b9b8d56712
+  introduction: 4ddcd97329afaa2b
   contacting-someone-via-a-direct-discussion: c3b7f104ae43f49b
 title_source: ccfab058f1f7c146
 title_generated: 93032cfe633f8b3e
@@ -29,7 +29,9 @@ title_generated: 93032cfe633f8b3e
 
 ![טופס דיון ישיר ללא קבוצה נבחרת, עם סמירה פאטל בשדה הזמן](direct-discussion-example.png)
 
-כדי לראות את הדיונים הישירים, יש לבחור **חוטים ישירים** בסרגל הצד. כדי להתחיל דיון ישיר נוסף, יש לבחור **דיון חדש** באותו עמוד.
+כדי לראות את הדיונים והסקרים הישירים, יש לבחור **חוטים ישירים** בסרגל הצד. יש לפתוח את התפריט **חָדָשׁ** ולבחור **דיון חדש** כדי להתחיל דיון, או **סקר חדש** כדי להתחיל סקר ללא קבוצה.
+
+סקר ישיר הוא פרטי ונגיש רק לאנשים שהוזמנו אליו. לאחר יצירתו, ניתן להשתמש ב[**ניהול מצביעים**](/en/user_manual/polls/manage_voters) כדי להזמין אנשים או כתובות דוא״ל.
 
 ![הפריט חוטים ישירים בסרגל הצד ורשימת הדיונים הישירים](direct-discussion-sidebar.png)
 

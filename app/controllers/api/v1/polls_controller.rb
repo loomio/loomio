@@ -1,4 +1,6 @@
 class Api::V1::PollsController < Api::V1::RestfulController
+  before_action :require_current_user, only: :create
+
   # The votes page has one row shape for both voting modes. Anonymous rows
   # come only from the electorate; ballot choices are never joined to voters.
   def votes

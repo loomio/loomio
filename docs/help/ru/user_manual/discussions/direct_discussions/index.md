@@ -1,15 +1,15 @@
 ---
 title: Прямые обсуждения
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/direct_discussions/index.md
+source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
-  introduction: d84ab1e9a167cdee
+  introduction: 20f5211c8472a136
   contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
 generated:
-  introduction: 5fefac1c7bf17d41
+  introduction: 4bb3e5d1521e66ce
   contacting-someone-via-a-direct-discussion: db6f49af6c10df4c
 title_source: ccfab058f1f7c146
 title_generated: 3b2714e95324aa62
@@ -29,7 +29,9 @@ title_generated: 3b2714e95324aa62
 
 ![Форма личного обсуждения без выбранной группы, с Самирой Патель в поле «Приглашать»](direct-discussion-example.png)
 
-Выберите **Прямые темы** на боковой панели, чтобы увидеть ваши личные обсуждения. Выберите **Новое обсуждение** на этой странице, чтобы начать ещё одно.
+Выберите **Прямые темы** на боковой панели, чтобы увидеть ваши личные обсуждения и опросы. Откройте меню **Новый** и выберите **Новое обсуждение**, чтобы начать обсуждение, или **Новый опрос**, чтобы создать опрос без группы.
+
+Личный опрос доступен только тем людям, которых вы приглашаете. После его создания используйте [**Управление избирателями**](/en/user_manual/polls/manage_voters), чтобы пригласить людей или отправить приглашения по адресам электронной почты.
 
 ![Пункт «Прямые темы» на боковой панели и список личных обсуждений](direct-discussion-sidebar.png)
 

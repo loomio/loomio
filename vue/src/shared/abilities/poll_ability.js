@@ -5,6 +5,13 @@ import TopicAbility from '@/shared/abilities/topic_ability';
 // receives. Each method is a server action with a can prefix, and
 // test/contracts/poll_ability_contract_test.rb checks these rules against it.
 export default {
+  // Starting a standalone poll in a group, before a topic exists.
+  canCreateInGroup(group) {
+    const user = Session.user();
+    return group.isEnabled() && (group.adminsInclude(user) ||
+      (group.membersCanRaiseMotions && group.membersInclude(user)));
+  },
+
   canUpdate(poll) {
     return poll.group().isEnabled() && !poll.topic().lockedAt &&
       !poll.discardedAt && poll.adminsInclude(Session.user()) && !poll.closedAt;
