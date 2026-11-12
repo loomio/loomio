@@ -29,9 +29,13 @@ services:
       DATABASE_URL: postgres://relay:${DATABASE_PASSWORD:?Set DATABASE_PASSWORD}@database:5432/loomio_push_relay
       APNS_PRIVATE_KEY_FILE: /run/secrets/apns-production.p8
       APNS_SANDBOX_PRIVATE_KEY_FILE: /run/secrets/apns-sandbox.p8
+      PROXY_TRUSTED_CIDR: ${PROXY_TRUSTED_CIDR:?Set the TLS proxy network subnet}
     volumes:
       - ./secrets:/run/secrets:ro
-    networks: [backend]
+    networks:
+      backend:
+      proxy:
+        aliases: [loomio-push-relay]
     depends_on:
       database: {condition: service_healthy}
     healthcheck:
@@ -43,22 +47,6 @@ services:
     read_only: true
     cap_drop: [ALL]
     security_opt: [no-new-privileges:true]
-    logging: *logging
-
-  ingress:
-    image: nginx:1.31.0-alpine
-    restart: unless-stopped
-    environment:
-      PROXY_TRUSTED_CIDR: ${PROXY_TRUSTED_CIDR:?Set the TLS proxy network subnet}
-    volumes:
-      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
-    networks:
-      backend:
-      proxy:
-        aliases: [loomio-push-relay-ingress]
-    depends_on:
-      relay: {condition: service_healthy}
-    mem_limit: 64m
     logging: *logging
 
 networks:
