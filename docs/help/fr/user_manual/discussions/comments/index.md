@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 883f6b72430f73e1
-  reading-comments: 601621eb16231c38
+  reading-comments: 158a8ec173af92f5
   writing-a-comment: 31f0b84efc45c358
   mentioning-people: 44fb418e031a4215
   replying-to-a-comment: 716b4bbb92ea4681
@@ -52,8 +52,6 @@ Les fils s’ouvrent sur le contexte de la discussion. Vous pouvez utiliser **No
 Les commentaires non lus portent une étiquette bleue **nouveau** à côté de leur heure de publication.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-Les longues contributions que vous avez déjà lues s’affichent sous forme d’aperçu, ce qui permet de garder la conversation environnante en vue. Sélectionnez **Afficher davantage** pour afficher le texte intégral pendant le reste de votre visite dans le fil. Les contributions non lues et les commentaires ouverts à partir d’un lien direct restent dépliés. Lorsqu’une personne ajoute une note de modification ou informe d’autres personnes d’une modification, le contexte de la discussion s’affiche à nouveau en entier si vous n’avez pas lu le fil depuis cette annonce.
 
 <!-- translation-section: writing-a-comment -->
 

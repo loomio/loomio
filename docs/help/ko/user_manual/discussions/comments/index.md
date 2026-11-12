@@ -1,7 +1,7 @@
 ---
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -15,7 +15,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 89fe779941b14996
-  reading-comments: 54917d49b81e890e
+  reading-comments: 7cc63223b66e3275
   writing-a-comment: d0b6ea1a38700de7
   mentioning-people: c2d2d3a2510cf8bc
   replying-to-a-comment: f236d45ea3274200
@@ -52,8 +52,6 @@ source_file: docs/help/en/user_manual/discussions/comments/index.md
 읽지 않은 댓글은 게시 시간 옆에 파란색 **새 항목** 표시가 있습니다.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-이미 읽은 긴 게시물은 미리 보기로 표시되어 주변 대화도 함께 볼 수 있습니다. **더 보기**를 선택하면 스레드에 머무는 동안 전체 내용이 표시됩니다. 읽지 않은 게시물과 직접 링크로 연 댓글은 펼쳐진 상태로 유지됩니다. 누군가 변경 메모를 추가하거나 수정 사실을 알린 뒤 아직 스레드를 읽지 않았다면, 토론의 배경이 다시 전체 내용으로 표시됩니다.
 
 <!-- translation-section: writing-a-comment -->
 

@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 86d25e4617a624e2
-  reading-comments: 6d1827a6a11d0433
+  reading-comments: 0003e13f838790fb
   writing-a-comment: 8335c0aa11fa15fb
   mentioning-people: 2d65eeef72191931
   replying-to-a-comment: d3cc2fe1f6870d31
@@ -52,8 +52,6 @@ title_generated: 497d1e50001d2630
 У непрочитанных комментариев рядом со временем публикации есть синяя метка **новый**.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-Длинные сообщения, которые вы уже прочитали, отображаются в сокращённом виде, чтобы окружающая беседа оставалась в поле зрения. Выберите **Показать больше**, чтобы видеть полный текст до конца текущего посещения ветки. Непрочитанные сообщения и комментарии, открытые по прямой ссылке, остаются развёрнутыми. Когда кто-то добавляет примечание об изменении или уведомляет участников о правке, описание обсуждения снова открывается полностью, если вы не читали ветку с момента этого уведомления.
 
 <!-- translation-section: writing-a-comment -->
 

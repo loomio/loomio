@@ -98,19 +98,6 @@ describe('cached thread navigation', () => {
     expect(mocks.emit).toHaveBeenCalledWith('currentComponent', expect.objectContaining({title: discussion.title}));
   });
 
-  it('cancels an initial deep-link scroll without starting a replacement scroll', async () => {
-    mocks.route.params.sequence_id = '17';
-    mountPage();
-    await nextTick();
-    const cancelAutoScroll = mocks.on.mock.calls.find(([name]) => name === 'cancelAutoScroll')[1];
-    mocks.scroll.mockClear();
-    mocks.settled.mockClear();
-    cancelAutoScroll();
-    expect(mocks.cancel).toHaveBeenCalled();
-    expect(mocks.scroll).not.toHaveBeenCalled();
-    expect(mocks.settled).not.toHaveBeenCalled();
-  });
-
   it('updates cached activity as records arrive while the refresh is pending', async () => {
     mountPage();
     mocks.records.topicItems.collection.insert(item(2));

@@ -58,7 +58,7 @@ export default {
 div.topic-item__intersection-container(:class="classes(obj.topic_item)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.topic_item)}")
   //p eventid{{obj.topic_item.id}} t{{obj.topic_item.topicId}} s{{obj.topic_item.sequenceId}} p{{obj.topic_item.positionKey}} d{{obj.topic_item.depth}} p{{obj.topic_item.parentId}}
   topic-item-removed(v-if="obj.itemable && obj.itemable.discardedAt" :topic_item="obj.topic_item" :itemable="obj.itemable")
-  component(v-else :is="componentForKind(obj.topic_item.kind)" :topic_item='obj.topic_item' :itemable="obj.itemable" :focused="focused" :unread="obj.isUnread" :body-preview="loader.bodyPreview(obj.topic_item.sequenceId)")
+  component(v-else :is="componentForKind(obj.topic_item.kind)" :topic_item='obj.topic_item' :itemable="obj.itemable" :focused="focused" :unread="obj.isUnread")
 
 
 </template>

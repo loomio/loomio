@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 4ee4d2d96fc5d5e9
-  reading-comments: '008619579b047084'
+  reading-comments: 2de3388344082061
   writing-a-comment: fbc33f4491c64a55
   mentioning-people: b8a89169ad6ef26c
   replying-to-a-comment: fcc61bebd7708193
@@ -52,8 +52,6 @@ Los hilos se abren en el contexto de la discusión. Puedes usar **Nuevo para ti*
 Los comentarios sin leer tienen una etiqueta azul **nuevo** junto a la hora de publicación.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-Las contribuciones largas que ya has leído aparecen como una vista previa, lo que permite mantener a la vista la conversación que las rodea. Selecciona **Mostrar más** para ver el texto completo durante el resto de tu visita al hilo. Las contribuciones sin leer y los comentarios abiertos desde un enlace directo permanecen expandidos. Cuando alguien añade una nota sobre un cambio o notifica a otras personas sobre una edición, el contexto de la discusión vuelve a mostrarse completo si no has leído el hilo desde ese aviso.
 
 <!-- translation-section: writing-a-comment -->
 

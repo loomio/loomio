@@ -7,7 +7,7 @@ translated:
   'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 1b9e31009cc4af2d
+  reading-comments: afb3c59b0ca6b8e2
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: f7887a4112d25339
-  reading-comments: 123c630f4e1e3e08
+  reading-comments: 4f29f015cf84c140
   writing-a-comment: a514ced4b159d3cf
   mentioning-people: d4766fe95ab150ce
   replying-to-a-comment: fb5025fffd4ccf47
@@ -52,8 +52,6 @@ Ketjut avautuvat keskustelun kontekstin kohdalta. Valitse ketjun valikosta **Uus
 Lukemattomien kommenttien julkaisuajan vieressä on sininen **uusi**-merkintä.
 
 ![](../using_discussions/thread_unread_comments.png)
-
-Pitkät viestit, jotka olet jo lukenut, näkyvät esikatseluna, jolloin ympäröivä keskustelu pysyy näkyvissä. Valitse **Näytä lisää**, niin koko teksti pysyy näkyvissä loppuvierailusi ajan ketjussa. Lukemattomat viestit ja suorasta linkistä avatut kommentit näkyvät kokonaisuudessaan. Kun joku lisää muutoshuomautuksen tai ilmoittaa muokkauksesta muille, keskustelun konteksti avautuu jälleen kokonaisuudessaan, jos et ole lukenut ketjua ilmoituksen jälkeen.
 
 <!-- translation-section: writing-a-comment -->
 
