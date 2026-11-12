@@ -124,6 +124,30 @@ class VoteReplyVisibilityTest < ActiveSupport::TestCase
 
   private
 
+  test 'replies nest under a vote whose reason was added after voting' do
+    topic = topics(:discussion_topic)
+    topic.update!(max_depth: 3)
+    topic.topicable.create_missing_created_topic_item! unless topic.topicable.created_topic_item
+    poll = PollService.create(
+      params: {topic_id: topic.id, title: 'Reason added later', poll_type: 'proposal',
+               poll_option_names: ['Agree', 'Disagree'], closing_at: 3.days.from_now},
+      actor: topic.topicable.author
+    )
+    voter = users(:guest_normal)
+    stance = poll.stances.latest.find_by!(participant_id: voter.id)
+    stance.choice = 'Agree'
+    StanceService.create(stance: stance, actor: voter)
+    stance.reload
+    refute TopicItem.exists?(itemable: stance)
+
+    StanceService.update(stance: stance, actor: voter, params: {choice: 'Agree', reason: 'Added a reason', reason_format: 'md'})
+    stance_item = TopicItem.find_by!(itemable: stance.reload)
+    assert_equal 'stance_updated', stance_item.kind
+
+    reply = CommentService.create(comment: Comment.new(parent: stance, body: 'Reply to the reason'), actor: users(:guest_loud))
+    assert_equal stance_item.id, reply.created_topic_item.parent_id
+  end
+
   def create_vote(topic:, hide_results:, voter: users(:guest_normal))
     topic.topicable.create_missing_created_topic_item! unless topic.topicable.created_topic_item
     poll = PollService.create(

@@ -142,6 +142,13 @@ class Stance < ApplicationRecord
   end
 
 
+  def created_topic_item
+    topic_items
+      .where(kind: %w[stance_created stance_updated], topic_id: poll.topic_id)
+      .order(:id)
+      .first
+  end
+
   def create_missing_created_topic_item!
     return unless add_to_thread?
 
