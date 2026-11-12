@@ -1,15 +1,22 @@
 en:
   mobile_auth:
     authorize:
-      title: Connect Loomio Mobile
-      heading: Connect Loomio Mobile?
-      introduction: "The Loomio app would like to connect to %{host} as:"
-      access: "This lets the app keep you signed in on this device and access:"
       activity: Your Loomio activity and unread status
-      notifications: Your mobile notification settings
-      web_session: Loomio in the app's secure web view
       approve: Connect this device
       deny: Cancel
+      ios:
+        title: Connect Loomio Mobile
+        heading: Connect Loomio Mobile?
+        introduction: "The Loomio app would like to connect to %{host} as:"
+        access: "This lets the app keep you signed in on this device and access:"
+        notifications: Your mobile notification settings
+        web_session: Loomio in the app's secure web view
+      desktop:
+        title: Connect Loomio Desktop
+        heading: Connect Loomio Desktop?
+        introduction: "The Loomio desktop app would like to connect to %{host} as:"
+        access: "This lets the app keep you signed in on this computer and access:"
+        web_session: Loomio in the app's secure web view
     errors:
       invalid_request: The mobile authorization request is invalid or has expired.
       invalid_client: This version of the mobile app is not supported.

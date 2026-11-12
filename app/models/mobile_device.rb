@@ -7,7 +7,7 @@ class MobileDevice < ApplicationRecord
   has_one :mobile_push_registration, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 100 }
-  validates :platform, inclusion: { in: %w[ios] }
+  validates :platform, inclusion: { in: Mobile::Client::PLATFORMS }
   validates :protocol_version, numericality: { only_integer: true, greater_than: 0 }
 
   scope :active, -> { where(revoked_at: nil) }

@@ -113,12 +113,12 @@ class Api::V1::Mobile::PushRegistrationsControllerTest < ActionDispatch::Integra
   def authorize_device
     verifier = "v" * 43
     challenge = Base64.urlsafe_encode64(Digest::SHA256.digest(verifier), padding: false)
-    code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: challenge)
+    code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: challenge)
     Mobile::AuthenticationService.exchange_authorization_code!(
       code: code,
       code_verifier: verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       device_name: "Push Test iPhone"
     )
   end

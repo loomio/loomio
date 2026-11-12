@@ -14,13 +14,13 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
 
   test "exchanges a PKCE authorization code exactly once" do
     freeze_time
-    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: @challenge)
+    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: @challenge)
 
     pair = Mobile::AuthenticationService.exchange_authorization_code!(
       code: raw_code,
       code_verifier: @verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       device_name: "Test iPhone"
     )
 
@@ -31,7 +31,7 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
     token = Mobile::AuthenticationService.authenticate_access_token(pair[:access_token])
     assert_equal pair[:device], token.mobile_device
     assert_equal @user, token.mobile_device.user
-    assert_equal Mobile::AuthenticationService::SCOPES, token.scopes
+    assert_equal Mobile::Client::IOS.scopes, token.scopes
     assert_equal Mobile::AuthenticationService::ACCESS_TOKEN_TTL.from_now, token.expires_at
     refresh = pair[:device].mobile_refresh_tokens.sole
     assert_equal Mobile::AuthenticationService::REFRESH_IDLE_TTL.from_now, refresh.idle_expires_at
@@ -41,8 +41,8 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
       Mobile::AuthenticationService.exchange_authorization_code!(
         code: raw_code,
         code_verifier: @verifier,
-        client_id: Mobile::AuthenticationService::CLIENT_ID,
-        redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+        client_id: Mobile::Client::IOS.id,
+        redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
         device_name: "Test iPhone"
       )
     end
@@ -50,14 +50,14 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
   end
 
   test "rejects the wrong verifier without consuming the authorization code" do
-    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: @challenge)
+    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: @challenge)
 
     assert_raises(Mobile::AuthenticationService::Error) do
       Mobile::AuthenticationService.exchange_authorization_code!(
         code: raw_code,
         code_verifier: "x" * 43,
-        client_id: Mobile::AuthenticationService::CLIENT_ID,
-        redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+        client_id: Mobile::Client::IOS.id,
+        redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
         device_name: "Test iPhone"
       )
     end
@@ -75,7 +75,7 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
     ].each do |invalid|
       verifier = invalid.fetch(:verifier, @verifier)
       challenge = Base64.urlsafe_encode64(Digest::SHA256.digest(verifier), padding: false)
-      raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: challenge)
+      raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: challenge)
       authorization = MobileAuthorizationCode.order(:id).last
 
       assert_no_difference ["MobileDevice.count", "MobileAccessToken.count", "MobileRefreshToken.count"] do
@@ -83,8 +83,8 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
           Mobile::AuthenticationService.exchange_authorization_code!(
             code: raw_code,
             code_verifier: verifier,
-            client_id: invalid.fetch(:client_id, Mobile::AuthenticationService::CLIENT_ID),
-            redirect_uri: invalid.fetch(:redirect_uri, Mobile::AuthenticationService::REDIRECT_URI),
+            client_id: invalid.fetch(:client_id, Mobile::Client::IOS.id),
+            redirect_uri: invalid.fetch(:redirect_uri, Mobile::Client::IOS_REDIRECT_URI),
             device_name: "Rejected iPhone"
           )
         end
@@ -95,18 +95,85 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "a desktop code is bound to its exact loopback callback and creates a desktop device" do
+    redirect_uri = "http://127.0.0.1:53682/oauth/callback"
+    issue = lambda do
+      Mobile::AuthenticationService.issue_authorization_code!(
+        user: @user,
+        client: Mobile::Client::DESKTOP,
+        redirect_uri: redirect_uri,
+        code_challenge: @challenge
+      )
+    end
+
+    raw_code = issue.call
+    [
+      [ Mobile::Client::IOS.id, Mobile::Client::IOS_REDIRECT_URI ],
+      [ Mobile::Client::DESKTOP.id, "http://127.0.0.1:53683/oauth/callback" ]
+    ].each do |client_id, presented_redirect_uri|
+      error = assert_raises(Mobile::AuthenticationService::Error) do
+        Mobile::AuthenticationService.exchange_authorization_code!(
+          code: raw_code,
+          code_verifier: @verifier,
+          client_id: client_id,
+          redirect_uri: presented_redirect_uri,
+          device_name: nil
+        )
+      end
+      assert_equal "invalid_grant", error.code
+    end
+    assert_nil MobileAuthorizationCode.sole.used_at
+
+    pair = Mobile::AuthenticationService.exchange_authorization_code!(
+      code: raw_code,
+      code_verifier: @verifier,
+      client_id: Mobile::Client::DESKTOP.id,
+      redirect_uri: redirect_uri,
+      device_name: nil
+    )
+    assert_equal "desktop", pair[:device].platform
+    assert_equal "Desktop", pair[:device].name
+    desktop_scopes = Mobile::AuthenticationService.authenticate_access_token(pair[:access_token]).scopes.split
+    assert_equal %w[activity:read activity:write web_session:create device:revoke], desktop_scopes
+    assert_not_includes desktop_scopes, "relay:register"
+    assert_not_includes desktop_scopes, "notifications:manage"
+
+    error = assert_raises(Mobile::AuthenticationService::Error) do
+      Mobile::AuthenticationService.refresh!(refresh_token: pair[:refresh_token], client_id: Mobile::Client::IOS.id)
+    end
+    assert_equal "invalid_grant", error.code
+    assert_nil pair[:device].reload.revoked_at
+
+    refreshed = Mobile::AuthenticationService.refresh!(refresh_token: pair[:refresh_token], client_id: Mobile::Client::DESKTOP.id)
+    assert refreshed[:access_token].start_with?("lm_at_")
+    assert_equal Mobile::Client::DESKTOP.scopes, Mobile::AuthenticationService.token_response(refreshed)[:scope]
+    assert_equal Mobile::Client::DESKTOP.scopes, Mobile::AuthenticationService.authenticate_access_token(refreshed[:access_token]).scopes
+  end
+
+  test "an authorization code cannot be issued for an unregistered callback" do
+    assert_raises(ArgumentError) do
+      Mobile::AuthenticationService.issue_authorization_code!(
+        user: @user,
+        client: Mobile::Client::IOS,
+        redirect_uri: "http://127.0.0.1:53682/oauth/callback",
+        code_challenge: @challenge
+      )
+    end
+    assert_equal 0, MobileAuthorizationCode.count
+  end
+
   test "rotates refresh tokens and revokes the device when one is reused" do
     pair = authorize_device
     rotated = Mobile::AuthenticationService.refresh!(
       refresh_token: pair[:refresh_token],
-      client_id: Mobile::AuthenticationService::CLIENT_ID
+      client_id: Mobile::Client::IOS.id
     )
     assert_not_equal pair[:refresh_token], rotated[:refresh_token]
 
     error = assert_raises(Mobile::AuthenticationService::Error) do
       Mobile::AuthenticationService.refresh!(
         refresh_token: pair[:refresh_token],
-        client_id: Mobile::AuthenticationService::CLIENT_ID
+        client_id: Mobile::Client::IOS.id
       )
     end
 
@@ -123,8 +190,9 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
     refresh = pair[:device].mobile_refresh_tokens.sole
 
     [
-      ["lm_rt_unknown", Mobile::AuthenticationService::CLIENT_ID, "invalid_grant"],
-      [pair[:refresh_token], "another-client", "invalid_client"]
+      [ "lm_rt_unknown", Mobile::Client::IOS.id, "invalid_grant" ],
+      [ pair[:refresh_token], "another-client", "invalid_client" ],
+      [ pair[:refresh_token], Mobile::Client::DESKTOP.id, "invalid_grant" ]
     ].each do |raw_token, client_id, code|
       assert_no_difference ["MobileAccessToken.count", "MobileRefreshToken.count"] do
         error = assert_raises(Mobile::AuthenticationService::Error) do
@@ -139,7 +207,7 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
     travel_to refresh.idle_expires_at do
       assert_no_difference ["MobileAccessToken.count", "MobileRefreshToken.count"] do
         error = assert_raises(Mobile::AuthenticationService::Error) do
-          Mobile::AuthenticationService.refresh!(refresh_token: pair[:refresh_token], client_id: Mobile::AuthenticationService::CLIENT_ID)
+          Mobile::AuthenticationService.refresh!(refresh_token: pair[:refresh_token], client_id: Mobile::Client::IOS.id)
         end
         assert_equal "invalid_grant", error.code
       end
@@ -187,12 +255,12 @@ class Mobile::AuthenticationServiceTest < ActiveSupport::TestCase
   private
 
   def authorize_device
-    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, code_challenge: @challenge)
+    raw_code = Mobile::AuthenticationService.issue_authorization_code!(user: @user, client: Mobile::Client::IOS, redirect_uri: Mobile::Client::IOS_REDIRECT_URI, code_challenge: @challenge)
     Mobile::AuthenticationService.exchange_authorization_code!(
       code: raw_code,
       code_verifier: @verifier,
-      client_id: Mobile::AuthenticationService::CLIENT_ID,
-      redirect_uri: Mobile::AuthenticationService::REDIRECT_URI,
+      client_id: Mobile::Client::IOS.id,
+      redirect_uri: Mobile::Client::IOS_REDIRECT_URI,
       device_name: "Test iPhone"
     )
   end
