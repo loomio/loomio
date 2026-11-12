@@ -32,9 +32,9 @@ for (const width of [390, 1000]) {
   }
 }
 
-for (const announcement of ['note', 'notify', 'both']) {
-  test(`shows context announced with ${announcement} fully while keeping read parents folded`, async ({page}) => {
-    await page.goto(`/dev/discussions/test_body_previews?context_edited=${announcement}`);
+for (const changeSignal of ['note', 'notify', 'both']) {
+  test(`shows significantly changed context with ${changeSignal} fully while keeping read parents folded`, async ({page}) => {
+    await page.goto(`/dev/discussions/test_body_previews?context_edited=${changeSignal}`);
     const context = page.locator('.context-panel .body-preview');
     await expect(context).toContainText('Updated read context');
     await expect(context).not.toHaveClass(/body-preview--folded/);

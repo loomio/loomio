@@ -11,7 +11,7 @@ const { t } = useI18n();
 const viewport = ref(null);
 const content = ref(null);
 const overflowing = ref(false);
-const folded = computed(() => !!state?.readBeforeVisit && !state.revealed && !focused && !state.announcedSinceRead);
+const folded = computed(() => !!state?.readBeforeVisit && !state.revealed && !focused && !state.changedSinceRead);
 let stopObserving;
 let stopSelecting;
 
@@ -29,12 +29,12 @@ function measure() {
   if (!overflowing.value) reveal();
 }
 
-watch(() => focused || state?.announcedSinceRead, value => {
+watch(() => focused || state?.changedSinceRead, value => {
   if (value) reveal();
 }, {flush: 'post'});
 
 onMounted(() => {
-  if (focused || state?.announcedSinceRead) {
+  if (focused || state?.changedSinceRead) {
     reveal();
   } else if (folded.value) {
     measure();

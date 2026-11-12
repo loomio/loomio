@@ -13,10 +13,12 @@ export RELAY_ENCRYPTION_KEY="$(openssl rand -base64 32)"
 export APNS_TEAM_ID=YOUR_TEAM_ID
 export APNS_KEY_ID=YOUR_KEY_ID
 export APNS_PRIVATE_KEY='<contents of your APNs .p8 key>'
-export APNS_TOPIC=org.loomio.mobile
+export APNS_TOPIC=YOUR_APP_BUNDLE_ID
 npm run migrate
 npm start
 ```
+
+Set `APNS_TEAM_ID` and `APNS_TOPIC` to your app's Apple Developer Team ID and bundle ID.
 
 New Apple signing keys are environment-specific. The `APNS_KEY_ID` and `APNS_PRIVATE_KEY` settings above select the production key. Configure `APNS_SANDBOX_KEY_ID` and `APNS_SANDBOX_PRIVATE_KEY` for Xcode Debug installations. Without a sandbox override, the relay uses the base key for both environments, supporting older Apple keys that permit both. Set both sandbox values together; incomplete configuration fails at startup.
 

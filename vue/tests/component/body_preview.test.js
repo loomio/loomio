@@ -26,7 +26,7 @@ beforeEach(() => {
 afterEach(() => { wrappers.forEach(item => item.unmount()); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
 function state(attributes = {}) {
-  const preview = reactive({readBeforeVisit: true, revealed: false, announcedSinceRead: false, ...attributes});
+  const preview = reactive({readBeforeVisit: true, revealed: false, changedSinceRead: false, ...attributes});
   preview.reveal = vi.fn(() => { preview.revealed = true; });
   return preview;
 }
@@ -119,11 +119,11 @@ describe('already-read body previews', () => {
     expect(wrapper.classes()).toContain('body-preview--folded');
   });
 
-  it('reveals an announced edit arriving after the body was folded', async () => {
+  it('reveals a significant context change arriving after the body was folded', async () => {
     const preview = state();
     render(preview);
     await nextTick();
-    preview.announcedSinceRead = true;
+    preview.changedSinceRead = true;
     await nextTick();
     expect(wrapper.classes()).not.toContain('body-preview--folded');
     expect(preview.reveal).toHaveBeenCalledOnce();

@@ -176,40 +176,40 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   # -- Update --
 
-  test "context announcement time advances for a change note or explicit recipients" do
+  test "significant context changes are recorded for a change note or explicit recipients" do
     discussion = discussions(:discussion)
-    [{recipient_message: 'Please review the edit'}, {recipient_user_ids: [users(:member).id]}].each_with_index do |announcement, index|
+    [{recipient_message: 'Please review the edit'}, {recipient_user_ids: [users(:member).id]}].each_with_index do |edit, index|
       travel_to Time.current + (index + 1).hours do
         DiscussionService.update(discussion: discussion, actor: @user,
-          params: {description: "Updated context #{index}"}.merge(announcement))
-        assert_equal Time.current, discussion.reload.context_announced_at
+          params: {description: "Updated context #{index}"}.merge(edit))
+        assert_equal Time.current, discussion.reload.context_changed_at
       end
     end
   end
 
-  test "quiet edits and bookkeeping do not change context announcement time" do
+  test "quiet edits and bookkeeping preserve the significant context change time" do
     discussion = discussions(:discussion)
     DiscussionService.update(discussion: discussion, actor: @user, params: {description: 'Quiet context edit'})
-    assert_nil discussion.reload.context_announced_at
+    assert_nil discussion.reload.context_changed_at
     DiscussionService.update(discussion: discussion, actor: @user, params: {recipient_message: 'Review this context'})
-    announced_at = discussion.reload.context_announced_at
+    changed_at = discussion.reload.context_changed_at
     travel_to 1.hour.from_now do
       DiscussionService.update(discussion: discussion, actor: @user,
         params: {title: 'New heading', description: 'Another quiet edit', allow_comments: false})
-      assert_equal announced_at, discussion.reload.context_announced_at
+      assert_equal changed_at, discussion.reload.context_changed_at
     end
   end
 
-  test "failed announcements roll back the context and its announcement timestamp" do
+  test "failed updates roll back the context and its significant change timestamp" do
     discussion = discussions(:discussion)
     description = discussion.description
-    NotificationService.stub(:create!, ->(**) { raise 'announcement failed' }) do
+    NotificationService.stub(:create!, ->(**) { raise 'notification failed' }) do
       assert_raises(RuntimeError) do
         DiscussionService.update(discussion: discussion, actor: @user,
-          params: {description: 'Should roll back', recipient_message: 'Announced edit'})
+          params: {description: 'Should roll back', recipient_message: 'Important edit'})
       end
     end
-    assert_nil discussion.reload.context_announced_at
+    assert_nil discussion.reload.context_changed_at
     assert_equal description, discussion.description
   end
 
@@ -391,7 +391,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
-    assert discussion.reload.context_announced_at
+    assert discussion.reload.context_changed_at
   end
 
   test "eventless update without a direct recipients does not create a notification" do

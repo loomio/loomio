@@ -134,8 +134,8 @@ class DiscussionService
           user: actor
         )
       end
-      announced = topic_item.present? || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
-      if announced
+      significant_change = topic_item.present? || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+      if significant_change
         NotificationService.create!(
           kind: "discussion_edited",
           subject: topic_item || discussion,
@@ -152,9 +152,10 @@ class DiscussionService
         actor: actor,
         already_notified_user_ids: users.pluck(:id)
       )
-      # A change note or notifications make the context new again. Save this
-      # separately from bookkeeping timestamps, inside the same transaction.
-      discussion.update_column(:context_announced_at, Time.current) if announced || mention_notifications.any?
+      # A change note or notifications mark an edit as significant. Record it
+      # independently of delivery and bookkeeping, inside the same transaction.
+      significant_change ||= mention_notifications.any?
+      discussion.update_column(:context_changed_at, Time.current) if significant_change
       topic_item
     end
     MessageChannelService.publish_topic_model(discussion) unless topic_item

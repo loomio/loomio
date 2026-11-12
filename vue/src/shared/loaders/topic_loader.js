@@ -82,9 +82,9 @@ export default class TopicLoader {
       this.bodyPreviews.set(sequenceId, {
         readBeforeVisit: !this.sequenceIdIsUnread(sequenceId),
         get revealed() { return loader.revealedBodies.has(sequenceId); },
-        get announcedSinceRead() {
+        get changedSinceRead() {
           return sequenceId === 0 && loader.topic.topicableType === 'Discussion' &&
-            loader.topic.topicable().contextAnnouncedAt > loader.lastReadAt;
+            loader.topic.topicable().contextChangedAt > loader.lastReadAt;
         },
         reveal: () => this.revealedBodies.add(sequenceId)
       });
