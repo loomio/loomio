@@ -17,12 +17,18 @@ Or run [`update.sh`](update.sh) from the deployment directory, which performs th
 
 ## Collaborative editing runs in the app
 
-The app container now serves collaborative editing at `/collab_server` on your main hostname. The separate `hocuspocus` container is gone.
+Since v3.15.0, the app container serves collaborative editing at `/collab_server` on your main hostname. The separate Node.js `hocuspocus` service (container `loomio-hocuspocus`) is no longer needed.
+
+Loomio's application services are now a web container and a background job container. Removing the separate collaboration server and its `hocuspocus.` CNAME simplifies deployment, reduces memory overhead, and reduces the attack surface and runtime dependencies to maintain.
+
+Before upgrading from an earlier version:
+
+- Update your deployment's `docker-compose.yml` to the [current version](docker-compose.yml), or remove the `hocuspocus` service from your customized Compose file. Changing only the app image tag leaves the old service configured.
+- Remove `HOCUSPOCUS_URL` from `.env`.
 
 After upgrading:
 
-- Remove `HOCUSPOCUS_URL` from `.env`.
-- Run `docker compose up -d --remove-orphans` to remove the old `hocuspocus` container.
+- Run `docker compose up -d --remove-orphans` with the updated Compose file to remove the old `loomio-hocuspocus` container. The current `update.sh` already includes this step.
 - Remove the `hocuspocus.` DNS record if nothing else uses it.
 
 If a proxy sits in front of the app, it must pass WebSocket upgrades for `/collab_server` as it does for `/cable`.
