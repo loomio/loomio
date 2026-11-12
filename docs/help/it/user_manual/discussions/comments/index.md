@@ -1,13 +1,13 @@
 ---
 title: Commenti
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: da7a99274ef61f79
-  reading-comments: 4945407ca1cf8a9b
+  reading-comments: 91b5fd94df26a52a
   writing-a-comment: f77c29bce2f9073d
   mentioning-people: 783a7f2756787853
   replying-to-a-comment: 1353c680d5de36aa
@@ -47,11 +47,13 @@ I commenti sono il modo principale in cui le persone partecipano a una discussio
 
 ## Leggere i commenti
 
-Quando apri una discussione, Loomio ti porta alle attività che non hai ancora visto.
+Le conversazioni si aprono sul contesto della discussione. Puoi usare **Nuovo per te** nel menu della conversazione per trovare le attività non lette, oppure **Più recente** per passare alle attività più recenti.
 
 I commenti non letti hanno un'etichetta blu **nuovo** accanto all'ora di pubblicazione.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+I contributi lunghi che hai già letto vengono mostrati in anteprima, mantenendo visibile il resto della conversazione. Seleziona **Mostra di più** per visualizzare il testo completo per il resto della tua visita alla conversazione. I contributi non letti e i commenti aperti tramite un collegamento diretto rimangono espansi. Quando qualcuno aggiunge una nota di modifica o invia una notifica di modifica, il contesto della discussione viene nuovamente mostrato per intero se non hai letto la conversazione dopo quell'annuncio.
 
 <!-- translation-section: writing-a-comment -->
 

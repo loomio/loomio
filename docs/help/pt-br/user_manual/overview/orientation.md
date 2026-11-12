@@ -1,26 +1,28 @@
 ---
 title: Visão geral rápida
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: e1154a67cbbaa4b9
   group-page: 5096228542dbbefb
   tabs: 175cffa35de92675
-  sidebar: 330465cb376dbc1e
+  sidebar: a2f42a806c04bc49
   user-settings: ec431f015f8d7e38
-  notifications: c22514237cebb1e3
+  notifications: b90e512178cb7e5a
   what-to-do-next: 11dce04a938e9ff0
+  mobile-navigation: 12df5bb4d4ea388b
 title_source: c41a33370cd580dd
 title_generated: 7332722d7395c1a6
 ---
@@ -59,7 +61,7 @@ Consulte [Encontrar conteúdo](/en/user_manual/overview/finding-content) para ob
 
 ## Barra lateral
 
-Abra a barra lateral usando o botão de menu (**☰**) no canto superior esquerdo.
+Abra a barra lateral usando o botão de menu (**☰**) no canto superior esquerdo no computador ou na barra de navegação inferior no celular.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ Use este menu para editar seu perfil, alterar as configurações de notificaçã
 
 ## Notificações
 
-O botão com o sino no canto superior direito abre suas notificações no aplicativo. Um indicador aparece quando você tem notificações que ainda não visualizou.
+O botão com o sino no canto superior direito no computador ou na barra de navegação inferior no celular abre suas notificações no aplicativo. Um indicador aparece quando você tem notificações que ainda não visualizou.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais sobre notificações no aplicativo, preferências de e-mail e configurações de notificação para grupos e discussões.
+
+<!-- translation-section: mobile-navigation -->
+
+## Navegação no celular
+
+No celular, a barra de navegação inferior oferece acesso rápido à barra lateral, ao painel e às notificações. Ao ler uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
 
 <!-- translation-section: what-to-do-next -->
 

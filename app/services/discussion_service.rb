@@ -134,7 +134,8 @@ class DiscussionService
           user: actor
         )
       end
-      if topic_item || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+      significant_change = topic_item.present? || users.any? || Array(params[:recipient_chatbot_ids]).compact.any?
+      if significant_change
         NotificationService.create!(
           kind: "discussion_edited",
           subject: topic_item || discussion,
@@ -146,11 +147,15 @@ class DiscussionService
           recipient_context: recipient_context
         )
       end
-      MentionNotificationService.create!(
+      mention_notifications = MentionNotificationService.create!(
         subject: topic_item || discussion,
         actor: actor,
         already_notified_user_ids: users.pluck(:id)
       )
+      # A change note or notifications mark an edit as significant. Record it
+      # independently of delivery and bookkeeping, inside the same transaction.
+      significant_change ||= mention_notifications.any?
+      discussion.update_column(:context_changed_at, Time.current) if significant_change
       topic_item
     end
     MessageChannelService.publish_topic_model(discussion) unless topic_item

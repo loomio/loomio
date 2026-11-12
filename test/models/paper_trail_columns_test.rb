@@ -13,7 +13,7 @@ class PaperTrailColumnsTest < ActiveSupport::TestCase
       structure: %w[parent_id parent_type]
     },
     Discussion => {
-      derived: %w[content_locale link_previews versions_count info key],
+      derived: %w[content_locale context_changed_at link_previews versions_count info key],
       structure: %w[topic_id template discussion_template_id discussion_template_key],
       on_topic: %w[discarded_at discarded_by]
     },

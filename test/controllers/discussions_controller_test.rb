@@ -9,6 +9,8 @@ class DiscussionsControllerTest < ActionController::TestCase
 
   test "member receives the app shell with session and thread records without SSR" do
     sign_in @user
+    changed_at = 1.hour.ago.change(usec: 0)
+    @discussion.update_column(:context_changed_at, changed_at)
     get :show, params: { key: @discussion.key }
     assert_response 200
     assert_equal @discussion, assigns(:discussion)
@@ -18,6 +20,9 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_equal @user.id, data.dig('boot', 'current_user_id')
     assert_equal @user.email, data['boot']['users'].find { |user| user['id'] == @user.id }['email']
     assert_includes thread_records['discussions'].pluck('id'), @discussion.id
+    discussion_data = thread_records['discussions'].find { |row| row['id'] == @discussion.id }
+    assert_equal changed_at, Time.iso8601(discussion_data.fetch('context_changed_at'))
+    assert_not discussion_data.key?('context_announced_at')
     assert_includes response.headers['Cache-Control'], 'no-store'
     assert_select "link[rel='canonical'][href=?]", discussion_url(@discussion)
   end

@@ -5,14 +5,17 @@ import TopicItemService from '@/shared/services/topic_item_service';
 import { pickBy, assign, omit } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 import ItemTags from '@/components/tags/item_tags.vue';
+import BodyPreview from '@/components/topic/body_preview.vue';
 
 export default {
-  components: { ItemTags },
+  components: { ItemTags, BodyPreview },
   mixins: [UrlFor],
   props: {
     topic_item: Object,
     collapsed: Boolean,
-    itemable: Object
+    itemable: Object,
+    focused: Boolean,
+    bodyPreview: Object
   },
 
   data() {
@@ -67,7 +70,8 @@ section.topic-item.poll-created(v-intersect.once="{handler: viewed}")
       item-tags.ml-auto(v-if="!poll.isTopicable()" :topic-item="topic_item")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    formatted-text.poll-common-details-panel__details(:model="poll" field="details")
+    body-preview(:state="bodyPreview" :focused="focused")
+      formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')

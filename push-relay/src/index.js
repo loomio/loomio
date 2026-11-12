@@ -4,6 +4,7 @@ import { APNsClient } from "./apns.js";
 import { createServer } from "./app.js";
 import { PostgresRepository } from "./repository.js";
 import { postJSONPinned } from "./security.js";
+import { createRateLimiter } from "./rate_limit.js";
 
 const config = loadConfig();
 const pool = new pg.Pool({ connectionString: config.databaseUrl, max: 10 });
@@ -16,7 +17,8 @@ const verifyHostAuthorization = (origin, authorization) => postJSONPinned(
   { allowPrivateHosts: config.allowPrivateHosts }
 );
 
-const server = createServer({ repository, apns, verifyHostAuthorization });
+const rateLimit = createRateLimiter({ trustedProxyCIDR: process.env.PROXY_TRUSTED_CIDR?.trim() });
+const server = createServer({ repository, apns, verifyHostAuthorization, rateLimit });
 server.requestTimeout = 15_000;
 server.headersTimeout = 10_000;
 server.keepAliveTimeout = 5_000;

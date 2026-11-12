@@ -3,13 +3,16 @@ import Session from '@/shared/services/session';
 import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
 import TopicItemService from '@/shared/services/topic_item_service';
+import BodyPreview from '@/components/topic/body_preview.vue';
 
 export default {
+  components: { BodyPreview },
   props: {
     topic_item: Object,
     itemable: Object,
     focused: Boolean,
-    unread: Boolean
+    unread: Boolean,
+    bodyPreview: Object
   },
 
   data() {
@@ -65,7 +68,8 @@ export default {
 <template lang="pug">
 section.topic-item__new-comment.new-comment(:id="'comment-'+ itemable.id" v-intersect.once="{handler: viewed}")
   topic-item-headline(:topic_item="topic_item" :itemable="itemable" :focused="focused" :unread="unread")
-  formatted-text.topic-item__body.new-comment__body(:model="itemable" field="body")
+  body-preview(:state="bodyPreview" :focused="focused")
+    formatted-text.topic-item__body.new-comment__body(:model="itemable" field="body")
   //link-previews(:model="itemable")
   attachment-list(:attachments="itemable.attachments")
   action-dock(:model='itemable' :actions='dockActions' :menu-actions='menuActions' size="small" left)

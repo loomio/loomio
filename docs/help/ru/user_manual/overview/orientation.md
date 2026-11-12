@@ -1,26 +1,28 @@
 ---
 title: Краткий обзор
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 3db0a7077d804159
   group-page: 95c9295ab2fcbc5b
   tabs: 3964f1b4135f1820
-  sidebar: c03ef69b9c52bcd1
+  sidebar: '08f396eb17640cfc'
   user-settings: 27fd4f20e7e02d5f
-  notifications: a55a1dec19c73a92
+  notifications: 9280c2c2d4f2fe69
   what-to-do-next: e52be2bc818e7f95
+  mobile-navigation: b221ef6a53dee117
 title_source: c41a33370cd580dd
 title_generated: 044d566999770b47
 needs_review:
@@ -61,7 +63,7 @@ needs_review:
 
 ## Боковая панель
 
-Откройте боковую панель с помощью кнопки меню (**☰**) в левом верхнем углу.
+Откройте боковую панель с помощью кнопки меню (**☰**) в левом верхнем углу на компьютере или на нижней панели навигации на мобильном устройстве.
 
 ![](sidebar.png)
 
@@ -81,11 +83,17 @@ needs_review:
 
 ## Уведомления
 
-Кнопка с колокольчиком в правом верхнем углу открывает ваши уведомления в приложении. Если у вас есть непросмотренные уведомления, на кнопке появляется индикатор.
+Кнопка с колокольчиком в правом верхнем углу на компьютере или на нижней панели навигации на мобильном устройстве открывает ваши уведомления в приложении. Если у вас есть непросмотренные уведомления, на кнопке появляется индикатор.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 В разделе [Уведомления](/en/user_manual/users/email_settings) описаны уведомления в приложении, настройки электронной почты и настройки уведомлений для групп и обсуждений.
+
+<!-- translation-section: mobile-navigation -->
+
+## Мобильная навигация
+
+На мобильных устройствах нижняя панель навигации обеспечивает быстрый доступ к боковой панели, ленте и уведомлениям. При чтении обсуждения меню ветки открывает доступ к её содержанию и действиям с ней.
 
 <!-- translation-section: what-to-do-next -->
 

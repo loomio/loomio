@@ -10,6 +10,7 @@ class DiscussionSerializer < ApplicationSerializer
              :discussion_template_id,
              :created_at,
              :updated_at,
+             :context_changed_at,
              :versions_count,
              :attachments,
              :link_previews,

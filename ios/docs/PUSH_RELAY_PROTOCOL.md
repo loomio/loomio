@@ -12,7 +12,7 @@ The app obtains a 60-second one-use authorization from `POST /api/v1/mobile/rela
 
 The relay validates the HTTPS origin, blocks private/reserved destinations, pins the validated DNS result for TLS connection, follows no redirects, and redeems the authorization at `POST /api/v1/mobile/relay-authorizations/verify`. A self-hosted relay may explicitly allow private origins under its own network policy.
 
-The public relay ingress limits registration attempts to 30 requests per minute per client IP. Authenticated registration routes are limited to 300 requests per minute per source host. These limits are enforced by a TLS reverse proxy whose application port is not directly reachable; forwarded client addresses are accepted only from that proxy.
+The relay application limits registration attempts to 30 requests per minute per client IP and signed registration routes to 300 requests per minute per client IP, with bursts of 10 and 50 additional requests respectively. Events and deletions share the signed-route budget, including failed authentication attempts. Excess requests receive HTTP `429` with `Retry-After`; health checks are exempt. Counters are local to each relay process and reset on restart. See the [relay configuration](../../push-relay/README.md) for memory bounds and proxy trust settings.
 
 The host returns only a random registration UUID and a random per-device delivery key. The authorization is consumed atomically. Registration is idempotent by registration UUID, and a rotated APNs token replaces the previous APNs identity.
 

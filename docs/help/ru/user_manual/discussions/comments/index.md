@@ -1,13 +1,13 @@
 ---
 title: Комментарии
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 86d25e4617a624e2
-  reading-comments: 3a4a8f5b719469f7
+  reading-comments: 6d1827a6a11d0433
   writing-a-comment: 8335c0aa11fa15fb
   mentioning-people: 2d65eeef72191931
   replying-to-a-comment: d3cc2fe1f6870d31
@@ -47,11 +47,13 @@ title_generated: 497d1e50001d2630
 
 ## Чтение комментариев
 
-Когда вы открываете обсуждение, Loomio переходит к действиям, которые вы ещё не видели.
+Ветки открываются на описании обсуждения. Выберите **Новое для вас** в меню ветки, чтобы найти непрочитанную активность, или **Последний**, чтобы перейти к самой новой активности.
 
 У непрочитанных комментариев рядом со временем публикации есть синяя метка **новый**.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+Длинные сообщения, которые вы уже прочитали, отображаются в сокращённом виде, чтобы окружающая беседа оставалась в поле зрения. Выберите **Показать больше**, чтобы видеть полный текст до конца текущего посещения ветки. Непрочитанные сообщения и комментарии, открытые по прямой ссылке, остаются развёрнутыми. Когда кто-то добавляет примечание об изменении или уведомляет участников о правке, описание обсуждения снова открывается полностью, если вы не читали ветку с момента этого уведомления.
 
 <!-- translation-section: writing-a-comment -->
 

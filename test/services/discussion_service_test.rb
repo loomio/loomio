@@ -176,6 +176,43 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   # -- Update --
 
+  test "significant context changes are recorded for a change note or explicit recipients" do
+    discussion = discussions(:discussion)
+    [{recipient_message: 'Please review the edit'}, {recipient_user_ids: [users(:member).id]}].each_with_index do |edit, index|
+      travel_to Time.current + (index + 1).hours do
+        DiscussionService.update(discussion: discussion, actor: @user,
+          params: {description: "Updated context #{index}"}.merge(edit))
+        assert_equal Time.current, discussion.reload.context_changed_at
+      end
+    end
+  end
+
+  test "quiet edits and bookkeeping preserve the significant context change time" do
+    discussion = discussions(:discussion)
+    DiscussionService.update(discussion: discussion, actor: @user, params: {description: 'Quiet context edit'})
+    assert_nil discussion.reload.context_changed_at
+    DiscussionService.update(discussion: discussion, actor: @user, params: {recipient_message: 'Review this context'})
+    changed_at = discussion.reload.context_changed_at
+    travel_to 1.hour.from_now do
+      DiscussionService.update(discussion: discussion, actor: @user,
+        params: {title: 'New heading', description: 'Another quiet edit', allow_comments: false})
+      assert_equal changed_at, discussion.reload.context_changed_at
+    end
+  end
+
+  test "failed updates roll back the context and its significant change timestamp" do
+    discussion = discussions(:discussion)
+    description = discussion.description
+    NotificationService.stub(:create!, ->(**) { raise 'notification failed' }) do
+      assert_raises(RuntimeError) do
+        DiscussionService.update(discussion: discussion, actor: @user,
+          params: {description: 'Should roll back', recipient_message: 'Important edit'})
+      end
+    end
+    assert_nil discussion.reload.context_changed_at
+    assert_equal description, discussion.description
+  end
+
   test "updates a discussion" do
     discussion = discussions(:discussion)
     discussion.topic.update!(allow_comments: true, newest_first: false, comment_length_max: 0)
@@ -354,6 +391,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     RouteNotificationDeliveriesWorker.perform_now(notification.id)
     assert_empty notification.notification_deliveries
     assert Notification.about(discussion).exists?(kind: "user_mentioned")
+    assert discussion.reload.context_changed_at
   end
 
   test "eventless update without a direct recipients does not create a notification" do

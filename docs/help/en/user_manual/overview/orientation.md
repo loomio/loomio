@@ -32,7 +32,7 @@ See [Finding content](/en/user_manual/overview/finding-content) for help with se
 
 ## Sidebar
 
-Open the sidebar with the menu button (**☰**) at the top left.
+Open the sidebar with the menu button (**☰**) at the top left on desktop, or in the bottom navigation bar on mobile.
 
 ![](sidebar.png)
 
@@ -52,11 +52,17 @@ Use this menu to edit your profile, change notification settings, choose a theme
 
 ## Notifications
 
-The bell button at the top right opens your in-app notifications. A badge appears when you have notifications you have not viewed.
+The bell button at the top right on desktop, or in the bottom navigation bar on mobile, opens your in-app notifications. A badge appears when you have notifications you have not viewed.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 See [Notifications](/en/user_manual/users/email_settings) to learn about in-app notifications, email preferences, and notification settings for groups and discussions.
+
+<!-- translation-section: mobile-navigation -->
+
+## Mobile navigation
+
+On mobile, the bottom navigation bar gives you quick access to the sidebar, dashboard, and notifications. When reading a discussion, the thread menu opens its contents and actions.
 
 <!-- translation-section: what-to-do-next -->
 

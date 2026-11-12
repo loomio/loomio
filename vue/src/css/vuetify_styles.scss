@@ -3,17 +3,15 @@
 @use 'vuetify' with (
   $color-pack: false,
   $utilities: (
-    // Layouts use responsive px, pr and ml; other spacing is breakpoint-independent.
+    // Layouts use responsive px, pr, pb, ml and mb; other spacing is breakpoint-independent.
     "margin": (responsive: false),
     "margin-x": (responsive: false),
     "margin-y": (responsive: false),
     "margin-top": (responsive: false),
     "margin-right": (responsive: false),
-    "margin-bottom": (responsive: false),
     "padding": (responsive: false),
     "padding-y": (responsive: false),
     "padding-top": (responsive: false),
-    "padding-bottom": (responsive: false),
     "padding-left": (responsive: false),
     "negative-margin-top": (responsive: false),
     "negative-margin-left": (responsive: false),

@@ -4,6 +4,7 @@ import Records        from '@/shared/services/records';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import RecordLoader   from '@/shared/services/record_loader';
+import { dashboardParams } from '@/shared/services/navigation_data';
 
 const dashboardLoaded = ref(Records.topics.collection.data.length > 0);
 const loader = ref(null);
@@ -50,9 +51,7 @@ function refresh() {
 function init() {
   loader.value = new RecordLoader({
     collection: 'topics',
-    params: {
-      per: 30,
-    }
+    params: dashboardParams
   });
 
   refresh();
@@ -115,6 +114,4 @@ v-main
                 v-for="topic in topics"
                 :key="topic.id"
                 :topic="topic")
-          .dashboard-page__footer(v-if='!loader.exhausted')
-          loading(v-show='loader.loading')
 </template>

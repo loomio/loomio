@@ -23,7 +23,7 @@ module Boot
       if @user.is_logged_in?
         case @page
         when 'dashboard'
-          add_topics({from: 0, per: 30, order: 'id'}, limit: 30)
+          add_topics({offset: 0, limit: 30, order: 'id'}, limit: 30)
           params = {status: 'vote', limit: 100, offset: 0}
           polls = PollQuery.filter(chain: PollQuery.relevant_to(user: @user), params: params, user: @user).order(created_at: :desc, id: :desc)
           add('polls', params, polls.limit(100), PollSerializer, total: polls.count)

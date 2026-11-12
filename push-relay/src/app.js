@@ -2,6 +2,7 @@ import http from "node:http";
 import crypto from "node:crypto";
 import { canonicalRequest, signRequest, validSignature } from "./crypto.js";
 import { normalizedHTTPSOrigin } from "./security.js";
+import { createRateLimiter } from "./rate_limit.js";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const APNS_TOKEN = /^[0-9a-f]{64,200}$/i;
@@ -57,7 +58,7 @@ async function authenticateHost({ request, path, rawBody, registration, reposito
   return await repository.claimNonce(registration.id, nonce, new Date((seconds + 600) * 1_000));
 }
 
-export function createServer({ repository, apns, verifyHostAuthorization, now = Date.now, logger = console }) {
+export function createServer({ repository, apns, verifyHostAuthorization, rateLimit = createRateLimiter(), now = Date.now, logger = console }) {
   return http.createServer(async (request, response) => {
     const url = new URL(request.url, "http://relay.invalid");
     try {
@@ -65,10 +66,20 @@ export function createServer({ repository, apns, verifyHostAuthorization, now = 
         return json(response, 200, { status: "ok", protocol_version: 1 });
       }
       if (url.search) return json(response, 404, { error: "not_found" });
+      const isRegistration = url.pathname === "/v1/registrations";
+      const route = registrationPath(url.pathname);
+      if (!isRegistration && !route) return json(response, 404, { error: "not_found" });
+      const method = isRegistration || route.events ? "POST" : "DELETE";
+      if (request.method !== method) return json(response, 405, { error: "method_not_allowed" });
+      const retryAfter = rateLimit(request, isRegistration ? "registrations" : "deliveries");
+      if (retryAfter) {
+        response.setHeader("retry-after", String(retryAfter));
+        return json(response, 429, { error: "rate_limited" });
+      }
       if (!isJSONRequest(request)) return json(response, 415, { error: "unsupported_media_type" });
 
       const { raw, value } = await readBody(request);
-      if (request.method === "POST" && url.pathname === "/v1/registrations") {
+      if (isRegistration) {
         if (!exactKeys(value, ["host_origin", "authorization", "apns_token", "environment"]) ||
             !OPAQUE_TOKEN.test(value.authorization) || !APNS_TOKEN.test(value.apns_token) ||
             !["sandbox", "production"].includes(value.environment)) {
@@ -92,8 +103,6 @@ export function createServer({ repository, apns, verifyHostAuthorization, now = 
         return json(response, 201, { registration_id: verified.registration_id });
       }
 
-      const route = registrationPath(url.pathname);
-      if (!route) return json(response, 404, { error: "not_found" });
       const registration = await repository.findRegistration(route.id);
       if (!registration) return json(response, 404, { error: "not_found" });
       if (!await authenticateHost({ request, path: url.pathname, rawBody: raw, registration, repository, now })) {

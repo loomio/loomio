@@ -46,6 +46,23 @@ class InitialPageDataTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'ordinary discussion opens preload the beginning even when the reader has unread replies' do
+    user = users(:member_normal)
+    discussion = discussions(:discussion)
+    CommentService.create(comment: Comment.new(parent: discussion, body: 'Unread reply'), actor: users(:admin))
+    topic = discussion.topic.reload
+    TopicReader.for(user: user, topic: topic).update!(read_ranges: [[0, 0]], last_read_at: 1.hour.ago)
+    authenticate(user)
+
+    get "/d/#{discussion.key}", headers: browser_headers
+    assert_response :success
+    request = initial_data['requests'].find { |row| row['params'].key?('discussion_key') }
+    assert_equal 'sequence_id', request['params']['order_by']
+    assert_includes request['records']['topic_items'].pluck('sequence_id'), 0
+    get request['path'], params: request['params'], as: :json
+    assert_equal normalize_times(response.parsed_body.except('meta')), normalize_times(request['records'])
+  end
+
   test 'ordinary app pages include boot configuration without preloading secondary records' do
     ENV['FEATURES_EXPLORE_PUBLIC_GROUPS'] = '1'
     [nil, users(:member_normal)].each do |user|

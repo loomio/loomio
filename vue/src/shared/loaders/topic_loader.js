@@ -22,6 +22,8 @@ export default class TopicLoader {
     this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
+    this.revealedBodies = reactive(new Set());
+    this.bodyPreviews = new Map();
     this.loading = false;
     this.isFirstLoad = true
     this.padding = 25;
@@ -69,6 +71,25 @@ export default class TopicLoader {
 
   sequenceIdIsUnread(id) {
     return !RangeSet.includesValue(this.readRanges, id);
+  }
+
+  // Each body keeps one preview state for the visit. Read status comes from the
+  // visit's read snapshot; reveals are stored by sequence ID so cached context
+  // and its loaded root item share the same state.
+  bodyPreview(sequenceId) {
+    if (!this.bodyPreviews.has(sequenceId)) {
+      const loader = this;
+      this.bodyPreviews.set(sequenceId, {
+        readBeforeVisit: !this.sequenceIdIsUnread(sequenceId),
+        get revealed() { return loader.revealedBodies.has(sequenceId); },
+        get changedSinceRead() {
+          return sequenceId === 0 && loader.topic.topicableType === 'Discussion' &&
+            loader.topic.topicable().contextChangedAt > loader.lastReadAt;
+        },
+        reveal: () => this.revealedBodies.add(sequenceId)
+      });
+    }
+    return this.bodyPreviews.get(sequenceId);
   }
 
   expand(topic_item) {
@@ -200,6 +221,7 @@ export default class TopicLoader {
   }
 
   addLoadNewestRule(remoteTopicParams = { topic_id: this.topic.id }) {
+    this.ranges = cloneDeep(this.topic.ranges);
     return this.addRule({
       local: {
         find: {
@@ -220,19 +242,18 @@ export default class TopicLoader {
     });
   }
 
-  addLoadOldestRule() {
+  addLoadOldestRule(remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: 'oldest',
       local: {
         find: {
-          topicId: this.topic.id,
-          sequenceId: { $lte: this.lastSequenceId() }
+          topicId: this.topic.id
         },
         simplesort: 'sequenceId',
         limit: this.padding
       },
       remote: {
-        topic_id: this.topic.id,
+        ...remoteTopicParams,
         order_by: 'sequence_id',
         per: this.padding
       }
@@ -297,18 +318,22 @@ export default class TopicLoader {
   }
 
   fetch() {
-    const newRules = [];
     const promises = this.rules.filter(rule => rule.remote)
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
-      newRules.push(JSON.stringify(rule.remote));
       const params = Object.assign({}, rule.remote, this.isFirstLoad ? {} : {exclude_types: 'topic'});
-      return Records.topicItems.fetch({params});
+      return Records.topicItems.fetch({params}).then(data => {
+        // Failed windows must remain retryable, including a jump to activity
+        // that has not yet been cached.
+        this.fetchedRules = uniq(this.fetchedRules.concat(JSON.stringify(rule.remote)));
+        return data;
+      });
     });
 
-    return Promise.all(promises).finally(() => {
-      this.fetchedRules = uniq(this.fetchedRules.concat(newRules));
+    return Promise.all(promises).then(data => {
       this.isFirstLoad = false
+      return data;
+    }).finally(() => {
       this.loading = false;
     });
   }

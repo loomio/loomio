@@ -1,13 +1,13 @@
 ---
 title: Comentários
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 456d08a6bd092611
-  reading-comments: 528b200e06d38bae
+  reading-comments: e3d69ca215029452
   writing-a-comment: 697bb8045499436f
   mentioning-people: 733085bc8e2a7e85
   replying-to-a-comment: 49b0b703b50f2032
@@ -47,11 +47,13 @@ Os comentários são a principal forma de participar de uma discussão. Eles fic
 
 ## Ler comentários
 
-Quando você abre uma discussão, o Loomio leva você às atividades que ainda não viu.
+As conversas abrem no contexto da discussão. Você pode usar **Novo para você** no menu da conversa para encontrar atividades não lidas ou **Mais recente** para ir à atividade mais recente.
 
 Os comentários não lidos têm uma etiqueta azul **novo** ao lado do horário de publicação.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+As contribuições longas que você já leu aparecem como uma prévia, mantendo visível o restante da conversa. Selecione **Mostrar mais** para exibir o texto completo durante o restante da sua visita à conversa. As contribuições não lidas e os comentários abertos por um link direto permanecem expandidos. Quando alguém adiciona uma nota sobre uma alteração ou notifica as pessoas sobre uma edição, o contexto da discussão volta a ser exibido por completo se você não tiver lido a conversa desde esse aviso.
 
 <!-- translation-section: writing-a-comment -->
 

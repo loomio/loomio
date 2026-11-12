@@ -1,26 +1,28 @@
 ---
 title: Gyors áttekintés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: f2a5bb1e6c78251c
   group-page: 8fac2eb11db76b9b
   tabs: ab93e823e327c69a
-  sidebar: 4828c2b8ae60f526
+  sidebar: 4360c2180d0d8608
   user-settings: 020fdc0d2317d35d
-  notifications: 2d695893b8f6fb06
+  notifications: 0a5134bed9bc27c5
   what-to-do-next: c106e04cbffabed6
+  mobile-navigation: 75a560db1a76a929
 title_source: c41a33370cd580dd
 title_generated: 4c340dbdce7d1abd
 ---
@@ -59,7 +61,7 @@ A keresésről, a szűrőkről, a címkékről, a könyvjelzőkről és az olvas
 
 ## Oldalsáv
 
-Nyisd meg az oldalsávot a bal felső sarokban található menügombbal (**☰**).
+Nyisd meg az oldalsávot a menügombbal (**☰**), amely asztali gépen a bal felső sarokban, mobilon pedig az alsó navigációs sávban található.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ Ebben a menüben szerkesztheted a profilodat, módosíthatod az értesítési be
 
 ## Értesítések
 
-A jobb felső sarokban található haranggomb megnyitja az alkalmazáson belüli értesítéseidet. Egy jelvény jelenik meg, ha vannak még meg nem tekintett értesítéseid.
+A haranggomb, amely asztali gépen a jobb felső sarokban, mobilon pedig az alsó navigációs sávban található, megnyitja az alkalmazáson belüli értesítéseidet. Egy jelvény jelenik meg, ha vannak még meg nem tekintett értesítéseid.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Az alkalmazáson belüli értesítésekről, az e-mail-beállításokról, valamint a csoportok és beszélgetések értesítési beállításairól az [Értesítések](/en/user_manual/users/email_settings) oldalon olvashatsz.
+
+<!-- translation-section: mobile-navigation -->
+
+## Mobilos navigáció
+
+Mobilon az alsó navigációs sávból gyorsan elérheted az oldalsávot, az áttekintést és az értesítéseket. Amikor egy beszélgetést olvasol, a szál menüjéből elérheted a tartalomjegyzéket és a szálhoz kapcsolódó műveleteket.
 
 <!-- translation-section: what-to-do-next -->
 

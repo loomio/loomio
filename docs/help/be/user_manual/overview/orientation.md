@@ -1,26 +1,28 @@
 ---
 title: Кароткі агляд
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 4d4a7d5839010758
   group-page: 6dc1ac220e3e825d
   tabs: 0d45c7b7a5190f7c
-  sidebar: ab4ad57ecb9df5ba
+  sidebar: f90d570f6e790544
   user-settings: 52980035e023ee85
-  notifications: '0691945e4f39f61f'
+  notifications: d4e5993532a5f07d
   what-to-do-next: 5d8ae9863339c557
+  mobile-navigation: 5fb3cfefd554e56f
 title_source: c41a33370cd580dd
 title_generated: 0add22d893e0739a
 ---
@@ -59,7 +61,7 @@ title_generated: 0add22d893e0739a
 
 ## Бакавая панэль
 
-Адкрыйце бакавую панэль кнопкай меню (**☰**) уверсе злева.
+Адкрыйце бакавую панэль кнопкай меню (**☰**) уверсе злева на камп'ютары або на ніжняй панэлі навігацыі на мабільнай прыладзе.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ title_generated: 0add22d893e0739a
 
 ## Апавяшчэнні
 
-Кнопка са званочкам уверсе справа адкрывае вашы апавяшчэнні ў праграме. Калі ў вас ёсць непрагледжаныя апавяшчэнні, з'яўляецца значок.
+Кнопка са званочкам уверсе справа на камп'ютары або на ніжняй панэлі навігацыі на мабільнай прыладзе адкрывае вашы апавяшчэнні ў праграме. Калі ў вас ёсць непрагледжаныя апавяшчэнні, з'яўляецца значок.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 У раздзеле [Апавяшчэнні](/en/user_manual/users/email_settings) вы даведаецеся пра апавяшчэнні ў праграме, налады электроннай пошты і налады апавяшчэнняў для груп і абмеркаванняў.
+
+<!-- translation-section: mobile-navigation -->
+
+## Мабільная навігацыя
+
+На мабільных прыладах ніжняя панэль навігацыі дае хуткі доступ да бакавой панэлі, стужкі і апавяшчэнняў. Падчас чытання абмеркавання меню тэмы адкрывае яе змест і дзеянні з тэмай.
 
 <!-- translation-section: what-to-do-next -->
 

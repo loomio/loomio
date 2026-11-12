@@ -2,14 +2,14 @@
 import { computed } from 'vue';
 import { usePendingPolls } from '@/composables/usePendingPolls';
 
-const { loadPendingPolls, findPendingPolls, loading } = usePendingPolls();
+const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 const votePolls = computed(() => findPendingPolls());
 
 loadPendingPolls();
 </script>
 
 <template lang="pug">
-.polls-panel(v-if='votePolls.length || loading')
+.polls-panel(v-if='votePolls.length')
   v-card.mb-2(variant="flat")
     v-list(lines="two")
       template(v-if="votePolls.length")
@@ -21,7 +21,4 @@ loadPendingPolls();
           v-for="poll in votePolls",
           :key="poll.id"
         )
-      template(v-if='!votePolls.length && loading')
-        v-list-subheader(v-t="'group_page.polls'")
-        loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

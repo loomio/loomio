@@ -1,26 +1,28 @@
 ---
 title: クイックツアー
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 2dd1c6165086df1d
   group-page: c3ae1c6e2c785f8e
   tabs: f26884773ad9427f
-  sidebar: f3c0613d2fca37d4
+  sidebar: 859d685843b53b72
   user-settings: '09404ab82b2190f6'
-  notifications: 2daaf2cc8cebb570
+  notifications: 0d93711d493b4d44
   what-to-do-next: bd778b745000029e
+  mobile-navigation: bdad9a9889be368f
 title_source: c41a33370cd580dd
 title_generated: 3c52848186e9f407
 ---
@@ -59,7 +61,7 @@ title_generated: 3c52848186e9f407
 
 ## サイドバー
 
-左上のメニューボタン（**☰**）でサイドバーを開きます。
+デスクトップでは左上、モバイルでは下部のナビゲーションバーにあるメニューボタン（**☰**）でサイドバーを開きます。
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ title_generated: 3c52848186e9f407
 
 ## 通知
 
-右上のベルボタンでアプリ内通知を開きます。まだ確認していない通知があると、バッジが表示されます。
+デスクトップでは右上、モバイルでは下部のナビゲーションバーにあるベルボタンでアプリ内通知を開きます。まだ確認していない通知があると、バッジが表示されます。
 
 ![](../users/email_settings/in_app_notifications.png)
 
 アプリ内通知、メールの受信設定、グループやディスカッションの通知設定については、[通知](/en/user_manual/users/email_settings)を参照してください。
+
+<!-- translation-section: mobile-navigation -->
+
+## モバイルのナビゲーション
+
+モバイルでは、下部のナビゲーションバーからサイドバー、ダッシュボード、通知にすばやくアクセスできます。ディスカッションを読んでいる間は、スレッドメニューから目次やスレッドの操作を開けます。
 
 <!-- translation-section: what-to-do-next -->
 

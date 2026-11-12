@@ -1,13 +1,13 @@
 ---
 title: תגובות
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: 6e557d4f9746f041
-  reading-comments: 66a3b98068027e67
+  reading-comments: 55f358a147e411e2
   writing-a-comment: 5480dfb6fd852644
   mentioning-people: d8d001548f99c3f7
   replying-to-a-comment: e64910cded7f6f90
@@ -47,11 +47,13 @@ title_generated: 7b2f493e410a5f4f
 
 ## קריאת תגובות
 
-בעת פתיחת דיון, Loomio מציג את הפעילות שטרם נצפתה.
+שרשורים נפתחים בהקשר של הדיון. ניתן לבחור באפשרות **חדש לך** בתפריט השרשור כדי למצוא פעילות שטרם נקראה, או באפשרות **אחרונים** כדי לעבור לפעילות העדכנית ביותר.
 
 לצד זמן הפרסום של תגובות שטרם נקראו מופיעה תווית כחולה עם הכיתוב **חָדָשׁ**.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+קטעים ארוכים שכבר נקראו מוצגים בתצוגה מקדימה, כך שהשיחה שסביבם נשארת גלויה. יש לבחור באפשרות **הראה עוד** כדי להציג את הטקסט המלא למשך שאר הביקור בשרשור. קטעים שטרם נקראו ותגובות שנפתחו מקישור ישיר נשארים מוצגים במלואם. כאשר מתווספת הערה על שינוי או נשלחת התראה על עריכה, הקשר הדיון נפתח שוב במלואו אם השרשור לא נקרא מאז ההודעה.
 
 <!-- translation-section: writing-a-comment -->
 

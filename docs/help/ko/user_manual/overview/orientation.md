@@ -3,26 +3,28 @@ sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
+  mobile-navigation: a2c209d1f2dfe37b
   what-to-do-next: 2946260092e30e4e
 generated:
   introduction: f592cf60937f3a12
   group-page: e0e8edf7b05518ff
   tabs: 768aef220b41213c
-  sidebar: ddf1f7d6646a7276
+  sidebar: 848e5a5776de24a1
   user-settings: 4f8dafd18110070d
-  notifications: 02f355ba6bf72999
+  notifications: cd3d012ea9e5a0e0
+  mobile-navigation: 6e1f4a128d2f8e83
   what-to-do-next: 6c44855e55414e6a
 title: 둘러보기
 title_source: c41a33370cd580dd
 title_generated: 1d71c370510428ee
-source_revision: 87da2f54604789b430479cfbf7ed9b9dcc5c2e2f
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-12'
 ---
 
 <!-- translation-section: introduction -->
@@ -59,7 +61,7 @@ translated:
 
 ## 사이드바
 
-왼쪽 위의 메뉴 버튼(**☰**)으로 사이드바를 여세요.
+데스크톱에서는 왼쪽 위의 메뉴 버튼(**☰**)으로, 모바일에서는 하단 탐색 모음의 메뉴 버튼으로 사이드바를 여세요.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ translated:
 
 ## 알림
 
-오른쪽 위의 종 모양 버튼으로 앱 내 알림을 열 수 있습니다. 확인하지 않은 알림이 있으면 배지가 표시됩니다.
+데스크톱에서는 오른쪽 위의 종 모양 버튼으로, 모바일에서는 하단 탐색 모음의 종 모양 버튼으로 앱 내 알림을 열 수 있습니다. 확인하지 않은 알림이 있으면 배지가 표시됩니다.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 앱 내 알림, 이메일 수신 설정, 그룹과 토론의 알림 설정에 관해서는 [알림](/en/user_manual/users/email_settings)을 참고하세요.
+
+<!-- translation-section: mobile-navigation -->
+
+## 모바일 탐색
+
+모바일에서는 하단 탐색 모음에서 사이드바, 대시보드, 알림에 빠르게 접근할 수 있습니다. 토론을 읽는 동안에는 스레드 메뉴에서 목차와 스레드 관련 작업을 열 수 있습니다.
 
 <!-- translation-section: what-to-do-next -->
 

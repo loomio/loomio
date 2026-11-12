@@ -1,10 +1,10 @@
 ---
 title: API utilisateur
-source_revision: 128288974f8d56543b8878969b810fbc54dbc31e
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-10'
 sections:
   introduction: 68d638b236cac8c3
   response-size-and-related-records: 6f8cf57b45766ad1
@@ -133,7 +133,7 @@ generated:
   example-12: c90466eece69a890
   show-poll: 5557b95059b58037
   example-13: a14fc34d58896501
-  list-polls: 20d2a53ccad3b8e6
+  list-polls: 572248b728583a78
   params-10: 622d70d2d10f46ce
   example-14: 5a4e98817fc44a24
   edit-poll: b9a04dabb3564196
@@ -884,9 +884,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Listez les sondages d’un groupe visibles par l’utilisateur de la clé API, y compris les sondages autonomes et les sondages au sein des discussions. Pour un groupe visible publiquement, une personne qui n’en est pas membre peut lister ses sondages publics ; les sondages privés restent réservés aux utilisateurs qui peuvent les consulter dans Loomio. La réponse inclut la conclusion actuelle de chaque sondage visible. Vous pouvez donc utiliser `status=closed` pour lister les sondages clôturés et lire leurs conclusions lorsqu’elles ont été définies.
 
-Pour afficher l’état des décisions à côté des discussions, récupérez les discussions et les sondages du même groupe, en utilisant `status=all` pour les sondages, et faites correspondre leurs valeurs `topic_id`. Récupérez toutes les pages à l’aide de `limit` et `offset`. Une discussion peut contenir plusieurs sondages ; choisissez donc le sondage qui détermine l’état affiché, par exemple le sondage créé le plus récemment. Une valeur `closed_at` non nulle indique un sondage clôturé ; une valeur `closing_at` nulle indique un brouillon. Lorsqu’un sondage a une conclusion, son champ `current_outcome_id` identifie un enregistrement dans le tableau `outcomes` de la réponse ; faites correspondre le champ `poll_id` de cet enregistrement avec le champ `id` du sondage.
+Pour afficher l’état des décisions à côté des discussions, récupérez les discussions et les sondages du même groupe, en utilisant `status=all` pour les sondages, puis faites correspondre leurs valeurs `topic_id`. Récupérez toutes les pages à l’aide de `limit` et `offset`. Une discussion peut contenir plusieurs sondages ; choisissez donc celui qui détermine l’état affiché, par exemple le sondage créé le plus récemment. Une valeur `closed_at` non nulle indique un sondage clôturé ; une valeur `closing_at` nulle indique un brouillon. Lorsqu’un sondage a une conclusion, son champ `current_outcome_id` identifie un enregistrement dans le tableau `outcomes` de la réponse ; faites correspondre le champ `poll_id` de cet enregistrement avec le champ `id` du sondage.
 
-Pour une seule discussion, vous pouvez également [lire les éléments de son fil](#read-thread) à l’aide de `GET /api/user0/threads/:topic_id/items`. La réponse contient les sondages et les conclusions du fil, ainsi que ses autres éléments. Récupérez toutes les pages pour inclure le fil complet.
+Pour une seule discussion, vous pouvez aussi [lire les éléments de son fil](#read-thread) à l’aide de `GET /api/user0/threads/:topic_id/items`. Cette requête renvoie les sondages et les conclusions du fil avec ses autres éléments. Récupérez toutes les pages pour inclure le fil complet.
 
 `GET /api/user0/polls`
 

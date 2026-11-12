@@ -3,6 +3,7 @@
 ## Frontend / Vue
 
 - Write new Vue components in `<script setup>` format — even when sibling files in the same directory still use the Options API (much of the codebase is mid-migration; don't perpetuate the old style by matching neighbours).
+  - Always write Vue component templates in Pug using `<template lang="pug">`.
   - Query records with `computed` (or `computed:` in the Options API). Record store reads such as `Records.x.find(...)`, `collection.chain()` and relationship helpers are reactive, so the query re-runs when matching records are imported, removed or changed. Never create, update or remove records inside a computed.
   - Use `LmoUrlService.route({model})` directly instead of the `UrlFor` mixin.
   - Destructure `defineProps` and reference bare prop names (not `props.x`).

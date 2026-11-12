@@ -1,26 +1,28 @@
 ---
 title: Visite rapide
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 59ee6bb0ad1eed69
   group-page: 13cfcd25b08f7bd2
   tabs: 8e633e7902a31277
-  sidebar: a90a7c6aa5a23a05
+  sidebar: ccb4e82a2647b306
   user-settings: 441510e7051415a9
-  notifications: 37a38746db97a489
+  notifications: '08c9a9a580d9626f'
   what-to-do-next: 213b0f6a819f21c8
+  mobile-navigation: 05742fc59e9148d7
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
 ---
@@ -59,7 +61,7 @@ Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour ob
 
 ## Barre latérale
 
-Ouvrez la barre latérale avec le bouton de menu (**☰**) en haut à gauche.
+Ouvrez la barre latérale avec le bouton de menu (**☰**) en haut à gauche sur ordinateur, ou dans la barre de navigation inférieure sur mobile.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ Utilisez ce menu pour modifier votre profil, changer les paramètres de notifica
 
 ## Notifications
 
-Le bouton en forme de cloche en haut à droite ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
+Le bouton en forme de cloche en haut à droite sur ordinateur, ou dans la barre de navigation inférieure sur mobile, ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir plus sur les notifications dans l’application, les préférences d’e-mail et les paramètres de notification des groupes et des discussions.
+
+<!-- translation-section: mobile-navigation -->
+
+## Navigation mobile
+
+Sur mobile, la barre de navigation inférieure vous donne un accès rapide à la barre latérale, au tableau de bord et aux notifications. Lorsque vous consultez une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
 
 <!-- translation-section: what-to-do-next -->
 

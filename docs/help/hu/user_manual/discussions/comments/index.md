@@ -1,13 +1,13 @@
 ---
 title: Hozzászólások
-source_revision: 1cf2bcf6b3cf06e509643b51093bd15ea1debee1
+source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-24'
+  'on': '2026-11-10'
 sections:
   introduction: 5de86c47a823daf0
-  reading-comments: 4b20b215ad06a596
+  reading-comments: 1b9e31009cc4af2d
   writing-a-comment: 2e1a2c5fba2575d2
   mentioning-people: 949375e41b71aed0
   replying-to-a-comment: dfc6e14af2c530e4
@@ -21,7 +21,7 @@ sections:
   discard-restore-or-delete-a-comment: f7fcdf12cf61a764
 generated:
   introduction: b831d220113f7720
-  reading-comments: 9860108c253a44d7
+  reading-comments: 3ce5f9272cc992e6
   writing-a-comment: d1cc5e34dc220b7b
   mentioning-people: 46b92a037627998b
   replying-to-a-comment: 93314d00852b11fb
@@ -47,11 +47,13 @@ Az emberek elsősorban hozzászólásokkal vesznek részt a beszélgetésben. A 
 
 ## Hozzászólások olvasása
 
-Amikor megnyitsz egy beszélgetést, a Loomio a számodra új tevékenységekhez visz.
+A szálak a beszélgetés leírásánál nyílnak meg. A szál menüjében az **Új számodra** lehetőséggel keresheted meg az olvasatlan tevékenységeket, a **Legutóbbi** lehetőséggel pedig a legújabb tevékenységhez ugorhatsz.
 
 Az olvasatlan hozzászólások közzétételi ideje mellett kék **új** címke jelenik meg.
 
 ![](../using_discussions/thread_unread_comments.png)
+
+A már elolvasott hosszú bejegyzések előnézetként jelennek meg, így a környező beszélgetés is látható marad. Válaszd ki a **Bővebben** lehetőséget a teljes szöveg megjelenítéséhez, amely a szálban tett látogatásod végéig látható marad. Az olvasatlan bejegyzések és a közvetlen linkkel megnyitott hozzászólások teljes terjedelmükben láthatók maradnak. Ha valaki leírást fűz egy módosításhoz, vagy értesít másokat egy szerkesztésről, a beszélgetés leírása ismét teljes egészében jelenik meg, amennyiben az értesítés óta még nem olvastad a szálat.
 
 <!-- translation-section: writing-a-comment -->
 

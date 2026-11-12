@@ -1,26 +1,28 @@
 ---
 title: Pikakierros
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/orientation.md
+source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-12'
 sections:
   introduction: bc1003860d699a8a
   group-page: 1592d5e9a232df4e
   tabs: add2af878c6f9279
-  sidebar: 89d50018647bdb7c
+  sidebar: 6fcc6fb14f4584c4
   user-settings: f28c7bdfc7562d01
-  notifications: 54d12e26d4e87f79
+  notifications: bea515fc72375a2f
   what-to-do-next: 2946260092e30e4e
+  mobile-navigation: a2c209d1f2dfe37b
 generated:
   introduction: 295f556ce787407f
   group-page: 20ebbf5f68b41673
   tabs: 69e9324e941f69ef
-  sidebar: 217094b2312f3f72
+  sidebar: ac7221e7a8412f61
   user-settings: 37cbf030c2d41e85
-  notifications: fa6b7220b8489bfd
+  notifications: 02fc3b4860376409
   what-to-do-next: '0652697dff629d8d'
+  mobile-navigation: e0cbaaf783fbc526
 title_source: c41a33370cd580dd
 title_generated: fa2ae81ceb5a86cf
 ---
@@ -59,7 +61,7 @@ Katso [Sisällön löytäminen](/en/user_manual/overview/finding-content), jos t
 
 ## Sivupalkki
 
-Avaa sivupalkki vasemman yläkulman valikkopainikkeella (**☰**).
+Avaa sivupalkki valikkopainikkeella (**☰**), joka on tietokoneella vasemmassa yläkulmassa ja mobiililaitteella alareunan navigointipalkissa.
 
 ![](sidebar.png)
 
@@ -79,11 +81,17 @@ Tässä valikossa voit muokata profiiliasi, muuttaa ilmoitusasetuksia, valita te
 
 ## Ilmoitukset
 
-Oikean yläkulman kellopainike avaa sovelluksen sisäiset ilmoituksesi. Painikkeeseen ilmestyy merkki, kun sinulla on ilmoituksia, joita et ole katsonut.
+Kellopainike, joka on tietokoneella oikeassa yläkulmassa ja mobiililaitteella alareunan navigointipalkissa, avaa sovelluksen sisäiset ilmoituksesi. Painikkeeseen ilmestyy merkki, kun sinulla on ilmoituksia, joita et ole katsonut.
 
 ![](../users/email_settings/in_app_notifications.png)
 
 Lue [Ilmoitukset](/en/user_manual/users/email_settings), niin saat tietoa sovelluksen sisäisistä ilmoituksista, sähköpostiasetuksista sekä ryhmien ja keskustelujen ilmoitusasetuksista.
+
+<!-- translation-section: mobile-navigation -->
+
+## Mobiilinavigointi
+
+Mobiililaitteella alareunan navigointipalkista voit avata nopeasti sivupalkin, yleiskatsauksen ja ilmoitukset. Kun luet keskustelua, ketjun valikosta voit avata sisällysluettelon ja ketjun toiminnot.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -9,7 +9,7 @@ import Session       from '@/shared/services/session';
 import PushSubscriptionService from '@/shared/services/push_subscription_service';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 import { notificationCatchUpTitleKey } from '@/shared/helpers/notification_volume_options';
-import { ref, computed, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDisplay, useTheme } from 'vuetify';
 import { sortBy, last, pickBy } from 'lodash-es';
@@ -127,6 +127,10 @@ function scrollToSequenceId(id) {
   ScrollService.scrollTo(`.sequenceId-${id}`);
 }
 
+function toggleTopicNav() { open.value = !open.value; }
+
+onUnmounted(() => EventBus.$off('toggleTopicNav', toggleTopicNav));
+
 onMounted(() => {
   PushSubscriptionService.subscriptions()
     .then(subscriptions => { deviceNotificationsAvailable.value = subscriptions.length > 0; })
@@ -134,7 +138,7 @@ onMounted(() => {
 
   props.topic.fetchUsersNotifiedCount();
   baseUrl.value = LmoUrlService.route({ model: props.topic.topicable() });
-  EventBus.$on('toggleTopicNav', () => { open.value = !open.value; });
+  EventBus.$on('toggleTopicNav', toggleTopicNav);
 
   Records.topicItems.fetch({
     params: {

@@ -6,11 +6,16 @@ import TopicLoader       from '@/shared/loaders/topic_loader';
 import TaggedItems from '@/components/topic/tagged_items.vue';
 import TagFilterToolbar from '@/components/topic/tag_filter_toolbar.vue';
 import TopicActionsPanel from '@/components/topic/actions_panel';
+import TopicHeader from '@/components/topic/header';
+import BodyPreview from '@/components/topic/body_preview.vue';
 import ScrollService     from '@/shared/services/scroll_service';
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import { mdiArrowDown } from '@mdi/js';
 
 const route = useRoute();
+const { t } = useI18n();
 
 const topic            = ref(null);
 const loadedKey        = ref(null);
@@ -20,11 +25,16 @@ const anchorSelector   = ref(null);
 const anchorOffset     = ref(null);
 const lastAnchorSelector = ref(null);
 const focusedItemVisible = ref(false);
+const latestVisible = ref(false);
+const jumping = ref(false);
+const showLatest = computed(() => topic.value && topic.value.itemsCount > 1 && !latestVisible.value);
+let pageGeneration = 0;
 let cancelSettledAnchorScroll = null;
 let stopCollectionWatch = null;
 
 onMounted(() => {
   EventBus.$on('setAnchor', onSetAnchor);
+  EventBus.$on('cancelAutoScroll', cancelSettledScroll);
   EventBus.$on('visibleKeys', onVisibleKeys);
 
   init();
@@ -32,9 +42,13 @@ onMounted(() => {
 
 onUnmounted(() => {
   EventBus.$off('setAnchor', onSetAnchor);
+  EventBus.$off('cancelAutoScroll', cancelSettledScroll);
   EventBus.$off('visibleKeys', onVisibleKeys);
   cancelSettledScroll();
   stopCollectionUpdates();
+  pageGeneration += 1;
+  loader.value = null;
+  anchorSelector.value = null;
 });
 
 watch(() => route.params.key, init);
@@ -52,8 +66,8 @@ function scrollToFocused() {
   }
 }
 
-// Created after the async fetch resolves, so it is outside the component's
-// effect scope and must be stopped manually.
+// The watcher may be created after an async fetch resolves, outside the
+// component's effect scope, so stop it explicitly when leaving the thread.
 function stopCollectionUpdates() {
   if (stopCollectionWatch) {
     stopCollectionWatch();
@@ -68,9 +82,8 @@ function cancelSettledScroll() {
   }
 }
 
-// Fired by load_more.vue before prepending items above the viewport.
-// Stores the current top-visible item's selector + screen offset so
-// scrollToAnchorIfNew can restore the visual position after insertion.
+// Fired before loading earlier items. Restore this viewport offset after the
+// collection updates.
 function onSetAnchor(selector, offset) {
   cancelSettledScroll();
   anchorSelector.value = selector;
@@ -78,6 +91,10 @@ function onSetAnchor(selector, offset) {
 }
 
 function onVisibleKeys(keys) {
+  if (topic.value) {
+    const latest = Records.topicItems.find({topicId: topic.value.id, sequenceId: topic.value.lastSequenceId()})[0];
+    latestVisible.value = !!latest && keys.includes(latest.positionKey);
+  }
   if (!focusSelector.value || !loader.value) { return true; }
 
   const match = focusSelector.value.match(/\.sequenceId-(\d+)/);
@@ -92,10 +109,20 @@ function onVisibleKeys(keys) {
 function init() {
   cancelSettledScroll();
   stopCollectionUpdates();
+  pageGeneration += 1;
   topic.value = null;
   loadedKey.value = null;
   loader.value = null;
-  respondToRoute();
+  focusSelector.value = null;
+  anchorSelector.value = null;
+  lastAnchorSelector.value = null;
+  latestVisible.value = false;
+  jumping.value = false;
+
+  const records = route.path.startsWith('/p/') ? Records.polls : Records.discussions;
+  const cached = records.findByKey(route.params.key);
+  if (cached) displayTopic(cached.topic());
+  fetchInitialContent();
 }
 
 function routeTopicParams() {
@@ -122,13 +149,40 @@ function routeCommentId() {
   return parseInt(route.query.comment_id || route.params.comment_id) || null;
 }
 
-// Topic loading strategy:
-// 1. If a specific focus is given (a poll key for a non-topical poll, a sequence_id, or a comment_id),
-//    load topic_items around that item and scroll to it.
-// 2. Otherwise, load unread-or-newest topic_items, then scroll to:
-//    a. The first unread item (if the user has read before and there is unread), or
-//    b. The last item by position_key (if everything is read), or
-//    c. The top (if nothing has been read yet — first visit).
+// Render known records before refreshing. Ordinary opens start at the beginning;
+// only explicit links and user actions move the viewport within the thread.
+function displayTopic(record) {
+  if (record.group().newHost) { window.location.host = record.group().newHost; }
+  topic.value = record;
+  loadedKey.value = route.params.key;
+  loader.value = new TopicLoader(record);
+  loadContent(routeTopicParams());
+  // Record-store queries track their dependencies; scroll state stays outside
+  // the tracked query so scrolling cannot retrigger collection updates.
+  stopCollectionWatch = watch(
+    () => loader.value.updateCollection(),
+    () => nextTick(scrollToAnchorIfNew),
+    { immediate: true }
+  );
+  setAnchorFromRoute();
+  publishTitle();
+  const generation = pageGeneration;
+  nextTick(() => {
+    if (pageGeneration !== generation) return;
+    if (anchorSelector.value) scrollToAnchorIfPresent();
+    else window.scrollTo({top: 0, behavior: 'instant'});
+  });
+}
+
+function publishTitle() {
+  EventBus.$emit('currentComponent', {
+    focusHeading: false,
+    page: 'topicPage',
+    topic: topic.value,
+    group: topic.value.group(),
+    title: topic.value.topicable().title
+  });
+}
 
 function initialFetchParams() {
   const remoteTopicParams = {...routeTopicParams(), include_polls_not_closed: 1};
@@ -154,9 +208,12 @@ function initialFetchParams() {
     };
   }
 
+  const poll = route.path.startsWith('/p/') ? Records.polls.findByKey(route.params.key) : null;
+  const embeddedOrUnknownPoll = route.path.startsWith('/p/') && (!poll || poll.id !== poll.topic().topicableId || poll.topic().topicableType !== 'Poll');
   return {
     ...remoteTopicParams,
-    unread_or_newest: 1,
+    // The server resolves an embedded poll's position when its key is used.
+    ...(embeddedOrUnknownPoll ? {unread_or_newest: 1} : {order_by: 'sequence_id'}),
     limit: padding
   };
 }
@@ -165,62 +222,36 @@ function fetchInitialContent() {
   if (!hasRouteKey()) { return; }
 
   const key = route.params.key;
+  const generation = pageGeneration;
+  const routeLocation = JSON.stringify([route.path, route.params, route.query]);
   const params = initialFetchParams();
+  const initialLoader = loader.value;
+  const initialRules = initialLoader ? initialLoader.rules.filter(rule => rule.remote) : null;
 
   return Records.topicItems.fetch({ params }).then(data => {
-    if (route.params.key !== key) { return; }
+    if (pageGeneration !== generation || route.params.key !== key) { return; }
+    if (JSON.stringify([route.path, route.params, route.query]) !== routeLocation) return;
 
     const topicId = (data.topics || [])[0]?.id || (data.topic_items || [])[0]?.topic_id;
     const t = Records.topics.find(topicId);
     if (!t) { return; }
 
-    if (t.group() && t.group().newHost) { window.location.host = t.group().newHost; }
-    topic.value = t;
-    loadedKey.value = route.params.key;
-    loader.value = new TopicLoader(t);
-
-    loadContent(routeTopicParams());
-    loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
+    if (!topic.value) displayTopic(t);
+    if (route.path.startsWith('/p/') && !focusSelector.value) {
+      loadContent(routeTopicParams());
+      setAnchorFromRoute();
+      nextTick(scrollToAnchorIfNew);
+    }
+    const satisfiedRules = initialRules || loader.value.rules.filter(rule => rule.remote);
+    // An unknown poll can resolve to a root poll. Its unread/newest response
+    // does not satisfy the oldest window used for an ordinary thread open.
+    loader.value.fetchedRules.push(...satisfiedRules.filter(rule => !params.unread_or_newest || rule.name !== 'oldest').map(rule => JSON.stringify(rule.remote)));
     loader.value.isFirstLoad = false;
     loader.value.updateCollection();
-    setAnchorFromRoute();
-
-    EventBus.$emit('currentComponent', {
-      focusHeading: false,
-      page: 'topicPage',
-      topic: topic.value,
-      group: topic.value.group(),
-      title: topic.value.topicable().title
-    });
-
-    let scrolledToUnread = false;
-    stopCollectionUpdates();
-    // Rebuild the collection whenever the records it reads change; the
-    // callback is untracked so anchor and scroll state don't retrigger it.
-    stopCollectionWatch = watch(
-      () => loader.value.updateCollection(),
-      () => {
-        if (!scrolledToUnread && !anchorSelector.value && !focusSelector.value && loader.value.lastReadAt) {
-          const firstUnread = loader.value.firstUnreadSequenceId();
-          if (firstUnread) {
-            anchorSelector.value = `.sequenceId-${firstUnread}`;
-          } else {
-            const lastEvent = Records.topicItems.collection.chain()
-              .find({ topicId: topic.value.id })
-              .simplesort('positionKey', true)
-              .limit(1)
-              .data()[0];
-            if (lastEvent) anchorSelector.value = `.positionKey-${lastEvent.positionKey}`;
-          }
-          scrolledToUnread = true;
-        }
-        nextTick(() => scrollToAnchorIfNew());
-      },
-      { immediate: true }
-    );
-
-    nextTick(() => scrollToAnchorIfPresent());
+    publishTitle();
+    if (params.unread_or_newest && !focusSelector.value) return refreshLoader();
   }).catch(error => {
+    if (pageGeneration !== generation) return;
     if (error.status) {
       EventBus.$emit('pageError', error);
       if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
@@ -228,6 +259,44 @@ function fetchInitialContent() {
       console.error(error);
     }
   });
+}
+
+function refreshLoader() {
+  const currentLoader = loader.value;
+  return currentLoader.fetch().then(() => {
+    if (loader.value === currentLoader) currentLoader.updateCollection();
+  }).catch(error => {
+    if (loader.value === currentLoader && error.status) EventBus.$emit('pageError', error);
+  });
+}
+
+async function jumpToLatest() {
+  if (jumping.value) return;
+  const currentLoader = loader.value;
+  jumping.value = true;
+  cancelSettledScroll();
+  focusSelector.value = null;
+  anchorSelector.value = null;
+  currentLoader.addLoadNewestRule();
+  currentLoader.updateCollection();
+  const target = `.sequenceId-${currentLoader.topic.lastSequenceId()}`;
+  const cached = Records.topicItems.find({topicId: currentLoader.topic.id, sequenceId: currentLoader.topic.lastSequenceId()}).length > 0;
+  try {
+    if (cached) {
+      await nextTick();
+      if (loader.value !== currentLoader) return;
+      ScrollService.scrollTo(target);
+    }
+    await currentLoader.fetch();
+    if (loader.value !== currentLoader) return;
+    currentLoader.updateCollection();
+    await nextTick();
+    if (!cached) ScrollService.scrollTo(target);
+  } catch (error) {
+    if (loader.value === currentLoader && error.status) EventBus.$emit('pageError', error);
+  } finally {
+    if (loader.value === currentLoader) jumping.value = false;
+  }
 }
 
 function loadContent(remoteTopicParams = null) {
@@ -274,7 +343,7 @@ function loadContent(remoteTopicParams = null) {
     return;
   }
 
-  loader.value.addLoadUnreadOrNewestRule(remoteTopicParams);
+  loader.value.addLoadOldestRule(remoteTopicParams);
 }
 
 function respondToRoute() {
@@ -284,7 +353,8 @@ function respondToRoute() {
   setAnchorFromRoute();
 
   scrollToAnchorIfPresent();
-  loader.value.fetch();
+  loader.value.updateCollection();
+  refreshLoader();
 }
 
 function setAnchorFromRoute() {
@@ -305,6 +375,7 @@ function scrollToAnchorIfPresent() {
   } else if (document.querySelector(anchorSelector.value)) {
     ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
   }
+  lastAnchorSelector.value = anchorSelector.value;
 }
 
 function scrollToAnchorIfNew() {
@@ -330,13 +401,31 @@ function shouldSettleAnchorScroll() {
 <template lang="pug">
 .topic-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3#topic-page(v-if="topic")
+    v-container.max-width-800.px-0.px-sm-3.pb-0.pb-md-4#topic-page(v-if="topic")
       plan-banner(v-if="topic.groupId" :group="topic.group()")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       tag-filter-toolbar(v-if="route.query.tag" :tag="route.query.tag" :group="topic.group()")
-      v-sheet.topic-card.mb-8.pb-4.rounded-lg
+      v-sheet.topic-card.mb-0.mb-md-8.pb-4.rounded-lg
         tagged-items(v-if="route.query.tag" :key="topic.id" :topic="topic" :loader="loader" :tag="route.query.tag")
-        topic-list.pr-1.pr-sm-3.px-sm-2(v-else :loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+        template(v-else)
+          .topic-page__cached-context.sequenceId-0.pa-3#context(v-if="!loader.collection.length")
+            topic-header(:topicable="topic.topicable()" :show-tags="false")
+            body-preview(:state="loader.bodyPreview(0)" :focused="focusSelector === '.sequenceId-0'")
+              formatted-text(:model="topic.topicable()" :field="topic.topicableType === 'Discussion' ? 'description' : 'details'")
+            attachment-list(:attachments="topic.topicable().attachments")
+          topic-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         topic-actions-panel(:topic="topic")
+    .topic-page__latest.lmo-no-print(v-if="showLatest")
+      v-btn(rounded color="info" :prepend-icon="mdiArrowDown" :loading="jumping" @click="jumpToLatest") {{ t('strand_nav.latest') }}
   topic-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
 </template>
+
+<style>
+.topic-page__latest {
+  position: fixed;
+  bottom: calc(var(--v-layout-bottom, 0px) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+</style>

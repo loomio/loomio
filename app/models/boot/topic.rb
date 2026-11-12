@@ -32,6 +32,8 @@ module Boot
         result.merge(sequence_id_gte: [sequence_id - 12, 0].max, order: 'sequence_id')
       elsif comment_id != 0
         result.merge(comment_id: comment_id, order: 'sequence_id')
+      elsif @topicable.is_a?(::Discussion)
+        result.merge(order_by: 'sequence_id')
       else
         result.merge(unread_or_newest: 1)
       end

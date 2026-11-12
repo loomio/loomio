@@ -1,6 +1,7 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
+import { trackRead } from '@/shared/services/loading_state';
 import { takeInitialResponse } from '@/shared/services/initial_data';
 import AppConfig from '@/shared/services/app_config';
 
@@ -24,6 +25,7 @@ export default class RestfulClient {
     this.defaultParams.topic_reader_token = new URLSearchParams(location.search).get('topic_reader_token');
     this.defaultParams = omitBy(this.defaultParams, isNil);
     this.processing = [];
+    this.pendingGets = new Map();
     if (resourcePlural) { this.resourcePlural = snakeCase(resourcePlural); }
   }
 
@@ -95,10 +97,25 @@ export default class RestfulClient {
     }
     const initial = takeInitialResponse(this.buildUrl(path), params);
     if (initial) return Promise.resolve(initial).then(this.onSuccess);
-    return this.request(this.buildUrl(path, params), 'GET');
+
+    const url = new URL(this.buildUrl(path, params), window.location.origin);
+    url.searchParams.sort();
+    const key = url.pathname + url.search;
+    if (this.pendingGets.has(key)) return this.pendingGets.get(key);
+
+    // Boot prefetch and navigation share only in-flight reads. A later visit
+    // still refreshes; completed responses live in the record store, not here.
+    const request = this.request(key, 'GET').finally(() => this.pendingGets.delete(key));
+    this.pendingGets.set(key, request);
+    return request;
   }
 
-  async request(path, method, body = {}) {
+  request(path, method, body = {}) {
+    const request = this.performRequest(path, method, body);
+    return method === 'GET' ? trackRead(request) : request;
+  }
+
+  async performRequest(path, method, body) {
     const opts = {
       method,
       credentials: 'same-origin',
