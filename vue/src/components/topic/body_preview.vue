@@ -91,19 +91,14 @@ async function revealSelection(range) {
 }
 </script>
 
-<template>
-  <div class="body-preview" :class="{'body-preview--folded': folded}">
-    <div ref="viewport" class="body-preview__viewport" @scroll="revealScrolledContent">
-      <div ref="content" class="body-preview__content" tabindex="-1" @focusin="revealFocusedContent">
-        <slot />
-      </div>
-    </div>
-    <div v-if="folded && overflowing" class="body-preview__controls d-flex justify-center">
-      <v-btn class="body-preview__show-more text-none" variant="text" :append-icon="mdiChevronDown" @click="showMore">
-        {{ t('common.action.show_more') }}
-      </v-btn>
-    </div>
-  </div>
+<template lang="pug">
+.body-preview(:class="{'body-preview--folded': folded}")
+  .body-preview__viewport(ref="viewport" @scroll="revealScrolledContent")
+    .body-preview__content(ref="content" tabindex="-1" @focusin="revealFocusedContent")
+      slot
+  .body-preview__controls.d-flex.justify-center(v-if="folded && overflowing")
+    v-btn.body-preview__show-more.text-none(variant="text" :append-icon="mdiChevronDown" @click="showMore")
+      | {{ t('common.action.show_more') }}
 </template>
 
 <style>
