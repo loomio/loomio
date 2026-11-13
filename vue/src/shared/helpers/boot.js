@@ -10,7 +10,16 @@ export default function(callback) {
   (bootData ? Promise.resolve(bootData) : client.get('site')).then(function(appConfig) {
     merge(AppConfig, appConfig)
 
-    AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Some browsers report Etc/Unknown. Validate the detected zone before
+    // date formatting and profile autodetection use it.
+    try {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+      new Intl.DateTimeFormat(undefined, {timeZone});
+      AppConfig.timeZone = timeZone;
+    } catch (error) {
+      if (!(error instanceof RangeError)) { throw error; }
+      AppConfig.timeZone = 'UTC';
+    }
 
     forEach(Records, function(recordInterface, k) {
       const model = recordInterface.model
