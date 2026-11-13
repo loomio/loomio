@@ -9,6 +9,7 @@ import { I18n } from '@/i18n';
 import {pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 import RestfulClient from '@/shared/record_store/restful_client';
 import { passkeyPlatformName } from '@/shared/helpers/passkey_name.mjs';
+import * as Sentry from '@sentry/vue';
 
 const passkeys = new RestfulClient('passkey_credentials');
 
@@ -150,7 +151,12 @@ export default new class AuthService {
       return data;
     }
     , data => {
-      return user.errors = data.errors;
+      user.errors = data.errors || {};
+      if (!data.networkError && (!data.restfulClientError || data.status >= 500)) {
+        Sentry.captureException(data);
+      }
+      if (!Object.keys(user.errors).length) { Flash.custom(data.toString()); }
+      return user.errors;
     });
   }
 

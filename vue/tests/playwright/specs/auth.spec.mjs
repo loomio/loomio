@@ -167,6 +167,56 @@ test.describe('completing an account', () => {
 });
 
 test.describe('signing up', () => {
+  for (const [failure, respond, message] of [
+    ['a server failure', route => route.fulfill({status: 503, contentType: 'text/html', body: 'Service unavailable'}),
+      'Error: HTTP 503: Service Unavailable'],
+    ['a network failure', route => route.abort('failed'), 'TypeError: Failed to fetch'],
+    ['rate limiting', route => route.fulfill({status: 429, json: {error: 'Too many signup attempts', errors: {}}}),
+      'Error: HTTP 429: Too many signup attempts'],
+    ['a server error containing markup', route => route.fulfill({status: 500, json: {error: '<b>Registration unavailable</b>'}}),
+      'Error: HTTP 500: <b>Registration unavailable</b>'],
+  ]) {
+    test(`can retry signup after ${failure}`, async ({ page, flash }) => {
+      await page.goto('/dev/setup_dashboard_as_visitor');
+      await page.route('**/api/v1/registrations*', respond, {times: 1});
+      await page.locator('.auth-form__create-account').click();
+      const form = page.locator('.auth-signup-form');
+      const address = form.locator('.auth-signup-form__email input');
+      const submit = form.locator('.auth-signup-form__submit');
+      await address.fill('signup-retry@example.com');
+      await submit.click();
+
+      await expect(flash).toContainText(message);
+      await expect(address).toHaveValue('signup-retry@example.com');
+      await expect(submit).toBeEnabled();
+      await expect(authComplete(page)).toHaveCount(0);
+      await expect(accountCompletion(page)).toHaveCount(0);
+
+      await submit.click();
+      await expect(authComplete(page)).toContainText("We've sent an email to signup-retry@example.com");
+      await expect(accountCompletion(page)).toHaveCount(0);
+    });
+  }
+
+  test('can correct an address rejected during signup', async ({ page }) => {
+    await page.goto('/dev/setup_dashboard_as_visitor');
+    await page.route('**/api/v1/registrations*', route => route.fulfill({
+      status: 422, json: {errors: {email: ['Please use a different email address']}}
+    }), {times: 1});
+    await page.locator('.auth-form__create-account').click();
+    const form = page.locator('.auth-signup-form');
+    const address = form.locator('.auth-signup-form__email input');
+    const submit = form.locator('.auth-signup-form__submit');
+    await address.fill('rejected@example.com');
+    await submit.click();
+
+    await expect(form.locator('.lmo-validation-error__message')).toContainText('Please use a different email address');
+    await expect(authComplete(page)).toHaveCount(0);
+    await address.fill('corrected@example.com');
+    await submit.click();
+    await expect(authComplete(page)).toContainText("We've sent an email to corrected@example.com");
+  });
+
   test('from the dashboard', async ({ page, flash }) => {
     await page.goto('/dev/setup_dashboard_as_visitor');
     await signUp(page, 'max_von_sydow@example.com');
