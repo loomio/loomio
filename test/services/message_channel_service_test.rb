@@ -1,6 +1,26 @@
 require 'test_helper'
 
 class MessageChannelServiceTest < ActiveSupport::TestCase
+  test "shared and personal thread updates carry the same complete subscription data" do
+    discussion = discussions(:discussion)
+    subscription = Subscription.for!(discussion.group)
+    subscription.update!(plan: "pro", max_members: 50, max_threads: 100, allow_guests: false)
+    publications = {}
+    broadcast = ->(channel, payload) { publications[channel] = payload.fetch(:records).as_json }
+
+    ActionCable.server.stub(:broadcast, broadcast) do
+      MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: users(:user).id)
+    end
+
+    shared = publications.fetch("group_#{discussion.group_id}").fetch(:groups).find { |group| group[:id] == discussion.group_id }
+    personal = publications.fetch("user_#{users(:user).id}").fetch(:groups).find { |group| group[:id] == discussion.group_id }
+    assert_equal personal.fetch(:subscription), shared.fetch(:subscription)
+    assert_equal "pro", shared.dig(:subscription, :plan)
+    assert_equal 50, shared.dig(:subscription, :max_members)
+    assert_equal 100, shared.dig(:subscription, :max_threads)
+    assert_equal false, shared.dig(:subscription, :allow_guests)
+  end
+
   test "user-scoped serialization is not reused for shared channels" do
     topic = topics(:discussion_topic)
     user = users(:user)

@@ -84,38 +84,20 @@ class GroupSerializer < ApplicationSerializer
     cache_fetch(:groups_by_id, object.parent_id) { object.parent }
   end
 
-  # Everyone who can see the group gets the raw subscription state, so the
-  # client can tell whether the group is enabled. The plan and its limits are
-  # for the organisation's members and server admins.
+  # Send the same group-wide subscription fields to every viewer and shared
+  # channel, so realtime updates cannot replace them with a partial object.
   def subscription
     sub = subscription_record
-    status = {state: sub.state, expires_at: sub.expires_at}
-    return status unless subscription_details_visible?
-
-    status.merge(
+    {
+      state:           sub.state,
+      expires_at:      sub.expires_at,
       max_members:     sub.max_members,
       max_threads:     sub.max_threads,
       allow_subgroups: sub.allow_subgroups,
       allow_guests:    sub.allow_guests,
       plan:            sub.plan,
-      renews_at:       sub.renews_at,
       members_count:   sub.members_count
-    )
-  end
-
-  def subscription_details_visible?
-    return false unless scope[:current_user_id]
-    unless scope.key?(:subscription_viewer_is_admin)
-      scope[:subscription_viewer_is_admin] = User.where(id: scope[:current_user_id], is_admin: true).exists?
-    end
-    return true if scope[:subscription_viewer_is_admin]
-
-    # A membership anywhere in an organisation permits its subscription view.
-    # Share this set across all groups and nested parent serializers in a response.
-    scope[:subscription_visible_org_ids] ||= Membership.active.joins(:group)
-      .where(user_id: scope[:current_user_id])
-      .pluck(Arel.sql('COALESCE(groups.parent_id, groups.id)')).to_set
-    scope[:subscription_visible_org_ids].include?(object.parent_id || object.id)
+    }
   end
 
   def subscription_record

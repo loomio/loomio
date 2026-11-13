@@ -71,7 +71,7 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     assert_includes all_ids, @subgroup.id
   end
 
-  test "show returns only the subscription state of a public group when logged out" do
+  test "show returns the complete subscription field set of a public group when logged out" do
     get :show, params: { id: @public_group.id }, format: :json
 
     assert_response :success
@@ -79,17 +79,17 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     group_data = json['groups'].find { |group| group['id'] == @public_group.id }
 
     assert_not_nil group_data
-    assert_equal %w[expires_at state], group_data['subscription'].keys.sort
+    assert_equal %w[allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
   end
 
-  test "show returns only the subscription state of a public group to a logged in nonmember" do
+  test "show returns the complete subscription field set of a public group to a logged in nonmember" do
     sign_in @alien
 
     get :show, params: { id: @public_group.id }, format: :json
 
     assert_response :success
     group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
-    assert_equal %w[expires_at state], group_data['subscription'].keys.sort
+    assert_equal %w[allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
   end
 
   test "show returns subscription details to an organization member" do
