@@ -1,5 +1,7 @@
 class ContactMessageService
   def self.create(contact_message:, actor:)
+    raise CanCan::AccessDenied unless AppConfig.app_features[:show_contact]
+
     return contact_message unless contact_message.valid?
 
     ContactMailer.contact_message(

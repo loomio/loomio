@@ -28,6 +28,9 @@ PRIVATE_APP_URL=http://app:3000
 # email address of admin of the server for LetsEncrypt. eg: you@gmail.com
 SUPPORT_EMAIL=REPLACE_WITH_CONTACT_EMAIL
 
+# Enable the contact form. Messages are sent to SUPPORT_EMAIL.
+# FEATURES_SHOW_CONTACT=1
+
 # Web push notifications are enabled when all three VAPID settings are present.
 # create_env.sh generates one key pair for this installation.
 

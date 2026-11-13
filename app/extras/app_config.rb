@@ -228,7 +228,7 @@ class AppConfig
       explore_public_groups: ENV.fetch('FEATURES_EXPLORE_PUBLIC_GROUPS', false),
       restrict_explore_to_signed_in_users: ENV.fetch('LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS', false),
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
-      show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
+      show_contact: ENV['FEATURES_SHOW_CONTACT'].present?,
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sso_disable_edit_profile: sso_disable_edit_user_profile?,
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.05).to_f,
