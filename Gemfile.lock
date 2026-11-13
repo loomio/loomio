@@ -473,7 +473,7 @@ GEM
       rack
     pstore (0.3.0)
     public_suffix (7.0.5)
-    puma (8.0.2)
+    puma (8.0.3)
       nio4r (~> 2.0)
     pwned (2.4.1)
     raabro (1.5.0)
