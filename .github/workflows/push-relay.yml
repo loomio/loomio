@@ -1,0 +1,23 @@
+name: push relay
+on:
+  push:
+    branches: [master]
+    paths: ['push-relay/**', '.github/workflows/push-relay.yml']
+  pull_request:
+    paths: ['push-relay/**', '.github/workflows/push-relay.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: push-relay
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.9'
+      - run: bundle install
+      - run: bundle exec rake test

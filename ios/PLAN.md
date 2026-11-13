@@ -14,7 +14,7 @@ Start with one host, but model connections by host ID/origin so multi-host suppo
 - Notification links open the exact page inside the contained Loomio application. Unrelated external links open in the system browser.
 - Authenticate through an Apple system web-authentication session rather than inside `WKWebView`. This is required because Cloudflare challenges can block or loop in embedded browsers.
 - Register an unauthenticated `loomio://connect?config=...` URL for websites and QR codes to propose a host configuration. Always validate and confirm it before fetching configuration or starting authentication.
-- Build and operate a separate push relay that can serve Loomio Cloud and private hosts. The implementation is under `push-relay/`; production deployment remains pending.
+- Build and operate a separate push relay that can serve Loomio Cloud and private hosts. The Ruby/SQLite implementation and deployment instructions are under `push-relay/`. The shared relay is live for loomio.com; each additional host requires separate configuration.
 - Do not use Capacitor `server.url`; it is documented as a development/live-reload facility rather than a production remote-app architecture.
 
 ## Authentication architecture
@@ -76,7 +76,7 @@ Hide subscription purchase, upgrade, checkout, and other external-purchase calls
 5. Verify login/logout, Cloudflare handling, password AutoFill, passkeys where supported, SSO redirects, Tiptap and keyboard behaviour, polls, uploads/downloads, back navigation, ActionCable/Hocuspocus reconnection, and app background/foreground transitions.
 6. Add unit tests for URL/origin and authentication-callback policy, plus XCUITests for connection, browser login, persistence, unsafe navigation, and disconnect cleanup.
 7. Specify the device-registration, notification-event, revocation, and activity protocols after the authenticated web-container spike is sound. Complete.
-8. Build the minimum push relay, add the required Loomio host integration, then connect the native activity and notification shell to APNs and the relay. Implementation is complete; production relay deployment and APNs credentials remain.
+8. Build the minimum push relay, add the required Loomio host integration, then connect the native activity and notification shell to APNs and the relay. Implementation, relay deployment, and APNs key provisioning are complete for loomio.com. A native Settings test notification was verified on an iPhone; background activity and tap behavior remain to be checked.
 9. Add a versioned, allowlisted same-origin bridge so selected Loomio web controls can invoke native Activity, Settings, and notification actions. Complete.
 10. Test authentication replay and expiry, callback substitution, token rotation, duplicate events, retries, invalid credentials, revoked devices, host switching, notification disclosure, and APNs sandbox/production separation.
 11. Submit the smallest complete version to App Review with manual release before investing in Android, desktop, or multi-host UI.
@@ -87,12 +87,12 @@ The development machine has Xcode 26.2, Swift 6.2.3, and iOS 26.3 simulator devi
 
 ## Open decisions
 
-- Apple push notifications: provision separate production and sandbox APNs keys, deploy and configure the production relay, then verify delivery and notification links on the connected iPhone. The native registration, host integration, environment-specific signing keys, and deployment stack already exist. On 2026-10-20, the 17 iOS unit tests, 2 UI tests (including the default host choices), and 15 relay tests passed; the deployment configuration and an isolated Nginx rate-limit/client-address probe also passed. No production relay or host configuration was changed.
+- Apple push notifications: the Ruby/SQLite relay and separate production/sandbox APNs keys are deployed, and loomio.com is configured. Native Settings test delivery was confirmed on an iPhone on 2026-11-13. Verify background activity, tap destinations, revocation, and physical-device delivery in both build environments; the environment of the first phone test was not explicitly recorded.
 - Later interface idea: hide the mobile title bar while scrolling down, and reveal it when scrolling up or while data is loading. Keep content position stable during these transitions.
 
 - Final production bundle identifier/client ID and callback scheme replacing the provisional values in the v1 mobile-auth specification.
 - Cloudflare rules for the mobile-auth endpoints and how equivalent controls are documented for private hosts using other edge providers.
-- Production relay origin, hosting platform, ownership, monitoring, and operating budget. The current implementation is a separate Node service backed by PostgreSQL.
+- Ongoing relay monitoring, ownership, and operating budget. The implementation is a standalone Ruby Rack service backed by SQLite; operator procedures are in `push-relay/deploy/README.md`.
 - Offline caching policy for native recent activity beyond the current in-memory, paginated implementation.
 - APNs key ownership and production secret provisioning. Sandbox/production routing, transient retry, permanent-token cleanup, and bounded relay metadata retention are implemented.
 - Which authentication/SSO origins a connected host may authorize.

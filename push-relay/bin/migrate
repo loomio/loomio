@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require_relative "../lib/push_relay/config"
+require_relative "../lib/push_relay/database"
+File.umask(0o077)
+database = PushRelay::Database.open(PushRelay::Config.required(ENV, "LOOMIO_DATABASE_PATH"))
+begin
+  PushRelay::Database.migrate(database)
+  puts "Relay database migrations applied"
+ensure
+  database.close
+end

@@ -1,8 +1,8 @@
-node_modules
+.bundle
 .env
 .env.*
 *.p8
 test
 .git
-npm-debug.log*
 deploy
+storage

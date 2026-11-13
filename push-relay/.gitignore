@@ -1,5 +1,7 @@
-node_modules/
+.bundle/
 .env
 *.p8
 deploy/.env
 deploy/secrets/
+deploy/storage/
+storage/

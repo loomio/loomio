@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require_relative "../lib/push_relay/config"
+require_relative "../lib/push_relay/backup"
+File.umask(0o077)
+abort "Usage: bin/backup DESTINATION.sqlite3" unless ARGV.size == 1
+PushRelay::Backup.create(PushRelay::Config.required(ENV, "LOOMIO_DATABASE_PATH"), ARGV.fetch(0))
+puts "Relay database backup verified"

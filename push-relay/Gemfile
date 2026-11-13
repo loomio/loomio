@@ -1,0 +1,11 @@
+source "https://rubygems.org"
+
+ruby ">= 3.4"
+gem "rack", "~> 3.2"
+gem "puma", "~> 8.0"
+gem "sqlite3", "~> 2.8"
+gem "httpx", "~> 1.6"
+gem "jwt", "~> 3.3"
+gem "net-http", "~> 0.9"
+gem "rake", "~> 13.4"
+gem "minitest", "~> 6.0", group: :test
