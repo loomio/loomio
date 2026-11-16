@@ -39,6 +39,7 @@ class Views::Admin::Layout < Views::Admin::Base
       link_to "Dashboard", admin_root_path
       link_to "Groups", admin_groups_path
       link_to "Users", admin_users_path
+      link_to "Spam rules", admin_spam_rules_path
       link_to "Subscriptions", admin_subscriptions_path if Object.const_defined?("LoomioSubs")
       link_to "Jobs", "/admin/jobs"
     end

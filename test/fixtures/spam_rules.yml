@@ -1,0 +1,4 @@
+legacy_regex:
+  kind: regex
+  pattern: '(diide\.com|gusronk\.com)'
+  reason: Existing default spam rule

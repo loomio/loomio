@@ -8,6 +8,7 @@ module Api::User0::AuthenticatesApiKey
 
   def authenticate_api_key!
     raise CanCan::AccessDenied unless current_user
+    SpamRules.authorize_email!(current_user.email, action: 'access')
   end
 
   def current_user

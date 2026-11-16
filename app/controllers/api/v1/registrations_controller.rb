@@ -11,6 +11,7 @@ class Api::V1::RegistrationsController < ApplicationController
       return
     end
 
+    SpamRules.authorize_email!(registration_email, action: 'signup')
     result = RegistrationService.create(email: registration_email, email_control_proved: @registration_proof.present?)
     user = result.user
 

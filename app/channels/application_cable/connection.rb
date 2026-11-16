@@ -10,6 +10,7 @@ module ApplicationCable
 
     def find_verified_user
       if (user = user_from_session_cookie)&.active?
+        reject_unauthorized_connection if SpamRules.blocked?(user.email, target: :email, action: 'access')
         user
       else
         reject_unauthorized_connection

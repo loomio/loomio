@@ -1,4 +1,5 @@
 class Api::V1::SnorlaxBase < ActionController::Base
+  rescue_from(SpamRules::Denied) { respond_with_error(403, I18n.t('errors.403.title')) }
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_access_denied e }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(Subscription::MaxThreadsExceeded)        { respond_with_thread_limit_reached }

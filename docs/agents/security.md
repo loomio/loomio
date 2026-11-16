@@ -10,3 +10,10 @@
 - Use and curate the reusable access-control fixture matrix rooted at `topics(:discussion_topic)` and `topics(:direct_topic)`. Its named roles represent current members, topic guests, members of `alien_group`, non-guest readers, revoked access, inactive users, and conflicting account/membership/topic preferences. Extend the fixture matrix whenever a new access boundary or preference source is introduced; do not replace matrix coverage with isolated ad hoc records.
 - Review session security when changing authentication or authorization: session creation, rotation, expiry, revocation, logout, impersonation, CSRF protection, token scope, cookie flags, and cleanup of dependent session records.
 - Prefer defense in depth at storage and shared serialization boundaries. Avoid relying only on UI hiding, closing-time mutation, or one controller guard to protect sensitive data.
+
+## Spam rules
+
+- `SpamRule` is the persistent authority for bans. `SPAM_REGEX` is imported once by the migration; runtime matching must use `SpamRules`, including account/content validation and outgoing mail.
+- IP bans cover signed-out and signed-in app requests. Resolve client addresses through the existing Cloudflare-aware resolver and do not trust a client-supplied `CF-Connecting-IP` header without a trusted proxy. The orchestrator health probe remains available.
+- Preserve email enforcement at browser sign-in, existing browser sessions, user API keys, mobile credentials, new Cable connections, invitation resolution and final mail delivery. A ban must not bypass credential-proof checks or mobile refresh-token replay detection.
+- Activity retains minute totals by rule and action, without storing attempted addresses, IPs or content. Record rejected operations after their domain transaction rolls back, using the original match time, and do not count admin dry runs.

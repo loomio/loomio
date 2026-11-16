@@ -22,6 +22,7 @@ class Mobile::AuthenticationService
 
   class << self
     def issue_authorization_code!(user:, client:, redirect_uri:, code_challenge:)
+      SpamRules.authorize_email!(user.email, action: 'sign_in')
       raise ArgumentError, "unregistered redirect URI" unless client.redirect_uri_valid?(redirect_uri)
 
       raw = random_token("lm_ac_")
@@ -45,6 +46,7 @@ class Mobile::AuthenticationService
         invalid_grant! unless authorization&.usable?
         invalid_grant! unless authorization.client_id == client_id && authorization.redirect_uri == redirect_uri
         invalid_grant! unless secure_match?(authorization.code_challenge, pkce_challenge(code_verifier))
+        SpamRules.authorize_email!(authorization.user.email, action: 'sign_in')
 
         authorization.update!(used_at: Time.current)
         device = MobileDevice.create!(
@@ -74,6 +76,7 @@ class Mobile::AuthenticationService
         end
 
         invalid_grant! unless token.usable?
+        SpamRules.authorize_email!(token.mobile_device.user.email, action: 'sign_in')
 
         token.update!(consumed_at: Time.current)
         issue_token_pair!(device: token.mobile_device, parent: token, absolute_expires_at: token.expires_at)
@@ -92,6 +95,7 @@ class Mobile::AuthenticationService
 
       token = MobileAccessToken.includes(mobile_device: :user).find_by(token_digest: digest(raw_token, :access_token))
       raise Error.new("invalid_token", status: :unauthorized) unless token&.usable?
+      SpamRules.authorize_email!(token.mobile_device.user.email, action: 'access')
 
       token.mobile_device.update_column(:last_seen_at, Time.current)
       token
@@ -102,6 +106,7 @@ class Mobile::AuthenticationService
       MobileWebSessionTicket.transaction do
         device.lock!
         raise Error.new("device_revoked", status: :unauthorized) unless device.active?
+        SpamRules.authorize_email!(device.user.email, action: 'access')
         device.mobile_web_session_tickets.where(consumed_at: nil).update_all(consumed_at: Time.current)
         device.mobile_web_session_tickets.create!(
           token_digest: digest(raw, :web_session_ticket),
@@ -117,6 +122,7 @@ class Mobile::AuthenticationService
           token_digest: digest(raw_ticket, :web_session_ticket)
         )
         raise Error.new("invalid_grant") unless ticket&.usable?
+        SpamRules.authorize_email!(ticket.mobile_device.user.email, action: 'sign_in')
 
         ticket.update!(consumed_at: Time.current)
         ticket.mobile_device.user

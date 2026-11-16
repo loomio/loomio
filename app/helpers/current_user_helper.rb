@@ -12,6 +12,7 @@ module CurrentUserHelper
   def sign_in(user, handle_pending: true)
     @current_user = nil
     require_active_user!(user)
+    SpamRules.authorize_email!(user.email, action: 'sign_in')
     user = UserService.verify(user: user)
     # Verification can resolve a provisional user to another verified account.
     require_active_user!(user)
@@ -35,6 +36,7 @@ module CurrentUserHelper
 
   def stage_account_completion(user, name_managed: false, authentication_method: nil)
     require_active_user!(user)
+    SpamRules.authorize_email!(user.email, action: 'sign_in')
     discard_account_completion
     AccountCompletionProof.where(expires_at: ..Time.current).delete_all
     proof = AccountCompletionProof.create!(user: user, name_managed: name_managed, expires_at: ACCOUNT_COMPLETION_TTL.from_now)
@@ -79,9 +81,7 @@ module CurrentUserHelper
   end
 
   def deny_spam_users
-    if NoSpam::SPAM_REGEX.match?(current_user.email)
-      raise SpamUserDeniedError.new(current_user.email)
-    end
+    SpamRules.authorize_email!(current_user.email, action: 'access')
   end
 
   def require_current_user

@@ -10,6 +10,7 @@ class HourlyTaskJob < ApplicationJob
     RetryPendingEmailsWorker.perform_later
     LoginToken.where("created_at <= ?", LoginToken::EXPIRATION.minutes.ago).delete_all
     Session.purge_revoked!
+    SpamRuleHit.purge_expired!
     Identity.stale(days: 7).delete_all
     Bookmark.discarded.where("discarded_at < ?", 24.hours.ago).delete_all
     GeoLocationWorker.perform_later

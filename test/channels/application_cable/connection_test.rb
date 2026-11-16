@@ -25,6 +25,18 @@ class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
     end
   end
 
+  test 'email rules deny new connections from existing member and guest sessions' do
+    %i[admin member_normal guest_normal].each do |role|
+      user = users(role)
+      cookies.signed[:session_id] = user.sessions.create!(user_agent: 'Cable test', ip_address: '127.0.0.1').id
+      rule = SpamRule.create!(kind: 'regex', pattern: "#{Regexp.escape(user.email)}\\z")
+      assert_reject_connection { connect }
+      rule.discard!
+      connect
+      assert_equal user.id, connection.current_user.id
+    end
+  end
+
   test "a plain session cookie does not authenticate a connection" do
     session_record = users(:member_normal).sessions.create!(user_agent: "Cable test", ip_address: "127.0.0.1")
     cookies[:session_id] = session_record.id

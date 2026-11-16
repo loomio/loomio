@@ -107,6 +107,7 @@ class Api::V1::SessionsController < ApplicationController
       token = LoginToken.lock.find_by(token: session[:pending_login_token])
       next unless token&.useable?
 
+      SpamRules.authorize_email!(token.user.email, action: 'sign_in')
       token.update!(used_at: Time.current)
       token.user
     end
@@ -132,6 +133,7 @@ class Api::V1::SessionsController < ApplicationController
     LoginToken.transaction do
       token = LoginToken.redeemable.lock.find_by(code: resource_params.require(:code))
       if login_token_matches?(token)
+        SpamRules.authorize_email!(token.user.email, action: 'sign_in')
         token.update!(used_at: Time.current)
         token.user
       else

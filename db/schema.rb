@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_13_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_16_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1039,6 +1039,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_000001) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "spam_rule_hits", force: :cascade do |t|
+    t.bigint "spam_rule_id", null: false
+    t.string "action", null: false
+    t.datetime "bucket_at", null: false
+    t.bigint "count", default: 0, null: false
+    t.datetime "last_matched_at", null: false
+    t.index ["bucket_at"], name: "index_spam_rule_hits_on_bucket_at"
+    t.index ["spam_rule_id", "action", "bucket_at"], name: "index_spam_rule_hits_on_spam_rule_id_and_action_and_bucket_at", unique: true
+    t.index ["spam_rule_id"], name: "index_spam_rule_hits_on_spam_rule_id"
+    t.check_constraint "count > 0", name: "spam_rule_hits_positive_count"
+  end
+
+  create_table "spam_rules", force: :cascade do |t|
+    t.string "kind", null: false
+    t.text "pattern", null: false
+    t.text "reason"
+    t.datetime "expires_at"
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.check_constraint "kind::text = ANY (ARRAY['ip'::character varying, 'email_domain'::character varying, 'regex'::character varying]::text[])", name: "spam_rules_kind"
+    t.check_constraint "length(btrim(pattern)) >= 1 AND length(btrim(pattern)) <= 4096", name: "spam_rules_pattern_length"
+  end
+
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.datetime "created_at", precision: nil
     t.integer "poll_option_id", null: false
@@ -1422,6 +1446,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_000001) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "spam_rule_hits", "spam_rules", on_delete: :cascade
   add_foreign_key "stance_choices", "poll_options", on_delete: :cascade
   add_foreign_key "stance_choices", "stances", on_delete: :cascade
   add_foreign_key "stances", "polls"
