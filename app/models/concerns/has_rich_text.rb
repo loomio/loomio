@@ -95,8 +95,8 @@ module HasRichText
   end
 
   included do
-    has_many_attached :files, dependent: :detach
-    has_many_attached :image_files, dependent: :detach
+    has_many_attached :files, dependent: :purge_later
+    has_many_attached :image_files, dependent: :purge_later
     has_many :tasks, as: :record, dependent: :destroy
     before_save :update_content_locale
     before_save :build_attachments

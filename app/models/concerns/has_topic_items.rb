@@ -3,6 +3,8 @@ module HasTopicItems
 
   included do
     after_update { TagService.refresh_topic_tags_for_visibility(self) }
+    # Timeline deletion alone does not destroy its comments or their files.
+    has_many :child_comments, as: :parent, class_name: 'Comment', dependent: :destroy
     has_many :topic_items, -> { includes :user, :itemable }, as: :itemable, dependent: :destroy
     has_one :created_topic_item, ->(itemable) { where(kind: itemable.created_topic_item_kind).order(:id) },
             as: :itemable, class_name: "TopicItem"
