@@ -141,8 +141,8 @@ class Group < ApplicationRecord
   delegate :include?, to: :users, prefix: true
   delegate :members, to: :parent, prefix: true
 
-  has_one_attached :cover_photo, dependent: :detach
-  has_one_attached :logo, dependent: :detach
+  has_one_attached :cover_photo, dependent: :purge_later
+  has_one_attached :logo, dependent: :purge_later
 
   has_paper_trail only: [:name,
                          :parent_id,
