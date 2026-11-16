@@ -156,7 +156,7 @@ pl:
       title: Nieautoryzowane
     new_account_trial_group_limit: Nowe konta są ograniczone do jednej grupy. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej.
     direct_thread_anonymous_poll: Wątku zawierającego anonimową ankietę nie można przekształcić w wątek bezpośredni
-    invitation_rate_limit_reached_contact_support: Osiągnięto dzienny limit zaproszeń. Skontaktuj się z pomocą techniczną natychmiast.
+    invitation_rate_limit_reached_contact_support: "Osiągnięto limit zaproszeń. Skontaktuj się z pomocą techniczną."
     subscription_thread_limit_reached: Ta organizacja osiągnęła limit wątków. Zaktualizuj, aby nadal korzystać z Loomio.
     attachments_admin_only: Tylko administratorzy wątku i grupy mogą dodawać załączniki do tego wątku
   group:

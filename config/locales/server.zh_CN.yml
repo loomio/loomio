@@ -423,7 +423,7 @@ zh_CN:
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
     new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
     direct_thread_anonymous_poll: 包含匿名投票的帖子无法转换为私人帖子
-    invitation_rate_limit_reached_contact_support: 每日邀请名额已满，请立即联系客服。
+    invitation_rate_limit_reached_contact_support: "已达到邀请上限。请联系支持团队。"
     subscription_thread_limit_reached: 此组织已达到帖子上限。请升级以继续使用 Loomio。
     attachments_admin_only: 仅帖子管理员和群组管理员可在此帖子中添加附件
   group:

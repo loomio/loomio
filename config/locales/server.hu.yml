@@ -152,7 +152,7 @@ hu:
       body: A kért elem nem található. Ez akkor fordulhat elő, ha egy beszélgetést vagy szavazást töröltek.
     new_account_trial_group_limit: Az új fiókok egy csoportra korlátozódnak. Kérjük, vegye fel a kapcsolatot az ügyfélszolgálattal, ha többre van szüksége.
     direct_thread_anonymous_poll: Egy névtelen szavazást tartalmazó szál nem alakítható át közvetlen szállá.
-    invitation_rate_limit_reached_contact_support: Elérte a napi meghívók korlátját. Azonnal vegye fel a kapcsolatot az ügyfélszolgálattal.
+    invitation_rate_limit_reached_contact_support: "Elérte a meghívási korlátot. Lépjen kapcsolatba az ügyfélszolgálattal."
     subscription_thread_limit_reached: Ez a szervezet elérte a hozzászólásláncok maximális számát. Kérjük, frissítsen a Loomio további használatához.
     attachments_admin_only: Csak a szál és a csoport adminjai adhatnak mellékletet ehhez a szálhoz
   group:

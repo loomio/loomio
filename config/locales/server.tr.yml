@@ -152,7 +152,7 @@ tr:
       body: İstediğiniz öğe bulunamadı. Bu durum, bir tartışma veya anket silindiğinde ortaya çıkabilir.
     new_account_trial_group_limit: Yeni hesaplar yalnızca bir grupla sınırlıdır. Daha fazla gruba ihtiyacınız varsa lütfen destek ekibiyle iletişime geçin.
     direct_thread_anonymous_poll: Anonim anket içeren bir konu, doğrudan bir konuya dönüştürülemez.
-    invitation_rate_limit_reached_contact_support: Günlük davet limiti doldu. Lütfen hemen destek ekibiyle iletişime geçin.
+    invitation_rate_limit_reached_contact_support: "Davet sınırına ulaşıldı. Destek ekibiyle iletişime geçin."
     subscription_thread_limit_reached: Bu kuruluş konu sınırına ulaştı. Loomio'yu kullanmaya devam etmek için lütfen planınızı yükseltin.
     attachments_admin_only: Bu ileti dizisine yalnızca ileti dizisi yöneticileri ve grup yöneticileri ek ekleyebilir
   group:
