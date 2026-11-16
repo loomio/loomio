@@ -6,6 +6,8 @@ Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
 require_relative '../lib/test_database_url'
+require_relative '../lib/spam_rules_middleware'
+require_relative '../lib/spam_mail_interceptor'
 
 def lmo_asset_host(path = nil)
   parts = []
@@ -30,6 +32,7 @@ module Loomio
     config.load_defaults 6.0
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
+    config.middleware.use SpamRulesMiddleware
     config.active_job.queue_adapter = :solid_queue
     config.mission_control.jobs.http_basic_auth_enabled = false
 

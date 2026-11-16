@@ -1,0 +1,36 @@
+import { test, expect } from '../fixtures.mjs';
+
+test('an instance admin can manage and test live spam rules', async ({ page }) => {
+  await page.goto('/dev/setup_group_super_admin');
+  await page.goto('/admin/spam_rules');
+  await expect(page.locator('.admin-main h1')).toContainText('Spam rules');
+  await expect(page.locator('.admin-main')).toContainText('existing signed-in users');
+  await page.locator('.admin-page-header a').click();
+  await page.locator('#spam_rule_kind').selectOption('email_domain');
+  await page.locator('#spam_rule_pattern').fill('blocked.example');
+  await page.locator('#spam_rule_reason').fill('Confirmed test campaign');
+  await page.locator('.admin-form [type="submit"]').click();
+  await expect(page.locator('.admin-flash')).toContainText('Spam rule added');
+  await expect(page.locator('.admin-definition-list')).toContainText('blocked.example');
+  await page.locator('.admin-page-header a').click();
+  await page.locator('#spam_rule_reason').fill('Reviewed campaign');
+  await page.locator('.admin-form [type="submit"]').click();
+  await expect(page.locator('.admin-flash')).toContainText('Spam rule updated');
+  await page.locator('.admin-main form[action$="/disable"] [type="submit"]').click();
+  await expect(page.locator('.admin-flash')).toContainText('Spam rule disabled');
+  await page.locator('.admin-main form[action$="/restore"] [type="submit"]').click();
+  await expect(page.locator('.admin-flash')).toContainText('Spam rule restored');
+  await page.locator('.admin-nav a[href="/admin/spam_rules"]').click();
+  await page.locator('#target').selectOption('email');
+  await page.locator('#value').fill('person@blocked.example');
+  await page.locator('.admin-form [type="submit"]').click();
+  await expect(page.locator('.admin-main')).toContainText('Matching active rules');
+  await expect(page.locator('.admin-main')).toContainText('blocked.example');
+  await page.locator('.admin-nav a[href="/admin/spam_rules"]').click();
+  await expect(page.locator('.admin-table tbody tr').filter({ hasText: 'blocked.example' })).toContainText('Reviewed campaign');
+  await page.screenshot({ path: test.info().outputPath('admin-spam-rules-desktop.png'), fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.admin-sidebar')).not.toBeInViewport();
+  await expect(page.locator('.admin-menu-button')).toBeVisible();
+  await page.screenshot({ path: test.info().outputPath('admin-spam-rules-mobile.png'), fullPage: true });
+});

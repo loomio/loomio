@@ -45,6 +45,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "dashboard#show"
 
+    resources :spam_rules, except: [ :destroy ] do
+      post :test_pattern, on: :collection
+      patch :disable, on: :member
+      patch :restore, on: :member
+    end
+
     resources :groups, only: %i[index show edit update] do
       collection do
         get :import

@@ -42,7 +42,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def spam?(to)
-    NoSpam::SPAM_REGEX.match?(to) || NOTIFICATIONS_EMAIL_ADDRESS == to
+    SpamRules.blocked?(Mail::Address.new(to).address, target: :email, action: 'email') || NOTIFICATIONS_EMAIL_ADDRESS == to
   end
 
   def rejected_address?(to)

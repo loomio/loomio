@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   helper_method :supported_locales
 
   rescue_from(CurrentUserHelper::InactiveUserError) { respond_with_error(401) }
+  rescue_from(SpamRules::Denied) { respond_with_error(403) }
 
   rescue_from(ActionController::UnknownFormat) do
     respond_with_error 404

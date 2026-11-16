@@ -145,8 +145,15 @@ class UserInviter
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:, include_actor: false)
+    SpamRules.with_context do
+      resolve_invitees!(emails: emails, user_ids: user_ids, audience: audience, model: model, actor: actor, include_actor: include_actor)
+    end
+  end
+
+  def self.resolve_invitees!(emails:, user_ids:, audience:, model:, actor:, include_actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).uniq.compact
+    emails = safe_emails(emails)
 
     audience_user_ids = if audience
       NotificationAudienceService.resolve(
@@ -177,10 +184,13 @@ class UserInviter
                              per: :day)
     end
 
-    users_insert_all(emails: safe_emails(emails), actor: actor)
+    users_insert_all(emails: emails, actor: actor)
 
-    User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
+    users = User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
+    blocked_ids = users.select { |user| SpamRules.blocked?(user.email, target: :email, action: 'invitation') }.map(&:id)
+    blocked_ids.empty? ? users : users.where.not(id: blocked_ids)
   end
+  private_class_method :resolve_invitees!
 
   private
 
@@ -189,7 +199,7 @@ class UserInviter
       email.present? &&
         email.length <= 200 &&
         EmailValidator::EMAIL_REGEXP.match?(email) &&
-        NoSpam::SPAM_REGEX.match?(email) == false
+        !SpamRules.blocked?(email, target: :email, action: 'invitation')
     end
   end
 

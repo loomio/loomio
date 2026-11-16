@@ -1,11 +1,11 @@
 module NoSpam
-  # eg:
-  # SPAM_REGEX="(diide\.com|gusronk\.com|appnox\.com|akxpert\.com)"
-  SPAM_REGEX = Regexp.new(ENV.fetch('SPAM_REGEX', "(diide\.com|gusronk\.com)"), 'i')
-  
   def no_spam_for(*fields)
     Array(fields).each do |field|
-      validates field, format: { without: SPAM_REGEX, message: "no spam" }
+      validate do
+        target = field == :email ? :email : :content
+        action = is_a?(User) && new_record? ? 'signup' : 'content'
+        errors.add(field, 'no spam') if SpamRules.blocked?(public_send(field), target: target, action: action)
+      end
     end
   end
 end

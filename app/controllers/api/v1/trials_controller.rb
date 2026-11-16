@@ -5,6 +5,8 @@ class Api::V1::TrialsController < Api::V1::RestfulController
       return
     end
 
+    email = current_user.is_logged_in? ? current_user.email : params[:user_email]
+    SpamRules.authorize_email!(email, action: 'signup')
     trial = Trial.new(trial_params)
 
     trial.current_user = current_user

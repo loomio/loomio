@@ -1,5 +1,9 @@
 class Api::V1::Mobile::TokensController < ActionController::API
   rescue_from Mobile::AuthenticationService::Error, with: :render_mobile_error
+  rescue_from(SpamRules::Denied) do
+    response.headers['Cache-Control'] = 'no-store'
+    render json: { error: 'access_denied', error_description: I18n.t('errors.403.title') }, status: :forbidden
+  end
 
   def create
     require_form_encoding!

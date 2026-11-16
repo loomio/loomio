@@ -15,6 +15,7 @@ class IdentityService
   #
   # @return [Identity] The linked or created identity
   def self.link_or_create(identity_params:, current_user:)
+    SpamRules.authorize_email!(identity_params[:email], action: 'sign_in')
     identity = find_or_create_identity(identity_params: identity_params, current_user: current_user)
     refresh_identity(identity, identity_params: identity_params)
 
