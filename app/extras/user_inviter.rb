@@ -1,4 +1,58 @@
 class UserInviter
+  INVITATION_KINDS = %w[
+    membership_created membership_resent new_discussion discussion_edited
+    discussion_announced poll_announced poll_edited poll_reminder
+    outcome_created outcome_updated outcome_announced
+  ].freeze
+  DEFAULT_INVITATION_LIMIT = 10
+
+  # Call inside the invitation's transaction, so concurrent requests by this
+  # actor cannot both claim the last slot. Paid groups and private sites keep
+  # their existing limits; repeated contact with the same person is allowed.
+  def self.check_invitation_limit!(actor:, user_ids:)
+    recipients = user_ids.map(&:to_i).uniq - [ actor.id ]
+    return if recipients.empty? || !AppConfig.app_features[:subscriptions] || actor.is_paying?
+
+    connection = User.connection
+    lock_sql = User.sanitize_sql_array([ "SELECT pg_advisory_xact_lock(hashtext('loomio_invitation_limit'), ?)", actor.id ])
+    connection.execute(lock_sql)
+    limit = invitation_limit(actor: actor)
+    return if limit.nil?
+
+    invited_ids = User.uncached { invited_user_ids(actor: actor) }
+    new_ids = recipients - invited_ids
+    if new_ids.any? && (invited_ids | new_ids).length > limit
+      raise ThrottleService::LimitReached
+    end
+  end
+
+  # Trial extensions also extend invitations. Subgroup members inherit their
+  # parent's allowance; multiple trials use the highest limit, not their sum.
+  # A nil member limit already means unlimited membership for that trial.
+  def self.invitation_limit(actor:)
+    group_ids = actor.groups.enabled.pluck(:id, :parent_id).flatten.compact.uniq
+    limits = Group.enabled.where(id: group_ids, parent_id: nil).joins(:subscription)
+      .where(subscriptions: { plan: 'trial' }).pluck('subscriptions.max_members')
+    return if limits.include?(nil)
+
+    [ DEFAULT_INVITATION_LIMIT, *limits ].max
+  end
+  private_class_method :invitation_limit
+
+  # UNION counts each person once across access grants, electorate records and
+  # invitation notifications. Revoked rows count until they are actually deleted.
+  def self.invited_user_ids(actor:)
+    scopes = [
+      Membership.where(inviter_id: actor.id).select(:user_id),
+      TopicReader.where(inviter_id: actor.id, guest: true).select(:user_id),
+      Stance.where(inviter_id: actor.id).select(:participant_id),
+      AnonymousPollVoter.where(inviter_id: actor.id).select(:voter_id),
+      Notification.where(actor_id: actor.id, kind: INVITATION_KINDS).select('unnest(recipient_user_ids)')
+    ]
+    User.connection.select_values(scopes.map(&:to_sql).join(' UNION ')).map(&:to_i) - [ actor.id ]
+  end
+  private_class_method :invited_user_ids
+
   def self.count(emails:, user_ids:, chatbot_ids:, audience:, model:, actor:, exclude_members: false, include_actor: false)
     emails = Array(emails).map(&:presence).compact.uniq
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
@@ -177,9 +231,12 @@ class UserInviter
                              per: :day)
     end
 
-    users_insert_all(emails: safe_emails(emails), actor: actor)
-
-    User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails)
+    User.transaction do
+      users_insert_all(emails: safe_emails(emails), actor: actor)
+      users = User.active.where("id in (:ids) or email in (:emails)", ids: ids, emails: emails).load
+      check_invitation_limit!(actor: actor, user_ids: users.map(&:id))
+      users
+    end
   end
 
   private

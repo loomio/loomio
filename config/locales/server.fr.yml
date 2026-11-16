@@ -155,7 +155,7 @@ fr:
       pwned_password: Ce mot de passe est déjà apparu lors d'une violation de données et ne doit jamais être utilisé
     new_account_trial_group_limit: Les nouveaux comptes sont limités à un seul groupe. Contactez l'assistance si vous avez besoin de plusieurs comptes.
     direct_thread_anonymous_poll: Un fil de discussion contenant un sondage anonyme ne peut pas être converti en fil de discussion direct.
-    invitation_rate_limit_reached_contact_support: Limite d'invitations quotidienne atteinte. Veuillez contacter l'assistance immédiatement.
+    invitation_rate_limit_reached_contact_support: "Limite d’invitations atteinte. Contactez l’assistance."
     subscription_thread_limit_reached: Cette organisation a atteint sa limite de discussions. Passez à une offre supérieure pour continuer à utiliser Loomio.
     attachments_admin_only: Seuls les administrateurs du fil et du groupe peuvent ajouter des pièces jointes à ce fil
   group:

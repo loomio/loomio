@@ -155,7 +155,7 @@ de:
       pwned_password: Dieses Passwort ist bereits bei einem Datenverstoß aufgetaucht und sollte niemals verwendet werden
     new_account_trial_group_limit: Neue Konten sind auf eine Gruppe beschränkt. Bitte kontaktiere den Support, falls du weitere Konten benötigst.
     direct_thread_anonymous_poll: Ein Thread mit einer anonymen Abstimmung kann nicht in einen direkten Thread umgewandelt werden
-    invitation_rate_limit_reached_contact_support: Das tägliche Einladungslimit ist erreicht. Bitte kontaktieren Sie umgehend den Support.
+    invitation_rate_limit_reached_contact_support: "Einladungslimit erreicht. Wenden Sie sich an den Support."
     subscription_thread_limit_reached: Diese Organisation hat ihr Diskussionslimit erreicht. Bitte aktualisiere deinen Tarif, um Loomio weiterhin zu nutzen.
     attachments_admin_only: Nur Thread-Admins und Gruppen-Admins können diesem Thread Anhänge hinzufügen
   group:

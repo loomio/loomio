@@ -152,7 +152,7 @@ da:
       body: Det element, du anmodede om, blev ikke fundet. Dette kan ske, hvis en diskussion eller afstemning er blevet slettet.
     new_account_trial_group_limit: Nye konti er begrænset til én gruppe. Kontakt venligst support, hvis du har brug for flere.
     direct_thread_anonymous_poll: En tråd, der indeholder en anonym afstemning, kan ikke konverteres til en direkte tråd
-    invitation_rate_limit_reached_contact_support: Daglig invitationsgrænse er nået. Kontakt support med det samme.
+    invitation_rate_limit_reached_contact_support: "Invitationsgrænsen er nået. Kontakt support."
     subscription_thread_limit_reached: Denne organisation har nået sin trådgrænse. Opgrader venligst for at fortsætte med at bruge Loomio.
     attachments_admin_only: Kun trådadministratorer og gruppeadministratorer kan vedhæfte filer i denne tråd
   group:

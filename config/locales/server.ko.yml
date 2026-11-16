@@ -315,7 +315,7 @@ ko:
       pwned_password: 이 비밀번호는 과거에 유출된 적이 있으므로 사용하면 안 됩니다
     attachments_admin_only: 스레드 관리자와 그룹 관리자만 이 스레드에 첨부 파일을 추가할 수 있습니다
     item_you_are_replying_to_deleted: 답글을 달려는 항목이 삭제되었습니다
-    invitation_rate_limit_reached_contact_support: 일일 초대 한도에 도달했습니다. 즉시 고객 지원팀에 문의하세요.
+    invitation_rate_limit_reached_contact_support: "초대 한도에 도달했습니다. 지원팀에 문의하세요."
     subscription_thread_limit_reached: 이 조직의 스레드 수가 한도에 도달했습니다. Loomio를 계속 사용하려면 업그레이드하세요.
     new_account_trial_group_limit: 새 계정은 그룹을 하나만 만들 수 있습니다. 더 필요하면 고객 지원팀에 문의하세요.
     clear_cache: 불러오는 중 문제가 발생했습니다. Shift 키를 누른 채 새로고침하거나 브라우저 캐시를 지우세요.

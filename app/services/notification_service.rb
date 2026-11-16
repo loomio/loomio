@@ -31,11 +31,23 @@ class NotificationService
     router = NotificationDeliveryRouter.for(notification)
     locale = actor&.locale || I18n.default_locale
     notification.translation_values = router.translated_values(locale: locale)
-    notification.save!
+    save_with_invitation_limit!(notification)
 
     RouteNotificationDeliveriesWorker.perform_later(notification.id)
     notification
   end
+
+  def self.save_with_invitation_limit!(notification)
+    unless notification.actor && UserInviter::INVITATION_KINDS.include?(notification.kind)
+      return notification.save!
+    end
+
+    Notification.transaction do
+      UserInviter.check_invitation_limit!(actor: notification.actor, user_ids: notification.recipient_user_ids)
+      notification.save!
+    end
+  end
+  private_class_method :save_with_invitation_limit!
 
   def self.mark_as_read(itemable_type, itemable_id, actor_id)
     deliveries = NotificationDelivery

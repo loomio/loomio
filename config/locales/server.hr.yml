@@ -152,7 +152,7 @@ hr:
       body: Stavka koju ste tražili nije pronađena. To se može dogoditi ako je rasprava ili anketa izbrisana.
     new_account_trial_group_limit: Novi računi su ograničeni na jednu grupu. Obratite se podršci ako vam ih treba više.
     direct_thread_anonymous_poll: Nit koja sadrži anonimnu anketu ne može se pretvoriti u izravnu nit
-    invitation_rate_limit_reached_contact_support: Dosegnut je dnevni limit pozivnica. Odmah se obratite podršci.
+    invitation_rate_limit_reached_contact_support: "Dosegnuto je ograničenje pozivnica. Obratite se podršci."
     subscription_thread_limit_reached: Ova je organizacija dosegla ograničenje broja niti. Molimo vas da nadogradite kako biste nastavili koristiti Loomio.
     attachments_admin_only: Samo admini niti i admini grupe mogu dodavati privitke ovoj niti
   group:

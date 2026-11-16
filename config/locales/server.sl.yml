@@ -152,7 +152,7 @@ sl:
       body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila razprava ali anketa izbrisana.
     new_account_trial_group_limit: Novi računi so omejeni na eno skupino. Če jih potrebujete več, se obrnite na podporo.
     direct_thread_anonymous_poll: Niti, ki vsebuje anonimno anketo, ni mogoče pretvoriti v neposredno nit
-    invitation_rate_limit_reached_contact_support: Dosežena je dnevna omejitev povabil. Takoj se obrnite na podporo.
+    invitation_rate_limit_reached_contact_support: "Dosežena je omejitev povabil. Obrnite se na podporo."
     subscription_thread_limit_reached: Ta organizacija je dosegla omejitev števila niti. Prosimo, nadgradite, če želite še naprej uporabljati Loomio.
     attachments_admin_only: Priloge v to nit lahko dodajajo le skrbniki niti in skrbniki skupine
   group:
