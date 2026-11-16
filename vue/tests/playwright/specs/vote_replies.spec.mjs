@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures.mjs';
 import { pollAction, submitVote, voteOption } from '../helpers/polls.mjs';
 import { editor } from '../helpers/editor.mjs';
-import { postComment, replyForm, thread } from '../helpers/threads.mjs';
+import { comment, postComment, replyForm, thread } from '../helpers/threads.mjs';
 
 const scenario = hideResults =>
   `/dev/polls/test_poll_scenario?scenario=poll_vote_conversation&poll_type=proposal&hide_results=${hideResults}`;
@@ -18,7 +18,7 @@ test('poll comments stay visible before voting and after removing the vote', asy
   await expectConversation(page);
   await replyToVote(page).click();
   await postComment(page, 'A reply before voting', replyForm(page));
-  await expect(thread(page)).toContainText('A reply before voting');
+  await expect(comment(page, 'A reply before voting')).toBeVisible();
 
   await voteOption(page, 'agree').click();
   await submitVote(page);
@@ -26,15 +26,15 @@ test('poll comments stay visible before voting and after removing the vote', asy
   await expect(page.locator('.poll-common-stance-created__reason')).toContainText('A vote ready for conversation');
   await replyToVote(page).click();
   await postComment(page, 'A reply after voting', replyForm(page));
-  await expect(thread(page)).toContainText('A reply after voting');
+  await expect(comment(page, 'A reply after voting')).toBeVisible();
   await page.reload();
-  await expect(thread(page)).toContainText('A reply after voting');
+  await expect(comment(page, 'A reply after voting')).toBeVisible();
 
   await pollAction(page, 'uncast_stance');
   await page.locator('.confirm-modal__submit').click();
   await expect(flash).toContainText('Vote removed');
   await expectConversation(page);
-  await expect(thread(page)).toContainText('A reply after voting');
+  await expect(comment(page, 'A reply after voting')).toBeVisible();
 });
 
 test('with results hidden until closing, comments stay visible but vote replies and mentions wait', async ({ page }) => {
