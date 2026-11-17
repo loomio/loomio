@@ -56,7 +56,7 @@
     "@tiptap/extension-text-style": "3.33.1",
     "@tiptap/extension-underline": "3.33.1",
     "@tiptap/extensions": "3.33.1",
-    "@tiptap/markdown": "3.33.1",
+    "@tiptap/markdown": "3.34.0",
     "@tiptap/pm": "3.33.1",
     "@tiptap/suggestion": "3.33.1",
     "@tiptap/vue-3": "3.33.1",
