@@ -5,3 +5,5 @@ deploy/.env
 deploy/secrets/
 deploy/storage/
 storage/
+
+!migrations/*.sql

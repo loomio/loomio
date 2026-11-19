@@ -7,33 +7,70 @@ class RepositoryTest < RelayTest
     refute_includes row.fetch("apns_token_ciphertext"), "a" * 64
     refute_includes row.fetch("delivery_key_ciphertext"), DELIVERY_KEY
     assert_equal registration, @repository.find_registration(ID)
-    updated = registration.merge(host_origin: "https://second.example", delivery_key: "c" * 43)
+    updated = registration.merge(apns_token: "c" * 64, delivery_key: "c" * 43)
     @repository.upsert_registration(**updated)
     assert_equal updated, @repository.find_registration(ID)
     assert_equal 0o600, File.stat(@path).mode & 0o777
     assert_equal "wal", @database.get_first_value("PRAGMA journal_mode")
   end
 
-  def test_replaces_only_same_environment_and_token_and_cascades_old_state
+  def test_replaces_only_same_host_environment_and_token_and_cascades_old_state
     register
     production = registration(id: SecureRandom.uuid, environment: "production")
     other_token = registration(id: SecureRandom.uuid, token: "c" * 64)
-    [production, other_token].each { |value| @repository.upsert_registration(**value) }
+    other_host = registration(id: SecureRandom.uuid).merge(host_origin: "https://second.example")
+    [production, other_token, other_host].each { |value| @repository.upsert_registration(**value) }
     @repository.claim_nonce(ID, "nonce", @time + 600)
     @repository.claim_event(ID, EVENT_ID)
     replacement = registration(id: SecureRandom.uuid)
     @repository.upsert_registration(**replacement)
     assert_nil @repository.find_registration(ID)
-    [replacement, production, other_token].each { |value| assert_equal value, @repository.find_registration(value[:id]) }
+    [replacement, production, other_token, other_host].each { |value| assert_equal value, @repository.find_registration(value[:id]) }
     %w[relay_nonces relay_events].each { |table| assert_equal 0, @database.get_first_value("SELECT count(*) FROM #{table}") }
   end
 
   def test_failed_replacement_rolls_back_deletion
     register
+    @repository.claim_nonce(ID, "retained", @time + 600)
+    @database.execute("CREATE TRIGGER reject_replacement BEFORE INSERT ON relay_registrations BEGIN SELECT RAISE(ABORT, 'forced failure'); END")
     assert_raises(SQLite3::ConstraintException) do
-      @repository.upsert_registration(**registration(id: SecureRandom.uuid).merge(host_origin: nil))
+      @repository.upsert_registration(**registration(id: SecureRandom.uuid))
     end
+    refute @repository.claim_nonce(ID, "retained", @time + 600)
     assert_equal registration, @repository.find_registration(ID)
+  end
+
+  def test_another_host_cannot_take_over_a_registration_uuid
+    register
+    error = assert_raises(PushRelay::Error) do
+      @repository.upsert_registration(**registration.merge(host_origin: "https://second.example"))
+    end
+    assert_equal 409, error.status
+    assert_equal registration, @repository.find_registration(ID)
+  end
+
+  def test_existing_database_migrates_without_losing_credentials_or_delivery_state
+    old_path = File.join(@directory, "old.sqlite3")
+    old_database = PushRelay::Database.open(old_path)
+    old_database.execute_batch(File.read(File.expand_path("../migrations/001_initial.sql", __dir__)))
+    old_database.execute("CREATE TABLE schema_migrations (filename TEXT PRIMARY KEY NOT NULL) STRICT")
+    old_database.execute("INSERT INTO schema_migrations VALUES ('001_initial.sql')")
+    old_repository = PushRelay::Repository.new(old_database, @key, clock: -> { @time })
+    old_repository.upsert_registration(**registration)
+    old_repository.claim_nonce(ID, "retained", @time + 600)
+    old_repository.claim_event(ID, EVENT_ID)
+    PushRelay::Database.migrate(old_database)
+    other_host = registration(id: SecureRandom.uuid).merge(host_origin: "https://second.example")
+    old_repository.upsert_registration(**other_host)
+    assert_equal registration, old_repository.find_registration(ID)
+    assert_equal other_host, old_repository.find_registration(other_host[:id])
+    refute old_repository.claim_nonce(ID, "retained", @time + 600)
+    refute old_repository.claim_event(ID, EVENT_ID)
+    assert_equal "ok", old_database.get_first_value("PRAGMA integrity_check")
+    PushRelay::Database.migrate(old_database)
+    assert_equal 2, old_database.get_first_value("SELECT count(*) FROM relay_registrations")
+  ensure
+    old_repository&.close
   end
 
   def test_reclaims_failed_and_abandoned_events_but_never_delivered_events

@@ -7,8 +7,20 @@ final class PushNotificationManager: ObservableObject {
 
     @Published private(set) var deviceToken: String?
     @Published private(set) var authorizationStatus = UNAuthorizationStatus.notDetermined
+    @Published private(set) var activatedRegistrationID: UUID?
     @Published private(set) var activationCount = 0
     @Published private(set) var deliveryCount = 0
+    @Published private var registrationSignals: [UUID: Int] = [:]
+
+    func notificationSignal(for registrationID: UUID?) -> Int {
+        guard let registrationID else { return 0 }
+        return registrationSignals[registrationID, default: 0]
+    }
+
+    private func recordSignal(registrationID: String?) {
+        guard let value = registrationID, let id = UUID(uuidString: value) else { return }
+        registrationSignals[id, default: 0] += 1
+    }
 
     var apnsEnvironment: String {
         #if DEBUG
@@ -33,11 +45,14 @@ final class PushNotificationManager: ObservableObject {
         deviceToken = data.map { String(format: "%02x", $0) }.joined()
     }
 
-    func receivedNotificationResponse() {
+    func receivedNotificationResponse(registrationID: String?) {
+        activatedRegistrationID = registrationID.flatMap(UUID.init(uuidString:))
+        recordSignal(registrationID: registrationID)
         activationCount += 1
     }
 
-    func receivedNotification() {
+    func receivedNotification(registrationID: String?) {
+        recordSignal(registrationID: registrationID)
         deliveryCount += 1
     }
 }
@@ -59,7 +74,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification
     ) async -> UNNotificationPresentationOptions {
-        await MainActor.run { PushNotificationManager.shared.receivedNotification() }
+        let registrationID = notification.request.content.userInfo["registration_id"] as? String
+        await MainActor.run { PushNotificationManager.shared.receivedNotification(registrationID: registrationID) }
         return [.banner, .badge, .sound]
     }
 
@@ -67,7 +83,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        await MainActor.run { PushNotificationManager.shared.receivedNotificationResponse() }
+        let registrationID = response.notification.request.content.userInfo["registration_id"] as? String
+        await MainActor.run { PushNotificationManager.shared.receivedNotificationResponse(registrationID: registrationID) }
     }
 }
 

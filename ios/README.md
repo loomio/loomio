@@ -1,8 +1,16 @@
 # Loomio for iOS
 
-A native SwiftUI companion for a user-selected Loomio host. The existing Loomio web application runs in an isolated `WKWebView`; native code provides connection, activity, notification, privacy, and device controls.
+A native SwiftUI companion that stays connected to several Loomio servers at once. Each server’s existing Loomio web application runs in its own isolated `WKWebView`; native code provides connection, activity, notification, privacy, and device controls.
 
 The connection screen offers **loomio.com**, **loomio.eu**, and **loomio.nz**, plus a custom host address. Each choice shows the exact HTTPS origin for confirmation before sign-in; loomio.com connects to its application origin, `https://www.loomio.com`.
+
+## Connecting to multiple servers
+
+Connect to your first server, then use the server menu at the top of the app to **Add a Loomio server** or switch between connected servers. Adding another server keeps your existing connections and open pages. Each server has its own sign-in and notification registration; one account per server is supported.
+
+The native **Activity** button shows recent activity from all connected servers, with each item labelled by its server. Opening an item switches to that server. Notification taps also open the server that sent them; a notification whose registration is no longer connected opens the combined activity list.
+
+**Settings** and **Send test notification** apply to the selected server. Disconnecting removes that server’s connection and local data while leaving the others connected. Existing installations keep their previous connection when upgrading.
 
 ## Development
 
@@ -22,7 +30,7 @@ Run the current unit and UI suite with an installed iOS 26 simulator:
 xcodebuild -project LoomioMobile.xcodeproj -scheme LoomioMobile -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-The current implementation includes strict HTTPS host validation, `loomio://` connection links, system-browser PKCE authentication, Keychain credential storage, one-time WebView session bootstrap, selected-host persistence, same-origin web navigation, external-link routing, native recent activity, host-scoped disconnect cleanup, APNs registration, a generic notification payload, and a versioned web-to-native action bridge.
+The current implementation includes strict HTTPS host validation, `loomio://` connection links, system-browser PKCE authentication, Keychain credential storage, one-time WebView session bootstrap, server-list and selection persistence, same-origin web navigation, external-link routing, native recent activity, host-scoped disconnect cleanup, APNs registration, a generic notification payload, and a versioned web-to-native action bridge.
 
 The implementation contract for system-browser login, native device credentials, and safe WebView session bootstrapping is in [`docs/MOBILE_AUTH_PROTOCOL.md`](docs/MOBILE_AUTH_PROTOCOL.md).
 
@@ -30,7 +38,7 @@ The relay protocol and deployment boundary are documented in [`docs/PUSH_RELAY_P
 
 ## TestFlight
 
-The name shown on the phone is **Loomio**, bundle ID `org.loomio.mobile`, version `0.1.0`, build `1`. The App Store Connect record is temporarily named **Loomio Mobile** while Apple investigates availability of the **Loomio** listing name. Use the existing [app record 6823402785](https://appstoreconnect.apple.com/apps/6823402785) for uploads under the **Loomio Limited** team (`ZGWX579DKV`); changing the listing name does not require a new record or bundle ID. `APP_DISPLAY_NAME` in `Config/App.xcconfig` sets the phone's display name; the internal product and project names remain unchanged. The app requires iOS 26 or later. The shared `LoomioMobile` scheme archives using the Release configuration, which requires HTTPS hosts and uses the production APNs environment.
+The name shown on the phone is **Loomio**, bundle ID `org.loomio.mobile`, version `0.1.0`, build `2`. The App Store Connect record is temporarily named **Loomio Mobile** while Apple investigates availability of the **Loomio** listing name. Use the existing [app record 6823402785](https://appstoreconnect.apple.com/apps/6823402785) for uploads under the **Loomio Limited** team (`ZGWX579DKV`); changing the listing name does not require a new record or bundle ID. `APP_DISPLAY_NAME` in `Config/App.xcconfig` sets the phone's display name; the internal product and project names remain unchanged. The app requires iOS 26 or later. The shared `LoomioMobile` scheme archives using the Release configuration, which requires HTTPS hosts and uses the production APNs environment.
 
 ### Apple account setup
 
@@ -67,6 +75,6 @@ TestFlight installation does not configure the push relay. Push testing also nee
 2. Deploy the [push relay stack](../push-relay/deploy/README.md), verify HTTPS and request limits, and arrange private backups for the database and encryption/signing keys. Configure `PUSH_RELAY_URL` on each participating Loomio host only after the relay is ready.
 3. Connect the app, allow notifications, and send a test from native Settings. Verify a background notification and its tap destination. Repeat with a Debug installation (Sandbox) and TestFlight (Production), and on each supported Loomio host.
 
-The host defaults and environment-specific relay key support are implemented and tested. Production relay deployment, Apple key provisioning, and physical-device delivery verification remain pending.
+The host defaults and environment-specific relay key support are implemented. Relay deployment and device delivery checks are separate from building the app; verify each connected server and both APNs environments.
 
 Apple's [app record instructions](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app/), [build upload guide](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/), and [internal testing guide](https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-testers/) describe the account-side steps.

@@ -1,5 +1,6 @@
 require_relative "crypto"
 require_relative "database"
+require_relative "error"
 
 module PushRelay
   class Repository
@@ -16,9 +17,12 @@ module PushRelay
       values = [id, host_origin, Crypto.encrypt(apns_token, @encryption_key), token_digest,
         Crypto.encrypt(delivery_key, @encryption_key), environment, @clock.call, @clock.call]
       @mutex.synchronize do
-        # Replacement and insert must commit together; a failed insert retains the old device.
+        # A phone may register with several hosts. Replacement and insert stay atomic
+        # within one host, and another host cannot take over a known registration UUID.
         @database.transaction(:immediate) do
-          @database.execute("DELETE FROM relay_registrations WHERE environment = ? AND apns_token_digest = ? AND id <> ?", [environment, token_digest, id])
+          owner = @database.get_first_value("SELECT host_origin FROM relay_registrations WHERE id = ?", [id])
+          raise Error.new(409, "registration_conflict") if owner && owner != host_origin
+          @database.execute("DELETE FROM relay_registrations WHERE host_origin = ? AND environment = ? AND apns_token_digest = ? AND id <> ?", [host_origin, environment, token_digest, id])
           @database.execute(<<~SQL, values)
             INSERT INTO relay_registrations
               (id, host_origin, apns_token_ciphertext, apns_token_digest, delivery_key_ciphertext, environment, created_at, updated_at)

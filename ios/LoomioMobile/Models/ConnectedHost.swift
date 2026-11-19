@@ -3,10 +3,12 @@ import Foundation
 struct ConnectedHost: Codable, Equatable, Identifiable, Sendable {
     let id: UUID
     let origin: URL
+    let usesLegacyDataStore: Bool
 
     init(id: UUID = UUID(), origin: URL) throws {
         self.id = id
         self.origin = try HostOriginValidator.canonicalOrigin(from: origin)
+        usesLegacyDataStore = false
     }
 
     init(id: UUID = UUID(), input: String) throws {
@@ -14,6 +16,15 @@ struct ConnectedHost: Codable, Equatable, Identifiable, Sendable {
             throw HostOriginError.invalidURL
         }
         try self.init(id: id, origin: url)
+    }
+
+    private enum CodingKeys: String, CodingKey { case id, origin, usesLegacyDataStore }
+
+    init(from decoder: any Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(UUID.self, forKey: .id)
+        origin = try HostOriginValidator.canonicalOrigin(from: values.decode(URL.self, forKey: .origin))
+        usesLegacyDataStore = try values.decodeIfPresent(Bool.self, forKey: .usesLegacyDataStore) ?? true
     }
 
     var displayName: String { origin.host() ?? origin.absoluteString }

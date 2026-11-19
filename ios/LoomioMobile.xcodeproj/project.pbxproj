@@ -26,6 +26,7 @@
 		A10000000000000000000017 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000017 /* KeychainCredentialStore.swift */; };
 		A10000000000000000000018 /* MobileAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000018 /* MobileAuthenticationService.swift */; };
 		A1000000000000000000001A /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001A /* PushNotificationManager.swift */; };
+		A1000000000000000000001C /* ConnectionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1000000000000000000001C /* ConnectionStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		B10000000000000000000019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1000000000000000000001A /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B1000000000000000000001B /* LoomioMobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoomioMobile.entitlements; sourceTree = "<group>"; };
+		B1000000000000000000001C /* ConnectionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				B1000000000000000000000D /* HostOriginValidatorTests.swift */,
 				B1000000000000000000000E /* NavigationPolicyTests.swift */,
+				B1000000000000000000001C /* ConnectionStoreTests.swift */,
 			);
 			path = LoomioMobileTests;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				A1000000000000000000000D /* HostOriginValidatorTests.swift in Sources */,
 				A1000000000000000000000E /* NavigationPolicyTests.swift in Sources */,
+				A1000000000000000000001C /* ConnectionStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

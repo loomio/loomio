@@ -9,6 +9,31 @@ class AppTest < RelayTest
     assert_equal registration, @repository.find_registration(ID)
   end
 
+  def test_one_phone_can_receive_from_two_hosts_and_disconnect_them_independently
+    first = request("POST", "/v1/registrations", body: JSON.generate(registration_body))
+    second_id = SecureRandom.uuid
+    second_key = "c" * 43
+    @verifier.response = { "registration_id" => second_id, "delivery_key" => second_key }
+    second = request("POST", "/v1/registrations", body: JSON.generate(registration_body(host_origin: "https://second.example")))
+    assert_equal 201, first.status
+    assert_equal 201, second.status
+    assert_equal 202, signed_request.status
+    assert_equal 202, signed_request("POST", "/v1/registrations/#{second_id}/events", key: second_key).status
+    assert_equal 401, signed_request("DELETE", "/v1/registrations/#{second_id}", body: "{}").status
+    assert_equal [ID, second_id], @apns.calls.map { |record, _event| record.fetch(:id) }
+    assert_equal 200, signed_request("DELETE", "/v1/registrations/#{ID}", body: "{}").status
+    assert_nil @repository.find_registration(ID)
+    assert @repository.find_registration(second_id)
+    assert_equal 202, signed_request("POST", "/v1/registrations/#{second_id}/events", body: JSON.generate(event_id: SecureRandom.uuid, kind: "notification"), key: second_key).status
+  end
+
+  def test_verified_host_cannot_overwrite_another_hosts_registration
+    register
+    response = request("POST", "/v1/registrations", body: JSON.generate(registration_body(host_origin: "https://second.example")))
+    assert_equal 409, response.status
+    assert_equal registration, @repository.find_registration(ID)
+  end
+
   def test_invalid_or_failed_verification_never_creates_a_registration
     @verifier.response = { "registration_id" => ID, "delivery_key" => DELIVERY_KEY, "unexpected" => true }
     assert_equal 502, request("POST", "/v1/registrations", body: JSON.generate(registration_body)).status

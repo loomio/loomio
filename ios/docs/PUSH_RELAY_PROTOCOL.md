@@ -14,7 +14,7 @@ The relay validates the HTTPS origin, blocks private/reserved destinations, pins
 
 The relay application limits registration attempts to 30 requests per minute per client IP and signed registration routes to 300 requests per minute per client IP, with bursts of 10 and 50 additional requests respectively. Events and deletions share the signed-route budget, including failed authentication attempts. Excess requests receive HTTP `429` with `Retry-After`; health checks are exempt. Counters are local to each relay process and reset on restart. See the [relay configuration](../../push-relay/README.md) for memory bounds and proxy trust settings.
 
-The host returns only a random registration UUID and a random per-device delivery key. The authorization is consumed atomically. Registration is idempotent by registration UUID, and a rotated APNs token replaces the previous APNs identity.
+The host returns only a random registration UUID and a random per-device delivery key. The authorization is consumed atomically. Registration is idempotent by registration UUID, and a rotated APNs token replaces the previous APNs identity. A phone can register the same APNs token with several host origins at once. Replacing a registration with the same token only affects the same host origin and APNs environment; other hosts remain registered. An existing registration UUID cannot be reassigned to another host origin; conflicting claims return HTTP `409`.
 
 ## Authenticated delivery
 

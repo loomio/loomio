@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 @MainActor
-final class MobileAuthenticationService: NSObject, ASWebAuthenticationPresentationContextProviding {
+final class MobileAuthenticationService: NSObject, MobileAuthenticationProviding, ASWebAuthenticationPresentationContextProviding {
     static let shared = MobileAuthenticationService()
 
     private static let clientID = "org.loomio.mobile.ios"
@@ -89,7 +89,7 @@ final class MobileAuthenticationService: NSObject, ASWebAuthenticationPresentati
         environment: String,
         accessToken: String,
         configuration: MobileHostConfiguration
-    ) async throws {
+    ) async throws -> UUID {
         var authorizationRequest = URLRequest(url: configuration.relayAuthorizationEndpoint)
         authorizationRequest.httpMethod = "POST"
         authorizationRequest.httpBody = Data("{}".utf8)
@@ -112,7 +112,7 @@ final class MobileAuthenticationService: NSObject, ASWebAuthenticationPresentati
         relayRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         relayRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         relayRequest.timeoutInterval = 20
-        _ = try await decode(RelayRegistrationResponse.self, request: relayRequest)
+        return try await decode(RelayRegistrationResponse.self, request: relayRequest).registrationID
     }
 
     func sendTestPush(accessToken: String, configuration: MobileHostConfiguration) async throws {

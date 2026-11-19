@@ -39,7 +39,7 @@ extension EnvironmentValues {
 }
 
 struct LoomioWebView: View {
-    @EnvironmentObject private var connectionStore: ConnectionStore
+    @EnvironmentObject private var connection: HostConnection
     @Environment(\.nativeBridgeAction) private var nativeBridgeAction
     @StateObject private var state = WebViewState()
     let notificationSignal: Int
@@ -49,16 +49,17 @@ struct LoomioWebView: View {
     }
 
     var body: some View {
-        if let host = connectionStore.connectedHost {
+        let host = connection.host
+        return Group {
             ZStack {
                 WebContainer(
                     host: host,
-                    bootstrap: connectionStore.webSessionBootstrap,
-                    destination: connectionStore.webDestination,
+                    bootstrap: connection.webSessionBootstrap,
+                    destination: connection.webDestination,
                     notificationSignal: notificationSignal,
                     state: state,
-                    didStartBootstrap: connectionStore.consumeWebSessionBootstrap,
-                    didStartDestination: connectionStore.consumeWebDestination,
+                    didStartBootstrap: connection.consumeWebSessionBootstrap,
+                    didStartDestination: connection.consumeWebDestination,
                     nativeBridgeAction: nativeBridgeAction
                 )
                     .ignoresSafeArea(edges: .bottom)
@@ -112,7 +113,7 @@ private struct WebContainer: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         let configuration = WKWebViewConfiguration()
-        configuration.websiteDataStore = .default()
+        configuration.websiteDataStore = HostDataCleaner.websiteDataStore(for: host)
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
         configuration.preferences.isElementFullscreenEnabled = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
@@ -137,6 +138,7 @@ private struct WebContainer: UIViewRepresentable {
         ]
         state.webView = webView
         if let bootstrap {
+            context.coordinator.isBootstrapping = true
             var request = URLRequest(url: bootstrap.endpoint)
             request.httpMethod = "POST"
             request.httpBody = formBody(ticket: bootstrap.ticket)
@@ -150,6 +152,9 @@ private struct WebContainer: UIViewRepresentable {
     }
 
     static func dismantleUIView(_ webView: WKWebView, coordinator: Coordinator) {
+        webView.stopLoading()
+        webView.navigationDelegate = nil
+        webView.uiDelegate = nil
         webView.configuration.userContentController.removeScriptMessageHandler(
             forName: Coordinator.bridgeName,
             contentWorld: .page
@@ -158,7 +163,9 @@ private struct WebContainer: UIViewRepresentable {
 
     func updateUIView(_ webView: WKWebView, context: Context) {
         if bootstrap == nil, let destination {
-            if webView.url != destination {
+            if context.coordinator.isBootstrapping {
+                context.coordinator.pendingDestination = destination
+            } else if webView.url != destination {
                 webView.load(URLRequest(url: destination))
             }
             Task { @MainActor in didStartDestination() }
@@ -180,6 +187,8 @@ private struct WebContainer: UIViewRepresentable {
         private let state: WebViewState
         private let nativeBridgeAction: @MainActor (NativeBridgeAction) async -> NativeBridgeResponse
         private var lastNotificationSignal = 0
+        var isBootstrapping = false
+        var pendingDestination: URL?
 
         init(
             host: ConnectedHost,
@@ -225,6 +234,11 @@ private struct WebContainer: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation?) {
+            isBootstrapping = false
+            if let destination = pendingDestination {
+                pendingDestination = nil
+                webView.load(URLRequest(url: destination))
+            }
             webView.scrollView.refreshControl?.endRefreshing()
             state.errorMessage = nil
             state.update(from: webView)

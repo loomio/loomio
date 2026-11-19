@@ -13,7 +13,7 @@ struct RootView: View {
             }
         }
         .onOpenURL { connectionStore.handleIncomingURL($0) }
-        .task(id: connectionStore.connectedHost?.id) {
+        .task(id: connectionStore.connections.map(\.id)) {
             guard connectionStore.connectedHost != nil else { return }
             await pushNotifications.activate()
             if let token = pushNotifications.deviceToken {
@@ -32,9 +32,22 @@ struct RootView: View {
                 )
             }
         }
-        .sheet(item: $connectionStore.connectionProposal) { proposal in
-            ConnectionProposalView(proposal: proposal)
-                .interactiveDismissDisabled(connectionStore.isConnecting)
+        .onChange(of: pushNotifications.activationCount, initial: true) { _, count in
+            guard count > 0 else { return }
+            connectionStore.openNotification(registrationID: pushNotifications.activatedRegistrationID)
+        }
+        .sheet(isPresented: Binding(
+            get: { connectionStore.addHostPresented || connectionStore.connectionProposal != nil },
+            set: { if !$0 { connectionStore.cancelConnectionProposal(); connectionStore.addHostPresented = false } }
+        )) {
+            Group {
+                if let proposal = connectionStore.connectionProposal {
+                    ConnectionProposalView(proposal: proposal)
+                } else {
+                    ConnectHostView()
+                }
+            }
+            .interactiveDismissDisabled(connectionStore.isConnecting)
         }
         .alert(
             "Unable to open connection link",

@@ -6,17 +6,20 @@ struct StoredDeviceCredential: Codable, Equatable, Sendable {
     let refreshToken: String
     let apnsToken: String?
     let apnsEnvironment: String?
+    let registrationID: UUID?
 
     init(
         deviceID: UUID,
         refreshToken: String,
         apnsToken: String? = nil,
-        apnsEnvironment: String? = nil
+        apnsEnvironment: String? = nil,
+        registrationID: UUID? = nil
     ) {
         self.deviceID = deviceID
         self.refreshToken = refreshToken
         self.apnsToken = apnsToken
         self.apnsEnvironment = apnsEnvironment
+        self.registrationID = registrationID
     }
 }
 

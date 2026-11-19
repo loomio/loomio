@@ -81,8 +81,8 @@ class RelayTest < Minitest::Test
       { input: body, "CONTENT_TYPE" => "application/json", "REMOTE_ADDR" => "192.0.2.1" }.merge(headers))
   end
 
-  def signed_request(method = "POST", path = "/v1/registrations/#{ID}/events", body: JSON.generate(event_id: EVENT_ID, kind: "notification"), nonce: SecureRandom.urlsafe_base64(24, false), timestamp: @time.to_i.to_s, headers: {}, app: @app)
-    signature = PushRelay::Crypto.signature(method: method, path: path, timestamp: timestamp, nonce: nonce, body: body, key: DELIVERY_KEY)
+  def signed_request(method = "POST", path = "/v1/registrations/#{ID}/events", body: JSON.generate(event_id: EVENT_ID, kind: "notification"), nonce: SecureRandom.urlsafe_base64(24, false), timestamp: @time.to_i.to_s, headers: {}, app: @app, key: DELIVERY_KEY)
+    signature = PushRelay::Crypto.signature(method: method, path: path, timestamp: timestamp, nonce: nonce, body: body, key: key)
     request(method, path, body: body, app: app, headers: {
       "HTTP_X_LOOMIO_TIMESTAMP" => timestamp, "HTTP_X_LOOMIO_NONCE" => nonce, "HTTP_X_LOOMIO_SIGNATURE" => signature
     }.merge(headers))

@@ -58,6 +58,13 @@ struct ConnectHostView: View {
 #endif
             }
             .navigationTitle("Connect to Loomio")
+            .toolbar {
+                if !connectionStore.connections.isEmpty {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") { connectionStore.addHostPresented = false }
+                    }
+                }
+            }
         }
     }
 
