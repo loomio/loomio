@@ -1,4 +1,9 @@
 module Dev::Scenarios::Discussion
+  def setup_direct_discussion_without_group
+    sign_in saved(fake_user)
+    redirect_to '/d/new'
+  end
+
   def setup_discussion_template_browse
     sign_in patrick
     redirect_to '/discussion_templates/browse'

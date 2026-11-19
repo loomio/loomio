@@ -24,12 +24,42 @@ class DiscussionAbilityContractTest < ActiveSupport::TestCase
         settings.keys.product(privacies, [false, true], [false, true]).flat_map do |setting, privacy, locked, discarded|
           cases_for(topic_name, setting, settings.fetch(setting), privacy, locked, discarded)
         end
-      end
+      end + direct_creation_cases
     end
     write_ability_contract("discussion_abilities", cases)
   end
 
   private
+
+  def direct_creation_cases
+    [false, true].flat_map do |create_user|
+      AppConfig.stub(:app_features, AppConfig.app_features.merge(create_user: create_user)) do
+        cases = (ROLES + [:server_admin]).product([false, true]).map do |role, verified|
+          user = User.find(users(role).id)
+          user.email_verified = verified
+          discussion = DiscussionService.build(params: {}, actor: user)
+          {
+            name: "#{role} direct creation signup=#{create_user} verified=#{verified}",
+            roles: role_facts(user, topics(:direct_topic)),
+            group_ids: user.group_ids,
+            create_user: create_user,
+            topic: {}, group: {},
+            discussion: {id: nil, group_id: nil},
+            expected: answers(user, discussion, [:create])
+          }
+        end
+        anonymous = LoggedOutUser.new
+        discussion = DiscussionService.build(params: {}, actor: users(:user))
+        cases << {
+          name: "signed out direct creation signup=#{create_user}",
+          roles: role_facts(anonymous, topics(:direct_topic)),
+          group_ids: [], create_user: create_user,
+          topic: {}, group: {}, discussion: {id: nil, group_id: nil},
+          expected: answers(anonymous, discussion, [:create])
+        }
+      end
+    end
+  end
 
   def cases_for(topic_name, setting, group_settings, privacy, locked, discarded)
     topic = Topic.find(topics(topic_name).id)

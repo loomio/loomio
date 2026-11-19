@@ -78,6 +78,7 @@ const isNonMemberDiscussion = computed(() => {
 });
 
 const submit = () => {
+  if (!props.discussion.id && !canStartThread.value) { return; }
   const actionName = props.discussion.id ? 'updated' : 'started';
   props.discussion.setErrors();
   form.value.resetValidation();
@@ -121,12 +122,14 @@ const titlePlaceholder = computed(() => {
 const subscriptionActive = computed(() => props.discussion.group().isEnabled());
 
 const canStartThread = computed(() => {
-  return subscriptionActive.value;
+  return DiscussionAbility.canCreate(props.discussion.group());
 });
 
 const showUpgradeMessage = computed(() => {
-  return !props.discussion.id && !canStartThread.value;
+  return !props.discussion.id && !subscriptionActive.value;
 });
+
+const canCompose = computed(() => !!props.discussion.id || (loaded.value && canStartThread.value));
 
 const isMovingItems = computed(() => {
   return props.discussion.selectedTopicItemIds.length;
@@ -224,7 +227,9 @@ v-form(ref="form" @submit.prevent="submit")
       div(v-if="showUpgradeMessage")
         p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-      .discussion-form__group-selected(v-if='!showUpgradeMessage')
+      v-alert.discussion-form__forbidden(v-if="loaded && !discussion.id && subscriptionActive && !canStartThread" type="error" variant="tonal") {{ $t('error_page.forbidden') }}
+
+      .discussion-form__group-selected(v-if="canCompose")
         v-text-field#discussion-title.discussion-form__title-input(
           :label="$t('discussion_form.title_label')"
           :placeholder="titlePlaceholder"
@@ -251,7 +256,7 @@ v-form(ref="form" @submit.prevent="submit")
             v-divider
 
         common-notify-fields(v-if="loaded && !isNonMemberDiscussion" :model="discussion" :initial-recipients="initialRecipients")
-    v-card-actions(v-if="!showUpgradeMessage")
+    v-card-actions(v-if="canCompose")
       help-btn(path='en/user_manual/discussions/starting_a_discussion')
       v-spacer
       v-btn.discussion-form__submit(

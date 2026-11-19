@@ -19,6 +19,54 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   # Count tests
+  test "direct discussion recipient previews enforce group membership when public signup is enabled" do
+    actor = users(:guest_normal)
+    assert_empty actor.group_ids
+    AppConfig.stub(:app_features, AppConfig.app_features.merge(create_user: true)) do
+      [actor, users(:user)].each do |user|
+        sign_in user
+        assert_no_difference ["Discussion.count", "Topic.count", "Notification.count"] do
+          get :search, params: {q: @admin.username}
+          assert_response user == actor ? :forbidden : :success
+
+          get :count, params: {recipient_emails_cmr: "invitee@example.com"}
+          assert_response user == actor ? :forbidden : :success
+        end
+      end
+    end
+  end
+
+  test "direct discussion recipient previews allow verified guests when public signup is disabled" do
+    actor = users(:guest_normal)
+    assert_empty actor.group_ids
+    sign_in actor
+    AppConfig.stub(:app_features, AppConfig.app_features.merge(create_user: false)) do
+      get :search, params: {q: @admin.username}
+      assert_response :success
+
+      get :count, params: {recipient_emails_cmr: "invitee@example.com"}
+      assert_response :success
+    end
+  end
+
+  test "direct discussion recipient previews require verified sign in" do
+    actor = users(:guest_normal)
+    actor.update!(email_verified: false)
+    sign_in actor
+    AppConfig.stub(:app_features, AppConfig.app_features.merge(create_user: false)) do
+      get :search, params: {q: @admin.username}
+      assert_response :forbidden
+      get :count, params: {recipient_emails_cmr: "invitee@example.com"}
+      assert_response :forbidden
+
+      sign_out actor
+      get :search, params: {q: @admin.username}
+      assert_response :unauthorized
+      get :count, params: {recipient_emails_cmr: "invitee@example.com"}
+      assert_response :unauthorized
+    end
+  end
+
   test "new discussion previews offer and expand the current group without creating a thread" do
     @group.update!(members_can_announce: true, members_can_add_members: false)
     sign_in users(:user)

@@ -1,14 +1,19 @@
 import Session from '@/shared/services/session';
+import AppConfig from '@/shared/services/app_config';
 
 // Mirrors the server's Ability::Discussion using the raw state the client
 // receives. test/contracts/discussion_ability_contract_test.rb checks these rules.
 export default {
-  // Starting a new thread in the group.
+  // Starting a new group or direct thread.
   canCreate(group) {
     const user = Session.user();
+    if (!Session.isSignedIn() || !user.emailVerified) { return false; }
+    if (group.isNullGroup) {
+      return !AppConfig.features.app.create_user || user.groupIds().length > 0;
+    }
     return group.isEnabled() && (group.adminsInclude(user) ||
       (group.membersInclude(user) && group.membersCanStartDiscussions) ||
-      (Session.isSignedIn() && user.emailVerified && !group.privacyIsSecret() &&
+      (!group.privacyIsSecret() &&
         group.nonMembersCanStartDiscussions && !group.membersInclude(user)));
   },
 

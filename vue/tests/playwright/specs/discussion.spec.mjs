@@ -12,6 +12,20 @@ const heading = page => page.locator('.context-panel__heading');
 const description = page => page.locator('.context-panel__description');
 const mentionCount = page => page.locator('.mention-notifications-count');
 
+test('a person without group membership cannot compose a direct thread', async ({ page }) => {
+  const recipientRequests = [];
+  page.on('request', request => {
+    if (request.url().includes('/api/v1/announcements/')) recipientRequests.push(request.url());
+  });
+  await page.goto('/dev/setup_direct_discussion_without_group');
+
+  await expect(page.locator('.discussion-form__forbidden')).toContainText('You do not have permission to do this');
+  await expect(page.locator('.discussion-form__title-input')).toHaveCount(0);
+  await expect(page.locator('.recipients-autocomplete')).toHaveCount(0);
+  await expect(page.locator('.discussion-form__submit')).toHaveCount(0);
+  expect(recipientRequests).toEqual([]);
+});
+
 test.describe('viewing threads', () => {
   test('a thread boots with its records when the startup API requests are unavailable', async ({ page }) => {
     const requests = await blockMainContentRequests(page);
