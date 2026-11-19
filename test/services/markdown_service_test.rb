@@ -74,40 +74,74 @@ class MarkdownServiceTest < ActiveSupport::TestCase
       <li data-type="taskItem" data-due-on="2026-08-27#{payload}">Task</li>
     HTML
 
-    VideoInfo.stub(:new, ->(_) { raise ArgumentError }) do
-      rendered = MarkdownService.render_rich_text(html, 'html')
-      fragment = Nokogiri::HTML5::DocumentFragment.parse(rendered)
+    rendered = MarkdownService.render_rich_text(html, 'html')
+    fragment = Nokogiri::HTML5::DocumentFragment.parse(rendered)
 
-      assert_empty fragment.css('img[onerror]')
-      assert_equal 1, fragment.css('img').length
-      assert_equal 3, fragment.css('a').length
-      assert_includes fragment.text, '<img src=x onerror=alert(1)>'
-      assert_includes fragment.at_css('.email-tag').text, '<img src=x onerror=alert(1)>'
-    end
+    assert_empty fragment.css('img[onerror]')
+    assert_equal 1, fragment.css('img').length
+    assert_equal 3, fragment.css('a').length
+    assert_includes fragment.text, '<img src=x onerror=alert(1)>'
+    assert_includes fragment.at_css('.email-tag').text, '<img src=x onerror=alert(1)>'
   end
 
   test "rich text media keeps links thumbnails and labels" do
-    video_info = Struct.new(:url, :thumbnail).new(
-      'https://video.test/watch?v=1&mode=full',
-      'https://video.test/thumbnail.jpg?size=large&crop=center'
-    )
     html = <<~HTML
       <video src="https://media.test/video.mp4?x=1&amp;y=2" poster="https://media.test/poster.jpg?x=1&amp;y=2"></video>
       <audio src="https://media.test/audio.mp3?x=1&amp;y=2"></audio>
-      <iframe src="https://video.test/embed/1"></iframe>
+      <iframe src="https://www.youtube.com/embed/Zlzuqsunpxc"></iframe>
     HTML
 
-    VideoInfo.stub(:new, video_info) do
-      fragment = Nokogiri::HTML5::DocumentFragment.parse(MarkdownService.render_rich_text(html, 'html'))
-      links = fragment.css('a')
+    fragment = Nokogiri::HTML5::DocumentFragment.parse(MarkdownService.render_rich_text(html, 'html'))
+    links = fragment.css('a')
 
-      assert_equal 'https://media.test/video.mp4?x=1&y=2', links[0]['href']
-      assert_equal 'https://media.test/poster.jpg?x=1&y=2', links[0].at_css('img')['src']
-      assert_includes links[0].text, I18n.t('record_modal.watch_video')
-      assert_equal 'https://media.test/audio.mp3?x=1&y=2', links[1]['href']
-      assert_includes links[1].text, I18n.t('record_modal.listen_to_audio')
-      assert_equal video_info.url, links[2]['href']
-      assert_equal video_info.thumbnail, links[2].at_css('img')['src']
+    assert_equal 'https://media.test/video.mp4?x=1&y=2', links[0]['href']
+    assert_equal 'https://media.test/poster.jpg?x=1&y=2', links[0].at_css('img')['src']
+    assert_includes links[0].text, I18n.t('record_modal.watch_video')
+    assert_equal 'https://media.test/audio.mp3?x=1&y=2', links[1]['href']
+    assert_includes links[1].text, I18n.t('record_modal.listen_to_audio')
+    assert_equal 'https://www.youtube.com/watch?v=Zlzuqsunpxc', links[2]['href']
+    assert_equal 'https://i.ytimg.com/vi/Zlzuqsunpxc/hqdefault.jpg', links[2].at_css('img')['src']
+    assert_equal I18n.t('record_modal.watch_video'), links[2].at_css('img')['alt']
+    assert_not_requested :any, /youtube\.com|ytimg\.com/
+  end
+
+  test "YouTube video URL forms render the same thumbnail without network requests" do
+    urls = [
+      'https://www.youtube.com/embed/Zlzuqsunpxc?start=30',
+      'https://www.youtube-nocookie.com/embed/Zlzuqsunpxc',
+      'https://youtu.be/Zlzuqsunpxc?t=30',
+      'https://www.youtube.com/watch?v=Zlzuqsunpxc&feature=shared',
+      'https://m.youtube.com/watch?v=Zlzuqsunpxc',
+      'https://www.youtube.com/shorts/Zlzuqsunpxc',
+      'https://www.youtube.com/live/Zlzuqsunpxc',
+      '//www.youtube.com/embed/Zlzuqsunpxc'
+    ]
+    urls.each do |url|
+      fragment = Nokogiri::HTML5.fragment(MarkdownService.replace_iframes(%(<iframe src="#{CGI.escapeHTML(url)}"></iframe>)))
+      assert_empty fragment.css('iframe')
+      assert_equal 'https://www.youtube.com/watch?v=Zlzuqsunpxc', fragment.at_css('a')['href'], url
+      assert_equal 'https://i.ytimg.com/vi/Zlzuqsunpxc/hqdefault.jpg', fragment.at_css('img')['src'], url
     end
+    assert_not_requested :any, /youtube|youtu\.be|ytimg/
+  end
+
+  test "other providers and malformed YouTube URLs retain plain links" do
+    urls = [
+      'https://player.vimeo.com/video/12345',
+      'https://www.loom.com/embed/12345',
+      'https://youtube.com.example.test/embed/Zlzuqsunpxc',
+      'https://www.youtube.com@evil.example.test/embed/Zlzuqsunpxc',
+      'https://www.youtube.com/embed/invalid',
+      'https://www.youtube.com/playlist?list=Zlzuqsunpxc',
+      'https://www.youtube.com/watch?other=Zlzuqsunpxc',
+      'not a valid URL'
+    ]
+    urls.each do |url|
+      fragment = Nokogiri::HTML5.fragment(MarkdownService.replace_iframes(%(<iframe src="#{CGI.escapeHTML(url)}"></iframe>)))
+      assert_empty fragment.css('img, iframe')
+      assert_equal url, fragment.at_css('a')['href']
+      assert_equal url, fragment.at_css('a').text
+    end
+    assert_not_requested :any, /vimeo|loom\.com|youtube|example\.test/
   end
 end

@@ -4,7 +4,7 @@ A standalone Ruby Rack service that maps pseudonymous Loomio mobile registration
 
 ## Run
 
-Requires Ruby 3.4+ and an Apple APNs token-signing key. The container uses Ruby 4.0.9.
+Requires Ruby 3.4+ and an Apple APNs token-signing key. The container uses Ruby 4.0.10.
 
 ```sh
 bundle install

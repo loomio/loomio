@@ -101,25 +101,43 @@ module MarkdownService
   def self.replace_iframes(str)
     doc = Nokogiri::HTML5::DocumentFragment.parse(str)
     doc.search("iframe[src]").each do |node|
-      begin
-        vi = VideoInfo.new(node['src'])
-        container = Nokogiri::XML::Node.new('div', doc.document)
-        link = Nokogiri::XML::Node.new('a', doc.document)
+      link = Nokogiri::XML::Node.new('a', doc.document)
+      if (id = youtube_video_id(node['src']))
+        link['href'] = "https://www.youtube.com/watch?v=#{id}"
         image = Nokogiri::XML::Node.new('img', doc.document)
-        link['href'] = vi.url.to_s
-        image['src'] = vi.thumbnail.to_s
+        image['src'] = "https://i.ytimg.com/vi/#{id}/hqdefault.jpg"
+        image['alt'] = I18n.t('record_modal.watch_video')
         link.add_child(image)
-        container.add_child(link)
-        node.replace(container)
-      rescue
-        link = Nokogiri::XML::Node.new('a', doc.document)
+      else
         link['href'] = node['src']
         link.add_child(Nokogiri::XML::Text.new(node['src'], doc.document))
-        node.replace(link)
       end
+      node.replace(link)
     end
     doc.to_s
   end
+
+  # YouTube thumbnails are determined by the video ID; rendering needs no
+  # metadata request. Exact hosts and IDs keep arbitrary URLs out of previews.
+  def self.youtube_video_id(url)
+    uri = URI.parse(url)
+    return unless uri.scheme.nil? || %w[http https].include?(uri.scheme)
+
+    id = case uri.host&.downcase
+    when 'youtu.be', 'www.youtu.be'
+      uri.path.delete_prefix('/').delete_suffix('/')
+    when 'youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'
+      if uri.path == '/watch'
+        URI.decode_www_form(uri.query.to_s).to_h['v']
+      else
+        uri.path[%r{\A/(?:embed|shorts|live|v)/([^/]+)/?\z}, 1]
+      end
+    end
+    id if /\A[a-zA-Z0-9_-]{11}\z/.match?(id.to_s)
+  rescue URI::InvalidURIError, ArgumentError
+    nil
+  end
+  private_class_method :youtube_video_id
 
   def self.replace_checkboxes(str)
     frag = Nokogiri::HTML::DocumentFragment.parse(str)

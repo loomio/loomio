@@ -94,7 +94,6 @@ GEM
     addressable (2.9.2)
       public_suffix (>= 2.0.2, < 8.0)
     android_key_attestation (0.3.0)
-    ansi (1.5.0)
     ast (2.4.3)
     aws-eventstream (1.4.1)
     aws-partitions (1.1304.0)
@@ -355,7 +354,6 @@ GEM
       prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    iso8601 (0.13.0)
     jmespath (1.6.2)
     json (2.21.2)
     jwt (3.3.0)
@@ -406,7 +404,6 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    net_http_timeout_errors (1.0.0)
     nio4r (2.7.5)
     nokogiri (1.19.7-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -424,9 +421,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.7-x86_64-linux-musl)
       racc (~> 1.4)
-    oga (3.4)
-      ast
-      ruby-ll (~> 2.1)
     openssl (4.0.2)
     openssl-signature_algorithm (1.3.0)
       openssl (> 2.0)
@@ -586,9 +580,6 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
-    ruby-ll (2.1.3)
-      ansi
-      ast
     ruby-openai (8.3.0)
       event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
@@ -664,10 +655,6 @@ GEM
     useragent (0.16.11)
     uuidtools (3.0.0)
     victor (0.5.0)
-    video_info (4.2.0)
-      iso8601 (~> 0.13.0)
-      net_http_timeout_errors (~> 1.0.0)
-      oga (~> 3.4)
     web-console (4.3.0)
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
@@ -778,7 +765,6 @@ DEPENDENCIES
   uri (= 1.1.2)
   uuidtools
   victor
-  video_info
   web-console
   web-push
   webauthn
@@ -786,7 +772,7 @@ DEPENDENCIES
   websocket-driver
 
 RUBY VERSION
-  ruby 4.0.9p0
+  ruby 4.0.10
 
 BUNDLED WITH
   4.0.14
