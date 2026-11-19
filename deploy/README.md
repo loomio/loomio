@@ -72,7 +72,6 @@ curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/env_template
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/create_env.sh
 curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/update.sh
-curl --fail --remote-name https://raw.githubusercontent.com/loomio/loomio/master/deploy/forwarding.json
 chmod +x create_env.sh update.sh
 ```
 
@@ -97,32 +96,6 @@ You need to bring your own SMTP server for Loomio to send emails.
 Edit the `.env` and look for the vars starting with SMTP_
 
 You might also need to add an SPF DNS record to indicate that the SMTP can send mail for your domain.
-
-### Forward staff email addresses
-
-Haraka forwards configured staff addresses directly to their destination mail servers. It preserves the original `From`, `Reply-To`, subject, date, Message-ID, message body, attachments and inline images. Email-to-group and reply-by-email messages continue to go to Loomio.
-
-The `forwarding.json` file in your deployment directory contains the rules and is mounted read-only into Haraka. It defaults to sending postmaster mail to the `SUPPORT_EMAIL` configured in `.env`:
-
-```json
-{
-  "postmaster": "${SUPPORT_EMAIL}"
-}
-```
-
-Use `{}` to disable forwarding. Keys can be local names or complete addresses at `REPLY_HOSTNAME`. Values are complete external email addresses, or the literal `${SUPPORT_EMAIL}`. For example, add `"contact": "staff@example.org"` to forward the contact address. Matching is exact and case-insensitive; signed Loomio reply addresses and subaddresses do not match a shorter alias. Destination addresses must be on another domain to avoid loops. Restart Haraka after editing the file:
-
-```sh
-docker compose up -d --no-deps --force-recreate haraka
-```
-
-Haraka changes only the SMTP envelope sender to `postmaster@REPLY_HOSTNAME`, so delivery failures go to the configured postmaster destination. The visible `From` and any existing `Reply-To` stay unchanged. Include a postmaster rule whenever forwarding is enabled. Operators can use `LOOMIO_MAIL_FORWARD_SENDER` to choose another monitored alias instead. Delivery reports with an empty envelope sender keep it empty to avoid bounce loops.
-
-Direct forwarding requires outbound TCP port 25, and SPF for the envelope sender's domain must authorize this server. Mail goes directly to the destination MX, rather than through your application SMTP provider. Haraka accepts a message only after storing it in the persistent `haraka-queue` volume, and retries temporary delivery failures. A message addressed to both staff and application recipients is split at SMTP recipient acceptance: the sender retries the other recipients separately, avoiding partial delivery across the two paths.
-
-Original DKIM signatures are retained. For messages authenticated only by SPF, configure ARC signing so the destination can inspect the authentication results from before forwarding. See [Haraka forwarding and ARC configuration](../haraka/README.md#forwarding-and-arc). ARC acceptance ultimately depends on the destination's policy.
-
-When upgrading from application forwarding, export the existing rules before removing the old Rails path, install and verify those rules in Haraka first, and let queued `ForwardMailer.forward_message` jobs finish before deploying the application change. The legacy database table is retained for this transition and rollback; the application no longer reads it. The old `notifications` forwarding row was bypassed by Loomio's notifications-address rejection, so leave that address with Rails unless you intentionally change that policy. Staff mail handled by Haraka no longer has a copy stored in Rails Action Mailbox.
 
 ### Initialize the database
 

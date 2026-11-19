@@ -66,11 +66,37 @@ docker build \
 
 ## Forwarding and ARC
 
-Forwarding rules belong to the deployment directory, in `forwarding.json`; see [the deployment guide](../deploy/README.md#forward-staff-email-addresses) and [the default rules](../deploy/forwarding.json). The image defaults to no aliases. The deployment mounts the rules file read-only at `/haraka/config/forwarding.json` and stores queued messages in the persistent `/haraka/queue` volume. Do not remove this volume while it contains mail.
+To enable staff forwarding, create `forwarding.json` in your deployment directory. Use local names or addresses at `REPLY_HOSTNAME` as keys. Each destination must be an address on a different domain or `${SUPPORT_EMAIL}`. The sample forwards postmaster mail to `SUPPORT_EMAIL`. [Sample rules](../deploy/forwarding.json)
 
-The forwarding plugin accepts only explicitly configured local recipients and never enables unrestricted relaying. Staff and application recipients are separated at RCPT time. A temporary queue-write failure returns SMTP 450 so the sending server retries. After acceptance, Haraka's outbound queue retries destination failures. Failed deliveries go to a monitored envelope sender, defaulting to the postmaster alias, while original author and reply headers stay intact.
+For the bundled Compose deployment, add the rules mount to `docker-compose.override.yml` alongside `docker-compose.yml`.
 
-ARC signing is optional and recommended for forwarding. Mount an RSA private key read-only into the Haraka container, outside the public repository. For example, mount `./secrets/forwarding-arc.pem:/run/secrets/forwarding-arc.pem:ro` using a Compose override, and set these values in `.env`:
+```yaml
+services:
+  haraka:
+    volumes:
+      - type: bind
+        source: ./forwarding.json
+        target: /haraka/config/forwarding.json
+        read_only: true
+        bind:
+          create_host_path: false
+```
+
+Keep the persistent volume at `/haraka/queue` for delivery retries. Recreate Haraka after adding the mount or editing the rules. Set the file to `{}` to disable forwarding while keeping the mount.
+
+```sh
+docker compose up -d --no-deps --force-recreate haraka
+```
+
+The forwarding plugin accepts only explicitly configured local recipients. Staff and application recipients are separated at RCPT time. A temporary queue-write failure returns SMTP 450 so the sending server retries. After acceptance, Haraka's outbound queue retries temporary delivery failures. Include a postmaster rule so delivery failures reach a monitored address, or set `LOOMIO_MAIL_FORWARD_SENDER` to another configured alias.
+
+Direct delivery to the destination mail server requires outbound TCP port 25. The SPF record for the local envelope sender must authorize the relay. Haraka preserves `From`, `Reply-To`, `Date`, `Message-ID`, DKIM signatures, and MIME parts, including attachments.
+
+If you used Rails staff forwarding, export your existing rules, configure and verify them in Haraka, and let queued `ForwardMailer.forward_message` jobs finish before upgrading the app and worker. Staff mail now goes through Haraka directly and bypasses Rails Action Mailbox.
+
+### ARC signing
+
+ARC signing lets destinations inspect the authentication results from before forwarding. Mount an RSA private key read-only into the Haraka container, outside the public repository. For example, mount `./secrets/forwarding-arc.pem:/run/secrets/forwarding-arc.pem:ro` using a Compose override, and set these values in `.env`.
 
 ```dotenv
 LOOMIO_MAIL_FORWARD_ARC_KEY_PATH=/run/secrets/forwarding-arc.pem
@@ -78,5 +104,3 @@ LOOMIO_MAIL_FORWARD_ARC_SELECTOR=forwarding
 ```
 
 Publish the corresponding DKIM-format public key as a TXT record at `forwarding._domainkey.REPLY_HOSTNAME`. The private key remains on the server. Haraka seals the authentication results for staff mail before changing the SMTP envelope. The signing key is never copied into queued transaction notes. Verify the DNS record and destination ARC results before relying on ARC for delivery of mail without aligned DKIM. The destination decides whether to trust an ARC chain.
-
-The existing SPF record must authorize the relay for its local envelope sender. Forwarding does not use the application's authenticated SMTP server, which may require rewriting external authors. `From`, `Reply-To`, `Date`, `Message-ID`, DKIM signatures and MIME parts are retained; normal transport trace and authentication headers are added.

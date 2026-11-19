@@ -129,12 +129,6 @@ services:
     volumes:
       - certs:/etc/nginx/certs:ro
       - haraka-queue:/haraka/queue
-      - type: bind
-        source: ./forwarding.json
-        target: /haraka/config/forwarding.json
-        read_only: true
-        bind:
-          create_host_path: false
 
 networks:
   main:
