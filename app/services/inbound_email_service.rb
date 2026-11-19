@@ -1,15 +1,4 @@
 class InboundEmailService
-  def self.refresh_forward_email_rules
-    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
-      {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
-    end
-
-    ForwardEmailRule.transaction(requires_new: true) do
-      ForwardEmailRule.delete_all
-      ForwardEmailRule.insert_all!(forward_email_rules, record_timestamps: false)
-    end
-  end
-
   def self.banned_sender_hosts
     ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
   end
@@ -96,20 +85,6 @@ class InboundEmailService
 
         return :delivered
       end
-    end
-
-    # Forwarding rule by handle
-    if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
-      Rails.logger.info("email forwarded");
-      ForwardMailer.forward_message(
-        from: "\"#{email.sender_name}\" <#{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
-        to: forward_email_rule.email,
-        reply_to: email.from,
-        subject: email.subject,
-        body_text: email.body_text,
-        body_html: email.body_html
-      ).deliver_later
-      return :delivered
     end
 
     if group = group_from_route_path(email.route_path)

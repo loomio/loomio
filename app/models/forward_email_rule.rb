@@ -1,2 +1,0 @@
-class ForwardEmailRule < ApplicationRecord
-end

@@ -47,6 +47,7 @@ mailauth
 # RCPT TO
 # ----------
 # At least one rcpt_to plugin is REQUIRED for inbound email.
+forward
 rcpt_to.in_host_list
 # qmail-deliverable
 # rcpt_to.routes

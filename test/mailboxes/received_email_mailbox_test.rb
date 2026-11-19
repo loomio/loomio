@@ -30,8 +30,6 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
   end
 
   test "ignores emails from reply_hostname" do
-    ForwardEmailRule.create!(handle: 'homer', email: "homer@simpson.com")
-
     receive_inbound_email_from_mail(
       to: "homer@reply.loomio.test",
       from: "someone@reply.loomio.test",
@@ -180,34 +178,6 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
 
     assert_equal 1, ActionMailbox::InboundEmail.where(message_id: message_id).where.not(processing_completed_at: nil).count
     assert_equal ['delivered', 'delivered'], ActionMailbox::InboundEmail.where(message_id: message_id).order(:id).map(&:status)
-  end
-
-  test "duplicate Message-ID forwards one copy to a staff mailbox" do
-    rule = ForwardEmailRule.create!(handle: "staff#{SecureRandom.hex(4)}", email: 'staff@example.net')
-    message_id = "duplicate-forward-#{SecureRandom.hex(4)}@example.com"
-    recipient = "#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"
-    sender = 'original-sender@example.com'
-    source = ->(uuid) do
-      raw_email = Mail.new do
-        from       sender
-        to         'Public address <hello@example.org>'
-        subject    'Retried staff email'
-        message_id message_id
-        body       'This message must be forwarded once'
-      end
-      raw_email['harakadata'] = { rcpt_to: [recipient], uuid: uuid }.to_json
-      raw_email.to_s
-    end
-
-    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-      receive_inbound_email_from_source(source.call('first-delivery'))
-      receive_inbound_email_from_source(source.call('retried-delivery'))
-    end
-
-    delivered = ActionMailer::Base.deliveries.last
-    assert_equal [rule.email], delivered.to
-    assert_equal [sender], delivered.reply_to
-    assert ActionMailbox::InboundEmail.where(message_id: message_id).where.not(processing_completed_at: nil).exists?
   end
 
   test "email from alias creates notification" do

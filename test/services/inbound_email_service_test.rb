@@ -3,17 +3,7 @@ require 'test_helper'
 class InboundEmailServiceTest < ActiveSupport::TestCase
   inline_jobs 'releases personal email-to-thread route when reply exceeds comment length limit',
     'an empty emailed reply reports its actual validation error',
-    'a comment validation exception reports its messages',
-    'forwards using a forward rule',
-    'forwards from an SMTP envelope recipient and replies to the original sender'
-
-  test "failed routing-rule refresh preserves the previous rules" do
-    rule = ForwardEmailRule.create!(handle: "keep", email: "keep@example.com")
-    ForwardEmailRule.stub(:insert_all!, ->(*) { raise "insert failed" }) do
-      assert_raises(RuntimeError) { InboundEmailService.refresh_forward_email_rules }
-    end
-    assert ForwardEmailRule.exists?(rule.id)
-  end
+    'a comment validation exception reports its messages'
 
   test "unknown sender assignment rolls back when notification creation fails" do
     group = groups(:group)
@@ -307,65 +297,18 @@ class InboundEmailServiceTest < ActiveSupport::TestCase
     ENV['REPLY_HOSTNAME'] = original_reply
   end
 
-  test "forwards using a forward rule" do
-    original_reply = ENV['REPLY_HOSTNAME']
-    ENV['REPLY_HOSTNAME'] = 'test.host'
-
-    rule = ForwardEmailRule.create!(handle: "fwd#{SecureRandom.hex(4)}", email: 'target@example.com')
-
-    user = User.create!(name: 'FwdUser', email: "fwduser#{SecureRandom.hex(4)}@example.com",
-                        email_verified: true, username: "fwduser#{SecureRandom.hex(4)}")
-    from = "\"#{user.name}\" <#{user.email}>"
-    to = "#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"
-
+  test 'staff addresses are not forwarded by the application' do
     email = build_inbound_email(
-      headers: { 'From' => from, 'To' => to, 'Subject' => 'Forward me' },
-      body_text: "Forward body text",
-      body_html: "<p>Forward body html</p>"
+      headers: {from: 'sender@example.com', to: "contact@#{ENV.fetch('REPLY_HOSTNAME')}"},
+      body_text: 'This address is handled by the mail relay'
     )
 
-    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-      InboundEmailService.process(email)
+    assert_no_enqueued_jobs only: InboundEmailDeliveryJob do
+      assert_no_difference ['Discussion.count', 'PendingEmail.count'] do
+        assert_equal :bounced, InboundEmailService.process(email)
+      end
     end
-
-    delivered = ActionMailer::Base.deliveries.last
-    assert_includes delivered.to, rule.email
-    assert_equal 'Forward me', delivered.subject
-
-    assert email.reload.processing_completed_at.present?
-  ensure
-    ENV['REPLY_HOSTNAME'] = original_reply
-  end
-
-  test "forwards from an SMTP envelope recipient and replies to the original sender" do
-    original_reply = ENV['REPLY_HOSTNAME']
-    ENV['REPLY_HOSTNAME'] = 'test.host'
-
-    rule = ForwardEmailRule.create!(handle: "staff#{SecureRandom.hex(4)}", email: 'staff@example.net')
-    sender_email = "sender#{SecureRandom.hex(4)}@example.com"
-    email = build_inbound_email(
-      headers: {
-        'From' => "Original Sender <#{sender_email}>",
-        'To' => 'Public address <hello@example.org>',
-        'Subject' => 'Forwarded staff message',
-        'harakadata' => {
-          mail_from: 'list-bounces@example.org',
-          rcpt_to: ["#{rule.handle}@#{ENV['REPLY_HOSTNAME']}"]
-        }.to_json
-      },
-      body_text: 'Forwarded message body'
-    )
-
-    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
-      InboundEmailService.process(email)
-    end
-
-    delivered = ActionMailer::Base.deliveries.last
-    assert_equal [rule.email], delivered.to
-    assert_equal [sender_email], delivered.reply_to
-    assert email.reload.processing_completed_at.present?
-  ensure
-    ENV['REPLY_HOSTNAME'] = original_reply
+    assert email.reload.processing_completed_at
   end
 
   # -- Handle redirect routing --

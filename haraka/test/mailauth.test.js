@@ -5,6 +5,9 @@ const { test } = require('node:test');
 
 const mailauth = require('../haraka/plugins/mailauth');
 const { dkimSign } = require('mailauth/lib/dkim/sign');
+const { authenticate: verifyAuthentication } = require('mailauth');
+
+global.DENYSOFT = 903;
 
 const { privateKey, publicKey } = generateKeyPairSync('rsa', {
   modulusLength: 1024,
@@ -31,6 +34,7 @@ const resolver = async (name, type) => {
     'forwarder.example': [['v=spf1 -all']],
     'partner.example': [['v=spf1 ip4:192.0.2.10 -all']],
     '_dmarc.partner.example': [['v=DMARC1; p=reject']],
+    'forward._domainkey.loomio.test': [[`v=DKIM1; k=rsa; p=${publicKeyDns}`]],
     'loomio-test._domainkey.partner.example': [[`v=DKIM1; k=rsa; p=${publicKeyDns}`]],
   };
 
@@ -38,13 +42,14 @@ const resolver = async (name, type) => {
   return records[name];
 };
 
-const authenticate = async (message, sender = 'bounce@forwarder.example') => {
+const authenticate = async (message, sender = 'bounce@forwarder.example', forwarding = false, seal = true) => {
   const authenticationResults = [];
+  const errors = [];
   const recordedResults = [];
   const headers = {};
   const transaction = {
     message_stream: Readable.from([message]),
-    notes: {},
+    notes: {loomio_mail_route: forwarding ? 'forward' : 'rails'},
     results: {
       add: (_plugin, result) => recordedResults.push(result),
     },
@@ -62,13 +67,14 @@ const authenticate = async (message, sender = 'bounce@forwarder.example') => {
     auth_results: (result) => authenticationResults.push(result),
   };
   const plugin = {
+    forward_seal: seal ? {signingDomain: 'loomio.test', selector: 'forward', privateKey: privateKeyPem} : undefined,
     cfg: {
       dns: { maxLookups: 10 },
       minBitLength: 1024,
     },
     resolver,
     logerror: (error) => {
-      throw error;
+      errors.push(error.message);
     },
     mailauth_add_result: mailauth.mailauth_add_result,
   };
@@ -88,6 +94,7 @@ const authenticate = async (message, sender = 'bounce@forwarder.example') => {
 
   return {
     authenticationResults,
+    errors,
     dataStatus,
     headers,
     mailStatus,
@@ -189,4 +196,40 @@ test('reports authentication failure for malformed From syntax despite aligned S
   assert.equal(result.mailauth.dkim.fromSyntax, 'invalid');
   assert.match(result.authenticationResults.join('; '), /\bdmarc=fail\b/);
   assert.doesNotMatch(result.authenticationResults.join('; '), /\bdmarc=pass\b/);
+});
+
+test('forwarding preserves the original author and carries initial SPF authentication in a valid ARC seal', async () => {
+  const original = await authenticate(message, 'alice@partner.example', true);
+  assert.equal(original.dataStatus, undefined, original.errors.join("; "));
+  assert.match(original.headers['ARC-Authentication-Results'], /spf=pass/);
+  assert.match(original.headers['ARC-Authentication-Results'], /dmarc=pass/);
+  assert.equal(Object.hasOwn(original.mailauth.dkim, 'seal'), false);
+  assert.equal(JSON.stringify(original.mailauth).includes('privateKey'), false);
+
+  const forwardedMessage = Object.entries(original.headers).map(([name, value]) => `${name}: ${value}\r\n`).join('') + message;
+  const delivered = await verifyAuthentication(forwardedMessage, {
+    sender: 'postmaster@loomio.test', ip: '192.0.2.99', helo: 'mx.loomio.test',
+    mta: 'destination.example', resolver, minBitLength: 1024,
+  });
+  assert.equal(delivered.arc.status.result, 'pass');
+  assert.deepEqual(delivered.dkim.headerFrom, ['alice@partner.example']);
+});
+
+test('forwarding without ARC configured keeps the original DKIM signature valid', async () => {
+  const signed = await dkimSign(message, {
+    canonicalization: 'relaxed/relaxed',
+    signatureData: [{algorithm: 'rsa-sha256', signingDomain: 'partner.example',
+      selector: 'loomio-test', privateKey: privateKeyPem}],
+  });
+  const signedMessage = `${signed.signatures}${message}`;
+  const original = await authenticate(signedMessage, 'alice@partner.example', true, false);
+  assert.equal(original.dataStatus, undefined, original.errors.join('; '));
+  assert.equal(original.headers['ARC-Seal'], undefined);
+  const forwarded = Object.entries(original.headers).map(([name, value]) => `${name}: ${value}\r\n`).join('') + signedMessage;
+  const delivered = await verifyAuthentication(forwarded, {
+    sender: 'postmaster@loomio.test', ip: '192.0.2.99', helo: 'mx.loomio.test',
+    mta: 'destination.example', resolver, minBitLength: 1024,
+  });
+  assert.equal(delivered.dkim.results[0].status.result, 'pass');
+  assert.deepEqual(delivered.dkim.headerFrom, ['alice@partner.example']);
 });

@@ -20,7 +20,7 @@ PTR quality. It rejects messages that have an unresolvable MAIL FROM or are not
 addressed to REPLY_HOSTNAME. Loomio then uses SPF, DKIM, DMARC, and signed reply
 routes when deciding whether a received message may create content.
 
-It passes accepted messages to the app via `RAILS_INBOUND_EMAIL_URL`.
+It passes application messages to the app via `RAILS_INBOUND_EMAIL_URL`. Configured staff aliases are delivered directly by Haraka with their original headers and MIME content.
 
 ## SMTP TLS certificates
 
@@ -63,3 +63,20 @@ docker build \
   --build-arg NPM_VERSION="$(cat ../.npm-version)" \
   -t loomio/haraka-rails-docker .
 ```
+
+## Forwarding and ARC
+
+Forwarding rules belong to the deployment directory, in `forwarding.json`; see [the deployment guide](../deploy/README.md#forward-staff-email-addresses) and [the default rules](../deploy/forwarding.json). The image defaults to no aliases. The deployment mounts the rules file read-only at `/haraka/config/forwarding.json` and stores queued messages in the persistent `/haraka/queue` volume. Do not remove this volume while it contains mail.
+
+The forwarding plugin accepts only explicitly configured local recipients and never enables unrestricted relaying. Staff and application recipients are separated at RCPT time. A temporary queue-write failure returns SMTP 450 so the sending server retries. After acceptance, Haraka's outbound queue retries destination failures. Failed deliveries go to a monitored envelope sender, defaulting to the postmaster alias, while original author and reply headers stay intact.
+
+ARC signing is optional and recommended for forwarding. Mount an RSA private key read-only into the Haraka container, outside the public repository. For example, mount `./secrets/forwarding-arc.pem:/run/secrets/forwarding-arc.pem:ro` using a Compose override, and set these values in `.env`:
+
+```dotenv
+LOOMIO_MAIL_FORWARD_ARC_KEY_PATH=/run/secrets/forwarding-arc.pem
+LOOMIO_MAIL_FORWARD_ARC_SELECTOR=forwarding
+```
+
+Publish the corresponding DKIM-format public key as a TXT record at `forwarding._domainkey.REPLY_HOSTNAME`. The private key remains on the server. Haraka seals the authentication results for staff mail before changing the SMTP envelope. The signing key is never copied into queued transaction notes. Verify the DNS record and destination ARC results before relying on ARC for delivery of mail without aligned DKIM. The destination decides whether to trust an ARC chain.
+
+The existing SPF record must authorize the relay for its local envelope sender. Forwarding does not use the application's authenticated SMTP server, which may require rewriting external authors. `From`, `Reply-To`, `Date`, `Message-ID`, DKIM signatures and MIME parts are retained; normal transport trace and authentication headers are added.
