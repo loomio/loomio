@@ -15,5 +15,12 @@ public/vue
 public/docs-screenshots
 public/docs/*
 public/system/*
-config/deploy.yml
-.kamal/secrets*
+loomio-website/
+
+# Deployment credentials and local backups stay on the host.
+**/.env*
+**/*.env
+**/*.env.*
+**/.kamal/secrets*
+config/deploy*.yml*
+config/deploy*.yaml*
