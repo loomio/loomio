@@ -87,7 +87,7 @@
     "@originjs/vite-plugin-commonjs": "latest",
     "@playwright/test": "1.65.0",
     "@vitejs/plugin-vue": "^6.0.10",
-    "@vue/test-utils": "^2.5.1",
+    "@vue/test-utils": "^2.6.0",
     "jsdom": "^31.0.1",
     "pagefind": "1.6.0",
     "pug": "latest",
