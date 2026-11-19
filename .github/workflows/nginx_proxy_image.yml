@@ -34,7 +34,9 @@ jobs:
         with:
           context: deploy/nginx-proxy
           platforms: linux/amd64,linux/arm64
-          tags: loomio/nginx-proxy:1.11-nginx1.31.9-alpine
+          tags: |
+            loomio/nginx-proxy:stable
+            loomio/nginx-proxy:1.11-nginx1.31.9-alpine
           push: ${{ github.event_name != 'pull_request' && env.LOOMIO_DOCKER_USERNAME != '' }}
           cache-from: type=gha,scope=nginx-proxy
           cache-to: type=gha,scope=nginx-proxy,mode=max
