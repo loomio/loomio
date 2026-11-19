@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include ProtectedFromForgery
   include CurrentUserHelper
+  include RequestIp
   include SentryHelper
   include PrettyUrlHelper
   include LoadAndAuthorize

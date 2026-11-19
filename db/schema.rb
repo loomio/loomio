@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_16_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_19_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1324,6 +1324,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_000001) do
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 
+  create_table "trial_invitation_recipients", force: :cascade do |t|
+    t.inet "ip_address", null: false
+    t.integer "actor_id", null: false
+    t.integer "recipient_id", null: false
+    t.datetime "invited_at", null: false
+    t.index ["invited_at"], name: "index_trial_invitation_recipients_on_invited_at"
+    t.index ["ip_address", "actor_id", "recipient_id"], name: "index_trial_invitation_recipients_identity", unique: true
+    t.index ["ip_address", "invited_at"], name: "index_trial_invitation_recipients_on_ip_address_and_invited_at"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "api_key", null: false
     t.jsonb "attachments", default: [], null: false
@@ -1464,4 +1474,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_16_000001) do
   add_foreign_key "topic_readers", "topics", on_delete: :cascade
   add_foreign_key "topic_readers", "users", on_delete: :cascade
   add_foreign_key "topics", "groups"
+  add_foreign_key "trial_invitation_recipients", "users", column: "actor_id", on_delete: :cascade
+  add_foreign_key "trial_invitation_recipients", "users", column: "recipient_id", on_delete: :cascade
 end

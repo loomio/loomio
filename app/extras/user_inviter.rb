@@ -30,14 +30,20 @@ class UserInviter
   # parent's allowance; multiple trials use the highest limit, not their sum.
   # A nil member limit already means unlimited membership for that trial.
   def self.invitation_limit(actor:)
-    group_ids = actor.groups.enabled.pluck(:id, :parent_id).flatten.compact.uniq
+    invitation_limit_for(user_ids: [ actor.id ])
+  end
+  private_class_method :invitation_limit
+
+  def self.invitation_limit_for(user_ids:)
+    group_ids = Group.enabled.joins(:memberships)
+      .where(memberships: { user_id: user_ids, revoked_at: nil })
+      .pluck('groups.id', 'groups.parent_id').flatten.compact.uniq
     limits = Group.enabled.where(id: group_ids, parent_id: nil).joins(:subscription)
       .where(subscriptions: { plan: 'trial' }).pluck('subscriptions.max_members')
     return if limits.include?(nil)
 
     [ DEFAULT_INVITATION_LIMIT, *limits ].max
   end
-  private_class_method :invitation_limit
 
   # UNION counts each person once across access grants, electorate records and
   # invitation notifications. Revoked rows count until they are actually deleted.

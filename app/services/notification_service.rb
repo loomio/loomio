@@ -44,6 +44,9 @@ class NotificationService
 
     Notification.transaction do
       UserInviter.check_invitation_limit!(actor: notification.actor, user_ids: notification.recipient_user_ids)
+      recipient_ids = notification.recipient_user_ids
+      recipient_ids = [ notification.subject_model.user_id ] if notification.kind == 'membership_resent'
+      TrialInvitationLimit.reserve!(actor: notification.actor, user_ids: recipient_ids)
       notification.save!
     end
   end
