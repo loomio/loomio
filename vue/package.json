@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
-    "@playwright/test": "1.65.0",
+    "@playwright/test": "1.65.1",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/test-utils": "^2.5.1",
     "jsdom": "^31.0.1",
