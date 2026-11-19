@@ -1,0 +1,40 @@
+name: Patched Nginx proxy image
+
+on:
+  push:
+    branches: [master]
+    paths: ['deploy/nginx-proxy/**', '.github/workflows/nginx_proxy_image.yml']
+  pull_request:
+    paths: ['deploy/nginx-proxy/**', '.github/workflows/nginx_proxy_image.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LOOMIO_DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - name: Check patched server version
+        run: |
+          docker build --pull -t loomio-nginx-check deploy/nginx-proxy
+          docker run --rm --network none --entrypoint nginx loomio-nginx-check -v 2>&1 | grep -Fx 'nginx version: nginx/1.31.9'
+          docker run --rm --network none --entrypoint nginx loomio-nginx-check -t
+      - uses: docker/login-action@v3
+        if: github.event_name != 'pull_request' && env.LOOMIO_DOCKER_USERNAME != ''
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: deploy/nginx-proxy
+          platforms: linux/amd64,linux/arm64
+          tags: loomio/nginx-proxy:1.11-nginx1.31.9-alpine
+          push: ${{ github.event_name != 'pull_request' && env.LOOMIO_DOCKER_USERNAME != '' }}
+          cache-from: type=gha,scope=nginx-proxy
+          cache-to: type=gha,scope=nginx-proxy,mode=max
