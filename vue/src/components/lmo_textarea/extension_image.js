@@ -7,8 +7,10 @@ import {
   mergeAttributes,
 } from '@tiptap/core'
 
-let count = 0;
+import { resizeDraftImage } from './draft_image_preview'
 import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs'
+
+let count = 0;
 
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 
@@ -82,10 +84,11 @@ export function insertImage(file, view, coordinates, attachImageFile) {
       if (file.type.startsWith('image/')) {
         const image = document.createElement('img');
         image.src = localUrl;
-        await image.decode().catch(() => {});
+        const draftPreview = await image.decode().then(() => resizeDraftImage(image)).catch(() => null);
         const scale = Math.min(1, 1280 / Math.max(image.naturalWidth, image.naturalHeight));
         node = schema.nodes.image.create({
           src: blob.preview_url || blob.download_url,
+          draftPreview,
           width: Math.round(image.naturalWidth * scale) || null,
           height: Math.round(image.naturalHeight * scale) || null,
         });
@@ -177,6 +180,12 @@ export const CustomImage = Image.extend({
     return {
       src: {
         default: null,
+      },
+      // Yjs syncs this field. HTML serialization and parsing use the stable src.
+      draftPreview: {
+        default: null,
+        rendered: false,
+        parseHTML: () => null,
       },
       alt: {
         default: null,

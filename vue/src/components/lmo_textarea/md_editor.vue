@@ -100,7 +100,7 @@ watch([preview, () => props.model[props.field]], () => {
   previewContent.value?.querySelectorAll('img[src], video[src], audio[src]').forEach(element => {
     const src = element.getAttribute('src');
     if (src.startsWith('/rails/active_storage/')) {
-      setMediaPreview(element, src, localPreviewUrl, element.getAttribute('poster'));
+      setMediaPreview(element, src, localPreviewUrl(src), element.getAttribute('poster'));
     }
   });
 }, { flush: 'post' });

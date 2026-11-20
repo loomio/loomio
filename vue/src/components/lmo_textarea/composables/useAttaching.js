@@ -4,7 +4,7 @@ import AttachmentAbility from '@/shared/abilities/attachment_ability';
 import { insertImage } from '../extension_image';
 import { forEach } from 'lodash-es';
 
-export function useAttaching(model, emit, rememberImagePreview) {
+export function useAttaching(model, emit) {
   const files = ref([]);
   const imageFiles = ref([]);
   const localPreviewUrls = new Map();
@@ -93,10 +93,6 @@ export function useAttaching(model, emit, rememberImagePreview) {
 
       localPreviewUrls.set(blob.download_url, wrapper.localUrl);
       if (blob.preview_url) localPreviewUrls.set(blob.preview_url, wrapper.localUrl);
-      if (rememberImagePreview && file.type.startsWith('image/')) {
-        await rememberImagePreview(blob.preview_url || blob.download_url, file);
-        if (!imageFiles.value.includes(wrapper)) return;
-      }
       await onComplete(blob, wrapper.localUrl);
       if (!imageFiles.value.includes(wrapper)) return;
 
