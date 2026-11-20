@@ -10,10 +10,8 @@ class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = @previous
   end
 
-  test "a legacy grace period alone queues no deletions" do
-    previous = ENV["GROUP_DELETION_DELAY_DAYS"]
+  test "an unset deletion setting prevents explicit dispatch" do
     ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
-    ENV["GROUP_DELETION_DELAY_DAYS"] = "1"
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)
 
@@ -21,8 +19,6 @@ class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
       assert_equal 0, CleanupService.destroy_discarded_groups(root_ids: [group.id])
     end
     assert_empty CleanupService.deletable_discarded_groups
-  ensure
-    ENV["GROUP_DELETION_DELAY_DAYS"] = previous
   end
 
   test "queues roots discarded beyond the grace period" do

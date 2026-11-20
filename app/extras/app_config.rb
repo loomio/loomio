@@ -28,7 +28,7 @@ class AppConfig
   end
 
   def self.group_deletion_delay_days
-    discarded_group_deletion_after_days || ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
+    discarded_group_deletion_after_days || 90
   end
 
   def self.discarded_group_deletion_after_days
