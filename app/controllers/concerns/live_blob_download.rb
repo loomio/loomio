@@ -11,7 +11,7 @@ module LiveBlobDownload
   # representation or opening a storage stream.
   def set_blob
     super
-    return if performed? || !BlobAttachmentAccess.required?
+    return if performed?
 
     head :not_found unless BlobAttachmentAccess.live?(@blob)
   rescue ActiveRecord::RecordNotFound

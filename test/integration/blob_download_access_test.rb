@@ -1,15 +1,6 @@
 require 'test_helper'
 
 class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
-  setup do
-    @old_enforcement = ENV['LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT']
-    ENV['LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT'] = '1'
-  end
-
-  teardown do
-    ENV['LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT'] = @old_enforcement
-  end
-
   test 'issued original and preview links track thread discard and restoration for signed-out readers' do
     discussion = discussions(:discussion)
     blob = upload_image
@@ -164,25 +155,13 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     assert_equal 'group export', response.body
     assert_match(/\Aattachment/, response.headers['Content-Disposition'])
 
+    # Previously emailed exports used ordinary blob links.
+    assert_download(rails_blob_path(blob), :not_found)
     signed_id = url.path.split('/')[2]
     assert_download(rails_service_blob_path(signed_id, blob.filename), :not_found)
     assert_download(group_export_download_path(blob.signed_id, blob.filename), :not_found)
     travel GroupExportDownload::LIFETIME + 1.second
     assert_download(url.request_uri, :not_found)
-  end
-
-  test 'an older export link survives the transition while enforcement is disabled' do
-    blob = ActiveStorage::Blob.create_and_upload!(io: StringIO.new('legacy export'), filename: 'export.csv')
-    legacy_path = rails_blob_path(blob)
-
-    ENV.delete('LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT')
-    travel 6.days do
-      assert_download(legacy_path, :redirect)
-    end
-    ENV['LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT'] = '1'
-    travel 1.week do
-      assert_download(legacy_path, :not_found)
-    end
   end
 
   test 'an unsaved upload preview is limited to its uploader and expires' do

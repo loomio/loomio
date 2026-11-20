@@ -3,10 +3,6 @@ class BlobAttachmentAccess
   # generated preview and variant attachments are storage bookkeeping.
   RECORD_TYPES = %w[Comment Discussion DiscussionTemplate Group Outcome Poll PollTemplate Stance User].freeze
 
-  def self.required?
-    ENV["LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT"].present?
-  end
-
   def self.live?(blob)
     blob.attachments.where(record_type: RECORD_TYPES).any? do |attachment|
       live_record?(attachment.record)
