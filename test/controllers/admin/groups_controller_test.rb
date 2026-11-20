@@ -46,7 +46,13 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
     assert_includes response.body, "Parent group ID or key"
-    assert_match(/value="Discard"|>Discard<\/button>/, response.body)
+    assert_select "form[action=?]", discard_admin_group_path(@group) do |forms|
+      assert_match(/value="Discard without warning"|>Discard without warning<\/button>/, forms.first.to_html)
+    end
+    assert_select "form[action=?]", warn_and_discard_admin_group_path(@group) do |forms|
+      assert_match(/value="Warn and discard"|>Warn and discard<\/button>/, forms.first.to_html)
+      assert_includes forms.first["data-confirm"], "Group admins will be emailed."
+    end
     assert_match(/value="Delete"|>Delete<\/button>/, response.body)
     assert_select 'input[name="_method"][value="delete"]'
     assert_includes response.body, "Discard is reversible. Scheduled deletion is currently disabled."
