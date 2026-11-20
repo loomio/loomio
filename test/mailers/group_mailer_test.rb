@@ -11,9 +11,10 @@ class GroupMailerTest < ActionMailer::TestCase
 
     assert_equal "Your Loomio group is scheduled for deletion", email.subject
     assert_includes body, "trial expired 60 days ago"
-    assert_includes body, "Unless you contact us, it will be deleted in 45 days"
+    assert_includes body, "may be permanently deleted once it has been unavailable for 45 days"
     assert_includes body, "Your group is unavailable while it is marked for deletion"
     assert_includes body, "it is not too late to restart"
+    assert_includes body, "Reply to this email immediately"
     assert_includes body, "request a trial extension, upgrade to a paid subscription"
     assert_includes body, "or need more time to export its data"
     assert_includes body, "Subgroups: #{usage[:subgroups]}"
@@ -33,6 +34,8 @@ class GroupMailerTest < ActionMailer::TestCase
 
     AppConfig.stub(:discarded_group_deletion_after_days, 90) do
       assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
+      assert_includes email.body.decoded, "Reply to this email immediately"
+      assert_includes email.body.decoded, "once it has been unavailable for 90 days"
     end
   end
 
@@ -45,7 +48,7 @@ class GroupMailerTest < ActionMailer::TestCase
 
     assert_includes body, "A Loomio trial was created for “#{group.name}” some time ago."
     assert_includes body, "cleaning up old trial data"
-    assert_includes body, "Reply to this email within 90 days"
+    assert_includes body, "Reply to this email immediately"
     refute_includes body, "trial expired 60 days ago"
   end
 

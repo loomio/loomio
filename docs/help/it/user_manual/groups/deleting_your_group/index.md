@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 7a91128cae5aba69
+  introduction: dd96a7c9308a148e
   group-data-is-permanently-deleted-after-90-days: a396ba275b96d7de
 title_source: 9a0868f49f1262ea
 title_generated: 23b0500c07487f95
@@ -31,7 +31,7 @@ I gruppi in attesa di eliminazione e i loro sottogruppi non sono accessibili ai 
 
 Programmare l'eliminazione del gruppo interrompe le notifiche di attività e i promemoria dei sondaggi in attesa di invio per il gruppo e i suoi sottogruppi. I messaggi già in fase di invio potrebbero comunque arrivare.
 
-L'email di avviso include il numero di sottogruppi, membri, discussioni, sondaggi e commenti del gruppo. Se hai bisogno di mantenere il gruppo o [esportarne i dati](/en/user_manual/groups/data_export/), rispondi entro 90 giorni per consentire il ripristino dell'accesso prima dell'eliminazione.
+L'email di avviso include il numero di sottogruppi, membri, discussioni, sondaggi e commenti del gruppo. Se hai bisogno di mantenere il gruppo o [esportarne i dati](/en/user_manual/groups/data_export/), rispondi subito per consentire il ripristino dell'accesso prima dell'eliminazione.
 
 Eliminare il tuo gruppo annullerà anche il tuo abbonamento a Loomio.
 

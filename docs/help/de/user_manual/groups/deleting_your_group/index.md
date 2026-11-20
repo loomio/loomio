@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 896a8cc10418420f
+  introduction: 87e8b90cfacb451c
   group-data-is-permanently-deleted-after-90-days: a9e3eb45e2d9c6b9
 title_source: 9a0868f49f1262ea
 title_generated: f41ff4cf693cbed0
@@ -31,7 +31,7 @@ Gruppen, die zur Löschung vorgesehen sind, und ihre Untergruppen können von Mi
 
 Sobald die Gruppe zur Löschung vorgesehen ist, werden ausstehende Benachrichtigungen über Aktivitäten und Abstimmungserinnerungen für die Gruppe und ihre Untergruppen gestoppt. Nachrichten, die bereits versendet werden, können noch ankommen.
 
-Die Warn-E-Mail enthält die Anzahl der Untergruppen, Mitglieder, Diskussionen, Abstimmungen und Kommentare der Gruppe. Wenn du die Gruppe behalten oder [ihre Daten exportieren](/en/user_manual/groups/data_export/) möchtest, antworte innerhalb von 90 Tagen, damit der Zugriff vor der Löschung wiederhergestellt werden kann.
+Die Warn-E-Mail enthält die Anzahl der Untergruppen, Mitglieder, Diskussionen, Abstimmungen und Kommentare der Gruppe. Wenn du die Gruppe behalten oder [ihre Daten exportieren](/en/user_manual/groups/data_export/) möchtest, antworte sofort, damit der Zugriff vor der Löschung wiederhergestellt werden kann.
 
 Wenn du deine Gruppe löschst, wird auch dein Loomio-Abonnement gekündigt.
 

@@ -9,7 +9,7 @@ class Views::GroupMailer::CanceledSubscriptionDeletionWarning < Views::Applicati
 
   def view_template
     introduction = @deletion_days ? "subscription_canceled" : "subscription_canceled_unavailable"
-    recovery = @deletion_days ? "subscription_canceled_deletion_process" : "restore_or_export"
+    recovery = @deletion_days ? "restore_or_export_before_deletion" : "restore_or_export"
     p { plain t("group_mailer.destroy_warning_with_usage.#{introduction}", group: @group.name) }
     p { plain t("group_mailer.destroy_warning_with_usage.#{recovery}", days: @deletion_days) }
     render Views::GroupMailer::UsageSummary.new(usage: @usage)

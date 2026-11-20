@@ -435,18 +435,18 @@ ro:
       body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
     destroy_warning_with_usage:
       subject: Grupul tău Loomio este programat pentru ștergere
-      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}. Acesta va fi șters definitiv după %{days} de zile.
-      trial_expired_warning: Perioada de probă a grupului dvs. Loomio „%{group}” a expirat acum %{expired_days} zile. Dacă nu ne contactați, acesta va fi șters în %{grace_days} zile.
+      requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}.
+      trial_expired_warning: Perioada de probă a grupului dvs. Loomio „%{group}” a expirat acum %{expired_days} zile.
       trial_catch_up_warning: Cu ceva timp în urmă, a fost inițiată o perioadă de probă Loomio pentru grupul „%{group}”. Curățăm datele din perioadele de probă vechi și am marcat grupul pentru ștergere.
       subscription_canceled: Abonamentul grupului „%{group}” a fost anulat. Am marcat grupul pentru ștergere și momentan nu este disponibil.
-      subscription_canceled_deletion_process: "Răspundeți imediat la acest mesaj dacă doriți să restabilim accesul sau să exportăm o copie a datelor grupului dvs. Grupul poate fi șters definitiv după %{days} zile în care a fost indisponibil."
+      restore_or_export_before_deletion: "Răspundeți imediat la acest mesaj dacă doriți să restabilim accesul sau să exportăm o copie a datelor grupului dvs. Grupul poate fi șters definitiv după %{days} zile în care a fost indisponibil."
       unavailable_subject: "Grupul dvs. Loomio nu este disponibil"
       requested_unavailable: "%{requestor} a făcut indisponibil grupul dvs. Loomio „%{group}”."
       trial_expired_unavailable: "Perioada de probă Loomio pentru grupul „%{group}” a expirat acum %{expired_days} zile. Grupul nu este disponibil."
       trial_catch_up_unavailable: "Cu ceva timp în urmă, a început o perioadă de probă Loomio pentru grupul „%{group}”. Facem ordine în grupurile de probă vechi, iar grupul nu mai este disponibil."
       subscription_canceled_unavailable: "Abonamentul grupului „%{group}” a fost anulat. Grupul nu este disponibil."
       restore_or_export: "Arhivarea poate fi anulată. Ștergerea programată este momentan dezactivată. Răspundeți la acest mesaj pentru a cere restabilirea accesului sau o copie a datelor grupului."
-      trial_expired_process: Grupul dvs. nu este disponibil cât timp este marcat pentru ștergere. Dacă doriți în continuare un loc în care grupul dvs. să discute și să ia decizii, nu este prea târziu să reporniți. Răspundeți la acest e-mail în termen de %{grace_days} zile dacă doriți să solicitați o prelungire a perioadei de probă, să faceți upgrade la un abonament plătit sau dacă aveți nevoie de mai mult timp pentru a exporta datele. După aceea, grupul și datele sale vor fi șterse definitiv.
+      trial_expired_process: Grupul dvs. nu este disponibil cât timp este marcat pentru ștergere. Dacă doriți în continuare un loc în care grupul dvs. să discute și să ia decizii, nu este prea târziu să reporniți. Răspundeți imediat la acest mesaj dacă doriți să solicitați o prelungire a perioadei de probă, să treceți la un abonament plătit sau aveți nevoie de mai mult timp pentru a exporta datele. Grupul poate fi șters definitiv după %{grace_days} zile în care a fost indisponibil.
       trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv după %{days} de zile.
       usage_heading: 'Rezumatul datelor de grup:'
       subgroups: Subgrupuri
@@ -454,7 +454,6 @@ ro:
       discussions: Discuții
       polls: Sondaje
       comments: Comentarii
-      export: Pentru a păstra grupul sau a exporta o copie a datelor sale, răspundeți la acest e-mail în termen de %{days} de zile. Putem restabili accesul înainte de ștergere.
       export_link: Aflați despre exportul datelor de grup
       group_key: 'Cheie de grup: %{key}'
   poll_mailer:

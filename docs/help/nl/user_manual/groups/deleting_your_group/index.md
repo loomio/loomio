@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 6206dca633a7b3d3
+  introduction: 144745b7793f3b23
   group-data-is-permanently-deleted-after-90-days: 92455d18d72684df
 title_source: 9a0868f49f1262ea
 title_generated: 6fbf0a1fc406600d
@@ -31,7 +31,7 @@ Groepen die op verwijdering wachten en hun subgroepen zijn niet beschikbaar voor
 
 Als je de groep inplant voor verwijdering, worden nog niet verzonden activiteitsmeldingen en peilingherinneringen voor de groep en haar subgroepen stopgezet. Berichten die al worden verzonden, kunnen nog aankomen.
 
-De waarschuwingsmail vermeldt het aantal subgroepen, leden, discussies, peilingen en reacties van de groep. Als je de groep wilt behouden of [de gegevens wilt exporteren](/en/user_manual/groups/data_export/), antwoord dan binnen 90 dagen zodat de toegang vóór de verwijdering kan worden hersteld.
+De waarschuwingsmail vermeldt het aantal subgroepen, leden, discussies, peilingen en reacties van de groep. Als je de groep wilt behouden of [de gegevens wilt exporteren](/en/user_manual/groups/data_export/), antwoord dan direct zodat de toegang vóór de verwijdering kan worden hersteld.
 
 Als je jouw groep verwijdert, wordt ook je Loomio-abonnement opgezegd.
 

@@ -13,7 +13,7 @@ class Views::GroupMailer::ExpiredTrialDeletionWarning < Views::ApplicationMailer
     introduction = @deletion_days ? "#{reason}_warning" : "#{reason}_unavailable"
     recovery = @deletion_days ? "trial_expired_process" : "restore_or_export"
     days_since_expiry = expired_days unless @catch_up
-    p { plain t("group_mailer.destroy_warning_with_usage.#{introduction}", group: @group.name, expired_days: days_since_expiry, grace_days: @deletion_days) }
+    p { plain t("group_mailer.destroy_warning_with_usage.#{introduction}", group: @group.name, expired_days: days_since_expiry) }
     p { plain t("group_mailer.destroy_warning_with_usage.#{recovery}", grace_days: @deletion_days) }
     render Views::GroupMailer::UsageSummary.new(usage: @usage)
     p { plain t(:"group_mailer.destroy_warning_with_usage.group_key", key: @group.key) }

@@ -10,10 +10,10 @@ class Views::GroupMailer::AdminDeletionWarning < Views::ApplicationMailer::BaseL
 
   def view_template
     introduction = @deletion_days ? "requested" : "requested_unavailable"
-    recovery = @deletion_days ? "export" : "restore_or_export"
-    p { plain t("group_mailer.destroy_warning_with_usage.#{introduction}", group: @group.name, requestor: @requestor.name, days: @deletion_days) }
-    render Views::GroupMailer::UsageSummary.new(usage: @usage)
+    recovery = @deletion_days ? "restore_or_export_before_deletion" : "restore_or_export"
+    p { plain t("group_mailer.destroy_warning_with_usage.#{introduction}", group: @group.name, requestor: @requestor.name) }
     p { plain t("group_mailer.destroy_warning_with_usage.#{recovery}", days: @deletion_days) }
+    render Views::GroupMailer::UsageSummary.new(usage: @usage)
     p { plain t(:"group_mailer.destroy_warning_with_usage.group_key", key: @group.key) }
   end
 end

@@ -462,18 +462,18 @@ pl:
       body: Twoja grupa Loomio „%{group}” jest nieaktywna i zostanie usunięta za 2 tygodnie. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tego e-maila.
     destroy_warning_with_usage:
       subject: Twoja grupa Loomio jest przeznaczona do usunięcia
-      requested: Twoja grupa Loomio „%{group}” została zaplanowana do usunięcia przez %{requestor}. Zostanie trwale usunięta po %{days} dniach.
-      trial_expired_warning: Okres próbny Twojej grupy Loomio „%{group}” wygasł %{expired_days} dni temu. Jeśli się z nami nie skontaktujesz, zostanie on usunięty za %{grace_days} dni.
+      requested: Twoja grupa Loomio „%{group}” została zaplanowana do usunięcia przez %{requestor}.
+      trial_expired_warning: Okres próbny Twojej grupy Loomio „%{group}” wygasł %{expired_days} dni temu.
       trial_catch_up_warning: Jakiś czas temu rozpoczęto okres próbny Loomio dla grupy „%{group}”. Porządkujemy dane ze starych okresów próbnych i oznaczyliśmy grupę do usunięcia.
       subscription_canceled: Subskrypcja grupy „%{group}” została anulowana. Oznaczyliśmy grupę do usunięcia i jest ona obecnie niedostępna.
-      subscription_canceled_deletion_process: "Odpowiedz od razu na tę wiadomość, jeśli chcesz, abyśmy przywrócili dostęp lub wyeksportowali kopię danych twojej grupy. Grupa może zostać trwale usunięta po %{days} dniach niedostępności."
+      restore_or_export_before_deletion: "Odpowiedz od razu na tę wiadomość, jeśli chcesz, abyśmy przywrócili dostęp lub wyeksportowali kopię danych twojej grupy. Grupa może zostać trwale usunięta po %{days} dniach niedostępności."
       unavailable_subject: "Twoja grupa Loomio jest niedostępna"
       requested_unavailable: "%{requestor} wyłączył dostęp do Twojej grupy Loomio „%{group}”."
       trial_expired_unavailable: "Okres próbny Loomio dla grupy „%{group}” zakończył się %{expired_days} dni temu. Grupa jest niedostępna."
       trial_catch_up_unavailable: "Jakiś czas temu rozpoczęto okres próbny Loomio dla grupy „%{group}”. Porządkujemy starsze grupy próbne i ta grupa jest już niedostępna."
       subscription_canceled_unavailable: "Subskrypcja grupy „%{group}” została anulowana. Grupa jest niedostępna."
       restore_or_export: "Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone. Odpowiedz na tę wiadomość, aby poprosić o przywrócenie dostępu lub o kopię danych grupy."
-      trial_expired_process: Twoja grupa jest niedostępna, dopóki jest oznaczona do usunięcia. Jeśli nadal chcesz, aby Twoja grupa mogła dyskutować i podejmować decyzje, jeszcze nie jest za późno, aby ją ponownie uruchomić. Odpowiedz na tego e-maila w ciągu %{grace_days} dni, jeśli chcesz poprosić o przedłużenie okresu próbnego, przejście na subskrypcję płatną lub potrzebujesz więcej czasu na wyeksportowanie danych. Po tym czasie grupa i jej dane zostaną trwale usunięte.
+      trial_expired_process: Twoja grupa jest niedostępna, dopóki jest oznaczona do usunięcia. Jeśli nadal chcesz, aby Twoja grupa mogła dyskutować i podejmować decyzje, jeszcze nie jest za późno, aby ją ponownie uruchomić. Odpowiedz od razu na tę wiadomość, jeśli chcesz poprosić o przedłużenie okresu próbnego, przejść na płatną subskrypcję lub potrzebujesz więcej czasu na eksport danych. Grupa może zostać trwale usunięta po %{grace_days} dniach niedostępności.
       trial_expired: Twoja grupa Loomio „%{group}” jest na okresie próbnym, który wygasł od co najmniej 60 dni. Zostanie trwale usunięta po %{days} dniach.
       usage_heading: 'Podsumowanie danych grupowych:'
       subgroups: Podgrupy
@@ -481,7 +481,6 @@ pl:
       discussions: Dyskusje
       polls: Ankiety
       comments: Uwagi
-      export: Aby zachować grupę lub wyeksportować kopię jej danych, odpowiedz na tego e-maila w ciągu %{days} dni. Możemy przywrócić dostęp przed usunięciem.
       export_link: Dowiedz się więcej o eksportowaniu danych grupowych
       group_key: 'Klucz grupy: %{key}'
   poll_mailer:
