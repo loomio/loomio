@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_19_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_20_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -519,6 +519,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_19_000000) do
     t.datetime "updated_at", null: false
     t.datetime "viewed_at"
     t.index ["email_message_id"], name: "index_notification_deliveries_on_email_message_id", unique: true
+    t.index ["delivered_at", "id"], name: "index_notification_deliveries_on_email_send_cursor", where: "(((channel)::text = 'email'::text) AND (delivered_at IS NOT NULL))"
     t.index ["notification_id", "channel", "recipient_type", "recipient_id"], name: "index_notification_deliveries_on_identity", unique: true
     t.index ["notification_id"], name: "index_notification_deliveries_on_notification_id"
     t.index ["provider_message_id"], name: "index_notification_deliveries_on_provider_message_id"
@@ -1386,6 +1387,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_19_000000) do
     t.integer "volume_push_default", default: 2, null: false
     t.string "webauthn_id"
     t.index ["api_key"], name: "index_users_on_api_key"
+    t.index ["created_at", "id"], name: "index_users_on_created_at_and_id_for_abuse_review"
     t.index ["deactivator_id"], name: "index_users_on_deactivator_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
