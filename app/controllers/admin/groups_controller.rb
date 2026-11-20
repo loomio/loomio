@@ -27,17 +27,6 @@ class Admin::GroupsController < Admin::BaseController
     end
   end
 
-  def delete_spam
-    group_ids.each do |group_id|
-      next unless Group.any_trial.exists?(group_id)
-
-      group = Group.find(group_id)
-      user = group.creator || group.admins.first
-      DestroyUserWorker.perform_later(user.id) if user
-    end
-    redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups scheduled for deletion"
-  end
-
   def import
     render Views::Admin::Groups::Import.new
   end
@@ -161,9 +150,5 @@ class Admin::GroupsController < Admin::BaseController
       :is_visible_to_parent_members, :parent_members_can_see_discussions,
       :membership_granted_upon
     )
-  end
-
-  def group_ids
-    Array(params[:group_ids]).filter_map { |id| Integer(id, exception: false) }
   end
 end

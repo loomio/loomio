@@ -11,40 +11,35 @@ class Views::Admin::Groups::Index < Views::Admin::Layout
   def view_template
     page_header("Groups", action_label: "Import group", action_path: import_admin_groups_path)
     render_filters
-    form_with(url: delete_spam_admin_groups_path, method: :post, data: { confirm: "Schedule the selected trial groups and their creators for deletion?" }) do
-      div(class: "admin-table-wrap") do
-        table(class: "admin-table") do
-          thead do
-            tr do
-              th { "Select" }
-              th { "ID" }
-              th { "Name" }
-              th { "Privacy" }
-              th { "Members" }
-              th { "Discussions" }
-              th { "Created" }
-              th { "Discarded" }
-              th { "Actions" }
-            end
+    div(class: "admin-table-wrap") do
+      table(class: "admin-table") do
+        thead do
+          tr do
+            th { "ID" }
+            th { "Name" }
+            th { "Privacy" }
+            th { "Members" }
+            th { "Discussions" }
+            th { "Created" }
+            th { "Discarded" }
+            th { "Actions" }
           end
-          tbody do
-            @groups.each do |group|
-              tr do
-                td { input(type: "checkbox", name: "group_ids[]", value: group.id, aria: { label: "Select #{group.name}" }) }
-                td { group.id }
-                td { link_to group.full_name, admin_group_path(group) }
-                td { group.group_privacy }
-                td { group.memberships_count }
-                td { group.discussions_count }
-                td { group.created_at.to_date.to_s }
-                td { value(group.discarded_at&.to_date) }
-                td { link_to "Edit", edit_admin_group_path(group) }
-              end
+        end
+        tbody do
+          @groups.each do |group|
+            tr do
+              td { group.id }
+              td { link_to group.full_name, admin_group_path(group) }
+              td { group.group_privacy }
+              td { group.memberships_count }
+              td { group.discussions_count }
+              td { group.created_at.to_date.to_s }
+              td { value(group.discarded_at&.to_date) }
+              td { link_to "Edit", edit_admin_group_path(group) }
             end
           end
         end
       end
-      button(type: "submit", class: "admin-button admin-button--danger") { "Delete selected spam groups" }
     end
     pagination_links(@pagination, @filters)
   end

@@ -29,7 +29,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, @group.name
     refute_includes response.body, groups(:alien_group).name
     assert_operator response.body.index("Search groups"), :<, response.body.index("admin-table")
-    assert_includes response.body, 'data-confirm="Schedule the selected trial groups'
+    assert_select 'form[action="/admin/groups/delete_spam"]', count: 0
   end
 
   test "admin can show and edit a group" do
@@ -228,21 +228,6 @@ class Admin::GroupsControllerTest < ActionController::TestCase
 
     assert @group.reload.discarded?
     assert_includes flash[:notice], "eligible for permanent deletion after 90 days."
-  end
-
-  test "admin can schedule trial groups for spam deletion" do
-    sign_in @admin
-    subscription = Subscription.create!(owner: @admin, plan: "trial")
-    @group.update!(subscription: subscription, creator: users(:user))
-    paid_group = groups(:alien_group)
-    paid_group.update!(subscription: Subscription.create!(owner: @admin, plan: "standard"), creator: users(:alien))
-
-    assert_enqueued_jobs 1, only: DestroyUserWorker do
-      assert_enqueued_with(job: DestroyUserWorker, args: [users(:user).id]) do
-        post :delete_spam, params: { group_ids: [@group.id, paid_group.id, -1, 'invalid'] }
-      end
-    end
-    assert_redirected_to admin_groups_path
   end
 
   test "admin can render the user export report" do
