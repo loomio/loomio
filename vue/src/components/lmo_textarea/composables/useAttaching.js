@@ -2,6 +2,7 @@ import { ref, watch, onMounted, onUnmounted, computed, reactive } from 'vue';
 import FileUploader from '@/shared/services/file_uploader';
 import AttachmentAbility from '@/shared/abilities/attachment_ability';
 import { insertImage } from '../extension_image';
+import { prepareDraftImage } from '../draft_image_preview';
 import { forEach } from 'lodash-es';
 
 export function useAttaching(model, emit) {
@@ -33,13 +34,13 @@ export function useAttaching(model, emit) {
     localPreviewUrls.clear();
   };
 
-  onUnmounted(revokeLocalPreviews);
-
   const resetFiles = () => {
     revokeLocalPreviews();
     files.value = [];
     imageFiles.value = [];
   };
+
+  onUnmounted(resetFiles);
 
   const updateFiles = () => {
     model.value.files = files.value.filter(w => w.blob).map(wrapper => wrapper.blob.signed_id);
@@ -91,9 +92,18 @@ export function useAttaching(model, emit) {
     uploader.upload(file).then(async blob => {
       if (!imageFiles.value.includes(wrapper)) return;
 
-      localPreviewUrls.set(blob.download_url, wrapper.localUrl);
-      if (blob.preview_url) localPreviewUrls.set(blob.preview_url, wrapper.localUrl);
-      await onComplete(blob, wrapper.localUrl);
+      const isImage = file.type.startsWith('image/');
+      const draftImage = isImage ? await prepareDraftImage(wrapper.localUrl) : null;
+      if (!imageFiles.value.includes(wrapper)) return;
+
+      if (isImage) {
+        URL.revokeObjectURL(wrapper.localUrl);
+        wrapper.localUrl = null;
+      } else {
+        localPreviewUrls.set(blob.download_url, wrapper.localUrl);
+        if (blob.preview_url) localPreviewUrls.set(blob.preview_url, wrapper.localUrl);
+      }
+      await onComplete(blob, draftImage);
       if (!imageFiles.value.includes(wrapper)) return;
 
       wrapper.blob = blob;

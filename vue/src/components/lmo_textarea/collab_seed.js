@@ -52,10 +52,11 @@ function fixTaskUids(html) {
 // Returns the seed update for `html` and a short hash to append to the
 // document name. `extensions` must be the editor's content extensions: they
 // define the schema the Collaboration extension writes with.
-export function collabSeed(html, extensions) {
+export function collabSeed(html, extensions, prepareContent) {
   const doc = new Y.Doc();
   doc.clientID = SEED_CLIENT_ID;
   const json = generateJSON(fixTaskUids(html || ''), extensions);
+  prepareContent?.(json);
   prosemirrorJSONToYXmlFragment(getSchema(extensions), json, doc.getXmlFragment(SEED_FIELD));
   const update = Y.encodeStateAsUpdate(doc);
   doc.destroy();

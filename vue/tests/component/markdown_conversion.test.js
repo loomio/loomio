@@ -2,6 +2,7 @@ import { Editor, generateJSON } from '@tiptap/core';
 import { marked } from 'marked';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { contentExtensions } from '@/components/lmo_textarea/content_extensions';
+import { DRAFT_IMAGE_BUDGET } from '@/components/lmo_textarea/draft_image_content';
 import { documentToMarkdown, markdownToHtml } from '@/shared/services/markdown_conversion';
 import { convertToHtml, convertToMd } from '@/shared/services/format_converter';
 import { customRenderer, options } from '@/shared/helpers/marked';
@@ -154,6 +155,24 @@ describe('Markdown mode conversion', () => {
     await convertToHtml(model, 'body');
     expect(model.bodyFormat).toBe('html');
     expect(fragment(model.body).querySelector('strong').textContent).toBe('Latest');
+  });
+
+  it('keeps signed image links when a single draft update exceeds the preview budget', () => {
+    const preview = 'data:image/jpeg;base64,'.padEnd(256 * 1024, 'A');
+    const previewLimit = DRAFT_IMAGE_BUDGET / preview.length;
+    const images = Array.from({ length: previewLimit + 1 }, (_value, index) => ({
+      type: 'image',
+      attrs: { src: `/rails/active_storage/representations/redirect/id-${index}/preview/photo.jpg`, draftPreview: preview },
+    }));
+    const editor = new Editor({ extensions });
+    editors.push(editor);
+    editor.commands.setContent({ type: 'doc', content: images });
+
+    const draftImages = editor.getJSON().content.filter(node => node.type === 'image');
+    expect(draftImages).toHaveLength(previewLimit + 1);
+    expect(draftImages.filter(node => node.attrs.draftPreview)).toHaveLength(previewLimit);
+    expect(draftImages.at(-1).attrs).toMatchObject({ src: images.at(-1).attrs.src, draftPreview: null });
+    expect(editor.getHTML()).not.toContain('data:image');
   });
 
   it('leaves the original field and format intact if conversion fails', async () => {

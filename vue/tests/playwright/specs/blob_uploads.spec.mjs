@@ -6,10 +6,20 @@ const file = (name, mimeType, folder = 'media') => readFile(new URL(`../assets/$
   .then(buffer => ({ name, mimeType, buffer }));
 const imageFile = () => file('oatmilk-bottle.png', 'image/png', 'avatars');
 const stableBlob = /^\/rails\/active_storage\/blobs\//;
+const draftJpeg = /^data:image\/jpeg;base64,/;
 const stableRepresentation = /^\/rails\/active_storage\/representations\//;
 
 async function expectLoaded(media, property) {
   await expect.poll(() => media.evaluate((element, key) => element[key], property)).toBeGreaterThan(0);
+}
+
+async function dropImage(page, textarea, image) {
+  const dataTransfer = await page.evaluateHandle(({ name, mimeType, bytes }) => {
+    const transfer = new DataTransfer();
+    transfer.items.add(new File([new Uint8Array(bytes)], name, { type: mimeType }));
+    return transfer;
+  }, { name: image.name, mimeType: image.mimeType, bytes: Array.from(image.buffer) });
+  await textarea.dispatchEvent('drop', { dataTransfer });
 }
 
 test('a collaborator previews a resized image before the thread is saved', async ({ page, browser }) => {
@@ -30,13 +40,13 @@ test('a collaborator previews a resized image before the thread is saved', async
 
     const imageUpload = page.waitForResponse(response => new URL(response.url()).pathname === '/direct_uploads' &&
       response.request().method() === 'POST' && response.ok());
-    for (const [source, element, property] of [
-      [await imageFile(), image, 'naturalWidth'],
-      [await file('tone.webm', 'audio/webm'), audio, 'readyState'],
-      [await file('blue.webm', 'video/webm'), video, 'videoWidth']
+    for (const [source, element, property, src] of [
+      [await imageFile(), image, 'naturalWidth', draftJpeg],
+      [await file('tone.webm', 'audio/webm'), audio, 'readyState', /^blob:/],
+      [await file('blue.webm', 'video/webm'), video, 'videoWidth', /^blob:/]
     ]) {
       await mediaInput.setInputFiles(source);
-      await expect(element).toHaveAttribute('src', /^blob:/);
+      await expect(element).toHaveAttribute('src', src);
       await expectLoaded(element, property);
     }
 
@@ -48,7 +58,7 @@ test('a collaborator previews a resized image before the thread is saved', async
     page.on('request', recordImageRequest);
     collaborator.on('request', recordImageRequest);
     const sharedImage = editor(collaborator.locator('.discussion-form')).locator('img');
-    await expect(sharedImage).toHaveAttribute('src', /^data:image\/jpeg;base64,/);
+    await expect(sharedImage).toHaveAttribute('src', draftJpeg);
     await expectLoaded(sharedImage, 'naturalWidth');
     const previewUrl = await sharedImage.getAttribute('src');
     expect(previewUrl.length).toBeLessThanOrEqual(256 * 1024);
@@ -57,7 +67,7 @@ test('a collaborator previews a resized image before the thread is saved', async
     expect(width / height).toBeCloseTo(1448 / 1086, 2);
 
     await page.reload();
-    await expect(image).toHaveAttribute('src', /^data:image\/jpeg;base64,/);
+    await expect(image).toHaveAttribute('src', draftJpeg);
     await expectLoaded(image, 'naturalWidth');
     expect(imageRequests).toEqual([]);
     expect((await page.request.get(unsavedUrl)).status()).toBe(404);
@@ -92,12 +102,7 @@ test('the Markdown editor previews uploads locally and saves the same stable lin
   await textarea.fill('Markdown file preview');
 
   const image = await imageFile();
-  const dataTransfer = await page.evaluateHandle(({ name, mimeType, bytes }) => {
-    const transfer = new DataTransfer();
-    transfer.items.add(new File([new Uint8Array(bytes)], name, { type: mimeType }));
-    return transfer;
-  }, { name: image.name, mimeType: image.mimeType, bytes: Array.from(image.buffer) });
-  await textarea.dispatchEvent('drop', { dataTransfer });
+  await dropImage(page, textarea, image);
   await expect(textarea).toHaveValue(/\/rails\/active_storage\/representations\//);
 
   await form.locator('.md-editor__files-input').setInputFiles({ ...image, name: 'attachment.png' });
@@ -107,7 +112,7 @@ test('the Markdown editor previews uploads locally and saves the same stable lin
 
   await form.locator('.md-editor__preview').click();
   const inlinePreview = form.locator('.lmo-markdown-wrapper img');
-  await expect(inlinePreview).toHaveAttribute('src', /^blob:/);
+  await expect(inlinePreview).toHaveAttribute('src', draftJpeg);
   await expectLoaded(inlinePreview, 'naturalWidth');
   await form.locator('.discussion-form__submit').click();
 
@@ -119,4 +124,35 @@ test('the Markdown editor previews uploads locally and saves the same stable lin
   const link = page.locator('a[href^="/rails/active_storage/blobs/"]', { hasText: 'attachment.png' });
   await expect(link).toHaveCount(1);
   expect((await page.request.get(await link.getAttribute('href'))).ok()).toBe(true);
+});
+
+test('draft images survive visual and Markdown conversion in both directions', async ({ page }) => {
+  await page.goto('/dev/setup_discussion_html_description_edit?text=Draft+conversion');
+  const form = page.locator('.discussion-form');
+  const richText = editor(form);
+  const textarea = form.locator('.lmo-textarea textarea');
+  const visualUpload = { ...await imageFile(), name: 'original (draft).png' };
+  await form.locator('.collab-editor__images-input').setInputFiles(visualUpload);
+  await expect(richText.locator('img')).toHaveAttribute('src', draftJpeg);
+
+  await form.locator('.html-editor__expand').click();
+  await form.locator('.e2e-markdown-btn').click();
+  await expect(textarea).toHaveValue(/!\[.*\]\(\/rails\/active_storage\/representations\//);
+  await expect(textarea).not.toHaveValue(/data:image/);
+  const togglePreview = form.locator('.md-editor__preview');
+  await togglePreview.click();
+  await expectLoaded(form.locator('.lmo-markdown-wrapper img[src^="data:image/jpeg"]'), 'naturalWidth');
+  await togglePreview.click();
+
+  await dropImage(page, textarea, { ...await imageFile(), name: 'second-upload.png' });
+  await expect(textarea).toHaveValue(/!\[seconduploadpng\]\(\/rails\/active_storage\/representations\//);
+  await form.locator('.e2e-wysiwyg-btn').click();
+  await expect(richText.locator('img[src^="data:image/jpeg"]')).toHaveCount(2);
+
+  await form.locator('.discussion-form__submit').click();
+  const description = page.locator('.context-panel__description');
+  const savedImages = description.locator('img[src^="/rails/active_storage/representations/"]');
+  await expect(savedImages).toHaveCount(2);
+  await expect.poll(() => savedImages.evaluateAll(images => images.every(image => image.naturalWidth > 0))).toBe(true);
+  await expect(description.locator('img[src^="data:"]')).toHaveCount(0);
 });

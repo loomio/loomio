@@ -1,3 +1,5 @@
+import { saveDraftImagePreviews } from '@/components/lmo_textarea/draft_image_content';
+
 // Load conversion support only when switching modes. Update the format last,
 // so failed conversion leaves the source and active editor intact. The
 // converted HTML becomes the rich-text editor's seed, which names a fresh
@@ -12,7 +14,9 @@ export async function convertToHtml(model, field) {
 
 export async function convertToMd(model, field, editor) {
   const { documentToMarkdown } = await import('./markdown_conversion');
-  const markdown = documentToMarkdown(editor.getJSON());
+  const doc = editor.getJSON();
+  const markdown = documentToMarkdown(doc);
+  saveDraftImagePreviews(model, field, doc);
   model[field] = markdown;
   model[`${field}Format`] = 'md';
 }

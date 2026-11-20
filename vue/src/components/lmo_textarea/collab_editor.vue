@@ -9,6 +9,7 @@ import { I18n } from '@/i18n';
 import { convertToMd } from '@/shared/services/format_converter';
 import { contentExtensions } from './content_extensions';
 import { collabSeed, SEED_FIELD } from './collab_seed';
+import { restoreDraftImagePreviews } from './draft_image_content';
 import { Placeholder, Dropcursor, Gapcursor, CharacterCount } from '@tiptap/extensions';
 
 import { Editor, EditorContent } from '@tiptap/vue-3';
@@ -328,7 +329,9 @@ onMounted(() => {
     canAttachFiles: () => canAttachFiles.value
   });
   seedHtml = props.model[props.field] || '';
-  const seed = collabSeed(seedHtml, extensions);
+  const seed = collabSeed(seedHtml, extensions, json => {
+    restoreDraftImagePreviews(props.model, props.field, json);
+  });
   const docname = [props.model.collabKey(props.field, Session.userId), seed.hash].join('-');
   ydoc = new Y.Doc();
   Y.applyUpdate(ydoc, seed.update);

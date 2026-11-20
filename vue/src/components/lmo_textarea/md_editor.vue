@@ -7,6 +7,7 @@ import SuggestionList from './suggestion_list';
 import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
 import { setMediaPreview } from './media_preview';
+import { draftImagePreviewFor, rememberDraftImagePreview } from './draft_image_content';
 import { useAttaching } from './composables/useAttaching';
 import { useI18n } from 'vue-i18n';
 import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs';
@@ -100,7 +101,8 @@ watch([preview, () => props.model[props.field]], () => {
   previewContent.value?.querySelectorAll('img[src], video[src], audio[src]').forEach(element => {
     const src = element.getAttribute('src');
     if (src.startsWith('/rails/active_storage/')) {
-      setMediaPreview(element, src, localPreviewUrl(src), element.getAttribute('poster'));
+      const draftPreview = element.tagName === 'IMG' && draftImagePreviewFor(props.model, props.field, src);
+      setMediaPreview(element, src, draftPreview || localPreviewUrl(src), element.getAttribute('poster'));
     }
   });
 }, { flush: 'post' });
@@ -167,8 +169,10 @@ const insertImage = (file) => {
       updatePlaceholder(uploadingText(parseInt((e.loaded / e.total) * 100)));
     },
 
-    onComplete: blob => {
-      updatePlaceholder(`![${name}](${blob.preview_url})`);
+    onComplete: (blob, draftImage) => {
+      const src = blob.preview_url || blob.download_url;
+      rememberDraftImagePreview(props.model, props.field, src, draftImage?.preview);
+      updatePlaceholder(`![${name}](${src})`);
     },
 
     onFailure: () => {

@@ -6,7 +6,7 @@ export function isDraftImagePreview(value) {
     value.startsWith(JPEG_DATA_URL_PREFIX);
 }
 
-export function resizeDraftImage(image) {
+function resizeDraftImage(image) {
   if (!image.naturalWidth || !image.naturalHeight) return null;
 
   const canvas = document.createElement('canvas');
@@ -26,4 +26,19 @@ export function resizeDraftImage(image) {
     if (isDraftImagePreview(preview)) return preview;
   }
   return null;
+}
+
+export async function prepareDraftImage(localUrl) {
+  const image = new Image();
+  image.src = localUrl;
+  try {
+    await image.decode();
+    return {
+      width: image.naturalWidth,
+      height: image.naturalHeight,
+      preview: resizeDraftImage(image)
+    };
+  } catch {
+    return null;
+  }
 }

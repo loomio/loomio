@@ -7,7 +7,8 @@ import {
   mergeAttributes,
 } from '@tiptap/core'
 
-import { resizeDraftImage } from './draft_image_preview'
+import { isDraftImagePreview } from './draft_image_preview'
+import { DRAFT_IMAGE_BUDGET } from './draft_image_content'
 import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs'
 
 let count = 0;
@@ -79,18 +80,16 @@ export function insertImage(file, view, coordinates, attachImageFile) {
     onProgress: (e) => {
       document.getElementById(id)?.setAttribute("value", parseInt(e.loaded / e.total * 100))
     },
-    onComplete: async (blob, localUrl) => {
+    onComplete: (blob, draftImage) => {
       let node;
       if (file.type.startsWith('image/')) {
-        const image = document.createElement('img');
-        image.src = localUrl;
-        const draftPreview = await image.decode().then(() => resizeDraftImage(image)).catch(() => null);
-        const scale = Math.min(1, 1280 / Math.max(image.naturalWidth, image.naturalHeight));
+        const { preview, width, height } = draftImage || {};
+        const scale = Math.min(1, 1280 / Math.max(width, height));
         node = schema.nodes.image.create({
           src: blob.preview_url || blob.download_url,
-          draftPreview,
-          width: Math.round(image.naturalWidth * scale) || null,
-          height: Math.round(image.naturalHeight * scale) || null,
+          draftPreview: preview ?? null,
+          width: Math.round(width * scale) || null,
+          height: Math.round(height * scale) || null,
         });
       } else if (file.type.startsWith('video/')) {
         node = schema.nodes.video.create({ src: blob.download_url, poster: blob.preview_url });
@@ -219,6 +218,28 @@ export const CustomImage = Image.extend({
     const attachImageFile = this.options.attachImageFile
     return [
       uploadPlaceholderPlugin,
+      // Evaluate the merged document in document order, including previews
+      // inserted concurrently by different collaborators.
+      new Plugin({
+        appendTransaction(transactions, _oldState, state) {
+          if (!transactions.some(transaction => transaction.docChanged)) return null;
+
+          let remaining = DRAFT_IMAGE_BUDGET;
+          let trimmed;
+          state.doc.descendants((node, position) => {
+            const preview = node.attrs.draftPreview;
+            if (!isDraftImagePreview(preview)) return;
+
+            if (preview.length <= remaining) {
+              remaining -= preview.length;
+            } else {
+              trimmed ||= state.tr;
+              trimmed.setNodeAttribute(position, 'draftPreview', null);
+            }
+          });
+          return trimmed;
+        },
+      }),
       new Plugin({
         props: {
           handleDOMEvents: {
