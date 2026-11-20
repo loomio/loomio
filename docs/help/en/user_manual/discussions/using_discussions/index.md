@@ -301,6 +301,6 @@ To find a locked thread, open the discussion filter on the group page and select
 
 Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
 
-Select **Delete thread** and confirm the deletion. On sites that require a live attachment for downloads, links to the thread’s files and previews stop working when you delete it, unless the same upload is also attached to other active content.
+Select **Delete thread** and confirm the deletion.
 
 ![](../discussion_management/thread_delete.png)

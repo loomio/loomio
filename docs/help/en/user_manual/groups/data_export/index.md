@@ -62,7 +62,7 @@ The JSON export does not include:
 - Anonymous polls that have not closed
 - Direct threads and polls that do not belong to the group
 
-Loomio prepares the JSON file in the background and emails you a download link when it is ready. The link is available for one week.
+You'll shortly receive an email with a link to downloading the JSON file.
 
 <!-- translation-section: print-thread-to-pdf -->
 
