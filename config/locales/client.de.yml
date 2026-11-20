@@ -1293,6 +1293,12 @@ de:
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
     scheduled_for_deletion: Diese Gruppe wird in 2 Wochen endgültig gelöscht.
     deletion_after_grace_period: Diese Gruppe ist nicht verfügbar und wird nach %{days} Tagen endgültig gelöscht
+    discard_title: "Gruppe archivieren"
+    discard_subgroup_title: "Untergruppe archivieren"
+    discard_parent_body: "Diese Gruppe und ihre Untergruppen sind sofort nicht mehr verfügbar. Das Loomio-Abonnement der Gruppe wird ebenfalls gekündigt. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
+    discard_body: "Diese Untergruppe ist sofort nicht mehr verfügbar. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
+    discard_confirm: "Gib zur Bestätigung „%{name}“ ein."
+    discard_success: "Gruppe archiviert. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen

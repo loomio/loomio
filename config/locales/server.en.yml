@@ -773,6 +773,12 @@ en:
       trial_expired_warning: Your Loomio group "%{group}" trial expired %{expired_days} days ago. Unless you contact us, it will be deleted in %{grace_days} days.
       trial_catch_up_warning: A Loomio trial was created for “%{group}” some time ago. We’re cleaning up old trial data and have marked the group for deletion.
       subscription_canceled: The subscription for “%{group}” was cancelled. We’ve marked the group for deletion, and it’s currently unavailable.
+      unavailable_subject: "Your Loomio group is unavailable"
+      requested_unavailable: "%{requestor} made your Loomio group “%{group}” unavailable."
+      trial_expired_unavailable: "The Loomio trial for “%{group}” expired %{expired_days} days ago. The group is unavailable."
+      trial_catch_up_unavailable: "A Loomio trial was created for “%{group}” some time ago. We’re cleaning up old trials, and the group is now unavailable."
+      subscription_canceled_unavailable: "The subscription for “%{group}” was cancelled. The group is unavailable."
+      restore_or_export: "Discard is reversible and scheduled deletion is currently disabled. Reply to this email to request restored access or a copy of the group’s data."
       trial_expired_process: Your group is unavailable while it is marked for deletion. If you still want a place for your group to discuss and make decisions, it is not too late to restart. Reply to this email within %{grace_days} days if you want to request a trial extension, upgrade to a paid subscription, or need more time to export its data. After that, the group and its data will be permanently deleted.
       usage_heading: "Group data summary:"
       subgroups: Subgroups

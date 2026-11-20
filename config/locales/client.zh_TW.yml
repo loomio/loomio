@@ -1288,6 +1288,12 @@ zh_TW:
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
     scheduled_for_deletion: 該群組計劃在兩週後永久刪除。
     deletion_after_grace_period: 該群組目前無法存取，並將在 %{days} 天後被永久刪除
+    discard_title: "封存群組"
+    discard_subgroup_title: "封存子群組"
+    discard_parent_body: "此群組及其子群組將立即無法存取。此群組的 Loomio 訂閱也將取消。 封存可以復原。目前已停用排程刪除。"
+    discard_body: "此子群組將立即無法存取。 封存可以復原。目前已停用排程刪除。"
+    discard_confirm: "輸入「%{name}」以確認。"
+    discard_success: "群組已封存。 封存可以復原。目前已停用排程刪除。"
   group_page:
     stats: 群組統計
     threads: 討論串

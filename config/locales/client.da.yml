@@ -1291,6 +1291,12 @@ da:
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
     scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
     deletion_after_grace_period: Denne gruppe er ikke tilgængelig og vil blive slettet permanent efter %{days} dage
+    discard_title: "Arkivér gruppe"
+    discard_subgroup_title: "Arkivér undergruppe"
+    discard_parent_body: "Denne gruppe og dens undergrupper bliver straks utilgængelige. Gruppens Loomio-abonnement bliver også opsagt. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
+    discard_body: "Denne undergruppe bliver straks utilgængelig. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
+    discard_confirm: "Skriv '%{name}' for at bekræfte."
+    discard_success: "Gruppen er arkiveret. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
   group_page:
     stats: Gruppestatistik
     threads: Debatter

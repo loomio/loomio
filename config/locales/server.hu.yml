@@ -451,6 +451,12 @@ hu:
       trial_expired_warning: A(z) „%{group}” Loomio csoportod próbaidőszaka %{expired_days} napja lejárt. Ha nem veszed fel velünk a kapcsolatot, %{grace_days} nap múlva töröljük.
       trial_catch_up_warning: Egy ideje Loomio-próbaidőszak indult a(z) „%{group}” csoport számára. A régi próbaidőszakok adatait takarítjuk, és a csoportot törlésre jelöltük.
       subscription_canceled: A(z) „%{group}” csoport előfizetését lemondták. A csoportot törlésre jelöltük, és jelenleg nem érhető el.
+      unavailable_subject: "A Loomio-csoportod nem érhető el"
+      requested_unavailable: "%{requestor} elérhetetlenné tette a(z) „%{group}” Loomio-csoportodat."
+      trial_expired_unavailable: "A(z) „%{group}” Loomio-próbaidőszaka %{expired_days} napja lejárt. A csoport nem érhető el."
+      trial_catch_up_unavailable: "Korábban próbaidőszak indult a(z) „%{group}” csoporthoz. Rendezzük a régi próbacsoportokat, és ez a csoport már nem érhető el."
+      subscription_canceled_unavailable: "A(z) „%{group}” előfizetése megszűnt. A csoport nem érhető el."
+      restore_or_export: "Az archiválás visszavonható. Az ütemezett törlés jelenleg ki van kapcsolva. Válaszolj erre az e-mailre a hozzáférés visszaállításához vagy a csoportadatok másolatának igényléséhez."
       trial_expired_process: A csoportod nem érhető el, amíg törlésre van jelölve. Ha továbbra is szeretnél egy helyet, ahol a csoportod megbeszélheti a dolgokat és döntéseket hozhat, még nem késő újrakezdeni. Válaszolj erre az e-mailre %{grace_days} napon belül, ha próbaidőszak meghosszabbítását szeretnéd kérni, fizetős előfizetésre szeretnél frissíteni, vagy több időre van szükséged az adatok exportálásához. Ezt követően a csoport és adatai véglegesen törlődnek.
       trial_expired: A(z) „%{group}” nevű Loomio csoportod legalább 60 napja lejárt próbaidőszakban van. Legalább %{days} napig nem kerül végleges törlésre.
       usage_heading: 'Csoportadatok összefoglalása:'

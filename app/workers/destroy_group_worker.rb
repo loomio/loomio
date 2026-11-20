@@ -11,7 +11,20 @@ class DestroyGroupWorker < ApplicationJob
   # group must invalidate the earlier job. Legacy jobs lack this proof and
   # need operator review before being rescheduled. Recheck the current cleanup
   # switch and retention delay because both can change while a job is queued.
-  def perform(group_id, discarded_at = nil)
+  def perform(group_id, discarded_at = nil, actor_id: nil)
+    if actor_id
+      Group.transaction do
+        group = Group.lock.find_by(id: group_id)
+        next unless group
+
+        actor = User.active.lock.find_by(id: actor_id, is_admin: true)
+        next unless actor
+
+        PaperTrail.request(whodunnit: actor.id) { group.destroy! }
+      end
+      return
+    end
+
     return unless self.class.enabled?
 
     unless discarded_at

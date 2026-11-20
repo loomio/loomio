@@ -94,11 +94,18 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         operation_form("Change handle", handle_admin_group_path(@group), "handle", @group.handle, "Change handle")
         if @group.discarded?
           button_to "Restore group", undiscard_admin_group_path(@group), method: :post, class: "admin-button"
-        else
-          button_to "Discard without warning", discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--secondary", form: { data: { confirm: "Discard #{@group.name} and all of its subgroups without warning their administrators? The group tree will be unavailable until restored." } }
         end
+        confirmation = "Discard #{@group.name} and its subgroups? They will be unavailable immediately."
+        if (days = AppConfig.discarded_group_deletion_after_days)
+          confirmation += " Permanent deletion can begin after #{days} days of being discarded."
+        else
+          confirmation += " Discard is reversible. Scheduled deletion is currently disabled."
+        end
+        button_to "Discard", discard_admin_group_path(@group), method: :post,
+          disabled: @group.discarded?, class: "admin-button admin-button--secondary", form: { data: { confirm: confirmation } }
+        button_to "Delete", admin_group_path(@group), method: :delete, class: "admin-button admin-button--danger",
+          form: { data: { confirm: "Permanently delete #{@group.name} and its subgroups now? This cannot be undone." } }
         export_form
-        button_to "Warn then delete", warn_and_discard_admin_group_path(@group), method: :post, class: "admin-button admin-button--danger", form: { data: { confirm: "Warn the administrators of #{@group.name} and discard its complete group tree now? It will be permanently deleted after #{AppConfig.group_deletion_delay_days} days." } }
       end
     end
   end

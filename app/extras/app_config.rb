@@ -27,10 +27,6 @@ class AppConfig
     @release ||= `git rev-parse HEAD`.strip.presence || File.mtime("app").to_i.to_s
   end
 
-  def self.group_deletion_delay_days
-    discarded_group_deletion_after_days || 90
-  end
-
   def self.discarded_group_deletion_after_days
     value = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
     value.to_i if value&.match?(/\A[1-9][0-9]*\z/)

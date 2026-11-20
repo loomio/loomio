@@ -36,15 +36,10 @@ class AppConfigTest < ActiveSupport::TestCase
     assert_empty uncovered.map(&:identifier), "Add a representative for each uncovered clock rule to config/time_zones.yml"
   end
 
-  test "group deletion grace period is ninety days" do
-    assert_equal 90, AppConfig.group_deletion_delay_days
-  end
-
-  test "the permanent deletion setting also controls the displayed grace period" do
+  test "the permanent deletion setting supplies the configured number of days" do
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "45"
 
     assert_equal 45, AppConfig.discarded_group_deletion_after_days
-    assert_equal 45, AppConfig.group_deletion_delay_days
   end
 
   test "permanent deletion requires a positive whole number of days" do

@@ -1328,6 +1328,12 @@ zh_CN:
     success: 该群组已被存档，并将于两周后永久删除。
     scheduled_for_deletion: 该群组计划在两周后永久删除。
     deletion_after_grace_period: 该群组现已无法访问，并将在 %{days} 天后被永久删除
+    discard_title: "归档群组"
+    discard_subgroup_title: "归档子群组"
+    discard_parent_body: "此群组及其子群组将立即无法访问。此群组的 Loomio 订阅也将取消。 归档可以撤销。目前已停用计划删除。"
+    discard_body: "此子群组将立即无法访问。 归档可以撤销。目前已停用计划删除。"
+    discard_confirm: "输入“%{name}”以确认。"
+    discard_success: "群组已归档。 归档可以撤销。目前已停用计划删除。"
   report:
     start_on: 开始
     end_on: 结束

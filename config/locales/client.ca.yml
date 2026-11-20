@@ -1287,6 +1287,12 @@ ca:
     success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
     scheduled_for_deletion: Està programat que aquest grup s'elimini permanentment d'aquí a 2 setmanes.
     deletion_after_grace_period: Aquest grup no està disponible i se suprimirà permanentment al cap de %{days} dies
+    discard_title: "Arxiva el grup"
+    discard_subgroup_title: "Arxiva el subgrup"
+    discard_parent_body: "Aquest grup i els seus subgrups deixaran d’estar disponibles immediatament. També es cancel·larà la seva subscripció a Loomio. Podeu restaurar el grup. La supressió programada està desactivada."
+    discard_body: "Aquest subgrup deixarà d’estar disponible immediatament. Podeu restaurar el grup. La supressió programada està desactivada."
+    discard_confirm: "Escriviu «%{name}» per confirmar."
+    discard_success: "Grup arxivat. Podeu restaurar el grup. La supressió programada està desactivada."
   group_page:
     stats: Estadístiques del grup
     threads: Fils

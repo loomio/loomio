@@ -445,6 +445,12 @@ da:
       trial_expired_warning: Din prøveperiode på Loomio-gruppen "%{group}" udløb for %{expired_days} dage siden. Medmindre du kontakter os, vil den blive slettet om %{grace_days} dage.
       trial_catch_up_warning: Der blev oprettet en Loomio-prøveperiode for gruppen “%{group}” for noget tid siden. Vi rydder op i gamle prøvedata og har markeret gruppen til sletning.
       subscription_canceled: Abonnementet for gruppen “%{group}” er blevet opsagt. Vi har markeret gruppen til sletning, og den er i øjeblikket utilgængelig.
+      unavailable_subject: "Din Loomio-gruppe er utilgængelig"
+      requested_unavailable: "%{requestor} har gjort din Loomio-gruppe “%{group}” utilgængelig."
+      trial_expired_unavailable: "Loomio-prøveperioden for “%{group}” udløb for %{expired_days} dage siden. Gruppen er utilgængelig."
+      trial_catch_up_unavailable: "Der blev oprettet en Loomio-prøve for “%{group}” for nogen tid siden. Vi rydder op i gamle prøvegrupper, og gruppen er nu utilgængelig."
+      subscription_canceled_unavailable: "Abonnementet for “%{group}” er opsagt. Gruppen er utilgængelig."
+      restore_or_export: "Arkiveringen kan fortrydes. Planlagt sletning er slået fra. Svar på denne mail, hvis du vil have adgang igen eller have en kopi af gruppens data."
       trial_expired_process: Din gruppe er ikke tilgængelig, mens den er markeret til sletning. Hvis du stadig ønsker et sted, hvor din gruppe kan diskutere og træffe beslutninger, er det ikke for sent at genstarte. Besvar denne e-mail inden for %{grace_days} dage, hvis du vil anmode om en forlængelse af prøveperioden, opgradere til et betalt abonnement eller har brug for mere tid til at eksportere dens data. Derefter vil gruppen og dens data blive slettet permanent.
       trial_expired: Din Loomio-gruppe "%{group}" har haft en udløbet prøveperiode i mindst 60 dage. Den vil blive slettet permanent efter %{days} dage.
       usage_heading: 'Oversigt over gruppedata:'

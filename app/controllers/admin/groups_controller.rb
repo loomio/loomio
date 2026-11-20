@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update move handle discard undiscard warn_and_discard export_group]
+  before_action :load_group, only: %i[show edit update destroy move handle discard undiscard warn_and_discard export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -82,12 +82,20 @@ class Admin::GroupsController < Admin::BaseController
 
   def discard
     GroupService.discard(group: @group, actor: current_user)
-    redirect_to admin_group_path(@group), notice: "Group discarded without warning"
+    redirect_to admin_group_path(@group), notice: group_discard_notice
+  end
+
+  def destroy
+    if DestroyGroupWorker.set(priority: -1).perform_later(@group.id, actor_id: current_user.id)
+      redirect_to admin_groups_path, notice: "Permanent deletion queued without a cooldown."
+    else
+      redirect_to admin_group_path(@group), alert: "Permanent deletion could not be queued."
+    end
   end
 
   def warn_and_discard
     GroupService.warn_and_discard(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_delay_days} days"
+    redirect_to admin_groups_path, notice: group_discard_notice
   end
 
   def export_group
@@ -121,6 +129,14 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   private
+
+  def group_discard_notice
+    if (days = AppConfig.discarded_group_deletion_after_days)
+      "Group discarded. It becomes eligible for permanent deletion after #{days} days."
+    else
+      "Group discarded. Discard is reversible and scheduled deletion is currently disabled."
+    end
+  end
 
   def load_group
     @group = Group.friendly.find(params[:id])

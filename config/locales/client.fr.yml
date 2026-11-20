@@ -1306,6 +1306,12 @@ fr:
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
     scheduled_for_deletion: Ce groupe sera supprimé définitivement dans deux semaines.
     deletion_after_grace_period: Ce groupe est inaccessible et sera définitivement supprimé après %{days} jours
+    discard_title: "Archiver le groupe"
+    discard_subgroup_title: "Archiver le sous-groupe"
+    discard_parent_body: "Ce groupe et ses sous-groupes seront immédiatement indisponibles. Son abonnement Loomio sera également résilié. L’archivage est réversible. La suppression programmée est actuellement désactivée."
+    discard_body: "Ce sous-groupe sera immédiatement indisponible. L’archivage est réversible. La suppression programmée est actuellement désactivée."
+    discard_confirm: "Saisissez « %{name} » pour confirmer."
+    discard_success: "Groupe archivé. L’archivage est réversible. La suppression programmée est actuellement désactivée."
   group_page:
     stats: Statistiques du groupe
     threads: Discussions

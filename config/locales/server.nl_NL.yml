@@ -466,6 +466,12 @@ nl_NL:
       trial_expired_warning: De proefperiode voor je Loomio-groep "%{group}" is %{expired_days} dagen geleden verlopen. Als je geen contact met ons opneemt, wordt deze over %{grace_days} dagen verwijderd.
       trial_catch_up_warning: Enige tijd geleden is er een Loomio-proefperiode gestart voor de groep ‘%{group}’. We ruimen oude proefgegevens op en hebben de groep gemarkeerd voor verwijdering.
       subscription_canceled: Het abonnement voor de groep ‘%{group}’ is opgezegd. We hebben de groep gemarkeerd voor verwijdering en deze is momenteel niet beschikbaar.
+      unavailable_subject: "Je Loomio-groep is niet beschikbaar"
+      requested_unavailable: "%{requestor} heeft je Loomio-groep ‘%{group}’ ontoegankelijk gemaakt."
+      trial_expired_unavailable: "De Loomio-proefperiode voor ‘%{group}’ verliep %{expired_days} dagen geleden. De groep is niet beschikbaar."
+      trial_catch_up_unavailable: "Voor ‘%{group}’ is enige tijd geleden een Loomio-proefperiode gestart. We ruimen oude proefgroepen op. De groep is nu niet beschikbaar."
+      subscription_canceled_unavailable: "Het abonnement voor ‘%{group}’ is opgezegd. De groep is niet beschikbaar."
+      restore_or_export: "Je kunt het archiveren ongedaan maken. Geplande verwijdering staat momenteel uit. Beantwoord deze e-mail om herstel van toegang of een kopie van de groepsgegevens te vragen."
       trial_expired_process: Je groep is niet beschikbaar zolang deze is gemarkeerd voor verwijdering. Als je je groep toch een plek wilt bieden om te discussiëren en beslissingen te nemen, is het nog niet te laat om de groep opnieuw te starten. Beantwoord deze e-mail binnen %{grace_days} dagen als je een verlenging van de proefperiode wilt aanvragen, wilt upgraden naar een betaald abonnement of meer tijd nodig hebt om de gegevens te exporteren. Daarna worden de groep en de bijbehorende gegevens definitief verwijderd.
       trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt na %{days} dagen definitief verwijderd.
       usage_heading: 'Samenvatting van de groepsgegevens:'

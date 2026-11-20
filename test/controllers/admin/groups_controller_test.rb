@@ -35,7 +35,9 @@ class Admin::GroupsControllerTest < ActionController::TestCase
   test "admin can show and edit a group" do
     sign_in @admin
 
-    get :show, params: { id: @group.id }
+    AppConfig.stub(:discarded_group_deletion_after_days, nil) do
+      get :show, params: { id: @group.id }
+    end
     assert_response :success
     assert_includes response.body, "Group stats"
     assert_includes response.body, "Add admin"
@@ -44,8 +46,11 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     assert_includes response.body, 'class="admin-operation-list"'
     assert_includes response.body, 'class="admin-panel admin-panel--operations"'
     assert_includes response.body, "Parent group ID or key"
-    assert_includes response.body, "Warn then delete"
-    assert_includes response.body, "Discard without warning"
+    assert_match(/value="Discard"|>Discard<\/button>/, response.body)
+    assert_match(/value="Delete"|>Delete<\/button>/, response.body)
+    assert_select 'input[name="_method"][value="delete"]'
+    assert_includes response.body, "Discard is reversible. Scheduled deletion is currently disabled."
+    assert_includes response.body, "Permanently delete #{@group.name} and its subgroups now?"
 
     get :edit, params: { id: @group.id }
     assert_response :success
@@ -177,10 +182,12 @@ class Admin::GroupsControllerTest < ActionController::TestCase
 
   test "admin can discard without warning and restore a group" do
     sign_in @admin
-    post :discard, params: { id: @group.id }
+    AppConfig.stub(:discarded_group_deletion_after_days, nil) do
+      post :discard, params: { id: @group.id }
+    end
     assert @group.reload.discarded?
     assert_equal @admin.id, @group.discarded_by
-    assert_equal "Group discarded without warning", flash[:notice]
+    assert_includes flash[:notice], "Discard is reversible and scheduled deletion is currently disabled."
 
     post :undiscard, params: { id: @group.id }
     assert_nil @group.reload.discarded_at
@@ -197,12 +204,44 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     end
     assert moved
 
-    GroupService.stub(:warn_and_discard, ->(group:, actor:) { warned = group == @group && actor == @admin }) do
-      post :warn_and_discard, params: { id: @group.id }
+    AppConfig.stub(:discarded_group_deletion_after_days, 90) do
+      GroupService.stub(:warn_and_discard, ->(group:, actor:) { warned = group == @group && actor == @admin }) do
+        post :warn_and_discard, params: { id: @group.id }
+      end
     end
     assert warned
-    assert_equal "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_delay_days} days", flash[:notice]
+    assert_equal "Group discarded. It becomes eligible for permanent deletion after 90 days.", flash[:notice]
 
+  end
+
+  test "discard confirmation states the configured cooldown" do
+    sign_in @admin
+    AppConfig.stub(:discarded_group_deletion_after_days, 90) do
+      get :show, params: { id: @group.id }
+      assert_includes response.body, "Permanent deletion can begin after 90 days of being discarded."
+      post :discard, params: { id: @group.id }
+    end
+
+    assert @group.reload.discarded?
+    assert_includes flash[:notice], "eligible for permanent deletion after 90 days."
+  end
+
+  test "site admins can queue an immediate delete attributed to themselves" do
+    sign_in @admin
+    assert_enqueued_with(job: DestroyGroupWorker, priority: -1, args: [@group.id, { actor_id: @admin.id }]) do
+      delete :destroy, params: { id: @group.id, actor_id: users(:user).id }
+    end
+    assert_redirected_to admin_groups_path
+  end
+
+  test "group admins cannot use site-admin hard deletion" do
+    sign_in users(:user)
+    @group.add_admin!(users(:user))
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      delete :destroy, params: { id: @group.id }
+    end
+    assert_redirected_to dashboard_path
+    assert Group.exists?(@group.id)
   end
 
   test "admin can schedule trial groups for spam deletion" do

@@ -439,6 +439,12 @@ sl:
       trial_expired_warning: Vaša preizkusna različica skupine Loomio »%{group}« je potekla pred %{expired_days} dnevi. Če nas ne kontaktirate, bo izbrisana čez %{grace_days} dni.
       trial_catch_up_warning: Pred časom se je za skupino »%{group}« začelo preizkusno obdobje Loomia. Čistimo podatke starih preizkusov in skupino smo označili za izbris.
       subscription_canceled: Naročnina za skupino »%{group}« je bila preklicana. Skupino smo označili za izbris in trenutno ni na voljo.
+      unavailable_subject: "Vaša skupina Loomio ni na voljo"
+      requested_unavailable: "%{requestor} je onemogočil dostop do vaše skupine Loomio »%{group}«."
+      trial_expired_unavailable: "Preizkusno obdobje Loomia za skupino »%{group}« se je končalo pred %{expired_days} dnevi. Skupina ni na voljo."
+      trial_catch_up_unavailable: "Pred časom se je za skupino »%{group}« začelo preizkusno obdobje Loomia. Urejamo stare preizkusne skupine, zato skupina ni več na voljo."
+      subscription_canceled_unavailable: "Naročnina za skupino »%{group}« je preklicana. Skupina ni na voljo."
+      restore_or_export: "Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen. Odgovorite na to sporočilo, če želite obnoviti dostop ali prejeti kopijo podatkov skupine."
       trial_expired_process: Vaša skupina ni na voljo, dokler je označena za brisanje. Če še vedno želite prostor, kjer lahko vaša skupina razpravlja in sprejema odločitve, ni prepozno za ponovni zagon. Odgovorite na to e-poštno sporočilo v %{grace_days} dneh, če želite zahtevati podaljšanje poskusnega obdobja, nadgraditi na plačljivo naročnino ali potrebujete več časa za izvoz podatkov. Po tem bodo skupina in njeni podatki trajno izbrisani.
       trial_expired: Vaša skupina Loomio »%{group}« je že vsaj 60 dni v potečeni preizkusni različici. Po %{days} dneh bo trajno izbrisana.
       usage_heading: 'Povzetek podatkov skupine:'

@@ -1287,6 +1287,12 @@ nl_NL:
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
     scheduled_for_deletion: Deze groep zal over 2 weken definitief worden verwijderd.
     deletion_after_grace_period: Deze groep is niet beschikbaar en wordt na %{days} dagen definitief verwijderd
+    discard_title: "Groep archiveren"
+    discard_subgroup_title: "Subgroep archiveren"
+    discard_parent_body: "Deze groep en de subgroepen zijn direct niet meer beschikbaar. Het Loomio-abonnement van de groep wordt ook opgezegd. Je kunt het archiveren ongedaan maken. Geplande verwijdering staat momenteel uit."
+    discard_body: "Deze subgroep is direct niet meer beschikbaar. Je kunt het archiveren ongedaan maken. Geplande verwijdering staat momenteel uit."
+    discard_confirm: "Typ ‘%{name}’ om te bevestigen."
+    discard_success: "Groep gearchiveerd. Je kunt het archiveren ongedaan maken. Geplande verwijdering staat momenteel uit."
   group_page:
     stats: Groep statistieken
     threads: Borden
