@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       patch :restore, on: :member
     end
 
-    resources :groups, only: %i[index show edit update destroy] do
+    resources :groups, only: %i[index show edit update] do
       collection do
         get :import
         post :import_json

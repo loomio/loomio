@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::GroupsController < Admin::BaseController
-  before_action :load_group, only: %i[show edit update destroy move handle discard undiscard warn_and_discard export_group]
+  before_action :load_group, only: %i[show edit update move handle discard undiscard warn_and_discard export_group]
 
   def index
     groups, pagination = paginate(filtered_groups)
@@ -83,11 +83,6 @@ class Admin::GroupsController < Admin::BaseController
   def discard
     GroupService.discard(group: @group, actor: current_user)
     redirect_to admin_group_path(@group), notice: group_discard_notice
-  end
-
-  def destroy
-    DestroyGroupWorker.set(priority: -1).perform_later(@group.id, actor_id: current_user.id)
-    redirect_to admin_groups_path, notice: "Permanent deletion queued without a cooldown."
   end
 
   def warn_and_discard

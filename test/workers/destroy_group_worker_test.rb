@@ -63,29 +63,6 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     assert Group.exists?(groups(:orphan_subgroup).id)
   end
 
-  test "manual deletion is immediate and names the site admin in the audit trail" do
-    ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
-    group = groups(:orphan_group_tree)
-    child = groups(:orphan_subgroup)
-    actor = users(:admin)
-
-    DestroyGroupWorker.perform_now(group.id, actor_id: actor.id)
-
-    refute Group.exists?(group.id)
-    refute Group.exists?(child.id)
-    assert_equal actor.id, PaperTrail::Version.find_by!(item_type: "Group", item_id: group.id, event: "destroy").whodunnit
-  end
-
-  test "a queued manual delete requires the actor to still be a site admin" do
-    group = groups(:orphan_group_tree)
-    actor = users(:admin)
-    actor.update_column(:is_admin, false)
-
-    DestroyGroupWorker.perform_now(group.id, actor_id: actor.id)
-
-    assert Group.exists?(group.id)
-  end
-
   test "increasing the deletion delay protects already queued groups" do
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)

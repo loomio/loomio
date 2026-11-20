@@ -106,8 +106,6 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         button_to "Warn and discard", warn_and_discard_admin_group_path(@group), method: :post,
           disabled: @group.discarded?, class: "admin-button admin-button--secondary",
           form: { data: { confirm: "#{confirmation} Group admins will be emailed." } }
-        button_to "Delete", admin_group_path(@group), method: :delete, class: "admin-button admin-button--danger",
-          form: { data: { confirm: "Permanently delete #{@group.name} and its subgroups now? This cannot be undone." } }
         export_form
       end
     end

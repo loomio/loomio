@@ -53,10 +53,8 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       assert_match(/value="Warn and discard"|>Warn and discard<\/button>/, forms.first.to_html)
       assert_includes forms.first["data-confirm"], "Group admins will be emailed."
     end
-    assert_match(/value="Delete"|>Delete<\/button>/, response.body)
-    assert_select 'input[name="_method"][value="delete"]'
     assert_includes response.body, "Discard is reversible. Scheduled deletion is currently disabled."
-    assert_includes response.body, "Permanently delete #{@group.name} and its subgroups now?"
+    assert_select 'form[action=?] input[name="_method"][value="delete"]', admin_group_path(@group), count: 0
 
     get :edit, params: { id: @group.id }
     assert_response :success
@@ -230,24 +228,6 @@ class Admin::GroupsControllerTest < ActionController::TestCase
 
     assert @group.reload.discarded?
     assert_includes flash[:notice], "eligible for permanent deletion after 90 days."
-  end
-
-  test "site admins can queue an immediate delete attributed to themselves" do
-    sign_in @admin
-    assert_enqueued_with(job: DestroyGroupWorker, priority: -1, args: [@group.id, { actor_id: @admin.id }]) do
-      delete :destroy, params: { id: @group.id, actor_id: users(:user).id }
-    end
-    assert_redirected_to admin_groups_path
-  end
-
-  test "group admins cannot use site-admin hard deletion" do
-    sign_in users(:user)
-    @group.add_admin!(users(:user))
-    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-      delete :destroy, params: { id: @group.id }
-    end
-    assert_redirected_to dashboard_path
-    assert Group.exists?(@group.id)
   end
 
   test "admin can schedule trial groups for spam deletion" do
