@@ -773,14 +773,14 @@ en:
       trial_expired_warning: Your Loomio group "%{group}" trial expired %{expired_days} days ago.
       trial_catch_up_warning: A Loomio trial was created for “%{group}” some time ago. We’re cleaning up old trial data and have marked the group for deletion.
       subscription_canceled: The subscription for “%{group}” was cancelled. We’ve marked the group for deletion, and it’s currently unavailable.
-      restore_or_export_before_deletion: "Reply to this email immediately if you’d like us to restore access or export a copy of your group’s data. Your group may be permanently deleted once it has been unavailable for %{days} days."
+      restore_or_export_before_deletion: "Reply to this email immediately if you’d like us to restore access or export a copy of your group’s data. Your group will be permanently deleted once it has been unavailable for %{days} days."
       unavailable_subject: "Your Loomio group is unavailable"
       requested_unavailable: "%{requestor} made your Loomio group “%{group}” unavailable."
       trial_expired_unavailable: "The Loomio trial for “%{group}” expired %{expired_days} days ago. The group is unavailable."
       trial_catch_up_unavailable: "A Loomio trial was created for “%{group}” some time ago. We’re cleaning up old trials, and the group is now unavailable."
       subscription_canceled_unavailable: "The subscription for “%{group}” was cancelled. The group is unavailable."
       restore_or_export: "Discard is reversible and scheduled deletion is currently disabled. Reply to this email to request restored access or a copy of the group’s data."
-      trial_expired_process: Your group is unavailable while it is marked for deletion. If you still want a place for your group to discuss and make decisions, it is not too late to restart. Reply to this email immediately if you want to request a trial extension, upgrade to a paid subscription, or need more time to export its data. Your group may be permanently deleted once it has been unavailable for %{grace_days} days.
+      trial_expired_process: Your group is unavailable while it is marked for deletion. If you still want a place for your group to discuss and make decisions, it is not too late to restart. Reply to this email immediately if you want to request a trial extension, upgrade to a paid subscription, or need more time to export its data. Your group will be permanently deleted once it has been unavailable for %{grace_days} days.
       usage_heading: "Group data summary:"
       subgroups: Subgroups
       members: Current members

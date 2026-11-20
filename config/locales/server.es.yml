@@ -463,14 +463,14 @@ es:
       trial_expired_warning: Tu prueba gratuita del grupo de Loomio "%{group}" caducó hace %{expired_days} días.
       trial_catch_up_warning: Hace algún tiempo se inició una prueba de Loomio para el grupo «%{group}». Estamos limpiando datos de pruebas antiguas y hemos marcado el grupo para su eliminación.
       subscription_canceled: Se ha cancelado la suscripción del grupo «%{group}». Hemos marcado el grupo para su eliminación y actualmente no está disponible.
-      restore_or_export_before_deletion: "Responde de inmediato a este correo si quieres que restablezcamos el acceso o exportemos una copia de los datos de tu grupo. El grupo puede eliminarse definitivamente cuando lleve %{days} días sin estar disponible."
+      restore_or_export_before_deletion: "Responde de inmediato a este correo si quieres que restablezcamos el acceso o exportemos una copia de los datos de tu grupo. El grupo se eliminará definitivamente cuando lleve %{days} días sin estar disponible."
       unavailable_subject: "Tu grupo de Loomio no está disponible"
       requested_unavailable: "%{requestor} ha desactivado el acceso a tu grupo de Loomio «%{group}»."
       trial_expired_unavailable: "La prueba de Loomio para «%{group}» caducó hace %{expired_days} días. El grupo no está disponible."
       trial_catch_up_unavailable: "Hace tiempo se inició una prueba de Loomio para «%{group}». Estamos revisando las pruebas antiguas y el grupo ya no está disponible."
       subscription_canceled_unavailable: "Se ha cancelado la suscripción de «%{group}». El grupo no está disponible."
       restore_or_export: "Puedes deshacer el archivado. La eliminación programada está desactivada. Responde a este correo para solicitar que se restablezca el acceso o pedir una copia de los datos del grupo."
-      trial_expired_process: Tu grupo no está disponible mientras esté marcado para su eliminación. Si aún deseas un espacio para que tu grupo discuta y tome decisiones, todavía estás a tiempo de reactivarlo. Responde de inmediato a este correo si quieres solicitar una extensión de la prueba, pasar a una suscripción de pago o necesitas más tiempo para exportar los datos. El grupo puede eliminarse definitivamente cuando lleve %{grace_days} días sin estar disponible.
+      trial_expired_process: Tu grupo no está disponible mientras esté marcado para su eliminación. Si aún deseas un espacio para que tu grupo discuta y tome decisiones, todavía estás a tiempo de reactivarlo. Responde de inmediato a este correo si quieres solicitar una extensión de la prueba, pasar a una suscripción de pago o necesitas más tiempo para exportar los datos. El grupo se eliminará definitivamente cuando lleve %{grace_days} días sin estar disponible.
       trial_expired: Tu grupo de Loomio "%{group}" ha estado en período de prueba caducado durante al menos 60 días. Se eliminará permanentemente después de %{days} días.
       usage_heading: 'Resumen de datos del grupo:'
       subgroups: Subgrupos

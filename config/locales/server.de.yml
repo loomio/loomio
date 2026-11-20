@@ -471,14 +471,14 @@ de:
       trial_expired_warning: Deine Loomio-Gruppe „%{group}“ ist vor %{expired_days} Tagen als Testversion abgelaufen.
       trial_catch_up_warning: Für die Gruppe „%{group}“ wurde vor einiger Zeit eine Loomio-Testphase gestartet. Wir räumen alte Daten aus Testphasen auf und haben die Gruppe zur Löschung vorgemerkt.
       subscription_canceled: Das Abonnement für die Gruppe „%{group}“ wurde gekündigt. Wir haben die Gruppe zur Löschung vorgemerkt. Sie ist derzeit nicht verfügbar.
-      restore_or_export_before_deletion: "Antworte sofort auf diese E-Mail, wenn wir den Zugriff wiederherstellen oder eine Kopie deiner Gruppendaten exportieren sollen. Deine Gruppe kann endgültig gelöscht werden, sobald sie %{days} Tage lang nicht verfügbar war."
+      restore_or_export_before_deletion: "Antworte sofort auf diese E-Mail, wenn wir den Zugriff wiederherstellen oder eine Kopie deiner Gruppendaten exportieren sollen. Die Gruppe wird endgültig gelöscht, sobald sie %{days} Tage lang nicht verfügbar war."
       unavailable_subject: "Deine Loomio-Gruppe ist nicht verfügbar"
       requested_unavailable: "%{requestor} hat deine Loomio-Gruppe „%{group}“ unzugänglich gemacht."
       trial_expired_unavailable: "Die Loomio-Testphase für „%{group}“ ist vor %{expired_days} Tagen abgelaufen. Die Gruppe ist nicht verfügbar."
       trial_catch_up_unavailable: "Vor einiger Zeit wurde für „%{group}“ eine Loomio-Testphase gestartet. Wir räumen alte Testgruppen auf. Die Gruppe ist jetzt nicht verfügbar."
       subscription_canceled_unavailable: "Das Abonnement für „%{group}“ wurde gekündigt. Die Gruppe ist nicht verfügbar."
       restore_or_export: "Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert. Antworte auf diese E-Mail, wenn du wieder Zugriff oder eine Kopie der Gruppendaten möchtest."
-      trial_expired_process: Deine Gruppe ist vorübergehend nicht verfügbar, da sie zur Löschung markiert ist. Wenn du weiterhin einen Ort für Diskussionen und Entscheidungen deiner Gruppe benötigst, kannst du die Gruppe noch reaktivieren. Antworte sofort auf diese E-Mail, wenn du eine Verlängerung der Testphase beantragen, zu einem kostenpflichtigen Abonnement wechseln oder mehr Zeit für den Datenexport möchtest. Die Gruppe kann endgültig gelöscht werden, sobald sie %{grace_days} Tage lang nicht verfügbar war.
+      trial_expired_process: Deine Gruppe ist vorübergehend nicht verfügbar, da sie zur Löschung markiert ist. Wenn du weiterhin einen Ort für Diskussionen und Entscheidungen deiner Gruppe benötigst, kannst du die Gruppe noch reaktivieren. Antworte sofort auf diese E-Mail, wenn du eine Verlängerung der Testphase beantragen, zu einem kostenpflichtigen Abonnement wechseln oder mehr Zeit für den Datenexport möchtest. Die Gruppe wird endgültig gelöscht, sobald sie %{grace_days} Tage lang nicht verfügbar war.
       trial_expired: Ihre Loomio-Gruppe "%{group}" befindet sich seit mindestens 60 Tagen in der abgelaufenen Testphase. Sie wird nach %{days} Tagen endgültig gelöscht.
       usage_heading: 'Zusammenfassung der Gruppendaten:'
       subgroups: Untergruppen
