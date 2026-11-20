@@ -33,4 +33,17 @@ class GroupMailerTest < ActionMailer::TestCase
 
     assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
   end
+
+  test "catch-up warning describes old trial cleanup and includes the reply window" do
+    group = groups(:trial_cleanup_poll)
+    recipient = users(:admin)
+
+    email = GroupMailer.expired_trial_deletion_warning(group.id, recipient.id, catch_up: true)
+    body = AppConfig.stub(:group_deletion_delay_days, 90) { email.body.decoded }
+
+    assert_includes body, "A Loomio trial was created for “#{group.name}” some time ago."
+    assert_includes body, "cleaning up old trial data"
+    assert_includes body, "Reply to this email within 90 days"
+    refute_includes body, "trial expired 60 days ago"
+  end
 end

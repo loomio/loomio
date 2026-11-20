@@ -461,6 +461,7 @@ es:
       subject: Tu grupo de Loomio está programado para ser eliminado.
       requested: Tu grupo de Loomio "%{group}" fue programado para ser eliminado por %{requestor}. Se eliminará permanentemente después de %{days} días.
       trial_expired_warning: Tu prueba gratuita del grupo de Loomio "%{group}" caducó hace %{expired_days} días. A menos que te pongas en contacto con nosotros, se eliminará en %{grace_days} días.
+      trial_catch_up_warning: Hace algún tiempo se inició una prueba de Loomio para el grupo «%{group}». Estamos limpiando datos de pruebas antiguas y hemos marcado el grupo para su eliminación.
       trial_expired_process: Tu grupo no está disponible mientras esté marcado para su eliminación. Si aún deseas un espacio para que tu grupo discuta y tome decisiones, todavía estás a tiempo de reactivarlo. Responde a este correo electrónico en un plazo de %{grace_days} días si deseas solicitar una extensión del período de prueba, actualizar a una suscripción de pago o necesitas más tiempo para exportar sus datos. Transcurrido ese plazo, el grupo y sus datos se eliminarán permanentemente.
       trial_expired: Tu grupo de Loomio "%{group}" ha estado en período de prueba caducado durante al menos 60 días. Se eliminará permanentemente después de %{days} días.
       usage_heading: 'Resumen de datos del grupo:'

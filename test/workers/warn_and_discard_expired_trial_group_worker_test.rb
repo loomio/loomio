@@ -38,6 +38,22 @@ class WarnAndDiscardExpiredTrialGroupWorkerTest < ActiveSupport::TestCase
     assert group.reload.kept?
   end
 
+  test "the dedicated group cleanup rechecks whether a trial became unused after queueing" do
+    ENV.delete("CLEANUP_ENABLED")
+    groups_before = ENV["LOOMIO_GROUP_CLEANUP_ENABLED"]
+    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = "enabled"
+    group = groups(:trial_cleanup_poll)
+    group.add_admin!(users(:admin))
+    group.topics.update_all(group_id: nil)
+
+    assert_no_enqueued_jobs(only: ActionMailer::MailDeliveryJob) do
+      WarnAndDiscardExpiredTrialGroupWorker.perform_now(group.id, only_unused: false)
+    end
+    assert group.reload.kept?
+  ensure
+    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = groups_before
+  end
+
   test "repeated jobs do not warn again" do
     group = groups(:trial_cleanup_poll)
     group.add_admin!(users(:admin))

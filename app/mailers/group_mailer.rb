@@ -16,13 +16,14 @@ class GroupMailer < ApplicationMailer
     }
   end
 
-  def expired_trial_deletion_warning(group_id, recipient_id)
+  def expired_trial_deletion_warning(group_id, recipient_id, catch_up: false)
     group = Group.find(group_id)
     recipient = User.find(recipient_id)
 
     component = Views::GroupMailer::ExpiredTrialDeletionWarning.new(
       group: group,
-      usage: GroupUsageSummary.for(group)
+      usage: GroupUsageSummary.for(group),
+      catch_up: catch_up
     )
 
     send_email(to: recipient.name_and_email, locale: recipient.locale, component: component,

@@ -67,6 +67,21 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     end
   end
 
+  test "schedules the combined group job with orphan cleanup off" do
+    cleanup_before = ENV.delete("CLEANUP_ENABLED")
+    groups_before = ENV["LOOMIO_GROUP_CLEANUP_ENABLED"]
+    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = "enabled"
+
+    travel_to Time.utc(2026, 9, 8) do
+      assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
+        assert_enqueued_with(job: CleanupGroupsWorker) { HourlyTaskJob.perform_now }
+      end
+    end
+  ensure
+    ENV["CLEANUP_ENABLED"] = cleanup_before
+    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = groups_before
+  end
+
   test "queues expired-trial warnings at midnight UTC only when cleanup is enabled" do
     begin
       ENV.delete("CLEANUP_ENABLED")

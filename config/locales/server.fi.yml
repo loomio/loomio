@@ -441,6 +441,7 @@ fi:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
       requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requestor} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
       trial_expired_warning: Loomio-ryhmäsi "%{group}" kokeilujakso päättyi %{expired_days} päivää sitten. Ellet ota meihin yhteyttä, se poistetaan %{grace_days} päivän kuluttua.
+      trial_catch_up_warning: Ryhmälle ”%{group}” aloitettiin jokin aika sitten Loomion kokeilujakso. Siivoamme vanhojen kokeilujen tietoja ja olemme merkinneet ryhmän poistettavaksi.
       trial_expired_process: Ryhmäsi ei ole käytettävissä, kun se on merkitty poistettavaksi. Jos haluat edelleen paikan, jossa ryhmäsi voi keskustella ja tehdä päätöksiä, ei ole liian myöhäistä aloittaa uudelleen. Vastaa tähän sähköpostiin %{grace_days} päivän kuluessa, jos haluat pyytää kokeilujakson pidennystä, päivittää maksulliseen tilaukseen tai tarvitset lisää aikaa tietojen viemiseen. Tämän jälkeen ryhmä ja sen tiedot poistetaan pysyvästi.
       trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi %{days} päivän kuluttua.
       usage_heading: 'Ryhmätietojen yhteenveto:'

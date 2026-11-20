@@ -437,6 +437,7 @@ hr:
       subject: Vaša Loomio grupa je planirana za brisanje
       requested: Vaša Loomio grupa "%{group}" je zakazana za brisanje od strane %{requestor}. Bit će trajno izbrisana nakon %{days} dana.
       trial_expired_warning: Vaša probna verzija Loomio grupe "%{group}" istekla je prije %{expired_days} dana. Osim ako nas ne kontaktirate, bit će izbrisana za %{grace_days} dana.
+      trial_catch_up_warning: Prije nekog vremena za grupu „%{group}” pokrenuto je probno razdoblje na Loomiju. Čistimo podatke iz starih probnih razdoblja i označili smo grupu za brisanje.
       trial_expired_process: Vaša grupa nije dostupna dok je označena za brisanje. Ako i dalje želite mjesto gdje će vaša grupa raspravljati i donositi odluke, nije prekasno za ponovno pokretanje. Odgovorite na ovu e-poštu u roku od %{grace_days} dana ako želite zatražiti produljenje probnog razdoblja, nadograditi na plaćenu pretplatu ili vam je potrebno više vremena za izvoz podataka. Nakon toga, grupa i njezini podaci bit će trajno izbrisani.
       trial_expired: Vaša Loomio grupa "%{group}" je na istekloj probnoj verziji najmanje 60 dana. Bit će trajno izbrisana nakon %{days} dana.
       usage_heading: 'Sažetak podataka grupe:'

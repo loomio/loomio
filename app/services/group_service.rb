@@ -197,13 +197,24 @@ module GroupService
     end
   end
 
-  def self.warn_and_discard_expired_trial(group_id:)
+  def self.warn_and_discard_expired_trial(group_id:, only_unused: nil)
     group = CleanupService.expired_trial_groups.find_by(id: group_id)
     return unless group
 
-    discard_and_notify(group: group, actor: nil, reason: "trial_expired") do
+    subscription = nil
+    eligible = unless only_unused.nil?
+      -> do
+        subscription = Subscription.lock.find_by(id: group.subscription_id)
+        subscription && CleanupService.group_cleanup_trees(
+          plan: :trial, before: CleanupService::EXPIRED_TRIAL_RETENTION.ago,
+          only_unused: only_unused, root_ids: [group.id]
+        ).key?(group.id)
+      end
+    end
+    discard_and_notify(group: group, actor: nil, reason: "trial_expired", eligible: eligible) do
+      catch_up = subscription.present? && subscription.expires_at <= group.discarded_at - CleanupService::EXPIRED_TRIAL_CATCH_UP_AGE
       group.admins.each do |admin|
-        GroupMailer.expired_trial_deletion_warning(group.id, admin.id).deliver_later
+        GroupMailer.expired_trial_deletion_warning(group.id, admin.id, catch_up: catch_up).deliver_later
       end
     end
   end
@@ -211,10 +222,11 @@ module GroupService
   # All ordinary discard paths share one locked transition. Authorization or
   # automatic eligibility belongs to the entry point; warnings and broadcasts
   # happen only after commit, and repeated requests do not repeat notifications.
-  def self.discard_and_notify(group:, actor:, reason: "requested")
+  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
       next unless group.kept?
+      next if eligible && !eligible.call
 
       group.discard!(actor: actor)
       transaction.after_commit do

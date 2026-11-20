@@ -21,6 +21,7 @@ module CleanupService
   EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
   EMPTY_GROUP_RETENTION = 60.days
   EXPIRED_TRIAL_RETENTION = 60.days
+  EXPIRED_TRIAL_CATCH_UP_AGE = EXPIRED_TRIAL_RETENTION + 1.day
   EXPIRED_TRIAL_WARNING_LIMIT = 100
   DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
@@ -499,7 +500,7 @@ module CleanupService
 
   def self.audit_empty_groups(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
     validate_empty_group_plan!(plan: plan, limit: limit)
-    trees = empty_group_trees(plan: plan, before: before)
+    trees = group_cleanup_trees(plan: plan, before: before, only_unused: true)
     trees = trees.first(limit).to_h if limit
     {
       plan: plan.to_s,
@@ -512,17 +513,38 @@ module CleanupService
 
   def self.discard_empty_groups!(plan:, before: EMPTY_GROUP_RETENTION.ago, limit: nil)
     audit = audit_empty_groups(plan: plan, before: before, limit: limit)
+    return { discarded_roots: 0 } if audit[:root_ids].empty?
 
-    # These dormant trees have already been selected by the audit query. A bulk
-    # update keeps the manual cleanup practical and deliberately has no audit trail.
-    Group.kept.where(id: audit[:group_ids]).update_all(discarded_at: Time.current, discarded_by: nil)
-
-    { discarded_roots: audit[:root_ids].size }
+    # Recheck the candidate trees while writes to their eligibility data are locked.
+    with_write_lock(%i[groups subscriptions topics]) do
+      trees = group_cleanup_trees(plan: plan, before: before, only_unused: true, root_ids: audit[:root_ids])
+      Group.kept.where(id: trees.values.flatten).update_all(discarded_at: Time.current, discarded_by: nil)
+      { discarded_roots: trees.size }
+    end || { discarded_roots: 0 }
   end
 
-  def self.warn_and_discard_expired_trial_groups(now: Time.current)
-    group_ids = expired_trial_groups(now: now).limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
-    group_ids.each { |group_id| WarnAndDiscardExpiredTrialGroupWorker.perform_later(group_id) }
+  def self.discard_unused_groups_and_warn_expired_trials(now: Time.current)
+    EMPTY_GROUP_SUBSCRIPTION_PLANS.each do |plan|
+      discard_empty_groups!(plan: plan, before: now - EMPTY_GROUP_RETENTION, limit: DELETE_BATCH_SIZE)
+    end
+    warn_and_discard_expired_trial_groups(now: now, only_unused: false)
+  end
+
+  def self.warn_and_discard_expired_trial_groups(now: Time.current, only_unused: nil)
+    groups = expired_trial_groups(now: now)
+    unless only_unused.nil?
+      trees = group_cleanup_trees(plan: :trial, before: now - EXPIRED_TRIAL_RETENTION, only_unused: only_unused)
+      # Reserve the first places in each daily batch for newly eligible trials.
+      recently_expired = Subscription.sanitize_sql_array([
+        "CASE WHEN subscriptions.expires_at > ? THEN 0 ELSE 1 END", now - EXPIRED_TRIAL_CATCH_UP_AGE
+      ])
+      groups = groups.where(id: trees.keys).reorder(Arel.sql(recently_expired), "subscriptions.expires_at", :id)
+    end
+    group_ids = groups.limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
+    options = only_unused.nil? ? {} : { only_unused: only_unused }
+    group_ids.each do |group_id|
+      WarnAndDiscardExpiredTrialGroupWorker.perform_later(group_id, **options)
+    end
     { queued_groups: group_ids.size }
   end
 
@@ -543,19 +565,21 @@ module CleanupService
          .order("subscriptions.expires_at", :id)
   end
 
-  def self.empty_group_trees(plan:, before:)
+  def self.group_cleanup_trees(plan:, before:, only_unused:, root_ids: nil)
     plan = plan.to_s
     validate_empty_group_plan!(plan: plan)
     lifecycle_condition = case plan
     when "free" then "s.plan = 'free' AND g.created_at <= :before"
     when "trial" then "s.plan = 'trial' AND s.expires_at <= :before"
     end
+    root_condition = root_ids.nil? ? "" : Group.sanitize_sql_array(["AND g.id IN (?)", root_ids])
+    topic_operator = only_unused ? "NOT EXISTS" : "EXISTS"
     sql = Group.sanitize_sql_array([ <<~SQL, { before: before } ])
       WITH RECURSIVE roots AS (
         SELECT g.id, g.subscription_id FROM groups g
         JOIN subscriptions s ON s.id = g.subscription_id
         WHERE g.parent_id IS NULL AND g.discarded_at IS NULL
-          AND #{lifecycle_condition}
+          AND #{lifecycle_condition} #{root_condition}
           AND s.chargify_subscription_id IS NULL AND s.billing_service_subscription_id IS NULL
           AND NOT EXISTS (SELECT 1 FROM groups other WHERE other.parent_id IS NULL
             AND other.subscription_id = s.id AND other.id != g.id)
@@ -572,7 +596,7 @@ module CleanupService
       )
       SELECT t.root_id, t.group_id FROM tree t
       WHERE NOT EXISTS (SELECT 1 FROM excluded_roots e WHERE e.root_id = t.root_id)
-        AND NOT EXISTS (SELECT 1 FROM used_roots u WHERE u.root_id = t.root_id)
+        AND #{topic_operator} (SELECT 1 FROM used_roots u WHERE u.root_id = t.root_id)
       ORDER BY t.root_id, t.group_id
     SQL
     Group.connection.select_all(sql).to_a.group_by { |row| row["root_id"] }

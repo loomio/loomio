@@ -22,8 +22,10 @@ class HourlyTaskJob < ApplicationJob
     if hour == 0
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
-      if ENV["CLEANUP_ENABLED"].present?
-        CleanupOrphanRecordsWorker.perform_later
+      CleanupOrphanRecordsWorker.perform_later if ENV["CLEANUP_ENABLED"].present?
+      if CleanupGroupsWorker.enabled?
+        CleanupGroupsWorker.perform_later
+      elsif ENV["CLEANUP_ENABLED"].present?
         CleanupService.warn_and_discard_expired_trial_groups
       end
       PublishReviewDueWorker.perform_later
