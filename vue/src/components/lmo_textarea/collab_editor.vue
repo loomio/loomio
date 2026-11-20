@@ -81,6 +81,8 @@ let hocusProvider = null;
 let localProvider = null;
 let seedHtml = '';
 let unregisterBeforeSave = () => {};
+const previewOwnerId = Session.userId;
+const draftImageUrls = new Set();
 
 const btnProps = ref({
   size: 'small',
@@ -91,6 +93,22 @@ const btnProps = ref({
 const iconProps = ref({
   size: 'small'
 });
+
+// The IndexedDB custom store stays local to this browser. The Yjs document
+// holds the stable URL, so the image bytes never enter collaboration updates.
+const imagePreviewKey = url => `${previewOwnerId}:${url}`;
+const rememberImagePreview = (url, file) => {
+  draftImageUrls.add(url);
+  return localProvider.set(imagePreviewKey(url), file).catch(() => {});
+};
+const restoreImagePreview = url => {
+  if (!url.startsWith('/rails/active_storage/') || seedHtml.includes(url)) return;
+
+  return localProvider.get(imagePreviewKey(url)).then(file => {
+    if (file) draftImageUrls.add(url);
+    return file;
+  }).catch(() => {});
+};
 
 // Composables
 const { smAndDown } = useDisplay();
@@ -111,7 +129,7 @@ const {
   fileSelected: fileSelectedBase,
   mediaRecorded: mediaRecordedBase,
   imageSelected: imageSelectedBase
-} = useAttaching(modelRef, emit);
+} = useAttaching(modelRef, emit, rememberImagePreview);
 
 // Computed
 const format = computed(() => {
@@ -152,6 +170,12 @@ const handleUndoKeyDown = (event) => {
 
 const resetDraft = (content) => {
   if (!editor.value) return;
+  for (const url of draftImageUrls) {
+    if (content?.includes(url)) continue;
+
+    localProvider.del(imagePreviewKey(url)).catch(() => {});
+    draftImageUrls.delete(url);
+  }
   editor.value.commands.setContent(content);
 };
 
@@ -324,7 +348,7 @@ onMounted(() => {
   // means no live collaboration. Converted Markdown is already in the model,
   // so it becomes the seed of its own document.
   const extensions = contentExtensions({
-    attachFile, attachImageFile, mentionOptions, localPreviewUrl,
+    attachFile, attachImageFile, mentionOptions, localPreviewUrl, restoreImagePreview,
     canAttachFiles: () => canAttachFiles.value
   });
   seedHtml = props.model[props.field] || '';

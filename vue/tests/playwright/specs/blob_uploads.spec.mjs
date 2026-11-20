@@ -12,7 +12,7 @@ async function expectLoaded(media, property) {
   await expect.poll(() => media.evaluate((element, key) => element[key], property)).toBeGreaterThan(0);
 }
 
-test('a visual editor draft previews local media and saves stable links after reload', async ({ page }) => {
+test('a visual editor restores a local draft image after reload and saves stable media links', async ({ page }) => {
   await page.goto('/dev/setup_discussion_html_description_edit?text=Draft+media');
   const form = page.locator('.discussion-form');
   const richText = editor(form);
@@ -21,6 +21,8 @@ test('a visual editor draft previews local media and saves stable links after re
   const video = richText.locator('video');
   const mediaInput = form.locator('.collab-editor__images-input');
 
+  const imageUpload = page.waitForResponse(response => new URL(response.url()).pathname === '/direct_uploads' &&
+    response.request().method() === 'POST' && response.ok());
   for (const [source, element, property] of [
     [await imageFile(), image, 'naturalWidth'],
     [await file('tone.webm', 'audio/webm'), audio, 'readyState'],
@@ -31,12 +33,23 @@ test('a visual editor draft previews local media and saves stable links after re
     await expectLoaded(element, property);
   }
 
+  const { preview_url: unsavedUrl } = await (await imageUpload).json();
+  const imageRequests = [];
+  page.on('request', request => {
+    if (new URL(request.url()).pathname === unsavedUrl) imageRequests.push(request.url());
+  });
   await page.reload();
-  await expect(image).toHaveAttribute('src', stableRepresentation);
-  const unsavedUrl = await image.getAttribute('src');
+  await expect(image).toHaveAttribute('src', /^blob:/);
+  await expectLoaded(image, 'naturalWidth');
+  expect(imageRequests).toEqual([]);
   expect((await page.request.get(unsavedUrl)).status()).toBe(404);
 
+  const saving = page.waitForRequest(request => request.method() === 'PATCH' &&
+    new URL(request.url()).pathname.startsWith('/api/v1/discussions/'));
   await form.locator('.discussion-form__submit').click();
+  const { discussion: { description: savedHtml } } = (await saving).postDataJSON();
+  expect(savedHtml).toContain(unsavedUrl);
+  expect(savedHtml).not.toMatch(/(?:blob:|data:image\/)/);
   const description = page.locator('.context-panel__description');
   await expect(description.locator('img')).toHaveAttribute('src', stableRepresentation);
 
