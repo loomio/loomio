@@ -1,21 +1,7 @@
-# CleanupService removes records which are no longer needed. Integrity cleanup
-# repairs or deletes records outside application invariants, using callbackless
-# deletes in an explicit order so it can safely traverse broken association
-# graphs. Inactive orphan users are valid lifecycle records, so their removal
-# uses normal model destruction instead.
-#
-# Ordinary parent references are protected by validated foreign keys and required
-# columns. Deploy the reference-integrity migrations before running this version.
-#
-# These checks remain necessary because an ordinary foreign key cannot enforce
-# them: polymorphic comment parents and itemables; polymorphic reactions,
-# bookmarks, tasks, translations, search documents and attachments; comments
-# whose inverse timeline topic_item is missing; invalid topic topic_item roots; orphan
-# PaperTrail versions; retired polymorphic types left by removed models; and
-# subscriptions which are no longer used by a group.
+# Lifecycle maintenance for groups and inactive accounts, and read-only
+# checks for relationships PostgreSQL cannot enforce with a foreign key.
 module CleanupService
-  DELETE_BATCH_SIZE = 1_000
-  DELETE_PASS_LIMIT = 3
+  UNUSED_GROUP_DISCARD_LIMIT = 1_000
   INACTIVE_ORPHAN_USER_LIMIT = 1_000
   INACTIVE_ORPHAN_USER_RETENTION = 60.days
   EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
@@ -73,6 +59,7 @@ module CleanupService
     "Bookmark" => %i[bookmarkable_type bookmarkable_id],
     "Comment" => %i[parent_type parent_id],
     "Notification" => %i[subject_type subject_id],
+    "NotificationDelivery" => %i[recipient_type recipient_id],
     "TopicItem" => %i[itemable_type itemable_id],
     "PgSearch::Document" => %i[searchable_type searchable_id],
     "Reaction" => %i[reactable_type reactable_id],
@@ -82,10 +69,8 @@ module CleanupService
     "Translation" => %i[translatable_type translatable_id]
   }.freeze
 
-  # These models and their tables have been removed. Their polymorphic rows
-  # cannot refer to a live application record and are safe to delete. Deleting
-  # a legacy Document attachment must not purge its blob because the document
-  # migration may have attached that same blob to its current parent record.
+  # Keep references to retired models visible as legacy records. In particular,
+  # a retired Document attachment can still identify a blob used elsewhere.
   POLYMORPHIC_TYPES_RETIRED = {
     "ActiveStorage::Attachment" => %w[Document]
   }.freeze
@@ -94,49 +79,15 @@ module CleanupService
     "Comment.missing_event" => :comments_missing_event,
     "Comment.missing_parent" => :comments_missing_parent,
     "TopicItem.missing_stance" => :events_missing_stance,
+    "TopicItem.missing_version" => :events_missing_version,
+    "TopicItem.invalid_root" => :events_invalid_root,
     "Reaction.missing_stance" => :reactions_missing_stance,
     "Bookmark.missing_stance" => :bookmarks_missing_stance,
     "Task.missing_stance" => :tasks_missing_stance,
     "Translation.missing_stance" => :translations_missing_stance,
     "PgSearch::Document.missing_stance" => :search_documents_missing_stance,
-    "ActiveStorage::Attachment.missing_stance" => :attachments_missing_stance,
-    "Subscription.missing_group" => :subscriptions_missing_group
+    "ActiveStorage::Attachment.missing_stance" => :attachments_missing_stance
   }.freeze
-
-  def self.audit_orphan_records
-    audit = orphan_record_audit
-
-    return audit if Rails.env.test?
-
-    puts "Dangling records:"
-    print_audit_counts(audit[:dangling_records])
-    puts "Retired polymorphic types (will be deleted):"
-    print_audit_counts(audit[:retired_polymorphic_types])
-    puts "Unresolved polymorphic types (not deleted):"
-    print_audit_counts(audit[:unresolved_polymorphic_types])
-
-    audit
-  end
-
-  def self.delete_orphan_records
-    # A few bounded passes resolve dependencies exposed by earlier deletions
-    # without turning an accumulated backlog into an unbounded maintenance job.
-    DELETE_PASS_LIMIT.times do
-      count = dangling_record_scopes.sum do |label, scope|
-        next 0 if scope.klass == Comment
-
-        deleted = delete_records(scope)
-        puts "deleted #{deleted} dangling #{label} records" unless Rails.env.test?
-        deleted
-      end
-      count += delete_orphan_comments
-      count += delete_orphan_polymorphic_records
-      break if count.zero?
-    end
-
-    cleanup_event_parent_references!
-    delete_orphan_versions
-  end
 
   # Delete accounts outside the retention period only when they have no
   # durable association with the application. Administrators are always kept;
@@ -193,17 +144,34 @@ module CleanupService
     SQL
   end
 
-  def self.orphan_record_audit
-    {
-      dangling_records: dangling_record_scopes.transform_values { |scope| unique_count(scope) },
-      retired_polymorphic_types: retired_polymorphic_type_counts,
-      unresolved_polymorphic_types: unresolved_polymorphic_type_counts
+  # ID mode supports before/after checks in rehearsals where writes can be
+  # isolated. Counts are the default for production inventory.
+  def self.audit_orphan_records(include_ids: false)
+    audit = {
+      dangling_records: dangling_record_scopes,
+      missing_polymorphic_targets: {},
+      retired_polymorphic_types: {},
+      unresolved_polymorphic_types: {},
+      retained_records: { "Subscription.missing_group" => subscriptions_missing_group }
     }
+
+    polymorphic_reference_scopes.each do |key, (category, scope)|
+      audit.fetch(category)[key] = scope
+    end
+
+    audit.transform_values do |scopes|
+      scopes.transform_values do |scope|
+        if include_ids
+          primary_key = scope.klass.arel_table[scope.klass.primary_key]
+          scope.reorder(primary_key).distinct.pluck(primary_key)
+        else
+          unique_count(scope)
+        end
+      end
+    end
   end
 
-  # These categories need more than the original destroy-in-scope loop: some
-  # records must be repaired and some deleted in dependency order. Keep this
-  # report side-effect free so operators can review the complete plan first.
+  # Timeline-specific diagnostics used to determine which topics need repair.
   def self.reference_integrity_audit
     invalid_root_topic_items = events_invalid_root
     affected_topic_ids = (
@@ -232,33 +200,6 @@ module CleanupService
       topics_affected: affected_topic_ids.length,
       topic_ids_sample: affected_topic_ids.sort.first(20)
     }
-  end
-
-  def self.cleanup_event_parent_references!
-    TopicItem.transaction do
-      events_invalid_root.limit(DELETE_BATCH_SIZE).find_each do |topic_item|
-        parent = topic_item.find_parent_topic_item
-        raise "TopicItem #{topic_item.id} has no valid parent" unless parent&.topic_id == topic_item.topic_id
-
-        topic_item.update_columns(parent_id: parent.id, depth: parent.depth + 1)
-      end
-    end
-  end
-
-  # Missing timeline entries and broken hierarchy links are repairable data,
-  # not proof that content is disposable. Keep them in the audit for repair.
-  def self.cleanup_comment_references!
-    Comment.transaction do
-      delete_orphan_comments
-      delete_orphan_polymorphic_records
-      cleanup_event_parent_references!
-    end
-  end
-
-  def self.delete_orphan_comments
-    count = delete_records(comments_missing_parent)
-    puts "deleted #{count} dangling Comment records" unless Rails.env.test?
-    count
   end
 
   def self.dangling_record_scopes
@@ -291,6 +232,14 @@ module CleanupService
     TopicItem
       .joins("LEFT JOIN stances ON topic_items.itemable_type = 'Stance' AND stances.id = topic_items.itemable_id")
       .where(itemable_type: "Stance", stances: { id: nil })
+  end
+
+  def self.events_missing_version
+    missing_reference(
+      TopicItem.where.not(itemable_version_id: nil),
+      :itemable_version_id,
+      PaperTrail::Version
+    )
   end
 
   def self.events_invalid_root
@@ -342,132 +291,39 @@ module CleanupService
       .where('groups.id IS NULL')
   end
 
-  def self.delete_orphan_versions
-    orphan_version_scopes.sum do |item_type, scope|
-      count = delete_records(scope)
-
-      puts "deleted #{count} orphan #{item_type} version records" unless Rails.env.test?
-      count
-    end
-  end
-
-  def self.orphan_version_scopes
-    PaperTrail::Version.distinct.pluck(:item_type).index_with do |item_type|
-      orphan_version_scope_for(item_type)
-    end
-  end
-
-  def self.delete_orphan_versions_for(item_type)
-    orphan_version_scope_for(item_type).delete_all
-  end
-
-  def self.delete_records(scope)
-    record_class = scope.klass
-    # A missing parent group says nothing about the value of its subtree.
-    return 0 if record_class == Group
-    if record_class == Comment
-      scope = scope.where(id: comments_missing_parent.select(:id)).where(<<~SQL.squish)
-        NOT EXISTS (
-          SELECT 1 FROM topic_items
-          JOIN topics ON topics.id = topic_items.topic_id
-          WHERE topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id
-        )
-        AND NOT EXISTS (
-          SELECT 1 FROM comments children
-          WHERE children.parent_type = 'Comment' AND children.parent_id = comments.id
-        )
-      SQL
-    end
-    if record_class == TopicItem
-      # Raw deletes bypass reparenting callbacks, and the self-FK cascades.
-      # Preserve damaged ancestors until their surviving children are repaired.
-      scope = scope.where("NOT EXISTS (SELECT 1 FROM topic_items children WHERE children.parent_id = topic_items.id)")
-    end
-    if record_class == Topic
-      # A missing polymorphic root does not make surviving content disposable.
-      # Keep the topic for repair; its FKs also prevent concurrent child inserts
-      # from being orphaned if an otherwise empty topic is deleted here.
-      %w[topic_items polls discussions].each do |table|
-        scope = scope.where("NOT EXISTS (SELECT 1 FROM #{table} children WHERE children.topic_id = topics.id)")
-      end
-    end
-    primary_key = record_class.primary_key
-    primary_key_column = record_class.arel_table[primary_key]
-    ids = scope.limit(DELETE_BATCH_SIZE).pluck(primary_key_column)
-    return 0 if ids.empty?
-
-    deleted = if record_class == Comment
-      with_write_lock(%i[comments topic_items topics discussions polls stances outcomes]) { scope.where(primary_key => ids).delete_all }
-    elsif record_class == TopicItem
-      with_write_lock(%i[topic_items]) { scope.where(primary_key => ids).delete_all }
-    else
-      scope.where(primary_key => ids).delete_all
-    end
-    deleted.to_i
-  end
-
-  def self.delete_orphan_polymorphic_records
-    POLYMORPHIC_REFERENCES.sum do |class_name, (type_column, id_column)|
+  def self.polymorphic_reference_scopes
+    POLYMORPHIC_REFERENCES.merge("PaperTrail::Version" => %i[item_type item_id]).each_with_object({}) do |(class_name, (type_column, id_column)), scopes|
       record_class = class_name.constantize
 
-      record_class.distinct.pluck(type_column).compact.sum do |record_type|
-        count = delete_records(
-          orphan_polymorphic_scope(
-            record_class,
-            type_column,
-            id_column,
-            record_type
-          )
-        )
-        puts "deleted #{count} orphan #{class_name} #{record_type} records" unless Rails.env.test?
-        count
+      record_class.distinct.pluck(type_column).compact.each do |record_type|
+        scope = record_class.where(type_column => record_type)
+        target = polymorphic_target_class(record_type)
+        category = if POLYMORPHIC_TYPES_RETIRED.fetch(class_name, []).include?(record_type)
+          :retired_polymorphic_types
+        elsif target.nil?
+          :unresolved_polymorphic_types
+        else
+          scope = missing_reference(scope, id_column, target)
+          record_class == PaperTrail::Version ? :retained_records : :missing_polymorphic_targets
+        end
+        scopes["#{class_name}.#{record_type}"] = [category, scope]
       end
     end
   end
 
-  def self.orphan_polymorphic_scope(record_class, type_column, id_column, record_type)
-    scope = record_class.where(type_column => record_type)
-    return scope if polymorphic_type_retired?(record_class.name, record_type)
+  def self.missing_reference(scope, id_column, target)
+    source = scope.klass
+    source_table = source.quoted_table_name
+    target_table = target.quoted_table_name
+    source_id = source.connection.quote_column_name(id_column)
+    target_id = target.connection.quote_column_name(target.primary_key)
 
-    target_class = polymorphic_target_class(record_type)
-
-    return scope.none unless target_class
-
-    record_table = record_class.quoted_table_name
-    target_table = target_class.quoted_table_name
-    record_id = record_class.connection.quote_column_name(id_column)
-    target_id = target_class.connection.quote_column_name(target_class.primary_key)
-
-    scope.where("NOT EXISTS (SELECT 1 FROM #{target_table} WHERE #{target_table}.#{target_id} = #{record_table}.#{record_id})")
-  end
-
-  def self.unresolved_polymorphic_type_counts
-    POLYMORPHIC_REFERENCES.each_with_object({}) do |(class_name, (type_column, _id_column)), counts|
-      record_class = class_name.constantize
-
-      record_class.group(type_column).count.each do |record_type, count|
-        next if record_type.blank?
-        next if polymorphic_type_retired?(class_name, record_type)
-        next if polymorphic_target_class(record_type)
-
-        counts["#{class_name}.#{record_type}"] = count
-      end
-    end
-  end
-
-  def self.retired_polymorphic_type_counts
-    POLYMORPHIC_TYPES_RETIRED.each_with_object({}) do |(class_name, record_types), counts|
-      record_class = class_name.constantize
-      type_column = POLYMORPHIC_REFERENCES.fetch(class_name).first
-
-      record_types.each do |record_type|
-        counts["#{class_name}.#{record_type}"] = record_class.where(type_column => record_type).count
-      end
-    end
-  end
-
-  def self.polymorphic_type_retired?(class_name, record_type)
-    POLYMORPHIC_TYPES_RETIRED.fetch(class_name, []).include?(record_type)
+    scope.where(<<~SQL.squish)
+      NOT EXISTS (
+        SELECT 1 FROM #{target_table} AS reference_target
+        WHERE reference_target.#{target_id} = #{source_table}.#{source_id}
+      )
+    SQL
   end
 
   def self.polymorphic_target_class(record_type)
@@ -476,22 +332,6 @@ module CleanupService
     return unless target_class.table_exists? && target_class.primary_key
 
     target_class
-  end
-
-  def self.orphan_version_scope_for(item_type)
-    model = item_type.safe_constantize
-
-    unless model.is_a?(Class) && model < ActiveRecord::Base && model.table_exists? && model.primary_key
-      return PaperTrail::Version.where(item_type: item_type)
-    end
-
-    version_table = PaperTrail::Version.quoted_table_name
-    item_table = model.quoted_table_name
-    primary_key = model.connection.quote_column_name(model.primary_key)
-
-    PaperTrail::Version
-      .where(item_type: item_type)
-      .where("NOT EXISTS (SELECT 1 FROM #{item_table} WHERE #{item_table}.#{primary_key} = #{version_table}.item_id)")
   end
 
   def self.unique_count(scope)
@@ -525,7 +365,7 @@ module CleanupService
 
   def self.discard_unused_groups_and_warn_expired_trials(now: Time.current)
     EMPTY_GROUP_SUBSCRIPTION_PLANS.each do |plan|
-      discard_empty_groups!(plan: plan, before: now - EMPTY_GROUP_RETENTION, limit: DELETE_BATCH_SIZE)
+      discard_empty_groups!(plan: plan, before: now - EMPTY_GROUP_RETENTION, limit: UNUSED_GROUP_DISCARD_LIMIT)
     end
     warn_and_discard_expired_trial_groups(now: now, only_unused: false)
   end
@@ -606,15 +446,5 @@ module CleanupService
   def self.validate_empty_group_plan!(plan:, limit: nil)
     raise ArgumentError, "plan must be free or trial" unless EMPTY_GROUP_SUBSCRIPTION_PLANS.include?(plan.to_s)
     raise ArgumentError, "limit must be positive" if limit && limit <= 0
-  end
-
-  def self.print_audit_counts(counts)
-    positive_counts = counts.select { |_name, count| count.positive? }
-
-    if positive_counts.empty?
-      puts "none"
-    else
-      positive_counts.each { |name, count| puts "#{name}: #{count}" }
-    end
   end
 end

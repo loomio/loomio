@@ -4,11 +4,11 @@ require_relative "../support/access_volume_matrix"
 class CleanupPreservationTest < ActiveSupport::TestCase
   include AccessVolumeMatrix
 
-  test "orphan cleanup preserves the complete access and volume matrix" do
+  test "the orphan audit preserves the complete access and volume matrix" do
     before = access_volume_matrix
     records = [ Membership, TopicReader ].to_h { |model| [ model, model.order(:id).map(&:attributes) ] }
 
-    2.times { CleanupService.delete_orphan_records }
+    CleanupService.audit_orphan_records
 
     records.each { |model, expected| assert_equal expected, model.order(:id).map(&:attributes), model.name }
     assert_access_volume_matrix_unchanged(before)
@@ -21,7 +21,7 @@ class CleanupPreservationTest < ActiveSupport::TestCase
     parent.topic_items.delete_all
     parent.update_column(:parent_id, Discussion.maximum(:id) + 1000)
 
-    2.times { CleanupService.delete_orphan_records }
+    CleanupService.audit_orphan_records
 
     assert Comment.exists?(parent.id)
     assert Comment.exists?(reply.id)
@@ -34,7 +34,7 @@ class CleanupPreservationTest < ActiveSupport::TestCase
     reply.topic_items.update_all(parent_id: parent.topic.topicable.created_topic_item.id, depth: 1)
     parent.topic_items.delete_all
 
-    2.times { CleanupService.delete_orphan_records }
+    CleanupService.audit_orphan_records
 
     assert Comment.exists?(parent.id)
     assert Comment.exists?(reply.id)
@@ -49,7 +49,7 @@ class CleanupPreservationTest < ActiveSupport::TestCase
     child = comment.created_topic_item
     child.update_columns(parent_id: dangling.id, depth: dangling.depth + 1)
 
-    2.times { CleanupService.delete_orphan_records }
+    CleanupService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
     assert TopicItem.exists?(child.id)
@@ -67,7 +67,7 @@ class CleanupPreservationTest < ActiveSupport::TestCase
       Group.transaction(requires_new: true) { Group.where(id: root.id).delete_all }
     end
 
-    2.times { CleanupService.delete_orphan_records }
+    CleanupService.audit_orphan_records
 
     assert Group.exists?(subgroup.id)
     assert Discussion.exists?(discussion.id)

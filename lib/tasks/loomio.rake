@@ -365,6 +365,16 @@ namespace :loomio do
     SeededContentCleanupService.audit
   end
 
+  desc "Report broken references and retained records in a read-only database transaction"
+  task audit_orphan_records: :environment do
+    connection = ActiveRecord::Base.connection
+    connection.transaction do
+      connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY")
+      connection.execute("SET LOCAL statement_timeout = '2min'")
+      puts JSON.pretty_generate(CleanupService.audit_orphan_records)
+    end
+  end
+
   desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
   task audit_empty_groups: :environment do
     limit = ENV["LIMIT"].presence&.to_i

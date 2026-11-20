@@ -20,11 +20,18 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     subgroup = groups(:orphan_subgroup)
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
+    before = CleanupService.audit_orphan_records(include_ids: true)
 
     2.times { DestroyGroupWorker.perform_now(group.id, discarded_at) }
 
     assert_not Group.exists?(group.id)
     assert_not Group.exists?(subgroup.id)
+    after = CleanupService.audit_orphan_records(include_ids: true)
+    after.slice(:dangling_records, :missing_polymorphic_targets).each do |category, scopes|
+      scopes.each do |name, ids|
+        assert_empty(ids - before.fetch(category).fetch(name, []), name)
+      end
+    end
   end
 
   test "an old job preserves a restored then rediscarded group" do

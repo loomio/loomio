@@ -23,10 +23,10 @@ class CleanupDeliveryMatrixTest < ActiveSupport::TestCase
       }
     }
 
-    %i[baseline orphan_cleanup inactive_cleanup].each do |phase|
+    %i[baseline orphan_audit inactive_cleanup].each do |phase|
       case phase
-      when :orphan_cleanup
-        CleanupService.delete_orphan_records
+      when :orphan_audit
+        CleanupService.audit_orphan_records
       when :inactive_cleanup
         CleanupService.delete_inactive_orphan_users
       end
