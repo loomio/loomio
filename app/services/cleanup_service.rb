@@ -12,11 +12,14 @@ module CleanupService
   DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
   USER_REFERENCES = {
+    anonymous_poll_voters: %i[voter_id inviter_id],
     bookmarks: %i[user_id],
     chatbots: %i[author_id],
     comments: %i[user_id discarded_by],
     discussion_templates: %i[author_id discarded_by hider_id],
     discussions: %i[author_id discarded_by],
+    email_suppressions: %i[cleared_by_id],
+    group_follows: %i[user_id],
     topic_items: %i[user_id],
     groups: %i[creator_id],
     member_email_aliases: %i[user_id author_id],
@@ -388,14 +391,54 @@ module CleanupService
     { queued_groups: group_ids.size }
   end
 
-  def self.destroy_discarded_groups(now: Time.current)
+  def self.deletable_discarded_groups(now: Time.current)
     discarded_before = now - AppConfig.group_deletion_delay_days.days
-    groups = Group.discarded.parents_only.where(discarded_at: ..discarded_before)
-                  .order(:discarded_at, :id)
-                  .limit(DISCARDED_GROUP_DESTRUCTION_LIMIT)
+    Group.discarded.parents_only.where(discarded_at: ..discarded_before).where(<<~SQL.squish, cutoff: discarded_before, now: now)
+      NOT EXISTS (
+        SELECT 1 FROM subscriptions s
+        WHERE s.id = groups.subscription_id
+          AND (s.chargify_subscription_id IS NOT NULL OR s.billing_service_subscription_id IS NOT NULL)
+          AND s.state IN ('active', 'pending', 'past_due', 'on_hold')
+          AND (s.expires_at IS NULL OR s.expires_at > :now)
+      )
+      AND NOT EXISTS (
+        WITH RECURSIVE tree AS (
+          SELECT id, discarded_at, subscription_id FROM groups child WHERE child.parent_id = groups.id
+          UNION ALL
+          SELECT child.id, child.discarded_at, child.subscription_id
+          FROM tree JOIN groups child ON child.parent_id = tree.id
+        )
+        SELECT 1 FROM tree
+        WHERE discarded_at IS NULL OR discarded_at > :cutoff
+           OR (subscription_id IS NOT NULL AND subscription_id IS DISTINCT FROM groups.subscription_id)
+      )
+    SQL
+  end
 
-    groups.find_each do |group|
-      DestroyGroupWorker.perform_later(group.id, group.discarded_at.iso8601(6))
+  def self.descendant_groups(root_id)
+    Group.with_recursive(group_descendants: [
+      Group.where(parent_id: root_id).select(:id),
+      Group.joins("JOIN group_descendants ON groups.parent_id = group_descendants.id").select(:id)
+    ]).where("groups.id IN (SELECT id FROM group_descendants)")
+  end
+
+  def self.destroy_discarded_groups(now: Time.current, root_ids: nil)
+    return 0 unless DestroyGroupWorker.enabled?
+
+    SolidQueue::Job.transaction do
+      connection = SolidQueue::Job.connection
+      next 0 unless connection.select_value("SELECT pg_try_advisory_xact_lock(hashtextextended('loomio_discarded_group_dispatch', 0))")
+
+      pending = SolidQueue::Job.where(queue_name: "group_destruction", finished_at: nil)
+      remaining = DISCARDED_GROUP_DESTRUCTION_LIMIT - pending.count
+      next 0 unless remaining.positive?
+
+      queued_ids = pending.where(class_name: DestroyGroupWorker.name).map { |job| job.arguments.fetch("arguments").first }
+      groups = deletable_discarded_groups(now: now).where.not(id: queued_ids)
+      groups = groups.where(id: root_ids) if root_ids
+      groups.order(:discarded_at, :id).limit(remaining).count do |group|
+        DestroyGroupWorker.perform_later(group.id, group.discarded_at.iso8601(6))
+      end
     end
   end
 

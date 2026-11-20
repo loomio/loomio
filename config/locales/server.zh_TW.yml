@@ -472,6 +472,7 @@ zh_TW:
       requested: 您的 Loomio 群組「%{group}」已被 %{requestor} 安排刪除。該群組將在 %{days} 天後被永久刪除。
       trial_expired_warning: 您的 Loomio 群組「%{group}」試用期已於 %{expired_days} 天前到期。除非您聯絡我們，否則它將在 %{grace_days} 天內被刪除。
       trial_catch_up_warning: 一段時間前，群組「%{group}」開啟了 Loomio 試用。我們正在清理舊的試用資料，已將這個群組標記為待刪除。
+      subscription_canceled: 群組「%{group}」的訂閱已取消。我們已將該群組標記為待刪除，目前無法存取。
       trial_expired_process: 您的群組已被標記為刪除，因此暫時無法使用。如果您仍然希望群組能夠繼續討論和決策，現在重新開始還不算晚。如果您想申請延長試用期、升級到付費訂閱或需要更多時間匯出數據，請在 %{grace_days} 天內回覆此郵件。逾期後，群組及其資料將永久刪除。
       trial_expired: 您的 Loomio 群組「%{group}」已處於試用期至少 60 天，試用期已過期。該群組將在 %{days} 天後被永久刪除。
       usage_heading: 群組資料匯總：

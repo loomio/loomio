@@ -3,15 +3,15 @@ require_relative "../support/access_volume_matrix"
 
 class DestroyGroupWorkerTest < ActiveSupport::TestCase
   setup do
-    @cleanup_enabled_before = ENV["CLEANUP_ENABLED"]
-    ENV["CLEANUP_ENABLED"] = "1"
+    @cleanup_enabled_before = ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"]
+    ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = "1"
   end
 
   teardown do
     if @cleanup_enabled_before.nil?
-      ENV.delete("CLEANUP_ENABLED")
+      ENV.delete("LOOMIO_DISCARDED_GROUP_DELETION_ENABLED")
     else
-      ENV["CLEANUP_ENABLED"] = @cleanup_enabled_before
+      ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = @cleanup_enabled_before
     end
   end
 
@@ -59,7 +59,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
-    ENV.delete("CLEANUP_ENABLED")
+    ENV.delete("LOOMIO_DISCARDED_GROUP_DELETION_ENABLED")
 
     DestroyGroupWorker.perform_now(group.id, discarded_at)
 
@@ -78,6 +78,18 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
 
     assert Group.exists?(group.id)
     assert Group.exists?(groups(:orphan_subgroup).id)
+  end
+
+  test "a restored or recently discarded subgroup prevents deleting its tree" do
+    group = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+    group.discard!(at: 91.days.ago)
+    [nil, 1.day.ago].each do |discarded_at|
+      subgroup.update_column(:discarded_at, discarded_at)
+      DestroyGroupWorker.perform_now(group.id, group.discarded_at.iso8601(6))
+      assert Group.exists?(group.id)
+      assert Group.exists?(subgroup.id)
+    end
   end
 
   test "deletion starts only when the full delay has elapsed" do

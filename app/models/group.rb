@@ -336,10 +336,10 @@ class Group < ApplicationRecord
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def discard!(actor: nil, at: Time.current)
+  def discard!(actor: nil, at: Time.current, group_ids: id_and_subgroup_ids)
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
-        Group.kept.where(id: id_and_subgroup_ids).find_each do |group|
+        Group.kept.where(id: group_ids).find_each do |group|
           group.assign_attributes(discarded_at: at, discarded_by: actor&.id)
           group.save!(validate: false)
         end

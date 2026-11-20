@@ -706,6 +706,7 @@ zh_CN:
       requested: 您的 Loomio 群组“%{group}”已被 %{requestor} 安排删除。该群组将在 %{days} 天后被永久删除。
       trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。除非您联系我们，否则它将在 %{grace_days} 天内被删除。
       trial_catch_up_warning: 一段时间前，群组“%{group}”开通了 Loomio 试用。我们正在清理旧的试用数据，已将该群组标记为待删除。
+      subscription_canceled: 群组“%{group}”的订阅已取消。我们已将该群组标记为待删除，目前无法访问。
       trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请在 %{grace_days} 天内回复此邮件。逾期后，群组及其数据将被永久删除。
       trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
       usage_heading: 组数据汇总：

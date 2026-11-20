@@ -438,6 +438,7 @@ ro:
       requested: Grupul dumneavoastră Loomio „%{group}” a fost programat pentru ștergere de către %{requestor}. Acesta va fi șters definitiv după %{days} de zile.
       trial_expired_warning: Perioada de probă a grupului dvs. Loomio „%{group}” a expirat acum %{expired_days} zile. Dacă nu ne contactați, acesta va fi șters în %{grace_days} zile.
       trial_catch_up_warning: Cu ceva timp în urmă, a fost inițiată o perioadă de probă Loomio pentru grupul „%{group}”. Curățăm datele din perioadele de probă vechi și am marcat grupul pentru ștergere.
+      subscription_canceled: Abonamentul grupului „%{group}” a fost anulat. Am marcat grupul pentru ștergere și momentan nu este disponibil.
       trial_expired_process: Grupul dvs. nu este disponibil cât timp este marcat pentru ștergere. Dacă doriți în continuare un loc în care grupul dvs. să discute și să ia decizii, nu este prea târziu să reporniți. Răspundeți la acest e-mail în termen de %{grace_days} zile dacă doriți să solicitați o prelungire a perioadei de probă, să faceți upgrade la un abonament plătit sau dacă aveți nevoie de mai mult timp pentru a exporta datele. După aceea, grupul și datele sale vor fi șterse definitiv.
       trial_expired: Grupul dvs. Loomio „%{group}” se află într-o perioadă de probă expirată de cel puțin 60 de zile. Acesta va fi șters definitiv după %{days} de zile.
       usage_heading: 'Rezumatul datelor de grup:'

@@ -219,16 +219,50 @@ module GroupService
     end
   end
 
+  def self.warn_and_discard_canceled_subscription(group_id:, subscription_id:, source:, evidence:)
+    group = Group.kept.parents_only.find_by(id: group_id, subscription_id: subscription_id)
+    return unless group
+
+    eligible = -> do
+      subscription = Subscription.lock.find_by(id: group.subscription_id, state: "canceled")
+      next false unless subscription&.id == subscription_id
+      next false if [subscription.expires_at, subscription.canceled_at].compact.any?(&:future?)
+      next false if subscription.groups.parents_only.where.not(id: group.id).exists?
+      next false if CleanupService.descendant_groups(group.id).where.not(subscription_id: [nil, subscription.id]).exists?
+
+      case source
+      when "billing_service"
+        subscription.billing_service_updated_at&.iso8601(6) == evidence
+      when "chargify"
+        subscription.chargify_subscription_id == evidence
+      when "reviewed"
+        evidence == subscription.updated_at.iso8601(6)
+      end
+    end
+    discard_and_notify(group: group, actor: nil, reason: "subscription_canceled", eligible: eligible, include_descendants: true) do
+      discarded_at = group.discarded_at.iso8601(6)
+      group.admins.each do |admin|
+        GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at).deliver_later
+      end
+    end
+  end
+
   # All ordinary discard paths share one locked transition. Authorization or
   # automatic eligibility belongs to the entry point; warnings and broadcasts
   # happen only after commit, and repeated requests do not repeat notifications.
-  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil)
+  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil, include_descendants: false)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
       next unless group.kept?
+
+      group_ids = if include_descendants
+        [group.id, *CleanupService.descendant_groups(group.id).order(:id).lock.ids]
+      else
+        group.id_and_subgroup_ids
+      end
       next if eligible && !eligible.call
 
-      group.discard!(actor: actor)
+      group.discard!(actor: actor, group_ids: group_ids)
       transaction.after_commit do
         yield if block_given?
         Sentry.metrics.count("group.discard", attributes: { reason: reason })

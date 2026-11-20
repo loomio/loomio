@@ -438,6 +438,7 @@ sv:
       requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requestor}. Den kommer att raderas permanent efter %{days} dagar.
       trial_expired_warning: Din provperiod för Loomio-gruppen "%{group}" gick ut för %{expired_days} dagar sedan. Om du inte kontaktar oss kommer den att raderas om %{grace_days} dagar.
       trial_catch_up_warning: För en tid sedan startades en provperiod i Loomio för gruppen ”%{group}”. Vi rensar gamla provdata och har markerat gruppen för radering.
+      subscription_canceled: Prenumerationen för gruppen ”%{group}” har avslutats. Vi har markerat gruppen för borttagning och den är för närvarande inte tillgänglig.
       trial_expired_process: Din grupp är inte tillgänglig medan den är markerad för radering. Om du fortfarande vill ha en plats där din grupp kan diskutera och fatta beslut är det inte för sent att starta om. Svara på det här e-postmeddelandet inom %{grace_days} dagar om du vill begära en förlängning av provperioden, uppgradera till en betald prenumeration eller behöver mer tid för att exportera dess data. Därefter kommer gruppen och dess data att raderas permanent.
       trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent efter %{days} dagar.
       usage_heading: 'Sammanfattning av gruppdata:'

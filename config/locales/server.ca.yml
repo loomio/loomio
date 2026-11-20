@@ -440,6 +440,7 @@ ca:
       requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
       trial_expired_warning: La prova del vostre grup de Loomio "%{group}" va caducar fa %{expired_days} dies. Si no us poseu en contacte amb nosaltres, s'eliminarà en %{grace_days} dies.
       trial_catch_up_warning: Fa un temps es va crear una prova de Loomio per al grup «%{group}». Estem netejant les dades de proves antigues i hem marcat el grup per suprimir-lo.
+      subscription_canceled: La subscripció del grup «%{group}» s’ha cancel·lat. Hem marcat el grup per suprimir-lo i ara no està disponible.
       trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon a aquest correu electrònic en un termini de %{grace_days} dies si voleu sol·licitar una extensió de prova, actualitzar a una subscripció de pagament o necessiteu més temps per exportar les seves dades. Després d'això, el grup i les seves dades s'eliminaran permanentment.
       trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
       usage_heading: 'Resum de dades del grup:'

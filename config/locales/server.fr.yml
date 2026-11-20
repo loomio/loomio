@@ -468,6 +468,7 @@ fr:
       requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requestor}. Il sera définitivement supprimé après %{days} jours.
       trial_expired_warning: La période d'essai de votre groupe Loomio « %{group} » a expiré il y a %{expired_days} jours. Sauf si vous nous contactez, il sera supprimé dans %{grace_days} jours.
       trial_catch_up_warning: Une période d’essai Loomio a été ouverte pour le groupe « %{group} » il y a quelque temps. Nous nettoyons les données des anciens essais et avons marqué le groupe pour suppression.
+      subscription_canceled: L’abonnement du groupe « %{group} » a été résilié. Nous avons marqué le groupe pour suppression et il est actuellement indisponible.
       trial_expired_process: Votre groupe est temporairement indisponible car il est en cours de suppression. Si vous souhaitez conserver un espace de discussion et de prise de décision pour votre groupe, il n'est pas trop tard pour le réactiver. Répondez à ce courriel dans un délai de %{grace_days} jours si vous souhaitez demander une prolongation de la période d'essai, passer à un abonnement payant ou si vous avez besoin de plus de temps pour exporter les données. Passé ce délai, le groupe et ses données seront définitivement supprimés.
       trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé après %{days} jours.
       usage_heading: 'Résumé des données du groupe :'

@@ -96,6 +96,15 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
   end
 
+  test "a group follow is enough to keep a long-inactive account" do
+    user = users(:orphan_user)
+    group = groups(:group)
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    GroupFollow.create!(group: group, user: user)
+
+    refute_includes CleanupService.inactive_orphan_user_ids, user.id
+  end
+
   test "preserves every membership role in the reusable user matrix" do
     users = MEMBERSHIP_MATRIX_USERS.map { |name| users(name) }
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }

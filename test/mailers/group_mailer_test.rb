@@ -46,4 +46,20 @@ class GroupMailerTest < ActionMailer::TestCase
     assert_includes body, "Reply to this email within 90 days"
     refute_includes body, "trial expired 60 days ago"
   end
+
+  test "cancellation notice uses the group discard and current admin" do
+    group = groups(:group)
+    admin = users(:admin)
+    group.discard!
+    discarded_at = group.discarded_at.iso8601(6)
+    email = GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at)
+    body = AppConfig.stub(:group_deletion_delay_days, 90) { email.body.decoded }
+
+    assert_includes body, "subscription for “#{group.name}” was cancelled"
+    assert_includes body, "reply to this email within 90 days"
+    assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, users(:user).id, discarded_at).to
+
+    group.undiscard!
+    assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at).to
+  end
 end

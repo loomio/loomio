@@ -375,6 +375,32 @@ namespace :loomio do
     end
   end
 
+  desc "Queue an explicitly reviewed batch of discarded groups by root ID"
+  task queue_discarded_group_deletion: :environment do
+    abort "LOOMIO_DISCARDED_GROUP_DELETION_ENABLED must be set" unless DestroyGroupWorker.enabled?
+
+    ids = ENV.fetch("LOOMIO_GROUP_DELETION_IDS", "").split(",").map(&:strip)
+    abort "Supply root IDs in LOOMIO_GROUP_DELETION_IDS" unless ids.present? && ids.all? { |id| id.match?(/\A[1-9]\d*\z/) }
+
+    puts CleanupService.destroy_discarded_groups(root_ids: ids.map(&:to_i))
+  end
+
+  desc "Queue cancellation notices for reviewed group IDs whose billing cancellation is confirmed"
+  task queue_confirmed_canceled_groups: :environment do
+    abort "LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED must be set" unless WarnAndDiscardCanceledGroupWorker.enabled?
+
+    ids = ENV.fetch("LOOMIO_CANCELED_GROUP_IDS", "").split(",").map(&:strip).uniq
+    limit = CleanupService::EXPIRED_TRIAL_WARNING_LIMIT
+    unless ids.present? && ids.size <= limit && ids.all? { |id| id.match?(/\A[1-9]\d*\z/) }
+      abort "Supply 1 to #{limit} reviewed root IDs in LOOMIO_CANCELED_GROUP_IDS"
+    end
+
+    groups = Group.kept.parents_only.where(id: ids.map(&:to_i)).includes(:subscription)
+    queued = groups.count { |group| group.subscription&.state == "canceled" &&
+      WarnAndDiscardCanceledGroupWorker.enqueue_for(group.id, group.subscription, "reviewed", group.subscription.updated_at.iso8601(6)) }
+    puts queued
+  end
+
   desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
   task audit_empty_groups: :environment do
     limit = ENV["LIMIT"].presence&.to_i
