@@ -466,6 +466,7 @@ nl_NL:
       trial_expired_warning: De proefperiode voor je Loomio-groep "%{group}" is %{expired_days} dagen geleden verlopen. Als je geen contact met ons opneemt, wordt deze over %{grace_days} dagen verwijderd.
       trial_catch_up_warning: Enige tijd geleden is er een Loomio-proefperiode gestart voor de groep ‘%{group}’. We ruimen oude proefgegevens op en hebben de groep gemarkeerd voor verwijdering.
       subscription_canceled: Het abonnement voor de groep ‘%{group}’ is opgezegd. We hebben de groep gemarkeerd voor verwijdering en deze is momenteel niet beschikbaar.
+      subscription_canceled_deletion_process: "Beantwoord deze e-mail direct als je wilt dat we de toegang herstellen of een kopie van je groepsgegevens exporteren. Je groep kan definitief worden verwijderd zodra die %{days} dagen niet beschikbaar is geweest."
       unavailable_subject: "Je Loomio-groep is niet beschikbaar"
       requested_unavailable: "%{requestor} heeft je Loomio-groep ‘%{group}’ ontoegankelijk gemaakt."
       trial_expired_unavailable: "De Loomio-proefperiode voor ‘%{group}’ verliep %{expired_days} dagen geleden. De groep is niet beschikbaar."

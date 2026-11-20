@@ -451,6 +451,7 @@ hu:
       trial_expired_warning: A(z) „%{group}” Loomio csoportod próbaidőszaka %{expired_days} napja lejárt. Ha nem veszed fel velünk a kapcsolatot, %{grace_days} nap múlva töröljük.
       trial_catch_up_warning: Egy ideje Loomio-próbaidőszak indult a(z) „%{group}” csoport számára. A régi próbaidőszakok adatait takarítjuk, és a csoportot törlésre jelöltük.
       subscription_canceled: A(z) „%{group}” csoport előfizetését lemondták. A csoportot törlésre jelöltük, és jelenleg nem érhető el.
+      subscription_canceled_deletion_process: "Azonnal válaszolj erre az e-mailre, ha szeretnéd, hogy visszaállítsuk a hozzáférést vagy exportáljuk a csoportod adatainak másolatát. A csoport véglegesen törölhető, miután %{days} napig nem volt elérhető."
       unavailable_subject: "A Loomio-csoportod nem érhető el"
       requested_unavailable: "%{requestor} elérhetetlenné tette a(z) „%{group}” Loomio-csoportodat."
       trial_expired_unavailable: "A(z) „%{group}” Loomio-próbaidőszaka %{expired_days} napja lejárt. A csoport nem érhető el."

@@ -445,6 +445,7 @@ da:
       trial_expired_warning: Din prøveperiode på Loomio-gruppen "%{group}" udløb for %{expired_days} dage siden. Medmindre du kontakter os, vil den blive slettet om %{grace_days} dage.
       trial_catch_up_warning: Der blev oprettet en Loomio-prøveperiode for gruppen “%{group}” for noget tid siden. Vi rydder op i gamle prøvedata og har markeret gruppen til sletning.
       subscription_canceled: Abonnementet for gruppen “%{group}” er blevet opsagt. Vi har markeret gruppen til sletning, og den er i øjeblikket utilgængelig.
+      subscription_canceled_deletion_process: "Svar straks på denne mail, hvis du vil have os til at gendanne adgangen eller eksportere en kopi af din gruppes data. Din gruppe kan blive slettet permanent, når den har været utilgængelig i %{days} dage."
       unavailable_subject: "Din Loomio-gruppe er utilgængelig"
       requested_unavailable: "%{requestor} har gjort din Loomio-gruppe “%{group}” utilgængelig."
       trial_expired_unavailable: "Loomio-prøveperioden for “%{group}” udløb for %{expired_days} dage siden. Gruppen er utilgængelig."

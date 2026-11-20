@@ -58,7 +58,8 @@ class GroupMailerTest < ActionMailer::TestCase
     body = AppConfig.stub(:discarded_group_deletion_after_days, 90) { email.body.decoded }
 
     assert_includes body, "subscription for “#{group.name}” was cancelled"
-    assert_includes body, "reply to this email within 90 days"
+    assert_includes body, "Reply to this email immediately"
+    assert_includes body, "may be permanently deleted once it has been unavailable for 90 days"
     assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, users(:user).id, discarded_at).to
 
     group.undiscard!

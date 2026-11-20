@@ -463,6 +463,7 @@ es:
       trial_expired_warning: Tu prueba gratuita del grupo de Loomio "%{group}" caducó hace %{expired_days} días. A menos que te pongas en contacto con nosotros, se eliminará en %{grace_days} días.
       trial_catch_up_warning: Hace algún tiempo se inició una prueba de Loomio para el grupo «%{group}». Estamos limpiando datos de pruebas antiguas y hemos marcado el grupo para su eliminación.
       subscription_canceled: Se ha cancelado la suscripción del grupo «%{group}». Hemos marcado el grupo para su eliminación y actualmente no está disponible.
+      subscription_canceled_deletion_process: "Responde de inmediato a este correo si quieres que restablezcamos el acceso o exportemos una copia de los datos de tu grupo. El grupo puede eliminarse definitivamente cuando lleve %{days} días sin estar disponible."
       unavailable_subject: "Tu grupo de Loomio no está disponible"
       requested_unavailable: "%{requestor} ha desactivado el acceso a tu grupo de Loomio «%{group}»."
       trial_expired_unavailable: "La prueba de Loomio para «%{group}» caducó hace %{expired_days} días. El grupo no está disponible."

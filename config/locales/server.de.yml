@@ -471,6 +471,7 @@ de:
       trial_expired_warning: Deine Loomio-Gruppe „%{group}“ ist vor %{expired_days} Tagen als Testversion abgelaufen. Sofern du uns nicht kontaktierst, wird sie in %{grace_days} Tagen gelöscht.
       trial_catch_up_warning: Für die Gruppe „%{group}“ wurde vor einiger Zeit eine Loomio-Testphase gestartet. Wir räumen alte Daten aus Testphasen auf und haben die Gruppe zur Löschung vorgemerkt.
       subscription_canceled: Das Abonnement für die Gruppe „%{group}“ wurde gekündigt. Wir haben die Gruppe zur Löschung vorgemerkt. Sie ist derzeit nicht verfügbar.
+      subscription_canceled_deletion_process: "Antworte sofort auf diese E-Mail, wenn wir den Zugriff wiederherstellen oder eine Kopie deiner Gruppendaten exportieren sollen. Deine Gruppe kann endgültig gelöscht werden, sobald sie %{days} Tage lang nicht verfügbar war."
       unavailable_subject: "Deine Loomio-Gruppe ist nicht verfügbar"
       requested_unavailable: "%{requestor} hat deine Loomio-Gruppe „%{group}“ unzugänglich gemacht."
       trial_expired_unavailable: "Die Loomio-Testphase für „%{group}“ ist vor %{expired_days} Tagen abgelaufen. Die Gruppe ist nicht verfügbar."

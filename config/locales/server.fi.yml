@@ -443,6 +443,7 @@ fi:
       trial_expired_warning: Loomio-ryhmäsi "%{group}" kokeilujakso päättyi %{expired_days} päivää sitten. Ellet ota meihin yhteyttä, se poistetaan %{grace_days} päivän kuluttua.
       trial_catch_up_warning: Ryhmälle ”%{group}” aloitettiin jokin aika sitten Loomion kokeilujakso. Siivoamme vanhojen kokeilujen tietoja ja olemme merkinneet ryhmän poistettavaksi.
       subscription_canceled: Ryhmän ”%{group}” tilaus on peruutettu. Olemme merkinneet ryhmän poistettavaksi, eikä se ole tällä hetkellä käytettävissä.
+      subscription_canceled_deletion_process: "Vastaa tähän viestiin heti, jos haluat, että palautamme käyttöoikeuden tai viemme kopion ryhmäsi tiedoista. Ryhmäsi voidaan poistaa pysyvästi, kun se on ollut poissa käytöstä %{days} päivää."
       unavailable_subject: "Loomio-ryhmäsi ei ole käytettävissä"
       requested_unavailable: "%{requestor} esti pääsyn Loomio-ryhmääsi ”%{group}”."
       trial_expired_unavailable: "Ryhmän ”%{group}” Loomio-kokeilu päättyi %{expired_days} päivää sitten. Ryhmä ei ole käytettävissä."

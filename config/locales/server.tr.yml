@@ -439,6 +439,7 @@ tr:
       trial_expired_warning: Loomio grubunuzun "%{group}" deneme sürümü %{expired_days} gün önce sona erdi. Bizimle iletişime geçmediğiniz takdirde, %{grace_days} gün içinde silinecektir.
       trial_catch_up_warning: Bir süre önce “%{group}” grubu için bir Loomio deneme süresi başlatıldı. Eski deneme verilerini temizliyoruz ve grubu silinmek üzere işaretledik.
       subscription_canceled: “%{group}” grubunun aboneliği iptal edildi. Grubu silinmek üzere işaretledik ve grup şu anda kullanılamıyor.
+      subscription_canceled_deletion_process: "Erişimi geri yüklememizi veya grup verilerinizin bir kopyasını dışa aktarmamızı istiyorsanız bu e-postayı hemen yanıtlayın. Grubunuz %{days} gün boyunca kullanılamaz durumda kaldıktan sonra kalıcı olarak silinebilir."
       unavailable_subject: "Loomio grubunuz kullanılamıyor"
       requested_unavailable: "%{requestor}, “%{group}” adlı Loomio grubunuzu kullanılamaz duruma getirdi."
       trial_expired_unavailable: "“%{group}” grubunun Loomio deneme süresi %{expired_days} gün önce sona erdi. Grup kullanılamıyor."

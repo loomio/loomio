@@ -707,6 +707,7 @@ zh_CN:
       trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。除非您联系我们，否则它将在 %{grace_days} 天内被删除。
       trial_catch_up_warning: 一段时间前，群组“%{group}”开通了 Loomio 试用。我们正在清理旧的试用数据，已将该群组标记为待删除。
       subscription_canceled: 群组“%{group}”的订阅已取消。我们已将该群组标记为待删除，目前无法访问。
+      subscription_canceled_deletion_process: "如需我们恢复访问权限或导出群组数据的副本，请立即回复此邮件。群组无法访问满 %{days} 天后，可能会被永久删除。"
       unavailable_subject: "您的 Loomio 群组目前无法访问"
       requested_unavailable: "%{requestor} 已停用您的 Loomio 群组“%{group}”的访问权限。"
       trial_expired_unavailable: "“%{group}”的 Loomio 试用已于 %{expired_days} 天前到期。该群组目前无法访问。"

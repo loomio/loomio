@@ -434,6 +434,7 @@ ja:
       trial_expired_warning: あなたのLoomioグループ「%{group}」のトライアル期間は%{expired_days}日前に終了しました。ご連絡がない場合、%{grace_days}日後に削除されます。
       trial_catch_up_warning: 以前、グループ「%{group}」の Loomio トライアルが開始されました。古いトライアルのデータを整理しており、このグループを削除対象に指定しました。
       subscription_canceled: グループ「%{group}」のサブスクリプションは解約されました。このグループは削除対象となり、現在は利用できません。
+      subscription_canceled_deletion_process: "アクセスの復元やグループデータのコピーのエクスポートをご希望の場合は、すぐにこのメールに返信してください。グループは利用できなくなってから%{days}日が経過すると、完全に削除されることがあります。"
       unavailable_subject: "Loomio グループが利用できません"
       requested_unavailable: "%{requestor} さんが Loomio グループ「%{group}」を利用できない状態にしました。"
       trial_expired_unavailable: "「%{group}」の Loomio トライアルは %{expired_days} 日前に終了しました。このグループは利用できません。"

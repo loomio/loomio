@@ -439,6 +439,7 @@ sv:
       trial_expired_warning: Din provperiod för Loomio-gruppen "%{group}" gick ut för %{expired_days} dagar sedan. Om du inte kontaktar oss kommer den att raderas om %{grace_days} dagar.
       trial_catch_up_warning: För en tid sedan startades en provperiod i Loomio för gruppen ”%{group}”. Vi rensar gamla provdata och har markerat gruppen för radering.
       subscription_canceled: Prenumerationen för gruppen ”%{group}” har avslutats. Vi har markerat gruppen för borttagning och den är för närvarande inte tillgänglig.
+      subscription_canceled_deletion_process: "Svara genast på det här mejlet om du vill att vi återställer åtkomsten eller exporterar en kopia av din grupps data. Gruppen kan tas bort permanent när den har varit otillgänglig i %{days} dagar."
       unavailable_subject: "Din Loomio-grupp är otillgänglig"
       requested_unavailable: "%{requestor} gjorde din Loomio-grupp ”%{group}” otillgänglig."
       trial_expired_unavailable: "Loomio-provperioden för ”%{group}” gick ut för %{expired_days} dagar sedan. Gruppen är otillgänglig."

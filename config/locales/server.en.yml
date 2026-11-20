@@ -773,6 +773,7 @@ en:
       trial_expired_warning: Your Loomio group "%{group}" trial expired %{expired_days} days ago. Unless you contact us, it will be deleted in %{grace_days} days.
       trial_catch_up_warning: A Loomio trial was created for “%{group}” some time ago. We’re cleaning up old trial data and have marked the group for deletion.
       subscription_canceled: The subscription for “%{group}” was cancelled. We’ve marked the group for deletion, and it’s currently unavailable.
+      subscription_canceled_deletion_process: "Reply to this email immediately if you’d like us to restore access or export a copy of your group’s data. Your group may be permanently deleted once it has been unavailable for %{days} days."
       unavailable_subject: "Your Loomio group is unavailable"
       requested_unavailable: "%{requestor} made your Loomio group “%{group}” unavailable."
       trial_expired_unavailable: "The Loomio trial for “%{group}” expired %{expired_days} days ago. The group is unavailable."

@@ -439,6 +439,7 @@ sl:
       trial_expired_warning: Vaša preizkusna različica skupine Loomio »%{group}« je potekla pred %{expired_days} dnevi. Če nas ne kontaktirate, bo izbrisana čez %{grace_days} dni.
       trial_catch_up_warning: Pred časom se je za skupino »%{group}« začelo preizkusno obdobje Loomia. Čistimo podatke starih preizkusov in skupino smo označili za izbris.
       subscription_canceled: Naročnina za skupino »%{group}« je bila preklicana. Skupino smo označili za izbris in trenutno ni na voljo.
+      subscription_canceled_deletion_process: "Takoj odgovorite na to sporočilo, če želite, da obnovimo dostop ali izvozimo kopijo podatkov vaše skupine. Skupino lahko trajno izbrišemo, ko ni na voljo že %{days} dni."
       unavailable_subject: "Vaša skupina Loomio ni na voljo"
       requested_unavailable: "%{requestor} je onemogočil dostop do vaše skupine Loomio »%{group}«."
       trial_expired_unavailable: "Preizkusno obdobje Loomia za skupino »%{group}« se je končalo pred %{expired_days} dnevi. Skupina ni na voljo."

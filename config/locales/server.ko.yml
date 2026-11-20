@@ -772,6 +772,7 @@ ko:
       trial_expired_warning: Loomio 그룹 "%{group}"의 체험 기간이 %{expired_days}일 전에 끝났습니다. 연락이 없으면 %{grace_days}일 후 삭제됩니다.
       trial_catch_up_warning: 얼마 전에 ‘%{group}’ 그룹의 Loomio 체험이 시작되었습니다. 오래된 체험 데이터를 정리하면서 이 그룹을 삭제 대상으로 표시했습니다.
       subscription_canceled: ‘%{group}’ 그룹의 구독이 취소되었습니다. 이 그룹은 삭제 대상으로 표시되어 현재 이용할 수 없습니다.
+      subscription_canceled_deletion_process: "접근 권한을 복원하거나 그룹 데이터 사본을 내보내길 원하시면 이 이메일에 즉시 답장해 주세요. 그룹을 이용할 수 없게 된 지 %{days}일이 지나면 그룹이 영구적으로 삭제될 수 있습니다."
       unavailable_subject: "Loomio 그룹을 이용할 수 없습니다"
       requested_unavailable: "%{requestor} 님이 Loomio 그룹 ‘%{group}’의 이용을 중단했습니다."
       trial_expired_unavailable: "‘%{group}’의 Loomio 체험이 %{expired_days}일 전에 종료되었습니다. 그룹을 이용할 수 없습니다."
