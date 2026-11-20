@@ -11,7 +11,7 @@ class GroupMailerTest < ActionMailer::TestCase
 
     assert_equal "Your Loomio group is scheduled for deletion", email.subject
     assert_includes body, "trial expired 60 days ago"
-    assert_includes body, "will be permanently deleted once it has been unavailable for 45 days"
+    assert_includes body, "Your group will be permanently deleted 45 days from now."
     assert_includes body, "Your group is unavailable while it is marked for deletion"
     assert_includes body, "it is not too late to restart"
     assert_includes body, "Reply to this email immediately"
@@ -35,7 +35,7 @@ class GroupMailerTest < ActionMailer::TestCase
     AppConfig.stub(:discarded_group_deletion_after_days, 90) do
       assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
       assert_includes email.body.decoded, "Reply to this email immediately"
-      assert_includes email.body.decoded, "will be permanently deleted once it has been unavailable for 90 days"
+      assert_includes email.body.decoded, "Your group will be permanently deleted 90 days from now."
     end
   end
 
@@ -62,7 +62,7 @@ class GroupMailerTest < ActionMailer::TestCase
 
     assert_includes body, "subscription for “#{group.name}” was cancelled"
     assert_includes body, "Reply to this email immediately"
-    assert_includes body, "will be permanently deleted once it has been unavailable for 90 days"
+    assert_includes body, "Your group will be permanently deleted 90 days from now."
     assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, users(:user).id, discarded_at).to
 
     group.undiscard!
