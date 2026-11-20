@@ -392,7 +392,10 @@ module CleanupService
   end
 
   def self.deletable_discarded_groups(now: Time.current)
-    discarded_before = now - AppConfig.group_deletion_delay_days.days
+    delay_days = AppConfig.discarded_group_deletion_after_days
+    return Group.none unless delay_days
+
+    discarded_before = now - delay_days.days
     Group.discarded.parents_only.where(discarded_at: ..discarded_before).where(<<~SQL.squish, cutoff: discarded_before, now: now)
       NOT EXISTS (
         SELECT 1 FROM subscriptions s

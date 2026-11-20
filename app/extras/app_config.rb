@@ -28,7 +28,12 @@ class AppConfig
   end
 
   def self.group_deletion_delay_days
-    ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
+    discarded_group_deletion_after_days || ENV.fetch("GROUP_DELETION_DELAY_DAYS", 90).to_i
+  end
+
+  def self.discarded_group_deletion_after_days
+    value = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    value.to_i if value&.match?(/\A[1-9][0-9]*\z/)
   end
 
   def self.default_onboarding_group_id

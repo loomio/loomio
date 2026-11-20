@@ -2,12 +2,27 @@ require "test_helper"
 
 class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
   setup do
-    @previous = ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"]
-    ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = "1"
+    @previous = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "90"
   end
 
   teardown do
-    ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = @previous
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = @previous
+  end
+
+  test "a legacy grace period alone queues no deletions" do
+    previous = ENV["GROUP_DELETION_DELAY_DAYS"]
+    ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+    ENV["GROUP_DELETION_DELAY_DAYS"] = "1"
+    group = groups(:orphan_group_tree)
+    group.discard!(at: 91.days.ago)
+
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) do
+      assert_equal 0, CleanupService.destroy_discarded_groups(root_ids: [group.id])
+    end
+    assert_empty CleanupService.deletable_discarded_groups
+  ensure
+    ENV["GROUP_DELETION_DELAY_DAYS"] = previous
   end
 
   test "queues roots discarded beyond the grace period" do

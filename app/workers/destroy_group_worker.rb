@@ -4,7 +4,7 @@ class DestroyGroupWorker < ApplicationJob
   self.enqueue_after_transaction_commit = false
 
   def self.enabled?
-    ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"].present?
+    AppConfig.discarded_group_deletion_after_days.present?
   end
 
   # Discard alone is not deletion authority: restoring and later discarding a

@@ -71,6 +71,28 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     ENV["LOOMIO_ORPHAN_USER_CLEANUP_ENABLED"] = previous
   end
 
+  test "permanent group deletion is only scheduled at midnight UTC when a delay is configured" do
+    previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+    group = groups(:orphan_group_tree)
+    midnight = Time.utc(2026, 9, 8)
+
+    travel_to midnight do
+      group.discard!(at: 36.days.ago)
+      assert_no_enqueued_jobs(only: DestroyGroupWorker) { HourlyTaskJob.perform_now }
+
+      ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "35"
+      assert_enqueued_with(job: DestroyGroupWorker, args: [group.id, group.discarded_at.iso8601(6)]) do
+        HourlyTaskJob.perform_now
+      end
+    end
+
+    travel_to midnight + 1.hour do
+      assert_no_enqueued_jobs(only: DestroyGroupWorker) { HourlyTaskJob.perform_now }
+    end
+  ensure
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = previous
+  end
+
   test "queues expired-trial warnings at midnight UTC only when cleanup is enabled" do
     begin
       ENV.delete("CLEANUP_ENABLED")

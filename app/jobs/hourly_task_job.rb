@@ -27,7 +27,7 @@ class HourlyTaskJob < ApplicationJob
       elsif ENV["CLEANUP_ENABLED"].present?
         CleanupService.warn_and_discard_expired_trial_groups
       end
-      CleanupService.destroy_discarded_groups if ENV["LOOMIO_DISCARDED_GROUP_DELETION_SCHEDULED"].present?
+      CleanupService.destroy_discarded_groups if DestroyGroupWorker.enabled?
       CleanupOrphanUsersWorker.perform_later if CleanupOrphanUsersWorker.enabled?
       PublishReviewDueWorker.perform_later
     end

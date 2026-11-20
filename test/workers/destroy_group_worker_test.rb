@@ -3,16 +3,12 @@ require_relative "../support/access_volume_matrix"
 
 class DestroyGroupWorkerTest < ActiveSupport::TestCase
   setup do
-    @cleanup_enabled_before = ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"]
-    ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = "1"
+    @deletion_days_before = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "90"
   end
 
   teardown do
-    if @cleanup_enabled_before.nil?
-      ENV.delete("LOOMIO_DISCARDED_GROUP_DELETION_ENABLED")
-    else
-      ENV["LOOMIO_DISCARDED_GROUP_DELETION_ENABLED"] = @cleanup_enabled_before
-    end
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = @deletion_days_before
   end
 
   test "deletes only the discard operation that scheduled the job" do
@@ -59,7 +55,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
-    ENV.delete("LOOMIO_DISCARDED_GROUP_DELETION_ENABLED")
+    ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
 
     DestroyGroupWorker.perform_now(group.id, discarded_at)
 
@@ -72,9 +68,8 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
 
-    AppConfig.stub(:group_deletion_delay_days, 120) do
-      DestroyGroupWorker.perform_now(group.id, discarded_at)
-    end
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "120"
+    DestroyGroupWorker.perform_now(group.id, discarded_at)
 
     assert Group.exists?(group.id)
     assert Group.exists?(groups(:orphan_subgroup).id)

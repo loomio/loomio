@@ -45,10 +45,26 @@ class AppConfigTest < ActiveSupport::TestCase
     assert_equal 45, AppConfig.group_deletion_delay_days
   end
 
+  test "the permanent deletion setting also controls the displayed grace period" do
+    ENV["GROUP_DELETION_DELAY_DAYS"] = "45"
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "90"
+
+    assert_equal 90, AppConfig.discarded_group_deletion_after_days
+    assert_equal 90, AppConfig.group_deletion_delay_days
+  end
+
+  test "permanent deletion requires a positive whole number of days" do
+    [nil, "", "false", "0", "-1", "90.5", "90 days"].each do |value|
+      ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = value
+      assert_nil AppConfig.discarded_group_deletion_after_days, value.inspect
+    end
+  end
+
   setup do
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")
     @group_deletion_delay_days_previous = ENV.delete("GROUP_DELETION_DELAY_DAYS")
+    @discarded_group_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
     @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
     @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
@@ -61,6 +77,7 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("CHARGIFY_API_KEY", @chargify_api_key_previous)
     restore_env("LOOMIO_SUBSCRIPTIONS", @loomio_subscriptions_previous)
     restore_env("GROUP_DELETION_DELAY_DAYS", @group_deletion_delay_days_previous)
+    restore_env("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS", @discarded_group_deletion_after_days_previous)
     restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)
     restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)

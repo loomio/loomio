@@ -377,7 +377,7 @@ namespace :loomio do
 
   desc "Queue an explicitly reviewed batch of discarded groups by root ID"
   task queue_discarded_group_deletion: :environment do
-    abort "LOOMIO_DISCARDED_GROUP_DELETION_ENABLED must be set" unless DestroyGroupWorker.enabled?
+    abort "LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS must be a positive integer" unless DestroyGroupWorker.enabled?
 
     ids = ENV.fetch("LOOMIO_GROUP_DELETION_IDS", "").split(",").map(&:strip)
     abort "Supply root IDs in LOOMIO_GROUP_DELETION_IDS" unless ids.present? && ids.all? { |id| id.match?(/\A[1-9]\d*\z/) }
