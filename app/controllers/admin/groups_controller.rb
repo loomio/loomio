@@ -86,11 +86,8 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def destroy
-    if DestroyGroupWorker.set(priority: -1).perform_later(@group.id, actor_id: current_user.id)
-      redirect_to admin_groups_path, notice: "Permanent deletion queued without a cooldown."
-    else
-      redirect_to admin_group_path(@group), alert: "Permanent deletion could not be queued."
-    end
+    DestroyGroupWorker.set(priority: -1).perform_later(@group.id, actor_id: current_user.id)
+    redirect_to admin_groups_path, notice: "Permanent deletion queued without a cooldown."
   end
 
   def warn_and_discard
