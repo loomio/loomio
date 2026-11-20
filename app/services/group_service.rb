@@ -266,7 +266,9 @@ module GroupService
       transaction.after_commit do
         yield if block_given?
         Sentry.metrics.count("group.discard", attributes: { reason: reason })
-        EventBus.broadcast("group_destroy", group, actor)
+        event_args = [group, actor]
+        event_args << reason if reason == "subscription_canceled"
+        EventBus.broadcast("group_destroy", *event_args)
       end
     end
     group
