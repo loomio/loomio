@@ -32,8 +32,9 @@ test('a visual editor draft previews local media and saves stable links after re
   }
 
   await page.reload();
-  await expect(image).toHaveAttribute('src', /^\/draft_uploads\//);
-  await expectLoaded(image, 'naturalWidth');
+  await expect(image).toHaveAttribute('src', stableRepresentation);
+  const unsavedUrl = await image.getAttribute('src');
+  expect((await page.request.get(unsavedUrl)).status()).toBe(404);
 
   await form.locator('.discussion-form__submit').click();
   const description = page.locator('.context-panel__description');
@@ -46,7 +47,7 @@ test('a visual editor draft previews local media and saves stable links after re
   await expectLoaded(description.locator('audio'), 'readyState');
   await expect(description.locator('video')).toHaveAttribute('src', stableBlob);
   await expectLoaded(description.locator('video'), 'videoWidth');
-  await expect(description.locator('[src^="blob:"], [src^="/draft_uploads/"]')).toHaveCount(0);
+  await expect(description.locator('[src^="blob:"]')).toHaveCount(0);
 });
 
 test('the Markdown editor previews uploads locally and saves the same stable links', async ({ page }) => {

@@ -449,17 +449,17 @@ Rails.application.routes.draw do
   post '/direct_uploads', to: 'direct_uploads#create'
   # Match every stock download route before the engine while retaining its
   # named URL helpers and short-lived disk service routes.
+  storage_proxy_disabled = ->(_env) { [404, { 'cache-control' => 'no-store' }, []] }
   scope ActiveStorage.routes_prefix do
+    get '/blobs/proxy/*path', to: storage_proxy_disabled
+    get '/representations/proxy/*path', to: storage_proxy_disabled
     post '/direct_uploads', to: 'direct_uploads#create'
     get '/blobs/redirect/:signed_id/*filename', to: 'blob_downloads#redirect'
-    get '/blobs/proxy/:signed_id/*filename', to: 'blob_downloads#proxy'
     get '/blobs/:signed_id/*filename', to: 'blob_downloads#redirect'
     get '/representations/redirect/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#redirect'
-    get '/representations/proxy/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#proxy'
     get '/representations/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#redirect'
   end
 
-  get '/draft_uploads/:signed_id', to: 'draft_uploads#show'
   get '/group_export_downloads/:signed_id/*filename', to: 'group_export_downloads#show', as: :group_export_download
 
   get '/users/sign_in', to: redirect('/dashboard')

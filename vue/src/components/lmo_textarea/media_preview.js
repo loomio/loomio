@@ -1,22 +1,12 @@
-// The editor stores stable URLs in its document. Only the displayed element
-// uses a local URL, or requests the uploader's temporary preview after reload.
-const ordinaryMediaPath = /^\/rails\/active_storage\/(?:blobs\/(?:redirect\/|proxy\/)?([^/]+)\/|representations\/(?:redirect\/|proxy\/)?([^/]+)\/[^/]+\/)[^?#]+(?:[?#].*)?$/;
-
+// The editor displays local previews while its document keeps stable URLs.
 export function setMediaPreview(element, src, localPreviewUrl, poster) {
   const localUrl = localPreviewUrl(src);
   if (localUrl) {
+    element.removeAttribute('poster');
     element.src = localUrl;
     return;
   }
 
-  const match = ordinaryMediaPath.exec(src);
-  if (match) {
-    const [, blobId, representationBlobId] = match;
-    element.addEventListener('error', () => {
-      element.removeAttribute('poster');
-      element.src = `/draft_uploads/${blobId || representationBlobId}`;
-    }, { once: true });
-  }
   if (poster) element.setAttribute('poster', poster);
   element.src = src;
 }

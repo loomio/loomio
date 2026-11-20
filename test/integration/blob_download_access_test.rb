@@ -8,31 +8,26 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     representation = blob.representation(HasRichText::PREVIEW_OPTIONS)
     original = rails_blob_path(blob)
     preview = rails_representation_path(representation)
-    routes = {
-      original => :redirect,
-      preview => :redirect,
-      rails_storage_proxy_path(blob) => :success,
-      rails_storage_proxy_path(representation) => :success,
-      original.sub('/blobs/redirect/', '/blobs/') => :redirect,
-      preview.sub('/representations/redirect/', '/representations/') => :redirect
-    }
+    paths = [
+      original,
+      preview,
+      original.sub('/blobs/redirect/', '/blobs/'),
+      preview.sub('/representations/redirect/', '/representations/')
+    ]
 
-    routes.each { |path, status| assert_download(path, status) }
-    get original
-    issued_storage_path = URI(response.location).request_uri
-    proxy = rails_storage_proxy_path(blob)
+    paths.each { |path| assert_download(path, :redirect) }
     range = { 'Range' => 'bytes=0-7' }
-    get proxy, headers: range
-    assert_response :partial_content
-    assert_equal blob.download.byteslice(0, 8), response.body.b
-    assert_equal 'no-store', response.headers['Cache-Control']
+    get original, headers: range
+    assert_response :redirect
+    issued_storage_path = URI(response.location).request_uri
     get issued_storage_path, headers: range
     assert_response :partial_content
+    assert_equal blob.download.byteslice(0, 8), response.body.b
 
     DiscussionService.discard(discussion: discussion, actor: discussion.author)
     assert discussion.files.attachments.exists?(blob_id: blob.id)
-    routes.each_key { |path| assert_download(path, :not_found) }
-    get proxy, headers: range
+    paths.each { |path| assert_download(path, :not_found) }
+    get original, headers: range
     assert_response :not_found
     head preview
     assert_response :not_found
@@ -42,7 +37,19 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
 
     discussion.update!(discarded_at: nil, discarded_by: nil)
     discussion.topic.update!(discarded_at: nil, discarded_by: nil)
-    routes.each { |path, status| assert_download(path, status) }
+    paths.each { |path| assert_download(path, :redirect) }
+  end
+
+  test 'proxy URLs return 404 even for live originals and representations' do
+    blob = upload_image
+    discussions(:discussion).files.attach(blob)
+    representation = blob.representation(HasRichText::PREVIEW_OPTIONS)
+
+    [blob, representation].each do |file|
+      assert_download(rails_storage_proxy_path(file), :not_found)
+      head rails_storage_proxy_path(file)
+      assert_response :not_found
+    end
   end
 
   test 'a shared blob needs at least one live attachment, including a direct thread' do
@@ -79,11 +86,11 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     group = discussion.group
     blob = upload_image
     reply.files.attach(blob)
-    path = rails_storage_proxy_path(blob)
+    path = rails_blob_path(blob)
 
-    assert_download(path, :success)
+    assert_download(path, :redirect)
     comment.update!(discarded_at: Time.current)
-    assert_download(path, :success)
+    assert_download(path, :redirect)
     reply.update!(discarded_at: Time.current)
     assert_download(path, :not_found)
     reply.update!(discarded_at: nil)
@@ -93,7 +100,7 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     group.discard!(actor: users(:admin))
     assert_download(path, :not_found)
     group.undiscard!
-    assert_download(path, :success)
+    assert_download(path, :redirect)
   end
 
   test 'attachments in a subgroup follow discard of the parent group' do
@@ -123,7 +130,9 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     assert_equal 2, sources.size
     sources.each { |src| assert_download(URI(src).path, :redirect) }
     file = discussion.files.find { |attachment| attachment.filename.to_s == 'notes.txt' }
-    assert_download(rails_storage_proxy_path(file), :success)
+    assert_download(rails_blob_path(file), :redirect)
+    follow_redirect!
+    assert_response :success
     assert_includes response.body, 'Some notes'
   end
 
@@ -164,45 +173,6 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     assert_download(url.request_uri, :not_found)
   end
 
-  test 'an unsaved upload preview is limited to its uploader and expires' do
-    uploader = users(:user)
-    other_user = users(:admin)
-    sign_in(uploader)
-    data = 'draft upload'
-    post '/rails/active_storage/direct_uploads', params: {
-      blob: {
-        filename: 'draft.txt', content_type: 'text/plain', byte_size: data.bytesize,
-        checksum: Digest::MD5.base64digest(data),
-        metadata: { DraftUploadsController::UPLOADER_KEY => other_user.id }
-      }
-    }, as: :json
-    assert_response :success
-    upload = response.parsed_body
-    blob = ActiveStorage::Blob.find_signed!(upload.fetch('signed_id'))
-    blob.upload(StringIO.new(data))
-    draft_path = "/draft_uploads/#{blob.signed_id}"
-
-    assert_download(upload.fetch('download_url'), :not_found)
-    assert_download(draft_path, :success)
-    assert_equal data, response.body
-    travel DraftUploadsController::PREVIEW_LIFETIME + 1.second do
-      assert_download(draft_path, :not_found)
-    end
-
-    sign_in(other_user)
-    assert_download(draft_path, :not_found)
-    cookies.delete('session_id')
-    assert_download(draft_path, :not_found)
-
-    sign_in(uploader)
-    discussion = discussions(:discussion)
-    discussion.files.attach(blob)
-    assert_download(draft_path, :not_found)
-    discussion.update!(discarded_at: Time.current)
-    assert_download(draft_path, :not_found)
-    assert_download(upload.fetch('download_url'), :not_found)
-  end
-
   private
 
   def upload_image
@@ -215,12 +185,5 @@ class BlobDownloadAccessTest < ActionDispatch::IntegrationTest
     get path
     assert_response status, path
     assert_equal 'no-store', response.headers['Cache-Control'], path
-  end
-
-  def sign_in(user)
-    token = LoginToken.create!(user: user)
-    post '/api/v1/sessions', params: { user: { email: user.email, code: token.code } }, as: :json
-    assert_response :success
-    assert_equal user.id, response.parsed_body['current_user_id']
   end
 end

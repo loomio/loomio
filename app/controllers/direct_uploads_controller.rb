@@ -58,13 +58,6 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
     current_user.is_paying? ? PAID_MAX_UPLOAD_BYTES : TRIAL_MAX_UPLOAD_BYTES
   end
 
-  def blob_args
-    # Always stamp ownership on the server, including when the client sends metadata.
-    super.tap do |args|
-      args[:metadata] = (args[:metadata] || {}).merge(DraftUploadsController::UPLOADER_KEY => current_user.id)
-    end
-  end
-
   # The editor persists these stable bearer paths in rich text. Keep their URL
   # and access semantics aligned with HasRichText#build_attachments.
   def direct_upload_json(blob)
