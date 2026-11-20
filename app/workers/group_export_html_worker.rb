@@ -12,6 +12,6 @@ class GroupExportHtmlWorker < ApplicationJob
       io: StringIO.new(html), filename: filename, content_type: 'text/html'
     )
     UserMailer.group_export_ready(requestor.id, group.full_name, blob.signed_id).deliver
-    ActiveStorage::PurgeJob.set(wait: 1.week).perform_later(blob)
+    ActiveStorage::PurgeJob.set(wait: GroupExportDownload::LIFETIME).perform_later(blob)
   end
 end

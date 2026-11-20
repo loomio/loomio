@@ -447,11 +447,20 @@ Rails.application.routes.draw do
 
   get '/pie_chart', to: 'pie_chart#show'
   post '/direct_uploads', to: 'direct_uploads#create'
-  # Shadow the stock ActiveStorage direct-upload route (draw_routes stays on so
-  # blob/representation download routes keep working) with our guarded
-  # controller, so its auth + size + content-type checks can't be bypassed by
-  # targeting the engine path directly.
-  post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+  # Match every stock download route before the engine while retaining its
+  # named URL helpers and short-lived disk service routes.
+  scope ActiveStorage.routes_prefix do
+    post '/direct_uploads', to: 'direct_uploads#create'
+    get '/blobs/redirect/:signed_id/*filename', to: 'blob_downloads#redirect'
+    get '/blobs/proxy/:signed_id/*filename', to: 'blob_downloads#proxy'
+    get '/blobs/:signed_id/*filename', to: 'blob_downloads#redirect'
+    get '/representations/redirect/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#redirect'
+    get '/representations/proxy/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#proxy'
+    get '/representations/:signed_blob_id/:variation_key/*filename', to: 'blob_representations#redirect'
+  end
+
+  get '/draft_uploads/:signed_id', to: 'draft_uploads#show'
+  get '/group_export_downloads/:signed_id/*filename', to: 'group_export_downloads#show', as: :group_export_download
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')

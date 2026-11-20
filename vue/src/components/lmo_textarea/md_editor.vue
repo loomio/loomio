@@ -6,6 +6,7 @@ import FilesList from './files_list.vue';
 import SuggestionList from './suggestion_list';
 import MentionNotificationsCount from '@/components/common/mention_notifications_count.vue';
 import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
+import { setMediaPreview } from './media_preview';
 import { useAttaching } from './composables/useAttaching';
 import { useI18n } from 'vue-i18n';
 import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs';
@@ -35,6 +36,7 @@ const preview = ref(false);
 const converting = ref(false);
 const fieldRef = ref(null);
 const filesField = ref(null);
+const previewContent = ref(null);
 
 // Composables
 const modelRef = toRef(props, 'model');
@@ -81,6 +83,7 @@ const {
 
 const {
   canAttachFiles,
+  localPreviewUrl,
   files,
   imageFiles,
   resetFiles,
@@ -92,6 +95,15 @@ const {
 } = useAttaching(modelRef, emit);
 
 
+
+watch([preview, () => props.model[props.field]], () => {
+  previewContent.value?.querySelectorAll('img[src], video[src], audio[src]').forEach(element => {
+    const src = element.getAttribute('src');
+    if (src.startsWith('/rails/active_storage/')) {
+      setMediaPreview(element, src, localPreviewUrl, element.getAttribute('poster'));
+    }
+  });
+}, { flush: 'post' });
 
 // Methods
 const reset = () => {
@@ -111,6 +123,8 @@ const convertToHtmlHandler = async () => {
 };
 
 const onPaste = (event) => {
+  if (event.defaultPrevented) return;
+
   const files = clipboardUploadFiles(event.clipboardData);
 
   if (files.length === 0) { return; }
@@ -164,7 +178,8 @@ const insertImage = (file) => {
 };
 
 const onDrop = (event) => {
-  if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
+  // Vuetify can relay the same event from the textarea and its wrapper.
+  if (event.defaultPrevented || !event.dataTransfer?.files.length) return;
   event.preventDefault();
   handleUploads(event.dataTransfer.files);
 };
@@ -215,7 +230,8 @@ div(style="position: relative")
       @drop="onDrop"
       @dragover.prevent="onDragOver")
     mention-notifications-count(v-if="allowMentions" :model="model" :handles="mentionHandles" :empty="editorEmpty")
-  formatted-text(v-if="preview" :model="model" :field="field")
+  div(v-if="preview" ref="previewContent")
+    formatted-text(:model="model" :field="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
@@ -224,14 +240,14 @@ div(style="position: relative")
       common-icon(name="mdi-paperclip")
     v-btn.e2e-wysiwyg-btn(variant="text" size="small" :loading="converting" @click="convertToHtmlHandler") {{ t('formatting.wysiwyg') }}
     v-spacer
-    v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
+    v-btn.md-editor__preview.mr-4(variant="text" size="small" @click="preview = !preview") {{ t(previewAction) }}
     slot(name="actions")
   suggestion-list(v-if="allowMentions" :query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
-    input.d-none(ref="filesField" type="file" name="files" multiple=true)
+    input.md-editor__files-input.d-none(ref="filesField" type="file" name="files" multiple=true)
 </template>
 
 <style>

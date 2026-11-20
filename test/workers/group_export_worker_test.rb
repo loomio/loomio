@@ -11,13 +11,13 @@ class GroupExportWorkerTest < ActiveSupport::TestCase
   test "JSON export of a discarded group is sent to the selected email" do
     GroupExportWorker.perform_now(@group.id, @requestor.id, @recipient_email)
 
-    assert_equal [ @recipient_email ], ActionMailer::Base.deliveries.last.to
+    assert_external_export_email
   end
 
   test "CSV export of a discarded group is sent to the selected email" do
     GroupExportCsvWorker.perform_now(@group.id, @requestor.id, @recipient_email)
 
-    assert_equal [ @recipient_email ], ActionMailer::Base.deliveries.last.to
+    assert_external_export_email
   end
 
   test "JSON export includes the coordinator's groups when the job runs" do
@@ -75,7 +75,7 @@ class GroupExportWorkerTest < ActiveSupport::TestCase
     blob = ActiveStorage::Blob.order(:id).last
     assert_equal 'text/html', blob.content_type
     assert_includes blob.download, "Export for #{group.full_name}"
-    assert_includes mail.body.encoded, blob.signed_id
+    assert_equal blob, exported_blob(mail)
   end
 
   test "HTML export is not generated after admin access is revoked" do
@@ -89,5 +89,19 @@ class GroupExportWorkerTest < ActiveSupport::TestCase
     GroupExportHtmlWorker.perform_now(group.id, requestor.id)
 
     assert_equal deliveries_count, ActionMailer::Base.deliveries.length
+  end
+
+  private
+
+  def assert_external_export_email
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal [@recipient_email], mail.to
+    assert_equal ActiveStorage::Blob.order(:id).last, exported_blob(mail)
+  end
+
+  def exported_blob(mail)
+    url = Nokogiri::HTML(mail.html_part.body.decoded).at_css('a[href*="/group_export_downloads/"]')['href']
+    token = URI(url).path.split('/')[2]
+    ActiveStorage::Blob.find_signed!(token, purpose: GroupExportDownload::PURPOSE)
   end
 end

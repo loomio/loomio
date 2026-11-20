@@ -8,7 +8,6 @@ import {
 } from '@tiptap/core'
 
 let count = 0;
-import FileUploader from '@/shared/services/file_uploader'
 import { clipboardUploadFiles } from '@/shared/helpers/clipboard_upload_files.mjs'
 
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
@@ -49,7 +48,7 @@ function finduploadPlaceholder(state, id) {
 
 function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
   Array.from(files || []).forEach(file => {
-    if ((/image|video/i).test(file.type)) {
+    if ((/^(image|video|audio)\//i).test(file.type)) {
       insertImage(file, view, coordinates, attachImageFile)
     } else {
       attachFile({file})
@@ -76,44 +75,37 @@ export function insertImage(file, view, coordinates, attachImageFile) {
   attachImageFile({
     file: file,
     onProgress: (e) => {
-      document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
+      document.getElementById(id)?.setAttribute("value", parseInt(e.loaded / e.total * 100))
     },
-    onComplete: (blob) => {
-      if ((/image/i).test(file.type)) {
-        var img = document.createElement('img');
-        img.src = blob.preview_url
-        img.onload = function() {
-          let pos = finduploadPlaceholder(view.state, id)
-          // If the content around the placeholder has been deleted, drop
-          // the image
-          if (pos == null) return
-          // Otherwise, insert it at the placeholder's position, and remove
-          // the placeholder
-          view.dispatch(view.state.tr
-           .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url, height: img.naturalHeight, width:img.naturalWidth}))
-           .setMeta('uploadPlaceholder', {remove: {id}}))
-        }
+    onComplete: async (blob, localUrl) => {
+      let node;
+      if (file.type.startsWith('image/')) {
+        const image = document.createElement('img');
+        image.src = localUrl;
+        await image.decode().catch(() => {});
+        const scale = Math.min(1, 1280 / Math.max(image.naturalWidth, image.naturalHeight));
+        node = schema.nodes.image.create({
+          src: blob.preview_url || blob.download_url,
+          width: Math.round(image.naturalWidth * scale) || null,
+          height: Math.round(image.naturalHeight * scale) || null,
+        });
+      } else if (file.type.startsWith('video/')) {
+        node = schema.nodes.video.create({ src: blob.download_url, poster: blob.preview_url });
+      } else if (file.type.startsWith('audio/')) {
+        node = schema.nodes.audio.create({ src: blob.download_url });
       }
 
-      if ((/video/i).test(file.type)) {
-        let pos = finduploadPlaceholder(view.state, id)
-        if (pos == null) return
-        view.dispatch(view.state.tr
-         .replaceWith(pos, pos, schema.nodes.video.create({src: blob.download_url, poster: blob.preview_url, height: 640, width: 320}))
-         .setMeta('uploadPlaceholder', {remove: {id}}))
-      }
+      if (view.isDestroyed) return;
+      const pos = finduploadPlaceholder(view.state, id);
+      if (pos == null) return;
 
-      if ((/audio/i).test(file.type)) {
-        let pos = finduploadPlaceholder(view.state, id)
-        if (pos == null) return
-        view.dispatch(view.state.tr
-         .replaceWith(pos, pos, schema.nodes.audio.create({src: blob.download_url}))
-         .setMeta('uploadPlaceholder', {remove: {id}}))
-      }
+      view.dispatch(view.state.tr
+        .replaceWith(pos, pos, node)
+        .setMeta('uploadPlaceholder', { remove: { id } }));
     },
     onFailure: () => {
-      // On failure, just clean up the placeholder
-      view.dispatch(tr.setMeta('uploadPlaceholder', {remove: {id}}))
+      if (view.isDestroyed) return;
+      view.dispatch(view.state.tr.setMeta('uploadPlaceholder', { remove: { id } }));
     }
   })
 }

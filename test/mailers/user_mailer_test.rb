@@ -25,7 +25,7 @@ class UserMailerTest < ActionMailer::TestCase
       group_name: @group.full_name,
       locale: @user.locale
     ), mail.subject
-    assert_match "/rails/active_storage/blobs/", mail.body.encoded
+    assert_includes (mail.html_part || mail).body.decoded, "/group_export_downloads/"
   end
 
   test "group_export_ready can send to an address without a Loomio account" do

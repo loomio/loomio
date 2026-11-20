@@ -13,6 +13,6 @@ class GroupExportCsvWorker < ApplicationJob
       content_type: 'text/csv'
     )
     UserMailer.group_export_ready(requestor.id, group.full_name, blob.signed_id, recipient_email).deliver
-    ActiveStorage::PurgeJob.set(wait: 1.week).perform_later(blob)
+    ActiveStorage::PurgeJob.set(wait: GroupExportDownload::LIFETIME).perform_later(blob)
   end
 end

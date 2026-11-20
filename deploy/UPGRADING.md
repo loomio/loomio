@@ -17,6 +17,15 @@ You can also run [`update.sh`](update.sh) from the deployment directory to clean
 ./update.sh
 ```
 
+## Requiring a live attachment for file downloads
+
+1. Deploy the updated web app and workers with `LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT` unset. Confirm that newly emailed HTML, CSV and JSON exports use the `/group_export_downloads/` path and that queued export producers are running the updated code. This starts the waiting period for the site.
+2. Wait at least one week. Export links issued before the switch use ordinary attachment URLs and can still be opened during their original lifetime.
+3. Purge any CDN or reverse proxy cache entries for `/rails/active_storage/blobs/*` and `/rails/active_storage/representations/*`. Configure those stable paths to respect the app's `Cache-Control: no-store` header. Set `LOOMIO_REQUIRE_LIVE_BLOB_ATTACHMENT=1` in the web app environment and restart or redeploy it.
+4. From a fresh signed-out browser session, open a file and its preview using their existing Loomio URLs. Discard the test thread and check that fresh requests to both URLs return 404. Restore the thread and check the same URLs again. Test any previously issued storage URL separately.
+
+A storage URL issued before discard can continue working until its configured expiry. The default is five minutes. Browsers that cached a response under older caching rules may retain their copies, and any file already downloaded can be kept.
+
 ## v3.17.0
 
 To upgrade the HTTPS proxy in the bundled Compose deployment to Nginx 1.31.9, use the updated Compose file and set the following in `.env` before pulling images.

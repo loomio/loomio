@@ -127,10 +127,8 @@ module HasRichText
   # do not break when a service URL expires or the storage service changes.
   #
   # These URLs must also work without a Loomio session because rich text is
-  # rendered in email, chatbots, and exports. Possession of the unguessable URL
-  # therefore grants access to the file; authorization is not re-checked against
-  # the group or record on download. Changing that access model requires a design
-  # for signed-out renderers as well as the web application.
+  # rendered in email and chatbots. With live attachment enforcement enabled,
+  # possession grants access while any attachment belongs to live content.
   def build_attachments
     # this line is just to help migrations through
     return true unless self.class.column_names.include?('attachments')

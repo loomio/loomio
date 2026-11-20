@@ -100,6 +100,7 @@ const mentionOptions = useMentionSuggestion(modelRef, toRef(props, 'allowMention
 
 const {
   canAttachFiles,
+  localPreviewUrl,
   files,
   imageFiles,
   resetFiles,
@@ -322,7 +323,10 @@ onMounted(() => {
   // editor is safe to type in immediately, and an unreachable server only
   // means no live collaboration. Converted Markdown is already in the model,
   // so it becomes the seed of its own document.
-  const extensions = contentExtensions({ attachFile, attachImageFile, mentionOptions, canAttachFiles: () => canAttachFiles.value });
+  const extensions = contentExtensions({
+    attachFile, attachImageFile, mentionOptions, localPreviewUrl,
+    canAttachFiles: () => canAttachFiles.value
+  });
   seedHtml = props.model[props.field] || '';
   const seed = collabSeed(seedHtml, extensions);
   const docname = [props.model.collabKey(props.field, Session.userId), seed.hash].join('-');

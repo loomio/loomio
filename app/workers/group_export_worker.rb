@@ -16,7 +16,7 @@ class GroupExportWorker < ApplicationJob
       filename: File.basename(filename)
     )
     UserMailer.group_export_ready(requestor.id, group.name, blob.signed_id, recipient_email).deliver
-    ActiveStorage::PurgeJob.set(wait: 1.week).perform_later(blob)
+    ActiveStorage::PurgeJob.set(wait: GroupExportDownload::LIFETIME).perform_later(blob)
   ensure
     File.delete(filename) if filename && File.exist?(filename)
   end

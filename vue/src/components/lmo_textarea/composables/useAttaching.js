@@ -1,13 +1,14 @@
-import { ref, watch, onMounted, computed } from 'vue';
+import { ref, watch, onMounted, onUnmounted, computed, reactive } from 'vue';
 import FileUploader from '@/shared/services/file_uploader';
 import AttachmentAbility from '@/shared/abilities/attachment_ability';
 import { insertImage } from '../extension_image';
 import { forEach } from 'lodash-es';
-import { reactive } from 'vue';
 
 export function useAttaching(model, emit) {
   const files = ref([]);
   const imageFiles = ref([]);
+  const localPreviewUrls = new Map();
+  const localPreviewUrl = (url) => localPreviewUrls.get(url);
   const canAttachFiles = computed(() => AttachmentAbility.canAttach(model.value));
 
   onMounted(() => {
@@ -25,7 +26,17 @@ export function useAttaching(model, emit) {
     updateFiles();
   });
 
+  const revokeLocalPreviews = () => {
+    for (const wrapper of [...files.value, ...imageFiles.value]) {
+      if (wrapper.localUrl) URL.revokeObjectURL(wrapper.localUrl);
+    }
+    localPreviewUrls.clear();
+  };
+
+  onUnmounted(revokeLocalPreviews);
+
   const resetFiles = () => {
+    revokeLocalPreviews();
     files.value = [];
     imageFiles.value = [];
   };
@@ -43,17 +54,18 @@ export function useAttaching(model, emit) {
     }
   };
 
-  const removeFile = (name) => {
-    files.value = files.value.filter(wrapper => wrapper.file.name !== name);
+  const removeFile = (removed) => {
+    if (removed.localUrl) URL.revokeObjectURL(removed.localUrl);
+    files.value = files.value.filter(wrapper => wrapper !== removed);
   };
 
   const attachFile = ({ file }) => {
     if (!canAttachFiles.value) { return; }
     const wrapper = reactive({ 
       file, 
-      key: file.name + file.size, 
       percentComplete: 0, 
-      blob: null 
+      blob: null,
+      localUrl: URL.createObjectURL(file)
     });
     files.value.push(wrapper);
     emitUploading();
@@ -72,15 +84,27 @@ export function useAttaching(model, emit) {
 
   const attachImageFile = ({ file, onProgress, onComplete, onFailure }) => {
     if (!canAttachFiles.value) { onFailure(); return; }
-    const wrapper = { file, blob: null };
+    const wrapper = reactive({ file, blob: null, localUrl: URL.createObjectURL(file) });
     imageFiles.value.push(wrapper);
     emitUploading();
     const uploader = new FileUploader({ onProgress });
-    uploader.upload(file).then(blob => {
+    uploader.upload(file).then(async blob => {
+      if (!imageFiles.value.includes(wrapper)) return;
+
+      localPreviewUrls.set(blob.download_url, wrapper.localUrl);
+      if (blob.preview_url) localPreviewUrls.set(blob.preview_url, wrapper.localUrl);
+      await onComplete(blob, wrapper.localUrl);
+      if (!imageFiles.value.includes(wrapper)) return;
+
       wrapper.blob = blob;
-      onComplete(blob);
       updateFiles();
-    }, onFailure);
+    }, () => {
+      if (!imageFiles.value.includes(wrapper)) return;
+
+      URL.revokeObjectURL(wrapper.localUrl);
+      imageFiles.value = imageFiles.value.filter(upload => upload !== wrapper);
+      onFailure();
+    });
   };
 
   // The native file dialog can outlive the editor. A selection made after the
@@ -98,7 +122,7 @@ export function useAttaching(model, emit) {
   const imageSelected = (imagesFieldRef, editor) => {
     if (!imagesFieldRef.value) { return; }
     Array.from(imagesFieldRef.value.files || []).forEach(file => {
-      if ((/image|video/i).test(file.type)) {
+      if ((/^(image|video|audio)\//i).test(file.type)) {
         insertImage(file, editor.value.view, null, attachImageFile);
       } else {
         attachFile({ file });
@@ -108,6 +132,7 @@ export function useAttaching(model, emit) {
 
   return {
     canAttachFiles,
+    localPreviewUrl,
     files,
     imageFiles,
     resetFiles,

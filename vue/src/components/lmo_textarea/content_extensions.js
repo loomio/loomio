@@ -22,6 +22,7 @@ import { CustomImage, Video, Audio } from './extension_image';
 import { Iframe } from './extension_iframe';
 import { TextAlign } from './extension_text_align';
 import { Highlight } from './extension_highlight';
+import { mediaNodeView } from './media_preview';
 import { safeUrl } from '@/shared/helpers/safe_url.mjs';
 
 // The editor and mode-switch converters share a schema. Unsupported Markdown
@@ -75,16 +76,17 @@ const MarkdownMention = CustomMention.extend({
   },
 });
 
-export function contentExtensions({ attachFile, attachImageFile, mentionOptions = {}, canAttachFiles = () => true } = {}) {
+export function contentExtensions({ attachFile, attachImageFile, mentionOptions = {}, canAttachFiles = () => true, localPreviewUrl } = {}) {
+  const mediaView = tag => localPreviewUrl && (() => mediaNodeView(tag, localPreviewUrl));
   return [
     Blockquote,
     Bold,
     Code,
     BulletList, OrderedList, ListItem, ListKeymap,
     CodeBlock,
-    CustomImage.extend({ renderMarkdown: renderImage }).configure({ attachFile, attachImageFile, canAttachFiles }),
-    Video.extend({ renderMarkdown: renderMedia }),
-    Audio.extend({ renderMarkdown: renderMedia }),
+    CustomImage.extend({ renderMarkdown: renderImage, addNodeView: mediaView('img') }).configure({ attachFile, attachImageFile, canAttachFiles }),
+    Video.extend({ renderMarkdown: renderMedia, addNodeView: mediaView('video') }),
+    Audio.extend({ renderMarkdown: renderMedia, addNodeView: mediaView('audio') }),
     Document,
     HardBreak,
     Heading,
