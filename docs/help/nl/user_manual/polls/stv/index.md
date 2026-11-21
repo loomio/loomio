@@ -1,18 +1,18 @@
 ---
 title: STV-verkiezingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 4af9f5ad46589ab3
-  when-to-use-stv: 32f567a427cde35e
+  introduction: a5f91450f9dd271d
+  when-to-use-stv: 7b7d13ccb08d8669
   creating-an-stv-election: f2d92d868e05bd7e
-  number-of-seats: bcb68b4e855c69c3
+  number-of-seats: d53bb370f8517134
   counting-method: 95b91f35ba21184c
-  quota-type: e36f1f002f39dbc3
-  how-voting-works: 04c8dc3b00cefc15
+  quota-type: f1565091a9bed8f3
+  how-voting-works: 8863d4a9bb015d11
   how-counting-works: b8a183eaea637e71
   understanding-results: 865f6bf72f31a40d
   method-and-quota: ed493e2b8b34dea7
@@ -45,7 +45,7 @@ needs_review:
 
 # STV-verkiezingen
 
-**Single Transferable Vote (STV)** is een stemmethode voor evenredige vertegenwoordiging waarmee meerdere winnaars uit een groep kandidaten worden gekozen. De methode zorgt ervoor dat gekozen kandidaten de verscheidenheid aan opvattingen onder kiezers evenredig vertegenwoordigen.
+**Single Transferable Vote (STV)** is een stemmethode waarbij kiezers kandidaten op volgorde van voorkeur rangschikken om één of meer winnaars te kiezen. Bij verkiezingen met meerdere winnaars zorgt de methode voor evenredige vertegenwoordiging, zodat gekozen kandidaten de verscheidenheid aan opvattingen onder kiezers weerspiegelen. Bij één winnaar werkt de methode als instant-runoff.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -55,10 +55,10 @@ Gebruik een STV-verkiezing wanneer je:
 
 - Een **commissie, bestuur of delegatie** wilt kiezen uit een groep voorgedragen kandidaten
 - **Evenredige vertegenwoordiging** wilt waarborgen, waarbij minderheden zetels kunnen winnen in verhouding tot hun steun
-- Verkiezingen wilt houden waarbij kiezers kandidaten op volgorde van voorkeur rangschikken
+- **Eén winnaar** wilt kiezen met instant-runoff, waarbij stemmen voor de optie met de minste stemmen worden overgedragen naar de volgende voorkeuren van kiezers totdat één optie een meerderheid bereikt
 
 >[!NOTE]
->STV is **niet** hetzelfde als Loomio's [rangschikpeiling](/en/user_manual/polls/rank/), die een eenvoudigere rangschikking op basis van scores gebruikt om één beste optie te kiezen. STV ondersteunt verkiezingen met meerdere winnaars, waarbij stemmen worden overgedragen en kandidaten in opeenvolgende rondes afvallen.
+>STV is **niet** hetzelfde als Loomio's [rangschikpeiling](/en/user_manual/polls/rank). Rangschikken telt punten voor alle keuzes bij elkaar op om een algemene voorkeursvolgorde te bepalen. STV gebruikt afvalrondes en stemoverdrachten en werkt voor verkiezingen met zowel één als meerdere winnaars.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -74,7 +74,7 @@ In dit voorbeeld kiest Oatmilk Cooperative drie mensen om toezicht te houden op 
 
 ### Aantal zetels
 
-Het aantal winnaars dat gekozen moet worden. Dit moet kleiner zijn dan het aantal kandidaten.
+Het aantal winnaars dat gekozen moet worden. Dit moet minstens 1 zijn en kleiner dan het aantal kandidaten. Stel dit in op 1 voor een instant-runoffverkiezing met één winnaar.
 
 <!-- translation-section: counting-method -->
 
@@ -107,7 +107,7 @@ In beide formules is *votes* het aantal stembiljetten waarop minstens één kand
 Meek STV berekent het quotum zonder afronding, voor Droop als votes ÷ (seats + 1). Het quotum wordt elke ronde opnieuw berekend op basis van de stemmen die nog bij kandidaten liggen. Een kandidaat moet het quotum overschrijden om gekozen te worden.
   
   >[!TIP]
-  > Droop levert altijd een kleiner aantal stemmen op dan Hare. Bij een verkiezing met 100 stemmen en vier zetels is het Droop-quotum bijvoorbeeld 21 en het Hare-quotum 25.
+  > Droop levert altijd een kleiner aantal stemmen op dan Hare. Bij 100 stemmen en vier zetels is het Droop-quotum 21 en het Hare-quotum 25. Bij 100 stemmen en één zetel is het Droop-quotum 51 (een meerderheid, meer dan 50%) en het Hare-quotum 100. Daarom is Droop de juiste keuze voor verkiezingen met één winnaar.
 
 <!-- translation-section: how-voting-works -->
 
@@ -121,7 +121,9 @@ In dit voorbeeld kiest Oatmilk Cooperative drie mensen om toezicht te houden op 
 - **Rangschikken 2** = tweede keuze
 - Rangschik zoveel kandidaten als je wilt
 
-Kiezers moeten minstens één kandidaat rangschikken, maar hoeven niet elke kandidaat te rangschikken. Kandidaten die een kiezer niet rangschikt, ontvangen geen steun van die kiezer.
+Kiezers moeten minstens één kandidaat rangschikken, maar hoeven niet elke kandidaat te rangschikken. Het aantal kandidaten dat een kiezer kan rangschikken, wordt niet beperkt door het aantal zetels: ook bij een verkiezing met één winnaar kunnen kiezers volgende voorkeuren opgeven, tot en met alle kandidaten. Kandidaten die een kiezer niet rangschikt, ontvangen geen steun van die kiezer.
+
+STV-peilingen hebben geen ingebouwde optie voor onthouding. Leden die zich willen onthouden, kunnen eenvoudigweg niet stemmen. Voeg alleen "Onthouding" als kandidaatoptie toe als je onthoudingen op het stembiljet wilt vastleggen, want Loomio telt deze optie als elke andere kandidaat: stembiljetten waarop deze optie is gerangschikt, tellen mee voor het quotum. Als genoeg kiezers deze optie bovenaan zetten, kan deze langer in de telling blijven dan andere opties of die verslaan.
 
 <!-- translation-section: how-counting-works -->
 

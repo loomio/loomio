@@ -1,18 +1,18 @@
 ---
 title: Elezioni STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: c9e2c919c10aedf8
-  when-to-use-stv: d9c75f94d7d9e482
+  introduction: 9b1be701679d01ae
+  when-to-use-stv: 8bcb3123adcb1fc4
   creating-an-stv-election: 92fece1085b5f8dc
-  number-of-seats: c78d9cde9a2fd843
+  number-of-seats: 9dd4b102a88a3ff7
   counting-method: 1e567367c1d5be0b
-  quota-type: 123a547822a36889
-  how-voting-works: d9a410a7718673d3
+  quota-type: 2202377fa7f8f030
+  how-voting-works: d28268862961f6ad
   how-counting-works: 1b18cc74d52c618c
   understanding-results: 63a6fd6d8033b52b
   method-and-quota: 51433d3e7cc0a9c4
@@ -43,7 +43,7 @@ title_generated: b856531da2becf44
 
 # Elezioni STV
 
-Il **voto singolo trasferibile (STV)** è un metodo di voto a rappresentanza proporzionale per eleggere più persone tra un insieme di candidati. Garantisce che i candidati eletti rappresentino proporzionalmente la diversità di opinioni degli elettori.
+Il **voto singolo trasferibile (STV)** è un metodo di voto basato sull'ordine di preferenza per eleggere una o più persone tra un insieme di candidati. Nelle elezioni con più eletti offre una rappresentanza proporzionale, garantendo che i candidati eletti riflettano la diversità di opinioni degli elettori. Quando si elegge una sola persona, funziona come un ballottaggio istantaneo.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ Usa un'elezione STV quando devi:
 
 - Eleggere un **comitato, un consiglio o una delegazione** tra le persone candidate
 - Garantire una **rappresentanza proporzionale**, in cui le minoranze possano ottenere seggi in proporzione al sostegno ricevuto
-- Organizzare elezioni in cui gli elettori classificano i candidati in ordine di preferenza
+- Eleggere una **sola persona** con un ballottaggio istantaneo, in cui i voti per l'opzione con meno voti vengono trasferiti alle scelte successive degli elettori finché un'opzione raggiunge la maggioranza
 
 >[!NOTE]
->STV **non** è lo stesso del [sondaggio Classifica](/en/user_manual/polls/rank/) di Loomio, che usa una classifica più semplice basata sui punteggi per scegliere una sola opzione migliore. STV gestisce elezioni con più eletti, trasferimenti di voti e turni di eliminazione.
+>STV **non** è lo stesso del [sondaggio Classifica](/en/user_manual/polls/rank) di Loomio. Classifica somma i punti di tutte le scelte per ottenere un ordine di preferenza complessivo. STV usa turni di eliminazione e trasferimenti di voti e funziona sia per le elezioni con un solo eletto sia per quelle con più eletti.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ In questo esempio, Oatmilk Cooperative sta eleggendo tre persone per supervision
 
 ### Numero di seggi
 
-Il numero di persone da eleggere. Deve essere inferiore al numero di candidati.
+Il numero di persone da eleggere. Deve essere almeno 1 e inferiore al numero di candidati. Imposta questo valore su 1 per un'elezione con un solo eletto e ballottaggio istantaneo.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ In entrambe le formule, *votes* è il numero di schede che indicano almeno un ca
 Meek STV calcola la quota senza arrotondamenti, usando votes ÷ (seats + 1) per Droop. Ricalcola la quota a ogni turno in base ai voti ancora attribuiti ai candidati, e un candidato deve superarla per essere eletto.
   
   >[!TIP]
-  > La quota Droop corrisponde sempre a un numero di voti inferiore alla quota Hare. Per esempio, in un'elezione con 100 voti e quattro seggi, la quota Droop sarebbe 21 e la quota Hare 25.
+  > La quota Droop corrisponde sempre a un numero di voti inferiore alla quota Hare. Con 100 voti e quattro seggi, la quota Droop è 21 e la quota Hare è 25. Con 100 voti e un seggio, la quota Droop è 51 (una maggioranza, superiore al 50%) e la quota Hare è 100, quindi Droop è la scelta adatta alle elezioni con un solo eletto.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ In questo esempio, Oatmilk Cooperative sta eleggendo tre persone per supervision
 - **Preferenza 2** = seconda scelta
 - Continua a classificare tutti i candidati che desideri
 
-Gli elettori devono classificare almeno un candidato, ma non devono necessariamente classificarli tutti. I candidati non classificati non ricevono alcun sostegno da quell'elettore.
+Gli elettori devono classificare almeno un candidato, ma non devono necessariamente classificarli tutti. Il numero di candidati che un elettore può classificare non è limitato dal numero di seggi: anche in un'elezione con un solo eletto, gli elettori possono indicare scelte alternative fino a includere tutti i candidati. I candidati non classificati non ricevono alcun sostegno da quell'elettore.
+
+I sondaggi STV non hanno un'opzione Astensione integrata. I membri che desiderano astenersi possono semplicemente non votare. Evita di aggiungere "Astensione" come opzione tra i candidati, a meno che tu non abbia bisogno di registrare le astensioni sulla scheda, perché Loomio la conteggia come qualsiasi altro candidato: le schede che la includono nell'ordine di preferenza contribuiscono al calcolo della quota e, se un numero sufficiente di elettori la indica come prima scelta, può restare in gara più a lungo di altre opzioni o sconfiggerle.
 
 <!-- translation-section: how-counting-works -->
 

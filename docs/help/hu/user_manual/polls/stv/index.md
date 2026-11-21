@@ -1,18 +1,18 @@
 ---
 title: STV-választások
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 39a8c51c88f61b36
-  when-to-use-stv: 375f96d4ca550eab
+  introduction: f506f60e0a9beacb
+  when-to-use-stv: de2a208d7e50fc4c
   creating-an-stv-election: 2e4396fffe52151f
-  number-of-seats: ba0bbf37aa2cc658
+  number-of-seats: 1806d30629f8ba7a
   counting-method: 90fe8e383deadd8d
-  quota-type: '08342962ba39a28c'
-  how-voting-works: ac03b3388b471971
+  quota-type: 302f1e8e2655f571
+  how-voting-works: 46cb3485caa1eedc
   how-counting-works: 4bbc4737e6f9a8fa
   understanding-results: 9b42c12afd404f68
   method-and-quota: 8d225149d164a03e
@@ -43,7 +43,7 @@ title_generated: 67607ab7fbcfa361
 
 # STV-választások
 
-Az **egyetlen átruházható szavazat (STV)** olyan arányos képviseletet biztosító szavazási mód, amellyel több jelöltet lehet megválasztani a jelöltek közül. Biztosítja, hogy a megválasztott jelöltek arányosan képviseljék a szavazók eltérő nézeteit.
+Az **egyetlen átruházható szavazat (STV)** olyan rangsoroláson alapuló szavazási mód, amellyel egy vagy több jelöltet lehet megválasztani a jelöltek közül. Több jelölt megválasztásakor arányos képviseletet biztosít, így a megválasztott jelöltek tükrözik a szavazók eltérő nézeteit. Egyetlen jelölt megválasztásakor azonnali kieséses szavazásként működik.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ Használj STV-választást, ha:
 
 - **Bizottságot, testületet vagy küldötteket** szeretnél választani a jelöltek közül
 - **Arányos képviseletet** szeretnél biztosítani, amelyben a kisebbségi irányzatok a támogatottságukkal arányos számú helyet szerezhetnek
-- Olyan választást szeretnél tartani, amelyben a szavazók a preferenciáik szerint rangsorolják a jelölteket
+- **Egyetlen jelöltet** szeretnél megválasztani azonnali kieséses szavazással, amelyben a legkevesebb szavazatot kapó lehetőségre adott szavazatok a szavazók következőként rangsorolt lehetőségeire szállnak át, amíg az egyik lehetőség meg nem szerzi a többséget
 
 >[!NOTE]
->Az STV **nem** azonos a Loomio [Rangsorolás szavazásával](/en/user_manual/polls/rank/), amely egyszerűbb, pontozáson alapuló rangsorolással választja ki az egyetlen legjobb lehetőséget. Az STV több jelölt megválasztására szolgál, szavazatátruházással és kiesési körökkel.
+>Az STV **nem** azonos a Loomio [Rangsorolás szavazásával](/en/user_manual/polls/rank). A Rangsorolás az összes lehetőség pontszámait összeadva állítja elő az összesített preferenciasorrendet. Az STV kiesési köröket és szavazatátruházást használ, és egy vagy több jelölt megválasztására is alkalmas.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ Ebben a példában az Oatmilk Cooperative három embert választ a visszaváltha
 
 ### Helyek száma
 
-Hány jelöltet szeretnél megválasztani. Ennek a számnak kisebbnek kell lennie a jelöltek számánál.
+Hány jelöltet szeretnél megválasztani. Ennek a számnak legalább 1-nek és a jelöltek számánál kisebbnek kell lennie. Egyetlen jelölt megválasztására szolgáló azonnali kieséses választáshoz állítsd 1-re.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ Mindkét képletben a *votes* azoknak a szavazólapoknak a száma, amelyeken leg
 A Meek STV kerekítés nélkül számítja ki a kvótát; a Droop-kvóta esetében a képlet votes ÷ (seats + 1). Minden körben újraszámítja a kvótát a jelölteknél még meglévő szavazatok alapján, és a megválasztáshoz a jelöltnek meg kell haladnia ezt az értéket.
   
   >[!TIP]
-  > A Droop-kvóta mindig kisebb szavazatszámot ad, mint a Hare-kvóta. Például egy 100 szavazattal és négy hellyel zajló választáson a Droop-kvóta 21, a Hare-kvóta pedig 25 lenne.
+  > A Droop-kvóta mindig kisebb szavazatszámot ad, mint a Hare-kvóta. 100 szavazat és négy hely esetén a Droop-kvóta 21, a Hare-kvóta pedig 25. 100 szavazat és egy hely esetén a Droop-kvóta 51 (többség, több mint 50%), a Hare-kvóta pedig 100, ezért egyetlen jelölt megválasztásához a Droop-kvóta a megfelelő.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ Ebben a példában az Oatmilk Cooperative három embert választ az újrahaszná
 - **2. hely** = a másodiknak választott jelölt
 - Folytasd a rangsorolást annyi jelölttel, amennyivel szeretnéd
 
-A szavazóknak legalább egy jelöltet rangsorolniuk kell, de nem szükséges minden jelöltet rangsorolniuk. A rangsorból kihagyott jelöltek nem kapnak támogatást az adott szavazótól.
+A szavazóknak legalább egy jelöltet rangsorolniuk kell, de nem szükséges minden jelöltet rangsorolniuk. A rangsorolható jelöltek számát nem korlátozza a helyek száma: a szavazók egyetlen jelölt megválasztásakor is megadhatnak további jelölteket, akár az összes jelöltet rangsorolva. A rangsorból kihagyott jelöltek nem kapnak támogatást az adott szavazótól.
+
+Az STV-szavazásokban nincs beépített Tartózkodom lehetőség. A tartózkodni kívánó tagok egyszerűen kihagyhatják a szavazat leadását. Ne adj hozzá „Tartózkodom” nevű jelöltet, kivéve, ha a tartózkodásokat rögzíteni kell a szavazólapon, mert a Loomio ugyanúgy számolja, mint bármely más jelöltet: az ezt rangsoroló szavazólapok beleszámítanak a kvótába, és ha elég szavazó rangsorolja az első helyre, más lehetőségeknél tovább maradhat versenyben, vagy le is győzheti őket.
 
 <!-- translation-section: how-counting-works -->
 

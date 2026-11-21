@@ -1,18 +1,18 @@
 ---
 title: Elecciones STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 9810a117bfd928a0
-  when-to-use-stv: cba880a8e6647d60
+  introduction: 56f3987e0c291ac1
+  when-to-use-stv: cc84ce0e81aef784
   creating-an-stv-election: 5344baeb0f4abd0d
-  number-of-seats: 9b1b860f7d73bfaf
+  number-of-seats: f1084b871a99a2e5
   counting-method: 30fc98e027c8b30b
-  quota-type: da8b443cabe967d6
-  how-voting-works: 2018907cea7b34cd
+  quota-type: 79abb65480b98c09
+  how-voting-works: 07d345f702214c10
   how-counting-works: b3743a48a8770150
   understanding-results: bb0fa955bd9c98a0
   method-and-quota: f4958531186ad98f
@@ -43,7 +43,7 @@ title_generated: ac82e1e9db982f29
 
 # Elecciones STV
 
-El **voto único transferible (STV)** es un método de votación de representación proporcional para elegir a varios ganadores entre un conjunto de candidatos. Garantiza que los candidatos elegidos representen proporcionalmente la diversidad de opiniones de los votantes.
+El **voto único transferible (STV)** es un método de votación preferencial para elegir a uno o más ganadores entre un conjunto de candidatos. En elecciones con varios ganadores, ofrece representación proporcional y garantiza que los candidatos elegidos reflejen la diversidad de opiniones de los votantes. Con un solo ganador, funciona como una votación de segunda vuelta instantánea.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ Usa una elección STV cuando necesites:
 
 - Elegir un **comité, una junta o un conjunto de delegados** entre las personas propuestas
 - Garantizar la **representación proporcional**, para que los sectores minoritarios puedan obtener puestos en proporción al apoyo que reciben
-- Organizar elecciones en las que los votantes ordenen a los candidatos por preferencia
+- Elegir a un **único ganador** mediante una votación de segunda vuelta instantánea, en la que los votos de la opción con menos votos se transfieren a las siguientes preferencias de los votantes hasta que una opción alcanza la mayoría
 
 >[!NOTE]
->STV **no** es lo mismo que la [encuesta de votación preferencial](/en/user_manual/polls/rank/) de Loomio, que utiliza una clasificación más sencilla basada en puntuaciones para elegir una única opción como la mejor. STV permite elegir a varios ganadores mediante transferencias de votos y rondas de eliminación.
+>STV **no** es lo mismo que la [encuesta Ordenar](/en/user_manual/polls/rank) de Loomio. Ordenar suma los puntos de todas las preferencias para obtener un orden de preferencia general. STV utiliza rondas de eliminación y transferencias de votos, y sirve tanto para elecciones con un único ganador como con varios ganadores.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ En este ejemplo, Oatmilk Cooperative elige a tres personas para supervisar su pr
 
 ### Número de puestos
 
-Cuántos ganadores se deben elegir. Debe ser menor que el número de candidatos.
+Cuántos ganadores se deben elegir. Debe ser al menos 1 y menor que el número de candidatos. Establece este valor en 1 para una elección de segunda vuelta instantánea con un único ganador.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ En ambas fórmulas, *votes* es el número de papeletas que incluyen al menos un 
 STV Meek calcula la cuota sin redondear, como votes ÷ (seats + 1) para Droop. Recalcula la cuota en cada ronda a partir de los votos que aún tienen los candidatos, y un candidato debe superarla para resultar elegido.
   
   >[!TIP]
-  > La cuota Droop siempre da un número de votos menor que la cuota Hare. Por ejemplo, en una elección con 100 votos y cuatro puestos, la cuota Droop sería 21 y la cuota Hare, 25.
+  > La cuota Droop siempre da un número de votos menor que la cuota Hare. Con 100 votos y cuatro puestos, la cuota Droop es 21 y la cuota Hare es 25. Con 100 votos y un puesto, la cuota Droop es 51 (una mayoría, más del 50 %) y la cuota Hare es 100, por lo que Droop es la opción adecuada para las elecciones con un único ganador.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ En este ejemplo, Oatmilk Cooperative elige a tres personas para supervisar la pr
 - **Preferencia 2** = segunda opción
 - Continúa ordenando tantos candidatos como quieras
 
-Los votantes deben ordenar al menos un candidato, pero no necesitan ordenarlos todos. Los candidatos que no incluyan en su orden de preferencias no recibirán ningún apoyo de ese votante.
+Los votantes deben ordenar al menos un candidato, pero no necesitan ordenarlos todos. El número de candidatos que un votante puede ordenar no está limitado por el número de puestos: incluso en una elección con un único ganador, los votantes pueden incluir preferencias alternativas hasta ordenar a todos los candidatos. Los candidatos que no incluyan en su orden de preferencias no recibirán ningún apoyo de ese votante.
+
+Las encuestas STV no incluyen una opción de abstención. Los miembros que deseen abstenerse pueden simplemente no votar. Evita añadir «Abstención» como opción de candidato a menos que necesites registrar las abstenciones en la papeleta, porque Loomio la cuenta como cualquier otro candidato: las papeletas que la incluyen en el orden de preferencias cuentan para calcular la cuota y, si suficientes votantes la sitúan en primer lugar, puede permanecer en el recuento más tiempo que otras opciones o ganarles.
 
 <!-- translation-section: how-counting-works -->
 

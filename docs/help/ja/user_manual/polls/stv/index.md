@@ -1,18 +1,18 @@
 ---
 title: STV選挙
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: cd5a7bcff6ec37dd
-  when-to-use-stv: 17f3d69a63bb59bb
+  introduction: 301a49c8f00f3b4c
+  when-to-use-stv: 1f2b903432f465a7
   creating-an-stv-election: b759d7554916f196
-  number-of-seats: 16dd674fc5112944
+  number-of-seats: 5d07edc03b125da5
   counting-method: a567de31faf6ff3c
-  quota-type: 1a8d2c91b95c20d8
-  how-voting-works: cd34e81f6fe8c2db
+  quota-type: 997c76b89ab9b477
+  how-voting-works: 5256e686bfd5529a
   how-counting-works: 0e52d493cc406979
   understanding-results: 5a371e242b57e4e4
   method-and-quota: 4d882625064c24d1
@@ -43,7 +43,7 @@ title_generated: 834e0eeeefc92e8e
 
 # STV選挙
 
-**単記移譲式投票（STV）**は、複数の候補者から複数の当選者を選ぶ比例代表の投票方法です。当選者の構成に、投票者の多様な意見が比例して反映されるようにします。
+**単記移譲式投票（STV）**は、複数の候補者から1人以上の当選者を選ぶ、順位付けによる投票方法です。複数の当選者を選ぶ選挙では比例代表を実現し、当選者の構成に投票者の多様な意見が反映されるようにします。当選者が1人の場合は、即時決選投票として機能します。
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ title_generated: 834e0eeeefc92e8e
 
 - 推薦された候補者の中から**委員会の委員、理事、または代表者の一団**を選びます
 - 少数派も支持の割合に応じて議席を獲得できる**比例代表**を実現します
-- 投票者が候補者に希望順の順位を付ける選挙を行います
+- 即時決選投票で**1人の当選者**を選びます。最も票数の少ない選択肢への票を、投票者の次の希望に移譲し、いずれかの選択肢が過半数を得るまで繰り返します
 
 >[!NOTE]
->STVは、Loomioの[ランク投票](/en/user_manual/polls/rank/)と**同じではありません**。ランク投票は、スコアに基づく簡単な順位付けで、最も望ましい選択肢を1つ選ぶものです。STVは、票の移譲と脱落のラウンドを通じて、複数の当選者を選ぶ選挙を扱います。
+>STVは、Loomioの[ランク投票](/en/user_manual/polls/rank)と**同じではありません**。ランク投票は、すべての選択肢の得点を合計して、全体の希望順位を決めます。STVは、脱落のラウンドと票の移譲を使い、当選者が1人の選挙にも複数の選挙にも対応します。
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ title_generated: 834e0eeeefc92e8e
 
 ### 議席数
 
-当選者を何人選ぶかを設定します。候補者数より少なくする必要があります。
+当選者を何人選ぶかを設定します。1以上で、候補者数より少なくする必要があります。当選者が1人の即時決選投票を行う場合は、1に設定します。
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ Hare
 Meek式STVでは、クォータを丸めずに計算します。Droopの場合は votes ÷ (seats + 1) です。各ラウンドで候補者が保持している票を基にクォータを再計算し、候補者はクォータを超える票を得ると当選します。
   
   >[!TIP]
-  > Droopで計算される票数は、常にHareより小さくなります。例えば、100票で4議席を選ぶ選挙では、Droopクォータは21、Hareクォータは25になります。
+  > Droopで計算される票数は、常にHareより小さくなります。100票で4議席を選ぶ場合、Droopクォータは21、Hareクォータは25です。100票で1議席を選ぶ場合、Droopクォータは51（50%を超える過半数）、Hareクォータは100になるため、当選者が1人の選挙にはDroopが適しています。
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ Meek式STVでは、クォータを丸めずに計算します。Droopの場合�
 - **ランク2** = 第二希望の候補者
 - 希望する人数の候補者に順位を付けます
 
-投票者は少なくとも1人の候補者に順位を付ける必要がありますが、全員に順位を付ける必要はありません。順位を付けなかった候補者には、その投票者の票は移譲されません。
+投票者は少なくとも1人の候補者に順位を付ける必要がありますが、全員に順位を付ける必要はありません。順位を付けられる候補者の数は、議席数に制限されません。当選者が1人の選挙でも、次の希望としてすべての候補者まで順位を付けられます。順位を付けなかった候補者には、その投票者の票は移譲されません。
+
+STVアンケートには、棄権の選択肢が標準では用意されていません。棄権を希望するメンバーは、投票しないことで棄権できます。投票用紙に棄権を記録する必要がある場合を除き、候補者の選択肢として「棄権」を追加することは避けてください。Loomioは「棄権」も他の候補者と同じように集計します。「棄権」に順位を付けた投票用紙はクォータの計算に含まれ、十分な数の投票者が第一希望にすると、他の選択肢より長く集計に残ったり、他の選択肢に勝ったりする可能性があります。
 
 <!-- translation-section: how-counting-works -->
 

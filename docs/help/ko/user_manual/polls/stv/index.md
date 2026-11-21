@@ -1,12 +1,12 @@
 ---
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -15,13 +15,13 @@ sections:
   share-an-outcome: 6a02aed173b368b9
   exporting-ballots: 582555dd13633bf0
 generated:
-  introduction: eb68ab74e239c762
-  when-to-use-stv: dec13ae15b04aee1
+  introduction: 8b1ae02ff84e555b
+  when-to-use-stv: 4f1c0e1659e9494a
   creating-an-stv-election: e1a11f0b39e343fb
-  number-of-seats: 1bae57a923d60d64
+  number-of-seats: 881fb1f79cb3262e
   counting-method: 04d73f24153c8d92
-  quota-type: 1071ed7bd190a08c
-  how-voting-works: a840cd94df942d5c
+  quota-type: 52e1939d99623730
+  how-voting-works: 66f724ea3802536e
   how-counting-works: 71252353113013d4
   understanding-results: b1abafd582249cfa
   method-and-quota: baf2ede8c3a73362
@@ -34,8 +34,8 @@ title_source: cd3e1a4cdc2456a6
 title_generated: 2ae8a42d74c65803
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
 source_file: docs/help/en/user_manual/polls/stv/index.md
 ---
 
@@ -43,7 +43,7 @@ source_file: docs/help/en/user_manual/polls/stv/index.md
 
 # 단기이양식 선거
 
-**단기이양식 투표(STV)**는 여러 후보 중에서 복수의 당선자를 선출하는 비례대표 투표 방식입니다. 당선자가 투표자의 다양한 견해를 비례적으로 대표하도록 합니다.
+**단기이양식 투표(STV)**는 여러 후보 중에서 한 명 이상의 당선자를 선출하는 순위 기반 투표 방식입니다. 여러 당선자를 선출하는 선거에서는 비례대표성을 제공하여 당선자가 투표자의 다양한 견해를 반영하도록 합니다. 한 명을 선출할 때는 즉석 결선 투표 방식으로 작동합니다.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ source_file: docs/help/en/user_manual/polls/stv/index.md
 
 - 추천된 후보 중에서 **위원회, 이사회 또는 대표단**을 선출할 때
 - 소수 집단도 지지 비율에 따라 의석을 확보할 수 있도록 **비례대표성**을 보장할 때
-- 투표자가 선호하는 순서대로 후보의 순위를 정하는 선거를 진행할 때
+- 최저 득표 선택지의 표를 투표자의 차순위 선택지로 이양하고, 한 선택지가 과반수를 얻을 때까지 이 과정을 반복하는 즉석 결선 투표로 **한 명의 당선자**를 선출할 때
 
 >[!NOTE]
->단기이양식 선거는 Loomio의 [순위 투표](/en/user_manual/polls/rank/)와 **다릅니다**. 순위 투표는 하나의 최선의 선택지를 고르는 간단한 점수 기반 순위 방식입니다. 단기이양식 선거는 표 이양과 탈락 라운드를 통해 여러 당선자를 선출합니다.
+>단기이양식 선거는 Loomio의 [순위 투표](/en/user_manual/polls/rank)와 **다릅니다**. 순위 투표는 모든 선택지의 점수를 합산하여 전체 선호 순위를 정합니다. 단기이양식 선거는 탈락 라운드와 표 이양을 사용하며, 한 명 또는 여러 명의 당선자를 선출하는 선거에 모두 사용할 수 있습니다.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ source_file: docs/help/en/user_manual/polls/stv/index.md
 
 ### 의석 수
 
-선출할 당선자 수입니다. 후보 수보다 적어야 합니다.
+선출할 당선자 수입니다. 1 이상이어야 하며 후보 수보다 적어야 합니다. 한 명을 선출하는 즉석 결선 투표에서는 1로 설정하세요.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ Hare
 Meek STV는 반올림하지 않고 당선 기준표를 계산하며, Droop의 경우 votes ÷ (seats + 1)을 사용합니다. 각 라운드에서 후보들이 여전히 보유한 표를 기준으로 당선 기준표를 다시 계산하며, 후보는 이 기준을 초과해야 당선됩니다.
   
   >[!TIP]
-  > Droop으로 계산한 당선 기준표는 항상 Hare보다 낮습니다. 예를 들어 표가 100표이고 의석이 4개인 선거에서 Droop 당선 기준표는 21표, Hare 당선 기준표는 25표입니다.
+  > Droop으로 계산한 당선 기준표는 항상 Hare보다 낮습니다. 표가 100표이고 의석이 4개이면 Droop 당선 기준표는 21표, Hare 당선 기준표는 25표입니다. 표가 100표이고 의석이 1개이면 Droop 당선 기준표는 51표(50%를 넘는 과반수), Hare 당선 기준표는 100표이므로, 한 명을 선출하는 선거에는 Droop이 적합합니다.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ Meek STV는 반올림하지 않고 당선 기준표를 계산하며, Droop의 �
 - **2순위** = 두 번째로 선호하는 후보
 - 원하는 만큼 후보의 순위를 계속 정하세요
 
-투표자는 후보 한 명 이상에게 순위를 매겨야 하지만, 모든 후보에게 순위를 매길 필요는 없습니다. 순위를 매기지 않은 후보에게는 해당 투표자의 표가 전혀 배분되지 않습니다.
+투표자는 후보 한 명 이상에게 순위를 매겨야 하지만, 모든 후보에게 순위를 매길 필요는 없습니다. 순위를 매길 수 있는 후보 수는 의석 수에 제한되지 않습니다. 한 명을 선출하는 선거에서도 모든 후보에게 차순위까지 순위를 매길 수 있습니다. 순위를 매기지 않은 후보에게는 해당 투표자의 표가 전혀 배분되지 않습니다.
+
+단기이양식 투표에는 기본 기권 선택지가 없습니다. 기권하려는 멤버는 투표하지 않으면 됩니다. 투표용지에 기권을 기록해야 하는 경우가 아니라면 후보 선택지로 "기권"을 추가하지 마세요. Loomio는 이를 다른 후보와 동일하게 집계합니다. "기권"에 순위를 매긴 표도 당선 기준표 계산에 포함되며, 충분한 수의 투표자가 이를 1순위로 정하면 다른 선택지보다 늦게 탈락하거나 다른 선택지를 이길 수 있습니다.
 
 <!-- translation-section: how-counting-works -->
 

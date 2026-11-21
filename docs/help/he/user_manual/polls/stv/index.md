@@ -1,18 +1,18 @@
 ---
 title: בחירות STV
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 89919127dc8d4227
-  when-to-use-stv: 7db5a27fb09f584e
+  introduction: 1cb9a4b4de19eca1
+  when-to-use-stv: 5000690c14eb9cf2
   creating-an-stv-election: 5ffb95234e7c7029
-  number-of-seats: 934dce78cbc286d1
+  number-of-seats: d79cb800c98b2ff2
   counting-method: 1c927bededd90ef9
-  quota-type: 38d646ffc0b6c23d
-  how-voting-works: 25a672f2bbdd4384
+  quota-type: 03cb07310f6db880
+  how-voting-works: 4f67889451637d24
   how-counting-works: 2325dace83511e11
   understanding-results: 3dbf53962be08ae8
   method-and-quota: cb7a35cd3221a0e4
@@ -37,13 +37,15 @@ generated:
   share-an-outcome: 8853e719891a2a39
 title_source: cd3e1a4cdc2456a6
 title_generated: 205a2c4b5a77b85a
+needs_review:
+  when-to-use-stv: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
 
 # בחירות STV
 
-**הצבעה בקול יחיד הניתן להעברה (STV)** היא שיטת הצבעה לייצוג יחסי, המשמשת לבחירת כמה נבחרים מתוך רשימת מועמדים. השיטה מבטיחה שהמועמדים שנבחרו ייצגו באופן יחסי את מגוון הדעות בקרב המצביעים.
+**הצבעה בקול יחיד הניתן להעברה (STV)** היא שיטת הצבעה מדורגת לבחירת נבחר אחד או יותר מתוך רשימת מועמדים. בבחירות עם כמה נבחרים, השיטה מספקת ייצוג יחסי ומבטיחה שהמועמדים שנבחרו ישקפו את מגוון הדעות בקרב המצביעים. בבחירות עם נבחר אחד, השיטה פועלת כהצבעה בסיבובי הכרעה מיידיים.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +55,10 @@ title_generated: 205a2c4b5a77b85a
 
 - לבחור **ועדה, דירקטוריון או רשימת נציגים** מתוך רשימת מועמדים
 - להבטיח **ייצוג יחסי**, שבו קבוצות מיעוט יכולות לזכות במושבים ביחס לתמיכה בהן
-- לקיים בחירות שבהן המצביעים מדרגים מועמדים לפי העדפה
+- לאפשר בחירה ב**זוכה יחיד** באמצעות הצבעה בשיטת הכרעה מיידית, שבה הקולות של האפשרות שקיבלה את מספר הקולות הנמוך ביותר מועברים להעדפות הבאות של המצביעים, עד שאפשרות אחת זוכה ברוב
 
 >[!NOTE]
->STV **אינו** זהה ל[סקר דירוג](/en/user_manual/polls/rank/) של Loomio, שבו משתמשים בדירוג פשוט יותר המבוסס על ציונים כדי לבחור אפשרות אחת מועדפת. STV מיועד לבחירות עם כמה נבחרים, וכולל העברת קולות וסיבובי הדחה.
+>STV **אינו** זהה ל[סקר דירוג](/en/user_manual/polls/rank) של Loomio. בסקר דירוג מחברים את הנקודות של כל האפשרויות כדי ליצור סדר העדפות כולל. STV משתמש בסיבובי הדחה ובהעברת קולות, ומתאים הן לבחירות עם זוכה יחיד והן לבחירות עם כמה זוכים.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +74,7 @@ title_generated: 205a2c4b5a77b85a
 
 ### מספר המושבים
 
-מספר הנבחרים שיש לבחור. המספר חייב להיות קטן ממספר המועמדים.
+מספר הנבחרים שיש לבחור. המספר חייב להיות לפחות 1 וקטן ממספר המועמדים. לבחירות עם נבחר אחד בסיבובי הכרעה מיידיים, יש להגדיר את המספר ל־1.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +107,7 @@ Hare
 Meek STV מחשבת את המכסה ללא עיגול, לפי votes ÷ (seats + 1) עבור Droop. המכסה מחושבת מחדש בכל סיבוב לפי הקולות שעדיין משויכים למועמדים, ומועמד חייב לעבור אותה כדי להיבחר.
   
   >[!TIP]
-  > מכסת Droop תהיה תמיד מספר קולות קטן יותר ממכסת Hare. לדוגמה, בבחירות עם 100 קולות וארבעה מושבים, מכסת Droop תהיה 21 ומכסת Hare תהיה 25.
+  > מכסת Droop תהיה תמיד מספר קולות קטן יותר ממכסת Hare. עם 100 קולות וארבעה מושבים, מכסת Droop היא 21 ומכסת Hare היא 25. עם 100 קולות ומושב אחד, מכסת Droop היא 51 (רוב, יותר מ־50%) ומכסת Hare היא 100, ולכן Droop היא הבחירה המתאימה לבחירות עם נבחר אחד.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +121,9 @@ Meek STV מחשבת את המכסה ללא עיגול, לפי votes ÷ (seats + 
 - **דירוג 2** = הבחירה השנייה
 - ניתן להמשיך ולדרג מועמדים נוספים לפי הרצון
 
-יש לדרג לפחות מועמד אחד, אך אין צורך לדרג את כל המועמדים. מועמדים שלא דורגו לא יקבלו תמיכה כלשהי מההצבעה הזאת.
+יש לדרג לפחות מועמד אחד, אך אין צורך לדרג את כל המועמדים. מספר המועמדים שניתן לדרג אינו מוגבל למספר המושבים: גם בבחירות עם נבחר אחד, ניתן לדרג העדפות נוספות, עד לכל המועמדים. מועמדים שלא דורגו לא יקבלו תמיכה כלשהי מההצבעה הזאת.
+
+בסקרי STV אין אפשרות מובנית של הימנעות. חברים המעוניינים להימנע יכולים פשוט לא להצביע. יש להימנע מהוספת "נמנע/ת" כאפשרות ברשימת המועמדים, אלא אם יש צורך לתעד הימנעות בפתק ההצבעה, משום ש־Loomio סופרת אותה כמו כל מועמד אחר: פתקי הצבעה שבהם האפשרות מדורגת נכללים בחישוב המכסה, ואם מספיק מצביעים מדרגים אותה ראשונה, היא עשויה להישאר בספירה לאחר שאפשרויות אחרות הודחו או לגבור עליהן.
 
 <!-- translation-section: how-counting-works -->
 
