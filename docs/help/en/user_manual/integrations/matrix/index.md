@@ -2,37 +2,38 @@
 
 # Matrix integration
 
-Loomio can send notifications into your Matrix channels when new discussions, proposals, comments, votes, and outcomes occur. 
+Loomio can send notifications to a Matrix room when new discussions, polls, comments, votes, and outcomes happen. You must be a group admin to add a chat integration.
 
-Matrix is nice because it allows some HTML in the chatroom, and Loomio takes advantage of this.
+Unlike Loomio's other chat integrations, Matrix does not use a webhook. Instead, Loomio connects through a Matrix user account that acts as a bot and posts formatted messages to your room.
 
-Our Matrix integration is a little different to our other chat integrations - it does not use a webhook - we've built a custom bot client for this one.
-
-You will need to create a matrix user for the bot to login as.
-
-Once you've created a user for the bot, sign in at that user to obtain the following information.
-
-We're using Element for this guide.
+This guide uses the Element client.
 
 ---
 
-From your Loomio group, add a Matrix chat integration
-![loomio matrix bot menu](loomio-add-matrix-bot.png)
+1. Create a Matrix user account for Loomio, sign in to it in Element, and invite that account to the Matrix room where you want notifications to appear. Keep this session signed in — signing out invalidates the access token.
 
-Here's the form to complete
-![loomio matrix bot form](loomio-matrix-bot-form.png)
+2. In your Loomio group, open the group menu, select **Chat integrations**, and add a **Matrix** chat integration.
 
-Here's where you start to find your access token
-![matrix settings menu](matrix-settings-menu.png)
+   ![loomio matrix bot menu](loomio-add-matrix-bot.png)
 
-Here's the settings page
-![matrix settings](matrix-settings.png)
+   ![loomio matrix bot form](loomio-matrix-bot-form.png)
 
-Here's the access token itself
-![matrix access token](matrix-access-token.png)
+3. In Element, open the bot account menu and select **All settings**.
 
-Now you need the room id..
-![matrix room settings](matrix-room-settings.png)
+   ![matrix settings menu](matrix-settings-menu.png)
 
-Here it is.
-![matrix room id](matrix-room-id.png)
+4. Open **Help & About** and scroll to the **Advanced** section.
+
+   ![matrix settings](matrix-settings.png)
+
+5. Copy the **Access Token** and paste it into the Loomio form.
+
+   ![matrix access token](matrix-access-token.png)
+
+6. Open the room's **Settings** menu and go to **Advanced**.
+
+   ![matrix room settings](matrix-room-settings.png)
+
+7. Copy the **Internal room ID**, paste it into the Loomio form, and save the integration.
+
+   ![matrix room id](matrix-room-id.png)

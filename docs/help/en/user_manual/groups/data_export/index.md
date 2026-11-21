@@ -2,55 +2,51 @@
 
 # Group data backup or export
 
-With the group data export feature you can:
+With group data export, you can:
 
-- Download a file containing member data to audit group membership.
-- Download content of your group including text of threads and polls for archive or analysis.
-- Open poll results in a spreadsheet or scripting language.
-- [Print or save PDF's of a thread or poll for archival purposes.](#print-thread-to-pdf)
-- Move your group, including all users, threads, polls, and files to another Loomio server.
+- Download member data to audit group membership.
+- Archive or analyze your group's threads, comments, and polls.
+- Open poll results in a spreadsheet or script.
+- [Print or save PDFs of a thread or poll for your records.](#print-thread-to-pdf)
+- Move your group, including its users, threads, polls, and files, to another Loomio server.
 
-If you ever want to move from Loomio managed servers [to your own](https://github.com/loomio/loomio), you can use this feature.
+You can use this feature to move from Loomio's hosted service to a [self-hosted server](https://github.com/loomio/loomio). If you run your own server and want to move to Loomio's managed hosting in the USA, EU, or Australia, [contact us](/contact).
 
-If you're running your own Loomio server, and would rather not anymore, Loomio offer managed hosting in USA, EU and Australia. If you'd like to migrate your group to one of these servers, please [contact us](/contact).
-
-[Contact us](/contact) if you would like to transfer your Loomio group from Loomio's global hosted service at loomio.com to one of our regional services; loomio.eu for Europe or loomio.nz for Australia and New Zealand.
+[Contact us](/contact) if you want to transfer a group from loomio.com to a regional service (loomio.eu for Europe, or loomio.nz for Australia and New Zealand).
 
 <!-- translation-section: export-data -->
 
 ## Export data
 
-Open the group drop down menu by clicking on the three dots, and select **Export group data**.
+Only a group admin can export group data. Open the group's actions menu and select **Export group data**.
 
 ![Export group data action in the Oatmilk Cooperative menu](group_export_group_data.png)
+
+Loomio prepares the export in the background and emails you a download link when it is ready. The link stays active for one week.
 
 <!-- translation-section: export-group-data-as-csv -->
 
 ### Export group data as CSV
 
-*For working with the group data in a spreadsheet, such as with MS Excel or Google Sheets.*
-
-Loomio prepares the CSV file in the background and emails you a download link when it is ready. The link is available for one week.
+Use CSV to inspect group data, including member details and activity, in a spreadsheet such as Microsoft Excel or Google Sheets.
 
 <!-- translation-section: export-group-data-as-html -->
 
 ### Export group data as HTML
 
-*For when you want to save the data for archival purposes.*
-
-Loomio prepares the HTML file in the background and emails you a download link when it is ready. The link is available for one week.
+Use HTML to save a readable copy of your group's discussions and polls for archival purposes.
 
 <!-- translation-section: export-group-data-as-json -->
 
 ### Export group data as JSON
 
-*For when you want to move your group data to a self-hosted Loomio instance.*
+Use JSON to move your group data to a self-hosted Loomio server.
 
-You must be an admin of the group to export it. The JSON export includes:
+The JSON export includes:
 
-- The group, its members and membership requests
-- Threads, comments, reactions, tags, templates, notifications and related records from the included groups
-- Polls, options, votes and outcomes; an anonymous poll is included only after it has closed
+- The group, its members, and membership requests
+- Threads, comments, reactions, tags, templates, notifications, and related records from included groups
+- Polls, options, votes, and outcomes; an anonymous poll is included only after it has closed
 - Subgroups you belong to
 - Open, Closed, and Visible to parent group subgroups when you export their parent group as a parent group admin, even if you do not belong to those subgroups
 - References to files and images attached to the included content
@@ -62,15 +58,11 @@ The JSON export does not include:
 - Anonymous polls that have not closed
 - Direct threads and polls that do not belong to the group
 
-You'll shortly receive an email with a link to downloading the JSON file.
-
 <!-- translation-section: print-thread-to-pdf -->
 
-## Print thread to pdf
+## Print thread to PDF
 
-To save a thread for your records, open its menu and choose **Print**. Loomio generates an HTML page with the thread’s comments, polls, votes, outcomes and formatting. Use your browser’s print tool to print it or save it as a PDF.
-
-You can copy the page to paste it into a document editor, file, or data repository.
+To save a single thread for your records, open its actions menu and select **Print**. Loomio generates an HTML page with the thread's comments, polls, votes, outcomes, and formatting. Use your browser's print tool to print it or save it as a PDF, or copy the content into another document.
 
 ![Print action for the returnable bottles discussion](discussion_print_discussion.png#width-90)
 
@@ -78,18 +70,22 @@ You can copy the page to paste it into a document editor, file, or data reposito
 
 ## Import your group data on another Loomio server
 
-For instructions on setting up your own Loomio server, visit: https://github.com/loomio/loomio
+This section is for administrators running a self-hosted Loomio server. For setup instructions, see the [Loomio repository](https://github.com/loomio/loomio).
 
-If you are hosting your own Loomio deployment, and would like to import your exported data:
+1. Copy the `.json` file to the container's `import` folder:
 
-Copy the .json file to the container instance's `import` folder:
+```sh
+scp your-group-data.json username@some-domain.org:loomio-deploy/import
+```
 
-`scp your-group-data.json username@some-domain.org:loomio-deploy/import`
+2. Open the Rails console in the running container:
 
-Access the running Rails console:
+```sh
+docker exec -ti loomio-app rails console
+```
 
-`docker exec -ti loomio-app rails console`
+3. Run the import service:
 
-Call the service:
-
-`GroupExportService.import('/import/your-group-data.json')`
+```ruby
+GroupExportService.import('/import/your-group-data.json')
+```

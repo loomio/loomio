@@ -4,11 +4,11 @@
 
 Poll templates are reusable starting points shown when someone selects **Start a vote** or **New poll**. A template combines a voting method with preset guidance, response options, and settings.
 
-Use this page to configure which templates are available to a group or to create one for your own process. To choose a template for a particular vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
+Use this page to configure which templates are available to a group or create one for your own process. To choose a template for a specific vote, see [Proposals](../proposals/) or [Polls](../proposal_types/). To facilitate a complete decision process, see [Making decisions](/en/guides/making_decisions/).
 
-When starting a vote, select the **Proposal** or **Poll** tab and choose one of the templates available to the group.
+When starting a vote, select the **Proposal** or **Poll** tab and choose a template available to the group.
 
-The template supplies an introduction, example content, options, and settings. Review and edit these for the particular decision before starting the vote. Editing the new vote does not change the reusable template.
+The template fills in an introduction, example content, options, and settings. Review and edit these for your decision before starting the vote. Editing a new vote does not change the template.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -44,11 +44,11 @@ To adapt a default template such as **Consent**, open its action menu and select
 
 ## Template settings
 
-Give the template a name and subtitle that describe when to use it. You can modify any of the other fields to make them more suitable for reuse. After you select **Save template**, the template will be listed when people start a new proposal or poll.
+Give the template a name and subtitle that describe when to use it. Adjust any other fields so the template is ready to reuse, then select **Save template**. The template will then appear when people start a new proposal or poll.
 
 [![The complete Policy change consent process template form](poll_template_new.png)](poll_template_new.png)
 
-For standalone polls, **Only admins can add attachments** restricts new files and inline images to thread admins and group admins, including in responses and replies. Polls started inside an existing thread follow that thread's attachment setting. Changing the template affects future polls only.
+For standalone polls, **Only admins can add attachments** restricts new files and inline images (including in responses and replies) to thread admins and group admins. Polls inside an existing thread follow that thread's attachment setting. Changing a template affects future polls only.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -60,7 +60,7 @@ Use the title and subtitle to explain when to choose the template. Put process g
 
 ### Voting method
 
-Choose what participants need to express and how the result should be calculated.
+Choose what participants need to express and how the result should be calculated:
 
 - **Proposal**: respond to a statement using defined positions;
 - **Choose**: select one or more options;
@@ -87,19 +87,19 @@ Methods such as Proposal and Choose let you configure response options. Select t
 - **Option name**: the short response label;
 - **Icon**: its visual marker;
 - **Meaning**: what selecting the option communicates; and
-- **Reason prompt**: the question shown when someone explains their response.
+- **Reason prompt**: the question shown when someone explains their vote.
 
 ![](poll_type_edit_option.png)
 
-Define options so participants can tell the difference between them without guessing. The meanings should match the decision rules your group actually uses.
+Define options so participants can tell them apart without guessing. Meanings should match the decision rules your group actually uses.
 
 <!-- translation-section: duration-and-settings -->
 
 ### Duration and settings
 
-Set a default duration that is suitable for most uses of the template. The author can change the closing time for an individual vote.
+Set a default duration that fits most uses of the template. The author can change the closing time for an individual vote.
 
-Other defaults can control result visibility, anonymous voting, [weighted voting](../weighted_voting/), vote-reason requirements, reminders, quorum, and method-specific behaviour. See [Proposal and poll settings](../settings/) for their effects.
+Other defaults control result visibility, anonymous voting, [weighted voting](../weighted_voting/), vote-reason requirements, reminders, quorum, and method-specific behavior. See [Proposal and poll settings](../settings/) for details.
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -114,12 +114,12 @@ Use the action menu beside a template to:
 
 ![The group's template list with the Policy change consent process action menu open](template_manage.png)
 
-Select **Show hidden templates** to review or restore hidden templates. Default templates can be hidden or adapted for the group, but cannot be deleted.
+Select **Show hidden templates** to review or restore hidden templates. You can hide or adapt default templates for your group, but you cannot delete them.
 
-Changing a template does not alter proposals or polls that have already been started from it.
+Changing a template does not alter proposals or polls already started from it.
 
 <!-- translation-section: who-can-manage-templates -->
 
 ### Who can manage templates
 
-Group administrators can create and manage every poll template in their group. They can enable **Members can create templates** under **Group settings** → **Permissions**. When enabled, members can create templates and manage templates they authored.
+Group admins can create and manage every poll template in their group. They can enable **Members can create templates** under **Group settings** → **Permissions**. When enabled, members can create templates and manage templates they authored.

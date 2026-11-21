@@ -2,7 +2,7 @@
 
 # Signing in
 
-On Loomio.com, you can sign in with a passkey, your email and password, an emailed sign-in code, or Google. You can choose whichever available method is most convenient for you.
+On Loomio.com, you can sign in with a passkey, your email and password, an emailed sign-in code, or Google. Choose whichever method works best for you.
 
 ![The Loomio sign-in form with passkey, email, password, and emailed-code options](sign_in_email.png)
 
@@ -10,17 +10,17 @@ On Loomio.com, you can sign in with a passkey, your email and password, an email
 
 ## Sign in with a passkey
 
-Select **Use a passkey**. Your browser or device shows the Loomio passkeys available to you and asks you to unlock the selected passkey with its normal screen lock, fingerprint, face recognition, PIN, or security key. You do not enter an email address first.
+Select **Use a passkey**—you do not need to enter an email address first. Your browser or device shows your available Loomio passkeys and asks you to unlock one using your screen lock, fingerprint, face recognition, PIN, or security key.
 
-You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a recognizable name such as “Work laptop” or “Phone”. Passkeys are tied to the Loomio site where they were created and may be synchronized by your device or password manager.
+You can add, name, and remove passkeys from your profile. For security, Loomio may ask you to sign in again before changing them. Give each passkey a clear name such as “Work laptop” or “Phone”. Passkeys belong to the Loomio site where you created them and may sync across devices through your device or password manager.
 
 <!-- translation-section: sign-in-with-email-and-password -->
 
 ## Sign in with email and password
 
-Enter your email address and password, then select **Sign in**. For account privacy, Loomio uses the same error when the email or password cannot be used to sign in.
+Enter your email address and password, then select **Sign in**. For privacy, Loomio shows the same error whether the email address or the password is wrong.
 
-If you have not added a passkey, Loomio offers to add one after you sign in with a password. You can dismiss the offer, and Loomio will remember your choice.
+If you have not added a passkey yet, Loomio offers to add one after you sign in. You can dismiss the prompt and Loomio will remember your choice.
 
 If you do not have a password or cannot remember it, select **Send me a code** instead.
 
@@ -28,13 +28,13 @@ If you do not have a password or cannot remember it, select **Send me a code** i
 
 ## Get a sign-in code
 
-Select **Send me a code**, enter your email address, and submit the form. Loomio displays the same confirmation whether or not the address belongs to an account, so another person cannot use the form to discover who uses Loomio.
+Select **Send me a code**, enter your email address, and submit the form. For privacy, Loomio shows the same confirmation whether or not the address belongs to an account.
 
-If the address belongs to your account, Loomio sends a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Sign-in codes normally expire after 24 hours and cannot be reused. Check your spam folder if the message does not arrive, and make sure you entered the address associated with your account.
+If the address belongs to your account, Loomio emails you a six-digit code. Return to the sign-in form, enter the code, and select **Sign in**. Codes expire after 24 hours and can only be used once. If the email does not arrive, check your spam folder and make sure you entered the address on your account.
 
 ![The Loomio form for entering a six-digit sign-in code](sign_in_code.png)
 
-After each sign-in with a code, Loomio offers to set or replace your password. If your browser supports passkeys, you can also add one, even if you have already added a passkey on another device. A passkey lets you sign in quickly with your device’s fingerprint, face, or screen lock. You can skip the offer and continue using emailed codes.
+After signing in with a code, Loomio offers to set or replace your password, or to add a passkey if your browser supports them. You can skip this and continue using emailed codes.
 
 <!-- translation-section: create-an-account -->
 
@@ -48,7 +48,7 @@ For privacy, use the same email address that received your group invitation. If 
 
 ## Sign in with Google
 
-Select **Sign in with Google** and authenticate with your Google account. If an existing Loomio account has the same email address, Loomio links the Google identity to that account.
+Select **Sign in with Google** and sign in with your Google account. If an existing Loomio account uses that email address, Loomio links Google to it. Otherwise, Loomio creates a new account for you.
 
 <!-- translation-section: other-loomio-sites -->
 
@@ -56,14 +56,14 @@ Select **Sign in with Google** and authenticate with your Google account. If an 
 
 Organizations that host their own Loomio site can configure different sign-in methods. A site may offer passwords, emailed codes, passkeys, Google, SAML, or another OAuth provider alongside each other.
 
-Some sites require an invitation before you can create an account. On these sites, **Create account** appears only when you follow an invitation link.
+Some sites require an invitation before you can create an account. On those sites, **Create account** appears only when you follow an invitation link.
 
-An SSO-only private site shows only its organization sign-in option. It does not offer Loomio-managed passwords, emailed sign-in codes, native account creation, or Loomio-managed passkeys. If the organization uses passkeys, its identity provider asks for them during SSO.
+Some private sites require you to sign in through your organization's single sign-on (SSO) system. These sites do not offer Loomio passwords, emailed codes, or passkeys, and do not let you create a separate Loomio account. If your organization uses passkeys, you will use them through your organization's sign-in screen.
 
 <!-- translation-section: sign-out -->
 
 ## Sign out
 
-Open the sidebar, select your name, then select **Sign out**. On a shared computer, sign out when you finish rather than closing only the browser tab.
+Open the sidebar, select your name, then select **Sign out**. On a shared computer, always sign out when you finish rather than just closing the browser tab.
 
-Signing out ends that browser's session immediately. Loomio retains the session's IP address, browser information, and start and end times for security investigations for 60 days by default. Private-site operators can configure this period. Permanently deleting your account removes this session history.
+Signing out ends that browser's session immediately. For security investigations, Loomio keeps the session's IP address, browser details, and start and end times for 60 days by default (private-site operators can change this period). Permanently deleting your account removes this session history.

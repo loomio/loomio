@@ -2,7 +2,7 @@
 
 # Proposals and polls
 
-Proposals and polls collect structured responses from a group. They can help test an idea, make a decision, identify priorities, schedule a meeting, or elect representatives.
+Proposals and polls collect structured responses from a group. Use them to test an idea, make a decision, set priorities, schedule a meeting, or elect representatives.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -55,9 +55,9 @@ See [Polls](../proposal_types/) to compare them.
 
 ### Choose whether to use a discussion
 
-Start the proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can contain several proposals over time, keeping amendments and the eventual outcome together as one record of the topic.
+Start a proposal or poll inside a discussion when people need context, questions, or conversation before responding. A discussion can hold several proposals over time, keeping amendments and the final outcome together in one record.
 
-Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the relevant record so voters understand what they are responding to.
+Run a standalone poll when the discussion has already happened elsewhere, such as at a meeting, or when the question is simple and you only need to collect responses. Include enough detail or a link to the background so voters know what they are responding to.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -75,7 +75,7 @@ Open the **Polls** tab on the group page, select **New poll**, and choose a temp
 
 ![](standalone_poll.png)
 
-If you create a discussion and poll at the same time only to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
+If you create a discussion and a poll at the same time just to run a vote, avoid notifying people twice. Start the discussion without notifying them and use the poll invitation, or run the poll without a discussion.
 
 <!-- translation-section: what-happens-next -->
 
@@ -97,30 +97,30 @@ Give it a title and details, check its options and settings, and set a closing t
 
 ### 2. Voting opens
 
-When voting opens, Loomio notifies the people you invited. See [Invite to vote](../inviting_people/).
+When voting opens, Loomio notifies the people you invited. See [Manage voters](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. People vote
 
-While it is open, people can vote, explain their vote, and change their vote. Results update as people vote, unless results are hidden until it closes. By default, people who have not voted get a reminder a day before it closes.
+While it is open, people can vote, add a vote reason, and change their vote. Results update as people vote unless results are hidden until closing. By default, people who have not voted receive a reminder 24 hours before it closes.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. It closes
 
-It closes automatically at the closing time. A thread admin can also close it early. After it closes, a thread admin can reopen it with a new closing time to let people keep voting. Polls that hide results until voting closes, including anonymous polls, cannot be reopened. You can extend their closing time while they are still open.
+The poll closes automatically at the closing time, or a thread admin can close it early. After it closes, a thread admin can reopen it with a new closing time. Polls that hide results until voting closes, including anonymous polls, cannot be reopened; you can extend their closing time while they are still open.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Share an outcome
 
-When it closes, Loomio asks the thread admins to share an outcome.
+When the poll closes, Loomio asks thread admins to share an outcome.
 
 ![The prompt to enter an outcome after a proposal closes](outcome_prompt.png)
 
-The outcome states what was decided and what will happen next. It appears above the results, so it is the first thing people read. When you publish it, you can notify people. They receive an email with the results and the outcome.
+The outcome states what was decided and what happens next. It appears above the results so it is the first thing people read. When you publish it, you can notify people—they receive an email with the results and the outcome.
 
-You can also set a **Review date**. On that date, Loomio reminds you to review the decision.
+You can also set a **Review date** so Loomio reminds you to review the decision on that date.
 
 ![A published outcome with a review date](outcome_published.png)

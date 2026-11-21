@@ -1,41 +1,40 @@
 <!-- translation-section: introduction -->
 
 # Slack integration
-_Connect your Loomio group notifications to Slack._
 
-Loomio can send notifications into your Slack channels when new discussions, proposals, comments, votes, and outcomes occur. Get key updates, at the right time, on important discussions and decisions.
+Loomio can send notifications to your Slack channels when new discussions, polls, comments, votes, and outcomes happen.
 
 ---
 
-Start by visiting [https://api.slack.com](https://api.slack.com), signing in if you are not already, then clicking Create New App
+1. Open [api.slack.com](https://api.slack.com), sign in, and select **Create New App**.
 
-![](s1.png)
+   ![](s1.png)
 
-Give your Slack app a name
+2. Give your Slack app a name and choose your workspace.
 
-![](s2.png)
+   ![](s2.png)
 
-Add incoming webhooks support
+3. Select **Incoming Webhooks**.
 
-![](s3.png)
+   ![](s3.png)
 
-Then enable the function
+4. Turn on **Activate Incoming Webhooks**.
 
-![](s4.png)
+   ![](s4.png)
 
-Then add a new webhook
+5. Select **Add New Webhook to Workspace**.
 
-![](s5.png)
+   ![](s5.png)
 
-Select a channel
+6. Choose the channel where you want Loomio notifications to appear.
 
-![](s6.png)
+   ![](s6.png)
 
-Copy the webhook URL to your clipboard
+7. Copy the webhook URL.
 
-![](s7.png)
+   ![](s7.png)
 
-Now that you have a Webhook URL, continue setting up your chat integration:
+Now that you have a webhook URL, finish connecting it in Loomio:
 
 [Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)
 

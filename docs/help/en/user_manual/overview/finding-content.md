@@ -8,13 +8,13 @@ Loomio provides several ways to find discussions and decisions across your group
 
 ## Search
 
-The Search button in the top navigation bar opens global search from any page in Loomio.
+Select **Search** in the top navigation bar to search from any page in Loomio.
 
 ![](search_button.png)
 
-Search includes content you can access across all your groups and direct discussions. It can find discussion titles and context, comments, polls, votes, and outcomes.
+Search covers all groups and direct discussions you can access. It finds discussion titles, context, comments, polls, votes, and outcomes.
 
-Enter a word or phrase, then press Enter or select the search icon. For example, searching for **bottle** finds Oatmilk Cooperative content containing that word.
+Type a word or phrase and press Enter. For example, searching for **bottle** finds Oatmilk Cooperative content with that word.
 
 ![](search_strategy.png)
 
@@ -22,17 +22,17 @@ Enter a word or phrase, then press Enter or select the search icon. For example,
 
 ### Search tips
 
-- Start with one or two distinctive words from the title or content you remember.
-- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**. 
-- It will compensate for misspellings when results for the given query are very few.
-- Use the filters to limit results to an organization, subgroup, tag, or content type such as comments or polls. A tag filter matches contributions explicitly carrying that tag, and works without a search phrase.
-- Sort by **Best match** when relevance matters, or by newest or oldest when you know roughly when the content was posted.
+- Start with one or two specific words from the title or content.
+- Search matches the beginning of a word, so a partial word such as **bott** can match **bottle**.
+- Search handles minor misspellings when a query returns few results.
+- Filter results by organization, subgroup, tag, or content type (such as comments or polls). Tag filters work without a search term and return items with that tag.
+- Sort by **Best match** for relevance, or by newest or oldest if you know roughly when something was posted.
 
 <!-- translation-section: filter-discussions -->
 
 ## Filter discussions
 
-Use the controls beside Search to filter discussions by open or closed status or by category tag. Combining a search term with a filter can narrow a long discussion list quickly.
+On a group's **Discussions** tab, you can filter threads by open or closed status or by category tag. Combine a filter with the list's search box to narrow a long discussion list quickly.
 
 <!-- translation-section: category-tags -->
 
@@ -42,19 +42,21 @@ Tags group related discussions, polls, outcomes, and comments under names chosen
 
 ![](tags.png)
 
-Select a tag on the **Discussions** tab to show threads containing a matching contribution. Within a thread, select a tag in the sidebar to find matching contributions with their parent context. Authors can tag their own contributions. Group admins, thread admins, and people with permission to edit the discussion context can tag any contribution. See [Category tags](/en/user_manual/discussions/tags) for setup and permission details.
+Select a tag on the **Discussions** tab to show discussions that contain tagged items. Inside a discussion, select a tag in the sidebar to see matching comments, polls, or outcomes along with the items they reply to.
+
+Authors can tag their own posts. Group admins, thread admins, and anyone who can edit the discussion context can tag any item. See [Category tags](/en/user_manual/discussions/tags) for setup and permissions.
 
 <!-- translation-section: unread-discussions -->
 
 ## Unread discussions
 
-Select **Unread discussions** in the sidebar to see discussions with activity you have not read. Within a discussion, the timeline helps you move to unread items and important events.
+Select **Unread discussions** in the sidebar to see threads with new activity. Inside a discussion, use the timeline to jump to unread items and key events.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Polls awaiting your vote
 
-Select **Polls to vote on** in the sidebar to see active polls where you have been invited but have not yet voted. You can also open a group's **Polls** tab to see its active and closed polls.
+Select **Polls to vote on** in the sidebar to see open polls you are invited to that you have not voted in yet. You can also open a group's **Polls** tab to view both active and closed polls.
 
 <!-- translation-section: bookmarks -->
 

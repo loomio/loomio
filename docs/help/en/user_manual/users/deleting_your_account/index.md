@@ -6,32 +6,32 @@
 
 ## What does delete account mean?
 
-When you delete your account:
-- Your user account including your name, email address and other personally identifying data will be deleted from our systems. You will not be able to sign in to Loomio with this account.
-- Comments, proposal and discussions you have made will remain but your name will be removed from them. We do this because we have an obligation to groups to keep threads and proposals coherent.
-- You will no longer be listed as a member of any groups.
-- You will no longer receive notification emails.
+Deleting your account is permanent and cannot be undone. When you delete your account:
 
-It is important to understand that copies of the data you have generated on Loomio have likely been emailed to everyone in the group - Loomio has no ability to delete those.
+- Loomio deletes your account, including your name, email address, and other personal details. You can no longer sign in with this account.
+- Your comments, proposals, and discussions remain, with your name removed, so group threads stay intact.
+- You are removed as a member of all groups.
+- You stop receiving notification emails.
 
-Deleting your account will _not_ cancel your subscription; to stop your payments see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+Copies of your activity may already have been emailed to group members. Loomio cannot delete emails that have already been sent.
 
-Loomio has made fundamental decisions about its ownership, business model and software to protect users' rights. Loomio is an independent, worker-owned cooperative, the software is open source, you can [export your data](/en/user_manual/groups/data_export), and Loomio never sells your data or uses it for advertising. These commitments are set out in our [privacy policy](/en/policy/privacy) and grounded in the purpose and values in our [constitution](https://www.loomio.coop/constitution.html) and [cooperative handbook](https://www.loomio.coop/purpose_and_vision.html). If you have any questions, [contact us](/contact).
+Deleting your account does not cancel a paid subscription. To stop payments, see [Subscriptions](/en/policy/subscriptions/management#cancel-your-plan).
+
+For details on how Loomio handles your data, see our [privacy policy](/en/policy/privacy) or [contact us](/contact). If you need a copy of a group's records first, a group admin can [export the group's data](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 
 ## To delete your account entirely
 
-Sign in to Loomio.  Go to the sidebar from the (☰) menu icon at screen top left Click on your account avatar or initials, at the top right of your screen.
-
-Click the down arrow ( ∨ ) alongside your name to open user settings. Select **Edit profile**.
+1. Sign in to Loomio.
+2. Open your user menu by selecting your name in the sidebar, then select **Edit profile**. If the sidebar is closed, open it with the menu button (**☰**).
 
 ![](profile_edit.png#width-50)
 
-Scroll to the bottom, and click on **Delete account**.
+3. Scroll to the bottom of the page and select **Delete account**.
 
 ![](delete_user.png)
 
-A pop up will appear requesting confirmation that you wish to delete your account.
+4. Confirm that you want to permanently delete your account.
 
 ![](permanently_delete_account.png#width-80)

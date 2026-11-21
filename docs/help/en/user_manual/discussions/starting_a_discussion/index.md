@@ -2,70 +2,69 @@
 
 # Start a discussion
 
-Starting a Loomio discussion is like writing an email. The subject line of an email is like the discussion title, and the text you write in an email is like the context of a discussion.
+Starting a Loomio discussion works much like sending an email. The title is like a subject line, the context introduces the topic, and the invite list chooses who gets notified.
 
-As you add people in the send list of your email, in Loomio you can invite people individually or as a group to the discussion - they will receive an email notification with the content of your discussion.
-
-People can reply to your discussion via email and their comments will appear in the discussion.
-
-As with an email, a discussion may be a simple question, or a more detailed introduction to a topic with links or files attached for background information.
+You can ask a simple question or share a detailed brief with links and attached files. People can also reply by email, and their replies appear in the discussion.
 
 <!-- translation-section: new-discussion -->
 
-## New discussion
+## Start a new discussion
 
-Find the **New discussion** button on your Loomio group page to start a new discussion.
+Select **Start discussion** on your group page or any subgroup page.
 
-You can start a discussion within your Loomio group or any subgroup.
+Loomio shows your group's [discussion templates](/en/user_manual/discussions/templates/). Choose a template—or **Blank template**—to open the discussion form.
 
-![New discussion button on the Oatmilk Cooperative page](new-discussion-button.png)
+![Start discussion button on the Oatmilk Cooperative page](new-discussion-button.png)
 
-![New discussion form for planning the returnable bottle trial](new-discussion-example.png)
+![Start a discussion form for planning the returnable bottle trial](new-discussion-example.png)
 
 <!-- translation-section: group -->
 
 ### Group
-Check the name of the group or subgroup is correct for your discussion.  Anyone in this group will be able to see the discussion. You can also start the discussion in another group or as a 'direct' discussion (no group).
+
+Check that the right group or subgroup is selected. Anyone in that group can see the discussion. You can also start the discussion in another group or as a [direct discussion](/en/user_manual/discussions/direct_discussions/) with no group.
 
 >[!Tip]
->If you are not ready to make the discussion visible in your group, start the discussion as 'direct'.  You can move the discussion to your Loomio group when ready.
+>If you are not ready to share a discussion with your group, start it as a direct discussion. You can move it to your group later.
 
 <!-- translation-section: invite-and-notify -->
 
 ### Invite and notify
 
-The **Invite** field controls who receives the new discussion immediately.
+The **Invite** field controls who is notified immediately when you start the discussion.
 
-Group members can see a discussion in their group even if you do not notify them. Adding a group member to **Invite** sends them an email notification and a notification in Loomio.
+Group members can see a discussion in their group even if you do not notify them. Adding a group member to **Invite** sends them a notification in Loomio and by email.
 
-Select a group to notify everyone in it, or expand the group to choose individual members. Select the × beside a name to remove that person from the notification.
+Select a group to notify everyone in it, or expand the group to choose individual members. Select **×** beside a name to leave that person out.
 
 ![Invite field expanded to show individual recipients](../notifying_people/thread_notification.png)
 
-Start typing a member's name and select it from the list.
+Start typing a member's name and select them from the list.
 
 ![Searching for Samira Patel in the Invite field](../notifying_people/thread_notify_user.png)
 
-Enter an email address to invite a guest. A guest can see and participate in this thread but cannot see other discussions in the group unless separately invited.
+Enter an email address to invite a guest. A guest can see and participate in this thread, but cannot see other private discussions in the group unless invited.
 
 ![Adding a guest email address to the Invite field](../notifying_people/thread_notify_email.png)
 
-You can also start the discussion without notifying anyone. Group members can still find it in Loomio and may see it in their catch-up email, depending on their notification settings.
+You can also start a discussion without notifying anyone. Group members can still find it in Loomio and may see it in their catch-up email, depending on their notification settings.
 
 <!-- translation-section: tags -->
 
 ### Tags
 
-Add tag(s) to help people find your discussion when searching by tag. Admins can create new tags.
+Add one or more tags so people can filter and search for your discussion later. Members can create new tags by default unless a group admin disables that permission. See [Category tags](/en/user_manual/discussions/tags/).
 
 <!-- translation-section: title -->
 
 ### Title
-Give your discussion a relevant title.  A discussion title is similar to an email subject line.
+
+Add a clear, specific title that tells people what the discussion is about.
 
 <!-- translation-section: context -->
 
 ### Context
-Use discussion context to introduce the topic and frame the conversation or decision to make. Use the formatting tools to emphasize key points. Include background information, attach files, link to online documents and embed a video.
 
-The context will always stay at the top of the discussion and you can update it at any time as the discussion progresses.  When the discussion ends, update the context with the outcome.
+The context introduces the topic and frames the conversation or decision. You can format text, attach files, link to documents, and embed videos.
+
+The context stays at the top of the thread, and you can update it as the discussion progresses. When the discussion wraps up, you can also add the outcome to the context so latecomers see the result right away.

@@ -2,25 +2,25 @@
 
 # Group permissions
 
-The permissions tab controls which group operations are available to ordinary members and, for non-secret groups, to non-members. Open **Edit group settings** from the group page, then select **Permissions**.
+The **Permissions** tab controls what members can do in the group and, for non-secret groups, what non-members can do. Open **Edit group settings** from the group's actions menu, then select **Permissions**.
 
 ![Group permission settings](group_group_settings_permissions.png)
 
-Administrators retain the ability to manage the group. Enabling a member permission extends that particular action to ordinary members; it does not make them administrators.
+Group admins always keep full management permissions. Turning on a permission lets members perform that action without making them group admins.
 
-Permissions include whether members can:
+Permissions control whether members can:
 
-- add members or invite guests;
-- send announcements;
-- create subgroups;
-- start and manage discussions;
-- create and manage tags;
-- edit or delete comments where the setting permits;
-- start proposals and polls; and
-- create discussion and poll templates.
+- Add members or invite guests
+- Send announcements
+- Create subgroups
+- Start and manage discussions
+- Create and manage tags
+- Edit or delete comments where the setting permits
+- Start proposals and polls
+- Create discussion and poll templates
 
-For groups that are not secret, administrators can separately allow non-members to start discussions. A non-member who starts a discussion becomes a guest of that discussion but does not gain access to other private discussions or become a group member.
+For non-secret groups, group admins can also allow non-members to start discussions. A non-member who starts a discussion becomes a guest on that thread, but does not become a group member or gain access to other private discussions.
 
-The **Admins can edit members' comments** setting gives administrators an exceptional moderation capability. Enable it only when the group has agreed that administrators should be able to alter member-authored content.
+The **Admins can edit members' comments** setting lets group admins edit content written by members. Turn this on only if your group has agreed that group admins should be able to change members' comments.
 
-Review permissions when the group's purpose, membership, or moderation responsibilities change. Give each role only the capabilities it needs.
+Review permissions whenever your group's purpose, membership, or moderation needs change, and grant each role only the permissions it needs.

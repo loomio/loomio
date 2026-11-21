@@ -2,27 +2,19 @@
 
 # Time poll
 
-Use a **Time poll** to find a time for a meeting or event. It serves the same purpose as scheduling tools such as Doodle, while keeping the scheduling process with the group's other Loomio work. Participants see the options in their own time zone.
+Use a **Time poll** to find a time for a meeting or event alongside your group's other Loomio work. Each participant sees the date and time options in their own time zone.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Time poll
-
-_Find when people are available to meet_
-
-Save time arranging a date for your meeting or event.
+## Set up the poll
 
 ![](timepoll_label.png)
 
-Time poll makes it easy to see everyone's availability and find the best time.
+Give your Time poll a title and details. Enter date and time options in your own time zone, and set a meeting duration.
 
-Give your Time poll a title and details. Enter a list of date and time options in your time zone.
-
-When setting timeslots, consider people in different time zones. Participants will see times localized in their time zone.
-
-Set a meeting duration.
+When choosing options, consider people in other time zones so everyone has workable times.
 
 ![](timepoll_options.png)
 
@@ -30,15 +22,11 @@ Set a meeting duration.
 
 ### Voting
 
-People mark each time with the green thumbs-up icon when they are available, the yellow sideways thumb when they can attend if needed, or the red thumbs-down icon when they are unavailable.
-
-Participants can leave a reason comment to help the organizer find a suitable time.
-
-If the times don't work, participants can suggest alternatives using the message field. You can then update the poll with new times.
+Participants mark each time option as available, available if needed, or unavailable. They can also add a vote reason to explain their availability or suggest other times. If none of the options work, you can edit the poll to add new times.
 
 ![](timepoll_vote.png)
 
-The results update as voting proceeds in a table showing who is available when, so everyone can see which timeslots are popular.
+Results update as people vote, showing who is available for each time.
 
 <!-- translation-section: outcome -->
 
@@ -48,14 +36,10 @@ When the Time poll closes, pick the best time and share an outcome. See [Share a
 
 ![](timepoll_outcome.png)
 
-**Notify**: Add the people you are inviting to the meeting or event
-
-**Meeting time**: Select the time that works best. Options use the [time zone in your profile](/en/user_manual/users/user_profile#time-zone)
-
-**Meeting name**: Give your meeting a name. The Time poll title is used by default
-
-**Location**: Add a physical location or a meeting link
-
-**Statement**: Summarize the result and add any instructions for the meeting
+- **Notify**: Add the people you are inviting to the meeting or event.
+- **Meeting time**: Select the time that works best. Options use the [time zone in your profile](/en/user_manual/users/user_profile#time-zone).
+- **Meeting name**: Give your meeting a name. Loomio uses the Time poll title by default.
+- **Location**: Add a physical address or an online meeting link.
+- **Statement**: Summarize the decision and include any meeting instructions.
 
 Loomio includes the selected time, meeting name, duration, location, and statement in the outcome notification and calendar invitation.
