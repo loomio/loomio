@@ -28,9 +28,18 @@ class AppConfig
   end
 
   def self.discarded_group_deletion_after_days
-    value = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    positive_integer_env("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+  end
+
+  def self.orphan_user_deletion_after_days
+    positive_integer_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
+  end
+
+  def self.positive_integer_env(key)
+    value = ENV[key]
     value.to_i if value&.match?(/\A[1-9][0-9]*\z/)
   end
+  private_class_method :positive_integer_env
 
   def self.default_onboarding_group_id
     ENV["DEFAULT_ONBOARDING_GROUP_ID"].presence&.to_i

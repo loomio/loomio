@@ -3,7 +3,7 @@
 module CleanupService
   UNUSED_GROUP_DISCARD_LIMIT = 1_000
   INACTIVE_ORPHAN_USER_LIMIT = 1_000
-  INACTIVE_ORPHAN_USER_RETENTION = 60.days
+  INACTIVE_ORPHAN_USER_RETENTION = 90.days
   EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
   EMPTY_GROUP_RETENTION = 60.days
   EXPIRED_TRIAL_RETENTION = 60.days
@@ -95,15 +95,15 @@ module CleanupService
   # Delete accounts outside the retention period only when they have no
   # durable association with the application. Administrators are always kept;
   # their removal requires an explicit administrative action.
-  def self.delete_inactive_orphan_users
-    user_ids = inactive_orphan_user_ids
+  def self.delete_inactive_orphan_users(inactive_before: INACTIVE_ORPHAN_USER_RETENTION.ago)
+    user_ids = inactive_orphan_user_ids(inactive_before: inactive_before)
 
     return if user_ids.empty?
 
     count = 0
     user_ids.each do |id|
       with_write_lock(USER_REFERENCES.keys + %i[users sessions login_tokens push_subscriptions notification_deliveries notifications active_storage_attachments versions pg_search_documents]) do
-        user = inactive_orphan_users.where(id: id).first
+        user = inactive_orphan_users(inactive_before: inactive_before).where(id: id).first
         next unless user
 
         PaperTrail::Version.where(item_type: "User", item_id: user.id).delete_all

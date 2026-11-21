@@ -2,12 +2,13 @@ class CleanupOrphanUsersWorker < ApplicationJob
   queue_as :low
 
   def self.enabled?
-    ENV["LOOMIO_ORPHAN_USER_CLEANUP_ENABLED"].present?
+    AppConfig.orphan_user_deletion_after_days.present?
   end
 
   def perform
-    return unless self.class.enabled?
+    days = AppConfig.orphan_user_deletion_after_days
+    return unless days
 
-    CleanupService.delete_inactive_orphan_users
+    CleanupService.delete_inactive_orphan_users(inactive_before: days.days.ago)
   end
 end

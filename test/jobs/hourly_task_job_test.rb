@@ -60,15 +60,17 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
   end
 
   test "orphan account cleanup can be scheduled independently" do
-    previous = ENV["LOOMIO_ORPHAN_USER_CLEANUP_ENABLED"]
-    ENV["LOOMIO_ORPHAN_USER_CLEANUP_ENABLED"] = "1"
+    previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
     travel_to Time.utc(2026, 9, 8) do
+      assert_no_enqueued_jobs(only: CleanupOrphanUsersWorker) { HourlyTaskJob.perform_now }
+
+      ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
       assert_enqueued_with(job: CleanupOrphanUsersWorker) do
         assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) { HourlyTaskJob.perform_now }
       end
     end
   ensure
-    ENV["LOOMIO_ORPHAN_USER_CLEANUP_ENABLED"] = previous
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous
   end
 
   test "permanent group deletion is only scheduled at midnight UTC when a delay is configured" do

@@ -38,14 +38,18 @@ class AppConfigTest < ActiveSupport::TestCase
 
   test "the permanent deletion setting supplies the configured number of days" do
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "45"
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
 
     assert_equal 45, AppConfig.discarded_group_deletion_after_days
+    assert_equal 90, AppConfig.orphan_user_deletion_after_days
   end
 
   test "permanent deletion requires a positive whole number of days" do
     [nil, "", "false", "0", "-1", "90.5", "90 days"].each do |value|
       ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = value
+      ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = value
       assert_nil AppConfig.discarded_group_deletion_after_days, value.inspect
+      assert_nil AppConfig.orphan_user_deletion_after_days, value.inspect
     end
   end
 
@@ -53,6 +57,7 @@ class AppConfigTest < ActiveSupport::TestCase
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")
     @discarded_group_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+    @orphan_user_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
     @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
     @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
@@ -65,6 +70,7 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("CHARGIFY_API_KEY", @chargify_api_key_previous)
     restore_env("LOOMIO_SUBSCRIPTIONS", @loomio_subscriptions_previous)
     restore_env("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS", @discarded_group_deletion_after_days_previous)
+    restore_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS", @orphan_user_deletion_after_days_previous)
     restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)
     restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)
