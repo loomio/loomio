@@ -235,8 +235,6 @@ module GroupService
         subscription.billing_service_updated_at&.iso8601(6) == evidence
       when "chargify"
         subscription.chargify_subscription_id == evidence
-      when "reviewed"
-        evidence == subscription.updated_at.iso8601(6)
       end
     end
     discard_and_notify(group: group, actor: nil, reason: "subscription_canceled", eligible: eligible, include_descendants: true) do
