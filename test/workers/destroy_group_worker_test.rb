@@ -3,16 +3,12 @@ require_relative "../support/access_volume_matrix"
 
 class DestroyGroupWorkerTest < ActiveSupport::TestCase
   setup do
-    @cleanup_enabled_before = ENV["CLEANUP_ENABLED"]
-    ENV["CLEANUP_ENABLED"] = "1"
+    @deletion_days_before = ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"]
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "90"
   end
 
   teardown do
-    if @cleanup_enabled_before.nil?
-      ENV.delete("CLEANUP_ENABLED")
-    else
-      ENV["CLEANUP_ENABLED"] = @cleanup_enabled_before
-    end
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = @deletion_days_before
   end
 
   test "deletes only the discard operation that scheduled the job" do
@@ -20,11 +16,51 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     subgroup = groups(:orphan_subgroup)
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
+    before = CleanupService.audit_orphan_records(include_ids: true)
 
     2.times { DestroyGroupWorker.perform_now(group.id, discarded_at) }
 
     assert_not Group.exists?(group.id)
     assert_not Group.exists?(subgroup.id)
+    after = CleanupService.audit_orphan_records(include_ids: true)
+    after.slice(:dangling_records, :missing_polymorphic_targets).each do |category, scopes|
+      scopes.each do |name, ids|
+        assert_empty(ids - before.fetch(category).fetch(name, []), name)
+      end
+    end
+  end
+
+  test "permanent deletion removes duplicate search documents and all revisions only within the group tree" do
+    group = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+    discussion = discussions(:discussion)
+    topic = discussion.topic
+    poll = PollService.create(params: { topic_id: topic.id, title: "Archived poll", poll_type: "proposal",
+      closing_at: 2.days.from_now, poll_option_names: [ "Agree" ] }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant: users(:member_normal))
+    weight_version = PaperTrail::Version.create!(item: stance, event: Stance::WEIGHT_EVENT)
+    topic.update_column(:group_id, subgroup.id)
+
+    group.discard!(at: 91.days.ago)
+    deleted_records = [ group, subgroup, topic, discussion, poll, stance ]
+    kept_comment = comments(:public_discussion_comment)
+    kept_version = kept_comment.versions.create!(event: "update")
+    kept_document = kept_comment.pg_search_documents.create!(content: "Kept text")
+    deleted_records.each { |record| record.versions.create!(event: "update") }
+    [ discussion, poll ].each do |record|
+      2.times { record.pg_search_documents.create!(content: "Archived text") }
+    end
+
+    DestroyGroupWorker.perform_now(group.id, group.discarded_at.iso8601(6))
+
+    deleted_records.each { |record| assert_not PaperTrail::Version.exists?(item: record) }
+    assert_not PaperTrail::Version.exists?(weight_version.id)
+    [ discussion, poll ].each { |record| assert_not PgSearch::Document.exists?(searchable: record) }
+    assert PaperTrail::Version.exists?(kept_version.id)
+    assert PgSearch::Document.exists?(kept_document.id)
+
+    kept_comment.destroy!
+    assert PaperTrail::Version.exists?(kept_version.id)
   end
 
   test "an old job preserves a restored then rediscarded group" do
@@ -52,7 +88,7 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
-    ENV.delete("CLEANUP_ENABLED")
+    ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
 
     DestroyGroupWorker.perform_now(group.id, discarded_at)
 
@@ -65,12 +101,23 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     group.discard!(at: 91.days.ago)
     discarded_at = group.discarded_at.iso8601(6)
 
-    AppConfig.stub(:group_deletion_delay_days, 120) do
-      DestroyGroupWorker.perform_now(group.id, discarded_at)
-    end
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "120"
+    DestroyGroupWorker.perform_now(group.id, discarded_at)
 
     assert Group.exists?(group.id)
     assert Group.exists?(groups(:orphan_subgroup).id)
+  end
+
+  test "a restored or recently discarded subgroup prevents deleting its tree" do
+    group = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+    group.discard!(at: 91.days.ago)
+    [nil, 1.day.ago].each do |discarded_at|
+      subgroup.update_column(:discarded_at, discarded_at)
+      DestroyGroupWorker.perform_now(group.id, group.discarded_at.iso8601(6))
+      assert Group.exists?(group.id)
+      assert Group.exists?(subgroup.id)
+    end
   end
 
   test "deletion starts only when the full delay has elapsed" do

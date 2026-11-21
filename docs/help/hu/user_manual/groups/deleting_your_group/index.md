@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 9215cd1ffadd47a1
+  introduction: 51aeb9160694b2f4
   group-data-is-permanently-deleted-after-90-days: 614b22086f7b0641
 title_source: 9a0868f49f1262ea
 title_generated: 4e608398015d0580
@@ -31,7 +31,7 @@ A törlésre váró csoportokat és alcsoportjaikat a tagok és a csoportadminok
 
 A csoport törlésének ütemezése leállítja a csoport és alcsoportjai tevékenységeiről szóló, még el nem küldött értesítéseket és a szavazási emlékeztetőket. Azok az üzenetek, amelyek küldése már folyamatban van, még megérkezhetnek.
 
-A figyelmeztető e-mail tartalmazza a csoport alcsoportjainak, tagjainak, beszélgetéseinek, szavazásainak és hozzászólásainak számát. Ha meg szeretnéd tartani a csoportot, vagy [exportálni szeretnéd az adatait](/en/user_manual/groups/data_export/), válaszolj 90 napon belül, hogy a törlés előtt helyreállíthassuk a hozzáférést.
+A figyelmeztető e-mail tartalmazza a csoport alcsoportjainak, tagjainak, beszélgetéseinek, szavazásainak és hozzászólásainak számát. Ha meg szeretnéd tartani a csoportot, vagy [exportálni szeretnéd az adatait](/en/user_manual/groups/data_export/), azonnal válaszolj, hogy a törlés előtt helyreállíthassuk a hozzáférést.
 
 Csoportod törlésével a Loomio-előfizetésed is megszűnik.
 

@@ -1287,6 +1287,12 @@ pl:
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
     scheduled_for_deletion: Ta grupa zostanie trwale usunięta za 2 tygodnie
     deletion_after_grace_period: Ta grupa jest niedostępna i zostanie trwale usunięta po %{days} dniach
+    discard_title: "Zarchiwizuj grupę"
+    discard_subgroup_title: "Zarchiwizuj podgrupę"
+    discard_parent_body: "Ta grupa i jej podgrupy natychmiast staną się niedostępne. Subskrypcja Loomio tej grupy również zostanie anulowana. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
+    discard_body: "Ta podgrupa natychmiast stanie się niedostępna. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
+    discard_confirm: "Wpisz „%{name}”, aby potwierdzić."
+    discard_success: "Grupa została zarchiwizowana. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
   group_page:
     stats: Statystyki grupy
     threads: Wątki

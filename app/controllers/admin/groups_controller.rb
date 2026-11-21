@@ -27,17 +27,6 @@ class Admin::GroupsController < Admin::BaseController
     end
   end
 
-  def delete_spam
-    group_ids.each do |group_id|
-      next unless Group.any_trial.exists?(group_id)
-
-      group = Group.find(group_id)
-      user = group.creator || group.admins.first
-      DestroyUserWorker.perform_later(user.id) if user
-    end
-    redirect_to admin_groups_path, notice: "#{group_ids.size} spammy groups scheduled for deletion"
-  end
-
   def import
     render Views::Admin::Groups::Import.new
   end
@@ -82,12 +71,12 @@ class Admin::GroupsController < Admin::BaseController
 
   def discard
     GroupService.discard(group: @group, actor: current_user)
-    redirect_to admin_group_path(@group), notice: "Group discarded without warning"
+    redirect_to admin_group_path(@group), notice: group_discard_notice
   end
 
   def warn_and_discard
     GroupService.warn_and_discard(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: "Group administrators warned; group marked for deletion after #{AppConfig.group_deletion_delay_days} days"
+    redirect_to admin_groups_path, notice: group_discard_notice
   end
 
   def export_group
@@ -122,6 +111,14 @@ class Admin::GroupsController < Admin::BaseController
 
   private
 
+  def group_discard_notice
+    if (days = AppConfig.discarded_group_deletion_after_days)
+      "Group discarded. It becomes eligible for permanent deletion after #{days} days."
+    else
+      "Group discarded. Discard is reversible and scheduled deletion is currently disabled."
+    end
+  end
+
   def load_group
     @group = Group.friendly.find(params[:id])
   end
@@ -153,9 +150,5 @@ class Admin::GroupsController < Admin::BaseController
       :is_visible_to_parent_members, :parent_members_can_see_discussions,
       :membership_granted_upon
     )
-  end
-
-  def group_ids
-    Array(params[:group_ids]).filter_map { |id| Integer(id, exception: false) }
   end
 end

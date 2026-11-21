@@ -435,10 +435,18 @@ sv:
       body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
     destroy_warning_with_usage:
       subject: Din Loomio-grupp är schemalagd för radering
-      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requestor}. Den kommer att raderas permanent efter %{days} dagar.
-      trial_expired_warning: Din provperiod för Loomio-gruppen "%{group}" gick ut för %{expired_days} dagar sedan. Om du inte kontaktar oss kommer den att raderas om %{grace_days} dagar.
+      requested: Din Loomio-grupp "%{group}" var schemalagd för radering av %{requestor}.
+      trial_expired_warning: Din provperiod för Loomio-gruppen "%{group}" gick ut för %{expired_days} dagar sedan.
       trial_catch_up_warning: För en tid sedan startades en provperiod i Loomio för gruppen ”%{group}”. Vi rensar gamla provdata och har markerat gruppen för radering.
-      trial_expired_process: Din grupp är inte tillgänglig medan den är markerad för radering. Om du fortfarande vill ha en plats där din grupp kan diskutera och fatta beslut är det inte för sent att starta om. Svara på det här e-postmeddelandet inom %{grace_days} dagar om du vill begära en förlängning av provperioden, uppgradera till en betald prenumeration eller behöver mer tid för att exportera dess data. Därefter kommer gruppen och dess data att raderas permanent.
+      subscription_canceled: Prenumerationen för gruppen ”%{group}” har avslutats. Vi har markerat gruppen för borttagning och den är för närvarande inte tillgänglig.
+      restore_or_export_before_deletion: "Svara genast på det här mejlet om du vill att vi återställer åtkomsten eller exporterar en kopia av din grupps data. Din grupp tas bort permanent om %{days} dagar."
+      unavailable_subject: "Din Loomio-grupp är otillgänglig"
+      requested_unavailable: "%{requestor} gjorde din Loomio-grupp ”%{group}” otillgänglig."
+      trial_expired_unavailable: "Loomio-provperioden för ”%{group}” gick ut för %{expired_days} dagar sedan. Gruppen är otillgänglig."
+      trial_catch_up_unavailable: "En Loomio-provperiod startades för ”%{group}” för en tid sedan. Vi går igenom gamla provgrupper, och gruppen är nu otillgänglig."
+      subscription_canceled_unavailable: "Prenumerationen för ”%{group}” har avslutats. Gruppen är otillgänglig."
+      restore_or_export: "Arkiveringen går att ångra. Schemalagd radering är avstängd. Svara på det här mejlet om du vill få tillbaka åtkomsten eller få en kopia av gruppens data."
+      trial_expired_process: Din grupp är inte tillgänglig medan den är markerad för radering. Om du fortfarande vill ha en plats där din grupp kan diskutera och fatta beslut är det inte för sent att starta om. Svara genast på det här mejlet om du vill förlänga provperioden, byta till en betald prenumeration eller behöver mer tid för att exportera data. Din grupp tas bort permanent om %{grace_days} dagar.
       trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent efter %{days} dagar.
       usage_heading: 'Sammanfattning av gruppdata:'
       subgroups: Undergrupper
@@ -446,7 +454,6 @@ sv:
       discussions: Diskussioner
       polls: Opinionsundersökningar
       comments: Kommentarer
-      export: För att behålla gruppen eller exportera en kopia av dess data, svara på det här e-postmeddelandet inom %{days} dagar. Vi kan återställa åtkomsten innan raderingen.
       export_link: Läs mer om att exportera gruppdata
       group_key: 'Gruppnyckel: %{key}'
   poll_mailer:

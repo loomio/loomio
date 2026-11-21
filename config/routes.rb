@@ -55,7 +55,6 @@ Rails.application.routes.draw do
       collection do
         get :import
         post :import_json
-        post :delete_spam
         post :add_admin
         post :remove_admin
         get :export_users

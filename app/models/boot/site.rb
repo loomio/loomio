@@ -15,7 +15,7 @@ module Boot
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
-        groupDeletionDelayDays: AppConfig.group_deletion_delay_days,
+        groupDeletionDelayDays: AppConfig.discarded_group_deletion_after_days,
         theme:               AppConfig.theme,
         userManual:          AppConfig.user_manual,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],

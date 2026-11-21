@@ -35,7 +35,7 @@ module Subscriptions
       return existing.subscription if existing && existing.payload_digest == @payload_digest
       raise EventConflict if existing
 
-      Subscription.transaction do
+      Subscription.transaction do |transaction|
         validate_installation!
         target = @payload.fetch("target")
         raise InvalidUpdate unless target.fetch("kind") == "group"
@@ -46,7 +46,17 @@ module Subscriptions
         raise InvalidUpdate if subscription.chargify_subscription_id.present? || subscription.payment_method == "chargify"
 
         receipt = SubscriptionUpdateReceipt.create!(event_id: @event_id, payload_digest: @payload_digest)
-        subscription.update!(subscription_attributes(subscription))
+        attributes = subscription_attributes(subscription)
+        previous_update = subscription.billing_service_updated_at
+        unless previous_update && previous_update > attributes[:billing_service_updated_at]
+          subscription.update!(attributes)
+          if @payload.fetch("subscription").fetch("state") == "canceled"
+            confirmed_at = subscription.billing_service_updated_at.iso8601(6)
+            transaction.after_commit do
+              WarnAndDiscardCanceledGroupWorker.enqueue_for(group.id, subscription, "billing_service", confirmed_at)
+            end
+          end
+        end
         receipt.update!(subscription: subscription, processed_at: Time.current)
         subscription
       end

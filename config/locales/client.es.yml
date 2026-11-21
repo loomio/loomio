@@ -1294,6 +1294,12 @@ es:
     success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
     scheduled_for_deletion: Este grupo será eliminado permanentemente en 2 semanas.
     deletion_after_grace_period: Este grupo no está disponible y se eliminará permanentemente después de %{days} días
+    discard_title: "Archivar grupo"
+    discard_subgroup_title: "Archivar subgrupo"
+    discard_parent_body: "Este grupo y sus subgrupos dejarán de estar disponibles de inmediato. También se cancelará su suscripción a Loomio. Puedes deshacer el archivado. La eliminación programada está desactivada."
+    discard_body: "Este subgrupo dejará de estar disponible de inmediato. Puedes deshacer el archivado. La eliminación programada está desactivada."
+    discard_confirm: "Escribe «%{name}» para confirmar."
+    discard_success: "Grupo archivado. Puedes deshacer el archivado. La eliminación programada está desactivada."
   group_page:
     stats: Estadísticas de grupo
     threads: Hilos

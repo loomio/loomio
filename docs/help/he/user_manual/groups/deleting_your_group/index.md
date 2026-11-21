@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: d430a45b770dad2e
+  introduction: 2bf5009ded5e1ce4
   group-data-is-permanently-deleted-after-90-days: 468ce7f65e0c6e48
 title_source: 9a0868f49f1262ea
 title_generated: 4cab4974d0ca49e8
@@ -31,7 +31,7 @@ title_generated: 4cab4974d0ca49e8
 
 תזמון הקבוצה למחיקה עוצר התראות פעילות ותזכורות לסקרים הממתינות לשליחה עבור הקבוצה ותת־הקבוצות שלה. הודעות שכבר נמצאות בתהליך שליחה עשויות עדיין להגיע.
 
-הודעת האזהרה בדוא״ל כוללת את מספר תת־הקבוצות, החברים, הדיונים, הסקרים והתגובות בקבוצה. אם יש צורך לשמור את הקבוצה או [לייצא את נתוניה](/en/user_manual/groups/data_export/), יש להשיב בתוך 90 יום כדי שניתן יהיה לשחזר את הגישה לפני המחיקה.
+הודעת האזהרה בדוא״ל כוללת את מספר תת־הקבוצות, החברים, הדיונים, הסקרים והתגובות בקבוצה. אם יש צורך לשמור את הקבוצה או [לייצא את נתוניה](/en/user_manual/groups/data_export/), יש להשיב מיד כדי שניתן יהיה לשחזר את הגישה לפני המחיקה.
 
 מחיקת הקבוצה תבטל גם את המינוי ל-Loomio.
 

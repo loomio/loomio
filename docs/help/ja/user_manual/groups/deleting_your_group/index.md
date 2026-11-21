@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: e9b846b12670336e
+  introduction: a0df928321d965a0
   group-data-is-permanently-deleted-after-90-days: 7da3416f97b7b13f
 title_source: 9a0868f49f1262ea
 title_generated: 7ebf6aa58d5c25aa
@@ -31,7 +31,7 @@ Loomioのグループを削除すると、グループのすべてのデータ�
 
 グループの削除を予約すると、そのグループとサブグループの未送信のアクティビティ通知とアンケートのリマインダーが停止します。すでに送信中のメッセージは届く場合があります。
 
-警告メールには、グループのサブグループ数、メンバー数、ディスカッション数、アンケート数、コメント数が記載されます。グループを残す必要がある場合や、[データをエクスポート](/en/user_manual/groups/data_export/)する必要がある場合は、削除前にアクセスを復元できるよう、90日以内に返信してください。
+警告メールには、グループのサブグループ数、メンバー数、ディスカッション数、アンケート数、コメント数が記載されます。グループを残す必要がある場合や、[データをエクスポート](/en/user_manual/groups/data_export/)する必要がある場合は、削除前にアクセスを復元できるよう、すぐに返信してください。
 
 グループを削除すると、Loomioのサブスクリプションも解約されます。
 

@@ -1287,6 +1287,12 @@ hu:
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
     scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
     deletion_after_grace_period: Ez a csoport nem érhető el, és %{days} nap múlva véglegesen törlésre kerül
+    discard_title: "Csoport archiválása"
+    discard_subgroup_title: "Alcsoport archiválása"
+    discard_parent_body: "Ez a csoport és alcsoportjai azonnal elérhetetlenné válnak. A csoport Loomio-előfizetése is megszűnik. Az archiválás visszavonható. Az ütemezett törlés jelenleg ki van kapcsolva."
+    discard_body: "Ez az alcsoport azonnal elérhetetlenné válik. Az archiválás visszavonható. Az ütemezett törlés jelenleg ki van kapcsolva."
+    discard_confirm: "A megerősítéshez írd be: „%{name}”."
+    discard_success: "A csoport archiválva. Az archiválás visszavonható. Az ütemezett törlés jelenleg ki van kapcsolva."
   group_page:
     stats: Csoport statisztika
     threads: Témák

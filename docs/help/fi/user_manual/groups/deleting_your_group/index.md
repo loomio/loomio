@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 6c4b394c76388176
+  introduction: f16f9eff1621d336
   group-data-is-permanently-deleted-after-90-days: ce895144390c895e
 title_source: 9a0868f49f1262ea
 title_generated: cb896766b9865ab0
@@ -31,7 +31,7 @@ Jäsenet ja ryhmän ylläpitäjät eivät voi tarkastella poistamista odottavia 
 
 Ryhmän ajastaminen poistettavaksi pysäyttää ryhmän ja sen alaryhmien lähettämistä odottavat toimintailmoitukset ja kyselymuistutukset. Viestit, joiden lähettäminen on jo alkanut, voivat silti saapua.
 
-Varoitussähköposti sisältää ryhmän alaryhmien, jäsenten, keskustelujen, kyselyjen ja kommenttien lukumäärät. Jos haluat säilyttää ryhmän tai [viedä sen tiedot](/en/user_manual/groups/data_export/), vastaa 90 päivän kuluessa, jotta pääsy ryhmään voidaan palauttaa ennen poistamista.
+Varoitussähköposti sisältää ryhmän alaryhmien, jäsenten, keskustelujen, kyselyjen ja kommenttien lukumäärät. Jos haluat säilyttää ryhmän tai [viedä sen tiedot](/en/user_manual/groups/data_export/), vastaa heti, jotta pääsy ryhmään voidaan palauttaa ennen poistamista.
 
 Ryhmän poistaminen peruuttaa myös Loomio-tilauksesi.
 

@@ -1,10 +1,7 @@
 class CleanupOrphanRecordsWorker < ApplicationJob
   queue_as :low
 
+  # Jobs from older deployments can still be retried from Solid Queue.
   def perform
-    return unless ENV["CLEANUP_ENABLED"].present?
-
-    CleanupService.delete_orphan_records
-    CleanupService.delete_inactive_orphan_users
   end
 end

@@ -437,10 +437,18 @@ ca:
       body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
     destroy_warning_with_usage:
       subject: El vostre grup de Loomio està programat per a la supressió.
-      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}". Se suprimirà permanentment al cap de %{days} dies.'
-      trial_expired_warning: La prova del vostre grup de Loomio "%{group}" va caducar fa %{expired_days} dies. Si no us poseu en contacte amb nosaltres, s'eliminarà en %{grace_days} dies.
+      requested: '%{requestor} ha programat l''eliminació del vostre grup de Loomio "%{group}".'
+      trial_expired_warning: La prova del vostre grup de Loomio "%{group}" va caducar fa %{expired_days} dies.
       trial_catch_up_warning: Fa un temps es va crear una prova de Loomio per al grup «%{group}». Estem netejant les dades de proves antigues i hem marcat el grup per suprimir-lo.
-      trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon a aquest correu electrònic en un termini de %{grace_days} dies si voleu sol·licitar una extensió de prova, actualitzar a una subscripció de pagament o necessiteu més temps per exportar les seves dades. Després d'això, el grup i les seves dades s'eliminaran permanentment.
+      subscription_canceled: La subscripció del grup «%{group}» s’ha cancel·lat. Hem marcat el grup per suprimir-lo i ara no està disponible.
+      restore_or_export_before_deletion: "Respon immediatament a aquest correu si vols que restablim l’accés o exportem una còpia de les dades del teu grup. El teu grup se suprimirà definitivament d’aquí a %{days} dies."
+      unavailable_subject: "El vostre grup de Loomio no està disponible"
+      requested_unavailable: "%{requestor} ha desactivat l’accés al vostre grup de Loomio «%{group}»."
+      trial_expired_unavailable: "La prova de Loomio de «%{group}» va caducar fa %{expired_days} dies. El grup no està disponible."
+      trial_catch_up_unavailable: "Fa un temps es va crear una prova de Loomio per a «%{group}». Estem revisant les proves antigues i el grup ja no està disponible."
+      subscription_canceled_unavailable: "La subscripció de «%{group}» s’ha cancel·lat. El grup no està disponible."
+      restore_or_export: "Podeu restaurar el grup. La supressió programada està desactivada. Respon a aquest correu per demanar que es restableixi l’accés o per obtenir una còpia de les dades del grup."
+      trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon immediatament a aquest correu si vols demanar una ampliació de la prova, passar a una subscripció de pagament o necessites més temps per exportar les dades. El teu grup se suprimirà definitivament d’aquí a %{grace_days} dies.
       trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
       usage_heading: 'Resum de dades del grup:'
       subgroups: Subgrups
@@ -448,7 +456,6 @@ ca:
       discussions: Debats
       polls: Enquestes
       comments: Comentaris
-      export: Per conservar el grup o exportar una còpia de les seves dades, responeu a aquest correu electrònic en un termini de %{days} dies. Podem restaurar l'accés abans de suprimir-lo.
       export_link: Més informació sobre l'exportació de dades de grup
       group_key: 'Clau de grup: %{key}'
   poll_mailer:

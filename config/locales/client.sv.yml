@@ -1289,6 +1289,12 @@ sv:
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
     scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
     deletion_after_grace_period: Den här gruppen är inte tillgänglig och kommer att raderas permanent efter %{days} dagar
+    discard_title: "Arkivera grupp"
+    discard_subgroup_title: "Arkivera undergrupp"
+    discard_parent_body: "Den här gruppen och dess undergrupper blir otillgängliga direkt. Gruppens Loomio-prenumeration avslutas också. Arkiveringen går att ångra. Schemalagd radering är avstängd."
+    discard_body: "Den här undergruppen blir otillgänglig direkt. Arkiveringen går att ångra. Schemalagd radering är avstängd."
+    discard_confirm: "Skriv ”%{name}” för att bekräfta."
+    discard_success: "Gruppen har arkiverats. Arkiveringen går att ångra. Schemalagd radering är avstängd."
   group_page:
     stats: Gruppstatistik
     threads: Trådar

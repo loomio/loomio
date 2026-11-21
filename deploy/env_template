@@ -112,8 +112,14 @@ ACTIVE_STORAGE_SERVICE=local
 # Number of prepared demo groups to keep in Redis (default: 3)
 # FEATURES_DEMO_GROUPS_SIZE=3
 
-# Days a discarded group remains marked for deletion before deletion (default: 90)
-# GROUP_DELETION_DELAY_DAYS=90
+# Set a positive number of days to enable permanent deletion of discarded groups.
+# LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS=90
+
+# Set a positive number of days to enable permanent deletion of inactive orphan user accounts.
+# LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS=90
+
+# Set a positive number of days after a trial expires to enable scheduled trial discard.
+# LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS=60
 
 # Automatically add new users to this group.
 # DEFAULT_ONBOARDING_GROUP_ID=123

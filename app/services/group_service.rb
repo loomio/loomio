@@ -197,24 +197,48 @@ module GroupService
     end
   end
 
-  def self.warn_and_discard_expired_trial(group_id:, only_unused: nil)
-    group = CleanupService.expired_trial_groups.find_by(id: group_id)
+  def self.warn_and_discard_expired_trial(group_id:, retention:)
+    now = Time.current
+    group = CleanupService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
     return unless group
 
     subscription = nil
-    eligible = unless only_unused.nil?
-      -> do
-        subscription = Subscription.lock.find_by(id: group.subscription_id)
-        subscription && CleanupService.group_cleanup_trees(
-          plan: :trial, before: CleanupService::EXPIRED_TRIAL_RETENTION.ago,
-          only_unused: only_unused, root_ids: [group.id]
-        ).key?(group.id)
-      end
+    eligible = -> do
+      subscription = Subscription.lock.find_by(id: group.subscription_id)
+      subscription && CleanupService.group_cleanup_trees(
+        plan: :trial, before: now - retention, only_unused: false, root_ids: [group.id]
+      ).key?(group.id)
     end
     discard_and_notify(group: group, actor: nil, reason: "trial_expired", eligible: eligible) do
-      catch_up = subscription.present? && subscription.expires_at <= group.discarded_at - CleanupService::EXPIRED_TRIAL_CATCH_UP_AGE
+      catch_up = subscription.expires_at <= group.discarded_at - retention - 1.day
       group.admins.each do |admin|
         GroupMailer.expired_trial_deletion_warning(group.id, admin.id, catch_up: catch_up).deliver_later
+      end
+    end
+  end
+
+  def self.warn_and_discard_canceled_subscription(group_id:, subscription_id:, source:, evidence:)
+    group = Group.kept.parents_only.find_by(id: group_id, subscription_id: subscription_id)
+    return unless group
+
+    eligible = -> do
+      subscription = Subscription.lock.find_by(id: group.subscription_id, state: "canceled")
+      next false unless subscription&.id == subscription_id
+      next false if [subscription.expires_at, subscription.canceled_at].compact.any?(&:future?)
+      next false if subscription.groups.parents_only.where.not(id: group.id).exists?
+      next false if CleanupService.descendant_groups(group.id).where.not(subscription_id: [nil, subscription.id]).exists?
+
+      case source
+      when "billing_service"
+        subscription.billing_service_updated_at&.iso8601(6) == evidence
+      when "chargify"
+        subscription.chargify_subscription_id == evidence
+      end
+    end
+    discard_and_notify(group: group, actor: nil, reason: "subscription_canceled", eligible: eligible, include_descendants: true) do
+      discarded_at = group.discarded_at.iso8601(6)
+      group.admins.each do |admin|
+        GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at).deliver_later
       end
     end
   end
@@ -222,17 +246,25 @@ module GroupService
   # All ordinary discard paths share one locked transition. Authorization or
   # automatic eligibility belongs to the entry point; warnings and broadcasts
   # happen only after commit, and repeated requests do not repeat notifications.
-  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil)
+  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil, include_descendants: false)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
       next unless group.kept?
+
+      group_ids = if include_descendants
+        [group.id, *CleanupService.descendant_groups(group.id).order(:id).lock.ids]
+      else
+        group.id_and_subgroup_ids
+      end
       next if eligible && !eligible.call
 
-      group.discard!(actor: actor)
+      group.discard!(actor: actor, group_ids: group_ids)
       transaction.after_commit do
         yield if block_given?
         Sentry.metrics.count("group.discard", attributes: { reason: reason })
-        EventBus.broadcast("group_destroy", group, actor)
+        event_args = [group, actor]
+        event_args << reason if reason == "subscription_canceled"
+        EventBus.broadcast("group_destroy", *event_args)
       end
     end
     group

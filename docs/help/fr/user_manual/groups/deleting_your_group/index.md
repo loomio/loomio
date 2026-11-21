@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 85d04b081c5cc993
+  introduction: 8226d4bea5a51da0
   group-data-is-permanently-deleted-after-90-days: fbd0e614c35765b4
 title_source: 9a0868f49f1262ea
 title_generated: 276b9af64d1f291a
@@ -31,7 +31,7 @@ Les groupes en attente de suppression et leurs sous-groupes ne sont plus accessi
 
 La programmation de la suppression du groupe arrête les notifications d’activité et les rappels de sondage en attente pour le groupe et ses sous-groupes. Les messages déjà en cours d’envoi peuvent encore arriver.
 
-L’e-mail d’avertissement indique le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous devez conserver le groupe ou [exporter ses données](/en/user_manual/groups/data_export/), répondez dans les 90 jours afin que l’accès puisse être rétabli avant la suppression.
+L’e-mail d’avertissement indique le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous devez conserver le groupe ou [exporter ses données](/en/user_manual/groups/data_export/), répondez immédiatement afin que l’accès puisse être rétabli avant la suppression.
 
 La suppression de votre groupe entraînera également la résiliation de votre abonnement Loomio.
 

@@ -331,11 +331,14 @@ test.describe('as a site admin', () => {
     await page.goto('/dev/setup_group_super_admin');
   });
 
-  test('deletes a group', async ({ page, flash }) => {
+  test('discards a group without promising permanent deletion by default', async ({ page, flash }) => {
     await groupAction(page, 'destroy_group');
+    await expect(page.locator('.confirm-modal')).toContainText('This group and its subgroups will be unavailable immediately');
+    await expect(page.locator('.confirm-modal')).toContainText('Discard is reversible and scheduled deletion is currently disabled');
+    await expect(page.locator('.confirm-modal')).not.toContainText('permanently deleted');
     await page.locator('.confirm-text-field input').fill('shoes');
     await page.locator('.confirm-modal__submit').click();
-    await expect(flash).toContainText('This group is unavailable and will be permanently deleted after 90 days');
+    await expect(flash).toContainText('Group discarded. Discard is reversible and scheduled deletion is currently disabled');
   });
 
   test('exports a group as HTML', async ({ page, flash }) => {

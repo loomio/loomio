@@ -1,9 +1,9 @@
 ---
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: a730ddcd7cc6270b
+  introduction: b3ab4e8e1549e4a5
   group-data-is-permanently-deleted-after-90-days: ea178bb45d566bfc
 title: 그룹 삭제
 title_source: 9a0868f49f1262ea
@@ -31,7 +31,7 @@ Loomio 그룹을 삭제하면 모든 그룹 데이터를 영구적으로 삭제�
 
 그룹 삭제가 예약되면 해당 그룹과 하위 그룹에서 발송 대기 중인 활동 알림과 투표 알림이 중단됩니다. 이미 발송 중인 메시지는 도착할 수 있습니다.
 
-경고 이메일에는 그룹의 하위 그룹, 멤버, 토론, 투표, 댓글 수가 포함됩니다. 그룹을 유지하거나 [데이터를 내보내야](/en/user_manual/groups/data_export/) 한다면 삭제 전에 접근 권한을 복원할 수 있도록 90일 이내에 답장하세요.
+경고 이메일에는 그룹의 하위 그룹, 멤버, 토론, 투표, 댓글 수가 포함됩니다. 그룹을 유지하거나 [데이터를 내보내야](/en/user_manual/groups/data_export/) 한다면 삭제 전에 접근 권한을 복원할 수 있도록 즉시 답장하세요.
 
 그룹을 삭제하면 Loomio 구독도 취소됩니다.
 

@@ -58,17 +58,36 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
   end
 
-  test "uses a 60-day default retention period" do
+  test "uses a 90-day default retention period" do
     travel_to Time.zone.local(2026, 9, 7, 12) do
       user = users(:orphan_cutoff_user)
-      user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 60.days.ago)
+      user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 90.days.ago)
 
       assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
 
-      user.update_column(:last_sign_in_at, 60.days.ago - 1.second)
+      user.update_column(:last_sign_in_at, 90.days.ago - 1.second)
 
       assert_includes CleanupService.inactive_orphan_user_ids, user.id
     end
+  end
+
+  test "a queued orphan user cleanup uses the current retention setting" do
+    previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
+    user = users(:orphan_cutoff_user)
+    user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 100.days.ago)
+
+    CleanupOrphanUsersWorker.perform_now
+    assert User.exists?(user.id)
+
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "120"
+    CleanupOrphanUsersWorker.perform_now
+    assert User.exists?(user.id)
+
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
+    CleanupOrphanUsersWorker.perform_now
+    refute User.exists?(user.id)
+  ensure
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous
   end
 
   test "limits each daily cleanup run" do
@@ -94,6 +113,15 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user.update_column(:created_at, cutoff - 1.second)
 
     assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+  end
+
+  test "a group follow is enough to keep a long-inactive account" do
+    user = users(:orphan_user)
+    group = groups(:group)
+    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    GroupFollow.create!(group: group, user: user)
+
+    refute_includes CleanupService.inactive_orphan_user_ids, user.id
   end
 
   test "preserves every membership role in the reusable user matrix" do

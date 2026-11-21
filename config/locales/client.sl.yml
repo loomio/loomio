@@ -1281,6 +1281,12 @@ sl:
     success: Ta skupina je bila arhivirana in je načrtovana za trajno brisanje čez 2 tedna.
     scheduled_for_deletion: Ta skupina bo trajno izbrisana čez 2 tedna.
     deletion_after_grace_period: Ta skupina ni na voljo in bo po %{days} dneh trajno izbrisana
+    discard_title: "Arhiviraj skupino"
+    discard_subgroup_title: "Arhiviraj podskupino"
+    discard_parent_body: "Ta skupina in njene podskupine bodo takoj nedostopne. Preklicana bo tudi naročnina skupine na Loomio. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
+    discard_body: "Ta podskupina bo takoj nedostopna. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
+    discard_confirm: "Za potrditev vnesite »%{name}«."
+    discard_success: "Skupina je arhivirana. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
   group_page:
     stats: Statistika skupine
     threads: Razprave

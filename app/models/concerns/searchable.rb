@@ -1,10 +1,8 @@
 module Searchable
   extend ActiveSupport::Concern
-  include PgSearch::Model
 
   included do
-    multisearchable
-    skip_callback :save, :after, :update_pg_search_document
+    has_many :pg_search_documents, as: :searchable, class_name: "PgSearch::Document", dependent: :delete_all
     after_save_commit :enqueue_search_index_update, if: -> { PgSearch.multisearch_enabled? }
   end
 
@@ -21,11 +19,9 @@ module Searchable
   def enqueue_search_index_update
     ReindexSearchDocumentWorker.perform_later(self.class.name, id)
   end
-end
 
-module PgSearch::Multisearchable
   def update_pg_search_document
-    PgSearch::Document.where(searchable: self).delete_all
+    pg_search_documents.delete_all
     ActiveRecord::Base.connection.execute(self.class.pg_search_insert_statement(id: self.id))
   end
 end

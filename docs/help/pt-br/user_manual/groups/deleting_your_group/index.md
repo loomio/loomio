@@ -6,10 +6,10 @@ translated:
   provider: codex/gpt-6.1-sol
   'on': '2026-10-27'
 sections:
-  introduction: 779d4a92736ca62a
+  introduction: bb26ad48b8ce1e1d
   group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
 generated:
-  introduction: 29937d8ab813c401
+  introduction: 47c12c38bc0fa1c5
   group-data-is-permanently-deleted-after-90-days: f78e1b715b021035
 title_source: 9a0868f49f1262ea
 title_generated: 41beb9596e9c98bc
@@ -31,7 +31,7 @@ Os grupos que aguardam exclusão e seus subgrupos ficam indisponíveis para visu
 
 Agendar a exclusão do grupo interrompe as notificações de atividade e os lembretes de enquetes pendentes do grupo e de seus subgrupos. Mensagens que já estão sendo enviadas ainda podem chegar.
 
-O email de aviso inclui as quantidades de subgrupos, membros, discussões, enquetes e comentários do grupo. Se você precisar manter o grupo ou [exportar seus dados](/en/user_manual/groups/data_export/), responda em até 90 dias para que o acesso possa ser restaurado antes da exclusão.
+O email de aviso inclui as quantidades de subgrupos, membros, discussões, enquetes e comentários do grupo. Se você precisar manter o grupo ou [exportar seus dados](/en/user_manual/groups/data_export/), responda imediatamente para que o acesso possa ser restaurado antes da exclusão.
 
 Excluir seu grupo também cancelará sua assinatura do Loomio.
 
