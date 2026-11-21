@@ -7,7 +7,6 @@ module CleanupService
   EMPTY_GROUP_SUBSCRIPTION_PLANS = %w[free trial].freeze
   EMPTY_GROUP_RETENTION = 60.days
   EXPIRED_TRIAL_RETENTION = 60.days
-  EXPIRED_TRIAL_CATCH_UP_AGE = EXPIRED_TRIAL_RETENTION + 1.day
   EXPIRED_TRIAL_WARNING_LIMIT = 100
   DISCARDED_GROUP_DESTRUCTION_LIMIT = 100
 
@@ -366,27 +365,23 @@ module CleanupService
     end || { discarded_roots: 0 }
   end
 
-  def self.discard_unused_groups_and_warn_expired_trials(now: Time.current)
-    EMPTY_GROUP_SUBSCRIPTION_PLANS.each do |plan|
-      discard_empty_groups!(plan: plan, before: now - EMPTY_GROUP_RETENTION, limit: UNUSED_GROUP_DISCARD_LIMIT)
-    end
-    warn_and_discard_expired_trial_groups(now: now, only_unused: false)
+  def self.discard_unused_trials_and_warn_expired_trials(retention:, now: Time.current)
+    discard_empty_groups!(plan: :trial, before: now - retention, limit: UNUSED_GROUP_DISCARD_LIMIT)
+    warn_and_discard_expired_trial_groups(now: now, retention: retention)
   end
 
-  def self.warn_and_discard_expired_trial_groups(now: Time.current, only_unused: nil)
-    groups = expired_trial_groups(now: now)
-    unless only_unused.nil?
-      trees = group_cleanup_trees(plan: :trial, before: now - EXPIRED_TRIAL_RETENTION, only_unused: only_unused)
-      # Reserve the first places in each daily batch for newly eligible trials.
-      recently_expired = Subscription.sanitize_sql_array([
-        "CASE WHEN subscriptions.expires_at > ? THEN 0 ELSE 1 END", now - EXPIRED_TRIAL_CATCH_UP_AGE
-      ])
-      groups = groups.where(id: trees.keys).reorder(Arel.sql(recently_expired), "subscriptions.expires_at", :id)
-    end
-    group_ids = groups.limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
-    options = only_unused.nil? ? {} : { only_unused: only_unused }
+  def self.warn_and_discard_expired_trial_groups(now: Time.current, retention: EXPIRED_TRIAL_RETENTION)
+    before = now - retention
+    trees = group_cleanup_trees(plan: :trial, before: before, only_unused: false)
+    # Reserve the first places in each daily batch for newly eligible trials.
+    recently_expired = Subscription.sanitize_sql_array([
+      "CASE WHEN subscriptions.expires_at > ? THEN 0 ELSE 1 END", before - 1.day
+    ])
+    group_ids = expired_trial_groups(now: now, retention: retention).where(id: trees.keys)
+      .reorder(Arel.sql(recently_expired), "subscriptions.expires_at", :id)
+      .limit(EXPIRED_TRIAL_WARNING_LIMIT).pluck(:id)
     group_ids.each do |group_id|
-      WarnAndDiscardExpiredTrialGroupWorker.perform_later(group_id, **options)
+      WarnAndDiscardExpiredTrialGroupWorker.perform_later(group_id, only_unused: false)
     end
     { queued_groups: group_ids.size }
   end
@@ -445,9 +440,9 @@ module CleanupService
     end
   end
 
-  def self.expired_trial_groups(now: Time.current)
+  def self.expired_trial_groups(now: Time.current, retention: EXPIRED_TRIAL_RETENTION)
     Group.kept.parents_only.joins(:subscription)
-         .where(subscriptions: { plan: "trial", expires_at: ..(now - EXPIRED_TRIAL_RETENTION) })
+         .where(subscriptions: { plan: "trial", expires_at: ..(now - retention) })
          .order("subscriptions.expires_at", :id)
   end
 

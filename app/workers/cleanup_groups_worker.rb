@@ -2,12 +2,13 @@ class CleanupGroupsWorker < ApplicationJob
   queue_as :low
 
   def self.enabled?
-    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"].present?
+    AppConfig.trial_discard_after_days.present?
   end
 
   def perform
-    return unless self.class.enabled?
+    days = AppConfig.trial_discard_after_days
+    return unless days
 
-    CleanupService.discard_unused_groups_and_warn_expired_trials
+    CleanupService.discard_unused_trials_and_warn_expired_trials(retention: days.days)
   end
 end

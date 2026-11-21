@@ -35,6 +35,10 @@ class AppConfig
     positive_integer_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
   end
 
+  def self.trial_discard_after_days
+    positive_integer_env("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS")
+  end
+
   def self.positive_integer_env(key)
     value = ENV[key]
     value.to_i if value&.match?(/\A[1-9][0-9]*\z/)

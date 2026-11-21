@@ -197,22 +197,20 @@ module GroupService
     end
   end
 
-  def self.warn_and_discard_expired_trial(group_id:, only_unused: nil)
-    group = CleanupService.expired_trial_groups.find_by(id: group_id)
+  def self.warn_and_discard_expired_trial(group_id:, retention:)
+    now = Time.current
+    group = CleanupService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
     return unless group
 
     subscription = nil
-    eligible = unless only_unused.nil?
-      -> do
-        subscription = Subscription.lock.find_by(id: group.subscription_id)
-        subscription && CleanupService.group_cleanup_trees(
-          plan: :trial, before: CleanupService::EXPIRED_TRIAL_RETENTION.ago,
-          only_unused: only_unused, root_ids: [group.id]
-        ).key?(group.id)
-      end
+    eligible = -> do
+      subscription = Subscription.lock.find_by(id: group.subscription_id)
+      subscription && CleanupService.group_cleanup_trees(
+        plan: :trial, before: now - retention, only_unused: false, root_ids: [group.id]
+      ).key?(group.id)
     end
     discard_and_notify(group: group, actor: nil, reason: "trial_expired", eligible: eligible) do
-      catch_up = subscription.present? && subscription.expires_at <= group.discarded_at - CleanupService::EXPIRED_TRIAL_CATCH_UP_AGE
+      catch_up = subscription.expires_at <= group.discarded_at - retention - 1.day
       group.admins.each do |admin|
         GroupMailer.expired_trial_deletion_warning(group.id, admin.id, catch_up: catch_up).deliver_later
       end
