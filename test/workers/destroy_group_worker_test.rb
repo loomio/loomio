@@ -30,6 +30,39 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     end
   end
 
+  test "permanent deletion removes duplicate search documents and all revisions only within the group tree" do
+    group = groups(:orphan_group_tree)
+    subgroup = groups(:orphan_subgroup)
+    discussion = discussions(:discussion)
+    topic = discussion.topic
+    poll = PollService.create(params: { topic_id: topic.id, title: "Archived poll", poll_type: "proposal",
+      closing_at: 2.days.from_now, poll_option_names: [ "Agree" ] }, actor: users(:admin))
+    stance = poll.stances.latest.find_by!(participant: users(:member_normal))
+    weight_version = PaperTrail::Version.create!(item: stance, event: Stance::WEIGHT_EVENT)
+    topic.update_column(:group_id, subgroup.id)
+
+    group.discard!(at: 91.days.ago)
+    deleted_records = [ group, subgroup, topic, discussion, poll, stance ]
+    kept_comment = comments(:public_discussion_comment)
+    kept_version = kept_comment.versions.create!(event: "update")
+    kept_document = kept_comment.pg_search_documents.create!(content: "Kept text")
+    deleted_records.each { |record| record.versions.create!(event: "update") }
+    [ discussion, poll ].each do |record|
+      2.times { record.pg_search_documents.create!(content: "Archived text") }
+    end
+
+    DestroyGroupWorker.perform_now(group.id, group.discarded_at.iso8601(6))
+
+    deleted_records.each { |record| assert_not PaperTrail::Version.exists?(item: record) }
+    assert_not PaperTrail::Version.exists?(weight_version.id)
+    [ discussion, poll ].each { |record| assert_not PgSearch::Document.exists?(searchable: record) }
+    assert PaperTrail::Version.exists?(kept_version.id)
+    assert PgSearch::Document.exists?(kept_document.id)
+
+    kept_comment.destroy!
+    assert PaperTrail::Version.exists?(kept_version.id)
+  end
+
   test "an old job preserves a restored then rediscarded group" do
     group = groups(:orphan_group_tree)
     group.discard!(at: 91.days.ago)

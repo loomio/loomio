@@ -26,7 +26,9 @@ class DestroyGroupWorker < ApplicationJob
       Subscription.lock.find_by(id: group.subscription_id)
       next unless CleanupService.deletable_discarded_groups.exists?(id: group.id)
 
-      group.destroy!
+      Current.set(permanently_deleting_group: true) do
+        PaperTrail.request(enabled: false) { group.destroy! }
+      end
     end
   end
 end
