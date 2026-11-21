@@ -55,7 +55,6 @@ class Subscription < ApplicationRecord
 
   def enqueue_chargify_cancellation
     return unless state == "canceled" && payment_method == "chargify" && chargify_subscription_id.present?
-    return unless WarnAndDiscardCanceledGroupWorker.enabled?
 
     root_ids = groups.parents_only.limit(2).pluck(:id)
     return unless root_ids.one?

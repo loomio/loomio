@@ -115,8 +115,6 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "confirmed cancellation queues one discard and a notice after the discard" do
-    previous = ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"]
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = "1"
     @group.add_admin!(@group.creator)
     child = groups(:orphan_group)
     grandchild = groups(:orphan_subgroup)
@@ -137,13 +135,9 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
     assert child.reload.discarded?
     assert grandchild.reload.discarded?
     assert_no_enqueued_jobs(only: DestroyGroupWorker) { post_update(cancellation) }
-  ensure
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = previous
   end
 
   test "a scheduled, expired, or stale billing event does not discard a group" do
-    previous = ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"]
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = "1"
     assert_no_enqueued_jobs(only: WarnAndDiscardCanceledGroupWorker) do
       %w[canceling expired active canceled].each_with_index do |state, index|
         update = payload
@@ -156,8 +150,6 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
     end
     assert_equal "active", @group.reload.subscription.state
     assert @group.kept?
-  ensure
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = previous
   end
 
   private

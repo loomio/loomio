@@ -2,8 +2,6 @@ require "test_helper"
 
 class WarnAndDiscardCanceledGroupWorkerTest < ActiveSupport::TestCase
   test "legacy billing must confirm an effective cancellation before the group is discarded" do
-    previous = ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"]
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = "1"
     group = groups(:orphan_group)
     group.add_admin!(users(:admin))
     subscription = Subscription.for!(group)
@@ -37,6 +35,5 @@ class WarnAndDiscardCanceledGroupWorkerTest < ActiveSupport::TestCase
     assert group.reload.discarded?
   ensure
     Object.send(:remove_const, :SubscriptionService) if service_found == false
-    ENV["LOOMIO_CANCELED_GROUP_CLEANUP_ENABLED"] = previous
   end
 end
