@@ -1,8 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  after_destroy :purge_group_deletion_versions, if: -> { Current.permanently_deleting_group && self.class.respond_to?(:versions_association_name) }
-
   # Serialize writes without blocking foreign-key checks that reference the row.
   # PostgreSQL takes a stronger lock automatically when a key changes or a row is deleted.
   WRITE_LOCK = 'FOR NO KEY UPDATE'.freeze
@@ -28,12 +26,5 @@ class ApplicationRecord < ActiveRecord::Base
 
   def named_id
     { "#{ActiveModel::Naming.singular(self)}_id" => id }
-  end
-
-  private
-
-  def purge_group_deletion_versions
-    # The revisions shown in the app can omit events such as vote weight changes.
-    public_send(self.class.versions_association_name).unscope(where: :event).reorder(nil).delete_all
   end
 end

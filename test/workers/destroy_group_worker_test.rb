@@ -39,10 +39,13 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
       closing_at: 2.days.from_now, poll_option_names: [ "Agree" ] }, actor: users(:admin))
     stance = poll.stances.latest.find_by!(participant: users(:member_normal))
     weight_version = PaperTrail::Version.create!(item: stance, event: Stance::WEIGHT_EVENT)
+    comment = Comment.create!(parent: discussion, user: users(:member_normal), body: "Archived reply")
+    reply = Comment.create!(parent: comment, user: users(:member_normal), body: "A reply without a timeline entry")
+    child = Comment.create!(parent: poll, user: users(:member_normal), body: "Archived poll reply")
     topic.update_column(:group_id, subgroup.id)
 
     group.discard!(at: 91.days.ago)
-    deleted_records = [ group, subgroup, topic, discussion, poll, stance ]
+    deleted_records = [ group, subgroup, topic, discussion, poll, stance, comment, reply, child ]
     kept_comment = comments(:public_discussion_comment)
     kept_version = kept_comment.versions.create!(event: "update")
     kept_document = kept_comment.pg_search_documents.create!(content: "Kept text")
