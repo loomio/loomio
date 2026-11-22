@@ -25,7 +25,6 @@ class HourlyTaskJob < ApplicationJob
     if hour == 0
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
-      DiscardExpiredTrialsWorker.perform_later
       DestroyOrphanUsersWorker.perform_later
       PublishReviewDueWorker.perform_later
     end

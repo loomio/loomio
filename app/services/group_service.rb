@@ -197,26 +197,6 @@ module GroupService
     end
   end
 
-  def self.warn_and_discard_expired_trial(group_id:, retention:)
-    now = Time.current
-    group = TrialExpirationService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
-    return unless group
-
-    subscription = nil
-    eligible = -> do
-      subscription = Subscription.lock.find_by(id: group.subscription_id)
-      subscription && TrialExpirationService.eligible_trees(
-        plan: :trial, before: now - retention, only_unused: false, root_ids: [group.id]
-      ).key?(group.id)
-    end
-    discard_and_notify(group: group, actor: nil, reason: "trial_expired", eligible: eligible) do
-      catch_up = subscription.expires_at <= group.discarded_at - retention - 1.day
-      group.admins.each do |admin|
-        GroupMailer.expired_trial_deletion_warning(group.id, admin.id, catch_up: catch_up).deliver_later
-      end
-    end
-  end
-
   def self.warn_and_discard_canceled_subscription(group_id:, subscription_id:, source:, evidence:)
     group = Group.kept.parents_only.find_by(id: group_id, subscription_id: subscription_id)
     return unless group
@@ -265,7 +245,6 @@ module GroupService
     end
     group
   end
-  private_class_method :discard_and_notify
 
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group

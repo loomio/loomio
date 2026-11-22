@@ -375,18 +375,6 @@ namespace :loomio do
     end
   end
 
-  desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
-  task audit_empty_groups: :environment do
-    limit = ENV["LIMIT"].presence&.to_i
-    plan_counts = TrialExpirationService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
-      {
-        empty_roots: TrialExpirationService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
-        total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
-      }
-    end
-    puts JSON.pretty_generate(plan_counts)
-  end
-
   desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
   task delete_unused_seeded_content: :environment do
     limit = ENV["LIMIT"].presence&.to_i

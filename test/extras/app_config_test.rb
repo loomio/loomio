@@ -41,13 +41,11 @@ class AppConfigTest < ActiveSupport::TestCase
     ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = "30"
     ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = "14"
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
-    ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = "60"
 
     assert_equal 45, AppConfig.discarded_group_deletion_after_days
     assert_equal 30, AppConfig.discarded_subgroup_deletion_after_days
     assert_equal 14, AppConfig.discarded_thread_deletion_after_days
     assert_equal 90, AppConfig.orphan_user_deletion_after_days
-    assert_equal 60, AppConfig.trial_discard_after_days
   end
 
   test "permanent deletion requires a positive whole number of days" do
@@ -56,12 +54,10 @@ class AppConfigTest < ActiveSupport::TestCase
       ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = value
       ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = value
       ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = value
-      ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = value
       assert_nil AppConfig.discarded_group_deletion_after_days, value.inspect
       assert_nil AppConfig.discarded_subgroup_deletion_after_days, value.inspect
       assert_nil AppConfig.discarded_thread_deletion_after_days, value.inspect
       assert_nil AppConfig.orphan_user_deletion_after_days, value.inspect
-      assert_nil AppConfig.trial_discard_after_days, value.inspect
     end
   end
 
@@ -72,7 +68,6 @@ class AppConfigTest < ActiveSupport::TestCase
     @discarded_subgroup_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
     @discarded_thread_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
     @orphan_user_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
-    @trial_discard_after_days_previous = ENV.delete("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS")
     @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
     @disable_edit_user_profile_previous = ENV.delete("LOOMIO_DISABLE_EDIT_USER_PROFILE")
     @sso_force_user_attrs_previous = ENV.delete("LOOMIO_SSO_FORCE_USER_ATTRS")
@@ -88,7 +83,6 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS", @discarded_subgroup_deletion_after_days_previous)
     restore_env("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS", @discarded_thread_deletion_after_days_previous)
     restore_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS", @orphan_user_deletion_after_days_previous)
-    restore_env("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS", @trial_discard_after_days_previous)
     restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)
     restore_env("LOOMIO_DISABLE_EDIT_USER_PROFILE", @disable_edit_user_profile_previous)
     restore_env("LOOMIO_SSO_FORCE_USER_ATTRS", @sso_force_user_attrs_previous)

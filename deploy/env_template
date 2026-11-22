@@ -118,9 +118,6 @@ LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS=90
 LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS=90
 LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS=90
 
-# Set a positive number of days after a trial expires to enable scheduled trial discard.
-# LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS=60
-
 # Automatically add new users to this group.
 # DEFAULT_ONBOARDING_GROUP_ID=123
 

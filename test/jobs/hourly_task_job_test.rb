@@ -34,19 +34,17 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     assert_not LoginToken.exists?(expired_token.id)
   end
 
-  test "schedules daily trial discard and orphan account destruction only at midnight UTC" do
+  test "schedules daily orphan account destruction only at midnight UTC" do
     midnight = Time.utc(2026, 9, 8)
 
     travel_to midnight do
-      assert_enqueued_with(job: DiscardExpiredTrialsWorker) do
-        assert_enqueued_with(job: DestroyOrphanUsersWorker) do
-          HourlyTaskJob.perform_now
-        end
+      assert_enqueued_with(job: DestroyOrphanUsersWorker) do
+        HourlyTaskJob.perform_now
       end
     end
 
     travel_to midnight + 1.hour do
-      assert_no_enqueued_jobs(only: [ DiscardExpiredTrialsWorker, DestroyOrphanUsersWorker ]) do
+      assert_no_enqueued_jobs(only: DestroyOrphanUsersWorker) do
         HourlyTaskJob.perform_now
       end
     end
