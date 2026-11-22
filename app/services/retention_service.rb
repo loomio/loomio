@@ -197,23 +197,14 @@ module RetentionService
           AND (s.expires_at IS NULL OR s.expires_at > :now)
       )
       AND NOT EXISTS (
-        WITH RECURSIVE tree AS (
-          SELECT id, discarded_at, subscription_id FROM groups child WHERE child.parent_id = groups.id
-          UNION ALL
-          SELECT child.id, child.discarded_at, child.subscription_id
-          FROM tree JOIN groups child ON child.parent_id = tree.id
-        )
-        SELECT 1 FROM tree
-        WHERE discarded_at IS NULL OR discarded_at > :cutoff
-           OR (subscription_id IS NOT NULL AND subscription_id IS DISTINCT FROM groups.subscription_id)
+        SELECT 1 FROM groups child
+        WHERE child.parent_id = groups.id
+          AND (child.discarded_at IS NULL OR child.discarded_at > :cutoff
+               OR (child.subscription_id IS NOT NULL AND child.subscription_id IS DISTINCT FROM groups.subscription_id))
       )
     SQL
   end
   private_class_method :discarded_group_tree_deletable_sql
-
-  def self.descendant_groups(root_id)
-    Group.descendants_of(root_id)
-  end
 
   def self.destroy_discarded_groups(now: Time.current, root_ids: nil)
     return 0 unless AppConfig.discarded_group_deletion_after_days
@@ -293,7 +284,7 @@ module RetentionService
     root_condition = root_ids.nil? ? "" : Group.sanitize_sql_array(["AND g.id IN (?)", root_ids])
     topic_operator = only_unused ? "NOT EXISTS" : "EXISTS"
     sql = Group.sanitize_sql_array([ <<~SQL, { before: before } ])
-      WITH RECURSIVE roots AS (
+      WITH roots AS (
         SELECT g.id, g.subscription_id FROM groups g
         JOIN subscriptions s ON s.id = g.subscription_id
         WHERE g.parent_id IS NULL AND g.discarded_at IS NULL
@@ -304,7 +295,7 @@ module RetentionService
       ), tree AS (
         SELECT id AS root_id, id AS group_id FROM roots
         UNION ALL
-        SELECT t.root_id, g.id FROM tree t JOIN groups g ON g.parent_id = t.group_id
+        SELECT r.id AS root_id, g.id AS group_id FROM roots r JOIN groups g ON g.parent_id = r.id
       ), used_roots AS (
         SELECT t.root_id FROM tree t JOIN topics ON topics.group_id = t.group_id
       ), excluded_roots AS (

@@ -146,21 +146,6 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = subgroups_before
   end
 
-  test "discard and restore traverse legacy grandchild subgroups" do
-    root = groups(:orphan_group_tree)
-    child = groups(:orphan_subgroup)
-    grandchild = groups(:orphan_group)
-    grandchild.update_column(:parent_id, child.id)
-
-    root.discard!(at: 91.days.ago)
-    assert child.reload.discarded?
-    assert grandchild.reload.discarded?
-
-    root.undiscard!
-    assert child.reload.kept?
-    assert grandchild.reload.kept?
-  end
-
   test "deletion starts only when the full delay has elapsed" do
     travel_to Time.current.change(usec: 0) do
       group = groups(:orphan_group_tree)

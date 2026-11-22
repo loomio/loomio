@@ -226,7 +226,7 @@ module GroupService
       next false unless subscription&.id == subscription_id
       next false if [subscription.expires_at, subscription.canceled_at].compact.any?(&:future?)
       next false if subscription.groups.parents_only.where.not(id: group.id).exists?
-      next false if Group.descendants_of(group.id).where.not(subscription_id: [nil, subscription.id]).exists?
+      next false if group.all_subgroups.where.not(subscription_id: [nil, subscription.id]).exists?
 
       case source
       when "billing_service"
@@ -251,7 +251,7 @@ module GroupService
       group.lock!
       next unless group.kept?
 
-      group_ids = [group.id, *Group.descendants_of(group.id).order(:id).lock.ids]
+      group_ids = [group.id, *group.all_subgroups.order(:id).lock.ids]
       next if eligible && !eligible.call
 
       group.discard!(actor: actor, group_ids: group_ids)

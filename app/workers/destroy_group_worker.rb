@@ -20,12 +20,12 @@ class DestroyGroupWorker < ApplicationJob
       Group.where(id: parent_id).lock.first if parent_id
       group = Group.where(id: group_id, discarded_at: discarded_at).lock.first
       next unless group
-      descendant_ids = Group.descendants_of(group.id).order(:id).lock.ids
+      subgroup_ids = group.all_subgroups.order(:id).lock.ids
       Subscription.lock.find_by(id: group.subscription_id)
       deletable = group.is_parent? ? RetentionService.deletable_discarded_groups : RetentionService.deletable_discarded_subgroups
       next unless deletable.exists?(id: group.id)
 
-      destroy_with_versions!(group, [group.id, *descendant_ids])
+      destroy_with_versions!(group, [group.id, *subgroup_ids])
     end
   end
 

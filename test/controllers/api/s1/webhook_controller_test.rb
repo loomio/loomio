@@ -117,9 +117,7 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
   test "confirmed cancellation queues one discard and a notice after the discard" do
     @group.add_admin!(@group.creator)
     child = groups(:orphan_group)
-    grandchild = groups(:orphan_subgroup)
     child.update_columns(parent_id: @group.id, subscription_id: nil)
-    grandchild.update_columns(parent_id: child.id, subscription_id: nil)
     cancellation = payload
     cancellation["subscription"].merge!("state" => "canceled", "canceled_at" => Time.current.iso8601)
 
@@ -133,7 +131,6 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
     end
     assert @group.reload.discarded?
     assert child.reload.discarded?
-    assert grandchild.reload.discarded?
     assert_no_enqueued_jobs(only: DestroyGroupWorker) { post_update(cancellation) }
   end
 

@@ -17,7 +17,7 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
       groups(name).update_columns(subscription_id: Subscription.create!(plan: 'trial', expires_at: @cutoff).id)
     end
     groups(:used_recent_subgroup).update_columns(parent_id: groups(:used_discarded_topic_tree).id)
-    groups(:used_discarded_topic_subgroup).update_columns(discarded_at: 1.day.ago, parent_id: groups(:used_recent_subgroup).id)
+    groups(:used_discarded_topic_subgroup).update_columns(discarded_at: 1.day.ago)
     [ :cleanup_active_free, :cleanup_active_paid, :cleanup_canceled_free ].each do |name|
       subscriptions(name).update_columns(expires_at: @cutoff)
     end
