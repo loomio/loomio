@@ -1,10 +1,6 @@
 class DestroyOrphanUsersWorker < ApplicationJob
   queue_as :low
 
-  def self.enabled?
-    AppConfig.orphan_user_deletion_after_days.present?
-  end
-
   def perform
     days = AppConfig.orphan_user_deletion_after_days
     return unless days

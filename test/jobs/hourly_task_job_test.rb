@@ -34,34 +34,22 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     assert_not LoginToken.exists?(expired_token.id)
   end
 
-  test "schedules trial cleanup only at midnight with a configured delay" do
-    trials_before = ENV.delete("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS")
+  test "schedules daily trial discard and orphan account destruction only at midnight UTC" do
     midnight = Time.utc(2026, 9, 8)
 
     travel_to midnight do
-      assert_no_enqueued_jobs(only: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
-
-      ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = "60"
-      assert_enqueued_with(job: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
+      assert_enqueued_with(job: DiscardExpiredTrialsWorker) do
+        assert_enqueued_with(job: DestroyOrphanUsersWorker) do
+          HourlyTaskJob.perform_now
+        end
+      end
     end
 
     travel_to midnight + 1.hour do
-      assert_no_enqueued_jobs(only: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
+      assert_no_enqueued_jobs(only: [ DiscardExpiredTrialsWorker, DestroyOrphanUsersWorker ]) do
+        HourlyTaskJob.perform_now
+      end
     end
-  ensure
-    ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = trials_before
-  end
-
-  test "orphan account destruction can be scheduled independently" do
-    previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
-    travel_to Time.utc(2026, 9, 8) do
-      assert_no_enqueued_jobs(only: DestroyOrphanUsersWorker) { HourlyTaskJob.perform_now }
-
-      ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
-      assert_enqueued_with(job: DestroyOrphanUsersWorker) { HourlyTaskJob.perform_now }
-    end
-  ensure
-    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous
   end
 
   test "permanent group deletion tops up hourly only when a delay is configured" do
