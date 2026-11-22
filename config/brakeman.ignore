@@ -181,12 +181,12 @@
       "note": "Baselined 2026-06-25 — report_service.rb line 260; @interval validated against VALID_INTERVALS, group filter uses integer PKs or 1=1, dates via iso8601 (SQL Injection)"
     },
     {
-      "fingerprint": "8eb8961f87b1030ccc0129ecc1439f090fb82e3f67d243fcf56b47679475bfee",
-      "note": "Reviewed 2026-11-23 — refreshed after splitting CleanupService into RetentionService. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/retention_service.rb#inactive_orphan_users)."
+      "fingerprint": "0ea44d1248a23f6b4be762854545c1cf68198cbff5f98dfe246de0c23b1cf325",
+      "note": "Reviewed 2026-11-23 — refreshed after moving permanent deletion into PurgeService. Table and column identifiers come only from the fixed USER_REFERENCES constant; no request data reaches this SQL (SQL Injection @ app/services/purge_service.rb#inactive_orphan_users)."
     },
     {
-      "fingerprint": "e485da82faca9714a6fcc5a96786a7e5cdbdbafde9b9c395f85abd60759f6333",
-      "note": "Reviewed 2026-11-23 — refreshed after splitting CleanupService into RetentionService. Every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/retention_service.rb#with_write_lock)."
+      "fingerprint": "5ae81b4393aa7cf3b05a23df12b6e80a57ea3f4bff22936707f896f07d4ab5ff",
+      "note": "Reviewed 2026-11-23 — refreshed after moving permanent deletion into PurgeService. Every maintenance lock identifier is escaped with the PostgreSQL adapter's quote_table_name before joining. All callers supply code-defined table lists; the lock mode and NOWAIT clause are fixed, with no request-supplied SQL (SQL Injection @ app/services/purge_service.rb#with_write_lock)."
     }
   ],
   "updated": "2026-10-22",

@@ -378,9 +378,9 @@ namespace :loomio do
   desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
   task audit_empty_groups: :environment do
     limit = ENV["LIMIT"].presence&.to_i
-    plan_counts = RetentionService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+    plan_counts = TrialExpirationService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
       {
-        empty_roots: RetentionService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
+        empty_roots: TrialExpirationService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
         total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
       }
     end

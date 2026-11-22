@@ -236,13 +236,13 @@ class CleanupServiceTest < ActiveSupport::TestCase
   test "destroy_inactive_orphan_users deletes long-inactive users with no durable references" do
     user = build_inactive_user
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
-    assert_includes RetentionService.inactive_orphan_user_ids, user.id
+    assert_includes PurgeService.inactive_orphan_user_ids, user.id
 
     transaction = ->(_tables, &cleanup_block) do
       ActiveRecord::Base.transaction(requires_new: true, &cleanup_block)
     end
-    RetentionService.stub(:with_write_lock, transaction) do
-      RetentionService.destroy_inactive_orphan_users
+    PurgeService.stub(:with_write_lock, transaction) do
+      PurgeService.destroy_inactive_orphan_users
     end
 
     assert_not User.exists?(user.id)
@@ -257,6 +257,6 @@ class CleanupServiceTest < ActiveSupport::TestCase
       group_privacy: 'secret'
     )
 
-    assert_not_includes RetentionService.inactive_orphan_user_ids, user.id
+    assert_not_includes PurgeService.inactive_orphan_user_ids, user.id
   end
 end

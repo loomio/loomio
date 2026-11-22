@@ -28,7 +28,7 @@ class CleanupDeliveryMatrixTest < ActiveSupport::TestCase
       when :orphan_audit
         IntegrityAuditService.audit_orphan_records
       when :inactive_cleanup
-        RetentionService.destroy_inactive_orphan_users
+        PurgeService.destroy_inactive_orphan_users
       end
 
       matrix.each do |topic_name, expected|

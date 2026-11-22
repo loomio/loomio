@@ -41,7 +41,7 @@ class CleanupExpiredTrialsTest < ActiveSupport::TestCase
     topics(:direct_topic).update_columns(group_id: new_trial.id)
     clear_enqueued_jobs
 
-    RetentionService.warn_and_discard_expired_trial_groups(now: now, retention: 45.days)
+    TrialExpirationService.warn_and_discard_expired_trial_groups(now: now, retention: 45.days)
 
     notifications = enqueued_jobs.select { |job| job[:job] == WarnAndDiscardExpiredTrialGroupWorker }
     assert_equal [new_trial.id, old_trial.id], notifications.map { |job| job[:args].first }
@@ -57,7 +57,7 @@ class CleanupExpiredTrialsTest < ActiveSupport::TestCase
       trial_cleanup_child_subscription
     ].map { |fixture| groups(fixture).id }.sort
 
-    group_ids = RetentionService.expired_trial_groups.pluck(:id).sort
+    group_ids = TrialExpirationService.expired_trial_groups.pluck(:id).sort
 
     assert_equal expected, group_ids
     assert_not_includes group_ids, groups(:trial_cleanup_recent).id
@@ -70,14 +70,14 @@ class CleanupExpiredTrialsTest < ActiveSupport::TestCase
     trial_group = groups(:trial_cleanup_recent)
     topics(:direct_topic).update!(group_id: trial_group.id)
     trial_group.subscription.update!(expires_at: now - 60.days + 1.second)
-    assert_not_includes RetentionService.expired_trial_groups(now: now).pluck(:id), trial_group.id
+    assert_not_includes TrialExpirationService.expired_trial_groups(now: now).pluck(:id), trial_group.id
 
     trial_group.subscription.update!(expires_at: now - 60.days)
-    assert_includes RetentionService.expired_trial_groups(now: now).pluck(:id), trial_group.id
+    assert_includes TrialExpirationService.expired_trial_groups(now: now).pluck(:id), trial_group.id
   end
 
   test "cancelled subscriptions are excluded" do
-    assert_not_includes RetentionService.expired_trial_groups.pluck(:id), groups(:used_canceled_free_group).id
+    assert_not_includes TrialExpirationService.expired_trial_groups.pluck(:id), groups(:used_canceled_free_group).id
   end
 
 end

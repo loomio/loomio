@@ -16,9 +16,9 @@ class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
     group.discard!(at: 91.days.ago)
 
     assert_no_enqueued_jobs(only: DestroyGroupWorker) do
-      assert_equal 0, RetentionService.destroy_discarded_groups(root_ids: [group.id])
+      assert_equal 0, PurgeService.destroy_discarded_groups(root_ids: [group.id])
     end
-    assert_empty RetentionService.deletable_discarded_groups
+    assert_empty PurgeService.deletable_discarded_groups
   end
 
   test "queues roots discarded beyond the grace period" do
@@ -28,7 +28,7 @@ class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
     recent.discard!(at: 89.days.ago)
 
     assert_enqueued_with(job: DestroyGroupWorker, args: ->(args) { args == [ eligible.id, eligible.reload.discarded_at.iso8601(6) ] }) do
-      RetentionService.destroy_discarded_groups
+      PurgeService.destroy_discarded_groups
     end
 
     assert Group.exists?(eligible.id)
@@ -43,15 +43,15 @@ class CleanupDiscardedGroupsTest < ActiveSupport::TestCase
     group.discard!(at: 91.days.ago)
     other.discard!(at: 91.days.ago)
     pending = SolidQueue::Job.where(queue_name: "group_destruction", finished_at: nil)
-    ActiveJob.perform_all_later(Array.new(RetentionService::DISCARDED_GROUP_DESTRUCTION_LIMIT - 1) { |index| DestroyGroupWorker.new(-index - 1) })
+    ActiveJob.perform_all_later(Array.new(PurgeService::DISCARDED_GROUP_DESTRUCTION_LIMIT - 1) { |index| DestroyGroupWorker.new(-index - 1) })
 
-    assert_equal 1, RetentionService.destroy_discarded_groups(root_ids: [group.id])
-    assert_equal 0, RetentionService.destroy_discarded_groups(root_ids: [other.id])
-    assert_equal RetentionService::DISCARDED_GROUP_DESTRUCTION_LIMIT, pending.count
+    assert_equal 1, PurgeService.destroy_discarded_groups(root_ids: [group.id])
+    assert_equal 0, PurgeService.destroy_discarded_groups(root_ids: [other.id])
+    assert_equal PurgeService::DISCARDED_GROUP_DESTRUCTION_LIMIT, pending.count
 
     pending.first.update!(finished_at: Time.current)
-    assert_equal 0, RetentionService.destroy_discarded_groups(root_ids: [group.id])
-    assert_equal 1, RetentionService.destroy_discarded_groups(root_ids: [other.id])
+    assert_equal 0, PurgeService.destroy_discarded_groups(root_ids: [group.id])
+    assert_equal 1, PurgeService.destroy_discarded_groups(root_ids: [other.id])
   ensure
     DestroyGroupWorker.queue_adapter = previous_adapter
   end

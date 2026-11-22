@@ -199,13 +199,13 @@ module GroupService
 
   def self.warn_and_discard_expired_trial(group_id:, retention:)
     now = Time.current
-    group = RetentionService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
+    group = TrialExpirationService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
     return unless group
 
     subscription = nil
     eligible = -> do
       subscription = Subscription.lock.find_by(id: group.subscription_id)
-      subscription && RetentionService.group_retention_trees(
+      subscription && TrialExpirationService.eligible_trees(
         plan: :trial, before: now - retention, only_unused: false, root_ids: [group.id]
       ).key?(group.id)
     end
