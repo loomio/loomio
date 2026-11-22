@@ -68,12 +68,12 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous
   end
 
-  test "permanent group deletion is only scheduled at midnight UTC when a delay is configured" do
+  test "permanent group deletion tops up hourly only when a delay is configured" do
     previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
     group = groups(:orphan_group_tree)
-    midnight = Time.utc(2026, 9, 8)
+    hour = Time.utc(2026, 9, 8, 13)
 
-    travel_to midnight do
+    travel_to hour do
       group.discard!(at: 36.days.ago)
       assert_no_enqueued_jobs(only: DestroyGroupWorker) { HourlyTaskJob.perform_now }
 
@@ -82,22 +82,18 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
         HourlyTaskJob.perform_now
       end
     end
-
-    travel_to midnight + 1.hour do
-      assert_no_enqueued_jobs(only: DestroyGroupWorker) { HourlyTaskJob.perform_now }
-    end
   ensure
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = previous
   end
 
-  test "permanent subgroup and thread deletion are scheduled at midnight UTC only when configured" do
+  test "permanent subgroup and thread deletion top up hourly only when configured" do
     subgroups_before = ENV.delete("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
     threads_before = ENV.delete("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
     subgroup = groups(:orphan_subgroup)
     topic = topics(:direct_topic)
-    midnight = Time.utc(2026, 9, 8)
+    hour = Time.utc(2026, 9, 8, 13)
 
-    travel_to midnight do
+    travel_to hour do
       subgroup.discard!(at: 31.days.ago)
       topic.update_column(:discarded_at, 15.days.ago)
       assert_no_enqueued_jobs(only: [ DestroyGroupWorker, DestroyTopicWorker ]) { HourlyTaskJob.perform_now }
