@@ -391,7 +391,34 @@ module CleanupService
     return Group.none unless delay_days
 
     discarded_before = now - delay_days.days
-    Group.discarded.parents_only.where(discarded_at: ..discarded_before).where(<<~SQL.squish, cutoff: discarded_before, now: now)
+    Group.discarded.parents_only.where(discarded_at: ..discarded_before)
+         .where(discarded_group_tree_deletable_sql, cutoff: discarded_before, now: now)
+  end
+
+  def self.deletable_discarded_subgroups(now: Time.current)
+    delay_days = AppConfig.discarded_subgroup_deletion_after_days
+    return Group.none unless delay_days
+
+    discarded_before = now - delay_days.days
+    Group.discarded.where.not(parent_id: nil).where(discarded_at: ..discarded_before)
+         .where("EXISTS (SELECT 1 FROM groups parent WHERE parent.id = groups.parent_id AND parent.discarded_at IS NULL)")
+         .where(discarded_group_tree_deletable_sql, cutoff: discarded_before, now: now)
+  end
+
+  def self.deletable_discarded_threads(now: Time.current)
+    delay_days = AppConfig.discarded_thread_deletion_after_days
+    return Topic.none unless delay_days
+
+    discarded_before = now - delay_days.days
+    Topic.where.not(discarded_at: nil).where(discarded_at: ..discarded_before).where(<<~SQL.squish)
+      topics.group_id IS NULL OR EXISTS (
+        SELECT 1 FROM groups g WHERE g.id = topics.group_id AND g.discarded_at IS NULL
+      )
+    SQL
+  end
+
+  def self.discarded_group_tree_deletable_sql
+    <<~SQL.squish
       NOT EXISTS (
         SELECT 1 FROM subscriptions s
         WHERE s.id = groups.subscription_id
@@ -412,17 +439,31 @@ module CleanupService
       )
     SQL
   end
+  private_class_method :discarded_group_tree_deletable_sql
 
   def self.descendant_groups(root_id)
-    Group.with_recursive(group_descendants: [
-      Group.where(parent_id: root_id).select(:id),
-      Group.joins("JOIN group_descendants ON groups.parent_id = group_descendants.id").select(:id)
-    ]).where("groups.id IN (SELECT id FROM group_descendants)")
+    Group.descendants_of(root_id)
   end
 
   def self.destroy_discarded_groups(now: Time.current, root_ids: nil)
-    return 0 unless DestroyGroupWorker.enabled?
+    return 0 unless AppConfig.discarded_group_deletion_after_days.present?
 
+    dispatch_destruction_jobs(worker: DestroyGroupWorker, scope: deletable_discarded_groups(now: now), ids: root_ids)
+  end
+
+  def self.destroy_discarded_subgroups(now: Time.current, subgroup_ids: nil)
+    return 0 unless AppConfig.discarded_subgroup_deletion_after_days.present?
+
+    dispatch_destruction_jobs(worker: DestroyGroupWorker, scope: deletable_discarded_subgroups(now: now), ids: subgroup_ids)
+  end
+
+  def self.destroy_discarded_threads(now: Time.current, topic_ids: nil)
+    return 0 unless DestroyTopicWorker.enabled?
+
+    dispatch_destruction_jobs(worker: DestroyTopicWorker, scope: deletable_discarded_threads(now: now), ids: topic_ids)
+  end
+
+  def self.dispatch_destruction_jobs(worker:, scope:, ids: nil)
     SolidQueue::Job.transaction do
       connection = SolidQueue::Job.connection
       next 0 unless connection.select_value("SELECT pg_try_advisory_xact_lock(hashtextextended('loomio_discarded_group_dispatch', 0))")
@@ -431,11 +472,37 @@ module CleanupService
       remaining = DISCARDED_GROUP_DESTRUCTION_LIMIT - pending.count
       next 0 unless remaining.positive?
 
-      queued_ids = pending.where(class_name: DestroyGroupWorker.name).map { |job| job.arguments.fetch("arguments").first }
-      groups = deletable_discarded_groups(now: now).where.not(id: queued_ids)
-      groups = groups.where(id: root_ids) if root_ids
-      groups.order(:discarded_at, :id).limit(remaining).count do |group|
-        DestroyGroupWorker.perform_later(group.id, group.discarded_at.iso8601(6))
+      queued_ids = pending.where(class_name: worker.name).map { |job| job.arguments.fetch("arguments").first }
+      records = scope.where.not(id: queued_ids)
+      records = records.where(id: ids) if ids
+      records.order(:discarded_at, :id).limit(remaining).count do |record|
+        worker.perform_later(record.id, record.discarded_at.iso8601(6))
+      end
+    end
+  end
+  private_class_method :dispatch_destruction_jobs
+
+  def self.topic_version_record_ids(topic_ids)
+    discussions = Discussion.where(topic_id: topic_ids)
+    polls = Poll.where(topic_id: topic_ids)
+    stances = Stance.where(poll_id: polls.select(:id))
+    outcomes = Outcome.where(poll_id: polls.select(:id))
+    comments = Comment.under_parents(discussions, polls, stances, outcomes)
+
+    record_ids = { Topic => topic_ids }
+    [discussions, polls, stances, outcomes, comments].each do |scope|
+      record_ids[scope.klass] = scope.ids
+    end
+    record_ids
+  end
+
+  def self.delete_destroyed_versions!(record_ids)
+    record_ids.each do |model, ids|
+      ids.each_slice(1_000) do |batch|
+        # Preserve history for any record that survived the cascade. This also
+        # includes events filtered out of the normal history view.
+        survivors = model.unscoped.where(id: batch).select(:id)
+        PaperTrail::Version.where(item_type: model.polymorphic_name, item_id: batch).where.not(item_id: survivors).delete_all
       end
     end
   end

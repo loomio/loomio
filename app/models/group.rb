@@ -336,7 +336,14 @@ class Group < ApplicationRecord
     self.handle = nil if self.handle.to_s.strip == ""
   end
 
-  def discard!(actor: nil, at: Time.current, group_ids: id_and_subgroup_ids)
+  def self.descendants_of(root_id)
+    with_recursive(group_descendants: [
+      where(parent_id: root_id).select(:id),
+      joins("JOIN group_descendants ON groups.parent_id = group_descendants.id").select(:id)
+    ]).where("groups.id IN (SELECT id FROM group_descendants)")
+  end
+
+  def discard!(actor: nil, at: Time.current, group_ids: [id, *Group.descendants_of(id).ids])
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
         Group.kept.where(id: group_ids).find_each do |group|
@@ -355,7 +362,7 @@ class Group < ApplicationRecord
     Group.transaction do
       PaperTrail.request(whodunnit: actor&.id) do
         # Preserve subgroups that were already discarded before this tree was.
-        Group.where(id: id_and_subgroup_ids, discarded_at: discarded_at).find_each do |group|
+        Group.where(id: [id, *Group.descendants_of(id).ids], discarded_at: discarded_at).find_each do |group|
           group.assign_attributes(discarded_at: nil, discarded_by: nil)
           group.save!(validate: false)
         end

@@ -235,7 +235,7 @@ module GroupService
         subscription.chargify_subscription_id == evidence
       end
     end
-    discard_and_notify(group: group, actor: nil, reason: "subscription_canceled", eligible: eligible, include_descendants: true) do
+    discard_and_notify(group: group, actor: nil, reason: "subscription_canceled", eligible: eligible) do
       discarded_at = group.discarded_at.iso8601(6)
       group.admins.each do |admin|
         GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at).deliver_later
@@ -246,16 +246,12 @@ module GroupService
   # All ordinary discard paths share one locked transition. Authorization or
   # automatic eligibility belongs to the entry point; warnings and broadcasts
   # happen only after commit, and repeated requests do not repeat notifications.
-  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil, include_descendants: false)
+  def self.discard_and_notify(group:, actor:, reason: "requested", eligible: nil)
     Group.transaction(requires_new: true) do |transaction|
       group.lock!
       next unless group.kept?
 
-      group_ids = if include_descendants
-        [group.id, *CleanupService.descendant_groups(group.id).order(:id).lock.ids]
-      else
-        group.id_and_subgroup_ids
-      end
+      group_ids = [group.id, *Group.descendants_of(group.id).order(:id).lock.ids]
       next if eligible && !eligible.call
 
       group.discard!(actor: actor, group_ids: group_ids)

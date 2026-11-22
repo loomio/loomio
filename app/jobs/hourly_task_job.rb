@@ -23,7 +23,9 @@ class HourlyTaskJob < ApplicationJob
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
       CleanupGroupsWorker.perform_later if CleanupGroupsWorker.enabled?
-      CleanupService.destroy_discarded_groups if DestroyGroupWorker.enabled?
+      CleanupService.destroy_discarded_groups if AppConfig.discarded_group_deletion_after_days.present?
+      CleanupService.destroy_discarded_subgroups if AppConfig.discarded_subgroup_deletion_after_days.present?
+      CleanupService.destroy_discarded_threads if DestroyTopicWorker.enabled?
       CleanupOrphanUsersWorker.perform_later if CleanupOrphanUsersWorker.enabled?
       PublishReviewDueWorker.perform_later
     end

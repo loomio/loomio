@@ -1,15 +1,29 @@
 require 'test_helper'
 
 class BootSiteTest < ActiveSupport::TestCase
-  test "includes the group deletion grace period" do
+  test "includes the group, subgroup, and thread deletion grace periods" do
     AppConfig.stub(:discarded_group_deletion_after_days, 45) do
-      assert_equal 45, Boot::Site.new.payload[:groupDeletionDelayDays]
+      AppConfig.stub(:discarded_subgroup_deletion_after_days, 30) do
+        AppConfig.stub(:discarded_thread_deletion_after_days, 14) do
+          payload = Boot::Site.new.payload
+          assert_equal 45, payload[:groupDeletionDelayDays]
+          assert_equal 30, payload[:subgroupDeletionDelayDays]
+          assert_equal 14, payload[:threadDeletionDelayDays]
+        end
+      end
     end
   end
 
-  test "sends no deletion grace period when scheduling is disabled" do
+  test "sends no deletion grace periods when scheduling is disabled" do
     AppConfig.stub(:discarded_group_deletion_after_days, nil) do
-      assert_nil Boot::Site.new.payload[:groupDeletionDelayDays]
+      AppConfig.stub(:discarded_subgroup_deletion_after_days, nil) do
+        AppConfig.stub(:discarded_thread_deletion_after_days, nil) do
+          payload = Boot::Site.new.payload
+          assert_nil payload[:groupDeletionDelayDays]
+          assert_nil payload[:subgroupDeletionDelayDays]
+          assert_nil payload[:threadDeletionDelayDays]
+        end
+      end
     end
   end
 

@@ -38,10 +38,14 @@ class AppConfigTest < ActiveSupport::TestCase
 
   test "the permanent deletion setting supplies the configured number of days" do
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "45"
+    ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = "30"
+    ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = "14"
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
     ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = "60"
 
     assert_equal 45, AppConfig.discarded_group_deletion_after_days
+    assert_equal 30, AppConfig.discarded_subgroup_deletion_after_days
+    assert_equal 14, AppConfig.discarded_thread_deletion_after_days
     assert_equal 90, AppConfig.orphan_user_deletion_after_days
     assert_equal 60, AppConfig.trial_discard_after_days
   end
@@ -49,9 +53,13 @@ class AppConfigTest < ActiveSupport::TestCase
   test "permanent deletion requires a positive whole number of days" do
     [nil, "", "false", "0", "-1", "90.5", "90 days"].each do |value|
       ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = value
+      ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = value
+      ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = value
       ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = value
       ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = value
       assert_nil AppConfig.discarded_group_deletion_after_days, value.inspect
+      assert_nil AppConfig.discarded_subgroup_deletion_after_days, value.inspect
+      assert_nil AppConfig.discarded_thread_deletion_after_days, value.inspect
       assert_nil AppConfig.orphan_user_deletion_after_days, value.inspect
       assert_nil AppConfig.trial_discard_after_days, value.inspect
     end
@@ -61,6 +69,8 @@ class AppConfigTest < ActiveSupport::TestCase
     @chargify_api_key_previous = ENV.delete("CHARGIFY_API_KEY")
     @loomio_subscriptions_previous = ENV.delete("LOOMIO_SUBSCRIPTIONS")
     @discarded_group_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+    @discarded_subgroup_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
+    @discarded_thread_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
     @orphan_user_deletion_after_days_previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
     @trial_discard_after_days_previous = ENV.delete("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS")
     @default_onboarding_group_id_previous = ENV.delete("DEFAULT_ONBOARDING_GROUP_ID")
@@ -75,6 +85,8 @@ class AppConfigTest < ActiveSupport::TestCase
     restore_env("CHARGIFY_API_KEY", @chargify_api_key_previous)
     restore_env("LOOMIO_SUBSCRIPTIONS", @loomio_subscriptions_previous)
     restore_env("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS", @discarded_group_deletion_after_days_previous)
+    restore_env("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS", @discarded_subgroup_deletion_after_days_previous)
+    restore_env("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS", @discarded_thread_deletion_after_days_previous)
     restore_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS", @orphan_user_deletion_after_days_previous)
     restore_env("LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS", @trial_discard_after_days_previous)
     restore_env("DEFAULT_ONBOARDING_GROUP_ID", @default_onboarding_group_id_previous)

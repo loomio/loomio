@@ -115,6 +115,12 @@ ACTIVE_STORAGE_SERVICE=local
 # Set a positive number of days to enable permanent deletion of discarded groups.
 # LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS=90
 
+# Set a positive number of days to enable permanent deletion of discarded subgroups.
+# LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS=90
+
+# Set a positive number of days to enable permanent deletion of discarded threads.
+# LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS=90
+
 # Set a positive number of days to enable permanent deletion of inactive orphan user accounts.
 # LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS=90
 

@@ -31,6 +31,14 @@ class AppConfig
     positive_integer_env("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
   end
 
+  def self.discarded_subgroup_deletion_after_days
+    positive_integer_env("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
+  end
+
+  def self.discarded_thread_deletion_after_days
+    positive_integer_env("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
+  end
+
   def self.orphan_user_deletion_after_days
     positive_integer_env("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
   end

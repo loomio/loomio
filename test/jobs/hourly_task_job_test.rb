@@ -89,4 +89,29 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
   ensure
     ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = previous
   end
+
+  test "permanent subgroup and thread deletion are scheduled at midnight UTC only when configured" do
+    subgroups_before = ENV.delete("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
+    threads_before = ENV.delete("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
+    subgroup = groups(:orphan_subgroup)
+    topic = topics(:direct_topic)
+    midnight = Time.utc(2026, 9, 8)
+
+    travel_to midnight do
+      subgroup.discard!(at: 31.days.ago)
+      topic.update_column(:discarded_at, 15.days.ago)
+      assert_no_enqueued_jobs(only: [ DestroyGroupWorker, DestroyTopicWorker ]) { HourlyTaskJob.perform_now }
+
+      ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = "30"
+      ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = "14"
+      assert_enqueued_with(job: DestroyGroupWorker, args: [subgroup.id, subgroup.discarded_at.iso8601(6)]) do
+        assert_enqueued_with(job: DestroyTopicWorker, args: [topic.id, topic.discarded_at.iso8601(6)]) do
+          HourlyTaskJob.perform_now
+        end
+      end
+    end
+  ensure
+    ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = subgroups_before
+    ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = threads_before
+  end
 end
