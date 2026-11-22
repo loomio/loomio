@@ -26,9 +26,9 @@ class CleanupDeliveryMatrixTest < ActiveSupport::TestCase
     %i[baseline orphan_audit inactive_cleanup].each do |phase|
       case phase
       when :orphan_audit
-        CleanupService.audit_orphan_records
+        IntegrityAuditService.audit_orphan_records
       when :inactive_cleanup
-        CleanupService.delete_inactive_orphan_users
+        RetentionService.destroy_inactive_orphan_users
       end
 
       matrix.each do |topic_name, expected|

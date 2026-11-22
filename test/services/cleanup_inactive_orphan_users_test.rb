@@ -39,7 +39,7 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       deactivated_old_orphan: { user: users(:orphan_deactivated_user), eligible: true },
       deactivated_recent_orphan: { user: users(:orphan_recent_deactivated_user), eligible: false }
     }
-    candidate_ids = CleanupService.inactive_orphan_user_ids
+    candidate_ids = RetentionService.inactive_orphan_user_ids
 
     matrix.each do |name, entry|
       assert_equal entry[:eligible], candidate_ids.include?(entry[:user].id), name
@@ -51,11 +51,11 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user = users(:orphan_cutoff_user)
     user.update_column(:last_sign_in_at, cutoff)
 
-    assert_not_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+    assert_not_includes RetentionService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
 
     user.update_column(:last_sign_in_at, cutoff - 1.second)
 
-    assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+    assert_includes RetentionService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
   end
 
   test "uses a 90-day default retention period" do
@@ -63,11 +63,11 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       user = users(:orphan_cutoff_user)
       user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 90.days.ago)
 
-      assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+      assert_not_includes RetentionService.inactive_orphan_user_ids, user.id
 
       user.update_column(:last_sign_in_at, 90.days.ago - 1.second)
 
-      assert_includes CleanupService.inactive_orphan_user_ids, user.id
+      assert_includes RetentionService.inactive_orphan_user_ids, user.id
     end
   end
 
@@ -76,15 +76,15 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user = users(:orphan_cutoff_user)
     user.update_columns(current_sign_in_at: nil, last_seen_at: nil, last_sign_in_at: 100.days.ago)
 
-    CleanupOrphanUsersWorker.perform_now
+    DestroyOrphanUsersWorker.perform_now
     assert User.exists?(user.id)
 
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "120"
-    CleanupOrphanUsersWorker.perform_now
+    DestroyOrphanUsersWorker.perform_now
     assert User.exists?(user.id)
 
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
-    CleanupOrphanUsersWorker.perform_now
+    DestroyOrphanUsersWorker.perform_now
     refute User.exists?(user.id)
   ensure
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous
@@ -93,11 +93,11 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
   test "limits each daily cleanup run" do
     relation = Minitest::Mock.new
     relation.expect(:order, relation, [ :id ])
-    relation.expect(:limit, relation, [ CleanupService::INACTIVE_ORPHAN_USER_LIMIT ])
+    relation.expect(:limit, relation, [ RetentionService::INACTIVE_ORPHAN_USER_LIMIT ])
     relation.expect(:pluck, [ 1, 2 ], [ :id ])
 
-    CleanupService.stub(:inactive_orphan_users, relation) do
-      assert_equal [ 1, 2 ], CleanupService.inactive_orphan_user_ids
+    RetentionService.stub(:inactive_orphan_users, relation) do
+      assert_equal [ 1, 2 ], RetentionService.inactive_orphan_user_ids
     end
 
     relation.verify
@@ -108,20 +108,20 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user = users(:orphan_recent_invitee_user)
     user.update_column(:created_at, cutoff)
 
-    assert_not_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+    assert_not_includes RetentionService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
 
     user.update_column(:created_at, cutoff - 1.second)
 
-    assert_includes CleanupService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
+    assert_includes RetentionService.inactive_orphan_user_ids(inactive_before: cutoff), user.id
   end
 
   test "a group follow is enough to keep a long-inactive account" do
     user = users(:orphan_user)
     group = groups(:group)
-    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_includes RetentionService.inactive_orphan_user_ids, user.id
     GroupFollow.create!(group: group, user: user)
 
-    refute_includes CleanupService.inactive_orphan_user_ids, user.id
+    refute_includes RetentionService.inactive_orphan_user_ids, user.id
   end
 
   test "preserves every membership role in the reusable user matrix" do
@@ -129,14 +129,14 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
     users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
-    candidate_ids = CleanupService.inactive_orphan_user_ids
+    candidate_ids = RetentionService.inactive_orphan_user_ids
 
     users.each do |user|
       assert Membership.where(user_id: user.id).exists?, "#{user.username} must have membership history"
       assert_not_includes candidate_ids, user.id, user.username
     end
 
-    CleanupService.delete_inactive_orphan_users
+    RetentionService.destroy_inactive_orphan_users
     users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
     assert_access_volume_matrix_unchanged(before)
 
@@ -153,13 +153,13 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     users.each { |user| user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil) }
     before = access_volume_matrix
     users_before = users.to_h { |user| [ user.id, user.reload.attributes ] }
-    candidate_ids = CleanupService.inactive_orphan_user_ids
+    candidate_ids = RetentionService.inactive_orphan_user_ids
 
     users.each do |user|
       assert TopicReader.where(topic: direct_topic, user: user).exists?, "#{user.username} must participate in the direct topic"
       assert_not_includes candidate_ids, user.id, user.username
     end
-    CleanupService.delete_inactive_orphan_users
+    RetentionService.destroy_inactive_orphan_users
     users.each { |user| assert_equal users_before.fetch(user.id), user.reload.attributes }
     assert_access_volume_matrix_unchanged(before)
   end
@@ -168,10 +168,10 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user = users(:orphan_user)
     %i[current_sign_in_at last_seen_at last_sign_in_at created_at].each do |column|
       user.update_columns(created_at: 3.years.ago, last_sign_in_at: 2.years.ago, current_sign_in_at: nil, last_seen_at: nil)
-      assert_includes CleanupService.inactive_orphan_user_ids, user.id
+      assert_includes RetentionService.inactive_orphan_user_ids, user.id
       user.update_column(column, Time.current)
 
-      CleanupService.delete_inactive_orphan_users
+      RetentionService.destroy_inactive_orphan_users
 
       assert User.exists?(user.id), column
     end
@@ -179,17 +179,17 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
 
   test "subscription ownership alone protects an inactive account" do
     user = users(:orphan_user)
-    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_includes RetentionService.inactive_orphan_user_ids, user.id
     subscriptions(:cleanup_active_paid).update_column(:owner_id, user.id)
 
-    CleanupService.delete_inactive_orphan_users
+    RetentionService.destroy_inactive_orphan_users
 
     assert User.exists?(user.id)
   end
 
   test "notification recipient history protects an inactive account" do
     user = users(:orphan_user)
-    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_includes RetentionService.inactive_orphan_user_ids, user.id
     notification = Notification.create!(
       kind: "new_discussion",
       subject: discussions(:public_discussion),
@@ -197,9 +197,9 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       recipient_user_ids: [ user.id ]
     )
 
-    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_not_includes RetentionService.inactive_orphan_user_ids, user.id
 
-    CleanupService.delete_inactive_orphan_users
+    RetentionService.destroy_inactive_orphan_users
 
     assert User.exists?(user.id)
     assert Notification.exists?(notification.id)
@@ -209,9 +209,9 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     user = users(:orphan_user)
     user.update!(is_admin: true)
 
-    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_not_includes RetentionService.inactive_orphan_user_ids, user.id
 
-    CleanupService.delete_inactive_orphan_users
+    RetentionService.destroy_inactive_orphan_users
 
     assert User.exists?(user.id)
   end
@@ -235,12 +235,12 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       auth_key: "auth"
     )
 
-    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_includes RetentionService.inactive_orphan_user_ids, user.id
 
     # Lock contention is covered separately; this test verifies that deleting an
     # eligible account revokes each transient access record.
     with_cleanup_transaction do
-      CleanupService.delete_inactive_orphan_users
+      RetentionService.destroy_inactive_orphan_users
     end
 
     assert_not User.exists?(user.id)
@@ -251,11 +251,11 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
 
   test "new references after selection protect the user and their work" do
     user = users(:orphan_user)
-    ids = CleanupService.inactive_orphan_user_ids
+    ids = RetentionService.inactive_orphan_user_ids
     assert_includes ids, user.id
     group = Group.create!(name: "New work", creator: user, group_privacy: "secret")
 
-    CleanupService.stub(:inactive_orphan_user_ids, ids) { CleanupService.delete_inactive_orphan_users }
+    RetentionService.stub(:inactive_orphan_user_ids, ids) { RetentionService.destroy_inactive_orphan_users }
 
     assert User.exists?(user.id)
     assert Group.exists?(group.id)
@@ -268,10 +268,10 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
       scope = Minitest::Mock.new
       scope.expect(:where, scope, [], id: user.id)
       scope.expect(:first, user)
-      CleanupService.stub(:inactive_orphan_user_ids, [ user.id ]) do
-        CleanupService.stub(:inactive_orphan_users, scope) do
+      RetentionService.stub(:inactive_orphan_user_ids, [ user.id ]) do
+        RetentionService.stub(:inactive_orphan_users, scope) do
           with_cleanup_transaction do
-            assert_raises(RuntimeError) { CleanupService.delete_inactive_orphan_users }
+            assert_raises(RuntimeError) { RetentionService.destroy_inactive_orphan_users }
           end
         end
       end
@@ -287,6 +287,6 @@ class CleanupInactiveOrphanUsersTest < ActiveSupport::TestCase
     transaction = ->(_tables, &cleanup_block) do
       ActiveRecord::Base.transaction(requires_new: true, &cleanup_block)
     end
-    CleanupService.stub(:with_write_lock, transaction, &test_block)
+    RetentionService.stub(:with_write_lock, transaction, &test_block)
   end
 end

@@ -42,9 +42,7 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
       assert_no_enqueued_jobs(only: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
 
       ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = "60"
-      assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-        assert_enqueued_with(job: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
-      end
+      assert_enqueued_with(job: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
     end
 
     travel_to midnight + 1.hour do
@@ -54,15 +52,13 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = trials_before
   end
 
-  test "orphan account cleanup can be scheduled independently" do
+  test "orphan account destruction can be scheduled independently" do
     previous = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
     travel_to Time.utc(2026, 9, 8) do
-      assert_no_enqueued_jobs(only: CleanupOrphanUsersWorker) { HourlyTaskJob.perform_now }
+      assert_no_enqueued_jobs(only: DestroyOrphanUsersWorker) { HourlyTaskJob.perform_now }
 
       ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = "90"
-      assert_enqueued_with(job: CleanupOrphanUsersWorker) do
-        assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) { HourlyTaskJob.perform_now }
-      end
+      assert_enqueued_with(job: DestroyOrphanUsersWorker) { HourlyTaskJob.perform_now }
     end
   ensure
     ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = previous

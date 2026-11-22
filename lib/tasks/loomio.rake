@@ -371,16 +371,16 @@ namespace :loomio do
     connection.transaction do
       connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY")
       connection.execute("SET LOCAL statement_timeout = '2min'")
-      puts JSON.pretty_generate(CleanupService.audit_orphan_records)
+      puts JSON.pretty_generate(IntegrityAuditService.audit_orphan_records)
     end
   end
 
   desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
   task audit_empty_groups: :environment do
     limit = ENV["LIMIT"].presence&.to_i
-    plan_counts = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
+    plan_counts = RetentionService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
       {
-        empty_roots: CleanupService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
+        empty_roots: RetentionService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
         total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
       }
     end

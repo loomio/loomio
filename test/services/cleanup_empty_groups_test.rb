@@ -26,7 +26,7 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
   end
 
   test 'fixture matrix excludes every ineligible tree using actual topics rather than counters' do
-    plan = CleanupService.audit_empty_groups(plan: :trial, before: @cutoff)
+    plan = RetentionService.audit_empty_groups(plan: :trial, before: @cutoff)
     assert_equal @eligible_ids, plan[:root_ids].sort
     assert_equal @tree_ids, plan[:trees][@root.id]
     assert_equal 0, groups(:used_topic_group).discussions_count
@@ -38,19 +38,19 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
 
   test 'eligibility starts exactly sixty days after expiry' do
     travel_to @cutoff + 60.days - 1.second do
-      assert_not_includes CleanupService.audit_empty_groups(plan: :trial)[:root_ids], @root.id
+      assert_not_includes RetentionService.audit_empty_groups(plan: :trial)[:root_ids], @root.id
     end
     travel_to @cutoff + 60.days do
-      assert_includes CleanupService.audit_empty_groups(plan: :trial)[:root_ids], @root.id
+      assert_includes RetentionService.audit_empty_groups(plan: :trial)[:root_ids], @root.id
     end
   end
 
   test 'manual cleanup silently discards bounded group roots' do
-    plan = CleanupService.audit_empty_groups(plan: :trial, before: @cutoff, limit: 1)
-    result = CleanupService.discard_empty_groups!(plan: :trial, before: @cutoff, limit: 1)
+    plan = RetentionService.audit_empty_groups(plan: :trial, before: @cutoff, limit: 1)
+    result = RetentionService.discard_empty_groups!(plan: :trial, before: @cutoff, limit: 1)
     assert_equal({ discarded_roots: 1 }, result)
     assert Group.find(plan[:root_ids].first).discarded?
-    assert_raises(ArgumentError) { CleanupService.audit_empty_groups(plan: :trial, limit: 0) }
+    assert_raises(ArgumentError) { RetentionService.audit_empty_groups(plan: :trial, limit: 0) }
   end
 
   test "free subscription plan selects old topic-free trees and applies subscription safety exclusions" do
@@ -70,7 +70,7 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
     conflicting = groups(:trial_cleanup_child_subscription)
     conflicting.subscription.update_columns(plan: "free")
 
-    root_ids = CleanupService.audit_empty_groups(plan: :free, before: before)[:root_ids]
+    root_ids = RetentionService.audit_empty_groups(plan: :free, before: before)[:root_ids]
 
     assert_includes root_ids, groups(:orphan_free_group).id
     assert_includes root_ids, groups(:used_canceled_free_group).id
@@ -83,6 +83,6 @@ class CleanupEmptyGroupsTest < ActiveSupport::TestCase
   end
 
   test "rejects unsupported subscription plans" do
-    assert_raises(ArgumentError) { CleanupService.audit_empty_groups(plan: :paid) }
+    assert_raises(ArgumentError) { RetentionService.audit_empty_groups(plan: :paid) }
   end
 end

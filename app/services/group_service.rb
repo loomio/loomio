@@ -199,13 +199,13 @@ module GroupService
 
   def self.warn_and_discard_expired_trial(group_id:, retention:)
     now = Time.current
-    group = CleanupService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
+    group = RetentionService.expired_trial_groups(now: now, retention: retention).find_by(id: group_id)
     return unless group
 
     subscription = nil
     eligible = -> do
       subscription = Subscription.lock.find_by(id: group.subscription_id)
-      subscription && CleanupService.group_cleanup_trees(
+      subscription && RetentionService.group_retention_trees(
         plan: :trial, before: now - retention, only_unused: false, root_ids: [group.id]
       ).key?(group.id)
     end
@@ -226,7 +226,7 @@ module GroupService
       next false unless subscription&.id == subscription_id
       next false if [subscription.expires_at, subscription.canceled_at].compact.any?(&:future?)
       next false if subscription.groups.parents_only.where.not(id: group.id).exists?
-      next false if CleanupService.descendant_groups(group.id).where.not(subscription_id: [nil, subscription.id]).exists?
+      next false if Group.descendants_of(group.id).where.not(subscription_id: [nil, subscription.id]).exists?
 
       case source
       when "billing_service"

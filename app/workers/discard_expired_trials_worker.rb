@@ -9,6 +9,6 @@ class DiscardExpiredTrialsWorker < ApplicationJob
     days = AppConfig.trial_discard_after_days
     return unless days
 
-    CleanupService.discard_unused_trials_and_warn_expired_trials(retention: days.days)
+    RetentionService.discard_unused_trials_and_warn_expired_trials(retention: days.days)
   end
 end

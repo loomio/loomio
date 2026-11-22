@@ -27,7 +27,7 @@ class DestroyGroupWorker < ApplicationJob
       next unless group
       descendant_ids = Group.descendants_of(group.id).order(:id).lock.ids
       Subscription.lock.find_by(id: group.subscription_id)
-      deletable = group.is_parent? ? CleanupService.deletable_discarded_groups : CleanupService.deletable_discarded_subgroups
+      deletable = group.is_parent? ? RetentionService.deletable_discarded_groups : RetentionService.deletable_discarded_subgroups
       next unless deletable.exists?(id: group.id)
 
       destroy_with_versions!(group, [group.id, *descendant_ids])
@@ -41,7 +41,7 @@ class DestroyGroupWorker < ApplicationJob
 
     # Take a snapshot of the versioned records owned by this tree while their
     # relationships still exist. The dependent associations destroy the records.
-    record_ids = CleanupService.topic_version_record_ids(topic_ids).merge(
+    record_ids = RetentionService.topic_version_record_ids(topic_ids).merge(
       Group => group_ids,
       Membership => Membership.where(group_id: group_ids).ids,
       PollTemplate => PollTemplate.where(group_id: group_ids).ids,
@@ -49,6 +49,6 @@ class DestroyGroupWorker < ApplicationJob
     )
 
     PaperTrail.request(enabled: false) { group.destroy! }
-    CleanupService.delete_destroyed_versions!(record_ids)
+    RetentionService.delete_destroyed_versions!(record_ids)
   end
 end

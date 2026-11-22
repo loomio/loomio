@@ -18,15 +18,15 @@ class HourlyTaskJob < ApplicationJob
 
     SendDigestEmailWorker.perform_later
     EnsureDemoQueueWorker.perform_later
-    CleanupService.destroy_discarded_groups if AppConfig.discarded_group_deletion_after_days.present?
-    CleanupService.destroy_discarded_subgroups if AppConfig.discarded_subgroup_deletion_after_days.present?
-    CleanupService.destroy_discarded_threads if DestroyTopicWorker.enabled?
+    RetentionService.destroy_discarded_groups if AppConfig.discarded_group_deletion_after_days.present?
+    RetentionService.destroy_discarded_subgroups if AppConfig.discarded_subgroup_deletion_after_days.present?
+    RetentionService.destroy_discarded_threads if DestroyTopicWorker.enabled?
 
     if hour == 0
       ThrottleService.reset!('day')
       DestroyExpiredDemoGroupsWorker.perform_later
       DiscardExpiredTrialsWorker.perform_later if DiscardExpiredTrialsWorker.enabled?
-      CleanupOrphanUsersWorker.perform_later if CleanupOrphanUsersWorker.enabled?
+      DestroyOrphanUsersWorker.perform_later if DestroyOrphanUsersWorker.enabled?
       PublishReviewDueWorker.perform_later
     end
   end

@@ -22,7 +22,7 @@ class DestroyTopicWorkerTest < ActiveSupport::TestCase
 
     topic.update_column(:discarded_at, 31.days.ago)
     discarded_at = topic.discarded_at.iso8601(6)
-    before = CleanupService.audit_orphan_records(include_ids: true)
+    before = IntegrityAuditService.audit_orphan_records(include_ids: true)
 
     2.times { DestroyTopicWorker.perform_now(topic.id, discarded_at) }
 
@@ -32,7 +32,7 @@ class DestroyTopicWorkerTest < ActiveSupport::TestCase
     [ topic, discussion, comment ].each { |record| assert_not PaperTrail::Version.exists?(item: record) }
     [ discussion, comment ].each { |record| assert_not PgSearch::Document.exists?(searchable: record) }
 
-    after = CleanupService.audit_orphan_records(include_ids: true)
+    after = IntegrityAuditService.audit_orphan_records(include_ids: true)
     after.slice(:dangling_records, :missing_polymorphic_targets).each do |category, scopes|
       scopes.each do |name, ids|
         assert_empty(ids - before.fetch(category).fetch(name, []), name)

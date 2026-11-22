@@ -19,7 +19,7 @@ class DestroyTopicWorker < ApplicationJob
       Group.where(id: group_id).lock.first if group_id
       topic = Topic.where(id: topic_id, discarded_at: discarded_at).lock.first
       next unless topic
-      next unless CleanupService.deletable_discarded_threads.exists?(id: topic.id)
+      next unless RetentionService.deletable_discarded_threads.exists?(id: topic.id)
 
       destroy_with_versions!(topic)
     end
@@ -28,8 +28,8 @@ class DestroyTopicWorker < ApplicationJob
   private
 
   def destroy_with_versions!(topic)
-    record_ids = CleanupService.topic_version_record_ids([topic.id])
+    record_ids = RetentionService.topic_version_record_ids([topic.id])
     PaperTrail.request(enabled: false) { topic.destroy! }
-    CleanupService.delete_destroyed_versions!(record_ids)
+    RetentionService.delete_destroyed_versions!(record_ids)
   end
 end
