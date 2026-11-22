@@ -25,7 +25,6 @@ module IntegrityAuditService
     "Comment.missing_event" => :comments_missing_event,
     "Comment.missing_parent" => :comments_missing_parent,
     "TopicItem.missing_stance" => :events_missing_stance,
-    "TopicItem.missing_version" => :events_missing_version,
     "TopicItem.invalid_root" => :events_invalid_root,
     "Reaction.missing_stance" => :reactions_missing_stance,
     "Bookmark.missing_stance" => :bookmarks_missing_stance,
@@ -123,14 +122,6 @@ module IntegrityAuditService
     TopicItem
       .joins("LEFT JOIN stances ON topic_items.itemable_type = 'Stance' AND stances.id = topic_items.itemable_id")
       .where(itemable_type: "Stance", stances: { id: nil })
-  end
-
-  def self.events_missing_version
-    missing_reference(
-      TopicItem.where.not(itemable_version_id: nil),
-      :itemable_version_id,
-      PaperTrail::Version
-    )
   end
 
   def self.events_invalid_root

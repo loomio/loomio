@@ -41,7 +41,6 @@ class LegacyEventMigrationServiceTest < ActiveSupport::TestCase
     connection.rename_table(:topic_items, :events)
     connection.rename_column(:events, :itemable_type, :eventable_type)
     connection.rename_column(:events, :itemable_id, :eventable_id)
-    connection.rename_column(:events, :itemable_version_id, :eventable_version_id)
     connection.add_column(:events, :custom_fields, :jsonb, null: false, default: {}) unless had_custom_fields
     LegacyMigratedEventRecord.reset_column_information
 
@@ -50,7 +49,6 @@ class LegacyEventMigrationServiceTest < ActiveSupport::TestCase
     if connection&.data_source_exists?(:events)
       connection.rename_column(:events, :eventable_type, :itemable_type)
       connection.rename_column(:events, :eventable_id, :itemable_id)
-      connection.rename_column(:events, :eventable_version_id, :itemable_version_id)
       connection.remove_column(:events, :custom_fields) unless had_custom_fields
       connection.rename_table(:events, :topic_items)
       LegacyMigratedEventRecord.reset_column_information

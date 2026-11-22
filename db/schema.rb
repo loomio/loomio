@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_23_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_23_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1219,7 +1219,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_23_000000) do
     t.integer "depth", default: 0, null: false
     t.integer "itemable_id", null: false
     t.string "itemable_type", limit: 255, null: false
-    t.integer "itemable_version_id"
     t.string "kind", limit: 255, null: false
     t.integer "parent_id"
     t.boolean "pinned", default: false, null: false

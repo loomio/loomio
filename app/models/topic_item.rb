@@ -12,7 +12,7 @@ class TopicItem < ApplicationRecord
   belongs_to :parent, class_name: "TopicItem", required: false
   has_many :children, class_name: "TopicItem", foreign_key: :parent_id
   has_many :notifications, as: :subject, dependent: :destroy
-  before_validation :set_kind, :set_itemable_version_id, :set_topic, :set_user_from_itemable, on: :create
+  before_validation :set_kind, :set_topic, :set_user_from_itemable, on: :create
   around_create :with_topic_write_lock_for_tree_change, prepend: true
   before_create :set_parent_and_depth
   before_create :increment_parent_child_count
@@ -290,12 +290,6 @@ class TopicItem < ApplicationRecord
 
   def set_kind
     self.kind ||= self.class.name.demodulize.underscore
-  end
-
-  def set_itemable_version_id
-    return if itemable_version_id || !itemable.respond_to?(:versions)
-
-    self.itemable_version_id = itemable.versions.last&.id
   end
 
   def set_topic

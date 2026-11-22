@@ -210,18 +210,6 @@ class CleanupServiceTest < ActiveSupport::TestCase
     assert PaperTrail::Version.exists?(removed_model_version_id)
   end
 
-  test "audit reports a timeline item whose referenced version was deleted" do
-    item = topic_items(:public_discussion_comment_topic_item)
-    version = PaperTrail::Version.create!(item: item.itemable, event: "update")
-    item.update_column(:itemable_version_id, version.id)
-
-    version.delete
-
-    audit = IntegrityAuditService.audit_orphan_records(include_ids: true)
-    assert_includes audit[:dangling_records].fetch("TopicItem.missing_version"), item.id
-    assert TopicItem.exists?(item.id)
-  end
-
   test "audit reports retired polymorphic types and preserves attachment links" do
     blob = ActiveStorage::Blob.create!(
       key: "retired-document-#{@hex}",
