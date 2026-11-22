@@ -17,6 +17,25 @@ You can also run [`update.sh`](update.sh) from the deployment directory to clean
 ./update.sh
 ```
 
+## Unreleased
+
+### Permanent deletion of discarded content
+
+Automatic permanent deletion of discarded groups, subgroups, threads, and inactive orphan user accounts is now controlled by explicit day-count environment variables. Legacy `CLEANUP_ENABLED`, `LOOMIO_GROUP_CLEANUP_ENABLED`, and `GROUP_DELETION_DELAY_DAYS` settings are no longer read.
+
+New installations include 90-day defaults in [`env_template`](env_template):
+
+```dotenv
+LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS=90
+LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS=90
+LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS=90
+LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS=90
+```
+
+Existing installations without these variables in `.env` will not permanently delete discarded content automatically after upgrading. Most sites will want to add these settings to `.env`, but they are opt-in so an upgrade does not unexpectedly purge a backlog of old discarded groups, subgroups, threads, or accounts before you are ready.
+
+Before enabling them on an existing site, verify your database and file storage backups, and omit or comment out any setting you want to keep disabled.
+
 ## v3.17.0
 
 To upgrade the HTTPS proxy in the bundled Compose deployment to Nginx 1.31.9, use the updated Compose file and set the following in `.env` before pulling images.
