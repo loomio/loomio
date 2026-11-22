@@ -1,30 +1,32 @@
 ---
 title: Je profiel
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
   introduction: a35b4a423bbdfe39
   edit-profile: 2229cb1b25e0fb50
-  update-your-personal-info: a318e9a34f185d43
-  uploading-a-profile-photo: 2316a7ab2f8b2f69
-  language-settings: 41e3f802817f81c2
-  resetting-your-password: 924b5b4030719f09
-  merge-accounts: d40e1a7bcb25358a
-  deleting-your-account: 2b1ab7a3c7492d25
+  update-your-personal-info: 119a47537fde6240
+  uploading-a-profile-photo: 6a33c21891bc0dfa
+  language-settings: b0b6571d190ae10b
+  resetting-your-password: 14be8b82180afd3c
+  merge-accounts: c9e6d5b192f8df14
+  deleting-your-account: 013d3acdf265a78f
   time-zone: 3f38e7bf81da8afb
+  passkeys: f51746673ba4d9ab
 title_source: 528d89ad72cba22e
 title_generated: 02676a8214e00e60
 ---
@@ -47,20 +49,21 @@ Open je gebruikersmenu door je naam in de zijbalk te selecteren en selecteer ver
 
 ## Je persoonlijke gegevens bijwerken
 
-Je kunt je persoonlijke gegevens bijwerken door de volgende velden aan te passen:
+Je kunt deze velden op je profielpagina bijwerken:
 
-* **Naam**
-* **E-mail adres** - dit is het e-mailadres dat aan je Loomio-account is gekoppeld en waarop je meldingen van Loomio ontvangt.
-* **Gebruikersnaam** - je gebruikersnaam is een naam waaraan mensen je kunnen herkennen en waarmee ze je via een @vermelding kunnen attenderen. Deze kan kleine letters, cijfers, onderstrepingstekens en koppeltekens bevatten. Koppeltekens mogen niet aan het begin of einde staan.
-* **Introductie** - een paar regels om anderen in je groep iets over jezelf te vertellen.
-* **Locatie** - handig voor groepen waarvan de leden op verschillende locaties of op afstand werken, zodat mensen een idee krijgen van waar je bent.
+- **Naam**
+- **E-mail adres** — het e-mailadres dat aan je Loomio-account is gekoppeld en waarop je meldingen van Loomio ontvangt.
+- **Gebruikersnaam** — de naam waarmee mensen je via een `@mention` kunnen attenderen. Deze kan kleine letters, cijfers, onderstrepingstekens en koppeltekens bevatten. Koppeltekens mogen niet aan het begin of einde staan.
+- **Introductie** — een paar regels om anderen in je groep iets over jezelf te vertellen.
+- **Locatie** — handig voor groepen waarvan de leden op verschillende locaties of op afstand werken, zodat mensen weten waar je bent gevestigd.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Een profielfoto uploaden
-Wanneer je een Loomio-account aanmaakt, worden je initialen standaard als profielafbeelding gebruikt. Je kunt een profielfoto uploaden door op je afbeelding op de profielpagina te klikken.
+
+Wanneer je een Loomio-account aanmaakt, worden je initialen standaard als profielafbeelding gebruikt. Selecteer je afbeelding op de profielpagina om een foto te uploaden.
 
 ![](profile_photo.png)
 
@@ -68,7 +71,7 @@ Wanneer je een Loomio-account aanmaakt, worden je initialen standaard als profie
 
 ## Taal
 
-Loomio detecteert de taalinstellingen van je browser, maar je kunt op de profielpagina handmatig je voorkeurstaal kiezen uit de beschikbare opties.
+Loomio detecteert standaard de taal van je browser. Je kunt ook een voorkeurstaal selecteren op je profielpagina. Zie [Talen en vertaling](../translation) voor opties om de interface en inhoud te vertalen.
 
 <!-- translation-section: time-zone -->
 
@@ -79,15 +82,22 @@ Opties in tijdpeilingen gebruiken de tijdzone die in jouw profiel is opgeslagen.
 <!-- translation-section: resetting-your-password -->
 
 ## Je wachtwoord opnieuw instellen
-Je kunt je wachtwoord wijzigen door naar je profielpagina te gaan en op **Wachtwoord opnieuw instellen** te klikken.
+
+Open je profielpagina en selecteer **Wachtwoord opnieuw instellen** om je wachtwoord te wijzigen.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Passkeys
+
+Je kunt op je profielpagina passkeys toevoegen, een naam geven en verwijderen om in te loggen met de vingerafdrukherkenning, gezichtsherkenning of pincode van je apparaat, of met een beveiligingssleutel. Zie [Inloggen met een passkey](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Accounts samenvoegen
 
-Als je twee Loomio-gebruikersaccounts hebt, kun je deze samenvoegen tot één account.
+Als je twee Loomio-accounts hebt, kun je deze samenvoegen tot één account.
 
 Zie [Accounts samenvoegen](../merge_accounts).
 
@@ -95,4 +105,4 @@ Zie [Accounts samenvoegen](../merge_accounts).
 
 ## Je account verwijderen
 
-Als je jouw Loomio-gebruikersaccount wilt verwijderen en alle Loomio-groepen wilt verlaten waarvan je lid bent, zie [Je Loomio-account verwijderen](../deleting_your_account).
+Zie [Je Loomio-account verwijderen](../deleting_your_account) om je Loomio-account definitief te verwijderen en je groepen te verlaten.

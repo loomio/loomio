@@ -1,19 +1,19 @@
 ---
 title: Закладкі
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/bookmarks/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 752c1df552c461e6
-  save-a-bookmark: ae80e968a14c61b4
-  view-your-bookmarks: 66cd0a27cf9bcca2
-  remove-a-bookmark: c9ef73967bce0bf8
+  introduction: 4526320029ca0268
+  save-a-bookmark: 3855beff6126a218
+  view-your-bookmarks: 0512e42564819ba7
+  remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: a280581144b3ac19
   save-a-bookmark: 1c10088811f88f5c
-  view-your-bookmarks: ec416b0fe546876a
+  view-your-bookmarks: db10b4a5abdb3487
   remove-a-bookmark: e97f3439a4fd57e7
 title_source: 96316f0f6404dbe1
 title_generated: 9ca3f43265498c75
@@ -47,7 +47,7 @@ title_generated: 9ca3f43265498c75
 
 Адкрыйце бакавую панэль і выберыце **Закладкі**. Лік побач са спасылкай паказвае, колькі закладак вы захавалі.
 
-На старонцы «Закладкі» першымі паказваюцца элементы, якія вы захавалі апошнімі. У кожным радку паказаны тып элемента і хто яго стварыў. Выберыце радок, каб вярнуцца да элемента, захаванага ў закладках.
+На старонцы «Закладкі» першымі паказваюцца элементы, якія вы захавалі апошнімі. У кожным радку паказаны тып элемента і звесткі пра аўтарства. Выберыце радок, каб вярнуцца да элемента, захаванага ў закладках.
 
 ![](bookmarks_page.png)
 

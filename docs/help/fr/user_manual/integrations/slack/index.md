@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: 6f4513d589bd98ea
+  introduction: cbd8df736bd642ae
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Intégration Slack
-_Connectez les notifications de votre groupe Loomio à Slack._
 
-Loomio peut envoyer des notifications dans vos canaux Slack lors de nouvelles discussions, propositions, commentaires, votes et conclusions. Recevez les informations essentielles au bon moment sur les discussions et les décisions importantes.
+Loomio peut envoyer des notifications dans vos canaux Slack lors de nouvelles discussions, de nouveaux sondages, commentaires, votes et conclusions.
 
 ---
 
-Commencez par vous rendre sur [https://api.slack.com](https://api.slack.com), connectez-vous si ce n’est pas déjà fait, puis cliquez sur Créer une application
+1. Ouvrez [api.slack.com](https://api.slack.com), connectez-vous et sélectionnez **Créer une application**.
 
-![](s1.png)
+   ![](s1.png)
 
-Donnez un nom à votre application Slack
+2. Donnez un nom à votre application Slack et choisissez votre espace de travail.
 
-![](s2.png)
+   ![](s2.png)
 
-Ajoutez la prise en charge des webhooks entrants
+3. Sélectionnez **Webhooks entrants**.
 
-![](s3.png)
+   ![](s3.png)
 
-Activez ensuite cette fonction
+4. Activez **Activer les webhooks entrants**.
 
-![](s4.png)
+   ![](s4.png)
 
-Ajoutez ensuite un nouveau webhook
+5. Sélectionnez **Ajouter un nouveau webhook à l’espace de travail**.
 
-![](s5.png)
+   ![](s5.png)
 
-Choisissez un canal
+6. Choisissez le canal dans lequel vous souhaitez voir apparaître les notifications Loomio.
 
-![](s6.png)
+   ![](s6.png)
 
-Copiez l’URL du webhook dans votre presse-papiers
+7. Copiez l’URL du webhook.
 
-![](s7.png)
+   ![](s7.png)
 
-Maintenant que vous disposez d’une URL de webhook, poursuivez la configuration de votre intégration de messagerie :
+Maintenant que vous disposez d’une URL de webhook, terminez la connexion dans Loomio :
 
 [Configurer une intégration de messagerie dans Loomio](../chatbots/#set-up-a-chat-integration)
 

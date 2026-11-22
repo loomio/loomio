@@ -1,34 +1,34 @@
 ---
 title: Subgrupos
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: 6ad96a601d7c0b89
-  add-a-subgroup: f0b0365a80acc5fe
+  introduction: bc4920bad7937d64
+  add-a-subgroup: 3dc921128b5fc188
   subgroup-settings: cfb7850bde221463
-  privacy: bfec6df0f8c68566
+  privacy: 8e00089969295168
   permissions: ef00486a0545d0f0
-  find-subgroups: 28b3c3488fbdc36d
-  invite-to-a-subgroup: cc5655654a8abc56
-  simultaneously-invite-people-to-subgroups-and-parent-group: ef5bec1085470e79
-  administer-a-subgroup: 756b0e241222c8b6
-  delete-a-subgroup: 3a8a13578b5d7d1e
-  how-people-join: c7e7f4f951e01126
+  find-subgroups: 120d04ffb8e1b76e
+  invite-to-a-subgroup: 19da4ac03b1ca609
+  simultaneously-invite-people-to-subgroups-and-parent-group: e9b051d9b07dde99
+  administer-a-subgroup: '07248a4012a7c3b7'
+  delete-a-subgroup: 207dbb02102fb0a2
+  how-people-join: 46e3884d0ddcca1c
 title_source: 9f81e728f70cae3e
 title_generated: d54ff4541651eb81
 ---
@@ -37,33 +37,28 @@ title_generated: d54ff4541651eb81
 
 # Subgrupos
 
-Los subgrupos te ayudan a organizar las comunicaciones y a los miembros para que las personas adecuadas participen en el trabajo conjunto.
+Los subgrupos te ayudan a organizar las discusiones y a los miembros en torno a equipos o temas específicos dentro de un grupo principal. Por ejemplo, una organización puede crear subgrupos para:
 
-Por ejemplo, una organización puede tener los siguientes subgrupos:
-- junta directiva
-- equipo de trabajo o grupo de trabajo de un proyecto
-- un tema (como «estrategia» o «aprendizaje»)
+- Una junta directiva
+- Un equipo de trabajo o grupo de un proyecto
+- Un tema como estrategia o aprendizaje
 
-Los subgrupos funcionan igual que los grupos, pero están dentro de tu grupo principal. La mayoría de las funciones y los ajustes disponibles son los mismos que en el grupo principal. Esto también significa que alguien puede ser miembro de tu subgrupo, como tu junta directiva, sin pertenecer a tu grupo principal.
+Los subgrupos funcionan como los grupos habituales y tienen la mayoría de las mismas funciones y ajustes. Una persona puede pertenecer a un subgrupo, como una junta directiva, sin pertenecer al grupo principal.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Añadir un subgrupo
 
 >[!Note]
->La posibilidad de añadir nuevos subgrupos forma parte de los [ajustes de permisos](/en/user_manual/groups/settings/permissions) del grupo. De forma predeterminada, solo los admins pueden crear nuevos subgrupos.
+>Los [ajustes de permisos](/en/user_manual/groups/settings/permissions) del grupo principal determinan quién puede añadir subgrupos. De forma predeterminada, solo los admins del grupo pueden crear subgrupos.
 
-Para añadir un subgrupo, visita la página de tu grupo principal y haz clic en **Nuevo subgrupo** en la barra lateral.  
+Para crear un subgrupo, abre la página de tu grupo principal, selecciona **Nuevo subgrupo** en la barra lateral, introduce un nombre, elige un ajuste de privacidad y selecciona **Crear subgrupos**.
 
 ![Botón Nuevo subgrupo en la barra lateral de Oatmilk Cooperative](subgroups-sidebar.png)
 
-Haz clic en el botón **Nuevo subgrupo**, ponle un nombre y selecciona el ajuste de privacidad. Después, haz clic en **Crear subgrupos**.
-
 ![Formulario de nuevo subgrupo para el grupo de trabajo de embalaje](subgroups_new.png)
 
-Cuando quieras, [invita a personas](/en/user_manual/groups/inviting_people/) al subgrupo.
-
-Puedes editar los [ajustes del grupo](/en/user_manual/groups/settings/) del subgrupo haciendo clic en el icono de engranaje de la página del subgrupo.
+Cuando el subgrupo esté listo, [invita a personas](/en/user_manual/groups/inviting_people) a unirse. Puedes cambiar los [ajustes del grupo](/en/user_manual/groups/settings) del subgrupo desde el menú de acciones de la página del subgrupo.
 
 ![Opción para editar los ajustes del grupo de trabajo de embalaje](subgroups_edit_group_settings.png)
 
@@ -84,17 +79,15 @@ Elige quién puede encontrar el subgrupo y leer sus hilos:
 | **Visible para el grupo principal** | Miembros del grupo principal y del subgrupo | Miembros del subgrupo e invitados |
 | **Secreto** | Miembros invitados al subgrupo | Miembros del subgrupo e invitados |
 
-El permiso **Los miembros del grupo principal pueden ver los hilos privados** también puede dar a los miembros del grupo principal acceso a los hilos del subgrupo sin unirse.
+El permiso **Los miembros del grupo principal pueden ver los hilos privados** también permite que los miembros del grupo principal lean los hilos del subgrupo sin unirse.
 
-Cuando el grupo principal es privado, los subgrupos pueden ser **Visible para el grupo principal** o **Secreto**.
-
-[Lee sobre la privacidad de los grupos aquí](/en/user_manual/groups/settings/privacy).
+Cuando el grupo principal es privado, los subgrupos solo pueden ser **Visible para el grupo principal** o **Secreto**. Consulta [Privacidad del grupo](/en/user_manual/groups/settings/privacy) para más detalles.
 
 <!-- translation-section: how-people-join -->
 
 ### Cómo se unen las personas
 
-Elige [cómo se unen las personas](/en/user_manual/groups/settings/privacy#how-people-join) al crear el subgrupo, o en **Editar configuración del grupo → Privacidad**.
+Elige [cómo se unen las personas](/en/user_manual/groups/settings/privacy#how-people-join) al crear el subgrupo, o en **Editar la configuración del grupo** > **Privacidad**.
 
 ![Configuración de privacidad del subgrupo y de cómo se unen las personas](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ Activa **Los miembros del grupo principal pueden ver los hilos privados** en **P
 
 ## Encontrar subgrupos
 
-Abre el menú lateral y haz clic en el nombre de tu grupo para ver los subgrupos que contiene.
+Selecciona el nombre de tu grupo principal en la barra lateral para ver los subgrupos que contiene.
 
 ![Subgrupos de Oatmilk Cooperative en la barra lateral](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ Abre el menú lateral y haz clic en el nombre de tu grupo para ver los subgrupos
 
 ## Invitar a un subgrupo
 
-Invita a personas a un subgrupo de la misma manera que las invitas a un grupo. Si ya pertenecen a un grupo principal o a otro subgrupo de la misma organización al que tú también perteneces, puedes escribir el nombre de la persona o seleccionar ese grupo como destinatario. Selecciona la etiqueta del grupo destinatario para desplegar la lista de personas y después elimina a quienes no quieras invitar.
+Puedes [invitar a personas a un subgrupo](/en/user_manual/groups/inviting_people) de la misma manera que las invitas a un grupo principal. Si ya pertenecen al grupo principal o a otro subgrupo al que tú también perteneces, escribe el nombre de la persona o selecciona ese grupo. Después, despliega la lista de personas del grupo y elimina a quienes no quieras invitar.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
 ### Invitar a personas a los subgrupos y al grupo principal al mismo tiempo
 
-Si usas el botón **Invitar personas** de la pestaña **Integrantes** de tu grupo principal, puedes invitar a personas a varios subgrupos al mismo tiempo marcando las casillas de aquellos a los que quieras que se unan inmediatamente.
+Cuando selecciones **Invitar** en la pestaña **Integrantes** de tu grupo principal, marca las casillas de los subgrupos a los que quieras que las personas invitadas se unan al mismo tiempo.
 
 ![Selección del grupo principal y del subgrupo en el formulario de invitación](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ Si usas el botón **Invitar personas** de la pestaña **Integrantes** de tu grup
 
 ## Administrar un subgrupo
 
-Los subgrupos pueden tener admins propios, y los admins de un subgrupo pueden ser distintos de los admins del grupo principal.
+Los subgrupos pueden tener admins del grupo propios, distintos de los admins del grupo principal.
 
-Un admin del grupo principal puede unirse a un subgrupo que no sea secreto y asignarse el rol de admin de ese subgrupo. Esto no se aplica a los subgrupos secretos.
-
-Ve a la pestaña Subgrupos, busca el subgrupo y haz clic en **Unirse al grupo**.
+Un admin del grupo principal puede unirse a cualquier subgrupo que no sea secreto y asignarse el rol de admin de ese subgrupo. Esto no se aplica a los subgrupos secretos. Consulta [Gestionar subgrupos](/en/user_manual/groups/member_management#managing-subgroups) para más detalles.
 
 ![Botón Unirse al grupo en un subgrupo cerrado](member_join_subgroup.png)
-
-Una vez que sea miembro del subgrupo, un admin del grupo principal puede asignarse el rol de admin del subgrupo.
 
 ![Opción para asignar el rol de admin a un admin del grupo principal](member_make_admin.png)
 
@@ -148,6 +137,4 @@ Una vez que sea miembro del subgrupo, un admin del grupo principal puede asignar
 
 ## Eliminar un subgrupo
 
-Los admins pueden eliminar un subgrupo de la misma manera que eliminas un grupo. Al eliminar un subgrupo, ten cuidado de no eliminar el grupo principal.
-
-Aprende [cómo eliminar grupos](/en/user_manual/groups/deleting_your_group/).
+Los admins del grupo pueden eliminar un subgrupo de la misma manera que [eliminan un grupo](/en/user_manual/groups/deleting_your_group). Antes de eliminarlo, asegúrate de estar en la página del subgrupo y no en la del grupo principal.

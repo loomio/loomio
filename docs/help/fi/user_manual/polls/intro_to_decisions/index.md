@@ -1,39 +1,39 @@
 ---
 title: Ehdotukset ja kyselyt
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: 9551fc8dad4cb470
+  introduction: b1e2bd5810f17a2e
   find-the-right-help: 3f38797ded5c2293
   proposals: acdd32847dc30b10
   polls: ea855636ce50eae6
   start-a-proposal-or-poll: bf672d3d4112087e
-  choose-whether-to-use-a-discussion: 1d784e09fa86fcfb
+  choose-whether-to-use-a-discussion: 523b6160834ac6a5
   in-a-discussion: 841285b59dd67e77
   without-a-discussion: 2d34d54824b695a5
   what-happens-next: bb932be79f8f96ce
   1-create-it: 554045028418cf81
-  2-voting-opens: 2d703282ae7e7390
-  3-people-vote: 124d3d146461e556
-  4-it-closes: 9c64bed059f3e041
+  2-voting-opens: abd08f3bcd1d5fe6
+  3-people-vote: 495b8f5a1cfffe87
+  4-it-closes: b4fa685665c527ef
   5-share-an-outcome: c6c5700ee22d68db
 title_source: d45b4ba3cb7a27cb
 title_generated: a66d8804d0433ec4
@@ -46,7 +46,7 @@ needs_review:
 
 # Ehdotukset ja kyselyt
 
-Ehdotuksilla ja kyselyillä kerätään ryhmältä jäsenneltyjä vastauksia. Niiden avulla voit testata ideaa, tehdä päätöksen, tunnistaa tärkeimmät asiat, sopia kokousajan tai valita edustajia.
+Ehdotuksilla ja kyselyillä kerätään ryhmältä jäsenneltyjä vastauksia. Käytä niitä idean testaamiseen, päätöksen tekemiseen, asioiden tärkeysjärjestyksen määrittämiseen, kokousajan sopimiseen tai edustajien valitsemiseen.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -99,9 +99,9 @@ Vertaa niitä sivulla [Kyselyt](../proposal_types/).
 
 ### Valitse, käytätkö keskustelua
 
-Aloita ehdotus tai kysely keskustelussa, kun ihmiset tarvitsevat kontekstia, haluavat esittää kysymyksiä tai keskustella ennen vastaamista. Keskusteluun voi ajan mittaan sisältyä useita ehdotuksia, jolloin muutokset ja lopullinen johtopäätös säilyvät yhdessä aiheen dokumentaatiossa.
+Aloita ehdotus tai kysely keskustelussa, kun ihmiset tarvitsevat kontekstia, haluavat esittää kysymyksiä tai keskustella ennen vastaamista. Keskusteluun voi ajan mittaan sisältyä useita ehdotuksia, jolloin muutokset ja lopullinen johtopäätös säilyvät yhdessä dokumentoituna.
 
-Aloita erillinen kysely, kun keskustelu on jo käyty muualla, esimerkiksi kokouksessa, tai kun kysymys on yksinkertainen ja tarvitset vain vastauksia. Lisää riittävästi tietoa tai linkki asiaa käsittelevään dokumentaatioon, jotta äänestäjät ymmärtävät, mihin he vastaavat.
+Aloita erillinen kysely, kun keskustelu on jo käyty muualla, esimerkiksi kokouksessa, tai kun kysymys on yksinkertainen ja tarvitset vain vastauksia. Lisää riittävästi tietoa tai linkki taustatietoihin, jotta äänestäjät tietävät, mihin he vastaavat.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -141,19 +141,19 @@ Anna sille otsikko ja kuvaus, tarkista sen vaihtoehdot ja asetukset ja määrit�
 
 ### 2. Äänestys alkaa
 
-Kun äänestys alkaa, Loomio ilmoittaa siitä kutsumillesi ihmisille. Katso [Kutsu äänestämään](../inviting_people/).
+Kun äänestys alkaa, Loomio ilmoittaa siitä kutsumillesi ihmisille. Katso [Hallitse äänestäjiä](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Ihmiset äänestävät
 
-Kun ehdotus tai kysely on avoinna, ihmiset voivat äänestää, perustella äänensä ja muuttaa ääntään. Tulokset päivittyvät ihmisten äänestäessä, ellei niitä ole piilotettu sulkemiseen asti. Oletusarvoisesti ihmiset, jotka eivät ole äänestäneet, saavat muistutuksen päivää ennen sulkemista.
+Kun ehdotus tai kysely on avoinna, ihmiset voivat äänestää, lisätä äänelleen perustelun ja muuttaa ääntään. Tulokset päivittyvät ihmisten äänestäessä, ellei niitä ole piilotettu sulkemiseen asti. Oletusarvoisesti äänestämättä olevat ihmiset saavat muistutuksen 24 tuntia ennen sulkemista.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Kysely sulkeutuu
 
-Kysely sulkeutuu automaattisesti sulkemisajankohtana. Ketjun ylläpitäjä voi myös sulkea sen etuajassa. Sulkemisen jälkeen ketjun ylläpitäjä voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan, jotta ihmiset voivat jatkaa äänestämistä. Kyselyjä, joiden tulokset piilotetaan äänestyksen päättymiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyjä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
+Kysely sulkeutuu automaattisesti sulkemisajankohtana. Ketjun ylläpitäjä voi myös sulkea sen etuajassa. Sulkemisen jälkeen ketjun ylläpitäjä voi avata sen uudelleen ja asettaa uuden sulkemisajankohdan. Kyselyjä, joiden tulokset piilotetaan äänestyksen päättymiseen asti, ei voi avata uudelleen. Tämä koskee myös anonyymejä kyselyjä. Voit pidentää niiden äänestysaikaa, kun ne ovat vielä avoinna.
 
 <!-- translation-section: 5-share-an-outcome -->
 

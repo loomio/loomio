@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/microsoft_teams/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 905a1586a1f760e0
+  introduction: 16d8d04953bb0b53
 generated:
-  introduction: 308bde6012660b6b
+  introduction: 840dade03bf78030
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -16,32 +16,37 @@ title_generated: a7b52b269a23c025
 <!-- translation-section: introduction -->
 
 # Microsoft Teams-integráció
-_Kapcsold össze a Loomio-csoportod értesítéseit a Microsoft Teamsszel._
 
-A Loomio értesítéseket küldhet a Microsoft Teamsbe, amikor új beszélgetések, javaslatok, hozzászólások, szavazatok és következtetések születnek.
+A Loomio értesítéseket küldhet a Microsoft Teams-csatornáidra, amikor új beszélgetések, szavazások, hozzászólások, szavazatok és következtetések születnek.
 
 ---
 
-Nyisd meg a [https://teams.microsoft.com](https://teams.microsoft.com) oldalt, majd kattints az Alkalmazások lehetőségre
-![](t1.png)
+1. Nyisd meg a [Microsoft Teamset](https://teams.microsoft.com), és válaszd ki az **Alkalmazások** lehetőséget.
 
-Keress rá a „webhook” kifejezésre a keresőmezőben, majd kattints a Bejövő webhook lehetőségre
-![](t2.png)
+   ![](t1.png)
 
-Kattints a „Hozzáadás egy csapathoz” lehetőségre
-![](t3.png)
+2. Keress rá a `webhook` kifejezésre, és válaszd ki a **Bejövő webhook** lehetőséget.
 
-Írd be és válaszd ki azt a csatornát, ahol a Loomio értesítéseit szeretnéd megjeleníteni.
-![](t4.png)
+   ![](t2.png)
 
-Adj neki nevet, például „Loomio-értesítések”, majd kattints a „Létrehozás” lehetőségre
-![](t5.png)
+3. Válaszd ki a **Hozzáadás egy csapathoz** lehetőséget.
 
-Másold ki a kapott URL-t; ezt az utolsó lépésben fogod beilleszteni a Loomióba.
-![](t6.png)
+   ![](t3.png)
 
-_A Loomiót nem a Microsoft készítette, nem áll kapcsolatban a Microsofttal, és a Microsoft nem nyújt hozzá támogatást._
+4. Válaszd ki azt a csatornát, ahol a Loomio értesítéseit szeretnéd megjeleníteni.
 
-Most, hogy megvan a webhook URL-je, folytasd a csevegőintegráció beállítását:
+   ![](t4.png)
+
+5. Adj meg egy nevet, például `Loomio notifications`, és válaszd ki a **Létrehozás** lehetőséget.
+
+   ![](t5.png)
+
+6. Másold ki a webhook URL-jét, hogy beilleszthesd a Loomióba.
+
+   ![](t6.png)
+
+Most, hogy megvan a webhook URL-je, fejezd be a csatlakoztatást a Loomióban:
 
 [Csevegőintegráció beállítása a Loomióban](../chatbots/#set-up-a-chat-integration)
+
+_A Loomiót nem a Microsoft készítette, nem áll kapcsolatban a Microsofttal, és a Microsoft nem nyújt hozzá támogatást._

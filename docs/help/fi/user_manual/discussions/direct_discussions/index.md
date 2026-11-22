@@ -1,16 +1,16 @@
 ---
 title: Suorat keskustelut
-source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: 20f5211c8472a136
-  contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
+  introduction: c617bad25b64654f
+  contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 8c6ea430f6f5bc5b
-  contacting-someone-via-a-direct-discussion: bcb5007d43000f63
+  introduction: 6396677f45e56e8b
+  contacting-someone-via-a-direct-discussion: 159f3038047f762d
 title_source: ccfab058f1f7c146
 title_generated: be5bd9cd1da45f5b
 ---
@@ -19,23 +19,22 @@ title_generated: be5bd9cd1da45f5b
 
 # Suorat keskustelut
 
-Suora keskustelu on yksityinen keskustelu tiettyjen ihmisten kesken.
+Suora keskustelu on yksityinen ketju tiettyjen ihmisten kesken. Se ei kuulu mihinkään ryhmään, eikä kutsuttujen ihmisten tarvitse kuulua mihinkään Loomio-ryhmään.
 
-Suora keskustelu ei kuulu mihinkään ryhmään. Kutsuttujen ihmisten ei tarvitse olla Loomio-ryhmäsi jäseniä.
+Valitse, kuka voi nähdä keskustelun ja osallistua siihen, lisäämällä ihmisiä tai sähköpostiosoitteita **Kutsu**-kenttään.
 
-Päätät, kuka voi nähdä keskustelun ja osallistua siihen, lisäämällä ihmisiä tai sähköpostiosoitteita **Kutsu**-kenttään.
-
-Suorissa keskusteluissa voit käyttää samoja kommentteja, kyselyjä ja muita työkaluja kuin ryhmän keskusteluissa. Niistä voi olla hyötyä, kun alaryhmän luominen on tarpeetonta.
+Suorissa keskusteluissa voit käyttää samoja kommentteja, kyselyjä ja muotoilutyökaluja kuin ryhmän keskusteluissa. Ne sopivat yksityisiin keskusteluihin tai luonnoksiin, kun alaryhmää ei tarvita.
 
 ![Suoran keskustelun lomake, jossa ryhmää ei ole valittu ja Kutsu-kentässä on Samira Patel](direct-discussion-example.png)
 
-Valitse sivupalkista **Suorat säikeet**, niin näet suorat keskustelusi ja kyselysi. Avaa **Uusi**-valikko ja valitse **Uusi keskustelu**, kun haluat aloittaa keskustelun, tai **Uusi kysely**, kun haluat aloittaa kyselyn ilman ryhmää.
+Valitse sivupalkista **Suorat säikeet**, niin näet suorat keskustelusi ja kyselysi. Avaa **Uusi**-valikko ja valitse **Uusi keskustelu**, kun haluat aloittaa suoran keskustelun, tai **Uusi kysely**, kun haluat aloittaa kyselyn ilman ryhmää.
 
-Suora kysely on yksityinen, ja vain kutsumasi ihmiset pääsevät siihen. Kun olet luonut kyselyn, kutsu ihmisiä tai sähköpostiosoitteita [**Hallitse äänestäjiä**](/en/user_manual/polls/manage_voters) -toiminnolla.
+Suora kysely näkyy vain kutsumillesi ihmisille. Kun olet luonut kyselyn, kutsu ihmisiä tai sähköpostiosoitteita [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters) -toiminnolla.
 
 ![Sivupalkin Suorat säikeet -kohta ja suorien keskustelujen luettelo](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
-## Yhteydenotto suoran keskustelun kautta
-Voit ottaa suoran keskustelun kautta yksityisesti yhteyttä yhteen tai useampaan ihmiseen luomatta alaryhmää.
+## Siirrä suora keskustelu ryhmään
+
+Jos yksityinen keskustelu tai luonnos laajenee ryhmää koskevaksi aiheeksi, voit siirtää sen myöhemmin ryhmään tai alaryhmään. Katso [Siirrä ketju](/en/user_manual/discussions/using_discussions/#move-a-thread).

@@ -1,63 +1,65 @@
 ---
 title: Formatierung
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 8835d30a218fce4e
-  attach-file: 772ed69602535db7
-  remove-attachments: 7f47fde42b902677
-  insert-image: efa8f0ee5300aef3
-  insert-link: 0e0ec502a3ae3051
-  insert-emoji: 6658e6f893b1a0a7
-  headings: 20ebc1f33dd138a7
-  bold-italicize-strikethrough: 98d2f6aaed506413
-  list: cd1c1465db2505c8
-  numbered-list: 92b0ed9aab771c4f
-  task-list: 517eb95494ba9b19
-  colors: 8a39ed6ff1c52fa5
-  align: 8c00e40d36504bec
-  embed-videos-and-webpages: 2bfaa9a9747c2e4c
-  quote: 5d7a04b5141d04e9
-  code-block: e05cf0873c4c22e2
-  divider: da7aa0e1a1a4436e
-  add-table: f1a579057780872c
-  markdown: 7c37a4c00bd431ee
-  rich-text: 9136c76bfd5409a9
+  introduction: 7017aeac7dafc821
+  attach-file: 9c366a6657d8b93b
+  remove-attachments: 8320474edaf36328
+  insert-image: 8f8608dea8221af3
+  insert-link: 4eca2d6cbb23a37b
+  insert-emoji: 784ff758a2d20bad
+  headings: c89df2ea57fbbd6e
+  bold-italicize-strikethrough: 2088853c5c6da43e
+  list: a440d99f305c8343
+  numbered-list: cfaabe2b49698d69
+  task-list: 79744683dd74f04a
+  colors: ee012d29d5f51c38
+  align: 133f773bd3f4126c
+  embed-videos-and-webpages: ad3a5e0752c3522b
+  quote: a2f99b96774be463
+  code-block: b7d155fbf02fecdc
+  divider: fccd21475ed4930a
+  add-table: e8514328c695391f
+  markdown: c8dc1dccdf3b0366
+  rich-text: e22e0fa9a19cff47
 generated:
-  introduction: e3698ee1eb845284
-  attach-file: b9e84838dab10ce4
-  remove-attachments: 9388ba5d44a69901
-  insert-image: 63f14dc45cefa4fd
-  insert-link: 3f6b493e0a146f5c
-  insert-emoji: 3c2015f947f5d006
-  headings: 5fd2dcb9d4d46c67
-  bold-italicize-strikethrough: 5deb72047cdedcff
-  list: 7b9fced8491626b1
-  numbered-list: e023b432ad0b60d6
-  task-list: a4d6614659747d3e
+  introduction: 35a15fc488df95bb
+  attach-file: c67e20b8072441ac
+  remove-attachments: c2803646ce2abd90
+  insert-image: c37ae20169ea472c
+  insert-link: '08a2efb2fad4c864'
+  insert-emoji: 33c5e28def884f87
+  headings: 025d08f20eb437af
+  bold-italicize-strikethrough: 8c93e6060160de58
+  list: c31e6358e952ad56
+  numbered-list: 6462fc4bbf8dc5d5
+  task-list: a5b46360e125d5f5
   colors: a0838f553f7ae3c4
-  align: 07517df927ad6cd4
-  embed-videos-and-webpages: edcc7177c1ac1500
-  quote: 407a9ae5cfc11241
-  code-block: d1fbe0640f200c8a
-  divider: b0df8fe8989bf75d
-  add-table: c0dece7f696b5190
-  markdown: 1786bc24e059cde7
-  rich-text: 37a3f9015b8bb4c4
+  align: 762b268eb3d4e4c6
+  embed-videos-and-webpages: 58bb26107b3f8e71
+  quote: 7be312b989edb432
+  code-block: a42a792e0dcfa41b
+  divider: d3228f9df8827fda
+  add-table: 371b2b10fbf5afe9
+  markdown: 814720475ee27fcc
+  rich-text: 021b1fae1a3e91a0
 title_source: 29d4198e41d8221a
 title_generated: f4a6018874ae1f36
+needs_review:
+  code-block: use "Veto" instead of "Block" for "block"
 ---
 
 <!-- translation-section: introduction -->
 
 # Text formatieren und Dateien anhängen
 
-Wenn du eine Diskussion oder Abstimmung startest oder bearbeitest oder einen Kommentar schreibst, siehst du unter dem Textfeld eine Formatierungsleiste. Wähle den Pfeil am Ende der Leiste, um alle Werkzeuge ein- oder auszublenden.
+Die Formatierungsleiste erscheint unter dem Textfeld, wenn du eine Diskussion startest oder bearbeitest, eine Abstimmung erstellst oder einen Kommentar schreibst. Wähle den Pfeil am Ende der Leiste, um alle Werkzeuge ein- oder auszublenden.
 
-Bewege den Mauszeiger über die einzelnen Symbole, um den Namen des jeweiligen Werkzeugs zu sehen.
+Bewege den Mauszeiger über ein Symbol, um seinen Namen zu sehen.
 
 ![](thread_format_bar.png)
 
@@ -65,7 +67,7 @@ Bewege den Mauszeiger über die einzelnen Symbole, um den Namen des jeweiligen W
 
 ## Datei anhängen
 
-Nutze das Büroklammersymbol direkt unter dem Textfeld, um Dateien von deinem Computer anzuhängen.
+Wähle das Büroklammersymbol unter dem Textfeld, um Dateien von deinem Gerät anzuhängen.
 
 ![](format_attach.png)
 
@@ -73,7 +75,7 @@ Nutze das Büroklammersymbol direkt unter dem Textfeld, um Dateien von deinem Co
 
 ### Anhänge entfernen
 
-Klicke beim Bearbeiten des Kontexts auf das **X** rechts neben dem Dateinamen, um den Anhang zu entfernen.
+Wähle beim Bearbeiten **×** neben einem Dateinamen, um den Anhang zu entfernen.
 
 ![](thread_file_remove.png)
 
@@ -81,7 +83,7 @@ Klicke beim Bearbeiten des Kontexts auf das **X** rechts neben dem Dateinamen, u
 
 ## Bild einfügen
 
-Wähle **Bild einfügen** und eine Datei aus oder füge ein Bild direkt in den Editor ein. Das Bild wird in der veröffentlichten Diskussion, Abstimmung oder im veröffentlichten Kommentar angezeigt.
+Wähle **Bild einfügen**, um ein Bild hochzuladen, oder füge eines direkt in den Editor ein. Das Bild erscheint direkt im Text deiner Diskussion, Abstimmung oder deines Kommentars.
 
 ![](format_insert_example.png)
 
@@ -89,17 +91,13 @@ Wähle **Bild einfügen** und eine Datei aus oder füge ein Bild direkt in den E
 
 ## Link einfügen
 
-Du kannst einen Link zu jedem Dokument oder jeder Seite im Internet hinzufügen, die sich teilen lassen.  
+Du kannst jede Webseite oder jedes Online-Dokument verlinken:
 
-So fügst du einen Link hinzu:
+1. Markiere den Text, den du verlinken möchtest.
+2. Wähle das Linksymbol.
+3. Füge die URL in **Link einfügen** ein und wähle **Anwenden**.
 
-1. Wähle den Text aus, den du verlinken möchtest, zum Beispiel den Namen eines Dokuments.
-2. Klicke auf das Linksymbol.
-3. Füge die Adresse in das Feld **Link einfügen** ein und wähle **Anwenden**.
-
-Prüfe bei einem Dokument, das an anderer Stelle gespeichert ist, die Freigabeberechtigungen, damit die Teilnehmenden der Diskussion es öffnen können.
-
-Unter dem Text kann eine Vorschau erscheinen. Du kannst sie entfernen, wenn du möchtest.
+Prüfe die Freigabeberechtigungen externer Dokumente, damit Teilnehmende sie öffnen können. Wenn unter deinem Text eine Linkvorschau erscheint, kannst du sie entfernen.
 
 ![](format_link.png)
 
@@ -107,7 +105,7 @@ Unter dem Text kann eine Vorschau erscheinen. Du kannst sie entfernen, wenn du m
 
 ## Emoji einfügen
 
-Klicke auf die Smiley-Schaltfläche und wähle ein Emoji aus.
+Wähle das Smiley-Symbol, um ein Emoji auszuwählen.
 
 ![](thread_insert_emoji.png)
 
@@ -115,19 +113,17 @@ Klicke auf die Smiley-Schaltfläche und wähle ein Emoji aus.
 
 ## Überschriften
 
-Überschrift 1, Überschrift 2 und Überschrift 3 helfen dir, eine Diskussion oder einen Kommentar zu strukturieren.
+Nutze **Überschrift 1**, **Überschrift 2** und **Überschrift 3**, um lange Diskussionen oder Kommentare zu strukturieren.
 
-Wähle den Text aus, den du als Überschrift kennzeichnen möchtest, und klicke auf das Werkzeug für Überschriften.
-
-Wenn du eine Überschrift in einem Kommentar verwendest, wird der Kommentar automatisch zur Zeitleiste der Diskussion hinzugefügt.
+Kommentare mit einer **Überschrift 2** oder **Überschrift 3** werden automatisch zur Liste **Springen zu** des Threads hinzugefügt.
 
 ![](format_heading.png)
 
 <!-- translation-section: bold-italicize-strikethrough -->
 
-## Fett, kursiv, durchgestrichen
+## Fett, kursiv und durchgestrichen
 
-Wähle den Text aus, den du formatieren möchtest, und klicke auf das gewünschte Formatierungswerkzeug.
+Markiere Text und wähle fett, kursiv oder durchgestrichen, um Wörter hervorzuheben oder durchzustreichen.
 
 ![](format_bold.png)
 
@@ -135,7 +131,7 @@ Wähle den Text aus, den du formatieren möchtest, und klicke auf das gewünscht
 
 ## Aufzählung
 
-Nutze **Aufzählung**, um Einträge mit Aufzählungszeichen zu formatieren.
+Nutze **Aufzählung**, um Einträge mit Aufzählungszeichen zu erstellen.
 
 ![](thread_bullets.png)
 
@@ -143,7 +139,7 @@ Nutze **Aufzählung**, um Einträge mit Aufzählungszeichen zu formatieren.
 
 ## Nummerierte Aufzählung
 
-Nutze **Nummerierte Aufzählung**, wenn die Reihenfolge der Einträge wichtig ist.
+Nutze **Nummerierte Aufzählung** für geordnete Schritte oder Einträge.
 
 ![](format_numbers.png)
 
@@ -151,11 +147,11 @@ Nutze **Nummerierte Aufzählung**, wenn die Reihenfolge der Einträge wichtig is
 
 ## Aufgabenliste
 
-Nutze **Aufgabenliste**, um Kontrollkästchen hinzuzufügen. Nach dem Veröffentlichen der Liste kannst du Aufgaben einer Person zuweisen und ein Fälligkeitsdatum festlegen.
+Nutze **Aufgabenliste**, um Kontrollkästchen hinzuzufügen. Gib beim Schreiben einer Aufgabe eine @Erwähnung ein, um sie einem Gruppenmitglied zuzuweisen. Wähle anschließend **Fälligkeitsdatum hinzufügen**, um ein Fälligkeitsdatum und eine Erinnerung festzulegen.
 
 ![](format_tasks.png)
 
-Weitere Informationen findest du auf der Seite [Aufgaben](/en/user_manual/discussions/tasks/).
+Weitere Informationen findest du unter [Aufgaben zuweisen und verfolgen](/en/user_manual/discussions/tasks/).
 
 <!-- translation-section: colors -->
 
@@ -169,7 +165,7 @@ Nutze **Farben**, um ausgewählten Text farbig hervorzuheben.
 
 ## Ausrichtung
 
-Wähle aus, ob du den Text linksbündig, zentriert oder rechtsbündig ausrichten möchtest.
+Richte Text linksbündig, zentriert oder rechtsbündig aus.
 
 ![](thread_align.png)
 
@@ -177,24 +173,23 @@ Wähle aus, ob du den Text linksbündig, zentriert oder rechtsbündig ausrichten
 
 ## Videos und Webseiten einbetten
 
-Du kannst unterstützte Videos und Webseiten überall dort einbetten, wo eine Formatierungsleiste verfügbar ist.
+Du kannst unterstützte Videos und Webseiten überall dort einbetten, wo die Formatierungsleiste erscheint:
 
-So bettest du ein Video ein:
-1. Kopiere die Adresse des Videos oder der Webseite.
-2. Wähle **Video einfügen**, füge die Adresse ein und wähle **Anwenden**.
+1. Kopiere die URL des Videos oder der Webseite.
+2. Wähle **Video einfügen**, füge die URL ein und wähle **Anwenden**.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Stelle sicher, dass alle, die an der Diskussion teilnehmen können, auf das Video zugreifen können. Ein nicht gelistetes Video kann beispielsweise geeignet sein, wenn es nicht in öffentlichen Suchergebnissen erscheinen soll.
+>Stelle sicher, dass alle Teilnehmenden der Diskussion das Video ansehen können. Ein nicht gelistetes Video eignet sich gut, wenn du nicht möchtest, dass es in öffentlichen Suchergebnissen erscheint.
 
 <!-- translation-section: quote -->
 
 ## Zitat
 
-Die Zitatformatierung hebt deinen Text hervor und kann helfen, auf eine Anweisung aufmerksam zu machen.
+Verwende **Zitat**, um ein Zitat abzuheben oder auf wichtige Textstellen aufmerksam zu machen.
 
 ![](thread_quote.png)
 
@@ -202,7 +197,7 @@ Die Zitatformatierung hebt deinen Text hervor und kann helfen, auf eine Anweisun
 
 ## Codeblock
 
-Die Codeblockformatierung wird normalerweise verwendet, um Code im Text darzustellen. Du kannst damit auch Text in deiner Diskussion abheben.
+Verwende **Code-Block**, um Code oder vorformatierten Text darzustellen.
 
 ![](thread_codeblock.png)
 
@@ -210,7 +205,7 @@ Die Codeblockformatierung wird normalerweise verwendet, um Code im Text darzuste
 
 ## Trennlinie
 
-Verwende die Trennlinie, um Abschnitte durch eine horizontale Linie voneinander zu trennen.
+Verwende **Horizontale Linie**, um eine horizontale Linie zwischen Abschnitten einzufügen.
 
 ![](thread_line.png)
 
@@ -218,9 +213,7 @@ Verwende die Trennlinie, um Abschnitte durch eine horizontale Linie voneinander 
 
 ## Tabelle hinzufügen
 
-Füge deiner Diskussion eine Tabelle hinzu.
-
-Mit weiteren Werkzeugen kannst du Spalten und Zeilen hinzufügen oder entfernen.
+Füge eine Tabelle ein und verwende die Tabellenwerkzeuge, um Zeilen und Spalten hinzuzufügen oder zu entfernen.
 
 ![](thread_table.png)
 
@@ -228,16 +221,16 @@ Mit weiteren Werkzeugen kannst du Spalten und Zeilen hinzufügen oder entfernen.
 
 ## Markdown
 
-Wähle **Markdown bearbeiten**, um zur Markdown-Bearbeitung zu wechseln.
+Wähle **Markdown bearbeiten**, um in Markdown zu schreiben.
 
 Bei der Umwandlung in Markdown bleiben Überschriften, fett und kursiv formatierter Text, Listen, einfache Tabellen, abgehakte Aufgaben, Bilder, Links und @Erwähnungen erhalten. Videos, Audio und eingebettete Inhalte werden zu Links.
 
-Textfarben, Hervorhebungen, Unterstreichungen, Ausrichtung und Tabellenlayout können verloren gehen. Fälligkeitstermine und Erinnerungen für Aufgaben werden entfernt; bei der Rückumwandlung in Rich Text werden neue Aufgaben mit demselben Text erstellt, die wie zuvor abgehakt oder nicht abgehakt sind.
+Textfarben, Hervorhebungen, Unterstreichungen, Ausrichtung und benutzerdefinierte Tabellenlayouts können verloren gehen. Fälligkeitstermine und Erinnerungen für Aufgaben werden entfernt; beim Wechsel zurück zu formatiertem Text werden neue Aufgaben mit demselben Text erstellt, die wie zuvor abgehakt oder nicht abgehakt sind.
 
 <!-- translation-section: rich-text -->
 
 ### Formatierter Text
 
-Wähle **Formatierten Text bearbeiten**, um zu den Formatierungswerkzeugen zurückzukehren. Dabei wird unterstütztes Markdown in seine dargestellte Form umgewandelt.
+Wähle **Formatierten Text bearbeiten**, um zur Formatierungsleiste zurückzukehren und unterstütztes Markdown in formatierten Text umzuwandeln.
 
-**Vorschau** zeigt, wie Markdown nach dem Veröffentlichen aussehen wird, ohne es umzuwandeln.
+Wähle **Vorschau**, um zu sehen, wie dein Markdown aussehen wird, ohne es umzuwandeln.

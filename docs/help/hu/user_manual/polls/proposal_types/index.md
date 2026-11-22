@@ -1,23 +1,23 @@
 ---
 title: Szavazások
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: 6a53ef2b63587672
-  simple-poll: ee50fcb17cf3a648
+  simple-poll: 507452ae38959a6f
   score-poll: f0866030f2eaeb8f
-  dot-vote: 555ff212c5647541
+  dot-vote: 7b222392c3c7819c
   ranked-choice: 4f16c249976740f6
   time-poll: 6fb5a4cb3808e182
   stv-election: 00a97713eec902e0
@@ -42,7 +42,7 @@ A szavazások kiválasztásokat, pontszámokat, pontelosztásokat, rangsorokat, 
 
 <!-- translation-section: simple-poll -->
 
-## Egyszerű szavazás
+## Kiválasztás
 
 A [Kiválasztás](/en/user_manual/polls/choose/) lehetővé teszi, hogy a résztvevők egy vagy több lehetőséget válasszanak ki. Használd a legnépszerűbb lehetőség megtalálására vagy egy szűkített lista összeállítására.
 
@@ -54,7 +54,7 @@ A [Pontozás](/en/user_manual/polls/score/) lehetővé teszi, hogy a résztvevő
 
 <!-- translation-section: dot-vote -->
 
-## Pontszavazás
+## Pontelosztás
 
 A [Pontelosztás](/en/user_manual/polls/allocate/) minden résztvevőnek meghatározott számú elosztható pontot ad. Használd a prioritások meghatározására, ha az egyik dolog kiválasztása azt jelenti, hogy egy másikra kevesebb figyelem vagy erőforrás jut.
 

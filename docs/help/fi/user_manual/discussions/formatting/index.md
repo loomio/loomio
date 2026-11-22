@@ -1,52 +1,52 @@
 ---
 title: Muotoilu
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 8835d30a218fce4e
-  attach-file: 772ed69602535db7
-  remove-attachments: 7f47fde42b902677
-  insert-image: efa8f0ee5300aef3
-  insert-link: 0e0ec502a3ae3051
-  insert-emoji: 6658e6f893b1a0a7
-  headings: 20ebc1f33dd138a7
-  bold-italicize-strikethrough: 98d2f6aaed506413
-  list: cd1c1465db2505c8
-  numbered-list: 92b0ed9aab771c4f
-  task-list: 517eb95494ba9b19
-  colors: 8a39ed6ff1c52fa5
-  align: 8c00e40d36504bec
-  embed-videos-and-webpages: 2bfaa9a9747c2e4c
-  quote: 5d7a04b5141d04e9
-  code-block: e05cf0873c4c22e2
-  divider: da7aa0e1a1a4436e
-  add-table: f1a579057780872c
-  markdown: 7c37a4c00bd431ee
-  rich-text: 9136c76bfd5409a9
+  introduction: 7017aeac7dafc821
+  attach-file: 9c366a6657d8b93b
+  remove-attachments: 8320474edaf36328
+  insert-image: 8f8608dea8221af3
+  insert-link: 4eca2d6cbb23a37b
+  insert-emoji: 784ff758a2d20bad
+  headings: c89df2ea57fbbd6e
+  bold-italicize-strikethrough: 2088853c5c6da43e
+  list: a440d99f305c8343
+  numbered-list: cfaabe2b49698d69
+  task-list: 79744683dd74f04a
+  colors: ee012d29d5f51c38
+  align: 133f773bd3f4126c
+  embed-videos-and-webpages: ad3a5e0752c3522b
+  quote: a2f99b96774be463
+  code-block: b7d155fbf02fecdc
+  divider: fccd21475ed4930a
+  add-table: e8514328c695391f
+  markdown: c8dc1dccdf3b0366
+  rich-text: e22e0fa9a19cff47
 generated:
-  introduction: baad4aa847d7b823
-  attach-file: e8e4943137e00316
-  remove-attachments: 51f9f27503258247
-  insert-image: 3b51f4fd1ee47231
-  insert-link: 63850222d7f43d56
-  insert-emoji: 64b39465daaab5e0
-  headings: 677ba9cc169a0263
-  bold-italicize-strikethrough: cbdf3478c0a2533e
-  list: 544e70bfc34a27dd
-  numbered-list: 462daa5de8057555
-  task-list: 601de9cb856526d1
-  colors: 348af9408fa190db
-  align: df9765d8b71271a9
-  embed-videos-and-webpages: 7639f62959cb74ab
-  quote: 2c2cba0b8c23969f
-  code-block: 7cfb1ce6d2c7af0b
-  divider: 0fd7fc610cfc80f4
-  add-table: e03c545c4a79859b
-  markdown: bfaed939ba727481
-  rich-text: 1de15bb9b0e21fac
+  introduction: 78fd917fc0f170d7
+  attach-file: 9c94ebb59851a54d
+  remove-attachments: a954fd7d4cba9ddb
+  insert-image: 6495e48bd27f355c
+  insert-link: db87622f8acecc11
+  insert-emoji: 4866c485b0229f2c
+  headings: 7c6f195e7b59f797
+  bold-italicize-strikethrough: 7a494cf7909f11e5
+  list: b7bac94063e8678c
+  numbered-list: 743d7947bee07506
+  task-list: 750b79d86877a811
+  colors: 32858c0705938663
+  align: 570154f41c619da6
+  embed-videos-and-webpages: 014c85cf98c9496b
+  quote: 01f38e19c8f041d4
+  code-block: 631b96e0c0d14d83
+  divider: f13e1c4f881d85c4
+  add-table: c41be2e659adaae1
+  markdown: 56f8471a137f025c
+  rich-text: aedb780f8e4c5140
 title_source: 29d4198e41d8221a
 title_generated: 3b2e66c991904e49
 ---
@@ -55,9 +55,9 @@ title_generated: 3b2e66c991904e49
 
 # Muotoile tekstiä ja liitä tiedostoja
 
-Kun aloitat keskustelun tai kyselyn, muokkaat niitä tai kirjoitat kommenttia, tekstikentän alapuolella näkyy muotoilupalkki. Näytä tai piilota kaikki työkalut valitsemalla palkin lopussa oleva nuoli.
+Muotoilupalkki näkyy tekstikentän alapuolella, kun aloitat keskustelun tai muokkaat sitä, luot kyselyn tai kirjoitat kommentin. Näytä tai piilota kaikki työkalut valitsemalla palkin lopussa oleva nuoli.
 
-Näet kunkin työkalun nimen viemällä hiiren osoittimen sen päälle.
+Näet kuvakkeen nimen viemällä hiiren osoittimen sen päälle.
 
 ![](thread_format_bar.png)
 
@@ -65,7 +65,7 @@ Näet kunkin työkalun nimen viemällä hiiren osoittimen sen päälle.
 
 ## Liitä tiedosto
 
-Lisää liitetiedostoja tietokoneeltasi tekstikentän alapuolella olevalla paperiliitinkuvakkeella.
+Liitä tiedostoja laitteeltasi valitsemalla tekstikentän alapuolella oleva paperiliitinkuvake.
 
 ![](format_attach.png)
 
@@ -73,7 +73,7 @@ Lisää liitetiedostoja tietokoneeltasi tekstikentän alapuolella olevalla paper
 
 ### Poista liitteitä
 
-Kun muokkaat kontekstia, poista tiedosto napsauttamalla tiedostonimen oikealla puolella olevaa **X**-merkkiä.
+Poista tiedosto muokkauksen aikana valitsemalla tiedostonimen vieressä oleva **×**.
 
 ![](thread_file_remove.png)
 
@@ -81,7 +81,7 @@ Kun muokkaat kontekstia, poista tiedosto napsauttamalla tiedostonimen oikealla p
 
 ## Lisää kuva
 
-Valitse **Lisää kuva** ja valitse tiedosto tai liitä kuva suoraan editoriin. Kuva näkyy julkaistussa keskustelussa, kyselyssä tai kommentissa.
+Lataa kuva valitsemalla **Lisää kuva** tai liitä kuva suoraan editoriin. Kuva näkyy tekstin seassa keskustelussa, kyselyssä tai kommentissa.
 
 ![](format_insert_example.png)
 
@@ -89,17 +89,13 @@ Valitse **Lisää kuva** ja valitse tiedosto tai liitä kuva suoraan editoriin. 
 
 ## Lisää linkki
 
-Voit lisätä linkin mihin tahansa jaettavaan asiakirjaan tai verkkosivuun.  
+Voit lisätä linkin mihin tahansa verkkosivuun tai verkossa olevaan asiakirjaan:
 
-Lisää linkki näin:
+1. Valitse teksti, jonka haluat muuttaa linkiksi.
+2. Valitse linkkikuvake.
+3. Liitä verkko-osoite **Lisää linkki** -kenttään ja valitse **Käytä**.
 
-1. Valitse teksti, johon haluat lisätä linkin, esimerkiksi asiakirjan nimi.
-2. Napsauta linkkikuvaketta.
-3. Liitä osoite **Lisää linkki** -kenttään ja valitse **Käytä**.
-
-Jos asiakirja on toisessa palvelussa, tarkista sen jakamisoikeudet, jotta keskustelun osallistujat voivat avata sen.
-
-Tekstin alapuolella saattaa näkyä esikatselu. Voit poistaa sen halutessasi.
+Tarkista ulkoisen asiakirjan jakamisoikeudet, jotta osallistujat voivat avata sen. Jos tekstin alapuolelle ilmestyy linkin esikatselu, voit poistaa sen.
 
 ![](format_link.png)
 
@@ -107,7 +103,7 @@ Tekstin alapuolella saattaa näkyä esikatselu. Voit poistaa sen halutessasi.
 
 ## Lisää emoji
 
-Valitse hymiöpainike ja valitse emoji avautuvasta valikosta.
+Valitse hymiökuvake ja valitse emoji.
 
 ![](thread_insert_emoji.png)
 
@@ -115,11 +111,9 @@ Valitse hymiöpainike ja valitse emoji avautuvasta valikosta.
 
 ## Otsikot
 
-Otsikko 1, Otsikko 2 ja Otsikko 3 auttavat jäsentämään keskustelua tai kommenttia.
+Jäsennä pitkiä keskusteluja tai kommentteja käyttämällä tyylejä **Otsikko 1**, **Otsikko 2** ja **Otsikko 3**.
 
-Valitse teksti, jonka haluat merkitä otsikoksi, ja napsauta otsikon muotoilutyökalua.
-
-Jos kommentissa on otsikko, kommentti lisätään automaattisesti keskustelun aikajanalle.
+Kommentit, joissa käytetään tyyliä **Otsikko 2** tai **Otsikko 3**, lisätään automaattisesti ketjun **Siirry kohtaan** -listaan.
 
 ![](format_heading.png)
 
@@ -127,7 +121,7 @@ Jos kommentissa on otsikko, kommentti lisätään automaattisesti keskustelun ai
 
 ## Lihavointi, kursivointi ja yliviivaus
 
-Valitse muotoiltava teksti ja napsauta haluamaasi muotoilutyökalua.
+Valitse teksti ja valitse lihavointi, kursivointi tai yliviivaus korostaaksesi tai yliviivataksesi sanoja.
 
 ![](format_bold.png)
 
@@ -135,7 +129,7 @@ Valitse muotoiltava teksti ja napsauta haluamaasi muotoilutyökalua.
 
 ## Lista
 
-Muotoile kohdat luettelomerkeillä **Lista**-työkalulla.
+Luo luettelomerkeillä merkittyjä kohtia **Lista**-työkalulla.
 
 ![](thread_bullets.png)
 
@@ -143,7 +137,7 @@ Muotoile kohdat luettelomerkeillä **Lista**-työkalulla.
 
 ## Numeroitu luettelo
 
-Käytä **Numeroitu luettelo** -työkalua, kun kohtien järjestyksellä on merkitystä.
+Käytä **Numeroitu luettelo** -työkalua vaiheisiin tai kohtiin, joilla on tietty järjestys.
 
 ![](format_numbers.png)
 
@@ -151,17 +145,17 @@ Käytä **Numeroitu luettelo** -työkalua, kun kohtien järjestyksellä on merki
 
 ## Tehtävälista
 
-Lisää valintaruutuja **Tehtävälista**-työkalulla. Kun olet julkaissut listan, voit osoittaa tehtäviä henkilöille ja asettaa niille määräpäivän.
+Lisää valintaruutuja **Tehtävälista**-työkalulla. Osoita tehtävä ryhmän jäsenelle lisäämällä @maininta tehtävää kirjoittaessasi. Aseta sitten eräpäivä ja muistutus valitsemalla **Lisää eräpäivä**.
 
 ![](format_tasks.png)
 
-Lue lisää [Tehtävät](/en/user_manual/discussions/tasks/)-sivulta.
+Lue lisää sivulta [Osoita ja seuraa tehtäviä](/en/user_manual/discussions/tasks/).
 
 <!-- translation-section: colors -->
 
 ## Värit
 
-Lisää valittuun tekstiin korostusväri **värit**-työkalulla.
+Korosta valittua tekstiä **värit**-työkalulla.
 
 ![](thread_colors.png)
 
@@ -169,7 +163,7 @@ Lisää valittuun tekstiin korostusväri **värit**-työkalulla.
 
 ## Tasaus
 
-Valitse tekstin tasaus vasemmalle, keskelle tai oikealle.
+Tasaa teksti vasemmalle, keskelle tai oikealle.
 
 ![](thread_align.png)
 
@@ -177,9 +171,8 @@ Valitse tekstin tasaus vasemmalle, keskelle tai oikealle.
 
 ## Videoiden ja verkkosivujen upottaminen
 
-Voit upottaa tuettuja videoita ja verkkosivuja kaikkialle, missä on muotoilutyökalurivi.
+Voit upottaa tuettuja videoita ja verkkosivuja kaikkialle, missä muotoilupalkki näkyy:
 
-Näin upotat videon:
 1. Kopioi videon tai verkkosivun osoite.
 2. Valitse **Upotettu video**, liitä osoite ja valitse **Käytä**.
 
@@ -188,13 +181,13 @@ Näin upotat videon:
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Varmista, että kaikki keskusteluun osallistuvat voivat katsoa videon. Esimerkiksi listaamaton video voi sopia tilanteeseen, jossa videon ei pidä näkyä julkisissa hakutuloksissa.
+>Varmista, että kaikki keskusteluun osallistuvat voivat katsoa videon. Listaamaton video sopii hyvin tilanteeseen, jossa et halua videon näkyvän julkisissa hakutuloksissa.
 
 <!-- translation-section: quote -->
 
 ## Lainaus
 
-Lainaus korostaa tekstiäsi, ja sen avulla voit kiinnittää huomion esimerkiksi ohjeeseen.
+Käytä **Lainata**-toimintoa erottaaksesi lainauksen muusta tekstistä tai kiinnittääksesi huomion keskeiseen tekstiin.
 
 ![](thread_quote.png)
 
@@ -202,7 +195,7 @@ Lainaus korostaa tekstiäsi, ja sen avulla voit kiinnittää huomion esimerkiksi
 
 ## Koodilohko
 
-Koodilohkomuotoilua käytetään yleensä koodin esittämiseen tekstissä. Voit käyttää sitä myös erottamaan tekstiä muusta keskustelun sisällöstä.
+Käytä **Koodilohko**-toimintoa koodin tai valmiiksi muotoillun tekstin näyttämiseen.
 
 ![](thread_codeblock.png)
 
@@ -210,7 +203,7 @@ Koodilohkomuotoilua käytetään yleensä koodin esittämiseen tekstissä. Voit 
 
 ## Erotin
 
-Lisää erottimella vaakaviiva osioiden väliin.
+Lisää vaakaviiva osioiden väliin **Jakaja**-toiminnolla.
 
 ![](thread_line.png)
 
@@ -218,9 +211,7 @@ Lisää erottimella vaakaviiva osioiden väliin.
 
 ## Lisää taulukko
 
-Lisää taulukko keskusteluusi.
-
-Voit lisätä ja poistaa sarakkeita ja rivejä lisätyökaluilla.
+Lisää taulukko ja käytä taulukon työkaluja rivien ja sarakkeiden lisäämiseen tai poistamiseen.
 
 ![](thread_table.png)
 
@@ -228,16 +219,16 @@ Voit lisätä ja poistaa sarakkeita ja rivejä lisätyökaluilla.
 
 ## Markdown
 
-Siirry Markdown-muokkaukseen valitsemalla **Muokkaa merkintää**.
+Valitse **Muokkaa merkintää**, kun haluat kirjoittaa Markdown-muodossa.
 
 Markdowniksi muuntaminen säilyttää otsikot, lihavoidun ja kursivoidun tekstin, listat, yksinkertaiset taulukot, valmiiksi merkityt tehtävät, kuvat, linkit ja @maininnat. Videot, ääni ja upotettu sisältö muuttuvat linkeiksi.
 
-Tekstin värit, korostukset, alleviivaukset, tasaus ja taulukon asettelu voivat kadota. Tehtävien määräpäivät ja muistutukset poistetaan. Muuntaminen takaisin muotoilluksi tekstiksi luo uusia tehtäviä, joiden teksti ja valmiiksi merkintä vastaavat alkuperäisiä.
+Tekstin värit, korostukset, alleviivaukset, tasaus ja taulukoiden mukautetut asettelut voivat kadota. Tehtävien määräpäivät ja muistutukset poistetaan. Siirtyminen takaisin muotoiltuun tekstiin luo uusia tehtäviä, joiden teksti ja valmiiksi merkintä vastaavat alkuperäisiä.
 
 <!-- translation-section: rich-text -->
 
 ### Muotoiltu teksti
 
-Palaa muotoilutyökaluihin valitsemalla **Muokkaa muotoiltua tekstiä**. Tämä muuntaa tuetun Markdown-muotoilun sen näkyvään muotoon.
+Valitse **Muokkaa muotoiltua tekstiä**, kun haluat palata muotoilutyökaluriviin ja muuntaa tuetun Markdown-muotoilun muotoilluksi tekstiksi.
 
-**Esikatselu** näyttää, miltä Markdown näyttää julkaisun jälkeen, muuntamatta sitä.
+Valitse **Esikatselu**, kun haluat nähdä, miltä Markdown-tekstisi näyttää muuntamatta sitä.

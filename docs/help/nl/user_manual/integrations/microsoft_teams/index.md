@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/microsoft_teams/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 905a1586a1f760e0
+  introduction: 16d8d04953bb0b53
 generated:
-  introduction: ff6adcfa0dbbec07
+  introduction: 722b42445e260b72
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -16,32 +16,37 @@ title_generated: a7b52b269a23c025
 <!-- translation-section: introduction -->
 
 # Microsoft Teams-integratie
-_Koppel de meldingen van jouw Loomio-groep aan Microsoft Teams._
 
-Loomio kan meldingen naar jouw Microsoft Teams sturen bij nieuwe discussies, voorstellen, reacties, stemmen en conclusies.
+Loomio kan meldingen naar jouw Microsoft Teams-kanalen sturen bij nieuwe discussies, peilingen, reacties, stemmen en conclusies.
 
 ---
 
-Ga naar [https://teams.microsoft.com](https://teams.microsoft.com) en klik op Apps
-![](t1.png)
+1. Open [Microsoft Teams](https://teams.microsoft.com) en selecteer **Apps**.
 
-Zoek naar "webhook" in het zoekveld en klik op Inkomende webhook
-![](t2.png)
+   ![](t1.png)
 
-Klik op "Toevoegen aan een team"
-![](t3.png)
+2. Zoek naar `webhook` en selecteer **Inkomende webhook**.
 
-Typ de naam van het kanaal waarin je Loomio-meldingen wilt ontvangen en selecteer het.
-![](t4.png)
+   ![](t2.png)
 
-Geef de webhook een naam, zoals "Loomio-meldingen", en klik op "Maken"
-![](t5.png)
+3. Selecteer **Toevoegen aan een team**.
 
-Kopieer de URL die je krijgt. Je plakt deze in de laatste stap in Loomio.
-![](t6.png)
+   ![](t3.png)
 
-_Loomio is niet gemaakt door Microsoft, is niet verbonden aan Microsoft en wordt niet ondersteund door Microsoft._
+4. Kies het kanaal waarin je Loomio-meldingen wilt ontvangen.
 
-Nu je een webhook-URL hebt, kun je verdergaan met het instellen van jouw chatintegratie:
+   ![](t4.png)
+
+5. Voer een naam in, zoals `Loomio notifications`, en selecteer **Maken**.
+
+   ![](t5.png)
+
+6. Kopieer de webhook-URL zodat je deze in Loomio kunt plakken.
+
+   ![](t6.png)
+
+Nu je een webhook-URL hebt, voltooi je de koppeling in Loomio:
 
 [Stel een chatintegratie in Loomio in](../chatbots/#set-up-a-chat-integration)
+
+_Loomio is niet gemaakt door Microsoft, is niet verbonden aan Microsoft en wordt niet ondersteund door Microsoft._

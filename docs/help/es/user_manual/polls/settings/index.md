@@ -1,56 +1,56 @@
 ---
 title: Configuración
-source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-04'
+  'on': '2026-11-22'
 sections:
-  introduction: 145c23b2412eff98
+  introduction: 4dfc411e9ec40783
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 59bad3e1e0c4605e
-  add-content: ec0c0742f6465e9c
-  voting-options: d0ea31745ce8b651
-  edit-voting-options: ef0d61585b34fbd6
-  opening-time: f8544bec7cd35ca5
-  more-settings: fd837a51b81cbc13
-  reminder: c11a5bdd82cd3b84
-  anonymous-voting: 35f5392ee8870076
-  vote-reason: b1ebf2700ce8248b
-  hide-results: 6dc7bf0b34c89a68
+  proposal-and-poll-templates: 822e5f4ed69852ee
+  add-content: 6811509f271e7050
+  voting-options: 28968995d558db8f
+  edit-voting-options: 692bc37a97a0eea6
+  opening-time: e9a9ca1825565db3
+  more-settings: 6a7cd5bb6e0a9271
+  reminder: 673e6181f026afe0
+  anonymous-voting: 70e89af6ff170bc8
+  vote-reason: 8f5d05ee4f950079
+  hide-results: a59502626d4b75c6
   managing-polls: b26fc41e19371d54
-  edit-poll: ddf392426410ec5a
+  edit-poll: d544d21f39ce060f
   notification-history: f132def867659f30
-  export-poll: 3c015ed01e8e7a6a
-  print: dbe152fdea17fc00
-  delete: fa13f1461f6b4e5f
-  save-bookmark: 45a250076a3fd7e1
-  save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 4e0c2bd8db67a4d8
-  editing-settings-before-voting-opens: 9d1f5122db7998a3
+  export-poll: d94d6cba846d9b25
+  print: 8caef79f1356f7c4
+  delete: 10850ca0cae15f77
+  save-bookmark: 5415dd146c0190c1
+  save-as-template: 2ddaebfb13ea40e4
+  who-can-vote: c9cb72fec8cea6aa
+  editing-settings-before-voting-opens: a3e52c6542c3eb4c
 generated:
-  introduction: d6e6465a941f05cc
+  introduction: badc90bcad849410
   setting-up-a-proposal-or-poll: bb36970da131d96f
-  proposal-and-poll-templates: ca55b4c9847edf56
-  add-content: 84d0c37d3cca50f4
-  voting-options: d66fbd0a4522aa98
-  edit-voting-options: e773bdbcc7894d29
-  opening-time: 58290dfe7d13b8c4
-  more-settings: 3519ac4ed701ef08
-  reminder: 56b99642d067b0f0
-  anonymous-voting: def7ec7e6f0df8b4
-  vote-reason: 8a70d40c93b8a51d
-  hide-results: 5f6ada48106a9150
+  proposal-and-poll-templates: 6f31bea03b2a5e37
+  add-content: b4ce56571a152c20
+  voting-options: 3693e451ecf24d8c
+  edit-voting-options: 72a657bcf3e2fb95
+  opening-time: e3ef23b60eb9ac68
+  more-settings: e359bf9e05d5d272
+  reminder: d7dbbd46c44a7c3f
+  anonymous-voting: 9c3726403e3c457e
+  vote-reason: 512cf33f0a745037
+  hide-results: 7b8c310824687b06
   managing-polls: 3711abc9c32d6f77
-  edit-poll: 37ec4c799be29490
+  edit-poll: 73cd4906ae869921
   notification-history: ffdba555bbd69a46
-  export-poll: bb706aea38b9e931
-  print: aaa8be85f0db958d
-  delete: 308d1e3227e365db
-  save-bookmark: 5bdb299d7db4dc71
-  save-as-template: 951653bc48b8f1f5
-  who-can-vote: ba22b7b4d702a8ae
-  editing-settings-before-voting-opens: 6e56f3befee2ec67
+  export-poll: 9f08faf1ee1fceb9
+  print: b57376f9fd398520
+  delete: 06f396595aee5577
+  save-bookmark: defb9dd0afe73146
+  save-as-template: d5d5dfb5712f7fd3
+  who-can-vote: 88e82996c26f7942
+  editing-settings-before-voting-opens: 4b46d16d74cd1540
 title_source: 74a883a037bc227f
 title_generated: bb507137e3631379
 ---
@@ -58,6 +58,8 @@ title_generated: bb507137e3631379
 <!-- translation-section: introduction -->
 
 # Configuración de propuestas y encuestas
+
+Configura cómo funciona una propuesta o encuesta, quién puede votar y cómo aparecen los resultados. La mayoría de los ajustes están disponibles cuando creas o editas una encuesta.
 
 <!-- translation-section: setting-up-a-proposal-or-poll -->
 
@@ -67,11 +69,11 @@ title_generated: bb507137e3631379
 
 ### Plantillas de propuestas y encuestas
 
-Elige la plantilla de propuesta que quieras usar.
+Elige la plantilla de propuesta o encuesta que quieras usar.
 
 ![](proposal_templates.png)
 
-![El formulario de propuesta, desde el título y los detalles hasta las opciones de votación, la duración, quién puede votar y el panel Más ajustes contraído](proposal_new.png)
+![El formulario de propuesta, desde el título y los detalles hasta las opciones de votación, la duración, quién puede votar y el panel Más configuraciones contraído](proposal_new.png)
 
 <!-- translation-section: add-content -->
 
@@ -79,47 +81,35 @@ Elige la plantilla de propuesta que quieras usar.
 
 ### Título y detalles
 
-**Grupo:** Comprueba que esté seleccionado el grupo correcto para tu propuesta o encuesta.
+- **Grupo:** Comprueba que esté seleccionado el grupo correcto para tu propuesta o encuesta.
+- **Título:** Dale a tu propuesta o encuesta un título breve y claro.
+- **Detalles:** Explica qué les pides a las personas que decidan y qué ocurre si se aprueba la propuesta.
 
-**Título:** Dale a tu propuesta o encuesta un título breve y pertinente.
-
-**Detalles:** Explica qué les pides a las personas e incluye suficientes detalles para que todo el mundo entienda qué significa votar.  
-
-Las plantillas predefinidas incluyen algunas indicaciones para ayudarte a redactar una buena propuesta. Úsalas o agrega tus propios detalles.
-
-Al hacer una propuesta, indica tus expectativas y describe el impacto que tendrá si se adopta.
-
-Puedes adjuntar archivos, insertar imágenes y tablas, y agregar encabezados y listas con los [botones de formato](/en/user_manual/discussions/formatting). Estos pueden ayudarte a compartir información de apoyo y facilitar la lectura de las propuestas más largas.
+Las plantillas incluyen indicaciones iniciales que puedes usar o reemplazar. Puedes adjuntar archivos, insertar imágenes y tablas, y agregar encabezados y listas con las [herramientas de formato](/en/user_manual/discussions/formatting) para compartir información de apoyo y facilitar la lectura de las propuestas más largas.
 
 <!-- translation-section: voting-options -->
 
 ### Opciones de votación
 
-Cada plantilla de propuesta y encuesta ofrece opciones para votar.
+Cada plantilla ofrece opciones de votación predeterminadas. Según la plantilla, puedes editar, eliminar, reordenar o agregar opciones para adaptarlas a tu proceso de decisión:
 
-Según la plantilla, puedes editar, eliminar, reordenar o agregar opciones de votación para adaptarlas al proceso de decisión que estás llevando a cabo.
-
-- Usa el icono del lápiz para editar una opción de votación
-- Usa el icono de la papelera para eliminar las opciones de votación que no necesites
-- Usa el control de arrastre para cambiar el orden de las opciones de votación
-- Agrega opciones de votación con **Agregar opción** cuando la plantilla permita opciones personalizadas
+- Selecciona el icono del lápiz para editar una opción de votación.
+- Selecciona el icono de la papelera para eliminar una opción de votación.
+- Arrastra el control de arrastre para cambiar el orden de las opciones de votación.
+- Selecciona **Agregar opción** para agregar una opción de votación cuando la plantilla permita opciones personalizadas.
 
 ![](vote_options.png)
 
 <!-- translation-section: edit-voting-options -->
 
 ### Editar opciones de votación
-Puedes configurar las opciones de votación de distintas maneras para adaptarlas a la forma en que tu organización toma decisiones.
 
-Usa el icono del lápiz junto a la opción de votación para abrir el cuadro de edición:
+Selecciona el icono del lápiz junto a una opción de votación para editarla:
 
-**Nombre de la opción:** Un nombre breve para la opción.
-
-**Icono:** Selecciona un icono para la opción, como un pulgar hacia arriba, un pulgar hacia abajo, Abstención o Bloqueo.
-
-**Significado:** Una frase que explique qué significa elegir esta opción.
-
-**Pregunta para el motivo:** Una pregunta que invite a los votantes a explicar sus motivos o reconsiderar su posición.
+- **Nombre de la opción:** Un nombre breve para la opción.
+- **Icono:** Un icono para la opción, como un pulgar hacia arriba, un pulgar hacia abajo, Abstención o Bloqueo.
+- **Significado:** Una frase que explique qué significa elegir esta opción.
+- **Pregunta para el motivo:** Una pregunta que invite a los votantes a explicar lo que han elegido.
 
 ![](proposal_edit_option.png)
 
@@ -127,48 +117,45 @@ Usa el icono del lápiz junto a la opción de votación para abrir el cuadro de 
 
 ### Duración
 
-De forma predeterminada, la votación se abre inmediatamente cuando creas la encuesta. Si quieres programar la votación para que se abra más adelante, desmarca **La votación se abre inmediatamente** y selecciona una fecha y hora de apertura.
+De forma predeterminada, la votación se abre inmediatamente cuando inicias la encuesta. Para programarla para más adelante, desmarca **La votación se abre inmediatamente** y elige una fecha y hora de apertura.
 
-Esto permite dejar tiempo para la discusión antes de que se abra la votación, o asegurarte de que una encuesta o propuesta esté bien configurada y programada para el momento adecuado.
+La programación te permite dar tiempo a las personas para discutir antes de que se abra la votación, o preparar encuestas y agregar votantes con antelación. Las personas pueden ver una encuesta programada antes de que se abra, pero no pueden votar hasta la hora de apertura. Los votantes reciben una notificación cuando se abre la votación, en lugar de cuando los agregas.
 
-Por ejemplo, si tu grupo tiene varias decisiones que votar en una próxima asamblea, puedes preparar las encuestas y agregar votantes con antelación, y luego programarlas para que todas se abran cuando comience el periodo de votación. Las personas pueden ver las encuestas antes de que se abran, pero no pueden votar antes de tiempo.
+Para abrir una encuesta programada antes de tiempo, selecciona **Editar encuesta**, marca **La votación se abre inmediatamente** y guarda los cambios.
 
-Cuando una encuesta tiene una hora de apertura programada, puedes agregar votantes antes de que se abra la votación. Los votantes recibirán una notificación cuando se abra la votación, en lugar de cuando los agregues.
-
-Para abrir la votación antes de la hora programada, selecciona **Editar encuesta**, marca **La votación se abre inmediatamente** y guarda los cambios.
-
-**Notificar a los votantes cuando se abra la encuesta:** Cuando esta opción está marcada (de forma predeterminada), todos los votantes recibirán una notificación cuando se abra la votación. Desmárcala si quieres abrir la votación sin enviar notificaciones.
-
-**Fecha y hora de cierre:** Selecciona la fecha y hora de cierre de tu encuesta.
-
-Deja tiempo suficiente para que las personas voten. Puedes programar la propuesta para que se cierre antes de una reunión o evitar que se cierre durante un fin de semana, para que las personas reciban un recordatorio a tiempo. Si es necesario, puedes cerrar la encuesta antes de tiempo o ampliar el plazo de cierre.
+- **Notificar a los votantes cuando se abra la encuesta:** Esta opción está marcada de forma predeterminada para que todos los votantes reciban una notificación cuando se abra la votación. Desmárcala para abrir la votación sin enviar notificaciones.
+- **Fecha y hora de cierre:** Elige cuándo se cierra la votación. Deja tiempo suficiente para que las personas voten; por ejemplo, programa el cierre antes de una reunión o evita los fines de semana para que los recordatorios lleguen en un momento útil. Puedes cerrar una encuesta antes de tiempo o ampliar el plazo de cierre mientras esté abierta.
 
 <!-- translation-section: who-can-vote -->
 
 ### ¿Quién puede votar?
 
-Elige quién puede votar en la encuesta.
+Elige quién puede votar en la encuesta:
 
-- **¿Alguien en el grupo?** (o **Cualquier persona en el hilo**): todas las personas con acceso a la encuesta pueden votar, incluidas las que se unan más adelante.
-- **Solo para personas seleccionadas:** solo pueden votar las personas que agregues. Usa esta opción cuando solo deban votar algunos miembros, como una junta directiva o un comité.
+- **¿Alguien en el grupo?** (o **Cualquier persona en el hilo**): Todas las personas con acceso a la encuesta pueden votar, incluidas las que se unan más adelante.
+- **Solo para personas seleccionadas:** Solo pueden votar las personas que agregues. Usa esta opción cuando solo deban votar algunos miembros, como una junta directiva o un comité.
 
 Después de iniciar una encuesta con la opción **Solo para personas seleccionadas**, se abre **Gestionar a los votantes** para que puedas agregar votantes. Puedes agregar o eliminar votantes más adelante. Consulta [Gestionar a los votantes](/en/user_manual/polls/manage_voters).
 
 <!-- translation-section: more-settings -->
 
-## Más ajustes
+## Más configuraciones
+
+Abre **Más configuraciones** para configurar los recordatorios, la votación anónima, los motivos de los votos, la visibilidad de los resultados, el [quórum](/en/user_manual/polls/quorum/), la [votación ponderada](/en/user_manual/polls/weighted_voting/) y **Mostrar opciones en orden aleatorio** (disponible en las encuestas de Elegir, Puntuar, Repartir y Ordenar para reducir el sesgo causado por el orden).
 
 ![](settings_advanced.png)
 
 <!-- translation-section: reminder -->
 
 ### Recordatorio
-Envía una notificación de «Cierre próximo» 24 horas antes de que se cierre la encuesta. Esto puede dar a las personas la oportunidad de ver cómo han votado otras y reconsiderar su propio voto, o simplemente ayudar a aumentar la participación en la encuesta.
 
-Opciones de configuración:
+Envía una notificación de «Cierre próximo» 24 horas antes de que se cierre la encuesta para fomentar la participación o dar a las personas la oportunidad de revisar el voto que han emitido.
+
+Opciones:
+
 - Nadie
 - Autor
-- Personas sin votar (por defecto)
+- Personas sin votar (de forma predeterminada)
 - Todos los votantes
 
 En una encuesta anónima que dura al menos 24 horas, Loomio envía automáticamente un recordatorio durante las últimas 24 horas a las personas que pueden votar y aún no lo han hecho. Este recordatorio no se puede cambiar en la configuración de la encuesta.
@@ -176,49 +163,46 @@ En una encuesta anónima que dura al menos 24 horas, Loomio envía automáticame
 <!-- translation-section: anonymous-voting -->
 
 ### Votación anónima
-Si está activada, los votos se almacenan por separado de las identidades de los votantes. Los resultados aparecen cuando se cierra la votación, y los votantes no pueden agregar motivos, revisar el voto que han enviado ni cambiarlo.
 
-Consulta [Votación anónima](/en/user_manual/polls/anonymous_voting) para conocer cómo se separan las identidades de los votantes de los votos enviados, qué información se conserva y cuáles son los límites de la protección.
+Cuando está activada, Loomio almacena los votos por separado de las identidades de los votantes. Los resultados permanecen ocultos hasta que se cierra la votación, y los votantes no pueden agregar motivos del voto, revisar el voto que han enviado ni cambiarlo.
+
+Consulta [Votación anónima](/en/user_manual/polls/anonymous_voting) para conocer cómo se separan las identidades de los votos, qué información se conserva y cuáles son los límites de esta protección.
 
 > [!WARNING]
-> Una vez que una encuesta ha comenzado, no puedes editarla para hacerla anónima ni desactivar la configuración anónima. No puedes reabrir una encuesta anónima después de que se haya cerrado.
+> Una vez que se abre la votación, no puedes activar ni desactivar la votación anónima. No puedes reabrir una encuesta anónima después de que se cierre.
 
 <!-- translation-section: vote-reason -->
 
 ### Motivo del voto
-Puede ser útil entender por qué las personas han votado como lo han hecho. Con este ajuste, puedes pedirles que compartan lo que piensan al votar.
 
-Los ajustes disponibles dependen de la plantilla:
+Pide a los votantes que expliquen por qué han votado como lo han hecho. Los ajustes disponibles dependen de la plantilla:
 
-- **Opcional** permite a los votantes elegir si dan un motivo
-- **Requerido para estar en desacuerdo o bloquear** exige un motivo cuando la opción seleccionada usa el icono de votación En desacuerdo o Bloqueo
-- **Requerido para bloquear** exige un motivo cuando la opción seleccionada usa el icono de votación Bloqueo
-- **Requerido** exige que cada votante dé un motivo
-- **Desactivado** elimina el campo del motivo del voto
+- **Opcional:** Los votantes pueden elegir si dan un motivo del voto.
+- **Requerido para estar en desacuerdo o bloquear:** Los votantes deben dar un motivo cuando eligen una opción con el icono En desacuerdo o Bloqueo.
+- **Requerido para bloquear:** Los votantes deben dar un motivo cuando eligen una opción con el icono Bloqueo.
+- **Requerido:** Cada votante debe dar un motivo.
+- **Desactivado:** Elimina el campo del motivo del voto.
 
 ![](vote_reason_options.png)
 
-Los ajustes condicionales dependen del icono de votación, no del nombre de la opción. Siguen aplicándose si cambias el nombre de En desacuerdo por un término como Objeción. La plantilla de Consentimiento usa **Requerido para estar en desacuerdo o bloquear** de forma predeterminada, mientras que la plantilla de Consenso usa **Requerido para bloquear**. Las demás plantillas usan **Opcional** de forma predeterminada. El autor de la encuesta puede cambiar este ajuste para una encuesta concreta.
+Los ajustes condicionales dependen del icono de votación, no del nombre de la opción, por lo que siguen aplicándose si cambias el nombre de En desacuerdo a Objeción. La plantilla de Consentimiento usa **Requerido para estar en desacuerdo o bloquear** de forma predeterminada, la plantilla de Consenso usa **Requerido para bloquear** y las demás plantillas usan **Opcional**. El autor de la encuesta puede cambiar este ajuste para una encuesta concreta.
 
-**Limitar el motivo a un máximo de 500 caracteres:** Los motivos breves son más fáciles de entender. Un conjunto de motivos concisos es un recurso útil para tomar una decisión. Este ajuste está marcado de forma predeterminada. Desmárcalo para permitir motivos más largos.
+**Limitar el motivo a un máximo de 500 caracteres:** Esta opción está marcada de forma predeterminada para mantener concisos los motivos de los votos. Desmárcala para permitir motivos más largos.
 
 <!-- translation-section: hide-results -->
 
 ### Ocultar resultados
 
-Si quieres que las personas voten sin saber cómo han votado otras, puedes ocultar los resultados de la encuesta.
+Oculta los resultados de la encuesta para que las personas puedan votar sin ver cómo han votado otras:
 
-Cuando los resultados están ocultos hasta emitir un voto, las personas pueden ver las opciones elegidas y los motivos después de votar.
-
-Cuando los resultados están ocultos hasta que se cierre la votación, las respuestas a los votos y las menciones en los motivos de los votos están desactivadas hasta que se cierre la encuesta. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
+- **Hasta que se emita un voto:** Las personas pueden ver las opciones elegidas y los motivos de los votos después de emitir un voto propio.
+- **Hasta que se cierre la votación:** Los resultados, las respuestas a los votos y las menciones en los motivos de los votos permanecen ocultos hasta que se cierra la encuesta. Puedes ampliar el plazo de cierre mientras la encuesta esté abierta, pero no puedes reabrirla después de que se cierre.
 
 <!-- translation-section: editing-settings-before-voting-opens -->
 
 ### Editar la configuración antes de que se abra la votación
 
-Las personas con permiso para editar una encuesta pueden cambiar los detalles y la configuración, incluidas la votación anónima y la visibilidad de los resultados, antes de que se abra la votación. Una vez que se abre la votación, la configuración de anonimato queda fija y los resultados ocultos hasta el cierre no se pueden revelar antes de tiempo.
-
-Las encuestas anónimas siempre ocultan los resultados hasta que se cierra la votación.
+Antes de que se abra la votación, cualquier persona con permiso para editar la encuesta puede cambiar los detalles y la configuración, incluidas la votación anónima y la visibilidad de los resultados. Una vez que se abre la votación, la configuración de anonimato queda fija y los resultados ocultos hasta el cierre no se pueden revelar antes de tiempo.
 
 <!-- translation-section: managing-polls -->
 
@@ -232,13 +216,13 @@ Abre el menú de tres puntos en la parte inferior derecha de la encuesta.
 
 ### Editar encuesta
 
-Usa **Editar encuesta** para editar el contenido o la configuración de la encuesta.
+Selecciona **Editar encuesta** para cambiar el contenido o la configuración de la encuesta.
 
 <!-- translation-section: save-as-template -->
 
 ### Guardar como plantilla
 
-Usa **Guardar como plantilla** en el menú de acciones de una encuesta para reutilizar su contenido, opciones de voto, explicaciones y configuración. Revisa el formulario de la plantilla con los campos ya rellenados, dale un nombre y un subtítulo a la plantilla y selecciona **Guardar plantilla**. Las personas del grupo podrán elegirla al iniciar una nueva encuesta.
+Selecciona **Guardar como plantilla** para reutilizar el contenido, las opciones de voto, las explicaciones y la configuración de la encuesta. Revisa el formulario con los campos ya rellenados, dale un nombre y un subtítulo a la plantilla y selecciona **Guardar plantilla**. Las personas del grupo podrán elegirla al iniciar una nueva encuesta.
 
 Los admins del grupo pueden guardar plantillas. Los miembros también pueden guardarlas cuando **Los miembros pueden crear plantillas** está activado en los permisos del grupo. Consulta [Plantillas de encuestas](/en/user_manual/polls/poll_templates) para obtener más detalles.
 
@@ -254,13 +238,13 @@ El **Historial de notificaciones** muestra quién recibió una notificación y s
 
 ### Exportar encuesta
 
-Usa **Exportar** para descargar el estado y los resultados de la encuesta en un archivo de hoja de cálculo (.csv), con los datos sin formato para analizarlos o archivarlos.
+Selecciona **Exportar** para descargar el estado y los resultados de la encuesta en un archivo de hoja de cálculo (.csv) para analizarlos o archivarlos.
 
 <!-- translation-section: print -->
 
 ### Imprimir
 
-Usa **Imprimir ** en las acciones del hilo para abrir un documento HTML que puedas imprimir. Puedes imprimirlo o guardarlo como PDF para publicarlo y archivarlo.
+Abre el menú de tres puntos del hilo y selecciona **Imprimir ** para abrir una vista HTML de la discusión y sus encuestas que puedas imprimir. Puedes imprimirla o guardarla como PDF para publicarla o archivarla.
 
 ![](proposal_print.png#width-80)
 
@@ -268,11 +252,7 @@ Usa **Imprimir ** en las acciones del hilo para abrir un documento HTML que pued
 
 ### Eliminar
 
-**Eliminar** eliminará la encuesta. Primero se te pedirá que confirmes que quieres eliminarla.
-
-Asegúrate de que quieres eliminar la encuesta. No hay una opción para restaurarla.
-
-Después de eliminarla, queda un marcador de **Elemento eliminado** en el hilo.
+Selecciona **Eliminar** y confirma para eliminar permanentemente la encuesta. Las encuestas eliminadas no se pueden restaurar. Queda un marcador de **Elemento eliminado** en el hilo.
 
 ![](proposal_delete.png)
 
@@ -280,4 +260,4 @@ Después de eliminarla, queda un marcador de **Elemento eliminado** en el hilo.
 
 ### Guardar marcador
 
-Usa **Guardar marcador** para añadir la encuesta a tus marcadores y acceder a ella rápidamente más adelante.
+Selecciona **Guardar marcador** para añadir la encuesta a tus marcadores y acceder a ella rápidamente más adelante.

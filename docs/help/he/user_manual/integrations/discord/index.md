@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: e6a548b890528568
+  introduction: 3068f05a3fe86205
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # שילוב עם Discord
 
-_חיבור ההתראות של קבוצת Loomio לצ׳אט הצוות ב-Discord._
-
-Loomio יכול לשלוח התראות לערוצים ב-Discord על דיונים, הצעות, תגובות, הצבעות ומסקנות חדשים. ניתן גם לשלוח התראה לחדר הצ׳אט באופן ידני כדי להזכיר לאנשים החלטה.
+Loomio יכול לשלוח התראות לערוצים ב-Discord כשנוצרים דיונים, סקרים, תגובות, הצבעות ומסקנות חדשים. ניתן גם לשלוח התראה לערוץ באופן ידני כדי להזכיר לאנשים החלטה.
 
 ---
 
-יש לפתוח את שרת Discord ולמצוא את תפריט הגדרות השרת.
-![](server-settings.png)
+1. יש לפתוח את שרת Discord ולעבור אל **הגדרות השרת**.
 
-יש ללחוץ על "Integrations" (שילובים).
-![](integrations.png)
+   ![](server-settings.png)
 
-לאחר מכן יש ללחוץ על "Add Webhook" (הוספת Webhook) ולתת לו שם, למשל "בוט Loomio".
+2. יש לבחור **אינטגרציות**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-יש לוודא שכתובת ה-Webhook הועתקה ללוח, ולעבור לקישור שלהלן.
+3. יש לבחור **הוספת Webhook**, לתת לו שם כגון `Loomio`, לבחור ערוץ ולהעתיק את כתובת ה-Webhook.
+
+   ![](add-webhook.png)
+
+לאחר העתקת כתובת ה-Webhook, יש להשלים את החיבור ב-Loomio:
 
 [הגדרת שילוב עם צ׳אט ב-Loomio](../chatbots/#set-up-a-chat-integration)

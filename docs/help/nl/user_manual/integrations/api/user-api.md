@@ -1,44 +1,44 @@
 ---
 title: Gebruikers-API
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
-  introduction: f3d8568aa2fca7db
-  response-size-and-related-records: 5e95efc7c968e8da
+  introduction: df5f093a7d644562
+  response-size-and-related-records: 25c0dee53b8abc15
   endpoint-summary: '097123bbd3b2f095'
   groups: 0c6e911511f85881
-  list-groups: 61cb18ea42378d08
+  list-groups: 3f563fc1d666576e
   get-a-group: aabf872e1851a741
-  webhooks: 0fd0f939a97c637b
-  list-webhooks: f90cd75d625b0219
-  create-a-webhook: 2b9e6be68ee46469
+  webhooks: fef48b220a9add3f
+  list-webhooks: a69c883d6f981b7a
+  create-a-webhook: ebbe600c65f787cf
   update-a-webhook: faaab569dca58dc8
   test-a-webhook-destination: e99cd4ffd8c1b4c3
   delete-a-webhook: ed1c594e15bb8a7d
   event-types: b608c72c1d76334c
-  http-delivery: 505eb8000572c4db
+  http-delivery: 51151607351b7e59
   payload-formats: 142420a88cc51ef2
   search: 81023b63f64596f9
   params: 9a3b53170a4c9f48
   participation-report: 0a4e67a57e683733
-  params-2: 8987c69b0bdc74d1
+  params-2: 58a094fa8015a745
   example: c637922b7b536bd5
   create-discussion: ac598fb49d27d351
   params-3: f7abfe69c4808958
@@ -114,7 +114,7 @@ generated:
   params-5: 903b89e13556c636
   example-5: f3a9b40bbe8ef72f
   read-thread: 2de2600792d054e1
-  example-6: 5d31c34f3611a6c4
+  example-6: f57ba7b9bdd9541e
   edit-discussion: 100b12cab5727da8
   params-6: bdd29e58b4f36acd
   example-7: c6200d389986ac75
@@ -133,7 +133,7 @@ generated:
   example-12: 1e6a6817c4dcbc48
   show-poll: a920e725b0dd4a54
   example-13: b1a654227f638c2c
-  list-polls: 30669567639116eb
+  list-polls: 2fc0cdf1bce5b1d3
   params-10: 3fa33e4f881d81ed
   example-14: 564e2b68fc9bca98
   edit-poll: f4620cdf3b9c2f3e
@@ -141,12 +141,12 @@ generated:
   example-15: c81c098fc82447c0
   soft-delete-poll: f971f5e9c9fe698e
   example-16: a0f9fb190fadfe4e
-  list-memberships: 5f9c30f3d35a4ba8
+  list-memberships: 2764b1eabbcf3e82
   params-12: d46b97f01c9cf25f
   example-17: 970ad727179904d7
-  manage-memberships: 996154cffc8b283c
+  manage-memberships: 57f0a768357b869e
   params-13: a4f101b58edf371b
-  example-18: 6719a236ffc5cfcd
+  example-18: 38513d9ede97e142
   pagination: bdde9f63c57d4c3e
   comments: c7440d8d45e22718
   discussions: a3e8b977dbe6ee66
@@ -154,7 +154,7 @@ generated:
   polls: 53d53a20a696adf2
   threads: 19bc02fc1c26317b
   request-bodies: 70722ea4a3d5d3c6
-  poll-many-options: 9a7e0d5e9314f386
+  poll-many-options: db25db5d49988b04
   poll-detailed-options: 163dfe901aa4202b
   edit-poll-detailed-options: 260b4d4491740b12
 title_source: c23fb6526b722360
@@ -169,7 +169,7 @@ title_generated: d28b6e74f9b5edd3
 
 `/api/user0` is de gebruikersgerichte API voor integraties met Loomio. Deze gebruikt de API-sleutel van een gebruikersaccount, en elke actie wordt uitgevoerd als die gebruiker.
 
-Groepsbewerkingen gebruiken de lidmaatschappen en groepsrechten van de gebruiker van de API-sleutel. De status van instantiebeheerder geeft een API-sleutel geen ruimere toegang tot groepen of inhoud; gebruik de Server-API voor beheer op instantieniveau.
+Groepsbewerkingen gebruiken de lidmaatschappen en groepsrechten van de gebruiker van de API-sleutel. De status van instantieadmin geeft een API-sleutel geen ruimere toegang tot groepen of inhoud; gebruik de Server-API voor beheer op instantieniveau.
 
 Gebruik de API-sleutel van het Loomio-gebruikersaccount dat de acties zal uitvoeren. Een apart botaccount is handig als een integratie geen uitnodigingen voor peilingen of meldingen moet ontvangen.
 
@@ -253,7 +253,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-Voor directe controle geef je `exclude_types` mee met recordtypen in het enkelvoud, gescheiden door spaties. Zo laat `exclude_types=group reaction` gerelateerde groepen en emoji-reacties weg. Veelgebruikte waarden zijn `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` en `topic_item`. Uitsluitingen gelden voor gerelateerde records, niet voor de primaire resource die via het endpoint wordt opgevraagd.
+Voor directe controle geef je `exclude_types` mee met recordtypen in het enkelvoud, gescheiden door spaties. Zo laat `exclude_types=group reaction` gerelateerde groepen en emoji-reacties weg.
+
+Veelgebruikte waarden zijn `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` en `topic_item`. Uitsluitingen gelden voor gerelateerde records, niet voor de primaire resource die via het endpoint wordt opgevraagd.
 
 Responsen met collecties bevatten `meta.total` wanneer een exacte collectiegrootte is gedefinieerd. Het totaal wordt berekend voordat `limit` en `offset` worden toegepast. Endpoints zoals zoeken, die bewust een begrensde verzameling resultaten teruggeven, laten `meta.total` weg in plaats van `null` terug te geven.
 
@@ -527,7 +529,7 @@ Belangrijke groepsvelden zijn:
 | `memberships_count` | Aantal actieve en nog niet geaccepteerde lidmaatschappen |
 | `accepted_memberships_count` | Aantal geaccepteerde lidmaatschappen |
 | `pending_memberships_count` | Aantal nog niet geaccepteerde uitnodigingen |
-| `admin_memberships_count` | Aantal groepsbeheerders |
+| `admin_memberships_count` | Aantal groepsadmins |
 | `discussions_count` | Aantal discussies rechtstreeks in de groep |
 | `polls_count` | Aantal peilingen rechtstreeks in de groep |
 | `subgroups_count` | Aantal subgroepen |
@@ -562,7 +564,7 @@ De respons bevat de groep in de `groups`-array en gebruikt dezelfde velden als h
 
 ### Lidmaatschappen weergeven
 
-Geef de lidmaatschappen weer die zichtbaar zijn voor de gebruiker van de API-sleutel. Groepsleden kunnen de namen, ID's, titels en rollen van leden lezen. E-mailadressen worden alleen opgenomen voor het eigen account van de gebruiker van de API-sleutel of wanneer die gebruiker een groepsbeheerder is.
+Geef de lidmaatschappen weer die zichtbaar zijn voor de gebruiker van de API-sleutel. Groepsleden kunnen de namen, ID's, titels en rollen van leden lezen. E-mailadressen worden alleen opgenomen voor het eigen account van de gebruiker van de API-sleutel of wanneer die gebruiker een groepsadmin is.
 
 `GET /api/user0/memberships`
 
@@ -593,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Lidmaatschappen beheren
 
-Stuur een lijst met e-mailadressen. Alle nieuwe e-mailadressen worden uitgenodigd voor de groep. Anders dan bij het weergeven van lidmaatschappen zijn voor deze handeling groepsbeheerdersrechten vereist.
+Stuur een lijst met e-mailadressen om nieuwe mensen voor de groep uit te nodigen. Anders dan bij het weergeven van lidmaatschappen zijn voor deze handeling groepsadminrechten vereist.
 
 `POST /api/user0/memberships`
 
@@ -622,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-Als je `remove_absent=1` meegeeft, worden alle leden van de groep die niet in de lijst staan uit de groep verwijderd. Let op: hiermee kun je iedereen uit jouw groep verwijderen.
+Als je `remove_absent: true` meegeeft, worden alle groepsleden die niet in de lijst staan uit de groep verwijderd. Let op: hiermee kun je iedereen uit jouw groep verwijderen.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -632,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-Dit retourneert een object met `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+Dit retourneert een object met `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -660,7 +662,9 @@ Geef dezelfde samengevoegde deelnamegegevens terug die Loomio gebruikt voor het 
 | `interval` | Interval voor het onderdeel `base`: `day`, `week`, `month` of `year` |
 | `member_type` | Stel in op `delegate` met `section=users` om alleen huidige afgevaardigden terug te geven |
 
-Iemand is een afgevaardigde als die persoon in minstens één geselecteerde groep een actief lidmaatschap als afgevaardigde heeft. De aantallen voor die persoon worden over alle geselecteerde groepen samengevoegd. Rijen voor afgevaardigden worden ook teruggegeven als alle activiteitsaantallen nul zijn. De aantallen omvatten threads, reacties, peilingen, stemmen, conclusies en emoji-reacties; het zijn geen deelnamepercentages voor stemmen. Gebruikersrijen bevatten ook aantallen verstrekte, uitgebrachte en gemiste stembiljetten waarbij de identiteit van de stemmer bekend is. Anonieme peilingen worden uitgesloten van alle stemaantallen per persoon. `all_votes_cast` is alleen waar als er minstens één stembiljet is verstrekt en elk verstrekt stembiljet is uitgebracht.
+Iemand is een afgevaardigde als die persoon in minstens één geselecteerde groep een actief lidmaatschap als afgevaardigde heeft. De aantallen voor die persoon worden over alle geselecteerde groepen samengevoegd, en rijen voor afgevaardigden worden ook teruggegeven als alle activiteitsaantallen nul zijn.
+
+De aantallen omvatten threads, reacties, peilingen, stemmen, conclusies en emoji-reacties; het zijn geen deelnamepercentages voor stemmen. Gebruikersrijen bevatten ook aantallen verstrekte, uitgebrachte en gemiste stembiljetten waarbij de identiteit van de stemmer bekend is, terwijl anonieme peilingen worden uitgesloten van alle stemaantallen per persoon. `all_votes_cast` is alleen waar als er minstens één stembiljet is verstrekt en elk verstrekt stembiljet is uitgebracht.
 
 De API past dezelfde zichtbaarheidsregels voor groepen toe als het verslag in de applicatie. Een API-sleutel van een gebruiker kan geen verslaggegevens beschikbaar maken uit groepen waartoe die gebruiker geen toegang heeft.
 
@@ -778,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -884,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Geef de peilingen in een groep weer die zichtbaar zijn voor de gebruiker van de API-sleutel, inclusief zelfstandige peilingen en peilingen binnen discussies. Bij een openbaar zichtbare groep kan iemand die geen lid is de openbare peilingen weergeven; privépeilingen blijven alleen toegankelijk voor gebruikers die ze in Loomio kunnen lezen. Het antwoord bevat de huidige conclusie van elke zichtbare peiling, zodat je met `status=closed` gesloten peilingen kunt weergeven en hun conclusies kunt lezen als die zijn vastgelegd.
 
-Om de status van besluiten naast discussies weer te geven, haal je discussies en peilingen voor dezelfde groep op, gebruik je `status=all` voor peilingen en koppel je ze aan elkaar op basis van hun `topic_id`-waarden. Haal elke pagina op met `limit` en `offset`. Een discussie kan meerdere peilingen hebben, dus kies welke peiling de weergegeven status bepaalt, bijvoorbeeld de meest recent aangemaakte peiling. Een `closed_at`-waarde die niet null is, duidt op een gesloten peiling; een `closing_at`-waarde die null is, duidt op een concept. Als een peiling een conclusie heeft, verwijst de `current_outcome_id` naar een record in de `outcomes`-array van het antwoord; koppel de `poll_id` van dat record aan de `id` van de peiling.
+Om de status van besluiten naast discussies weer te geven, haal je discussies en peilingen voor dezelfde groep op (met `status=all` voor peilingen) en koppel je ze aan elkaar op basis van hun `topic_id`-waarden. Haal elke pagina op met `limit` en `offset`. Een discussie kan meerdere peilingen hebben, dus kies welke peiling de weergegeven status bepaalt, bijvoorbeeld de meest recent aangemaakte peiling.
+
+Een `closed_at`-waarde die niet null is, duidt op een gesloten peiling, en een `closing_at`-waarde die null is, duidt op een concept. Als een peiling een conclusie heeft, verwijst de `current_outcome_id` naar een record in de `outcomes`-array van het antwoord; koppel de `poll_id` van dat record aan de `id` van de peiling.
 
 Voor een afzonderlijke discussie kun je ook [de items in de thread lezen](#read-thread) met `GET /api/user0/threads/:topic_id/items`. Dit geeft de peilingen en conclusies van de thread terug, samen met de overige items. Haal elke pagina op om de volledige thread te verkrijgen.
 
@@ -1090,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-Het endpoint `items` retourneert een pagina van de stroom van gebeurtenissen in oplopende volgorde, inclusief zichtbare reacties, peilingen, stemmen en conclusies. `meta.total` is het totale aantal items in de thread. Haal de volgende pagina's op om de volledige stroom te lezen. Het endpoint `markdown` retourneert de volledige zichtbare thread als één Markdown-document. Redenen bij stemmen worden alleen opgenomen wanneer ze zichtbaar zijn voor de gebruiker van de API-sleutel.
+Het endpoint `items` retourneert een pagina van de stroom van gebeurtenissen in oplopende volgorde, inclusief zichtbare reacties, peilingen, stemmen en conclusies. `meta.total` is het totale aantal items in de thread; haal de volgende pagina's op om de volledige stroom te lezen.
+
+Het endpoint `markdown` retourneert de volledige zichtbare thread als één Markdown-document. Redenen bij stemmen worden alleen opgenomen wanneer ze zichtbaar zijn voor de gebruiker van de API-sleutel.
 
 Alle thread-endpoints handhaven dezelfde rechten als de Loomio-interface. De API-sleutel geeft geen toegang tot een thread die de gebruiker normaal gesproken niet kan openen.
 
@@ -1100,7 +1108,7 @@ Alle thread-endpoints handhaven dezelfde rechten als de Loomio-interface. De API
 
 De Gebruikers-API werkt met verzoeken: een integratie roept Loomio aan wanneer deze gegevens wil lezen of wijzigen. Een groepswebhook zorgt voor verzending in de andere richting. Loomio stuurt geselecteerde groepsgebeurtenissen naar jouw endpoint zodra ze plaatsvinden, zodat een integratie de REST-API niet herhaaldelijk hoeft op te vragen om wijzigingen te vinden.
 
-Webhooks worden per groep ingesteld en vereisen groepsbeheerdersrechten. Je kunt ze beheren via de Loomio-interface:
+Webhooks worden per groep ingesteld en vereisen groepsadminrechten. Je kunt ze beheren via de Loomio-interface:
 
 1. Open de groep.
 2. Open het groepsmenu en selecteer **Chatintegraties**.
@@ -1117,7 +1125,7 @@ Agents en andere integraties kunnen webhooks ook beheren via de hieronder beschr
 
 ### Webhooks opvragen
 
-Geeft de chatintegraties terug die voor een groep zijn ingesteld. De gebruiker van de API-sleutel moet beheerder van die groep zijn. De respons bevat bestemmings-URL's en mag daarom niet toegankelijk worden gemaakt voor gewone groepsleden.
+Geeft de chatintegraties terug die voor een groep zijn ingesteld. De gebruiker van de API-sleutel moet admin van die groep zijn. De respons bevat bestemmings-URL's, dus maak deze niet toegankelijk voor gewone groepsleden.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1170,7 +1178,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-De gebruiker van de API-sleutel moet groepsbeheerder zijn van de groep met `group_id`. Voordat de bestemming wordt opgeslagen, wordt gecontroleerd of deze een openbare URL is.
+De gebruiker van de API-sleutel moet admin zijn van de groep met `group_id`. Voordat de bestemming wordt opgeslagen, wordt gecontroleerd of deze een openbare URL is.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1261,7 +1269,9 @@ Content-Type: application/json; charset=utf-8
 
 De time-out voor het verzoek is vijf seconden. Een `2xx`-antwoord, inclusief `204 No Content`, geldt als geslaagd. Diensten die webhooks ontvangen, moeten snel antwoorden, langer durend werk asynchroon verwerken en dubbele afleveringen of afleveringen in een andere volgorde kunnen verwerken.
 
-Loomio voegt momenteel geen webhookhandtekening, header met een gedeeld geheim, gebeurtenis-ID of afleverings-ID toe. Behandel de volledige bestemmings-URL als een toegangsgegeven, maak deze niet openbaar en neem een niet te raden token op in de URL als de ontvangende dienst dat ondersteunt. Als je een stabiel, machineleesbaar gebeurtenisschema of ondertekende aflevering nodig hebt, gebruik de webhook dan als melding van een wijziging en haal de actuele records op via de geauthenticeerde Gebruikers-API.
+Loomio voegt momenteel geen webhookhandtekening, header met een gedeeld geheim, gebeurtenis-ID of afleverings-ID toe. Behandel de volledige bestemmings-URL als een toegangsgegeven, maak deze niet openbaar en neem een niet te raden token op in de URL als de ontvangende dienst dat ondersteunt.
+
+Als je een stabiel, machineleesbaar gebeurtenisschema of ondertekende aflevering nodig hebt, gebruik de webhook dan als melding van een wijziging en haal de actuele records op via de geauthenticeerde Gebruikers-API.
 
 <!-- translation-section: payload-formats -->
 

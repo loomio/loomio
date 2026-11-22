@@ -1,24 +1,24 @@
 ---
 title: 投票
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: b4aea57a511b43e3
-  simple-poll: 7276517d5a795e2e
-  score-poll: 6c7b4492bef97220
-  dot-vote: 0e6f871fc1c73649
-  ranked-choice: 07eb8208106e6795
+  simple-poll: 34fcc491a1ccb21d
+  score-poll: 459f368fce8d8fa0
+  dot-vote: e179a34cd3c25a5e
+  ranked-choice: 71cde002fa3d0065
   time-poll: 83809b604b8cf9f8
   stv-election: 46c87cb426099b9c
 title_source: 996729458535904a
@@ -42,25 +42,25 @@ title_generated: 3c5a0fdbcf55aaa8
 
 <!-- translation-section: simple-poll -->
 
-## シンプルなアンケート
+## 選択
 
 [選択](/en/user_manual/polls/choose/)では、参加者が1つ以上の選択肢を選べます。最も人気のある選択肢を見つけたり、候補を絞り込んだりするために使います。
 
 <!-- translation-section: score-poll -->
 
-## スコア投票
+## スコア
 
 [スコア](/en/user_manual/polls/score/)では、参加者がすべての選択肢を同じ尺度で評価できます。選択肢ごとの支持の強さ、準備状況、適合性、重要度を比較するために使います。
 
 <!-- translation-section: dot-vote -->
 
-## ドット投票
+## 配分
 
-[配分](/en/user_manual/polls/allocate/)では、各参加者が一定のポイントを選択肢に配分します。あるものを選ぶことで、ほかのものに向ける関心や資源が減る場合に、優先順位を明らかにするために使います。
+[配分](/en/user_manual/polls/allocate/)では、各参加者が一定のポイントを選択肢に配分します。あるものを選ぶことで、ほかのものに向ける関心や資源が減る場合に、優先順位を決めるために使います。
 
 <!-- translation-section: ranked-choice -->
 
-## ランク投票
+## ランク
 
 [ランク](/en/user_manual/polls/rank/)では、参加者が希望する順に選択肢を並べられます。グループ全体が希望する順位を把握したり、最も支持される選択肢を1つ選んだりするために使います。
 

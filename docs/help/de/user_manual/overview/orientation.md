@@ -1,28 +1,28 @@
 ---
 title: Kurzer Rundgang
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: d05f7bc67c11cd2a
-  group-page: b3f49d6f969273a8
-  tabs: 16a837ef148155b7
+  introduction: b7289601c5ba4dc7
+  group-page: a28445e2be052c68
+  tabs: 7f5b150cc35b7834
   sidebar: b15ccbf976f95735
-  user-settings: 6f02090d5a174568
-  notifications: 0d4126824feebb30
+  user-settings: addc968c99d05dfe
+  notifications: d9b2b36d8caf5b89
   what-to-do-next: 75df598e43c0f218
-  mobile-navigation: 8740ca90beaadcea
+  mobile-navigation: 4d1281fee194e126
 title_source: c41a33370cd580dd
 title_generated: 60a9792e09ce832a
 ---
@@ -31,13 +31,13 @@ title_generated: 60a9792e09ce832a
 
 # Kurzer Rundgang
 
-Diese Seite stellt die wichtigsten Bereiche der Loomio-Oberfläche vor und zeigt dir, wo du die Arbeit findest, an der du beteiligt bist.
+Diese Seite stellt die wichtigsten Bereiche von Loomio vor und zeigt dir, wo du deine Arbeit findest.
 
 <!-- translation-section: group-page -->
 
 ## Gruppenseite
 
-Die Startseite deiner Gruppe stellt die Gruppe vor und bietet Zugang zu ihrer Arbeit.
+Die Startseite deiner Gruppe beschreibt die Gruppe und verlinkt auf ihre Arbeit.
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ Die Startseite deiner Gruppe stellt die Gruppe vor und bietet Zugang zu ihrer Ar
 
 ### Tabs
 
-Die Tabs unter der Gruppenbeschreibung bieten Zugang zu:
+Die Tabs unter der Gruppenbeschreibung zeigen:
 
-**Diskussionen** - Die Diskussions-Threads der Gruppe und die neuesten Aktivitäten.
-
-**Abstimmungen** - Eine Liste der aktiven Abstimmungen in deiner Gruppe.
-
-**Mitglieder** - Die Personen, die zur Gruppe gehören.
-
-**Dokumente** - Dokumente und andere Dateien, die innerhalb der Gruppe angehängt wurden. Der Tab sammelt Dateien aus dem Kontext von Diskussionen, aus Kommentaren, Vorschlägen und Abstimmungen. So kannst du ein Dokument finden, ohne dich daran erinnern zu müssen, wo es angehängt wurde.
+- **Diskussionen**: Die Diskussions-Threads der Gruppe und die neuesten Aktivitäten.
+- **Abstimmungen**: Offene und beendete Abstimmungen in der Gruppe.
+- **Mitglieder**: Die Personen, die zur Gruppe gehören.
+- **Dokumente**: Dateien, die in Diskussionen, Kommentaren, Vorschlägen und Abstimmungen innerhalb der Gruppe angehängt wurden. So kannst du ein Dokument finden, ohne dich daran erinnern zu müssen, wo es geteilt wurde.
 
 Unter [Inhalte finden](/en/user_manual/overview/finding-content) findest du Hilfe zu Suche, Filtern, Schlagwörtern, Lesezeichen und ungelesenen Diskussionen.
 
@@ -75,13 +72,13 @@ Wähle deinen Namen in der Seitenleiste aus, um dein Benutzermenü zu öffnen.
 
 ![](user_settings_sidebar.png)
 
-Über dieses Menü kannst du dein Profil bearbeiten, Benachrichtigungseinstellungen ändern, ein Design auswählen, Kontoeinstellungen verwalten und dich abmelden.
+Über dieses Menü kannst du dein Profil bearbeiten, Benachrichtigungseinstellungen ändern, ein Design auswählen, dein Konto verwalten und dich abmelden.
 
 <!-- translation-section: notifications -->
 
 ## Benachrichtigungen
 
-Die Glockenschaltfläche auf dem Desktop oben rechts oder auf Mobilgeräten in der unteren Navigationsleiste öffnet deine Benachrichtigungen in der App. Eine Markierung erscheint, wenn du Benachrichtigungen hast, die du noch nicht angesehen hast.
+Wähle das Glockensymbol auf dem Desktop oben rechts oder auf Mobilgeräten in der unteren Navigationsleiste aus, um deine Benachrichtigungen in der App zu öffnen. Eine Markierung zeigt an, wenn du ungelesene Benachrichtigungen hast.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Unter [Benachrichtigungen](/en/user_manual/users/email_settings) erfährst du me
 
 ## Mobile Navigation
 
-Auf Mobilgeräten bietet dir die untere Navigationsleiste schnellen Zugriff auf die Seitenleiste, die Übersicht und die Benachrichtigungen. Wenn du eine Diskussion liest, öffnet das Thread-Menü das Inhaltsverzeichnis und die Thread-Aktionen.
+Auf Mobilgeräten öffnest du über die untere Navigationsleiste die Seitenleiste, die Übersicht und die Benachrichtigungen. Innerhalb einer Diskussion öffnet das Thread-Menü die Inhalte und Aktionen des Threads.
 
 <!-- translation-section: what-to-do-next -->
 

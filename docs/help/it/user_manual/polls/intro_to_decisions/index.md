@@ -1,40 +1,40 @@
 ---
 title: Proposte e votazioni
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: ebf374feeca6fb9f
+  introduction: 899d1f51d9c170a2
   find-the-right-help: 2f097107c2307e3e
   proposals: caec5d61bd5f2da9
   polls: bb7e1518a10fe043
   start-a-proposal-or-poll: e40991256f7ef875
-  choose-whether-to-use-a-discussion: 1ea93b420d70a0b2
+  choose-whether-to-use-a-discussion: 77220a25ee030986
   in-a-discussion: ecb47f70246283ff
   without-a-discussion: 1c6ef2c9a3feb0aa
   what-happens-next: 22a9d90c47fc7fc0
   1-create-it: fdd3b95f0a68156d
-  2-voting-opens: dd1303519f29301b
-  3-people-vote: 269123d0b7581bd2
-  4-it-closes: 2d75be884a39cdf6
-  5-share-an-outcome: 830ab4954674e0d5
+  2-voting-opens: 734ebbdb269aec2b
+  3-people-vote: '068243d7a26108ad'
+  4-it-closes: 59d73b5f4fe50fd7
+  5-share-an-outcome: edff077fa2a8bf3b
 title_source: d45b4ba3cb7a27cb
 title_generated: e427868b8757c27c
 ---
@@ -43,7 +43,7 @@ title_generated: e427868b8757c27c
 
 # Proposte e sondaggi
 
-Le proposte e i sondaggi raccolgono risposte strutturate da un gruppo. Possono aiutare a verificare un'idea, prendere una decisione, individuare le priorità, programmare una riunione o eleggere rappresentanti.
+Le proposte e i sondaggi raccolgono risposte strutturate da un gruppo. Usali per verificare un'idea, prendere una decisione, stabilire le priorità, programmare una riunione o eleggere rappresentanti.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ Consulta [Sondaggi](../proposal_types/) per confrontarli.
 
 ### Scegli se usare una discussione
 
-Avvia la proposta o il sondaggio all'interno di una discussione quando le persone hanno bisogno di contesto, di fare domande o di confrontarsi prima di rispondere. Una discussione può contenere diverse proposte nel tempo, conservando le modifiche e la conclusione finale in un'unica documentazione dell'argomento.
+Avvia una proposta o un sondaggio all'interno di una discussione quando le persone hanno bisogno di contesto, di fare domande o di confrontarsi prima di rispondere. Una discussione può contenere diverse proposte nel tempo, conservando le modifiche e la conclusione finale in un'unica documentazione.
 
-Avvia un sondaggio autonomo quando la discussione si è già svolta altrove, per esempio durante una riunione, oppure quando la domanda è semplice e devi solo raccogliere risposte. Includi dettagli sufficienti o un link alla documentazione pertinente, in modo che gli elettori capiscano a cosa stanno rispondendo.
+Avvia un sondaggio autonomo quando la discussione si è già svolta altrove, per esempio durante una riunione, oppure quando la domanda è semplice e devi solo raccogliere risposte. Includi dettagli sufficienti o un link alle informazioni di contesto, in modo che gli elettori sappiano a cosa stanno rispondendo.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,19 +138,19 @@ Assegna un titolo e aggiungi i dettagli, controlla le opzioni e le impostazioni 
 
 ### 2. Si apre la votazione
 
-Quando si apre la votazione, Loomio avvisa le persone che hai invitato. Consulta [Invita a votare](../inviting_people/).
+Quando si apre la votazione, Loomio avvisa le persone che hai invitato. Consulta [Gestisci gli elettori](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Le persone votano
 
-Durante la votazione, le persone possono votare, spiegare il proprio voto e modificarlo. I risultati si aggiornano man mano che le persone votano, a meno che non siano nascosti fino alla chiusura. Per impostazione predefinita, le persone che non hanno votato ricevono un promemoria un giorno prima della chiusura.
+Mentre il sondaggio è aperto, le persone possono votare, aggiungere un motivo per il proprio voto e modificarlo. I risultati si aggiornano man mano che le persone votano, a meno che non siano nascosti fino alla chiusura. Per impostazione predefinita, le persone che non hanno votato ricevono un promemoria 24 ore prima della chiusura.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Si chiude
 
-Il sondaggio si chiude automaticamente all'orario di chiusura. Un amministratore della conversazione può anche chiuderlo in anticipo. Dopo la chiusura, un amministratore della conversazione può riaprirlo con un nuovo orario di chiusura per consentire alle persone di continuare a votare. I sondaggi che nascondono i risultati fino alla chiusura delle votazioni, compresi i sondaggi anonimi, non possono essere riaperti. Puoi prolungarne l'orario di chiusura mentre sono ancora aperti.
+Il sondaggio si chiude automaticamente all'orario di chiusura, oppure un amministratore della conversazione può chiuderlo in anticipo. Dopo la chiusura, un amministratore della conversazione può riaprirlo con un nuovo orario di chiusura. I sondaggi che nascondono i risultati fino alla chiusura delle votazioni, compresi i sondaggi anonimi, non possono essere riaperti; puoi posticiparne l'orario di chiusura mentre sono ancora aperti.
 
 <!-- translation-section: 5-share-an-outcome -->
 
@@ -160,8 +160,8 @@ Quando il sondaggio si chiude, Loomio chiede agli amministratori della conversaz
 
 ![La richiesta di inserire una conclusione dopo la chiusura di una proposta](outcome_prompt.png)
 
-La conclusione indica cosa è stato deciso e cosa succederà in seguito. Appare sopra i risultati, quindi è la prima cosa che le persone leggono. Quando la pubblichi, puoi inviare una notifica alle persone. Ricevono un'email con i risultati e la conclusione.
+La conclusione indica cosa è stato deciso e cosa succederà in seguito. Appare sopra i risultati, quindi è la prima cosa che le persone leggono. Quando la pubblichi, puoi inviare una notifica alle persone: ricevono un'email con i risultati e la conclusione.
 
-Puoi anche impostare una **Data della recensione**. In quella data, Loomio ti ricorda di riesaminare la decisione.
+Puoi anche impostare una **Data della recensione**, così Loomio ti ricorda di riesaminare la decisione in quella data.
 
 ![Una conclusione pubblicata con una data di revisione](outcome_published.png)

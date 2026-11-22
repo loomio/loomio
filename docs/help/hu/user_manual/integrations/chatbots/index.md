@@ -1,24 +1,24 @@
 ---
 title: Csevegési integrációk
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: 779b2fb09c483fa5
-  what-it-looks-like-in-chat: '04819bbcd1b31926'
-  generate-a-webhook-url: 792b515bc0f1254e
-  set-up-a-chat-integration: 472b775cb86822fa
-  invite-to-poll: a658a7c34446d38f
-  automatic-notifications: ac7775d8bd814ae7
+  introduction: c7925ca006587da4
+  what-it-looks-like-in-chat: f5c438705f532761
+  generate-a-webhook-url: 9e94fdc4553ea9ee
+  set-up-a-chat-integration: 54eae8709458a7e9
+  invite-to-poll: 4d146ccc64978afd
+  automatic-notifications: 9663bbc5cf9dd1c5
 title_source: 0eca19d30c6d7d3c
 title_generated: ca0520d18e5461f9
 ---
@@ -33,19 +33,19 @@ A csevegőeszközök és a Loomio jól működnek együtt. Használd a csevegés
 
 A Loomio támogatja a Slack, Discord, Microsoft Teams, Matrix és Mattermost szolgáltatásokat.
 
-Bármikor küldhetsz értesítéseket a csevegőszobádba, ugyanúgy, ahogyan egyes embereket hívnál meg szavazni vagy csatlakozni egy szálhoz.
-
-Azt is beállíthatod, hogy egy adott esemény bekövetkezésekor mindig értesítést küldjön, például amikor valaki új szálat indít.
+Kézzel is küldhetsz értesítéseket a csevegőszobádba, amikor embereket hívsz meg egy szálba vagy szavazásra. Automatikus értesítéseket is beállíthatsz bizonyos eseményekhez, például amikor valaki beszélgetést indít.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## Így jelenik meg a csevegésben
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Webhook URL létrehozása
-Minden támogatott szolgáltatáshoz készítettünk lépésről lépésre követhető útmutatót. Kövesd a szolgáltatásodhoz tartozó útmutatót, hogy megkapd a webhook URL-t, amelyre a csevegési integráció hozzáadásához lesz szükséged a Loomióban.
+## A csevegőszolgáltatásod csatlakoztatása
+
+Kövesd a csevegőszolgáltatásod útmutatóját a webhook URL beszerzéséhez (Matrix esetén egy bot hozzáférési tokenjére és a szoba azonosítójára lesz szükséged):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,28 +53,31 @@ Minden támogatott szolgáltatáshoz készítettünk lépésről lépésre köve
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Webhookalapú rendszerünk más, HTML- vagy Markdown-formázású bejövő webhookokat támogató rendszerekkel is használható. Ilyen például a Zapier vagy a Rocketchat. Válaszd ki a Mattermost botot, de adj meg egy egyéni webhook URL-t.
+Más, HTML- vagy Markdown-formázású bejövő webhookokat fogadó szolgáltatásokat is csatlakoztathatsz, például a Zapiert vagy a Rocket.Chatet. Válaszd ki az **A legfontosabb** csevegési integrációt a Loomióban, és add meg az egyéni webhook URL-edet.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Csevegési integráció beállítása
 
-Miután beállítottad a kiválasztott szolgáltatást (lásd fent), rendelkezésedre áll egy webhook URL. Nyisd meg a **Csevegési integrációk** menüpontot a csoport menüjéből, és adj hozzá egy új csevegési integrációt a csoportodhoz.
+Csevegési integrációk hozzáadásához vagy szerkesztéséhez csoportadminnak kell lenned.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. A csevegőszolgáltatásod beállítása után (lásd fent) nyisd meg a csoport menüjét a Loomióban, és válaszd ki a **Csevegési integrációk** menüpontot.
 
-Egyelőre valószínűleg nem szeretnél egyetlen jelölőnégyzetet sem bejelölni. Csak add meg a nevet (például „Discord #general”) és az URL-t, majd kattints az űrlap alján található mentés gombra.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Ha később úgy döntesz, hogy az integráció automatikus értesítéseket is kapjon, térj vissza a beállításaihoz, és válaszd ki a megfelelő eseményeket.
+2. Adj hozzá egy új csevegési integrációt a szolgáltatásodhoz, adj meg egy nevet (például „Discord #general”), és illeszd be a webhook URL-t.
+
+   ![](loomio-chatbot-form.png)
+
+3. Jelöld be azokat az eseményeket, amelyekről automatikus értesítést szeretnél küldeni, vagy hagyd őket üresen, ha csak kézzel szeretnél értesítéseket küldeni, majd mentsd a beállításokat. Ezeket a beállításokat bármikor módosíthatod.
 
 <!-- translation-section: invite-to-poll -->
 
-### Meghívás szavazásra
+### Értesítés küldése kézzel
 
-Így küldhetsz értesítést a csevegőszobádba, amellyel meghívod az embereket, hogy szavazzanak egy javaslatról. Ugyanez a folyamat a következtetés megosztásakor, a szálba való meghíváskor, a szavazásra emlékeztetéskor, a szavazás szerkesztésekor és más hasonló esetekben is.
+Ha értesíteni szeretnéd a csevegőszobádat egy szavazásról vagy beszélgetésről, nyisd meg az adott elemet, és válaszd ki a **Meghív** lehetőséget (vagy egy másik értesítési műveletet, például: **Oszd meg az eredményt**, **Emlékeztessen szavazásra** vagy **Szavazás szerkesztve**). Válaszd ki a csevegési integrációdat a címzettek listájából, és küldd el az értesítést.
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +90,7 @@ Ha később úgy döntesz, hogy az integráció automatikus értesítéseket is 
 <!-- translation-section: automatic-notifications -->
 
 ### Automatikus értesítések
+
 Ha azt szeretnéd, hogy egy adott esemény bekövetkezésekor mindig értesítést küldjön, szerkeszd a csevegési integrációt, és válaszd ki az eseményt.
 
 ![](chatbot_enable_automatic_notifications.png)

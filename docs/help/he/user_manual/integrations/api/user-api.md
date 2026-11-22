@@ -1,44 +1,44 @@
 ---
 title: API למשתמש
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
   introduction: b9f943076ddb7967
-  response-size-and-related-records: 3235e0b8e0c704de
+  response-size-and-related-records: 1baa4036a18351f1
   endpoint-summary: b3535a6e2625013b
   groups: 05c42ae402e79755
   list-groups: da25696a4a5993a2
   get-a-group: '05389619e7f35def'
   webhooks: 14d9495f3dd01876
-  list-webhooks: b20f7683c7af2605
-  create-a-webhook: a6c23bc9b11db433
+  list-webhooks: 04b6c057c3d4c25e
+  create-a-webhook: b3bc9702c9725c17
   update-a-webhook: 00da5e8969bd9f82
   test-a-webhook-destination: 33aae0033ac2eb6a
   delete-a-webhook: 515360ad0d328569
   event-types: '056208c56ab55520'
-  http-delivery: '08e26e82a2762362'
+  http-delivery: 0347f34ac7fbe91f
   payload-formats: f696dd3d78b73996
   search: c11e3227516de621
   params: ae111974b4768435
   participation-report: f5afe22043585a14
-  params-2: c6e14c4bc724415e
+  params-2: 653139194be621b5
   example: eb08ca3fabff5bbc
   create-discussion: 807754da81cfbc2f
   params-3: 14b08be2d757109a
@@ -114,7 +114,7 @@ generated:
   params-5: 44b8ceccc73fc51c
   example-5: 4401a6d021e9e558
   read-thread: cfb7f0d3d9e12890
-  example-6: ae9479c83c9a7e7d
+  example-6: f64dc356b910bae8
   edit-discussion: 90bcb483361b978e
   params-6: d5f5de6310baa465
   example-7: 9923c5b9b496d682
@@ -133,7 +133,7 @@ generated:
   example-12: e22b71f1d652c7fe
   show-poll: 38cfb054fbfa3b41
   example-13: f320c0e4b17cb0ec
-  list-polls: ebe61b16600f861c
+  list-polls: 383f45fea5b31042
   params-10: 742166bcb3fef909
   example-14: 0f3d83f38a422c75
   edit-poll: f859af198d6cbb10
@@ -144,9 +144,9 @@ generated:
   list-memberships: ad5105bc734bb123
   params-12: 914871896bbfe70b
   example-17: 36d837f5b280f15a
-  manage-memberships: a56c60ecc54d51d6
+  manage-memberships: 32d06268204f5353
   params-13: 895be7fd08688cb8
-  example-18: e019832e5dfac163
+  example-18: e8f36236d1ff9092
   pagination: a9da367c7c3771fd
   comments: 5407ac2a80314b49
   discussions: 9c1015a433358531
@@ -154,7 +154,7 @@ generated:
   polls: 6ecd728f820c96fe
   threads: 3cebe3ea615d00d3
   request-bodies: a28d9e0b0d5cb005
-  poll-many-options: 7a0800cbb43e2617
+  poll-many-options: 7ad95df354a37bf6
   poll-detailed-options: 4239b8a55faa204a
   edit-poll-detailed-options: 1f66bd66e0880c08
 title_source: c23fb6526b722360
@@ -253,7 +253,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-לשליטה ישירה, יש להעביר `exclude_types` עם סוגי רשומות בלשון יחיד, המופרדים ברווחים. לדוגמה, `exclude_types=group reaction` משמיט קבוצות ותגובות אימוג׳י קשורות. ערכים נפוצים הם `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ו־`topic_item`. ההשמטות חלות על רשומות קשורות, ולא על המשאב הראשי המבוקש בנקודת הקצה.
+לשליטה ישירה, יש להעביר `exclude_types` עם סוגי רשומות בלשון יחיד, המופרדים ברווחים. לדוגמה, `exclude_types=group reaction` משמיט קבוצות ותגובות אימוג׳י קשורות.
+
+ערכים נפוצים הם `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ו־`topic_item`. ההשמטות חלות על רשומות קשורות, ולא על המשאב הראשי המבוקש בנקודת הקצה.
 
 תשובות של אוספים כוללות `meta.total` כאשר מוגדר גודל מדויק לאוסף. המספר הכולל מחושב לפני החלת `limit` ו־`offset`. נקודות קצה כגון חיפוש, שמחזירות במכוון מספר מוגבל של תוצאות, משמיטות את `meta.total` במקום להחזיר `null`.
 
@@ -593,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### ניהול חברויות
 
-יש לשלוח רשימה של כתובות דוא״ל. לכל הכתובות החדשות תישלח הזמנה לקבוצה. בניגוד להצגת רשימת חברויות, פעולה זו דורשת הרשאת ניהול בקבוצה.
+יש לשלוח רשימה של כתובות דוא״ל כדי להזמין אנשים חדשים לקבוצה. בניגוד להצגת רשימת חברויות, פעולה זו דורשת הרשאת ניהול בקבוצה.
 
 `POST /api/user0/memberships`
 
@@ -622,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-אם מועבר `remove_absent=1`, כל חברי הקבוצה שלא נכללו ברשימה יוסרו מהקבוצה. יש להיזהר: פעולה זו עלולה להסיר את כל חברי הקבוצה.
+אם מועבר `remove_absent: true`, כל חברי הקבוצה שלא נכללו ברשימה יוסרו מהקבוצה. יש להיזהר: פעולה זו עלולה להסיר את כל חברי הקבוצה.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -632,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-הפעולה מחזירה אובייקט עם `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+הפעולה מחזירה אובייקט עם `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -660,7 +662,9 @@ curl https://www.loomio.com/api/user0/memberships \
 | `interval` | מרווח הזמן בחלק `base`: `day`, `week`, `month` או `year` |
 | `member_type` | יש להגדיר `delegate` יחד עם `section=users` כדי להחזיר רק נציגים מכהנים |
 
-מעמד נציג נקבע לפי חברות פעילה בתפקיד נציג באחת מהקבוצות שנבחרו. הספירות לכל אדם מצטברות מכל הקבוצות שנבחרו. שורות הנציגים מוחזרות גם כאשר כל ספירות הפעילות הן אפס. הספירות כוללות שרשורים, תגובות, סקרים, הצבעות, מסקנות ותגובות אימוג׳י; הן אינן שיעורי השתתפות בהצבעה. שורות המשתמשים כוללות גם מספרי פתקי הצבעה מזוהים שהונפקו, שמולאו ושלא מולאו. סקרים אנונימיים אינם נכללים באף אחת מספירות ההצבעה לפי אדם. הערך של `all_votes_cast` הוא true רק כאשר הונפק לפחות פתק הצבעה אחד וכל פתקי ההצבעה שהונפקו מולאו.
+מעמד נציג נקבע לפי חברות פעילה בתפקיד נציג באחת מהקבוצות שנבחרו. הספירות לכל אדם מצטברות מכל הקבוצות שנבחרו, ושורות הנציגים מוחזרות גם כאשר כל ספירות הפעילות הן אפס.
+
+הספירות כוללות שרשורים, תגובות, סקרים, הצבעות, מסקנות ותגובות אימוג׳י; הן אינן שיעורי השתתפות בהצבעה. שורות המשתמשים כוללות גם מספרי פתקי הצבעה מזוהים שהונפקו, שמולאו ושלא מולאו, ואילו סקרים אנונימיים אינם נכללים באף אחת מספירות ההצבעה לפי אדם. הערך של `all_votes_cast` הוא true רק כאשר הונפק לפחות פתק הצבעה אחד וכל פתקי ההצבעה שהונפקו מולאו.
 
 ה־API מחיל את אותם כללי נראות הקבוצות כמו הדוח בממשק המוצר. מפתח API למשתמש אינו יכול לחשוף נתוני דוח מקבוצות שאין לחשבון גישה אליהן.
 
@@ -778,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -884,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 הצגת רשימת הסקרים בקבוצה הגלויים לחשבון שמפתח ה־API שייך לו, כולל סקרים עצמאיים וסקרים בתוך דיונים. בקבוצה הגלויה לציבור, ניתן לקבל את רשימת הסקרים הציבוריים גם ללא חברות בקבוצה; הגישה לסקרים פרטיים נשארת מוגבלת למשתמשים שיש להם הרשאה לקרוא אותם ב־Loomio. התשובה כוללת את המסקנה הנוכחית של כל סקר גלוי, כך שניתן להשתמש ב־`status=closed` לקבלת רשימת סקרים סגורים ולקריאת המסקנות שלהם, אם הוגדרו.
 
-כדי להציג את מצב ההחלטה לצד דיונים, יש לאחזר דיונים וסקרים מאותה קבוצה, להשתמש ב־`status=all` עבור הסקרים ולהתאים ביניהם לפי ערכי `topic_id`. יש לאחזר את כל העמודים באמצעות `limit` ו־`offset`. דיון יכול לכלול כמה סקרים, ולכן יש לבחור איזה סקר יקבע את המצב המוצג, למשל הסקר שנוצר לאחרונה. ערך `closed_at` שאינו null מציין סקר סגור; ערך null בשדה `closing_at` מציין טיוטה. כאשר לסקר יש מסקנה, השדה `current_outcome_id` שלו מזהה רשומה במערך `outcomes` שבתשובה; יש להתאים את השדה `poll_id` של אותה רשומה לשדה `id` של הסקר.
+כדי להציג את מצב ההחלטה לצד דיונים, יש לאחזר דיונים וסקרים מאותה קבוצה (באמצעות `status=all` עבור הסקרים) ולהתאים ביניהם לפי ערכי `topic_id`. יש לאחזר את כל העמודים באמצעות `limit` ו־`offset`. דיון יכול לכלול כמה סקרים, ולכן יש לבחור איזה סקר יקבע את המצב המוצג, למשל הסקר שנוצר לאחרונה.
+
+ערך `closed_at` שאינו null מציין סקר סגור, וערך null בשדה `closing_at` מציין טיוטה. כאשר לסקר יש מסקנה, השדה `current_outcome_id` שלו מזהה רשומה במערך `outcomes` שבתשובה; יש להתאים את השדה `poll_id` של אותה רשומה לשדה `id` של הסקר.
 
 עבור דיון יחיד, ניתן גם [לקרוא את פריטי השרשור שלו](#read-thread) באמצעות `GET /api/user0/threads/:topic_id/items`. פעולה זו מחזירה את הסקרים והמסקנות של השרשור לצד שאר הפריטים שלו. יש לאחזר את כל העמודים כדי לכלול את השרשור המלא.
 
@@ -1090,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-נקודת הקצה `items` מחזירה עמוד מתוך רצף האירועים בסדר עולה, כולל תגובות, סקרים, הצבעות ומסקנות הנגישים לחשבון. `meta.total` הוא המספר הכולל של הפריטים בשרשור. כדי לקרוא את הרצף כולו, יש לאחזר את העמודים הבאים. נקודת הקצה `markdown` מחזירה את כל התוכן הנגיש בשרשור כמסמך Markdown אחד. נימוקי ההצבעות נכללים רק כאשר הם נגישים לחשבון שמפתח ה־API שייך אליו.
+נקודת הקצה `items` מחזירה עמוד מתוך רצף האירועים בסדר עולה, כולל תגובות, סקרים, הצבעות ומסקנות הנגישים לחשבון. `meta.total` הוא המספר הכולל של הפריטים בשרשור; כדי לקרוא את הרצף כולו, יש לאחזר את העמודים הבאים.
+
+נקודת הקצה `markdown` מחזירה את כל התוכן הנגיש בשרשור כמסמך Markdown אחד. נימוקי ההצבעות נכללים רק כאשר הם נגישים לחשבון שמפתח ה־API שייך אליו.
 
 כל נקודות הקצה של השרשורים אוכפות את אותן הרשאות כמו ממשק Loomio. מפתח ה־API אינו מעניק גישה לשרשור שאין לחשבון הרשאה לפתוח בדרך הרגילה.
 
@@ -1117,7 +1125,7 @@ Webhooks מוגדרים לכל קבוצה בנפרד ודורשים הרשאת �
 
 ### הצגת רשימת webhooks
 
-החזרת אינטגרציות הצ'אט המוגדרות לקבוצה. לחשבון שמפתח ה־API שייך לו חייבת להיות הרשאת ניהול של הקבוצה. התשובה כוללת כתובות URL של יעדים, ולכן אין לחשוף אותה לחברי קבוצה רגילים.
+החזרת אינטגרציות הצ'אט המוגדרות לקבוצה. לחשבון שמפתח ה־API שייך לו חייבת להיות הרשאת מנהל קבוצה באותה קבוצה. התשובה כוללת כתובות URL של יעדים, ולכן אין לחשוף אותה לחברי קבוצה רגילים.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1170,7 +1178,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-לחשבון שמפתח ה־API שייך לו חייבת להיות הרשאת ניהול של הקבוצה המזוהה באמצעות `group_id`. לפני השמירה נבדק שכתובת היעד היא כתובת URL ציבורית.
+לחשבון שמפתח ה־API שייך לו חייבת להיות הרשאת מנהל קבוצה בקבוצה המזוהה באמצעות `group_id`. לפני השמירה נבדק שכתובת היעד היא כתובת URL ציבורית.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1261,7 +1269,9 @@ Content-Type: application/json; charset=utf-8
 
 זמן ההמתנה המרבי לבקשה הוא חמש שניות. תשובת `2xx`, לרבות `204 No Content`, נחשבת להצלחה. שירותים המקבלים הודעות webhook צריכים להשיב במהירות, לבצע עיבוד ממושך באופן אסינכרוני, ולתמוך בקבלת הודעות כפולות או הודעות המגיעות שלא לפי הסדר.
 
-Loomio אינו מוסיף כרגע חתימת webhook, כותרת עם סוד משותף, מזהה אירוע או מזהה שליחה. יש להתייחס לכתובת היעד המלאה כאל פרט אימות, להימנע מחשיפתה לציבור ולכלול בכתובת אסימון שלא ניתן לנחש כאשר השירות המקבל תומך בכך. אם נדרשת סכמת אירועים יציבה הניתנת לקריאה ממוחשבת או שליחה חתומה, יש להשתמש ב־webhook כהתראה על שינוי ולאחזר את הרשומות העדכניות דרך ה־API למשתמש עם אימות.
+Loomio אינו מוסיף כרגע חתימת webhook, כותרת עם סוד משותף, מזהה אירוע או מזהה שליחה. יש להתייחס לכתובת היעד המלאה כאל פרט אימות, להימנע מחשיפתה לציבור ולכלול בכתובת אסימון שלא ניתן לנחש כאשר השירות המקבל תומך בכך.
+
+אם נדרשת סכמת אירועים יציבה הניתנת לקריאה ממוחשבת או שליחה חתומה, יש להשתמש ב־webhook כהתראה על שינוי ולאחזר את הרשומות העדכניות דרך ה־API למשתמש עם אימות.
 
 <!-- translation-section: payload-formats -->
 

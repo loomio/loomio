@@ -1,14 +1,14 @@
 ---
 title: Microsoft Teams
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/microsoft_teams/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 905a1586a1f760e0
+  introduction: 16d8d04953bb0b53
 generated:
-  introduction: ae4ff1a282f8a428
+  introduction: fa7966197e901360
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
 ---
@@ -16,32 +16,37 @@ title_generated: a7b52b269a23c025
 <!-- translation-section: introduction -->
 
 # Интеграция с Microsoft Teams
-_Подключите уведомления вашей группы Loomio к Microsoft Teams._
 
-Loomio может отправлять уведомления в Microsoft Teams при появлении новых обсуждений, предложений, комментариев, голосов и выводов.
+Loomio может отправлять уведомления в ваши каналы Microsoft Teams при появлении новых обсуждений, опросов, комментариев, голосов и выводов.
 
 ---
 
-Перейдите на [https://teams.microsoft.com](https://teams.microsoft.com), затем нажмите «Приложения»
-![](t1.png)
+1. Откройте [Microsoft Teams](https://teams.microsoft.com) и выберите **Приложения**.
 
-Введите «webhook» в поле поиска, затем нажмите «Входящий веб-перехватчик»
-![](t2.png)
+   ![](t1.png)
 
-Нажмите «Добавить в команду»
-![](t3.png)
+2. Введите `webhook` в поле поиска и выберите **Входящий веб-перехватчик**.
 
-Введите название канала и выберите канал, в котором должны появляться уведомления Loomio.
-![](t4.png)
+   ![](t2.png)
 
-Задайте имя, например «Уведомления Loomio», затем нажмите «Создать»
-![](t5.png)
+3. Выберите **Добавить в команду**.
 
-Скопируйте полученный URL — на последнем шаге вы вставите его в Loomio.
-![](t6.png)
+   ![](t3.png)
 
-_Microsoft не разрабатывает и не поддерживает Loomio и не связана с ним._
+4. Выберите канал, в котором должны появляться уведомления Loomio.
 
-Теперь, когда у вас есть URL веб-перехватчика, продолжите настройку интеграции с чатом:
+   ![](t4.png)
+
+5. Введите имя, например `Loomio notifications`, и выберите **Создать**.
+
+   ![](t5.png)
+
+6. Скопируйте URL веб-перехватчика, чтобы вставить его в Loomio.
+
+   ![](t6.png)
+
+Теперь, когда у вас есть URL веб-перехватчика, завершите его подключение в Loomio:
 
 [Настройте интеграцию с чатом в Loomio](../chatbots/#set-up-a-chat-integration)
+
+_Microsoft не разрабатывает и не поддерживает Loomio и не связана с ним._

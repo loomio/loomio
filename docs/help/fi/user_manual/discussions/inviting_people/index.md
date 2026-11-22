@@ -1,28 +1,30 @@
 ---
 sections:
-  introduction: ee344f56b2dc9dbf
+  introduction: d7b020cbed90ea35
   open-invite-people: 708d0f7d7fcd3b93
-  choose-an-audience: 833fa2de88eb6d25
-  check-your-recipients: 23a2bb967bd2db29
-  invite-by-name-or-email: e7a00ffd734581bf
-  guest-access: 73e0e5145ff39567
-  send-invitations-and-notifications: '00973fe68451e971'
-  manage-thread-members: 5c96aff070255494
+  choose-an-audience: 39117e2ca66c0b15
+  check-your-recipients: abfd43038a55b47c
+  invite-by-name-or-email: 2d5b006d863d7491
+  guest-access: 55ce2b30a1bf0ba7
+  send-invitations-and-notifications: 9a2b42b6479c7241
+  manage-thread-members: 180842248a05ca0a
 generated:
   introduction: ff410442b0c41bae
   open-invite-people: b53a27dfd4fc109f
-  choose-an-audience: 6191f4b0278609a1
-  check-your-recipients: b3248ef551b46e4f
-  invite-by-name-or-email: 5594f12de37bf7f5
-  guest-access: e8eb2daff1d2a146
-  send-invitations-and-notifications: e52e87dd22dca76d
-  manage-thread-members: 95cdbc8a48d73de9
+  choose-an-audience: d7cd2e632c67eb1f
+  check-your-recipients: 19a9b12c1a43540e
+  invite-by-name-or-email: 64f9b47081265779
+  guest-access: c77d5080078d68dc
+  send-invitations-and-notifications: 0a9f9929d0f8fa00
+  manage-thread-members: b9ba250a9628a6e9
 title: Ihmisten kutsuminen
 title_source: b926eb8921d85971
 title_generated: 0f5c8e72764c2a0a
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/inviting_people/index.md
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +45,7 @@ Valitse ketjun oikeasta sivupalkista **Kutsu ihmisiä**, niin **Hallitse ketjun 
 
 ## Valitse vastaanottajat
 
-Napsauta tyhjää **Etsi tai kutsu ihmisiä** -kenttää nähdäksesi käytettävissä olevat vastaanottajaryhmät. Ehdotuksia ovat:
+Napsauta tyhjää **Etsi tai kutsu ihmisiä** -kenttää nähdäksesi käytettävissä olevat ryhmät ja kanavat:
 
 - ryhmä, johon keskustelu kuuluu
 - ryhmän **Edustajat**, jos ryhmällä on [valtuutettuja äänestäjiä](/en/user_manual/groups/delegated_voters)
@@ -58,25 +60,25 @@ Valitse ryhmäsi nimi ilmoittaaksesi sen jäsenille keskustelusta. Heillä on jo
 
 ### Kutsu alaryhmä tai pääryhmä
 
-Kun valitset toisen ryhmän, kutsut sen jäsenet tähän keskusteluun. Kaikki, jotka eivät kuulu keskustelun omaan ryhmään, lisätään vieraiksi: he voivat lukea tätä ketjua ja osallistua siihen liittymättä ryhmään tai saamatta pääsyä sen muihin yksityisiin keskusteluihin.
+Kun valitset toisen ryhmän, kutsut sen jäsenet tähän keskusteluun. Kaikki, jotka eivät kuulu keskustelun omaan ryhmään, liittyvät vieraina: he voivat lukea tätä ketjua ja osallistua siihen liittymättä ryhmään tai näkemättä sen muita yksityisiä keskusteluja.
 
-Esimerkiksi **Bottle Trial Board** -alaryhmä voi kutsua pääryhmänsä **Oatmilk Cooperative** keskustelemaan pullokokeilusta. Osuuskunnan jäsenet, jotka eivät kuulu hallitukseen, liittyvät keskusteluun vieraina. He voivat lukea keskustelua ja kommentoida siinä liittymättä hallitukseen tai saamatta pääsyä sen muihin yksityisiin keskusteluihin.
+Esimerkiksi **Bottle Trial Board** -alaryhmä voi kutsua pääryhmänsä **Oatmilk Cooperative** keskustelemaan pullokokeilusta. Osuuskunnan jäsenet, jotka eivät kuulu hallitukseen, liittyvät vieraina vain kyseiseen ketjuun.
 
 ![Pääryhmä Oatmilk Cooperative valittuna Bottle Trial Board -alaryhmän keskustelun kutsun vastaanottajaksi sekä vastaanottajien määrä ja viesti, jossa kaikkia pyydetään tutustumaan suunnitelmaan](thread_invite_parent_group.png)
 
 ### Kutsu edustajat
 
-Valitse ryhmän **Edustajat** kutsuaksesi vain sen valtuutetut äänestäjät. Tästä voi olla hyötyä, kun haluat pyytää päätöksestä vastaavia ihmisiä keskustelemaan asiasta ensin.
+Valitse ryhmän **Edustajat** kutsuaksesi vain sen valtuutetut äänestäjät. Tästä on hyötyä, kun haluat pyytää päätöksestä vastaavia ihmisiä keskustelemaan asiasta ensin.
 
 ### Julkaise keskustelukanavassa
 
-Valitse yhdistetty keskustelukanava julkaistaksesi kutsun siellä sen chatbotin kautta. Kutsun julkaiseminen keskustelukanavassa ei anna sen jäsenille pääsyä yksityiseen keskusteluun. Kutsu heidät vieraiksi, jos he tarvitsevat pääsyn. Katso [Keskustelupalvelujen integraatiot](/en/user_manual/integrations/chatbots).
+Valitse yhdistetty keskustelukanava julkaistaksesi kutsun sen chatbotin kautta. Kutsun julkaiseminen keskustelukanavassa ei anna sen jäsenille pääsyä yksityiseen keskusteluun. Kutsu heidät vieraiksi, jos he tarvitsevat pääsyn. Katso [Keskustelupalvelujen integraatiot](/en/user_manual/integrations/chatbots).
 
 <!-- translation-section: check-your-recipients -->
 
 ## Tarkista vastaanottajat
 
-Kun olet valinnut vastaanottajaryhmän, tarkista vastaanottajien määrä kentän alapuolelta. Napsauta vastaanottajaryhmän nimeä nähdäksesi siihen kuuluvat henkilöt ja valitse sitten **×** niiden henkilöiden vierestä, jotka haluat jättää pois tästä kutsusta. Tämä ei poista heitä ryhmästään tai vie heiltä nykyisiä käyttöoikeuksia.
+Kun olet valinnut ryhmän tai kanavan, tarkista vastaanottajien määrä kentän alapuolelta. Napsauta ryhmän nimeä nähdäksesi siihen kuuluvat henkilöt ja valitse sitten **×** niiden henkilöiden vierestä, jotka haluat jättää pois kutsusta. Tämä ei poista heitä ryhmästään tai vie heiltä nykyisiä käyttöoikeuksia.
 
 ![Pääryhmän vastaanottajaluettelo avattuna: Samira Patel ja Alex Morgan sekä poistopainike kummankin nimen vieressä](thread_invite_expand.png)
 
@@ -84,7 +86,7 @@ Kun olet valinnut vastaanottajaryhmän, tarkista vastaanottajien määrä kentä
 
 ## Kutsu ihmisiä nimellä tai sähköpostiosoitteella
 
-Kirjoita henkilön nimi ja valitse hänet ehdotuksista tai anna sähköpostiosoite kutsuaksesi uuden henkilön. Voit sisällyttää samaan kutsuun useita ihmisiä.
+Kirjoita henkilön nimi ja valitse hänet luettelosta tai anna sähköpostiosoite kutsuaksesi uuden henkilön. Voit sisällyttää samaan kutsuun useita ihmisiä.
 
 ![Vieras valittuna sähköpostiosoitteen perusteella Hallitse ketjun jäseniä -näkymässä](invite_guest.png)
 
@@ -92,9 +94,9 @@ Kirjoita henkilön nimi ja valitse hänet ehdotuksista tai anna sähköpostiosoi
 
 ## Mitä vieraat voivat tehdä
 
-Vieraat voivat lukea keskustelun aiempine kommentteineen sekä lisätä kommentteja ja vastauksia. Henkilön kutsuminen ketjuun ei tee hänestä ryhmän jäsentä eikä anna hänelle pääsyä ryhmän muihin yksityisiin keskusteluihin.
+Vieraat voivat lukea ketjun aiempine kommentteineen sekä lisätä kommentteja ja vastauksia. Henkilön kutsuminen ketjuun ei tee hänestä ryhmän jäsentä eikä anna hänelle pääsyä ryhmän muihin yksityisiin keskusteluihin.
 
-Vieraat voivat äänestää ketjun kyselyissä, joissa äänestäjäksi sallitaan **Kuka tahansa ketjussa**. Jos kyselyn asetuksena on **Vain valitut henkilöt**, lisää heidät erikseen [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters) -toiminnolla.
+Vieraat voivat äänestää kyselyissä, joiden asetuksena on **Kuka tahansa ketjussa**. Jos kyselyn asetuksena on **Vain valitut henkilöt**, lisää heidät erikseen [Hallitse äänestäjiä](/en/user_manual/polls/manage_voters) -toiminnolla.
 
 Ryhmän ylläpitäjät voivat kutsua vieraita, kun ryhmän tilaus sallii vieraiden pääsyn. Myös ryhmän jäsenet voivat kutsua vieraita, jos ryhmä sallii sen. Katso [Ryhmän käyttöoikeudet](/en/user_manual/groups/settings/permissions).
 
@@ -102,16 +104,16 @@ Ryhmän ylläpitäjät voivat kutsua vieraita, kun ryhmän tilaus sallii vieraid
 
 ## Lähetä kutsut ja ilmoitukset
 
-Lisää halutessasi viesti, jossa kerrot, miksi kutsut ihmisiä, ja valitse sitten **Kutsu tai ilmoita**. Uudet henkilöt saavat kutsun ketjuun. Henkilöt, joilla on jo pääsy ketjuun, saavat uuden ilmoituksen ja viestisi.
+Lisää halutessasi viesti, jossa kerrot, miksi kutsut ihmisiä, ja valitse sitten **Kutsu tai ilmoita**. Uudet henkilöt saavat kutsun. Henkilöt, joilla on jo pääsy ketjuun, saavat ilmoituksen ja viestisi.
 
 Vastaanottajat saavat ilmoituksen Loomiossa. Sähköposti- ja push-ilmoitusten toimitus riippuu heidän [ilmoitusasetuksistaan](/en/user_manual/users/email_settings). Kutsuminen ei tilaa heille sähköposti-ilmoituksia jokaisesta myöhemmästä kommentista. He voivat valita itse ketjun ilmoitusasetuksen.
 
-Avaa ketjun sivupalkista **Ilmoitettu** nähdäksesi, kenelle ilmoitus lähetettiin ja onko ilmoitus luettu tai sen sähköposti avattu, kun nämä tiedot ovat saatavilla. **Nähnyt** näyttää, ketkä ovat avanneet keskustelun. Katso [Ilmoitukset ja jäsenet](/en/user_manual/discussions/using_discussions#notifications-and-members).
+Avaa ketjun sivupalkista **Ilmoitettu** nähdäksesi, kenelle ilmoitus lähetettiin ja onko kukin ilmoitus luettu tai avattu, kun nämä tiedot ovat saatavilla. **Nähnyt** näyttää, ketkä ovat avanneet ketjun. Katso [Ilmoitukset ja jäsenet](/en/user_manual/discussions/using_discussions#notifications-and-members).
 
 <!-- translation-section: manage-thread-members -->
 
 ## Etsi tai poista ketjun jäsen
 
-**Etsi tai kutsu ihmisiä** -kenttä suodattaa myös ketjussa jo olevien henkilöiden luetteloa. Tyhjennä kenttä näyttääksesi luettelon uudelleen ja selaa pidempää luetteloa sivutuspainikkeilla. Kun valitset vastaanottajia, kutsuviesti korvaa luettelon, kunnes lähetät kutsun tai tyhjennät valinnan.
+Suodata ketjun nykyisten jäsenten luetteloa **Etsi tai kutsu ihmisiä** -kentän avulla. Tyhjennä kenttä näyttääksesi koko luettelon uudelleen ja selaa pidempiä luetteloita sivutuspainikkeilla. Kun valitset vastaanottajia, kutsuviesti korvaa jäsenluettelon väliaikaisesti, kunnes lähetät kutsun tai tyhjennät valinnan.
 
-Ketjun ylläpitäjät ja ryhmän ylläpitäjät voivat poistaa vieraan tämän nimen vieressä olevasta kolmen pisteen valikosta (**⋯**): valitse **Poista keskustelusta**. Ryhmän jäsenet säilyttävät pääsyn ryhmän jäsenyyden kautta.
+Ketjun ylläpitäjät ja ryhmän ylläpitäjät voivat poistaa vieraan avaamalla tämän nimen vieressä olevan kolmen pisteen valikon (**⋯**) ja valitsemalla **Poista keskustelusta**. Ryhmän jäsenet säilyttävät pääsyn ryhmän jäsenyyden kautta.

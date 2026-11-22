@@ -1,34 +1,34 @@
 ---
 title: Ihmisten kutsuminen
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 9f041a9d35405958
-  send-invitations-via-email: '080dff343020123b'
-  invite-many-at-once: 42395868536237e3
-  invite-people-to-subgroups: 940fb4ebbebfea36
-  share-a-link-to-your-group: 3bc110e30d9ad55e
-  request-to-join-group: b4fb81dbed58cf8c
-  review-membership-requests: 046f13c165026eb4
-  managing-invitations: 41c5e89def41074b
-  re-send-invitations: 3636d946aab90088
-  cancelling-invitations: 0535f371aa72116e
-  invitation-notification-history: 8a2d89aec20f3cde
+  introduction: 607778b67d6757f8
+  send-invitations-via-email: a229af7386197975
+  invite-many-at-once: 8effc0524eaeeb0e
+  invite-people-to-subgroups: e43708aa23ea7add
+  share-a-link-to-your-group: 12b36ea672b9999f
+  request-to-join-group: '096c137ca73825ab'
+  review-membership-requests: c33f02bfc6796db4
+  managing-invitations: 831ce2c6e45b3646
+  re-send-invitations: 1bfb9737e2403a9d
+  cancelling-invitations: 41a1baaeb8ec9096
+  invitation-notification-history: e11195f08eb60485
 title_source: b926eb8921d85971
 title_generated: 0f5c8e72764c2a0a
 ---
@@ -37,7 +37,7 @@ title_generated: 0f5c8e72764c2a0a
 
 # Kutsu ihmisiä Loomio-ryhmään
 
-Kutsu ihmisiä Loomio-ryhmääsi sähköpostitse tai jaa ryhmän linkki uutiskirjeessä, chatissa tai verkkosivustolla. Aloita avaamalla ryhmäsi sivun **Jäsenet**-välilehti.
+Voit kutsua ihmisiä Loomio-ryhmääsi sähköpostitse, jakaa kutsulinkin tai antaa ihmisten pyytää jäsenyyttä. Aloita avaamalla ryhmäsi sivun **Jäsenet**-välilehti.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +45,7 @@ Kutsu ihmisiä Loomio-ryhmääsi sähköpostitse tai jaa ryhmän linkki uutiskir
 
 ## Lähetä kutsuja sähköpostitse
 
-Napsauta **Kutsu**-painiketta **Jäsenet**-välilehdellä lähettääksesi sähköpostin, joka sisältää kertakäyttöisen kutsulinkin. Vastaanottaja voi luoda Loomio-käyttäjätilin ja liittyä ryhmääsi.
-
-Jos vastaanottajalla on jo Loomio-käyttäjätili, hän voi hyväksyä kutsun ja liittyä ryhmääsi olemassa olevalla tilillään.
+Valitse **Jäsenet**-välilehdellä **Kutsu**, niin voit lähettää sähköpostin, joka sisältää kertakäyttöisen kutsulinkin. Vastaanottaja voi liittyä olemassa olevalla Loomio-tilillä tai luoda uuden tilin.
 
 ![](group_invite_email.png)
 
@@ -55,20 +53,20 @@ Jos vastaanottajalla on jo Loomio-käyttäjätili, hän voi hyväksyä kutsun ja
 
 ### Kutsu monta ihmistä kerralla
 
-Voit lähettää kutsuja sähköpostitse enintään 100 ihmiselle kerrallaan syöttämällä (tai kopioimalla ja liittämällä) useita sähköpostiosoitteita kenttään ”Kenet haluaisit kutsua”. Erota sähköpostiosoitteet pilkulla tai välilyönnillä.
+Voit kutsua enintään 100 ihmistä kerrallaan syöttämällä tai liittämällä sähköpostiosoitteita pilkuilla tai välilyönneillä erotettuina.
 
-Kun kutsut ihmisiä organisaation sisällä olevaan ryhmään, pääryhmä ja siihen liittyvät alaryhmät, joihin kuulut, näkyvät vastaanottajaehdotuksina. Valitse ryhmä ja napsauta sitten sen tunnistetta, jotta ryhmän jäsenet lisätään vastaanottajiksi yksitellen. Voit poistaa vastaanottajista kaikki, joita et halua kutsua, ennen kutsujen lähettämistä. Ihmiset, jotka kuuluvat jo kohderyhmään, jätetään pois.
+Kun kutsut ihmisiä organisaation ryhmään, voit myös valita pääryhmän tai siihen liittyviä alaryhmiä, joihin kuulut. Avaa valitun ryhmän jäsenet yksittäisiksi vastaanottajiksi, jotta voit poistaa kaikki, joita et halua kutsua. Ihmiset, jotka ovat jo ryhmän jäseniä, jätetään automaattisesti pois.
 
 >[!Tip]
->Kopioi sähköpostiosoitteet Google- tai Excel-laskentataulukon sarakkeesta ja liitä ne kutsukenttään.
+>Voit kopioida sähköpostiosoitteita Google Sheetsin tai Microsoft Excelin sarakkeesta ja liittää ne suoraan kutsukenttään.
 
-Kun napsautat **Kutsu**-painiketta, jokaiseen antamaasi sähköpostiosoitteeseen lähetetään viesti, joka sisältää yksilöllisen, kertakäyttöisen kutsulinkin. Viesti lähetetään tällä hetkellä käyttämälläsi kielellä.
+Kun valitset **Kutsu**, Loomio lähettää jokaiseen osoitteeseen yksilöllisen, kertakäyttöisen kutsulinkin tällä hetkellä käyttämälläsi kielellä.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Kutsu ihmisiä alaryhmiin
 
-Voit kutsua ihmisiä samanaikaisesti pääryhmään ja yhteen tai useampaan alaryhmään edellä kuvatulla tavalla käyttämällä **Kutsu ihmisiä** -painiketta. Valitse niiden alaryhmien vieressä olevat valintaruudut, joihin haluat kutsuttujen kuuluvan heti heidän liittyessään ryhmään.
+Kun kutsut ihmisiä pääryhmään, voit lisätä heidät samalla yhteen tai useampaan alaryhmään. Valitse niiden alaryhmien valintaruudut, joihin haluat heidän liittyvän hyväksyessään kutsun.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +74,39 @@ Voit kutsua ihmisiä samanaikaisesti pääryhmään ja yhteen tai useampaan alar
 
 ## Jaa linkki ryhmääsi
 
-Voit jakaa linkin ryhmääsi **Jaa**-painikkeella. Tästä on hyötyä, jos haluat lähettää linkin sähköpostitse, uutiskirjeessä tai chatissa tai julkaista sen verkkosivustollasi.
+Valitse **Jaa**, niin voit luoda uudelleenkäytettävän kutsulinkin uutiskirjeeseen, chat-kanavalle, sähköpostiin tai verkkosivustolle.
 
 ![](group_invite_sharable_link.png)
 
-Napsauta ”kopioi”-kuvaketta kopioidaksesi linkin leikepöydälle ja liitä se sitten sähköpostiin, uutiskirjeeseen tai chat-kanavalle.
-
-Jos haluat estää ihmisiä liittymästä tämän linkin kautta, napsauta ”Luo linkki uudelleen”. Nykyinen linkki lakkaa toimimasta, ja tilalle luodaan uusi linkki.
+Jos haluat estää ihmisiä liittymästä nykyisen linkin kautta, valitse **Luo linkki uudelleen**. Vanha linkki lakkaa toimimasta, ja tilalle luodaan uusi linkki.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Pyydä jäsenyyttä ryhmässä
 
-Ihmiset voivat pyytää jäsenyyttä avoimessa tai suljetussa ryhmässä. Jaa ryhmän URL-osoite, esimerkiksi `https://www.loomio.com/group-name`. Ryhmän sivulle saapuvat ihmiset näkevät ryhmän julkiset tiedot ja voivat valita **Liittyä ryhmään** vastatakseen liittymiskysymykseen ja lähettääkseen jäsenyyspyynnön.
+Ihmiset voivat pyytää jäsenyyttä avoimessa tai suljetussa ryhmässä ryhmän URL-osoitteessa, esimerkiksi `https://www.loomio.com/group-name`. Vierailijat näkevät ryhmän julkiset tiedot ja voivat valita **Liittyä ryhmään** vastatakseen liittymiskysymykseen ja lähettääkseen jäsenyyspyynnön.
 
 ![](group_join_group.png)
 
-Liittymiskysymys antaa ihmisille mahdollisuuden esitellä itsensä ja kertoa, miksi he haluavat liittyä.
+Liittymiskysymys antaa hakijoille mahdollisuuden esitellä itsensä ja kertoa, miksi he haluavat liittyä.
 
 ![](group_request_to_join.png)
 
-Valitse [Ryhmän yksityisyys](/en/user_manual/groups/settings/privacy#how-people-join) -kohdassa **Pyydä hyväksyntää**, jos haluat edellyttää jäsenyyspyyntöjen tarkistamista. Voit myös muokata liittymiskysymystä ryhmän asetuksissa.
+Valitse [Ryhmän yksityisyys](/en/user_manual/groups/settings/privacy#how-people-join) -kohdassa **Pyydä jäsenyyttä**, jos haluat edellyttää jäsenyyspyyntöjen tarkistamista. Voit myös muokata liittymiskysymystä ryhmän asetuksissa.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Tarkista jäsenyyspyynnöt
 
-Ryhmän ylläpitäjät ja jäsenet, joilla on oikeus lisätä jäseniä, tarkistavat pyynnöt **Jäsenet**-välilehden **Jäsenyyspyynnöt**-osiossa. Tarkistaja voi:
+Ryhmän ylläpitäjät ja jäsenet, joilla on oikeus lisätä jäseniä, voivat tarkistaa pyynnöt **Jäsenet**-välilehden **Jäsenyyspyynnöt**-osiossa.
 
 ![](group_review_request_to_join.png)
 
-- **Hyväksyä** pyynnön, jolloin hakija lisätään jäseneksi ja hänelle lähetetään ilmoitus.
-- **Jättää huomiotta** pyynnön, jolloin se suljetaan lähettämättä hakijalle ilmoitusta ja sallimatta uutta pyyntöä.
-- **Hylkää**-painikkeella hylätä pyynnön ja kirjoittaa viestin, jossa päätös selitetään. Loomio lähettää viestin hakijalle sähköpostitse ja ilmoituksena, ja hakija voi lähettää uuden pyynnön.
+Voit käsitellä kunkin pyynnön seuraavasti:
 
-Valitse hylkäyspainike kirjoittaaksesi viestin tai jättääksesi pyynnön huomiotta.
+- **Hyväksyä** pyynnön, jolloin hakija lisätään jäseneksi ja hänelle lähetetään ilmoitus.
+- **Jättää huomiotta** pyynnön, jolloin se suljetaan lähettämättä hakijalle ilmoitusta tai sallimatta uutta pyyntöä.
+- Valita **Hylkää**, jolloin hakijalle lähetetään perustelu sähköpostitse ja ilmoituksena. Hakija voi lähettää uuden pyynnön myöhemmin.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +114,30 @@ Valitse hylkäyspainike kirjoittaaksesi viestin tai jättääksesi pyynnön huom
 
 ## Kutsujen hallinta
 
-Hallitaksesi kutsuja avaa suodatusvalikko ryhmäsi sivun Jäsenet-välilehdellä ja valitse **Kutsut**. Voit hallita yksittäisiä kutsuja napsauttamalla jäsenen oikealla puolella olevaa kolmen pisteen valikkoa (**⋮**).
+Avaa **Jäsenet**-välilehden suodatusvalikko ja valitse **Kutsut**, niin näet odottavat kutsut. Voit hallita kutsua sen vieressä olevasta toimintovalikosta.
 
 ![](group_invite_members_filter.png)
 
-Voit myös tehdä kutsutuista ylläpitäjiä tai määrittää heidän tehtävänimikkeensä ryhmässä (esimerkiksi ”IT-tuki”) ennen kuin he hyväksyvät kutsunsa.
+Voit myös tehdä kutsutusta henkilöstä ryhmän ylläpitäjän tai määrittää hänen tehtävänimikkeensä (esimerkiksi ”IT-tuki”) ennen kuin hän hyväksyy kutsun.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Kutsujen toimitushistoria
 
-Jos joku ei saa kutsusähköpostiaan, ryhmän ylläpitäjät voivat valita Jäsenet-sivulla henkilön nimen vieressä olevasta kolmen pisteen valikosta (**⋮**) **Kutsujen toimitushistoria** ja tarkistaa, milloin kutsut lähetettiin ja mitä toimitusongelmia on kirjattu.
+Jos joku ei saa kutsusähköpostiaan, ryhmän ylläpitäjä voi tarkistaa sen toimitustilan. Avaa **Jäsenet**-välilehdellä henkilön nimen vieressä oleva toimintovalikko ja valitse **Kutsujen toimitushistoria**, niin näet, milloin kutsut lähetettiin ja mitä toimitusongelmia on kirjattu.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Lähetä kutsut uudelleen
 
-Muistuta liittymisestä ihmisiä, jotka eivät ole vielä liittyneet ryhmään. Jos joku on kadottanut kutsuviestin tai unohtanut sen, voit lähettää sen uudelleen hänen nimensä vieressä olevasta valikosta Jäsenet-sivulla.
-
-Napsauta kolmea pistettä (**⋮**) sen henkilön vieressä, jolle haluat lähettää kutsun uudelleen, ja valitse sitten **Lähetä kutsu uudelleen**.
+Jos joku on kadottanut kutsusähköpostinsa tai se on jäänyt häneltä huomaamatta, avaa **Jäsenet**-välilehdellä hänen nimensä vieressä oleva toimintovalikko ja valitse **Lähetä kutsu uudelleen**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Kutsujen peruuttaminen
-Jos annoit väärän sähköpostiosoitteen tai olet muuttanut mielesi jonkun kutsumisesta, voit peruuttaa kutsun ryhmäsi sivun Jäsenet-välilehdellä. Valitse **Peruuta kutsu** kutsun oikealla puolella olevasta valikosta (**⋮**).
+
+Jos annoit väärän sähköpostiosoitteen tai et enää halua kutsua jotakuta, avaa **Jäsenet**-välilehdellä hänen kutsunsa vieressä oleva toimintovalikko ja valitse **Peruuta kutsu**.
 
 ![](group_invite_cancel_invitation.png)

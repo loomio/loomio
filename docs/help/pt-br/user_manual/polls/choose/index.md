@@ -1,25 +1,25 @@
 ---
 title: Escolher
-source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 sections:
-  introduction: f9d6a5bfb7445de0
-  when-to-use-choose: f8a798497cac5a43
-  example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
-  set-up-the-poll: a16095b63c57e0c9
-  vote: '09940fa2f063a6bc'
-  read-the-results: e675d12da1a4ba8a
+  introduction: 3570d7d235e7bfad
+  when-to-use-choose: 68cfcf5f85ef14c6
+  example-set-a-planning-meeting-agenda: ceca06a3f71f9d74
+  set-up-the-poll: 60f258f0eedb6323
+  vote: 958df5aed5589661
+  read-the-results: da240100a27bb2b4
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: f31494c0476f1cb7
-  when-to-use-choose: 5fbf9dea77de0f70
+  introduction: 52fb094541d5954c
+  when-to-use-choose: 908fd8712fb9a0cd
   example-set-a-planning-meeting-agenda: 8ce0aee2f89904aa
-  set-up-the-poll: eebdcce3600063e1
-  vote: a583955d2a4fb306
-  read-the-results: f82dea5056ebd604
+  set-up-the-poll: ad2702b2b4e8631f
+  vote: ea4731e6b57fdc8b
+  read-the-results: 6716f5403d569c8b
   share-an-outcome: 89742de8262a3332
 title_source: c7f937836f5d82d5
 title_generated: f1fbc08af75d979e
@@ -29,7 +29,7 @@ title_generated: f1fbc08af75d979e
 
 # Escolher
 
-Escolher é uma enquete simples para identificar a opção mais popular ou criar uma lista de opções selecionadas. Os participantes selecionam uma ou mais opções, dependendo dos limites que você definir. Esse método de votação é conhecido como múltipla escolha.
+Escolher é uma enquete simples para identificar a opção mais popular ou criar uma lista de opções selecionadas. Os participantes selecionam uma ou mais opções, dependendo dos limites que você definir. Esse método de votação também é conhecido como múltipla escolha.
 
 <!-- translation-section: when-to-use-choose -->
 
@@ -42,7 +42,7 @@ Use Escolher quando as opções forem distintas e você precisar contar quantas 
 - decidir qual proposta de design deve avançar para a próxima rodada; ou
 - verificar quais serviços os membros pretendem usar.
 
-Escolher registra as seleções, não a intensidade nem a ordem das preferências de uma pessoa. Use [Pontuar](/en/user_manual/polls/score/) para medir a intensidade do apoio das pessoas a cada opção, [Distribuir](/en/user_manual/polls/allocate/) quando houver um orçamento limitado ou [Classificar](/en/user_manual/polls/rank/) quando a ordem de preferência for importante.
+Escolher registra as seleções, não a intensidade nem a ordem das preferências. Use [Pontuar](/en/user_manual/polls/score/) para medir a intensidade do apoio das pessoas a cada opção, [Distribuir](/en/user_manual/polls/allocate/) quando houver um orçamento limitado ou [Classificar](/en/user_manual/polls/rank/) quando a ordem de preferência for importante.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
@@ -54,17 +54,17 @@ A cooperativa Oatmilk precisa decidir quais partes de um teste com garrafas reto
 
 ## Configure a enquete
 
-Use uma pergunta específica como título da enquete. Em **Detalhes**, explique o que os participantes devem considerar e como os resultados serão usados. Adicione cada opção disponível e defina **Escolhas mínimas** e **Máxima escolha**.
+Use uma pergunta específica como título da enquete. Em **Detalhes**, explique o que os participantes devem considerar e como os resultados serão usados. Adicione cada opção e defina **Escolhas mínimas** e **Máxima escolha**.
 
 ![](form.png)
 
 Defina os dois limites como 1 quando os participantes precisarem escolher exatamente uma opção. Defina um máximo maior quando você quiser criar uma lista de opções selecionadas. Evite permitir tantas escolhas que os participantes possam selecionar quase todas as opções, pois isso torna os resultados menos úteis.
 
-Use o ícone de lápis ao lado de uma opção para explicar seu significado ou adicionar mais informações. Isso é útil quando o nome curto de uma opção pode ser interpretado de maneiras diferentes.
+Selecione o ícone de lápis ao lado de uma opção para explicar seu significado ou adicionar mais informações. Isso ajuda quando o nome curto de uma opção pode ser interpretado de maneiras diferentes.
 
 ![](edit_option.png)
 
-Em **Mais configurações**, **Mostrar opções em ordem aleatória** pode reduzir o efeito de apresentar sempre a mesma opção primeiro.
+Em **Mais configurações**, ative **Mostrar opções em ordem aleatória** para evitar dar vantagem à primeira opção.
 
 ![](random_order.png)
 
@@ -72,21 +72,21 @@ Em **Mais configurações**, **Mostrar opções em ordem aleatória** pode reduz
 
 ## Vote
 
-Se a quantidade de opções selecionadas estiver fora dos limites permitidos, o botão de envio informa como corrigir a seleção. Neste exemplo, o eleitor seleciona **Cronograma de coleta nas cafeterias** e **Fluxo de trabalho de lavagem** e informa um motivo que relaciona essas escolhas ao teste.
+Os participantes selecionam suas opções preferidas dentro dos limites mínimo e máximo. Neste exemplo, o eleitor seleciona **Cronograma de coleta nas cafeterias** e **Fluxo de trabalho de lavagem** e adiciona um motivo do voto que relaciona essas escolhas ao teste.
 
 ![](voting.png)
 
-Um motivo pode revelar por que uma opção é importante e quais atividades os participantes esperam que ela abranja. Se os motivos forem importantes para a decisão, configure a opção de motivo do voto antes de iniciar a enquete.
+Um motivo do voto pode explicar por que uma opção é importante e quais atividades os participantes esperam que ela abranja. Se os motivos forem importantes para a decisão, defina a exigência de um motivo do voto antes de iniciar a enquete.
 
 <!-- translation-section: read-the-results -->
 
 ## Leia os resultados
 
-Os resultados mostram a proporção do total de seleções recebida por cada opção, o número de eleitores que a selecionaram e quem ainda não votou. Como cada pessoa podia escolher duas opções, as porcentagens representam as seleções, e não a proporção de pessoas.
+Os resultados mostram a proporção do total de seleções recebida por cada opção, quantos eleitores a selecionaram e quem ainda não votou. Como cada pessoa podia escolher duas opções, as porcentagens representam uma proporção das seleções, e não uma porcentagem de pessoas.
 
 ![](results.png)
 
-Neste exemplo, **Cronograma de coleta nas cafeterias** recebeu três seleções. **Fluxo de trabalho de lavagem** e **Relatórios da taxa de devolução** receberam duas seleções cada. Os resultados indicam que as coletas nas cafeterias devem receber mais tempo na pauta, mas o empate entre os outros assuntos ainda exige que a pessoa responsável pela organização decida como dividir o tempo restante.
+Neste exemplo, **Cronograma de coleta nas cafeterias** recebeu três seleções. **Fluxo de trabalho de lavagem** e **Relatórios da taxa de devolução** receberam duas seleções cada. Os resultados indicam que as coletas nas cafeterias devem receber mais tempo na pauta, enquanto a pessoa responsável pela organização ainda decide como dividir o tempo restante entre os assuntos empatados.
 
 <!-- translation-section: share-an-outcome -->
 

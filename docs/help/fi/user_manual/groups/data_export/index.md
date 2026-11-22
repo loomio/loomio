@@ -1,26 +1,26 @@
 ---
 title: Tietojen vienti
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 5e29f67f9a2084ec
-  export-data: 58b5e1d4e6f0b917
-  export-group-data-as-csv: 53286ec33e7300d6
-  export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: a0ad78b64036be18
-  import-your-group-data-on-another-loomio-server: 910ee8af48049e82
+  introduction: 988679ffd3d29834
+  export-data: 9c2fb6ec7c75bcb6
+  export-group-data-as-csv: c0845f09bff828f2
+  export-group-data-as-html: 659fd5e14956b00e
+  export-group-data-as-json: 4c2131f4518b7469
+  print-thread-to-pdf: 1a1d0598f4277ba1
+  import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
-  introduction: f7be21a56ade0912
-  export-data: 4ed06cbe68ee3705
-  export-group-data-as-csv: 3dcaa53b2b2618ec
-  export-group-data-as-html: 7442c3d8a642f16d
-  export-group-data-as-json: e2b8ca42ff81c394
-  print-thread-to-pdf: ff375cde7883042b
-  import-your-group-data-on-another-loomio-server: d9abdb53881277da
+  introduction: abd57986e9b2be9d
+  export-data: 4e0ab7ac779555a0
+  export-group-data-as-csv: c9b3afa454491ee1
+  export-group-data-as-html: a75b68b4b5117345
+  export-group-data-as-json: a0e7a0a58d1314cd
+  print-thread-to-pdf: 5e59a906833be96a
+  import-your-group-data-on-another-loomio-server: 10048b848153b1b8
 title_source: 29049648f87b87f5
 title_generated: b1e3420f6c63b367
 ---
@@ -31,49 +31,45 @@ title_generated: b1e3420f6c63b367
 
 Ryhmän tietojen vientitoiminnolla voit:
 
-- Ladata jäsentiedot sisältävän tiedoston ryhmän jäsenyyksien tarkistamista varten.
-- Ladata ryhmäsi sisällön, mukaan lukien ketjujen ja kyselyjen tekstit, arkistointia tai analysointia varten.
-- Avata kyselyjen tulokset taulukkolaskentaohjelmassa tai käsitellä niitä komentosarjakielellä.
-- [Tulostaa ketjun tai kyselyn tai tallentaa sen PDF-tiedostona arkistointia varten.](#print-thread-to-pdf)
-- Siirtää ryhmäsi kaikkine käyttäjineen, ketjuineen, kyselyineen ja tiedostoineen toiselle Loomio-palvelimelle.
+- Ladata jäsentiedot ryhmän jäsenyyksien tarkistamista varten.
+- Arkistoida tai analysoida ryhmäsi ketjuja, kommentteja ja kyselyjä.
+- Avata kyselyjen tulokset taulukkolaskentaohjelmassa tai käsitellä niitä komentosarjalla.
+- [Tulostaa ketjun tai kyselyn tai tallentaa sen PDF-tiedostona arkistoosi.](#print-thread-to-pdf)
+- Siirtää ryhmäsi käyttäjineen, ketjuineen, kyselyineen ja tiedostoineen toiselle Loomio-palvelimelle.
 
-Jos haluat siirtyä Loomion ylläpitämiltä palvelimilta [omalle palvelimellesi](https://github.com/loomio/loomio), voit käyttää tätä toimintoa.
+Voit käyttää tätä toimintoa siirtyäksesi Loomion ylläpitämästä palvelusta [itse ylläpitämällesi palvelimelle](https://github.com/loomio/loomio). Jos ylläpidät omaa palvelinta ja haluat siirtyä Loomion ylläpitämään palveluun Yhdysvalloissa, EU:ssa tai Australiassa, [ota meihin yhteyttä](/contact).
 
-Jos ylläpidät omaa Loomio-palvelinta etkä enää halua jatkaa sen ylläpitoa, Loomio tarjoaa ylläpidettyä palvelua Yhdysvalloissa, EU:ssa ja Australiassa. Jos haluat siirtää ryhmäsi jollekin näistä palvelimista, [ota meihin yhteyttä](/contact).
-
-[Ota meihin yhteyttä](/contact), jos haluat siirtää Loomio-ryhmäsi Loomion maailmanlaajuisesta loomio.com-palvelusta johonkin alueellisista palveluistamme: loomio.eu palvelee Eurooppaa ja loomio.nz Australiaa ja Uutta-Seelantia.
+[Ota meihin yhteyttä](/contact), jos haluat siirtää ryhmän loomio.com-palvelusta alueelliseen palveluun (loomio.eu Euroopassa tai loomio.nz Australiassa ja Uudessa-Seelannissa).
 
 <!-- translation-section: export-data -->
 
 ## Vie tiedot
 
-Avaa ryhmän pudotusvalikko napsauttamalla kolmea pistettä ja valitse **Vie ryhmätiedot**.
+Vain ryhmän ylläpitäjä voi viedä ryhmän tiedot. Avaa ryhmän toimintovalikko ja valitse **Vie ryhmätiedot**.
 
 ![Vie ryhmätiedot -toiminto Oatmilk Cooperative -ryhmän valikossa](group_export_group_data.png)
+
+Loomio valmistelee viennin taustalla ja lähettää sinulle latauslinkin sähköpostitse, kun vienti on valmis. Linkki on käytettävissä viikon ajan.
 
 <!-- translation-section: export-group-data-as-csv -->
 
 ### Vie ryhmän tiedot CSV-muodossa
 
-*Kun haluat käsitellä ryhmän tietoja taulukkolaskentaohjelmassa, kuten MS Excelissä tai Google Sheetsissä.*
-
-Loomio valmistelee CSV-tiedoston taustalla ja lähettää sinulle latauslinkin sähköpostitse, kun tiedosto on valmis. Linkki on käytettävissä viikon ajan.
+Käytä CSV-muotoa tarkastellaksesi ryhmän tietoja, kuten jäsenten tietoja ja toimintaa, taulukkolaskentaohjelmassa, kuten Microsoft Excelissä tai Google Sheetsissä.
 
 <!-- translation-section: export-group-data-as-html -->
 
 ### Vie ryhmän tiedot HTML-muodossa
 
-*Kun haluat tallentaa tiedot arkistointia varten.*
-
-Loomio valmistelee HTML-tiedoston taustalla ja lähettää sinulle latauslinkin sähköpostitse, kun tiedosto on valmis. Linkki on käytettävissä viikon ajan.
+Käytä HTML-muotoa tallentaaksesi luettavan kopion ryhmäsi keskusteluista ja kyselyistä arkistointia varten.
 
 <!-- translation-section: export-group-data-as-json -->
 
 ### Vie ryhmän tiedot JSON-muodossa
 
-*Kun haluat siirtää ryhmäsi tiedot itse ylläpitämääsi Loomio-asennukseen.*
+Käytä JSON-muotoa siirtääksesi ryhmäsi tiedot itse ylläpitämällesi Loomio-palvelimelle.
 
-Sinun on oltava ryhmän ylläpitäjä, jotta voit viedä sen tiedot. JSON-vienti sisältää:
+JSON-vienti sisältää:
 
 - Ryhmän, sen jäsenet ja jäsenyyspyynnöt
 - Mukana olevien ryhmien ketjut, kommentit, reaktiot, tunnisteet, mallit, ilmoitukset ja niihin liittyvät tietueet
@@ -89,15 +85,11 @@ JSON-vienti ei sisällä:
 - Anonyymejä kyselyjä, joita ei ole suljettu
 - Suoria ketjuja ja kyselyjä, jotka eivät kuulu ryhmään
 
-Saat pian sähköpostin, jossa on linkki JSON-tiedoston lataamiseen.
-
 <!-- translation-section: print-thread-to-pdf -->
 
 ## Tulosta ketju PDF-tiedostoksi
 
-Jos haluat tallentaa ketjun arkistoosi, avaa sen valikko ja valitse **Tulosta**. Loomio luo HTML-sivun, joka sisältää ketjun kommentit, kyselyt, äänet, johtopäätökset ja muotoilun. Tulosta sivu tai tallenna se PDF-tiedostoksi selaimesi tulostustoiminnolla.
-
-Voit kopioida sivun ja liittää sen tekstinkäsittelyohjelmaan, tiedostoon tai tietovarastoon.
+Jos haluat tallentaa yksittäisen ketjun arkistoosi, avaa sen toimintovalikko ja valitse **Tulosta**. Loomio luo HTML-sivun, joka sisältää ketjun kommentit, kyselyt, äänet, johtopäätökset ja muotoilun. Tulosta sivu tai tallenna se PDF-tiedostoksi selaimesi tulostustoiminnolla tai kopioi sisältö toiseen asiakirjaan.
 
 ![Tulosta-toiminto palautettavia pulloja koskevassa keskustelussa](discussion_print_discussion.png#width-90)
 
@@ -105,18 +97,22 @@ Voit kopioida sivun ja liittää sen tekstinkäsittelyohjelmaan, tiedostoon tai 
 
 ## Tuo ryhmäsi tiedot toiselle Loomio-palvelimelle
 
-Ohjeet oman Loomio-palvelimen käyttöönottoon löydät osoitteesta: https://github.com/loomio/loomio
+Tämä osio on tarkoitettu itse ylläpidetyn Loomio-palvelimen ylläpitäjille. Käyttöönotto-ohjeet löydät [Loomion koodivarastosta](https://github.com/loomio/loomio).
 
-Jos ylläpidät omaa Loomio-asennusta ja haluat tuoda viemäsi tiedot:
+1. Kopioi `.json`-tiedosto kontin `import`-kansioon:
 
-Kopioi .json-tiedosto kontti-instanssin `import`-kansioon:
+```sh
+scp your-group-data.json username@some-domain.org:loomio-deploy/import
+```
 
-`scp your-group-data.json username@some-domain.org:loomio-deploy/import`
+2. Avaa Rails-konsoli käynnissä olevassa kontissa:
 
-Avaa käynnissä olevan sovelluksen Rails-konsoli:
+```sh
+docker exec -ti loomio-app rails console
+```
 
-`docker exec -ti loomio-app rails console`
+3. Suorita tuontipalvelu:
 
-Kutsu palvelua:
-
-`GroupExportService.import('/import/your-group-data.json')`
+```ruby
+GroupExportService.import('/import/your-group-data.json')
+```

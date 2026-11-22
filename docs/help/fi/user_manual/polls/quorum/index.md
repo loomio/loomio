@@ -1,16 +1,16 @@
 ---
 title: Päätösvaltaisuus
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 sections:
-  introduction: dbfdebe6e23060db
-  example-scenario: d247e0866095c321
+  introduction: 885a154beca10592
+  example-scenario: 2c4be2012a2bcba4
 generated:
-  introduction: d33bd535ffd2646e
-  example-scenario: 7ee0a7a527876382
+  introduction: 070ff0769ebd2fc7
+  example-scenario: e2515254c74174c6
 title_source: 18ed8b6c5ab90343
 title_generated: 231a357976471e5a
 ---
@@ -19,29 +19,29 @@ title_generated: 231a357976471e5a
 
 # Päätösvaltaisuus
 
-Päätösvaltaisuus tarkoittaa sitä vähimmäisprosenttia äänioikeutetuista äänestäjistä, jonka on osallistuttava, jotta kysely olisi pätevä. Käytä sitä, kun päätöksentekoprosessisi edellyttää tiettyä osallistumistasoa.
+Päätösvaltaisuus tarkoittaa sitä vähimmäisprosenttia äänioikeutetuista äänestäjistä, jonka on osallistuttava, jotta kysely voidaan hyväksyä. Käytä sitä, kun päätöksentekoprosessisi edellyttää tiettyä osallistumistasoa.
 
 Kun käytät [painotettua äänestystä](/en/user_manual/polls/weighted_voting), päätösvaltaisuus lasketaan äänipainojen perusteella. Esimerkiksi Jamien äänipaino on `2`, Samiran `1` ja Alexin `1`. Jos vain Jamie äänestää, osallistuneiden osuus on puolet äänioikeutettujen yhteenlasketusta äänipainosta. Jos myös Samira äänestää, osallistuminen nousee 75 prosenttiin, jolloin 60 prosentin päätösvaltaisuus saavutetaan.
 
-Kun luot kyselyn, avaa **Lisää asetuksia**. Syötä vaadittu prosenttiosuus kenttään **Päätösvaltaisuus**. Jätä kenttä tyhjäksi, jos päätösvaltaisuutta ei edellytetä.
+Kun luot kyselyn, avaa **Lisää asetuksia** ja syötä vaadittu prosenttiosuus kenttään **Päätösvaltaisuus**. Jätä kenttä tyhjäksi, jos päätösvaltaisuutta ei edellytetä.
 
 ![Päätösvaltaisuusasetus, jossa vaadittu osallistuminen on 60 prosenttia](./quorum-section.png)
 
 Voit asettaa päätösvaltaisuuden myös [kyselymallissa](/en/user_manual/polls/poll_templates/), jolloin mallista luodut kyselyt käyttävät sitä oletuksena.
 
+Jos kysely sulkeutuu ilman, että päätösvaltaisuus saavutetaan, Loomio näyttää, ettei päätösvaltaisuutta saavutettu. Kysely ei automaattisesti jatku tai peruunnu. Ketjun ylläpitäjä voi avata kyselyn uudelleen (jos se on sallittua) tai jakaa johtopäätöksen, jossa kerrotaan, mitä tapahtuu seuraavaksi.
+
 <!-- translation-section: example-scenario -->
 
 ## Esimerkkitilanne
 
-Oatmilk Cooperative keskustelee kuuden viikon kokeilusta, jossa käytetään palautettavia pulloja. Keskustelu on edennyt siihen vaiheeseen, että osuuskunnan on hyväksyttävä kokeilun budjetti.
+Oatmilk Cooperative keskustelee kuuden viikon kokeilusta, jossa käytetään palautettavia pulloja, ja sen on hyväksyttävä kokeilun budjetti.
 
-Jamie valitsee **Aloita äänestys**, valitsee **Suostumus**-ehdotusmallin ja täyttää otsikon, tiedot, vaihtoehdot, keston ja äänestäjäasetukset.
+Jamie valitsee **Aloita äänestys**, valitsee ehdotusmallin ja täyttää otsikon, tiedot, vaihtoehdot, keston ja äänestäjäasetukset.
 
 ![Ehdotuksen otsikko, tiedot, vaihtoehdot, kesto ja äänestäjäasetukset](proposal-options.png)
 
-Jamie rajaa äänestyksen viiteen kokeilun budjetista vastaavaan henkilöön.
-
-Osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista, joten Jamie syöttää kenttään **Päätösvaltaisuus** arvon **60** ja käynnistää ehdotuksen.
+Jamie rajaa äänestyksen viiteen kokeilun budjetista vastaavaan henkilöön. Koska osuuskunta edellyttää merkittävissä päätöksissä 60 prosentin osallistumista, Jamie syöttää kenttään **Päätösvaltaisuus** arvon **60** ja käynnistää ehdotuksen.
 
 Ennen kuin kukaan äänestää, tulospaneeli näyttää, ettei päätösvaltaisuutta ole saavutettu.
 

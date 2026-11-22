@@ -1,29 +1,29 @@
 ---
 sections:
-  introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 2cf6ad55d557c189
-  different-vote-share-requirements: 0e81fb881e5c113e
-  detailed-example: 395dbccb0e6427fc
+  introduction: cbaf41b11886d669
+  eligible-voters-and-votes-cast: 1eace7b24593e671
+  different-vote-share-requirements: 0707fe507dfba2b9
+  detailed-example: bd9380153211ad27
 generated:
-  introduction: 7614791dbc39b7f8
-  eligible-voters-and-votes-cast: d8f0f97bed36fbc1
+  introduction: f4a0aa7575c0ae77
+  eligible-voters-and-votes-cast: 48f3f98883bc12de
   different-vote-share-requirements: 34c0cc7e71eeda5c
-  detailed-example: c85a6fb8eac8b3b9
+  detailed-example: fb0739690bb0cf6a
 title: 득표율 요건
 title_source: a654891ca817844e
 title_generated: bf76eecf7222a9ec
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
 
 # 득표율 요건
 
-제안이 통과하려면 지지 비율이 일정 수준 이상이거나 반대 비율이 일정 수준 이하여야 하는 경우, 선택지에 득표율 요건을 설정하세요.
+제안이 통과하려면 지지 비율이 최소 기준 이상이거나 반대 비율이 최대 기준 이하여야 하는 경우, 선택지에 득표율 요건을 설정하세요.
 
 득표율 요건을 [정족수](/en/user_manual/polls/quorum/)와 함께 사용하면 충분한 참여와 특정한 표 분포를 모두 요구할 수 있습니다.
 
@@ -41,11 +41,11 @@ translated:
 
 **투표권이 있는 투표자**는 해당 제안에 투표할 수 있는 모든 사람을 뜻합니다. **투표한 표**는 제출된 표만을 뜻합니다.
 
-투표권이 있는 투표자의 75%가 동의해야 한다는 요건은 전체 투표권이 있는 투표자 중 최소 75%가 해당 선택지에 투표해야 충족됩니다.
+투표권이 있는 투표자의 75%가 동의해야 한다는 요건은 투표권이 있는 전체 투표자 중 최소 75%가 해당 선택지를 골라야 충족됩니다.
 
 투표한 표의 60%가 동의해야 한다는 요건은 전체 참여율과 관계없이 제출된 표의 60%가 해당 선택지를 지지하면 충족됩니다. 절차상 최소 참여율도 필요하다면 정족수를 추가하세요.
 
-[가중 투표](/en/user_manual/polls/weighted_voting)에서는 두 기준 모두 가중치를 사용합니다. **투표한 표의 가중치**는 투표한 모든 표의 가중치 합계를 기준으로 해당 선택지에 투표한 표의 가중치 합계가 차지하는 비율을 계산합니다. **투표 가능한 표의 가중치**는 아직 투표하지 않은 사람을 포함하여 투표권이 있는 모든 투표자의 가중치 합계를 기준으로 해당 선택지를 고른 투표자의 가중치 합계가 차지하는 비율을 계산합니다. 예를 들어 투표 가능한 표의 가중치 합계가 100이고 한 사람의 투표 가중치가 70이면, 그 한 사람만으로도 투표 가능한 표의 가중치를 기준으로 한 60% 동의 요건을 충족할 수 있습니다.
+[가중 투표](/en/user_manual/polls/weighted_voting)에서는 두 기준 모두 투표 가중치를 사용합니다. **행사된 투표 가중치**는 행사된 투표 가중치의 총합을 기준으로 해당 선택지의 가중치 합계가 차지하는 비율을 계산합니다. **투표 가능한 총 투표 가중치**는 아직 투표하지 않은 사람을 포함하여 투표권이 있는 모든 투표자의 가중치 합계를 기준으로 해당 선택지의 가중치 합계가 차지하는 비율을 계산합니다. 예를 들어 투표 가능한 총 투표 가중치가 100이고 한 투표자의 투표 가중치가 70이면, 그 한 사람만으로도 투표 가능한 총 투표 가중치를 기준으로 한 60% 동의 요건을 충족할 수 있습니다.
 
 <!-- translation-section: different-vote-share-requirements -->
 
@@ -73,7 +73,7 @@ Oatmilk 협동조합은 6주 동안 회수형 병을 시범 운영할지 결정�
 
 ![투표권이 있는 투표자의 최소 75%를 요구하는 동의 선택지](./agree-vote-option.png)
 
-Jamie는 정족수도 60%로 설정합니다. Jamie와 Samira가 동의에 투표합니다. 제출된 표는 모두 제안을 지지하지만, 투표권이 있는 투표자의 40%에 불과하므로 두 요건 모두 충족되지 않았습니다.
+Jamie는 정족수도 60%로 설정합니다. Jamie와 Samira가 동의에 투표합니다. 제출된 표는 모두 제안을 지지하지만, 투표권이 있는 투표자의 40%에 불과하므로 두 요건 모두 충족되지 않습니다.
 
 ![다섯 명 중 두 명이 동의에 투표했으며 두 요건 모두 충족되지 않은 상태](./first-vote-breakdown.png)
 

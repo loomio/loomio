@@ -1,44 +1,44 @@
 ---
 title: Felhasználói API
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
   introduction: 958493a7e8d44717
-  response-size-and-related-records: 8bda845d1dbc7b0b
+  response-size-and-related-records: b6a3f38113044234
   endpoint-summary: 89f8f9b087e62627
   groups: 416e445b12c9f929
   list-groups: 378a9636d7354369
   get-a-group: b886986c8f74579e
   webhooks: d8e2bffc0f7d2805
-  list-webhooks: a87b34bcbb85d697
-  create-a-webhook: 4d6ebb063d96c331
+  list-webhooks: 528f576d285259b8
+  create-a-webhook: 2bdde5806149d693
   update-a-webhook: dce319154b34d32f
   test-a-webhook-destination: ac909dd916f8feb6
   delete-a-webhook: 974eb45e63c53cf4
   event-types: 2334d732d671806a
-  http-delivery: 150134f105a1af59
+  http-delivery: 19e6892af1c54df6
   payload-formats: a14cda9d4b4b6899
   search: e191f218a5f04864
   params: c1f106f895f364f8
   participation-report: 89e1a542c9bb5ff0
-  params-2: f7c0fd9ae9e9b26f
+  params-2: 865a3a0244075cd9
   example: bcd72806702e19b3
   create-discussion: 920d6da6821fef31
   params-3: a728a0d913e3d0ed
@@ -114,7 +114,7 @@ generated:
   params-5: 5821097a107c8431
   example-5: f99ed3346bd4aeed
   read-thread: f89640e624ab781c
-  example-6: 07b2e65dd8989f86
+  example-6: 6c87a66e55d2f5f8
   edit-discussion: f726e46e8c4e6d27
   params-6: c6dba6c87f9b480d
   example-7: 5d794de6d2b789fd
@@ -133,7 +133,7 @@ generated:
   example-12: 1feeabac751473fd
   show-poll: '0683180c186571fe'
   example-13: bc3d9974c8a4b82f
-  list-polls: 9e37aea0d7de6e34
+  list-polls: e150c45b38b7bbba
   params-10: 5080adb448889d76
   example-14: 63630211b3171020
   edit-poll: 69d53e7d23ecdc63
@@ -144,9 +144,9 @@ generated:
   list-memberships: c9d4127d2c3f0a5b
   params-12: 7213503e25a56122
   example-17: 8a242e52312f6ce8
-  manage-memberships: fd424aca57ed951a
+  manage-memberships: 007437bb134776d5
   params-13: 34b65aeda03ea3ea
-  example-18: 154dea9191d26e95
+  example-18: 266035abe989033a
   pagination: d6672ccc98a11761
   comments: 716185150399e684
   discussions: 24f2da9300eb5214
@@ -154,7 +154,7 @@ generated:
   polls: 61b505f7ffd30544
   threads: c921d7ea18382db6
   request-bodies: 7e81246802ca0c44
-  poll-many-options: 16c44ea1746eedc8
+  poll-many-options: cff203528f837e36
   poll-detailed-options: c15c675a5e58f980
   edit-poll-detailed-options: 6178fae0f4046a28
 title_source: c23fb6526b722360
@@ -253,7 +253,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-A közvetlen szabályozáshoz add meg az `exclude_types` paramétert szóközzel elválasztott, egyes számú rekordtípusokkal. Például az `exclude_types=group reaction` kihagyja a kapcsolódó csoportokat és reakciókat. Gyakori értékek: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` és `topic_item`. A kizárások a kapcsolódó rekordokra vonatkoznak, nem a végponttól kért elsődleges erőforrásra.
+A közvetlen szabályozáshoz add meg az `exclude_types` paramétert szóközzel elválasztott, egyes számú rekordtípusokkal. Például az `exclude_types=group reaction` kihagyja a kapcsolódó csoportokat és reakciókat.
+
+Gyakori értékek: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` és `topic_item`. A kizárások a kapcsolódó rekordokra vonatkoznak, nem a végponttól kért elsődleges erőforrásra.
 
 A gyűjteményeket visszaadó válaszok tartalmazzák a `meta.total` mezőt, ha a gyűjtemény pontos mérete meghatározott. A teljes elemszám kiszámítása a `limit` és az `offset` alkalmazása előtt történik. Azok a végpontok, például a keresés, amelyek szándékosan korlátozott eredményhalmazt adnak vissza, kihagyják a `meta.total` mezőt ahelyett, hogy `null` értéket adnának vissza.
 
@@ -593,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Tagságok kezelése
 
-Küldj egy listát az e-mail-címekről. A művelet minden új e-mail-címre meghívót küld a csoportba. A tagságok listázásával ellentétben ehhez a művelethez csoportadminisztrátori jogosultság szükséges.
+Küldj egy listát az e-mail-címekről, hogy új embereket hívj meg a csoportba. A tagságok listázásával ellentétben ehhez a művelethez csoportadminisztrátori jogosultság szükséges.
 
 `POST /api/user0/memberships`
 
@@ -622,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-Ha megadod a `remove_absent=1` paramétert, a művelet eltávolítja a csoport minden olyan tagját, aki nem szerepel a listában. Légy óvatos, mert a csoportod összes tagját eltávolíthatod.
+Ha megadod a `remove_absent: true` értéket, a művelet eltávolítja a csoport minden olyan tagját, aki nem szerepel a listában. Légy óvatos, mert a csoportod összes tagját eltávolíthatod.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -632,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-A válasz egy objektum, amely ezt tartalmazza: `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+A válasz egy objektum, amely ezt tartalmazza: `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -653,14 +655,16 @@ Ugyanazokat az összesített részvételi adatokat adja vissza, amelyeket a Loom
 | Név | Leírás |
 | --- | --- |
 | `section` | A jelentés szakasza: `base`, `users` vagy `countries`. Személyenkénti tevékenységhez használd a `users` értéket |
-| `group_scope` | `custom` vagy `my`. A régi `all` értéket `my` értékként kezeli, mert a Felhasználói API kulcsai soha nem kapnak a teljes példányra kiterjedő hozzáférést |
+| `group_scope` | `custom` vagy `my`. A régi `all` értéket `my` értékként kezeli, mert a felhasználói API kulcsai soha nem kapnak a teljes példányra kiterjedő hozzáférést |
 | `group_ids` | Vesszővel elválasztott csoportazonosítók, ha `group_scope=custom`. Figyelmen kívül hagyja azoknak a csoportoknak az azonosítóit, amelyekben az API felhasználója nem tag |
 | `start_month` | Az első figyelembe vett hónap `YYYY-MM` formátumban; alapértelmezés szerint a 12 hónappal ezelőtti hónap |
 | `end_month` | Az utolsó figyelembe vett hónap `YYYY-MM` formátumban; alapértelmezés szerint az aktuális hónap |
 | `interval` | A `base` szakasz időköze: `day`, `week`, `month` vagy `year` |
 | `member_type` | A `section=users` mellett állítsd `delegate` értékre, hogy csak a jelenlegi küldötteket adja vissza |
 
-Egy személy akkor számít küldöttnek, ha bármelyik kiválasztott csoportban aktív küldötti tagsággal rendelkezik. A hozzá tartozó darabszámokat az összes kiválasztott csoportból összesíti. A küldöttek sorait akkor is visszaadja, ha minden tevékenység darabszáma nulla. A darabszámok a szálakat, hozzászólásokat, szavazásokat, szavazatokat, következtetéseket és reakciókat fedik le; nem a szavazási részvétel arányát mutatják. A felhasználók sorai az azonosított szavazásokban kiadott, leadott és elmulasztott szavazólapok számát is tartalmazzák. A névtelen szavazások kimaradnak minden személyenkénti szavazati darabszámból. Az `all_votes_cast` csak akkor igaz, ha legalább egy szavazólapot kiadtak, és minden kiadott szavazólapot leadtak.
+Egy személy akkor számít küldöttnek, ha bármelyik kiválasztott csoportban aktív küldötti tagsággal rendelkezik. A hozzá tartozó darabszámokat az összes kiválasztott csoportból összesíti, és a küldöttek sorait akkor is visszaadja, ha minden tevékenység darabszáma nulla.
+
+A darabszámok a szálakat, hozzászólásokat, szavazásokat, szavazatokat, következtetéseket és reakciókat fedik le; nem a szavazási részvétel arányát mutatják. A felhasználók sorai az azonosított szavazásokban kiadott, leadott és elmulasztott szavazólapok számát is tartalmazzák, míg a névtelen szavazások kimaradnak minden személyenkénti szavazati darabszámból. Az `all_votes_cast` csak akkor igaz, ha legalább egy szavazólapot kiadtak, és minden kiadott szavazólapot leadtak.
 
 Az API ugyanazokat a csoportláthatósági szabályokat alkalmazza, mint az alkalmazásban elérhető jelentés. Egy felhasználói API-kulcs nem teheti elérhetővé olyan csoportok jelentésadatait, amelyekhez a felhasználó nem fér hozzá.
 
@@ -778,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -884,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Listázd egy csoport szavazásait, amelyek láthatók az API-kulcshoz tartozó felhasználó számára, beleértve az önálló szavazásokat és a beszélgetéseken belüli szavazásokat is. Egy nyilvánosan látható csoport nyilvános szavazásait olyan felhasználó is listázhatja, aki nem tagja a csoportnak; a privát szavazásokhoz továbbra is csak azok a felhasználók férhetnek hozzá, akik a Loomióban is olvashatják őket. A válasz minden látható szavazás aktuális következtetését tartalmazza, így a `status=closed` használatával listázhatod a lezárt szavazásokat, és elolvashatod a következtetésüket, ha már megadták azt.
 
-Ha a beszélgetések mellett a döntés állapotát is meg szeretnéd jeleníteni, kérd le ugyanannak a csoportnak a beszélgetéseit és szavazásait, a szavazásoknál használd a `status=all` paramétert, és párosítsd őket a `topic_id` értékük alapján. Kérd le az összes oldalt a `limit` és az `offset` használatával. Egy beszélgetéshez több szavazás is tartozhat, ezért válaszd ki, melyik szavazás határozza meg a megjelenített állapotot, például a legutóbb létrehozott szavazás. A nem null értékű `closed_at` lezárt szavazást jelöl; a null értékű `closing_at` piszkozatot jelez. Ha egy szavazáshoz tartozik következtetés, a `current_outcome_id` értéke a válasz `outcomes` tömbjének egyik rekordját azonosítja; párosítsd ennek a rekordnak a `poll_id` értékét a szavazás `id` értékével.
+Ha a beszélgetések mellett a döntés állapotát is meg szeretnéd jeleníteni, kérd le ugyanannak a csoportnak a beszélgetéseit és szavazásait (a szavazásoknál a `status=all` paramétert használva), és párosítsd őket a `topic_id` értékük alapján. Kérd le az összes oldalt a `limit` és az `offset` használatával. Egy beszélgetéshez több szavazás is tartozhat, ezért válaszd ki, melyik szavazás határozza meg a megjelenített állapotot, például a legutóbb létrehozott szavazás.
+
+A nem null értékű `closed_at` lezárt szavazást jelöl, a null értékű `closing_at` pedig piszkozatot jelez. Ha egy szavazáshoz tartozik következtetés, a `current_outcome_id` értéke a válasz `outcomes` tömbjének egyik rekordját azonosítja; párosítsd ennek a rekordnak a `poll_id` értékét a szavazás `id` értékével.
 
 Egyetlen beszélgetés esetén a `GET /api/user0/threads/:topic_id/items` használatával [a szál elemeit is elolvashatod](#read-thread). Ez a szál szavazásait és következtetéseit is visszaadja a többi elem mellett. Kérd le az összes oldalt, hogy a teljes szálat megkapd.
 
@@ -1090,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-Az `items` végpont az eseményfolyam egy oldalát adja vissza növekvő sorszám szerint rendezve, beleértve a látható hozzászólásokat, szavazásokat, szavazatokat és következtetéseket. A `meta.total` a szál összes elemének száma. A teljes eseményfolyam elolvasásához kérd le a további oldalakat. A `markdown` végpont a teljes látható szálat egyetlen Markdown-dokumentumként adja vissza. A szavazatok indoklásai csak akkor szerepelnek benne, ha láthatók az API-kulcshoz tartozó felhasználó számára.
+Az `items` végpont az eseményfolyam egy oldalát adja vissza növekvő sorszám szerint rendezve, beleértve a látható hozzászólásokat, szavazásokat, szavazatokat és következtetéseket. A `meta.total` a szál összes elemének száma; a teljes eseményfolyam elolvasásához kérd le a további oldalakat.
+
+A `markdown` végpont a teljes látható szálat egyetlen Markdown-dokumentumként adja vissza. A szavazatok indoklásai csak akkor szerepelnek benne, ha láthatók az API-kulcshoz tartozó felhasználó számára.
 
 Minden szálvégpont ugyanazokat a jogosultságokat érvényesíti, mint a Loomio felülete. Az API-kulcs nem biztosít hozzáférést olyan szálhoz, amelyet a felhasználó egyébként nem nyithat meg.
 
@@ -1117,7 +1125,7 @@ Az ágensek és más integrációk az alább ismertetett, Bearer-hitelesítést 
 
 ### Webhookok listázása
 
-Visszaadja a csoporthoz beállított csevegési integrációkat. Az API-kulcshoz tartozó felhasználónak a csoport adminisztrátorának kell lennie. A válasz cél-URL-eket tartalmaz, ezért nem tehető hozzáférhetővé a csoport egyszerű tagjai számára.
+Visszaadja a csoporthoz beállított csevegési integrációkat. Az API-kulcshoz tartozó felhasználónak az adott csoport adminjának kell lennie. A válasz cél-URL-eket tartalmaz, ezért ne tedd hozzáférhetővé a csoport egyszerű tagjai számára.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1170,7 +1178,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-Az API-kulcshoz tartozó felhasználónak a `group_id` által megadott csoport adminisztrátorának kell lennie. Mentés előtt a rendszer ellenőrzi, hogy a cél nyilvános URL-e.
+Az API-kulcshoz tartozó felhasználónak a `group_id` által megadott csoport adminjának kell lennie. Mentés előtt a rendszer ellenőrzi, hogy a cél nyilvános URL-e.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1259,9 +1267,11 @@ A Loomio aszinkron HTTP `POST` kérést küld a beállított URL-re ezzel a fejl
 Content-Type: application/json; charset=utf-8
 ```
 
-A kérés időkorlátja öt másodperc. A `2xx` válasz sikeresnek számít, beleértve a `204 No Content` választ is. A webhookot fogadó szolgáltatások válaszoljanak gyorsan, a hosszabb feladatokat aszinkron módon dolgozzák fel, és kezeljék az ismétlődő vagy eltérő sorrendben érkező kézbesítéseket.
+A kérés időkorlátja öt másodperc. A `2xx` válasz sikeresnek számít, beleértve a `204 No Content` választ is. A webhookot fogadó szolgáltatásod válaszoljon gyorsan, a hosszabb feladatokat aszinkron módon dolgozza fel, és kezelje az ismétlődő vagy eltérő sorrendben érkező kézbesítéseket.
 
-A Loomio jelenleg nem ad hozzá webhook-aláírást, közös titkot tartalmazó fejlécet, eseményazonosítót vagy kézbesítési azonosítót. Kezeld a teljes cél-URL-t hitelesítő adatként, ne tedd nyilvánossá, és helyezz el benne egy kitalálhatatlan tokent, ha a fogadó szolgáltatás ezt támogatja. Ha stabil, géppel olvasható eseménysémára vagy aláírt kézbesítésre van szükséged, használd a webhookot változásértesítésként, és kérd le az aktuális rekordokat a hitelesített Felhasználói API-n keresztül.
+A Loomio jelenleg nem ad hozzá webhook-aláírást, közös titkot tartalmazó fejlécet, eseményazonosítót vagy kézbesítési azonosítót. Kezeld a teljes cél-URL-t hitelesítő adatként, ne tedd nyilvánossá, és helyezz el benne egy kitalálhatatlan tokent, ha a fogadó szolgáltatás ezt támogatja.
+
+Ha stabil, géppel olvasható eseménysémára vagy aláírt kézbesítésre van szükséged, használd a webhookot változásértesítésként, és kérd le az aktuális rekordokat a hitelesített Felhasználói API-n keresztül.
 
 <!-- translation-section: payload-formats -->
 

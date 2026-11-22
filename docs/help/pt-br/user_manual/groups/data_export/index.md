@@ -1,26 +1,26 @@
 ---
 title: Exportação de dados
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 5e29f67f9a2084ec
-  export-data: 58b5e1d4e6f0b917
-  export-group-data-as-csv: 53286ec33e7300d6
-  export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: a0ad78b64036be18
-  import-your-group-data-on-another-loomio-server: 910ee8af48049e82
+  introduction: 988679ffd3d29834
+  export-data: 9c2fb6ec7c75bcb6
+  export-group-data-as-csv: c0845f09bff828f2
+  export-group-data-as-html: 659fd5e14956b00e
+  export-group-data-as-json: 4c2131f4518b7469
+  print-thread-to-pdf: 1a1d0598f4277ba1
+  import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
-  introduction: ca44757b6cc9d1e4
-  export-data: 5b9738813e11e368
-  export-group-data-as-csv: ffdf2041e8863ce2
-  export-group-data-as-html: b7e9c982cb1b8400
-  export-group-data-as-json: 6aa2f813094505c0
-  print-thread-to-pdf: 755754edeba07d8c
-  import-your-group-data-on-another-loomio-server: fa20a91916815515
+  introduction: d3faeee70c213e87
+  export-data: 7fe6c370f178dc41
+  export-group-data-as-csv: ecde53b7893e8872
+  export-group-data-as-html: 826424b8a5f3b5c3
+  export-group-data-as-json: 6908e3bc33785f9b
+  print-thread-to-pdf: 89db8ad3f48c8145
+  import-your-group-data-on-another-loomio-server: b69f9d45e7d523d1
 title_source: 29049648f87b87f5
 title_generated: cceaafbceacf5faf
 ---
@@ -29,51 +29,47 @@ title_generated: cceaafbceacf5faf
 
 # Backup ou exportação dos dados do grupo
 
-Com o recurso de exportação dos dados do grupo, você pode:
+Com a exportação dos dados do grupo, você pode:
 
-- Baixar um arquivo com os dados dos membros para auditar a composição do grupo.
-- Baixar o conteúdo do seu grupo, incluindo o texto das conversas e enquetes, para arquivamento ou análise.
-- Abrir os resultados das enquetes em uma planilha ou linguagem de script.
-- [Imprimir ou salvar uma conversa ou enquete em PDF para arquivamento.](#print-thread-to-pdf)
-- Transferir seu grupo, incluindo todos os usuários, conversas, enquetes e arquivos, para outro servidor Loomio.
+- Baixar dados dos membros para auditar a composição do grupo.
+- Arquivar ou analisar as conversas, os comentários e as enquetes do seu grupo.
+- Abrir os resultados das enquetes em uma planilha ou script.
+- [Imprimir ou salvar uma conversa ou enquete em PDF para seus registros.](#print-thread-to-pdf)
+- Transferir seu grupo, incluindo seus usuários, conversas, enquetes e arquivos, para outro servidor Loomio.
 
-Se você quiser migrar dos servidores gerenciados pelo Loomio [para seu próprio servidor](https://github.com/loomio/loomio), pode usar esse recurso.
+Você pode usar esse recurso para migrar do serviço de hospedagem do Loomio para um [servidor hospedado por você](https://github.com/loomio/loomio). Se você administra seu próprio servidor e quer migrar para a hospedagem gerenciada do Loomio nos EUA, na União Europeia ou na Austrália, [entre em contato conosco](/contact).
 
-Se você administra seu próprio servidor Loomio e prefere deixar de fazê-lo, o Loomio oferece hospedagem gerenciada nos EUA, na União Europeia e na Austrália. Se quiser migrar seu grupo para um desses servidores, [entre em contato conosco](/contact).
-
-[Entre em contato conosco](/contact) se quiser transferir seu grupo do serviço global de hospedagem do Loomio em loomio.com para um dos nossos serviços regionais: loomio.eu para a Europa ou loomio.nz para a Austrália e a Nova Zelândia.
+[Entre em contato conosco](/contact) se quiser transferir um grupo de loomio.com para um serviço regional (loomio.eu para a Europa ou loomio.nz para a Austrália e a Nova Zelândia).
 
 <!-- translation-section: export-data -->
 
 ## Exportar dados
 
-Abra o menu suspenso do grupo clicando nos três pontos e selecione **Exportar data do grupo**.
+Somente um admin do grupo pode exportar os dados do grupo. Abra o menu de ações do grupo e selecione **Exportar data do grupo**.
 
 ![Ação de exportar dados do grupo no menu da Oatmilk Cooperative](group_export_group_data.png)
+
+O Loomio prepara a exportação em segundo plano e envia a você um link para download por e-mail quando ela estiver pronta. O link fica ativo por uma semana.
 
 <!-- translation-section: export-group-data-as-csv -->
 
 ### Exportar dados do grupo em CSV
 
-*Para trabalhar com os dados do grupo em uma planilha, como no MS Excel ou no Google Sheets.*
-
-O Loomio prepara o arquivo CSV em segundo plano e envia a você um link para download por e-mail quando ele estiver pronto. O link fica disponível por uma semana.
+Use CSV para examinar os dados do grupo, incluindo detalhes e atividades dos membros, em uma planilha como Microsoft Excel ou Google Sheets.
 
 <!-- translation-section: export-group-data-as-html -->
 
 ### Exportar dados do grupo em HTML
 
-*Para salvar os dados para arquivamento.*
-
-O Loomio prepara o arquivo HTML em segundo plano e envia a você um link para download por e-mail quando ele estiver pronto. O link fica disponível por uma semana.
+Use HTML para salvar uma cópia legível das discussões e enquetes do seu grupo para arquivamento.
 
 <!-- translation-section: export-group-data-as-json -->
 
 ### Exportar dados do grupo em JSON
 
-*Para transferir os dados do seu grupo para uma instância do Loomio hospedada por você.*
+Use JSON para transferir os dados do seu grupo para um servidor Loomio hospedado por você.
 
-Você precisa ser admin do grupo para exportá-lo. A exportação em JSON inclui:
+A exportação em JSON inclui:
 
 - O grupo, seus membros e pedidos de adesão
 - Conversas, comentários, reações, tags, modelos, notificações e registros relacionados dos grupos incluídos
@@ -89,15 +85,11 @@ A exportação em JSON não inclui:
 - Enquetes anônimas que ainda não foram encerradas
 - Conversas diretas e enquetes que não pertencem ao grupo
 
-Em breve, você receberá um e-mail com um link para baixar o arquivo JSON.
-
 <!-- translation-section: print-thread-to-pdf -->
 
 ## Imprimir conversa em PDF
 
-Para salvar uma conversa em seus registros, abra o menu da conversa e escolha **Imprimir**. O Loomio gera uma página HTML com os comentários, enquetes, votos, conclusões e a formatação da conversa. Use a ferramenta de impressão do seu navegador para imprimir a página ou salvá-la como PDF.
-
-Você pode copiar a página e colá-la em um editor de documentos, arquivo ou repositório de dados.
+Para salvar uma única conversa para seus registros, abra o menu de ações da conversa e selecione **Imprimir**. O Loomio gera uma página HTML com os comentários, enquetes, votos, conclusões e a formatação da conversa. Use a ferramenta de impressão do seu navegador para imprimir a página ou salvá-la como PDF, ou copie o conteúdo para outro documento.
 
 ![Ação de imprimir a discussão sobre garrafas retornáveis](discussion_print_discussion.png#width-90)
 
@@ -105,18 +97,22 @@ Você pode copiar a página e colá-la em um editor de documentos, arquivo ou re
 
 ## Importar os dados do seu grupo em outro servidor Loomio
 
-Para obter instruções sobre como configurar seu próprio servidor Loomio, acesse: https://github.com/loomio/loomio
+Esta seção é para administradores que mantêm um servidor Loomio com hospedagem própria. Para obter instruções de configuração, consulte o [repositório do Loomio](https://github.com/loomio/loomio).
 
-Se você hospeda sua própria instalação do Loomio e quer importar seus dados exportados:
+1. Copie o arquivo `.json` para a pasta `import` do contêiner:
 
-Copie o arquivo .json para a pasta `import` da instância do contêiner:
+```sh
+scp your-group-data.json username@some-domain.org:loomio-deploy/import
+```
 
-`scp your-group-data.json username@some-domain.org:loomio-deploy/import`
+2. Abra o console Rails no contêiner em execução:
 
-Acesse o console Rails em execução:
+```sh
+docker exec -ti loomio-app rails console
+```
 
-`docker exec -ti loomio-app rails console`
+3. Execute o serviço de importação:
 
-Chame o serviço:
-
-`GroupExportService.import('/import/your-group-data.json')`
+```ruby
+GroupExportService.import('/import/your-group-data.json')
+```

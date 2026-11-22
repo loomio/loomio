@@ -1,26 +1,26 @@
 ---
 title: Iniciar uma discussão
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 3789fc666aaa1648
-  new-discussion: 523c99827f192f72
-  group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
-  tags: 2d888580fa809f70
-  title: ba80a903c4ecc7d1
-  context: 9dbd5adda4ef4a04
+  introduction: c5b9b07369869d1a
+  new-discussion: f29a3077b319eed5
+  group: b130915850624908
+  invite-and-notify: b0d88eb035263e60
+  tags: 15916c7c3259c62c
+  title: 8d833a29778beb12
+  context: fdbdd9f406e00e29
 generated:
-  introduction: 8e74336026544503
-  new-discussion: bf4bdc078aea4603
-  group: '08b4bc471221aa14'
-  invite-and-notify: bbe22028f07335ad
-  tags: a1d84238cbafcfc2
-  title: a115dd81a9f4691f
-  context: 33c0788dc474d1be
+  introduction: c2a73b2d9a8aca71
+  new-discussion: 7b940691a775f0fa
+  group: 6e8e0870ff579791
+  invite-and-notify: 530f411ad74c89b2
+  tags: f5775e8b1ee1af57
+  title: ef99d19548bcffde
+  context: 2702ee0e148e92fd
 title_source: 7373febfac25054c
 title_generated: 26cb79ccf3fedb7a
 ---
@@ -29,43 +29,40 @@ title_generated: 26cb79ccf3fedb7a
 
 # Iniciar uma discussão
 
-Iniciar uma discussão no Loomio é como escrever um e-mail. O assunto de um e-mail é como o título da discussão, e o texto que você escreve em um e-mail é como o contexto de uma discussão.
+Iniciar uma discussão no Loomio funciona de forma semelhante a enviar um e-mail. O título é como o assunto de um e-mail, o contexto apresenta o tema e a lista de convidados define quem recebe uma notificação.
 
-Assim como você adiciona pessoas à lista de destinatários de um e-mail, no Loomio você pode convidar pessoas individualmente ou como grupo para a discussão. Elas receberão uma notificação por e-mail com o conteúdo da sua discussão.
-
-As pessoas podem responder à sua discussão por e-mail, e seus comentários aparecerão na discussão.
-
-Assim como um e-mail, uma discussão pode ser uma pergunta simples ou uma apresentação mais detalhada de um assunto, com links ou arquivos anexados para fornecer informações de apoio.
+Você pode fazer uma pergunta simples ou compartilhar uma apresentação detalhada com links e arquivos anexados. As pessoas também podem responder por e-mail, e suas respostas aparecem na discussão.
 
 <!-- translation-section: new-discussion -->
 
-## Nova discussão
+## Iniciar uma nova discussão
 
-Encontre o botão **Nova discussão** na página do seu grupo no Loomio para iniciar uma nova discussão.
+Selecione **Iniciar discussão** na página do seu grupo ou de qualquer subgrupo.
 
-Você pode iniciar uma discussão no seu grupo no Loomio ou em qualquer subgrupo.
+O Loomio mostra os [modelos de discussão](/en/user_manual/discussions/templates/) do seu grupo. Escolha um modelo ou **Modelo em branco** para abrir o formulário de discussão.
 
-![Botão Nova discussão na página da Oatmilk Cooperative](new-discussion-button.png)
+![Botão Iniciar discussão na página da Oatmilk Cooperative](new-discussion-button.png)
 
-![Formulário de nova discussão para planejar o teste de garrafas retornáveis](new-discussion-example.png)
+![Formulário para iniciar uma discussão sobre o planejamento do teste de garrafas retornáveis](new-discussion-example.png)
 
 <!-- translation-section: group -->
 
 ### Grupo
-Verifique se o nome do grupo ou subgrupo está correto para a sua discussão. Qualquer pessoa nesse grupo poderá ver a discussão. Você também pode iniciar a discussão em outro grupo ou como uma discussão 'direta' (sem grupo).
+
+Verifique se o grupo ou subgrupo correto está selecionado. Qualquer pessoa nesse grupo pode ver a discussão. Você também pode iniciar a discussão em outro grupo ou como uma [discussão direta](/en/user_manual/discussions/direct_discussions/), sem grupo.
 
 >[!Tip]
->Se você ainda não estiver pronto para tornar a discussão visível no seu grupo, inicie a discussão como 'direta'. Você pode mover a discussão para o seu grupo no Loomio quando estiver pronto.
+>Se você ainda não quiser compartilhar uma discussão com seu grupo, inicie uma discussão direta. Você pode movê-la para seu grupo depois.
 
 <!-- translation-section: invite-and-notify -->
 
 ### Convidar e notificar
 
-O campo **Convidar** controla quem recebe a nova discussão imediatamente.
+O campo **Convidar** controla quem recebe uma notificação imediatamente quando você inicia a discussão.
 
-Os membros do grupo podem ver uma discussão no seu grupo mesmo que você não os notifique. Adicionar um membro do grupo ao campo **Convidar** envia a ele uma notificação por e-mail e uma notificação no Loomio.
+Os membros do grupo podem ver uma discussão no grupo mesmo que você não os notifique. Adicionar um membro do grupo ao campo **Convidar** envia a ele uma notificação no Loomio e por e-mail.
 
-Selecione um grupo para notificar todas as pessoas nele ou expanda o grupo para escolher membros individualmente. Selecione o × ao lado de um nome para remover essa pessoa da notificação.
+Selecione um grupo para notificar todas as pessoas nele ou expanda o grupo para escolher membros individualmente. Selecione **×** ao lado de um nome para deixar essa pessoa de fora.
 
 ![Campo Convidar expandido para mostrar os destinatários individuais](../notifying_people/thread_notification.png)
 
@@ -73,26 +70,28 @@ Comece a digitar o nome de um membro e selecione-o na lista.
 
 ![Busca por Samira Patel no campo Convidar](../notifying_people/thread_notify_user.png)
 
-Digite um endereço de e-mail para convidar um convidado. Um convidado pode ver e participar desta conversa, mas não pode ver outras discussões do grupo, a menos que seja convidado separadamente.
+Digite um endereço de e-mail para convidar uma pessoa como convidado. Um convidado pode ver e participar desta conversa, mas não pode ver outras discussões privadas do grupo, a menos que seja convidado.
 
 ![Adição do endereço de e-mail de um convidado ao campo Convidar](../notifying_people/thread_notify_email.png)
 
-Você também pode iniciar a discussão sem notificar ninguém. Os membros do grupo ainda podem encontrá-la no Loomio e podem vê-la no e-mail de resumo, dependendo das suas configurações de notificação.
+Você também pode iniciar uma discussão sem notificar ninguém. Os membros do grupo ainda podem encontrá-la no Loomio e podem vê-la no e-mail de resumo, dependendo das suas configurações de notificação.
 
 <!-- translation-section: tags -->
 
 ### Tags
 
-Adicione tags para ajudar as pessoas a encontrar sua discussão ao pesquisar por tag. Admins podem criar novas tags.
+Adicione uma ou mais tags para que as pessoas possam filtrar e buscar sua discussão depois. Por padrão, os membros podem criar novas tags, a menos que um admin do grupo desative essa permissão. Veja [Tags de categoria](/en/user_manual/discussions/tags/).
 
 <!-- translation-section: title -->
 
 ### Título
-Dê à sua discussão um título relevante. O título de uma discussão é semelhante ao assunto de um e-mail.
+
+Adicione um título claro e específico que informe às pessoas qual é o assunto da discussão.
 
 <!-- translation-section: context -->
 
 ### Contexto
-Use o contexto da discussão para apresentar o assunto e definir o foco da conversa ou da decisão a tomar. Use as ferramentas de formatação para destacar os pontos principais. Inclua informações de apoio, anexe arquivos, adicione links para documentos on-line e incorpore um vídeo.
 
-O contexto sempre ficará no topo da discussão, e você pode atualizá-lo a qualquer momento conforme a discussão avança. Quando a discussão terminar, atualize o contexto com a conclusão.
+O contexto apresenta o assunto e define o foco da conversa ou da decisão. Você pode formatar o texto, anexar arquivos, adicionar links para documentos e incorporar vídeos.
+
+O contexto fica no topo da conversa, e você pode atualizá-lo conforme a discussão avança. Quando a discussão terminar, você também pode adicionar a conclusão ao contexto para que quem chegar depois veja o que foi decidido de imediato.

@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/mattermost/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/mattermost/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 5ff78e7362ad4050
+  introduction: 508868f1d003ac65
 generated:
-  introduction: 490d5c42ade46318
+  introduction: c4445da6d94cfb50
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,31 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Intégration Mattermost
-_Connecter les notifications de votre groupe Loomio à la messagerie de votre équipe Mattermost._
 
-Loomio peut envoyer des notifications dans vos canaux Mattermost lorsque de nouvelles discussions, propositions, commentaires, votes et conclusions sont publiés.
+Loomio peut envoyer des notifications dans vos canaux Mattermost lorsque de nouvelles discussions, de nouveaux sondages, commentaires, votes et conclusions sont publiés.
 
 ---
 
-Ouvrez votre équipe Mattermost dans votre navigateur. Ouvrez ensuite la page des paramètres d’intégration.
-![](mm1.png)
+1. Ouvrez votre équipe Mattermost dans un navigateur et accédez à **Integrations**.
 
-Cliquez sur « Webhooks entrants »
-![](mm2.png)
+   ![](mm1.png)
 
-Cliquez ensuite sur « Ajouter un webhook entrant »
-![](mm3.png)
+2. Sélectionnez **Webhooks entrants**.
 
-Donnez-lui un nom simple, choisissez le canal dans lequel les notifications doivent apparaître, puis cliquez sur Enregistrer
-![](mm4.png)
+   ![](mm2.png)
 
-Copiez l’URL du webhook dans votre presse-papiers. Vous en aurez besoin à l’étape suivante.
-![](mm5.png)
+3. Sélectionnez **Ajouter un webhook entrant**.
 
-Assurez-vous que l’URL de votre webhook est dans votre presse-papiers, puis suivez le lien ci-dessous.
+   ![](mm3.png)
+
+4. Saisissez un nom, choisissez le canal dans lequel vous souhaitez voir apparaître les notifications, puis sélectionnez **Enregistrer**.
+
+   ![](mm4.png)
+
+5. Copiez l’URL du webhook.
+
+   ![](mm5.png)
+
+Maintenant que vous disposez d’une URL de webhook, terminez la connexion dans Loomio :
 
 [Configurer une intégration de messagerie dans Loomio](../chatbots/#set-up-a-chat-integration)

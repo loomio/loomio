@@ -1,52 +1,52 @@
 ---
 title: API du serveur
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
+  authentication: e5fe51f7081e921f
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: de7ad238bf914455
+  provisioning: 78ae303208080368
 generated:
   introduction: d342b93ffbf7bd9c
-  authentication: a5723ee0092b6c7d
+  authentication: 5747923cdff148dc
   user-object: 90f4faab979ee743
   list-users: 520de4776ee59488
-  example: d846f9ad81a21076
+  example: af11eab4b0fb07d4
   show-user: b71c4abd1e2d9af0
-  examples: f35b3640390e4704
+  examples: 852faffac42788ad
   update-user: 56f62f7bb09daf3b
   params: 441b416646e2ab6f
-  examples-2: 93764b35184d8245
+  examples-2: c2aebb01783fb67b
   deactivate-user: b691433ca25a4b2d
-  examples-3: 8873bd3b3bab3243
+  examples-3: 212f93633e69ff89
   reactivate-user: 05fa751f5c32340b
-  examples-4: 7ebbcda2c88b36dd
+  examples-4: eb041a4f193b9d2e
   redact-user: 072d699449872bd6
-  examples-5: dfbafabd939b0979
+  examples-5: 4d68146cc0929167
   delete-user: 1e285d16ef2e6795
-  examples-6: e1dd1081d8446715
+  examples-6: 14bf78e73e429958
   sso-profile-sync-settings: 121a65c62fc28de4
-  provisioning: 185124072ab75728
+  provisioning: 342d243bfebcafd6
 title_source: 370e81eb20eece44
 title_generated: 8705cb84226ab509
 ---
@@ -70,7 +70,7 @@ La clé correspond au paramètre `SERVER_API_KEY` dans l’environnement du serv
 Envoyez la clé sous forme de jeton Bearer :
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Envoyez les informations d’authentification uniquement dans l’en-tête `Authorization`. Les clés API présentes dans les chaînes de requête ou les corps de requête sont rejetées.
@@ -94,7 +94,9 @@ Les points de terminaison existants pour la mise à jour, la désactivation, la 
 
 `POST /api/server0/users`
 
-Envoyez un objet `user` avec le champ obligatoire `email`. Les espaces en début et en fin d’adresse e-mail sont supprimés et les adresses sont converties en minuscules. Les champs facultatifs sont `name`, `username` et `is_admin`. Ici, `is_admin` désigne un administrateur de l’instance ; les rôles d’administrateur de groupe sont gérés au niveau des adhésions. Omettez `username` pour en générer un automatiquement. Les champs inconnus sont rejetés.
+Envoyez un objet `user` avec le champ obligatoire `email`. Les espaces en début et en fin d’adresse e-mail sont supprimés et les adresses sont converties en minuscules. Les champs facultatifs sont `name`, `username` et `is_admin`.
+
+Ici, `is_admin` désigne un administrateur de l’instance ; les rôles d’administrateur de groupe sont gérés au niveau des adhésions. Omettez `username` pour en générer un automatiquement. Les champs inconnus sont rejetés.
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-Envoyez un champ `group_id` et un tableau `emails`, tous deux obligatoires. Par défaut, cette opération ajoute les personnes de la liste qui n’ont pas déjà une adhésion active et conserve tous les autres membres. Les espaces en début et en fin d’adresse e-mail sont supprimés, les adresses sont converties en minuscules et les doublons sont éliminés. Les nouvelles adresses entraînent la création de comptes et d’invitations en attente. Les membres existants dont l’adresse e-mail est vérifiée et qui appartiennent à un autre groupe actif de la même organisation sont acceptés automatiquement, conformément au processus d’invitation de l’API utilisateur.
+Envoyez un champ `group_id` et un tableau `emails`, tous deux obligatoires. Par défaut, cette opération ajoute les personnes de la liste qui n’ont pas déjà une adhésion active et conserve tous les autres membres. Les espaces en début et en fin d’adresse e-mail sont supprimés, les adresses sont converties en minuscules et les doublons sont éliminés.
+
+Les nouvelles adresses entraînent la création de comptes et d’invitations en attente. Les membres existants dont l’adresse e-mail est vérifiée et qui appartiennent à un autre groupe actif de la même organisation sont acceptés automatiquement, conformément au processus d’invitation de l’API utilisateur.
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -215,9 +219,11 @@ curl https://loomio.example.org/api/server0/memberships \
 }
 ```
 
-Répéter la même requête ne crée pas d’adhésions en double et ne renvoie pas les invitations. Inviter de nouveau un membre dont l’adhésion a été révoquée rétablit son accès au groupe sans rétablir un éventuel rôle d’administrateur antérieur. Les nouvelles invitations et les changements de rôle suivent le processus habituel de notification, sans qu’aucun utilisateur soit enregistré comme auteur de l’action.
+Répéter la même requête ne crée pas d’adhésions en double et ne renvoie pas les invitations. Inviter de nouveau un membre dont l’adhésion a été révoquée rétablit son accès au groupe sans rétablir un éventuel rôle antérieur d’administrateur de groupe. Les nouvelles invitations et les changements de rôle suivent le processus habituel de notification, sans qu’aucun utilisateur soit enregistré comme auteur de l’action.
 
-Les listes d’adresses e-mail manquantes ou mal formées et les valeurs booléennes invalides entraînent une réponse HTTP `400`. La présence d’un compte désactivé dans la liste entraîne une réponse HTTP `422` ; réactivez-le explicitement avant de l’ajouter. Des données de compte invalides, les limites d’abonnement ou d’autres erreurs annulent l’ensemble de la synchronisation, y compris les nouveaux comptes et les révocations d’adhésion. Les ajouts nécessitent un groupe actif et restent soumis au nombre maximal de membres autorisé par l’abonnement.
+Les listes d’adresses e-mail manquantes ou mal formées et les valeurs booléennes invalides entraînent une réponse HTTP `400`. La présence d’un compte désactivé dans la liste entraîne une réponse HTTP `422` ; réactivez-le explicitement avant de l’ajouter.
+
+Des données de compte invalides, les limites d’abonnement ou d’autres erreurs annulent l’ensemble de la synchronisation, y compris les nouveaux comptes et les révocations d’adhésion. Les ajouts nécessitent un groupe actif et restent soumis au nombre maximal de membres autorisé par l’abonnement.
 
 ### Mettre à jour les rôles d’une adhésion
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-Renvoie `{"success": true}`. La révocation retire l’accès au groupe et à ses sous-groupes, y compris l’accès aux sujets et les droits de vote dans les sondages actifs. Elle ne supprime pas le compte, ne modifie pas les autres groupes et ne retire pas l’accès accordé directement aux fils. Répéter une révocation réussit. Vous pouvez révoquer des adhésions dans les groupes dont l’abonnement a expiré ; les groupes supprimés entraînent une réponse HTTP `404`.
+Renvoie `{"success": true}`. La révocation retire l’accès au groupe et à ses sous-groupes, y compris l’accès aux sujets et les droits de vote dans les sondages actifs. Elle ne supprime pas le compte, ne modifie pas les autres groupes et ne retire pas l’accès accordé directement aux fils.
+
+Répéter une révocation réussit. Vous pouvez révoquer des adhésions dans les groupes dont l’abonnement a expiré ; les groupes supprimés entraînent une réponse HTTP `404`.
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ Listez tous les comptes utilisateurs de l’installation Loomio.
 ### Exemple
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Renvoie :
@@ -319,13 +327,13 @@ Recherchez un utilisateur à partir de son identifiant utilisateur Loomio ou de 
 Par identifiant utilisateur Loomio :
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 Par identité externe :
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Renvoie :
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 Par identité externe :
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Renvoie l’utilisateur mis à jour :
@@ -405,13 +413,13 @@ Désactivez un compte utilisateur trouvé à partir de son identifiant utilisate
 Par identifiant utilisateur Loomio :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
 Par identité externe :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Renvoie :
@@ -440,13 +448,13 @@ Réactivez un compte utilisateur désactivé en le recherchant par son identifia
 Par identifiant utilisateur Loomio :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
 Par identité externe :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Renvoie :
@@ -477,13 +485,13 @@ C’est la méthode recommandée pour retirer un utilisateur de Loomio.
 Par identifiant utilisateur Loomio :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
 Par identité externe :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Renvoie :
@@ -513,13 +521,13 @@ Cette opération est très destructive. L’effacement des données personnelles
 Par identifiant utilisateur Loomio :
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 Par identité externe :
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Renvoie :

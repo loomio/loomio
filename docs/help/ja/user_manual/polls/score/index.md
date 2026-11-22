@@ -1,25 +1,25 @@
 ---
 title: スコア投票
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/score/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: 8e8b7bd159f87eb3
-  when-to-use-score: 24302733c38dff7a
+  introduction: 32d5d52e10103470
+  when-to-use-score: 55102bd4cc91ebdc
   example-score-possible-trial-locations: c19a7209500542cd
-  set-up-the-poll: 2614a5ec2b36101d
-  vote: 3e10b31a36a7a497
-  read-the-results: 81846ee1b48c223b
+  set-up-the-poll: a11219d5abfb5f46
+  vote: 2a3c172bd7f6daaa
+  read-the-results: 0a8532591206eea4
   share-an-outcome: 7e7afb3516dd6eeb
 title_source: 38e5a46cbc5ad328
 title_generated: 7e0f91665b9c2fe0
@@ -29,7 +29,7 @@ title_generated: 7e0f91665b9c2fe0
 
 # スコア
 
-スコアは、共通の数値尺度を使って、参加者が各選択肢をどのように評価するかを測ります。選択とは異なり、すべての選択肢への回答を求めるため、結果からは何が好まれているかと、どの程度好まれているかの両方がわかります。
+スコアは、共通の数値尺度を使って、参加者が各選択肢をどのように評価するかを測ります。選択とは異なり、すべての選択肢への回答を求めるため、何が好まれているかと、どの程度好まれているかの両方がわかります。
 
 <!-- translation-section: when-to-use-score -->
 
@@ -43,7 +43,7 @@ title_generated: 7e0f91665b9c2fe0
 - 共通の基準で助成金の申請を評価する
 - 複数の提案の適切さを比較する
 
-尺度の下限と上限が何を意味するかを定義します。共通の定義がないと、同じ数値でも投票者によって意味が異なることがあります。選択だけが必要な場合は[選択](/en/user_manual/polls/choose/)を、参加者が限られた予算の中で配分を調整する必要がある場合は[配分](/en/user_manual/polls/allocate/)を使います。
+全員が数値を同じように解釈できるよう、尺度の下限と上限が何を意味するかを定義します。選択だけが必要な場合は[選択](/en/user_manual/polls/choose/)を、参加者が限られた予算の中で配分を調整する必要がある場合は[配分](/en/user_manual/polls/allocate/)を使います。
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -55,13 +55,13 @@ Oatmilk Cooperativeは、回収して再利用するボトルの試験運用を�
 
 ## アンケートを設定する
 
-すべての選択肢に等しく当てはまる質問を1つ記載します。評価する項目を追加し、**最低スコア**と**最大スコア**を設定して、詳細欄で両端の数値の意味を説明します。選択肢の意味を記載すると、各項目の範囲を明確にできます。
+すべての選択肢に等しく当てはまる質問を1つ記載します。評価する項目を追加し、**最低スコア**と**最大スコア**を設定して、詳細欄で両端の数値の意味を説明します。選択肢の意味を追加すると、各項目の範囲を明確にできます。
 
 ![](form.png)
 
-参加者が一貫して使える尺度を選びます。0–5の尺度は手早く使え、0–10の尺度ではより細かな違いを表せます。細かく採点できるほど良い情報が得られるとは限らないため、質問に適した最も短い尺度を使います。
+参加者が一貫して使える尺度を選びます。0–5の尺度は手早く使え、0–10の尺度ではより細かな違いを表せます。質問に適した最も短い尺度を使います。範囲を広げても、必ずしも良い結果が得られるとは限りません。
 
-周囲の人や表示順による影響を減らすには、匿名での投票や選択肢のランダム表示が役立つ場合があります。
+周囲の人の影響や表示順による偏りを減らすには、匿名での投票や選択肢のランダム表示を使えます。
 
 <!-- translation-section: vote -->
 
@@ -71,7 +71,7 @@ Oatmilk Cooperativeは、回収して再利用するボトルの試験運用を�
 
 ![](voting.png)
 
-理由には、投票者がどのように尺度を適用したかを説明します。これにより、グループは情報不足による低いスコアと、内容に対する懸念による低いスコアを区別しやすくなります。
+投票の理由には、投票者がどのように尺度を使ったかを説明します。これにより、グループは低いスコアが実際の懸念によるものか、情報不足によるものかを判断しやすくなります。
 
 <!-- translation-section: read-the-results -->
 
@@ -85,7 +85,7 @@ Oatmilk Cooperativeは、回収して再利用するボトルの試験運用を�
 
 ![](results.png)
 
-この例では、**中央駅のカフェ**の平均が7.5で最も高くなっています。**港のオフィス**の平均は5.25で最も低く、川沿いの市場と大学のフードコートはどちらも7です。招待された5人のうち4人が投票しているため、グループはまだ1人が回答していないことも確認できます。
+この例では、**中央駅のカフェ**の平均が7.5で最も高くなっています。**港のオフィス**の平均は5.25で最も低く、川沿いの市場と大学のフードコートはどちらも7です。招待された5人のうち4人が投票しているため、まだ1人が回答していません。
 
 平均を比較するのは、選択肢ごとの投票者数が同程度の場合に限ります。小さな差に意味があると判断する前に、投票の理由を読みます。
 

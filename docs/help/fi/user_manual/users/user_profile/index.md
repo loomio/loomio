@@ -1,32 +1,36 @@
 ---
 title: Oma profiili
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
   introduction: 571eb96f30d65f8b
   edit-profile: c69eded36e8813c4
-  update-your-personal-info: 0040c8c7161c9760
-  uploading-a-profile-photo: 731822eee06eaefb
-  language-settings: c12258e3e56039e0
-  resetting-your-password: c472a651f96d11a9
-  merge-accounts: dfab1a97536c18e9
-  deleting-your-account: 3182c32334024c77
-  time-zone: 0ef312708d9d1760
+  update-your-personal-info: 21bc7eaaa9e20d24
+  uploading-a-profile-photo: 76893ab85a17250e
+  language-settings: '09e1c5602d904939'
+  resetting-your-password: 47a85573878957ac
+  merge-accounts: a247bd523920f164
+  deleting-your-account: f91e850ac53372a9
+  time-zone: 28b812a2c8a1776a
+  passkeys: 2790118922290a12
 title_source: 528d89ad72cba22e
 title_generated: f036aa770febacfc
+needs_review:
+  passkeys: use "kiinnittää" instead of "pin" for "pin"
 ---
 
 <!-- translation-section: introduction -->
@@ -47,20 +51,21 @@ Avaa käyttäjävalikko valitsemalla nimesi sivupalkista ja valitse sitten **Muo
 
 ## Päivitä henkilötietosi
 
-Voit päivittää henkilötietosi muuttamalla seuraavia kenttiä:
+Voit päivittää seuraavia kenttiä profiilisivullasi:
 
-* **Nimi**
-* **Sähköpostiosoite** - Loomio-tiliisi liitetty sähköpostiosoite, johon saat Loomion ilmoitukset.
-* **Käyttäjätunnus** - nimi, josta muut tunnistavat sinut ja jolla he voivat mainita sinut @-maininnalla, jolloin saat ilmoituksen. Se voi sisältää pieniä kirjaimia, numeroita, alaviivoja ja yhdysmerkkejä muualla kuin alussa tai lopussa.
-* **Johdanto** - muutama rivi, joilla kerrot itsestäsi ryhmäsi muille jäsenille.
-* **Sijainti** - hyödyllinen eri paikoissa tai etänä toimiville ryhmille, jotta muut tietävät, missä olet.
+- **Nimi**
+- **Sähköpostiosoite** — Loomio-tiliisi liitetty sähköpostiosoite, johon Loomio lähettää ilmoituksesi.
+- **Käyttäjätunnus** — nimi, jolla muut voivat mainita sinut `@mention`-maininnalla, jolloin saat ilmoituksen. Se voi sisältää pieniä kirjaimia, numeroita, alaviivoja ja yhdysmerkkejä muualla kuin alussa tai lopussa.
+- **Johdanto** — muutama rivi, joilla kerrot itsestäsi ryhmäsi muille jäsenille.
+- **Sijainti** — hyödyllinen etänä tai eri paikoissa toimiville ryhmille, jotta muut tietävät, missä olet.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Profiilikuvan lisääminen
-Kun luot Loomio-tilin, profiilisi oletuskuvana näkyvät nimikirjaimesi. Voit lisätä profiilikuvan napsauttamalla kuvaasi profiilisivulla.
+
+Kun luot Loomio-tilin, profiilisi oletuskuvana näkyvät nimikirjaimesi. Lisää profiilikuva valitsemalla kuvasi profiilisivulla.
 
 ![](profile_photo.png)
 
@@ -68,26 +73,33 @@ Kun luot Loomio-tilin, profiilisi oletuskuvana näkyvät nimikirjaimesi. Voit li
 
 ## Kieli
 
-Loomio tunnistaa selaimesi kieliasetukset, mutta voit myös valita haluamasi kielen profiilisivulla käytettävissä olevista vaihtoehdoista.
+Loomio tunnistaa oletuksena selaimesi kielen, mutta voit myös valita haluamasi kielen profiilisivulla. Lisätietoja käyttöliittymän ja sisällön käännösvaihtoehdoista on sivulla [Kielet ja kääntäminen](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## Aikavyöhyke
 
-Aikakyselyn vaihtoehdot käyttävät profiiliisi tallennettua aikavyöhykettä. Ota **Tunnista aikavyöhyke automaattisesti** käyttöön, jos haluat käyttää selaimesi ilmoittamaa aikavyöhykettä. Voit myös poistaa automaattisen tunnistuksen käytöstä ja valita alueesi kohdasta **Aikavyöhyke**. Valitse lopuksi **Päivitä profiili**.
+Aikakyselyn vaihtoehdot käyttävät profiiliisi tallennettua aikavyöhykettä. Ota **Tunnista aikavyöhyke automaattisesti** käyttöön, jos haluat käyttää selaimesi aikavyöhykettä. Voit myös poistaa automaattisen tunnistuksen käytöstä, valita alueesi kohdasta **Aikavyöhyke** ja valita **Päivitä profiili**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## Salasanan vaihtaminen
-Voit vaihtaa salasanasi avaamalla profiilisivusi ja napsauttamalla **Vaihda salasana**.
+
+Vaihda salasanasi avaamalla profiilisivusi ja valitsemalla **Vaihda salasana**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Pääsyavaimet
+
+Voit lisätä, nimetä ja poistaa pääsyavaimia profiilisivullasi ja kirjautua sisään laitteesi sormenjälkitunnistuksella, kasvojentunnistuksella, PIN-koodilla tai suojausavaimella. Katso [Kirjaudu sisään pääsyavaimella](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Yhdistä tilit
 
-Jos sinulla on kaksi Loomio-käyttäjätiliä, voit yhdistää ne yhdeksi tiliksi.
+Jos sinulla on kaksi Loomio-tiliä, voit yhdistää ne yhdeksi tiliksi.
 
 Katso [Tilien yhdistäminen](../merge_accounts).
 
@@ -95,4 +107,4 @@ Katso [Tilien yhdistäminen](../merge_accounts).
 
 ## Tilin poistaminen
 
-Jos haluat poistaa Loomio-käyttäjätilisi ja erota kaikista Loomio-ryhmistä, joiden jäsen olet, katso [Loomio-tilin poistaminen](../deleting_your_account).
+Jos haluat poistaa Loomio-tilisi pysyvästi ja erota ryhmistäsi, katso [Loomio-tilin poistaminen](../deleting_your_account).

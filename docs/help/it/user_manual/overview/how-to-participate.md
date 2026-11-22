@@ -1,32 +1,32 @@
 ---
 title: Come partecipare
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/overview/how-to-participate.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4337bfc044fc30d1
-  comment: 66cebed9d4121cb8
-  reply-to-a-comment: 705956c18391238b
-  get-someone-s-attention: 9c73c3364416af89
-  reactions: c7ad4f1cad909d8d
-  vote: 6d972304389c7684
-  state-a-reason: 94549cc6f864ac62
-  change-your-vote: 9e323ff17b0aedfa
-  results: 6fe0d5a60acc75eb
-  outcome: 8cb16ab9afb55fb8
+  introduction: a8163542495f8a53
+  comment: 94c20a0a9a3ba16c
+  reply-to-a-comment: '093c6ad2c2751cb8'
+  get-someone-s-attention: 23529e6d4f47ed66
+  reactions: 5f82546a69fda018
+  vote: 4e7ca73a897c6e60
+  state-a-reason: 47f972ac0f8edc4e
+  change-your-vote: a6a6a8d327f66483
+  results: 375780d5868ee81d
+  outcome: 23a179d6780dd7c5
 generated:
-  introduction: 56a782ce731103ef
-  comment: cd6a03876e68a1b5
-  reply-to-a-comment: 58b9eb75e7dffbde
-  get-someone-s-attention: 7959c44ebe2bbc2b
-  reactions: 57eca4b096822ae3
-  vote: c7a578d9c4f6c653
-  state-a-reason: 9aca883c5125cccd
-  change-your-vote: 655af0891e4ab09f
-  results: 897166725d03dbaa
-  outcome: f3e717b8f7b12226
+  introduction: f9360aa8ee39d5ac
+  comment: dbe6858bb91d1fc6
+  reply-to-a-comment: f53546da93394def
+  get-someone-s-attention: 7b4eb7d1c483ef30
+  reactions: a4e3925ae4b05b2e
+  vote: 5a9a6f8ed10f2e53
+  state-a-reason: a28e53f8bce159a7
+  change-your-vote: 23ac278765765313
+  results: 9e06f43b8bd109d9
+  outcome: 124ccdb10fe1aa29
 title_source: a7854841fbd99ee4
 title_generated: cebfe2fcfef2ca50
 ---
@@ -35,17 +35,13 @@ title_generated: cebfe2fcfef2ca50
 
 # Come partecipare
 
-Dopo aver effettuato l'accesso a un gruppo Loomio a cui hai ricevuto un invito, puoi partecipare a una discussione o a una decisione su Loomio.
-
-Continua a leggere per scoprire come scrivere un commento in una conversazione e come votare in un sondaggio.
+Dopo aver effettuato l'accesso a un gruppo Loomio, puoi partecipare alle discussioni e votare nei sondaggi.
 
 <!-- translation-section: comment -->
 
 ## Commenta
 
-Puoi scrivere un commento in una conversazione e le altre persone possono rispondere, aggiungere una reazione o pubblicare un proprio commento per continuare la discussione.
-
-Quando hai scritto il testo, usa **Pubblica commento** per pubblicare subito il commento. Il tuo commento sarà visibile a chiunque abbia il permesso di vedere la conversazione.
+Pubblica un commento in una conversazione della discussione per condividere i tuoi pensieri. Chiunque possa vedere la conversazione può leggere il tuo commento, rispondere o aggiungere una reazione.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +49,7 @@ Quando hai scritto il testo, usa **Pubblica commento** per pubblicare subito il 
 
 ### Rispondi a un commento
 
-Puoi rispondere al commento di una persona facendo clic sull'icona di risposta sotto il commento.
-
-La tua risposta viene pubblicata nella conversazione e una notifica via email viene inviata all'autore del commento.
+Rispondi direttamente a un commento per rispondere a un punto specifico. Loomio pubblica la tua risposta nella conversazione e invia una notifica all'autore del commento.
 
 ![](comment_reply.png#width-90)
 
@@ -63,7 +57,7 @@ La tua risposta viene pubblicata nella conversazione e una notifica via email vi
 
 ### Attira l'attenzione di qualcuno
 
-Puoi inviare una notifica alle persone quando scrivi un commento.
+Digita **@** seguito dal nome di una persona in un commento per inviarle una notifica.
 
 ![](comment_mention.png#width-90)
 
@@ -71,7 +65,7 @@ Puoi inviare una notifica alle persone quando scrivi un commento.
 
 ### Reazioni
 
-Aggiungere una reazione a un commento permette di mostrare apprezzamento e far sapere all'autore cosa ne pensi. È un modo rapido e semplice per partecipare, senza scrivere un testo né inviare un'email. Fai clic sull'icona dell'emoji sorridente sotto un commento per aggiungere una reazione con un'emoji.
+Aggiungi una reazione con un'emoji per far sapere che hai letto un commento, senza scrivere una risposta né inviare una notifica via email.
 
 ![](comment_reaction.png#width-90)
 
@@ -79,13 +73,9 @@ Aggiungere una reazione a un commento permette di mostrare apprezzamento e far s
 
 ## Vota
 
-Puoi ricevere un invito a votare in un sondaggio via email o tramite una notifica su Loomio. Fai clic sul link nell'email per votare.
+Apri un sondaggio da un invito via email, da una notifica nell'app o dalla scheda **Sondaggi** del tuo gruppo. Leggi il sondaggio e gli eventuali file allegati, poi seleziona la tua scelta.
 
-Per votare, basta fare clic o toccare l'icona che hai scelto.
-
-Esistono molti tipi di sondaggi. L'esempio qui sotto mostra una proposta tipica con le opzioni di voto **Favorevole**, **Astenuto** o **Disaccordo**. Possono essere disponibili altre opzioni.
-
-Leggi il sondaggio e gli eventuali file allegati, poi esprimi il tuo voto selezionando una delle opzioni.
+Loomio offre diversi tipi di sondaggi. L'esempio qui sotto mostra una proposta con le opzioni **Favorevole**, **Astenuto** e **Disaccordo**.
 
 ![](proposal_example.png#width-90)
 
@@ -93,7 +83,7 @@ Leggi il sondaggio e gli eventuali file allegati, poi esprimi il tuo voto selezi
 
 ### Indica un motivo
 
-Quando voti, puoi anche indicare un **Motivo** per spiegare perché hai votato in questo modo. È facoltativo.
+Puoi aggiungere un breve **Motivo** per spiegare il tuo voto. È facoltativo, a meno che il sondaggio non lo richieda.
 
 ![](vote_reason.png#width-90)
 
@@ -101,13 +91,11 @@ Quando voti, puoi anche indicare un **Motivo** per spiegare perché hai votato i
 
 ### Cambia il tuo voto
 
-Puoi **cambiare il tuo voto** finché la proposta non viene chiusa.
+Puoi cambiare il tuo voto in qualsiasi momento prima che il sondaggio venga chiuso, ad esempio se emergono nuove informazioni. (I voti nei sondaggi anonimi non possono essere modificati dopo l'invio.)
 
 ![](vote_change.png#width-90)
 
-Ci sono molti motivi per cui potresti voler cambiare il tuo voto. Ad esempio, nuove informazioni potrebbero portarti a riconsiderare la tua decisione e a cambiare il tuo voto.
-
-Anche in questo caso, puoi indicare un motivo per spiegare perché hai cambiato il tuo voto.
+Puoi anche aggiornare il tuo motivo per spiegare perché hai cambiato il tuo voto.
 
 ![](vote_edit.png#width-90)
 
@@ -115,20 +103,16 @@ Anche in questo caso, puoi indicare un motivo per spiegare perché hai cambiato 
 
 ### Risultati
 
-I risultati della proposta vengono aggiornati man mano che le persone votano, così puoi vedere come procede la proposta.
+Nella maggior parte dei sondaggi, i risultati vengono aggiornati man mano che le persone votano. (Alcuni sondaggi nascondono i risultati fino alla chiusura della votazione.)
 
 ![](proposal_results.png#width-90)
 
-Quando una proposta suscita opinioni contrastanti, è comune vedere risultati diversi tra loro, ma questo non significa che la proposta sia fallita.
-
-Spesso le nuove informazioni emerse durante la proposta aiutano a formulare una proposta migliore, con maggiori probabilità di essere approvata.
+Su argomenti difficili, è comune vedere risultati contrastanti e questo non significa che il processo sia fallito. Nuovi punti di vista spesso aiutano il gruppo a formulare una proposta migliore.
 
 <!-- translation-section: outcome -->
 
 ### Conclusione
 
-Quando la proposta viene chiusa, all'autore viene chiesto di indicare la **Conclusione**.
-
-Questo passaggio finale è importante per registrare ciò che è stato deciso e far sapere a tutti cosa succederà dopo.
+Quando un sondaggio viene chiuso, l'autore può pubblicare una **Conclusione** per registrare ciò che è stato deciso e cosa succederà dopo.
 
 ![](proposal_outcome.png#width-90)

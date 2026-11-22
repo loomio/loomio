@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/matrix/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: e54de0b6d9ea9ffb
+  introduction: 114ab8c916ca5fba
 generated:
-  introduction: 371571ac957e3428
+  introduction: c33ed929a4054b65
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,38 @@ title_generated: 76a2171c057b730f
 
 # שילוב עם Matrix
 
-Loomio יכולה לשלוח התראות לערוצי Matrix כאשר נוצרים דיונים, הצעות, תגובות, הצבעות ומסקנות.
+Loomio יכולה לשלוח התראות לחדר ב-Matrix כאשר נוצרים דיונים, סקרים, תגובות, הצבעות ומסקנות. הוספת שילוב צ׳אט מחייבת הרשאת מנהל קבוצה.
 
-Matrix מאפשרת להשתמש בחלק מתגי HTML בחדר הצ׳אט, ו-Loomio משתמשת באפשרות זו.
+בשונה משילובי הצ׳אט האחרים של Loomio, השילוב עם Matrix אינו משתמש ב-webhook. Loomio מתחברת באמצעות חשבון משתמש ב-Matrix שפועל כבוט ומפרסם הודעות מעוצבות בחדר.
 
-השילוב עם Matrix שונה מעט משילובי הצ׳אט האחרים שלנו: הוא אינו משתמש ב-webhook, אלא בלקוח בוט ייעודי שפיתחנו עבורו.
-
-יש ליצור חשבון משתמש ב-Matrix שבאמצעותו הבוט יתחבר.
-
-לאחר יצירת חשבון המשתמש עבור הבוט, יש להתחבר באמצעותו כדי לקבל את הפרטים הבאים.
-
-במדריך זה נעשה שימוש ב-Element.
+במדריך זה נעשה שימוש בלקוח Element.
 
 ---
 
-מתוך הקבוצה ב-Loomio, יש להוסיף שילוב צ׳אט עם Matrix
-![תפריט הוספת בוט Matrix ב-Loomio](loomio-add-matrix-bot.png)
+1. יש ליצור חשבון משתמש ב-Matrix עבור Loomio, להתחבר אליו ב-Element ולהזמין אותו לחדר ב-Matrix שבו יוצגו ההתראות. יש להשאיר את החשבון מחובר — התנתקות מבטלת את תוקף אסימון הגישה.
 
-זהו הטופס שיש למלא
-![טופס בוט Matrix ב-Loomio](loomio-matrix-bot-form.png)
+2. בקבוצה ב-Loomio, יש לפתוח את תפריט הקבוצה, לבחור **אינטגרציות צ'אט** ולהוסיף שילוב צ׳אט מסוג **מַטרִיצָה**.
 
-כאן מתחילים בחיפוש אסימון הגישה
-![תפריט ההגדרות של Matrix](matrix-settings-menu.png)
+   ![תפריט הוספת בוט Matrix ב-Loomio](loomio-add-matrix-bot.png)
 
-זהו עמוד ההגדרות
-![הגדרות Matrix](matrix-settings.png)
+   ![טופס בוט Matrix ב-Loomio](loomio-matrix-bot-form.png)
 
-זהו אסימון הגישה עצמו
-![אסימון הגישה של Matrix](matrix-access-token.png)
+3. ב-Element, יש לפתוח את תפריט חשבון הבוט ולבחור **כל ההגדרות**.
 
-כעת יש למצוא את מזהה החדר
-![הגדרות החדר ב-Matrix](matrix-room-settings.png)
+   ![תפריט ההגדרות של Matrix](matrix-settings-menu.png)
 
-כאן מופיע מזהה החדר.
-![מזהה החדר ב-Matrix](matrix-room-id.png)
+4. יש לפתוח את **עזרה ואודות** ולגלול לסעיף **מתקדם**.
+
+   ![הגדרות Matrix](matrix-settings.png)
+
+5. יש להעתיק את **אסימון גישה** ולהדביק אותו בטופס ב-Loomio.
+
+   ![אסימון הגישה של Matrix](matrix-access-token.png)
+
+6. יש לפתוח את תפריט **הגדרות** של החדר ולעבור אל **מתקדם**.
+
+   ![הגדרות החדר ב-Matrix](matrix-room-settings.png)
+
+7. יש להעתיק את **מזהה החדר הפנימי**, להדביק אותו בטופס ב-Loomio ולשמור את השילוב.
+
+   ![מזהה החדר ב-Matrix](matrix-room-id.png)

@@ -1,34 +1,34 @@
 ---
 title: Tu perfil
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
   introduction: e71cd5946e36dd0f
   edit-profile: 30961921c1b989c8
-  update-your-personal-info: 7a0d637722711958
-  uploading-a-profile-photo: 2552469144e19407
-  language-settings: 5deb206dd31282f5
-  resetting-your-password: a85e7b1b734767c0
-  merge-accounts: c693348e39c2d3bc
-  deleting-your-account: 563bc72b118724dd
-  time-zone: 78b179272d6db281
+  update-your-personal-info: b4a7fc0e66f77cd0
+  uploading-a-profile-photo: 78e2996814845fb0
+  language-settings: 9b1bac9c4e343d0c
+  resetting-your-password: c5ed627172716f02
+  merge-accounts: 37f813106302d70d
+  deleting-your-account: e6226ad734f6cf68
+  time-zone: f178fc46e3efdf02
+  passkeys: '081e9545fb2b2d20'
 title_source: 528d89ad72cba22e
 title_generated: 3d45976ea1815628
-needs_review:
-  time-zone: check the interface label "**Zona horaria **" for "**Time zone**"
 ---
 
 <!-- translation-section: introduction -->
@@ -49,20 +49,21 @@ Abre tu menú de usuario seleccionando tu nombre en la barra lateral y, a contin
 
 ## Actualizar tus datos personales
 
-Puedes actualizar tus datos personales modificando cualquiera de los siguientes campos:
+Puedes actualizar cualquiera de estos campos en tu página de perfil:
 
-* **Nombre**
-* **Dirección de correo electrónico** - es la dirección de correo electrónico asociada a tu cuenta de Loomio, donde recibirás las notificaciones de Loomio.
-* **Nombre de usuario** - es un nombre que permite a otras personas reconocerte y avisarte mediante una @mención. Puede contener letras minúsculas, números, guiones bajos y guiones en posiciones intermedias.
-* **Introducción** - unas líneas para contar algo sobre ti a las demás personas de tu grupo.
-* **Ubicación** - útil para grupos distribuidos o remotos, para que las personas puedan hacerse una idea de dónde estás.
+- **Nombre**
+- **Dirección de correo electrónico** — la dirección asociada a tu cuenta de Loomio, donde Loomio envía tus notificaciones.
+- **Nombre de usuario** — el nombre que otras personas usan para avisarte mediante una `@mention`. Puede contener letras minúsculas, números, guiones bajos y guiones en posiciones intermedias.
+- **Introducción** — unas líneas para contar algo sobre ti a las demás personas de tu grupo.
+- **Ubicación** — útil para grupos remotos o distribuidos, para que las personas sepan dónde estás.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Subir una foto de perfil
-Cuando creas una cuenta de Loomio, tus iniciales son la imagen predeterminada de tu perfil. Puedes subir una foto de perfil haciendo clic en tu imagen en la página de perfil.
+
+Cuando creas una cuenta de Loomio, tus iniciales aparecen como tu imagen de perfil predeterminada. Para subir una foto, selecciona tu imagen en la página de perfil.
 
 ![](profile_photo.png)
 
@@ -70,26 +71,33 @@ Cuando creas una cuenta de Loomio, tus iniciales son la imagen predeterminada de
 
 ## Idioma
 
-Loomio detectará la configuración de idioma de tu navegador, pero puedes seleccionar manualmente tu idioma preferido entre las opciones disponibles en la página de perfil.
+Loomio detecta el idioma de tu navegador de forma predeterminada, o puedes seleccionar tu idioma preferido en tu página de perfil. Para conocer las opciones de traducción de la interfaz y del contenido, consulta [Idiomas y traducción](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## Zona horaria
 
-Las opciones de las encuestas de horario usan la zona horaria guardada en tu perfil. Activa **Detectar automáticamente zona horaria** para usar la zona que indica tu navegador, o desactiva esta función y selecciona tu región en **Zona horaria**. Después, selecciona **Actualizar perfil**.
+Las opciones de las encuestas de horario usan la zona horaria guardada en tu perfil. Activa **Detectar automáticamente zona horaria** para usar la zona horaria de tu navegador, o desactiva esta función, selecciona tu región en **Zona horaria ** y selecciona **Actualizar perfil**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## Restablecer tu contraseña
-Puedes cambiar tu contraseña accediendo a tu página de perfil y haciendo clic en **Restablecer contraseña**.
+
+Para cambiar tu contraseña, abre tu página de perfil y selecciona **Restablecer contraseña**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Claves de acceso
+
+Puedes añadir claves de acceso, asignarles nombres y eliminarlas en tu página de perfil para iniciar sesión con la huella dactilar, el reconocimiento facial o el PIN de tu dispositivo, o con una llave de seguridad. Consulta [Iniciar sesión con una clave de acceso](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Fusionar cuentas
 
-Si tienes dos cuentas de usuario de Loomio, puedes fusionarlas en una sola cuenta.
+Si tienes dos cuentas de Loomio, puedes fusionarlas en una sola.
 
 Consulta [Fusionar cuentas](../merge_accounts).
 
@@ -97,4 +105,4 @@ Consulta [Fusionar cuentas](../merge_accounts).
 
 ## Eliminar tu cuenta
 
-Si quieres eliminar tu cuenta de usuario de Loomio y salir de los grupos de Loomio de los que eres miembro, consulta [Eliminar tu cuenta de Loomio](../deleting_your_account).
+Para eliminar permanentemente tu cuenta de Loomio y salir de tus grupos, consulta [Eliminar tu cuenta de Loomio](../deleting_your_account).

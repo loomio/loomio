@@ -1,80 +1,73 @@
 ---
 title: Participatierapport
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/participation_report/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9ec21a12ab444c80
-  what-s-in-the-report: 90b9c89c6933eeee
-  actions-per-month: 3f290af092726995
-  tag-usage: 8e7577c51379e50f
-  actions-per-user: 4e6414d83ee776be
-  voting-record-per-user: 12741bf049ab9bee
-  users-per-country: 7f61b0c9a0002eec
-  actions-per-country: 900472e9fa675e08
+  introduction: f5759e9db8130be6
+  what-s-in-the-report: a857f9d955851358
+  actions-per-month: 4b2aebb7a8d1ecae
+  tag-usage: c05217a052bc0da0
+  actions-per-user: '09a02dafc160037a'
+  voting-record-per-user: e878e48f58f98b54
+  users-per-country: 03111e1b5f9a6697
+  actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 14edbfd00c1301bc
-  what-s-in-the-report: 332cc45ee798c5b3
-  actions-per-month: 40cd813c9ff6cd36
-  tag-usage: f26fc96fa73adf18
-  actions-per-user: a9124a9c7e76b403
-  voting-record-per-user: 1d031530d3948827
-  users-per-country: 27871af79922b076
-  actions-per-country: 5437f3f5e46d591e
+  introduction: bf9919fa44cb4f73
+  what-s-in-the-report: 518d209b301c14e8
+  actions-per-month: 5fa4a49994103d66
+  tag-usage: 67e28fad9852bbe7
+  actions-per-user: '068d93cec00766c6'
+  voting-record-per-user: ba923e897a8788ec
+  users-per-country: c8eaafca1c0e84a0
+  actions-per-country: '0969d82c5920629e'
 title_source: ee140bf2af2bcf29
 title_generated: a81dec196696dead
 ---
 
 <!-- translation-section: introduction -->
 
-# Participatierapport
+# Deelname verslag
 
-Het participatierapport van de groep geeft inzicht in het gebruik van jouw Loomio-groep.
+Het deelnameverslag toont de activiteit in jouw Loomio-groep en de subgroepen ervan.
 
-Je kunt kiezen welke groepen je in het rapport opneemt, wat de begin- en einddatum zijn en met welk interval (jaar, maand, week of dag) je de resultaten groepeert.
+Je kunt kiezen welke groepen je opneemt, een begin- en einddatum instellen en resultaten groeperen per jaar, maand, week of dag.
 
-Het rapport is beschikbaar voor iedereen in jouw groep. Gebruikers kunnen alleen resultaten zien van groepen waarvan ze lid zijn. Daardoor kunnen verschillende gebruikers iets andere rapporten zien.
+Elk groepslid kan het rapport bekijken, maar iedereen ziet alleen resultaten voor groepen waarvan diegene lid is. Verschillende leden kunnen daardoor verschillende totalen zien.
 
-Je vindt het rapport door op het tandwiel voor de groepsinstellingen te klikken, zoals hieronder weergegeven.
+Open het actiemenu van de groep en selecteer **Deelname verslag** om het rapport te openen. Selecteer in een tabel in het rapport een kolomkop om op die kolom te sorteren.
 
-![Optie voor het participatierapport in het menu van Oatmilk Cooperative](group_participation_report.png)
+![Optie voor het deelnameverslag in het menu van Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
-## Wat staat er in het rapport?
+## Wat staat er in het rapport
 
 <!-- translation-section: actions-per-month -->
 
-### Acties per maand
+### Acties door de tijd heen
 
-Bekijk hoeveel mensen in jouw groep deelnemen gedurende een bepaalde periode.
+Deze grafiek toont hoeveel threads, reacties, peilingen, stemmen en emoji-reacties er in elk geselecteerd tijdsinterval zijn geweest, zodat je veranderingen in de activiteit kunt zien. Selecteer een label in de grafiek om die meetwaarde te verbergen of te tonen.
 
-Het rapport toont hoeveel threads, reacties, peilingen, stemmen en emoji-reacties er per maand zijn geweest. De grafiek laat zien hoe het gebruik toe- en afneemt.
-
-Klik op specifieke labels in de grafiek om ze te verbergen.
-
-Klik op een kolomkop in de tabel om de tabel op die kolom te sorteren.
-
-![Bediening, totalen en activiteitengrafiek van het participatierapport voor Oatmilk Cooperative](group_participation_report_graph.png)
+![Bediening, totalen en activiteitengrafiek van het deelnameverslag voor Oatmilk Cooperative](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
 ### Gebruik van labels
 
-Hier zie je hoe vaak verschillende labels in de opgegeven periode zijn toegepast. Je kunt bijvoorbeeld zien hoeveel besluiten een bepaald besluitvormingsproces of sjabloon gebruiken.
+Deze grafiek toont hoe vaak labels in de geselecteerde periode zijn toegepast, bijvoorbeeld hoeveel discussies een bepaald besluitvormingsproces of sjabloon gebruikten.
 
 ![Labelactiviteit door de tijd heen voor Productie, Samenwerkingen met cafés en Bedrijfsvoering](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Acties per gebruiker
-Bekijk wie het meest en het minst actief bijdragen in jouw groep.
 
-Deze tabel toont hoeveel threads, reacties, peilingen, stemmen en emoji-reacties elke gebruiker in de opgegeven groepen gedurende de periode heeft geplaatst of uitgebracht. Klik op een kolomkop in de tabel om de tabel op die kolom te sorteren.
+Deze tabel toont hoeveel threads, reacties, peilingen, stemmen en emoji-reacties elk lid in de geselecteerde periode heeft bijgedragen.
 
-Schakel **Alleen voor afgevaardigden** in om mensen te tonen die momenteel afgevaardigde zijn in een van de geselecteerde groepen. Hun activiteit en stemoverzicht worden samengevoegd voor alle geselecteerde groepen. Afgevaardigden zonder activiteit in de geselecteerde periode blijven in de tabel staan. De CSV-download gebruikt hetzelfde filter.
+Schakel **Alleen voor afgevaardigden** in om de tabel te beperken tot mensen die momenteel afgevaardigde zijn in een van de geselecteerde groepen. Hun activiteit wordt samengevoegd voor alle geselecteerde groepen. Afgevaardigden zonder activiteit blijven ook zichtbaar. De CSV-download gebruikt hetzelfde filter.
 
 ![Acties per afgevaardigde met drie deelnameniveaus](group_participation_report_actions_per_user.png)
 
@@ -82,9 +75,9 @@ Schakel **Alleen voor afgevaardigden** in om mensen te tonen die momenteel afgev
 
 ### Stemoverzicht per gebruiker
 
-Vergelijk het aantal stemmen dat elke persoon mocht uitbrengen met het aantal daadwerkelijk uitgebrachte stemmen. Bekijk gemiste stemmen en zie wie alle stemmen heeft uitgebracht die diegene mocht uitbrengen. Iemand die geen stemmen mocht uitbrengen, wordt niet weergegeven als iemand die alle stemmen heeft uitgebracht. Anonieme peilingen worden uitgesloten omdat een anonieme stem niet gekoppeld mag worden aan de persoon die deze heeft uitgebracht.
+Deze tabel vergelijkt het aantal stemmen dat elke persoon mocht uitbrengen met het aantal daadwerkelijk uitgebrachte stemmen, toont gemiste stemmen en markeert mensen die alle stemmen hebben uitgebracht die ze mochten uitbrengen. Iemand die geen stemmen mocht uitbrengen, wordt niet gemarkeerd als iemand die alle stemmen heeft uitgebracht. Anonieme peilingen worden uitgesloten omdat anonieme stemmen niet aan individuele kiezers zijn gekoppeld.
 
-Gebruik **Alleen voor afgevaardigden** om het stemoverzicht van huidige afgevaardigden te bekijken. De CSV-download gebruikt dezelfde filters voor namen en afgevaardigden.
+Schakel **Alleen voor afgevaardigden** in om het stemoverzicht van huidige afgevaardigden te bekijken. De CSV-download gebruikt dezelfde filters voor namen en afgevaardigden.
 
 ![Stemoverzicht voor afgevaardigden met stemmen die ze mochten uitbrengen, uitgebrachte stemmen en gemiste stemmen](group_participation_report_voting_record.png)
 
@@ -92,7 +85,7 @@ Gebruik **Alleen voor afgevaardigden** om het stemoverzicht van huidige afgevaar
 
 ### Gebruikers per land
 
-Bekijk hoeveel gebruikers uit jouw groep zich in elk land bevinden, op basis van hun huidige IP-adres.
+Deze tabel toont hoeveel leden van de geselecteerde groepen zich in elk land bevinden, op basis van hun huidige IP-adres.
 
 ![Gebruikers per land in de geselecteerde groepen](group_participation_report_users_per_country.png)
 
@@ -100,8 +93,6 @@ Bekijk hoeveel gebruikers uit jouw groep zich in elk land bevinden, op basis van
 
 ### Acties per land
 
-Bekijk in welke landen gebruikers het meest en het minst deelnemen.
-
-Vergelijkbaar met "Acties per gebruiker", maar de gegevens worden gegroepeerd op basis van het land waarin de gebruiker zich volgens de locatiebepaling bevindt.
+Deze tabel groepeert threads, reacties, peilingen, stemmen en emoji-reacties op basis van het land waarin elk lid zich volgens de locatiebepaling bevindt.
 
 ![Acties gegroepeerd per land](group_participation_report_actions_per_country.png)

@@ -1,30 +1,30 @@
 ---
 sections:
-  introduction: a535465485cdbc13
+  introduction: 227665c7b66356be
   create-a-poll-template: 0fafc6275b6c9153
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
   edit-a-default-template: 6f1e7050d20ed373
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
+  who-can-manage-templates: 2f0ab3bdaf9d093a
 generated:
-  introduction: 870c0f5baab97e9a
+  introduction: fa47000efb17bacf
   create-a-poll-template: 6626ce903142565d
   save-a-poll-as-a-template: 2c055778a88a8ac3
   start-a-new-template: 53c741e3eeb94601
   edit-a-default-template: 21de44e7de0b6161
-  configure-the-template: be8eb37bde1fc882
+  configure-the-template: bf4046b9f09daf8c
   template-title-subtitle-and-help: 45fb44f4597d4c42
-  voting-method: 74f8e5b8cb8b1405
+  voting-method: 49fbe47dcaecc712
   example-title-details-and-tags: 1747f81d6f49577a
-  response-options: 04511b592f0a942c
-  duration-and-settings: eeb57e7c974c5637
+  response-options: ed14d9c148459a42
+  duration-and-settings: 10b27977765b9bdb
   manage-the-template-list: c2ace822571324b7
   who-can-manage-templates: b4df1aeba11e0d4b
 title: 투표 템플릿
@@ -32,8 +32,8 @@ title_source: 114cca246e357304
 title_generated: 3b99639c25a115b0
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 ---
 
@@ -45,9 +45,9 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 
 이 페이지에서는 그룹에서 사용할 수 있는 템플릿을 설정하거나 그룹의 의사결정 절차에 맞는 템플릿을 만드는 방법을 안내합니다. 특정 투표에 사용할 템플릿을 선택하려면 [제안](../proposals/) 또는 [투표](../proposal_types/)를 참고하세요. 전체 의사결정 절차를 진행하려면 [의사결정하기](/en/guides/making_decisions/)를 참고하세요.
 
-투표를 시작할 때 **제안** 또는 **투표** 탭을 선택하고 그룹에서 사용할 수 있는 템플릿 중 하나를 선택하세요.
+투표를 시작할 때 **제안** 또는 **투표** 탭을 선택하고 그룹에서 사용할 수 있는 템플릿을 선택하세요.
 
-템플릿에는 소개, 예시 내용, 선택지, 설정이 포함됩니다. 투표를 시작하기 전에 해당 결정에 맞게 검토하고 수정하세요. 새 투표를 수정해도 재사용 가능한 템플릿은 변경되지 않습니다.
+템플릿은 소개, 예시 내용, 선택지, 설정을 자동으로 채웁니다. 투표를 시작하기 전에 해당 결정에 맞게 검토하고 수정하세요. 새 투표를 수정해도 템플릿은 변경되지 않습니다.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -83,11 +83,11 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 
 ## 템플릿 설정
 
-언제 사용하는 템플릿인지 알 수 있도록 이름과 부제목을 지정하세요. 다른 항목도 재사용에 더 적합하도록 수정할 수 있습니다. **템플릿 저장**을 선택하면 새 제안이나 투표를 시작할 때 해당 템플릿이 목록에 표시됩니다.
+언제 사용하는 템플릿인지 알 수 있도록 이름과 부제목을 지정하세요. 재사용할 수 있도록 다른 항목도 조정한 다음 **템플릿 저장**을 선택하세요. 그러면 새 제안이나 투표를 시작할 때 해당 템플릿이 표시됩니다.
 
 [![정책 변경을 위한 이의 없는 의사결정 절차 템플릿의 전체 양식](poll_template_new.png)](poll_template_new.png)
 
-독립형 투표에서 **관리자만 첨부 파일을 추가할 수 있습니다**를 설정하면 응답과 답글을 포함하여 스레드 관리자와 그룹 관리자만 새 파일과 본문 내 이미지를 추가할 수 있습니다. 기존 스레드 안에서 시작한 투표에는 해당 스레드의 첨부 파일 설정이 적용됩니다. 템플릿을 변경하면 이후에 만드는 투표에만 적용됩니다.
+독립형 투표에서 **관리자만 첨부 파일을 추가할 수 있습니다**를 설정하면 응답과 답글을 포함하여 스레드 관리자와 그룹 관리자만 새 파일과 본문 내 이미지를 추가할 수 있습니다. 기존 스레드 안에 있는 투표에는 해당 스레드의 첨부 파일 설정이 적용됩니다. 템플릿을 변경하면 이후에 만드는 투표에만 적용됩니다.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -106,7 +106,7 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 - **점수**: 모든 선택지를 척도에 따라 평가합니다.
 - **배분**: 정해진 총점 안에서 점수를 나누어 배분합니다.
 - **순위**: 선택지를 선호하는 순서대로 정렬합니다.
-- **시간 투표**: 참여 가능한 시간을 표시합니다.
+- **일정 투표**: 참여 가능한 시간을 표시합니다.
 - **STV**: 여러 명을 비례 방식으로 선출하는 선거에서 후보자의 순위를 매깁니다.
 
 투표 방식을 변경하면 템플릿에서 사용할 수 있는 항목과 결과 계산 방식이 달라집니다.
@@ -126,7 +126,7 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 - **선택지 이름**: 응답을 나타내는 짧은 이름입니다.
 - **아이콘**: 선택지를 시각적으로 나타내는 표시입니다.
 - **의미**: 해당 선택지를 선택했을 때 전달되는 의미입니다.
-- **이유를 묻는 질문**: 참여자가 응답을 설명할 때 표시되는 질문입니다.
+- **이유를 묻는 질문**: 참여자가 투표 이유를 설명할 때 표시되는 질문입니다.
 
 ![](poll_type_edit_option.png)
 
@@ -138,7 +138,7 @@ source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 
 템플릿을 사용하는 대부분의 경우에 적합한 기본 기간을 설정하세요. 작성자는 개별 투표의 마감 시간을 변경할 수 있습니다.
 
-그 밖의 기본 설정으로는 결과 공개 여부, 익명 투표, [가중 투표](../weighted_voting/), 투표 이유 작성 요건, 알림, 정족수, 투표 방식별 동작을 조정할 수 있습니다. 각 설정의 효과는 [제안 및 투표 설정](../settings/)을 참고하세요.
+그 밖의 기본 설정으로는 결과 공개 여부, 익명 투표, [가중 투표](../weighted_voting/), 투표 이유 작성 요건, 알림, 정족수, 투표 방식별 동작을 조정할 수 있습니다. 자세한 내용은 [제안 및 투표 설정](../settings/)을 참고하세요.
 
 <!-- translation-section: manage-the-template-list -->
 

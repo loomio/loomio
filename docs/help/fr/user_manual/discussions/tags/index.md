@@ -1,30 +1,30 @@
 ---
 title: Mots-clés de catégorie
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: a898970462d0556f
-  apply-tags: 86f59d27fd31c89f
-  create-tags: a73c85e12ffa1e16
-  edit-tags: f2ad1debf84eb70f
-  edit-tag-in-thread-or-poll: a1c9e538d0d30424
-  template-tags: a7cd2b824613855c
-  tag-contributions: 133105ee90747934
-  find-tagged-contributions: 88ea04f0fde7cb1a
-  global-search: 597afa36d4894500
+  introduction: bf6ecd043c19cd78
+  apply-tags: dfa06440d6c97396
+  create-tags: 97aa7a1a0f420951
+  edit-tags: c9978a1615026863
+  edit-tag-in-thread-or-poll: b71467aa1248d110
+  template-tags: 3ddcc6c204aa843f
+  tag-contributions: b42bdd723f9d5ddc
+  find-tagged-contributions: 98ec0cbfdec75f7f
+  global-search: 5a7777699988e006
 generated:
-  introduction: 51be55fc0209c435
-  apply-tags: d0c4c82f12cb78e8
-  create-tags: '080c17c23940f547'
-  edit-tags: 8b7306cbb1c85b6a
-  edit-tag-in-thread-or-poll: 17ed72f6d190cef1
-  template-tags: cfbff2f2978ac3d9
-  tag-contributions: bdc0942345dd720d
-  find-tagged-contributions: d866365b0ffdcc04
-  global-search: 5866910c4ba73aef
+  introduction: 0ef09f04911a4118
+  apply-tags: 2eccd45b026f9f16
+  create-tags: 56406dc5b6815707
+  edit-tags: c8bf481c42d0f359
+  edit-tag-in-thread-or-poll: 6df195c747275c2b
+  template-tags: 0b29a008a67c8285
+  tag-contributions: 42d4126042de8392
+  find-tagged-contributions: 2de84ba44859e728
+  global-search: b86c1fe1437a5826
 title_source: c86f6830bf302394
 title_generated: 1c61afd81272cea4
 ---
@@ -33,11 +33,11 @@ title_generated: 1c61afd81272cea4
 
 # Tags de catégorie
 
-Les tags de catégorie permettent de retrouver les discussions, les sondages, les conclusions et les commentaires portant sur un type de travail ou un sujet particulier.
+Les tags de catégorie vous aident à retrouver les discussions, les sondages, les conclusions et les commentaires portant sur un sujet ou un domaine de travail.
 
-Les tags appartiennent à l’ensemble de l’organisation. Un tag utilisé dans un groupe parent est le même dans ses sous-groupes, ce qui permet d’organiser les travaux liés entre eux dans toute l’organisation. Loomio affiche les noms des tags par ordre alphabétique et représente leurs couleurs par des points à côté des noms.
+Les tags appartiennent à l’ensemble de l’organisation. Un tag créé dans un groupe parent est partagé avec ses sous-groupes, ce qui vous permet de suivre les travaux liés entre eux dans plusieurs groupes. Loomio affiche les tags par ordre alphabétique avec un point de couleur à côté de chaque nom.
 
-Sur la page de votre groupe, cliquez sur **Mots-clés** au-dessus de la liste des fils. Sélectionnez un tag pour afficher les fils contenant au moins une contribution portant ce tag. Utilisez le champ de filtrage pour rechercher dans une longue liste.
+Sur la page de votre groupe, sélectionnez **Mots-clés** au-dessus de la liste des fils et choisissez un tag pour afficher les fils contenant au moins un élément portant ce tag. Saisissez du texte dans le champ de filtrage pour rechercher dans une longue liste.
 
 ![](tags_view.png)
 
@@ -45,19 +45,23 @@ Sur la page de votre groupe, cliquez sur **Mots-clés** au-dessus de la liste de
 
 ## Appliquer des tags
 
-Vous pouvez appliquer des tags à vos propres discussions, sondages, conclusions et commentaires. Les administrateurs de groupe, les administrateurs de fil et les personnes autorisées à modifier le contexte de la discussion peuvent appliquer des tags à toute contribution dans un fil non verrouillé. Dans les fils directs, tous les participants peuvent appliquer des tags à toute contribution.
+Vous pouvez appliquer des tags à vos propres discussions, sondages, conclusions et commentaires. Les administrateurs de groupe, les administrateurs de fil et les personnes autorisées à modifier le contexte de la discussion peuvent appliquer des tags à tout élément dans un fil non verrouillé. Dans les fils directs, tous les participants peuvent appliquer des tags à tout élément.
 
-Lorsque vous créez un fil ou un sondage, cliquez sur le champ **Mots-clés** et sélectionnez un ou plusieurs tags.
+Lorsque vous créez un fil ou un sondage, sélectionnez le champ **Mots-clés** et choisissez un ou plusieurs tags.
 
 ![](tags_add_new.png)
 
-Commencez à saisir du texte pour filtrer la liste. Pour retirer un tag, sélectionnez-le à nouveau ou cliquez sur le × de sa pastille.
+Commencez à saisir du texte pour filtrer la liste. Pour retirer un tag, sélectionnez-le à nouveau ou sélectionnez **×** sur le tag.
 
 <!-- translation-section: create-tags -->
 
 ## Créer des tags
 
-Les administrateurs du groupe parent peuvent toujours créer des tags pour le groupe parent et ses sous-groupes. Les administrateurs des sous-groupes peuvent créer des tags lorsqu’ils en appliquent au contenu de leur sous-groupe. L’autorisation du groupe **Les membres peuvent créer des tags**, activée par défaut, permet aux autres membres qui peuvent appliquer des tags au contenu de créer de nouveaux noms de tags. Si cette autorisation est désactivée, les membres peuvent utiliser les tags existants de l’organisation et les noms de tags prévus par les modèles du groupe de destination.
+La création de tags dépend des rôles et des autorisations dans le groupe :
+
+- Les **administrateurs du groupe parent** peuvent toujours créer des tags pour le groupe parent et ses sous-groupes.
+- Les **administrateurs des sous-groupes** peuvent créer des tags lorsqu’ils en appliquent au contenu de leur sous-groupe.
+- Les **Membres du groupe** qui peuvent appliquer des tags au contenu peuvent aussi en créer lorsque l’autorisation **Les membres peuvent créer des tags** est activée (elle l’est par défaut). Si un administrateur du groupe la désactive, les membres peuvent uniquement utiliser les tags existants de l’organisation et les tags par défaut des modèles de ce groupe.
 
 Pour créer un tag lors de la création d’un fil ou d’un sondage, saisissez son nom dans le champ **Mots-clés** et appuyez sur Entrée.
 
@@ -65,35 +69,40 @@ Pour créer un tag lors de la création d’un fil ou d’un sondage, saisissez 
 
 ![Nouveau tag créé](tags_created_new.png)
 
-Utilisez des noms courts et familiers que les membres du groupe reconnaîtront, comme Finances, Gouvernance, Emballage ou Partenariats avec des cafés.
+Utilisez des noms courts et reconnaissables, comme Finances, Gouvernance, Emballage ou Partenariats avec des cafés.
 
 <!-- translation-section: template-tags -->
 
 ## Tags dans les modèles
 
-Les modèles de discussion et de sondage enregistrent des noms de tags par défaut. Toute personne pouvant créer ou modifier un modèle peut librement changer ses noms de tags. L’enregistrement ou la consultation d’un modèle n’ajoute pas ces noms à la liste des tags de l’organisation. Renommer ou supprimer un tag de l’organisation ne modifie pas les valeurs par défaut des modèles.
+Les modèles de discussion et de sondage enregistrent des noms de tags par défaut. Toute personne pouvant créer ou modifier un modèle peut changer ses tags par défaut. L’enregistrement d’un modèle n’ajoute pas ces noms à la liste des tags de l’organisation, et renommer ou supprimer un tag de l’organisation ne modifie pas les valeurs par défaut des modèles.
 
-Lorsqu’une discussion ou un sondage utilise ces valeurs par défaut, Loomio applique un tag existant de l’organisation ou le crée si cela est autorisé. Un membre qui n’a pas l’autorisation de créer des tags peut tout de même utiliser les noms prévus par les modèles disponibles dans le groupe de destination. Un modèle provenant d’un autre groupe n’accorde aucune autorisation supplémentaire de création de tags : ses valeurs par défaut sont conservées uniquement si l’organisation de destination possède déjà ces tags ou si un modèle du groupe de destination prévoit ces noms. Les autres noms sont ignorés. Les membres qui peuvent créer des tags peuvent conserver toutes les valeurs par défaut du modèle.
+Lorsqu’une personne crée une discussion ou un sondage à partir d’un modèle, Loomio applique les tags correspondants de l’organisation ou en crée de nouveaux si l’auteur en a l’autorisation :
+
+- Les **membres qui peuvent créer des tags** conservent tous les tags par défaut du modèle.
+- Les **membres sans autorisation de créer des tags** conservent les tags existants de l’organisation et tous les tags par défaut définis par les modèles du groupe de destination. Les noms de tags provenant du modèle d’un autre groupe qui ne correspondent à aucun de ces tags sont ignorés.
 
 <!-- translation-section: edit-tags -->
 
 ## Modifier les tags
 
-Seuls les administrateurs du groupe parent peuvent renommer les tags, changer leur couleur, les fusionner ou les supprimer. Ces modifications s’appliquent partout où ces tags sont utilisés dans l’organisation, y compris dans ses sous-groupes.
+Seuls les administrateurs du groupe parent peuvent renommer les tags, changer leur couleur, les fusionner ou les supprimer. Les modifications s’appliquent à l’ensemble de l’organisation, y compris à tous les sous-groupes.
 
 Sur la page du groupe, ouvrez **Mots-clés** et sélectionnez **Modifier les mots-clés**.
 
 ![Modifier les tags de catégorie](tags_edit_new.png)
 
-Sélectionnez l’icône de crayon à côté d’un tag.
+Sélectionnez l’icône de crayon à côté d’un tag pour le modifier.
 
 ![Modifier les tags de catégorie](tags_edit_new_pencil.png)
 
-Modifiez le nom du tag ou choisissez une couleur, puis cliquez sur **Enregistrer**.
+Modifiez le nom du tag ou choisissez une couleur, puis sélectionnez **Enregistrer**.
 
 ![Modifier la couleur du tag](tags_edit_name.png)
 
-Cliquez sur **Supprimer** pour retirer le tag des discussions, des sondages, des conclusions et des commentaires dans toute l’organisation.
+Pour fusionner un tag avec un autre, sélectionnez l’icône de fusion à côté de ce tag et choisissez le tag à conserver. Tous les éléments portant l’ancien tag reçoivent le tag choisi à la place.
+
+Pour supprimer un tag, sélectionnez **Supprimer** (ou l’icône de corbeille). Le tag est alors retiré de toutes les discussions, de tous les sondages, de toutes les conclusions et de tous les commentaires de l’organisation.
 
 ![Supprimer un tag](tags_delete.png)
 
@@ -101,11 +110,11 @@ Cliquez sur **Supprimer** pour retirer le tag des discussions, des sondages, des
 
 ### Modifier les tags d’un fil ou d’un sondage
 
-Pour modifier les tags d’un fil ou d’un sondage existant, ouvrez-le et cliquez sur le bouton des tags à côté de ses tags actuels, près du titre.
+Pour modifier les tags d’un fil ou d’un sondage existant, ouvrez-le et sélectionnez le bouton des tags à côté de ses tags actuels, près du titre.
 
 Sélectionnez des tags pour les ajouter ou les retirer. Les modifications sont enregistrées immédiatement.
 
-Le sélecteur affiche les tags utilisés dans le groupe actuel, les tags inutilisés de l’organisation et les tags sélectionnés pour la contribution. Lorsque d’autres tags sont utilisés uniquement dans d’autres groupes, choisissez **Afficher les tags des autres groupes** pour inclure les tags du groupe parent et de ses sous-groupes au sein de la même organisation. Choisissez **Afficher les étiquettes utilisées dans ce groupe** pour revenir à la liste plus courte. Une organisation ne comportant qu’un seul groupe ne dispose pas d’option permettant d’élargir la liste.
+Le sélecteur affiche les tags utilisés dans le groupe actuel, les tags inutilisés de l’organisation et les tags sélectionnés pour l’élément. Dans une organisation comportant plusieurs groupes, sélectionnez **Afficher les tags des autres groupes** pour inclure les tags utilisés uniquement dans d’autres groupes, ou **Afficher les étiquettes utilisées dans ce groupe** pour réduire à nouveau la liste.
 
 ![Modifier les tags d’un fil](tags_thread_edit.png)
 
@@ -113,15 +122,17 @@ Le sélecteur affiche les tags utilisés dans le groupe actuel, les tags inutili
 
 ## Appliquer des tags aux contributions
 
-Ouvrez le menu d’actions d’un sondage, d’une conclusion ou d’un commentaire et sélectionnez **Appliquer les mots-clés**. Le même sélecteur que celui utilisé à côté du titre de la discussion vous permet d’ajouter ou de retirer des tags. Les modifications sont enregistrées immédiatement. Lorsqu’une contribution porte des tags, leurs pastilles et le bouton des tags apparaissent à droite de la ligne indiquant son auteur et son horodatage.
+Ouvrez le menu à trois points (**⋯**) d’un sondage, d’une conclusion ou d’un commentaire et sélectionnez **Appliquer les mots-clés**. Ajoutez ou retirez des tags dans le sélecteur ; les modifications sont enregistrées immédiatement. Lorsqu’une contribution porte des tags, ses tags et le bouton des tags apparaissent à droite de la ligne indiquant son auteur.
 
-Les tags s’appliquent à la contribution que vous sélectionnez. Il n’est pas possible d’appliquer des tags aux votes ni aux bulletins de vote.
+Les tags s’appliquent à l’élément que vous sélectionnez. Il n’est pas possible d’appliquer des tags aux votes ni aux bulletins de vote.
 
 <!-- translation-section: find-tagged-contributions -->
 
 ## Retrouver les contributions portant des tags
 
-La section **Mots-clés** apparaît dans la barre latérale du fil dès qu’une contribution autre que la discussion ou le sondage initial porte des tags. Elle rassemble les tags de l’élément initial et de toutes les autres contributions portant des tags. Sélectionnez un tag pour afficher les contributions correspondantes avec le contexte de leur élément parent. Une barre d’outils reste visible au-dessus du fil tant que le filtre est actif. Fermez-la avec le bouton × à droite, sélectionnez à nouveau le tag ou choisissez **Vider** dans la barre latérale pour revenir à l’affichage habituel du fil. Sur mobile, ouvrez le volet de navigation du fil pour utiliser le même filtre.
+Lorsqu’un commentaire, un sondage ou une conclusion dans un fil porte un tag, une section **Mots-clés** apparaît dans la barre latérale du fil (ou dans le volet de navigation sur mobile).
+
+Sélectionnez un tag pour filtrer le fil et afficher les éléments correspondants ainsi que les éléments auxquels ils répondent. Pour revenir au fil complet, sélectionnez **×** dans la barre de filtrage, sélectionnez à nouveau le tag ou sélectionnez **Vider** dans la barre latérale.
 
 ![Tags dans la barre latérale du fil](tags_thread_sidebar.png)
 
@@ -129,8 +140,8 @@ La section **Mots-clés** apparaît dans la barre latérale du fil dès qu’une
 
 ## Rechercher par tag
 
-Ouvrez **Rechercher** dans la navigation supérieure et sélectionnez votre groupe parent pour afficher le menu des tags. Choisissez un tag pour trouver les discussions, sondages, conclusions et commentaires portant ce tag.
+Ouvrez **Rechercher** dans la navigation supérieure et sélectionnez votre groupe parent pour afficher le menu des tags. Choisissez un tag pour trouver les discussions, les sondages, les conclusions et les commentaires portant ce tag.
 
-Laissez le champ de recherche vide pour parcourir les contributions par tag, ou saisissez un mot ou une expression pour rechercher parmi les contributions portant ce tag. Sélectionnez **N'importe quel tag** pour effacer le filtre par tag.
+Laissez le champ de recherche vide pour parcourir les éléments par tag, ou saisissez des mots-clés pour rechercher parmi les éléments portant ce tag. Sélectionnez **N'importe quel tag** pour effacer le filtre.
 
 ![Sélection d’un tag dans la recherche globale après avoir choisi le groupe parent](tags_global_search.png)

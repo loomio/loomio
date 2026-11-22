@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: 323556d70e888e74
+  introduction: c2dc19206439349c
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Integración con Discord
 
-_Conecta las notificaciones de tu grupo de Loomio con el chat de tu equipo en Discord._
-
-Loomio puede enviar notificaciones a tus canales de Discord cuando hay nuevas discusiones, propuestas, comentarios, votos y conclusiones. También puedes notificar manualmente al chat cuando necesites recordar a las personas una decisión.
+Loomio puede enviar notificaciones a tus canales de Discord cuando hay nuevas discusiones, encuestas, comentarios, votos y conclusiones. También puedes notificar al canal manualmente cuando quieras recordar a las personas una decisión.
 
 ---
 
-Abre tu servidor de Discord y busca el menú de configuración del servidor.
-![](server-settings.png)
+1. Abre tu servidor de Discord y ve a **Configuración del servidor**.
 
-Haz clic en "Integraciones"
-![](integrations.png)
+   ![](server-settings.png)
 
-Luego haz clic en "Añadir webhook" y dale un nombre, como "Bot de Loomio"
+2. Selecciona **Incorporaciones**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Asegúrate de haber copiado la URL del webhook al portapapeles y sigue el enlace de abajo.
+3. Selecciona **Añadir webhook**, dale un nombre como `Loomio`, elige un canal y copia la URL del webhook.
+
+   ![](add-webhook.png)
+
+Ahora que tienes una URL de webhook, termina de conectarlo en Loomio:
 
 [Configura una integración de chat en Loomio](../chatbots/#set-up-a-chat-integration)

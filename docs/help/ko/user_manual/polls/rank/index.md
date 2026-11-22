@@ -1,28 +1,28 @@
 ---
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
   introduction: d14fac033bec19cf
-  when-to-use-rank: 36c6e482bcbdf207
+  when-to-use-rank: 5f54ef4a6dff5e4c
   example-rank-bottle-designs: 8082e24cfc706359
-  set-up-the-poll: b4283e0d1a45a67e
-  vote: 63e7d0c0533ab159
-  read-the-results: f1808065f3d23a9b
+  set-up-the-poll: ede43ba16c506996
+  vote: b103f4dba4083fb4
+  read-the-results: 238e351facffbf9b
   share-an-outcome: 7e53ebf05c1914a1
 title: 순위
 title_source: a4130d7d2c3a137f
 title_generated: 8f363885a3ff887a
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +43,7 @@ translated:
 - 첫 번째 선택지와 함께 예비 선택지 정하기; 또는
 - 긴 목록을 순서가 있는 최종 후보 목록으로 줄이기.
 
-순위는 점수를 기준으로 순서를 정합니다. 비례대표 선거 방식은 아닙니다. 서로 다른 투표자 집단을 대표할 여러 사람을 선출하려면 [단기이양식 선거](/en/user_manual/polls/stv/)를 사용하세요.
+순위는 비례대표 방식이 아니라 점수를 기준으로 순서를 정하는 방식입니다. 서로 다른 투표자 집단을 대표할 여러 사람을 선출하려면 [단기이양식 선거](/en/user_manual/polls/stv/)를 사용하세요.
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Oatmilk Cooperative는 회수용 병 시범 운영을 위해 멤버들에게 네
 
 ## 투표 설정
 
-순위를 통해 무엇을 결정할지 명시하고 선택지를 추가하세요. **선택지 수**를 설정해 각 사람이 순위를 매길 수 있는 선택지의 수를 정하세요. 첫 번째 선택지는 가장 많은 점수를 받고, 그다음 선택지는 앞선 선택지보다 1점 적게 받으며, 순위가 매겨지지 않은 선택지는 점수를 받지 않습니다.
+순위를 통해 무엇을 결정할지 명시하고 선택지를 추가하세요. **선택지 수**를 설정해 각 사람이 순위를 매길 수 있는 선택지의 수를 정하세요. 예를 들어, 투표자가 최대 3개의 선택지에 순위를 매길 수 있다면 첫 번째 선택지는 3점, 두 번째 선택지는 2점, 세 번째 선택지는 1점을 받고, 순위가 매겨지지 않은 선택지는 0점을 받습니다.
 
 ![](form.png)
 
-전체 선택지의 순서가 필요하면 모든 선택지에 순위를 매기도록 설정하세요. 참여자가 모든 선택지에 순위를 매길 만큼 충분한 정보를 갖고 있지 않을 수 있다면 더 적은 수의 선택지를 고를 수 있도록 허용하세요. 선택지를 무작위 순서로 표시하면 처음 제시된 순서가 미치는 영향을 줄일 수 있습니다.
+전체 선택지의 순서가 필요하면 모든 선택지에 순위를 매기도록 설정하세요. 참여자가 모든 선택지에 순위를 매길 만큼 충분한 정보를 갖고 있지 않을 수 있다면 더 적은 수의 선택지를 고를 수 있도록 허용하세요. 선택지를 무작위 순서로 표시하면 먼저 나열된 선택지가 유리해지는 것을 방지하는 데 도움이 됩니다.
 
 <!-- translation-section: vote -->
 
 ## 투표
 
-참여자는 선택지를 끌어서 선호하는 순서로 배치하며, 1번이 첫 번째 선택지가 됩니다. 순위를 정한 기준을 설명하는 이유를 추가할 수 있습니다.
+참여자는 선택지를 끌어서 선호하는 순서로 배치하며, 1번이 첫 번째 선택지가 됩니다. 순위를 정한 이유를 투표 이유로 추가할 수 있습니다.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Oatmilk Cooperative는 회수용 병 시범 운영을 위해 멤버들에게 네
 
 ![](results.png)
 
-이 예시에서는 **500 ml 갈색 병**이 1위이며, **500 ml 투명 병**과 **750 ml 갈색 병**이 그 뒤를 잇습니다. 그룹은 가장 선호하는 디자인을 먼저 검토하고, 나머지 순위를 대안 검토 순서로 유지할 수 있습니다.
+이 예시에서는 **500 ml 갈색 병**이 1위이며, **500 ml 투명 병**과 **750 ml 갈색 병**이 그 뒤를 잇습니다. 그룹은 가장 높은 순위의 디자인을 먼저 시도하고, 나머지는 순서대로 예비 선택지로 유지할 수 있습니다.
 
-점수에 따른 결과에서는 서로 다른 선호 양상이 같은 총점으로 나타나 드러나지 않을 수 있습니다. 선택지 간 점수 차이가 작거나 결정의 영향이 크다면 개별 표와 투표 이유를 검토하세요.
+서로 다른 투표 양상이 같은 총점으로 나타날 수 있습니다. 선택지 간 점수 차이가 작거나 결정이 중요하다면 개별 표와 투표 이유를 검토하세요.
 
 <!-- translation-section: share-an-outcome -->
 

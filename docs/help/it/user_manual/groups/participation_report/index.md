@@ -1,80 +1,73 @@
 ---
 title: Rapporto sulla partecipazione
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/participation_report/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9ec21a12ab444c80
-  what-s-in-the-report: 90b9c89c6933eeee
-  actions-per-month: 3f290af092726995
-  tag-usage: 8e7577c51379e50f
-  actions-per-user: 4e6414d83ee776be
-  voting-record-per-user: 12741bf049ab9bee
-  users-per-country: 7f61b0c9a0002eec
-  actions-per-country: 900472e9fa675e08
+  introduction: f5759e9db8130be6
+  what-s-in-the-report: a857f9d955851358
+  actions-per-month: 4b2aebb7a8d1ecae
+  tag-usage: c05217a052bc0da0
+  actions-per-user: '09a02dafc160037a'
+  voting-record-per-user: e878e48f58f98b54
+  users-per-country: 03111e1b5f9a6697
+  actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 2d63e6324f801a9c
-  what-s-in-the-report: 0fbcf6b18c18d552
-  actions-per-month: 1b390f9a834a862b
-  tag-usage: 1769fe9e465c5b9a
-  actions-per-user: 8536c41f4a64e239
-  voting-record-per-user: 15dbb384cfc245e7
-  users-per-country: 254a748484c9e61d
-  actions-per-country: 329833d0debf5b71
+  introduction: 4fab52ab8db2f1c4
+  what-s-in-the-report: aca3abcdcc2f7688
+  actions-per-month: fbdb9024f0e10fc0
+  tag-usage: 5bdc9e48998822c6
+  actions-per-user: 485c511c187427b0
+  voting-record-per-user: cdc3a7eb11024df6
+  users-per-country: b0d3fa073acf0f2b
+  actions-per-country: 67e8810c4f6a09d2
 title_source: ee140bf2af2bcf29
 title_generated: 98b3b01240ac4531
 ---
 
 <!-- translation-section: introduction -->
 
-# Rapporto sulla partecipazione
+# Rapporto di partecipazione
 
-Il rapporto sulla partecipazione del gruppo fornisce informazioni sull'utilizzo del tuo gruppo Loomio.
+Il rapporto di partecipazione mostra le attività del tuo gruppo Loomio e dei suoi sottogruppi.
 
-Puoi scegliere quali gruppi includere nel rapporto, la data di inizio e di fine e l'intervallo (anno, mese, settimana o giorno) per raggruppare i risultati.
+Puoi scegliere quali gruppi includere, impostare una data di inizio e di fine e raggruppare i risultati per anno, mese, settimana o giorno.
 
-Il rapporto è disponibile per tutti nel tuo gruppo, ma gli utenti possono vedere solo i risultati dei gruppi di cui fanno parte. Questo significa che utenti diversi possono vedere rapporti leggermente diversi.
+Ogni membro del gruppo può consultare il rapporto, ma ciascuno vede solo i risultati dei gruppi di cui fa parte. Membri diversi possono quindi vedere totali diversi.
 
-Puoi trovare il rapporto selezionando l'icona a forma di ingranaggio del menu delle impostazioni del gruppo, come mostrato qui sotto.
+Per aprire il rapporto, apri il menu delle azioni del gruppo e seleziona **Rapporto di partecipazione**. In qualsiasi tabella del rapporto, seleziona l'intestazione di una colonna per ordinare i dati in base a quella colonna.
 
-![Voce Rapporto sulla partecipazione nel menu di Oatmilk Cooperative](group_participation_report.png)
+![Voce Rapporto di partecipazione nel menu di Oatmilk Cooperative](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
-## Cosa contiene il rapporto?
+## Cosa contiene il rapporto
 
 <!-- translation-section: actions-per-month -->
 
-### Azioni per mese
+### Azioni nel tempo
 
-Scopri quanto si partecipa nel tuo gruppo in un determinato periodo di tempo.
+Questo grafico mostra il numero di conversazioni, commenti, sondaggi, voti e reazioni per ciascun intervallo di tempo selezionato, così puoi individuare le variazioni nelle attività. Seleziona una voce nella legenda del grafico per nascondere o mostrare la metrica corrispondente.
 
-Il rapporto mostra il numero di conversazioni, commenti, sondaggi, voti e reazioni per mese. Il grafico ti permette di vedere come varia l'utilizzo nel tempo.
-
-Seleziona le singole voci nella legenda del grafico per nasconderle.
-
-Seleziona le intestazioni della tabella per ordinarla in base alla colonna corrispondente.
-
-![Controlli, totali e grafico delle attività del rapporto sulla partecipazione di Oatmilk Cooperative](group_participation_report_graph.png)
+![Controlli, totali e grafico delle attività del rapporto di partecipazione di Oatmilk Cooperative](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
 ### Utilizzo dei tag
 
-Questa sezione mostra con quale frequenza sono stati applicati i vari tag nel periodo specificato. Ad esempio, puoi vedere il numero di decisioni che utilizzano un determinato processo decisionale o modello.
+Questo grafico mostra con quale frequenza sono stati applicati i tag nel periodo selezionato, ad esempio quante discussioni hanno utilizzato un determinato processo decisionale o modello.
 
 ![Attività dei tag nel tempo per Produzione, Collaborazioni con caffetterie e Operazioni](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Azioni per utente
-Scopri chi contribuisce di più e di meno nel tuo gruppo.
 
-Questa tabella mostra il numero di conversazioni, commenti, sondaggi, voti e reazioni di ciascun utente nei gruppi specificati durante il periodo scelto. Seleziona le intestazioni della tabella per ordinarla in base alla colonna corrispondente.
+Questa tabella mostra il numero di conversazioni, commenti, sondaggi, voti e reazioni a cui ciascun membro ha contribuito nel periodo selezionato.
 
-Attiva **Solo delegati** per mostrare le persone che attualmente sono delegate in almeno uno dei gruppi selezionati. Le loro attività e i dati sui loro voti vengono aggregati per tutti i gruppi selezionati, e i delegati senza attività nel periodo scelto rimangono nella tabella. Il file CSV scaricato usa lo stesso filtro.
+Attiva **Solo delegati** per limitare la tabella alle persone che attualmente sono delegate in almeno uno dei gruppi selezionati. Le loro attività vengono aggregate per tutti i gruppi selezionati e i delegati senza attività compaiono comunque nella tabella. Il file CSV scaricato usa lo stesso filtro.
 
 ![Azioni per delegato con tre livelli di partecipazione](group_participation_report_actions_per_user.png)
 
@@ -82,9 +75,9 @@ Attiva **Solo delegati** per mostrare le persone che attualmente sono delegate i
 
 ### Registro dei voti per utente
 
-Confronta il numero di voti richiesti a ciascuna persona con il numero di voti espressi, consulta i voti non espressi e individua le persone che hanno espresso tutti i voti richiesti. Una persona a cui non è stato richiesto alcun voto non viene indicata come se avesse espresso tutti i voti. I sondaggi anonimi sono esclusi perché un voto anonimo non deve essere associato alla persona che lo ha espresso.
+Questa tabella confronta il numero di voti richiesti a ciascuna persona con il numero di voti espressi, mostra i voti non espressi ed evidenzia le persone che hanno espresso tutti i voti richiesti. Una persona a cui non è stato richiesto alcun voto non viene indicata come se avesse espresso tutti i voti. I sondaggi anonimi sono esclusi perché i voti anonimi non sono collegati ai singoli elettori.
 
-Usa **Solo delegati** per consultare il registro dei voti dei delegati attuali. Il file CSV scaricato usa gli stessi filtri per nome e delegati.
+Attiva **Solo delegati** per consultare il registro dei voti dei delegati attuali. Il file CSV scaricato usa gli stessi filtri per nome e delegati.
 
 ![Registro dei voti dei delegati con voti richiesti, espressi e non espressi](group_participation_report_voting_record.png)
 
@@ -92,7 +85,7 @@ Usa **Solo delegati** per consultare il registro dei voti dei delegati attuali. 
 
 ### Utenti per paese
 
-Il numero di utenti del tuo gruppo presenti in ciascun paese, in base al loro indirizzo IP attuale.
+Questa tabella mostra quanti membri dei gruppi selezionati si trovano in ciascun paese, in base al loro indirizzo IP attuale.
 
 ![Utenti per paese nei gruppi selezionati](group_participation_report_users_per_country.png)
 
@@ -100,8 +93,6 @@ Il numero di utenti del tuo gruppo presenti in ciascun paese, in base al loro in
 
 ### Azioni per paese
 
-Scopri in quali paesi gli utenti partecipano di più e di meno.
-
-È simile ad "Azioni per utente", ma i dati sono raggruppati in base al paese in cui viene rilevata la presenza dell'utente.
+Questa tabella raggruppa conversazioni, commenti, sondaggi, voti e reazioni in base al paese rilevato per ciascun membro.
 
 ![Azioni raggruppate per paese](group_participation_report_actions_per_country.png)

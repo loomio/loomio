@@ -1,14 +1,14 @@
 ---
 title: Toestemmingen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/settings/permissions.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 89201fa8b1ae8d82
+  introduction: '0579f1943e715f4d'
 generated:
-  introduction: 1364dfcaa208410a
+  introduction: e67659d9a6c9efa9
 title_source: abccc78cc93c0793
 title_generated: 4cfe641dfd4cbdbe
 ---
@@ -17,25 +17,25 @@ title_generated: 4cfe641dfd4cbdbe
 
 # Groepstoestemmingen
 
-Het tabblad Toestemmingen bepaalt welke acties binnen de groep beschikbaar zijn voor gewone leden en, bij groepen die niet geheim zijn, voor niet-leden. Open **Bewerk groepsinstellingen** op de groepspagina en selecteer vervolgens **Toestemmingen**.
+Het tabblad **Toestemmingen** bepaalt wat leden in de groep kunnen doen en, bij groepen die niet geheim zijn, wat niet-leden kunnen doen. Open **Bewerk groepsinstellingen** via het actiemenu van de groep en selecteer vervolgens **Toestemmingen**.
 
 ![Instellingen voor groepstoestemmingen](group_group_settings_permissions.png)
 
-Admins behouden de mogelijkheid om de groep te beheren. Als je een toestemming voor leden inschakelt, kunnen gewone leden die specifieke actie ook uitvoeren; ze worden daarmee geen admins.
+Groepsadmins behouden altijd alle beheertoestemmingen. Als je een toestemming inschakelt, kunnen leden die actie uitvoeren zonder dat ze groepsadmins worden.
 
-De toestemmingen bepalen onder andere of leden:
+De toestemmingen bepalen of leden:
 
-- leden kunnen toevoegen of gasten kunnen uitnodigen;
-- aankondigingen kunnen versturen;
-- subgroepen kunnen maken;
-- discussies kunnen starten en beheren;
-- labels kunnen maken en beheren;
-- reacties kunnen bewerken of verwijderen als de instelling dat toestaat;
-- voorstellen en peilingen kunnen starten; en
-- sjablonen voor discussies en peilingen kunnen maken.
+- Leden kunnen toevoegen of gasten kunnen uitnodigen
+- Aankondigingen kunnen versturen
+- Subgroepen kunnen maken
+- Discussies kunnen starten en beheren
+- Labels kunnen maken en beheren
+- Reacties kunnen bewerken of verwijderen als de instelling dat toestaat
+- Voorstellen en peilingen kunnen starten
+- Sjablonen voor discussies en peilingen kunnen maken
 
-Voor groepen die niet geheim zijn, kunnen admins niet-leden afzonderlijk toestemming geven om discussies te starten. Een niet-lid dat een discussie start, wordt gast van die discussie, maar krijgt geen toegang tot andere privédiscussies en wordt geen lid van de groep.
+Voor groepen die niet geheim zijn, kunnen groepsadmins ook niet-leden toestemming geven om discussies te starten. Een niet-lid dat een discussie start, wordt gast in die thread, maar wordt geen lid van de groep en krijgt geen toegang tot andere privédiscussies.
 
-De instelling **Beheerders kunnen de opmerkingen van leden bewerken** geeft admins een uitzonderlijke mogelijkheid om te modereren. Schakel deze alleen in als de groep heeft afgesproken dat admins inhoud van leden mogen wijzigen.
+Met de instelling **Beheerders kunnen de opmerkingen van leden bewerken** kunnen groepsadmins inhoud bewerken die door leden is geschreven. Schakel deze alleen in als jouw groep heeft afgesproken dat groepsadmins reacties van leden mogen wijzigen.
 
-Controleer de toestemmingen wanneer het doel van de groep, de samenstelling van de leden of de verantwoordelijkheden voor moderatie veranderen. Geef elke rol alleen de mogelijkheden die nodig zijn.
+Controleer de toestemmingen wanneer het doel van jouw groep, de samenstelling van de leden of de behoeften aan moderatie veranderen en geef elke rol alleen de toestemmingen die nodig zijn.

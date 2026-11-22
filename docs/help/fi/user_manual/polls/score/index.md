@@ -1,37 +1,35 @@
 ---
 title: Pisteytys
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/score/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: 785fff131238c0b3
-  when-to-use-score: c896dd7329d13faf
+  introduction: 491555391984bb69
+  when-to-use-score: a3e6f041f0d3c782
   example-score-possible-trial-locations: 111b53c35da0b187
-  set-up-the-poll: 634779c9afe18fbd
-  vote: 07b42e393a741975
-  read-the-results: 0c9543c0a6f0b213
+  set-up-the-poll: 3fb92d07b2693af1
+  vote: 1e78283356e7b7ae
+  read-the-results: 2993a5ef62d25651
   share-an-outcome: 82c25677ac77a1d8
 title_source: 38e5a46cbc5ad328
 title_generated: 204f0c0fae94e97b
-needs_review:
-  read-the-results: use "Pisteytys" instead of "pisteet" for "Score"
 ---
 
 <!-- translation-section: introduction -->
 
 # Pisteytys
 
-Pisteytys mittaa, miten osallistujat arvioivat kutakin vaihtoehtoa yhteisellä numeroasteikolla. Valinnasta poiketen siinä pyydetään arvioimaan jokainen vaihtoehto, joten tulokset kertovat sekä osallistujien mieltymyksistä että niiden voimakkuudesta.
+Pisteytys mittaa, miten osallistujat arvioivat kutakin vaihtoehtoa yhteisellä numeroasteikolla. Valinnasta poiketen siinä pyydetään arvioimaan jokainen vaihtoehto, mikä kertoo sekä osallistujien mieltymyksistä että niiden voimakkuudesta.
 
 <!-- translation-section: when-to-use-score -->
 
@@ -45,7 +43,7 @@ Käytä pisteytystä, kun jokaista vaihtoehtoa voidaan arvioida erikseen saman k
 - avustushakemusten arviointiin yhteisen kriteerin perusteella; tai
 - useiden ehdotusten soveltuvuuden vertailuun.
 
-Määrittele, mitä asteikon alin ja ylin arvo tarkoittavat. Ilman yhteistä määritelmää sama luku voi tarkoittaa eri äänestäjille eri asioita. Käytä [Valintaa](/en/user_manual/polls/choose/), kun tarvitset vain valintoja, tai [Pistejakoa](/en/user_manual/polls/allocate/), kun osallistujien on tehtävä kompromisseja rajallisen pistebudjetin puitteissa.
+Määrittele, mitä asteikon alin ja ylin arvo tarkoittavat, jotta kaikki tulkitsevat luvut samalla tavalla. Käytä [Valintaa](/en/user_manual/polls/choose/), kun tarvitset vain valintoja, tai [Pistejakoa](/en/user_manual/polls/allocate/), kun osallistujien on tehtävä kompromisseja rajallisen pistebudjetin puitteissa.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -57,13 +55,13 @@ Oatmilk-osuuskunta valitsee paikkoja palautuspullojen kokeilua varten. Se pyytä
 
 ## Luo kysely
 
-Esitä yksi kysymys, joka soveltuu samalla tavalla jokaiseen vaihtoehtoon. Lisää arvioitavat kohteet, määritä **Minimipistemäärä** ja **Maksimipistemäärä** ja selitä asteikon ääriarvot lisätiedoissa. Vaihtoehtojen kuvauksilla voit täsmentää, mitä kunkin kohteen arviointi kattaa.
+Esitä yksi kysymys, joka soveltuu samalla tavalla jokaiseen vaihtoehtoon. Lisää arvioitavat kohteet, määritä **Minimipistemäärä** ja **Maksimipistemäärä** ja selitä asteikon ääriarvot lisätiedoissa. Voit lisätä vaihtoehdolle kuvauksen täsmentääksesi, mitä kunkin kohteen arviointi kattaa.
 
 ![](form.png)
 
-Valitse asteikko, jota osallistujat voivat käyttää johdonmukaisesti. Asteikko 0–5 on nopea käyttää, ja asteikko 0–10 mahdollistaa tarkemmat erot. Suurempi tarkkuus ei välttämättä tuota parempaa tietoa, joten käytä suppeinta kysymykseen sopivaa asteikkoa.
+Valitse asteikko, jota osallistujat voivat käyttää johdonmukaisesti. Asteikko 0–5 on nopea käyttää, ja asteikko 0–10 mahdollistaa tarkemmat erot. Käytä suppeinta kysymykseesi sopivaa asteikkoa — laajempi asteikko ei aina tuota parempia tuloksia.
 
-Anonyymi äänestys ja vaihtoehtojen näyttäminen satunnaisessa järjestyksessä voivat olla hyödyllisiä, kun haluat vähentää muiden ihmisten tai vaihtoehtojen järjestyksen vaikutusta vastauksiin.
+Voit käyttää anonyymiä äänestystä tai näyttää vaihtoehdot satunnaisessa järjestyksessä vähentääksesi muiden osallistujien ja vaihtoehtojen järjestyksen vaikutusta vastauksiin.
 
 <!-- translation-section: vote -->
 
@@ -73,7 +71,7 @@ Osallistujat pisteyttävät jokaisen vaihtoehdon liukusäätimellä. Tässä esi
 
 ![](voting.png)
 
-Perustelu kertoo, miten äänestäjä käytti asteikkoa. Tämä auttaa ryhmää erottamaan puuttuvista tiedoista johtuvan matalan pistemäärän vaihtoehtoon liittyvästä huolesta johtuvasta matalasta pistemäärästä.
+Äänen perustelu kertoo, miten äänestäjä käytti asteikkoa. Tämä auttaa ryhmää arvioimaan, johtuuko matala pistemäärä todellisesta huolesta vai puuttuvista tiedoista.
 
 <!-- translation-section: read-the-results -->
 
@@ -87,7 +85,7 @@ Tulokset näyttävät jokaisesta vaihtoehdosta:
 
 ![](results.png)
 
-Tässä esimerkissä **Central Station -kahvilalla** on korkein keskiarvo, 7,5. **Harbourin toimistoilla** on matalin keskiarvo, 5,25, kun taas Riversiden torin ja yliopiston ravintola-alueen keskiarvo on kummallakin 7. Neljä viidestä kutsutusta on äänestänyt, joten ryhmä näkee myös, että yksi vastaus vielä puuttuu.
+Tässä esimerkissä **päärautatieaseman kahvilalla** on korkein keskiarvo, 7,5. **Sataman toimistoilla** on matalin keskiarvo, 5,25, kun taas joenrantatorin ja yliopiston ravintola-alueen keskiarvo on kummallakin 7. Neljä viidestä kutsutusta on äänestänyt, joten yksi vastaus vielä puuttuu.
 
 Vertaa keskiarvoja vain, kun vaihtoehdoilla on suunnilleen yhtä monta äänestäjää. Lue äänten perustelut ennen kuin pidät pientä eroa merkittävänä.
 

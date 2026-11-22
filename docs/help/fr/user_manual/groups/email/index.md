@@ -1,16 +1,16 @@
 ---
 title: Adresse e-mail
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-22'
 sections:
-  introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  introduction: '03039e0babf5a9b6'
+  preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 26505950e102c1b3
-  preventing-unauthorized-emails: eb58f225efc7cb0c
+  introduction: 2d7191ea421a0510
+  preventing-unauthorized-emails: d04817852f623353
 title_source: f2488fd4ef4adbc6
 title_generated: 8f9a920a57efeddf
 ---
@@ -19,25 +19,24 @@ title_generated: 8f9a920a57efeddf
 
 # Envoyez un e-mail pour créer un fil dans votre groupe
 
-Votre groupe Loomio dispose d’une adresse e-mail ! Vous pouvez envoyer ou transférer un e-mail à cette adresse pour créer un fil dans le groupe.
+Chaque groupe Loomio dispose de sa propre adresse e-mail. Vous pouvez envoyer ou transférer un e-mail à cette adresse pour créer un nouveau fil dans le groupe.
 
-Vous pouvez consulter l’adresse e-mail de votre groupe sur la page du groupe :
+Vous pouvez consulter l’adresse e-mail du groupe sur la page du groupe :
+
 ![Emplacement de l’adresse e-mail sur la page du groupe](email_email_button.png)
 
-Lorsque vous envoyez un e-mail à cette adresse, un nouveau fil est créé. L’objet de l’e-mail devient le titre du fil, le corps de l’e-mail devient sa description et les fichiers joints sont ajoutés au fil.
+Lorsque vous envoyez un e-mail à cette adresse, Loomio crée un nouveau fil. L’objet de l’e-mail devient le titre du fil, le corps de l’e-mail devient sa description et les fichiers joints sont ajoutés au fil.
 
-L’adresse de l’expéditeur de l’e-mail sert à identifier le membre du groupe qui sera l’auteur du fil.
+Loomio utilise l’adresse de l’expéditeur de l’e-mail (champ « De ») pour identifier le membre du groupe correspondant et le définir comme auteur du fil.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Empêcher les e-mails non autorisés
 
-Pour que cette fonctionnalité ne puisse pas être utilisée par des personnes qui ne sont pas membres de votre groupe, Loomio exige que l’adresse de l’expéditeur d’un e-mail reçu corresponde à celle d’un membre du groupe.
+Pour empêcher les personnes qui ne sont pas membres du groupe de créer des fils, Loomio exige que l’adresse de l’expéditeur d’un e-mail reçu (champ « De ») corresponde à l’adresse e-mail d’un membre du groupe.
 
-Si vous utilisez plusieurs adresses e-mail, vous pouvez ajouter un alias pour que Loomio reconnaisse vos autres adresses e-mail.
+Si un membre envoie un e-mail depuis une adresse non reconnue, Loomio met l’e-mail en attente et avertit les administrateurs du groupe. Un administrateur du groupe peut approuver l’e-mail et ajouter cette adresse comme alias pour ce membre, ou rejeter les futurs e-mails provenant de cette adresse.
 
-Lorsque l’adresse de l’expéditeur ne correspond à celle d’aucun membre du groupe, vous recevez une notification vous demandant d’ajouter un alias ou de rejeter tous les futurs e-mails provenant de cette adresse.
+Une fois l’alias ajouté, les futurs e-mails provenant de cette adresse créent immédiatement des fils.
 
-La première fois que vous envoyez un e-mail depuis une adresse non reconnue, vous devez donc ajouter un alias. Ensuite, les e-mails sont acceptés immédiatement.
-
-![Emplacement des boutons d’approbation et de rejet d’un e-mail provenant d’une adresse non reconnue](email_unreleased_emails.png)
+![Boutons d’approbation et de rejet d’un e-mail provenant d’une adresse non reconnue](email_unreleased_emails.png)

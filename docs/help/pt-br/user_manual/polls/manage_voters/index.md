@@ -1,38 +1,38 @@
 ---
 title: Gerenciar eleitores
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: e1dbcbc60299a5de
-  invite-people-to-vote-in-a-poll: 9af2ba0fabcf5110
+  invite-people-to-vote-in-a-poll: 3cee83e73d00951c
   invite-guests-or-experts: 21af711b48e40082
   engage-people-while-a-poll-is-running: 800a7010da730ecb
   add-voters-to-the-poll: 14a595eb9e3158e1
   remove-people-from-the-poll: adc78e796eb00642
-  remind-people-to-vote: 4fe7a7dff89b8bd4
+  remind-people-to-vote: acaa7a5c80c259ed
   view-notification-history: c6598006cc9e7e80
   close-early: 153ca47f91023247
   reopen: 472bb76bd04c33a3
-  choose-an-audience: 63f2977529d8b4c6
-  check-your-recipients: 2e863ab8d0a530b4
-  send-the-invitations: 4fb9e69722860bfa
+  choose-an-audience: 05e73762044fd530
+  check-your-recipients: 8e918502ae7650c4
+  send-the-invitations: 428ef6468b257b0c
 title_source: 10858faa0464257e
 title_generated: 3c945a1aef5e3b09
 ---
@@ -50,7 +50,7 @@ Use **Gerenciar eleitores** para dar às pessoas o direito de votar e convidá-l
 
 ## Convide pessoas a votar
 
-Depois que você iniciar uma enquete com **Apenas para pessoas selecionadas**, a janela **Gerenciar eleitores** será aberta. Você também pode abri-la selecionando **Gerenciar eleitores** na enquete.
+Depois que você iniciar uma enquete com **Apenas para pessoas selecionadas**, a janela **Gerenciar eleitores** será aberta automaticamente. Você também pode abri-la selecionando **Gerenciar eleitores** na enquete.
 
 ![O botão Gerenciar eleitores na parte inferior de uma enquete](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ Depois que você iniciar uma enquete com **Apenas para pessoas selecionadas**, a
 
 ### Escolha um público
 
-Clique no campo vazio **Encontre ou convide eleitores** para ver sugestões. Elas aparecem nesta ordem:
+Selecione o campo vazio **Encontre ou convide eleitores** para ver sugestões. Elas aparecem nesta ordem:
 
 - seu grupo
 - **Delegados de** seu grupo, se ele tiver [eleitores delegados](/en/user_manual/groups/delegated_voters)
@@ -72,7 +72,7 @@ Em uma [conversa direta](/en/user_manual/discussions/direct_discussions), a list
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Selecione um público para convidar essas pessoas de uma só vez. Por exemplo, selecionar **Oatmilk Cooperative** inclui as pessoas desse grupo. Você também pode selecionar uma sala de bate-papo conectada para publicar o convite nela. Publicar em uma sala de bate-papo não adiciona seus membros como eleitores.
+Selecione um público para convidar essas pessoas de uma só vez. Por exemplo, selecionar **Oatmilk Cooperative** inclui todas as pessoas desse grupo. Você também pode selecionar uma sala de bate-papo conectada para publicar o convite nela — publicar em uma sala de bate-papo não adiciona seus membros como eleitores.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ Depois que você selecionar um público, o campo mostrará o nome dele e quantas
 
 ![Oatmilk Cooperative selecionado, com a contagem de destinatários exibida abaixo do campo](proposal_invite_members.png)
 
-Clique no nome do público para expandir a lista e mostrar cada pessoa. Você poderá selecionar o **×** ao lado de uma pessoa para deixá-la de fora deste convite. Isso não a remove do grupo.
+Selecione o nome do público para expandir a lista e mostrar cada pessoa. Você poderá selecionar **×** ao lado de uma pessoa para deixá-la de fora deste convite. Isso não a remove do grupo.
 
 ![O público do grupo expandido em uma lista de pessoas identificadas pelo nome, cada uma com um controle para removê-la](proposal_invite_expand.png)
 
@@ -102,7 +102,7 @@ Os convidados recebem acesso a esta enquete. Se a enquete estiver em uma convers
 
 ### Envie os convites
 
-Adicione uma mensagem explicando o que você está pedindo às pessoas que decidam e selecione **Convidar**. Deixe **Enviar notificações** marcado para notificar as pessoas que você está convidando. Desmarque essa opção para adicionar eleitores sem enviar uma notificação.
+Adicione uma mensagem explicando o que você está pedindo às pessoas que decidam e selecione **Convidar**. Deixe **Enviar notificações** marcado para notificar as pessoas que você está convidando, ou desmarque essa opção para adicionar eleitores sem enviar uma notificação.
 
 Para uma enquete agendada, selecione **Adicionar eleitores**. As pessoas receberão o convite quando a votação começar.
 
@@ -132,7 +132,7 @@ Não é possível remover pessoas de uma enquete anônima. Nas enquetes com [pes
 
 ### Lembre as pessoas de votar
 
-Selecione **Lembrar** na enquete, escolha quem deve receber o lembrete, adicione uma mensagem e selecione **Lembrar** para enviá-lo. Você pode selecionar **Pessoas que não votaram** para entrar em contato com as pessoas cujas respostas ainda são necessárias.
+Selecione **Lembrar** na enquete, escolha os destinatários (como **Pessoas que não votaram**), adicione uma mensagem e selecione **Lembrar** para enviá-la.
 
 ![Um lembrete destinado às pessoas que não votaram, com uma mensagem sobre o prazo da decisão](proposal_remind.png)
 

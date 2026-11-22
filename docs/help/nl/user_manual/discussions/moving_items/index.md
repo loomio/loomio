@@ -1,14 +1,14 @@
 ---
 title: Items tussen discussies verplaatsen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/moving_items/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/moving_items/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6ac6ede9e57c77aa
+  introduction: 1b989b7a113a9d82
 generated:
-  introduction: a1f7f4478958aefe
+  introduction: 46a7c9b9ba4de77d
 title_source: d5f8d27c1ae21eb0
 title_generated: cf52568975cadae7
 ---
@@ -17,29 +17,25 @@ title_generated: cf52568975cadae7
 
 # Items tussen threads verplaatsen
 
-Verplaats geselecteerde items wanneer een gesprek in een andere thread thuishoort, wanneer een thread is opgesplitst in afzonderlijke onderwerpen of wanneer je gerelateerde discussies wilt samenvoegen. Er is geen aparte opdracht **Discussies samenvoegen**.
+Verplaats reacties of peilingen wanneer een gesprek in een andere thread thuishoort, wanneer een discussie zich opsplitst in afzonderlijke onderwerpen of wanneer je gerelateerde threads wilt samenvoegen.
 
-Deze optie is beschikbaar voor groepsadmins en voor leden wanneer **Leden kunnen discussies en reacties beheren.** is ingeschakeld bij [Groepsrechten](/en/user_manual/groups/settings/permissions).
+Groepsadmins kunnen items verplaatsen. Leden kunnen ook items verplaatsen wanneer **Leden kunnen discussies en reacties beheren.** is ingeschakeld bij [Groepsrechten](/en/user_manual/groups/settings/permissions).
 
-Open het menu met drie puntjes (**⋯**) bij een item en selecteer **Verplaats item**.
+1. Open het menu met drie puntjes (**⋯**) bij een item en selecteer **Verplaats item**.
 
 ![](../using_discussions/comment_move.png)
 
-Selecteer de items die je wilt verplaatsen.
+2. Gebruik de selectievakjes om de items te selecteren die je wilt verplaatsen en selecteer vervolgens **Verplaatsen** in de balk bovenaan de thread.
 
 ![](../using_discussions/comment_select.png)
 
-Selecteer eventuele extra items met de selectievakjes en klik vervolgens op **Verplaatsen** in de balk bovenaan de discussie.
-
 ![](../using_discussions/move_items.png)
 
-Kies de groep of subgroep en zoek vervolgens naar de discussie waarnaar je de items wilt verplaatsen.
-
-Om de items naar een nieuwe discussie te verplaatsen, selecteer je **Nieuwe discussie** en voeg je de titel en context toe.
+3. Kies de groep of subgroep waarnaar je de items wilt verplaatsen en zoek vervolgens naar een bestaande discussie. Om een nieuwe discussie aan te maken, selecteer je **Nieuwe discussie**, voeg je een titel en context toe en selecteer je **Start discussie**.
 
 ![](../using_discussions/move_items_new_thread.png)
 
-De items worden vanuit de oorspronkelijke thread naar de geselecteerde of nieuw aangemaakte thread verplaatst.
+De geselecteerde items worden vanuit de oorspronkelijke thread naar de gekozen thread verplaatst.
 
 ![](../using_discussions/new_thread.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Excluindo seu grupo
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 779d4a92736ca62a
-  group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
+  introduction: e811b127a678d5e3
+  group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 29937d8ab813c401
-  group-data-is-permanently-deleted-after-90-days: f78e1b715b021035
+  introduction: d7db222bba428604
+  group-data-is-permanently-deleted-after-90-days: c5bb0838a89290c0
 title_source: 9a0868f49f1262ea
 title_generated: 41beb9596e9c98bc
 ---
@@ -19,32 +19,29 @@ title_generated: 41beb9596e9c98bc
 
 # Excluindo seu grupo
 
-Excluir seu grupo do Loomio inicia um processo para excluir permanentemente todos os dados do grupo.
+Somente um admin do grupo pode excluir um grupo. Excluir um grupo remove o acesso imediatamente e agenda a exclusão permanente de todos os dados do grupo e de seus subgrupos após 90 dias.
 
-Se houver dados que você deseja manter, certifique-se de [exportar os dados do grupo](/en/user_manual/groups/data_export/) e baixar manualmente os arquivos importantes que você enviou antes de continuar.
+Antes de excluir um grupo, [exporte os dados do grupo](/en/user_manual/groups/data_export) e baixe os arquivos enviados que você deseja manter.
 
-Abra o menu suspenso do grupo clicando nos três pontos e selecione a opção **Deletar grupo** para remover o acesso ao grupo e iniciar a exclusão de todos os dados do grupo dos nossos registros. Você precisa ser admin do grupo para excluir um grupo.
-
-Quando você exclui um grupo, ele deixa de ser visível imediatamente e será excluído permanentemente após 90 dias. Você e os membros do grupo perdem imediatamente o acesso ao grupo. Se a exclusão foi um engano, entre em contato conosco em até 90 dias após excluir seu grupo para solicitar a restauração.
-
-Os grupos que aguardam exclusão e seus subgrupos ficam indisponíveis para visualização, participação ou exportação por membros e admins dos grupos, incluindo enquetes abertas por links salvos. Os membros não podem criar ou editar conteúdo, votar, enviar comunicados ou lembretes, nem aceitar convites. Exporte o grupo e baixe os arquivos importantes antes de confirmar a exclusão. As discussões e enquetes diretas não são afetadas.
-
-Agendar a exclusão do grupo interrompe as notificações de atividade e os lembretes de enquetes pendentes do grupo e de seus subgrupos. Mensagens que já estão sendo enviadas ainda podem chegar.
-
-O email de aviso inclui as quantidades de subgrupos, membros, discussões, enquetes e comentários do grupo. Se você precisar manter o grupo ou [exportar seus dados](/en/user_manual/groups/data_export/), responda em até 90 dias para que o acesso possa ser restaurado antes da exclusão.
-
-Excluir seu grupo também cancelará sua assinatura do Loomio.
+Para excluir um grupo, abra o menu de ações do grupo e selecione **Deletar grupo**.
 
 ![Ação Deletar grupo no menu da Oatmilk Cooperative](group_delete_group.png)
 
-Você deverá digitar o nome do seu grupo (*diferenciando maiúsculas de minúsculas*) para confirmar que deseja excluir seu grupo.
+Digite o identificador do grupo para confirmar a exclusão.
 
 ![Formulário de confirmação que exige o identificador da Oatmilk Cooperative](group_delete_group_confirm.png)
+
+Quando você confirma a exclusão:
+
+- O grupo e seus subgrupos deixam de ser visíveis imediatamente. Membros e admins do grupo perdem o acesso para visualizar, participar ou exportar conteúdo, incluindo enquetes abertas por links salvos.
+- As notificações de atividade e os lembretes de enquetes pendentes do grupo e de seus subgrupos são interrompidos, embora mensagens que já estão sendo enviadas ainda possam chegar.
+- Sua assinatura do Loomio é cancelada.
+- As discussões diretas e as enquetes fora do grupo não são afetadas.
+
+O Loomio também envia um email de aviso com as quantidades de subgrupos, membros, discussões, enquetes e comentários do grupo. Se você excluiu o grupo por engano ou ainda precisa exportar seus dados, responda a esse email ou entre em contato conosco em até 90 dias para restaurar o acesso.
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Os dados do grupo são excluídos permanentemente após 90 dias
 
-Após 90 dias, todas as conversas, enquetes, arquivos e outros conteúdos do grupo serão excluídos permanentemente. ***Isso é irreversível!***
-
-Recomendamos que você [exporte os dados do grupo](/en/user_manual/groups/data_export/) e baixe manualmente os arquivos importantes que você enviou antes de continuar.
+Após 90 dias, o Loomio exclui permanentemente todas as conversas, enquetes, arquivos e outros conteúdos do grupo e de seus subgrupos. Isso não pode ser desfeito.

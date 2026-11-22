@@ -1,48 +1,48 @@
 ---
 title: Threads gebruiken
-source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: fe8ab54791a49e01
-  thread-anatomy: fca9ec9af6718a99
-  discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 3fe9320d33fff8f6
-  navigation: c0ccc79744ae2c33
-  notifications-and-members: ac51f2bbe3642155
-  email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 12ac7562e5c561ac
-  seen-by: 1d0bfd812ca11782
-  notified: 6139bdcaae32a1db
-  actions: c015c12999c5be2f
-  print: 8fac34ad532e8cb5
-  markdown: c6434ed486db8be4
-  thread-settings-and-display: 175b9e93cfc4f736
-  pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 026a0e786deda944
-  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
-  delete-a-thread: 9b4c6437ff8102eb
+  introduction: f04bfcfd5d767c24
+  thread-anatomy: 8c8f6393917dc4e4
+  discussion-context: 82cfa27c1c3e6161
+  notify-people-about-context-changes: 89165c012a1a710e
+  navigation: e9cbf404a9e80417
+  notifications-and-members: 21bb3b5d392c31c2
+  email-notifications-for-this-thread: 3815be85f7e40239
+  invite-people: 4759f5db4b8b6c31
+  seen-by: 881b42cd1a2fed4d
+  notified: cdfc025813eb6d6b
+  actions: 2a239569629d46a9
+  print: b626084908f85a8c
+  markdown: f6468648c2fd6b91
+  thread-settings-and-display: 9e1723af3ef1c96f
+  pin-or-unpin-a-thread: 25265a99d3883d8f
+  move-a-thread: 4d7231526110d371
+  lock-or-unlock-a-thread: 5702025c2201f41f
+  delete-a-thread: afd0742cbbb13eea
 generated:
-  introduction: 1451dd3b0ad2020c
-  thread-anatomy: 0ce2741433a1b680
-  discussion-context: d3566107ed3376d6
-  notify-people-about-context-changes: 67af1efd901fa731
-  navigation: 86e7cd6d837054c3
-  notifications-and-members: 16cfc54f179bdd17
-  email-notifications-for-this-thread: a9100f04d60b3728
-  invite-people: bce6bdf0e76ccfae
-  seen-by: 87fecfc34c4a9764
-  notified: 4ce9c68d90ac8756
-  actions: 2ae4103e57fac588
-  print: c4dc9ddef3a715d1
-  markdown: 1947cf64bc1b5b02
-  thread-settings-and-display: 68266432d7b18558
-  pin-or-unpin-a-thread: 4c45bbbe8fe8f0e1
-  move-a-thread: 9c44ce214041421e
-  lock-or-unlock-a-thread: 39608ede659235cd
-  delete-a-thread: 78c4a9c45e4b5cf3
+  introduction: e57aa1a03b0902d3
+  thread-anatomy: f774e623d45da1be
+  discussion-context: 1e001171cb6a7074
+  notify-people-about-context-changes: f977f7cb4df5d70f
+  navigation: a0083ec46fc9eeec
+  notifications-and-members: af9ab8968b82eb3e
+  email-notifications-for-this-thread: f3a0414376657dd2
+  invite-people: c9701f842a8b34c9
+  seen-by: 36d04b3adba69f6f
+  notified: d8a06f68078bb30e
+  actions: 3fdb786586f73338
+  print: a95c34a40e922615
+  markdown: c390e0278fac4725
+  thread-settings-and-display: '0694dd280707ac7f'
+  pin-or-unpin-a-thread: 85684083cb6c6af1
+  move-a-thread: a55219c676b6064a
+  lock-or-unlock-a-thread: c36a5faef771da98
+  delete-a-thread: 27fe9b7f145450d8
 title_source: 99e2d1eb313f35c4
 title_generated: 58e0940112bb0af1
 needs_review:
@@ -53,7 +53,7 @@ needs_review:
 
 # Threads gebruiken
 
-Een discussie houdt de context, reacties, besluiten en conclusies bij elkaar in één thread. Deze pagina legt uit hoe je deelneemt aan een thread en de navigatie en acties gebruikt.
+Een discussie houdt de context, reacties, peilingen en conclusies bij elkaar in één thread. Deze pagina legt uit hoe je deelneemt aan een thread en de navigatie, instellingen en acties gebruikt.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -63,47 +63,26 @@ Een typische thread ziet er zo uit:
 
 ![](thread_navigation.png)
 
-Van boven naar beneden bevat een thread:
+De belangrijkste onderdelen van een thread zijn:
 
-**Groepsnaam** - Linksboven op de discussiepagina staat de naam van de groep of subgroep waartoe de discussie behoort. Klik op deze naam om terug te gaan naar de groepspagina.
-
-**Toegang tot de discussie** - Het toegangspictogram rechtsboven opent de toegangsinstellingen van de discussie. Een groepsdiscussie is toegankelijk voor groepsleden en iedereen die er specifiek voor is uitgenodigd, afhankelijk van de privacyinstellingen van de groep.
-
-**Discussietitel** - De naam van de discussie.
-
-**Categorie labels** - De discussie kan een of meer categorielabels hebben. Eenvoudige labels helpen mensen om discussies van een vergelijkbaar type gemakkelijker te vinden.
-
-**Auteur van de discussie** - De naam en avatar van de persoon die de discussie heeft gestart, weergegeven onder de titel.
-
-**Datum** - Beweeg de muisaanwijzer over de datum om de volledige datum en tijd te zien waarop de discussie is gestart.
-
-**Gezien door** - Laat in de rechterzijbalk zien wie de discussie heeft gelezen en wanneer.
-
-**Gemeld** - Laat in de rechterzijbalk zien wie een melding over de discussie heeft ontvangen en of elke melding is gelezen of de bijbehorende e-mail is geopend.
-
-**Discussiecontext** - Inhoud die de discussie een kader geeft.
-
-**Hulpmiddelen voor interactie en beheer van de discussie** - De discussiecontext bevat knoppen om erop te reageren en deze te bewerken. De rechterzijbalk bevat acties voor meldingen, lidmaatschap en beheer.
-
-**Reacties** - Reacties worden onder de discussiecontext weergegeven. De naam en avatar van de auteur en het tijdstip van plaatsing laten zien wie elke reactie heeft geschreven en wanneer. Bij elke reactie zijn hulpmiddelen voor interactie en beheer beschikbaar.
-
-**Navigatie, meldingen en acties** - De rechterzijbalk bevat snelkoppelingen naar activiteit en mijlpalen, informatie over meldingen en lidmaatschap, en de threadacties die voor jou beschikbaar zijn.
+- **Groepsnaam** — Linkt naar de groep of subgroep waartoe de thread behoort.
+- **Toegangsinstellingen** — Laat zien wie de thread kan bekijken. Een groepsdiscussie is zichtbaar voor groepsleden en iedereen die ervoor is uitgenodigd, afhankelijk van de privacyinstellingen van de groep.
+- **Categorie labels** — Labels onder de titel die gerelateerde discussies groeperen.
+- **Discussiecontext** — Het openingsbericht bovenaan de thread, met knoppen om te reageren of te bewerken.
+- **Reacties en peilingen** — Antwoorden, peilingen en conclusies die onder de context zijn geplaatst, elk met eigen knoppen voor interactie en acties.
+- **Rechterzijbalk** — Snelkoppelingen naar mijlpalen (**Spring naar**), meldingsinstellingen, de lijsten **Gezien door** en **Gemeld**, en threadacties.
 
 <!-- translation-section: discussion-context -->
 
 ## Discussiecontext
 
-De **context** van de discussie staat altijd bovenaan de discussie. Gebruik de context om de discussie of het besluit een kader te geven.
-
-Houd jouw groep in gedachten wanneer je de discussiecontext schrijft. Je wilt een discussie op gang brengen, dus bedenk hoe je mensen kunt motiveren om deel te nemen. Houd de discussiecontext eenvoudig en duidelijk.
+De **context** blijft bovenaan de thread staan en geeft het gesprek of het besluit een kader.
 
 ![](thread_context.png)
 
-Schrijf de discussiecontext wanneer je een discussie start of bewerkt. **Bewerk** een discussie met het potloodpictogram.
+Je schrijft de context wanneer je een discussie start en kunt deze bijwerken met het potloodpictogram (**Bewerken**). Naarmate het gesprek vordert, kun je de context bijwerken met nieuwe achtergrondinformatie, een agenda of de definitieve conclusie.
 
-Werk de discussiecontext bij naarmate de discussie vordert. Zie de context als een whiteboard in je vergaderruimte, waarop je de agenda, de beoogde conclusies en de stappen om die te bereiken kunt schrijven.
-
-Onderaan het contextpaneel staat een opmaakbalk waarmee je tekst kunt opmaken, bestanden en afbeeldingen kunt toevoegen en een video kunt insluiten.
+Met de opmaakbalk onder het tekstveld kun je tekst opmaken, bestanden toevoegen, afbeeldingen invoegen en video's insluiten. Zie [Tekst opmaken en bestanden toevoegen](/en/user_manual/discussions/formatting/).
 
 ![](thread_context_edit.png)
 
@@ -111,11 +90,11 @@ Onderaan het contextpaneel staat een opmaakbalk waarmee je tekst kunt opmaken, b
 
 ### Mensen informeren over wijzigingen in de context
 
-Wanneer je de discussiecontext bewerkt, gebruik je **Wat is er veranderd?** om de wijziging samen te vatten en te kiezen wie een melding moet ontvangen.
+Wanneer je de context bewerkt, gebruik je **Wat is er veranderd?** om jouw wijziging samen te vatten en te kiezen wie een melding ontvangt.
 
 ![Een discussiecontext bewerken met een samenvatting van de wijziging en ontvangers van meldingen](../notifying_people/thread_editcontext.png)
 
-De thread laat zien dat je de context hebt bewerkt. De mensen die je informeert, ontvangen jouw samenvatting bij de melding.
+De thread legt vast dat je de context hebt bewerkt en de mensen die je een melding stuurt, ontvangen jouw samenvatting.
 
 ![Een item in een thread dat laat zien dat de discussiecontext is bewerkt](../notifying_people/thread_edit_comment.png)
 
@@ -125,29 +104,29 @@ De thread laat zien dat je de context hebt bewerkt. De mensen die je informeert,
 
 Het onderdeel **Spring naar** in de rechterzijbalk helpt je door een thread te navigeren:
 
-- **Start** gaat naar de discussiecontext
-- **Nieuw voor jou** verschijnt wanneer de thread activiteit bevat die je nog niet hebt gelezen
-- **Laatste** verschijnt wanneer er nieuwere activiteit beschikbaar is dan de items die momenteel zijn geladen
-- mijlpaallinks gaan rechtstreeks naar belangrijke reacties, peilingen en conclusies
-- **Einde** gaat naar het laatste item in de thread
+- **Start** gaat naar de discussiecontext.
+- **Nieuw voor jou** verschijnt wanneer de thread ongelezen activiteit bevat.
+- **Laatste** verschijnt wanneer er nieuwere activiteit is dan de geladen items.
+- Mijlpaallinks gaan rechtstreeks naar belangrijke reacties, peilingen en conclusies.
+- **Einde** gaat naar het laatste item in de thread.
 
-Reacties met een H2- of H3-kop, peilingen en voorstellen worden automatisch opgenomen als mijlpaallinks. Selecteer een mijlpaal om er rechtstreeks naartoe te gaan.
+Reacties met een H2- of H3-kop, peilingen en voorstellen verschijnen automatisch als mijlpaallinks. Selecteer een mijlpaal om er rechtstreeks naartoe te gaan.
 
 ![](thread_timeline_1.png)
 
-Wanneer je een reactie, peiling, stem of conclusie toevoegt, markeert Loomio jouw eigen nieuwe item als gelezen. Het verschijnt voor jou niet als iets nieuws om te bekijken.
+Wanneer je een reactie, peiling, stem of conclusie plaatst, markeert Loomio jouw eigen item als gelezen.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Meldingen en leden
 
-In de rechterzijbalk stel je jouw e-mailmeldingen in en zie je wie is uitgenodigd, wie de thread heeft gezien en wie een melding heeft ontvangen.
+In de rechterzijbalk stel je jouw e-mailmeldingen voor de thread in en zie je wie is uitgenodigd, wie de thread heeft gezien en wie een melding heeft ontvangen.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### E-mailmeldingen voor deze thread
 
-Selecteer de huidige meldingsinstelling om te kiezen of Loomio je e-mails stuurt over alle activiteit, alleen over activiteit waarvoor je specifiek een melding ontvangt, of over geen enkele activiteit. E-mails over alle activiteit kunnen in een actieve thread veel berichten opleveren.
+Selecteer jouw huidige meldingsinstelling om te kiezen of Loomio je e-mails stuurt over alle activiteit, alleen over activiteit waarvoor je specifiek een melding ontvangt, of over geen enkele activiteit. Als je alle activiteit kiest, kan dat in een drukke thread veel e-mails opleveren.
 
 ![E-mail bij een melding geselecteerd in de zijbalk van de discussie](../notifying_people/thread_interact.png)
 
@@ -155,13 +134,13 @@ Selecteer de huidige meldingsinstelling om te kiezen of Loomio je e-mails stuurt
 
 ### Mensen uitnodigen
 
-Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of hun een melding over de discussie te sturen. Zie [Mensen uitnodigen voor een discussie](/en/user_manual/discussions/inviting_people) voor informatie over groepen, hoofdgroepen, gasten, chatruimtes en meldingen van uitnodigingen.
+Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of hun een melding over de thread te sturen. Zie [Mensen uitnodigen voor een discussie](/en/user_manual/discussions/inviting_people) voor informatie over groepen, subgroepen, hoofdgroepen, gasten en chatruimtes.
 
 <!-- translation-section: seen-by -->
 
 ### Gezien door
 
-**Gezien door** laat zien wie de thread heeft geopend en wanneer. Dit kan je helpen te zien wie belangrijke informatie mogelijk nog niet heeft gezien.
+**Gezien door** laat zien wie de thread heeft geopend en wanneer. Gebruik dit om te controleren of belangrijke betrokkenen belangrijke informatie hebben gezien.
 
 ![Gezien door en Gemeld in het onderdeel Threadleden](../notifying_people/thread_engagement.png)
 
@@ -171,7 +150,7 @@ Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of
 
 ### Gemeld
 
-**Gemeld** opent de meldingsgeschiedenis van de discussie. Deze bevat uitnodigingen, vermeldingen en antwoorden en laat zien wie een melding heeft ontvangen en of elke melding is gelezen, wanneer die informatie beschikbaar is.
+**Gemeld** opent de meldingsgeschiedenis van de thread, met uitnodigingen, vermeldingen en antwoorden. Deze laat zien wie een melding heeft ontvangen en of elke melding is gelezen, wanneer die informatie beschikbaar is.
 
 ![Meldingsgeschiedenis van de discussie](../notifying_people/thread_notified.png)
 
@@ -181,7 +160,7 @@ Selecteer **Mensen uitnodigen** in de rechterzijbalk om mensen uit te nodigen of
 
 ## Threadinstellingen
 
-Threadadmins en groepsadmins kunnen **Draadinstellingen** selecteren om de indeling van antwoorden te wijzigen en andere discussieopties in te stellen.
+Threadadmins en groepsadmins kunnen **Draadinstellingen** selecteren om de indeling van antwoorden te bepalen en andere discussieopties in te stellen.
 
 ![](thread_display.png)
 
@@ -195,23 +174,23 @@ Kies **Chronologisch** om items weer te geven in de volgorde waarin ze zijn gepl
 
 ### Slechts één peiling tegelijk
 
-Als dit is aangevinkt, kunnen gebruikers pas een nieuwe peiling starten nadat de huidige peiling is gesloten. Voor nieuwe threads is dit standaard niet aangevinkt. Threads die vanuit een discussiesjabloon worden gestart, gebruiken de instelling van dat sjabloon.
+Als dit is aangevinkt, kan niemand een nieuwe peiling starten totdat de huidige peiling sluit. Voor nieuwe threads is dit standaard niet aangevinkt. Threads die vanuit een discussiesjabloon worden gestart, nemen de instelling van dat sjabloon over.
 
 ### Alleen admins kunnen bijlagen toevoegen
 
 Schakel deze instelling in zodat alleen threadadmins en groepsadmins nieuwe bestanden en afbeeldingen in de tekst kunnen toevoegen in de hele thread, ook in antwoorden op peilingen en reacties per e-mail. Bestaande bijlagen blijven beschikbaar en deelnemers kunnen hun tekst nog steeds bewerken of bijlagen verwijderen.
 
-Discussie- en peilingsjablonen kunnen deze instelling meegeven aan nieuwe threads. Zie [Discussiesjablonen](/en/user_manual/discussions/templates) en [Peilingsjablonen](/en/user_manual/polls/poll_templates).
+Discussie- en peilingsjablonen kunnen dit instellen voor nieuwe threads. Zie [Discussiesjablonen](/en/user_manual/discussions/templates) en [Peilingsjablonen](/en/user_manual/polls/poll_templates).
 
 ### Reactielengtelimiet
 
-Stel een maximumaantal tekens per reactie in om bijdragen beknopt te houden. Laat het veld leeg als je geen limiet wilt. De limiet geldt voor iedereen, ook voor admins.
+Stel een maximumaantal tekens per reactie in om antwoorden beknopt te houden. Laat het veld leeg als je geen limiet wilt. De limiet geldt voor iedereen, ook voor groepsadmins en threadadmins.
 
 <!-- translation-section: actions -->
 
 ## Acties
 
-De rechterzijbalk bevat acties voor de hele thread. Sommige acties zijn ook beschikbaar via het menu met drie puntjes (**⋯**) naast een thread op de groepspagina.
+De rechterzijbalk bevat acties voor de hele thread. Sommige acties verschijnen ook in het menu met drie puntjes (**⋯**) naast een thread op de groepspagina.
 
 Welke acties je ziet, hangt af van jouw rechten. Groepsadmins kunnen threads beheren en de groepsinstellingen kunnen leden toestaan om bepaalde beheeracties uit te voeren. Zie [Groepsrechten](/en/user_manual/groups/settings/permissions).
 
@@ -221,7 +200,7 @@ Welke acties je ziet, hangt af van jouw rechten. Groepsadmins kunnen threads beh
 
 ### Afdrukken
 
-Selecteer **Afdrukken** om een pagina te maken die geschikt is om af te drukken. Gebruik het afdrukvenster van je browser om deze als PDF op te slaan.
+Selecteer **Afdrukken** om een afdrukvriendelijke weergave van de thread te openen. Gebruik het afdrukvenster van je browser om deze als PDF op te slaan.
 
 ![](thread_print_thread.png)
 
@@ -229,15 +208,13 @@ Selecteer **Afdrukken** om een pagina te maken die geschikt is om af te drukken.
 
 ### Markdown
 
-Selecteer **Markdown** om de volledige thread als gestructureerde Markdown op te slaan. Kies **Markdown kopiëren** om deze naar je klembord te kopiëren, of **Markdown downloaden** om deze als een `.md`-bestand op te slaan. Je kunt dit gebruiken voor vergadernotulen, een document, een archief van besluiten, een AI-assistent of een andere tool die Markdown ondersteunt.
+Selecteer **Markdown** om de thread als gestructureerde Markdown te exporteren. Kies **Markdown kopiëren** om deze naar je klembord te kopiëren, of **Markdown downloaden** om een `.md`-bestand op te slaan voor vergadernotulen, archieven, documenten of AI-tools.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Het document begint met YAML-frontmatter met de threadsleutel, oorspronkelijke URL, groep, aanmaakdatum, datum van de laatste activiteit en labels. Gebruik de URL om terug te gaan naar de thread in Loomio. Daarna volgen de discussiecontext en elke reactie, peiling, stem en conclusie in dezelfde volgorde en met dezelfde nesting als in de weergave met threads.
+De export begint met YAML-frontmatter met de threadsleutel, URL, groep, datums en labels. Daarna volgen de discussiecontext en elke reactie, peiling, stem en conclusie in de volgorde en nesting van de thread. Elke peiling vormt een sectie. Reacties, stemmen en conclusies worden als blokcitaten weergegeven met de auteur, het tijdstip, het itemnummer en de emoji-reacties.
 
-Elke peiling vormt een sectie. Reacties, stemmen en conclusies worden als citaten weergegeven, en antwoorden staan als citaten onder het item waarop ze antwoorden. Zo zie je waar de tekst van elke persoon begint en eindigt. Elk citaat begint met één regel met de persoon, het tijdstip van plaatsing, het nummer van het item in de thread en eventuele emoji-reacties. Bij stemmen en conclusies staat ook aangegeven wat ze zijn. De threadsleutel en het itemnummer identificeren elk item in Loomio.
-
-Loomio past dezelfde zichtbaarheidsregels toe als in de thread. Het resultaat en stemredenen die je niet kunt zien, worden niet opgenomen, en kiezers worden niet geïdentificeerd in anonieme peilingen. Als een open peiling het resultaat verbergt totdat je stemt, stem dan voordat je de thread exporteert. **Markdown** en **Afdrukken** zijn pas beschikbaar nadat je hebt gestemd.
+Loomio volgt de zichtbaarheidsregels van de thread. Verborgen resultaat en verborgen stemredenen worden niet opgenomen, en kiezers blijven anoniem in anonieme peilingen. Als een open peiling het resultaat verbergt totdat je stemt, stem dan eerst. **Markdown** en **Afdrukken** zijn pas beschikbaar nadat je hebt gestemd.
 
 Een discussie met een reactie, emoji-reacties, een voorstel, twee stemmen, een antwoord en een conclusie levert bijvoorbeeld deze Markdown op:
 
@@ -309,11 +286,11 @@ De koppen en labels gebruiken de taal die je hebt geselecteerd. Tekst die deelne
 
 ### Een thread vastzetten of losmaken
 
-Vastgezette threads verschijnen boven andere threads op de groepspagina. Welkomstdiscussies, nieuwsberichten en aankondigingen zijn gebruikelijke toepassingen voor vastgezette threads.
+Vastgezette threads blijven bovenaan de groepspagina staan. Groepen zetten vaak welkomstdiscussies, nieuws en aankondigingen vast.
 
 Open het menu met drie puntjes (**⋯**) naast de thread op de groepspagina en selecteer **Thread vastzetten**. Vastgezette threads worden gerangschikt op het tijdstip waarop ze zijn vastgezet. Om de volgorde te wijzigen, maak je ze los en zet je ze opnieuw vast.
 
-Selecteer **Thread losmaken** om een thread terug te plaatsen in de volgorde op basis van activiteit.
+Selecteer **Thread losmaken** om een thread terug te plaatsen in de normale volgorde op basis van activiteit.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -321,24 +298,25 @@ Selecteer **Thread losmaken** om een thread terug te plaatsen in de volgorde op 
 
 ### Een thread verplaatsen
 
-Selecteer **Verplaats discussie** om een thread naar een andere groep of subgroep te verplaatsen, of er een directe thread van te maken. De thread is zichtbaar voor leden van de bestemmingsgroep en iedereen die er specifiek voor is uitgenodigd.
+Selecteer **Verplaats discussie** om een thread naar een andere groep of subgroep te verplaatsen, of er een directe thread van te maken. De thread wordt zichtbaar voor leden van de bestemmingsgroep en iedereen die ervoor is uitgenodigd.
 
-Bij het verplaatsen van een thread laat Loomio zien hoeveel mensen hun toestemming om deel te nemen zouden verliezen. Je kunt hen als gasten behouden zonder meldingen over uitnodigingen te versturen. Bij een verplaatsing naar een andere groep of subgroep heb je hiervoor toestemming nodig om gasten uit te nodigen in de bestemmingsgroep; bestaande gasten behouden hun toegang.
+Voordat je de thread verplaatst, laat Loomio zien hoeveel mensen hun toegang zouden verliezen. Je kunt hen als gasten behouden zonder meldingen te versturen:
 
-Als je er een directe thread van maakt, behouden mensen die hebben deelgenomen automatisch hun toegang. Als je de gastoptie selecteert, behouden ook de overige huidige leden en gasten hun toegang. Jij en de maker van de thread worden thread admins.
+- **Verplaatsen naar een andere groep of subgroep:** Om mensen als gasten te behouden, heb je toestemming nodig om gasten uit te nodigen in de bestemmingsgroep. Bestaande gasten behouden hun toegang.
+- **Omzetten naar een directe thread:** Mensen die al hebben deelgenomen, behouden automatisch hun toegang. Als je de gastoptie kiest, behouden ook de overige huidige leden en gasten hun toegang. Jij en de maker van de thread worden thread admins.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
 >Begin een concept als directe discussie of in een privésubgroep en verplaats het naar de groep wanneer het klaar is.
 
-Zie [Items tussen threads verplaatsen](/en/user_manual/discussions/moving_items/) om geselecteerde activiteit te verplaatsen in plaats van de hele thread.
+Zie [Items tussen threads verplaatsen](/en/user_manual/discussions/moving_items/) om specifieke items te verplaatsen in plaats van de hele thread.
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Een thread vergrendelen of ontgrendelen
 
-Vergrendel een thread om deze in de huidige staat te archiveren. Niemand kan iets aan een vergrendelde thread toevoegen, deze wijzigen of vanuit de thread mensen uitnodigen of meldingen sturen. Je kunt een thread pas vergrendelen nadat de actieve peilingen zijn gesloten.
+Vergrendel een thread om deze in de huidige staat te archiveren. Niemand kan in een vergrendelde thread iets plaatsen, bewerken of mensen uitnodigen. Alle actieve peilingen moeten gesloten zijn voordat je een thread kunt vergrendelen.
 
 Selecteer **Discussie vergrendelen** onder **Acties**. Vergrendelde threads worden uit de lijst met open discussies verwijderd en krijgen het label **Vergrendeld**.
 
@@ -350,6 +328,6 @@ Om een vergrendelde thread te vinden, open je het discussiefilter op de groepspa
 
 Als je een thread verwijdert, is deze definitief weg en kun je dit niet ongedaan maken. Vergrendel de thread als je deze later mogelijk nog nodig hebt.
 
-Selecteer **Thread verwijderen** en bevestig de verwijdering.
+Selecteer **Thread verwijderen** en bevestig.
 
 ![](../discussion_management/thread_delete.png)

@@ -1,34 +1,34 @@
 ---
 title: サブグループ
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: d99c9be1c97d1648
-  add-a-subgroup: 794946c2c597f16c
+  introduction: b33392211bf4a21c
+  add-a-subgroup: 4ac42ca0c70539d1
   subgroup-settings: 4d1baea010b1b7e1
-  privacy: cbff19d91c642778
+  privacy: c632de75090de54e
   permissions: dbb96a53ab720785
-  find-subgroups: 5711dcd4a3c90e26
-  invite-to-a-subgroup: bd1058971796e58b
-  simultaneously-invite-people-to-subgroups-and-parent-group: 3518924ddb8272cc
-  administer-a-subgroup: a526ae34c9d3912d
-  delete-a-subgroup: 7bcfbcd6afa22a92
-  how-people-join: 3a3af47b9b118b15
+  find-subgroups: f8974142749a5198
+  invite-to-a-subgroup: abbc4f521f101b49
+  simultaneously-invite-people-to-subgroups-and-parent-group: d169749511c2a527
+  administer-a-subgroup: 6a8edb2dd2d2917e
+  delete-a-subgroup: 3f17782ee9e2a11f
+  how-people-join: 942ba75aad414873
 title_source: 9f81e728f70cae3e
 title_generated: 70b41aa1386d23c6
 ---
@@ -37,33 +37,28 @@ title_generated: 70b41aa1386d23c6
 
 # サブグループ
 
-サブグループを使うと、やり取りやメンバーを整理し、必要な人たちが一緒に活動できるようにします。
+サブグループを使うと、親グループ内の特定のチームやテーマごとにディスカッションやメンバーを整理できます。例えば、組織には次のようなサブグループを設けることができます。
 
-例えば、組織には次のようなサブグループを設けることができます。
 - 理事会
-- 作業チームやプロジェクトの作業グループ
-- テーマ別のグループ（「戦略」や「学習」など）
+- 作業チームやプロジェクトグループ
+- 戦略や学習などのテーマ別のグループ
 
-サブグループはグループと同じように機能しますが、親グループの中にあります。利用できる機能や設定の大部分は親グループと同じです。また、親グループのメンバーではなくても、理事会などのサブグループのメンバーになることができます。
+サブグループは通常のグループと同じように機能し、ほとんどの機能や設定が共通しています。親グループに所属せずに、理事会などのサブグループに所属することもできます。
 
 <!-- translation-section: add-a-subgroup -->
 
 ## サブグループを追加する
 
 >[!Note]
->新しいサブグループを追加できるかどうかは、グループの[権限設定](/en/user_manual/groups/settings/permissions)で決まります。初期設定では、管理者のみが新しいサブグループを開始できます。
+>サブグループを追加できる人は、親グループの[権限設定](/en/user_manual/groups/settings/permissions)で決まります。初期設定では、グループ管理者のみがサブグループを作成できます。
 
-サブグループを追加するには、親グループのページを開き、サイドバーの**新しいサブグループ**をクリックします。  
+サブグループを作成するには、親グループのページを開き、サイドバーの**新しいサブグループ**を選択して、名前を入力し、プライバシー設定を選択してから、**サブグループの開始**を選択します。
 
 ![Oatmilk Cooperativeのサイドバーにある新しいサブグループボタン](subgroups-sidebar.png)
 
-**新しいサブグループ**ボタンをクリックし、名前を入力してプライバシー設定を選択したら、**サブグループの開始**をクリックします。
-
 ![包装作業グループの新しいサブグループ作成フォーム](subgroups_new.png)
 
-準備ができたら、サブグループに[メンバーを招待します](/en/user_manual/groups/inviting_people/)。
-
-サブグループのページにある歯車アイコンをクリックすると、サブグループの[グループ設定](/en/user_manual/groups/settings/)を編集できます。
+サブグループの準備ができたら、[参加する人を招待します](/en/user_manual/groups/inviting_people)。サブグループのページにある操作メニューから、サブグループの[グループ設定](/en/user_manual/groups/settings)を変更できます。
 
 ![包装作業グループのグループ設定を編集する操作](subgroups_edit_group_settings.png)
 
@@ -86,15 +81,13 @@ title_generated: 70b41aa1386d23c6
 
 **親グループのメンバーは非公開スレッドを閲覧できます**の権限を有効にすると、親グループのメンバーはサブグループに参加せずに、そのスレッドを閲覧することもできます。
 
-親グループが非公開の場合、サブグループで選択できる設定は**親グループに表示**と**秘密**です。
-
-[グループのプライバシーについてはこちらをご覧ください](/en/user_manual/groups/settings/privacy)。
+親グループが非公開の場合、サブグループで選択できる設定は**親グループに表示**と**秘密**のみです。詳しくは[グループのプライバシー](/en/user_manual/groups/settings/privacy)をご覧ください。
 
 <!-- translation-section: how-people-join -->
 
 ### 参加方法
 
-サブグループの作成時、または**グループ設定を編集 → プライバシー**で、[参加方法](/en/user_manual/groups/settings/privacy#how-people-join)を選択します。
+サブグループの作成時、または**グループ設定を編集する** > **プライバシー**で、[参加方法](/en/user_manual/groups/settings/privacy#how-people-join)を選択します。
 
 ![サブグループのプライバシーと参加方法の設定](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ title_generated: 70b41aa1386d23c6
 
 ## サブグループを見つける
 
-サイドバーメニューを開き、グループ名をクリックすると、そのグループのサブグループが表示されます。
+サイドバーで親グループの名前を選択すると、そのサブグループが表示されます。
 
 ![サイドバーに表示されたOatmilk Cooperativeのサブグループ](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ title_generated: 70b41aa1386d23c6
 
 ## サブグループに招待する
 
-グループに招待するときと同じ方法で、サブグループに招待できます。招待する人が、招待を送る人も所属している同じ組織の親グループや別のサブグループにすでに所属している場合は、名前を入力するか、そのグループを招待先として選択できます。招待先のチップを選択すると、個々の人の一覧に展開されます。その後、招待しない人を一覧から削除します。
+親グループに招待するときと同じ方法で、[サブグループに招待できます](/en/user_manual/groups/inviting_people)。招待する人が、招待を送る人も所属している親グループや別のサブグループにすでに所属している場合は、名前を入力するか、そのグループを選択します。その後、グループを個々の人の一覧に展開し、招待しない人を一覧から削除します。
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
 ### サブグループと親グループに同時に招待する
 
-親グループの**メンバー**タブにある**メンバーを招待する**ボタンを使うと、すぐに参加してもらいたいサブグループのチェックボックスを選択して、複数のサブグループに同時に招待できます。
+親グループの**メンバー**タブで**招待する**を選択したら、招待する人に同時に参加してもらいたいサブグループのチェックボックスを選択します。
 
 ![招待フォームで親グループとサブグループを選択する画面](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ title_generated: 70b41aa1386d23c6
 
 ## サブグループを管理する
 
-サブグループには独自の管理者を設定できます。サブグループの管理者は、親グループの管理者と同じである必要はありません。
+サブグループには、親グループの管理者とは別に、独自のグループ管理者を設定できます。
 
-親グループの管理者は、秘密ではないサブグループに参加し、自分をそのサブグループの管理者に設定できます。秘密のサブグループでは、この操作はできません。
-
-サブグループタブを開き、対象のサブグループを見つけて、**グループに参加する**をクリックします。
+親グループの管理者は、秘密ではないサブグループに参加し、自分をそのサブグループの管理者に設定できます。秘密のサブグループでは、この操作はできません。詳しくは[サブグループの管理](/en/user_manual/groups/member_management#managing-subgroups)をご覧ください。
 
 ![プライバシー設定が「閉鎖」のサブグループにあるグループに参加するボタン](member_join_subgroup.png)
-
-サブグループのメンバーになった親グループの管理者は、自分をサブグループの管理者に設定できます。
 
 ![親グループの管理者が自分を管理者に設定する操作](member_make_admin.png)
 
@@ -148,6 +137,4 @@ title_generated: 70b41aa1386d23c6
 
 ## サブグループを削除する
 
-管理者は、グループを削除するときと同じ方法でサブグループを削除できます。サブグループを削除する際は、親グループを削除しないように注意してください。
-
-[グループの削除方法](/en/user_manual/groups/deleting_your_group/)をご覧ください。
+グループ管理者は、[グループを削除する](/en/user_manual/groups/deleting_your_group)ときと同じ方法でサブグループを削除できます。削除する前に、開いているページが親グループではなく、サブグループのページであることを確認してください。

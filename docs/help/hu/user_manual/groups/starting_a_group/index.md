@@ -1,22 +1,22 @@
 ---
 title: Csoport indítása
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: 61e91589a7073369
+  introduction: baae7b526b1427c6
   group-details: ce336c3095b8ff96
-  group-name: 24892533ff3d08a5
-  group-handle: ca3145ab4498f7f9
-  group-description: 0f7be148efb0dc5c
+  group-name: 8b701ba9c37c1017
+  group-handle: f3c834159dc2828f
+  group-description: f818b13b8f978eee
 title_source: c5a16dbe0863ecd7
 title_generated: a40889da54a4f18b
 ---
@@ -25,9 +25,9 @@ title_generated: a40889da54a4f18b
 
 # Új csoport indítása
 
-Ha még nem használod a Loomiót, bármikor indíthatsz egy csoportot ingyenes próbaidőszakkal a [Loomio weboldalán](https://www.loomio.com/). Ha már használod a Loomiót, és szeretnél új csoportot indítani egy másik szervezet számára vagy más célra, ezt az oldalsáv menüjéből teheted meg – kattints az **Új csoport** lehetőségre.
+Ha még nem használod a Loomiót, ingyenes próbaidőszakkal indíthatsz csoportot a [Loomio weboldalán](https://www.loomio.com/). Ha már használod a Loomiót, és szeretnél egy másik csoportot indítani, válaszd ki az **Új csoport** lehetőséget az oldalsávban.
 
-Sok szervezet számára egyetlen Loomio-csoport is elegendő. A csoporton belül annyi alcsoportot indíthatsz, amennyire szükséged van. További információt az [Alcsoportok](/en/user_manual/groups/subgroups/) oldalon találsz.
+A legtöbb szervezetnek csak egy szülőcsoportra van szüksége, amelyen belül annyi [alcsoport](/en/user_manual/groups/subgroups) lehet, amennyire szükség van.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Sok szervezet számára egyetlen Loomio-csoport is elegendő. A csoporton belül
 
 ### A csoport neve
 
-Írd be a csoportod nevét. Érdemes rövid és tömör nevet választanod.
+Adj rövid, egyértelmű nevet a csoportodnak.
 
 <!-- translation-section: group-handle -->
 
 ### A csoport azonosítója
 
-A csoportod automatikusan kap egy azonosítót. Ez az azonosító szerepel a csoport URL-jében és e-mail-címében, például: **loomio.com/your-group-handle** és **your-group-handle@loomio.com**.
+A Loomio automatikusan rendel egy azonosítót a csoportodhoz a neve alapján. Ez az azonosító szerepel a csoport URL-jében és e-mail-címében, például: `loomio.com/your-group-handle` és `your-group-handle@loomio.com`.
 
-Az azonosítót a csoport létrehozásakor szerkesztheted, később pedig a csoport beállításaiban módosíthatod. Ha megváltoztatod, a régi azonosítót használó hivatkozások és e-mail-címek továbbra is működnek. A Loomio legfeljebb három korábbi azonosítót őriz meg; ezután a legrégebbi azonosító lejár.
+Az azonosítót a beállítás során szerkesztheted, később pedig a csoport beállításaiban módosíthatod. Ha megváltoztatod, a régi azonosítót használó hivatkozások és e-mail-címek továbbra is működnek. A Loomio legfeljebb három korábbi azonosítót őriz meg; ezután a legrégebbi azonosító lejár.
 
 <!-- translation-section: group-description -->
 
 ### A csoport leírása
 
-Ez a rövid leírás az áttekintés tetején jelenik meg, hogy az új tagok megkapják a szükséges tájékoztatást.
+Adj meg egy rövid leírást, amely a csoport oldalának tetején jelenik meg, és tájékoztatja az új tagokat a csoportról.
 
-**Amikor a „Csoport indítása” gombra kattintasz, az új csoportod automatikusan létrejön!**
-
----
+Válassz egy [adatvédelmi beállítást](/en/user_manual/groups/settings/privacy), majd válaszd ki az **Indíts csoportot** lehetőséget a csoport létrehozásához. Automatikusan te leszel a csoport első adminja, és ezeket az adatokat később módosíthatod a csoport beállításaiban.

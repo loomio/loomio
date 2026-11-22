@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/matrix/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: e54de0b6d9ea9ffb
+  introduction: 114ab8c916ca5fba
 generated:
-  introduction: a6eaaadcf822422c
+  introduction: bbd847d4e8bc031f
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,38 @@ title_generated: 76a2171c057b730f
 
 # Matrix-integratie
 
-Loomio kan meldingen naar jouw Matrix-kanalen sturen bij nieuwe discussies, voorstellen, reacties, stemmen en conclusies.
+Loomio kan meldingen naar een Matrix-chatruimte sturen bij nieuwe discussies, peilingen, reacties, stemmen en conclusies. Je moet een groepsadmin zijn om een chatintegratie toe te voegen.
 
-Matrix ondersteunt bepaalde HTML in de chatruimte, en Loomio maakt daar gebruik van.
+In tegenstelling tot de andere chatintegraties van Loomio gebruikt Matrix geen webhook. Loomio maakt verbinding via een Matrix-gebruikersaccount dat als bot werkt en opgemaakte berichten in jouw chatruimte plaatst.
 
-Onze Matrix-integratie werkt iets anders dan onze andere chatintegraties: deze gebruikt geen webhook. We hebben hiervoor een eigen botclient gebouwd.
-
-Maak een Matrix-gebruiker aan waarmee de bot kan inloggen.
-
-Log na het aanmaken van de gebruiker voor de bot in met dat account om de volgende gegevens op te halen.
-
-Voor deze handleiding gebruiken we Element.
+Deze handleiding gebruikt de Element-client.
 
 ---
 
-Voeg vanuit jouw Loomio-groep een Matrix-chatintegratie toe
-![Menu voor de Loomio Matrix-bot](loomio-add-matrix-bot.png)
+1. Maak een Matrix-gebruikersaccount aan voor Loomio, log ermee in bij Element en nodig dat account uit voor de Matrix-chatruimte waar je meldingen wilt ontvangen. Blijf ingelogd met deze sessie — uitloggen maakt het toegangstoken ongeldig.
 
-Dit is het formulier dat je moet invullen
-![Formulier voor de Loomio Matrix-bot](loomio-matrix-bot-form.png)
+2. Open in jouw Loomio-groep het groepsmenu, selecteer **Chatintegraties** en voeg een **Matrix**-chatintegratie toe.
 
-Hier begin je met het zoeken naar jouw toegangstoken
-![Instellingenmenu van Matrix](matrix-settings-menu.png)
+   ![Menu voor de Loomio Matrix-bot](loomio-add-matrix-bot.png)
 
-Dit is de instellingenpagina
-![Matrix-instellingen](matrix-settings.png)
+   ![Formulier voor de Loomio Matrix-bot](loomio-matrix-bot-form.png)
 
-Dit is het toegangstoken zelf
-![Matrix-toegangstoken](matrix-access-token.png)
+3. Open in Element het menu van het botaccount en selecteer **Alle instellingen**.
 
-Nu heb je de ID van de chatruimte nodig
-![Instellingen van de Matrix-chatruimte](matrix-room-settings.png)
+   ![Instellingenmenu van Matrix](matrix-settings-menu.png)
 
-Hier vind je die.
-![ID van de Matrix-chatruimte](matrix-room-id.png)
+4. Open **Help en info** en scrol naar de sectie **Geavanceerd**.
+
+   ![Matrix-instellingen](matrix-settings.png)
+
+5. Kopieer het **Toegangstoken** en plak het in het Loomio-formulier.
+
+   ![Matrix-toegangstoken](matrix-access-token.png)
+
+6. Open het menu **Instellingen** van de chatruimte en ga naar **Geavanceerd**.
+
+   ![Instellingen van de Matrix-chatruimte](matrix-room-settings.png)
+
+7. Kopieer de **Interne chatruimte-ID**, plak deze in het Loomio-formulier en sla de integratie op.
+
+   ![ID van de Matrix-chatruimte](matrix-room-id.png)

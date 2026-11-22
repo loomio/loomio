@@ -1,14 +1,14 @@
 ---
 title: Einträge zwischen Diskussionen verschieben
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/moving_items/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/moving_items/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6ac6ede9e57c77aa
+  introduction: 1b989b7a113a9d82
 generated:
-  introduction: dcc8bdb8a737f41e
+  introduction: ca94c3d69cc03763
 title_source: d5f8d27c1ae21eb0
 title_generated: 63e5973abb8997e6
 ---
@@ -17,30 +17,26 @@ title_generated: 63e5973abb8997e6
 
 # Einträge zwischen Threads verschieben
 
-Verschiebe ausgewählte Einträge, wenn ein Gespräch in einen anderen Thread gehört, wenn sich ein Thread in mehrere Themen aufgeteilt hat oder wenn du verwandte Diskussionen zusammenführen möchtest. Es gibt keinen separaten Befehl **Diskussionen zusammenführen**.
+Verschiebe Kommentare oder Abstimmungen, wenn ein Gespräch in einen anderen Thread gehört, wenn sich eine Diskussion in mehrere Themen aufteilt oder wenn du verwandte Threads zusammenführen möchtest.
 
-Diese Option steht Gruppenadmins zur Verfügung und auch Mitgliedern, wenn **Mitglieder können Diskussionen und Kommentare verwalten.** in den [Gruppenberechtigungen](/en/user_manual/groups/settings/permissions) aktiviert ist.
+Gruppenadmins können Einträge verschieben. Mitglieder können ebenfalls Einträge verschieben, wenn **Mitglieder können Diskussionen und Kommentare verwalten.** in den [Gruppenberechtigungen](/en/user_manual/groups/settings/permissions) aktiviert ist.
 
-Öffne das Drei-Punkte-Menü (**⋯**) eines Eintrags und wähle **Eintrag bewegen**.
+1. Öffne das Drei-Punkte-Menü (**⋯**) eines Eintrags und wähle **Eintrag bewegen**.
 
 ![](../using_discussions/comment_move.png)
 
-Wähle die Einträge aus, die du verschieben möchtest.
+2. Wähle über die Kontrollkästchen die Einträge aus, die du verschieben möchtest, und wähle dann im Banner oben im Thread **Verschieben**.
 
 ![](../using_discussions/comment_select.png)
 
-Wähle weitere Einträge über die Kontrollkästchen aus und klicke dann im Banner oben in der Diskussion auf **Verschieben**.
-
 ![](../using_discussions/move_items.png)
 
-Wähle die Gruppe oder Untergruppe aus und suche dann nach der Zieldiskussion.
-
-Um die Einträge in eine neue Diskussion zu verschieben, wähle **Neue Diskussion** und füge ihren Titel und Kontext hinzu.
+3. Wähle die Zielgruppe oder Zieluntergruppe aus und suche dann nach einer bestehenden Diskussion. Um stattdessen eine neue Diskussion zu erstellen, wähle **Neue Diskussion**, füge einen Titel und Kontext hinzu und wähle **Diskussion starten**.
 
 ![](../using_discussions/move_items_new_thread.png)
 
-Die Einträge werden aus dem ursprünglichen Thread in den ausgewählten oder neu erstellten Thread verschoben.
+Die ausgewählten Einträge werden aus dem ursprünglichen Thread in den Zielthread verschoben.
 
 ![](../using_discussions/new_thread.png)
 
-Wenn der ursprüngliche Thread nicht mehr benötigt wird, kannst du ihn [sperren](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Lösche ihn nur, wenn du sicher bist, dass er nicht mehr benötigt wird.
+Wenn der ursprüngliche Thread nicht mehr benötigt wird, kannst du ihn [sperren](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Lösche ihn nur, wenn du sicher bist, dass du ihn nicht mehr brauchst.

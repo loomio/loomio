@@ -1,32 +1,32 @@
 ---
 title: Cómo participar
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/overview/how-to-participate.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 4337bfc044fc30d1
-  comment: 66cebed9d4121cb8
-  reply-to-a-comment: 705956c18391238b
-  get-someone-s-attention: 9c73c3364416af89
-  reactions: c7ad4f1cad909d8d
-  vote: 6d972304389c7684
-  state-a-reason: 94549cc6f864ac62
-  change-your-vote: 9e323ff17b0aedfa
-  results: 6fe0d5a60acc75eb
-  outcome: 8cb16ab9afb55fb8
+  introduction: a8163542495f8a53
+  comment: 94c20a0a9a3ba16c
+  reply-to-a-comment: '093c6ad2c2751cb8'
+  get-someone-s-attention: 23529e6d4f47ed66
+  reactions: 5f82546a69fda018
+  vote: 4e7ca73a897c6e60
+  state-a-reason: 47f972ac0f8edc4e
+  change-your-vote: a6a6a8d327f66483
+  results: 375780d5868ee81d
+  outcome: 23a179d6780dd7c5
 generated:
-  introduction: 57bc17ec1b09a807
-  comment: ea6f40147c8598dc
-  reply-to-a-comment: a3239ab61348f889
-  get-someone-s-attention: faeb4cabd2e53f56
-  reactions: 8d621a2475d21b4f
-  vote: f5163c50ef77d40b
-  state-a-reason: e566a94a97f22bca
-  change-your-vote: 4595a79366edc5a7
-  results: 5ff5b16a5bb2187d
-  outcome: a1cb0c4ad13e66a3
+  introduction: ca7f5fb28c4a6a41
+  comment: 7e11e42243044ffc
+  reply-to-a-comment: c09cdff2e41191e3
+  get-someone-s-attention: f9b4452def327d18
+  reactions: 593dc09dd1cb61eb
+  vote: ab33a8dbcb7774a9
+  state-a-reason: 9a0723869df9de08
+  change-your-vote: 935aef3d28aa40b6
+  results: d553d9c6ee67e94b
+  outcome: d5ce4226f9a5128e
 title_source: a7854841fbd99ee4
 title_generated: 23550896d5519014
 ---
@@ -35,17 +35,13 @@ title_generated: 23550896d5519014
 
 # Cómo participar
 
-Una vez que hayas iniciado sesión en un grupo de Loomio al que te han invitado, puedes participar en una discusión o decisión en Loomio.  
-
-Sigue leyendo para saber cómo escribir un comentario en un hilo y cómo votar en una encuesta.
+Una vez que inicies sesión en un grupo de Loomio, puedes participar en discusiones y votar en encuestas.
 
 <!-- translation-section: comment -->
 
 ## Comentar
 
-Puedes escribir un comentario en un hilo, y las personas pueden responder, reaccionar o publicar su propio comentario para continuar la discusión.
-
-Cuando hayas escrito tu texto, selecciona **Publicar comentario** para publicarlo al instante. Tu comentario será visible para cualquier persona que tenga permiso para ver el hilo.
+Publica un comentario en un hilo de discusión para compartir tus ideas. Cualquier persona que pueda ver el hilo puede leer tu comentario, responder a él o reaccionar.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +49,7 @@ Cuando hayas escrito tu texto, selecciona **Publicar comentario** para publicarl
 
 ### Responder a un comentario
 
-Puedes responder al comentario de alguien haciendo clic en el icono de respuesta que aparece debajo del comentario.
-
-Tu respuesta se publica en el hilo y se envía una notificación por correo electrónico a la persona que escribió el comentario.
+Responde directamente a un comentario para abordar un punto concreto. Loomio publica tu respuesta en el hilo y notifica a la persona que escribió el comentario.
 
 ![](comment_reply.png#width-90)
 
@@ -63,7 +57,7 @@ Tu respuesta se publica en el hilo y se envía una notificación por correo elec
 
 ### Llamar la atención de alguien
 
-Puedes notificar a otras personas cuando escribes un comentario.
+Escribe **@** seguido del nombre de una persona en un comentario para notificarla.
 
 ![](comment_mention.png#width-90)
 
@@ -71,7 +65,7 @@ Puedes notificar a otras personas cuando escribes un comentario.
 
 ### Reacciones
 
-Reaccionar a un comentario permite reconocer la aportación y mostrar a quien lo escribió cómo te sientes al respecto. Es una forma rápida y sencilla de participar que no requiere texto ni envía un correo electrónico. Haz clic en el icono del emoji sonriente que aparece debajo de un comentario para dejar una reacción con un emoji.
+Añade una reacción con un emoji para reconocer una aportación sin escribir una respuesta ni enviar una notificación por correo electrónico.
 
 ![](comment_reaction.png#width-90)
 
@@ -79,13 +73,9 @@ Reaccionar a un comentario permite reconocer la aportación y mostrar a quien lo
 
 ## Votar
 
-Puedes recibir una invitación para votar en una encuesta por correo electrónico o mediante una notificación en Loomio. Haz clic en el enlace del correo electrónico para votar.
+Abre una encuesta desde una invitación por correo electrónico, una notificación en la aplicación o la pestaña **Sondeos** de tu grupo. Lee la encuesta y los archivos adjuntos, y luego selecciona tu opción.
 
-Para votar, haz clic o toca el icono de la opción que elijas.
-
-Hay muchos tipos de encuestas. El ejemplo siguiente muestra una propuesta típica con las opciones de voto **De acuerdo**, **Abstenerse** o **En desacuerdo**. Puede haber otras opciones disponibles.
-
-Lee la encuesta y los archivos adjuntos, y luego emite tu voto seleccionando una de las opciones.
+Loomio tiene varios tipos de encuestas. El ejemplo siguiente muestra una propuesta con las opciones **De acuerdo**, **Abstenerse** y **En desacuerdo**.
 
 ![](proposal_example.png#width-90)
 
@@ -93,7 +83,7 @@ Lee la encuesta y los archivos adjuntos, y luego emite tu voto seleccionando una
 
 ### Indicar un motivo
 
-Al votar, también puedes dejar una **Razón** para explicar por qué has votado así. Es opcional.
+Puedes añadir una **Razón** breve para explicar tu voto. Es opcional, salvo que la encuesta lo requiera.
 
 ![](vote_reason.png#width-90)
 
@@ -101,13 +91,11 @@ Al votar, también puedes dejar una **Razón** para explicar por qué has votado
 
 ### Cambiar tu voto
 
-Puedes **cambiar tu voto** hasta que se cierre la propuesta.
+Puedes cambiar tu voto en cualquier momento antes de que se cierre una encuesta, por ejemplo, si aparece nueva información. (Los votos en encuestas anónimas no se pueden cambiar después de enviarlos.)
 
 ![](vote_change.png#width-90)
 
-Hay muchos motivos por los que podrías querer cambiar tu voto. Por ejemplo, si aparece nueva información, puede llevarte a reconsiderar tu decisión y cambiar tu voto.
-
-También puedes dejar un motivo para explicar por qué has cambiado tu voto.
+También puedes actualizar tu motivo para explicar por qué has cambiado tu voto.
 
 ![](vote_edit.png#width-90)
 
@@ -115,20 +103,16 @@ También puedes dejar un motivo para explicar por qué has cambiado tu voto.
 
 ### Resultados
 
-Los resultados de la propuesta se actualizan a medida que las personas votan, por lo que puedes ver cómo evoluciona la propuesta.
+En la mayoría de las encuestas, los resultados se actualizan a medida que las personas votan. (Algunas encuestas ocultan los resultados hasta que se cierra la votación.)
 
 ![](proposal_results.png#width-90)
 
-En una propuesta controvertida es habitual ver resultados diversos, pero esto no significa que la propuesta haya fracasado.  
-
-A menudo, la nueva información que surge durante la propuesta ayuda a elaborar una propuesta mejor que tenga más probabilidades de aprobarse.
+Los resultados diversos son habituales en temas difíciles y no significan que el proceso haya fracasado. A menudo, las nuevas perspectivas ayudan al grupo a redactar una propuesta mejor.
 
 <!-- translation-section: outcome -->
 
 ### Conclusión
 
-Cuando se cierra la propuesta, se pide a quien la creó que indique la **Conclusión**.
-
-Este paso final es importante para dejar constancia de lo que se decidió e informar a todas las personas de lo que ocurrirá a continuación.
+Cuando se cierra una encuesta, la persona que la creó puede publicar una **Conclusión** para dejar constancia de lo que se decidió y de lo que ocurrirá a continuación.
 
 ![](proposal_outcome.png#width-90)

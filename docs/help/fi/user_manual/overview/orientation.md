@@ -1,28 +1,28 @@
 ---
 title: Pikakierros
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 295f556ce787407f
-  group-page: 20ebbf5f68b41673
-  tabs: 69e9324e941f69ef
+  introduction: 358f6ecdaa26bd11
+  group-page: af71cff080730232
+  tabs: cbd96069328c9296
   sidebar: ac7221e7a8412f61
-  user-settings: 37cbf030c2d41e85
-  notifications: 02fc3b4860376409
+  user-settings: 132b8383493f285c
+  notifications: 7f6ffc5cad3341cf
   what-to-do-next: '0652697dff629d8d'
-  mobile-navigation: e0cbaaf783fbc526
+  mobile-navigation: 1fc39d0934760b18
 title_source: c41a33370cd580dd
 title_generated: fa2ae81ceb5a86cf
 ---
@@ -31,13 +31,13 @@ title_generated: fa2ae81ceb5a86cf
 
 # Pikakierros
 
-Tämä sivu esittelee Loomion käyttöliittymän tärkeimmät osat ja kertoo, mistä löydät sinua koskevan toiminnan.
+Tämä sivu esittelee Loomion tärkeimmät osat ja kertoo, mistä löydät oman toimintasi.
 
 <!-- translation-section: group-page -->
 
 ## Ryhmän sivu
 
-Ryhmäsi etusivu esittelee ryhmän ja tarjoaa pääsyn sen toimintaan.
+Ryhmäsi etusivu kuvaa ryhmää ja sisältää linkit sen toimintaan.
 
 ![](group_example.png)
 
@@ -47,13 +47,10 @@ Ryhmäsi etusivu esittelee ryhmän ja tarjoaa pääsyn sen toimintaan.
 
 Ryhmän kuvauksen alla olevista välilehdistä löydät:
 
-**Keskustelut** - Ryhmän keskusteluketjut ja viimeaikaisen toiminnan.
-
-**Kyselyt** - Luettelon ryhmäsi avoimista kyselyistä.
-
-**Jäsenet** - Ryhmään kuuluvat ihmiset.
-
-**Tiedostot** - Ryhmän eri osiin liitetyt asiakirjat ja muut tiedostot. Välilehti kokoaa tiedostot keskustelujen konteksteista, kommenteista, ehdotuksista ja kyselyistä, joten löydät asiakirjan muistamatta, mihin se liitettiin.
+- **Keskustelut**: Ryhmän keskusteluketjut ja viimeaikaisen toiminnan.
+- **Kyselyt**: Ryhmän avoimet ja suljetut kyselyt.
+- **Jäsenet**: Ryhmään kuuluvat ihmiset.
+- **Tiedostot**: Ryhmän keskusteluihin, kommentteihin, ehdotuksiin ja kyselyihin liitetyt tiedostot, joten löydät asiakirjan muistamatta, missä se jaettiin.
 
 Katso [Sisällön löytäminen](/en/user_manual/overview/finding-content), jos tarvitset apua haun, suodattimien, tunnisteiden, kirjanmerkkien ja lukemattomien keskustelujen kanssa.
 
@@ -75,13 +72,13 @@ Avaa käyttäjävalikko valitsemalla nimesi sivupalkista.
 
 ![](user_settings_sidebar.png)
 
-Tässä valikossa voit muokata profiiliasi, muuttaa ilmoitusasetuksia, valita teeman, hallita tiliasetuksia ja kirjautua ulos.
+Tässä valikossa voit muokata profiiliasi, muuttaa ilmoitusasetuksia, valita teeman, hallita tiliäsi ja kirjautua ulos.
 
 <!-- translation-section: notifications -->
 
 ## Ilmoitukset
 
-Kellopainike, joka on tietokoneella oikeassa yläkulmassa ja mobiililaitteella alareunan navigointipalkissa, avaa sovelluksen sisäiset ilmoituksesi. Painikkeeseen ilmestyy merkki, kun sinulla on ilmoituksia, joita et ole katsonut.
+Avaa sovelluksen sisäiset ilmoituksesi valitsemalla kellokuvake, joka on tietokoneella oikeassa yläkulmassa ja mobiililaitteella alareunan navigointipalkissa. Kuvakkeessa näkyy merkki, kun sinulla on lukemattomia ilmoituksia.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Lue [Ilmoitukset](/en/user_manual/users/email_settings), niin saat tietoa sovell
 
 ## Mobiilinavigointi
 
-Mobiililaitteella alareunan navigointipalkista voit avata nopeasti sivupalkin, yleiskatsauksen ja ilmoitukset. Kun luet keskustelua, ketjun valikosta voit avata sisällysluettelon ja ketjun toiminnot.
+Mobiililaitteella alareunan navigointipalkista voit avata sivupalkin, yleiskatsauksen ja ilmoitukset. Keskustelussa ketjun valikosta voit avata ketjun sisällön ja toiminnot.
 
 <!-- translation-section: what-to-do-next -->
 

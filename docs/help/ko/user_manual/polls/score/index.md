@@ -1,35 +1,35 @@
 ---
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: a8de1077937a5c54
-  when-to-use-score: deee8f562deccf75
+  introduction: 378ebc414b1b169d
+  when-to-use-score: 30aa02dd2f87c964
   example-score-possible-trial-locations: d8b3aa4a03baabad
-  set-up-the-poll: 5bd1896d0f39d989
-  vote: 38dba44250627792
-  read-the-results: 04f2caad2099a081
+  set-up-the-poll: 956fb7a1418c95f4
+  vote: 6d817e24e8faa9a2
+  read-the-results: 319ad2da0c574381
   share-an-outcome: fe702887e162a29f
 title: 점수
 title_source: 38e5a46cbc5ad328
 title_generated: 276516218c1cd127
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
 
 # 점수
 
-점수는 참여자가 공통된 숫자 척도로 각 선택지를 어떻게 평가하는지 측정합니다. 선택과 달리 모든 선택지를 평가하도록 하므로, 결과에서 어떤 선택지를 선호하는지와 얼마나 강하게 선호하는지를 모두 확인할 수 있습니다.
+점수는 참여자가 공통된 숫자 척도로 각 선택지를 어떻게 평가하는지 측정합니다. 선택과 달리 모든 선택지를 평가하도록 하므로, 어떤 선택지를 선호하는지와 얼마나 강하게 선호하는지를 모두 확인할 수 있습니다.
 
 <!-- translation-section: when-to-use-score -->
 
@@ -43,7 +43,7 @@ translated:
 - 공통 기준으로 지원금 신청서를 평가할 때
 - 여러 제안의 적합성을 비교할 때
 
-척도의 최저점과 최고점이 무엇을 의미하는지 정의하세요. 공통된 정의가 없으면 같은 숫자도 투표자마다 다르게 해석할 수 있습니다. 선택지를 고르기만 하면 될 때는 [선택](/en/user_manual/polls/choose/)을, 참여자가 제한된 예산 안에서 배분을 조정해야 할 때는 [배분](/en/user_manual/polls/allocate/)을 사용하세요.
+모두가 숫자를 같은 의미로 해석할 수 있도록 척도의 최저점과 최고점이 무엇을 의미하는지 정의하세요. 선택지를 고르기만 하면 될 때는 [선택](/en/user_manual/polls/choose/)을, 참여자가 제한된 예산 안에서 배분을 조정해야 할 때는 [배분](/en/user_manual/polls/allocate/)을 사용하세요.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -55,13 +55,13 @@ translated:
 
 ## 투표 설정
 
-모든 선택지에 똑같이 적용되는 질문 하나를 제시하세요. 평가할 항목을 추가하고 **최저 점수**와 **최고 점수**를 설정한 다음, 상세 설명에 양 끝 점수의 의미를 설명하세요. 선택지의 의미를 설명하면 각 항목의 범위를 명확히 할 수 있습니다.
+모든 선택지에 똑같이 적용되는 질문 하나를 제시하세요. 평가할 항목을 추가하고 **최저 점수**와 **최고 점수**를 설정한 다음, 상세 설명에 양 끝 점수의 의미를 설명하세요. 선택지의 의미를 추가하여 각 항목의 범위를 명확히 할 수 있습니다.
 
 ![](form.png)
 
-참여자가 일관되게 적용할 수 있는 척도를 선택하세요. 0–5점 척도는 빠르게 사용할 수 있고, 0–10점 척도는 더 세밀하게 구분할 수 있습니다. 더 정밀하다고 해서 반드시 더 나은 정보를 얻는 것은 아니므로, 질문에 적합한 범위에서 가장 간단한 척도를 사용하세요.
+참여자가 일관되게 적용할 수 있는 척도를 선택하세요. 0–5점 척도는 빠르게 사용할 수 있고, 0–10점 척도는 더 세밀하게 구분할 수 있습니다. 질문에 적합한 범위에서 가장 간단한 척도를 사용하세요. 범위가 넓다고 항상 더 나은 결과를 얻는 것은 아닙니다.
 
-사회적 영향이나 표시 순서의 영향을 줄이려면 익명 투표와 선택지 무작위 표시가 도움이 될 수 있습니다.
+다른 참여자의 영향과 표시 순서에 따른 편향을 줄이려면 익명 투표를 사용하거나 선택지를 무작위 순서로 표시할 수 있습니다.
 
 <!-- translation-section: vote -->
 
@@ -71,7 +71,7 @@ translated:
 
 ![](voting.png)
 
-이유에는 투표자가 척도를 어떻게 적용했는지 설명합니다. 이를 통해 그룹은 정보가 부족해서 낮은 점수를 준 경우와 실질적인 우려 때문에 낮은 점수를 준 경우를 구분할 수 있습니다.
+투표 이유에는 투표자가 척도를 어떻게 적용했는지 설명합니다. 이를 통해 그룹은 낮은 점수가 실질적인 우려 때문인지, 정보 부족 때문인지 구분할 수 있습니다.
 
 <!-- translation-section: read-the-results -->
 
@@ -85,7 +85,7 @@ translated:
 
 ![](results.png)
 
-이 예시에서는 **중앙역 카페**의 평균이 7.5점으로 가장 높습니다. **항구 사무실**의 평균은 5.25점으로 가장 낮고, 강변 시장과 대학교 푸드코트는 7점으로 동점입니다. 초대받은 다섯 명 중 네 명이 투표했으므로, 그룹은 한 명이 아직 응답하지 않았다는 것도 확인할 수 있습니다.
+이 예시에서는 **중앙역 카페**의 평균이 7.5점으로 가장 높습니다. **항구 사무실**의 평균은 5.25점으로 가장 낮고, 강변 시장과 대학교 푸드코트는 7점으로 동점입니다. 초대받은 다섯 명 중 네 명이 투표했으므로, 한 명은 아직 응답하지 않았습니다.
 
 선택지별 투표자 수가 비슷할 때만 평균을 비교하세요. 작은 차이를 의미 있는 차이로 판단하기 전에 투표 이유를 읽어 보세요.
 

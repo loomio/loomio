@@ -1,15 +1,15 @@
 ---
 title: Signets
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/bookmarks/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 752c1df552c461e6
-  save-a-bookmark: ae80e968a14c61b4
-  view-your-bookmarks: 66cd0a27cf9bcca2
-  remove-a-bookmark: c9ef73967bce0bf8
+  introduction: 4526320029ca0268
+  save-a-bookmark: 3855beff6126a218
+  view-your-bookmarks: 0512e42564819ba7
+  remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: bcc67a115060ed9f
   save-a-bookmark: e02eb5e058fb0f09

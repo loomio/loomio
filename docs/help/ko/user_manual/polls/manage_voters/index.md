@@ -1,29 +1,29 @@
 ---
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  invite-guests-or-experts: c6e4d0e0811de6f2
-  send-the-invitations: 7ca4926c4ff46564
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  invite-guests-or-experts: 8cad53202bef398e
+  send-the-invitations: f12fc1806394f916
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
 generated:
   introduction: 1c79730ef31e530e
-  invite-people-to-vote-in-a-poll: '06609baaa2376551'
-  choose-an-audience: 28718ca3091e01e1
-  check-your-recipients: 816cb7057c037466
+  invite-people-to-vote-in-a-poll: c5baa4e69fb1d5d8
+  choose-an-audience: d516ecd6d693e69d
+  check-your-recipients: a16351d1beab1808
   invite-guests-or-experts: 7e31985a432ee11a
-  send-the-invitations: 8aa0add214ec0874
+  send-the-invitations: 901d5a64aba8d8ad
   engage-people-while-a-poll-is-running: 5f41139b394172bb
   add-voters-to-the-poll: 0bd385b43f248253
   remove-people-from-the-poll: 07b647288b2f0199
-  remind-people-to-vote: 98c1fa9faf29fae9
+  remind-people-to-vote: 6e83bd9db8bd6afb
   view-notification-history: 279379eb0ed5c1eb
   close-early: 6cc2c8c8d4c7f130
   reopen: 71f0d78d23e4ec0d
@@ -32,8 +32,8 @@ title_source: 10858faa0464257e
 title_generated: 401fbabba5aca6af
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 ---
 
@@ -50,7 +50,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 ## 투표 참여 초대
 
-**선택한 사람만**으로 투표를 시작하면 **투표자 관리** 창이 열립니다. 투표에서 **투표자 관리**를 선택해 열 수도 있습니다.
+**선택한 사람만**으로 투표를 시작하면 **투표자 관리** 창이 자동으로 열립니다. 투표에서 **투표자 관리**를 선택해 열 수도 있습니다.
 
 ![투표 하단의 투표자 관리 버튼](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 ### 초대 대상 선택
 
-비어 있는 **투표자 찾기 또는 초대** 입력란을 클릭하면 추천 목록이 표시됩니다. 다음 순서로 표시됩니다.
+비어 있는 **투표자 찾기 또는 초대** 입력란을 선택하면 추천 목록이 표시됩니다. 다음 순서로 표시됩니다.
 
 - 소속 그룹
 - 그룹에 [위임 투표자](/en/user_manual/groups/delegated_voters)가 있는 경우 해당 그룹의 **위임 투표자**
@@ -72,7 +72,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-초대 대상을 선택하면 해당 사람들을 한꺼번에 초대할 수 있습니다. 예를 들어 **Oatmilk Cooperative**를 선택하면 해당 그룹의 사람들이 포함됩니다. 연결된 채팅방을 선택해 그곳에 초대를 게시할 수도 있습니다. 채팅방에 초대를 게시해도 채팅방 멤버가 투표자로 추가되지는 않습니다.
+초대 대상을 선택하면 해당 사람들을 한꺼번에 초대할 수 있습니다. 예를 들어 **Oatmilk Cooperative**를 선택하면 해당 그룹의 모든 사람이 포함됩니다. 연결된 채팅방을 선택해 그곳에 초대를 게시할 수도 있습니다. 채팅방에 초대를 게시해도 채팅방 멤버가 투표자로 추가되지는 않습니다.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 ![Oatmilk Cooperative가 선택되어 있고 입력란 아래에 수신자 수가 표시된 화면](proposal_invite_members.png)
 
-초대 대상 이름을 클릭하면 개별 사람들의 목록으로 펼쳐집니다. 사람 옆의 **×**를 선택하면 이번 초대에서 제외할 수 있습니다. 해당 사람이 그룹에서 제외되지는 않습니다.
+초대 대상 이름을 선택하면 개별 사람들의 목록으로 펼쳐집니다. 사람 옆의 **×**를 선택하면 이번 초대에서 제외할 수 있습니다. 해당 사람이 그룹에서 제외되지는 않습니다.
 
 ![초대 대상 그룹이 개별 사람들의 이름으로 펼쳐져 있고 각 사람 옆에 제외 버튼이 표시된 화면](proposal_invite_expand.png)
 
@@ -102,7 +102,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 ### 초대 보내기
 
-사람들에게 어떤 결정을 요청하는지 설명하는 메시지를 추가한 다음 **초대**를 선택하세요. 초대하는 사람들에게 알리려면 **알림 보내기**를 선택한 상태로 두세요. 알림을 보내지 않고 투표자를 추가하려면 선택을 해제하세요.
+사람들에게 어떤 결정을 요청하는지 설명하는 메시지를 추가한 다음 **초대**를 선택하세요. 초대하는 사람들에게 알리려면 **알림 보내기**를 선택한 상태로 두고, 알림을 보내지 않고 투표자를 추가하려면 선택을 해제하세요.
 
 예약된 투표에서는 **투표자 추가**를 선택하세요. 투표가 시작되면 초대가 전달됩니다.
 
@@ -132,7 +132,7 @@ source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 
 ### 투표 참여 알림 보내기
 
-투표에서 **알림 보내기**를 선택하고, 알림을 받을 사람을 고른 다음 메시지를 추가하고 **알림 보내기**를 선택해 전송하세요. **아직 투표하지 않은 사람**을 선택하면 아직 응답이 필요한 사람들에게 알림을 보낼 수 있습니다.
+투표에서 **알림 보내기**를 선택하고, **아직 투표하지 않은 사람** 등의 수신 대상을 고른 다음 메시지를 추가하고 **알림 보내기**를 선택해 전송하세요.
 
 ![아직 투표하지 않은 사람들에게 보낼 알림과 결정 기한에 관한 메시지가 표시된 화면](proposal_remind.png)
 

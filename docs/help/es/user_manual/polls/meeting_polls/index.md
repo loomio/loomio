@@ -1,51 +1,41 @@
 ---
 title: Encuesta de tiempo
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 8ab9108683132085
-  time-poll: d5d5d81f7de10419
-  voting: c50083234167a0f9
-  outcome: 9f1bb3dee66382d2
+  introduction: 8586dd16468554c8
+  time-poll: 83fe37c85a508993
+  voting: 852eefea6b16965b
+  outcome: d9ad86541aca516a
 generated:
-  introduction: 4014aeb5dd151fb0
-  time-poll: cba4f9f92efc61a5
-  voting: ecf8e5b24c5e0ec6
-  outcome: 2538dbbd2470f26b
+  introduction: 531ce6b8911caed2
+  time-poll: 4632b2532c931fc6
+  voting: 524edaddc993517c
+  outcome: eefd89ce3e6d343b
 title_source: 8e2a07d7257fbc04
 title_generated: 878240a5be52ffbf
-needs_review:
-  outcome: check the interface label "**Horario de reunión **" for "**Meeting time**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Encuesta de horario
 
-Usa una **Encuesta de horario** para encontrar un horario para una reunión o un evento. Cumple la misma función que herramientas de planificación como Doodle y mantiene la organización de horarios junto con el resto del trabajo del grupo en Loomio. Los participantes ven las opciones en su propia zona horaria.
+Usa una **Encuesta de horario** para encontrar un horario para una reunión o un evento junto con el resto del trabajo de tu grupo en Loomio. Cada participante ve las opciones de fecha y hora en su propia zona horaria.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Encuesta de horario
-
-_Encuentra cuándo las personas están disponibles para reunirse_
-
-Ahorra tiempo al organizar una fecha para tu reunión o evento.
+## Configura la encuesta
 
 ![](timepoll_label.png)
 
-La encuesta de horario facilita ver la disponibilidad de todas las personas y encontrar el mejor horario.
+Añade un título y detalles a tu encuesta de horario. Introduce opciones de fecha y hora en tu propia zona horaria y establece la duración de la reunión.
 
-Añade un título y detalles a tu encuesta de horario. Introduce una lista de opciones de fecha y hora en tu zona horaria.
-
-Al definir los horarios, ten en cuenta a las personas que están en otras zonas horarias. Los participantes verán los horarios adaptados a su zona horaria.
-
-Establece la duración de la reunión.
+Al elegir las opciones, ten en cuenta a las personas que están en otras zonas horarias para que todas tengan horarios que les vengan bien.
 
 ![](timepoll_options.png)
 
@@ -53,15 +43,11 @@ Establece la duración de la reunión.
 
 ### Votación
 
-Las personas marcan cada horario con el icono verde del pulgar hacia arriba cuando están disponibles, el pulgar amarillo de lado cuando pueden asistir si es necesario o el icono rojo del pulgar hacia abajo cuando no están disponibles.
-
-Los participantes pueden dejar un comentario con el motivo de su voto para ayudar a quien organiza la reunión a encontrar un horario adecuado.
-
-Si los horarios no les vienen bien, los participantes pueden sugerir alternativas en el campo de mensaje. Después puedes actualizar la encuesta con nuevos horarios.
+Los participantes marcan cada opción de horario como disponible, disponible si es necesario o no disponible. También pueden añadir un motivo a su voto para explicar su disponibilidad o sugerir otros horarios. Si ninguna de las opciones viene bien, puedes editar la encuesta para añadir nuevos horarios.
 
 ![](timepoll_vote.png)
 
-Los resultados se actualizan a medida que se vota en una tabla que muestra quién está disponible en cada horario, para que todas las personas puedan ver qué horarios tienen más disponibilidad.
+Los resultados se actualizan a medida que las personas votan y muestran quién está disponible en cada horario.
 
 <!-- translation-section: outcome -->
 
@@ -71,14 +57,10 @@ Cuando se cierre la encuesta de horario, elige el mejor horario y comparte una c
 
 ![](timepoll_outcome.png)
 
-**Notificar**: Añade a las personas que invitas a la reunión o al evento
-
-**Horario de reunión**: Selecciona el horario que mejor encaje. Las opciones usan la [zona horaria de tu perfil](/en/user_manual/users/user_profile#time-zone)
-
-**Nombre de la reunión**: Dale un nombre a tu reunión. Se usa el título de la encuesta de horario de forma predeterminada
-
-**Ubicación**: Añade una ubicación física o un enlace a la reunión
-
-**Declaración**: Resume la conclusión y añade las instrucciones para la reunión
+- **Notificar**: Añade a las personas que invitas a la reunión o al evento.
+- **Horario de reunión **: Selecciona el horario que mejor encaje. Las opciones usan la [zona horaria de tu perfil](/en/user_manual/users/user_profile#time-zone).
+- **Nombre de la reunión**: Dale un nombre a tu reunión. Loomio usa el título de la encuesta de horario de forma predeterminada.
+- **Ubicación**: Añade una dirección física o un enlace a una reunión en línea.
+- **Declaración**: Resume la decisión e incluye las instrucciones para la reunión.
 
 Loomio incluye el horario seleccionado, el nombre de la reunión, la duración, la ubicación y la declaración en la notificación de la conclusión y en la invitación de calendario.

@@ -1,30 +1,32 @@
 ---
 title: Seu perfil
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
   introduction: 44ed81f8c238adbd
   edit-profile: d8298b41bd7bbff6
-  update-your-personal-info: 6cbd0509b246de92
-  uploading-a-profile-photo: 256bed4d02947cca
-  language-settings: 5819dea88789a75e
-  resetting-your-password: e92a6c8b7b3f5c11
-  merge-accounts: d78e84c300ccd0af
-  deleting-your-account: c824c58db7aac17c
-  time-zone: d0b9e1333358b71f
+  update-your-personal-info: cbf16bdce6bbd3a2
+  uploading-a-profile-photo: 4652173ac47496e6
+  language-settings: e7ddaf8f950c365a
+  resetting-your-password: c851f61d6d9d7833
+  merge-accounts: f6bab6c36180cca9
+  deleting-your-account: d05d8d05aecb9f26
+  time-zone: 8f004764afbdc65e
+  passkeys: ede4fc8708ea12cb
 title_source: 528d89ad72cba22e
 title_generated: 9f249d9aa487d528
 ---
@@ -47,20 +49,21 @@ Abra seu menu de usuário selecionando seu nome na barra lateral e selecione **E
 
 ## Atualizar suas informações pessoais
 
-Você pode atualizar suas informações pessoais alterando qualquer um dos seguintes campos:
+Você pode atualizar qualquer um destes campos na sua página de perfil:
 
-* **Nome**
-* **Endereço de e-mail** - este é o endereço de e-mail associado à sua conta no Loomio e onde você receberá notificações do Loomio.
-* **Nome de usuário** - seu nome de usuário permite que as pessoas reconheçam você e enviem uma notificação usando uma @menção. Ele pode conter letras minúsculas, números, sublinhados e hífens no meio do nome.
-* **Apresentação** - algumas linhas para contar às outras pessoas do seu grupo um pouco sobre você.
-* **Localização** - útil para grupos distribuídos ou remotos, para que as pessoas tenham uma ideia de onde você está.
+- **Nome**
+- **Endereço de e-mail** — o endereço associado à sua conta no Loomio, para onde o Loomio envia suas notificações.
+- **Nome de usuário** — o nome que as pessoas usam para alertar você com uma `@mention`. Ele pode conter letras minúsculas, números, sublinhados e hífens no meio do nome.
+- **Apresentação** — algumas linhas para contar às outras pessoas do seu grupo um pouco sobre você.
+- **Localização** — útil para grupos remotos ou distribuídos, para que as pessoas saibam onde você está.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Enviar uma foto de perfil
-Quando você cria uma conta no Loomio, suas iniciais são a imagem padrão associada ao seu perfil. Você pode enviar uma foto de perfil clicando na sua imagem na página de perfil.
+
+Quando você cria uma conta no Loomio, suas iniciais aparecem como sua imagem de perfil padrão. Para enviar uma foto, selecione sua imagem na página de perfil.
 
 ![](profile_photo.png)
 
@@ -68,26 +71,33 @@ Quando você cria uma conta no Loomio, suas iniciais são a imagem padrão assoc
 
 ## Idioma
 
-O Loomio detecta as configurações de idioma do seu navegador, mas você pode definir manualmente seu idioma preferido entre as opções disponíveis na página de perfil.
+O Loomio detecta o idioma do seu navegador por padrão, ou você pode selecionar um idioma preferido na sua página de perfil. Para ver as opções de tradução da interface e do conteúdo, consulte [Idiomas e tradução](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## Fuso horário
 
-As opções de enquetes de horário usam o fuso horário salvo no seu perfil. Ative **Detecção automática de fuso horário** para usar o fuso informado pelo seu navegador ou desative essa configuração e selecione sua região em **Fuso Horário**. Em seguida, selecione **Atualizar perfil**.
+As opções de enquetes de horário usam o fuso horário salvo no seu perfil. Ative **Detecção automática de fuso horário** para usar o fuso horário do seu navegador ou desative essa configuração, selecione sua região em **Fuso Horário** e selecione **Atualizar perfil**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## Redefinir sua senha
-Você pode alterar sua senha acessando sua página de perfil e clicando em **Redefinir senha**.
+
+Para alterar sua senha, abra sua página de perfil e selecione **Redefinir senha**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Chaves de acesso
+
+Você pode adicionar, nomear e remover chaves de acesso na sua página de perfil para entrar usando a impressão digital, o reconhecimento facial, o PIN ou a chave de segurança do seu dispositivo. Consulte [Entrar com uma chave de acesso](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Mesclar contas
 
-Se você tem duas contas de usuário no Loomio, pode mesclá-las em uma única conta.
+Se você tem duas contas no Loomio, pode mesclá-las em uma única conta.
 
 Veja [Mesclar contas](../merge_accounts).
 
@@ -95,4 +105,4 @@ Veja [Mesclar contas](../merge_accounts).
 
 ## Excluir sua conta
 
-Se você deseja excluir sua conta de usuário no Loomio e sair de todos os grupos do Loomio dos quais é membro, veja [Excluir sua conta no Loomio](../deleting_your_account).
+Para excluir permanentemente sua conta no Loomio e sair dos seus grupos, consulte [Excluir sua conta no Loomio](../deleting_your_account).

@@ -1,24 +1,24 @@
 ---
 title: Integrazioni di chat
-source_revision: c27ee3b193231816878f1c074ff9fc2a086a88c0
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-02'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: ad0b0869b4a26236
-  what-it-looks-like-in-chat: 2c7bda85ca387996
-  generate-a-webhook-url: 2c84616091203bf7
-  set-up-a-chat-integration: 3699649831a2dbd7
-  invite-to-poll: e888e0f8e3b7ce3d
-  automatic-notifications: e11c4d68347e3e4c
+  introduction: 365c87bc34b4caa4
+  what-it-looks-like-in-chat: 7e3aaed598cdc9e6
+  generate-a-webhook-url: 9b59d0929d235fa2
+  set-up-a-chat-integration: f5da948f2faedcf1
+  invite-to-poll: ded8cf986d97d7ae
+  automatic-notifications: 97861a887ac7d460
 title_source: 0eca19d30c6d7d3c
 title_generated: e4b2042ae11650a1
 ---
@@ -29,23 +29,23 @@ title_generated: e4b2042ae11650a1
 
 Loomio può inviare notifiche alla tua chat.
 
-Gli strumenti di chat e Loomio funzionano bene insieme. Usa la chat per conversazioni rapide e aggiornamenti tempestivi. Sposta gli argomenti importanti su Loomio quando le persone hanno bisogno di tempo per partecipare, quando occorre prendere una decisione o quando il gruppo avrà bisogno di una documentazione duratura.
+Gli strumenti di chat e Loomio funzionano bene insieme. Usa la chat per conversazioni rapide e aggiornamenti tempestivi. Sposta gli argomenti importanti su Loomio quando le persone hanno bisogno di tempo per partecipare, quando occorre prendere una decisione o quando il gruppo ha bisogno di una documentazione duratura.
 
 Loomio supporta Slack, Discord, Microsoft Teams, Matrix e Mattermost.
 
-Puoi inviare notifiche alla tua chat quando vuoi, nello stesso modo in cui inviteresti singole persone a votare o a partecipare a una conversazione.
-
-Puoi anche configurare le notifiche affinché vengano inviate ogni volta che si verifica un evento specifico, per esempio quando qualcuno avvia una conversazione.
+Puoi inviare notifiche alla tua chat manualmente ogni volta che inviti persone a una conversazione o a un sondaggio. Puoi anche configurare notifiche automatiche per eventi specifici, per esempio quando qualcuno avvia una discussione.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## Come appare nella chat
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Genera un URL webhook
-Abbiamo preparato guide passo passo per ogni servizio supportato. Segui quella del tuo servizio per ottenere l'URL webhook necessario per aggiungere l'integrazione di chat in Loomio.
+## Collega il tuo servizio di chat
+
+Segui la guida del tuo servizio di chat per ottenere un URL webhook (oppure, per Matrix, un token di accesso del bot e l'ID della stanza):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,31 +53,31 @@ Abbiamo preparato guide passo passo per ogni servizio supportato. Segui quella d
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Il nostro sistema basato su webhook può essere usato anche con altri sistemi che supportano webhook in ingresso con formattazione HTML o Markdown, come Zapier o Rocketchat.
-Seleziona il bot Mattermost e usa un URL webhook personalizzato.
+Puoi anche collegare altri servizi che accettano webhook in ingresso con formattazione HTML o Markdown, come Zapier o Rocket.Chat. Scegli l'integrazione di chat **Mattermost** in Loomio e inserisci il tuo URL webhook personalizzato.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Configura un'integrazione di chat
 
-Dopo aver configurato il servizio che hai scelto (vedi sopra), avrai un URL webhook.
-Apri **Integrazioni di chat** dal menu del gruppo e aggiungi una nuova integrazione di chat per il tuo gruppo.
+Devi essere un amministratore del gruppo per aggiungere o modificare le integrazioni di chat.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. Dopo aver configurato il tuo servizio di chat (vedi sopra), apri il menu del gruppo in Loomio e seleziona **Integrazioni di chat**.
 
-Per ora puoi lasciare deselezionate tutte le caselle. Inserisci il nome (per esempio "Discord #general") e l'URL, poi fai clic sul pulsante di salvataggio in fondo al modulo.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Se in seguito decidi di far ricevere notifiche automatiche all'integrazione, torna alle sue impostazioni e seleziona gli eventi pertinenti.
+2. Aggiungi una nuova integrazione di chat per il tuo servizio, inserisci un nome (per esempio "Discord #general") e incolla l'URL webhook.
+
+   ![](loomio-chatbot-form.png)
+
+3. Seleziona gli eventi per cui vuoi inviare notifiche automatiche, oppure lasciali deselezionati se vuoi inviare notifiche solo manualmente, poi salva. Puoi modificare queste impostazioni in qualsiasi momento.
 
 <!-- translation-section: invite-to-poll -->
 
-### Invita al sondaggio
+### Invia una notifica manualmente
 
-Ecco come inviare una notifica alla tua chat per invitare le persone a votare su una proposta.
-La procedura è la stessa per Condividi la conclusione, Invita alla conversazione, Ricorda di votare, Sondaggio modificato, ecc.
+Per inviare alla tua chat una notifica su un sondaggio o una discussione, apri l'elemento e seleziona **Invita** (o un'altra azione di notifica come **Condividi risultati**, **Ricorda di votare** o **Sondaggio modificato**). Seleziona la tua integrazione di chat dall'elenco dei destinatari e invia la notifica.
 
 ![](invite_button_on_proposal.png)
 
@@ -90,6 +90,7 @@ La procedura è la stessa per Condividi la conclusione, Invita alla conversazion
 <!-- translation-section: automatic-notifications -->
 
 ### Notifiche automatiche
+
 Per inviare una notifica ogni volta che si verifica un evento specifico, modifica l'integrazione di chat e seleziona quell'evento.
 
 ![](chatbot_enable_automatic_notifications.png)

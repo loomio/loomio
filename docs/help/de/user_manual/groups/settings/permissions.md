@@ -1,14 +1,14 @@
 ---
 title: Berechtigungen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/permissions.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 89201fa8b1ae8d82
+  introduction: '0579f1943e715f4d'
 generated:
-  introduction: 5cd54df4f705a2c6
+  introduction: 4b64318c8ff85a98
 title_source: abccc78cc93c0793
 title_generated: 036b749f611832b5
 ---
@@ -17,25 +17,25 @@ title_generated: 036b749f611832b5
 
 # Gruppenberechtigungen
 
-Der Tab „Berechtigungen“ steuert, welche Aktionen in der Gruppe gewöhnlichen Mitgliedern und bei nicht geheimen Gruppen auch Nichtmitgliedern zur Verfügung stehen. Öffne auf der Gruppenseite **Gruppeneinstellungen bearbeiten** und wähle dann **Berechtigungen**.
+Der Tab **Berechtigungen** steuert, was Mitglieder in der Gruppe tun können und bei nicht geheimen Gruppen auch, was Nichtmitglieder tun können. Öffne **Gruppeneinstellungen bearbeiten** im Aktionsmenü der Gruppe und wähle dann **Berechtigungen**.
 
 ![Einstellungen für Gruppenberechtigungen](group_group_settings_permissions.png)
 
-Admins können die Gruppe weiterhin verwalten. Wenn du eine Berechtigung für Mitglieder aktivierst, können gewöhnliche Mitglieder die jeweilige Aktion ebenfalls ausführen; dadurch werden sie nicht zu Admins.
+Gruppenadmins behalten immer alle Verwaltungsberechtigungen. Wenn du eine Berechtigung aktivierst, können Mitglieder die jeweilige Aktion ausführen, ohne dadurch zu Gruppenadmins zu werden.
 
-Die Berechtigungen legen unter anderem fest, ob Mitglieder:
+Die Berechtigungen legen fest, ob Mitglieder Folgendes tun können:
 
-- Mitglieder hinzufügen oder Gäste einladen können;
-- Ankündigungen senden können;
-- Untergruppen erstellen können;
-- Diskussionen starten und verwalten können;
-- Schlagwörter erstellen und verwalten können;
-- Kommentare bearbeiten oder löschen können, sofern die Einstellung dies erlaubt;
-- Vorschläge und Abstimmungen starten können; und
-- Vorlagen für Diskussionen und Abstimmungen erstellen können.
+- Mitglieder hinzufügen oder Gäste einladen
+- Ankündigungen senden
+- Untergruppen erstellen
+- Diskussionen starten und verwalten
+- Schlagwörter erstellen und verwalten
+- Kommentare bearbeiten oder löschen, sofern die Einstellung dies erlaubt
+- Vorschläge und Abstimmungen starten
+- Vorlagen für Diskussionen und Abstimmungen erstellen
 
-Bei Gruppen, die nicht geheim sind, können Admins Nichtmitgliedern gesondert erlauben, Diskussionen zu starten. Ein Nichtmitglied, das eine Diskussion startet, wird zum Gast dieser Diskussion, erhält aber weder Zugang zu anderen privaten Diskussionen noch eine Mitgliedschaft in der Gruppe.
+Bei nicht geheimen Gruppen können Gruppenadmins auch Nichtmitgliedern erlauben, Diskussionen zu starten. Ein Nichtmitglied, das eine Diskussion startet, wird zum Gast in diesem Thread, wird aber weder Mitglied der Gruppe noch erhält es Zugang zu anderen privaten Diskussionen.
 
-Die Einstellung **Admins können Kommentare von Mitgliedern bearbeiten** gibt Admins eine besondere Moderationsbefugnis. Aktiviere sie nur, wenn die Gruppe vereinbart hat, dass Admins Inhalte ändern dürfen, die Mitglieder verfasst haben.
+Die Einstellung **Admins können Kommentare von Mitgliedern bearbeiten** erlaubt Gruppenadmins, Inhalte zu bearbeiten, die Mitglieder verfasst haben. Aktiviere sie nur, wenn deine Gruppe vereinbart hat, dass Gruppenadmins Kommentare von Mitgliedern ändern dürfen.
 
-Überprüfe die Berechtigungen, wenn sich der Zweck der Gruppe, ihre Zusammensetzung oder die Zuständigkeiten für die Moderation ändern. Gib jeder Rolle nur die Befugnisse, die sie benötigt.
+Überprüfe die Berechtigungen, wenn sich der Zweck deiner Gruppe, ihre Zusammensetzung oder ihr Moderationsbedarf ändern, und gib jeder Rolle nur die Berechtigungen, die sie benötigt.

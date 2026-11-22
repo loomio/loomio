@@ -1,58 +1,57 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: a42ac225f63fe2c0
+  introduction: 7da53fc9539eb1ae
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 needs_review:
-  introduction: use "висновок" instead of "рішення" for "outcome"
+  introduction: use "Вибір" instead of "Виберіть" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
 
 # Інтеграція зі Slack
-_Підключіть сповіщення вашої групи Loomio до Slack._
 
-Loomio може надсилати сповіщення у ваші канали Slack, коли з’являються нові обговорення, пропозиції, коментарі, голоси та висновки. Отримуйте важливі оновлення про обговорення та рішення в потрібний час.
+Loomio може надсилати сповіщення у ваші канали Slack, коли з’являються нові обговорення, опитування, коментарі, голоси та висновки.
 
 ---
 
-Спочатку перейдіть на [https://api.slack.com](https://api.slack.com), увійдіть, якщо ви ще цього не зробили, а потім натисніть «Створити новий застосунок»
+1. Відкрийте [api.slack.com](https://api.slack.com), увійдіть і виберіть **Створити новий застосунок**.
 
-![](s1.png)
+   ![](s1.png)
 
-Назвіть ваш застосунок Slack
+2. Назвіть ваш застосунок Slack і оберіть робочий простір.
 
-![](s2.png)
+   ![](s2.png)
 
-Додайте підтримку вхідних вебхуків
+3. Виберіть **Вхідні вебхуки**.
 
-![](s3.png)
+   ![](s3.png)
 
-Потім увімкніть цю функцію
+4. Увімкніть **Активувати вхідні вебхуки**.
 
-![](s4.png)
+   ![](s4.png)
 
-Потім додайте новий вебхук
+5. Виберіть **Додати новий вебхук до робочого простору**.
 
-![](s5.png)
+   ![](s5.png)
 
-Виберіть канал
+6. Оберіть канал, у якому ви хочете отримувати сповіщення Loomio.
 
-![](s6.png)
+   ![](s6.png)
 
-Скопіюйте URL вебхука в буфер обміну
+7. Скопіюйте URL вебхука.
 
-![](s7.png)
+   ![](s7.png)
 
-Тепер, коли у вас є URL вебхука, продовжте налаштування інтеграції з чатом:
+Тепер, коли у вас є URL вебхука, завершіть налаштування підключення в Loomio:
 
 [Налаштуйте інтеграцію з чатом у Loomio](../chatbots/#set-up-a-chat-integration)
 

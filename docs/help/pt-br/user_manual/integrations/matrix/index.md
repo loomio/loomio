@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/matrix/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: e54de0b6d9ea9ffb
+  introduction: 114ab8c916ca5fba
 generated:
-  introduction: 4c0a2d56483ffef2
+  introduction: 7f464dcf3dc335f2
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,38 @@ title_generated: 76a2171c057b730f
 
 # Integração com o Matrix
 
-O Loomio pode enviar notificações para seus canais do Matrix quando houver novas discussões, propostas, comentários, votos e conclusões.
+O Loomio pode enviar notificações para uma sala do Matrix quando houver novas discussões, enquetes, comentários, votos e conclusões. Você precisa ser admin do grupo para adicionar uma integração de bate-papo.
 
-O Matrix permite usar alguns elementos HTML na sala de bate-papo, e o Loomio aproveita esse recurso.
-
-Nossa integração com o Matrix é um pouco diferente das nossas outras integrações de bate-papo: ela não usa um webhook. Criamos um cliente de bot específico para essa integração.
-
-Você precisará criar uma conta de usuário no Matrix para o bot usar ao entrar.
-
-Depois de criar a conta para o bot, entre com essa conta para obter as informações a seguir.
+Diferentemente das outras integrações de bate-papo do Loomio, o Matrix não usa um webhook. O Loomio se conecta por meio de uma conta de usuário do Matrix que atua como bot e publica mensagens formatadas na sua sala.
 
 Neste guia, usamos o Element.
 
 ---
 
-No seu grupo do Loomio, adicione uma integração de bate-papo com o Matrix
-![menu do bot do Matrix no Loomio](loomio-add-matrix-bot.png)
+1. Crie uma conta de usuário no Matrix para o Loomio, entre com essa conta no Element e convide essa conta para a sala do Matrix onde você quer receber notificações. Mantenha essa sessão conectada — sair da conta invalida o token de acesso.
 
-Este é o formulário que você deve preencher
-![formulário do bot do Matrix no Loomio](loomio-matrix-bot-form.png)
+2. No seu grupo do Loomio, abra o menu do grupo, selecione **Integrações de bate-papo** e adicione uma integração de bate-papo com o **Matrix**.
 
-Comece por aqui para encontrar seu token de acesso
-![menu de configurações do Matrix](matrix-settings-menu.png)
+   ![menu do bot do Matrix no Loomio](loomio-add-matrix-bot.png)
 
-Esta é a página de configurações
-![configurações do Matrix](matrix-settings.png)
+   ![formulário do bot do Matrix no Loomio](loomio-matrix-bot-form.png)
 
-Este é o token de acesso
-![token de acesso do Matrix](matrix-access-token.png)
+3. No Element, abra o menu da conta do bot e selecione **Todas as configurações**.
 
-Agora você precisa do ID da sala
-![configurações da sala do Matrix](matrix-room-settings.png)
+   ![menu de configurações do Matrix](matrix-settings-menu.png)
 
-Ele está aqui.
-![ID da sala do Matrix](matrix-room-id.png)
+4. Abra **Ajuda e sobre** e role até a seção **Avançado**.
+
+   ![configurações do Matrix](matrix-settings.png)
+
+5. Copie o **Token de acesso** e cole no formulário do Loomio.
+
+   ![token de acesso do Matrix](matrix-access-token.png)
+
+6. Abra o menu **Configurações** da sala e vá para **Avançado**.
+
+   ![configurações da sala do Matrix](matrix-room-settings.png)
+
+7. Copie o **ID interno da sala**, cole no formulário do Loomio e salve a integração.
+
+   ![ID da sala do Matrix](matrix-room-id.png)

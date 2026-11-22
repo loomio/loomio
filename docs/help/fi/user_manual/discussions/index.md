@@ -1,22 +1,22 @@
 ---
 title: Keskustelut
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: c76a7d182c14a283
-  common-uses: 2fd96fe8c6ddddc4
-  boards-and-governance: 5b49aa5e01f3c0a7
-  member-participation: b087accb54a595dc
-  self-organizing-working-teams: 8679ba6f65c230ab
+  introduction: 58ee9b294ceaebd9
+  common-uses: '0091a4d2919ec47a'
+  boards-and-governance: 35c5302ce95438c0
+  member-participation: 1592f30a5f41441a
+  self-organizing-working-teams: 5d40394e7a12402c
 generated:
-  introduction: 8a88f0b6ba75f207
-  common-uses: 077fb9551f2ed4ce
-  boards-and-governance: 65f1035b59080ab2
-  member-participation: b14fbd3f0cc6b014
-  self-organizing-working-teams: 5974a045ee841a5d
+  introduction: cde3b4220c7e7f55
+  common-uses: 37c6c6d15d716abe
+  boards-and-governance: 3ac092f1555b8494
+  member-participation: a01d1d285da4167b
+  self-organizing-working-teams: f4b316a1306fe8a5
 title_source: 60157cfcfe3f31c3
 title_generated: 28cb176a6411070e
 ---
@@ -25,20 +25,16 @@ title_generated: 28cb176a6411070e
 
 # Johdanto keskusteluihin
 
-Loomion keskusteluissa voit jakaa tietoa, keskustella aiheista ja tehdä päätöksiä ryhmäsi kanssa. Ihmiset osallistuvat kirjoittamalla kommentteja ja vastauksia.
+Loomion keskusteluissa ryhmäsi voi jakaa tietoa, käsitellä aiheita ja tehdä päätöksiä yhdessä. Ihmiset osallistuvat julkaisemalla kommentteja, vastauksia, kyselyjä ja ehdotuksia.
 
-- Kaikki aiheeseen liittyvä tieto on yhdessä helposti saatavilla olevassa paikassa.
-- Ihmiset voivat vastata sähköpostitse, ja heidän kommenttinsa näkyvät keskustelussa.
-- Näet, kuka on lukenut keskustelun ja ketä on tarpeen muistuttaa.
-- Keskustelusta jää tallenne, jonka löydät helposti uudelleen.
+- Pidä kaikki aiheeseen liittyvä tieto yhdessä paikassa.
+- Vastaa sähköpostitse, niin kommenttisi näkyvät ketjussa.
+- Katso, kuka on lukenut keskustelun ja ketä on tarpeen muistuttaa.
+- Säilytä jokaisesta keskustelusta ja päätöksestä tallenne, jonka löydät haulla.
 
-Keskusteluilla on monia käyttötapoja yleisestä keskustelufoorumista tiettyjen työnkulkujen ja päätöksentekoprosessien toteuttamiseen.
+Voit käyttää keskusteluja yleisistä tilannepäivityksistä jäsenneltyihin työnkulkuihin ja [päätöksentekoprosesseihin](/en/user_manual/polls/intro_to_decisions/). Voit esimerkiksi esitellä aiheen, kerätä ideoita ja tausta-asiakirjoja sekä toteuttaa [suostumukseen](/en/user_manual/polls/proposals/consent/) tai [neuvojen pyytämiseen](/en/user_manual/polls/proposals/advice/) perustuvan prosessin johtopäätöksen muodostamiseksi.
 
-Voit esimerkiksi rajata keskustelun tiettyyn aiheeseen, kutsua ihmisiä kertomaan ajatuksiaan ja jakamaan tietoa sekä auttaa keskustelua etenemään kohti yhteisesti sovittua johtopäätöstä.
-
-Voit myös kutsua ihmisiä osallistumaan tiettyyn päätökseen suostumukseen tai neuvojen pyytämiseen perustuvalla päätöksentekoprosessilla.
-
-Keskusteluissa voi olla myös kyselyjä ja ehdotuksia, jotka auttavat keskustelua etenemään kohti johtopäätöstä. Kun ihmiset kommentoivat keskustelussa ja äänestävät kyselyissä, keskusteluun muodostuu aikajana, josta löydät helposti tärkeät vaiheet.
+Kun ihmiset kommentoivat ja äänestävät, ketjuun kertyy tallenne tärkeistä vaiheista, joihin voit siirtyä milloin tahansa. Pääset alkuun ohjeilla [Aloita keskustelu](/en/user_manual/discussions/starting_a_discussion/) ja [Ketjujen käyttäminen](/en/user_manual/discussions/using_discussions/).
 
 ![Keskustelu palautettavista pulloista kahvilan asiakkaille sekä kommentti ja ehdotus](discussion-example.png)
 
@@ -46,42 +42,32 @@ Keskusteluissa voi olla myös kyselyjä ja ehdotuksia, jotka auttavat keskustelu
 
 ## Yleisiä käyttötapoja
 
-Tässä on joitakin keskustelujen yleisiä käyttötapoja:
+Tässä on joitakin yleisiä tapoja, joilla ryhmät käyttävät keskusteluja:
 
 <!-- translation-section: boards-and-governance -->
 
 ### Hallitukset ja hallinto
 
-**Valmistaudu tapaamiseen** - Laadi esityslista, julkaise hallituksen asiakirjat ja järjestä hallinnolliset asiat, jotta kaikki ovat ajan tasalla, ymmärtävät taustan ja ovat valmistautuneita.
-
-**Anna päätös** - Julkaise konteksti ja taustatiedot, vastaa kysymyksiin ja tee ehdotus päätöksen hyväksymiseksi.
-
-**Keskustele esityslistan kohdasta Loomiossa** - Aloita keskustelu esityslistan kohdasta ennen kokousta. Jos kokouksessa loppuu aika, siirrä keskustelu Loomioon.
-
-**Hyväksy pöytäkirjat ja seuraa toimenpiteitä** - Julkaise pöytäkirjat ja jaa toimenpiteiden vastuut. Hyväksy pöytäkirjat kyselyllä.
+- **Valmistaudu tapaamiseen** — Laadi esityslista, jaa hallituksen asiakirjat ja hoida hallinnolliset asiat, jotta kaikki saapuvat valmistautuneina.
+- **Anna päätös** — Jaa taustatietoa, vastaa kysymyksiin ja tee ehdotus päätöksen kirjaamiseksi.
+- **Keskustele esityslistan kohdasta Loomiossa** — Aloita keskustelu esityslistan kohdasta ennen kokousta tai siirrä se Loomioon, jos aika loppuu kesken.
+- **Hyväksy pöytäkirjat ja seuraa toimenpiteitä** — Julkaise pöytäkirjat, jaa tehtävät ja hyväksy pöytäkirjat kyselyllä.
 
 <!-- translation-section: member-participation -->
 
 ### Jäsenten osallistuminen
 
-**Jaa uutisia (korvaa sähköpostilista)** - Julkaise tietoa jäsenille ja pyydä kommentteja.
-
-**Järjestä tapahtuma** - Suunnittele yksityiskohdat järjestäjätiimisi kanssa. Pidä kaikki keskustelu ja tieto samassa ketjussa. Ilmoita sitten tapahtumasta koko jäsenistölle.
-
-**Laadi toimintaperiaate** - Julkaise toimintaperiaatteen luonnos, pyydä jäseniltä palautetta ja näkemyksiä, viimeistele toimintaperiaate ja vahvista se.
-
-**Yleiskokous** - Järjestä, valmistele ja pidä kaikkien jäsenten yhteinen virallinen kokous, jossa käsitellään strategisia asioita ja tehdään niitä koskevia päätöksiä.
+- **Jaa uutisia** — Julkaise ajankohtaista tietoa jäsenille ja pyydä kommentteja sähköpostilistan käyttämisen sijaan.
+- **Järjestä tapahtuma** — Suunnittele yksityiskohdat järjestäjätiimisi kanssa samassa ketjussa ja ilmoita sitten tapahtumasta koko jäsenistölle.
+- **Laadi toimintaperiaate** — Julkaise luonnos, kerää palautetta, muokkaa luonnosta ja vahvista lopullinen toimintaperiaate.
+- **Pidä yleiskokous** — Jaa asiakirjat etukäteen, jotta kaikki jäsenet voivat käsitellä strategisia päätöksiä ja äänestää niistä.
 
 <!-- translation-section: self-organizing-working-teams -->
 
 ### Itseorganisoituvat työtiimit
 
-**Jaa tietoa** - Julkaise tiimiäsi kiinnostavaa tietoa ja raportteja sekä kutsu kommentoimaan ja keskustelemaan.
-
-**Edistä työtä** - Kuvaile työtehtävä ja pyydä tiimin jäseniltä neuvoja, näkemyksiä ja palautetta tehtävän valmistumiseen asti.
-
-**Kokousmuistiinpanot ja toimenpiteet** - Julkaise kokousmuistiinpanot keskustelun tallenteeksi ja seuraa tehtävien etenemistä.
-
-**Tutki ideoita** - Jaa ajatuksiasi ja kutsu keskustelemaan havaitsemastasi huolenaiheesta tai mahdollisesta parannuksesta.
-
-**Neuvoihin perustuva, suostumukseen perustuva ja generatiivinen päätöksenteko** - Valmistele, ehdota, selvennä, vastaa reaktioihin ja vastaväitteisiin, sovi ja toteuta - kaikki samassa Loomion keskustelussa.
+- **Jaa tietoa** — Julkaise ajankohtaista tietoa ja raportteja tiimillesi sekä pyydä kysymyksiä tai kommentteja.
+- **Edistä työtä** — Kuvaile tehtävä ja kerää tiimin jäseniltä neuvoja tai palautetta samalla, kun työskentelet sen parissa.
+- **Kirjaa kokousmuistiinpanot ja toimenpiteet** — Julkaise kokousmuistiinpanot yhteiseksi tallenteeksi ja seuraa jatkotehtäviä.
+- **Tutki ideoita** — Nosta esiin huolenaihe tai ehdota parannusta ja kutsu keskustelemaan.
+- **Toteuta yhteisiä päätöksentekoprosesseja** — Valmistele, ehdota, selvennä, vastaa vastaväitteisiin, sovi ja toteuta samassa ketjussa.

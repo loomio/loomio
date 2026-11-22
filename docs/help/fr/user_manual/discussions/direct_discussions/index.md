@@ -1,41 +1,40 @@
 ---
 title: Discussions directes
-source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: 20f5211c8472a136
-  contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
+  introduction: c617bad25b64654f
+  contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: b76cffda3d495e45
-  contacting-someone-via-a-direct-discussion: cdb24c4315fb3aa9
+  introduction: cfbe7749a5827400
+  contacting-someone-via-a-direct-discussion: e0d853ab28b06435
 title_source: ccfab058f1f7c146
 title_generated: b13de23899586289
 ---
 
 <!-- translation-section: introduction -->
 
-# Fils directs
+# Discussions directes
 
-Un fil direct est une discussion privée destinée à un ensemble précis de personnes.
+Une discussion directe est un fil privé destiné à des personnes précises. Elle n’appartient à aucun groupe, et les personnes invitées n’ont pas besoin d’être membres d’un groupe Loomio.
 
-Un fil direct n’appartient à aucun groupe. Les personnes invitées n’ont pas besoin d’être membres de votre groupe Loomio.
+Ajoutez des personnes ou des adresses e-mail dans le champ **Inviter** pour choisir qui peut consulter le fil et y participer.
 
-Vous contrôlez qui peut le consulter et y participer en ajoutant des personnes ou des adresses e-mail dans le champ **Inviter**.
+Les discussions directes proposent les mêmes commentaires, sondages et outils de mise en forme que les discussions de groupe. Elles conviennent aux conversations privées ou aux brouillons lorsqu’un sous-groupe n’est pas nécessaire.
 
-Les fils directs proposent les mêmes commentaires, sondages et autres outils que les discussions de groupe. Ils peuvent être utiles lorsqu’il n’est pas nécessaire de créer un sous-groupe.
+![Un formulaire de discussion directe sans groupe sélectionné et avec Samira Patel dans le champ Inviter](direct-discussion-example.png)
 
-![Un formulaire de fil direct sans groupe sélectionné et avec Samira Patel dans le champ Inviter](direct-discussion-example.png)
+Sélectionnez **Discussions directes** dans la barre latérale pour voir vos discussions et sondages directs. Ouvrez ensuite le menu **Nouveau** et choisissez **Nouvelle discussion** pour démarrer une discussion directe, ou **Nouveau sondage** pour démarrer un sondage sans groupe.
 
-Sélectionnez **Discussions directes** dans la barre latérale pour voir vos discussions et sondages directs. Ouvrez le menu **Nouveau** et choisissez **Nouvelle discussion** pour commencer une discussion, ou **Nouveau sondage** pour créer un sondage sans groupe.
+Un sondage direct est visible uniquement par les personnes que vous invitez. Après l’avoir créé, utilisez [Gérer les électeurs](/en/user_manual/polls/manage_voters) pour inviter des personnes ou des adresses e-mail.
 
-Un sondage direct est privé et réservé aux personnes que vous invitez. Après l’avoir créé, utilisez [**Gérer les électeurs**](/en/user_manual/polls/manage_voters) pour inviter des personnes ou des adresses e-mail.
-
-![L’entrée Discussions directes dans la barre latérale et la liste des fils directs](direct-discussion-sidebar.png)
+![L’entrée Discussions directes dans la barre latérale et la liste des discussions directes](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
-## Contacter une personne par une discussion directe
-Une discussion directe permet de contacter une ou plusieurs personnes en privé sans créer de sous-groupe.
+## Déplacer une discussion directe vers un groupe
+
+Si une conversation privée ou un brouillon devient un sujet à aborder en groupe, vous pouvez déplacer le fil vers un groupe ou un sous-groupe par la suite. Consultez [Déplacer un fil](/en/user_manual/discussions/using_discussions/#move-a-thread).

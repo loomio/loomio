@@ -1,22 +1,22 @@
 ---
 title: Eine Gruppe gründen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: 1132b67b2e4086f9
+  introduction: 2c8d9f60670aa11d
   group-details: ece5286b634ab922
-  group-name: 13945fcfae693797
-  group-handle: 16e35b1a6be60e8e
-  group-description: 632b8a4977199955
+  group-name: 29019458dfabd017
+  group-handle: 7d4bab14e24aab7c
+  group-description: '09f8eaffb1a4866a'
 title_source: c5a16dbe0863ecd7
 title_generated: 45d92887cc90ee70
 ---
@@ -25,9 +25,9 @@ title_generated: 45d92887cc90ee70
 
 # Eine neue Gruppe gründen
 
-Wenn du Loomio zum ersten Mal nutzt, kannst du jederzeit auf der [Loomio-Website](https://www.loomio.com/) eine Gruppe für eine kostenlose Testphase gründen. Wenn du Loomio bereits nutzt und eine neue Gruppe für eine andere Organisation oder einen anderen Zweck gründen möchtest, kannst du das über das Menü in der Seitenleiste tun – klicke auf **Neue Gruppe**.
+Wenn du Loomio zum ersten Mal nutzt, kannst du auf der [Loomio-Website](https://www.loomio.com/) eine Gruppe für eine kostenlose Testphase gründen. Wenn du Loomio bereits nutzt und eine weitere Gruppe gründen möchtest, wähle **Neue Gruppe** in der Seitenleiste.
 
-Für viele Organisationen reicht eine einzige Loomio-Gruppe aus. Innerhalb der Gruppe kannst du so viele Untergruppen gründen, wie du benötigst. Weitere Informationen findest du unter [Untergruppen](/en/user_manual/groups/subgroups/).
+Die meisten Organisationen benötigen nur eine Hauptgruppe mit so vielen [Untergruppen](/en/user_manual/groups/subgroups), wie sie brauchen.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Für viele Organisationen reicht eine einzige Loomio-Gruppe aus. Innerhalb der G
 
 ### Gruppenname
 
-Gib den Namen deiner Gruppe ein. Halte den Gruppennamen möglichst kurz und prägnant.
+Gib einen kurzen, klaren Namen für deine Gruppe ein.
 
 <!-- translation-section: group-handle -->
 
 ### Gruppenkennung
 
-Deiner Gruppe wird automatisch eine Kennung zugewiesen. Diese Kennung wird in der URL und der E-Mail-Adresse der Gruppe verwendet, zum Beispiel **loomio.com/your-group-handle** und **your-group-handle@loomio.com**.
+Loomio weist deiner Gruppe automatisch eine Kennung zu, die auf dem Gruppennamen basiert. Die Kennung wird in der URL und der E-Mail-Adresse der Gruppe verwendet, zum Beispiel `loomio.com/your-group-handle` und `your-group-handle@loomio.com`.
 
-Du kannst die Kennung beim Erstellen der Gruppe bearbeiten und später in den Gruppeneinstellungen ändern. Nach einer Änderung funktionieren Links und E-Mail-Adressen mit der alten Kennung weiterhin. Loomio behält bis zu drei alte Kennungen bei; danach verfällt die älteste Kennung.
+Du kannst die Kennung beim Erstellen der Gruppe bearbeiten oder später in den Gruppeneinstellungen ändern. Nach einer Änderung funktionieren Links und E-Mail-Adressen mit der alten Kennung weiterhin. Loomio behält bis zu drei alte Kennungen bei; danach verfällt die älteste Kennung.
 
 <!-- translation-section: group-description -->
 
 ### Gruppenbeschreibung
 
-Diese kurze Beschreibung wird oben in der Übersicht angezeigt, um neuen Mitgliedern den nötigen Kontext zu geben.
+Füge eine kurze Beschreibung hinzu, die oben auf der Gruppenseite angezeigt wird und neuen Mitgliedern Kontext gibt.
 
-**Wenn du auf „Gruppe gründen“ klickst, wird deine neue Gruppe automatisch erstellt!**
-
----
+Wähle eine [Privatsphäre-Einstellung](/en/user_manual/groups/settings/privacy) und dann **Gruppe erstellen**, um die Gruppe zu erstellen. Du wirst automatisch zum ersten Gruppenadmin und kannst diese Angaben später in den Gruppeneinstellungen ändern.

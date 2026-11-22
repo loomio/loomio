@@ -1,25 +1,25 @@
 ---
 title: Rang
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
   introduction: 51bcda72e2ce9f47
-  when-to-use-rank: 38ec76e48467bab2
+  when-to-use-rank: e44e2e2c1a009a53
   example-rank-bottle-designs: 96324f1ea3deaa01
-  set-up-the-poll: bc9eeba93f7fac54
-  vote: 97a37341bc5bbb0b
-  read-the-results: e7e7060d554de048
+  set-up-the-poll: 015b4b90b82c0551
+  vote: 51191c7cd438bc4f
+  read-the-results: 320ea3ee55449d96
   share-an-outcome: af3176b7e577ae5f
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
@@ -43,7 +43,7 @@ Verwende Ordnen, wenn die Präferenzreihenfolge wichtig ist und du eine gemeinsa
 - neben einer ersten Wahl auch Ersatzoptionen auszuwählen; oder
 - eine lange Liste auf eine geordnete engere Auswahl zu reduzieren.
 
-Ordnen erstellt eine Rangfolge anhand von Punkten. Es ist kein Verhältniswahlverfahren. Um mehrere Personen zu wählen und dabei verschiedene Gruppen von Abstimmenden zu berücksichtigen, verwende eine [STV-Wahl](/en/user_manual/polls/stv/).
+Ordnen erstellt eine Rangfolge anhand von Punkten und verwendet kein Verhältniswahlverfahren. Um mehrere Personen zu wählen und dabei verschiedene Gruppen von Abstimmenden zu berücksichtigen, verwende eine [STV-Wahl](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Die Oatmilk Cooperative bittet ihre Mitglieder, vier Flaschenentwürfe für eine
 
 ## Die Abstimmung einrichten
 
-Beschreibe, was die Rangfolge bestimmen soll, und füge die Optionen hinzu. Lege mit **Anzahl der Auswahlmöglichkeiten** fest, wie viele Optionen jede Person ordnen darf. Die erste Wahl erhält die meisten Punkte, die nächste Wahl einen Punkt weniger, und nicht eingeordnete Optionen erhalten keine Punkte.
+Beschreibe, was die Rangfolge entscheiden soll, und füge die Optionen hinzu. Lege mit **Anzahl der Auswahlmöglichkeiten** fest, wie viele Optionen jede Person ordnen kann. Wenn Abstimmende beispielsweise bis zu 3 Optionen ordnen können, erhält ihre erste Wahl 3 Punkte, ihre zweite Wahl 2 Punkte und ihre dritte Wahl 1 Punkt. Nicht eingeordnete Optionen erhalten 0 Punkte.
 
 ![](form.png)
 
-Verlange, dass alle Optionen eingeordnet werden, wenn du eine vollständige Rangfolge brauchst. Erlaube weniger Auswahlmöglichkeiten, wenn Teilnehmende möglicherweise nicht genug wissen, um alle Optionen einzuordnen. Eine zufällige Anzeigereihenfolge der Optionen kann den Einfluss ihrer ursprünglichen Anordnung verringern.
+Verlange, dass alle Optionen eingeordnet werden, wenn du eine vollständige Rangfolge brauchst. Erlaube weniger Auswahlmöglichkeiten, wenn Teilnehmende möglicherweise nicht genug wissen, um alle Optionen einzuordnen. Eine zufällige Anzeigereihenfolge der Optionen hilft zu vermeiden, dass zuerst aufgeführte Optionen einen Vorteil erhalten.
 
 <!-- translation-section: vote -->
 
 ## Abstimmen
 
-Teilnehmende ziehen die Optionen in ihre bevorzugte Reihenfolge, wobei Nummer 1 die erste Wahl ist. Sie können eine Begründung hinzufügen, die die Kriterien für ihre Rangfolge erklärt.
+Teilnehmende ziehen die Optionen in ihre bevorzugte Reihenfolge, wobei Nummer 1 die erste Wahl ist. Dabei können sie eine Begründung zu ihrer Stimme hinzufügen, die ihre Rangfolge erklärt.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Das Ergebnis führt alle Stimmzettel zu einer gemeinsamen Rangfolge anhand von P
 
 ![](results.png)
 
-In diesem Beispiel steht die **500-ml-Braunglasflasche** an erster Stelle, gefolgt von der **500-ml-Klarglasflasche** und der **750-ml-Braunglasflasche**. Die Gruppe kann zuerst den bevorzugten Entwurf prüfen und die übrige Rangfolge als Reihenfolge für Alternativen beibehalten.
+In diesem Beispiel steht die **500-ml-Braunglasflasche** an erster Stelle, gefolgt von der **500-ml-Klarglasflasche** und der **750-ml-Braunglasflasche**. Die Gruppe kann zuerst den erstplatzierten Entwurf ausprobieren und die übrigen Entwürfe in ihrer Reihenfolge als Ersatzoptionen beibehalten.
 
-Ein Ergebnis anhand von Punkten kann unterschiedliche Präferenzmuster verbergen, die dieselbe Gesamtpunktzahl ergeben. Prüfe einzelne Stimmzettel und Begründungen zu den Stimmen, wenn Optionen nahe beieinanderliegen oder die Entscheidung weitreichende Folgen hat.
+Unterschiedliche Stimmverteilungen können dieselbe Gesamtpunktzahl ergeben. Prüfe einzelne Stimmen und die zugehörigen Begründungen, wenn Optionen nahe beieinanderliegen oder die Entscheidung wichtig ist.
 
 <!-- translation-section: share-an-outcome -->
 

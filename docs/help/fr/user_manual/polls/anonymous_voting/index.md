@@ -1,46 +1,46 @@
 ---
 title: Vote anonyme
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 2b9b7da01da020b3
-  how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: 60b564978d2a7a71
-  votes-cannot-be-changed: f4353c89bbffe7aa
-  why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
-  results-and-exports: eb2429afd442dad2
-  participation-verification: 75edf02a6a2324a3
-  reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
-  limits-of-anonymous-voting: 912141560342d073
+  introduction: ffcecd2f4297c47d
+  how-anonymous-voting-protects-voters: 3b757a1b4a7bda96
+  while-voting-is-open: aafc698ee8108194
+  votes-cannot-be-changed: 3a99e6c3f48e10ee
+  why-anonymous-votes-do-not-have-reasons: 4027d6c1fbf4d29c
+  results-and-exports: 5c10ab43a5f890b4
+  participation-verification: e77ece0fc0d6cd73
+  reminders: f711a180ae7c948f
+  what-coordinators-and-administrators-can-see: d873cd48677fc324
+  limits-of-anonymous-voting: 9ab54b74a4716e19
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
-  can-i-see-my-vote-after-submitting-it: c558e29729aed45f
-  can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
-  will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
-  is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  can-a-coordinator-see-how-i-voted: bfa1baf48f41cdd1
+  can-i-see-my-vote-after-submitting-it: 435010e0c2ecf488
+  can-i-change-or-withdraw-my-vote: 676d5401bf4d73cc
+  will-i-receive-an-email-confirming-my-vote: 9660f10e8ffb9f9c
+  does-a-public-poll-reveal-more-information: '087defb00bb8b99f'
+  is-anonymous-voting-suitable-for-every-election: 9fae56c0661f0ec9
 generated:
-  introduction: b97bdf2862e4ec7a
-  how-anonymous-voting-protects-voters: d136bc2501a72059
-  while-voting-is-open: 3a6c1ef63a19eca6
-  votes-cannot-be-changed: 2e915648b03eac38
-  why-anonymous-votes-do-not-have-reasons: 0c4f22c307749d21
-  results-and-exports: 3378fed87dc33ee5
-  participation-verification: 7dbb332904692165
-  reminders: 0a68333c75993339
-  what-coordinators-and-administrators-can-see: d859b63f7d484b34
-  limits-of-anonymous-voting: '06209050d317de16'
+  introduction: 7c5add0526306dfd
+  how-anonymous-voting-protects-voters: f48491f6f7767d7a
+  while-voting-is-open: 2b83ffe132ddeec8
+  votes-cannot-be-changed: 3130b8e1beb15f8b
+  why-anonymous-votes-do-not-have-reasons: 7dd262513b424d8f
+  results-and-exports: 574d9c69bf05d66d
+  participation-verification: bdd7a98bf1b3af3e
+  reminders: e367192e17329ac7
+  what-coordinators-and-administrators-can-see: 2e96b0617400c5ff
+  limits-of-anonymous-voting: c836d695252a0e0b
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: c8866e96b45c008a
-  can-i-see-my-vote-after-submitting-it: 8a63344a5172970d
-  can-i-change-or-withdraw-my-vote: e083aa388aa0fc7f
-  will-i-receive-an-email-confirming-my-vote: e731feb06a287566
+  can-a-coordinator-see-how-i-voted: 1e120428ac687250
+  can-i-see-my-vote-after-submitting-it: e6719ee4b76f2fe7
+  can-i-change-or-withdraw-my-vote: 0576c693fa139f67
+  will-i-receive-an-email-confirming-my-vote: 92bc5875cd2bf368
   does-a-public-poll-reveal-more-information: 592c8c7da22ac750
-  is-anonymous-voting-suitable-for-every-election: 145abfba67f35287
+  is-anonymous-voting-suitable-for-every-election: 132880eaa2e525d7
 title_source: 1bc4567506ad4d51
 title_generated: bbc8939bb7f73487
 ---
@@ -49,9 +49,9 @@ title_generated: bbc8939bb7f73487
 
 # Vote anonyme
 
-Le vote anonyme, également appelé vote à l’aveugle, sépare les données indiquant qui a voté des votes eux-mêmes. Après la clôture du sondage, toute personne pouvant voir les résultats peut voir qui a participé. Aucune personne utilisant Loomio ne peut relier un vote soumis à la personne qui l’a soumis.
+Le vote anonyme, également appelé vote à l’aveugle, sépare les données indiquant qui a voté des votes eux-mêmes. Après la clôture du sondage, toute personne pouvant voir les résultats peut voir qui a participé, mais aucune personne utilisant Loomio ne peut relier un vote à la personne qui l’a soumis.
 
-Cette page explique les protections offertes par le vote anonyme, les informations conservées et les limites de cette garantie.
+Cette page explique le fonctionnement du vote anonyme, les informations conservées et les limites de cette protection.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
@@ -66,15 +66,15 @@ Un sondage anonyme conserve deux ensembles de données distincts :
 | Si chaque personne autorisée à voter a voté | Aucun nom ni compte utilisateur |
 | Aucune option ni note sélectionnée | Aucun lien vers les données de participation |
 
-Aucun identifiant commun ne relie ces données. Les votes soumis ne contiennent pas non plus l’heure réelle de soumission, les informations sur l’invitation, les raisons écrites, les pièces jointes ni d’autres métadonnées qui pourraient aider à identifier un électeur.
+Aucun identifiant commun ne relie ces données. Les votes soumis ne contiennent pas non plus les heures de soumission, les informations sur les invitations, les raisons des votes, les pièces jointes ni d’autres métadonnées qui pourraient identifier un électeur.
 
-Cette séparation est appliquée lors de l’enregistrement du vote. Elle ne repose pas uniquement sur le masquage des noms dans l’interface.
+Cette séparation est appliquée lors de l’enregistrement du vote ; elle ne repose pas simplement sur le masquage des noms dans l’interface.
 
 <!-- translation-section: while-voting-is-open -->
 
 ## Pendant que le vote est ouvert
 
-Les résultats restent masqués pour tout le monde jusqu’à la clôture du sondage. Cela inclut les administrateurs du fil, les administrateurs du groupe et les administrateurs de l’instance qui utilisent l’application.
+Les résultats restent masqués pour tout le monde jusqu’à la clôture du sondage, y compris les administrateurs du fil, les administrateurs du groupe et les administrateurs de l’instance.
 
 Lorsqu’une personne vote :
 
@@ -82,9 +82,9 @@ Lorsqu’une personne vote :
 - ses données de participation sont mises à jour pour indiquer qu’elle a voté ;
 - aucun événement de vote, notification, e-mail, commentaire ni entrée d’activité n’est créé ;
 - aucune copie de ses choix ne lui est renvoyée après la soumission ; et
-- l’interface confirme uniquement que son vote a été enregistré.
+- l’écran confirme uniquement que son vote a été enregistré.
 
-Les données de participation ne conservent pas l’heure précise à laquelle la personne a voté. Les votes soumis ne sont pas classés par heure de soumission.
+Les données de participation ne conservent pas l’heure précise à laquelle une personne a voté, et les votes soumis ne sont pas classés par heure de soumission.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
@@ -92,7 +92,7 @@ Les données de participation ne conservent pas l’heure précise à laquelle l
 
 Chaque personne autorisée à voter peut voter une seule fois. Un vote anonyme soumis ne peut pas être consulté, modifié, retiré ni remplacé, même par un administrateur.
 
-Permettre à une personne de retrouver ou de remplacer son vote nécessiterait un lien permanent entre cette personne et le vote. Le vote anonyme ne crée volontairement pas ce lien.
+Permettre à une personne de retrouver ou de remplacer son vote nécessiterait un lien entre cette personne et son vote, ce que le vote anonyme évite volontairement.
 
 Vérifiez soigneusement vos choix avant de soumettre votre vote.
 
@@ -100,17 +100,17 @@ Vérifiez soigneusement vos choix avant de soumettre votre vote.
 
 ## Pourquoi les votes anonymes ne comportent pas de raison
 
-Les nouveaux votes anonymes ne peuvent pas inclure de raison écrite ni de pièce jointe. Les raisons peuvent contenir des noms, des informations personnelles, des particularités d’écriture, des mentions ou d’autres informations permettant d’identifier l’électeur. Elles rendraient aussi les votes individuels plus faciles à distinguer du résultat global.
+Les votes anonymes ne peuvent pas inclure de raison du vote ni de pièce jointe. Les raisons peuvent contenir des noms, des informations personnelles, des particularités d’écriture ou des mentions permettant d’identifier l’électeur, et pourraient rendre les votes individuels plus faciles à distinguer dans les résultats.
 
-Les participants peuvent toujours discuter du sondage dans son fil lorsque la discussion est disponible. Ces commentaires sont des contributions ordinaires à la discussion, associées au nom de leur auteur, et ne sont pas rattachés à un vote anonyme.
+Les participants peuvent toujours discuter du sondage dans son fil. Ces commentaires sont des contributions ordinaires associées au nom de leur auteur et ne sont pas liés à un vote anonyme.
 
 <!-- translation-section: results-and-exports -->
 
 ## Résultats et exports
 
-Après la clôture du sondage, les résultats sont calculés à partir des votes séparés des données de participation et affichés sous forme de totaux et d’autres résultats agrégés pris en charge par le type de sondage.
+Après la clôture du sondage, Loomio calcule les résultats à partir des votes séparés des données de participation et affiche les totaux correspondant au type de sondage.
 
-L’application ne publie ni les identifiants des votes, ni leur ordre de soumission, ni leurs heures de soumission. Les exports de sondages contiennent des résultats agrégés plutôt qu’une ligne pour chaque vote anonyme, sauf qu’une élection STV clôturée peut être exportée au format BLT. Un export BLT contient les classements des candidats nécessaires au recomptage de l’élection, regroupés lorsque plusieurs bulletins présentent le même classement, sans l’identité des électeurs ni les métadonnées des bulletins.
+Loomio ne publie ni les identifiants des votes, ni leur ordre de soumission, ni leurs heures de soumission. Les exports de sondages contiennent uniquement des résultats agrégés plutôt qu’une ligne pour chaque vote. La seule exception est une élection STV clôturée, qui peut être exportée au format BLT pour un recomptage. Un export BLT présente les classements des candidats, regroupés lorsque plusieurs bulletins présentent le même classement, sans l’identité des électeurs ni les métadonnées des bulletins.
 
 Un sondage anonyme ne peut pas être rouvert après sa clôture.
 
@@ -120,7 +120,7 @@ Un sondage anonyme ne peut pas être rouvert après sa clôture.
 
 Après la clôture d’un sondage anonyme, toute personne pouvant voir ses résultats peut voir qui a participé. Personne ne peut voir cette information pendant que le vote est ouvert.
 
-Sélectionnez **Voir les votes** pour consulter la liste. Elle indique toujours qui était autorisé à voter. Elle indique si chaque personne a voté uniquement lorsqu’un nombre suffisant de personnes a voté. Ce seuil correspond au quorum du sondage s’il en a un, sinon à la moitié des électeurs autorisés à voter, avec un minimum de trois votes dans tous les cas. La liste n’indique jamais comment une personne a voté, ni quand.
+Sélectionnez **Voir les votes** pour consulter la liste. Elle indique toujours qui était autorisé à voter et n’indique jamais comment ni quand une personne a voté. Elle indique si chaque personne a voté uniquement lorsqu’un nombre suffisant de personnes a participé : au moins le quorum du sondage s’il est défini, sinon au moins la moitié des électeurs autorisés à voter, avec un minimum de trois votes dans tous les cas.
 
 Les membres du groupe et les électeurs du sondage voient également quand chaque personne a rejoint le groupe et qui l’a invitée. Les administrateurs du groupe voient aussi les adresses e-mail pour distinguer les personnes qui portent le même nom.
 
@@ -134,9 +134,9 @@ Les administrateurs peuvent ajouter des personnes autorisées à voter tant que 
 
 Pour un sondage anonyme d’une durée d’au moins 24 heures, les personnes autorisées à voter qui n’ont pas voté reçoivent un rappel automatique au cours des dernières 24 heures.
 
-Les destinataires du rappel sont sélectionnés uniquement à partir des données de participation. Cette sélection n’examine pas les votes soumis et ne crée aucun lien avec eux. Si la date limite change, la vérification horaire des rappels utilise la date limite actuelle sans conserver de rappel programmé séparément pour le sondage.
+Loomio sélectionne les destinataires uniquement à partir des données de participation, sans examiner les votes soumis.
 
-Les sondages dont la durée totale de vote est inférieure à 24 heures n’envoient pas ce rappel automatique.
+Les sondages dont la durée de vote est inférieure à 24 heures n’envoient pas ce rappel automatique.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
@@ -148,22 +148,22 @@ Dans l’application, un administrateur de fil, un administrateur de groupe ou u
 - si chaque personne autorisée à voter a voté, lorsque son rôle permet cet accès et qu’un nombre suffisant de personnes a voté ; et
 - les résultats agrégés après la clôture du sondage.
 
-Les fonctionnalités de l’application ne leur permettent pas de voir :
+L’application ne leur permet pas de voir :
 
 - quels choix appartiennent à une personne ;
 - les votes individuels ou les tendances de vote individuelles ;
-- quand un vote particulier a été soumis ; ou
-- une raison, une pièce jointe, un événement ou une notification associés à un vote soumis.
+- quand un vote a été soumis ; ou
+- une raison du vote, une pièce jointe, un événement ou une notification liés à un vote.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Limites du vote anonyme
 
-Ces protections empêchent les utilisateurs de l’application de relier un vote soumis à son électeur. Elles ne constituent pas une protection cryptographique contre un opérateur pouvant examiner la base de données, les sauvegardes, les journaux du serveur, la mémoire des processus, le trafic réseau ou une version modifiée de l’application.
+Le vote anonyme empêche les utilisateurs de Loomio de relier un vote à un électeur. Il ne constitue pas une protection cryptographique contre un opérateur de serveur pouvant examiner la base de données, les sauvegardes, les journaux du serveur, la mémoire des processus, le trafic réseau ou du code modifié.
 
-Le résultat lui-même peut aussi révéler des informations. Un petit nombre d’électeurs, un résultat unanime, une combinaison distinctive de choix ou des informations partagées en dehors du sondage peuvent faciliter la déduction des choix d’une personne. Les électeurs peuvent aussi choisir de s’identifier dans la discussion, indépendamment du vote qu’ils ont soumis.
+Les résultats eux-mêmes peuvent aussi donner des indices. Un petit groupe, un vote unanime, une combinaison unique de choix ou des commentaires partagés en dehors du sondage peuvent faciliter la déduction du vote d’une personne.
 
-Tenez compte du nombre d’électeurs et du caractère sensible de la décision pour déterminer si le vote anonyme au niveau de l’application convient.
+Tenez compte de la taille du groupe et du caractère sensible de la décision avant de vous appuyer sur le vote anonyme au niveau de l’application.
 
 <!-- translation-section: questions -->
 
@@ -173,25 +173,25 @@ Tenez compte du nombre d’électeurs et du caractère sensible de la décision 
 
 ### Quelqu’un peut-il voir comment j’ai voté ?
 
-Non. Dès qu’un nombre suffisant de personnes a voté, les personnes pouvant voir les résultats peuvent voir si vous avez voté. Personne ne peut vous relier à un vote soumis par l’intermédiaire de l’application. Jusque-là, le fait que vous ayez voté ou non reste masqué.
+Non. Aucune personne utilisant Loomio ne peut vous relier à votre vote. Dès qu’un nombre suffisant de personnes a voté, toute personne pouvant voir les résultats peut voir si vous avez participé. Avant que ce seuil soit atteint, même le fait que vous ayez voté ou non reste masqué.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
 ### Puis-je voir mon vote après l’avoir soumis ?
 
-Non. L’application confirme que votre vote a été enregistré, puis efface vos choix de l’interface de vote. Elle ne peut pas retrouver votre vote sans créer le lien que le vote anonyme vise à éviter.
+Non. Loomio confirme que votre vote a été enregistré et efface vos choix de l’écran. Il ne peut pas retrouver votre vote sans créer le lien que le vote anonyme évite.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
 ### Puis-je modifier ou retirer mon vote ?
 
-Non. Aucun lien ne permet à l’application d’identifier le vote soumis à modifier ou à supprimer.
+Non. Comme il n’existe aucun lien entre vous et votre vote, Loomio ne peut pas identifier le vote à modifier ou à supprimer.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
 ### Vais-je recevoir un e-mail confirmant mon vote ?
 
-Non. Le vote affiche uniquement une confirmation à l’écran et met à jour votre enregistrement de participation. Il n’envoie pas d’e-mail de confirmation et ne crée ni notification ni événement d’activité.
+Non. Le vote affiche uniquement une confirmation à l’écran et met à jour votre enregistrement de participation. Il n’envoie pas d’e-mail et ne crée ni notification ni entrée dans l’activité.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
@@ -203,4 +203,4 @@ Après la clôture d’un sondage public, tout le monde peut voir ses résultats
 
 ### Le vote anonyme convient-il à toutes les élections ?
 
-Non. Il sépare les identités des votes au sein de l’application. Les décisions nécessitant une protection contre les opérateurs du système ou des élections cryptographiques vérifiables de manière indépendante exigent un système conçu pour répondre à ces besoins.
+Non. Il sépare les électeurs des votes au sein de l’application. Les élections nécessitant une protection contre les opérateurs du serveur ou une vérification cryptographique indépendante exigent un système conçu pour répondre à ces besoins.

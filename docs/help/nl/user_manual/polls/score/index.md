@@ -1,25 +1,25 @@
 ---
 title: Score
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/score/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: 6f021b306ed299b3
-  when-to-use-score: a3f0387d0cf8391d
+  introduction: e2f090c3e1d31f3c
+  when-to-use-score: 5fa1d1a9bba6a313
   example-score-possible-trial-locations: adccbd157e26a6c6
-  set-up-the-poll: c40b5ec22112a228
-  vote: 3eb88d4966d94585
-  read-the-results: 5ec6722e56c78810
+  set-up-the-poll: 10a4b76e3d789511
+  vote: 40c51eaeac5312f1
+  read-the-results: a802373c5a245499
   share-an-outcome: e0ba459f98e85162
 title_source: 38e5a46cbc5ad328
 title_generated: 38e5a46cbc5ad328
@@ -29,7 +29,7 @@ title_generated: 38e5a46cbc5ad328
 
 # Beoordelen
 
-Beoordelen meet hoe deelnemers elke optie beoordelen op een gedeelde numerieke schaal. Anders dan bij Kiezen reageren mensen op elke optie, zodat het resultaat zowel laat zien wat hun voorkeur heeft als hoe sterk die voorkeur is.
+Beoordelen meet hoe deelnemers elke optie beoordelen op een gedeelde numerieke schaal. Anders dan bij Kiezen reageren mensen op elke optie, waardoor zowel zichtbaar wordt wat hun voorkeur heeft als hoe sterk die voorkeur is.
 
 <!-- translation-section: when-to-use-score -->
 
@@ -43,7 +43,7 @@ Gebruik Beoordelen wanneer elke optie onafhankelijk kan worden beoordeeld aan de
 - beoordelen van subsidieaanvragen aan de hand van een gemeenschappelijk criterium; of
 - vergelijken van de geschiktheid van verschillende voorstellen.
 
-Leg vast wat de onderkant en bovenkant van de schaal betekenen. Zonder een gedeelde definitie kan een getal voor verschillende kiezers iets anders betekenen. Gebruik [Kiezen](/en/user_manual/polls/choose/) wanneer je alleen opties wilt laten selecteren, of [Verdelen](/en/user_manual/polls/allocate/) wanneer deelnemers afwegingen moeten maken binnen een beperkt budget.
+Leg vast wat de onderkant en bovenkant van de schaal betekenen, zodat iedereen de getallen op dezelfde manier interpreteert. Gebruik [Kiezen](/en/user_manual/polls/choose/) wanneer je alleen opties wilt laten selecteren, of [Verdelen](/en/user_manual/polls/allocate/) wanneer deelnemers afwegingen moeten maken binnen een beperkt budget.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -55,13 +55,13 @@ Oatmilk Cooperative kiest locaties voor een proef met retourflessen. De coöpera
 
 ## De peiling instellen
 
-Formuleer één vraag die op elke optie op dezelfde manier van toepassing is. Voeg de te beoordelen items toe, stel de **Minimum score** en **Maximum score** in en leg de uiteinden van de schaal uit in de details. Met omschrijvingen van de opties kun je verduidelijken wat elk item omvat.
+Formuleer één vraag die op elke optie op dezelfde manier van toepassing is. Voeg de te beoordelen items toe, stel de **Minimum score** en **Maximum score** in en leg de uiteinden van de schaal uit in de details. Je kunt een omschrijving van een optie toevoegen om te verduidelijken wat elk item omvat.
 
 ![](form.png)
 
-Kies een schaal die deelnemers consequent kunnen toepassen. Een schaal van 0–5 is snel te gebruiken; een schaal van 0–10 maakt fijnere verschillen mogelijk. Meer precisie levert niet noodzakelijk betere informatie op, dus gebruik de kortste schaal die bij de vraag past.
+Kies een schaal die deelnemers consequent kunnen toepassen. Een schaal van 0–5 is snel te gebruiken; een schaal van 0–10 maakt fijnere verschillen mogelijk. Gebruik de kortste schaal die bij jouw vraag past—een groter bereik levert niet altijd een beter resultaat op.
 
-Anoniem stemmen en opties in willekeurige volgorde tonen kunnen nuttig zijn wanneer je de invloed van anderen of van de volgorde wilt verminderen.
+Je kunt anoniem laten stemmen of opties in willekeurige volgorde tonen om de invloed van anderen en van de volgorde te verminderen.
 
 <!-- translation-section: vote -->
 
@@ -71,7 +71,7 @@ Deelnemers verplaatsen een schuifregelaar om elke optie een score te geven. In d
 
 ![](voting.png)
 
-De reden legt uit hoe de kiezer de schaal heeft toegepast. Dit helpt de groep om een lage score door ontbrekende informatie te onderscheiden van een lage score door inhoudelijke bezwaren.
+Een reden bij een stem legt uit hoe de kiezer de schaal heeft toegepast. Dit helpt de groep te bepalen of een lage score wijst op inhoudelijke bezwaren of op ontbrekende informatie.
 
 <!-- translation-section: read-the-results -->
 
@@ -85,7 +85,7 @@ Voor elke optie toont het resultaat:
 
 ![](results.png)
 
-In dit voorbeeld heeft **Central Station cafe** het hoogste gemiddelde met 7,5. **Harbour offices** heeft het laagste gemiddelde met 5,25, terwijl Riverside market en University food court allebei een gemiddelde van 7 hebben. Vier van de vijf uitgenodigde mensen hebben gestemd, dus de groep kan ook zien dat er nog één reactie ontbreekt.
+In dit voorbeeld heeft **Central Station cafe** het hoogste gemiddelde met 7,5. **Harbour offices** heeft het laagste gemiddelde met 5,25, terwijl Riverside market en University food court allebei een gemiddelde van 7 hebben. Vier van de vijf uitgenodigde mensen hebben gestemd, dus er ontbreekt nog één reactie.
 
 Vergelijk gemiddelden alleen wanneer de opties ongeveer evenveel kiezers hebben. Lees de redenen bij de stemmen voordat je een klein verschil als betekenisvol beschouwt.
 

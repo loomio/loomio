@@ -1,16 +1,16 @@
 ---
 title: Endereço de e-mail
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-22'
 sections:
-  introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  introduction: '03039e0babf5a9b6'
+  preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: a16b9c6079aec5ed
-  preventing-unauthorized-emails: ec13cfa3fd4ee641
+  introduction: c37071c6599055f1
+  preventing-unauthorized-emails: 2f345f4404d7abeb
 title_source: f2488fd4ef4adbc6
 title_generated: 32c13b636f1f855f
 ---
@@ -19,25 +19,24 @@ title_generated: 32c13b636f1f855f
 
 # Envie um e-mail para iniciar uma conversa no seu grupo
 
-Seu grupo no Loomio tem um endereço de e-mail. Você pode enviar ou encaminhar um e-mail para esse endereço para iniciar uma conversa no grupo.
+Cada grupo no Loomio tem seu próprio endereço de e-mail. Você pode enviar ou encaminhar um e-mail para esse endereço para iniciar uma nova conversa no grupo.
 
-Você pode ver o endereço de e-mail do seu grupo na página do grupo:
+Você pode encontrar o endereço de e-mail do grupo na página do grupo:
+
 ![Localização do endereço de e-mail na página do grupo](email_email_button.png)
 
-Quando você envia um e-mail para esse endereço, uma nova conversa é iniciada. O assunto do e-mail se torna o título da conversa, o corpo do e-mail se torna a descrição e todos os arquivos anexados são incluídos como anexos na conversa.
+Quando você envia um e-mail para esse endereço, o Loomio cria uma nova conversa. O assunto do e-mail se torna o título da conversa, o corpo se torna a descrição da conversa e todos os arquivos anexados são adicionados à conversa.
 
-O endereço de e-mail do campo "De" é usado para identificar o membro do grupo que será o autor da conversa.
+O Loomio usa o endereço do campo "De" do e-mail para identificar o remetente como membro do grupo e defini-lo como autor da conversa.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Como impedir e-mails não autorizados
 
-Para garantir que esse recurso não seja usado por pessoas que não são membros do seu grupo, o Loomio exige que o endereço do campo "De" de um e-mail recebido corresponda ao endereço de alguém do grupo.
+Para impedir que pessoas que não são membros iniciem conversas, o Loomio exige que o endereço do campo "De" de um e-mail recebido corresponda ao endereço de e-mail de um membro do grupo.
 
-Se você usa vários endereços de e-mail, pode adicionar um endereço alternativo para que o Loomio reconheça seus outros endereços de e-mail.
+Se um membro enviar um e-mail de um endereço não reconhecido, o Loomio retém o e-mail e notifica os admins do grupo. Um admin do grupo pode aprovar o e-mail e adicionar o endereço como endereço alternativo desse membro ou rejeitar os próximos e-mails desse endereço.
 
-Quando o endereço do campo "De" não corresponde ao de um membro do grupo, você recebe uma notificação solicitando que adicione um endereço alternativo ou rejeite todos os próximos e-mails desse endereço.
+Depois que um endereço alternativo é adicionado, os próximos e-mails desse endereço iniciam conversas imediatamente.
 
-Isso significa que, na primeira vez que você enviar um e-mail de um endereço não reconhecido, precisará adicionar um endereço alternativo. Depois disso, os e-mails serão aceitos imediatamente.
-
-![Localização dos botões de aprovação e rejeição de um e-mail não reconhecido](email_unreleased_emails.png)
+![Botões para aprovar e rejeitar um e-mail não reconhecido](email_unreleased_emails.png)

@@ -1,52 +1,52 @@
 ---
 title: サーバー API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
+  authentication: e5fe51f7081e921f
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: de7ad238bf914455
+  provisioning: 78ae303208080368
 generated:
   introduction: 0a106ab1a765ac58
-  authentication: 57de62643a1b62c8
+  authentication: 9266c5d371b0d662
   user-object: 20f0594f6c51a86f
   list-users: 8a83130646eae0a6
-  example: bf051bdd3c7179f5
+  example: 492ed1569b86a23c
   show-user: '07790231c9cb8fe6'
-  examples: 23fce4681ecafdbd
+  examples: 3d4f36dbd407c834
   update-user: dcf36cd27e67578f
   params: 52f8ef47c03db108
-  examples-2: 64d541cecc5c789e
+  examples-2: 7c53543a660921da
   deactivate-user: b54bb26003056ec6
-  examples-3: c207b8f98f4ecba2
+  examples-3: 6972b774975edf65
   reactivate-user: 881c6b3a11d8be3c
-  examples-4: f4cbae63b2f0e8fa
+  examples-4: 1e41ee9805fd78fa
   redact-user: 2c9227448e935dad
-  examples-5: e26cfac8045dda78
+  examples-5: c680499a5570c4fa
   delete-user: 1d3a55d14368d583
-  examples-6: dae0846ec90a1e37
+  examples-6: a4730a7245796829
   sso-profile-sync-settings: be27cb70115591ea
-  provisioning: 07e37bc8eed1142a
+  provisioning: 4d882e2070852b5e
 title_source: 370e81eb20eece44
 title_generated: 6693a36a8fbd5ef0
 ---
@@ -70,7 +70,7 @@ title_generated: 6693a36a8fbd5ef0
 キーを Bearer トークンとして送信します。
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 認証情報は `Authorization` ヘッダーでのみ送信してください。クエリ文字列やリクエスト本文に含まれる API キーは拒否されます。
@@ -94,7 +94,9 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 
 `POST /api/server0/users`
 
-必須の `email` を含む `user` オブジェクトを送信します。メールアドレスの前後の空白は削除され、小文字に変換されます。任意のフィールドは `name`、`username`、`is_admin` です。ここでの `is_admin` はインスタンス管理者を意味します。グループ管理者の役割はメンバーシップで管理します。`username` を省略すると、自動生成されます。未定義のフィールドは拒否されます。
+必須の `email` を含む `user` オブジェクトを送信します。メールアドレスの前後の空白は削除され、小文字に変換されます。任意のフィールドは `name`、`username`、`is_admin` です。
+
+ここでの `is_admin` はインスタンス管理者を意味します。グループ管理者の役割はメンバーシップで管理します。`username` を省略すると、自動生成されます。未定義のフィールドは拒否されます。
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-必須の `group_id` と `emails` 配列を送信します。既定では、一覧に含まれる人のうち、有効なメンバーシップをまだ持たない人を追加し、それ以外の人はそのまま残します。メールアドレスの前後の空白は削除され、小文字に変換され、重複が除かれます。新しいアドレスについては、アカウントと承認待ちの招待を作成します。同じ組織内の別の有効なグループにすでに所属し、メールアドレスが確認済みのメンバーは、ユーザー API の招待ワークフローと同様に、自動的に承認されます。
+必須の `group_id` と `emails` 配列を送信します。既定では、一覧に含まれる人のうち、有効なメンバーシップをまだ持たない人を追加し、それ以外の人はそのまま残します。メールアドレスの前後の空白は削除され、小文字に変換され、重複が除かれます。
+
+新しいアドレスについては、アカウントと承認待ちの招待を作成します。同じ組織内の別の有効なグループにすでに所属し、メールアドレスが確認済みのメンバーは、ユーザー API の招待ワークフローと同様に、自動的に承認されます。
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -217,7 +221,9 @@ curl https://loomio.example.org/api/server0/memberships \
 
 同じリクエストを繰り返しても、メンバーシップが重複して作成されたり、招待が再送信されたりすることはありません。メンバーシップが取り消されたメンバーを再度招待すると、グループへのアクセスは復元されますが、以前のグループ管理者の役割は復元されません。新しい招待と役割の変更には通常の通知ワークフローが使用され、操作したユーザーは記録されません。
 
-メールアドレス一覧がない場合や形式が不正な場合、またはブール値が無効な場合は、HTTP `400` を返します。一覧に無効化されたアカウントが含まれている場合は、HTTP `422` を返します。追加する前に、明示的に再有効化してください。アカウントデータが無効な場合、サブスクリプションの上限に達した場合、その他のエラーが発生した場合は、新規アカウントの作成とメンバーシップの削除を含む同期全体がロールバックされます。追加には有効なグループが必要で、サブスクリプションのメンバー数の上限が適用されます。
+メールアドレス一覧がない場合や形式が不正な場合、またはブール値が無効な場合は、HTTP `400` を返します。一覧に無効化されたアカウントが含まれている場合は、HTTP `422` を返します。追加する前に、明示的に再有効化してください。
+
+アカウントデータが無効な場合、サブスクリプションの上限に達した場合、その他のエラーが発生した場合は、新規アカウントの作成とメンバーシップの削除を含む同期全体がロールバックされます。追加には有効なグループが必要で、サブスクリプションのメンバー数の上限が適用されます。
 
 ### メンバーシップの役割の更新
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-`{"success": true}` を返します。削除すると、トピックへのアクセスと進行中のアンケートでの投票権を含め、そのグループとサブグループへのアクセスが取り消されます。アカウントの削除、無関係なグループの変更、スレッドへの直接のアクセス権の取り消しは行われません。削除を繰り返しても成功します。サブスクリプションの有効期限が切れたグループからもメンバーシップを削除できます。削除済みのグループの場合は HTTP `404` を返します。
+`{"success": true}` を返します。削除すると、トピックへのアクセスと進行中のアンケートでの投票権を含め、そのグループとサブグループへのアクセスが取り消されます。アカウントの削除、無関係なグループの変更、スレッドへの直接のアクセス権の取り消しは行われません。
+
+削除を繰り返しても成功します。サブスクリプションの有効期限が切れたグループからもメンバーシップを削除できます。削除済みのグループの場合は HTTP `404` を返します。
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ Loomio 環境のすべてのユーザーアカウントを一覧で取得しま�
 ### 使用例
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 次のレスポンスを返します。
@@ -319,13 +327,13 @@ Loomio のユーザー ID または外部の識別情報でユーザーを検索
 Loomio のユーザー ID を使用する場合：
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 外部の識別情報を使用する場合：
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 次のレスポンスを返します。
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 外部の識別情報を使用する場合：
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 更新後のユーザーを返します。
@@ -405,13 +413,13 @@ Loomio のユーザー ID または外部の識別情報で検索したユーザ
 Loomio のユーザー ID を使用する場合：
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
 外部の識別情報を使用する場合：
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 次のレスポンスを返します。
@@ -440,13 +448,13 @@ Loomio のユーザー ID または外部の識別情報でユーザーアカウ
 Loomio のユーザー ID を使用する場合:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
 外部 ID を使用する場合:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 レスポンス:
@@ -477,13 +485,13 @@ Loomio からユーザーを削除する際は、この方法を推奨します�
 Loomio のユーザー ID を使用する場合:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
 外部 ID を使用する場合:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 レスポンス:
@@ -513,13 +521,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 Loomio のユーザー ID を使用する場合:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 外部 ID を使用する場合:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 レスポンス:

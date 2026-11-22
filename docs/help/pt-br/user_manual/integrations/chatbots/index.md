@@ -1,24 +1,24 @@
 ---
 title: Integrações de bate-papo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: 006210baba81b0ad
-  what-it-looks-like-in-chat: c624361ec3361c06
-  generate-a-webhook-url: 3706c186a8b88586
-  set-up-a-chat-integration: b39462efff648620
-  invite-to-poll: 1e463279274681f7
-  automatic-notifications: b5e71472a6695026
+  introduction: '09c06423f5f38dfd'
+  what-it-looks-like-in-chat: 575645dc67f7d15b
+  generate-a-webhook-url: 0f64dcce5e57ea5b
+  set-up-a-chat-integration: 2741ccb86b660192
+  invite-to-poll: bb83ed7b8e4ca91a
+  automatic-notifications: 97d7ba26ea3ca897
 title_source: 0eca19d30c6d7d3c
 title_generated: e4e074d5772c2afb
 ---
@@ -33,19 +33,19 @@ As ferramentas de bate-papo e o Loomio funcionam bem juntos. Use o bate-papo par
 
 O Loomio oferece suporte a Slack, Discord, Microsoft Teams, Matrix e Mattermost.
 
-Você pode enviar notificações para sua sala de bate-papo quando quiser, da mesma forma que convidaria pessoas individualmente para votar ou participar de uma conversa.
-
-Você também pode configurar notificações para que sejam enviadas sempre que um evento específico ocorrer, como alguém iniciar uma conversa.
+Você pode enviar notificações manualmente para sua sala de bate-papo sempre que convidar pessoas para uma conversa ou enquete. Você também pode configurar notificações automáticas para eventos específicos, como quando alguém inicia uma discussão.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## Como aparece no bate-papo
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Gere uma URL de webhook
-Preparamos instruções passo a passo para cada serviço compatível. Siga as instruções do seu serviço para obter a URL de webhook necessária para adicionar a integração de bate-papo no Loomio.
+## Conecte seu serviço de bate-papo
+
+Siga o guia do seu serviço de bate-papo para obter uma URL de webhook (ou, no caso do Matrix, um token de acesso do bot e o ID da sala):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,31 +53,31 @@ Preparamos instruções passo a passo para cada serviço compatível. Siga as in
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Nosso sistema baseado em webhooks também pode ser usado com outros sistemas que aceitam webhooks de entrada com formatação HTML ou Markdown, como Zapier ou Rocketchat.
-Basta selecionar o bot do Mattermost e usar uma URL de webhook personalizada.
+Você também pode conectar outros serviços que aceitam webhooks de entrada com formatação HTML ou Markdown, como Zapier ou Rocket.Chat. Escolha a integração de bate-papo **Mais importante** no Loomio e insira sua URL de webhook personalizada.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Configure uma integração de bate-papo
 
-Depois de configurar o serviço escolhido (veja acima), você terá uma URL de webhook.
-Abra **Integrações de bate-papo** no menu do grupo e adicione uma nova integração de bate-papo para seu grupo.
+Você precisa ser admin do grupo para adicionar ou editar integrações de bate-papo.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. Depois de configurar seu serviço de bate-papo (veja acima), abra o menu do grupo no Loomio e selecione **Integrações de bate-papo**.
 
-Por enquanto, você provavelmente não precisa marcar nenhuma das caixas de seleção. Basta inserir o nome (como "Discord #general") e a URL e clicar no botão de salvar na parte inferior do formulário.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Se você decidir mais tarde que deseja que a integração receba notificações automáticas, volte às configurações dela e selecione os eventos relevantes.
+2. Adicione uma nova integração de bate-papo para seu serviço, insira um nome (como "Discord #general") e cole a URL de webhook.
+
+   ![](loomio-chatbot-form.png)
+
+3. Selecione os eventos que você deseja enviar automaticamente ou deixe todos desmarcados se quiser enviar notificações apenas manualmente e salve. Você pode alterar essas configurações a qualquer momento.
 
 <!-- translation-section: invite-to-poll -->
 
-### Convide para uma enquete
+### Envie uma notificação manualmente
 
-Veja como enviar uma notificação para sua sala de bate-papo convidando as pessoas a votar em uma proposta.
-O processo é o mesmo para Compartilhar conclusão, Convidar para uma conversa, Lembrar de votar, Enquete editada etc.
+Para notificar sua sala de bate-papo sobre uma enquete ou discussão, abra o item e selecione **Convidar** (ou outra ação de notificação, como **Compartilhar conclusão**, **Lembrar de votar** ou **Enquete editada**). Selecione sua integração de bate-papo na lista de destinatários e envie a notificação.
 
 ![](invite_button_on_proposal.png)
 
@@ -90,6 +90,7 @@ O processo é o mesmo para Compartilhar conclusão, Convidar para uma conversa, 
 <!-- translation-section: automatic-notifications -->
 
 ### Notificações automáticas
+
 Para enviar uma notificação sempre que um evento específico ocorrer, edite a integração de bate-papo e selecione esse evento.
 
 ![](chatbot_enable_automatic_notifications.png)

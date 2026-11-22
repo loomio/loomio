@@ -1,38 +1,38 @@
 ---
 title: Kommentit
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 5de86c47a823daf0
-  reading-comments: afb3c59b0ca6b8e2
-  writing-a-comment: 2e1a2c5fba2575d2
-  mentioning-people: 949375e41b71aed0
-  replying-to-a-comment: dfc6e14af2c530e4
-  reactions: 6c323c46a8ecd068
-  translating-comments: 37fa032f1fff2c53
-  comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 10a48fa173d9fe68
-  edit-a-comment-and-view-changes: 5607bcf53a8a0dff
-  copy-a-comment-link: e7c44dd77efba66e
-  view-notification-history: '0186c24ddde89f56'
-  discard-restore-or-delete-a-comment: f7fcdf12cf61a764
+  introduction: '09065cd966dd759c'
+  reading-comments: 2804dad52c91aca3
+  writing-a-comment: bb5c73b74d132614
+  mentioning-people: f6ab4011ec879386
+  replying-to-a-comment: 94881aeeea2dd484
+  reactions: a8452bef7d012db9
+  translating-comments: 01aa349a9089f52d
+  comment-actions: 9f4155bf7cf7e8ed
+  add-a-comment-to-jump-to: 4e804af971edfc6c
+  edit-a-comment-and-view-changes: 32582adec1903fef
+  copy-a-comment-link: 84cd4cdaa9ab0c84
+  view-notification-history: 36aa5fdd35851ea4
+  discard-restore-or-delete-a-comment: 751207a4a9e0f998
 generated:
-  introduction: f7887a4112d25339
-  reading-comments: 4f29f015cf84c140
-  writing-a-comment: a514ced4b159d3cf
+  introduction: 241009ea0cbc405b
+  reading-comments: c5d55da1ed758a9e
+  writing-a-comment: bf0271cbecb7364e
   mentioning-people: d4766fe95ab150ce
-  replying-to-a-comment: fb5025fffd4ccf47
-  reactions: 4a7505b9e1c5a830
-  translating-comments: 57bf86e99b01a093
+  replying-to-a-comment: 2248d0b679bdfda6
+  reactions: c7232744ecbfac67
+  translating-comments: 6dc742efbfc6c545
   comment-actions: 54ff803eb7380d17
-  add-a-comment-to-jump-to: 2c0683b2222aa768
-  edit-a-comment-and-view-changes: a97ec62b3ec46857
-  copy-a-comment-link: eed8e7a2e9670bd7
-  view-notification-history: 4f2864c2c0f13397
-  discard-restore-or-delete-a-comment: 3f31cd3c3a47cd2c
+  add-a-comment-to-jump-to: 32c799e9189389ea
+  edit-a-comment-and-view-changes: 2ef221e1e95f10fa
+  copy-a-comment-link: 9688d2acca62a894
+  view-notification-history: c116d9719221a0da
+  discard-restore-or-delete-a-comment: 7df00b2f82e3c4f5
 title_source: 355f79f29d7d3c2d
 title_generated: 860c8bc41f354032
 ---
@@ -41,13 +41,13 @@ title_generated: 860c8bc41f354032
 
 # Kommentit
 
-Kommentit ovat tärkein tapa osallistua keskusteluun. Ne näkyvät kaikille, joilla on oikeus nähdä ketju.
+Kommentit ovat tärkein tapa osallistua keskusteluun. Kaikki, joilla on pääsy ketjuun, voivat lukea niitä.
 
 <!-- translation-section: reading-comments -->
 
 ## Kommenttien lukeminen
 
-Ketjut avautuvat keskustelun kontekstin kohdalta. Valitse ketjun valikosta **Uusi sinulle**, jos haluat löytää lukemattoman toiminnan, tai **Uusin**, jos haluat siirtyä uusimpaan toimintaan.
+Ketjut avautuvat keskustelun kontekstin kohdalta. Valitse oikean sivupalkin **Siirry kohtaan** -luettelosta **Uusi sinulle**, jos haluat siirtyä lukemattomaan toimintaan, tai **Uusin**, jos haluat siirtyä uusimpiin kohteisiin.
 
 Lukemattomien kommenttien julkaisuajan vieressä on sininen **uusi**-merkintä.
 
@@ -57,13 +57,13 @@ Lukemattomien kommenttien julkaisuajan vieressä on sininen **uusi**-merkintä.
 
 ## Kommentin kirjoittaminen
 
-Osallistu keskusteluun kirjoittamalla kommentti. Muut voivat vastata siihen, reagoida siihen tai kirjoittaa omia kommenttejaan.
+Osallistu keskusteluun kirjoittamalla kommentti. Muut osallistujat voivat vastata siihen, reagoida siihen tai lisätä omia kommenttejaan.
 
-Julkaise kommentti valitsemalla **Lähetä kommentti**. Kommenttisi näkyy kaikille, joilla on oikeus nähdä keskustelu.
+Julkaise kommentti valitsemalla **Lähetä kommentti**.
 
 ![](../using_discussions/comment.png)
 
-Voit käyttää [Muotoilu](/en/user_manual/discussions/formatting/)-sivulla kuvattuja työkaluja kirjoittaessasi kommentteja.
+Kaikki [Tekstin muotoilu ja tiedostojen liittäminen](/en/user_manual/discussions/formatting/) -sivun työkalut ovat käytettävissä kommentteja kirjoittaessasi.
 
 <!-- translation-section: mentioning-people -->
 
@@ -85,11 +85,11 @@ Henkilön mainitseminen ei anna hänelle pääsyä ketjuun. Valitse ketjun sivup
 
 ## Kommenttiin vastaaminen
 
-Vastaa kommenttiin valitsemalla sen alta **Vastaa**. Vastaukseen lisätään valmiiksi kommentin kirjoittajan @maininta, joka lähettää hänelle ilmoituksen, kun julkaiset vastauksen. Poista maininta, jos et halua lähettää hänelle ilmoitusta.
+Vastaa kommenttiin valitsemalla sen alta **Vastaa**. Loomio lisää vastaukseen valmiiksi kommentin kirjoittajan @maininnan, jotta hän saa ilmoituksen, kun julkaiset vastauksen. Poista maininta, jos et halua lähettää hänelle ilmoitusta.
 
 ![](../using_discussions/comment_reply.png)
 
-Voit myös vastata omaan kommenttiisi, jolloin vastaus näkyy sen alla.
+Voit myös vastata omaan kommenttiisi, jolloin jatkokommentti näkyy sen alla.
 
 Jos Loomion sähköpostiviestissä kerrotaan, että voit vastata sähköpostitse, sähköpostilla lähettämäsi vastaus näkyy ketjussa.
 
@@ -97,7 +97,7 @@ Jos Loomion sähköpostiviestissä kerrotaan, että voit vastata sähköpostitse
 
 ## Reaktiot
 
-Reagoi emojilla käyttämällä hymiöpainiketta. Reaktiot lähettävät kommentin kirjoittajalle ilmoituksen Loomiossa, mutta eivät sähköpostia.
+Reagoi emojilla valitsemalla hymiökuvake. Reaktiot lähettävät kommentin kirjoittajalle ilmoituksen Loomiossa ilman sähköpostia.
 
 ![](../using_discussions/reaction.png)
 
@@ -105,11 +105,11 @@ Reagoi emojilla käyttämällä hymiöpainiketta. Reaktiot lähettävät komment
 
 ## Kommenttien kääntäminen
 
-Jos kirjoittaja käyttää eri kieltä kuin sinä, kommentin alle ilmestyy **Käännä**-toiminto.
+Kun kommentti on kirjoitettu eri kielellä kuin omasi, sen alle ilmestyy **Käännä**-painike.
 
 ![](../using_discussions/comment_translate.png)
 
-Näet kommentin omalla kielelläsi valitsemalla **Käännä kommentti**.
+Lue kommentti omalla kielelläsi valitsemalla **Käännä**.
 
 ![](../using_discussions/comment_translated.png)
 
@@ -125,7 +125,7 @@ Tavallisimmat toiminnot näkyvät suoraan kommentin alla. Lisää toimintoja lö
 
 Lisää kommentti ketjun **Siirry kohtaan** -luetteloon valitsemalla **Lisää aikajanalle**.
 
-Voit muokata **Siirry kohtaan** -luettelossa näkyvää tekstiä. Muuta linkkitekstiä poistamalla kommentti aikajanalta ja lisäämällä se uudelleen.
+Et voi muokata tekstiä suoraan **Siirry kohtaan** -luettelossa. Muuta linkkitekstiä valitsemalla **Poista aikajanalta** ja lisäämällä kommentti uudelleen.
 
 >[!Tip]
 >Valitse linkkitekstiksi haluamasi sanat ennen kuin valitset **Lisää aikajanalle**.
@@ -136,28 +136,28 @@ Poista kohde **Siirry kohtaan** -luettelosta valitsemalla **Poista aikajanalta**
 
 ### Kommentin muokkaaminen ja muutosten katsominen
 
-Muokkaa omaa kommenttiasi valitsemalla sen alta **Muokkaa**. Ryhmän ylläpitäjät voivat myös muokata jäsenten kommentteja, jos ryhmän oikeuksissa sallitaan se.
+Voit muokata kommenttia, kun:
+
+- kirjoitit sen itse ja ryhmä sallii jäsenten muokata omia kommenttejaan; tai
+- olet ryhmän ylläpitäjä ja **Järjestelmänvalvojat voivat muokata jäsenten kommentteja** on käytössä [Ryhmän oikeudet](/en/user_manual/groups/settings/permissions) -asetuksissa.
+
+Muokkaa kommenttia valitsemalla sen alta **Muokkaa**.
 
 ![](../using_discussions/comment_edit.png)
 
-Muokatun kommentin alla näkyy **Muokattu**-toiminto.
+Muokatun kommentin alla näkyy **Muokattu**-linkki.
 
 ![](../using_discussions/comment_show_edits.png)
 
-Katso muutokset valitsemalla **Muokattu**. Poistettu teksti on korostettu punaisella ja lisätty teksti vihreällä. Loomio tallentaa, kuka teki kunkin muokkauksen ja milloin.
+Katso muokkaushistoria valitsemalla **Muokattu**. Poistettu teksti on korostettu punaisella ja lisätty teksti vihreällä. Loomio tallentaa, kuka teki kunkin muokkauksen ja milloin.
 
 ![](../using_discussions/comment_edits.png)
-
-Voit muokata kommenttia, kun:
-
-- kirjoitit sen itse ja ryhmä sallii jäsenten muokata omia kommenttejaan
-- olet ryhmän ylläpitäjä ja [Ylläpitäjät voivat muokata jäsenten kommentteja](/en/user_manual/groups/settings/permissions) on käytössä
 
 <!-- translation-section: copy-a-comment-link -->
 
 ### Kommentin linkin kopioiminen
 
-Kopioi kommentin yksilöllinen URL-osoite valitsemalla **Kopioi linkki**. Voit liittää linkin muualle viitataksesi suoraan kyseiseen kommenttiin.
+Kopioi kommentin suora URL-osoite valitsemalla **Kopioi linkki**, jotta voit linkittää kommenttiin muualta.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -169,7 +169,7 @@ Avaa kommentin vieressä oleva kolmen pisteen valikko (**⋯**) ja valitse **Ilm
 
 ![Ilmoitushistoria kommentin toimintovalikossa](../notifying_people/comment_notification_history.png)
 
-Ilmoitushistoria näyttää, kenelle kommentista lähetettiin ilmoitus ja milloin se lähetettiin. Se näyttää myös, onko ilmoitus luettu, jos tämä tieto on saatavilla.
+Ilmoitushistoria näyttää, kenelle kommentista lähetettiin ilmoitus ja milloin kukin ilmoitus lähetettiin. Se näyttää myös, onko ilmoitus luettu, jos tämä tieto on saatavilla.
 
 ![Ilmoitushistoria kommentista, jossa mainitaan Samira Patel](../notifying_people/comment_notification_example.png)
 
@@ -177,28 +177,28 @@ Ilmoitushistoria näyttää, kenelle kommentista lähetettiin ilmoitus ja milloi
 
 ### Kommentin hävittäminen, palauttaminen tai poistaminen
 
-Kommentin hävittäminen poistaa sen ketjusta mutta säilyttää sen roskakorissa. Voit hävittää omia kommenttejasi valitsemalla kolmen pisteen valikosta **Hävitä**. Myös ryhmän ylläpitäjät voivat hävittää kommentteja.
+Kommentin hävittäminen piilottaa sen sisällön ketjusta mutta jättää sen kohdalle merkinnän, jotta kommentin voi palauttaa myöhemmin. Voit hävittää omia kommenttejasi avaamalla kolmen pisteen valikon (**⋯**) ja valitsemalla **Hävitä**. Ryhmän ylläpitäjät voivat hävittää minkä tahansa kommentin.
 
 ![](../using_discussions/comment_discard.png)
 
 **Palauta kommentti**
 
-Hävitetyn kommentin kohdalla näkyy merkintä **Kohde poistettu**. Avaa sen kolmen pisteen valikko ja valitse **Palauttaa**.
+Hävitetyn kommentin kohdalla näkyy merkintä **Kohde poistettu**. Avaa sen kolmen pisteen valikko (**⋯**) ja valitse **Palauttaa** palauttaaksesi kommentin.
 
 ![](../using_discussions/comment_restore.png)
 
 **Poista kommentti**
 
-Kommentin poistaminen poistaa sen pysyvästi. Sitä ei voi palauttaa.
+Kommentin poistaminen poistaa sen pysyvästi, eikä poistamista voi kumota.
 
-Jos **Jäsenet voivat poistaa omia kommenttejaan** on käytössä [ryhmän käyttöoikeuksissa](/en/user_manual/groups/settings/permissions), jäsenet voivat poistaa omat hävitetyt kommenttinsa pysyvästi. Ryhmän ylläpitäjät voivat poistaa minkä tahansa kommentin.
+Ryhmän ylläpitäjät voivat poistaa minkä tahansa hävitetyn kommentin. Jäsenet voivat poistaa omat hävitetyt kommenttinsa pysyvästi, kun **Jäsenet voivat poistaa omia kommenttejaan** on käytössä [ryhmän käyttöoikeuksissa](/en/user_manual/groups/settings/permissions).
 
 ![](../using_discussions/permissions_delete_comment.png)
 
-Avaa **Kohde poistettu** -merkinnän kolmen pisteen valikko ja valitse **Poistaa**.
+Avaa **Kohde poistettu** -merkinnän kolmen pisteen valikko (**⋯**) ja valitse **Poistaa**.
 
 ![](../using_discussions/comment_delete.png)
 
-Vahvistusviesti kertoo, että kommentti poistetaan pysyvästi.
+Vahvista pysyvä poistaminen vahvistusikkunassa.
 
 ![](../using_discussions/comment_delete_message.png)

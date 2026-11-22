@@ -1,24 +1,23 @@
 ---
 sections:
-  introduction: d1b37bf68148b2a5
-  set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: 1cc0b5130642217b
-  results: a0eeeda5a9e70a97
+  introduction: 566ce8dda668a638
+  set-members-vote-weights: 2a3d29ebb9840017
+  use-weighted-voting-in-a-poll: feddef738da4567d
+  results: ab86e178359702a0
 generated:
-  introduction: 8f8bb18a1084d4d6
-  set-members-vote-weights: 2ea15e71f22a830b
-  use-weighted-voting-in-a-poll: cb191088ab53c50d
+  introduction: dc8571803812d9b6
+  set-members-vote-weights: e9f77a9fb4733baa
+  use-weighted-voting-in-a-poll: 72cc3fc6d1d7cc5f
   results: 8cc78a19849f89ef
 title: Gewichtete Abstimmung
 title_source: 0b971991dfcacbab
 title_generated: b8d6b85d250e6095
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 needs_review:
-  set-members-vote-weights: use "Stimme" instead of "Abstimmung" for "vote"
   introduction: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
@@ -26,29 +25,29 @@ needs_review:
 
 # Gewichtete Abstimmung
 
-Bei einer gewichteten Abstimmung zählen manche Stimmen mehr als andere. Jede abstimmende Person hat ein Stimmgewicht. Zum Beispiel:
+Bei einer gewichteten Abstimmung zählen manche Stimmen mehr als andere, indem jeder abstimmenden Person ein Stimmgewicht zugewiesen wird. Zum Beispiel:
 
 - Eine Wohngemeinschaft gibt jeder Wohneinheit eine Stimme. Ein Mitglied, das drei Wohneinheiten vertritt, hat ein Stimmgewicht von `3`.
-- Eine Arbeitergenossenschaft gewährt Stimmrechte nach einer festgelegten Dauer der Mitgliedschaft. Neuere Mitglieder erhalten ein Stimmgewicht von `0`, sodass sie zur Diskussion beitragen und den Ablauf der Abstimmung kennenlernen können, ohne dass ihre Stimmen das Ergebnis beeinflussen.
+- Eine Arbeitergenossenschaft gewährt Stimmrechte nach einer festgelegten Dauer der Mitgliedschaft. Neuere Mitglieder erhalten ein Stimmgewicht von `0`, sodass sie an der Diskussion teilnehmen und probeweise abstimmen können, ohne das Ergebnis zu beeinflussen.
 - Ein Unternehmen gibt Anteilseignenden Stimmen entsprechend ihrem Eigentumsanteil. Wer 12,5 % der Anteile besitzt, hat ein Stimmgewicht von `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->
 
 ## Stimmgewichte der Mitglieder festlegen
 
-Ein Admin der Gruppe kann die Seite **Mitglieder** der Gruppe öffnen und **Stimmgewichte bearbeiten** auswählen. Gib die Stimmgewichte ein und wähle **Stimmengewichte speichern**. Stimmgewichte können `0` oder höher sein und bis zu drei Nachkommastellen haben. Suche nach Namen oder E-Mail-Adresse, um eine Person zu finden. Um jedem Mitglied dasselbe Stimmgewicht zu geben, wähle **Alle Stimmgewichte festlegen**.
+Ein Admin der Gruppe kann die Seite **Mitglieder** der Gruppe öffnen und **Stimmgewichte bearbeiten** auswählen. Gib die Stimmgewichte ein (`0` oder höher, mit bis zu drei Nachkommastellen) und wähle **Stimmengewichte speichern**. Du kannst nach Namen oder E-Mail-Adresse suchen, um eine Person zu finden, oder **Alle Stimmgewichte festlegen** auswählen, um jedem Mitglied dasselbe Stimmgewicht zu geben.
 
 ![Stimmgewichte der Gruppenmitglieder](member-weights.png)
 
-Das Stimmgewicht eines Mitglieds wird in jede Abstimmung übernommen, zu der das Mitglied hinzugefügt wird. Eine spätere Änderung wirkt sich nicht auf Abstimmungen aus, die dieses Stimmgewicht bereits übernommen haben.
+Das Stimmgewicht eines Mitglieds wird in jede Abstimmung übernommen, zu der das Mitglied hinzugefügt wird. Eine spätere Änderung wirkt sich nicht auf bestehende Abstimmungen aus.
 
 <!-- translation-section: use-weighted-voting-in-a-poll -->
 
 ## Gewichtete Abstimmung in einer Abstimmung verwenden
 
-Öffne **Weitere Einstellungen** im Abstimmungsformular und wähle **Gewichtete Abstimmung verwenden**. Du kannst die gewichtete Abstimmung auch nach Beginn der Stimmabgabe ein- oder ausschalten. Wenn du sie ausschaltest, werden alle Stimmgewichte in der Abstimmung auf `1` gesetzt. Alle Stimmgewichte, die du für diese Abstimmung geändert hast, gehen dabei verloren.
+Öffne **Weitere Einstellungen** im Abstimmungsformular und wähle **Gewichtete Abstimmung verwenden**. Du kannst die gewichtete Abstimmung auch nach Beginn der Stimmabgabe ein- oder ausschalten. Wenn du sie ausschaltest, werden alle Stimmgewichte in der Abstimmung auf `1` zurückgesetzt. Alle individuellen Stimmgewichte für diese Abstimmung gehen dabei verloren.
 
-Wenn deine Gruppe für einen etablierten Ablauf gewichtete Abstimmungen verwendet, wähle **Gewichtete Abstimmung verwenden** in einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates). Abstimmungen, die mit dieser Vorlage gestartet werden, verwenden gewichtete Abstimmung.
+Wenn deine Gruppe für einen regelmäßigen Ablauf gewichtete Abstimmungen verwendet, aktiviere **Gewichtete Abstimmung verwenden** in einer [Abstimmungsvorlage](/en/user_manual/polls/poll_templates). Abstimmungen, die mit dieser Vorlage gestartet werden, verwenden standardmäßig gewichtete Abstimmung.
 
 ![Die Einstellung Gewichtete Abstimmung verwenden in einer Abstimmung](poll-setting.png)
 

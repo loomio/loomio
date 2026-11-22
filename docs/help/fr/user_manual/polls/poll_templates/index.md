@@ -1,37 +1,37 @@
 ---
 title: Modèles de sondage
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: f618ac9c58fb2d1b
+  introduction: b965f3cb88d065f9
   who-can-manage-templates: 8415575d22a226aa
   create-a-poll-template: 1334d2e3d3d73853
   template-title-subtitle-and-help: 344248e8b3992859
-  voting-method: dadde6a8c85262e6
+  voting-method: 0a2ab7a142743e7e
   example-title-details-and-tags: acd0018624924a32
-  response-options: 60c3084a72cb9aa0
-  duration-and-settings: fd3770d58d5efd92
-  manage-the-template-list: d5fb47d49b03482d
+  response-options: 994d6ba51364285d
+  duration-and-settings: c99bb395ff56e6bb
+  manage-the-template-list: 97d736f4ad9db7c3
   save-a-poll-as-a-template: 382da00f01cd87df
   start-a-new-template: 12253dceea1c3b74
-  configure-the-template: e22557220a7e5fad
+  configure-the-template: d6c4f028dd1ca692
   edit-a-default-template: 8e612d7b6c8ef601
 title_source: 114cca246e357304
 title_generated: cd672e826498e8c7
@@ -45,9 +45,9 @@ Les modèles de sondage sont des points de départ réutilisables qui s’affich
 
 Utilisez cette page pour configurer les modèles disponibles dans un groupe ou en créer un pour votre propre processus. Pour choisir un modèle pour un vote particulier, consultez [Propositions](../proposals/) ou [Sondages](../proposal_types/). Pour faciliter un processus de décision complet, consultez [Prendre des décisions](/en/guides/making_decisions/).
 
-Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage** et choisissez l’un des modèles disponibles dans le groupe.
+Lorsque vous lancez un vote, sélectionnez l’onglet **Proposition** ou **Sondage** et choisissez un modèle disponible dans le groupe.
 
-Le modèle fournit une introduction, un exemple de contenu, des options et des paramètres. Vérifiez et adaptez ces éléments à la décision concernée avant de lancer le vote. Modifier le nouveau vote ne change pas le modèle réutilisable.
+Le modèle fournit une introduction, un exemple de contenu, des options et des paramètres. Vérifiez et adaptez ces éléments à votre décision avant de lancer le vote. Modifier un nouveau vote ne change pas le modèle.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -83,11 +83,11 @@ Pour adapter un modèle par défaut comme **Consentement**, ouvrez son menu d’
 
 ## Paramètres du modèle
 
-Donnez au modèle un nom et un sous-titre qui indiquent quand l’utiliser. Vous pouvez modifier tous les autres champs pour les rendre plus adaptés à la réutilisation. Après avoir sélectionné **Enregistrer le modèle**, le modèle apparaîtra dans la liste lorsqu’une personne lancera une nouvelle proposition ou un nouveau sondage.
+Donnez au modèle un nom et un sous-titre qui indiquent quand l’utiliser. Ajustez les autres champs pour que le modèle soit prêt à être réutilisé, puis sélectionnez **Enregistrer le modèle**. Le modèle apparaîtra alors lorsqu’une personne lancera une nouvelle proposition ou un nouveau sondage.
 
 [![Le formulaire complet du modèle de processus de consentement pour un changement de politique](poll_template_new.png)](poll_template_new.png)
 
-Pour les sondages autonomes, le paramètre **Seuls les administrateurs peuvent ajouter des pièces jointes** réserve l’ajout de nouveaux fichiers et d’images intégrées aux administrateurs du fil et du groupe, y compris dans les réponses au sondage et les réponses aux commentaires. Les sondages lancés dans un fil existant suivent le paramètre de pièces jointes de ce fil. La modification du modèle ne s’applique qu’aux futurs sondages.
+Pour les sondages autonomes, le paramètre **Seuls les administrateurs peuvent ajouter des pièces jointes** réserve l’ajout de nouveaux fichiers et d’images intégrées (y compris dans les réponses au sondage et les réponses aux commentaires) aux administrateurs du fil et du groupe. Les sondages dans un fil existant suivent le paramètre de pièces jointes de ce fil. La modification d’un modèle ne s’applique qu’aux futurs sondages.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -99,7 +99,7 @@ Utilisez le titre et le sous-titre pour expliquer quand choisir le modèle. Ajou
 
 ### Méthode de vote
 
-Choisissez ce que les participants doivent exprimer et comment le résultat doit être calculé.
+Choisissez ce que les participants doivent exprimer et comment le résultat doit être calculé :
 
 - **Proposition** : répondre à un énoncé en utilisant des positions définies ;
 - **Choisir** : sélectionner une ou plusieurs options ;
@@ -126,7 +126,7 @@ Les méthodes telles que Proposition et Choisir vous permettent de configurer le
 - **Nom de l’option** : le libellé court de la réponse ;
 - **Icône** : son repère visuel ;
 - **Signification** : ce que le choix de l’option exprime ; et
-- **Invite de raison** : la question affichée lorsqu’une personne explique sa réponse.
+- **Invite de raison** : la question affichée lorsqu’une personne explique son vote.
 
 ![](poll_type_edit_option.png)
 
@@ -138,7 +138,7 @@ Définissez les options pour que les participants puissent les distinguer sans a
 
 Définissez une durée par défaut adaptée à la plupart des utilisations du modèle. L’auteur peut modifier l’heure de clôture d’un vote particulier.
 
-D’autres paramètres par défaut peuvent déterminer la visibilité des résultats, le vote anonyme, le [vote pondéré](../weighted_voting/), l’obligation de fournir une raison du vote, les rappels, le quorum et le fonctionnement propre à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour connaître leurs effets.
+D’autres paramètres par défaut déterminent la visibilité des résultats, le vote anonyme, le [vote pondéré](../weighted_voting/), l’obligation de fournir une raison du vote, les rappels, le quorum et le fonctionnement propre à chaque méthode. Consultez [Paramètres des propositions et des sondages](../settings/) pour en savoir plus.
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -153,7 +153,7 @@ Utilisez le menu d’actions à côté d’un modèle pour :
 
 ![La liste des modèles du groupe avec le menu d’actions du modèle de processus de consentement pour un changement de politique ouvert](template_manage.png)
 
-Sélectionnez **Afficher les modèles cachés** pour consulter ou rétablir les modèles cachés. Les modèles par défaut peuvent être cachés ou adaptés au groupe, mais ne peuvent pas être supprimés.
+Sélectionnez **Afficher les modèles cachés** pour consulter ou rétablir les modèles cachés. Vous pouvez cacher ou adapter les modèles par défaut pour votre groupe, mais vous ne pouvez pas les supprimer.
 
 Modifier un modèle ne change pas les propositions ou les sondages déjà lancés à partir de celui-ci.
 

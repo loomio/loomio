@@ -1,48 +1,48 @@
 ---
 title: Usare le discussioni
-source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: fe8ab54791a49e01
-  thread-anatomy: fca9ec9af6718a99
-  discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 3fe9320d33fff8f6
-  navigation: c0ccc79744ae2c33
-  notifications-and-members: ac51f2bbe3642155
-  email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 12ac7562e5c561ac
-  seen-by: 1d0bfd812ca11782
-  notified: 6139bdcaae32a1db
-  actions: c015c12999c5be2f
-  print: 8fac34ad532e8cb5
-  markdown: c6434ed486db8be4
-  thread-settings-and-display: 175b9e93cfc4f736
-  pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 026a0e786deda944
-  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
-  delete-a-thread: 9b4c6437ff8102eb
+  introduction: f04bfcfd5d767c24
+  thread-anatomy: 8c8f6393917dc4e4
+  discussion-context: 82cfa27c1c3e6161
+  notify-people-about-context-changes: 89165c012a1a710e
+  navigation: e9cbf404a9e80417
+  notifications-and-members: 21bb3b5d392c31c2
+  email-notifications-for-this-thread: 3815be85f7e40239
+  invite-people: 4759f5db4b8b6c31
+  seen-by: 881b42cd1a2fed4d
+  notified: cdfc025813eb6d6b
+  actions: 2a239569629d46a9
+  print: b626084908f85a8c
+  markdown: f6468648c2fd6b91
+  thread-settings-and-display: 9e1723af3ef1c96f
+  pin-or-unpin-a-thread: 25265a99d3883d8f
+  move-a-thread: 4d7231526110d371
+  lock-or-unlock-a-thread: 5702025c2201f41f
+  delete-a-thread: afd0742cbbb13eea
 generated:
-  introduction: e9d86e0b50198559
-  thread-anatomy: '0987430a367a835d'
-  discussion-context: adc113eee4d134cf
-  notify-people-about-context-changes: 4950704a7df69de5
-  navigation: fe388c59c614041d
-  notifications-and-members: a526edf3f2b9ef15
-  email-notifications-for-this-thread: 1378f06800e6b092
-  invite-people: 98d8ef790f4def73
-  seen-by: 10f2cba747fbd1d2
-  notified: afc4d72f20379934
-  actions: 3734d406e6d88519
-  print: 9906ecce47bb8d69
-  markdown: b4bc4940294e6465
-  thread-settings-and-display: f515463ad98485ff
-  pin-or-unpin-a-thread: 17556b3b4c703f8f
-  move-a-thread: d62f8b4274c00110
-  lock-or-unlock-a-thread: 2ae1e542f9689190
-  delete-a-thread: 31d4454edc4599c8
+  introduction: 57882429df40cd32
+  thread-anatomy: 34d801abb014d8ac
+  discussion-context: f28f290de626f41e
+  notify-people-about-context-changes: a869406e0f1b1c98
+  navigation: '05791ea0ec4a5cc5'
+  notifications-and-members: 79e72dfcbfb7514f
+  email-notifications-for-this-thread: d6a62ee58b40b114
+  invite-people: 128965ac81713f27
+  seen-by: aa602ff0134cf05c
+  notified: a8ce11beb7f5d0f6
+  actions: d7d629374764b4c6
+  print: 3742a46f5a17d5c1
+  markdown: 2c9275b39a0aa44d
+  thread-settings-and-display: faa57fcba8a7d412
+  pin-or-unpin-a-thread: b7a614a1806ac46f
+  move-a-thread: 6f88f07ddd05e782
+  lock-or-unlock-a-thread: 6a86410578052a79
+  delete-a-thread: fb2cdb43c1044425
 title_source: 99e2d1eb313f35c4
 title_generated: d64715f4f6e924c8
 ---
@@ -51,7 +51,7 @@ title_generated: d64715f4f6e924c8
 
 # Usare le conversazioni
 
-Una discussione riunisce il contesto, i commenti, le decisioni e le conclusioni in un'unica conversazione. Questa pagina spiega come partecipare a una conversazione e usare la navigazione e le azioni disponibili.
+Una discussione riunisce il contesto, i commenti, i sondaggi e le conclusioni in un'unica conversazione. Questa pagina spiega come partecipare a una conversazione e usarne la navigazione, le impostazioni e le azioni.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -61,47 +61,26 @@ Una conversazione tipica si presenta così:
 
 ![](thread_navigation.png)
 
-Partendo dall'alto della pagina, una conversazione contiene:
+Le parti principali di una conversazione sono:
 
-**Nome del gruppo** - In alto a sinistra nella pagina della discussione trovi il nome del gruppo o sottogruppo a cui appartiene la discussione. Fai clic sul nome per tornare alla pagina del gruppo.
-
-**Accesso alla discussione** - L'icona di accesso in alto a destra apre le impostazioni di accesso della discussione. Una discussione di gruppo è accessibile ai membri del gruppo e a chiunque sia stato invitato specificamente, secondo le impostazioni di privacy del gruppo.
-
-**Titolo della discussione** - Il nome della discussione.
-
-**Etichette di categorizzazione** - La discussione può avere uno o più tag di categoria. Usare tag semplici aiuta le persone a trovare più facilmente discussioni di tipo simile.
-
-**Autore della discussione** - Il nome e l'avatar della persona che ha avviato la discussione, mostrati sotto il titolo.
-
-**Data** - Passa il puntatore sulla data per vedere la data completa e l'ora di inizio della discussione.
-
-**Visto da** - Nella barra laterale destra, mostra chi ha letto la discussione e quando.
-
-**Notificato** - Nella barra laterale destra, mostra chi ha ricevuto una notifica sulla discussione e se ogni notifica è stata letta o la relativa email è stata aperta.
-
-**Contesto della discussione** - Il contenuto che introduce la discussione.
-
-**Strumenti di interazione e amministrazione della discussione** - Il contesto della discussione contiene comandi per aggiungere reazioni e modificarlo. La barra laterale destra contiene azioni per le notifiche, la gestione dei membri e l'amministrazione.
-
-**Commenti** - I commenti sono visualizzati sotto il contesto della discussione. Il nome dell'autore, l'avatar e l'ora di pubblicazione mostrano chi ha scritto ogni commento e quando. Ogni commento dispone di strumenti di interazione e amministrazione.
-
-**Navigazione, notifiche e azioni** - La barra laterale destra contiene collegamenti rapidi alle attività e ai punti salienti, informazioni sulle notifiche e sui membri e le azioni della conversazione a tua disposizione.
+- **Nome del gruppo** — Rimanda al gruppo o sottogruppo a cui appartiene la conversazione.
+- **Impostazioni di accesso** — Mostra chi può vedere la conversazione. Una discussione di gruppo è visibile ai membri del gruppo e a chiunque vi sia stato invitato, secondo le impostazioni di privacy del gruppo.
+- **Etichette di categorizzazione** — Tag sotto il titolo che raggruppano discussioni correlate.
+- **Contesto della discussione** — Il messaggio iniziale in cima alla conversazione, con comandi per aggiungere reazioni o modificarlo.
+- **Commenti e sondaggi** — Risposte, sondaggi e conclusioni pubblicati sotto il contesto, ciascuno con i propri comandi di interazione e azione.
+- **Barra laterale destra** — Collegamenti rapidi ai punti salienti (**Vai a**), impostazioni delle notifiche, elenchi **Visto da** e **Notificato** e azioni della conversazione.
 
 <!-- translation-section: discussion-context -->
 
 ## Contesto della discussione
 
-Il **contesto** della discussione si trova sempre in cima alla discussione. Usa il contesto per inquadrare la discussione o la decisione.
-
-Pensa al tuo gruppo mentre scrivi il contenuto del contesto della discussione. Il tuo obiettivo è avviare una discussione, quindi considera come puoi motivare le persone a partecipare. In generale, mantieni il contesto della discussione semplice e chiaro.
+Il **contesto** resta in cima alla conversazione e inquadra la discussione o la decisione.
 
 ![](thread_context.png)
 
-Scrivi il contesto quando avvii o modifichi una discussione. Usa **Modifica**, con l'icona della matita, per modificare una discussione.
+Scrivi il contesto quando avvii una discussione e puoi aggiornarlo con l'icona della matita (**Modifica**). Man mano che la conversazione procede, puoi aggiornare il contesto con nuove informazioni di riferimento, un ordine del giorno o la conclusione finale.
 
-Man mano che la discussione procede, aggiorna il contesto. Pensa al contesto come a una lavagna nella sala riunioni, su cui puoi scrivere l'ordine del giorno, le conclusioni a cui vuoi arrivare e come intendi raggiungerle.
-
-In fondo al pannello del contesto trovi una barra di formattazione, con cui puoi formattare il testo, allegare file e immagini e incorporare un video.
+La barra di formattazione sotto il campo di testo ti permette di formattare il testo, allegare file, inserire immagini e incorporare video. Consulta [Formattare il testo e allegare file](/en/user_manual/discussions/formatting/).
 
 ![](thread_context_edit.png)
 
@@ -109,11 +88,11 @@ In fondo al pannello del contesto trovi una barra di formattazione, con cui puoi
 
 ### Notificare le modifiche al contesto
 
-Quando modifichi il contesto della discussione, usa **Che cosa ha cambiato?** per riassumere l'aggiornamento e scegliere chi deve ricevere una notifica.
+Quando modifichi il contesto, usa **Che cosa ha cambiato?** per riassumere l'aggiornamento e scegliere chi deve ricevere una notifica.
 
 ![Modifica del contesto di una discussione con un riepilogo delle modifiche e i destinatari della notifica](../notifying_people/thread_editcontext.png)
 
-La conversazione mostra che hai modificato il contesto. Le persone a cui invii la notifica ricevono il tuo riepilogo insieme alla notifica.
+La conversazione registra che hai modificato il contesto e le persone a cui invii la notifica ricevono il tuo riepilogo.
 
 ![Un elemento della conversazione che mostra la modifica del contesto della discussione](../notifying_people/thread_edit_comment.png)
 
@@ -123,29 +102,29 @@ La conversazione mostra che hai modificato il contesto. Le persone a cui invii l
 
 La sezione **Vai a** nella barra laterale destra ti aiuta a spostarti all'interno di una conversazione:
 
-- **Inizio** porta al contesto della discussione
-- **Nuovo per te** appare quando la conversazione contiene attività che non hai letto
-- **Più recente** appare quando sono disponibili attività più recenti rispetto agli elementi attualmente caricati
-- i collegamenti ai punti salienti portano direttamente a commenti importanti, sondaggi e conclusioni
-- **Fine** porta all'ultimo elemento della conversazione
+- **Inizio** porta al contesto della discussione.
+- **Nuovo per te** appare quando la conversazione contiene attività che non hai letto.
+- **Più recente** appare quando sono disponibili attività più recenti rispetto agli elementi caricati.
+- I collegamenti ai punti salienti portano direttamente a commenti importanti, sondaggi e conclusioni.
+- **Fine** porta all'ultimo elemento della conversazione.
 
-I commenti che includono un titolo H2 o H3, i sondaggi e le proposte vengono inclusi automaticamente tra i collegamenti ai punti salienti. Seleziona un punto saliente per raggiungerlo direttamente.
+I commenti con un titolo H2 o H3, i sondaggi e le proposte appaiono automaticamente come collegamenti ai punti salienti. Seleziona un punto saliente per raggiungerlo direttamente.
 
 ![](thread_timeline_1.png)
 
-Quando aggiungi un commento, un sondaggio, un voto o una conclusione, Loomio contrassegna il tuo nuovo elemento come letto. Non apparirà come qualcosa di nuovo che devi leggere.
+Quando pubblichi un commento, un sondaggio, un voto o una conclusione, Loomio contrassegna il tuo elemento come letto.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Notifiche e membri
 
-La barra laterale destra ti permette di gestire le notifiche email e mostra chi è stato invitato, chi ha visto la conversazione e chi ha ricevuto una notifica.
+La barra laterale destra ti permette di gestire le notifiche email per la conversazione e mostra chi è stato invitato, chi ha visto la conversazione e chi ha ricevuto una notifica.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### Notifiche email per questa conversazione
 
-Seleziona l'impostazione attuale delle notifiche per scegliere se Loomio deve inviarti email per tutte le attività, solo per quelle che ti notificano specificamente o per nessuna attività. Ricevere email per tutte le attività può generare molti messaggi in una conversazione attiva.
+Seleziona l'impostazione attuale delle notifiche per scegliere se Loomio deve inviarti email per tutte le attività, solo per quelle che ti notificano specificamente o per nessuna attività. Scegliere tutte le attività può generare molte email in una conversazione attiva.
 
 ![Opzione di ricezione email quando ricevi una notifica selezionata nella barra laterale della discussione](../notifying_people/thread_interact.png)
 
@@ -153,13 +132,13 @@ Seleziona l'impostazione attuale delle notifiche per scegliere se Loomio deve in
 
 ### Invita persone
 
-Seleziona **Invita persone** nella barra laterale destra per invitare persone o inviare loro una notifica sulla discussione. Consulta [Invitare persone a una discussione](/en/user_manual/discussions/inviting_people) per informazioni su gruppi, gruppi principali, ospiti, chat e notifiche di invito.
+Seleziona **Invita persone** nella barra laterale destra per invitare persone o inviare loro una notifica sulla conversazione. Consulta [Invitare persone a una discussione](/en/user_manual/discussions/inviting_people) per informazioni su gruppi, sottogruppi, gruppi principali, ospiti e chat.
 
 <!-- translation-section: seen-by -->
 
 ### Visto da
 
-**Visto da** mostra chi ha aperto la conversazione e quando. Può aiutarti a individuare le persone che potrebbero non aver ancora visto informazioni importanti.
+**Visto da** mostra chi ha aperto la conversazione e quando. Usalo per verificare se le persone chiave hanno visto informazioni importanti.
 
 ![Visto da e Notificato nella sezione Membri della conversazione](../notifying_people/thread_engagement.png)
 
@@ -169,7 +148,7 @@ Seleziona **Invita persone** nella barra laterale destra per invitare persone o 
 
 ### Notificato
 
-**Notificato** apre la cronologia delle notifiche della discussione. Include inviti, menzioni e risposte, mostrando chi ha ricevuto una notifica e se ogni notifica è stata letta, quando questa informazione è disponibile.
+**Notificato** apre la cronologia delle notifiche della conversazione, inclusi inviti, menzioni e risposte. Mostra chi ha ricevuto una notifica e se ogni notifica è stata letta, quando questa informazione è disponibile.
 
 ![Cronologia delle notifiche della discussione](../notifying_people/thread_notified.png)
 
@@ -179,7 +158,7 @@ Seleziona **Invita persone** nella barra laterale destra per invitare persone o 
 
 ## Impostazioni della conversazione
 
-Gli amministratori della conversazione e gli amministratori del gruppo possono selezionare **Impostazioni del thread** per cambiare la disposizione delle risposte e configurare altre opzioni della discussione.
+Gli amministratori della conversazione e gli amministratori del gruppo possono selezionare **Impostazioni del thread** per gestire la disposizione delle risposte e impostare altre opzioni della discussione.
 
 ![](thread_display.png)
 
@@ -193,25 +172,25 @@ Scegli **Cronologico** per elencare gli elementi nell'ordine in cui sono stati p
 
 ### Un solo sondaggio alla volta
 
-Quando questa opzione è selezionata, gli utenti non possono avviare un altro sondaggio finché quello attuale non si è chiuso. Per le nuove conversazioni, questa opzione non è selezionata per impostazione predefinita. Le conversazioni avviate da un modello di discussione usano l'impostazione del modello.
+Quando questa opzione è selezionata, nessuno può avviare un altro sondaggio finché quello attuale non si chiude. Per le nuove conversazioni, questa opzione non è selezionata per impostazione predefinita. Le conversazioni avviate da un modello di discussione ereditano l'impostazione del modello.
 
 ### Solo gli amministratori possono aggiungere allegati
 
 Attiva questa impostazione per consentire solo agli amministratori della conversazione e agli amministratori del gruppo di aggiungere nuovi file e immagini nel testo in tutta la conversazione, comprese le risposte ai sondaggi e le risposte via email. Gli allegati esistenti restano disponibili e i partecipanti possono continuare a modificare il proprio testo o rimuovere allegati.
 
-I modelli di discussione e di sondaggio possono fornire questa impostazione per le nuove conversazioni. Consulta [Modelli di discussione](/en/user_manual/discussions/templates) e [Modelli di sondaggio](/en/user_manual/polls/poll_templates).
+I modelli di discussione e di sondaggio possono definire questa impostazione per le nuove conversazioni. Consulta [Modelli di discussione](/en/user_manual/discussions/templates) e [Modelli di sondaggio](/en/user_manual/polls/poll_templates).
 
 ### Limite di lunghezza dei commenti
 
-Imposta un numero massimo di caratteri per commento per mantenere i contributi concisi. Lascia il campo vuoto per non applicare alcun limite. Il limite si applica a tutti, compresi gli amministratori.
+Imposta un numero massimo di caratteri per commento per mantenere le risposte concise. Lascia il campo vuoto per non applicare alcun limite. Il limite si applica a tutti, compresi gli amministratori del gruppo e gli amministratori della conversazione.
 
 <!-- translation-section: actions -->
 
 ## Azioni
 
-La barra laterale destra contiene azioni per l'intera conversazione. Alcune azioni sono disponibili anche nel menu con i tre puntini (**⋯**) accanto a una conversazione nella pagina del gruppo.
+La barra laterale destra elenca le azioni per l'intera conversazione. Alcune azioni appaiono anche nel menu con i tre puntini (**⋯**) accanto a una conversazione nella pagina del gruppo.
 
-Le azioni visualizzate dipendono dai tuoi permessi. Gli amministratori del gruppo possono gestire le conversazioni e le impostazioni del gruppo possono consentire ai membri di eseguire alcune azioni di gestione. Vedi [Permessi del gruppo](/en/user_manual/groups/settings/permissions).
+Le azioni visualizzate dipendono dai tuoi permessi. Gli amministratori del gruppo possono gestire le conversazioni e le impostazioni del gruppo possono consentire ai membri di usare alcune azioni di gestione. Consulta [Permessi del gruppo](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -219,7 +198,7 @@ Le azioni visualizzate dipendono dai tuoi permessi. Gli amministratori del grupp
 
 ### Stampa
 
-Seleziona **Stampa** per generare una pagina adatta alla stampa. Usa la finestra di stampa del tuo browser per salvarla come PDF.
+Seleziona **Stampa** per aprire una versione della conversazione adatta alla stampa. Usa la finestra di stampa del tuo browser per salvarla come PDF.
 
 ![](thread_print_thread.png)
 
@@ -227,15 +206,13 @@ Seleziona **Stampa** per generare una pagina adatta alla stampa. Usa la finestra
 
 ### Markdown
 
-Seleziona **Markdown** per salvare l'intera conversazione come Markdown strutturato. Scegli **Copia Markdown** per copiarla negli appunti, oppure **Scarica Markdown** per salvarla come file `.md`. Puoi usarla per un verbale di riunione, un documento, un archivio di decisioni, un assistente IA o un altro strumento che supporta Markdown.
+Seleziona **Markdown** per esportare la conversazione come Markdown strutturato. Scegli **Copia Markdown** per copiarlo negli appunti, oppure **Scarica Markdown** per salvare un file `.md` da usare per verbali di riunione, archivi, documenti o strumenti di IA.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-Il documento inizia con un'intestazione YAML che contiene la chiave della conversazione, l'URL originale, il gruppo, la data di creazione, la data dell'ultima attività e i tag. Usa l'URL per tornare alla conversazione in Loomio. Seguono il contesto della discussione e tutti i commenti, i sondaggi, i voti e le conclusioni, nello stesso ordine e con gli stessi livelli di annidamento della visualizzazione in thread.
+L'esportazione inizia con un'intestazione YAML che elenca la chiave della conversazione, l'URL, il gruppo, le date e i tag. Seguono il contesto della discussione e tutti i commenti, i sondaggi, i voti e le conclusioni, nell'ordine e con i livelli di annidamento della conversazione. Ogni sondaggio appare come una sezione, mentre commenti, voti e conclusioni appaiono come blocchi di citazione che mostrano l'autore, la data e l'ora, il numero dell'elemento e le reazioni.
 
-Ogni sondaggio è una sezione. Commenti, voti e conclusioni sono riportati come citazioni, e le risposte sono citate sotto l'elemento a cui rispondono. Questo mostra dove inizia e finisce il testo di ciascuna persona. Ogni citazione inizia con una riga che indica la persona, quando ha pubblicato, il numero dell'elemento nella conversazione e le eventuali reazioni. I voti e le conclusioni sono anche indicati come tali. La chiave della conversazione e il numero dell'elemento identificano ogni elemento in Loomio.
-
-Loomio applica le stesse regole di visibilità della conversazione. I risultati e i motivi dei voti che non puoi vedere non vengono inclusi, e gli elettori non vengono identificati nei sondaggi anonimi. Se un sondaggio aperto nasconde i risultati finché non voti, vota prima di esportare la conversazione. **Markdown** e **Stampa** non sono disponibili finché non lo fai.
+Loomio applica le regole di visibilità della conversazione. I risultati e i motivi dei voti nascosti vengono omessi e gli elettori rimangono anonimi nei sondaggi anonimi. Se un sondaggio aperto nasconde i risultati finché non voti, vota prima: **Markdown** e **Stampa** non sono disponibili finché non lo fai.
 
 Per esempio, una discussione che contiene un commento, reazioni, una proposta, due voti, una risposta e una conclusione produce questo Markdown:
 
@@ -301,17 +278,17 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-I titoli e le etichette usano la lingua che hai selezionato. I contenuti scritti dai partecipanti rimangono nella lingua originale.
+I titoli e le etichette usano la lingua che hai selezionato. I contenuti dei partecipanti rimangono nella lingua originale.
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
 ### Fissare o rimuovere una conversazione dall'alto
 
-Le conversazioni fissate in alto appaiono sopra le altre nella pagina del gruppo. Le discussioni di benvenuto, le notizie e gli annunci sono usi comuni delle conversazioni fissate in alto.
+Le conversazioni fissate in alto rimangono in cima alla pagina del gruppo. I gruppi fissano spesso in alto discussioni di benvenuto, notizie e annunci.
 
 Apri il menu con i tre puntini (**⋯**) accanto alla conversazione nella pagina del gruppo e seleziona **Fissa in alto la discussione**. Le conversazioni fissate in alto sono ordinate in base al momento in cui sono state fissate. Per cambiarne l'ordine, rimuovile dall'alto e fissale di nuovo.
 
-Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione nell'ordine basato sull'attività.
+Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione nel normale ordine basato sull'attività.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -319,24 +296,25 @@ Seleziona **Rimuovi dall'alto la discussione** per riportare una conversazione n
 
 ### Spostare una conversazione
 
-Seleziona **Sposta discussione** per spostare una conversazione in un altro gruppo, in un sottogruppo o trasformarla in una conversazione diretta. Sarà visibile ai membri del gruppo di destinazione e a chiunque sia stato invitato specificamente a partecipare.
+Seleziona **Sposta discussione** per spostare una conversazione in un altro gruppo, in un sottogruppo o trasformarla in una conversazione diretta. Diventa visibile ai membri del gruppo di destinazione e a chiunque sia stato invitato a partecipare.
 
-Quando sposti una conversazione, Loomio mostra quante persone perderebbero il permesso di partecipare. Puoi mantenerle come ospiti senza inviare notifiche di invito. Per uno spostamento in un altro gruppo o sottogruppo, devi avere il permesso di invitare ospiti nel gruppo di destinazione; gli ospiti già presenti mantengono l'accesso.
+Prima dello spostamento, Loomio mostra quante persone perderebbero l'accesso. Puoi scegliere di mantenerle come ospiti senza inviare notifiche:
 
-Quando trasformi una conversazione in una conversazione diretta, le persone che hanno partecipato mantengono automaticamente l'accesso. Selezionando l'opzione per mantenere gli ospiti, mantieni anche l'accesso degli altri membri e ospiti attuali. Tu e la persona che ha creato la conversazione diventate amministratori della conversazione.
+- **Spostamento in un altro gruppo o sottogruppo:** per mantenere le persone come ospiti, devi avere il permesso di invitare ospiti nel gruppo di destinazione. Gli ospiti già presenti mantengono l'accesso.
+- **Conversione in una conversazione diretta:** le persone che hanno già partecipato mantengono automaticamente l'accesso. Selezionando l'opzione per mantenere gli ospiti, mantieni anche l'accesso degli altri membri e ospiti attuali. Tu e la persona che ha creato la conversazione diventate amministratori della conversazione.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
 >Avvia una bozza come discussione in una conversazione diretta o in un sottogruppo privato, poi spostala nel gruppo quando è pronta.
 
-Per spostare solo alcuni elementi dell'attività anziché l'intera conversazione, consulta [Spostare elementi tra conversazioni](/en/user_manual/discussions/moving_items/).
+Per spostare elementi specifici anziché l'intera conversazione, consulta [Spostare elementi tra conversazioni](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Bloccare o sbloccare una conversazione
 
-Blocca una conversazione per archiviarla così com'è. Nessuno può aggiungere contenuti a una conversazione bloccata, modificarla o usarla per invitare o notificare persone. Puoi bloccare una conversazione solo dopo la chiusura dei suoi sondaggi attivi.
+Blocca una conversazione per archiviarla così com'è. Nessuno può pubblicare contenuti, apportare modifiche o invitare persone in una conversazione bloccata. Tutti i sondaggi attivi devono essere chiusi prima che tu possa bloccare una conversazione.
 
 Seleziona **Blocca discussione** sotto **Azioni**. Le conversazioni bloccate vengono rimosse dall'elenco delle discussioni aperte e contrassegnate con il tag **Bloccate**.
 
@@ -346,8 +324,8 @@ Per trovare una conversazione bloccata, apri il filtro delle discussioni nella p
 
 ### Eliminare una conversazione
 
-L'eliminazione di una conversazione la rimuove definitivamente e non può essere annullata. Blocca la conversazione se potresti averne ancora bisogno.
+L'eliminazione di una conversazione la rimuove definitivamente e non può essere annullata. Blocca la conversazione se potresti averne bisogno in seguito.
 
-Seleziona **Cancella discussione** e conferma l'eliminazione.
+Seleziona **Cancella discussione** e conferma.
 
 ![](../discussion_management/thread_delete.png)

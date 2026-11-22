@@ -1,38 +1,38 @@
 ---
 title: Commentaires
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 5de86c47a823daf0
-  reading-comments: afb3c59b0ca6b8e2
-  writing-a-comment: 2e1a2c5fba2575d2
-  mentioning-people: 949375e41b71aed0
-  replying-to-a-comment: dfc6e14af2c530e4
-  reactions: 6c323c46a8ecd068
-  translating-comments: 37fa032f1fff2c53
-  comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 10a48fa173d9fe68
-  edit-a-comment-and-view-changes: 5607bcf53a8a0dff
-  copy-a-comment-link: e7c44dd77efba66e
-  view-notification-history: '0186c24ddde89f56'
-  discard-restore-or-delete-a-comment: f7fcdf12cf61a764
+  introduction: '09065cd966dd759c'
+  reading-comments: 2804dad52c91aca3
+  writing-a-comment: bb5c73b74d132614
+  mentioning-people: f6ab4011ec879386
+  replying-to-a-comment: 94881aeeea2dd484
+  reactions: a8452bef7d012db9
+  translating-comments: 01aa349a9089f52d
+  comment-actions: 9f4155bf7cf7e8ed
+  add-a-comment-to-jump-to: 4e804af971edfc6c
+  edit-a-comment-and-view-changes: 32582adec1903fef
+  copy-a-comment-link: 84cd4cdaa9ab0c84
+  view-notification-history: 36aa5fdd35851ea4
+  discard-restore-or-delete-a-comment: 751207a4a9e0f998
 generated:
-  introduction: 883f6b72430f73e1
-  reading-comments: 158a8ec173af92f5
-  writing-a-comment: 31f0b84efc45c358
-  mentioning-people: 44fb418e031a4215
-  replying-to-a-comment: 716b4bbb92ea4681
-  reactions: 65677706372348e5
-  translating-comments: 56abf81e2d998c67
+  introduction: 14c80a9ea897ad6e
+  reading-comments: 02e0151d8db40caf
+  writing-a-comment: 8925db26f1e49465
+  mentioning-people: 063b9760a818ef3b
+  replying-to-a-comment: dde0710d986655f4
+  reactions: db9f120047431686
+  translating-comments: 9d4c773995ce5099
   comment-actions: 680c9ff79d7e4c67
-  add-a-comment-to-jump-to: 8bc9e1877931d007
-  edit-a-comment-and-view-changes: 0cda6e4a6745c27c
-  copy-a-comment-link: 6cb038158b8825af
-  view-notification-history: 2bb478eb8a297794
-  discard-restore-or-delete-a-comment: 29a49fed65e71c05
+  add-a-comment-to-jump-to: d15fbbd10aa84e41
+  edit-a-comment-and-view-changes: 317b1768ff28c4e6
+  copy-a-comment-link: adadbea0edcc7f2a
+  view-notification-history: 61431864d3eb7169
+  discard-restore-or-delete-a-comment: d777bcccc83ba783
 title_source: 355f79f29d7d3c2d
 title_generated: f79d7a8b3783b5fd
 ---
@@ -41,13 +41,13 @@ title_generated: f79d7a8b3783b5fd
 
 # Commentaires
 
-Les commentaires sont le principal moyen de participer à une discussion. Ils sont visibles par toute personne autorisée à consulter le fil.
+Les commentaires sont le principal moyen de participer à une discussion. Toute personne ayant accès au fil peut les lire.
 
 <!-- translation-section: reading-comments -->
 
 ## Lire les commentaires
 
-Les fils s’ouvrent sur le contexte de la discussion. Vous pouvez utiliser **Nouveau pour vous** dans le menu du fil pour trouver l’activité non lue, ou **Dernier** pour accéder à l’activité la plus récente.
+Les fils s’ouvrent sur le contexte de la discussion. Dans la barre latérale droite, sous **Aller à**, sélectionnez **Nouveau pour vous** pour accéder à l’activité non lue, ou **Dernier** pour accéder aux éléments les plus récents.
 
 Les commentaires non lus portent une étiquette bleue **nouveau** à côté de leur heure de publication.
 
@@ -57,19 +57,19 @@ Les commentaires non lus portent une étiquette bleue **nouveau** à côté de l
 
 ## Rédiger un commentaire
 
-Rédigez un commentaire pour contribuer à la discussion. Les autres personnes peuvent répondre, réagir ou publier leurs propres commentaires.
+Rédigez un commentaire pour participer à la conversation. Les autres participants peuvent répondre, réagir ou ajouter leurs propres commentaires.
 
-Sélectionnez **Publier un commentaire** pour le publier. Votre commentaire sera visible par toute personne autorisée à consulter la discussion.
+Sélectionnez **Publier un commentaire** pour le publier.
 
 ![](../using_discussions/comment.png)
 
-Les outils décrits dans [Mise en forme](/en/user_manual/discussions/formatting/) sont disponibles lorsque vous rédigez des commentaires.
+Tous les outils présentés dans [Mettre en forme le texte et joindre des fichiers](/en/user_manual/discussions/formatting/) sont disponibles lorsque vous rédigez des commentaires.
 
 <!-- translation-section: mentioning-people -->
 
 ## Mentionner des personnes
 
-Saisissez **@**, commencez à saisir le nom d’une personne, puis sélectionnez-la dans la liste. Une mention avertit immédiatement cette personne et permet de solliciter son attention ou une réponse.
+Saisissez **@**, commencez à saisir le nom d’une personne, puis sélectionnez-la dans la liste. Mentionner une personne lui envoie immédiatement une notification pour solliciter son attention ou une réponse.
 
 ![Mention de Samira Patel dans un commentaire](../notifying_people/comment_mention.png)
 
@@ -85,19 +85,19 @@ Mentionner une personne ne lui donne pas accès au fil. Utilisez **Inviter des p
 
 ## Répondre à un commentaire
 
-Sélectionnez **Répondre** sous un commentaire pour y répondre. La réponse contient déjà une @mention de l’auteur du commentaire, qui reçoit une notification lorsque vous la publiez. Supprimez la mention si vous ne souhaitez pas lui envoyer de notification.
+Sélectionnez **Répondre** sous un commentaire pour y répondre. Loomio préremplit la réponse avec une @mention de l’auteur du commentaire, qui reçoit ainsi une notification lorsque vous la publiez. Supprimez la mention si vous ne souhaitez pas lui envoyer de notification.
 
 ![](../using_discussions/comment_reply.png)
 
-Vous pouvez aussi répondre à votre propre commentaire pour placer une réponse sous celui-ci.
+Vous pouvez aussi répondre à votre propre commentaire pour placer un complément sous celui-ci.
 
-Si un e-mail de Loomio indique que vous pouvez répondre par e-mail, votre réponse apparaîtra dans le fil.
+Si un e-mail de Loomio indique que vous pouvez répondre par e-mail, votre réponse envoyée par e-mail apparaît dans le fil.
 
 <!-- translation-section: reactions -->
 
 ## Réactions
 
-Utilisez le bouton en forme de visage souriant pour répondre avec un emoji. Les réactions envoient une notification à l’auteur du commentaire dans Loomio, mais aucun e-mail.
+Sélectionnez l’icône en forme de visage souriant pour réagir avec un emoji. Les réactions envoient une notification à l’auteur du commentaire dans Loomio sans envoyer d’e-mail.
 
 ![](../using_discussions/reaction.png)
 
@@ -105,11 +105,11 @@ Utilisez le bouton en forme de visage souriant pour répondre avec un emoji. Les
 
 ## Traduire les commentaires
 
-Si l’auteur utilise une autre langue que la vôtre, une action **Traduire** apparaît sous le commentaire.
+Lorsqu’un commentaire est rédigé dans une autre langue que la vôtre, un bouton **Traduire** apparaît sous celui-ci.
 
 ![](../using_discussions/comment_translate.png)
 
-Sélectionnez **Afficher une traduction automatique du commentaire** pour voir le commentaire dans votre langue.
+Sélectionnez **Traduire** pour lire le commentaire dans votre langue.
 
 ![](../using_discussions/comment_translated.png)
 
@@ -123,9 +123,9 @@ Les actions courantes apparaissent directement sous un commentaire. D’autres a
 
 ### Ajouter un commentaire à Aller à
 
-Utilisez **Ajouter à la timeline** pour ajouter un commentaire à la liste **Aller à** du fil.
+Sélectionnez **Ajouter à la timeline** pour ajouter un commentaire à la liste **Aller à** du fil.
 
-Vous pouvez modifier le libellé affiché dans **Aller à**. Retirez le commentaire de la timeline, puis ajoutez-le à nouveau pour modifier le texte du lien.
+Vous ne pouvez pas modifier le libellé directement dans **Aller à**. Pour modifier le texte du lien, sélectionnez **Retirer de la timeline**, puis ajoutez à nouveau le commentaire.
 
 >[!Tip]
 >Sélectionnez les mots que vous souhaitez utiliser comme texte du lien avant de sélectionner **Ajouter à la timeline**.
@@ -136,28 +136,28 @@ Sélectionnez **Retirer de la timeline** pour retirer l’élément de **Aller �
 
 ### Modifier un commentaire et consulter les modifications
 
-Sélectionnez **Modifier** sous l’un de vos commentaires pour le modifier. Les administrateurs du groupe peuvent aussi modifier les commentaires des membres lorsque l’autorisation correspondante est activée dans le groupe.
+Vous pouvez modifier un commentaire lorsque :
+
+- vous l’avez rédigé et le groupe autorise les membres à modifier leurs propres commentaires ; ou
+- vous êtes administrateur du groupe et l’option **Les administrateurs peuvent modifier les commentaires des membres** est activée dans [Autorisations du groupe](/en/user_manual/groups/settings/permissions).
+
+Sélectionnez **Modifier** sous un commentaire pour le modifier.
 
 ![](../using_discussions/comment_edit.png)
 
-Une action **Modifié** apparaît sous un commentaire modifié.
+Un lien **Modifié** apparaît sous les commentaires modifiés.
 
 ![](../using_discussions/comment_show_edits.png)
 
-Sélectionnez **Modifié** pour consulter les modifications. Le texte supprimé est surligné en rouge et le texte ajouté en vert. Loomio enregistre qui a effectué chaque modification et à quel moment.
+Sélectionnez **Modifié** pour consulter l’historique des modifications. Le texte supprimé est surligné en rouge et le texte ajouté en vert. Loomio enregistre qui a effectué chaque modification et à quel moment.
 
 ![](../using_discussions/comment_edits.png)
-
-Vous pouvez modifier un commentaire lorsque :
-
-- vous l’avez rédigé et le groupe autorise les membres à modifier leurs commentaires
-- vous êtes administrateur du groupe et l’option [Les administrateurs peuvent modifier les commentaires des membres](/en/user_manual/groups/settings/permissions) est activée
 
 <!-- translation-section: copy-a-comment-link -->
 
 ### Copier le lien d’un commentaire
 
-Sélectionnez **Copier le lien** pour copier l’URL unique du commentaire. Vous pouvez coller le lien ailleurs pour renvoyer directement à ce commentaire.
+Sélectionnez **Copier le lien** pour copier l’URL directe du commentaire afin de pouvoir créer un lien vers celui-ci ailleurs.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -169,7 +169,7 @@ Ouvrez le menu à trois points (**⋯**) à côté d’un commentaire et sélect
 
 ![Historique des notifications dans le menu des actions d’un commentaire](../notifying_people/comment_notification_history.png)
 
-L’historique des notifications indique qui a reçu une notification concernant le commentaire, quand elle a été envoyée et si elle a été lue lorsque cette information est disponible.
+L’historique des notifications indique qui a reçu une notification concernant le commentaire, quand chaque notification a été envoyée et si elle a été lue lorsque cette information est disponible.
 
 ![Historique des notifications d’un commentaire mentionnant Samira Patel](../notifying_people/comment_notification_example.png)
 
@@ -177,28 +177,28 @@ L’historique des notifications indique qui a reçu une notification concernant
 
 ### Jeter, restaurer ou supprimer un commentaire
 
-Jeter un commentaire le retire du fil, mais le conserve dans une corbeille. Vous pouvez jeter vos propres commentaires en sélectionnant **Jeter** dans le menu à trois points. Les administrateurs du groupe peuvent également jeter des commentaires.
+Jeter un commentaire masque son contenu dans le fil tout en laissant un emplacement permettant de le restaurer ultérieurement. Vous pouvez jeter vos propres commentaires depuis le menu à trois points (**⋯**) en sélectionnant **Jeter**. Les administrateurs du groupe peuvent jeter n’importe quel commentaire.
 
 ![](../using_discussions/comment_discard.png)
 
 **Restaurer un commentaire**
 
-L’emplacement d’un commentaire jeté porte la mention **Elément supprimé**. Ouvrez son menu à trois points et sélectionnez **Restaurer**.
+Un commentaire jeté apparaît sous la mention **Elément supprimé**. Ouvrez son menu à trois points (**⋯**) et sélectionnez **Restaurer** pour le rétablir.
 
 ![](../using_discussions/comment_restore.png)
 
 **Supprimer un commentaire**
 
-Supprimer un commentaire le retire définitivement. Il ne peut pas être restauré.
+Supprimer un commentaire le retire définitivement. Cette action ne peut pas être annulée.
 
-Si l’option **Les membres peuvent supprimer leurs propres commentaires** est activée dans les [Permissions du groupe](/en/user_manual/groups/settings/permissions), les membres peuvent supprimer définitivement leurs propres commentaires jetés. Les administrateurs du groupe peuvent supprimer n’importe quel commentaire.
+Les administrateurs du groupe peuvent supprimer n’importe quel commentaire jeté. Les membres peuvent supprimer définitivement leurs propres commentaires jetés lorsque l’option **Les membres peuvent supprimer leurs propres commentaires** est activée dans les [Permissions du groupe](/en/user_manual/groups/settings/permissions).
 
 ![](../using_discussions/permissions_delete_comment.png)
 
-Ouvrez le menu à trois points d’une entrée **Elément supprimé** et sélectionnez **Supprimer**.
+Ouvrez le menu à trois points (**⋯**) d’une entrée **Elément supprimé** et sélectionnez **Supprimer**.
 
 ![](../using_discussions/comment_delete.png)
 
-Un message de confirmation explique que le commentaire sera définitivement supprimé.
+Confirmez la suppression définitive dans la boîte de dialogue.
 
 ![](../using_discussions/comment_delete_message.png)

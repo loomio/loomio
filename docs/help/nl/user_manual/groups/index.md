@@ -1,16 +1,16 @@
 ---
 title: Groepen
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bc6967c16a4da2f5
-  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
+  introduction: 898c4f0b7d3b8a80
+  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
 generated:
-  introduction: 391ea4dc19972c96
-  administration-facilitation-and-moderation-code-of-conduct: 90a030d30f2b381f
+  introduction: 82e4999048c1beda
+  administration-facilitation-and-moderation-code-of-conduct: 59d140dc7dd179ab
 title_source: 39bbb719fa2b9d22
 title_generated: 954618df1bbc3db1
 ---
@@ -19,15 +19,11 @@ title_generated: 954618df1bbc3db1
 
 # Groepen
 
-Een Loomio-groep is een veilige plek waar mensen elkaar kunnen ontmoeten, discussies kunnen voeren en besluiten kunnen nemen.
-
-Het is een plek waar groepsleden informatie kunnen vinden en delen en kunnen deelnemen aan belangrijke discussies en besluiten die invloed hebben op hun werk.
-
-Een Loomio-groep ziet er zo uit. Bovenaan de pagina zie je een afbeelding en een logo die je kunt aanpassen aan jouw organisatie. Zo zien mensen die bij jouw groep komen dat ze op een herkenbare plek zijn en voelen ze zich welkom: een veilige omgeving waar mensen zich thuis voelen, onder vrienden zijn en effectief kunnen deelnemen.
+Een Loomio-groep is een gedeelde ruimte waar leden discussies voeren, informatie delen en samen besluiten nemen.
 
 ![De groepspagina van The Oatmilk Cooperative, met de beschrijving en de lijst met discussies](group_page.png)
 
-Geef jouw groep een herkenbare naam en gebruik de beschrijving om uit te leggen wat het doel is, wie erbij betrokken is en hoe leden kunnen deelnemen. Je kunt ook een logo, een omslagafbeelding en links naar documenten toevoegen, zoals een omschrijving van taken en bevoegdheden.
+Je kunt jouw groepspagina aanpassen met een naam, beschrijving, logo, omslagafbeelding en links naar documenten, zoals een omschrijving van taken en bevoegdheden. Dit helpt leden te begrijpen wat het doel van de groep is en hoe ze kunnen deelnemen.
 
 Om te beginnen, [maak een groep aan](/en/user_manual/groups/starting_a_group), kies de [privacyinstellingen](/en/user_manual/groups/settings/privacy) en [nodig mensen uit](/en/user_manual/groups/inviting_people).
 
@@ -35,6 +31,6 @@ Als je een nieuwe groep voorbereidt, vind je in [Loomio introduceren in jouw gro
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Beheer, procesbegeleiding en moderatie - Gedragscode
+## Gedragscode
 
-Een gedragscode kan leden helpen begrijpen hoe ze kunnen deelnemen en hoe de groep zal reageren op ongepast gedrag. Raadpleeg de [Handleiding voor procesbegeleiders](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) voor advies over het vastleggen van verwachtingen.
+Een gedragscode helpt leden te begrijpen hoe ze kunnen deelnemen en hoe de groep reageert op ongepast gedrag. Raadpleeg de [Handleiding voor procesbegeleiders](/en/guides/facilitators_guide/commencing#culture-protocol-expectations) voor advies over het vastleggen van verwachtingen.

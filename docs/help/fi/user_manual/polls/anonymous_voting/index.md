@@ -1,46 +1,46 @@
 ---
 title: Anonyymi äänestys
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 2b9b7da01da020b3
-  how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: 60b564978d2a7a71
-  votes-cannot-be-changed: f4353c89bbffe7aa
-  why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
-  results-and-exports: eb2429afd442dad2
-  participation-verification: 75edf02a6a2324a3
-  reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
-  limits-of-anonymous-voting: 912141560342d073
+  introduction: ffcecd2f4297c47d
+  how-anonymous-voting-protects-voters: 3b757a1b4a7bda96
+  while-voting-is-open: aafc698ee8108194
+  votes-cannot-be-changed: 3a99e6c3f48e10ee
+  why-anonymous-votes-do-not-have-reasons: 4027d6c1fbf4d29c
+  results-and-exports: 5c10ab43a5f890b4
+  participation-verification: e77ece0fc0d6cd73
+  reminders: f711a180ae7c948f
+  what-coordinators-and-administrators-can-see: d873cd48677fc324
+  limits-of-anonymous-voting: 9ab54b74a4716e19
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
-  can-i-see-my-vote-after-submitting-it: c558e29729aed45f
-  can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
-  will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
-  is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  can-a-coordinator-see-how-i-voted: bfa1baf48f41cdd1
+  can-i-see-my-vote-after-submitting-it: 435010e0c2ecf488
+  can-i-change-or-withdraw-my-vote: 676d5401bf4d73cc
+  will-i-receive-an-email-confirming-my-vote: 9660f10e8ffb9f9c
+  does-a-public-poll-reveal-more-information: '087defb00bb8b99f'
+  is-anonymous-voting-suitable-for-every-election: 9fae56c0661f0ec9
 generated:
-  introduction: 615af5fab336f767
-  how-anonymous-voting-protects-voters: d8b855653cb914cc
-  while-voting-is-open: e78f248470d96ba9
-  votes-cannot-be-changed: 93c10c3c8fb1f7c1
-  why-anonymous-votes-do-not-have-reasons: b7364c8bc51e82a9
-  results-and-exports: 143e96b8852c2eec
-  participation-verification: ae3ec0def58b5c1c
-  reminders: 4eff1cc8ae6b06fc
-  what-coordinators-and-administrators-can-see: a65b658649ac3e19
-  limits-of-anonymous-voting: f5ee56c4db48047a
+  introduction: 7c77ce5b6535a4d2
+  how-anonymous-voting-protects-voters: 3f8c5c16eec1a684
+  while-voting-is-open: 1c5ad89087147fe0
+  votes-cannot-be-changed: 32a49fe0086b6011
+  why-anonymous-votes-do-not-have-reasons: 5e2ed14b4b27af28
+  results-and-exports: 4bc36258351da14b
+  participation-verification: 4ab83dc057d21173
+  reminders: 7e521bf7769ab340
+  what-coordinators-and-administrators-can-see: c25b19d34d40fd42
+  limits-of-anonymous-voting: fe4df8405b87a0b7
   questions: b868ae945415823c
-  can-a-coordinator-see-how-i-voted: 52d65c9c546534d8
-  can-i-see-my-vote-after-submitting-it: 2c4ee032b690f2eb
-  can-i-change-or-withdraw-my-vote: f920de4ba54be74c
-  will-i-receive-an-email-confirming-my-vote: '0774488371988065'
+  can-a-coordinator-see-how-i-voted: 38ea72bc1a684724
+  can-i-see-my-vote-after-submitting-it: 45705ac2bdb901ff
+  can-i-change-or-withdraw-my-vote: 4734c3b98e90dabc
+  will-i-receive-an-email-confirming-my-vote: c25fa426261ba4cc
   does-a-public-poll-reveal-more-information: 7862431a049c36a5
-  is-anonymous-voting-suitable-for-every-election: 61afee66a0f733e6
+  is-anonymous-voting-suitable-for-every-election: a18346d2f39f5865
 title_source: 1bc4567506ad4d51
 title_generated: 5c4eec1fb34c2a8c
 ---
@@ -49,9 +49,9 @@ title_generated: 5c4eec1fb34c2a8c
 
 # Anonyymi äänestys
 
-Anonyymi äänestys, jota kutsutaan myös sokkoäänestykseksi, pitää tiedon äänestäneistä erillään itse äänistä. Kyselyn sulkeuduttua kaikki, jotka näkevät tulokset, näkevät myös osallistujat. Kukaan Loomion käyttäjä ei voi yhdistää annettua ääntä sen antaneeseen henkilöön.
+Anonyymi äänestys, jota kutsutaan myös sokkoäänestykseksi, pitää tiedon äänestäneistä erillään itse äänistä. Kyselyn sulkeuduttua kaikki, jotka näkevät tulokset, näkevät myös osallistujat, mutta kukaan Loomion käyttäjä ei voi yhdistää ääntä sen antaneeseen henkilöön.
 
-Tällä sivulla kerrotaan anonyymin äänestyksen tarjoamasta suojasta, säilytettävistä tiedoista ja suojan rajoista.
+Tällä sivulla kerrotaan, miten anonyymi äänestys toimii, mitä tietoja säilytetään ja mitkä ovat suojan rajat.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
@@ -66,7 +66,7 @@ Anonyymi kysely säilyttää kaksi erillistä tietojoukkoa:
 | Onko kukin äänioikeutettu henkilö äänestänyt | Ei nimeä eikä käyttäjätiliä |
 | Ei valittuja vaihtoehtoja eikä pisteitä | Ei yhteyttä osallistumistietoihin |
 
-Näillä tiedoilla ei ole yhteistä tunnistetta, joka yhdistäisi ne. Annettuihin ääniin ei myöskään tallenneta todellista lähetysaikaa, kutsutietoja, kirjallisia perusteluja, liitteitä eikä muita metatietoja, jotka voisivat auttaa tunnistamaan äänestäjän.
+Näillä tiedoilla ei ole yhteistä tunnistetta, joka yhdistäisi ne. Annettuihin ääniin ei myöskään tallenneta lähetysaikoja, kutsutietoja, äänten perusteluja, liitteitä eikä muita metatietoja, joista äänestäjän voisi tunnistaa.
 
 Tiedot pidetään erillään jo ääntä tallennettaessa. Suoja ei perustu pelkästään nimien piilottamiseen käyttöliittymässä.
 
@@ -74,7 +74,7 @@ Tiedot pidetään erillään jo ääntä tallennettaessa. Suoja ei perustu pelk�
 
 ## Kun äänestys on avoinna
 
-Tulokset pysyvät piilossa kaikilta, kunnes kysely sulkeutuu. Tämä koskee myös ketjun ylläpitäjiä, ryhmän ylläpitäjiä ja Loomio-asennuksen ylläpitäjiä, jotka käyttävät sovellusta.
+Tulokset pysyvät piilossa kaikilta, kunnes kysely sulkeutuu. Tämä koskee myös ketjun ylläpitäjiä, ryhmän ylläpitäjiä ja Loomio-asennuksen ylläpitäjiä.
 
 Kun joku äänestää:
 
@@ -82,9 +82,9 @@ Kun joku äänestää:
 - hänen osallistumistietoihinsa merkitään, että hän on äänestänyt;
 - äänestä ei luoda tapahtumaa, ilmoitusta, sähköpostia, kommenttia eikä toimintamerkintää;
 - hänen valinnoistaan ei palauteta kopiota lähettämisen jälkeen; ja
-- käyttöliittymä vahvistaa vain, että hänen äänensä on tallennettu.
+- näytöllä vahvistetaan vain, että hänen äänensä on tallennettu.
 
-Osallistumistietoihin ei tallenneta tarkkaa äänestysaikaa. Annettuja ääniä ei järjestetä lähetysajan mukaan.
+Osallistumistietoihin ei tallenneta tarkkaa äänestysaikaa, eikä annettuja ääniä järjestetä lähetysajan mukaan.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
@@ -92,7 +92,7 @@ Osallistumistietoihin ei tallenneta tarkkaa äänestysaikaa. Annettuja ääniä 
 
 Jokainen äänioikeutettu henkilö voi äänestää kerran. Annettua anonyymiä ääntä ei voi tarkastella, muuttaa, perua eikä korvata. Myöskään ylläpitäjä ei voi tehdä näin.
 
-Jos henkilö voisi hakea oman äänensä tai korvata sen, henkilön ja äänen välillä pitäisi olla pysyvä yhteys. Anonyymissä äänestyksessä tätä yhteyttä ei tarkoituksella luoda.
+Jos henkilö voisi hakea oman äänensä tai korvata sen, henkilön ja äänen välillä pitäisi olla yhteys. Anonyymissä äänestyksessä tätä yhteyttä ei tarkoituksella luoda.
 
 Tarkista valintasi huolellisesti ennen lähettämistä.
 
@@ -100,17 +100,17 @@ Tarkista valintasi huolellisesti ennen lähettämistä.
 
 ## Miksi anonyymeillä äänillä ei ole perusteluja
 
-Uusiin anonyymeihin ääniin ei voi liittää kirjallista perustelua eikä liitettä. Perustelut voivat sisältää nimiä, henkilökohtaisia tietoja, kirjoitustyylin piirteitä, mainintoja tai muita tietoja, joista äänestäjän voi tunnistaa. Ne myös helpottaisivat yksittäisten äänten erottamista yhteistuloksesta.
+Anonyymeihin ääniin ei voi liittää äänen perustelua eikä liitettä. Perustelut voivat sisältää nimiä, henkilökohtaisia tietoja, kirjoitustyylin piirteitä tai mainintoja, joista äänestäjän voi tunnistaa. Ne voivat myös helpottaa yksittäisten äänten erottamista tuloksista.
 
-Osallistujat voivat silti keskustella kyselystä sen ketjussa, jos keskustelu on käytettävissä. Nämä kommentit ovat tavallisia, nimellä julkaistuja keskustelupuheenvuoroja, eikä niitä liitetä anonyymiin ääneen.
+Osallistujat voivat silti keskustella kyselystä sen ketjussa. Nämä kommentit ovat tavallisia, nimellä julkaistuja puheenvuoroja, eikä niitä liitetä anonyymiin ääneen.
 
 <!-- translation-section: results-and-exports -->
 
 ## Tulokset ja viennit
 
-Kyselyn sulkeuduttua tulokset lasketaan osallistumistiedoista erillään olevista äänistä ja näytetään yhteismäärinä sekä muina kyselytyypin tukemina yhteistuloksina.
+Kyselyn sulkeuduttua Loomio laskee tulokset osallistumistiedoista erillään olevista äänistä ja näyttää kyseisen kyselytyypin yhteistulokset.
 
-Sovellus ei julkaise äänten tunnisteita, lähetysjärjestystä eikä lähetysaikoja. Kyselyn vientitiedostot sisältävät yhteistulokset yksittäisten anonyymien äänten rivien sijaan. Poikkeuksena ovat suljetut STV-vaalit, jotka voi viedä BLT-muodossa. BLT-vienti sisältää vaalien uudelleenlaskentaan tarvittavat ehdokkaiden paremmuusjärjestykset. Äänet ryhmitellään, kun useassa äänessä on sama järjestys, eikä vienti sisällä äänestäjien henkilöllisyyksiä tai äänten metatietoja.
+Loomio ei julkaise äänten tunnisteita, lähetysjärjestystä eikä lähetysaikoja. Kyselyn vientitiedostot sisältävät vain yhteistulokset yksittäisten äänten rivien sijaan. Ainoa poikkeus ovat suljetut STV-vaalit, jotka voi viedä BLT-muodossa uudelleenlaskentaa varten. BLT-vienti sisältää ehdokkaiden paremmuusjärjestykset ilman äänestäjien henkilöllisyyksiä tai äänten metatietoja. Äänet ryhmitellään, kun useassa äänessä on sama järjestys.
 
 Anonyymiä kyselyä ei voi avata uudelleen sen sulkeuduttua.
 
@@ -120,7 +120,7 @@ Anonyymiä kyselyä ei voi avata uudelleen sen sulkeuduttua.
 
 Anonyymin kyselyn sulkeuduttua kaikki, jotka näkevät sen tulokset, näkevät myös osallistujat. Kukaan ei näe tätä tietoa äänestyksen ollessa avoinna.
 
-Valitse **Näytä äänet**, niin näet luettelon. Siinä näkyy aina, kenellä oli äänioikeus. Kunkin henkilön kohdalla näkyy, onko hän äänestänyt, vain jos riittävän moni on äänestänyt. Tämä tarkoittaa kyselyn päätösvaltaisuuteen vaadittavaa määrää, jos se on määritetty, ja muussa tapauksessa puolta äänioikeutetuista. Ääniä on kuitenkin oltava vähintään kolme. Luettelo ei koskaan näytä, miten tai milloin kukaan äänesti.
+Valitse **Näytä äänet**, niin näet luettelon. Siinä näkyy aina, kenellä oli äänioikeus. Luettelo ei koskaan näytä, miten tai milloin kukaan äänesti. Kunkin henkilön kohdalla näkyy, onko hän äänestänyt, vain jos riittävän moni osallistui: vähintään kyselyn päätösvaltaisuuteen vaadittava määrä, jos se on määritetty, ja muussa tapauksessa vähintään puolet äänioikeutetuista. Ääniä on kuitenkin aina oltava vähintään kolme.
 
 Ryhmän jäsenet ja kyselyn äänestäjät näkevät myös, milloin kukin henkilö liittyi ryhmään ja kuka hänet kutsui. Ryhmän ylläpitäjät näkevät lisäksi sähköpostiosoitteet, jotta he voivat erottaa samannimiset henkilöt toisistaan.
 
@@ -134,9 +134,9 @@ Ylläpitäjät voivat lisätä äänioikeutettuja henkilöitä äänestyksen oll
 
 Jos anonyymi kysely kestää vähintään 24 tuntia, äänioikeutetut henkilöt, jotka eivät ole äänestäneet, saavat yhden automaattisen muistutuksen viimeisten 24 tunnin aikana.
 
-Muistutuksen vastaanottajat valitaan pelkkien osallistumistietojen perusteella. Annettuja ääniä ei tarkastella eikä niihin luoda yhteyttä. Jos määräaika muuttuu, tunnin välein tehtävä muistutustarkistus käyttää nykyistä määräaikaa. Kyselylle ei ylläpidetä erillistä ajastettua muistutusta.
+Loomio valitsee vastaanottajat pelkkien osallistumistietojen perusteella tarkastelematta annettuja ääniä.
 
-Kyselyt, joiden koko äänestysaika on alle 24 tuntia, eivät lähetä tätä automaattista muistutusta.
+Kyselyt, joiden äänestysaika on alle 24 tuntia, eivät lähetä tätä automaattista muistutusta.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
@@ -145,25 +145,25 @@ Kyselyt, joiden koko äänestysaika on alle 24 tuntia, eivät lähetä tätä au
 Ketjun ylläpitäjä, ryhmän ylläpitäjä tai Loomio-asennuksen ylläpitäjä voi sovelluksessa nähdä:
 
 - kyselyn ja sen äänioikeutetut henkilöt;
-- onko kukin äänioikeutettu henkilö äänestänyt, jos ylläpitäjän rooli sallii tiedon katselun ja riittävän moni on äänestänyt; ja
+- onko kukin äänioikeutettu henkilö äänestänyt (jos ylläpitäjän rooli sallii tiedon katselun ja riittävän moni on äänestänyt); ja
 - yhteistulokset kyselyn sulkeuduttua.
 
-He eivät voi sovelluksen toimintojen avulla nähdä:
+He eivät voi sovelluksen avulla nähdä:
 
 - mitkä valinnat kuuluvat tietylle henkilölle;
 - yksittäisiä ääniä tai äänestyskäyttäytymisen malleja;
-- milloin tietty ääni annettiin; tai
-- annettuun ääneen liittyvää perustelua, liitettä, tapahtumaa tai ilmoitusta.
+- milloin ääni annettiin; tai
+- ääneen liittyvää perustelua, liitettä, tapahtumaa tai ilmoitusta.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Anonyymin äänestyksen rajat
 
-Nämä suojaukset estävät sovelluksen käyttäjiä yhdistämästä annettua ääntä sen antaneeseen henkilöön. Ne eivät tarjoa kryptografista suojaa järjestelmän ylläpidosta vastaavaa henkilöä vastaan, jos hän voi tarkastella tietokantaa, varmuuskopioita, palvelinlokeja, prosessin muistia, verkkoliikennettä tai sovelluksen muokattua versiota.
+Anonyymi äänestys estää Loomion käyttäjiä yhdistämästä ääntä äänestäjään. Se ei tarjoa kryptografista suojaa palvelimen ylläpidosta vastaavaa henkilöä vastaan, jos hän voi tarkastella tietokantaa, varmuuskopioita, palvelinlokeja, prosessin muistia, verkkoliikennettä tai muokattua koodia.
 
-Myös itse tulos voi paljastaa tietoja. Pieni äänestäjäjoukko, yksimielinen tulos, erottuva valintojen yhdistelmä tai kyselyn ulkopuolella jaetut tiedot voivat helpottaa henkilön valintojen päättelemistä. Äänestäjät voivat myös itse kertoa henkilöllisyytensä keskustelussa, erillään antamastaan äänestä.
+Myös itse tulokset voivat antaa vihjeitä. Pieni ryhmä, yksimielinen tulos, erottuva valintojen yhdistelmä tai kyselyn ulkopuolella jaetut kommentit voivat helpottaa henkilön äänen päättelemistä.
 
-Ota huomioon äänestäjäjoukon koko ja päätöksen arkaluonteisuus, kun arvioit, sopiiko sovellustason anonyymi äänestys tilanteeseen.
+Ota huomioon ryhmän koko ja päätöksen arkaluonteisuus ennen kuin luotat sovellustason anonyymiin äänestykseen.
 
 <!-- translation-section: questions -->
 
@@ -173,25 +173,25 @@ Ota huomioon äänestäjäjoukon koko ja päätöksen arkaluonteisuus, kun arvio
 
 ### Voiko kukaan nähdä, miten äänestin?
 
-Ei. Kun riittävän moni on äänestänyt, tulokset näkevät henkilöt näkevät, oletko äänestänyt. Kukaan ei voi yhdistää sinua annettuun ääneen sovelluksen kautta. Siihen asti tieto siitä, oletko äänestänyt, pysyy piilossa.
+Ei. Kukaan Loomion käyttäjä ei voi yhdistää sinua ääneesi. Kun riittävän moni on äänestänyt, kaikki tulokset näkevät henkilöt näkevät, osallistuitko. Ennen tämän rajan saavuttamista myös tieto siitä, oletko äänestänyt, pysyy piilossa.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
 ### Voinko nähdä ääneni sen lähettämisen jälkeen?
 
-Et. Sovellus vahvistaa, että äänesi on tallennettu, ja poistaa sitten valintasi äänestysnäkymästä. Se ei voi hakea ääntäsi luomatta yhteyttä, jonka syntymisen anonyymi äänestys on suunniteltu estämään.
+Et. Loomio vahvistaa, että äänesi on tallennettu, ja poistaa valintasi näytöltä. Se ei voi hakea ääntäsi luomatta yhteyttä, jota anonyymissä äänestyksessä vältetään.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
 ### Voinko muuttaa tai perua ääneni?
 
-Et. Sovelluksessa ei ole yhteyttä, jonka avulla se voisi tunnistaa, mitä lähetettyä ääntä pitäisi muuttaa tai poistaa.
+Et. Koska sinun ja äänesi välillä ei ole yhteyttä, Loomio ei voi tunnistaa, mitä ääntä pitäisi muuttaa tai poistaa.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
 ### Saanko sähköpostivahvistuksen äänestäni?
 
-Et. Äänestäminen näyttää vain vahvistuksen näytöllä ja päivittää osallistumistietosi. Se ei lähetä vahvistussähköpostia eikä luo ilmoitusta tai toimintatapahtumaa.
+Et. Äänestäminen näyttää vain vahvistuksen näytöllä ja päivittää osallistumistietosi. Se ei lähetä sähköpostia eikä luo ilmoitusta tai toimintamerkintää.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
@@ -203,4 +203,4 @@ Kun julkinen kysely suljetaan, kuka tahansa voi nähdä sen tulokset ja osallist
 
 ### Sopiiko anonyymi äänestys kaikkiin vaaleihin?
 
-Ei. Se pitää henkilöllisyydet ja äänet erillään sovelluksen tasolla. Päätökset, jotka edellyttävät suojaa järjestelmän ylläpitäjiltä, ja riippumattomasti todennettavat kryptografiset vaalit tarvitsevat järjestelmän, joka on suunniteltu näitä vaatimuksia varten.
+Ei. Se pitää äänestäjät ja äänet erillään sovelluksen tasolla. Vaalit, jotka edellyttävät suojaa palvelimen ylläpitäjiltä tai riippumatonta kryptografista todentamista, tarvitsevat järjestelmän, joka on suunniteltu näitä vaatimuksia varten.

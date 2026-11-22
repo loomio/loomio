@@ -1,24 +1,24 @@
 ---
 title: Chatintegraties
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: a66c0877b90854ac
-  what-it-looks-like-in-chat: 72cbed0dabe2ca5d
-  generate-a-webhook-url: c213ae41a84e20d0
-  set-up-a-chat-integration: a593e0b4a8caee58
-  invite-to-poll: fd2c8124b962a055
-  automatic-notifications: 87853357f7d47935
+  introduction: '0329f5f6cf39d17c'
+  what-it-looks-like-in-chat: 05b45a200d61feff
+  generate-a-webhook-url: 7681975ad7a8dd6f
+  set-up-a-chat-integration: 2417ea1f18292a9b
+  invite-to-poll: b36df8483f39f26d
+  automatic-notifications: 198fc190253fcfb8
 title_source: 0eca19d30c6d7d3c
 title_generated: 99e4f4eed4403e25
 ---
@@ -33,19 +33,19 @@ Chattools en Loomio werken goed samen. Gebruik chat voor korte gesprekken en tij
 
 Loomio ondersteunt Slack, Discord, Microsoft Teams, Matrix en Mattermost.
 
-Je kunt op elk gewenst moment meldingen naar je chatruimte sturen, op dezelfde manier als je individuele mensen uitnodigt om te stemmen of deel te nemen aan een thread.
-
-Je kunt ook instellen dat er altijd een melding wordt verstuurd wanneer een bepaalde gebeurtenis plaatsvindt, bijvoorbeeld wanneer iemand een thread start.
+Je kunt handmatig meldingen naar je chatruimte sturen wanneer je mensen uitnodigt voor een thread of peiling. Je kunt ook automatische meldingen instellen voor specifieke gebeurtenissen, bijvoorbeeld wanneer iemand een discussie start.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## Zo ziet het eruit in de chat
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Genereer een webhook-URL
-We hebben stapsgewijze handleidingen gemaakt voor elke dienst die we ondersteunen. Volg de handleiding voor jouw dienst om de webhook-URL te verkrijgen die je nodig hebt om de chatintegratie in Loomio toe te voegen.
+## Verbind je chatdienst
+
+Volg de handleiding voor jouw chatdienst om een webhook-URL te verkrijgen (of, voor Matrix, een toegangstoken voor een bot en een ruimte-ID):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,28 +53,31 @@ We hebben stapsgewijze handleidingen gemaakt voor elke dienst die we ondersteune
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Ons systeem op basis van webhooks kan ook worden gebruikt met andere systemen die inkomende webhooks met HTML- of Markdown-opmaak ondersteunen, zoals Zapier of Rocketchat. Selecteer de Mattermost-bot en gebruik een aangepaste webhook-URL.
+Je kunt ook andere diensten verbinden die inkomende webhooks met HTML- of Markdown-opmaak accepteren, zoals Zapier of Rocket.Chat. Kies de chatintegratie **Meest belangrijk** in Loomio en voer je aangepaste webhook-URL in.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Stel een chatintegratie in
 
-Nadat je de gekozen dienst hebt ingesteld (zie hierboven), heb je een webhook-URL. Open **Chatintegraties** in het groepsmenu en voeg een nieuwe chatintegratie toe voor je groep.
+Je moet een groepsadmin zijn om chatintegraties toe te voegen of te bewerken.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. Open na het instellen van je chatdienst (zie hierboven) het groepsmenu in Loomio en selecteer **Chatintegraties**.
 
-Waarschijnlijk wil je voorlopig geen selectievakjes aanvinken. Vul de naam (zoals "Discord #general") en de URL in en klik op de knop om op te slaan onderaan het formulier.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Als je later wilt dat de integratie automatische meldingen ontvangt, ga je terug naar de instellingen en selecteer je de betreffende gebeurtenissen.
+2. Voeg een nieuwe chatintegratie toe voor je dienst, voer een naam in (zoals "Discord #general") en plak de webhook-URL.
+
+   ![](loomio-chatbot-form.png)
+
+3. Selecteer de gebeurtenissen waarvoor je automatisch meldingen wilt versturen, of laat ze ongeselecteerd als je alleen handmatig meldingen wilt versturen. Sla daarna de instellingen op. Je kunt deze instellingen op elk moment wijzigen.
 
 <!-- translation-section: invite-to-poll -->
 
-### Uitnodigen voor een peiling
+### Verstuur handmatig een melding
 
-Zo stuur je een melding naar je chatruimte om mensen uit te nodigen om op een voorstel te stemmen. Dezelfde stappen gelden voor Conclusie delen, Uitnodigen voor een thread, Herinneren om te stemmen, Peiling bewerkt enzovoort.
+Om je chatruimte op de hoogte te stellen van een peiling of discussie, open je het item en selecteer je **Uitnodigen** (of een andere meldingsactie zoals **Deel conclusie**, **Herinner om te stemmen** of **Peiling bewerkt**). Selecteer je chatintegratie in de lijst met ontvangers en verstuur de melding.
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +90,7 @@ Zo stuur je een melding naar je chatruimte om mensen uit te nodigen om op een vo
 <!-- translation-section: automatic-notifications -->
 
 ### Automatische meldingen
+
 Bewerk de chatintegratie en selecteer een gebeurtenis om telkens een melding te sturen wanneer die gebeurtenis plaatsvindt.
 
 ![](chatbot_enable_automatic_notifications.png)

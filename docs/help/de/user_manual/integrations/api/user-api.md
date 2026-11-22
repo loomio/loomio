@@ -1,44 +1,44 @@
 ---
 title: Benutzer-API
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
   introduction: a39bb8c15496b60b
-  response-size-and-related-records: 7b34577cff99b02f
+  response-size-and-related-records: 64fa50ea2f641050
   endpoint-summary: 6b1c002ba88c4313
   groups: db87cc751307f655
-  list-groups: da9c9d325b3dad58
+  list-groups: 94a925800245ec6d
   get-a-group: 34553857ac4b1ded
-  webhooks: ee96993caa26dc11
-  list-webhooks: 13d677f32003f159
-  create-a-webhook: 52e13210690109ec
+  webhooks: 7ef1452002c4e314
+  list-webhooks: 6c19ceff375fb6c8
+  create-a-webhook: fad07d837937b187
   update-a-webhook: 3e4abc917f29d0d8
   test-a-webhook-destination: d4d2c2cd8c3a01bf
   delete-a-webhook: 933f16c1e417b8c2
   event-types: 5dfcc5e8a9a3050c
-  http-delivery: 4cd0f713bda83588
+  http-delivery: 13407f6c8ffe39b8
   payload-formats: 7b8a6d2a9923d088
   search: 3ddb055bdd911813
   params: 5f96aa875ebc9d91
   participation-report: 3148b58c832ec1d5
-  params-2: 39afbd7ea62d248b
+  params-2: 97a90b10136ac92e
   example: afd84dbdc3c9ed28
   create-discussion: 5e5621fc237b2b95
   params-3: 42034bd38d61b10c
@@ -114,7 +114,7 @@ generated:
   params-5: 3e73ec224f20d3be
   example-5: b6cb92bea84d6193
   read-thread: 53d61feec1dfb8e3
-  example-6: 6ea678e5f48450ba
+  example-6: f2853f0e747cea0c
   edit-discussion: e1ae40f28447fd8a
   params-6: 5395f007d6c5c31d
   example-7: 8e9bfd977c5e15ae
@@ -133,7 +133,7 @@ generated:
   example-12: 7dbf0f7d05d764f2
   show-poll: 5fb354af6b512b53
   example-13: eacbce94f01152be
-  list-polls: 9b7d0cc187530d58
+  list-polls: a9383b280fd1e557
   params-10: 3fb1ec0ee2ec56b6
   example-14: c1433ca8961065fa
   edit-poll: fcee506fc6cfefa2
@@ -141,12 +141,12 @@ generated:
   example-15: cdd9cffce96810b8
   soft-delete-poll: 4aab9d34a03d258f
   example-16: a823d894388d94a2
-  list-memberships: aeaefbc2e072b958
+  list-memberships: d193b4e9b8a0d4dc
   params-12: 394843efd56209cd
   example-17: bef404591643185e
-  manage-memberships: 70db342f67eb90a9
+  manage-memberships: 98a063ae0b03ee3a
   params-13: ec38db03fcff899e
-  example-18: be0d45c43ec44b8e
+  example-18: e5940be97188afa9
   pagination: 37b08f9679e9d664
   comments: 7c7d401f44657acf
   discussions: 0d7c8f60574c2577
@@ -154,7 +154,7 @@ generated:
   polls: 5c9a90865f265253
   threads: 19bc02fc1c26317b
   request-bodies: 96c7773db6d25f88
-  poll-many-options: e43421f187acf4fe
+  poll-many-options: a9864e30d53e4da8
   poll-detailed-options: 89b8f9ed1ddf4955
   edit-poll-detailed-options: 6a6241e2f6a34155
 title_source: c23fb6526b722360
@@ -256,7 +256,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-Für eine gezielte Steuerung übergib `exclude_types` mit durch Leerzeichen getrennten Datensatztypen im Singular. Beispielsweise lässt `exclude_types=group reaction` zugehörige Gruppen und Reaktionen weg. Übliche Werte sind `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` und `topic_item`. Ausschlüsse gelten für zugehörige Datensätze, nicht für die primäre Ressource, die über den Endpunkt angefordert wird.
+Für eine gezielte Steuerung übergib `exclude_types` mit durch Leerzeichen getrennten Datensatztypen im Singular. Beispielsweise lässt `exclude_types=group reaction` zugehörige Gruppen und Reaktionen weg.
+
+Übliche Werte sind `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` und `topic_item`. Ausschlüsse gelten für zugehörige Datensätze, nicht für die primäre Ressource, die über den Endpunkt angefordert wird.
 
 Antworten mit Datensatzsammlungen enthalten `meta.total`, wenn eine genaue Gesamtanzahl definiert ist. Die Gesamtanzahl wird berechnet, bevor `limit` und `offset` angewendet werden. Endpunkte wie die Suche, die bewusst eine begrenzte Ergebnismenge zurückgeben, lassen `meta.total` weg, statt `null` zurückzugeben.
 
@@ -530,7 +532,7 @@ Wichtige Gruppenfelder sind:
 | `memberships_count` | Anzahl aktiver und ausstehender Mitgliedschaften |
 | `accepted_memberships_count` | Anzahl angenommener Mitgliedschaften |
 | `pending_memberships_count` | Anzahl ausstehender Einladungen |
-| `admin_memberships_count` | Anzahl der Personen mit Administrationsrechten für die Gruppe |
+| `admin_memberships_count` | Anzahl der Gruppen-Admins |
 | `discussions_count` | Anzahl der Diskussionen direkt in der Gruppe |
 | `polls_count` | Anzahl der Abstimmungen direkt in der Gruppe |
 | `subgroups_count` | Anzahl der Untergruppen |
@@ -565,7 +567,7 @@ Die Antwort enthält die Gruppe im `groups`-Array und verwendet dieselben Felder
 
 ### Mitgliedschaften auflisten
 
-Liste die Mitgliedschaften auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Gruppenmitglieder können Namen, IDs, Titel und Rollen der Mitglieder lesen. E-Mail-Adressen werden nur für das eigene Konto dieser Person ausgegeben oder wenn sie die Gruppe administriert.
+Liste die Mitgliedschaften auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird. Gruppenmitglieder können Namen, IDs, Titel und Rollen der Mitglieder lesen. E-Mail-Adressen werden nur für das eigene Konto dieser Person ausgegeben oder wenn sie ein Gruppen-Admin ist.
 
 `GET /api/user0/memberships`
 
@@ -596,7 +598,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Mitgliedschaften verwalten
 
-Sende eine Liste von E-Mail-Adressen. Alle neuen E-Mail-Adressen werden zur Gruppe eingeladen. Anders als beim Auflisten von Mitgliedschaften benötigst du für diesen Vorgang Berechtigungen zur Administration der Gruppe.
+Sende eine Liste von E-Mail-Adressen, um neue Personen zur Gruppe einzuladen. Anders als beim Auflisten von Mitgliedschaften sind für diesen Vorgang Gruppen-Admin-Berechtigungen erforderlich.
 
 `POST /api/user0/memberships`
 
@@ -625,7 +627,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-Wenn du `remove_absent=1` übergibst, werden alle Mitglieder aus der Gruppe entfernt, die nicht in der Liste enthalten sind. Sei vorsichtig: Du könntest alle Mitglieder deiner Gruppe entfernen.
+Wenn du `remove_absent: true` übergibst, werden alle Mitglieder aus der Gruppe entfernt, die nicht in der Liste enthalten sind. Sei vorsichtig: Dadurch können alle Mitglieder deiner Gruppe entfernt werden.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -635,11 +637,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-Dies gibt ein Objekt mit `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}` zurück.
+Dies gibt ein Objekt mit `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}` zurück.
 
 <!-- translation-section: participation-report -->
 
@@ -663,7 +665,9 @@ Rufe dieselben zusammengefassten Beteiligungsdaten ab, die im Beteiligungsberich
 | `interval` | Intervall für den Abschnitt `base`: `day`, `week`, `month` oder `year` |
 | `member_type` | Setze den Wert bei `section=users` auf `delegate`, um nur aktuelle Delegierte zurückzugeben |
 
-Eine Person gilt als delegiert, wenn sie in mindestens einer ausgewählten Gruppe eine aktive Mitgliedschaft als delegierte Person hat. Ihre Anzahlen werden über alle ausgewählten Gruppen hinweg zusammengefasst. Zeilen für Delegierte werden auch dann zurückgegeben, wenn alle Aktivitätszahlen null sind. Die Anzahlen erfassen Threads, Kommentare, Abstimmungen, Stimmen, Fazits und Reaktionen; sie geben keine Beteiligungsquoten an Abstimmungen an. Die Zeilen für Personen enthalten außerdem die Anzahl der ausgegebenen, abgegebenen und nicht abgegebenen Stimmzettel bei nicht anonymen Abstimmungen. Anonyme Abstimmungen sind von allen personenbezogenen Zählungen zur Stimmabgabe ausgeschlossen. `all_votes_cast` ist nur dann wahr, wenn mindestens ein Stimmzettel ausgegeben und jeder ausgegebene Stimmzettel abgegeben wurde.
+Eine Person gilt als delegiert, wenn sie in mindestens einer ausgewählten Gruppe eine aktive Mitgliedschaft als delegierte Person hat. Ihre Anzahlen werden über alle ausgewählten Gruppen hinweg zusammengefasst. Zeilen für Delegierte werden auch dann zurückgegeben, wenn alle Aktivitätszahlen null sind.
+
+Die Anzahlen erfassen Threads, Kommentare, Abstimmungen, Stimmen, Fazits und Reaktionen; sie geben keine Beteiligungsquoten an Abstimmungen an. Die Zeilen für Personen enthalten außerdem die Anzahl der ausgegebenen, abgegebenen und nicht abgegebenen Stimmzettel bei nicht anonymen Abstimmungen. Anonyme Abstimmungen sind von allen personenbezogenen Zählungen zur Stimmabgabe ausgeschlossen. `all_votes_cast` ist nur dann wahr, wenn mindestens ein Stimmzettel ausgegeben und jeder ausgegebene Stimmzettel abgegeben wurde.
 
 Die API wendet dieselben Sichtbarkeitsregeln für Gruppen an wie der Bericht in Loomio. Ein Schlüssel für die Benutzer-API kann keine Berichtsdaten aus Gruppen zugänglich machen, auf die die Person mit diesem Schlüssel keinen Zugriff hat.
 
@@ -781,7 +785,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -887,7 +891,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Liste die Abstimmungen einer Gruppe auf, die für die Person sichtbar sind, deren API-Schlüssel verwendet wird, einschließlich eigenständiger Abstimmungen und Abstimmungen innerhalb von Diskussionen. Bei einer öffentlich sichtbaren Gruppe können auch Personen ohne Mitgliedschaft deren öffentliche Abstimmungen auflisten; private Abstimmungen bleiben auf Personen beschränkt, die sie in Loomio lesen können. Die Antwort enthält das aktuelle Fazit jeder sichtbaren Abstimmung. Mit `status=closed` kannst du daher beendete Abstimmungen auflisten und deren Fazits lesen, sofern diese bereits verfasst wurden.
 
-Um den Entscheidungsstatus neben Diskussionen anzuzeigen, rufe Diskussionen und Abstimmungen derselben Gruppe ab. Verwende dabei `status=all` für die Abstimmungen und ordne sie anhand ihrer `topic_id`-Werte zu. Rufe mit `limit` und `offset` jede Seite ab. Eine Diskussion kann mehrere Abstimmungen enthalten. Wähle daher aus, welche Abstimmung den angezeigten Status bestimmt, zum Beispiel die zuletzt erstellte Abstimmung. Ein Wert ungleich null für `closed_at` kennzeichnet eine beendete Abstimmung; ein null-Wert für `closing_at` kennzeichnet einen Entwurf. Wenn eine Abstimmung ein Fazit hat, verweist ihre `current_outcome_id` auf einen Datensatz im `outcomes`-Array der Antwort. Ordne diesen Datensatz anhand seiner `poll_id` der `id` der Abstimmung zu.
+Um den Entscheidungsstatus neben Diskussionen anzuzeigen, rufe Diskussionen und Abstimmungen derselben Gruppe ab. Verwende dabei `status=all` für die Abstimmungen und ordne sie anhand ihrer `topic_id`-Werte zu. Rufe mit `limit` und `offset` jede Seite ab. Eine Diskussion kann mehrere Abstimmungen enthalten. Wähle daher aus, welche Abstimmung den angezeigten Status bestimmt, zum Beispiel die zuletzt erstellte Abstimmung.
+
+Ein Wert ungleich null für `closed_at` kennzeichnet eine beendete Abstimmung, und ein null-Wert für `closing_at` kennzeichnet einen Entwurf. Wenn eine Abstimmung ein Fazit hat, verweist ihre `current_outcome_id` auf einen Datensatz im `outcomes`-Array der Antwort. Ordne diesen Datensatz anhand seiner `poll_id` der `id` der Abstimmung zu.
 
 Für eine einzelne Diskussion kannst du auch mit `GET /api/user0/threads/:topic_id/items` [die Elemente ihres Threads lesen](#read-thread). Dadurch werden die Abstimmungen und Fazits des Threads zusammen mit seinen übrigen Elementen zurückgegeben. Rufe jede Seite ab, um den vollständigen Thread zu erhalten.
 
@@ -1093,7 +1099,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-Der Endpunkt `items` gibt eine Seite des Ereignisstroms in aufsteigender Reihenfolge zurück, einschließlich sichtbarer Kommentare, Abstimmungen, Stimmen und Fazits. `meta.total` ist die Gesamtzahl der Einträge im Thread. Rufe die folgenden Seiten ab, um den gesamten Ereignisstrom zu lesen. Der Endpunkt `markdown` gibt den vollständigen sichtbaren Thread als ein Markdown-Dokument zurück. Begründungen zu Stimmen werden nur aufgenommen, wenn sie für die Person sichtbar sind, deren API-Schlüssel verwendet wird.
+Der Endpunkt `items` gibt eine Seite des Ereignisstroms in aufsteigender Reihenfolge zurück, einschließlich sichtbarer Kommentare, Abstimmungen, Stimmen und Fazits. `meta.total` ist die Gesamtzahl der Einträge im Thread; rufe die folgenden Seiten ab, um den gesamten Ereignisstrom zu lesen.
+
+Der Endpunkt `markdown` gibt den vollständigen sichtbaren Thread als ein Markdown-Dokument zurück. Begründungen zu Stimmen werden nur aufgenommen, wenn sie für die Person sichtbar sind, deren API-Schlüssel verwendet wird.
 
 Alle Thread-Endpunkte setzen dieselben Berechtigungen durch wie die Loomio-Oberfläche. Der API-Schlüssel gewährt keinen Zugriff auf einen Thread, den die Person normalerweise nicht öffnen darf.
 
@@ -1103,7 +1111,7 @@ Alle Thread-Endpunkte setzen dieselben Berechtigungen durch wie die Loomio-Oberf
 
 Die Benutzer-API basiert auf Anfragen: Eine Integration ruft Loomio auf, wenn sie Daten lesen oder ändern möchte. Ein Gruppen-Webhook ermöglicht die Übertragung in die andere Richtung. Loomio sendet ausgewählte Gruppenereignisse an deinen Endpunkt, sobald sie eintreten. So muss eine Integration die REST-API nicht regelmäßig nach Änderungen abfragen.
 
-Webhooks werden für jede Gruppe einzeln eingerichtet und erfordern Administrationsrechte für die Gruppe. Du kannst sie über die Loomio-Oberfläche verwalten:
+Webhooks werden für jede Gruppe einzeln eingerichtet und erfordern Gruppen-Admin-Berechtigungen. Du kannst sie über die Loomio-Oberfläche verwalten:
 
 1. Öffne die Gruppe.
 2. Öffne das Gruppenmenü und wähle **Chat-Integrationen**.
@@ -1120,7 +1128,7 @@ Agenten und andere Integrationen können Webhooks stattdessen über die unten be
 
 ### Webhooks auflisten
 
-Gibt die für eine Gruppe eingerichteten Chat-Integrationen zurück. Das Konto, dessen API-Schlüssel verwendet wird, muss Administrationsrechte für diese Gruppe haben. Die Antwort enthält Ziel-URLs und darf deshalb gewöhnlichen Gruppenmitgliedern nicht zugänglich gemacht werden.
+Gibt die für eine Gruppe eingerichteten Chat-Integrationen zurück. Die Person, deren API-Schlüssel verwendet wird, muss Gruppenadmin dieser Gruppe sein. Die Antwort enthält Ziel-URLs. Mache sie deshalb gewöhnlichen Gruppenmitgliedern nicht zugänglich.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1173,7 +1181,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-Das Konto, dessen API-Schlüssel verwendet wird, muss Administrationsrechte für die Gruppe mit der ID `group_id` haben. Vor dem Speichern wird geprüft, ob das Ziel eine öffentliche URL ist.
+Die Person, deren API-Schlüssel verwendet wird, muss Gruppenadmin der Gruppe mit der ID `group_id` sein. Vor dem Speichern wird geprüft, ob das Ziel eine öffentliche URL ist.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1264,7 +1272,9 @@ Content-Type: application/json; charset=utf-8
 
 Das Zeitlimit für die Anfrage beträgt fünf Sekunden. Eine `2xx`-Antwort, einschließlich `204 No Content`, gilt als erfolgreich. Dienste, die Webhooks empfangen, sollten zügig antworten, längere Aufgaben asynchron verarbeiten und mit doppelten Zustellungen oder Zustellungen in abweichender Reihenfolge umgehen können.
 
-Loomio fügt derzeit keine Webhook-Signatur, keinen Header mit einem gemeinsamen Geheimnis, keine Ereignis-ID und keine Zustellungs-ID hinzu. Behandle die vollständige Ziel-URL als Zugangsdaten, mache sie nicht öffentlich zugänglich und füge der URL ein nicht erratbares Token hinzu, wenn der empfangende Dienst dies unterstützt. Wenn du ein stabiles, maschinenlesbares Ereignisschema oder eine signierte Zustellung benötigst, verwende den Webhook als Änderungsbenachrichtigung und rufe die aktuellen Datensätze über die authentifizierte Benutzer-API ab.
+Loomio fügt derzeit keine Webhook-Signatur, keinen Header mit einem gemeinsamen Geheimnis, keine Ereignis-ID und keine Zustellungs-ID hinzu. Behandle die vollständige Ziel-URL als Zugangsdaten, mache sie nicht öffentlich zugänglich und füge der URL ein nicht erratbares Token hinzu, wenn der empfangende Dienst dies unterstützt.
+
+Wenn du ein stabiles, maschinenlesbares Ereignisschema oder eine signierte Zustellung benötigst, verwende den Webhook als Änderungsbenachrichtigung und rufe die aktuellen Datensätze über die authentifizierte Benutzer-API ab.
 
 <!-- translation-section: payload-formats -->
 

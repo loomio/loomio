@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: 3da8f2a77d532277
+  introduction: 4a18cd42c788e5b8
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Slack-integraatio
-_Yhdistä Loomio-ryhmäsi ilmoitukset Slackiin._
 
-Loomio voi lähettää ilmoituksia Slack-kanavillesi uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja johtopäätöksistä. Saat tärkeät päivitykset keskeisistä keskusteluista ja päätöksistä oikeaan aikaan.
+Loomio voi lähettää ilmoituksia Slack-kanavillesi uusista keskusteluista, kyselyistä, kommenteista, äänistä ja johtopäätöksistä.
 
 ---
 
-Aloita siirtymällä osoitteeseen [https://api.slack.com](https://api.slack.com). Kirjaudu sisään, jos et ole jo kirjautunut, ja napsauta sitten Create New App
+1. Avaa [api.slack.com](https://api.slack.com), kirjaudu sisään ja valitse **Luo uusi sovellus**.
 
-![](s1.png)
+   ![](s1.png)
 
-Anna Slack-sovelluksellesi nimi
+2. Anna Slack-sovelluksellesi nimi ja valitse työtilasi.
 
-![](s2.png)
+   ![](s2.png)
 
-Lisää tuki saapuville webhookeille
+3. Valitse **Saapuvat webhookit**.
 
-![](s3.png)
+   ![](s3.png)
 
-Ota sitten toiminto käyttöön
+4. Ota käyttöön **Aktivoi saapuvat webhookit**.
 
-![](s4.png)
+   ![](s4.png)
 
-Lisää sitten uusi webhook
+5. Valitse **Lisää uusi webhook työtilaan**.
 
-![](s5.png)
+   ![](s5.png)
 
-Valitse kanava
+6. Valitse kanava, jolla haluat Loomion ilmoitusten näkyvän.
 
-![](s6.png)
+   ![](s6.png)
 
-Kopioi webhookin URL-osoite leikepöydälle
+7. Kopioi webhookin URL-osoite.
 
-![](s7.png)
+   ![](s7.png)
 
-Nyt kun sinulla on webhookin URL-osoite, jatka chat-integraation määrittämistä:
+Nyt kun sinulla on webhookin URL-osoite, viimeistele yhteyden määrittäminen Loomiossa:
 
 [Määritä chat-integraatio Loomiossa](../chatbots/#set-up-a-chat-integration)
 

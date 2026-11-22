@@ -1,46 +1,43 @@
 ---
 title: סיור קצר
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 3e9287ac4d78b250
-  group-page: 98765f293b742554
-  tabs: 1e4c11b6090a90d8
+  introduction: 0630cb9eb8337956
+  group-page: ffa4f214978f72c9
+  tabs: 183791d70d35ef07
   sidebar: 7eaad5263bbc88d8
-  user-settings: c5c5ba855c72c8b8
-  notifications: 5a577912e35ca24c
+  user-settings: 0063fde04d187452
+  notifications: 63fb02fe3f851240
   what-to-do-next: f0b31faa552ccb51
-  mobile-navigation: 572d042afa06994f
+  mobile-navigation: 441f3ed152d09bff
 title_source: c41a33370cd580dd
 title_generated: 5352bebcbe636bfe
-needs_review:
-  tabs: use "הקשר" instead of "תוכן" for "context"
-  user-settings: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
 
 # סיור קצר
 
-עמוד זה מציג את החלקים העיקריים בממשק Loomio והיכן למצוא את הפעילות הרלוונטית.
+עמוד זה מציג את החלקים העיקריים של Loomio והיכן למצוא את הפעילות הרלוונטית.
 
 <!-- translation-section: group-page -->
 
 ## עמוד הקבוצה
 
-עמוד הבית של הקבוצה מציג את הקבוצה ומאפשר גישה לפעילות שלה.
+עמוד הבית של הקבוצה מתאר את הקבוצה ומקשר לפעילות שלה.
 
 ![](group_example.png)
 
@@ -48,15 +45,12 @@ needs_review:
 
 ### לשוניות
 
-הלשוניות שמתחת לתיאור הקבוצה מספקות גישה אל:
+הלשוניות שמתחת לתיאור הקבוצה מציגות:
 
-**דיונים** - שרשורי הדיון של הקבוצה והפעילות האחרונה.
-
-**סקרים** - רשימת הסקרים הפעילים בקבוצה.
-
-**חברים** - האנשים השייכים לקבוצה.
-
-**קבצים** - מסמכים וקבצים אחרים שצורפו ברחבי הקבוצה. הלשונית מרכזת קבצים שצורפו בהקשרים של דיונים, בתגובות, בהצעות ובסקרים, כך שניתן למצוא מסמך בלי לזכור היכן צורף.
+- **דיונים**: שרשורי הדיון של הקבוצה והפעילות האחרונה.
+- **סקרים**: סקרים פתוחים וסגורים בקבוצה.
+- **חברים**: האנשים השייכים לקבוצה.
+- **קבצים**: קבצים שצורפו לדיונים, לתגובות, להצעות ולסקרים ברחבי הקבוצה, כך שניתן למצוא מסמך בלי לזכור היכן שותף.
 
 לעזרה בחיפוש, במסננים, בתגיות, בסימניות ובדיונים שלא נקראו, ניתן לעיין ב[איתור תוכן](/en/user_manual/overview/finding-content).
 
@@ -78,13 +72,13 @@ needs_review:
 
 ![](user_settings_sidebar.png)
 
-תפריט זה משמש לעריכת הפרופיל, לשינוי הגדרות ההתראות, לבחירת ערכת נושא, לניהול הגדרות החשבון ולהתנתקות.
+מתפריט זה ניתן לערוך את הפרופיל, לשנות את הגדרות ההתראות, לבחור ערכת נושא, לנהל את החשבון ולהתנתק.
 
 <!-- translation-section: notifications -->
 
 ## התראות
 
-כפתור הפעמון שבפינה הימנית העליונה במחשב, או בסרגל הניווט התחתון בנייד, פותח את ההתראות בתוך היישום. כאשר יש התראות שטרם נצפו, מופיע סימון על הכפתור.
+יש לבחור בסמל הפעמון שבפינה הימנית העליונה במחשב, או בסרגל הניווט התחתון בנייד, כדי לפתוח את ההתראות בתוך היישום. כאשר יש התראות שלא נקראו, מופיע סימון על הסמל.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -94,7 +88,7 @@ needs_review:
 
 ## ניווט בנייד
 
-בנייד, סרגל הניווט התחתון מאפשר גישה מהירה לסרגל הצד, ללוח הבקרה ולהתראות. בעת קריאת דיון, תפריט השרשור מאפשר גישה לתוכן העניינים ולפעולות בשרשור.
+בנייד, סרגל הניווט התחתון פותח את סרגל הצד, את לוח הבקרה ואת ההתראות. בתוך דיון, תפריט השרשור מאפשר גישה לתוכן השרשור ולפעולות בו.
 
 <!-- translation-section: what-to-do-next -->
 

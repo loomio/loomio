@@ -1,16 +1,16 @@
 ---
 title: Supprimer votre groupe
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 779d4a92736ca62a
-  group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
+  introduction: e811b127a678d5e3
+  group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 85d04b081c5cc993
-  group-data-is-permanently-deleted-after-90-days: fbd0e614c35765b4
+  introduction: 9ec14748193bd9cc
+  group-data-is-permanently-deleted-after-90-days: 0dcc62a32697b6c4
 title_source: 9a0868f49f1262ea
 title_generated: 276b9af64d1f291a
 ---
@@ -19,32 +19,29 @@ title_generated: 276b9af64d1f291a
 
 # Supprimer votre groupe
 
-La suppression de votre groupe Loomio lance un processus de suppression définitive de toutes les données du groupe.
+Seul un administrateur du groupe peut supprimer un groupe. La suppression d’un groupe retire immédiatement l’accès et programme la suppression définitive de toutes les données du groupe et de ses sous-groupes après 90 jours.
 
-Si vous souhaitez conserver certaines données, veillez à [exporter les données du groupe](/en/user_manual/groups/data_export/) et à télécharger manuellement les fichiers importants que vous avez importés avant de continuer.
+Avant de supprimer un groupe, [exportez les données du groupe](/en/user_manual/groups/data_export) et téléchargez les fichiers importés que vous souhaitez conserver.
 
-Ouvrez le menu déroulant du groupe en cliquant sur les trois points, puis choisissez l’option **Supprimer le groupe** pour retirer l’accès au groupe et lancer la suppression de toutes ses données de nos systèmes. Vous devez être administrateur du groupe pour le supprimer.
+Pour supprimer un groupe, ouvrez le menu des actions du groupe et choisissez **Supprimer le groupe**.
 
-Lorsque vous supprimez un groupe, il disparaît immédiatement de l’interface et sera définitivement supprimé après 90 jours. Vous et les membres du groupe perdez immédiatement l’accès au groupe. En cas d’erreur, contactez-nous dans les 90 jours suivant la suppression de votre groupe pour demander sa restauration.
+![Action de suppression du groupe dans le menu d’Oatmilk Cooperative](group_delete_group.png)
 
-Les groupes en attente de suppression et leurs sous-groupes ne sont plus accessibles aux membres et aux administrateurs pour les consulter, y participer ou les exporter. Cela inclut les sondages ouverts à partir de liens enregistrés. Les membres ne peuvent plus créer ou modifier du contenu, voter, envoyer des annonces ou des rappels, ni accepter des invitations. Exportez le groupe et téléchargez les fichiers importants avant de confirmer la suppression. Les discussions et les sondages directs ne sont pas affectés.
-
-La programmation de la suppression du groupe arrête les notifications d’activité et les rappels de sondage en attente pour le groupe et ses sous-groupes. Les messages déjà en cours d’envoi peuvent encore arriver.
-
-L’e-mail d’avertissement indique le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous devez conserver le groupe ou [exporter ses données](/en/user_manual/groups/data_export/), répondez dans les 90 jours afin que l’accès puisse être rétabli avant la suppression.
-
-La suppression de votre groupe entraînera également la résiliation de votre abonnement Loomio.
-
-![Option de suppression du groupe dans le menu d’Oatmilk Cooperative](group_delete_group.png)
-
-Vous devrez saisir le nom de votre groupe (*en respectant les majuscules et les minuscules*) pour confirmer que vous souhaitez le supprimer.
+Saisissez l’identifiant du groupe pour confirmer la suppression.
 
 ![Formulaire de confirmation demandant l’identifiant d’Oatmilk Cooperative](group_delete_group_confirm.png)
+
+Lorsque vous confirmez la suppression :
+
+- Le groupe et ses sous-groupes disparaissent immédiatement de l’interface. Les membres et les administrateurs du groupe perdent l’accès leur permettant de consulter le contenu, d’y participer ou de l’exporter, y compris les sondages ouverts à partir de liens enregistrés.
+- Les notifications d’activité et les rappels de sondage en attente pour le groupe et ses sous-groupes sont arrêtés, mais les messages déjà en cours d’envoi peuvent encore arriver.
+- Votre abonnement Loomio est résilié.
+- Les discussions et les sondages directs en dehors du groupe ne sont pas affectés.
+
+Loomio envoie également un e-mail d’avertissement indiquant le nombre de sous-groupes, de membres, de discussions, de sondages et de commentaires du groupe. Si vous avez supprimé le groupe par erreur ou devez encore exporter ses données, répondez à cet e-mail ou contactez-nous dans les 90 jours pour rétablir l’accès.
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Les données du groupe sont définitivement supprimées après 90 jours
 
-Après 90 jours, tous les fils, sondages, fichiers et autres contenus du groupe seront définitivement supprimés. ***Cette action est irréversible !***
-
-Nous vous recommandons d’[exporter les données du groupe](/en/user_manual/groups/data_export/) et de télécharger manuellement les fichiers importants que vous avez importés avant de continuer.
+Après 90 jours, Loomio supprime définitivement tous les fils, sondages, fichiers et autres contenus du groupe et de ses sous-groupes. Cette action est irréversible.

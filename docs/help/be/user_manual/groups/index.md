@@ -1,16 +1,16 @@
 ---
 title: Групы
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bc6967c16a4da2f5
-  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
+  introduction: 898c4f0b7d3b8a80
+  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
 generated:
-  introduction: c6df76597c7ef19f
-  administration-facilitation-and-moderation-code-of-conduct: df3a79bf091f9336
+  introduction: 672accb835f75c35
+  administration-facilitation-and-moderation-code-of-conduct: f34d1422e392234a
 title_source: 39bbb719fa2b9d22
 title_generated: '0393103017c0e11c'
 ---
@@ -19,15 +19,11 @@ title_generated: '0393103017c0e11c'
 
 # Групы
 
-Група ў Loomio — гэта бяспечнае месца, дзе людзі могуць сустракацца, весці абмеркаванні і прымаць рашэнні.
-
-Гэта прастора, дзе ўдзельнікі групы могуць знаходзіць інфармацыю і дзяліцца ёю, удзельнічаць у важных абмеркаваннях і прыняцці рашэнняў, якія ўплываюць на іх працу.
-
-Група ў Loomio выглядае так. Уверсе старонкі вы ўбачыце выяву і лагатып, якія можна наладзіць так, каб яны прадстаўлялі вашу арганізацыю. Гэта дапамагае людзям, якія далучаюцца да вашай групы, пазнаць знаёмае месца і адчуць, што іх тут вітаюць — у бяспечнай прасторы, дзе можна пачувацца як дома, сярод сяброў, і паўнавартасна ўдзельнічаць.
+Група ў Loomio — гэта агульная прастора, дзе ўдзельнікі вядуць абмеркаванні, дзеляцца інфармацыяй і разам прымаюць рашэнні.
 
 ![Старонка групы Oatmilk Cooperative з апісаннем і спісам абмеркаванняў](group_page.png)
 
-Дайце вашай групе пазнавальную назву і ў апісанні растлумачце яе мэту, хто ўдзельнічае і як удзельнікі групы могуць далучыцца да працы. Вы таксама можаце дадаць лагатып, выяву вокладкі і спасылкі на дакументы, напрыклад палажэнне аб дзейнасці групы.
+Вы можаце наладзіць старонку вашай групы: дадаць назву, апісанне, лагатып, выяву вокладкі і спасылкі на дакументы, напрыклад палажэнне аб дзейнасці групы. Гэта дапамагае ўдзельнікам зразумець мэту групы і тое, як удзельнічаць у яе працы.
 
 Каб пачаць, [стварыце групу](/en/user_manual/groups/starting_a_group), выберыце яе [налады прыватнасці](/en/user_manual/groups/settings/privacy) і [запрасіце людзей](/en/user_manual/groups/inviting_people).
 
@@ -35,6 +31,6 @@ title_generated: '0393103017c0e11c'
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Адміністраванне, фасілітацыя і мадэрацыя - Кодэкс паводзін
+## Кодэкс паводзін
 
-Кодэкс паводзін можа дапамагчы ўдзельнікам зразумець, як удзельнічаць у працы групы і як група будзе рэагаваць на неналежныя паводзіны. Рэкамендацыі па вызначэнні чаканняў глядзіце ў [Дапаможніку па фасілітацыі](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+Кодэкс паводзін дапамагае ўдзельнікам зразумець, як удзельнічаць у працы групы і як група рэагуе на неналежныя паводзіны. Рэкамендацыі па вызначэнні чаканняў глядзіце ў [Дапаможніку па фасілітацыі](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).

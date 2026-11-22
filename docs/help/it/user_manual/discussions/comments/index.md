@@ -1,38 +1,38 @@
 ---
 title: Commenti
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 5de86c47a823daf0
-  reading-comments: afb3c59b0ca6b8e2
-  writing-a-comment: 2e1a2c5fba2575d2
-  mentioning-people: 949375e41b71aed0
-  replying-to-a-comment: dfc6e14af2c530e4
-  reactions: 6c323c46a8ecd068
-  translating-comments: 37fa032f1fff2c53
-  comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 10a48fa173d9fe68
-  edit-a-comment-and-view-changes: 5607bcf53a8a0dff
-  copy-a-comment-link: e7c44dd77efba66e
-  view-notification-history: '0186c24ddde89f56'
-  discard-restore-or-delete-a-comment: f7fcdf12cf61a764
+  introduction: '09065cd966dd759c'
+  reading-comments: 2804dad52c91aca3
+  writing-a-comment: bb5c73b74d132614
+  mentioning-people: f6ab4011ec879386
+  replying-to-a-comment: 94881aeeea2dd484
+  reactions: a8452bef7d012db9
+  translating-comments: 01aa349a9089f52d
+  comment-actions: 9f4155bf7cf7e8ed
+  add-a-comment-to-jump-to: 4e804af971edfc6c
+  edit-a-comment-and-view-changes: 32582adec1903fef
+  copy-a-comment-link: 84cd4cdaa9ab0c84
+  view-notification-history: 36aa5fdd35851ea4
+  discard-restore-or-delete-a-comment: 751207a4a9e0f998
 generated:
-  introduction: da7a99274ef61f79
-  reading-comments: 48a0fd6836512318
-  writing-a-comment: f77c29bce2f9073d
-  mentioning-people: 783a7f2756787853
-  replying-to-a-comment: 1353c680d5de36aa
-  reactions: e3d4d5402d3b0320
-  translating-comments: 5e29212d633e11fc
+  introduction: 504aadaa3c5e1f27
+  reading-comments: f9bfacf6970eb022
+  writing-a-comment: c3e260e0e670ea15
+  mentioning-people: dc084e72ff19c4b3
+  replying-to-a-comment: 9386a4fa275547ab
+  reactions: a5f8ad778750c7d7
+  translating-comments: 7ae1191c27896f22
   comment-actions: e29515ffd545ebca
-  add-a-comment-to-jump-to: e215036ffb735313
-  edit-a-comment-and-view-changes: a4d5e72fc1ae54fd
-  copy-a-comment-link: a6cde26820f5bea0
-  view-notification-history: bb445dc9aa246d94
-  discard-restore-or-delete-a-comment: 40aeb4fe718e889a
+  add-a-comment-to-jump-to: 34ae79fe5e238c20
+  edit-a-comment-and-view-changes: bae29c741018af54
+  copy-a-comment-link: '096c1657a95f7f3a'
+  view-notification-history: 534a9541ee3800c5
+  discard-restore-or-delete-a-comment: b90e3b675b81027b
 title_source: 355f79f29d7d3c2d
 title_generated: b8f128c97fcde65d
 ---
@@ -41,13 +41,13 @@ title_generated: b8f128c97fcde65d
 
 # Commenti
 
-I commenti sono il modo principale in cui le persone partecipano a una discussione. Sono visibili a chiunque abbia il permesso di vedere la conversazione.
+I commenti sono il modo principale in cui le persone partecipano a una discussione. Chiunque abbia accesso alla conversazione può leggerli.
 
 <!-- translation-section: reading-comments -->
 
 ## Leggere i commenti
 
-Le conversazioni si aprono sul contesto della discussione. Puoi usare **Nuovo per te** nel menu della conversazione per trovare le attività non lette, oppure **Più recente** per passare alle attività più recenti.
+Le conversazioni si aprono sul contesto della discussione. Nella barra laterale destra, sotto **Vai a**, seleziona **Nuovo per te** per passare alle attività non lette, oppure **Più recente** per passare agli elementi più recenti.
 
 I commenti non letti hanno un'etichetta blu **nuovo** accanto all'ora di pubblicazione.
 
@@ -57,23 +57,23 @@ I commenti non letti hanno un'etichetta blu **nuovo** accanto all'ora di pubblic
 
 ## Scrivere un commento
 
-Scrivi un commento per contribuire alla discussione. Le altre persone possono rispondere, aggiungere una reazione o pubblicare i propri commenti.
+Scrivi un commento per partecipare alla conversazione. Gli altri partecipanti possono rispondere, aggiungere una reazione o pubblicare i propri commenti.
 
-Seleziona **Pubblica commento** per pubblicarlo. Il tuo commento sarà visibile a chiunque abbia il permesso di vedere la discussione.
+Seleziona **Pubblica commento** per pubblicarlo.
 
 ![](../using_discussions/comment.png)
 
-Gli strumenti descritti in [Formattazione](/en/user_manual/discussions/formatting/) sono disponibili quando scrivi un commento.
+Tutti gli strumenti descritti in [Formattare il testo e allegare file](/en/user_manual/discussions/formatting/) sono disponibili quando scrivi un commento.
 
 <!-- translation-section: mentioning-people -->
 
 ## Menzionare le persone
 
-Digita **@**, inizia a scrivere il nome di una persona, poi selezionala dall'elenco. Una menzione invia subito una notifica a quella persona ed è un modo utile per richiamare la sua attenzione o chiedere una risposta.
+Digita **@**, inizia a scrivere il nome di una persona e selezionala dall'elenco. Menzionare una persona le invia subito una notifica per richiamare la sua attenzione o chiedere una risposta.
 
 ![Menzione di Samira Patel in un commento](../notifying_people/comment_mention.png)
 
-Per inviare una notifica a tutte le persone del gruppo, digita **@**, inizia a scrivere il nome del gruppo, poi selezionalo dall'elenco.
+Per inviare una notifica a tutte le persone del gruppo, digita **@**, inizia a scrivere il nome del gruppo e selezionalo dall'elenco.
 
 ![Ricerca di Oatmilk Cooperative mentre si scrive una menzione del gruppo](../notifying_people/mentioning_group_1.png)
 
@@ -85,19 +85,19 @@ Menzionare una persona non le dà accesso alla conversazione. Usa **Invita perso
 
 ## Rispondere a un commento
 
-Seleziona **Rispondi** sotto un commento per rispondere. La risposta contiene già una @menzione dell'autore del commento, che riceverà una notifica quando la pubblichi. Rimuovi la menzione se non vuoi inviare una notifica all'autore.
+Seleziona **Rispondi** sotto un commento per rispondere. Loomio inserisce già una @menzione dell'autore del commento, che riceverà una notifica quando pubblichi la risposta. Rimuovi la menzione se non vuoi inviare una notifica all'autore.
 
 ![](../using_discussions/comment_reply.png)
 
-Puoi anche rispondere a un tuo commento per inserire una risposta sotto di esso.
+Puoi anche rispondere a un tuo commento per inserire un seguito sotto di esso.
 
-Se un'email di Loomio indica che puoi rispondere via email, la tua risposta apparirà nella conversazione.
+Se un'email di Loomio indica che puoi rispondere via email, la risposta che invii via email appare nella conversazione.
 
 <!-- translation-section: reactions -->
 
 ## Reazioni
 
-Usa il pulsante con la faccina per rispondere con un'emoji. Le reazioni inviano una notifica all'autore del commento all'interno di Loomio, ma non inviano un'email.
+Seleziona l'icona con la faccina per aggiungere una reazione con un'emoji. Le reazioni inviano una notifica all'autore del commento in Loomio senza inviare un'email.
 
 ![](../using_discussions/reaction.png)
 
@@ -105,11 +105,11 @@ Usa il pulsante con la faccina per rispondere con un'emoji. Le reazioni inviano 
 
 ## Tradurre i commenti
 
-Se l'autore usa una lingua diversa dalla tua, sotto il commento appare l'azione **Traduci**.
+Quando un commento è scritto in una lingua diversa dalla tua, sotto di esso appare il pulsante **Traduci**.
 
 ![](../using_discussions/comment_translate.png)
 
-Seleziona **Traduci il commento** per vedere il commento nella tua lingua.
+Seleziona **Traduci** per leggere il commento nella tua lingua.
 
 ![](../using_discussions/comment_translated.png)
 
@@ -123,9 +123,9 @@ Le azioni più comuni appaiono direttamente sotto un commento. Altre azioni sono
 
 ### Aggiungere un commento a Vai a
 
-Usa **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione.
+Seleziona **Aggiungi alla sequenza temporale** per aggiungere un commento all'elenco **Vai a** della conversazione.
 
-Puoi modificare l'etichetta mostrata in **Vai a**. Rimuovi il commento dalla sequenza temporale e aggiungilo di nuovo per cambiare il testo del collegamento.
+Non puoi modificare l'etichetta direttamente in **Vai a**. Per cambiare il testo del collegamento, seleziona **Rimuovi dalla sequenza temporale** e aggiungi di nuovo il commento.
 
 >[!Tip]
 >Evidenzia le parole che vuoi usare come testo del collegamento prima di selezionare **Aggiungi alla sequenza temporale**.
@@ -136,28 +136,28 @@ Seleziona **Rimuovi dalla sequenza temporale** per rimuovere l'elemento da **Vai
 
 ### Modificare un commento e vedere le modifiche
 
-Seleziona **Modifica** sotto uno dei tuoi commenti per modificarlo. Anche gli amministratori del gruppo possono modificare i commenti dei membri quando il relativo permesso del gruppo è abilitato.
+Puoi modificare un commento quando:
+
+- lo hai scritto tu e il gruppo consente ai membri di modificare i propri commenti; oppure
+- sei un amministratore del gruppo e l'opzione **Gli amministratori possono modificare i commenti dei membri** è abilitata in [Permessi del gruppo](/en/user_manual/groups/settings/permissions).
+
+Seleziona **Modifica** sotto un commento per aggiornarlo.
 
 ![](../using_discussions/comment_edit.png)
 
-Sotto un commento modificato appare l'azione **Modificato**.
+Sotto i commenti modificati appare il collegamento **Modificato**.
 
 ![](../using_discussions/comment_show_edits.png)
 
-Seleziona **Modificato** per vedere cosa è cambiato. Il testo rimosso è evidenziato in rosso e quello aggiunto in verde. Loomio registra chi ha effettuato ogni modifica e quando.
+Seleziona **Modificato** per vedere la cronologia delle modifiche. Il testo rimosso è evidenziato in rosso e quello aggiunto in verde. Loomio registra chi ha effettuato ogni modifica e quando.
 
 ![](../using_discussions/comment_edits.png)
-
-Puoi modificare un commento quando:
-
-- lo hai scritto tu e il gruppo consente ai membri di modificare i propri commenti
-- sei un amministratore del gruppo e l'opzione [Gli amministratori possono modificare i commenti dei membri](/en/user_manual/groups/settings/permissions) è abilitata
 
 <!-- translation-section: copy-a-comment-link -->
 
 ### Copiare il collegamento a un commento
 
-Seleziona **Copia collegamento** per copiare l'URL univoco del commento. Puoi incollare il collegamento altrove per rimandare direttamente a quel commento.
+Seleziona **Copia collegamento** per copiare l'URL diretto del commento e poter inserire un collegamento al commento altrove.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -169,7 +169,7 @@ Apri il menu con i tre puntini (**⋯**) accanto a un commento e seleziona **Cro
 
 ![Cronologia delle notifiche nel menu delle azioni di un commento](../notifying_people/comment_notification_history.png)
 
-La cronologia delle notifiche mostra chi ha ricevuto una notifica sul commento, quando è stata inviata e se è stata letta, quando questa informazione è disponibile.
+La cronologia delle notifiche mostra chi ha ricevuto una notifica sul commento, quando è stata inviata ciascuna notifica e se è stata letta, quando questa informazione è disponibile.
 
 ![Cronologia delle notifiche per un commento che menziona Samira Patel](../notifying_people/comment_notification_example.png)
 
@@ -177,28 +177,28 @@ La cronologia delle notifiche mostra chi ha ricevuto una notifica sul commento, 
 
 ### Rimuovere, ripristinare o cancellare un commento
 
-Rimuovere un commento lo toglie dalla conversazione ma lo conserva nel cestino. Puoi rimuovere i tuoi commenti con **Elimina** nel menu con i tre puntini. Anche gli amministratori del gruppo possono rimuovere i commenti.
+Rimuovere un commento ne nasconde il contenuto nella conversazione, lasciando un segnaposto che permette di ripristinarlo in seguito. Puoi rimuovere i tuoi commenti dal menu con i tre puntini (**⋯**) selezionando **Elimina**. Gli amministratori del gruppo possono rimuovere qualsiasi commento.
 
 ![](../using_discussions/comment_discard.png)
 
 **Ripristinare un commento**
 
-La posizione di un commento rimosso è contrassegnata con **Quesito rimosso**. Apri il relativo menu con i tre puntini e seleziona **Ripristina**.
+Un commento rimosso appare come **Quesito rimosso**. Apri il relativo menu con i tre puntini (**⋯**) e seleziona **Ripristina** per ripristinarlo.
 
 ![](../using_discussions/comment_restore.png)
 
 **Cancellare un commento**
 
-Cancellare un commento lo elimina definitivamente. Non può essere ripristinato.
+Cancellare un commento lo elimina definitivamente e l'operazione non può essere annullata.
 
-Se **I membri possono cancellare i propri commenti** è abilitato nelle [Autorizzazioni del gruppo](/en/user_manual/groups/settings/permissions), i membri possono cancellare definitivamente i propri commenti rimossi. Gli amministratori del gruppo possono cancellare qualsiasi commento.
+Gli amministratori del gruppo possono cancellare qualsiasi commento rimosso. I membri possono cancellare definitivamente i propri commenti rimossi quando l'opzione **I membri possono cancellare i propri commenti** è abilitata nelle [Autorizzazioni del gruppo](/en/user_manual/groups/settings/permissions).
 
 ![](../using_discussions/permissions_delete_comment.png)
 
-Apri il menu con i tre puntini su una voce **Quesito rimosso** e seleziona **Cancella**.
+Apri il menu con i tre puntini (**⋯**) su una voce **Quesito rimosso** e seleziona **Cancella**.
 
 ![](../using_discussions/comment_delete.png)
 
-Un messaggio di conferma spiega che il commento verrà cancellato definitivamente.
+Conferma la cancellazione definitiva nel messaggio di conferma.
 
 ![](../using_discussions/comment_delete_message.png)

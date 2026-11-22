@@ -1,28 +1,28 @@
 ---
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: 59e0ce6b93e8c329
-  simple-poll: ebfea6947df3aa17
-  score-poll: e029b87a17b4478f
-  dot-vote: ca9feb47f7b6ba9e
-  ranked-choice: 5e3dc99174b2dd66
+  simple-poll: c3aca0e929d7f5c7
+  score-poll: 8c3d8b6eba4b0ceb
+  dot-vote: b7f0e9a874addf6f
+  ranked-choice: a14ab77aac50bed0
   time-poll: c380c3d55c59f9ce
   stv-election: d76b660b634198a0
 title: 투표
 title_source: 996729458535904a
 title_generated: eb8dc84bf3cfa371
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
@@ -42,25 +42,25 @@ translated:
 
 <!-- translation-section: simple-poll -->
 
-## 간단한 투표
+## 선택
 
 [선택](/en/user_manual/polls/choose/)에서는 참여자가 하나 이상의 선택지를 선택할 수 있습니다. 가장 인기 있는 선택지를 찾거나 후보 목록을 좁힐 때 사용하세요.
 
 <!-- translation-section: score-poll -->
 
-## 점수 투표
+## 점수
 
 [점수](/en/user_manual/polls/score/)에서는 참여자가 모든 선택지를 동일한 척도로 평가할 수 있습니다. 선택지 간 지지 강도, 준비 상태, 적합성 또는 중요도를 비교할 때 사용하세요.
 
 <!-- translation-section: dot-vote -->
 
-## 점 배분 투표
+## 배분
 
-[배분](/en/user_manual/polls/allocate/)에서는 각 참여자에게 배분할 수 있는 일정한 점수가 주어집니다. 한 가지를 선택하면 다른 것에 쓸 관심이나 자원이 줄어드는 상황에서 우선순위를 파악할 때 사용하세요.
+[배분](/en/user_manual/polls/allocate/)에서는 각 참여자에게 배분할 수 있는 일정한 점수가 주어집니다. 한 가지를 선택하면 다른 것에 쓸 관심이나 자원이 줄어드는 상황에서 우선순위를 정할 때 사용하세요.
 
 <!-- translation-section: ranked-choice -->
 
-## 선호 순위 투표
+## 순위
 
 [순위](/en/user_manual/polls/rank/)에서는 참여자가 선호도에 따라 선택지의 순서를 정할 수 있습니다. 그룹 전체의 선호 순서를 파악하거나 가장 선호하는 선택지 하나를 고를 때 사용하세요.
 

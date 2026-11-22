@@ -1,65 +1,57 @@
 ---
 title: Anonyme Abstimmung
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 2b9b7da01da020b3
-  how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: 60b564978d2a7a71
-  votes-cannot-be-changed: f4353c89bbffe7aa
-  why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
-  results-and-exports: eb2429afd442dad2
-  participation-verification: 75edf02a6a2324a3
-  reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
-  limits-of-anonymous-voting: 912141560342d073
+  introduction: ffcecd2f4297c47d
+  how-anonymous-voting-protects-voters: 3b757a1b4a7bda96
+  while-voting-is-open: aafc698ee8108194
+  votes-cannot-be-changed: 3a99e6c3f48e10ee
+  why-anonymous-votes-do-not-have-reasons: 4027d6c1fbf4d29c
+  results-and-exports: 5c10ab43a5f890b4
+  participation-verification: e77ece0fc0d6cd73
+  reminders: f711a180ae7c948f
+  what-coordinators-and-administrators-can-see: d873cd48677fc324
+  limits-of-anonymous-voting: 9ab54b74a4716e19
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
-  can-i-see-my-vote-after-submitting-it: c558e29729aed45f
-  can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
-  will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
-  is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  can-a-coordinator-see-how-i-voted: bfa1baf48f41cdd1
+  can-i-see-my-vote-after-submitting-it: 435010e0c2ecf488
+  can-i-change-or-withdraw-my-vote: 676d5401bf4d73cc
+  will-i-receive-an-email-confirming-my-vote: 9660f10e8ffb9f9c
+  does-a-public-poll-reveal-more-information: '087defb00bb8b99f'
+  is-anonymous-voting-suitable-for-every-election: 9fae56c0661f0ec9
 generated:
-  introduction: b8afdb08e55b22ea
-  how-anonymous-voting-protects-voters: fae2e30be5c03422
-  while-voting-is-open: 937a337bbb62facb
-  votes-cannot-be-changed: 19369afcde682059
-  why-anonymous-votes-do-not-have-reasons: 515a6c03d7ed3817
-  results-and-exports: d5f9aa1ad7e2d0db
-  participation-verification: a1ab74da9ae99f18
-  reminders: caacb89867a7bb49
-  what-coordinators-and-administrators-can-see: 7f90e57522135795
-  limits-of-anonymous-voting: b7114a5d7fe1a230
+  introduction: e64e1170824224fc
+  how-anonymous-voting-protects-voters: 35b08d64454f1a98
+  while-voting-is-open: c0e81d6103dc0619
+  votes-cannot-be-changed: bdc6a2381af7a784
+  why-anonymous-votes-do-not-have-reasons: 88915d03a526c74e
+  results-and-exports: 6177b414e4f65245
+  participation-verification: c40bb1fa8582fb28
+  reminders: 229b2f29a527df20
+  what-coordinators-and-administrators-can-see: f081886e3d48c939
+  limits-of-anonymous-voting: 865440939c18a07f
   questions: 35697f4e2def282c
-  can-a-coordinator-see-how-i-voted: 20ac5720e43b944d
-  can-i-see-my-vote-after-submitting-it: 6b9c5c4e1089a7a0
-  can-i-change-or-withdraw-my-vote: 6a5a22b918b731d2
-  will-i-receive-an-email-confirming-my-vote: e8fc2f9252ff4b45
+  can-a-coordinator-see-how-i-voted: b7b2a0f33163d87c
+  can-i-see-my-vote-after-submitting-it: 9399d73b5edcfc15
+  can-i-change-or-withdraw-my-vote: 2f38f2c3ddbb59c4
+  will-i-receive-an-email-confirming-my-vote: d3cd105fbdda90b9
   does-a-public-poll-reveal-more-information: a7d6779921949378
-  is-anonymous-voting-suitable-for-every-election: 81863080a1e7cb8e
+  is-anonymous-voting-suitable-for-every-election: 3309e7e507488eff
 title_source: 1bc4567506ad4d51
 title_generated: 911f939f43e472e8
-needs_review:
-  introduction: use "Stimme" instead of "Abstimmung" for "vote"
-  how-anonymous-voting-protects-voters: use "Stimme" instead of "Abstimmung" for "vote"
-  why-anonymous-votes-do-not-have-reasons: use "Stimme" instead of "Abstimmung" for "vote"
-  results-and-exports: use "Stimme" instead of "Abstimmung" for "vote"
-  reminders: use "Stimme" instead of "Abstimmung" for "vote"
-  limits-of-anonymous-voting: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
-  does-a-public-poll-reveal-more-information: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
 
 # Anonyme Abstimmung
 
-Anonymes Abstimmen, auch als blindes Abstimmen bekannt, trennt die Aufzeichnung darüber, wer abgestimmt hat, von den Stimmen selbst. Nachdem die Abstimmung beendet wurde, können alle, die das Ergebnis sehen können, auch sehen, wer teilgenommen hat. Niemand kann über Loomio eine abgegebene Stimme mit der Person verknüpfen, die sie abgegeben hat.
+Anonymes Abstimmen, auch als blindes Abstimmen bekannt, trennt die Aufzeichnung darüber, wer abgestimmt hat, von den Stimmen selbst. Nachdem die Abstimmung beendet wurde, können alle, die das Ergebnis sehen können, auch sehen, wer teilgenommen hat. Niemand kann über Loomio eine Stimme mit der Person verknüpfen, die sie abgegeben hat.
 
-Diese Seite erklärt, welchen Schutz anonymes Abstimmen bietet, welche Informationen gespeichert bleiben und welche Grenzen diese Garantie hat.
+Diese Seite erklärt, wie anonymes Abstimmen funktioniert, welche Informationen gespeichert bleiben und welche Grenzen dieser Schutz hat.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
@@ -74,25 +66,25 @@ Eine anonyme Abstimmung speichert zwei getrennte Arten von Datensätzen:
 | Ob jede stimmberechtigte Person abgestimmt hat | Kein Name und kein Benutzerkonto |
 | Keine ausgewählten Optionen oder Bewertungen | Keine Verknüpfung mit einem Teilnahmedatensatz |
 
-Es gibt keine gemeinsame Kennung, die diese Datensätze verbindet. Bei abgegebenen Stimmen werden auch der tatsächliche Zeitpunkt der Stimmabgabe, Einladungsinformationen, schriftliche Begründungen, Anhänge und andere Metadaten weggelassen, die helfen könnten, eine abstimmende Person zu identifizieren.
+Keine gemeinsame Kennung verbindet diese Datensätze. Bei abgegebenen Stimmen werden außerdem die Zeitpunkte der Stimmabgabe, Einladungsdetails, Begründungen, Anhänge und andere Metadaten weggelassen, die eine abstimmende Person identifizieren könnten.
 
-Diese Trennung wird beim Speichern der Stimme durchgesetzt. Sie beruht nicht allein darauf, Namen in der Benutzeroberfläche auszublenden.
+Diese Trennung erfolgt beim Speichern der Stimme. Sie beruht nicht allein darauf, Namen in der Benutzeroberfläche auszublenden.
 
 <!-- translation-section: while-voting-is-open -->
 
 ## Solange die Abstimmung offen ist
 
-Das Ergebnis bleibt für alle verborgen, bis die Abstimmung beendet wird. Das gilt auch für Thread-Admins, Gruppenadmins und Instanzadmins, die die Anwendung nutzen.
+Das Ergebnis bleibt für alle verborgen, bis die Abstimmung beendet wird. Das gilt auch für Thread-Admins, Gruppenadmins und Instanzadmins.
 
 Wenn eine Person abstimmt:
 
-- wird ihre abgegebene Stimme ohne ihren Namen oder ihren Teilnahmedatensatz gespeichert;
+- wird ihre Stimme ohne ihren Namen oder ihren Teilnahmedatensatz gespeichert;
 - wird ihr Teilnahmedatensatz so markiert, dass er zeigt, dass sie abgestimmt hat;
 - werden kein Ereignis zur Stimmabgabe, keine Benachrichtigung, keine E-Mail, kein Kommentar und kein Aktivitätseintrag erstellt;
 - wird nach der Stimmabgabe keine Kopie ihrer Auswahl zurückgegeben; und
 - bestätigt die Benutzeroberfläche nur, dass ihre Stimme erfasst wurde.
 
-Der Teilnahmedatensatz speichert keinen genauen Zeitpunkt der Stimmabgabe. Abgegebene Stimmen werden nicht nach dem Zeitpunkt der Stimmabgabe sortiert.
+Der Teilnahmedatensatz speichert keinen genauen Zeitpunkt der Stimmabgabe, und abgegebene Stimmen werden nicht nach dem Zeitpunkt der Stimmabgabe sortiert.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
@@ -100,7 +92,7 @@ Der Teilnahmedatensatz speichert keinen genauen Zeitpunkt der Stimmabgabe. Abgeg
 
 Jede stimmberechtigte Person kann einmal abstimmen. Eine abgegebene anonyme Stimme kann nicht eingesehen, geändert, zurückgezogen oder ersetzt werden, auch nicht durch einen Admin.
 
-Damit eine Person ihre Stimme abrufen oder ersetzen könnte, müsste eine dauerhafte Verknüpfung zwischen dieser Person und der Stimme bestehen. Bei anonymen Abstimmungen wird diese Verknüpfung bewusst nicht erstellt.
+Damit eine Person ihre Stimme abrufen oder ersetzen könnte, müsste eine Verknüpfung zwischen dieser Person und ihrer Stimme bestehen. Bei anonymen Abstimmungen wird diese Verknüpfung bewusst vermieden.
 
 Prüfe deine Auswahl sorgfältig, bevor du deine Stimme abgibst.
 
@@ -108,17 +100,17 @@ Prüfe deine Auswahl sorgfältig, bevor du deine Stimme abgibst.
 
 ## Warum anonyme Stimmen keine Begründungen haben
 
-Neue anonyme Stimmen können keine schriftliche Begründung und keinen Anhang enthalten. Begründungen können Namen, persönliche Angaben, typische Schreibweisen, Erwähnungen oder andere Informationen enthalten, die die abstimmende Person identifizieren. Außerdem würden sie es erleichtern, einzelne Stimmen vom zusammengefassten Ergebnis zu unterscheiden.
+Anonyme Stimmen können keine Begründung und keinen Anhang enthalten. Begründungen können Namen, persönliche Angaben, typische Schreibweisen oder Erwähnungen enthalten, die die abstimmende Person identifizieren. Sie könnten es außerdem erleichtern, einzelne Stimmen im Ergebnis zu erkennen.
 
-Teilnehmende können weiterhin im Thread über die Abstimmung diskutieren, sofern dort eine Diskussion möglich ist. Diese Kommentare sind gewöhnliche Diskussionsbeiträge mit Namen und werden nicht mit einer anonymen Stimme verknüpft.
+Teilnehmende können weiterhin im Thread über die Abstimmung diskutieren. Diese Kommentare sind gewöhnliche Beiträge mit Namen und werden nicht mit einer anonymen Stimme verknüpft.
 
 <!-- translation-section: results-and-exports -->
 
 ## Ergebnis und Exporte
 
-Nachdem die Abstimmung beendet wurde, wird das Ergebnis aus den getrennt gespeicherten Stimmen berechnet und als Summen sowie in weiteren zusammengefassten Formen angezeigt, die der Abstimmungstyp unterstützt.
+Nachdem die Abstimmung beendet wurde, berechnet Loomio das Ergebnis aus den getrennt gespeicherten Stimmen und zeigt die Summen für den jeweiligen Abstimmungstyp an.
 
-Die Anwendung veröffentlicht keine Stimmenkennungen, keine Reihenfolge der Stimmabgabe und keine Zeitpunkte der Stimmabgabe. Exporte von Abstimmungen enthalten zusammengefasste Ergebnisse statt einer Zeile für jede anonyme Stimme. Eine Ausnahme ist eine beendete STV-Wahl, die im BLT-Format exportiert werden kann. Ein BLT-Export enthält die Rangfolgen der Kandidierenden, die für eine erneute Auszählung der Wahl benötigt werden. Stimmen mit derselben Rangfolge werden zusammengefasst. Identitäten der Abstimmenden und Metadaten der Stimmzettel sind nicht enthalten.
+Loomio veröffentlicht keine Stimmenkennungen, keine Reihenfolge der Stimmabgabe und keine Zeitpunkte der Stimmabgabe. Exporte von Abstimmungen enthalten nur zusammengefasste Ergebnisse statt einer Zeile für jede Stimme. Die einzige Ausnahme ist eine beendete STV-Wahl, die für eine erneute Auszählung im BLT-Format exportiert werden kann. Ein BLT-Export listet die Rangfolgen der Kandidierenden auf, wobei übereinstimmende Stimmzettel zusammengefasst werden. Identitäten der Abstimmenden und Metadaten der Stimmzettel sind nicht enthalten.
 
 Eine anonyme Abstimmung kann nach ihrem Ende nicht wieder geöffnet werden.
 
@@ -128,7 +120,7 @@ Eine anonyme Abstimmung kann nach ihrem Ende nicht wieder geöffnet werden.
 
 Nachdem eine anonyme Abstimmung beendet wurde, können alle, die ihr Ergebnis sehen können, auch sehen, wer teilgenommen hat. Solange die Abstimmung offen ist, kann dies niemand sehen.
 
-Wähle **Stimmen ansehen**, um die Liste zu sehen. Sie zeigt immer, wer stimmberechtigt war. Ob die einzelnen Personen abgestimmt haben, zeigt sie nur, wenn genügend Personen abgestimmt haben. Dazu muss das Quorum der Abstimmung erreicht sein, falls eines festgelegt wurde. Andernfalls muss mindestens die Hälfte der Stimmberechtigten abgestimmt haben. In jedem Fall sind mindestens drei Stimmen erforderlich. Die Liste zeigt nie, wie oder wann jemand abgestimmt hat.
+Wähle **Stimmen ansehen**, um die Liste zu sehen. Sie zeigt immer, wer stimmberechtigt war, und nie, wie oder wann jemand abgestimmt hat. Ob die einzelnen Personen abgestimmt haben, zeigt sie nur, wenn genügend Personen teilgenommen haben: Das Quorum der Abstimmung muss erreicht sein, falls eines festgelegt wurde. Andernfalls muss mindestens die Hälfte der Stimmberechtigten abgestimmt haben. In jedem Fall sind mindestens drei Stimmen erforderlich.
 
 Mitglieder der Gruppe und die Abstimmenden sehen außerdem, wann die einzelnen Personen der Gruppe beigetreten sind und wer sie eingeladen hat. Gruppenadmins sehen auch die E-Mail-Adressen, um Personen mit demselben Namen unterscheiden zu können.
 
@@ -142,9 +134,9 @@ Admins können stimmberechtigte Personen hinzufügen, solange die Abstimmung off
 
 Bei einer anonymen Abstimmung, die mindestens 24 Stunden dauert, erhalten stimmberechtigte Personen, die noch nicht abgestimmt haben, innerhalb der letzten 24 Stunden eine automatische Erinnerung.
 
-Wer die Erinnerung erhält, wird ausschließlich anhand der Teilnahmedatensätze bestimmt. Dabei werden abgegebene Stimmen weder geprüft noch mit diesen Datensätzen verknüpft. Wenn sich die Frist ändert, verwendet die stündliche Erinnerungsprüfung die aktuelle Frist, ohne eine gesonderte geplante Erinnerung für die Abstimmung zu verwalten.
+Loomio bestimmt ausschließlich anhand der Teilnahmedatensätze, wer die Erinnerung erhält, ohne abgegebene Stimmen zu prüfen.
 
-Abstimmungen mit einer Gesamtdauer von weniger als 24 Stunden versenden diese automatische Erinnerung nicht.
+Abstimmungen mit einer Dauer von weniger als 24 Stunden versenden diese automatische Erinnerung nicht.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
@@ -160,18 +152,18 @@ Mit den Funktionen der Anwendung können sie Folgendes nicht sehen:
 
 - welche Auswahl zu einer Person gehört;
 - einzelne Stimmen oder Abstimmungsmuster;
-- wann eine bestimmte Stimme abgegeben wurde; oder
-- eine Begründung, einen Anhang, ein Ereignis oder eine Benachrichtigung, die mit einer abgegebenen Stimme verknüpft sind.
+- wann eine Stimme abgegeben wurde; oder
+- eine Begründung, einen Anhang, ein Ereignis oder eine Benachrichtigung, die mit einer Stimme verknüpft sind.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Grenzen des anonymen Abstimmens
 
-Diese Schutzmaßnahmen verhindern, dass Personen, die die Anwendung nutzen, eine abgegebene Stimme mit der abstimmenden Person verknüpfen. Sie bieten keinen kryptografischen Schutz gegenüber Personen, die das System betreiben und die Datenbank, Sicherungskopien, Serverprotokolle, den Prozessspeicher, den Netzwerkverkehr oder eine veränderte Version der Anwendung untersuchen können.
+Anonymes Abstimmen verhindert, dass Personen, die Loomio nutzen, eine Stimme mit der abstimmenden Person verknüpfen. Es bietet keinen kryptografischen Schutz gegenüber Personen, die den Server betreiben und die Datenbank, Sicherungskopien, Serverprotokolle, den Prozessspeicher, den Netzwerkverkehr oder veränderten Code untersuchen können.
 
-Auch das Ergebnis selbst kann Informationen offenlegen. Ein kleiner Kreis von Stimmberechtigten, ein einstimmiges Ergebnis, eine auffällige Kombination ausgewählter Optionen oder Informationen, die außerhalb der Abstimmung geteilt werden, können Rückschlüsse auf die Auswahl einer Person erleichtern. Abstimmende können sich außerdem entscheiden, in der Diskussion unabhängig von ihrer abgegebenen Stimme offenzulegen, wie sie abgestimmt haben.
+Auch das Ergebnis selbst kann Hinweise liefern. Eine kleine Gruppe, ein einstimmiges Ergebnis, eine einzigartige Kombination ausgewählter Optionen oder Kommentare, die außerhalb der Abstimmung geteilt werden, können Rückschlüsse auf die Stimme einer Person erleichtern.
 
-Berücksichtige die Anzahl der Stimmberechtigten und die Sensibilität der Entscheidung, wenn du beurteilst, ob anonymes Abstimmen auf Anwendungsebene geeignet ist.
+Berücksichtige die Größe der Gruppe und die Sensibilität der Entscheidung, bevor du dich auf anonymes Abstimmen auf Anwendungsebene verlässt.
 
 <!-- translation-section: questions -->
 
@@ -181,25 +173,25 @@ Berücksichtige die Anzahl der Stimmberechtigten und die Sensibilität der Entsc
 
 ### Kann jemand sehen, wie ich abgestimmt habe?
 
-Nein. Sobald genügend Personen abgestimmt haben, können Personen, die das Ergebnis sehen können, auch sehen, ob du abgestimmt hast. Niemand kann dich über die Anwendung mit einer abgegebenen Stimme verknüpfen. Bis dahin bleibt verborgen, ob du abgestimmt hast.
+Nein. Niemand kann dich über Loomio mit deiner Stimme verknüpfen. Sobald genügend Personen abgestimmt haben, können alle, die das Ergebnis sehen können, auch sehen, ob du teilgenommen hast. Bevor dieser Schwellenwert erreicht ist, bleibt selbst die Information verborgen, ob du abgestimmt hast.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
 ### Kann ich meine Stimme nach der Abgabe ansehen?
 
-Nein. Die Anwendung bestätigt, dass deine Stimme gespeichert wurde, und entfernt anschließend deine Auswahl aus der Abstimmungsoberfläche. Sie kann deine Stimme nicht abrufen, ohne die Verknüpfung herzustellen, die bei anonymen Abstimmungen bewusst vermieden wird.
+Nein. Loomio bestätigt, dass deine Stimme erfasst wurde, und entfernt deine Auswahl aus der Benutzeroberfläche. Es kann deine Stimme nicht abrufen, ohne die Verknüpfung herzustellen, die bei anonymen Abstimmungen bewusst vermieden wird.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
 ### Kann ich meine Stimme ändern oder zurückziehen?
 
-Nein. Es gibt keine Verknüpfung, über die die Anwendung erkennen könnte, welche abgegebene Stimme geändert oder entfernt werden soll.
+Nein. Da es keine Verknüpfung zwischen dir und deiner Stimme gibt, kann Loomio nicht erkennen, welche Stimme geändert oder entfernt werden soll.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
 ### Erhalte ich eine E-Mail zur Bestätigung meiner Stimme?
 
-Nein. Wenn du abstimmst, erscheint nur eine Bestätigung auf dem Bildschirm und dein Teilnahmedatensatz wird aktualisiert. Es wird keine Bestätigungs-E-Mail versendet und keine Benachrichtigung oder kein Aktivitätsereignis erstellt.
+Nein. Wenn du abstimmst, erscheint nur eine Bestätigung auf dem Bildschirm und dein Teilnahmedatensatz wird aktualisiert. Es wird keine E-Mail versendet und weder eine Benachrichtigung noch ein Aktivitätseintrag erstellt.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
@@ -211,4 +203,4 @@ Nachdem eine öffentliche Abstimmung beendet wurde, können alle ihr Ergebnis se
 
 ### Eignet sich anonymes Abstimmen für jede Wahl?
 
-Nein. Die Anwendung hält Identitäten und Stimmen getrennt. Entscheidungen, die Schutz vor Systembetreibenden erfordern, oder unabhängig überprüfbare kryptografische Wahlen benötigen ein System, das für diese Anforderungen entwickelt wurde.
+Nein. Die Anwendung hält Abstimmende und Stimmen getrennt. Wahlen, die Schutz vor Serverbetreibenden oder eine unabhängige kryptografische Überprüfung erfordern, benötigen ein System, das für diese Anforderungen entwickelt wurde.

@@ -1,16 +1,16 @@
 ---
 title: Sähköpostiosoite
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-22'
 sections:
-  introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  introduction: '03039e0babf5a9b6'
+  preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: 5f7c8adfae17c07f
-  preventing-unauthorized-emails: 7d32dd121b82a3c9
+  introduction: fdecebb5247d5257
+  preventing-unauthorized-emails: d515035732d02186
 title_source: f2488fd4ef4adbc6
 title_generated: c326de2e675782c3
 ---
@@ -19,25 +19,24 @@ title_generated: c326de2e675782c3
 
 # Aloita ketju ryhmässäsi lähettämällä sähköpostia
 
-Loomio-ryhmälläsi on sähköpostiosoite. Voit aloittaa ketjun ryhmässä lähettämällä tai välittämällä sähköpostia tähän osoitteeseen.
+Jokaisella Loomio-ryhmällä on oma sähköpostiosoite. Voit aloittaa uuden ketjun ryhmässä lähettämällä tai välittämällä sähköpostia tähän osoitteeseen.
 
-Näet ryhmäsi sähköpostiosoitteen ryhmän sivulla:
+Löydät ryhmän sähköpostiosoitteen ryhmän sivulta:
+
 ![Sähköpostiosoitteen sijainti ryhmän sivulla](email_email_button.png)
 
-Kun lähetät sähköpostia tähän osoitteeseen, uusi ketju luodaan. Sähköpostin aiheesta tulee ketjun otsikko, viestin sisällöstä tulee kuvaus ja liitetiedostot lisätään ketjuun.
+Kun lähetät sähköpostia tähän osoitteeseen, Loomio luo uuden ketjun. Sähköpostin aiheesta tulee ketjun otsikko, viestin sisällöstä tulee ketjun kuvaus ja liitetiedostot lisätään ketjuun.
 
-Sähköpostin lähettäjän osoitteen perusteella tunnistetaan ryhmän jäsen, josta tulee ketjun kirjoittaja.
+Loomio tunnistaa lähettäjän ryhmän jäseneksi sähköpostin lähettäjän osoitteen perusteella ja asettaa hänet ketjun kirjoittajaksi.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Luvattomien sähköpostien estäminen
 
-Jotta ryhmän ulkopuoliset eivät voi käyttää tätä toimintoa, Loomio edellyttää, että saapuvan sähköpostin lähettäjän osoite vastaa jonkun ryhmän jäsenen sähköpostiosoitetta.
+Jotta muut kuin ryhmän jäsenet eivät voi aloittaa ketjuja, Loomio edellyttää, että saapuvan sähköpostin lähettäjän osoite vastaa jonkun ryhmän jäsenen sähköpostiosoitetta.
 
-Jos käytät useita sähköpostiosoitteita, voit lisätä rinnakkaisosoitteen, jotta Loomio tunnistaa myös muut sähköpostiosoitteesi.
+Jos jäsen lähettää sähköpostia osoitteesta, jota Loomio ei tunnista, Loomio jättää viestin odottamaan hyväksyntää ja ilmoittaa siitä ryhmän ylläpitäjille. Ryhmän ylläpitäjä voi hyväksyä sähköpostin ja lisätä osoitteen jäsenen rinnakkaisosoitteeksi tai hylätä tästä osoitteesta jatkossa saapuvat sähköpostit.
 
-Jos lähettäjän osoite ei vastaa yhdenkään ryhmän jäsenen sähköpostiosoitetta, saat ilmoituksen, jossa sinua pyydetään lisäämään rinnakkaisosoite tai hylkäämään kaikki tästä osoitteesta jatkossa saapuvat sähköpostit.
+Kun rinnakkaisosoite on lisätty, tästä osoitteesta jatkossa lähetetyt sähköpostit aloittavat ketjun heti.
 
-Kun lähetät ensimmäisen kerran sähköpostia osoitteesta, jota Loomio ei tunnista, sinun on siis lisättävä rinnakkaisosoite. Sen jälkeen sähköpostit hyväksytään heti.
-
-![Tunnistamattomasta osoitteesta saapuneen sähköpostin hyväksymis- ja hylkäyspainikkeiden sijainti](email_unreleased_emails.png)
+![Tunnistamattomasta osoitteesta saapuneen sähköpostin hyväksymis- ja hylkäyspainikkeet](email_unreleased_emails.png)

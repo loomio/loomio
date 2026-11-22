@@ -1,26 +1,26 @@
 ---
 title: Gestion des membres
-source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
-source_file: docs/en/user_manual/groups/member_management/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-13'
+  'on': '2026-11-22'
 sections:
-  introduction: f216b18771a2c2a9
-  administering-your-group: 27aed40959adef57
-  managing-subgroups: 915e13a928a8f4aa
-  removing-members: f40c25fd90ab1ce2
-  leaving-group: 11b09b4af23b4e7e
-  set-title: 835b25d246477b4a
-  member-email-addresses: cae570f30b671275
+  introduction: bc7d2de9abc2ea86
+  administering-your-group: 7ae1b105c20977fc
+  managing-subgroups: 2e4bdee3283e8ef8
+  removing-members: d70807bdd968d594
+  leaving-group: 268f0c735b8e46d7
+  set-title: eb9a52e3d6c21d43
+  member-email-addresses: 0e800419a7bdacc6
 generated:
-  introduction: 33fec9bcb8d1d349
-  administering-your-group: bdbd97a9d818accd
-  managing-subgroups: cd534ba2f839e053
-  removing-members: 25d5fbc007da78d6
-  leaving-group: c9b500c3b224505f
-  set-title: 747e469248b9a197
-  member-email-addresses: '9092216101041597'
+  introduction: 05cb67a281f7dd87
+  administering-your-group: c46f5e0dc6e4e458
+  managing-subgroups: 8ada1df8255a58a0
+  removing-members: 655df70dc2e10436
+  leaving-group: 87fa275c38158ad9
+  set-title: 040a7509d74c0576
+  member-email-addresses: 40f5508af2f6d264
 title_source: 23ac3a7fe9ee72a2
 title_generated: b31caad0ffc3a452
 ---
@@ -29,63 +29,70 @@ title_generated: b31caad0ffc3a452
 
 # Gestion des membres
 
-Si vous êtes administrateur, vous pouvez gérer les membres depuis l’onglet **Membres** sur la page de votre groupe.
-
-Cliquez sur les trois points (**⋮**) à droite du membre du groupe pour définir son rôle, le nommer administrateur ou délégué, ou le retirer du groupe.
+Les administrateurs du groupe gèrent les membres depuis l’onglet **Membres** sur la page du groupe. Ouvrez le menu des actions à côté d’un membre pour définir son rôle, le nommer administrateur du groupe, le nommer délégué ou le retirer du groupe.
 
 ![Menu des actions sur un membre sur la page des membres de la coopérative Oatmilk](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
 ## Administrer votre groupe
-Il n’existe que deux types d’utilisateurs dans un groupe Loomio : **membre** et **administrateur**.
 
-Les administrateurs effectuent les tâches administratives de votre groupe, notamment : ajouter et retirer des membres, gérer les permissions des membres, définir les niveaux de confidentialité du groupe et gérer les formules d’abonnement. Ils peuvent également consulter les adresses e-mail des membres et exporter les données du groupe.
+Un groupe Loomio comporte deux rôles : **membre** et **administrateur du groupe**.
 
-La personne qui crée un groupe Loomio est nommée administrateur par défaut. Nous vous recommandons de nommer administrateur au moins une autre personne de confiance dans votre groupe, afin que quelqu’un puisse toujours administrer le groupe. Vous pouvez avoir autant d’administrateurs que vous le souhaitez dans votre groupe.
+Les administrateurs du groupe peuvent ajouter et retirer des membres, gérer les permissions des membres, modifier les paramètres de confidentialité du groupe, gérer les abonnements, consulter les adresses e-mail des membres et exporter les données du groupe.
 
-Pour nommer un membre **administrateur**, accédez à l’onglet Membres, trouvez le membre et cliquez sur les trois points (**⋮**) à côté de son nom. Choisissez **Nommer admin**. Un tag `Admin` apparaîtra à côté de son nom.
+La personne qui crée un groupe est administrateur du groupe par défaut. Nous vous recommandons d’avoir au moins deux administrateurs du groupe afin que quelqu’un puisse toujours gérer le groupe. Un groupe peut avoir autant d’administrateurs que nécessaire.
+
+Pour nommer un membre administrateur du groupe, ouvrez le menu des actions à côté de son nom dans l’onglet **Membres** et sélectionnez **Nommer admin**.
 
 ![Action Nommer admin dans le menu d’un membre](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Gérer les sous-groupes
-Les administrateurs d’un groupe parent peuvent rejoindre ses sous-groupes non secrets, puis se nommer administrateurs de ces sous-groupes.
+
+Les administrateurs d’un groupe parent peuvent rejoindre tout sous-groupe non secret, puis se nommer administrateurs de ce sous-groupe.
 
 Sélectionnez **Rejoindre le groupe** sur la page du sous-groupe.
 
 ![Bouton Rejoindre le groupe dans un sous-groupe fermé de la coopérative Oatmilk](member_join_subgroup.png)
 
-Une fois que vous avez rejoint le sous-groupe, vous pouvez également vous nommer administrateur de ce sous-groupe, de la même manière que vous nommeriez une autre personne administrateur.
+Une fois membre du sous-groupe, ouvrez le menu des actions à côté de votre nom dans son onglet **Membres** et sélectionnez **Nommer admin**.
 
 >[!Note]
->Ces permissions ne s’appliquent pas aux [sous-groupes **secrets**](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
+>Cela ne s’applique pas aux [sous-groupes **Secret**](/en/user_manual/groups/subgroups#permissions).
 
 <!-- translation-section: removing-members -->
 
 ## Retirer des membres
-Lorsque vous cliquez sur **Retirer du groupe**, vous devez confirmer le retrait. Une fois retiré, cet utilisateur n’a plus accès aux pages, fils, sondages ou propositions du groupe. Il ne reçoit plus d’e-mails ni de notifications concernant l’activité du groupe. Toutefois, ses commentaires et ses votes restent inchangés.
+
+Pour retirer une personne, ouvrez le menu des actions à côté de son nom et sélectionnez **Retirer du groupe**.
 
 ![Action Retirer du groupe dans le menu d’un membre](member_remove.png)
 
-Le retrait s’applique également aux sous-groupes du groupe. Les sondages privés disparaissent du tableau de bord et de la liste des votes de la personne. Les sondages publics restent consultables, mais un ancien membre ne peut pas voter à moins d’être à nouveau invité. Quitter le groupe pendant qu’un sondage est clôturé ne permet pas de conserver le droit de vote si ce sondage est rouvert.
+Lorsqu’une personne est retirée d’un groupe :
 
-Vous pouvez ajouter à nouveau les membres retirés au groupe ultérieurement. Lorsqu’ils rejoignent à nouveau le groupe, leur accès et leurs votes existants dans les sondages en cours sont rétablis sans qu’il soit nécessaire d’actualiser la page.
+- Elle perd l’accès au groupe et à ses sous-groupes et ne reçoit plus de notifications du groupe.
+- Ses commentaires et ses votes existants restent inchangés.
+- Les sondages privés disparaissent de son tableau de bord et de sa liste des votes. Les sondages publics restent consultables, mais elle ne peut pas voter à moins d’être à nouveau invitée. Quitter le groupe pendant qu’un sondage est clôturé ne permet pas de conserver le droit de vote si ce sondage est rouvert.
+
+Vous pouvez ajouter à nouveau les membres retirés au groupe ultérieurement. Lorsqu’ils rejoignent à nouveau le groupe, leur accès et leurs votes existants dans les sondages en cours sont rétablis.
 
 <!-- translation-section: leaving-group -->
 
 ## Quitter le groupe
-Pour quitter un groupe : accédez à la page du groupe, ouvrez le menu à trois points et cliquez sur **Quitter le groupe**.
 
-Quitter le groupe a les mêmes effets sur l’accès au groupe et à ses sous-groupes qu’un retrait par un administrateur, notamment la disparition des sondages privés de votre tableau de bord et de votre liste des votes.
+Pour quitter un groupe, ouvrez le menu des actions du groupe et sélectionnez **Quitter le groupe**.
+
+Quitter le groupe a les mêmes effets sur l’accès au groupe et à ses sous-groupes qu’un retrait par un administrateur du groupe.
 
 ![Action Quitter le groupe dans le menu des paramètres de la coopérative Oatmilk](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
 ## Définir un rôle
-Dans l’onglet Membres, vous pouvez également préciser votre rôle dans le groupe ou indiquer l’organisation que vous représentez à l’aide du champ **rôle**. Vous ou un administrateur du groupe pouvez modifier votre rôle en choisissant **Définir un rôle** dans le menu à trois points près de votre nom.
+
+Le rôle indiqué pour un membre précise sa fonction dans le groupe ou l’organisation qu’il représente. Vous ou un administrateur du groupe pouvez définir ou modifier votre rôle en sélectionnant **Définir un rôle** dans le menu des actions à côté de votre nom dans l’onglet **Membres**.
 
 ![Action Définir un rôle dans le menu d’un membre](member_set_title.png)
 
@@ -95,10 +102,8 @@ Vous pouvez avoir des rôles différents dans les différents sous-groupes.
 
 ## Adresses e-mail des membres
 
-Seuls les administrateurs peuvent consulter les adresses e-mail des membres du groupe. Cela est parfois nécessaire pour vérifier la liste des membres d’un groupe.
+Seuls les administrateurs du groupe peuvent consulter les adresses e-mail des membres.
 
-Pour consulter les adresses e-mail des membres : utilisez l’[exportation des données](/en/user_manual/groups/data_export/) pour télécharger un fichier CSV, puis ouvrez ce fichier dans Excel ou Google Sheets.
+Pour consulter toutes les adresses e-mail des membres du groupe et de ses sous-groupes, [exportez les données du groupe](/en/user_manual/groups/data_export) au format CSV et ouvrez le fichier dans Microsoft Excel ou Google Sheets.
 
-Le fichier d’exportation des données du groupe répertorie chaque personne et son adresse e-mail dans chaque sous-groupe.
-
-Vous pouvez également rechercher des membres par adresse e-mail dans l’onglet Membres. Si vous repérez une personne que vous souhaitez retirer du groupe, vous pouvez la rechercher à l’aide de son adresse e-mail pour la retirer.
+Vous pouvez également rechercher des membres par adresse e-mail dans l’onglet **Membres** pour trouver une personne précise et gérer son appartenance au groupe.

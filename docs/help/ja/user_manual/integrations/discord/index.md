@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: da264e6a830f1575
+  introduction: 66cead310a634440
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Discord連携
 
-_Loomioグループの通知をDiscordのチームチャットに連携します。_
-
-新しいディスカッション、提案、コメント、投票、結論が投稿されると、LoomioからDiscordのチャンネルに通知を送信できます。決定について参加者に再度知らせたいときは、チャットルームに手動で通知することもできます。
+新しいディスカッション、アンケート、コメント、投票、結論が投稿されると、LoomioからDiscordのチャンネルに通知を送信できます。決定について参加者に再度知らせたいときは、チャンネルに手動で通知することもできます。
 
 ---
 
-Discordサーバーを開き、サーバー設定メニューを探します。
-![](server-settings.png)
+1. Discordサーバーを開き、**サーバー設定**に移動します。
 
-「連携サービス」をクリックします。
-![](integrations.png)
+   ![](server-settings.png)
 
-次に「ウェブフックを追加」をクリックし、「Loomio bot」などの名前を付けます。
+2. **統合**を選択します。
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-ウェブフックURLをクリップボードにコピーしたことを確認し、以下のリンクを開きます。
+3. **ウェブフックを追加**を選択し、`Loomio`などの名前を付け、チャンネルを選択して、ウェブフックURLをコピーします。
+
+   ![](add-webhook.png)
+
+ウェブフックURLを取得したら、Loomioで接続の設定を完了します。
 
 [Loomioでチャット連携を設定する](../chatbots/#set-up-a-chat-integration)

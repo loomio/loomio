@@ -1,42 +1,42 @@
 ---
 title: תבניות סקר
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 509051f4b08046ed
+  introduction: 7d27821e41004968
   who-can-manage-templates: bbbcabd18f41454d
   create-a-poll-template: 93377a41bc54bac4
   template-title-subtitle-and-help: 24119aba5f92c5a0
-  voting-method: 278f0c87bf918c03
+  voting-method: '0699b397b9001692'
   example-title-details-and-tags: c5c66ec400734669
-  response-options: 7be1e7525173f394
-  duration-and-settings: 584983eaa4ec3b8c
+  response-options: e90cea3956c5a6f8
+  duration-and-settings: 2b05abf5c4024a90
   manage-the-template-list: 8c0cc3f24c1d87c4
   save-a-poll-as-a-template: e68b0609d97f146d
   start-a-new-template: b49f326b289fd1f8
-  configure-the-template: 620d156240775d87
+  configure-the-template: 5cf9157fd3106017
   edit-a-default-template: eaaca9858cab6535
 title_source: 114cca246e357304
 title_generated: 9e12dfd46f55c441
 needs_review:
-  voting-method: check the interface label "**לְהַקְצוֹת**" for "**Allocate**"; check the interface label "**דַרגָה**" for "**Rank**"; use "בחירה" instead of "לבחור" for "Choose"
+  voting-method: use "בחירה" instead of "לבחור" for "Choose"
   response-options: use "בחירה" instead of "לבחור" for "Choose"
 ---
 
@@ -48,9 +48,9 @@ needs_review:
 
 ניתן להשתמש בעמוד זה כדי להגדיר אילו תבניות זמינות לקבוצה או ליצור תבנית לתהליך הרצוי. לבחירת תבנית להצבעה מסוימת, ניתן לעיין בעמוד [הצעות](../proposals/) או [סקרים](../proposal_types/). להנחיית תהליך החלטה שלם, ניתן לעיין בעמוד [קבלת החלטות](/en/guides/making_decisions/).
 
-בעת פתיחת הצבעה, יש לבחור בלשונית **הצעה** או **סקר** ולבחור אחת מהתבניות הזמינות לקבוצה.
+בעת פתיחת הצבעה, יש לבחור בלשונית **הצעה** או **סקר** ולבחור תבנית הזמינה לקבוצה.
 
-התבנית מספקת מבוא, תוכן לדוגמה, אפשרויות והגדרות. לפני פתיחת ההצבעה, יש לבדוק ולערוך אותם בהתאם להחלטה המסוימת. עריכת ההצבעה החדשה אינה משנה את התבנית לשימוש חוזר.
+התבנית ממלאת מבוא, תוכן לדוגמה, אפשרויות והגדרות. לפני פתיחת ההצבעה, יש לבדוק ולערוך אותם בהתאם להחלטה. עריכת הצבעה חדשה אינה משנה את התבנית.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -86,11 +86,11 @@ needs_review:
 
 ## הגדרות התבנית
 
-יש לתת לתבנית שם וכותרת משנה המתארים מתי להשתמש בה. ניתן לשנות כל אחד מהשדות האחרים כדי להתאים אותם לשימוש חוזר. לאחר בחירה ב־**שמור תבנית**, התבנית תופיע ברשימה בעת פתיחת הצעה או סקר חדשים.
+יש לתת לתבנית שם וכותרת משנה המתארים מתי להשתמש בה. יש להתאים את שאר השדות לשימוש חוזר בתבנית, ולאחר מכן לבחור ב־**שמור תבנית**. התבנית תופיע בעת פתיחת הצעה או סקר חדשים.
 
 [![הטופס המלא של תבנית תהליך הסכמה לשינוי מדיניות](poll_template_new.png)](poll_template_new.png)
 
-בסקרים עצמאיים, ההגדרה **רק מנהלים יכולים להוסיף קבצים מצורפים** מאפשרת רק למנהלי השרשור ולמנהלי הקבוצה להוסיף קבצים חדשים ותמונות בגוף התוכן, גם בתגובות להצבעה ובתגובות אחרות. בסקרים שנפתחים בתוך שרשור קיים חלה הגדרת הקבצים המצורפים של אותו שרשור. שינוי התבנית משפיע רק על סקרים עתידיים.
+בסקרים עצמאיים, ההגדרה **רק מנהלים יכולים להוסיף קבצים מצורפים** מאפשרת רק למנהלי השרשור ולמנהלי הקבוצה להוסיף קבצים חדשים ותמונות בגוף התוכן (גם בתגובות להצבעה ובתגובות אחרות). בסקרים בתוך שרשור קיים חלה הגדרת הקבצים המצורפים של אותו שרשור. שינוי תבנית משפיע רק על סקרים עתידיים.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -102,13 +102,13 @@ needs_review:
 
 ### שיטת הצבעה
 
-יש לבחור מה המשתתפים צריכים להביע וכיצד יש לחשב את התוצאה.
+יש לבחור מה המשתתפים צריכים להביע וכיצד יש לחשב את התוצאה:
 
 - **הצעה**: להגיב להצהרה באמצעות עמדות מוגדרות;
 - **בחירה**: לבחור אפשרות אחת או יותר;
 - **ציון**: להעריך כל אפשרות לפי סולם ציונים;
-- **הקצאה**: לחלק כמות מוגבלת של נקודות;
-- **דירוג**: לסדר אפשרויות לפי סדר העדפה;
+- **לְהַקְצוֹת**: לחלק כמות מוגבלת של נקודות;
+- **דַרגָה**: לסדר אפשרויות לפי סדר העדפה;
 - **סקר זמן**: לציין זמינות; וכן
 - **STV**: לדרג מועמדים בבחירות יחסיות שבהן נבחרים כמה מועמדים.
 
@@ -129,7 +129,7 @@ needs_review:
 - **שם האופציה**: התווית הקצרה של התגובה;
 - **סמל**: הסימן החזותי שלה;
 - **מַשְׁמָעוּת**: מה מבטאת הבחירה באפשרות; וכן
-- **הנחיית סיבה**: השאלה המוצגת בעת מתן נימוק לתגובה.
+- **הנחיית סיבה**: השאלה המוצגת בעת מתן נימוק להצבעה.
 
 ![](poll_type_edit_option.png)
 
@@ -139,9 +139,9 @@ needs_review:
 
 ### משך והגדרות
 
-יש להגדיר משך ברירת מחדל שמתאים לרוב השימושים בתבנית. ניתן לשנות את מועד הסגירה של הצבעה מסוימת על ידי מי שיצרו אותה.
+יש להגדיר משך ברירת מחדל שמתאים לרוב השימושים בתבנית. מי שיצרו את ההצבעה יכולים לשנות את מועד הסגירה שלה.
 
-ברירות מחדל נוספות יכולות לקבוע את נראות התוצאות, הצבעה אנונימית, [הצבעה משוקללת](../weighted_voting/), דרישות למתן נימוק להצבעה, תזכורות, מניין והתנהגות ייחודית לשיטת ההצבעה. להסבר על השפעתן, ניתן לעיין בעמוד [הגדרות הצעות וסקרים](../settings/).
+ברירות מחדל נוספות קובעות את נראות התוצאות, הצבעה אנונימית, [הצבעה משוקללת](../weighted_voting/), דרישות למתן נימוק להצבעה, תזכורות, מניין והתנהגות ייחודית לשיטת ההצבעה. לפרטים, ניתן לעיין בעמוד [הגדרות הצעות וסקרים](../settings/).
 
 <!-- translation-section: manage-the-template-list -->
 

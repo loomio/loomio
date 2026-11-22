@@ -1,40 +1,40 @@
 ---
 title: Propuestas y sondeos
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: b48e6637dc129d28
+  introduction: 9cab586e878ed071
   find-the-right-help: 8a1938e9ef7c506e
   proposals: a4393d874d146d89
   polls: 9739208cf5c628e4
   start-a-proposal-or-poll: d771346fa476332a
-  choose-whether-to-use-a-discussion: 0a39d2cdbe797ede
+  choose-whether-to-use-a-discussion: cabdb10bbc402b1f
   in-a-discussion: 4ce457c5fb48b365
   without-a-discussion: 962a48b306c7040d
   what-happens-next: 8ba87a8ee3026e1f
   1-create-it: db3e1df57db0bf99
-  2-voting-opens: 810c3a02260cab15
-  3-people-vote: f548ee4fe03a2426
-  4-it-closes: 99632d4f0f6e5d1e
-  5-share-an-outcome: a039e5907d4e7d85
+  2-voting-opens: 9d4661e3def17dea
+  3-people-vote: aeb9ed32c256c0b0
+  4-it-closes: '0003594393c001e8'
+  5-share-an-outcome: f8835547cd86ce92
 title_source: d45b4ba3cb7a27cb
 title_generated: 4d74778611cbdcd4
 ---
@@ -43,7 +43,7 @@ title_generated: 4d74778611cbdcd4
 
 # Propuestas y encuestas
 
-Las propuestas y encuestas recopilan respuestas estructuradas de un grupo. Pueden ayudar a probar una idea, tomar una decisión, identificar prioridades, programar una reunión o elegir representantes.
+Las propuestas y encuestas recopilan respuestas estructuradas de un grupo. Úsalas para probar una idea, tomar una decisión, establecer prioridades, programar una reunión o elegir representantes.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ Consulta [Encuestas](../proposal_types/) para compararlas.
 
 ### Elige si necesitas una discusión
 
-Inicia la propuesta o encuesta dentro de una discusión cuando las personas necesiten contexto, hacer preguntas o conversar antes de responder. Una discusión puede contener varias propuestas a lo largo del tiempo, manteniendo las modificaciones y la conclusión final juntas en un único registro del tema.
+Inicia una propuesta o encuesta dentro de una discusión cuando las personas necesiten contexto, hacer preguntas o conversar antes de responder. Una discusión puede contener varias propuestas a lo largo del tiempo, manteniendo las modificaciones y la conclusión final juntas en un único registro.
 
-Inicia una encuesta independiente cuando la discusión ya haya tenido lugar en otro espacio, como una reunión, o cuando la pregunta sea sencilla y solo necesites recopilar respuestas. Incluye suficientes detalles o un enlace al registro pertinente para que los votantes entiendan a qué están respondiendo.
+Inicia una encuesta independiente cuando la discusión ya haya tenido lugar en otro espacio, como una reunión, o cuando la pregunta sea sencilla y solo necesites recopilar respuestas. Incluye suficientes detalles o un enlace a los antecedentes para que los votantes sepan a qué están respondiendo.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,25 +138,25 @@ Añade un título y detalles, revisa sus opciones y ajustes, y establece una hor
 
 ### 2. Se abre la votación
 
-Cuando se abre la votación, Loomio notifica a las personas que has invitado. Consulta [Invitar a votar](../inviting_people/).
+Cuando se abre la votación, Loomio notifica a las personas que has invitado. Consulta [Gestionar votantes](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Las personas votan
 
-Mientras está abierta, las personas pueden votar, explicar su voto y cambiarlo. Los resultados se actualizan a medida que las personas votan, salvo que estén ocultos hasta el cierre. Por defecto, las personas que no han votado reciben un recordatorio un día antes del cierre.
+Mientras la encuesta está abierta, las personas pueden votar, añadir un motivo a su voto y cambiarlo. Los resultados se actualizan a medida que las personas votan, salvo que estén ocultos hasta el cierre. Por defecto, las personas que no han votado reciben un recordatorio 24 horas antes del cierre.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Se cierra
 
-Se cierra automáticamente a la hora de cierre. Un admin del hilo también puede cerrarla antes. Una vez cerrada, un admin del hilo puede reabrirla con una nueva hora de cierre para que la gente siga votando. Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir. Puedes ampliar la hora de cierre mientras sigan abiertas.
+La encuesta se cierra automáticamente a la hora de cierre, o un admin del hilo puede cerrarla antes. Una vez cerrada, un admin del hilo puede reabrirla con una nueva hora de cierre. Las encuestas que ocultan los resultados hasta que se cierra la votación, incluidas las encuestas anónimas, no se pueden reabrir; puedes ampliar la hora de cierre mientras sigan abiertas.
 
 <!-- translation-section: 5-share-an-outcome -->
 
 ### 5. Comparte una conclusión
 
-Cuando se cierra, Loomio pide a los admins del hilo que compartan una conclusión.
+Cuando se cierra la encuesta, Loomio pide a los admins del hilo que compartan una conclusión.
 
 ![El aviso para introducir una conclusión después de que se cierre una propuesta](outcome_prompt.png)
 

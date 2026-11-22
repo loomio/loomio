@@ -1,38 +1,38 @@
 ---
 title: Управление избирателями
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: b64ef3aae0df242e
-  invite-people-to-vote-in-a-poll: d7a76c02a64d0f94
+  invite-people-to-vote-in-a-poll: 6eb46914bf5f52f1
   invite-guests-or-experts: 792aa3f49c3a0952
   engage-people-while-a-poll-is-running: '0678fc26c9d6f129'
   add-voters-to-the-poll: 45e4416e1ac89316
   remove-people-from-the-poll: 9c7b9d0258ecaf91
-  remind-people-to-vote: 16806a06e821b66b
+  remind-people-to-vote: a6b9af950f4daf14
   view-notification-history: 88d109f99bcb8feb
   close-early: c369dedb17c24521
   reopen: 215adf1dee7f2008
-  choose-an-audience: 46adc789727bbc3b
+  choose-an-audience: b6649314e06a4049
   check-your-recipients: 77dfd8b2bdf74ccb
-  send-the-invitations: 52dc9983e86975bb
+  send-the-invitations: 164443b09e62e29e
 title_source: 10858faa0464257e
 title_generated: e43e418ba93dc122
 ---
@@ -50,7 +50,7 @@ title_generated: e43e418ba93dc122
 
 ## Пригласите людей проголосовать
 
-После запуска опроса с настройкой **Только для избранных** откроется окно **Управление избирателями**. Вы также можете открыть его, выбрав **Управление избирателями** в опросе.
+После запуска опроса с настройкой **Только для избранных** автоматически откроется окно **Управление избирателями**. Вы также можете открыть его, выбрав **Управление избирателями** в опросе.
 
 ![Кнопка «Управление избирателями» в нижней части опроса](proposal_after_start.png)
 
@@ -72,7 +72,7 @@ title_generated: e43e418ba93dc122
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Выберите получателей, чтобы пригласить их вместе. Например, выбор **Oatmilk Cooperative** включает людей из этой группы. Вы также можете выбрать подключённый чат, чтобы разместить там приглашение. Публикация приглашения в чате не добавляет его участников в число голосующих.
+Выберите получателей, чтобы пригласить их вместе. Например, выбор **Oatmilk Cooperative** включает всех участников этой группы. Вы также можете выбрать подключённый чат, чтобы разместить там приглашение — публикация приглашения в чате не добавляет его участников в число голосующих.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -102,7 +102,7 @@ title_generated: e43e418ba93dc122
 
 ### Отправьте приглашения
 
-Добавьте сообщение, объясняющее, какое решение вы просите людей принять, затем выберите **Приглашать**. Оставьте флажок **Отправлять уведомления** установленным, чтобы уведомить приглашённых людей. Снимите его, чтобы добавить голосующих без отправки уведомления.
+Добавьте сообщение, объясняющее, какое решение вы просите людей принять, затем выберите **Приглашать**. Оставьте флажок **Отправлять уведомления** установленным, чтобы уведомить приглашённых людей, или снимите его, чтобы добавить голосующих без отправки уведомления.
 
 Для запланированного опроса выберите **Добавить избирателей**. Люди получат приглашение, когда начнётся голосование.
 
@@ -132,7 +132,7 @@ title_generated: e43e418ba93dc122
 
 ### Напомните людям проголосовать
 
-Выберите **Напомнить** в опросе, укажите получателей напоминания, добавьте сообщение и выберите **Напомнить**, чтобы отправить его. Вы можете выбрать **Те, кто ещё не проголосовали**, чтобы напомнить людям, чьи ответы ещё нужны.
+Выберите **Напомнить** в опросе, укажите получателей (например, **Те, кто ещё не проголосовали**), добавьте сообщение и выберите **Напомнить**, чтобы отправить его.
 
 ![Напоминание людям, которые ещё не проголосовали, с сообщением о сроке принятия решения](proposal_remind.png)
 

@@ -1,16 +1,16 @@
 ---
 title: E-mailadres
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-22'
 sections:
-  introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  introduction: '03039e0babf5a9b6'
+  preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: bd14ce359d0ef8b2
-  preventing-unauthorized-emails: b46f58727646b373
+  introduction: fc0fa9159f83a9c0
+  preventing-unauthorized-emails: f0488efa24cc4f6a
 title_source: f2488fd4ef4adbc6
 title_generated: ca351133d550c4ae
 ---
@@ -19,25 +19,24 @@ title_generated: ca351133d550c4ae
 
 # Stuur een e-mail om een thread in je groep te starten
 
-Je Loomio-groep heeft een e-mailadres. Je kunt een e-mail naar dit adres sturen of doorsturen om een thread in de groep te starten.
+Elke Loomio-groep heeft een eigen e-mailadres. Je kunt een e-mail naar dit adres sturen of doorsturen om een nieuwe thread in de groep te starten.
 
-Je vindt het e-mailadres van je groep op de groepspagina:
+Je vindt het e-mailadres van de groep op de groepspagina:
+
 ![Locatie van het e-mailadres op de groepspagina](email_email_button.png)
 
-Als je een e-mail naar dit adres stuurt, wordt er een nieuwe thread gestart. Het onderwerp van de e-mail wordt de titel van de thread, de tekst van de e-mail wordt de beschrijving en eventuele bijlagen worden aan de thread toegevoegd.
+Als je een e-mail naar dit adres stuurt, maakt Loomio een nieuwe thread aan. Het onderwerp van de e-mail wordt de titel van de thread, de tekst van de e-mail wordt de beschrijving van de thread en eventuele bijlagen worden aan de thread toegevoegd.
 
-Het afzenderadres van de e-mail wordt gebruikt om het groepslid te vinden dat de auteur van de thread wordt.
+Loomio gebruikt het afzenderadres van de e-mail om de afzender aan een groepslid te koppelen en dat lid als auteur van de thread in te stellen.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Ongeautoriseerde e-mails voorkomen
 
-Om te voorkomen dat mensen die geen lid zijn van je groep deze functie gebruiken, vereist Loomio dat het afzenderadres van een binnenkomende e-mail overeenkomt met het e-mailadres van een lid van de groep.
+Om te voorkomen dat mensen die geen lid zijn threads starten, vereist Loomio dat het afzenderadres van een binnenkomende e-mail overeenkomt met het e-mailadres van een groepslid.
 
-Als je meerdere e-mailadressen gebruikt, kun je een alias toevoegen zodat Loomio je andere e-mailadressen herkent.
+Als een lid een e-mail vanaf een onbekend adres stuurt, houdt Loomio de e-mail vast en brengt de groepsadmins op de hoogte. Een groepsadmin kan de e-mail goedkeuren en het adres als alias voor dat lid toevoegen, of verdere e-mails van dat adres weigeren.
 
-Als het afzenderadres niet overeenkomt met het e-mailadres van een lid van de groep, ontvang je een melding met het verzoek om een alias toe te voegen of alle verdere e-mails van dat adres te weigeren.
+Zodra een alias is toegevoegd, starten toekomstige e-mails vanaf dat adres direct een thread.
 
-Dit betekent dat je een alias moet toevoegen wanneer je voor het eerst een e-mail vanaf een onbekend adres stuurt. Daarna worden e-mails direct geaccepteerd.
-
-![Locatie van de knoppen om een e-mail van een onbekend adres goed te keuren of te weigeren](email_unreleased_emails.png)
+![Knoppen om een e-mail van een onbekend adres goed te keuren of te weigeren](email_unreleased_emails.png)

@@ -1,38 +1,38 @@
 ---
 title: Kiezers beheren
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: c777047a700c36f7
-  invite-people-to-vote-in-a-poll: 37b5981cda1c4e1c
+  invite-people-to-vote-in-a-poll: c846c2155269e347
   invite-guests-or-experts: 04d848b5a94de6af
   engage-people-while-a-poll-is-running: 79cb8744c9c90d7f
   add-voters-to-the-poll: 55ea7ec94313fe9e
   remove-people-from-the-poll: c5695e85a4ec593e
-  remind-people-to-vote: 3a413f3433d2b835
+  remind-people-to-vote: 0c2c56f19af0a156
   view-notification-history: 87e1350b3a89ce5e
   close-early: 9249378d3d2944a9
   reopen: 3e422f4bef4daa9b
-  choose-an-audience: a5c6e7480091f80e
-  check-your-recipients: 4e0c336900f3597b
-  send-the-invitations: 14218a0d07490b82
+  choose-an-audience: 2fc7bef7e091eccc
+  check-your-recipients: 6dc5045822e4d912
+  send-the-invitations: c57b84ebbe630dab
 title_source: 10858faa0464257e
 title_generated: 287e0109694865f8
 ---
@@ -50,7 +50,7 @@ Gebruik **Kiezers beheren** om mensen stemrecht te geven en hen uit te nodigen o
 
 ## Nodig mensen uit om te stemmen
 
-Nadat je een peiling hebt gestart met **Alleen voor geselecteerde personen.**, wordt het venster **Kiezers beheren** geopend. Je kunt het ook openen door bij de peiling **Kiezers beheren** te selecteren.
+Nadat je een peiling hebt gestart met **Alleen voor geselecteerde personen.**, wordt **Kiezers beheren** automatisch geopend. Je kunt het ook openen door bij de peiling **Kiezers beheren** te selecteren.
 
 ![De knop Kiezers beheren onderaan een peiling](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ Nadat je een peiling hebt gestart met **Alleen voor geselecteerde personen.**, w
 
 ### Kies een doelgroep
 
-Klik op het lege veld **Zoek of nodig kiezers uit** om suggesties te bekijken. Ze verschijnen in deze volgorde:
+Selecteer het lege veld **Zoek of nodig kiezers uit** om suggesties te bekijken. Ze verschijnen in deze volgorde:
 
 - jouw groep
 - **Afgevaardigden van** jouw groep, als jouw groep [afgevaardigde kiezers](/en/user_manual/groups/delegated_voters) heeft
@@ -72,7 +72,7 @@ In een [directe thread](/en/user_manual/discussions/direct_discussions) biedt de
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Selecteer een doelgroep om die mensen samen uit te nodigen. Als je bijvoorbeeld **Oatmilk Cooperative** selecteert, worden de mensen in die groep opgenomen. Je kunt ook een gekoppelde chatruimte selecteren om de uitnodiging daar te plaatsen. Als je een uitnodiging in een chatruimte plaatst, worden de leden ervan niet als kiezers toegevoegd.
+Selecteer een doelgroep om die mensen samen uit te nodigen. Als je bijvoorbeeld **Oatmilk Cooperative** selecteert, wordt iedereen in die groep opgenomen. Je kunt ook een gekoppelde chatruimte selecteren om de uitnodiging daar te plaatsen—als je een uitnodiging in een chatruimte plaatst, worden de leden ervan niet als kiezers toegevoegd.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ Nadat je een doelgroep hebt geselecteerd, toont het veld de naam en het aantal m
 
 ![Oatmilk Cooperative geselecteerd, met het aantal ontvangers onder het veld](proposal_invite_members.png)
 
-Klik op de naam van de doelgroep om de afzonderlijke personen weer te geven. Je kunt vervolgens de **×** naast een persoon selecteren om die persoon niet in deze uitnodiging op te nemen. Hiermee verwijder je die persoon niet uit de groep.
+Selecteer de naam van de doelgroep om de afzonderlijke personen weer te geven. Je kunt vervolgens **×** naast een persoon selecteren om die persoon niet in deze uitnodiging op te nemen. Hiermee verwijder je die persoon niet uit de groep.
 
 ![De doelgroep van de groep uitgeklapt tot afzonderlijke personen, elk met een knop om die persoon te verwijderen](proposal_invite_expand.png)
 
@@ -102,7 +102,7 @@ Gasten krijgen toegang tot deze peiling. Als de peiling in een thread staat, kun
 
 ### Verstuur de uitnodigingen
 
-Voeg een bericht toe waarin je uitlegt waarover je mensen vraagt een besluit te nemen en selecteer vervolgens **Uitnodigen**. Laat **Meldingen verzenden** aangevinkt om de mensen die je uitnodigt een melding te sturen. Vink dit uit om kiezers toe te voegen zonder een melding te versturen.
+Voeg een bericht toe waarin je uitlegt waarover je mensen vraagt een besluit te nemen en selecteer vervolgens **Uitnodigen**. Laat **Meldingen verzenden** aangevinkt om de mensen die je uitnodigt een melding te sturen, of vink dit uit om kiezers toe te voegen zonder een melding te versturen.
 
 Selecteer bij een geplande peiling **Kiezers toevoegen**. Mensen ontvangen hun uitnodiging wanneer het stemmen begint.
 
@@ -132,7 +132,7 @@ Mensen kunnen niet uit een anonieme peiling worden verwijderd. Bij peilingen met
 
 ### Herinner mensen eraan om te stemmen
 
-Selecteer **Herinneren** bij de peiling, kies wie de herinnering moet ontvangen, voeg een bericht toe en selecteer **Herinneren** om het te versturen. Je kunt **Mensen die nog niet gestemd hebben** selecteren om de mensen te bereiken van wie nog een stem nodig is.
+Selecteer **Herinneren** bij de peiling, kies de ontvangers (zoals **Mensen die nog niet gestemd hebben**), voeg een bericht toe en selecteer **Herinneren** om het te versturen.
 
 ![Een herinnering aan mensen die nog niet gestemd hebben, met een bericht over de uiterste datum voor het besluit](proposal_remind.png)
 

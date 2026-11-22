@@ -1,43 +1,45 @@
 ---
 title: Invitar personas
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 1fd7fbfa18ea59e8
-  send-invitations-via-email: 1e14777914cd64d4
-  invite-many-at-once: f22db7598ccb2863
-  invite-people-to-subgroups: fed1df569a2228f8
-  share-a-link-to-your-group: 5d6bb779bde1ab9c
-  request-to-join-group: eeb4da2cc46f5532
-  review-membership-requests: 696a6c221c258900
-  managing-invitations: 00ce6c713d573345
-  re-send-invitations: 93195e33dc807691
-  cancelling-invitations: 966f78f5b049a2b0
-  invitation-notification-history: 04ebec0b71ffecd9
+  introduction: 188cab5cd6a13ffc
+  send-invitations-via-email: f78205bdeafc746a
+  invite-many-at-once: c6ed8dc5059883c1
+  invite-people-to-subgroups: 42ef6fe0aa01dd91
+  share-a-link-to-your-group: 0e2d9427c8823b79
+  request-to-join-group: 8ad865eaad9399a1
+  review-membership-requests: 118ab07f78d4773e
+  managing-invitations: ec877dc808627fbd
+  re-send-invitations: 3cf36304cd702c3c
+  cancelling-invitations: 62cde7d6b1252162
+  invitation-notification-history: 75ffe9f95941fdd5
 title_source: b926eb8921d85971
 title_generated: 375e4845e20bc598
+needs_review:
+  review-membership-requests: check the interface label "**Aprobar **" for "**Approve**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Invitar personas a un grupo de Loomio
 
-Invita a personas a tu grupo de Loomio por correo electrónico o comparte un enlace al grupo a través de un boletín, un chat o un sitio web. Abre la pestaña **Integrantes** en la página de tu grupo para empezar.
+Puedes invitar a personas a tu grupo de Loomio por correo electrónico, compartir un enlace de invitación o permitir que las personas soliciten el ingreso. Abre la pestaña **Integrantes** en la página de tu grupo para empezar.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +47,7 @@ Invita a personas a tu grupo de Loomio por correo electrónico o comparte un enl
 
 ## Enviar invitaciones por correo electrónico
 
-Haz clic en **Invitar** en la pestaña **Integrantes** para enviar un correo electrónico con un enlace de invitación de un solo uso. La persona destinataria puede crear una cuenta de usuario de Loomio y unirse a tu grupo.
-
-Si la persona destinataria ya tiene una cuenta de usuario de Loomio, también puede aceptar la invitación para unirse a tu grupo con su cuenta existente.
+Selecciona **Invitar** en la pestaña **Integrantes** para enviar un correo electrónico con un enlace de invitación de un solo uso. La persona destinataria puede unirse con una cuenta de Loomio existente o crear una nueva.
 
 ![](group_invite_email.png)
 
@@ -55,20 +55,20 @@ Si la persona destinataria ya tiene una cuenta de usuario de Loomio, también pu
 
 ### Invitar a varias personas a la vez
 
-Puedes enviar invitaciones por correo electrónico a un máximo de 100 personas a la vez introduciendo (o copiando y pegando) varias direcciones de correo electrónico en el campo "¿A quién te gustaría invitar?". Separa las direcciones de correo electrónico con comas o espacios.
+Puedes invitar a un máximo de 100 personas a la vez introduciendo o pegando direcciones de correo electrónico separadas por comas o espacios.
 
-Cuando invitas a personas a un grupo dentro de una organización, el grupo principal y los subgrupos relacionados a los que perteneces aparecen como sugerencias de destinatarios. Selecciona un grupo y luego selecciona la etiqueta que lo representa para mostrar a cada persona como destinataria individual. Puedes quitar a cualquier persona que no quieras invitar antes de enviar las invitaciones. Se excluye a las personas que ya pertenecen al grupo de destino.
+Cuando invitas a personas a un grupo dentro de una organización, también puedes seleccionar el grupo principal o los subgrupos relacionados a los que perteneces. Despliega un grupo seleccionado para mostrar a cada persona como destinataria individual y quitar a quienes no quieras invitar. Las personas que ya son miembros se excluyen automáticamente.
 
 >[!Tip]
->Copia las direcciones de correo electrónico de una columna de una hoja de cálculo de Google o Excel y pégalas en el campo de invitación.
+>Puedes copiar una columna de direcciones de correo electrónico de Google Sheets o Microsoft Excel y pegarla directamente en el campo de invitación.
 
-Cuando haces clic en **Invitar**, se envía un correo electrónico a cada una de las direcciones que has introducido, con un enlace de invitación único que solo se puede usar una vez. Este correo se envía en tu idioma actual.
+Cuando seleccionas **Invitar**, Loomio envía a cada dirección un enlace de invitación único y de un solo uso en tu idioma actual.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Invitar personas a subgrupos
 
-Siguiendo el mismo proceso anterior, puedes invitar a personas a un grupo principal y a uno o varios subgrupos a la vez con el botón **Invitar personas**. Marca las casillas junto a los subgrupos a los que quieres que pertenezcan desde el momento en que se unan al grupo.
+Cuando invitas a personas a un grupo principal, puedes añadirlas a uno o varios subgrupos al mismo tiempo. Marca los subgrupos a los que quieres que se unan cuando acepten la invitación.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +76,39 @@ Siguiendo el mismo proceso anterior, puedes invitar a personas a un grupo princi
 
 ## Compartir un enlace a tu grupo
 
-Puedes compartir un enlace a tu grupo con el botón **Compartir**. Esto es útil si quieres enviar un enlace por correo electrónico, boletín o chat, o publicarlo en tu sitio web.
+Selecciona **Compartir** para generar un enlace de invitación reutilizable para un boletín, un canal de chat, un correo electrónico o un sitio web.
 
 ![](group_invite_sharable_link.png)
 
-Haz clic en el icono de "copiar" para copiar el enlace al portapapeles y luego pégalo en tu correo electrónico, boletín o canal de chat.
-
-Si quieres impedir que las personas se unan mediante este enlace, haz clic en "Restablecer este enlace". El enlace existente dejará de funcionar y se creará uno nuevo.
+Para impedir que las personas se unan con un enlace existente, selecciona **Restablecer este enlace**. Esto invalida el enlace anterior y crea uno nuevo.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Solicitar el ingreso a un grupo
 
-Las personas pueden solicitar el ingreso a un grupo abierto o cerrado. Comparte la URL del grupo, como `https://www.loomio.com/group-name`. Cuando las personas llegan a la página del grupo, pueden ver la información pública del grupo y seleccionar **Unirse al grupo** para responder a la pregunta de ingreso y enviar la solicitud.
+Las personas pueden solicitar el ingreso a un grupo abierto o cerrado desde la URL del grupo, como `https://www.loomio.com/group-name`. Quienes visitan la página ven la información pública del grupo y seleccionan **Unirse al grupo** para responder a la pregunta de ingreso y enviar la solicitud.
 
 ![](group_join_group.png)
 
-La pregunta de ingreso permite que las personas se presenten y expliquen por qué quieren unirse.
+La pregunta de ingreso permite que las personas solicitantes se presenten y expliquen por qué quieren unirse.
 
 ![](group_request_to_join.png)
 
-En [Privacidad del grupo](/en/user_manual/groups/settings/privacy#how-people-join), elige **Solicitar aprobación** para que las solicitudes deban revisarse. También puedes personalizar la pregunta de ingreso en la configuración del grupo.
+En [Privacidad del grupo](/en/user_manual/groups/settings/privacy#how-people-join), elige **Solicitar unirse** para exigir la revisión de las solicitudes de ingreso. También puedes personalizar la pregunta de ingreso en la configuración del grupo.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Revisar solicitudes de ingreso
 
-Los administradores del grupo y los miembros con permiso para añadir miembros revisan las solicitudes desde la sección **Solicitudes de ingreso** de la pestaña **Integrantes**. Quien revisa una solicitud puede:
+Los admins del grupo y los miembros con permiso para añadir miembros pueden revisar las solicitudes en **Solicitudes de ingreso**, en la pestaña **Integrantes**.
 
 ![](group_review_request_to_join.png)
 
-- **Aprobar ** la solicitud para añadir a la persona solicitante como miembro y notificarle.
-- **Ignorar** la solicitud para cerrarla sin notificar a la persona solicitante ni permitirle enviar otra solicitud.
-- **Rechazar** la solicitud con un mensaje que explique la decisión. Loomio envía el mensaje a la persona solicitante por correo electrónico y mediante una notificación, y esta puede enviar una nueva solicitud.
+Para cada solicitud, puedes:
 
-Selecciona el botón de rechazar para escribir un mensaje o ignorar la solicitud.
+- **Aprobar** para añadir a la persona solicitante como miembro y notificarle.
+- **Ignorar** para cerrar la solicitud sin notificar a la persona solicitante ni permitirle enviar otra solicitud.
+- **Rechazar** para enviar una explicación por correo electrónico y mediante una notificación; la persona solicitante puede enviar una nueva solicitud más adelante.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +116,30 @@ Selecciona el botón de rechazar para escribir un mensaje o ignorar la solicitud
 
 ## Gestionar invitaciones
 
-Para gestionar las invitaciones, abre el filtro o menú desplegable de la pestaña Integrantes en la página de tu grupo y selecciona **Invitaciones**. Puedes gestionar cada invitación haciendo clic en el menú de tres puntos (**⋮**) a la derecha del miembro.
+Abre el menú de filtros en la pestaña **Integrantes** y selecciona **Invitaciones** para ver las invitaciones pendientes. Usa el menú de acciones junto a una invitación para gestionarla.
 
 ![](group_invite_members_filter.png)
 
-También puedes dar a las personas el rol de administrador o establecer un cargo dentro del grupo (por ejemplo, "Soporte informático") antes de que acepten la invitación.
+También puedes asignar a una persona invitada el rol de admin del grupo o establecer un cargo (por ejemplo, "Soporte informático") antes de que acepte.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Historial de entrega de invitaciones
 
-Si alguien no recibe el correo de invitación, los admins del grupo pueden abrir **Historial de entrega de invitaciones** desde el menú de tres puntos (**⋮**) junto al nombre de esa persona en la página de Integrantes para ver cuándo se enviaron las invitaciones y los problemas de entrega registrados.
+Si alguien no recibe el correo de invitación, un admin del grupo puede comprobar el estado de entrega. Abre el menú de acciones junto al nombre de esa persona en la pestaña **Integrantes** y selecciona **Historial de entrega de invitaciones** para ver cuándo se enviaron las invitaciones y los problemas de entrega registrados.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Reenviar invitaciones
 
-Contacta con las personas que aún no se han unido al grupo para recordarles la invitación. Si alguien ha perdido u olvidado el correo de invitación, puedes reenviarlo desde el menú desplegable junto al nombre de esa persona en la página Integrantes.
-
-Haz clic en los tres puntos (**⋮**) junto a la persona a la que quieres reenviar la invitación y luego elige **Reenviar la invitación**.
+Si alguien ha perdido o no ha visto el correo de invitación, abre el menú de acciones junto al nombre de esa persona en la pestaña **Integrantes** y selecciona **Reenviar la invitación**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Cancelar invitaciones
-Si has introducido una dirección de correo electrónico incorrecta o has cambiado de opinión sobre invitar a alguien, puedes cancelar una invitación desde la pestaña Integrantes de la página de tu grupo. Selecciona **Cancelar invitación** en el menú desplegable a la derecha de la invitación del miembro (**⋮**).
+
+Si has introducido una dirección de correo electrónico incorrecta o ya no quieres invitar a alguien, abre el menú de acciones junto a la invitación de esa persona en la pestaña **Integrantes** y selecciona **Cancelar invitación**.
 
 ![](group_invite_cancel_invitation.png)

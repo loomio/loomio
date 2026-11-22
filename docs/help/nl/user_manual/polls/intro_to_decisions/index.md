@@ -1,39 +1,39 @@
 ---
 title: Voorstellen en peilingen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: ce5bd7cc4e1e97db
+  introduction: 9bb60268cce6ac50
   find-the-right-help: 5dfa3d499cca1678
   proposals: 2e0b0ea75772625a
   polls: 37d2e5ee24516fd9
   start-a-proposal-or-poll: f4f95d92b1d2fd2f
-  choose-whether-to-use-a-discussion: 57df9a8f7a158e4b
+  choose-whether-to-use-a-discussion: 57d69d563484b146
   in-a-discussion: e6fc8c4ce50f1403
   without-a-discussion: ad5940df4c42a6ad
   what-happens-next: 73b669d773048305
   1-create-it: '00008b55bb4ba4f6'
-  2-voting-opens: 2c99150f025c4b96
-  3-people-vote: ad5c075672e6016b
-  4-it-closes: 13f6ef61d3634f65
+  2-voting-opens: 6a19bea367ce4846
+  3-people-vote: f041319603b1d179
+  4-it-closes: 43427f8eebb60999
   5-share-an-outcome: b0e6115cca7ebd97
 title_source: d45b4ba3cb7a27cb
 title_generated: 95457704989e4140
@@ -45,7 +45,7 @@ needs_review:
 
 # Voorstellen en peilingen
 
-Voorstellen en peilingen verzamelen gestructureerde antwoorden van een groep. Ze kunnen helpen om een idee te toetsen, een besluit te nemen, prioriteiten te bepalen, een bijeenkomst te plannen of vertegenwoordigers te kiezen.
+Voorstellen en peilingen verzamelen gestructureerde antwoorden van een groep. Gebruik ze om een idee te toetsen, een besluit te nemen, prioriteiten te bepalen, een bijeenkomst te plannen of vertegenwoordigers te kiezen.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -98,9 +98,9 @@ Bekijk [Peilingen](../proposal_types/) om ze te vergelijken.
 
 ### Kies of je een discussie wilt gebruiken
 
-Start het voorstel of de peiling binnen een discussie wanneer mensen context, vragen of een gesprek nodig hebben voordat ze antwoorden. Een discussie kan in de loop van de tijd meerdere voorstellen bevatten, zodat wijzigingen en de uiteindelijke conclusie samen één verslag van het onderwerp vormen.
+Start een voorstel of peiling binnen een discussie wanneer mensen context, vragen of een gesprek nodig hebben voordat ze antwoorden. Een discussie kan in de loop van de tijd meerdere voorstellen bevatten, zodat wijzigingen en de uiteindelijke conclusie samen in één verslag staan.
 
-Start een losse peiling wanneer de discussie al ergens anders heeft plaatsgevonden, bijvoorbeeld tijdens een bijeenkomst, of wanneer de vraag eenvoudig is en je alleen antwoorden hoeft te verzamelen. Voeg voldoende informatie of een link naar het relevante verslag toe, zodat kiezers begrijpen waarop ze antwoorden.
+Start een losse peiling wanneer de discussie al ergens anders heeft plaatsgevonden, bijvoorbeeld tijdens een bijeenkomst, of wanneer de vraag eenvoudig is en je alleen antwoorden hoeft te verzamelen. Voeg voldoende informatie of een link naar de achtergrond toe, zodat kiezers weten waarop ze antwoorden.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -140,19 +140,19 @@ Geef het een titel en toelichting, controleer de opties en instellingen en stel 
 
 ### 2. De stemming opent
 
-Wanneer de stemming opent, stuurt Loomio een melding naar de mensen die je hebt uitgenodigd. Zie [Uitnodigen om te stemmen](../inviting_people/).
+Wanneer de stemming opent, stuurt Loomio een melding naar de mensen die je hebt uitgenodigd. Zie [Kiezers beheren](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Mensen stemmen
 
-Zolang het voorstel of de peiling open is, kunnen mensen stemmen, hun stem toelichten en hun stem wijzigen. Het resultaat wordt bijgewerkt wanneer mensen stemmen, tenzij het verborgen blijft tot het voorstel of de peiling sluit. Mensen die nog niet hebben gestemd, krijgen standaard een dag voor de sluiting een herinnering.
+Zolang het voorstel of de peiling open is, kunnen mensen stemmen, een reden voor hun stem toevoegen en hun stem wijzigen. Het resultaat wordt bijgewerkt wanneer mensen stemmen, tenzij het verborgen blijft tot de sluiting. Mensen die nog niet hebben gestemd, krijgen standaard 24 uur voor de sluiting een herinnering.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. De peiling sluit
 
-De peiling sluit automatisch op het sluitingstijdstip. Een thread admin kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een thread admin deze heropenen met een nieuw sluitingstijdstip, zodat mensen verder kunnen stemmen. Peilingen waarbij het resultaat verborgen blijft totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt het sluitingstijdstip van deze peilingen verlengen zolang ze nog open zijn.
+De peiling sluit automatisch op het sluitingstijdstip. Een thread admin kan de peiling ook eerder sluiten. Nadat de peiling is gesloten, kan een thread admin deze heropenen met een nieuw sluitingstijdstip. Peilingen waarbij het resultaat verborgen blijft totdat de stemming sluit, waaronder anonieme peilingen, kunnen niet worden heropend. Je kunt het sluitingstijdstip van deze peilingen verlengen zolang ze nog open zijn.
 
 <!-- translation-section: 5-share-an-outcome -->
 

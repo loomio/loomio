@@ -1,14 +1,14 @@
 ---
 title: Kohteiden siirtäminen keskusteluketjujen välillä
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/moving_items/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/moving_items/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6ac6ede9e57c77aa
+  introduction: 1b989b7a113a9d82
 generated:
-  introduction: 7d7eb4b1074e0b6a
+  introduction: 0a6ea165a9ee66bf
 title_source: d5f8d27c1ae21eb0
 title_generated: 3fecc2262bf650ac
 ---
@@ -17,30 +17,26 @@ title_generated: 3fecc2262bf650ac
 
 # Kohteiden siirtäminen ketjujen välillä
 
-Siirrä valitut kohteet, kun keskustelu kuuluu toiseen ketjuun, kun yksi ketju on jakautunut erillisiksi aiheiksi tai kun haluat yhdistää toisiinsa liittyviä keskusteluja. Erillistä **Yhdistä keskustelut** -komentoa ei ole.
+Siirrä kommentteja tai kyselyjä, kun keskustelu kuuluu toiseen ketjuun, kun yksi keskustelu jakautuu erillisiksi aiheiksi tai kun haluat yhdistää toisiinsa liittyviä ketjuja.
 
-Toiminto on ryhmän ylläpitäjien käytettävissä. Jäsenet voivat käyttää sitä, kun **Jäsenet voivat hallita keskusteluja ja kommentteja** on otettu käyttöön [ryhmän käyttöoikeuksissa](/en/user_manual/groups/settings/permissions).
+Ryhmän ylläpitäjät voivat siirtää kohteita. Myös jäsenet voivat siirtää kohteita, kun **Jäsenet voivat hallita keskusteluja ja kommentteja** on otettu käyttöön [ryhmän käyttöoikeuksissa](/en/user_manual/groups/settings/permissions).
 
-Avaa kohteen kolmen pisteen valikko (**⋯**) ja valitse **Siirrä kohde**.
+1. Avaa kohteen kolmen pisteen valikko (**⋯**) ja valitse **Siirrä kohde**.
 
 ![](../using_discussions/comment_move.png)
 
-Valitse kohteet, jotka haluat siirtää.
+2. Valitse valintaruuduilla kohteet, jotka haluat siirtää, ja valitse sitten ketjun yläreunan bannerissa **Liikkua**.
 
 ![](../using_discussions/comment_select.png)
 
-Valitse mahdolliset muut kohteet valintaruuduilla ja napsauta sitten keskustelun yläreunan bannerissa **Liikkua**.
-
 ![](../using_discussions/move_items.png)
 
-Valitse ryhmä tai alaryhmä ja etsi sitten keskustelu, johon haluat siirtää kohteet.
-
-Jos haluat siirtää kohteet uuteen keskusteluun, valitse **Uusi keskustelu** ja lisää sille otsikko ja konteksti.
+3. Valitse kohderyhmä tai alaryhmä ja etsi sitten olemassa oleva keskustelu. Jos haluat luoda uuden keskustelun, valitse **Uusi keskustelu**, lisää otsikko ja konteksti ja valitse **Aloita keskustelu**.
 
 ![](../using_discussions/move_items_new_thread.png)
 
-Kohteet siirretään alkuperäisestä ketjusta valittuun tai juuri luotuun ketjuun.
+Valitut kohteet siirtyvät alkuperäisestä ketjusta kohdeketjuun.
 
 ![](../using_discussions/new_thread.png)
 
-Jos alkuperäistä ketjua ei enää tarvita, voit [lukita sen](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Poista se vain, jos olet varma, ettei sitä enää tarvita.
+Jos alkuperäistä ketjua ei enää tarvita, voit [lukita sen](/en/user_manual/discussions/using_discussions/#lock-or-unlock-a-thread). Poista se vain, jos olet varma, ettet tarvitse sitä enää.

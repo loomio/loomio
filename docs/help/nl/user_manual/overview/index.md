@@ -1,26 +1,26 @@
 ---
 title: Aan de slag
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: ef3f289c364ccc11
+  introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: 7f2736f94f3c7a39
-  discussions: 41df363ab87c2ae0
+  groups: fd85ee3c4ffbb5e6
+  discussions: 8d14b581f16f5da2
   polls-and-proposals: cf99f58fbdae0d7b
-  try-it-out: 4e0a31e65733ef2a
-  how-people-use-loomio: b2d45fb7ddf29461
+  try-it-out: 362efa0fab0f53c9
+  how-people-use-loomio: 20717884ca33e601
 generated:
-  introduction: e866ae147f799152
+  introduction: ce2e70ad020bae80
   how-loomio-works: 6285228aba199186
-  groups: c1e956b3d4af97c7
-  discussions: efb1061e34e4c0a6
+  groups: 011c1b73784fbcb5
+  discussions: f6bcba7d6b90ed44
   polls-and-proposals: aac8c5caa757bd15
-  try-it-out: dcfe9d5e4247ce2e
-  how-people-use-loomio: 463747fb26639549
+  try-it-out: 0d87ae04de8f9e3d
+  how-people-use-loomio: 7e5e102327518eab
 title_source: 831d0f72d242b7d1
 title_generated: 9bcbb9eadd7159e8
 ---
@@ -31,7 +31,7 @@ title_generated: 9bcbb9eadd7159e8
 
 Loomio is een hulpmiddel voor discussies en besluitvorming voor organisaties die samenwerken.
 
-Met Loomio breng je mensen samen om onderwerpen te bespreken, voorstellen te verkennen en besluiten te nemen.
+Het helpt mensen onderwerpen te bespreken, voorstellen te verkennen en samen besluiten te nemen.
 
 <div class="iframe-container">
 <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -47,7 +47,7 @@ Loomio heeft drie hoofdonderdelen: groepen, discussies en peilingen.
 
 ### Groepen
 
-Een groep is een plek waar een organisatie, team of gemeenschap samenwerkt. De startpagina legt het doel van de groep uit en geeft toegang tot de discussies, peilingen, leden en bestanden van de groep.
+Een groep is een plek waar een organisatie, team of gemeenschap samenwerkt. De startpagina legt het doel van de groep uit en bevat links naar de discussies, peilingen, leden en bestanden van de groep.
 
 ![](orientation_group.png)
 
@@ -55,7 +55,7 @@ Een groep is een plek waar een organisatie, team of gemeenschap samenwerkt. De s
 
 ### Discussies
 
-Discussies houden informatie en gesprekken over een onderwerp bij elkaar. Mensen kunnen context delen, reacties plaatsen, antwoorden, reageren met emoji's en peilingen gebruiken om de discussie naar een conclusie te brengen.
+Discussies houden informatie en gesprekken over een onderwerp bij elkaar. Mensen kunnen context delen, reacties plaatsen, antwoorden, reageren met emoji's en peilingen gebruiken om een discussie naar een conclusie te brengen.
 
 ![](orientation_discussion.png)
 
@@ -77,18 +77,16 @@ Bekijk de [Korte rondleiding](/en/user_manual/overview/orientation) om te zien w
 
 ## Probeer het uit
 
-De beste manier om Loomio te leren kennen is door [een gratis proefperiode te starten](/try)
+Om Loomio met jouw groep uit te proberen, [start je een gratis proefperiode](/try).
 
 <!-- translation-section: how-people-use-loomio -->
 
 ## Hoe mensen Loomio gebruiken
 
-**Ledenorganisaties** gebruiken Loomio om grote aantallen leden bij besluiten te betrekken. Politieke partijen, consumenten- en werknemerscoöperaties en verenigingen gebruiken Loomio om leden een veilige, inclusieve plek te bieden waar ze informatie kunnen delen, onderwerpen kunnen aankaarten, kunnen deelnemen aan belangrijke besluiten en kunnen stemmen in de algemene vergadering. Stroomlijn besluitvormingsprocessen, verbeter transparantie en verantwoording, documenteer discussies, leg besluiten vast en neem de inbreng van leden mee om gezamenlijke actie te organiseren.
+**Ledenorganisaties** gebruiken Loomio om grote aantallen leden bij besluiten te betrekken. Politieke partijen, consumenten- en werknemerscoöperaties en verenigingen bieden leden een gezamenlijke plek om onderwerpen aan te kaarten, kwesties te bespreken en te stemmen in algemene vergaderingen.
 
-**Zelfsturende organisaties** gebruiken Loomio om medewerkers bij besluiten te betrekken. Zelfsturende teams, werknemerscoöperaties en sociocratische organisaties gebruiken Loomio voor besluitvormingsprocessen op basis van consent, consensus en advies, met teams op verschillende locaties en in verschillende tijdzones. Benut collectieve kennis, verdeel de besluitvorming, geef samen vorm aan bestuur en beleid en documenteer besluiten en discussies.
+**Zelfsturende organisaties** gebruiken Loomio om medewerkers bij besluiten te betrekken. Zelfsturende teams, werknemerscoöperaties en sociocratische organisaties gebruiken Loomio voor besluitvormingsprocessen op basis van consent, consensus en advies, met teams op verschillende locaties en in verschillende tijdzones.
 
-**Besturen, raden en verspreide netwerken** gebruiken Loomio om belanghebbenden bij besluiten te betrekken. Creëer een veilige plek voor discussie, houd de communicatie bij en stem activiteiten af tussen locaties en tijdzones. Geef structuur aan besluitvormingsprocessen, verbeter de wendbaarheid en reactietijden en behoud de kennis en ervaring van de organisatie.
+**Besturen, raden en verspreide netwerken** gebruiken Loomio om activiteiten van belanghebbenden op verschillende locaties en in verschillende tijdzones op elkaar af te stemmen. Ze houden discussies gestructureerd, leggen besluiten vast en behouden de kennis en ervaring van de organisatie.
 
-**Woongemeenschappen en wooncoöperaties** gebruiken Loomio om als buren samen besluiten te nemen. Gemeenschappen voor gemeenschappelijk wonen, ecodorpen, coöperaties voor samenwonen, wooncoöperaties en organisaties die grond gemeenschappelijk beheren gebruiken Loomio om traditioneel beheer van appartementsgebouwen en vastgoed te vervangen of aan te vullen met democratisch bestuur. Bewoners geven vorm aan besluiten over gedeelde grond, gemeenschappelijke ruimtes en afspraken binnen de gemeenschap. Doordat mensen op verschillende momenten aan discussies kunnen deelnemen, kunnen leden volwaardig meedoen, of ze nu ter plaatse zijn of op reis. Zo blijft duidelijk vastgelegd hoe de gemeenschap ervoor heeft gekozen samen te leven.
-
-Loomio bouwt een levend overzicht van jouw organisatie op: de genomen besluiten, wie erbij betrokken was en de discussie die tot elk besluit heeft geleid.
+**Woongemeenschappen en wooncoöperaties** gebruiken Loomio om als buren samen besluiten te nemen. Gemeenschappen voor gemeenschappelijk wonen, ecodorpen, coöperaties voor samenwonen, wooncoöperaties en organisaties die grond gemeenschappelijk beheren gebruiken Loomio om gedeelde grond, gemeenschappelijke ruimtes en afspraken binnen de gemeenschap te beheren. Doordat mensen op verschillende momenten aan discussies kunnen deelnemen, kunnen bewoners meedoen, of ze nu ter plaatse zijn of op reis.

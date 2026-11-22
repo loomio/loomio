@@ -1,27 +1,27 @@
 ---
 title: Trovare contenuti
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
-  search-tips: 11a94b0fc8efa50c
-  filter-discussions: 8406e110b5b52ecf
-  category-tags: b021794cfa36788c
-  unread-discussions: 128b2d8a143abde3
-  polls-awaiting-your-vote: 037bf208ec166e84
+  search: 5de14e45cc9ac6bc
+  search-tips: 4d753a07ce09d99f
+  filter-discussions: f5e3ea1d6d34ca5c
+  category-tags: 1a82b7bb393c43a8
+  unread-discussions: 60a3bde974d63806
+  polls-awaiting-your-vote: 3a542d9458392a4c
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 4d0cc5b8cef98e89
-  search: 0f7b616246a69fd2
-  search-tips: 9d5be313ec558270
-  filter-discussions: a19da6f812e99111
-  category-tags: a8e3e32140840437
-  unread-discussions: 262742674e734fb9
-  polls-awaiting-your-vote: 2db0a40e43d47c5d
+  search: 37ea26a3e96d5bee
+  search-tips: 13396302fd963a79
+  filter-discussions: f3db03a15aadfaad
+  category-tags: 86d84b62fa0e7f61
+  unread-discussions: 40338d5d8b2f3593
+  polls-awaiting-your-vote: 5fbd7ed596af009c
   bookmarks: c5d7a4007bf8bb55
 title_source: 11acd4c6010fc176
 title_generated: 23362d9ab29cf1f2
@@ -37,13 +37,13 @@ Loomio offre diversi modi per trovare discussioni e decisioni nei tuoi gruppi.
 
 ## Ricerca
 
-Il pulsante Cerca nella barra di navigazione superiore apre la ricerca globale da qualsiasi pagina di Loomio.
+Seleziona **Ricerca** nella barra di navigazione superiore per effettuare una ricerca da qualsiasi pagina di Loomio.
 
 ![](search_button.png)
 
-La ricerca include i contenuti a cui puoi accedere in tutti i tuoi gruppi e nelle discussioni dirette. Può trovare titoli e contesto delle discussioni, commenti, sondaggi, voti e conclusioni.
+La ricerca include tutti i gruppi e le discussioni dirette a cui puoi accedere. Trova titoli delle discussioni, contesto, commenti, sondaggi, voti e conclusioni.
 
-Inserisci una parola o una frase, poi premi Invio o seleziona l'icona di ricerca. Ad esempio, cercando **bottle** trovi i contenuti di Oatmilk Cooperative che contengono quella parola.
+Inserisci una parola o una frase e premi Invio. Ad esempio, cercando **bottle** trovi i contenuti di Oatmilk Cooperative che contengono quella parola.
 
 ![](search_strategy.png)
 
@@ -51,17 +51,17 @@ Inserisci una parola o una frase, poi premi Invio o seleziona l'icona di ricerca
 
 ### Suggerimenti per la ricerca
 
-- Inizia con una o due parole distintive del titolo o del contenuto che ricordi.
+- Inizia con una o due parole specifiche del titolo o del contenuto.
 - La ricerca trova corrispondenze con l'inizio di una parola, quindi una parola parziale come **bott** può trovare **bottle**.
-- La ricerca tiene conto degli errori di ortografia quando i risultati per la ricerca inserita sono molto pochi.
-- Usa i filtri per limitare i risultati a un'organizzazione, un sottogruppo, un tag o un tipo di contenuto, come commenti o sondaggi. Un filtro per tag trova i contributi a cui è stato applicato esplicitamente quel tag e funziona anche senza una frase di ricerca.
-- Ordina per **Migliore abbinamento** quando conta la pertinenza, oppure dal più recente o dal meno recente quando sai approssimativamente quando è stato pubblicato il contenuto.
+- La ricerca tiene conto di piccoli errori di ortografia quando una ricerca restituisce pochi risultati.
+- Filtra i risultati per organizzazione, sottogruppo, tag o tipo di contenuto (come commenti o sondaggi). I filtri per tag funzionano anche senza un termine di ricerca e restituiscono gli elementi con quel tag.
+- Ordina per **Migliore abbinamento** in base alla pertinenza, oppure dal più recente o dal meno recente se sai approssimativamente quando è stato pubblicato il contenuto.
 
 <!-- translation-section: filter-discussions -->
 
 ## Filtrare le discussioni
 
-Usa i controlli accanto a Cerca per filtrare le discussioni in base allo stato aperto o chiuso oppure al tag di categoria. Combinare un termine di ricerca con un filtro può restringere rapidamente un lungo elenco di discussioni.
+Nella scheda **Discussioni** di un gruppo, puoi filtrare le conversazioni in base allo stato aperto o chiuso oppure al tag di categoria. Combina un filtro con il campo di ricerca dell'elenco per restringere rapidamente un lungo elenco di discussioni.
 
 <!-- translation-section: category-tags -->
 
@@ -71,19 +71,21 @@ I tag raggruppano discussioni, sondaggi, conclusioni e commenti correlati sotto 
 
 ![](tags.png)
 
-Seleziona un tag nella scheda **Discussioni** per mostrare le conversazioni che contengono un contributo corrispondente. All'interno di una conversazione, seleziona un tag nella barra laterale per trovare i contributi corrispondenti insieme al contesto a cui appartengono. Gli autori possono applicare tag ai propri contributi. Gli amministratori del gruppo, gli amministratori della conversazione e le persone con il permesso di modificare il contesto della discussione possono applicare tag a qualsiasi contributo. Consulta [Tag di categoria](/en/user_manual/discussions/tags) per i dettagli sulla configurazione e sui permessi.
+Seleziona un tag nella scheda **Discussioni** per mostrare le discussioni che contengono elementi con quel tag. All'interno di una discussione, seleziona un tag nella barra laterale per vedere i commenti, i sondaggi o le conclusioni corrispondenti insieme agli elementi a cui rispondono.
+
+Gli autori possono applicare tag ai propri contributi. Gli amministratori del gruppo, gli amministratori della conversazione e chiunque possa modificare il contesto della discussione possono applicare tag a qualsiasi elemento. Consulta [Tag di categoria](/en/user_manual/discussions/tags) per la configurazione e i permessi.
 
 <!-- translation-section: unread-discussions -->
 
 ## Discussioni non lette
 
-Seleziona **Discussioni non lette** nella barra laterale per vedere le discussioni con attività che non hai letto. All'interno di una discussione, la cronologia ti aiuta a passare agli elementi non letti e agli eventi importanti.
+Seleziona **Discussioni non lette** nella barra laterale per vedere le conversazioni con nuove attività. All'interno di una discussione, usa la cronologia per passare agli elementi non letti e agli eventi principali.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Sondaggi in attesa del tuo voto
 
-Seleziona **Sondaggi da votare** nella barra laterale per vedere i sondaggi attivi a cui hai ricevuto un invito ma in cui non hai ancora votato. Puoi anche aprire la scheda **Sondaggi** di un gruppo per vedere i suoi sondaggi attivi e chiusi.
+Seleziona **Sondaggi da votare** nella barra laterale per vedere i sondaggi aperti a cui hai ricevuto un invito ma in cui non hai ancora votato. Puoi anche aprire la scheda **Sondaggi** di un gruppo per vedere sia i sondaggi attivi sia quelli chiusi.
 
 <!-- translation-section: bookmarks -->
 

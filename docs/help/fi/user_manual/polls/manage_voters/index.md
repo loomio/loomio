@@ -1,38 +1,38 @@
 ---
 title: Hallitse äänestäjiä
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: 71dcb23e826f8935
-  invite-people-to-vote-in-a-poll: 722befe83624026e
+  invite-people-to-vote-in-a-poll: c0e55aa6074dfebf
   invite-guests-or-experts: aba122e2bbf9dc40
   engage-people-while-a-poll-is-running: 2ff05dc4463cf45e
   add-voters-to-the-poll: adb76228f3a54557
   remove-people-from-the-poll: '09aaf630adf706bf'
-  remind-people-to-vote: 2ab464d18c6e56f2
-  view-notification-history: c26197785d06b8e6
+  remind-people-to-vote: ec61f64a9e1db38c
+  view-notification-history: ca00356e3132ec0b
   close-early: 9b093d1c42825567
   reopen: 3a3a0def40521d37
-  choose-an-audience: 306174dea99d05b5
-  check-your-recipients: 7834fcdb424fe599
-  send-the-invitations: 7f0102b383122293
+  choose-an-audience: e0e393649a8ee8c5
+  check-your-recipients: '0866cf4e40e9b7dd'
+  send-the-invitations: 1844bdaf3ad52cea
 title_source: 10858faa0464257e
 title_generated: 731ba3b8553d08e4
 ---
@@ -50,7 +50,7 @@ Anna henkilöille oikeus äänestää ja kutsu heidät osallistumaan ehdotukseen
 
 ## Kutsu ihmisiä äänestämään
 
-Kun aloitat kyselyn asetuksella **Vain valitut henkilöt**, **Hallitse äänestäjiä** -ikkuna avautuu. Voit avata sen myös valitsemalla kyselystä **Hallitse äänestäjiä**.
+Kun aloitat kyselyn asetuksella **Vain valitut henkilöt**, **Hallitse äänestäjiä** -ikkuna avautuu automaattisesti. Voit avata sen myös valitsemalla kyselystä **Hallitse äänestäjiä**.
 
 ![Hallitse äänestäjiä -painike kyselyn alaosassa](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ Kun aloitat kyselyn asetuksella **Vain valitut henkilöt**, **Hallitse äänest�
 
 ### Valitse vastaanottajat
 
-Napsauta tyhjää **Etsi tai kutsu äänestäjiä** -kenttää nähdäksesi ehdotukset. Ne näkyvät tässä järjestyksessä:
+Valitse tyhjä **Etsi tai kutsu äänestäjiä** -kenttä nähdäksesi ehdotukset. Ne näkyvät tässä järjestyksessä:
 
 - oma ryhmäsi
 - ryhmäsi **edustajat**, jos ryhmälläsi on [valtuutettuja äänestäjiä](/en/user_manual/groups/delegated_voters)
@@ -72,7 +72,7 @@ Napsauta tyhjää **Etsi tai kutsu äänestäjiä** -kenttää nähdäksesi ehdo
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Valitse vastaanottajajoukko kutsuaksesi sen henkilöt kerralla. Esimerkiksi valitsemalla **Oatmilk Cooperative** sisällytät kutsuun kyseisen ryhmän henkilöt. Voit myös valita yhdistetyn keskustelukanavan julkaistaksesi kutsun siellä. Kutsun julkaiseminen keskustelukanavalla ei lisää sen jäseniä äänestäjiksi.
+Valitse vastaanottajajoukko kutsuaksesi sen henkilöt kerralla. Esimerkiksi valitsemalla **Oatmilk Cooperative** sisällytät kutsuun kaikki kyseisen ryhmän henkilöt. Voit myös valita yhdistetyn keskustelukanavan julkaistaksesi kutsun siellä — kutsun julkaiseminen keskustelukanavalla ei lisää sen jäseniä äänestäjiksi.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ Kun valitset vastaanottajajoukon, kentässä näkyvät sen nimi ja mukana olevie
 
 ![Oatmilk Cooperative valittuna ja vastaanottajien määrä kentän alla](proposal_invite_members.png)
 
-Napsauta vastaanottajajoukon nimeä nähdäksesi yksittäiset henkilöt. Voit sitten jättää henkilön pois tästä kutsusta valitsemalla hänen nimensä vierestä **×**. Tämä ei poista häntä ryhmästä.
+Valitse vastaanottajajoukon nimi nähdäksesi yksittäiset henkilöt. Voit sitten jättää henkilön pois tästä kutsusta valitsemalla hänen nimensä vierestä **×**. Tämä ei poista häntä ryhmästä.
 
 ![Ryhmän vastaanottajat avattuina nimetyiksi henkilöiksi, joista jokaisen vieressä on poistopainike](proposal_invite_expand.png)
 
@@ -102,7 +102,7 @@ Vieraat saavat pääsyn tähän kyselyyn. Jos kysely on ketjussa, he voivat myö
 
 ### Lähetä kutsut
 
-Lisää viesti, jossa kerrot, mistä pyydät ihmisiä päättämään, ja valitse sitten **Kutsu**. Jätä **Lähetä ilmoituksia** valituksi, jotta kutsuttavat saavat ilmoituksen. Poista valinta, jos haluat lisätä äänestäjiä lähettämättä ilmoitusta.
+Lisää viesti, jossa kerrot, mistä pyydät ihmisiä päättämään, ja valitse sitten **Kutsu**. Jätä **Lähetä ilmoituksia** valituksi, jotta kutsuttavat saavat ilmoituksen, tai poista valinta, jos haluat lisätä äänestäjiä lähettämättä ilmoitusta.
 
 Jos kysely on ajastettu, valitse **Lisää äänestäjiä**. Henkilöt saavat kutsunsa, kun äänestys avautuu.
 
@@ -132,7 +132,7 @@ Anonyymistä kyselystä ei voi poistaa henkilöitä. [Äänipainoja](/en/user_ma
 
 ### Muistuta ihmisiä äänestämään
 
-Valitse kyselystä **Muistuttaa**, valitse muistutuksen vastaanottajat, lisää viesti ja lähetä muistutus valitsemalla **Muistuttaa**. Voit valita **Äänestämättä olevat** tavoittaaksesi henkilöt, joiden vastauksia vielä tarvitaan.
+Valitse kyselystä **Muistuttaa**, valitse vastaanottajat (esimerkiksi **Äänestämättä olevat**), lisää viesti ja lähetä muistutus valitsemalla **Muistuttaa**.
 
 ![Äänestämättä oleville osoitettu muistutus, jonka viestissä kerrotaan päätöksen määräajasta](proposal_remind.png)
 
@@ -140,7 +140,7 @@ Valitse kyselystä **Muistuttaa**, valitse muistutuksen vastaanottajat, lisää 
 
 ### Tarkastele ilmoitushistoriaa
 
-Avaa kyselyn kolmen pisteen valikko (**⋯**) ja valitse **Ilmoitushistoria**. Näet, ketkä on kutsuttu, milloin kukin kutsu lähetettiin ja onko se luettu, jos tämä tieto on saatavilla.
+Avaa kyselyn kolmen pisteen valikko (**⋯**) ja valitse **Ilmoitushistoria**. Näet, ketkä kutsuttiin, milloin kukin kutsu lähetettiin ja onko se luettu, jos tämä tieto on saatavilla.
 
 ![Ilmoitushistoriassa näkyvät kyselykutsun vastaanottajat](../../discussions/notifying_people/poll_notification_example.png)
 

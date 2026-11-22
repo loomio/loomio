@@ -1,23 +1,23 @@
 ---
 title: Голосования
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: d400e86adde139cd
-  simple-poll: 3c8b3b52ed58ed8e
+  simple-poll: 1b28e6fbdc38ce6e
   score-poll: 562a42ea1d1e656b
-  dot-vote: 791e54706ede7f1a
+  dot-vote: deb880f2e84e6689
   ranked-choice: 972f8a9d7835b007
   time-poll: 75fdf2292b956b03
   stv-election: 828c2a7412c01a76
@@ -42,7 +42,7 @@ title_generated: 976c84f1c0e680c0
 
 <!-- translation-section: simple-poll -->
 
-## Простой опрос
+## Выбор
 
 [Выбор](/en/user_manual/polls/choose/) позволяет участникам выбрать один или несколько вариантов. Используйте его, чтобы найти самый популярный вариант или составить короткий список.
 
@@ -54,7 +54,7 @@ title_generated: 976c84f1c0e680c0
 
 <!-- translation-section: dot-vote -->
 
-## Распределение баллов
+## Распределение
 
 [Распределение](/en/user_manual/polls/allocate/) даёт каждому участнику фиксированное количество баллов для распределения. Используйте его, чтобы определить приоритеты, когда выбор одного означает, что другому достанется меньше внимания или ресурсов.
 

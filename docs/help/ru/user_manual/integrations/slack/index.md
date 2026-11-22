@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: 4bbdd1c1a1fddf54
+  introduction: 8344dbaf913cc5e4
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Интеграция со Slack
-_Подключите уведомления вашей группы Loomio к Slack._
 
-Loomio может отправлять уведомления в ваши каналы Slack при появлении новых обсуждений, предложений, комментариев, голосов и выводов. Получайте своевременные уведомления о важных обсуждениях и решениях.
+Loomio может отправлять уведомления в ваши каналы Slack при появлении новых обсуждений, опросов, комментариев, голосов и выводов.
 
 ---
 
-Для начала перейдите на [https://api.slack.com](https://api.slack.com), войдите в свою учётную запись, если вы ещё не вошли, затем нажмите «Создать новое приложение» (Create New App)
+1. Откройте [api.slack.com](https://api.slack.com), войдите в свою учётную запись и выберите **Создать новое приложение (Create New App)**.
 
-![](s1.png)
+   ![](s1.png)
 
-Задайте название вашему приложению Slack
+2. Задайте название вашему приложению Slack и выберите рабочее пространство.
 
-![](s2.png)
+   ![](s2.png)
 
-Добавьте поддержку входящих вебхуков
+3. Выберите **Входящие вебхуки (Incoming Webhooks)**.
 
-![](s3.png)
+   ![](s3.png)
 
-Затем включите эту функцию
+4. Включите **Активировать входящие вебхуки (Activate Incoming Webhooks)**.
 
-![](s4.png)
+   ![](s4.png)
 
-Затем добавьте новый вебхук
+5. Выберите **Добавить новый вебхук в рабочее пространство (Add New Webhook to Workspace)**.
 
-![](s5.png)
+   ![](s5.png)
 
-Выберите канал
+6. Выберите канал, в котором должны появляться уведомления Loomio.
 
-![](s6.png)
+   ![](s6.png)
 
-Скопируйте URL вебхука в буфер обмена
+7. Скопируйте URL вебхука.
 
-![](s7.png)
+   ![](s7.png)
 
-Теперь, когда у вас есть URL вебхука, продолжите настройку интеграции с чатом:
+Теперь, когда у вас есть URL вебхука, завершите его подключение в Loomio:
 
 [Настройте интеграцию с чатом в Loomio](../chatbots/#set-up-a-chat-integration)
 

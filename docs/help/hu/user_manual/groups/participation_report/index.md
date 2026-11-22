@@ -1,28 +1,28 @@
 ---
 title: Részvételi jelentés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/participation_report/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9ec21a12ab444c80
-  what-s-in-the-report: 90b9c89c6933eeee
-  actions-per-month: 3f290af092726995
-  tag-usage: 8e7577c51379e50f
-  actions-per-user: 4e6414d83ee776be
-  voting-record-per-user: 12741bf049ab9bee
-  users-per-country: 7f61b0c9a0002eec
-  actions-per-country: 900472e9fa675e08
+  introduction: f5759e9db8130be6
+  what-s-in-the-report: a857f9d955851358
+  actions-per-month: 4b2aebb7a8d1ecae
+  tag-usage: c05217a052bc0da0
+  actions-per-user: '09a02dafc160037a'
+  voting-record-per-user: e878e48f58f98b54
+  users-per-country: 03111e1b5f9a6697
+  actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: 4a91643686fdca15
+  introduction: 551fbb36b403196e
   what-s-in-the-report: 43e198700c1479f0
-  actions-per-month: 4aad2d078b0f52c0
-  tag-usage: 25e9e32022cb1630
-  actions-per-user: 510b1754ba343117
-  voting-record-per-user: 44b754f57ad86c3b
-  users-per-country: 78926eb035c13795
-  actions-per-country: ea0bf048ff117709
+  actions-per-month: 341dc2423615e35d
+  tag-usage: 50173921d1d9ee1a
+  actions-per-user: 36cffe5cd6d3b8ec
+  voting-record-per-user: 6b90e540777f5b49
+  users-per-country: '018ec57c32ee9a3d'
+  actions-per-country: c3a1d101c1a119b5
 title_source: ee140bf2af2bcf29
 title_generated: 1fc761f49b3e8738
 ---
@@ -31,13 +31,13 @@ title_generated: 1fc761f49b3e8738
 
 # Részvételi jelentés
 
-A csoport részvételi jelentése betekintést ad a Loomio-csoportod használatába.
+A részvételi jelentés megmutatja a Loomio-csoportodban és annak alcsoportjaiban végzett tevékenységeket.
 
-Kiválaszthatod, mely csoportok szerepeljenek a jelentésben, megadhatod a jelentés kezdő és záró dátumát, valamint az eredmények csoportosításának időegységét (év, hónap, hét vagy nap).
+Kiválaszthatod, mely csoportok szerepeljenek a jelentésben, megadhatod a kezdő és záró dátumot, és év, hónap, hét vagy nap szerint csoportosíthatod az eredményeket.
 
-A jelentés a csoportod minden tagja számára elérhető, de a felhasználók csak azoknak a csoportoknak az eredményeit láthatják, amelyekhez tartoznak. Ezért az egyes felhasználók jelentései kissé eltérhetnek egymástól.
+A jelentést minden csoporttag megtekintheti, de mindenki csak azoknak a csoportoknak az eredményeit látja, amelyeknek tagja. Ezért a különböző tagok eltérő összesített adatokat láthatnak.
 
-A jelentést a csoport beállítási menüjének fogaskerékikonjára kattintva találod meg, ahogy az alábbi képen látható.
+A jelentés megnyitásához nyisd meg a csoport műveleti menüjét, és válaszd ki a **Részvételi jelentés** menüpontot. A jelentés bármely táblázatában kattints egy oszlopfejlécre az adott oszlop szerinti rendezéshez.
 
 ![A részvételi jelentés menüpontja az Oatmilk Cooperative menüjében](group_participation_report.png)
 
@@ -47,15 +47,9 @@ A jelentést a csoport beállítási menüjének fogaskerékikonjára kattintva 
 
 <!-- translation-section: actions-per-month -->
 
-### Tevékenységek havonta
+### Tevékenységek az idő függvényében
 
-Nézd meg, mennyire aktív a csoportod egy adott időszakban.
-
-A jelentés megmutatja a havonta létrehozott szálak, hozzászólások, szavazások, szavazatok és reakciók számát. A grafikonon láthatod a használat növekedését és csökkenését.
-
-Kattints a grafikon egyes felirataira az adott adatsor elrejtéséhez.
-
-Kattints a táblázat egyes oszlopfejléceire, hogy az adott oszlop szerint rendezd a táblázatot.
+Ez a grafikon megmutatja az egyes kiválasztott időegységekben létrehozott szálak, hozzászólások, szavazások, leadott szavazatok és reakciók számát, így láthatod az aktivitás változásait. Kattints a grafikon egyik feliratára az adott adatsor elrejtéséhez vagy megjelenítéséhez.
 
 ![Az Oatmilk Cooperative részvételi jelentésének vezérlői, összesített adatai és tevékenységi grafikonja](group_participation_report_graph.png)
 
@@ -63,18 +57,17 @@ Kattints a táblázat egyes oszlopfejléceire, hogy az adott oszlop szerint rend
 
 ### Címkék használata
 
-Ez megmutatja, milyen gyakran használták a különböző címkéket a megadott időszakban. Láthatod például, hány döntéshez használtak egy adott döntési folyamatot vagy sablont.
+Ez a diagram megmutatja, milyen gyakran használták a címkéket a kiválasztott időszakban, például hány beszélgetéshez használtak egy adott döntési folyamatot vagy sablont.
 
 ![A Termelés, Kávézói partnerségek és Működés címkék használata az idő függvényében](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### Tevékenységek felhasználónként
-Nézd meg, kik a csoportod legaktívabb és legkevésbé aktív résztvevői.
 
-Ez a táblázat megmutatja, hogy a megadott csoportok egyes felhasználói hány szálat, hozzászólást, szavazást, szavazatot és reakciót hoztak létre az adott időszakban. Kattints a táblázat egyes oszlopfejléceire, hogy az adott oszlop szerint rendezd a táblázatot.
+Ez a táblázat megmutatja, hogy az egyes tagok hány szálat, hozzászólást, szavazást és reakciót hoztak létre, valamint hány szavazatot adtak le a kiválasztott időszakban.
 
-Kapcsold be a **Csak küldöttek** szűrőt, hogy azok jelenjenek meg, akik jelenleg küldöttek valamelyik kiválasztott csoportban. A tevékenységeik és szavazati részvételi adataik az összes kiválasztott csoportból összesítve jelennek meg. Azok a küldöttek is a táblázatban maradnak, akik a kiválasztott időszakban nem voltak aktívak. A letöltött CSV-fájlra ugyanez a szűrő vonatkozik.
+Kapcsold be a **Csak küldöttek** szűrőt, hogy a táblázatban csak azok jelenjenek meg, akik jelenleg küldöttek valamelyik kiválasztott csoportban. A tevékenységeik a kiválasztott csoportokból összesítve jelennek meg, és azok a küldöttek is szerepelnek, akik nem voltak aktívak. A letöltött CSV-fájlra ugyanez a szűrő vonatkozik.
 
 ![Küldöttenkénti tevékenységek három részvételi szinttel](group_participation_report_actions_per_user.png)
 
@@ -82,9 +75,9 @@ Kapcsold be a **Csak küldöttek** szűrőt, hogy azok jelenjenek meg, akik jele
 
 ### Szavazati részvétel felhasználónként
 
-Hasonlítsd össze, hogy az egyes résztvevők hány szavazat leadására kaptak lehetőséget, és ebből hányat adtak le. Nézd meg a le nem adott szavazatokat, és azonosítsd azokat, akik minden szavazati lehetőségükkel éltek. Aki egyetlen szavazat leadására sem kapott lehetőséget, nem jelenik meg úgy, mint aki minden szavazatát leadta. A névtelen szavazások nem szerepelnek az adatok között, mert a névtelen szavazatot nem szabad összekapcsolni azzal, aki leadta.
+Ez a táblázat összehasonlítja, hogy az egyes résztvevők hány szavazat leadására kaptak lehetőséget, és ebből hányat adtak le. Megmutatja a le nem adott szavazatokat, és kiemeli azokat, akik minden szavazati lehetőségükkel éltek. Aki egyetlen szavazat leadására sem kapott lehetőséget, nem jelenik meg úgy, mint aki minden szavazatát leadta. A névtelen szavazások nem szerepelnek az adatok között, mert a névtelen szavazatok nincsenek összekapcsolva az egyes szavazókkal.
 
-Használd a **Csak küldöttek** szűrőt a jelenlegi küldöttek szavazati részvételének áttekintéséhez. A letöltött CSV-fájlra ugyanazok a név szerinti és küldöttekre vonatkozó szűrők érvényesek.
+Kapcsold be a **Csak küldöttek** szűrőt a jelenlegi küldöttek szavazati részvételének áttekintéséhez. A letöltött CSV-fájlra ugyanazok a név szerinti és küldöttekre vonatkozó szűrők érvényesek.
 
 ![A küldöttek szavazati részvételi adatai a lehetséges, leadott és le nem adott szavazatokkal](group_participation_report_voting_record.png)
 
@@ -92,7 +85,7 @@ Használd a **Csak küldöttek** szűrőt a jelenlegi küldöttek szavazati rés
 
 ### Felhasználók országonként
 
-Megmutatja, hogy a csoportod felhasználói közül hányan tartózkodnak az egyes országokban, az aktuális IP-címük alapján.
+Ez a táblázat megmutatja, hogy a kiválasztott csoportok tagjai közül hányan tartózkodnak az egyes országokban, az aktuális IP-címük alapján.
 
 ![A kiválasztott csoportok felhasználói országonként](group_participation_report_users_per_country.png)
 
@@ -100,8 +93,6 @@ Megmutatja, hogy a csoportod felhasználói közül hányan tartózkodnak az egy
 
 ### Tevékenységek országonként
 
-Nézd meg, mely országokban a legaktívabbak és a legkevésbé aktívak a felhasználók.
-
-Hasonló a „Tevékenységek felhasználónként” táblázathoz, de az adatokat a rendszer által meghatározott tartózkodási ország szerint csoportosítja.
+Ez a táblázat a szálakat, hozzászólásokat, szavazásokat, szavazatokat és reakciókat az egyes tagok rendszer által meghatározott tartózkodási országa szerint csoportosítja.
 
 ![Tevékenységek országonként csoportosítva](group_participation_report_actions_per_country.png)

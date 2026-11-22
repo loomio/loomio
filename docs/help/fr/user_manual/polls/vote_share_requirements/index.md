@@ -1,19 +1,19 @@
 ---
 title: Exigences de répartition des votes
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 sections:
-  introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 2cf6ad55d557c189
-  different-vote-share-requirements: 0e81fb881e5c113e
-  detailed-example: 395dbccb0e6427fc
+  introduction: cbaf41b11886d669
+  eligible-voters-and-votes-cast: 1eace7b24593e671
+  different-vote-share-requirements: 0707fe507dfba2b9
+  detailed-example: bd9380153211ad27
 generated:
-  introduction: 96509c1428154ac7
-  eligible-voters-and-votes-cast: 2c5f69cdb1855d71
-  different-vote-share-requirements: 2e1cbe00893ad6b5
+  introduction: bfd41aedbc995866
+  eligible-voters-and-votes-cast: f9e4187fafece45a
+  different-vote-share-requirements: 05d0070011ca778f
   detailed-example: dc9c34c7ef7ab485
 title_source: a654891ca817844e
 title_generated: '4123971380273484'
@@ -23,9 +23,9 @@ title_generated: '4123971380273484'
 
 # Exigences de répartition des votes
 
-Définissez une exigence de répartition des votes pour une option lorsqu’une proposition doit recueillir un pourcentage précis de soutien, ou rester en dessous d’un pourcentage précis d’opposition, pour être adoptée.
+Définissez une exigence de répartition des votes pour une option lorsqu’une proposition doit recueillir un pourcentage minimum de soutien, ou rester en dessous d’un pourcentage maximum d’opposition, pour être adoptée.
 
-Les exigences de répartition des votes peuvent être combinées avec un [quorum](/en/user_manual/polls/quorum/) pour exiger à la fois une participation suffisante et une répartition précise des votes.
+Vous pouvez combiner les exigences de répartition des votes avec un [quorum](/en/user_manual/polls/quorum/) pour exiger à la fois une participation suffisante et une répartition précise des votes.
 
 Dans le formulaire de proposition, cliquez sur l’icône de modification à côté d’une option.
 
@@ -41,11 +41,11 @@ Le pourcentage peut être calculé à partir des **Votes exprimés** ou des **É
 
 **Électeurs éligibles** désigne toutes les personnes qui peuvent voter sur la proposition. **Votes exprimés** désigne uniquement les votes qui ont été soumis.
 
-Une exigence de 75 pour cent d’accord parmi les électeurs éligibles ne peut être satisfaite que si au moins 75 pour cent de l’ensemble des électeurs éligibles votent pour cette option.
+Une exigence de 75 pour cent d’accord parmi les électeurs éligibles n’est satisfaite que si au moins 75 pour cent de l’ensemble des électeurs éligibles choisissent cette option.
 
-Une exigence de 60 pour cent d’accord parmi les votes exprimés peut être satisfaite lorsque 60 pour cent des votes soumis soutiennent l’option, quel que soit le taux de participation global. Ajoutez un quorum si votre processus exige également un niveau minimum de participation.
+Une exigence de 60 pour cent d’accord parmi les votes exprimés est satisfaite lorsque 60 pour cent des votes soumis soutiennent l’option, quel que soit le taux de participation global. Ajoutez un quorum si votre processus exige également un niveau minimum de participation.
 
-Avec le [vote pondéré](/en/user_manual/polls/weighted_voting), les deux bases de calcul utilisent les poids des votes. **Poids des votes exprimés** compare le total pondéré de l’option au poids total des votes exprimés. **Poids des votes éligibles** compare le poids des votes des électeurs ayant choisi l’option au poids total des votes de tous les électeurs éligibles, y compris les personnes qui n’ont pas voté. Par exemple, une personne dont le poids du vote est de 70 sur un total de 100 pour l’ensemble des électeurs éligibles peut satisfaire à elle seule une exigence de 60 pour cent d’accord fondée sur le poids des votes éligibles.
+Avec le [vote pondéré](/en/user_manual/polls/weighted_voting), les deux bases de calcul utilisent les poids des votes. **Poids des votes exprimés** compare le total pondéré de l’option au poids total des votes exprimés. **Poids des votes éligibles** compare ce total au poids total des votes de tous les électeurs éligibles, y compris les personnes qui n’ont pas voté. Par exemple, un électeur dont le poids du vote est de 70 sur un total de 100 pour l’ensemble des électeurs éligibles peut satisfaire à lui seul une exigence de 60 pour cent d’accord fondée sur le poids des votes éligibles.
 
 <!-- translation-section: different-vote-share-requirements -->
 
@@ -53,9 +53,9 @@ Avec le [vote pondéré](/en/user_manual/polls/weighted_voting), les deux bases 
 
 Une proposition peut comporter des exigences pour plusieurs options. Par exemple :
 
-- L’accord doit représenter au moins 75 pour cent des électeurs éligibles
-- L’abstention doit représenter au maximum 30 pour cent des votes exprimés
-- Le blocage doit représenter au maximum 0 pour cent des votes exprimés
+- L’accord doit représenter au moins 75 pour cent des électeurs éligibles.
+- L’abstention doit représenter au maximum 30 pour cent des votes exprimés.
+- Le blocage doit représenter au maximum 0 pour cent des votes exprimés.
 
 Définir une option sur **Au maximum 0 %** est une pratique courante. Cela signifie que la proposition ne peut pas être adoptée si une personne choisit cette option. Appliquez ce réglage à **Blocage** pour qu’un seul blocage empêche l’adoption de la proposition.
 

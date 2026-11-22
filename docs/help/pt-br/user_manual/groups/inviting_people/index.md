@@ -1,43 +1,45 @@
 ---
 title: Convidar pessoas
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 11414f62ee5967b1
-  send-invitations-via-email: 2b8a4d9f59ade3fb
-  invite-many-at-once: 0d712706c051acde
-  invite-people-to-subgroups: 8dff558b6aa64a4c
-  share-a-link-to-your-group: dba25e6d36c5ca10
-  request-to-join-group: a967acdffe044416
-  review-membership-requests: 14d36ce76de48f88
-  managing-invitations: c0713e8dece67057
-  re-send-invitations: 155d1c02af55f9cc
-  cancelling-invitations: 5a674fbf2baf4f85
-  invitation-notification-history: cba44c8a9874b0e7
+  introduction: 4edea912e0c5ab4c
+  send-invitations-via-email: 1baff25b7ca3288e
+  invite-many-at-once: 8079f52a993ca254
+  invite-people-to-subgroups: 7c187480316f2d74
+  share-a-link-to-your-group: a231a7dcc4ef3e4c
+  request-to-join-group: 139bfb491b0ac9ef
+  review-membership-requests: f0ae12979e8874ec
+  managing-invitations: 414aa8af0d447f51
+  re-send-invitations: '08d4b6cafc5a4d2e'
+  cancelling-invitations: 9c98a3b9a3265f43
+  invitation-notification-history: 4870a4fee8be5d54
 title_source: b926eb8921d85971
 title_generated: 78d2d476af72d5ea
+needs_review:
+  review-membership-requests: check the interface label "**Ignorar **" for "**Ignore**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Convide pessoas para um grupo do Loomio
 
-Convide pessoas para seu grupo do Loomio por e-mail ou compartilhe um link do grupo em um boletim informativo, chat ou site. Abra a aba **Membros** na página do seu grupo para começar.
+Você pode convidar pessoas para seu grupo do Loomio por e-mail, compartilhar um link de convite ou permitir que as pessoas peçam para entrar. Abra a aba **Membros** na página do seu grupo para começar.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +47,7 @@ Convide pessoas para seu grupo do Loomio por e-mail ou compartilhe um link do gr
 
 ## Enviar convites por e-mail
 
-Clique em **Convidar** na aba **Membros** para enviar um e-mail com um link de convite que só pode ser usado uma vez. A pessoa que receber o convite poderá criar uma conta no Loomio e entrar no seu grupo.
-
-Se a pessoa já tiver uma conta no Loomio, poderá aceitar o convite e entrar no seu grupo usando essa conta.
+Selecione **Convidar** na aba **Membros** para enviar um e-mail com um link de convite que só pode ser usado uma vez. A pessoa que receber o convite pode entrar com uma conta existente no Loomio ou criar uma nova.
 
 ![](group_invite_email.png)
 
@@ -55,20 +55,20 @@ Se a pessoa já tiver uma conta no Loomio, poderá aceitar o convite e entrar no
 
 ### Convidar várias pessoas de uma vez
 
-Você pode enviar convites por e-mail para até 100 pessoas de uma vez, digitando (ou copiando e colando) vários endereços de e-mail no campo "Quem você gostaria de convidar". Separe os endereços de e-mail com vírgulas ou espaços.
+Você pode convidar até 100 pessoas de uma vez, digitando ou colando endereços de e-mail separados por vírgulas ou espaços.
 
-Ao convidar pessoas para um grupo de uma organização, o grupo principal e os subgrupos relacionados dos quais você faz parte aparecem como sugestões de público. Selecione um grupo e, em seguida, selecione seu marcador para expandir o público em pessoas individuais. Você pode remover qualquer pessoa que não queira convidar antes de enviar os convites. Pessoas que já fazem parte do grupo de destino são excluídas.
+Ao convidar pessoas para um grupo de uma organização, você também pode selecionar o grupo principal ou os subgrupos relacionados dos quais faz parte. Expanda um grupo selecionado em pessoas individuais para remover quem você não quer convidar. Pessoas que já são membros são excluídas automaticamente.
 
 >[!Tip]
->Copie endereços de e-mail de uma coluna em uma planilha do Google ou do Excel e cole no campo de convite.
+>Você pode copiar uma coluna de endereços de e-mail do Google Sheets ou do Microsoft Excel e colar diretamente no campo de convite.
 
-Quando você clicar em **Convidar**, um e-mail será enviado para cada endereço informado, com um link de convite exclusivo que só pode ser usado uma vez. Esse e-mail será enviado no idioma que você está usando.
+Quando você seleciona **Convidar**, o Loomio envia a cada endereço um link de convite exclusivo que só pode ser usado uma vez, no idioma que você está usando.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Convidar pessoas para subgrupos
 
-Seguindo o mesmo processo descrito acima, você pode convidar pessoas para um grupo principal e um ou mais subgrupos ao mesmo tempo usando o botão **Convidar pessoas**. Marque as caixas ao lado dos subgrupos dos quais você quer que elas façam parte assim que entrarem no grupo.
+Ao convidar pessoas para um grupo principal, você pode adicioná-las a um ou mais subgrupos ao mesmo tempo. Marque os subgrupos dos quais você quer que elas façam parte quando aceitarem o convite.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +76,39 @@ Seguindo o mesmo processo descrito acima, você pode convidar pessoas para um gr
 
 ## Compartilhar um link para seu grupo
 
-Você pode compartilhar um link para seu grupo usando o botão **Compartilhar**. Isso é útil se você quiser enviar um link por e-mail, boletim informativo ou chat, ou publicá-lo no seu site.
+Selecione **Compartilhar** para gerar um link de convite reutilizável para um boletim informativo, canal de chat, e-mail ou site.
 
 ![](group_invite_sharable_link.png)
 
-Clique no ícone "copiar" para copiar o link para a área de transferência e cole no seu e-mail, boletim informativo ou canal de chat.
-
-Se você quiser impedir que pessoas entrem por esse link, clique em "Redefinir este link". O link existente deixará de funcionar e um novo link será criado.
+Para impedir que pessoas entrem usando um link existente, selecione **Redefinir este link**. Isso invalida o link antigo e cria um novo.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Pedir adesão ao grupo
 
-As pessoas podem pedir adesão a um grupo aberto ou fechado. Compartilhe a URL do grupo, como `https://www.loomio.com/group-name`. Ao acessar a página do grupo, elas podem ver as informações públicas do grupo e selecionar **Entrar no grupo** para responder à pergunta de adesão e enviar seu pedido.
+As pessoas podem pedir adesão a um grupo aberto ou fechado pela URL do grupo, como `https://www.loomio.com/group-name`. Os visitantes veem as informações públicas do grupo e selecionam **Entrar no grupo** para responder à pergunta de adesão e enviar seu pedido.
 
 ![](group_join_group.png)
 
-A pergunta de adesão permite que as pessoas se apresentem e expliquem por que querem entrar no grupo.
+A pergunta de adesão permite que as pessoas solicitantes se apresentem e expliquem por que querem entrar no grupo.
 
 ![](group_request_to_join.png)
 
-Em [Privacidade do grupo](/en/user_manual/groups/settings/privacy#how-people-join), escolha **Solicitar aprovação** para exigir que os pedidos sejam analisados. Você também pode personalizar a pergunta de adesão nas configurações do grupo.
+Em [Privacidade do grupo](/en/user_manual/groups/settings/privacy#how-people-join), escolha **Pedir para entrar** para exigir a análise dos pedidos de adesão. Você também pode personalizar a pergunta de adesão nas configurações do grupo.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Revisar pedidos de adesão
 
-Administradores do grupo e membros com permissão para adicionar membros revisam os pedidos na seção **Pedidos de adesão** da aba **Membros**. Quem revisa pode:
+Admins do grupo e membros com permissão para adicionar membros podem revisar os pedidos na seção **Pedidos de adesão** da aba **Membros**.
 
 ![](group_review_request_to_join.png)
 
-- **Aprovar** o pedido para adicionar a pessoa solicitante como membro e notificá-la.
-- **Ignorar ** o pedido para encerrá-lo sem notificar a pessoa solicitante nem permitir um novo pedido.
-- **Recusar** o pedido com uma mensagem explicando a decisão. O Loomio envia a mensagem à pessoa solicitante por email e notificação, e ela pode enviar um novo pedido.
+Para cada pedido, você pode:
 
-Selecione o botão de recusar para escrever uma mensagem ou ignorar o pedido.
+- **Aprovar** para adicionar a pessoa solicitante como membro e notificá-la.
+- **Ignorar** para encerrar o pedido sem notificar a pessoa solicitante nem permitir um novo pedido.
+- **Recusar** para enviar uma explicação por e-mail e notificação; a pessoa solicitante poderá enviar um novo pedido depois.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +116,30 @@ Selecione o botão de recusar para escrever uma mensagem ou ignorar o pedido.
 
 ## Gerenciar convites
 
-Para gerenciar convites, abra o filtro/menu suspenso na aba Membros da página do seu grupo e selecione **Convites**. Você pode gerenciar cada convite clicando no menu de três pontos (**⋮**) à direita do membro.
+Abra o menu de filtros na aba **Membros** e selecione **Convites** para ver os convites pendentes. Use o menu de ações ao lado de um convite para gerenciá-lo.
 
 ![](group_invite_members_filter.png)
 
-Você também pode tornar as pessoas administradoras ou definir seu cargo no grupo (por exemplo, "Suporte de TI") antes que aceitem o convite.
+Você também pode tornar uma pessoa convidada admin do grupo ou definir seu cargo (por exemplo, "Suporte de TI") antes que ela aceite o convite.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Histórico de entrega de convites
 
-Se alguém não estiver recebendo o e-mail de convite, os admins do grupo podem abrir **Histórico de entrega de convites** no menu de três pontos (**⋮**) ao lado do nome da pessoa na página Membros para ver quando os convites foram enviados e quaisquer problemas de entrega registrados.
+Se alguém não receber o e-mail de convite, um admin do grupo pode verificar o status da entrega. Abra o menu de ações ao lado do nome da pessoa na aba **Membros** e selecione **Histórico de entrega de convites** para ver quando os convites foram enviados e quaisquer problemas de entrega registrados.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Reenviar convites
 
-Entre em contato com as pessoas que ainda não entraram no grupo e envie um lembrete. Se alguém perdeu ou esqueceu o e-mail de convite, você pode reenviá-lo pelo menu suspenso ao lado do nome da pessoa na página Membros.
-
-Clique nos três pontos (**⋮**) ao lado da pessoa para quem você quer reenviar o convite e escolha **Re-enviar convite**.
+Se alguém perdeu ou não viu o e-mail de convite, abra o menu de ações ao lado do nome da pessoa na aba **Membros** e selecione **Re-enviar convite**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Cancelar convites
-Se você informou um endereço de e-mail incorreto ou mudou de ideia sobre convidar alguém, pode cancelar o convite na aba Membros da página do seu grupo. Selecione **Cancelar convite** no menu suspenso à direita do convite do membro (**⋮**).
+
+Se você informou um endereço de e-mail incorreto ou não quer mais convidar alguém, abra o menu de ações ao lado do convite da pessoa na aba **Membros** e selecione **Cancelar convite**.
 
 ![](group_invite_cancel_invitation.png)

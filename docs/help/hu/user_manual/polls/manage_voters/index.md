@@ -1,38 +1,38 @@
 ---
 title: Szavazók kezelése
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: ec35e6e9f4579e9a
-  invite-people-to-vote-in-a-poll: 54730e5b2862cb15
+  invite-people-to-vote-in-a-poll: b92ddd0abc8218a3
   invite-guests-or-experts: '053807ad6efb2899'
   engage-people-while-a-poll-is-running: 0e96138790e25658
   add-voters-to-the-poll: 86cbf0392afc8445
   remove-people-from-the-poll: 99031bc8968afc76
-  remind-people-to-vote: f52a6e4bc4f5c613
+  remind-people-to-vote: 197ee5be3b2202ce
   view-notification-history: f494da2afc410f43
   close-early: b6b92deedf3693ee
   reopen: 076ea1a20a92eed8
-  choose-an-audience: b988f61c1ba8573b
+  choose-an-audience: 3b6a559dca2036b2
   check-your-recipients: 4841e647c9e622c8
-  send-the-invitations: 4a049826b93b3e29
+  send-the-invitations: 56561d4102fb3626
 title_source: 10858faa0464257e
 title_generated: 12376556fe21b2f2
 ---
@@ -50,7 +50,7 @@ A **Szavazók kezelése** funkcióval szavazati jogot adhatsz embereknek, és me
 
 ## Hívj meg embereket szavazni
 
-Miután elindítasz egy szavazást a **Csak kiválasztott személyek** beállítással, megnyílik a **Szavazók kezelése** ablak. A szavazásnál a **Szavazók kezelése** lehetőséget választva is megnyithatod.
+Miután elindítasz egy szavazást a **Csak kiválasztott személyek** beállítással, automatikusan megnyílik a **Szavazók kezelése** ablak. A szavazásnál a **Szavazók kezelése** lehetőséget választva is megnyithatod.
 
 ![A Szavazók kezelése gomb egy szavazás alján](proposal_after_start.png)
 
@@ -72,7 +72,7 @@ Egy [közvetlen szálban](/en/user_manual/discussions/direct_discussions) a list
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Válassz ki egy címzetti kört, hogy egyszerre hívd meg az oda tartozó embereket. Az **Oatmilk Cooperative** kiválasztásával például az adott csoport tagjai kerülnek a címzettek közé. Egy csatlakoztatott csevegőszobát is kiválaszthatsz, hogy ott tedd közzé a meghívót. A csevegőszobában való közzététel nem adja hozzá annak tagjait szavazóként.
+Válassz ki egy címzetti kört, hogy egyszerre hívd meg az oda tartozó embereket. Az **Oatmilk Cooperative** kiválasztásával például az adott csoport minden tagja bekerül a címzettek közé. Egy csatlakoztatott csevegőszobát is kiválaszthatsz, hogy ott tedd közzé a meghívót — a csevegőszobában való közzététel nem adja hozzá annak tagjait szavazóként.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -102,7 +102,7 @@ A vendégek hozzáférést kapnak ehhez a szavazáshoz. Ha a szavazás egy szál
 
 ### Küldd el a meghívókat
 
-Írj egy üzenetet arról, hogy miben kéred az emberek döntését, majd válaszd a **Meghív** lehetőséget. Hagyd bejelölve az **Értesítések küldése** jelölőnégyzetet, hogy a meghívottak értesítést kapjanak. Töröld a jelölést, ha értesítés küldése nélkül szeretnél szavazókat hozzáadni.
+Írj egy üzenetet arról, hogy miben kéred az emberek döntését, majd válaszd a **Meghív** lehetőséget. Hagyd bejelölve az **Értesítések küldése** jelölőnégyzetet, hogy a meghívottak értesítést kapjanak, vagy töröld a jelölést, ha értesítés küldése nélkül szeretnél szavazókat hozzáadni.
 
 Időzített szavazásnál válaszd a **Szavazók hozzáadása** lehetőséget. Az emberek akkor kapják meg a meghívójukat, amikor megnyílik a szavazás.
 
@@ -132,7 +132,7 @@ Névtelen szavazásból nem lehet embereket eltávolítani. A [szavazati súlyok
 
 ### Emlékeztesd az embereket a szavazásra
 
-Válaszd az **Emlékeztet** lehetőséget a szavazásnál, válaszd ki, kik kapják meg az emlékeztetőt, írj egy üzenetet, majd válaszd az **Emlékeztet** lehetőséget az elküldéséhez. Az **Akik még nem szavaztak** lehetőséggel azokat érheted el, akiknek a válaszára még szükség van.
+Válaszd az **Emlékeztet** lehetőséget a szavazásnál, válaszd ki a címzetteket (például az **Akik még nem szavaztak** lehetőséget), írj egy üzenetet, majd válaszd az **Emlékeztet** lehetőséget az elküldéséhez.
 
 ![Emlékeztető azoknak címezve, akik még nem szavaztak, a döntési határidőről szóló üzenettel](proposal_remind.png)
 

@@ -1,30 +1,32 @@
 ---
 title: הפרופיל שלך
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
-  introduction: 4027638a6b7b6f18
+  introduction: f11a4ed61ad69a4a
   edit-profile: e9b6a9fcbc689451
-  update-your-personal-info: 2e754c9e097727e4
-  uploading-a-profile-photo: 913bfe19e30ee20d
-  language-settings: 0025e4a36f65deb7
-  resetting-your-password: cd5ab0bf29f43ced
-  merge-accounts: d4e67d4b07cac895
-  deleting-your-account: 25cfef2b62b317f7
-  time-zone: 6ad3e43cff753828
+  update-your-personal-info: be34a978dcbd1f6e
+  uploading-a-profile-photo: 20a4cff897d92711
+  language-settings: 3ad25d6b3787cd0e
+  resetting-your-password: e1884f4e07b2fe42
+  merge-accounts: 5a9dc77b4d9857c8
+  deleting-your-account: e6b8260c4c967f44
+  time-zone: db59a4f06f495c8f
+  passkeys: eef2b8251e7adda0
 title_source: 528d89ad72cba22e
 title_generated: 9db27d9770fa26f5
 ---
@@ -33,7 +35,7 @@ title_generated: 9db27d9770fa26f5
 
 # הפרופיל שלך
 
-הפרופיל מאפשר לאנשים לזהות אותך ב־Loomio. ניתן להוסיף תמונה, הצגה ופרטים נוספים שרוצים לשתף.
+הפרופיל מאפשר לאנשים לזהות את החשבון ב־Loomio. ניתן להוסיף תמונה, הצגה ופרטים נוספים שרוצים לשתף.
 
 <!-- translation-section: edit-profile -->
 
@@ -47,20 +49,21 @@ title_generated: 9db27d9770fa26f5
 
 ## עדכון הפרטים האישיים
 
-ניתן לעדכן את הפרטים האישיים באמצעות שינוי השדות הבאים:
+ניתן לעדכן כל אחד מהשדות הבאים בדף הפרופיל:
 
-* **שם**
-* **כתובת דוא"ל** - כתובת הדוא"ל המשויכת לחשבון ב־Loomio, שאליה יישלחו התראות מ־Loomio.
-* **שם משתמש** - שם המאפשר לאנשים לזהות אותך ולשלוח לך התראה באמצעות אזכור עם @. הוא יכול להכיל אותיות לטיניות קטנות, מספרים, קווים תחתונים ומקפים בתוך השם.
-* **הצגה** - כמה שורות שמספרות לחברים אחרים בקבוצה עליך.
-* **מיקום** - שימושי לקבוצות שחבריהן נמצאים במקומות שונים או עובדים מרחוק, כדי לתת מושג על המיקום שלך.
+- **שם**
+- **כתובת דוא"ל** — כתובת הדוא"ל המשויכת לחשבון ב־Loomio, שאליה נשלחות התראות מ־Loomio.
+- **שם משתמש** — השם המשמש אנשים לשליחת התראה באמצעות אזכור מסוג `@mention`. הוא יכול להכיל אותיות לטיניות קטנות, מספרים, קווים תחתונים ומקפים בתוך השם.
+- **הצגה** — כמה שורות להצגה עצמית בפני שאר חברי הקבוצה.
+- **מיקום** — שימושי לקבוצות שחבריהן נמצאים במקומות שונים או עובדים מרחוק, כדי לציין את המיקום האישי.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## העלאת תמונת פרופיל
-בעת יצירת חשבון Loomio, ראשי התיבות של השם משמשים כתמונת ברירת המחדל של הפרופיל. ניתן להעלות תמונת פרופיל בלחיצה על התמונה בעמוד הפרופיל.
+
+בעת יצירת חשבון Loomio, ראשי התיבות של השם מופיעים כתמונת ברירת המחדל של הפרופיל. כדי להעלות תמונה, יש לבחור בתמונה בדף הפרופיל.
 
 ![](profile_photo.png)
 
@@ -68,26 +71,33 @@ title_generated: 9db27d9770fa26f5
 
 ## שפה
 
-Loomio מזהה את הגדרות השפה של הדפדפן, אך ניתן להגדיר ידנית את השפה המועדפת מתוך האפשרויות הזמינות בדף הפרופיל.
+Loomio מזהה את שפת הדפדפן כברירת מחדל, וניתן גם לבחור שפה מועדפת בדף הפרופיל. למידע על אפשרויות לתרגום הממשק והתוכן, יש לעיין ב[שפות ותרגום](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## אזור זמן
 
-האפשרויות בסקר זמן משתמשות באזור הזמן שנשמר בפרופיל. יש להפעיל את **זיהוי אוטומטי של אזור זמן** כדי להשתמש באזור הזמן שמדווח הדפדפן, או להשבית את ההגדרה ולבחור באזור המתאים תחת **אזור זמן**, ולאחר מכן לבחור באפשרות **עדכן פרופיל**.
+האפשרויות בסקר זמן משתמשות באזור הזמן שנשמר בפרופיל. יש להפעיל את **זיהוי אוטומטי של אזור זמן** כדי להשתמש באזור הזמן של הדפדפן, או להשבית את ההגדרה, לבחור באזור המתאים תחת **אזור זמן**, ולאחר מכן לבחור באפשרות **עדכן פרופיל**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## איפוס הסיסמה
-ניתן לשנות את הסיסמה באמצעות מעבר לדף הפרופיל ולחיצה על **איפוס סיסמה**.
+
+כדי לשנות את הסיסמה, יש לפתוח את דף הפרופיל ולבחור באפשרות **איפוס סיסמה**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## מפתחות גישה
+
+ניתן להוסיף מפתחות גישה, לתת להם שמות ולהסיר אותם בדף הפרופיל, כדי להיכנס באמצעות טביעת אצבע, זיהוי פנים, קוד PIN או מפתח אבטחה במכשיר. למידע נוסף, יש לעיין ב[כניסה באמצעות מפתח גישה](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## מיזוג חשבונות
 
-אם יש לך שני חשבונות משתמש ב־Loomio, ניתן למזג אותם לחשבון אחד.
+אם קיימים שני חשבונות אישיים ב־Loomio, ניתן למזג אותם לחשבון אחד.
 
 למידע נוסף, יש לעיין ב[מיזוג חשבונות](../merge_accounts).
 
@@ -95,4 +105,4 @@ Loomio מזהה את הגדרות השפה של הדפדפן, אך ניתן לה
 
 ## מחיקת החשבון
 
-כדי למחוק את חשבון המשתמש ב־Loomio ולעזוב את כל קבוצות Loomio שהחשבון חבר בהן, יש לעיין ב[מחיקת חשבון Loomio](../deleting_your_account).
+כדי למחוק לצמיתות את החשבון ב־Loomio ולעזוב את הקבוצות שהחשבון חבר בהן, יש לעיין ב[מחיקת חשבון Loomio](../deleting_your_account).

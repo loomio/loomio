@@ -1,16 +1,16 @@
 ---
 title: メールアドレス
-source_revision: db48679e7cb55235646f080c69dc1f358861a349
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/email/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-22'
+  'on': '2026-11-22'
 sections:
-  introduction: bbc0cdb29306b05d
-  preventing-unauthorized-emails: 218f730808482c55
+  introduction: '03039e0babf5a9b6'
+  preventing-unauthorized-emails: f4b8d2eaf0d79f01
 generated:
-  introduction: e56d399e9da2d469
-  preventing-unauthorized-emails: 7a2516a77602db79
+  introduction: '041496a764a9ff37'
+  preventing-unauthorized-emails: c2bfda802efb2bd9
 title_source: f2488fd4ef4adbc6
 title_generated: dd4433300c45394f
 ---
@@ -19,25 +19,24 @@ title_generated: dd4433300c45394f
 
 # メールを送信してグループにスレッドを作成する
 
-Loomioのグループにはメールアドレスがあります。このアドレスにメールを送信または転送すると、グループにスレッドを作成できます。
+Loomioの各グループには専用のメールアドレスがあります。このアドレスにメールを送信または転送すると、グループに新しいスレッドを作成できます。
 
 グループのメールアドレスは、グループページで確認できます。
+
 ![グループページのメールアドレスの表示位置](email_email_button.png)
 
-このアドレスにメールを送信すると、新しいスレッドが作成されます。メールの件名がスレッドのタイトルになり、本文が説明になります。添付ファイルもスレッドに添付されます。
+このアドレスにメールを送信すると、Loomioが新しいスレッドを作成します。メールの件名がスレッドのタイトルになり、本文がスレッドの説明になります。添付ファイルもスレッドに追加されます。
 
-メールの差出人（From）アドレスをもとに、スレッドの作成者となるグループのメンバーを特定します。
+Loomioはメールの差出人（From）アドレスをもとに送信者をグループのメンバーと照合し、そのメンバーをスレッドの作成者に設定します。
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## 許可されていないメールを防ぐ
 
-グループのメンバー以外がこの機能を利用できないように、Loomioでは受信メールの差出人（From）アドレスがグループのメンバーのメールアドレスと一致することを必須としています。
+メンバー以外によるスレッドの作成を防ぐため、Loomioでは受信メールの差出人（From）アドレスがグループのメンバーのメールアドレスと一致することを必須としています。
 
-複数のメールアドレスを使用する場合は、別のメールアドレスをLoomioが認識できるように、エイリアスとして追加できます。
+メンバーが認識されていないアドレスからメールを送信すると、Loomioはメールを保留し、グループ管理者に通知します。グループ管理者はメールを承認してそのアドレスを該当メンバーのエイリアスとして追加するか、そのアドレスからの今後のメールを拒否できます。
 
-差出人（From）アドレスがグループのメンバーのメールアドレスと一致しない場合は、エイリアスを追加するか、そのアドレスからの今後のメールをすべて拒否するよう求める通知が届きます。
+エイリアスを追加すると、以降はそのアドレスからのメールですぐにスレッドが作成されます。
 
-そのため、認識されていないアドレスから初めてメールを送信する際は、エイリアスを追加する必要があります。その後は、メールがすぐに受け付けられます。
-
-![認識されていないメールの承認ボタンと拒否ボタンの位置](email_unreleased_emails.png)
+![認識されていないメールの承認ボタンと拒否ボタン](email_unreleased_emails.png)

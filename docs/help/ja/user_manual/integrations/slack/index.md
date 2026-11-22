@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: 46463736b9bcf6b3
+  introduction: 95603cfee9c15f28
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Slack連携
-_Loomioグループの通知をSlackに連携します。_
 
-Loomioでは、新しいディスカッション、提案、コメント、投票、結論が投稿されると、Slackチャンネルに通知を送信できます。重要なディスカッションや決定について、必要なタイミングで主な更新情報を受け取れます。
+Loomioでは、新しいディスカッション、アンケート、コメント、投票、結論が投稿されると、Slackチャンネルに通知を送信できます。
 
 ---
 
-まず[https://api.slack.com](https://api.slack.com)にアクセスし、まだサインインしていない場合はサインインしてから、「Create New App」をクリックします。
+1. [api.slack.com](https://api.slack.com)にアクセスし、サインインして、**新しいアプリを作成**を選択します。
 
-![](s1.png)
+   ![](s1.png)
 
-Slackアプリに名前を付けます。
+2. Slackアプリに名前を付け、ワークスペースを選択します。
 
-![](s2.png)
+   ![](s2.png)
 
-Incoming Webhooksのサポートを追加します。
+3. **Incoming Webhooks**を選択します。
 
-![](s3.png)
+   ![](s3.png)
 
-次に、この機能を有効にします。
+4. **Incoming Webhooksを有効にする**をオンにします。
 
-![](s4.png)
+   ![](s4.png)
 
-新しいWebhookを追加します。
+5. **ワークスペースに新しいWebhookを追加**を選択します。
 
-![](s5.png)
+   ![](s5.png)
 
-チャンネルを選択します。
+6. Loomioの通知を表示するチャンネルを選択します。
 
-![](s6.png)
+   ![](s6.png)
 
-Webhook URLをクリップボードにコピーします。
+7. Webhook URLをコピーします。
 
-![](s7.png)
+   ![](s7.png)
 
-Webhook URLを取得したら、チャット連携の設定を続けます。
+Webhook URLを取得したら、Loomioで接続の設定を完了します。
 
 [Loomioでチャット連携を設定する](../chatbots/#set-up-a-chat-integration)
 

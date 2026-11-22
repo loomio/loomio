@@ -1,39 +1,39 @@
 ---
 title: Propostas e enquetes
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: '028072c21697cf1b'
+  introduction: 0e19c4496e3b162d
   find-the-right-help: 10a47566b7c37fda
   proposals: d5aa93cc7c794ec1
   polls: 532ae5aefbe19c11
   start-a-proposal-or-poll: 6249174107e14824
-  choose-whether-to-use-a-discussion: 9d4e626c242abc1a
+  choose-whether-to-use-a-discussion: 82b1898585e5d6ad
   in-a-discussion: cdf8999aa5c57a20
   without-a-discussion: 3dc21420635ceaf4
   what-happens-next: 5d6dcfbe18796f63
   1-create-it: 02b90f37de129c8a
-  2-voting-opens: b5a16dddd50f899d
-  3-people-vote: 8cb83f7781708a6b
-  4-it-closes: 7daf5e1e9b3bbf5b
+  2-voting-opens: 15b9e03d148b40ea
+  3-people-vote: 9d490cad3173178d
+  4-it-closes: 8f1fce022831db6e
   5-share-an-outcome: 74825c36ec5dd149
 title_source: d45b4ba3cb7a27cb
 title_generated: 841343fc302f1038
@@ -43,7 +43,7 @@ title_generated: 841343fc302f1038
 
 # Propostas e enquetes
 
-Propostas e enquetes coletam respostas estruturadas de um grupo. Elas podem ajudar a testar uma ideia, tomar uma decisão, identificar prioridades, agendar uma reunião ou eleger representantes.
+Propostas e enquetes coletam respostas estruturadas de um grupo. Use-as para testar uma ideia, tomar uma decisão, definir prioridades, agendar uma reunião ou eleger representantes.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ Consulte [Enquetes](../proposal_types/) para compará-las.
 
 ### Escolha se vai usar uma discussão
 
-Inicie a proposta ou enquete dentro de uma discussão quando as pessoas precisarem de contexto, perguntas ou conversa antes de responder. Uma discussão pode conter várias propostas ao longo do tempo, mantendo as alterações e a conclusão final juntas em um único registro do assunto.
+Inicie uma proposta ou enquete dentro de uma discussão quando as pessoas precisarem de contexto, perguntas ou conversa antes de responder. Uma discussão pode conter várias propostas ao longo do tempo, mantendo as alterações e a conclusão final juntas em um único registro.
 
-Realize uma enquete independente quando a discussão já tiver acontecido em outro lugar, como em uma reunião, ou quando a pergunta for simples e você só precisar coletar respostas. Inclua detalhes suficientes ou um link para o registro relevante para que os eleitores entendam a que estão respondendo.
+Realize uma enquete independente quando a discussão já tiver acontecido em outro lugar, como em uma reunião, ou quando a pergunta for simples e você só precisar coletar respostas. Inclua detalhes suficientes ou um link para as informações de contexto para que os eleitores saibam a que estão respondendo.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,19 +138,19 @@ Dê um título e forneça detalhes, verifique as opções e configurações e de
 
 ### 2. A votação começa
 
-Quando a votação começa, o Loomio notifica as pessoas que você convidou. Consulte [Convide para votar](../inviting_people/).
+Quando a votação começa, o Loomio notifica as pessoas que você convidou. Consulte [Gerencie os eleitores](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. As pessoas votam
 
-Enquanto a votação estiver aberta, as pessoas podem votar, explicar seu voto e alterá-lo. Os resultados são atualizados conforme as pessoas votam, a menos que fiquem ocultos até o encerramento. Por padrão, as pessoas que ainda não votaram recebem um lembrete um dia antes do encerramento.
+Enquanto a votação estiver aberta, as pessoas podem votar, adicionar um motivo para seu voto e alterá-lo. Os resultados são atualizados conforme as pessoas votam, a menos que fiquem ocultos até o encerramento. Por padrão, as pessoas que ainda não votaram recebem um lembrete 24 horas antes do encerramento.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Encerramento
 
-A enquete é encerrada automaticamente no horário de encerramento. Um admin da conversa também pode encerrá-la antes desse horário. Após o encerramento, um admin da conversa pode reabri-la com um novo horário de encerramento para que as pessoas continuem votando. Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento dessas enquetes enquanto elas ainda estiverem abertas.
+A enquete é encerrada automaticamente no horário de encerramento. Um admin da conversa também pode encerrá-la antes desse horário. Após o encerramento, um admin da conversa pode reabri-la com um novo horário de encerramento. Enquetes que ocultam os resultados até o encerramento da votação, incluindo enquetes anônimas, não podem ser reabertas. Você pode prorrogar o horário de encerramento dessas enquetes enquanto elas ainda estiverem abertas.
 
 <!-- translation-section: 5-share-an-outcome -->
 

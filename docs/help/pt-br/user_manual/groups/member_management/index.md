@@ -1,91 +1,100 @@
 ---
 title: Gestão de membros
-source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
-source_file: docs/en/user_manual/groups/member_management/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-13'
+  'on': '2026-11-22'
 sections:
-  introduction: f216b18771a2c2a9
-  administering-your-group: 27aed40959adef57
-  managing-subgroups: 915e13a928a8f4aa
-  removing-members: f40c25fd90ab1ce2
-  leaving-group: 11b09b4af23b4e7e
-  set-title: 835b25d246477b4a
-  member-email-addresses: cae570f30b671275
+  introduction: bc7d2de9abc2ea86
+  administering-your-group: 7ae1b105c20977fc
+  managing-subgroups: 2e4bdee3283e8ef8
+  removing-members: d70807bdd968d594
+  leaving-group: 268f0c735b8e46d7
+  set-title: eb9a52e3d6c21d43
+  member-email-addresses: 0e800419a7bdacc6
 generated:
-  introduction: b1a1f110501cc560
-  administering-your-group: c70db0361af97c6c
-  managing-subgroups: b36591d32f82d1f8
-  removing-members: 9b50c451edf60663
-  leaving-group: 5baef135ab17c5b5
-  set-title: 1fa149ca530e47d7
-  member-email-addresses: d6245422ebff7e08
+  introduction: 40569bd8c705e801
+  administering-your-group: 1dd3c7b80e9f9a0d
+  managing-subgroups: 115711aea17202e9
+  removing-members: dcd913321cdfe87b
+  leaving-group: 66470ad479c1dead
+  set-title: 5a665487a9e8f7d8
+  member-email-addresses: 9428295fb6e1655d
 title_source: 23ac3a7fe9ee72a2
 title_generated: 01e14267068e4466
+needs_review:
+  managing-subgroups: check the interface label "**Secreto**" for "**Secret**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Gestão de membros
 
-Se você é admin, pode gerenciar os membros na aba **Membros** da página do seu grupo.
-
-Clique nos três pontos (**⋮**) à direita do membro do grupo para definir seu cargo, torná-lo admin, torná-lo delegado ou removê-lo do grupo.
+Os admins do grupo gerenciam os membros na aba **Membros** da página do grupo. Abra o menu de ações ao lado de um membro para definir seu cargo, torná-lo admin do grupo, torná-lo delegado ou removê-lo do grupo.
 
 ![Menu de ações de um membro na página de membros da Oatmilk Cooperative](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
 ## Administração do seu grupo
-Existem apenas dois tipos de usuário em um grupo do Loomio: **membro** e **admin**.
 
-Os admins realizam tarefas administrativas no seu grupo, incluindo adicionar e remover membros, gerenciar as permissões dos membros, definir os níveis de privacidade do grupo e gerenciar os planos de assinatura. Além disso, os admins podem ver os endereços de email dos membros e exportar os dados do grupo.
+Um grupo do Loomio tem duas funções: **membro** e **admin do grupo**.
 
-A pessoa que cria um grupo no Loomio se torna admin por padrão. Recomendamos que você torne pelo menos mais uma pessoa de confiança do seu grupo admin, para garantir que sempre haja alguém que possa administrar o grupo. Seu grupo pode ter quantos admins você quiser.
+Os admins do grupo podem adicionar e remover membros, gerenciar as permissões dos membros, alterar as configurações de privacidade do grupo, gerenciar assinaturas, ver os endereços de email dos membros e exportar os dados do grupo.
 
-Para tornar um membro **admin**, acesse a aba Membros, encontre o membro e clique nos três pontos (**⋮**) ao lado do nome dele. Selecione **Tornar Admin**. Uma tag `Admin` aparecerá ao lado do nome dele.
+A pessoa que cria um grupo se torna admin do grupo por padrão. Recomendamos ter pelo menos dois admins do grupo para que sempre haja alguém que possa gerenciar o grupo. Um grupo pode ter quantos admins você precisar.
+
+Para promover um membro, abra o menu de ações ao lado do nome dele na aba **Membros** e selecione **Tornar Admin**.
 
 ![Ação Tornar Admin no menu de um membro](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Gestão de subgrupos
-Admins de um grupo principal podem entrar em qualquer um de seus subgrupos não secretos e depois se tornar admins desses subgrupos.
+
+Admins do grupo principal podem entrar em qualquer subgrupo não secreto e depois se tornar admins desse subgrupo.
 
 Selecione **Entrar no grupo** na página do subgrupo.
 
 ![Botão Entrar no grupo em um subgrupo fechado da Oatmilk Cooperative](member_join_subgroup.png)
 
-Depois de entrar no subgrupo, você também pode se tornar admin desse subgrupo, da mesma forma que tornaria qualquer outra pessoa admin.
+Depois que você se tornar membro do subgrupo, abra o menu de ações ao lado do seu nome na aba **Membros** e selecione **Tornar Admin**.
 
 >[!Note]
->Essas permissões não se aplicam a [subgrupos **secretos**](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
+>Isso não se aplica a [subgrupos **Secretos**](/en/user_manual/groups/subgroups#permissions).
 
 <!-- translation-section: removing-members -->
 
 ## Remoção de membros
-Ao clicar em **Eliminar do grupo**, você precisará confirmar a remoção. Após a remoção, esse usuário não terá mais acesso às páginas, conversas, enquetes ou propostas do grupo. Ele não receberá mais emails nem notificações sobre as atividades do grupo. No entanto, os comentários e votos feitos pelo usuário permanecerão intactos.
+
+Para remover alguém, abra o menu de ações ao lado do nome da pessoa e selecione **Eliminar do grupo**.
 
 ![Ação Eliminar do grupo no menu de um membro](member_remove.png)
 
-A remoção também se aplica aos subgrupos do grupo. As enquetes privadas desaparecem do painel e da lista de votação da pessoa. As enquetes públicas continuam disponíveis para leitura, mas um ex-membro só pode votar se for convidado a voltar. Sair enquanto uma enquete está encerrada não preserva o direito de votar caso ela seja reaberta.
+Quando uma pessoa é removida de um grupo:
 
-Você pode adicionar os membros removidos ao grupo novamente mais tarde. Ao retornar ao grupo, eles recuperam o acesso e seus votos existentes nas enquetes ativas, sem precisar atualizar a página.
+- Ela perde o acesso ao grupo e aos seus subgrupos e deixa de receber notificações do grupo.
+- Seus comentários e votos existentes permanecem intactos.
+- As enquetes privadas desaparecem do painel e da lista de votação da pessoa. As enquetes públicas continuam disponíveis para leitura, mas ela só pode votar se for convidada a voltar. Sair enquanto uma enquete está encerrada não preserva o direito de votar caso ela seja reaberta.
+
+Você pode adicionar os membros removidos novamente mais tarde. Ao retornar ao grupo, eles recuperam o acesso e seus votos existentes nas enquetes ativas.
 
 <!-- translation-section: leaving-group -->
 
 ## Sair do grupo
-Para sair de um grupo, acesse a página do grupo, abra o menu de três pontos e clique em **Sair do grupo**.
 
-Sair do grupo tem os mesmos efeitos sobre o acesso ao grupo e aos subgrupos que a remoção por um admin, incluindo a remoção das enquetes privadas do seu painel e da sua lista de votação.
+Para sair de um grupo, abra o menu de ações do grupo e selecione **Sair do grupo**.
+
+Sair do grupo tem o mesmo efeito sobre o acesso ao grupo e aos subgrupos que a remoção por um admin do grupo.
 
 ![Ação Sair do grupo no menu de configurações da Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
 ## Configurar o título
-Na aba Membros, você também pode usar o **cargo** para indicar sua função no grupo ou identificar uma organização que você representa. Você ou um admin do grupo pode alterar seu cargo usando **Configurar o título** no menu de três pontos ao lado do seu nome.
+
+O cargo de um membro indica sua função no grupo ou a organização que ele representa. Você ou um admin do grupo pode definir ou alterar seu cargo selecionando **Configurar o título** no menu de ações ao lado do seu nome na aba **Membros**.
 
 ![Ação Configurar o título no menu de um membro](member_set_title.png)
 
@@ -95,10 +104,8 @@ Você pode ter cargos diferentes em subgrupos diferentes.
 
 ## Endereços de email dos membros
 
-Somente os admins podem ver os endereços de email dos membros do grupo. Isso às vezes é necessário para conferir quem são os membros de um grupo.
+Somente os admins do grupo podem ver os endereços de email dos membros.
 
-Para ver os endereços de email dos membros, use a [exportação de dados](/en/user_manual/groups/data_export/) para baixar um arquivo CSV e abra o arquivo no Excel ou no Google Sheets.
+Para conferir todos os endereços de email dos membros do grupo e dos seus subgrupos, [exporte os dados do grupo](/en/user_manual/groups/data_export) como um arquivo CSV e abra o arquivo no Microsoft Excel ou no Google Sheets.
 
-O arquivo de exportação dos dados do grupo mostra todas as pessoas e seus endereços de email em cada subgrupo.
-
-Você também pode buscar membros pelo endereço de email na aba Membros. Assim, se encontrar alguém que deseja remover, pode buscar essa pessoa pelo email para removê-la.
+Você também pode buscar membros pelo endereço de email na aba **Membros** para encontrar e gerenciar uma pessoa específica.

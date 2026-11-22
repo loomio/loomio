@@ -1,37 +1,37 @@
 ---
 title: 投票テンプレート
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: b639b0623cf3c623
+  introduction: c5ea6d7b9c459d97
   who-can-manage-templates: ca9ce236b6e42ea8
   create-a-poll-template: 4231b06a60e5dd40
   template-title-subtitle-and-help: 54d6c9a919de49b7
   voting-method: a09300b8f89542b7
   example-title-details-and-tags: 555bddc190301689
-  response-options: 0d23ec7906ce6ab3
-  duration-and-settings: fb453195b431beae
+  response-options: 5e6f8ff63b93ab52
+  duration-and-settings: dc52d815fd88dcf8
   manage-the-template-list: 318125ec61eeefea
   save-a-poll-as-a-template: 723208bb847716c3
   start-a-new-template: 97787fe021e66307
-  configure-the-template: 74b3f4dc05dc1898
+  configure-the-template: e5bfceb5a9633d54
   edit-a-default-template: 81b5fdb907a06b19
 title_source: 114cca246e357304
 title_generated: 9112f2db22c72b79
@@ -45,9 +45,9 @@ title_generated: 9112f2db22c72b79
 
 このページでは、グループで利用できるテンプレートを設定する方法や、独自の進め方に合わせてテンプレートを作成する方法を説明します。個別の投票に使うテンプレートを選ぶには、[提案](../proposals/)または[アンケート](../proposal_types/)を参照してください。意思決定のプロセス全体を進めるには、[決定を行う](/en/guides/making_decisions/)を参照してください。
 
-投票を開始するときは、**提案**または**アンケート**タブを選択し、グループで利用できるテンプレートの中から1つ選びます。
+投票を開始するときは、**提案**または**アンケート**タブを選択し、グループで利用できるテンプレートを選びます。
 
-テンプレートには、導入文、内容の例、選択肢、設定が用意されています。投票を開始する前に、個別の決定に合わせてこれらを確認し、編集してください。新しい投票を編集しても、再利用するテンプレートは変更されません。
+テンプレートによって、導入文、内容の例、選択肢、設定が入力されます。投票を開始する前に、決定の内容に合わせてこれらを確認し、編集してください。新しい投票を編集しても、テンプレートは変更されません。
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -83,11 +83,11 @@ title_generated: 9112f2db22c72b79
 
 ## テンプレートの設定
 
-テンプレートをどのようなときに使うかがわかる名前とサブタイトルを付けます。ほかの項目も、再利用しやすいように変更できます。**テンプレートを保存**を選択すると、新しい提案やアンケートを開始するときに、そのテンプレートが一覧に表示されます。
+テンプレートをどのようなときに使うかがわかる名前とサブタイトルを付けます。ほかの項目も再利用しやすいように調整し、**テンプレートを保存**を選択します。新しい提案やアンケートを開始するときに、そのテンプレートが表示されます。
 
 [![方針変更の同意プロセス用テンプレートのフォーム全体](poll_template_new.png)](poll_template_new.png)
 
-単独のアンケートでは、**管理者のみ添付ファイルを追加できます**を有効にすると、回答や返信も含め、新しいファイルや本文中の画像を追加できるのはスレッド管理者とグループ管理者に限られます。既存のスレッド内で開始したアンケートには、そのスレッドの添付ファイル設定が適用されます。テンプレートの変更は、今後開始するアンケートにのみ適用されます。
+単独のアンケートでは、**管理者のみ添付ファイルを追加できます**を有効にすると、回答や返信も含め、新しいファイルや本文中の画像を追加できるのはスレッド管理者とグループ管理者に限られます。既存のスレッド内のアンケートには、そのスレッドの添付ファイル設定が適用されます。テンプレートの変更は、今後開始するアンケートにのみ適用されます。
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -126,7 +126,7 @@ title_generated: 9112f2db22c72b79
 - **選択肢名**: 回答を示す短いラベルです。
 - **アイコン**: 選択肢を視覚的に示す目印です。
 - **意味**: その選択肢を選ぶことで何を表明するかを示します。
-- **理由のプロンプト**: 回答の理由を説明するときに表示される質問です。
+- **理由のプロンプト**: 投票の理由を説明するときに表示される質問です。
 
 ![](poll_type_edit_option.png)
 
@@ -138,7 +138,7 @@ title_generated: 9112f2db22c72b79
 
 テンプレートの通常の用途に適した期間を初期設定として指定します。作成者は、個別の投票の締め切り日時を変更できます。
 
-ほかの初期設定では、結果の公開範囲、匿名投票、[加重投票](../weighted_voting/)、投票理由の必須設定、リマインダー、定足数、投票方法ごとの動作を設定できます。それぞれの効果については、[提案とアンケートの設定](../settings/)を参照してください。
+ほかの初期設定では、結果の公開範囲、匿名投票、[加重投票](../weighted_voting/)、投票理由の必須設定、リマインダー、定足数、投票方法ごとの動作を設定できます。詳しくは、[提案とアンケートの設定](../settings/)を参照してください。
 
 <!-- translation-section: manage-the-template-list -->
 

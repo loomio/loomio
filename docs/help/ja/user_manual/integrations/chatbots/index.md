@@ -1,24 +1,24 @@
 ---
 title: チャット連携
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: 2689a3400a6785c9
-  what-it-looks-like-in-chat: 8729d56458e6ba9d
-  generate-a-webhook-url: 9cff1c648827e6bd
-  set-up-a-chat-integration: 4daf3652d2d58632
-  invite-to-poll: 644291e7e8554176
-  automatic-notifications: 4e6499f3c7260c5f
+  introduction: 6c617201d66f192b
+  what-it-looks-like-in-chat: ecd3e57dcc39f4fe
+  generate-a-webhook-url: ec36889a83521485
+  set-up-a-chat-integration: 96b9a05c52de7d36
+  invite-to-poll: '048790c3d1aecfa3'
+  automatic-notifications: 9ef065038a27431d
 title_source: 0eca19d30c6d7d3c
 title_generated: 603b48500dacd1b4
 ---
@@ -33,19 +33,19 @@ Loomioからチャットルームに通知を送信できます。
 
 LoomioはSlack、Discord、Microsoft Teams、Matrix、Mattermostに対応しています。
 
-個々の人を投票やスレッドへの参加に招待するのと同じ方法で、必要なときにチャットルームに通知を送信できます。
-
-スレッドの開始など、特定のイベントが発生するたびに通知を送信するように設定することもできます。
+スレッドやアンケートに参加者を招待する際に、チャットルームへ手動で通知を送信できます。また、ディスカッションの開始など、特定のイベントが発生したときに通知を自動送信するように設定することもできます。
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## チャットでの表示例
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Webhook URLを生成する
-対応している各サービスの設定手順を用意しています。利用するサービスの手順に従い、Loomioにチャット連携を追加するために必要なWebhook URLを取得してください。
+## チャットサービスを接続する
+
+利用するチャットサービスのガイドに従い、Webhook URL（Matrixの場合はボットのアクセストークンとルームID）を取得します。
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,28 +53,31 @@ LoomioはSlack、Discord、Microsoft Teams、Matrix、Mattermostに対応して�
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Webhookを使うこの仕組みは、HTMLまたはMarkdown形式の受信Webhookに対応するほかのシステムでも利用できます。例えば、ZapierやRocketchatなどです。Mattermostボットを選択し、独自のWebhook URLを指定してください。
+ZapierやRocket.Chatなど、HTMLまたはMarkdown形式の受信Webhookに対応するほかのサービスも接続できます。Loomioで**最重要**のチャット連携を選択し、独自のWebhook URLを入力します。
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## チャット連携を設定する
 
-利用するサービスを設定すると（上記参照）、Webhook URLを取得できます。グループメニューから**チャット連携**を開き、グループに新しいチャット連携を追加してください。
+チャット連携を追加または編集するには、グループ管理者である必要があります。
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. チャットサービスを設定した後（上記参照）、Loomioでグループメニューを開き、**チャット連携**を選択します。
 
-この段階では、チェックボックスを選択する必要はありません。名前（「Discord #general」など）とURLを入力し、フォームの下部にある保存ボタンをクリックしてください。
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-後から自動通知を受け取るようにしたい場合は、連携の設定に戻り、該当するイベントを選択してください。
+2. 利用するサービスのチャット連携を新しく追加し、名前（「Discord #general」など）を入力して、Webhook URLを貼り付けます。
+
+   ![](loomio-chatbot-form.png)
+
+3. 自動通知を送信したいイベントを選択して保存します。手動でのみ通知を送信する場合は、イベントを選択せずに保存します。この設定はいつでも変更できます。
 
 <!-- translation-section: invite-to-poll -->
 
-### アンケートに招待する
+### 手動で通知を送信する
 
-提案への投票を呼びかける通知をチャットルームに送信する手順です。結論の共有、スレッドへの招待、投票のリマインダー、アンケートの編集なども同じ手順で通知できます。
+アンケートやディスカッションについてチャットルームに通知するには、該当する項目を開き、**招待する**（または**結論を共有する**、**投票をリマインドする**、**アンケートの編集**などの通知操作）を選択します。送信先の一覧からチャット連携を選択し、通知を送信します。
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +90,7 @@ Webhookを使うこの仕組みは、HTMLまたはMarkdown形式の受信Webhook
 <!-- translation-section: automatic-notifications -->
 
 ### 自動通知
-特定のイベントが発生するたびに通知を送信するには、チャット連携を編集し、そのイベントを選択してください。
+
+特定のイベントが発生するたびに通知を送信するには、チャット連携を編集し、そのイベントを選択します。
 
 ![](chatbot_enable_automatic_notifications.png)

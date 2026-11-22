@@ -1,30 +1,30 @@
 ---
 title: Kategóriacímkék
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/tags/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: a898970462d0556f
-  apply-tags: 86f59d27fd31c89f
-  create-tags: a73c85e12ffa1e16
-  edit-tags: f2ad1debf84eb70f
-  edit-tag-in-thread-or-poll: a1c9e538d0d30424
-  template-tags: a7cd2b824613855c
-  tag-contributions: 133105ee90747934
-  find-tagged-contributions: 88ea04f0fde7cb1a
-  global-search: 597afa36d4894500
+  introduction: bf6ecd043c19cd78
+  apply-tags: dfa06440d6c97396
+  create-tags: 97aa7a1a0f420951
+  edit-tags: c9978a1615026863
+  edit-tag-in-thread-or-poll: b71467aa1248d110
+  template-tags: 3ddcc6c204aa843f
+  tag-contributions: b42bdd723f9d5ddc
+  find-tagged-contributions: 98ec0cbfdec75f7f
+  global-search: 5a7777699988e006
 generated:
-  introduction: 827f5becfb59af80
-  apply-tags: fef3a3d2df26bb62
-  create-tags: 611420f0c31a16e5
-  edit-tags: af14986195a6fc82
-  edit-tag-in-thread-or-poll: 17ebe3df48d1e96c
-  template-tags: 2ac763ecf6bcc8be
-  tag-contributions: 1038d6200196175a
-  find-tagged-contributions: f60344f0093a377b
-  global-search: 51d4067786e76b4a
+  introduction: 65a9c7779ba357e3
+  apply-tags: 2bc1624d08755db4
+  create-tags: 50b9a48f083398a8
+  edit-tags: 33189d4ec7a19274
+  edit-tag-in-thread-or-poll: 4538a24aebd30e7a
+  template-tags: 03b8ded4e583745a
+  tag-contributions: f3c0a669102cf670
+  find-tagged-contributions: 47483d1cf76364bc
+  global-search: 8b310d26792df41a
 title_source: c86f6830bf302394
 title_generated: e4c5770779828ac9
 ---
@@ -33,11 +33,11 @@ title_generated: e4c5770779828ac9
 
 # Kategóriacímkék
 
-A kategóriacímkékkel könnyen megtalálhatod az adott munkatípushoz vagy témához kapcsolódó beszélgetéseket, szavazásokat, következtetéseket és hozzászólásokat.
+A kategóriacímkékkel megtalálhatod az adott témához vagy munkaterülethez kapcsolódó beszélgetéseket, szavazásokat, következtetéseket és hozzászólásokat.
 
-A címkék az egész szervezethez tartoznak. A szülőcsoportban használt címke ugyanaz a címke az alcsoportjaiban is, így az összetartozó munkát az egész szervezetben rendszerezheted. A Loomio ábécérendben jeleníti meg a címkeneveket, a színüket pedig a nevek melletti pontok jelzik.
+A címkék az egész szervezethez tartoznak. A szülőcsoportban létrehozott címke az alcsoportjaiban is elérhető, így több csoportban is nyomon követheted az összetartozó munkát. A Loomio ábécérendben sorolja fel a címkéket, minden név mellett egy színes ponttal.
 
-A csoportod oldalán kattints a szálak listája feletti **Címkék** gombra. Válassz ki egy címkét az olyan szálak megjelenítéséhez, amelyek legalább egy, ezzel a címkével ellátott tartalmat tartalmaznak. Hosszú listában a szűrőmezővel kereshetsz.
+A csoportod oldalán válaszd ki a szálak listája feletti **Címkék** lehetőséget, majd válassz ki egy címkét az olyan szálak megjelenítéséhez, amelyek legalább egy, ezzel a címkével ellátott tartalmat tartalmaznak. Hosszú listában a szűrőmezőbe gépelve kereshetsz.
 
 ![](tags_view.png)
 
@@ -47,17 +47,21 @@ A csoportod oldalán kattints a szálak listája feletti **Címkék** gombra. V�
 
 Címkézheted a saját beszélgetéseidet, szavazásaidat, következtetéseidet és hozzászólásaidat. A csoportadminok, a száladminok és a beszélgetés leírásának szerkesztésére jogosult személyek bármelyik tartalmat címkézhetik egy nem zárolt szálban. A közvetlen szálakban minden résztvevő bármelyik tartalmat címkézheti.
 
-Amikor szálat vagy szavazást indítasz, kattints a **Címkék** mezőre, és válassz ki egy vagy több címkét.
+Amikor szálat vagy szavazást indítasz, válaszd ki a **Címkék** mezőt, és válassz ki egy vagy több címkét.
 
 ![](tags_add_new.png)
 
-Kezdj el gépelni a lista szűréséhez. Egy címke eltávolításához válaszd ki újra, vagy kattints a címkét jelölő elemen lévő × jelre.
+Kezdj el gépelni a lista szűréséhez. Egy címke eltávolításához válaszd ki újra, vagy kattints a címkén lévő **×** jelre.
 
 <!-- translation-section: create-tags -->
 
 ## Címkék létrehozása
 
-A szülőcsoport adminjai mindig létrehozhatnak címkéket a szülőcsoport és annak alcsoportjai számára. Az alcsoportok adminjai az alcsoportjuk tartalmainak címkézése közben hozhatnak létre címkéket. Az alapértelmezés szerint bekapcsolt **A tagok címkéket hozhatnak létre** csoportengedély lehetővé teszi, hogy a tartalmak címkézésére jogosult többi tag is létrehozzon új címkeneveket. Ha az engedély ki van kapcsolva, a tagok a szervezet meglévő címkéit és a célcsoport sablonjaiban előírt címkeneveket használhatják.
+A csoportban betöltött szerepek és jogosultságok határozzák meg, hogy ki hozhat létre címkéket:
+
+- **A szülőcsoport adminjai** mindig létrehozhatnak címkéket a szülőcsoport és annak alcsoportjai számára.
+- **Az alcsoport adminjai** az alcsoportjuk tartalmainak címkézése közben hozhatnak létre címkéket.
+- **Csoporttagok**, akik jogosultak tartalmak címkézésére, címkéket is létrehozhatnak, amíg **A tagok címkéket hozhatnak létre** engedély be van kapcsolva (alapértelmezés szerint bekapcsolva). Ha egy csoportadmin kikapcsolja, a tagok csak a szervezet meglévő címkéit és az adott csoport sablonjainak alapértelmezett címkéit használhatják.
 
 Ha szál vagy szavazás indításakor szeretnél címkét létrehozni, írd be a nevét a **Címkék** mezőbe, és nyomd meg az Enter billentyűt.
 
@@ -65,27 +69,30 @@ Ha szál vagy szavazás indításakor szeretnél címkét létrehozni, írd be a
 
 ![Az új címke létrejött](tags_created_new.png)
 
-Használj rövid, ismert neveket, amelyeket a csoport tagjai felismernek, például Pénzügyek, Irányítás, Csomagolás vagy Kávézói együttműködések.
+Használj rövid, felismerhető neveket, például Pénzügyek, Irányítás, Csomagolás vagy Kávézói együttműködések.
 
 <!-- translation-section: template-tags -->
 
 ## Címkék a sablonokban
 
-A beszélgetés- és szavazássablonok alapértelmezésként tárolják a címkeneveket. Bárki, aki létrehozhat vagy szerkeszthet sablont, szabadon módosíthatja annak címkeneveit. Egy sablon mentése vagy megtekintése nem adja hozzá ezeket a neveket a szervezet címkelistájához. Egy szervezeti címke átnevezése vagy törlése nem módosítja a sablonok alapértelmezett címkeneveit.
+A beszélgetés- és szavazássablonok alapértelmezett címkeneveket tárolnak. Bárki, aki létrehozhat vagy szerkeszthet sablont, módosíthatja annak alapértelmezett címkéit. Egy sablon mentése nem adja hozzá ezeket a neveket a szervezet címkelistájához, és egy szervezeti címke átnevezése vagy törlése nem módosítja a sablonok alapértelmezett címkéit.
 
-Amikor egy beszélgetés vagy szavazás ezeket az alapértelmezett neveket használja, a Loomio hozzáadja a megfelelő meglévő szervezeti címkét, vagy létrehozza azt, ha ez engedélyezett. A címkék létrehozására nem jogosult tag is használhatja a célcsoportban elérhető sablonok által előírt neveket. Egy másik csoportból származó sablon nem ad további jogosultságot címkék létrehozására: az alapértelmezett nevei csak akkor maradnak meg, ha a célszervezetben már léteznek ezek a címkék, vagy a célcsoport valamelyik sablonja előírja ezeket a neveket. A többi nevet a rendszer elhagyja. A címkék létrehozására jogosult tagok a sablon összes alapértelmezett címkenevét megtarthatják.
+Amikor valaki sablonból indít beszélgetést vagy szavazást, a Loomio hozzáadja a megfelelő szervezeti címkéket, vagy újakat hoz létre, ha a szerzőnek van rá jogosultsága:
+
+- **A címkék létrehozására jogosult tagok** a sablon összes alapértelmezett címkéjét megtartják.
+- **A címkék létrehozására nem jogosult tagok** a szervezet meglévő címkéit és a célcsoport sablonjaiban meghatározott alapértelmezett címkéket tartják meg. A másik csoport sablonjából származó, ezeknek nem megfelelő címkeneveket a rendszer elhagyja.
 
 <!-- translation-section: edit-tags -->
 
 ## Címkék szerkesztése
 
-Csak a szülőcsoport adminjai nevezhetik át, színezhetik át, vonhatják össze vagy törölhetik a címkéket. Ezek a változtatások az egész szervezetben minden címke-hozzárendelésre érvényesek, beleértve az alcsoportokat is.
+Csak a szülőcsoport adminjai nevezhetik át, színezhetik át, vonhatják össze vagy törölhetik a címkéket. A változtatások az egész szervezetre érvényesek, beleértve az összes alcsoportot is.
 
 A csoport oldalán nyisd meg a **Címkék** menüt, és válaszd ki a **Címkék szerkesztése** lehetőséget.
 
 ![Kategóriacímkék szerkesztése](tags_edit_new.png)
 
-Válaszd ki a címke melletti ceruzaikont.
+A címke szerkesztéséhez válaszd ki a mellette lévő ceruzaikont.
 
 ![Kategóriacímkék szerkesztése](tags_edit_new_pencil.png)
 
@@ -93,19 +100,21 @@ Módosítsd a címke nevét, vagy válassz egy színt, majd kattints a **Mentés
 
 ![Címke színének szerkesztése](tags_edit_name.png)
 
-Kattints a **Törlés** gombra, hogy eltávolítsd a címkét a szervezet összes beszélgetéséről, szavazásáról, következtetéséről és hozzászólásáról.
+Ha egy címkét egy másik címkébe szeretnél összevonni, válaszd ki a mellette lévő összevonásikont, majd válaszd ki a megtartandó címkét. A régi címkével ellátott összes tartalom a kiválasztott címkét kapja meg.
+
+Egy címke törléséhez válaszd ki a **Törlés** lehetőséget (vagy a kukaikont). Ezzel eltávolítod a címkét a szervezet összes beszélgetéséről, szavazásáról, következtetéséről és hozzászólásáról.
 
 ![Címke törlése](tags_delete.png)
 
 <!-- translation-section: edit-tag-in-thread-or-poll -->
 
-### Címke szerkesztése szálban vagy szavazásban
+### Címkék szerkesztése szálban vagy szavazásban
 
-Egy meglévő szál vagy szavazás címkéinek módosításához nyisd meg a szálat vagy szavazást, és kattints a cím közelében, a jelenlegi címkék mellett található címkegombra.
+Egy meglévő szál vagy szavazás címkéinek módosításához nyisd meg a szálat vagy szavazást, és válaszd ki a cím közelében, a jelenlegi címkék mellett található címkegombot.
 
-Válaszd ki a címkéket a hozzáadásukhoz vagy eltávolításukhoz. A változtatások azonnal mentésre kerülnek.
+Válaszd ki a címkéket a hozzáadásukhoz vagy eltávolításukhoz. A rendszer azonnal menti a változtatásokat.
 
-A címkeválasztó az aktuális csoportban használt címkéket, a szervezet nem használt címkéit és az adott tartalomhoz kiválasztott címkéket jeleníti meg. Ha további címkéket csak más csoportokban használnak, válaszd ki a **Mutasd más csoportok címkéit** lehetőséget, hogy az ugyanahhoz a szervezethez tartozó szülőcsoport és alcsoportjai címkéi is megjelenjenek. Válaszd ki **A csoportban használt címkék megjelenítése** lehetőséget a rövidebb listához való visszatéréshez. Ha a szervezetnek csak egy csoportja van, a lista nem bővíthető.
+A címkeválasztó az aktuális csoportban használt címkéket, a szervezet nem használt címkéit és az adott tartalomhoz kiválasztott címkéket sorolja fel. Több csoportból álló szervezetben válaszd ki a **Mutasd más csoportok címkéit** lehetőséget a csak más csoportokban használt címkék megjelenítéséhez, vagy válaszd ki **A csoportban használt címkék megjelenítése** lehetőséget a lista újbóli szűkítéséhez.
 
 ![Címkék szerkesztése szálban](tags_thread_edit.png)
 
@@ -113,7 +122,7 @@ A címkeválasztó az aktuális csoportban használt címkéket, a szervezet nem
 
 ## Tartalmak címkézése
 
-Nyisd meg egy szavazás, következtetés vagy hozzászólás műveleti menüjét, és válaszd ki a **Címkék alkalmazása** lehetőséget. A beszélgetés címe mellett is használt címkeválasztóval adhatsz hozzá és távolíthatsz el címkéket. A változtatások azonnal mentésre kerülnek. Ha egy tartalomnak vannak címkéi, a címkéket jelölő elemek és a címkegomb a szerzőt és az időpontot mutató sor jobb oldalán jelennek meg.
+Nyisd meg egy szavazás, következtetés vagy hozzászólás hárompontos menüjét (**⋯**), és válaszd ki a **Címkék alkalmazása** lehetőséget. A címkeválasztóban adj hozzá vagy távolíts el címkéket; a rendszer azonnal menti a változtatásokat. Ha egy tartalomnak vannak címkéi, a címkéi és a címkegomb a szerzőt mutató sor jobb oldalán jelennek meg.
 
 A címkék a kiválasztott tartalomra vonatkoznak. A szavazatok és a szavazólapok nem címkézhetők.
 
@@ -121,7 +130,9 @@ A címkék a kiválasztott tartalomra vonatkoznak. A szavazatok és a szavazóla
 
 ## Címkézett tartalmak keresése
 
-A **Címkék** rész akkor jelenik meg a szál oldalsávjában, ha a nyitó beszélgetésen vagy szavazáson kívül más tartalom is kapott címkét. Itt a nyitó tartalom és az összes többi címkézett tartalom címkéi szerepelnek. Válassz ki egy címkét a megfelelő tartalmak és az azokat tartalmazó bejegyzések megjelenítéséhez. Amíg a szűrő aktív, a szál felett egy eszköztár látható. A szokásos szálnézethez való visszatéréshez zárd be a jobb oldali × gombbal, válaszd ki újra a címkét, vagy válaszd ki az oldalsáv **Töröl** lehetőségét. Mobilon nyisd meg a szál navigációs paneljét ugyanezen szűrő használatához.
+Ha egy szálban lévő hozzászólás, szavazás vagy következtetés címkét kap, megjelenik a **Címkék** rész a szál oldalsávjában (mobilon a navigációs panelen).
+
+Válassz ki egy címkét, hogy a szálban csak a megfelelő tartalmak és azok a tartalmak jelenjenek meg, amelyekre válaszolnak. A teljes szálhoz való visszatéréshez válaszd ki a szűrősávon lévő **×** jelet, válaszd ki újra a címkét, vagy válaszd ki az oldalsáv **Töröl** lehetőségét.
 
 ![Címkék a szál oldalsávjában](tags_thread_sidebar.png)
 
@@ -131,6 +142,6 @@ A **Címkék** rész akkor jelenik meg a szál oldalsávjában, ha a nyitó besz
 
 Nyisd meg a **Keresés** lehetőséget a felső navigációs sávban, és válaszd ki a szülőcsoportodat a címkemenü megjelenítéséhez. Válassz ki egy címkét az azzal ellátott beszélgetések, szavazások, következtetések és hozzászólások kereséséhez.
 
-Hagyd üresen a keresőmezőt a címke szerinti böngészéshez, vagy írj be egy szót vagy kifejezést a címkével ellátott tartalmakon belüli kereséshez. Válaszd ki a **Bármilyen címke** lehetőséget a címkeszűrő törléséhez.
+Hagyd üresen a keresőmezőt a címke szerinti böngészéshez, vagy írj be kulcsszavakat a címkével ellátott tartalmakon belüli kereséshez. Válaszd ki a **Bármilyen címke** lehetőséget a szűrő törléséhez.
 
 ![Címke kiválasztása a globális keresésben a szülőcsoport kiválasztása után](tags_global_search.png)

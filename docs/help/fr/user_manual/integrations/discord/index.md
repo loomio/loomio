@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: 9bb70068b340ece4
+  introduction: 7149fb0c6bc904fe
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Intégration Discord
 
-_Connecter les notifications de votre groupe Loomio au chat de votre équipe sur Discord._
-
-Loomio peut envoyer des notifications dans vos salons Discord lors de nouvelles discussions, propositions, commentaires, votes et conclusions. Vous pouvez également envoyer manuellement une notification au salon lorsque vous souhaitez rappeler une décision aux personnes concernées.
+Loomio peut envoyer des notifications dans vos salons Discord lors de nouvelles discussions, de nouveaux sondages, commentaires, votes et conclusions. Vous pouvez également envoyer manuellement une notification au salon lorsque vous souhaitez rappeler une décision aux personnes concernées.
 
 ---
 
-Ouvrez votre serveur Discord et trouvez le menu des paramètres du serveur.
-![](server-settings.png)
+1. Ouvrez votre serveur Discord et accédez aux **Paramètres du serveur**.
 
-Cliquez sur « Intégrations »
-![](integrations.png)
+   ![](server-settings.png)
 
-Cliquez ensuite sur « Ajouter un webhook » et donnez-lui un nom, par exemple « Bot Loomio »
+2. Sélectionnez **Integrations**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Assurez-vous d’avoir copié l’URL du webhook dans votre presse-papiers, puis suivez le lien ci-dessous.
+3. Sélectionnez **Ajouter un webhook**, donnez-lui un nom tel que `Loomio`, choisissez un salon et copiez l’URL du webhook.
+
+   ![](add-webhook.png)
+
+Maintenant que vous disposez d’une URL de webhook, terminez la connexion dans Loomio :
 
 [Configurer une intégration de chat dans Loomio](../chatbots/#set-up-a-chat-integration)

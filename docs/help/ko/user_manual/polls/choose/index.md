@@ -1,28 +1,28 @@
 ---
 sections:
-  introduction: f9d6a5bfb7445de0
-  when-to-use-choose: f8a798497cac5a43
-  example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
-  set-up-the-poll: a16095b63c57e0c9
-  vote: '09940fa2f063a6bc'
-  read-the-results: e675d12da1a4ba8a
+  introduction: 3570d7d235e7bfad
+  when-to-use-choose: 68cfcf5f85ef14c6
+  example-set-a-planning-meeting-agenda: ceca06a3f71f9d74
+  set-up-the-poll: 60f258f0eedb6323
+  vote: 958df5aed5589661
+  read-the-results: da240100a27bb2b4
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: 1cc7d5d7f3cb29c7
+  introduction: 29fc3fe59c4a3af5
   when-to-use-choose: f7e5999accadebf2
   example-set-a-planning-meeting-agenda: 1699fb64f7257bc5
-  set-up-the-poll: c6e3912840f2ce13
-  vote: 0151fc086189689e
-  read-the-results: 1a5fef0baa2fa844
+  set-up-the-poll: db0994822b21349b
+  vote: 42d8e353f928cba1
+  read-the-results: d92056ec46112e69
   share-an-outcome: aa054261d7223823
 title: 선택
 title_source: c7f937836f5d82d5
 title_generated: 8d1a750c9351d1b8
-source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 needs_review:
   share-an-outcome: use "결론" instead of "결과" for "outcome"
 ---
@@ -31,7 +31,7 @@ needs_review:
 
 # 선택
 
-선택은 가장 인기 있는 선택지를 찾거나 후보 목록을 추리는 간단한 투표입니다. 참여자는 설정된 선택 수 제한에 따라 하나 이상의 선택지를 고릅니다. 이 투표 방식은 일반적으로 객관식이라고 합니다.
+선택은 가장 인기 있는 선택지를 찾거나 후보 목록을 추리는 간단한 투표입니다. 참여자는 설정된 선택 수 제한에 따라 하나 이상의 선택지를 고릅니다. 이 투표 방식은 객관식이라고도 합니다.
 
 <!-- translation-section: when-to-use-choose -->
 
@@ -62,11 +62,11 @@ needs_review:
 
 참여자가 반드시 선택지 하나만 골라야 한다면 두 제한 값을 모두 1로 설정하세요. 후보 목록을 추리려면 최대 선택 수를 더 높게 설정하세요. 거의 모든 선택지를 고를 수 있을 정도로 많은 선택을 허용하면 결과의 유용성이 떨어지므로 피하세요.
 
-선택지 옆의 연필 아이콘을 사용해 의미나 추가 설명을 입력하세요. 짧은 선택지 이름이 여러 의미로 해석될 수 있을 때 유용합니다.
+선택지 옆의 연필 아이콘을 선택해 의미나 추가 설명을 입력하세요. 짧은 선택지 이름이 여러 의미로 해석될 수 있을 때 유용합니다.
 
 ![](edit_option.png)
 
-**추가 설정**의 **선택지를 무작위 순서로 표시**를 사용하면 특정 선택지가 항상 맨 앞에 표시되어 생기는 영향을 줄일 수 있습니다.
+첫 번째 선택지가 유리해지지 않도록 **추가 설정**에서 **선택지를 무작위 순서로 표시**를 켜세요.
 
 ![](random_order.png)
 
@@ -74,21 +74,21 @@ needs_review:
 
 ## 투표하기
 
-선택한 선택지 수가 허용 범위를 벗어나면 제출 버튼에 수정 방법이 표시됩니다. 이 예시에서 투표자는 **카페 수거 일정**과 **세척 작업 절차**를 고른 다음, 이 선택들이 시범 운영과 어떤 관련이 있는지 이유를 작성합니다.
+참여자는 최소 선택 수와 최대 선택 수 범위 내에서 선호하는 선택지를 고릅니다. 이 예시에서 투표자는 **카페 수거 일정**과 **세척 작업 절차**를 고른 다음, 이 선택들이 시범 운영과 어떤 관련이 있는지 투표 이유를 작성합니다.
 
 ![](voting.png)
 
-이유를 통해 선택지가 왜 중요한지, 참여자가 해당 선택지에 어떤 작업이 포함되기를 기대하는지 알 수 있습니다. 결정에 이유가 중요하다면 투표를 시작하기 전에 투표 이유 설정을 구성하세요.
+투표 이유를 통해 선택지가 왜 중요한지, 참여자가 해당 선택지에 어떤 작업이 포함되기를 기대하는지 알 수 있습니다. 결정에 이유가 중요하다면 투표를 시작하기 전에 투표 이유 작성이 필수인지 설정하세요.
 
 <!-- translation-section: read-the-results -->
 
 ## 결과 확인
 
-결과에는 전체 선택 횟수 중 각 선택지가 차지하는 비율, 각 선택지를 고른 투표자 수, 미투표자가 표시됩니다. 각자 선택지를 두 개까지 고를 수 있었으므로 백분율은 사람 수가 아닌 선택 횟수를 기준으로 합니다.
+결과에는 전체 선택 횟수 중 각 선택지가 차지하는 비율, 각 선택지를 고른 투표자 수, 미투표자가 표시됩니다. 각자 선택지를 두 개까지 고를 수 있었으므로 백분율은 사람 수가 아닌 전체 선택 횟수에서 차지하는 비율을 나타냅니다.
 
 ![](results.png)
 
-이 예시에서 **카페 수거 일정**은 3표를 받았습니다. **세척 작업 절차**와 **반납률 보고**는 각각 2표를 받았습니다. 이 결과는 카페 수거에 가장 많은 의제 시간을 할애하는 근거가 되지만, 동률인 주제에 남은 시간을 어떻게 나눌지는 진행자가 결정해야 합니다.
+이 예시에서 **카페 수거 일정**은 3표를 받았습니다. **세척 작업 절차**와 **반납률 보고**는 각각 2표를 받았습니다. 이 결과는 카페 수거에 가장 많은 의제 시간을 할애하는 근거가 되며, 동률인 주제에 남은 시간을 어떻게 나눌지는 진행자가 결정합니다.
 
 <!-- translation-section: share-an-outcome -->
 

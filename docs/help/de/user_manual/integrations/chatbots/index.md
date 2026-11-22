@@ -1,28 +1,26 @@
 ---
 title: Chat-Integrationen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: '029386a6b77f9ede'
-  what-it-looks-like-in-chat: 8d9d5066ec88b65b
-  generate-a-webhook-url: 155076f23ce1a53a
-  set-up-a-chat-integration: 37b289d5cbe53a24
-  invite-to-poll: b7f4b9b553ef3d0c
-  automatic-notifications: b68f3f051137c584
+  introduction: 6bd4c9eec3a4c39a
+  what-it-looks-like-in-chat: da8019d878a0b5e5
+  generate-a-webhook-url: 9476b6ac05eae49c
+  set-up-a-chat-integration: 5f688988e801eae9
+  invite-to-poll: a77d3f29e0bd51f1
+  automatic-notifications: 6d3c740051ccfc3f
 title_source: 0eca19d30c6d7d3c
 title_generated: 7e5772575945c225
-needs_review:
-  invite-to-poll: use "Stimme" instead of "Abstimmung" for "vote"
 ---
 
 <!-- translation-section: introduction -->
@@ -35,19 +33,19 @@ Chat-Tools und Loomio ergänzen sich gut. Nutze den Chat für kurze Gespräche u
 
 Loomio unterstützt Slack, Discord, Microsoft Teams, Matrix und Mattermost.
 
-Du kannst jederzeit Benachrichtigungen an deinen Chatraum senden, genauso wie du einzelne Personen einlädst, abzustimmen oder an einem Thread teilzunehmen.
-
-Du kannst Benachrichtigungen auch so einstellen, dass sie immer gesendet werden, wenn ein bestimmtes Ereignis eintritt, etwa wenn jemand einen Thread startet.
+Du kannst manuell Benachrichtigungen an deinen Chatraum senden, wenn du Personen zu einem Thread oder einer Abstimmung einlädst. Du kannst auch automatische Benachrichtigungen für bestimmte Ereignisse einrichten, etwa wenn jemand eine Diskussion startet.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## So sieht es im Chat aus
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Erstelle eine Webhook-URL
-Wir haben Schritt-für-Schritt-Anleitungen für jeden unterstützten Dienst vorbereitet. Folge der Anleitung für deinen Dienst, um die Webhook-URL zu erhalten, die du zum Hinzufügen der Chat-Integration in Loomio brauchst.
+## Verbinde deinen Chat-Dienst
+
+Folge der Anleitung für deinen Chat-Dienst, um eine Webhook-URL zu erhalten (oder bei Matrix einen Bot-Zugriffstoken und eine Raum-ID):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -55,28 +53,31 @@ Wir haben Schritt-für-Schritt-Anleitungen für jeden unterstützten Dienst vorb
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Unser Webhook-basiertes System lässt sich auch mit anderen Systemen verwenden, die eingehende Webhooks mit HTML- oder Markdown-Formatierung unterstützen. Dazu gehören beispielsweise Zapier oder Rocketchat. Wähle dafür den Mattermost-Bot und verwende eine eigene Webhook-URL.
+Du kannst auch andere Dienste verbinden, die eingehende Webhooks mit HTML- oder Markdown-Formatierung unterstützen, etwa Zapier oder Rocket.Chat. Wähle in Loomio die Chat-Integration **Am wichtigsten** und gib deine eigene Webhook-URL ein.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Richte eine Chat-Integration ein
 
-Nachdem du deinen gewählten Dienst eingerichtet hast (siehe oben), hast du eine Webhook-URL. Öffne **Chat-Integrationen** im Gruppenmenü und füge eine neue Chat-Integration für deine Gruppe hinzu.
+Du musst Gruppenadmin sein, um Chat-Integrationen hinzuzufügen oder zu bearbeiten.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. Nachdem du deinen Chat-Dienst eingerichtet hast (siehe oben), öffne das Gruppenmenü in Loomio und wähle **Chat-Integrationen**.
 
-Lass die Kontrollkästchen zunächst leer. Gib einfach den Namen (zum Beispiel „Discord #general“) und die URL ein und klicke unten im Formular auf die Schaltfläche zum Speichern.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Wenn du später automatische Benachrichtigungen über die Integration erhalten möchtest, öffne ihre Einstellungen erneut und wähle die entsprechenden Ereignisse aus.
+2. Füge eine neue Chat-Integration für deinen Dienst hinzu, gib einen Namen ein (zum Beispiel „Discord #general“) und füge die Webhook-URL ein.
+
+   ![](loomio-chatbot-form.png)
+
+3. Wähle die Ereignisse aus, für die automatisch Benachrichtigungen gesendet werden sollen, oder lass sie unausgewählt, wenn du Benachrichtigungen nur manuell senden möchtest. Speichere anschließend. Du kannst diese Einstellungen jederzeit ändern.
 
 <!-- translation-section: invite-to-poll -->
 
-### Zur Abstimmung einladen
+### Sende eine Benachrichtigung manuell
 
-So sendest du eine Benachrichtigung an deinen Chatraum, um Personen einzuladen, ihre Stimme zu einem Vorschlag abzugeben. Dasselbe Verfahren gilt für „Fazit teilen“, „Zum Thread einladen“, „An die Stimmabgabe erinnern“, „Abstimmung bearbeitet“ usw.
+Um deinen Chatraum über eine Abstimmung oder Diskussion zu benachrichtigen, öffne die Abstimmung oder Diskussion und wähle **Einladen** (oder eine andere Benachrichtigungsaktion wie **Fazit teilen**, **An Abstimmung erinnern** oder **Abstimmung bearbeitet**). Wähle deine Chat-Integration aus der Liste der Empfangenden und sende die Benachrichtigung.
 
 ![](invite_button_on_proposal.png)
 
@@ -89,6 +90,7 @@ So sendest du eine Benachrichtigung an deinen Chatraum, um Personen einzuladen, 
 <!-- translation-section: automatic-notifications -->
 
 ### Automatische Benachrichtigungen
+
 Um bei jedem Auftreten eines bestimmten Ereignisses eine Benachrichtigung zu senden, bearbeite die Chat-Integration und wähle dieses Ereignis aus.
 
 ![](chatbot_enable_automatic_notifications.png)
