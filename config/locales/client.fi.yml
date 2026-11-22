@@ -1281,12 +1281,12 @@ fi:
     success: Tämä ryhmä on arkistoitu ja se on tarkoitus poistaa pysyvästi 2 viikon kuluttua.
     scheduled_for_deletion: Tämä ryhmä on ajoitettu poistettavaksi pysyvästi kahden viikon kuluttua.
     deletion_after_grace_period: Tämä ryhmä ei ole käytettävissä, ja se poistetaan pysyvästi %{days} päivän kuluttua
-    discard_title: "Arkistoi ryhmä"
-    discard_subgroup_title: "Arkistoi alaryhmä"
-    discard_parent_body: "Tämä ryhmä ja sen alaryhmät poistuvat käytöstä heti. Myös ryhmän Loomio-tilaus perutaan. Arkistoinnin voi perua. Ajastettu poistaminen on tällä hetkellä pois käytöstä."
-    discard_body: "Tämä alaryhmä poistuu käytöstä heti. Arkistoinnin voi perua. Ajastettu poistaminen on tällä hetkellä pois käytöstä."
-    discard_confirm: "Vahvista kirjoittamalla ”%{name}”."
-    discard_success: "Ryhmä arkistoitu. Arkistoinnin voi perua. Ajastettu poistaminen on tällä hetkellä pois käytöstä."
+    discard_title: "Poista ryhmä näkyvistä"
+    discard_subgroup_title: "Poista alaryhmä näkyvistä"
+    discard_parent_body: "Tämä ryhmä ja sen alaryhmät poistetaan näkyvistä heti, ja sen Loomio-tilaus peruutetaan. Ryhmän tietoja ei poisteta automaattisesti pysyvästi, ja sivuston ylläpitäjä voi palauttaa ne."
+    discard_body: "Tämä alaryhmä poistetaan näkyvistä heti. Alaryhmän tietoja ei poisteta automaattisesti pysyvästi, ja sivuston ylläpitäjä voi palauttaa ne."
+    discard_confirm: "Kirjoita '%{name}' vahvistaaksesi"
+    discard_success: "Ryhmä poistettu näkyvistä. Sen tietoja ei poisteta automaattisesti pysyvästi, ja sivuston ylläpitäjä voi palauttaa ne"
   group_page:
     stats: Ryhmätilastot
     threads: Kierteet
@@ -3079,6 +3079,10 @@ fi:
   delete_discussion_form:
     discussion_deleted: Keskustelu poistettu
     body: Haluatko varmasti poistaa tämän ketjun?
+    body_with_deletion: "Tämä ketju poistetaan näkyvistä heti ja poistetaan pysyvästi %{days} päivän kuluttua."
+    body_reversible: "Tämä ketju poistetaan näkyvistä heti. Sen tietoja ei poisteta automaattisesti pysyvästi, ja sivuston ylläpitäjä voi palauttaa ne."
+    deleted_after_grace_period: "Ketju poistettu näkyvistä. Se poistetaan pysyvästi %{days} päivän kuluttua"
+    removed: "Ketju poistettu näkyvistä. Sen tietoja ei poisteta automaattisesti pysyvästi, ja sivuston ylläpitäjä voi palauttaa ne"
   move_discussion_form:
     title: Siirrä keskustelu toiseen ryhmään
     body: Kohderyhmä

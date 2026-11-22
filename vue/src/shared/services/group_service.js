@@ -15,9 +15,10 @@ import { I18n } from '@/i18n';
 export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
-    const deletionDays = AppConfig.groupDeletionDelayDays;
-    const groupTitle = deletionDays ? 'title' : 'discard_title';
-    const subgroupTitle = deletionDays ? 'subgroup_title' : 'discard_subgroup_title';
+    const deletionDays = group.isParent() ? AppConfig.groupDeletionDelayDays : AppConfig.subgroupDeletionDelayDays;
+    const title = deletionDays
+      ? (group.isParent() ? 'title' : 'subgroup_title')
+      : (group.isParent() ? 'discard_title' : 'discard_subgroup_title');
 
     return {
       email_group: {
@@ -229,7 +230,7 @@ export default new class GroupService {
       },
 
       destroy_group: {
-        name: `delete_group_modal.${group.isParent() ? groupTitle : subgroupTitle}`,
+        name: `delete_group_modal.${title}`,
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
@@ -237,7 +238,6 @@ export default new class GroupService {
         },
         perform() {
           const confirmText = group.handle || group.name.trim();
-          const title = group.isParent() ? groupTitle : subgroupTitle;
           const body = group.isParent() ? 'parent_body' : 'body';
           const helpText = deletionDays ? body : `discard_${body}`;
           const confirmKey = deletionDays ? 'confirm' : 'discard_confirm';

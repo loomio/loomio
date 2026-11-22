@@ -445,7 +445,7 @@ sv:
       trial_expired_unavailable: "Loomio-provperioden för ”%{group}” gick ut för %{expired_days} dagar sedan. Gruppen är otillgänglig."
       trial_catch_up_unavailable: "En Loomio-provperiod startades för ”%{group}” för en tid sedan. Vi går igenom gamla provgrupper, och gruppen är nu otillgänglig."
       subscription_canceled_unavailable: "Prenumerationen för ”%{group}” har avslutats. Gruppen är otillgänglig."
-      restore_or_export: "Arkiveringen går att ångra. Schemalagd radering är avstängd. Svara på det här mejlet om du vill få tillbaka åtkomsten eller få en kopia av gruppens data."
+      restore_or_export: "Din grupps data raderas inte permanent automatiskt. Svara på det här mejlet om du vill att vi återställer åtkomsten eller exporterar en kopia av din grupps data."
       trial_expired_process: Din grupp är inte tillgänglig medan den är markerad för radering. Om du fortfarande vill ha en plats där din grupp kan diskutera och fatta beslut är det inte för sent att starta om. Svara genast på det här mejlet om du vill förlänga provperioden, byta till en betald prenumeration eller behöver mer tid för att exportera data. Din grupp tas bort permanent om %{grace_days} dagar.
       trial_expired: Din Loomio-grupp "%{group}" har haft en utgången provperiod i minst 60 dagar. Den kommer att raderas permanent efter %{days} dagar.
       usage_heading: 'Sammanfattning av gruppdata:'

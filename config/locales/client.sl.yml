@@ -1281,12 +1281,12 @@ sl:
     success: Ta skupina je bila arhivirana in je načrtovana za trajno brisanje čez 2 tedna.
     scheduled_for_deletion: Ta skupina bo trajno izbrisana čez 2 tedna.
     deletion_after_grace_period: Ta skupina ni na voljo in bo po %{days} dneh trajno izbrisana
-    discard_title: "Arhiviraj skupino"
-    discard_subgroup_title: "Arhiviraj podskupino"
-    discard_parent_body: "Ta skupina in njene podskupine bodo takoj nedostopne. Preklicana bo tudi naročnina skupine na Loomio. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
-    discard_body: "Ta podskupina bo takoj nedostopna. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
-    discard_confirm: "Za potrditev vnesite »%{name}«."
-    discard_success: "Skupina je arhivirana. Arhiviranje lahko razveljavite. Načrtovani izbris je trenutno izklopljen."
+    discard_title: "Odstrani skupino"
+    discard_subgroup_title: "Odstrani podskupino"
+    discard_parent_body: "Ta skupina in njene podskupine bodo takoj skrite, njena naročnina na Loomio pa bo preklicana. Podatki skupine se ne izbrišejo samodejno za vedno in jih lahko obnovi skrbnik spletnega mesta."
+    discard_body: "Ta podskupina bo takoj skrita. Podatki podskupine se ne izbrišejo samodejno za vedno in jih lahko obnovi skrbnik spletnega mesta."
+    discard_confirm: "Za potrditev vnesite '%{name}'"
+    discard_success: "Skupina je odstranjena. Njeni podatki se ne izbrišejo samodejno za vedno in jih lahko obnovi skrbnik spletnega mesta"
   group_page:
     stats: Statistika skupine
     threads: Razprave
@@ -3079,6 +3079,10 @@ sl:
   delete_discussion_form:
     discussion_deleted: Razprava je bila izbrisana
     body: Ali ste prepričani, da želite izbrisati to nit?
+    body_with_deletion: "Ta nit bo takoj skrita in trajno izbrisana po %{days} dneh."
+    body_reversible: "Ta nit bo takoj skrita. Njeni podatki se ne izbrišejo samodejno za vedno in jih lahko obnovi skrbnik spletnega mesta."
+    deleted_after_grace_period: "Nit je odstranjena. Trajno bo izbrisana po %{days} dneh"
+    removed: "Nit je odstranjena. Njeni podatki se ne izbrišejo samodejno za vedno in jih lahko obnovi skrbnik spletnega mesta"
   move_discussion_form:
     title: Premakni razpravo v drugo skupino
     body: Ciljna skupina

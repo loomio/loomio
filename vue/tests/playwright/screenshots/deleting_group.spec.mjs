@@ -1,7 +1,7 @@
 import { test, expect, expectLabel } from '../screenshotFixtures.mjs';
 
 const deletionEnabled = /^[1-9][0-9]*$/.test(process.env.LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS || '');
-const actionLabel = deletionEnabled ? 'Delete group' : 'Discard group';
+const actionLabel = deletionEnabled ? 'Delete group' : 'Remove group';
 
 async function openDeleteGroup(page) {
   await page.goto('/dev/setup_manual_oatmilk_group')

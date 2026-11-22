@@ -475,7 +475,7 @@ fr:
       trial_expired_unavailable: "L’essai Loomio du groupe « %{group} » a expiré il y a %{expired_days} jours. Le groupe est indisponible."
       trial_catch_up_unavailable: "Un essai Loomio a été ouvert pour « %{group} » il y a quelque temps. Nous faisons le tri dans les anciens essais et le groupe est désormais indisponible."
       subscription_canceled_unavailable: "L’abonnement de « %{group} » a été résilié. Le groupe est indisponible."
-      restore_or_export: "L’archivage est réversible. La suppression programmée est actuellement désactivée. Répondez à cet e-mail pour demander le rétablissement de l’accès ou une copie des données du groupe."
+      restore_or_export: "Les données de votre groupe ne sont pas supprimées définitivement de manière automatique. Répondez à cet e-mail si vous souhaitez que nous rétablissions l’accès ou exportions une copie des données de votre groupe."
       trial_expired_process: Votre groupe est temporairement indisponible car il est en cours de suppression. Si vous souhaitez conserver un espace de discussion et de prise de décision pour votre groupe, il n'est pas trop tard pour le réactiver. Répondez immédiatement à cet e-mail si vous souhaitez demander une prolongation de la période d’essai, passer à un abonnement payant ou obtenir plus de temps pour exporter les données. Votre groupe sera supprimé définitivement dans %{grace_days} jours.
       trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé après %{days} jours.
       usage_heading: 'Résumé des données du groupe :'

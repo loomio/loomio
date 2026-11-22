@@ -86,9 +86,8 @@ class GroupMailerTest < ActionMailer::TestCase
       notices.each do |email, reason|
         assert_equal "Your Loomio group is unavailable", email.subject
         assert_includes email.body.decoded, reason
-        assert_includes email.body.decoded, "scheduled deletion is currently disabled"
-        assert_includes email.body.decoded, "request restored access or a copy"
-        refute_includes email.body.decoded, "permanently deleted"
+        assert_includes email.body.decoded, "not automatically permanently deleted"
+        assert_includes email.body.decoded, "restore access or export a copy"
       end
     end
   end

@@ -3,7 +3,7 @@ class GroupMailer < ApplicationMailer
     group = Group.find(group_id)
     recipient = User.find(recipient_id)
     requestor = User.find(requestor_id)
-    deletion_days = AppConfig.discarded_group_deletion_after_days
+    deletion_days = group.is_parent? ? AppConfig.discarded_group_deletion_after_days : AppConfig.discarded_subgroup_deletion_after_days
 
     component = Views::GroupMailer::AdminDeletionWarning.new(
       group: group,
@@ -18,7 +18,7 @@ class GroupMailer < ApplicationMailer
   def expired_trial_deletion_warning(group_id, recipient_id, catch_up: false)
     group = Group.find(group_id)
     recipient = User.find(recipient_id)
-    deletion_days = AppConfig.discarded_group_deletion_after_days
+    deletion_days = group.is_parent? ? AppConfig.discarded_group_deletion_after_days : AppConfig.discarded_subgroup_deletion_after_days
 
     component = Views::GroupMailer::ExpiredTrialDeletionWarning.new(
       group: group,
@@ -35,7 +35,7 @@ class GroupMailer < ApplicationMailer
     recipient = group&.admins&.find_by(id: recipient_id)
     return unless recipient
 
-    deletion_days = AppConfig.discarded_group_deletion_after_days
+    deletion_days = group.is_parent? ? AppConfig.discarded_group_deletion_after_days : AppConfig.discarded_subgroup_deletion_after_days
     component = Views::GroupMailer::CanceledSubscriptionDeletionWarning.new(
       group: group, usage: GroupUsageSummary.for(group), deletion_days: deletion_days
     )

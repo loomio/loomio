@@ -1439,12 +1439,12 @@ en:
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
     scheduled_for_deletion: This group is scheduled for permanent deletion in 2 weeks
     deletion_after_grace_period: This group is unavailable and will be permanently deleted after %{days} days
-    discard_title: "Discard group"
-    discard_subgroup_title: "Discard subgroup"
-    discard_parent_body: "This group and its subgroups will be unavailable immediately. Its Loomio subscription will also be cancelled. Discard is reversible and scheduled deletion is currently disabled."
-    discard_body: "This subgroup will be unavailable immediately. Discard is reversible and scheduled deletion is currently disabled."
-    discard_confirm: "Type '%{name}' to confirm."
-    discard_success: "Group discarded. Discard is reversible and scheduled deletion is currently disabled."
+    discard_title: "Remove group"
+    discard_subgroup_title: "Remove subgroup"
+    discard_parent_body: "This group and its subgroups will be removed from view immediately, and its Loomio subscription will be cancelled. Group data is not automatically permanently deleted and can be restored by a site administrator."
+    discard_body: "This subgroup will be removed from view immediately. Subgroup data is not automatically permanently deleted and can be restored by a site administrator."
+    discard_confirm: "Type '%{name}' to confirm"
+    discard_success: "Group removed. Its data is not automatically permanently deleted and can be restored by a site administrator"
   report:
     all_votes_cast: All votes cast
     votes_cast: Votes cast
@@ -2137,7 +2137,11 @@ en:
     thread_settings: Thread settings
   delete_discussion_form:
     body: Are you sure you want to delete this thread?
+    body_with_deletion: "This thread will be removed from view immediately and permanently deleted after %{days} days."
+    body_reversible: "This thread will be removed from view immediately. Its data is not automatically permanently deleted and can be restored by a site administrator."
     discussion_deleted: Discussion deleted
+    deleted_after_grace_period: "Thread removed. It will be permanently deleted after %{days} days"
+    removed: "Thread removed. Its data is not automatically permanently deleted and can be restored by a site administrator"
   move_discussion_form:
     title: Move discussion to another group
     body: Destination group

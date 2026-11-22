@@ -53,7 +53,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       assert_match(/value="Warn and discard"|>Warn and discard<\/button>/, forms.first.to_html)
       assert_includes forms.first["data-confirm"], "Group admins will be emailed."
     end
-    assert_includes response.body, "Discard is reversible. Scheduled deletion is currently disabled."
+    assert_includes response.body, "It can be restored at any time because automatic permanent deletion is disabled."
     assert_select 'form[action=?] input[name="_method"][value="delete"]', admin_group_path(@group), count: 0
 
     get :edit, params: { id: @group.id }
@@ -191,7 +191,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
     end
     assert @group.reload.discarded?
     assert_equal @admin.id, @group.discarded_by
-    assert_includes flash[:notice], "Discard is reversible and scheduled deletion is currently disabled."
+    assert_includes flash[:notice], "It can be restored at any time because automatic permanent deletion is disabled."
 
     post :undiscard, params: { id: @group.id }
     assert_nil @group.reload.discarded_at
@@ -214,7 +214,7 @@ class Admin::GroupsControllerTest < ActionController::TestCase
       end
     end
     assert warned
-    assert_equal "Group discarded. It becomes eligible for permanent deletion after 90 days.", flash[:notice]
+    assert_equal "Group admins warned and group discarded. It becomes eligible for permanent deletion after 90 days.", flash[:notice]
 
   end
 

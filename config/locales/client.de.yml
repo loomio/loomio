@@ -1293,12 +1293,12 @@ de:
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
     scheduled_for_deletion: Diese Gruppe wird in 2 Wochen endgültig gelöscht.
     deletion_after_grace_period: Diese Gruppe ist nicht verfügbar und wird nach %{days} Tagen endgültig gelöscht
-    discard_title: "Gruppe archivieren"
-    discard_subgroup_title: "Untergruppe archivieren"
-    discard_parent_body: "Diese Gruppe und ihre Untergruppen sind sofort nicht mehr verfügbar. Das Loomio-Abonnement der Gruppe wird ebenfalls gekündigt. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
-    discard_body: "Diese Untergruppe ist sofort nicht mehr verfügbar. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
-    discard_confirm: "Gib zur Bestätigung „%{name}“ ein."
-    discard_success: "Gruppe archiviert. Die Archivierung kann rückgängig gemacht werden. Die geplante Löschung ist derzeit deaktiviert."
+    discard_title: "Gruppe entfernen"
+    discard_subgroup_title: "Untergruppe entfernen"
+    discard_parent_body: "Diese Gruppe und ihre Untergruppen werden sofort ausgeblendet und das Loomio-Abonnement wird gekündigt. Gruppendaten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
+    discard_body: "Diese Untergruppe wird sofort ausgeblendet. Daten der Untergruppe werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
+    discard_confirm: "Gib '%{name}' zur Bestätigung ein"
+    discard_success: "Gruppe entfernt. Ihre Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden"
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen
@@ -3114,6 +3114,10 @@ de:
   delete_discussion_form:
     discussion_deleted: Diskussion gelöscht
     body: Möchtest du diesen Thread wirklich löschen?
+    body_with_deletion: "Dieser Thread wird sofort ausgeblendet und nach %{days} Tagen endgültig gelöscht."
+    body_reversible: "Dieser Thread wird sofort ausgeblendet. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
+    deleted_after_grace_period: "Thread entfernt. Er wird nach %{days} Tagen endgültig gelöscht"
+    removed: "Thread entfernt. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden"
   move_discussion_form:
     title: Diskussion in eine andere Gruppe verlegen
     body: Zielgruppe

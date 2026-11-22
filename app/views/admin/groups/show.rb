@@ -95,11 +95,16 @@ class Views::Admin::Groups::Show < Views::Admin::Layout
         if @group.discarded?
           button_to "Restore group", undiscard_admin_group_path(@group), method: :post, class: "admin-button"
         end
-        confirmation = "Discard #{@group.name} and its subgroups? They will be unavailable immediately."
-        if (days = AppConfig.discarded_group_deletion_after_days)
+        days = @group.is_parent? ? AppConfig.discarded_group_deletion_after_days : AppConfig.discarded_subgroup_deletion_after_days
+        confirmation = if @group.is_parent?
+          "Discard #{@group.name} and its subgroups? They will be unavailable immediately."
+        else
+          "Discard subgroup #{@group.name}? It will be unavailable immediately."
+        end
+        if days
           confirmation += " Permanent deletion can begin after #{days} days of being discarded."
         else
-          confirmation += " Discard is reversible. Scheduled deletion is currently disabled."
+          confirmation += " It can be restored at any time because automatic permanent deletion is disabled."
         end
         button_to "Discard without warning", discard_admin_group_path(@group), method: :post,
           disabled: @group.discarded?, class: "admin-button admin-button--secondary", form: { data: { confirm: confirmation } }

@@ -479,7 +479,7 @@ zh_TW:
       trial_expired_unavailable: "「%{group}」的 Loomio 試用已於 %{expired_days} 天前結束。該群組目前無法存取。"
       trial_catch_up_unavailable: "一段時間前，「%{group}」開啟了 Loomio 試用。我們正在整理舊試用群組，該群組目前無法存取。"
       subscription_canceled_unavailable: "「%{group}」的訂閱已取消。該群組目前無法存取。"
-      restore_or_export: "封存可以復原。目前已停用排程刪除。 請回覆此電子郵件以申請恢復存取權或取得群組資料副本。"
+      restore_or_export: "您的群組資料不會自動永久刪除。如果您希望我們還原存取權限或匯出群組資料副本，請回覆此電子郵件。"
       trial_expired_process: 您的群組已被標記為刪除，因此暫時無法使用。如果您仍然希望群組能夠繼續討論和決策，現在重新開始還不算晚。如果您想申請延長試用期、升級到付費訂閱或需要更多時間匯出資料，請立即回覆此電子郵件。您的群組將在 %{grace_days} 天後遭永久刪除。
       trial_expired: 您的 Loomio 群組「%{group}」已處於試用期至少 60 天，試用期已過期。該群組將在 %{days} 天後被永久刪除。
       usage_heading: 群組資料匯總：

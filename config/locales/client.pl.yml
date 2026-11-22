@@ -1287,12 +1287,12 @@ pl:
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
     scheduled_for_deletion: Ta grupa zostanie trwale usunięta za 2 tygodnie
     deletion_after_grace_period: Ta grupa jest niedostępna i zostanie trwale usunięta po %{days} dniach
-    discard_title: "Zarchiwizuj grupę"
-    discard_subgroup_title: "Zarchiwizuj podgrupę"
-    discard_parent_body: "Ta grupa i jej podgrupy natychmiast staną się niedostępne. Subskrypcja Loomio tej grupy również zostanie anulowana. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
-    discard_body: "Ta podgrupa natychmiast stanie się niedostępna. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
-    discard_confirm: "Wpisz „%{name}”, aby potwierdzić."
-    discard_success: "Grupa została zarchiwizowana. Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone."
+    discard_title: "Usuń grupę z widoku"
+    discard_subgroup_title: "Usuń podgrupę z widoku"
+    discard_parent_body: "Ta grupa i jej podgrupy zostaną natychmiast ukryte, a jej subskrypcja Loomio zostanie anulowana. Dane grupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
+    discard_body: "Ta podgrupa zostanie natychmiast ukryta. Dane podgrupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
+    discard_confirm: "Wpisz „%{name}”, aby potwierdzić"
+    discard_success: "Grupa została ukryta. Jej dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić"
   group_page:
     stats: Statystyki grupy
     threads: Wątki
@@ -3106,6 +3106,10 @@ pl:
   delete_discussion_form:
     discussion_deleted: Dyskusja usunięta
     body: Czy na pewno chcesz usunąć ten wątek?
+    body_with_deletion: "Ten wątek zostanie natychmiast ukryty i trwale usunięty po %{days} dniach."
+    body_reversible: "Ten wątek zostanie natychmiast ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
+    deleted_after_grace_period: "Wątek został ukryty. Zostanie trwale usunięty po %{days} dniach"
+    removed: "Wątek został ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić"
   move_discussion_form:
     title: Przenieś dyskusję do innej grupy
     body: Grupa docelowa

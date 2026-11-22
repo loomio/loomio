@@ -456,7 +456,7 @@ it:
       trial_expired_unavailable: "La prova di Loomio per «%{group}» è scaduta %{expired_days} giorni fa. Il gruppo non è disponibile."
       trial_catch_up_unavailable: "Qualche tempo fa è stata avviata una prova di Loomio per «%{group}». Stiamo riordinando le vecchie prove e il gruppo non è più disponibile."
       subscription_canceled_unavailable: "L’abbonamento di «%{group}» è stato annullato. Il gruppo non è disponibile."
-      restore_or_export: "Puoi annullare l’archiviazione. L’eliminazione programmata è attualmente disattivata. Rispondi a questa email per chiedere il ripristino dell’accesso o una copia dei dati del gruppo."
+      restore_or_export: "I dati del tuo gruppo non vengono eliminati automaticamente in modo definitivo. Rispondi a questa email se vuoi che ripristiniamo l’accesso o esportiamo una copia dei dati del tuo gruppo."
       trial_expired_process: Il tuo gruppo non è disponibile perché è stato contrassegnato per l'eliminazione. Se desideri comunque che il tuo gruppo continui a discutere e prendere decisioni, non è troppo tardi per riattivarlo. Rispondi subito a questa email se vuoi chiedere un’estensione del periodo di prova, passare a un abbonamento a pagamento o avere più tempo per esportare i dati. Il tuo gruppo sarà eliminato definitivamente tra %{grace_days} giorni.
       trial_expired: Il tuo gruppo Loomio "%{group}" è attivo in versione di prova scaduta da almeno 60 giorni. Verrà eliminato definitivamente dopo %{days} giorni.
       usage_heading: 'Riepilogo dei dati di gruppo:'

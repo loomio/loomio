@@ -472,7 +472,7 @@ nl_NL:
       trial_expired_unavailable: "De Loomio-proefperiode voor ‘%{group}’ verliep %{expired_days} dagen geleden. De groep is niet beschikbaar."
       trial_catch_up_unavailable: "Voor ‘%{group}’ is enige tijd geleden een Loomio-proefperiode gestart. We ruimen oude proefgroepen op. De groep is nu niet beschikbaar."
       subscription_canceled_unavailable: "Het abonnement voor ‘%{group}’ is opgezegd. De groep is niet beschikbaar."
-      restore_or_export: "Je kunt het archiveren ongedaan maken. Geplande verwijdering staat momenteel uit. Beantwoord deze e-mail om herstel van toegang of een kopie van de groepsgegevens te vragen."
+      restore_or_export: "De gegevens van je groep worden niet automatisch definitief verwijderd. Beantwoord deze e-mail als je wilt dat we de toegang herstellen of een kopie van de gegevens van je groep exporteren."
       trial_expired_process: Je groep is niet beschikbaar zolang deze is gemarkeerd voor verwijdering. Als je je groep toch een plek wilt bieden om te discussiëren en beslissingen te nemen, is het nog niet te laat om de groep opnieuw te starten. Beantwoord deze e-mail direct als je de proefperiode wilt verlengen, wilt overstappen op een betaald abonnement of meer tijd nodig hebt om de gegevens te exporteren. Je groep wordt over %{grace_days} dagen definitief verwijderd.
       trial_expired: Je Loomio-groep "%{group}" heeft een verlopen proefperiode van minimaal 60 dagen. Deze wordt na %{days} dagen definitief verwijderd.
       usage_heading: 'Samenvatting van de groepsgegevens:'

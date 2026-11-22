@@ -447,7 +447,7 @@ ca:
       trial_expired_unavailable: "La prova de Loomio de «%{group}» va caducar fa %{expired_days} dies. El grup no està disponible."
       trial_catch_up_unavailable: "Fa un temps es va crear una prova de Loomio per a «%{group}». Estem revisant les proves antigues i el grup ja no està disponible."
       subscription_canceled_unavailable: "La subscripció de «%{group}» s’ha cancel·lat. El grup no està disponible."
-      restore_or_export: "Podeu restaurar el grup. La supressió programada està desactivada. Respon a aquest correu per demanar que es restableixi l’accés o per obtenir una còpia de les dades del grup."
+      restore_or_export: "Les dades del teu grup no s'eliminen permanentment de manera automàtica. Respon a aquest correu si vols que restaurem l'accés o exportem una còpia de les dades del teu grup."
       trial_expired_process: El vostre grup no està disponible mentre estigui marcat per a la seva supressió. Si encara voleu un lloc perquè el vostre grup pugui debatre i prendre decisions, no és massa tard per reiniciar-lo. Respon immediatament a aquest correu si vols demanar una ampliació de la prova, passar a una subscripció de pagament o necessites més temps per exportar les dades. El teu grup se suprimirà definitivament d’aquí a %{grace_days} dies.
       trial_expired: El vostre grup de Loomio "%{group}" ha estat en una prova caducada durant almenys 60 dies. Se suprimirà permanentment al cap de %{days} dies.
       usage_heading: 'Resum de dades del grup:'

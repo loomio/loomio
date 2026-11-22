@@ -71,12 +71,12 @@ class Admin::GroupsController < Admin::BaseController
 
   def discard
     GroupService.discard(group: @group, actor: current_user)
-    redirect_to admin_group_path(@group), notice: group_discard_notice
+    redirect_to admin_group_path(@group), notice: group_discard_notice(@group)
   end
 
   def warn_and_discard
     GroupService.warn_and_discard(group: @group, actor: current_user)
-    redirect_to admin_groups_path, notice: group_discard_notice
+    redirect_to admin_groups_path, notice: group_discard_notice(@group, warned: true)
   end
 
   def export_group
@@ -111,11 +111,14 @@ class Admin::GroupsController < Admin::BaseController
 
   private
 
-  def group_discard_notice
-    if (days = AppConfig.discarded_group_deletion_after_days)
-      "Group discarded. It becomes eligible for permanent deletion after #{days} days."
+  def group_discard_notice(group, warned: false)
+    label = group.is_parent? ? "Group" : "Subgroup"
+    days = group.is_parent? ? AppConfig.discarded_group_deletion_after_days : AppConfig.discarded_subgroup_deletion_after_days
+    action = warned ? "Group admins warned and #{label.downcase} discarded." : "#{label} discarded."
+    if days
+      "#{action} It becomes eligible for permanent deletion after #{days} days."
     else
-      "Group discarded. Discard is reversible and scheduled deletion is currently disabled."
+      "#{action} It can be restored at any time because automatic permanent deletion is disabled."
     end
   end
 

@@ -1291,12 +1291,12 @@ da:
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
     scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
     deletion_after_grace_period: Denne gruppe er ikke tilgængelig og vil blive slettet permanent efter %{days} dage
-    discard_title: "Arkivér gruppe"
-    discard_subgroup_title: "Arkivér undergruppe"
-    discard_parent_body: "Denne gruppe og dens undergrupper bliver straks utilgængelige. Gruppens Loomio-abonnement bliver også opsagt. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
-    discard_body: "Denne undergruppe bliver straks utilgængelig. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
-    discard_confirm: "Skriv '%{name}' for at bekræfte."
-    discard_success: "Gruppen er arkiveret. Arkiveringen kan fortrydes. Planlagt sletning er slået fra."
+    discard_title: "Fjern gruppe"
+    discard_subgroup_title: "Fjern undergruppe"
+    discard_parent_body: "Denne gruppe og dens undergrupper skjules med det samme, og dens Loomio-abonnement opsiges. Gruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
+    discard_body: "Denne undergruppe skjules med det samme. Undergruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
+    discard_confirm: "Skriv '%{name}' for at bekræfte"
+    discard_success: "Gruppe fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator"
   group_page:
     stats: Gruppestatistik
     threads: Debatter
@@ -3091,6 +3091,10 @@ da:
   delete_discussion_form:
     discussion_deleted: Diskussion slettet
     body: Er du sikker på, at du vil slette denne tråd?
+    body_with_deletion: "Denne tråd skjules med det samme og slettes permanent efter %{days} dage."
+    body_reversible: "Denne tråd skjules med det samme. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
+    deleted_after_grace_period: "Tråd fjernet. Den slettes permanent efter %{days} dage"
+    removed: "Tråd fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator"
   move_discussion_form:
     title: Flyt diskussionen til en anden gruppe
     body: Destinationsgruppe

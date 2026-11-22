@@ -472,7 +472,7 @@ pl:
       trial_expired_unavailable: "Okres próbny Loomio dla grupy „%{group}” zakończył się %{expired_days} dni temu. Grupa jest niedostępna."
       trial_catch_up_unavailable: "Jakiś czas temu rozpoczęto okres próbny Loomio dla grupy „%{group}”. Porządkujemy starsze grupy próbne i ta grupa jest już niedostępna."
       subscription_canceled_unavailable: "Subskrypcja grupy „%{group}” została anulowana. Grupa jest niedostępna."
-      restore_or_export: "Archiwizację można cofnąć. Zaplanowane usuwanie jest obecnie wyłączone. Odpowiedz na tę wiadomość, aby poprosić o przywrócenie dostępu lub o kopię danych grupy."
+      restore_or_export: "Dane Twojej grupy nie są automatycznie trwale usuwane. Odpowiedz na tego e-maila, jeśli chcesz, abyśmy przywrócili dostęp lub wyeksportowali kopię danych Twojej grupy."
       trial_expired_process: Twoja grupa jest niedostępna, dopóki jest oznaczona do usunięcia. Jeśli nadal chcesz, aby Twoja grupa mogła dyskutować i podejmować decyzje, jeszcze nie jest za późno, aby ją ponownie uruchomić. Odpowiedz od razu na tę wiadomość, jeśli chcesz poprosić o przedłużenie okresu próbnego, przejść na płatną subskrypcję lub potrzebujesz więcej czasu na eksport danych. Twoja grupa zostanie trwale usunięta za %{grace_days} dni.
       trial_expired: Twoja grupa Loomio „%{group}” jest na okresie próbnym, który wygasł od co najmniej 60 dni. Zostanie trwale usunięta po %{days} dniach.
       usage_heading: 'Podsumowanie danych grupowych:'
