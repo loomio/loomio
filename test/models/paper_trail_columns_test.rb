@@ -26,7 +26,7 @@ class PaperTrailColumnsTest < ActiveSupport::TestCase
     Group => {
       counters: %w[admin_memberships_count discussions_count memberships_count org_members_count
                    pending_memberships_count poll_templates_count polls_count],
-      derived: %w[content_locale full_name info link_previews],
+      derived: %w[content_locale full_name info is_root link_previews parent_is_root],
       secret: %w[token],
       profile: %w[admin_tags category city country region request_to_join_prompt theme_id]
     },

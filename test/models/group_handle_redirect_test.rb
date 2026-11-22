@@ -2,7 +2,6 @@ require 'test_helper'
 
 class GroupHandleRedirectTest < ActiveSupport::TestCase
   inline_jobs "updating parent handle updates direct subgroup handles",
-              "updating parent handle updates nested subgroup handles recursively",
               "updating parent handle creates redirects for all old subgroup handles"
   setup do
     hex = SecureRandom.hex(4)
@@ -128,32 +127,6 @@ class GroupHandleRedirectTest < ActiveSupport::TestCase
     subgroup.reload
     assert_equal "#{new_parent_handle}-sub#{hex}", subgroup.handle
     assert GroupHandleRedirect.exists?(handle: old_sub_handle, group_id: subgroup.id)
-  end
-
-  test "updating parent handle updates nested subgroup handles recursively" do
-    hex = SecureRandom.hex(4)
-    subgroup = Group.create!(
-      name: "Sub #{hex}",
-      parent: @group,
-      handle: "#{@group.handle}-sub#{hex}",
-      group_privacy: 'parent_members'
-    )
-    subsubgroup = Group.create!(
-      name: "SubSub #{hex}",
-      parent: subgroup,
-      handle: "#{subgroup.handle}-subsub#{hex}",
-      group_privacy: 'parent_members'
-    )
-
-    old_subsub_handle = subsubgroup.handle
-    new_parent_handle = "ghr-nested-new-#{hex}"
-
-    GroupService.update_handle(group: @group, handle: new_parent_handle, actor: @user)
-
-    subsubgroup.reload
-    expected = "#{new_parent_handle}-sub#{hex}-subsub#{hex}"
-    assert_equal expected, subsubgroup.handle
-    assert GroupHandleRedirect.exists?(handle: old_subsub_handle, group_id: subsubgroup.id)
   end
 
   test "updating parent handle creates redirects for all old subgroup handles" do

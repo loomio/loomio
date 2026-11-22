@@ -1,21 +1,19 @@
 require 'test_helper'
 
 class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
-  test "hiding a parent also restricts public descendants and their threads" do
+  test "hiding a parent also restricts public subgroups and their threads" do
     parent = groups(:group)
     parent.update!(group_privacy: 'closed')
     child = groups(:parent_join_subgroup)
     child.update!(group_privacy: 'open')
-    descendant = Group.create!(name: 'Nested working group', parent: child, group_privacy: 'open')
     topic = topics(:discussion_topic)
-    topic.update!(group: descendant, private: false)
+    topic.update!(group: child, private: false)
 
     GroupService.update(group: parent, params: {group_privacy: 'secret'}, actor: users(:admin))
 
     assert_equal 'parent_members', child.reload.group_privacy
-    assert_equal 'parent_members', descendant.reload.group_privacy
     assert topic.reload.private?
-    assert_not LoggedOutUser.new.can?(:show, descendant)
+    assert_not LoggedOutUser.new.can?(:show, child)
     assert_not LoggedOutUser.new.can?(:show, topic.topicable)
   end
 
