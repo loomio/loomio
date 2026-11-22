@@ -16,7 +16,7 @@ class CleanupExpiredTrialsTest < ActiveSupport::TestCase
 
     assert_enqueued_jobs 1, only: WarnAndDiscardExpiredTrialGroupWorker do
       assert_no_enqueued_jobs(only: [ActionMailer::MailDeliveryJob, DestroyGroupWorker]) do
-        CleanupGroupsWorker.perform_now
+        DiscardExpiredTrialsWorker.perform_now
       end
     end
     assert empty_trial.reload.discarded?

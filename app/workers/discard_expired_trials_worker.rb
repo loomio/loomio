@@ -1,4 +1,4 @@
-class CleanupGroupsWorker < ApplicationJob
+class DiscardExpiredTrialsWorker < ApplicationJob
   queue_as :low
 
   def self.enabled?

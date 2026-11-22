@@ -39,16 +39,16 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     midnight = Time.utc(2026, 9, 8)
 
     travel_to midnight do
-      assert_no_enqueued_jobs(only: CleanupGroupsWorker) { HourlyTaskJob.perform_now }
+      assert_no_enqueued_jobs(only: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
 
       ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = "60"
       assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-        assert_enqueued_with(job: CleanupGroupsWorker) { HourlyTaskJob.perform_now }
+        assert_enqueued_with(job: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
       end
     end
 
     travel_to midnight + 1.hour do
-      assert_no_enqueued_jobs(only: CleanupGroupsWorker) { HourlyTaskJob.perform_now }
+      assert_no_enqueued_jobs(only: DiscardExpiredTrialsWorker) { HourlyTaskJob.perform_now }
     end
   ensure
     ENV["LOOMIO_DISCARD_TRIALS_AFTER_X_DAYS"] = trials_before
