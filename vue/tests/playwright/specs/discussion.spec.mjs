@@ -82,7 +82,7 @@ test.describe('managing a thread', () => {
   test('a group admin deletes the thread', async ({ page, flash }) => {
     await page.locator('.topic-sidebar .action-dock__button--discard_thread').click();
     await page.locator('.confirm-modal__submit').click();
-    await expect(flash).toContainText('Discussion deleted');
+    await expect(flash).toContainText('Thread removed');
     await expect(page.locator('.group-page__name')).toContainText('Dirty Dancing Shoes');
     await expect(page.locator('.topic-preview', { hasText: 'What star sign are you?' })).toHaveCount(0);
   });

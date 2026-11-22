@@ -1287,6 +1287,12 @@ nl_NL:
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
     scheduled_for_deletion: Deze groep zal over 2 weken definitief worden verwijderd.
     deletion_after_grace_period: Deze groep is niet beschikbaar en wordt na %{days} dagen definitief verwijderd
+    discard_title: "Groep verwijderen"
+    discard_subgroup_title: "Subgroep verwijderen"
+    discard_parent_body: "Deze groep en de subgroepen worden direct uit het overzicht gehaald en het Loomio-abonnement wordt opgezegd. Groepsgegevens worden niet automatisch definitief verwijderd en kunnen door een sitebeheerder worden hersteld."
+    discard_body: "Deze subgroep wordt direct uit het overzicht gehaald. Gegevens van de subgroep worden niet automatisch definitief verwijderd en kunnen door een sitebeheerder worden hersteld."
+    discard_confirm: "Typ '%{name}' om te bevestigen"
+    discard_success: "Groep verwijderd. De gegevens worden niet automatisch definitief verwijderd en kunnen door een sitebeheerder worden hersteld"
   group_page:
     stats: Groep statistieken
     threads: Borden
@@ -3100,6 +3106,10 @@ nl_NL:
   delete_discussion_form:
     discussion_deleted: Discussie verwijderd
     body: Weet je zeker dat je dit bericht wilt verwijderen?
+    body_with_deletion: "Dit onderwerp wordt direct uit het overzicht gehaald en na %{days} dagen definitief verwijderd."
+    body_reversible: "Dit onderwerp wordt direct uit het overzicht gehaald. De gegevens worden niet automatisch definitief verwijderd en kunnen door een sitebeheerder worden hersteld."
+    deleted_after_grace_period: "Onderwerp verwijderd. Het wordt na %{days} dagen definitief verwijderd"
+    removed: "Onderwerp verwijderd. De gegevens worden niet automatisch definitief verwijderd en kunnen door een sitebeheerder worden hersteld"
   move_discussion_form:
     title: Discussie verplaatsen naar een andere groep
     body: Bestemmingsgroep

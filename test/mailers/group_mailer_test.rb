@@ -7,13 +7,14 @@ class GroupMailerTest < ActionMailer::TestCase
     usage = GroupUsageSummary.for(group)
 
     email = GroupMailer.expired_trial_deletion_warning(group.id, recipient.id)
-    body = AppConfig.stub(:group_deletion_delay_days, 45) { email.body.decoded }
+    body = AppConfig.stub(:discarded_group_deletion_after_days, 45) { email.body.decoded }
 
     assert_equal "Your Loomio group is scheduled for deletion", email.subject
     assert_includes body, "trial expired 60 days ago"
-    assert_includes body, "Unless you contact us, it will be deleted in 45 days"
+    assert_includes body, "Your group will be permanently deleted 45 days from now."
     assert_includes body, "Your group is unavailable while it is marked for deletion"
     assert_includes body, "it is not too late to restart"
+    assert_includes body, "Reply to this email immediately"
     assert_includes body, "request a trial extension, upgrade to a paid subscription"
     assert_includes body, "or need more time to export its data"
     assert_includes body, "Subgroups: #{usage[:subgroups]}"
@@ -31,7 +32,11 @@ class GroupMailerTest < ActionMailer::TestCase
 
     email = GroupMailer.admin_deletion_warning(group.id, requestor.id, requestor.id)
 
-    assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
+    AppConfig.stub(:discarded_group_deletion_after_days, 90) do
+      assert_includes email.body.decoded, "scheduled for deletion by #{requestor.name}"
+      assert_includes email.body.decoded, "Reply to this email immediately"
+      assert_includes email.body.decoded, "Your group will be permanently deleted 90 days from now."
+    end
   end
 
   test "catch-up warning describes old trial cleanup and includes the reply window" do
@@ -39,11 +44,51 @@ class GroupMailerTest < ActionMailer::TestCase
     recipient = users(:admin)
 
     email = GroupMailer.expired_trial_deletion_warning(group.id, recipient.id, catch_up: true)
-    body = AppConfig.stub(:group_deletion_delay_days, 90) { email.body.decoded }
+    body = AppConfig.stub(:discarded_group_deletion_after_days, 90) { email.body.decoded }
 
     assert_includes body, "A Loomio trial was created for “#{group.name}” some time ago."
     assert_includes body, "cleaning up old trial data"
-    assert_includes body, "Reply to this email within 90 days"
+    assert_includes body, "Reply to this email immediately"
     refute_includes body, "trial expired 60 days ago"
+  end
+
+  test "cancellation notice uses the group discard and current admin" do
+    group = groups(:group)
+    admin = users(:admin)
+    group.discard!
+    discarded_at = group.discarded_at.iso8601(6)
+    email = GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at)
+    body = AppConfig.stub(:discarded_group_deletion_after_days, 90) { email.body.decoded }
+
+    assert_includes body, "subscription for “#{group.name}” was cancelled"
+    assert_includes body, "Reply to this email immediately"
+    assert_includes body, "Your group will be permanently deleted 90 days from now."
+    assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, users(:user).id, discarded_at).to
+
+    group.undiscard!
+    assert_nil GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, discarded_at).to
+  end
+
+  test "all group notices describe the actual outcome when scheduled deletion is off" do
+    group = groups(:group)
+    trial = groups(:trial_cleanup_poll)
+    admin = users(:admin)
+    group.discard!
+
+    notices = {
+      GroupMailer.admin_deletion_warning(group.id, admin.id, admin.id) => "#{admin.name} made your Loomio group",
+      GroupMailer.expired_trial_deletion_warning(trial.id, admin.id) => "expired 60 days ago",
+      GroupMailer.expired_trial_deletion_warning(trial.id, admin.id, catch_up: true) => "cleaning up old trials",
+      GroupMailer.canceled_subscription_deletion_warning(group.id, admin.id, group.discarded_at.iso8601(6)) => "was cancelled"
+    }
+
+    AppConfig.stub(:discarded_group_deletion_after_days, nil) do
+      notices.each do |email, reason|
+        assert_equal "Your Loomio group is unavailable", email.subject
+        assert_includes email.body.decoded, reason
+        assert_includes email.body.decoded, "not automatically permanently deleted"
+        assert_includes email.body.decoded, "restore access or export a copy"
+      end
+    end
   end
 end

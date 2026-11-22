@@ -21,6 +21,7 @@ class Subscription < ApplicationRecord
   attr_accessor :chargify_product_id
 
   has_paper_trail
+  after_update_commit :enqueue_chargify_cancellation, if: :saved_change_to_state?
 
   # The organisation's subscription, or the unsaved free tier when it has none.
   def self.for(group)
@@ -48,5 +49,16 @@ class Subscription < ApplicationRecord
 
   def management_link
     (self.info || {})['chargify_management_link']
+  end
+
+  private
+
+  def enqueue_chargify_cancellation
+    return unless state == "canceled" && payment_method == "chargify" && chargify_subscription_id.present?
+
+    root_ids = groups.parents_only.limit(2).pluck(:id)
+    return unless root_ids.one?
+
+    WarnAndDiscardCanceledGroupWorker.enqueue_for(root_ids.first, self, "chargify", chargify_subscription_id)
   end
 end

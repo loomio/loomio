@@ -435,10 +435,18 @@ hr:
       body: Vaša Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
     destroy_warning_with_usage:
       subject: Vaša Loomio grupa je planirana za brisanje
-      requested: Vaša Loomio grupa "%{group}" je zakazana za brisanje od strane %{requestor}. Bit će trajno izbrisana nakon %{days} dana.
-      trial_expired_warning: Vaša probna verzija Loomio grupe "%{group}" istekla je prije %{expired_days} dana. Osim ako nas ne kontaktirate, bit će izbrisana za %{grace_days} dana.
+      requested: Vaša Loomio grupa "%{group}" je zakazana za brisanje od strane %{requestor}.
+      trial_expired_warning: Vaša probna verzija Loomio grupe "%{group}" istekla je prije %{expired_days} dana.
       trial_catch_up_warning: Prije nekog vremena za grupu „%{group}” pokrenuto je probno razdoblje na Loomiju. Čistimo podatke iz starih probnih razdoblja i označili smo grupu za brisanje.
-      trial_expired_process: Vaša grupa nije dostupna dok je označena za brisanje. Ako i dalje želite mjesto gdje će vaša grupa raspravljati i donositi odluke, nije prekasno za ponovno pokretanje. Odgovorite na ovu e-poštu u roku od %{grace_days} dana ako želite zatražiti produljenje probnog razdoblja, nadograditi na plaćenu pretplatu ili vam je potrebno više vremena za izvoz podataka. Nakon toga, grupa i njezini podaci bit će trajno izbrisani.
+      subscription_canceled: Pretplata za grupu „%{group}” je otkazana. Grupu smo označili za brisanje i trenutačno nije dostupna.
+      restore_or_export_before_deletion: "Odmah odgovorite na ovu poruku ako želite da ponovno omogućimo pristup ili izvezemo kopiju podataka vaše grupe. Vaša će se grupa trajno izbrisati za %{days} dana."
+      unavailable_subject: "Vaša grupa na Loomiju nije dostupna"
+      requested_unavailable: "%{requestor} je učinio vašu grupu „%{group}” na Loomiju nedostupnom."
+      trial_expired_unavailable: "Probno razdoblje za grupu „%{group}” na Loomiju isteklo je prije %{expired_days} dana. Grupa nije dostupna."
+      trial_catch_up_unavailable: "Prije nekog vremena pokrenuto je probno razdoblje za „%{group}”. Sređujemo stare probne grupe i ta grupa više nije dostupna."
+      subscription_canceled_unavailable: "Pretplata za „%{group}” je otkazana. Grupa nije dostupna."
+      restore_or_export: "Podaci vaše grupe ne brišu se automatski trajno. Odgovorite na ovu poruku ako želite da vratimo pristup ili izvezemo kopiju podataka vaše grupe."
+      trial_expired_process: Vaša grupa nije dostupna dok je označena za brisanje. Ako i dalje želite mjesto gdje će vaša grupa raspravljati i donositi odluke, nije prekasno za ponovno pokretanje. Odmah odgovorite na ovu poruku ako želite zatražiti produljenje probnog razdoblja, prijeći na plaćenu pretplatu ili trebate više vremena za izvoz podataka. Vaša će se grupa trajno izbrisati za %{grace_days} dana.
       trial_expired: Vaša Loomio grupa "%{group}" je na istekloj probnoj verziji najmanje 60 dana. Bit će trajno izbrisana nakon %{days} dana.
       usage_heading: 'Sažetak podataka grupe:'
       subgroups: Podgrupe
@@ -446,7 +454,6 @@ hr:
       discussions: Rasprave
       polls: Ankete
       comments: Komentari
-      export: Da biste zadržali grupu ili izvezli kopiju njezinih podataka, odgovorite na ovu e-poruku u roku od %{days} dana. Možemo vratiti pristup prije brisanja.
       export_link: Saznajte više o izvozu podataka grupe
       group_key: 'Grupni ključ: %{key}'
   poll_mailer:

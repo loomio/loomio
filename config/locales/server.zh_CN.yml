@@ -703,10 +703,18 @@ zh_CN:
       body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
     destroy_warning_with_usage:
       subject: 您的 Loomio 群组已被安排删除
-      requested: 您的 Loomio 群组“%{group}”已被 %{requestor} 安排删除。该群组将在 %{days} 天后被永久删除。
-      trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。除非您联系我们，否则它将在 %{grace_days} 天内被删除。
+      requested: 您的 Loomio 群组“%{group}”已被 %{requestor} 安排删除。
+      trial_expired_warning: 您的 Loomio 群组“%{group}”试用期已于 %{expired_days} 天前到期。
       trial_catch_up_warning: 一段时间前，群组“%{group}”开通了 Loomio 试用。我们正在清理旧的试用数据，已将该群组标记为待删除。
-      trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请在 %{grace_days} 天内回复此邮件。逾期后，群组及其数据将被永久删除。
+      subscription_canceled: 群组“%{group}”的订阅已取消。我们已将该群组标记为待删除，目前无法访问。
+      restore_or_export_before_deletion: "如需我们恢复访问权限或导出群组数据的副本，请立即回复此邮件。您的群组将在 %{days} 天后被永久删除。"
+      unavailable_subject: "您的 Loomio 群组目前无法访问"
+      requested_unavailable: "%{requestor} 已停用您的 Loomio 群组“%{group}”的访问权限。"
+      trial_expired_unavailable: "“%{group}”的 Loomio 试用已于 %{expired_days} 天前到期。该群组目前无法访问。"
+      trial_catch_up_unavailable: "一段时间前，“%{group}”开通了 Loomio 试用。我们正在整理旧试用群组，该群组目前无法访问。"
+      subscription_canceled_unavailable: "“%{group}”的订阅已取消。该群组目前无法访问。"
+      restore_or_export: "您的群组数据不会自动永久删除。如果您希望我们恢复访问权限或导出群组数据副本，请回复此邮件。"
+      trial_expired_process: 您的群组已被标记为删除，因此暂时无法使用。如果您仍然希望群组能够继续讨论和决策，现在重新开始还不算晚。如果您想申请延长试用期、升级到付费订阅或需要更多时间导出数据，请立即回复此邮件。您的群组将在 %{grace_days} 天后被永久删除。
       trial_expired: 您的 Loomio 群组“%{group}”已处于试用期至少 60 天，试用期已过期。该群组将在 %{days} 天后被永久删除。
       usage_heading: 组数据汇总：
       subgroups: 子群组
@@ -714,7 +722,6 @@ zh_CN:
       discussions: 讨论
       polls: 投票
       comments: 评论
-      export: 如需保留该群组或导出其数据副本，请在 %{days} 天内回复此邮件。我们可以在删除前恢复访问权限。
       export_link: 了解如何导出群组数据
       group_key: 组键：%{key}
   forward_mailer:

@@ -1287,6 +1287,12 @@ hu:
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
     scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
     deletion_after_grace_period: Ez a csoport nem érhető el, és %{days} nap múlva véglegesen törlésre kerül
+    discard_title: "Csoport eltávolítása"
+    discard_subgroup_title: "Alcsoport eltávolítása"
+    discard_parent_body: "Ez a csoport és az alcsoportjai azonnal eltűnnek, és a Loomio-előfizetése is megszűnik. A csoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
+    discard_body: "Ez az alcsoport azonnal eltűnik. Az alcsoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
+    discard_confirm: "A megerősítéshez írd be: '%{name}'"
+    discard_success: "Csoport eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket"
   group_page:
     stats: Csoport statisztika
     threads: Témák
@@ -3084,6 +3090,10 @@ hu:
   delete_discussion_form:
     discussion_deleted: Beszélgetés törölve
     body: Biztosan törölni akarod ezt a témát?
+    body_with_deletion: "Ez a szál azonnal eltűnik, és %{days} nap múlva véglegesen törlődik."
+    body_reversible: "Ez a szál azonnal eltűnik. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
+    deleted_after_grace_period: "Szál eltávolítva. %{days} nap múlva véglegesen törlődik"
+    removed: "Szál eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket"
   move_discussion_form:
     title: Beszélgetés áthelyezése egy másik csoportba
     body: Célcsoport

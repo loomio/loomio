@@ -17,22 +17,19 @@ class CleanupServiceTest < ActiveSupport::TestCase
     user
   end
 
-  test "delete_records limits one integrity category batch" do
+  test "audit identifies the exact new dangling reference after a deletion" do
+    live = groups(:group)
+    removed = Group.create!(name: "Tagged group", creator: @user, group_privacy: "secret")
     tag = tags(:cleanup_tag)
-    now = Time.current
-    Tagging.insert_all!(Array.new(CleanupService::DELETE_BATCH_SIZE + 1) do |index|
-      {
-        tag_id: tag.id,
-        taggable_type: "Group",
-        taggable_id: Group.maximum(:id) + index + 1,
-        created_at: now,
-        updated_at: now
-      }
-    end)
+    Tagging.insert_all!([{tag_id: tag.id, taggable_type: "Group", taggable_id: live.id}])
+    affected_id = Tagging.insert_all!([{tag_id: tag.id, taggable_type: "Group", taggable_id: removed.id}]).rows.first.first
+    before = IntegrityAuditService.audit_orphan_records(include_ids: true)
 
-    scope = CleanupService.orphan_polymorphic_scope(Tagging, :taggable_type, :taggable_id, "Group")
-    assert_equal CleanupService::DELETE_BATCH_SIZE, CleanupService.delete_records(scope)
-    assert_equal 1, scope.count
+    removed.destroy!
+
+    after = IntegrityAuditService.audit_orphan_records(include_ids: true)
+    assert_equal [affected_id], after[:missing_polymorphic_targets].fetch("Tagging.Group") - before[:missing_polymorphic_targets].fetch("Tagging.Group")
+    assert Tagging.exists?(affected_id)
   end
 
   test "content blocks callbackless group deletion and survives cleanup" do
@@ -54,7 +51,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
       Group.transaction(requires_new: true) { Group.where(id: group.id).delete_all }
     end
 
-    CleanupService.delete_orphan_records
+    IntegrityAuditService.audit_orphan_records
 
     assert Membership.exists?(membership.id)
     assert Discussion.exists?(discussion.id)
@@ -74,10 +71,10 @@ class CleanupServiceTest < ActiveSupport::TestCase
 
     Group.where(id: group.id).delete_all
 
-    audit = CleanupService.audit_orphan_records
+    audit = IntegrityAuditService.audit_orphan_records
 
     assert_not_includes audit[:dangling_records], "Membership.missing_group"
-    assert_equal 1, audit[:dangling_records]["Subscription.missing_group"]
+    assert_equal 1, audit[:retained_records]["Subscription.missing_group"]
     assert_not Membership.exists?(membership.id)
     assert Subscription.exists?(subscription.id)
   end
@@ -93,7 +90,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
     tagging_id = Tagging.insert_all!([{tag_id: tag.id, taggable_type: 'Group', taggable_id: group.id}]).rows.first.first
 
     removed_group.destroy!
-    CleanupService.delete_orphan_records
+    IntegrityAuditService.audit_orphan_records
 
     refute PendingEmail.exists?(removed.id)
     assert ActionMailbox::InboundEmail.exists?(removed.inbound_email_id)
@@ -111,48 +108,48 @@ class CleanupServiceTest < ActiveSupport::TestCase
       Topic.transaction(requires_new: true) { Topic.where(id: topic_item.topic_id).delete_all }
     end
 
-    CleanupService.delete_orphan_records
+    IntegrityAuditService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
     assert TopicItem.exists?(topic_item.id)
   end
 
-  test "delete_orphan_records preserves a comment when only its timeline is missing" do
+  test "the audit preserves a comment when only its timeline is missing" do
     comment = comments(:public_discussion_comment)
     comment.topic_items.delete_all
 
-    CleanupService.delete_orphan_records
+    IntegrityAuditService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
   end
 
-  test "delete_orphan_records preserves a missing-root topic with surviving comments" do
+  test "the audit preserves a missing-root topic with surviving comments" do
     comment = comments(:public_discussion_comment)
     topic_id = comment.topic.id
     Discussion.where(id: comment.parent_id).delete_all
 
-    CleanupService.delete_orphan_records
+    IntegrityAuditService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
     assert Topic.exists?(topic_id)
   end
 
-  test "cleanup_comment_references preserves replies while their topic still exists" do
+  test "the audit preserves replies while their topic still exists" do
     comment = comments(:public_discussion_comment)
     reply = Comment.create!(parent: comment, user: @user, body: "Reply to orphan")
     Discussion.where(id: comment.parent_id).delete_all
 
-    CleanupService.cleanup_comment_references!
+    IntegrityAuditService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
     assert Comment.exists?(reply.id)
   end
 
-  test "cleanup_comment_references preserves comments which only lack a timeline entry" do
+  test "the audit preserves comments which only lack a timeline entry" do
     comment = comments(:public_discussion_comment)
     comment.topic_items.destroy_all
 
-    CleanupService.cleanup_comment_references!
+    IntegrityAuditService.audit_orphan_records
 
     assert Comment.exists?(comment.id)
   end
@@ -161,7 +158,7 @@ class CleanupServiceTest < ActiveSupport::TestCase
     comment = comments(:public_discussion_comment)
     Discussion.where(id: comment.parent_id).delete_all
 
-    audit = CleanupService.audit_orphan_records
+    audit = IntegrityAuditService.audit_orphan_records
 
     assert_equal 1, audit[:dangling_records]["Comment.missing_parent"]
     assert_equal 0, audit[:dangling_records]["Comment.missing_event"]
@@ -184,13 +181,13 @@ class CleanupServiceTest < ActiveSupport::TestCase
     comment = Comment.create!(parent: stance, user: @user, body: "Stance reply")
     Stance.where(id: stance.id).delete_all
 
-    audit = CleanupService.audit_orphan_records
+    audit = IntegrityAuditService.audit_orphan_records
 
     assert_equal 1, audit[:dangling_records]["Comment.missing_parent"]
     assert Comment.exists?(comment.id)
   end
 
-  test "delete_orphan_versions removes PaperTrail versions for missing records" do
+  test "audit reports retained versions and unresolved models separately" do
     group = Group.create!(
       name: "Version Cleanup #{SecureRandom.hex(4)}",
       creator: @user,
@@ -203,14 +200,17 @@ class CleanupServiceTest < ActiveSupport::TestCase
       returning: %w[id]
     ).rows.first.first
 
-    CleanupService.delete_orphan_versions
+    audit = IntegrityAuditService.audit_orphan_records(include_ids: true)
 
+    assert_includes audit[:retained_records].fetch("PaperTrail::Version.Group"), orphan_version.id
+    refute_includes audit[:retained_records].fetch("PaperTrail::Version.Group"), live_version.id
+    assert_includes audit[:unresolved_polymorphic_types].fetch("PaperTrail::Version.Motion"), removed_model_version_id
     assert PaperTrail::Version.exists?(live_version.id)
-    assert_not PaperTrail::Version.exists?(orphan_version.id)
-    assert_not PaperTrail::Version.exists?(removed_model_version_id)
+    assert PaperTrail::Version.exists?(orphan_version.id)
+    assert PaperTrail::Version.exists?(removed_model_version_id)
   end
 
-  test "delete_orphan_records deletes references to retired polymorphic types" do
+  test "audit reports retired polymorphic types and preserves attachment links" do
     blob = ActiveStorage::Blob.create!(
       key: "retired-document-#{@hex}",
       filename: "retired.txt",
@@ -226,25 +226,23 @@ class CleanupServiceTest < ActiveSupport::TestCase
       record_id: 1,
       record_type: "Document"
     } ], returning: %w[id]).rows.first.first
-    audit = CleanupService.audit_orphan_records
+    audit = IntegrityAuditService.audit_orphan_records
 
     assert_equal 1, audit[:retired_polymorphic_types]["ActiveStorage::Attachment.Document"]
-    CleanupService.delete_orphan_records
-
-    assert_not ActiveStorage::Attachment.exists?(attachment_id)
+    assert ActiveStorage::Attachment.exists?(attachment_id)
     assert ActiveStorage::Blob.exists?(blob.id)
   end
 
-  test "delete_inactive_orphan_users deletes long-inactive users with no durable references" do
+  test "destroy_inactive_orphan_users deletes long-inactive users with no durable references" do
     user = build_inactive_user
     PaperTrail::Version.create!(item_type: 'User', item_id: user.id, event: 'update')
-    assert_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_includes PurgeService.inactive_orphan_user_ids, user.id
 
     transaction = ->(_tables, &cleanup_block) do
       ActiveRecord::Base.transaction(requires_new: true, &cleanup_block)
     end
-    CleanupService.stub(:with_write_lock, transaction) do
-      CleanupService.delete_inactive_orphan_users
+    PurgeService.stub(:with_write_lock, transaction) do
+      PurgeService.destroy_inactive_orphan_users
     end
 
     assert_not User.exists?(user.id)
@@ -259,6 +257,6 @@ class CleanupServiceTest < ActiveSupport::TestCase
       group_privacy: 'secret'
     )
 
-    assert_not_includes CleanupService.inactive_orphan_user_ids, user.id
+    assert_not_includes PurgeService.inactive_orphan_user_ids, user.id
   end
 end

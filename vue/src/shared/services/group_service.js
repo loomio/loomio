@@ -15,6 +15,10 @@ import { I18n } from '@/i18n';
 export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
+    const deletionDays = group.isParent() ? AppConfig.groupDeletionDelayDays : AppConfig.subgroupDeletionDelayDays;
+    const title = deletionDays
+      ? (group.isParent() ? 'title' : 'subgroup_title')
+      : (group.isParent() ? 'discard_title' : 'discard_subgroup_title');
 
     return {
       email_group: {
@@ -226,7 +230,7 @@ export default new class GroupService {
       },
 
       destroy_group: {
-        name: 'delete_group_modal.title',
+        name: `delete_group_modal.${title}`,
         icon: 'mdi-delete',
         menu: true,
         canPerform() {
@@ -234,6 +238,10 @@ export default new class GroupService {
         },
         perform() {
           const confirmText = group.handle || group.name.trim();
+          const body = group.isParent() ? 'parent_body' : 'body';
+          const helpText = deletionDays ? body : `discard_${body}`;
+          const confirmKey = deletionDays ? 'confirm' : 'discard_confirm';
+          const flashKey = deletionDays ? 'deletion_after_grace_period' : 'discard_success';
           let returnUrl = '/dashboard'
           if (membership.group().parentId) {
             returnUrl = LmoUrlService.group(membership.group().parent())
@@ -244,14 +252,14 @@ export default new class GroupService {
               confirm: {
                 submit: () => group.destroy(),
                 text: {
-                  title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
-                  helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',
-                  raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
+                  title:    `delete_group_modal.${title}`,
+                  helptext: `delete_group_modal.${helpText}`,
+                  raw_confirm_text_placeholder: I18n.global.t(`delete_group_modal.${confirmKey}`, {name: confirmText}),
                   confirm_text: confirmText,
-                  flash:    'delete_group_modal.deletion_after_grace_period',
-                  submit:   'delete_group_modal.title'
+                  flash:    `delete_group_modal.${flashKey}`,
+                  submit:   `delete_group_modal.${title}`
                 },
-                textArgs: {days: AppConfig.groupDeletionDelayDays},
+                textArgs: {days: deletionDays},
                 redirect:   returnUrl
               }
             }

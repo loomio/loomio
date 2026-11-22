@@ -1289,6 +1289,12 @@ sv:
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
     scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
     deletion_after_grace_period: Den här gruppen är inte tillgänglig och kommer att raderas permanent efter %{days} dagar
+    discard_title: "Ta bort grupp"
+    discard_subgroup_title: "Ta bort undergrupp"
+    discard_parent_body: "Den här gruppen och dess undergrupper döljs direkt och dess Loomio-prenumeration avslutas. Gruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
+    discard_body: "Den här undergruppen döljs direkt. Undergruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
+    discard_confirm: "Skriv '%{name}' för att bekräfta"
+    discard_success: "Grupp borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör"
   group_page:
     stats: Gruppstatistik
     threads: Trådar
@@ -3081,6 +3087,10 @@ sv:
   delete_discussion_form:
     discussion_deleted: Diskussionen raderad
     body: Är du säker på att du vill ta bort den här tråden?
+    body_with_deletion: "Den här tråden döljs direkt och raderas permanent efter %{days} dagar."
+    body_reversible: "Den här tråden döljs direkt. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
+    deleted_after_grace_period: "Tråd borttagen. Den raderas permanent efter %{days} dagar"
+    removed: "Tråd borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör"
   move_discussion_form:
     title: Flytta diskussionen till en annan grupp
     body: Destinationsgrupp

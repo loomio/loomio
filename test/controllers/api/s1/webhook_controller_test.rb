@@ -114,6 +114,41 @@ class Api::S1::WebhookControllerTest < ActionDispatch::IntegrationTest
     assert_nil subscription.billing_service_subscription_id
   end
 
+  test "confirmed cancellation queues one discard and a notice after the discard" do
+    @group.add_admin!(@group.creator)
+    child = groups(:orphan_group)
+    child.update_columns(parent_id: @group.id, subscription_id: nil)
+    cancellation = payload
+    cancellation["subscription"].merge!("state" => "canceled", "canceled_at" => Time.current.iso8601)
+
+    assert_enqueued_jobs 1, only: WarnAndDiscardCanceledGroupWorker do
+      2.times { post_update(cancellation) }
+    end
+    assert @group.reload.kept?
+
+    assert_enqueued_jobs 1, only: ActionMailer::MailDeliveryJob do
+      perform_enqueued_jobs(only: WarnAndDiscardCanceledGroupWorker)
+    end
+    assert @group.reload.discarded?
+    assert child.reload.discarded?
+    assert_no_enqueued_jobs(only: DestroyGroupWorker) { post_update(cancellation) }
+  end
+
+  test "a scheduled, expired, or stale billing event does not discard a group" do
+    assert_no_enqueued_jobs(only: WarnAndDiscardCanceledGroupWorker) do
+      %w[canceling expired active canceled].each_with_index do |state, index|
+        update = payload
+        update["event_id"] = "evt_#{index}"
+        update["occurred_at"] = 1.day.ago.iso8601 if state == "canceled"
+        update["subscription"]["state"] = state
+        post_update(update)
+        assert_response :ok
+      end
+    end
+    assert_equal "active", @group.reload.subscription.state
+    assert @group.kept?
+  end
+
   private
 
   def payload

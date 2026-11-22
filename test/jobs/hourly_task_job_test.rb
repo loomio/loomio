@@ -2,7 +2,7 @@ require "test_helper"
 
 class HourlyTaskJobTest < ActiveSupport::TestCase
   test "expires ended-session history without depending on optional orphan cleanup" do
-    cleanup_before = ENV.delete("CLEANUP_ENABLED")
+    cleanup_before = ENV.delete("LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS")
     retention_before = ENV.delete("LOOMIO_SESSION_RETENTION_DAYS")
     freeze_time do
       expired = users(:user).sessions.create!(created_at: 90.days.ago, revoked_at: 60.days.ago)
@@ -14,7 +14,7 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
       assert Session.exists?(retained.id)
     end
   ensure
-    cleanup_before.nil? ? ENV.delete("CLEANUP_ENABLED") : ENV["CLEANUP_ENABLED"] = cleanup_before
+    ENV["LOOMIO_DELETE_ORPHAN_USERS_AFTER_X_DAYS"] = cleanup_before
     retention_before.nil? ? ENV.delete("LOOMIO_SESSION_RETENTION_DAYS") : ENV["LOOMIO_SESSION_RETENTION_DAYS"] = retention_before
   end
 
@@ -34,82 +34,62 @@ class HourlyTaskJobTest < ActiveSupport::TestCase
     assert_not LoginToken.exists?(expired_token.id)
   end
 
-  test "enqueues orphan cleanup at midnight UTC only when cleanup is enabled" do
-    begin
-      ENV.delete("CLEANUP_ENABLED")
-      travel_to Time.utc(2026, 9, 5) do
-        assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-          HourlyTaskJob.perform_now
-        end
-      end
+  test "schedules daily orphan account destruction only at midnight UTC" do
+    midnight = Time.utc(2026, 9, 8)
 
-      ENV["CLEANUP_ENABLED"] = "1"
-      travel_to Time.utc(2026, 9, 5) do
-        assert_enqueued_with(job: CleanupOrphanRecordsWorker) do
-          HourlyTaskJob.perform_now
-        end
+    travel_to midnight do
+      assert_enqueued_with(job: DestroyOrphanUsersWorker) do
+        HourlyTaskJob.perform_now
       end
-    ensure
-      ENV.delete("CLEANUP_ENABLED")
+    end
+
+    travel_to midnight + 1.hour do
+      assert_no_enqueued_jobs(only: DestroyOrphanUsersWorker) do
+        HourlyTaskJob.perform_now
+      end
     end
   end
 
-  test "does not enqueue orphan cleanup at midnight in another time zone" do
-    begin
-      ENV["CLEANUP_ENABLED"] = "1"
-      travel_to Time.new(2026, 9, 5, 0, 0, 0, "+12:00") do
-        assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-          HourlyTaskJob.perform_now
-        end
-      end
-    ensure
-      ENV.delete("CLEANUP_ENABLED")
-    end
-  end
+  test "permanent group deletion tops up hourly only when a delay is configured" do
+    previous = ENV.delete("LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS")
+    group = groups(:orphan_group_tree)
+    hour = Time.utc(2026, 9, 8, 13)
 
-  test "schedules the combined group job with orphan cleanup off" do
-    cleanup_before = ENV.delete("CLEANUP_ENABLED")
-    groups_before = ENV["LOOMIO_GROUP_CLEANUP_ENABLED"]
-    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = "enabled"
+    travel_to hour do
+      group.discard!(at: 36.days.ago)
+      assert_no_enqueued_jobs(only: DestroyGroupWorker) { HourlyTaskJob.perform_now }
 
-    travel_to Time.utc(2026, 9, 8) do
-      assert_no_enqueued_jobs(only: CleanupOrphanRecordsWorker) do
-        assert_enqueued_with(job: CleanupGroupsWorker) { HourlyTaskJob.perform_now }
+      ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = "35"
+      assert_enqueued_with(job: DestroyGroupWorker, args: [group.id, group.discarded_at.iso8601(6)]) do
+        HourlyTaskJob.perform_now
       end
     end
   ensure
-    ENV["CLEANUP_ENABLED"] = cleanup_before
-    ENV["LOOMIO_GROUP_CLEANUP_ENABLED"] = groups_before
+    ENV["LOOMIO_DELETE_DISCARDED_GROUPS_AFTER_X_DAYS"] = previous
   end
 
-  test "queues expired-trial warnings at midnight UTC only when cleanup is enabled" do
-    begin
-      ENV.delete("CLEANUP_ENABLED")
-      called = false
-      travel_to Time.utc(2026, 9, 8) do
-        CleanupService.stub(:warn_and_discard_expired_trial_groups, ->(**) { called = true }) do
-          HourlyTaskJob.perform_now
-        end
-      end
-      assert_not called
+  test "permanent subgroup and thread deletion top up hourly only when configured" do
+    subgroups_before = ENV.delete("LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS")
+    threads_before = ENV.delete("LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS")
+    subgroup = groups(:orphan_subgroup)
+    topic = topics(:direct_topic)
+    hour = Time.utc(2026, 9, 8, 13)
 
-      ENV["CLEANUP_ENABLED"] = "1"
-      called = false
-      travel_to Time.utc(2026, 9, 8) do
-        CleanupService.stub(:warn_and_discard_expired_trial_groups, -> { called = true }) do
-          CleanupService.stub(:destroy_discarded_groups, -> { raise "destroying discarded groups is not enabled" }) do
-            HourlyTaskJob.perform_now
-          end
-        end
-      end
-      assert called
-      travel_to Time.utc(2026, 9, 8, 12) do
-        CleanupService.stub(:warn_and_discard_expired_trial_groups, ->(**) { raise "should not run" }) do
+    travel_to hour do
+      subgroup.discard!(at: 31.days.ago)
+      topic.update_column(:discarded_at, 15.days.ago)
+      assert_no_enqueued_jobs(only: [ DestroyGroupWorker, DestroyTopicWorker ]) { HourlyTaskJob.perform_now }
+
+      ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = "30"
+      ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = "14"
+      assert_enqueued_with(job: DestroyGroupWorker, args: [subgroup.id, subgroup.discarded_at.iso8601(6)]) do
+        assert_enqueued_with(job: DestroyTopicWorker, args: [topic.id, topic.discarded_at.iso8601(6)]) do
           HourlyTaskJob.perform_now
         end
       end
-    ensure
-      ENV.delete("CLEANUP_ENABLED")
     end
+  ensure
+    ENV["LOOMIO_DELETE_DISCARDED_SUBGROUPS_AFTER_X_DAYS"] = subgroups_before
+    ENV["LOOMIO_DELETE_DISCARDED_THREADS_AFTER_X_DAYS"] = threads_before
   end
 end

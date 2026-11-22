@@ -1281,6 +1281,12 @@ ro:
     success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
     scheduled_for_deletion: Acest grup este programat pentru ștergere permanentă în 2 săptămâni.
     deletion_after_grace_period: Acest grup este indisponibil și va fi șters definitiv după %{days} de zile
+    discard_title: "Elimină grupul"
+    discard_subgroup_title: "Elimină subgrupul"
+    discard_parent_body: "Acest grup și subgrupurile lui vor fi ascunse imediat, iar abonamentul său Loomio va fi anulat. Datele grupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
+    discard_body: "Acest subgrup va fi ascuns imediat. Datele subgrupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
+    discard_confirm: "Scrie «%{name}» pentru a confirma"
+    discard_success: "Grup eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului"
   group_page:
     stats: Statistici de grup
     threads: Discutii
@@ -3073,6 +3079,10 @@ ro:
   delete_discussion_form:
     discussion_deleted: Discuția a fost ștearsă
     body: Sigur vrei să ștergi acest fir de discuție?
+    body_with_deletion: "Acest fir va fi ascuns imediat și șters permanent după %{days} zile."
+    body_reversible: "Acest fir va fi ascuns imediat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
+    deleted_after_grace_period: "Fir eliminat. Va fi șters permanent după %{days} zile"
+    removed: "Fir eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului"
   move_discussion_form:
     title: Mută discuția în alt grup
     body: Grup de destinații

@@ -9,6 +9,7 @@ import PollAbility from '@/shared/abilities/poll_ability';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ScrollService  from '@/shared/services/scroll_service';
 import openModal      from '@/shared/helpers/open_modal';
+import AppConfig      from '@/shared/services/app_config';
 import { hardReload } from '@/shared/helpers/window';
 import { downloadFile } from '@/shared/helpers/download_file';
 import { subMonths } from 'date-fns';
@@ -327,6 +328,13 @@ export default new class TopicService {
           return topic.adminsInclude(Session.user()) || (topic.author() === Session.user());
         },
         perform() {
+          const threadDeletionDays = AppConfig.threadDeletionDelayDays;
+          const helpText = threadDeletionDays
+            ? 'delete_discussion_form.body_with_deletion'
+            : 'delete_discussion_form.body_reversible';
+          const flash = threadDeletionDays
+            ? 'delete_discussion_form.deleted_after_grace_period'
+            : 'delete_discussion_form.removed';
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -334,10 +342,11 @@ export default new class TopicService {
                 submit: () => topic.discard(),
                 text: {
                   title: 'action_dock.delete_thread',
-                  helptext: 'delete_discussion_form.body',
+                  helptext: helpText,
                   submit: 'action_dock.delete_thread',
-                  flash: 'delete_discussion_form.discussion_deleted'
+                  flash: flash
                 },
+                textArgs: { days: threadDeletionDays },
                 redirect: LmoUrlService.group(topic.group())
               }
             }

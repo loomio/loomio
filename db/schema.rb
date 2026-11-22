@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_20_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_23_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -320,11 +320,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_20_000001) do
     t.integer "theme_id"
     t.string "token"
     t.datetime "updated_at", precision: nil
+    t.virtual "is_root", type: :boolean, as: "(parent_id IS NULL)", stored: true
+    t.virtual "parent_is_root", type: :boolean, as: "\nCASE\n    WHEN (parent_id IS NOT NULL) THEN true\n    ELSE NULL::boolean\nEND", stored: true
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["creator_id"], name: "index_groups_on_creator_id"
     t.index ["discarded_at"], name: "index_groups_on_discarded_at", where: "(discarded_at IS NULL)"
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
+    t.index ["id", "is_root"], name: "index_groups_on_id_and_is_root", unique: true
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
     t.index ["parent_id"], name: "index_groups_on_parent_id"
@@ -1216,7 +1219,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_20_000001) do
     t.integer "depth", default: 0, null: false
     t.integer "itemable_id", null: false
     t.string "itemable_type", limit: 255, null: false
-    t.integer "itemable_version_id"
     t.string "kind", limit: 255, null: false
     t.integer "parent_id"
     t.boolean "pinned", default: false, null: false
@@ -1425,6 +1427,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_20_000001) do
   add_foreign_key "group_follows", "users", on_delete: :cascade
   add_foreign_key "group_handle_redirects", "groups"
   add_foreign_key "groups", "groups", column: "parent_id"
+  add_foreign_key "groups", "groups", column: ["parent_id", "parent_is_root"], primary_key: ["id", "is_root"], name: "fk_groups_single_level_subgroup"
   add_foreign_key "legacy_anonymous_vote_reasons", "anonymous_ballots", on_delete: :cascade
   add_foreign_key "membership_requests", "groups", on_delete: :cascade
   add_foreign_key "memberships", "groups", on_delete: :cascade

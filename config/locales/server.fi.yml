@@ -439,10 +439,18 @@ fi:
       body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
     destroy_warning_with_usage:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi
-      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requestor} toimesta. Se poistetaan pysyvästi %{days} päivän kuluttua.
-      trial_expired_warning: Loomio-ryhmäsi "%{group}" kokeilujakso päättyi %{expired_days} päivää sitten. Ellet ota meihin yhteyttä, se poistetaan %{grace_days} päivän kuluttua.
+      requested: Loomio-ryhmäsi "%{group}" on ajoitettu poistettavaksi käyttäjän %{requestor} toimesta.
+      trial_expired_warning: Loomio-ryhmäsi "%{group}" kokeilujakso päättyi %{expired_days} päivää sitten.
       trial_catch_up_warning: Ryhmälle ”%{group}” aloitettiin jokin aika sitten Loomion kokeilujakso. Siivoamme vanhojen kokeilujen tietoja ja olemme merkinneet ryhmän poistettavaksi.
-      trial_expired_process: Ryhmäsi ei ole käytettävissä, kun se on merkitty poistettavaksi. Jos haluat edelleen paikan, jossa ryhmäsi voi keskustella ja tehdä päätöksiä, ei ole liian myöhäistä aloittaa uudelleen. Vastaa tähän sähköpostiin %{grace_days} päivän kuluessa, jos haluat pyytää kokeilujakson pidennystä, päivittää maksulliseen tilaukseen tai tarvitset lisää aikaa tietojen viemiseen. Tämän jälkeen ryhmä ja sen tiedot poistetaan pysyvästi.
+      subscription_canceled: Ryhmän ”%{group}” tilaus on peruutettu. Olemme merkinneet ryhmän poistettavaksi, eikä se ole tällä hetkellä käytettävissä.
+      restore_or_export_before_deletion: "Vastaa tähän viestiin heti, jos haluat, että palautamme käyttöoikeuden tai viemme kopion ryhmäsi tiedoista. Ryhmäsi poistetaan pysyvästi %{days} päivän kuluttua."
+      unavailable_subject: "Loomio-ryhmäsi ei ole käytettävissä"
+      requested_unavailable: "%{requestor} esti pääsyn Loomio-ryhmääsi ”%{group}”."
+      trial_expired_unavailable: "Ryhmän ”%{group}” Loomio-kokeilu päättyi %{expired_days} päivää sitten. Ryhmä ei ole käytettävissä."
+      trial_catch_up_unavailable: "Ryhmälle ”%{group}” aloitettiin jokin aika sitten Loomio-kokeilu. Käymme läpi vanhoja kokeiluja, eikä ryhmä ole enää käytettävissä."
+      subscription_canceled_unavailable: "Ryhmän ”%{group}” tilaus on peruttu. Ryhmä ei ole käytettävissä."
+      restore_or_export: "Ryhmäsi tietoja ei poisteta automaattisesti pysyvästi. Vastaa tähän sähköpostiin, jos haluat meidän palauttavan pääsyn tai vievän kopion ryhmäsi tiedoista."
+      trial_expired_process: Ryhmäsi ei ole käytettävissä, kun se on merkitty poistettavaksi. Jos haluat edelleen paikan, jossa ryhmäsi voi keskustella ja tehdä päätöksiä, ei ole liian myöhäistä aloittaa uudelleen. Vastaa tähän viestiin heti, jos haluat pyytää kokeilujakson pidennystä, siirtyä maksulliseen tilaukseen tai tarvitset lisää aikaa tietojen vientiin. Ryhmäsi poistetaan pysyvästi %{grace_days} päivän kuluttua.
       trial_expired: Loomio-ryhmäsi "%{group}" on ollut vanhentuneessa kokeilujaksossa vähintään 60 päivää. Se poistetaan pysyvästi %{days} päivän kuluttua.
       usage_heading: 'Ryhmätietojen yhteenveto:'
       subgroups: Alaryhmät
@@ -450,7 +458,6 @@ fi:
       discussions: Keskustelut
       polls: Kyselyt
       comments: Kommentit
-      export: Jos haluat säilyttää ryhmän tai viedä kopion sen tiedoista, vastaa tähän sähköpostiin %{days} päivän kuluessa. Voimme palauttaa käyttöoikeudet ennen poistamista.
       export_link: Lisätietoja ryhmätietojen viennistä
       group_key: 'Ryhmän avain: %{key}'
   poll_mailer:

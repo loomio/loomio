@@ -1281,6 +1281,12 @@ tr:
     success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
     scheduled_for_deletion: Bu grubun 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
     deletion_after_grace_period: Bu grup kullanılamıyor ve %{days} gün sonra kalıcı olarak silinecek
+    discard_title: "Grubu kaldır"
+    discard_subgroup_title: "Alt grubu kaldır"
+    discard_parent_body: "Bu grup ve alt grupları hemen görünümden kaldırılacak ve Loomio aboneliği iptal edilecektir. Grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
+    discard_body: "Bu alt grup hemen görünümden kaldırılacaktır. Alt grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
+    discard_confirm: "Onaylamak için '%{name}' yazın"
+    discard_success: "Grup kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir"
   group_page:
     stats: Grup istatistikleri
     threads: Müzakereler
@@ -3070,6 +3076,10 @@ tr:
   delete_discussion_form:
     discussion_deleted: Tartışma silindi
     body: Bu ileti dizisini silmek istediğinizden emin misiniz?
+    body_with_deletion: "Bu başlık hemen görünümden kaldırılacak ve %{days} gün sonra kalıcı olarak silinecektir."
+    body_reversible: "Bu başlık hemen görünümden kaldırılacaktır. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
+    deleted_after_grace_period: "Başlık kaldırıldı. %{days} gün sonra kalıcı olarak silinecektir"
+    removed: "Başlık kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir"
   move_discussion_form:
     title: Tartışmayı başka bir gruba taşıyın
     body: Hedef grup

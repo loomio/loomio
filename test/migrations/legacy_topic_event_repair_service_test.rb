@@ -97,7 +97,6 @@ class LegacyTopicEventRepairServiceTest < ActiveSupport::TestCase
     [
       [:events, :itemable_type, :eventable_type],
       [:events, :itemable_id, :eventable_id],
-      [:events, :itemable_version_id, :eventable_version_id],
       [:topic_readers, :volume_email, :volume],
       [:topic_readers, :volume_push, :later_volume_push],
       [:memberships, :volume_email, :volume],

@@ -1294,6 +1294,12 @@ es:
     success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
     scheduled_for_deletion: Este grupo será eliminado permanentemente en 2 semanas.
     deletion_after_grace_period: Este grupo no está disponible y se eliminará permanentemente después de %{days} días
+    discard_title: "Retirar grupo"
+    discard_subgroup_title: "Retirar subgrupo"
+    discard_parent_body: "Este grupo y sus subgrupos dejarán de mostrarse de inmediato y se cancelará su suscripción a Loomio. Los datos del grupo no se eliminan de forma permanente automáticamente y pueden ser restaurados por un administrador del sitio."
+    discard_body: "Este subgrupo dejará de mostrarse de inmediato. Los datos del subgrupo no se eliminan de forma permanente automáticamente y pueden ser restaurados por un administrador del sitio."
+    discard_confirm: "Escribe '%{name}' para confirmar"
+    discard_success: "Grupo retirado. Sus datos no se eliminan de forma permanente automáticamente y pueden ser restaurados por un administrador del sitio"
   group_page:
     stats: Estadísticas de grupo
     threads: Hilos
@@ -3109,6 +3115,10 @@ es:
   delete_discussion_form:
     discussion_deleted: Discusión eliminada
     body: "¿Estás seguro de que quieres eliminar este hilo?"
+    body_with_deletion: "Este hilo dejará de mostrarse de inmediato y se eliminará de forma permanente después de %{days} días."
+    body_reversible: "Este hilo dejará de mostrarse de inmediato. Sus datos no se eliminan de forma permanente automáticamente y pueden ser restaurados por un administrador del sitio."
+    deleted_after_grace_period: "Hilo retirado. Se eliminará de forma permanente después de %{days} días"
+    removed: "Hilo retirado. Sus datos no se eliminan de forma permanente automáticamente y pueden ser restaurados por un administrador del sitio"
   move_discussion_form:
     title: Mover la discusión a otro grupo
     body: Grupo de destino

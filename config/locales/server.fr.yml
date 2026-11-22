@@ -465,10 +465,18 @@ fr:
       body: Votre groupe Loomio « %{group} » est inactif et sera supprimé dans deux semaines. Si vous ne souhaitez pas qu'il soit supprimé, répondez à ce courriel.
     destroy_warning_with_usage:
       subject: Votre groupe Loomio est programmé pour être supprimé.
-      requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requestor}. Il sera définitivement supprimé après %{days} jours.
-      trial_expired_warning: La période d'essai de votre groupe Loomio « %{group} » a expiré il y a %{expired_days} jours. Sauf si vous nous contactez, il sera supprimé dans %{grace_days} jours.
+      requested: Votre groupe Loomio « %{group} » a été programmé pour suppression par %{requestor}.
+      trial_expired_warning: La période d'essai de votre groupe Loomio « %{group} » a expiré il y a %{expired_days} jours.
       trial_catch_up_warning: Une période d’essai Loomio a été ouverte pour le groupe « %{group} » il y a quelque temps. Nous nettoyons les données des anciens essais et avons marqué le groupe pour suppression.
-      trial_expired_process: Votre groupe est temporairement indisponible car il est en cours de suppression. Si vous souhaitez conserver un espace de discussion et de prise de décision pour votre groupe, il n'est pas trop tard pour le réactiver. Répondez à ce courriel dans un délai de %{grace_days} jours si vous souhaitez demander une prolongation de la période d'essai, passer à un abonnement payant ou si vous avez besoin de plus de temps pour exporter les données. Passé ce délai, le groupe et ses données seront définitivement supprimés.
+      subscription_canceled: L’abonnement du groupe « %{group} » a été résilié. Nous avons marqué le groupe pour suppression et il est actuellement indisponible.
+      restore_or_export_before_deletion: "Répondez immédiatement à cet e-mail si vous souhaitez que nous rétablissions l’accès ou exportions une copie des données de votre groupe. Votre groupe sera supprimé définitivement dans %{days} jours."
+      unavailable_subject: "Votre groupe Loomio est indisponible"
+      requested_unavailable: "%{requestor} a rendu votre groupe Loomio « %{group} » indisponible."
+      trial_expired_unavailable: "L’essai Loomio du groupe « %{group} » a expiré il y a %{expired_days} jours. Le groupe est indisponible."
+      trial_catch_up_unavailable: "Un essai Loomio a été ouvert pour « %{group} » il y a quelque temps. Nous faisons le tri dans les anciens essais et le groupe est désormais indisponible."
+      subscription_canceled_unavailable: "L’abonnement de « %{group} » a été résilié. Le groupe est indisponible."
+      restore_or_export: "Les données de votre groupe ne sont pas supprimées définitivement de manière automatique. Répondez à cet e-mail si vous souhaitez que nous rétablissions l’accès ou exportions une copie des données de votre groupe."
+      trial_expired_process: Votre groupe est temporairement indisponible car il est en cours de suppression. Si vous souhaitez conserver un espace de discussion et de prise de décision pour votre groupe, il n'est pas trop tard pour le réactiver. Répondez immédiatement à cet e-mail si vous souhaitez demander une prolongation de la période d’essai, passer à un abonnement payant ou obtenir plus de temps pour exporter les données. Votre groupe sera supprimé définitivement dans %{grace_days} jours.
       trial_expired: Votre groupe Loomio « %{group} » est en période d'essai expirée depuis au moins 60 jours. Il sera définitivement supprimé après %{days} jours.
       usage_heading: 'Résumé des données du groupe :'
       subgroups: Sous-groupes
@@ -476,7 +484,6 @@ fr:
       discussions: Discussions
       polls: Sondages
       comments: Commentaires
-      export: Pour conserver le groupe ou exporter une copie de ses données, répondez à ce courriel dans les %{days} jours. Nous pouvons rétablir l'accès avant la suppression.
       export_link: Découvrez comment exporter les données de groupe
       group_key: 'Clé du groupe : %{key}'
   poll_mailer:

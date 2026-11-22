@@ -4,7 +4,9 @@ class Dev::GroupMailerTest < ActionController::TestCase
   tests Dev::ScenariosController
 
   test "expired trial deletion warning preview" do
-    get :setup_group_mailer_expired_trial_deletion_warning
+    AppConfig.stub(:discarded_group_deletion_after_days, 90) do
+      get :setup_group_mailer_expired_trial_deletion_warning
+    end
 
     assert_response :success
     text = Nokogiri::HTML(response.body).css("main").text
@@ -13,12 +15,14 @@ class Dev::GroupMailerTest < ActionController::TestCase
     assert_includes text, "request a trial extension, upgrade to a paid subscription"
   end
 
-  test "coordinator requested deletion warning preview" do
-    get :setup_group_mailer_deletion_warning
+  test "admin requested deletion warning preview" do
+    AppConfig.stub(:discarded_group_deletion_after_days, 90) do
+      get :setup_group_mailer_deletion_warning
+    end
 
     assert_response :success
     text = Nokogiri::HTML(response.body).css("main").text
     assert_includes text, "was scheduled for deletion by Jennifer Grey"
-    assert_includes text, "reply to this email within 90 days"
+    assert_includes text, "Reply to this email immediately"
   end
 end

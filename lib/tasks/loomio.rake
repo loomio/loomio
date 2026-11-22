@@ -365,27 +365,14 @@ namespace :loomio do
     SeededContentCleanupService.audit
   end
 
-  desc "Count topic-free free groups and expired trials older than 60 days (optional LIMIT)"
-  task audit_empty_groups: :environment do
-    limit = ENV["LIMIT"].presence&.to_i
-    plan_counts = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
-      {
-        empty_roots: CleanupService.audit_empty_groups(plan: plan, limit: limit)[:root_ids].size,
-        total_roots: Group.parents_only.joins(:subscription).where(subscriptions: { plan: plan }).count
-      }
+  desc "Report broken references and retained records in a read-only database transaction"
+  task audit_orphan_records: :environment do
+    connection = ActiveRecord::Base.connection
+    connection.transaction do
+      connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY")
+      connection.execute("SET LOCAL statement_timeout = '2min'")
+      puts JSON.pretty_generate(IntegrityAuditService.audit_orphan_records)
     end
-    puts JSON.pretty_generate(plan_counts)
-  end
-
-  desc "Silently discard topic-free free groups and expired trials older than 60 days; requires CLEANUP_ENABLED (optional LIMIT)"
-  task discard_empty_groups: :environment do
-    abort "CLEANUP_ENABLED must be set" unless ENV["CLEANUP_ENABLED"].present?
-
-    limit = ENV["LIMIT"].presence&.to_i
-    result = CleanupService::EMPTY_GROUP_SUBSCRIPTION_PLANS.index_with do |plan|
-      CleanupService.discard_empty_groups!(plan: plan, limit: limit)
-    end
-    puts result.to_json
   end
 
   desc "Delete untouched legacy seeded discussions and polls. Supports LIMIT, SEEDED_CONTENT_TYPE, SHARD_COUNT, and SHARD_INDEX."
