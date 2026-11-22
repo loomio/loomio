@@ -1,28 +1,28 @@
 ---
 title: Visão geral rápida
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: e1154a67cbbaa4b9
-  group-page: 5096228542dbbefb
-  tabs: 175cffa35de92675
+  introduction: 8fdd3a592eb466dd
+  group-page: 3f9560f4f2f09912
+  tabs: 0c3ecc28c0f3abbc
   sidebar: a2f42a806c04bc49
-  user-settings: ec431f015f8d7e38
-  notifications: b90e512178cb7e5a
+  user-settings: a692e73ef520c4c2
+  notifications: 526b0762dcb93750
   what-to-do-next: 11dce04a938e9ff0
-  mobile-navigation: 12df5bb4d4ea388b
+  mobile-navigation: 5e351c9470830cb5
 title_source: c41a33370cd580dd
 title_generated: 7332722d7395c1a6
 ---
@@ -31,13 +31,13 @@ title_generated: 7332722d7395c1a6
 
 # Visão geral rápida
 
-Esta página apresenta as principais partes da interface do Loomio e onde encontrar o trabalho que envolve você.
+Esta página apresenta as principais partes do Loomio e onde encontrar seu trabalho.
 
 <!-- translation-section: group-page -->
 
 ## Página do grupo
 
-A página inicial do seu grupo apresenta o grupo e dá acesso ao seu trabalho.
+A página inicial do seu grupo descreve o grupo e contém links para seu trabalho.
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ A página inicial do seu grupo apresenta o grupo e dá acesso ao seu trabalho.
 
 ### Abas
 
-As abas abaixo da descrição do grupo dão acesso a:
+As abas abaixo da descrição do grupo mostram:
 
-**Discussões** - As conversas de discussão do grupo e as atividades recentes.
-
-**Enquetes** - Uma lista das enquetes ativas no seu grupo.
-
-**Membros** - As pessoas que pertencem ao grupo.
-
-**Arquivos** - Documentos e outros arquivos anexados em todo o grupo. A aba reúne arquivos dos contextos das discussões, comentários, propostas e enquetes, para que você possa encontrar um documento sem precisar lembrar onde ele foi anexado.
+- **Discussões**: As conversas de discussão do grupo e as atividades recentes.
+- **Enquetes**: Enquetes abertas e encerradas no grupo.
+- **Membros**: As pessoas que pertencem ao grupo.
+- **Arquivos**: Arquivos anexados a discussões, comentários, propostas e enquetes em todo o grupo, para que você possa encontrar um documento sem precisar lembrar onde ele foi compartilhado.
 
 Consulte [Encontrar conteúdo](/en/user_manual/overview/finding-content) para obter ajuda com buscas, filtros, tags, favoritos e discussões não lidas.
 
@@ -75,13 +72,13 @@ Selecione seu nome na barra lateral para abrir seu menu de usuário.
 
 ![](user_settings_sidebar.png)
 
-Use este menu para editar seu perfil, alterar as configurações de notificação, escolher um tema, gerenciar as configurações da conta e sair.
+Nesse menu, você pode editar seu perfil, alterar as configurações de notificação, escolher um tema, gerenciar sua conta e sair.
 
 <!-- translation-section: notifications -->
 
 ## Notificações
 
-O botão com o sino no canto superior direito no computador ou na barra de navegação inferior no celular abre suas notificações no aplicativo. Um indicador aparece quando você tem notificações que ainda não visualizou.
+Selecione o ícone de sino no canto superior direito no computador ou na barra de navegação inferior no celular para abrir suas notificações no aplicativo. Um indicador aparece quando você tem notificações não lidas.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Consulte [Notificações](/en/user_manual/users/email_settings) para saber mais 
 
 ## Navegação no celular
 
-No celular, a barra de navegação inferior oferece acesso rápido à barra lateral, ao painel e às notificações. Ao ler uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
+No celular, a barra de navegação inferior abre a barra lateral, o painel e as notificações. Dentro de uma discussão, o menu da conversa permite acessar seu conteúdo e suas ações.
 
 <!-- translation-section: what-to-do-next -->
 

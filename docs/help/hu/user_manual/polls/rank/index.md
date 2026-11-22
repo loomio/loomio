@@ -1,25 +1,25 @@
 ---
 title: Rangsorolás
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
-  introduction: 866b0a20b9ff6ab8
-  when-to-use-rank: 43ed9785d73deca6
+  introduction: 89f94bbf5b123b61
+  when-to-use-rank: 6b8fbabeb581d8b5
   example-rank-bottle-designs: 17454bc16d1ea4c1
-  set-up-the-poll: 526390be50846cda
-  vote: 3f1fcce97a2734e0
-  read-the-results: c93f6ebf1465a83f
+  set-up-the-poll: da6912beb2885aea
+  vote: 288de6c3e06bb0b6
+  read-the-results: fd642006af1042a8
   share-an-outcome: 9ae70e343e31ad63
 title_source: a4130d7d2c3a137f
 title_generated: 98d255cecd22db1c
@@ -29,7 +29,7 @@ title_generated: 98d255cecd22db1c
 
 # Rangsorolás
 
-A Rangsorolás meghatározza a csoport összesített preferenciasorrendjét. A résztvevők a leginkább kedvelttől a legkevésbé kedveltig rendezik a lehetőségeket, és a Loomio több pontot rendel az előrébb sorolt lehetőségekhez.
+A Rangsorolás meghatározza a csoport összesített preferenciasorrendjét. A résztvevők a leginkább kedvelttől a legkevésbé kedveltig rendezik a lehetőségeket, és a Loomio több pontot ad az előrébb sorolt lehetőségeknek.
 
 <!-- translation-section: when-to-use-rank -->
 
@@ -43,7 +43,7 @@ Használd a Rangsorolást, ha számít a preferenciák sorrendje, és egyetlen �
 - tartalék lehetőségek kiválasztása az elsődleges lehetőség mellett; vagy
 - egy hosszú lista szűkítése egy rövidebb, rendezett listára.
 
-A Rangsorolás pontok alapján állítja fel a sorrendet. Nem arányos választási módszer. Ha több embert szeretnél megválasztani úgy, hogy a szavazók különböző csoportjai képviselethez jussanak, használj [STV-választást](/en/user_manual/polls/stv/).
+A Rangsorolás pontok alapján állítja fel a sorrendet, nem arányos képviseletet biztosít. Ha több embert szeretnél megválasztani úgy, hogy a szavazók különböző csoportjai képviselethez jussanak, használj [STV-választást](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Az Oatmilk Cooperative arra kéri a tagokat, hogy rangsoroljanak négy palackter
 
 ## Állítsd be a szavazást
 
-Fogalmazd meg, mit fog meghatározni a rangsorolás, és add hozzá a lehetőségeket. A **Választási lehetőségek száma** beállítással szabályozd, hogy egy személy hány lehetőséget rangsorolhat. Az első helyre sorolt lehetőség kapja a legtöbb pontot, minden következő eggyel kevesebbet kap, a nem rangsorolt lehetőségek pedig nem kapnak pontot.
+Fogalmazd meg, miről dönt a rangsorolás, és add hozzá a lehetőségeket. A **Választási lehetőségek száma** beállítással szabályozd, hogy egy személy hány lehetőséget rangsorolhat. Ha például a szavazók legfeljebb 3 lehetőséget rangsorolhatnak, az első helyre sorolt lehetőségük 3 pontot kap, a második 2 pontot, a harmadik 1 pontot, a nem rangsorolt lehetőségek pedig 0 pontot kapnak.
 
 ![](form.png)
 
-Tedd kötelezővé az összes lehetőség rangsorolását, ha teljes sorrendre van szükséged. Engedélyezz kevesebb választást, ha a résztvevők esetleg nem rendelkeznek elegendő információval ahhoz, hogy mindent rangsoroljanak. A lehetőségek véletlenszerű sorrendben való megjelenítése csökkentheti a kezdeti sorrendjük hatását.
+Tedd kötelezővé az összes lehetőség rangsorolását, ha teljes sorrendre van szükséged. Engedélyezz kevesebb választást, ha a résztvevők esetleg nem rendelkeznek elegendő információval ahhoz, hogy mindent rangsoroljanak. A lehetőségek véletlenszerű sorrendben való megjelenítése segít elkerülni, hogy a lista elején szereplő lehetőségek előnyhöz jussanak.
 
 <!-- translation-section: vote -->
 
 ## Szavazz
 
-A résztvevők húzással rendezik a lehetőségeket a kívánt sorrendbe, ahol az 1-es szám jelöli az első helyre sorolt lehetőséget. Indoklást is hozzáadhatnak, amelyben kifejtik a rangsorolásuk szempontjait.
+A résztvevők húzással rendezik a lehetőségeket a kívánt sorrendbe, ahol az 1-es szám jelöli az első helyre sorolt lehetőséget. A szavazatukhoz indoklást is hozzáadhatnak, amelyben elmagyarázzák a rangsorolásukat.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Az eredmények az összes szavazatot egy összesített, pontokon alapuló rangso
 
 ![](results.png)
 
-Ebben a példában az **500 ml-es borostyánszínű palack** áll az első helyen, ezt követi az **500 ml-es átlátszó palack** és a **750 ml-es borostyánszínű palack**. A csoport először az első helyre sorolt tervet vizsgálhatja meg, a többi lehetőség sorrendjét pedig megtarthatja az alternatívák kipróbálásához.
+Ebben a példában az **500 ml-es borostyánszínű palack** áll az első helyen, ezt követi az **500 ml-es átlátszó palack** és a **750 ml-es borostyánszínű palack**. A csoport először az első helyre sorolt tervet próbálhatja ki, a többit pedig a sorrendjük megtartásával tartalék lehetőségként kezelheti.
 
-A pontokon alapuló eredmények elfedhetnek olyan eltérő preferenciasorrendeket, amelyek ugyanazt a pontösszeget adják. Nézd át az egyes szavazatokat és a hozzájuk tartozó indoklásokat, ha a lehetőségek pontszámai közel vannak egymáshoz, vagy a döntésnek jelentős következményei vannak.
+Eltérő szavazatok is eredményezhetnek azonos pontösszeget. Ha a lehetőségek pontszámai közel vannak egymáshoz, vagy fontos a döntés, nézd át az egyes szavazatokat és a hozzájuk tartozó indoklásokat.
 
 <!-- translation-section: share-an-outcome -->
 

@@ -2,32 +2,29 @@
 
 # Deleting your group
 
-Deleting your Loomio group initiates a process to permanently delete all group data. 
+Only a group admin can delete a group. Deleting a group removes access immediately and schedules all group and subgroup data for permanent deletion after 90 days.
 
-If there is any data you wish to retain, make sure you [export group data](/en/user_manual/groups/data_export/) and manually download any important files you have uploaded before you continue.
+Before you delete a group, [export the group data](/en/user_manual/groups/data_export) and download any uploaded files you want to keep.
 
-Open the group drop down menu by clicking on the three dots, and select the **Delete group** option to remove access to the group and to initiate deletion of all group data from our records. You must be an admin to delete a group.
-
-When you delete a group, it is removed from view immediately and will be permanently deleted after 90 days. You and group members immediately lose access to the group. If a mistake was made, contact us within 90 days of deleting your group to request restoration.
-
-Groups awaiting deletion and their subgroups are unavailable to members and admins for viewing, participation, or export, including polls opened from saved links. Members cannot create or edit content, vote, send announcements or reminders, or accept invitations. Export the group and download important files before confirming deletion. Direct discussions and polls are unaffected.
-
-Scheduling the group for deletion stops pending activity notifications and poll reminders for the group and its subgroups. Messages already being sent may still arrive.
-
-The warning email includes counts for the group's subgroups, members, discussions, polls and comments. If you need to keep the group or [export its data](/en/user_manual/groups/data_export/), reply immediately so access can be restored before deletion.
-
-Deleting your group will also cancel your Loomio subscription.
+To delete a group, open the group's actions menu and select **Delete group**.
 
 ![Delete group action in the Oatmilk Cooperative menu](group_delete_group.png)
 
-You will be invited to type the name of your group (*case sensitive*) to confirm you wish to delete your group.
+Enter the group handle to confirm deletion.
 
 ![Confirmation form requiring the Oatmilk Cooperative handle](group_delete_group_confirm.png)
+
+When you confirm deletion:
+
+- The group and its subgroups are removed from view immediately. Members and group admins lose access to view, participate in, or export content, including polls opened from saved links.
+- Pending activity notifications and poll reminders for the group and its subgroups stop, though messages already being sent may still arrive.
+- Your Loomio subscription is canceled.
+- Direct discussions and polls outside the group are unaffected.
+
+Loomio also sends a warning email listing the counts for the group's subgroups, members, discussions, polls, and comments. If you deleted the group by mistake or still need to export its data, reply to that email or contact us within 90 days to restore access.
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Group data is permanently deleted after 90 days
 
-After 90 days, all the threads, polls, files and other group content will be permanently deleted. ***This is non-reversible!***
-
-We recommend that you [export the group data](/en/user_manual/groups/data_export/)and manually download any important files you have uploaded before you continue.
+After 90 days, Loomio permanently deletes all threads, polls, files, and other content in the group and its subgroups. This cannot be undone.

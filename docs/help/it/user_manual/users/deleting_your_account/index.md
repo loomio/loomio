@@ -1,18 +1,18 @@
 ---
 title: Eliminare il tuo account
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/deleting_your_account/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: c9f996479d2fad85
-  to-delete-your-account-entirely: a2dc7a3b2256df81
+  what-does-delete-account-mean: b4903b29472cb632
+  to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 5afec518e53a924b
-  what-does-delete-account-mean: 0b7e56950c19f640
-  to-delete-your-account-entirely: 669e4506e959dcac
+  what-does-delete-account-mean: d1c1e3e5da7bd986
+  to-delete-your-account-entirely: e0d9e4c861a65506
 title_source: 26a117d6f45e95e8
 title_generated: e561657876a45252
 ---
@@ -25,32 +25,32 @@ title_generated: e561657876a45252
 
 ## Cosa significa eliminare l'account?
 
-Quando elimini il tuo account:
-- Il tuo account utente, inclusi il tuo nome, il tuo indirizzo email e altri dati personali che permettono di identificarti, verrà eliminato dai nostri sistemi. Non potrai più accedere a Loomio con questo account.
-- I commenti, le proposte e le discussioni che hai creato rimarranno, ma il tuo nome verrà rimosso. Lo facciamo perché abbiamo l'obbligo nei confronti dei gruppi di mantenere coerenti le conversazioni e le proposte.
-- Non comparirai più come membro di alcun gruppo.
-- Non riceverai più email di notifica.
+L'eliminazione del tuo account è permanente e non può essere annullata. Quando elimini il tuo account:
 
-È importante sapere che copie dei dati che hai generato su Loomio sono probabilmente state inviate via email a tutti i membri del gruppo. Loomio non può eliminare queste copie.
+- Loomio elimina il tuo account, inclusi il tuo nome, il tuo indirizzo email e altri dati personali. Non puoi più accedere con questo account.
+- I tuoi commenti, le tue proposte e le tue discussioni rimangono, ma il tuo nome viene rimosso, così le conversazioni del gruppo restano intatte.
+- Vieni rimosso come membro da tutti i gruppi.
+- Non ricevi più email di notifica.
 
-Eliminare il tuo account _non_ annullerà il tuo abbonamento; per interrompere i pagamenti, consulta [Abbonamenti](/en/policy/subscriptions/management#cancel-your-plan).
+Copie della tua attività potrebbero essere già state inviate via email ai membri del gruppo. Loomio non può eliminare le email già inviate.
 
-Loomio ha preso decisioni fondamentali sulla propria struttura proprietaria, sul modello di attività e sul software per proteggere i diritti degli utenti. Loomio è una cooperativa indipendente di proprietà dei lavoratori, il software è open source, puoi [esportare i tuoi dati](/en/user_manual/groups/data_export) e Loomio non vende mai i tuoi dati né li usa per la pubblicità. Questi impegni sono descritti nella nostra [informativa sulla privacy](/en/policy/privacy) e si basano sugli scopi e sui valori del nostro [statuto](https://www.loomio.coop/constitution.html) e del [manuale della cooperativa](https://www.loomio.coop/purpose_and_vision.html). Se hai domande, [contattaci](/contact).
+Eliminare il tuo account non annulla un abbonamento a pagamento. Per interrompere i pagamenti, consulta [Abbonamenti](/en/policy/subscriptions/management#cancel-your-plan).
+
+Per informazioni su come Loomio gestisce i tuoi dati, consulta la nostra [informativa sulla privacy](/en/policy/privacy) o [contattaci](/contact). Se prima ti serve una copia dei dati di un gruppo, un amministratore del gruppo può [esportare i dati del gruppo](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 
 ## Per eliminare completamente il tuo account
 
-Accedi a Loomio. Apri la barra laterale dall'icona del menu (☰) in alto a sinistra sullo schermo. Fai clic sull'avatar o sulle iniziali del tuo account, in alto a destra sullo schermo.
-
-Fai clic sulla freccia verso il basso ( ∨ ) accanto al tuo nome per aprire le impostazioni utente. Seleziona **Modifica profilo**.
+1. Accedi a Loomio.
+2. Apri il tuo menu utente selezionando il tuo nome nella barra laterale, poi seleziona **Modifica profilo**. Se la barra laterale è chiusa, aprila con il pulsante del menu (**☰**).
 
 ![](profile_edit.png#width-50)
 
-Scorri fino in fondo e fai clic su **Rimuovi account**.
+3. Scorri fino in fondo alla pagina e seleziona **Rimuovi account**.
 
 ![](delete_user.png)
 
-Si aprirà una finestra che ti chiederà di confermare che vuoi eliminare il tuo account.
+4. Conferma che vuoi eliminare definitivamente il tuo account.
 
 ![](permanently_delete_account.png#width-80)

@@ -2,25 +2,24 @@
 
 # Send an email to start a thread in your group
 
-Your Loomio group has an email address! You can send or forward email to this address to start a thread in the group.
+Each Loomio group has its own email address. You can send or forward an email to this address to start a new thread in the group.
 
-You can see your group's email address on the group page:
-![location of the email address on the group page](email_email_button.png)
+You can find the group's email address on the group page:
 
-When you send an email to this address, a new thread will be started. The email subject becomes the thread title, the body of the email becomes the description, and any attached files will be attached to the thread.
+![Location of the email address on the group page](email_email_button.png)
 
-The email "From" address is used to find the group member who will be the author of the thread.
+When you email this address, Loomio creates a new thread. The email subject becomes the thread title, the body becomes the thread description, and any attached files are added to the thread.
+
+Loomio uses the email's "From" address to match the sender to a group member and set them as the thread author.
 
 <!-- translation-section: preventing-unauthorized-emails -->
 
 ## Preventing unauthorized emails
 
-To ensure that this feature cannot be used by people who are not members of your group, Loomio will require that the "From" address of an incoming email matches the address of someone in the group.
+To prevent non-members from starting threads, Loomio requires the "From" address of an incoming email to match a group member's email address.
 
-If you use multiple email addresses, you can add an alias so Loomio knows about your other email addresses.
+If a member sends an email from an unrecognized address, Loomio holds the email and notifies group admins. A group admin can approve the email and add the address as an alias for that member, or reject further emails from that address.
 
-When the "from" address does not match a member of the group, you will receive a notification asking you to add an alias or reject all further emails from that address.
+Once an alias is added, future emails from that address start threads immediately.
 
-This means that the first time you send email from an unrecognised address, you will need to add an alias. After that, emails will be accepted immediately.
-
-![Location of the approve and reject buttons for an unrecognised email](email_unreleased_emails.png)
+![Approve and reject buttons for an unrecognized email](email_unreleased_emails.png)

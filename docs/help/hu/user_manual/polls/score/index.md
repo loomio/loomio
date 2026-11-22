@@ -1,38 +1,35 @@
 ---
 title: Pontszám felmérés
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/score/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: 5d2fe801886bbb8c
-  when-to-use-score: ad676bb52f40d19a
+  introduction: 6b93c5505ede479c
+  when-to-use-score: 2e72d18243b6db42
   example-score-possible-trial-locations: 64d46ddd9d355641
-  set-up-the-poll: fe83885454b62380
-  vote: 5f8a30878e346457
-  read-the-results: 40a6e79dbc91f5a6
+  set-up-the-poll: dad094f69224ea52
+  vote: 2efc96ad6b629af9
+  read-the-results: d581b67b1d375afc
   share-an-outcome: c76ab4df311692a2
 title_source: 38e5a46cbc5ad328
 title_generated: cccdb39d2307b394
-needs_review:
-  set-up-the-poll: use "Pontozás" instead of "pontszám" for "Score"
-  read-the-results: use "Pontozás" instead of "pontszám" for "Score"
 ---
 
 <!-- translation-section: introduction -->
 
 # Pontozás
 
-A Pontozás azt méri, hogyan értékelik a résztvevők az egyes lehetőségeket egy közös számskálán. A Kiválasztástól eltérően minden lehetőség értékelését kéri, így az eredmények megmutatják, mit részesítenek előnyben az emberek, és milyen mértékben.
+A Pontozás azt méri, hogyan értékelik a résztvevők az egyes lehetőségeket egy közös számskálán. A Kiválasztástól eltérően minden lehetőség értékelését kéri, így megmutatja, mit részesítenek előnyben az emberek, és milyen mértékben.
 
 <!-- translation-section: when-to-use-score -->
 
@@ -46,7 +43,7 @@ Használd a Pontozást, ha minden lehetőség egymástól függetlenül értéke
 - támogatási pályázatok közös szempont szerinti értékelésére; vagy
 - több javaslat alkalmasságának összehasonlítására.
 
-Határozd meg, mit jelent a skála alsó és felső értéke. Közös meghatározás nélkül ugyanaz a szám mást jelenthet a különböző szavazóknak. Használd a [Kiválasztást](/en/user_manual/polls/choose/), ha csak lehetőségeket kell kiválasztani, vagy a [Pontelosztást](/en/user_manual/polls/allocate/), ha a résztvevőknek korlátozott pontkereten belül kell mérlegelniük a lehetőségeket.
+Határozd meg, mit jelent a skála alsó és felső értéke, hogy mindenki ugyanúgy értelmezze a számokat. Használd a [Kiválasztást](/en/user_manual/polls/choose/), ha csak lehetőségeket kell kiválasztani, vagy a [Pontelosztást](/en/user_manual/polls/allocate/), ha a résztvevőknek korlátozott pontkereten belül kell mérlegelniük a lehetőségeket.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -62,9 +59,9 @@ Fogalmazz meg egy kérdést, amely minden lehetőségre egyformán vonatkozik. A
 
 ![](form.png)
 
-Válassz olyan skálát, amelyet a résztvevők következetesen tudnak alkalmazni. A 0–5-ös skála gyorsan használható; a 0–10-es skála finomabb különbségek kifejezését teszi lehetővé. A nagyobb pontosság nem feltétlenül ad jobb információt, ezért használd a kérdéshez illő legrövidebb skálát.
+Válassz olyan skálát, amelyet a résztvevők következetesen tudnak alkalmazni. A 0–5-ös skála gyorsan használható; a 0–10-es skála finomabb különbségek kifejezését teszi lehetővé. Használd a kérdésedhez illő legrövidebb skálát — a szélesebb tartomány nem mindig ad jobb eredményeket.
 
-A névtelen szavazatok és a lehetőségek véletlenszerű sorrendben való megjelenítése hasznos lehet, ha csökkenteni szeretnéd a társas befolyás vagy a sorrend hatását.
+Használhatsz névtelen szavazást, vagy megjelenítheted a lehetőségeket véletlenszerű sorrendben, hogy csökkentsd a résztvevők egymásra gyakorolt befolyását és a sorrendből adódó torzítást.
 
 <!-- translation-section: vote -->
 
@@ -74,7 +71,7 @@ A résztvevők egy csúszka mozgatásával pontoznak minden lehetőséget. Ebben
 
 ![](voting.png)
 
-Az indoklás elmagyarázza, hogyan alkalmazta a szavazó a skálát. Ez segít a csoportnak megkülönböztetni az információhiány miatt adott alacsony pontszámot az érdemi aggály miatt adottól.
+A szavazat indoklása elmagyarázza, hogyan alkalmazta a szavazó a skálát. Ez segít a csoportnak megállapítani, hogy az alacsony pontszám érdemi aggályt vagy információhiányt tükröz-e.
 
 <!-- translation-section: read-the-results -->
 
@@ -88,7 +85,7 @@ Az eredmények minden lehetőségnél megmutatják:
 
 ![](results.png)
 
-Ebben a példában a **Central Station cafe** átlaga a legmagasabb: 7,5. A **Harbour offices** átlaga a legalacsonyabb: 5,25, míg a Riverside market és a University food court egyaránt 7-es átlagot ért el. Az öt meghívott közül négyen szavaztak, így a csoport azt is láthatja, hogy egy válasz még hiányzik.
+Ebben a példában a **központi pályaudvar kávézójának** átlaga a legmagasabb: 7,5. A **kikötői irodák** átlaga a legalacsonyabb: 5,25, míg a folyóparti piac és az egyetemi ételudvar egyaránt 7-es átlagot ért el. Az öt meghívott közül négyen szavaztak, így egy válasz még hiányzik.
 
 Csak akkor hasonlítsd össze az átlagokat, ha a lehetőségeket hasonló számú szavazó értékelte. Olvasd el a szavazatok indoklásait, mielőtt jelentőséget tulajdonítasz egy kis különbségnek.
 

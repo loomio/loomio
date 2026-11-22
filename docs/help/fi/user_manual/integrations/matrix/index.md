@@ -1,14 +1,14 @@
 ---
 title: Matrix
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/matrix/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/matrix/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: e54de0b6d9ea9ffb
+  introduction: 114ab8c916ca5fba
 generated:
-  introduction: 448560f09c8945ad
+  introduction: e96df5b9f72b5829
 title_source: 76a2171c057b730f
 title_generated: 76a2171c057b730f
 ---
@@ -17,37 +17,38 @@ title_generated: 76a2171c057b730f
 
 # Matrix-integraatio
 
-Loomio voi lähettää ilmoituksia Matrix-kanaviisi uusista keskusteluista, ehdotuksista, kommenteista, äänistä ja johtopäätöksistä.
+Loomio voi lähettää ilmoituksia Matrix-huoneeseen uusista keskusteluista, kyselyistä, kommenteista, äänistä ja johtopäätöksistä. Sinun on oltava ryhmän ylläpitäjä, jotta voit lisätä chat-integraation.
 
-Matrix sallii osan HTML-muotoiluista keskusteluhuoneissa, ja Loomio hyödyntää tätä.
+Toisin kuin Loomion muut chat-integraatiot, Matrix ei käytä webhookia. Sen sijaan Loomio muodostaa yhteyden Matrix-käyttäjätilin kautta, joka toimii bottina ja lähettää muotoiltuja viestejä huoneeseesi.
 
-Matrix-integraatiomme eroaa hieman muista chat-integraatioistamme: se ei käytä webhookia, vaan sitä varten rakentamaamme bottiasiakasta.
-
-Luo Matrix-käyttäjä, jonka tunnuksilla botti kirjautuu sisään.
-
-Kun olet luonut käyttäjän botille, kirjaudu sisään sen tunnuksilla saadaksesi seuraavat tiedot.
-
-Tässä ohjeessa käytämme Elementiä.
+Tässä ohjeessa käytetään Element-sovellusta.
 
 ---
 
-Lisää Matrix-chat-integraatio Loomio-ryhmäsi asetuksista
-![Loomion Matrix-botin valikko](loomio-add-matrix-bot.png)
+1. Luo Loomiolle Matrix-käyttäjätili, kirjaudu sillä sisään Elementiin ja kutsu tili Matrix-huoneeseen, johon haluat ilmoitukset. Pidä tämä istunto kirjautuneena sisään — uloskirjautuminen mitätöi käyttöoikeustunnuksen.
 
-Täytä tämä lomake
-![Loomion Matrix-botin lomake](loomio-matrix-bot-form.png)
+2. Avaa Loomio-ryhmäsi valikko, valitse **Chat-integraatiot** ja lisää **Matriisi**-chat-integraatio.
 
-Aloita pääsytunnisteen etsiminen tästä
-![Matrixin asetusvalikko](matrix-settings-menu.png)
+   ![Loomion Matrix-botin valikko](loomio-add-matrix-bot.png)
 
-Tässä on asetussivu
-![Matrixin asetukset](matrix-settings.png)
+   ![Loomion Matrix-botin lomake](loomio-matrix-bot-form.png)
 
-Tässä on pääsytunniste
-![Matrixin pääsytunniste](matrix-access-token.png)
+3. Avaa Elementissä botin tilivalikko ja valitse **Kaikki asetukset**.
 
-Seuraavaksi tarvitset huoneen tunnisteen
-![Matrix-huoneen asetukset](matrix-room-settings.png)
+   ![Matrixin asetusvalikko](matrix-settings-menu.png)
 
-Löydät sen tästä
-![Matrix-huoneen tunniste](matrix-room-id.png)
+4. Avaa **Ohje ja tietoja** ja vieritä kohtaan **Lisäasetukset**.
+
+   ![Matrixin asetukset](matrix-settings.png)
+
+5. Kopioi **Käyttöoikeustunnus** ja liitä se Loomion lomakkeeseen.
+
+   ![Matrixin käyttöoikeustunnus](matrix-access-token.png)
+
+6. Avaa huoneen **asetukset**-valikko ja siirry kohtaan **Lisäasetukset**.
+
+   ![Matrix-huoneen asetukset](matrix-room-settings.png)
+
+7. Kopioi **Huoneen sisäinen tunniste**, liitä se Loomion lomakkeeseen ja tallenna integraatio.
+
+   ![Matrix-huoneen tunniste](matrix-room-id.png)

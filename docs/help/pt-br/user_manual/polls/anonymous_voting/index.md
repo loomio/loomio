@@ -1,46 +1,46 @@
 ---
 title: Votação anônima
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 2b9b7da01da020b3
-  how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: 60b564978d2a7a71
-  votes-cannot-be-changed: f4353c89bbffe7aa
-  why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
-  results-and-exports: eb2429afd442dad2
-  participation-verification: 75edf02a6a2324a3
-  reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
-  limits-of-anonymous-voting: 912141560342d073
+  introduction: ffcecd2f4297c47d
+  how-anonymous-voting-protects-voters: 3b757a1b4a7bda96
+  while-voting-is-open: aafc698ee8108194
+  votes-cannot-be-changed: 3a99e6c3f48e10ee
+  why-anonymous-votes-do-not-have-reasons: 4027d6c1fbf4d29c
+  results-and-exports: 5c10ab43a5f890b4
+  participation-verification: e77ece0fc0d6cd73
+  reminders: f711a180ae7c948f
+  what-coordinators-and-administrators-can-see: d873cd48677fc324
+  limits-of-anonymous-voting: 9ab54b74a4716e19
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
-  can-i-see-my-vote-after-submitting-it: c558e29729aed45f
-  can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
-  will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
-  is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  can-a-coordinator-see-how-i-voted: bfa1baf48f41cdd1
+  can-i-see-my-vote-after-submitting-it: 435010e0c2ecf488
+  can-i-change-or-withdraw-my-vote: 676d5401bf4d73cc
+  will-i-receive-an-email-confirming-my-vote: 9660f10e8ffb9f9c
+  does-a-public-poll-reveal-more-information: '087defb00bb8b99f'
+  is-anonymous-voting-suitable-for-every-election: 9fae56c0661f0ec9
 generated:
-  introduction: c06d5643691d9e83
-  how-anonymous-voting-protects-voters: dd4dd7be3461c342
-  while-voting-is-open: 5ec04d77abbf4187
-  votes-cannot-be-changed: c42b760384802b27
-  why-anonymous-votes-do-not-have-reasons: 484e7fe1658e8ed0
-  results-and-exports: e18594c1007a7f89
-  participation-verification: 13b86a0ed4c3bcb9
-  reminders: 39ca7d6a4518da86
-  what-coordinators-and-administrators-can-see: 92d7cba4638f64db
-  limits-of-anonymous-voting: a07b7527c62bf523
+  introduction: 6f5ee8edd522bfaa
+  how-anonymous-voting-protects-voters: 47e40c2b41edac2e
+  while-voting-is-open: 388b06052f63b44e
+  votes-cannot-be-changed: 97fa04673984f568
+  why-anonymous-votes-do-not-have-reasons: fc238d0dac7e4ec3
+  results-and-exports: 026ad75a5db529d7
+  participation-verification: 399f953f61ffc542
+  reminders: 7b48bf435c4c43db
+  what-coordinators-and-administrators-can-see: 0bee61e9947d9c44
+  limits-of-anonymous-voting: d9e1ffad7f0c594d
   questions: '06486bdf6b6b59d1'
-  can-a-coordinator-see-how-i-voted: 64a34745b8ba62be
-  can-i-see-my-vote-after-submitting-it: a887454c134c6c09
-  can-i-change-or-withdraw-my-vote: 30e04dd7d983905f
-  will-i-receive-an-email-confirming-my-vote: bc6ff80276cf3abc
+  can-a-coordinator-see-how-i-voted: 3e16cb94dcf53c8b
+  can-i-see-my-vote-after-submitting-it: f0c36b840fd465c6
+  can-i-change-or-withdraw-my-vote: c0cb7aed3cdcff78
+  will-i-receive-an-email-confirming-my-vote: 901fea33963932dc
   does-a-public-poll-reveal-more-information: 7b1b89ed96806003
-  is-anonymous-voting-suitable-for-every-election: bc9e0f483eb92e00
+  is-anonymous-voting-suitable-for-every-election: 6e19f490505f515e
 title_source: 1bc4567506ad4d51
 title_generated: bf95d7870f06a3a3
 ---
@@ -49,9 +49,9 @@ title_generated: bf95d7870f06a3a3
 
 # Votação anônima
 
-A votação anônima, também conhecida como votação às cegas, separa o registro de quem votou dos votos em si. Depois que a enquete é encerrada, qualquer pessoa que possa ver os resultados pode ver quem participou. Ninguém que usa o Loomio pode vincular um voto enviado à pessoa que o enviou.
+A votação anônima, também conhecida como votação às cegas, separa o registro de quem votou dos votos em si. Depois que a enquete é encerrada, qualquer pessoa que possa ver os resultados pode ver quem participou, mas ninguém que usa o Loomio pode vincular um voto à pessoa que o enviou.
 
-Esta página explica as proteções oferecidas pela votação anônima, as informações que são mantidas e os limites dessa garantia.
+Esta página explica como a votação anônima funciona, quais informações são mantidas e os limites dessa proteção.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
@@ -66,25 +66,25 @@ Uma enquete anônima mantém dois conjuntos separados de registros:
 | Se cada pessoa apta a votar já votou | Nenhum nome ou conta de usuário |
 | Nenhuma opção ou pontuação selecionada | Nenhum vínculo com um registro de participação |
 
-Não há um identificador compartilhado que conecte esses registros. Os votos enviados também não incluem o horário real de envio, informações sobre convites, motivos por escrito, anexos e outros metadados que poderiam ajudar a identificar um eleitor.
+Nenhum identificador compartilhado conecta esses registros. Os votos enviados também não incluem horários de envio, detalhes dos convites, motivos dos votos, anexos e outros metadados que poderiam identificar um eleitor.
 
-Essa separação é garantida quando o voto é armazenado. Ela não depende apenas de ocultar nomes na interface.
+Essa separação acontece quando o voto é salvo — ela não depende apenas de ocultar nomes na interface.
 
 <!-- translation-section: while-voting-is-open -->
 
 ## Enquanto a votação estiver aberta
 
-Os resultados permanecem ocultos para todos até que a enquete seja encerrada. Isso inclui admins da conversa, administradores do grupo e administradores da instância que usam o aplicativo.
+Os resultados permanecem ocultos para todos até que a enquete seja encerrada, incluindo admins da conversa, admins do grupo e admins da instância.
 
 Quando alguém vota:
 
-- o voto enviado é armazenado sem o nome ou o registro de participação da pessoa;
-- o registro de participação da pessoa é marcado para indicar que ela votou;
+- seu voto é armazenado sem seu nome ou registro de participação;
+- seu registro de participação é marcado para indicar que a pessoa votou;
 - nenhum evento de voto, notificação, e-mail, comentário ou registro de atividade é criado;
-- nenhuma cópia das escolhas da pessoa é retornada após o envio; e
-- a interface confirma apenas que o voto foi registrado.
+- nenhuma cópia de suas escolhas é retornada após o envio; e
+- a tela confirma apenas que seu voto foi registrado.
 
-O registro de participação não armazena o horário preciso em que a pessoa votou. Os votos enviados não são ordenados pelo horário de envio.
+O registro de participação não armazena o horário exato em que uma pessoa votou, e os votos enviados não são ordenados pelo horário de envio.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
@@ -92,7 +92,7 @@ O registro de participação não armazena o horário preciso em que a pessoa vo
 
 Cada pessoa apta a votar pode votar uma vez. Um voto anônimo enviado não pode ser consultado, alterado, retirado ou substituído, nem mesmo por um admin.
 
-Permitir que uma pessoa recupere ou substitua seu voto exigiria um vínculo persistente entre essa pessoa e o voto. A votação anônima não cria esse vínculo por escolha deliberada.
+Permitir que alguém recupere ou substitua seu voto exigiria um vínculo entre essa pessoa e seu voto, algo que a votação anônima evita intencionalmente.
 
 Confira suas escolhas com atenção antes de enviar.
 
@@ -100,17 +100,17 @@ Confira suas escolhas com atenção antes de enviar.
 
 ## Por que os votos anônimos não têm motivos
 
-Novos votos anônimos não podem incluir um motivo por escrito ou um anexo. Os motivos podem conter nomes, detalhes pessoais, padrões de escrita, menções ou outras informações que identifiquem o eleitor. Eles também tornariam mais fácil distinguir votos individuais do resultado agregado.
+Os votos anônimos não podem incluir um motivo ou um anexo. Os motivos podem conter nomes, detalhes pessoais, padrões de escrita ou menções que identifiquem o eleitor e poderiam facilitar a identificação de votos individuais nos resultados.
 
-Os participantes ainda podem discutir a enquete em sua conversa, quando a discussão estiver disponível. Esses comentários são contribuições comuns à discussão, com identificação de quem os escreveu, e não estão vinculados a um voto anônimo.
+Os participantes ainda podem discutir a enquete em sua conversa. Esses comentários são contribuições comuns, com identificação de quem os escreveu, e não estão vinculados a um voto anônimo.
 
 <!-- translation-section: results-and-exports -->
 
 ## Resultados e exportações
 
-Depois que a enquete é encerrada, os resultados são calculados a partir dos votos sem vínculo com os eleitores e exibidos como totais e outros resultados agregados compatíveis com o tipo de enquete.
+Depois que a enquete é encerrada, o Loomio calcula os resultados a partir dos votos sem vínculo com os eleitores e exibe os totais para aquele tipo de enquete.
 
-O aplicativo não publica identificadores dos votos, a ordem de envio ou os horários de envio. As exportações de enquetes contêm resultados agregados em vez de uma linha para cada voto anônimo, com a exceção de que uma eleição STV encerrada pode ser exportada no formato BLT. Uma exportação BLT contém as classificações dos candidatos necessárias para recontar a eleição, agrupadas quando várias cédulas têm a mesma classificação, sem a identidade dos eleitores ou metadados das cédulas.
+O Loomio não publica identificadores dos votos, a ordem de envio ou os horários de envio. As exportações de enquetes contêm apenas resultados agregados em vez de uma linha para cada voto. A única exceção é uma eleição STV encerrada, que pode ser exportada no formato BLT para recontagem. Uma exportação BLT lista as classificações dos candidatos (agrupadas quando várias cédulas têm a mesma classificação), sem a identidade dos eleitores ou metadados das cédulas.
 
 Uma enquete anônima não pode ser reaberta depois de encerrada.
 
@@ -120,13 +120,13 @@ Uma enquete anônima não pode ser reaberta depois de encerrada.
 
 Depois que uma enquete anônima é encerrada, qualquer pessoa que possa ver seus resultados pode ver quem participou. Ninguém pode ver isso enquanto a votação estiver aberta.
 
-Selecione **Ver votos** para ver a lista. Ela sempre mostra quem estava apto a votar. Ela só mostra se cada pessoa votou quando houver votos suficientes. Isso significa atingir o quórum da enquete, se houver, ou metade dos eleitores aptos a votar, caso contrário, e nunca menos de três votos. A lista nunca mostra como alguém votou ou quando.
+Selecione **Ver votos** para ver a lista. Ela sempre mostra quem estava apto a votar e nunca mostra como ou quando alguém votou. A informação de que cada pessoa votou ou não só aparece se houver participação suficiente: pelo menos o quórum da enquete (se definido) ou, caso contrário, pelo menos metade dos eleitores aptos a votar, e nunca menos de três votos.
 
 Os membros do grupo e os eleitores da enquete também veem quando cada pessoa entrou no grupo e quem a convidou. Os admins do grupo também veem os endereços de e-mail para distinguir pessoas com o mesmo nome.
 
 Como todos que podem ver os resultados podem ver quem votou, um resultado em que todos os votos são para a mesma opção pode revelar como as pessoas votaram. Por exemplo, se todos os votos forem Concordo, todas as pessoas que votaram concordaram.
 
-Os admins podem adicionar pessoas aptas a votar enquanto a votação estiver aberta, inclusive depois que outras pessoas já tiverem votado. Os eleitores existentes não podem ser removidos de uma enquete anônima.
+Os admins podem adicionar eleitores aptos a votar enquanto a votação estiver aberta, inclusive depois que outras pessoas já tiverem votado. Os eleitores existentes não podem ser removidos de uma enquete anônima.
 
 <!-- translation-section: reminders -->
 
@@ -134,36 +134,36 @@ Os admins podem adicionar pessoas aptas a votar enquanto a votação estiver abe
 
 Em uma enquete anônima com duração de pelo menos 24 horas, as pessoas aptas a votar que ainda não votaram recebem um lembrete automático durante as últimas 24 horas.
 
-Os destinatários do lembrete são selecionados apenas com base nos registros de participação. Essa seleção não consulta os votos enviados nem cria um vínculo com eles. Se o prazo mudar, a verificação de lembretes feita a cada hora usa o prazo atual, sem manter um lembrete agendado separado para a enquete.
+O Loomio seleciona os destinatários apenas com base nos registros de participação, sem consultar os votos enviados.
 
-Enquetes com um período total de votação inferior a 24 horas não enviam esse lembrete automático.
+Enquetes com um período de votação inferior a 24 horas não enviam esse lembrete automático.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
 ## O que os admins podem ver
 
-Pelo aplicativo, um admin da conversa, administrador do grupo ou administrador da instância pode ter acesso a:
+Pelo aplicativo, um admin da conversa, admin do grupo ou admin da instância pode ter acesso a:
 
 - a enquete e seus eleitores aptos a votar;
-- a informação de que cada pessoa apta a votar votou ou não, quando sua função permitir esse acesso e houver votos suficientes; e
+- a informação de que cada pessoa apta a votar votou ou não (quando sua função permitir esse acesso e houver votos suficientes); e
 - os resultados agregados depois que a enquete for encerrada.
 
-Eles não podem usar os recursos do aplicativo para ver:
+Eles não podem usar o aplicativo para ver:
 
 - quais escolhas pertencem a uma pessoa;
 - votos individuais ou padrões de votação;
-- quando um voto específico foi enviado; ou
-- um motivo, anexo, evento ou notificação associado a um voto enviado.
+- quando um voto foi enviado; ou
+- um motivo, anexo, evento ou notificação vinculado a um voto.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Limites da votação anônima
 
-Essas proteções impedem que usuários do aplicativo vinculem um voto enviado ao seu eleitor. Elas não oferecem proteção criptográfica contra um operador que possa inspecionar o banco de dados, backups, logs do servidor, memória de processos, tráfego de rede ou uma versão modificada do aplicativo.
+A votação anônima impede que usuários do Loomio vinculem um voto a um eleitor. Ela não oferece proteção criptográfica contra um operador do servidor que possa inspecionar o banco de dados, backups, logs do servidor, memória de processos, tráfego de rede ou código modificado.
 
-O próprio resultado também pode revelar informações. Um eleitorado pequeno, um resultado unânime, uma combinação característica de escolhas ou informações compartilhadas fora da enquete podem facilitar a dedução das escolhas de uma pessoa. Os eleitores também podem escolher se identificar na discussão, fora do voto enviado.
+Os próprios resultados também podem dar pistas. Um grupo pequeno, uma votação unânime, uma combinação única de escolhas ou comentários compartilhados fora da enquete podem facilitar a dedução do voto de uma pessoa.
 
-Considere o tamanho do eleitorado e a sensibilidade da decisão ao avaliar se a votação anônima oferecida pelo aplicativo é adequada.
+Considere o tamanho do grupo e a sensibilidade da decisão antes de confiar na votação anônima oferecida pelo aplicativo.
 
 <!-- translation-section: questions -->
 
@@ -173,25 +173,25 @@ Considere o tamanho do eleitorado e a sensibilidade da decisão ao avaliar se a 
 
 ### Alguém pode ver como eu votei?
 
-Não. Quando houver votos suficientes, as pessoas que podem ver os resultados poderão ver se você votou. Ninguém pode vincular você a um voto enviado pelo aplicativo. Até lá, a informação de que você votou ou não permanece oculta.
+Não. Ninguém que usa o Loomio pode vincular você ao seu voto. Quando houver votos suficientes, qualquer pessoa que possa ver os resultados poderá ver se você participou. Antes de atingir esse limite, até a informação de que você votou ou não permanece oculta.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
 ### Posso ver meu voto depois de enviá-lo?
 
-Não. O aplicativo confirma que seu voto foi registrado e depois descarta as opções selecionadas da interface de votação. Ele não pode recuperar seu voto sem criar o vínculo que a votação anônima foi projetada para evitar.
+Não. O Loomio confirma que seu voto foi registrado e limpa suas seleções da tela. Ele não pode recuperar seu voto sem criar o vínculo que a votação anônima evita.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
 ### Posso alterar ou retirar meu voto?
 
-Não. Não existe um vínculo que permita ao aplicativo identificar qual voto enviado deve ser alterado ou removido.
+Não. Como não existe um vínculo entre você e seu voto, o Loomio não consegue identificar qual voto alterar ou remover.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
 ### Vou receber um e-mail confirmando meu voto?
 
-Não. Ao votar, você recebe apenas uma confirmação na tela, e seu registro de participação é atualizado. Isso não envia um e-mail de confirmação nem cria uma notificação ou um evento de atividade.
+Não. Ao votar, você recebe apenas uma confirmação na tela, e seu registro de participação é atualizado. Isso não envia um e-mail nem cria uma notificação ou um registro de atividade.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
@@ -203,4 +203,4 @@ Depois que uma enquete pública é encerrada, qualquer pessoa pode ver seus resu
 
 ### A votação anônima é adequada para todas as eleições?
 
-Não. Ela separa as identidades dos votos no aplicativo. Decisões que exigem proteção contra operadores do sistema ou eleições criptográficas verificáveis de forma independente precisam de um sistema projetado para atender a esses requisitos.
+Não. Ela separa os eleitores dos votos no aplicativo. Eleições que exigem proteção contra operadores do servidor ou verificação criptográfica independente precisam de um sistema projetado para atender a esses requisitos.

@@ -1,34 +1,34 @@
 ---
 title: Sous-groupes
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: 5dedb9fedacabb90
-  add-a-subgroup: e83e38dd9cd34258
+  introduction: 86015749b55ace4b
+  add-a-subgroup: 722b027324431aba
   subgroup-settings: bdd0548ab28d965d
-  privacy: 7327b2cd2ac41d81
+  privacy: 3bc3e46f581bb434
   permissions: 2ae23cefd9ceb983
-  find-subgroups: 8bdb0244966a9a56
-  invite-to-a-subgroup: f43723d038795ee2
-  simultaneously-invite-people-to-subgroups-and-parent-group: f8892fdd5672d75b
-  administer-a-subgroup: d7f48cea8fa8085f
-  delete-a-subgroup: 2115bc77d425a1e9
-  how-people-join: 621dd74dabf4c9eb
+  find-subgroups: 2766a57828324657
+  invite-to-a-subgroup: b1cb8570af2f3e16
+  simultaneously-invite-people-to-subgroups-and-parent-group: 24fb87538b90aa32
+  administer-a-subgroup: e84b10e04adf0820
+  delete-a-subgroup: 57f1009f9c0fd293
+  how-people-join: b10854b5dba66ebe
 title_source: 9f81e728f70cae3e
 title_generated: 93b587493dbb8010
 ---
@@ -37,33 +37,28 @@ title_generated: 93b587493dbb8010
 
 # Sous-groupes
 
-Les sous-groupes vous aident à organiser vos communications et vos membres pour que les personnes concernées participent au travail commun.
+Les sous-groupes vous aident à organiser les discussions et les membres autour d’équipes ou de thèmes spécifiques au sein d’un groupe parent. Par exemple, une organisation peut créer des sous-groupes pour :
 
-Par exemple, une organisation peut avoir les sous-groupes suivants :
-- conseil d’administration
-- équipe de travail ou groupe de travail sur un projet
-- thème (comme « stratégie » ou « apprentissage »)
+- Un conseil d’administration
+- Une équipe de travail ou un groupe de projet
+- Un thème comme la stratégie ou l’apprentissage
 
-Les sous-groupes fonctionnent comme les groupes, mais se trouvent au sein de votre groupe parent. La plupart des fonctionnalités et des paramètres disponibles sont les mêmes que dans le groupe parent. Une personne peut donc être membre de votre sous-groupe, par exemple votre conseil d’administration, sans être membre de votre groupe parent.
+Les sous-groupes fonctionnent comme les groupes ordinaires et disposent de la plupart des mêmes fonctionnalités et paramètres. Une personne peut appartenir à un sous-groupe, comme un conseil d’administration, sans appartenir au groupe parent.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Ajouter un sous-groupe
 
 >[!Note]
->La possibilité d’ajouter de nouveaux sous-groupes fait partie des [paramètres d’autorisation](/en/user_manual/groups/settings/permissions) du groupe. Par défaut, seuls les administrateurs peuvent créer de nouveaux sous-groupes.
+>Les [paramètres d’autorisation](/en/user_manual/groups/settings/permissions) du groupe parent déterminent qui peut ajouter des sous-groupes. Par défaut, seuls les administrateurs du groupe peuvent créer des sous-groupes.
 
-Pour ajouter un sous-groupe, rendez-vous sur la page de votre groupe principal, puis cliquez sur **Nouveau sous-groupe** dans la barre latérale.  
+Pour créer un sous-groupe, ouvrez la page de votre groupe parent, sélectionnez **Nouveau sous-groupe** dans la barre latérale, saisissez un nom, choisissez un paramètre de confidentialité, puis sélectionnez **Créer un sous-groupe**.
 
 ![Bouton Nouveau sous-groupe dans la barre latérale de la coopérative Oatmilk](subgroups-sidebar.png)
 
-Cliquez sur le bouton **Nouveau sous-groupe**, donnez-lui un nom et choisissez le paramètre de confidentialité, puis cliquez sur **Créer un sous-groupe**.
-
 ![Formulaire de création d’un sous-groupe pour le groupe de travail sur les emballages](subgroups_new.png)
 
-Lorsque vous êtes prêt, [invitez des personnes](/en/user_manual/groups/inviting_people/) dans le sous-groupe.
-
-Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings/) du sous-groupe en cliquant sur l’icône en forme d’engrenage sur sa page.
+Lorsque le sous-groupe est prêt, [invitez des personnes](/en/user_manual/groups/inviting_people) à le rejoindre. Vous pouvez modifier les [paramètres du groupe](/en/user_manual/groups/settings) du sous-groupe depuis le menu d’actions sur sa page.
 
 ![Action permettant de modifier les paramètres du groupe de travail sur les emballages](subgroups_edit_group_settings.png)
 
@@ -84,17 +79,15 @@ Choisissez qui peut trouver le sous-groupe et lire ses fils :
 | **Visible pour le groupe parent** | Les membres du groupe parent et du sous-groupe | Les membres du sous-groupe et les invités |
 | **Secret** | Les membres invités du sous-groupe | Les membres du sous-groupe et les invités |
 
-La permission **Les membres du groupe parent peuvent voir les fils privés** peut également permettre aux membres du groupe parent d’accéder aux fils du sous-groupe sans le rejoindre.
+La permission **Les membres du groupe parent peuvent voir les fils privés** permet également aux membres du groupe parent de lire les fils du sous-groupe sans le rejoindre.
 
-Lorsque le groupe parent est privé, les sous-groupes peuvent être **Visible pour le groupe parent** ou **Secret**.
-
-[Consultez les informations sur la confidentialité des groupes](/en/user_manual/groups/settings/privacy).
+Lorsque le groupe parent est privé, les sous-groupes peuvent uniquement être **Visible pour le groupe parent** ou **Secret**. Consultez [Confidentialité des groupes](/en/user_manual/groups/settings/privacy) pour plus de détails.
 
 <!-- translation-section: how-people-join -->
 
 ### Comment les personnes rejoignent le groupe
 
-Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/settings/privacy#how-people-join) lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe → Confidentialité**.
+Choisissez [comment les personnes rejoignent le groupe](/en/user_manual/groups/settings/privacy#how-people-join) lors de la création du sous-groupe, ou dans **Modifier les paramètres du groupe** > **Confidentialité**.
 
 ![Paramètres de confidentialité et d’adhésion du sous-groupe](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ Activez **Les membres du groupe parent peuvent voir les fils privés** dans **Pe
 
 ## Trouver des sous-groupes
 
-Ouvrez le menu latéral et cliquez sur le nom de votre groupe pour voir ses sous-groupes.
+Sélectionnez le nom de votre groupe parent dans la barre latérale pour voir ses sous-groupes.
 
 ![Sous-groupes de la coopérative Oatmilk affichés dans la barre latérale](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ Ouvrez le menu latéral et cliquez sur le nom de votre groupe pour voir ses sous
 
 ## Inviter dans un sous-groupe
 
-Invitez des personnes dans un sous-groupe de la même manière que dans un groupe. Si elles appartiennent déjà à un groupe parent ou à un autre sous-groupe de la même organisation dont vous faites également partie, vous pouvez saisir leur nom ou sélectionner ce groupe comme destinataire. Sélectionnez la pastille du groupe destinataire pour afficher chaque personne individuellement, puis retirez les personnes que vous ne souhaitez pas inviter.
+Vous pouvez [inviter des personnes dans un sous-groupe](/en/user_manual/groups/inviting_people) de la même manière que dans un groupe parent. Si elles appartiennent déjà au groupe parent ou à un autre sous-groupe dont vous faites partie, saisissez leur nom ou sélectionnez ce groupe, puis développez sa liste de membres pour afficher chaque personne individuellement et retirez les personnes que vous ne souhaitez pas inviter.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
 ### Inviter simultanément des personnes dans des sous-groupes et dans le groupe parent
 
-Si vous utilisez le bouton **Inviter des personnes** depuis l’onglet **Membres** de votre groupe parent, vous pouvez inviter des personnes dans plusieurs sous-groupes à la fois en cochant les cases de ceux que vous souhaitez leur faire rejoindre immédiatement.
+Lorsque vous sélectionnez **Inviter** dans l’onglet **Membres** de votre groupe parent, cochez les sous-groupes que vous souhaitez faire rejoindre aux personnes invitées en même temps.
 
 ![Sélection du groupe parent et du sous-groupe dans le formulaire d’invitation](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ Si vous utilisez le bouton **Inviter des personnes** depuis l’onglet **Membres
 
 ## Administrer un sous-groupe
 
-Les sous-groupes peuvent avoir leurs propres administrateurs, qui peuvent être différents de ceux du groupe parent.
+Les sous-groupes peuvent avoir leurs propres administrateurs, distincts des administrateurs du groupe parent.
 
-Un administrateur du groupe parent peut rejoindre un sous-groupe non secret et se nommer administrateur de ce sous-groupe. Cela ne s’applique pas aux sous-groupes secrets.
-
-Accédez à l’onglet Sous-groupes, trouvez le sous-groupe et cliquez sur **Rejoindre le groupe**.
+Un administrateur du groupe parent peut rejoindre n’importe quel sous-groupe non secret et se nommer administrateur de ce sous-groupe. Cela ne s’applique pas aux sous-groupes secrets. Consultez [Gestion des sous-groupes](/en/user_manual/groups/member_management#managing-subgroups) pour plus de détails.
 
 ![Bouton Rejoindre le groupe dans un sous-groupe fermé](member_join_subgroup.png)
-
-Une fois membre du sous-groupe, un administrateur du groupe parent peut se nommer administrateur du sous-groupe.
 
 ![Action permettant à un administrateur du groupe parent de se nommer administrateur](member_make_admin.png)
 
@@ -148,6 +137,4 @@ Une fois membre du sous-groupe, un administrateur du groupe parent peut se nomme
 
 ## Supprimer un sous-groupe
 
-Les administrateurs peuvent supprimer un sous-groupe de la même manière qu’un groupe. Lorsque vous supprimez un sous-groupe, veillez à ne pas supprimer le groupe parent.
-
-Découvrez [comment supprimer des groupes](/en/user_manual/groups/deleting_your_group/).
+Les administrateurs du groupe peuvent supprimer un sous-groupe de la même manière qu’ils [suppriment un groupe](/en/user_manual/groups/deleting_your_group). Avant de supprimer le sous-groupe, assurez-vous d’être sur sa page et non sur celle du groupe parent.

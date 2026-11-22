@@ -1,26 +1,26 @@
 ---
 title: Confidentialité
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/settings/privacy.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-11-22'
 sections:
-  introduction: 4b491c663bfb5ea9
-  open: 2802cda1461d3b19
-  follow-an-open-group: e4a1b3ce35a974d0
+  introduction: fa83676f56f0d4bd
+  open: 3913f73fccf45868
+  follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
-  secret: d0a9ea85448f9798
-  how-people-join: 926f4b183250aa9d
+  secret: dda930893dfc59cc
+  how-people-join: aca325fb6b4d6056
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 4863186cd3e805e2
-  open: 0d9113a3fda4d343
-  follow-an-open-group: 929a6682b62400f1
+  introduction: 51c4deb77aa6b9ac
+  open: 91495c3dc68c31e9
+  follow-an-open-group: 1033bd50a5b416b7
   closed: 1dd308772f2889c7
-  secret: a8b75acd9144e9ba
-  how-people-join: 0ab2b5991cb31084
+  secret: c18d8b6055b653cd
+  how-people-join: 46307573b2293816
   group-directory: 7bf450758a066de4
   visible-to-parent-group: 721cc5ee30ba5582
 title_source: 54a57c3147c49f33
@@ -33,7 +33,7 @@ needs_review:
 
 # Confidentialité du groupe
 
-La confidentialité détermine qui peut trouver un groupe et qui peut lire son contenu. Depuis la page du groupe, ouvrez **Modifier les paramètres du groupe**, puis sélectionnez **Confidentialité**.
+La confidentialité détermine qui peut trouver un groupe et qui peut lire son contenu. Dans le menu d’actions du groupe, ouvrez **Modifier les paramètres du groupe**, puis sélectionnez **Confidentialité**.
 
 ![Paramètres de confidentialité du groupe](group_privacy_settings.png#width-90)
 
@@ -43,15 +43,15 @@ Modifier la confidentialité affecte le contenu existant. Rendre un groupe paren
 
 ## Public
 
-Les groupes publics sont des espaces publics. Toute personne peut trouver le groupe et lire ses discussions, ses sondages et ses fichiers. La liste des membres reste visible uniquement par les membres.
+Les groupes publics sont des espaces publics. Toute personne peut trouver le groupe et lire ses discussions, ses sondages et ses fichiers. Seuls les membres peuvent consulter la liste des membres.
 
 <!-- translation-section: follow-an-open-group -->
 
 ### Suivre un groupe public
 
-Les personnes peuvent suivre l’activité d’un groupe public sans le rejoindre. Le suivi ajoute l’activité non lue du groupe à leur e-mail récapitulatif pour qu’elles puissent la consulter quand elles le souhaitent. Suivre un groupe ne confère pas le statut de membre ni les droits de vote des membres, et ne déclenche pas de notifications immédiates.
+Les personnes peuvent suivre un groupe public sans le rejoindre. Le suivi ajoute l’activité non lue du groupe à leur e-mail récapitulatif pour qu’elles puissent la consulter quand elles le souhaitent. Les personnes qui suivent le groupe ne deviennent pas membres, n’obtiennent pas de droits de vote et ne reçoivent pas de notifications immédiates.
 
-Activez **Suivre les mises à jour** sur la page du groupe pour inclure ses discussions, commentaires, sondages et autres activités non lues dans les fils dans votre e-mail récapitulatif. Désactivez ce paramètre pour ne plus y inclure le groupe.
+Activez **Suivre les mises à jour** sur la page du groupe pour inclure ses discussions, commentaires, sondages et autres activités non lues dans les fils dans votre e-mail récapitulatif. Désactivez ce paramètre pour arrêter de suivre le groupe.
 
 ![Suivre les mises à jour d’un groupe public](group_follow_updates.png)
 
@@ -71,13 +71,13 @@ Les membres du groupe parent et les membres du sous-groupe peuvent trouver le so
 
 ## Secret
 
-Les groupes secrets et leur contenu sont visibles uniquement par les personnes qui ont été invitées ou ajoutées. Les groupes secrets n’apparaissent pas dans l’annuaire public des groupes.
+Seules les personnes qui ont été invitées ou ajoutées peuvent voir un groupe secret et son contenu. Les groupes secrets n’apparaissent pas dans l’annuaire public des groupes.
 
 <!-- translation-section: how-people-join -->
 
 ## Comment rejoindre un groupe
 
-Sous **Comment les personnes peuvent-elles rejoindre le groupe ?**, choisissez parmi les options disponibles :
+Sous **Comment les personnes peuvent-elles rejoindre le groupe ?**, choisissez l’une des options suivantes :
 
 | Option d’adhésion | Fonctionnement |
 | --- | --- |
@@ -85,7 +85,7 @@ Sous **Comment les personnes peuvent-elles rejoindre le groupe ?**, choisissez
 | **Demander à rejoindre** | Les personnes demandent à rejoindre le groupe et attendent une approbation |
 | **Sur invitation uniquement** | Les personnes ont besoin d’une invitation pour rejoindre le groupe |
 
-Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre le groupe**, répondent à la question posée par le groupe et envoient une demande pour le rejoindre. Consultez [Inviter des personnes](/en/user_manual/groups/inviting_people#request-to-join-group) pour savoir comment configurer cette question, examiner les demandes et inviter directement des personnes.
+Lorsqu’une approbation est requise, les personnes sélectionnent **Rejoindre le groupe**, répondent à la question posée par le groupe et envoient une demande pour le rejoindre. Consultez [Inviter des personnes](/en/user_manual/groups/inviting_people#request-to-join-group) pour savoir comment personnaliser cette question, examiner les demandes et inviter directement des personnes.
 
 <!-- translation-section: group-directory -->
 

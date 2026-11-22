@@ -1,16 +1,16 @@
 ---
 title: Csoportok
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bc6967c16a4da2f5
-  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
+  introduction: 898c4f0b7d3b8a80
+  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
 generated:
-  introduction: 3753751332452c43
-  administration-facilitation-and-moderation-code-of-conduct: 49762e47ca8b1a90
+  introduction: 82a99b0f9df6bd23
+  administration-facilitation-and-moderation-code-of-conduct: e0488f4d77a2a2b2
 title_source: 39bbb719fa2b9d22
 title_generated: af564256c41cc70b
 ---
@@ -19,15 +19,11 @@ title_generated: af564256c41cc70b
 
 # Csoportok
 
-A Loomio-csoport biztonságos hely, ahol az emberek találkozhatnak, beszélgetéseket folytathatnak és döntéseket hozhatnak.
-
-Olyan tér, ahol a csoport tagjai információkat találhatnak és oszthatnak meg, valamint részt vehetnek a munkájukat érintő fontos beszélgetésekben és döntésekben.
-
-Így néz ki egy Loomio-csoport. Az oldal tetején egy képet és egy logót látsz, amelyeket a szervezetedhez igazíthatsz. Így a csoportodba érkezők láthatják, hogy ismerős helyre kerültek, ahol szívesen fogadják őket – egy biztonságos térbe, ahol otthon érezhetik magukat, barátok között lehetnek és érdemben részt vehetnek a közös munkában.
+A Loomio-csoport közös tér, ahol a tagok beszélgetéseket folytatnak, információkat osztanak meg és közösen hoznak döntéseket.
 
 ![Az Oatmilk Cooperative csoportoldala a leírással és a beszélgetések listájával](group_page.png)
 
-Adj a csoportodnak könnyen felismerhető nevet, és a leírásában mutasd be a célját, hogy kik vesznek részt benne, és hogyan kapcsolódhatnak be a tagok. Logót, borítóképet és dokumentumokra, például a működési szabályzatra mutató hivatkozásokat is hozzáadhatsz.
+A csoportod oldalát névvel, leírással, logóval, borítóképpel és dokumentumokra, például a működési szabályzatra mutató hivatkozásokkal szabhatod testre. Ez segít a tagoknak megérteni a csoport célját és azt, hogyan vehetnek részt a munkájában.
 
 Kezdésként [hozz létre egy csoportot](/en/user_manual/groups/starting_a_group), válaszd ki az [adatvédelmi beállításait](/en/user_manual/groups/settings/privacy), és [hívj meg embereket](/en/user_manual/groups/inviting_people).
 
@@ -35,6 +31,6 @@ Ha új csoportot készítesz elő, olvasd el [A Loomio bevezetése a csoportodba
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Adminisztráció, facilitálás és moderálás - Magatartási kódex
+## Magatartási kódex
 
-A magatartási kódex segíthet a tagoknak megérteni, hogyan vehetnek részt a csoport munkájában, és hogyan reagál a csoport a nem megfelelő viselkedésre. Az elvárások meghatározásához olvasd el a [Facilitátori útmutatót](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+A magatartási kódex segít a tagoknak megérteni, hogyan vehetnek részt a csoport munkájában, és hogyan reagál a csoport a nem megfelelő viselkedésre. Az elvárások meghatározásához olvasd el a [Facilitátori útmutatót](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).

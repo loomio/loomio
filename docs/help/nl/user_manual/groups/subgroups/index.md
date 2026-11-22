@@ -1,34 +1,34 @@
 ---
 title: Subgroepen
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: 75c64ddaa880134c
-  add-a-subgroup: 0ceef6cb6b4e97f4
+  introduction: a3b87b9571e51e1a
+  add-a-subgroup: 007aa64be6341162
   subgroup-settings: ad0c7b923b9ddc01
-  privacy: 95ed4708eeb51397
+  privacy: 30b0f59dc28ef42e
   permissions: 0ea18cffc3f75b8c
-  find-subgroups: f3c8f74d99c5b1e1
-  invite-to-a-subgroup: f9298311957d4afd
-  simultaneously-invite-people-to-subgroups-and-parent-group: 54e5ac5efa9afc0c
-  administer-a-subgroup: 6b7c1cd57a8ffb62
-  delete-a-subgroup: c0cf3d3472210145
-  how-people-join: 97fd4006caa9b4cb
+  find-subgroups: bf8a3455bd894d52
+  invite-to-a-subgroup: b976d3ab3269df58
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34c4ec18743185e5
+  administer-a-subgroup: 7c0ebc9b41c2f3cb
+  delete-a-subgroup: da23517ae7001fdb
+  how-people-join: c315bd87164f3308
 title_source: 9f81e728f70cae3e
 title_generated: 6fe3105765e4acd6
 ---
@@ -37,33 +37,28 @@ title_generated: 6fe3105765e4acd6
 
 # Subgroepen
 
-Subgroepen helpen je om je communicatie en leden te organiseren, zodat de juiste mensen samen aan hun werk kunnen deelnemen.
+Subgroepen helpen je om discussies en leden te organiseren rond specifieke teams of onderwerpen binnen een hoofdgroep. Een organisatie kan bijvoorbeeld subgroepen maken voor:
 
-Een organisatie kan bijvoorbeeld de volgende subgroepen hebben:
-- bestuur
-- werkteam of projectwerkgroep
-- een onderwerp (zoals 'strategie' of 'leren')
+- Een bestuur
+- Een werkteam of projectgroep
+- Een onderwerp zoals strategie of leren
 
-Subgroepen werken net als groepen, maar bevinden zich binnen jouw hoofdgroep. De meeste beschikbare functies en instellingen zijn hetzelfde als in de hoofdgroep. Dit betekent ook dat iemand lid kan zijn van jouw subgroep, zoals je bestuur, zonder lid te zijn van jouw hoofdgroep.
+Subgroepen werken net als gewone groepen en hebben grotendeels dezelfde functies en instellingen. Iemand kan lid zijn van een subgroep, zoals een bestuur, zonder lid te zijn van de hoofdgroep.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Een subgroep toevoegen
 
 >[!Note]
->De mogelijkheid om nieuwe subgroepen toe te voegen maakt deel uit van de [rechteninstellingen](/en/user_manual/groups/settings/permissions) van de groep. Standaard kunnen alleen admins nieuwe subgroepen starten.
+>Wie subgroepen kan toevoegen, wordt bepaald door de [rechteninstellingen](/en/user_manual/groups/settings/permissions) van de hoofdgroep. Standaard kunnen alleen admins van de groep subgroepen maken.
 
-Ga naar de pagina van je hoofdgroep om een subgroep toe te voegen en klik in de zijbalk op **Nieuwe subgroep**.  
+Open de pagina van jouw hoofdgroep om een subgroep te maken, selecteer **Nieuwe subgroep** in de zijbalk, voer een naam in, kies een privacyinstelling en selecteer **Start subgroep**.
 
 ![Knop Nieuwe subgroep in de zijbalk van Oatmilk Cooperative](subgroups-sidebar.png)
 
-Klik op de knop **Nieuwe subgroep**, geef de subgroep een naam en selecteer de privacyinstelling. Klik vervolgens op **Start subgroep**.
-
 ![Formulier voor een nieuwe subgroep voor de Packaging Working Group](subgroups_new.png)
 
-Als je klaar bent, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people/) voor de subgroep.
-
-Je kunt de [groepsinstellingen](/en/user_manual/groups/settings/) van de subgroep bewerken door op het tandwielpictogram op de pagina van de subgroep te klikken.
+Als de subgroep klaar is, kun je [mensen uitnodigen](/en/user_manual/groups/inviting_people) om lid te worden. Je kunt de [groepsinstellingen](/en/user_manual/groups/settings) van de subgroep wijzigen via het actiemenu op de pagina van de subgroep.
 
 ![Actie om de groepsinstellingen van de Packaging Working Group te bewerken](subgroups_edit_group_settings.png)
 
@@ -84,17 +79,15 @@ Kies wie de subgroep kan vinden en de threads kan lezen:
 | **Zichtbaar voor de bovenliggende groep** | Leden van de hoofdgroep en leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
 | **Geheim** | Uitgenodigde leden van de subgroep | Leden van de subgroep en uitgenodigde gasten |
 
-De toestemming **Leden van de hoofdgroep kunnen privéthreads zien** kan leden van de hoofdgroep ook toegang geven tot threads van de subgroep zonder dat ze lid worden.
+De toestemming **Leden van de hoofdgroep kunnen privéthreads zien** laat leden van de hoofdgroep ook threads van de subgroep lezen zonder lid te worden.
 
-Als de hoofdgroep privé is, kunnen subgroepen **Zichtbaar voor de bovenliggende groep** of **Geheim** zijn.
-
-[Lees hier over de privacy van groepen](/en/user_manual/groups/settings/privacy).
+Als de hoofdgroep privé is, kunnen subgroepen alleen **Zichtbaar voor de bovenliggende groep** of **Geheim** zijn. Zie [Privacy van groepen](/en/user_manual/groups/settings/privacy) voor meer informatie.
 
 <!-- translation-section: how-people-join -->
 
 ### Hoe mensen lid worden
 
-Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-join) bij het aanmaken van de subgroep, of onder **Groepsinstellingen bewerken → Privacy**.
+Kies [hoe mensen lid worden](/en/user_manual/groups/settings/privacy#how-people-join) bij het aanmaken van de subgroep, of onder **Bewerk groepsinstellingen** > **Privacy**.
 
 ![Privacyinstellingen en instellingen voor lid worden van de subgroep](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ Schakel **Leden van de hoofdgroep kunnen privéthreads zien** in onder **Toestem
 
 ## Subgroepen vinden
 
-Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te bekijken.
+Selecteer de naam van jouw hoofdgroep in de zijbalk om de subgroepen te bekijken.
 
 ![Subgroepen van Oatmilk Cooperative in de zijbalk](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ Open het zijbalkmenu en klik op de naam van je groep om de subgroepen te bekijke
 
 ## Mensen uitnodigen voor een subgroep
 
-Nodig mensen uit voor een subgroep zoals je ze uitnodigt voor een groep. Als ze al lid zijn van een hoofdgroep of een andere subgroep in dezelfde organisatie waar jij ook lid van bent, kun je hun naam typen of die groep als doelgroep selecteren. Selecteer het label van de doelgroep om de afzonderlijke mensen weer te geven en verwijder vervolgens iedereen die je niet wilt uitnodigen.
+Je kunt [mensen uitnodigen voor een subgroep](/en/user_manual/groups/inviting_people) op dezelfde manier als je ze uitnodigt voor een hoofdgroep. Als ze al lid zijn van de hoofdgroep of een andere subgroep waar jij lid van bent, typ je hun naam of selecteer je die groep. Klap de groep vervolgens uit om de afzonderlijke mensen weer te geven en verwijder iedereen die je niet wilt uitnodigen.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
 ### Mensen tegelijk uitnodigen voor subgroepen en de hoofdgroep
 
-Als je de knop **Mensen uitnodigen** op het tabblad **Leden** van je hoofdgroep gebruikt, kun je mensen tegelijk voor meerdere subgroepen uitnodigen. Vink de vakjes aan van de subgroepen waarvan je wilt dat ze meteen lid worden.
+Wanneer je **Uitnodigen** selecteert op het tabblad **Leden** van jouw hoofdgroep, vink je de subgroepen aan waarvan je wilt dat de uitgenodigde mensen tegelijk lid worden.
 
 ![De hoofdgroep en subgroep selecteren in het uitnodigingsformulier](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ Als je de knop **Mensen uitnodigen** op het tabblad **Leden** van je hoofdgroep 
 
 ## Een subgroep beheren
 
-Subgroepen kunnen hun eigen admins hebben. De admins van een subgroep hoeven niet dezelfde te zijn als de admins van de hoofdgroep.
+Subgroepen kunnen hun eigen admins hebben, los van de admins van de hoofdgroep.
 
-Een admin van de hoofdgroep kan lid worden van een subgroep die niet geheim is en zichzelf admin van die subgroep maken. Dit geldt niet voor geheime subgroepen.
-
-Ga naar het tabblad Subgroepen, zoek de subgroep en klik op **Word lid van de groep**.
+Een admin van de hoofdgroep kan lid worden van elke subgroep die niet geheim is en zichzelf admin van die subgroep maken. Dit geldt niet voor geheime subgroepen. Zie [Subgroepen beheren](/en/user_manual/groups/member_management#managing-subgroups) voor meer informatie.
 
 ![Knop Word lid van de groep bij een gesloten subgroep](member_join_subgroup.png)
-
-Zodra de admin van de hoofdgroep lid is van de subgroep, kan die zichzelf admin van de subgroep maken.
 
 ![Actie om een admin van de hoofdgroep admin van de subgroep te maken](member_make_admin.png)
 
@@ -148,6 +137,4 @@ Zodra de admin van de hoofdgroep lid is van de subgroep, kan die zichzelf admin 
 
 ## Een subgroep verwijderen
 
-Admins kunnen een subgroep op dezelfde manier verwijderen als een groep. Let er bij het verwijderen van een subgroep op dat je niet de hoofdgroep verwijdert.
-
-Lees [hoe je groepen verwijdert](/en/user_manual/groups/deleting_your_group/).
+Admins van de groep kunnen een subgroep op dezelfde manier verwijderen als ze [een groep verwijderen](/en/user_manual/groups/deleting_your_group). Controleer voordat je de subgroep verwijdert of je op de pagina van de subgroep bent en niet op die van de hoofdgroep.

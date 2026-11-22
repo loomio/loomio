@@ -1,28 +1,28 @@
 ---
 title: Gyors áttekintés
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: f2a5bb1e6c78251c
-  group-page: 8fac2eb11db76b9b
-  tabs: ab93e823e327c69a
+  introduction: dbc5d4ac256e48ba
+  group-page: 88b5e1568f1c1744
+  tabs: 6b419a78ffcc289d
   sidebar: 4360c2180d0d8608
-  user-settings: 020fdc0d2317d35d
-  notifications: 0a5134bed9bc27c5
+  user-settings: 323649da598cb49e
+  notifications: 4999d9a28ffdc31a
   what-to-do-next: c106e04cbffabed6
-  mobile-navigation: 75a560db1a76a929
+  mobile-navigation: 68be1608fdd4e1f3
 title_source: c41a33370cd580dd
 title_generated: 4c340dbdce7d1abd
 ---
@@ -31,13 +31,13 @@ title_generated: 4c340dbdce7d1abd
 
 # Gyors áttekintés
 
-Ez az oldal bemutatja a Loomio felületének fő részeit, és megmutatja, hol találod a téged érintő munkát.
+Ez az oldal bemutatja a Loomio fő részeit, és megmutatja, hol találod a munkádat.
 
 <!-- translation-section: group-page -->
 
 ## A csoport oldala
 
-A csoportod kezdőoldala bemutatja a csoportot, és hozzáférést biztosít a munkájához.
+A csoportod kezdőoldala bemutatja a csoportot, és hivatkozásokat tartalmaz a munkájához.
 
 ![](group_example.png)
 
@@ -47,13 +47,10 @@ A csoportod kezdőoldala bemutatja a csoportot, és hozzáférést biztosít a m
 
 A csoport leírása alatti füleken a következőket találod:
 
-**Beszélgetések** - A csoport beszélgetési szálai és legutóbbi tevékenységei.
-
-**Szavazások** - A csoportodban aktív szavazások listája.
-
-**Tagok** - A csoporthoz tartozó emberek.
-
-**Fájlok** - A csoportban csatolt dokumentumok és egyéb fájlok. Ez a fül összegyűjti a beszélgetések leírásához, a hozzászólásokhoz, a javaslatokhoz és a szavazásokhoz csatolt fájlokat, így akkor is megtalálhatsz egy dokumentumot, ha nem emlékszel, hol csatolták.
+- **Beszélgetések**: A csoport beszélgetési szálai és legutóbbi tevékenységei.
+- **Szavazások**: A csoport nyitott és lezárt szavazásai.
+- **Tagok**: A csoporthoz tartozó emberek.
+- **Fájlok**: A csoport beszélgetéseihez, hozzászólásaihoz, javaslataihoz és szavazásaihoz csatolt fájlok, így akkor is megtalálhatsz egy dokumentumot, ha nem emlékszel, hol osztották meg.
 
 A keresésről, a szűrőkről, a címkékről, a könyvjelzőkről és az olvasatlan beszélgetésekről a [Tartalmak keresése](/en/user_manual/overview/finding-content) oldalon találsz segítséget.
 
@@ -75,13 +72,13 @@ Válaszd ki a nevedet az oldalsávban a felhasználói menüd megnyitásához.
 
 ![](user_settings_sidebar.png)
 
-Ebben a menüben szerkesztheted a profilodat, módosíthatod az értesítési beállításaidat, kiválaszthatod a megjelenési témát, kezelheted a fiókbeállításaidat és kijelentkezhetsz.
+Ebben a menüben szerkesztheted a profilodat, módosíthatod az értesítési beállításaidat, kiválaszthatod a megjelenési témát, kezelheted a fiókodat és kijelentkezhetsz.
 
 <!-- translation-section: notifications -->
 
 ## Értesítések
 
-A haranggomb, amely asztali gépen a jobb felső sarokban, mobilon pedig az alsó navigációs sávban található, megnyitja az alkalmazáson belüli értesítéseidet. Egy jelvény jelenik meg, ha vannak még meg nem tekintett értesítéseid.
+Az alkalmazáson belüli értesítéseid megnyitásához válaszd ki a harang ikont, amely asztali gépen a jobb felső sarokban, mobilon pedig az alsó navigációs sávban található. Egy jelvény jelzi, ha olvasatlan értesítéseid vannak.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Az alkalmazáson belüli értesítésekről, az e-mail-beállításokról, valam
 
 ## Mobilos navigáció
 
-Mobilon az alsó navigációs sávból gyorsan elérheted az oldalsávot, az áttekintést és az értesítéseket. Amikor egy beszélgetést olvasol, a szál menüjéből elérheted a tartalomjegyzéket és a szálhoz kapcsolódó műveleteket.
+Mobilon az alsó navigációs sávból megnyithatod az oldalsávot, az áttekintést és az értesítéseket. Egy beszélgetésen belül a szál menüjéből elérheted a szál tartalmát és a hozzá kapcsolódó műveleteket.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -1,16 +1,16 @@
 ---
 title: Quorum
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/quorum/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 sections:
-  introduction: dbfdebe6e23060db
-  example-scenario: d247e0866095c321
+  introduction: 885a154beca10592
+  example-scenario: 2c4be2012a2bcba4
 generated:
-  introduction: 03a5fa855b4516fb
-  example-scenario: 61056903a5078f68
+  introduction: 98e822f40d5d91f5
+  example-scenario: 2802cd8846e1334a
 title_source: 18ed8b6c5ab90343
 title_generated: 18ed8b6c5ab90343
 ---
@@ -19,29 +19,29 @@ title_generated: 18ed8b6c5ab90343
 
 # Quorum
 
-Een quorum is het minimale percentage stemgerechtigde kiezers dat moet deelnemen om een peiling geldig te laten zijn. Gebruik het wanneer jouw besluitvormingsproces een bepaald niveau van deelname vereist.
+Een quorum is het minimale percentage stemgerechtigde kiezers dat moet deelnemen om een peiling geldig te laten zijn. Gebruik het wanneer jouw besluitvormingsproces een minimale deelname vereist.
 
 Bij [gewogen stemmen](/en/user_manual/polls/weighted_voting) wordt het quorum berekend op basis van stemgewichten. Jamie heeft bijvoorbeeld stemgewicht `2`, Samira stemgewicht `1` en Alex stemgewicht `1`. Als alleen Jamie stemt, heeft de helft van het stemgerechtigde stemgewicht deelgenomen. Als Samira ook stemt, bereikt de deelname 75 procent en is een quorum van 60 procent behaald.
 
-Open bij het aanmaken van een peiling **Meer instellingen**. Voer het vereiste percentage in bij **Quorum**. Laat het veld leeg als er geen quorum vereist is.
+Open bij het aanmaken van een peiling **Meer instellingen** en voer het vereiste percentage in bij **Quorum**. Laat het veld leeg als er geen quorum vereist is.
 
 ![De quoruminstelling met een deelnamequorum van 60 procent](./quorum-section.png)
 
 Je kunt ook een quorum instellen in een [peilingssjabloon](/en/user_manual/polls/poll_templates/), zodat peilingen die met dat sjabloon worden aangemaakt dit standaard gebruiken.
 
+Als een peiling sluit zonder het quorum te bereiken, geeft Loomio aan dat het quorum niet is behaald. De peiling wordt niet automatisch verlengd of geannuleerd. Een thread admin kan de peiling heropenen (als dat is toegestaan) of een conclusie delen waarin staat wat er vervolgens gebeurt.
+
 <!-- translation-section: example-scenario -->
 
 ## Voorbeeldscenario
 
-Oatmilk Cooperative bespreekt een proef van zes weken met retourflessen. De discussie is op het punt gekomen waarop de coöperatie het budget voor de proef moet goedkeuren.
+Oatmilk Cooperative bespreekt een proef van zes weken met retourflessen en moet het budget voor de proef goedkeuren.
 
-Jamie selecteert **Start een stemming**, kiest het voorstelsjabloon **Consent** en vult de titel, details, opties, duur en instellingen voor kiezers in.
+Jamie selecteert **Start een stemming**, kiest een voorstelsjabloon en vult de titel, details, opties, duur en instellingen voor kiezers in.
 
 ![De titel, details, opties, duur en instellingen voor kiezers van het voorstel](proposal-options.png)
 
-Jamie beperkt het stemmen tot de vijf mensen die verantwoordelijk zijn voor het budget van de proef.
-
-De coöperatie vereist 60 procent deelname voor belangrijke besluiten. Daarom voert Jamie **60** in bij **Quorum** en start het voorstel.
+Jamie beperkt het stemmen tot de vijf mensen die verantwoordelijk zijn voor het budget van de proef. Omdat de coöperatie 60 procent deelname vereist voor belangrijke besluiten, voert Jamie **60** in bij **Quorum** en start het voorstel.
 
 Voordat iemand stemt, geeft het resultatenpaneel aan dat het quorum nog niet is bereikt.
 

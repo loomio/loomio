@@ -1,34 +1,34 @@
 ---
 title: Untergruppen
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: ea06820dfdbb7bd3
-  add-a-subgroup: '0583e95e8fd8424d'
+  introduction: acf8b10d6441dd8c
+  add-a-subgroup: 70111e6722e1d8f9
   subgroup-settings: e79b4c0cb34a6e3c
-  privacy: e07364ee9d1deacb
+  privacy: 7152d78e15ca3ebb
   permissions: 1e71998a7fe07864
-  find-subgroups: c4956da3eeabc8d5
-  invite-to-a-subgroup: 79ef72a3ea7f6750
-  simultaneously-invite-people-to-subgroups-and-parent-group: b4dbc6f6abf00a2d
-  administer-a-subgroup: be64f6f6f9b0cee0
-  delete-a-subgroup: 54f25462618ec475
-  how-people-join: 588893ceb3cb73eb
+  find-subgroups: 99223b1d3c7365e2
+  invite-to-a-subgroup: 65e016d9d874c0b6
+  simultaneously-invite-people-to-subgroups-and-parent-group: 76195a9573e283d7
+  administer-a-subgroup: c452b596ff58d3a4
+  delete-a-subgroup: 13407fd640c565ba
+  how-people-join: 5aed3ad9569b7aba
 title_source: 9f81e728f70cae3e
 title_generated: 5ec97dd47e254e8e
 ---
@@ -37,33 +37,28 @@ title_generated: 5ec97dd47e254e8e
 
 # Untergruppen
 
-Untergruppen helfen dir, deine Kommunikation und Mitglieder so zu organisieren, dass die passenden Personen zusammenarbeiten.
+Untergruppen helfen dir, Diskussionen und Mitglieder innerhalb einer Hauptgruppe nach bestimmten Teams oder Themen zu organisieren. Eine Organisation kann zum Beispiel Untergruppen für Folgendes erstellen:
 
-Eine Organisation kann zum Beispiel folgende Untergruppen haben:
-- Vorstand
-- Arbeitsteam oder Projektarbeitsgruppe
-- eine Untergruppe zu einem Thema (wie „Strategie“ oder „Lernen“)
+- Einen Vorstand
+- Ein Arbeitsteam oder eine Projektgruppe
+- Ein Thema wie Strategie oder Lernen
 
-Untergruppen funktionieren wie Gruppen, befinden sich aber innerhalb deiner Hauptgruppe. Die meisten Funktionen und Einstellungen sind dieselben wie in der Hauptgruppe. Das bedeutet auch, dass jemand Mitglied deiner Untergruppe sein kann, etwa deines Vorstands, ohne Mitglied deiner Hauptgruppe zu sein.
+Untergruppen funktionieren wie reguläre Gruppen und haben weitgehend dieselben Funktionen und Einstellungen. Eine Person kann einer Untergruppe angehören, etwa einem Vorstand, ohne Mitglied der Hauptgruppe zu sein.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Eine Untergruppe hinzufügen
 
 >[!Note]
->Wer neue Untergruppen hinzufügen darf, wird in den [Berechtigungseinstellungen](/en/user_manual/groups/settings/permissions) der Gruppe festgelegt. Standardmäßig können nur Admins neue Untergruppen erstellen.
+>Wer Untergruppen hinzufügen darf, wird in den [Berechtigungseinstellungen](/en/user_manual/groups/settings/permissions) der Hauptgruppe festgelegt. Standardmäßig können nur Gruppenadmins Untergruppen erstellen.
 
-Um eine Untergruppe hinzuzufügen, öffne die Seite deiner Hauptgruppe und klicke in der Seitenleiste auf **Neue Untergruppe**.  
+Um eine Untergruppe zu erstellen, öffne die Seite deiner Hauptgruppe, wähle in der Seitenleiste **Neue Untergruppe**, gib einen Namen ein, wähle eine Einstellung für die Sichtbarkeit und anschließend **Untergruppe erstellen**.
 
 ![Schaltfläche „Neue Untergruppe“ in der Seitenleiste der Oatmilk Cooperative](subgroups-sidebar.png)
 
-Klicke auf **Neue Untergruppe**, gib ihr einen Namen und wähle die Privatsphäre-Einstellung. Klicke dann auf **Untergruppe erstellen**.
-
 ![Formular für eine neue Untergruppe namens Packaging Working Group](subgroups_new.png)
 
-Wenn du bereit bist, [lade Leute](/en/user_manual/groups/inviting_people/) in die Untergruppe ein.
-
-Du kannst die [Gruppeneinstellungen](/en/user_manual/groups/settings/) der Untergruppe bearbeiten, indem du auf der Seite der Untergruppe auf das Zahnradsymbol klickst.
+Wenn die Untergruppe bereit ist, [lade Personen ein](/en/user_manual/groups/inviting_people), ihr beizutreten. Du kannst die [Gruppeneinstellungen](/en/user_manual/groups/settings) der Untergruppe über das Aktionsmenü auf der Seite der Untergruppe ändern.
 
 ![Aktion zum Bearbeiten der Gruppeneinstellungen der Packaging Working Group](subgroups_edit_group_settings.png)
 
@@ -84,17 +79,15 @@ Wähle, wer die Untergruppe finden und ihre Threads lesen kann:
 | **Für die übergeordnete Gruppe sichtbar** | Mitglieder der Hauptgruppe und der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
 | **Geheim** | Eingeladene Mitglieder der Untergruppe | Mitglieder der Untergruppe und eingeladene Gäste |
 
-Die Berechtigung **Mitglieder der Hauptgruppe können private Threads sehen** kann Mitgliedern der Hauptgruppe auch Zugriff auf Threads der Untergruppe geben, ohne dass sie der Untergruppe beitreten.
+Die Berechtigung **Mitglieder der Hauptgruppe können private Threads sehen** ermöglicht es Mitgliedern der Hauptgruppe außerdem, Threads der Untergruppe zu lesen, ohne ihr beizutreten.
 
-Wenn die Hauptgruppe privat ist, stehen für Untergruppen die Einstellungen **Für die übergeordnete Gruppe sichtbar** und **Geheim** zur Verfügung.
-
-[Lies hier mehr über die Privatsphäre von Gruppen](/en/user_manual/groups/settings/privacy).
+Wenn die Hauptgruppe privat ist, können Untergruppen nur **Für die übergeordnete Gruppe sichtbar** oder **Geheim** sein. Weitere Informationen findest du unter [Privatsphäre von Gruppen](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: how-people-join -->
 
 ### Wie Personen beitreten
 
-Wähle beim Erstellen der Untergruppe oder unter **Gruppeneinstellungen bearbeiten → Privatsphäre**, [wie Personen beitreten](/en/user_manual/groups/settings/privacy#how-people-join).
+Wähle beim Erstellen der Untergruppe oder unter **Gruppeneinstellungen bearbeiten** > **Sichtbarkeit**, [wie Personen beitreten](/en/user_manual/groups/settings/privacy#how-people-join).
 
 ![Einstellungen für Privatsphäre und Beitritt einer Untergruppe](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder der Hauptgruppe 
 
 ## Untergruppen finden
 
-Öffne das Seitenleistenmenü und klicke auf den Namen deiner Gruppe, um ihre Untergruppen zu sehen.
+Wähle in der Seitenleiste den Namen deiner Hauptgruppe, um ihre Untergruppen zu sehen.
 
 ![Untergruppen der Oatmilk Cooperative in der Seitenleiste](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ Aktiviere unter **Berechtigungen** die Einstellung **Mitglieder der Hauptgruppe 
 
 ## In eine Untergruppe einladen
 
-Lade Leute genauso in eine Untergruppe ein wie in eine Gruppe. Wenn sie bereits einer Hauptgruppe oder einer anderen Untergruppe derselben Organisation angehören, der auch du angehörst, kannst du ihren Namen eingeben oder diese Gruppe als Empfängerkreis auswählen. Wähle den Eintrag für den Empfängerkreis aus, um ihn in einzelne Personen aufzulösen, und entferne dann alle, die du nicht einladen möchtest.
+Du kannst [Personen in eine Untergruppe einladen](/en/user_manual/groups/inviting_people), genauso wie du sie in eine Hauptgruppe einlädst. Wenn sie bereits der Hauptgruppe oder einer anderen Untergruppe angehören, der auch du angehörst, gib ihren Namen ein oder wähle diese Gruppe aus. Löse den Gruppeneintrag anschließend in einzelne Personen auf und entferne alle, die du nicht einladen möchtest.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
-### Leute gleichzeitig in Untergruppen und die Hauptgruppe einladen
+### Personen gleichzeitig in Untergruppen und die Hauptgruppe einladen
 
-Wenn du im Tab **Mitglieder** deiner Hauptgruppe auf **Leute einladen** klickst, kannst du Leute gleichzeitig in mehrere Untergruppen einladen. Setze dazu die Häkchen bei den Untergruppen, denen sie sofort beitreten sollen.
+Wenn du im Tab **Mitglieder** deiner Hauptgruppe **Einladen** auswählst, setze die Häkchen bei allen Untergruppen, denen die eingeladenen Personen gleichzeitig beitreten sollen.
 
 ![Auswahl der Hauptgruppe und einer Untergruppe im Einladungsformular](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ Wenn du im Tab **Mitglieder** deiner Hauptgruppe auf **Leute einladen** klickst,
 
 ## Eine Untergruppe verwalten
 
-Untergruppen können eigene Admins haben. Die Admins einer Untergruppe können andere Personen sein als die Admins der Hauptgruppe.
+Untergruppen können eigene Gruppenadmins haben, die andere Personen sind als die Admins der Hauptgruppe.
 
-Ein Admin der Hauptgruppe kann einer nicht geheimen Untergruppe beitreten und sich selbst zum Admin dieser Untergruppe machen. Das gilt nicht für geheime Untergruppen.
-
-Öffne den Tab „Untergruppen“, suche die Untergruppe und klicke auf **Der Gruppe beitreten**.
+Ein Admin der Hauptgruppe kann jeder nicht geheimen Untergruppe beitreten und sich selbst zum Admin dieser Untergruppe machen. Das gilt nicht für geheime Untergruppen. Weitere Informationen findest du unter [Untergruppen verwalten](/en/user_manual/groups/member_management#managing-subgroups).
 
 ![Schaltfläche „Der Gruppe beitreten“ bei einer geschlossenen Untergruppe](member_join_subgroup.png)
-
-Sobald ein Admin der Hauptgruppe Mitglied der Untergruppe ist, kann sich diese Person selbst zum Admin der Untergruppe machen.
 
 ![Aktion zum Ernennen eines Admins der Hauptgruppe zum Admin der Untergruppe](member_make_admin.png)
 
@@ -148,6 +137,4 @@ Sobald ein Admin der Hauptgruppe Mitglied der Untergruppe ist, kann sich diese P
 
 ## Eine Untergruppe löschen
 
-Admins können eine Untergruppe genauso löschen wie eine Gruppe. Achte beim Löschen einer Untergruppe darauf, dass du nicht die Hauptgruppe löschst.
-
-Erfahre, [wie du Gruppen löschst](/en/user_manual/groups/deleting_your_group/).
+Gruppenadmins können eine Untergruppe genauso löschen, wie sie [eine Gruppe löschen](/en/user_manual/groups/deleting_your_group). Vergewissere dich vor dem Löschen, dass du dich auf der Seite der Untergruppe und nicht auf der Seite der Hauptgruppe befindest.

@@ -1,71 +1,70 @@
 ---
 title: Diskussion starten
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/starting_a_discussion/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/starting_a_discussion/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 3789fc666aaa1648
-  new-discussion: 523c99827f192f72
-  group: 8b32b9f2366d2ec2
-  invite-and-notify: 40c5557d5679d9ea
-  tags: 2d888580fa809f70
-  title: ba80a903c4ecc7d1
-  context: 9dbd5adda4ef4a04
+  introduction: c5b9b07369869d1a
+  new-discussion: f29a3077b319eed5
+  group: b130915850624908
+  invite-and-notify: b0d88eb035263e60
+  tags: 15916c7c3259c62c
+  title: 8d833a29778beb12
+  context: fdbdd9f406e00e29
 generated:
-  introduction: 905d1b76c5ccdacf
-  new-discussion: 21cebc2962751c6e
-  group: 34d4cfb31f10bfca
-  invite-and-notify: 5d6cb99524291918
-  tags: 98cd3aefbceef967
-  title: e428deefaca4d096
-  context: e14590d179547f2e
+  introduction: 20381284475669b2
+  new-discussion: 9239296bc01788fc
+  group: 8cc33d833bd30d2a
+  invite-and-notify: 86c1028678ddf540
+  tags: 04fc21d4e6a243f4
+  title: 2e9c2c876792b86f
+  context: e9e9492e06599447
 title_source: 7373febfac25054c
 title_generated: a191dc8b5030caca
+needs_review:
+  context: use "Thread" instead of "Thema" for "thread"
 ---
 
 <!-- translation-section: introduction -->
 
 # Diskussion starten
 
-Eine Diskussion in Loomio zu starten ist ähnlich wie eine E-Mail zu schreiben. Die Betreffzeile einer E-Mail entspricht dem Diskussionstitel, und der Text einer E-Mail entspricht dem Kontext einer Diskussion.
+Eine Diskussion in Loomio zu starten funktioniert ähnlich wie das Versenden einer E-Mail. Der Titel entspricht der Betreffzeile, der Kontext führt in das Thema ein, und die Einladungsliste legt fest, wer benachrichtigt wird.
 
-So wie du Personen zur Empfängerliste deiner E-Mail hinzufügst, kannst du in Loomio einzelne Personen oder eine Gruppe zur Diskussion einladen. Sie erhalten eine E-Mail-Benachrichtigung mit dem Inhalt deiner Diskussion.
-
-Personen können per E-Mail auf deine Diskussion antworten. Ihre Kommentare erscheinen dann in der Diskussion.
-
-Wie eine E-Mail kann eine Diskussion eine einfache Frage oder eine ausführlichere Einführung in ein Thema enthalten, mit Links oder angehängten Dateien als Hintergrundinformationen.
+Du kannst eine einfache Frage stellen oder ausführliche Informationen mit Links und angehängten Dateien teilen. Personen können auch per E-Mail antworten. Ihre Antworten erscheinen dann in der Diskussion.
 
 <!-- translation-section: new-discussion -->
 
-## Neue Diskussion
+## Neue Diskussion starten
 
-Klicke auf der Seite deiner Loomio-Gruppe auf **Neue Diskussion**, um eine neue Diskussion zu starten.
+Wähle auf deiner Gruppenseite oder der Seite einer Untergruppe **Diskussion starten** aus.
 
-Du kannst eine Diskussion in deiner Loomio-Gruppe oder einer beliebigen Untergruppe starten.
+Loomio zeigt die [Diskussionsvorlagen](/en/user_manual/discussions/templates/) deiner Gruppe an. Wähle eine Vorlage oder **Leere Vorlage** aus, um das Diskussionsformular zu öffnen.
 
-![Schaltfläche Neue Diskussion auf der Seite der Oatmilk Cooperative](new-discussion-button.png)
+![Schaltfläche Diskussion starten auf der Seite der Oatmilk Cooperative](new-discussion-button.png)
 
-![Formular für eine neue Diskussion zur Planung des Mehrwegflaschenversuchs](new-discussion-example.png)
+![Formular zum Starten einer Diskussion zur Planung des Mehrwegflaschenversuchs](new-discussion-example.png)
 
 <!-- translation-section: group -->
 
 ### Gruppe
-Prüfe, ob die richtige Gruppe oder Untergruppe für deine Diskussion ausgewählt ist. Alle Personen in dieser Gruppe können die Diskussion sehen. Du kannst die Diskussion auch in einer anderen Gruppe oder als „direkte“ Diskussion (ohne Gruppe) starten.
+
+Prüfe, ob die richtige Gruppe oder Untergruppe ausgewählt ist. Alle Personen in dieser Gruppe können die Diskussion sehen. Du kannst die Diskussion auch in einer anderen Gruppe oder als [direkte Diskussion](/en/user_manual/discussions/direct_discussions/) ohne Gruppe starten.
 
 >[!Tip]
->Wenn du die Diskussion noch nicht in deiner Gruppe sichtbar machen möchtest, starte sie als „direkte“ Diskussion. Du kannst sie später in deine Loomio-Gruppe verschieben.
+>Wenn du die Diskussion noch nicht mit deiner Gruppe teilen möchtest, starte sie als direkte Diskussion. Du kannst sie später in deine Gruppe verschieben.
 
 <!-- translation-section: invite-and-notify -->
 
 ### Einladen und benachrichtigen
 
-Das Feld **Einladen** legt fest, wer die neue Diskussion sofort erhält.
+Das Feld **Einladen** legt fest, wer sofort benachrichtigt wird, wenn du die Diskussion startest.
 
-Gruppenmitglieder können eine Diskussion in ihrer Gruppe sehen, auch wenn du sie nicht benachrichtigst. Wenn du ein Gruppenmitglied zu **Einladen** hinzufügst, erhält es eine E-Mail-Benachrichtigung und eine Benachrichtigung in Loomio.
+Gruppenmitglieder können eine Diskussion in ihrer Gruppe sehen, auch wenn du sie nicht benachrichtigst. Wenn du ein Gruppenmitglied zum Feld **Einladen** hinzufügst, erhält es eine Benachrichtigung in Loomio und per E-Mail.
 
-Wähle eine Gruppe aus, um alle Mitglieder darin zu benachrichtigen, oder klappe die Gruppe auf, um einzelne Mitglieder auszuwählen. Klicke auf das × neben einem Namen, damit diese Person keine Benachrichtigung erhält.
+Wähle eine Gruppe aus, um alle Mitglieder darin zu benachrichtigen, oder klappe die Gruppe auf, um einzelne Mitglieder auszuwählen. Klicke auf **×** neben einem Namen, damit diese Person keine Benachrichtigung erhält.
 
 ![Aufgeklapptes Feld Einladen mit einzelnen empfangenden Personen](../notifying_people/thread_notification.png)
 
@@ -73,26 +72,28 @@ Beginne, den Namen eines Mitglieds einzugeben, und wähle es aus der Liste aus.
 
 ![Suche nach Samira Patel im Feld Einladen](../notifying_people/thread_notify_user.png)
 
-Gib eine E-Mail-Adresse ein, um einen Gast einzuladen. Ein Gast kann diesen Thread sehen und daran teilnehmen, aber andere Diskussionen in der Gruppe nur sehen, wenn er gesondert dazu eingeladen wird.
+Gib eine E-Mail-Adresse ein, um einen Gast einzuladen. Ein Gast kann diesen Thread sehen und daran teilnehmen, aber andere private Diskussionen in der Gruppe nur sehen, wenn er dazu eingeladen wird.
 
 ![Hinzufügen der E-Mail-Adresse eines Gastes zum Feld Einladen](../notifying_people/thread_notify_email.png)
 
-Du kannst die Diskussion auch starten, ohne jemanden zu benachrichtigen. Gruppenmitglieder können sie weiterhin in Loomio finden und sehen sie je nach ihren Benachrichtigungseinstellungen möglicherweise in ihrer Zusammenfassungs-E-Mail.
+Du kannst eine Diskussion auch starten, ohne jemanden zu benachrichtigen. Gruppenmitglieder können sie weiterhin in Loomio finden und sehen sie je nach ihren Benachrichtigungseinstellungen möglicherweise in ihrer Zusammenfassungs-E-Mail.
 
 <!-- translation-section: tags -->
 
 ### Schlagwörter
 
-Füge Schlagwörter hinzu, damit Personen deine Diskussion bei der Suche nach Schlagwörtern finden können. Admins können neue Schlagwörter erstellen.
+Füge ein oder mehrere Schlagwörter hinzu, damit Personen später nach deiner Diskussion filtern und suchen können. Mitglieder können standardmäßig neue Schlagwörter erstellen, sofern ein Gruppenadmin diese Berechtigung nicht deaktiviert. Siehe [Kategorie-Schlagwörter](/en/user_manual/discussions/tags/).
 
 <!-- translation-section: title -->
 
 ### Titel
-Gib deiner Diskussion einen passenden Titel. Ein Diskussionstitel ähnelt der Betreffzeile einer E-Mail.
+
+Gib deiner Diskussion einen klaren, konkreten Titel, der beschreibt, worum es geht.
 
 <!-- translation-section: context -->
 
 ### Kontext
-Nutze den Kontext der Diskussion, um das Thema vorzustellen und den Rahmen für das Gespräch oder die anstehende Entscheidung zu setzen. Verwende die Formatierungswerkzeuge, um wichtige Punkte hervorzuheben. Füge Hintergrundinformationen hinzu, hänge Dateien an, verlinke auf Online-Dokumente und bette ein Video ein.
 
-Der Kontext bleibt immer oben in der Diskussion. Du kannst ihn jederzeit aktualisieren, während die Diskussion fortschreitet. Wenn die Diskussion endet, ergänze den Kontext um das Fazit.
+Der Kontext stellt das Thema vor und setzt den Rahmen für das Gespräch oder die Entscheidung. Du kannst Text formatieren, Dateien anhängen, auf Dokumente verlinken und Videos einbetten.
+
+Der Kontext bleibt oben im Thread. Du kannst ihn aktualisieren, während die Diskussion fortschreitet. Wenn die Diskussion endet, kannst du auch das Fazit zum Kontext hinzufügen, damit später Hinzukommende sofort sehen, was entschieden wurde.

@@ -1,16 +1,16 @@
 ---
 title: Je groep verwijderen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bb26ad48b8ce1e1d
-  group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
+  introduction: e811b127a678d5e3
+  group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 144745b7793f3b23
-  group-data-is-permanently-deleted-after-90-days: 92455d18d72684df
+  introduction: 464388166218cb92
+  group-data-is-permanently-deleted-after-90-days: a60d0e469538a1e6
 title_source: 9a0868f49f1262ea
 title_generated: 6fbf0a1fc406600d
 ---
@@ -19,32 +19,29 @@ title_generated: 6fbf0a1fc406600d
 
 # Je groep verwijderen
 
-Als je jouw Loomio-groep verwijdert, start je een proces om alle groepsgegevens permanent te verwijderen.
+Alleen een groepsadmin kan een groep verwijderen. Als je een groep verwijdert, vervalt de toegang onmiddellijk en worden alle gegevens van de groep en haar subgroepen ingepland voor permanente verwijdering na 90 dagen.
 
-Als je gegevens wilt bewaren, zorg dan dat je de [groepsgegevens exporteert](/en/user_manual/groups/data_export/) en alle belangrijke bestanden die je hebt geüpload handmatig downloadt voordat je verdergaat.
+Voordat je een groep verwijdert, [exporteer je de groepsgegevens](/en/user_manual/groups/data_export) en download je alle geüploade bestanden die je wilt bewaren.
 
-Open het keuzemenu van de groep door op de drie puntjes te klikken en selecteer **Groep verwijderen** om de toegang tot de groep te beëindigen en het verwijderen van alle groepsgegevens uit onze systemen te starten. Je moet groepsadmin zijn om een groep te verwijderen.
-
-Als je een groep verwijdert, verdwijnt deze meteen uit beeld en wordt deze na 90 dagen permanent verwijderd. Jij en de groepsleden verliezen onmiddellijk toegang tot de groep. Als je de groep per ongeluk hebt verwijderd, neem dan binnen 90 dagen contact met ons op om herstel aan te vragen.
-
-Groepen die op verwijdering wachten en hun subgroepen zijn niet beschikbaar voor leden en groepsadmins om te bekijken, eraan deel te nemen of te exporteren. Dit geldt ook voor peilingen die via opgeslagen links worden geopend. Leden kunnen geen inhoud aanmaken of bewerken, stemmen, aankondigingen of herinneringen versturen of uitnodigingen accepteren. Exporteer de groep en download belangrijke bestanden voordat je de verwijdering bevestigt. Directe discussies en peilingen blijven beschikbaar.
-
-Als je de groep inplant voor verwijdering, worden nog niet verzonden activiteitsmeldingen en peilingherinneringen voor de groep en haar subgroepen stopgezet. Berichten die al worden verzonden, kunnen nog aankomen.
-
-De waarschuwingsmail vermeldt het aantal subgroepen, leden, discussies, peilingen en reacties van de groep. Als je de groep wilt behouden of [de gegevens wilt exporteren](/en/user_manual/groups/data_export/), antwoord dan direct zodat de toegang vóór de verwijdering kan worden hersteld.
-
-Als je jouw groep verwijdert, wordt ook je Loomio-abonnement opgezegd.
+Om een groep te verwijderen, open je het actiemenu van de groep en selecteer je **Groep verwijderen**.
 
 ![Actie Groep verwijderen in het menu van Oatmilk Cooperative](group_delete_group.png)
 
-Je wordt gevraagd de naam van jouw groep in te voeren (*hoofdlettergevoelig*) om te bevestigen dat je jouw groep wilt verwijderen.
+Voer de groepshandle in om de verwijdering te bevestigen.
 
-![Bevestigingsformulier waarin de groepsnaam van Oatmilk Cooperative moet worden ingevoerd](group_delete_group_confirm.png)
+![Bevestigingsformulier waarin de handle van Oatmilk Cooperative moet worden ingevoerd](group_delete_group_confirm.png)
+
+Wanneer je de verwijdering bevestigt:
+
+- De groep en haar subgroepen verdwijnen onmiddellijk uit beeld. Leden en groepsadmins verliezen de toegang om inhoud te bekijken, eraan deel te nemen of deze te exporteren. Dit geldt ook voor peilingen die via opgeslagen links worden geopend.
+- Nog niet verzonden activiteitsmeldingen en peilingherinneringen voor de groep en haar subgroepen worden stopgezet. Berichten die al worden verzonden, kunnen nog aankomen.
+- Je Loomio-abonnement wordt opgezegd.
+- Directe discussies en peilingen buiten de groep blijven ongewijzigd.
+
+Loomio stuurt ook een waarschuwingsmail met het aantal subgroepen, leden, discussies, peilingen en reacties van de groep. Als je de groep per ongeluk hebt verwijderd of de gegevens nog moet exporteren, antwoord dan op die e-mail of neem binnen 90 dagen contact met ons op om de toegang te herstellen.
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## Groepsgegevens worden na 90 dagen permanent verwijderd
 
-Na 90 dagen worden alle threads, peilingen, bestanden en andere groepsinhoud permanent verwijderd. ***Dit kan niet ongedaan worden gemaakt!***
-
-We raden je aan de [groepsgegevens te exporteren](/en/user_manual/groups/data_export/) en alle belangrijke bestanden die je hebt geüpload handmatig te downloaden voordat je verdergaat.
+Na 90 dagen verwijdert Loomio alle threads, peilingen, bestanden en andere inhoud in de groep en haar subgroepen permanent. Dit kan niet ongedaan worden gemaakt.

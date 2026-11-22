@@ -1,37 +1,37 @@
 ---
 title: Kyselymallit
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 118c34aa89fee06b
+  introduction: cd14267a0fbf7a6f
   who-can-manage-templates: ac0f1499dcd3fdb7
   create-a-poll-template: 78bc97e104c5da3e
   template-title-subtitle-and-help: 3ec0fb67dd959f51
-  voting-method: 2162798a730d20e9
+  voting-method: f9b84b65f73eceb3
   example-title-details-and-tags: ea5a7b3f71daa65b
-  response-options: 328e97027f9e1c75
-  duration-and-settings: 0c8c9889123f698c
-  manage-the-template-list: 0bf7894caa98552a
+  response-options: 3aa1869a062fa648
+  duration-and-settings: 41b51cbecf6d7e8f
+  manage-the-template-list: 1e42bb70431a29bd
   save-a-poll-as-a-template: 06f4be9e88c10c14
   start-a-new-template: 5e58489e7152e692
-  configure-the-template: c152ac97758bdc54
+  configure-the-template: 9dc3620d6201d95e
   edit-a-default-template: 4c63b99976fc0d15
 title_source: 114cca246e357304
 title_generated: 22a10edb0e6d9b26
@@ -49,7 +49,7 @@ Tämän sivun ohjeilla voit määrittää, mitkä mallit ovat ryhmän käytettä
 
 Kun aloitat äänestyksen, valitse **Ehdotus**- tai **Kysely**-välilehti ja valitse jokin ryhmän käytettävissä olevista malleista.
 
-Malli sisältää johdannon, esimerkkisisältöä, vaihtoehdot ja asetukset. Tarkista ja muokkaa ne kyseiseen päätökseen sopiviksi ennen äänestyksen aloittamista. Uuden äänestyksen muokkaaminen ei muuta uudelleenkäytettävää mallia.
+Malli täyttää johdannon, esimerkkisisällön, vaihtoehdot ja asetukset valmiiksi. Tarkista ja muokkaa ne päätökseesi sopiviksi ennen äänestyksen aloittamista. Uuden äänestyksen muokkaaminen ei muuta mallia.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -85,11 +85,11 @@ Jos haluat mukauttaa oletusmallia, kuten **Suostumus**, avaa sen toimintovalikko
 
 ## Mallin asetukset
 
-Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käyttää. Voit muokata muitakin kenttiä niin, että ne sopivat paremmin uudelleenkäyttöön. Kun valitset **Tallenna mallipohja**, malli näkyy luettelossa, kun käyttäjät aloittavat uuden ehdotuksen tai kyselyn.
+Anna mallille nimi ja alaotsikko, jotka kuvaavat, milloin sitä kannattaa käyttää. Muokkaa muita kenttiä niin, että malli on valmis uudelleenkäyttöön, ja valitse sitten **Tallenna mallipohja**. Malli näkyy tämän jälkeen, kun käyttäjät aloittavat uuden ehdotuksen tai kyselyn.
 
 [![Toimintaperiaatteiden muuttamiseen tarkoitetun suostumusprosessin koko mallilomake](poll_template_new.png)](poll_template_new.png)
 
-Itsenäisissä kyselyissä **Vain ylläpitäjät voivat lisätä liitteitä** sallii uusien tiedostojen ja tekstin sekaan lisättävien kuvien lisäämisen vain ketjun ja ryhmän ylläpitäjille. Rajoitus koskee myös kyselyvastauksia ja niihin annettuja vastauksia. Olemassa olevassa ketjussa aloitetut kyselyt noudattavat kyseisen ketjun liiteasetusta. Mallin muuttaminen vaikuttaa vain tuleviin kyselyihin.
+Itsenäisissä kyselyissä **Vain ylläpitäjät voivat lisätä liitteitä** sallii uusien tiedostojen ja tekstin sekaan lisättävien kuvien lisäämisen vain ketjun ja ryhmän ylläpitäjille. Rajoitus koskee myös kyselyvastauksia ja niihin annettuja vastauksia. Olemassa olevassa ketjussa olevat kyselyt noudattavat kyseisen ketjun liiteasetusta. Mallin muuttaminen vaikuttaa vain tuleviin kyselyihin.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -101,7 +101,7 @@ Kerro otsikossa ja alaotsikossa, milloin malli kannattaa valita. Lisää prosess
 
 ### Äänestystapa
 
-Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan.
+Valitse, mitä osallistujien pitää ilmaista ja miten tulos lasketaan:
 
 - **Ehdotus**: vastaa väittämään ennalta määritetyillä kannoilla;
 - **Valita**: valitse yksi tai useampi vaihtoehto;
@@ -128,7 +128,7 @@ Käytä esimerkkiotsikossa ja kuvauksessa ohjaavia kysymyksiä tai ohjeita, kun 
 - **Vaihtoehdon nimi**: vastauksen lyhyt nimi;
 - **Kuvake**: vaihtoehdon visuaalinen merkki;
 - **Merkitys**: mitä vaihtoehdon valitseminen viestii; ja
-- **Syykehote**: kysymys, joka näytetään, kun joku perustelee vastauksensa.
+- **Syykehote**: kysymys, joka näytetään, kun joku perustelee äänensä.
 
 ![](poll_type_edit_option.png)
 
@@ -140,7 +140,7 @@ Määritä vaihtoehdot niin, että osallistujat ymmärtävät niiden erot arvail
 
 Aseta oletuskesto, joka sopii mallin useimpiin käyttötarkoituksiin. Laatija voi muuttaa yksittäisen äänestyksen päättymisaikaa.
 
-Muilla oletusasetuksilla voi määrittää tulosten näkyvyyden, anonyymin äänestyksen, [painotetun äänestyksen](../weighted_voting/), äänen perusteluvaatimukset, muistutukset, päätösvaltaisuuden ja äänestystapakohtaisen toiminnan. Katso niiden vaikutukset sivulta [Ehdotusten ja kyselyjen asetukset](../settings/).
+Muilla oletusasetuksilla määritetään tulosten näkyvyys, anonyymi äänestys, [painotettu äänestys](../weighted_voting/), äänen perusteluvaatimukset, muistutukset, päätösvaltaisuus ja äänestystapakohtainen toiminta. Katso lisätietoja sivulta [Ehdotusten ja kyselyjen asetukset](../settings/).
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -155,7 +155,7 @@ Mallin vieressä olevasta toimintovalikosta voit valita seuraavat toiminnot:
 
 ![Ryhmän malliluettelo, jossa toimintaperiaatteiden muuttamiseen tarkoitetun suostumusprosessin toimintovalikko on auki](template_manage.png)
 
-Valitse **Näytä piilotetut mallit**, kun haluat tarkastella tai palauttaa piilotettuja malleja. Oletusmallit voi piilottaa tai muokata ryhmälle sopiviksi, mutta niitä ei voi poistaa.
+Valitse **Näytä piilotetut mallit**, kun haluat tarkastella tai palauttaa piilotettuja malleja. Voit piilottaa oletusmalleja tai muokata niitä ryhmällesi sopiviksi, mutta et voi poistaa niitä.
 
 Mallin muuttaminen ei muuta ehdotuksia tai kyselyjä, jotka on jo aloitettu sen pohjalta.
 

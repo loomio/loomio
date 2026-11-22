@@ -2,7 +2,7 @@
 
 # STV Elections
 
-**Single Transferable Vote (STV)** is a proportional representation voting method for electing multiple winners from a field of candidates. It ensures that elected candidates proportionally represent the diversity of views among voters.
+**Single Transferable Vote (STV)** is a ranked voting method for electing one or more winners from a field of candidates. In multi-winner elections it provides proportional representation, ensuring elected candidates reflect the range of views among voters. With one winner, it works as instant-runoff voting.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -12,10 +12,10 @@ Use an STV Election when you need to:
 
 - Elect a **committee, board, or slate of delegates** from a pool of nominees
 - Ensure **proportional representation**, where minority factions can win seats proportional to their support
-- Run elections where voters rank candidates by preference
+- Choose a **single winner** with instant-runoff voting, where votes for the lowest-scoring option transfer to voters' backup choices until one option reaches a majority
 
 >[!NOTE]
->STV is **not** the same as Loomio's [Rank poll](/en/user_manual/polls/rank/), which is a simpler score-based ranking for choosing a single best option. STV handles multi-winner elections with vote transfers and elimination rounds.
+>STV is **not** the same as Loomio's [Rank poll](/en/user_manual/polls/rank). Rank adds up points across all choices to produce an overall preference order. STV uses elimination rounds and vote transfers, and works for both single-winner and multi-winner elections.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -31,7 +31,7 @@ In this example, Oatmilk Cooperative is electing three people to oversee its ret
 
 ### Number of seats
 
-How many winners should be elected. Must be less than the number of candidates.
+How many winners should be elected. Must be at least 1 and less than the number of candidates. Set this to 1 for a single-winner instant-runoff election.
 
 <!-- translation-section: counting-method -->
 
@@ -64,7 +64,7 @@ In both formulas, *votes* is the number of ballots that rank at least one candid
 Meek STV calculates the quota without rounding, as votes ÷ (seats + 1) for Droop. It recalculates the quota each round from the votes still held by candidates, and a candidate must exceed it to be elected.
   
   >[!TIP]
-  > Droop will always compute to a smaller number of votes than Hare. For example, in an election with 100 votes and four seats, the Droop quota would be 21 and the Hare quota 25.
+  > Droop will always compute to a smaller number of votes than Hare. With 100 votes and four seats, the Droop quota is 21 and the Hare quota is 25. With 100 votes and one seat, the Droop quota is 51 (a majority, more than 50%) and the Hare quota is 100, so Droop is the right choice for single-winner elections.
 
 <!-- translation-section: how-voting-works -->
 
@@ -78,7 +78,9 @@ In this example, Oatmilk Cooperative is electing three people to oversee the reu
 - **Rank 2** = second choice
 - Continue ranking as many candidates as desired
 
-Voters must rank at least one candidate, but do not need to rank every candidate. Unranked candidates will not receive any of that voter's support.
+Voters must rank at least one candidate, but do not need to rank every candidate. The number of candidates a voter can rank is not limited by the number of seats: even in a single-winner election, voters can rank backup choices up to all candidates. Unranked candidates will not receive any of that voter's support.
+
+STV polls do not have a built-in abstain option. Members who wish to abstain can simply not vote. Avoid adding "Abstain" as a candidate option unless you need abstentions recorded on the ballot, because Loomio counts it like any other candidate: ballots ranking it count toward the quota, and if enough voters rank it first it can outlast or defeat other options.
 
 <!-- translation-section: how-counting-works -->
 

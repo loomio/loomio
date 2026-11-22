@@ -1,19 +1,19 @@
 ---
 title: Stimmenanteilsanforderungen
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 sections:
-  introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 2cf6ad55d557c189
-  different-vote-share-requirements: 0e81fb881e5c113e
-  detailed-example: 395dbccb0e6427fc
+  introduction: cbaf41b11886d669
+  eligible-voters-and-votes-cast: 1eace7b24593e671
+  different-vote-share-requirements: 0707fe507dfba2b9
+  detailed-example: bd9380153211ad27
 generated:
-  introduction: 7cf89a31e178a57c
+  introduction: 4b8429547ed45a4e
   eligible-voters-and-votes-cast: 1a3c191783ed2969
-  different-vote-share-requirements: 475f7ad193d7bcc6
+  different-vote-share-requirements: c538f5f81f95e83f
   detailed-example: cf1fb3aac04bcf51
 title_source: a654891ca817844e
 title_generated: 35ba3ce6df488414
@@ -23,9 +23,9 @@ title_generated: 35ba3ce6df488414
 
 # Stimmenanteilsanforderungen
 
-Lege für eine Option eine Stimmenanteilsanforderung fest, wenn ein Vorschlag einen bestimmten Prozentsatz an Zustimmung erhalten oder unter einem bestimmten Prozentsatz an Widerspruch bleiben muss, um angenommen zu werden.
+Lege für eine Option eine Stimmenanteilsanforderung fest, wenn ein Vorschlag einen Mindestprozentsatz an Zustimmung erhalten oder unter einem Höchstprozentsatz an Widerspruch bleiben muss, um angenommen zu werden.
 
-Stimmenanteilsanforderungen können mit einem [Quorum](/en/user_manual/polls/quorum/) kombiniert werden, um sowohl eine ausreichende Beteiligung als auch eine bestimmte Verteilung der Stimmen vorauszusetzen.
+Du kannst Stimmenanteilsanforderungen mit einem [Quorum](/en/user_manual/polls/quorum/) kombinieren, um sowohl eine ausreichende Beteiligung als auch eine bestimmte Verteilung der Stimmen vorauszusetzen.
 
 Wähle im Vorschlagsformular das Bearbeitungssymbol neben einer Option.
 
@@ -53,9 +53,9 @@ Bei der [gewichteten Abstimmung](/en/user_manual/polls/weighted_voting) verwende
 
 Ein Vorschlag kann Anforderungen für mehrere Optionen haben. Zum Beispiel:
 
-- Zustimmung muss mindestens 75 Prozent der Wahlberechtigten erreichen
-- Enthaltung darf höchstens 30 Prozent der abgegebenen Stimmen ausmachen
-- Veto darf höchstens 0 Prozent der abgegebenen Stimmen ausmachen
+- Zustimmung muss mindestens 75 Prozent der Wahlberechtigten erreichen.
+- Enthaltung darf höchstens 30 Prozent der abgegebenen Stimmen ausmachen.
+- Veto darf höchstens 0 Prozent der abgegebenen Stimmen ausmachen.
 
 Eine Option auf **Höchstens 0%** zu setzen, ist eine gängige Vorgehensweise. Das bedeutet, dass der Vorschlag nicht angenommen werden kann, wenn jemand diese Option auswählt. Verwende diese Einstellung für **Veto**, damit ein einziges Veto den Vorschlag stoppt.
 

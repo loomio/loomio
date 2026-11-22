@@ -1,20 +1,20 @@
 ---
 title: Langue et traduction
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 61c3576014d50390
-  application-translation: '02678dc26a30c3bc'
-  content-translation: a62f882355b42534
-  automatic-translation: 32a1aa99502e1e87
+  introduction: 962e69f090ca0471
+  application-translation: 915b96edce0a426f
+  content-translation: 49193ff02b91cd94
+  automatic-translation: fadc871ec672da73
 generated:
   introduction: 743bb2d4b09be75a
   application-translation: 60c8095dcf2571c6
-  content-translation: df6c5631d6224cc7
-  automatic-translation: 5e3e923a5ae036f5
+  content-translation: 400f6c39edea70c4
+  automatic-translation: b26e6a21c9dc50b0
 title_source: 9fd7f67efecb7288
 title_generated: d6600ed9cd486a64
 ---
@@ -36,7 +36,8 @@ Loomio détecte la langue préférée de votre navigateur. Pour choisir une autr
 <!-- translation-section: content-translation -->
 
 ## Traduction du contenu
-Lorsqu’une personne de votre groupe écrit un message dans une langue différente de votre langue préférée, un bouton « Traduire » apparaît sous le message. Cliquez sur ce bouton pour traduire automatiquement le message dans votre langue préférée.
+
+Lorsqu’une personne de votre groupe écrit un message dans une langue différente de votre langue préférée, un bouton **Traduire** apparaît sous le message. Cliquez sur **Traduire** pour traduire le message dans votre langue préférée.
 
 ![Action Traduire sous un commentaire](content_translation.png)
 
@@ -44,12 +45,12 @@ Le texte traduit remplace le texte original dans la discussion. Sélectionnez **
 
 ![Un commentaire traduit de l’espagnol vers l’anglais](content_translated.png)
 
-La traduction du contenu des utilisateurs est assurée par Google Traduction et effectuée à la demande d’un utilisateur.
+Loomio utilise Google Traduction pour traduire le contenu à votre demande.
 
 <!-- translation-section: automatic-translation -->
 
 ## Traduction automatique
 
-Pour traduire automatiquement le contenu pris en charge, ouvrez **Modifier mon profil** et sélectionnez **Traduire automatiquement le contenu dans ma langue**. Loomio utilise la langue sélectionnée dans votre profil.
+Pour traduire automatiquement les discussions, les commentaires et les propositions, ouvrez **Modifier mon profil** et activez **Traduire automatiquement le contenu dans ma langue**. Loomio traduit le contenu dans la langue sélectionnée dans votre profil.
 
 ![Le réglage de traduction automatique du contenu sur la page Modifier mon profil](automatic_translation.png)

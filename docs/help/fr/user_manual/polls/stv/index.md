@@ -1,18 +1,18 @@
 ---
 title: Élections STV
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 6a0ecdf5501a7a52
-  when-to-use-stv: 8926b0dfb0383c49
+  introduction: e6627ec3ca77987d
+  when-to-use-stv: 64a78fd465a346ae
   creating-an-stv-election: 35888bcebff0beba
-  number-of-seats: e365ba38ab90b66e
+  number-of-seats: e8537a6fc1f0d842
   counting-method: 869065671aae17b0
-  quota-type: 790f54f203878754
-  how-voting-works: b67dd79f79840822
+  quota-type: 44bbb7cc4a74eb53
+  how-voting-works: 1299c6a889f30054
   how-counting-works: 7c479d213ae971b9
   understanding-results: 655c39888745be9e
   method-and-quota: ad11d0360bf905bf
@@ -43,7 +43,7 @@ title_generated: b63ff19253676749
 
 # Élections STV
 
-Le **vote unique transférable (STV)** est une méthode de vote à représentation proportionnelle permettant d’élire plusieurs personnes parmi un ensemble de candidats. Il garantit que les candidats élus représentent proportionnellement la diversité des points de vue des électeurs.
+Le **vote unique transférable (STV)** est une méthode de vote par classement permettant d’élire une ou plusieurs personnes parmi un ensemble de candidats. Lors des élections à plusieurs sièges, il assure une représentation proportionnelle, de sorte que les candidats élus reflètent la diversité des points de vue des électeurs. Lorsqu’une seule personne est à élire, il fonctionne comme un vote à élimination instantanée.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ Utilisez une élection STV lorsque vous souhaitez :
 
 - Élire un **comité, un conseil d’administration ou une délégation** parmi un ensemble de candidats
 - Assurer une **représentation proportionnelle**, permettant aux courants minoritaires de remporter des sièges proportionnellement à leur soutien
-- Organiser des élections où les électeurs classent les candidats par ordre de préférence
+- Élire **une seule personne** par un vote à élimination instantanée, où les votes pour l’option ayant le moins de voix sont transférés vers les choix suivants des électeurs jusqu’à ce qu’une option obtienne la majorité
 
 >[!NOTE]
->Le STV est **différent** du [sondage Classer](/en/user_manual/polls/rank/) de Loomio, qui utilise un classement plus simple fondé sur des scores pour choisir une seule option préférée. Le STV permet d’élire plusieurs personnes, avec des transferts de votes et des tours d’élimination.
+>Le STV est **différent** du [sondage Classer](/en/user_manual/polls/rank) de Loomio. Classer additionne les points de tous les choix pour produire un ordre de préférence global. Le STV utilise des tours d’élimination et des transferts de votes, et permet d’élire une ou plusieurs personnes.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ Dans cet exemple, Oatmilk Cooperative élit trois personnes pour superviser son 
 
 ### Nombre de sièges
 
-Le nombre de personnes à élire. Il doit être inférieur au nombre de candidats.
+Le nombre de personnes à élire. Il doit être au moins égal à 1 et inférieur au nombre de candidats. Réglez ce nombre sur 1 pour une élection à un seul siège avec vote à élimination instantanée.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ Dans les deux formules, *votes* désigne le nombre de bulletins qui classent au 
 La méthode STV de Meek calcule le quota sans arrondir, selon la formule votes ÷ (seats + 1) pour Droop. Elle recalcule le quota à chaque tour à partir des votes encore détenus par les candidats, et un candidat doit le dépasser pour être élu.
   
   >[!TIP]
-  > Le quota de Droop correspond toujours à un nombre de votes inférieur à celui de Hare. Par exemple, dans une élection avec 100 votes et quatre sièges, le quota de Droop serait de 21 et celui de Hare de 25.
+  > Le quota de Droop correspond toujours à un nombre de votes inférieur à celui de Hare. Avec 100 votes et quatre sièges, le quota de Droop est de 21 et celui de Hare de 25. Avec 100 votes et un seul siège, le quota de Droop est de 51 (une majorité, soit plus de 50 %) et celui de Hare de 100. Droop est donc le choix adapté aux élections à un seul siège.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ Dans cet exemple, Oatmilk Cooperative élit trois personnes pour superviser l’
 - **Classer en position 2** = deuxième choix
 - Continuez à classer autant de candidats que vous le souhaitez
 
-Les électeurs doivent classer au moins un candidat, mais ne sont pas obligés de tous les classer. Les candidats non classés ne recevront aucune part du vote de cet électeur.
+Les électeurs doivent classer au moins un candidat, mais ne sont pas obligés de tous les classer. Le nombre de candidats qu’un électeur peut classer n’est pas limité par le nombre de sièges : même lors d’une élection à un seul siège, les électeurs peuvent indiquer leurs choix suivants en classant jusqu’à la totalité des candidats. Les candidats non classés ne recevront aucune part du vote de cet électeur.
+
+Les sondages STV ne proposent pas d’option d’abstention intégrée. Les membres qui souhaitent s’abstenir peuvent simplement ne pas voter. Évitez d’ajouter « Abstention » parmi les candidats, sauf si vous avez besoin que les abstentions soient enregistrées sur les bulletins, car Loomio la comptabilise comme n’importe quel autre candidat : les bulletins qui la classent entrent dans le calcul du quota et, si suffisamment d’électeurs la classent en premier, elle peut rester en lice plus longtemps que d’autres options ou les battre.
 
 <!-- translation-section: how-counting-works -->
 

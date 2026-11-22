@@ -1,32 +1,37 @@
 <!-- translation-section: introduction -->
 
 # Microsoft Teams integration
-_Connect your Loomio group notifications to Microsoft Teams._
 
-Loomio can send notifications into your Microsoft Teams when new discussions, proposals, comments, votes, and outcomes occur. 
+Loomio can send notifications to your Microsoft Teams channels when new discussions, polls, comments, votes, and outcomes happen.
 
 ---
 
-Visit [https://teams.microsoft.com](https://teams.microsoft.com) then click Apps
-![](t1.png)
+1. Open [Microsoft Teams](https://teams.microsoft.com) and select **Apps**.
 
-Search for "webhook" in the search field, then click Incoming Webhook
-![](t2.png)
+   ![](t1.png)
 
-Click "Add to a team"
-![](t3.png)
+2. Search for `webhook` and select **Incoming Webhook**.
 
-Type and select the channel you want Loomio notifications to appear within.
-![](t4.png)
+   ![](t2.png)
 
-Give it a name, such as "Loomio notifications", then click "Create"
-![](t5.png)
+3. Select **Add to a team**.
 
-Copy the URL it gives you, you'll paste it into Loomio in the last step.
-![](t6.png)
+   ![](t3.png)
 
-_Loomio is not created by, affiliated with, or supported by Microsoft._
+4. Choose the channel where you want Loomio notifications to appear.
 
-Now that you have a Webhook URL, continue setting up your chat integration:
+   ![](t4.png)
+
+5. Enter a name, such as `Loomio notifications`, and select **Create**.
+
+   ![](t5.png)
+
+6. Copy the webhook URL so you can paste it into Loomio.
+
+   ![](t6.png)
+
+Now that you have a webhook URL, finish connecting it in Loomio:
 
 [Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)
+
+_Loomio is not created by, affiliated with, or supported by Microsoft._

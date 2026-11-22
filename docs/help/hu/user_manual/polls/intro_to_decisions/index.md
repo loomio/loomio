@@ -1,39 +1,39 @@
 ---
 title: Javaslatok és szavazások
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: 48eb6e96196ccd27
+  introduction: 7e98ee48f235ca26
   find-the-right-help: eab9fd9db254f8d2
   proposals: c8a187c463c5f544
   polls: 98039b00e7e9bd34
   start-a-proposal-or-poll: '0968465bb756317c'
-  choose-whether-to-use-a-discussion: 1db8cd328fb1e46c
+  choose-whether-to-use-a-discussion: d4b1899a91734f9c
   in-a-discussion: 962b0afe5b031e63
   without-a-discussion: 713d9bf4a85eee12
   what-happens-next: 6f9853d1ebd6c0cb
   1-create-it: f3e8a61816e977ec
-  2-voting-opens: f18c6c078d6ed55a
-  3-people-vote: 4a3a475e41a53461
-  4-it-closes: fe6b36ed4484db29
+  2-voting-opens: a8960e49d4634159
+  3-people-vote: aa6f6cbdc6c18f34
+  4-it-closes: de1e70dac49e283e
   5-share-an-outcome: 855ea851321438c4
 title_source: d45b4ba3cb7a27cb
 title_generated: b90b8b4620a81657
@@ -43,7 +43,7 @@ title_generated: b90b8b4620a81657
 
 # Javaslatok és szavazások
 
-A javaslatok és szavazások strukturált válaszokat gyűjtenek a csoport tagjaitól. Segíthetnek egy ötlet kipróbálásában, egy döntés meghozatalában, a prioritások meghatározásában, egy találkozó időpontjának egyeztetésében vagy képviselők megválasztásában.
+A javaslatok és szavazások strukturált válaszokat gyűjtenek a csoport tagjaitól. Használd őket egy ötlet kipróbálására, döntéshozatalra, prioritások meghatározására, egy találkozó időpontjának egyeztetésére vagy képviselők megválasztására.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ Az összehasonlításukhoz olvasd el a [Szavazások](../proposal_types/) oldalt.
 
 ### Döntsd el, hogy használsz-e beszélgetést
 
-Indítsd a javaslatot vagy szavazást egy beszélgetésen belül, ha az embereknek leírásra, kérdésekre vagy beszélgetésre van szükségük a válaszadás előtt. Egy beszélgetés idővel több javaslatot is tartalmazhat, így a módosítások és a végső következtetés együtt maradnak a téma közös feljegyzésében.
+Indíts javaslatot vagy szavazást egy beszélgetésen belül, ha az embereknek leírásra, kérdésekre vagy beszélgetésre van szükségük a válaszadás előtt. Egy beszélgetés idővel több javaslatot is tartalmazhat, így a módosítások és a végső következtetés együtt maradnak egy feljegyzésben.
 
-Indíts önálló szavazást, ha a beszélgetés már máshol, például egy találkozón lezajlott, vagy ha a kérdés egyszerű, és csak válaszokat kell gyűjtened. Adj meg elegendő részletet vagy egy hivatkozást a kapcsolódó feljegyzésre, hogy a szavazók értsék, mire válaszolnak.
+Indíts önálló szavazást, ha a beszélgetés már máshol, például egy találkozón lezajlott, vagy ha a kérdés egyszerű, és csak válaszokat kell gyűjtened. Adj meg elegendő részletet vagy egy hivatkozást az előzményekre, hogy a szavazók tudják, mire válaszolnak.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,19 +138,19 @@ Adj meg egy címet és részletes leírást, ellenőrizd a lehetőségeket és a
 
 ### 2. Megnyílik a szavazás
 
-Amikor megnyílik a szavazás, a Loomio értesíti azokat, akiket meghívtál. Olvasd el a [Meghívás szavazásra](../inviting_people/) oldalt.
+Amikor megnyílik a szavazás, a Loomio értesíti azokat, akiket meghívtál. Olvasd el a [Szavazók kezelése](../manage_voters/) oldalt.
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Az emberek szavaznak
 
-Amíg a szavazás nyitva van, az emberek szavazhatnak, megindokolhatják és módosíthatják a szavazatukat. Az eredmények a szavazatok leadásával frissülnek, kivéve, ha a lezárásig rejtve maradnak. Alapértelmezés szerint azok, akik még nem szavaztak, a lezárás előtt egy nappal emlékeztetőt kapnak.
+Amíg a szavazás nyitva van, az emberek szavazhatnak, indoklást adhatnak a szavazatukhoz, és módosíthatják a szavazatukat. Az eredmények a szavazatok leadásával frissülnek, kivéve, ha a lezárásig rejtve maradnak. Alapértelmezés szerint azok, akik még nem szavaztak, a lezárás előtt 24 órával emlékeztetőt kapnak.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Lezárul
 
-A szavazás automatikusan lezárul a lezárási időpontban. A szál adminja korábban is lezárhatja. A lezárás után a szál adminja új lezárási időponttal újranyithatja, hogy az emberek tovább szavazhassanak. Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, köztük a névtelen szavazásokat, nem lehet újranyitni. Amíg ezek a szavazások nyitva vannak, meghosszabbíthatod a lezárási idejüket.
+A szavazás automatikusan lezárul a lezárási időpontban, vagy a szál adminja korábban is lezárhatja. A lezárás után a szál adminja új lezárási időponttal újranyithatja. Azokat a szavazásokat, amelyek a szavazás lezárásáig elrejtik az eredményeket, köztük a névtelen szavazásokat, nem lehet újranyitni; amíg nyitva vannak, meghosszabbíthatod a lezárási idejüket.
 
 <!-- translation-section: 5-share-an-outcome -->
 

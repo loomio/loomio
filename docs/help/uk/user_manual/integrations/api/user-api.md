@@ -1,44 +1,44 @@
 ---
 title: Користувацький API
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
   introduction: 7c9691a2d2100c52
-  response-size-and-related-records: 7b87da2446790fa4
+  response-size-and-related-records: 125044ba4c386105
   endpoint-summary: 0e95ddd515909842
   groups: 29fb3c5431af0d9d
   list-groups: a980daeef7b861cc
   get-a-group: ac0029ef34020190
-  webhooks: 1a401a8adc8e85e7
-  list-webhooks: 7b7fb20572e0fc9c
+  webhooks: 6c02d27a81999eec
+  list-webhooks: a1470512f83af3b7
   create-a-webhook: eb6b624d9a3cb1bf
   update-a-webhook: ae4bb23681e3c185
   test-a-webhook-destination: 2584ed5548ee3c5c
   delete-a-webhook: 7eca43f0fbb9a825
   event-types: a23a5f1dd1bac7c0
-  http-delivery: 4eb9467477b6e5bc
+  http-delivery: 92ffdc8607fb105e
   payload-formats: 8072653ac661a36e
   search: 3ab1bb0a871f0b1b
   params: ca9b26e0b0267133
   participation-report: 3b4651d080e31be8
-  params-2: af841d214bb09ad1
+  params-2: 48296426297f3bc7
   example: 56583e40fe457aa2
   create-discussion: 9ea1deba3307c127
   params-3: 3f7b5fb258b5a524
@@ -114,7 +114,7 @@ generated:
   params-5: 995fecdd05f45d0e
   example-5: d57b6c5ddc3046c8
   read-thread: 498f2133ffa5f749
-  example-6: b372013553e21c8d
+  example-6: 81b5092298cd9cb3
   edit-discussion: 3b5436500ef94963
   params-6: 5093f58b7e5a6de6
   example-7: 16937419612876d8
@@ -133,7 +133,7 @@ generated:
   example-12: 598e0d931a5d9ae1
   show-poll: d9b667612f7fc3d0
   example-13: 02d94f9d9f3e013a
-  list-polls: 53e2c0367bcaf9f6
+  list-polls: bb071df39ebb1e11
   params-10: 0d4e3c7c7b2d1907
   example-14: 4d82a9a2b83e6123
   edit-poll: 3d995c716f7470fd
@@ -144,9 +144,9 @@ generated:
   list-memberships: b58948accb37c5dd
   params-12: 79cad57d774616c6
   example-17: 0b051d7a81206c16
-  manage-memberships: b39b0abc73901b94
+  manage-memberships: 3f669c93d68e5cfb
   params-13: a4ed0ba979ea50aa
-  example-18: ea561e1562644e55
+  example-18: dcc83ad1ce5da113
   pagination: 95d7d151f23add7d
   comments: f87cc9be2a62fbcd
   discussions: 638b72484868a4fe
@@ -154,13 +154,11 @@ generated:
   polls: 49f0febaf5e37fa7
   threads: 16ea8f01f0ae40e1
   request-bodies: 82ca61ed73c589e4
-  poll-many-options: e744c42d041fc3b4
+  poll-many-options: b41bb3fa1f2ce5bd
   poll-detailed-options: e05adbe231419ea2
   edit-poll-detailed-options: 41f8364763ff7de8
 title_source: c23fb6526b722360
 title_generated: a8877cdee7d58933
-needs_review:
-  webhooks: check the interface label "**Тестове підключення**" for "**Test connection**"
 ---
 
 <!-- translation-section: introduction -->
@@ -255,9 +253,11 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-Для безпосереднього керування передайте `exclude_types` із типами записів в однині, розділеними пробілами. Наприклад, `exclude_types=group reaction` виключає пов’язані групи та реакції. Поширені значення: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` і `topic_item`. Виключення застосовуються до пов’язаних записів, а не до основного ресурсу, запитаного через кінцеву точку.
+Для безпосереднього керування передайте `exclude_types` із типами записів в однині, розділеними пробілами. Наприклад, `exclude_types=group reaction` виключає пов’язані групи та реакції.
 
-Відповіді з колекціями містять `meta.total`, коли визначено точний розмір колекції. Загальна кількість обчислюється до застосування `limit` та `offset`. Кінцеві точки, як-от пошук, які навмисно повертають обмежений набір результатів, не включають `meta.total`, а не повертають `null`.
+Поширені значення: `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` і `topic_item`. Виключення застосовуються до пов’язаних записів, а не до основного ресурсу, запитаного через кінцеву точку.
+
+Відповіді з колекціями містять `meta.total`, коли визначено точний розмір колекції. Загальна кількість обчислюється до застосування `limit` та `offset`. Кінцеві точки, як-от пошук, які навмисно повертають обмежений набір результатів, не включають `meta.total` замість повернення `null`.
 
 <!-- translation-section: comments -->
 
@@ -595,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Керування учасниками групи
 
-Надішліть список адрес електронної пошти. На всі нові адреси буде надіслано запрошення до групи. На відміну від отримання списку учасників групи, ця операція потребує прав адміністратора групи.
+Надішліть список адрес електронної пошти, щоб запросити нових людей до групи. На відміну від отримання списку учасників групи, ця операція потребує прав адміністратора групи.
 
 `POST /api/user0/memberships`
 
@@ -624,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-Якщо ви передасте `remove_absent=1`, усіх учасників групи, яких немає у списку, буде видалено з групи. Будьте обережні: ви можете видалити всіх учасників вашої групи.
+Якщо ви передасте `remove_absent: true`, усіх учасників групи, яких немає у списку, буде видалено з групи. Будьте обережні: це може видалити всіх учасників вашої групи.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -634,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-У відповідь повертається об’єкт із `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+У відповідь повертається об’єкт із `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -655,14 +655,16 @@ curl https://www.loomio.com/api/user0/memberships \
 | Назва | Опис |
 | --- | --- |
 | `section` | Розділ звіту: `base`, `users` або `countries`. Використовуйте `users` для активності окремих людей |
-| `group_scope` | `custom` або `my`. Застаріле значення `all` обробляється як `my`, оскільки ключі Користувацького API ніколи не отримують доступу до всього екземпляра Loomio |
+| `group_scope` | `custom` або `my`. Застаріле значення `all` обробляється як `my`, оскільки ключі користувацького API ніколи не отримують доступу до всього екземпляра Loomio |
 | `group_ids` | Ідентифікатори груп, розділені комами, коли `group_scope=custom`. Ідентифікатори груп, до яких користувач API не належить, ігноруються |
 | `start_month` | Перший місяць для включення у форматі `YYYY-MM`; типово — місяць 12 місяців тому |
 | `end_month` | Останній місяць для включення у форматі `YYYY-MM`; типово — поточний місяць |
 | `interval` | Інтервал для розділу `base`: `day`, `week`, `month` або `year` |
 | `member_type` | Установіть `delegate` разом із `section=users`, щоб повернути лише поточних делегатів |
 
-Людина є делегатом, якщо має активне членство з роллю делегата в будь-якій вибраній групі. Її показники підсумовуються за всіма вибраними групами. Рядки делегатів повертаються, навіть якщо всі показники активності дорівнюють нулю. Показники охоплюють теми, коментарі, опитування, голоси, висновки та реакції; вони не є показниками частки участі в голосуванні. Рядки користувачів також містять кількість виданих, поданих і пропущених іменних бюлетенів. Анонімні опитування виключаються з усіх індивідуальних показників голосування. `all_votes_cast` має значення true лише тоді, коли було видано принаймні один бюлетень і подано кожен виданий бюлетень.
+Людина є делегатом, якщо має активну участь із роллю делегата в будь-якій вибраній групі. Її показники підсумовуються за всіма вибраними групами, а рядки делегатів повертаються, навіть якщо всі показники активності дорівнюють нулю.
+
+Показники охоплюють теми, коментарі, опитування, голоси, висновки та реакції; вони не є показниками частки участі в голосуванні. Рядки користувачів також містять кількість виданих, поданих і пропущених іменних бюлетенів, тоді як анонімні опитування виключаються з усіх індивідуальних показників голосування. `all_votes_cast` має значення true лише тоді, коли було видано принаймні один бюлетень і подано кожен виданий бюлетень.
 
 API застосовує ті самі правила видимості груп, що й звіт у застосунку. Ключ API користувача не може надати дані звіту з груп, до яких цей користувач не має доступу.
 
@@ -780,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -886,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Отримайте список опитувань у групі, доступних користувачеві, якому належить ключ API, зокрема окремих опитувань і опитувань в обговореннях. Якщо група загальнодоступна, користувач, який не є її учасником, може отримати список її публічних опитувань; приватні опитування доступні лише користувачам, які можуть переглядати їх у Loomio. Відповідь містить поточний висновок кожного доступного опитування, тому ви можете використати `status=closed`, щоб отримати список закритих опитувань і прочитати їхні висновки, якщо їх уже визначено.
 
-Щоб відображати стан рішення поруч з обговореннями, отримайте обговорення й опитування тієї самої групи, використовуючи `status=all` для опитувань, і зіставте їхні значення `topic_id`. Отримайте всі сторінки за допомогою `limit` і `offset`. Обговорення може містити кілька опитувань, тому виберіть, яке опитування визначатиме стан, що ви відображаєте, наприклад останнє створене опитування. Значення `closed_at`, відмінне від null, позначає закрите опитування; значення null у `closing_at` вказує на чернетку. Коли опитування має висновок, його `current_outcome_id` вказує на запис у масиві `outcomes` у відповіді; зіставте `poll_id` цього запису з `id` опитування.
+Щоб відображати стан рішення поруч з обговореннями, отримайте обговорення й опитування тієї самої групи (використовуючи `status=all` для опитувань) і зіставте їхні значення `topic_id`. Отримайте всі сторінки за допомогою `limit` і `offset`. Обговорення може містити кілька опитувань, тому виберіть, яке опитування визначатиме стан, що ви відображаєте, наприклад останнє створене опитування.
+
+Значення `closed_at`, відмінне від null, позначає закрите опитування, а значення null у `closing_at` вказує на чернетку. Коли опитування має висновок, його `current_outcome_id` вказує на запис у масиві `outcomes` у відповіді; зіставте `poll_id` цього запису з `id` опитування.
 
 Для окремого обговорення ви також можете [прочитати елементи його теми](#read-thread) за допомогою `GET /api/user0/threads/:topic_id/items`. Відповідь містить опитування та висновки теми разом з іншими її елементами. Отримайте всі сторінки, щоб охопити всю тему.
 
@@ -1092,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-Кінцева точка `items` повертає сторінку послідовності подій у порядку зростання їхніх порядкових номерів, зокрема доступні коментарі, опитування, голоси та висновки. `meta.total` — це загальна кількість елементів у темі. Отримайте наступні сторінки, щоб прочитати всю послідовність. Кінцева точка `markdown` повертає весь доступний вміст теми як один документ Markdown. Причини, зазначені разом із голосами, включаються лише тоді, коли вони доступні користувачу, якому належить ключ API.
+Кінцева точка `items` повертає сторінку послідовності подій у порядку зростання їхніх порядкових номерів, зокрема доступні коментарі, опитування, голоси та висновки. `meta.total` — це загальна кількість елементів у темі; отримайте наступні сторінки, щоб прочитати всю послідовність.
+
+Кінцева точка `markdown` повертає весь доступний вміст теми як один документ Markdown. Причини, зазначені разом із голосами, включаються лише тоді, коли вони доступні користувачу, якому належить ключ API.
 
 Усі кінцеві точки тем застосовують ті самі права доступу, що й інтерфейс Loomio. Ключ API не надає доступу до теми, яку користувач не може відкрити за звичайних умов.
 
@@ -1109,7 +1115,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 3. Додайте інтеграцію, що відповідає формату даних, який приймає ваша кінцева точка. Для кінцевої точки загального призначення використовуйте формат Mattermost/Markdown.
 4. Введіть назву та URL-адресу призначення.
 5. Виберіть події, які Loomio має надсилати автоматично.
-6. Збережіть інтеграцію та скористайтеся **Тестовим підключенням**, щоб надіслати тестове повідомлення.
+6. Збережіть інтеграцію та натисніть **Тестове підключення**, щоб надіслати тестове повідомлення.
 
 Використовуйте адресу призначення HTTPS з URL-адресою, яку неможливо вгадати. Loomio вимагає, щоб адреса призначення визначалася як публічна мережева адреса, і блокує запити до локальних або приватних мережевих адрес.
 
@@ -1119,7 +1125,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 
 ### Список вебхуків
 
-Повертає інтеграції чату, налаштовані для групи. Користувач, якому належить ключ API, має бути адміністратором цієї групи. Відповідь містить URL-адреси призначення, тому її не можна надавати звичайним учасникам групи.
+Повертає інтеграції чату, налаштовані для групи. Користувач, якому належить ключ API, має бути адміністратором цієї групи. Відповідь містить URL-адреси призначення, тому не надавайте її звичайним учасникам групи.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1263,7 +1269,9 @@ Content-Type: application/json; charset=utf-8
 
 Час очікування відповіді на запит становить п’ять секунд. Відповідь `2xx`, зокрема `204 No Content`, вважається успішною. Сервіси, що приймають вебхуки, мають відповідати швидко, виконувати триваліші операції асинхронно й коректно обробляти повторні повідомлення або повідомлення, доставлені не за порядком.
 
-Наразі Loomio не додає підпису вебхука, заголовка зі спільним секретом, ідентифікатора події чи ідентифікатора доставки. Ставтеся до повної URL-адреси призначення як до облікових даних, не оприлюднюйте її та додайте до неї токен, який неможливо вгадати, якщо сервіс-отримувач це підтримує. Якщо потрібна стабільна машиночитана схема подій або підписана доставка, використовуйте вебхук як сповіщення про зміни й отримуйте актуальні записи через Користувацький API з автентифікацією.
+Наразі Loomio не додає підпису вебхука, заголовка зі спільним секретом, ідентифікатора події чи ідентифікатора доставки. Ставтеся до повної URL-адреси призначення як до облікових даних, не оприлюднюйте її та додайте до неї токен, який неможливо вгадати, якщо сервіс-отримувач це підтримує.
+
+Якщо вам потрібна стабільна машиночитана схема подій або підписана доставка, використовуйте вебхук як сповіщення про зміни й отримуйте актуальні записи через Користувацький API з автентифікацією.
 
 <!-- translation-section: payload-formats -->
 

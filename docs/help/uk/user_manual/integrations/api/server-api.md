@@ -1,52 +1,52 @@
 ---
 title: Серверний API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
+  authentication: e5fe51f7081e921f
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: de7ad238bf914455
+  provisioning: 78ae303208080368
 generated:
   introduction: 0bb4cfe96c40b199
-  authentication: 2af70c829f9713be
+  authentication: 5d2ea362c4cf4389
   user-object: f748baf22fd77caf
   list-users: 78f2a66993fba747
-  example: 85e726b4f61a566e
+  example: abd7609d232312be
   show-user: 940022e884e8c388
-  examples: aa5a8b547bcb499c
+  examples: 1f4752264f59de65
   update-user: 93eab9e0e20d6d65
   params: 15c193ddca37fa8f
-  examples-2: 895c6589f35804da
+  examples-2: e5faf82f38dd3446
   deactivate-user: e19633356c13850b
-  examples-3: 4a854fd3288da799
+  examples-3: 38c5df27639e6627
   reactivate-user: 59cb271f58120bcf
-  examples-4: 5ff6feded4b39332
+  examples-4: 3a433cb28fa8ee13
   redact-user: ab842b5cbb9c9efc
-  examples-5: a03b1b947966f2a5
+  examples-5: 2986cea4951aca1b
   delete-user: aecdafc2cd13a0d7
-  examples-6: 4c54386cd23fbc6a
+  examples-6: c6fb6e4d80c308b0
   sso-profile-sync-settings: 895f8ad336537ba3
-  provisioning: a30516de0ab3491b
+  provisioning: 68bddfac65370fba
 title_source: 370e81eb20eece44
 title_generated: 5d358a05b258cb17
 ---
@@ -70,7 +70,7 @@ title_generated: 5d358a05b258cb17
 Надсилайте ключ як токен Bearer:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Надсилайте облікові дані лише в заголовку `Authorization`. Ключі API в рядках запиту або тілах запитів відхиляються.
@@ -94,7 +94,9 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 
 `POST /api/server0/users`
 
-Надішліть об’єкт `user` з обов’язковим полем `email`. Пробіли на початку та в кінці адрес електронної пошти видаляються, а літери перетворюються на малі. Необов’язкові поля: `name`, `username` та `is_admin`. Тут `is_admin` означає адміністратора екземпляра Loomio; ролі адміністраторів груп задаються в записах про участь у групах. Не вказуйте `username`, щоб згенерувати ім’я користувача автоматично. Невідомі поля відхиляються.
+Надішліть об’єкт `user` з обов’язковим полем `email`. Пробіли на початку та в кінці адрес електронної пошти видаляються, а літери перетворюються на малі. Необов’язкові поля: `name`, `username` та `is_admin`.
+
+Тут `is_admin` означає адміністратора екземпляра Loomio; ролі адміністраторів груп задаються в записах про участь у групах. Не вказуйте `username`, щоб згенерувати ім’я користувача автоматично. Невідомі поля відхиляються.
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-Надішліть обов’язкове поле `group_id` і масив `emails`. Типово це додає перелічених людей, які ще не мають активної участі в групі, та залишає всіх інших учасників у групі. Пробіли на початку та в кінці адрес електронної пошти видаляються, літери перетворюються на малі, а дублікати адрес вилучаються. Для нових адрес створюються облікові записи та запрошення, що очікують прийняття. Наявні підтверджені учасники іншої активної групи в тій самій організації приймаються автоматично, як і під час запрошення через API користувача.
+Надішліть обов’язкове поле `group_id` і масив `emails`. Типово це додає перелічених людей, які ще не мають активної участі в групі, та залишає всіх інших учасників у групі. Пробіли на початку та в кінці адрес електронної пошти видаляються, літери перетворюються на малі, а дублікати адрес вилучаються.
+
+Для нових адрес створюються облікові записи та запрошення, що очікують прийняття. Наявні підтверджені учасники іншої активної групи в тій самій організації приймаються автоматично, як і під час запрошення через API користувача.
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -215,9 +219,11 @@ curl https://loomio.example.org/api/server0/memberships \
 }
 ```
 
-Повторення того самого запиту не створює дублікатів записів про участь і не надсилає повторних запрошень. Повторне запрошення вилученого учасника відновлює його доступ до групи без відновлення попередньої ролі адміністратора. Нові запрошення та зміни ролей використовують звичайний механізм сповіщень, при цьому жоден користувач не записується як виконавець дії.
+Повторення того самого запиту не створює дублікатів записів про участь і не надсилає повторних запрошень. Повторне запрошення вилученого учасника відновлює його доступ до групи без відновлення попередньої ролі адміністратора групи. Нові запрошення та зміни ролей використовують звичайний механізм сповіщень, при цьому жоден користувач не записується як виконавець дії.
 
-Відсутні або неправильно сформовані списки адрес електронної пошти та некоректні булеві значення спричиняють відповідь HTTP `400`. Якщо в списку є деактивований обліковий запис, повертається HTTP `422`; перед додаванням явно активуйте його повторно. Некоректні дані облікового запису, обмеження передплати або інші помилки скасовують усю синхронізацію, зокрема створення нових облікових записів і вилучення учасників. Додавання потребує активної групи й підпорядковується обмеженням передплати щодо кількості учасників.
+Відсутні або неправильно сформовані списки адрес електронної пошти та некоректні булеві значення спричиняють відповідь HTTP `400`. Якщо в списку є деактивований обліковий запис, повертається HTTP `422`; перед додаванням явно активуйте його повторно.
+
+Некоректні дані облікового запису, обмеження передплати або інші помилки скасовують усю синхронізацію, зокрема створення нових облікових записів і вилучення учасників. Додавання потребує активної групи й підпорядковується обмеженням передплати щодо кількості учасників.
 
 ### Оновлення ролей учасника групи
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-Повертається `{"success": true}`. Вилучення скасовує доступ до групи та її підгруп, зокрема доступ до тем і право голосувати в активних опитуваннях. Воно не видаляє обліковий запис, не змінює інші групи й не скасовує прямий доступ до тем. Повторне вилучення завершується успішно. ви можете припиняти участь у групах із простроченими передплатами; для видалених груп повертається HTTP `404`.
+Повертається `{"success": true}`. Вилучення скасовує доступ до групи та її підгруп, зокрема доступ до тем і право голосувати в активних опитуваннях. Воно не видаляє обліковий запис, не змінює інші групи й не скасовує прямий доступ до тем.
+
+Повторне вилучення завершується успішно. Можна припиняти участь у групах із простроченими передплатами; для видалених груп повертається HTTP `404`.
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ curl https://loomio.example.org/api/server0/memberships/456 \
 ### Приклад
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Повертає:
@@ -319,13 +327,13 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 За ідентифікатором користувача Loomio:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 За зовнішніми ідентифікаційними даними:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Повертає:
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 За зовнішніми ідентифікаційними даними:
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Повертає оновлені дані користувача:
@@ -405,13 +413,13 @@ curl -X PATCH \
 За ідентифікатором користувача Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
 За зовнішніми ідентифікаційними даними:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Повертає:
@@ -440,13 +448,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 За ідентифікатором користувача Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
 За зовнішнім ідентифікатором:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Повертає:
@@ -477,13 +485,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 За ідентифікатором користувача Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
 За зовнішнім ідентифікатором:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Повертає:
@@ -513,13 +521,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 За ідентифікатором користувача Loomio:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 За зовнішнім ідентифікатором:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Повертає:

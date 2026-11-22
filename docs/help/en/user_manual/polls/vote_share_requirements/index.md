@@ -2,9 +2,9 @@
 
 # Vote share requirements
 
-Set a vote share requirement on an option when a proposal must receive a particular percentage of support, or remain below a particular percentage of opposition, to pass.
+Set a vote share requirement on an option when a proposal needs a minimum percentage of support, or must stay below a maximum percentage of opposition, to pass.
 
-Vote share requirements can be combined with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a particular distribution of votes.
+You can combine vote share requirements with a [quorum](/en/user_manual/polls/quorum/) to require both sufficient participation and a specific distribution of votes.
 
 In the proposal form, select the edit icon beside an option.
 
@@ -20,11 +20,11 @@ The percentage can be based on either **Votes cast** or **Eligible voters**.
 
 **Eligible voters** means everyone who is able to vote in the proposal. **Votes cast** means only the votes that have been submitted.
 
-A requirement of 75 percent agreement from eligible voters can pass only when at least 75 percent of all eligible voters vote for that option.
+A requirement of 75 percent agreement from eligible voters passes only when at least 75 percent of all eligible voters choose that option.
 
-A requirement of 60 percent agreement from votes cast can pass when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
+A requirement of 60 percent agreement from votes cast passes when 60 percent of submitted votes support the option, regardless of overall turnout. Add a quorum when your process also requires a minimum level of participation.
 
-With [weighted voting](/en/user_manual/polls/weighted_voting), both bases use weights. **Vote weight cast** measures the option's weighted total against all vote weight cast. **Eligible vote weight** measures the weight of voters choosing the option against the weight of all eligible voters, including people who have not voted. For example, one person holding 70 of 100 eligible vote weight can meet a 60 percent agreement requirement based on eligible vote weight.
+With [weighted voting](/en/user_manual/polls/weighted_voting), both bases use vote weights. **Vote weight cast** compares an option's weighted total to all vote weight cast. **Eligible vote weight** compares it to the weight of all eligible voters, including people who have not voted. For example, one voter with 70 of 100 eligible vote weight can meet a 60 percent agreement requirement based on eligible vote weight.
 
 <!-- translation-section: different-vote-share-requirements -->
 
@@ -32,15 +32,15 @@ With [weighted voting](/en/user_manual/polls/weighted_voting), both bases use we
 
 A proposal can have requirements on more than one option. For example:
 
-- Agreement must be at least 75 percent of eligible voters
-- Abstention must be no more than 30 percent of votes cast
-- Block must be no more than 0 percent of votes cast
+- Agreement must be at least 75 percent of eligible voters.
+- Abstention must be no more than 30 percent of votes cast.
+- Block must be no more than 0 percent of votes cast.
 
-Setting an option to **No more than 0%** is a common pattern. It means the proposal cannot pass if anyone chooses that option. Use it on **Block** so that a single block stops the proposal.
+Setting an option to **No more than 0%** is a common pattern. It means the proposal cannot pass if anyone chooses that option. Use it on **Block** so a single block stops the proposal.
 
 With weighted voting, only a block with a positive vote weight exceeds a 0 percent requirement. A block with weight `0` adds no weight to the result.
 
-You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so that new proposals created from the template use them by default.
+You can also add requirements to a [poll template](/en/user_manual/polls/poll_templates/) so new proposals created from that template use them by default.
 
 <!-- translation-section: detailed-example -->
 
@@ -52,7 +52,7 @@ The cooperative's process requires at least 75 percent of eligible voters to agr
 
 ![The Agree option requiring at least 75 percent of eligible voters](./agree-vote-option.png)
 
-Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement has been reached.
+Jamie also sets a 60 percent quorum. Jamie and Samira vote in agreement. All submitted votes support the proposal, but they represent only 40 percent of eligible voters, so neither requirement is reached.
 
 ![Two of five people have voted in agreement and neither requirement is reached](./first-vote-breakdown.png)
 

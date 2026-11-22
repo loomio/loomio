@@ -1,34 +1,34 @@
 ---
 title: Mensen uitnodigen
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 0ce7a85282062326
-  send-invitations-via-email: 39a05a1b8e15b3f4
-  invite-many-at-once: 40df2b5f0190b40d
-  invite-people-to-subgroups: 0edbf681b80664a0
-  share-a-link-to-your-group: a909bfbe297df74c
-  request-to-join-group: 1150527c55120a38
-  review-membership-requests: 9f935f4147ed62f3
-  managing-invitations: 6f432d1cee56f5f5
-  re-send-invitations: 75a897d6e1d7ffb1
-  cancelling-invitations: c8ff43337206bd28
-  invitation-notification-history: 07c1687a2f72ee59
+  introduction: 6a697be314f5bcb3
+  send-invitations-via-email: c0967f9edf179ba2
+  invite-many-at-once: e43a70c46a8f2702
+  invite-people-to-subgroups: f65eb153d9cc4ae6
+  share-a-link-to-your-group: bac5ee27a5c4a01a
+  request-to-join-group: d255c53045deef85
+  review-membership-requests: e1cbffb38539f3da
+  managing-invitations: 7896188a28edae82
+  re-send-invitations: 528689737b5c70ae
+  cancelling-invitations: '0758201cbd6df012'
+  invitation-notification-history: 4ccfa749a3e98f52
 title_source: b926eb8921d85971
 title_generated: 5cf9fd03683405f5
 ---
@@ -37,7 +37,7 @@ title_generated: 5cf9fd03683405f5
 
 # Mensen uitnodigen voor een Loomio-groep
 
-Nodig mensen per e-mail uit voor je Loomio-groep, of deel een link naar je groep via een nieuwsbrief, chat of website. Open het tabblad **Leden** op je groepspagina om te beginnen.
+Je kunt mensen per e-mail uitnodigen voor je Loomio-groep, een uitnodigingslink delen of mensen een lidmaatschapsverzoek laten indienen. Open het tabblad **Leden** op je groepspagina om te beginnen.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +45,7 @@ Nodig mensen per e-mail uit voor je Loomio-groep, of deel een link naar je groep
 
 ## Uitnodigingen per e-mail versturen
 
-Klik op **Uitnodigen** op het tabblad **Leden** om een e-mail te versturen met een uitnodigingslink die één keer kan worden gebruikt. De ontvanger kan een Loomio-account aanmaken en lid worden van je groep.
-
-Als de ontvanger al een Loomio-account heeft, kan die de uitnodiging accepteren en met het bestaande account lid worden van je groep.
+Selecteer **Uitnodigen** op het tabblad **Leden** om een e-mail te versturen met een uitnodigingslink die één keer kan worden gebruikt. De ontvanger kan met een bestaand Loomio-account lid worden of een nieuw account aanmaken.
 
 ![](group_invite_email.png)
 
@@ -55,20 +53,20 @@ Als de ontvanger al een Loomio-account heeft, kan die de uitnodiging accepteren 
 
 ### Veel mensen tegelijk uitnodigen
 
-Je kunt maximaal 100 mensen tegelijk per e-mail uitnodigen door meerdere e-mailadressen in te voeren of te kopiëren en plakken in het veld "Wie wil je uitnodigen". Scheid de e-mailadressen met een komma of spatie.
+Je kunt maximaal 100 mensen tegelijk uitnodigen door e-mailadressen in te voeren of te plakken, gescheiden door komma's of spaties.
 
-Wanneer je mensen uitnodigt voor een groep binnen een organisatie, verschijnen de hoofdgroep en gerelateerde subgroepen waarvan je lid bent als suggesties voor ontvangers. Selecteer een groep en selecteer vervolgens het label van die groep om de afzonderlijke mensen als ontvangers weer te geven. Je kunt iedereen die je niet wilt uitnodigen verwijderen voordat je de uitnodigingen verstuurt. Mensen die al lid zijn van de groep waarvoor je de uitnodigingen verstuurt, worden uitgesloten.
+Wanneer je mensen uitnodigt voor een groep binnen een organisatie, kun je ook de hoofdgroep of gerelateerde subgroepen selecteren waarvan je lid bent. Geef de afzonderlijke mensen uit een geselecteerde groep weer om iedereen te verwijderen die je niet wilt uitnodigen. Mensen die al lid zijn, worden automatisch uitgesloten.
 
 >[!Tip]
->Kopieer e-mailadressen uit een kolom in een Google- of Excel-spreadsheet en plak ze in het uitnodigingsveld.
+>Je kunt een kolom met e-mailadressen uit Google Sheets of Microsoft Excel kopiëren en rechtstreeks in het uitnodigingsveld plakken.
 
-Wanneer je op **Uitnodigen** klikt, wordt naar elk opgegeven e-mailadres een e-mail verstuurd met een unieke uitnodigingslink die maar één keer kan worden gebruikt. Deze e-mail wordt verstuurd in je huidige taal.
+Wanneer je **Uitnodigen** selecteert, stuurt Loomio naar elk adres een unieke uitnodigingslink die één keer kan worden gebruikt, in je huidige taal.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Mensen uitnodigen voor subgroepen
 
-Met dezelfde stappen als hierboven kun je mensen tegelijk uitnodigen voor een hoofdgroep en een of meer subgroepen via de knop **Mensen uitnodigen**. Vink de vakjes aan naast de subgroepen waarvan je wilt dat ze direct lid worden wanneer ze lid worden van de groep.
+Wanneer je mensen uitnodigt voor een hoofdgroep, kun je ze tegelijk toevoegen aan een of meer subgroepen. Vink de subgroepen aan waarvan je wilt dat ze lid worden wanneer ze de uitnodiging accepteren.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +74,39 @@ Met dezelfde stappen als hierboven kun je mensen tegelijk uitnodigen voor een ho
 
 ## Een link naar je groep delen
 
-Je kunt een link naar je groep delen met de knop **Delen**. Dit is handig als je een link per e-mail, in een nieuwsbrief of via chat wilt versturen, of op je website wilt plaatsen.
+Selecteer **Delen** om een herbruikbare uitnodigingslink aan te maken voor een nieuwsbrief, chatkanaal, e-mail of website.
 
 ![](group_invite_sharable_link.png)
 
-Klik op het pictogram "Kopiëren" om de link naar je klembord te kopiëren en plak deze vervolgens in je e-mail, nieuwsbrief of chatkanaal.
-
-Als je wilt voorkomen dat mensen via deze link lid worden, klik je op "Deze link opnieuw instellen". De bestaande link werkt dan niet meer en er wordt een nieuwe link aangemaakt.
+Selecteer **Deze link opnieuw instellen** om te voorkomen dat mensen via een bestaande link lid worden. De oude link werkt dan niet meer en er wordt een nieuwe link aangemaakt.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Een lidmaatschapsverzoek indienen
 
-Mensen kunnen een verzoek indienen om lid te worden van een open of besloten groep. Deel de URL van de groep, zoals `https://www.loomio.com/group-name`. Op de groepspagina kunnen mensen de openbare groepsinformatie bekijken en **Word lid van de groep** selecteren om de aanmeldvraag te beantwoorden en hun verzoek te versturen.
+Mensen kunnen via de URL van een open of besloten groep een lidmaatschapsverzoek indienen, bijvoorbeeld via `https://www.loomio.com/group-name`. Bezoekers zien de openbare groepsinformatie en selecteren **Word lid van de groep** om de aanmeldvraag te beantwoorden en hun verzoek te versturen.
 
 ![](group_join_group.png)
 
-De aanmeldvraag geeft mensen de gelegenheid om zichzelf voor te stellen en uit te leggen waarom ze lid willen worden.
+Met de aanmeldvraag kunnen aanvragers zichzelf voorstellen en uitleggen waarom ze lid willen worden.
 
 ![](group_request_to_join.png)
 
-Kies onder [Groepsprivacy](/en/user_manual/groups/settings/privacy#how-people-join) voor **Goedkeuring vragen** om verzoeken te laten beoordelen. Je kunt de aanmeldvraag ook aanpassen in de groepsinstellingen.
+Kies onder [Groepsprivacy](/en/user_manual/groups/settings/privacy#how-people-join) voor **Lidmaatschap aanvragen** om lidmaatschapsverzoeken te laten beoordelen. Je kunt de aanmeldvraag ook aanpassen in de groepsinstellingen.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Lidmaatschapsverzoeken beoordelen
 
-Groepsbeheerders en leden die toestemming hebben om leden toe te voegen, beoordelen verzoeken in het onderdeel **Lidmaatschapsverzoeken** op het tabblad **Leden**. Als beoordelaar kun je:
+Groepsadmins en leden die toestemming hebben om leden toe te voegen, kunnen verzoeken beoordelen onder **Lidmaatschapsverzoeken** op het tabblad **Leden**.
 
 ![](group_review_request_to_join.png)
 
-- Het verzoek **Goedkeuren** om de aanvrager als lid toe te voegen en een melding te sturen.
-- **Negeer** selecteren om het verzoek te sluiten zonder de aanvrager een melding te sturen of een nieuw verzoek toe te staan.
-- Het verzoek **Afwijzen** met een bericht waarin je het besluit uitlegt. Loomio stuurt het bericht per e-mail en als melding naar de aanvrager, die een nieuw verzoek kan indienen.
+Voor elk verzoek kun je:
 
-Selecteer de knop voor afwijzen om een bericht te schrijven of het verzoek te negeren.
+- **Goedkeuren** selecteren om de aanvrager als lid toe te voegen en een melding te sturen.
+- **Negeer** selecteren om het verzoek te sluiten zonder de aanvrager een melding te sturen of een nieuw verzoek toe te staan.
+- **Afwijzen** selecteren om een uitleg per e-mail en als melding te versturen; de aanvrager kan later een nieuw verzoek indienen.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +114,30 @@ Selecteer de knop voor afwijzen om een bericht te schrijven of het verzoek te ne
 
 ## Uitnodigingen beheren
 
-Om uitnodigingen te beheren, open je het filtermenu op het tabblad Leden van je groepspagina en selecteer je **Uitnodigingen**. Je kunt afzonderlijke uitnodigingen beheren door op het menu met drie puntjes (**⋮**) rechts van het lid te klikken.
+Open het filtermenu op het tabblad **Leden** en selecteer **Uitnodigingen** om openstaande uitnodigingen te bekijken. Gebruik het actiemenu naast een uitnodiging om deze te beheren.
 
 ![](group_invite_members_filter.png)
 
-Je kunt mensen ook beheerder maken of hun titel binnen de groep instellen (bijvoorbeeld "IT-ondersteuning") voordat ze hun uitnodiging accepteren.
+Je kunt een uitgenodigde persoon ook groepsadmin maken of een titel instellen (bijvoorbeeld "IT-ondersteuning") voordat die de uitnodiging accepteert.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Bezorggeschiedenis van uitnodigingen
 
-Als iemand de uitnodigingsmail niet ontvangt, kunnen groepsadmins **Bezorggeschiedenis van uitnodigingen** openen via het menu met drie puntjes (**⋮**) naast de naam op de pagina Leden om te zien wanneer uitnodigingen zijn verstuurd en welke bezorgproblemen zijn vastgelegd.
+Als iemand de uitnodigingsmail niet ontvangt, kan een groepsadmin de bezorgstatus controleren. Open het actiemenu naast de naam op het tabblad **Leden** en selecteer **Bezorggeschiedenis van uitnodigingen** om te zien wanneer uitnodigingen zijn verstuurd en welke bezorgproblemen zijn vastgelegd.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Uitnodigingen opnieuw versturen
 
-Herinner mensen die nog geen lid zijn geworden aan hun uitnodiging. Als iemand de uitnodigingsmail kwijt is of vergeten is, kun je deze opnieuw versturen via het keuzemenu naast de naam op de pagina Leden.
-
-Klik op de drie puntjes (**⋮**) naast de persoon aan wie je de uitnodiging opnieuw wilt sturen en kies **Uitnodiging opnieuw sturen**.
+Als iemand de uitnodigingsmail kwijt is of heeft gemist, open je het actiemenu naast de naam op het tabblad **Leden** en selecteer je **Uitnodiging opnieuw sturen**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Uitnodigingen annuleren
-Als je een verkeerd e-mailadres hebt ingevoerd of iemand toch niet wilt uitnodigen, kun je de uitnodiging annuleren op het tabblad Leden van je groepspagina. Selecteer **Uitnodiging annuleren** in het keuzemenu rechts van de uitnodiging (**⋮**).
+
+Als je een verkeerd e-mailadres hebt ingevoerd of iemand niet meer wilt uitnodigen, open je het actiemenu naast de uitnodiging op het tabblad **Leden** en selecteer je **Annuleer uitnodiging**.
 
 ![](group_invite_cancel_invitation.png)

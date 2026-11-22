@@ -1,28 +1,28 @@
 ---
 title: Snel overzicht
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 37661474614d0302
-  group-page: 4456025528178efb
-  tabs: 03a2721f0efed789
+  introduction: 2bb02e1206d5ce89
+  group-page: f34d828735c41825
+  tabs: 4f302cc1a3d755a2
   sidebar: ee8ea13c62886f4f
-  user-settings: 72c322120115e1fa
-  notifications: 366b22778d1b6d7c
+  user-settings: 89708aa6f7e85a88
+  notifications: 2a4d6b34c90778a7
   what-to-do-next: 9ad93f652345617a
-  mobile-navigation: 57749e61ca032914
+  mobile-navigation: 95e226c9aeb33ea9
 title_source: c41a33370cd580dd
 title_generated: '057569e85df4c620'
 ---
@@ -31,13 +31,13 @@ title_generated: '057569e85df4c620'
 
 # Snel overzicht
 
-Deze pagina introduceert de belangrijkste onderdelen van de Loomio-interface en laat zien waar je het werk vindt waarbij je betrokken bent.
+Deze pagina introduceert de belangrijkste onderdelen van Loomio en laat zien waar je jouw werk vindt.
 
 <!-- translation-section: group-page -->
 
 ## Groepspagina
 
-De startpagina van jouw groep introduceert de groep en geeft toegang tot het werk van de groep.
+De startpagina van jouw groep beschrijft de groep en bevat links naar het werk van de groep.
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ De startpagina van jouw groep introduceert de groep en geeft toegang tot het wer
 
 ### Tabbladen
 
-De tabbladen onder de groepsbeschrijving geven toegang tot:
+De tabbladen onder de groepsbeschrijving tonen:
 
-**Discussies** - De discussiethreads van de groep en recente activiteit.
-
-**Peilingen** - Een lijst met actieve peilingen in jouw groep.
-
-**Leden** - De mensen die tot de groep behoren.
-
-**Bestanden** - Documenten en andere bestanden die op verschillende plekken in de groep zijn toegevoegd. Dit tabblad verzamelt bestanden uit de context van discussies, reacties, voorstellen en peilingen, zodat je een document kunt vinden zonder te hoeven onthouden waar het is toegevoegd.
+- **Discussies**: De discussiethreads van de groep en recente activiteit.
+- **Peilingen**: Open en gesloten peilingen in de groep.
+- **Leden**: De mensen die tot de groep behoren.
+- **Bestanden**: Bestanden die op verschillende plekken in de groep zijn toegevoegd aan discussies, reacties, voorstellen en peilingen, zodat je een document kunt vinden zonder te hoeven onthouden waar het is gedeeld.
 
 Zie [Inhoud vinden](/en/user_manual/overview/finding-content) voor hulp bij zoeken, filters, labels, bladwijzers en ongelezen discussies.
 
@@ -75,13 +72,13 @@ Selecteer je naam in de zijbalk om je gebruikersmenu te openen.
 
 ![](user_settings_sidebar.png)
 
-Gebruik dit menu om je profiel te bewerken, meldingsinstellingen te wijzigen, een thema te kiezen, accountinstellingen te beheren en uit te loggen.
+Via dit menu kun je je profiel bewerken, meldingsinstellingen wijzigen, een thema kiezen, je account beheren en uitloggen.
 
 <!-- translation-section: notifications -->
 
 ## Meldingen
 
-De belknop rechtsboven op een computer, of in de onderste navigatiebalk op een mobiel apparaat, opent je meldingen in de app. Er verschijnt een badge als je meldingen hebt die je nog niet hebt bekeken.
+Selecteer het belpictogram rechtsboven op een computer, of in de onderste navigatiebalk op een mobiel apparaat, om je meldingen in de app te openen. Een badge geeft aan wanneer je ongelezen meldingen hebt.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Zie [Meldingen](/en/user_manual/users/email_settings) voor informatie over meldi
 
 ## Mobiele navigatie
 
-Op mobiel geeft de onderste navigatiebalk je snel toegang tot de zijbalk, het dashboard en meldingen. Wanneer je een discussie leest, opent het threadmenu de inhoudsopgave en acties voor de thread.
+Op een mobiel apparaat opent de onderste navigatiebalk de zijbalk, het dashboard en de meldingen. Binnen een discussie opent het threadmenu de inhoudsopgave en acties voor de thread.
 
 <!-- translation-section: what-to-do-next -->
 

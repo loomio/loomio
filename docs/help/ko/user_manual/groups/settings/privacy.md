@@ -1,37 +1,37 @@
 ---
 sections:
-  introduction: 4b491c663bfb5ea9
-  open: 2802cda1461d3b19
-  follow-an-open-group: e4a1b3ce35a974d0
+  introduction: fa83676f56f0d4bd
+  open: 3913f73fccf45868
+  follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
   visible-to-parent-group: 96b8595d3bc6ce4b
-  secret: d0a9ea85448f9798
-  how-people-join: 926f4b183250aa9d
+  secret: dda930893dfc59cc
+  how-people-join: aca325fb6b4d6056
   group-directory: a9a41ea389fb10ba
 generated:
-  introduction: 7abba334fce7d22f
+  introduction: 28923d38eef16eff
   open: 67f37483f5f8dbaf
-  follow-an-open-group: 78998de39563b740
+  follow-an-open-group: 0d8cff020f71e58a
   closed: 74f06f2c31d4e47d
   visible-to-parent-group: 0b035b229a30b0c9
   secret: e6bdf73418c09bb1
-  how-people-join: a9ebba0b38474aaf
+  how-people-join: b900629966abe410
   group-directory: d723cab800291ea5
 title: 공개 범위
 title_source: 54a57c3147c49f33
 title_generated: a93ac7af37fd403c
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
 
 # 그룹 공개 범위
 
-공개 범위는 누가 그룹을 찾고 콘텐츠를 읽을 수 있는지 결정합니다. 그룹 페이지에서 **그룹 설정 수정**을 연 다음 **공개 범위**를 선택하세요.
+공개 범위는 누가 그룹을 찾고 콘텐츠를 읽을 수 있는지 결정합니다. 그룹의 작업 메뉴에서 **그룹 설정 수정**을 연 다음 **공개 범위**를 선택하세요.
 
 ![그룹 공개 범위 설정](group_privacy_settings.png#width-90)
 
@@ -47,9 +47,9 @@ translated:
 
 ### 공개 그룹 소식 구독
 
-그룹에 가입하지 않아도 공개 그룹의 소식을 받아볼 수 있습니다. 소식을 구독하면 아직 읽지 않은 그룹 활동이 활동 요약 이메일에 포함되어 편한 시간에 확인할 수 있습니다. 소식을 구독하는 것만으로는 멤버가 되거나 멤버의 투표 권한을 얻거나 즉시 알림을 받지는 않습니다.
+그룹에 가입하지 않아도 공개 그룹의 소식을 구독할 수 있습니다. 소식을 구독하면 아직 읽지 않은 그룹 활동이 활동 요약 이메일에 포함되어 편한 시간에 확인할 수 있습니다. 구독자는 멤버가 되거나 투표 권한을 얻지 않으며, 즉시 알림도 받지 않습니다.
 
-그룹 페이지에서 **소식 구독**을 켜면 아직 읽지 않은 토론, 댓글, 투표 및 기타 스레드 활동이 활동 요약 이메일에 포함됩니다. 해당 그룹을 더 이상 포함하지 않으려면 이 설정을 끄세요.
+그룹 페이지에서 **소식 구독**을 켜면 아직 읽지 않은 토론, 댓글, 투표 및 기타 스레드 활동이 활동 요약 이메일에 포함됩니다. 그룹 소식 구독을 중단하려면 이 설정을 끄세요.
 
 ![공개 그룹 소식 구독](group_follow_updates.png)
 
@@ -75,7 +75,7 @@ translated:
 
 ## 가입 방법
 
-**어떻게 가입하나요?**에서 사용 가능한 선택지 중 하나를 선택하세요.
+**어떻게 가입하나요?**에서 다음 선택지 중 하나를 선택하세요.
 
 | 가입 방식 | 작동 방식 |
 | --- | --- |
@@ -83,7 +83,7 @@ translated:
 | **가입 요청** | 가입을 요청하고 승인을 기다립니다 |
 | **초대로만 가입** | 가입하려면 초대가 필요합니다 |
 
-승인이 필요한 경우 **그룹 가입**을 선택하고 그룹의 가입 질문에 답한 다음 가입 요청을 보냅니다. 가입 질문 설정, 요청 검토, 직접 초대 방법은 [사람 초대하기](/en/user_manual/groups/inviting_people#request-to-join-group)를 참조하세요.
+승인이 필요한 경우 **그룹 가입**을 선택하고 가입 질문에 답한 다음 요청을 제출합니다. 가입 질문 설정, 요청 검토, 직접 초대 방법은 [사람 초대하기](/en/user_manual/groups/inviting_people#request-to-join-group)를 참조하세요.
 
 <!-- translation-section: group-directory -->
 

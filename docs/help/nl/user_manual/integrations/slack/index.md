@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: 41f3f77a0103cc74
+  introduction: 2ca52f7db23a53e9
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Slack-integratie
-_Koppel de meldingen van jouw Loomio-groep aan Slack._
 
-Loomio kan meldingen naar jouw Slack-kanalen sturen bij nieuwe discussies, voorstellen, reacties, stemmen en conclusies. Ontvang op het juiste moment belangrijke updates over discussies en besluiten.
+Loomio kan meldingen naar jouw Slack-kanalen sturen bij nieuwe discussies, peilingen, reacties, stemmen en conclusies.
 
 ---
 
-Ga naar [https://api.slack.com](https://api.slack.com), log in als je dat nog niet hebt gedaan en klik op Create New App
+1. Open [api.slack.com](https://api.slack.com), log in en selecteer **Nieuwe app maken**.
 
-![](s1.png)
+   ![](s1.png)
 
-Geef jouw Slack-app een naam
+2. Geef jouw Slack-app een naam en kies jouw werkruimte.
 
-![](s2.png)
+   ![](s2.png)
 
-Voeg ondersteuning voor inkomende webhooks toe
+3. Selecteer **Inkomende webhooks**.
 
-![](s3.png)
+   ![](s3.png)
 
-Schakel vervolgens de functie in
+4. Schakel **Inkomende webhooks activeren** in.
 
-![](s4.png)
+   ![](s4.png)
 
-Voeg daarna een nieuwe webhook toe
+5. Selecteer **Nieuwe webhook aan werkruimte toevoegen**.
 
-![](s5.png)
+   ![](s5.png)
 
-Selecteer een kanaal
+6. Kies het kanaal waarin je Loomio-meldingen wilt ontvangen.
 
-![](s6.png)
+   ![](s6.png)
 
-Kopieer de webhook-URL naar je klembord
+7. Kopieer de webhook-URL.
 
-![](s7.png)
+   ![](s7.png)
 
-Nu je een webhook-URL hebt, kun je verdergaan met het instellen van jouw chatintegratie:
+Nu je een webhook-URL hebt, voltooi je de koppeling in Loomio:
 
 [Stel een chatintegratie in Loomio in](../chatbots/#set-up-a-chat-integration)
 

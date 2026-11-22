@@ -1,39 +1,39 @@
 ---
 title: הצעות וסקרים
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: be97cc1820963969
+  introduction: b302816fe97258ad
   find-the-right-help: 2010e5cea3fd32ef
   proposals: fd377ff15e44f5a4
   polls: 7b9bb76028c45e33
   start-a-proposal-or-poll: 900753a7ab87d9b6
-  choose-whether-to-use-a-discussion: 1e2b392b3a1f7bea
+  choose-whether-to-use-a-discussion: 9ca9785b04823971
   in-a-discussion: 8430e3d521098b9d
-  without-a-discussion: 532a0a377430ca57
+  without-a-discussion: 74772c639b6ab35c
   what-happens-next: f7fbf44c0b07952b
   1-create-it: 47b24347f3e5f216
-  2-voting-opens: 51fe75836ca99395
-  3-people-vote: ea85595f06b6f761
-  4-it-closes: 0c498f8562303588
+  2-voting-opens: 1f15771592c03a11
+  3-people-vote: 698c32c245363045
+  4-it-closes: 7bab7fdafb081696
   5-share-an-outcome: 741710df0fe5b687
 title_source: d45b4ba3cb7a27cb
 title_generated: ae9ae909d9ac36c6
@@ -46,7 +46,7 @@ needs_review:
 
 # הצעות וסקרים
 
-הצעות וסקרים אוספים מענה מובנה מקבוצה. הם יכולים לעזור לבחון רעיון, לקבל החלטה, לזהות סדרי עדיפויות, לקבוע מועד לפגישה או לבחור נציגים.
+הצעות וסקרים אוספים מענה מובנה מקבוצה. ניתן להשתמש בהם כדי לבחון רעיון, לקבל החלטה, לקבוע סדרי עדיפויות, לקבוע מועד לפגישה או לבחור נציגים.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -99,9 +99,9 @@ needs_review:
 
 ### בחירה אם להשתמש בדיון
 
-יש לפתוח את ההצעה או הסקר בתוך דיון כשנדרשים הקשר, שאלות או שיחה לפני מתן מענה. דיון יכול להכיל כמה הצעות לאורך זמן, וכך לשמור את התיקונים ואת המסקנה הסופית יחד ברשומה אחת המתעדת את הנושא.
+יש לפתוח הצעה או סקר בתוך דיון כשנדרשים הקשר, שאלות או שיחה לפני מתן מענה. דיון יכול להכיל כמה הצעות לאורך זמן, וכך לשמור את התיקונים ואת המסקנה הסופית יחד ברשומה אחת.
 
-ניתן לפתוח סקר עצמאי כשהדיון כבר התקיים במקום אחר, למשל בפגישה, או כשהשאלה פשוטה ונדרש רק לאסוף מענה. יש לכלול מספיק פרטים או קישור לתיעוד הרלוונטי, כדי שהמצביעים יבינו על מה הם מתבקשים להשיב.
+ניתן לפתוח סקר עצמאי כשהדיון כבר התקיים במקום אחר, למשל בפגישה, או כשהשאלה פשוטה ונדרש רק לאסוף מענה. יש לכלול מספיק פרטים או קישור לרקע, כדי שהמצביעים יבינו על מה הם מתבקשים להשיב.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -115,7 +115,7 @@ needs_review:
 
 ### ללא דיון
 
-יש לפתוח את הלשונית **סקרים** בעמוד הקבוצה, ללחוץ על **סקר חדש** ולבצע בחירה של תבנית.
+יש לפתוח את הלשונית **סקרים** בעמוד הקבוצה, לבחור **סקר חדש** ולבחור תבנית.
 
 ![](standalone_poll.png)
 
@@ -141,19 +141,19 @@ needs_review:
 
 ### 2. פתיחת ההצבעה
 
-כשההצבעה נפתחת, Loomio שולח התראה לאנשים שהוזמנו. ניתן לעיין ב[הזמנה להצביע](../inviting_people/).
+כשההצבעה נפתחת, Loomio שולח התראה לאנשים שהוזמנו. ניתן לעיין ב[ניהול מצביעים](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. הצבעה
 
-כל עוד ההצבעה פתוחה, ניתן להצביע, להסביר את ההצבעה ולשנות אותה. התוצאות מתעדכנות עם כל הצבעה, אלא אם הן מוסתרות עד לסגירה. כברירת מחדל, מי שטרם הצביעו מקבלים תזכורת יום לפני הסגירה.
+כל עוד הסקר פתוח, ניתן להצביע, להוסיף נימוק להצבעה ולשנות את ההצבעה. התוצאות מתעדכנות עם כל הצבעה, אלא אם הן מוסתרות עד לסגירה. כברירת מחדל, מי שטרם הצביעו מקבלים תזכורת 24 שעות לפני הסגירה.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. סגירת הסקר
 
-הסקר נסגר אוטומטית במועד הסגירה. מנהל שרשור יכול גם לסגור אותו מוקדם. לאחר הסגירה, מנהל שרשור יכול לפתוח אותו מחדש עם מועד סגירה חדש כדי לאפשר להמשיך להצביע. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, לרבות סקרים אנונימיים. ניתן להאריך את מועד הסגירה שלהם כל עוד הם פתוחים.
+הסקר נסגר אוטומטית במועד הסגירה, ומנהל שרשור יכול גם לסגור אותו מוקדם. לאחר הסגירה, מנהל שרשור יכול לפתוח אותו מחדש עם מועד סגירה חדש. לא ניתן לפתוח מחדש סקרים שמסתירים את התוצאות עד לסגירת ההצבעה, לרבות סקרים אנונימיים; ניתן להאריך את מועד הסגירה שלהם כל עוד הם פתוחים.
 
 <!-- translation-section: 5-share-an-outcome -->
 

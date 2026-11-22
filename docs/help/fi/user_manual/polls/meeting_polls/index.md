@@ -1,22 +1,20 @@
 ---
 title: Aikakysely
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 8ab9108683132085
-  time-poll: d5d5d81f7de10419
-  voting: c50083234167a0f9
-  outcome: 9f1bb3dee66382d2
+  introduction: 8586dd16468554c8
+  time-poll: 83fe37c85a508993
+  voting: 852eefea6b16965b
+  outcome: d9ad86541aca516a
 generated:
-  introduction: 0a99ef064ca82f62
-  time-poll: 6b58ee1cd2e89144
-  voting: aa1ed13f84389e80
-  outcome: 1c2763d9aca913ee
-needs_review:
-  introduction: check the interface label "**Aikakysely**" for "**Time poll**"
+  introduction: d4dda12d10cc38bc
+  time-poll: 463ac92f893a7459
+  voting: 4275d34690d79e4f
+  outcome: 8ca39c34b0a34116
 title_source: 8e2a07d7257fbc04
 title_generated: 5b8e364c933cbd94
 ---
@@ -25,27 +23,19 @@ title_generated: 5b8e364c933cbd94
 
 # Aikakysely
 
-Käytä **Aikakyselyä** löytääksesi sopivan ajan kokoukselle tai tapahtumalle. Se palvelee samaa tarkoitusta kuin Doodlen kaltaiset aikataulutustyökalut ja pitää aikataulutuksen osana ryhmän muuta työskentelyä Loomiossa. Osallistujat näkevät vaihtoehdot omalla aikavyöhykkeellään.
+Käytä **Aikakysely**-toimintoa löytääksesi sopivan ajan kokoukselle tai tapahtumalle osana ryhmäsi muuta työskentelyä Loomiossa. Jokainen osallistuja näkee päivämäärä- ja aikavaihtoehdot omalla aikavyöhykkeellään.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Aikakysely
-
-_Selvitä, milloin ihmiset voivat tavata_
-
-Säästä aikaa kokouksen tai tapahtuman ajankohdan sopimisessa.
+## Määritä kysely
 
 ![](timepoll_label.png)
 
-Aikakyselyn avulla näet helposti, milloin kukin on käytettävissä, ja löydät parhaiten sopivan ajan.
+Anna aikakyselylle otsikko ja lisätiedot. Lisää päivämäärä- ja aikavaihtoehdot omalla aikavyöhykkeelläsi ja määritä kokouksen kesto.
 
-Anna aikakyselylle otsikko ja lisätiedot. Lisää luettelo päivämäärä- ja aikavaihtoehdoista omalla aikavyöhykkeelläsi.
-
-Kun määrität aikavaihtoehtoja, ota huomioon eri aikavyöhykkeillä olevat ihmiset. Osallistujat näkevät ajat omalla aikavyöhykkeellään.
-
-Määritä kokouksen kesto.
+Kun valitset vaihtoehtoja, ota huomioon muilla aikavyöhykkeillä olevat ihmiset, jotta kaikille löytyy sopivia aikoja.
 
 ![](timepoll_options.png)
 
@@ -53,15 +43,11 @@ Määritä kokouksen kesto.
 
 ### Äänestäminen
 
-Ihmiset merkitsevät kunkin ajan vihreällä peukalo ylös -kuvakkeella, jos aika sopii heille, keltaisella sivulle osoittavalla peukalolla, jos he voivat osallistua tarvittaessa, tai punaisella peukalo alas -kuvakkeella, jos aika ei sovi heille.
-
-Osallistujat voivat kirjoittaa kommentin äänensä perusteluksi ja auttaa siten järjestäjää löytämään sopivan ajan.
-
-Jos ajat eivät sovi, osallistujat voivat ehdottaa vaihtoehtoja viestikentässä. Voit sitten päivittää kyselyyn uusia aikoja.
+Osallistujat merkitsevät kunkin aikavaihtoehdon sen mukaan, sopiiko aika heille, voivatko he osallistua tarvittaessa vai eikö aika sovi heille. He voivat myös lisätä äänensä perustelun selittääkseen, milloin voivat osallistua, tai ehdottaakseen muita aikoja. Jos mikään vaihtoehdoista ei sovi, voit muokata kyselyä ja lisätä uusia aikoja.
 
 ![](timepoll_vote.png)
 
-Tulokset päivittyvät äänestyksen edetessä taulukkoon, josta näkyy, kenelle mikäkin aika sopii. Näin kaikki näkevät, mitkä aikavaihtoehdot ovat suosittuja.
+Tulokset päivittyvät osallistujien äänestäessä ja näyttävät, kenelle mikäkin aika sopii.
 
 <!-- translation-section: outcome -->
 
@@ -71,14 +57,10 @@ Kun aikakysely sulkeutuu, valitse sopivin aika ja jaa johtopäätös. Katso [Jaa
 
 ![](timepoll_outcome.png)
 
-**Ilmoittaa**: Lisää ihmiset, jotka kutsut kokoukseen tai tapahtumaan
-
-**Tapaamisaika**: Valitse parhaiten sopiva aika. Vaihtoehdoissa käytetään [profiilisi aikavyöhykettä](/en/user_manual/users/user_profile#time-zone)
-
-**Kokouksen nimi**: Anna kokouksellesi nimi. Oletuksena käytetään aikakyselyn otsikkoa
-
-**Sijainti**: Lisää fyysinen paikka tai kokouslinkki
-
-**lausunto**: Tee yhteenveto tuloksesta ja lisää mahdolliset kokousohjeet
+- **Ilmoittaa**: Lisää ihmiset, jotka kutsut kokoukseen tai tapahtumaan.
+- **Tapaamisaika**: Valitse parhaiten sopiva aika. Vaihtoehdoissa käytetään [profiilisi aikavyöhykettä](/en/user_manual/users/user_profile#time-zone).
+- **Kokouksen nimi**: Anna kokouksellesi nimi. Loomio käyttää oletuksena aikakyselyn otsikkoa.
+- **Sijainti**: Lisää fyysinen osoite tai verkkokokouksen linkki.
+- **lausunto**: Tee yhteenveto päätöksestä ja lisää mahdolliset kokousohjeet.
 
 Loomio sisällyttää valitun ajan, kokouksen nimen, keston, sijainnin ja lausunnon johtopäätöksestä kertovaan ilmoitukseen ja kalenterikutsuun.

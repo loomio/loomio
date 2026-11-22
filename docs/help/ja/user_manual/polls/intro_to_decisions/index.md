@@ -1,39 +1,39 @@
 ---
 title: 提案と投票
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: f8f94e00d47bdafb
+  introduction: 9e423a22b4cace2e
   find-the-right-help: bd160de214fbbe37
   proposals: 16eeeaa75652f77e
   polls: a2c28fa2bcf2cecc
   start-a-proposal-or-poll: 2aaa4ed0e64eff8d
-  choose-whether-to-use-a-discussion: d8915f3dfbe4cbca
+  choose-whether-to-use-a-discussion: f8b4fc92b70f69a9
   in-a-discussion: da1527048db72e31
   without-a-discussion: 111be578a2bca4fe
   what-happens-next: 67c7568e768f713d
   1-create-it: 1804d0d646b44791
-  2-voting-opens: 06bd61e89bb9aa44
-  3-people-vote: 54d5b2a141500dcd
-  4-it-closes: c2ffe4e91c60a549
+  2-voting-opens: 1689f17afbb2ff71
+  3-people-vote: 5c4a06ccf3db8e6a
+  4-it-closes: 3fd8d481e5a447c5
   5-share-an-outcome: 9c5b2200dc4e3758
 title_source: d45b4ba3cb7a27cb
 title_generated: be4107aa6d3ae949
@@ -45,7 +45,7 @@ needs_review:
 
 # 提案とアンケート
 
-提案とアンケートでは、グループから決まった形式で回答を集めます。アイデアの確認、決定、優先順位の把握、会議の日程調整、代表者の選出に役立ちます。
+提案とアンケートでは、グループから決まった形式で回答を集めます。アイデアの確認、決定、優先順位の設定、会議の日程調整、代表者の選出に使います。
 
 <!-- translation-section: find-the-right-help -->
 
@@ -98,9 +98,9 @@ needs_review:
 
 ### ディスカッションを使うかを選ぶ
 
-回答する前に背景説明の確認、質問、話し合いが必要な場合は、ディスカッション内で提案やアンケートを開始します。ディスカッションでは、時間をかけて複数の提案を行い、修正内容と最終的な結論を、その話題の一つの記録としてまとめて残せます。
+回答する前に背景説明の確認、質問、話し合いが必要な場合は、ディスカッション内で提案やアンケートを開始します。ディスカッションでは、時間をかけて複数の提案を行い、修正内容と最終的な結論を一つの記録としてまとめて残せます。
 
-会議など別の場所ですでに話し合った場合や、質問が単純で回答を集めるだけでよい場合は、単独のアンケートを実施します。投票者が何に回答するのかを理解できるよう、十分な説明や関連する記録へのリンクを含めてください。
+会議など別の場所ですでに話し合った場合や、質問が単純で回答を集めるだけでよい場合は、単独のアンケートを実施します。投票者が何に回答するのかを理解できるよう、十分な説明や背景情報へのリンクを含めてください。
 
 <!-- translation-section: in-a-discussion -->
 
@@ -140,19 +140,19 @@ needs_review:
 
 ### 2. 投票が始まる
 
-投票が始まると、Loomioが招待した人に通知します。[投票への招待](../inviting_people/)を参照してください。
+投票が始まると、Loomioが招待された人に通知します。[投票者の管理](../manage_voters/)を参照してください。
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. 参加者が投票する
 
-投票期間中は、投票し、その理由を説明し、投票内容を変更できます。締め切りまで結果を非表示にする設定でなければ、投票に応じて結果が更新されます。初期設定では、まだ投票していない人に、締め切りの1日前にリマインダーが届きます。
+投票期間中は、投票し、投票の理由を追加し、投票内容を変更できます。締め切りまで結果を非表示にする設定でなければ、投票に応じて結果が更新されます。初期設定では、未投票の人に、締め切りの24時間前にリマインダーが届きます。
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. 締め切り
 
-アンケートは締め切り時刻に自動的に締め切られます。スレッド管理者は、早めに締め切ることもできます。締め切り後は、スレッド管理者が新しい締め切り時刻を設定して再開し、投票を続けられるようにできます。匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。これらのアンケートは、締め切り前であれば締め切り時刻を延長できます。
+アンケートは締め切り時刻に自動的に締め切られます。スレッド管理者は、早めに締め切ることもできます。締め切り後は、スレッド管理者が新しい締め切り時刻を設定して再開できます。匿名のアンケートを含め、投票が締め切られるまで結果を非表示にするアンケートは再開できません。これらのアンケートは、締め切り前であれば締め切り時刻を延長できます。
 
 <!-- translation-section: 5-share-an-outcome -->
 

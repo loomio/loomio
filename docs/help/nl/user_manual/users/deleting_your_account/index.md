@@ -1,18 +1,18 @@
 ---
 title: Je account verwijderen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/deleting_your_account/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: c9f996479d2fad85
-  to-delete-your-account-entirely: a2dc7a3b2256df81
+  what-does-delete-account-mean: b4903b29472cb632
+  to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: fc03780a37bfa0db
-  what-does-delete-account-mean: bb3179307ab81540
-  to-delete-your-account-entirely: c19040e67adb1ec9
+  what-does-delete-account-mean: ae996fa50e959f7c
+  to-delete-your-account-entirely: 6f456daf8b386e9f
 title_source: 26a117d6f45e95e8
 title_generated: 745ab933a786e5d5
 ---
@@ -25,32 +25,32 @@ title_generated: 745ab933a786e5d5
 
 ## Wat betekent je account verwijderen?
 
-Wanneer je je account verwijdert:
-- Je gebruikersaccount, inclusief je naam, e-mailadres en andere gegevens waarmee je persoonlijk te identificeren bent, wordt uit onze systemen verwijderd. Je kunt je met dit account niet meer aanmelden bij Loomio.
-- Reacties, voorstellen en discussies die je hebt geplaatst, blijven behouden, maar je naam wordt ervan verwijderd. We doen dit omdat we tegenover groepen verplicht zijn de samenhang van threads en voorstellen te behouden.
-- Je wordt niet meer als lid van een groep vermeld.
+Je account verwijderen is definitief en kan niet ongedaan worden gemaakt. Wanneer je je account verwijdert:
+
+- Loomio verwijdert je account, inclusief je naam, e-mailadres en andere persoonlijke gegevens. Je kunt je met dit account niet meer aanmelden.
+- Je reacties, voorstellen en discussies blijven behouden, maar je naam wordt ervan verwijderd, zodat de threads van groepen intact blijven.
+- Je wordt als lid uit alle groepen verwijderd.
 - Je ontvangt geen meldingen meer per e-mail.
 
-Houd er rekening mee dat kopieën van de gegevens die je op Loomio hebt aangemaakt waarschijnlijk per e-mail naar iedereen in de groep zijn verstuurd. Loomio kan die kopieën niet verwijderen.
+Kopieën van je activiteit zijn mogelijk al per e-mail naar groepsleden verstuurd. Loomio kan e-mails die al zijn verstuurd niet verwijderen.
 
-Als je je account verwijdert, wordt je abonnement _niet_ opgezegd. Bekijk [Abonnementen](/en/policy/subscriptions/management#cancel-your-plan) om je betalingen te stoppen.
+Als je je account verwijdert, wordt een betaald abonnement niet opgezegd. Bekijk [Abonnementen](/en/policy/subscriptions/management#cancel-your-plan) om je betalingen te stoppen.
 
-Loomio heeft fundamentele keuzes gemaakt over eigendom, het bedrijfsmodel en de software om de rechten van gebruikers te beschermen. Loomio is een onafhankelijke coöperatie die eigendom is van de werknemers. De software is open source, je kunt [je gegevens exporteren](/en/user_manual/groups/data_export) en Loomio verkoopt je gegevens nooit en gebruikt ze niet voor advertenties. Deze toezeggingen staan in ons [privacybeleid](/en/policy/privacy) en zijn gebaseerd op het doel en de waarden in onze [statuten](https://www.loomio.coop/constitution.html) en ons [coöperatiehandboek](https://www.loomio.coop/purpose_and_vision.html). Als je vragen hebt, [neem dan contact met ons op](/contact).
+Meer informatie over hoe Loomio met je gegevens omgaat, vind je in ons [privacybeleid](/en/policy/privacy). Je kunt ook [contact met ons opnemen](/contact). Als je eerst een kopie van de gegevens van een groep nodig hebt, kan een groepsadmin [de gegevens van de groep exporteren](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 
 ## Je account volledig verwijderen
 
-Meld je aan bij Loomio. Open de zijbalk via het menupictogram (☰) linksboven op je scherm. Klik op je accountavatar of initialen rechtsboven op je scherm.
-
-Klik op het pijltje omlaag ( ∨ ) naast je naam om de gebruikersinstellingen te openen. Selecteer **Profiel bewerken**.
+1. Meld je aan bij Loomio.
+2. Open je gebruikersmenu door je naam in de zijbalk te selecteren en selecteer vervolgens **Profiel bewerken**. Als de zijbalk gesloten is, open je die met de menuknop (**☰**).
 
 ![](profile_edit.png#width-50)
 
-Scrol naar beneden en klik op **Verwijder account**.
+3. Scrol naar de onderkant van de pagina en selecteer **Verwijder account**.
 
 ![](delete_user.png)
 
-Er verschijnt een pop-up waarin je wordt gevraagd te bevestigen dat je je account wilt verwijderen.
+4. Bevestig dat je je account definitief wilt verwijderen.
 
 ![](permanently_delete_account.png#width-80)

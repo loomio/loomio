@@ -1,22 +1,22 @@
 ---
 sections:
-  introduction: d1b37bf68148b2a5
-  set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: 1cc0b5130642217b
-  results: a0eeeda5a9e70a97
+  introduction: 566ce8dda668a638
+  set-members-vote-weights: 2a3d29ebb9840017
+  use-weighted-voting-in-a-poll: feddef738da4567d
+  results: ab86e178359702a0
 generated:
-  introduction: 5761643177197fe2
-  set-members-vote-weights: d73e7c452d65b411
-  use-weighted-voting-in-a-poll: a5549234a946a5c5
+  introduction: fc4c20a76aeac3fb
+  set-members-vote-weights: f8f5788c57d411b2
+  use-weighted-voting-in-a-poll: f5a7c0757d522b22
   results: 13fdbe0439088810
 title: Painotettu äänestys
 title_source: 0b971991dfcacbab
 title_generated: 6c6d53a110e6e406
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 needs_review:
   results: use "Pisteytys" instead of "pisteet" for "Score"
 ---
@@ -25,29 +25,29 @@ needs_review:
 
 # Painotettu äänestys
 
-Painotetussa äänestyksessä jotkin äänet vaikuttavat tulokseen enemmän kuin toiset. Jokaisella äänestäjällä on äänipaino. Esimerkiksi:
+Painotetussa äänestyksessä jotkin äänet vaikuttavat tulokseen enemmän kuin toiset, sillä jokaiselle äänestäjälle määritetään äänipaino. Esimerkiksi:
 
 - Asuinyhteisö antaa jokaiselle kiinteistölle yhden äänen. Kolmea kiinteistöä edustavan jäsenen äänipaino on `3`.
-- Työosuuskunta myöntää äänioikeuden, kun jäsenyys on kestänyt määrätyn ajan. Uudempien jäsenten äänipaino on `0`, joten he voivat osallistua keskusteluun ja tutustua äänestämiseen ilman, että heidän äänensä vaikuttavat tulokseen.
+- Työosuuskunta myöntää äänioikeuden, kun jäsenyys on kestänyt määrätyn ajan. Uudempien jäsenten äänipaino on `0`, joten he voivat osallistua keskusteluun ja kokeilla äänestämistä vaikuttamatta tulokseen.
 - Yritys antaa osakkeenomistajille ääniä heidän omistusosuutensa mukaan. Henkilön, joka omistaa 12,5 % osakkeista, äänipaino on `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->
 
 ## Aseta jäsenten äänipainot
 
-Ryhmän ylläpitäjä voi avata ryhmän **Jäsenet**-sivun ja valita **Muokkaa äänimääriä**. Syötä äänipainot ja valitse **Tallenna äänipainotukset**. Äänipainot voivat olla `0` tai suurempia, ja niissä voi olla enintään kolme desimaalia. Etsi henkilöä nimellä tai sähköpostiosoitteella. Jos haluat antaa jokaiselle jäsenelle saman äänipainon, valitse **Aseta kaikki äänipainotukset**.
+Ryhmän ylläpitäjä voi avata ryhmän **Jäsenet**-sivun ja valita **Muokkaa äänimääriä**. Syötä äänipainot (`0` tai suurempi, enintään kolme desimaalia) ja valitse **Tallenna äänipainotukset**. Voit etsiä henkilöä nimellä tai sähköpostiosoitteella tai valita **Aseta kaikki äänipainotukset**, jos haluat antaa jokaiselle jäsenelle saman äänipainon.
 
 ![Ryhmän jäsenten äänipainot](member-weights.png)
 
-Jäsenen äänipaino kopioidaan jokaiseen kyselyyn, johon hänet lisätään. Äänipainon muuttaminen myöhemmin ei muuta kyselyitä, joihin se on jo kopioitu.
+Jäsenen äänipaino kopioidaan jokaiseen kyselyyn, kun hänet lisätään siihen. Äänipainon muuttaminen myöhemmin ei vaikuta olemassa oleviin kyselyihin.
 
 <!-- translation-section: use-weighted-voting-in-a-poll -->
 
 ## Käytä painotettua äänestystä kyselyssä
 
-Avaa kyselylomakkeen **Lisää asetuksia** ja valitse **Käytä painotettua äänestystä**. Voit ottaa painotetun äänestyksen käyttöön tai poistaa sen käytöstä äänestyksen alettua. Kun poistat sen käytöstä, kyselyn kaikkien äänipainojen arvoksi asetetaan `1`, ja kaikki kyseiseen kyselyyn tekemäsi äänipainojen muutokset menetetään.
+Avaa kyselylomakkeen **Lisää asetuksia** ja valitse **Käytä painotettua äänestystä**. Voit ottaa painotetun äänestyksen käyttöön tai poistaa sen käytöstä äänestyksen alettua. Kun poistat sen käytöstä, kyselyn kaikkien äänipainojen arvoksi asetetaan `1`, ja kaikki kyseiseen kyselyyn määritetyt mukautetut äänipainot menetetään.
 
-Jos ryhmäsi käyttää painotettua äänestystä vakiintuneessa prosessissa, valitse [kyselymallissa](/en/user_manual/polls/poll_templates) **Käytä painotettua äänestystä**. Tästä mallista aloitetut kyselyt käyttävät painotettua äänestystä.
+Jos ryhmäsi käyttää painotettua äänestystä vakiintuneessa prosessissa, ota [kyselymallissa](/en/user_manual/polls/poll_templates) käyttöön **Käytä painotettua äänestystä**. Tästä mallista aloitetut kyselyt käyttävät painotettua äänestystä oletusarvoisesti.
 
 ![Kyselyn Käytä painotettua äänestystä -asetus](poll-setting.png)
 

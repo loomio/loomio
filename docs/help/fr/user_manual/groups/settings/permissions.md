@@ -1,14 +1,14 @@
 ---
 title: Permissions
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/settings/permissions.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/permissions.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 89201fa8b1ae8d82
+  introduction: '0579f1943e715f4d'
 generated:
-  introduction: 2f6c867a00d0e81f
+  introduction: 6791ee4400de08df
 title_source: abccc78cc93c0793
 title_generated: abccc78cc93c0793
 ---
@@ -17,25 +17,25 @@ title_generated: abccc78cc93c0793
 
 # Permissions du groupe
 
-L’onglet des permissions détermine les actions accessibles aux membres ordinaires et, pour les groupes qui ne sont pas secrets, aux personnes qui ne sont pas membres. Ouvrez **Modifier les paramètres du groupe** depuis la page du groupe, puis sélectionnez **Permissions**.
+L’onglet **Permissions** détermine ce que les membres peuvent faire dans le groupe et, pour les groupes qui ne sont pas secrets, ce que les personnes qui ne sont pas membres peuvent faire. Ouvrez **Modifier les paramètres du groupe** depuis le menu d’actions du groupe, puis sélectionnez **Permissions**.
 
 ![Paramètres des permissions du groupe](group_group_settings_permissions.png)
 
-Les administrateurs conservent la possibilité de gérer le groupe. Activer une permission pour les membres leur permet d’effectuer l’action correspondante ; cela ne fait pas d’eux des administrateurs.
+Les administrateurs du groupe conservent toujours toutes les permissions de gestion. Activer une permission permet aux membres d’effectuer l’action correspondante sans faire d’eux des administrateurs du groupe.
 
-Les permissions déterminent notamment si les membres peuvent :
+Les permissions déterminent si les membres peuvent :
 
-- ajouter des membres ou inviter des invités ;
-- envoyer des annonces ;
-- créer des sous-groupes ;
-- démarrer et gérer des discussions ;
-- créer et gérer des tags ;
-- modifier ou supprimer des commentaires lorsque le paramètre le permet ;
-- démarrer des propositions et des sondages ; et
-- créer des modèles de discussion et de sondage.
+- Ajouter des membres ou inviter des invités
+- Envoyer des annonces
+- Créer des sous-groupes
+- Démarrer et gérer des discussions
+- Créer et gérer des tags
+- Modifier ou supprimer des commentaires lorsque le paramètre le permet
+- Démarrer des propositions et des sondages
+- Créer des modèles de discussion et de sondage
 
-Pour les groupes qui ne sont pas secrets, les administrateurs peuvent autoriser séparément les personnes qui ne sont pas membres à démarrer des discussions. Une personne qui démarre une discussion sans être membre devient invitée à cette discussion, mais n’obtient pas accès aux autres discussions privées et ne devient pas membre du groupe.
+Pour les groupes qui ne sont pas secrets, les administrateurs du groupe peuvent également autoriser les personnes qui ne sont pas membres à démarrer des discussions. Une personne qui démarre une discussion sans être membre devient invitée sur ce fil, mais ne devient pas membre du groupe et n’obtient pas accès aux autres discussions privées.
 
-Le paramètre **Les administrateurs peuvent modifier les commentaires des membres** donne aux administrateurs une capacité de modération exceptionnelle. Activez-le uniquement lorsque le groupe a convenu que les administrateurs doivent pouvoir modifier le contenu rédigé par les membres.
+Le paramètre **Les administrateurs peuvent modifier les commentaires des membres** permet aux administrateurs du groupe de modifier le contenu rédigé par les membres. Activez-le uniquement si votre groupe a convenu que les administrateurs du groupe doivent pouvoir modifier les commentaires des membres.
 
-Réexaminez les permissions lorsque la finalité du groupe, sa composition ou les responsabilités de modération changent. Accordez à chaque rôle uniquement les capacités dont il a besoin.
+Réexaminez les permissions chaque fois que la finalité de votre groupe, sa composition ou ses besoins de modération changent, et accordez à chaque rôle uniquement les permissions dont il a besoin.

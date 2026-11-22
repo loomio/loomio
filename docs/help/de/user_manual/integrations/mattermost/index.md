@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/mattermost/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/mattermost/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 5ff78e7362ad4050
+  introduction: 508868f1d003ac65
 generated:
-  introduction: 50d68fc6dc4d94ee
+  introduction: 74bdc73678fa2521
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,31 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Mattermost-Integration
-_Verbinde die Benachrichtigungen deiner Loomio-Gruppe mit deinem Mattermost-Teamchat._
 
-Loomio kann Benachrichtigungen an deine Mattermost-Kanäle senden, wenn neue Diskussionen, Vorschläge, Kommentare, Stimmen und Fazits hinzukommen.
+Loomio kann Benachrichtigungen an deine Mattermost-Kanäle senden, wenn neue Diskussionen, Abstimmungen, Kommentare, Stimmen und Fazits hinzukommen.
 
 ---
 
-Öffne dein Mattermost-Team im Browser. Öffne dann die Einstellungsseite für Integrationen.
-![](mm1.png)
+1. Öffne dein Mattermost-Team in einem Browser und gehe zu **Integrationen**.
 
-Klicke auf „Eingehende Webhooks“
-![](mm2.png)
+   ![](mm1.png)
 
-Klicke dann auf „Eingehenden Webhook hinzufügen“
-![](mm3.png)
+2. Wähle **Eingehende Webhooks**.
 
-Gib einen einfachen Namen ein, wähle den Kanal, in dem die Benachrichtigungen erscheinen sollen, und klicke auf „Speichern“
-![](mm4.png)
+   ![](mm2.png)
 
-Kopiere die Webhook-URL in deine Zwischenablage. Du brauchst sie im nächsten Schritt.
-![](mm5.png)
+3. Wähle **Eingehenden Webhook hinzufügen**.
 
-Stelle sicher, dass die Webhook-URL in deiner Zwischenablage ist, und folge dem Link unten.
+   ![](mm3.png)
+
+4. Gib einen Namen ein, wähle den Kanal, in dem die Benachrichtigungen erscheinen sollen, und wähle **Speichern**.
+
+   ![](mm4.png)
+
+5. Kopiere die Webhook-URL.
+
+   ![](mm5.png)
+
+Jetzt hast du eine Webhook-URL und kannst die Verbindung in Loomio fertig einrichten:
 
 [Eine Chat-Integration in Loomio einrichten](../chatbots/#set-up-a-chat-integration)

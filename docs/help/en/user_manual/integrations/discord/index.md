@@ -2,22 +2,22 @@
 
 # Discord integration
 
-_Connecting your Loomio group notifications to your Discord team chat._
-
-Loomio can send notifications into your Discord channels when new discussions, proposals, comments, votes, and outcomes occur. You can also manually notify the chatroom when you need to remind people about a decision.
+Loomio can send notifications to your Discord channels when new discussions, polls, comments, votes, and outcomes happen. You can also notify the channel manually when you want to remind people about a decision.
 
 ---
 
-Open your Discord server and find the server settings menu.
-![](server-settings.png)
+1. Open your Discord server and go to **Server Settings**.
 
-Click "Integrations"
-![](integrations.png)
+   ![](server-settings.png)
 
-Then click "Add Webhook" and give it a name, like "Loomio bot"
+2. Select **Integrations**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Make sure you have copied the Webhook URL to your clipboard and follow the link below.
+3. Select **Add Webhook**, give it a name such as `Loomio`, choose a channel, and copy the webhook URL.
+
+   ![](add-webhook.png)
+
+Now that you have a webhook URL, finish connecting it in Loomio:
 
 [Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)

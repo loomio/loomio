@@ -1,26 +1,26 @@
 ---
 title: Toewijzen
-source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 sections:
-  introduction: d097e3a7d91324c9
-  when-to-use-allocate: 25c91f8c05c1ec80
-  example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
-  set-up-the-poll: 772846c919c6af97
-  vote: a76285146a3b1d2e
-  read-the-results: 3a66507bd8387273
-  share-an-outcome: abb46bfca8b73b7a
+  introduction: d10125de19b0e07a
+  when-to-use-allocate: 31bd4a88c84bfaf2
+  example-set-priorities-for-an-annual-strategy-review: 286565336e2bb6c9
+  set-up-the-poll: 02aff5d11a69d90f
+  vote: 04f6bc5bba735513
+  read-the-results: 8f17bcf6c01cba57
+  share-an-outcome: 1a5f3ae9fea57d91
 generated:
-  introduction: 941a67de5004f8ca
+  introduction: be4426542e93ca00
   when-to-use-allocate: 1d50aa591b796da4
-  example-set-priorities-for-an-annual-strategy-review: 3d36fe707ef3096e
-  set-up-the-poll: 66dc1bfd453738cf
-  vote: c40b33c04b9ab986
-  read-the-results: 4cb59102b453bf7c
-  share-an-outcome: 354b894bf60fae90
+  example-set-priorities-for-an-annual-strategy-review: 7aad902a2705d5b2
+  set-up-the-poll: 8ce9fb38439a7081
+  vote: 46dbc1eb57035bf7
+  read-the-results: bcaac12912179c71
+  share-an-outcome: eabe5e6446f7ae85
 title_source: c927a8a7c2ce230c
 title_generated: 9c3bf5d8125beddb
 needs_review:
@@ -31,7 +31,7 @@ needs_review:
 
 # Verdelen
 
-Verdelen, ook bekend als puntenverdeling, maakt prioriteiten zichtbaar wanneer er afwegingen nodig zijn. Elke deelnemer krijgt een vast aantal punten en verdeelt die over de opties. Meer punten voor de ene optie betekent minder punten voor de andere opties.
+Verdelen, ook bekend als puntenverdeling, maakt prioriteiten zichtbaar wanneer er afwegingen nodig zijn. Elke deelnemer krijgt een vast aantal punten om over de opties te verdelen. Meer punten voor de ene optie betekent minder punten voor de andere opties.
 
 <!-- translation-section: when-to-use-allocate -->
 
@@ -51,7 +51,7 @@ De punten geven de relatieve prioriteit aan, geen hoeveelheid die Loomio automat
 
 ## Voorbeeld: prioriteiten stellen voor een jaarlijkse strategie-evaluatie
 
-Oatmilk Cooperative plant de jaarlijkse strategie-evaluatie. De coöperatie vraagt leden welke gebieden tijdens de evaluatie de meeste tijd en aandacht moeten krijgen. Elk lid krijgt tien punten om over vijf gebieden te verdelen. Dit maakt de relatieve prioriteiten van de groep zichtbaar en vraagt deelnemers om afwegingen te maken.
+Oatmilk Cooperative plant de jaarlijkse strategie-evaluatie. De coöperatie vraagt leden welke gebieden de meeste tijd en aandacht moeten krijgen. Elk lid krijgt tien punten om over vijf gebieden te verdelen. Dit maakt de relatieve prioriteiten zichtbaar en vraagt om afwegingen.
 
 <!-- translation-section: set-up-the-poll -->
 
@@ -61,19 +61,17 @@ Beschrijf het besluit en wat de punten voorstellen. Voeg opties toe met een verg
 
 ![](form.png)
 
-Een heel groot puntenbudget kan schijnprecisie opleveren. Een bruikbaar puntenbudget is meestal groot genoeg om verschillen te laten zien, maar klein genoeg om keuzes te vereisen. Maak duidelijk of het acceptabel is om alle punten aan één optie te geven.
+Een heel groot puntenbudget kan schijnprecisie opleveren. Kies een puntenbudget dat groot genoeg is om verschillen te laten zien, maar klein genoeg om afwegingen te vereisen. Maak duidelijk of het acceptabel is om alle punten aan één optie te geven.
 
 <!-- translation-section: vote -->
 
 ## Stem
 
-Deelnemers verplaatsen de schuifregelaars om hun puntenbudget te verdelen. Loomio laat zien hoeveel punten er over zijn en voorkomt dat de stem wordt ingediend zolang de verdeling niet geldig is.
-
-Je hoeft niet alle punten te gebruiken.
+Deelnemers verplaatsen de schuifregelaars om hun punten te verdelen. Je hoeft niet alle punten te gebruiken.
 
 ![](voting.png)
 
-In dit voorbeeld geeft de kiezer elk drie punten aan **Ledenparticipatie** en **Financiële duurzaamheid**, elk twee aan **Milieu-impact** en **Personeelsontwikkeling**, en geen punten aan **Producten en diensten**. Een nul betekent niet noodzakelijk dat een gebied geen waarde heeft; het betekent dat de kiezer de beperkte punten elders heeft gebruikt.
+In dit voorbeeld geeft de kiezer elk drie punten aan **Ledenparticipatie** en **Financiële duurzaamheid**, elk twee aan **Milieu-impact** en **Personeelsontwikkeling**, en geen punten aan **Producten en diensten**. Nul punten voor een optie betekent niet noodzakelijk dat die geen waarde heeft; de kiezer heeft de beperkte punten mogelijk elders gebruikt.
 
 <!-- translation-section: read-the-results -->
 
@@ -88,14 +86,14 @@ In het resultaat staan de opties op volgorde van het totale aantal ontvangen pun
 
 ![](results.png)
 
-In dit voorbeeld krijgt **Financiële duurzaamheid** de meeste punten, gevolgd door **Personeelsontwikkeling**. Financiële duurzaamheid krijgt punten van elke kiezer. Dit wijst op brede overeenstemming dat dit gebied veel evaluatietijd nodig heeft. Bekijk de totalen naast het aantal kiezers om onderscheid te maken tussen breed gedragen prioriteiten en gebieden die sterke steun krijgen van minder mensen.
+In dit voorbeeld krijgt **Financiële duurzaamheid** de meeste punten, gevolgd door **Personeelsontwikkeling**. Elke kiezer gaf punten aan Financiële duurzaamheid. Dit laat zien dat er brede overeenstemming is dat dit gebied evaluatietijd nodig heeft.
 
-Bekijk de totalen samen met het aantal kiezers en hun redenen.
+Bekijk de puntentotalen samen met het aantal kiezers en de redenen voor hun stem om onderscheid te maken tussen breed gedragen prioriteiten en gebieden die sterke steun krijgen van minder mensen.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Deel een conclusie
 
-Deel een conclusie wanneer de peiling sluit. De peiling wijst niet automatisch tijd of geld toe, dus geef aan hoe het resultaat wordt gebruikt. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
+Deel een conclusie wanneer de peiling sluit. Omdat de peiling niet automatisch tijd of geld toewijst, leg je uit hoe het resultaat wordt gebruikt. Zie [Deel een conclusie](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) voor uitleg over hoe conclusies werken.
 
-![Een conclusie die vastlegt hoe de tijd voor de strategische evaluatie wordt verdeeld](outcome.png)
+![Een conclusie die vastlegt hoe de tijd voor de strategie-evaluatie wordt verdeeld](outcome.png)

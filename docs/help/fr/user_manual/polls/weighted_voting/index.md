@@ -1,51 +1,51 @@
 ---
 sections:
-  introduction: d1b37bf68148b2a5
-  set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: 1cc0b5130642217b
-  results: a0eeeda5a9e70a97
+  introduction: 566ce8dda668a638
+  set-members-vote-weights: 2a3d29ebb9840017
+  use-weighted-voting-in-a-poll: feddef738da4567d
+  results: ab86e178359702a0
 generated:
-  introduction: 587c38fe91f7144a
-  set-members-vote-weights: d9c73feec2ef38bc
-  use-weighted-voting-in-a-poll: 279003bc8e7e9b1e
+  introduction: 05c6976a2059a073
+  set-members-vote-weights: 9b5065b02a503136
+  use-weighted-voting-in-a-poll: 588bfc85678aa7b7
   results: bdc6665f1d799905
 title: Vote pondéré
 title_source: 0b971991dfcacbab
 title_generated: 2f371212e65b0c61
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
 
 # Vote pondéré
 
-Le vote pondéré permet à certains votes de compter davantage que d’autres. Chaque électeur a un poids du vote. Par exemple :
+Le vote pondéré permet à certains votes de compter davantage que d’autres en attribuant un poids du vote à chaque électeur. Par exemple :
 
 - Une communauté résidentielle attribue un vote à chaque propriété. Un membre qui représente trois propriétés a un poids du vote de `3`.
-- Une coopérative de travailleurs accorde le droit de vote après une période définie d’adhésion. Les membres plus récents reçoivent un poids du vote de `0`, ce qui leur permet de contribuer à la discussion et de découvrir le processus de vote sans que leurs votes influencent le résultat.
+- Une coopérative de travailleurs accorde le droit de vote après une période définie d’adhésion. Les membres plus récents reçoivent un poids du vote de `0`, ce qui leur permet de participer à la discussion et d’essayer de voter sans influencer le résultat.
 - Une entreprise attribue des votes aux actionnaires selon leur participation au capital. Une personne qui détient 12,5 % des actions a un poids du vote de `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->
 
 ## Définir les poids des votes des membres
 
-Un administrateur du groupe peut ouvrir la page **Membres** du groupe et sélectionner **Modifier les pondérations des votes**. Saisissez les poids des votes et sélectionnez **Sauvegarder les poids des votes**. Les poids des votes peuvent être égaux ou supérieurs à `0`, avec jusqu’à trois décimales. Recherchez une personne par son nom ou son adresse e-mail. Pour attribuer le même poids du vote à chaque membre, sélectionnez **Définir tous les poids de vote**.
+Un administrateur du groupe peut ouvrir la page **Membres** du groupe et sélectionner **Modifier les pondérations des votes**. Saisissez les poids des votes (`0` ou plus, avec jusqu’à trois décimales) et sélectionnez **Sauvegarder les poids des votes**. Vous pouvez rechercher une personne par son nom ou son adresse e-mail, ou sélectionner **Définir tous les poids de vote** pour attribuer le même poids du vote à chaque membre.
 
 ![Poids des votes des membres du groupe](member-weights.png)
 
-Le poids du vote d’un membre est copié dans chaque sondage auquel ce membre est ajouté. Le modifier par la suite ne change pas les sondages dans lesquels il a déjà été copié.
+Le poids du vote d’un membre est copié dans chaque sondage auquel ce membre est ajouté. Le modifier par la suite n’affecte pas les sondages existants.
 
 <!-- translation-section: use-weighted-voting-in-a-poll -->
 
 ## Utiliser le vote pondéré dans un sondage
 
-Ouvrez **Plus de paramètres** dans le formulaire du sondage et sélectionnez **Utiliser le vote pondéré**. Vous pouvez activer ou désactiver le vote pondéré après l’ouverture du vote. Le désactiver fixe tous les poids des votes du sondage à `1`, et les poids des votes que vous avez modifiés pour ce sondage sont perdus.
+Ouvrez **Plus de paramètres** dans le formulaire du sondage et sélectionnez **Utiliser le vote pondéré**. Vous pouvez activer ou désactiver le vote pondéré après l’ouverture du vote. Le désactiver réinitialise tous les poids des votes du sondage à `1`, et les poids des votes personnalisés pour ce sondage sont perdus.
 
-Si votre groupe utilise le vote pondéré dans le cadre d’un processus établi, sélectionnez **Utiliser le vote pondéré** dans un [modèle de sondage](/en/user_manual/polls/poll_templates). Les sondages créés à partir de ce modèle utilisent le vote pondéré.
+Si votre groupe utilise le vote pondéré dans le cadre d’un processus régulier, activez **Utiliser le vote pondéré** dans un [modèle de sondage](/en/user_manual/polls/poll_templates). Les sondages créés à partir de ce modèle utiliseront le vote pondéré par défaut.
 
 ![Le paramètre Utiliser le vote pondéré dans un sondage](poll-setting.png)
 

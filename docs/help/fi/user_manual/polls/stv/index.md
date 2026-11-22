@@ -1,18 +1,18 @@
 ---
 title: STV-vaalit
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 68b8b8feb6549c78
-  when-to-use-stv: 59b07f03d2112224
+  introduction: bc06642c6c0f3473
+  when-to-use-stv: 8214e8b0ce31bf99
   creating-an-stv-election: bb9f4fddb6f11622
-  number-of-seats: 57a64a8a633bd658
+  number-of-seats: bdd6aab84899e0fc
   counting-method: f2ce1d1650138002
-  quota-type: 203478e87fa93d24
-  how-voting-works: 2599ede84ef7f5b6
+  quota-type: e63140a9d1894713
+  how-voting-works: 7ae7b6b64628887f
   how-counting-works: 68feaac7e24776ca
   understanding-results: 8de9cde353ad71d3
   method-and-quota: 67344bd4b5a1542e
@@ -43,7 +43,7 @@ title_generated: 5db74b13bec93710
 
 # STV-vaalit
 
-**Siirtoäänivaali (STV)** on suhteellista edustusta tuottava äänestystapa, jolla valitaan useita voittajia ehdokkaiden joukosta. Se varmistaa, että valitut ehdokkaat edustavat suhteellisesti äänestäjien erilaisia näkemyksiä.
+**Siirtoäänivaali (STV)** on mieltymysjärjestykseen perustuva äänestystapa, jolla valitaan yksi tai useampi voittaja ehdokkaiden joukosta. Kun valitaan useita voittajia, se tuottaa suhteellisen edustuksen ja varmistaa, että valitut ehdokkaat edustavat äänestäjien erilaisia näkemyksiä. Kun valitaan yksi voittaja, se toimii siirtoäänimenettelynä, jossa vähiten ääniä saaneet ehdokkaat putoavat kierros kerrallaan.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -53,10 +53,10 @@ Käytä STV-vaaleja, kun haluat:
 
 - Valita **toimikunnan, hallituksen tai edustajajoukon** ehdokkaiden joukosta
 - Varmistaa **suhteellisen edustuksen**, jossa vähemmistöryhmät voivat saada paikkoja kannatuksensa suhteessa
-- Järjestää vaalit, joissa äänestäjät asettavat ehdokkaat mieltymysjärjestykseen
+- Valita **yhden voittajan** siirtoäänimenettelyllä, jossa vähiten ääniä saaneen vaihtoehdon äänet siirtyvät äänestäjien seuraaville valinnoille, kunnes jokin vaihtoehto saa enemmistön
 
 >[!NOTE]
->STV **ei** ole sama kuin Loomion [Järjestys-kysely](/en/user_manual/polls/rank/), joka käyttää yksinkertaisempaa pisteisiin perustuvaa järjestystä yhden parhaan vaihtoehdon valitsemiseen. STV-vaaleissa valitaan useita voittajia siirtämällä ääniä ja pudottamalla ehdokkaita eri kierroksilla.
+>STV **ei** ole sama kuin Loomion [Järjestys-kysely](/en/user_manual/polls/rank). Järjestys laskee kaikkien valintojen pisteet yhteen ja muodostaa niiden perusteella vaihtoehtojen mieltymysjärjestyksen. STV käyttää pudotuskierroksia ja äänten siirtoja, ja se sopii sekä yhden että usean voittajan vaaleihin.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -72,7 +72,7 @@ Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan pal
 
 ### Paikkojen määrä
 
-Kuinka monta voittajaa valitaan. Määrän on oltava pienempi kuin ehdokkaiden määrä.
+Kuinka monta voittajaa valitaan. Määrän on oltava vähintään 1 ja pienempi kuin ehdokkaiden määrä. Aseta määräksi 1, kun haluat valita yhden voittajan siirtoäänimenettelyllä.
 
 <!-- translation-section: counting-method -->
 
@@ -105,7 +105,7 @@ Molemmissa kaavoissa *votes* tarkoittaa niiden äänestyslippujen määrää, jo
 Meekin STV laskee kiintiön ilman pyöristystä. Droopin kiintiön kaava on votes ÷ (seats + 1). Menetelmä laskee kiintiön uudelleen jokaisella kierroksella ehdokkailla yhä olevien äänten perusteella, ja ehdokkaan on ylitettävä kiintiö tullakseen valituksi.
   
   >[!TIP]
-  > Droopin kiintiö on aina äänimäärältään pienempi kuin Haren kiintiö. Esimerkiksi vaaleissa, joissa on 100 ääntä ja neljä paikkaa, Droopin kiintiö olisi 21 ja Haren kiintiö 25.
+  > Droopin kiintiö on aina äänimäärältään pienempi kuin Haren kiintiö. Kun ääniä on 100 ja paikkoja neljä, Droopin kiintiö on 21 ja Haren kiintiö 25. Kun ääniä on 100 ja paikkoja yksi, Droopin kiintiö on 51 (enemmistö eli yli 50 %) ja Haren kiintiö 100, joten Droop on oikea valinta yhden voittajan vaaleihin.
 
 <!-- translation-section: how-voting-works -->
 
@@ -119,7 +119,9 @@ Tässä esimerkissä Oatmilk Cooperative valitsee kolme henkilöä valvomaan uud
 - **Järjestys 2** = toiseksi mieluisin ehdokas
 - Jatka asettamalla järjestykseen niin monta ehdokasta kuin haluat
 
-Äänestäjien on asetettava järjestykseen vähintään yksi ehdokas, mutta kaikkia ehdokkaita ei tarvitse järjestää. Järjestämättä jätetyt ehdokkaat eivät saa lainkaan kyseisen äänestäjän tukea.
+Äänestäjien on asetettava järjestykseen vähintään yksi ehdokas, mutta kaikkia ehdokkaita ei tarvitse järjestää. Paikkojen määrä ei rajoita sitä, kuinka monta ehdokasta äänestäjä voi asettaa järjestykseen: myös yhden voittajan vaaleissa äänestäjä voi asettaa seuraaviksi valinnoikseen vaikka kaikki muut ehdokkaat. Järjestämättä jätetyt ehdokkaat eivät saa lainkaan kyseisen äänestäjän tukea.
+
+STV-kyselyissä ei ole valmista Pidättäydyn-vaihtoehtoa. Jäsenet, jotka haluavat pidättäytyä, voivat jättää äänensä antamatta. Vältä lisäämästä ehdokasvaihtoehtoa ”Pidättäydyn”, ellei pidättäytymisiä tarvitse kirjata äänestyslipuille, sillä Loomio laskee sen kuten minkä tahansa muun ehdokkaan: sen järjestykseen asettavat äänestysliput lasketaan mukaan kiintiöön, ja jos riittävän moni äänestäjä asettaa sen ensimmäiseksi, se voi pysyä mukana muita vaihtoehtoja pidempään tai voittaa ne.
 
 <!-- translation-section: how-counting-works -->
 

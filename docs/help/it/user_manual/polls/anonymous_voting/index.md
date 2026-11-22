@@ -1,46 +1,46 @@
 ---
 title: Voto anonimo
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/anonymous_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 2b9b7da01da020b3
-  how-anonymous-voting-protects-voters: f2be8477636489af
-  while-voting-is-open: 60b564978d2a7a71
-  votes-cannot-be-changed: f4353c89bbffe7aa
-  why-anonymous-votes-do-not-have-reasons: 39c1a8362550ae40
-  results-and-exports: eb2429afd442dad2
-  participation-verification: 75edf02a6a2324a3
-  reminders: 0afad473c90f2f03
-  what-coordinators-and-administrators-can-see: 3d4dc15b28587de4
-  limits-of-anonymous-voting: 912141560342d073
+  introduction: ffcecd2f4297c47d
+  how-anonymous-voting-protects-voters: 3b757a1b4a7bda96
+  while-voting-is-open: aafc698ee8108194
+  votes-cannot-be-changed: 3a99e6c3f48e10ee
+  why-anonymous-votes-do-not-have-reasons: 4027d6c1fbf4d29c
+  results-and-exports: 5c10ab43a5f890b4
+  participation-verification: e77ece0fc0d6cd73
+  reminders: f711a180ae7c948f
+  what-coordinators-and-administrators-can-see: d873cd48677fc324
+  limits-of-anonymous-voting: 9ab54b74a4716e19
   questions: 60cc6f1a0163ec5d
-  can-a-coordinator-see-how-i-voted: 574fc18f3a9871c3
-  can-i-see-my-vote-after-submitting-it: c558e29729aed45f
-  can-i-change-or-withdraw-my-vote: dd1a385fa8d225a5
-  will-i-receive-an-email-confirming-my-vote: 8616fc9a0b9809ac
-  does-a-public-poll-reveal-more-information: 27acfa7744a0790d
-  is-anonymous-voting-suitable-for-every-election: d1b723178449c0da
+  can-a-coordinator-see-how-i-voted: bfa1baf48f41cdd1
+  can-i-see-my-vote-after-submitting-it: 435010e0c2ecf488
+  can-i-change-or-withdraw-my-vote: 676d5401bf4d73cc
+  will-i-receive-an-email-confirming-my-vote: 9660f10e8ffb9f9c
+  does-a-public-poll-reveal-more-information: '087defb00bb8b99f'
+  is-anonymous-voting-suitable-for-every-election: 9fae56c0661f0ec9
 generated:
-  introduction: e46fc8d2f0abd936
-  how-anonymous-voting-protects-voters: 5fa366a01b25311c
-  while-voting-is-open: f7e4cfd16c885656
-  votes-cannot-be-changed: 20e8b29342ec3a9d
-  why-anonymous-votes-do-not-have-reasons: fe912eb9eb87aad1
-  results-and-exports: eed9e119bd424a76
-  participation-verification: 6d4dc6171b944df7
-  reminders: 3568d0256b22e857
-  what-coordinators-and-administrators-can-see: 700fe505f4ef9260
-  limits-of-anonymous-voting: 9947cc8cc24920a1
+  introduction: f43c3ca84ef703cf
+  how-anonymous-voting-protects-voters: 513927d9d0de5e53
+  while-voting-is-open: 58ff031faba65ec6
+  votes-cannot-be-changed: f5b192b57a95c5b8
+  why-anonymous-votes-do-not-have-reasons: 42552fae3e49278a
+  results-and-exports: 537355be5100b957
+  participation-verification: 136638ef97d495c2
+  reminders: 436d497a4b8072dc
+  what-coordinators-and-administrators-can-see: 4c230fdfefbef1bb
+  limits-of-anonymous-voting: a840cc3e7d335490
   questions: 5e4bf1632f15b07f
-  can-a-coordinator-see-how-i-voted: faa5d8392a9822f4
-  can-i-see-my-vote-after-submitting-it: 3902f8879d724d6a
-  can-i-change-or-withdraw-my-vote: be3dbd061181d219
-  will-i-receive-an-email-confirming-my-vote: 10684e339f5e59e6
+  can-a-coordinator-see-how-i-voted: f4acf289a1d0d3e5
+  can-i-see-my-vote-after-submitting-it: d678b89b27885df5
+  can-i-change-or-withdraw-my-vote: 4d0e0e022ccfc04a
+  will-i-receive-an-email-confirming-my-vote: c4f5ad47d348f6df
   does-a-public-poll-reveal-more-information: db8d01c3127680d6
-  is-anonymous-voting-suitable-for-every-election: 7bed33f67a82e4b2
+  is-anonymous-voting-suitable-for-every-election: 4c1ee81d333b67fe
 title_source: 1bc4567506ad4d51
 title_generated: 5749c9ba228fdb8a
 ---
@@ -49,9 +49,9 @@ title_generated: 5749c9ba228fdb8a
 
 # Voto anonimo
 
-Il voto anonimo, noto anche come voto alla cieca, separa i dati su chi ha votato dai voti stessi. Dopo la chiusura del sondaggio, chiunque possa vedere i risultati può vedere chi ha partecipato. Nessuno che usa Loomio può collegare un voto inviato alla persona che lo ha inviato.
+Il voto anonimo, noto anche come voto alla cieca, separa i dati su chi ha votato dai voti stessi. Dopo la chiusura del sondaggio, chiunque possa vedere i risultati può vedere chi ha partecipato, ma nessuno che usa Loomio può collegare un voto alla persona che lo ha espresso.
 
-Questa pagina spiega le protezioni offerte dal voto anonimo, le informazioni conservate e i limiti della garanzia.
+Questa pagina spiega come funziona il voto anonimo, quali informazioni vengono conservate e i limiti di questa protezione.
 
 <!-- translation-section: how-anonymous-voting-protects-voters -->
 
@@ -66,25 +66,25 @@ Un sondaggio anonimo conserva due insiemi separati di dati:
 | Se ogni persona avente diritto ha votato | Nessun nome o account utente |
 | Nessuna opzione o punteggio selezionato | Nessun collegamento ai dati di partecipazione |
 
-Non esiste un identificatore condiviso che colleghi questi dati. I voti inviati non includono neppure l'ora effettiva di invio, le informazioni sugli inviti, i motivi scritti, gli allegati e altri metadati che potrebbero aiutare a identificare un elettore.
+Nessun identificatore condiviso collega questi dati. I voti inviati non includono neppure gli orari di invio, i dettagli degli inviti, i motivi dei voti, gli allegati e altri metadati che potrebbero identificare un elettore.
 
-Questa separazione viene applicata quando il voto viene memorizzato. Non dipende soltanto dal nascondere i nomi nell'interfaccia.
+Questa separazione avviene quando il voto viene salvato e non si basa soltanto sul nascondere i nomi nell'interfaccia.
 
 <!-- translation-section: while-voting-is-open -->
 
 ## Mentre il sondaggio è aperto
 
-I risultati rimangono nascosti a tutti fino alla chiusura del sondaggio. Questo vale anche per gli amministratori della conversazione, gli amministratori del gruppo e gli amministratori dell'istanza che usano l'applicazione.
+I risultati rimangono nascosti a tutti fino alla chiusura del sondaggio, compresi gli amministratori della conversazione, gli amministratori del gruppo e gli amministratori dell'istanza.
 
 Quando qualcuno vota:
 
-- il voto inviato viene memorizzato senza il suo nome o i suoi dati di partecipazione;
+- il suo voto viene memorizzato senza il suo nome o i suoi dati di partecipazione;
 - i suoi dati di partecipazione vengono aggiornati per indicare che ha votato;
 - non viene creato alcun evento di voto, notifica, email, commento o voce di attività;
-- dopo l'invio non viene restituita alcuna copia delle sue selezioni; e
-- l'interfaccia conferma soltanto che il suo voto è stato registrato.
+- dopo l'invio non viene restituita alcuna copia delle sue scelte; e
+- lo schermo conferma soltanto che il suo voto è stato registrato.
 
-I dati di partecipazione non conservano l'ora precisa in cui la persona ha votato. I voti inviati non sono ordinati in base all'ora di invio.
+I dati di partecipazione non conservano l'ora precisa in cui una persona ha votato e i voti inviati non sono ordinati in base all'ora di invio.
 
 <!-- translation-section: votes-cannot-be-changed -->
 
@@ -92,25 +92,25 @@ I dati di partecipazione non conservano l'ora precisa in cui la persona ha votat
 
 Ogni persona avente diritto può votare una sola volta. Un voto anonimo inviato non può essere consultato, modificato, ritirato o sostituito, nemmeno da un amministratore.
 
-Consentire a una persona di recuperare o sostituire il proprio voto richiederebbe un collegamento persistente tra quella persona e il voto. Il voto anonimo non crea questo collegamento per scelta.
+Consentire a una persona di recuperare o sostituire il proprio voto richiederebbe un collegamento tra quella persona e il voto, che il voto anonimo evita intenzionalmente.
 
-Controlla attentamente le tue selezioni prima di inviare il voto.
+Controlla attentamente le tue scelte prima di inviare il voto.
 
 <!-- translation-section: why-anonymous-votes-do-not-have-reasons -->
 
 ## Perché i voti anonimi non hanno motivi
 
-I nuovi voti anonimi non possono includere un motivo scritto o un allegato. I motivi possono contenere nomi, dettagli personali, caratteristiche dello stile di scrittura, menzioni o altre informazioni che identificano l'elettore. Renderebbero inoltre più facile distinguere i singoli voti dal risultato aggregato.
+I voti anonimi non possono includere un motivo del voto o un allegato. I motivi possono contenere nomi, dettagli personali, caratteristiche dello stile di scrittura o menzioni che identificano l'elettore e potrebbero rendere più facile distinguere i singoli voti nei risultati.
 
-I partecipanti possono comunque discutere del sondaggio nella sua conversazione, dove è disponibile la discussione. Questi commenti sono normali contributi alla discussione con il nome dell'autore e non sono collegati a un voto anonimo.
+I partecipanti possono comunque discutere del sondaggio nella sua conversazione. Questi commenti sono normali contributi con il nome dell'autore e non sono collegati a un voto anonimo.
 
 <!-- translation-section: results-and-exports -->
 
 ## Risultati ed esportazioni
 
-Dopo la chiusura del sondaggio, i risultati vengono calcolati a partire dai voti separati dai dati di partecipazione e mostrati come totali e altri risultati aggregati supportati dal tipo di sondaggio.
+Dopo la chiusura del sondaggio, Loomio calcola i risultati a partire dai voti separati dai dati di partecipazione e mostra i totali per quel tipo di sondaggio.
 
-L'applicazione non pubblica gli identificatori dei voti, l'ordine di invio o gli orari di invio. Le esportazioni dei sondaggi contengono risultati aggregati anziché una riga per ogni voto anonimo, con un'eccezione: un'elezione STV chiusa può essere esportata in formato BLT. Un'esportazione BLT contiene gli ordini di preferenza dei candidati necessari per ricontare i voti dell'elezione, raggruppati quando più schede hanno lo stesso ordine di preferenza, senza le identità degli elettori o i metadati delle schede.
+Loomio non pubblica gli identificatori dei voti, l'ordine di invio o gli orari di invio. Le esportazioni dei sondaggi contengono soltanto risultati aggregati anziché una riga per ogni voto. L'unica eccezione è un'elezione STV chiusa, che può essere esportata in formato BLT per ricontare i voti. Un'esportazione BLT elenca gli ordini di preferenza dei candidati (raggruppati quando più schede coincidono), senza le identità degli elettori o i metadati delle schede.
 
 Un sondaggio anonimo non può essere riaperto dopo la chiusura.
 
@@ -120,13 +120,13 @@ Un sondaggio anonimo non può essere riaperto dopo la chiusura.
 
 Dopo la chiusura di un sondaggio anonimo, chiunque possa vedere i suoi risultati può vedere chi ha partecipato. Nessuno può vedere questa informazione mentre il sondaggio è aperto.
 
-Seleziona **Visualizza i voti** per vedere l'elenco. Mostra sempre chi aveva diritto di voto. Mostra se ogni persona ha votato soltanto se hanno votato abbastanza persone. La soglia corrisponde al quorum del sondaggio, se previsto, altrimenti alla metà degli elettori aventi diritto, e non è mai inferiore a tre voti. L'elenco non mostra mai come o quando ha votato una persona.
+Seleziona **Visualizza i voti** per vedere l'elenco. Mostra sempre chi aveva diritto di voto e non mostra mai come o quando ha votato una persona. L'informazione che indica se ogni persona ha votato appare soltanto se hanno partecipato abbastanza persone: almeno il quorum del sondaggio (se impostato), altrimenti almeno la metà degli elettori aventi diritto, e in ogni caso almeno tre voti.
 
 I membri del gruppo e gli elettori del sondaggio vedono anche quando ogni persona è entrata nel gruppo e chi l'ha invitata. Gli amministratori del gruppo vedono anche gli indirizzi email, per distinguere le persone con lo stesso nome.
 
 Poiché chiunque possa vedere i risultati può vedere chi ha votato, un risultato in cui tutti i voti sono per la stessa opzione può rivelare come hanno votato le persone. Per esempio, se ogni voto è Accordo, tutte le persone che hanno votato erano d'accordo.
 
-Gli amministratori possono aggiungere persone aventi diritto mentre il sondaggio è aperto, anche dopo che altre persone hanno votato. Gli elettori già presenti non possono essere rimossi da un sondaggio anonimo.
+Gli amministratori possono aggiungere elettori aventi diritto mentre il sondaggio è aperto, anche dopo che altre persone hanno votato. Gli elettori già presenti non possono essere rimossi da un sondaggio anonimo.
 
 <!-- translation-section: reminders -->
 
@@ -134,9 +134,9 @@ Gli amministratori possono aggiungere persone aventi diritto mentre il sondaggio
 
 Per un sondaggio anonimo che dura almeno 24 ore, le persone aventi diritto che non hanno votato ricevono un promemoria automatico durante le ultime 24 ore.
 
-I destinatari del promemoria vengono selezionati soltanto in base ai dati di partecipazione. Il sistema non esamina i voti inviati e non crea un collegamento con essi. Se la scadenza cambia, il controllo orario dei promemoria usa la scadenza attuale senza conservare un promemoria programmato separato per il sondaggio.
+Loomio seleziona i destinatari soltanto in base ai dati di partecipazione, senza controllare i voti inviati.
 
-I sondaggi con un periodo di voto complessivo inferiore a 24 ore non inviano questo promemoria automatico.
+I sondaggi con un periodo di voto inferiore a 24 ore non inviano questo promemoria automatico.
 
 <!-- translation-section: what-coordinators-and-administrators-can-see -->
 
@@ -145,25 +145,25 @@ I sondaggi con un periodo di voto complessivo inferiore a 24 ore non inviano que
 Tramite l'applicazione, un amministratore della conversazione, un amministratore del gruppo o un amministratore dell'istanza può vedere, se autorizzato:
 
 - il sondaggio e i suoi elettori aventi diritto;
-- se ogni persona avente diritto ha votato, quando il suo ruolo consente l'accesso e hanno votato abbastanza persone; e
+- se ogni persona avente diritto ha votato (quando il suo ruolo consente l'accesso e hanno votato abbastanza persone); e
 - i risultati aggregati dopo la chiusura del sondaggio.
 
-Non può usare le funzioni dell'applicazione per vedere:
+Non può usare l'applicazione per vedere:
 
-- quali selezioni appartengono a una persona;
+- quali scelte appartengono a una persona;
 - i singoli voti o gli schemi di voto;
-- quando è stato inviato un determinato voto; o
-- un motivo, un allegato, un evento o una notifica associati a un voto inviato.
+- quando è stato inviato un voto; o
+- un motivo del voto, un allegato, un evento o una notifica collegati a un voto.
 
 <!-- translation-section: limits-of-anonymous-voting -->
 
 ## Limiti del voto anonimo
 
-Queste protezioni impediscono agli utenti dell'applicazione di collegare un voto inviato al suo elettore. Non costituiscono una protezione crittografica contro un operatore che può esaminare il database, i backup, i log del server, la memoria dei processi, il traffico di rete o una versione modificata dell'applicazione.
+Il voto anonimo impedisce agli utenti di Loomio di collegare un voto a un elettore. Non costituisce una protezione crittografica contro un operatore del server che può esaminare il database, i backup, i log del server, la memoria dei processi, il traffico di rete o il codice modificato.
 
-Anche il risultato stesso può rivelare informazioni. Un elettorato ristretto, un risultato unanime, una combinazione particolare di selezioni o informazioni condivise al di fuori del sondaggio possono rendere più facile dedurre le scelte di una persona. Gli elettori possono anche scegliere di identificarsi nella discussione, al di fuori del voto inviato.
+Anche i risultati stessi possono fornire indizi. Un gruppo piccolo, un voto unanime, una combinazione unica di scelte o commenti condivisi al di fuori del sondaggio possono rendere più facile dedurre il voto di una persona.
 
-Considera le dimensioni dell'elettorato e la delicatezza della decisione quando valuti se il voto anonimo a livello di applicazione è adatto.
+Considera le dimensioni del gruppo e la delicatezza della decisione prima di affidarti al voto anonimo a livello di applicazione.
 
 <!-- translation-section: questions -->
 
@@ -173,25 +173,25 @@ Considera le dimensioni dell'elettorato e la delicatezza della decisione quando 
 
 ### Qualcuno può vedere come ho votato?
 
-No. Una volta che hanno votato abbastanza persone, chi può vedere i risultati può vedere se hai votato. Nessuno può collegarti a un voto inviato tramite l'applicazione. Fino ad allora, l'informazione che indica se hai votato rimane nascosta.
+No. Nessuno che usa Loomio può collegarti al tuo voto. Una volta che hanno votato abbastanza persone, chiunque possa vedere i risultati può vedere se hai partecipato. Prima che venga raggiunta quella soglia, anche l'informazione che indica se hai votato rimane nascosta.
 
 <!-- translation-section: can-i-see-my-vote-after-submitting-it -->
 
 ### Posso vedere il mio voto dopo averlo inviato?
 
-No. L'applicazione conferma che il tuo voto è stato registrato, poi elimina le scelte dall'interfaccia di voto. Non può recuperare il tuo voto senza creare il collegamento che il voto anonimo è progettato per evitare.
+No. Loomio conferma che il tuo voto è stato registrato e cancella le tue selezioni dallo schermo. Non può recuperare il tuo voto senza creare il collegamento che il voto anonimo evita.
 
 <!-- translation-section: can-i-change-or-withdraw-my-vote -->
 
 ### Posso modificare o ritirare il mio voto?
 
-No. Non esiste un collegamento che permetta all'applicazione di identificare quale voto inviato modificare o rimuovere.
+No. Poiché non esiste un collegamento tra te e il tuo voto, Loomio non può identificare quale voto modificare o rimuovere.
 
 <!-- translation-section: will-i-receive-an-email-confirming-my-vote -->
 
 ### Riceverò un'email di conferma del mio voto?
 
-No. Quando voti, l'applicazione mostra solo una conferma sullo schermo e aggiorna il tuo registro di partecipazione. Non invia un'email di conferma e non crea una notifica o un evento di attività.
+No. Quando voti, l'applicazione mostra solo una conferma sullo schermo e aggiorna il tuo registro di partecipazione. Non invia un'email e non crea una notifica o una voce nel registro delle attività.
 
 <!-- translation-section: does-a-public-poll-reveal-more-information -->
 
@@ -203,4 +203,4 @@ Dopo la chiusura di un sondaggio pubblico, chiunque può vedere i risultati e ch
 
 ### Il voto anonimo è adatto a ogni elezione?
 
-No. Separa le identità dai voti a livello di applicazione. Le decisioni che richiedono protezione dagli operatori del sistema o elezioni crittografiche verificabili in modo indipendente hanno bisogno di un sistema progettato per questi requisiti.
+No. Separa gli elettori dai voti a livello di applicazione. Le elezioni che richiedono protezione dagli operatori del server o una verifica crittografica indipendente hanno bisogno di un sistema progettato per questi requisiti.

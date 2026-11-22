@@ -1,37 +1,37 @@
 ---
 title: Modelli di sondaggio
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 01d6fe334146a8de
+  introduction: d4d23f1adb159619
   who-can-manage-templates: 0cdd889436df0e8b
   create-a-poll-template: 7ae714a8da3ec346
   template-title-subtitle-and-help: 6aeb7ead94a4e606
-  voting-method: 61aee545a727e7ba
+  voting-method: 74a5de19e7ab4900
   example-title-details-and-tags: 6dd2e2c3fc8b3fb1
-  response-options: 35fa9dcc69d39731
-  duration-and-settings: 3f32743d0a74cff4
-  manage-the-template-list: 64597c751858b1d3
+  response-options: 20d4743edb8fa177
+  duration-and-settings: b9d6d1551497e53b
+  manage-the-template-list: 025faa77d8baa123
   save-a-poll-as-a-template: de64c8c664a56966
   start-a-new-template: 87cf012ae10f52a8
-  configure-the-template: 84e180e6ab630b72
+  configure-the-template: 812cde586d2af82c
   edit-a-default-template: 652bc17758f47410
 title_source: 114cca246e357304
 title_generated: ea088d8e86a3eb3c
@@ -45,9 +45,9 @@ I modelli di sondaggio sono punti di partenza riutilizzabili mostrati quando qua
 
 Usa questa pagina per configurare quali modelli sono disponibili per un gruppo o per crearne uno per il tuo processo. Per scegliere un modello per una votazione specifica, consulta [Proposte](../proposals/) o [Sondaggi](../proposal_types/). Per facilitare un intero processo decisionale, consulta [Prendere decisioni](/en/guides/making_decisions/).
 
-Quando avvii una votazione, seleziona la scheda **Proposta** o **Sondaggio** e scegli uno dei modelli disponibili per il gruppo.
+Quando avvii una votazione, seleziona la scheda **Proposta** o **Sondaggio** e scegli un modello disponibile per il gruppo.
 
-Il modello fornisce un'introduzione, contenuti di esempio, opzioni e impostazioni. Controllali e modificali in base alla decisione specifica prima di avviare la votazione. Modificare la nuova votazione non cambia il modello riutilizzabile.
+Il modello inserisce un'introduzione, contenuti di esempio, opzioni e impostazioni. Controllali e modificali in base alla tua decisione prima di avviare la votazione. Modificare una nuova votazione non cambia il modello.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -83,11 +83,11 @@ Per adattare un modello predefinito come **Consenso**, apri il suo menu delle az
 
 ## Impostazioni del modello
 
-Assegna al modello un nome e un sottotitolo che descrivano quando usarlo. Puoi modificare qualsiasi altro campo per renderlo più adatto al riutilizzo. Dopo aver selezionato **Salva modello**, il modello apparirà nell'elenco quando le persone avviano una nuova proposta o un nuovo sondaggio.
+Assegna al modello un nome e un sottotitolo che descrivano quando usarlo. Modifica gli altri campi per rendere il modello pronto al riutilizzo, poi seleziona **Salva modello**. Il modello apparirà quando le persone avviano una nuova proposta o un nuovo sondaggio.
 
 [![Il modulo completo del modello Processo di consenso per una modifica al regolamento](poll_template_new.png)](poll_template_new.png)
 
-Per i sondaggi autonomi, **Solo gli amministratori possono aggiungere allegati** consente solo agli amministratori della conversazione e agli amministratori del gruppo di aggiungere nuovi file e immagini incorporate, anche nelle risposte al sondaggio e nelle repliche. I sondaggi avviati all'interno di una conversazione esistente seguono l'impostazione degli allegati di quella conversazione. La modifica del modello influisce solo sui sondaggi futuri.
+Per i sondaggi autonomi, **Solo gli amministratori possono aggiungere allegati** consente solo agli amministratori della conversazione e agli amministratori del gruppo di aggiungere nuovi file e immagini incorporate, anche nelle risposte al sondaggio e nelle repliche. I sondaggi all'interno di una conversazione esistente seguono l'impostazione degli allegati di quella conversazione. La modifica di un modello influisce solo sui sondaggi futuri.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -99,7 +99,7 @@ Usa il titolo e il sottotitolo per spiegare quando scegliere il modello. Inseris
 
 ### Metodo di voto
 
-Scegli cosa devono esprimere i partecipanti e come deve essere calcolato il risultato.
+Scegli cosa devono esprimere i partecipanti e come deve essere calcolato il risultato:
 
 - **Proposta**: rispondere a un'affermazione usando posizioni definite;
 - **Scegliere**: selezionare una o più opzioni;
@@ -126,7 +126,7 @@ Metodi come Proposta e Scelta ti permettono di configurare le opzioni di rispost
 - **Nome dell'opzione**: il testo breve della risposta;
 - **Icona**: il suo simbolo visivo;
 - **Senso**: cosa comunica la scelta dell'opzione; e
-- **Richiesta di motivazione**: la domanda mostrata quando qualcuno spiega la propria risposta.
+- **Richiesta di motivazione**: la domanda mostrata quando qualcuno spiega il proprio voto.
 
 ![](poll_type_edit_option.png)
 
@@ -138,7 +138,7 @@ Definisci le opzioni in modo che i partecipanti possano distinguerle senza dover
 
 Imposta una durata predefinita adatta alla maggior parte degli utilizzi del modello. Chi crea la votazione può modificarne l'orario di chiusura.
 
-Altre impostazioni predefinite possono controllare la visibilità dei risultati, il voto anonimo, il [voto ponderato](../weighted_voting/), l'obbligo di fornire un motivo per il voto, i promemoria, il quorum e il comportamento specifico del metodo. Consulta [Impostazioni di proposte e sondaggi](../settings/) per conoscerne gli effetti.
+Altre impostazioni predefinite controllano la visibilità dei risultati, il voto anonimo, il [voto ponderato](../weighted_voting/), l'obbligo di fornire un motivo per il voto, i promemoria, il quorum e il comportamento specifico del metodo. Consulta [Impostazioni di proposte e sondaggi](../settings/) per i dettagli.
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -153,7 +153,7 @@ Usa il menu delle azioni accanto a un modello per:
 
 ![L'elenco dei modelli del gruppo con il menu delle azioni del modello Processo di consenso per una modifica al regolamento aperto](template_manage.png)
 
-Seleziona **Mostra modelli nascosti** per controllare o ripristinare i modelli nascosti. I modelli predefiniti possono essere nascosti o adattati al gruppo, ma non possono essere eliminati.
+Seleziona **Mostra modelli nascosti** per controllare o ripristinare i modelli nascosti. Puoi nascondere o adattare i modelli predefiniti per il tuo gruppo, ma non puoi eliminarli.
 
 Modificare un modello non cambia le proposte o i sondaggi già avviati a partire da quel modello.
 

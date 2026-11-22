@@ -1,56 +1,56 @@
 ---
 title: Einstellungen
-source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-04'
+  'on': '2026-11-22'
 sections:
-  introduction: 145c23b2412eff98
+  introduction: 4dfc411e9ec40783
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 59bad3e1e0c4605e
-  add-content: ec0c0742f6465e9c
-  voting-options: d0ea31745ce8b651
-  edit-voting-options: ef0d61585b34fbd6
-  opening-time: f8544bec7cd35ca5
-  more-settings: fd837a51b81cbc13
-  reminder: c11a5bdd82cd3b84
-  anonymous-voting: 35f5392ee8870076
-  vote-reason: b1ebf2700ce8248b
-  hide-results: 6dc7bf0b34c89a68
+  proposal-and-poll-templates: 822e5f4ed69852ee
+  add-content: 6811509f271e7050
+  voting-options: 28968995d558db8f
+  edit-voting-options: 692bc37a97a0eea6
+  opening-time: e9a9ca1825565db3
+  more-settings: 6a7cd5bb6e0a9271
+  reminder: 673e6181f026afe0
+  anonymous-voting: 70e89af6ff170bc8
+  vote-reason: 8f5d05ee4f950079
+  hide-results: a59502626d4b75c6
   managing-polls: b26fc41e19371d54
-  edit-poll: ddf392426410ec5a
+  edit-poll: d544d21f39ce060f
   notification-history: f132def867659f30
-  export-poll: 3c015ed01e8e7a6a
-  print: dbe152fdea17fc00
-  delete: fa13f1461f6b4e5f
-  save-bookmark: 45a250076a3fd7e1
-  save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 4e0c2bd8db67a4d8
-  editing-settings-before-voting-opens: 9d1f5122db7998a3
+  export-poll: d94d6cba846d9b25
+  print: 8caef79f1356f7c4
+  delete: 10850ca0cae15f77
+  save-bookmark: 5415dd146c0190c1
+  save-as-template: 2ddaebfb13ea40e4
+  who-can-vote: c9cb72fec8cea6aa
+  editing-settings-before-voting-opens: a3e52c6542c3eb4c
 generated:
-  introduction: e46bdc13155d0c1d
+  introduction: d19c704e7908b1e7
   setting-up-a-proposal-or-poll: 5d0a4490518b7ba9
-  proposal-and-poll-templates: 1e09eea9d5e73b82
-  add-content: c41caf1218790cf6
-  voting-options: 0ac7e1fbaf3e6854
-  edit-voting-options: 634ce969f2de0e5f
-  opening-time: 87a695a2acaa1d46
-  more-settings: 1dad0763dce25b73
-  reminder: 1e1697411da53f12
-  anonymous-voting: 7194aee66b512f52
-  vote-reason: 8818e6d77a621800
-  hide-results: 3d2afecb82c5d08f
+  proposal-and-poll-templates: c7667af228a32388
+  add-content: de8fb8c5c1fb1638
+  voting-options: 3b97c71907ab4ebe
+  edit-voting-options: 187786e73df9f331
+  opening-time: fba311e281d66c67
+  more-settings: a03be2ae1b32c182
+  reminder: bb9535cc27e10e22
+  anonymous-voting: c7df3b32716078d9
+  vote-reason: 8f369029cb80ef35
+  hide-results: 90e749fe8b1f779e
   managing-polls: 84f389087c488b72
-  edit-poll: e1e0163b373527b3
+  edit-poll: 24ce6e403120e5b6
   notification-history: 513cf22429d52f3a
-  export-poll: cdf2cb08b5d00d1d
-  print: a39a32fabe45b294
-  delete: 52319f083b275280
+  export-poll: 704b091f0772c069
+  print: b28bec507c2bcd8e
+  delete: 87234a0defdf1e00
   save-bookmark: e5fe80c710dcb4bb
-  save-as-template: d7070fb687ff4d39
-  who-can-vote: fb0cb6525823791c
-  editing-settings-before-voting-opens: 60ccffbb1543b247
+  save-as-template: ae58e0c0f69a622b
+  who-can-vote: a348ad8e82761b45
+  editing-settings-before-voting-opens: 230ef5d0fb08da39
 title_source: 74a883a037bc227f
 title_generated: f5750a5d7231e1f7
 ---
@@ -58,6 +58,8 @@ title_generated: f5750a5d7231e1f7
 <!-- translation-section: introduction -->
 
 # Einstellungen für Vorschläge und Abstimmungen
+
+Lege fest, wie ein Vorschlag oder eine Abstimmung funktioniert, wer abstimmen darf und wie das Ergebnis angezeigt wird. Die meisten Einstellungen stehen dir beim Erstellen oder Bearbeiten einer Abstimmung zur Verfügung.
 
 <!-- translation-section: setting-up-a-proposal-or-poll -->
 
@@ -67,7 +69,7 @@ title_generated: f5750a5d7231e1f7
 
 ### Vorlagen für Vorschläge und Abstimmungen
 
-Wähle die Vorlage für den Vorschlag aus, die du verwenden möchtest.
+Wähle die Vorlage für den Vorschlag oder die Abstimmung aus, die du verwenden möchtest.
 
 ![](proposal_templates.png)
 
@@ -79,47 +81,35 @@ Wähle die Vorlage für den Vorschlag aus, die du verwenden möchtest.
 
 ### Titel und Details
 
-**Gruppe:** Prüfe, ob die richtige Gruppe für deinen Vorschlag oder deine Abstimmung ausgewählt ist.
+- **Gruppe:** Prüfe, ob die richtige Gruppe für deinen Vorschlag oder deine Abstimmung ausgewählt ist.
+- **Titel:** Gib deinem Vorschlag oder deiner Abstimmung einen kurzen, klaren Titel.
+- **Details:** Erkläre, worüber die Teilnehmenden entscheiden sollen und was passiert, wenn der Vorschlag angenommen wird.
 
-**Titel:** Gib deinem Vorschlag oder deiner Abstimmung einen kurzen, passenden Titel.
-
-**Details:** Erkläre, was du von den Teilnehmenden möchtest, und füge genügend Details hinzu, damit alle wissen, was ihre Stimme bedeutet.
-
-Die vordefinierten Vorlagen enthalten Anregungen, die dir helfen, einen guten Vorschlag zu formulieren. Nutze sie oder füge eigene Details hinzu.
-
-Wenn du einen Vorschlag machst, benenne deine Erwartungen und beschreibe, welche Auswirkungen seine Annahme hätte.
-
-Du kannst Dateien anhängen, Bilder und Tabellen einfügen und mit den [Formatierungsschaltflächen](/en/user_manual/discussions/formatting) Überschriften und Listen hinzufügen. So kannst du ergänzende Informationen teilen und längere Vorschläge leichter lesbar machen.
+Vorlagen enthalten Anregungen, die du verwenden oder ersetzen kannst. Du kannst Dateien anhängen, Bilder und Tabellen einfügen und mit den [Formatierungsschaltflächen](/en/user_manual/discussions/formatting) Überschriften und Listen hinzufügen, um ergänzende Informationen zu teilen und längere Vorschläge leichter lesbar zu machen.
 
 <!-- translation-section: voting-options -->
 
 ### Abstimmungsoptionen
 
-Jede Vorlage für Vorschläge und Abstimmungen enthält Optionen zum Abstimmen.
+Jede Vorlage enthält voreingestellte Abstimmungsoptionen. Je nach Vorlage kannst du Optionen bearbeiten, entfernen, neu anordnen oder hinzufügen, um sie an dein Entscheidungsverfahren anzupassen:
 
-Je nach Vorlage kannst du Abstimmungsoptionen bearbeiten, entfernen, neu anordnen oder hinzufügen, um sie an dein Entscheidungsverfahren anzupassen.
-
-- Nutze das Stiftsymbol, um eine Abstimmungsoption zu bearbeiten
-- Nutze das Papierkorbsymbol, um unerwünschte Abstimmungsoptionen zu entfernen
-- Nutze den Griff, um die Reihenfolge der Abstimmungsoptionen zu ändern
-- Füge über **Option hinzufügen** Abstimmungsoptionen hinzu, wenn die Vorlage eigene Optionen erlaubt
+- Wähle das Stiftsymbol, um eine Abstimmungsoption zu bearbeiten.
+- Wähle das Papierkorbsymbol, um eine Abstimmungsoption zu entfernen.
+- Ziehe den Griff, um die Reihenfolge der Abstimmungsoptionen zu ändern.
+- Wähle **Option hinzufügen**, um eine Abstimmungsoption hinzuzufügen, wenn die Vorlage eigene Optionen erlaubt.
 
 ![](vote_options.png)
 
 <!-- translation-section: edit-voting-options -->
 
 ### Abstimmungsoptionen bearbeiten
-Du kannst Abstimmungsoptionen auf vielfältige Weise an die Entscheidungsverfahren deiner Organisation anpassen.
 
-Nutze das Stiftsymbol neben der Abstimmungsoption, um den Bearbeitungsdialog zu öffnen:
+Wähle das Stiftsymbol neben einer Abstimmungsoption, um sie zu bearbeiten:
 
-**Optionsname:** Ein kurzer Name für die Option.
-
-**Symbol:** Wähle ein Symbol für die Option, etwa Daumen hoch, Daumen runter, Enthaltung oder Veto.
-
-**Bedeutung:** Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet.
-
-**Aufforderung zur Begründung:** Eine Frage, die Abstimmende dazu anregt, ihre Begründung anzugeben oder ihre Position zu überdenken.
+- **Optionsname:** Ein kurzer Name für die Option.
+- **Symbol:** Ein Symbol für die Option, etwa Daumen hoch, Daumen runter, Enthaltung oder Veto.
+- **Bedeutung:** Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet.
+- **Aufforderung zur Begründung:** Eine Frage, die Abstimmende auffordert, ihre Wahl zu erklären.
 
 ![](proposal_edit_option.png)
 
@@ -127,27 +117,20 @@ Nutze das Stiftsymbol neben der Abstimmungsoption, um den Bearbeitungsdialog zu 
 
 ### Dauer
 
-Standardmäßig beginnt die Abstimmung sofort, wenn du sie erstellst. Wenn du einen späteren Beginn planen möchtest, entferne das Häkchen bei **Die Abstimmung beginnt sofort.** und wähle ein Startdatum und eine Startzeit.
+Standardmäßig beginnt die Abstimmung sofort, wenn du sie startest. Wenn du einen späteren Beginn planen möchtest, entferne das Häkchen bei **Die Abstimmung beginnt sofort.** und wähle ein Startdatum und eine Startzeit.
 
-So kannst du vor Beginn der Abstimmung Zeit für eine Diskussion einplanen oder sicherstellen, dass eine Abstimmung oder ein Vorschlag richtig eingerichtet ist und zum vorgesehenen Zeitpunkt beginnt.
+So kannst du vor Beginn der Abstimmung Zeit für eine Diskussion einplanen oder Abstimmungen vorbereiten und Abstimmende im Voraus hinzufügen. Teilnehmende können eine geplante Abstimmung vor ihrem Beginn sehen, aber erst ab der Startzeit abstimmen. Abstimmende werden benachrichtigt, wenn die Abstimmung beginnt, statt beim Hinzufügen.
 
-Wenn deine Gruppe beispielsweise bei einer bevorstehenden Versammlung über mehrere Entscheidungen abstimmen soll, kannst du die Abstimmungen vorbereiten und Abstimmende im Voraus hinzufügen. Plane dann alle Abstimmungen so, dass sie zu Beginn des Abstimmungszeitraums starten. Die Teilnehmenden können die Abstimmungen vorher sehen, aber noch nicht abstimmen.
+Um eine geplante Abstimmung vorzeitig zu starten, wähle **Abstimmung bearbeiten**, setze das Häkchen bei **Die Abstimmung beginnt sofort.** und speichere die Änderung.
 
-Wenn eine Abstimmung einen geplanten Beginn hat, kannst du schon vorher Abstimmende hinzufügen. Sie werden benachrichtigt, wenn die Abstimmung beginnt, statt beim Hinzufügen.
-
-Um die Abstimmung vor dem geplanten Zeitpunkt zu beginnen, wähle **Abstimmung bearbeiten**, setze das Häkchen bei **Die Abstimmung beginnt sofort.** und speichere die Änderung.
-
-**Abstimmende benachrichtigen, wenn die Abstimmung beginnt:** Wenn diese Einstellung aktiviert ist (Standard), erhalten alle Abstimmenden beim Beginn der Abstimmung eine Benachrichtigung. Entferne das Häkchen, wenn du die Abstimmung ohne Benachrichtigungen beginnen möchtest.
-
-**Enddatum und Endzeit:** Wähle das Enddatum und die Endzeit deiner Abstimmung.
-
-Gib den Teilnehmenden genügend Zeit zum Abstimmen. Du kannst den Vorschlag so planen, dass er vor einem Treffen endet, oder ein Ende am Wochenende vermeiden, damit die Teilnehmenden rechtzeitig eine Erinnerung erhalten. Bei Bedarf kannst du die Abstimmung vorzeitig beenden oder die Endzeit nach hinten verschieben.
+- **Abstimmende benachrichtigen, wenn die Abstimmung beginnt:** Standardmäßig aktiviert, damit alle Abstimmenden beim Beginn der Abstimmung eine Benachrichtigung erhalten. Entferne das Häkchen, um die Abstimmung ohne Benachrichtigungen zu starten.
+- **Enddatum und Endzeit:** Wähle, wann die Abstimmung endet. Gib den Teilnehmenden genügend Zeit zum Abstimmen. Plane beispielsweise das Ende vor einem Treffen oder vermeide ein Ende am Wochenende, damit Erinnerungen zu einem sinnvollen Zeitpunkt ankommen. Solange die Abstimmung läuft, kannst du sie vorzeitig beenden oder die Endzeit nach hinten verschieben.
 
 <!-- translation-section: who-can-vote -->
 
 ### Wer darf abstimmen?
 
-Wähle aus, wer an der Abstimmung teilnehmen darf.
+Wähle aus, wer an der Abstimmung teilnehmen darf:
 
 - **Jeder in der Gruppe** (oder **Jeder im Thread**): Alle mit Zugriff auf die Abstimmung dürfen abstimmen, auch Personen, die später hinzukommen.
 - **Nur für ausgewählte Personen:** Nur die Personen, die du hinzufügst, dürfen abstimmen. Verwende diese Einstellung, wenn nur bestimmte Mitglieder abstimmen sollen, etwa ein Vorstand oder ein Ausschuss.
@@ -158,14 +141,18 @@ Nachdem du eine Abstimmung mit der Einstellung **Nur für ausgewählte Personen*
 
 ## Weitere Einstellungen
 
+Öffne **Weitere Einstellungen**, um Erinnerungen, anonyme Stimmabgabe, Begründungen der Stimmen, die Sichtbarkeit des Ergebnisses, das [Quorum](/en/user_manual/polls/quorum/), die [gewichtete Abstimmung](/en/user_manual/polls/weighted_voting/) und **Optionen in zufälliger Reihenfolge anzeigen** zu konfigurieren. Letzteres ist bei Abstimmungen mit den Methoden Auswählen, Bewerten, Verteilen und Ordnen verfügbar, um den Einfluss der Reihenfolge auf die Stimmabgabe zu verringern.
+
 ![](settings_advanced.png)
 
 <!-- translation-section: reminder -->
 
 ### Erinnerung
-Sende 24 Stunden vor dem Ende der Abstimmung eine Benachrichtigung „Endet bald“. So können Teilnehmende sehen, wie andere abgestimmt haben, und ihre eigene Stimme überdenken. Die Erinnerung kann auch die Beteiligung an der Abstimmung erhöhen.
 
-Einstellungsoptionen:
+Sende 24 Stunden vor dem Ende der Abstimmung eine Benachrichtigung „Endet bald“, um die Beteiligung zu erhöhen oder Teilnehmenden die Gelegenheit zu geben, ihre Stimme zu überprüfen.
+
+Optionen:
+
 - Niemand
 - Erstellende Person
 - Personen, die noch nicht abgestimmt haben (Standard)
@@ -176,49 +163,46 @@ Bei einer anonymen Abstimmung mit einer Dauer von mindestens 24 Stunden erinnert
 <!-- translation-section: anonymous-voting -->
 
 ### Anonyme Stimmabgabe
-Wenn diese Einstellung aktiviert ist, werden Stimmen getrennt von der Identität der Abstimmenden gespeichert. Das Ergebnis wird nach dem Ende der Abstimmung angezeigt. Abstimmende können keine Begründungen hinzufügen und ihre abgegebene Stimme weder einsehen noch ändern.
+
+Wenn diese Einstellung aktiviert ist, speichert Loomio Stimmen getrennt von der Identität der Abstimmenden. Das Ergebnis bleibt bis zum Ende der Abstimmung ausgeblendet. Abstimmende können keine Begründungen hinzufügen und ihre abgegebene Stimme weder einsehen noch ändern.
 
 Unter [Anonyme Stimmabgabe](/en/user_manual/polls/anonymous_voting) findest du Details dazu, wie die Identität der Abstimmenden von den abgegebenen Stimmen getrennt wird, welche Informationen erhalten bleiben und welche Grenzen dieser Schutz hat.
 
 > [!WARNING]
-> Sobald eine Abstimmung begonnen hat, kannst du sie nicht mehr auf anonym umstellen oder die anonyme Einstellung rückgängig machen. Du kannst eine anonyme Abstimmung nach ihrem Ende nicht wieder öffnen.
+> Sobald eine Abstimmung begonnen hat, kannst du die anonyme Stimmabgabe weder aktivieren noch deaktivieren. Du kannst eine anonyme Abstimmung nach ihrem Ende nicht wieder öffnen.
 
 <!-- translation-section: vote-reason -->
 
 ### Begründung der Stimme
-Es kann hilfreich sein zu verstehen, warum Menschen so abgestimmt haben. Mit dieser Einstellung kannst du sie auffordern, beim Abstimmen ihre Gedanken mitzuteilen.
 
-Die verfügbaren Einstellungen hängen von der Vorlage ab:
+Fordere Abstimmende auf zu erklären, warum sie so abgestimmt haben. Die verfügbaren Einstellungen hängen von der Vorlage ab:
 
-- **Optional** lässt Abstimmende wählen, ob sie eine Begründung angeben
-- **Erforderlich, um abzulehnen oder zu blockieren** verlangt eine Begründung, wenn die gewählte Option das Abstimmungssymbol für Widerspruch oder Veto verwendet
-- **Erforderlich bei einem Veto** verlangt eine Begründung, wenn die gewählte Option das Abstimmungssymbol für Veto verwendet
-- **Erforderlich** verlangt von allen Abstimmenden eine Begründung
-- **Deaktiviert** entfernt das Feld für die Begründung der Stimme
+- **Optional:** Abstimmende können wählen, ob sie eine Begründung angeben.
+- **Erforderlich, um abzulehnen oder zu blockieren:** Abstimmende müssen eine Begründung angeben, wenn sie eine Option mit dem Symbol für Widerspruch oder Veto wählen.
+- **Erforderlich bei einem Veto:** Abstimmende müssen eine Begründung angeben, wenn sie eine Option mit dem Symbol für Veto wählen.
+- **Erforderlich:** Alle Abstimmenden müssen eine Begründung angeben.
+- **Deaktiviert:** Entfernt das Feld für die Begründung der Stimme.
 
 ![](vote_reason_options.png)
 
-Die bedingten Einstellungen richten sich nach dem Abstimmungssymbol und nicht nach dem Namen der Option. Sie gelten auch dann, wenn du Widerspruch beispielsweise in Einwand umbenennst. In der Vorlage für Konsent ist standardmäßig **Erforderlich, um abzulehnen oder zu blockieren** eingestellt, in der Vorlage für Konsens **Erforderlich bei einem Veto**. Andere Vorlagen verwenden standardmäßig **Optional**. Die Person, die die Abstimmung erstellt, kann diese Einstellung für eine einzelne Abstimmung ändern.
+Die bedingten Einstellungen richten sich nach dem Abstimmungssymbol und nicht nach dem Namen der Option. Sie gelten auch dann, wenn du Widerspruch in Einwand umbenennst. In der Vorlage für Konsent ist standardmäßig **Erforderlich, um abzulehnen oder zu blockieren** eingestellt, in der Vorlage für Konsens **Erforderlich bei einem Veto**. Andere Vorlagen verwenden standardmäßig **Optional**. Die Person, die die Abstimmung erstellt, kann diese Einstellung für eine einzelne Abstimmung ändern.
 
-**Begründung auf höchstens 500 Zeichen begrenzen:** Kurze Begründungen sind leichter zu verstehen. Eine Sammlung knapper Begründungen bietet eine hilfreiche Grundlage für eine Entscheidung. Diese Einstellung ist standardmäßig aktiviert. Entferne das Häkchen, um längere Begründungen zuzulassen.
+**Begründung auf höchstens 500 Zeichen begrenzen:** Standardmäßig aktiviert, damit Begründungen knapp bleiben. Entferne das Häkchen, um längere Begründungen zuzulassen.
 
 <!-- translation-section: hide-results -->
 
 ### Ergebnis ausblenden
 
-Wenn du möchtest, dass Teilnehmende abstimmen, ohne zu wissen, wie andere abgestimmt haben, kannst du das Ergebnis der Abstimmung ausblenden.
+Blende das Ergebnis der Abstimmung aus, damit Teilnehmende abstimmen können, ohne zu sehen, wie andere abgestimmt haben:
 
-Wenn das Ergebnis bis zur Abgabe einer Stimme ausgeblendet ist, können Teilnehmende nach der Stimmabgabe sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben.
-
-Wenn das Ergebnis bis zum Ende der Abstimmung ausgeblendet ist, sind Antworten auf Stimmen und Erwähnungen in Begründungen zu Stimmen deaktiviert, bis die Abstimmung beendet ist. Du kannst die Endzeit nach hinten verschieben, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
+- **Bis zur Abgabe einer Stimme:** Teilnehmende können nach der Abgabe ihrer eigenen Stimme sehen, welche Optionen andere gewählt haben und welche Begründungen sie angegeben haben.
+- **Bis zum Ende der Abstimmung:** Das Ergebnis, Antworten auf Stimmen und Erwähnungen in Begründungen bleiben bis zum Ende der Abstimmung ausgeblendet. Du kannst die Endzeit nach hinten verschieben, solange die Abstimmung läuft, sie aber nach ihrem Ende nicht wieder öffnen.
 
 <!-- translation-section: editing-settings-before-voting-opens -->
 
 ### Einstellungen vor Beginn der Stimmabgabe bearbeiten
 
-Personen mit der Berechtigung, eine Abstimmung zu bearbeiten, können deren Details und Einstellungen ändern, bevor die Stimmabgabe beginnt. Dazu gehören auch die anonyme Stimmabgabe und die Sichtbarkeit des Ergebnisses. Sobald die Stimmabgabe beginnt, lässt sich die Einstellung zur Anonymität nicht mehr ändern. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, können dann nicht vorzeitig eingeblendet werden.
-
-Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus.
+Bevor die Stimmabgabe beginnt, können alle Personen mit der Berechtigung, die Abstimmung zu bearbeiten, deren Details und Einstellungen ändern. Dazu gehören auch die anonyme Stimmabgabe und die Sichtbarkeit des Ergebnisses. Sobald die Stimmabgabe beginnt, lässt sich die Einstellung zur Anonymität nicht mehr ändern. Ergebnisse, die bis zum Ende der Abstimmung ausgeblendet sind, können dann nicht vorzeitig eingeblendet werden.
 
 <!-- translation-section: managing-polls -->
 
@@ -232,13 +216,13 @@ Anonyme Abstimmungen blenden das Ergebnis immer bis zum Ende der Abstimmung aus.
 
 ### Abstimmung bearbeiten
 
-Wähle **Abstimmung bearbeiten**, um den Inhalt oder die Einstellungen der Abstimmung zu bearbeiten.
+Wähle **Abstimmung bearbeiten**, um den Inhalt oder die Einstellungen der Abstimmung zu ändern.
 
 <!-- translation-section: save-as-template -->
 
 ### Als Vorlage speichern
 
-Wähle **Als Vorlage speichern** im Aktionsmenü einer Abstimmung, um deren Inhalt, Stimmoptionen, Erklärungen und Einstellungen wiederzuverwenden. Prüfe das vorausgefüllte Vorlagenformular, gib der Vorlage einen Namen und einen Untertitel und wähle **Vorlage speichern**. Personen in der Gruppe können sie dann beim Starten einer neuen Abstimmung auswählen.
+Wähle **Als Vorlage speichern**, um den Inhalt, die Stimmoptionen, Erklärungen und Einstellungen der Abstimmung wiederzuverwenden. Prüfe das vorausgefüllte Formular, gib der Vorlage einen Namen und einen Untertitel und wähle **Vorlage speichern**. Personen in der Gruppe können sie dann beim Starten einer neuen Abstimmung auswählen.
 
 Gruppenadmins können Vorlagen speichern. Mitglieder können sie ebenfalls speichern, wenn **Mitglieder können Vorlagen erstellen.** in den Berechtigungen der Gruppe aktiviert ist. Weitere Informationen findest du unter [Abstimmungsvorlagen](/en/user_manual/polls/poll_templates).
 
@@ -254,13 +238,13 @@ Der **Benachrichtigungsverlauf** zeigt, wer benachrichtigt wurde und ob die jewe
 
 ### Abstimmung exportieren
 
-Wähle **Exportieren**, um den Status und das Ergebnis der Abstimmung als Tabellendatei (.csv) herunterzuladen. So erhältst du unformatierte Abstimmungsdaten zur Analyse oder Archivierung.
+Wähle **Exportieren**, um den Status und das Ergebnis der Abstimmung als Tabellendatei (.csv) zur Analyse oder Archivierung herunterzuladen.
 
 <!-- translation-section: print -->
 
 ### Drucken
 
-Wähle **Drucken** in den Thread-Aktionen, um ein druckbares HTML-Dokument zu öffnen. Du kannst es ausdrucken oder zur Veröffentlichung und Archivierung als PDF speichern.
+Öffne das Drei-Punkte-Menü des Threads und wähle **Drucken**, um eine druckbare HTML-Ansicht der Diskussion und ihrer Abstimmungen zu öffnen. Du kannst sie ausdrucken oder zur Veröffentlichung oder Archivierung als PDF speichern.
 
 ![](proposal_print.png#width-80)
 
@@ -268,11 +252,7 @@ Wähle **Drucken** in den Thread-Aktionen, um ein druckbares HTML-Dokument zu ö
 
 ### Löschen
 
-Mit **Löschen** löschst du die Abstimmung. Zuerst wirst du aufgefordert, das Löschen der Abstimmung zu bestätigen.
-
-Vergewissere dich, dass du die Abstimmung löschen möchtest. Es gibt keine Möglichkeit, sie wiederherzustellen.
-
-Nach dem Löschen bleibt im Thread eine Markierung **Element entfernt** zurück.
+Wähle **Löschen** und bestätige, um die Abstimmung dauerhaft zu entfernen. Gelöschte Abstimmungen können nicht wiederhergestellt werden. Im Thread bleibt eine Markierung **Element entfernt** zurück.
 
 ![](proposal_delete.png)
 

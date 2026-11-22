@@ -1,10 +1,10 @@
 ---
 sections:
-  introduction: 68d638b236cac8c3
+  introduction: 2d91e17b37de30b4
   request-bodies: 0ec99fc25454f511
   endpoint-summary: faaeafa590fb56e0
   pagination: 4171ca78df07d4fe
-  response-size-and-related-records: 6f8cf57b45766ad1
+  response-size-and-related-records: 3bdd69fb0fcdd958
   comments: ccd37303241bac95
   create-comment: a3c290a9028f0f28
   params-7: 5ad8ede0919c5f47
@@ -20,7 +20,7 @@ sections:
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   edit-discussion: 9bee023a69bdff84
@@ -29,27 +29,27 @@ sections:
   soft-delete-discussion: 97396a318d1c74a2
   example-8: e92d4004513fc701
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
   memberships: e7cf8846c3179720
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   polls: 821dcd89b5460804
   create-poll: f339b99e95def65f
   params-9: 1c63b4ef4047f3c3
   example-12: 58ea197b72a8bd0f
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,22 +65,22 @@ sections:
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  example-6: db45cd3ab09880f4
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
 generated:
   introduction: bd442a85cc1ec804
   request-bodies: 0d8319918d89fc23
   endpoint-summary: 357e4bdea3dc211b
   pagination: d6c2609f77234082
-  response-size-and-related-records: 49e26a90904b6cc9
+  response-size-and-related-records: a19a42aa5ff4ec5a
   comments: 2b6e477e3e4d4b51
   create-comment: 6d99f108ddaeea62
   params-7: f1392ec32715f418
@@ -96,7 +96,7 @@ generated:
   example-2: 4f739ef2959ae18c
   show-discussion: 8557e99efc1ad23d
   example-3: faf9da34704d2f47
-  list-discussions: 1da6e8733126702d
+  list-discussions: fc4f7f1423b0b417
   params-4: b42f2f24a8bb11bb
   example-4: a9d8ff4e231514d9
   edit-discussion: '054286c555a4cdfc'
@@ -111,21 +111,21 @@ generated:
   list-memberships: 580f7f553eeea5a6
   params-12: de426392895fa617
   example-17: 51b3cbf67d7a7b10
-  manage-memberships: e9a95f7de6de431f
+  manage-memberships: 3a7f5b74636760b4
   params-13: 49ccae38fb507a63
-  example-18: b53404ae9b3433a7
+  example-18: 071525e45d41d0e2
   participation-report: b75c070a869f1413
-  params-2: b82b5fb9cd4f6307
+  params-2: 739443ff16bd4bdd
   example: 30a015a9cb15e321
   polls: 50dc53ca4ba5a28f
   create-poll: 5cd89d3593456f4d
   params-9: 5100d9904667413e
   example-12: 65557de2d5957015
-  poll-many-options: 80fdb916626a013c
+  poll-many-options: d9ab3d294d4d49e3
   poll-detailed-options: 4e386674d98c6c75
   show-poll: 81667481569509aa
   example-13: 8bca504dffd5732e
-  list-polls: f29430f0b16ffd74
+  list-polls: 8e2f6a6d577b1c06
   params-10: 29cc7f8ca38837c9
   example-14: 7e75a89858ef2b30
   edit-poll: b04d8a3a6f2da608
@@ -141,24 +141,26 @@ generated:
   params-5: 81b4fd73950553a1
   example-5: f960081b657adfb4
   read-thread: 152c00416f1ae609
-  example-6: ec7919dbb0c32939
+  example-6: e4b9b944c9fd6d18
   webhooks: 25c214f5e0ce47bf
-  list-webhooks: 060273d5af1c53d1
-  create-a-webhook: 5ed943d400fa12c5
+  list-webhooks: f74a4f9d9fa4cb99
+  create-a-webhook: f022f63a4fef3b13
   update-a-webhook: 140cc70dfee9d859
   test-a-webhook-destination: f9932728c805a60d
   delete-a-webhook: 974a43c09eedcb40
   event-types: 77a351131e23c0b3
-  http-delivery: cdc0c6d9d44d7ac1
+  http-delivery: 4b78b23e61d17f8c
   payload-formats: 8b96f58849dc255d
 title: 사용자 API
 title_source: c23fb6526b722360
 title_generated: 325fc2482e1f276b
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
+needs_review:
+  response-size-and-related-records: use "결론" instead of "결과" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
@@ -253,7 +255,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-직접 제어하려면 단수형 레코드 유형을 공백으로 구분하여 `exclude_types`로 전달하세요. 예를 들어 `exclude_types=group reaction`은 관련 그룹과 반응을 제외합니다. 일반적으로 사용하는 값은 `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, `topic_item`입니다. 제외 설정은 관련 레코드에 적용되며, 엔드포인트에서 요청한 기본 리소스에는 적용되지 않습니다.
+직접 제어하려면 단수형 레코드 유형을 공백으로 구분하여 `exclude_types`로 전달하세요. 예를 들어 `exclude_types=group reaction`은 관련 그룹과 반응을 제외합니다.
+
+일반적으로 사용하는 값은 `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, `topic_item`입니다. 제외 설정은 관련 레코드에 적용되며, 엔드포인트에서 요청한 기본 리소스에는 적용되지 않습니다.
 
 컬렉션의 정확한 크기가 정의되어 있으면 컬렉션 응답에 `meta.total`이 포함됩니다. 전체 개수는 `limit`과 `offset`을 적용하기 전에 계산됩니다. 검색처럼 의도적으로 제한된 결과 집합을 반환하는 엔드포인트는 `null`을 반환하는 대신 `meta.total`을 생략합니다.
 
@@ -406,7 +410,7 @@ curl https://www.loomio.com/api/user0/discussions/abc123 \
 
 ### 토론 목록 조회
 
-그룹에서 API 키 사용자에게 공개된 토론 목록을 가져옵니다. 공개 그룹의 경우 그룹 구성원이 아니어도 공개 토론 목록을 가져올 수 있습니다. 비공개 토론은 Loomio에서 해당 토론을 읽을 수 있는 사용자만 접근할 수 있습니다.
+그룹에서 API 키 사용자가 볼 수 있는 토론 목록을 조회합니다. 공개 그룹에서는 멤버가 아니어도 공개 토론 목록을 조회할 수 있습니다. 비공개 토론은 Loomio에서 해당 토론을 읽을 수 있는 사용자만 접근할 수 있습니다.
 
 `GET /api/user0/discussions`
 
@@ -591,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### 멤버 자격 관리
 
-이메일 주소 목록을 보내세요. 목록에 있는 모든 새 이메일 주소로 그룹 초대를 보냅니다. 멤버 자격 목록 조회와 달리 이 작업에는 그룹 관리자 권한이 필요합니다.
+새로운 사람을 그룹에 초대하려면 이메일 주소 목록을 보내세요. 멤버 자격 목록 조회와 달리 이 작업에는 그룹 관리자 권한이 필요합니다.
 
 `POST /api/user0/memberships`
 
@@ -620,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-`remove_absent=1`을 전달하면 목록에 포함되지 않은 그룹 멤버가 모두 그룹에서 제거됩니다. 그룹의 모든 멤버가 제거될 수 있으므로 주의하세요.
+`remove_absent: true`를 전달하면 목록에 포함되지 않은 그룹 멤버가 모두 그룹에서 제거됩니다. 그룹의 모든 멤버가 제거될 수 있으므로 주의하세요.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -630,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-`{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`이 포함된 객체를 반환합니다.
+`{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`이 포함된 객체를 반환합니다.
 
 <!-- translation-section: participation-report -->
 
@@ -658,7 +662,9 @@ Loomio의 참여 보고서에서 사용하는 것과 동일한 집계 참여 데
 | `interval` | `base` 섹션의 집계 간격: `day`, `week`, `month`, `year` |
 | `member_type` | 현재 대표자만 반환하려면 `section=users`와 함께 `delegate`로 설정하세요 |
 
-선택한 그룹 중 하나라도 활성 대표자 멤버십을 보유한 사람은 대표자로 간주됩니다. 활동 수는 선택한 모든 그룹에 걸쳐 집계됩니다. 모든 활동 수가 0이어도 대표자 행은 반환됩니다. 집계 대상은 스레드, 댓글, 투표, 표, 결론, 반응이며, 투표 참여율을 나타내지는 않습니다. 사용자 행에는 신원이 확인되는 투표에서 발급된 투표용지 수, 제출된 투표용지 수, 제출되지 않은 투표용지 수도 포함됩니다. 익명 투표는 모든 개인별 투표 집계에서 제외됩니다. `all_votes_cast`는 투표용지가 하나 이상 발급되었고 발급된 투표용지가 모두 제출된 경우에만 true입니다.
+선택한 그룹 중 하나라도 활성 대표자 멤버십을 보유한 사람은 대표자로 간주됩니다. 활동 수는 선택한 모든 그룹에 걸쳐 집계되며, 모든 활동 수가 0이어도 대표자 행은 반환됩니다.
+
+집계 대상은 스레드, 댓글, 투표, 표, 결론, 반응이며, 투표 참여율을 나타내지는 않습니다. 사용자 행에는 신원이 확인되는 투표에서 발급된 투표용지 수, 제출된 투표용지 수, 제출되지 않은 투표용지 수도 포함되며, 익명 투표는 모든 개인별 투표 집계에서 제외됩니다. `all_votes_cast`는 투표용지가 하나 이상 발급되었고 발급된 투표용지가 모두 제출된 경우에만 true입니다.
 
 API에는 제품 내 보고서와 동일한 그룹 공개 범위 규칙이 적용됩니다. 사용자 API 키로는 해당 사용자가 접근할 수 없는 그룹의 보고서 데이터를 노출할 수 없습니다.
 
@@ -776,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -882,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 그룹에서 API 키 사용자가 볼 수 있는 투표 목록을 조회합니다. 독립된 투표와 토론에 포함된 투표가 모두 포함됩니다. 공개 그룹에서는 멤버가 아니어도 공개 투표 목록을 조회할 수 있습니다. 비공개 투표는 Loomio에서 해당 투표를 읽을 수 있는 사용자만 조회할 수 있습니다. 응답에는 볼 수 있는 각 투표의 현재 결론이 포함되므로, `status=closed`를 사용하면 마감된 투표 목록을 조회하고 결론이 작성된 경우 이를 읽을 수 있습니다.
 
-토론과 함께 결정 상태를 표시하려면 같은 그룹의 토론과 투표를 가져온 다음 `topic_id` 값을 대조하세요. 투표를 가져올 때는 `status=all`을 사용하세요. `limit`와 `offset`을 사용해 모든 페이지를 가져오세요. 하나의 토론에 여러 투표가 있을 수 있으므로, 가장 최근에 생성된 투표 등 표시할 상태의 기준이 되는 투표를 선택하세요. `closed_at`이 null이 아니면 마감된 투표이고, `closing_at`이 null이면 초안입니다. 투표에 결론이 있으면 `current_outcome_id`가 응답의 `outcomes` 배열에 있는 레코드를 가리킵니다. 해당 레코드의 `poll_id`를 투표의 `id`와 대조하세요.
+토론과 함께 결정 상태를 표시하려면 같은 그룹의 토론과 투표를 가져온 다음 `topic_id` 값을 대조하세요. 투표를 가져올 때는 `status=all`을 사용하세요. `limit`와 `offset`을 사용해 모든 페이지를 가져오세요. 하나의 토론에 여러 투표가 있을 수 있으므로, 가장 최근에 생성된 투표 등 표시할 상태의 기준이 되는 투표를 선택하세요.
+
+`closed_at`이 null이 아니면 마감된 투표이고, `closing_at`이 null이면 초안입니다. 투표에 결론이 있으면 `current_outcome_id`가 응답의 `outcomes` 배열에 있는 레코드를 가리킵니다. 해당 레코드의 `poll_id`를 투표의 `id`와 대조하세요.
 
 개별 토론은 `GET /api/user0/threads/:topic_id/items`를 사용해 [스레드 항목을 읽을](#read-thread) 수도 있습니다. 이 요청은 스레드의 다른 항목과 함께 투표와 결론을 반환합니다. 전체 스레드를 포함하려면 모든 페이지를 가져오세요.
 
@@ -1088,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-`items` 엔드포인트는 볼 수 있는 댓글, 투표, 표, 결론을 포함한 이벤트 스트림의 한 페이지를 순번의 오름차순으로 반환합니다. `meta.total`은 스레드의 전체 항목 수입니다. 전체 스트림을 읽으려면 다음 페이지도 가져오세요. `markdown` 엔드포인트는 볼 수 있는 스레드의 전체 내용을 하나의 Markdown 문서로 반환합니다. 투표 이유는 API 키 사용자에게 공개된 경우에만 포함됩니다.
+`items` 엔드포인트는 볼 수 있는 댓글, 투표, 표, 결론을 포함한 이벤트 스트림의 한 페이지를 순번의 오름차순으로 반환합니다. `meta.total`은 스레드의 전체 항목 수입니다. 전체 스트림을 읽으려면 다음 페이지도 가져오세요.
+
+`markdown` 엔드포인트는 볼 수 있는 스레드의 전체 내용을 하나의 Markdown 문서로 반환합니다. 투표 이유는 API 키 사용자가 볼 수 있는 경우에만 포함됩니다.
 
 모든 스레드 엔드포인트에는 Loomio 인터페이스와 동일한 권한이 적용됩니다. API 키는 사용자가 평소에 열 수 없는 스레드에 대한 접근 권한을 부여하지 않습니다.
 
@@ -1115,7 +1125,7 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 
 ### 웹훅 목록 조회
 
-그룹에 설정된 채팅 연동을 반환합니다. API 키 사용자는 해당 그룹의 관리자여야 합니다. 응답에는 대상 URL이 포함되므로 일반 그룹 멤버에게 공개해서는 안 됩니다.
+그룹에 설정된 채팅 연동을 반환합니다. API 키 사용자는 해당 그룹의 그룹 관리자여야 합니다. 응답에는 대상 URL이 포함되므로 일반 그룹 멤버에게 공개하지 마세요.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1168,7 +1178,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-API 키 사용자는 `group_id`에 해당하는 그룹의 관리자여야 합니다. 저장하기 전에 대상이 공용 URL인지 검증합니다.
+API 키 사용자는 `group_id`에 해당하는 그룹의 그룹 관리자여야 합니다. 저장하기 전에 대상이 공용 URL인지 검증합니다.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1259,7 +1269,9 @@ Content-Type: application/json; charset=utf-8
 
 요청 제한 시간은 5초입니다. `204 No Content`를 포함한 `2xx` 응답은 성공으로 처리됩니다. 웹훅 수신 측은 신속하게 응답하고, 오래 걸리는 작업은 비동기로 처리하며, 중복되거나 순서가 뒤바뀐 전송을 처리할 수 있어야 합니다.
 
-현재 Loomio는 웹훅 서명, 공유 비밀 헤더, 이벤트 ID 또는 전송 ID를 추가하지 않습니다. 전체 대상 URL을 인증 정보로 취급하고 공개하지 마세요. 수신 서비스가 지원하는 경우 URL에 추측하기 어려운 토큰을 포함하세요. 기계가 읽을 수 있는 안정적인 이벤트 스키마나 서명된 전송이 필요하다면, 웹훅을 변경 알림으로 사용하고 인증된 사용자 API를 통해 현재 레코드를 조회하세요.
+현재 Loomio는 웹훅 서명, 공유 비밀 헤더, 이벤트 ID 또는 전송 ID를 추가하지 않습니다. 전체 대상 URL을 인증 정보로 취급하고 공개하지 마세요. 수신 서비스가 지원하는 경우 URL에 추측하기 어려운 토큰을 포함하세요.
+
+기계가 읽을 수 있는 안정적인 이벤트 스키마나 서명된 전송이 필요하다면, 웹훅을 변경 알림으로 사용하고 인증된 사용자 API를 통해 현재 레코드를 조회하세요.
 
 <!-- translation-section: payload-formats -->
 

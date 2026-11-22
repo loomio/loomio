@@ -1,22 +1,22 @@
 ---
 title: Creare un gruppo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: afd5d3bc0a5278cc
+  introduction: c53efccd20b6dc37
   group-details: 347ad726b7e73e91
-  group-name: 75e237745a485256
-  group-handle: a9491a55aa0f1c4b
-  group-description: 15e1d98c7bfd597d
+  group-name: b7b1297fcf61d8d6
+  group-handle: 445b57b60b75444c
+  group-description: 75dc40159f2d3e7a
 title_source: c5a16dbe0863ecd7
 title_generated: 4784aaeb8249d342
 ---
@@ -25,9 +25,9 @@ title_generated: 4784aaeb8249d342
 
 # Creare un nuovo gruppo
 
-Se sei nuovo su Loomio, puoi creare un gruppo con una prova gratuita in qualsiasi momento dal [sito web di Loomio](https://www.loomio.com/). Se usi già Loomio e vuoi creare un nuovo gruppo per un'altra organizzazione o un altro scopo, puoi farlo dal menu laterale: seleziona **Nuovo gruppo**.
+Se sei nuovo su Loomio, puoi creare un gruppo con una prova gratuita dal [sito web di Loomio](https://www.loomio.com/). Se usi già Loomio e vuoi creare un altro gruppo, seleziona **Nuovo gruppo** nella barra laterale.
 
-Per molte organizzazioni è sufficiente un solo gruppo Loomio. All'interno del gruppo puoi creare tutti i sottogruppi di cui hai bisogno. Consulta [Sottogruppi](/en/user_manual/groups/subgroups/) per maggiori informazioni.
+Alla maggior parte delle organizzazioni basta un solo gruppo principale, con tutti i [sottogruppi](/en/user_manual/groups/subgroups) necessari al suo interno.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Per molte organizzazioni è sufficiente un solo gruppo Loomio. All'interno del g
 
 ### Nome del gruppo
 
-Inserisci il nome del tuo gruppo. È meglio scegliere un nome breve e conciso.
+Inserisci un nome breve e chiaro per il tuo gruppo.
 
 <!-- translation-section: group-handle -->
 
 ### Identificativo del gruppo
 
-Al tuo gruppo viene assegnato automaticamente un identificativo. L'identificativo viene usato nell'URL e nell'indirizzo email del gruppo, ad esempio **loomio.com/your-group-handle** e **your-group-handle@loomio.com**.
+Loomio assegna automaticamente un identificativo in base al nome del tuo gruppo. L'identificativo viene usato nell'URL e nell'indirizzo email del gruppo, ad esempio `loomio.com/your-group-handle` e `your-group-handle@loomio.com`.
 
-Puoi modificare l'identificativo quando crei il gruppo e cambiarlo in seguito nelle impostazioni del gruppo. Quando lo cambi, i link e gli indirizzi email che usano il vecchio identificativo continuano a funzionare. Loomio conserva fino a tre identificativi precedenti; oltre questo limite, il più vecchio scade.
+Puoi modificare l'identificativo durante la configurazione o cambiarlo in seguito nelle impostazioni del gruppo. Quando lo cambi, i link e gli indirizzi email che usano il vecchio identificativo continuano a funzionare. Loomio conserva fino a tre identificativi precedenti; oltre questo limite, il più vecchio scade.
 
 <!-- translation-section: group-description -->
 
 ### Descrizione del gruppo
 
-Questa breve descrizione apparirà nella parte superiore della dashboard, per fornire ai nuovi membri il contesto necessario.
+Aggiungi una breve descrizione che apparirà nella parte superiore della pagina del gruppo per fornire un contesto ai nuovi membri.
 
-**Quando selezioni 'Crea gruppo', il tuo nuovo gruppo viene creato automaticamente.**
-
----
+Scegli un'[impostazione di privacy](/en/user_manual/groups/settings/privacy) e seleziona **Crea un gruppo** per creare il gruppo. Diventi automaticamente il primo amministratore del gruppo e puoi aggiornare questi dettagli in seguito nelle impostazioni del gruppo.

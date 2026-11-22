@@ -1,40 +1,40 @@
 ---
 title: Propositions et sondages
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: 5964c948e010b2a8
+  introduction: 3c677d3d3da46165
   find-the-right-help: 9f099b7827f0f5cb
   proposals: 9a9e3027c52cd7f5
   polls: aaa4daa92aa85724
   start-a-proposal-or-poll: 18e0fc338b53cb3a
-  choose-whether-to-use-a-discussion: 412f997fc094d1fe
+  choose-whether-to-use-a-discussion: 542bbb79d75fa5f8
   in-a-discussion: 75813486f311e3fe
   without-a-discussion: fd7f30f345996d62
   what-happens-next: d47b4a89a6f66aa8
   1-create-it: d9a4de4a83aec885
-  2-voting-opens: 2a0c9487fe7eef86
-  3-people-vote: 2409e4c3f813bbf8
-  4-it-closes: 0eaf3786a96ccd94
-  5-share-an-outcome: f1b827c6cc1e7d32
+  2-voting-opens: 42eed4d6c45aacf0
+  3-people-vote: 4c8834d3c5f00306
+  4-it-closes: 1a7665450855c403
+  5-share-an-outcome: f5c438387fdb944f
 title_source: d45b4ba3cb7a27cb
 title_generated: 177d8f0aa41e5dc7
 ---
@@ -43,7 +43,7 @@ title_generated: 177d8f0aa41e5dc7
 
 # Propositions et sondages
 
-Les propositions et les sondages recueillent des réponses structurées auprès d’un groupe. Ils peuvent aider à tester une idée, prendre une décision, définir des priorités, planifier une réunion ou élire des représentants.
+Les propositions et les sondages recueillent des réponses structurées auprès d’un groupe. Utilisez-les pour tester une idée, prendre une décision, définir des priorités, planifier une réunion ou élire des représentants.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ Consultez [Sondages](../proposal_types/) pour les comparer.
 
 ### Choisissez si vous souhaitez utiliser une discussion
 
-Lancez la proposition ou le sondage dans une discussion lorsque les personnes ont besoin de contexte, de poser des questions ou d’échanger avant de répondre. Une discussion peut contenir plusieurs propositions au fil du temps, ce qui permet de conserver les amendements et la conclusion finale dans un même compte rendu du sujet.
+Lancez une proposition ou un sondage dans une discussion lorsque les personnes ont besoin de contexte, de poser des questions ou d’échanger avant de répondre. Une discussion peut contenir plusieurs propositions au fil du temps, ce qui permet de conserver les amendements et la conclusion finale dans un même compte rendu.
 
-Lancez un sondage autonome lorsque la discussion a déjà eu lieu ailleurs, par exemple lors d’une réunion, ou lorsque la question est simple et que vous avez seulement besoin de recueillir des réponses. Ajoutez suffisamment de détails ou un lien vers le compte rendu pertinent pour que les électeurs comprennent sur quoi ils se prononcent.
+Lancez un sondage autonome lorsque la discussion a déjà eu lieu ailleurs, par exemple lors d’une réunion, ou lorsque la question est simple et que vous avez seulement besoin de recueillir des réponses. Ajoutez suffisamment de détails ou un lien vers les informations de contexte pour que les électeurs sachent sur quoi ils se prononcent.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,19 +138,19 @@ Donnez-lui un titre et des détails, vérifiez ses options et ses paramètres, p
 
 ### 2. Le vote s’ouvre
 
-Lorsque le vote s’ouvre, Loomio notifie les personnes que vous avez invitées. Consultez [Inviter à voter](../inviting_people/).
+Lorsque le vote s’ouvre, Loomio notifie les personnes que vous avez invitées. Consultez [Gérer les électeurs](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Les personnes votent
 
-Tant que le vote est ouvert, les personnes peuvent voter, expliquer leur vote et le modifier. Les résultats sont mis à jour au fur et à mesure des votes, sauf s’ils sont masqués jusqu’à la clôture. Par défaut, les personnes qui n’ont pas voté reçoivent un rappel un jour avant la clôture.
+Tant que le vote est ouvert, les personnes peuvent voter, ajouter une raison à leur vote et le modifier. Les résultats sont mis à jour au fur et à mesure des votes, sauf s’ils sont masqués jusqu’à la clôture. Par défaut, les personnes qui n’ont pas voté reçoivent un rappel 24 heures avant la clôture.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Le sondage est clôturé
 
-Le sondage est clôturé automatiquement à l’heure de clôture. Un administrateur du fil peut aussi le clôturer plus tôt. Après la clôture, un administrateur du fil peut le rouvrir en fixant une nouvelle heure de clôture pour permettre aux personnes de continuer à voter. Les sondages qui masquent les résultats jusqu’à la clôture du vote, y compris les sondages anonymes, ne peuvent pas être rouverts. Vous pouvez prolonger leur durée de vote tant qu’ils sont encore ouverts.
+Le sondage est clôturé automatiquement à l’heure de clôture. Un administrateur du fil peut aussi le clôturer plus tôt. Après la clôture, un administrateur du fil peut le rouvrir en fixant une nouvelle heure de clôture. Les sondages qui masquent les résultats jusqu’à la clôture du vote, y compris les sondages anonymes, ne peuvent pas être rouverts ; vous pouvez prolonger leur durée de vote tant qu’ils sont encore ouverts.
 
 <!-- translation-section: 5-share-an-outcome -->
 
@@ -162,6 +162,6 @@ Lorsque le sondage est clôturé, Loomio demande aux administrateurs du fil de p
 
 La conclusion indique ce qui a été décidé et ce qui se passera ensuite. Elle apparaît au-dessus des résultats et constitue donc la première information que les personnes lisent. Lorsque vous la publiez, vous pouvez leur envoyer une notification. Elles reçoivent un e-mail contenant les résultats et la conclusion.
 
-Vous pouvez également définir une **Date de révision**. À cette date, Loomio vous rappelle de réexaminer la décision.
+Vous pouvez également définir une **Date de révision** pour que Loomio vous rappelle de réexaminer la décision à cette date.
 
 ![Une conclusion publiée avec une date de révision](outcome_published.png)

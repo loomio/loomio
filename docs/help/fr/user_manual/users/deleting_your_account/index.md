@@ -1,18 +1,18 @@
 ---
 title: Supprimer votre compte
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/deleting_your_account/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: c9f996479d2fad85
-  to-delete-your-account-entirely: a2dc7a3b2256df81
+  what-does-delete-account-mean: b4903b29472cb632
+  to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: 3356cfb4fe386dd6
-  what-does-delete-account-mean: c04138ff86ff0def
-  to-delete-your-account-entirely: 0bca763936834394
+  what-does-delete-account-mean: c0b2b7030d718fc7
+  to-delete-your-account-entirely: 6c7b3ec46923d728
 title_source: 26a117d6f45e95e8
 title_generated: 218e0f4e0c02dca3
 ---
@@ -25,32 +25,32 @@ title_generated: 218e0f4e0c02dca3
 
 ## Que signifie supprimer votre compte ?
 
-Lorsque vous supprimez votre compte :
-- Votre compte utilisateur, y compris votre nom, votre adresse e-mail et les autres données permettant de vous identifier, sera supprimé de nos systèmes. Vous ne pourrez plus vous connecter à Loomio avec ce compte.
-- Les commentaires, propositions et discussions que vous avez créés seront conservés, mais votre nom en sera retiré. Nous le faisons parce que nous avons l’obligation envers les groupes de préserver la cohérence des fils et des propositions.
-- Vous ne figurerez plus parmi les membres d’aucun groupe.
-- Vous ne recevrez plus de notifications par e-mail.
+La suppression de votre compte est définitive et irréversible. Lorsque vous supprimez votre compte :
 
-Il est important de comprendre que des copies des données que vous avez générées sur Loomio ont probablement été envoyées par e-mail à tous les membres du groupe. Loomio ne peut pas supprimer ces copies.
+- Loomio supprime votre compte, y compris votre nom, votre adresse e-mail et vos autres données personnelles. Vous ne pouvez plus vous connecter avec ce compte.
+- Vos commentaires, propositions et discussions sont conservés, mais votre nom en est retiré, afin que les fils des groupes restent intacts.
+- Vous ne figurez plus parmi les membres d’aucun groupe.
+- Vous ne recevez plus de notifications par e-mail.
 
-La suppression de votre compte _n’annulera pas_ votre abonnement ; pour arrêter vos paiements, consultez la page [Abonnements](/en/policy/subscriptions/management#cancel-your-plan).
+Des copies de votre activité peuvent déjà avoir été envoyées par e-mail aux membres des groupes. Loomio ne peut pas supprimer les e-mails déjà envoyés.
 
-Loomio a fait des choix fondamentaux concernant sa propriété, son modèle économique et son logiciel afin de protéger les droits des utilisateurs. Loomio est une coopérative indépendante détenue par ses travailleurs, le logiciel est open source, vous pouvez [exporter vos données](/en/user_manual/groups/data_export), et Loomio ne vend jamais vos données et ne les utilise pas à des fins publicitaires. Ces engagements sont énoncés dans notre [politique de confidentialité](/en/policy/privacy) et reposent sur la raison d’être et les valeurs présentées dans nos [statuts](https://www.loomio.coop/constitution.html) et notre [manuel de la coopérative](https://www.loomio.coop/purpose_and_vision.html). Si vous avez des questions, [contactez-nous](/contact).
+La suppression de votre compte n’annule pas un abonnement payant. Pour arrêter les paiements, consultez la page [Abonnements](/en/policy/subscriptions/management#cancel-your-plan).
+
+Pour en savoir plus sur la manière dont Loomio traite vos données, consultez notre [politique de confidentialité](/en/policy/privacy) ou [contactez-nous](/contact). Si vous avez d’abord besoin d’une copie des données d’un groupe, un administrateur du groupe peut [exporter les données du groupe](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 
 ## Pour supprimer entièrement votre compte
 
-Connectez-vous à Loomio. Ouvrez la barre latérale à partir de l’icône de menu (☰) en haut à gauche de l’écran. Cliquez sur l’avatar ou les initiales de votre compte, en haut à droite de l’écran.
-
-Cliquez sur la flèche vers le bas ( ∨ ) à côté de votre nom pour ouvrir les paramètres utilisateur. Choisissez **Modifier mon profil**.
+1. Connectez-vous à Loomio.
+2. Ouvrez votre menu utilisateur en sélectionnant votre nom dans la barre latérale, puis choisissez **Modifier mon profil**. Si la barre latérale est fermée, ouvrez-la à l’aide du bouton de menu (**☰**).
 
 ![](profile_edit.png#width-50)
 
-Faites défiler la page jusqu’en bas et cliquez sur **Supprimer le compte**.
+3. Faites défiler la page jusqu’en bas et choisissez **Supprimer le compte**.
 
 ![](delete_user.png)
 
-Une fenêtre contextuelle vous demandera de confirmer que vous souhaitez supprimer votre compte.
+4. Confirmez que vous souhaitez supprimer définitivement votre compte.
 
 ![](permanently_delete_account.png#width-80)

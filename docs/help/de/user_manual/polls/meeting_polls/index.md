@@ -1,51 +1,41 @@
 ---
 title: Zeitumfrage
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 8ab9108683132085
-  time-poll: d5d5d81f7de10419
-  voting: c50083234167a0f9
-  outcome: 9f1bb3dee66382d2
+  introduction: 8586dd16468554c8
+  time-poll: 83fe37c85a508993
+  voting: 852eefea6b16965b
+  outcome: d9ad86541aca516a
 generated:
-  introduction: 6975e94bc0aaea5a
-  time-poll: baf9add7df68a810
-  voting: f1e43cadb54d3f32
-  outcome: ecba25dc0955b106
+  introduction: 85478cddea59e195
+  time-poll: 7920f65bdbe6df31
+  voting: fc43ac3327f2fb7e
+  outcome: c74487ff9fdaa633
 title_source: 8e2a07d7257fbc04
 title_generated: 26b082e376938b2b
-needs_review:
-  outcome: use "Fazit" instead of "Ergebnis" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Terminfindung
 
-Nutze eine **Terminfindung**, um einen Termin für ein Treffen oder eine Veranstaltung zu finden. Sie erfüllt denselben Zweck wie Terminplanungswerkzeuge wie Doodle und hält die Terminplanung bei der übrigen Arbeit deiner Gruppe in Loomio. Teilnehmende sehen die Optionen in ihrer eigenen Zeitzone.
+Nutze eine **Terminfindung**, um einen Termin für ein Treffen oder eine Veranstaltung zu finden und die Terminplanung mit der übrigen Arbeit deiner Gruppe in Loomio zu verbinden. Alle Teilnehmenden sehen die Optionen mit Datum und Uhrzeit in ihrer eigenen Zeitzone.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Terminfindung
-
-_Finde heraus, wann Menschen Zeit für ein Treffen haben_
-
-Spare Zeit bei der Terminplanung für dein Treffen oder deine Veranstaltung.
+## Die Abstimmung einrichten
 
 ![](timepoll_label.png)
 
-Mit einer Terminfindung kannst du leicht sehen, wann alle Zeit haben, und den besten Termin finden.
+Gib deiner Terminfindung einen Titel und füge Details hinzu. Trage Optionen mit Datum und Uhrzeit in deiner eigenen Zeitzone ein und lege die Dauer des Treffens fest.
 
-Gib deiner Terminfindung einen Titel und füge Details hinzu. Trage eine Liste von Optionen mit Datum und Uhrzeit in deiner Zeitzone ein.
-
-Berücksichtige bei der Festlegung der Zeitfenster Menschen in unterschiedlichen Zeitzonen. Teilnehmende sehen die Zeiten in ihrer eigenen Zeitzone.
-
-Lege die Dauer des Treffens fest.
+Berücksichtige bei der Auswahl der Optionen Menschen in anderen Zeitzonen, damit alle passende Termine zur Auswahl haben.
 
 ![](timepoll_options.png)
 
@@ -53,15 +43,11 @@ Lege die Dauer des Treffens fest.
 
 ### Abstimmen
 
-Für jeden Termin wählen die Teilnehmenden das grüne Symbol mit dem Daumen nach oben, wenn sie Zeit haben, den gelben seitlichen Daumen, wenn sie bei Bedarf teilnehmen können, oder das rote Symbol mit dem Daumen nach unten, wenn sie keine Zeit haben.
-
-Teilnehmende können einen Kommentar mit einer Begründung hinterlassen, um der organisierenden Person zu helfen, einen passenden Termin zu finden.
-
-Wenn die Termine nicht passen, können Teilnehmende über das Nachrichtenfeld Alternativen vorschlagen. Du kannst die Abstimmung dann um neue Termine ergänzen.
+Teilnehmende markieren für jede Terminoption, ob sie Zeit haben, bei Bedarf teilnehmen können oder keine Zeit haben. Sie können auch eine Begründung zu ihrer Stimme hinzufügen, um ihre Verfügbarkeit zu erklären oder andere Termine vorzuschlagen. Wenn keine der Optionen passt, kannst du die Abstimmung bearbeiten und neue Termine hinzufügen.
 
 ![](timepoll_vote.png)
 
-Das Ergebnis wird während der Abstimmung in einer Tabelle aktualisiert, die zeigt, wer wann Zeit hat. So können alle sehen, welche Zeitfenster beliebt sind.
+Das Ergebnis wird aktualisiert, während die Teilnehmenden abstimmen, und zeigt, wer zu welchem Termin Zeit hat.
 
 <!-- translation-section: outcome -->
 
@@ -71,14 +57,10 @@ Wenn die Terminfindung beendet ist, wähle den besten Termin und teile ein Fazit
 
 ![](timepoll_outcome.png)
 
-**Benachrichtigen**: Füge die Personen hinzu, die du zum Treffen oder zur Veranstaltung einlädst
-
-**Meeting-Zeit**: Wähle den Termin, der am besten passt. Die Optionen verwenden die [Zeitzone in deinem Profil](/en/user_manual/users/user_profile#time-zone)
-
-**Name des Treffens**: Gib deinem Treffen einen Namen. Standardmäßig wird der Titel der Terminfindung verwendet
-
-**Ort**: Füge einen Ort oder einen Link zum Treffen hinzu
-
-**Einschätzung**: Fasse das Ergebnis zusammen und ergänze Hinweise zum Treffen
+- **Benachrichtigen**: Füge die Personen hinzu, die du zum Treffen oder zur Veranstaltung einlädst.
+- **Meeting-Zeit**: Wähle den Termin, der am besten passt. Die Optionen verwenden die [Zeitzone in deinem Profil](/en/user_manual/users/user_profile#time-zone).
+- **Name des Treffens**: Gib deinem Treffen einen Namen. Loomio verwendet standardmäßig den Titel der Terminfindung.
+- **Ort**: Füge eine Adresse oder einen Link zu einem Online-Treffen hinzu.
+- **Einschätzung**: Fasse die Entscheidung zusammen und ergänze Hinweise zum Treffen.
 
 Loomio fügt den ausgewählten Termin, den Namen des Treffens, die Dauer, den Ort und die Einschätzung in die Benachrichtigung zum Fazit und die Kalendereinladung ein.

@@ -1,18 +1,18 @@
 ---
 title: Deinen Account löschen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/deleting_your_account/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/deleting_your_account/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
   introduction: b69fb514fd196dd7
-  what-does-delete-account-mean: c9f996479d2fad85
-  to-delete-your-account-entirely: a2dc7a3b2256df81
+  what-does-delete-account-mean: b4903b29472cb632
+  to-delete-your-account-entirely: '008695a62b8f9431'
 generated:
   introduction: fb4cb276e6b463bd
-  what-does-delete-account-mean: 388b68c409745acf
-  to-delete-your-account-entirely: be76ff62e38940e9
+  what-does-delete-account-mean: ccb313f85d455c0a
+  to-delete-your-account-entirely: 9092a364d9c6b45c
 title_source: 26a117d6f45e95e8
 title_generated: 1aaddfa36c75e038
 ---
@@ -25,32 +25,32 @@ title_generated: 1aaddfa36c75e038
 
 ## Was bedeutet es, deinen Account zu löschen?
 
-Wenn du deinen Account löschst:
-- Dein Account einschließlich deines Namens, deiner E-Mail-Adresse und anderer personenbezogener Daten wird aus unseren Systemen gelöscht. Du kannst dich mit diesem Account nicht mehr bei Loomio anmelden.
-- Deine Kommentare, Vorschläge und Diskussionen bleiben erhalten, aber dein Name wird daraus entfernt. Damit erfüllen wir unsere Verpflichtung gegenüber Gruppen, den Zusammenhang von Threads und Vorschlägen zu erhalten.
-- Du wirst in keiner Gruppe mehr als Mitglied aufgeführt.
+Das Löschen deines Accounts ist dauerhaft und kann nicht rückgängig gemacht werden. Wenn du deinen Account löschst:
+
+- Loomio löscht deinen Account einschließlich deines Namens, deiner E-Mail-Adresse und anderer personenbezogener Daten. Du kannst dich mit diesem Account nicht mehr anmelden.
+- Deine Kommentare, Vorschläge und Diskussionen bleiben erhalten, aber dein Name wird entfernt, damit die Threads der Gruppe erhalten bleiben.
+- Du wirst aus allen Gruppen als Mitglied entfernt.
 - Du erhältst keine Benachrichtigungen mehr per E-Mail.
 
-Beachte, dass Kopien der Daten, die du auf Loomio erstellt hast, wahrscheinlich per E-Mail an alle Mitglieder der Gruppe gesendet wurden. Loomio kann diese Kopien nicht löschen.
+Kopien deiner Aktivitäten wurden möglicherweise bereits per E-Mail an Gruppenmitglieder gesendet. Loomio kann bereits versendete E-Mails nicht löschen.
 
-Wenn du deinen Account löschst, wird dein Abonnement _nicht_ gekündigt. Wie du deine Zahlungen beendest, erfährst du unter [Abonnements](/en/policy/subscriptions/management#cancel-your-plan).
+Wenn du deinen Account löschst, wird ein kostenpflichtiges Abonnement nicht gekündigt. Wie du deine Zahlungen beendest, erfährst du unter [Abonnements](/en/policy/subscriptions/management#cancel-your-plan).
 
-Loomio hat grundlegende Entscheidungen über seine Eigentumsverhältnisse, sein Geschäftsmodell und seine Software getroffen, um die Rechte der Nutzenden zu schützen. Loomio ist eine unabhängige Genossenschaft im Eigentum ihrer Beschäftigten. Die Software ist Open Source, du kannst [deine Daten exportieren](/en/user_manual/groups/data_export), und Loomio verkauft deine Daten niemals und verwendet sie auch nicht für Werbung. Diese Verpflichtungen sind in unserer [Datenschutzerklärung](/en/policy/privacy) festgehalten und beruhen auf dem Zweck und den Werten unserer [Satzung](https://www.loomio.coop/constitution.html) und unseres [Genossenschaftshandbuchs](https://www.loomio.coop/purpose_and_vision.html). Wenn du Fragen hast, [kontaktiere uns](/contact).
+Einzelheiten dazu, wie Loomio mit deinen Daten umgeht, findest du in unserer [Datenschutzerklärung](/en/policy/privacy), oder [kontaktiere uns](/contact). Wenn du vorher eine Kopie der Aufzeichnungen einer Gruppe benötigst, kann ein Gruppenadmin [die Daten der Gruppe exportieren](/en/user_manual/groups/data_export).
 
 <!-- translation-section: to-delete-your-account-entirely -->
 
 ## Deinen Account vollständig löschen
 
-Melde dich bei Loomio an. Öffne die Seitenleiste über das Menüsymbol (☰) oben links auf dem Bildschirm. Klicke oben rechts auf dem Bildschirm auf dein Profilbild oder deine Initialen.
-
-Klicke auf den Pfeil nach unten ( ∨ ) neben deinem Namen, um die Kontoeinstellungen zu öffnen. Wähle **Profil bearbeiten**.
+1. Melde dich bei Loomio an.
+2. Öffne dein Benutzermenü, indem du deinen Namen in der Seitenleiste auswählst, und wähle dann **Profil bearbeiten**. Wenn die Seitenleiste geschlossen ist, öffne sie über die Menüschaltfläche (**☰**).
 
 ![](profile_edit.png#width-50)
 
-Scrolle nach unten und klicke auf **Account löschen**.
+3. Scrolle zum Ende der Seite und wähle **Account löschen**.
 
 ![](delete_user.png)
 
-Ein Fenster erscheint, in dem du bestätigen sollst, dass du deinen Account löschen möchtest.
+4. Bestätige, dass du deinen Account dauerhaft löschen möchtest.
 
 ![](permanently_delete_account.png#width-80)

@@ -1,37 +1,37 @@
 ---
 title: Szavazási sablonok
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: d0536d14f08b8f1f
-  who-can-manage-templates: 138021fefe136330
+  introduction: c1f1a15fc2f4681c
+  who-can-manage-templates: 224feac4774869e0
   create-a-poll-template: 40e0eddc7f902d7c
   template-title-subtitle-and-help: 6513075b3eba60ff
-  voting-method: '093e7de6c5c816ad'
+  voting-method: b1e7952e8b2f712d
   example-title-details-and-tags: c40bcf44faa3517c
-  response-options: 969ece4fd4afe274
-  duration-and-settings: 04d36bf6698bfd33
-  manage-the-template-list: 6e59f45ace92921d
+  response-options: 4cecc48318148a2e
+  duration-and-settings: 0a828fce827d11ba
+  manage-the-template-list: a8a398c7b62b897a
   save-a-poll-as-a-template: 803aeebd4d7a065e
   start-a-new-template: 41f96c7b3e0a6415
-  configure-the-template: 19236a998c0515ce
+  configure-the-template: 5c22832f6b269181
   edit-a-default-template: 8572d30093938299
 title_source: 114cca246e357304
 title_generated: bf81c7a2bbcc8a9b
@@ -47,7 +47,7 @@ Ezen az oldalon beállíthatod, hogy mely sablonok legyenek elérhetők egy csop
 
 Szavazás indításakor válaszd ki a **Javaslat** vagy a **Szavazás** fület, majd válassz a csoport számára elérhető sablonok közül.
 
-A sablon bevezetőt, mintatartalmat, lehetőségeket és beállításokat tartalmaz. A szavazás indítása előtt tekintsd át és igazítsd ezeket az adott döntéshez. Az új szavazás szerkesztése nem módosítja az újra felhasználható sablont.
+A sablon kitölti a bevezetőt, a mintatartalmat, a lehetőségeket és a beállításokat. A szavazás indítása előtt tekintsd át és igazítsd ezeket az adott döntéshez. Az új szavazás szerkesztése nem módosítja a sablont.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -83,11 +83,11 @@ Egy alapértelmezett sablon, például a **Beleegyezés** átalakításához nyi
 
 ## A sablon beállításai
 
-Adj a sablonnak olyan nevet és alcímet, amelyek leírják, mikor érdemes használni. A többi mezőt is módosíthatod, hogy jobban megfeleljenek az újrafelhasználásnak. A **Sablon mentése** kiválasztása után a sablon megjelenik a listában, amikor valaki új javaslatot vagy szavazást indít.
+Adj a sablonnak olyan nevet és alcímet, amelyek leírják, mikor érdemes használni. Módosítsd a többi mezőt is, hogy a sablon készen álljon az újrafelhasználásra, majd válaszd a **Sablon mentése** lehetőséget. A sablon ezután megjelenik, amikor valaki új javaslatot vagy szavazást indít.
 
 [![A Szabályzatmódosítás beleegyezési folyamata sablon teljes űrlapja](poll_template_new.png)](poll_template_new.png)
 
-Önálló szavazásoknál a **Csak adminok adhatnak hozzá mellékletet** beállítás csak a száladminok és a csoportadminok számára engedélyezi új fájlok és szövegbe ágyazott képek hozzáadását, a szavazatok indoklásában és a válaszokban is. A meglévő szálon belül indított szavazások az adott szál mellékletekre vonatkozó beállítását követik. A sablon módosítása csak a később indított szavazásokra van hatással.
+Önálló szavazásoknál a **Csak adminok adhatnak hozzá mellékletet** beállítás csak a száladminok és a csoportadminok számára engedélyezi új fájlok és szövegbe ágyazott képek hozzáadását, a szavazatok indoklásában és a válaszokban is. A meglévő szálon belüli szavazások az adott szál mellékletekre vonatkozó beállítását követik. A sablon módosítása csak a később indított szavazásokra van hatással.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -99,7 +99,7 @@ A címmel és az alcímmel magyarázd el, mikor érdemes a sablont választani. 
 
 ### Szavazási mód
 
-Válaszd ki, mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt.
+Válaszd ki, mit kell kifejezniük a résztvevőknek, és hogyan kell kiszámítani az eredményt:
 
 - **Javaslat**: válaszolj egy állításra a meghatározott álláspontok egyikével;
 - **Kiválasztás**: válassz ki egy vagy több lehetőséget;
@@ -126,7 +126,7 @@ Az olyan szavazási módoknál, mint a Javaslat és a Kiválasztás, beállítha
 - **Opció neve**: a válasz rövid megnevezése;
 - **Ikon**: a válasz vizuális jelölése;
 - **Jelentése**: mit fejez ki a lehetőség kiválasztása; és
-- **Indoklás kérése**: a kérdés, amely akkor jelenik meg, amikor valaki megindokolja a válaszát.
+- **Indoklás kérése**: a kérdés, amely akkor jelenik meg, amikor valaki megindokolja a szavazatát.
 
 ![](poll_type_edit_option.png)
 
@@ -138,7 +138,7 @@ Az olyan szavazási módoknál, mint a Javaslat és a Kiválasztás, beállítha
 
 Állíts be olyan alapértelmezett időtartamot, amely a sablon legtöbb használatához megfelelő. A szerző az egyes szavazásoknál módosíthatja a lezárás időpontját.
 
-Más alapbeállítások az eredmények láthatóságát, a névtelen szavazást, a [súlyozott szavazást](../weighted_voting/), a szavazatok indoklásának követelményeit, az emlékeztetőket, a határozatképességet és az adott szavazási mód működését szabályozhatják. A hatásukról a [Javaslatok és szavazások beállításai](../settings/) oldalon olvashatsz.
+Más alapbeállítások az eredmények láthatóságát, a névtelen szavazást, a [súlyozott szavazást](../weighted_voting/), a szavazatok indoklásának követelményeit, az emlékeztetőket, a határozatképességet és az adott szavazási mód működését szabályozzák. A részletekről a [Javaslatok és szavazások beállításai](../settings/) oldalon olvashatsz.
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -153,7 +153,7 @@ A sablon melletti műveleti menüben a következőket teheted:
 
 ![A csoport sablonlistája a Szabályzatmódosítás beleegyezési folyamata sablon megnyitott műveleti menüjével](template_manage.png)
 
-Válaszd a **Rejtett sablonok megjelenítése** lehetőséget az elrejtett sablonok áttekintéséhez vagy visszaállításához. Az alapértelmezett sablonok elrejthetők vagy a csoporthoz igazíthatók, de nem törölhetők.
+Válaszd a **Rejtett sablonok megjelenítése** lehetőséget az elrejtett sablonok áttekintéséhez vagy visszaállításához. A csoportod alapértelmezett sablonjait elrejtheted vagy a csoporthoz igazíthatod, de nem törölheted őket.
 
 A sablon módosítása nem változtatja meg a belőle már elindított javaslatokat vagy szavazásokat.
 
@@ -161,4 +161,4 @@ A sablon módosítása nem változtatja meg a belőle már elindított javaslato
 
 ### Ki kezelheti a sablonokat
 
-A csoport adminisztrátorai a csoportjuk összes szavazási sablonját létrehozhatják és kezelhetik. A **Csoport beállítások** → **Engedélyek** alatt bekapcsolhatják az **A tagok sablonokat hozhatnak létre** beállítást. Ha ez be van kapcsolva, a tagok sablonokat hozhatnak létre, és kezelhetik a saját maguk által létrehozott sablonokat.
+A csoportadminok a csoportjuk összes szavazási sablonját létrehozhatják és kezelhetik. A **Csoport beállítások** → **Engedélyek** alatt bekapcsolhatják az **A tagok sablonokat hozhatnak létre** beállítást. Ha ez be van kapcsolva, a tagok sablonokat hozhatnak létre, és kezelhetik a saját maguk által létrehozott sablonokat.

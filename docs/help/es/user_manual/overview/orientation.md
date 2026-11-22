@@ -1,28 +1,28 @@
 ---
 title: Visita rápida
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 1f2aa998e80dc027
-  group-page: 5c6dc3eaeff87ab6
-  tabs: c4d4af5515e66cff
+  introduction: c0420cf8c0e603ff
+  group-page: 8903b12072f7d048
+  tabs: a5dde0a9aa3d4b7a
   sidebar: e9407a5548804031
-  user-settings: b7cd63433073a8b1
-  notifications: 87a89d21f6640fce
+  user-settings: beb49cb99ba0576c
+  notifications: c923184a96ef129d
   what-to-do-next: 3552ba2afa5b40d9
-  mobile-navigation: fc19b0f4fe5906a2
+  mobile-navigation: 7a768f226481cd7e
 title_source: c41a33370cd580dd
 title_generated: fee22aa81fb97856
 ---
@@ -31,13 +31,13 @@ title_generated: fee22aa81fb97856
 
 # Visita rápida
 
-Esta página presenta las partes principales de la interfaz de Loomio y dónde encontrar el trabajo en el que participas.
+Esta página presenta las partes principales de Loomio y dónde encontrar tu trabajo.
 
 <!-- translation-section: group-page -->
 
 ## Página del grupo
 
-La página de inicio de tu grupo presenta el grupo y permite acceder a su trabajo.
+La página de inicio de tu grupo describe el grupo y ofrece enlaces a su trabajo.
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ La página de inicio de tu grupo presenta el grupo y permite acceder a su trabaj
 
 ### Pestañas
 
-Las pestañas debajo de la descripción del grupo permiten acceder a:
+Las pestañas debajo de la descripción del grupo muestran:
 
-**Discusiones** - Los hilos de discusión del grupo y la actividad reciente.
-
-**Sondeos** - Una lista de las encuestas activas en tu grupo.
-
-**Integrantes** - Las personas que pertenecen al grupo.
-
-**Archivos** - Documentos y otros archivos adjuntos en el grupo. La pestaña reúne archivos de los contextos de las discusiones, los comentarios, las propuestas y las encuestas, para que puedas encontrar un documento sin recordar dónde se adjuntó.
+- **Discusiones**: Los hilos de discusión del grupo y la actividad reciente.
+- **Sondeos**: Las encuestas abiertas y cerradas del grupo.
+- **Integrantes**: Las personas que pertenecen al grupo.
+- **Archivos**: Los archivos adjuntos a discusiones, comentarios, propuestas y encuestas de todo el grupo, para que puedas encontrar un documento sin recordar dónde se compartió.
 
 Consulta [Buscar contenido](/en/user_manual/overview/finding-content) para obtener ayuda con las búsquedas, los filtros, las etiquetas, los marcadores y las discusiones sin leer.
 
@@ -75,13 +72,13 @@ Selecciona tu nombre en la barra lateral para abrir tu menú de usuario.
 
 ![](user_settings_sidebar.png)
 
-Usa este menú para editar tu perfil, cambiar la configuración de las notificaciones, elegir un tema, gestionar la configuración de tu cuenta y cerrar sesión.
+Desde este menú, puedes editar tu perfil, cambiar la configuración de las notificaciones, elegir un tema, gestionar tu cuenta y cerrar sesión.
 
 <!-- translation-section: notifications -->
 
 ## Notificaciones
 
-El botón de la campana de la esquina superior derecha en ordenador o de la barra de navegación inferior en móvil abre tus notificaciones dentro de la aplicación. Aparece un indicador cuando tienes notificaciones que aún no has visto.
+Selecciona el icono de la campana en la esquina superior derecha en ordenador o en la barra de navegación inferior en móvil para abrir tus notificaciones dentro de la aplicación. Un indicador muestra cuándo tienes notificaciones sin leer.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Consulta [Notificaciones](/en/user_manual/users/email_settings) para conocer las
 
 ## Navegación móvil
 
-En el móvil, la barra de navegación inferior te permite acceder rápidamente a la barra lateral, al panel y a las notificaciones. Mientras lees una discusión, el menú del hilo te permite acceder al contenido y a las acciones del hilo.
+En el móvil, la barra de navegación inferior abre la barra lateral, el panel y las notificaciones. Dentro de una discusión, el menú del hilo abre el contenido y las acciones del hilo.
 
 <!-- translation-section: what-to-do-next -->
 

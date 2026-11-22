@@ -1,37 +1,37 @@
 ---
 title: 有権者の管理
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: b7795b7385836c84
-  invite-people-to-vote-in-a-poll: 1293f18a7b4882cb
+  invite-people-to-vote-in-a-poll: f1267ccce8b16c32
   invite-guests-or-experts: 4ed19aac084705c5
   engage-people-while-a-poll-is-running: b9e5c8c5c6a8247b
   add-voters-to-the-poll: 1cb76908f4c3c2f8
   remove-people-from-the-poll: 251b2c3e26d802b7
-  remind-people-to-vote: e82494f287e28233
+  remind-people-to-vote: f91c9aebcc00acd1
   view-notification-history: e065424d8ad29e4a
   close-early: 701e0de243a1162e
   reopen: 76ab0000750ed570
-  choose-an-audience: 18550912fd7ea79d
-  check-your-recipients: 71ccc641e3d51539
+  choose-an-audience: eefe46ca53056617
+  check-your-recipients: 37b462bc4d37adc0
   send-the-invitations: e0c676d51cf8b069
 title_source: 10858faa0464257e
 title_generated: ecbb5e3fb9bc7db0
@@ -50,7 +50,7 @@ title_generated: ecbb5e3fb9bc7db0
 
 ## 投票に招待する
 
-**選ばれた人のみ**でアンケートを開始すると、**有権者の管理**ウィンドウが開きます。アンケートで**有権者の管理**を選択して開くこともできます。
+**選ばれた人のみ**でアンケートを開始すると、**有権者の管理**が自動的に開きます。アンケートで**有権者の管理**を選択して開くこともできます。
 
 ![アンケートの下部にある「有権者の管理」ボタン](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ title_generated: ecbb5e3fb9bc7db0
 
 ### 招待先を選択する
 
-空の**有権者を探す、または招待する**欄をクリックすると、候補が次の順序で表示されます。
+空の**有権者を探す、または招待する**欄を選択すると、候補が次の順序で表示されます。
 
 - 所属するグループ
 - グループに[委任された投票者](/en/user_manual/groups/delegated_voters)がいる場合は、そのグループの**代表者**
@@ -72,7 +72,7 @@ title_generated: ecbb5e3fb9bc7db0
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-招待先を選択すると、そこに含まれる人をまとめて招待できます。例えば、**Oatmilk Cooperative**を選択すると、そのグループの人が含まれます。接続されたチャットルームを選択して、そこに招待を投稿することもできます。チャットルームに投稿しても、そのメンバーは投票者として追加されません。
+招待先を選択すると、そこに含まれる人をまとめて招待できます。例えば、**Oatmilk Cooperative**を選択すると、そのグループの全員が含まれます。接続されたチャットルームを選択して、そこに招待を投稿することもできます。チャットルームに投稿しても、そのメンバーは投票者として追加されません。
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ title_generated: ecbb5e3fb9bc7db0
 
 ![Oatmilk Cooperativeが選択され、欄の下に招待先の人数が表示されている状態](proposal_invite_members.png)
 
-招待先の名前をクリックすると、個々の人の一覧が展開されます。名前の横にある**×**を選択すると、その人を今回の招待から除外できます。グループから削除されることはありません。
+招待先の名前を選択すると、個々の人の一覧が展開されます。名前の横にある**×**を選択すると、その人を今回の招待から除外できます。グループから削除されることはありません。
 
 ![グループの招待先を展開した状態。各人の名前と削除ボタンが表示されています](proposal_invite_expand.png)
 
@@ -132,7 +132,7 @@ title_generated: ecbb5e3fb9bc7db0
 
 ### 投票を促す通知を送る
 
-アンケートで**思い出させる**を選択し、通知先を選んでメッセージを追加した後、**思い出させる**を選択して送信します。**未投票の人**を選択すると、まだ回答が必要な人に通知できます。
+アンケートで**思い出させる**を選択し、**未投票の人**などの通知先を選んでメッセージを追加した後、**思い出させる**を選択して送信します。
 
 ![未投票の人を宛先にし、決定の期限についてのメッセージを添えた通知](proposal_remind.png)
 

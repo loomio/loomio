@@ -1,25 +1,25 @@
 ---
 title: Punteggio
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/score/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/score/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 7881bcdd5aad5df4
-  when-to-use-score: 0ef92ec0bb907a3f
+  introduction: 2d2ee7470b7af3e9
+  when-to-use-score: c77f6021d2718aee
   example-score-possible-trial-locations: 3c9438177a822198
-  set-up-the-poll: 29b0296533594cd6
-  vote: 1113501e9e6736b7
-  read-the-results: 3e996e9bcc830d1d
-  share-an-outcome: 243aaac17e645331
+  set-up-the-poll: 7f31a87784ef45a1
+  vote: 7d71803e67a4da5f
+  read-the-results: 6c6967f4469924b0
+  share-an-outcome: 37bfe6ea8e84da54
 generated:
-  introduction: dacb786c17c86b14
-  when-to-use-score: 9181bfcb198211a8
+  introduction: a6fceb06074fed6b
+  when-to-use-score: 94b3aaff78ce3e0b
   example-score-possible-trial-locations: 86c910f0de66c611
-  set-up-the-poll: 1b13c96e933c5a3d
-  vote: 3e80357733a1ae35
-  read-the-results: 364b9d74ec6fb732
+  set-up-the-poll: af9fac4b4730f5e1
+  vote: b7b1ffcfba43c53b
+  read-the-results: 6366cbfbaff8ccd7
   share-an-outcome: 757bb76cb1750faf
 title_source: 38e5a46cbc5ad328
 title_generated: 0b984d58dec985e1
@@ -29,7 +29,7 @@ title_generated: 0b984d58dec985e1
 
 # Punteggio
 
-Punteggio misura come i partecipanti valutano ogni opzione su una scala numerica condivisa. A differenza di Scelta, chiede alle persone di rispondere a ogni opzione, quindi i risultati mostrano sia cosa preferiscono sia quanto lo preferiscono.
+Punteggio misura come i partecipanti valutano ogni opzione su una scala numerica condivisa. A differenza di Scelta, chiede alle persone di rispondere a ogni opzione, mostrando sia cosa preferiscono sia quanto lo preferiscono.
 
 <!-- translation-section: when-to-use-score -->
 
@@ -43,7 +43,7 @@ Usa Punteggio quando ogni opzione può essere valutata indipendentemente rispett
 - valutare domande di finanziamento secondo un criterio comune; oppure
 - confrontare l'idoneità di diverse proposte.
 
-Definisci cosa significano gli estremi inferiore e superiore della scala. Un numero senza una definizione condivisa può avere significati diversi per elettori diversi. Usa [Scelta](/en/user_manual/polls/choose/) quando ti servono solo selezioni, oppure [Ripartizione](/en/user_manual/polls/allocate/) quando i partecipanti devono fare compromessi entro un budget limitato.
+Definisci cosa significano gli estremi inferiore e superiore della scala, in modo che tutti interpretino i numeri allo stesso modo. Usa [Scelta](/en/user_manual/polls/choose/) quando ti servono solo selezioni, oppure [Ripartizione](/en/user_manual/polls/allocate/) quando i partecipanti devono fare compromessi entro un budget limitato.
 
 <!-- translation-section: example-score-possible-trial-locations -->
 
@@ -55,13 +55,13 @@ La cooperativa Oatmilk sta scegliendo le sedi per una sperimentazione con bottig
 
 ## Configura il sondaggio
 
-Formula una domanda che si applichi allo stesso modo a ogni opzione. Aggiungi gli elementi da valutare, imposta il **Punteggio minimo** e il **Punteggio massimo** e spiega gli estremi della scala nei dettagli. I significati delle opzioni possono chiarire cosa comprende ogni elemento.
+Formula una domanda che si applichi allo stesso modo a ogni opzione. Aggiungi gli elementi da valutare, imposta il **Punteggio minimo** e il **Punteggio massimo** e spiega gli estremi della scala nei dettagli. Puoi aggiungere un significato all'opzione per chiarire cosa comprende ogni elemento.
 
 ![](form.png)
 
-Scegli una scala che i partecipanti possano applicare in modo coerente. Una scala da 0 a 5 è rapida da usare; una scala da 0 a 10 permette distinzioni più precise. Una maggiore precisione non produce necessariamente informazioni migliori, quindi usa la scala più breve adatta alla domanda.
+Scegli una scala che i partecipanti possano applicare in modo coerente. Una scala da 0 a 5 è rapida da usare; una scala da 0 a 10 permette distinzioni più precise. Usa la scala più breve adatta alla tua domanda: un intervallo più ampio non dà sempre risultati migliori.
 
-Il voto anonimo e la visualizzazione delle opzioni in ordine casuale possono essere utili quando vuoi ridurre l'influenza degli altri o dell'ordine delle opzioni.
+Puoi usare il voto anonimo o mostrare le opzioni in ordine casuale per ridurre l'influenza degli altri e dell'ordine delle opzioni.
 
 <!-- translation-section: vote -->
 
@@ -71,7 +71,7 @@ I partecipanti spostano un cursore per assegnare un punteggio a ogni opzione. In
 
 ![](voting.png)
 
-Il motivo spiega come l'elettore ha applicato la scala. Questo aiuta il gruppo a distinguere un punteggio basso dovuto alla mancanza di informazioni da uno dovuto a una preoccupazione concreta.
+Il motivo del voto spiega come l'elettore ha usato la scala. Questo aiuta il gruppo a capire se un punteggio basso riflette una preoccupazione concreta o una mancanza di informazioni.
 
 <!-- translation-section: read-the-results -->
 
@@ -85,7 +85,7 @@ Per ogni opzione, i risultati mostrano:
 
 ![](results.png)
 
-In questo esempio, il **bar della stazione centrale** ha la media più alta, pari a 7,5. Gli **uffici del porto** hanno la media più bassa, pari a 5,25, mentre il mercato sul lungofiume e l'area ristoro dell'università sono a pari merito con 7. Quattro delle cinque persone invitate hanno votato, quindi il gruppo può anche vedere che manca una risposta.
+In questo esempio, il **bar della stazione centrale** ha la media più alta, pari a 7,5. Gli **uffici del porto** hanno la media più bassa, pari a 5,25, mentre il mercato sul lungofiume e l'area ristoro dell'università sono a pari merito con 7. Quattro delle cinque persone invitate hanno votato, quindi manca ancora una risposta.
 
 Confronta le medie solo quando le opzioni hanno un numero simile di elettori. Leggi i motivi dei voti prima di considerare significativa una piccola differenza.
 

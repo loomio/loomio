@@ -1,56 +1,56 @@
 ---
 title: Configurações
-source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-04'
+  'on': '2026-11-22'
 sections:
-  introduction: 145c23b2412eff98
+  introduction: 4dfc411e9ec40783
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 59bad3e1e0c4605e
-  add-content: ec0c0742f6465e9c
-  voting-options: d0ea31745ce8b651
-  edit-voting-options: ef0d61585b34fbd6
-  opening-time: f8544bec7cd35ca5
-  more-settings: fd837a51b81cbc13
-  reminder: c11a5bdd82cd3b84
-  anonymous-voting: 35f5392ee8870076
-  vote-reason: b1ebf2700ce8248b
-  hide-results: 6dc7bf0b34c89a68
+  proposal-and-poll-templates: 822e5f4ed69852ee
+  add-content: 6811509f271e7050
+  voting-options: 28968995d558db8f
+  edit-voting-options: 692bc37a97a0eea6
+  opening-time: e9a9ca1825565db3
+  more-settings: 6a7cd5bb6e0a9271
+  reminder: 673e6181f026afe0
+  anonymous-voting: 70e89af6ff170bc8
+  vote-reason: 8f5d05ee4f950079
+  hide-results: a59502626d4b75c6
   managing-polls: b26fc41e19371d54
-  edit-poll: ddf392426410ec5a
+  edit-poll: d544d21f39ce060f
   notification-history: f132def867659f30
-  export-poll: 3c015ed01e8e7a6a
-  print: dbe152fdea17fc00
-  delete: fa13f1461f6b4e5f
-  save-bookmark: 45a250076a3fd7e1
-  save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 4e0c2bd8db67a4d8
-  editing-settings-before-voting-opens: 9d1f5122db7998a3
+  export-poll: d94d6cba846d9b25
+  print: 8caef79f1356f7c4
+  delete: 10850ca0cae15f77
+  save-bookmark: 5415dd146c0190c1
+  save-as-template: 2ddaebfb13ea40e4
+  who-can-vote: c9cb72fec8cea6aa
+  editing-settings-before-voting-opens: a3e52c6542c3eb4c
 generated:
-  introduction: 9e65c25dba50f2d8
+  introduction: d85318664be6562e
   setting-up-a-proposal-or-poll: dfd4131bed6df169
-  proposal-and-poll-templates: d3dbd19184fb0756
-  add-content: d201e31872aa3c68
-  voting-options: ce27d4aa22b6e72a
-  edit-voting-options: 649d9c3d8156c05d
-  opening-time: f506750f1d3b82dd
-  more-settings: f868cbc69693539f
-  reminder: 79c42ede0784f24a
-  anonymous-voting: 27c07a8c2e98568e
-  vote-reason: 70f2e2565d94b6d8
-  hide-results: 5ce488d88b0b7b6d
+  proposal-and-poll-templates: fffea5750a0da87d
+  add-content: 3a870956ae619af7
+  voting-options: f7d1269cbfc73124
+  edit-voting-options: e358b5e6386e78de
+  opening-time: 2ffaa61808c543ef
+  more-settings: 8d99f2faa0a30b7e
+  reminder: 7f921be9136e8f95
+  anonymous-voting: ba691ac21da878be
+  vote-reason: 6c497567103c4081
+  hide-results: 330c073dcd88f356
   managing-polls: 301e2f77ba8cb7da
-  edit-poll: e8a3a23ee27ba8e5
+  edit-poll: c412d098171ef2fb
   notification-history: cbcb5b02bfc2d579
-  export-poll: 591f9cc02be87cb2
-  print: 26126b674c3fbb7e
-  delete: 1e0a0d0a1becaf73
-  save-bookmark: a96ae6e16f6024d9
-  save-as-template: 2f1f681d0731b2a3
-  who-can-vote: b1bfbba60470f995
-  editing-settings-before-voting-opens: c7652f5667eeeddc
+  export-poll: 40a82554eae4aede
+  print: 7b0cb11b81167d8e
+  delete: a0e28f3e19ad5b66
+  save-bookmark: 05f469469c0b85f8
+  save-as-template: 66153a89098bf6e8
+  who-can-vote: 10e7a415bb9c72d3
+  editing-settings-before-voting-opens: f6f6d92f5408e038
 title_source: 74a883a037bc227f
 title_generated: 76b0fb6ad18939ac
 ---
@@ -58,6 +58,8 @@ title_generated: 76b0fb6ad18939ac
 <!-- translation-section: introduction -->
 
 # Configurações de propostas e enquetes
+
+Configure como uma proposta ou enquete funciona, quem pode votar e como os resultados aparecem. A maioria das configurações está disponível quando você cria ou edita uma enquete.
 
 <!-- translation-section: setting-up-a-proposal-or-poll -->
 
@@ -67,11 +69,11 @@ title_generated: 76b0fb6ad18939ac
 
 ### Modelos de propostas e enquetes
 
-Escolha o modelo de proposta que você quer usar.
+Escolha o modelo de proposta ou enquete que você quer usar.
 
 ![](proposal_templates.png)
 
-![O formulário de proposta, do título e dos detalhes às opções de votação, à duração, à definição de quem pode votar e ao painel Mais configurações recolhido](proposal_new.png)
+![O formulário de proposta, do título e dos detalhes às opções de voto, à duração, à definição de quem pode votar e ao painel Mais configurações recolhido](proposal_new.png)
 
 <!-- translation-section: add-content -->
 
@@ -79,47 +81,35 @@ Escolha o modelo de proposta que você quer usar.
 
 ### Título e detalhes
 
-**Grupo:** Verifique se o grupo correto está selecionado para sua proposta ou enquete.
+- **Grupo:** Verifique se o grupo correto está selecionado para sua proposta ou enquete.
+- **Título:** Dê à sua proposta ou enquete um título curto e claro.
+- **Detalhes:** Explique o que você está pedindo às pessoas que decidam e o que acontece se a proposta for aprovada.
 
-**Título:** Dê à sua proposta ou enquete um título curto e relevante.
-
-**Detalhes:** Explique o que você está pedindo às pessoas e inclua detalhes suficientes para que todos saibam o que significa votar.  
-
-Os modelos predefinidos incluem orientações para ajudar você a escrever uma boa proposta — use essas orientações ou adicione seus próprios detalhes.
-
-Ao criar uma proposta, apresente suas expectativas e descreva o impacto que ela terá se for adotada.
-
-Você pode anexar arquivos, inserir imagens e tabelas e adicionar títulos e listas com os [botões de formatação](/en/user_manual/discussions/formatting). Esses recursos podem ajudar você a compartilhar informações de apoio e facilitar a leitura de propostas mais longas.
+Os modelos incluem orientações iniciais que você pode usar ou substituir. Você pode anexar arquivos, inserir imagens e tabelas e adicionar títulos e listas com as [ferramentas de formatação](/en/user_manual/discussions/formatting) para compartilhar informações de apoio e facilitar a leitura de propostas mais longas.
 
 <!-- translation-section: voting-options -->
 
 ### Opções de voto
 
-Cada modelo de proposta ou enquete oferece opções de voto.
+Cada modelo oferece opções de voto padrão. Dependendo do modelo, você pode editar, remover, reordenar ou adicionar opções para adequá-las ao seu processo de decisão:
 
-Dependendo do modelo, você pode editar, remover, reordenar ou adicionar opções de voto para adequá-las ao processo de decisão que está conduzindo.
-
-- Use o ícone de lápis para editar uma opção de voto
-- Use o ícone de lixeira para remover opções de voto indesejadas
-- Use a alça para alterar a ordem das opções de voto
-- Adicione opções de voto com **Adicionar opção** quando o modelo permitir opções personalizadas
+- Selecione o ícone de lápis para editar uma opção de voto.
+- Selecione o ícone de lixeira para remover uma opção de voto.
+- Arraste a alça para alterar a ordem das opções de voto.
+- Selecione **Adicionar opção** para adicionar uma opção de voto quando o modelo permitir opções personalizadas.
 
 ![](vote_options.png)
 
 <!-- translation-section: edit-voting-options -->
 
 ### Editar opções de voto
-Você pode configurar as opções de voto de várias formas para adequá-las à maneira como sua organização toma decisões.
 
-Use o ícone de lápis ao lado da opção de voto para abrir a janela de edição:
+Selecione o ícone de lápis ao lado de uma opção de voto para editá-la:
 
-**Nome da opção:** Um nome curto para a opção.
-
-**Ícone:** Selecione um ícone para a opção, como polegar para cima, polegar para baixo, Me abstenho ou Bloqueio.
-
-**Significado:** Uma frase que explica o que significa escolher essa opção.
-
-**Pergunta sobre o motivo:** Uma pergunta que incentive os eleitores a explicar seus motivos ou reconsiderar sua posição.
+- **Nome da opção:** Um nome curto para a opção.
+- **Ícone:** Um ícone para a opção, como polegar para cima, polegar para baixo, Me abstenho ou Bloqueio.
+- **Significado:** Uma frase que explica o que significa escolher essa opção.
+- **Pergunta sobre o motivo:** Uma pergunta que incentive os eleitores a explicar sua escolha.
 
 ![](proposal_edit_option.png)
 
@@ -127,30 +117,23 @@ Use o ícone de lápis ao lado da opção de voto para abrir a janela de ediçã
 
 ### Duração
 
-Por padrão, a votação começa imediatamente quando você cria a enquete. Se quiser agendar o início da votação para mais tarde, desmarque **A votação começa imediatamente.** e selecione uma data e um horário de abertura.
+Por padrão, a votação começa imediatamente quando você inicia a enquete. Para agendá-la para mais tarde, desmarque **A votação começa imediatamente.** e escolha uma data e um horário de abertura.
 
-Isso é útil para dar tempo à discussão antes do início da votação ou para garantir que uma enquete ou proposta esteja configurada corretamente e agendada para o momento adequado.
+O agendamento permite dar tempo às pessoas para discutir antes do início da votação ou preparar enquetes e adicionar eleitores com antecedência. As pessoas podem ver uma enquete agendada antes da abertura, mas só podem votar a partir do horário de abertura. Os eleitores recebem uma notificação quando a votação começa, em vez de quando você os adiciona.
 
-Por exemplo, se seu grupo tiver várias decisões para votar em uma próxima assembleia, você pode preparar as enquetes e adicionar os eleitores com antecedência, depois agendar todas para abrir quando o período de votação começar. As pessoas podem ver as enquetes antes da abertura, mas não podem votar antecipadamente.
+Para abrir uma enquete agendada antes do horário previsto, selecione **Editar enquete de escolha**, marque **A votação começa imediatamente.** e salve.
 
-Quando uma enquete tem um horário de abertura agendado, você pode adicionar eleitores antes do início da votação. Os eleitores receberão uma notificação quando a votação começar, em vez de quando forem adicionados.
-
-Para iniciar a votação antes do horário agendado, selecione **Editar enquete de escolha**, marque **A votação começa imediatamente.** e salve.
-
-**Notificar eleitores quando a enquete abrir:** Quando esta opção está marcada (padrão), todos os eleitores recebem uma notificação quando a votação começa. Desmarque esta opção se quiser iniciar a votação sem enviar notificações.
-
-**Data e horário de encerramento:** Selecione a data e o horário de encerramento da sua enquete.
-
-Dê tempo suficiente para as pessoas votarem. Você pode programar a proposta para encerrar antes de uma reunião ou evitar o encerramento durante um fim de semana, para que as pessoas recebam um lembrete em tempo hábil. Se necessário, você pode encerrar a enquete antecipadamente ou adiar o horário de encerramento.
+- **Notificar eleitores quando a enquete abrir:** Esta opção está marcada por padrão para que todos os eleitores recebam uma notificação quando a votação começar. Desmarque-a para iniciar a votação sem enviar notificações.
+- **Data e horário de encerramento:** Escolha quando a votação será encerrada. Dê tempo suficiente para as pessoas votarem — por exemplo, encerrando antes de uma reunião ou evitando fins de semana para que os lembretes cheguem em um momento útil. Você pode encerrar uma enquete antecipadamente ou adiar seu horário de encerramento enquanto ela estiver aberta.
 
 <!-- translation-section: who-can-vote -->
 
 ### Quem pode votar?
 
-Escolha quem pode votar na enquete.
+Escolha quem pode votar na enquete:
 
-- **Alguém no grupo** (ou **Qualquer pessoa no tópico**): todas as pessoas com acesso à enquete podem votar, incluindo aquelas que entrarem depois.
-- **Apenas para pessoas selecionadas:** somente as pessoas que você adicionar podem votar. Use esta opção quando apenas alguns membros devem votar, como um conselho ou um comitê.
+- **Alguém no grupo** (ou **Qualquer pessoa no tópico**): Todas as pessoas com acesso à enquete podem votar, incluindo aquelas que entrarem depois.
+- **Apenas para pessoas selecionadas:** Somente as pessoas que você adicionar podem votar. Use esta opção quando apenas alguns membros devem votar, como um conselho ou um comitê.
 
 Depois que você inicia uma enquete **Apenas para pessoas selecionadas**, a tela **Gerenciar eleitores** é aberta para que você possa adicionar eleitores. Você pode adicionar ou remover eleitores depois. Consulte [Gerenciar eleitores](/en/user_manual/polls/manage_voters).
 
@@ -158,14 +141,18 @@ Depois que você inicia uma enquete **Apenas para pessoas selecionadas**, a tela
 
 ## Mais configurações
 
+Abra **Mais configurações** para configurar lembretes, votação anônima, motivos dos votos, visibilidade dos resultados, [quórum](/en/user_manual/polls/quorum/), [votação ponderada](/en/user_manual/polls/weighted_voting/) e **Mostrar opções em ordem aleatória** (disponível nas enquetes Escolher, Pontuar, Distribuir e Classificar para reduzir a influência da ordem das opções).
+
 ![](settings_advanced.png)
 
 <!-- translation-section: reminder -->
 
 ### Lembrete
-Envie uma notificação de 'Encerramento em breve' 24 horas antes do encerramento da enquete. Isso pode ser uma oportunidade para as pessoas verem como outras votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
 
-Opções de configuração:
+Envie uma notificação de "Encerramento em breve" 24 horas antes do encerramento da enquete para incentivar a participação ou dar às pessoas a oportunidade de revisar seu voto.
+
+Opções:
+
 - Ninguém
 - Autor
 - Pessoas que não votaram (padrão)
@@ -176,49 +163,46 @@ Em uma enquete anônima com duração de pelo menos 24 horas, o Loomio envia aut
 <!-- translation-section: anonymous-voting -->
 
 ### Votação anônima
-Quando esta opção está habilitada, os votos são armazenados separadamente das identidades dos eleitores. Os resultados aparecem após o encerramento da votação, e os eleitores não podem adicionar motivos, consultar o voto enviado nem alterá-lo.
 
-Consulte [Votação anônima](/en/user_manual/polls/anonymous_voting) para saber como as identidades dos eleitores são separadas dos votos enviados, quais informações são mantidas e quais são os limites dessa proteção.
+Quando esta opção está habilitada, o Loomio armazena os votos separadamente das identidades dos eleitores. Os resultados ficam ocultos até o encerramento da votação, e os eleitores não podem adicionar motivos aos votos, consultar o voto enviado nem alterá-lo.
+
+Consulte [Votação anônima](/en/user_manual/polls/anonymous_voting) para saber como as identidades são separadas dos votos, quais informações são mantidas e quais são os limites dessa proteção.
 
 > [!WARNING]
-> Depois que uma enquete começa, você não pode editá-la para torná-la anônima nem desativar a configuração de votação anônima. Você não pode reabrir uma enquete anônima após seu encerramento.
+> Depois que a votação começa, você não pode ativar nem desativar a votação anônima. Você não pode reabrir uma enquete anônima após seu encerramento.
 
 <!-- translation-section: vote-reason -->
 
 ### Motivo do voto
-Pode ser útil entender por que as pessoas votaram como votaram. Com esta configuração, você pode incentivar as pessoas a compartilhar o que pensam ao votar.
 
-As configurações disponíveis dependem do modelo:
+Peça aos eleitores que expliquem por que votaram como votaram. As configurações disponíveis dependem do modelo:
 
-- **Opcional** permite que os eleitores escolham se querem apresentar um motivo
-- **Necessário para discordar ou bloquear** exige um motivo quando a opção selecionada usa o ícone de voto Discordo ou Bloqueio
-- **Necessário para bloqueio** exige um motivo quando a opção selecionada usa o ícone de voto Bloqueio
-- **Obrigatório** exige que todos os eleitores apresentem um motivo
-- **Desabilitado** remove o campo de motivo do voto
+- **Opcional:** Os eleitores podem escolher se querem apresentar um motivo para o voto.
+- **Necessário para discordar ou bloquear:** Os eleitores devem apresentar um motivo quando escolhem uma opção com o ícone Discordo ou Bloqueio.
+- **Necessário para bloqueio:** Os eleitores devem apresentar um motivo quando escolhem uma opção com o ícone Bloqueio.
+- **Obrigatório:** Todos os eleitores devem apresentar um motivo.
+- **Desabilitado:** Remove o campo de motivo do voto.
 
 ![](vote_reason_options.png)
 
-As configurações condicionais seguem o ícone de voto, e não o nome da opção. Elas continuam sendo aplicadas se você renomear Discordo para um termo como Objeção. O modelo Consentimento usa **Necessário para discordar ou bloquear** por padrão, enquanto o modelo Consenso usa **Necessário para bloqueio**. Os outros modelos usam **Opcional** por padrão. O autor da enquete pode alterar essa configuração para uma enquete específica.
+As configurações condicionais seguem o ícone de voto, e não o nome da opção, por isso continuam sendo aplicadas se você renomear Discordo para Objeção. O modelo Consentimento usa **Necessário para discordar ou bloquear** por padrão, o modelo Consenso usa **Necessário para bloqueio** e os outros modelos usam **Opcional**. O autor da enquete pode alterar essa configuração para uma enquete específica.
 
-**Limitar o motivo a no máximo 500 caracteres:** Motivos de voto curtos são mais fáceis de entender. Um conjunto de motivos concisos é um recurso útil para tomar uma decisão. Esta opção está marcada por padrão. Desmarque-a para permitir motivos mais longos.
+**Limitar o motivo a no máximo 500 caracteres:** Esta opção está marcada por padrão para manter os motivos dos votos concisos. Desmarque-a para permitir motivos mais longos.
 
 <!-- translation-section: hide-results -->
 
 ### Ocultar resultados
 
-Se você quiser que as pessoas votem sem saber como outras votaram, pode ocultar os resultados da enquete.
+Oculte os resultados da enquete para que as pessoas possam votar sem ver como outras votaram:
 
-Quando os resultados ficam ocultos até votar, as pessoas podem ver as opções escolhidas e os motivos dos votos depois de votar.
-
-Quando os resultados ficam ocultos até o encerramento da votação, as respostas aos votos e as menções nos motivos dos votos ficam desabilitadas até a enquete ser encerrada. Você pode prorrogar o prazo de encerramento enquanto a enquete estiver aberta, mas não pode reabri-la depois de encerrada.
+- **Até votar:** As pessoas podem ver as opções escolhidas e os motivos dos votos depois de enviar seu próprio voto.
+- **Até o encerramento da votação:** Os resultados, as respostas aos votos e as menções nos motivos dos votos ficam ocultos até a enquete ser encerrada. Você pode adiar o horário de encerramento enquanto a enquete estiver aberta, mas não pode reabri-la depois de encerrada.
 
 <!-- translation-section: editing-settings-before-voting-opens -->
 
 ### Editar configurações antes do início da votação
 
-Pessoas com permissão para editar uma enquete podem alterar seus detalhes e configurações, incluindo a votação anônima e a visibilidade dos resultados, antes do início da votação. Depois que a votação começa, a configuração de anonimato não pode ser alterada e os resultados ocultos até o encerramento não podem ser revelados antes desse momento.
-
-Enquetes anônimas sempre ocultam os resultados até o encerramento da votação.
+Antes do início da votação, qualquer pessoa com permissão para editar a enquete pode alterar seus detalhes e configurações, incluindo a votação anônima e a visibilidade dos resultados. Depois que a votação começa, a configuração de anonimato não pode ser alterada e os resultados ocultos até o encerramento não podem ser revelados antes desse momento.
 
 <!-- translation-section: managing-polls -->
 
@@ -232,13 +216,13 @@ Abra o menu de três pontos no canto inferior direito da enquete.
 
 ### Editar enquete
 
-Use **Editar enquete de escolha** para editar o conteúdo ou as configurações da enquete.
+Selecione **Editar enquete de escolha** para alterar o conteúdo ou as configurações da enquete.
 
 <!-- translation-section: save-as-template -->
 
 ### Salvar como modelo
 
-Use **Salvar como modelo** no menu de ações de uma enquete para reutilizar seu conteúdo, opções de voto, explicações e configurações. Revise o formulário de modelo preenchido previamente, dê um nome e um subtítulo ao modelo e selecione **Salvar modelo**. As pessoas do grupo poderão então escolhê-lo ao iniciar uma nova enquete.
+Selecione **Salvar como modelo** para reutilizar o conteúdo, as opções de voto, as explicações e as configurações da enquete. Revise o formulário preenchido previamente, dê um nome e um subtítulo ao modelo e selecione **Salvar modelo**. As pessoas do grupo poderão então escolhê-lo ao iniciar uma nova enquete.
 
 Admins do grupo podem salvar modelos. Os membros também podem salvá-los quando **Os membros podem criar modelos.** estiver habilitado nas permissões do grupo. Consulte [Modelos de enquete](/en/user_manual/polls/poll_templates) para mais detalhes.
 
@@ -254,13 +238,13 @@ O **Histórico de notificações** mostra quem recebeu notificações e se cada 
 
 ### Exportar enquete
 
-Use **Exportar** para baixar o status e os resultados da enquete em um arquivo de planilha (.csv), com os dados sem formatação para análise ou arquivamento.
+Selecione **Exportar** para baixar o status e os resultados da enquete em um arquivo de planilha (.csv) para análise ou arquivamento.
 
 <!-- translation-section: print -->
 
 ### Imprimir
 
-Use **Imprimir** nas ações da conversa para abrir um documento HTML para impressão. Você pode imprimi-lo ou salvá-lo como PDF para publicação e arquivamento.
+Abra o menu de três pontos da conversa e selecione **Imprimir** para abrir uma visualização HTML da discussão e de suas enquetes para impressão. Você pode imprimi-la ou salvá-la como PDF para publicação ou arquivamento.
 
 ![](proposal_print.png#width-80)
 
@@ -268,11 +252,7 @@ Use **Imprimir** nas ações da conversa para abrir um documento HTML para impre
 
 ### Deletar
 
-**Deletar** exclui a enquete. Primeiro, você precisará confirmar que deseja excluir a enquete.
-
-Certifique-se de que deseja excluir a enquete. Não há opção de restaurar.
-
-Após a exclusão, um marcador **Item removido** permanece na conversa.
+Selecione **Deletar** e confirme para remover permanentemente a enquete. Enquetes excluídas não podem ser restauradas. Um marcador **Item removido** permanece na conversa.
 
 ![](proposal_delete.png)
 
@@ -280,4 +260,4 @@ Após a exclusão, um marcador **Item removido** permanece na conversa.
 
 ### Salvar marcador
 
-Use **Salvar marcador** para adicionar a enquete aos seus marcadores e acessá-la rapidamente depois.
+Selecione **Salvar marcador** para adicionar a enquete aos seus marcadores e acessá-la rapidamente depois.

@@ -1,34 +1,34 @@
 ---
 title: Emberek meghívása
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: 5f405c34f4a567b2
-  send-invitations-via-email: 9dc04b9a8646890f
-  invite-many-at-once: e6b29ad880f2b1ae
-  invite-people-to-subgroups: 6295343c6798b5b5
-  share-a-link-to-your-group: 3f41087ddff8d513
-  request-to-join-group: fa13e274a37cca50
-  review-membership-requests: 8d6b31f6b012f892
-  managing-invitations: 59f083a75c1955b1
-  re-send-invitations: ca919d118dd7d0ef
-  cancelling-invitations: 938ac5db15840964
-  invitation-notification-history: 2fd1ab3267fb0c9d
+  introduction: 3dcb867e435a48ee
+  send-invitations-via-email: 1d2339fceaeda7f2
+  invite-many-at-once: 6e1cfc993932a91b
+  invite-people-to-subgroups: ec5cb889f652758c
+  share-a-link-to-your-group: c2854b1f52be7d45
+  request-to-join-group: 5ec523cc74d68a65
+  review-membership-requests: d0b2431d651d9850
+  managing-invitations: 6e9ad9040c1581a9
+  re-send-invitations: a34b03242dcd6bf9
+  cancelling-invitations: a2f9f00841c2774e
+  invitation-notification-history: 7a35fc25e82d965b
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 ---
@@ -37,7 +37,7 @@ title_generated: cf71499adce945c9
 
 # Emberek meghívása egy Loomio-csoportba
 
-Hívj meg embereket a Loomio-csoportodba emailben, vagy oszd meg a csoport linkjét hírlevélben, csevegésben vagy weboldalon. A kezdéshez nyisd meg a csoportod oldalán a **Tagok** fület.
+Meghívhatsz embereket a Loomio-csoportodba emailben, megoszthatsz egy meghívólinket, vagy lehetővé teheted, hogy csatlakozási kérelmet küldjenek. A kezdéshez nyisd meg a csoportod oldalán a **Tagok** fület.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +45,7 @@ Hívj meg embereket a Loomio-csoportodba emailben, vagy oszd meg a csoport linkj
 
 ## Meghívók küldése emailben
 
-Kattints a **Meghív** gombra a **Tagok** fülön, hogy egyszer használható meghívólinket tartalmazó emailt küldj. A címzett létrehozhat egy Loomio-fiókot, és csatlakozhat a csoportodhoz.
-
-Ha a címzettnek már van Loomio-fiókja, a meglévő fiókjával is elfogadhatja a meghívót, és csatlakozhat a csoportodhoz.
+Válaszd a **Meghív** lehetőséget a **Tagok** fülön, hogy egyszer használható meghívólinket tartalmazó emailt küldj. A címzett meglévő Loomio-fiókkal is csatlakozhat, vagy létrehozhat egy új fiókot.
 
 ![](group_invite_email.png)
 
@@ -55,20 +53,20 @@ Ha a címzettnek már van Loomio-fiókja, a meglévő fiókjával is elfogadhatj
 
 ### Több ember meghívása egyszerre
 
-Egyszerre legfeljebb 100 embernek küldhetsz meghívót emailben, ha több email-címet írsz be vagy másolsz be a „Kit szeretnél meghívni?” mezőbe. Az email-címeket vesszővel vagy szóközzel válaszd el.
+Egyszerre legfeljebb 100 embert hívhatsz meg, ha vesszővel vagy szóközzel elválasztott email-címeket írsz be vagy illesztesz be.
 
-Amikor egy szervezeten belüli csoportba hívsz meg embereket, a szülőcsoport és azok a kapcsolódó alcsoportok, amelyeknek tagja vagy, címzettjavaslatként jelennek meg. Válaszd ki az egyik csoportot, majd kattints a címkéjére, hogy a csoport helyett az egyes emberek jelenjenek meg címzettként. A meghívók elküldése előtt eltávolíthatod azokat, akiket nem szeretnél meghívni. Akik már tagjai annak a csoportnak, ahová meghívsz embereket, nem kerülnek a címzettek közé.
+Amikor egy szervezeten belüli csoportba hívsz meg embereket, kiválaszthatod a szülőcsoportot vagy azokat a kapcsolódó alcsoportokat is, amelyeknek tagja vagy. Bontsd ki a kiválasztott csoportot egyéni címzettekre, hogy eltávolíthasd azokat, akiket nem szeretnél meghívni. Akik már tagok, automatikusan kimaradnak a címzettek közül.
 
 >[!Tip]
->Másold ki az email-címeket egy Google- vagy Excel-táblázat oszlopából, és illeszd be őket a meghívási mezőbe.
+>Kimásolhatsz egy email-címeket tartalmazó oszlopot a Google Táblázatokból vagy a Microsoft Excelből, és közvetlenül beillesztheted a meghívási mezőbe.
 
-Amikor a **Meghív** gombra kattintasz, minden megadott email-címre egy egyedi, egyszer használható meghívólinket tartalmazó email érkezik. Az email az általad jelenleg használt nyelven lesz elküldve.
+Amikor a **Meghív** lehetőséget választod, a Loomio minden címre egy egyedi, egyszer használható meghívólinket küld az általad jelenleg használt nyelven.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Emberek meghívása alcsoportokba
 
-A fenti lépéseket követve egyszerre hívhatsz meg embereket egy szülőcsoportba és egy vagy több alcsoportba a **Hívj meg embereket** gombbal. Jelöld be azokat az alcsoportokat, amelyeknek a meghívottak a csoporthoz való csatlakozáskor azonnal tagjai legyenek.
+Amikor embereket hívsz meg egy szülőcsoportba, egyidejűleg egy vagy több alcsoporthoz is hozzáadhatod őket. Jelöld be azokat az alcsoportokat, amelyekhez a meghívó elfogadásakor csatlakozzanak.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,41 +74,39 @@ A fenti lépéseket követve egyszerre hívhatsz meg embereket egy szülőcsopor
 
 ## A csoportod linkjének megosztása
 
-A **Megoszt** gombbal megoszthatod a csoportod linkjét. Ez akkor hasznos, ha emailben, hírlevélben vagy csevegésben szeretnéd elküldeni a linket, vagy közzétennéd a weboldaladon.
+Válaszd a **Megoszt** lehetőséget egy többször használható meghívólink létrehozásához, amelyet hírlevélben, csevegőcsatornán, emailben vagy weboldalon oszthatsz meg.
 
 ![](group_invite_sharable_link.png)
 
-Kattints a „másolás” ikonra a link vágólapra másolásához, majd illeszd be az emailedbe, a hírleveledbe vagy a csevegőcsatornádba.
-
-Ha meg szeretnéd akadályozni, hogy ezen a linken keresztül csatlakozzanak, kattints a „Link alaphelyzetbe állítása” lehetőségre. A meglévő link többé nem fog működni, és egy új link jön létre.
+Ha meg szeretnéd akadályozni, hogy egy meglévő linken keresztül csatlakozzanak, válaszd a **Link alaphelyzetbe állítása** lehetőséget. Ez érvényteleníti a régi linket, és létrehoz egy újat.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Csatlakozási kérelem a csoporthoz
 
-Az emberek kérhetik a csatlakozást egy nyitott vagy zárt csoporthoz. Oszd meg a csoport URL-jét, például: `https://www.loomio.com/group-name`. A csoport oldalán megtekinthetik a csoport nyilvános adatait, és a **Csoporthoz csatlakozás** lehetőséget választva megválaszolhatják a csatlakozási kérdést, majd elküldhetik a kérelmüket.
+Az emberek a csoport URL-jén, például a `https://www.loomio.com/group-name` címen kérhetik a csatlakozást egy nyitott vagy zárt csoporthoz. A látogatók láthatják a csoport nyilvános adatait, és a **Csoporthoz csatlakozás** lehetőséget választva megválaszolhatják a csatlakozási kérdést, majd elküldhetik a kérelmüket.
 
 ![](group_join_group.png)
 
-A csatlakozási kérdés lehetőséget ad arra, hogy bemutatkozzanak, és elmondják, miért szeretnének csatlakozni.
+A csatlakozási kérdés lehetőséget ad a kérelmezőknek arra, hogy bemutatkozzanak, és elmondják, miért szeretnének csatlakozni.
 
 ![](group_request_to_join.png)
 
-[A csoport adatvédelme](/en/user_manual/groups/settings/privacy#how-people-join) beállításainál válaszd a **Jóváhagyás kérése** lehetőséget, hogy a kérelmeket el kelljen bírálni. A csatlakozási kérdést is testreszabhatod a csoport beállításaiban.
+[A csoport adatvédelme](/en/user_manual/groups/settings/privacy#how-people-join) beállításainál válaszd a **Csatlakozás kérése** lehetőséget, hogy a tagsági kérelmeket el kelljen bírálni. A csatlakozási kérdést is testreszabhatod a csoport beállításaiban.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Tagsági kérelmek elbírálása
 
-A csoport adminisztrátorai és a tagok hozzáadására jogosult tagok a **Tagok** fül **Tagsági kérelmek** részében bírálhatják el a kérelmeket. Az elbíráló a következőket teheti:
+A csoport adminjai és a tagok hozzáadására jogosult tagok a **Tagok** fül **Tagsági kérelmek** részében bírálhatják el a kérelmeket.
 
 ![](group_review_request_to_join.png)
 
-- Az **Érvényesítés** lehetőséggel elfogadhatja a kérelmet, így a kérelmező taggá válik, és értesítést kap.
-- A **Figyelmen kívül hagyás** lehetőséggel lezárhatja a kérelmet a kérelmező értesítése és újabb kérelem engedélyezése nélkül.
-- A **Visszautasítás** lehetőséggel elutasíthatja a kérelmet, és egy üzenetben megindokolhatja a döntést. A Loomio emailben és értesítésként is elküldi az üzenetet a kérelmezőnek, aki új kérelmet nyújthat be.
+Minden kérelemnél a következő lehetőségek közül választhatsz:
 
-Válaszd a visszautasítás gombját, hogy üzenetet írj, vagy figyelmen kívül hagyd a kérelmet.
+- Az **Érvényesítés** lehetőséggel tagként hozzáadhatod a kérelmezőt, aki erről értesítést kap.
+- A **Figyelmen kívül hagyás** lehetőséggel lezárhatod a kérelmet a kérelmező értesítése és újabb kérelem engedélyezése nélkül.
+- A **Visszautasítás** lehetőséggel indoklást küldhetsz emailben és értesítésként; a kérelmező később új kérelmet nyújthat be.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +114,30 @@ Válaszd a visszautasítás gombját, hogy üzenetet írj, vagy figyelmen kívü
 
 ## Meghívók kezelése
 
-A meghívók kezeléséhez nyisd meg a szűrő legördülő menüjét a csoportod oldalának Tagok fülén, és válaszd a **Meghívások** lehetőséget. Az egyes meghívókat a tagtól jobbra található hárompontos menüre (**⋮**) kattintva kezelheted.
+Nyisd meg a szűrő menüjét a **Tagok** fülön, és válaszd a **Meghívások** lehetőséget a függőben lévő meghívók megtekintéséhez. Egy meghívó kezeléséhez használd a mellette található műveleti menüt.
 
 ![](group_invite_members_filter.png)
 
-A meghívottakat adminisztrátorrá is teheted, vagy megadhatod a csoporton belüli megnevezésüket (például „Informatikai támogatás”), még mielőtt elfogadnák a meghívójukat.
+A meghívottat csoportadminná is teheted, vagy megadhatod a csoporton belüli megnevezését (például „Informatikai támogatás”), még mielőtt elfogadná a meghívót.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Meghívók kézbesítési előzményei
 
-Ha valaki nem kapja meg a meghívót tartalmazó e-mailt, a csoport adminjai a Tagok oldalon, a neve melletti hárompontos menüből (**⋮**) megnyithatják a **Meghívók kézbesítési előzményei** lehetőséget, hogy lássák, mikor küldték el a meghívókat, és milyen kézbesítési problémákat rögzítettek.
+Ha valaki nem kapja meg a meghívót tartalmazó emailt, egy csoportadmin ellenőrizheti a kézbesítés állapotát. Nyisd meg a neve melletti műveleti menüt a **Tagok** fülön, és válaszd a **Meghívók kézbesítési előzményei** lehetőséget, hogy lásd, mikor küldték el a meghívókat, és milyen kézbesítési problémákat rögzítettek.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Meghívók újraküldése
 
-Keresd meg azokat, akik még nem csatlakoztak a csoporthoz, és emlékeztesd őket a meghívóra. Ha valaki elvesztette a meghívót tartalmazó emailt, vagy megfeledkezett róla, újraküldheted a Tagok oldalon, a neve melletti legördülő menüből.
-
-Kattints a három pontra (**⋮**) annak a személynek a neve mellett, akinek újra szeretnéd küldeni a meghívót, majd válaszd a **Meghívás újraküldése** lehetőséget.
+Ha valaki elvesztette a meghívót tartalmazó emailt, vagy nem vette észre, nyisd meg a neve melletti műveleti menüt a **Tagok** fülön, és válaszd a **Meghívás újraküldése** lehetőséget.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Meghívók visszavonása
-Ha rossz email-címet adtál meg, vagy meggondoltad magad valakinek a meghívásával kapcsolatban, visszavonhatod a meghívót a csoportod oldalának Tagok fülén. Válaszd a **Meghívó visszavonása** lehetőséget a meghívótól jobbra található legördülő menüből (**⋮**).
+
+Ha rossz email-címet adtál meg, vagy már nem szeretnél meghívni valakit, nyisd meg a meghívója melletti műveleti menüt a **Tagok** fülön, és válaszd a **Meghívás visszavonása** lehetőséget.
 
 ![](group_invite_cancel_invitation.png)

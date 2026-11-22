@@ -2,7 +2,7 @@
 
 # Invite people to a Loomio group
 
-Invite people to your Loomio group by email, or share a group link through a newsletter, chat or website. Open the **Members** tab on your group page to get started.
+You can invite people to your Loomio group by email, share an invitation link, or let people request to join. Open the **Members** tab on your group page to get started.
 
 ![](group_join_group_invite.png)
 
@@ -10,9 +10,7 @@ Invite people to your Loomio group by email, or share a group link through a new
 
 ## Send invitations via email
 
-Click **Invite** on the **Members** tab to send an email containing a single-use invitation link. The recipient can create a Loomio user account and join your group.
-
-If the recipient already has a Loomio user account they can still accept the invitation to join your group with their existing account.
+Select **Invite** on the **Members** tab to send an email with a single-use invitation link. The recipient can join with an existing Loomio account or create a new one.
 
 ![](group_invite_email.png)
 
@@ -20,20 +18,20 @@ If the recipient already has a Loomio user account they can still accept the inv
 
 ### Invite many at once
 
-You can send invitations by email to up to 100 people at a time by entering (or copy/pasting) multiple email addresses into the "Who would you like to invite" box. Separate email addresses by comma or space.
+You can invite up to 100 people at once by entering or pasting email addresses separated by commas or spaces.
 
-When inviting people to a group within an organization, the parent group and related subgroups you belong to appear as audience suggestions. Select a group, then select its chip to expand the audience into individual people. You can remove anyone you do not want to invite before sending the invitations. People who already belong to the destination group are excluded.
+When inviting people to a group in an organization, you can also select the parent group or related subgroups you belong to. Expand a selected group into individual people to remove anyone you do not want to invite. People who are already members are excluded automatically.
 
 >[!Tip]
->Copy email addresses from a column in a Google or Excel spreadsheet, and paste into the invitation box.
+>You can copy a column of email addresses from Google Sheets or Microsoft Excel and paste it directly into the invitation field.
 
-When you click **Invite** an email will be sent to each of the email addresses you supplied, containing a unique invitation link that can only be used once. This email will be sent in your current language.
+When you select **Invite**, Loomio sends each address a unique, single-use invitation link in your current language.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
-### Invite people to Subgroups
+### Invite people to subgroups
 
-Following the same process as above, you can invite people to a 'parent' group, and one or more subgroups simultaneously when you invite them with the **Invite people** button. Tick the boxes next to the subgroups you want them to immediately be a part of when they join the group.
+When inviting people to a parent group, you can add them to one or more subgroups at the same time. Check the subgroups you want them to join when they accept the invitation.
 
 ![](group_invite_email_subgroups.png)
 
@@ -41,41 +39,39 @@ Following the same process as above, you can invite people to a 'parent' group, 
 
 ## Share a link to your group
 
-You can share a link to your group with the **Share** button. This is useful if you want to send a link via email, newsletter, chat or post on your website.
+Select **Share** to generate a reusable invitation link for a newsletter, chat channel, email, or website.
 
 ![](group_invite_sharable_link.png)
 
-Click on the "copy" icon to copy the link to your clipboard, then paste in your email, newsletter or chat channel.
-
-If you want to stop people from joining via this link, click "Reset this link". The existing link will no longer work and a new link will be created.
+To stop people from joining with an existing link, select **Reset this link**. This invalidates the old link and creates a new one.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Request to join group
 
-People can request to join an Open or Closed group. Share the group URL, such as `https://www.loomio.com/group-name`. When people arrive at the group page, they can see the public group information and select **Join group** to answer the joining prompt and send their request.
+People can request to join an Open or Closed group from its group URL, such as `https://www.loomio.com/group-name`. Visitors see the public group details and select **Join group** to answer the joining prompt and submit their request.
 
 ![](group_join_group.png)
 
-The joining prompt gives people a chance to introduce themselves and explain why they want to join.
+The joining prompt lets applicants introduce themselves and explain why they want to join.
 
 ![](group_request_to_join.png)
 
-Under [Group privacy](/en/user_manual/groups/settings/privacy#how-people-join), choose **Request approval** to require requests to be reviewed. You can also customize the joining prompt in the group settings.
+Under [Group privacy](/en/user_manual/groups/settings/privacy#how-people-join), choose **Request to join** to require review of membership requests. You can also customize the joining prompt in group settings.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Review membership requests
 
-Group administrators and members with permission to add members review requests from the **Membership requests** section of the **Members** tab. A reviewer can:
+Group admins and members with permission to add members can review requests under **Membership requests** on the **Members** tab.
 
 ![](group_review_request_to_join.png)
 
-- **Approve** the request to add the applicant as a member and notify them.
-- **Ignore** the request to close it without notifying the applicant or allowing another request.
-- **Decline** the request with a message explaining the decision. Loomio sends the message to the applicant by email and notification, and they can submit a new request.
+For each request, you can:
 
-Select the decline button to write a message or ignore the request.
+- **Approve** to add the applicant as a member and notify them.
+- **Ignore** to close the request without notifying the applicant or allowing another request.
+- **Decline** to send an explanation by email and notification; the applicant can submit a new request later.
 
 ![](group_decline_request_to_join.png)
 
@@ -83,31 +79,30 @@ Select the decline button to write a message or ignore the request.
 
 ## Managing invitations
 
-To manage invitations, open the filter/ drop down from the Members tab of your Group page and select **Invitations**. You can manage individual invitations by clicking the three dot menu (**⋮**) to the right of the member.
+Open the filter menu on the **Members** tab and select **Invitations** to see pending invitations. Use the actions menu beside an invitation to manage it.
 
 ![](group_invite_members_filter.png)
 
-You can also make people administrators or set their title (e.g. "IT Support") within the group before they accept their invitation.
+You can also make an invited person a group admin or set their title (for example, "IT Support") before they accept.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Invitation delivery history
 
-If someone isn't receiving their invitation email, group admins can open **Invitation delivery history** from the three dot menu (**⋮**) beside their name on the Members page to see when invitations were sent and any recorded delivery problems.
+If someone does not receive their invitation email, a group admin can check its delivery status. Open the actions menu beside their name on the **Members** tab and select **Invitation delivery history** to see when invitations were sent and any recorded delivery problems.
 
 <!-- translation-section: re-send-invitations -->
 
-### Re-send invitations
+### Resend invitations
 
-Follow up on people who don't make it into the group and give them a nudge. If someone has lost or forgotten about their invitation email, you can re-send it from the dropdown menu beside their name on the Members page.
-
-Click on the three dots (**⋮**) next to the person you want to resend the invitation to, and then choose **Resend invitation**.
+If someone lost or missed their invitation email, open the actions menu beside their name on the **Members** tab and select **Resend invitation**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
-### Cancelling invitations
-If you entered the wrong email address, or have changed your mind about inviting someone, you can cancel an invitation from the Members tab on your Group page. Select **Cancel Invitation** from the drop down menu to the right of the member invitation (**⋮**).
+### Canceling invitations
+
+If you entered the wrong email address or no longer want to invite someone, open the actions menu beside their invitation on the **Members** tab and select **Cancel invitation**.
 
 ![](group_invite_cancel_invitation.png)

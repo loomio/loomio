@@ -1,44 +1,44 @@
 ---
 title: Käyttäjän API
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/user-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 68d638b236cac8c3
-  response-size-and-related-records: 6f8cf57b45766ad1
+  introduction: 2d91e17b37de30b4
+  response-size-and-related-records: 3bdd69fb0fcdd958
   endpoint-summary: faaeafa590fb56e0
   groups: 0473f1f7fb78f074
-  list-groups: 9aef26f9b926766b
+  list-groups: 9d2f0607f8cfa3b3
   get-a-group: 05fd7cc3b212e7e1
-  webhooks: f65fa289f8c1b808
-  list-webhooks: fa6555a40e1c4929
-  create-a-webhook: 82f92d8c0291ebba
+  webhooks: 3533fbb996deebf6
+  list-webhooks: 3f5d857fe7f844bd
+  create-a-webhook: 0c8d6291dbc50ba5
   update-a-webhook: 7e838aa6eba73663
   test-a-webhook-destination: bceeb98f6e8c0000
   delete-a-webhook: 36bb783e464646d0
   event-types: 73bfe87c8b790af3
-  http-delivery: a32c763b6f816e65
+  http-delivery: 3af2574b0496e7b8
   payload-formats: ca728b0ef542305c
   search: 9f562d745e3eb6b2
   params: 9fa99390aca5fcce
   participation-report: 2d11a398e2293ea4
-  params-2: 464322ffc1ac56e5
+  params-2: c5e9f8dc809bde75
   example: 7cab9083deb72c59
   create-discussion: 560273365cd6c232
   params-3: 657d582c89333097
   example-2: 71b3da6ca440fc97
   show-discussion: e4c59f833a2e0f0e
   example-3: 2371364611978a4d
-  list-discussions: 70edb4a95bf5cafd
+  list-discussions: 15c5ede29f924a60
   params-4: dcebc294fbb9d837
   example-4: 62b76a3e8ccd9d3f
   list-threads: 46509be0004f5b26
   params-5: 79b1cefac558effc
   example-5: 785a417a6afa1b29
   read-thread: d7b366d09189eeaf
-  example-6: 13abd928820aa15e
+  example-6: db45cd3ab09880f4
   edit-discussion: 9bee023a69bdff84
   params-6: b819796d34354623
   example-7: a98e95cf6bec9f7d
@@ -57,7 +57,7 @@ sections:
   example-12: 58ea197b72a8bd0f
   show-poll: 40b4370bcac536e5
   example-13: 6e74d6164d61fd19
-  list-polls: e32f486c3c675327
+  list-polls: 6c48a5f6d1b7d01b
   params-10: e68e8cf62b21488d
   example-14: cda8994926bc7002
   edit-poll: b2c8cd57e7dea231
@@ -65,12 +65,12 @@ sections:
   example-15: fda29e1741869e22
   soft-delete-poll: 740d74b8f48adfd8
   example-16: aa8016ff2c0dcd5d
-  list-memberships: 769573d5f0f4a077
+  list-memberships: c6a4366792db04a4
   params-12: decaff0790566fb0
   example-17: 213d79e474d7ab1d
-  manage-memberships: c492589da7e249c8
+  manage-memberships: 97ad0d68e7bccc54
   params-13: 771b5338a4ba3d0b
-  example-18: bacb90328233ce5b
+  example-18: 8360018a908635ca
   pagination: 4171ca78df07d4fe
   comments: ccd37303241bac95
   discussions: 16ffe7a7b6202d3e
@@ -78,29 +78,29 @@ sections:
   polls: 821dcd89b5460804
   threads: 19bc02fc1c26317b
   request-bodies: 0ec99fc25454f511
-  poll-many-options: 54f4ab737df476d9
+  poll-many-options: 8ea9ffe67ded8473
   poll-detailed-options: 1df1348a129c3991
   edit-poll-detailed-options: 2be9b78ff51be3ec
 generated:
   introduction: a2d0360a039f1f26
-  response-size-and-related-records: 5b3114bd8894c287
+  response-size-and-related-records: a23b78421c61a0a1
   endpoint-summary: 62c3f92d513143aa
   groups: 90cb5d1f24e992a5
   list-groups: a30771b73250dcbc
   get-a-group: b9f61156e99d8e20
   webhooks: e73d4cb7f83c25b4
-  list-webhooks: 98d06f7f020ba8ab
+  list-webhooks: 75eed371ae8e6bc2
   create-a-webhook: d2c49c1d9b72136c
   update-a-webhook: 753119a230c616b7
   test-a-webhook-destination: 183c737ff5262b2b
   delete-a-webhook: 7b4042ad50f24ae4
   event-types: 9f9748babb039cae
-  http-delivery: 2d1d6fc5d7922698
+  http-delivery: f028537071d21f7c
   payload-formats: d394fecd58bbed23
   search: 4cdc63e689d47885
   params: 47ce6a660b1871c7
   participation-report: da02eaaabbc4934f
-  params-2: 3ce560e91874fccf
+  params-2: d727bd4bea055501
   example: 9f489ff857e20093
   create-discussion: a6e60dbbdcbeb78c
   params-3: 62a5863a1d0f1b77
@@ -114,7 +114,7 @@ generated:
   params-5: 396c06598fd253d1
   example-5: a6961043196f95bf
   read-thread: e42db8345fa92b67
-  example-6: dd92364dbe2c12c4
+  example-6: 7232be91ff01e214
   edit-discussion: 6c655bc2a6441f05
   params-6: 53ee13b332e1511a
   example-7: 7014d7c17475e361
@@ -133,7 +133,7 @@ generated:
   example-12: 1b6548c1968d0597
   show-poll: 4d572c3f54c99239
   example-13: a983068cc0f86562
-  list-polls: 809671c428a3e400
+  list-polls: a7e2a344991b5dd2
   params-10: 5e7c92669349a80e
   example-14: b12d281344b3d767
   edit-poll: d99856e72f782e4d
@@ -144,9 +144,9 @@ generated:
   list-memberships: 9b12a601e347187d
   params-12: e5a6d0c42a0469c1
   example-17: c07b3abc3163a57d
-  manage-memberships: 93ef5482037bee08
+  manage-memberships: cca59f597a3b982c
   params-13: f370b912fd04376a
-  example-18: 6b66c1abdec40905
+  example-18: 3cce3ee29e2d6a83
   pagination: dc8b8a2a1cb3701d
   comments: db2e367bbd191954
   discussions: 10d9c93435f43042
@@ -154,7 +154,7 @@ generated:
   polls: 59769ed0da6b0cfb
   threads: 83a528e0bbcae4a6
   request-bodies: d9e08bef27b6bda7
-  poll-many-options: 649fe4907a9327cb
+  poll-many-options: 2396cc2edc5fa78a
   poll-detailed-options: c37eb76df08b4562
   edit-poll-detailed-options: b94d1a4c927bf6fd
 title_source: c23fb6526b722360
@@ -253,7 +253,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-Jos haluat hallita poissulkemista tarkemmin, anna `exclude_types` ja välilyönneillä erotetut tietuetyypit yksikkömuodossa. Esimerkiksi `exclude_types=group reaction` jättää pois liittyvät ryhmät ja reaktiot. Tavallisia arvoja ovat `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ja `topic_item`. Poissulkeminen koskee liittyviä tietueita, ei rajapintapisteeltä pyydettyä ensisijaista resurssia.
+Jos haluat hallita poissulkemista tarkemmin, anna `exclude_types` ja välilyönneillä erotetut tietuetyypit yksikkömuodossa. Esimerkiksi `exclude_types=group reaction` jättää pois liittyvät ryhmät ja reaktiot.
+
+Tavallisia arvoja ovat `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome` ja `topic_item`. Poissulkeminen koskee liittyviä tietueita, ei rajapintapisteeltä pyydettyä ensisijaista resurssia.
 
 Kokoelmavastaukset sisältävät kentän `meta.total`, kun kokoelman tarkka koko on määritelty. Kokonaismäärä lasketaan ennen parametrien `limit` ja `offset` soveltamista. Rajapintapisteet, kuten haku, jotka palauttavat tarkoituksella rajatun tulosjoukon, jättävät kentän `meta.total` pois sen sijaan, että palauttaisivat arvon `null`.
 
@@ -593,7 +595,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Hallitse jäsenyyksiä
 
-Lähetä luettelo sähköpostiosoitteista. Kaikki uudet sähköpostiosoitteet kutsutaan ryhmään. Toisin kuin jäsenyyksien listaaminen, tämä toiminto edellyttää ryhmän ylläpitäjän oikeuksia.
+Lähetä luettelo sähköpostiosoitteista kutsuaksesi uusia ihmisiä ryhmään. Toisin kuin jäsenyyksien listaaminen, tämä toiminto edellyttää ryhmän ylläpitäjän oikeuksia.
 
 `POST /api/user0/memberships`
 
@@ -622,7 +624,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-Jos annat parametrin `remove_absent=1`, kaikki ryhmän jäsenet, jotka eivät ole luettelossa, poistetaan ryhmästä. Ole varovainen, sillä saatat poistaa kaikki ryhmäsi jäsenet.
+Jos annat arvon `remove_absent: true`, kaikki ryhmän jäsenet, jotka eivät ole luettelossa, poistetaan ryhmästä. Ole varovainen, sillä tämä voi poistaa kaikki ryhmäsi jäsenet.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -632,11 +634,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-Tämä palauttaa objektin, jonka sisältö on `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+Tämä palauttaa objektin, jonka sisältö on `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -660,7 +662,9 @@ Palauttaa samat koostetut osallistumistiedot, joita Loomion osallistumisraportti
 | `interval` | `base`-osion aikaväli: `day`, `week`, `month` tai `year` |
 | `member_type` | Aseta arvoksi `delegate`, kun `section=users`, jos haluat palauttaa vain nykyiset edustajat |
 
-Henkilö on edustaja, jos hänellä on aktiivinen edustajajäsenyys jossakin valituista ryhmistä. Hänen toimintansa määrät lasketaan yhteen kaikista valituista ryhmistä. Edustajien rivit palautetaan myös silloin, kun kaikki toimintamäärät ovat nollia. Määrät kattavat ketjut, kommentit, kyselyt, äänet, johtopäätökset ja reaktiot. Ne eivät ole äänestämisen osallistumisasteita. Käyttäjärivit sisältävät myös tunnistettujen äänestyslippujen määrät: myönnetyt, käytetyt ja käyttämättä jääneet. Anonyymit kyselyt jätetään pois kaikista henkilökohtaisista äänestysmääristä. `all_votes_cast` on tosi vain, kun vähintään yksi äänestyslippu on myönnetty ja kaikki myönnetyt äänestysliput on käytetty.
+Henkilö on edustaja, jos hänellä on aktiivinen edustajajäsenyys jossakin valituista ryhmistä. Hänen toimintansa määrät lasketaan yhteen kaikista valituista ryhmistä, ja edustajien rivit palautetaan myös silloin, kun kaikki toimintamäärät ovat nollia.
+
+Määrät kattavat ketjut, kommentit, kyselyt, äänet, johtopäätökset ja reaktiot. Ne eivät ole äänestämisen osallistumisasteita. Käyttäjärivit sisältävät myös tunnistettujen äänestyslippujen määrät: myönnetyt, käytetyt ja käyttämättä jääneet. Anonyymit kyselyt jätetään pois kaikista henkilökohtaisista äänestysmääristä. `all_votes_cast` on tosi vain, kun vähintään yksi äänestyslippu on myönnetty ja kaikki myönnetyt äänestysliput on käytetty.
 
 API soveltaa samoja ryhmien näkyvyyssääntöjä kuin sovelluksen raportti. Käyttäjän API-avain ei voi paljastaa raporttitietoja ryhmistä, joihin käyttäjällä ei ole pääsyä.
 
@@ -778,7 +782,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -884,7 +888,9 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 Listaa ryhmän kyselyt, jotka näkyvät API-avaimen käyttäjälle, mukaan lukien itsenäiset kyselyt ja keskusteluihin sisältyvät kyselyt. Julkisesti näkyvän ryhmän julkiset kyselyt voi listata myös henkilö, joka ei ole ryhmän jäsen. Yksityiset kyselyt näkyvät vain käyttäjille, jotka voivat lukea niitä Loomiossa. Vastaus sisältää kunkin näkyvän kyselyn nykyisen johtopäätöksen, joten voit listata suljetut kyselyt parametrilla `status=closed` ja lukea niiden johtopäätökset, jos ne on kirjoitettu.
 
-Voit näyttää päätöksen tilan keskustelujen yhteydessä hakemalla saman ryhmän keskustelut ja kyselyt sekä yhdistämällä ne `topic_id`-arvojen perusteella. Käytä kyselyille parametria `status=all`. Hae kaikki sivut parametreilla `limit` ja `offset`. Keskustelussa voi olla useita kyselyjä, joten valitse, minkä kyselyn perusteella näytettävä tila määräytyy, esimerkiksi viimeksi luodun kyselyn. Jos `closed_at` ei ole null, kysely on suljettu. Jos `closing_at` on null, kysely on luonnos. Kun kyselyllä on johtopäätös, sen `current_outcome_id` yksilöi tietueen vastauksen `outcomes`-taulukossa. Yhdistä kyseisen tietueen `poll_id` kyselyn `id`-arvoon.
+Voit näyttää päätöksen tilan keskustelujen yhteydessä hakemalla saman ryhmän keskustelut ja kyselyt (käytä kyselyille parametria `status=all`) sekä yhdistämällä ne `topic_id`-arvojen perusteella. Hae kaikki sivut parametreilla `limit` ja `offset`. Keskustelussa voi olla useita kyselyjä, joten valitse, minkä kyselyn perusteella näytettävä tila määräytyy, esimerkiksi viimeksi luodun kyselyn.
+
+Jos `closed_at` ei ole null, kysely on suljettu. Jos `closing_at` on null, kysely on luonnos. Kun kyselyllä on johtopäätös, sen `current_outcome_id` yksilöi tietueen vastauksen `outcomes`-taulukossa. Yhdistä kyseisen tietueen `poll_id` kyselyn `id`-arvoon.
 
 Voit myös [lukea yksittäisen keskustelun ketjun kohteet](#read-thread) pyynnöllä `GET /api/user0/threads/:topic_id/items`. Tämä palauttaa ketjun kyselyt ja johtopäätökset sen muiden kohteiden ohella. Hae kaikki sivut, jotta saat koko ketjun mukaan.
 
@@ -1090,7 +1096,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-`items`-päätepiste palauttaa sivun tapahtumavirrasta nousevassa järjestysnumerojärjestyksessä. Se sisältää näkyvät kommentit, kyselyt, äänet ja johtopäätökset. `meta.total` on ketjun kohteiden kokonaismäärä. Hae seuraavat sivut lukeaksesi koko tapahtumavirran. `markdown`-päätepiste palauttaa koko näkyvän ketjun yhtenä Markdown-dokumenttina. Äänten perustelut sisällytetään vain, jos ne näkyvät API-avaimen käyttäjälle.
+`items`-päätepiste palauttaa sivun tapahtumavirrasta nousevassa järjestysnumerojärjestyksessä. Se sisältää näkyvät kommentit, kyselyt, äänet ja johtopäätökset. `meta.total` on ketjun kohteiden kokonaismäärä. Hae seuraavat sivut lukeaksesi koko tapahtumavirran.
+
+`markdown`-päätepiste palauttaa koko näkyvän ketjun yhtenä Markdown-dokumenttina. Äänten perustelut sisällytetään vain, jos ne näkyvät API-avaimen käyttäjälle.
 
 Kaikki ketjujen päätepisteet noudattavat samoja käyttöoikeuksia kuin Loomion käyttöliittymä. API-avain ei anna pääsyä ketjuun, jota käyttäjä ei normaalisti voi avata.
 
@@ -1117,7 +1125,7 @@ Agentit ja muut integraatiot voivat myös hallita webhookeja alla kuvattujen cha
 
 ### Listaa webhookit
 
-Palauttaa ryhmälle määritetyt chat-integraatiot. API-avaimen käyttäjän on oltava kyseisen ryhmän ylläpitäjä. Vastaus sisältää kohteiden URL-osoitteet, joten sitä ei saa näyttää ryhmän tavallisille jäsenille.
+Palauttaa ryhmälle määritetyt chat-integraatiot. API-avaimen käyttäjän on oltava kyseisen ryhmän ylläpitäjä. Vastaus sisältää kohteiden URL-osoitteet, joten älä näytä sitä ryhmän tavallisille jäsenille.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1261,7 +1269,9 @@ Content-Type: application/json; charset=utf-8
 
 Pyynnön aikakatkaisu on viisi sekuntia. `2xx`-vastaus, mukaan lukien `204 No Content`, tulkitaan onnistuneeksi. Webhookin vastaanottajan tulee vastata nopeasti, käsitellä pidempään kestävät tehtävät asynkronisesti ja sietää päällekkäisiä tai väärässä järjestyksessä saapuvia toimituksia.
 
-Loomio ei tällä hetkellä lisää webhook-allekirjoitusta, jaetun salaisuuden sisältävää otsaketta, tapahtumatunnusta tai toimitustunnusta. Käsittele koko kohde-URL-osoitetta tunnistetietona, älä paljasta sitä julkisesti ja sisällytä URL-osoitteeseen tunniste, jota ei voi arvata, jos vastaanottava palvelu tukee sitä. Jos tarvitset vakaan koneluettavan tapahtumarakenteen tai allekirjoitetun toimituksen, käytä webhookia muutosilmoituksena ja hae ajantasaiset tietueet käyttäjän API:n kautta todennettuna.
+Loomio ei tällä hetkellä lisää webhook-allekirjoitusta, jaetun salaisuuden sisältävää otsaketta, tapahtumatunnusta tai toimitustunnusta. Käsittele koko kohde-URL-osoitetta tunnistetietona, älä paljasta sitä julkisesti ja sisällytä URL-osoitteeseen tunniste, jota ei voi arvata, jos vastaanottava palvelu tukee sitä.
+
+Jos tarvitset vakaan koneluettavan tapahtumarakenteen tai allekirjoitetun toimituksen, käytä webhookia muutosilmoituksena ja hae ajantasaiset tietueet käyttäjän API:n kautta todennettuna.
 
 <!-- translation-section: payload-formats -->
 

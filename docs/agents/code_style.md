@@ -36,3 +36,7 @@
 - Give null-object predicates boolean results, collection methods empty relations or collections of the expected type, and lookup methods the same signature as the real object. Prefer an explicit method when its contract is important or not obvious from the generated null-method lists.
 - Do not add silent no-op mutation methods to a null object merely to make an invalid call succeed. Branch explicitly when an operation only makes sense for a real user or group.
 - Test both the real-object and null-object behavior when extending their shared interface, including the direct-topic path for `NullGroup` changes.
+
+## Database migrations
+
+- For large migrations, keep schema locks short, build indexes concurrently, and move bulk backfills to idempotent background jobs scheduled 10 minutes later. Prefer newest records first so active content is corrected sooner. Keep the app usable before backfill completes. Commit small batches, persist progress for retries, and verify lock behavior on production-sized data with concurrent read/write checks before deploying to loomio.com.

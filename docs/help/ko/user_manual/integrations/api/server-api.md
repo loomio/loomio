@@ -1,53 +1,53 @@
 ---
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
-  provisioning: de7ad238bf914455
+  authentication: e5fe51f7081e921f
+  provisioning: 78ae303208080368
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
 generated:
   introduction: 3de3a33cb5dc333f
-  authentication: 0d7a7a4575c1801f
-  provisioning: 54f2e595314764ae
+  authentication: ffd97b3655436cf5
+  provisioning: dc05481deb3931fa
   user-object: 0f2d51f468adbfdf
   list-users: b1f74d2f2b5faa85
-  example: 394c82e3692aa01b
+  example: 23e27480f63406fd
   show-user: '084a302358dbbeae'
-  examples: 59e172d7be402e11
+  examples: b3f96331c034d9d0
   update-user: b87ccc1e2a2d18a6
   params: af57242bdf50e5c2
-  examples-2: b00d0d328f215170
+  examples-2: 8f9907859a22d26b
   deactivate-user: 9f7cd1dc1bdf346f
-  examples-3: 97e748600693e1f6
+  examples-3: 9460519a43dd8add
   reactivate-user: 0efcbc47d32f9000
-  examples-4: 7bbafe6540cf6afb
+  examples-4: fd3a48c48004a21a
   redact-user: e2eee035b8b1bc18
-  examples-5: 240031567bf9876f
+  examples-5: 72a1b14a03f3f5c9
   delete-user: 525485960a0b9ecb
-  examples-6: 021e44125c1e6b9b
+  examples-6: d52a1ca2d9c1b99e
   sso-profile-sync-settings: 26d09375b6f3c214
 title: 서버 API
 title_source: 370e81eb20eece44
 title_generated: bb1f879f5240879d
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 ---
 
@@ -70,7 +70,7 @@ source_file: docs/help/en/user_manual/integrations/api/server-api.md
 키를 Bearer 토큰으로 전송하세요.
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 인증 정보는 `Authorization` 헤더로만 전송하세요. 쿼리 문자열이나 요청 본문에 포함된 API 키는 거부됩니다.
@@ -94,7 +94,9 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 
 `POST /api/server0/users`
 
-필수 필드인 `email`을 포함한 `user` 객체를 전송하세요. 이메일 주소의 앞뒤 공백은 제거되고 소문자로 변환됩니다. 선택 필드는 `name`, `username`, `is_admin`입니다. 여기서 `is_admin`은 인스턴스 관리자를 의미하며, 그룹 관리자 역할은 멤버 자격에서 관리합니다. `username`을 생략하면 자동으로 생성됩니다. 알 수 없는 필드는 거부됩니다.
+필수 필드인 `email`을 포함한 `user` 객체를 전송하세요. 이메일 주소의 앞뒤 공백은 제거되고 소문자로 변환됩니다. 선택 필드는 `name`, `username`, `is_admin`입니다.
+
+여기서 `is_admin`은 인스턴스 관리자를 의미하며, 그룹 관리자 역할은 멤버 자격에서 관리합니다. `username`을 생략하면 자동으로 생성됩니다. 알 수 없는 필드는 거부됩니다.
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-필수 항목인 `group_id`와 `emails` 배열을 전송하세요. 기본적으로 목록에 있는 사람 중 활성 멤버 자격이 없는 사람을 추가하며, 다른 멤버는 그대로 유지합니다. 이메일 주소의 앞뒤 공백은 제거되고 소문자로 변환되며 중복이 제거됩니다. 새 주소에 대해서는 계정과 대기 중인 초대가 생성됩니다. 같은 조직 내 다른 활성 그룹에 속한 기존 멤버 중 이메일이 인증된 멤버는 사용자 API의 초대 절차와 동일하게 자동으로 수락 처리됩니다.
+필수 항목인 `group_id`와 `emails` 배열을 전송하세요. 기본적으로 목록에 있는 사람 중 활성 멤버 자격이 없는 사람을 추가하며, 다른 멤버는 그대로 유지합니다. 이메일 주소의 앞뒤 공백은 제거되고 소문자로 변환되며 중복이 제거됩니다.
+
+새 주소에 대해서는 계정과 대기 중인 초대가 생성됩니다. 같은 조직 내 다른 활성 그룹에 속한 기존 멤버 중 이메일이 인증된 멤버는 사용자 API의 초대 절차와 동일하게 자동으로 수락 처리됩니다.
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -215,9 +219,11 @@ curl https://loomio.example.org/api/server0/memberships \
 }
 ```
 
-같은 요청을 반복해도 멤버 자격이 중복 생성되거나 초대가 다시 발송되지 않습니다. 멤버 자격이 취소된 멤버를 다시 초대하면 그룹 접근 권한은 복구되지만 이전 관리자 역할은 복구되지 않습니다. 새 초대와 역할 변경에는 일반 알림 절차가 적용되며, 작업을 수행한 사용자로 기록되는 사람은 없습니다.
+같은 요청을 반복해도 멤버 자격이 중복 생성되거나 초대가 다시 발송되지 않습니다. 멤버 자격이 취소된 멤버를 다시 초대하면 그룹 접근 권한은 복구되지만 이전 그룹 관리자 역할은 복구되지 않습니다. 새 초대와 역할 변경에는 일반 알림 절차가 적용되며, 작업을 수행한 사용자로 기록되는 사람은 없습니다.
 
-이메일 목록이 누락되었거나 형식이 잘못된 경우 또는 불리언 값이 유효하지 않은 경우 HTTP `400`을 반환합니다. 목록에 비활성화된 계정이 있으면 HTTP `422`를 반환하므로, 추가하기 전에 해당 계정을 명시적으로 재활성화하세요. 유효하지 않은 계정 데이터, 구독 한도 또는 기타 오류가 발생하면 새 계정 생성과 멤버 자격 제거를 포함한 전체 동기화가 롤백됩니다. 멤버를 추가하려면 그룹이 활성 상태여야 하며, 구독의 멤버 수 한도도 적용됩니다.
+이메일 목록이 누락되었거나 형식이 잘못된 경우 또는 불리언 값이 유효하지 않은 경우 HTTP `400`을 반환합니다. 목록에 비활성화된 계정이 있으면 HTTP `422`를 반환하므로, 추가하기 전에 해당 계정을 명시적으로 재활성화하세요.
+
+유효하지 않은 계정 데이터, 구독 한도 또는 기타 오류가 발생하면 새 계정 생성과 멤버 자격 제거를 포함한 전체 동기화가 롤백됩니다. 멤버를 추가하려면 그룹이 활성 상태여야 하며, 구독의 멤버 수 한도도 적용됩니다.
 
 ### 멤버 자격의 역할 수정
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-`{"success": true}`를 반환합니다. 제거하면 해당 그룹과 하위 그룹의 접근 권한이 취소되며, 여기에는 주제 접근 권한과 진행 중인 투표의 투표권이 포함됩니다. 계정을 삭제하거나, 관련 없는 그룹을 변경하거나, 스레드에 직접 부여된 접근 권한을 제거하지는 않습니다. 제거 요청을 반복해도 성공합니다. 구독이 만료된 그룹에서도 멤버 자격을 제거할 수 있습니다. 삭제된 그룹에 대해서는 HTTP `404`를 반환합니다.
+`{"success": true}`를 반환합니다. 제거하면 해당 그룹과 하위 그룹의 접근 권한이 취소되며, 여기에는 주제 접근 권한과 진행 중인 투표의 투표권이 포함됩니다. 계정을 삭제하거나, 관련 없는 그룹을 변경하거나, 스레드에 직접 부여된 접근 권한을 제거하지는 않습니다.
+
+제거 요청을 반복해도 성공합니다. 구독이 만료된 그룹에서도 멤버 자격을 제거할 수 있습니다. 삭제된 그룹에 대해서는 HTTP `404`를 반환합니다.
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ Loomio 설치 환경의 모든 사용자 계정을 조회합니다.
 ### 예시
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 반환값:
@@ -319,13 +327,13 @@ Loomio 사용자 ID 또는 외부 식별 정보로 사용자를 찾습니다.
 Loomio 사용자 ID로 조회:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 외부 식별 정보로 조회:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 반환값:
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 외부 식별 정보로 수정:
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 수정된 사용자를 반환합니다.
@@ -402,16 +410,16 @@ Loomio 사용자 ID 또는 외부 식별 정보로 찾은 사용자 계정을 �
 
 ### 예시
 
-Loomio 사용자 ID로 조회:
+Loomio 사용자 ID로 비활성화:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
-외부 ID로 조회:
+외부 식별 정보로 비활성화:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 응답:
@@ -437,16 +445,16 @@ Loomio 사용자 ID 또는 외부 ID로 찾은 비활성화된 사용자 계정�
 
 ### 예시
 
-Loomio 사용자 ID로 조회:
+Loomio 사용자 ID로 재활성화:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
-외부 ID로 조회:
+외부 식별 정보로 재활성화:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 응답:
@@ -474,16 +482,16 @@ Loomio에서 사용자를 제거할 때는 이 방법을 권장합니다.
 
 ### 예시
 
-Loomio 사용자 ID로 조회:
+Loomio 사용자 ID로 개인정보 삭제:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
-외부 ID로 조회:
+외부 식별 정보로 개인정보 삭제:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 응답:
@@ -510,16 +518,16 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 
 ### 예시
 
-Loomio 사용자 ID로 조회:
+Loomio 사용자 ID로 삭제:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
-외부 ID로 조회:
+외부 식별 정보로 삭제:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 응답:

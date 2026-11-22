@@ -1,25 +1,25 @@
 ---
 title: Sijoitus
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
   introduction: bf48facfa97807e3
-  when-to-use-rank: 642cb0886675f2a4
+  when-to-use-rank: eecbd8945a27ba60
   example-rank-bottle-designs: d2b31d5ffd42bb61
-  set-up-the-poll: 645c55387a144bad
-  vote: 5381e0ede54d2198
-  read-the-results: 36ba54651eee826d
+  set-up-the-poll: 1132c87150c40494
+  vote: 511525e4b1941ce8
+  read-the-results: 2d52b0a6823b30d9
   share-an-outcome: 820c264872e43d77
 title_source: a4130d7d2c3a137f
 title_generated: 919aa534daaab706
@@ -43,7 +43,7 @@ Käytä Järjestystä, kun vaihtoehtojen etusijajärjestyksellä on merkitystä 
 - varavaihtoehtojen valitseminen ensisijaisen vaihtoehdon lisäksi; tai
 - pitkän listan karsiminen lyhyeksi, järjestetyksi listaksi.
 
-Järjestys perustuu pisteisiin. Se ei ole suhteellinen vaalimenetelmä. Jos haluat valita useita henkilöitä niin, että eri äänestäjäryhmät ovat edustettuina, käytä [STV-vaaleja](/en/user_manual/polls/stv/).
+Järjestys perustuu pisteisiin, ei suhteelliseen edustukseen. Jos haluat valita useita henkilöitä niin, että eri äänestäjäryhmät ovat edustettuina, käytä [STV-vaaleja](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Oatmilk Cooperative pyytää jäseniä asettamaan neljä pullomallia etusijajär
 
 ## Luo kysely
 
-Kerro, mitä järjestyksen perusteella päätetään, ja lisää vaihtoehdot. Määritä **Vaihtoehtojen määrä**, jotta voit rajata, kuinka monta vaihtoehtoa kukin voi asettaa järjestykseen. Ensimmäinen vaihtoehto saa eniten pisteitä, seuraava yhden pisteen vähemmän, ja järjestämättä jätetyt vaihtoehdot eivät saa pisteitä.
+Kerro, mitä järjestyksen perusteella päätetään, ja lisää vaihtoehdot. Määritä **Vaihtoehtojen määrä**, jotta voit rajata, kuinka monta vaihtoehtoa kukin voi asettaa järjestykseen. Jos äänestäjät voivat esimerkiksi asettaa enintään 3 vaihtoehtoa järjestykseen, heidän ensimmäinen vaihtoehtonsa saa 3 pistettä, toinen 2 pistettä, kolmas 1 pisteen ja järjestämättä jätetyt vaihtoehdot 0 pistettä.
 
 ![](form.png)
 
-Edellytä kaikkien vaihtoehtojen asettamista järjestykseen, kun tarvitset täydellisen järjestyksen. Salli pienempi määrä valintoja, jos osallistujilla ei välttämättä ole riittävästi tietoa kaikkien vaihtoehtojen järjestämiseen. Vaihtoehtojen näyttäminen satunnaisessa järjestyksessä voi vähentää niiden alkuperäisen esitysjärjestyksen vaikutusta.
+Edellytä kaikkien vaihtoehtojen asettamista järjestykseen, kun tarvitset täydellisen järjestyksen. Salli pienempi määrä valintoja, jos osallistujilla ei välttämättä ole riittävästi tietoa kaikkien vaihtoehtojen järjestämiseen. Vaihtoehtojen näyttäminen satunnaisessa järjestyksessä auttaa välttämään sitä, että ensimmäisinä luetellut vaihtoehdot saavat etua.
 
 <!-- translation-section: vote -->
 
 ## Äänestä
 
-Osallistujat vetävät vaihtoehdot haluamaansa etusijajärjestykseen, jossa numero 1 on ensisijainen vaihtoehto. He voivat lisätä perustelun, jossa he kertovat järjestyksen taustalla olevat arviointiperusteet.
+Osallistujat vetävät vaihtoehdot haluamaansa etusijajärjestykseen, jossa numero 1 on ensisijainen vaihtoehto. He voivat lisätä äänelleen perustelun, jossa he selittävät valitsemansa järjestyksen.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Tulokset yhdistävät kaikki äänet yhteiseksi pisteisiin perustuvaksi järjest
 
 ![](results.png)
 
-Tässä esimerkissä **500 ml:n ruskea pullo** on ensimmäisenä, ja sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n ruskea pullo**. Ryhmä voi tutkia mieluisinta mallia ensin ja säilyttää muiden vaihtoehtojen järjestyksen varalle.
+Tässä esimerkissä **500 ml:n ruskea pullo** on ensimmäisenä, ja sitä seuraavat **500 ml:n kirkas pullo** ja **750 ml:n ruskea pullo**. Ryhmä voi kokeilla ensimmäiseksi sijoittunutta mallia ensin ja säilyttää loput järjestyksessä varavaihtoehtoina.
 
-Pisteisiin perustuvat tulokset voivat peittää erilaisia mieltymyksiä, jotka tuottavat saman kokonaispistemäärän. Tarkastele yksittäisiä ääniä ja niiden perusteluja, kun vaihtoehtojen pisteet ovat lähellä toisiaan tai päätöksellä on merkittäviä vaikutuksia.
+Erilaiset äänet voivat tuottaa saman kokonaispistemäärän. Kun vaihtoehtojen pisteet ovat lähellä toisiaan tai päätös on tärkeä, tarkastele yksittäisiä ääniä ja niiden perusteluja.
 
 <!-- translation-section: share-an-outcome -->
 

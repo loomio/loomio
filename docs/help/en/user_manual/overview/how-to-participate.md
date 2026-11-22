@@ -2,17 +2,13 @@
 
 # How to participate
 
-Once signed in to a Loomio group you have been invited to, you can participate in a Loomio discussion or decision.  
-
-Read on to see  how to write a comment in a thread and how to vote in a poll.
+Once you sign in to a Loomio group, you can join discussions and vote in polls.
 
 <!-- translation-section: comment -->
 
 ## Comment
 
-You can write a comment in a thread, and people can reply, react or post their own comment to continue the discussion.
-
-When you have written your text, use **Post Comment** to instantly publish the comment. Your comment will be visible to anyone who has permission to see the thread. 
+Post a comment in a discussion thread to share your thoughts. Anyone who can see the thread can read your comment, reply to it, or react to it.
 
 ![](comment_add.png#width-90)
 
@@ -20,9 +16,7 @@ When you have written your text, use **Post Comment** to instantly publish the c
 
 ### Reply to a comment
 
-You can reply to someone's comment by clicking on the reply icon beneath the comment.
-
-Your reply is published in the thread and an email notification is sent to the author of the comment.
+Reply directly to a comment to respond to a specific point. Loomio posts your reply in the thread and notifies the comment's author.
 
 ![](comment_reply.png#width-90)
 
@@ -30,7 +24,7 @@ Your reply is published in the thread and an email notification is sent to the a
 
 ### Get someone's attention
 
-You can notify people when you write a comment.
+Type **@** followed by a person's name in a comment to notify them.
 
 ![](comment_mention.png#width-90)
 
@@ -38,7 +32,7 @@ You can notify people when you write a comment.
 
 ### Reactions
 
-Reacting to a comment is a great way to encourage and acknowledge a comment by letting the comment author know how you feel.  It is a quick and light-weight way to participate that does not require any text, nor send an email. Click the smile emoji icon beneath a comment to leave an emoji reaction.
+Add an emoji reaction to acknowledge a comment without writing a reply or sending an email notification.
 
 ![](comment_reaction.png#width-90)
 
@@ -46,13 +40,9 @@ Reacting to a comment is a great way to encourage and acknowledge a comment by l
 
 ## Vote
 
-You may receive an invitation to vote in a poll via email or by notification in Loomio. Click on the link in the email to vote.
+Open a poll from an email invitation, an in-app notification, or your group's **Polls** tab. Read the poll and any attached files, then select your choice.
 
-Voting is easy, just click or tap on the icon of your choice.
-
-There are many types of polls. The example below shows a typical proposal with voting options of **Agree**, **Abstain** or **Disagree**. Other options may be available.
-
-Read the poll, and any attached files, then cast your vote by selecting one of the options.
+Loomio has several poll types. The example below shows a proposal with **Agree**, **Abstain**, and **Disagree** options.
 
 ![](proposal_example.png#width-90)
 
@@ -60,7 +50,7 @@ Read the poll, and any attached files, then cast your vote by selecting one of t
 
 ### State a reason
 
-When voting, you can also leave a **Reason** to say why you have voted this way. This is optional.
+You can add a short **Reason** to explain your vote. This is optional unless the poll requires one.
 
 ![](vote_reason.png#width-90)
 
@@ -68,13 +58,11 @@ When voting, you can also leave a **Reason** to say why you have voted this way.
 
 ### Change your vote
 
-You can **change your vote**, up until the proposal closes.
+You can change your vote at any time before a poll closes, for example if new information comes up. (Votes in anonymous polls cannot be changed after you submit them.)
 
 ![](vote_change.png#width-90)
 
-There are many reasons why you might want to change your vote. For example if new information emerges it may cause you to rethink your decision, and change your vote.
-
-Once again, you can leave a reason to say why you have changed your vote.
+You can also update your reason to explain why you changed your vote.
 
 ![](vote_edit.png#width-90)
 
@@ -82,20 +70,16 @@ Once again, you can leave a reason to say why you have changed your vote.
 
 ### Results
 
-Results of the proposal are updated as people vote, so you can see how a proposal is trending.
+In most polls, results update as people vote. (Some polls hide results until voting closes.)
 
 ![](proposal_results.png#width-90)
 
-In a controversial proposal it is common to see mixed results, however this does not mean the proposal has failed.  
-
-Often the new information revealed during the proposal helps form a better proposal that is more likely to pass.
+Mixed results are common on difficult topics and do not mean the process has failed. New perspectives often help the group write a better proposal.
 
 <!-- translation-section: outcome -->
 
 ### Outcome
 
-When the proposal closes, the author is prompted to state the **Outcome**.
-
-This is an important final step to record the result of the decision and let everyone know what will happen next.
+When a poll closes, the author can publish an **Outcome** to record what was decided and what happens next.
 
 ![](proposal_outcome.png#width-90)

@@ -1,24 +1,24 @@
 ---
 title: אינטגרציות צ'אט
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: a3ee06c442ce43c7
-  what-it-looks-like-in-chat: d6a3d488bc3ee0dd
-  generate-a-webhook-url: 57ce202354eadfb5
-  set-up-a-chat-integration: c4d7a26b40b1d678
-  invite-to-poll: 7128ac98c9588848
-  automatic-notifications: 5e276eaa536d1f1a
+  introduction: 4ecbf58245e20395
+  what-it-looks-like-in-chat: fbe3d2321eabfa98
+  generate-a-webhook-url: 36b2bcbbf55c4c8c
+  set-up-a-chat-integration: f9579316afd8e12b
+  invite-to-poll: b47d8978a1fca65e
+  automatic-notifications: 189039aacc77d7ae
 title_source: 0eca19d30c6d7d3c
 title_generated: 4ce5660f311c6e3c
 ---
@@ -33,19 +33,19 @@ Loomio יכול לשלוח התראות לחדר הצ'אט.
 
 Loomio תומך ב־Slack, Discord, Microsoft Teams, Matrix ו־Mattermost.
 
-ניתן לשלוח התראות לחדר הצ'אט בכל עת, באותו אופן שבו מזמינים אנשים להצביע או להצטרף לשרשור.
-
-ניתן גם להגדיר שליחה אוטומטית של התראות בכל פעם שמתרחש אירוע מסוים, למשל פתיחת שרשור.
+ניתן לשלוח התראות לחדר הצ'אט באופן ידני בכל פעם שמזמינים אנשים לשרשור או לסקר. ניתן גם להגדיר התראות אוטומטיות לאירועים מסוימים, כגון פתיחת דיון.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## כך זה נראה בצ'אט
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## יצירת כתובת Webhook
-הכנו מדריכים שלב אחר שלב לכל שירות נתמך. יש לפעול לפי המדריך המתאים לשירות שנבחר כדי לקבל את כתובת ה־Webhook הנדרשת להוספת אינטגרציית הצ'אט ב־Loomio.
+## חיבור שירות הצ'אט
+
+יש לפעול לפי המדריך לשירות הצ'אט כדי לקבל כתובת Webhook (או, עבור Matrix, אסימון גישה לבוט ומזהה חדר):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,28 +53,31 @@ Loomio תומך ב־Slack, Discord, Microsoft Teams, Matrix ו־Mattermost.
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-המערכת שלנו מבוססת על Webhook וניתן להשתמש בה גם עם מערכות אחרות שתומכות ב־Webhooks נכנסים בפורמט HTML או Markdown, כגון Zapier או Rocketchat. יש לבחור בבוט של Mattermost ולהשתמש בכתובת Webhook מותאמת אישית.
+ניתן לחבר גם שירותים אחרים שתומכים ב־Webhooks נכנסים בפורמט HTML או Markdown, כגון Zapier או Rocket.Chat. יש לבצע בחירה באינטגרציית הצ'אט **הכי חשוב** ב־Loomio ולהזין כתובת Webhook מותאמת אישית.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## הגדרת אינטגרציית צ'אט
 
-לאחר הגדרת השירות שנבחר (ראו למעלה), תתקבל כתובת Webhook. יש לפתוח את **אינטגרציות צ'אט** מתפריט הקבוצה ולהוסיף אינטגרציית צ'אט חדשה לקבוצה.
+נדרשת הרשאה של מנהל קבוצה כדי להוסיף או לערוך אינטגרציות צ'אט.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. לאחר הגדרת שירות הצ'אט (כמפורט למעלה), יש לפתוח את תפריט הקבוצה ב־Loomio ולבחור **אינטגרציות צ'אט**.
 
-בשלב זה ניתן להשאיר את כל תיבות הסימון לא מסומנות. יש להזין את השם (למשל "Discord #general") ואת הכתובת וללחוץ על כפתור השמירה בתחתית הטופס.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-אם בהמשך יהיה צורך בהתראות אוטומטיות דרך האינטגרציה, ניתן לחזור להגדרות שלה ולבחור את האירועים הרלוונטיים.
+2. יש להוסיף אינטגרציית צ'אט חדשה לשירות שנבחר, להזין שם (למשל "Discord #general") ולהדביק את כתובת ה־Webhook.
+
+   ![](loomio-chatbot-form.png)
+
+3. יש לבחור את האירועים שעבורם יישלחו התראות אוטומטיות, או להשאיר אותם לא מסומנים אם נדרשת רק שליחה ידנית של התראות, ולאחר מכן לשמור. ניתן לשנות הגדרות אלה בכל עת.
 
 <!-- translation-section: invite-to-poll -->
 
-### הזמנה לסקר
+### שליחת התראה באופן ידני
 
-כך ניתן לשלוח לחדר הצ'אט התראה המזמינה אנשים להצביע בהצעה. אותו תהליך משמש גם לשיתוף מסקנה, להזמנה לשרשור, לתזכורת להצביע, להתראה על עריכת סקר וכדומה.
+כדי לשלוח לחדר הצ'אט התראה על סקר או דיון, יש לפתוח את הפריט ולבחור **הזמן** (או פעולת התראה אחרת כגון **לשתף מסקנה**, **תזכיר להצביע** או **הסקר נערך**). יש לבחור את אינטגרציית הצ'אט מרשימת הנמענים ולשלוח את ההתראה.
 
 ![](invite_button_on_proposal.png)
 
@@ -87,6 +90,7 @@ Loomio תומך ב־Slack, Discord, Microsoft Teams, Matrix ו־Mattermost.
 <!-- translation-section: automatic-notifications -->
 
 ### התראות אוטומטיות
+
 כדי לשלוח התראה בכל פעם שמתרחש אירוע מסוים, יש לערוך את אינטגרציית הצ'אט ולבחור את האירוע הרצוי.
 
 ![](chatbot_enable_automatic_notifications.png)

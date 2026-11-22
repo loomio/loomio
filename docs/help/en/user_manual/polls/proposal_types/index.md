@@ -2,7 +2,7 @@
 
 # Polls
 
-Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose the voting method based on what participants need to express and how you intend to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
+Polls collect selections, scores, allocations, rankings, availability, or election ballots. Choose a voting method based on what participants need to express and how you plan to use the result. Use a [Proposal](/en/user_manual/polls/proposals/) when people need to respond to a statement or course of action.
 
 | What you want to do | Method | How the result works |
 | --- | --- | --- |
@@ -15,33 +15,33 @@ Polls collect selections, scores, allocations, rankings, availability, or electi
 
 <!-- translation-section: simple-poll -->
 
-## Simple poll
+## Choose
 
 [Choose](/en/user_manual/polls/choose/) lets participants select one or more options. Use it to find the most popular option or make a shortlist.
 
 <!-- translation-section: score-poll -->
 
-## Score poll
+## Score
 
 [Score](/en/user_manual/polls/score/) lets participants rate every option on the same scale. Use it to compare the strength of support, readiness, suitability, or importance across options.
 
 <!-- translation-section: dot-vote -->
 
-## Dot vote
+## Allocate
 
-[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to identify priorities when choosing one thing means giving less attention or resources to another.
+[Allocate](/en/user_manual/polls/allocate/) gives each participant a fixed budget of points to distribute. Use it to set priorities when choosing one thing means giving less attention or resources to another.
 
 <!-- translation-section: ranked-choice -->
 
-## Ranked choice
+## Rank
 
-[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or select one leading option.
+[Rank](/en/user_manual/polls/rank/) lets participants arrange options in order of preference. Use it to find the group's overall preferred order or pick one leading option.
 
 <!-- translation-section: time-poll -->
 
 ## Time poll
 
-[Time poll](/en/user_manual/polls/meeting_polls/) lets participants indicate when they are available. Use it to schedule a meeting or event across time zones.
+[Time poll](/en/user_manual/polls/meeting_polls/) lets participants show when they are available. Use it to schedule a meeting or event across time zones.
 
 <!-- translation-section: stv-election -->
 

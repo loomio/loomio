@@ -1,27 +1,27 @@
 ---
 title: Inhoud vinden
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/finding-content.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
   introduction: 91ceec48c5d29a37
-  search: 514f599496d28353
-  search-tips: 11a94b0fc8efa50c
-  filter-discussions: 8406e110b5b52ecf
-  category-tags: b021794cfa36788c
-  unread-discussions: 128b2d8a143abde3
-  polls-awaiting-your-vote: 037bf208ec166e84
+  search: 5de14e45cc9ac6bc
+  search-tips: 4d753a07ce09d99f
+  filter-discussions: f5e3ea1d6d34ca5c
+  category-tags: 1a82b7bb393c43a8
+  unread-discussions: 60a3bde974d63806
+  polls-awaiting-your-vote: 3a542d9458392a4c
   bookmarks: 06b79827757caeeb
 generated:
   introduction: 0ae81f84f491641f
-  search: 3d10de67a3e5dd0a
-  search-tips: 4364609a0c79e00f
-  filter-discussions: 31e584e1aa043dc6
-  category-tags: d60668aba3fc92e0
-  unread-discussions: daf8fab91e73b4c3
-  polls-awaiting-your-vote: 75bf0b4728c130f4
+  search: bf6478ac69a0f0d9
+  search-tips: 164031682fbe38c6
+  filter-discussions: c9b761c6c35d3473
+  category-tags: 30c55c004effc422
+  unread-discussions: 17cb21f40256afd4
+  polls-awaiting-your-vote: 9c58221088cdaa56
   bookmarks: a756900967f6ae85
 title_source: 11acd4c6010fc176
 title_generated: b3c589bb0b7f9d78
@@ -37,13 +37,13 @@ Loomio biedt verschillende manieren om discussies en besluiten in jouw groepen t
 
 ## Zoeken
 
-Met de knop Zoeken in de bovenste navigatiebalk open je vanaf elke pagina in Loomio de algemene zoekfunctie.
+Selecteer **Zoek** in de bovenste navigatiebalk om vanaf elke pagina in Loomio te zoeken.
 
 ![](search_button.png)
 
-De zoekfunctie doorzoekt inhoud waar je toegang toe hebt in al jouw groepen en directe discussies. Je kunt zoeken in titels en context van discussies, reacties, peilingen, stemmen en conclusies.
+De zoekfunctie doorzoekt alle groepen en directe discussies waar je toegang toe hebt. Je vindt er titels en context van discussies, reacties, peilingen, stemmen en conclusies mee.
 
-Voer een woord of woordgroep in en druk op Enter of selecteer het zoekpictogram. Als je bijvoorbeeld zoekt op **bottle**, vind je inhoud van Oatmilk Cooperative waarin dat woord voorkomt.
+Voer een woord of woordgroep in en druk op Enter. Als je bijvoorbeeld zoekt op **bottle**, vind je inhoud van Oatmilk Cooperative waarin dat woord voorkomt.
 
 ![](search_strategy.png)
 
@@ -51,17 +51,17 @@ Voer een woord of woordgroep in en druk op Enter of selecteer het zoekpictogram.
 
 ### Zoektips
 
-- Begin met een of twee kenmerkende woorden uit de titel of inhoud die je je herinnert.
+- Begin met een of twee specifieke woorden uit de titel of inhoud.
 - De zoekfunctie zoekt op het begin van een woord, dus een gedeeltelijk woord zoals **bott** kan overeenkomen met **bottle**.
-- De zoekfunctie houdt rekening met spelfouten wanneer de zoekopdracht heel weinig resultaten oplevert.
-- Gebruik de filters om resultaten te beperken tot een organisatie, subgroep, label of inhoudstype, zoals reacties of peilingen. Een labelfilter vindt bijdragen die expliciet dat label hebben en werkt ook zonder zoekterm.
-- Sorteer op **Beste overeenkomst** als relevantie belangrijk is, of op nieuwste of oudste als je ongeveer weet wanneer de inhoud is geplaatst.
+- De zoekfunctie houdt rekening met kleine spelfouten wanneer een zoekopdracht weinig resultaten oplevert.
+- Filter resultaten op organisatie, subgroep, label of inhoudstype (zoals reacties of peilingen). Labelfilters werken zonder zoekterm en tonen items met dat label.
+- Sorteer op **Beste overeenkomst** voor relevantie, of op nieuwste of oudste als je ongeveer weet wanneer iets is geplaatst.
 
 <!-- translation-section: filter-discussions -->
 
 ## Discussies filteren
 
-Gebruik de opties naast Zoeken om discussies te filteren op open of gesloten status of op categorielabel. Door een zoekterm met een filter te combineren, kun je een lange lijst met discussies snel beperken.
+Op het tabblad **Discussies** van een groep kun je threads filteren op open of gesloten status of op categorielabel. Combineer een filter met het zoekvak van de lijst om een lange lijst met discussies snel te beperken.
 
 <!-- translation-section: category-tags -->
 
@@ -71,19 +71,21 @@ Labels groeperen gerelateerde discussies, peilingen, conclusies en reacties onde
 
 ![](tags.png)
 
-Selecteer een label op het tabblad **Discussies** om threads met een bijbehorende bijdrage te tonen. Selecteer binnen een thread een label in de zijbalk om bijbehorende bijdragen met hun bovenliggende context te vinden. Auteurs kunnen labels toevoegen aan hun eigen bijdragen. Groepsadmins, threadadmins en mensen met toestemming om de discussiecontext te bewerken, kunnen labels toevoegen aan elke bijdrage. Zie [Categorielabels](/en/user_manual/discussions/tags) voor meer informatie over het instellen en de toegangsrechten.
+Selecteer een label op het tabblad **Discussies** om discussies te tonen die items met dat label bevatten. Selecteer binnen een discussie een label in de zijbalk om bijbehorende reacties, peilingen of conclusies te zien, samen met de items waarop ze antwoorden.
+
+Auteurs kunnen labels toevoegen aan hun eigen bijdragen. Groepsadmins, threadadmins en iedereen die de discussiecontext kan bewerken, kunnen labels toevoegen aan elk item. Zie [Categorielabels](/en/user_manual/discussions/tags) voor meer informatie over het instellen en de toegangsrechten.
 
 <!-- translation-section: unread-discussions -->
 
 ## Ongelezen discussies
 
-Selecteer **Ongelezen discussies** in de zijbalk om discussies te zien met activiteit die je nog niet hebt gelezen. Binnen een discussie helpt de tijdlijn je om naar ongelezen items en belangrijke gebeurtenissen te gaan.
+Selecteer **Ongelezen discussies** in de zijbalk om threads met nieuwe activiteit te zien. Gebruik binnen een discussie de tijdlijn om naar ongelezen items en belangrijke gebeurtenissen te gaan.
 
 <!-- translation-section: polls-awaiting-your-vote -->
 
 ## Peilingen die op jouw stem wachten
 
-Selecteer **Polls om op te stemmen** in de zijbalk om actieve peilingen te zien waarvoor je bent uitgenodigd maar waarin je nog niet hebt gestemd. Je kunt ook het tabblad **Peilingen** van een groep openen om de actieve en gesloten peilingen van die groep te zien.
+Selecteer **Polls om op te stemmen** in de zijbalk om open peilingen te zien waarvoor je bent uitgenodigd en waarin je nog niet hebt gestemd. Je kunt ook het tabblad **Peilingen** van een groep openen om zowel actieve als gesloten peilingen te bekijken.
 
 <!-- translation-section: bookmarks -->
 

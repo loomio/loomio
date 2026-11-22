@@ -1,25 +1,25 @@
 ---
 title: Sondeos
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: 40ed68e6501dd03b
-  simple-poll: 973abd9af9bcafab
-  score-poll: edc67c028470fed5
-  dot-vote: 91921b6bd673bd9d
-  ranked-choice: be87c3bcb0c20dfc
-  time-poll: 8f4d40b866758836
+  simple-poll: 2303cd18531e4339
+  score-poll: 5de95832da0518de
+  dot-vote: 3b9b76b9e4efc2f1
+  ranked-choice: c07e0ab0c52cdc42
+  time-poll: '039f7ec156742d35'
   stv-election: c600f8e6c6a885b2
 title_source: 996729458535904a
 title_generated: 6eed20f0398371bb
@@ -42,33 +42,33 @@ Las encuestas recogen selecciones, puntuaciones, repartos de puntos, órdenes de
 
 <!-- translation-section: simple-poll -->
 
-## Encuesta simple
+## Elegir
 
-[Elegir](/en/user_manual/polls/choose/) permite a los participantes seleccionar una o varias opciones. Utilízalo para encontrar la opción más popular o crear una lista reducida.
+[Elegir](/en/user_manual/polls/choose/) permite a los participantes seleccionar una o varias opciones. Utilízalo para encontrar la opción más popular o crear una lista de preselección.
 
 <!-- translation-section: score-poll -->
 
-## Encuesta de puntuación
+## Puntuar
 
 [Puntuar](/en/user_manual/polls/score/) permite a los participantes valorar cada opción con la misma escala. Utilízalo para comparar el grado de apoyo, preparación, idoneidad o importancia de las distintas opciones.
 
 <!-- translation-section: dot-vote -->
 
-## Votación por puntos
+## Repartir
 
-[Repartir](/en/user_manual/polls/allocate/) da a cada participante una cantidad fija de puntos para distribuir. Utilízalo para identificar prioridades cuando elegir una cosa implique dedicar menos atención o recursos a otra.
+[Repartir](/en/user_manual/polls/allocate/) da a cada participante una cantidad fija de puntos para distribuir. Utilízalo para establecer prioridades cuando elegir una cosa implique dedicar menos atención o recursos a otra.
 
 <!-- translation-section: ranked-choice -->
 
-## Votación preferencial
+## Ordenar
 
-[Ordenar](/en/user_manual/polls/rank/) permite a los participantes ordenar las opciones según sus preferencias. Utilízalo para conocer el orden de preferencia general del grupo o seleccionar la opción preferida.
+[Ordenar](/en/user_manual/polls/rank/) permite a los participantes ordenar las opciones según sus preferencias. Utilízalo para conocer el orden de preferencia general del grupo o elegir la opción preferida.
 
 <!-- translation-section: time-poll -->
 
 ## Encuesta de horario
 
-La [encuesta de horario](/en/user_manual/polls/meeting_polls/) permite a los participantes indicar cuándo están disponibles. Utilízala para programar una reunión o un evento entre personas de distintas zonas horarias.
+La [encuesta de horario](/en/user_manual/polls/meeting_polls/) permite a los participantes mostrar cuándo están disponibles. Utilízala para programar una reunión o un evento entre personas de distintas zonas horarias.
 
 <!-- translation-section: stv-election -->
 

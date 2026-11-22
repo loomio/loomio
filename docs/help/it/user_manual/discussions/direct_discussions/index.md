@@ -1,16 +1,16 @@
 ---
 title: Discussioni dirette
-source_revision: 98609cadd5dfc9493bcaacf508dee7fd21cfe650
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/direct_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: 20f5211c8472a136
-  contacting-someone-via-a-direct-discussion: 5a0b9426a2d88e62
+  introduction: c617bad25b64654f
+  contacting-someone-via-a-direct-discussion: 772699f20f6ce1c0
 generated:
-  introduction: 38e5f0e842099208
-  contacting-someone-via-a-direct-discussion: 5aa23a82a2342803
+  introduction: be992adb1e382ab2
+  contacting-someone-via-a-direct-discussion: d77e7ebccae4ae77
 title_source: ccfab058f1f7c146
 title_generated: ca035eeb1726915a
 ---
@@ -19,23 +19,22 @@ title_generated: ca035eeb1726915a
 
 # Discussioni dirette
 
-Una discussione diretta è una discussione privata per un insieme specifico di persone.
+Una discussione diretta è una conversazione privata per persone specifiche. Non appartiene a un gruppo e le persone invitate non devono necessariamente appartenere a un gruppo Loomio.
 
-Una discussione diretta non appartiene a un gruppo. Le persone invitate non devono essere membri del tuo gruppo Loomio.
+Aggiungi persone o indirizzi email al campo **Invita** per scegliere chi può vedere la conversazione e partecipare.
 
-Decidi chi può vedere la discussione e partecipare aggiungendo persone o indirizzi email al campo **Invita**.
-
-Le discussioni dirette offrono gli stessi commenti, sondaggi e altri strumenti delle discussioni di gruppo. Possono essere utili quando non è necessario creare un sottogruppo.
+Le discussioni dirette offrono gli stessi commenti, sondaggi e strumenti di formattazione delle discussioni di gruppo. Sono utili per conversazioni private o bozze quando non è necessario un sottogruppo.
 
 ![Un modulo per una discussione diretta senza alcun gruppo selezionato e con Samira Patel nel campo Invita](direct-discussion-example.png)
 
-Seleziona **Thread diretti** nella barra laterale per vedere le tue discussioni dirette e i tuoi sondaggi. Apri il menu **Nuovo** e scegli **Nuova discussione** per avviare una discussione oppure **Nuova votazione** per avviare un sondaggio senza un gruppo.
+Seleziona **Thread diretti** nella barra laterale per vedere le tue discussioni dirette e i tuoi sondaggi. Da lì, apri **Nuovo** e scegli **Nuova discussione** per avviare una discussione diretta oppure **Nuova votazione** per avviare un sondaggio senza un gruppo.
 
-Un sondaggio diretto è privato e accessibile solo alle persone che inviti. Dopo averlo creato, usa [**Gestisci gli elettori**](/en/user_manual/polls/manage_voters) per invitare persone o indirizzi email.
+Un sondaggio diretto è visibile solo alle persone che inviti. Dopo averlo creato, usa [Gestisci gli elettori](/en/user_manual/polls/manage_voters) per invitare persone o indirizzi email.
 
 ![La voce Thread diretti nella barra laterale e l'elenco delle discussioni dirette](direct-discussion-sidebar.png)
 
 <!-- translation-section: contacting-someone-via-a-direct-discussion -->
 
-## Contattare qualcuno tramite una discussione diretta
-Puoi usare una discussione diretta per contattare una o più persone in privato senza creare un sottogruppo.
+## Spostare una discussione diretta in un gruppo
+
+Se una conversazione privata o una bozza diventa un argomento di interesse per un gruppo, puoi spostarla in un gruppo o sottogruppo in un secondo momento. Vedi [Spostare una conversazione](/en/user_manual/discussions/using_discussions/#move-a-thread).

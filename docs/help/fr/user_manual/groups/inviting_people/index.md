@@ -1,34 +1,34 @@
 ---
 title: Inviter des personnes
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/inviting_people/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: '078a06dcec8907b7'
-  send-invitations-via-email: bbc814cba35c9541
-  invite-many-at-once: 971aad55946f5f1d
-  invite-people-to-subgroups: 69a78a72938caca5
-  share-a-link-to-your-group: cfa22d9b153f17af
-  request-to-join-group: 37a250936884173f
-  review-membership-requests: 678163f67ce197d5
-  managing-invitations: 25d2b33504493b14
-  re-send-invitations: 76c7fc660f7e3d42
-  cancelling-invitations: f3df8386eeda62f5
-  invitation-notification-history: 0f2431ba7ab7232e
+  introduction: 74059ea9fbb835df
+  send-invitations-via-email: 31fb589497c62dd5
+  invite-many-at-once: b16b041c438139ef
+  invite-people-to-subgroups: ebabc8be61151327
+  share-a-link-to-your-group: 1d9e5c284cc370df
+  request-to-join-group: bf2adeaf16292fe4
+  review-membership-requests: 7006378e870d8c63
+  managing-invitations: 4213f2a1400cf35d
+  re-send-invitations: 170acb378f6443dd
+  cancelling-invitations: f45e19cbeaf8b752
+  invitation-notification-history: edfe660cfce18887
 generated:
-  introduction: cf12d88f0b2d6ead
-  send-invitations-via-email: 513054385d01b0ef
-  invite-many-at-once: 78d9e4b94c481bdb
-  invite-people-to-subgroups: 3f6db033577249a7
-  share-a-link-to-your-group: 1ba21d5c2066481a
-  request-to-join-group: 8f719e2afe3581f4
-  review-membership-requests: e7241fa9868dfe63
-  managing-invitations: f0cce63a809f9a5c
-  re-send-invitations: d06d1a9f06473ded
-  cancelling-invitations: 0ed3631657c2f9f2
-  invitation-notification-history: 22afb502ff286085
+  introduction: 3dad6fa0c2128854
+  send-invitations-via-email: a0fec9edf4eb8313
+  invite-many-at-once: dcbb6e7dde8e5123
+  invite-people-to-subgroups: f5119ba832f2d196
+  share-a-link-to-your-group: c697b699a820c67a
+  request-to-join-group: 9d04a0b8d5f92c83
+  review-membership-requests: 716e282dec3fe6e7
+  managing-invitations: 96bd668176e6e9d7
+  re-send-invitations: f836be1937786a7b
+  cancelling-invitations: ba1de33f77b22ffd
+  invitation-notification-history: ec5711ccb7d86097
 title_source: b926eb8921d85971
 title_generated: 6dcdecac01939914
 ---
@@ -37,7 +37,7 @@ title_generated: 6dcdecac01939914
 
 # Inviter des personnes dans un groupe Loomio
 
-Invitez des personnes dans votre groupe Loomio par e-mail, ou partagez un lien vers le groupe dans une newsletter, une messagerie ou sur un site web. Ouvrez l’onglet **Membres** sur la page de votre groupe pour commencer.
+Vous pouvez inviter des personnes dans votre groupe Loomio par e-mail, partager un lien d’invitation ou permettre aux personnes de demander à rejoindre le groupe. Ouvrez l’onglet **Membres** sur la page de votre groupe pour commencer.
 
 ![](group_join_group_invite.png)
 
@@ -45,9 +45,7 @@ Invitez des personnes dans votre groupe Loomio par e-mail, ou partagez un lien v
 
 ## Envoyer des invitations par e-mail
 
-Cliquez sur **Inviter** dans l’onglet **Membres** pour envoyer un e-mail contenant un lien d’invitation à usage unique. La personne destinataire peut créer un compte Loomio et rejoindre votre groupe.
-
-Si la personne destinataire possède déjà un compte Loomio, elle peut accepter l’invitation et rejoindre votre groupe avec son compte existant.
+Sélectionnez **Inviter** dans l’onglet **Membres** pour envoyer un e-mail contenant un lien d’invitation à usage unique. La personne destinataire peut rejoindre le groupe avec un compte Loomio existant ou en créer un.
 
 ![](group_invite_email.png)
 
@@ -55,20 +53,20 @@ Si la personne destinataire possède déjà un compte Loomio, elle peut accepter
 
 ### Inviter plusieurs personnes à la fois
 
-Vous pouvez envoyer des invitations par e-mail à un maximum de 100 personnes à la fois en saisissant ou en copiant-collant plusieurs adresses e-mail dans le champ « Qui souhaitez-vous inviter ? ». Séparez les adresses e-mail par une virgule ou un espace.
+Vous pouvez inviter jusqu’à 100 personnes à la fois en saisissant ou en collant des adresses e-mail séparées par des virgules ou des espaces.
 
-Lorsque vous invitez des personnes dans un groupe au sein d’une organisation, le groupe parent et les sous-groupes associés auxquels vous appartenez apparaissent parmi les suggestions de destinataires. Sélectionnez un groupe, puis cliquez sur sa pastille pour afficher les personnes qui le composent. Vous pouvez retirer les personnes que vous ne souhaitez pas inviter avant d’envoyer les invitations. Les personnes qui appartiennent déjà au groupe de destination sont exclues.
+Lorsque vous invitez des personnes dans un groupe au sein d’une organisation, vous pouvez également sélectionner le groupe parent ou les sous-groupes associés auxquels vous appartenez. Affichez les personnes qui composent un groupe sélectionné pour retirer celles que vous ne souhaitez pas inviter. Les personnes qui sont déjà membres sont automatiquement exclues.
 
 >[!Tip]
->Copiez les adresses e-mail d’une colonne dans une feuille de calcul Google ou Excel, puis collez-les dans le champ d’invitation.
+>Vous pouvez copier une colonne d’adresses e-mail depuis Google Sheets ou Microsoft Excel et la coller directement dans le champ d’invitation.
 
-Lorsque vous cliquez sur **Inviter**, un e-mail est envoyé à chacune des adresses e-mail fournies. Il contient un lien d’invitation unique qui ne peut être utilisé qu’une seule fois. Cet e-mail est envoyé dans la langue que vous utilisez actuellement.
+Lorsque vous sélectionnez **Inviter**, Loomio envoie à chaque adresse un lien d’invitation unique à usage unique, dans la langue que vous utilisez actuellement.
 
 <!-- translation-section: invite-people-to-subgroups -->
 
 ### Inviter des personnes dans des sous-groupes
 
-En suivant la même procédure que ci-dessus, vous pouvez inviter des personnes dans un groupe parent et dans un ou plusieurs sous-groupes simultanément avec le bouton **Inviter des personnes**. Cochez les cases à côté des sous-groupes auxquels vous souhaitez que ces personnes appartiennent dès qu’elles rejoignent le groupe.
+Lorsque vous invitez des personnes dans un groupe parent, vous pouvez les ajouter à un ou plusieurs sous-groupes en même temps. Cochez les sous-groupes que vous souhaitez qu’elles rejoignent lorsqu’elles acceptent l’invitation.
 
 ![](group_invite_email_subgroups.png)
 
@@ -76,19 +74,17 @@ En suivant la même procédure que ci-dessus, vous pouvez inviter des personnes 
 
 ## Partager un lien vers votre groupe
 
-Vous pouvez partager un lien vers votre groupe avec le bouton **Partager**. Cela vous permet d’envoyer un lien par e-mail, dans une newsletter ou une messagerie, ou de le publier sur votre site web.
+Sélectionnez **Partager** pour générer un lien d’invitation réutilisable à diffuser dans une newsletter, un canal de messagerie, un e-mail ou sur un site web.
 
 ![](group_invite_sharable_link.png)
 
-Cliquez sur l’icône « Copier » pour copier le lien dans votre presse-papiers, puis collez-le dans votre e-mail, votre newsletter ou votre canal de messagerie.
-
-Si vous souhaitez empêcher de nouvelles personnes de rejoindre le groupe avec ce lien, cliquez sur « Réinitialiser ce lien ». Le lien existant ne fonctionnera plus et un nouveau lien sera créé.
+Pour empêcher de nouvelles personnes de rejoindre le groupe avec un lien existant, sélectionnez **Réinitialiser ce lien**. Cette action invalide l’ancien lien et en crée un nouveau.
 
 <!-- translation-section: request-to-join-group -->
 
 ## Demander à rejoindre un groupe
 
-Les personnes peuvent demander à rejoindre un groupe ouvert ou fermé. Partagez l’URL du groupe, par exemple `https://www.loomio.com/group-name`. Sur la page du groupe, elles peuvent consulter les informations publiques du groupe et sélectionner **Rejoindre le groupe** pour répondre à la question d’adhésion et envoyer leur demande.
+Les personnes peuvent demander à rejoindre un groupe ouvert ou fermé depuis l’URL du groupe, par exemple `https://www.loomio.com/group-name`. Les personnes qui visitent la page peuvent consulter les informations publiques du groupe et sélectionner **Rejoindre le groupe** pour répondre à la question d’adhésion et envoyer leur demande.
 
 ![](group_join_group.png)
 
@@ -96,21 +92,21 @@ La question d’adhésion permet aux personnes de se présenter et d’expliquer
 
 ![](group_request_to_join.png)
 
-Dans [Confidentialité du groupe](/en/user_manual/groups/settings/privacy#how-people-join), choisissez **Demander une approbation** pour que les demandes doivent être examinées. Vous pouvez également personnaliser la question d’adhésion dans les paramètres du groupe.
+Dans [Confidentialité du groupe](/en/user_manual/groups/settings/privacy#how-people-join), choisissez **Demander à rejoindre** pour imposer l’examen des demandes d’adhésion. Vous pouvez également personnaliser la question d’adhésion dans les paramètres du groupe.
 
 <!-- translation-section: review-membership-requests -->
 
 ### Examiner les demandes d’adhésion
 
-Les administrateurs du groupe et les membres autorisés à ajouter des membres examinent les demandes dans la section **Demandes d’adhésion** de l’onglet **Membres**. Une personne qui examine une demande peut :
+Les administrateurs du groupe et les membres autorisés à ajouter des membres peuvent examiner les demandes dans la section **Demandes d’adhésion** de l’onglet **Membres**.
 
 ![](group_review_request_to_join.png)
 
-- **Approuver** la demande pour ajouter la personne comme membre et l’en informer.
-- **Ignorer** la demande pour la clore sans en informer la personne ni lui permettre d’envoyer une nouvelle demande.
-- **Refuser** la demande avec un message expliquant la décision. Loomio envoie le message à la personne par e-mail et par notification, et elle peut envoyer une nouvelle demande.
+Pour chaque demande, vous pouvez :
 
-Sélectionnez le bouton de refus pour rédiger un message ou ignorer la demande.
+- **Approuver** pour ajouter la personne comme membre et l’en informer.
+- **Ignorer** pour clore la demande sans en informer la personne ni lui permettre d’envoyer une nouvelle demande.
+- **Refuser** pour envoyer une explication par e-mail et par notification ; la personne peut envoyer une nouvelle demande ultérieurement.
 
 ![](group_decline_request_to_join.png)
 
@@ -118,31 +114,30 @@ Sélectionnez le bouton de refus pour rédiger un message ou ignorer la demande.
 
 ## Gérer les invitations
 
-Pour gérer les invitations, ouvrez le menu déroulant de filtrage dans l’onglet Membres de la page de votre groupe et sélectionnez **Invitations**. Vous pouvez gérer chaque invitation en cliquant sur le menu à trois points (**⋮**) à droite du membre.
+Ouvrez le menu de filtrage dans l’onglet **Membres** et sélectionnez **Invitations** pour voir les invitations en attente. Utilisez le menu d’actions à côté d’une invitation pour la gérer.
 
 ![](group_invite_members_filter.png)
 
-Vous pouvez également attribuer aux personnes le rôle d’administrateur ou définir leur titre dans le groupe, par exemple « Assistance informatique », avant qu’elles acceptent leur invitation.
+Vous pouvez également attribuer à une personne invitée le rôle d’administrateur du groupe ou définir son titre, par exemple « Assistance informatique », avant qu’elle accepte l’invitation.
 
 <!-- translation-section: invitation-notification-history -->
 
 ### Historique d’envoi des invitations
 
-Si une personne ne reçoit pas son courriel d’invitation, les administrateurs du groupe peuvent ouvrir **Historique d’envoi des invitations** dans le menu à trois points (**⋮**) à côté de son nom sur la page Membres pour consulter les dates d’envoi des invitations et les éventuels problèmes de livraison enregistrés.
+Si une personne ne reçoit pas son e-mail d’invitation, un administrateur du groupe peut vérifier son statut de livraison. Ouvrez le menu d’actions à côté de son nom dans l’onglet **Membres** et sélectionnez **Historique d’envoi des invitations** pour consulter les dates d’envoi des invitations et les éventuels problèmes de livraison enregistrés.
 
 <!-- translation-section: re-send-invitations -->
 
 ### Renvoyer des invitations
 
-Relancez les personnes qui n’ont pas encore rejoint le groupe. Si une personne a perdu ou oublié son e-mail d’invitation, vous pouvez le renvoyer depuis le menu déroulant à côté de son nom sur la page Membres.
-
-Cliquez sur les trois points (**⋮**) à côté de la personne à qui vous souhaitez renvoyer l’invitation, puis choisissez **Renvoyer l'invitation**.
+Si une personne a perdu ou n’a pas vu son e-mail d’invitation, ouvrez le menu d’actions à côté de son nom dans l’onglet **Membres** et sélectionnez **Renvoyer l'invitation**.
 
 ![](group_invite_resend_invitation.png)
 
 <!-- translation-section: cancelling-invitations -->
 
 ### Annuler des invitations
-Si vous avez saisi une adresse e-mail incorrecte ou si vous ne souhaitez plus inviter une personne, vous pouvez annuler son invitation depuis l’onglet Membres de la page de votre groupe. Sélectionnez **Annuler l’invitation** dans le menu déroulant à droite de l’invitation du membre (**⋮**).
+
+Si vous avez saisi une adresse e-mail incorrecte ou si vous ne souhaitez plus inviter une personne, ouvrez le menu d’actions à côté de son invitation dans l’onglet **Membres** et sélectionnez **Annuler l’invitation**.
 
 ![](group_invite_cancel_invitation.png)

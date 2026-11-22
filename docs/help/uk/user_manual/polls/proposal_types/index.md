@@ -1,24 +1,24 @@
 ---
 title: Опитування
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: 7b4c0192ae5021d5
-  simple-poll: a4cd19cd57fc7d95
-  score-poll: ef5bfa21fd58316a
-  dot-vote: e2d1b9fadad474a5
-  ranked-choice: 38960db82db43a73
+  simple-poll: c7376e4feb5da33c
+  score-poll: 50b3973e3f3b9f6a
+  dot-vote: 6f63f83a74fd428b
+  ranked-choice: 00dbafe432092ca1
   time-poll: 2b5b3cc6d54f9943
   stv-election: 9fd74e8a63f5c20e
 title_source: 996729458535904a
@@ -44,25 +44,25 @@ needs_review:
 
 <!-- translation-section: simple-poll -->
 
-## Просте опитування
+## Вибір
 
 [Вибір](/en/user_manual/polls/choose/) дає учасникам змогу вибрати один або кілька варіантів. Використовуйте цей метод, щоб визначити найпопулярніший варіант або скласти короткий список.
 
 <!-- translation-section: score-poll -->
 
-## Оціночне опитування
+## Оцінка
 
 [Оцінка](/en/user_manual/polls/score/) дає учасникам змогу оцінити кожен варіант за однаковою шкалою. Використовуйте цей метод, щоб порівняти рівень підтримки, готовність, придатність або важливість різних варіантів.
 
 <!-- translation-section: dot-vote -->
 
-## Розподіл балів
+## Розподіл
 
 [Розподіл](/en/user_manual/polls/allocate/) надає кожному учаснику фіксовану кількість балів для розподілу. Використовуйте цей метод, щоб визначити пріоритети, коли вибір одного означає менше уваги або ресурсів для іншого.
 
 <!-- translation-section: ranked-choice -->
 
-## Ранговий вибір
+## Ранжування
 
 [Ранжування](/en/user_manual/polls/rank/) дає учасникам змогу впорядкувати варіанти за своїми уподобаннями. Використовуйте цей метод, щоб визначити загальний порядок уподобань групи або вибрати один провідний варіант.
 

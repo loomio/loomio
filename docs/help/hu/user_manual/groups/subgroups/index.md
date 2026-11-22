@@ -1,34 +1,34 @@
 ---
 title: Alcsoportok
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/subgroups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 63e6e23d24e80919
-  add-a-subgroup: 0bc0e5f99eb074c3
+  introduction: c656e4398a0d0fef
+  add-a-subgroup: 9787884284f190c8
   subgroup-settings: 737225cc4bebe7e8
-  privacy: a8b34f0abb250f97
-  permissions: 485ea3cc98d48900
-  find-subgroups: 5e6fc5a5122c1417
-  invite-to-a-subgroup: 0af670e1e9b32a5e
-  simultaneously-invite-people-to-subgroups-and-parent-group: 1991604900321cd7
-  administer-a-subgroup: 7a25cb392c4abd4f
-  delete-a-subgroup: 2c6e76ec78386443
-  how-people-join: 3e3d7bf205af6b7c
+  privacy: d66210a7ca87eb23
+  permissions: b6dfa2fbf71913f7
+  find-subgroups: 285d9e270f55c434
+  invite-to-a-subgroup: 9c672e9470b07ca1
+  simultaneously-invite-people-to-subgroups-and-parent-group: 34753576900578d3
+  administer-a-subgroup: 20d279d47f1f0b49
+  delete-a-subgroup: 4cc93cd908d342b9
+  how-people-join: a73630ab35e67aee
 generated:
-  introduction: ee3713d0233cae02
-  add-a-subgroup: 403fc6fe9c56ff91
+  introduction: 4bb8687343ab3cc4
+  add-a-subgroup: d8f67d7eafedcdd8
   subgroup-settings: 16d3adb394b9f23e
-  privacy: 8b0b70ce03e1eded
+  privacy: a1fc74869109bc25
   permissions: 76698e8be0416225
-  find-subgroups: 4a9b8588abd2a44d
-  invite-to-a-subgroup: 6b62a1bbab58947c
-  simultaneously-invite-people-to-subgroups-and-parent-group: 9a32f87b98d4beff
-  administer-a-subgroup: 91317d896a52eaf3
-  delete-a-subgroup: b425952ca6a4401b
-  how-people-join: c5387a490ee24b5f
+  find-subgroups: ca6ad642f0e36e40
+  invite-to-a-subgroup: ec9a1adcd878e697
+  simultaneously-invite-people-to-subgroups-and-parent-group: 0c8a1c0aeb7bc140
+  administer-a-subgroup: fedb7e6901066a4e
+  delete-a-subgroup: 1324bdab8fa5319f
+  how-people-join: '08fac77917c727f7'
 title_source: 9f81e728f70cae3e
 title_generated: a74a4851d37bc4f2
 ---
@@ -37,35 +37,30 @@ title_generated: a74a4851d37bc4f2
 
 # Alcsoportok
 
-Az alcsoportok segítenek megszervezni a kommunikációt és a tagok együttműködését, hogy a megfelelő emberek dolgozzanak együtt.
+Az alcsoportok segítenek a szülőcsoporton belül egyes csapatok vagy témák köré szervezni a beszélgetéseket és a tagokat. Egy szervezet például a következőkhöz hozhat létre alcsoportokat:
 
-Egy szervezetnek például a következő alcsoportjai lehetnek:
-- vezetőtestület
-- munkacsapat vagy projektmunkacsoport
-- egy témával foglalkozó csoport (például „stratégia” vagy „tanulás”)
+- Vezetőtestület
+- Munkacsapat vagy projektcsoport
+- Egy téma, például stratégia vagy tanulás
 
-Az alcsoportok ugyanúgy működnek, mint a csoportok, de a szülőcsoporton belül helyezkednek el. A legtöbb elérhető funkció és beállítás megegyezik a szülőcsoportéval. Ez azt is jelenti, hogy valaki tagja lehet az alcsoportodnak, például a vezetőtestületnek, anélkül, hogy a szülőcsoportnak is tagja lenne.
+Az alcsoportok ugyanúgy működnek, mint a többi csoport, és a legtöbb funkciójuk és beállításuk is megegyezik. Valaki tagja lehet egy alcsoportnak, például a vezetőtestületnek, anélkül, hogy a szülőcsoportnak is tagja lenne.
 
 <!-- translation-section: add-a-subgroup -->
 
 ## Alcsoport hozzáadása
 
 >[!Note]
->Az új alcsoportok hozzáadásának lehetőségét a csoport [jogosultsági beállításai](/en/user_manual/groups/settings/permissions) szabályozzák. Alapértelmezés szerint csak az adminok indíthatnak új alcsoportokat.
+>Hogy ki adhat hozzá alcsoportokat, azt a szülőcsoport [jogosultsági beállításai](/en/user_manual/groups/settings/permissions) szabályozzák. Alapértelmezés szerint csak a csoport adminjai hozhatnak létre alcsoportokat.
 
-Alcsoport hozzáadásához nyisd meg a szülőcsoportod oldalát, majd kattints az oldalsávban az **Új alcsoport** gombra.  
+Alcsoport létrehozásához nyisd meg a szülőcsoportod oldalát, válaszd ki az oldalsávban az **Új alcsoport** lehetőséget, adj meg egy nevet, válaszd ki az adatvédelmi beállítást, majd válaszd **Az alcsoport indítása** lehetőséget.
 
 ![Új alcsoport gomb az Oatmilk Cooperative oldalsávjában](subgroups-sidebar.png)
 
-Kattints az **Új alcsoport** gombra, adj nevet az alcsoportnak, és válaszd ki az adatvédelmi beállítást, majd kattints **Az alcsoport indítása** gombra.
-
 ![Új alcsoport létrehozására szolgáló űrlap a csomagolási munkacsoporthoz](subgroups_new.png)
 
-Ha készen állsz, [hívj meg embereket](/en/user_manual/groups/inviting_people/) az alcsoportba.
+Ha elkészült az alcsoport, [hívj meg embereket](/en/user_manual/groups/inviting_people), hogy csatlakozzanak hozzá. Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings) az alcsoport oldalán található műveleti menüből módosíthatod.
 
-Az alcsoport [csoportbeállításait](/en/user_manual/groups/settings/) az alcsoport oldalán található fogaskerékikonra kattintva módosíthatod.
-
-![Csoportbeállítások szerkesztése a csomagolási munkacsoportban](subgroups_edit_group_settings.png)
+![Csoportbeállítások szerkesztése művelet a csomagolási munkacsoportban](subgroups_edit_group_settings.png)
 
 <!-- translation-section: subgroup-settings -->
 
@@ -84,17 +79,15 @@ Válaszd ki, hogy kik találhatják meg az alcsoportot és olvashatják a szála
 | **Látható a szülőcsoport számára** | A szülőcsoport és az alcsoport tagjai | Az alcsoport tagjai és a meghívott vendégek |
 | **Titkos** | Az alcsoport meghívott tagjai | Az alcsoport tagjai és a meghívott vendégek |
 
-Az **A szülőcsoport tagjai láthatják a privát szálakat** engedély a szülőcsoport tagjainak csatlakozás nélkül is hozzáférést adhat az alcsoport szálaihoz.
+Az **A szülőcsoport tagjai láthatják a privát szálakat** engedély azt is lehetővé teszi, hogy a szülőcsoport tagjai csatlakozás nélkül olvassák az alcsoport szálait.
 
-Ha a szülőcsoport privát, az alcsoportnál a **Látható a szülőcsoport számára** és a **Titkos** beállítás érhető el.
-
-[A csoportok adatvédelméről itt olvashatsz](/en/user_manual/groups/settings/privacy).
+Ha a szülőcsoport privát, az alcsoportoknál csak a **Látható a szülőcsoport számára** vagy a **Titkos** beállítás választható. A részletekért olvasd el [a csoportok adatvédelméről szóló útmutatót](/en/user_manual/groups/settings/privacy).
 
 <!-- translation-section: how-people-join -->
 
 ### Hogyan csatlakoznak az emberek?
 
-Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/privacy#how-people-join) az alcsoport létrehozásakor vagy a **Csoportbeállítások szerkesztése → Adatvédelem** résznél.
+Válaszd ki, [hogyan csatlakoznak az emberek](/en/user_manual/groups/settings/privacy#how-people-join) az alcsoport létrehozásakor vagy az **A csoportbeállítások szerkesztése** > **Adatvédelem** résznél.
 
 ![Az alcsoport adatvédelmi és csatlakozási beállításai](subgroups_privacy_settings.png)
 
@@ -110,7 +103,7 @@ Kapcsold be **A szülőcsoport tagjai láthatják a privát szálakat** beállí
 
 ## Alcsoportok keresése
 
-Nyisd meg az oldalsávot, és kattints a csoportod nevére az alcsoportjainak megtekintéséhez.
+Válaszd ki a szülőcsoportod nevét az oldalsávban az alcsoportjainak megtekintéséhez.
 
 ![Az Oatmilk Cooperative alcsoportjai az oldalsávban](subgroups_find_subgroups.png)
 
@@ -118,13 +111,13 @@ Nyisd meg az oldalsávot, és kattints a csoportod nevére az alcsoportjainak me
 
 ## Meghívás alcsoportba
 
-Ugyanúgy hívj meg embereket egy alcsoportba, mint egy csoportba. Ha már tagjai ugyanazon szervezet valamelyik szülőcsoportjának vagy másik alcsoportjának, amelynek te is tagja vagy, beírhatod a nevüket, vagy kiválaszthatod az adott csoportot címzettként. Válaszd ki a címzetteket jelölő címkét, hogy a csoport helyett az egyes emberek jelenjenek meg, majd távolítsd el azokat, akiket nem szeretnél meghívni.
+Ugyanúgy [hívhatsz meg embereket egy alcsoportba](/en/user_manual/groups/inviting_people), mint egy szülőcsoportba. Ha már tagjai a szülőcsoportnak vagy egy másik alcsoportnak, amelynek te is tagja vagy, írd be a nevüket, vagy válaszd ki az adott csoportot, majd bontsd ki a csoportot az egyes emberekre, és távolítsd el azokat, akiket nem szeretnél meghívni.
 
 <!-- translation-section: simultaneously-invite-people-to-subgroups-and-parent-group -->
 
 ### Emberek egyidejű meghívása alcsoportokba és a szülőcsoportba
 
-Ha a szülőcsoport **Tagok** lapján a **Hívj meg embereket** gombot használod, egyszerre több alcsoportba is meghívhatsz embereket. Jelöld be azoknak az alcsoportoknak a jelölőnégyzetét, amelyekhez szeretnéd, hogy azonnal csatlakozzanak.
+Amikor a szülőcsoportod **Tagok** lapján a **Meghív** lehetőséget választod, jelöld be azokat az alcsoportokat, amelyekhez szeretnéd, hogy a meghívott emberek egyidejűleg csatlakozzanak.
 
 ![A szülőcsoport és az alcsoport kiválasztása a meghívó űrlapján](group_invite_email_subgroups.png)
 
@@ -132,15 +125,11 @@ Ha a szülőcsoport **Tagok** lapján a **Hívj meg embereket** gombot használo
 
 ## Alcsoport kezelése
 
-Az alcsoportoknak lehetnek saját adminjaik, akik eltérhetnek a szülőcsoport adminjaitól.
+Az alcsoportoknak lehetnek saját csoportadminjaik, akik eltérhetnek a szülőcsoport adminjaitól.
 
-A szülőcsoport adminja csatlakozhat egy nem titkos alcsoporthoz, és az alcsoport adminjává teheti magát. Ez a titkos alcsoportokra nem vonatkozik.
+A szülőcsoport adminja bármelyik nem titkos alcsoporthoz csatlakozhat, és az alcsoport adminjává teheti magát. Ez a titkos alcsoportokra nem vonatkozik. A részletekért olvasd el [az alcsoportok kezeléséről szóló útmutatót](/en/user_manual/groups/member_management#managing-subgroups).
 
-Nyisd meg az Alcsoportok lapot, keresd meg az alcsoportot, és kattints a **Kapcsolódj a csoporthoz** gombra.
-
-![Kapcsolódj a csoporthoz gomb egy zárt alcsoportban](member_join_subgroup.png)
-
-Miután az alcsoport tagja lett, a szülőcsoport adminja az alcsoportban is adminná teheti magát.
+![Csatlakozás a csoporthoz gomb egy zárt alcsoportban](member_join_subgroup.png)
 
 ![Adminná tétel művelet a szülőcsoport egyik adminja számára](member_make_admin.png)
 
@@ -148,6 +137,4 @@ Miután az alcsoport tagja lett, a szülőcsoport adminja az alcsoportban is adm
 
 ## Alcsoport törlése
 
-Az adminok ugyanúgy törölhetnek egy alcsoportot, mint egy csoportot. Alcsoport törlésekor ügyelj arra, hogy ne a szülőcsoportot töröld.
-
-[Olvasd el, hogyan törölhetsz csoportokat](/en/user_manual/groups/deleting_your_group/).
+A csoport adminjai ugyanúgy törölhetnek egy alcsoportot, ahogyan [egy csoportot törölnek](/en/user_manual/groups/deleting_your_group). Törlés előtt ellenőrizd, hogy az alcsoport oldalán vagy, és nem a szülőcsoport oldalán.

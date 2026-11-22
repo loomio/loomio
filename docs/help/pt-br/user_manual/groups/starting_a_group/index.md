@@ -1,22 +1,22 @@
 ---
 title: Criar um grupo
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: a1555fe60f630bcc
+  introduction: 2331490b4b93e34f
   group-details: a49b0755563d1d5e
-  group-name: d7f38ec1edabbf8c
-  group-handle: 9c70fa94fc1aca4d
-  group-description: 5646cffe653032a6
+  group-name: 0bd13f38b9ae1b52
+  group-handle: 15f295bb2b977d85
+  group-description: 55a0eee20d2dcc70
 title_source: c5a16dbe0863ecd7
 title_generated: 8b92a0f663dec633
 ---
@@ -25,9 +25,9 @@ title_generated: 8b92a0f663dec633
 
 # Criar um novo grupo
 
-Se você está começando a usar o Loomio, pode criar um grupo com um período de teste gratuito a qualquer momento pelo [site do Loomio](https://www.loomio.com/). Se você já usa o Loomio e gostaria de criar um novo grupo para outra organização ou finalidade, pode fazer isso pelo menu lateral — clique em **Novo grupo**.
+Se você está começando a usar o Loomio, pode criar um grupo com um período de teste gratuito pelo [site do Loomio](https://www.loomio.com/). Se você já usa o Loomio e quer criar outro grupo, selecione **Novo grupo** na barra lateral.
 
-Para muitas organizações, um único grupo no Loomio é suficiente. Você pode criar quantos subgrupos precisar dentro do grupo. Consulte [Subgrupos](/en/user_manual/groups/subgroups/) para saber mais.
+A maioria das organizações precisa de apenas um grupo principal, com quantos [subgrupos](/en/user_manual/groups/subgroups) forem necessários dentro dele.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Para muitas organizações, um único grupo no Loomio é suficiente. Você pode 
 
 ### Nome do grupo
 
-Digite o nome do seu grupo. Procure usar um nome curto e conciso.
+Digite um nome curto e claro para seu grupo.
 
 <!-- translation-section: group-handle -->
 
 ### Identificador do grupo
 
-Seu grupo recebe um identificador automaticamente. Esse identificador é usado na URL e no endereço de e-mail do grupo, como **loomio.com/your-group-handle** e **your-group-handle@loomio.com**.
+O Loomio atribui um identificador automaticamente com base no nome do seu grupo. Esse identificador é usado na URL e no endereço de e-mail do grupo, como `loomio.com/your-group-handle` e `your-group-handle@loomio.com`.
 
-Você pode editar o identificador ao criar o grupo e alterá-lo depois nas configurações do grupo. Quando você o altera, os links e endereços de e-mail que usam o identificador antigo continuam funcionando. O Loomio mantém até três identificadores antigos; depois disso, o identificador mais antigo expira.
+Você pode editar o identificador durante a configuração ou alterá-lo depois nas configurações do grupo. Quando você o altera, os links e endereços de e-mail que usam o identificador antigo continuam funcionando. O Loomio mantém até três identificadores antigos; depois disso, o identificador mais antigo expira.
 
 <!-- translation-section: group-description -->
 
 ### Descrição do grupo
 
-Esta breve descrição aparecerá no topo do painel para fornecer o contexto necessário aos novos membros.
+Adicione uma breve descrição para aparecer no topo da página do grupo e fornecer contexto aos novos membros.
 
-**Quando você clica em 'Criar grupo', seu novo grupo é criado automaticamente!**
-
----
+Escolha uma [configuração de privacidade](/en/user_manual/groups/settings/privacy) e selecione **Iniciar grupo** para criar o grupo. Você se torna automaticamente o primeiro admin do grupo e pode atualizar esses detalhes depois nas configurações do grupo.

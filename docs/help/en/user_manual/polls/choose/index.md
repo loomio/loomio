@@ -2,7 +2,7 @@
 
 # Choose
 
-Choose is a simple poll for finding the most popular option or making a shortlist. Participants select one or more options, depending on the limits you set. This voting method is commonly known as multiple choice.
+Choose is a simple poll for finding the most popular option or making a shortlist. Participants select one or more options, depending on the limits you set. This voting method is also known as multiple choice.
 
 <!-- translation-section: when-to-use-choose -->
 
@@ -15,29 +15,29 @@ Use Choose when the options are distinct and you need to count how many people s
 - deciding which design should proceed to the next round; or
 - checking which services members intend to use.
 
-Choose records selections, not the strength or order of a person's preferences. Use [Score](/en/user_manual/polls/score/) to measure how strongly people support every option, [Allocate](/en/user_manual/polls/allocate/) when there is a limited budget, or [Rank](/en/user_manual/polls/rank/) when preference order matters.
+Choose records selections, not the strength or order of preferences. Use [Score](/en/user_manual/polls/score/) to measure how strongly people support every option, [Allocate](/en/user_manual/polls/allocate/) when there is a limited budget, or [Rank](/en/user_manual/polls/rank/) when preference order matters.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
 ## Example: set a planning-meeting agenda
 
-Oatmilk Cooperative needs to decide which parts of a returnable-bottle trial need the most time at its next planning meeting. The poll asks each person to choose up to two topics. Its details explain how the result will be used, and each option includes enough information to distinguish it from the others.
+Oatmilk Cooperative needs to decide which parts of a returnable-bottle trial need the most time at its next planning meeting. The poll asks each person to choose up to two topics. Its details explain how the result will be used, and each option includes enough information to tell it apart from the others.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Set up the poll
 
-Give the poll a specific question as its title. In **Details**, explain what participants should consider and what will happen with the result. Add each available option, then set the **Minimum choices** and **Maximum choices**.
+Give the poll a specific question as its title. In **Details**, explain what participants should consider and how the result will be used. Add each option, then set **Minimum choices** and **Maximum choices**.
 
 ![](form.png)
 
-Set both limits to 1 when participants must choose exactly one option. Set a higher maximum when you want a shortlist. Avoid allowing so many choices that participants can select nearly every option, because that makes the result less useful.
+Set both limits to 1 when participants must choose exactly one option. Set a higher maximum when you want a shortlist. Avoid allowing so many choices that participants can select nearly every option, as that makes the result less useful.
 
-Use the pencil icon beside an option to add a meaning or further explanation. This is useful when a short option name could be interpreted in different ways.
+Select the pencil icon beside an option to add a meaning or further explanation. This helps when a short option name could be read in different ways.
 
 ![](edit_option.png)
 
-Under **More settings**, **Show options in random order** can reduce the effect of always presenting one option first.
+Under **More settings**, turn on **Show options in random order** to avoid giving an advantage to the first option.
 
 ![](random_order.png)
 
@@ -45,21 +45,21 @@ Under **More settings**, **Show options in random order** can reduce the effect 
 
 ## Vote
 
-If the selection is outside the allowed number of options, the submit button says how to fix it. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then gives a reason connecting those choices to the trial.
+Participants select their preferred options within the minimum and maximum limits. In this example, the voter selects **Cafe collection schedule** and **Washing workflow**, then adds a vote reason connecting those choices to the trial.
 
 ![](voting.png)
 
-A reason can reveal why an option matters and what work participants expect it to cover. If reasons are important to the decision, configure the vote-reason setting before starting the poll.
+A vote reason can explain why an option matters and what work participants expect it to cover. If reasons are important to the decision, set the vote-reason requirement before starting the poll.
 
 <!-- translation-section: read-the-results -->
 
 ## Read the results
 
-The results show the share of all selections received by each option, the number of voters who selected it, and who has not voted. Because each person could choose two options, the percentages describe selections rather than a percentage of people.
+The results show the share of all selections received by each option, how many voters selected it, and who has not voted. Because each person could choose two options, the percentages show a share of selections rather than a percentage of people.
 
 ![](results.png)
 
-In this example, **Cafe collection schedule** has three selections. **Washing workflow** and **Return-rate reporting** each have two. The result supports giving cafe collections the most agenda time, but the tied topics still require the organizer to decide how the remaining time is divided.
+In this example, **Cafe collection schedule** has three selections. **Washing workflow** and **Return-rate reporting** each have two. The result supports giving cafe collections the most agenda time, while the organizer still decides how to divide the remaining time between the tied topics.
 
 <!-- translation-section: share-an-outcome -->
 

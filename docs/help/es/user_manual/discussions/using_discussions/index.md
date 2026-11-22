@@ -1,60 +1,59 @@
 ---
 title: Usar los hilos
-source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: fe8ab54791a49e01
-  thread-anatomy: fca9ec9af6718a99
-  discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 3fe9320d33fff8f6
-  navigation: c0ccc79744ae2c33
-  notifications-and-members: ac51f2bbe3642155
-  email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 12ac7562e5c561ac
-  seen-by: 1d0bfd812ca11782
-  notified: 6139bdcaae32a1db
-  actions: c015c12999c5be2f
-  print: 8fac34ad532e8cb5
-  markdown: c6434ed486db8be4
-  thread-settings-and-display: 175b9e93cfc4f736
-  pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 026a0e786deda944
-  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
-  delete-a-thread: 9b4c6437ff8102eb
+  introduction: f04bfcfd5d767c24
+  thread-anatomy: 8c8f6393917dc4e4
+  discussion-context: 82cfa27c1c3e6161
+  notify-people-about-context-changes: 89165c012a1a710e
+  navigation: e9cbf404a9e80417
+  notifications-and-members: 21bb3b5d392c31c2
+  email-notifications-for-this-thread: 3815be85f7e40239
+  invite-people: 4759f5db4b8b6c31
+  seen-by: 881b42cd1a2fed4d
+  notified: cdfc025813eb6d6b
+  actions: 2a239569629d46a9
+  print: b626084908f85a8c
+  markdown: f6468648c2fd6b91
+  thread-settings-and-display: 9e1723af3ef1c96f
+  pin-or-unpin-a-thread: 25265a99d3883d8f
+  move-a-thread: 4d7231526110d371
+  lock-or-unlock-a-thread: 5702025c2201f41f
+  delete-a-thread: afd0742cbbb13eea
 generated:
-  introduction: ef0054fdbb9040a0
-  thread-anatomy: 13f98681849b787e
-  discussion-context: e6406a740d2a4984
-  notify-people-about-context-changes: 2c8ff4caaf28d7d3
-  navigation: 9a4474170051f7f9
-  notifications-and-members: 428315b531acbaa8
-  email-notifications-for-this-thread: 718f5e7157408089
-  invite-people: 1aa65ee0b6aa003c
-  seen-by: a8f1f401773fa1f1
-  notified: 120c01df31b886db
-  actions: 593b28e22bf5e368
-  print: 5bc1ebb2520dfc04
-  markdown: c6b41d1b01dbb950
-  thread-settings-and-display: 709a28d5d541b468
-  pin-or-unpin-a-thread: 91b6cf9d16287aaf
-  move-a-thread: 2dc6a9f212af0b65
-  lock-or-unlock-a-thread: 79e3384c08b80cdf
-  delete-a-thread: 5cc4e2d79f1f9d61
+  introduction: d50b18332a18e432
+  thread-anatomy: dc4982325b40786c
+  discussion-context: '039eb8762623d74d'
+  notify-people-about-context-changes: fce2daac0f07e250
+  navigation: 452fabce1c992961
+  notifications-and-members: 54c49b049023ed14
+  email-notifications-for-this-thread: e9979e7ab97bcc2b
+  invite-people: 4cd76eec4db5848f
+  seen-by: 5c63cfbad5386515
+  notified: ad9d0a20b38b7aa6
+  actions: 2afb8c7d70a225c1
+  print: 76375efd103cc9c0
+  markdown: 7637c923bb745b54
+  thread-settings-and-display: 9482af6bc16453ec
+  pin-or-unpin-a-thread: 70a93ce402e32394
+  move-a-thread: b5273ca471544962
+  lock-or-unlock-a-thread: 60f5b7a8b2e27d1e
+  delete-a-thread: ef1ff7601cb4e4f5
 title_source: 99e2d1eb313f35c4
 title_generated: 7e28641f650e11ec
 needs_review:
   markdown: check the interface label "**De acuerdo**" for "**Agree**"; check the interface label "**Abstenerse**" for "**Abstain**"
-  thread-settings-and-display: check the interface label "**Cronológico **" for "**Chronological**"
 ---
 
 <!-- translation-section: introduction -->
 
 # Usar los hilos
 
-Una discusión reúne su contexto, comentarios, decisiones y conclusiones en un hilo. Esta página explica cómo participar en un hilo y usar su navegación y sus acciones.
+Una discusión reúne su contexto, comentarios, encuestas y conclusiones en un hilo. Esta página explica cómo participar en un hilo y usar su navegación, configuración y acciones.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -64,47 +63,26 @@ Un hilo típico tiene este aspecto:
 
 ![](thread_navigation.png)
 
-Desde la parte superior de la página, un hilo contiene:
+Las partes principales de un hilo son:
 
-**Nombre del grupo** - En la parte superior izquierda de la página de la discusión aparece el nombre del grupo o subgrupo al que pertenece la discusión. Haz clic en este nombre para volver a la página del grupo.
-
-**Acceso a la discusión** - El icono de acceso situado en la parte superior derecha abre la configuración de acceso a la discusión. Una discusión de grupo está disponible para los miembros del grupo y para cualquier persona invitada específicamente a ella, según la configuración de privacidad del grupo.
-
-**Título de la discusión** - El nombre de la discusión.
-
-**Etiquetas por categorías ** - La discusión puede tener una o más etiquetas por categorías. Usar etiquetas sencillas ayuda a las personas a encontrar más fácilmente discusiones de un tipo similar.
-
-**Autor de la discusión** - El nombre y el avatar de la persona que inició la discusión, que aparecen debajo del título.
-
-**Fecha** - Pasa el cursor sobre la fecha para ver la fecha y la hora completas del inicio de la discusión.
-
-**Visto por** - En la barra lateral derecha, muestra quién ha leído la discusión y cuándo.
-
-**Notificado** - En la barra lateral derecha, muestra quién ha recibido una notificación sobre la discusión y si cada notificación se ha leído o se ha abierto el correo correspondiente.
-
-**Contexto de la discusión** - Contenido que sirve para enmarcar la discusión.
-
-**Herramientas de interacción y administración de la discusión** - El contexto de la discusión tiene controles para reaccionar a él y editarlo. La barra lateral derecha contiene acciones de notificación, gestión de miembros y administración.
-
-**Comentarios** - Los comentarios aparecen debajo del contexto de la discusión. El nombre del autor, el avatar y la hora de publicación muestran quién escribió cada comentario y cuándo. Cada comentario dispone de herramientas de interacción y administración.
-
-**Navegación, notificaciones y acciones** - La barra lateral derecha contiene accesos directos a la actividad y a los hitos, información sobre notificaciones y miembros, y las acciones del hilo disponibles para ti.
+- **Nombre del grupo** — Enlaza al grupo o subgrupo al que pertenece el hilo.
+- **Configuración de acceso** — Muestra quién puede ver el hilo. Una discusión de grupo es visible para los miembros del grupo y cualquier persona invitada a ella, según la configuración de privacidad del grupo.
+- **Etiquetas por categorías ** — Etiquetas debajo del título que agrupan discusiones relacionadas.
+- **Contexto de la discusión** — La publicación inicial en la parte superior del hilo, con controles para reaccionar o editarla.
+- **Comentarios y encuestas** — Respuestas, encuestas y conclusiones publicadas debajo del contexto, cada una con sus propios controles de interacción y acciones.
+- **Barra lateral derecha** — Accesos directos a hitos (**Saltar a**), configuración de notificaciones, listas de **Visto por** y **Notificado**, y acciones del hilo.
 
 <!-- translation-section: discussion-context -->
 
 ## Contexto de la discusión
 
-El **contexto** de la discusión siempre se encuentra en la parte superior de la discusión. Usa el contexto para enmarcar la discusión o la decisión.
-
-Piensa en tu grupo al escribir el contenido del contexto de la discusión. Tu objetivo es iniciar una discusión, así que piensa en cómo puedes motivar a las personas para que participen. En general, mantén el contexto de la discusión sencillo y claro.
+El **contexto** permanece en la parte superior del hilo y enmarca la conversación o la decisión.
 
 ![](thread_context.png)
 
-Escribe el contexto de la discusión al iniciar o editar una discusión. Usa **Editar**, con el icono del lápiz, para editar una discusión.
+Escribes el contexto al iniciar una discusión y puedes actualizarlo con el icono del lápiz (**Editar**). A medida que avanza la conversación, puedes actualizar el contexto con nuevos antecedentes, un orden del día o la conclusión final.
 
-A medida que avanza la discusión, actualiza el contexto. Piensa en el contexto como una pizarra en tu sala de reuniones, donde puedes escribir el orden del día, las conclusiones que buscas alcanzar y cómo planeas llegar a ellas.
-
-En la parte inferior del panel de contexto hay una barra de formato, donde puedes dar formato al texto, adjuntar archivos e imágenes e insertar un vídeo.
+La barra de formato debajo del campo de texto te permite dar formato al texto, adjuntar archivos, insertar imágenes e integrar vídeos. Consulta [Dar formato al texto y adjuntar archivos](/en/user_manual/discussions/formatting/).
 
 ![](thread_context_edit.png)
 
@@ -112,11 +90,11 @@ En la parte inferior del panel de contexto hay una barra de formato, donde puede
 
 ### Notificar a las personas sobre cambios en el contexto
 
-Cuando edites el contexto de la discusión, usa **¿Qué ha cambiado?** para resumir la actualización y elegir a quién notificar.
+Cuando edites el contexto, usa **¿Qué ha cambiado?** para resumir la actualización y elegir a quién notificar.
 
 ![Edición del contexto de una discusión con un resumen del cambio y destinatarios de la notificación](../notifying_people/thread_editcontext.png)
 
-El hilo muestra que has editado el contexto. Las personas a las que notificas reciben tu resumen junto con la notificación.
+El hilo registra que has editado el contexto, y las personas a las que notificas reciben tu resumen.
 
 ![Un elemento del hilo que muestra que se ha editado el contexto de la discusión](../notifying_people/thread_edit_comment.png)
 
@@ -126,29 +104,29 @@ El hilo muestra que has editado el contexto. Las personas a las que notificas re
 
 La sección **Saltar a** de la barra lateral derecha te ayuda a desplazarte por un hilo:
 
-- **Comenzar** lleva al contexto de la discusión
-- **Nuevo para ti** aparece cuando el hilo contiene actividad que no has leído
-- **Últimos** aparece cuando hay actividad más reciente que los elementos cargados actualmente
-- los enlaces a hitos llevan directamente a comentarios, encuestas y conclusiones importantes
-- **Fin** lleva al último elemento del hilo
+- **Comenzar** lleva al contexto de la discusión.
+- **Nuevo para ti** aparece cuando el hilo tiene actividad sin leer.
+- **Últimos** aparece cuando hay actividad más reciente que los elementos cargados.
+- Los enlaces a hitos llevan directamente a comentarios, encuestas y conclusiones importantes.
+- **Fin** lleva al último elemento del hilo.
 
-Los comentarios que incluyen un encabezado H2 o H3, las encuestas y las propuestas se incluyen automáticamente como enlaces a hitos. Selecciona cualquier hito para ir directamente a él.
+Los comentarios con un encabezado H2 o H3, las encuestas y las propuestas aparecen automáticamente como enlaces a hitos. Selecciona cualquier hito para ir directamente a él.
 
 ![](thread_timeline_1.png)
 
-Cuando añades un comentario, una encuesta, un voto o una conclusión, Loomio marca tu nuevo elemento como leído. No aparecerá como algo nuevo que tengas que revisar.
+Cuando publicas un comentario, una encuesta, un voto o una conclusión, Loomio marca tu propio elemento como leído.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Notificaciones y miembros
 
-La barra lateral derecha controla tus notificaciones por correo electrónico y muestra quién ha recibido una invitación, quién ha visto el hilo y quién ha recibido una notificación.
+La barra lateral derecha controla tus notificaciones por correo electrónico para el hilo y muestra quién ha recibido una invitación, quién ha visto el hilo y quién ha recibido una notificación.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### Notificaciones por correo electrónico para este hilo
 
-Selecciona la configuración actual de notificaciones para elegir si Loomio te envía correos sobre toda la actividad, solo sobre la actividad que te notifica específicamente o sobre ninguna actividad. Recibir correos sobre toda la actividad puede generar muchos mensajes en un hilo activo.
+Selecciona tu configuración actual de notificaciones para elegir si Loomio te envía correos sobre toda la actividad, solo sobre la actividad que te notifica específicamente o sobre ninguna actividad. Elegir toda la actividad puede generar muchos correos en un hilo activo.
 
 ![Opción de recibir correos al recibir una notificación seleccionada en la barra lateral de la discusión](../notifying_people/thread_interact.png)
 
@@ -156,13 +134,13 @@ Selecciona la configuración actual de notificaciones para elegir si Loomio te e
 
 ### Invitar personas
 
-Selecciona **Invitar personas** en la barra lateral derecha para invitar a personas o notificarles sobre la discusión. Consulta [Invitar personas a una discusión](/en/user_manual/discussions/inviting_people) para obtener información sobre grupos, grupos principales, invitados, salas de chat y notificaciones de invitación.
+Selecciona **Invitar personas** en la barra lateral derecha para invitar a personas o notificarles sobre el hilo. Consulta [Invitar personas a una discusión](/en/user_manual/discussions/inviting_people) para obtener información sobre grupos, subgrupos, grupos principales, invitados y salas de chat.
 
 <!-- translation-section: seen-by -->
 
 ### Visto por
 
-**Visto por** muestra quién ha abierto el hilo y cuándo. Puede ayudarte a identificar a las personas que quizá aún no hayan visto información importante.
+**Visto por** muestra quién ha abierto el hilo y cuándo. Úsalo para comprobar si las personas clave han visto información importante.
 
 ![Visto por y Notificado en la sección de miembros del hilo](../notifying_people/thread_engagement.png)
 
@@ -172,7 +150,7 @@ Selecciona **Invitar personas** en la barra lateral derecha para invitar a perso
 
 ### Notificado
 
-**Notificado** abre el historial de notificaciones de la discusión. Incluye invitaciones, menciones y respuestas, y muestra quién ha recibido una notificación y si cada notificación se ha leído, cuando esa información está disponible.
+**Notificado** abre el historial de notificaciones del hilo, incluidas las invitaciones, menciones y respuestas. Muestra quién ha recibido una notificación y si cada notificación se ha leído, cuando esa información está disponible.
 
 ![Historial de notificaciones de la discusión](../notifying_people/thread_notified.png)
 
@@ -182,7 +160,7 @@ Selecciona **Invitar personas** en la barra lateral derecha para invitar a perso
 
 ## Configuración del hilo
 
-Los admins del hilo y los admins del grupo pueden seleccionar **Configuración del hilo** para cambiar cómo se organizan las respuestas y configurar otras opciones de la discusión.
+Los admins del hilo y los admins del grupo pueden seleccionar **Configuración del hilo** para controlar cómo se organizan las respuestas y configurar otras opciones de la discusión.
 
 ![](thread_display.png)
 
@@ -190,13 +168,13 @@ Los admins del hilo y los admins del grupo pueden seleccionar **Configuración d
 
 ### Diseño
 
-Elige **Cronológico** para mostrar los elementos en el orden en que se publicaron o **Anidado** para agrupar las respuestas debajo del elemento al que responden. Esto cambia el diseño para todas las personas del hilo.
+Elige **Cronológico ** para mostrar los elementos en el orden en que se publicaron o **Anidado** para agrupar las respuestas debajo del elemento al que responden. Esto cambia el diseño para todas las personas del hilo.
 
 <a id="allow-multiple-polls-at-the-same-time"></a>
 
 ### Solo una encuesta a la vez
 
-Cuando esta opción está marcada, las personas no pueden iniciar otra encuesta hasta que se haya cerrado la encuesta actual. Esta opción está desmarcada de forma predeterminada en los hilos nuevos. Los hilos iniciados a partir de una plantilla de discusión usan la configuración de esa plantilla.
+Cuando esta opción está marcada, nadie puede iniciar otra encuesta hasta que se cierre la encuesta actual. Esta opción está desmarcada de forma predeterminada en los hilos nuevos. Los hilos iniciados a partir de una plantilla de discusión heredan la configuración de esa plantilla.
 
 ### Solo los admins pueden adjuntar archivos
 
@@ -206,15 +184,15 @@ Las plantillas de discusión y de encuesta pueden definir esta opción para los 
 
 ### Límite de longitud de los comentarios
 
-Establece un número máximo de caracteres por comentario para que las aportaciones sean concisas. Deja el campo en blanco para no establecer ningún límite. El límite se aplica a todas las personas, incluidos los admins.
+Establece un número máximo de caracteres por comentario para que las respuestas sean concisas. Deja el campo en blanco para no establecer ningún límite. El límite se aplica a todas las personas, incluidos los admins del grupo y los admins del hilo.
 
 <!-- translation-section: actions -->
 
 ## Acciones
 
-La barra lateral derecha contiene acciones para todo el hilo. Algunas acciones también están disponibles en el menú de tres puntos (**⋯**) junto a un hilo en la página del grupo.
+La barra lateral derecha muestra las acciones para todo el hilo. Algunas acciones también aparecen en el menú de tres puntos (**⋯**) junto a un hilo en la página del grupo.
 
-Las acciones que aparecen dependen de tus permisos. Los admins del grupo pueden gestionar los hilos, y la configuración del grupo puede permitir que los miembros realicen algunas acciones de gestión. Consulta [Permisos del grupo](/en/user_manual/groups/settings/permissions).
+Las acciones que ves dependen de tus permisos. Los admins del grupo pueden gestionar los hilos, y la configuración del grupo puede permitir que los miembros realicen algunas acciones de gestión. Consulta [Permisos del grupo](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -222,7 +200,7 @@ Las acciones que aparecen dependen de tus permisos. Los admins del grupo pueden 
 
 ### Imprimir
 
-Selecciona **Imprimir ** para generar una página adecuada para imprimir. Usa el cuadro de diálogo de impresión de tu navegador para guardarla como PDF.
+Selecciona **Imprimir ** para abrir una vista del hilo adecuada para imprimir. Usa el cuadro de diálogo de impresión de tu navegador para guardarla como PDF.
 
 ![](thread_print_thread.png)
 
@@ -230,15 +208,13 @@ Selecciona **Imprimir ** para generar una página adecuada para imprimir. Usa el
 
 ### Markdown
 
-Selecciona **Markdown** para guardar el hilo completo como Markdown estructurado. Elige **Copiar Markdown** para copiarlo al portapapeles o **Descargar Markdown** para guardarlo como un archivo `.md`. Puedes usarlo para actas de reuniones, un documento, un archivo de decisiones, un asistente de IA u otra herramienta compatible con Markdown.
+Selecciona **Markdown** para exportar el hilo como Markdown estructurado. Elige **Copiar Markdown** para copiarlo al portapapeles o **Descargar Markdown** para guardar un archivo `.md` para actas de reuniones, archivos, documentos o herramientas de IA.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-El documento comienza con una cabecera YAML que contiene la clave del hilo, la URL original, el grupo, la fecha de creación, la fecha de la última actividad y las etiquetas. Usa la URL para volver al hilo en Loomio. A continuación incluye el contexto de la discusión y todos los comentarios, encuestas, votos y conclusiones, con el mismo orden y anidamiento que la vista en hilos.
+La exportación comienza con una cabecera YAML que incluye la clave del hilo, la URL, el grupo, las fechas y las etiquetas. A continuación incluye el contexto de la discusión y todos los comentarios, encuestas, votos y conclusiones, respetando el orden y el anidamiento del hilo. Cada encuesta aparece como una sección, y los comentarios, votos y conclusiones aparecen como citas que muestran el autor, la fecha y hora, el número del elemento y las reacciones.
 
-Cada encuesta es una sección. Los comentarios, votos y conclusiones aparecen como citas, y las respuestas aparecen como citas debajo del elemento al que responden. Esto muestra dónde empieza y termina el texto de cada persona. Cada cita comienza con una línea que indica la persona, cuándo publicó, el número del elemento en el hilo y las reacciones que haya recibido. Los votos y las conclusiones también indican qué son. La clave del hilo y el número del elemento identifican cada elemento en Loomio.
-
-Loomio aplica las mismas reglas de visibilidad que en el hilo. Los resultados y los motivos de voto que no puedes ver no se incluyen, y los votantes no se identifican en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota antes de exportar el hilo. **Markdown** e **Imprimir ** no están disponibles hasta que lo hagas.
+Loomio aplica las reglas de visibilidad del hilo. Los resultados y los motivos de voto ocultos se omiten, y los votantes permanecen anónimos en las encuestas anónimas. Si una encuesta abierta oculta los resultados hasta que votes, vota primero: **Markdown** e **Imprimir ** no están disponibles hasta que lo hagas.
 
 Por ejemplo, una discusión que contiene un comentario, reacciones, una propuesta, dos votos, una respuesta y una conclusión genera este Markdown:
 
@@ -304,17 +280,17 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-Los encabezados y las etiquetas usan el idioma que has seleccionado. El contenido escrito por los participantes permanece en su idioma original.
+Los encabezados y las etiquetas usan el idioma que has seleccionado. El contenido de los participantes permanece en el idioma original.
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
 ### Fijar o desfijar un hilo
 
-Los hilos fijados aparecen por encima de los demás hilos en la página del grupo. Las discusiones de bienvenida, las noticias y los anuncios son usos habituales de los hilos fijados.
+Los hilos fijados permanecen en la parte superior de la página del grupo. Los grupos suelen fijar discusiones de bienvenida, noticias y anuncios.
 
 Abre el menú de tres puntos (**⋯**) junto al hilo en la página del grupo y selecciona **Anclar hilo**. Los hilos fijados se ordenan según el momento en que se fijaron. Para cambiar el orden, desfíjalos y vuelve a fijarlos.
 
-Selecciona **Desanclar hilo** para devolver un hilo al orden basado en la actividad.
+Selecciona **Desanclar hilo** para devolver un hilo al orden habitual basado en la actividad.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -322,26 +298,27 @@ Selecciona **Desanclar hilo** para devolver un hilo al orden basado en la activi
 
 ### Mover un hilo
 
-Selecciona **Mover hilo** para mover un hilo a otro grupo, a un subgrupo o convertirlo en un hilo directo. Será visible para los miembros del grupo de destino y para cualquier persona invitada específicamente al hilo.
+Selecciona **Mover hilo** para mover un hilo a otro grupo, a un subgrupo o convertirlo en un hilo directo. Será visible para los miembros del grupo de destino y para cualquier persona invitada al hilo.
 
-Al mover un hilo, Loomio muestra cuántas personas perderían el permiso para participar. Puedes mantenerlas como invitadas sin enviar notificaciones de invitación. Para moverlo a otro grupo o subgrupo, necesitas permiso para invitar a personas invitadas en el grupo de destino; las personas que ya eran invitadas conservan el acceso.
+Antes de moverlo, Loomio muestra cuántas personas perderían el acceso. Puedes mantenerlas como invitadas sin enviar notificaciones:
 
-Al convertirlo en un hilo directo, las personas que han participado conservan el acceso automáticamente. Si seleccionas la opción de mantener a las personas como invitadas, los demás miembros e invitados actuales también conservan el acceso. Tú y la persona que creó el hilo pasáis a ser admins del hilo.
+- **Mover a otro grupo o subgrupo:** Para mantener a las personas como invitadas, necesitas permiso para invitar a personas invitadas en el grupo de destino. Las personas que ya eran invitadas conservan el acceso.
+- **Convertir en un hilo directo:** Las personas que ya han participado conservan el acceso automáticamente. Si eliges la opción de mantener a las personas como invitadas, los demás miembros e invitados actuales también conservan el acceso. Tú y la persona que creó el hilo pasáis a ser admins del hilo.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
 >Empieza un borrador como discusión en un hilo directo o en un subgrupo privado y muévelo al grupo cuando esté listo.
 
-Para mover solo algunos elementos de actividad en lugar del hilo completo, consulta [Mover elementos entre hilos](/en/user_manual/discussions/moving_items/).
+Para mover elementos concretos en lugar del hilo completo, consulta [Mover elementos entre hilos](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Bloquear o desbloquear un hilo
 
-Bloquea un hilo para archivarlo tal como está. Nadie puede añadir contenido a un hilo bloqueado, modificarlo ni invitar o notificar a personas desde él. Solo puedes bloquear un hilo cuando se hayan cerrado todas las encuestas activas que contiene.
+Bloquea un hilo para archivarlo tal como está. Nadie puede publicar, editar ni invitar a personas en un hilo bloqueado. Todas las encuestas activas deben cerrarse antes de que puedas bloquear el hilo.
 
-Selecciona **Bloquear hilo** en **Acciones**. Los hilos bloqueados se eliminan de la lista de discusiones abiertas y se marcan con la etiqueta **Bloqueado**.
+Selecciona **Bloquear hilo** en **Acciones**. Los hilos bloqueados dejan de aparecer en la lista de discusiones abiertas y llevan la etiqueta **Bloqueado**.
 
 Para encontrar un hilo bloqueado, abre el filtro de discusiones en la página del grupo y selecciona **Bloqueado**. Abre el hilo y selecciona **Desbloquear hilo** para volver a permitir comentarios y cambios.
 
@@ -349,8 +326,8 @@ Para encontrar un hilo bloqueado, abre el filtro de discusiones en la página de
 
 ### Eliminar un hilo
 
-Eliminar un hilo lo borra permanentemente y no se puede deshacer. Bloquea el hilo si puedes volver a necesitarlo.
+Eliminar un hilo lo borra permanentemente y no se puede deshacer. Bloquea el hilo si puedes necesitarlo más adelante.
 
-Selecciona **Eliminar hilo ** y confirma la eliminación.
+Selecciona **Eliminar hilo ** y confirma.
 
 ![](../discussion_management/thread_delete.png)

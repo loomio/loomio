@@ -1,22 +1,22 @@
 ---
 title: Beszélgetések
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/discussions/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: c76a7d182c14a283
-  common-uses: 2fd96fe8c6ddddc4
-  boards-and-governance: 5b49aa5e01f3c0a7
-  member-participation: b087accb54a595dc
-  self-organizing-working-teams: 8679ba6f65c230ab
+  introduction: 58ee9b294ceaebd9
+  common-uses: '0091a4d2919ec47a'
+  boards-and-governance: 35c5302ce95438c0
+  member-participation: 1592f30a5f41441a
+  self-organizing-working-teams: 5d40394e7a12402c
 generated:
-  introduction: 21ec3d0444a659d9
-  common-uses: a3c67ff81288dde5
-  boards-and-governance: d7c4b5162194b54e
-  member-participation: f8176045838d1480
-  self-organizing-working-teams: '096d6c6c0c1d0d4d'
+  introduction: 75e907706b4a4da7
+  common-uses: 43a3bee0ad5da9b6
+  boards-and-governance: 6f2ef404651a0474
+  member-participation: 446cb9316b944d75
+  self-organizing-working-teams: 33cc717e3b291f3b
 title_source: 60157cfcfe3f31c3
 title_generated: 716cbe80950becde
 ---
@@ -25,20 +25,16 @@ title_generated: 716cbe80950becde
 
 # Bevezetés a beszélgetésekbe
 
-A Loomio beszélgetéseiben információkat oszthatsz meg, témákat beszélhetsz át, és döntéseket hozhatsz a csoportoddal. A résztvevők hozzászólásokkal és válaszokkal kapcsolódnak be.
+A Loomio beszélgetéseiben információkat oszthatsz meg, témákat beszélhetsz át, és döntéseket hozhatsz a csoportoddal. A résztvevők hozzászólásokkal, válaszokkal, szavazásokkal és javaslatokkal kapcsolódnak be.
 
-- Egy témához minden információ egyetlen, könnyen elérhető helyen található.
-- A résztvevők e-mailben is válaszolhatnak, és hozzászólásaik megjelennek a beszélgetésben.
-- Láthatod, ki olvasta el a beszélgetést, és kinek kell emlékeztetőt küldeni.
-- A beszélgetés megmarad, így később könnyen megtalálhatod.
+- Tartsd egy helyen a témához tartozó összes információt.
+- Válaszolj e-mailben, és a hozzászólásaid megjelennek a szálban.
+- Nézd meg, ki olvasta el a beszélgetést, és kinek kell emlékeztetőt küldeni.
+- Őrizd meg minden beszélgetés és döntés kereshető nyilvántartását.
 
-A beszélgetések sokféleképpen használhatók: általános beszélgetési fórumként, vagy konkrét munkafolyamatok és döntéshozatali folyamatok lebonyolítására.
+A beszélgetéseket az általános tájékoztatástól a szervezett munkafolyamatokig és [döntéshozatali folyamatokig](/en/user_manual/polls/intro_to_decisions/) sokféle célra használhatod. Például bemutathatsz egy témát, összegyűjtheted az ötleteket és a kapcsolódó dokumentumokat, majd [beleegyezésen](/en/user_manual/polls/proposals/consent/) vagy [tanácskérésen](/en/user_manual/polls/proposals/advice/) alapuló folyamatot indíthatsz, hogy következtetésre jussatok.
 
-Például elindíthatsz egy beszélgetést egy adott témáról, meghívhatod a résztvevőket, hogy osszák meg gondolataikat és információikat, és segítheted a közösen elfogadott következtetés kialakítását.
-
-Vagy meghívhatod a résztvevőket egy konkrét döntés meghozatalára, beleegyezésen vagy tanácskérésen alapuló döntéshozatali folyamattal.
-
-A beszélgetések szavazásokat és javaslatokat is tartalmazhatnak, amelyek segítenek eljutni a következtetésig. Ahogy a résztvevők hozzászólnak a beszélgetéshez és szavaznak a szavazásokban, kialakul a beszélgetés idővonala, amelyen könnyen megtalálhatod a fontos mérföldköveket.
+Ahogy a résztvevők hozzászólnak és szavaznak, a szálban rögzülnek a mérföldkövek, amelyekhez bármikor odaugorhatsz. A kezdéshez olvasd el a [Beszélgetés indítása](/en/user_manual/discussions/starting_a_discussion/) és a [Szálak használata](/en/user_manual/discussions/using_discussions/) című útmutatókat.
 
 ![A „Visszaváltható palackok a kávézó vendégeinek” beszélgetés egy hozzászólással és egy javaslattal](discussion-example.png)
 
@@ -46,42 +42,32 @@ A beszélgetések szavazásokat és javaslatokat is tartalmazhatnak, amelyek seg
 
 ## Gyakori felhasználási módok
 
-Íme néhány gyakori felhasználási mód a beszélgetésekhez:
+Íme néhány gyakori módja annak, ahogyan a csoportok használják a beszélgetéseket:
 
 <!-- translation-section: boards-and-governance -->
 
 ### Vezetőtestületek és irányítás
 
-**Készülj fel egy találkozóra** - Állíts össze napirendet, tedd közzé a vezetőtestületi dokumentumokat, és rendezd az adminisztratív ügyeket, hogy mindenki naprakész legyen, ismerje a szükséges tudnivalókat, és felkészülten érkezzen.
-
-**Adj határozatot** - Tedd közzé a leírást és a háttérinformációkat, válaszolj a kérdésekre, és indíts javaslatot a határozat elfogadásához.
-
-**Beszélj át egy napirendi pontot a Loomión** - Indíts beszélgetést egy napirendi pontról a találkozó előtt. Ha pedig a találkozón elfogy az idő, folytasd a beszélgetést a Loomión.
-
-**Hagyd jóvá a jegyzőkönyvet, és kövesd nyomon a teendőket** - Tedd közzé a jegyzőkönyvet, és oszd ki a teendőket. Használj szavazást a jegyzőkönyv jóváhagyásához.
+- **Készülj fel egy találkozóra** — Állíts össze napirendet, oszd meg a vezetőtestületi dokumentumokat, és rendezd az adminisztratív ügyeket, hogy mindenki felkészülten érkezzen.
+- **Adj határozatot** — Oszd meg a háttérinformációkat, válaszolj a kérdésekre, és indíts javaslatot a döntés rögzítéséhez.
+- **Beszélj át egy napirendi pontot a Loomión** — Kezdd el átbeszélni a napirendi pontot a találkozó előtt, vagy folytasd a Loomión, ha a találkozón elfogy az idő.
+- **Hagyd jóvá a jegyzőkönyvet, és kövesd nyomon a teendőket** — Tedd közzé a jegyzőkönyvet, oszd ki a feladatokat, és használj szavazást a jegyzőkönyv jóváhagyásához.
 
 <!-- translation-section: member-participation -->
 
 ### A tagok részvétele
 
-**Ossz meg híreket (levelezőlista helyett)** - Tedd közzé a tagoknak szóló információkat, és kérj hozzászólásokat.
-
-**Szervezz eseményt** - Dolgozd ki a részleteket a szervezőcsapatoddal. Tartsd az összes beszélgetést és információt a szálon belül. Ezután hirdesd meg az eseményt a tágabb tagság körében.
-
-**Dolgozz ki szabályzatot** - Tedd közzé a szabályzat tervezetét, kérj visszajelzést és javaslatokat a tagoktól, majd véglegesítsd és hagyasd jóvá a szabályzatot.
-
-**Közgyűlés** - Szervezz, készíts elő és vezess le egy hivatalos találkozót minden tag részvételével, hogy közösen átbeszéljétek a stratégiai kérdéseket és döntéseket hozzatok.
+- **Ossz meg híreket** — Levelezőlista helyett tedd közzé a tagoknak szóló híreket, és kérj hozzászólásokat.
+- **Szervezz eseményt** — Tervezd meg a részleteket a szervezőcsapatoddal egyetlen szálban, majd hirdesd meg az eseményt a tágabb tagság körében.
+- **Dolgozz ki szabályzatot** — Tedd közzé a tervezetet, gyűjts visszajelzéseket, dolgozd át, majd hagyasd jóvá a végleges szabályzatot.
+- **Vezess le közgyűlést** — Oszd meg előre a dokumentumokat, hogy minden tag átgondolhassa a stratégiai döntéseket, és szavazhasson róluk.
 
 <!-- translation-section: self-organizing-working-teams -->
 
 ### Önszerveződő munkacsoportok
 
-**Ossz meg információkat** - Tedd közzé a csapatod számára érdekes információkat és beszámolókat, kérj hozzászólásokat, és kezdeményezz beszélgetést.
-
-**Vidd előre a munkát** - Vázolj fel egy feladatot, és kérj tanácsokat, javaslatokat és visszajelzést a csapat tagjaitól egészen a feladat befejezéséig.
-
-**Találkozók jegyzetei és teendői** - Tedd közzé a találkozó jegyzeteit, hogy megmaradjon a beszélgetés, és kövesd nyomon a feladatokat.
-
-**Gondoljátok át az ötleteket** - Oszd meg a gondolataidat, és kezdeményezz beszélgetést egy észlelt problémáról vagy egy lehetséges fejlesztésről.
-
-**Tanácskérésen alapuló, beleegyezéses és generatív döntéshozatal** - Készülj fel, tegyél javaslatot, tisztázd a kérdéseket, válaszolj a reakciókra és kifogásokra, jussatok megállapodásra, és valósítsátok meg a döntést – mindezt egy Loomio-beszélgetésben.
+- **Ossz meg információkat** — Tedd közzé a csapatodnak szóló friss információkat és beszámolókat, és kérj kérdéseket vagy hozzászólásokat.
+- **Vidd előre a munkát** — Vázolj fel egy feladatot, és a megvalósítás során kérj tanácsot vagy visszajelzést a csapattársaidtól.
+- **Őrizd meg a találkozók jegyzeteit és teendőit** — Tedd közzé a találkozók jegyzeteit közös nyilvántartásként, és kövesd nyomon az azokból adódó feladatokat.
+- **Gondoljátok át az ötleteket** — Vess fel egy problémát vagy javasolj egy fejlesztést, és kezdeményezz beszélgetést.
+- **Vezess közös döntéshozatali folyamatokat** — Készülj fel, tegyél javaslatot, tisztázd a kérdéseket, válaszolj a kifogásokra, jussatok megállapodásra, és valósítsátok meg a döntést egyetlen szálban.

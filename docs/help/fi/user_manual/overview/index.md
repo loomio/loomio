@@ -1,26 +1,26 @@
 ---
 title: Aloittaminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/overview/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: ef3f289c364ccc11
+  introduction: e43aeb91ae4679bf
   how-loomio-works: 73cb4ad13aa3e86b
-  groups: 7f2736f94f3c7a39
-  discussions: 41df363ab87c2ae0
+  groups: fd85ee3c4ffbb5e6
+  discussions: 8d14b581f16f5da2
   polls-and-proposals: cf99f58fbdae0d7b
-  try-it-out: 4e0a31e65733ef2a
-  how-people-use-loomio: b2d45fb7ddf29461
+  try-it-out: 362efa0fab0f53c9
+  how-people-use-loomio: 20717884ca33e601
 generated:
-  introduction: 6e5ca5deb666bd60
+  introduction: eeb1208e54aac296
   how-loomio-works: 276776a0f68d5d5f
-  groups: 46ba7c37afe4534b
+  groups: 5d045439f3cc9ea2
   discussions: a90721a69961c173
   polls-and-proposals: 961e813e712946b3
-  try-it-out: 6dcc1f4616ece50d
-  how-people-use-loomio: 5679e0ef83e61440
+  try-it-out: 6d9aa09643a54803
+  how-people-use-loomio: 0c22d54eeca26da8
 title_source: 831d0f72d242b7d1
 title_generated: 68b7087d61930f4c
 ---
@@ -31,7 +31,7 @@ title_generated: 68b7087d61930f4c
 
 Loomio on keskustelu- ja päätöksentekotyökalu yhteistyöhön perustuville organisaatioille.
 
-Sen avulla voit koota ihmiset yhteen keskustelemaan aiheista, tarkastelemaan ehdotuksia ja tekemään päätöksiä.
+Se auttaa ihmisiä keskustelemaan aiheista, tarkastelemaan ehdotuksia ja tekemään päätöksiä yhdessä.
 
 <div class="iframe-container">
 <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -47,7 +47,7 @@ Loomiossa on kolme pääosaa: ryhmät, keskustelut ja kyselyt.
 
 ### Ryhmät
 
-Ryhmä on paikka, jossa organisaatio, tiimi tai yhteisö voi työskennellä yhdessä. Sen etusivu kertoo ryhmän tarkoituksesta ja tarjoaa pääsyn sen keskusteluihin, kyselyihin, jäseniin ja tiedostoihin.
+Ryhmä on paikka, jossa organisaatio, tiimi tai yhteisö voi työskennellä yhdessä. Sen etusivu kertoo ryhmän tarkoituksesta ja sisältää linkit sen keskusteluihin, kyselyihin, jäseniin ja tiedostoihin.
 
 ![](orientation_group.png)
 
@@ -77,18 +77,16 @@ Katso [Pikaesittely](/en/user_manual/overview/orientation), niin näet, missä n
 
 ## Kokeile
 
-Paras tapa tutustua Loomioon on [aloittaa ilmainen kokeilu](/try)
+Jos haluat kokeilla Loomiota ryhmäsi kanssa, [aloita ilmainen kokeilu](/try).
 
 <!-- translation-section: how-people-use-loomio -->
 
 ## Miten Loomiota käytetään
 
-**Jäsenorganisaatiot** käyttävät Loomiota ottaakseen suurenkin jäsenjoukon mukaan päätöksentekoon. Poliittiset puolueet, kuluttaja- ja työntekijäosuuskunnat sekä jäsenyhdistykset käyttävät Loomiota tarjotakseen turvallisen, kaikki mukaan ottavan tilan, jossa jäsenet voivat jakaa tietoa, nostaa aiheita esiin, osallistua tärkeisiin päätöksiin ja äänestää yleiskokouksessa. Sujuvoita päätöksentekoprosesseja, paranna läpinäkyvyyttä ja vastuun kantamista, dokumentoi keskustelut ja kirjaa päätökset sekä ota jäsenten näkemykset mukaan yhteisen toiminnan suunnitteluun.
+**Jäsenorganisaatiot** käyttävät Loomiota ottaakseen suurenkin jäsenjoukon mukaan päätöksentekoon. Poliittiset puolueet, kuluttaja- ja työntekijäosuuskunnat sekä jäsenyhdistykset tarjoavat jäsenille yhteisen paikan, jossa he voivat nostaa aiheita esiin, keskustella asioista ja äänestää yleiskokouksissa.
 
-**Itseohjautuvat organisaatiot** käyttävät Loomiota ottaakseen henkilöstön mukaan päätöksentekoon. Itseohjautuvat tiimit, työntekijäosuuskunnat ja sosiokraattiset organisaatiot käyttävät Loomiota suostumukseen, konsensukseen ja neuvoihin perustuvissa päätöksentekoprosesseissa eri paikoissa ja aikavyöhykkeillä toimivien tiimien kesken. Hyödynnä yhteistä tietoa ja osaamista, hajauta päätöksentekoa, rakenna hallintotapoja ja toimintaperiaatteita yhdessä sekä dokumentoi päätökset ja keskustelut.
+**Itseohjautuvat organisaatiot** käyttävät Loomiota ottaakseen henkilöstön mukaan päätöksentekoon. Itseohjautuvat tiimit, työntekijäosuuskunnat ja sosiokraattiset organisaatiot toteuttavat suostumukseen, konsensukseen ja neuvoihin perustuvia päätöksentekoprosesseja eri paikoissa ja aikavyöhykkeillä toimivien tiimien kesken.
 
-**Hallitukset, neuvostot ja hajautetut verkostot** käyttävät Loomiota ottaakseen sidosryhmät mukaan päätöksentekoon. Luo turvallinen tila keskustelulle, pidä kirjaa viestinnästä ja koordinoi toimintaa eri alueiden ja aikavyöhykkeiden välillä. Jäsennä päätöksentekoprosesseja, paranna joustavuutta ja nopeuta reagointia sekä säilytä organisaation muisti.
+**Hallitukset, neuvostot ja hajautetut verkostot** käyttävät Loomiota sidosryhmien toiminnan koordinointiin eri paikkojen ja aikavyöhykkeiden välillä. Ne pitävät keskustelut jäsenneltyinä, seuraavat päätöksiä ja säilyttävät organisaation muistin.
 
-**Asuinyhteisöt ja osuuskunnat** käyttävät Loomiota tehdäkseen päätöksiä yhdessä naapureina. Yhteisöllisen asumisen yhteisöt, ekokylät, yhteisasumisosuuskunnat, asunto-osuuskunnat ja yhteistä maata hallinnoivat säätiöt käyttävät Loomiota korvatakseen tai täydentääkseen perinteistä asunto- ja kiinteistöhallintoa demokraattisella hallinnolla. Asukkaat vaikuttavat yhteistä maata, yhteisiä tiloja ja yhteisön sopimuksia koskeviin päätöksiin. Eri aikaan käytävä keskustelu mahdollistaa jäsenten täysipainoisen osallistumisen riippumatta siitä, ovatko he paikalla vai matkalla, ja säilyttää selkeän tiedon siitä, miten yhteisö on päättänyt elää yhdessä.
-
-Loomioon kertyy päivittyvä historia organisaatiostasi: tehdyt päätökset, niihin osallistuneet ihmiset ja päätöksiin johtaneet keskustelut.
+**Asuinyhteisöt ja asunto-osuuskunnat** käyttävät Loomiota tehdäkseen päätöksiä yhdessä naapureina. Yhteisöllisen asumisen yhteisöt, ekokylät, yhteisasumisosuuskunnat, asunto-osuuskunnat ja yhteistä maata hallinnoivat säätiöt käyttävät sitä yhteisen maan, yhteisten tilojen ja yhteisön sopimusten hallintaan. Eri aikaan käytävät keskustelut mahdollistavat asukkaiden osallistumisen riippumatta siitä, ovatko he paikalla vai matkalla.

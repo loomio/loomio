@@ -1,30 +1,32 @@
 ---
 title: Il tuo profilo
-source_revision: 157d1a371459ea8e9348fb838541980f2f797205
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/user_profile/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 80eccb0578990d75
+  introduction: ffcd4a1a9562ff09
   edit-profile: f782a6a3a9b074b2
-  update-your-personal-info: b5792b6600f971b0
-  uploading-a-profile-photo: ac78b9c659ca4c1f
-  language-settings: aa4b9c1287ea427e
-  resetting-your-password: a72e15b6e19412a7
-  merge-accounts: e1190f5e224e1047
-  deleting-your-account: 2799d5bcc8d5b528
-  time-zone: e341837e759e4369
+  update-your-personal-info: ec7518700b147003
+  uploading-a-profile-photo: 3863b5f9ce903f3a
+  language-settings: 1e2f9a34e8f367fe
+  resetting-your-password: c19ba14c3edb2319
+  merge-accounts: 67bf7312306a67a8
+  deleting-your-account: d943ed0aada0d074
+  time-zone: 688f390d3d9e7504
+  passkeys: 4c9330d97df94142
 generated:
   introduction: 72f678517fe07a5a
   edit-profile: b4d90aedfce00654
-  update-your-personal-info: ba10656995920506
-  uploading-a-profile-photo: 235fb21a9c839722
-  language-settings: 35763bb3620b7d22
-  resetting-your-password: 291f03c420ade3bc
-  merge-accounts: 9c4540cd853a8bc0
-  deleting-your-account: d2c020a57c4668db
-  time-zone: ae3258907849a529
+  update-your-personal-info: ea6d23cd6c640313
+  uploading-a-profile-photo: 5e29eed023a600ad
+  language-settings: bc4dbf23bd4bbf0e
+  resetting-your-password: fc7dd54a19962ce6
+  merge-accounts: b09e894d4a515a5d
+  deleting-your-account: f1b1548cc4fa6d11
+  time-zone: 071d9a6d35e9e6ab
+  passkeys: cb4d2124e44c825d
 title_source: 528d89ad72cba22e
 title_generated: 0e22fdc1f2d8dc68
 ---
@@ -47,20 +49,21 @@ Apri il menu utente selezionando il tuo nome nella barra laterale, poi seleziona
 
 ## Aggiorna le tue informazioni personali
 
-Puoi aggiornare le tue informazioni personali modificando uno qualsiasi dei seguenti campi:
+Puoi aggiornare questi campi nella pagina del tuo profilo:
 
-* **Nome**
-* **La tua email** - è l'indirizzo email associato al tuo account Loomio, al quale riceverai le notifiche di Loomio.
-* **Nome Utente** - è un nome che permette alle persone di riconoscerti e di avvisarti tramite una @menzione. Può contenere lettere minuscole, numeri, trattini bassi e trattini interni.
-* **Introduzione** - qualche riga per raccontare agli altri membri del tuo gruppo qualcosa di te.
-* **Luogo** - utile per i gruppi distribuiti o che lavorano a distanza, perché permette alle persone di sapere dove ti trovi.
+- **Nome**
+- **La tua email** — l'indirizzo associato al tuo account Loomio, al quale Loomio invia le tue notifiche.
+- **Nome Utente** — il nome che le persone usano per avvisarti con una `@mention`. Può contenere lettere minuscole, numeri, trattini bassi e trattini interni.
+- **Introduzione** — qualche riga per raccontare agli altri membri del tuo gruppo qualcosa di te.
+- **Luogo** — utile per i gruppi distribuiti o che lavorano a distanza, perché permette alle persone di sapere dove ti trovi.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Carica una foto del profilo
-Quando crei un account Loomio, le tue iniziali sono l'immagine predefinita associata al tuo profilo. Puoi caricare una foto del profilo facendo clic sulla tua immagine nella pagina del profilo.
+
+Quando crei un account Loomio, le tue iniziali appaiono come immagine predefinita del profilo. Per caricare una foto, seleziona la tua immagine nella pagina del profilo.
 
 ![](profile_photo.png)
 
@@ -68,26 +71,33 @@ Quando crei un account Loomio, le tue iniziali sono l'immagine predefinita assoc
 
 ## Lingua
 
-Loomio rileva le impostazioni della lingua del tuo browser, ma puoi impostare manualmente la tua lingua preferita tra le opzioni disponibili nella pagina del profilo.
+Loomio rileva la lingua del tuo browser per impostazione predefinita, oppure puoi selezionare la lingua che preferisci nella pagina del tuo profilo. Per le opzioni di traduzione dell'interfaccia e dei contenuti, consulta [Lingue e traduzione](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## Fuso orario
 
-Le opzioni dei sondaggi appuntamento usano il fuso orario salvato nel tuo profilo. Attiva **Rilevamento automatico del fuso orario** per usare il fuso orario indicato dal tuo browser, oppure disattivalo e seleziona la tua regione in **Fuso orario**, poi seleziona **Aggiorna profilo**.
+Le opzioni dei sondaggi appuntamento usano il fuso orario salvato nel tuo profilo. Attiva **Rilevamento automatico del fuso orario** per usare il fuso orario del tuo browser, oppure disattivalo, seleziona la tua regione in **Fuso orario** e seleziona **Aggiorna profilo**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## Reimposta la tua password
-Puoi cambiare la tua password visitando la pagina del tuo profilo e facendo clic su **Reimposta password**.
+
+Per cambiare la tua password, apri la pagina del tuo profilo e seleziona **Reimposta password**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Passkey
+
+Nella pagina del tuo profilo puoi aggiungere passkey, assegnare loro un nome e rimuoverle per accedere tramite l'impronta digitale, il riconoscimento facciale, il PIN o la chiave di sicurezza del tuo dispositivo. Consulta [Accedi con una passkey](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Unisci gli account
 
-Se hai due account utente Loomio, puoi unirli in un unico account.
+Se hai due account Loomio, puoi unirli in un unico account.
 
 Consulta [Unisci gli account](../merge_accounts).
 
@@ -95,4 +105,4 @@ Consulta [Unisci gli account](../merge_accounts).
 
 ## Elimina il tuo account
 
-Se vuoi eliminare il tuo account utente Loomio e lasciare tutti i gruppi Loomio di cui sei membro, consulta [Elimina il tuo account Loomio](../deleting_your_account).
+Per eliminare definitivamente il tuo account Loomio e lasciare i tuoi gruppi, consulta [Elimina il tuo account Loomio](../deleting_your_account).

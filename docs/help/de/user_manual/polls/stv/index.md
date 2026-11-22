@@ -1,18 +1,18 @@
 ---
 title: STV-Wahlen
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/stv/index.md
+source_revision: cd27428bae8ec9057b7ab52ce2c41ac44f5b5b9e
+source_file: docs/help/en/user_manual/polls/stv/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 6c43a75f60922bb6
-  when-to-use-stv: e37de389c27f7d87
+  introduction: 17b273381bad13de
+  when-to-use-stv: d71b1619a6348f95
   creating-an-stv-election: 2d475191d922803f
-  number-of-seats: 9463d911f230eea0
+  number-of-seats: 2a5074b9749c32ea
   counting-method: b7ff2dce779d15c1
-  quota-type: f9ab31d93916bf24
-  how-voting-works: bace7c735dbb39f1
+  quota-type: cc4e99132e1ac8ab
+  how-voting-works: a7c4734c1c1fc12c
   how-counting-works: 794084f981b2cf3f
   understanding-results: 8442813a9c097112
   method-and-quota: 90113296c3d59816
@@ -21,13 +21,13 @@ sections:
   exporting-ballots: 582555dd13633bf0
   share-an-outcome: 6a02aed173b368b9
 generated:
-  introduction: 61a1095de89ba748
-  when-to-use-stv: '08ec5f91f20d3515'
+  introduction: 1796d4cc53987dc6
+  when-to-use-stv: 25b6b97630f4c71f
   creating-an-stv-election: 4514bca6a7efa547
-  number-of-seats: cd3c94e20e907cd4
+  number-of-seats: 8a0edc4390ad4ad8
   counting-method: 93e9aa71254df7f2
-  quota-type: a5a5b014c6061989
-  how-voting-works: 364b279c21f10a85
+  quota-type: 40cade293e4f407e
+  how-voting-works: b8506e19537955c4
   how-counting-works: 2276fea0469e04ce
   understanding-results: 2704a3492756e0ae
   method-and-quota: 5fd11096fe63313e
@@ -38,14 +38,14 @@ generated:
 title_source: cd3e1a4cdc2456a6
 title_generated: d3db61f29b5753db
 needs_review:
-  when-to-use-stv: use "Stimme" instead of "Abstimmung" for "vote"
+  how-voting-works: use "Enthaltung" instead of "Verzichten" for "abstain"
 ---
 
 <!-- translation-section: introduction -->
 
 # STV-Wahlen
 
-**Single Transferable Vote (STV)** ist eine Abstimmungsart für die Verhältniswahl, bei der mehrere Personen aus einem Kreis von Kandidierenden gewählt werden. Sie sorgt dafür, dass die gewählten Personen die Vielfalt der Ansichten unter den Abstimmenden proportional repräsentieren.
+**Single Transferable Vote (STV)** ist eine Abstimmungsart mit Rangfolge, bei der eine oder mehrere Personen aus einem Kreis von Kandidierenden gewählt werden. Bei Wahlen mit mehreren zu wählenden Personen sorgt sie für eine proportionale Vertretung, sodass die gewählten Personen die Vielfalt der Ansichten unter den Abstimmenden widerspiegeln. Wenn nur eine Person gewählt wird, funktioniert sie als Wahl mit integrierter Stichwahl.
 
 <!-- translation-section: when-to-use-stv -->
 
@@ -55,10 +55,10 @@ Verwende eine STV-Wahl, wenn du:
 
 - einen **Ausschuss, einen Vorstand oder eine Gruppe von Delegierten** aus vorgeschlagenen Personen wählen möchtest
 - eine **proportionale Vertretung** sicherstellen möchtest, bei der Minderheiten Sitze entsprechend ihrer Unterstützung gewinnen können
-- Wahlen durchführen möchtest, bei denen Abstimmende die Kandidierenden nach ihrer Präferenz ordnen
+- **eine einzelne Person** mit integrierter Stichwahl wählen möchtest, bei der Stimmen für die Option mit den wenigsten Stimmen auf die nächsten Präferenzen der Abstimmenden übertragen werden, bis eine Option eine Mehrheit erreicht
 
 >[!NOTE]
->STV ist **nicht** dasselbe wie Loomios [Abstimmung zum Ordnen](/en/user_manual/polls/rank/), die eine einfachere, punktebasierte Rangfolge verwendet, um eine einzelne beste Option auszuwählen. STV ermöglicht Wahlen mit mehreren zu wählenden Personen, bei denen Stimmen übertragen und Kandidierende in mehreren Runden ausgeschlossen werden.
+>STV ist **nicht** dasselbe wie Loomios [Abstimmung zum Ordnen](/en/user_manual/polls/rank). Ordnen addiert die Punkte aller gewählten Optionen zu einer Gesamtrangfolge. STV verwendet Ausschlussrunden und Stimmenübertragungen und eignet sich sowohl für Wahlen mit einer als auch mit mehreren zu wählenden Personen.
 
 <!-- translation-section: creating-an-stv-election -->
 
@@ -74,7 +74,7 @@ In diesem Beispiel wählt Oatmilk Cooperative drei Personen, die ihren Versuch m
 
 ### Anzahl der Sitze
 
-Wie viele Personen gewählt werden sollen. Die Anzahl muss kleiner sein als die Anzahl der Kandidierenden.
+Wie viele Personen gewählt werden sollen. Die Anzahl muss mindestens 1 betragen und kleiner sein als die Anzahl der Kandidierenden. Setze sie auf 1 für eine Wahl mit integrierter Stichwahl, bei der eine einzelne Person gewählt wird.
 
 <!-- translation-section: counting-method -->
 
@@ -107,7 +107,7 @@ In beiden Formeln ist *votes* die Anzahl der Stimmzettel, auf denen mindestens e
 Meek STV berechnet die Quote ohne Rundung, bei Droop als votes ÷ (seats + 1). Die Quote wird in jeder Runde anhand der Stimmen neu berechnet, die noch auf Kandidierende entfallen. Eine kandidierende Person muss die Quote überschreiten, um gewählt zu werden.
   
   >[!TIP]
-  > Die Droop-Quote ergibt immer eine kleinere Stimmenzahl als die Hare-Quote. Bei einer Wahl mit 100 Stimmen und vier Sitzen wäre die Droop-Quote beispielsweise 21 und die Hare-Quote 25.
+  > Die Droop-Quote ergibt immer eine kleinere Stimmenzahl als die Hare-Quote. Bei 100 Stimmen und vier Sitzen beträgt die Droop-Quote 21 und die Hare-Quote 25. Bei 100 Stimmen und einem Sitz beträgt die Droop-Quote 51 (eine Mehrheit, mehr als 50 %) und die Hare-Quote 100. Deshalb ist Droop die richtige Wahl, wenn eine einzelne Person gewählt werden soll.
 
 <!-- translation-section: how-voting-works -->
 
@@ -121,7 +121,9 @@ In diesem Beispiel wählt Oatmilk Cooperative drei Personen, die den Versuch mit
 - **Ordnen 2** = zweite Wahl
 - Ordne so viele Kandidierende, wie du möchtest
 
-Abstimmende müssen mindestens eine kandidierende Person einordnen, aber nicht alle. Nicht eingeordnete Kandidierende erhalten keinen Anteil der Stimme dieser abstimmenden Person.
+Abstimmende müssen mindestens eine kandidierende Person einordnen, aber nicht alle. Die Anzahl der Kandidierenden, die eine abstimmende Person einordnen kann, ist nicht durch die Anzahl der Sitze begrenzt: Auch bei einer Wahl mit nur einem zu vergebenden Sitz können Abstimmende weitere Präferenzen bis hin zu allen Kandidierenden angeben. Nicht eingeordnete Kandidierende erhalten keinen Anteil der Stimme dieser abstimmenden Person.
+
+STV-Abstimmungen haben keine integrierte Option zur Enthaltung. Mitglieder, die sich enthalten möchten, können einfach auf die Stimmabgabe verzichten. Vermeide es, „Enthaltung“ als Kandidatenoption hinzuzufügen, es sei denn, du musst Enthaltungen auf dem Stimmzettel erfassen. Loomio zählt diese Option wie jede kandidierende Person: Stimmzettel, auf denen sie eingeordnet ist, zählen bei der Berechnung der Quote mit. Wenn genügend Abstimmende sie an erster Stelle einordnen, kann sie länger als andere Optionen im Rennen bleiben oder diese besiegen.
 
 <!-- translation-section: how-counting-works -->
 

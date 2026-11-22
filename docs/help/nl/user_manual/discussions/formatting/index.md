@@ -1,52 +1,52 @@
 ---
 title: Opmaak
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 8835d30a218fce4e
-  attach-file: 772ed69602535db7
-  remove-attachments: 7f47fde42b902677
-  insert-image: efa8f0ee5300aef3
-  insert-link: 0e0ec502a3ae3051
-  insert-emoji: 6658e6f893b1a0a7
-  headings: 20ebc1f33dd138a7
-  bold-italicize-strikethrough: 98d2f6aaed506413
-  list: cd1c1465db2505c8
-  numbered-list: 92b0ed9aab771c4f
-  task-list: 517eb95494ba9b19
-  colors: 8a39ed6ff1c52fa5
-  align: 8c00e40d36504bec
-  embed-videos-and-webpages: 2bfaa9a9747c2e4c
-  quote: 5d7a04b5141d04e9
-  code-block: e05cf0873c4c22e2
-  divider: da7aa0e1a1a4436e
-  add-table: f1a579057780872c
-  markdown: 7c37a4c00bd431ee
-  rich-text: 9136c76bfd5409a9
+  introduction: 7017aeac7dafc821
+  attach-file: 9c366a6657d8b93b
+  remove-attachments: 8320474edaf36328
+  insert-image: 8f8608dea8221af3
+  insert-link: 4eca2d6cbb23a37b
+  insert-emoji: 784ff758a2d20bad
+  headings: c89df2ea57fbbd6e
+  bold-italicize-strikethrough: 2088853c5c6da43e
+  list: a440d99f305c8343
+  numbered-list: cfaabe2b49698d69
+  task-list: 79744683dd74f04a
+  colors: ee012d29d5f51c38
+  align: 133f773bd3f4126c
+  embed-videos-and-webpages: ad3a5e0752c3522b
+  quote: a2f99b96774be463
+  code-block: b7d155fbf02fecdc
+  divider: fccd21475ed4930a
+  add-table: e8514328c695391f
+  markdown: c8dc1dccdf3b0366
+  rich-text: e22e0fa9a19cff47
 generated:
-  introduction: 21954b5db45cee59
-  attach-file: 5c8e241f954fb9f6
-  remove-attachments: 1ac9ddb9b78b79eb
-  insert-image: 4c911e275e6524df
-  insert-link: ef4303946164243b
-  insert-emoji: fe46e50a0296b238
-  headings: 49ddc54c0a6ebcde
-  bold-italicize-strikethrough: 2b98e96ed4f67ebd
-  list: baa30e0fc72596e5
-  numbered-list: dd9a761c21332815
-  task-list: 71359fa1eda76691
+  introduction: 2b5a0dd3591f3d82
+  attach-file: a76c7e2514df91b6
+  remove-attachments: fe5fcf46615b1d58
+  insert-image: ddf84948b2e312c9
+  insert-link: b419e9406980f41e
+  insert-emoji: 00c6f0e6ed603913
+  headings: 4d0a3a80281547cb
+  bold-italicize-strikethrough: d37dce72ec20e5ee
+  list: 621b48c6e0943f1a
+  numbered-list: b681780893a2a603
+  task-list: 33beac9bfb0113dc
   colors: c0886f512431629f
-  align: 0fe453b5256a860d
-  embed-videos-and-webpages: 026c91117edfef08
-  quote: 711032de634d1228
-  code-block: 33440f4656ccb3c9
-  divider: 893426388097ba6b
-  add-table: ba09728b39f251a5
-  markdown: 5fc034fe2a5a58c2
-  rich-text: 5734488dc6171b2d
+  align: cd2a306d8b498a03
+  embed-videos-and-webpages: c0bc39fa462df0c1
+  quote: '095ad69704e52326'
+  code-block: 8c0e50e874fd6484
+  divider: c9a9ff15fd8a8221
+  add-table: 01c8deb045dbf783
+  markdown: a371c7d194ce3521
+  rich-text: a2bf0ecd91dcb1fe
 title_source: 29d4198e41d8221a
 title_generated: 7d7a9ce4e4aad2d0
 ---
@@ -55,17 +55,17 @@ title_generated: 7d7a9ce4e4aad2d0
 
 # Tekst opmaken en bestanden bijvoegen
 
-Wanneer je een discussie of peiling start of bewerkt, of een reactie schrijft, zie je een opmaakbalk onder het tekstveld. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
+De opmaakbalk verschijnt onder het tekstveld wanneer je een discussie start of bewerkt, een peiling maakt of een reactie schrijft. Selecteer de pijl aan het einde van de balk om alle hulpmiddelen te tonen of te verbergen.
 
-Beweeg de muis of cursor over elk pictogram om de naam van het hulpmiddel te zien.
+Beweeg de muis over een pictogram om de naam ervan te zien.
 
 ![](thread_format_bar.png)
 
 <!-- translation-section: attach-file -->
 
-## Bestand toevoegen
+## Bestand bijvoegen
 
-Gebruik het paperclippictogram direct onder het tekstveld om bestanden van je computer als bijlage toe te voegen.
+Selecteer het paperclippictogram onder het tekstveld om bestanden van je apparaat bij te voegen.
 
 ![](format_attach.png)
 
@@ -73,7 +73,7 @@ Gebruik het paperclippictogram direct onder het tekstveld om bestanden van je co
 
 ### Bijlagen verwijderen
 
-Klik tijdens het bewerken van de context op de **X** rechts van de bestandsnaam om de bijlage te verwijderen.
+Selecteer tijdens het bewerken **×** naast een bestandsnaam om de bijlage te verwijderen.
 
 ![](thread_file_remove.png)
 
@@ -81,7 +81,7 @@ Klik tijdens het bewerken van de context op de **X** rechts van de bestandsnaam 
 
 ## Afbeelding invoegen
 
-Selecteer **Afbeelding invoegen** en kies een bestand, of plak een afbeelding rechtstreeks in de editor. De afbeelding wordt weergegeven in de gepubliceerde discussie, peiling of reactie.
+Selecteer **Afbeelding invoegen** om een afbeelding te uploaden, of plak een afbeelding rechtstreeks in de editor. De afbeelding verschijnt tussen de tekst in je discussie, peiling of reactie.
 
 ![](format_insert_example.png)
 
@@ -89,17 +89,13 @@ Selecteer **Afbeelding invoegen** en kies een bestand, of plak een afbeelding re
 
 ## Link invoegen
 
-Je kunt een link toevoegen naar elk document of elke pagina op internet die je kunt delen.  
+Je kunt een link toevoegen naar elke webpagina of elk online document:
 
-Zo voeg je een link toe:
+1. Selecteer de tekst waarvan je een link wilt maken.
+2. Selecteer het linkpictogram.
+3. Plak de URL in **Link invoegen** en selecteer **Toepassen**.
 
-1. Selecteer de tekst waaraan je de link wilt toevoegen, bijvoorbeeld de naam van een document.
-2. Klik op het linkpictogram.
-3. Plak het adres in het veld **Link invoegen** en selecteer **Toepassen**.
-
-Controleer bij een document dat elders wordt gehost de instellingen voor delen, zodat deelnemers aan de discussie het kunnen openen.
-
-Onder de tekst kan een voorbeeld verschijnen. Je kunt dit verwijderen als je wilt.
+Controleer de instellingen voor delen van externe documenten, zodat deelnemers ze kunnen openen. Als er onder je tekst een linkvoorbeeld verschijnt, kun je dit verwijderen.
 
 ![](format_link.png)
 
@@ -107,7 +103,7 @@ Onder de tekst kan een voorbeeld verschijnen. Je kunt dit verwijderen als je wil
 
 ## Emoji invoegen
 
-Selecteer de smileyknop en kies een emoji uit het keuzemenu.
+Selecteer het smileypictogram om een emoji te kiezen.
 
 ![](thread_insert_emoji.png)
 
@@ -115,19 +111,17 @@ Selecteer de smileyknop en kies een emoji uit het keuzemenu.
 
 ## Koppen
 
-Kop 1, Kop 2 en Kop 3 kunnen helpen om een discussie of reactie structuur te geven.
+Gebruik **Kop 1**, **Kop 2** en **Kop 3** om lange discussies of reacties structuur te geven.
 
-Selecteer de tekst die je als kop wilt opmaken en klik op het hulpmiddel voor kopopmaak.
-
-Als je een kop gebruikt in een reactie, wordt de reactie automatisch toegevoegd aan de tijdlijn van de discussie.
+Reacties met een **Kop 2** of **Kop 3** worden automatisch toegevoegd aan de lijst **Spring naar** van de thread.
 
 ![](format_heading.png)
 
 <!-- translation-section: bold-italicize-strikethrough -->
 
-## Vet, cursief, doorhalen
+## Vet, cursief en doorhalen
 
-Selecteer de tekst die je wilt opmaken en klik op het gewenste opmaakhulpmiddel.
+Selecteer tekst en kies vet, cursief of doorhalen om woorden te benadrukken of door te halen.
 
 ![](format_bold.png)
 
@@ -135,7 +129,7 @@ Selecteer de tekst die je wilt opmaken en klik op het gewenste opmaakhulpmiddel.
 
 ## Lijst
 
-Gebruik **Lijst** om items als opsomming met opsommingstekens op te maken.
+Gebruik **Lijst** om een lijst met opsommingstekens te maken.
 
 ![](thread_bullets.png)
 
@@ -143,7 +137,7 @@ Gebruik **Lijst** om items als opsomming met opsommingstekens op te maken.
 
 ## Genummerde lijst
 
-Gebruik **Genummerde lijst** wanneer de volgorde van de items van belang is.
+Gebruik **Genummerde lijst** voor stappen of items in een vaste volgorde.
 
 ![](format_numbers.png)
 
@@ -151,11 +145,11 @@ Gebruik **Genummerde lijst** wanneer de volgorde van de items van belang is.
 
 ## Takenlijst
 
-Gebruik **Takenlijst** om selectievakjes toe te voegen. Nadat je de lijst hebt geplaatst, kun je taken aan iemand toewijzen en een vervaldatum instellen.
+Gebruik **Takenlijst** om selectievakjes toe te voegen. Typ een @vermelding terwijl je een taak schrijft om deze aan een groepslid toe te wijzen. Selecteer vervolgens **Voeg vervaldatum toe** om een vervaldatum en herinnering in te stellen.
 
 ![](format_tasks.png)
 
-Zie de pagina over [Taken](/en/user_manual/discussions/tasks/) voor meer informatie.
+Zie [Taken toewijzen en volgen](/en/user_manual/discussions/tasks/) voor meer informatie.
 
 <!-- translation-section: colors -->
 
@@ -169,7 +163,7 @@ Gebruik **Kleuren** om geselecteerde tekst met een kleur te markeren.
 
 ## Uitlijnen
 
-Kies om tekst links, in het midden of rechts uit te lijnen.
+Lijn tekst links, in het midden of rechts uit.
 
 ![](thread_align.png)
 
@@ -177,24 +171,23 @@ Kies om tekst links, in het midden of rechts uit te lijnen.
 
 ## Video's en webpagina's integreren
 
-Je kunt ondersteunde video's en webpagina's integreren overal waar een opmaakbalk beschikbaar is.
+Je kunt ondersteunde video's en webpagina's integreren overal waar de opmaakbalk verschijnt:
 
-Om een video te integreren:
-1. Kopieer het adres van de video of webpagina.
-2. Selecteer **Video integreren**, plak het adres en selecteer **Toepassen**.
+1. Kopieer de URL van de video of webpagina.
+2. Selecteer **Video integreren**, plak de URL en selecteer **Toepassen**.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Zorg dat iedereen die aan de discussie kan deelnemen toegang heeft tot de video. Een verborgen video kan bijvoorbeeld geschikt zijn als deze niet in openbare zoekresultaten mag verschijnen.
+>Zorg dat iedereen in de discussie de video kan bekijken. Een verborgen video is geschikt als je niet wilt dat deze in openbare zoekresultaten verschijnt.
 
 <!-- translation-section: quote -->
 
 ## Citaat
 
-Een citaat benadrukt je tekst en kan helpen om de aandacht op een instructie te vestigen.
+Gebruik **Quote** om een citaat apart weer te geven of de aandacht op belangrijke tekst te vestigen.
 
 ![](thread_quote.png)
 
@@ -202,7 +195,7 @@ Een citaat benadrukt je tekst en kan helpen om de aandacht op een instructie te 
 
 ## Codeblok
 
-Codeblokopmaak wordt meestal gebruikt om code in tekst weer te geven, maar je kunt deze ook gebruiken om tekst in je discussie te laten opvallen.
+Gebruik **Codeblok** om code of vooraf opgemaakte tekst weer te geven.
 
 ![](thread_codeblock.png)
 
@@ -210,7 +203,7 @@ Codeblokopmaak wordt meestal gebruikt om code in tekst weer te geven, maar je ku
 
 ## Scheidingslijn
 
-Gebruik de scheidingslijn om een horizontale lijn te plaatsen die onderdelen van elkaar scheidt.
+Gebruik **Verdeler** om een horizontale lijn tussen onderdelen in te voegen.
 
 ![](thread_line.png)
 
@@ -218,9 +211,7 @@ Gebruik de scheidingslijn om een horizontale lijn te plaatsen die onderdelen van
 
 ## Tabel toevoegen
 
-Voeg een tabel toe aan je discussie.
-
-Er zijn extra hulpmiddelen beschikbaar om kolommen en rijen toe te voegen of te verwijderen.
+Voeg een tabel in en gebruik de tabelknoppen om rijen en kolommen toe te voegen of te verwijderen.
 
 ![](thread_table.png)
 
@@ -228,16 +219,16 @@ Er zijn extra hulpmiddelen beschikbaar om kolommen en rijen toe te voegen of te 
 
 ## Markdown
 
-Selecteer **Markdown bewerken** om over te schakelen naar bewerken in Markdown.
+Selecteer **Markdown bewerken** om in Markdown te schrijven.
 
 Bij het omzetten naar Markdown blijven koppen, vetgedrukte en cursieve tekst, lijsten, eenvoudige tabellen, afgevinkte taken, afbeeldingen, links en @vermeldingen behouden. Video's, audio en ingesloten inhoud worden links.
 
-Tekstkleuren, markeringen, onderstreping, uitlijning en tabelopmaak kunnen verloren gaan. Vervaldatums en herinneringen van taken worden verwijderd; bij het terugzetten naar tekst met opmaak worden nieuwe taken aangemaakt met dezelfde tekst en afvinkstatus.
+Tekstkleuren, markeringen, onderstreping, uitlijning en aangepaste tabelopmaak kunnen verloren gaan. Vervaldatums en herinneringen van taken worden verwijderd; bij het terugschakelen naar opgemaakte tekst worden nieuwe taken aangemaakt met dezelfde tekst en afvinkstatus.
 
 <!-- translation-section: rich-text -->
 
 ### Opgemaakte tekst
 
-Selecteer **Opgemaakte tekst bewerken** om terug te keren naar de opmaakhulpmiddelen. Hiermee wordt ondersteunde Markdown omgezet naar opgemaakte tekst.
+Selecteer **Opgemaakte tekst bewerken** om terug te keren naar de opmaakbalk en ondersteunde Markdown om te zetten naar opgemaakte tekst.
 
-**Voorbeeld** laat zien hoe Markdown er na het plaatsen uitziet, zonder deze om te zetten.
+Selecteer **Voorbeeld** om te zien hoe je Markdown eruitziet zonder deze om te zetten.

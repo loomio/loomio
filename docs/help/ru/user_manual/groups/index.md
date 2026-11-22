@@ -1,16 +1,16 @@
 ---
 title: Группы
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bc6967c16a4da2f5
-  administration-facilitation-and-moderation-code-of-conduct: cc2887e527712b6e
+  introduction: 898c4f0b7d3b8a80
+  administration-facilitation-and-moderation-code-of-conduct: b3b4184adad941aa
 generated:
-  introduction: 20a337229ed735d5
-  administration-facilitation-and-moderation-code-of-conduct: d08cf7c1bedaf757
+  introduction: 661457bb4c8742ba
+  administration-facilitation-and-moderation-code-of-conduct: 365c729f17316bc9
 title_source: 39bbb719fa2b9d22
 title_generated: cd8c587351082be4
 ---
@@ -19,15 +19,11 @@ title_generated: cd8c587351082be4
 
 # Группы
 
-Группа в Loomio — это безопасное пространство, где люди могут встречаться, вести обсуждения и принимать решения.
-
-Здесь участники группы могут находить информацию и делиться ею, участвовать в важных обсуждениях и принятии решений, которые влияют на их работу.
-
-Вот как выглядит группа в Loomio. В верхней части страницы вы увидите изображение и логотип, которые можно настроить так, чтобы они представляли вашу организацию. Это помогает людям, присоединяющимся к группе, узнать знакомое пространство и почувствовать, что им рады. В таком безопасном пространстве люди могут чувствовать себя как дома, среди друзей, и полноценно участвовать в работе группы.
+Группа в Loomio — это общее пространство, где участники ведут обсуждения, делятся информацией и вместе принимают решения.
 
 ![Страница группы The Oatmilk Cooperative с описанием и списком обсуждений](group_page.png)
 
-Дайте вашей группе узнаваемое название и укажите в описании её назначение, кто участвует в её работе и как участники могут принимать участие. Вы также можете добавить логотип, обложку и ссылки на документы, например положение о группе.
+Вы можете настроить страницу вашей группы: добавить название, описание, логотип, обложку и ссылки на документы, например положение о группе. Это помогает участникам понять назначение группы и то, как участвовать в её работе.
 
 Для начала [создайте группу](/en/user_manual/groups/starting_a_group), выберите её [настройки конфиденциальности](/en/user_manual/groups/settings/privacy) и [пригласите людей](/en/user_manual/groups/inviting_people).
 
@@ -35,6 +31,6 @@ title_generated: cd8c587351082be4
 
 <!-- translation-section: administration-facilitation-and-moderation-code-of-conduct -->
 
-## Администрирование, фасилитация и модерация — кодекс поведения
+## Кодекс поведения
 
-Кодекс поведения помогает участникам понять, как участвовать в работе группы и как группа будет реагировать на неприемлемое поведение. Рекомендации по определению ожиданий читайте в [Руководстве для фасилитаторов](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).
+Кодекс поведения помогает участникам понять, как участвовать в работе группы и как группа реагирует на неприемлемое поведение. Рекомендации по определению ожиданий читайте в [Руководстве для фасилитаторов](/en/guides/facilitators_guide/commencing#culture-protocol-expectations).

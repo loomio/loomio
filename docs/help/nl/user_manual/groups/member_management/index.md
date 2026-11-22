@@ -1,26 +1,26 @@
 ---
 title: Ledenbeheer
-source_revision: 43a63dfebc3d75ea40ab1b104dc875422c1185f0
-source_file: docs/en/user_manual/groups/member_management/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/member_management/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-13'
+  'on': '2026-11-22'
 sections:
-  introduction: f216b18771a2c2a9
-  administering-your-group: 27aed40959adef57
-  managing-subgroups: 915e13a928a8f4aa
-  removing-members: f40c25fd90ab1ce2
-  leaving-group: 11b09b4af23b4e7e
-  set-title: 835b25d246477b4a
-  member-email-addresses: cae570f30b671275
+  introduction: bc7d2de9abc2ea86
+  administering-your-group: 7ae1b105c20977fc
+  managing-subgroups: 2e4bdee3283e8ef8
+  removing-members: d70807bdd968d594
+  leaving-group: 268f0c735b8e46d7
+  set-title: eb9a52e3d6c21d43
+  member-email-addresses: 0e800419a7bdacc6
 generated:
-  introduction: 1e2b960fecdc7b20
-  administering-your-group: 3c0cb1c03de746e4
-  managing-subgroups: 191c40769dbb2779
-  removing-members: 8512fbec84729481
-  leaving-group: a6ba656d5b8466b6
-  set-title: 5e9c488e9422af3b
-  member-email-addresses: 043d066e40c8480d
+  introduction: cb974d69a3f9589e
+  administering-your-group: ef5255a06591361c
+  managing-subgroups: 6a61939fd2c88f1f
+  removing-members: f7cb53773dba6d4a
+  leaving-group: c2ee78b8d405d145
+  set-title: e991082ac315798c
+  member-email-addresses: e3c4cc1175f9cf84
 title_source: 23ac3a7fe9ee72a2
 title_generated: 1b36e79e2303b520
 ---
@@ -29,63 +29,70 @@ title_generated: 1b36e79e2303b520
 
 # Ledenbeheer
 
-Als je admin bent, kun je leden beheren via het tabblad **Leden** op jouw groepspagina.
-
-Klik op de drie puntjes (**⋮**) rechts van het groepslid om een titel in te stellen, het lid admin of gedelegeerde te maken, of het lid uit de groep te verwijderen.
+Groepsadmins beheren leden via het tabblad **Leden** op de groepspagina. Open het actiemenu naast een lid om een titel in te stellen, het lid groepsadmin of gedelegeerde te maken, of het lid uit de groep te verwijderen.
 
 ![Menu met ledenacties op de ledenpagina van Oatmilk Cooperative](member_management.png)
 
 <!-- translation-section: administering-your-group -->
 
 ## Jouw groep beheren
-Er zijn maar twee soorten gebruikers in een Loomio-groep: **lid** en **admin**.
 
-Admins voeren administratieve taken uit voor jouw groep, zoals leden toevoegen en verwijderen, rechten van leden beheren, de privacyinstellingen van de groep instellen en abonnementen beheren. Daarnaast kunnen admins de e-mailadressen van leden bekijken en de gegevens van de groep exporteren.
+Een Loomio-groep heeft twee rollen: **lid** en **groepsadmin**.
 
-Wie een nieuwe Loomio-groep aanmaakt, wordt standaard admin. We raden aan om minstens één andere vertrouwde persoon in jouw groep admin te maken, zodat er altijd iemand is die de groep kan beheren. Je kunt zoveel admins in jouw groep hebben als je wilt.
+Groepsadmins kunnen leden toevoegen en verwijderen, rechten van leden beheren, de privacyinstellingen van de groep wijzigen, abonnementen beheren, e-mailadressen van leden bekijken en groepsgegevens exporteren.
 
-Om een lid **admin** te maken, ga je naar het tabblad Leden, zoek je het lid en klik je op de drie puntjes (**⋮**) naast de naam. Kies **Admin maken**. Naast de naam verschijnt het label `Admin`.
+Wie een groep aanmaakt, wordt standaard groepsadmin. We raden aan om minstens twee groepsadmins te hebben, zodat er altijd iemand is die de groep kan beheren. Een groep kan zoveel groepsadmins hebben als je nodig hebt.
+
+Om een lid groepsadmin te maken, open je het actiemenu naast de naam op het tabblad **Leden** en selecteer je **Admin maken**.
 
 ![Actie Admin maken in het menu van een lid](member_make_admin.png)
 
 <!-- translation-section: managing-subgroups -->
 
 ## Subgroepen beheren
-Admins van een hoofdgroep kunnen lid worden van elke niet-geheime subgroep ervan en zichzelf daarna admin van die subgroepen maken.
+
+Admins van een hoofdgroep kunnen lid worden van elke niet-geheime subgroep en zichzelf daarna admin van die subgroep maken.
 
 Selecteer **Word lid van de groep** op de subgroeppagina.
 
 ![Knop om lid te worden van een besloten subgroep van Oatmilk Cooperative](member_join_subgroup.png)
 
-Zodra je lid bent van de subgroep, kun je jezelf ook admin van die subgroep maken, op dezelfde manier waarop je iemand anders admin maakt.
+Zodra je lid bent van de subgroep, open je het actiemenu naast jouw naam op het tabblad **Leden** van de subgroep en selecteer je **Admin maken**.
 
 >[!Note]
->Deze rechten gelden niet voor [**geheime** subgroepen](/en/user_manual/groups/subgroups/?highlight=secret#permissions).
+>Dit geldt niet voor subgroepen met de instelling [**Geheim**](/en/user_manual/groups/subgroups#permissions).
 
 <!-- translation-section: removing-members -->
 
 ## Leden verwijderen
-Wanneer je op **Van groep verwijderen** klikt, wordt je gevraagd de verwijdering te bevestigen. Na verwijdering heeft deze gebruiker geen toegang meer tot de pagina's, threads, peilingen of voorstellen van de groep. De gebruiker ontvangt geen e-mails of meldingen meer over groepsactiviteiten. Reacties en stemmen van de gebruiker blijven wel behouden.
+
+Om iemand te verwijderen, open je het actiemenu naast de naam en selecteer je **Van groep verwijderen**.
 
 ![Actie Van groep verwijderen in het menu van een lid](member_remove.png)
 
-De verwijdering geldt ook voor de subgroepen van de groep. Privépeilingen verdwijnen van het dashboard en uit de stemlijst van de persoon. Openbare peilingen blijven leesbaar, maar een voormalig lid kan niet stemmen tenzij die opnieuw wordt uitgenodigd. Als iemand de groep verlaat terwijl een peiling gesloten is, behoudt die geen stemrecht wanneer de peiling wordt heropend.
+Wanneer iemand uit een groep wordt verwijderd:
 
-Je kunt verwijderde leden later weer aan de groep toevoegen. Wanneer ze opnieuw lid worden, krijgen ze weer toegang en worden hun bestaande stemmen in actieve peilingen hersteld, zonder dat ze de pagina hoeven te vernieuwen.
+- Verliest die persoon toegang tot de groep en de subgroepen en ontvangt die geen groepsmeldingen meer.
+- Blijven bestaande reacties en stemmen van die persoon behouden.
+- Verdwijnen privépeilingen van het dashboard en uit de stemlijst van die persoon. Openbare peilingen blijven leesbaar, maar die persoon kan niet stemmen tenzij die opnieuw wordt uitgenodigd. Als iemand de groep verlaat terwijl een peiling gesloten is, behoudt die geen stemrecht wanneer de peiling wordt heropend.
+
+Je kunt verwijderde leden later weer toevoegen. Wanneer ze opnieuw lid worden, krijgen ze weer toegang en worden hun bestaande stemmen in actieve peilingen hersteld.
 
 <!-- translation-section: leaving-group -->
 
 ## Groep verlaten
-Om een groep te verlaten, ga je naar de groepspagina, open je het menu met de drie puntjes en klik je op **Groep verlaten**.
 
-Een groep verlaten heeft dezelfde gevolgen voor de toegang tot de groep en subgroepen als verwijdering door een admin. Privépeilingen verdwijnen daarbij ook van je dashboard en uit je stemlijst.
+Om een groep te verlaten, open je het actiemenu van de groep en selecteer je **Groep verlaten**.
+
+Een groep verlaten heeft dezelfde gevolgen voor de toegang tot de groep en subgroepen als verwijdering door een groepsadmin.
 
 ![Actie Groep verlaten in het instellingenmenu van Oatmilk Cooperative](member_leave_group.png)
 
 <!-- translation-section: set-title -->
 
 ## Titel aanmaken
-Op het tabblad Leden kun je met **titel** jouw rol binnen de groep aangeven, of de organisatie die je vertegenwoordigt. Jij of een groepsadmin kan jouw titel wijzigen via **Titel aanmaken** in het menu met de drie puntjes naast jouw naam.
+
+De titel van een lid geeft de rol binnen de groep aan of de organisatie die het lid vertegenwoordigt. Jij of een groepsadmin kan jouw titel instellen of wijzigen door **Titel aanmaken** te selecteren in het actiemenu naast jouw naam op het tabblad **Leden**.
 
 ![Actie Titel aanmaken in het menu van een lid](member_set_title.png)
 
@@ -95,10 +102,8 @@ Je kunt in verschillende subgroepen verschillende titels hebben.
 
 ## E-mailadressen van leden
 
-Alleen admins kunnen de e-mailadressen van groepsleden zien. Dit is soms nodig om het ledenbestand van een groep te controleren.
+Alleen groepsadmins kunnen de e-mailadressen van leden zien.
 
-Om de e-mailadressen van leden te bekijken, gebruik je [gegevensexport](/en/user_manual/groups/data_export/) om een CSV-bestand te downloaden. Open het bestand in Excel of Google Sheets.
+Om alle e-mailadressen van leden in de groep en de subgroepen te bekijken, [exporteer je de groepsgegevens](/en/user_manual/groups/data_export) als CSV-bestand en open je het bestand in Microsoft Excel of Google Sheets.
 
-Het bestand met geëxporteerde groepsgegevens toont iedere persoon en het bijbehorende e-mailadres in elke subgroep.
-
-Je kunt op het tabblad Leden ook zoeken op e-mailadres. Als je iemand ziet die je wilt verwijderen, kun je die persoon dus op e-mailadres zoeken en verwijderen.
+Je kunt op het tabblad **Leden** ook zoeken op e-mailadres om een specifieke persoon te vinden en te beheren.

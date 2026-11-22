@@ -1,15 +1,15 @@
 ---
 title: Закладки
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/users/bookmarks/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/bookmarks/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 752c1df552c461e6
-  save-a-bookmark: ae80e968a14c61b4
-  view-your-bookmarks: 66cd0a27cf9bcca2
-  remove-a-bookmark: c9ef73967bce0bf8
+  introduction: 4526320029ca0268
+  save-a-bookmark: 3855beff6126a218
+  view-your-bookmarks: 0512e42564819ba7
+  remove-a-bookmark: 5e66cedf4b86c3fa
 generated:
   introduction: 9fe4907640e0a507
   save-a-bookmark: f3f8f065a669efd2

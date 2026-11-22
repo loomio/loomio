@@ -1,52 +1,52 @@
 ---
 title: API השרת
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
+  authentication: e5fe51f7081e921f
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: de7ad238bf914455
+  provisioning: 78ae303208080368
 generated:
   introduction: 2aae3d4854ceece3
-  authentication: 309f31a76c7ed969
+  authentication: adfac3ea1da1472a
   user-object: 9009ec1d00c571fb
   list-users: 9264d8ebac0bc28f
-  example: e999176324850972
+  example: 248c39c7d83ef030
   show-user: ec4ef74fad664f43
-  examples: 8198f6712632649a
+  examples: 2545ef942130fa8b
   update-user: c78b91ae370b879b
   params: 2d6c9cbe5d869681
-  examples-2: 4517f4dff047044d
+  examples-2: 2af6140f0406e507
   deactivate-user: c3f209c137d807e1
-  examples-3: 807c26a1a5305414
+  examples-3: f74f0b7b50e1991c
   reactivate-user: a0747565a1d2e741
-  examples-4: d448eb624aa68101
+  examples-4: dd961ff97104b1f5
   redact-user: cd294e9eed249e7e
-  examples-5: '00187fc0e296bcc6'
+  examples-5: 06e3a1929fb46012
   delete-user: 1a2fdb797f42576a
-  examples-6: beda53cef1f7c65b
+  examples-6: f36c2699b03938f3
   sso-profile-sync-settings: 19f51ee598df132e
-  provisioning: ac3e2ef9440c8c6f
+  provisioning: d95c9b8bde6c4d54
 title_source: 370e81eb20eece44
 title_generated: d867b511d9d6c400
 ---
@@ -70,7 +70,7 @@ title_generated: d867b511d9d6c400
 יש לשלוח את המפתח כאסימון Bearer:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 יש לשלוח פרטי אימות רק בכותרת `Authorization`. מפתחות API במחרוזות שאילתה או בגופי בקשות נדחים.
@@ -94,7 +94,9 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 
 `POST /api/server0/users`
 
-יש לשלוח אובייקט `user` עם שדה החובה `email`. רווחים בתחילת כתובות האימייל ובסופן מוסרים, והכתובות מומרות לאותיות קטנות. השדות האופציונליים הם `name`,‏ `username` ו-`is_admin`. כאן `is_admin` מציין מנהל של ההתקנה; תפקידי מנהל קבוצה מנוהלים ברשומות החברות. ליצירת שם משתמש באופן אוטומטי, יש להשמיט את `username`. שדות לא מוכרים נדחים.
+יש לשלוח אובייקט `user` עם שדה החובה `email`. רווחים בתחילת כתובות האימייל ובסופן מוסרים, והכתובות מומרות לאותיות קטנות. השדות האופציונליים הם `name`,‏ `username` ו-`is_admin`.
+
+כאן `is_admin` מציין מנהל של ההתקנה; תפקידי מנהל קבוצה מנוהלים ברשומות החברות. ליצירת שם משתמש באופן אוטומטי, יש להשמיט את `username`. שדות לא מוכרים נדחים.
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-יש לשלוח את שדה החובה `group_id` ואת המערך `emails`. כברירת מחדל, הפעולה מוסיפה את האנשים ברשימה שאין להם חברות פעילה, ומשאירה את כל השאר ללא שינוי. רווחים בתחילת כתובות האימייל ובסופן מוסרים, הכתובות מומרות לאותיות קטנות וכפילויות מוסרות. עבור כתובות חדשות נוצרים חשבונות והזמנות ממתינות. חברים קיימים ומאומתים בקבוצה פעילה אחרת באותו ארגון מתקבלים אוטומטית, בהתאם לתהליך ההזמנה ב-API המשתמש.
+יש לשלוח את שדה החובה `group_id` ואת המערך `emails`. כברירת מחדל, הפעולה מוסיפה את האנשים ברשימה שאין להם חברות פעילה, ומשאירה את כל השאר ללא שינוי. רווחים בתחילת כתובות האימייל ובסופן מוסרים, הכתובות מומרות לאותיות קטנות וכפילויות מוסרות.
+
+עבור כתובות חדשות נוצרים חשבונות והזמנות ממתינות. חברים קיימים ומאומתים בקבוצה פעילה אחרת באותו ארגון מתקבלים אוטומטית, בהתאם לתהליך ההזמנה ב-API המשתמש.
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -215,9 +219,11 @@ curl https://loomio.example.org/api/server0/memberships \
 }
 ```
 
-שליחה חוזרת של אותה בקשה אינה יוצרת חברויות כפולות ואינה שולחת הזמנות חוזרות. הזמנה מחדש של חבר שחברותו בוטלה משחזרת את הגישה לקבוצה בלי לשחזר תפקיד מנהל קודם. הזמנות חדשות ושינויי תפקידים משתמשים בתהליך ההתראות הרגיל, ללא רישום משתמש כמי שביצע את הפעולה.
+שליחה חוזרת של אותה בקשה אינה יוצרת חברויות כפולות ואינה שולחת הזמנות חוזרות. הזמנה מחדש של חבר שחברותו בוטלה משחזרת את הגישה לקבוצה בלי לשחזר תפקיד קודם של מנהל קבוצה. הזמנות חדשות ושינויי תפקידים משתמשים בתהליך ההתראות הרגיל, ללא רישום משתמש כמי שביצע את הפעולה.
 
-רשימות אימייל חסרות או בעלות מבנה לא תקין וערכים בוליאניים לא תקינים מחזירים HTTP `400`. חשבון מושבת שמופיע ברשימה מחזיר HTTP `422`; יש להפעילו מחדש במפורש לפני הוספתו. נתוני חשבון לא תקינים, מגבלות מינוי או כשלים אחרים מבטלים את כל שינויי הסנכרון, כולל חשבונות חדשים והסרות של חברויות. הוספת חברים דורשת קבוצה פעילה וכפופה למגבלות מספר החברים במינוי.
+רשימות אימייל חסרות או בעלות מבנה לא תקין וערכים בוליאניים לא תקינים מחזירים HTTP `400`. חשבון מושבת שמופיע ברשימה מחזיר HTTP `422`; יש להפעילו מחדש במפורש לפני הוספתו.
+
+נתוני חשבון לא תקינים, מגבלות מינוי או כשלים אחרים מבטלים את כל שינויי הסנכרון, כולל חשבונות חדשים והסרות של חברויות. הוספת חברים דורשת קבוצה פעילה וכפופה למגבלות מספר החברים במינוי.
 
 ### עדכון תפקידי חברות
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-מוחזר `{"success": true}`. ההסרה מבטלת את הגישה לקבוצה ולתת־הקבוצות שלה, כולל גישה לנושאים וזכויות הצבעה בסקרים פעילים. היא אינה מוחקת את החשבון, משנה קבוצות שאינן קשורות או מסירה גישה ישירה לשרשורים. הסרה חוזרת מסתיימת בהצלחה. ניתן להסיר חברויות מקבוצות שתוקף המינוי שלהן פג; קבוצות שנמחקו מחזירות HTTP `404`.
+מוחזר `{"success": true}`. ההסרה מבטלת את הגישה לקבוצה ולתת־הקבוצות שלה, כולל גישה לנושאים וזכויות הצבעה בסקרים פעילים. היא אינה מוחקת את החשבון, משנה קבוצות שאינן קשורות או מסירה גישה ישירה לשרשורים.
+
+הסרה חוזרת מסתיימת בהצלחה. ניתן להסיר חברויות מקבוצות שתוקף המינוי שלהן פג; קבוצות שנמחקו מחזירות HTTP `404`.
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ curl https://loomio.example.org/api/server0/memberships/456 \
 ### דוגמה
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 התגובה:
@@ -319,13 +327,13 @@ curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/s
 לפי מזהה המשתמש ב-Loomio:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 לפי זהות חיצונית:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 התגובה:
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 לפי זהות חיצונית:
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 התגובה מכילה את נתוני המשתמש המעודכנים:
@@ -405,13 +413,13 @@ curl -X PATCH \
 לפי מזהה המשתמש ב-Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
 לפי זהות חיצונית:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 התגובה:
@@ -440,13 +448,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 לפי מזהה החשבון ב־Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
 לפי זהות חיצונית:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 התשובה המוחזרת:
@@ -477,13 +485,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 לפי מזהה החשבון ב־Loomio:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
 לפי זהות חיצונית:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 התשובה המוחזרת:
@@ -513,13 +521,13 @@ curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.c
 לפי מזהה החשבון ב־Loomio:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 לפי זהות חיצונית:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 התשובה המוחזרת:

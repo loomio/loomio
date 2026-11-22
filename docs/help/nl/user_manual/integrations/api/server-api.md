@@ -1,52 +1,52 @@
 ---
 title: Server-API
-source_revision: 81fbad246f674a34694bb2ebfc8416dd04e46ee6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/integrations/api/server-api.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
   introduction: 33c4ce1c59342826
-  authentication: a215188bb0ae2b38
+  authentication: e5fe51f7081e921f
   user-object: 7e9e8ff3e48a4055
   list-users: 16e557db2983e597
-  example: 5a370a67d3dc961f
+  example: ce307617f5c7c453
   show-user: ef061aab9e142a98
-  examples: 5b98557c8af42e29
+  examples: cd03c00071f69fe7
   update-user: fc52abc60aa4eb6e
   params: 368f797e2a2b5c3d
-  examples-2: b6bc03ca1e104210
+  examples-2: 85443b9a17d9d575
   deactivate-user: 19c9b37ded7cad07
-  examples-3: 706a02fb50225d20
+  examples-3: 71c895d3a0f08435
   reactivate-user: 03bccb45ded4f11c
-  examples-4: 5c9cf19d21267502
+  examples-4: 0a3165fe36464e0c
   redact-user: 9560a30820cb43cc
-  examples-5: df81d06971fb0391
+  examples-5: 73d5a5e70718af40
   delete-user: 1aad5e4da586e0ed
-  examples-6: 23542029b0bc8237
+  examples-6: '0812d9cf2ce7c015'
   sso-profile-sync-settings: 416144004d040e4f
-  provisioning: de7ad238bf914455
+  provisioning: 78ae303208080368
 generated:
   introduction: b0f5eb2c0fe42acb
-  authentication: 057e2041af6e5768
+  authentication: d25100b45bb21e90
   user-object: 66215e30fa8625e7
   list-users: ecc095d8fa9209b5
-  example: 70d85e218cfbae39
+  example: 9aea370da140c643
   show-user: 8657da657cde1ca4
-  examples: 03ae5ccfa152f0c9
+  examples: e8809d41fc6098c4
   update-user: e85ee21c6183c44c
   params: a58deea182d61629
-  examples-2: 8abc6939fafb3e20
+  examples-2: 852f0c6db25cf455
   deactivate-user: 8a44a5bdb677303a
-  examples-3: 9fc8b784d0771cf6
+  examples-3: 4d7b5a5efed69384
   reactivate-user: 1c48a79696d8794c
-  examples-4: d0c7dba457e394ff
+  examples-4: 0a2ec6bd7942b67e
   redact-user: 1316a90a271c7523
-  examples-5: 12807e6b1faa91f6
+  examples-5: 7a24af1cb012f300
   delete-user: 9c81035bb2371aec
-  examples-6: d27f47c9dafd8dcb
+  examples-6: 7039d67e964fc7d8
   sso-profile-sync-settings: 5d80d185e6028502
-  provisioning: 34ab255c91bdcf5e
+  provisioning: 0d049273905fea3f
 title_source: 370e81eb20eece44
 title_generated: 110d7181b51daf50
 ---
@@ -70,7 +70,7 @@ De sleutel is de instelling `SERVER_API_KEY` in de serveromgeving. `create_env.s
 Stuur de sleutel als een bearer-token:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Stuur inloggegevens alleen in de `Authorization`-header. API-sleutels in querystrings of de inhoud van verzoeken worden geweigerd.
@@ -94,7 +94,9 @@ De bestaande endpoints voor het bijwerken, deactiveren, reactiveren, anonimisere
 
 `POST /api/server0/users`
 
-Verstuur een `user`-object met een verplicht veld `email`. Spaties aan het begin en einde van e-mailadressen worden verwijderd en de adressen worden omgezet naar kleine letters. Optionele velden zijn `name`, `username` en `is_admin`. Hier betekent `is_admin` een admin van de installatie; adminrollen voor groepen worden via lidmaatschappen beheerd. Laat `username` weg om automatisch een gebruikersnaam te genereren. Onbekende velden worden geweigerd.
+Verstuur een `user`-object met een verplicht veld `email`. Spaties aan het begin en einde van e-mailadressen worden verwijderd en de adressen worden omgezet naar kleine letters. Optionele velden zijn `name`, `username` en `is_admin`.
+
+Hier betekent `is_admin` een admin van de installatie; adminrollen voor groepen worden via lidmaatschappen beheerd. Laat `username` weg om automatisch een gebruikersnaam te genereren. Onbekende velden worden geweigerd.
 
 ```bash
 curl https://loomio.example.org/api/server0/users \
@@ -178,7 +180,9 @@ curl 'https://loomio.example.org/api/server0/memberships?group_id=123&limit=50&o
 
 `POST /api/server0/memberships`
 
-Verstuur de verplichte velden `group_id` en de array `emails`. Standaard worden hiermee de vermelde personen toegevoegd die nog geen actief lidmaatschap hebben; alle anderen blijven lid. Spaties aan het begin en einde van e-mailadressen worden verwijderd, de adressen worden omgezet naar kleine letters en dubbele adressen worden verwijderd. Voor nieuwe adressen worden accounts en openstaande uitnodigingen aangemaakt. Bestaande geverifieerde leden van een andere actieve groep in dezelfde organisatie worden automatisch geaccepteerd, net als bij de uitnodigingsprocedure van de gebruikers-API.
+Verstuur de verplichte velden `group_id` en de array `emails`. Standaard worden hiermee de vermelde personen toegevoegd die nog geen actief lidmaatschap hebben; alle anderen blijven lid. Spaties aan het begin en einde van e-mailadressen worden verwijderd, de adressen worden omgezet naar kleine letters en dubbele adressen worden verwijderd.
+
+Voor nieuwe adressen worden accounts en openstaande uitnodigingen aangemaakt. Bestaande geverifieerde leden van een andere actieve groep in dezelfde organisatie worden automatisch geaccepteerd, net als bij de uitnodigingsprocedure van de gebruikers-API.
 
 ```bash
 curl https://loomio.example.org/api/server0/memberships \
@@ -215,9 +219,11 @@ curl https://loomio.example.org/api/server0/memberships \
 }
 ```
 
-Als je hetzelfde verzoek herhaalt, worden geen dubbele lidmaatschappen aangemaakt of uitnodigingen opnieuw verstuurd. Als je een lid met een ingetrokken lidmaatschap opnieuw uitnodigt, krijgt dit lid weer toegang tot de groep, zonder dat een eerdere adminrol wordt hersteld. Nieuwe uitnodigingen en rolwijzigingen gebruiken de normale meldingsprocedure, waarbij geen gebruiker wordt vastgelegd als degene die de actie uitvoert.
+Als je hetzelfde verzoek herhaalt, worden geen dubbele lidmaatschappen aangemaakt of uitnodigingen opnieuw verstuurd. Als je een lid met een ingetrokken lidmaatschap opnieuw uitnodigt, krijgt dit lid weer toegang tot de groep, zonder dat een eerdere groepsadminrol wordt hersteld. Nieuwe uitnodigingen en rolwijzigingen gebruiken de normale meldingsprocedure, waarbij geen gebruiker wordt vastgelegd als degene die de actie uitvoert.
 
-Ontbrekende of onjuist opgemaakte e-maillijsten en ongeldige booleaanse waarden leveren HTTP `400` op. Een gedeactiveerd account op de lijst levert HTTP `422` op; reactiveer het expliciet voordat je het toevoegt. Bij ongeldige accountgegevens, abonnementslimieten of andere fouten wordt de volledige synchronisatie teruggedraaid, inclusief nieuwe accounts en ingetrokken lidmaatschappen. Toevoegingen vereisen een actieve groep en blijven onderworpen aan de ledenlimieten van het abonnement.
+Ontbrekende of onjuist opgemaakte e-maillijsten en ongeldige booleaanse waarden leveren HTTP `400` op. Een gedeactiveerd account op de lijst levert HTTP `422` op; reactiveer het expliciet voordat je het toevoegt.
+
+Bij ongeldige accountgegevens, abonnementslimieten of andere fouten wordt de volledige synchronisatie teruggedraaid, inclusief nieuwe accounts en ingetrokken lidmaatschappen. Toevoegingen vereisen een actieve groep en blijven onderworpen aan de ledenlimieten van het abonnement.
 
 ### Lidmaatschapsrollen bijwerken
 
@@ -249,7 +255,9 @@ curl https://loomio.example.org/api/server0/memberships/456 \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY'
 ```
 
-Geeft `{"success": true}` terug. Verwijdering trekt de toegang tot de groep en de bijbehorende subgroepen in, inclusief toegang tot onderwerpen en stemrechten in actieve peilingen. Het account wordt niet verwijderd, andere groepen worden niet gewijzigd en rechtstreekse toegang tot threads wordt niet ingetrokken. Een herhaalde verwijdering slaagt. Je kunt lidmaatschappen verwijderen uit groepen met verlopen abonnementen; verwijderde groepen leveren HTTP `404` op.
+Geeft `{"success": true}` terug. Verwijdering trekt de toegang tot de groep en de bijbehorende subgroepen in, inclusief toegang tot onderwerpen en stemrechten in actieve peilingen. Het account wordt niet verwijderd, andere groepen worden niet gewijzigd en rechtstreekse toegang tot threads wordt niet ingetrokken.
+
+Een herhaalde verwijdering slaagt. Je kunt lidmaatschappen verwijderen uit groepen met verlopen abonnementen; verwijderde groepen leveren HTTP `404` op.
 
 <!-- translation-section: user-object -->
 
@@ -291,7 +299,7 @@ Vraag alle gebruikersaccounts op de Loomio-installatie op.
 ### Voorbeeld
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users
 ```
 
 Geeft terug:
@@ -319,13 +327,13 @@ Zoek een gebruiker op basis van het Loomio-gebruikers-ID of de externe identitei
 Op basis van het Loomio-gebruikers-ID:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 Op basis van de externe identiteit:
 
 ```bash
-curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Geeft terug:
@@ -367,7 +375,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/123
+  https://loomio.example.org/api/server0/users/123
 ```
 
 Op basis van de externe identiteit:
@@ -377,7 +385,7 @@ curl -X PATCH \
   -H 'Authorization: Bearer YOUR_SERVER_API_KEY' \
   -H 'Content-Type: application/json' \
   -d '{"user":{"name":"Ada Lovelace","username":"ada","email":"ada@example.org"}}' \
-  https://www.loomio.com/api/server0/users/identity/oauth/external-123
+  https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Geeft de bijgewerkte gebruiker terug:
@@ -405,13 +413,13 @@ Deactiveer een gebruikersaccount dat je vindt op basis van het Loomio-gebruikers
 Op basis van het Loomio-gebruikers-ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/deactivate
 ```
 
 Op basis van de externe identiteit:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/deactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/deactivate
 ```
 
 Geeft terug:
@@ -440,13 +448,13 @@ Activeer een gedeactiveerd gebruikersaccount opnieuw op basis van het Loomio-geb
 Op basis van het Loomio-gebruikers-ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/reactivate
 ```
 
 Op basis van de externe identiteit:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/reactivate
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/reactivate
 ```
 
 Retourneert:
@@ -477,13 +485,13 @@ Dit is de aanbevolen manier om een gebruiker uit Loomio te verwijderen.
 Op basis van het Loomio-gebruikers-ID:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123/redact
 ```
 
 Op basis van de externe identiteit:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123/redact
+curl -X POST -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123/redact
 ```
 
 Retourneert:
@@ -513,13 +521,13 @@ Hierdoor gaan veel gegevens verloren. Het wordt sterk aanbevolen om in plaats da
 Op basis van het Loomio-gebruikers-ID:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/123
 ```
 
 Op basis van de externe identiteit:
 
 ```bash
-curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://www.loomio.com/api/server0/users/identity/oauth/external-123
+curl -X DELETE -H 'Authorization: Bearer YOUR_SERVER_API_KEY' https://loomio.example.org/api/server0/users/identity/oauth/external-123
 ```
 
 Retourneert:

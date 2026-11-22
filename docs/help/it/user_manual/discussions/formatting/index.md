@@ -1,52 +1,52 @@
 ---
 title: Formattazione
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/formatting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 8835d30a218fce4e
-  attach-file: 772ed69602535db7
-  remove-attachments: 7f47fde42b902677
-  insert-image: efa8f0ee5300aef3
-  insert-link: 0e0ec502a3ae3051
-  insert-emoji: 6658e6f893b1a0a7
-  headings: 20ebc1f33dd138a7
-  bold-italicize-strikethrough: 98d2f6aaed506413
-  list: cd1c1465db2505c8
-  numbered-list: 92b0ed9aab771c4f
-  task-list: 517eb95494ba9b19
-  colors: 8a39ed6ff1c52fa5
-  align: 8c00e40d36504bec
-  embed-videos-and-webpages: 2bfaa9a9747c2e4c
-  quote: 5d7a04b5141d04e9
-  code-block: e05cf0873c4c22e2
-  divider: da7aa0e1a1a4436e
-  add-table: f1a579057780872c
-  markdown: 7c37a4c00bd431ee
-  rich-text: 9136c76bfd5409a9
+  introduction: 7017aeac7dafc821
+  attach-file: 9c366a6657d8b93b
+  remove-attachments: 8320474edaf36328
+  insert-image: 8f8608dea8221af3
+  insert-link: 4eca2d6cbb23a37b
+  insert-emoji: 784ff758a2d20bad
+  headings: c89df2ea57fbbd6e
+  bold-italicize-strikethrough: 2088853c5c6da43e
+  list: a440d99f305c8343
+  numbered-list: cfaabe2b49698d69
+  task-list: 79744683dd74f04a
+  colors: ee012d29d5f51c38
+  align: 133f773bd3f4126c
+  embed-videos-and-webpages: ad3a5e0752c3522b
+  quote: a2f99b96774be463
+  code-block: b7d155fbf02fecdc
+  divider: fccd21475ed4930a
+  add-table: e8514328c695391f
+  markdown: c8dc1dccdf3b0366
+  rich-text: e22e0fa9a19cff47
 generated:
-  introduction: 43f28f2561e56dca
-  attach-file: bc5ee4b085dceba4
-  remove-attachments: 146e17361964fc2c
-  insert-image: 9d537c2a04195559
-  insert-link: 8c77abf8d3b21ab3
-  insert-emoji: c65b903c9073e102
-  headings: 51923734c52afb30
-  bold-italicize-strikethrough: b82ade1784e98e71
-  list: 673e427ce7b64cf1
-  numbered-list: edd42d98d2ecacfb
-  task-list: 2c5b64b3683c9ede
-  colors: eb3b4d2007f366fa
-  align: e16887a8d34e028b
-  embed-videos-and-webpages: eb3abd95147b7f91
-  quote: 67795cebf6d42823
-  code-block: 3b4add0e79b52171
-  divider: d9c11f0ad00e9ace
-  add-table: f48a0f8f49b6b186
-  markdown: 28baff63bd116dab
-  rich-text: 9e15a0eb8e811719
+  introduction: bc96fe2a603e53e7
+  attach-file: d879b277e29fe8af
+  remove-attachments: daf5fb1043be33cc
+  insert-image: 205d13e18b201225
+  insert-link: 65e75fb5cb2cec31
+  insert-emoji: 885b0df0644a23c1
+  headings: a8c31bba93f25473
+  bold-italicize-strikethrough: 577a67bc04d574b4
+  list: a4aca6aa7445ee02
+  numbered-list: afdfab59a21ebacf
+  task-list: 3d974b494bdf67ba
+  colors: ce9bff7615667c72
+  align: ed2c96bb9370c471
+  embed-videos-and-webpages: b0c6fe7b5b9d7b5e
+  quote: 3b4d56eec7d5e045
+  code-block: dc05eef48d4695ff
+  divider: 689236d4e85fe135
+  add-table: 47cb69622db95c13
+  markdown: 8f8928dde61a5dc6
+  rich-text: aefab7a658d8f16a
 title_source: 29d4198e41d8221a
 title_generated: ddab7a78a28c6259
 ---
@@ -55,9 +55,9 @@ title_generated: ddab7a78a28c6259
 
 # Formatta il testo e allega file
 
-Quando avvii o modifichi una discussione o un sondaggio, oppure scrivi un commento, vedrai una barra di formattazione sotto il campo di testo. Seleziona la freccia alla fine della barra per mostrare o nascondere tutti gli strumenti.
+La barra di formattazione appare sotto il campo di testo quando avvii o modifichi una discussione, crei un sondaggio o scrivi un commento. Seleziona la freccia alla fine della barra per mostrare o nascondere tutti gli strumenti.
 
-Passa il puntatore del mouse su ogni elemento per vedere il nome dello strumento.
+Passa il puntatore del mouse su un'icona per vederne il nome.
 
 ![](thread_format_bar.png)
 
@@ -65,7 +65,7 @@ Passa il puntatore del mouse su ogni elemento per vedere il nome dello strumento
 
 ## Allega file
 
-Usa l'icona della graffetta, appena sotto il campo di testo, per aggiungere file allegati dal tuo computer.
+Seleziona l'icona della graffetta sotto il campo di testo per allegare file dal tuo dispositivo.
 
 ![](format_attach.png)
 
@@ -73,7 +73,7 @@ Usa l'icona della graffetta, appena sotto il campo di testo, per aggiungere file
 
 ### Rimuovi allegati
 
-Mentre modifichi il contesto, fai clic sulla **X** a destra del nome del file per rimuoverlo.
+Durante la modifica, seleziona **×** accanto al nome di un file per rimuoverlo.
 
 ![](thread_file_remove.png)
 
@@ -81,7 +81,7 @@ Mentre modifichi il contesto, fai clic sulla **X** a destra del nome del file pe
 
 ## Inserisci immagine
 
-Seleziona **Inserire un'immagine** e scegli un file, oppure incolla un'immagine direttamente nell'editor. L'immagine viene visualizzata nella discussione, nel sondaggio o nel commento pubblicato.
+Seleziona **Inserire un'immagine** per caricare un'immagine, oppure incollane una direttamente nell'editor. L'immagine appare nel testo della discussione, del sondaggio o del commento.
 
 ![](format_insert_example.png)
 
@@ -89,17 +89,13 @@ Seleziona **Inserire un'immagine** e scegli un file, oppure incolla un'immagine 
 
 ## Inserisci collegamento
 
-Puoi aggiungere un collegamento a qualsiasi documento o pagina su internet che sia condivisibile.  
+Puoi aggiungere un collegamento a qualsiasi pagina web o documento online:
 
-Per aggiungere un collegamento:
+1. Seleziona il testo che vuoi trasformare in un collegamento.
+2. Seleziona l'icona del collegamento.
+3. Incolla l'URL in **Inserisci collegamento** e seleziona **Applica**.
 
-1. Seleziona il testo a cui vuoi aggiungere il collegamento, ad esempio il nome di un documento.
-2. Fai clic sull'icona del collegamento.
-3. Incolla l'indirizzo nel campo **Inserisci collegamento** e seleziona **Applica**.
-
-Se il documento è ospitato altrove, controlla le autorizzazioni di condivisione affinché i partecipanti alla discussione possano aprirlo.
-
-Potrebbe apparire un'anteprima sotto il testo; puoi rimuoverla se preferisci.
+Controlla le autorizzazioni di condivisione dei documenti esterni affinché i partecipanti possano aprirli. Se sotto il testo appare un'anteprima del collegamento, puoi rimuoverla.
 
 ![](format_link.png)
 
@@ -107,7 +103,7 @@ Potrebbe apparire un'anteprima sotto il testo; puoi rimuoverla se preferisci.
 
 ## Inserisci emoji
 
-Seleziona il pulsante con la faccina e scegli un'emoji dal selettore.
+Seleziona l'icona della faccina per scegliere un'emoji.
 
 ![](thread_insert_emoji.png)
 
@@ -115,19 +111,17 @@ Seleziona il pulsante con la faccina e scegli un'emoji dal selettore.
 
 ## Titoli
 
-Titolo 1, Titolo 2 e Titolo 3 possono aiutarti a strutturare una discussione o un commento.
+Usa **Rubrica 1**, **Rubrica 2** e **Rubrica 3** per strutturare discussioni o commenti lunghi.
 
-Seleziona il testo da usare come titolo e fai clic sullo strumento di formattazione dei titoli.
-
-Se usi un titolo in un commento, il commento verrà aggiunto automaticamente alla cronologia della discussione.
+I commenti che includono una **Rubrica 2** o una **Rubrica 3** vengono aggiunti automaticamente all'elenco **Vai a** della conversazione.
 
 ![](format_heading.png)
 
 <!-- translation-section: bold-italicize-strikethrough -->
 
-## Grassetto, corsivo, barrato
+## Grassetto, corsivo e barrato
 
-Seleziona il testo da formattare e fai clic sullo strumento di formattazione desiderato.
+Seleziona il testo e scegli grassetto, corsivo o barrato per mettere in risalto o barrare le parole.
 
 ![](format_bold.png)
 
@@ -135,7 +129,7 @@ Seleziona il testo da formattare e fai clic sullo strumento di formattazione des
 
 ## Elenco
 
-Usa **Elenco** per formattare gli elementi come punti di un elenco puntato.
+Usa **Elenco** per creare un elenco puntato.
 
 ![](thread_bullets.png)
 
@@ -143,7 +137,7 @@ Usa **Elenco** per formattare gli elementi come punti di un elenco puntato.
 
 ## Elenco numerato
 
-Usa **Elenco numerato** quando l'ordine degli elementi è importante.
+Usa **Elenco numerato** per passaggi o elementi ordinati.
 
 ![](format_numbers.png)
 
@@ -151,17 +145,17 @@ Usa **Elenco numerato** quando l'ordine degli elementi è importante.
 
 ## Lista di compiti
 
-Usa **Lista di compiti** per aggiungere caselle di spunta. Dopo aver pubblicato la lista, puoi assegnare i compiti a qualcuno e impostare una data di scadenza.
+Usa **Lista di compiti** per aggiungere caselle di spunta. Inserisci una @menzione mentre scrivi un compito per assegnarlo a un membro del gruppo, poi seleziona **Aggiungi scadenza** per impostare una data di scadenza e un promemoria.
 
 ![](format_tasks.png)
 
-Consulta la pagina sui [Compiti](/en/user_manual/discussions/tasks/) per maggiori informazioni.
+Consulta [Assegna e monitora i compiti](/en/user_manual/discussions/tasks/) per maggiori dettagli.
 
 <!-- translation-section: colors -->
 
 ## Colori
 
-Usa **Colori** per evidenziare con un colore il testo selezionato.
+Usa **Colori** per evidenziare il testo selezionato.
 
 ![](thread_colors.png)
 
@@ -169,7 +163,7 @@ Usa **Colori** per evidenziare con un colore il testo selezionato.
 
 ## Allineamento
 
-Seleziona l'allineamento del testo a sinistra, al centro o a destra.
+Allinea il testo a sinistra, al centro o a destra.
 
 ![](thread_align.png)
 
@@ -177,24 +171,23 @@ Seleziona l'allineamento del testo a sinistra, al centro o a destra.
 
 ## Incorporare video e pagine web
 
-Puoi incorporare video e pagine web supportati ovunque sia presente una barra degli strumenti di formattazione.
+Puoi incorporare video e pagine web supportati ovunque sia presente la barra di formattazione:
 
-Per usare la funzione di incorporamento video:
-1. Copia l'indirizzo del video o della pagina web.
-2. Seleziona **Incorporare video**, incolla l'indirizzo e seleziona **Applica**.
+1. Copia l'URL del video o della pagina web.
+2. Seleziona **Incorporare video**, incolla l'URL e seleziona **Applica**.
 
 ![](format_embed.png)
 
 <iframe width="100%" height="380px" src="https://www.youtube-nocookie.com/embed/AJnjTd9u4zg" frameborder="0" allowfullscreen></iframe>
 
 >[!Tip]
->Assicurati che il video sia accessibile a tutte le persone che possono partecipare alla discussione. Ad esempio, un video non in elenco può essere adatto quando non deve comparire nei risultati delle ricerche pubbliche.
+>Assicurati che tutte le persone nella discussione possano vedere il video. Un video non in elenco è adatto quando non vuoi che compaia nei risultati delle ricerche pubbliche.
 
 <!-- translation-section: quote -->
 
 ## Citazione
 
-La citazione dà risalto al tuo testo e può essere utile per attirare l'attenzione su un'istruzione.
+Usa **Citazione** per separare una citazione dal resto del testo o attirare l'attenzione su un passaggio importante.
 
 ![](thread_quote.png)
 
@@ -202,7 +195,7 @@ La citazione dà risalto al tuo testo e può essere utile per attirare l'attenzi
 
 ## Blocco di codice
 
-La formattazione come blocco di codice, solitamente usata per mostrare codice nel testo, può anche aiutarti a distinguere parti del testo nella tua discussione.
+Usa **Blocca codice** per mostrare codice o testo preformattato.
 
 ![](thread_codeblock.png)
 
@@ -210,7 +203,7 @@ La formattazione come blocco di codice, solitamente usata per mostrare codice ne
 
 ## Separatore
 
-Usa il separatore per tracciare una linea orizzontale che separi le sezioni.
+Usa **Divisore** per inserire una linea orizzontale tra le sezioni.
 
 ![](thread_line.png)
 
@@ -218,9 +211,7 @@ Usa il separatore per tracciare una linea orizzontale che separi le sezioni.
 
 ## Aggiungere una tabella
 
-Aggiungi una tabella alla tua discussione.
-
-Sono disponibili strumenti aggiuntivi per aggiungere o rimuovere colonne e righe.
+Inserisci una tabella e usa i relativi controlli per aggiungere o rimuovere righe e colonne.
 
 ![](thread_table.png)
 
@@ -228,16 +219,16 @@ Sono disponibili strumenti aggiuntivi per aggiungere o rimuovere colonne e righe
 
 ## Markdown
 
-Per passare alla modifica in Markdown, seleziona **Modifica riduzione**.
+Seleziona **Modifica riduzione** per scrivere in Markdown.
 
 La conversione in Markdown conserva titoli, testo in grassetto e corsivo, elenchi, tabelle semplici, compiti spuntati, immagini, collegamenti e @menzioni. Video, audio e contenuti incorporati diventano collegamenti.
 
-I colori del testo, le evidenziazioni, le sottolineature, l'allineamento e la disposizione delle tabelle potrebbero andare persi. Le date di scadenza e i promemoria dei compiti vengono rimossi; la riconversione in testo formattato crea nuovi compiti con lo stesso testo e lo stesso stato di spunta.
+I colori del testo, le evidenziazioni, le sottolineature, l'allineamento e le disposizioni personalizzate delle tabelle potrebbero andare persi. Le date di scadenza e i promemoria dei compiti vengono rimossi; il ritorno al testo formattato crea nuovi compiti con lo stesso testo e lo stesso stato di spunta.
 
 <!-- translation-section: rich-text -->
 
 ### Testo formattato
 
-Seleziona **Modifica testo formattato** per tornare agli strumenti di formattazione. Questa operazione converte gli elementi Markdown supportati nella loro forma visualizzata.
+Seleziona **Modifica testo formattato** per tornare alla barra degli strumenti di formattazione e convertire gli elementi Markdown supportati in testo formattato.
 
-**Anteprima** mostra come apparirà il Markdown dopo la pubblicazione, senza convertirlo.
+Seleziona **Anteprima** per vedere come apparirà il tuo Markdown senza convertirlo.

@@ -2,7 +2,7 @@
 
 # Your profile
 
-Your profile helps people recognize you in Loomio. Add a photo, introduction and other details you want to share.
+Your profile helps people recognize you in Loomio. Add a photo, introduction, and other details you want to share.
 
 <!-- translation-section: edit-profile -->
 
@@ -16,20 +16,21 @@ Open your user menu by selecting your name in the sidebar, then select **Edit pr
 
 ## Update your personal info
 
-You can update your personal info by changing any of the following fields:
+You can update any of these fields on your profile page:
 
-* **Name**
-* **Email address** - this is the email address associated with your Loomio account, and where you will receive notifications from Loomio.
-* **Username** - your username is a name people can recognize and alert you using @mention. It can contain lower case letters, numbers, underscores, and internal hyphens.
-* **Introduction** - a few lines to tell others in your group something about you.
-* **Location** - useful for distributed or remote groups so people can get an idea of where you are located.
+- **Name**
+- **Email address** — the address associated with your Loomio account, where Loomio sends your notifications.
+- **Username** — the name people use to alert you with an `@mention`. It can contain lowercase letters, numbers, underscores, and internal hyphens.
+- **Introduction** — a few lines to tell others in your group about yourself.
+- **Location** — helpful for remote or distributed groups so people know where you are based.
 
 ![](user_profile.png)
 
 <!-- translation-section: uploading-a-profile-photo -->
 
 ## Uploading a profile photo
-When you first create a Loomio account, your initials will be the default image associated with your profile. You can upload a profile photo by clicking on your picture on the profile page. 
+
+When you create a Loomio account, your initials appear as your default profile picture. To upload a photo, select your picture on the profile page.
 
 ![](profile_photo.png)
 
@@ -37,31 +38,38 @@ When you first create a Loomio account, your initials will be the default image 
 
 ## Language
 
-Loomio will detect your browser’s language settings, but you can manually set your preferred language from the available options on the profile page.
+Loomio detects your browser's language by default, or you can select a preferred language on your profile page. For interface and content translation options, see [Languages and Translation](../translation).
 
 <!-- translation-section: time-zone -->
 
 ## Time zone
 
-Time poll options use the time zone saved in your profile. Enable **Autodetect time zone** to use the zone reported by your browser, or disable it and select your region under **Time zone**, then select **Update profile**.
+Time poll options use the time zone saved in your profile. Enable **Autodetect time zone** to use your browser's time zone, or disable it, select your region under **Time zone**, and select **Update profile**.
 
 <!-- translation-section: resetting-your-password -->
 
 ## Resetting your password
-You can change your password by visiting your profile page and clicking **Reset Password**.
+
+To change your password, open your profile page and select **Reset Password**.
 
 ![](reset_password.png#width-90)
+
+<!-- translation-section: passkeys -->
+
+## Passkeys
+
+You can add, name, and remove passkeys on your profile page to sign in with your device's fingerprint, face recognition, PIN, or security key. See [Sign in with a passkey](../signing_in#sign-in-with-a-passkey).
 
 <!-- translation-section: merge-accounts -->
 
 ## Merge accounts
 
-If you have two Loomio user accounts, you can merge them into a single account.
+If you have two Loomio accounts, you can combine them into one.
 
-See [Merge Accounts](../merge_accounts).
+See [Merge accounts](../merge_accounts).
 
 <!-- translation-section: deleting-your-account -->
 
 ## Deleting your account
 
-If you wish to delete your Loomio user account and leave any Loomio groups you are a member of, see [Deleting Your Loomio Account](../deleting_your_account).
+To permanently delete your Loomio account and leave your groups, see [Deleting your Loomio account](../deleting_your_account).

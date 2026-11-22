@@ -1,22 +1,22 @@
 ---
 title: Créer un groupe
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: 9993c79c7b1ea4ce
+  introduction: 9aa160f0bda0f4ef
   group-details: 1662ffc8c220160d
-  group-name: 06ea9ea10a3ef5c7
-  group-handle: 3944ee5df242f18c
-  group-description: 27a23412360486dd
+  group-name: 841247d187364bda
+  group-handle: 83ac4da1245edd6f
+  group-description: 1ad9625ae6263979
 title_source: c5a16dbe0863ecd7
 title_generated: 889aacd702b287dd
 ---
@@ -25,9 +25,9 @@ title_generated: 889aacd702b287dd
 
 # Créer un nouveau groupe
 
-Si vous découvrez Loomio, vous pouvez créer un groupe à tout moment avec un essai gratuit depuis le [site web de Loomio](https://www.loomio.com/). Si vous utilisez déjà Loomio et souhaitez créer un nouveau groupe pour une autre organisation ou un autre usage, vous pouvez le faire depuis le menu latéral : cliquez sur **Nouveau groupe**.
+Si vous découvrez Loomio, vous pouvez créer un groupe avec un essai gratuit depuis le [site web de Loomio](https://www.loomio.com/). Si vous utilisez déjà Loomio et souhaitez créer un autre groupe, sélectionnez **Nouveau groupe** dans la barre latérale.
 
-Pour de nombreuses organisations, un seul groupe Loomio suffit. Vous pouvez créer autant de sous-groupes que nécessaire au sein du groupe. Consultez la page [Sous-groupes](/en/user_manual/groups/subgroups/) pour en savoir plus.
+La plupart des organisations n’ont besoin que d’un seul groupe parent, avec autant de [sous-groupes](/en/user_manual/groups/subgroups) que nécessaire à l’intérieur.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Pour de nombreuses organisations, un seul groupe Loomio suffit. Vous pouvez cré
 
 ### Nom du groupe
 
-Saisissez le nom de votre groupe. Privilégiez un nom court et concis.
+Saisissez un nom court et clair pour votre groupe.
 
 <!-- translation-section: group-handle -->
 
 ### Identifiant du groupe
 
-Un identifiant est automatiquement attribué à votre groupe. Cet identifiant est utilisé dans l’URL et l’adresse e-mail du groupe, par exemple **loomio.com/your-group-handle** et **your-group-handle@loomio.com**.
+Loomio attribue automatiquement un identifiant à votre groupe à partir de son nom. Cet identifiant est utilisé dans l’URL et l’adresse e-mail du groupe, par exemple `loomio.com/your-group-handle` et `your-group-handle@loomio.com`.
 
-Vous pouvez modifier cet identifiant lors de la création du groupe, puis dans les paramètres du groupe. Lorsque vous le modifiez, les liens et les adresses e-mail qui utilisent l’ancien identifiant continuent de fonctionner. Loomio conserve jusqu’à trois anciens identifiants ; au-delà, le plus ancien expire.
+Vous pouvez modifier cet identifiant lors de la création du groupe ou plus tard dans les paramètres du groupe. Lorsque vous le modifiez, les liens et les adresses e-mail qui utilisent l’ancien identifiant continuent de fonctionner. Loomio conserve jusqu’à trois anciens identifiants ; au-delà, le plus ancien expire.
 
 <!-- translation-section: group-description -->
 
 ### Description du groupe
 
-Cette courte description s’affichera en haut du tableau de bord pour fournir aux nouveaux membres le contexte nécessaire.
+Ajoutez une courte description qui s’affichera en haut de la page du groupe pour fournir du contexte aux nouveaux membres.
 
-**Lorsque vous cliquez sur « Créer un groupe », votre nouveau groupe est automatiquement créé !**
-
----
+Choisissez un [paramètre de confidentialité](/en/user_manual/groups/settings/privacy) et sélectionnez **Créer un groupe** pour créer le groupe. Vous devenez automatiquement le premier administrateur du groupe et pouvez modifier ces informations plus tard dans les paramètres du groupe.

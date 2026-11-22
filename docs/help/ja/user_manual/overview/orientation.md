@@ -1,28 +1,28 @@
 ---
 title: クイックツアー
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 2dd1c6165086df1d
-  group-page: c3ae1c6e2c785f8e
-  tabs: f26884773ad9427f
+  introduction: d4659fdd2080dd0f
+  group-page: 1022644a712536f0
+  tabs: 9e7c454daab7226b
   sidebar: 859d685843b53b72
-  user-settings: '09404ab82b2190f6'
-  notifications: 0d93711d493b4d44
+  user-settings: b15947baa4d823dd
+  notifications: d6b349d3a430ce44
   what-to-do-next: bd778b745000029e
-  mobile-navigation: bdad9a9889be368f
+  mobile-navigation: ead7f85b6b4ead08
 title_source: c41a33370cd580dd
 title_generated: 3c52848186e9f407
 ---
@@ -31,13 +31,13 @@ title_generated: 3c52848186e9f407
 
 # クイックツアー
 
-このページでは、Loomioの画面の主な構成と、自分に関係する活動を確認できる場所を紹介します。
+このページでは、Loomioの主な構成と、自分に関係する活動を確認できる場所を紹介します。
 
 <!-- translation-section: group-page -->
 
 ## グループページ
 
-グループのホームページにはグループの紹介があり、グループの活動にアクセスできます。
+グループのホームページにはグループの説明があり、グループの活動へのリンクが表示されます。
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ title_generated: 3c52848186e9f407
 
 ### タブ
 
-グループの説明の下にあるタブから、次の内容にアクセスできます。
+グループの説明の下にあるタブには、次の内容が表示されます。
 
-**議論** - グループのディスカッションのスレッドと最近の活動です。
-
-**アンケート** - グループで実施中のアンケートの一覧です。
-
-**メンバー** - グループに所属する人々です。
-
-**ファイル** - グループ内の各所に添付された文書やその他のファイルです。このタブには、ディスカッションの背景説明、コメント、提案、アンケートに添付されたファイルがまとめられるため、添付場所を覚えていなくても文書を見つけられます。
+- **議論**: グループのディスカッションのスレッドと最近の活動です。
+- **アンケート**: グループ内の受付中および締め切り済みのアンケートです。
+- **メンバー**: グループに所属する人々です。
+- **ファイル**: グループ全体のディスカッション、コメント、提案、アンケートに添付されたファイルです。共有された場所を覚えていなくても文書を見つけられます。
 
 検索、フィルター、タグ、ブックマーク、未読のディスカッションについては、[コンテンツを探す](/en/user_manual/overview/finding-content)を参照してください。
 
@@ -75,13 +72,13 @@ title_generated: 3c52848186e9f407
 
 ![](user_settings_sidebar.png)
 
-このメニューでは、プロフィールの編集、通知設定の変更、テーマの選択、アカウント設定の管理、サインアウトができます。
+このメニューでは、プロフィールの編集、通知設定の変更、テーマの選択、アカウントの管理、サインアウトができます。
 
 <!-- translation-section: notifications -->
 
 ## 通知
 
-デスクトップでは右上、モバイルでは下部のナビゲーションバーにあるベルボタンでアプリ内通知を開きます。まだ確認していない通知があると、バッジが表示されます。
+デスクトップでは右上、モバイルでは下部のナビゲーションバーにあるベルアイコンを選択すると、アプリ内通知が開きます。未読の通知があると、バッジが表示されます。
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ title_generated: 3c52848186e9f407
 
 ## モバイルのナビゲーション
 
-モバイルでは、下部のナビゲーションバーからサイドバー、ダッシュボード、通知にすばやくアクセスできます。ディスカッションを読んでいる間は、スレッドメニューから目次やスレッドの操作を開けます。
+モバイルでは、下部のナビゲーションバーからサイドバー、ダッシュボード、通知を開けます。ディスカッション内では、スレッドメニューから目次やスレッドの操作を開けます。
 
 <!-- translation-section: what-to-do-next -->
 

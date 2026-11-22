@@ -1,28 +1,30 @@
 ---
 sections:
-  introduction: ee344f56b2dc9dbf
+  introduction: d7b020cbed90ea35
   open-invite-people: 708d0f7d7fcd3b93
-  choose-an-audience: 833fa2de88eb6d25
-  check-your-recipients: 23a2bb967bd2db29
-  invite-by-name-or-email: e7a00ffd734581bf
-  guest-access: 73e0e5145ff39567
-  send-invitations-and-notifications: '00973fe68451e971'
-  manage-thread-members: 5c96aff070255494
+  choose-an-audience: 39117e2ca66c0b15
+  check-your-recipients: abfd43038a55b47c
+  invite-by-name-or-email: 2d5b006d863d7491
+  guest-access: 55ce2b30a1bf0ba7
+  send-invitations-and-notifications: 9a2b42b6479c7241
+  manage-thread-members: 180842248a05ca0a
 generated:
   introduction: 9881762666c82a6a
   open-invite-people: f12de88f2be8c86e
-  choose-an-audience: 832d82f723d201a6
-  check-your-recipients: 62029b8d2d1d87e4
-  invite-by-name-or-email: 62cc494618b90546
-  guest-access: ba7f657cea004424
-  send-invitations-and-notifications: c41be7a84bef0d71
-  manage-thread-members: a2bb4a0ec2ee7131
+  choose-an-audience: 88dbaa09ac374ef5
+  check-your-recipients: f53f0dab44ee566b
+  invite-by-name-or-email: 0b15df2524913501
+  guest-access: a696e45bc8fa0c73
+  send-invitations-and-notifications: cb986b8cb54b5eea
+  manage-thread-members: c57c19335c98ab11
 title: Emberek meghívása
 title_source: b926eb8921d85971
 title_generated: cf71499adce945c9
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/inviting_people/index.md
 ---
 
 <!-- translation-section: introduction -->
@@ -43,7 +45,7 @@ Válaszd ki a **Hívj meg embereket** lehetőséget a szál jobb oldali oldalsá
 
 ## Válaszd ki a címzettek körét
 
-Kattints az üres **Személyek keresése vagy meghívása** mezőre, hogy lásd az elérhető címzetti köröket. A javaslatok között szerepelnek:
+Kattints az üres **Személyek keresése vagy meghívása** mezőre az elérhető csoportok és csatornák megjelenítéséhez:
 
 - a csoport, amelyhez a beszélgetés tartozik
 - egy csoport **Küldöttei**, ha vannak [delegált szavazói](/en/user_manual/groups/delegated_voters)
@@ -58,9 +60,9 @@ Válaszd ki a csoportod nevét, hogy értesítsd a tagjait a beszélgetésről. 
 
 ### Hívj meg egy alcsoportot vagy a szülőcsoportot
 
-Ha egy másik csoportot választasz ki, meghívod annak tagjait ebbe a beszélgetésbe. Aki nem tagja a beszélgetés saját csoportjának, vendégként kerül be: olvashatja a szálat és részt vehet benne anélkül, hogy csatlakozna a csoporthoz, vagy hozzáférést kapna annak más privát beszélgetéseihez.
+Ha egy másik csoportot választasz ki, meghívod annak tagjait ebbe a beszélgetésbe. Aki nem tagja a beszélgetés saját csoportjának, vendégként csatlakozik: olvashatja a szálat és részt vehet benne anélkül, hogy csatlakozna a csoporthoz, vagy látná annak más privát beszélgetéseit.
 
-Például a **Bottle Trial Board** alcsoport meghívhatja a szülőcsoportját, az **Oatmilk Cooperative** csoportot, hogy megbeszéljék a palackok kipróbálását. A szövetkezet azon tagjai, akik nem tagjai a testületnek, vendégként csatlakoznak a beszélgetéshez. Elolvashatják és hozzászólhatnak anélkül, hogy csatlakoznának a testülethez, vagy hozzáférést kapnának annak más privát beszélgetéseihez.
+Például a **Bottle Trial Board** alcsoport meghívhatja a szülőcsoportját, az **Oatmilk Cooperative** csoportot, hogy megbeszéljék a palackok kipróbálását. A szövetkezet azon tagjai, akik nem tagjai a testületnek, csak az adott szálhoz csatlakoznak vendégként.
 
 ![Az Oatmilk Cooperative szülőcsoport kiválasztva egy Bottle Trial Board-beszélgetés meghívójának címzettjeként, a címzettek számával és egy üzenettel, amely mindenkit a terv áttekintésére kér](thread_invite_parent_group.png)
 
@@ -76,7 +78,7 @@ Válassz ki egy csatlakoztatott csevegőszobát, hogy a csevegőbotján kereszt�
 
 ## Ellenőrizd, kik szerepelnek a címzettek között
 
-A címzettek körének kiválasztása után ellenőrizd a címzettek számát a mező alatt. Kattints a címzetti kör nevére, hogy kibontsd az egyes személyek listáját, majd válaszd ki a **×** jelet azok mellett, akiket ki szeretnél hagyni ebből a meghívóból. Ezzel nem távolítod el őket a csoportjukból, és nem veszed el a meglévő hozzáférésüket.
+Egy csoport vagy csatorna kiválasztása után ellenőrizd a címzettek számát a mező alatt. Kattints a csoport nevére, hogy kibontsd az egyes személyek listáját, majd válaszd ki a **×** jelet azok mellett, akiket ki szeretnél hagyni. Ezzel nem távolítod el őket a csoportjukból, és nem veszed el a meglévő hozzáférésüket.
 
 ![A szülőcsoport címzetti köre Samira Patel és Alex Morgan nevére kibontva, mindkét név mellett eltávolítási lehetőséggel](thread_invite_expand.png)
 
@@ -84,7 +86,7 @@ A címzettek körének kiválasztása után ellenőrizd a címzettek számát a 
 
 ## Hívj meg embereket név vagy e-mail-cím alapján
 
-Írd be egy személy nevét, és válaszd ki a javaslatok közül, vagy adj meg egy e-mail-címet egy új személy meghívásához. Ugyanabban a meghívóban több embert is megadhatsz.
+Írd be egy személy nevét, és válaszd ki a listából, vagy adj meg egy e-mail-címet egy új személy meghívásához. Ugyanabban a meghívóban több embert is megadhatsz.
 
 ![E-mail-cím alapján kiválasztott vendég a szál tagjainak kezelésénél](invite_guest.png)
 
@@ -92,9 +94,9 @@ A címzettek körének kiválasztása után ellenőrizd a címzettek számát a 
 
 ## Mit tehetnek a vendégek
 
-A vendégek elolvashatják a beszélgetést, beleértve a korábbi hozzászólásokat is, és hozzászólásokat, valamint válaszokat írhatnak. Ha meghívsz valakit egy szálba, attól még nem válik csoporttaggá, és nem kap hozzáférést a csoport más privát beszélgetéseihez.
+A vendégek elolvashatják a szálat, beleértve a korábbi hozzászólásokat is, és hozzászólásokat, valamint válaszokat írhatnak. Ha meghívsz valakit egy szálba, attól még nem válik csoporttaggá, és nem kap hozzáférést a csoport más privát beszélgetéseihez.
 
-A vendégek szavazhatnak a szál azon szavazásain, amelyeknél a **Bárki a témában** beállítás érvényes. A **Csak kiválasztott személyek** beállítású szavazásokhoz külön add hozzá őket a [Szavazók kezelése](/en/user_manual/polls/manage_voters) felületen.
+A vendégek szavazhatnak azokon a szavazásokon, amelyeknél a **Bárki a témában** beállítás érvényes. A **Csak kiválasztott személyek** beállítású szavazásokhoz külön add hozzá őket a [Szavazók kezelése](/en/user_manual/polls/manage_voters) felületen.
 
 A csoportadminok akkor hívhatnak meg vendégeket, ha a csoport előfizetési csomagja támogatja a vendéghozzáférést. A csoporttagok is meghívhatnak vendégeket, ha a csoport ezt engedélyezi. Lásd: [Csoportjogosultságok](/en/user_manual/groups/settings/permissions).
 
@@ -102,16 +104,16 @@ A csoportadminok akkor hívhatnak meg vendégeket, ha a csoport előfizetési cs
 
 ## Küldj meghívókat és értesítéseket
 
-Ha szeretnél, írj egy üzenetet arról, miért hívod meg az embereket, majd válaszd ki a **Meghívás vagy értesítés** lehetőséget. Az új személyek meghívót kapnak a szálhoz; akiknek már van hozzáférésük, újabb értesítést kapnak az üzeneteddel.
+Ha szeretnél, írj egy üzenetet arról, miért hívod meg az embereket, majd válaszd ki a **Meghívás vagy értesítés** lehetőséget. Az új személyek meghívót kapnak; akiknek már van hozzáférésük, értesítést kapnak az üzeneteddel.
 
-A címzettek értesítést kapnak a Loomióban. Az e-mailes és pushértesítések kézbesítése az [értesítési beállításaiktól](/en/user_manual/users/email_settings) függ. A meghívás nem állítja be, hogy minden további hozzászólásról e-mailt kapjanak; maguk választhatják ki a szál értesítési beállítását.
+A címzettek értesítést kapnak a Loomióban, az e-mailes vagy pushértesítések kézbesítése pedig az [értesítési beállításaiktól](/en/user_manual/users/email_settings) függ. A meghívás nem állítja be, hogy minden további hozzászólásról e-mailt kapjanak; maguk választhatják ki a szál értesítési beállítását.
 
-Nyisd meg az **Értesített** lehetőséget a szál oldalsávjában, hogy lásd, ki kapott értesítést, illetve elolvasta-e az értesítést vagy megnyitotta-e az e-mailt, ha ez az információ rendelkezésre áll. A **Látta** azt mutatja, ki nyitotta meg a beszélgetést. Lásd: [Értesítések és tagok](/en/user_manual/discussions/using_discussions#notifications-and-members).
+Nyisd meg az **Értesített** lehetőséget a szál oldalsávjában, hogy lásd, ki kapott értesítést, illetve elolvasták-e vagy megnyitották-e az egyes értesítéseket, ha ez az információ rendelkezésre áll. A **Látta** azt mutatja, ki nyitotta meg a szálat. Lásd: [Értesítések és tagok](/en/user_manual/discussions/using_discussions#notifications-and-members).
 
 <!-- translation-section: manage-thread-members -->
 
 ## Keress meg vagy távolíts el egy száltagot
 
-A **Személyek keresése vagy meghívása** mező a szálban már részt vevő emberek listáját is szűri. Töröld a mező tartalmát a lista újbóli megjelenítéséhez, és a hosszabb listák böngészéséhez használd a lapozókat. A címzettek kiválasztásakor a lista helyén a meghívó üzenete jelenik meg, amíg el nem küldöd a meghívót, vagy nem törlöd a kijelölést.
+A **Személyek keresése vagy meghívása** mezővel szűrheted a szál jelenlegi tagjainak listáját. Töröld a mező tartalmát a teljes lista újbóli megjelenítéséhez, és a hosszabb listák böngészéséhez használd a lapozókat. A címzettek kiválasztásakor a taglista helyén ideiglenesen a meghívó üzenete jelenik meg, amíg el nem küldöd a meghívót, vagy nem törlöd a kijelölést.
 
-A száladminok és a csoportadminok a vendég neve melletti hárompontos menüből (**⋯**) távolíthatják el a vendéget: válaszd ki az **Eltávolítás a beszélgetésből** lehetőséget. A csoporttagok a csoporttagságuk révén megtartják a hozzáférésüket.
+A száladminok és a csoportadminok úgy távolíthatnak el egy vendéget, hogy megnyitják a neve melletti hárompontos menüt (**⋯**), és kiválasztják az **Eltávolítás a beszélgetésből** lehetőséget. A csoporttagok a csoporttagságuk révén megtartják a hozzáférésüket.

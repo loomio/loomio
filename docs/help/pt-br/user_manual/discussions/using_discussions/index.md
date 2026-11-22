@@ -1,48 +1,48 @@
 ---
 title: Como usar as discussões
-source_revision: c0b8157d7b7f439e0b489492fae48a55870c8401
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/using_discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: fe8ab54791a49e01
-  thread-anatomy: fca9ec9af6718a99
-  discussion-context: ebefd7274a307dd0
-  notify-people-about-context-changes: 3fe9320d33fff8f6
-  navigation: c0ccc79744ae2c33
-  notifications-and-members: ac51f2bbe3642155
-  email-notifications-for-this-thread: 69076a17d7457ba0
-  invite-people: 12ac7562e5c561ac
-  seen-by: 1d0bfd812ca11782
-  notified: 6139bdcaae32a1db
-  actions: c015c12999c5be2f
-  print: 8fac34ad532e8cb5
-  markdown: c6434ed486db8be4
-  thread-settings-and-display: 175b9e93cfc4f736
-  pin-or-unpin-a-thread: 1e17228e5de01a1e
-  move-a-thread: 026a0e786deda944
-  lock-or-unlock-a-thread: 0bfd9a3e4f9b778e
-  delete-a-thread: 9b4c6437ff8102eb
+  introduction: f04bfcfd5d767c24
+  thread-anatomy: 8c8f6393917dc4e4
+  discussion-context: 82cfa27c1c3e6161
+  notify-people-about-context-changes: 89165c012a1a710e
+  navigation: e9cbf404a9e80417
+  notifications-and-members: 21bb3b5d392c31c2
+  email-notifications-for-this-thread: 3815be85f7e40239
+  invite-people: 4759f5db4b8b6c31
+  seen-by: 881b42cd1a2fed4d
+  notified: cdfc025813eb6d6b
+  actions: 2a239569629d46a9
+  print: b626084908f85a8c
+  markdown: f6468648c2fd6b91
+  thread-settings-and-display: 9e1723af3ef1c96f
+  pin-or-unpin-a-thread: 25265a99d3883d8f
+  move-a-thread: 4d7231526110d371
+  lock-or-unlock-a-thread: 5702025c2201f41f
+  delete-a-thread: afd0742cbbb13eea
 generated:
-  introduction: 0fa2447325469ee1
-  thread-anatomy: 0daa9445be9002af
-  discussion-context: 48a384da70278f8a
-  notify-people-about-context-changes: caefa87108ef5318
-  navigation: 628f6f18d2494ad0
-  notifications-and-members: 2de36de88364451b
-  email-notifications-for-this-thread: cf7d475299a877e0
-  invite-people: dcd22869f7a31c57
-  seen-by: 839a2ae64a956eb8
-  notified: 36804139e906d46d
-  actions: 299b467b99d9605d
-  print: 04b6a7b4cbcfc955
-  markdown: dbf2601cd0fe1ca6
-  thread-settings-and-display: 689564700a3d06f6
-  pin-or-unpin-a-thread: 2be1f71e8e31ba5e
-  move-a-thread: da6cc7b681f22d7d
-  lock-or-unlock-a-thread: 522680737dbcc17a
-  delete-a-thread: d1e86ae44674198e
+  introduction: 9062d3de036b73ed
+  thread-anatomy: c7e70483aa17b2ab
+  discussion-context: c5c1f618bea18fe7
+  notify-people-about-context-changes: b2334790d89af71e
+  navigation: '09e1bd8b6f775448'
+  notifications-and-members: 1133aa00ec6df1f9
+  email-notifications-for-this-thread: 616f508e686e6b35
+  invite-people: afc462e6dca01fe5
+  seen-by: 58e3f21cc776029e
+  notified: dbe006404d0c4638
+  actions: e70bb6a719a5da51
+  print: 3b5d2ab46518ef66
+  markdown: 00d17dde8c3e6a7d
+  thread-settings-and-display: 6c7527977690408c
+  pin-or-unpin-a-thread: f52dbf1b6d70658f
+  move-a-thread: 6a9476386781f9cc
+  lock-or-unlock-a-thread: 2b4e6ad7d191ba1a
+  delete-a-thread: e481f8a4104cfa81
 title_source: 99e2d1eb313f35c4
 title_generated: df7c7d68c5161ede
 needs_review:
@@ -53,7 +53,7 @@ needs_review:
 
 # Como usar as conversas
 
-Uma discussão reúne seu contexto, comentários, decisões e conclusões em uma única conversa. Esta página explica como participar de uma conversa e usar sua navegação e suas ações.
+Uma discussão reúne seu contexto, comentários, enquetes e conclusões em uma única conversa. Esta página explica como participar de uma conversa e usar sua navegação, suas configurações e suas ações.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -63,47 +63,26 @@ Uma conversa típica tem esta aparência:
 
 ![](thread_navigation.png)
 
-A partir do topo da página, uma conversa contém:
+As principais partes de uma conversa são:
 
-**Nome do grupo** - No canto superior esquerdo da página da discussão está o nome do grupo ou subgrupo ao qual a discussão pertence. Clique nesse nome para voltar à página do grupo.
-
-**Acesso à discussão** - O ícone de acesso no canto superior direito abre as configurações de acesso da discussão. Uma discussão de grupo está disponível para os membros do grupo e para qualquer pessoa convidada especificamente para ela, conforme as configurações de privacidade do grupo.
-
-**Título da discussão** - O nome da discussão.
-
-**Categorização por tags** - A discussão pode ter uma ou mais tags de categoria. Usar tags simples ajuda as pessoas a encontrar discussões semelhantes com mais facilidade.
-
-**Autor da discussão** - O nome e o avatar da pessoa que iniciou a discussão, exibidos abaixo do título.
-
-**Data** - Passe o cursor sobre a data para ver a data e a hora completas do início da discussão.
-
-**Visto por** - Na barra lateral direita, mostra quem leu a discussão e quando.
-
-**Notificado** - Na barra lateral direita, mostra quem recebeu uma notificação sobre a discussão e se cada notificação foi lida ou se o email correspondente foi aberto.
-
-**Contexto da discussão** - Conteúdo que apresenta a discussão.
-
-**Ferramentas de interação e administração da discussão** - O contexto da discussão tem controles para reagir a ele e editá-lo. A barra lateral direita contém ações de notificação, participação e administração.
-
-**Comentários** - Os comentários são exibidos abaixo do contexto da discussão. O nome, o avatar e o horário da publicação mostram quem escreveu cada comentário e quando. Cada comentário tem ferramentas de interação e administração.
-
-**Navegação, notificações e ações** - A barra lateral direita contém atalhos para atividades e marcos, informações sobre notificações e participantes, e as ações da conversa disponíveis para você.
+- **Nome do grupo** — Link para o grupo ou subgrupo ao qual a conversa pertence.
+- **Configurações de acesso** — Mostram quem pode ver a conversa. Uma discussão de grupo fica visível para os membros do grupo e para qualquer pessoa convidada para ela, conforme as configurações de privacidade do grupo.
+- **Categorização por tags** — Tags abaixo do título que agrupam discussões relacionadas.
+- **Contexto da discussão** — A publicação inicial no topo da conversa, com controles para reagir ou editar.
+- **Comentários e enquetes** — Respostas, enquetes e conclusões publicadas abaixo do contexto, cada uma com seus próprios controles de interação e ações.
+- **Barra lateral direita** — Atalhos para marcos (**Pular para**), configurações de notificações, listas **Visto por** e **Notificado**, e ações da conversa.
 
 <!-- translation-section: discussion-context -->
 
 ## Contexto da discussão
 
-O **contexto** da discussão fica sempre no topo da discussão. Use o contexto para apresentar a discussão ou decisão.
-
-Pense no seu grupo ao escrever o conteúdo do contexto da discussão. Seu objetivo é iniciar uma discussão, então considere como você pode motivar as pessoas a participar. Em geral, mantenha o contexto da discussão simples e claro.
+O **contexto** fica no topo da conversa e apresenta a discussão ou decisão.
 
 ![](thread_context.png)
 
-Escreva o contexto ao iniciar ou editar uma discussão. Use **Editar** no ícone de lápis para editar uma discussão.
+Você escreve o contexto ao iniciar uma discussão e pode atualizá-lo com o ícone de lápis (**Editar**). À medida que a conversa avança, você pode atualizar o contexto com novas informações, uma pauta ou a conclusão final.
 
-À medida que a discussão avança, atualize seu contexto. Pense no contexto como um quadro branco na sua sala de reuniões, onde você pode escrever a pauta, as conclusões pretendidas e como planeja chegar a elas.
-
-Na parte inferior do painel de contexto há uma barra de formatação, onde você pode formatar o texto, anexar arquivos e imagens e incorporar um vídeo.
+A barra de formatação abaixo do campo de texto permite formatar o texto, anexar arquivos, inserir imagens e incorporar vídeos. Consulte [Formatar texto e anexar arquivos](/en/user_manual/discussions/formatting/).
 
 ![](thread_context_edit.png)
 
@@ -111,11 +90,11 @@ Na parte inferior do painel de contexto há uma barra de formatação, onde voc�
 
 ### Notificar pessoas sobre mudanças no contexto
 
-Ao editar o contexto da discussão, use **O que mudou?** para resumir a atualização e escolher quem deve receber uma notificação.
+Ao editar o contexto, use **O que mudou?** para resumir sua atualização e escolher quem notificar.
 
 ![Edição do contexto de uma discussão com um resumo das mudanças e os destinatários da notificação](../notifying_people/thread_editcontext.png)
 
-A conversa mostra que você editou o contexto. As pessoas que você notificar receberão seu resumo junto com a notificação.
+A conversa registra que você editou o contexto, e as pessoas que você notificar recebem seu resumo.
 
 ![Um item da conversa mostrando que o contexto da discussão foi editado](../notifying_people/thread_edit_comment.png)
 
@@ -123,31 +102,31 @@ A conversa mostra que você editou o contexto. As pessoas que você notificar re
 
 ## Navegação
 
-A seção **Pular para** da barra lateral direita ajuda você a navegar pela conversa:
+A seção **Pular para** na barra lateral direita ajuda você a navegar pela conversa:
 
-- **Iniciar** leva ao contexto da discussão
-- **Novo para você** aparece quando a conversa contém atividades que você ainda não leu
-- **Mais recente** aparece quando há atividades mais recentes além dos itens carregados no momento
-- os links de marcos levam diretamente a comentários importantes, enquetes e conclusões
-- **Fim** leva ao item mais recente da conversa
+- **Iniciar** leva ao contexto da discussão.
+- **Novo para você** aparece quando a conversa tem atividades não lidas.
+- **Mais recente** aparece quando há atividades mais recentes além dos itens carregados.
+- Os links de marcos levam diretamente a comentários importantes, enquetes e conclusões.
+- **Fim** leva ao item mais recente da conversa.
 
-Comentários que incluem um título H2 ou H3, enquetes e propostas são incluídos automaticamente como links de marcos. Selecione qualquer marco para ir diretamente até ele.
+Comentários com um título H2 ou H3, enquetes e propostas aparecem automaticamente como links de marcos. Selecione qualquer marco para ir diretamente até ele.
 
 ![](thread_timeline_1.png)
 
-Quando você adiciona um comentário, enquete, voto ou conclusão, o Loomio marca seu novo item como lido. Ele não aparecerá como algo novo para você revisar.
+Quando você publica um comentário, uma enquete, um voto ou uma conclusão, o Loomio marca seu próprio item como lido.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Notificações e membros
 
-A barra lateral direita controla suas notificações por email e mostra quem foi convidado, quem viu a conversa e quem foi notificado.
+A barra lateral direita controla suas notificações por email sobre a conversa e mostra quem foi convidado, quem viu a conversa e quem foi notificado.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### Notificações por email desta conversa
 
-Selecione a configuração atual de notificações para escolher se o Loomio enviará emails sobre todas as atividades, apenas sobre atividades que notificam você especificamente ou sobre nenhuma atividade. Receber emails sobre todas as atividades pode gerar muitas mensagens em uma conversa ativa.
+Selecione sua configuração atual de notificações para escolher se o Loomio enviará emails sobre todas as atividades, apenas sobre atividades que notificam você especificamente ou sobre nenhuma atividade. Escolher todas as atividades pode gerar muitos emails em uma conversa movimentada.
 
 ![Opção de receber email quando houver uma notificação selecionada na barra lateral da discussão](../notifying_people/thread_interact.png)
 
@@ -155,13 +134,13 @@ Selecione a configuração atual de notificações para escolher se o Loomio env
 
 ### Convidar pessoas
 
-Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou notificá-las sobre a discussão. Consulte [Convidar pessoas para uma discussão](/en/user_manual/discussions/inviting_people) para saber mais sobre grupos, grupos principais, convidados, salas de bate-papo e notificações de convite.
+Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou notificá-las sobre a conversa. Consulte [Convidar pessoas para uma discussão](/en/user_manual/discussions/inviting_people) para saber mais sobre grupos, subgrupos, grupos principais, convidados e salas de bate-papo.
 
 <!-- translation-section: seen-by -->
 
 ### Visto por
 
-**Visto por** mostra quem abriu a conversa e quando. Isso pode ajudar você a identificar pessoas que talvez ainda não tenham visto informações importantes.
+**Visto por** mostra quem abriu a conversa e quando. Use essa lista para verificar se as pessoas essenciais viram informações importantes.
 
 ![Visto por e Notificado na seção Membros da conversa](../notifying_people/thread_engagement.png)
 
@@ -171,7 +150,7 @@ Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou
 
 ### Notificado
 
-**Notificado** abre o histórico de notificações da discussão. Ele inclui convites, menções e respostas, mostrando quem foi notificado e se cada notificação foi lida, quando essa informação está disponível.
+**Notificado** abre o histórico de notificações da conversa, incluindo convites, menções e respostas. Ele mostra quem foi notificado e se cada notificação foi lida, quando essa informação está disponível.
 
 ![Histórico de notificações da discussão](../notifying_people/thread_notified.png)
 
@@ -181,7 +160,7 @@ Selecione **Convidar pessoas** na barra lateral direita para convidar pessoas ou
 
 ## Configurações da conversa
 
-Os admins da conversa e do grupo podem selecionar **Configurações de thread** para alterar a organização das respostas e configurar outras opções da discussão.
+Os admins da conversa e os admins do grupo podem selecionar **Configurações de thread** para controlar a organização das respostas e definir outras opções da discussão.
 
 ![](thread_display.png)
 
@@ -195,25 +174,25 @@ Escolha **Cronológico** para listar os itens na ordem em que foram publicados o
 
 ### Apenas uma enquete por vez
 
-Quando esta opção está marcada, os usuários não podem iniciar outra enquete até que a enquete atual seja encerrada. Esta opção fica desmarcada por padrão em novas conversas. As conversas iniciadas a partir de um modelo de discussão usam a configuração desse modelo.
+Quando esta opção está marcada, ninguém pode iniciar outra enquete até que a enquete atual seja encerrada. Esta opção fica desmarcada por padrão em novas conversas. As conversas iniciadas a partir de um modelo de discussão herdam a configuração desse modelo.
 
 ### Apenas admins podem adicionar anexos
 
-Ative esta configuração para permitir que apenas admins da conversa e do grupo adicionem novos arquivos e imagens inseridas no texto em toda a conversa, incluindo respostas a enquetes e respostas por email. Os anexos existentes continuam disponíveis, e os participantes ainda podem editar seu texto ou remover anexos.
+Ative esta configuração para permitir que apenas admins da conversa e admins do grupo adicionem novos arquivos e imagens inseridas no texto em toda a conversa, incluindo respostas a enquetes e respostas por email. Os anexos existentes continuam disponíveis, e os participantes ainda podem editar seu texto ou remover anexos.
 
-Os modelos de discussão e de enquete podem fornecer esta configuração para novas conversas. Consulte [Modelos de discussão](/en/user_manual/discussions/templates) e [Modelos de enquete](/en/user_manual/polls/poll_templates).
+Os modelos de discussão e de enquete podem definir esta configuração para novas conversas. Consulte [Modelos de discussão](/en/user_manual/discussions/templates) e [Modelos de enquete](/en/user_manual/polls/poll_templates).
 
 ### Limite de tamanho dos comentários
 
-Defina um número máximo de caracteres por comentário para manter as contribuições concisas. Deixe o campo em branco para não definir um limite. O limite se aplica a todas as pessoas, incluindo admins.
+Defina um número máximo de caracteres por comentário para manter as respostas concisas. Deixe o campo em branco para não definir um limite. O limite se aplica a todas as pessoas, incluindo admins do grupo e admins da conversa.
 
 <!-- translation-section: actions -->
 
 ## Ações
 
-A barra lateral direita contém ações para a conversa inteira. Algumas ações também estão disponíveis no menu de três pontos (**⋯**) ao lado de uma conversa na página do grupo.
+A barra lateral direita lista ações para a conversa inteira. Algumas ações também aparecem no menu de três pontos (**⋯**) ao lado de uma conversa na página do grupo.
 
-As ações exibidas dependem das suas permissões. Os admins do grupo podem gerenciar conversas, e as configurações do grupo podem permitir que os membros realizem algumas ações de gerenciamento. Veja [Permissões do grupo](/en/user_manual/groups/settings/permissions).
+As ações que você vê dependem das suas permissões. Os admins do grupo podem gerenciar conversas, e as configurações do grupo podem permitir que os membros usem algumas ações de gerenciamento. Consulte [Permissões do grupo](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -221,7 +200,7 @@ As ações exibidas dependem das suas permissões. Os admins do grupo podem gere
 
 ### Imprimir
 
-Selecione **Imprimir** para gerar uma página adequada para impressão. Use a caixa de diálogo de impressão do seu navegador para salvá-la como PDF.
+Selecione **Imprimir** para abrir uma visualização da conversa adequada para impressão. Use a caixa de diálogo de impressão do seu navegador para salvá-la como PDF.
 
 ![](thread_print_thread.png)
 
@@ -229,15 +208,13 @@ Selecione **Imprimir** para gerar uma página adequada para impressão. Use a ca
 
 ### Markdown
 
-Selecione **Markdown** para salvar a conversa completa como Markdown estruturado. Escolha **Copiar Markdown** para copiar o conteúdo para sua área de transferência ou **Baixar Markdown** para salvá-lo como um arquivo `.md`. Você pode usá-lo para atas de reunião, um documento, um arquivo de decisões, um assistente de IA ou outra ferramenta compatível com Markdown.
+Selecione **Markdown** para exportar a conversa como Markdown estruturado. Escolha **Copiar Markdown** para copiar o conteúdo para sua área de transferência ou **Baixar Markdown** para salvar um arquivo `.md` para atas de reunião, arquivos, documentos ou ferramentas de IA.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-O documento começa com um cabeçalho YAML que contém a chave da conversa, a URL original, o grupo, a data de criação, a data da última atividade e as tags. Use a URL para voltar à conversa no Loomio. Em seguida, inclui o contexto da discussão e todos os comentários, enquetes, votos e conclusões, na mesma ordem e com os mesmos níveis de aninhamento da visualização em conversas.
+A exportação começa com um cabeçalho YAML que lista a chave da conversa, a URL, o grupo, as datas e as tags. Em seguida, inclui o contexto da discussão e todos os comentários, enquetes, votos e conclusões, na ordem e com os níveis de aninhamento da conversa. Cada enquete aparece como uma seção, e os comentários, votos e conclusões aparecem como blocos de citação que mostram o autor, a data e a hora, o número do item e as reações.
 
-Cada enquete é uma seção. Comentários, votos e conclusões aparecem como citações, e as respostas aparecem como citações abaixo do item ao qual respondem. Isso mostra onde o texto de cada pessoa começa e termina. Cada citação começa com uma linha que informa a pessoa, quando ela publicou, o número do item na conversa e as reações. Votos e conclusões também são identificados como tais. A chave da conversa e o número do item identificam cada item no Loomio.
-
-O Loomio aplica as mesmas regras de visibilidade da conversa. Resultados e motivos dos votos que você não pode ver não são incluídos, e os eleitores não são identificados em enquetes anônimas. Se uma enquete aberta oculta os resultados até você votar, vote antes de exportar a conversa. **Markdown** e **Imprimir** ficam indisponíveis até você votar.
+O Loomio segue as regras de visibilidade da conversa. Resultados ocultos e motivos dos votos ocultos são omitidos, e os eleitores permanecem anônimos em enquetes anônimas. Se uma enquete aberta oculta os resultados até você votar, vote primeiro — **Markdown** e **Imprimir** ficam indisponíveis até você votar.
 
 Por exemplo, uma discussão com um comentário, reações, uma proposta, dois votos, uma resposta e uma conclusão produz este Markdown:
 
@@ -303,17 +280,17 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-Os títulos e rótulos usam o idioma que você selecionou. O conteúdo escrito pelos participantes permanece no idioma original.
+Os títulos e rótulos usam o idioma que você selecionou. O conteúdo dos participantes permanece no idioma original.
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
 ### Fixar ou desafixar uma conversa
 
-As conversas fixadas aparecem acima das outras conversas na página do grupo. Discussões de boas-vindas, notícias e comunicados são usos comuns de conversas fixadas.
+As conversas fixadas permanecem no topo da página do grupo. Os grupos costumam fixar discussões de boas-vindas, notícias e comunicados.
 
 Abra o menu de três pontos (**⋯**) ao lado da conversa na página do grupo e selecione **Afixar conversa**. As conversas fixadas são ordenadas pelo momento em que foram fixadas. Para alterar a ordem, desafixe e fixe novamente.
 
-Selecione **Desafixar conversa** para que a conversa volte à ordem baseada na atividade.
+Selecione **Desafixar conversa** para que a conversa volte à ordem normal de atividade.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -321,26 +298,27 @@ Selecione **Desafixar conversa** para que a conversa volte à ordem baseada na a
 
 ### Mover uma conversa
 
-Selecione **Mover tópico** para mover uma conversa para outro grupo, subgrupo ou transformá-la em uma conversa direta. Ela ficará visível para os membros do grupo de destino e para qualquer pessoa especificamente convidada para ela.
+Selecione **Mover tópico** para mover uma conversa para outro grupo, um subgrupo ou transformá-la em uma conversa direta. Ela ficará visível para os membros do grupo de destino e para qualquer pessoa convidada para ela.
 
-Ao mover uma conversa, o Loomio mostra quantas pessoas perderiam a permissão para participar. Você pode mantê-las como convidadas sem enviar notificações de convite. Para mover uma conversa para outro grupo ou subgrupo, isso exige permissão para convidar pessoas como convidadas no grupo de destino; quem já participa como convidado mantém seu acesso.
+Antes de mover, o Loomio mostra quantas pessoas perderiam o acesso. Você pode escolher mantê-las como convidadas sem enviar notificações:
 
-Ao transformar uma conversa em uma conversa direta, as pessoas que já participaram mantêm o acesso automaticamente. Selecionar a opção de manter convidados também mantém o acesso dos demais membros e convidados atuais. Você e a pessoa que criou a conversa se tornam admins da conversa.
+- **Mover para outro grupo ou subgrupo:** Manter pessoas como convidadas exige permissão para convidar pessoas como convidadas no grupo de destino. Os convidados atuais mantêm o acesso.
+- **Transformar em uma conversa direta:** As pessoas que já participaram mantêm o acesso automaticamente. Escolher a opção de manter convidados também mantém o acesso dos demais membros e convidados atuais. Você e a pessoa que criou a conversa se tornam admins da conversa.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
 >Comece um rascunho como uma discussão em uma conversa direta ou em um subgrupo privado e mova-o para o grupo quando estiver pronto.
 
-Para mover atividades selecionadas em vez da conversa inteira, consulte [Mover itens entre conversas](/en/user_manual/discussions/moving_items/).
+Para mover itens específicos em vez da conversa inteira, consulte [Mover itens entre conversas](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Bloquear ou desbloquear uma conversa
 
-Bloqueie uma conversa para arquivá-la como está. Ninguém pode adicionar conteúdo a uma conversa bloqueada, alterá-la ou usá-la para convidar ou notificar pessoas. Você só pode bloquear uma conversa depois que suas enquetes ativas forem encerradas.
+Bloqueie uma conversa para arquivá-la como está. Ninguém pode publicar, editar ou convidar pessoas em uma conversa bloqueada. Todas as enquetes ativas precisam ser encerradas antes que você possa bloquear a conversa.
 
-Selecione **Bloquear tópico** em **Ações**. As conversas bloqueadas são removidas da lista de discussões abertas e marcadas com a tag **Bloqueado**.
+Selecione **Bloquear tópico** em **Ações**. As conversas bloqueadas saem da lista de discussões abertas e recebem a tag **Bloqueado**.
 
 Para encontrar uma conversa bloqueada, abra o filtro de discussões na página do grupo e selecione **Bloqueado**. Abra a conversa e selecione **Desbloquear tópico** para permitir comentários e alterações novamente.
 
@@ -348,8 +326,8 @@ Para encontrar uma conversa bloqueada, abra o filtro de discussões na página d
 
 ### Apagar uma conversa
 
-Apagar uma conversa a remove permanentemente e não pode ser desfeito. Bloqueie a conversa se você puder precisar dela novamente.
+Apagar uma conversa a remove permanentemente e não pode ser desfeito. Bloqueie a conversa se você puder precisar dela mais tarde.
 
-Selecione **Apagar conversa** e confirme a exclusão.
+Selecione **Apagar conversa** e confirme.
 
 ![](../discussion_management/thread_delete.png)

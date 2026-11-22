@@ -1,27 +1,31 @@
 <!-- translation-section: introduction -->
 
 # Mattermost integration
-_Connecting your Loomio group notifications to your Mattermost team chat._
 
-Loomio can send notifications into your Mattermost channels when new discussions, proposals, comments, votes, and outcomes occur. 
+Loomio can send notifications to your Mattermost channels when new discussions, polls, comments, votes, and outcomes happen.
 
 ---
 
-Start from your Mattermost team in your browser. Then open the Integrations settings page.
-![](mm1.png)
+1. Open your Mattermost team in a browser and go to **Integrations**.
 
-Click "Incoming Webhooks"
-![](mm2.png)
+   ![](mm1.png)
 
-Then click  "Add Incoming Webhook"
-![](mm3.png)
+2. Select **Incoming Webhooks**.
 
-Give it a simple name, select the channel for notifications to appear within, and click Save
-![](mm4.png)
+   ![](mm2.png)
 
-Copy the Webhook URL to your clipboard, you're going to need it the next step.
-![](mm5.png)
+3. Select **Add Incoming Webhook**.
 
-Make sure you have your Webhook URL in your clipboard and follow the link below.
+   ![](mm3.png)
+
+4. Enter a name, choose the channel where you want notifications to appear, and select **Save**.
+
+   ![](mm4.png)
+
+5. Copy the webhook URL.
+
+   ![](mm5.png)
+
+Now that you have a webhook URL, finish connecting it in Loomio:
 
 [Set up a chat integration in Loomio](../chatbots/#set-up-a-chat-integration)

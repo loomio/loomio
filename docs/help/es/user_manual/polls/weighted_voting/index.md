@@ -1,51 +1,51 @@
 ---
 sections:
-  introduction: d1b37bf68148b2a5
-  set-members-vote-weights: 47b8d7c9222794d8
-  use-weighted-voting-in-a-poll: 1cc0b5130642217b
-  results: a0eeeda5a9e70a97
+  introduction: 566ce8dda668a638
+  set-members-vote-weights: 2a3d29ebb9840017
+  use-weighted-voting-in-a-poll: feddef738da4567d
+  results: ab86e178359702a0
 generated:
-  introduction: 9b344dddaa25f823
-  set-members-vote-weights: 861ad5297b83ee45
-  use-weighted-voting-in-a-poll: eef9afc63045ec13
+  introduction: 690e7cad0a0a7613
+  set-members-vote-weights: 9d1a5999e6499888
+  use-weighted-voting-in-a-poll: 3cf43d0454fed8f6
   results: caa4eeddcb2da04e
 title: Votación ponderada
 title_source: 0b971991dfcacbab
 title_generated: 9c00eabb8b2b3ef6
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/weighted_voting/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 ---
 
 <!-- translation-section: introduction -->
 
 # Votación ponderada
 
-La votación ponderada permite que algunos votos cuenten más que otros. Cada votante tiene un peso del voto. Por ejemplo:
+La votación ponderada permite que algunos votos cuenten más que otros al asignar a cada votante un peso del voto. Por ejemplo:
 
 - Una comunidad de viviendas da un voto a cada propiedad. Un miembro que representa a tres propiedades tiene un peso del voto de `3`.
-- Una cooperativa de trabajo concede el derecho a votar tras un período determinado como miembro. Los miembros más recientes reciben un peso del voto de `0`, por lo que pueden contribuir a la discusión y conocer el proceso de votación sin que sus votos afecten al resultado.
+- Una cooperativa de trabajo concede el derecho a votar tras un período determinado como miembro. Los miembros más recientes reciben un peso del voto de `0`, por lo que pueden participar en la discusión y probar la votación sin afectar al resultado.
 - Una empresa da votos a sus accionistas según su participación en el capital. Alguien que posee el 12,5 % de las acciones tiene un peso del voto de `12.5`.
 
 <!-- translation-section: set-members-vote-weights -->
 
 ## Establecer los pesos del voto de los miembros
 
-Un admin del grupo puede abrir la página **Integrantes** del grupo y seleccionar **Editar ponderaciones de voto**. Introduce los pesos del voto y selecciona **Guardar ponderaciones de voto**. Los pesos del voto pueden ser `0` o más, con hasta tres decimales. Busca por nombre o correo electrónico para encontrar a alguien. Para dar a todos los miembros el mismo peso del voto, selecciona **Establecer todos los pesos de voto**.
+Un admin del grupo puede abrir la página **Integrantes** del grupo y seleccionar **Editar ponderaciones de voto**. Introduce los pesos del voto (`0` o más, con hasta tres decimales) y selecciona **Guardar ponderaciones de voto**. Puedes buscar por nombre o correo electrónico para encontrar a alguien, o seleccionar **Establecer todos los pesos de voto** para dar a todos los miembros el mismo peso del voto.
 
 ![Pesos del voto de los miembros del grupo](member-weights.png)
 
-El peso del voto de un miembro se copia en cada encuesta a la que se le añade. Cambiarlo después no modifica las encuestas que ya lo tienen.
+El peso del voto de un miembro se copia en cada encuesta cuando se le añade. Cambiarlo después no afecta a las encuestas existentes.
 
 <!-- translation-section: use-weighted-voting-in-a-poll -->
 
 ## Usar votación ponderada en una encuesta
 
-Abre **Más configuraciones** en el formulario de la encuesta y selecciona **Usar votación ponderada**. Puedes activar o desactivar la votación ponderada después de que se abra la votación. Al desactivarla, todos los pesos del voto de la encuesta pasan a ser `1` y se pierden los pesos del voto que hayas cambiado para esa encuesta.
+Abre **Más configuraciones** en el formulario de la encuesta y selecciona **Usar votación ponderada**. Puedes activar o desactivar la votación ponderada después de que se abra la votación. Al desactivarla, todos los pesos del voto de la encuesta pasan a ser `1` y se pierden los pesos del voto personalizados de esa encuesta.
 
-Si tu grupo usa votación ponderada para un proceso establecido, selecciona **Usar votación ponderada** en una [plantilla de encuesta](/en/user_manual/polls/poll_templates). Las encuestas iniciadas a partir de esa plantilla usan votación ponderada.
+Si tu grupo usa votación ponderada para un proceso habitual, activa **Usar votación ponderada** en una [plantilla de encuesta](/en/user_manual/polls/poll_templates). Las encuestas iniciadas a partir de esa plantilla usarán votación ponderada de forma predeterminada.
 
 ![El ajuste Usar votación ponderada en una encuesta](poll-setting.png)
 

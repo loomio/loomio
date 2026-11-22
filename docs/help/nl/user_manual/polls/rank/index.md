@@ -1,25 +1,25 @@
 ---
 title: Rang
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
-  introduction: 0c8d21348e26e4d5
-  when-to-use-rank: dbf653bafc20554e
+  introduction: 5b0b7326a95b7195
+  when-to-use-rank: e7014420be650d17
   example-rank-bottle-designs: 5f9a0811b04c699b
-  set-up-the-poll: f48d84f0f7086d87
-  vote: 23c55f6d5922447b
-  read-the-results: 5d0f96ddc3607466
+  set-up-the-poll: deffba20b8bf5b15
+  vote: 3d94888d715e5a0f
+  read-the-results: 4f610dbe07943a9c
   share-an-outcome: '0696775426d23128'
 title_source: a4130d7d2c3a137f
 title_generated: 7186e02bc731a8e5
@@ -29,7 +29,7 @@ title_generated: 7186e02bc731a8e5
 
 # Rangschikken
 
-Rangschikken bepaalt de gezamenlijke voorkeursvolgorde van de groep. Deelnemers zetten opties op volgorde van meest naar minst gewenst, en Loomio kent meer punten toe aan opties die hoger staan.
+Rangschikken bepaalt de gezamenlijke voorkeursvolgorde van de groep. Deelnemers zetten opties op volgorde van meest naar minst gewenst, en Loomio geeft meer punten aan opties die hoger staan.
 
 <!-- translation-section: when-to-use-rank -->
 
@@ -43,7 +43,7 @@ Gebruik Rangschikken wanneer de voorkeursvolgorde belangrijk is en je één geza
 - het kiezen van reserveopties naast een eerste keuze; of
 - het terugbrengen van een lange lijst tot een geordende shortlist.
 
-Rangschikken bepaalt de volgorde op basis van punten. Het is geen evenredige verkiezingsmethode. Gebruik een [STV-verkiezing](/en/user_manual/polls/stv/) om meerdere mensen te kiezen en daarbij verschillende groepen kiezers te vertegenwoordigen.
+Rangschikken bepaalt de volgorde op basis van punten, niet op basis van evenredige vertegenwoordiging. Gebruik een [STV-verkiezing](/en/user_manual/polls/stv/) om meerdere mensen te kiezen en daarbij verschillende groepen kiezers te vertegenwoordigen.
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Oatmilk Cooperative vraagt leden om vier flesontwerpen te rangschikken voor een 
 
 ## Stel de peiling in
 
-Geef aan wat de rangschikking zal bepalen en voeg de opties toe. Stel **Aantal keuzes** in om te bepalen hoeveel opties elke persoon mag rangschikken. Een eerste keuze krijgt de meeste punten, de volgende keuze krijgt één punt minder en opties die niet zijn gerangschikt krijgen geen punten.
+Geef aan wat de rangschikking zal bepalen en voeg de opties toe. Stel **Aantal keuzes** in om te bepalen hoeveel opties elke persoon kan rangschikken. Als kiezers bijvoorbeeld maximaal 3 opties kunnen rangschikken, krijgt hun eerste keuze 3 punten, hun tweede keuze 2 punten, hun derde keuze 1 punt en krijgen opties die niet zijn gerangschikt 0 punten.
 
 ![](form.png)
 
-Maak het rangschikken van alle opties verplicht als je een volledige volgorde nodig hebt. Sta minder keuzes toe als deelnemers mogelijk niet genoeg weten om alles te rangschikken. Door opties in willekeurige volgorde te tonen, kun je de invloed van hun oorspronkelijke volgorde verkleinen.
+Maak het rangschikken van alle opties verplicht als je een volledige volgorde nodig hebt. Sta minder keuzes toe als deelnemers mogelijk niet genoeg weten om alles te rangschikken. Door opties in willekeurige volgorde te tonen, help je voorkomen dat opties bovenaan de lijst een voordeel krijgen.
 
 <!-- translation-section: vote -->
 
 ## Stemmen
 
-Deelnemers slepen de opties naar hun voorkeursvolgorde, met nummer 1 als eerste keuze. Ze kunnen een reden toevoegen om de criteria achter hun rangschikking toe te lichten.
+Deelnemers slepen opties naar hun voorkeursvolgorde, met nummer 1 als eerste keuze. Ze kunnen een reden bij hun stem toevoegen om hun rangschikking toe te lichten.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Het resultaat combineert alle stembiljetten tot een gezamenlijke rangschikking o
 
 ![](results.png)
 
-In dit voorbeeld staat de **amberkleurige fles van 500 ml** op de eerste plaats, gevolgd door de **heldere fles van 500 ml** en de **amberkleurige fles van 750 ml**. De groep kan het voorkeursontwerp als eerste onderzoeken en de overige volgorde aanhouden als reeks alternatieven.
+In dit voorbeeld staat de **amberkleurige fles van 500 ml** op de eerste plaats, gevolgd door de **heldere fles van 500 ml** en de **amberkleurige fles van 750 ml**. De groep kan het hoogst gerangschikte ontwerp als eerste uitproberen en de rest in volgorde als reserveopties aanhouden.
 
-Een resultaat op basis van punten kan verschillende voorkeurspatronen verbergen die hetzelfde totaal opleveren. Bekijk afzonderlijke stembiljetten en redenen bij stemmen wanneer opties dicht bij elkaar liggen of het besluit grote gevolgen heeft.
+Verschillende stempatronen kunnen hetzelfde puntentotaal opleveren. Bekijk afzonderlijke stemmen en redenen bij stemmen wanneer opties dicht bij elkaar liggen of het besluit belangrijk is.
 
 <!-- translation-section: share-an-outcome -->
 

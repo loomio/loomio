@@ -2,9 +2,9 @@
 
 # Getting started
 
-Loomio is a discussion and decision making tool for collaborative organizations.
+Loomio is a discussion and decision-making tool for collaborative organizations.
 
-It enables you to bring people together to discuss topics, explore proposals and make decisions.
+It helps people discuss topics, explore proposals, and make decisions together.
 
 <div class="iframe-container">
 <iframe width="660" height="415" src="https://www.youtube-nocookie.com/embed/K8ZRNtlRvAI" title="Loomio in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -20,7 +20,7 @@ Loomio has three main parts: groups, discussions, and polls.
 
 ### Groups
 
-A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and provides access to its discussions, polls, members, and files.
+A group is a place for an organization, team, or community to work together. Its home page explains the group's purpose and links to its discussions, polls, members, and files.
 
 ![](orientation_group.png)
 
@@ -28,11 +28,11 @@ A group is a place for an organization, team, or community to work together. Its
 
 ### Discussions
 
-Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move the discussion towards an outcome.
+Discussions keep the information and conversation about a topic together. People can share context, comment, reply, react, and use polls to move a discussion toward an outcome.
 
 ![](orientation_discussion.png)
 
-Over time, discussions create a searchable record of the information considered and the decisions made by your group.
+Over time, discussions create a searchable record of the information your group considered and the decisions it made.
 
 <!-- translation-section: polls-and-proposals -->
 
@@ -50,18 +50,16 @@ To learn where these parts appear in the interface, see the [Quick tour](/en/use
 
 ## Try it out
 
-The best way to learn about Loomio is to [start a free trial](/try)
+To try Loomio with your group, [start a free trial](/try).
 
 <!-- translation-section: how-people-use-loomio -->
 
 ## How people use Loomio
 
-**Member organizations** to involve members in decisions at scale. Political parties, consumer and worker co-operatives, and membership associations use Loomio to facilitate a safe, inclusive space for members to share information and raise topics, participate in important decisions and vote in General Assembly. Streamline decision processes, improve transparency and accountability, document discussions and record decisions, and include members' voices to organize for action.
+**Member organizations** use Loomio to involve members in decisions at scale. Political parties, consumer and worker cooperatives, and membership associations give members a shared place to raise topics, discuss issues, and vote in general assemblies.
 
-**Self-managing organizations** to involve staff in decisions. Self-managing teams, worker co-operatives, and sociocratic organisations use Loomio to run consent, consensus, and advice-based decision processes across distributed teams and time zones. Tap into collective intelligence, distribute decision making, build governance and policy together, and document decisions and discussion.
+**Self-managing organizations** use Loomio to involve staff in decisions. Self-managing teams, worker cooperatives, and sociocratic organizations run consent, consensus, and advice processes across distributed teams and time zones.
 
-**Boards, councils, and distributed networks** to involve stakeholders in decisions. Create a safe space for discussion, keep track of communications, and coordinate across geographies and time zones. Structure decision making processes, improve agility and response times, and preserve organizational memory.
+**Boards, councils, and distributed networks** use Loomio to coordinate stakeholders across locations and time zones. They keep discussions structured, track decisions, and preserve organizational memory.
 
-**Residential communities and co-ops** to make decisions together as neighbours. Cohousing communities, ecovillages, coliving cooperatives, housing co-ops, and land trusts use Loomio to replace or augment traditional strata and property management with democratic governance. Residents shape decisions about shared land, common spaces, and community agreements, and asynchronous discussion means members can fully participate whether they're on-site or away travelling, keeping a clear record of how the community has chosen to live together.
-
-Loomio builds a living record of your organization; the decisions made, who was involved and the discussion leading up to the decision.
+**Residential communities and housing co-ops** use Loomio to make decisions together as neighbors. Cohousing communities, ecovillages, coliving cooperatives, housing co-ops, and land trusts use it to manage shared land, common spaces, and community agreements. Asynchronous discussions let residents participate whether they are on-site or traveling.

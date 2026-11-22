@@ -2,7 +2,7 @@
 
 # Using threads
 
-A discussion keeps its context, comments, decisions, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation and actions.
+A discussion keeps its context, comments, polls, and outcomes together in one thread. This page explains how to participate in a thread and use its navigation, settings, and actions.
 
 <!-- translation-section: thread-anatomy -->
 
@@ -12,49 +12,26 @@ A typical thread looks like this:
 
 ![](thread_navigation.png)
 
-From the top of the page, a thread contains:
+The main parts of a thread are:
 
-**Group name** - At the top left of the discussion page is the name of the group or subgroup that the discussion belongs to.  Click on this name to go back to the group page.
-
-**Discussion access** - The access icon at the top right opens the discussion's access settings. A group discussion is available to group members and anyone specifically invited to it, subject to the group's privacy settings.
-
-**Discussion title** - The name of the discussion.
-
-**Category tags** - The discussion may have one or more category tags. Using simple tags helps people more easily find discussions of a similar type.
-
-**Discussion author** - The name and avatar of the person who started the discussion, shown beneath the title.
-
-**Date** - Hover over the date to see the full date and time of discussion start.
-
-**Seen by** - In the right sidebar, shows who has read the discussion and when.
-
-**Notified** - In the right sidebar, shows who has been notified about the discussion and whether each notification has been read or its email opened.
-
-**Discussion context** - Content to frame the discussion.
-
-**Discussion interaction and administration tools** - The discussion context has controls to react to and edit it. The right sidebar contains notification, membership and administration actions.
-
-**Comments** - Comments are displayed under the discussion context. The author's name, avatar and posting time show who wrote each comment and when. Interaction and administration tools are available on each comment.
-
-**Navigation, notifications and actions** - The right sidebar contains
-shortcuts to activity and milestones, notification and membership information,
-and the thread actions available to you.
+- **Group name** — Links back to the group or subgroup the thread belongs to.
+- **Access settings** — Shows who can see the thread. A group discussion is visible to group members and anyone invited to it, based on the group's privacy settings.
+- **Category tags** — Labels beneath the title that group related discussions.
+- **Discussion context** — The opening post at the top of the thread, with controls to react or edit.
+- **Comments and polls** — Replies, polls, and outcomes posted beneath the context, each with its own interaction and action controls.
+- **Right sidebar** — Shortcuts to milestones (**Jump to**), notification settings, **Seen by** and **Notified** lists, and thread actions.
 
 <!-- translation-section: discussion-context -->
 
 ## Discussion context
 
-The discussion **context** is always found at the top of the discussion. Use the context to frame the discussion or decision.
-
-Think of your group as you write content in the discussion context.  Your aim is to get a discussion going, so consider how you can motivate people to participate.  In general, keep the discussion context simple and clear.
+The **context** stays at the top of the thread and frames the conversation or decision.
 
 ![](thread_context.png)
 
-Write the discussion context when starting or editing a discussion. **Edit** a discussion with the pencil icon.
+You write the context when starting a discussion and can update it with the pencil icon (**Edit**). As the conversation progresses, you can update the context with new background information, an agenda, or the final outcome.
 
-As the discussion progresses, update discussion context.  Think of the context like a whiteboard in your meeting room, where you can write the agenda, the outcomes intended and how you plan to get there.
-
-At the bottom of the context panel is a formatting bar, where you can format text, attach files, images and embed a video.
+The formatting bar below the text field lets you format text, attach files, insert images, and embed videos. See [Format text and attach files](/en/user_manual/discussions/formatting/).
 
 ![](thread_context_edit.png)
 
@@ -62,11 +39,11 @@ At the bottom of the context panel is a formatting bar, where you can format tex
 
 ### Notify people about context changes
 
-When you edit the discussion context, use **What's changed?** to summarize the update and choose who should be notified.
+When you edit the context, use **What's changed?** to summarize your update and choose who to notify.
 
 ![Editing a discussion context with a change summary and notification recipients](../notifying_people/thread_editcontext.png)
 
-The thread shows that you edited the context. The people you notify receive your summary with the notification.
+The thread records that you edited the context, and the people you notify receive your summary.
 
 ![A thread item showing that the discussion context was edited](../notifying_people/thread_edit_comment.png)
 
@@ -74,31 +51,31 @@ The thread shows that you edited the context. The people you notify receive your
 
 ## Navigation
 
-The **Jump to** section of the right sidebar helps you move through a thread:
+The **Jump to** section in the right sidebar helps you move through a thread:
 
-- **Start** goes to the discussion context
-- **New to you** appears when the thread contains activity you have not read
-- **Latest** appears when newer activity is available beyond the items currently loaded
-- milestone links go directly to important comments, polls, and outcomes
-- **End** goes to the latest item in the thread
+- **Start** goes to the discussion context.
+- **New to you** appears when the thread has unread activity.
+- **Latest** appears when newer activity exists beyond the loaded items.
+- Milestone links jump directly to important comments, polls, and outcomes.
+- **End** goes to the latest item in the thread.
 
-Comments that include an H2 or H3 heading, polls, and proposals are automatically included as milestone links. Select any milestone to go directly to it.
+Comments with an H2 or H3 heading, polls, and proposals appear as milestone links automatically. Select any milestone to jump to it.
 
 ![](thread_timeline_1.png)
 
-When you add a comment, poll, vote, or outcome, Loomio marks your own new item as read. It will not appear as something new for you to review.
+When you post a comment, poll, vote, or outcome, Loomio marks your own item as read.
 
 <!-- translation-section: notifications-and-members -->
 
 ## Notifications and members
 
-The right sidebar controls your email notifications and shows who has been invited, who has seen the thread, and who has been notified.
+The right sidebar controls your email notifications for the thread and shows who has been invited, who has seen the thread, and who has been notified.
 
 <!-- translation-section: email-notifications-for-this-thread -->
 
 ### Email notifications for this thread
 
-Select the current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Receiving email for all activity can produce many messages in an active thread.
+Select your current notification setting to choose whether Loomio emails you about all activity, only activity that specifically notifies you, or no activity. Choosing all activity can generate many emails in a busy thread.
 
 ![Email when notified selected in the discussion sidebar](../notifying_people/thread_interact.png)
 
@@ -106,13 +83,13 @@ Select the current notification setting to choose whether Loomio emails you abou
 
 ### Invite people
 
-Select **Invite people** in the right sidebar to invite people or notify them about the discussion. See [Inviting people to a discussion](/en/user_manual/discussions/inviting_people) for groups, parent groups, guests, chat rooms, and invitation notifications.
+Select **Invite people** in the right sidebar to invite people or notify them about the thread. See [Inviting people to a discussion](/en/user_manual/discussions/inviting_people) for details on groups, subgroups, parent groups, guests, and chat rooms.
 
 <!-- translation-section: seen-by -->
 
 ### Seen by
 
-**Seen by** shows who has opened the thread and when. It can help you identify people who may not have seen important information yet.
+**Seen by** shows who has opened the thread and when. Use it to check whether key people have seen important information.
 
 ![Seen by and Notified in the Thread members section](../notifying_people/thread_engagement.png)
 
@@ -122,7 +99,7 @@ Select **Invite people** in the right sidebar to invite people or notify them ab
 
 ### Notified
 
-**Notified** opens the discussion notification history. It includes invitations, mentions, and replies, showing who was notified and whether each notification has been read when that information is available.
+**Notified** opens the thread's notification history, including invitations, mentions, and replies. It shows who was notified and whether each notification was read when that information is available.
 
 ![Discussion notification history](../notifying_people/thread_notified.png)
 
@@ -132,7 +109,7 @@ Select **Invite people** in the right sidebar to invite people or notify them ab
 
 ## Thread settings
 
-Thread admins and group admins can select **Thread settings** to change how replies are arranged and configure other discussion options.
+Thread admins and group admins can select **Thread settings** to control how replies are arranged and set other discussion options.
 
 ![](thread_display.png)
 
@@ -140,31 +117,31 @@ Thread admins and group admins can select **Thread settings** to change how repl
 
 ### Layout
 
-Choose **Chronological** to list items in the order they were posted, or **Nested** to group replies beneath the item they respond to. This changes the layout for everyone in the thread.
+Choose **Chronological** to list items in the order they were posted, or **Nested** to group replies under the item they respond to. This changes the layout for everyone in the thread.
 
 <a id="allow-multiple-polls-at-the-same-time"></a>
 
 ### Only one poll at a time
 
-When checked, users cannot start another poll until the current poll has closed. This is unchecked by default for new threads. Threads started from a discussion template use that template's setting.
+When checked, no one can start another poll until the current poll closes. This is unchecked by default for new threads. Threads started from a discussion template inherit that template's setting.
 
 ### Only admins can add attachments
 
-Enable this setting to restrict new files and inline images to thread admins and group admins throughout the thread, including poll responses and email replies. Existing attachments remain available, and participants can still edit their text or remove attachments.
+Enable this setting to limit new files and inline images to thread admins and group admins throughout the thread, including poll responses and email replies. Existing attachments stay available, and participants can still edit their text or remove attachments.
 
-Discussion and poll templates can supply this setting for new threads. See [Discussion templates](/en/user_manual/discussions/templates) and [Poll templates](/en/user_manual/polls/poll_templates).
+Discussion and poll templates can set this for new threads. See [Discussion templates](/en/user_manual/discussions/templates) and [Poll templates](/en/user_manual/polls/poll_templates).
 
 ### Comment length limit
 
-Set a maximum number of characters per comment to keep contributions concise. Leave it blank for no limit. The limit applies to everyone, including admins.
+Set a maximum number of characters per comment to keep replies concise. Leave it blank for no limit. The limit applies to everyone, including group admins and thread admins.
 
 <!-- translation-section: actions -->
 
 ## Actions
 
-The right sidebar contains actions for the whole thread. Some actions are also available from the three-dot menu (**⋯**) beside a thread on the group page.
+The right sidebar lists actions for the whole thread. Some actions also appear in the three-dot menu (**⋯**) beside a thread on the group page.
 
-The actions shown depend on your permissions. Group admins can manage threads, and group settings may allow members to perform some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
+The actions you see depend on your permissions. Group admins can manage threads, and group settings may allow members to use some management actions. See [Group permissions](/en/user_manual/groups/settings/permissions).
 
 ![](thread_admin.png)
 
@@ -172,7 +149,7 @@ The actions shown depend on your permissions. Group admins can manage threads, a
 
 ### Print
 
-Select **Print** to generate a page suitable for printing. Use your browser's print dialog to save it as a PDF.
+Select **Print** to open a print-friendly view of the thread. Use your browser's print dialog to save it as a PDF.
 
 ![](thread_print_thread.png)
 
@@ -180,15 +157,13 @@ Select **Print** to generate a page suitable for printing. Use your browser's pr
 
 ### Markdown
 
-Select **Markdown** to save the complete thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save it as a `.md` file. You can use it for meeting minutes, a document, an archive of decisions, an AI assistant, or another tool that supports Markdown.
+Select **Markdown** to export the thread as structured Markdown. Choose **Copy Markdown** to copy it to your clipboard, or **Download Markdown** to save a `.md` file for meeting minutes, archives, documents, or AI tools.
 
 ![](../discussion_management/copy_markdown_menu.png)
 
-The document begins with YAML front matter containing the thread key, original URL, group, creation date, last activity date, and tags. Use the URL to return to the thread in Loomio. It then includes the discussion context and every comment, poll, vote, and outcome in the same order and nesting as the threaded view.
+The export starts with YAML front matter listing the thread key, URL, group, dates, and tags. It then includes the discussion context and every comment, poll, vote, and outcome in threaded order. Each poll appears as a section, and comments, votes, and outcomes appear as block quotes showing the author, timestamp, item number, and reactions.
 
-Each poll is a section. Comments, votes, and outcomes are quoted, and replies are quoted beneath the item they answer. This shows where each person's text begins and ends. Each quote starts with one line showing the person, when they posted, the item's number in the thread, and any reactions. Votes and outcomes also say what they are. The thread key and item number identify each item in Loomio.
-
-Loomio applies the same visibility rules as the thread. Results and vote reasons you cannot see are not included, and voters are not identified in anonymous polls. If an open poll hides results until you vote, vote before exporting the thread. **Markdown** and **Print** are unavailable until you do.
+Loomio follows the thread's visibility rules. Hidden results and hidden vote reasons are omitted, and voters stay anonymous in anonymous polls. If an open poll hides results until you vote, vote first—**Markdown** and **Print** are unavailable until you do.
 
 For example, a discussion containing a comment, reactions, a proposal, two votes, a reply, and an outcome produces this Markdown:
 
@@ -254,17 +229,17 @@ Supply returnable glass bottles to three cafe customers for six weeks, with one 
 > Run the six-week bottle trial with three cafes. Review return rates, washing time, and transport costs each week.
 ```
 
-The headings and labels use your selected language. Content written by participants remains in its original language.
+Headings and labels use your selected language. Participant content stays in its original language.
 
 <!-- translation-section: pin-or-unpin-a-thread -->
 
 ### Pin or unpin a thread
 
-Pinned threads appear above other threads on the group page. Welcome discussions, news items, and announcements are typical uses for pinned threads.
+Pinned threads stay at the top of the group page. Groups often pin welcome discussions, news, and announcements.
 
-Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by the time they were pinned. To change their order, unpin and pin them again.
+Open the three-dot menu (**⋯**) beside the thread on the group page and select **Pin thread**. Pinned threads are ordered by when they were pinned. To reorder them, unpin and pin them again.
 
-Select **Unpin thread** to return a thread to the activity-based order.
+Select **Unpin thread** to return a thread to normal activity order.
 
 ![](../discussion_management/pin_thread.png)
 
@@ -272,35 +247,36 @@ Select **Unpin thread** to return a thread to the activity-based order.
 
 ### Move a thread
 
-Select **Move thread** to move a thread to another group, subgroup, or to a direct thread. It will be visible to members of the destination group and anyone specifically invited to it.
+Select **Move thread** to move a thread to another group, a subgroup, or a direct thread. It becomes visible to members of the destination group and anyone invited to it.
 
-When moving a thread, Loomio shows how many people would lose permission to participate. You can choose to keep them as guests without sending invitation notifications. For a move to another group or subgroup, this requires permission to invite guests in the destination group; existing guests retain access.
+Before moving, Loomio shows how many people would lose access. You can choose to keep them as guests without sending notifications:
 
-When converting to a direct thread, people who have participated retain access automatically. Selecting the guest option also keeps the other current members and guests. You and the thread creator become thread admins.
+- **Moving to another group or subgroup:** Keeping people as guests requires permission to invite guests in the destination group. Existing guests keep access.
+- **Converting to a direct thread:** People who have already participated keep access automatically. Choosing the guest option keeps other current members and guests too. You and the thread creator become thread admins.
 
 ![](../discussion_management/move_thread_select.png)
 
 >[!Tip]
 >Start a draft as a direct discussion or in a private subgroup, then move it to the group when it is ready.
 
-To move selected activity rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
+To move specific items rather than the whole thread, see [Moving items between threads](/en/user_manual/discussions/moving_items/).
 
 <!-- translation-section: lock-or-unlock-a-thread -->
 
 ### Lock or unlock a thread
 
-Lock a thread to archive it as it is. Nobody can add to a locked thread, change it, or invite or notify people from it. You can only lock a thread after its active polls have closed.
+Lock a thread to archive it as-is. No one can post, edit, or invite people in a locked thread. All active polls must close before you can lock a thread.
 
-Select **Lock thread** under **Actions**. Locked threads are removed from the list of open discussions and marked with a **Locked** tag.
+Select **Lock thread** under **Actions**. Locked threads move out of the open discussions list and carry a **Locked** tag.
 
-To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to allow comments and changes again.
+To find a locked thread, open the discussion filter on the group page and select **Locked**. Open the thread and select **Unlock thread** to reopen it for comments and changes.
 
 <!-- translation-section: delete-a-thread -->
 
 ### Delete a thread
 
-Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you may need it again.
+Deleting a thread removes it permanently and cannot be undone. Lock the thread instead if you might need it later.
 
-Select **Delete thread** and confirm the deletion.
+Select **Delete thread** and confirm.
 
 ![](../discussion_management/thread_delete.png)

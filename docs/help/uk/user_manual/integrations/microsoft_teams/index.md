@@ -1,47 +1,54 @@
 ---
 title: Microsoft Teams
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/microsoft_teams/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/microsoft_teams/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 905a1586a1f760e0
+  introduction: 16d8d04953bb0b53
 generated:
-  introduction: d7e1dc3a53c0f9a8
+  introduction: 881b557d11b70501
 title_source: a7b52b269a23c025
 title_generated: a7b52b269a23c025
+needs_review:
+  introduction: use "Вибір" instead of "Виберіть" for "Choose"
 ---
 
 <!-- translation-section: introduction -->
 
 # Інтеграція з Microsoft Teams
-_Підключіть сповіщення вашої групи Loomio до Microsoft Teams._
 
-Loomio може надсилати сповіщення до вашого Microsoft Teams, коли з’являються нові обговорення, пропозиції, коментарі, голоси та висновки.
+Loomio може надсилати сповіщення до ваших каналів Microsoft Teams, коли з’являються нові обговорення, опитування, коментарі, голоси та висновки.
 
 ---
 
-Перейдіть на [https://teams.microsoft.com](https://teams.microsoft.com), потім натисніть «Програми»
-![](t1.png)
+1. Відкрийте [Microsoft Teams](https://teams.microsoft.com) і виберіть **Програми**.
 
-Введіть «webhook» у полі пошуку, потім натисніть «Вхідний вебхук»
-![](t2.png)
+   ![](t1.png)
 
-Натисніть «Додати до команди»
-![](t3.png)
+2. Знайдіть `webhook` і виберіть **Вхідний вебхук**.
 
-Введіть назву та виберіть канал, у якому мають з’являтися сповіщення Loomio.
-![](t4.png)
+   ![](t2.png)
 
-Укажіть назву, наприклад «Сповіщення Loomio», потім натисніть «Створити»
-![](t5.png)
+3. Виберіть **Додати до команди**.
 
-Скопіюйте надану URL-адресу — ви вставите її в Loomio на останньому кроці.
-![](t6.png)
+   ![](t3.png)
 
-_Microsoft не створює та не підтримує Loomio і не пов’язана з ним._
+4. Оберіть канал, у якому мають з’являтися сповіщення Loomio.
 
-Тепер, коли ви маєте URL-адресу вебхука, продовжте налаштування інтеграції з чатом:
+   ![](t4.png)
+
+5. Введіть назву, наприклад `Loomio notifications`, і виберіть **Створити**.
+
+   ![](t5.png)
+
+6. Скопіюйте URL-адресу вебхука, щоб вставити її в Loomio.
+
+   ![](t6.png)
+
+Тепер, коли ви маєте URL-адресу вебхука, завершіть підключення в Loomio:
 
 [Налаштуйте інтеграцію з чатом у Loomio](../chatbots/#set-up-a-chat-integration)
+
+_Microsoft не створює та не підтримує Loomio і не пов’язана з ним._

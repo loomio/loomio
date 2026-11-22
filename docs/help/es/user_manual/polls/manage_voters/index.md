@@ -1,38 +1,38 @@
 ---
 title: Gestionar a los votantes
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: 28ec353f803df4bd
-  invite-people-to-vote-in-a-poll: 351ed80eacfc72f6
-  invite-guests-or-experts: 5622cae3a2c57c40
+  invite-people-to-vote-in-a-poll: 106f50583a08b864
+  invite-guests-or-experts: 063cc835f3cba79c
   engage-people-while-a-poll-is-running: b524cdc8a75e01c8
   add-voters-to-the-poll: bf6b70de91a4d7c4
   remove-people-from-the-poll: 60676c00ca535afe
-  remind-people-to-vote: 6243bee73c4a0151
-  view-notification-history: 7ccc412ad8d76a29
+  remind-people-to-vote: 047d633620bd6abc
+  view-notification-history: 37bb209abc12973d
   close-early: ebc5ee74c335a60a
   reopen: 20d595d6750615ad
-  choose-an-audience: a426315088a9af0f
-  check-your-recipients: 9eb05ea4a3d11f3c
-  send-the-invitations: c7e734e4dde1ac39
+  choose-an-audience: 613f07196d4e6d7e
+  check-your-recipients: fb67f02b64d4b40e
+  send-the-invitations: 3e46a901c85e96c1
 title_source: 10858faa0464257e
 title_generated: e9c1bdb2e9300008
 needs_review:
@@ -52,7 +52,7 @@ Usa **Gestionar a los votantes** para dar a las personas derecho a votar e invit
 
 ## Invita a personas a votar
 
-Después de iniciar una encuesta con **Solo para personas seleccionadas**, se abre la ventana **Gestionar a los votantes**. También puedes abrirla seleccionando **Gestionar a los votantes** en la encuesta.
+Después de iniciar una encuesta con **Solo para personas seleccionadas**, se abre automáticamente **Gestionar a los votantes**. También puedes abrirlo seleccionando **Gestionar a los votantes** en la encuesta.
 
 ![El botón Gestionar a los votantes en la parte inferior de una encuesta](proposal_after_start.png)
 
@@ -60,7 +60,7 @@ Después de iniciar una encuesta con **Solo para personas seleccionadas**, se ab
 
 ### Elige a quién invitar
 
-Haz clic en el campo vacío **Buscar o invitar a los votantes** para ver sugerencias. Aparecen en este orden:
+Selecciona el campo vacío **Buscar o invitar a los votantes** para ver sugerencias. Aparecen en este orden:
 
 - tu grupo
 - **Delegados de** tu grupo, si tu grupo tiene [votantes delegados](/en/user_manual/groups/delegated_voters)
@@ -74,7 +74,7 @@ En un [hilo directo](/en/user_manual/discussions/direct_discussions), la lista o
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Selecciona un conjunto de destinatarios para invitar a esas personas juntas. Por ejemplo, al seleccionar **Oatmilk Cooperative**, se incluyen las personas de ese grupo. También puedes seleccionar una sala de chat conectada para publicar allí la invitación. Publicar en una sala de chat no añade a sus miembros como votantes.
+Selecciona un conjunto de destinatarios para invitar a esas personas juntas. Por ejemplo, al seleccionar **Oatmilk Cooperative**, se incluyen todas las personas de ese grupo. También puedes seleccionar una sala de chat conectada para publicar allí la invitación; publicar en una sala de chat no añade a sus miembros como votantes.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -84,7 +84,7 @@ Después de seleccionar un conjunto de destinatarios, el campo muestra su nombre
 
 ![Oatmilk Cooperative seleccionado, con el número de destinatarios debajo del campo](proposal_invite_members.png)
 
-Haz clic en el nombre del conjunto de destinatarios para desplegar la lista de personas. Después puedes seleccionar la **×** junto a una persona para excluirla de esta invitación. Esto no la elimina del grupo.
+Selecciona el nombre del conjunto de destinatarios para desplegar la lista de personas. Después puedes seleccionar **×** junto a una persona para excluirla de esta invitación. Esto no la elimina del grupo.
 
 ![Los destinatarios del grupo desplegados como una lista de personas con sus nombres, cada una con un control para quitarla](proposal_invite_expand.png)
 
@@ -98,13 +98,13 @@ También puedes escribir el nombre de una persona y seleccionarla entre las suge
 
 ![Una invitación dirigida a un miembro del grupo y a una persona invitada por correo electrónico, con un mensaje listo para enviar](proposal_invite_guest.png)
 
-Las personas invitadas reciben acceso a esta encuesta. Si la encuesta está dentro de un hilo, también pueden leer ese hilo y sus comentarios. La invitación no les da permiso para comentar en el hilo, votar en otras encuestas del hilo ni ver otros hilos del grupo.
+Las personas invitadas reciben acceso a esta encuesta. Si la encuesta está dentro de un hilo, también pueden leer ese hilo y sus comentarios. La invitación no les permite comentar en el hilo, votar en otras encuestas del hilo ni ver otros hilos del grupo.
 
 <!-- translation-section: send-the-invitations -->
 
 ### Envía las invitaciones
 
-Añade un mensaje que explique qué pides a las personas que decidan y selecciona **Invitar**. Deja marcada la opción **Enviar notificaciones** para notificar a las personas que estás invitando. Desmárcala para añadir votantes sin enviar una notificación.
+Añade un mensaje que explique qué pides a las personas que decidan y selecciona **Invitar**. Deja marcada la opción **Enviar notificaciones** para notificar a las personas que estás invitando, o desmárcala para añadir votantes sin enviar una notificación.
 
 En una encuesta programada, selecciona **Agregar votantes**. Las personas reciben la invitación cuando se abre la votación.
 
@@ -134,7 +134,7 @@ No se pueden eliminar personas de una encuesta anónima. En las encuestas con [p
 
 ### Recuerda a las personas que voten
 
-Selecciona **Recordar ** en la encuesta, elige quién debe recibir el recordatorio, añade un mensaje y selecciona **Recordar ** para enviarlo. Puedes seleccionar **Personas sin votar** para dirigirte a las personas cuyas respuestas aún se necesitan.
+Selecciona **Recordar ** en la encuesta, elige los destinatarios (como **Personas sin votar**), añade un mensaje y selecciona **Recordar ** para enviarlo.
 
 ![Un recordatorio dirigido a personas sin votar, con un mensaje sobre el plazo para tomar la decisión](proposal_remind.png)
 
@@ -142,7 +142,7 @@ Selecciona **Recordar ** en la encuesta, elige quién debe recibir el recordator
 
 ### Consulta el historial de notificaciones
 
-Abre el menú de tres puntos (**⋯**) de la encuesta y selecciona **Historial de notificaciones** para ver quién ha recibido una invitación, cuándo se envió cada invitación y si se ha leído, cuando esa información esté disponible.
+Abre el menú de tres puntos (**⋯**) de la encuesta y selecciona **Historial de notificaciones** para ver quién recibió una invitación, cuándo se envió cada invitación y si se leyó, cuando esa información esté disponible.
 
 ![Historial de notificaciones que muestra los destinatarios de una invitación a una encuesta](../../discussions/notifying_people/poll_notification_example.png)
 

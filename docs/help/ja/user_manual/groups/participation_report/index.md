@@ -1,45 +1,45 @@
 ---
 title: 参加状況レポート
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/participation_report/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/participation_report/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9ec21a12ab444c80
-  what-s-in-the-report: 90b9c89c6933eeee
-  actions-per-month: 3f290af092726995
-  tag-usage: 8e7577c51379e50f
-  actions-per-user: 4e6414d83ee776be
-  voting-record-per-user: 12741bf049ab9bee
-  users-per-country: 7f61b0c9a0002eec
-  actions-per-country: 900472e9fa675e08
+  introduction: f5759e9db8130be6
+  what-s-in-the-report: a857f9d955851358
+  actions-per-month: 4b2aebb7a8d1ecae
+  tag-usage: c05217a052bc0da0
+  actions-per-user: '09a02dafc160037a'
+  voting-record-per-user: e878e48f58f98b54
+  users-per-country: 03111e1b5f9a6697
+  actions-per-country: d47acd62f17f41e7
 generated:
-  introduction: cae5e43a8f8c47e1
+  introduction: 915cc9650c7c4356
   what-s-in-the-report: 7acaa62f387e1eb1
-  actions-per-month: a6d799cbb012700e
-  tag-usage: f7f83035c2ada8ef
-  actions-per-user: d7a1765c0061ce44
-  voting-record-per-user: ce94bec2cf852c54
-  users-per-country: '081b208e25101109'
-  actions-per-country: 792170ec6ace2059
+  actions-per-month: 732bbd47ea140abe
+  tag-usage: d00ea569013c02a4
+  actions-per-user: 0aac6532d53fb225
+  voting-record-per-user: a2bf4996e426da66
+  users-per-country: ebbf21e9a7424c90
+  actions-per-country: eca10f1c3ef084a3
 title_source: ee140bf2af2bcf29
 title_generated: 4ebfa1217f39901d
 ---
 
 <!-- translation-section: introduction -->
 
-# 参加状況レポート
+# 参加レポート
 
-グループの参加状況レポートでは、Loomioグループの利用状況を確認できます。
+参加レポートでは、Loomioグループとそのサブグループ全体の活動を確認できます。
 
 レポートに含めるグループ、集計期間の開始日と終了日、結果をまとめる間隔（年、月、週、日）を選択できます。
 
-レポートはグループの全員が利用できます。ただし、ユーザーが確認できるのは所属するグループの結果のみなので、ユーザーによって表示されるレポートが多少異なる場合があります。
+グループのすべてのメンバーがレポートを閲覧できますが、各メンバーに表示されるのは所属するグループの結果のみです。そのため、メンバーによって表示される合計が異なる場合があります。
 
-下の画像のように、グループ設定メニューの歯車アイコンをクリックすると、レポートを開けます。
+レポートを開くには、グループのアクションメニューを開き、**参加レポート**を選択します。レポート内のどの表でも、列見出しを選択すると、その列で並べ替えられます。
 
-![Oatmilk Cooperativeのメニューにある参加状況レポートの項目](group_participation_report.png)
+![Oatmilk Cooperativeのメニューにある参加レポートの項目](group_participation_report.png)
 
 <!-- translation-section: what-s-in-the-report -->
 
@@ -47,34 +47,27 @@ title_generated: 4ebfa1217f39901d
 
 <!-- translation-section: actions-per-month -->
 
-### 月別の活動
+### 活動の推移
 
-指定した期間にグループでどの程度の参加があったかを確認できます。
+このグラフには、選択した時間間隔ごとのスレッド、コメント、アンケート、投票、リアクションの件数が表示され、活動の変化を確認できます。グラフのラベルを選択すると、その項目の表示と非表示を切り替えられます。
 
-レポートには、月ごとのスレッド、コメント、アンケート、投票、リアクションの件数が表示されます。グラフで利用状況の増減を確認できます。
-
-グラフのラベルをクリックすると、その項目を非表示にできます。
-
-表の列見出しをクリックすると、その列で表を並べ替えられます。
-
-![Oatmilk Cooperativeの参加状況レポートの操作項目、合計、活動グラフ](group_participation_report_graph.png)
+![Oatmilk Cooperativeの参加レポートの操作項目、合計、活動グラフ](group_participation_report_graph.png)
 
 <!-- translation-section: tag-usage -->
 
 ### タグの利用状況
 
-指定した期間に各タグが適用された頻度を表示します。例えば、特定の意思決定プロセスやテンプレートを使った決定の件数を確認できます。
+このグラフには、選択した期間にタグが適用された頻度が表示されます。例えば、特定の意思決定プロセスやテンプレートを使ったディスカッションの件数を確認できます。
 
 ![製造、カフェとの提携、運営の各タグの利用状況の推移](group_participation_report_tags.png)
 
 <!-- translation-section: actions-per-user -->
 
 ### ユーザー別の活動
-グループ内で活動が多い人や少ない人を確認できます。
 
-この表には、指定したグループの各ユーザーが期間内に作成したスレッドとアンケート、投稿したコメント、行った投票とリアクションの件数が表示されます。表の列見出しをクリックすると、その列で表を並べ替えられます。
+この表には、選択した期間に各メンバーが作成したスレッドとアンケート、投稿したコメント、行った投票とリアクションの件数が表示されます。
 
-**代表者限定**を有効にすると、選択したグループのいずれかで現在代表者を務めている人が表示されます。活動と投票記録は、選択したすべてのグループを対象に集計されます。選択した期間に活動がなかった代表者も表に表示されます。ダウンロードするCSVにも同じフィルターが適用されます。
+**代表者限定**を有効にすると、選択したグループのいずれかで現在代表者を務めている人に表示を絞り込めます。活動は選択したグループ全体で集計され、活動がなかった代表者も表示されます。ダウンロードするCSVにも同じフィルターが適用されます。
 
 ![参加状況を3段階で示した代表者別の活動](group_participation_report_actions_per_user.png)
 
@@ -82,9 +75,9 @@ title_generated: 4ebfa1217f39901d
 
 ### ユーザー別の投票記録
 
-各ユーザーに投票を求めた回数と実際に投票した回数を比較し、未投票の回数や、求められた投票をすべて行った人を確認できます。投票を求められたことがない人は、すべて投票した人としては表示されません。匿名の投票を投票した人と関連付けてはいけないため、匿名アンケートは集計から除外されます。
+この表では、各ユーザーに投票を求めた回数と実際に投票した回数を比較し、未投票の回数を表示します。また、求められた投票をすべて行った人を強調表示します。投票を求められたことがない人は、すべて投票した人としては表示されません。匿名の投票は個々の投票者と関連付けられていないため、匿名アンケートは集計から除外されます。
 
-**代表者限定**を使うと、現在の代表者の投票記録を確認できます。ダウンロードするCSVにも、名前と代表者について同じフィルターが適用されます。
+**代表者限定**を有効にすると、現在の代表者の投票記録を確認できます。ダウンロードするCSVにも、名前と代表者について同じフィルターが適用されます。
 
 ![投票を求めた回数、投票した回数、未投票の回数を示した代表者の投票記録](group_participation_report_voting_record.png)
 
@@ -92,7 +85,7 @@ title_generated: 4ebfa1217f39901d
 
 ### 国別のユーザー数
 
-グループの全ユーザーについて、現在のIPアドレスに基づいて国別のユーザー数を表示します。
+この表には、選択したグループのメンバーが各国に何人いるかが、現在のIPアドレスに基づいて表示されます。
 
 ![選択したグループの国別ユーザー数](group_participation_report_users_per_country.png)
 
@@ -100,8 +93,6 @@ title_generated: 4ebfa1217f39901d
 
 ### 国別の活動
 
-どの国からの参加が多いか、少ないかを確認できます。
-
-「ユーザー別の活動」と同様の内容ですが、ユーザーがいると判定された国ごとにデータを集計します。
+この表には、スレッド、コメント、アンケート、投票、リアクションが、各メンバーの所在地として判定された国ごとに集計されます。
 
 ![国別に集計された活動](group_participation_report_actions_per_country.png)

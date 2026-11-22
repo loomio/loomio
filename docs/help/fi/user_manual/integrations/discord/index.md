@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: 4f7180054c608458
+  introduction: 51ea8f1b568abe97
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Discord-integraatio
 
-_Yhdistä Loomio-ryhmäsi ilmoitukset tiimisi Discord-keskusteluun._
-
-Loomio voi lähettää ilmoituksia Discord-kanavillesi, kun uusia keskusteluja, ehdotuksia, kommentteja, ääniä ja johtopäätöksiä julkaistaan. Voit myös lähettää ilmoituksen keskustelukanavalle käsin, kun haluat muistuttaa ihmisiä päätöksestä.
+Loomio voi lähettää ilmoituksia Discord-kanavillesi, kun uusia keskusteluja, kyselyjä, kommentteja, ääniä ja johtopäätöksiä julkaistaan. Voit myös lähettää ilmoituksen kanavalle käsin, kun haluat muistuttaa ihmisiä päätöksestä.
 
 ---
 
-Avaa Discord-palvelimesi ja etsi palvelimen asetusvalikko.
-![](server-settings.png)
+1. Avaa Discord-palvelimesi ja siirry kohtaan **Palvelimen asetukset**.
 
-Napsauta "Integraatiot"
-![](integrations.png)
+   ![](server-settings.png)
 
-Napsauta sitten "Lisää webhook" ja anna sille nimi, kuten "Loomio-botti"
+2. Valitse **Integraatiot**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Varmista, että olet kopioinut webhookin URL-osoitteen leikepöydälle, ja seuraa alla olevaa linkkiä.
+3. Valitse **Lisää webhook**, anna sille nimi, kuten `Loomio`, valitse kanava ja kopioi webhookin URL-osoite.
+
+   ![](add-webhook.png)
+
+Nyt kun sinulla on webhookin URL-osoite, viimeistele yhteyden määritys Loomiossa:
 
 [Määritä chat-integraatio Loomiossa](../chatbots/#set-up-a-chat-integration)

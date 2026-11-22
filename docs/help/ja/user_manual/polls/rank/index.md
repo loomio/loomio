@@ -1,25 +1,25 @@
 ---
 title: ランク
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
-  introduction: ed571c278231bed9
-  when-to-use-rank: 1dc423630c938673
+  introduction: 16840fa933c3cddd
+  when-to-use-rank: 8f0fc894016c3f21
   example-rank-bottle-designs: f05ce8e8004328a6
-  set-up-the-poll: 2d6e2117f60642aa
-  vote: ca7fc72ab70008e3
-  read-the-results: 23bfe3abdda8f5dd
+  set-up-the-poll: 175304eb3c285ca8
+  vote: 90b4265d29bd22f8
+  read-the-results: 10a49ef0ae1a163d
   share-an-outcome: addf793842900923
 title_source: a4130d7d2c3a137f
 title_generated: 6843c4068dd41a9c
@@ -29,7 +29,7 @@ title_generated: 6843c4068dd41a9c
 
 # ランク
 
-ランクでは、グループ全体の希望順位を求めます。参加者は選択肢を希望する順に並べ、Loomioは上位の選択肢により多くのポイントを割り当てます。
+ランクでは、グループ全体の希望順位を求めます。参加者は選択肢を希望する順に並べ、Loomioは上位の選択肢により多くのポイントを付与します。
 
 <!-- translation-section: when-to-use-rank -->
 
@@ -43,7 +43,7 @@ title_generated: 6843c4068dd41a9c
 - 第一希望に加えて、代替の選択肢を選びます。
 - 多数の候補を絞り込み、順位付きの候補一覧にまとめます。
 
-ランクはポイントに基づいて順位を決めます。比例代表の選挙方式ではありません。投票者のさまざまな集団の意向を反映しながら複数の人を選出するには、[STV選挙](/en/user_manual/polls/stv/)を使います。
+ランクはポイントに基づいて順位を決める方式で、比例代表制ではありません。投票者のさまざまな集団の意向を反映しながら複数の人を選出するには、[STV選挙](/en/user_manual/polls/stv/)を使います。
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ Oatmilk Cooperativeは、回収して再利用するボトルの試験導入に�
 
 ## アンケートを設定する
 
-順位付けによって何を決めるのかを示し、選択肢を追加します。**選択肢の数**を設定して、各参加者が順位を付けられる選択肢の数を指定します。第一希望には最も多くのポイントが付与され、次の希望にはそれより1ポイント少なく付与されます。順位を付けなかった選択肢にはポイントが付与されません。
+順位付けによって何を決めるのかを示し、選択肢を追加します。**選択肢の数**を設定して、各参加者が順位を付けられる選択肢の数を指定します。例えば、投票者が最大3つの選択肢に順位を付けられる場合、第一希望には3ポイント、第二希望には2ポイント、第三希望には1ポイントが付与され、順位を付けなかった選択肢は0ポイントになります。
 
 ![](form.png)
 
-すべての選択肢の順位が必要な場合は、すべてに順位を付けることを必須にします。参加者がすべてに順位を付けるための情報を十分に持っていない可能性がある場合は、少ない数の選択肢でも投票できるようにします。選択肢をランダムな順序で表示すると、最初の表示順による影響を抑えられます。
+すべての選択肢の順位が必要な場合は、すべてに順位を付けることを必須にします。参加者がすべてに順位を付けるための情報を十分に持っていない可能性がある場合は、少ない数の選択肢でも投票できるようにします。選択肢をランダムな順序で表示すると、先に表示される選択肢が有利になるのを防ぐのに役立ちます。
 
 <!-- translation-section: vote -->
 
 ## 投票する
 
-参加者は選択肢をドラッグして希望する順に並べます。1番が第一希望です。順位付けの基準を説明する理由も追加できます。
+参加者は選択肢をドラッグして希望する順に並べます。1番が第一希望です。順位付けを説明する投票の理由も追加できます。
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Oatmilk Cooperativeは、回収して再利用するボトルの試験導入に�
 
 ![](results.png)
 
-この例では、**500 mlの茶色いボトル**が1位で、**500 mlの透明なボトル**、**750 mlの茶色いボトル**が続きます。グループは最も希望の多いデザインを最初に検討し、残りの順位を代替案を検討する順序として使えます。
+この例では、**500 mlの茶色いボトル**が1位で、**500 mlの透明なボトル**、**750 mlの茶色いボトル**が続きます。グループは1位のデザインを最初に試し、残りを順位順に代替の選択肢として残しておけます。
 
-ポイントに基づく結果では、希望順位の傾向が異なっていても合計が同じになるため、その違いが見えないことがあります。選択肢のポイントが僅差の場合や、決定の影響が大きい場合は、個々の投票内容と投票の理由を確認します。
+投票の傾向が異なっていても、ポイントの合計が同じになることがあります。選択肢のポイントが僅差の場合や、重要な決定を行う場合は、個々の投票内容と投票の理由を確認します。
 
 <!-- translation-section: share-an-outcome -->
 

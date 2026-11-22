@@ -1,14 +1,14 @@
 ---
 title: Mattermost
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/mattermost/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/mattermost/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 5ff78e7362ad4050
+  introduction: 508868f1d003ac65
 generated:
-  introduction: 717692bd03599ce8
+  introduction: 071ad8ed80c003f6
 title_source: b1ff7bd17092d95e
 title_generated: b1ff7bd17092d95e
 ---
@@ -16,27 +16,31 @@ title_generated: b1ff7bd17092d95e
 <!-- translation-section: introduction -->
 
 # Mattermost-integráció
-_A Loomio-csoportod értesítéseinek összekapcsolása a csapatod Mattermost-csevegésével._
 
-A Loomio értesítéseket küldhet a Mattermost-csatornáidra, amikor új beszélgetések, javaslatok, hozzászólások, szavazatok és következtetések születnek.
+A Loomio értesítéseket küldhet a Mattermost-csatornáidra, amikor új beszélgetések, szavazások, hozzászólások, szavazatok és következtetések születnek.
 
 ---
 
-Nyisd meg a Mattermost-csapatodat a böngésződben. Ezután nyisd meg az integrációk beállítási oldalát.
-![](mm1.png)
+1. Nyisd meg a Mattermost-csapatodat egy böngészőben, és lépj az **Integrációk** oldalra.
 
-Kattints a „Bejövő webhookok” lehetőségre
-![](mm2.png)
+   ![](mm1.png)
 
-Ezután kattints a „Bejövő webhook hozzáadása” lehetőségre
-![](mm3.png)
+2. Válaszd ki a **Bejövő webhookok** lehetőséget.
 
-Adj neki egy egyszerű nevet, válaszd ki a csatornát, ahol az értesítések megjelenjenek, majd kattints a Mentés gombra
-![](mm4.png)
+   ![](mm2.png)
 
-Másold a webhook URL-jét a vágólapra, mert a következő lépésben szükséged lesz rá.
-![](mm5.png)
+3. Válaszd ki a **Bejövő webhook hozzáadása** lehetőséget.
 
-Ellenőrizd, hogy a webhook URL-je a vágólapon van-e, majd kattints az alábbi hivatkozásra.
+   ![](mm3.png)
+
+4. Adj meg egy nevet, válaszd ki a csatornát, ahol az értesítések megjelenjenek, majd kattints a **Mentés** gombra.
+
+   ![](mm4.png)
+
+5. Másold ki a webhook URL-jét.
+
+   ![](mm5.png)
+
+Most, hogy megvan a webhook URL-je, fejezd be az összekapcsolást a Loomióban:
 
 [Csevegési integráció beállítása a Loomióban](../chatbots/#set-up-a-chat-integration)

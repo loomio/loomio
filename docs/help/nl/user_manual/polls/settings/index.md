@@ -1,56 +1,56 @@
 ---
 title: Instellingen
-source_revision: 921385258bc92a0dc14570f9d146df8c312ce323
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-04'
+  'on': '2026-11-22'
 sections:
-  introduction: 145c23b2412eff98
+  introduction: 4dfc411e9ec40783
   setting-up-a-proposal-or-poll: 9e0347d976f79179
-  proposal-and-poll-templates: 59bad3e1e0c4605e
-  add-content: ec0c0742f6465e9c
-  voting-options: d0ea31745ce8b651
-  edit-voting-options: ef0d61585b34fbd6
-  opening-time: f8544bec7cd35ca5
-  more-settings: fd837a51b81cbc13
-  reminder: c11a5bdd82cd3b84
-  anonymous-voting: 35f5392ee8870076
-  vote-reason: b1ebf2700ce8248b
-  hide-results: 6dc7bf0b34c89a68
+  proposal-and-poll-templates: 822e5f4ed69852ee
+  add-content: 6811509f271e7050
+  voting-options: 28968995d558db8f
+  edit-voting-options: 692bc37a97a0eea6
+  opening-time: e9a9ca1825565db3
+  more-settings: 6a7cd5bb6e0a9271
+  reminder: 673e6181f026afe0
+  anonymous-voting: 70e89af6ff170bc8
+  vote-reason: 8f5d05ee4f950079
+  hide-results: a59502626d4b75c6
   managing-polls: b26fc41e19371d54
-  edit-poll: ddf392426410ec5a
+  edit-poll: d544d21f39ce060f
   notification-history: f132def867659f30
-  export-poll: 3c015ed01e8e7a6a
-  print: dbe152fdea17fc00
-  delete: fa13f1461f6b4e5f
-  save-bookmark: 45a250076a3fd7e1
-  save-as-template: f8080c0dbd5dcf56
-  who-can-vote: 4e0c2bd8db67a4d8
-  editing-settings-before-voting-opens: 9d1f5122db7998a3
+  export-poll: d94d6cba846d9b25
+  print: 8caef79f1356f7c4
+  delete: 10850ca0cae15f77
+  save-bookmark: 5415dd146c0190c1
+  save-as-template: 2ddaebfb13ea40e4
+  who-can-vote: c9cb72fec8cea6aa
+  editing-settings-before-voting-opens: a3e52c6542c3eb4c
 generated:
-  introduction: ab2a875c4f826f8e
+  introduction: dfb71e369a03260d
   setting-up-a-proposal-or-poll: e96f5dcce20c5096
-  proposal-and-poll-templates: b407c7d5f8d1e2da
-  add-content: 814d327a7229cd39
-  voting-options: 48f34901246ac268
-  edit-voting-options: fb3ef8e96cfc790d
-  opening-time: 563eb11777681dc8
-  more-settings: ac9de733ac425f3a
-  reminder: 830f0f493ba85dbd
-  anonymous-voting: 206f60ffc95d7752
-  vote-reason: aee03d9416dd8e86
-  hide-results: 32c8f34fc9312ac4
+  proposal-and-poll-templates: b794e45929445073
+  add-content: 8049001d726b1c6c
+  voting-options: 56cc9e1ec23c500b
+  edit-voting-options: 2848d75163a8a0ac
+  opening-time: 64e384b1602a2d15
+  more-settings: '09fbd1a18ef53dbb'
+  reminder: 5ce5806462450fae
+  anonymous-voting: fd55575bfd5d64ff
+  vote-reason: 333eb6ac61ebf663
+  hide-results: f7a38c66f04f4768
   managing-polls: 998a7f2f76a9372a
-  edit-poll: e5283692e690b034
+  edit-poll: cd146bbe615aa2ac
   notification-history: f7b6b6e8d1d16bb2
-  export-poll: a22c90c0ae0a38be
-  print: 82896aa5dc7d87eb
-  delete: 9acf822e2506248b
-  save-bookmark: 641508ba541567f1
-  save-as-template: 9fa218d1889f3517
-  who-can-vote: 8e1a09deed2389b5
-  editing-settings-before-voting-opens: 3e947ff245059065
+  export-poll: cbf65d989750d7af
+  print: e3e639105daf731b
+  delete: 5a2fa864ec9101e5
+  save-bookmark: 5bf0033abc261ac1
+  save-as-template: d8b52ca42446a8f8
+  who-can-vote: 9ab22609e62e535f
+  editing-settings-before-voting-opens: af851b3c31a75141
 title_source: 74a883a037bc227f
 title_generated: 2701873dad7cb276
 ---
@@ -58,6 +58,8 @@ title_generated: 2701873dad7cb276
 <!-- translation-section: introduction -->
 
 # Instellingen voor voorstellen en peilingen
+
+Stel in hoe een voorstel of peiling werkt, wie mag stemmen en hoe het resultaat wordt weergegeven. De meeste instellingen zijn beschikbaar wanneer je een peiling maakt of bewerkt.
 
 <!-- translation-section: setting-up-a-proposal-or-poll -->
 
@@ -67,7 +69,7 @@ title_generated: 2701873dad7cb276
 
 ### Sjablonen voor voorstellen en peilingen
 
-Kies het voorstelsjabloon dat je wilt gebruiken.
+Kies het sjabloon voor een voorstel of peiling dat je wilt gebruiken.
 
 ![](proposal_templates.png)
 
@@ -79,47 +81,35 @@ Kies het voorstelsjabloon dat je wilt gebruiken.
 
 ### Titel en details
 
-**Groep:** Controleer of de juiste groep is geselecteerd voor jouw voorstel of peiling.
+- **Groep:** Controleer of de juiste groep is geselecteerd voor jouw voorstel of peiling.
+- **Titel:** Geef jouw voorstel of peiling een korte, duidelijke titel.
+- **Details:** Leg uit waarover je mensen vraagt een besluit te nemen en wat er gebeurt als het voorstel wordt aangenomen.
 
-**Titel:** Geef jouw voorstel of peiling een korte, relevante titel.
-
-**Details:** Leg uit wat je van mensen vraagt en geef voldoende details zodat iedereen weet wat stemmen betekent.  
-
-De vooraf ingestelde sjablonen bevatten aanwijzingen om je te helpen een goed voorstel te schrijven - gebruik deze of voeg je eigen details toe.
-
-Beschrijf bij het maken van een voorstel jouw verwachtingen en de gevolgen als het voorstel wordt aangenomen.
-
-Je kunt bestanden bijvoegen, afbeeldingen en tabellen invoegen en koppen en lijsten toevoegen met de [opmaakknoppen](/en/user_manual/discussions/formatting). Hiermee kun je ondersteunende informatie delen en langere voorstellen makkelijker leesbaar maken.
+Sjablonen bevatten aanwijzingen die je kunt gebruiken of vervangen. Je kunt bestanden bijvoegen, afbeeldingen en tabellen invoegen en koppen en lijsten toevoegen met de [opmaakknoppen](/en/user_manual/discussions/formatting). Hiermee kun je ondersteunende informatie delen en langere voorstellen makkelijk leesbaar houden.
 
 <!-- translation-section: voting-options -->
 
 ### Stemopties
 
-Elk sjabloon voor een voorstel of peiling biedt opties om op te stemmen.
+Elk sjabloon biedt standaard stemopties. Afhankelijk van het sjabloon kun je opties bewerken, verwijderen, verplaatsen of toevoegen om ze af te stemmen op jouw besluitvormingsproces:
 
-Afhankelijk van het sjabloon kun je stemopties bewerken, verwijderen, verplaatsen of toevoegen om ze af te stemmen op jouw besluitvormingsproces.
-
-- Gebruik het potloodpictogram om een stemoptie te bewerken
-- Gebruik het prullenbakpictogram om ongewenste stemopties te verwijderen
-- Gebruik de sleepgreep om de volgorde van stemopties te wijzigen
-- Voeg stemopties toe met **Voeg optie toe** als het sjabloon aangepaste opties toestaat
+- Selecteer het potloodpictogram om een stemoptie te bewerken.
+- Selecteer het prullenbakpictogram om een stemoptie te verwijderen.
+- Versleep de sleepgreep om de volgorde van stemopties te wijzigen.
+- Selecteer **Voeg optie toe** om een stemoptie toe te voegen als het sjabloon aangepaste opties toestaat.
 
 ![](vote_options.png)
 
 <!-- translation-section: edit-voting-options -->
 
 ### Stemopties bewerken
-Je kunt stemopties op verschillende manieren instellen zodat ze passen bij de manier waarop jouw organisatie besluiten neemt.
 
-Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te openen:
+Selecteer het potloodpictogram naast een stemoptie om deze te bewerken:
 
-**Optienaam:** Een korte naam voor de optie.
-
-**Pictogram:** Selecteer een pictogram voor de optie, zoals een duim omhoog, een duim omlaag, Onthouding of Veto.
-
-**Betekenis:** Een zin die uitlegt wat het kiezen van deze optie betekent.
-
-**Vraag naar de reden:** Een vraag die kiezers aanspoort hun reden te geven of hun standpunt te heroverwegen.
+- **Optienaam:** Een korte naam voor de optie.
+- **Pictogram:** Een pictogram voor de optie, zoals een duim omhoog, een duim omlaag, Onthouding of Veto.
+- **Betekenis:** Een zin die uitlegt wat het kiezen van deze optie betekent.
+- **Vraag naar de reden:** Een vraag die kiezers aanspoort hun keuze toe te lichten.
 
 ![](proposal_edit_option.png)
 
@@ -127,30 +117,23 @@ Gebruik het potloodpictogram naast de stemoptie om het bewerkingsvenster te open
 
 ### Looptijd
 
-Standaard opent de stemming direct wanneer je de peiling aanmaakt. Als je de stemming op een later moment wilt laten openen, vink je **De stemming is direct geopend.** uit en selecteer je een openingsdatum en -tijd.
+Standaard opent de stemming direct wanneer je de peiling start. Vink **De stemming is direct geopend.** uit en kies een openingsdatum en -tijd om de stemming voor later te plannen.
 
-Zo geef je mensen tijd voor discussie voordat de stemming opent, of zorg je ervoor dat een peiling of voorstel goed is ingesteld en op het juiste moment opent.
+Door de stemming te plannen kun je mensen tijd geven voor discussie voordat de stemming opent, of peilingen voorbereiden en vooraf kiezers toevoegen. Mensen kunnen een geplande peiling bekijken voordat deze opent, maar kunnen pas stemmen vanaf de openingstijd. Kiezers krijgen een melding wanneer de stemming opent, in plaats van wanneer je ze toevoegt.
 
-Als jouw groep bijvoorbeeld tijdens een komende vergadering over meerdere besluiten gaat stemmen, kun je de peilingen voorbereiden en vooraf kiezers toevoegen. Plan vervolgens alle peilingen zo dat ze openen wanneer de stemperiode begint. Mensen kunnen de peilingen bekijken voordat ze openen, maar kunnen nog niet stemmen.
+Selecteer **Peiling bewerken**, vink **De stemming is direct geopend.** aan en sla de wijzigingen op om een geplande peiling eerder te openen.
 
-Als een peiling een geplande openingstijd heeft, kun je kiezers toevoegen voordat de stemming opent. Kiezers krijgen een melding wanneer de stemming opent, in plaats van wanneer ze worden toegevoegd.
-
-Selecteer **Peiling bewerken**, vink **De stemming is direct geopend.** aan en sla de wijzigingen op om de stemming vóór het geplande tijdstip te openen.
-
-**Kiezers een melding sturen wanneer de peiling opent:** Als dit is aangevinkt (standaard), krijgen alle kiezers een melding wanneer de stemming opent. Vink dit uit als je de stemming wilt openen zonder meldingen te sturen.
-
-**Sluitingsdatum en -tijd:** Selecteer de sluitingsdatum en sluitingstijd voor jouw peiling.
-
-Geef mensen voldoende tijd om te stemmen. Je kunt het voorstel bijvoorbeeld vóór een vergadering laten sluiten, of voorkomen dat het in het weekend sluit, zodat mensen op tijd een herinnering krijgen. Als het nodig is, kun je de peiling eerder sluiten of de sluitingstijd uitstellen.
+- **Kiezers een melding sturen wanneer de peiling opent:** Standaard aangevinkt, zodat alle kiezers een melding krijgen wanneer de stemming opent. Vink dit uit om de stemming te openen zonder meldingen te sturen.
+- **Sluitingsdatum en -tijd:** Kies wanneer de stemming sluit. Geef mensen voldoende tijd om te stemmen. Laat de peiling bijvoorbeeld vóór een vergadering sluiten of vermijd weekenden, zodat herinneringen op een geschikt moment aankomen. Je kunt een peiling eerder sluiten of de sluitingstijd uitstellen zolang de peiling open is.
 
 <!-- translation-section: who-can-vote -->
 
 ### Wie mag stemmen?
 
-Kies wie in de peiling mag stemmen.
+Kies wie in de peiling mag stemmen:
 
-- **Iedereen in de groep** (of **Iedereen in de thread**): iedereen met toegang tot de peiling mag stemmen, ook mensen die later lid worden.
-- **Alleen voor geselecteerde personen.**: alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
+- **Iedereen in de groep** (of **Iedereen in de thread**): Iedereen met toegang tot de peiling mag stemmen, ook mensen die later lid worden.
+- **Alleen voor geselecteerde personen.:** Alleen de mensen die je toevoegt mogen stemmen. Gebruik dit wanneer alleen bepaalde leden mogen stemmen, zoals een bestuur of een commissie.
 
 Nadat je een peiling met **Alleen voor geselecteerde personen.** start, opent **Kiezers beheren** zodat je kiezers kunt toevoegen. Je kunt later kiezers toevoegen of verwijderen. Zie [Kiezers beheren](/en/user_manual/polls/manage_voters).
 
@@ -158,14 +141,18 @@ Nadat je een peiling met **Alleen voor geselecteerde personen.** start, opent **
 
 ## Meer instellingen
 
+Open **Meer instellingen** om herinneringen, anoniem stemmen, redenen voor stemmen, de zichtbaarheid van het resultaat, [quorum](/en/user_manual/polls/quorum/), [gewogen stemmen](/en/user_manual/polls/weighted_voting/) en **Opties in willekeurige volgorde weergeven** in te stellen. Deze laatste instelling is beschikbaar bij peilingen met Kiezen, Beoordelen, Verdelen en Rangschikken om de invloed van de volgorde te beperken.
+
 ![](settings_advanced.png)
 
 <!-- translation-section: reminder -->
 
 ### Herinnering
-Stuur 24 uur voordat de peiling sluit een melding 'Sluit binnenkort'. Zo kunnen mensen zien hoe anderen hebben gestemd en hun eigen stem heroverwegen, of kun je de deelname aan de peiling verhogen.
 
-Instellingsopties:
+Stuur 24 uur voordat de peiling sluit een melding "Sluit binnenkort" om deelname aan te moedigen of mensen de kans te geven hun stem te heroverwegen.
+
+Opties:
+
 - Niemand
 - Auteur
 - Mensen die nog niet gestemd hebben (standaard)
@@ -176,49 +163,46 @@ Bij een anonieme peiling die minstens 24 uur duurt, stuurt Loomio tijdens de laa
 <!-- translation-section: anonymous-voting -->
 
 ### Anoniem stemmen
-Als dit is ingeschakeld, worden stemmen apart van de identiteit van kiezers opgeslagen. Het resultaat verschijnt nadat de stemming sluit. Kiezers kunnen geen redenen toevoegen en hun ingediende stem niet bekijken of wijzigen.
 
-Zie [Anoniem stemmen](/en/user_manual/polls/anonymous_voting) voor details over hoe de identiteit van kiezers gescheiden wordt van ingediende stemmen, welke informatie bewaard blijft en wat de grenzen van de bescherming zijn.
+Als dit is ingeschakeld, slaat Loomio stemmen apart van de identiteit van kiezers op. Het resultaat blijft verborgen totdat de stemming sluit. Kiezers kunnen geen redenen voor hun stem toevoegen en hun ingediende stem niet bekijken of wijzigen.
+
+Zie [Anoniem stemmen](/en/user_manual/polls/anonymous_voting) voor uitleg over hoe de identiteit van kiezers gescheiden wordt van stemmen, welke informatie bewaard blijft en wat de grenzen van deze bescherming zijn.
 
 > [!WARNING]
-> Zodra een peiling is gestart, kun je de peiling niet meer bewerken om deze anoniem te maken of de instelling voor anoniem stemmen ongedaan te maken. Je kunt een anonieme peiling niet heropenen nadat deze is gesloten.
+> Zodra de stemming opent, kun je anoniem stemmen niet meer in- of uitschakelen. Je kunt een anonieme peiling niet heropenen nadat deze is gesloten.
 
 <!-- translation-section: vote-reason -->
 
 ### Reden voor de stem
-Het kan nuttig zijn om te begrijpen waarom mensen hebben gestemd zoals ze hebben gedaan. Met deze instelling kun je mensen vragen hun gedachten te delen wanneer ze stemmen.
 
-De beschikbare instellingen hangen af van het sjabloon:
+Vraag kiezers toe te lichten waarom ze hebben gestemd zoals ze hebben gedaan. De beschikbare instellingen hangen af van het sjabloon:
 
-- **Optioneel** laat kiezers kiezen of ze een reden geven
-- **Vereist om niet akkoord te gaan of te blokkeren** vereist een reden wanneer de geselecteerde optie het stempictogram Oneens of Veto gebruikt
-- **Vereist bij blokkeren** vereist een reden wanneer de geselecteerde optie het stempictogram Veto gebruikt
-- **Verplicht** vereist dat elke kiezer een reden geeft
-- **Uitgeschakeld** verwijdert het veld voor de reden van de stem
+- **Optioneel:** Kiezers kunnen kiezen of ze een reden voor hun stem geven.
+- **Vereist om niet akkoord te gaan of te blokkeren:** Kiezers moeten een reden geven wanneer ze een optie met het pictogram Oneens of Veto kiezen.
+- **Vereist bij blokkeren:** Kiezers moeten een reden geven wanneer ze een optie met het pictogram Veto kiezen.
+- **Verplicht:** Elke kiezer moet een reden geven.
+- **Uitgeschakeld:** Verwijdert het veld voor de reden van de stem.
 
 ![](vote_reason_options.png)
 
-De voorwaardelijke instellingen volgen het stempictogram en niet de optienaam. Ze blijven gelden als je Oneens hernoemt naar bijvoorbeeld Bezwaar. Het sjabloon Consent gebruikt standaard **Vereist om niet akkoord te gaan of te blokkeren**, terwijl het sjabloon Consensus standaard **Vereist bij blokkeren** gebruikt. Andere sjablonen gebruiken standaard **Optioneel**. De auteur van de peiling kan de instelling voor een afzonderlijke peiling wijzigen.
+De voorwaardelijke instellingen volgen het stempictogram en niet de optienaam. Ze blijven dus gelden als je Oneens hernoemt naar Bezwaar. Het sjabloon Consent gebruikt standaard **Vereist om niet akkoord te gaan of te blokkeren**, het sjabloon Consensus gebruikt standaard **Vereist bij blokkeren** en andere sjablonen gebruiken standaard **Optioneel**. De auteur van de peiling kan deze instelling voor een afzonderlijke peiling wijzigen.
 
-**Reden beperken tot maximaal 500 tekens:** Korte redenen voor stemmen zijn makkelijker te begrijpen. Een verzameling beknopte redenen helpt bij het nemen van een besluit. Deze instelling is standaard aangevinkt. Vink deze uit om langere redenen toe te staan.
+**Reden beperken tot maximaal 500 tekens:** Standaard aangevinkt om redenen voor stemmen beknopt te houden. Vink dit uit om langere redenen toe te staan.
 
 <!-- translation-section: hide-results -->
 
 ### Resultaat verbergen
 
-Als je wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kun je het resultaat van de peiling verbergen.
+Verberg het resultaat van de peiling zodat mensen kunnen stemmen zonder te zien hoe anderen hebben gestemd:
 
-Wanneer het resultaat verborgen is totdat een stem is uitgebracht, kunnen mensen na het stemmen de stemkeuzes en redenen zien.
-
-Wanneer het resultaat verborgen is totdat de stemming sluit, zijn antwoorden op stemmen en vermeldingen in stemredenen uitgeschakeld totdat de peiling sluit. Je kunt de sluitingstijd verlengen zolang de peiling open is, maar je kunt de peiling na het sluiten niet heropenen.
+- **Totdat een stem is uitgebracht:** Mensen kunnen stemkeuzes en redenen voor stemmen zien nadat ze hun eigen stem hebben uitgebracht.
+- **Totdat de stemming sluit:** Het resultaat, antwoorden op stemmen en vermeldingen in redenen voor stemmen blijven verborgen totdat de peiling sluit. Je kunt de sluitingstijd uitstellen zolang de peiling open is, maar je kunt de peiling niet heropenen nadat deze is gesloten.
 
 <!-- translation-section: editing-settings-before-voting-opens -->
 
 ### Instellingen bewerken voordat de stemming opent
 
-Mensen met toestemming om een peiling te bewerken, kunnen de details en instellingen wijzigen voordat de stemming opent, waaronder anoniem stemmen en de zichtbaarheid van het resultaat. Zodra de stemming opent, ligt de anonimiteit vast en kan het resultaat dat tot het sluiten verborgen is, niet eerder worden getoond.
-
-Anonieme peilingen verbergen het resultaat altijd totdat de stemming sluit.
+Iedereen met toestemming om de peiling te bewerken, kan de details en instellingen wijzigen voordat de stemming opent, waaronder anoniem stemmen en de zichtbaarheid van de resultaten. Zodra de stemming opent, ligt de anonimiteit vast en kunnen resultaten die tot het sluiten verborgen blijven, niet eerder worden getoond.
 
 <!-- translation-section: managing-polls -->
 
@@ -232,13 +216,13 @@ Open het menu met de drie puntjes rechtsonder in de peiling.
 
 ### Peiling bewerken
 
-Gebruik **Peiling bewerken** om de inhoud of instellingen van de peiling te bewerken.
+Selecteer **Peiling bewerken** om de inhoud of instellingen van de peiling te wijzigen.
 
 <!-- translation-section: save-as-template -->
 
-### Opslaan als sjabloon
+### Bewaren als sjabloon
 
-Gebruik **Opslaan als sjabloon** in het actiemenu van een peiling om de inhoud, stemopties, toelichtingen en instellingen opnieuw te gebruiken. Controleer het vooraf ingevulde sjabloonformulier, geef het sjabloon een naam en ondertitel en selecteer **Sjabloon opslaan**. Mensen in de groep kunnen het dan kiezen wanneer ze een nieuwe peiling starten.
+Selecteer **Bewaren als sjabloon** om de inhoud, stemopties, toelichtingen en instellingen van de peiling opnieuw te gebruiken. Controleer het vooraf ingevulde formulier, geef het sjabloon een naam en ondertitel en selecteer **Sjabloon opslaan**. Mensen in de groep kunnen het dan kiezen wanneer ze een nieuwe peiling starten.
 
 Groepsadmins kunnen sjablonen opslaan. Leden kunnen dit ook als **Leden kunnen sjablonen maken.** is ingeschakeld in de groepsrechten. Zie [Peilingsjablonen](/en/user_manual/polls/poll_templates) voor meer informatie.
 
@@ -254,13 +238,13 @@ Groepsadmins kunnen sjablonen opslaan. Leden kunnen dit ook als **Leden kunnen s
 
 ### Peiling exporteren
 
-Gebruik **Export** om de status en resultaten van de peiling als spreadsheetbestand (.csv) te downloaden. Zo krijg je de peilinggegevens zonder opmaak voor analyse of archivering.
+Selecteer **Export** om de status en resultaten van de peiling als spreadsheetbestand (.csv) te downloaden voor analyse of archivering.
 
 <!-- translation-section: print -->
 
 ### Afdrukken
 
-Gebruik **Afdrukken** bij de threadacties om een afdrukbaar HTML-document te openen. Je kunt het afdrukken of opslaan als PDF voor publicatie en archivering.
+Open het menu met de drie puntjes van de thread en selecteer **Afdrukken** om een afdrukbare HTML-weergave van de discussie en de bijbehorende peilingen te openen. Je kunt deze afdrukken of opslaan als PDF voor publicatie of archivering.
 
 ![](proposal_print.png#width-80)
 
@@ -268,11 +252,7 @@ Gebruik **Afdrukken** bij de threadacties om een afdrukbaar HTML-document te ope
 
 ### Verwijderen
 
-Met **Delete** verwijder je de peiling. Je wordt eerst gevraagd te bevestigen dat je de peiling wilt verwijderen.
-
-Controleer of je de peiling wilt verwijderen. Er is geen optie om deze te herstellen.
-
-Na het verwijderen blijft de aanduiding **Item verwijderd** in de thread staan.
+Selecteer **Delete** en bevestig om de peiling definitief te verwijderen. Verwijderde peilingen kunnen niet worden hersteld. De aanduiding **Item verwijderd** blijft in de thread staan.
 
 ![](proposal_delete.png)
 
@@ -280,4 +260,4 @@ Na het verwijderen blijft de aanduiding **Item verwijderd** in de thread staan.
 
 ### Bladwijzer opslaan
 
-Gebruik **Sla bladwijzer op** om de peiling aan je bladwijzers toe te voegen, zodat je deze later snel kunt openen.
+Selecteer **Sla bladwijzer op** om de peiling aan je bladwijzers toe te voegen, zodat je deze later snel kunt openen.

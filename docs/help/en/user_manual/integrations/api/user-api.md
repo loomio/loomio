@@ -6,7 +6,7 @@
 
 `/api/user0` is the user-oriented API for integrations with Loomio. It uses the API key of a user account, and every action is performed as that user.
 
-Group operations use the memberships and group permissions of the API-key user. Instance-administrator status does not expand an API key's access to groups or content; use the Server API for instance-level administration.
+Group operations use the memberships and group permissions of the API-key user. Instance admin status does not expand an API key's access to groups or content; use the Server API for instance-level administration.
 
 Use the API key from the Loomio user account that will perform the actions. A dedicated bot account is useful when an integration should not be invited to polls or receive notifications.
 
@@ -90,7 +90,9 @@ curl 'https://www.loomio.com/api/user0/threads/123/items?compact=1' \
   -H 'Authorization: Bearer YOUR_API_KEY'
 ```
 
-For direct control, pass `exclude_types` with space-separated singular record types. For example, `exclude_types=group reaction` omits related groups and reactions. Common values are `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, and `topic_item`. Exclusions apply to related records, not the primary resource requested by the endpoint.
+For direct control, pass `exclude_types` with space-separated singular record types. For example, `exclude_types=group reaction` omits related groups and reactions.
+
+Common values are `topic`, `group`, `parent`, `membership`, `reaction`, `tag`, `translation`, `user`, `discussion`, `poll`, `poll_option`, `stance`, `stance_choice`, `outcome`, and `topic_item`. Exclusions apply to related records, not the primary resource requested by the endpoint.
 
 Collection responses include `meta.total` when an exact collection size is defined. The total is calculated before `limit` and `offset` are applied. Endpoints such as search that intentionally return a bounded result set omit `meta.total` rather than returning `null`.
 
@@ -243,7 +245,7 @@ curl https://www.loomio.com/api/user0/discussions/abc123 \
 
 ### List Discussions
 
-List discussions visible to the API-key user in a group. For a publicly visible group, a nonmember can list its public discussions; private discussions remain restricted to users who can read them in Loomio.
+List discussions visible to the API-key user in a group. For a publicly visible group, a non-member can list its public discussions; private discussions remain restricted to users who can read them in Loomio.
 
 `GET /api/user0/discussions`
 
@@ -362,7 +364,7 @@ Important group fields include:
 | `memberships_count` | Number of active and pending memberships |
 | `accepted_memberships_count` | Number of accepted memberships |
 | `pending_memberships_count` | Number of pending invitations |
-| `admin_memberships_count` | Number of group administrators |
+| `admin_memberships_count` | Number of group admins |
 | `discussions_count` | Number of discussions directly in the group |
 | `polls_count` | Number of polls directly in the group |
 | `subgroups_count` | Number of subgroups |
@@ -397,7 +399,7 @@ The response contains the group in the `groups` array and uses the same fields a
 
 ### List Memberships
 
-List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group administrator.
+List the memberships visible to the API-key user. Group members can read member names, IDs, titles, and roles. Email addresses are included only for the API-key user's own account or when the API-key user is a group admin.
 
 `GET /api/user0/memberships`
 
@@ -428,7 +430,7 @@ curl 'https://www.loomio.com/api/user0/memberships?group_id=123&limit=50&offset=
 
 ### Manage Memberships
 
-Send a list of emails. It will invite all the new email addresses to the group. Unlike listing memberships, this operation requires group-administrator permission.
+Send a list of emails to invite new people to the group. Unlike listing memberships, this operation requires group admin permission.
 
 `POST /api/user0/memberships`
 
@@ -457,7 +459,7 @@ curl https://www.loomio.com/api/user0/memberships \
   }'
 ```
 
-If you pass `remove_absent=1`, any members of the group who were not included in the list will be removed from the group. Be careful, you could remove everyone in your group.
+If you pass `remove_absent: true`, any group members not included in the list are removed from the group. Be careful: this can remove everyone in your group.
 
 ```bash
 curl https://www.loomio.com/api/user0/memberships \
@@ -467,11 +469,11 @@ curl https://www.loomio.com/api/user0/memberships \
     "emails": [
       "person@example.com"
     ],
-    "remove_absent": 1
+    "remove_absent": true
   }'
 ```
 
-This returns an object with `{added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}`.
+This returns an object with `{"added_emails": ["person@added.com"], "removed_emails": ["person@removed.com"]}`.
 
 <!-- translation-section: participation-report -->
 
@@ -495,7 +497,9 @@ Return the same aggregated participation data used by Loomio's Participation rep
 | `interval` | Interval for the `base` section: `day`, `week`, `month`, or `year` |
 | `member_type` | Set to `delegate` with `section=users` to return only current delegates |
 
-A person is a delegate when they have an active delegate membership in any selected group. Their counts are aggregated across all selected groups. Delegate rows are returned even when every activity count is zero. Counts cover threads, comments, polls, votes, outcomes, and reactions; they are not voting participation rates. User rows also include identified ballots issued, cast, and missed. Anonymous polls are excluded from all per-person voting counts. `all_votes_cast` is true only when at least one ballot was issued and every issued ballot was cast.
+A person is a delegate when they have an active delegate membership in any selected group. Their counts are aggregated across all selected groups, and delegate rows are returned even when every activity count is zero.
+
+Counts cover threads, comments, polls, votes, outcomes, and reactions; they are not voting participation rates. User rows also include identified ballots issued, cast, and missed, while anonymous polls are excluded from all per-person voting counts. `all_votes_cast` is true only when at least one ballot was issued and every issued ballot was cast.
 
 The API applies the same group visibility rules as the in-product report. A user API key cannot expose report data from groups that user cannot access.
 
@@ -613,7 +617,7 @@ curl https://www.loomio.com/api/user0/polls \
     "options": [
       "Town hall",
       "Library",
-      "Community centre"
+      "Community center"
     ]
   }'
 ```
@@ -717,9 +721,11 @@ curl https://www.loomio.com/api/user0/polls/abc123 \
 
 ### List Polls
 
-List polls visible to the API-key user in a group, including standalone polls and polls within discussions. For a publicly visible group, a nonmember can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list closed polls and read their outcomes where one has been set.
+List polls visible to the API-key user in a group, including standalone polls and polls within discussions. For a publicly visible group, a non-member can list its public polls; private polls remain restricted to users who can read them in Loomio. The response includes each visible poll's current outcome, so you can use `status=closed` to list closed polls and read their outcomes where one has been set.
 
-To display decision status alongside discussions, fetch discussions and polls for the same group, using `status=all` for polls, and match their `topic_id` values. Fetch every page using `limit` and `offset`. A discussion can have several polls, so choose which poll determines your displayed status, for example the most recently created poll. A non-null `closed_at` identifies a closed poll; a null `closing_at` indicates a draft. When a poll has an outcome, its `current_outcome_id` identifies a record in the response's `outcomes` array; match that record's `poll_id` to the poll's `id`.
+To display decision status alongside discussions, fetch discussions and polls for the same group (using `status=all` for polls) and match their `topic_id` values. Fetch every page using `limit` and `offset`. A discussion can have several polls, so choose which poll determines your displayed status, such as the most recently created poll.
+
+A non-null `closed_at` identifies a closed poll, and a null `closing_at` indicates a draft. When a poll has an outcome, its `current_outcome_id` identifies a record in the response's `outcomes` array; match that record's `poll_id` to the poll's `id`.
 
 For a single discussion, you can also [read its thread items](#read-thread) using `GET /api/user0/threads/:topic_id/items`. This returns the thread's polls and outcomes alongside its other items. Fetch every page to include the complete thread.
 
@@ -925,7 +931,9 @@ GET https://www.loomio.com/api/user0/threads/<topic_id>/items?limit=50&offset=0
 GET https://www.loomio.com/api/user0/threads/<topic_id>/markdown
 ```
 
-The `items` endpoint returns a page of the event stream in ascending sequence order, including visible comments, polls, votes, and outcomes. `meta.total` is the full item count for the thread. Fetch subsequent pages to read the entire stream. The `markdown` endpoint returns the complete visible thread as one Markdown document. Vote reasons are included only when they are visible to the API-key user.
+The `items` endpoint returns a page of the event stream in ascending sequence order, including visible comments, polls, votes, and outcomes. `meta.total` is the full item count for the thread; fetch subsequent pages to read the entire stream.
+
+The `markdown` endpoint returns the complete visible thread as one Markdown document. Vote reasons are included only when they are visible to the API-key user.
 
 All thread endpoints enforce the same permissions as the Loomio interface. The API key does not grant access to a thread the user cannot normally open.
 
@@ -935,7 +943,7 @@ All thread endpoints enforce the same permissions as the Loomio interface. The A
 
 The User API is request-based: an integration calls Loomio when it wants to read or change data. A group webhook provides the push direction. Loomio sends selected group events to your endpoint as they happen, so an integration does not need to poll the REST API for changes.
 
-Webhooks are configured per group and require group-administrator permission. They can be managed through the Loomio interface:
+Webhooks are configured per group and require group admin permission. They can be managed through the Loomio interface:
 
 1. Open the group.
 2. Open the group menu and select **Chat integrations**.
@@ -952,7 +960,7 @@ Agents and other integrations can instead manage webhooks through the Bearer-aut
 
 ### List webhooks
 
-Return the chat integrations configured for a group. The API-key user must be an administrator of that group. The response includes destination URLs, so it must not be exposed to ordinary group members.
+Return the chat integrations configured for a group. The API-key user must be a group admin for that group. The response includes destination URLs, so do not expose it to ordinary group members.
 
 `GET /api/user0/chatbots?group_id=123`
 
@@ -1005,7 +1013,7 @@ curl https://www.loomio.com/api/user0/chatbots \
   }'
 ```
 
-The API-key user must be an administrator of `group_id`. The destination is validated as a public URL before it is saved.
+The API-key user must be a group admin for `group_id`. The destination is validated as a public URL before it is saved.
 
 <!-- translation-section: update-a-webhook -->
 
@@ -1096,7 +1104,9 @@ Content-Type: application/json; charset=utf-8
 
 The request timeout is five seconds. A `2xx` response, including `204 No Content`, is treated as successful. Webhook consumers should respond promptly, process longer work asynchronously, and tolerate duplicate or out-of-order deliveries.
 
-Loomio does not currently add a webhook signature, shared-secret header, event ID, or delivery ID. Treat the full destination URL as a credential, do not expose it publicly, and include an unguessable token in the URL when the receiving service supports one. If a stable machine-readable event schema or signed delivery is required, use the webhook as a change notification and retrieve the current records through the authenticated User API.
+Loomio does not currently add a webhook signature, shared-secret header, event ID, or delivery ID. Treat the full destination URL as a credential, do not expose it publicly, and include an unguessable token in the URL when the receiving service supports one.
+
+If you need a stable machine-readable event schema or signed delivery, use the webhook as a change notification and retrieve the current records through the authenticated User API.
 
 <!-- translation-section: payload-formats -->
 

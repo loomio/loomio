@@ -1,24 +1,24 @@
 ---
 title: Інтеграції чату
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/chatbots/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/chatbots/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: af3f509fd0a87c7d
-  what-it-looks-like-in-chat: c425490496cb0ed2
-  generate-a-webhook-url: a4a95bf5c61e8e3f
-  set-up-a-chat-integration: d9c5b87891a0d747
-  invite-to-poll: 70a0e025c79a13f0
-  automatic-notifications: 381b622ece95e244
+  introduction: 46c095b75ad63f90
+  what-it-looks-like-in-chat: f317dcdbffe349dc
+  generate-a-webhook-url: ededdedfffbe6bcb
+  set-up-a-chat-integration: d671b54fe6ae3cd1
+  invite-to-poll: ffa06cde4354b243
+  automatic-notifications: 21e1f83202af63e1
 generated:
-  introduction: 64828d94c32a7d0c
-  what-it-looks-like-in-chat: 8cb9654b137f8fee
-  generate-a-webhook-url: dabf1610ea23f54e
-  set-up-a-chat-integration: 7a06838e6b042cb2
-  invite-to-poll: 6fdfb312281c7e39
-  automatic-notifications: 0e455059dc0991e9
+  introduction: 5ba82ecd9b785b3c
+  what-it-looks-like-in-chat: 2ffe0288cd413e96
+  generate-a-webhook-url: 6a371fc56779b852
+  set-up-a-chat-integration: f42cf68bdd281941
+  invite-to-poll: f678f603e000bd4d
+  automatic-notifications: 2ef9dc0b92c6804f
 title_source: 0eca19d30c6d7d3c
 title_generated: cabbf17c354c8fd1
 ---
@@ -33,19 +33,19 @@ Loomio може надсилати сповіщення до вашого чат
 
 Loomio підтримує Slack, Discord, Microsoft Teams, Matrix і Mattermost.
 
-Ви можете надсилати сповіщення до вашого чату будь-коли — так само, як запрошуєте окремих людей голосувати або приєднатися до теми.
-
-Ви також можете налаштувати автоматичне надсилання сповіщень щоразу, коли відбувається певна подія, наприклад коли хтось створює тему.
+Ви можете надсилати сповіщення до вашого чату вручну щоразу, коли запрошуєте людей до теми або опитування. Ви також можете налаштувати автоматичні сповіщення про певні події, наприклад коли хтось починає обговорення.
 
 <!-- translation-section: what-it-looks-like-in-chat -->
 
 ## Як це виглядає в чаті
+
 ![](chatbot_in_slack.png)
 
 <!-- translation-section: generate-a-webhook-url -->
 
-## Отримайте URL вебхука
-Ми підготували покрокові інструкції для кожного сервісу, який підтримуємо. Скористайтеся інструкцією для вашого сервісу, щоб отримати URL вебхука, потрібний для додавання інтеграції чату в Loomio.
+## Підключіть ваш сервіс чату
+
+Скористайтеся інструкцією для вашого сервісу чату, щоб отримати URL вебхука (або, для Matrix, токен доступу бота та ідентифікатор кімнати):
 
 - [Slack](../slack/)
 - [Microsoft Teams](../microsoft_teams/)
@@ -53,30 +53,31 @@ Loomio підтримує Slack, Discord, Microsoft Teams, Matrix і Mattermost.
 - [Matrix](../matrix/)
 - [Mattermost](../mattermost/)
 
-Наша система на основі вебхуків також може працювати з іншими системами, які підтримують вхідні вебхуки з форматуванням HTML або Markdown. Наприклад, це можуть бути Zapier або Rocketchat.
-
-Виберіть бота Mattermost, але вкажіть власний URL вебхука.
+Ви також можете підключити інші сервіси, які приймають вхідні вебхуки з форматуванням HTML або Markdown, наприклад Zapier або Rocket.Chat. У Loomio скористайтеся інтеграцією чату **Головне** та введіть власний URL вебхука.
 
 <!-- translation-section: set-up-a-chat-integration -->
 
 ## Налаштуйте інтеграцію чату
 
-Після налаштування вибраного сервісу (див. вище) ви отримаєте URL вебхука. Відкрийте **Інтеграції чату** в меню групи та додайте нову інтеграцію чату для вашої групи.
+Щоб додавати або редагувати інтеграції чату, ви повинні бути адміністратором групи.
 
-![](loomio-group-settings.png)
-![](loomio-settings-chatbots.png)
+1. Після налаштування вашого сервісу чату (див. вище) відкрийте меню групи в Loomio та виберіть **Інтеграції чату**.
 
-Наразі можна залишити всі прапорці невстановленими. Введіть назву (наприклад, "Discord #general") і URL, а потім натисніть кнопку збереження внизу форми.
+   ![](loomio-group-settings.png)
 
-![](loomio-chatbot-form.png)
+   ![](loomio-settings-chatbots.png)
 
-Якщо згодом ви захочете, щоб інтеграція отримувала автоматичні сповіщення, поверніться до її налаштувань і виберіть відповідні події.
+2. Додайте нову інтеграцію чату для вашого сервісу, введіть назву (наприклад, "Discord #general") і вставте URL вебхука.
+
+   ![](loomio-chatbot-form.png)
+
+3. Виберіть події, про які потрібно автоматично надсилати сповіщення, або залиште їх невибраними, якщо хочете надсилати сповіщення лише вручну, а потім збережіть налаштування. Ви можете змінити ці налаштування будь-коли.
 
 <!-- translation-section: invite-to-poll -->
 
-### Запросіть до опитування
+### Надішліть сповіщення вручну
 
-Ось як надіслати сповіщення до вашого чату із запрошенням голосувати щодо пропозиції. Так само можна поділитися висновком, запросити до теми, нагадати про голосування, повідомити про редагування опитування тощо.
+Щоб повідомити учасників вашого чату про опитування або обговорення, відкрийте його та виберіть **Запросити** (або іншу дію для надсилання сповіщень, наприклад **Поширити висновок**, **Нагадати проголосувати** або **Опитування відредаговано**). Виберіть вашу інтеграцію чату зі списку одержувачів і надішліть сповіщення.
 
 ![](invite_button_on_proposal.png)
 
@@ -89,6 +90,7 @@ Loomio підтримує Slack, Discord, Microsoft Teams, Matrix і Mattermost.
 <!-- translation-section: automatic-notifications -->
 
 ### Автоматичні сповіщення
+
 Щоб надсилати сповіщення щоразу, коли відбувається певна подія, відредагуйте інтеграцію чату та виберіть цю подію.
 
 ![](chatbot_enable_automatic_notifications.png)

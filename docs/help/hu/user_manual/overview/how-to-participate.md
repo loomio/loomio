@@ -1,32 +1,32 @@
 ---
 title: Hogyan vehetsz részt
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/overview/how-to-participate.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/overview/how-to-participate.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4337bfc044fc30d1
-  comment: 66cebed9d4121cb8
-  reply-to-a-comment: 705956c18391238b
-  get-someone-s-attention: 9c73c3364416af89
-  reactions: c7ad4f1cad909d8d
-  vote: 6d972304389c7684
-  state-a-reason: 94549cc6f864ac62
-  change-your-vote: 9e323ff17b0aedfa
-  results: 6fe0d5a60acc75eb
-  outcome: 8cb16ab9afb55fb8
+  introduction: a8163542495f8a53
+  comment: 94c20a0a9a3ba16c
+  reply-to-a-comment: '093c6ad2c2751cb8'
+  get-someone-s-attention: 23529e6d4f47ed66
+  reactions: 5f82546a69fda018
+  vote: 4e7ca73a897c6e60
+  state-a-reason: 47f972ac0f8edc4e
+  change-your-vote: a6a6a8d327f66483
+  results: 375780d5868ee81d
+  outcome: 23a179d6780dd7c5
 generated:
-  introduction: c642ead91ab6759f
-  comment: fd33eeb27c11942a
-  reply-to-a-comment: e6ace3f236ff4a6d
-  get-someone-s-attention: fcd012045c40be29
-  reactions: c2e78502a9a97864
-  vote: 37b51c83f2caea72
-  state-a-reason: 7c8173fd4ef79484
-  change-your-vote: f775e5f1edcfec22
-  results: bbaac5b7c3b5bce0
-  outcome: dd26ee965b4706e7
+  introduction: 507a8149ea50028d
+  comment: 4589acd421f40c4c
+  reply-to-a-comment: f7693db139bd1330
+  get-someone-s-attention: 1afc42f691ef5bb9
+  reactions: 966d89e2c92ca080
+  vote: f4fdf9eb0d56935d
+  state-a-reason: 6a531d0075946e20
+  change-your-vote: c3dbf9dc80cd0672
+  results: 506d4aef1404f9a7
+  outcome: 9235d38d2f8a3ac2
 title_source: a7854841fbd99ee4
 title_generated: d0f014345c75879c
 ---
@@ -35,17 +35,13 @@ title_generated: d0f014345c75879c
 
 # Hogyan vehetsz részt
 
-Miután bejelentkeztél abba a Loomio-csoportba, amelybe meghívót kaptál, részt vehetsz egy beszélgetésben vagy döntésben a Loomión.
-
-Olvass tovább, hogy megtudd, hogyan írhatsz hozzászólást egy szálban, és hogyan szavazhatsz egy szavazásban.
+Miután bejelentkeztél egy Loomio-csoportba, bekapcsolódhatsz a beszélgetésekbe, és szavazhatsz a szavazásokban.
 
 <!-- translation-section: comment -->
 
 ## Hozzászólás
 
-Írhatsz hozzászólást egy szálban, amelyre mások válaszolhatnak, reakciót adhatnak, vagy saját hozzászólással folytathatják a beszélgetést.
-
-Ha megírtad a szöveget, kattints a **Hozzászólás közzététele** gombra az azonnali közzétételhez. A hozzászólásodat mindenki láthatja, akinek van jogosultsága a szál megtekintésére.
+Oszd meg a gondolataidat egy hozzászólással egy beszélgetési szálban. Bárki, aki láthatja a szálat, elolvashatja a hozzászólásodat, válaszolhat rá, vagy reakciót adhat rá.
 
 ![](comment_add.png#width-90)
 
@@ -53,9 +49,7 @@ Ha megírtad a szöveget, kattints a **Hozzászólás közzététele** gombra az
 
 ### Válaszolj egy hozzászólásra
 
-Mások hozzászólására a hozzászólás alatti válasz ikonra kattintva válaszolhatsz.
-
-A válaszod megjelenik a szálban, és a hozzászólás szerzője e-mailes értesítést kap róla.
+Válaszolj közvetlenül egy hozzászólásra, ha annak egy konkrét pontjára szeretnél reagálni. A Loomio közzéteszi a válaszodat a szálban, és értesíti a hozzászólás szerzőjét.
 
 ![](comment_reply.png#width-90)
 
@@ -63,7 +57,7 @@ A válaszod megjelenik a szálban, és a hozzászólás szerzője e-mailes érte
 
 ### Hívd fel valakinek a figyelmét
 
-Hozzászólás írásakor értesíthetsz másokat.
+Írd be a **@** jelet, majd az illető nevét egy hozzászólásba, hogy értesítést kapjon.
 
 ![](comment_mention.png#width-90)
 
@@ -71,7 +65,7 @@ Hozzászólás írásakor értesíthetsz másokat.
 
 ### Reakciók
 
-Egy hozzászólásra adott reakcióval bátoríthatod a szerzőjét, és jelezheted, hogyan érzel a hozzászólásával kapcsolatban. Ez a részvétel gyors és egyszerű módja: nem kell szöveget írnod, és nem küld e-mailt. Emoji-reakció hozzáadásához kattints a hozzászólás alatti mosolygó emoji ikonra.
+Adj emoji-reakciót egy hozzászólásra, ha válasz írása vagy e-mailes értesítés küldése nélkül szeretnéd jelezni, hogy elolvastad.
 
 ![](comment_reaction.png#width-90)
 
@@ -79,13 +73,9 @@ Egy hozzászólásra adott reakcióval bátoríthatod a szerzőjét, és jelezhe
 
 ## Szavazz
 
-E-mailben vagy Loomio-értesítésben kaphatsz meghívót egy szavazásra. A szavazáshoz kattints az e-mailben található hivatkozásra.
+Nyiss meg egy szavazást egy e-mailes meghívóból, egy alkalmazáson belüli értesítésből vagy a csoportod **Szavazások** lapjáról. Olvasd el a szavazást és a csatolt fájlokat, majd válaszd ki a számodra megfelelő lehetőséget.
 
-Szavazni egyszerű: kattints vagy koppints a kiválasztott lehetőség ikonjára.
-
-Többféle szavazás létezik. Az alábbi példa egy szokásos javaslatot mutat be, amelyben az **Egyetért**, **Tartózkodik** vagy **Nem ért egyet** lehetőséget választhatod. Más lehetőségek is elérhetők lehetnek.
-
-Olvasd el a szavazást és a csatolt fájlokat, majd add le a szavazatodat az egyik lehetőség kiválasztásával.
+A Loomióban többféle szavazás létezik. Az alábbi példa egy javaslatot mutat be az **Egyetért**, **Tartózkodik** és **Nem ért egyet** lehetőségekkel.
 
 ![](proposal_example.png#width-90)
 
@@ -93,7 +83,7 @@ Olvasd el a szavazást és a csatolt fájlokat, majd add le a szavazatodat az eg
 
 ### Adj meg indoklást
 
-Szavazáskor az **Indoklás** mezőben azt is leírhatod, miért így szavaztál. Ez nem kötelező.
+Az **Indoklás** mezőben röviden leírhatod, miért így szavaztál. Ez nem kötelező, kivéve, ha a szavazás megköveteli.
 
 ![](vote_reason.png#width-90)
 
@@ -101,13 +91,11 @@ Szavazáskor az **Indoklás** mezőben azt is leírhatod, miért így szavaztál
 
 ### Módosítsd a szavazatodat
 
-A javaslat lezárásáig **módosíthatod a szavazatodat**.
+A szavazás lezárásáig bármikor módosíthatod a szavazatodat, például ha új információ merül fel. (A névtelen szavazásokban leadott szavazatokat a beküldés után nem lehet módosítani.)
 
 ![](vote_change.png#width-90)
 
-Több oka is lehet annak, hogy módosítani szeretnéd a szavazatodat. Például új információk hatására átgondolhatod a döntésedet, és megváltoztathatod a szavazatodat.
-
-Ilyenkor is megadhatsz indoklást arról, miért módosítottad a szavazatodat.
+Az indoklásodat is frissítheted, hogy elmagyarázd, miért módosítottad a szavazatodat.
 
 ![](vote_edit.png#width-90)
 
@@ -115,20 +103,16 @@ Ilyenkor is megadhatsz indoklást arról, miért módosítottad a szavazatodat.
 
 ### Eredmények
 
-A javaslat eredményei a szavazatok leadásával frissülnek, így láthatod, hogyan alakul a javaslat támogatottsága.
+A legtöbb szavazásban az eredmények a szavazatok leadásával frissülnek. (Egyes szavazások a lezárásig elrejtik az eredményeket.)
 
 ![](proposal_results.png#width-90)
 
-Egy megosztó javaslatnál gyakoriak a vegyes eredmények, de ez nem jelenti azt, hogy a javaslat kudarcot vallott.
-
-A javaslat során felmerülő új információk gyakran segítenek egy jobb javaslat kialakításában, amelyet nagyobb valószínűséggel fogadnak el.
+Nehéz kérdésekben gyakoriak a vegyes eredmények, és ez nem jelenti azt, hogy a folyamat kudarcot vallott. Az új nézőpontok gyakran segítenek a csoportnak jobb javaslatot megfogalmazni.
 
 <!-- translation-section: outcome -->
 
 ### Következtetés
 
-Amikor a javaslat lezárul, a szerző felszólítást kap a **Következtetés** megadására.
-
-Ez fontos utolsó lépés a döntés rögzítéséhez és ahhoz, hogy mindenki tudja, mi történik ezután.
+Amikor a szavazás lezárul, a szerző a **Következtetés** közzétételével rögzítheti, hogy milyen döntés született, és mi történik ezután.
 
 ![](proposal_outcome.png#width-90)

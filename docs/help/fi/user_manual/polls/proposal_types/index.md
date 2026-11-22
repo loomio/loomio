@@ -1,24 +1,24 @@
 ---
 title: Kyselyt
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: c1f266150c62e7a7
-  simple-poll: 3824b6e1873ca44d
+  simple-poll: 952f8e7879e9821f
   score-poll: c79a526a798d88c8
-  dot-vote: bea83a9dbecdec18
-  ranked-choice: ee9d492ec90d547f
+  dot-vote: 319ecff41a7d837f
+  ranked-choice: 41c4129e31ce9c89
   time-poll: 24e0812ad4fdfcdc
   stv-election: 4be3deafa637b6ed
 title_source: 996729458535904a
@@ -42,7 +42,7 @@ Kyselyillä kerätään valintoja, pisteytyksiä, pistejakoja, etusijajärjestyk
 
 <!-- translation-section: simple-poll -->
 
-## Yksinkertainen kysely
+## Valinta
 
 [Valinta](/en/user_manual/polls/choose/) antaa osallistujien valita yhden tai useamman vaihtoehdon. Käytä sitä suosituimman vaihtoehdon löytämiseen tai vaihtoehtojen rajaamiseen.
 
@@ -54,13 +54,13 @@ Kyselyillä kerätään valintoja, pisteytyksiä, pistejakoja, etusijajärjestyk
 
 <!-- translation-section: dot-vote -->
 
-## Pisteäänestys
+## Pistejako
 
-[Pistejako](/en/user_manual/polls/allocate/) antaa jokaiselle osallistujalle tietyn määrän pisteitä jaettavaksi. Käytä sitä tärkeysjärjestyksen selvittämiseen, kun yhden asian valitseminen tarkoittaa, että toiselle jää vähemmän huomiota tai resursseja.
+[Pistejako](/en/user_manual/polls/allocate/) antaa jokaiselle osallistujalle tietyn määrän pisteitä jaettavaksi. Käytä sitä tärkeysjärjestyksen asettamiseen, kun yhden asian valitseminen tarkoittaa, että toiselle jää vähemmän huomiota tai resursseja.
 
 <!-- translation-section: ranked-choice -->
 
-## Etusijajärjestys
+## Järjestys
 
 [Järjestys](/en/user_manual/polls/rank/) antaa osallistujien asettaa vaihtoehdot etusijajärjestykseen. Käytä sitä ryhmän yhteisen etusijajärjestyksen selvittämiseen tai yhden suosituimman vaihtoehdon valitsemiseen.
 

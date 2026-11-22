@@ -1,16 +1,16 @@
 ---
 title: Csoportod törlése
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/deleting_your_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: bb26ad48b8ce1e1d
-  group-data-is-permanently-deleted-after-90-days: e2074e63cb56c4cd
+  introduction: e811b127a678d5e3
+  group-data-is-permanently-deleted-after-90-days: 0e03cd613e5d1868
 generated:
-  introduction: 51aeb9160694b2f4
-  group-data-is-permanently-deleted-after-90-days: 614b22086f7b0641
+  introduction: add2c3109fd57458
+  group-data-is-permanently-deleted-after-90-days: 63038a1e6af8ce50
 title_source: 9a0868f49f1262ea
 title_generated: 4e608398015d0580
 ---
@@ -19,32 +19,29 @@ title_generated: 4e608398015d0580
 
 # Csoportod törlése
 
-Loomio-csoportod törlésével elindítod a csoport összes adatának végleges törlését.
+Csak csoportadmin törölhet csoportot. A csoport törlése azonnal megszünteti a hozzáférést, és 90 nap múlva esedékes végleges törlésre ütemezi a csoport és alcsoportjai összes adatát.
 
-Ha vannak olyan adatok, amelyeket meg szeretnél őrizni, a folytatás előtt [exportáld a csoport adatait](/en/user_manual/groups/data_export/), és töltsd le kézzel az összes fontos fájlt, amelyet feltöltöttél.
+Mielőtt törölsz egy csoportot, [exportáld a csoport adatait](/en/user_manual/groups/data_export), és töltsd le azokat a feltöltött fájlokat, amelyeket meg szeretnél őrizni.
 
-Kattints a három pontra a csoport legördülő menüjének megnyitásához, majd válaszd ki a **Csoport törlése** lehetőséget. Ezzel megszünteted a csoporthoz való hozzáférést, és elindítod a csoport összes adatának törlését a nyilvántartásunkból. A csoport törléséhez csoportadminnak kell lenned.
-
-Amikor törölsz egy csoportot, az azonnal eltűnik a felületről, és 90 nap múlva véglegesen törlődik. Te és a csoport tagjai azonnal elveszítitek a hozzáférést a csoporthoz. Ha tévedésből törölted a csoportot, a törléstől számított 90 napon belül vedd fel velünk a kapcsolatot, és kérd a helyreállítását.
-
-A törlésre váró csoportokat és alcsoportjaikat a tagok és a csoportadminok nem tekinthetik meg, nem vehetnek részt bennük, és nem exportálhatják az adataikat. Ez a mentett hivatkozásokból megnyitott szavazásokra is vonatkozik. A tagok nem hozhatnak létre és nem szerkeszthetnek tartalmat, nem szavazhatnak, nem küldhetnek bejelentéseket vagy emlékeztetőket, és nem fogadhatnak el meghívókat. A törlés megerősítése előtt exportáld a csoport adatait, és töltsd le a fontos fájlokat. A közvetlen beszélgetéseket és szavazásokat a törlés nem érinti.
-
-A csoport törlésének ütemezése leállítja a csoport és alcsoportjai tevékenységeiről szóló, még el nem küldött értesítéseket és a szavazási emlékeztetőket. Azok az üzenetek, amelyek küldése már folyamatban van, még megérkezhetnek.
-
-A figyelmeztető e-mail tartalmazza a csoport alcsoportjainak, tagjainak, beszélgetéseinek, szavazásainak és hozzászólásainak számát. Ha meg szeretnéd tartani a csoportot, vagy [exportálni szeretnéd az adatait](/en/user_manual/groups/data_export/), azonnal válaszolj, hogy a törlés előtt helyreállíthassuk a hozzáférést.
-
-Csoportod törlésével a Loomio-előfizetésed is megszűnik.
+A csoport törléséhez nyisd meg a csoport műveleti menüjét, és válaszd ki a **Csoport törlése** lehetőséget.
 
 ![Csoport törlése művelet az Oatmilk Cooperative menüjében](group_delete_group.png)
 
-A törlési szándékod megerősítéséhez meg kell adnod a csoportod nevét (*a kis- és nagybetűk számítanak*).
+A törlés megerősítéséhez add meg a csoport azonosítóját.
 
 ![Megerősítő űrlap, amely az Oatmilk Cooperative azonosítóját kéri](group_delete_group_confirm.png)
+
+Amikor megerősíted a törlést:
+
+- A csoport és alcsoportjai azonnal eltűnnek a felületről. A tagok és a csoportadminok többé nem tekinthetik meg a tartalmakat, nem vehetnek részt bennük, és nem exportálhatják őket. Ez a mentett hivatkozásokból megnyitott szavazásokra is vonatkozik.
+- Leállnak a csoport és alcsoportjai tevékenységeiről szóló, még el nem küldött értesítések és szavazási emlékeztetők, de azok az üzenetek, amelyek küldése már folyamatban van, még megérkezhetnek.
+- A Loomio-előfizetésed megszűnik.
+- A csoporton kívüli közvetlen beszélgetéseket és szavazásokat a törlés nem érinti.
+
+A Loomio figyelmeztető e-mailt is küld, amely felsorolja a csoport alcsoportjainak, tagjainak, beszélgetéseinek, szavazásainak és hozzászólásainak számát. Ha tévedésből törölted a csoportot, vagy még exportálnod kell az adatait, 90 napon belül válaszolj erre az e-mailre, vagy vedd fel velünk a kapcsolatot a hozzáférés helyreállításához.
 
 <!-- translation-section: group-data-is-permanently-deleted-after-90-days -->
 
 ## A csoport adatai 90 nap múlva véglegesen törlődnek
 
-90 nap múlva az összes szál, szavazás, fájl és egyéb csoporttartalom véglegesen törlődik. ***Ez nem vonható vissza!***
-
-Javasoljuk, hogy a folytatás előtt [exportáld a csoport adatait](/en/user_manual/groups/data_export/), és töltsd le kézzel az összes fontos fájlt, amelyet feltöltöttél.
+90 nap múlva a Loomio véglegesen törli a csoport és alcsoportjai összes szálát, szavazását, fájlját és egyéb tartalmát. Ez nem vonható vissza.

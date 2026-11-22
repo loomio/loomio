@@ -1,40 +1,38 @@
 ---
 title: Discord
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: bb577718d8620c90
+  introduction: 13e397766ada4916
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
-needs_review:
-  introduction: use "висновок" instead of "рішення" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Інтеграція з Discord
 
-_Підключення сповіщень вашої групи Loomio до командного чату в Discord._
-
-Loomio може надсилати сповіщення у ваші канали Discord, коли з’являються нові обговорення, пропозиції, коментарі, голоси та висновки. Ви також можете вручну сповістити учасників чату, коли потрібно нагадати людям про рішення.
+Loomio може надсилати сповіщення у ваші канали Discord, коли з’являються нові обговорення, опитування, коментарі, голоси та висновки. Ви також можете вручну сповістити учасників каналу, коли хочете нагадати людям про рішення.
 
 ---
 
-Відкрийте ваш сервер Discord і знайдіть меню налаштувань сервера.
-![](server-settings.png)
+1. Відкрийте ваш сервер Discord і перейдіть до **Налаштувань сервера**.
 
-Натисніть «Інтеграції»
-![](integrations.png)
+   ![](server-settings.png)
 
-Потім натисніть «Додати вебхук» і дайте йому назву, наприклад «Бот Loomio»
+2. Виберіть **Інтеграція**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Переконайтеся, що ви скопіювали URL-адресу вебхука в буфер обміну, і перейдіть за посиланням нижче.
+3. Виберіть **Додати вебхук**, дайте йому назву, наприклад `Loomio`, виберіть канал і скопіюйте URL-адресу вебхука.
+
+   ![](add-webhook.png)
+
+Тепер, коли у вас є URL-адреса вебхука, завершіть підключення в Loomio:
 
 [Налаштуйте інтеграцію з чатом у Loomio](../chatbots/#set-up-a-chat-integration)

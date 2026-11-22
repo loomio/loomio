@@ -2,13 +2,13 @@
 
 # Quick tour
 
-This page introduces the main parts of the Loomio interface and where to find the work that involves you.
+This page introduces the main parts of Loomio and where to find your work.
 
 <!-- translation-section: group-page -->
 
 ## Group page
 
-Your group home page introduces the group and provides access to its work.
+Your group home page describes the group and links to its work.
 
 ![](group_example.png)
 
@@ -16,15 +16,12 @@ Your group home page introduces the group and provides access to its work.
 
 ### Tabs
 
-The tabs under the group description provide access to:
+The tabs under the group description show:
 
-**Discussions** - The group's discussion threads and recent activity.
-
-**Polls** - A list of polls active in your group.
-
-**Members** - The people who belong to the group.
-
-**Files** - Documents and other files attached throughout the group. The tab collects files from discussion contexts, comments, proposals, and polls, so you can find a document without remembering where it was attached.
+- **Discussions**: The group's discussion threads and recent activity.
+- **Polls**: Open and closed polls in the group.
+- **Members**: The people who belong to the group.
+- **Files**: Files attached to discussions, comments, proposals, and polls across the group, so you can find a document without remembering where it was shared.
 
 See [Finding content](/en/user_manual/overview/finding-content) for help with search, filters, tags, bookmarks, and unread discussions.
 
@@ -46,13 +43,13 @@ Select your name in the sidebar to open your user menu.
 
 ![](user_settings_sidebar.png)
 
-Use this menu to edit your profile, change notification settings, choose a theme, manage account settings, and sign out.
+From this menu, you can edit your profile, change notification settings, choose a theme, manage your account, and sign out.
 
 <!-- translation-section: notifications -->
 
 ## Notifications
 
-The bell button at the top right on desktop, or in the bottom navigation bar on mobile, opens your in-app notifications. A badge appears when you have notifications you have not viewed.
+Select the bell icon at the top right on desktop, or in the bottom navigation bar on mobile, to open your in-app notifications. A badge shows when you have unread notifications.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -62,7 +59,7 @@ See [Notifications](/en/user_manual/users/email_settings) to learn about in-app 
 
 ## Mobile navigation
 
-On mobile, the bottom navigation bar gives you quick access to the sidebar, dashboard, and notifications. When reading a discussion, the thread menu opens its contents and actions.
+On mobile, the bottom navigation bar opens the sidebar, dashboard, and notifications. Inside a discussion, the thread menu opens its contents and actions.
 
 <!-- translation-section: what-to-do-next -->
 

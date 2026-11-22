@@ -1,28 +1,28 @@
 ---
 title: Se connecter
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 9aa03b133cc213ce
-  sign-in-with-a-passkey: c685bd268243f8f5
-  sign-in-with-email-and-password: 20db7df775a273d8
-  get-a-sign-in-code: 50bf073c798941bc
+  introduction: 15eb32ac962bc715
+  sign-in-with-a-passkey: 12038dab660af30d
+  sign-in-with-email-and-password: 4918f19e6c5c0e8e
+  get-a-sign-in-code: 2857b8b8be3a9bee
   create-an-account: 9ac55c48d388b8a9
-  sign-in-with-google: 1e8bfdcee244d0bd
-  other-loomio-sites: 123e31828ab49002
-  sign-out: e46344eaf7e35c15
+  sign-in-with-google: 22b4cd3763d09a34
+  other-loomio-sites: 37ad63f50883c4b4
+  sign-out: b4ab119ac81aad77
 generated:
-  introduction: 418dd46405279971
-  sign-in-with-a-passkey: 1ec5fce659a05b13
-  sign-in-with-email-and-password: 2fbefc58a4d1271e
-  get-a-sign-in-code: 5677518045828f2d
+  introduction: 9b11be29fc220ee1
+  sign-in-with-a-passkey: a8544081cd140da0
+  sign-in-with-email-and-password: 80cc61bdaa6d7113
+  get-a-sign-in-code: 18737012d60eae7d
   create-an-account: 623b824964a0e7bf
-  sign-in-with-google: 10cf1f6cda167ff8
-  other-loomio-sites: 6381b4f0de586051
-  sign-out: dba4dfc4fa0132c9
+  sign-in-with-google: 711e6ca9c7fccc81
+  other-loomio-sites: 8fe471b17bf86c33
+  sign-out: c4136cfe42233c99
 title_source: 824a1d703ce676bb
 title_generated: 0ac3d2cb30052ced
 ---
@@ -31,7 +31,7 @@ title_generated: 0ac3d2cb30052ced
 
 # Se connecter
 
-Sur Loomio.com, vous pouvez vous connecter avec une clé d’accès, votre adresse e-mail et votre mot de passe, un code de connexion envoyé par e-mail ou Google. Vous pouvez choisir la méthode disponible qui vous convient le mieux.
+Sur Loomio.com, vous pouvez vous connecter avec une clé d’accès, votre adresse e-mail et votre mot de passe, un code de connexion envoyé par e-mail ou Google. Choisissez la méthode qui vous convient le mieux.
 
 ![Le formulaire de connexion Loomio proposant une clé d’accès, une adresse e-mail, un mot de passe et un code envoyé par e-mail](sign_in_email.png)
 
@@ -39,17 +39,17 @@ Sur Loomio.com, vous pouvez vous connecter avec une clé d’accès, votre adres
 
 ## Se connecter avec une clé d’accès
 
-Sélectionnez **Utiliser une clé d’accès**. Votre navigateur ou votre appareil affiche les clés d’accès Loomio disponibles et vous demande de déverrouiller la clé sélectionnée avec son mécanisme habituel : verrouillage de l’écran, empreinte digitale, reconnaissance faciale, code PIN ou clé de sécurité. Vous n’avez pas besoin de saisir votre adresse e-mail au préalable.
+Sélectionnez **Utiliser une clé d’accès** : vous n’avez pas besoin de saisir votre adresse e-mail au préalable. Votre navigateur ou votre appareil affiche les clés d’accès Loomio disponibles et vous demande d’en déverrouiller une à l’aide du verrouillage de l’écran, de votre empreinte digitale, de la reconnaissance faciale, d’un code PIN ou d’une clé de sécurité.
 
-Vous pouvez ajouter, nommer et supprimer des clés d’accès depuis votre profil. Pour des raisons de sécurité, Loomio peut vous demander de vous reconnecter avant de les modifier. Donnez à chaque clé d’accès un nom reconnaissable, comme « Ordinateur portable du travail » ou « Téléphone ». Les clés d’accès sont liées au site Loomio sur lequel elles ont été créées et peuvent être synchronisées par votre appareil ou votre gestionnaire de mots de passe.
+Vous pouvez ajouter, nommer et supprimer des clés d’accès depuis votre profil. Pour des raisons de sécurité, Loomio peut vous demander de vous reconnecter avant de les modifier. Donnez à chaque clé d’accès un nom clair, comme « Ordinateur portable du travail » ou « Téléphone ». Les clés d’accès sont liées au site Loomio sur lequel vous les avez créées et peuvent être synchronisées entre vos appareils par votre appareil ou votre gestionnaire de mots de passe.
 
 <!-- translation-section: sign-in-with-email-and-password -->
 
 ## Se connecter avec une adresse e-mail et un mot de passe
 
-Saisissez votre adresse e-mail et votre mot de passe, puis sélectionnez **Se connecter**. Pour préserver la confidentialité des comptes, Loomio affiche le même message d’erreur lorsque l’adresse e-mail ou le mot de passe ne permet pas de se connecter.
+Saisissez votre adresse e-mail et votre mot de passe, puis sélectionnez **Se connecter**. Pour préserver la confidentialité des comptes, Loomio affiche le même message d’erreur, que l’adresse e-mail ou le mot de passe soit incorrect.
 
-Si vous n’avez pas ajouté de clé d’accès, Loomio vous propose d’en ajouter une après votre connexion avec un mot de passe. Vous pouvez décliner cette proposition, et Loomio mémorisera votre choix.
+Si vous n’avez pas encore ajouté de clé d’accès, Loomio vous propose d’en ajouter une après votre connexion. Vous pouvez décliner cette proposition, et Loomio mémorisera votre choix.
 
 Si vous n’avez pas de mot de passe ou si vous l’avez oublié, sélectionnez **Envoyer-moi un code**.
 
@@ -57,13 +57,13 @@ Si vous n’avez pas de mot de passe ou si vous l’avez oublié, sélectionnez 
 
 ## Obtenir un code de connexion
 
-Sélectionnez **Envoyer-moi un code**, saisissez votre adresse e-mail et envoyez le formulaire. Loomio affiche la même confirmation, que l’adresse corresponde ou non à un compte, afin qu’une autre personne ne puisse pas utiliser le formulaire pour découvrir qui utilise Loomio.
+Sélectionnez **Envoyer-moi un code**, saisissez votre adresse e-mail et envoyez le formulaire. Pour préserver la confidentialité des comptes, Loomio affiche la même confirmation, que l’adresse corresponde ou non à un compte.
 
-Si l’adresse correspond à votre compte, Loomio vous envoie un code à six chiffres. Revenez au formulaire de connexion, saisissez le code et sélectionnez **Se connecter**. Les codes de connexion expirent normalement après 24 heures et ne peuvent pas être réutilisés. Consultez votre dossier de courriers indésirables si le message n’arrive pas et vérifiez que vous avez saisi l’adresse associée à votre compte.
+Si l’adresse correspond à votre compte, Loomio vous envoie un code à six chiffres par e-mail. Revenez au formulaire de connexion, saisissez le code et sélectionnez **Se connecter**. Les codes expirent après 24 heures et ne peuvent être utilisés qu’une seule fois. Si le message n’arrive pas, consultez votre dossier de courriers indésirables et vérifiez que vous avez saisi l’adresse associée à votre compte.
 
 ![Le formulaire Loomio permettant de saisir un code de connexion à six chiffres](sign_in_code.png)
 
-Après chaque connexion avec un code, Loomio vous propose de définir ou de remplacer votre mot de passe. Si votre navigateur prend en charge les clés d’accès, vous pouvez également en ajouter une, même si vous en avez déjà ajouté une sur un autre appareil. Une clé d’accès vous permet de vous connecter rapidement avec l’empreinte digitale, la reconnaissance faciale ou le verrouillage de l’écran de votre appareil. Vous pouvez ignorer cette proposition et continuer à utiliser les codes envoyés par e-mail.
+Après une connexion avec un code, Loomio vous propose de définir ou de remplacer votre mot de passe, ou d’ajouter une clé d’accès si votre navigateur les prend en charge. Vous pouvez ignorer cette proposition et continuer à utiliser les codes envoyés par e-mail.
 
 <!-- translation-section: create-an-account -->
 
@@ -77,7 +77,7 @@ Pour préserver votre confidentialité, utilisez l’adresse e-mail à laquelle 
 
 ## Se connecter avec Google
 
-Sélectionnez **Se connecter avec Google** et authentifiez-vous avec votre compte Google. Si un compte Loomio existant utilise la même adresse e-mail, Loomio associe l’identité Google à ce compte.
+Sélectionnez **Se connecter avec Google** et connectez-vous avec votre compte Google. Si un compte Loomio existant utilise cette adresse e-mail, Loomio y associe Google. Sinon, Loomio crée un nouveau compte pour vous.
 
 <!-- translation-section: other-loomio-sites -->
 
@@ -87,12 +87,12 @@ Les organisations qui hébergent leur propre site Loomio peuvent configurer diff
 
 Certains sites exigent une invitation pour créer un compte. Sur ces sites, **Créer un compte** apparaît uniquement lorsque vous suivez un lien d’invitation.
 
-Un site privé utilisant uniquement l’authentification unique (SSO) affiche seulement l’option de connexion de son organisation. Il ne propose ni mots de passe gérés par Loomio, ni codes de connexion envoyés par e-mail, ni création de compte directement dans Loomio, ni clés d’accès gérées par Loomio. Si l’organisation utilise des clés d’accès, son fournisseur d’identité vous les demande lors de l’authentification unique.
+Certains sites privés exigent que vous vous connectiez par le système d’authentification unique (SSO) de votre organisation. Ces sites ne proposent ni mots de passe Loomio, ni codes envoyés par e-mail, ni clés d’accès, et ne permettent pas de créer un compte Loomio distinct. Si votre organisation utilise des clés d’accès, vous les utiliserez sur son écran de connexion.
 
 <!-- translation-section: sign-out -->
 
 ## Se déconnecter
 
-Ouvrez la barre latérale, sélectionnez votre nom, puis sélectionnez **Se déconnecter**. Sur un ordinateur partagé, déconnectez-vous lorsque vous avez terminé plutôt que de fermer uniquement l’onglet du navigateur.
+Ouvrez la barre latérale, sélectionnez votre nom, puis sélectionnez **Se déconnecter**. Sur un ordinateur partagé, déconnectez-vous toujours lorsque vous avez terminé plutôt que de fermer uniquement l’onglet du navigateur.
 
-La déconnexion met immédiatement fin à la session de ce navigateur. Loomio conserve l’adresse IP, les informations du navigateur ainsi que les heures de début et de fin de la session pendant 60 jours par défaut pour les enquêtes de sécurité. Les responsables de sites privés peuvent configurer cette durée. La suppression définitive de votre compte supprime cet historique des sessions.
+La déconnexion met immédiatement fin à la session de ce navigateur. Pour les enquêtes de sécurité, Loomio conserve l’adresse IP, les informations du navigateur ainsi que les heures de début et de fin de la session pendant 60 jours par défaut (les responsables de sites privés peuvent modifier cette durée). La suppression définitive de votre compte supprime cet historique des sessions.

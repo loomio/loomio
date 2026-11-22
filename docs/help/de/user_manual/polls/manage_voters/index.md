@@ -1,38 +1,38 @@
 ---
 title: Abstimmende verwalten
-source_revision: adca14fde066a1ed3f6b2bb163d402235efbc709
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/manage_voters/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-29'
+  'on': '2026-11-22'
 sections:
   introduction: ea21036eb694c27f
-  invite-people-to-vote-in-a-poll: c087ce6e0173270f
-  invite-guests-or-experts: c6e4d0e0811de6f2
+  invite-people-to-vote-in-a-poll: e9cc8e930bcf7ef5
+  invite-guests-or-experts: 8cad53202bef398e
   engage-people-while-a-poll-is-running: d0eb90b4b53003bc
   add-voters-to-the-poll: 621bd4bf8ed67895
-  remove-people-from-the-poll: be96ad95169a79a3
-  remind-people-to-vote: ab98343bd2bc18eb
-  view-notification-history: 675d77824d320d89
+  remove-people-from-the-poll: 1a2a5015e5c1b152
+  remind-people-to-vote: baa6578549be6f09
+  view-notification-history: f7f305618cb0346f
   close-early: e09d92a63b72c516
   reopen: f80ab5f17351d679
-  choose-an-audience: a7a00bf75338b395
-  check-your-recipients: 7c3de537341ecd1b
-  send-the-invitations: 7ca4926c4ff46564
+  choose-an-audience: 6cb6f0d75ded977e
+  check-your-recipients: 56a7d1a92377b4ff
+  send-the-invitations: f12fc1806394f916
 generated:
   introduction: 761b3ce5e9f7bf27
-  invite-people-to-vote-in-a-poll: bac3b7326f4c7a57
+  invite-people-to-vote-in-a-poll: 764d9da1c2b728f2
   invite-guests-or-experts: 5af53d62708e91d0
   engage-people-while-a-poll-is-running: c85d5092f12628e4
   add-voters-to-the-poll: ca4318f3d742fa1b
   remove-people-from-the-poll: fec33be78b9c5e33
-  remind-people-to-vote: e903b1d4127ddd99
+  remind-people-to-vote: f5e5735d056fb364
   view-notification-history: a333956d55f70285
   close-early: 02a1eb3d69399a73
   reopen: 2f2c2fa34fdb5299
-  choose-an-audience: 9e3c85e47e057c3a
-  check-your-recipients: bd097ca19440089e
-  send-the-invitations: 7c221b4500eccd2d
+  choose-an-audience: ed96adee3300ad5d
+  check-your-recipients: b87def983802e6e0
+  send-the-invitations: f87f807faa4507fa
 title_source: 10858faa0464257e
 title_generated: 91a81313c5851d9a
 ---
@@ -50,7 +50,7 @@ Mit **Abstimmende verwalten** gibst du Personen das Stimmrecht und lädst sie ei
 
 ## Personen zur Stimmabgabe einladen
 
-Nachdem du eine Abstimmung mit **Nur für ausgewählte Personen** gestartet hast, öffnet sich das Fenster **Abstimmende verwalten**. Du kannst es auch öffnen, indem du in der Abstimmung **Abstimmende verwalten** auswählst.
+Nachdem du eine Abstimmung mit **Nur für ausgewählte Personen** gestartet hast, öffnet sich **Abstimmende verwalten** automatisch. Du kannst es auch öffnen, indem du in der Abstimmung **Abstimmende verwalten** auswählst.
 
 ![Die Schaltfläche „Abstimmende verwalten“ am unteren Rand einer Abstimmung](proposal_after_start.png)
 
@@ -58,7 +58,7 @@ Nachdem du eine Abstimmung mit **Nur für ausgewählte Personen** gestartet hast
 
 ### Einen Personenkreis auswählen
 
-Klicke auf das leere Feld **Abstimmende finden oder einladen**, um Vorschläge anzuzeigen. Sie erscheinen in dieser Reihenfolge:
+Wähle das leere Feld **Abstimmende finden oder einladen** aus, um Vorschläge anzuzeigen. Sie erscheinen in dieser Reihenfolge:
 
 - deine Gruppe
 - **Delegierte von** deiner Gruppe, wenn deine Gruppe [delegierte Abstimmende](/en/user_manual/groups/delegated_voters) hat
@@ -72,7 +72,7 @@ In einem [direkten Thread](/en/user_manual/discussions/direct_discussions) biete
 
 <a id="invite-a-subgroup-to-vote"></a>
 
-Wähle einen Personenkreis aus, um diese Personen gemeinsam einzuladen. Wenn du beispielsweise **Oatmilk Cooperative** auswählst, werden die Personen in dieser Gruppe einbezogen. Du kannst auch einen verbundenen Chatroom auswählen, um die Einladung dort zu veröffentlichen. Eine Veröffentlichung in einem Chatroom fügt dessen Mitglieder nicht als Abstimmende hinzu.
+Wähle einen Personenkreis aus, um diese Personen gemeinsam einzuladen. Wenn du beispielsweise **Oatmilk Cooperative** auswählst, werden alle Personen in dieser Gruppe einbezogen. Du kannst auch einen verbundenen Chatroom auswählen, um die Einladung dort zu veröffentlichen — eine Veröffentlichung in einem Chatroom fügt dessen Mitglieder nicht als Abstimmende hinzu.
 
 <!-- translation-section: check-your-recipients -->
 
@@ -82,7 +82,7 @@ Nachdem du einen Personenkreis ausgewählt hast, zeigt das Feld dessen Namen und
 
 ![Oatmilk Cooperative ist ausgewählt, unter dem Feld wird die Anzahl der empfangenden Personen angezeigt](proposal_invite_members.png)
 
-Klicke auf den Namen des Personenkreises, um die einzelnen Personen anzuzeigen. Du kannst dann das **×** neben einer Person auswählen, um sie von dieser Einladung auszunehmen. Dadurch wird sie nicht aus der Gruppe entfernt.
+Wähle den Namen des Personenkreises aus, um die einzelnen Personen anzuzeigen. Du kannst dann **×** neben einer Person auswählen, um sie von dieser Einladung auszunehmen. Dadurch wird sie nicht aus der Gruppe entfernt.
 
 ![Der Personenkreis der Gruppe ist in einzelne Personen mit Namen aufgeklappt, jeweils mit einer Schaltfläche zum Entfernen](proposal_invite_expand.png)
 
@@ -102,7 +102,7 @@ Gäste erhalten Zugriff auf diese Abstimmung. Wenn die Abstimmung Teil eines Thr
 
 ### Einladungen senden
 
-Füge eine Nachricht hinzu, die erklärt, worüber die Personen entscheiden sollen, und wähle dann **Einladen**. Lass **Benachrichtigungen senden** aktiviert, um die eingeladenen Personen zu benachrichtigen. Deaktiviere die Option, um Abstimmende ohne Benachrichtigung hinzuzufügen.
+Füge eine Nachricht hinzu, die erklärt, worüber die Personen entscheiden sollen, und wähle dann **Einladen**. Lass **Benachrichtigungen senden** aktiviert, um die eingeladenen Personen zu benachrichtigen, oder deaktiviere die Option, um Abstimmende ohne Benachrichtigung hinzuzufügen.
 
 Wähle bei einer geplanten Abstimmung **Abstimmende hinzufügen**. Die Personen erhalten ihre Einladung, sobald die Stimmabgabe beginnt.
 
@@ -132,7 +132,7 @@ Aus einer anonymen Abstimmung können keine Personen entfernt werden. Bei Abstim
 
 ### Personen an die Stimmabgabe erinnern
 
-Wähle in der Abstimmung **Erinnern**, wähle aus, wer die Erinnerung erhalten soll, füge eine Nachricht hinzu und wähle zum Senden **Erinnern**. Du kannst **Alle, die noch nicht abgestimmt haben** auswählen, um die Personen zu erreichen, deren Stimmen noch benötigt werden.
+Wähle in der Abstimmung **Erinnern**, wähle die empfangenden Personen aus (etwa **Alle, die noch nicht abgestimmt haben**), füge eine Nachricht hinzu und wähle zum Senden **Erinnern**.
 
 ![Eine Erinnerung an Personen, die noch nicht abgestimmt haben, mit einer Nachricht zur Entscheidungsfrist](proposal_remind.png)
 

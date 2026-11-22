@@ -1,40 +1,39 @@
 ---
 title: Benachrichtigungen
-source_revision: 8f7f6d3573096fda09d8ed22b943cbe8c7828483
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/email_settings/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-28'
+  'on': '2026-11-22'
 sections:
-  introduction: db6a4e8433aa7b0f
-  two-ways-to-begin: 5e708ab9dfe6522f
-  notifications-in-loomio: f82b9bde5df238af
-  catch-up: 72c7887c01a323aa
-  choose-your-catch-up-schedule: 1d78f195e52bb281
-  mark-a-catch-up-as-read: a57be3737e098909
-  group-and-thread-notification-settings: 52305d00ac264d6a
-  group-notification-settings: e310ce9d4af47a46
-  thread-notification-settings: c3c0a131f45cc3d4
-  email-delivery: c896cd145227017e
-  enable-mobile-notifications-with-web-push: 9102e80b2a0c1037
-  turn-off-external-notifications: d2a31e0e2a4437fc
+  introduction: 25fc6fe9cb35c981
+  two-ways-to-begin: 3b42b0d12bbd2ba0
+  notifications-in-loomio: 1915d057118187bc
+  catch-up: b167c4d0fd2ad168
+  choose-your-catch-up-schedule: 387d45e173b95706
+  mark-a-catch-up-as-read: a1b0ec5366219ac4
+  group-and-thread-notification-settings: 67cc4708e63cf8a8
+  group-notification-settings: 0f7b3299bd3c02ef
+  thread-notification-settings: cc8d337159dd4334
+  email-delivery: 2f74c99b44ef0bd6
+  enable-mobile-notifications-with-web-push: 04e0f8b72bc9ddb2
+  turn-off-external-notifications: 885d1219d27f0f7a
 generated:
-  introduction: 96a9cf59d11aff6b
-  two-ways-to-begin: 067bf7190bfa170e
-  notifications-in-loomio: 06f70934d23c9a32
-  catch-up: f42e68fab11e1cde
-  choose-your-catch-up-schedule: 8f4cacc8f7297d82
-  mark-a-catch-up-as-read: ce028ba8519ec58f
-  group-and-thread-notification-settings: 92d951e38f1832ca
-  group-notification-settings: 8333cb971dc06656
-  thread-notification-settings: 142e54bf266df489
-  email-delivery: 31c8cda422b7ad86
-  enable-mobile-notifications-with-web-push: 38280111135d8680
-  turn-off-external-notifications: daaa0c86fd3d78bf
+  introduction: 806ccb05edf500ed
+  two-ways-to-begin: ab4bede7065085f7
+  notifications-in-loomio: 887b621bd609e3bf
+  catch-up: 8dcc609f33255a96
+  choose-your-catch-up-schedule: f9b65712ed6067e3
+  mark-a-catch-up-as-read: fd00663a21a92b65
+  group-and-thread-notification-settings: df9ee15d3d99b6e3
+  group-notification-settings: d4735666b235f301
+  thread-notification-settings: b7cf35fec8b8b435
+  email-delivery: 3414a6c9d57e721d
+  enable-mobile-notifications-with-web-push: c5e9a22fcd4c8072
+  turn-off-external-notifications: dbcff70a6188f3fc
 title_source: 788011833a5a0f22
 title_generated: f7205df4f1e2d6bc
 needs_review:
-  introduction: use "Entscheidung" instead of "Abstimmung" for "decision"; use "Stimme" instead of "Abstimmung" for "vote"
   email-delivery: use "Zusammenfassung" instead of "Aufholen" for "catch-up email"
 ---
 
@@ -44,7 +43,7 @@ needs_review:
 
 Benachrichtigungen helfen Gruppen, voranzukommen, indem sie dich auf Diskussionen und Entscheidungen aufmerksam machen, die eine Antwort erfordern.
 
-Benachrichtigungen sind oft der Ausgangspunkt, wenn du zu Loomio zurückkehrst. Sie informieren dich, wenn:
+Benachrichtigungen informieren dich, wenn:
 
 - jemand dich erwähnt oder auf etwas antwortet, das du geschrieben hast
 - eine neue Diskussion mit dir geteilt wird
@@ -52,30 +51,30 @@ Benachrichtigungen sind oft der Ausgangspunkt, wenn du zu Loomio zurückkehrst. 
 - eine Abstimmung bald endet
 - ein Fazit bekannt gegeben wird
 
-Mit den Benachrichtigungseinstellungen von Loomio kannst du auswählen, wie aufmerksam du jede Gruppe oder jeden Thread verfolgen möchtest. Benachrichtigungen bleiben in Loomio verfügbar, sodass du nachsehen kannst, was deine Aufmerksamkeit braucht, wenn du Zeit dafür hast.
+Mit den Benachrichtigungseinstellungen kannst du auswählen, wie eng du jede Gruppe oder jeden Thread verfolgen möchtest. Benachrichtigungen bleiben in Loomio verfügbar, sodass du sie ansehen kannst, wenn du Zeit dafür hast.
 
 <!-- translation-section: two-ways-to-begin -->
 
 ## Zwei Möglichkeiten für den Einstieg
 
-Für die meisten Menschen eignet sich eine dieser beiden Möglichkeiten zum Einstieg:
+Die meisten Menschen beginnen mit einer dieser beiden Möglichkeiten:
 
-- **Bei Benachrichtigung** — Du erhältst eine E-Mail, wenn jemand deine Aufmerksamkeit benötigt. Alles andere wird in deine tägliche Zusammenfassung aufgenommen. Beginne damit, wenn du noch kennenlernst, wie deine Gruppe Loomio nutzt.
-- **Einmal täglich** — Stelle E-Mail auf **Nur zum Aufholen** und lasse deine Zusammenfassung auf **Täglich** eingestellt. Deine Benachrichtigungen und andere ungelesene Aktivitäten werden zusammen in einer E-Mail zugestellt.
+- **Bei Benachrichtigung** — Du erhältst eine E-Mail, wenn jemand deine Aufmerksamkeit benötigt, und alles andere in deiner täglichen Zusammenfassung. Beginne damit, wenn du noch kennenlernst, wie deine Gruppe Loomio nutzt.
+- **Einmal täglich** — Stelle E-Mail auf **Nur zum Aufholen** und lasse deine Zusammenfassung auf **Täglich** eingestellt. Loomio stellt deine Benachrichtigungen und ungelesenen Aktivitäten zusammen in einer E-Mail zu.
 
-Neue Konten beginnen mit **Bei Benachrichtigung** und einer täglichen Zusammenfassung. So wirst du über Erwähnungen, Antworten, mit dir geteilte Diskussionen, Einladungen und Erinnerungen zum Abstimmen, bald endende Abstimmungen und Fazits informiert, sobald sie anstehen, ohne zu jedem Kommentar oder jeder Stimme sofort eine Nachricht zu erhalten.
+Neue Konten beginnen mit **Bei Benachrichtigung** und einer täglichen Zusammenfassung. So wirst du sofort informiert, wenn du eine Benachrichtigung erhältst, ohne zu jedem Kommentar oder jeder Stimme sofort eine E-Mail zu erhalten.
 
-Wenn du deine Loomio-Benachrichtigungen lieber alle auf einmal erhalten möchtest, wechsle zur täglichen Zustellung. Du kannst dies später ändern, wenn sich deine Arbeitsweise ändert.
+Wenn du alle Loomio-Aktualisierungen lieber zusammen erhalten möchtest, wechsle zur täglichen Zustellung. Du kannst dies jederzeit ändern.
 
-Wähle für eine Gruppe oder einen Thread, die du enger verfolgen möchtest, **Alle Aktivitäten**, um jede Aktualisierung sofort zu erhalten.
+Wähle **Alle Aktivitäten**, um eine Gruppe oder einen Thread enger zu verfolgen und jede Aktualisierung sofort zu erhalten.
 
-Diese Standardeinstellungen gelten, wenn du einer Gruppe beitrittst. Threads übernehmen zunächst die Einstellungen ihrer Gruppe. Du kannst aber einen wichtigen Thread enger verfolgen oder seine Benachrichtigungen reduzieren, ohne die Einstellungen für den Rest der Gruppe zu ändern.
+Diese Standardeinstellungen gelten, wenn du einer Gruppe beitrittst. Threads übernehmen zunächst die Einstellungen ihrer Gruppe. Du kannst die Benachrichtigungen für einen einzelnen Thread anpassen, ohne die Einstellungen für den Rest der Gruppe zu ändern.
 
 <!-- translation-section: notifications-in-loomio -->
 
 ## Benachrichtigungen in Loomio
 
-Über das Glockensymbol oben rechts öffnest du die Benachrichtigungen in der App. Eine Zahl zeigt an, wie viele Benachrichtigungen du noch nicht gelesen hast.
+Wähle das Glockensymbol oben rechts, um deine Benachrichtigungen in Loomio zu öffnen. Die Zahl auf dem Symbol zeigt an, wie viele ungelesene Benachrichtigungen du hast.
 
 ![](in_app_notifications.png)
 
@@ -85,11 +84,11 @@ Wähle eine Benachrichtigung aus, um die zugehörige Diskussion oder Abstimmung 
 
 ## Zusammenfassung
 
-Die Zusammenfassung gibt dir regelmäßig einen Überblick über Aktivitäten, ohne dass du jede Gruppe den ganzen Tag über verfolgen musst.
+Die Zusammenfassung gibt dir regelmäßig einen Überblick über Aktivitäten, ohne dass du jede Gruppe im Laufe des Tages überprüfen musst.
 
-Sie zeigt zuerst deine noch nicht angesehenen Benachrichtigungen, gefolgt von ungelesenen Diskussionen und eigenständigen Abstimmungen, geordnet nach Gruppen. Benachrichtigungen fassen Aktivitäten zusammen, die deine Aufmerksamkeit benötigen, und verlinken darauf. Der Abschnitt mit ungelesenen Aktivitäten enthält dagegen Einzelheiten zu Diskussionen, Abstimmungen, Kommentaren, Stimmen und Bearbeitungen. Direkte Diskussionen und Threads, denen du als Gast beigetreten bist, werden aufgenommen, wenn sie ungelesene Aktivitäten enthalten.
+Sie zeigt zuerst deine noch nicht angesehenen Benachrichtigungen, gefolgt von ungelesenen Diskussionen und eigenständigen Abstimmungen, geordnet nach Gruppen. Benachrichtigungen verlinken direkt auf Aktivitäten, die deine Aufmerksamkeit benötigen. Der Abschnitt mit ungelesenen Aktivitäten enthält aktuelle Diskussionen, Abstimmungen, Kommentare, Stimmen und Bearbeitungen. Direkte Diskussionen und Threads, denen du als Gast beigetreten bist, erscheinen ebenfalls, wenn sie ungelesene Aktivitäten enthalten.
 
-Du kannst **Folge den Aktualisierungen** für eine offene Gruppe aktivieren, der du nicht beigetreten bist. Ungelesene Diskussionen und Abstimmungen aus dieser Gruppe werden dann nach deinem bestehenden Zeitplan in deine Zusammenfassung aufgenommen. Wenn du die Threads liest oder die Zusammenfassung als gelesen markierst, wird ihr Lesestatus genauso aktualisiert wie bei Threads aus Gruppen, denen du angehörst. Deaktiviere **Folge den Aktualisierungen** auf der Gruppenseite, um diese Inhalte nicht mehr aufzunehmen.
+Du kannst **Folge den Aktualisierungen** für eine offene Gruppe aktivieren, der du nicht beigetreten bist. Ihre ungelesenen Diskussionen und Abstimmungen erscheinen dann nach deinem üblichen Zeitplan in deiner Zusammenfassung. Wenn du sie liest oder die Zusammenfassung als gelesen markierst, wird ihr Lesestatus genauso aktualisiert wie bei deinen eigenen Gruppen. Deaktiviere **Folge den Aktualisierungen** auf der Gruppenseite, um diese Inhalte nicht mehr aufzunehmen.
 
 Loomio sendet keine Zusammenfassung, wenn es im betreffenden Zeitraum keine noch nicht angesehenen Benachrichtigungen oder ungelesenen Threads gibt.
 
@@ -101,7 +100,7 @@ Loomio sendet keine Zusammenfassung, wenn es im betreffenden Zeitraum keine noch
 
 Öffne **Benachrichtigungseinstellungen** in deinem Benutzermenü, um auszuwählen, wie oft du eine Zusammenfassung erhältst.
 
-Der Link **Benachrichtigungen deaktivieren** in einer Zusammenfassungs-E-Mail öffnet ein Formular für den Zeitplan der Zusammenfassung. Der Link in der E-Mail gewährt Zugriff auf dieses Formular, sodass du Zusammenfassungs-E-Mails ändern oder abstellen kannst, ohne dich anzumelden. Die vollständige Seite **Benachrichtigungseinstellungen** in Loomio ist weiterhin verfügbar, wenn du dich anmeldest.
+Über den Link **Benachrichtigungen deaktivieren** in einer Zusammenfassungs-E-Mail kannst du Zusammenfassungs-E-Mails ändern oder abstellen, ohne dich anzumelden. Melde dich bei Loomio an, um die vollständige Seite **Benachrichtigungseinstellungen** zu öffnen.
 
 ![Benachrichtigungseinstellungen im Benutzermenü](sidebar_notification_settings.png)
 
@@ -112,7 +111,7 @@ Neue Konten beginnen mit einer täglichen Zusammenfassung. Folgende Zeitpläne s
 - **Jeden zweiten Tag** für Aktivitäten aus ungefähr den letzten zwei Tagen
 - ein Wochentag, um an diesem Tag eine wöchentliche Zusammenfassung zu erhalten
 
-Die Zusammenfassung wird morgens entsprechend der Zeitzone in deinem Loomio-Profil versendet.
+Loomio sendet die Zusammenfassung morgens entsprechend der Zeitzone in deinem Profil.
 
 ![Einstellung des Zeitplans für die Zusammenfassung](digest_email_setting.png)
 
@@ -122,15 +121,15 @@ Die Zusammenfassung wird morgens entsprechend der Zeitzone in deinem Loomio-Prof
 
 Wähle **Markiere die gelesenen Texte**, um die Benachrichtigungen und Aktivitäten in Threads aus der Zusammenfassung in Loomio als gelesen zu markieren. Wenn du die Zusammenfassung öffnest oder in der Vorschau ansiehst, wird nichts als gelesen markiert.
 
-Eine Zusammenfassung bezieht sich nicht auf eine einzelne Diskussion. Antworte deshalb nicht darauf. Öffne eine Diskussion oder Abstimmung aus der Zusammenfassung, bevor du kommentierst oder antwortest.
+Eine Zusammenfassung umfasst mehrere Diskussionen. Antworte deshalb nicht darauf. Öffne eine Diskussion oder Abstimmung aus der Zusammenfassung, bevor du kommentierst oder antwortest.
 
 <!-- translation-section: group-and-thread-notification-settings -->
 
 ## Benachrichtigungseinstellungen für Gruppen und Threads
 
-Du kannst auswählen, wie eng du jede Gruppe und jeden Thread verfolgst. Diese Einstellungen gelten für dich persönlich; Gruppenadministrierende können sie nicht ändern.
+Du wählst aus, wie eng du jede Gruppe und jeden Thread verfolgst. Diese Einstellungen gelten für dich persönlich; Gruppen-Admins können sie nicht ändern.
 
-Ändere deine Standardeinstellungen für Gruppen, denen du beitrittst, unter **Benachrichtigungseinstellungen** in deinem Benutzermenü. Anschließend kannst du für eine bestimmte Gruppe oder einen bestimmten Thread eine abweichende Einstellung festlegen. Eine abweichende Thread-Einstellung gilt nur für diesen Thread und hat keine Auswirkungen auf den Rest seiner Gruppe.
+Ändere deine Standardeinstellungen für neue Gruppen unter **Benachrichtigungseinstellungen** in deinem Benutzermenü. Du kannst auch für jede Gruppe oder jeden Thread eine abweichende Einstellung festlegen. Eine abweichende Thread-Einstellung gilt nur für diesen Thread und hat keine Auswirkungen auf den Rest seiner Gruppe.
 
 <!-- translation-section: group-notification-settings -->
 
@@ -143,7 +142,7 @@ So änderst du die Benachrichtigungseinstellung für eine Gruppe:
 
 ![Benachrichtigungseinstellungen auf einer Gruppenseite](group_notifications.png)
 
-Das Formular fragt: **Wie möchtest du auf dem Laufenden bleiben?** Wähle **Nur zum Aufholen**, **Bei Benachrichtigung** oder **Alle Aktivitäten**. Wenn deine Zusammenfassung auf **Niemals** eingestellt ist, wird **Nur zum Aufholen** durch **Keine E-Mail-Updates** oder **Keine Push-Updates** ersetzt.
+Wähle **Nur zum Aufholen**, **Bei Benachrichtigung** oder **Alle Aktivitäten**. Wenn deine Zusammenfassung auf **Niemals** eingestellt ist, wird **Nur zum Aufholen** durch **Keine E-Mail-Updates** oder **Keine Push-Updates** ersetzt.
 
 Wähle **Auf alle Gruppen anwenden**, um dieselbe Einstellung für alle deine Gruppen zu verwenden.
 
@@ -161,20 +160,22 @@ Um die Benachrichtigungseinstellungen für einen einzelnen Thread zu ändern, ö
 
 In den Thread-Benachrichtigungseinstellungen stehen ebenfalls **Nur zum Aufholen**, **Bei Benachrichtigung** und **Alle Aktivitäten** zur Auswahl. Eine Thread-Einstellung hat für diesen Thread Vorrang vor der Gruppeneinstellung.
 
->[!Note]
->Die Änderungen unter **Thread-Benachrichtigungseinstellungen** gelten nur für den Thread, den du geöffnet hast. Wähle **Ändere Benachrichtigungen für die Gruppe**, um die Einstellung zu ändern, die die anderen Threads der Gruppe übernehmen.
+> [!NOTE]
+> Änderungen unter **Thread-Benachrichtigungseinstellungen** gelten nur für den Thread, den du geöffnet hast. Wähle **Ändere Benachrichtigungen für die Gruppe**, um die Einstellung zu ändern, die die anderen Threads der Gruppe übernehmen.
 
 <!-- translation-section: email-delivery -->
 
 ## E-Mail-Zustellung
 
-Standardmäßig sendet Loomio dir eine E-Mail, wenn du eine Benachrichtigung erhältst. Je nach deinen Benachrichtigungseinstellungen für Gruppen und Threads können dazu Erwähnungen, Antworten, mit dir geteilte Diskussionen, Einladungen und Erinnerungen zur Stimmabgabe, Fazits und bald endende Abstimmungen gehören. Wähle **Alle Aktivitäten**, um auch E-Mails zu jedem neuen Kommentar, jeder neuen Stimme, jedem neuen Thread, jeder neuen Abstimmung und jedem neuen Fazit zu erhalten.
+Standardmäßig sendet Loomio dir eine E-Mail, wenn jemand deine Aufmerksamkeit benötigt. Wähle **Alle Aktivitäten**, um auch E-Mails zu jedem neuen Kommentar, jeder neuen Stimme, jedem neuen Thread, jeder neuen Abstimmung und jedem neuen Fazit zu erhalten.
 
-Der Link **Benachrichtigungen deaktivieren** in einer Benachrichtigungs-E-Mail öffnet die Einstellungen für den betreffenden Thread oder die betreffende Gruppe. Das gilt auch für E-Mails, die gesendet werden, weil jemand dich erwähnt oder dir geantwortet hat. Wähle **Nur zum Aufholen**, um sofortige E-Mails zu deaktivieren und die Aktivitäten weiterhin in deiner Zusammenfassung zu erhalten. Auf derselben Seite kannst du unter **Zusammenfassungs-E-Mails (alle Gruppen)** auch den Zeitplan für Zusammenfassungen ändern. Speichere die Thread- oder Gruppeneinstellungen und den Zeitplan für Zusammenfassungen jeweils separat. Diese E-Mail-Links gewähren nur Zugriff auf das jeweils zugehörige Einstellungsformular; sie melden dich nicht bei Loomio an.
+Der Link **Benachrichtigungen deaktivieren** in einer Benachrichtigungs-E-Mail öffnet die Einstellungen für den betreffenden Thread oder die betreffende Gruppe. Das gilt auch für E-Mails zu Erwähnungen oder Antworten. Wähle **Nur zum Aufholen**, um sofortige E-Mails zu deaktivieren und die Aktivitäten weiterhin in deiner Zusammenfassung zu erhalten.
 
-Wenn eine E-Mail zu einer Diskussion angibt, dass Antworten möglich sind, kannst du direkt per E-Mail antworten. Deine Nachricht wird dann in der Loomio-Diskussion veröffentlicht.
+Auf derselben Seite kannst du unter **Zusammenfassungs-E-Mails (alle Gruppen)** auch den Zeitplan für deine Zusammenfassung ändern und ihn separat von den Thread- oder Gruppeneinstellungen speichern. Diese E-Mail-Links öffnen nur das zugehörige Einstellungsformular und melden dich nicht bei Loomio an.
 
-Einladungs-E-Mails zu Abstimmungen zeigen die Abstimmung und ihre Antwortoptionen. Wenn du eine Option auswählst, öffnet sich Loomio in deinem Browser, damit du deine Stimme abgeben kannst. Möglicherweise musst du dich anmelden oder dein Konto bestätigen. Auf die Zusammenfassungs-E-Mail kannst du nicht antworten; öffne zuerst die verlinkte Diskussion oder Abstimmung.
+Wenn eine E-Mail zu einer Diskussion angibt, dass Antworten möglich sind, kannst du direkt per E-Mail antworten. Loomio veröffentlicht deine Nachricht dann in der Diskussion.
+
+Einladungs-E-Mails zu Abstimmungen zeigen die Abstimmung und ihre Optionen. Wenn du eine Option auswählst, öffnet sich Loomio in deinem Browser, damit du deine Stimmabgabe abschließen kannst. Möglicherweise musst du dich dort anmelden oder dein Konto bestätigen. Auf eine Zusammenfassungs-E-Mail kannst du nicht antworten; öffne zuerst die verlinkte Diskussion oder Abstimmung.
 
 ![Eine Einladungs-E-Mail zu einem Vorschlag mit Antwortoptionen und dem zugehörigen Thread](proposal_invitation_email.png)
 
@@ -182,13 +183,21 @@ Einladungs-E-Mails zu Abstimmungen zeigen die Abstimmung und ihre Antwortoptione
 
 ## Aktiviere mobile Benachrichtigungen mit Web-Push
 
-Loomio stellt mobile Benachrichtigungen derzeit über Web-Push zu. Damit kannst du auf deinem Smartphone über Aktivitäten in Loomio benachrichtigt werden, auch wenn Loomio nicht geöffnet ist.
+Loomio stellt mobile Benachrichtigungen über Web-Push zu. Damit wirst du auf deinem Smartphone über Aktivitäten in Loomio benachrichtigt, auch wenn Loomio geschlossen ist.
 
-Öffne unter Android **Benachrichtigungseinstellungen** in einem unterstützten Browser und aktiviere Push. Öffne auf einem iPhone oder iPad zuerst Loomio in Safari, wähle **Teilen** und dann **Zum Home-Bildschirm**, öffne Loomio über das neue Symbol auf dem Home-Bildschirm und aktiviere dort Push. Wähle **Testverbindung**, um die Zustellung an jeden unter **Aktivierte Browser** aufgeführten Browser zu prüfen.
+Öffne unter Android **Benachrichtigungseinstellungen** in einem unterstützten Browser und aktiviere Push.
 
-Web-Push funktioniert auch in unterstützten Desktop-Browsern. Aktiviere es dort, wenn du Loomio-Benachrichtigungen auf deinem Computer erhalten möchtest.
+Auf einem iPhone oder iPad:
 
-Sobald Push in mindestens einem Browser aktiviert ist, kannst du in den Benachrichtigungsformularen für Gruppen und Threads **E-Mail**, **Push** oder **E-Mail und Push** auswählen. Für E-Mail und Push können unterschiedliche Benachrichtigungseinstellungen gelten. Der Browser, das Betriebssystem oder die Netzwerkverbindung können die Push-Zustellung verzögern.
+1. Öffne Loomio in Safari.
+2. Wähle **Teilen** und dann **Zum Home-Bildschirm**.
+3. Öffne Loomio über das neue Symbol auf dem Home-Bildschirm und aktiviere Push unter **Benachrichtigungseinstellungen**.
+
+Wähle **Testverbindung**, um die Zustellung an jeden unter **Aktivierte Browser** aufgeführten Browser zu prüfen.
+
+Web-Push funktioniert auch in unterstützten Desktop-Browsern, wenn du Loomio-Benachrichtigungen auf deinem Computer erhalten möchtest.
+
+Sobald Push in mindestens einem Browser aktiviert ist, kannst du in den Benachrichtigungsformularen für Gruppen und Threads **E-Mail**, **Push** oder **E-Mail und Push** auswählen. Für E-Mail und Push können unterschiedliche Einstellungen gelten. Dein Browser, dein Betriebssystem oder deine Netzwerkverbindung können die Push-Zustellung verzögern.
 
 ![Push-Benachrichtigungseinstellungen und aktivierte Browser](push_notification_settings.png)
 
@@ -196,7 +205,7 @@ Sobald Push in mindestens einem Browser aktiviert ist, kannst du in den Benachri
 
 ## Deaktiviere externe Benachrichtigungen
 
-Um E-Mail- und Push-Nachrichten zu Aktivitäten in Gruppen und Threads abzustellen, öffne **Benachrichtigungseinstellungen** in deinem Benutzermenü, stelle die Zusammenfassung auf **Niemals** und wähle **Keine E-Mail-Updates** sowie **Keine Push-Updates**. Benachrichtigungen und Aktivitäten bleiben verfügbar, wenn du Loomio öffnest.
+Um E-Mail- und Push-Benachrichtigungen zu Aktivitäten in Gruppen und Threads abzustellen, öffne **Benachrichtigungseinstellungen** in deinem Benutzermenü. Stelle die Zusammenfassung auf **Niemals** und wähle dann **Keine E-Mail-Updates** sowie **Keine Push-Updates**. Benachrichtigungen und Aktivitäten bleiben verfügbar, wenn du Loomio öffnest.
 
 ![Stelle die Zusammenfassung auf Niemals](turn_off_all_emails_1.png)
 

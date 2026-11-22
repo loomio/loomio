@@ -1,20 +1,20 @@
 ---
 title: Fusionar cuentas
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/users/merge_accounts/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/users/merge_accounts/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: c8d8fc2095fc3cc6
-  start-the-merge: c6e92711c5a30576
-  verify-the-account-you-want-to-keep: 71e8e6d85492bcf6
-  what-happens-after-the-merge: 799c2ddeca8782e3
+  introduction: 13c5921ea59b657b
+  start-the-merge: 5def03322733be3c
+  verify-the-account-you-want-to-keep: 97e1bb086790f0a7
+  what-happens-after-the-merge: 95d92c36d7151e91
 generated:
-  introduction: 62bab2cd50eed950
-  start-the-merge: c8c674fdb7ecc67a
-  verify-the-account-you-want-to-keep: 6f00cecd1f5ce01f
-  what-happens-after-the-merge: 6f89f6edc090d0a8
+  introduction: fc28db6568017ca9
+  start-the-merge: b83a2941f2e85178
+  verify-the-account-you-want-to-keep: c89eb03801368420
+  what-happens-after-the-merge: d55c1225f7627998
 title_source: 3f284252b3814ab3
 title_generated: 54651f57390e947f
 ---
@@ -27,13 +27,13 @@ Fusiona dos cuentas de Loomio cuando cada una usa una dirección de correo elect
 
 Antes de empezar, decide qué cuenta quieres conservar:
 
-- La **cuenta que quieres conservar** es la cuenta cuya dirección de correo electrónico y perfil usarás después de la fusión
-- La **cuenta que quieres retirar** es la cuenta en la que inicias sesión primero. Después de la fusión, ya no podrás iniciar sesión con la dirección de correo electrónico de esa cuenta
+- La **cuenta que quieres conservar** es la cuenta cuya dirección de correo electrónico y perfil usarás después de la fusión.
+- La **cuenta que quieres retirar** es la cuenta en la que inicias sesión primero. Después de la fusión, ya no podrás iniciar sesión con la dirección de correo electrónico de esa cuenta.
 
 Necesitas acceso a ambas cuentas y a la dirección de correo electrónico de la cuenta que quieres conservar.
 
 > [!WARNING]
-> La fusión de cuentas es irreversible. Revisa cuidadosamente las direcciones de correo electrónico de origen y destino antes de la confirmación final.
+> La fusión de cuentas es irreversible. Revisa cuidadosamente las direcciones de correo electrónico de la cuenta que quieres retirar y de la cuenta que quieres conservar antes de confirmar la fusión.
 
 <!-- translation-section: start-the-merge -->
 
@@ -45,17 +45,17 @@ Necesitas acceso a ambas cuentas y a la dirección de correo electrónico de la 
 
 ![Las acciones del perfil con Fusionar cuentas resaltado](merge_accounts_profile.png)
 
-4. Introduce la dirección de correo electrónico de la cuenta de destino —la dirección de la **cuenta que quieres conservar**— y selecciona **Enviar correo electrónico de verificación**. Loomio siempre muestra la misma confirmación y cierra tu sesión. Si alguna cuenta usa esa dirección, Loomio envía el correo electrónico de verificación a esa dirección.
+4. Introduce la dirección de correo electrónico de la **cuenta que quieres conservar** y selecciona **Enviar correo electrónico de verificación**. Por privacidad, Loomio siempre muestra la misma confirmación y cierra tu sesión. Si alguna cuenta usa esa dirección, Loomio envía un correo electrónico de verificación a esa dirección.
 
 <!-- translation-section: verify-the-account-you-want-to-keep -->
 
 ## Verifica la cuenta que quieres conservar
 
-5. Abre el correo electrónico de verificación enviado a la dirección de la cuenta que quieres conservar y selecciona **Verifica el email y procede**.
+5. Abre el correo electrónico de verificación enviado a la **cuenta que quieres conservar** y selecciona **Verifica el email y procede**.
 
 ![El correo electrónico de verificación de la fusión con el botón Verifica el email y procede resaltado](merge_accounts_email.png)
 
-6. Inicia sesión en la cuenta que quieres conservar si Loomio te lo pide.
+6. Inicia sesión en la **cuenta que quieres conservar** si Loomio te lo pide.
 7. En la página **Confirma fusión**, revisa de nuevo ambas direcciones de correo electrónico. Selecciona **Fusionar cuentas** para completar la fusión.
 
 ![La página de confirmación final con el botón Fusionar cuentas resaltado](merge_accounts_confirm.png)
@@ -64,6 +64,6 @@ Necesitas acceso a ambas cuentas y a la dirección de correo electrónico de la 
 
 ## Qué ocurre después de la fusión
 
-La cuenta que conservas sigue siendo tu identidad en Loomio y la cuenta con la que inicias sesión. Las pertenencias a grupos y la actividad de la cuenta retirada, incluidas las discusiones, los comentarios, las encuestas y los votos, se reasignan a la cuenta que conservas. Si ambas cuentas ya pertenecen al mismo grupo, se mantiene la pertenencia existente de la cuenta que conservas.
+Después de la fusión, la cuenta que quieres conservar sigue siendo tu identidad en Loomio y la cuenta con la que inicias sesión. Loomio transfiere todas las pertenencias a grupos y la actividad —incluidas las discusiones, los comentarios, las encuestas y los votos— de la cuenta que quieres retirar a la cuenta que quieres conservar. Si ambas cuentas ya pertenecen al mismo grupo, Loomio mantiene la pertenencia de la cuenta que quieres conservar.
 
-La cuenta retirada se elimina y ya no se puede usar la dirección de correo electrónico de esa cuenta para iniciar sesión. Cuando se completa la fusión, Loomio envía un correo electrónico de confirmación a la dirección de la cuenta que conservaste.
+Loomio elimina la cuenta que quieres retirar y ya no se puede usar la dirección de correo electrónico de esa cuenta para iniciar sesión. Cuando termina la fusión, Loomio envía un correo electrónico de confirmación a la cuenta que quieres conservar.

@@ -1,38 +1,38 @@
 ---
 title: Comentarios
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/discussions/comments/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 5de86c47a823daf0
-  reading-comments: afb3c59b0ca6b8e2
-  writing-a-comment: 2e1a2c5fba2575d2
-  mentioning-people: 949375e41b71aed0
-  replying-to-a-comment: dfc6e14af2c530e4
-  reactions: 6c323c46a8ecd068
-  translating-comments: 37fa032f1fff2c53
-  comment-actions: 177577e42c93b961
-  add-a-comment-to-jump-to: 10a48fa173d9fe68
-  edit-a-comment-and-view-changes: 5607bcf53a8a0dff
-  copy-a-comment-link: e7c44dd77efba66e
-  view-notification-history: '0186c24ddde89f56'
-  discard-restore-or-delete-a-comment: f7fcdf12cf61a764
+  introduction: '09065cd966dd759c'
+  reading-comments: 2804dad52c91aca3
+  writing-a-comment: bb5c73b74d132614
+  mentioning-people: f6ab4011ec879386
+  replying-to-a-comment: 94881aeeea2dd484
+  reactions: a8452bef7d012db9
+  translating-comments: 01aa349a9089f52d
+  comment-actions: 9f4155bf7cf7e8ed
+  add-a-comment-to-jump-to: 4e804af971edfc6c
+  edit-a-comment-and-view-changes: 32582adec1903fef
+  copy-a-comment-link: 84cd4cdaa9ab0c84
+  view-notification-history: 36aa5fdd35851ea4
+  discard-restore-or-delete-a-comment: 751207a4a9e0f998
 generated:
-  introduction: 4ee4d2d96fc5d5e9
-  reading-comments: 2de3388344082061
-  writing-a-comment: fbc33f4491c64a55
-  mentioning-people: b8a89169ad6ef26c
-  replying-to-a-comment: fcc61bebd7708193
-  reactions: 439641d1ec72244f
-  translating-comments: b2c3ee1939d9d6da
-  comment-actions: f2ef32a2b9629130
-  add-a-comment-to-jump-to: b3a3646e40c8c731
-  edit-a-comment-and-view-changes: 35b9eadc9656ecb2
-  copy-a-comment-link: 33afd7d3d626268e
-  view-notification-history: 4a15d717db18113f
-  discard-restore-or-delete-a-comment: 06dc251fbabd1083
+  introduction: 075a41d19d463dbc
+  reading-comments: 86d1a83afab2bbc2
+  writing-a-comment: 43b15cc80292e91b
+  mentioning-people: 406a25cf4e02ef86
+  replying-to-a-comment: c85a6ecf0fc4146a
+  reactions: 99db7092e0ff2156
+  translating-comments: 6233914bdb3233e2
+  comment-actions: f2a9b9a267d9ff50
+  add-a-comment-to-jump-to: 8015269cff2e7f0b
+  edit-a-comment-and-view-changes: 12f42c0c5d1e988f
+  copy-a-comment-link: a50ac54a07b04cde
+  view-notification-history: 93b09b70919b9baf
+  discard-restore-or-delete-a-comment: b2ee955e50287331
 title_source: 355f79f29d7d3c2d
 title_generated: b144e59660fc23c1
 ---
@@ -41,15 +41,15 @@ title_generated: b144e59660fc23c1
 
 # Comentarios
 
-Los comentarios son la principal forma de participar en una discusión. Son visibles para cualquier persona que tenga permiso para ver el hilo.
+Los comentarios son la principal forma de participar en una discusión. Cualquier persona con acceso al hilo puede leerlos.
 
 <!-- translation-section: reading-comments -->
 
 ## Leer comentarios
 
-Los hilos se abren en el contexto de la discusión. Puedes usar **Nuevo para ti** en el menú del hilo para encontrar la actividad sin leer, o **Últimos** para saltar a la actividad más reciente.
+Los hilos se abren en el contexto de la discusión. En la barra lateral derecha, bajo **Saltar a**, selecciona **Nuevo para ti** para ir a la actividad sin leer, o **Últimos** para saltar a los elementos más recientes.
 
-Los comentarios sin leer tienen una etiqueta azul **nuevo** junto a la hora de publicación.
+Los comentarios sin leer muestran una etiqueta azul **nuevo** junto a la hora de publicación.
 
 ![](../using_discussions/thread_unread_comments.png)
 
@@ -57,19 +57,19 @@ Los comentarios sin leer tienen una etiqueta azul **nuevo** junto a la hora de p
 
 ## Escribir un comentario
 
-Escribe un comentario para contribuir a la discusión. Otras personas pueden responder, reaccionar o publicar sus propios comentarios.
+Escribe un comentario para participar en la conversación. Otros participantes pueden responder, reaccionar o añadir sus propios comentarios.
 
-Selecciona **Publicar comentario** para publicarlo. Tu comentario será visible para cualquier persona que tenga permiso para ver la discusión.
+Selecciona **Publicar comentario** para publicarlo.
 
 ![](../using_discussions/comment.png)
 
-Las herramientas descritas en [Formato](/en/user_manual/discussions/formatting/) están disponibles al escribir comentarios.
+Todas las herramientas de [Dar formato al texto y adjuntar archivos](/en/user_manual/discussions/formatting/) están disponibles al escribir comentarios.
 
 <!-- translation-section: mentioning-people -->
 
 ## Mencionar a personas
 
-Escribe **@**, empieza a escribir el nombre de una persona y selecciónala en la lista. Una mención notifica a esa persona de inmediato y es una forma útil de pedirle atención o una respuesta.
+Escribe **@**, empieza a escribir el nombre de una persona y selecciónala en la lista. Mencionar a alguien le envía una notificación de inmediato para pedirle atención o una respuesta.
 
 ![Mención de Samira Patel en un comentario](../notifying_people/comment_mention.png)
 
@@ -85,19 +85,19 @@ Mencionar a alguien no le da acceso al hilo. Usa **Invitar personas** en la barr
 
 ## Responder a un comentario
 
-Selecciona **Responder** debajo de un comentario para responder a él. La respuesta incluye una @mención de la persona que escribió el comentario, que recibirá una notificación cuando la publiques. Elimina la mención si no quieres notificarle.
+Selecciona **Responder** debajo de un comentario para responder a él. Loomio incluye automáticamente una @mención de la persona que escribió el comentario para que reciba una notificación cuando publiques la respuesta. Elimina la mención si no quieres notificarle.
 
 ![](../using_discussions/comment_reply.png)
 
-También puedes responder a tu propio comentario para anidar una respuesta debajo de él.
+También puedes responder a tu propio comentario para añadir una respuesta de seguimiento anidada debajo de él.
 
-Si un correo de Loomio indica que puedes responder por correo electrónico, tu respuesta aparecerá en el hilo.
+Si un correo de Loomio indica que puedes responder por correo electrónico, tu respuesta por correo aparece en el hilo.
 
 <!-- translation-section: reactions -->
 
 ## Reacciones
 
-Usa el botón de la cara sonriente para responder con un emoji. Las reacciones notifican a la persona que escribió el comentario dentro de Loomio, pero no envían un correo electrónico.
+Selecciona el icono de la cara sonriente para reaccionar con un emoji. Las reacciones notifican a la persona que escribió el comentario en Loomio sin enviar un correo electrónico.
 
 ![](../using_discussions/reaction.png)
 
@@ -105,11 +105,11 @@ Usa el botón de la cara sonriente para responder con un emoji. Las reacciones n
 
 ## Traducir comentarios
 
-Si la persona que escribió el comentario usa un idioma distinto del tuyo, aparece la acción **Traducir** debajo del comentario.
+Cuando un comentario está escrito en un idioma distinto del tuyo, aparece un botón **Traducir** debajo de él.
 
 ![](../using_discussions/comment_translate.png)
 
-Selecciona **Traducir comentario** para ver el comentario en tu idioma.
+Selecciona **Traducir** para leer el comentario en tu idioma.
 
 ![](../using_discussions/comment_translated.png)
 
@@ -117,15 +117,15 @@ Selecciona **Traducir comentario** para ver el comentario en tu idioma.
 
 ## Acciones de los comentarios
 
-Las acciones habituales aparecen directamente debajo de un comentario. Hay más acciones disponibles en el menú de tres puntos (**⋯**).
+Las acciones habituales aparecen directamente debajo de un comentario. Hay más acciones en el menú de tres puntos (**⋯**).
 
 <!-- translation-section: add-a-comment-to-jump-to -->
 
 ### Añadir un comentario a Saltar a
 
-Usa **Añade a la cronología** para añadir un comentario a la lista **Saltar a** del hilo.
+Selecciona **Añade a la cronología** para añadir un comentario a la lista **Saltar a** del hilo.
 
-Puedes editar la etiqueta que aparece en **Saltar a**. Elimina el comentario de la cronología y vuelve a añadirlo para cambiar el texto del enlace.
+No puedes editar la etiqueta directamente en **Saltar a**. Para cambiar el texto del enlace, selecciona **Elimina de la cronología** y vuelve a añadir el comentario.
 
 >[!Tip]
 >Selecciona las palabras que quieras usar como texto del enlace antes de seleccionar **Añade a la cronología**.
@@ -136,28 +136,28 @@ Selecciona **Elimina de la cronología** para quitar el elemento de **Saltar a**
 
 ### Editar un comentario y ver los cambios
 
-Selecciona **Editar** debajo de uno de tus comentarios para cambiarlo. Los admins del grupo también pueden editar los comentarios de los miembros cuando el permiso correspondiente del grupo está activado.
+Puedes editar un comentario cuando:
+
+- lo escribiste tú y el grupo permite a los miembros editar sus propios comentarios; o
+- eres admin del grupo y está activado el permiso **Los administradores pueden editar comentarios de los miembros** en [Permisos del grupo](/en/user_manual/groups/settings/permissions).
+
+Selecciona **Editar** debajo de un comentario para actualizarlo.
 
 ![](../using_discussions/comment_edit.png)
 
-La acción **Editado** aparece debajo de un comentario editado.
+Los comentarios editados muestran un enlace **Editado** debajo de ellos.
 
 ![](../using_discussions/comment_show_edits.png)
 
-Selecciona **Editado** para ver qué cambió. El resaltado rojo muestra el texto eliminado y el verde muestra el texto añadido. Loomio registra quién hizo cada edición y cuándo.
+Selecciona **Editado** para ver el historial de ediciones. El resaltado rojo muestra el texto eliminado y el verde muestra el texto añadido. Loomio registra quién hizo cada edición y cuándo.
 
 ![](../using_discussions/comment_edits.png)
-
-Puedes editar un comentario cuando:
-
-- lo escribiste tú y el grupo permite a los miembros editar sus comentarios
-- eres admin del grupo y está activado el permiso [Los admins pueden editar los comentarios de los miembros](/en/user_manual/groups/settings/permissions)
 
 <!-- translation-section: copy-a-comment-link -->
 
 ### Copiar el enlace de un comentario
 
-Selecciona **Copiar enlace** para copiar la URL única del comentario. Puedes pegar el enlace en otro lugar para hacer referencia directa a ese comentario.
+Selecciona **Copiar enlace** para copiar la URL directa del comentario y poder enlazarlo desde otro lugar.
 
 ![](../using_discussions/comment_copy_link.png)
 
@@ -169,7 +169,7 @@ Abre el menú de tres puntos (**⋯**) junto a un comentario y selecciona **Hist
 
 ![Historial de notificaciones en el menú de acciones de un comentario](../notifying_people/comment_notification_history.png)
 
-El historial de notificaciones muestra quién recibió una notificación sobre el comentario, cuándo se envió y si se ha leído, cuando esa información está disponible.
+El historial de notificaciones muestra quién recibió una notificación sobre el comentario, cuándo se envió cada notificación y si se ha leído, cuando esa información está disponible.
 
 ![Historial de notificaciones de un comentario que menciona a Samira Patel](../notifying_people/comment_notification_example.png)
 
@@ -177,28 +177,28 @@ El historial de notificaciones muestra quién recibió una notificación sobre e
 
 ### Descartar, restaurar o eliminar un comentario
 
-Descartar un comentario lo quita del hilo, pero lo conserva en una papelera. Puedes descartar tus propios comentarios con **Descartar** en el menú de tres puntos. Los admins del grupo también pueden descartar comentarios.
+Descartar un comentario oculta su contenido en el hilo y deja un marcador para poder restaurarlo más adelante. Puedes descartar tus propios comentarios desde el menú de tres puntos (**⋯**) seleccionando **Descartar**. Los admins del grupo pueden descartar cualquier comentario.
 
 ![](../using_discussions/comment_discard.png)
 
 **Restaurar un comentario**
 
-En el lugar de un comentario descartado aparece la etiqueta **Elemento eliminado**. Abre el menú de tres puntos y selecciona **Restaurar**.
+Un comentario descartado aparece como **Elemento eliminado**. Abre el menú de tres puntos (**⋯**) del comentario y selecciona **Restaurar** para recuperarlo.
 
 ![](../using_discussions/comment_restore.png)
 
 **Eliminar un comentario**
 
-Eliminar un comentario lo borra permanentemente. No se puede restaurar.
+Eliminar un comentario lo borra permanentemente y no se puede deshacer.
 
-Si la opción **Los miembros pueden eliminar sus propios comentarios** está activada en [Permisos del grupo](/en/user_manual/groups/settings/permissions), los miembros pueden eliminar permanentemente sus propios comentarios descartados. Los admins del grupo pueden eliminar cualquier comentario.
+Los admins del grupo pueden eliminar cualquier comentario descartado. Los miembros pueden eliminar permanentemente sus propios comentarios descartados cuando la opción **Los miembros pueden eliminar sus propios comentarios** está activada en [Permisos del grupo](/en/user_manual/groups/settings/permissions).
 
 ![](../using_discussions/permissions_delete_comment.png)
 
-Abre el menú de tres puntos de una entrada marcada como **Elemento eliminado** y selecciona **Eliminar**.
+Abre el menú de tres puntos (**⋯**) de una entrada marcada como **Elemento eliminado** y selecciona **Eliminar**.
 
 ![](../using_discussions/comment_delete.png)
 
-Un mensaje de confirmación explica que el comentario se eliminará permanentemente.
+Confirma la eliminación permanente en el mensaje que aparece.
 
 ![](../using_discussions/comment_delete_message.png)

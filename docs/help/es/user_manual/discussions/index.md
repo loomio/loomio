@@ -1,22 +1,22 @@
 ---
 title: Discusiones
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/discussions/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/discussions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: c76a7d182c14a283
-  common-uses: 2fd96fe8c6ddddc4
-  boards-and-governance: 5b49aa5e01f3c0a7
-  member-participation: b087accb54a595dc
-  self-organizing-working-teams: 8679ba6f65c230ab
+  introduction: 58ee9b294ceaebd9
+  common-uses: '0091a4d2919ec47a'
+  boards-and-governance: 35c5302ce95438c0
+  member-participation: 1592f30a5f41441a
+  self-organizing-working-teams: 5d40394e7a12402c
 generated:
-  introduction: 63da33b0f4f2f23f
-  common-uses: 358ca3e55491018f
-  boards-and-governance: efd931a06f9eeb42
-  member-participation: 92b494d43cfd5614
-  self-organizing-working-teams: 586c3ed0e55a1209
+  introduction: 5823239d7398ac58
+  common-uses: 17c65c30248b9df9
+  boards-and-governance: ff9e85a1c9ca0eb3
+  member-participation: dc1ae6c46c6aa38a
+  self-organizing-working-teams: 689c81ca78724549
 title_source: 60157cfcfe3f31c3
 title_generated: edb17ff418192837
 ---
@@ -25,20 +25,16 @@ title_generated: edb17ff418192837
 
 # Introducción a las discusiones
 
-Las discusiones de Loomio te permiten compartir información, hablar sobre temas y tomar decisiones con tu grupo. Las personas participan publicando comentarios y respuestas.
+Las discusiones de Loomio permiten a tu grupo compartir información, hablar sobre temas y tomar decisiones en conjunto. Las personas participan publicando comentarios, respuestas, encuestas y propuestas.
 
-- Toda la información sobre un tema está en un lugar de fácil acceso.
-- Las personas pueden responder por correo electrónico y sus comentarios aparecen en la discusión.
-- Puedes ver quién ha leído la discusión y quién necesita un recordatorio.
-- Queda un registro de la discusión que puedes volver a encontrar fácilmente.
+- Mantén toda la información sobre un tema en un solo lugar.
+- Responde por correo electrónico para que tus comentarios aparezcan en el hilo.
+- Consulta quién ha leído la discusión y quién necesita un recordatorio.
+- Conserva un registro de cada discusión y decisión que puedas consultar mediante búsquedas.
 
-Las discusiones tienen muchos usos: desde un foro de discusión general hasta la gestión de procesos específicos de trabajo y toma de decisiones.
+Puedes usar las discusiones para todo tipo de actividades, desde compartir novedades generales hasta gestionar flujos de trabajo estructurados y [procesos de toma de decisiones](/en/user_manual/polls/intro_to_decisions/). Por ejemplo, puedes presentar un tema, recopilar ideas y documentos de apoyo, y llevar a cabo un proceso de [consentimiento](/en/user_manual/polls/proposals/consent/) o [asesoramiento](/en/user_manual/polls/proposals/advice/) para llegar a una conclusión.
 
-Por ejemplo, puedes plantear una discusión sobre un tema concreto, invitar a las personas a aportar ideas y compartir información, y facilitar el avance hacia una conclusión acordada.
-
-También puedes invitar a las personas a participar en una decisión concreta mediante un proceso de toma de decisiones por consentimiento o asesoramiento.
-
-Las discusiones también pueden incluir encuestas y propuestas para avanzar hacia una conclusión. A medida que las personas comentan en la discusión y votan en las encuestas, se crea una cronología de la discusión que te permite encontrar fácilmente los momentos clave.
+A medida que las personas comentan y votan, el hilo va creando un registro de momentos clave a los que puedes acceder en cualquier momento. Para empezar, consulta [Inicia una discusión](/en/user_manual/discussions/starting_a_discussion/) y [Uso de los hilos](/en/user_manual/discussions/using_discussions/).
 
 ![La discusión «Botellas retornables para clientes de la cafetería», con un comentario y una propuesta](discussion-example.png)
 
@@ -46,42 +42,32 @@ Las discusiones también pueden incluir encuestas y propuestas para avanzar haci
 
 ## Usos habituales
 
-Estos son algunos usos habituales de las discusiones:
+Estas son algunas formas habituales en que los grupos usan las discusiones:
 
 <!-- translation-section: boards-and-governance -->
 
 ### Juntas directivas y gobernanza
 
-**Prepárate para una reunión** - Elabora un orden del día, publica documentos de la junta y organiza los asuntos administrativos para que todas las personas estén al día, conozcan el contexto y estén preparadas.
-
-**Pasar una resolución** - Publica el contexto y la información de fondo, responde a las preguntas y presenta una propuesta para aprobar una resolución.
-
-**Discute un punto del orden del día en Loomio** - Inicia una discusión sobre un punto del orden del día antes de tu reunión. O, si se acaba el tiempo en la reunión, continúa la discusión en Loomio.
-
-**Aprueba actas y haz seguimiento de las acciones** - Publica las actas y asigna acciones. Usa una encuesta para aprobar las actas.
+- **Prepárate para una reunión** — Elabora un orden del día, comparte documentos de la junta y gestiona los asuntos administrativos para que todas las personas lleguen preparadas.
+- **Pasar una resolución** — Comparte información de contexto, responde a las preguntas y presenta una propuesta para dejar constancia de la decisión.
+- **Discute un punto del orden del día en Loomio** — Empieza a discutir un punto antes de una reunión o continúa la discusión en Loomio si se acaba el tiempo.
+- **Aprueba actas y haz seguimiento de las acciones** — Publica las actas, asigna tareas y usa una encuesta para aprobar las actas.
 
 <!-- translation-section: member-participation -->
 
 ### Participación de los miembros
 
-**Comparte noticias (sustituye la lista de correo)** - Publica información para los miembros e invítalos a comentar.
-
-**Organiza un evento** - Trabaja en los detalles con tu equipo organizador. Mantén toda la discusión y la información dentro del hilo. Después, anuncia el evento al resto de los miembros.
-
-**Elabora una política** - Publica un borrador de la política, solicita comentarios y aportaciones de los miembros, y finaliza y ratifica la política.
-
-**Asamblea general** - Organiza, prepara y dirige una reunión formal con todos los miembros para deliberar y tomar decisiones sobre asuntos estratégicos.
+- **Comparte noticias** — Publica novedades para los miembros e invítalos a comentar en lugar de usar una lista de correo.
+- **Organiza un evento** — Planifica los detalles con tu equipo organizador en un solo hilo y después anuncia el evento al resto de los miembros.
+- **Elabora una política** — Publica un borrador, recopila comentarios, revísalo y ratifica la política final.
+- **Organiza una asamblea general** — Comparte documentos con antelación para que todos los miembros puedan deliberar y votar sobre decisiones estratégicas.
 
 <!-- translation-section: self-organizing-working-teams -->
 
 ### Equipos de trabajo autoorganizados
 
-**Comparte información** - Publica información e informes de interés para tu equipo e invita a comentar y discutir.
-
-**Avanza en el trabajo** - Describe una tarea de trabajo y solicita consejos, aportaciones y comentarios de los miembros del equipo hasta completarla.
-
-**Notas de reuniones y acciones** - Publica las notas de las reuniones como registro de la discusión y haz seguimiento de las tareas.
-
-**Explora ideas** - Comparte ideas e invita a discutir sobre una preocupación que hayas detectado o una mejora que se pueda hacer.
-
-**Toma de decisiones por asesoramiento, consentimiento y procesos generativos** - Prepara, propone, aclara, responde a las reacciones y objeciones, llega a acuerdos y ponlos en práctica, todo dentro de una discusión de Loomio.
+- **Comparte información** — Publica novedades e informes para tu equipo e invita a hacer preguntas o comentarios.
+- **Avanza en el trabajo** — Describe una tarea y solicita consejos o comentarios de los miembros del equipo mientras la llevas a cabo.
+- **Conserva notas de reuniones y acciones** — Publica las notas de las reuniones como registro compartido y haz seguimiento de las tareas pendientes.
+- **Explora ideas** — Plantea una preocupación o sugiere una mejora e invita a discutirla.
+- **Lleva a cabo procesos colaborativos de toma de decisiones** — Prepara, propone, aclara, responde a las objeciones, llega a acuerdos y ponlos en práctica en un solo hilo.

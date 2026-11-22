@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: fc5b2c1271171499
+  introduction: 142d15ca2a608210
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # שילוב עם Slack
-_ניתן לחבר את ההתראות של קבוצת Loomio ל-Slack._
 
-Loomio יכול לשלוח התראות לערוצי Slack כשנוצרים דיונים, הצעות, תגובות, הצבעות ומסקנות. כך ניתן לקבל עדכונים מרכזיים בזמן המתאים על דיונים והחלטות חשובים.
+Loomio יכול לשלוח התראות לערוצי Slack כשנוצרים דיונים, סקרים, תגובות, הצבעות ומסקנות.
 
 ---
 
-כדי להתחיל, יש להיכנס לאתר [https://api.slack.com](https://api.slack.com), להתחבר לחשבון אם טרם בוצעה התחברות, ואז ללחוץ על יצירת אפליקציה חדשה (Create New App)
+1. יש לפתוח את [api.slack.com](https://api.slack.com), להתחבר לחשבון וללחוץ על **יצירת אפליקציה חדשה (Create New App)**.
 
-![](s1.png)
+   ![](s1.png)
 
-יש לתת שם לאפליקציית Slack
+2. יש לתת שם לאפליקציית Slack ולבצע בחירה של סביבת העבודה.
 
-![](s2.png)
+   ![](s2.png)
 
-יש להוסיף תמיכה ב-webhooks נכנסים
+3. יש ללחוץ על **Webhooks נכנסים (Incoming Webhooks)**.
 
-![](s3.png)
+   ![](s3.png)
 
-לאחר מכן יש להפעיל את האפשרות
+4. יש להפעיל את **הפעלת Webhooks נכנסים (Activate Incoming Webhooks)**.
 
-![](s4.png)
+   ![](s4.png)
 
-לאחר מכן יש להוסיף webhook חדש
+5. יש ללחוץ על **הוספת Webhook חדש לסביבת העבודה (Add New Webhook to Workspace)**.
 
-![](s5.png)
+   ![](s5.png)
 
-יש לבחור ערוץ
+6. יש לבצע בחירה של הערוץ שבו יופיעו התראות מ-Loomio.
 
-![](s6.png)
+   ![](s6.png)
 
-יש להעתיק את כתובת ה-webhook ללוח
+7. יש להעתיק את כתובת ה-webhook.
 
-![](s7.png)
+   ![](s7.png)
 
-כעת, כשיש כתובת webhook, ניתן להמשיך בהגדרת השילוב עם הצ'אט:
+כעת, כשיש כתובת webhook, יש להשלים את החיבור ב-Loomio:
 
 [הגדרת שילוב עם צ'אט ב-Loomio](../chatbots/#set-up-a-chat-integration)
 

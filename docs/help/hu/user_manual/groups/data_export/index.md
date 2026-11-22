@@ -1,26 +1,26 @@
 ---
 title: Adatok exportálása
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 5e29f67f9a2084ec
-  export-data: 58b5e1d4e6f0b917
-  export-group-data-as-csv: 53286ec33e7300d6
-  export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: a0ad78b64036be18
-  import-your-group-data-on-another-loomio-server: 910ee8af48049e82
+  introduction: 988679ffd3d29834
+  export-data: 9c2fb6ec7c75bcb6
+  export-group-data-as-csv: c0845f09bff828f2
+  export-group-data-as-html: 659fd5e14956b00e
+  export-group-data-as-json: 4c2131f4518b7469
+  print-thread-to-pdf: 1a1d0598f4277ba1
+  import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
-  introduction: f1698c80b1be0a4d
-  export-data: c43983a7f192e20a
-  export-group-data-as-csv: e6d247a9de86d244
-  export-group-data-as-html: 8633b6e8ae580869
-  export-group-data-as-json: aa5ae383d632c616
-  print-thread-to-pdf: a09b6ab5df8adf62
-  import-your-group-data-on-another-loomio-server: 3d3e7708eddab6a6
+  introduction: 0ef47ce6fec748b5
+  export-data: 267dce67cd8ce4a8
+  export-group-data-as-csv: 22b142a5e977fb3f
+  export-group-data-as-html: 6f960159abc4ffdf
+  export-group-data-as-json: 8580585467a34b22
+  print-thread-to-pdf: 60eff96097bbe7e7
+  import-your-group-data-on-another-loomio-server: 80e5fcd8e05ed2d0
 title_source: 29049648f87b87f5
 title_generated: 5469a70f111d4c58
 ---
@@ -31,55 +31,51 @@ title_generated: 5469a70f111d4c58
 
 A csoportadatok exportálásával a következőket teheted:
 
-- Letölthetsz egy, a tagok adatait tartalmazó fájlt a csoport tagságának ellenőrzéséhez.
-- Letöltheted a csoportod tartalmát, beleértve a szálak és szavazások szövegét, archiváláshoz vagy elemzéshez.
-- Megnyithatod a szavazások eredményeit táblázatkezelőben vagy szkriptnyelv segítségével.
-- [Kinyomtathatod vagy PDF-ként mentheted a szálakat és szavazásokat archiváláshoz.](#print-thread-to-pdf)
-- Átköltöztetheted a csoportodat az összes felhasználóval, szállal, szavazással és fájllal együtt egy másik Loomio-szerverre.
+- Letöltheted a tagok adatait a csoport tagságának ellenőrzéséhez.
+- Archiválhatod vagy elemezheted a csoportod szálait, hozzászólásait és szavazásait.
+- Megnyithatod a szavazások eredményeit táblázatkezelőben vagy szkriptben.
+- [Kinyomtathatsz vagy PDF-ként menthetsz egy szálat vagy szavazást a nyilvántartásodhoz.](#print-thread-to-pdf)
+- Átköltöztetheted a csoportodat a felhasználóival, szálaival, szavazásaival és fájljaival együtt egy másik Loomio-szerverre.
 
-Ha a Loomio által üzemeltetett szerverekről [saját szerverre](https://github.com/loomio/loomio) szeretnél költözni, használhatod ezt a funkciót.
+Ezzel a funkcióval a Loomio tárhelyszolgáltatásáról [saját üzemeltetésű szerverre](https://github.com/loomio/loomio) költözhetsz. Ha saját szervert üzemeltetsz, és a Loomio felügyelt tárhelyszolgáltatására szeretnél költözni az USA-ban, az EU-ban vagy Ausztráliában, [lépj kapcsolatba velünk](/contact).
 
-Ha saját Loomio-szervert üzemeltetsz, de már nem szeretnéd folytatni, a Loomio felügyelt tárhelyszolgáltatást kínál az USA-ban, az EU-ban és Ausztráliában. Ha ezek egyikére szeretnéd átköltöztetni a csoportodat, [lépj kapcsolatba velünk](/contact).
-
-[Lépj kapcsolatba velünk](/contact), ha a Loomio-csoportodat a loomio.com globális tárhelyszolgáltatásáról valamelyik regionális szolgáltatásunkra szeretnéd áthelyezni: Európában a loomio.eu-ra, Ausztráliában és Új-Zélandon pedig a loomio.nz-re.
+[Lépj kapcsolatba velünk](/contact), ha egy csoportot a loomio.com-ról valamelyik regionális szolgáltatásra szeretnél áthelyezni: Európában a loomio.eu-ra, Ausztráliában és Új-Zélandon pedig a loomio.nz-re.
 
 <!-- translation-section: export-data -->
 
 ## Adatok exportálása
 
-Kattints a három pontra a csoport legördülő menüjének megnyitásához, és válaszd ki a **Csoport adatok letöltése** lehetőséget.
+Csak a csoport adminja exportálhatja a csoport adatait. Nyisd meg a csoport műveleti menüjét, és válaszd ki a **Csoport adatok letöltése** lehetőséget.
 
 ![Csoport adatok letöltése művelet az Oatmilk Cooperative menüjében](group_export_group_data.png)
+
+A Loomio a háttérben elkészíti az exportot, és amikor elkészült, e-mailben elküldi neked a letöltési linket. A link egy hétig érhető el.
 
 <!-- translation-section: export-group-data-as-csv -->
 
 ### Csoportadatok exportálása CSV-ként
 
-*Ha táblázatkezelőben, például MS Excelben vagy Google Táblázatokban szeretnél dolgozni a csoport adataival.*
-
-A Loomio a háttérben elkészíti a CSV-fájlt, és amikor elkészült, e-mailben elküldi neked a letöltési linket. A link egy hétig érhető el.
+Használd a CSV-formátumot a csoport adatainak, köztük a tagok adatainak és tevékenységének áttekintéséhez egy táblázatkezelőben, például Microsoft Excelben vagy Google Táblázatokban.
 
 <!-- translation-section: export-group-data-as-html -->
 
 ### Csoportadatok exportálása HTML-ként
 
-*Ha archiváláshoz szeretnéd menteni az adatokat.*
-
-A Loomio a háttérben elkészíti a HTML-fájlt, és amikor elkészült, e-mailben elküldi neked a letöltési linket. A link egy hétig érhető el.
+Használd a HTML-formátumot a csoportod beszélgetéseinek és szavazásainak olvasható másolatként való mentéséhez, archiválás céljából.
 
 <!-- translation-section: export-group-data-as-json -->
 
 ### Csoportadatok exportálása JSON-ként
 
-*Ha saját üzemeltetésű Loomio-példányra szeretnéd áthelyezni a csoportod adatait.*
+Használd a JSON-formátumot a csoportod adatainak áthelyezéséhez egy saját üzemeltetésű Loomio-szerverre.
 
-Az exportáláshoz a csoport adminjának kell lenned. A JSON-export a következőket tartalmazza:
+A JSON-export a következőket tartalmazza:
 
 - A csoportot, a tagjait és a tagsági kérelmeket
 - Az exportban szereplő csoportok szálait, hozzászólásait, reakcióit, címkéit, sablonjait, értesítéseit és kapcsolódó rekordjait
 - A szavazásokat, lehetőségeket, szavazatokat és következtetéseket; a névtelen szavazások csak a lezárásuk után kerülnek bele
 - Azokat az alcsoportokat, amelyeknek tagja vagy
-- A nyílt, zárt és a szülőcsoport számára látható alcsoportokat, ha a szülőcsoportjukat annak adminjaként exportálod, akkor is, ha nem vagy tagja ezeknek az alcsoportoknak
+- A nyílt, zárt és a szülőcsoport számára látható alcsoportokat, ha a szülőcsoportjukat annak adminjaként exportálod, akkor is, ha nem vagy tagja ezeknek azalcsoportoknak
 - Az exportban szereplő tartalomhoz csatolt fájlokra és képekre mutató hivatkozásokat
 
 A JSON-export nem tartalmazza a következőket:
@@ -89,15 +85,11 @@ A JSON-export nem tartalmazza a következőket:
 - A még le nem zárt névtelen szavazásokat
 - A csoporthoz nem tartozó közvetlen szálakat és szavazásokat
 
-Hamarosan e-mailt kapsz a JSON-fájl letöltési linkjével.
-
 <!-- translation-section: print-thread-to-pdf -->
 
 ## Szál nyomtatása PDF-be
 
-Ha meg szeretnél őrizni egy szálat, nyisd meg a menüjét, és válaszd ki a **Nyomtatás** lehetőséget. A Loomio létrehoz egy HTML-oldalt a szál hozzászólásaival, szavazásaival, szavazataival, következtetéseivel és formázásával. A böngésződ nyomtatási eszközével nyomtasd ki, vagy mentsd PDF-ként.
-
-Az oldalt kimásolhatod, majd beillesztheted egy dokumentumszerkesztőbe, fájlba vagy adattárba.
+Ha meg szeretnél őrizni egy szálat, nyisd meg a műveleti menüjét, és válaszd ki a **Nyomtatás** lehetőséget. A Loomio létrehoz egy HTML-oldalt a szál hozzászólásaival, szavazásaival, szavazataival, következtetéseivel és formázásával. A böngésződ nyomtatási eszközével nyomtasd ki vagy mentsd PDF-ként, vagy másold át a tartalmát egy másik dokumentumba.
 
 ![Nyomtatás művelet a visszaváltható palackokról szóló beszélgetésnél](discussion_print_discussion.png#width-90)
 
@@ -105,18 +97,22 @@ Az oldalt kimásolhatod, majd beillesztheted egy dokumentumszerkesztőbe, fájlb
 
 ## Csoportadatok importálása egy másik Loomio-szerverre
 
-A saját Loomio-szerver beállításához itt találsz útmutatót: https://github.com/loomio/loomio
+Ez a szakasz a saját Loomio-szervert üzemeltető adminisztrátoroknak szól. A beállítási útmutatót a [Loomio kódtárában](https://github.com/loomio/loomio) találod.
 
-Ha saját Loomio-példányt üzemeltetsz, és szeretnéd importálni az exportált adataidat:
+1. Másold a `.json` fájlt a konténer `import` mappájába:
 
-Másold a .json fájlt a konténerpéldány `import` mappájába:
+```sh
+scp your-group-data.json username@some-domain.org:loomio-deploy/import
+```
 
-`scp your-group-data.json username@some-domain.org:loomio-deploy/import`
+2. Nyisd meg a Rails-konzolt a futó konténerben:
 
-Nyisd meg a futó Rails-konzolt:
+```sh
+docker exec -ti loomio-app rails console
+```
 
-`docker exec -ti loomio-app rails console`
+3. Futtasd az importálási szolgáltatást:
 
-Hívd meg a szolgáltatást:
-
-`GroupExportService.import('/import/your-group-data.json')`
+```ruby
+GroupExportService.import('/import/your-group-data.json')
+```

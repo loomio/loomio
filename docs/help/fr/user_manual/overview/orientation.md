@@ -1,28 +1,28 @@
 ---
 title: Visite rapide
-source_revision: 90f7f850a29e8f8fe4aa421de92ffa259abef9f8
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/overview/orientation.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-12'
+  'on': '2026-11-22'
 sections:
-  introduction: bc1003860d699a8a
-  group-page: 1592d5e9a232df4e
-  tabs: add2af878c6f9279
+  introduction: ecd0fe0598db0af5
+  group-page: b351d5f2c21b5300
+  tabs: fa2b8c5dbc1e9e15
   sidebar: 6fcc6fb14f4584c4
-  user-settings: f28c7bdfc7562d01
-  notifications: bea515fc72375a2f
+  user-settings: fc19e4048d467aed
+  notifications: 76ef1d42418da2ee
   what-to-do-next: 2946260092e30e4e
-  mobile-navigation: a2c209d1f2dfe37b
+  mobile-navigation: 8c209bc2f042ae96
 generated:
-  introduction: 59ee6bb0ad1eed69
-  group-page: 13cfcd25b08f7bd2
-  tabs: 8e633e7902a31277
+  introduction: 77583c9ff4a2fac8
+  group-page: 20c5a2628e5a6112
+  tabs: c48b30fda8e179ef
   sidebar: ccb4e82a2647b306
-  user-settings: 441510e7051415a9
-  notifications: '08c9a9a580d9626f'
+  user-settings: 9f46d9e2dd7c8b7d
+  notifications: 45089b5387cbf82a
   what-to-do-next: 213b0f6a819f21c8
-  mobile-navigation: 05742fc59e9148d7
+  mobile-navigation: 8a0f1adc70bee297
 title_source: c41a33370cd580dd
 title_generated: 0d9bc00b1374a7b5
 ---
@@ -31,13 +31,13 @@ title_generated: 0d9bc00b1374a7b5
 
 # Visite rapide
 
-Cette page présente les principales parties de l’interface de Loomio et vous indique où trouver les activités qui vous concernent.
+Cette page présente les principales parties de Loomio et vous indique où trouver vos activités.
 
 <!-- translation-section: group-page -->
 
 ## Page du groupe
 
-La page d’accueil de votre groupe présente le groupe et donne accès à ses activités.
+La page d’accueil de votre groupe décrit le groupe et donne accès à ses activités.
 
 ![](group_example.png)
 
@@ -45,15 +45,12 @@ La page d’accueil de votre groupe présente le groupe et donne accès à ses a
 
 ### Onglets
 
-Les onglets sous la description du groupe donnent accès aux éléments suivants :
+Les onglets sous la description du groupe affichent les éléments suivants :
 
-**Discussions** - Les fils de discussion du groupe et l’activité récente.
-
-**Sondages** - La liste des sondages actifs dans votre groupe.
-
-**Membres** - Les personnes qui appartiennent au groupe.
-
-**Fichiers** - Les documents et autres fichiers joints dans l’ensemble du groupe. Cet onglet rassemble les fichiers joints aux contextes des discussions, aux commentaires, aux propositions et aux sondages, pour vous permettre de retrouver un document sans vous souvenir de l’endroit où il a été joint.
+- **Discussions** : Les fils de discussion du groupe et l’activité récente.
+- **Sondages** : Les sondages ouverts et clôturés du groupe.
+- **Membres** : Les personnes qui appartiennent au groupe.
+- **Fichiers** : Les fichiers joints aux discussions, aux commentaires, aux propositions et aux sondages dans l’ensemble du groupe, pour vous permettre de retrouver un document sans vous souvenir de l’endroit où il a été partagé.
 
 Consultez [Trouver du contenu](/en/user_manual/overview/finding-content) pour obtenir de l’aide sur la recherche, les filtres, les tags, les favoris et les discussions non lues.
 
@@ -75,13 +72,13 @@ Sélectionnez votre nom dans la barre latérale pour ouvrir votre menu utilisate
 
 ![](user_settings_sidebar.png)
 
-Utilisez ce menu pour modifier votre profil, changer les paramètres de notification, choisir un thème, gérer les paramètres de votre compte et vous déconnecter.
+Depuis ce menu, vous pouvez modifier votre profil, changer les paramètres de notification, choisir un thème, gérer votre compte et vous déconnecter.
 
 <!-- translation-section: notifications -->
 
 ## Notifications
 
-Le bouton en forme de cloche en haut à droite sur ordinateur, ou dans la barre de navigation inférieure sur mobile, ouvre vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications que vous n’avez pas encore consultées.
+Sélectionnez l’icône en forme de cloche en haut à droite sur ordinateur, ou dans la barre de navigation inférieure sur mobile, pour ouvrir vos notifications dans l’application. Un badge apparaît lorsque vous avez des notifications non lues.
 
 ![](../users/email_settings/in_app_notifications.png)
 
@@ -91,7 +88,7 @@ Consultez [Notifications](/en/user_manual/users/email_settings) pour en savoir p
 
 ## Navigation mobile
 
-Sur mobile, la barre de navigation inférieure vous donne un accès rapide à la barre latérale, au tableau de bord et aux notifications. Lorsque vous consultez une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
+Sur mobile, la barre de navigation inférieure permet d’ouvrir la barre latérale, le tableau de bord et les notifications. Dans une discussion, le menu du fil permet d’accéder à son contenu et aux actions associées.
 
 <!-- translation-section: what-to-do-next -->
 

@@ -1,41 +1,41 @@
 ---
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: 19f920a9e65a1804
+  introduction: 73042dbdee0df1b2
   find-the-right-help: 52dba4a8e1a88820
   proposals: 27b3068b4da557bc
   polls: bdbb6bc59af00378
   start-a-proposal-or-poll: b941a6a583bb91c8
-  choose-whether-to-use-a-discussion: 6fb22860b6f93731
+  choose-whether-to-use-a-discussion: 2a29ab0de662684d
   in-a-discussion: a1cae28214ecd2a5
   without-a-discussion: 1c7a786b1bbb34f9
   what-happens-next: 24ef452e16153b88
   1-create-it: '0780ad3c05e4417a'
-  2-voting-opens: 0a498d7c48b3cfd7
-  3-people-vote: ba8158208b017150
-  4-it-closes: '04559a3f86075395'
+  2-voting-opens: 6fecfd176cbd3a0b
+  3-people-vote: e55cde6a2815ba2a
+  4-it-closes: bdc9c95f4db18e6b
   5-share-an-outcome: 0f33214bab646828
 title: 제안과 투표
 title_source: d45b4ba3cb7a27cb
 title_generated: '085703a43c5772ed'
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-09'
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+  'on': '2026-11-22'
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 ---
 
@@ -43,7 +43,7 @@ source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 
 # 제안과 투표
 
-제안과 투표는 그룹의 응답을 체계적으로 수집합니다. 아이디어를 검토하고, 결정을 내리고, 우선순위를 파악하고, 회의 일정을 정하거나 대표를 선출하는 데 도움이 됩니다.
+제안과 투표는 그룹의 응답을 체계적으로 수집합니다. 아이디어를 검토하고, 결정을 내리고, 우선순위를 정하고, 회의 일정을 잡거나 대표를 선출할 때 사용하세요.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -96,9 +96,9 @@ source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 
 ### 토론 사용 여부 선택하기
 
-응답하기 전에 배경을 이해하거나, 질문하거나, 대화할 필요가 있다면 토론 안에서 제안이나 투표를 시작하세요. 하나의 토론에서 시간에 걸쳐 여러 제안을 진행할 수 있으므로, 수정 사항과 최종 결론을 해당 주제의 기록으로 한곳에 모을 수 있습니다.
+응답하기 전에 배경을 이해하거나, 질문하거나, 대화할 필요가 있다면 토론 안에서 제안이나 투표를 시작하세요. 하나의 토론에서 여러 제안을 차례로 진행할 수 있으므로, 수정 사항과 최종 결론을 하나의 기록으로 함께 보관할 수 있습니다.
 
-회의 등 다른 곳에서 이미 토론했거나, 질문이 간단하여 응답만 수집하면 되는 경우에는 독립형 투표를 진행하세요. 투표자가 무엇에 응답하는지 이해할 수 있도록 충분한 설명이나 관련 기록의 링크를 포함하세요.
+회의 등 다른 곳에서 이미 토론했거나, 질문이 간단하여 응답만 수집하면 되는 경우에는 독립형 투표를 진행하세요. 투표자가 무엇에 응답하는지 알 수 있도록 충분한 설명이나 배경 정보로 연결되는 링크를 포함하세요.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -138,19 +138,19 @@ source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 
 ### 2. 투표 시작
 
-투표가 시작되면 Loomio가 초대한 사람들에게 알림을 보냅니다. [투표 초대](../inviting_people/)를 참고하세요.
+투표가 시작되면 Loomio가 초대한 사람들에게 알림을 보냅니다. [투표자 관리](../manage_voters/)를 참고하세요.
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. 투표 참여
 
-투표가 진행되는 동안에는 투표하고, 투표 이유를 설명하고, 자신의 표를 변경할 수 있습니다. 마감될 때까지 결과를 숨기도록 설정하지 않았다면, 투표가 이루어질 때마다 결과가 갱신됩니다. 기본적으로 미투표자에게는 마감 하루 전에 알림이 전송됩니다.
+투표가 진행되는 동안에는 투표하고, 투표 이유를 추가하고, 자신의 표를 변경할 수 있습니다. 마감될 때까지 결과를 숨기도록 설정하지 않았다면, 투표가 이루어질 때마다 결과가 갱신됩니다. 기본적으로 미투표자에게는 마감 24시간 전에 알림이 전송됩니다.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. 마감
 
-투표는 마감 시각에 자동으로 마감됩니다. 스레드 관리자는 투표를 일찍 마감할 수도 있습니다. 마감 후에는 스레드 관리자가 새 마감 시각을 설정하고 투표를 다시 열어 사람들이 계속 투표할 수 있도록 할 수 있습니다. 익명 투표를 포함하여 마감될 때까지 결과를 숨기는 투표는 다시 열 수 없습니다. 이러한 투표는 마감되기 전에 마감 시각을 연장할 수 있습니다.
+투표는 마감 시각에 자동으로 마감되며, 스레드 관리자가 일찍 마감할 수도 있습니다. 마감 후에는 스레드 관리자가 새 마감 시각을 설정하고 투표를 다시 열 수 있습니다. 익명 투표를 포함하여 투표가 마감될 때까지 결과를 숨기는 투표는 다시 열 수 없습니다. 이러한 투표는 마감되기 전에 마감 시각을 연장할 수 있습니다.
 
 <!-- translation-section: 5-share-an-outcome -->
 

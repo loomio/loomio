@@ -1,37 +1,35 @@
 ---
 title: Asignar
-source_revision: 778275974a59271d3194a51e1c39706653c2793b
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/allocate/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 sections:
-  introduction: d097e3a7d91324c9
-  when-to-use-allocate: 25c91f8c05c1ec80
-  example-set-priorities-for-an-annual-strategy-review: 0211b365dde1d17c
-  set-up-the-poll: 772846c919c6af97
-  vote: a76285146a3b1d2e
-  read-the-results: 3a66507bd8387273
-  share-an-outcome: abb46bfca8b73b7a
+  introduction: d10125de19b0e07a
+  when-to-use-allocate: 31bd4a88c84bfaf2
+  example-set-priorities-for-an-annual-strategy-review: 286565336e2bb6c9
+  set-up-the-poll: 02aff5d11a69d90f
+  vote: 04f6bc5bba735513
+  read-the-results: 8f17bcf6c01cba57
+  share-an-outcome: 1a5f3ae9fea57d91
 generated:
-  introduction: 4139f886697c4467
-  when-to-use-allocate: e61522816e822f63
-  example-set-priorities-for-an-annual-strategy-review: ac2b65aa44d243c2
-  set-up-the-poll: 77b3e014284226e9
-  vote: '05721081e57b57cd'
-  read-the-results: 7cfa71e364335afe
-  share-an-outcome: ea3a86a6e4b1c387
+  introduction: be9d9dd3e9049fe3
+  when-to-use-allocate: 21f5fe073ef5812c
+  example-set-priorities-for-an-annual-strategy-review: d9758d78da6332fd
+  set-up-the-poll: 3dc3d75fb9044e00
+  vote: ed2f32a169233acf
+  read-the-results: ab2b509bcf30e2a3
+  share-an-outcome: d47a035b8f8116c9
 title_source: c927a8a7c2ce230c
 title_generated: f195acb749b4242b
-needs_review:
-  share-an-outcome: use "conclusión" instead of "resultado" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Repartir
 
-Repartir, también conocido como votación por puntos, permite conocer las prioridades cuando hay que equilibrar distintas necesidades. Cada participante recibe una cantidad fija de puntos y la reparte entre las opciones. Dar más puntos a una opción deja menos para las demás.
+Repartir, también conocido como votación por puntos, permite conocer las prioridades cuando hay que equilibrar distintas necesidades. Cada participante recibe una cantidad fija de puntos para repartir entre las opciones. Dar más puntos a una opción deja menos para las demás.
 
 <!-- translation-section: when-to-use-allocate -->
 
@@ -45,35 +43,33 @@ Usa Repartir cuando el tiempo, el dinero, la atención u otro recurso sean limit
 - repartir un número fijo de horas de voluntariado; o
 - identificar qué mejoras son más importantes para los miembros.
 
-Los puntos expresan una prioridad relativa, no una cantidad que Loomio vaya a asignar automáticamente. Usa [Puntuar](/en/user_manual/polls/score/) cuando todas las opciones puedan recibir una puntuación alta sin reducir el apoyo a otras.
+Los puntos muestran una prioridad relativa, no una cantidad que Loomio vaya a asignar automáticamente. Usa [Puntuar](/en/user_manual/polls/score/) cuando todas las opciones puedan recibir una puntuación alta sin reducir el apoyo a otras.
 
 <!-- translation-section: example-set-priorities-for-an-annual-strategy-review -->
 
 ## Ejemplo: establecer prioridades para una revisión anual de la estrategia
 
-La cooperativa Oatmilk está planificando la revisión anual de su estrategia. Pregunta a los miembros qué áreas deberían recibir más tiempo y atención durante la revisión. Cada miembro recibe diez puntos para repartir entre cinco áreas. Esto muestra las prioridades relativas del grupo y exige que los participantes elijan a qué áreas dar más peso.
+La cooperativa Oatmilk está planificando la revisión anual de su estrategia. Pregunta a los miembros qué áreas deberían recibir más tiempo y atención. Cada miembro recibe diez puntos para repartir entre cinco áreas, lo que muestra las prioridades relativas y exige elegir a qué áreas dar más peso.
 
 <!-- translation-section: set-up-the-poll -->
 
 ## Configura la encuesta
 
-Describe la decisión y lo que representan los puntos. Añade opciones con un alcance similar y configura **Puntos por persona**. En este ejemplo, cada votante recibe diez puntos para indicar cuánto tiempo de revisión debería dedicarse a cada área estratégica.
+Describe la decisión y lo que representan los puntos. Añade opciones con un alcance similar y configura **Puntos por persona**. En este ejemplo, cada votante recibe diez puntos para mostrar cuánto tiempo de revisión debería dedicarse a cada área estratégica.
 
 ![](form.png)
 
-Una cantidad muy grande de puntos puede crear una falsa precisión. Una cantidad útil suele ser suficiente para mostrar diferencias, pero lo bastante pequeña como para exigir que se elija. Aclara si se permite concentrar todos los puntos en una sola opción.
+Una cantidad muy grande de puntos puede crear una falsa precisión. Elige una cantidad suficiente para mostrar diferencias, pero lo bastante pequeña como para exigir que se elija a qué opciones dar más peso. Aclara si se permite concentrar todos los puntos en una sola opción.
 
 <!-- translation-section: vote -->
 
 ## Vota
 
-Los participantes mueven los controles deslizantes para repartir sus puntos. Loomio muestra cuántos puntos quedan e impide enviar el voto hasta que el reparto sea válido.
-
-Puedes dejar puntos sin repartir.
+Los participantes mueven los controles deslizantes para repartir sus puntos. Puedes dejar puntos sin repartir.
 
 ![](voting.png)
 
-En este ejemplo, el votante reparte tres puntos a **Participación de los miembros** y tres a **Sostenibilidad financiera**, dos a **Impacto ambiental** y dos a **Desarrollo del personal**, y ninguno a **Productos y servicios**. Un cero no significa necesariamente que un área carezca de valor; significa que el votante ha usado sus puntos limitados en otras áreas.
+En este ejemplo, el votante reparte tres puntos a **Participación de los miembros** y tres a **Sostenibilidad financiera**, dos a **Impacto ambiental** y dos a **Desarrollo del personal**, y ninguno a **Productos y servicios**. Dar cero puntos a una opción no significa necesariamente que carezca de valor; puede que el votante simplemente haya usado sus puntos limitados en otras opciones.
 
 <!-- translation-section: read-the-results -->
 
@@ -88,14 +84,14 @@ Los resultados ordenan las opciones por el total de puntos recibidos. También m
 
 ![](results.png)
 
-En este ejemplo, **Sostenibilidad financiera** recibe más puntos, seguida de **Desarrollo del personal**. Sostenibilidad financiera recibe puntos de todos los votantes, lo que sugiere un amplio acuerdo en que necesita bastante tiempo de revisión. Lee los totales junto con el número de votantes para distinguir las prioridades compartidas por muchas personas de las áreas que reciben un apoyo fuerte de menos personas.
+En este ejemplo, **Sostenibilidad financiera** recibe más puntos, seguida de **Desarrollo del personal**. Todos los votantes dieron puntos a Sostenibilidad financiera, lo que muestra un amplio acuerdo en que necesita tiempo de revisión.
 
-Lee los totales junto con el número de votantes y sus motivos.
+Lee los totales de puntos junto con el número de votantes y los motivos de sus votos para distinguir las prioridades compartidas por muchas personas de las áreas que reciben un apoyo fuerte de menos personas.
 
 <!-- translation-section: share-an-outcome -->
 
 ## Comparte una conclusión
 
-Cuando se cierre la encuesta, comparte una conclusión. La encuesta no asigna tiempo ni dinero automáticamente, así que indica cómo se utilizará el resultado. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
+Cuando se cierre la encuesta, comparte una conclusión. Como la encuesta no asigna tiempo ni dinero automáticamente, explica cómo se utilizarán los puntos obtenidos. Consulta [Comparte una conclusión](/en/user_manual/polls/intro_to_decisions#5-share-an-outcome) para saber cómo funcionan las conclusiones.
 
 ![Una conclusión que establece cómo se repartirá el tiempo de la revisión estratégica](outcome.png)

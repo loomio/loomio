@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: e1ca215c1a7cca07
+  introduction: 4254d593829a60a9
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Discord-Integration
 
-_Verbinde die Benachrichtigungen deiner Loomio-Gruppe mit deinem Teamchat in Discord._
-
-Loomio kann Benachrichtigungen an deine Discord-Kanäle senden, wenn neue Diskussionen, Vorschläge, Kommentare, Stimmen und Fazits hinzukommen. Du kannst auch manuell eine Benachrichtigung an den Chatraum senden, wenn du Personen an eine Entscheidung erinnern möchtest.
+Loomio kann Benachrichtigungen an deine Discord-Kanäle senden, wenn neue Diskussionen, Abstimmungen, Kommentare, Stimmen und Fazits hinzukommen. Du kannst auch manuell eine Benachrichtigung an den Kanal senden, wenn du Personen an eine Entscheidung erinnern möchtest.
 
 ---
 
-Öffne deinen Discord-Server und suche das Menü für die Servereinstellungen.
-![](server-settings.png)
+1. Öffne deinen Discord-Server und gehe zu **Servereinstellungen**.
 
-Klicke auf „Integrationen“
-![](integrations.png)
+   ![](server-settings.png)
 
-Klicke dann auf „Webhook hinzufügen“ und gib ihm einen Namen, zum Beispiel „Loomio-Bot“
+2. Wähle **Integrationen**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Kopiere die Webhook-URL in deine Zwischenablage und folge dem Link unten.
+3. Wähle **Webhook hinzufügen**, gib ihm einen Namen wie `Loomio`, wähle einen Kanal und kopiere die Webhook-URL.
+
+   ![](add-webhook.png)
+
+Nachdem du die Webhook-URL kopiert hast, schließe die Einrichtung in Loomio ab:
 
 [Eine Chat-Integration in Loomio einrichten](../chatbots/#set-up-a-chat-integration)

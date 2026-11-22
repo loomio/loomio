@@ -1,24 +1,24 @@
 ---
 title: Sondaggi
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/proposal_types/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: c13cd643890f38d5
-  simple-poll: d362d91b19914c39
-  score-poll: 0b71f670ef804b57
-  dot-vote: 4d7c819dc05f1c06
-  ranked-choice: 31dee409a33369de
-  time-poll: 8b3a09b278bd7fde
+  introduction: 14c684ef3a5d03a8
+  simple-poll: 6ade18c4042a9ce5
+  score-poll: 0ff1b5a4fb6f8d36
+  dot-vote: 25b1f6d9fba7b5de
+  ranked-choice: 84d21a711160209b
+  time-poll: 2d3a0a815016193b
   stv-election: e8407157d29424e4
 generated:
   introduction: 6943b4db1079eba2
-  simple-poll: 56f0bacce97a5ecd
+  simple-poll: cc974bb713928c12
   score-poll: a369d2e190f28ab5
-  dot-vote: 21f6a4ba73922e3f
-  ranked-choice: bdcfe6d96087eed4
+  dot-vote: 5f038bd78910cc3e
+  ranked-choice: a8f4e0b684e96909
   time-poll: fa6f9449378e9f07
   stv-election: 34c549766e822e38
 title_source: 996729458535904a
@@ -42,7 +42,7 @@ I sondaggi raccolgono scelte, punteggi, ripartizioni, classifiche, disponibilit�
 
 <!-- translation-section: simple-poll -->
 
-## Sondaggio semplice
+## Scelta
 
 [Scelta](/en/user_manual/polls/choose/) permette ai partecipanti di selezionare una o più opzioni. Usalo per trovare l'opzione più popolare o creare una lista ristretta.
 
@@ -54,13 +54,13 @@ I sondaggi raccolgono scelte, punteggi, ripartizioni, classifiche, disponibilit�
 
 <!-- translation-section: dot-vote -->
 
-## Voto a punti
+## Ripartizione
 
-[Ripartizione](/en/user_manual/polls/allocate/) assegna a ogni partecipante un numero fisso di punti da distribuire. Usalo per individuare le priorità quando scegliere una cosa significa dedicare meno attenzione o risorse a un'altra.
+[Ripartizione](/en/user_manual/polls/allocate/) assegna a ogni partecipante un numero fisso di punti da distribuire. Usalo per stabilire le priorità quando scegliere una cosa significa dedicare meno attenzione o risorse a un'altra.
 
 <!-- translation-section: ranked-choice -->
 
-## Classifica delle preferenze
+## Classifica
 
 [Classifica](/en/user_manual/polls/rank/) permette ai partecipanti di ordinare le opzioni secondo le proprie preferenze. Usalo per individuare l'ordine di preferenza complessivo del gruppo o selezionare l'opzione preferita.
 

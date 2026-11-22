@@ -1,25 +1,25 @@
 ---
 title: Classer
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/polls/rank/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/polls/rank/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 9908dff1f0045200
-  when-to-use-rank: f47d22e4968f74dd
+  introduction: c487eb4a8a26eb82
+  when-to-use-rank: 7869742bbeba98da
   example-rank-bottle-designs: 8c36f1564dcba66e
-  set-up-the-poll: 8a5902b708d6e7be
-  vote: b089c2c5b7504b5d
-  read-the-results: 18fbb0f9a5a866bc
-  share-an-outcome: c9dcebf155d64c65
+  set-up-the-poll: 1cf773421fdb4183
+  vote: 5bf5352c85322610
+  read-the-results: 8d5e49429cb260b1
+  share-an-outcome: ba930ebf7ca22f0d
 generated:
   introduction: 486dd5ba58df4852
-  when-to-use-rank: 23dd503aa628b57d
+  when-to-use-rank: 264dcb4f11dde71e
   example-rank-bottle-designs: dd2a76d88ec32edd
-  set-up-the-poll: d867a0591a0c6b4b
-  vote: 2978b600a891c1e4
-  read-the-results: 37d30b550ced6067
+  set-up-the-poll: 789b87229c7909cf
+  vote: 8ff1452d046fccbd
+  read-the-results: 61f2cb2418df2291
   share-an-outcome: a1d4c602fe52d103
 title_source: a4130d7d2c3a137f
 title_generated: '08878e1e10d07b7b'
@@ -43,7 +43,7 @@ Utilisez Classer lorsque l’ordre de préférence compte et que vous souhaitez 
 - choisir des options de repli en plus d’un premier choix ; ou
 - réduire une longue liste à une sélection ordonnée.
 
-Classer établit un classement fondé sur les points. Ce n’est pas une méthode d’élection proportionnelle. Pour élire plusieurs personnes tout en représentant différents groupes d’électeurs, utilisez une [élection STV](/en/user_manual/polls/stv/).
+Classer établit un classement fondé sur les points, sans représentation proportionnelle. Pour élire plusieurs personnes tout en représentant différents groupes d’électeurs, utilisez une [élection STV](/en/user_manual/polls/stv/).
 
 <!-- translation-section: example-rank-bottle-designs -->
 
@@ -55,17 +55,17 @@ La coopérative Oatmilk demande à ses membres de classer quatre modèles de bou
 
 ## Configurer le sondage
 
-Précisez ce que le classement permettra de déterminer et ajoutez les options. Réglez le **Nombre de choix** pour définir combien d’options chaque personne peut classer. Le premier choix reçoit le plus de points, le choix suivant reçoit un point de moins, et les options non classées ne reçoivent aucun point.
+Précisez ce que le classement permettra de décider et ajoutez les options. Réglez le **Nombre de choix** pour définir combien d’options chaque personne peut classer. Par exemple, si les électeurs peuvent classer jusqu’à 3 options, leur premier choix reçoit 3 points, leur deuxième choix reçoit 2 points, leur troisième choix reçoit 1 point, et les options non classées reçoivent 0 point.
 
 ![](form.png)
 
-Exigez que toutes les options soient classées lorsque vous avez besoin d’un classement complet. Autorisez un nombre de choix plus faible lorsque les participants ne disposent pas forcément des informations nécessaires pour tout classer. Présenter les options dans un ordre aléatoire peut réduire l’influence de leur ordre de présentation initial.
+Exigez que toutes les options soient classées lorsque vous avez besoin d’un classement complet. Autorisez un nombre de choix plus faible lorsque les participants ne disposent pas forcément des informations nécessaires pour tout classer. Présenter les options dans un ordre aléatoire permet d’éviter de donner un avantage aux options affichées en premier.
 
 <!-- translation-section: vote -->
 
 ## Voter
 
-Les participants font glisser les options pour les placer dans leur ordre de préférence, le numéro 1 correspondant au premier choix. Ils peuvent ajouter une raison expliquant les critères de leur classement.
+Les participants font glisser les options pour les placer dans leur ordre de préférence, le numéro 1 correspondant au premier choix. Ils peuvent ajouter une raison du vote expliquant leur classement.
 
 ![](voting.png)
 
@@ -85,9 +85,9 @@ Les résultats regroupent tous les bulletins de vote dans un classement global f
 
 ![](results.png)
 
-Dans cet exemple, la **bouteille ambrée de 500 ml** arrive en tête, suivie de la **bouteille transparente de 500 ml** et de la **bouteille ambrée de 750 ml**. Le groupe peut d’abord examiner le modèle préféré, puis conserver les autres modèles comme solutions de repli dans l’ordre du classement.
+Dans cet exemple, la **bouteille ambrée de 500 ml** arrive en tête, suivie de la **bouteille transparente de 500 ml** et de la **bouteille ambrée de 750 ml**. Le groupe peut d’abord essayer le modèle arrivé en tête et conserver les autres comme options de repli dans l’ordre du classement.
 
-Un résultat fondé sur les points peut masquer des préférences différentes qui aboutissent au même total. Examinez les bulletins de vote individuels et les raisons des votes lorsque les options obtiennent des scores proches ou que la décision a des conséquences importantes.
+Des répartitions différentes des préférences peuvent produire le même total de points. Lorsque les options obtiennent des scores proches ou que la décision est importante, examinez les votes individuels et les raisons des votes.
 
 <!-- translation-section: share-an-outcome -->
 

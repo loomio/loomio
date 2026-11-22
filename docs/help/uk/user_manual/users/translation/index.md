@@ -1,20 +1,20 @@
 ---
 title: Мова та переклад
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/translation/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 61c3576014d50390
-  application-translation: '02678dc26a30c3bc'
-  content-translation: a62f882355b42534
-  automatic-translation: 32a1aa99502e1e87
+  introduction: 962e69f090ca0471
+  application-translation: 915b96edce0a426f
+  content-translation: 49193ff02b91cd94
+  automatic-translation: fadc871ec672da73
 generated:
   introduction: a4ab6e022d32c37f
   application-translation: b09a44cf8f8b7c81
-  content-translation: 7c5c21c77289d2d1
-  automatic-translation: 59f36cabac90b31d
+  content-translation: 8c78bb0aa47b9081
+  automatic-translation: aeab2dd9949681b0
 title_source: 9fd7f67efecb7288
 title_generated: 922393e20f644d0a
 ---
@@ -36,20 +36,21 @@ Loomio визначає бажану мову вашого браузера. Щ�
 <!-- translation-section: content-translation -->
 
 ## Переклад контенту
-Коли хтось у вашій групі пише повідомлення мовою, що відрізняється від вашої бажаної мови, під повідомленням з’являється кнопка «перекласти». Натисніть цю кнопку, щоб автоматично перекласти повідомлення бажаною мовою.
 
-![Дія перекладу під коментарем](content_translation.png)
+Коли хтось у вашій групі пише повідомлення мовою, що відрізняється від вашої бажаної мови, під ним з’являється кнопка **Перекласти**. Виберіть **Перекласти**, щоб перекласти повідомлення бажаною мовою.
+
+![Дія «Перекласти» під коментарем](content_translation.png)
 
 Перекладений текст замінює оригінальний текст в обговоренні. Виберіть **оригінал**, щоб знову показати оригінальний текст.
 
 ![Коментар, перекладений з іспанської англійською](content_translated.png)
 
-Переклад контенту користувачів здійснюється через Google Translate за запитом користувача.
+Loomio використовує Google Translate для перекладу контенту за вашим запитом.
 
 <!-- translation-section: automatic-translation -->
 
 ## Автоматичний переклад
 
-Щоб автоматично перекладати підтримуваний контент, відкрийте **Редагувати профіль** і виберіть **Автоматично перекладати контент моєю мовою**. Loomio використовує мову, вибрану у вашому профілі.
+Щоб автоматично перекладати обговорення, коментарі та пропозиції, відкрийте **Редагувати профіль** і ввімкніть **Автоматично перекладати контент моєю мовою**. Loomio перекладає контент мовою, вибраною у вашому профілі.
 
 ![Налаштування автоматичного перекладу контенту на сторінці «Редагувати профіль»](automatic_translation.png)

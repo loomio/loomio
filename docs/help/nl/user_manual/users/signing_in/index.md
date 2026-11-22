@@ -1,28 +1,28 @@
 ---
 title: Inloggen
-source_revision: 5d6c305d2dfb5c47f5a90b1c1e6658ca352d88f5
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/users/signing_in/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-10'
+  'on': '2026-11-22'
 sections:
-  introduction: 9aa03b133cc213ce
-  sign-in-with-a-passkey: c685bd268243f8f5
-  sign-in-with-email-and-password: 20db7df775a273d8
-  get-a-sign-in-code: 50bf073c798941bc
+  introduction: 15eb32ac962bc715
+  sign-in-with-a-passkey: 12038dab660af30d
+  sign-in-with-email-and-password: 4918f19e6c5c0e8e
+  get-a-sign-in-code: 2857b8b8be3a9bee
   create-an-account: 9ac55c48d388b8a9
-  sign-in-with-google: 1e8bfdcee244d0bd
-  other-loomio-sites: 123e31828ab49002
-  sign-out: e46344eaf7e35c15
+  sign-in-with-google: 22b4cd3763d09a34
+  other-loomio-sites: 37ad63f50883c4b4
+  sign-out: b4ab119ac81aad77
 generated:
-  introduction: 48de4009b9d5771f
-  sign-in-with-a-passkey: 3b54344bf82d2a5a
-  sign-in-with-email-and-password: e616a0efcbd25cdb
-  get-a-sign-in-code: c6da7b5029c25527
+  introduction: 00ea624ae1c523d5
+  sign-in-with-a-passkey: 2db48fb09d60f317
+  sign-in-with-email-and-password: 2fdb071a4b843d1b
+  get-a-sign-in-code: 35ee70c6deb16c2c
   create-an-account: 47229193de9f7c01
-  sign-in-with-google: 56441929efd24f4f
-  other-loomio-sites: 419d135636005724
-  sign-out: c258f88c8cda5273
+  sign-in-with-google: 91bfc7fcf60a0864
+  other-loomio-sites: 254233b2ebedbfe6
+  sign-out: 279c4c41b0929c98
 title_source: 824a1d703ce676bb
 title_generated: 902a4c2ada7bc751
 ---
@@ -31,7 +31,7 @@ title_generated: 902a4c2ada7bc751
 
 # Inloggen
 
-Op Loomio.com kun je inloggen met een passkey, je e-mailadres en wachtwoord, een inlogcode die je per e-mail ontvangt, of Google. Je kunt de beschikbare methode kiezen die voor jou het handigst is.
+Op Loomio.com kun je inloggen met een passkey, je e-mailadres en wachtwoord, een inlogcode die je per e-mail ontvangt, of Google. Kies de methode die voor jou het beste werkt.
 
 ![Het inlogformulier van Loomio met opties voor een passkey, e-mailadres, wachtwoord en een code per e-mail](sign_in_email.png)
 
@@ -39,17 +39,17 @@ Op Loomio.com kun je inloggen met een passkey, je e-mailadres en wachtwoord, een
 
 ## Inloggen met een passkey
 
-Selecteer **Gebruik een passkey**. Je browser of apparaat toont de Loomio-passkeys die voor je beschikbaar zijn en vraagt je de geselecteerde passkey te ontgrendelen met de gebruikelijke schermvergrendeling, vingerafdruk, gezichtsherkenning, pincode of beveiligingssleutel. Je hoeft niet eerst een e-mailadres in te voeren.
+Selecteer **Gebruik een passkey**—je hoeft niet eerst een e-mailadres in te voeren. Je browser of apparaat toont je beschikbare Loomio-passkeys en vraagt je er een te ontgrendelen met je schermvergrendeling, vingerafdruk, gezichtsherkenning, pincode of beveiligingssleutel.
 
-Je kunt vanuit je profiel passkeys toevoegen, een naam geven en verwijderen. Voor de veiligheid kan Loomio je vragen opnieuw in te loggen voordat je ze wijzigt. Geef elke passkey een herkenbare naam, zoals “Werklaptop” of “Telefoon”. Passkeys zijn gekoppeld aan de Loomio-site waarop ze zijn aangemaakt en kunnen door je apparaat of wachtwoordmanager worden gesynchroniseerd.
+Je kunt vanuit je profiel passkeys toevoegen, een naam geven en verwijderen. Voor de veiligheid kan Loomio je vragen opnieuw in te loggen voordat je ze wijzigt. Geef elke passkey een duidelijke naam, zoals “Werklaptop” of “Telefoon”. Passkeys zijn gekoppeld aan de Loomio-site waarop je ze hebt aangemaakt en kunnen via je apparaat of wachtwoordmanager tussen apparaten worden gesynchroniseerd.
 
 <!-- translation-section: sign-in-with-email-and-password -->
 
 ## Inloggen met e-mailadres en wachtwoord
 
-Voer je e-mailadres en wachtwoord in en selecteer **Inloggen**. Om de privacy van accounts te beschermen, toont Loomio dezelfde foutmelding wanneer het e-mailadres of wachtwoord niet kan worden gebruikt om in te loggen.
+Voer je e-mailadres en wachtwoord in en selecteer **Inloggen**. Om je privacy te beschermen, toont Loomio dezelfde foutmelding wanneer het e-mailadres of het wachtwoord onjuist is.
 
-Als je nog geen passkey hebt toegevoegd, biedt Loomio aan er een toe te voegen nadat je met een wachtwoord bent ingelogd. Je kunt het aanbod afwijzen. Loomio onthoudt je keuze.
+Als je nog geen passkey hebt toegevoegd, biedt Loomio aan er een toe te voegen nadat je bent ingelogd. Je kunt het aanbod afwijzen. Loomio onthoudt je keuze.
 
 Als je geen wachtwoord hebt of het niet meer weet, selecteer dan **Stuur me een code**.
 
@@ -57,13 +57,13 @@ Als je geen wachtwoord hebt of het niet meer weet, selecteer dan **Stuur me een 
 
 ## Een inlogcode ontvangen
 
-Selecteer **Stuur me een code**, voer je e-mailadres in en verstuur het formulier. Loomio toont dezelfde bevestiging, ongeacht of het adres bij een account hoort. Zo kan iemand anders het formulier niet gebruiken om te achterhalen wie Loomio gebruikt.
+Selecteer **Stuur me een code**, voer je e-mailadres in en verstuur het formulier. Om je privacy te beschermen, toont Loomio dezelfde bevestiging, ongeacht of het adres bij een account hoort.
 
-Als het adres bij je account hoort, stuurt Loomio een code van zes cijfers. Ga terug naar het inlogformulier, voer de code in en selecteer **Inloggen**. Inlogcodes verlopen normaal gesproken na 24 uur en kunnen niet opnieuw worden gebruikt. Controleer je spammap als het bericht niet aankomt en zorg dat je het e-mailadres hebt ingevoerd dat bij je account hoort.
+Als het adres bij je account hoort, stuurt Loomio je per e-mail een code van zes cijfers. Ga terug naar het inlogformulier, voer de code in en selecteer **Inloggen**. Codes verlopen na 24 uur en kunnen maar één keer worden gebruikt. Als de e-mail niet aankomt, controleer dan je spammap en zorg dat je het e-mailadres hebt ingevoerd dat bij je account hoort.
 
 ![Het Loomio-formulier om een inlogcode van zes cijfers in te voeren](sign_in_code.png)
 
-Telkens wanneer je met een code inlogt, biedt Loomio aan je wachtwoord in te stellen of te vervangen. Als je browser passkeys ondersteunt, kun je er ook een toevoegen, zelfs als je al een passkey op een ander apparaat hebt toegevoegd. Met een passkey kun je snel inloggen met de vingerafdruk, gezichtsherkenning of schermvergrendeling van je apparaat. Je kunt het aanbod overslaan en codes per e-mail blijven gebruiken.
+Nadat je met een code bent ingelogd, biedt Loomio aan je wachtwoord in te stellen of te vervangen, of een passkey toe te voegen als je browser passkeys ondersteunt. Je kunt dit overslaan en codes per e-mail blijven gebruiken.
 
 <!-- translation-section: create-an-account -->
 
@@ -77,7 +77,7 @@ Gebruik voor je privacy hetzelfde e-mailadres waarop je de uitnodiging voor je g
 
 ## Inloggen met Google
 
-Selecteer **Inloggen met Google** en log in met je Google-account. Als een bestaand Loomio-account hetzelfde e-mailadres heeft, koppelt Loomio de Google-identiteit aan dat account.
+Selecteer **Inloggen met Google** en log in met je Google-account. Als een bestaand Loomio-account dat e-mailadres gebruikt, koppelt Loomio Google aan dat account. Anders maakt Loomio een nieuw account voor je aan.
 
 <!-- translation-section: other-loomio-sites -->
 
@@ -87,12 +87,12 @@ Organisaties die hun eigen Loomio-site hosten, kunnen verschillende inlogmethode
 
 Op sommige sites heb je een uitnodiging nodig voordat je een account kunt aanmaken. Op deze sites verschijnt **Account aanmaken** alleen wanneer je een uitnodigingslink volgt.
 
-Een besloten site waarop je alleen via SSO kunt inloggen, toont alleen de inlogoptie van de organisatie. De site biedt geen door Loomio beheerde wachtwoorden, inlogcodes per e-mail, rechtstreekse accountregistratie of door Loomio beheerde passkeys. Als de organisatie passkeys gebruikt, vraagt de identiteitsprovider erom tijdens het inloggen via SSO.
+Op sommige besloten sites moet je inloggen via het single sign-on-systeem (SSO) van je organisatie. Deze sites bieden geen Loomio-wachtwoorden, codes per e-mail of passkeys en laten je geen apart Loomio-account aanmaken. Als je organisatie passkeys gebruikt, gebruik je die via het inlogscherm van je organisatie.
 
 <!-- translation-section: sign-out -->
 
 ## Uitloggen
 
-Open de zijbalk, selecteer je naam en selecteer vervolgens **Uitloggen**. Log op een gedeelde computer uit wanneer je klaar bent, in plaats van alleen het browsertabblad te sluiten.
+Open de zijbalk, selecteer je naam en selecteer vervolgens **Uitloggen**. Log op een gedeelde computer altijd uit wanneer je klaar bent, in plaats van alleen het browsertabblad te sluiten.
 
-Uitloggen beëindigt de sessie van die browser onmiddellijk. Loomio bewaart het IP-adres, de browserinformatie en de begin- en eindtijd van de sessie standaard 60 dagen voor beveiligingsonderzoek. Beheerders van privésites kunnen deze periode instellen. Als je jouw account permanent verwijdert, wordt deze sessiegeschiedenis verwijderd.
+Uitloggen beëindigt de sessie van die browser onmiddellijk. Loomio bewaart het IP-adres, de browserinformatie en de begin- en eindtijd van de sessie standaard 60 dagen voor beveiligingsonderzoek (beheerders van privésites kunnen deze periode wijzigen). Als je jouw account permanent verwijdert, wordt deze sessiegeschiedenis verwijderd.

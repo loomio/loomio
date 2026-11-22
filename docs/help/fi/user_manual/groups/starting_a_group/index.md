@@ -1,22 +1,22 @@
 ---
 title: Ryhmän perustaminen
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/groups/starting_a_group/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/starting_a_group/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 221cb19d87a4f2d6
+  introduction: 792e23f7fcb36aec
   group-details: 0fcf6c809c12050b
-  group-name: 3c1c2b66ece3df93
-  group-handle: 1696339219760afb
-  group-description: b585bd5a1b0b1bff
+  group-name: 2ba5592281dfcbcb
+  group-handle: 64928a4bbab65b9b
+  group-description: 48af06ef795dd9a9
 generated:
-  introduction: c4d5b5e50ae4fe25
+  introduction: 6ba8329df564a4fc
   group-details: 5ed7615321323e93
-  group-name: 13ec2fc1ccc94d4a
-  group-handle: d06ecd49a18417a3
-  group-description: 8cc1761112e2dfd8
+  group-name: 6480bf42ddeac4f4
+  group-handle: 1f839e90a8798214
+  group-description: 427a21fc2cabd69a
 title_source: c5a16dbe0863ecd7
 title_generated: 7a0bfcd9d081713c
 ---
@@ -25,9 +25,9 @@ title_generated: 7a0bfcd9d081713c
 
 # Uuden ryhmän perustaminen
 
-Jos olet uusi Loomion käyttäjä, voit perustaa ryhmän maksuttomalle kokeilujaksolle milloin tahansa [Loomion verkkosivustolla](https://www.loomio.com/). Jos käytät jo Loomiota ja haluat perustaa uuden ryhmän toiselle organisaatiolle tai toiseen tarkoitukseen, voit tehdä sen sivupalkin valikosta – napsauta **Uusi ryhmä**.
+Jos olet uusi Loomion käyttäjä, voit perustaa ryhmän maksuttomalle kokeilujaksolle [Loomion verkkosivustolla](https://www.loomio.com/). Jos käytät jo Loomiota ja haluat perustaa toisen ryhmän, valitse sivupalkista **Uusi ryhmä**.
 
-Monille organisaatioille yksi Loomio-ryhmä riittää. Voit perustaa ryhmän sisälle niin monta alaryhmää kuin tarvitset. Lisätietoja saat sivulta [Alaryhmät](/en/user_manual/groups/subgroups/).
+Useimmat organisaatiot tarvitsevat vain yhden pääryhmän, jonka sisälle voi perustaa niin monta [alaryhmää](/en/user_manual/groups/subgroups) kuin tarvitaan.
 
 ![](new_group.png)
 
@@ -41,22 +41,20 @@ Monille organisaatioille yksi Loomio-ryhmä riittää. Voit perustaa ryhmän sis
 
 ### Ryhmän nimi
 
-Kirjoita ryhmäsi nimi. Nimi kannattaa pitää lyhyenä ja ytimekkäänä.
+Anna ryhmällesi lyhyt ja selkeä nimi.
 
 <!-- translation-section: group-handle -->
 
 ### Ryhmän tunnus
 
-Ryhmällesi annetaan automaattisesti tunnus. Tunnusta käytetään ryhmän verkko-osoitteessa ja sähköpostiosoitteessa, esimerkiksi **loomio.com/your-group-handle** ja **your-group-handle@loomio.com**.
+Loomio antaa ryhmällesi automaattisesti tunnuksen ryhmän nimen perusteella. Tunnusta käytetään ryhmän verkko-osoitteessa ja sähköpostiosoitteessa, esimerkiksi `loomio.com/your-group-handle` ja `your-group-handle@loomio.com`.
 
-Voit muokata tunnusta ryhmää luodessasi ja vaihtaa sen myöhemmin ryhmän asetuksissa. Kun vaihdat tunnuksen, vanhaa tunnusta käyttävät linkit ja sähköpostiosoitteet toimivat edelleen. Loomio säilyttää enintään kolme vanhaa tunnusta. Sen jälkeen vanhin tunnus lakkaa toimimasta.
+Voit muokata tunnusta ryhmää luodessasi tai vaihtaa sen myöhemmin ryhmän asetuksissa. Kun vaihdat tunnuksen, vanhaa tunnusta käyttävät linkit ja sähköpostiosoitteet toimivat edelleen. Loomio säilyttää enintään kolme vanhaa tunnusta. Sen jälkeen vanhin tunnus lakkaa toimimasta.
 
 <!-- translation-section: group-description -->
 
 ### Ryhmän kuvaus
 
-Tämä lyhyt kuvaus näkyy yleiskatsauksen yläosassa ja antaa uusille jäsenille tarvittavat taustatiedot.
+Lisää lyhyt kuvaus, joka näkyy ryhmäsivun yläosassa ja antaa uusille jäsenille taustatietoja.
 
-**Kun napsautat 'Perusta ryhmä', uusi ryhmäsi luodaan automaattisesti!**
-
----
+Valitse [yksityisyysasetus](/en/user_manual/groups/settings/privacy) ja luo ryhmä valitsemalla **Aloita ryhmä**. Sinusta tulee automaattisesti ryhmän ensimmäinen ylläpitäjä, ja voit päivittää näitä tietoja myöhemmin ryhmän asetuksissa.

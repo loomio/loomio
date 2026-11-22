@@ -1,25 +1,25 @@
 ---
 title: Választás
-source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 sections:
-  introduction: f9d6a5bfb7445de0
-  when-to-use-choose: f8a798497cac5a43
-  example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
-  set-up-the-poll: a16095b63c57e0c9
-  vote: '09940fa2f063a6bc'
-  read-the-results: e675d12da1a4ba8a
+  introduction: 3570d7d235e7bfad
+  when-to-use-choose: 68cfcf5f85ef14c6
+  example-set-a-planning-meeting-agenda: ceca06a3f71f9d74
+  set-up-the-poll: 60f258f0eedb6323
+  vote: 958df5aed5589661
+  read-the-results: da240100a27bb2b4
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: d55bc9179e8d6e92
-  when-to-use-choose: 77fc741d5d26dbef
+  introduction: 234f3aee0b31c625
+  when-to-use-choose: 7598a12b784ccd67
   example-set-a-planning-meeting-agenda: 1453ff1263a30eaa
-  set-up-the-poll: faefe9996fbe3526
-  vote: 1123810ab5019a3d
-  read-the-results: 1d670f65188d9421
+  set-up-the-poll: 8baf5285f015cd66
+  vote: edc6ed674a127f48
+  read-the-results: 36e6a0eb481f6eda
   share-an-outcome: b17bfe8437d03002
 title_source: c7f937836f5d82d5
 title_generated: 286ca3786012a2d5
@@ -29,7 +29,7 @@ title_generated: 286ca3786012a2d5
 
 # Kiválasztás
 
-A Kiválasztás egyszerű szavazás a legnépszerűbb lehetőség megtalálására vagy egy szűkített lista összeállítására. A résztvevők az általad beállított korlátoktól függően egy vagy több lehetőséget választanak ki. Ezt a szavazási módot általában feleletválasztásnak nevezik.
+A Kiválasztás egyszerű szavazás a legnépszerűbb lehetőség megtalálására vagy egy szűkített lista összeállítására. A résztvevők az általad beállított korlátoktól függően egy vagy több lehetőséget választanak ki. Ezt a szavazási módot feleletválasztásnak is nevezik.
 
 <!-- translation-section: when-to-use-choose -->
 
@@ -42,7 +42,7 @@ Használd a Kiválasztást, ha a lehetőségek jól elkülönülnek egymástól,
 - annak eldöntésére, hogy melyik terv jusson tovább a következő körbe; vagy
 - annak ellenőrzésére, hogy a tagok mely szolgáltatásokat tervezik használni.
 
-A Kiválasztás a kiválasztott lehetőségeket rögzíti, nem az egyéni preferenciák erősségét vagy sorrendjét. Használd a [Pontozást](/en/user_manual/polls/score/), ha azt szeretnéd mérni, mennyire támogatják az emberek az egyes lehetőségeket, a [Pontelosztást](/en/user_manual/polls/allocate/), ha korlátozott keret áll rendelkezésre, vagy a [Rangsorolást](/en/user_manual/polls/rank/), ha a preferenciák sorrendje számít.
+A Kiválasztás a kiválasztott lehetőségeket rögzíti, nem a preferenciák erősségét vagy sorrendjét. Használd a [Pontozást](/en/user_manual/polls/score/), ha azt szeretnéd mérni, mennyire támogatják az emberek az egyes lehetőségeket, a [Pontelosztást](/en/user_manual/polls/allocate/), ha korlátozott keret áll rendelkezésre, vagy a [Rangsorolást](/en/user_manual/polls/rank/), ha a preferenciák sorrendje számít.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
@@ -54,17 +54,17 @@ Az Oatmilk Szövetkezetnek el kell döntenie, hogy a visszaváltható palackokka
 
 ## Állítsd be a szavazást
 
-Adj a szavazásnak egy konkrét kérdést címként. A **Részletek** mezőben magyarázd el, mit mérlegeljenek a résztvevők, és hogyan használjátok majd fel az eredményeket. Add hozzá az összes elérhető lehetőséget, majd állítsd be a **Minimális választási lehetőségek** és a **Maximális választási lehetőségek** értékét.
+Adj a szavazásnak egy konkrét kérdést címként. A **Részletek** mezőben magyarázd el, mit mérlegeljenek a résztvevők, és hogyan használjátok majd fel az eredményt. Add hozzá az egyes lehetőségeket, majd állítsd be a **Minimális választási lehetőségek** és a **Maximális választási lehetőségek** értékét.
 
 ![](form.png)
 
-Állítsd mindkét korlátot 1-re, ha a résztvevőknek pontosan egy lehetőséget kell kiválasztaniuk. Állíts be magasabb maximumot, ha szűkített listát szeretnél. Ne engedj annyi választást, hogy a résztvevők szinte minden lehetőséget kiválaszthassanak, mert így az eredmények kevésbé lesznek hasznosak.
+Állítsd mindkét korlátot 1-re, ha a résztvevőknek pontosan egy lehetőséget kell kiválasztaniuk. Állíts be magasabb maximumot, ha szűkített listát szeretnél. Ne engedj annyi választást, hogy a résztvevők szinte minden lehetőséget kiválaszthassanak, mert így az eredmény kevésbé lesz hasznos.
 
-A lehetőség melletti ceruzaikon segítségével add meg a jelentését vagy egy további magyarázatot. Ez akkor hasznos, ha a lehetőség rövid neve többféleképpen is értelmezhető.
+Kattints a lehetőség melletti ceruzaikonra, hogy megadd a jelentését vagy további magyarázatot fűzz hozzá. Ez akkor segít, ha a lehetőség rövid neve többféleképpen is értelmezhető.
 
 ![](edit_option.png)
 
-A **További beállítások** között az **Opciók megjelenítése véletlenszerű sorrendben** beállítás csökkentheti annak hatását, hogy mindig ugyanaz a lehetőség jelenik meg elsőként.
+A **További beállítások** között kapcsold be az **Opciók megjelenítése véletlenszerű sorrendben** beállítást, hogy az első lehetőség ne kerüljön előnybe.
 
 ![](random_order.png)
 
@@ -72,11 +72,11 @@ A **További beállítások** között az **Opciók megjelenítése véletlensze
 
 ## Szavazz
 
-Ha a kiválasztott lehetőségek száma kívül esik a megengedett tartományon, a küldés gomb jelzi, hogyan javíthatod ezt. Ebben a példában a szavazó a **Begyűjtési ütemterv a kávézóknál** és a **Mosási munkafolyamat** lehetőséget választja ki, majd indoklásában összekapcsolja ezeket a választásokat a próbával.
+A résztvevők a minimális és maximális korlátokon belül választják ki az általuk előnyben részesített lehetőségeket. Ebben a példában a szavazó a **Begyűjtési ütemterv a kávézóknál** és a **Mosási munkafolyamat** lehetőséget választja ki, majd a szavazatához indoklást ad, amely összekapcsolja ezeket a választásokat a próbával.
 
 ![](voting.png)
 
-Az indoklás megmutathatja, miért fontos egy lehetőség, és milyen munkát várnak el tőle a résztvevők. Ha az indoklások fontosak a döntéshez, a szavazás elindítása előtt állítsd be a szavazatok indoklására vonatkozó beállítást.
+A szavazat indoklása elmagyarázhatja, miért fontos egy lehetőség, és a résztvevők szerint milyen munkát kell magában foglalnia. Ha az indoklások fontosak a döntéshez, a szavazás elindítása előtt állítsd be, hogy kötelező legyen indokolni a szavazatot.
 
 <!-- translation-section: read-the-results -->
 
@@ -86,7 +86,7 @@ Az eredmények megmutatják, hogy az egyes lehetőségekre az összes kiválaszt
 
 ![](results.png)
 
-Ebben a példában a **Begyűjtési ütemterv a kávézóknál** lehetőséget hárman választották ki. A **Mosási munkafolyamat** és a **Visszaváltási arány jelentése** lehetőséget ketten-ketten. Az eredmények alapján a kávézóknál történő begyűjtésre érdemes a legtöbb időt szánni a napirendben, de az azonos számú kiválasztást kapott témák miatt a szervezőnek még el kell döntenie, hogyan ossza fel a fennmaradó időt.
+Ebben a példában a **Begyűjtési ütemterv a kávézóknál** lehetőséget hárman választották ki. A **Mosási munkafolyamat** és a **Visszaváltási arány jelentése** lehetőséget ketten-ketten. Az eredmény alapján a kávézóknál történő begyűjtésre érdemes a legtöbb időt szánni a napirendben, a szervezőnek pedig továbbra is el kell döntenie, hogyan ossza fel a fennmaradó időt az azonos számú kiválasztást kapott témák között.
 
 <!-- translation-section: share-an-outcome -->
 

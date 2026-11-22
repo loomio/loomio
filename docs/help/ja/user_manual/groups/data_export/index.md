@@ -1,26 +1,26 @@
 ---
 title: データのエクスポート
-source_revision: 4b2812c4470008c52c676e4d3288d05b9f56edb6
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/groups/data_export/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: 5e29f67f9a2084ec
-  export-data: 58b5e1d4e6f0b917
-  export-group-data-as-csv: 53286ec33e7300d6
-  export-group-data-as-html: 101671937dcd6f36
-  export-group-data-as-json: aa310889d0854550
-  print-thread-to-pdf: a0ad78b64036be18
-  import-your-group-data-on-another-loomio-server: 910ee8af48049e82
+  introduction: 988679ffd3d29834
+  export-data: 9c2fb6ec7c75bcb6
+  export-group-data-as-csv: c0845f09bff828f2
+  export-group-data-as-html: 659fd5e14956b00e
+  export-group-data-as-json: 4c2131f4518b7469
+  print-thread-to-pdf: 1a1d0598f4277ba1
+  import-your-group-data-on-another-loomio-server: 33d49c6c25be163b
 generated:
-  introduction: '08204f8655220845'
-  export-data: ca71d878f579c764
-  export-group-data-as-csv: 0ad311ba86a4e492
-  export-group-data-as-html: 846f521da886f3dd
-  export-group-data-as-json: cb7d5f9d59155c2e
-  print-thread-to-pdf: 90052e68b5b44e76
-  import-your-group-data-on-another-loomio-server: e38bb967c4b4743e
+  introduction: 0b4a90e663b3aaf8
+  export-data: 04e307135fa06744
+  export-group-data-as-csv: c0ced6f60fcff34f
+  export-group-data-as-html: ca4b1e5171118727
+  export-group-data-as-json: da0f561d2a329858
+  print-thread-to-pdf: 607702321e8254f7
+  import-your-group-data-on-another-loomio-server: dc2a0eba5f0b4831
 title_source: 29049648f87b87f5
 title_generated: e8a1a8a6aba2c93d
 ---
@@ -29,51 +29,47 @@ title_generated: e8a1a8a6aba2c93d
 
 # グループデータのバックアップまたはエクスポート
 
-グループデータのエクスポート機能では、次のことができます。
+グループデータのエクスポートでは、次のことができます。
 
-- メンバーのデータを含むファイルをダウンロードして、グループのメンバー構成を確認できます。
-- スレッドやアンケートの本文を含むグループのコンテンツをダウンロードして、保管や分析に利用できます。
-- アンケートの結果を表計算ソフトやスクリプト言語で開けます。
-- [保管用にスレッドやアンケートを印刷したり、PDFとして保存したりできます。](#print-thread-to-pdf)
-- すべてのユーザー、スレッド、アンケート、ファイルを含むグループを、別のLoomioサーバーに移行できます。
+- メンバーのデータをダウンロードして、グループのメンバー構成を確認できます。
+- グループのスレッド、コメント、アンケートを保管したり分析したりできます。
+- アンケートの結果を表計算ソフトやスクリプトで開けます。
+- [記録用にスレッドやアンケートを印刷したり、PDFとして保存したりできます。](#print-thread-to-pdf)
+- ユーザー、スレッド、アンケート、ファイルを含むグループを、別のLoomioサーバーに移行できます。
 
-Loomioが管理するサーバーから[独自のサーバーへ](https://github.com/loomio/loomio)移行する場合に、この機能を利用できます。
+Loomioのホスティングサービスから[セルフホストのサーバー](https://github.com/loomio/loomio)へ移行する場合に、この機能を利用できます。独自のサーバーを運用していて、米国、EU、オーストラリアにあるLoomioのマネージドホスティングへ移行したい場合は、[お問い合わせください](/contact)。
 
-独自のLoomioサーバーの運用を終了したい場合、Loomioは米国、EU、オーストラリアでマネージドホスティングを提供しています。これらのサーバーへのグループの移行を希望する場合は、[お問い合わせください](/contact)。
-
-loomio.comのグローバルホスティングサービスから、ヨーロッパ向けのloomio.eu、またはオーストラリアとニュージーランド向けのloomio.nzへLoomioのグループを移行する場合は、[お問い合わせください](/contact)。
+loomio.comから地域別サービス（ヨーロッパ向けのloomio.eu、またはオーストラリアとニュージーランド向けのloomio.nz）へグループを移行したい場合は、[お問い合わせください](/contact)。
 
 <!-- translation-section: export-data -->
 
 ## データのエクスポート
 
-3つの点をクリックしてグループのドロップダウンメニューを開き、**グループデータのエクスポート**を選択します。
+グループデータをエクスポートできるのは、グループ管理者のみです。グループの操作メニューを開き、**グループデータのエクスポート**を選択します。
 
 ![Oatmilk Cooperativeのメニューにあるグループデータのエクスポート操作](group_export_group_data.png)
+
+Loomioはバックグラウンドでエクスポートの準備を進め、準備ができるとダウンロードリンクをメールで送信します。リンクは1週間利用できます。
 
 <!-- translation-section: export-group-data-as-csv -->
 
 ### グループデータをCSVとしてエクスポート
 
-*MS ExcelやGoogle Sheetsなどの表計算ソフトでグループデータを扱う場合に使用します。*
-
-LoomioはバックグラウンドでCSVファイルを準備し、準備ができるとダウンロードリンクをメールで送信します。リンクは1週間利用できます。
+メンバーの詳細や活動を含むグループデータをMicrosoft ExcelやGoogle Sheetsなどの表計算ソフトで確認するには、CSVを使用します。
 
 <!-- translation-section: export-group-data-as-html -->
 
 ### グループデータをHTMLとしてエクスポート
 
-*データを保管用に保存する場合に使用します。*
-
-LoomioはバックグラウンドでHTMLファイルを準備し、準備ができるとダウンロードリンクをメールで送信します。リンクは1週間利用できます。
+グループのディスカッションやアンケートを読みやすい形式で保管するには、HTMLを使用します。
 
 <!-- translation-section: export-group-data-as-json -->
 
 ### グループデータをJSONとしてエクスポート
 
-*グループデータをセルフホストのLoomioインスタンスへ移行する場合に使用します。*
+グループデータをセルフホストのLoomioサーバーへ移行するには、JSONを使用します。
 
-エクスポートするには、グループの管理者である必要があります。JSONエクスポートには次のものが含まれます。
+JSONエクスポートには次のものが含まれます。
 
 - グループ、そのメンバー、参加申請
 - 対象のグループのスレッド、コメント、リアクション、タグ、テンプレート、通知、および関連レコード
@@ -89,15 +85,11 @@ JSONエクスポートには次のものは含まれません。
 - まだ締め切られていない匿名アンケート
 - グループに属していないダイレクトスレッドやアンケート
 
-しばらくすると、JSONファイルのダウンロードリンクを記載したメールが届きます。
-
 <!-- translation-section: print-thread-to-pdf -->
 
 ## スレッドをPDFとして印刷
 
-スレッドを記録として保存するには、スレッドのメニューを開き、**印刷する**を選択します。Loomioが、スレッドのコメント、アンケート、投票、結論、書式を含むHTMLページを生成します。ブラウザーの印刷機能を使って、印刷するかPDFとして保存します。
-
-ページをコピーして、文書エディター、ファイル、データリポジトリに貼り付けることもできます。
+1つのスレッドを記録として保存するには、スレッドの操作メニューを開き、**印刷する**を選択します。Loomioが、スレッドのコメント、アンケート、投票、結論、書式を含むHTMLページを生成します。ブラウザーの印刷機能を使って印刷するかPDFとして保存するか、コンテンツを別の文書にコピーします。
 
 ![リターナブル瓶についてのディスカッションの印刷操作](discussion_print_discussion.png#width-90)
 
@@ -105,18 +97,22 @@ JSONエクスポートには次のものは含まれません。
 
 ## 別のLoomioサーバーにグループデータをインポート
 
-独自のLoomioサーバーのセットアップ手順は、次のページをご覧ください： https://github.com/loomio/loomio
+このセクションは、セルフホストのLoomioサーバーを運用する管理者向けです。セットアップ手順は、[Loomioリポジトリ](https://github.com/loomio/loomio)をご覧ください。
 
-独自のLoomio環境をホストしていて、エクスポートしたデータをインポートする場合は、次の手順を実行します。
+1. `.json`ファイルをコンテナの`import`フォルダーにコピーします。
 
-.jsonファイルをコンテナインスタンスの`import`フォルダーにコピーします。
+```sh
+scp your-group-data.json username@some-domain.org:loomio-deploy/import
+```
 
-`scp your-group-data.json username@some-domain.org:loomio-deploy/import`
+2. 実行中のコンテナでRailsコンソールを開きます。
 
-実行中のRailsコンソールにアクセスします。
+```sh
+docker exec -ti loomio-app rails console
+```
 
-`docker exec -ti loomio-app rails console`
+3. インポートサービスを実行します。
 
-サービスを呼び出します。
-
-`GroupExportService.import('/import/your-group-data.json')`
+```ruby
+GroupExportService.import('/import/your-group-data.json')
+```

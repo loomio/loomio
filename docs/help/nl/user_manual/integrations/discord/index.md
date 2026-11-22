@@ -1,14 +1,14 @@
 ---
 title: Discord
-source_revision: 924e704b41670a012a16528cf88edf90f8d6b572
-source_file: docs/en/user_manual/integrations/discord/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/discord/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 39ded52449532722
+  introduction: b70f6cbacf06e6f0
 generated:
-  introduction: bcb126f3dce32ad7
+  introduction: f563dc0d8a7b9dba
 title_source: 053bc65874ad6098
 title_generated: 053bc65874ad6098
 ---
@@ -17,22 +17,22 @@ title_generated: 053bc65874ad6098
 
 # Discord-integratie
 
-_Verbind de meldingen van jouw Loomio-groep met de teamchat in Discord._
-
-Loomio kan meldingen naar jouw Discord-kanalen sturen wanneer er nieuwe discussies, voorstellen, reacties, stemmen en conclusies zijn. Je kunt ook handmatig een melding naar de chatruimte sturen om mensen aan een besluit te herinneren.
+Loomio kan meldingen naar jouw Discord-kanalen sturen wanneer er nieuwe discussies, peilingen, reacties, stemmen en conclusies zijn. Je kunt ook handmatig een melding naar het kanaal sturen om mensen aan een besluit te herinneren.
 
 ---
 
-Open jouw Discord-server en zoek het menu met serverinstellingen.
-![](server-settings.png)
+1. Open jouw Discord-server en ga naar **Serverinstellingen**.
 
-Klik op "Integraties"
-![](integrations.png)
+   ![](server-settings.png)
 
-Klik vervolgens op "Webhook toevoegen" en geef deze een naam, zoals "Loomio bot"
+2. Selecteer **Integraties**.
 
-![](add-webhook.png)
+   ![](integrations.png)
 
-Kopieer de webhook-URL naar je klembord en volg de onderstaande link.
+3. Selecteer **Webhook toevoegen**, geef deze een naam zoals `Loomio`, kies een kanaal en kopieer de webhook-URL.
+
+   ![](add-webhook.png)
+
+Nu je een webhook-URL hebt, kun je de koppeling in Loomio afronden:
 
 [Stel een chatintegratie in Loomio in](../chatbots/#set-up-a-chat-integration)

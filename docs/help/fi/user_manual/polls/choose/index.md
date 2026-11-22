@@ -1,37 +1,35 @@
 ---
 title: Valitse
-source_revision: 79c58a45a68afbcb1de1d451830de2780754b4a2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/choose/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-11'
+  'on': '2026-11-22'
 sections:
-  introduction: f9d6a5bfb7445de0
-  when-to-use-choose: f8a798497cac5a43
-  example-set-a-planning-meeting-agenda: 32a94a916dbf84e5
-  set-up-the-poll: a16095b63c57e0c9
-  vote: '09940fa2f063a6bc'
-  read-the-results: e675d12da1a4ba8a
+  introduction: 3570d7d235e7bfad
+  when-to-use-choose: 68cfcf5f85ef14c6
+  example-set-a-planning-meeting-agenda: ceca06a3f71f9d74
+  set-up-the-poll: 60f258f0eedb6323
+  vote: 958df5aed5589661
+  read-the-results: da240100a27bb2b4
   share-an-outcome: f6afc1713b921265
 generated:
-  introduction: 470395125efd4b9e
-  when-to-use-choose: 908a8bde5b540cee
+  introduction: c5a7b0d4a2b37704
+  when-to-use-choose: bf2a497a9fc4d76a
   example-set-a-planning-meeting-agenda: ad0db79663f8feaf
-  set-up-the-poll: accd1abb7f5a5eaf
-  vote: 3da82ebe37a85134
-  read-the-results: 44b91df51d19b5e3
+  set-up-the-poll: 3cb0ae24051f7859
+  vote: 7530402fd5030fba
+  read-the-results: 70234886134c04e5
   share-an-outcome: 07c48004c7ef0120
 title_source: c7f937836f5d82d5
 title_generated: 92978709da089a2a
-needs_review:
-  vote: use "vaihtoehto" instead of "asetus" for "option"
 ---
 
 <!-- translation-section: introduction -->
 
 # Valinta
 
-Valinta on yksinkertainen kysely suosituimman vaihtoehdon löytämiseen tai vaihtoehtojen karsimiseen. Osallistujat valitsevat yhden tai useamman vaihtoehdon asettamiesi rajojen mukaan. Tämä äänestystapa tunnetaan yleisesti monivalintana.
+Valinta on yksinkertainen kysely suosituimman vaihtoehdon löytämiseen tai vaihtoehtojen karsimiseen. Osallistujat valitsevat yhden tai useamman vaihtoehdon asettamiesi rajojen mukaan. Tämä äänestystapa tunnetaan myös monivalintana.
 
 <!-- translation-section: when-to-use-choose -->
 
@@ -44,7 +42,7 @@ Käytä Valintaa, kun vaihtoehdot eroavat selvästi toisistaan ja haluat laskea,
 - sen päättämiseen, mikä suunnitelma etenee seuraavalle kierrokselle; tai
 - sen selvittämiseen, mitä palveluja jäsenet aikovat käyttää.
 
-Valinta tallentaa valinnat, mutta ei henkilön mieltymysten voimakkuutta tai järjestystä. Käytä [Pisteytystä](/en/user_manual/polls/score/), kun haluat mitata, kuinka vahvasti ihmiset kannattavat kutakin vaihtoehtoa, [Pistejakoa](/en/user_manual/polls/allocate/), kun käytettävissä on rajallinen budjetti, tai [Järjestystä](/en/user_manual/polls/rank/), kun mieltymysten järjestyksellä on merkitystä.
+Valinta tallentaa valinnat, mutta ei mieltymysten voimakkuutta tai järjestystä. Käytä [Pisteytystä](/en/user_manual/polls/score/), kun haluat mitata, kuinka vahvasti ihmiset kannattavat kutakin vaihtoehtoa, [Pistejakoa](/en/user_manual/polls/allocate/), kun käytettävissä on rajallinen budjetti, tai [Järjestystä](/en/user_manual/polls/rank/), kun mieltymysten järjestyksellä on merkitystä.
 
 <!-- translation-section: example-set-a-planning-meeting-agenda -->
 
@@ -56,7 +54,7 @@ Oatmilk-osuuskunnan on päätettävä, mitkä palautettavien pullojen kokeilun o
 
 ## Määritä kysely
 
-Anna kyselyn otsikoksi täsmällinen kysymys. Kerro **Tiedot**-kohdassa, mitä osallistujien tulisi ottaa huomioon ja miten tuloksia käytetään. Lisää kaikki tarjolla olevat vaihtoehdot ja määritä sitten **Vähimmäisvalinnat** ja **Maksimi valinnanvaraa**.
+Anna kyselyn otsikoksi täsmällinen kysymys. Kerro **Tiedot**-kohdassa, mitä osallistujien tulisi ottaa huomioon ja miten tuloksia käytetään. Lisää jokainen vaihtoehto ja määritä sitten **Vähimmäisvalinnat** ja **Maksimi valinnanvaraa**.
 
 ![](form.png)
 
@@ -66,7 +64,7 @@ Napsauta vaihtoehdon vieressä olevaa kynäkuvaketta ja lisää selitys vaihtoeh
 
 ![](edit_option.png)
 
-**Lisää asetuksia** -kohdan **Näytä vaihtoehdot satunnaisessa järjestyksessä** voi vähentää vaikutusta, joka syntyy, kun sama vaihtoehto näytetään aina ensimmäisenä.
+Ota **Lisää asetuksia** -kohdassa käyttöön **Näytä vaihtoehdot satunnaisessa järjestyksessä**, jotta ensimmäinen vaihtoehto ei saa etua sijainnistaan.
 
 ![](random_order.png)
 
@@ -74,21 +72,21 @@ Napsauta vaihtoehdon vieressä olevaa kynäkuvaketta ja lisää selitys vaihtoeh
 
 ## Äänestä
 
-Jos valitset sallittua määrää vähemmän tai enemmän vaihtoehtoja, lähetyspainike kertoo, miten korjaat valinnan. Tässä esimerkissä äänestäjä valitsee vaihtoehdot **Kahviloiden noutoaikataulu** ja **Pesun työnkulku** ja antaa sitten perustelun, joka yhdistää nämä valinnat kokeiluun.
+Osallistujat valitsevat haluamansa vaihtoehdot vähimmäis- ja enimmäismäärän rajoissa. Tässä esimerkissä äänestäjä valitsee vaihtoehdot **Kahviloiden noutoaikataulu** ja **Pesun työnkulku** ja antaa sitten äänen perustelun, joka yhdistää nämä valinnat kokeiluun.
 
 ![](voting.png)
 
-Perustelu voi kertoa, miksi vaihtoehto on tärkeä ja mitä työtä osallistujat odottavat sen kattavan. Jos perustelut ovat tärkeitä päätöksen kannalta, määritä äänen perustelua koskeva asetus ennen kyselyn aloittamista.
+Äänen perustelu voi kertoa, miksi vaihtoehto on tärkeä ja mitä työtä osallistujat odottavat sen kattavan. Jos perustelut ovat tärkeitä päätöksen kannalta, määritä äänen perustelu pakolliseksi ennen kyselyn aloittamista.
 
 <!-- translation-section: read-the-results -->
 
 ## Lue tulokset
 
-Tulokset näyttävät kunkin vaihtoehdon osuuden kaikista valinnoista, sen valinneiden äänestäjien määrän sekä sen, ketkä eivät ole äänestäneet. Koska jokainen saattoi valita kaksi vaihtoehtoa, prosenttiosuudet kuvaavat valintojen osuuksia eivätkä ihmisten osuuksia.
+Tulokset näyttävät kunkin vaihtoehdon osuuden kaikista valinnoista, sen valinneiden äänestäjien määrän sekä sen, ketkä ovat vielä äänestämättä. Koska jokainen saattoi valita kaksi vaihtoehtoa, prosenttiosuudet kuvaavat valintojen osuuksia eivätkä ihmisten osuuksia.
 
 ![](results.png)
 
-Tässä esimerkissä **Kahviloiden noutoaikataulu** on valittu kolme kertaa. **Pesun työnkulku** ja **Palautusasteen raportointi** on kumpikin valittu kaksi kertaa. Tulokset puoltavat sitä, että kahviloiden noutoihin varataan eniten aikaa esityslistalla, mutta järjestäjän on vielä päätettävä, miten jäljelle jäävä aika jaetaan tasatilanteeseen päätyneiden aiheiden kesken.
+Tässä esimerkissä **Kahviloiden noutoaikataulu** on valittu kolme kertaa. **Pesun työnkulku** ja **Palautusasteen raportointi** on kumpikin valittu kaksi kertaa. Tulokset puoltavat sitä, että kahviloiden noutoihin varataan eniten aikaa esityslistalla, ja järjestäjä päättää edelleen, miten jäljelle jäävä aika jaetaan tasatilanteeseen päätyneiden aiheiden kesken.
 
 <!-- translation-section: share-an-outcome -->
 

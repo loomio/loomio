@@ -1,20 +1,20 @@
 ---
 title: Moment bevragen
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 8ab9108683132085
-  time-poll: d5d5d81f7de10419
-  voting: c50083234167a0f9
-  outcome: 9f1bb3dee66382d2
+  introduction: 8586dd16468554c8
+  time-poll: 83fe37c85a508993
+  voting: 852eefea6b16965b
+  outcome: d9ad86541aca516a
 generated:
-  introduction: 93efd2cba91ab398
-  time-poll: 4f74d295cd63881f
-  voting: 1878361f89e62a51
-  outcome: aa6d2bca2e7bbc2a
+  introduction: b67850cf8050bfba
+  time-poll: dea2ce8a09ce0202
+  voting: 0d7baebd20950cc6
+  outcome: 52ead551cce605ef
 title_source: 8e2a07d7257fbc04
 title_generated: d6a157812dac4d19
 ---
@@ -23,27 +23,19 @@ title_generated: d6a157812dac4d19
 
 # Tijdpeiling
 
-Gebruik een **Tijdpeiling** om een tijdstip voor een vergadering of evenement te vinden. Deze heeft hetzelfde doel als planningstools zoals Doodle, terwijl het plannen bij het andere Loomio-werk van de groep blijft. Deelnemers zien de opties in hun eigen tijdzone.
+Gebruik een **Tijdpeiling** om een tijdstip voor een vergadering of evenement te vinden naast het andere Loomio-werk van jouw groep. Elke deelnemer ziet de opties voor datums en tijdstippen in de eigen tijdzone.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Tijdpeiling
-
-_Ontdek wanneer mensen beschikbaar zijn om samen te komen_
-
-Bespaar tijd bij het plannen van een datum voor jouw vergadering of evenement.
+## De peiling instellen
 
 ![](timepoll_label.png)
 
-Met een tijdpeiling kun je eenvoudig zien wanneer iedereen beschikbaar is en het beste tijdstip vinden.
+Geef jouw tijdpeiling een titel en voeg details toe. Voer opties voor datums en tijdstippen in jouw eigen tijdzone in en stel de duur van de vergadering in.
 
-Geef jouw tijdpeiling een titel en voeg details toe. Voer een lijst met opties voor datums en tijdstippen in jouw tijdzone in.
-
-Houd bij het instellen van tijdstippen rekening met mensen in verschillende tijdzones. Deelnemers zien de tijdstippen in hun eigen tijdzone.
-
-Stel de duur van de vergadering in.
+Houd bij het kiezen van opties rekening met mensen in andere tijdzones, zodat er voor iedereen geschikte tijdstippen zijn.
 
 ![](timepoll_options.png)
 
@@ -51,15 +43,11 @@ Stel de duur van de vergadering in.
 
 ### Stemmen
 
-Mensen markeren elk tijdstip met het groene duim-omhoogpictogram als ze beschikbaar zijn, de gele zijwaartse duim als ze zo nodig kunnen deelnemen, of het rode duim-omlaagpictogram als ze niet beschikbaar zijn.
-
-Deelnemers kunnen een reactie met hun reden achterlaten om de organisator te helpen een geschikt tijdstip te vinden.
-
-Als de tijdstippen niet passen, kunnen deelnemers alternatieven voorstellen via het berichtveld. Je kunt de peiling dan bijwerken met nieuwe tijdstippen.
+Deelnemers markeren elke tijdoptie als beschikbaar, beschikbaar indien nodig of niet beschikbaar. Ze kunnen ook een reden bij hun stem toevoegen om hun beschikbaarheid toe te lichten of andere tijdstippen voor te stellen. Als geen van de opties past, kun je de peiling bewerken om nieuwe tijdstippen toe te voegen.
 
 ![](timepoll_vote.png)
 
-Tijdens het stemmen wordt het resultaat bijgewerkt in een tabel die laat zien wie wanneer beschikbaar is, zodat iedereen kan zien welke tijdstippen populair zijn.
+Het resultaat wordt bijgewerkt wanneer mensen stemmen en laat zien wie op elk tijdstip beschikbaar is.
 
 <!-- translation-section: outcome -->
 
@@ -69,14 +57,10 @@ Wanneer de tijdpeiling sluit, kies je het beste tijdstip en deel je een conclusi
 
 ![](timepoll_outcome.png)
 
-**Meld**: Voeg de mensen toe die je uitnodigt voor de vergadering of het evenement
-
-**Tijd van de vergadering**: Selecteer het tijdstip dat het beste past. Opties gebruiken de [tijdzone in jouw profiel](/en/user_manual/users/user_profile#time-zone)
-
-**Naam vergadering**: Geef jouw vergadering een naam. Standaard wordt de titel van de tijdpeiling gebruikt
-
-**Locatie**: Voeg een fysieke locatie of een link naar de vergadering toe
-
-**Verklaring**: Vat de conclusie samen en voeg eventuele instructies voor de vergadering toe
+- **Meld**: Voeg de mensen toe die je uitnodigt voor de vergadering of het evenement.
+- **Tijd van de vergadering**: Selecteer het tijdstip dat het beste past. Opties gebruiken de [tijdzone in jouw profiel](/en/user_manual/users/user_profile#time-zone).
+- **Naam vergadering**: Geef jouw vergadering een naam. Loomio gebruikt standaard de titel van de tijdpeiling.
+- **Locatie**: Voeg een fysiek adres of een link naar een online vergadering toe.
+- **Verklaring**: Vat het besluit samen en voeg eventuele instructies voor de vergadering toe.
 
 Loomio neemt het geselecteerde tijdstip, de naam van de vergadering, de duur, de locatie en de verklaring op in de melding over de conclusie en de agenda-uitnodiging.

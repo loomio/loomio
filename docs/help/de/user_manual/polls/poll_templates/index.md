@@ -1,37 +1,37 @@
 ---
 title: Umfragevorlagen
-source_revision: ed9bb14d3a2615f971328eaec7270d148ac67789
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/poll_templates/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-01'
+  'on': '2026-11-22'
 sections:
-  introduction: a535465485cdbc13
-  who-can-manage-templates: 6c3d5e693cd1dfdc
+  introduction: 227665c7b66356be
+  who-can-manage-templates: 2f0ab3bdaf9d093a
   create-a-poll-template: 0fafc6275b6c9153
   template-title-subtitle-and-help: 5a3f6c78e32fb066
-  voting-method: c645269a1a17d1c8
+  voting-method: 3ad5838dfcb67da0
   example-title-details-and-tags: 0f0d84a8b9b6ecb2
-  response-options: 727afbf0dcea6069
-  duration-and-settings: f1f3643e94524af9
-  manage-the-template-list: 76e78b8a60f1d08c
+  response-options: e6ef2fb08eb66840
+  duration-and-settings: 9b3c78d3c0d4986a
+  manage-the-template-list: a58617ec50baf468
   save-a-poll-as-a-template: 36dc7b5d410d0eea
   start-a-new-template: 4f14910d88b22de8
-  configure-the-template: 06a5645786f28281
+  configure-the-template: 5fdb36299dd771b8
   edit-a-default-template: 6f1e7050d20ed373
 generated:
-  introduction: 833dd5852abe2772
-  who-can-manage-templates: 0ab5fdb13174457a
+  introduction: f9cbc039bbbaeff1
+  who-can-manage-templates: de8db62bde2438d5
   create-a-poll-template: 9b5594433fc6e4d9
   template-title-subtitle-and-help: a4ab5501c937d468
-  voting-method: 3459cf9e4abd78dc
+  voting-method: ae03bf8a8c3cc448
   example-title-details-and-tags: 7054bc26fb5b2e04
-  response-options: bb24a8d1d824a768
-  duration-and-settings: f2f446bba7ea510a
-  manage-the-template-list: 71fd35b164b173be
+  response-options: 5d6d05ea72614134
+  duration-and-settings: 3762a3842743eb5b
+  manage-the-template-list: 436a02df61ebb596
   save-a-poll-as-a-template: 75dd4109015f8d27
   start-a-new-template: 23fc3fbe925eba29
-  configure-the-template: bee4a25c5f560611
+  configure-the-template: 0b0c6893c5ed9bdb
   edit-a-default-template: b27441118773ebb5
 title_source: 114cca246e357304
 title_generated: 2f338bb1d4e6c8b2
@@ -47,9 +47,9 @@ Abstimmungsvorlagen sind wiederverwendbare Ausgangspunkte, die angezeigt werden,
 
 Auf dieser Seite erfährst du, wie du festlegst, welche Vorlagen einer Gruppe zur Verfügung stehen, oder eine Vorlage für deinen eigenen Prozess erstellst. Wie du eine Vorlage für eine bestimmte Abstimmung auswählst, erfährst du unter [Vorschläge](../proposals/) oder [Abstimmungen](../proposal_types/). Hinweise zur Begleitung eines vollständigen Entscheidungsprozesses findest du unter [Entscheidungen treffen](/en/guides/making_decisions/).
 
-Wähle beim Starten einer Abstimmung den Reiter **Vorschlag** oder **Abstimmung** und dann eine der Vorlagen, die der Gruppe zur Verfügung stehen.
+Wähle beim Starten einer Abstimmung den Reiter **Vorschlag** oder **Abstimmung** und dann eine Vorlage, die der Gruppe zur Verfügung steht.
 
-Die Vorlage enthält eine Einführung, Beispielinhalte, Optionen und Einstellungen. Prüfe diese und passe sie an die jeweilige Entscheidung an, bevor du die Abstimmung startest. Wenn du die neue Abstimmung bearbeitest, ändert sich die wiederverwendbare Vorlage dadurch nicht.
+Die Vorlage enthält eine Einführung, Beispielinhalte, Optionen und Einstellungen. Prüfe diese und passe sie an deine Entscheidung an, bevor du die Abstimmung startest. Wenn du eine neue Abstimmung bearbeitest, ändert sich die Vorlage dadurch nicht.
 
 <!-- translation-section: create-a-poll-template -->
 
@@ -85,11 +85,11 @@ Um eine Standardvorlage wie **Konsent** anzupassen, öffne ihr Aktionsmenü und 
 
 ## Vorlageneinstellungen
 
-Gib der Vorlage einen Namen und einen Untertitel, die beschreiben, wann sie verwendet werden sollte. Du kannst alle anderen Felder anpassen, damit sie sich besser zur Wiederverwendung eignen. Nachdem du **Vorlage speichern** ausgewählt hast, wird die Vorlage angezeigt, wenn Personen einen neuen Vorschlag oder eine neue Abstimmung starten.
+Gib der Vorlage einen Namen und einen Untertitel, die beschreiben, wann sie verwendet werden sollte. Passe alle weiteren Felder so an, dass die Vorlage zur Wiederverwendung bereit ist, und wähle dann **Vorlage speichern**. Die Vorlage wird anschließend angezeigt, wenn Personen einen neuen Vorschlag oder eine neue Abstimmung starten.
 
 [![Das vollständige Vorlagenformular für das Konsentverfahren zur Änderung einer Richtlinie](poll_template_new.png)](poll_template_new.png)
 
-Bei eigenständigen Abstimmungen beschränkt **Nur Admins können Anhänge hinzufügen** das Hinzufügen neuer Dateien und eingebetteter Bilder auf Thread-Admins und Gruppen-Admins, auch in Stellungnahmen und Antworten. Abstimmungen, die innerhalb eines bestehenden Threads gestartet werden, übernehmen dessen Einstellung für Anhänge. Änderungen an der Vorlage wirken sich nur auf zukünftige Abstimmungen aus.
+Bei eigenständigen Abstimmungen beschränkt **Nur Admins können Anhänge hinzufügen** das Hinzufügen neuer Dateien und eingebetteter Bilder (auch in Stellungnahmen und Antworten) auf Thread-Admins und Gruppen-Admins. Abstimmungen innerhalb eines bestehenden Threads übernehmen dessen Einstellung für Anhänge. Änderungen an einer Vorlage wirken sich nur auf zukünftige Abstimmungen aus.
 
 <!-- translation-section: template-title-subtitle-and-help -->
 
@@ -101,7 +101,7 @@ Erkläre mit dem Titel und Untertitel, wann die Vorlage gewählt werden sollte. 
 
 ### Abstimmungsart
 
-Wähle, was Teilnehmende ausdrücken sollen und wie das Ergebnis berechnet werden soll.
+Wähle, was Teilnehmende ausdrücken sollen und wie das Ergebnis berechnet werden soll:
 
 - **Vorschlag**: mit festgelegten Positionen auf eine Aussage antworten;
 - **Wählen**: eine oder mehrere Optionen auswählen;
@@ -128,7 +128,7 @@ Bei Abstimmungsarten wie Vorschlag und Auswählen kannst du Antwortoptionen konf
 - **Optionsname**: die kurze Bezeichnung der Antwort;
 - **Symbol**: ihre visuelle Kennzeichnung;
 - **Bedeutung**: was die Auswahl der Option ausdrückt; und
-- **Grundaufforderung**: die Frage, die angezeigt wird, wenn jemand die eigene Antwort begründet.
+- **Grundaufforderung**: die Frage, die angezeigt wird, wenn jemand die eigene Stimme begründet.
 
 ![](poll_type_edit_option.png)
 
@@ -140,7 +140,7 @@ Definiere Optionen so, dass Teilnehmende sie unterscheiden können, ohne raten z
 
 Lege eine voreingestellte Dauer fest, die für die meisten Verwendungen der Vorlage geeignet ist. Die erstellende Person kann den Schlusszeitpunkt für eine einzelne Abstimmung ändern.
 
-Weitere Voreinstellungen können die Sichtbarkeit der Ergebnisse, die anonyme Stimmabgabe, die [gewichtete Abstimmung](../weighted_voting/), Anforderungen an die Begründung einer Stimme, Erinnerungen, das Quorum und das Verhalten der jeweiligen Abstimmungsart steuern. Ihre Auswirkungen werden unter [Einstellungen für Vorschläge und Abstimmungen](../settings/) erklärt.
+Weitere Voreinstellungen steuern die Sichtbarkeit der Ergebnisse, die anonyme Stimmabgabe, die [gewichtete Abstimmung](../weighted_voting/), Anforderungen an die Begründung einer Stimme, Erinnerungen, das Quorum und das Verhalten der jeweiligen Abstimmungsart. Einzelheiten findest du unter [Einstellungen für Vorschläge und Abstimmungen](../settings/).
 
 <!-- translation-section: manage-the-template-list -->
 
@@ -155,7 +155,7 @@ Verwende das Aktionsmenü neben einer Vorlage für folgende Aktionen:
 
 ![Die Vorlagenliste der Gruppe mit geöffnetem Aktionsmenü für das Konsentverfahren zur Änderung einer Richtlinie](template_manage.png)
 
-Wähle **Ausgeblendete Vorlagen anzeigen**, um ausgeblendete Vorlagen zu prüfen oder wieder einzublenden. Standardvorlagen können ausgeblendet oder für die Gruppe angepasst, aber nicht gelöscht werden.
+Wähle **Ausgeblendete Vorlagen anzeigen**, um ausgeblendete Vorlagen zu prüfen oder wieder einzublenden. Du kannst Standardvorlagen für deine Gruppe ausblenden oder anpassen, aber nicht löschen.
 
 Wenn du eine Vorlage änderst, hat das keine Auswirkungen auf Vorschläge oder Abstimmungen, die bereits mit dieser Vorlage gestartet wurden.
 
@@ -163,4 +163,4 @@ Wenn du eine Vorlage änderst, hat das keine Auswirkungen auf Vorschläge oder A
 
 ### Wer Vorlagen verwalten kann
 
-Gruppenadministrierende können alle Abstimmungsvorlagen ihrer Gruppe erstellen und verwalten. Sie können unter **Gruppen-Einstellungen** → **Berechtigungen** die Einstellung **Mitglieder können Vorlagen erstellen.** aktivieren. Wenn sie aktiviert ist, können Mitglieder Vorlagen erstellen und ihre selbst erstellten Vorlagen verwalten.
+Gruppen-Admins können alle Abstimmungsvorlagen ihrer Gruppe erstellen und verwalten. Sie können unter **Gruppen-Einstellungen** → **Berechtigungen** die Einstellung **Mitglieder können Vorlagen erstellen.** aktivieren. Wenn sie aktiviert ist, können Mitglieder Vorlagen erstellen und ihre selbst erstellten Vorlagen verwalten.

@@ -1,51 +1,41 @@
 ---
 title: Sondaggio appuntamento
-source_revision: d7d6e6caf38e7c0940acceafcedd9cfdbb701a2c
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/meeting_polls/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-11-02'
+  'on': '2026-11-22'
 sections:
-  introduction: 8ab9108683132085
-  time-poll: d5d5d81f7de10419
-  voting: c50083234167a0f9
-  outcome: 9f1bb3dee66382d2
+  introduction: 8586dd16468554c8
+  time-poll: 83fe37c85a508993
+  voting: 852eefea6b16965b
+  outcome: d9ad86541aca516a
 generated:
-  introduction: 04a7143f15135690
-  time-poll: 6735d0e5c18f6bfc
-  voting: 629ad7cef1a319a5
-  outcome: 287b715a17138d1f
+  introduction: ea47d1a0cd6081de
+  time-poll: 8f84896ee9a64958
+  voting: 87b75a49eee9b887
+  outcome: ad28231ccb636a1e
 title_source: 8e2a07d7257fbc04
 title_generated: 8cb720b199ee4928
-needs_review:
-  outcome: use "conclusione" instead of "risultato" for "outcome"
 ---
 
 <!-- translation-section: introduction -->
 
 # Sondaggio appuntamento
 
-Usa un **Sondaggio appuntamento** per trovare un orario per un incontro o un evento. Serve allo stesso scopo di strumenti di pianificazione come Doodle, mantenendo la scelta dell'orario insieme alle altre attività del gruppo su Loomio. I partecipanti vedono le opzioni nel proprio fuso orario.
+Usa un **Sondaggio appuntamento** per trovare un orario per un incontro o un evento insieme alle altre attività del tuo gruppo su Loomio. Ogni partecipante vede le opzioni di data e ora nel proprio fuso orario.
 
 ![](meeting_polls.png)
 
 <!-- translation-section: time-poll -->
 
-## Sondaggio appuntamento
-
-_Trova quando le persone sono disponibili per incontrarsi_
-
-Risparmia tempo nel fissare una data per il tuo incontro o evento.
+## Configura il sondaggio
 
 ![](timepoll_label.png)
 
-Il sondaggio appuntamento permette di vedere facilmente la disponibilità di tutti e trovare l'orario migliore.
+Assegna un titolo al tuo sondaggio appuntamento e aggiungi i dettagli. Inserisci le opzioni di data e ora nel tuo fuso orario e imposta la durata dell'incontro.
 
-Assegna un titolo al tuo sondaggio appuntamento e aggiungi i dettagli. Inserisci un elenco di opzioni con date e orari nel tuo fuso orario.
-
-Quando imposti le fasce orarie, considera le persone in fusi orari diversi. I partecipanti vedranno gli orari nel proprio fuso orario.
-
-Imposta la durata dell'incontro.
+Quando scegli le opzioni, considera le persone in altri fusi orari, in modo che tutti abbiano orari adatti.
 
 ![](timepoll_options.png)
 
@@ -53,15 +43,11 @@ Imposta la durata dell'incontro.
 
 ### Votazione
 
-Le persone indicano la propria disponibilità per ogni orario usando l'icona verde con il pollice in su quando sono disponibili, il pollice giallo orizzontale quando possono partecipare se necessario o l'icona rossa con il pollice in giù quando non sono disponibili.
-
-I partecipanti possono lasciare un commento con il motivo del proprio voto per aiutare chi organizza a trovare un orario adatto.
-
-Se gli orari non vanno bene, i partecipanti possono suggerire alternative usando il campo del messaggio. Puoi quindi aggiornare il sondaggio con nuovi orari.
+I partecipanti indicano per ogni opzione di orario se sono disponibili, disponibili se necessario o non disponibili. Possono anche aggiungere un motivo al proprio voto per spiegare la loro disponibilità o suggerire altri orari. Se nessuna delle opzioni va bene, puoi modificare il sondaggio per aggiungere nuovi orari.
 
 ![](timepoll_vote.png)
 
-I risultati si aggiornano man mano che arrivano i voti, in una tabella che mostra chi è disponibile e quando, così tutti possono vedere quali fasce orarie raccolgono più disponibilità.
+I risultati si aggiornano man mano che le persone votano, mostrando chi è disponibile per ogni orario.
 
 <!-- translation-section: outcome -->
 
@@ -71,14 +57,10 @@ Quando il sondaggio appuntamento si chiude, scegli l'orario migliore e condividi
 
 ![](timepoll_outcome.png)
 
-**Notificare**: Aggiungi le persone che inviti all'incontro o all'evento
-
-**Ora dell'incontro**: Seleziona l'orario più adatto. Le opzioni usano il [fuso orario del tuo profilo](/en/user_manual/users/user_profile#time-zone)
-
-**Nome dell'incontro**: Dai un nome al tuo incontro. Per impostazione predefinita viene usato il titolo del sondaggio appuntamento
-
-**Luogo**: Aggiungi un luogo fisico o un link per l'incontro
-
-**Dichiarazione**: Riassumi il risultato e aggiungi eventuali istruzioni per l'incontro
+- **Notificare**: Aggiungi le persone che inviti all'incontro o all'evento.
+- **Ora dell'incontro**: Seleziona l'orario più adatto. Le opzioni usano il [fuso orario del tuo profilo](/en/user_manual/users/user_profile#time-zone).
+- **Nome dell'incontro**: Dai un nome al tuo incontro. Loomio usa il titolo del sondaggio appuntamento per impostazione predefinita.
+- **Luogo**: Aggiungi un indirizzo fisico o un link per un incontro online.
+- **Dichiarazione**: Riassumi la decisione e includi eventuali istruzioni per l'incontro.
 
 Loomio include l'orario selezionato, il nome dell'incontro, la durata, il luogo e la dichiarazione nella notifica della conclusione e nell'invito del calendario.

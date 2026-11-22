@@ -1,19 +1,19 @@
 ---
 title: 投票割合の要件
-source_revision: ad60e7728a4b8d578ec70fa26577556ee051c09d
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/vote_share_requirements/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-23'
+  'on': '2026-11-22'
 sections:
-  introduction: 57d7127721bebf93
-  eligible-voters-and-votes-cast: 2cf6ad55d557c189
-  different-vote-share-requirements: 0e81fb881e5c113e
-  detailed-example: 395dbccb0e6427fc
+  introduction: cbaf41b11886d669
+  eligible-voters-and-votes-cast: 1eace7b24593e671
+  different-vote-share-requirements: 0707fe507dfba2b9
+  detailed-example: bd9380153211ad27
 generated:
   introduction: 6de41a070ca168dd
-  eligible-voters-and-votes-cast: 156c45b1ecd523cb
-  different-vote-share-requirements: '008d5014b0cbca0e'
+  eligible-voters-and-votes-cast: ce007d31ffe9b91e
+  different-vote-share-requirements: 6e3a68419ac802ff
   detailed-example: aa04e010f24d9fd6
 title_source: a654891ca817844e
 title_generated: 1ded9d960ce79938
@@ -45,7 +45,7 @@ title_generated: 1ded9d960ce79938
 
 提出された票の60パーセントが賛成するという要件では、全体の投票率にかかわらず、提出された票の60パーセントがその選択肢を支持すれば、提案を可決できます。手続き上、最低限の参加率も必要な場合は、定足数を追加します。
 
-[加重投票](/en/user_manual/polls/weighted_voting)では、どちらの基準でも票の重みを使います。**投票済みの票の重み**では、投票済みの票の重みの合計に対する、その選択肢に投じられた票の重みの合計の割合を求めます。**投票可能な票の重み**では、まだ投票していない人も含め、投票資格のある人全員の票の重みの合計に対する、その選択肢を選んだ投票者の票の重みの合計の割合を求めます。例えば、投票可能な票の重みの合計が100で、そのうち70を持つ人が1人いれば、その人の賛成だけで、投票可能な票の重みを基準とする60パーセントの賛成要件を満たせます。
+[加重投票](/en/user_manual/polls/weighted_voting)では、どちらの基準でも票の重みを使います。**投票済みの票の重み**では、投票済みの票の重みの合計に対する、その選択肢に投じられた票の重みの合計の割合を求めます。**投票可能な票の重み**では、まだ投票していない人も含め、投票資格のある人全員の票の重みの合計に対する、その選択肢を選んだ投票者の票の重みの合計の割合を求めます。例えば、投票可能な票の重みの合計が100で、そのうち70を持つ投票者が1人いれば、その人の賛成だけで、投票可能な票の重みを基準とする60パーセントの賛成要件を満たせます。
 
 <!-- translation-section: different-vote-share-requirements -->
 
@@ -53,9 +53,9 @@ title_generated: 1ded9d960ce79938
 
 提案では、複数の選択肢に要件を設定できます。例えば、次のように設定します。
 
-- 賛成は、投票資格のある人の75パーセント以上
-- 棄権は、提出された票の30パーセント以下
-- ブロックは、提出された票の0パーセント以下
+- 賛成は、投票資格のある人の75パーセント以上です。
+- 棄権は、提出された票の30パーセント以下です。
+- ブロックは、提出された票の0パーセント以下です。
 
 選択肢を**0%以下**に設定するのは、よく使われる方法です。誰かがその選択肢を選ぶと、提案を可決できなくなります。**ブロック**に設定すると、1票のブロックで提案の可決を止められます。
 

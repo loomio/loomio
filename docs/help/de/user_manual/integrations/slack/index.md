@@ -1,14 +1,14 @@
 ---
 title: Slack
-source_revision: c6076258c3438c0dd6dc8fbf1fc0b0df47c0aeb5
-source_file: docs/en/user_manual/integrations/slack/index.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/integrations/slack/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-01'
+  'on': '2026-11-22'
 sections:
-  introduction: 4eb9618f0efb62d7
+  introduction: ea379b6fc01065b6
 generated:
-  introduction: a440a3b634364798
+  introduction: d62b6a9fdec91c8f
 title_source: b27fb38ba323745c
 title_generated: b27fb38ba323745c
 ---
@@ -16,41 +16,40 @@ title_generated: b27fb38ba323745c
 <!-- translation-section: introduction -->
 
 # Slack-Integration
-_Verknüpfe die Benachrichtigungen deiner Loomio-Gruppe mit Slack._
 
-Loomio kann Benachrichtigungen an deine Slack-Kanäle senden, wenn neue Diskussionen, Vorschläge, Kommentare, Stimmen oder Fazits hinzukommen. Erhalte wichtige Neuigkeiten zu relevanten Diskussionen und Entscheidungen zum richtigen Zeitpunkt.
+Loomio kann Benachrichtigungen an deine Slack-Kanäle senden, wenn neue Diskussionen, Abstimmungen, Kommentare, Stimmen oder Fazits hinzukommen.
 
 ---
 
-Rufe zunächst [https://api.slack.com](https://api.slack.com) auf, melde dich an, falls du noch nicht angemeldet bist, und klicke dann auf Neue App erstellen
+1. Öffne [api.slack.com](https://api.slack.com), melde dich an und wähle **Neue App erstellen**.
 
-![](s1.png)
+   ![](s1.png)
 
-Gib deiner Slack-App einen Namen
+2. Gib deiner Slack-App einen Namen und wähle deinen Workspace.
 
-![](s2.png)
+   ![](s2.png)
 
-Füge Unterstützung für eingehende Webhooks hinzu
+3. Wähle **Eingehende Webhooks**.
 
-![](s3.png)
+   ![](s3.png)
 
-Aktiviere dann die Funktion
+4. Schalte **Eingehende Webhooks aktivieren** ein.
 
-![](s4.png)
+   ![](s4.png)
 
-Füge anschließend einen neuen Webhook hinzu
+5. Wähle **Neuen Webhook zum Workspace hinzufügen**.
 
-![](s5.png)
+   ![](s5.png)
 
-Wähle einen Kanal
+6. Wähle den Kanal, in dem Loomio-Benachrichtigungen erscheinen sollen.
 
-![](s6.png)
+   ![](s6.png)
 
-Kopiere die Webhook-URL in deine Zwischenablage
+7. Kopiere die Webhook-URL.
 
-![](s7.png)
+   ![](s7.png)
 
-Jetzt hast du eine Webhook-URL und kannst mit der Einrichtung deiner Chat-Integration fortfahren:
+Jetzt hast du eine Webhook-URL und kannst die Verbindung in Loomio fertig einrichten:
 
 [Eine Chat-Integration in Loomio einrichten](../chatbots/#set-up-a-chat-integration)
 

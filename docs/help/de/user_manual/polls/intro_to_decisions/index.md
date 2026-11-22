@@ -1,55 +1,53 @@
 ---
 title: Vorschläge und Umfragen
-source_revision: 316c5c5d81b1ba8cd814d678f48deae613a09ff2
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
 source_file: docs/help/en/user_manual/polls/intro_to_decisions/index.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-27'
+  'on': '2026-11-22'
 sections:
-  introduction: d7cf8a871d9af6ea
+  introduction: 640ab07f1e7726c6
   find-the-right-help: 4bb04c002cbbde42
   proposals: c1bb3deef645e2ba
   polls: e07a1ab918bfc5c6
   start-a-proposal-or-poll: 5890626db6dcbb68
-  choose-whether-to-use-a-discussion: fbe0fe9415feadae
+  choose-whether-to-use-a-discussion: 1b4ae37402c8ae34
   in-a-discussion: d57d23917bab162a
-  without-a-discussion: 87efa5071bb33a34
+  without-a-discussion: 5a89d96c028938d1
   what-happens-next: 7fe113c92c0a58bd
   1-create-it: 865fde10233c86d2
-  2-voting-opens: 571a77b9c70569d3
-  3-people-vote: 71061d516df57dab
-  4-it-closes: dae736b9f231adf2
-  5-share-an-outcome: e3c2308ea7c675e2
+  2-voting-opens: b8c98af780ab966d
+  3-people-vote: 8f224464c2e287c7
+  4-it-closes: c4df2e641d735e60
+  5-share-an-outcome: db206b84a8dcaf2c
 generated:
-  introduction: 278e78e8621ec3e0
+  introduction: 0c37c35bf6ee9ca8
   find-the-right-help: 37e7190cb10dc5cf
   proposals: '6083800300439521'
   polls: 854ea55dcc25d285
   start-a-proposal-or-poll: 37ba841d9df62ed8
-  choose-whether-to-use-a-discussion: 6a9e4f15f7dfcef2
+  choose-whether-to-use-a-discussion: 2ce230d967414070
   in-a-discussion: 4029e2480243b39f
   without-a-discussion: f6581dd6272f664e
   what-happens-next: f5f4c3be874ef3d1
   1-create-it: 071ae177fa0a21dd
-  2-voting-opens: d24cd5262c637da0
-  3-people-vote: 57cfb38790162a7b
-  4-it-closes: 8f364ade545a3f44
+  2-voting-opens: f03fa2c7e1bfaf8f
+  3-people-vote: 3beb5e2356c31326
+  4-it-closes: 38da220497b127a6
   5-share-an-outcome: 678dc40e27b740f6
 title_source: d45b4ba3cb7a27cb
 title_generated: 06a783699efefdc4
 needs_review:
   find-the-right-help: use "Fazit" instead of "Ergebnis" for "outcome"; use "Ergebnis" instead of "Fazit" for "results"
-  without-a-discussion: use "Stimme" instead of "Abstimmung" for "vote"
   1-create-it: use "Stimme" instead of "Abstimmung" for "vote"
   3-people-vote: use "Stimme" instead of "Abstimmung" for "vote"
-  5-share-an-outcome: use "Entscheidung" instead of "Abstimmung" for "decision"
 ---
 
 <!-- translation-section: introduction -->
 
 # Vorschläge und Abstimmungen
 
-Vorschläge und Abstimmungen sammeln strukturierte Antworten aus einer Gruppe. Sie können helfen, eine Idee zu prüfen, eine Entscheidung zu treffen, Prioritäten zu erkennen, ein Treffen zu planen oder Vertretungen zu wählen.
+Vorschläge und Abstimmungen sammeln strukturierte Antworten aus einer Gruppe. Nutze sie, um eine Idee zu prüfen, eine Entscheidung zu treffen, Prioritäten zu setzen, ein Treffen zu planen oder Vertretungen zu wählen.
 
 <!-- translation-section: find-the-right-help -->
 
@@ -102,9 +100,9 @@ Unter [Abstimmungen](../proposal_types/) kannst du sie vergleichen.
 
 ### Entscheide, ob du eine Diskussion nutzen möchtest
 
-Starte den Vorschlag oder die Abstimmung innerhalb einer Diskussion, wenn Menschen vor ihrer Antwort Kontext benötigen, Fragen stellen oder sich austauschen möchten. Eine Diskussion kann im Laufe der Zeit mehrere Vorschläge enthalten. So bleiben Änderungen und das spätere Fazit als gemeinsame Dokumentation des Themas zusammen.
+Starte einen Vorschlag oder eine Abstimmung innerhalb einer Diskussion, wenn Menschen vor ihrer Antwort Kontext benötigen, Fragen stellen oder sich austauschen möchten. Eine Diskussion kann im Laufe der Zeit mehrere Vorschläge enthalten. So bleiben Änderungen und das abschließende Fazit in einer gemeinsamen Dokumentation zusammen.
 
-Starte eine eigenständige Abstimmung, wenn die Diskussion bereits an anderer Stelle stattgefunden hat, etwa bei einem Treffen, oder wenn die Frage einfach ist und du nur Antworten sammeln möchtest. Füge genügend Details oder einen Link zur entsprechenden Dokumentation hinzu, damit Abstimmende verstehen, worauf sie antworten.
+Starte eine eigenständige Abstimmung, wenn die Diskussion bereits an anderer Stelle stattgefunden hat, etwa bei einem Treffen, oder wenn die Frage einfach ist und du nur Antworten sammeln möchtest. Füge genügend Details oder einen Link zu den Hintergrundinformationen hinzu, damit Abstimmende wissen, worauf sie antworten.
 
 <!-- translation-section: in-a-discussion -->
 
@@ -144,19 +142,19 @@ Gib ihr einen Titel und eine Beschreibung, prüfe ihre Optionen und Einstellunge
 
 ### 2. Die Stimmabgabe beginnt
 
-Wenn die Stimmabgabe beginnt, benachrichtigt Loomio die Menschen, die du eingeladen hast. Siehe [Zur Stimmabgabe einladen](../inviting_people/).
+Wenn die Stimmabgabe beginnt, benachrichtigt Loomio die Menschen, die du eingeladen hast. Siehe [Abstimmende verwalten](../manage_voters/).
 
 <!-- translation-section: 3-people-vote -->
 
 ### 3. Menschen geben ihre Stimme ab
 
-Solange die Abstimmung offen ist, können Menschen ihre Stimme abgeben, begründen und ändern. Das Ergebnis wird mit jeder Stimmabgabe aktualisiert, sofern es nicht bis zum Ende verborgen bleibt. Standardmäßig erhalten Menschen, die noch keine Stimme abgegeben haben, einen Tag vor dem Ende eine Erinnerung.
+Solange die Abstimmung offen ist, können Menschen ihre Stimme abgeben, eine Begründung hinzufügen und ihre Stimme ändern. Das Ergebnis wird mit jeder Stimmabgabe aktualisiert, sofern es nicht bis zum Ende verborgen bleibt. Standardmäßig erhalten Menschen, die noch nicht abgestimmt haben, 24 Stunden vor dem Ende eine Erinnerung.
 
 <!-- translation-section: 4-it-closes -->
 
 ### 4. Die Abstimmung endet
 
-Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Ein Thread-Admin kann sie auch vorzeitig beenden. Nach dem Ende kann ein Thread-Admin die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen, damit Teilnehmende weiter abstimmen können. Abstimmungen, deren Ergebnis bis zum Ende der Abstimmung verborgen bleibt, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihren Endzeitpunkt verlängern, solange sie noch offen sind.
+Die Abstimmung wird automatisch zum festgelegten Endzeitpunkt beendet. Ein Thread-Admin kann sie auch vorzeitig beenden. Nach dem Ende kann ein Thread-Admin die Abstimmung mit einem neuen Endzeitpunkt wieder öffnen. Abstimmungen, deren Ergebnis bis zum Ende der Stimmabgabe verborgen bleibt, einschließlich anonymer Abstimmungen, können nicht wieder geöffnet werden. Du kannst ihren Endzeitpunkt verlängern, solange sie noch offen sind.
 
 <!-- translation-section: 5-share-an-outcome -->
 

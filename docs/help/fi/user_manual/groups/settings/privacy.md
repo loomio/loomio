@@ -1,26 +1,26 @@
 ---
 title: Yksityisyys
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/settings/privacy.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-11-22'
 sections:
-  introduction: 4b491c663bfb5ea9
-  open: 2802cda1461d3b19
-  follow-an-open-group: e4a1b3ce35a974d0
+  introduction: fa83676f56f0d4bd
+  open: 3913f73fccf45868
+  follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
-  secret: d0a9ea85448f9798
-  how-people-join: 926f4b183250aa9d
+  secret: dda930893dfc59cc
+  how-people-join: aca325fb6b4d6056
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 922af7546173bb8b
-  open: cd06169c4a6b2fc9
-  follow-an-open-group: ecc5e7a47e027634
+  introduction: fbceab163e69b046
+  open: 696a16b990c59b09
+  follow-an-open-group: a2f398bbfdf1b8a9
   closed: 975e75ed4f3d923a
-  secret: 16fd19c4006fb2e0
-  how-people-join: ed8286b27e591983
+  secret: 172398064e2defbb
+  how-people-join: 0bd671b32f65a376
   group-directory: 6a1d0da49b42df77
   visible-to-parent-group: c3536b2f0d32a395
 title_source: 54a57c3147c49f33
@@ -31,7 +31,7 @@ title_generated: e0520037462417e1
 
 # Ryhmän yksityisyys
 
-Yksityisyys määrittää, kuka voi löytää ryhmän ja lukea sen sisältöä. Avaa ryhmän sivulta **Muokkaa ryhmän asetuksia** ja valitse sitten **Yksityisyys**.
+Yksityisyys määrittää, kuka voi löytää ryhmän ja lukea sen sisältöä. Avaa ryhmän toimintovalikosta **Muokkaa ryhmän asetuksia** ja valitse sitten **Yksityisyys**.
 
 ![Ryhmän yksityisyysasetukset](group_privacy_settings.png#width-90)
 
@@ -41,15 +41,15 @@ Yksityisyysasetuksen muuttaminen vaikuttaa aiempaan sisältöön. Kun pääryhm�
 
 ## Avoin
 
-Avoimet ryhmät ovat julkisia tiloja. Kuka tahansa voi löytää ryhmän ja lukea sen keskusteluja, kyselyjä ja tiedostoja. Jäsenluettelo näkyy edelleen vain jäsenille.
+Avoimet ryhmät ovat julkisia tiloja. Kuka tahansa voi löytää ryhmän ja lukea sen keskusteluja, kyselyjä ja tiedostoja. Vain jäsenet voivat nähdä jäsenluettelon.
 
 <!-- translation-section: follow-an-open-group -->
 
 ### Avoimen ryhmän seuraaminen
 
-Voit seurata avoimen ryhmän tapahtumia liittymättä ryhmään. Seuraaminen lisää ryhmän lukemattomat tapahtumat sähköpostikoosteeseesi, jotta voit tutustua niihin silloin, kun sinulle sopii. Pelkkä ryhmän seuraaminen ei tee seuraajista jäseniä, anna heille jäsenten äänioikeuksia eikä tuo välittömiä ilmoituksia.
+Voit seurata avointa ryhmää liittymättä siihen. Seuraaminen lisää ryhmän lukemattomat tapahtumat sähköpostikoosteeseesi, jotta voit tutustua niihin silloin, kun sinulle sopii. Seuraajista ei tule jäseniä, eivätkä he saa äänioikeutta tai välittömiä ilmoituksia.
 
-Ota **Seuraa päivityksiä** käyttöön ryhmän sivulla, niin ryhmän lukemattomat keskustelut, kommentit, kyselyt ja muut ketjujen tapahtumat sisällytetään sähköpostikoosteeseesi. Poista asetus käytöstä, jos haluat jättää ryhmän pois koosteesta.
+Ota **Seuraa päivityksiä** käyttöön ryhmän sivulla, niin ryhmän lukemattomat keskustelut, kommentit, kyselyt ja muut ketjujen tapahtumat sisällytetään sähköpostikoosteeseesi. Poista asetus käytöstä, kun haluat lopettaa ryhmän seuraamisen.
 
 ![Avoimen ryhmän päivitysten seuraaminen](group_follow_updates.png)
 
@@ -69,13 +69,13 @@ Pääryhmän jäsenet ja alaryhmän jäsenet voivat löytää alaryhmän. Sen ke
 
 ## Salainen
 
-Salaiset ryhmät ja niiden sisältö näkyvät vain ihmisille, jotka on kutsuttu tai lisätty ryhmään. Salaiset ryhmät eivät näy julkisessa ryhmähakemistossa.
+Vain ryhmään kutsutut tai lisätyt ihmiset voivat nähdä salaisen ryhmän ja sen sisällön. Salaiset ryhmät eivät näy julkisessa ryhmähakemistossa.
 
 <!-- translation-section: how-people-join -->
 
 ## Miten ryhmään liitytään
 
-Valitse kohdassa **Miten ihmiset liittyvät?** jokin käytettävissä olevista vaihtoehdoista:
+Valitse kohdassa **Miten ihmiset liittyvät?** jokin seuraavista vaihtoehdoista:
 
 | Liittymistapa | Miten se toimii |
 | --- | --- |
@@ -83,7 +83,7 @@ Valitse kohdassa **Miten ihmiset liittyvät?** jokin käytettävissä olevista v
 | **Pyydä jäsenyyttä** | Ihmiset lähettävät liittymispyynnön ja odottavat hyväksyntää |
 | **Vain kutsulla** | Ihmiset tarvitsevat kutsun liittyäkseen |
 
-Kun liittyminen edellyttää hyväksyntää, valitse **Liittyä ryhmään**, vastaa ryhmän liittymiskysymykseen ja lähetä liittymispyyntö. Katso [Ihmisten kutsuminen](/en/user_manual/groups/inviting_people#request-to-join-group), jossa on ohjeet kysymyksen määrittämiseen, pyyntöjen käsittelyyn ja ihmisten kutsumiseen suoraan.
+Kun liittyminen edellyttää hyväksyntää, valitse **Liittyä ryhmään**, vastaa ryhmän liittymiskysymykseen ja lähetä liittymispyyntö. Katso [Ihmisten kutsuminen](/en/user_manual/groups/inviting_people#request-to-join-group), jossa on ohjeet kysymyksen muokkaamiseen, pyyntöjen käsittelyyn ja ihmisten kutsumiseen suoraan.
 
 <!-- translation-section: group-directory -->
 

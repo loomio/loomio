@@ -1,26 +1,26 @@
 ---
 title: Adatvédelem
-source_revision: e34ed3124daf97b42eef81bc6f6a90075ec93227
-source_file: docs/en/user_manual/groups/settings/privacy.md
+source_revision: ad97f553685def918a7d6e47ac5b66773de2dba8
+source_file: docs/help/en/user_manual/groups/settings/privacy.md
 translated:
   provider: codex/gpt-6.1-sol
-  'on': '2026-10-14'
+  'on': '2026-11-22'
 sections:
-  introduction: 4b491c663bfb5ea9
-  open: 2802cda1461d3b19
-  follow-an-open-group: e4a1b3ce35a974d0
+  introduction: fa83676f56f0d4bd
+  open: 3913f73fccf45868
+  follow-an-open-group: 60cdf646e26f4b4e
   closed: fe4da2f032768bca
-  secret: d0a9ea85448f9798
-  how-people-join: 926f4b183250aa9d
+  secret: dda930893dfc59cc
+  how-people-join: aca325fb6b4d6056
   group-directory: a9a41ea389fb10ba
   visible-to-parent-group: 96b8595d3bc6ce4b
 generated:
-  introduction: 7ab6024626184f5e
-  open: 7a520dc8e7fb665c
-  follow-an-open-group: 1ba28db3a5fc5a87
+  introduction: 9b0ea2bd48ff0d1c
+  open: daff33e7d00f4fa5
+  follow-an-open-group: a753fd8a37fa8252
   closed: f152334a5ced467a
   secret: f5b03dc9759ad3bf
-  how-people-join: 6e678dd97908c1fa
+  how-people-join: 7ead3106ffc4e786
   group-directory: f49d5685cf2bb3eb
   visible-to-parent-group: c306b4bac9127b0f
 title_source: 54a57c3147c49f33
@@ -31,7 +31,7 @@ title_generated: ea2f113c76e353a2
 
 # A csoport adatvédelme
 
-Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport oldalán nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki az **Adatvédelem** lehetőséget.
+Az adatvédelmi beállítások határozzák meg, ki találhatja meg a csoportot, és ki olvashatja a tartalmát. A csoport műveleti menüjében nyisd meg **A csoportbeállítások szerkesztése** menüpontot, majd válaszd ki az **Adatvédelem** lehetőséget.
 
 ![A csoport adatvédelmi beállításai](group_privacy_settings.png#width-90)
 
@@ -41,15 +41,15 @@ Az adatvédelmi beállítások módosítása a meglévő tartalmat is érinti. H
 
 ## Nyilvános
 
-A nyilvános csoportok nyilvános terek. Bárki megtalálhatja a csoportot, és elolvashatja a beszélgetéseit, szavazásait és fájljait. A taglistát továbbra is csak a tagok láthatják.
+A nyilvános csoportok nyilvános terek. Bárki megtalálhatja a csoportot, és elolvashatja a beszélgetéseit, szavazásait és fájljait. A taglistát csak a tagok láthatják.
 
 <!-- translation-section: follow-an-open-group -->
 
 ### Nyilvános csoport követése
 
-Csatlakozás nélkül is követheted egy nyilvános csoport tevékenységét. A követés hozzáadja a csoport olvasatlan tevékenységeit az összefoglaló e-mailedhez, így akkor nézheted át őket, amikor neked megfelel. A követők pusztán a követéstől nem válnak taggá, nem kapnak tagoknak járó szavazati jogot, és nem kapnak azonnali értesítéseket.
+Csatlakozás nélkül is követheted egy nyilvános csoport tevékenységét. A követés hozzáadja a csoport olvasatlan tevékenységeit az összefoglaló e-mailedhez, így akkor nézheted át őket, amikor neked megfelel. A követők nem válnak taggá, nem kapnak szavazati jogot, és nem kapnak azonnali értesítéseket.
 
-Kapcsold be a **Frissítések követése** beállítást a csoport oldalán, hogy az olvasatlan beszélgetések, hozzászólások, szavazások és a szálak egyéb tevékenységei bekerüljenek az összefoglaló e-mailedbe. Kapcsold ki a beállítást, ha már nem szeretnéd a csoport tevékenységeit megkapni az összefoglalóban.
+Kapcsold be a **Frissítések követése** beállítást a csoport oldalán, hogy az olvasatlan beszélgetések, hozzászólások, szavazások és a szálak egyéb tevékenységei bekerüljenek az összefoglaló e-mailedbe. Kapcsold ki a beállítást a csoport követésének leállításához.
 
 ![Frissítések követése egy nyilvános csoportban](group_follow_updates.png)
 
@@ -75,7 +75,7 @@ A titkos csoportokat és tartalmukat csak azok láthatják, akiket meghívtak va
 
 ## Hogyan lehet csatlakozni
 
-A **Hogyan csatlakoznak az emberek?** alatt válaszd ki az elérhető csatlakozási módok egyikét:
+A **Hogyan csatlakoznak az emberek?** alatt válaszd ki az alábbi csatlakozási módok egyikét:
 
 | Csatlakozási mód | Hogyan működik |
 | --- | --- |
