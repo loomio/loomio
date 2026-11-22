@@ -3,15 +3,11 @@ class DestroyTopicWorker < ApplicationJob
   # The dispatcher writes to the same database inside its queue-cap transaction.
   self.enqueue_after_transaction_commit = false
 
-  def self.enabled?
-    AppConfig.discarded_thread_deletion_after_days.present?
-  end
-
   # Discard alone is not deletion authority: restoring and later discarding a
   # thread must invalidate the earlier job. Recheck the current retention delay
   # because it can change while a job is queued.
   def perform(topic_id, discarded_at = nil)
-    return unless self.class.enabled?
+    return unless AppConfig.discarded_thread_deletion_after_days
     return unless discarded_at
 
     Topic.transaction do

@@ -216,19 +216,19 @@ module RetentionService
   end
 
   def self.destroy_discarded_groups(now: Time.current, root_ids: nil)
-    return 0 unless AppConfig.discarded_group_deletion_after_days.present?
+    return 0 unless AppConfig.discarded_group_deletion_after_days
 
     dispatch_destruction_jobs(worker: DestroyGroupWorker, scope: deletable_discarded_groups(now: now), ids: root_ids)
   end
 
   def self.destroy_discarded_subgroups(now: Time.current, subgroup_ids: nil)
-    return 0 unless AppConfig.discarded_subgroup_deletion_after_days.present?
+    return 0 unless AppConfig.discarded_subgroup_deletion_after_days
 
     dispatch_destruction_jobs(worker: DestroyGroupWorker, scope: deletable_discarded_subgroups(now: now), ids: subgroup_ids)
   end
 
   def self.destroy_discarded_threads(now: Time.current, topic_ids: nil)
-    return 0 unless DestroyTopicWorker.enabled?
+    return 0 unless AppConfig.discarded_thread_deletion_after_days
 
     dispatch_destruction_jobs(worker: DestroyTopicWorker, scope: deletable_discarded_threads(now: now), ids: topic_ids)
   end

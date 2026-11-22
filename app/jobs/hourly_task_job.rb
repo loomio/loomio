@@ -18,9 +18,9 @@ class HourlyTaskJob < ApplicationJob
 
     SendDigestEmailWorker.perform_later
     EnsureDemoQueueWorker.perform_later
-    RetentionService.destroy_discarded_groups if AppConfig.discarded_group_deletion_after_days.present?
-    RetentionService.destroy_discarded_subgroups if AppConfig.discarded_subgroup_deletion_after_days.present?
-    RetentionService.destroy_discarded_threads if DestroyTopicWorker.enabled?
+    RetentionService.destroy_discarded_groups
+    RetentionService.destroy_discarded_subgroups
+    RetentionService.destroy_discarded_threads
 
     if hour == 0
       ThrottleService.reset!('day')

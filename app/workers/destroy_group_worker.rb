@@ -3,17 +3,12 @@ class DestroyGroupWorker < ApplicationJob
   # The dispatcher writes to the same database inside its queue-cap transaction.
   self.enqueue_after_transaction_commit = false
 
-  def self.enabled?
-    AppConfig.discarded_group_deletion_after_days.present? ||
-      AppConfig.discarded_subgroup_deletion_after_days.present?
-  end
-
   # Discard alone is not deletion authority: restoring and later discarding a
   # group must invalidate the earlier job. Legacy jobs lack this proof and
   # need operator review before being rescheduled. Recheck the current cleanup
   # switch and retention delay because both can change while a job is queued.
   def perform(group_id, discarded_at = nil)
-    return unless self.class.enabled?
+    return unless AppConfig.discarded_group_deletion_after_days || AppConfig.discarded_subgroup_deletion_after_days
 
     unless discarded_at
       Rails.logger.warn("Skipping legacy group deletion without a discard timestamp: #{group_id}")
