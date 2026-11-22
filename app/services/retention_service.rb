@@ -248,10 +248,10 @@ module RetentionService
     polls = Poll.where(topic_id: topic_ids)
     stances = Stance.where(poll_id: polls.select(:id))
     outcomes = Outcome.where(poll_id: polls.select(:id))
-    comments = Comment.under_parents(discussions, polls, stances, outcomes)
+    comment_ids = TopicItem.where(topic_id: topic_ids, itemable_type: "Comment").distinct.pluck(:itemable_id)
 
-    record_ids = { Topic => topic_ids }
-    [discussions, polls, stances, outcomes, comments].each do |scope|
+    record_ids = { Topic => topic_ids, Comment => comment_ids }
+    [discussions, polls, stances, outcomes].each do |scope|
       record_ids[scope.klass] = scope.ids
     end
     record_ids

@@ -14,6 +14,7 @@ class DestroyTopicWorkerTest < ActiveSupport::TestCase
     discussion = discussions(:discussion)
     topic = discussion.topic
     comment = Comment.create!(parent: discussion, user: users(:member_normal), body: "Archived thread reply")
+    comment.create_missing_created_topic_item!
     topic.versions.create!(event: "update")
     discussion.versions.create!(event: "update")
     comment.versions.create!(event: "update")

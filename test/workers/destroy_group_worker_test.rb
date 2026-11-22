@@ -40,8 +40,11 @@ class DestroyGroupWorkerTest < ActiveSupport::TestCase
     stance = poll.stances.latest.find_by!(participant: users(:member_normal))
     weight_version = PaperTrail::Version.create!(item: stance, event: Stance::WEIGHT_EVENT)
     comment = Comment.create!(parent: discussion, user: users(:member_normal), body: "Archived reply")
-    reply = Comment.create!(parent: comment, user: users(:member_normal), body: "A reply without a timeline entry")
+    comment.create_missing_created_topic_item!
+    reply = Comment.create!(parent: comment, user: users(:member_normal), body: "Archived nested reply")
+    reply.create_missing_created_topic_item!
     child = Comment.create!(parent: poll, user: users(:member_normal), body: "Archived poll reply")
+    child.create_missing_created_topic_item!
     topic.update_column(:group_id, subgroup.id)
 
     group.discard!(at: 91.days.ago)

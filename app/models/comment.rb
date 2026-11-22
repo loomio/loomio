@@ -128,22 +128,21 @@ class Comment < ApplicationRecord
   # Follow domain parents so conversations remain complete when the display
   # depth cap makes a reply a sibling of its actual parent or enclosing poll.
   def self.under_polls(polls)
-    poll_ids = polls.select(:id)
-    under_parents(polls, Stance.where(poll_id: poll_ids), Outcome.where(poll_id: poll_ids))
-  end
-
-  def self.under_parents(*parents)
-    roots = parents.reduce(unscoped.none) do |comments, records|
-      comments.or(unscoped.where(parent_type: records.klass.polymorphic_name, parent_id: records.select(:id)))
-    end
     where("comments.id IN (#{<<~SQL.squish})")
-      WITH RECURSIVE replies AS (
-        #{roots.select(:id).to_sql}
+      WITH RECURSIVE poll_comments AS (
+        SELECT id FROM comments
+        WHERE (parent_type = 'Poll' AND parent_id IN (#{polls.select(:id).to_sql}))
+          OR (parent_type = 'Stance' AND parent_id IN (
+            SELECT id FROM stances WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
+          OR (parent_type = 'Outcome' AND parent_id IN (
+            SELECT id FROM outcomes WHERE poll_id IN (#{polls.select(:id).to_sql})
+          ))
         UNION
         SELECT comments.id FROM comments
-        JOIN replies ON comments.parent_type = 'Comment' AND comments.parent_id = replies.id
+        JOIN poll_comments ON comments.parent_type = 'Comment' AND comments.parent_id = poll_comments.id
       )
-      SELECT id FROM replies
+      SELECT id FROM poll_comments
     SQL
   end
 
