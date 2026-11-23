@@ -24,7 +24,6 @@ test('opens cached threads while their refresh is pending', async ({page}) => {
   await page.route('**/api/v1/topic_items?*', route => { pending.push(route); });
   await page.locator('.topic-preview__link', {hasText: 'Recent discussion'}).click();
   await expect(page.locator('.topic-page__cached-context')).toContainText('Recent discussion');
-  await expect(page.locator('.navbar__loading-slot .v-progress-circular')).toBeVisible();
   const navigation = await box(page.locator('.mobile-navigation'));
   const latest = await box(page.locator('.topic-page__latest'));
   expect(navigation.y - latest.bottom).toBeGreaterThanOrEqual(8);

@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { computed, ref, watch } from 'vue';
-import { debounce } from 'lodash-es';
 import Records from '@/shared/services/records';
 import { mentionNamedIdFor } from '@/components/lmo_textarea/composables/useMentioning';
 
@@ -20,52 +19,43 @@ const { model, handles, empty } = defineProps({
 });
 
 const count = ref(null);
-let requestId = 0;
-const namedId = computed(() => mentionNamedIdFor(model));
-const supported = computed(() => {
-  return ['comment', 'discussion', 'poll', 'outcome', 'stance'].some(type => model.isA(type));
+const requestParams = computed(() => {
+  if (!handles.length || !model.isA('comment', 'discussion', 'poll', 'outcome', 'stance')) return null;
+
+  const context = mentionNamedIdFor(model);
+  if (!Object.keys(context).length) return null;
+
+  return {handles_cmr: [...new Set(handles)].sort().join(','), ...context};
 });
 const promptVisible = computed(() => model.isA('comment') && empty && handles.length === 0);
-const messageVisible = computed(() => {
-  return supported.value && (promptVisible.value || (handles.length && count.value !== null));
-});
-
-const updateCount = debounce(() => {
-  requestId += 1;
-  const currentRequestId = requestId;
-
-  if (!supported.value || !handles.length || !Object.keys(namedId.value).length) {
-    count.value = null;
-    return;
-  }
-
-  Records.remote.fetch({
-    path: 'mentions/count',
-    params: {
-      handles_cmr: handles.join(','),
-      ...namedId.value
-    }
-  }).then(data => {
-    if (currentRequestId === requestId) {
-      count.value = data.count;
-    }
-  }).catch(() => {
-    if (currentRequestId === requestId) {
-      count.value = null;
-    }
-  });
-}, 150);
 
 watch(
-  [() => handles, () => JSON.stringify(namedId.value), supported],
-  updateCount,
+  () => JSON.stringify(requestParams.value),
+  (_key, _previous, onCleanup) => {
+    count.value = null;
+    const params = requestParams.value;
+    if (!params) return;
+
+    let active = true;
+    const timer = setTimeout(() => {
+      Records.remote.fetch({path: 'mentions/count', params})
+        .then(data => {
+          if (active) count.value = data.count;
+        })
+        .catch(() => {});
+    }, 150);
+    onCleanup(() => {
+      active = false;
+      clearTimeout(timer);
+    });
+  },
   { immediate: true }
 );
 </script>
 
 <template lang="pug">
 p.mention-notifications-count.text-medium-emphasis.text-body-small(
-  v-show="messageVisible"
+  v-if="promptVisible || count !== null"
 )
   span(v-if="promptVisible" v-t="'comment_form.type_at_to_notify_people'")
   span(v-else-if="count === 0" v-t="'mention_notifications_count.nobody_will_be_notified'")

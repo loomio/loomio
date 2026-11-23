@@ -1,7 +1,6 @@
 import { encodeParams } from '@/shared/helpers/encode_params';
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil } from 'lodash-es';
 import * as Sentry from '@sentry/vue';
-import { trackRead } from '@/shared/services/loading_state';
 import { takeInitialResponse } from '@/shared/services/initial_data';
 import AppConfig from '@/shared/services/app_config';
 
@@ -110,12 +109,7 @@ export default class RestfulClient {
     return request;
   }
 
-  request(path, method, body = {}) {
-    const request = this.performRequest(path, method, body);
-    return method === 'GET' ? trackRead(request) : request;
-  }
-
-  async performRequest(path, method, body) {
+  async request(path, method, body = {}) {
     const opts = {
       method,
       credentials: 'same-origin',
