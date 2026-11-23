@@ -404,6 +404,36 @@ class NotificationDeliveryRouterTest < ActiveSupport::TestCase
     assert_empty channels_for(accepted, inviter_subscription)
   end
 
+  test "shareable-link joins notify active group admins using group volume for the first 10 joiners, then in-app only" do
+    creator = User.create!(name: "Creator", email: "creator-link-join@example.com", email_verified: true)
+    push_admin = User.create!(name: "Push Admin", email: "admin-link-join@example.com", email_verified: true)
+    group = Group.create!(name: "Link Join Group", creator: creator, group_privacy: "secret")
+    group.add_admin!(creator).update!(volume_email: :normal, volume_push: :quiet)
+    group.add_admin!(push_admin).update!(volume_email: :quiet, volume_push: :normal)
+    push_subscription = create_push_subscription(
+      user: push_admin,
+      endpoint: "https://fcm.googleapis.com/fcm/send/link-join-admin-token",
+      p256dh_key: "p256dh-key",
+      auth_key: "auth-key"
+    )
+
+    9.times do |i|
+      joiner = User.create!(name: "Joiner #{i}", email: "joiner-#{i}@example.com", email_verified: true)
+      membership = group.memberships.create!(user: joiner, accepted_at: Time.current)
+      notification = route_notification(kind: "invitation_accepted", subject: membership, actor: joiner)
+      assert_equal %w[email in_app], channels_for(notification, creator), "creator joiner #{i + 1}"
+      assert_equal [ "in_app" ], channels_for(notification, push_admin), "push_admin user channels joiner #{i + 1}"
+      assert_equal [ "push" ], channels_for(notification, push_subscription), "push_admin push joiner #{i + 1}"
+    end
+
+    eleventh = User.create!(name: "Joiner 10", email: "joiner-10@example.com", email_verified: true)
+    eleventh_membership = group.memberships.create!(user: eleventh, accepted_at: Time.current)
+    eleventh_notification = route_notification(kind: "invitation_accepted", subject: eleventh_membership, actor: eleventh)
+    assert_equal [ "in_app" ], channels_for(eleventh_notification, creator)
+    assert_equal [ "in_app" ], channels_for(eleventh_notification, push_admin)
+    assert_empty channels_for(eleventh_notification, push_subscription)
+  end
+
   test "group-volume operational notifications share email and push behavior" do
     membership = memberships(:member_membership)
     recipient = membership.user
