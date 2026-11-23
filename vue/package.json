@@ -96,7 +96,7 @@
     "vite": "8.3.8",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vitest": "^5.1.0",
+    "vitest": "^5.1.1",
     "yaml": "^2.9.1"
   },
   "overrides": {
