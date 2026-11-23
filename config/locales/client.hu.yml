@@ -1287,12 +1287,12 @@ hu:
     success: Ez a csoport archiválásra került, és a tervek szerint 2 héten belül véglegesen törlésre kerül.
     scheduled_for_deletion: Ez a csoport 2 hét múlva végleges törlésre kerül.
     deletion_after_grace_period: Ez a csoport nem érhető el, és %{days} nap múlva véglegesen törlésre kerül
-    discard_title: "Csoport eltávolítása"
-    discard_subgroup_title: "Alcsoport eltávolítása"
-    discard_parent_body: "Ez a csoport és az alcsoportjai azonnal eltűnnek, és a Loomio-előfizetése is megszűnik. A csoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
-    discard_body: "Ez az alcsoport azonnal eltűnik. Az alcsoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
-    discard_confirm: "A megerősítéshez írd be: '%{name}'"
-    discard_success: "Csoport eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket"
+    discard_title: Csoport eltávolítása
+    discard_subgroup_title: Alcsoport eltávolítása
+    discard_parent_body: Ez a csoport és az alcsoportjai azonnal eltűnnek, és a Loomio-előfizetése is megszűnik. A csoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket.
+    discard_body: Ez az alcsoport azonnal eltűnik. Az alcsoport adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket.
+    discard_confirm: 'A megerősítéshez írd be: ''%{name}'''
+    discard_success: Csoport eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket
   group_page:
     stats: Csoport statisztika
     threads: Témák
@@ -1579,6 +1579,13 @@ hu:
     reset_the_link: A hivatkozás visszaállítása
     email_addresses_placeholder: pl. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Meghívólap
+    invite_link: Meghívó link
+    shareable_invitation_message_label: E-mailbe vagy csevegésbe másolható üzenet
+    members_used: "%{used} / %{max} tag"
+    shareable_invitation_message: |-
+      Létrehoztam a(z) %{groupName} csoportot a(z) %{site_name} felületén, hogy együtt beszélgessünk és hozzunk döntéseket. Csatlakozz ezen a linken:
+      %{link}
+    trial_shareable_link_note: Másold ki a meghívó linket, és küldd el e-mailben vagy csevegésben, hogy másokat is meghívj a csoportodba. Ha csatlakoztak, közvetlenül a Loomióból küldhetsz nekik e-mailes és mobilos értesítéseket. <a href="%{upgradeUrl}">Válts nagyobb csomagra</a>, hogy e-mailes meghívókat küldhess.
   memberships_page:
     members: Tagok
     name_label: Név
@@ -3090,10 +3097,10 @@ hu:
   delete_discussion_form:
     discussion_deleted: Beszélgetés törölve
     body: Biztosan törölni akarod ezt a témát?
-    body_with_deletion: "Ez a szál azonnal eltűnik, és %{days} nap múlva véglegesen törlődik."
-    body_reversible: "Ez a szál azonnal eltűnik. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket."
-    deleted_after_grace_period: "Szál eltávolítva. %{days} nap múlva véglegesen törlődik"
-    removed: "Szál eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket"
+    body_with_deletion: Ez a szál azonnal eltűnik, és %{days} nap múlva véglegesen törlődik.
+    body_reversible: Ez a szál azonnal eltűnik. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket.
+    deleted_after_grace_period: Szál eltávolítva. %{days} nap múlva véglegesen törlődik
+    removed: Szál eltávolítva. Az adatai nem törlődnek automatikusan véglegesen, és a webhely adminisztrátora vissza tudja állítani őket
   move_discussion_form:
     title: Beszélgetés áthelyezése egy másik csoportba
     body: Célcsoport

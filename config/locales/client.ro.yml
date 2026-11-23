@@ -1281,12 +1281,12 @@ ro:
     success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
     scheduled_for_deletion: Acest grup este programat pentru ștergere permanentă în 2 săptămâni.
     deletion_after_grace_period: Acest grup este indisponibil și va fi șters definitiv după %{days} de zile
-    discard_title: "Elimină grupul"
-    discard_subgroup_title: "Elimină subgrupul"
-    discard_parent_body: "Acest grup și subgrupurile lui vor fi ascunse imediat, iar abonamentul său Loomio va fi anulat. Datele grupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
-    discard_body: "Acest subgrup va fi ascuns imediat. Datele subgrupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
-    discard_confirm: "Scrie «%{name}» pentru a confirma"
-    discard_success: "Grup eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului"
+    discard_title: Elimină grupul
+    discard_subgroup_title: Elimină subgrupul
+    discard_parent_body: Acest grup și subgrupurile lui vor fi ascunse imediat, iar abonamentul său Loomio va fi anulat. Datele grupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului.
+    discard_body: Acest subgrup va fi ascuns imediat. Datele subgrupului nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului.
+    discard_confirm: Scrie «%{name}» pentru a confirma
+    discard_success: Grup eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului
   group_page:
     stats: Statistici de grup
     threads: Discutii
@@ -1573,6 +1573,13 @@ ro:
     reset_the_link: Resetați linkul
     email_addresses_placeholder: de exemplu helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Formular de invitație
+    invite_link: Link de invitație
+    shareable_invitation_message_label: Mesaj de copiat într-un e-mail sau chat
+    members_used: "%{used} din %{max} membri"
+    shareable_invitation_message: |-
+      Am creat grupul %{groupName} pe %{site_name} ca să putem discuta și lua decizii împreună. Alătură-te folosind acest link:
+      %{link}
+    trial_shareable_link_note: Copiază linkul de invitație și trimite-l prin e-mail sau chat ca să inviți oameni în grupul tău. După ce se alătură, le poți trimite notificări prin e-mail și pe mobil direct din Loomio. <a href="%{upgradeUrl}">Treci la un plan superior</a> ca să trimiți invitații prin e-mail.
   memberships_page:
     members: Membri
     name_label: Nume
@@ -3079,10 +3086,10 @@ ro:
   delete_discussion_form:
     discussion_deleted: Discuția a fost ștearsă
     body: Sigur vrei să ștergi acest fir de discuție?
-    body_with_deletion: "Acest fir va fi ascuns imediat și șters permanent după %{days} zile."
-    body_reversible: "Acest fir va fi ascuns imediat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului."
-    deleted_after_grace_period: "Fir eliminat. Va fi șters permanent după %{days} zile"
-    removed: "Fir eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului"
+    body_with_deletion: Acest fir va fi ascuns imediat și șters permanent după %{days} zile.
+    body_reversible: Acest fir va fi ascuns imediat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului.
+    deleted_after_grace_period: Fir eliminat. Va fi șters permanent după %{days} zile
+    removed: Fir eliminat. Datele sale nu sunt șterse permanent automat și pot fi restaurate de un administrator al site-ului
   move_discussion_form:
     title: Mută discuția în alt grup
     body: Grup de destinații

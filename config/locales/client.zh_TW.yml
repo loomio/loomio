@@ -1288,12 +1288,12 @@ zh_TW:
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
     scheduled_for_deletion: 該群組計劃在兩週後永久刪除。
     deletion_after_grace_period: 該群組目前無法存取，並將在 %{days} 天後被永久刪除
-    discard_title: "移除群組"
-    discard_subgroup_title: "移除子群組"
-    discard_parent_body: "此群組及其子群組將立即從檢視中隱藏，其 Loomio 訂閱也會取消。群組資料不會自動永久刪除，可由網站管理員還原。"
-    discard_body: "此子群組將立即從檢視中隱藏。子群組資料不會自動永久刪除，可由網站管理員還原。"
-    discard_confirm: "輸入「%{name}」以確認"
-    discard_success: "群組已移除。其資料不會自動永久刪除，可由網站管理員還原"
+    discard_title: 移除群組
+    discard_subgroup_title: 移除子群組
+    discard_parent_body: 此群組及其子群組將立即從檢視中隱藏，其 Loomio 訂閱也會取消。群組資料不會自動永久刪除，可由網站管理員還原。
+    discard_body: 此子群組將立即從檢視中隱藏。子群組資料不會自動永久刪除，可由網站管理員還原。
+    discard_confirm: 輸入「%{name}」以確認
+    discard_success: 群組已移除。其資料不會自動永久刪除，可由網站管理員還原
   group_page:
     stats: 群組統計
     threads: 討論串
@@ -1590,6 +1590,13 @@ zh_TW:
     reset_the_link: 重置連結
     email_addresses_placeholder: 例如 helperbot{'@'}loomio.org、friendlybot{'@'}loomio.org
     aria_label: 邀請函
+    invite_link: 邀請連結
+    shareable_invitation_message_label: 可複製到電子郵件或聊天的訊息
+    members_used: 已使用 %{used} / %{max} 位成員名額
+    shareable_invitation_message: |-
+      我已在 %{site_name} 建立 %{groupName}，讓我們一起討論並做出決定。請用此連結加入：
+      %{link}
+    trial_shareable_link_note: 複製邀請連結，透過電子郵件或聊天傳送，邀請夥伴加入群組。加入後，即可直接從 Loomio 傳送電子郵件和手機通知給他們。<a href="%{upgradeUrl}">升級方案</a>即可寄送電子郵件邀請。
   memberships_page:
     members: 成員
     name_label: 名字
@@ -3107,10 +3114,10 @@ zh_TW:
   delete_discussion_form:
     discussion_deleted: 討論已刪除
     body: 你確定要刪除這個貼文嗎？
-    body_with_deletion: "此主題將立即從檢視中隱藏，並在 %{days} 天後永久刪除。"
-    body_reversible: "此主題將立即從檢視中隱藏。其資料不會自動永久刪除，可由網站管理員還原。"
-    deleted_after_grace_period: "主題已移除。它將在 %{days} 天後永久刪除"
-    removed: "主題已移除。其資料不會自動永久刪除，可由網站管理員還原"
+    body_with_deletion: 此主題將立即從檢視中隱藏，並在 %{days} 天後永久刪除。
+    body_reversible: 此主題將立即從檢視中隱藏。其資料不會自動永久刪除，可由網站管理員還原。
+    deleted_after_grace_period: 主題已移除。它將在 %{days} 天後永久刪除
+    removed: 主題已移除。其資料不會自動永久刪除，可由網站管理員還原
   move_discussion_form:
     title: 將討論轉移到另一個群組
     body: 目的地組

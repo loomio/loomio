@@ -61,7 +61,8 @@ class Admin::SubscriptionsController < Admin::BaseController
   def subscription_params
     params.require(:subscription).permit(
       :plan, :payment_method, :state, :expires_at, :max_threads, :max_members,
-      :max_orgs, :allow_guests, :allow_subgroups, :chargify_subscription_id, :owner_id
+      :max_orgs, :allow_guests, :allow_subgroups, :allow_email_invitations,
+      :chargify_subscription_id, :owner_id
     )
   end
 

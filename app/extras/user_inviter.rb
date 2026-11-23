@@ -92,6 +92,9 @@ class UserInviter
       actor.ability.authorize!(:add_members, g)
     end
 
+    emails = Array(emails).map(&:presence).compact.uniq
+    authorize_email_invitations!(emails: emails, model: parent_group, actor: actor)
+
     check_members_limit!(parent_group: parent_group, emails: emails, user_ids: user_ids)
   end
 
@@ -145,7 +148,8 @@ class UserInviter
       NotificationAudienceService.authorize_notify!(model: model, actor: actor)
     end
 
-    emails = Array(emails).map(&:presence).compact
+    emails = Array(emails).map(&:presence).compact.uniq
+    authorize_email_invitations!(emails: emails, model: model, actor: actor)
     emails -= model.members.where(email: emails).pluck(:email) if model
     return if emails.empty? || auth_target.nil?
 
@@ -167,6 +171,7 @@ class UserInviter
     # check inviter can invite guests (from the org, or external) if that's happening
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     emails = Array(emails).map(&:presence).compact.uniq
+    authorize_email_invitations!(emails: emails, model: model, actor: actor)
     # Nobody can notify people from a locked thread, including thread admins
     # who can still edit it.
     topic = model.is_a?(Topic) ? model : (model.topic if model.respond_to?(:topic))
@@ -212,7 +217,8 @@ class UserInviter
 
   def self.resolve_invitees!(emails:, user_ids:, audience:, model:, actor:, include_actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
-    emails = Array(emails).uniq.compact
+    emails = Array(emails).map(&:presence).compact.uniq
+    authorize_email_invitations!(emails: emails, model: model, actor: actor)
     emails = safe_emails(emails)
 
     audience_user_ids = if audience
@@ -256,6 +262,14 @@ class UserInviter
   private_class_method :resolve_invitees!
 
   private
+
+  def self.authorize_email_invitations!(emails:, model:, actor:)
+    return if emails.empty?
+    return if Subscription.email_invitations_allowed?(model: model, actor: actor)
+
+    raise CanCan::AccessDenied
+  end
+  private_class_method :authorize_email_invitations!
 
   def self.safe_emails(emails)
     emails.uniq.select do |email|

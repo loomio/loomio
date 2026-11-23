@@ -78,4 +78,6 @@ export default class NullGroupModel {
   hasSubscription() { return false; }
   isSubgroupOfSecretParent() { return false; }
   hasPendingMembershipRequestFrom() { return false; }
+  isTrialOrDemo() { return false; }
+  emailInvitationsAllowed() { return true; }
 };

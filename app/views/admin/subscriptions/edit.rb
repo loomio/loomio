@@ -19,6 +19,7 @@ class Views::Admin::Subscriptions::Edit < Views::Admin::Layout
       field(form, :max_orgs, type: :number_field)
       checkbox_field(form, :allow_guests)
       checkbox_field(form, :allow_subgroups)
+      checkbox_field(form, :allow_email_invitations)
       field(form, :chargify_subscription_id)
       field(form, :owner_id, type: :number_field)
       form.submit("Save subscription", class: "admin-button")

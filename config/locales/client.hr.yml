@@ -1283,12 +1283,12 @@ hr:
     success: Ova je grupa arhivirana i zakazano je za trajno brisanje za 2 tjedna.
     scheduled_for_deletion: Trajno brisanje ove grupe planirano je za 2 tjedna
     deletion_after_grace_period: Ova grupa nije dostupna i bit će trajno izbrisana nakon %{days} dana
-    discard_title: "Ukloni grupu"
-    discard_subgroup_title: "Ukloni podgrupu"
-    discard_parent_body: "Ova grupa i njezine podgrupe bit će odmah uklonjene iz prikaza, a njezina pretplata na Loomio bit će otkazana. Podaci grupe ne brišu se automatski trajno i administrator stranice ih može vratiti."
-    discard_body: "Ova podgrupa bit će odmah uklonjena iz prikaza. Podaci podgrupe ne brišu se automatski trajno i administrator stranice ih može vratiti."
-    discard_confirm: "Upišite '%{name}' za potvrdu"
-    discard_success: "Grupa je uklonjena. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti"
+    discard_title: Ukloni grupu
+    discard_subgroup_title: Ukloni podgrupu
+    discard_parent_body: Ova grupa i njezine podgrupe bit će odmah uklonjene iz prikaza, a njezina pretplata na Loomio bit će otkazana. Podaci grupe ne brišu se automatski trajno i administrator stranice ih može vratiti.
+    discard_body: Ova podgrupa bit će odmah uklonjena iz prikaza. Podaci podgrupe ne brišu se automatski trajno i administrator stranice ih može vratiti.
+    discard_confirm: Upišite '%{name}' za potvrdu
+    discard_success: Grupa je uklonjena. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti
   group_page:
     stats: Grupna statistika
     threads: niti
@@ -1575,6 +1575,13 @@ hr:
     reset_the_link: Resetiraj vezu
     email_addresses_placeholder: npr. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Obrazac za pozivnicu
+    invite_link: Poveznica za poziv
+    shareable_invitation_message_label: Poruka za kopiranje u e-poštu ili chat
+    members_used: "%{used} od %{max} članova"
+    shareable_invitation_message: |-
+      Postavio/la sam grupu %{groupName} na %{site_name} kako bismo zajedno raspravljali i donosili odluke. Pridružite se putem ove poveznice:
+      %{link}
+    trial_shareable_link_note: Kopirajte poveznicu za poziv i pošaljite je e-poštom ili chatom kako biste pozvali ljude u svoju grupu. Kad se pridruže, možete im slati obavijesti e-poštom i na mobitel izravno iz Loomija. <a href="%{upgradeUrl}">Nadogradite svoj plan</a> za slanje pozivnica e-poštom.
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -3080,10 +3087,10 @@ hr:
   delete_discussion_form:
     discussion_deleted: Rasprava je izbrisana
     body: Jeste li sigurni da želite izbrisati ovu temu?
-    body_with_deletion: "Ova nit bit će odmah uklonjena iz prikaza i trajno izbrisana nakon %{days} dana."
-    body_reversible: "Ova nit bit će odmah uklonjena iz prikaza. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti."
-    deleted_after_grace_period: "Nit je uklonjena. Bit će trajno izbrisana nakon %{days} dana"
-    removed: "Nit je uklonjena. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti"
+    body_with_deletion: Ova nit bit će odmah uklonjena iz prikaza i trajno izbrisana nakon %{days} dana.
+    body_reversible: Ova nit bit će odmah uklonjena iz prikaza. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti.
+    deleted_after_grace_period: Nit je uklonjena. Bit će trajno izbrisana nakon %{days} dana
+    removed: Nit je uklonjena. Njezini podaci ne brišu se automatski trajno i administrator stranice ih može vratiti
   move_discussion_form:
     title: Premjesti raspravu u drugu grupu
     body: Odredišna grupa

@@ -1305,12 +1305,12 @@ it:
     success: Questo gruppo è stato archiviato ed è previsto per l'eliminazione permanente in 2 settimane.
     scheduled_for_deletion: Questo gruppo verrà eliminato definitivamente tra 2 settimane.
     deletion_after_grace_period: Questo gruppo non è disponibile e verrà eliminato definitivamente dopo %{days} giorni
-    discard_title: "Rimuovi gruppo"
-    discard_subgroup_title: "Rimuovi sottogruppo"
-    discard_parent_body: "Questo gruppo e i suoi sottogruppi saranno rimossi dalla vista immediatamente e il suo abbonamento Loomio sarà annullato. I dati del gruppo non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito."
-    discard_body: "Questo sottogruppo sarà rimosso dalla vista immediatamente. I dati del sottogruppo non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito."
-    discard_confirm: "Digita '%{name}' per confermare"
-    discard_success: "Gruppo rimosso. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito"
+    discard_title: Rimuovi gruppo
+    discard_subgroup_title: Rimuovi sottogruppo
+    discard_parent_body: Questo gruppo e i suoi sottogruppi saranno rimossi dalla vista immediatamente e il suo abbonamento Loomio sarà annullato. I dati del gruppo non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito.
+    discard_body: Questo sottogruppo sarà rimosso dalla vista immediatamente. I dati del sottogruppo non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito.
+    discard_confirm: Digita '%{name}' per confermare
+    discard_success: Gruppo rimosso. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito
   group_page:
     stats: Statistiche di gruppo
     threads: Discussioni
@@ -1599,6 +1599,13 @@ it:
     reset_the_link: Reimposta il collegamento
     email_addresses_placeholder: ad esempio helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Modulo di invito
+    invite_link: Link di invito
+    shareable_invitation_message_label: Messaggio da copiare in un'email o in chat
+    members_used: "%{used} di %{max} membri"
+    shareable_invitation_message: |-
+      Ho creato %{groupName} su %{site_name} per discutere e prendere decisioni insieme. Unisciti con questo link:
+      %{link}
+    trial_shareable_link_note: Copia il link di invito e invialo via email o chat per invitare persone nel tuo gruppo. Quando entrano, puoi inviare loro notifiche via email e sul cellulare direttamente da Loomio. <a href="%{upgradeUrl}">Passa a un piano superiore</a> per inviare inviti via email.
   memberships_page:
     members: Membri
     name_label: Nome
@@ -3107,10 +3114,10 @@ it:
   delete_discussion_form:
     discussion_deleted: Discussione eliminata
     body: Sei sicuro di voler eliminare questa discussione?
-    body_with_deletion: "Questa conversazione sarà rimossa dalla vista immediatamente ed eliminata definitivamente dopo %{days} giorni."
-    body_reversible: "Questa conversazione sarà rimossa dalla vista immediatamente. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito."
-    deleted_after_grace_period: "Conversazione rimossa. Sarà eliminata definitivamente dopo %{days} giorni"
-    removed: "Conversazione rimossa. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito"
+    body_with_deletion: Questa conversazione sarà rimossa dalla vista immediatamente ed eliminata definitivamente dopo %{days} giorni.
+    body_reversible: Questa conversazione sarà rimossa dalla vista immediatamente. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito.
+    deleted_after_grace_period: Conversazione rimossa. Sarà eliminata definitivamente dopo %{days} giorni
+    removed: Conversazione rimossa. I suoi dati non vengono eliminati automaticamente in modo definitivo e possono essere ripristinati da un amministratore del sito
   move_discussion_form:
     title: Sposta la discussione in un altro gruppo
     body: Gruppo di destinazione

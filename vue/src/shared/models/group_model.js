@@ -1,4 +1,5 @@
 import BaseModel    from '@/shared/record_store/base_model';
+import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import {filter, some, map, compact, sortBy} from 'lodash-es';
 
@@ -269,6 +270,14 @@ export default class GroupModel extends BaseModel {
   }
 
   isTrialOrDemo() {
-    return ['trial', 'demo'].includes(this.parentOrSelf().subscription?.plan)
+    const plan = (this.parentOrSelf() || this).subscription?.plan;
+    return ['trial', 'demo'].includes(plan);
+  }
+
+  // Mirrors Subscription#email_invitations_allowed?.
+  emailInvitationsAllowed() {
+    if (!AppConfig.features?.app?.subscriptions) { return true; }
+    const sub = (this.parentOrSelf() || this).subscription;
+    return sub?.allow_email_invitations !== false;
   }
 };

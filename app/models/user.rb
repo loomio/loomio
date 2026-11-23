@@ -194,8 +194,17 @@ class User < ApplicationRecord
   end
 
   def is_paying?
-    group_ids = (self.group_ids + self.groups.pluck(:parent_id).compact).uniq
-    Group.enabled.where(id: group_ids).where(parent_id: nil).joins(:subscription).where.not('subscriptions.plan': 'trial').exists?
+    group_ids = memberships.accepted.joins(:group).where(groups: { discarded_at: nil })
+      .pluck('groups.id', 'groups.parent_id').flatten.compact.uniq
+    Group.enabled.where(id: group_ids, parent_id: nil).joins(:subscription)
+      .where.not(subscriptions: { plan: Subscription::NON_PAID_PLANS }).exists?
+  end
+
+  def email_invitations_allowed?
+    group_ids = memberships.accepted.joins(:group).where(groups: { discarded_at: nil })
+      .pluck('groups.id', 'groups.parent_id').flatten.compact.uniq
+    Group.enabled.where(id: group_ids, parent_id: nil).joins(:subscription)
+      .where(subscriptions: { allow_email_invitations: true }).exists?
   end
 
   def is_paying

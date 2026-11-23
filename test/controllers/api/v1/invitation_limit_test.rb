@@ -9,7 +9,7 @@ class Api::V1::InvitationLimitTest < ActionController::TestCase
     ENV['LOOMIO_SUBSCRIPTIONS'] = 'enabled'
     @actor = users(:admin)
     @group = topics(:discussion_topic).group
-    @group.update!(subscription: Subscription.create!(plan: 'trial', state: 'active', max_members: 10))
+    @group.update!(subscription: Subscription.create!(plan: 'trial', state: 'active', max_members: 10, allow_email_invitations: true))
     @discussion = DiscussionService.create(params: { title: 'Invitation limit' }, actor: @actor)
     @history = Notification.create!(kind: 'discussion_announced', actor: @actor, subject: @discussion.created_topic_item,
       recipient_user_ids: User.where.not(id: @actor.id).limit(9).pluck(:id))

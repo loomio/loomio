@@ -89,14 +89,15 @@ class GroupSerializer < ApplicationSerializer
   def subscription
     sub = subscription_record
     {
-      state:           sub.state,
-      expires_at:      sub.expires_at,
-      max_members:     sub.max_members,
-      max_threads:     sub.max_threads,
-      allow_subgroups: sub.allow_subgroups,
-      allow_guests:    sub.allow_guests,
-      plan:            sub.plan,
-      members_count:   sub.members_count
+      state:                   sub.state,
+      expires_at:              sub.expires_at,
+      max_members:             sub.max_members,
+      max_threads:             sub.max_threads,
+      allow_subgroups:         sub.allow_subgroups,
+      allow_guests:            sub.allow_guests,
+      allow_email_invitations: sub.allow_email_invitations,
+      plan:                    sub.plan,
+      members_count:           sub.members_count
     }
   end
 

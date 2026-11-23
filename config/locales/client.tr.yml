@@ -1281,12 +1281,12 @@ tr:
     success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
     scheduled_for_deletion: Bu grubun 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
     deletion_after_grace_period: Bu grup kullanılamıyor ve %{days} gün sonra kalıcı olarak silinecek
-    discard_title: "Grubu kaldır"
-    discard_subgroup_title: "Alt grubu kaldır"
-    discard_parent_body: "Bu grup ve alt grupları hemen görünümden kaldırılacak ve Loomio aboneliği iptal edilecektir. Grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
-    discard_body: "Bu alt grup hemen görünümden kaldırılacaktır. Alt grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
-    discard_confirm: "Onaylamak için '%{name}' yazın"
-    discard_success: "Grup kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir"
+    discard_title: Grubu kaldır
+    discard_subgroup_title: Alt grubu kaldır
+    discard_parent_body: Bu grup ve alt grupları hemen görünümden kaldırılacak ve Loomio aboneliği iptal edilecektir. Grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir.
+    discard_body: Bu alt grup hemen görünümden kaldırılacaktır. Alt grup verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir.
+    discard_confirm: Onaylamak için '%{name}' yazın
+    discard_success: Grup kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir
   group_page:
     stats: Grup istatistikleri
     threads: Müzakereler
@@ -1573,6 +1573,13 @@ tr:
     reset_the_link: Bağlantıyı sıfırla
     email_addresses_placeholder: örneğin helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Davetiye formu
+    invite_link: Davet bağlantısı
+    shareable_invitation_message_label: E-posta veya sohbete kopyalanacak mesaj
+    members_used: "%{max} üyeden %{used}"
+    shareable_invitation_message: |-
+      Birlikte tartışıp karar alabilmemiz için %{site_name} üzerinde %{groupName} grubunu kurdum. Bu bağlantıyla katılın:
+      %{link}
+    trial_shareable_link_note: Grubunuza kişi davet etmek için davet bağlantısını kopyalayıp e-posta veya sohbet yoluyla gönderin. Katıldıktan sonra onlara doğrudan Loomio'dan e-posta ve mobil bildirimler gönderebilirsiniz. E-postayla davet göndermek için <a href="%{upgradeUrl}">planınızı yükseltin</a>.
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -3076,10 +3083,10 @@ tr:
   delete_discussion_form:
     discussion_deleted: Tartışma silindi
     body: Bu ileti dizisini silmek istediğinizden emin misiniz?
-    body_with_deletion: "Bu başlık hemen görünümden kaldırılacak ve %{days} gün sonra kalıcı olarak silinecektir."
-    body_reversible: "Bu başlık hemen görünümden kaldırılacaktır. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir."
-    deleted_after_grace_period: "Başlık kaldırıldı. %{days} gün sonra kalıcı olarak silinecektir"
-    removed: "Başlık kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir"
+    body_with_deletion: Bu başlık hemen görünümden kaldırılacak ve %{days} gün sonra kalıcı olarak silinecektir.
+    body_reversible: Bu başlık hemen görünümden kaldırılacaktır. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir.
+    deleted_after_grace_period: Başlık kaldırıldı. %{days} gün sonra kalıcı olarak silinecektir
+    removed: Başlık kaldırıldı. Verileri otomatik olarak kalıcı şekilde silinmez ve bir site yöneticisi tarafından geri yüklenebilir
   move_discussion_form:
     title: Tartışmayı başka bir gruba taşıyın
     body: Hedef grup

@@ -95,8 +95,9 @@ export default
       });
     },
     invite() {
+      const component = this.group.emailInvitationsAllowed() ? 'GroupInvitationForm' : 'GroupShareableLinkForm';
       EventBus.$emit('openModal', {
-        component: 'GroupInvitationForm',
+        component,
         props: {
           group: this.group
         }

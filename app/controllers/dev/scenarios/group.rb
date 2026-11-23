@@ -60,6 +60,15 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_trial_group
+    sign_in patrick
+    group = create_group
+    group.update!(group_privacy: 'secret')
+    group.subscription.update!(plan: 'trial', expires_at: 14.days.from_now, max_members: 10)
+    group.add_member! emilio
+    redirect_to "/g/#{group.key}/members"
+  end
+
   def setup_group_with_vote_weights
     group = create_group
     group.membership_for(emilio).update!(weight: 2, title: 'Treasurer', delegate: true)

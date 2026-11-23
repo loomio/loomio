@@ -16,6 +16,7 @@ module Subscriptions
       "expired" => "canceled"
     }.freeze
     ENTITLEMENT_KEYS = %w[allow_guests allow_subgroups max_members max_orgs max_threads].freeze
+    OPTIONAL_ENTITLEMENT_KEYS = %w[allow_email_invitations].freeze
 
     def self.call(payload:, raw_body:)
       new(payload, raw_body).call
@@ -107,7 +108,8 @@ module Subscriptions
 
     def normalized_entitlements(entitlements)
       raise InvalidUpdate unless entitlements.is_a?(Hash)
-      raise InvalidUpdate unless entitlements.keys.sort == ENTITLEMENT_KEYS.sort
+      extra_keys = entitlements.keys - ENTITLEMENT_KEYS
+      raise InvalidUpdate unless (ENTITLEMENT_KEYS - entitlements.keys).empty? && (extra_keys - OPTIONAL_ENTITLEMENT_KEYS).empty?
 
       entitlements.to_h do |key, value|
         normalized = if key.start_with?("allow_")

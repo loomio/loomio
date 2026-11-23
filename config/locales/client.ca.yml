@@ -1287,12 +1287,12 @@ ca:
     success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
     scheduled_for_deletion: Està programat que aquest grup s'elimini permanentment d'aquí a 2 setmanes.
     deletion_after_grace_period: Aquest grup no està disponible i se suprimirà permanentment al cap de %{days} dies
-    discard_title: "Retira el grup"
-    discard_subgroup_title: "Retira el subgrup"
-    discard_parent_body: "Aquest grup i els seus subgrups s'ocultaran immediatament i la seva subscripció a Loomio es cancel·larà. Les dades del grup no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les."
-    discard_body: "Aquest subgrup s'ocultarà immediatament. Les dades del subgrup no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les."
-    discard_confirm: "Escriu '%{name}' per confirmar"
-    discard_success: "Grup retirat. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les"
+    discard_title: Retira el grup
+    discard_subgroup_title: Retira el subgrup
+    discard_parent_body: Aquest grup i els seus subgrups s'ocultaran immediatament i la seva subscripció a Loomio es cancel·larà. Les dades del grup no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les.
+    discard_body: Aquest subgrup s'ocultarà immediatament. Les dades del subgrup no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les.
+    discard_confirm: Escriu '%{name}' per confirmar
+    discard_success: Grup retirat. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les
   group_page:
     stats: Estadístiques del grup
     threads: Fils
@@ -1587,6 +1587,13 @@ ca:
     reset_the_link: Restableix l'enllaç
     email_addresses_placeholder: p. ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Formulari d'invitació
+    invite_link: Enllaç d'invitació
+    shareable_invitation_message_label: Missatge per copiar en un correu o xat
+    members_used: "%{used} de %{max} membres"
+    shareable_invitation_message: |-
+      He creat %{groupName} a %{site_name} perquè puguem debatre i prendre decisions junts. Uneix-t'hi amb aquest enllaç:
+      %{link}
+    trial_shareable_link_note: Copia l'enllaç d'invitació i envia'l per correu o xat per convidar gent al teu grup. Quan s'hi uneixin, els podràs enviar notificacions per correu i al mòbil directament des de Loomio. <a href="%{upgradeUrl}">Millora el teu pla</a> per enviar invitacions per correu.
   memberships_page:
     members: Membres
     name_label: Nom
@@ -3106,10 +3113,10 @@ ca:
   delete_discussion_form:
     discussion_deleted: Discussió suprimida
     body: Esteu segur que voleu eliminar aquest fil?
-    body_with_deletion: "Aquest fil s'ocultarà immediatament i s'eliminarà permanentment al cap de %{days} dies."
-    body_reversible: "Aquest fil s'ocultarà immediatament. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les."
-    deleted_after_grace_period: "Fil retirat. S'eliminarà permanentment al cap de %{days} dies"
-    removed: "Fil retirat. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les"
+    body_with_deletion: Aquest fil s'ocultarà immediatament i s'eliminarà permanentment al cap de %{days} dies.
+    body_reversible: Aquest fil s'ocultarà immediatament. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les.
+    deleted_after_grace_period: Fil retirat. S'eliminarà permanentment al cap de %{days} dies
+    removed: Fil retirat. Les seves dades no s'eliminen permanentment de manera automàtica i un administrador del lloc pot restaurar-les
   move_discussion_form:
     title: Mou la discussió a un altre grup
     body: Grup de destinació

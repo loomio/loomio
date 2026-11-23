@@ -86,6 +86,19 @@ export default class UserModel extends BaseModel {
     return Records.memberships.find({groupId: group.id, userId: this.id, revokedAt: null})[0];
   }
 
+  // Mirrors User#email_invitations_allowed?: an accepted membership in any
+  // enabled organisation whose subscription allows email invitations.
+  emailInvitationsAllowed() {
+    if (!AppConfig.features?.app?.subscriptions) { return true; }
+    return this.memberships().some(membership => {
+      if (!membership.acceptedAt) { return false; }
+      const group = membership.group();
+      if (!group) { return false; }
+      const root = group.parentOrSelf() || group;
+      return root.isEnabled() && root.emailInvitationsAllowed();
+    });
+  }
+
   firstName() {
     if (this.name) { return head(this.name.split(' ')); }
   }

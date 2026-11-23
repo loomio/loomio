@@ -1306,12 +1306,12 @@ fr:
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
     scheduled_for_deletion: Ce groupe sera supprimé définitivement dans deux semaines.
     deletion_after_grace_period: Ce groupe est inaccessible et sera définitivement supprimé après %{days} jours
-    discard_title: "Retirer le groupe"
-    discard_subgroup_title: "Retirer le sous-groupe"
-    discard_parent_body: "Ce groupe et ses sous-groupes seront immédiatement retirés de l’affichage et son abonnement Loomio sera résilié. Les données du groupe ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site."
-    discard_body: "Ce sous-groupe sera immédiatement retiré de l’affichage. Les données du sous-groupe ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site."
-    discard_confirm: "Saisissez « %{name} » pour confirmer"
-    discard_success: "Groupe retiré. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site"
+    discard_title: Retirer le groupe
+    discard_subgroup_title: Retirer le sous-groupe
+    discard_parent_body: Ce groupe et ses sous-groupes seront immédiatement retirés de l’affichage et son abonnement Loomio sera résilié. Les données du groupe ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site.
+    discard_body: Ce sous-groupe sera immédiatement retiré de l’affichage. Les données du sous-groupe ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site.
+    discard_confirm: Saisissez « %{name} » pour confirmer
+    discard_success: Groupe retiré. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site
   group_page:
     stats: Statistiques du groupe
     threads: Discussions
@@ -1608,6 +1608,13 @@ fr:
     reset_the_link: Réinitialiser le lien
     email_addresses_placeholder: par exemple helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Formulaire d'invitation
+    invite_link: Lien d’invitation
+    shareable_invitation_message_label: Message à copier dans un e-mail ou une discussion
+    members_used: "%{used} membres sur %{max}"
+    shareable_invitation_message: |-
+      J’ai créé %{groupName} sur %{site_name} pour que nous puissions discuter et prendre des décisions ensemble. Rejoignez le groupe avec ce lien :
+      %{link}
+    trial_shareable_link_note: Copiez le lien d’invitation et envoyez-le par e-mail ou dans une discussion pour inviter des personnes dans votre groupe. Une fois ces personnes membres, vous pourrez leur envoyer des notifications par e-mail et sur mobile directement depuis Loomio. <a href="%{upgradeUrl}">Passez au forfait supérieur</a> pour envoyer des invitations par e-mail.
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -3124,10 +3131,10 @@ fr:
   delete_discussion_form:
     discussion_deleted: Discussion supprimée
     body: Êtes-vous sûr de vouloir supprimer cette discussion ?
-    body_with_deletion: "Ce fil sera immédiatement retiré de l’affichage et supprimé définitivement après %{days} jours."
-    body_reversible: "Ce fil sera immédiatement retiré de l’affichage. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site."
-    deleted_after_grace_period: "Fil retiré. Il sera supprimé définitivement après %{days} jours"
-    removed: "Fil retiré. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site"
+    body_with_deletion: Ce fil sera immédiatement retiré de l’affichage et supprimé définitivement après %{days} jours.
+    body_reversible: Ce fil sera immédiatement retiré de l’affichage. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site.
+    deleted_after_grace_period: Fil retiré. Il sera supprimé définitivement après %{days} jours
+    removed: Fil retiré. Ses données ne sont pas supprimées définitivement de manière automatique et peuvent être restaurées par un administrateur du site
   move_discussion_form:
     title: Déplacer la discussion vers un autre groupe
     body: Groupe de destination
