@@ -164,6 +164,19 @@ class EmailInvitationPermissionsTest < ActiveSupport::TestCase
       membership.update_column(:accepted_at, Time.current)
       assert @member.is_paying?
       assert @member.email_invitations_allowed?
+      assert Subscription.email_invitations_allowed?(model: @group, actor: @member)
+    end
+  end
+
+  test 'a user in a paid group can still send email invitations in a trial group' do
+    hosted do
+      paid_group = groups(:alien_group)
+      paid_group.update!(subscription: Subscription.create!(plan: 'pro', state: 'active'))
+      paid_group.add_member!(@admin)
+
+      assert_difference 'User.count', 1 do
+        GroupService.invite(group: @group, actor: @admin, params: { recipient_emails: [ 'paid-member-trial-invite@example.test' ] })
+      end
     end
   end
 

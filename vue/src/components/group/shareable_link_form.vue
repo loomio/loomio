@@ -2,6 +2,7 @@
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import AppConfig from '@/shared/services/app_config';
 import GroupAbility from '@/shared/abilities/group_ability';
+import Session from '@/shared/services/session';
 import SubscriptionService from '@/shared/services/subscription_service';
 import Flash   from '@/shared/services/flash';
 
@@ -64,7 +65,7 @@ export default
     },
 
     showTrialNote() {
-      return !this.group.emailInvitationsAllowed();
+      return !Session.user().emailInvitationsAllowed() && !this.group.emailInvitationsAllowed();
     },
 
     upgradeUrl() {

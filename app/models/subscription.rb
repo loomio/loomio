@@ -46,12 +46,14 @@ class Subscription < ApplicationRecord
   end
 
   # Hosted trials and demos default allow_email_invitations to false so they
-  # invite people with a shareable group link unless explicitly permitted.
+  # invite people with a shareable group link unless explicitly permitted or
+  # the actor belongs to an enabled organisation that allows email invitations.
   def self.email_invitations_allowed?(model:, actor:)
     return true unless AppConfig.app_features[:subscriptions]
+    return true if actor.email_invitations_allowed?
 
     group = model.is_a?(Group) ? model : (model.group if model.respond_to?(:group))
-    group.present? ? Subscription.for(group).allow_email_invitations : actor.email_invitations_allowed?
+    group.present? && Subscription.for(group).allow_email_invitations
   end
 
   def allow_email_invitations=(value)

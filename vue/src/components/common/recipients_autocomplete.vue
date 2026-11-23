@@ -329,8 +329,9 @@ export default {
     canInviteByEmail() {
       if (!this.canAddGuests) { return false; }
       if (!AppConfig.features?.app?.subscriptions) { return true; }
+      if (Session.user().emailInvitationsAllowed()) { return true; }
       const group = this.model.isA('group') ? this.model : this.model.group();
-      return group && !group.isNullGroup ? group.emailInvitationsAllowed() : Session.user().emailInvitationsAllowed();
+      return Boolean(group && !group.isNullGroup && group.emailInvitationsAllowed());
     },
     canNotifyGroup() {
       const model = this.model;

@@ -208,6 +208,18 @@ describe('Trial email invitation flag and shareable link UX', () => {
     group.subscription.allow_email_invitations = true;
     inviteTip.perform();
     expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
+
+    mocks.emit.mockClear();
+    group.subscription.allow_email_invitations = false;
+    const paidGroup = insertGroup({
+      id: 200,
+      key: 'paid-key',
+      name: 'Paid Group',
+      subscription: { plan: 'pro', state: 'active', allow_email_invitations: true }
+    });
+    insertMembership({ id: 2, groupId: paidGroup.id });
+    inviteTip.perform();
+    expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
   });
 
   it('blocks email address chips in RecipientsAutocomplete when email invitations are disabled', async () => {

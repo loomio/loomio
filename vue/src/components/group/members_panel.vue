@@ -95,7 +95,8 @@ export default
       });
     },
     invite() {
-      const component = this.group.emailInvitationsAllowed() ? 'GroupInvitationForm' : 'GroupShareableLinkForm';
+      const allowed = Session.user().emailInvitationsAllowed() || this.group.emailInvitationsAllowed();
+      const component = allowed ? 'GroupInvitationForm' : 'GroupShareableLinkForm';
       EventBus.$emit('openModal', {
         component,
         props: {
