@@ -48,6 +48,24 @@ class Api::V1::TrialsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "turnstile not required: signed in user creates group without token" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(name: "Signed In", email: "signed-in-trial@example.com", email_verified: true)
+    sign_in(user)
+
+    assert_no_difference 'User.count' do
+      assert_difference 'Group.count', 1 do
+        post :create, params: {
+          group_name: "Signed In Group",
+          group_description: "Make decisions"
+        }
+      end
+    end
+    assert_response :success
+    group = user.adminable_groups.find_by!(name: "Signed In Group")
+    assert_equal "/#{group.handle}", JSON.parse(response.body)['group_path']
+  end
+
   test "invalid email returns error" do
     post :create, params: {
       user_email: "invalid_email",

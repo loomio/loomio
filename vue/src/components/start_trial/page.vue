@@ -20,13 +20,13 @@ const legalAccepted = ref(false);
 const loading = ref(false);
 const trialStarted = ref(false);
 const errors = ref({});
+const isSignedIn = Session.isSignedIn();
 const turnstileSiteKey = AppConfig.turnstileSiteKey;
 const turnstileToken = ref('');
-const submitBlockedByCaptcha = computed(() => Boolean(turnstileSiteKey) && !turnstileToken.value);
+const submitBlockedByCaptcha = computed(() => !isSignedIn && Boolean(turnstileSiteKey) && !turnstileToken.value);
 
 const form = useTemplateRef('form')
 
-const isSignedIn = Session.isSignedIn();
 const trialDays = AppConfig.features.app.trial_days;
 const termsUrl = AppConfig.theme.terms_url;
 const privacyUrl = AppConfig.theme.privacy_url;
@@ -37,7 +37,7 @@ const validate = (field) => {
 
 
 const submit = () => {
-  if (submitBlockedByCaptcha.value) { return; }
+  if (loading.value || submitBlockedByCaptcha.value) { return; }
   errors.value = {};
   form.value.resetValidation();
   group.beforeSaves.forEach(f => f());
@@ -53,17 +53,18 @@ const submit = () => {
     group_how_did_you_hear_about_loomio: howDidYouHearAboutLoomio.value,
     turnstile_token: turnstileToken.value,
   }).then((data) => {
-    trialStarted.value= true
     if (isSignedIn) {
       Flash.success('discussions_panel.welcome_to_your_new_group');
-      router.push(data.group_path)
+      return router.push(data.group_path);
+    } else {
+      trialStarted.value = true;
+      loading.value = false;
     }
   }).catch((data) => {
     errors.value = data.errors || {};
     form.value.validate();
     Flash.error(data.errors ? 'common.check_for_errors_and_try_again' : 'common.please_try_again');
-  }).finally(() => {
-    loading.value = false
+    loading.value = false;
   });
 }
 </script>
@@ -103,6 +104,6 @@ v-main
           turnstile-widget(v-if="!isSignedIn" v-model='turnstileToken')
         v-card-actions
           v-spacer
-          v-btn.start-trial-form__submit(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="!isSignedIn && submitBlockedByCaptcha")
+          v-btn.start-trial-form__submit(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="submitBlockedByCaptcha")
             span(v-t="'templates.start_free_trial'")
 </template>

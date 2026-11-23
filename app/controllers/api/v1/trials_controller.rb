@@ -1,6 +1,6 @@
 class Api::V1::TrialsController < Api::V1::RestfulController
   def create
-    unless TurnstileService.verify(params[:turnstile_token], remote_ip: request.remote_ip)
+    unless current_user.is_logged_in? || TurnstileService.verify(params[:turnstile_token], remote_ip: request.remote_ip)
       render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
       return
     end
