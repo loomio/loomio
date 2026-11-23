@@ -94,4 +94,15 @@ describe('trial signup request failures', () => {
     expect(mocks.post).toHaveBeenLastCalledWith('trials', expect.objectContaining({user_email: 'alex-new@example.com'}));
     expect(wrapper.find('.trial-started').exists()).toBe(true);
   });
+
+  it('forwards the trial creator to the email code form with a URL-encoded email address', async () => {
+    mocks.post.mockResolvedValueOnce({group_path: '/g/council'});
+    await mountForm();
+    await wrapper.find('.start-trial-form__email input').setValue('rguthrie+loomio@gmail.com');
+    await submit();
+
+    expect(wrapper.find('.trial-started__sign-in').attributes('href')).toBe(
+      '/dashboard?user_email=rguthrie%2Bloomio%40gmail.com&auth_form=emailCode'
+    );
+  });
 });

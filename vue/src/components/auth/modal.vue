@@ -20,10 +20,12 @@ export default {
   },
 
   data() {
+    const email = this.$route.query['user_email'];
+    const authForm = this.$route.query['auth_form'] === 'emailCode' ? 'emailCode' : null;
     return {
       siteName: AppConfig.theme.site_name,
       titleKey: 'auth_form.sign_in_to_loomio',
-      user: Records.users.build({createAccount: false, email: this.$route.query['user_email']}),
+      user: Records.users.build({createAccount: false, email, authForm}),
       isDisabled: false,
       pendingProviderIdentity: Session.providerIdentity(),
       nameManaged: Boolean(AppConfig.pendingIdentity?.name_managed)

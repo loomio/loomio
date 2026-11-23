@@ -30,6 +30,13 @@ const form = useTemplateRef('form')
 const trialDays = AppConfig.features.app.trial_days;
 const termsUrl = AppConfig.theme.terms_url;
 const privacyUrl = AppConfig.theme.privacy_url;
+const signInHref = computed(() => {
+  const params = new URLSearchParams({
+    user_email: userEmail.value || '',
+    auth_form: 'emailCode'
+  });
+  return `/dashboard?${params.toString()}`;
+});
 
 const validate = (field) => {
   return [ () => errors.value[field] === undefined || errors.value[field][0] ]
@@ -79,7 +86,7 @@ v-main
           p.text-body-large(v-t="'start_trial.please_sign_in_to_continue'")
         v-card-actions
           v-spacer
-          v-btn.trial-started__sign-in(color="primary" :href="'/dashboard?user_email='+userEmail" variant="elevated")
+          v-btn.trial-started__sign-in(color="primary" :href="signInHref" variant="elevated")
             span(v-t="'auth_form.sign_in'")
           v-spacer
       v-card.start-trial-form(v-else :title="$t('start_trial.title')")
