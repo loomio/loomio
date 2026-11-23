@@ -1280,12 +1280,12 @@ ja:
     success: このグループはアーカイブされており、2 週間以内に完全に削除される予定です。
     scheduled_for_deletion: このグループは2週間後に完全に削除される予定です
     deletion_after_grace_period: このグループは利用できず、%{days}日後に完全に削除されます
-    discard_title: "グループを非表示にする"
-    discard_subgroup_title: "サブグループを非表示にする"
-    discard_parent_body: "このグループとサブグループはすぐに表示されなくなり、Loomio のサブスクリプションもキャンセルされます。グループのデータは自動的には完全削除されず、サイト管理者が復元できます。"
-    discard_body: "このサブグループはすぐに表示されなくなります。サブグループのデータは自動的には完全削除されず、サイト管理者が復元できます。"
-    discard_confirm: "確認のため「%{name}」と入力してください"
-    discard_success: "グループを非表示にしました。データは自動的には完全削除されず、サイト管理者が復元できます"
+    discard_title: グループを非表示にする
+    discard_subgroup_title: サブグループを非表示にする
+    discard_parent_body: このグループとサブグループはすぐに表示されなくなり、Loomio のサブスクリプションもキャンセルされます。グループのデータは自動的には完全削除されず、サイト管理者が復元できます。
+    discard_body: このサブグループはすぐに表示されなくなります。サブグループのデータは自動的には完全削除されず、サイト管理者が復元できます。
+    discard_confirm: 確認のため「%{name}」と入力してください
+    discard_success: グループを非表示にしました。データは自動的には完全削除されず、サイト管理者が復元できます
   group_page:
     stats: グループ統計
     threads: ディスカッション
@@ -1572,6 +1572,13 @@ ja:
     reset_the_link: リンクをリセットする
     email_addresses_placeholder: '例: helperbot{''@''}loomio.org、friendlybot{''@''}loomio.org'
     aria_label: 招待フォーム
+    invite_link: 招待リンク
+    shareable_invitation_message_label: メールやチャットにコピーするメッセージ
+    members_used: メンバー数：%{used} / %{max}
+    shareable_invitation_message: |-
+      一緒に話し合い、決定できるよう、%{site_name}に%{groupName}を作りました。このリンクから参加してください：
+      %{link}
+    trial_shareable_link_note: 招待リンクをコピーし、メールやチャットで送ってグループに招待できます。参加後は、Loomioから直接メールやモバイル通知を送れます。メールで招待を送るには、<a href="%{upgradeUrl}">プランをアップグレード</a>してください。
   memberships_page:
     members: メンバー
     name_label: 氏名
@@ -3078,10 +3085,10 @@ ja:
   delete_discussion_form:
     discussion_deleted: ディスカッションを削除しました
     body: このスレッドを削除してもよろしいですか？
-    body_with_deletion: "このスレッドはすぐに表示されなくなり、%{days}日後に完全に削除されます。"
-    body_reversible: "このスレッドはすぐに表示されなくなります。データは自動的には完全削除されず、サイト管理者が復元できます。"
-    deleted_after_grace_period: "スレッドを非表示にしました。%{days}日後に完全に削除されます"
-    removed: "スレッドを非表示にしました。データは自動的には完全削除されず、サイト管理者が復元できます"
+    body_with_deletion: このスレッドはすぐに表示されなくなり、%{days}日後に完全に削除されます。
+    body_reversible: このスレッドはすぐに表示されなくなります。データは自動的には完全削除されず、サイト管理者が復元できます。
+    deleted_after_grace_period: スレッドを非表示にしました。%{days}日後に完全に削除されます
+    removed: スレッドを非表示にしました。データは自動的には完全削除されず、サイト管理者が復元できます
   move_discussion_form:
     title: ディスカッションを別のグループに移動する
     body: 宛先グループ

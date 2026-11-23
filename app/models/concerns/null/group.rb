@@ -2,8 +2,8 @@ module Null::Group
   include Null::Object
 
   Subscription = Struct.new(
-    :max_members, :max_threads, :allow_subgroups, :plan, :state,
-    :is_active?, :renews_at, :expires_at, :members_count,
+    :max_members, :max_threads, :allow_subgroups, :allow_guests, :allow_email_invitations,
+    :plan, :state, :is_active?, :renews_at, :expires_at, :members_count,
     keyword_init: true
   )
 
@@ -217,15 +217,17 @@ module Null::Group
 
   def subscription
     Subscription.new(
-      max_members:     nil,
-      max_threads:     nil,
-      allow_subgroups: true,
-      plan:            nil,
-      state:           nil,
-      is_active?:      true,
-      renews_at:       nil,
-      expires_at:      nil,
-      members_count:   0
+      max_members:             nil,
+      max_threads:             nil,
+      allow_subgroups:         true,
+      allow_guests:            true,
+      allow_email_invitations: true,
+      plan:                    nil,
+      state:                   nil,
+      is_active?:              true,
+      renews_at:               nil,
+      expires_at:              nil,
+      members_count:           0
     )
   end
 end

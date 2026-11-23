@@ -70,7 +70,9 @@ export default new class TipService {
         show() { return !!group },
         disabled() { return false },
         perform() {
-          EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
+          const allowed = user.emailInvitationsAllowed() || group.emailInvitationsAllowed();
+          const component = allowed ? 'GroupInvitationForm' : 'GroupShareableLinkForm';
+          EventBus.$emit('openModal', { component, props: { group } });
         }
       },
       {

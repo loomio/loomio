@@ -79,7 +79,7 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
     group_data = json['groups'].find { |group| group['id'] == @public_group.id }
 
     assert_not_nil group_data
-    assert_equal %w[allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
+    assert_equal %w[allow_email_invitations allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
   end
 
   test "show returns the complete subscription field set of a public group to a logged in nonmember" do
@@ -89,7 +89,21 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
 
     assert_response :success
     group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @public_group.id }
-    assert_equal %w[allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
+    assert_equal %w[allow_email_invitations allow_guests allow_subgroups expires_at max_members max_threads members_count plan state], group_data['subscription'].keys.sort
+  end
+
+  test "reset_token rotates the shareable link token on a trial group" do
+    @group.update!(subscription: Subscription.create!(plan: 'trial', state: 'active'))
+    old_token = @group.token
+    sign_in users(:admin)
+
+    post :reset_token, params: { id: @group.id }, format: :json
+
+    assert_response :success
+    new_token = @group.reload.token
+    assert_not_equal old_token, new_token
+    group_data = JSON.parse(response.body)['groups'].find { |group| group['id'] == @group.id }
+    assert_equal new_token, group_data['token']
   end
 
   test "show returns subscription details to an organization member" do

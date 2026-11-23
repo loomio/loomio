@@ -32,6 +32,6 @@ class Views::Admin::Subscriptions::Show < Views::Admin::Layout
   private
 
   def subscription_keys
-    %i[id plan state expires_at renews_at renewed_at chargify_subscription_id payment_method owner_id max_threads max_members max_orgs allow_guests allow_subgroups info created_at updated_at]
+    %i[id plan state expires_at renews_at renewed_at chargify_subscription_id payment_method owner_id max_threads max_members max_orgs allow_guests allow_subgroups allow_email_invitations info created_at updated_at]
   end
 end

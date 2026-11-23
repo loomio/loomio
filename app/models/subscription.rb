@@ -10,6 +10,7 @@ class Subscription < ApplicationRecord
   # Past due, on hold and canceled subscriptions make their groups read-only.
   STATES = %w[active pending past_due on_hold canceled].freeze
   ACTIVE_STATES = %w[active pending].freeze
+  NON_PAID_PLANS = %w[trial demo].freeze
 
   validates :state, inclusion: { in: STATES }
 
@@ -21,6 +22,7 @@ class Subscription < ApplicationRecord
   attr_accessor :chargify_product_id
 
   has_paper_trail
+  before_save :sync_allow_email_invitations_with_plan
   after_update_commit :enqueue_chargify_cancellation, if: :saved_change_to_state?
 
   # The organisation's subscription, or the unsaved free tier when it has none.
@@ -43,6 +45,30 @@ class Subscription < ApplicationRecord
     ])
   end
 
+  # Hosted trials and demos default allow_email_invitations to false so they
+  # invite people with a shareable group link unless explicitly permitted or
+  # the actor belongs to an enabled organisation that allows email invitations.
+  def self.email_invitations_allowed?(model:, actor:)
+    return true unless AppConfig.app_features[:subscriptions]
+    return true if actor.email_invitations_allowed?
+
+    group = model.is_a?(Group) ? model : (model.group if model.respond_to?(:group))
+    group.present? && Subscription.for(group).allow_email_invitations
+  end
+
+  def allow_email_invitations=(value)
+    @allow_email_invitations_explicit = true
+    super
+  end
+
+  def trial?
+    plan == 'trial'
+  end
+
+  def email_invitations_allowed?
+    !AppConfig.app_features[:subscriptions] || allow_email_invitations
+  end
+
   def is_active?
     ACTIVE_STATES.include?(state) && (expires_at.nil? || expires_at > Time.current)
   end
@@ -52,6 +78,22 @@ class Subscription < ApplicationRecord
   end
 
   private
+
+  # Entering a trial or demo disables email invitations unless explicitly set;
+  # leaving one re-enables them unless explicitly set. Admins can still toggle
+  # allow_email_invitations directly on any subscription.
+  def sync_allow_email_invitations_with_plan
+    return if @allow_email_invitations_explicit
+    return unless will_save_change_to_plan?
+
+    if NON_PAID_PLANS.include?(plan)
+      self.allow_email_invitations = false
+    elsif NON_PAID_PLANS.include?(plan_was)
+      self.allow_email_invitations = true
+    end
+  ensure
+    @allow_email_invitations_explicit = false
+  end
 
   def enqueue_chargify_cancellation
     return unless state == "canceled" && payment_method == "chargify" && chargify_subscription_id.present?

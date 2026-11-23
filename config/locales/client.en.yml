@@ -1755,6 +1755,13 @@ en:
     email_addresses_placeholder: e.g. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     secret_group_url_explanation: This is the address for your group. Only invited members will be able to see the group.
     shareable_invitation_explanation: Anyone with this link can join your group immediately.
+    invite_link: Invite link
+    shareable_invitation_message_label: Message to copy into an email or chat
+    members_used: "%{used} of %{max} members"
+    shareable_invitation_message: |-
+      I've set up %{groupName} on %{site_name} so we can discuss and make decisions together. Join using this link:
+      %{link}
+    trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. Once they join, you can send them email and mobile notifications from Loomio directly. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
     shareable_link_to_join_group: Shareable link to join group
     shareable_link_reset: Shareable link reset. The previous link will no longer work.
     reset_the_link: Reset the link

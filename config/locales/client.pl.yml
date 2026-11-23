@@ -1287,12 +1287,12 @@ pl:
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
     scheduled_for_deletion: Ta grupa zostanie trwale usunięta za 2 tygodnie
     deletion_after_grace_period: Ta grupa jest niedostępna i zostanie trwale usunięta po %{days} dniach
-    discard_title: "Usuń grupę z widoku"
-    discard_subgroup_title: "Usuń podgrupę z widoku"
-    discard_parent_body: "Ta grupa i jej podgrupy zostaną natychmiast ukryte, a jej subskrypcja Loomio zostanie anulowana. Dane grupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
-    discard_body: "Ta podgrupa zostanie natychmiast ukryta. Dane podgrupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
-    discard_confirm: "Wpisz „%{name}”, aby potwierdzić"
-    discard_success: "Grupa została ukryta. Jej dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić"
+    discard_title: Usuń grupę z widoku
+    discard_subgroup_title: Usuń podgrupę z widoku
+    discard_parent_body: Ta grupa i jej podgrupy zostaną natychmiast ukryte, a jej subskrypcja Loomio zostanie anulowana. Dane grupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić.
+    discard_body: Ta podgrupa zostanie natychmiast ukryta. Dane podgrupy nie są automatycznie trwale usuwane i administrator strony może je przywrócić.
+    discard_confirm: Wpisz „%{name}”, aby potwierdzić
+    discard_success: Grupa została ukryta. Jej dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić
   group_page:
     stats: Statystyki grupy
     threads: Wątki
@@ -1587,6 +1587,13 @@ pl:
     reset_the_link: Zresetuj łącze
     email_addresses_placeholder: np. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Formularz zaproszenia
+    invite_link: Link zaproszenia
+    shareable_invitation_message_label: Wiadomość do skopiowania do e-maila lub czatu
+    members_used: "%{used} z %{max} członków"
+    shareable_invitation_message: |-
+      Grupa %{groupName} na %{site_name} jest już gotowa, by wspólnie rozmawiać i podejmować decyzje. Dołącz przez ten link:
+      %{link}
+    trial_shareable_link_note: Skopiuj link zaproszenia i wyślij go e-mailem lub na czacie, by zaprosić ludzi do swojej grupy. Gdy dołączą, możesz wysyłać im powiadomienia e-mail i na telefon bezpośrednio z Loomio. <a href="%{upgradeUrl}">Przejdź na wyższy plan</a>, by wysyłać zaproszenia e-mailem.
   memberships_page:
     members: Osoby
     name_label: Nazwa
@@ -3106,10 +3113,10 @@ pl:
   delete_discussion_form:
     discussion_deleted: Dyskusja usunięta
     body: Czy na pewno chcesz usunąć ten wątek?
-    body_with_deletion: "Ten wątek zostanie natychmiast ukryty i trwale usunięty po %{days} dniach."
-    body_reversible: "Ten wątek zostanie natychmiast ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić."
-    deleted_after_grace_period: "Wątek został ukryty. Zostanie trwale usunięty po %{days} dniach"
-    removed: "Wątek został ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić"
+    body_with_deletion: Ten wątek zostanie natychmiast ukryty i trwale usunięty po %{days} dniach.
+    body_reversible: Ten wątek zostanie natychmiast ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić.
+    deleted_after_grace_period: Wątek został ukryty. Zostanie trwale usunięty po %{days} dniach
+    removed: Wątek został ukryty. Jego dane nie są automatycznie trwale usuwane i administrator strony może je przywrócić
   move_discussion_form:
     title: Przenieś dyskusję do innej grupy
     body: Grupa docelowa

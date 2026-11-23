@@ -1289,12 +1289,12 @@ sv:
     success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
     scheduled_for_deletion: Den här gruppen är planerad att raderas permanent om 2 veckor.
     deletion_after_grace_period: Den här gruppen är inte tillgänglig och kommer att raderas permanent efter %{days} dagar
-    discard_title: "Ta bort grupp"
-    discard_subgroup_title: "Ta bort undergrupp"
-    discard_parent_body: "Den här gruppen och dess undergrupper döljs direkt och dess Loomio-prenumeration avslutas. Gruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
-    discard_body: "Den här undergruppen döljs direkt. Undergruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
-    discard_confirm: "Skriv '%{name}' för att bekräfta"
-    discard_success: "Grupp borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör"
+    discard_title: Ta bort grupp
+    discard_subgroup_title: Ta bort undergrupp
+    discard_parent_body: Den här gruppen och dess undergrupper döljs direkt och dess Loomio-prenumeration avslutas. Gruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör.
+    discard_body: Den här undergruppen döljs direkt. Undergruppens data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör.
+    discard_confirm: Skriv '%{name}' för att bekräfta
+    discard_success: Grupp borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör
   group_page:
     stats: Gruppstatistik
     threads: Trådar
@@ -1581,6 +1581,13 @@ sv:
     reset_the_link: Återställ länken
     email_addresses_placeholder: t.ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Inbjudningsformulär
+    invite_link: Inbjudningslänk
+    shareable_invitation_message_label: Meddelande att kopiera till mejl eller chatt
+    members_used: "%{used} av %{max} medlemmar"
+    shareable_invitation_message: |-
+      Jag har skapat %{groupName} på %{site_name} så att vi kan diskutera och fatta beslut tillsammans. Gå med via länken:
+      %{link}
+    trial_shareable_link_note: Kopiera inbjudningslänken och skicka den via mejl eller chatt för att bjuda in till din grupp. När de har gått med kan du skicka mejl och mobilnotiser till dem direkt från Loomio. <a href="%{upgradeUrl}">Uppgradera ditt abonnemang</a> för att skicka inbjudningar via mejl.
   memberships_page:
     members: Medlemmar
     name_label: Namn
@@ -3087,10 +3094,10 @@ sv:
   delete_discussion_form:
     discussion_deleted: Diskussionen raderad
     body: Är du säker på att du vill ta bort den här tråden?
-    body_with_deletion: "Den här tråden döljs direkt och raderas permanent efter %{days} dagar."
-    body_reversible: "Den här tråden döljs direkt. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör."
-    deleted_after_grace_period: "Tråd borttagen. Den raderas permanent efter %{days} dagar"
-    removed: "Tråd borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör"
+    body_with_deletion: Den här tråden döljs direkt och raderas permanent efter %{days} dagar.
+    body_reversible: Den här tråden döljs direkt. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör.
+    deleted_after_grace_period: Tråd borttagen. Den raderas permanent efter %{days} dagar
+    removed: Tråd borttagen. Dess data raderas inte permanent automatiskt och kan återställas av en webbplatsadministratör
   move_discussion_form:
     title: Flytta diskussionen till en annan grupp
     body: Destinationsgrupp

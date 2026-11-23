@@ -1306,12 +1306,12 @@ pt_BR:
     success: Este grupo foi arquivado e está agendado para exclusão permanente em 2 semanas.
     scheduled_for_deletion: Este grupo está programado para ser excluído permanentemente em 2 semanas.
     deletion_after_grace_period: Este grupo está indisponível e será excluído permanentemente após %{days} dias
-    discard_title: "Remover grupo"
-    discard_subgroup_title: "Remover subgrupo"
-    discard_parent_body: "Este grupo e seus subgrupos serão removidos da visualização imediatamente, e sua assinatura do Loomio será cancelada. Os dados do grupo não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site."
-    discard_body: "Este subgrupo será removido da visualização imediatamente. Os dados do subgrupo não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site."
-    discard_confirm: "Digite '%{name}' para confirmar"
-    discard_success: "Grupo removido. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site"
+    discard_title: Remover grupo
+    discard_subgroup_title: Remover subgrupo
+    discard_parent_body: Este grupo e seus subgrupos serão removidos da visualização imediatamente, e sua assinatura do Loomio será cancelada. Os dados do grupo não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site.
+    discard_body: Este subgrupo será removido da visualização imediatamente. Os dados do subgrupo não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site.
+    discard_confirm: Digite '%{name}' para confirmar
+    discard_success: Grupo removido. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site
   group_page:
     stats: Estatísticas do grupo
     threads: Conversas
@@ -1608,6 +1608,13 @@ pt_BR:
     reset_the_link: Redefinir o link
     email_addresses_placeholder: por exemplo helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Formulário de convite
+    invite_link: Link de convite
+    shareable_invitation_message_label: Mensagem para copiar em um e-mail ou chat
+    members_used: "%{used} de %{max} membros"
+    shareable_invitation_message: |-
+      Criei o grupo %{groupName} no %{site_name} para conversarmos e tomarmos decisões juntos. Entre por este link:
+      %{link}
+    trial_shareable_link_note: Copie o link de convite e envie por e-mail ou chat para convidar pessoas para seu grupo. Depois que entrarem, você poderá enviar notificações por e-mail e celular diretamente pelo Loomio. <a href="%{upgradeUrl}">Mude de plano</a> para enviar convites por e-mail.
   memberships_page:
     members: Membros
     name_label: Nome
@@ -3124,10 +3131,10 @@ pt_BR:
   delete_discussion_form:
     discussion_deleted: Discussão excluída
     body: Tem certeza de que deseja excluir esta conversa?
-    body_with_deletion: "Este tópico será removido da visualização imediatamente e excluído permanentemente após %{days} dias."
-    body_reversible: "Este tópico será removido da visualização imediatamente. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site."
-    deleted_after_grace_period: "Tópico removido. Ele será excluído permanentemente após %{days} dias"
-    removed: "Tópico removido. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site"
+    body_with_deletion: Este tópico será removido da visualização imediatamente e excluído permanentemente após %{days} dias.
+    body_reversible: Este tópico será removido da visualização imediatamente. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site.
+    deleted_after_grace_period: Tópico removido. Ele será excluído permanentemente após %{days} dias
+    removed: Tópico removido. Seus dados não são excluídos permanentemente de forma automática e podem ser restaurados por um administrador do site
   move_discussion_form:
     title: Mova a discussão para outro grupo.
     body: Grupo de destino

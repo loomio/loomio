@@ -1291,12 +1291,12 @@ da:
     success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
     scheduled_for_deletion: Denne gruppe er planlagt til permanent sletning om 2 uger
     deletion_after_grace_period: Denne gruppe er ikke tilgængelig og vil blive slettet permanent efter %{days} dage
-    discard_title: "Fjern gruppe"
-    discard_subgroup_title: "Fjern undergruppe"
-    discard_parent_body: "Denne gruppe og dens undergrupper skjules med det samme, og dens Loomio-abonnement opsiges. Gruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
-    discard_body: "Denne undergruppe skjules med det samme. Undergruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
-    discard_confirm: "Skriv '%{name}' for at bekræfte"
-    discard_success: "Gruppe fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator"
+    discard_title: Fjern gruppe
+    discard_subgroup_title: Fjern undergruppe
+    discard_parent_body: Denne gruppe og dens undergrupper skjules med det samme, og dens Loomio-abonnement opsiges. Gruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator.
+    discard_body: Denne undergruppe skjules med det samme. Undergruppens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator.
+    discard_confirm: Skriv '%{name}' for at bekræfte
+    discard_success: Gruppe fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator
   group_page:
     stats: Gruppestatistik
     threads: Debatter
@@ -1583,6 +1583,13 @@ da:
     reset_the_link: Nulstil linket
     email_addresses_placeholder: f.eks. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Invitationsformular
+    invite_link: Invitationslink
+    shareable_invitation_message_label: Besked til at kopiere ind i en mail eller chat
+    members_used: "%{used} af %{max} medlemmer"
+    shareable_invitation_message: |-
+      Jeg har oprettet %{groupName} på %{site_name}, så vi kan diskutere og træffe beslutninger sammen. Deltag via dette link:
+      %{link}
+    trial_shareable_link_note: Kopier invitationslinket, og send det via mail eller chat for at invitere folk til din gruppe. Når de er med, kan du sende dem notifikationer via mail og mobil direkte fra Loomio. <a href="%{upgradeUrl}">Opgrader dit abonnement</a> for at sende invitationer via mail.
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -3091,10 +3098,10 @@ da:
   delete_discussion_form:
     discussion_deleted: Diskussion slettet
     body: Er du sikker på, at du vil slette denne tråd?
-    body_with_deletion: "Denne tråd skjules med det samme og slettes permanent efter %{days} dage."
-    body_reversible: "Denne tråd skjules med det samme. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator."
-    deleted_after_grace_period: "Tråd fjernet. Den slettes permanent efter %{days} dage"
-    removed: "Tråd fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator"
+    body_with_deletion: Denne tråd skjules med det samme og slettes permanent efter %{days} dage.
+    body_reversible: Denne tråd skjules med det samme. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator.
+    deleted_after_grace_period: Tråd fjernet. Den slettes permanent efter %{days} dage
+    removed: Tråd fjernet. Dens data slettes ikke automatisk permanent og kan gendannes af en sideadministrator
   move_discussion_form:
     title: Flyt diskussionen til en anden gruppe
     body: Destinationsgruppe

@@ -1,5 +1,6 @@
 <script lang="js">
 import Records from '@/shared/services/records';
+import AppConfig from '@/shared/services/app_config';
 import {map, debounce, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import DiscussionAbility from '@/shared/abilities/discussion_ability';
 import GroupAbility from '@/shared/abilities/group_ability';
@@ -261,7 +262,7 @@ export default {
     },
 
     updateSuggestions() {
-      if (this.query && this.canAddGuests) {
+      if (this.query && this.canInviteByEmail) {
         // seems like a problem with vuteify when query begins with a space
         if (this.query.trimStart().length < this.query.length){
           this.query = this.query.trimStart();
@@ -324,6 +325,13 @@ export default {
       if (model.isA('poll')) { return PollAbility.canAddGuests(model); }
       if (model.isA('topic')) { return TopicAbility.canAddGuests(model); }
       return DiscussionAbility.canAddGuests(model);
+    },
+    canInviteByEmail() {
+      if (!this.canAddGuests) { return false; }
+      if (!AppConfig.features?.app?.subscriptions) { return true; }
+      if (Session.user().emailInvitationsAllowed()) { return true; }
+      const group = this.model.isA('group') ? this.model : this.model.group();
+      return Boolean(group && !group.isNullGroup && group.emailInvitationsAllowed());
     },
     canNotifyGroup() {
       const model = this.model;
@@ -400,8 +408,8 @@ div.recipients-autocomplete
         v-list-item-title
           span(v-if="query") {{ $t('common.no_results_found') }}
           span(v-else)
-            span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
-            span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
+            span(v-if="canInviteByEmail") {{ $t('announcement.search_by_name_or_email') }}
+            span(v-else) {{ $t('announcement.search_by_name') }}
         v-list-item-subtitle
           span(v-if="!canAddGuests && !canNotifyGroup"
                v-t="'announcement.only_admins_can_announce_or_invite'")

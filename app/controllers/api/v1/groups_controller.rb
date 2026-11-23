@@ -13,7 +13,7 @@ class Api::V1::GroupsController < Api::V1::RestfulController
 
   def reset_token
     self.resource = load_and_authorize(:group, :invite_people)
-    resource.update(token: resource.class.generate_unique_secure_token)
+    resource.update_columns(token: resource.class.generate_unique_secure_token, updated_at: Time.current)
     respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
   end
 

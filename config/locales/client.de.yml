@@ -1293,12 +1293,12 @@ de:
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
     scheduled_for_deletion: Diese Gruppe wird in 2 Wochen endgültig gelöscht.
     deletion_after_grace_period: Diese Gruppe ist nicht verfügbar und wird nach %{days} Tagen endgültig gelöscht
-    discard_title: "Gruppe entfernen"
-    discard_subgroup_title: "Untergruppe entfernen"
-    discard_parent_body: "Diese Gruppe und ihre Untergruppen werden sofort ausgeblendet und das Loomio-Abonnement wird gekündigt. Gruppendaten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
-    discard_body: "Diese Untergruppe wird sofort ausgeblendet. Daten der Untergruppe werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
-    discard_confirm: "Gib '%{name}' zur Bestätigung ein"
-    discard_success: "Gruppe entfernt. Ihre Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden"
+    discard_title: Gruppe entfernen
+    discard_subgroup_title: Untergruppe entfernen
+    discard_parent_body: Diese Gruppe und ihre Untergruppen werden sofort ausgeblendet und das Loomio-Abonnement wird gekündigt. Gruppendaten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden.
+    discard_body: Diese Untergruppe wird sofort ausgeblendet. Daten der Untergruppe werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden.
+    discard_confirm: Gib '%{name}' zur Bestätigung ein
+    discard_success: Gruppe entfernt. Ihre Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden
   group_page:
     stats: Gruppen-Statistik
     threads: Diskussionen
@@ -1595,6 +1595,13 @@ de:
     reset_the_link: Link zurücksetzen
     email_addresses_placeholder: zB helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
     aria_label: Einladungsformular
+    invite_link: Einladungslink
+    shareable_invitation_message_label: Nachricht zum Kopieren in eine E-Mail oder einen Chat
+    members_used: "%{used} von %{max} Mitgliedern"
+    shareable_invitation_message: |-
+      Ich habe %{groupName} auf %{site_name} eingerichtet, damit wir gemeinsam diskutieren und Entscheidungen treffen können. Tritt über diesen Link bei:
+      %{link}
+    trial_shareable_link_note: Kopiere den Einladungslink und sende ihn per E-Mail oder Chat, um Leute in deine Gruppe einzuladen. Sobald sie beigetreten sind, kannst du ihnen direkt aus Loomio Benachrichtigungen per E-Mail und aufs Handy senden. <a href="%{upgradeUrl}">Wechsle zu einem höheren Tarif</a>, um Einladungen per E-Mail zu senden.
   memberships_page:
     members: Mitglieder
     name_label: Name
@@ -3114,10 +3121,10 @@ de:
   delete_discussion_form:
     discussion_deleted: Diskussion gelöscht
     body: Möchtest du diesen Thread wirklich löschen?
-    body_with_deletion: "Dieser Thread wird sofort ausgeblendet und nach %{days} Tagen endgültig gelöscht."
-    body_reversible: "Dieser Thread wird sofort ausgeblendet. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden."
-    deleted_after_grace_period: "Thread entfernt. Er wird nach %{days} Tagen endgültig gelöscht"
-    removed: "Thread entfernt. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden"
+    body_with_deletion: Dieser Thread wird sofort ausgeblendet und nach %{days} Tagen endgültig gelöscht.
+    body_reversible: Dieser Thread wird sofort ausgeblendet. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden.
+    deleted_after_grace_period: Thread entfernt. Er wird nach %{days} Tagen endgültig gelöscht
+    removed: Thread entfernt. Seine Daten werden nicht automatisch endgültig gelöscht und können von einer Website-Administration wiederhergestellt werden
   move_discussion_form:
     title: Diskussion in eine andere Gruppe verlegen
     body: Zielgruppe

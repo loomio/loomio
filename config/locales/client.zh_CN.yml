@@ -1328,12 +1328,12 @@ zh_CN:
     success: 该群组已被存档，并将于两周后永久删除。
     scheduled_for_deletion: 该群组计划在两周后永久删除。
     deletion_after_grace_period: 该群组现已无法访问，并将在 %{days} 天后被永久删除
-    discard_title: "移除群组"
-    discard_subgroup_title: "移除子群组"
-    discard_parent_body: "此群组及其子群组将立即从视图中隐藏，其 Loomio 订阅也会取消。群组数据不会自动永久删除，可由站点管理员恢复。"
-    discard_body: "此子群组将立即从视图中隐藏。子群组数据不会自动永久删除，可由站点管理员恢复。"
-    discard_confirm: "输入“%{name}”以确认"
-    discard_success: "群组已移除。其数据不会自动永久删除，可由站点管理员恢复"
+    discard_title: 移除群组
+    discard_subgroup_title: 移除子群组
+    discard_parent_body: 此群组及其子群组将立即从视图中隐藏，其 Loomio 订阅也会取消。群组数据不会自动永久删除，可由站点管理员恢复。
+    discard_body: 此子群组将立即从视图中隐藏。子群组数据不会自动永久删除，可由站点管理员恢复。
+    discard_confirm: 输入“%{name}”以确认
+    discard_success: 群组已移除。其数据不会自动永久删除，可由站点管理员恢复
   report:
     start_on: 开始
     end_on: 结束
@@ -1653,6 +1653,13 @@ zh_CN:
       invitations_sent: 已发送 %{count} 份邀请。
       no_invitations: 糟糕！请确认邮箱地址是否正确，然后重试。
       max_invitations: 如果要发送超过 100 个邀请，请使用团队链接。
+    invite_link: 邀请链接
+    shareable_invitation_message_label: 可复制到邮件或聊天中的消息
+    members_used: 成员数 %{used}/%{max}
+    shareable_invitation_message: |-
+      我已在 %{site_name} 上创建了 %{groupName}，方便大家一起讨论和做决定。点击此链接加入：
+      %{link}
+    trial_shareable_link_note: 复制邀请链接，通过邮件或聊天发送，邀请他人加入群组。他们加入后，您就可以直接通过 Loomio 向他们发送邮件和手机通知。<a href="%{upgradeUrl}">升级套餐</a>即可发送邮件邀请。
   memberships_page:
     members: 成员
     name_label: 名字
@@ -1988,10 +1995,10 @@ zh_CN:
   delete_discussion_form:
     discussion_deleted: 讨论已删除
     body: 你确定要删除这个帖子吗？
-    body_with_deletion: "此主题帖将立即从视图中隐藏，并在 %{days} 天后永久删除。"
-    body_reversible: "此主题帖将立即从视图中隐藏。其数据不会自动永久删除，可由站点管理员恢复。"
-    deleted_after_grace_period: "主题帖已移除。它将在 %{days} 天后永久删除"
-    removed: "主题帖已移除。其数据不会自动永久删除，可由站点管理员恢复"
+    body_with_deletion: 此主题帖将立即从视图中隐藏，并在 %{days} 天后永久删除。
+    body_reversible: 此主题帖将立即从视图中隐藏。其数据不会自动永久删除，可由站点管理员恢复。
+    deleted_after_grace_period: 主题帖已移除。它将在 %{days} 天后永久删除
+    removed: 主题帖已移除。其数据不会自动永久删除，可由站点管理员恢复
   move_discussion_form:
     title: 将讨论转移到另一个群组
     body: 目的地组

@@ -9,7 +9,7 @@ class Api::V1::TrialInvitationIpLimitTest < ActionController::TestCase
     ENV['LOOMIO_SUBSCRIPTIONS'] = 'enabled'
     @actor = User.create!(name: 'Trial admin', email: 'ip-trial-admin@example.com', email_verified: true)
     @group = Group.create!(name: 'IP trial', creator: @actor, group_privacy: 'secret',
-      subscription: Subscription.create!(plan: 'trial', state: 'active', max_members: 10))
+      subscription: Subscription.create!(plan: 'trial', state: 'active', max_members: 10, allow_email_invitations: true))
     @group.add_admin!(@actor)
     @discussion = DiscussionService.create(params: { title: 'IP allowance' }, actor: @actor)
     @request.remote_addr = '198.51.100.45'
