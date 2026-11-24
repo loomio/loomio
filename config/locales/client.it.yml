@@ -3313,6 +3313,10 @@ it:
     no_open_polls: Nessun sondaggio aperto
     browse_files: Vedi file
     invite_get_started: Clicca qui per iniziare
+    threads: Conversazioni
+    threads_count: 1 conversazione | {count} conversazioni
+    view_threads: Vedi conversazioni
+    no_threads: Nessuna conversazione
   onboarding_card:
     extend_trial_title: Sblocca 30 giorni in più
     extend_trial_initial: Sblocca 30 giorni in più quando {count} persone votano in una proposta o un sondaggio.
@@ -3321,3 +3325,5 @@ it:
     trial_verified: Abbiamo visto il tuo gruppo e siamo qui per aiutarti. Ora puoi inviare inviti via email — continua per sbloccare 30 giorni in più e le funzioni Pro.
     trial_extended_title: 30 giorni in più sbloccati
     trial_extended_description: La tua prova è stata estesa di 30 giorni con sottogruppi e ospiti abilitati.
+    view_plans: Vedi i piani
+    upgrade_now: Passa a un piano superiore

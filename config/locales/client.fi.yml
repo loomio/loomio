@@ -3285,6 +3285,10 @@ fi:
     no_open_polls: Ei avoimia kyselyjä
     browse_files: Näytä tiedostot
     invite_get_started: Aloita napsauttamalla tästä
+    threads: Ketjut
+    threads_count: 1 ketju | {count} ketjua
+    view_threads: Näytä ketjut
+    no_threads: Ei ketjuja
   onboarding_card:
     extend_trial_title: Saa 30 lisäpäivää
     extend_trial_initial: Saat 30 lisäpäivää, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
@@ -3293,3 +3297,5 @@ fi:
     trial_verified: Olemme tutustuneet ryhmääsi ja autamme mielellämme. Voit nyt lähettää sähköpostikutsuja — jatka, niin saat 30 lisäpäivää ja Pro-ominaisuudet käyttöön.
     trial_extended_title: Sait 30 lisäpäivää
     trial_extended_description: Kokeiluasi on jatkettu 30 päivällä, ja alaryhmät ja vieraat ovat nyt käytössä.
+    view_plans: Katso tilausvaihtoehdot
+    upgrade_now: Päivitä nyt

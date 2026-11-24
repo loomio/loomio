@@ -3297,6 +3297,10 @@ da:
     no_open_polls: Ingen åbne afstemninger
     browse_files: Se filer
     invite_get_started: Klik her for at komme i gang
+    threads: Tråde
+    threads_count: 1 tråd | {count} tråde
+    view_threads: Se tråde
+    no_threads: Ingen tråde
   onboarding_card:
     extend_trial_title: Lås op for 30 ekstra dage
     extend_trial_initial: Lås op for 30 ekstra dage, når {count} personer stemmer om et forslag eller i en afstemning.
@@ -3305,3 +3309,5 @@ da:
     trial_verified: Vi har set din gruppe og er her for at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage og Pro-funktioner.
     trial_extended_title: 30 ekstra dage låst op
     trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster.
+    view_plans: Se abonnementer
+    upgrade_now: Opgrader nu

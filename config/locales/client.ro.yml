@@ -3285,6 +3285,10 @@ ro:
     no_open_polls: Niciun sondaj deschis
     browse_files: Vezi fișierele
     invite_get_started: Apasă aici pentru a începe
+    threads: Fire
+    threads_count: 1 fir | {count} fire
+    view_threads: Vezi firele
+    no_threads: Niciun fir
   onboarding_card:
     extend_trial_title: Deblochează încă 30 de zile
     extend_trial_initial: Deblochează încă 30 de zile când {count} persoane votează la o propunere sau un sondaj.
@@ -3293,3 +3297,5 @@ ro:
     trial_verified: Am văzut grupul tău și suntem aici să te ajutăm. Acum poți trimite invitații prin e-mail — continuă pentru a debloca încă 30 de zile și funcțiile Pro.
     trial_extended_title: Încă 30 de zile deblocate
     trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile, cu subgrupuri și invitați activați.
+    view_plans: Vezi planurile
+    upgrade_now: Treci acum la un plan superior

@@ -3209,6 +3209,10 @@ zh_CN:
     no_open_polls: 暂无进行中的投票
     browse_files: 查看文件
     invite_get_started: 点击此处开始
+    threads: 帖子
+    threads_count: 1 篇帖子 | {count} 篇帖子
+    view_threads: 查看帖子
+    no_threads: 暂无帖子
   onboarding_card:
     extend_trial_title: 解锁额外 30 天试用
     extend_trial_initial: "{count} 人在提案或投票中投票后，即可解锁额外 30 天试用。"
@@ -3217,3 +3221,5 @@ zh_CN:
     trial_verified: 我们已了解您的群组，随时可以提供帮助。现在可以发送邮件邀请了，继续使用即可解锁额外 30 天试用和专业版功能。
     trial_extended_title: 已解锁额外 30 天试用
     trial_extended_description: 试用期已延长 30 天，子群组和访客功能已启用。
+    view_plans: 查看套餐
+    upgrade_now: 立即升级

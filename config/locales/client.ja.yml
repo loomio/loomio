@@ -3284,6 +3284,10 @@ ja:
     no_open_polls: 受付中のアンケートはありません
     browse_files: ファイルを見る
     invite_get_started: ここをクリックして始めます
+    threads: スレッド
+    threads_count: スレッド1件 | スレッド{count}件
+    view_threads: スレッドを見る
+    no_threads: スレッドはありません
   onboarding_card:
     extend_trial_title: 試用期間を30日延長
     extend_trial_initial: "{count}人が提案またはアンケートに投票すると、試用期間が30日延長されます。"
@@ -3292,3 +3296,5 @@ ja:
     trial_verified: グループを確認しました。ご利用をサポートします。メールで招待を送れるようになりました。引き続き利用すると、試用期間が30日延長され、Pro機能も使えるようになります。
     trial_extended_title: 試用期間が30日延長されました
     trial_extended_description: 試用期間が30日延長され、サブグループとゲストが使えるようになりました。
+    view_plans: プランを見る
+    upgrade_now: 今すぐアップグレード

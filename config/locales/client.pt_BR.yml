@@ -3330,6 +3330,10 @@ pt_BR:
     no_open_polls: Nenhuma enquete aberta
     browse_files: Ver arquivos
     invite_get_started: Clique aqui para começar
+    threads: Conversas
+    threads_count: 1 conversa | {count} conversas
+    view_threads: Ver conversas
+    no_threads: Nenhuma conversa
   onboarding_card:
     extend_trial_title: Libere mais 30 dias
     extend_trial_initial: Libere mais 30 dias quando {count} pessoas votarem em uma proposta ou enquete.
@@ -3338,3 +3342,5 @@ pt_BR:
     trial_verified: Vimos seu grupo e estamos aqui para ajudar. Você já pode enviar convites por e-mail — continue para liberar mais 30 dias e os recursos Pro.
     trial_extended_title: Mais 30 dias liberados
     trial_extended_description: Seu período de teste foi estendido por 30 dias com subgrupos e convidados habilitados.
+    view_plans: Ver planos
+    upgrade_now: Mude de plano agora

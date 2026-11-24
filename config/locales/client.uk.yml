@@ -3315,6 +3315,10 @@ uk:
     no_open_polls: Немає відкритих опитувань
     browse_files: Переглянути файли
     invite_get_started: Натисніть тут, щоб почати
+    threads: Теми
+    threads_count: 1 тема | {count} тем
+    view_threads: Переглянути теми
+    no_threads: Немає тем
   onboarding_card:
     extend_trial_title: Отримайте ще 30 днів
     extend_trial_initial: Отримайте ще 30 днів, коли {count} людей проголосують у пропозиції чи опитуванні.
@@ -3323,3 +3327,5 @@ uk:
     trial_verified: Ми переглянули вашу групу й готові допомогти. Тепер ви можете надсилати запрошення електронною поштою — продовжуйте, щоб отримати ще 30 днів і функції Pro.
     trial_extended_title: Ви отримали ще 30 днів
     trial_extended_description: Ваш пробний період подовжено на 30 днів із доступом до підгруп і гостей.
+    view_plans: Перегляньте тарифи
+    upgrade_now: Оновіть тариф зараз

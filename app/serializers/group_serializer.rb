@@ -209,7 +209,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def include_trial_participants_count?
-    object.is_parent? && subscription_record.trial? && subscription_record.trial_extended_at.nil?
+    defined?(TrialExtensionService) && object.is_parent? && subscription_record.trial? && subscription_record.trial_extended_at.nil?
   end
 
   def include_token?

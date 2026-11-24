@@ -9,8 +9,6 @@ import { pickBy } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
-const SUBPAGE_SEGMENTS = new Set(['polls', 'members', 'files', 'membership_requests', 'emails', 'tags']);
-
 export default
 {
   components: { GroupCards },
@@ -49,24 +47,6 @@ export default
 
     canEditGroup() {
       return GroupAbility.canUpdate(this.group);
-    },
-
-    isOverviewRoute() {
-      const segments = (this.$route?.path || '').split('/').filter(Boolean);
-      return !segments.some(segment => SUBPAGE_SEGMENTS.has(segment));
-    },
-
-    showPlanBanner() {
-      if (!this.group) { return false; }
-      const parent = typeof this.group.parentOrSelf === 'function' ? this.group.parentOrSelf() : this.group;
-      const sub = (parent || this.group).subscription || {};
-      const user = typeof Session.user === 'function' ? Session.user() : null;
-      const handledByOnboardingCard = this.isOverviewRoute &&
-        sub.plan === 'trial' &&
-        typeof this.group.isEnabled === 'function' && this.group.isEnabled() &&
-        user && typeof this.group.membersInclude === 'function' && this.group.membersInclude(user) &&
-        (!sub.trial_extended_at || !user.hasExperienced('hideOnboarding'));
-      return !handledByOnboardingCard;
     }
   },
 
@@ -129,7 +109,6 @@ v-main
         :menu-icon-only="false"
         menu-show-icon
         :menu-actions='menuActions')
-    plan-banner(v-if="showPlanBanner" :group="group")
     formatted-text.group-page__description(
       v-if="group"
       :model="group"
@@ -138,11 +117,7 @@ v-main
     join-group-button(:group='group')
     group-follow-button(:group='group')
     attachment-list(:attachments="group.attachments")
-    group-cards(v-if="isOverviewRoute" :group="group")
-    .mt-4(v-else)
-      v-btn.group-page-discussions-tab(variant="text" :to="urlFor(group, null)")
-        common-icon.mr-1(name="mdi-arrow-left")
-        span {{ $t('group_page.discussions') }}
-    v-divider.mt-2
+    plan-banner(:group="group")
+    group-cards(:group="group")
     router-view
 </template>

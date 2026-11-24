@@ -3312,6 +3312,10 @@ pl:
     no_open_polls: Brak otwartych ankiet
     browse_files: Zobacz pliki
     invite_get_started: Kliknij tutaj, aby zacząć
+    threads: Wątki
+    threads_count: 1 wątek | {count} wątków
+    view_threads: Zobacz wątki
+    no_threads: Brak wątków
   onboarding_card:
     extend_trial_title: Odblokuj 30 dodatkowych dni
     extend_trial_initial: Odblokuj 30 dodatkowych dni, gdy {count} osób odda głos w propozycji lub ankiecie.
@@ -3320,3 +3324,5 @@ pl:
     trial_verified: Znamy już twoją grupę i chętnie pomożemy. Możesz już wysyłać zaproszenia e-mailem — działaj dalej, by odblokować 30 dodatkowych dni i funkcje Pro.
     trial_extended_title: Odblokowano 30 dodatkowych dni
     trial_extended_description: Okres próbny przedłużono o 30 dni z włączonymi podgrupami i gośćmi.
+    view_plans: Zobacz plany
+    upgrade_now: Przejdź na wyższy plan

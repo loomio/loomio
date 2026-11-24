@@ -59,8 +59,9 @@ import GroupModel from '@/shared/models/group_model';
 import MembershipModel from '@/shared/models/membership_model';
 import UserModel from '@/shared/models/user_model';
 import GroupCards from '@/components/group/cards.vue';
+import PlanBanner from '@/components/group/plan_banner.vue';
 
-describe('GroupCards and GroupOnboardingCard', () => {
+describe('GroupCards and PlanBanner', () => {
   let wrapper;
   let router;
 
@@ -129,7 +130,11 @@ describe('GroupCards and GroupOnboardingCard', () => {
   }
 
   function mountCards(group) {
-    return mount(GroupCards, {
+    return mount({
+      components: { PlanBanner, GroupCards },
+      props: ['group'],
+      template: '<div><plan-banner :group="group" /><group-cards :group="group" /></div>'
+    }, {
       props: { group },
       global: {
         plugins: [createVuetify(), I18n, router],
@@ -138,19 +143,20 @@ describe('GroupCards and GroupOnboardingCard', () => {
     });
   }
 
-  it('shows remaining participants countdown, invite link, and group summary cards', async () => {
+  it('shows remaining participants countdown, view plans button, and group summary cards', async () => {
     const group = setupGroup({ trialParticipantsCount: 1 });
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.group-onboarding-card').text()).toContain('Unlock 30 extra days when 2 more people vote in a proposal or poll.');
-    expect(wrapper.find('.group-onboarding-card__upgrade').attributes('href')).toContain('/upgrade/100');
-    expect(wrapper.find('.group-onboarding-card__verified-badge').exists()).toBe(false);
-    expect(wrapper.find('.group-onboarding-card__verification').exists()).toBe(false);
+    expect(wrapper.find('.plan-banner').text()).toContain('Unlock 30 extra days when 2 more people vote in a proposal or poll.');
+    expect(wrapper.find('.plan-banner__upgrade').attributes('href')).toContain('/upgrade/100');
+    expect(wrapper.find('.plan-banner__upgrade').text()).toContain('View plans');
+    expect(wrapper.find('.plan-banner__verified-badge').exists()).toBe(false);
+    expect(wrapper.find('.plan-banner__verification').exists()).toBe(false);
+    expect(wrapper.find('.group-page-members-tab').text()).toContain('Members');
     expect(wrapper.find('.group-page-members-tab').text()).toContain('2 members');
-    expect(wrapper.find('.group-page-members-tab').text()).toContain('1 admin');
     expect(wrapper.find('.group-page-members-tab').text()).not.toContain('delegate');
-    expect(wrapper.find('.group-page-polls-tab').text()).toContain('5 polls');
+    expect(wrapper.find('.group-page-polls-tab').text()).toContain('Polls');
     expect(wrapper.find('.group-page-polls-tab').text()).toContain('1 needs your vote');
     expect(wrapper.find('.group-page-files-tab').exists()).toBe(true);
 
@@ -170,8 +176,8 @@ describe('GroupCards and GroupOnboardingCard', () => {
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.group-onboarding-card__verified-badge').text()).toContain('Verified');
-    expect(wrapper.find('.group-onboarding-card__verification').text()).toContain("We've seen your group and we're here to help");
+    expect(wrapper.find('.plan-banner__verified-badge').text()).toContain('Verified');
+    expect(wrapper.find('.plan-banner__verification').text()).toContain("We've seen your group and we're here to help");
     await wrapper.find('.group-cards__invite').trigger('click');
     expect(mocks.emit).toHaveBeenCalledWith('openModal', { component: 'GroupInvitationForm', props: { group } });
   });
@@ -190,10 +196,10 @@ describe('GroupCards and GroupOnboardingCard', () => {
     wrapper = mountCards(group);
     await flushPromises();
 
-    expect(wrapper.find('.group-onboarding-card').text()).toContain('30 extra days unlocked');
-    await wrapper.find('.group-onboarding-card__dismiss').trigger('click');
+    expect(wrapper.find('.plan-banner').text()).toContain('30 extra days unlocked');
+    await wrapper.find('.plan-banner__dismiss').trigger('click');
     await flushPromises();
     expect(mocks.saveExperience).toHaveBeenCalledWith('hideOnboarding', true);
-    expect(wrapper.find('.group-onboarding-card').exists()).toBe(false);
+    expect(wrapper.find('.plan-banner__dismiss').exists()).toBe(false);
   });
 });

@@ -3313,6 +3313,10 @@ zh_TW:
     no_open_polls: 沒有進行中的投票
     browse_files: 查看檔案
     invite_get_started: 點此開始
+    threads: 對話串
+    threads_count: 1 個對話串 | {count} 個對話串
+    view_threads: 查看對話串
+    no_threads: 沒有對話串
   onboarding_card:
     extend_trial_title: 解鎖額外 30 天試用期
     extend_trial_initial: "{count} 人參與提案或投票後，即可解鎖額外 30 天試用期。"
@@ -3321,3 +3325,5 @@ zh_TW:
     trial_verified: 我們已查看您的群組，隨時可以提供協助。現在可以寄送電子郵件邀請 — 繼續使用即可解鎖額外 30 天試用期和 Pro 功能。
     trial_extended_title: 已解鎖額外 30 天試用期
     trial_extended_description: 試用期已延長 30 天，並已啟用子群組和訪客功能。
+    view_plans: 查看方案
+    upgrade_now: 立即升級

@@ -3312,6 +3312,10 @@ nl_NL:
     no_open_polls: Geen open peilingen
     browse_files: Bekijk bestanden
     invite_get_started: Klik hier om te beginnen
+    threads: Threads
+    threads_count: 1 thread | {count} threads
+    view_threads: Bekijk threads
+    no_threads: Geen threads
   onboarding_card:
     extend_trial_title: Ontgrendel 30 extra dagen
     extend_trial_initial: Ontgrendel 30 extra dagen zodra {count} mensen stemmen in een voorstel of peiling.
@@ -3320,3 +3324,5 @@ nl_NL:
     trial_verified: We hebben je groep bekeken en helpen je graag. Je kunt nu uitnodigingen per e-mail versturen — ga door om 30 extra dagen en Pro-functies te ontgrendelen.
     trial_extended_title: 30 extra dagen ontgrendeld
     trial_extended_description: Je proefperiode is met 30 dagen verlengd en subgroepen en gasten zijn ingeschakeld.
+    view_plans: Bekijk abonnementen
+    upgrade_now: Upgrade nu

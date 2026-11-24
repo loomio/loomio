@@ -3293,6 +3293,10 @@ sv:
     no_open_polls: Inga öppna omröstningar
     browse_files: Visa filer
     invite_get_started: Klicka här för att komma igång
+    threads: Trådar
+    threads_count: 1 tråd | {count} trådar
+    view_threads: Visa trådar
+    no_threads: Inga trådar
   onboarding_card:
     extend_trial_title: Lås upp 30 extra dagar
     extend_trial_initial: Lås upp 30 extra dagar när {count} personer röstar på ett förslag eller i en omröstning.
@@ -3301,3 +3305,5 @@ sv:
     trial_verified: Vi har sett din grupp och finns här för att hjälpa till. Du kan nu skicka inbjudningar via mejl — fortsätt för att låsa upp 30 extra dagar och Pro-funktioner.
     trial_extended_title: 30 extra dagar upplåsta
     trial_extended_description: Din provperiod har förlängts med 30 dagar med tillgång till undergrupper och gäster.
+    view_plans: Se abonnemang
+    upgrade_now: Uppgradera nu

@@ -3320,6 +3320,10 @@ de:
     no_open_polls: Keine offenen Abstimmungen
     browse_files: Dateien ansehen
     invite_get_started: Klicke hier, um loszulegen
+    threads: Threads
+    threads_count: 1 Thread | {count} Threads
+    view_threads: Threads ansehen
+    no_threads: Keine Threads
   onboarding_card:
     extend_trial_title: 30 zusätzliche Tage freischalten
     extend_trial_initial: Schalte 30 zusätzliche Tage frei, wenn {count} Personen über einen Vorschlag oder in einer Abstimmung abstimmen.
@@ -3328,3 +3332,5 @@ de:
     trial_verified: Wir haben uns deine Gruppe angesehen und helfen dir gerne. Du kannst jetzt Einladungen per E-Mail senden — mach weiter, um 30 zusätzliche Tage und Pro-Funktionen freizuschalten.
     trial_extended_title: 30 zusätzliche Tage freigeschaltet
     trial_extended_description: Deine Testphase wurde um 30 Tage verlängert, Untergruppen und Gäste sind jetzt freigeschaltet.
+    view_plans: Tarife ansehen
+    upgrade_now: Jetzt upgraden

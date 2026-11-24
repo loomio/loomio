@@ -44,7 +44,6 @@ export default {
   GroupFormActions: 'group/form_actions',
   GroupDescriptionCard: 'group/description_card',
   GroupNewForm: 'group/new_form',
-  GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
   GroupShareableLinkForm: 'group/shareable_link_form',
   GroupStart: 'group/start',

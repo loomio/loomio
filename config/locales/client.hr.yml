@@ -3286,6 +3286,10 @@ hr:
     no_open_polls: Nema otvorenih anketa
     browse_files: Pogledajte datoteke
     invite_get_started: Kliknite ovdje za početak
+    threads: Niti
+    threads_count: 1 nit | {count} niti
+    view_threads: Pogledajte niti
+    no_threads: Nema niti
   onboarding_card:
     extend_trial_title: Otključajte dodatnih 30 dana
     extend_trial_initial: Otključajte dodatnih 30 dana kad {count} osoba glasa o prijedlogu ili u anketi.
@@ -3294,3 +3298,5 @@ hr:
     trial_verified: Primijetili smo vašu grupu i tu smo da pomognemo. Sada možete slati pozivnice e-poštom — nastavite kako biste otključali dodatnih 30 dana i Pro značajke.
     trial_extended_title: Otključano dodatnih 30 dana
     trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste.
+    view_plans: Pogledajte pakete
+    upgrade_now: Nadogradite sada

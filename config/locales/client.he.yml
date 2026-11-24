@@ -3304,6 +3304,10 @@ he:
     no_open_polls: אין סקרים פתוחים
     browse_files: הצגת קבצים
     invite_get_started: להתחלה יש ללחוץ כאן
+    threads: שרשורים
+    threads_count: שרשור אחד | {count} שרשורים
+    view_threads: הצגת שרשורים
+    no_threads: אין שרשורים
   onboarding_card:
     extend_trial_title: קבלת 30 ימים נוספים
     extend_trial_initial: כש־{count} אנשים יצביעו בהצעה או בסקר, יתווספו 30 ימים לתקופת הניסיון.
@@ -3312,3 +3316,5 @@ he:
     trial_verified: הכרנו את הקבוצה ואנחנו כאן לעזור. כעת ניתן לשלוח הזמנות במייל — יש להמשיך כדי לקבל 30 ימים נוספים ותכונות Pro.
     trial_extended_title: נוספו 30 ימים
     trial_extended_description: תקופת הניסיון הוארכה ב־30 ימים, עם אפשרות לתת־קבוצות ולאורחים.
+    view_plans: הצגת מסלולים
+    upgrade_now: שדרוג עכשיו

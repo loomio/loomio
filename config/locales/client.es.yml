@@ -3321,6 +3321,10 @@ es:
     no_open_polls: No hay encuestas abiertas
     browse_files: Ver archivos
     invite_get_started: Haz clic aquí para empezar
+    threads: Hilos
+    threads_count: 1 hilo | {count} hilos
+    view_threads: Ver hilos
+    no_threads: No hay hilos
   onboarding_card:
     extend_trial_title: Desbloquea 30 días más
     extend_trial_initial: Desbloquea 30 días más cuando {count} personas voten en una propuesta o encuesta.
@@ -3329,3 +3333,5 @@ es:
     trial_verified: Hemos revisado tu grupo y estamos aquí para ayudar. Ya puedes enviar invitaciones por correo — sigue para desbloquear 30 días más y funciones Pro.
     trial_extended_title: 30 días más desbloqueados
     trial_extended_description: Tu prueba se ha ampliado 30 días con subgrupos e invitados habilitados.
+    view_plans: Ver planes
+    upgrade_now: Mejora tu plan ahora

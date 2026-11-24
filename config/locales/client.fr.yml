@@ -3330,6 +3330,10 @@ fr:
     no_open_polls: Aucun sondage ouvert
     browse_files: Voir les fichiers
     invite_get_started: Cliquez ici pour commencer
+    threads: Fils
+    threads_count: 1 fil | {count} fils
+    view_threads: Voir les fils
+    no_threads: Aucun fil
   onboarding_card:
     extend_trial_title: Débloquez 30 jours de plus
     extend_trial_initial: Débloquez 30 jours de plus lorsque {count} personnes votent sur une proposition ou un sondage.
@@ -3338,3 +3342,5 @@ fr:
     trial_verified: Nous avons vu votre groupe et sommes là pour vous aider. Vous pouvez maintenant envoyer des invitations par e-mail — continuez pour débloquer 30 jours de plus et les fonctionnalités Pro.
     trial_extended_title: 30 jours de plus débloqués
     trial_extended_description: Votre essai a été prolongé de 30 jours avec les sous-groupes et les invités activés.
+    view_plans: Voir les offres
+    upgrade_now: Passer à une offre payante

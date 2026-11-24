@@ -3282,6 +3282,10 @@ tr:
     no_open_polls: Açık anket yok
     browse_files: Dosyaları görüntüle
     invite_get_started: Başlamak için buraya tıklayın
+    threads: İleti dizileri
+    threads_count: 1 ileti dizisi | {count} ileti dizisi
+    view_threads: İleti dizilerini görüntüle
+    no_threads: İleti dizisi yok
   onboarding_card:
     extend_trial_title: 30 gün daha kazanın
     extend_trial_initial: "{count} kişi bir teklif veya ankette oy verdiğinde 30 gün daha kazanın."
@@ -3290,3 +3294,5 @@ tr:
     trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 gün daha kazanmak ve Pro özelliklerini açmak için devam edin.
     trial_extended_title: 30 gün daha kazandınız
     trial_extended_description: Deneme süreniz 30 gün uzatıldı, alt gruplar ve misafirler etkinleştirildi.
+    view_plans: Planları gör
+    upgrade_now: Şimdi yükselt

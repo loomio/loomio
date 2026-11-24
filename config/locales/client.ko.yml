@@ -3239,6 +3239,10 @@ ko:
     no_open_polls: 진행 중인 투표 없음
     browse_files: 파일 보기
     invite_get_started: 여기를 클릭해 시작하세요
+    threads: 스레드
+    threads_count: 스레드 1개 | 스레드 {count}개
+    view_threads: 스레드 보기
+    no_threads: 스레드 없음
   onboarding_card:
     extend_trial_title: 체험 기간 30일 추가
     extend_trial_initial: "{count}명이 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다."
@@ -3247,3 +3251,5 @@ ko:
     trial_verified: 그룹을 확인했습니다. 도움이 필요하면 말씀하세요. 이제 이메일 초대를 보낼 수 있습니다. 계속 진행해 체험 기간 30일과 Pro 기능을 추가로 이용하세요.
     trial_extended_title: 체험 기간 30일 추가됨
     trial_extended_description: 체험 기간이 30일 연장되었으며 하위 그룹과 게스트 기능이 활성화되었습니다.
+    view_plans: 요금제 보기
+    upgrade_now: 지금 업그레이드

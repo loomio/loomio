@@ -3296,6 +3296,10 @@ hu:
     no_open_polls: Nincs nyitott szavazás
     browse_files: Fájlok megtekintése
     invite_get_started: Kattints ide a kezdéshez
+    threads: Szálak
+    threads_count: 1 szál | {count} szál
+    view_threads: Szálak megtekintése
+    no_threads: Nincsenek szálak
   onboarding_card:
     extend_trial_title: Szerezz 30 extra napot
     extend_trial_initial: Szerezz 30 extra napot, ha {count} ember szavaz egy javaslatról vagy szavazáson.
@@ -3304,3 +3308,5 @@ hu:
     trial_verified: Megnéztük a csoportodat, és segítünk, ha kell. Most már küldhetsz meghívókat e-mailben — folytasd, hogy 30 extra napot és Pro funkciókat kapj.
     trial_extended_title: Megkaptad a 30 extra napot
     trial_extended_description: A próbaidőd 30 nappal meghosszabbodott, és már alcsoportokat és vendégeket is hozzáadhatsz.
+    view_plans: Csomagok megtekintése
+    upgrade_now: Válts most
