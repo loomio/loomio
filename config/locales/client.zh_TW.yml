@@ -1597,6 +1597,8 @@ zh_TW:
       我已在 %{site_name} 建立 %{groupName}，讓我們一起討論並做出決定。請用此連結加入：
       %{link}
     trial_shareable_link_note: 複製邀請連結，透過電子郵件或聊天傳送，邀請夥伴加入群組。加入後，即可直接從 Loomio 傳送電子郵件和手機通知給他們。<a href="%{upgradeUrl}">升級方案</a>即可寄送電子郵件邀請。
+    include_intro_message: 附上介紹訊息
+    trial_shareable_invitation_message: 我已開始試用 %{site_name} 7 天，看看是否能幫助 %{groupName} 做決定。請點此連結加入，一起試用：%{link}
   memberships_page:
     members: 成員
     name_label: 名字
@@ -2203,6 +2205,7 @@ zh_TW:
     unlocked: 已解鎖
     no_threads_found_that_match_your_query_or_filters: 未找到符合您的查詢或篩選條件的對話串
     no_threads_found_that_match_your_filters: 未找到符合您篩選條件的對話串
+    new_thread: 新增對話串
   members_panel:
     bot: 機器人
     no_results: 找不到成員
@@ -3300,3 +3303,21 @@ zh_TW:
     bounced: 已回報退信
     complained: 已回報垃圾郵件投訴
     skipped: 未寄送電子郵件
+  group_cards:
+    admins_count: 1 位管理員 | {count} 位管理員
+    members_count: 1 位成員 | {count} 位成員
+    delegates_count: 1 位代表 | {count} 位代表
+    polls_count: 1 項投票 | {count} 項投票
+    proposals_count: 1 項提案 | {count} 項提案
+    needs_your_vote: 1 項待您投票 | {count} 項待您投票
+    no_open_polls: 沒有進行中的投票
+    browse_files: 查看檔案
+    invite_get_started: 點此開始
+  onboarding_card:
+    extend_trial_title: 解鎖額外 30 天試用期
+    extend_trial_initial: "{count} 人參與提案或投票後，即可解鎖額外 30 天試用期。"
+    extend_trial_remaining: 再有 1 人參與提案或投票，即可解鎖額外 30 天試用期。 | 再有 {count} 人參與提案或投票，即可解鎖額外 30 天試用期。
+    verified_badge: 已驗證
+    trial_verified: 我們已查看您的群組，隨時可以提供協助。現在可以寄送電子郵件邀請 — 繼續使用即可解鎖額外 30 天試用期和 Pro 功能。
+    trial_extended_title: 已解鎖額外 30 天試用期
+    trial_extended_description: 試用期已延長 30 天，並已啟用子群組和訪客功能。

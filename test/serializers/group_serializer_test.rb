@@ -1,7 +1,7 @@
 require "test_helper"
 
 class GroupSerializerTest < ActiveSupport::TestCase
-  SUBSCRIPTION_KEYS = %i[state expires_at max_members max_threads allow_subgroups allow_guests allow_email_invitations plan members_count].sort.freeze
+  SUBSCRIPTION_KEYS = %i[state expires_at max_members max_threads allow_subgroups allow_guests allow_email_invitations trial_extended_at plan members_count].sort.freeze
 
   test "subscription fields are consistent for members guests former members visitors and shared payloads" do
     collection = groups(:group, :subgroup, :public_group, :alien_group)
@@ -48,7 +48,7 @@ class GroupSerializerTest < ActiveSupport::TestCase
 
     assert_equal({
       state: "past_due", expires_at: expires_at, max_members: 50, max_threads: 100,
-      allow_guests: false, allow_subgroups: false, allow_email_invitations: true, plan: "pro", members_count: 12
+      allow_guests: false, allow_subgroups: false, allow_email_invitations: true, trial_extended_at: nil, plan: "pro", members_count: 12
     }, payload[:subscription])
     assert_not payload.key?(:enabled)
 
@@ -56,7 +56,7 @@ class GroupSerializerTest < ActiveSupport::TestCase
     payload = GroupSerializer.new(group.reload, scope: { exclude_types: [] }).as_json.fetch(:group)
     assert_equal({
       state: "active", expires_at: nil, max_members: nil, max_threads: nil,
-      allow_guests: true, allow_subgroups: true, allow_email_invitations: true, plan: "free", members_count: nil
+      allow_guests: true, allow_subgroups: true, allow_email_invitations: true, trial_extended_at: nil, plan: "free", members_count: nil
     }, payload[:subscription])
   end
 

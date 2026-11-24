@@ -1580,6 +1580,8 @@ tr:
       Birlikte tartışıp karar alabilmemiz için %{site_name} üzerinde %{groupName} grubunu kurdum. Bu bağlantıyla katılın:
       %{link}
     trial_shareable_link_note: Grubunuza kişi davet etmek için davet bağlantısını kopyalayıp e-posta veya sohbet yoluyla gönderin. Katıldıktan sonra onlara doğrudan Loomio'dan e-posta ve mobil bildirimler gönderebilirsiniz. E-postayla davet göndermek için <a href="%{upgradeUrl}">planınızı yükseltin</a>.
+    include_intro_message: Tanıtım mesajı ekle
+    trial_shareable_invitation_message: "%{groupName} içinde karar vermemize yardımcı olup olmayacağını görmek için 7 günlük %{site_name} denemesi başlattım. Birlikte deneyebilmemiz için lütfen bu bağlantıya tıklayıp katılın: %{link}"
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -2177,6 +2179,7 @@ tr:
     unlocked: Kilidi Açıldı
     no_threads_found_that_match_your_query_or_filters: Sorgunuza veya filtrelerinize uyan hiçbir konu bulunamadı.
     no_threads_found_that_match_your_filters: Filtrelerinize uyan hiçbir konu bulunamadı.
+    new_thread: Yeni ileti dizisi
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı
@@ -3269,3 +3272,21 @@ tr:
     bounced: E-postanın geri döndüğü bildirildi
     complained: Spam şikayeti bildirildi
     skipped: E-posta gönderilmedi
+  group_cards:
+    admins_count: 1 yönetici | {count} yönetici
+    members_count: 1 üye | {count} üye
+    delegates_count: 1 delege | {count} delege
+    polls_count: 1 anket | {count} anket
+    proposals_count: 1 teklif | {count} teklif
+    needs_your_vote: 1 tanesi oyunuzu bekliyor | {count} tanesi oyunuzu bekliyor
+    no_open_polls: Açık anket yok
+    browse_files: Dosyaları görüntüle
+    invite_get_started: Başlamak için buraya tıklayın
+  onboarding_card:
+    extend_trial_title: 30 gün daha kazanın
+    extend_trial_initial: "{count} kişi bir teklif veya ankette oy verdiğinde 30 gün daha kazanın."
+    extend_trial_remaining: 1 kişi daha bir teklif veya ankette oy verdiğinde 30 gün daha kazanın. | {count} kişi daha bir teklif veya ankette oy verdiğinde 30 gün daha kazanın.
+    verified_badge: Doğrulandı
+    trial_verified: Grubunuzu gördük ve yardım için buradayız. Artık e-postayla davet gönderebilirsiniz — 30 gün daha kazanmak ve Pro özelliklerini açmak için devam edin.
+    trial_extended_title: 30 gün daha kazandınız
+    trial_extended_description: Deneme süreniz 30 gün uzatıldı, alt gruplar ve misafirler etkinleştirildi.

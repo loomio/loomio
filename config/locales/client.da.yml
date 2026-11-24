@@ -1590,6 +1590,8 @@ da:
       Jeg har oprettet %{groupName} på %{site_name}, så vi kan diskutere og træffe beslutninger sammen. Deltag via dette link:
       %{link}
     trial_shareable_link_note: Kopier invitationslinket, og send det via mail eller chat for at invitere folk til din gruppe. Når de er med, kan du sende dem notifikationer via mail og mobil direkte fra Loomio. <a href="%{upgradeUrl}">Opgrader dit abonnement</a> for at sende invitationer via mail.
+    include_intro_message: Medtag en introduktion
+    trial_shareable_invitation_message: 'Jeg har startet en 7-dages prøveperiode på %{site_name}, så vi kan se, om det kan hjælpe os med at træffe beslutninger i %{groupName}. Klik på linket for at deltage, så vi kan prøve det: %{link}'
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -2189,6 +2191,7 @@ da:
     unlocked: Låst op
     no_threads_found_that_match_your_query_or_filters: Der blev ikke fundet nogen tråde, der matcher din forespørgsel eller dine filtre
     no_threads_found_that_match_your_filters: Der blev ikke fundet nogen tråde, der matcher dine filtre
+    new_thread: Ny tråd
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet
@@ -3284,3 +3287,21 @@ da:
     bounced: Returmail meldt
     complained: Spamklage meldt
     skipped: E-mail ikke sendt
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 medlem | {count} medlemmer
+    delegates_count: 1 delegeret | {count} delegerede
+    polls_count: 1 afstemning | {count} afstemninger
+    proposals_count: 1 forslag | {count} forslag
+    needs_your_vote: 1 mangler din stemme | {count} mangler din stemme
+    no_open_polls: Ingen åbne afstemninger
+    browse_files: Se filer
+    invite_get_started: Klik her for at komme i gang
+  onboarding_card:
+    extend_trial_title: Lås op for 30 ekstra dage
+    extend_trial_initial: Lås op for 30 ekstra dage, når {count} personer stemmer om et forslag eller i en afstemning.
+    extend_trial_remaining: Lås op for 30 ekstra dage, når 1 person mere stemmer om et forslag eller i en afstemning. | Lås op for 30 ekstra dage, når {count} personer mere stemmer om et forslag eller i en afstemning.
+    verified_badge: Bekræftet
+    trial_verified: Vi har set din gruppe og er her for at hjælpe. Du kan nu sende invitationer via e-mail — fortsæt for at låse op for 30 ekstra dage og Pro-funktioner.
+    trial_extended_title: 30 ekstra dage låst op
+    trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster.

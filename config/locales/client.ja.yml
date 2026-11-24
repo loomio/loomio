@@ -1579,6 +1579,8 @@ ja:
       一緒に話し合い、決定できるよう、%{site_name}に%{groupName}を作りました。このリンクから参加してください：
       %{link}
     trial_shareable_link_note: 招待リンクをコピーし、メールやチャットで送ってグループに招待できます。参加後は、Loomioから直接メールやモバイル通知を送れます。メールで招待を送るには、<a href="%{upgradeUrl}">プランをアップグレード</a>してください。
+    include_intro_message: 紹介メッセージを含める
+    trial_shareable_invitation_message: "%{groupName}の意思決定に役立つか試すため、%{site_name}の7日間の試用を始めました。一緒に試せるよう、このリンクから参加してください: %{link}"
   memberships_page:
     members: メンバー
     name_label: 氏名
@@ -2176,6 +2178,7 @@ ja:
     unlocked: ロック解除済み
     no_threads_found_that_match_your_query_or_filters: 検索条件やフィルターに一致するスレッドは見つかりませんでした。
     no_threads_found_that_match_your_filters: フィルターに一致するスレッドは見つかりませんでした
+    new_thread: 新しいスレッド
   members_panel:
     bot: ボット
     no_results: メンバーが見つかりませんでした
@@ -3271,3 +3274,21 @@ ja:
     bounced: メール不達の報告がありました
     complained: 迷惑メールの報告がありました
     skipped: メールは送信されませんでした
+  group_cards:
+    admins_count: 管理者1人 | 管理者{count}人
+    members_count: メンバー1人 | メンバー{count}人
+    delegates_count: 代表者1人 | 代表者{count}人
+    polls_count: アンケート1件 | アンケート{count}件
+    proposals_count: 提案1件 | 提案{count}件
+    needs_your_vote: 未投票1件 | 未投票{count}件
+    no_open_polls: 受付中のアンケートはありません
+    browse_files: ファイルを見る
+    invite_get_started: ここをクリックして始めます
+  onboarding_card:
+    extend_trial_title: 試用期間を30日延長
+    extend_trial_initial: "{count}人が提案またはアンケートに投票すると、試用期間が30日延長されます。"
+    extend_trial_remaining: あと1人が提案またはアンケートに投票すると、試用期間が30日延長されます。 | あと{count}人が提案またはアンケートに投票すると、試用期間が30日延長されます。
+    verified_badge: 確認済み
+    trial_verified: グループを確認しました。ご利用をサポートします。メールで招待を送れるようになりました。引き続き利用すると、試用期間が30日延長され、Pro機能も使えるようになります。
+    trial_extended_title: 試用期間が30日延長されました
+    trial_extended_description: 試用期間が30日延長され、サブグループとゲストが使えるようになりました。

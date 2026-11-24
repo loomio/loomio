@@ -3,7 +3,7 @@ module Null::Group
 
   Subscription = Struct.new(
     :max_members, :max_threads, :allow_subgroups, :allow_guests, :allow_email_invitations,
-    :plan, :state, :is_active?, :renews_at, :expires_at, :members_count,
+    :trial_extended_at, :plan, :state, :is_active?, :renews_at, :expires_at, :members_count,
     keyword_init: true
   )
 
@@ -128,6 +128,10 @@ module Null::Group
     %w[
       memberships_count
       polls_count
+      proposals_count
+      active_polls_count
+      closed_polls_count
+      current_user_votes_needed_count
       discussions_count
       pending_memberships_count
       poll_templates_count
@@ -135,6 +139,7 @@ module Null::Group
       memberships_count
       pending_memberships_count
       admin_memberships_count
+      delegates_count
       org_members_count
     ]
   end
@@ -222,6 +227,7 @@ module Null::Group
       allow_subgroups:         true,
       allow_guests:            true,
       allow_email_invitations: true,
+      trial_extended_at:       nil,
       plan:                    nil,
       state:                   nil,
       is_active?:              true,

@@ -1592,6 +1592,8 @@ he:
       הקמתי את %{groupName} ב־%{site_name} כדי שנוכל לדון ולקבל החלטות יחד. להצטרפות דרך הקישור:
       %{link}
     trial_shareable_link_note: ניתן להעתיק את קישור ההזמנה ולשלוח אותו במייל או בצ'אט כדי להזמין אנשים לקבוצה. לאחר ההצטרפות, ניתן לשלוח להם התראות במייל ובנייד ישירות מ־Loomio. <a href="%{upgradeUrl}">יש לשדרג את המסלול</a> כדי לשלוח הזמנות במייל.
+    include_intro_message: הוספת הודעת היכרות
+    trial_shareable_invitation_message: 'התחלתי תקופת ניסיון של 7 ימים ב־%{site_name} כדי שנוכל לבדוק אם השירות יכול לעזור בקבלת החלטות בקבוצה %{groupName}. להצטרפות ולהתנסות יחד, יש ללחוץ על הקישור: %{link}'
   memberships_page:
     members: חברים
     name_label: שם
@@ -2196,6 +2198,7 @@ he:
     unlocked: לא נעול
     no_threads_found_that_match_your_query_or_filters: לא נמצאו שרשורים התואמים את השאילתה או המסננים שלך
     no_threads_found_that_match_your_filters: לא נמצאו שרשורים התואמים את המסננים שלך
+    new_thread: שרשור חדש
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים
@@ -3291,3 +3294,21 @@ he:
     bounced: דווח שהאימייל חזר
     complained: דווח על תלונת ספאם
     skipped: האימייל לא נשלח
+  group_cards:
+    admins_count: מנהל אחד | {count} מנהלים
+    members_count: חבר אחד | {count} חברים
+    delegates_count: נציג אחד | {count} נציגים
+    polls_count: סקר אחד | {count} סקרים
+    proposals_count: הצעה אחת | {count} הצעות
+    needs_your_vote: 1 ממתין להצבעה | {count} ממתינים להצבעה
+    no_open_polls: אין סקרים פתוחים
+    browse_files: הצגת קבצים
+    invite_get_started: להתחלה יש ללחוץ כאן
+  onboarding_card:
+    extend_trial_title: קבלת 30 ימים נוספים
+    extend_trial_initial: כש־{count} אנשים יצביעו בהצעה או בסקר, יתווספו 30 ימים לתקופת הניסיון.
+    extend_trial_remaining: כשעוד אדם אחד יצביע בהצעה או בסקר, יתווספו 30 ימים לתקופת הניסיון. | כשעוד {count} אנשים יצביעו בהצעה או בסקר, יתווספו 30 ימים לתקופת הניסיון.
+    verified_badge: מאומת
+    trial_verified: הכרנו את הקבוצה ואנחנו כאן לעזור. כעת ניתן לשלוח הזמנות במייל — יש להמשיך כדי לקבל 30 ימים נוספים ותכונות Pro.
+    trial_extended_title: נוספו 30 ימים
+    trial_extended_description: תקופת הניסיון הוארכה ב־30 ימים, עם אפשרות לתת־קבוצות ולאורחים.

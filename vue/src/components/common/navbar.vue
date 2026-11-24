@@ -4,13 +4,11 @@ import EventBus            from '@/shared/services/event_bus';
 import AuthModalMixin      from '@/mixins/auth_modal';
 import Session             from '@/shared/services/session';
 import FormatDate from '@/mixins/format_date';
-import SidebarTips from '@/components/sidebar/tips';
 import { mergeProps } from 'vue'
 
 import { last }            from 'lodash-es';
 
 export default {
-  components: { SidebarTips },
   mixins: [ AuthModalMixin, FormatDate ],
   data() {
     return {
@@ -119,7 +117,6 @@ v-app-bar.lmo-no-print(
   v-app-bar-title(@click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
-    sidebar-tips(v-if="$vuetify.display.mdAndUp && !user.experiences.hideOnboarding")
     v-btn.navbar__search(v-if="$vuetify.display.mdAndUp" @click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications(v-if="$vuetify.display.mdAndUp")

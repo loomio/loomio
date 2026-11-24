@@ -25,6 +25,10 @@ class GroupSerializer < ApplicationSerializer
              :admins_can_edit_user_content,
              :token,
              :polls_count,
+             :proposals_count,
+             :active_polls_count,
+             :closed_polls_count,
+             :current_user_votes_needed_count,
              :poll_templates_count,
              :discussions_count,
              :group_privacy,
@@ -35,6 +39,7 @@ class GroupSerializer < ApplicationSerializer
              :membership_granted_upon,
              :discussion_privacy_options,
              :admin_memberships_count,
+             :delegates_count,
              :discarded_at,
              :discarded_by,
              :attachments,
@@ -51,7 +56,8 @@ class GroupSerializer < ApplicationSerializer
              :categorize_poll_templates,
              :category,
              :request_to_join_prompt,
-             :current_user_followed
+             :current_user_followed,
+             :trial_participants_count
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -60,6 +66,51 @@ class GroupSerializer < ApplicationSerializer
 
   def subgroups_count
     cache_fetch(:subgroups_counts_by_group_id, object.id) { object.subgroups.count }
+  end
+
+  def delegates_count
+    cache_fetch(:delegates_counts_by_group_id, object.id) { object.memberships.active.where(delegate: true).count }
+  end
+
+  def proposals_count
+    cache_fetch(:proposals_counts_by_group_id, object.id) do
+      Poll.kept.where(poll_type: 'proposal').joins(:topic).where(topics: { group_id: object.id }).count
+    end
+  end
+
+  def active_polls_count
+    cache_fetch(:active_polls_counts_by_group_id, object.id) do
+      Poll.active.joins(:topic).where(topics: { group_id: object.id }).count
+    end
+  end
+
+  def closed_polls_count
+    cache_fetch(:closed_polls_counts_by_group_id, object.id) do
+      Poll.closed.joins(:topic).where(topics: { group_id: object.id }).count
+    end
+  end
+
+  def current_user_votes_needed_count
+    votes_needed_counts_by_group_id.fetch(object.id, 0)
+  end
+
+  def include_current_user_votes_needed_count?
+    scope[:current_user_id].present?
+  end
+
+  def votes_needed_counts_by_group_id
+    scope[:current_user_votes_needed_counts_by_group_id] ||= begin
+      user_id = scope[:current_user_id]
+      identified = Stance.latest.where(participant_id: user_id, cast_at: nil, revoked_at: nil)
+        .joins(poll: :topic).merge(Poll.active)
+        .where.not(topics: { group_id: nil })
+        .group('topics.group_id').count
+      anonymous = AnonymousPollVoter.where(voter_id: user_id, ballot_submitted: false)
+        .joins(poll: :topic).merge(Poll.active)
+        .where.not(topics: { group_id: nil })
+        .group('topics.group_id').count
+      identified.merge(anonymous) { |_group_id, a, b| a + b }
+    end
   end
 
   def current_user_membership
@@ -96,6 +147,7 @@ class GroupSerializer < ApplicationSerializer
       allow_subgroups:         sub.allow_subgroups,
       allow_guests:            sub.allow_guests,
       allow_email_invitations: sub.allow_email_invitations,
+      trial_extended_at:       sub.trial_extended_at,
       plan:                    sub.plan,
       members_count:           sub.members_count
     }
@@ -150,6 +202,14 @@ class GroupSerializer < ApplicationSerializer
 
   def include_org_members_count?
     object.is_parent?
+  end
+
+  def trial_participants_count
+    TrialExtensionService.participants_count(object)
+  end
+
+  def include_trial_participants_count?
+    object.is_parent? && subscription_record.trial? && subscription_record.trial_extended_at.nil?
   end
 
   def include_token?

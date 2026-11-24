@@ -296,6 +296,24 @@ class RecordCache
       counts = Group.kept.where(parent_id: ids).group(:parent_id).count
       scope[:subgroups_counts_by_group_id].merge!(ids.index_with { |id| counts.fetch(id, 0) })
     end
+    scope[:delegates_counts_by_group_id] ||= {}
+    delegate_ids = collection.map(&:id).compact.uniq - scope[:delegates_counts_by_group_id].keys
+    unless delegate_ids.empty?
+      delegate_counts = Membership.active.where(group_id: delegate_ids, delegate: true).group(:group_id).count
+      scope[:delegates_counts_by_group_id].merge!(delegate_ids.index_with { |id| delegate_counts.fetch(id, 0) })
+    end
+    scope[:active_polls_counts_by_group_id] ||= {}
+    scope[:closed_polls_counts_by_group_id] ||= {}
+    scope[:proposals_counts_by_group_id] ||= {}
+    poll_group_ids = collection.map(&:id).compact.uniq - scope[:active_polls_counts_by_group_id].keys
+    unless poll_group_ids.empty?
+      active_counts = Poll.active.joins(:topic).where(topics: { group_id: poll_group_ids }).group('topics.group_id').count
+      closed_counts = Poll.closed.joins(:topic).where(topics: { group_id: poll_group_ids }).group('topics.group_id').count
+      proposal_counts = Poll.kept.where(poll_type: 'proposal').joins(:topic).where(topics: { group_id: poll_group_ids }).group('topics.group_id').count
+      scope[:active_polls_counts_by_group_id].merge!(poll_group_ids.index_with { |id| active_counts.fetch(id, 0) })
+      scope[:closed_polls_counts_by_group_id].merge!(poll_group_ids.index_with { |id| closed_counts.fetch(id, 0) })
+      scope[:proposals_counts_by_group_id].merge!(poll_group_ids.index_with { |id| proposal_counts.fetch(id, 0) })
+    end
   end
 
   # this is a colleciton of groups joined to subscription.. crazy I know

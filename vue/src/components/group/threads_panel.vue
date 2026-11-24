@@ -59,7 +59,6 @@ export default
         order: 'lastActivityAt',
         params: {
           group_id: this.group.id,
-          topicable_type: 'Discussion',
           subgroups: 'mine',
           filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
           tags: this.$route.query.tag,
@@ -132,7 +131,6 @@ export default
       if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
         pinnedTopics = Records.topics.collection.chain().find({
           groupId: {$in: groupIds},
-          topicableType: 'Discussion',
           discardedAt: null,
           pinnedAt: {$ne: null}
         }).simplesort('pinnedAt', true).data();
@@ -140,7 +138,6 @@ export default
 
       let chain = Records.topics.collection.chain().find({
         groupId: {$in: groupIds},
-        topicableType: 'Discussion',
         discardedAt: null,
         id: {$nin: pinnedTopics.map(t => t.id)}
       }).simplesort('lastActivityAt', true);
@@ -196,7 +193,7 @@ export default
     },
 
     noThreadsMatchingFilters() {
-      return this.noThreads && this.group.discussionsCount > 0;
+      return this.noThreads && ((this.group.discussionsCount || 0) + (this.group.pollsCount || 0)) > 0;
     },
 
     canViewPrivateContent() {
@@ -252,13 +249,12 @@ div.discussions-panel(v-if="group")
       span(v-t="'common.action.search'")
     v-spacer
     v-btn.discussions-panel__new-topic-button(
+      v-if="canStartThread"
+      :to="'/discussion_templates/?group_id=' + group.id"
       variant="elevated"
-      v-if='canStartThread'
-      :to="'/discussion_templates/?group_id='+group.id"
-      color='primary'
+      color="primary"
     )
-
-      span(v-t="'discussions_panel.new_discussion'")
+      span {{ $t('discussions_panel.new_thread') }}
 
   v-alert(color="info" variant="tonal" v-if="noThreadsMatchingFilters")
     v-card-text

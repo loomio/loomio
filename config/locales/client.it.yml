@@ -1606,6 +1606,8 @@ it:
       Ho creato %{groupName} su %{site_name} per discutere e prendere decisioni insieme. Unisciti con questo link:
       %{link}
     trial_shareable_link_note: Copia il link di invito e invialo via email o chat per invitare persone nel tuo gruppo. Quando entrano, puoi inviare loro notifiche via email e sul cellulare direttamente da Loomio. <a href="%{upgradeUrl}">Passa a un piano superiore</a> per inviare inviti via email.
+    include_intro_message: Includi un messaggio introduttivo
+    trial_shareable_invitation_message: 'Ho avviato una prova di 7 giorni di %{site_name} per vedere se può aiutarci a prendere decisioni in %{groupName}. Clicca su questo link per unirti e provarlo insieme: %{link}'
   memberships_page:
     members: Membri
     name_label: Nome
@@ -2205,6 +2207,7 @@ it:
     unlocked: Sbloccato
     no_threads_found_that_match_your_query_or_filters: Nessun thread trovato corrispondente alla query o ai filtri
     no_threads_found_that_match_your_filters: Nessun thread trovato corrispondente ai filtri selezionati
+    new_thread: Nuova conversazione
   members_panel:
     bot: Bot
     no_results: Nessun membri trovato
@@ -3300,3 +3303,21 @@ it:
     bounced: Segnalata mancata consegna
     complained: Segnalata come spam
     skipped: Email non inviata
+  group_cards:
+    admins_count: 1 amministratore | {count} amministratori
+    members_count: 1 membro | {count} membri
+    delegates_count: 1 delegato | {count} delegati
+    polls_count: 1 sondaggio | {count} sondaggi
+    proposals_count: 1 proposta | {count} proposte
+    needs_your_vote: 1 richiede il tuo voto | {count} richiedono il tuo voto
+    no_open_polls: Nessun sondaggio aperto
+    browse_files: Vedi file
+    invite_get_started: Clicca qui per iniziare
+  onboarding_card:
+    extend_trial_title: Sblocca 30 giorni in più
+    extend_trial_initial: Sblocca 30 giorni in più quando {count} persone votano in una proposta o un sondaggio.
+    extend_trial_remaining: Sblocca 30 giorni in più quando un'altra persona vota in una proposta o un sondaggio. | Sblocca 30 giorni in più quando altre {count} persone votano in una proposta o un sondaggio.
+    verified_badge: Verificato
+    trial_verified: Abbiamo visto il tuo gruppo e siamo qui per aiutarti. Ora puoi inviare inviti via email — continua per sbloccare 30 giorni in più e le funzioni Pro.
+    trial_extended_title: 30 giorni in più sbloccati
+    trial_extended_description: La tua prova è stata estesa di 30 giorni con sottogruppi e ospiti abilitati.

@@ -63,10 +63,10 @@ module Dev::Scenarios::Group
   def setup_trial_group
     sign_in patrick
     group = create_group
-    group.update!(group_privacy: 'secret')
-    group.subscription.update!(plan: 'trial', expires_at: 14.days.from_now, max_members: 10)
-    group.add_member! emilio
-    redirect_to "/g/#{group.key}/members"
+    group.memberships.where.not(user: patrick).destroy_all
+    group.update!(group_privacy: 'secret', memberships_count: 1)
+    group.subscription.update!(plan: 'trial', expires_at: 7.days.from_now, max_members: 10, allow_subgroups: false, allow_guests: false)
+    redirect_to group_path(group)
   end
 
   def setup_group_with_vote_weights

@@ -1586,6 +1586,8 @@ hu:
       Létrehoztam a(z) %{groupName} csoportot a(z) %{site_name} felületén, hogy együtt beszélgessünk és hozzunk döntéseket. Csatlakozz ezen a linken:
       %{link}
     trial_shareable_link_note: Másold ki a meghívó linket, és küldd el e-mailben vagy csevegésben, hogy másokat is meghívj a csoportodba. Ha csatlakoztak, közvetlenül a Loomióból küldhetsz nekik e-mailes és mobilos értesítéseket. <a href="%{upgradeUrl}">Válts nagyobb csomagra</a>, hogy e-mailes meghívókat küldhess.
+    include_intro_message: Bemutatkozó üzenet hozzáadása
+    trial_shareable_invitation_message: 'Elindítottam a %{site_name} 7 napos próbaidőszakát, hogy megnézzük, segíthet-e a döntéshozatalban a %{groupName} csoportban. Kérlek, kattints erre a linkre a csatlakozáshoz, hogy együtt kipróbálhassuk: %{link}'
   memberships_page:
     members: Tagok
     name_label: Név
@@ -2188,6 +2190,7 @@ hu:
     unlocked: Feloldva
     no_threads_found_that_match_your_query_or_filters: Nem található a keresésnek vagy a szűrőknek megfelelő szál
     no_threads_found_that_match_your_filters: Nem található a szűrőknek megfelelő szál
+    new_thread: Új szál
   members_panel:
     bot: Bot
     no_results: Nem találhatók tagok
@@ -3283,3 +3286,21 @@ hu:
     bounced: Visszapattanás jelezve
     complained: Spamként jelentve
     skipped: E-mail nem lett elküldve
+  group_cards:
+    admins_count: 1 admin | {count} admin
+    members_count: 1 tag | {count} tag
+    delegates_count: 1 küldött | {count} küldött
+    polls_count: 1 szavazás | {count} szavazás
+    proposals_count: 1 javaslat | {count} javaslat
+    needs_your_vote: 1 vár a szavazatodra | {count} vár a szavazatodra
+    no_open_polls: Nincs nyitott szavazás
+    browse_files: Fájlok megtekintése
+    invite_get_started: Kattints ide a kezdéshez
+  onboarding_card:
+    extend_trial_title: Szerezz 30 extra napot
+    extend_trial_initial: Szerezz 30 extra napot, ha {count} ember szavaz egy javaslatról vagy szavazáson.
+    extend_trial_remaining: Szerezz 30 extra napot, ha még 1 ember szavaz egy javaslatról vagy szavazáson. | Szerezz 30 extra napot, ha még {count} ember szavaz egy javaslatról vagy szavazáson.
+    verified_badge: Ellenőrizve
+    trial_verified: Megnéztük a csoportodat, és segítünk, ha kell. Most már küldhetsz meghívókat e-mailben — folytasd, hogy 30 extra napot és Pro funkciókat kapj.
+    trial_extended_title: Megkaptad a 30 extra napot
+    trial_extended_description: A próbaidőd 30 nappal meghosszabbodott, és már alcsoportokat és vendégeket is hozzáadhatsz.

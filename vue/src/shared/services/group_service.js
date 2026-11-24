@@ -25,7 +25,7 @@ export default new class GroupService {
         name: 'common.value',
         nameArgs: () => { return {value: group.handle+"@"+AppConfig.theme.reply_hostname} },
         icon: 'mdi-email',
-        dock: 2,
+        menu: true,
         canPerform() {
           return group.handle && DiscussionAbility.canCreate(group) && AppConfig.features.app.thread_from_mail;
         },

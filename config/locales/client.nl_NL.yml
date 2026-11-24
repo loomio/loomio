@@ -1594,6 +1594,8 @@ nl_NL:
       Ik heb %{groupName} op %{site_name} aangemaakt zodat we samen kunnen overleggen en besluiten nemen. Sluit je aan via deze link:
       %{link}
     trial_shareable_link_note: Kopieer de uitnodigingslink en stuur die via e-mail of chat om mensen uit te nodigen voor je groep. Zodra ze lid zijn, kun je ze rechtstreeks vanuit Loomio e-mail- en mobiele meldingen sturen. <a href="%{upgradeUrl}">Upgrade je abonnement</a> om uitnodigingen per e-mail te versturen.
+    include_intro_message: Voeg een welkomstbericht toe
+    trial_shareable_invitation_message: 'Ik ben een proefperiode van 7 dagen op %{site_name} gestart om te zien of het ons kan helpen besluiten te nemen binnen %{groupName}. Klik op deze link om mee te doen, zodat we het kunnen uitproberen: %{link}'
   memberships_page:
     members: Leden
     name_label: Naam
@@ -2200,6 +2202,7 @@ nl_NL:
     unlocked: Ontgrendeld
     no_threads_found_that_match_your_query_or_filters: Er zijn geen threads gevonden die overeenkomen met uw zoekopdracht of filters.
     no_threads_found_that_match_your_filters: Er zijn geen threads gevonden die overeenkomen met uw filters.
+    new_thread: Nieuwe thread
   members_panel:
     bot: Bot
     no_results: Geen leden gevonden
@@ -3299,3 +3302,21 @@ nl_NL:
     bounced: Onbestelbare e-mail gemeld
     complained: Spamklacht gemeld
     skipped: E-mail niet verstuurd
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 lid | {count} leden
+    delegates_count: 1 afgevaardigde | {count} afgevaardigden
+    polls_count: 1 peiling | {count} peilingen
+    proposals_count: 1 voorstel | {count} voorstellen
+    needs_your_vote: 1 wacht op je stem | {count} wachten op je stem
+    no_open_polls: Geen open peilingen
+    browse_files: Bekijk bestanden
+    invite_get_started: Klik hier om te beginnen
+  onboarding_card:
+    extend_trial_title: Ontgrendel 30 extra dagen
+    extend_trial_initial: Ontgrendel 30 extra dagen zodra {count} mensen stemmen in een voorstel of peiling.
+    extend_trial_remaining: Ontgrendel 30 extra dagen zodra nog 1 persoon stemt in een voorstel of peiling. | Ontgrendel 30 extra dagen zodra nog {count} mensen stemmen in een voorstel of peiling.
+    verified_badge: Geverifieerd
+    trial_verified: We hebben je groep bekeken en helpen je graag. Je kunt nu uitnodigingen per e-mail versturen — ga door om 30 extra dagen en Pro-functies te ontgrendelen.
+    trial_extended_title: 30 extra dagen ontgrendeld
+    trial_extended_description: Je proefperiode is met 30 dagen verlengd en subgroepen en gasten zijn ingeschakeld.

@@ -17,6 +17,7 @@ class AnonymousBallotService
       poll.update_counts!
     end
 
+    TrialExtensionService.check!(poll.group)
     anonymous_ballot
   end
 end

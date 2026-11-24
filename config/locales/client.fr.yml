@@ -1615,6 +1615,8 @@ fr:
       J’ai créé %{groupName} sur %{site_name} pour que nous puissions discuter et prendre des décisions ensemble. Rejoignez le groupe avec ce lien :
       %{link}
     trial_shareable_link_note: Copiez le lien d’invitation et envoyez-le par e-mail ou dans une discussion pour inviter des personnes dans votre groupe. Une fois ces personnes membres, vous pourrez leur envoyer des notifications par e-mail et sur mobile directement depuis Loomio. <a href="%{upgradeUrl}">Passez au forfait supérieur</a> pour envoyer des invitations par e-mail.
+    include_intro_message: Inclure un message de présentation
+    trial_shareable_invitation_message: 'J’ai lancé un essai de 7 jours de %{site_name} pour voir si cet outil peut nous aider à prendre des décisions au sein de %{groupName}. Cliquez sur ce lien pour nous rejoindre et l’essayer ensemble : %{link}'
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -2219,6 +2221,7 @@ fr:
     unlocked: Déverrouillé
     no_threads_found_that_match_your_query_or_filters: Aucun sujet ne correspond à votre requête ou à vos filtres.
     no_threads_found_that_match_your_filters: Aucun sujet correspondant à vos filtres n'a été trouvé.
+    new_thread: Nouveau fil
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '
@@ -3317,3 +3320,21 @@ fr:
     bounced: Échec de livraison signalé
     complained: Signalement comme indésirable reçu
     skipped: Courriel non envoyé
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 membre | {count} membres
+    delegates_count: 1 délégué | {count} délégués
+    polls_count: 1 sondage | {count} sondages
+    proposals_count: 1 proposition | {count} propositions
+    needs_your_vote: 1 attend votre vote | {count} attendent votre vote
+    no_open_polls: Aucun sondage ouvert
+    browse_files: Voir les fichiers
+    invite_get_started: Cliquez ici pour commencer
+  onboarding_card:
+    extend_trial_title: Débloquez 30 jours de plus
+    extend_trial_initial: Débloquez 30 jours de plus lorsque {count} personnes votent sur une proposition ou un sondage.
+    extend_trial_remaining: Débloquez 30 jours de plus lorsqu’une personne de plus vote sur une proposition ou un sondage. | Débloquez 30 jours de plus lorsque {count} personnes de plus votent sur une proposition ou un sondage.
+    verified_badge: Vérifié
+    trial_verified: Nous avons vu votre groupe et sommes là pour vous aider. Vous pouvez maintenant envoyer des invitations par e-mail — continuez pour débloquer 30 jours de plus et les fonctionnalités Pro.
+    trial_extended_title: 30 jours de plus débloqués
+    trial_extended_description: Votre essai a été prolongé de 30 jours avec les sous-groupes et les invités activés.

@@ -1484,6 +1484,24 @@ en:
     month: Month
     year: Year
     country_disclaimer: Country is based on the user's IP address and is not very accurate. Consider this a rough guide only.
+  group_cards:
+    admins_count: "1 admin | {count} admins"
+    members_count: "1 member | {count} members"
+    delegates_count: "1 delegate | {count} delegates"
+    polls_count: "1 poll | {count} polls"
+    proposals_count: "1 proposal | {count} proposals"
+    needs_your_vote: "1 needs your vote | {count} need your vote"
+    no_open_polls: No open polls
+    browse_files: View files
+    invite_get_started: Click here to get started
+  onboarding_card:
+    extend_trial_title: Unlock 30 extra days
+    extend_trial_initial: "Unlock 30 extra days when {count} people vote in a proposal or poll."
+    extend_trial_remaining: "Unlock 30 extra days when 1 more person votes in a proposal or poll. | Unlock 30 extra days when {count} more people vote in a proposal or poll."
+    verified_badge: Verified
+    trial_verified: We've seen your group and we're here to help. You can now send email invitations — keep going to unlock 30 extra days and Pro features.
+    trial_extended_title: 30 extra days unlocked
+    trial_extended_description: Your trial has been extended by 30 days with subgroups and guests enabled.
   group_page:
     stats: Group stats
     participation_report: Participation report
@@ -1756,12 +1774,15 @@ en:
     secret_group_url_explanation: This is the address for your group. Only invited members will be able to see the group.
     shareable_invitation_explanation: Anyone with this link can join your group immediately.
     invite_link: Invite link
+    include_intro_message: Include intro message
     shareable_invitation_message_label: Message to copy into an email or chat
     members_used: "%{used} of %{max} members"
     shareable_invitation_message: |-
       I've set up %{groupName} on %{site_name} so we can discuss and make decisions together. Join using this link:
       %{link}
-    trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. Once they join, you can send them email and mobile notifications from Loomio directly. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
+    trial_shareable_invitation_message: |-
+      I've started a 7 day %{site_name} trial so we can see if it can help with decision making within %{groupName}. Please click this link to join so we can give it a go: %{link}
+    trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
     shareable_link_to_join_group: Shareable link to join group
     shareable_link_reset: Shareable link reset. The previous link will no longer work.
     reset_the_link: Reset the link
@@ -2445,6 +2466,7 @@ en:
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_discussion: Let's start a discussion. Click "New discussion" to continue.
     new_discussion: New discussion
+    new_thread: New thread
   members_panel:
     edit_vote_weights: Edit vote weights
     vote_weights_are_defaults: These default vote weights apply to new votes. Changes here do not affect vote weights already issued.

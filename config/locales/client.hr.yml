@@ -1582,6 +1582,8 @@ hr:
       Postavio/la sam grupu %{groupName} na %{site_name} kako bismo zajedno raspravljali i donosili odluke. Pridružite se putem ove poveznice:
       %{link}
     trial_shareable_link_note: Kopirajte poveznicu za poziv i pošaljite je e-poštom ili chatom kako biste pozvali ljude u svoju grupu. Kad se pridruže, možete im slati obavijesti e-poštom i na mobitel izravno iz Loomija. <a href="%{upgradeUrl}">Nadogradite svoj plan</a> za slanje pozivnica e-poštom.
+    include_intro_message: Uključite uvodnu poruku
+    trial_shareable_invitation_message: 'Pokrenuo sam probno razdoblje od 7 dana za %{site_name} kako bismo vidjeli može li pomoći u donošenju odluka u grupi %{groupName}. Kliknite ovu poveznicu i pridružite se kako bismo ga isprobali: %{link}'
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -2181,6 +2183,7 @@ hr:
     unlocked: Otključan
     no_threads_found_that_match_your_query_or_filters: Nisu pronađene teme koje odgovaraju vašem upitu ili filterima
     no_threads_found_that_match_your_filters: Nisu pronađene teme koje odgovaraju vašim filterima
+    new_thread: Nova nit
   members_panel:
     bot: Bot
     no_results: Nema pronađenih članova
@@ -3273,3 +3276,21 @@ hr:
     bounced: Prijavljen povrat e-pošte
     complained: Prijavljena neželjena pošta
     skipped: E-pošta nije poslana
+  group_cards:
+    admins_count: 1 admin | {count} admina
+    members_count: 1 član | {count} članova
+    delegates_count: 1 delegat | {count} delegata
+    polls_count: 1 anketa | {count} anketa
+    proposals_count: 1 prijedlog | {count} prijedloga
+    needs_your_vote: 1 čeka vaš glas | {count} čeka vaš glas
+    no_open_polls: Nema otvorenih anketa
+    browse_files: Pogledajte datoteke
+    invite_get_started: Kliknite ovdje za početak
+  onboarding_card:
+    extend_trial_title: Otključajte dodatnih 30 dana
+    extend_trial_initial: Otključajte dodatnih 30 dana kad {count} osoba glasa o prijedlogu ili u anketi.
+    extend_trial_remaining: Otključajte dodatnih 30 dana kad još 1 osoba glasa o prijedlogu ili u anketi. | Otključajte dodatnih 30 dana kad još {count} osoba glasa o prijedlogu ili u anketi.
+    verified_badge: Potvrđeno
+    trial_verified: Primijetili smo vašu grupu i tu smo da pomognemo. Sada možete slati pozivnice e-poštom — nastavite kako biste otključali dodatnih 30 dana i Pro značajke.
+    trial_extended_title: Otključano dodatnih 30 dana
+    trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste.

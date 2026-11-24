@@ -4,12 +4,16 @@ import Records           from '@/shared/services/records';
 import EventBus          from '@/shared/services/event_bus';
 import GroupAbility from '@/shared/abilities/group_ability';
 import GroupService    from '@/shared/services/group_service';
+import GroupCards from '@/components/group/cards.vue';
 import { pickBy } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
+const SUBPAGE_SEGMENTS = new Set(['polls', 'members', 'files', 'membership_requests', 'emails', 'tags']);
+
 export default
 {
+  components: { GroupCards },
   mixins: [UrlFor, FormatDate],
   data() {
     return {
@@ -47,16 +51,22 @@ export default
       return GroupAbility.canUpdate(this.group);
     },
 
-    tabs() {
-      if (!this.group) { return; }
-      let query = '';
+    isOverviewRoute() {
+      const segments = (this.$route?.path || '').split('/').filter(Boolean);
+      return !segments.some(segment => SUBPAGE_SEGMENTS.has(segment));
+    },
 
-      return [
-        {id: 0, name: 'discussions',   route: this.urlFor(this.group, null)+query},
-        {id: 1, name: 'polls',     route: this.urlFor(this.group, 'polls')+query},
-        {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
-        {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
-      ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
+    showPlanBanner() {
+      if (!this.group) { return false; }
+      const parent = typeof this.group.parentOrSelf === 'function' ? this.group.parentOrSelf() : this.group;
+      const sub = (parent || this.group).subscription || {};
+      const user = typeof Session.user === 'function' ? Session.user() : null;
+      const handledByOnboardingCard = this.isOverviewRoute &&
+        sub.plan === 'trial' &&
+        typeof this.group.isEnabled === 'function' && this.group.isEnabled() &&
+        user && typeof this.group.membersInclude === 'function' && this.group.membersInclude(user) &&
+        (!sub.trial_extended_at || !user.hasExperienced('hideOnboarding'));
+      return !handledByOnboardingCard;
     }
   },
 
@@ -102,51 +112,37 @@ v-main
       //  height="48"
       //  width="48"
       //  eager)
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
-      span(v-if="group && group.parentId")
-        router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())")
-          plain-text(:model="group.parent()" field="name")
-        space
-        span.text-medium-emphasis.text--lighten-1 &gt;
-        space
-      plain-text.group-page__name.mr-4(:model="group" field="name")
-    plan-banner(:group="group")
+    .d-flex.align-center.justify-space-between.flex-wrap.ga-2.my-4
+      h1.text-headline-large(tabindex="-1" v-intersect="{handler: titleVisible}")
+        span(v-if="group && group.parentId")
+          router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())")
+            plain-text(:model="group.parent()" field="name")
+          space
+          span.text-medium-emphasis.text--lighten-1 &gt;
+          space
+        plain-text.group-page__name(:model="group" field="name")
+      action-dock.group-page__actions(
+        :model='group'
+        :actions='dockActions'
+        :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"
+        :menu-name="canEditGroup ? $t('common.settings') : $t('action_dock.more')"
+        :menu-icon-only="false"
+        menu-show-icon
+        :menu-actions='menuActions')
+    plan-banner(v-if="showPlanBanner" :group="group")
     formatted-text.group-page__description(
       v-if="group"
       :model="group"
       field="description")
     link-previews(:model="group")
-    action-dock.group-page__actions(
-      :model='group'
-      :actions='dockActions'
-      :menu-icon="canEditGroup ? 'mdi-cog' : 'mdi-dots-horizontal'"
-      :menu-name="canEditGroup ? $t('common.settings') : $t('action_dock.more')"
-      :menu-icon-only="false"
-      menu-show-icon
-      :menu-actions='menuActions')
     join-group-button(:group='group')
     group-follow-button(:group='group')
     attachment-list(:attachments="group.attachments")
-    v-divider.mt-4
-    v-tabs(
-      v-model="activeTab"
-      background-color="transparent"
-      center-active
-      grow
-    )
-      v-tab(
-        v-for="tab of tabs"
-        :key="tab.id"
-        :to="tab.route"
-        :class="'group-page-' + tab.name + '-tab' "
-      )
-        //- common-icon(name="mdi-comment-multiple")
-        span(v-t="'group_page.'+tab.name")
+    group-cards(v-if="isOverviewRoute" :group="group")
+    .mt-4(v-else)
+      v-btn.group-page-discussions-tab(variant="text" :to="urlFor(group, null)")
+        common-icon.mr-1(name="mdi-arrow-left")
+        span {{ $t('group_page.discussions') }}
+    v-divider.mt-2
     router-view
 </template>
-
-<style lang="css">
-.action-dock__button--email_group {
-  text-transform: none !important;
-}
-</style>

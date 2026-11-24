@@ -166,6 +166,9 @@ describe('Trial email invitation flag and shareable link UX', () => {
     expect(wrapper.text()).not.toContain('Anyone with this link can join your group immediately');
     expect(wrapper.text()).not.toContain('To stop people from joining with this link');
     expect(wrapper.find('.shareable-link-modal__members').text()).toBe('2 of 10 members');
+    expect(wrapper.find('.shareable-link-modal__shareable-link input').element.value).toContain('/join/group/abc123');
+    await wrapper.find('.shareable-link-modal__include-message input').setValue(true);
+    await flushPromises();
     expect(wrapper.find('.shareable-link-modal__message textarea').element.value).toContain('Trial Group');
     expect(wrapper.find('.shareable-link-modal__message textarea').element.value).toContain('/join/group/abc123');
 

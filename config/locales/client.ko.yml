@@ -1763,6 +1763,8 @@ ko:
       함께 토론하고 결정할 수 있도록 %{site_name}에 %{groupName} 그룹을 만들었습니다. 이 링크로 가입하세요:
       %{link}
     trial_shareable_link_note: 초대 링크를 복사해 이메일이나 채팅으로 보내 그룹에 초대하세요. 가입한 멤버에게는 Loomio에서 바로 이메일과 모바일 알림을 보낼 수 있습니다. 이메일로 초대를 보내려면 <a href="%{upgradeUrl}">요금제를 업그레이드하세요</a>.
+    include_intro_message: 소개 메시지 포함
+    trial_shareable_invitation_message: "%{groupName}의 의사 결정에 도움이 될지 알아보려고 %{site_name} 7일 체험을 시작했습니다. 함께 사용해 볼 수 있도록 이 링크를 클릭해 가입하세요: %{link}"
   memberships_page:
     members: 멤버
     name_label: 이름
@@ -2425,6 +2427,7 @@ ko:
     welcome_to_your_new_group: 새 Loomio 그룹에 오신 것을 환영합니다
     lets_start_a_discussion: 토론을 시작해 보세요. 계속하려면 "새 토론"을 클릭하세요.
     new_discussion: 새 토론
+    new_thread: 새 스레드
   members_panel:
     edit_vote_weights: 투표 가중치 편집
     vote_weights_are_defaults: 이 기본 투표 가중치는 새 표에 적용됩니다. 여기서 변경해도 이미 부여된 투표 가중치에는 영향을 주지 않습니다.
@@ -3226,3 +3229,21 @@ ko:
       government: 정부/지방자치단체
       cohousing: 공동생활 및 공동주거
       other: 기타
+  group_cards:
+    admins_count: 그룹 관리자 1명 | 그룹 관리자 {count}명
+    members_count: 멤버 1명 | 멤버 {count}명
+    delegates_count: 대의원 1명 | 대의원 {count}명
+    polls_count: 투표 1개 | 투표 {count}개
+    proposals_count: 제안 1개 | 제안 {count}개
+    needs_your_vote: 투표가 필요한 항목 1개 | 투표가 필요한 항목 {count}개
+    no_open_polls: 진행 중인 투표 없음
+    browse_files: 파일 보기
+    invite_get_started: 여기를 클릭해 시작하세요
+  onboarding_card:
+    extend_trial_title: 체험 기간 30일 추가
+    extend_trial_initial: "{count}명이 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다."
+    extend_trial_remaining: 1명이 더 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다. | {count}명이 더 제안이나 투표에 참여하면 체험 기간이 30일 늘어납니다.
+    verified_badge: 확인됨
+    trial_verified: 그룹을 확인했습니다. 도움이 필요하면 말씀하세요. 이제 이메일 초대를 보낼 수 있습니다. 계속 진행해 체험 기간 30일과 Pro 기능을 추가로 이용하세요.
+    trial_extended_title: 체험 기간 30일 추가됨
+    trial_extended_description: 체험 기간이 30일 연장되었으며 하위 그룹과 게스트 기능이 활성화되었습니다.

@@ -1660,6 +1660,8 @@ zh_CN:
       我已在 %{site_name} 上创建了 %{groupName}，方便大家一起讨论和做决定。点击此链接加入：
       %{link}
     trial_shareable_link_note: 复制邀请链接，通过邮件或聊天发送，邀请他人加入群组。他们加入后，您就可以直接通过 Loomio 向他们发送邮件和手机通知。<a href="%{upgradeUrl}">升级套餐</a>即可发送邮件邀请。
+    include_intro_message: 附上介绍消息
+    trial_shareable_invitation_message: 我已开启 %{site_name} 的 7 天试用，看看它能否帮助 %{groupName} 做决定。请点击此链接加入，一起试试：%{link}
   memberships_page:
     members: 成员
     name_label: 名字
@@ -2291,6 +2293,7 @@ zh_CN:
     unlocked: 已解锁
     no_threads_found_that_match_your_query_or_filters: 未找到符合您的查询或筛选条件的帖子
     no_threads_found_that_match_your_filters: 未找到符合您筛选条件的帖子
+    new_thread: 新建帖子
   members_panel:
     email_rejected: 邮件被拒
     email_rejected_meaning: 发送到此地址的邮件已被退回或被标记为垃圾邮件。我们将不再向此地址发送邮件。
@@ -3196,3 +3199,21 @@ zh_CN:
     bounced: 收到退信反馈
     complained: 收到垃圾邮件投诉
     skipped: 邮件未发送
+  group_cards:
+    admins_count: 1 位管理员 | {count} 位管理员
+    members_count: 1 位成员 | {count} 位成员
+    delegates_count: 1 位代表 | {count} 位代表
+    polls_count: 1 项投票 | {count} 项投票
+    proposals_count: 1 项提案 | {count} 项提案
+    needs_your_vote: 1 项待您投票 | {count} 项待您投票
+    no_open_polls: 暂无进行中的投票
+    browse_files: 查看文件
+    invite_get_started: 点击此处开始
+  onboarding_card:
+    extend_trial_title: 解锁额外 30 天试用
+    extend_trial_initial: "{count} 人在提案或投票中投票后，即可解锁额外 30 天试用。"
+    extend_trial_remaining: 再有 1 人在提案或投票中投票，即可解锁额外 30 天试用。 | 再有 {count} 人在提案或投票中投票，即可解锁额外 30 天试用。
+    verified_badge: 已验证
+    trial_verified: 我们已了解您的群组，随时可以提供帮助。现在可以发送邮件邀请了，继续使用即可解锁额外 30 天试用和专业版功能。
+    trial_extended_title: 已解锁额外 30 天试用
+    trial_extended_description: 试用期已延长 30 天，子群组和访客功能已启用。

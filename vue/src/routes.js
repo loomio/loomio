@@ -13,7 +13,7 @@ const PollTemplateFormPage = () => import('./components/poll_template/form_page'
 const PollTemplateBrowsePage = () => import('./components/poll_template/browse_page');
 const TasksPage = () => import('./components/tasks/page');
 const BookmarksPage = () => import('./components/bookmarks/page');
-const GroupDiscussionsPanel = () => import('./components/group/discussions_panel');
+const GroupThreadsPanel = () => import('./components/group/threads_panel');
 const GroupPollsPanel = () => import('./components/group/polls_panel');
 const GroupEmailsPanel = () => import('./components/group/emails_panel');
 const MembersPanel = () => import('./components/group/members_panel');
@@ -45,7 +45,7 @@ const groupPageChildren = [
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
-  {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
+  {path: ':stub?', component: GroupThreadsPanel, meta: {noScroll: true}}
 ];
 
 const router = createRouter({

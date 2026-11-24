@@ -1580,6 +1580,8 @@ ro:
       Am creat grupul %{groupName} pe %{site_name} ca să putem discuta și lua decizii împreună. Alătură-te folosind acest link:
       %{link}
     trial_shareable_link_note: Copiază linkul de invitație și trimite-l prin e-mail sau chat ca să inviți oameni în grupul tău. După ce se alătură, le poți trimite notificări prin e-mail și pe mobil direct din Loomio. <a href="%{upgradeUrl}">Treci la un plan superior</a> ca să trimiți invitații prin e-mail.
+    include_intro_message: Include un mesaj introductiv
+    trial_shareable_invitation_message: 'Am început o perioadă de probă de 7 zile pe %{site_name} ca să vedem dacă ne poate ajuta să luăm decizii în %{groupName}. Apasă pe acest link ca să te alături și să încercăm împreună: %{link}'
   memberships_page:
     members: Membri
     name_label: Nume
@@ -2177,6 +2179,7 @@ ro:
     unlocked: Deblocat
     no_threads_found_that_match_your_query_or_filters: Nu s-au găsit subiecte care să corespundă interogării sau filtrelor dvs.
     no_threads_found_that_match_your_filters: Nu s-au găsit subiecte care să corespundă filtrelor dvs.
+    new_thread: Fir nou
   members_panel:
     bot: Bot
     no_results: Nu s-au găsit membri
@@ -3272,3 +3275,21 @@ ro:
     bounced: Returnare raportată
     complained: Reclamație de spam raportată
     skipped: E-mail netrimis
+  group_cards:
+    admins_count: 1 admin | {count} admini
+    members_count: 1 membru | {count} membri
+    delegates_count: 1 delegat | {count} delegați
+    polls_count: 1 sondaj | {count} sondaje
+    proposals_count: 1 propunere | {count} propuneri
+    needs_your_vote: 1 are nevoie de votul tău | {count} au nevoie de votul tău
+    no_open_polls: Niciun sondaj deschis
+    browse_files: Vezi fișierele
+    invite_get_started: Apasă aici pentru a începe
+  onboarding_card:
+    extend_trial_title: Deblochează încă 30 de zile
+    extend_trial_initial: Deblochează încă 30 de zile când {count} persoane votează la o propunere sau un sondaj.
+    extend_trial_remaining: Deblochează încă 30 de zile când încă 1 persoană votează la o propunere sau un sondaj. | Deblochează încă 30 de zile când încă {count} persoane votează la o propunere sau un sondaj.
+    verified_badge: Verificat
+    trial_verified: Am văzut grupul tău și suntem aici să te ajutăm. Acum poți trimite invitații prin e-mail — continuă pentru a debloca încă 30 de zile și funcțiile Pro.
+    trial_extended_title: Încă 30 de zile deblocate
+    trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile, cu subgrupuri și invitați activați.

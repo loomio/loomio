@@ -1580,6 +1580,8 @@ fi:
       Perustin ryhmän %{groupName} palveluun %{site_name}, jotta voimme keskustella ja tehdä päätöksiä yhdessä. Liity tästä linkistä:
       %{link}
     trial_shareable_link_note: Kopioi kutsulinkki ja lähetä se sähköpostitse tai chatissa kutsuaksesi ihmisiä ryhmääsi. Kun he liittyvät, voit lähettää heille sähköposti- ja mobiili-ilmoituksia suoraan Loomiosta. <a href="%{upgradeUrl}">Päivitä tilauksesi</a>, niin voit lähettää kutsuja sähköpostitse.
+    include_intro_message: Lisää esittelyviesti
+    trial_shareable_invitation_message: 'Aloitin palvelun %{site_name} 7 päivän kokeilun, jotta voimme katsoa, auttaako se ryhmän %{groupName} päätöksenteossa. Liity napsauttamalla tätä linkkiä, niin pääsemme kokeilemaan: %{link}'
   memberships_page:
     members: Jäsenet
     name_label: Nimi
@@ -2177,6 +2179,7 @@ fi:
     unlocked: Lukitsematon
     no_threads_found_that_match_your_query_or_filters: Hakuasi tai suodattimiasi vastaavia ketjuja ei löytynyt
     no_threads_found_that_match_your_filters: Suodattimiasi vastaavia ketjuja ei löytynyt
+    new_thread: Uusi ketju
   members_panel:
     bot: Bot
     no_results: Jäseniä ei löytynyt
@@ -3272,3 +3275,21 @@ fi:
     bounced: Sähköpostin palautuminen ilmoitettu
     complained: Roskaposti-ilmoitus kirjattu
     skipped: Sähköpostia ei lähetetty
+  group_cards:
+    admins_count: 1 ylläpitäjä | {count} ylläpitäjää
+    members_count: 1 jäsen | {count} jäsentä
+    delegates_count: 1 valtuutettu | {count} valtuutettua
+    polls_count: 1 kysely | {count} kyselyä
+    proposals_count: 1 ehdotus | {count} ehdotusta
+    needs_your_vote: 1 odottaa ääntäsi | {count} odottaa ääntäsi
+    no_open_polls: Ei avoimia kyselyjä
+    browse_files: Näytä tiedostot
+    invite_get_started: Aloita napsauttamalla tästä
+  onboarding_card:
+    extend_trial_title: Saa 30 lisäpäivää
+    extend_trial_initial: Saat 30 lisäpäivää, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
+    extend_trial_remaining: Saat 30 lisäpäivää, kun vielä 1 ihminen äänestää ehdotuksessa tai kyselyssä. | Saat 30 lisäpäivää, kun vielä {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
+    verified_badge: Vahvistettu
+    trial_verified: Olemme tutustuneet ryhmääsi ja autamme mielellämme. Voit nyt lähettää sähköpostikutsuja — jatka, niin saat 30 lisäpäivää ja Pro-ominaisuudet käyttöön.
+    trial_extended_title: Sait 30 lisäpäivää
+    trial_extended_description: Kokeiluasi on jatkettu 30 päivällä, ja alaryhmät ja vieraat ovat nyt käytössä.

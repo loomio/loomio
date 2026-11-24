@@ -1615,6 +1615,8 @@ pt_BR:
       Criei o grupo %{groupName} no %{site_name} para conversarmos e tomarmos decisões juntos. Entre por este link:
       %{link}
     trial_shareable_link_note: Copie o link de convite e envie por e-mail ou chat para convidar pessoas para seu grupo. Depois que entrarem, você poderá enviar notificações por e-mail e celular diretamente pelo Loomio. <a href="%{upgradeUrl}">Mude de plano</a> para enviar convites por e-mail.
+    include_intro_message: Incluir mensagem de apresentação
+    trial_shareable_invitation_message: 'Comecei um teste de 7 dias do %{site_name} para vermos se ele pode ajudar nas decisões do grupo %{groupName}. Clique neste link para entrar e experimentar com a gente: %{link}'
   memberships_page:
     members: Membros
     name_label: Nome
@@ -2221,6 +2223,7 @@ pt_BR:
     unlocked: Desbloqueado
     no_threads_found_that_match_your_query_or_filters: Não foram encontrados tópicos que correspondam à sua pesquisa ou filtros.
     no_threads_found_that_match_your_filters: Não foram encontradas discussões que correspondam aos seus filtros.
+    new_thread: Nova conversa
   members_panel:
     bot: Robô
     no_results: Nenhum membro encontrado
@@ -3317,3 +3320,21 @@ pt_BR:
     bounced: Devolução informada
     complained: Denúncia de spam informada
     skipped: E-mail não enviado
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 membro | {count} membros
+    delegates_count: 1 delegado | {count} delegados
+    polls_count: 1 enquete | {count} enquetes
+    proposals_count: 1 proposta | {count} propostas
+    needs_your_vote: 1 precisa do seu voto | {count} precisam do seu voto
+    no_open_polls: Nenhuma enquete aberta
+    browse_files: Ver arquivos
+    invite_get_started: Clique aqui para começar
+  onboarding_card:
+    extend_trial_title: Libere mais 30 dias
+    extend_trial_initial: Libere mais 30 dias quando {count} pessoas votarem em uma proposta ou enquete.
+    extend_trial_remaining: Libere mais 30 dias quando mais 1 pessoa votar em uma proposta ou enquete. | Libere mais 30 dias quando mais {count} pessoas votarem em uma proposta ou enquete.
+    verified_badge: Verificado
+    trial_verified: Vimos seu grupo e estamos aqui para ajudar. Você já pode enviar convites por e-mail — continue para liberar mais 30 dias e os recursos Pro.
+    trial_extended_title: Mais 30 dias liberados
+    trial_extended_description: Seu período de teste foi estendido por 30 dias com subgrupos e convidados habilitados.

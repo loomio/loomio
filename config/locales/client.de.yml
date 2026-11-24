@@ -1602,6 +1602,8 @@ de:
       Ich habe %{groupName} auf %{site_name} eingerichtet, damit wir gemeinsam diskutieren und Entscheidungen treffen können. Tritt über diesen Link bei:
       %{link}
     trial_shareable_link_note: Kopiere den Einladungslink und sende ihn per E-Mail oder Chat, um Leute in deine Gruppe einzuladen. Sobald sie beigetreten sind, kannst du ihnen direkt aus Loomio Benachrichtigungen per E-Mail und aufs Handy senden. <a href="%{upgradeUrl}">Wechsle zu einem höheren Tarif</a>, um Einladungen per E-Mail zu senden.
+    include_intro_message: Einleitende Nachricht hinzufügen
+    trial_shareable_invitation_message: 'Ich habe eine 7-tägige Testphase bei %{site_name} gestartet, damit wir sehen können, ob es uns bei Entscheidungen in %{groupName} hilft. Klicke bitte auf diesen Link, um beizutreten, damit wir es ausprobieren können: %{link}'
   memberships_page:
     members: Mitglieder
     name_label: Name
@@ -2208,6 +2210,7 @@ de:
     unlocked: Entsperrt
     no_threads_found_that_match_your_query_or_filters: Es wurden keine Threads gefunden, die Ihrer Suchanfrage oder Ihren Filtern entsprechen.
     no_threads_found_that_match_your_filters: Es wurden keine Threads gefunden, die Ihren Filtern entsprechen.
+    new_thread: Neuer Thread
   members_panel:
     bot: Bot
     no_results: Keine Mitglieder gefunden
@@ -3307,3 +3310,21 @@ de:
     bounced: Unzustellbarkeit gemeldet
     complained: Spam-Beschwerde gemeldet
     skipped: E-Mail nicht gesendet
+  group_cards:
+    admins_count: 1 Admin | {count} Admins
+    members_count: 1 Mitglied | {count} Mitglieder
+    delegates_count: 1 delegierte Person | {count} Delegierte
+    polls_count: 1 Abstimmung | {count} Abstimmungen
+    proposals_count: 1 Vorschlag | {count} Vorschläge
+    needs_your_vote: 1 braucht deine Stimme | {count} brauchen deine Stimme
+    no_open_polls: Keine offenen Abstimmungen
+    browse_files: Dateien ansehen
+    invite_get_started: Klicke hier, um loszulegen
+  onboarding_card:
+    extend_trial_title: 30 zusätzliche Tage freischalten
+    extend_trial_initial: Schalte 30 zusätzliche Tage frei, wenn {count} Personen über einen Vorschlag oder in einer Abstimmung abstimmen.
+    extend_trial_remaining: Schalte 30 zusätzliche Tage frei, wenn 1 weitere Person über einen Vorschlag oder in einer Abstimmung abstimmt. | Schalte 30 zusätzliche Tage frei, wenn {count} weitere Personen über einen Vorschlag oder in einer Abstimmung abstimmen.
+    verified_badge: Verifiziert
+    trial_verified: Wir haben uns deine Gruppe angesehen und helfen dir gerne. Du kannst jetzt Einladungen per E-Mail senden — mach weiter, um 30 zusätzliche Tage und Pro-Funktionen freizuschalten.
+    trial_extended_title: 30 zusätzliche Tage freigeschaltet
+    trial_extended_description: Deine Testphase wurde um 30 Tage verlängert, Untergruppen und Gäste sind jetzt freigeschaltet.

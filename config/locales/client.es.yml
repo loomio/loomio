@@ -1603,6 +1603,8 @@ es:
       He creado %{groupName} en %{site_name} para que podamos debatir y tomar decisiones juntos. Únete con este enlace:
       %{link}
     trial_shareable_link_note: Copia el enlace de invitación y envíalo por correo o chat para invitar a personas a tu grupo. Cuando se unan, podrás enviarles notificaciones por correo y al móvil directamente desde Loomio. <a href="%{upgradeUrl}">Mejora tu plan</a> para enviar invitaciones por correo.
+    include_intro_message: Incluir mensaje de presentación
+    trial_shareable_invitation_message: 'He iniciado una prueba de 7 días de %{site_name} para ver si nos ayuda a tomar decisiones en %{groupName}. Haz clic en este enlace para unirte y probarlo: %{link}'
   memberships_page:
     members: Integrantes
     name_label: Nombre
@@ -2211,6 +2213,7 @@ es:
     unlocked: Desbloqueado
     no_threads_found_that_match_your_query_or_filters: No se encontraron hilos que coincidan con su consulta o filtros.
     no_threads_found_that_match_your_filters: No se encontraron hilos que coincidan con sus filtros.
+    new_thread: Nuevo hilo
   members_panel:
     bot: Bot
     no_results: No se han encontrado miembros
@@ -3308,3 +3311,21 @@ es:
     bounced: Rebote notificado
     complained: Queja por spam notificada
     skipped: Correo no enviado
+  group_cards:
+    admins_count: 1 admin | {count} admins
+    members_count: 1 miembro | {count} miembros
+    delegates_count: 1 delegado | {count} delegados
+    polls_count: 1 encuesta | {count} encuestas
+    proposals_count: 1 propuesta | {count} propuestas
+    needs_your_vote: 1 necesita tu voto | {count} necesitan tu voto
+    no_open_polls: No hay encuestas abiertas
+    browse_files: Ver archivos
+    invite_get_started: Haz clic aquí para empezar
+  onboarding_card:
+    extend_trial_title: Desbloquea 30 días más
+    extend_trial_initial: Desbloquea 30 días más cuando {count} personas voten en una propuesta o encuesta.
+    extend_trial_remaining: Desbloquea 30 días más cuando vote 1 persona más en una propuesta o encuesta. | Desbloquea 30 días más cuando voten {count} personas más en una propuesta o encuesta.
+    verified_badge: Verificado
+    trial_verified: Hemos revisado tu grupo y estamos aquí para ayudar. Ya puedes enviar invitaciones por correo — sigue para desbloquear 30 días más y funciones Pro.
+    trial_extended_title: 30 días más desbloqueados
+    trial_extended_description: Tu prueba se ha ampliado 30 días con subgrupos e invitados habilitados.

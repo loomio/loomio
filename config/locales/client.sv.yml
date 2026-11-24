@@ -1588,6 +1588,8 @@ sv:
       Jag har skapat %{groupName} på %{site_name} så att vi kan diskutera och fatta beslut tillsammans. Gå med via länken:
       %{link}
     trial_shareable_link_note: Kopiera inbjudningslänken och skicka den via mejl eller chatt för att bjuda in till din grupp. När de har gått med kan du skicka mejl och mobilnotiser till dem direkt från Loomio. <a href="%{upgradeUrl}">Uppgradera ditt abonnemang</a> för att skicka inbjudningar via mejl.
+    include_intro_message: Ta med ett introduktionsmeddelande
+    trial_shareable_invitation_message: 'Jag har startat en provperiod på 7 dagar med %{site_name} så att vi kan se om det kan hjälpa oss att fatta beslut i %{groupName}. Klicka på länken för att gå med så att vi kan prova: %{link}'
   memberships_page:
     members: Medlemmar
     name_label: Namn
@@ -2185,6 +2187,7 @@ sv:
     unlocked: Olåst
     no_threads_found_that_match_your_query_or_filters: Inga trådar hittades som matchar din sökfråga eller dina filter
     no_threads_found_that_match_your_filters: Inga trådar hittades som matchar dina filter
+    new_thread: Ny tråd
   members_panel:
     bot: Bot
     no_results: Inga medlemmar hittades
@@ -3280,3 +3283,21 @@ sv:
     bounced: Mejlstuds rapporterad
     complained: Skräppostanmälan rapporterad
     skipped: Mejlet skickades inte
+  group_cards:
+    admins_count: 1 admin | {count} admin
+    members_count: 1 medlem | {count} medlemmar
+    delegates_count: 1 delegat | {count} delegater
+    polls_count: 1 omröstning | {count} omröstningar
+    proposals_count: 1 förslag | {count} förslag
+    needs_your_vote: 1 behöver din röst | {count} behöver din röst
+    no_open_polls: Inga öppna omröstningar
+    browse_files: Visa filer
+    invite_get_started: Klicka här för att komma igång
+  onboarding_card:
+    extend_trial_title: Lås upp 30 extra dagar
+    extend_trial_initial: Lås upp 30 extra dagar när {count} personer röstar på ett förslag eller i en omröstning.
+    extend_trial_remaining: Lås upp 30 extra dagar när 1 person till röstar på ett förslag eller i en omröstning. | Lås upp 30 extra dagar när {count} personer till röstar på ett förslag eller i en omröstning.
+    verified_badge: Verifierad
+    trial_verified: Vi har sett din grupp och finns här för att hjälpa till. Du kan nu skicka inbjudningar via mejl — fortsätt för att låsa upp 30 extra dagar och Pro-funktioner.
+    trial_extended_title: 30 extra dagar upplåsta
+    trial_extended_description: Din provperiod har förlängts med 30 dagar med tillgång till undergrupper och gäster.

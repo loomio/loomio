@@ -15,7 +15,8 @@ export default
   data() {
     return {
       confirmReset: false,
-      resetting: false
+      resetting: false,
+      includeIntroMessage: false
     };
   },
 
@@ -52,8 +53,15 @@ export default
       }
     },
 
+    isTrial() {
+      return this.group.parentOrSelf().subscription?.plan === 'trial';
+    },
+
     invitationMessage() {
-      return this.$t('invitation_form.shareable_invitation_message', {
+      const key = this.isTrial
+        ? 'invitation_form.trial_shareable_invitation_message'
+        : 'invitation_form.shareable_invitation_message';
+      return this.$t(key, {
         groupName: this.group.name,
         site_name: AppConfig.theme?.site_name || 'Loomio',
         link: this.invitationLink
@@ -98,19 +106,8 @@ v-card.shareable-link-modal(:title="$t('invitation_form.shareable_link_to_join_g
     v-alert.mb-4(color="info" variant="tonal")
       span(v-if="showTrialNote" v-html="$t('invitation_form.trial_shareable_link_note', { upgradeUrl })")
       span(v-else) {{ $t('invitation_form.shareable_invitation_explanation') }}
-    v-text-field.shareable-link-modal__shareable-link(
-      :model-value="invitationLink"
-      :label="$t('invitation_form.invite_link')"
-      readonly
-      variant="outlined"
-      color="info"
-    )
-      template(v-slot:append-inner)
-        v-btn.shareable-link-modal__copy(variant="tonal" color="primary" size="small" @click='copyText(invitationLink)')
-          common-icon.mr-1(name="mdi-content-copy" size="small")
-          span {{ $t('common.copy') }}
-
     v-textarea.shareable-link-modal__message(
+      v-if="includeIntroMessage"
       :model-value="invitationMessage"
       :label="$t('invitation_form.shareable_invitation_message_label')"
       readonly
@@ -121,9 +118,30 @@ v-card.shareable-link-modal(:title="$t('invitation_form.shareable_link_to_join_g
       color="info"
     )
       template(v-slot:append-inner)
-        v-btn.shareable-link-modal__copy-message(variant="tonal" color="primary" size="small" @click="copyText(invitationMessage)")
+        v-btn.shareable-link-modal__copy(variant="tonal" color="primary" size="small" @click="copyText(invitationMessage)")
           common-icon.mr-1(name="mdi-content-copy" size="small")
           span {{ $t('common.copy') }}
+
+    v-text-field.shareable-link-modal__shareable-link(
+      v-else
+      :model-value="invitationLink"
+      :label="$t('invitation_form.invite_link')"
+      readonly
+      hide-details
+      variant="outlined"
+      color="info"
+    )
+      template(v-slot:append-inner)
+        v-btn.shareable-link-modal__copy(variant="tonal" color="primary" size="small" @click="copyText(invitationLink)")
+          common-icon.mr-1(name="mdi-content-copy" size="small")
+          span {{ $t('common.copy') }}
+
+    v-checkbox.shareable-link-modal__include-message.mt-2(
+      v-model="includeIntroMessage"
+      :label="$t('invitation_form.include_intro_message')"
+      density="compact"
+      hide-details
+    )
 
   v-card-actions
     v-btn.shareable-link-modal__reset(:title="$t('common.reset')" @click="confirmReset = true" color="error")

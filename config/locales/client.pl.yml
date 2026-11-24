@@ -1594,6 +1594,8 @@ pl:
       Grupa %{groupName} na %{site_name} jest już gotowa, by wspólnie rozmawiać i podejmować decyzje. Dołącz przez ten link:
       %{link}
     trial_shareable_link_note: Skopiuj link zaproszenia i wyślij go e-mailem lub na czacie, by zaprosić ludzi do swojej grupy. Gdy dołączą, możesz wysyłać im powiadomienia e-mail i na telefon bezpośrednio z Loomio. <a href="%{upgradeUrl}">Przejdź na wyższy plan</a>, by wysyłać zaproszenia e-mailem.
+    include_intro_message: Dołącz wiadomość powitalną
+    trial_shareable_invitation_message: 'Rozpoczynam 7-dniowy okres próbny w %{site_name}, by sprawdzić, czy pomoże nam podejmować decyzje w %{groupName}. Kliknij ten link, by dołączyć i wspólnie wypróbować: %{link}'
   memberships_page:
     members: Osoby
     name_label: Nazwa
@@ -2200,6 +2202,7 @@ pl:
     unlocked: Odblokowany
     no_threads_found_that_match_your_query_or_filters: Nie znaleziono wątków odpowiadających Twojemu zapytaniu lub filtrom
     no_threads_found_that_match_your_filters: Nie znaleziono wątków spełniających Twoje kryteria
+    new_thread: Nowy wątek
   members_panel:
     bot: Nerw
     no_results: Nie znaleziono osób
@@ -3299,3 +3302,21 @@ pl:
     bounced: Zgłoszono zwrot e-maila
     complained: Zgłoszono spam
     skipped: E-mail nie został wysłany
+  group_cards:
+    admins_count: 1 administrator | {count} administratorów
+    members_count: 1 członek | {count} członków
+    delegates_count: 1 delegat | {count} delegatów
+    polls_count: 1 ankieta | {count} ankiet
+    proposals_count: 1 propozycja | {count} propozycji
+    needs_your_vote: 1 czeka na twój głos | {count} czeka na twój głos
+    no_open_polls: Brak otwartych ankiet
+    browse_files: Zobacz pliki
+    invite_get_started: Kliknij tutaj, aby zacząć
+  onboarding_card:
+    extend_trial_title: Odblokuj 30 dodatkowych dni
+    extend_trial_initial: Odblokuj 30 dodatkowych dni, gdy {count} osób odda głos w propozycji lub ankiecie.
+    extend_trial_remaining: Odblokuj 30 dodatkowych dni, gdy jeszcze 1 osoba odda głos w propozycji lub ankiecie. | Odblokuj 30 dodatkowych dni, gdy jeszcze {count} osób odda głos w propozycji lub ankiecie.
+    verified_badge: Zweryfikowano
+    trial_verified: Znamy już twoją grupę i chętnie pomożemy. Możesz już wysyłać zaproszenia e-mailem — działaj dalej, by odblokować 30 dodatkowych dni i funkcje Pro.
+    trial_extended_title: Odblokowano 30 dodatkowych dni
+    trial_extended_description: Okres próbny przedłużono o 30 dni z włączonymi podgrupami i gośćmi.
