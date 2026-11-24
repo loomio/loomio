@@ -25,6 +25,7 @@ export default {
         recipient_emails_cmr: this.model.recipientEmails.join(','),
         recipient_user_xids: this.model.recipientUserIds.join('x'),
         recipient_chatbot_xids: this.model.recipientChatbotIds.join('x'),
+        // May be a single audience ID or comma-separated list (e.g. "group-10,group-20").
         recipient_audience: this.model.recipientAudience,
         include_actor: (this.includeActor && 1) || null,
         ...this.model.bestNamedId(),

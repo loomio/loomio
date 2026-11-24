@@ -627,13 +627,18 @@ class GroupExportService
     attrs['recipient_context'] = recipient_context
   end
 
+  # Translates single or comma-separated audience IDs (e.g. "group-10,delegates-12").
   def self.translate_recipient_audience(audience, group_ids)
-    match = audience.to_s.match(/\A(group|delegates)-(\d+)\z/)
-    return audience unless match
+    return audience if audience.blank?
 
-    group_id_old = match[2].to_i
-    group_id_new = group_ids&.fetch(group_id_old, group_id_old) || group_id_old
-    "#{match[1]}-#{group_id_new}"
+    audience.to_s.split(",").map do |part|
+      match = part.strip.match(/\A(group|delegates)-(\d+)\z/)
+      next part unless match
+
+      group_id_old = match[2].to_i
+      group_id_new = group_ids&.fetch(group_id_old, group_id_old) || group_id_old
+      "#{match[1]}-#{group_id_new}"
+    end.join(",")
   end
 
   def self.translate_ids(ids, id_map)

@@ -20,9 +20,40 @@ class NotificationAudienceService
     end
   end
 
+  # recipient_audience stays a single string param/column for backwards
+  # compatibility, but may contain multiple comma-separated audience IDs
+  # (e.g. "group-10,group-20") or an array. Every audience is authorized
+  # individually before merging and deduplicating recipients.
+  def self.normalize_kinds(kind)
+    Array(kind).flat_map { |value| value.to_s.split(",") }.map(&:strip).reject(&:blank?).uniq
+  end
+
+  def self.serialize(kind)
+    normalize_kinds(kind).join(",").presence
+  end
+
   def self.resolve(model:, kind:, actor:, exclude_members: false, include_actor: false)
+    kinds = normalize_kinds(kind)
+    return User.none if kinds.empty?
+
     poll = poll_for(model)
-    users = case kind
+    users = if kinds.one?
+      resolve_one(model: model, kind: kinds.first, actor: actor, poll: poll).active
+    else
+      user_ids = kinds.flat_map { |single_kind| resolve_one(model: model, kind: single_kind, actor: actor, poll: poll).active.pluck(:id) }.uniq
+      User.active.where(id: user_ids)
+    end
+
+    if exclude_members
+      member_ids = model.is_a?(Group) ? model.member_ids : (poll || NullPoll.new).voter_ids
+      users = users.where.not(id: member_ids)
+    end
+
+    include_actor ? users.active.humans : users.active.humans.where.not(id: actor.id)
+  end
+
+  def self.resolve_one(model:, kind:, actor:, poll:)
+    case kind
     when /\Agroup-(\d+)\z/
       id = Regexp.last_match(1).to_i
       group = group_audience_scope(model).find(id)
@@ -55,18 +86,11 @@ class NotificationAudienceService
       raise CanCan::AccessDenied unless poll
       raise CanCan::AccessDenied if poll.anonymous?
       poll.non_voters
-    when nil then User.none
     else
       raise UnknownAudienceKindError
-    end.active
-
-    if exclude_members
-      member_ids = model.is_a?(Group) ? model.member_ids : (poll || NullPoll.new).voter_ids
-      users = users.where.not(id: member_ids)
     end
-
-    include_actor ? users.active.humans : users.active.humans.where.not(id: actor.id)
   end
+  private_class_method :resolve_one
 
   # Group-backed audiences share the group's notification permission regardless
   # of whether their members come from the group or the current topic.
