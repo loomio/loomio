@@ -195,6 +195,32 @@ class DemoServiceTest < ActiveSupport::TestCase
     end
   end
 
+  test "claiming a demo ignores trial invitation limits for shared demo personas" do
+    DemoService.refill_queue
+    jamie = User.find_by!(email: "jamie@oatmilk.example")
+    prior_recipient_ids = Array.new(UserInviter::DEFAULT_INVITATION_LIMIT) do |index|
+      User.create!(name: "Prior Demo #{index}", email: "prior-demo-#{index}@example.test").id
+    end
+    Notification.create!(
+      actor: jamie,
+      kind: "poll_reminder",
+      subject: demo_source.polls.first,
+      recipient_user_ids: prior_recipient_ids
+    )
+    actor = users(:user)
+    unread_before = NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+
+    Current.set(request_ip: "203.0.113.10") do
+      AppConfig.stub(:app_features, AppConfig.app_features.merge(subscriptions: true)) do
+        group = DemoService.take_demo(actor)
+        assert group.members.exists?(actor.id)
+      end
+    end
+
+    assert_equal unread_before + 3, NotificationDelivery.where(recipient: actor, channel: "in_app", viewed_at: nil).count
+    assert_equal 0, TrialInvitationRecipient.where(ip_address: "203.0.113.10").count
+  end
+
   private
 
   def demo_source

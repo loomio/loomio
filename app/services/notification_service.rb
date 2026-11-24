@@ -14,7 +14,8 @@ class NotificationService
   # the notification; each kind-specific router applies its recipient rules.
   def self.create!(kind:, subject:, actor:,
                    recipient_user_ids: [], recipient_chatbot_ids: [],
-                   recipient_audience: nil, recipient_message: nil, recipient_context: {})
+                   recipient_audience: nil, recipient_message: nil, recipient_context: {},
+                   skip_invitation_limit: false)
     raise ArgumentError, "subject must be persisted" unless subject&.persisted?
     raise ArgumentError, "kind is required" if kind.blank?
 
@@ -31,7 +32,11 @@ class NotificationService
     router = NotificationDeliveryRouter.for(notification)
     locale = actor&.locale || I18n.default_locale
     notification.translation_values = router.translated_values(locale: locale)
-    save_with_invitation_limit!(notification)
+    if skip_invitation_limit
+      notification.save!
+    else
+      save_with_invitation_limit!(notification)
+    end
 
     RouteNotificationDeliveriesWorker.perform_later(notification.id)
     notification
