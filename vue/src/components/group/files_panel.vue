@@ -7,13 +7,12 @@ import GroupAbility from '@/shared/abilities/group_ability';
 import { mdiMagnify } from '@mdi/js';
 import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
-import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
 export default
 {
-  components: { SubgroupsFilterMenu, GroupsFilterMenu },
+  components: { SubgroupsFilterMenu },
   mixins: [UrlFor, FormatDate],
   props: {
     dashboard: { type: Boolean, default: false }
@@ -135,8 +134,7 @@ export default
 <template lang="pug">
 div
   .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
-    groups-filter-menu(v-if="dashboard" section="files")
-    subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
+    subgroups-filter-menu(v-if="group" :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
     v-text-field.flex-grow-1(
       clearable
       hide-details

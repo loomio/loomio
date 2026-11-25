@@ -10,12 +10,11 @@ import { intersection, uniq } from 'lodash-es';
 import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import TagsFilterMenu from '@/components/tags/filter_menu';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
-import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
-  components: { TagsFilterMenu, SubgroupsFilterMenu, GroupsFilterMenu },
+  components: { TagsFilterMenu, SubgroupsFilterMenu },
   mixins: [UrlFor],
   props: {
     dashboard: { type: Boolean, default: false }
@@ -71,9 +70,10 @@ export default
           path: 'topics',
           order: 'lastActivityAt',
           params: {
-            filter: ['all', 'direct'].includes(this.$route.query.t) ? undefined : (this.$route.query.t || 'unlocked'),
-            unread: this.$route.query.t === 'unread' ? 1 : undefined,
-            direct: this.$route.query.t === 'direct' ? 1 : undefined,
+            filter: this.lockFilter === 'all' ? undefined : (this.lockFilter || 'unlocked'),
+            unread: this.isUnreadFilter ? 1 : undefined,
+            last_activity_gte: this.isUnreadFilter ? unreadCutoffDate().toISOString() : undefined,
+            direct: this.isDirectFilter ? 1 : undefined,
             tags: this.$route.query.tag,
             per: this.per
           }
@@ -93,7 +93,9 @@ export default
         params: {
           group_id: this.group.id,
           subgroups: this.subgroupsFilter || undefined,
-          filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
+          filter: this.lockFilter === 'all' ? undefined : (this.lockFilter || 'unlocked'),
+          unread: this.isUnreadFilter ? 1 : undefined,
+          last_activity_gte: this.isUnreadFilter ? unreadCutoffDate().toISOString() : undefined,
           tags: this.$route.query.tag,
           per: this.per
         }
@@ -117,8 +119,6 @@ export default
 
     filterName(filter) {
       switch (filter) {
-        case 'unread': return 'discussions_panel.unread';
-        case 'direct': return 'sidebar.direct_threads';
         case 'locked': return 'discussions_panel.locked';
         case 'all': return 'discussions_panel.all';
         default:
@@ -158,6 +158,18 @@ export default
   },
 
   computed: {
+    lockFilter() {
+      return ['all', 'locked'].includes(this.$route.query.t) ? this.$route.query.t : null;
+    },
+
+    isUnreadFilter() {
+      return Boolean(this.$route.query.unread) || this.$route.query.t === 'unread';
+    },
+
+    isDirectFilter() {
+      return this.dashboard && (Boolean(this.$route.query.direct) || this.$route.query.t === 'direct');
+    },
+
     subgroupsFilter() {
       if (!this.group || !(this.group.subgroupsCount > 0)) { return null; }
       return ['mine', 'all'].includes(this.$route.query.subgroups) ? this.$route.query.subgroups : null;
@@ -186,7 +198,7 @@ export default
       let pinnedTopics = [];
       let chain;
       if (this.dashboard) {
-        if (this.$route.query.t === 'direct') {
+        if (this.isDirectFilter) {
           chain = Records.topics.collection.chain().find({
             groupId: null,
             discardedAt: null
@@ -203,7 +215,7 @@ export default
         }
       } else {
         const groupFilter = this.groupFilter;
-        if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
+        if (this.page == 1 && !this.$route.query.tag && !this.isUnreadFilter && this.lockFilter !== 'locked') {
           pinnedTopics = Records.topics.collection.chain().find({
             groupId: groupFilter,
             discardedAt: null,
@@ -218,19 +230,19 @@ export default
         }).simplesort('lastActivityAt', true);
       }
 
-      switch (this.$route.query.t) {
-        case 'unread':
-          chain = chain.find({ lastActivityAt: { $gt: unreadCutoffDate() } }).where(topic => topic.isUnread());
-          break;
+      switch (this.lockFilter) {
         case 'locked':
           chain = chain.find({lockedAt: {$ne: null}});
           break;
         case 'all':
-        case 'direct':
           break;
-        default: // null or 'unlocked' — show only unlocked threads
+        default: // null — show only unlocked threads
           chain = chain.find({lockedAt: null});
           break;
+      }
+
+      if (this.isUnreadFilter) {
+        chain = chain.find({ lastActivityAt: { $gt: unreadCutoffDate() } }).where(topic => topic.isUnread());
       }
 
       if (this.$route.query.tag) {
@@ -269,8 +281,32 @@ export default
       return !this.loading && this.topics.length === 0
     },
 
+    hasActiveFilters() {
+      return Boolean(this.isUnreadFilter || this.isDirectFilter || this.lockFilter || this.$route.query.tag);
+    },
+
+    emptyFilterMessage() {
+      const qualifiers = [];
+      if (this.isUnreadFilter) { qualifiers.push(this.$t('group_cards.filter_qualifier_unread')); }
+      if (this.isDirectFilter) { qualifiers.push(this.$t('group_cards.filter_qualifier_direct')); }
+      if (this.lockFilter === 'locked') {
+        qualifiers.push(this.$t('group_cards.filter_qualifier_locked'));
+      } else if (this.lockFilter !== 'all') {
+        qualifiers.push(this.$t('group_cards.filter_qualifier_unlocked'));
+      }
+      const filters = qualifiers.join(', ');
+      if (this.$route.query.tag) {
+        return filters
+          ? this.$t('group_cards.no_filtered_threads_with_tag', { filters, tag: this.$route.query.tag })
+          : this.$t('group_cards.no_threads_with_tag', { tag: this.$route.query.tag });
+      }
+      return filters
+        ? this.$t('group_cards.no_filtered_threads', { filters })
+        : this.$t('discussions_panel.no_threads_found_that_match_your_filters');
+    },
+
     noThreadsMatchingFilters() {
-      return !this.dashboard && this.noThreads && ((this.group.discussionsCount || 0) + (this.group.pollsCount || 0)) > 0;
+      return !this.dashboard && this.noThreads && (this.hasActiveFilters || ((this.group.discussionsCount || 0) + (this.group.pollsCount || 0)) > 0);
     },
 
     canViewPrivateContent() {
@@ -303,26 +339,21 @@ export default
 <template lang="pug">
 div.discussions-panel(v-if="dashboard || group")
   .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
+    subgroups-filter-menu(v-if="group" :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
     v-menu
       template(v-slot:activator="{ props }")
         v-btn.discussions-panel__filters.text-medium-emphasis(v-bind="props" variant="tonal")
-          span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
+          span(v-t="filterName(lockFilter)")
           common-icon(name="mdi-menu-down")
-      v-list
-        v-list-item.discussions-panel__filters-unlocked(@click="routeQuery({t: null})")
-          v-list-item-title(v-t="'discussions_panel.unlocked'")
-        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
+      v-list(density="compact")
+        v-list-item.discussions-panel__filters-all(:active="lockFilter === 'all'" @click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-locked(@click="routeQuery({t: 'locked'})")
+        v-list-item.discussions-panel__filters-locked(:active="lockFilter === 'locked'" @click="routeQuery({t: 'locked'})")
           v-list-item-title(v-t="'discussions_panel.locked'")
-        v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
-          v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
-        v-list-item.discussions-panel__filters-direct(v-if="dashboard" @click="routeQuery({t: 'direct'})")
-          v-list-item-title(v-t="'sidebar.direct_threads'")
+        v-list-item.discussions-panel__filters-unlocked(:active="!lockFilter" @click="routeQuery({t: null})")
+          v-list-item-title(v-t="'discussions_panel.unlocked'")
 
     tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
-    groups-filter-menu(v-if="dashboard")
-    subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
     v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"
@@ -340,7 +371,7 @@ div.discussions-panel(v-if="dashboard || group")
 
   v-alert(color="info" variant="tonal" v-if="noThreadsMatchingFilters")
     v-card-text
-      p(v-t="'discussions_panel.no_threads_found_that_match_your_filters'")
+      p {{ emptyFilterMessage }}
 
   v-alert(color="info" variant="tonal" v-else-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
@@ -355,6 +386,7 @@ div.discussions-panel(v-if="dashboard || group")
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
           template(v-if="dashboard")
             p.text-center(v-if="noGroups" v-html="$t('dashboard_page.no_groups.show_all')")
+            p.text-center(v-else-if="hasActiveFilters") {{ emptyFilterMessage }}
             p.text-center(v-else v-t="'dashboard_page.no_threads.show_all'")
           template(v-else)
             p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
@@ -371,7 +403,7 @@ div.discussions-panel(v-if="dashboard || group")
 
         loading(v-if="loading && topics.length == 0")
 
-        v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
+        v-pagination(v-if="!noThreads && totalPages > 1" v-model="page" :length="totalPages")
         .d-flex.justify-center
           router-link.text-medium-emphasis.text-decoration-none.underline-on-hover.discussions-panel__view-locked-topics.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 

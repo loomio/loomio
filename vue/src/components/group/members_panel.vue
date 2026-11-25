@@ -231,6 +231,7 @@ export default
       span(v-t="'memberships_page.only_one_admin'")
 
     .d-flex.align-center.flex-wrap.pt-4.pb-2
+      subgroups-filter-menu.mr-2(:group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-menu
         template(v-slot:activator="{ props }")
           v-btn.members-panel__filters.mr-2.text-capitalize.text-medium-emphasis(v-bind="props" variant="tonal")
@@ -251,7 +252,6 @@ export default
             v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      subgroups-filter-menu.mr-2(:group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-btn.members-panel__search-button.mr-2(
         v-if="!searchOpen"
         variant="text"

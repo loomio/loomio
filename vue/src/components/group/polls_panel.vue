@@ -11,7 +11,6 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import TagsFilterMenu from '@/components/tags/filter_menu';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
-import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 
 const { dashboard, defaultStatus } = defineProps({
   dashboard: { type: Boolean, default: false },
@@ -185,6 +184,7 @@ watch(() => route.query.page, fetch);
   loading(v-if="!dashboard && !group")
   div(v-if="dashboard || group")
     .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
+      subgroups-filter-menu(v-if="group" :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-menu
         template(v-slot:activator="{ props }")
           v-btn.polls-panel__status-filter.text-medium-emphasis(v-bind="props" variant="tonal")
@@ -215,8 +215,6 @@ watch(() => route.query.page, fetch);
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
       tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
-      groups-filter-menu(v-if="dashboard" section="polls")
-      subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-btn.text-medium-emphasis(
         variant="tonal"
         @click="openSearchModal"

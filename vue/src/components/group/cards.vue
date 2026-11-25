@@ -81,12 +81,15 @@ function invite() {
           div
             .text-title-small {{ t('group_cards.threads') }}
             .text-body-small.text-medium-emphasis
-              span {{ t('group_cards.recent_count', { count: recentThreadsCount }) }}
+              a.group-cards__recent-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
+                :href="threadsRoute"
+                @click.prevent.stop="go(threadsRoute)"
+              ) {{ t('group_cards.recent_count', { count: recentThreadsCount }) }}
               span.mx-1 ·
               a.group-cards__unread-link.text-decoration-none.underline-on-hover(
-                :href="threadsRoute + '?t=unread'"
-                :class="unreadThreadsCount > 0 || route.query.t === 'unread' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
-                @click.prevent.stop="go(threadsRoute + '?t=unread')"
+                :href="threadsRoute + '?unread=1'"
+                :class="unreadThreadsCount > 0 || route.query.unread ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go(threadsRoute + '?unread=1')"
               ) {{ t('dashboard_cards.unread_count', { count: unreadThreadsCount }) }}
     v-col(cols="6" md="3")
       v-card.group-cards__polls.group-page-polls-tab.fill-height(

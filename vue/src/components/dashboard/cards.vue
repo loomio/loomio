@@ -72,15 +72,15 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
             .text-title-small {{ t('group_cards.threads') }}
             .text-body-small.text-medium-emphasis
               a.dashboard-cards__unread-link.text-decoration-none.underline-on-hover(
-                href="/dashboard?t=unread"
-                :class="route.query.t === 'unread' || unreadCounts.total > 0 ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
-                @click.prevent.stop="go('/dashboard?t=unread')"
+                href="/dashboard?unread=1"
+                :class="route.query.unread || unreadCounts.total > 0 ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go('/dashboard?unread=1')"
               ) {{ t('dashboard_cards.unread_count', { count: unreadCounts.total }, unreadCounts.total) }}
               span.mx-1 ·
               a.dashboard-cards__direct-link.text-decoration-none.underline-on-hover(
-                href="/dashboard?t=direct"
-                :class="route.query.t === 'direct' || unreadCounts.direct > 0 ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
-                @click.prevent.stop="go('/dashboard?t=direct')"
+                href="/dashboard?direct=1"
+                :class="route.query.direct || unreadCounts.direct > 0 ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go('/dashboard?direct=1')"
               ) {{ t('dashboard_cards.direct_count', { count: unreadCounts.direct }, unreadCounts.direct) }}
     v-col(cols="6" md="3")
       v-card.dashboard-cards__polls.fill-height(
@@ -136,7 +136,7 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
         variant="tonal"
         :color="overflowActive ? 'primary' : undefined"
         width="56"
-        :title="t('action_dock.more')"
+        :aria-label="t('action_dock.more')"
       )
         common-icon(name="mdi-dots-horizontal")
     v-list(density="compact")

@@ -5,42 +5,73 @@ import { useRoute } from 'vue-router';
 import { sortBy } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import Session from '@/shared/services/session';
+import { sidebarOpen } from '@/shared/services/sidebar_state';
 
-const { section } = defineProps({
-  section: { type: String, default: '' }
+const { currentGroup } = defineProps({
+  currentGroup: { type: Object, default: null }
 });
 const { t } = useI18n();
 const route = useRoute();
 const open = ref(false);
 const filter = ref('');
 
-const CARRIED_THREAD_FILTERS = new Set(['unread', 'locked', 'all']);
+const CARRIED_THREAD_FILTERS = new Set(['locked', 'all']);
 
-const groups = computed(() => sortBy(Session.user().groups(), g => (g.fullName || g.name || '').toLowerCase()));
+const groups = computed(() => {
+  if (typeof Session.user !== 'function' || !Session.user()) { return []; }
+  return sortBy(Session.user().groups(), g => (g.fullName || g.name || '').toLowerCase());
+});
+const interactive = computed(() => !sidebarOpen.value && groups.value.length > 0);
 const filteredGroups = computed(() => {
   const query = filter.value.trim().toLowerCase();
   if (!query) { return groups.value; }
   return groups.value.filter(g => (g.fullName || g.name || '').toLowerCase().includes(query));
 });
 
+const currentSection = computed(() => {
+  const segments = (route?.path || '').split('/').filter(Boolean);
+  if (segments.includes('polls') || segments.includes('polls_to_vote_on')) { return 'polls'; }
+  if (segments.includes('members') || segments.includes('people')) { return 'members'; }
+  if (segments.includes('files')) { return 'files'; }
+  return '';
+});
+
 watch(open, isOpen => {
   if (!isOpen) { filter.value = ''; }
 });
 
+function carriedQuery() {
+  const query = {};
+  if (!currentSection.value) {
+    if (CARRIED_THREAD_FILTERS.has(route?.query?.t)) { query.t = route.query.t; }
+    if (route?.query?.unread) { query.unread = '1'; }
+  }
+  return query;
+}
+
+const dashboardRoute = computed(() => ({
+  path: currentSection.value ? `/dashboard/${currentSection.value}` : '/dashboard',
+  query: carriedQuery()
+}));
+
 function groupRoute(group) {
   const base = group.handle ? `/${group.handle}` : `/g/${group.key}`;
-  const path = section ? `${base}/${section}` : base;
-  const query = !section && CARRIED_THREAD_FILTERS.has(route.query?.t) ? { t: route.query.t } : {};
-  return { path, query };
+  const path = currentSection.value ? `${base}/${currentSection.value}` : base;
+  return { path, query: carriedQuery() };
 }
 </script>
 
 <template lang="pug">
-v-menu(v-if="groups.length > 0" v-model="open" :close-on-content-click="false")
+v-menu(v-if="interactive" v-model="open" :close-on-content-click="false")
   template(#activator="{ props }")
-    v-btn.groups-filter-menu__button.text-medium-emphasis(v-bind="props" variant="tonal")
-      span {{ t('common.groups') }}
-      common-icon(name="mdi-menu-down" color="currentColor")
+    .groups-filter-menu__title-activator.d-inline-flex.align-center.ga-1(
+      v-bind="props"
+      role="button"
+      tabindex="0"
+      style="cursor: pointer"
+    )
+      slot
+      common-icon.text-medium-emphasis(name="mdi-menu-down")
   v-card(min-width="240" max-width="360")
     .pa-2(v-if="groups.length > 8")
       v-text-field(
@@ -53,14 +84,22 @@ v-menu(v-if="groups.length > 0" v-model="open" :close-on-content-click="false")
         variant="outlined"
       )
     v-list(density="compact" max-height="60vh")
-      v-list-item.groups-filter-menu__all(:active="true" @click="open = false")
+      v-list-item.groups-filter-menu__all(slim :to="dashboardRoute" :active="!currentGroup" @click="open = false")
+        template(v-slot:prepend)
+          v-avatar(:size="22" color="transparent")
+            common-icon(name="mdi-account-group" :size="18")
         v-list-item-title {{ t('dashboard_cards.all_groups') }}
       v-divider.my-1
       v-list-item.groups-filter-menu__group(
         v-for="group in filteredGroups"
         :key="group.id"
+        slim
         :to="groupRoute(group)"
+        :active="Boolean(currentGroup && currentGroup.id === group.id)"
         @click="open = false"
       )
+        template(v-slot:prepend)
+          group-avatar(:group="group" :size="22")
         v-list-item-title {{ group.fullName || group.name }}
+slot(v-else)
 </template>

@@ -1502,6 +1502,13 @@ en:
     filter_tags: Filter tags
     filter_groups: Filter groups
     filter_subgroups: Filter subgroups
+    filter_qualifier_unread: unread
+    filter_qualifier_direct: direct
+    filter_qualifier_locked: locked
+    filter_qualifier_unlocked: unlocked
+    no_filtered_threads: "There are no {filters} threads"
+    no_filtered_threads_with_tag: "There are no {filters} threads matching tag: {tag}"
+    no_threads_with_tag: "There are no threads matching tag: {tag}"
     threads: Threads
     recent_count: "{count} recent"
     threads_count: "1 thread | {count} threads"

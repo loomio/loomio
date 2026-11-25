@@ -5,13 +5,14 @@ import EventBus          from '@/shared/services/event_bus';
 import GroupAbility from '@/shared/abilities/group_ability';
 import GroupService    from '@/shared/services/group_service';
 import GroupCards from '@/components/group/cards.vue';
+import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 import { pickBy } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
 export default
 {
-  components: { GroupCards },
+  components: { GroupCards, GroupsFilterMenu },
   mixins: [UrlFor, FormatDate],
   data() {
     return {
@@ -95,14 +96,15 @@ v-main
       //  width="48"
       //  eager)
     .d-flex.align-center.justify-space-between.flex-wrap.ga-2.my-4
-      h1.text-headline-large(tabindex="-1" v-intersect="{handler: titleVisible}")
-        span(v-if="group && group.parentId")
-          router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())")
-            plain-text(:model="group.parent()" field="name")
-          space
-          span.text-medium-emphasis.text--lighten-1 &gt;
-          space
-        plain-text.group-page__name(:model="group" field="name")
+      groups-filter-menu(:current-group="group")
+        h1.text-headline-large(tabindex="-1" v-intersect="{handler: titleVisible}")
+          span(v-if="group && group.parentId")
+            router-link.text-high-emphasis.text-decoration-none.underline-on-hover(:to="urlFor(group.parent())" @click.stop)
+              plain-text(:model="group.parent()" field="name")
+            space
+            span.text-medium-emphasis.text--lighten-1 &gt;
+            space
+          plain-text.group-page__name(:model="group" field="name")
       action-dock.group-page__actions(
         :model='group'
         :actions='dockActions'

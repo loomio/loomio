@@ -12,6 +12,7 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import GroupAbility from '@/shared/abilities/group_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import { sidebarOpen } from '@/shared/services/sidebar_state';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 
 import SidebarSubgroups from '@/components/sidebar/subgroups';
@@ -30,7 +31,7 @@ const theme = useTheme();
 
 const page = ref('dashboardPage');
 const organization = ref(null);
-const open = ref(false);
+const open = sidebarOpen;
 const group = ref(null);
 const showSettings = ref(false);
 
@@ -46,6 +47,8 @@ const drawerColor = computed(() =>
   !display.mdAndUp.value && colorIsTransparent(theme.current.value.colors.drawer) ? 'surface' : 'drawer'
 );
 const activeGroup = computed(() => group.value ? [group.value.id] : []);
+const activeGroupId = computed(() => group.value?.id || null);
+const isDashboardRoute = computed(() => route.path === '/dashboard' || route.path.startsWith('/dashboard/'));
 const logoUrl = computed(() => AppConfig.theme.app_logo_src);
 const logoInline = computed(() => logoUrl.value === '/brand/logo-current-color.svg');
 const logoSvg = ref('');
@@ -87,10 +90,13 @@ const pollsToVoteOnCount = computed(() => findPendingPolls().length);
 
 const bookmarksCount = computed(() => Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length);
 
-const CARRIED_THREAD_FILTERS = new Set(['unread', 'locked', 'all']);
-const carriedThreadQuery = computed(() => (
-  CARRIED_THREAD_FILTERS.has(route.query?.t) ? { t: route.query.t } : {}
-));
+const CARRIED_THREAD_FILTERS = new Set(['locked', 'all']);
+const carriedThreadQuery = computed(() => {
+  const q = {};
+  if (CARRIED_THREAD_FILTERS.has(route.query?.t)) { q.t = route.query.t; }
+  if (route.query?.unread) { q.unread = '1'; }
+  return q;
+});
 
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
@@ -189,30 +195,26 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
         v-list-item-subtitle {{ user.email }}
 
     v-divider
-    v-list(nav density="compact" :lines="false")
-      v-list-item.sidebar__list-item-button--recent(:to="dashboardLink")
+    v-list.sidebar__groups(nav density="compact" :lines="false")
+      v-list-item.sidebar__list-item-button--recent(slim :to="dashboardLink" :active="isDashboardRoute")
+        template(v-slot:prepend)
+          v-avatar(:size="24" color="transparent")
+            common-icon(name="mdi-account-group" :size="20")
         v-list-item-title
-          span(v-t="'dashboard_page.dashboard'")
-          template(v-if="unreadTopicCounts['total']")
-            | &nbsp;
-            span ({{unreadTopicCounts['total']}})
+          span(v-t="'dashboard_cards.all_groups'")
+        template(v-slot:append v-if="unreadTopicCounts['total']")
+          span.text-caption.text-medium-emphasis {{ unreadTopicCounts['total'] }}
 
-    v-divider
-    v-list.sidebar__groups(nav density="comfortable")
-      v-list-subheader
-        span(v-t="'common.groups'")
-      template(v-for="group in organizations" :key="group.id")
-        v-list-item.sidebar__group(:to="groupLink(group)")
+      template(v-for="org in organizations" :key="org.id")
+        v-list-item.sidebar__group(slim :to="groupLink(org)" :active="activeGroupId === org.id")
           template(v-slot:prepend)
-            group-avatar.mr-2(:group="group")
-          v-list-item-title
-            span {{group.name}}
-            template(v-if='openCounts[group.id]')
-              | &nbsp;
-              span ({{openCounts[group.id]}})
-        sidebar-subgroups(v-if="group == organization" :organization="group" :open-counts="openCounts")
+            group-avatar(:group="org" :size="24")
+          v-list-item-title {{ org.name }}
+          template(v-slot:append v-if="openCounts[org.id]")
+            span.text-caption.text-medium-emphasis {{ openCounts[org.id] }}
+        sidebar-subgroups(v-if="org == organization" :organization="org" :open-counts="openCounts" :active-group-id="activeGroupId")
 
-      v-btn.sidebar-start-group(
+      v-btn.sidebar-start-group.mt-2(
         block
         variant="tonal"
         color="primary"
@@ -220,8 +222,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
         to="/g/new"
       )
         span(v-t="'sidebar.new_group'")
-
-    v-divider
 
     sidebar-help
 
