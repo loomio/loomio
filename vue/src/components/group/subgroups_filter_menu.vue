@@ -21,6 +21,11 @@ const label = computed(() => {
   if (selected === 'all') { return t('group_cards.all_subgroups'); }
   return t('group_page.subgroups');
 });
+const hasSubgroups = computed(() => Boolean(group && group.subgroupsCount > 0));
+const canAddSubgroup = computed(() =>
+  Boolean(group && typeof group.isEnabled === 'function' && GroupAbility.canAddSubgroup(group))
+);
+const showMenu = computed(() => hasSubgroups.value || canAddSubgroup.value);
 const visibleSubgroups = computed(() => {
   if (!group || typeof group.subgroups !== 'function') { return []; }
   const user = Session.user();
@@ -50,7 +55,7 @@ function subgroupUrl(subgroup) {
 </script>
 
 <template lang="pug">
-v-menu(v-if="group && group.subgroupsCount > 0" v-model="open" :close-on-content-click="false")
+v-menu(v-if="showMenu" v-model="open" :close-on-content-click="false")
   template(#activator="{ props }")
     v-btn.subgroups-filter-menu__button(
       v-bind="props"
@@ -72,19 +77,30 @@ v-menu(v-if="group && group.subgroupsCount > 0" v-model="open" :close-on-content
         variant="outlined"
       )
     v-list(density="compact" max-height="60vh")
-      v-list-item.subgroups-filter-menu__none(:active="!active" @click="selectOption(null)")
-        v-list-item-title {{ t('group_cards.this_group_only') }}
-      v-list-item.subgroups-filter-menu__mine(:active="selected === 'mine'" @click="selectOption('mine')")
-        v-list-item-title {{ t('group_cards.my_subgroups') }}
-      v-list-item.subgroups-filter-menu__all(:active="selected === 'all'" @click="selectOption('all')")
-        v-list-item-title {{ t('group_cards.all_subgroups') }}
-      template(v-if="filteredSubgroups.length > 0")
-        v-divider.my-1
-        v-list-item.subgroups-filter-menu__subgroup(
-          v-for="subgroup in filteredSubgroups"
-          :key="subgroup.id"
-          :to="subgroupUrl(subgroup)"
+      template(v-if="hasSubgroups")
+        v-list-item.subgroups-filter-menu__none(:active="!active" @click="selectOption(null)")
+          v-list-item-title {{ t('group_cards.this_group_only') }}
+        v-list-item.subgroups-filter-menu__mine(:active="selected === 'mine'" @click="selectOption('mine')")
+          v-list-item-title {{ t('group_cards.my_subgroups') }}
+        v-list-item.subgroups-filter-menu__all(:active="selected === 'all'" @click="selectOption('all')")
+          v-list-item-title {{ t('group_cards.all_subgroups') }}
+        template(v-if="filteredSubgroups.length > 0")
+          v-divider.my-1
+          v-list-item.subgroups-filter-menu__subgroup(
+            v-for="subgroup in filteredSubgroups"
+            :key="subgroup.id"
+            :to="subgroupUrl(subgroup)"
+            @click="open = false"
+          )
+            v-list-item-title {{ subgroup.name }}
+      template(v-if="canAddSubgroup")
+        v-divider.my-1(v-if="hasSubgroups")
+        v-list-item.subgroups-filter-menu__new(
+          slim
+          :to="'/g/new?parent_id=' + group.id"
           @click="open = false"
         )
-          v-list-item-title {{ subgroup.name }}
+          template(v-slot:prepend)
+            common-icon(name="mdi-plus" :size="18")
+          v-list-item-title {{ t('group_form.new_subgroup') }}
 </template>

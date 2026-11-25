@@ -1,7 +1,7 @@
 <script setup lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { uniqBy } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 
@@ -17,6 +17,10 @@ const emit = defineEmits(['select']);
 
 const open = ref(false);
 const filter = ref('');
+
+watch(open, isOpen => {
+  if (!isOpen) { filter.value = ''; }
+});
 
 const groupTags = computed(() => {
   const tags = group

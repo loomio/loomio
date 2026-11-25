@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { sortBy } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import Session from '@/shared/services/session';
+import GroupAbility from '@/shared/abilities/group_ability';
 import { sidebarOpen } from '@/shared/services/sidebar_state';
 
 const { currentGroup } = defineProps({
@@ -22,6 +23,9 @@ const groups = computed(() => {
   return sortBy(Session.user().groups(), g => (g.fullName || g.name || '').toLowerCase());
 });
 const interactive = computed(() => !sidebarOpen.value && groups.value.length > 0);
+const canStartGroups = computed(() =>
+  typeof GroupAbility.canCreate === 'function' && GroupAbility.canCreate()
+);
 const filteredGroups = computed(() => {
   const query = filter.value.trim().toLowerCase();
   if (!query) { return groups.value; }
@@ -101,5 +105,16 @@ v-menu(v-if="interactive" v-model="open" :close-on-content-click="false")
         template(v-slot:prepend)
           group-avatar(:group="group" :size="22")
         v-list-item-title {{ group.fullName || group.name }}
+      template(v-if="canStartGroups")
+        v-divider.my-1
+        v-list-item.groups-filter-menu__new(
+          slim
+          to="/g/new"
+          @click="open = false"
+        )
+          template(v-slot:prepend)
+            v-avatar(:size="22" color="transparent")
+              common-icon(name="mdi-plus" :size="18")
+          v-list-item-title {{ t('sidebar.new_group') }}
 slot(v-else)
 </template>
