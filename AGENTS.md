@@ -11,11 +11,11 @@ Loomio is a Rails backend (`app/`, `db/`, `test/`) with a Vue 3 + Vuetify fronte
 ## Always apply
 
 - Use **group admin** and **thread admin** for Loomio's permission roles. **Administrator** is also acceptable; never call these roles **coordinator**. Follow `config/locales/glossary.yml` for translations, including when legacy identifiers contain `coordinator`.
-- Commit only when requested, except for an authorized deployment (which includes committing and pushing source before building or deploying, unless told to review first or withhold a push).
+- Always get explicit user approval before every single `git commit`. Permission for one commit does not authorize later commits.
 - Do not self-reference or market the agent in branch names, commit messages, PR titles, PR descriptions, or other project-facing metadata.
 - Prefix every new environment variable with `LOOMIO_` and preserve existing names unless a rename is explicitly requested. For boolean env vars, **a non-empty value is truthy**: set a value to enable, omit or leave empty to disable, and check with `ENV["VAR"].present?` rather than comparing against `"true"` or `"1"`.
 - Changes touching voting, anonymous polls, permissions, authentication, or sessions require an explicit security review and focused regression tests; read [Security review](docs/agents/security.md) before starting.
-- For user-visible features or behaviour changes, update the user manual, get user approval of the English changes before translating, and complete translations before opening a pull request; read [User manual and help site](docs/agents/user_manual.md).
+- For user-visible features or behaviour changes, proactively notice and suggest updates to the user manual and (when appropriate) the changelog, ask the user to review any user-manual changes, and defer translations (both app strings and user manual) until the change is ready for merge; read [User manual and help site](docs/agents/user_manual.md).
 - Record lasting lessons for agents in these instructions, not in an agent's private memory, so every tool and contributor sees them. Put task-specific lessons in the matching `docs/agents/*.md` file and add to `AGENTS.md` only when a rule applies across all tasks.
 
 ## Read the instructions for your task
