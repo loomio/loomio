@@ -2,11 +2,13 @@
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import { ref, computed } from 'vue';
+import { uniqBy } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
 
 const { group, selectedTag } = defineProps({
   group: {
     type: Object,
-    required: true
+    default: null
   },
   selectedTag: String
 });
@@ -17,7 +19,10 @@ const open = ref(false);
 const filter = ref('');
 
 const groupTags = computed(() => {
-  return group.tags().slice().sort((a, b) => a.name.localeCompare(b.name));
+  const tags = group
+    ? group.tags().slice()
+    : uniqBy(Session.user().groups().flatMap(g => g.tags()), 'name');
+  return tags.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 const filteredGroupTags = computed(() => {
@@ -27,7 +32,7 @@ const filteredGroupTags = computed(() => {
   return groupTags.value.filter(tag => tag.name.toLowerCase().includes(query));
 });
 
-const canAdminTags = computed(() => group.parentOrSelf().adminsInclude(Session.user()));
+const canAdminTags = computed(() => Boolean(group) && group.parentOrSelf().adminsInclude(Session.user()));
 
 const selectedTagRecord = computed(() => {
   return selectedTag ? groupTags.value.find(tag => tag.name === selectedTag) : null;
@@ -61,22 +66,24 @@ v-menu.tags-filter-menu(v-model="open" offset-y :close-on-content-click="false")
       span(v-else-if="selectedTag") {{ selectedTag }}
       span(v-else v-t="'loomio_tags.tags'")
       common-icon(name="mdi-menu-down")
-  v-card.tags-filter-menu__card(min-width="280" max-width="360")
-    .pa-2
+  v-card.tags-filter-menu__card(min-width="240" max-width="360")
+    .pa-2(v-if="groupTags.length > 8")
       v-text-field(
         v-model="filter"
-        :placeholder="$t('common.action.filter')"
+        :placeholder="$t('group_cards.filter_tags')"
         autofocus
         density="compact"
         hide-details
-        prepend-inner-icon="mdi-magnify"
+        :prepend-inner-icon="mdiMagnify"
         variant="outlined"
       )
-    v-list(density="compact")
+    v-list(density="compact" max-height="60vh")
       v-list-item.tags-filter-menu__all-tags(
         :active="!selectedTag"
         @click="selectTag(null)"
       )
+        template(v-slot:prepend)
+          common-icon.text-medium-emphasis.mr-3(name="mdi-tag-outline" size="16")
         v-list-item-title(v-t="'loomio_tags.all_tags'")
         template(v-slot:append)
           common-icon(v-if="!selectedTag" name="mdi-check")

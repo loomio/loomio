@@ -4,14 +4,16 @@ import GroupAbility from '@/shared/abilities/group_ability';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
-import { intersection, debounce, map } from 'lodash-es';
+import { intersection, debounce, map, uniq } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiClose, mdiMagnify } from '@mdi/js';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  components: { SubgroupsFilterMenu },
   mixins: [UrlFor],
   data() {
     return {
@@ -59,7 +61,7 @@ export default
           group_id: this.group.id,
           per: this.per,
           order: this.order,
-          subgroups: this.includeSubgroups ? 'mine' : undefined
+          subgroups: this.subgroupsFilter || undefined
         }
       });
 
@@ -85,8 +87,8 @@ export default
       this.$router.replace(this.mergeQuery({q: null}));
     },
 
-    toggleSubgroups() {
-      this.$router.replace(this.mergeQuery({ subgroups: this.includeSubgroups ? null : 'mine' }));
+    selectSubgroups(val) {
+      this.$router.replace(this.mergeQuery({ subgroups: val }));
     },
 
     refresh() {
@@ -95,7 +97,7 @@ export default
         q: this.$route.query.q,
         order: this.order,
         filter: this.$route.query.filter,
-        subgroups: this.includeSubgroups ? 'mine' : undefined
+        subgroups: this.subgroupsFilter || undefined
       });
     },
     invite() {
@@ -111,14 +113,20 @@ export default
   },
 
   computed: {
-    includeSubgroups() {
-      return Boolean(this.group && this.group.subgroupsCount > 0 && this.$route.query.subgroups === 'mine');
+    subgroupsFilter() {
+      if (!this.group || !(this.group.subgroupsCount > 0)) { return null; }
+      return ['mine', 'all'].includes(this.$route.query.subgroups) ? this.$route.query.subgroups : null;
     },
 
     memberships() {
       if (!this.group) { return []; }
 
-      const groupFilter = this.includeSubgroups ? { $in: this.group.organisationIds() } : this.group.id;
+      let groupFilter = this.group.id;
+      if (this.subgroupsFilter === 'all') {
+        groupFilter = { $in: this.group.organisationIds() };
+      } else if (this.subgroupsFilter === 'mine') {
+        groupFilter = { $in: uniq([this.group.id].concat(intersection(this.group.organisationIds(), Session.user().groupIds()))) };
+      }
       let chain = Records.memberships.collection.chain().find({revokedAt: null, groupId: groupFilter});
 
       const userIds = [];
@@ -243,13 +251,7 @@ export default
             v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      v-btn.members-panel__subgroups-toggle.mr-2(
-        v-if="group.subgroupsCount > 0"
-        variant="tonal"
-        :color="includeSubgroups ? 'primary' : undefined"
-        :class="{ 'text-medium-emphasis': !includeSubgroups }"
-        @click="toggleSubgroups"
-      ) {{ $t('group_cards.include_subgroups') }}
+      subgroups-filter-menu.mr-2(:group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-btn.members-panel__search-button.mr-2(
         v-if="!searchOpen"
         variant="text"

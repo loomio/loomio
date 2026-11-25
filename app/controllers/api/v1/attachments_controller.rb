@@ -2,7 +2,12 @@ class Api::V1::AttachmentsController < Api::V1::RestfulController
   def index
     group_ids = if params[:group_id].present?
       group = current_user.groups.find_by!(id: params[:group_id])
-      params[:subgroups] == 'mine' ? ([ group.id ] | (current_user.group_ids & group.id_and_subgroup_ids)) : [ group.id ]
+      case params[:subgroups]
+      when 'mine', 'all'
+        [ group.id ] | (current_user.group_ids & group.id_and_subgroup_ids)
+      else
+        [ group.id ]
+      end
     else
       current_user.group_ids
     end

@@ -6,11 +6,14 @@ import GroupAbility from '@/shared/abilities/group_ability';
 
 import { mdiMagnify } from '@mdi/js';
 import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
+import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  components: { SubgroupsFilterMenu, GroupsFilterMenu },
   mixins: [UrlFor, FormatDate],
   props: {
     dashboard: { type: Boolean, default: false }
@@ -46,7 +49,10 @@ export default
     }
 
     const params = { per: this.per, from: this.from };
-    if (this.group) { params.group_id = this.group.id; }
+    if (this.group) {
+      params.group_id = this.group.id;
+      if (this.subgroupsFilter) { params.subgroups = this.subgroupsFilter; }
+    }
     this.attachmentLoader = new RecordLoader({
       collection: 'attachments',
       params
@@ -60,10 +66,25 @@ export default
     '$route.query.q'(val) {
       this.searchQuery = val || '';
       this.fetch();
+    },
+    '$route.query.subgroups'() {
+      this.attachmentIds = [];
+      const params = { per: this.per, from: 0 };
+      if (this.group) {
+        params.group_id = this.group.id;
+        if (this.subgroupsFilter) { params.subgroups = this.subgroupsFilter; }
+      }
+      this.attachmentLoader = new RecordLoader({ collection: 'attachments', params });
+      this.fetch();
     }
   },
 
   methods: {
+    selectSubgroups(val) {
+      const query = Object.assign({}, this.$route.query);
+      if (val) { query.subgroups = val; } else { delete query.subgroups; }
+      this.$router.replace({ query });
+    },
     fetch() {
       this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
         // RecordLoader resolves a failed request after recording its error.
@@ -91,6 +112,10 @@ export default
   },
 
   computed: {
+    subgroupsFilter() {
+      if (!this.group || !(this.group.subgroupsCount > 0)) { return null; }
+      return ['mine', 'all'].includes(this.$route.query.subgroups) ? this.$route.query.subgroups : null;
+    },
     items() {
       const attachments = Records.attachments.collection.chain().
                      find({id: {$in: this.attachmentIds}}).
@@ -109,8 +134,10 @@ export default
 
 <template lang="pug">
 div
-  .pt-4.pb-2
-    v-text-field(
+  .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
+    groups-filter-menu(v-if="dashboard" section="files")
+    subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
+    v-text-field.flex-grow-1(
       clearable
       hide-details
       variant="solo"

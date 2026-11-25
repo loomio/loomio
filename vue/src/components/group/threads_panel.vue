@@ -6,13 +6,16 @@ import EventBus           from '@/shared/services/event_bus';
 import PageLoader         from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import { intersection, uniq } from 'lodash-es';
 import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import TagsFilterMenu from '@/components/tags/filter_menu';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
+import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 
 export default
 {
-  components: { TagsFilterMenu },
+  components: { TagsFilterMenu, SubgroupsFilterMenu, GroupsFilterMenu },
   mixins: [UrlFor],
   props: {
     dashboard: { type: Boolean, default: false }
@@ -48,8 +51,8 @@ export default
       this.routeQuery({tag, page: null});
     },
 
-    toggleSubgroups() {
-      this.routeQuery({ subgroups: this.includeSubgroups ? null : 'mine', page: null });
+    selectSubgroups(val) {
+      this.routeQuery({ subgroups: val, page: null });
     },
 
     hardRefresh() {
@@ -71,6 +74,7 @@ export default
             filter: ['all', 'direct'].includes(this.$route.query.t) ? undefined : (this.$route.query.t || 'unlocked'),
             unread: this.$route.query.t === 'unread' ? 1 : undefined,
             direct: this.$route.query.t === 'direct' ? 1 : undefined,
+            tags: this.$route.query.tag,
             per: this.per
           }
         });
@@ -88,7 +92,7 @@ export default
         order: 'lastActivityAt',
         params: {
           group_id: this.group.id,
-          subgroups: this.includeSubgroups ? 'mine' : undefined,
+          subgroups: this.subgroupsFilter || undefined,
           filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
           tags: this.$route.query.tag,
           per: this.per
@@ -154,8 +158,22 @@ export default
   },
 
   computed: {
+    subgroupsFilter() {
+      if (!this.group || !(this.group.subgroupsCount > 0)) { return null; }
+      return ['mine', 'all'].includes(this.$route.query.subgroups) ? this.$route.query.subgroups : null;
+    },
+
     includeSubgroups() {
-      return Boolean(this.group && this.group.subgroupsCount > 0 && this.$route.query.subgroups === 'mine');
+      return Boolean(this.subgroupsFilter);
+    },
+
+    groupFilter() {
+      if (!this.group) { return null; }
+      if (this.subgroupsFilter === 'all') { return { $in: this.group.organisationIds() }; }
+      if (this.subgroupsFilter === 'mine') {
+        return { $in: uniq([this.group.id].concat(intersection(this.group.organisationIds(), Session.user().groupIds()))) };
+      }
+      return this.group.id;
     },
 
     noGroups() {
@@ -184,7 +202,7 @@ export default
           }).simplesort('lastActivityAt', true);
         }
       } else {
-        const groupFilter = this.includeSubgroups ? { $in: this.group.organisationIds() } : this.group.id;
+        const groupFilter = this.groupFilter;
         if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
           pinnedTopics = Records.topics.collection.chain().find({
             groupId: groupFilter,
@@ -302,14 +320,9 @@ div.discussions-panel(v-if="dashboard || group")
         v-list-item.discussions-panel__filters-direct(v-if="dashboard" @click="routeQuery({t: 'direct'})")
           v-list-item-title(v-t="'sidebar.direct_threads'")
 
-    tags-filter-menu(v-if="group" :group="group" :selected-tag="$route.query.tag" @select="selectTag")
-    v-btn.discussions-panel__subgroups-toggle(
-      v-if="group && group.subgroupsCount > 0"
-      variant="tonal"
-      :color="includeSubgroups ? 'primary' : undefined"
-      :class="{ 'text-medium-emphasis': !includeSubgroups }"
-      @click="toggleSubgroups"
-    ) {{ $t('group_cards.include_subgroups') }}
+    tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
+    groups-filter-menu(v-if="dashboard")
+    subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
     v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"

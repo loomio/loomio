@@ -3,8 +3,10 @@ import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import EventBus from '@/shared/services/event_bus';
+import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import GroupAbility from '@/shared/abilities/group_ability';
+import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
@@ -31,10 +33,16 @@ const activeSection = computed(() => {
   return 'threads';
 });
 
-const threadsSubtitle = computed(() => {
-  const count = group.discussionsCount || 0;
-  return count > 0 ? t('group_cards.threads_count', { count }, count) : t('group_cards.no_threads');
+const recentTopics = computed(() => {
+  if (!Records.topics?.collection) { return []; }
+  const recentCutoff = unreadCutoffDate();
+  return Records.topics.collection
+    .chain()
+    .find({ groupId: group.id, discardedAt: null, lastActivityAt: { $gt: recentCutoff } })
+    .data();
 });
+const recentThreadsCount = computed(() => recentTopics.value.length);
+const unreadThreadsCount = computed(() => recentTopics.value.filter(topic => topic.isUnread()).length);
 const membersSubtitle = computed(() => {
   const membersCount = group.membershipsCount || 0;
   const parts = [t('group_cards.members_count', { count: membersCount }, membersCount)];
@@ -72,7 +80,14 @@ function invite() {
           common-icon(name="mdi-forum")
           div
             .text-title-small {{ t('group_cards.threads') }}
-            .text-body-small.text-medium-emphasis {{ threadsSubtitle }}
+            .text-body-small.text-medium-emphasis
+              span {{ t('group_cards.recent_count', { count: recentThreadsCount }) }}
+              span.mx-1 ·
+              a.group-cards__unread-link.text-decoration-none.underline-on-hover(
+                :href="threadsRoute + '?t=unread'"
+                :class="unreadThreadsCount > 0 || route.query.t === 'unread' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go(threadsRoute + '?t=unread')"
+              ) {{ t('dashboard_cards.unread_count', { count: unreadThreadsCount }) }}
     v-col(cols="6" md="3")
       v-card.group-cards__polls.group-page-polls-tab.fill-height(
         variant="tonal"

@@ -74,7 +74,7 @@ const openCounts = computed(() => {
 
 const unreadTopicCounts = computed(() => {
   const counts = {};
-  const recentCutoff = subWeeks(new Date, 6);
+  const recentCutoff = unreadCutoffDate();
   Records.topics.collection.chain().find({discardedAt: null, lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
     counts['total'] = (counts['total'] || 0) + 1;
     const groupId = t.groupId || 'direct'
@@ -140,7 +140,7 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1, last_activity_gte: subWeeks(new Date(), 6).toISOString() } })
+  Records.topics.fetch({ params: { unread: 1, last_activity_gte: unreadCutoffDate().toISOString() } })
   loadPendingPolls();
   loadBookmarks();
 };

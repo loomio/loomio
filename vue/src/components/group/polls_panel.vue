@@ -1,14 +1,17 @@
 <script setup lang="js">
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { pickBy, identity } from 'lodash-es';
+import { intersection, pickBy, identity, uniq } from 'lodash-es';
 
 import AppConfig from '@/shared/services/app_config';
 import PollAbility from '@/shared/abilities/poll_ability';
 import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
 import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
 import TagsFilterMenu from '@/components/tags/filter_menu';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
+import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 
 const { dashboard, defaultStatus } = defineProps({
   dashboard: { type: Boolean, default: false },
@@ -27,9 +30,12 @@ const dummyQuery = ref(null);
 const effectiveStatus = computed(() => (
   route.query.status !== undefined ? (route.query.status || null) : defaultStatus
 ));
-const includeSubgroups = computed(() => (
-  Boolean(group.value && group.value.subgroupsCount > 0 && route.query.subgroups === 'mine')
+const subgroupsFilter = computed(() => (
+  group.value && group.value.subgroupsCount > 0 && ['mine', 'all'].includes(route.query.subgroups)
+    ? route.query.subgroups
+    : null
 ));
+const includeSubgroups = computed(() => Boolean(subgroupsFilter.value));
 
 const page = computed({
   get: () => parseInt(route.query.page) || 1,
@@ -54,8 +60,8 @@ const selectTag = (tag) => {
   router.replace(mergeQuery({tag, page: null}));
 };
 
-const toggleSubgroups = () => {
-  router.replace(mergeQuery({ subgroups: includeSubgroups.value ? null : 'mine', page: null }));
+const selectSubgroups = (val) => {
+  router.replace(mergeQuery({ subgroups: val, page: null }));
 };
 
 const openSearchModal = () => {
@@ -89,12 +95,12 @@ const initLoader = () => {
     exclude_types: 'group',
     status: effectiveStatus.value,
     poll_type: route.query.poll_type,
+    tags: route.query.tag,
     per
   };
   if (group.value) {
     params.group_key = group.value.key;
-    params.tags = route.query.tag;
-    params.subgroups = includeSubgroups.value ? 'mine' : 'none';
+    params.subgroups = subgroupsFilter.value || 'none';
   }
   loader.value = new PageLoader({
     path: 'polls',
@@ -106,7 +112,12 @@ const initLoader = () => {
 const polls = computed(() => {
   let chain = Records.polls.collection.chain();
   if (group.value) {
-    const groupFilter = includeSubgroups.value ? { $in: group.value.organisationIds() } : group.value.id;
+    let groupFilter = group.value.id;
+    if (subgroupsFilter.value === 'all') {
+      groupFilter = { $in: group.value.organisationIds() };
+    } else if (subgroupsFilter.value === 'mine') {
+      groupFilter = { $in: uniq([group.value.id].concat(intersection(group.value.organisationIds(), Session.user().groupIds()))) };
+    }
     chain = chain.find({groupId: groupFilter});
   }
   chain = chain.find({discardedAt: null});
@@ -127,7 +138,7 @@ const polls = computed(() => {
     chain = chain.find({'pollType': route.query.poll_type});
   }
 
-  if (group.value && route.query.tag) {
+  if (route.query.tag) {
     const tagName = route.query.tag;
     chain = chain.where(poll => poll.topic().tags.includes(tagName));
   }
@@ -203,14 +214,9 @@ watch(() => route.query.page, fetch);
             :to="mergeQuery({poll_type: pollType})"
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      tags-filter-menu(v-if="group" :group="group" :selected-tag="$route.query.tag" @select="selectTag")
-      v-btn.polls-panel__subgroups-toggle(
-        v-if="group && group.subgroupsCount > 0"
-        variant="tonal"
-        :color="includeSubgroups ? 'primary' : undefined"
-        :class="{ 'text-medium-emphasis': !includeSubgroups }"
-        @click="toggleSubgroups"
-      ) {{ $t('group_cards.include_subgroups') }}
+      tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
+      groups-filter-menu(v-if="dashboard" section="polls")
+      subgroups-filter-menu(v-else :group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-btn.text-medium-emphasis(
         variant="tonal"
         @click="openSearchModal"

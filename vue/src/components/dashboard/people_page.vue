@@ -7,6 +7,7 @@ import EventBus from '@/shared/services/event_bus';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import RestfulClient from '@/shared/record_store/restful_client';
 import UserModel from '@/shared/models/user_model';
+import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
 
 const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
@@ -72,15 +73,17 @@ component(:is="embedded ? 'div' : 'v-main'")
       h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_page.dashboard') }}
       dashboard-cards
 
-    v-text-field.dashboard-people-page__search.mb-3(
-      v-model="query"
-      :prepend-inner-icon="mdiMagnify"
-      :placeholder="t('dashboard_cards.search_people')"
-      variant="outlined"
-      density="compact"
-      clearable
-      hide-details
-    )
+    .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
+      groups-filter-menu(section="members")
+      v-text-field.dashboard-people-page__search.flex-grow-1(
+        v-model="query"
+        :prepend-inner-icon="mdiMagnify"
+        :placeholder="t('dashboard_cards.search_people')"
+        variant="outlined"
+        density="compact"
+        clearable
+        hide-details
+      )
 
     v-card(v-if="loading && people.length === 0" variant="flat")
       v-list(lines="two")
