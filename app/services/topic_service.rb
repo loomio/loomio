@@ -120,7 +120,7 @@ class TopicService
       end
 
       # TODO we gotta stop adding group_id to activestorage attachment
-      ActiveStorage::Attachment.where(record: topic.items.map(&:itemable).concat([topic])).update_all(group_id: destination.id)
+      # Attachments resolve their group through their record; no denormalized group_id to update.
 
       PollGroupMembersAddedWorker.perform_later(topic.group_id) if topic.group_id
       TopicItems::DiscussionMoved.create!(

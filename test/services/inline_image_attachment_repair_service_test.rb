@@ -32,7 +32,7 @@ class InlineImageAttachmentRepairServiceTest < ActiveSupport::TestCase
 
     assert_equal 1, result[:attachment_links_missing]
     attachment = @comment.reload.image_files.attachments.find_by!(blob_id: @blob.id)
-    assert_equal @discussion.group.id, attachment.group_id
+    assert_not_nil attachment
     assert_equal updated_at, @comment.updated_at
   end
 

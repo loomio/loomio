@@ -31,7 +31,6 @@ class Api::V1::AttachmentsControllerTest < ActionController::TestCase
       content_type: 'image/jpeg'
     )
     discussion.files.attach(blob)
-    discussion.files.last.update_attribute(:group_id, discussion.group_id)
     attachment = discussion.files.last
     assert_equal [blob.id], discussion.reload.attachments.pluck('id')
 
@@ -85,7 +84,6 @@ class Api::V1::AttachmentsControllerTest < ActionController::TestCase
       content_type: 'image/jpeg'
     )
     discussion.files.attach(blob)
-    discussion.files.last.update_attribute(:group_id, discussion.group_id)
     attachment = discussion.files.last
 
     sign_in users(:user)
