@@ -40,3 +40,4 @@
 ## Database migrations
 
 - For large migrations, keep schema locks short, build indexes concurrently, and move bulk backfills to idempotent background jobs scheduled 10 minutes later. Prefer newest records first so active content is corrected sooner. Keep the app usable before backfill completes. Commit small batches, persist progress for retries, and verify lock behavior on production-sized data with concurrent read/write checks before deploying to loomio.com.
+- **6-week unread window:** Threads whose `last_activity_at` is older than 6 weeks do not count toward unread badges or appear when filtering by **Unread** (`?t=unread` / inbox), though they still display their unread styling when browsing all/recent threads.

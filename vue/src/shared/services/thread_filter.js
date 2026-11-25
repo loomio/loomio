@@ -1,6 +1,6 @@
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
-import { subWeeks } from 'date-fns';
+import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import { each, compact } from 'lodash-es';
 
 export default function(options) {
@@ -13,7 +13,7 @@ export default function(options) {
     chain = chain.find({id: {$in: options.ids}});
   } else {
     each(compact([].concat(options.filters)), filter => chain = (() => { switch (filter) {
-      case 'show_recent':    return chain.find({lastActivityAt: { $gt: subWeeks(new Date, 6) }});
+      case 'show_recent':    return chain.find({lastActivityAt: { $gt: unreadCutoffDate() }});
       case 'show_unread':    return chain.where(topic => topic.isUnread());
       case 'hide_unread':    return chain.where(topic => !topic.isUnread());
       case 'show_dismissed': return chain.where(topic => topic.isDismissed());
