@@ -7,6 +7,10 @@ import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 
+const { embedded } = defineProps({
+  embedded: { type: Boolean, default: false }
+});
+
 const loading = ref(true);
 
 const bookmarks = computed(() => orderBy(
@@ -36,9 +40,11 @@ const titleVisible = (visible) => {
 </script>
 
 <template lang="pug">
-v-main
-  v-container.bookmarks-page.max-width-1024.px-0.px-sm-3
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'bookmarks.bookmarks'")
+component(:is="embedded ? 'div' : 'v-main'")
+  component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'bookmarks-page pt-2' : 'bookmarks-page max-width-1024 px-2 px-sm-4'")
+    template(v-if="!embedded")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+      dashboard-cards
 
     section.bookmarks-page__loading(v-if='loading && bookmarks.length == 0')
       v-card.mb-2

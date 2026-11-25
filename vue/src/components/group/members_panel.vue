@@ -59,7 +59,7 @@ export default
           group_id: this.group.id,
           per: this.per,
           order: this.order,
-          subgroups: this.$route.query.subgroups
+          subgroups: this.includeSubgroups ? 'mine' : undefined
         }
       });
 
@@ -85,13 +85,17 @@ export default
       this.$router.replace(this.mergeQuery({q: null}));
     },
 
+    toggleSubgroups() {
+      this.$router.replace(this.mergeQuery({ subgroups: this.includeSubgroups ? null : 'mine' }));
+    },
+
     refresh() {
       this.loader.fetchRecords({
         from: 0,
         q: this.$route.query.q,
         order: this.order,
         filter: this.$route.query.filter,
-        subgroups: this.$route.query.subgroups
+        subgroups: this.includeSubgroups ? 'mine' : undefined
       });
     },
     invite() {
@@ -107,26 +111,15 @@ export default
   },
 
   computed: {
+    includeSubgroups() {
+      return Boolean(this.group && this.group.subgroupsCount > 0 && this.$route.query.subgroups === 'mine');
+    },
+
     memberships() {
       if (!this.group) { return []; }
 
-      let chain = Records.memberships.collection.chain().find({revokedAt: null});
-      switch (this.$route.query.subgroups) {
-        case 'mine':
-          chain = chain.find({groupId: {$in: intersection(this.group.organisationIds(), Session.user().groupIds())}});
-          break;
-        case 'all':
-          chain = chain.find({groupId: {$in: this.group.organisationIds()}});
-          break;
-        default:
-          chain = chain.find({groupId: this.group.id});
-      }
-
-      chain = chain.sort((a, b) => {
-        if (a.groupId === this.group.id) { return -1; }
-        if (b.groupId === this.group.id) { return 1; }
-        return 0;
-      });
+      const groupFilter = this.includeSubgroups ? { $in: this.group.organisationIds() } : this.group.id;
+      let chain = Records.memberships.collection.chain().find({revokedAt: null, groupId: groupFilter});
 
       const userIds = [];
       const membershipIds = [];
@@ -250,6 +243,13 @@ export default
             v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
+      v-btn.members-panel__subgroups-toggle.mr-2(
+        v-if="group.subgroupsCount > 0"
+        variant="tonal"
+        :color="includeSubgroups ? 'primary' : undefined"
+        :class="{ 'text-medium-emphasis': !includeSubgroups }"
+        @click="toggleSubgroups"
+      ) {{ $t('group_cards.include_subgroups') }}
       v-btn.members-panel__search-button.mr-2(
         v-if="!searchOpen"
         variant="text"
@@ -303,10 +303,6 @@ export default
               template(v-if="!membership.acceptedAt && membership.userEmail")
                 | {{membership.userEmail}}
 
-              span.text-body-small(v-if="$route.query.subgroups")
-                space
-                span {{membership.group().name}}
-
               template(v-if="membership.user().title(group)")
                 space
                 span.text-body-small {{membership.user().title(group)}}
@@ -346,12 +342,9 @@ export default
 
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text-medium-emphasis(v-if='$route.query.subgroups == "all"')
-              | {{memberships.length}} / {{group.orgMembersCount}}
-            .text-medium-emphasis(v-else)
+            .text-medium-emphasis
               | {{memberships.length}} / {{loader.total}}
             v-btn.my-2.members-panel__show-more(variant="tonal" color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")
-            a.text-medium-emphasis.text-decoration-none(v-if='group.subgroupsCount && $route.query.subgroups != "all"' href="?subgroups=all" v-t="'members_panel.show_users_in_subgroups'")
 
 </template>

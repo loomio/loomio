@@ -157,7 +157,8 @@ describe('GroupCards and PlanBanner', () => {
     expect(wrapper.find('.group-page-members-tab').text()).toContain('2 members');
     expect(wrapper.find('.group-page-members-tab').text()).not.toContain('delegate');
     expect(wrapper.find('.group-page-polls-tab').text()).toContain('Polls');
-    expect(wrapper.find('.group-page-polls-tab').text()).toContain('1 needs your vote');
+    expect(wrapper.find('.group-page-polls-tab').text()).toContain('1 need vote');
+    expect(wrapper.find('.group-page-polls-tab').text()).toContain('2 open');
     expect(wrapper.find('.group-page-files-tab').exists()).toBe(true);
 
     await wrapper.find('.group-cards__invite').trigger('click');

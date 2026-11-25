@@ -13,6 +13,9 @@ import {groupBy} from 'lodash-es';
 
 export default {
   mixins: [UrlFor, FormatDate],
+  props: {
+    embedded: { type: Boolean, default: false }
+  },
   data() {
     return {
       records: {},
@@ -64,9 +67,11 @@ export default {
 </script>
 
 <template lang="pug">
-v-main
-  v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'tasks.your_tasks'")
+component(:is="embedded ? 'div' : 'v-main'")
+  component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'tasks-page pt-2' : 'dashboard-page max-width-1024 px-2 px-sm-4'")
+    template(v-if="!embedded")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+      dashboard-cards
     loading(v-if="loading")
     template(v-for="(tasks, recordKey) in tasksByRecordKey")
       v-card.mb-3

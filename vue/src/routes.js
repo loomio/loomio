@@ -4,6 +4,7 @@ import TopicPage from './components/topic/page';
 
 const InboxPage = () => import('./components/inbox/page');
 const PollsToVoteOnPage = () => import('./components/dashboard/polls_to_vote_on_page');
+const DashboardPeoplePage = () => import('./components/dashboard/people_page.vue');
 const NotificationsPage = () => import('./components/notifications/page');
 const ExplorePage = () => import('./components/explore/page');
 const ProfilePage = () => import('./components/profile/page');
@@ -69,11 +70,21 @@ const router = createRouter({
     {path: '/tasks', component: TasksPage},
     {path: '/bookmarks', component: BookmarksPage},
     {path: '/report', component: ReportPage},
-    {path: '/dashboard', component: DashboardPage},
-    {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
+    {
+      path: '/dashboard',
+      component: DashboardPage,
+      children: [
+        { path: '', component: GroupThreadsPanel, props: { dashboard: true } },
+        { path: 'polls', component: GroupPollsPanel, props: { dashboard: true } },
+        { path: 'polls_to_vote_on', component: GroupPollsPanel, props: { dashboard: true, defaultStatus: 'vote' } },
+        { path: 'members', alias: 'people', component: DashboardPeoplePage, props: { embedded: true } },
+        { path: 'files', component: GroupFilesPanel, props: { dashboard: true } },
+        { path: 'tasks', component: TasksPage, props: { embedded: true } },
+        { path: 'bookmarks', component: BookmarksPage, props: { embedded: true } },
+        { path: 'direct_discussions', component: TopicsPage, props: { embedded: true } }
+      ]
+    },
     {path: '/notifications', component: NotificationsPage},
-    {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/dashboard/direct_discussions', component: TopicsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},

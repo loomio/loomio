@@ -1,7 +1,7 @@
 <script setup lang="js">
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import GroupAbility from '@/shared/abilities/group_ability';
@@ -9,6 +9,7 @@ import GroupAbility from '@/shared/abilities/group_ability';
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
 const route = useRoute();
+const router = useRouter();
 const inviteClicked = ref(false);
 
 const canAddMembers = computed(() => GroupAbility.canAddMembers(group));
@@ -42,18 +43,12 @@ const membersSubtitle = computed(() => {
   }
   return parts.join(', ');
 });
-const pollsSubtitle = computed(() => {
-  const votesNeeded = group.currentUserVotesNeededCount || 0;
-  if (votesNeeded > 0) {
-    return t('group_cards.needs_your_vote', { count: votesNeeded }, votesNeeded);
-  }
-  const proposals = group.proposalsCount || 0;
-  const otherPolls = Math.max(0, (group.pollsCount || 0) - proposals);
-  const parts = [];
-  if (proposals > 0) { parts.push(t('group_cards.proposals_count', { count: proposals }, proposals)); }
-  if (otherPolls > 0) { parts.push(t('group_cards.polls_count', { count: otherPolls }, otherPolls)); }
-  return parts.length ? parts.join(', ') : t('group_cards.no_open_polls');
-});
+const votesNeededCount = computed(() => group.currentUserVotesNeededCount || 0);
+const openPollsCount = computed(() => group.activePollsCount || 0);
+
+function go(path) {
+  router.push(path);
+}
 
 function invite() {
   inviteClicked.value = true;
@@ -89,7 +84,18 @@ function invite() {
           common-icon(name="mdi-poll")
           div
             .text-title-small {{ t('group_page.polls') }}
-            .text-body-small(v-if="pollsSubtitle" :class="group.currentUserVotesNeededCount > 0 ? 'text-primary font-weight-medium' : 'text-medium-emphasis'") {{ pollsSubtitle }}
+            .text-body-small.text-medium-emphasis
+              a.group-cards__need-vote-link.text-decoration-none.underline-on-hover(
+                :href="pollsRoute + '?status=vote'"
+                :class="votesNeededCount > 0 || route.query.status === 'vote' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go(pollsRoute + '?status=vote')"
+              ) {{ t('group_cards.need_vote_count', { count: votesNeededCount }) }}
+              span.mx-1 ·
+              a.group-cards__open-polls-link.text-decoration-none.underline-on-hover(
+                :href="pollsRoute + '?status=active'"
+                :class="route.query.status === 'active' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
+                @click.prevent.stop="go(pollsRoute + '?status=active')"
+              ) {{ t('group_cards.open_count', { count: openPollsCount }) }}
     v-col(cols="6" md="3")
       v-card.group-cards__members.group-page-members-tab.fill-height(
         variant="tonal"

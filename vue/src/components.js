@@ -26,6 +26,7 @@ export default {
   ContactForm: 'contact/form',
   CommonIcon: 'common/icon',
   DateTimePicker: 'common/date_time_picker',
+  DashboardCards: 'dashboard/cards',
   DashboardPollsPanel: 'dashboard/polls_panel',
   DiscussionForm: 'discussion/form',
   DiscussionForkActions: 'discussion/fork_actions',

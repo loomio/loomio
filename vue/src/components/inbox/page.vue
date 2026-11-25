@@ -66,8 +66,9 @@ fetchInbox();
 
 <template lang="pug">
 v-main
-  v-container.inbox-page.topic-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_threads'")
+  v-container.inbox-page.topic-preview-collection__container.max-width-1024.px-2.px-sm-4(grid-list-lg)
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+    dashboard-cards
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .topic-previews-container
         loading-content.topic-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')

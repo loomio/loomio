@@ -4,7 +4,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { useTheme } from 'vuetify';
 import { uniqBy } from 'lodash-es';
-import { subWeeks } from 'date-fns';
+import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
@@ -65,7 +65,7 @@ const organizations = computed(() => {
 
 const openCounts = computed(() => {
   const counts = {};
-  const recentCutoff = subWeeks(new Date(), 6);
+  const recentCutoff = unreadCutoffDate();
   Session.user().groups().forEach(g => {
     counts[g.id] = g.topics().filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
   });
@@ -87,9 +87,24 @@ const pollsToVoteOnCount = computed(() => findPendingPolls().length);
 
 const bookmarksCount = computed(() => Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length);
 
+const CARRIED_THREAD_FILTERS = new Set(['unread', 'locked', 'all']);
+const carriedThreadQuery = computed(() => (
+  CARRIED_THREAD_FILTERS.has(route.query?.t) ? { t: route.query.t } : {}
+));
+
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
 };
+
+const groupLink = (target) => ({
+  path: urlFor(target),
+  query: carriedThreadQuery.value
+});
+
+const dashboardLink = computed(() => ({
+  path: '/dashboard',
+  query: carriedThreadQuery.value
+}));
 
 const openIfPinned = () => {
   open.value = !!isSignedIn.value &&
@@ -175,33 +190,19 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
 
     v-divider
     v-list(nav density="compact" :lines="false")
-      v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.dashboard')")
-      v-list-item(to="/dashboard/polls_to_vote_on")
-        v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount}) }}
-      v-list-item(to="/inbox")
-        v-list-item-title(:class="{'text-medium-emphasis': unreadTopicCounts['total'] === 0}")
-          span(v-if="unreadTopicCounts['total']" v-t="{path: 'sidebar.unread_threads_count', args: {count: unreadTopicCounts['total']}}")
-          span(v-else v-t="'sidebar.unread_threads'")
-      v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
-        v-list-item-title(:class="{'text-medium-emphasis': !unreadTopicCounts['direct']}")
-          span(v-t="'sidebar.direct_threads'")
-          template(v-if="unreadTopicCounts['direct']")
+      v-list-item.sidebar__list-item-button--recent(:to="dashboardLink")
+        v-list-item-title
+          span(v-t="'dashboard_page.dashboard'")
+          template(v-if="unreadTopicCounts['total']")
             | &nbsp;
-            span ({{unreadTopicCounts['direct']}})
-      v-list-item.sidebar__list-item-button--bookmarks(to="/bookmarks")
-        v-list-item-title(:class="{'text-medium-emphasis': !bookmarksCount}")
-          span(v-t="'bookmarks.bookmarks'")
-          template(v-if="bookmarksCount")
-            | &nbsp;
-            span ({{bookmarksCount}})
-      v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
+            span ({{unreadTopicCounts['total']}})
 
     v-divider
     v-list.sidebar__groups(nav density="comfortable")
       v-list-subheader
         span(v-t="'common.groups'")
       template(v-for="group in organizations" :key="group.id")
-        v-list-item.sidebar__group(:to="urlFor(group)")
+        v-list-item.sidebar__group(:to="groupLink(group)")
           template(v-slot:prepend)
             group-avatar.mr-2(:group="group")
           v-list-item-title

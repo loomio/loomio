@@ -1484,7 +1484,18 @@ en:
     month: Month
     year: Year
     country_disclaimer: Country is based on the user's IP address and is not very accurate. Consider this a rough guide only.
+  dashboard_cards:
+    unread_count: "{count} unread"
+    direct_count: "{count} direct"
+    people: People
+    recently_online: Recently online
+    your_tasks: Your tasks
+    search_people: Search people
+    direct_thread: Direct thread
+    view_profile: View profile
+    no_people_found: No people found
   group_cards:
+    include_subgroups: Include subgroups
     threads: Threads
     threads_count: "1 thread | {count} threads"
     no_threads: No threads
@@ -1494,6 +1505,8 @@ en:
     polls_count: "1 poll | {count} polls"
     proposals_count: "1 proposal | {count} proposals"
     needs_your_vote: "1 needs your vote | {count} need your vote"
+    need_vote_count: "{count} need vote"
+    open_count: "{count} open"
     no_open_polls: No open polls
     browse_files: View files
     invite_get_started: Click here to get started

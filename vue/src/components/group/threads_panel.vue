@@ -6,6 +6,7 @@ import EventBus           from '@/shared/services/event_bus';
 import PageLoader         from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import TagsFilterMenu from '@/components/tags/filter_menu';
 import UrlFor from '@/mixins/url_for';
 
@@ -13,6 +14,9 @@ export default
 {
   components: { TagsFilterMenu },
   mixins: [UrlFor],
+  props: {
+    dashboard: { type: Boolean, default: false }
+  },
   created() {
     this.refresh();
     EventBus.$on('signedIn', this.hardRefresh);
@@ -44,11 +48,36 @@ export default
       this.routeQuery({tag, page: null});
     },
 
+    toggleSubgroups() {
+      this.routeQuery({ subgroups: this.includeSubgroups ? null : 'mine', page: null });
+    },
+
     hardRefresh() {
-      Records.groups.remote.fetchById(this.$route.params.key).then(this.refresh);
+      if (this.dashboard) {
+        this.refresh();
+      } else {
+        Records.groups.remote.fetchById(this.$route.params.key).then(this.refresh);
+      }
     },
 
     refresh() {
+      if (this.dashboard) {
+        this.group = null;
+        this.isMember = false;
+        this.loader = new PageLoader({
+          path: 'topics',
+          order: 'lastActivityAt',
+          params: {
+            filter: ['all', 'direct'].includes(this.$route.query.t) ? undefined : (this.$route.query.t || 'unlocked'),
+            unread: this.$route.query.t === 'unread' ? 1 : undefined,
+            direct: this.$route.query.t === 'direct' ? 1 : undefined,
+            per: this.per
+          }
+        });
+        this.fetch();
+        return;
+      }
+
       // GroupPage loads the group before mounting this panel.
       const group = Records.groups.fuzzyFind(this.$route.params.key);
       this.group = group;
@@ -59,7 +88,7 @@ export default
         order: 'lastActivityAt',
         params: {
           group_id: this.group.id,
-          subgroups: 'mine',
+          subgroups: this.includeSubgroups ? 'mine' : undefined,
           filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
           tags: this.$route.query.tag,
           per: this.per
@@ -85,6 +114,7 @@ export default
     filterName(filter) {
       switch (filter) {
         case 'unread': return 'discussions_panel.unread';
+        case 'direct': return 'sidebar.direct_threads';
         case 'locked': return 'discussions_panel.locked';
         case 'all': return 'discussions_panel.all';
         default:
@@ -96,11 +126,13 @@ export default
       let initialOrgId = null;
       let initialGroupId = null;
 
-      if (this.group.isParent()) {
-        initialOrgId = this.group.id;
-      } else {
-        initialOrgId = this.group.parentId;
-        initialGroupId = this.group.id;
+      if (this.group) {
+        if (this.group.isParent()) {
+          initialOrgId = this.group.id;
+        } else {
+          initialOrgId = this.group.parentId;
+          initialGroupId = this.group.id;
+        }
       }
 
       EventBus.$emit('openModal', {
@@ -112,44 +144,71 @@ export default
           initialGroupId,
           initialQuery: this.dummyQuery
         }
-      }
-      );
+      });
     }
   },
 
   watch: {
-    '$route.query': 'refresh'
+    '$route.query': 'refresh',
+    '$route.params.key': 'refresh'
   },
 
   computed: {
-    topics() {
-      if (!this.group) { return []; }
+    includeSubgroups() {
+      return Boolean(this.group && this.group.subgroupsCount > 0 && this.$route.query.subgroups === 'mine');
+    },
 
-      const groupIds = this.group.organisationIds();
+    noGroups() {
+      return this.dashboard && Session.user().groups().length === 0;
+    },
+
+    topics() {
+      if (!this.dashboard && !this.group) { return []; }
 
       let pinnedTopics = [];
-      if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
-        pinnedTopics = Records.topics.collection.chain().find({
-          groupId: {$in: groupIds},
-          discardedAt: null,
-          pinnedAt: {$ne: null}
-        }).simplesort('pinnedAt', true).data();
-      }
+      let chain;
+      if (this.dashboard) {
+        if (this.$route.query.t === 'direct') {
+          chain = Records.topics.collection.chain().find({
+            groupId: null,
+            discardedAt: null
+          }).simplesort('lastActivityAt', true);
+        } else {
+          const groupIds = Session.user().groupIds();
+          chain = Records.topics.collection.chain().find({
+            discardedAt: null,
+            $or: [
+              { groupId: { $in: groupIds } },
+              { readerGuest: true }
+            ]
+          }).simplesort('lastActivityAt', true);
+        }
+      } else {
+        const groupFilter = this.includeSubgroups ? { $in: this.group.organisationIds() } : this.group.id;
+        if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
+          pinnedTopics = Records.topics.collection.chain().find({
+            groupId: groupFilter,
+            discardedAt: null,
+            pinnedAt: {$ne: null}
+          }).simplesort('pinnedAt', true).data();
+        }
 
-      let chain = Records.topics.collection.chain().find({
-        groupId: {$in: groupIds},
-        discardedAt: null,
-        id: {$nin: pinnedTopics.map(t => t.id)}
-      }).simplesort('lastActivityAt', true);
+        chain = Records.topics.collection.chain().find({
+          groupId: groupFilter,
+          discardedAt: null,
+          id: {$nin: pinnedTopics.map(t => t.id)}
+        }).simplesort('lastActivityAt', true);
+      }
 
       switch (this.$route.query.t) {
         case 'unread':
-          chain = chain.where(topic => topic.isUnread());
+          chain = chain.find({ lastActivityAt: { $gt: unreadCutoffDate() } }).where(topic => topic.isUnread());
           break;
         case 'locked':
           chain = chain.find({lockedAt: {$ne: null}});
           break;
         case 'all':
+        case 'direct':
           break;
         default: // null or 'unlocked' — show only unlocked threads
           chain = chain.find({lockedAt: null});
@@ -193,15 +252,15 @@ export default
     },
 
     noThreadsMatchingFilters() {
-      return this.noThreads && ((this.group.discussionsCount || 0) + (this.group.pollsCount || 0)) > 0;
+      return !this.dashboard && this.noThreads && ((this.group.discussionsCount || 0) + (this.group.pollsCount || 0)) > 0;
     },
 
     canViewPrivateContent() {
-      return GroupAbility.canSeePrivateContent(this.group);
+      return this.dashboard || GroupAbility.canSeePrivateContent(this.group);
     },
 
     canStartThread() {
-      return DiscussionAbility.canCreate(this.group);
+      return Boolean(this.group) && DiscussionAbility.canCreate(this.group);
     },
 
     isLoggedIn() {
@@ -209,7 +268,8 @@ export default
     },
 
     unreadCount() {
-      return this.topics.filter(topic => topic.isUnread()).length;
+      const recentCutoff = unreadCutoffDate();
+      return this.topics.filter(topic => topic.isUnread() && topic.lastActivityAt > recentCutoff).length;
     },
 
     suggestLockedThreads() {
@@ -223,11 +283,11 @@ export default
 </script>
 
 <template lang="pug">
-div.discussions-panel(v-if="group")
-  .d-flex.align-center.flex-wrap.pt-4.pb-2
+div.discussions-panel(v-if="dashboard || group")
+  .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
     v-menu
       template(v-slot:activator="{ props }")
-        v-btn.discussions-panel__filters.mr-2.text-medium-emphasis(v-bind="props" variant="tonal")
+        v-btn.discussions-panel__filters.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -239,8 +299,17 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="'discussions_panel.locked'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
+        v-list-item.discussions-panel__filters-direct(v-if="dashboard" @click="routeQuery({t: 'direct'})")
+          v-list-item-title(v-t="'sidebar.direct_threads'")
 
-    tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
+    tags-filter-menu(v-if="group" :group="group" :selected-tag="$route.query.tag" @select="selectTag")
+    v-btn.discussions-panel__subgroups-toggle(
+      v-if="group && group.subgroupsCount > 0"
+      variant="tonal"
+      :color="includeSubgroups ? 'primary' : undefined"
+      :class="{ 'text-medium-emphasis': !includeSubgroups }"
+      @click="toggleSubgroups"
+    ) {{ $t('group_cards.include_subgroups') }}
     v-btn.text-medium-emphasis(
       variant="tonal"
       @click="openSearchModal"
@@ -271,16 +340,20 @@ div.discussions-panel(v-if="group")
     div(v-else)
       .discussions-panel__content
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
-          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
-          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_discussions'")
+          template(v-if="dashboard")
+            p.text-center(v-if="noGroups" v-html="$t('dashboard_page.no_groups.show_all')")
+            p.text-center(v-else v-t="'dashboard_page.no_threads.show_all'")
+          template(v-else)
+            p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
+            p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_discussions'")
         .discussions-panel__list.topic-preview-collection__container(v-if="topics.length")
           v-list.topic-previews(lines="two")
             topic-preview(
               v-for="topic in topics"
-              :show-group-name="topic.groupId != group.id"
+              :show-group-name="dashboard || includeSubgroups"
               :key="topic.id"
               :topic="topic"
-              group-page
+              :group-page="Boolean(group)"
             )
 
         loading(v-if="loading && topics.length == 0")

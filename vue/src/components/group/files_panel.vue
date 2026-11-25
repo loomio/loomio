@@ -12,6 +12,9 @@ import FormatDate from '@/mixins/format_date';
 export default
 {
   mixins: [UrlFor, FormatDate],
+  props: {
+    dashboard: { type: Boolean, default: false }
+  },
   data() {
     return {
       group: null,
@@ -29,24 +32,24 @@ export default
       return this.$router.replace({ query: { q: val } });
     } , 400);
 
-    this.group = Records.groups.fuzzyFind(this.$route.params.key);
+    this.group = this.dashboard ? null : Records.groups.fuzzyFind(this.$route.params.key);
 
-    EventBus.$emit('currentComponent', {
-      page: 'groupPage',
-      title: this.group.name,
-      group: this.group,
-      search: {
-        placeholder: this.$t('navbar.search_files', {name: this.group.parentOrSelf().name})
-      }
-    });
+    if (this.group) {
+      EventBus.$emit('currentComponent', {
+        page: 'groupPage',
+        title: this.group.name,
+        group: this.group,
+        search: {
+          placeholder: this.$t('navbar.search_files', {name: this.group.parentOrSelf().name})
+        }
+      });
+    }
 
+    const params = { per: this.per, from: this.from };
+    if (this.group) { params.group_id = this.group.id; }
     this.attachmentLoader = new RecordLoader({
       collection: 'attachments',
-      params: {
-        group_id: this.group.id,
-        per: this.per,
-        from: this.from
-      }
+      params
     });
 
     this.searchQuery = this.$route.query.q || '';
@@ -98,7 +101,7 @@ export default
     },
     showLoadMore() { return !this.attachmentLoader.exhausted; },
     loading() { return this.attachmentLoader.loading; },
-    canAdminister() { return GroupAbility.canUpdate(this.group); }
+    canAdminister() { return Boolean(this.group) && GroupAbility.canUpdate(this.group); }
   }
 };
 

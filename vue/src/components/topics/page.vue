@@ -7,6 +7,10 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import RecordLoader from '@/shared/services/record_loader';
 
+const { embedded } = defineProps({
+  embedded: { type: Boolean, default: false }
+});
+
 const route = useRoute();
 const { t } = useI18n();
 const loader = ref({});
@@ -39,9 +43,11 @@ init();
 </script>
 
 <template lang="pug">
-v-main
-  v-container.topics-page.max-width-1024.px-0.px-sm-3
-    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.direct_discussions'")
+component(:is="embedded ? 'div' : 'v-main'")
+  component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'topics-page pt-2' : 'topics-page max-width-1024 px-2 px-sm-4'")
+    template(v-if="!embedded")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+      dashboard-cards
     .d-flex.justify-end.pb-3
       v-menu
         template(v-slot:activator="{ props }")
