@@ -52,7 +52,8 @@ export default
 
   methods: {
     init() {
-      this.group = null;
+      const existing = typeof Records.groups.fuzzyFind === 'function' ? Records.groups.fuzzyFind(this.$route.params.key) : null;
+      this.group = existing || null;
       Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
         if (this.group.newHost) { window.location.host = this.group.newHost; }
@@ -70,9 +71,10 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024.px-2.px-sm-4(v-if="group")
-    div(style="position: relative")
+    div(v-if="group.coverUrl" style="position: relative")
       v-img(
         :src="group.coverUrl"
+        :aspect-ratio="4"
         style="border-radius: 8px"
         max-height="256"
         cover

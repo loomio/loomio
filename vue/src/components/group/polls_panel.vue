@@ -14,7 +14,7 @@ import TagsFilterMenu from '@/components/tags/filter_menu';
 const route = useRoute();
 const router = useRouter();
 
-const group = ref(Records.groups.find(route.params.key));
+const group = ref(Records.groups.fuzzyFind(route.params.key));
 const loader = ref(null);
 const pollTypes = AppConfig.pollTypes;
 const per = 25;
@@ -70,7 +70,7 @@ const initLoader = () => {
     order: 'createdAt',
     params: {
       exclude_types: 'group',
-      group_key: route.params.key,
+      group_key: group.value.key,
       status: route.query.status,
       poll_type: route.query.poll_type,
       tags: route.query.tag,

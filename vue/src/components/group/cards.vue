@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import EventBus from '@/shared/services/event_bus';
-import LmoUrlService from '@/shared/services/lmo_url_service';
 import Session from '@/shared/services/session';
 import GroupAbility from '@/shared/abilities/group_ability';
 
@@ -15,10 +14,11 @@ const inviteClicked = ref(false);
 const canAddMembers = computed(() => GroupAbility.canAddMembers(group));
 const highlightInvite = computed(() => canAddMembers.value && (group.membershipsCount || 0) < 3 && !inviteClicked.value);
 
-const threadsRoute = computed(() => LmoUrlService.route({ model: group, action: null }));
-const membersRoute = computed(() => LmoUrlService.route({ model: group, action: 'members' }));
-const pollsRoute = computed(() => LmoUrlService.route({ model: group, action: 'polls' }));
-const filesRoute = computed(() => LmoUrlService.route({ model: group, action: 'files' }));
+const basePath = computed(() => (group.handle ? `/${group.handle}` : `/g/${group.key}`));
+const threadsRoute = computed(() => basePath.value);
+const membersRoute = computed(() => `${basePath.value}/members`);
+const pollsRoute = computed(() => `${basePath.value}/polls`);
+const filesRoute = computed(() => `${basePath.value}/files`);
 
 const activeSection = computed(() => {
   const segments = (route?.path || '').split('/').filter(Boolean);

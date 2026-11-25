@@ -1786,7 +1786,8 @@ en:
       I've set up %{groupName} on %{site_name} so we can discuss and make decisions together. Join using this link:
       %{link}
     trial_shareable_invitation_message: |-
-      I've started a 7 day %{site_name} trial so we can see if it can help with decision making within %{groupName}. Please click this link to join so we can give it a go: %{link}
+      I've started a %{site_name} trial for %{groupName}. It's designed to help groups make decisions together and keep a record along the way. Join here:
+      %{link}
     trial_shareable_link_note: Copy the invite link and send it by email or chat to invite people to your group. <a href="%{upgradeUrl}">Upgrade your plan</a> to send email invitations.
     shareable_link_to_join_group: Shareable link to join group
     shareable_link_reset: Shareable link reset. The previous link will no longer work.
