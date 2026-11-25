@@ -13,7 +13,12 @@ class AuthorSerializer < ApplicationSerializer
              :delegates,
              :placeholder_name,
              :email_verified,
-             :bot
+             :bot,
+             :last_seen_at
+
+  def include_last_seen_at?
+    scope[:include_last_seen_at]
+  end
 
   def include_email?
     scope[:current_user_id] == object.id || scope[:include_email] || scope[:current_user_is_admin]

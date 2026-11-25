@@ -837,4 +837,32 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     assert_response 403
     assert_equal true, membership.reload.delegate
   end
+
+  test 'people returns accepted co-members ordered by last_seen_at descending' do
+    recent = User.create!(name: 'Recent Peer', email: 'recent-peer@example.test', email_verified: true, last_seen_at: 5.minutes.ago)
+    older = User.create!(name: 'Older Peer', email: 'older-peer@example.test', email_verified: true, last_seen_at: 2.days.ago)
+    outsider = User.create!(name: 'Outside User', email: 'outside-user@example.test', email_verified: true, last_seen_at: 1.minute.ago)
+    bot_user = User.create!(name: 'Helper Bot', email: 'helper-bot@example.test', email_verified: true, bot: true, last_seen_at: 1.minute.ago)
+    @test_group.add_member!(recent)
+    @test_group.add_member!(older)
+    @test_group.add_member!(bot_user)
+
+    sign_in @user
+    get :people
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    returned_ids = json['users'].map { |u| u['id'] }
+    assert_includes returned_ids, recent.id
+    assert_includes returned_ids, older.id
+    assert_operator returned_ids.index(recent.id), :<, returned_ids.index(older.id)
+    refute_includes returned_ids, @user.id
+    refute_includes returned_ids, outsider.id
+    refute_includes returned_ids, bot_user.id
+    assert_not_nil json['users'].find { |u| u['id'] == recent.id }['last_seen_at']
+
+    get :people, params: { q: 'Recent' }
+    assert_response :success
+    assert_equal [ recent.id ], JSON.parse(response.body)['users'].map { |u| u['id'] }
+  end
 end

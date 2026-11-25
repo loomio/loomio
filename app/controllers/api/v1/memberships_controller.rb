@@ -1,6 +1,6 @@
 class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
-  before_action :require_current_user, only: [ :notification_history ]
+  before_action :require_current_user, only: [ :notification_history, :people ]
 
   def index
     model
@@ -39,6 +39,37 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
   def my_memberships
     @memberships = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
+  end
+
+  def people
+    group_ids = current_user.group_ids
+    return render json: { users: [], total: 0 } if group_ids.empty?
+
+    member_user_ids = Membership.active.accepted.where(group_id: group_ids).select(:user_id)
+    scope = User.active.where(bot: false).where.not(id: current_user.id).where(id: member_user_ids)
+
+    query = params[:q].to_s.strip
+    if query.present?
+      scope = scope.where(
+        "users.name ILIKE :first OR users.name ILIKE :last OR users.username ILIKE :first",
+        first: "#{query}%",
+        last: "% #{query}%"
+      )
+    end
+
+    total = scope.count
+    from = [ params[:from].to_i, 0 ].max
+    per = params.fetch(:per, 30).to_i.clamp(1, 50)
+    users = scope.order(Arel.sql("users.last_seen_at DESC NULLS LAST, users.id DESC")).offset(from).limit(per)
+
+    render json: {
+      users: ActiveModel::ArraySerializer.new(
+        users,
+        each_serializer: AuthorSerializer,
+        scope: default_scope.merge(include_last_seen_at: true)
+      ).as_json,
+      total: total
+    }
   end
 
   def resend
