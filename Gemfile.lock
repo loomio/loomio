@@ -354,7 +354,7 @@ GEM
       ice_cube (~> 0.16)
       logger
     ice_cube (0.17.0)
-    image_processing (2.2.0)
+    image_processing (2.2.1)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
