@@ -27,7 +27,7 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^4.8.0",
+    "@hocuspocus/provider": "^4.9.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.401",
     "@sentry/vue": "^11.13.0",
