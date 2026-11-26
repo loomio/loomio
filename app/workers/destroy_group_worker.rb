@@ -43,6 +43,7 @@ class DestroyGroupWorker < ApplicationJob
       DiscussionTemplate => DiscussionTemplate.where(group_id: group_ids).ids
     )
 
+    PurgeService.delete_anonymous_ballots_for_topics!(topic_ids)
     PaperTrail.request(enabled: false) { group.destroy! }
     PurgeService.delete_destroyed_versions!(record_ids)
   end

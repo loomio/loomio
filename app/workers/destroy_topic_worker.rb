@@ -25,6 +25,7 @@ class DestroyTopicWorker < ApplicationJob
 
   def destroy_with_versions!(topic)
     record_ids = PurgeService.topic_version_record_ids([topic.id])
+    PurgeService.delete_anonymous_ballots_for_topics!([topic.id])
     PaperTrail.request(enabled: false) { topic.destroy! }
     PurgeService.delete_destroyed_versions!(record_ids)
   end
