@@ -7,8 +7,6 @@ gem 'json', '< 3'
 gem 'uri', '1.1.2'
 gem 'rake'
 gem 'pg'
-# Use the upstream Refract 2 compatibility change until it ships in a Phlex release.
-gem 'phlex', git: 'https://github.com/yippee-fun/phlex.git', ref: 'aea0e7589f8ac68ff12b191e97348f055492cf1b'
 gem 'phlex-rails'
 gem 'bcrypt'
 gem 'pwned'

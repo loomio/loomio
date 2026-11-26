@@ -6,16 +6,6 @@ GIT
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
 
-GIT
-  remote: https://github.com/yippee-fun/phlex.git
-  revision: aea0e7589f8ac68ff12b191e97348f055492cf1b
-  ref: aea0e7589f8ac68ff12b191e97348f055492cf1b
-  specs:
-    phlex (2.4.1)
-      erb (>= 5.0.2)
-      refract (~> 2.0.0)
-      zeitwerk (~> 2.7)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -457,6 +447,9 @@ GEM
     pg_search (2.4.0)
       activerecord (>= 8.0)
       activesupport (>= 8.0)
+    phlex (2.4.2)
+      refract (~> 1.0)
+      zeitwerk (~> 2.7)
     phlex-rails (2.4.0)
       phlex (~> 2.4.0)
       railties (>= 7.1, < 9)
@@ -556,8 +549,8 @@ GEM
       redis-client (>= 0.22.0)
     redis-client (0.30.0)
       connection_pool
-    refract (2.0.0)
-      prism (>= 1.0)
+    refract (1.2.0)
+      prism
       zeitwerk
     regexp_parser (2.12.0)
     reline (0.7.0)
@@ -758,7 +751,6 @@ DEPENDENCIES
   paper_trail (~> 17.0.0)
   pg
   pg_search
-  phlex!
   phlex-rails
   premailer-rails
   propshaft (~> 1.3)
