@@ -224,16 +224,16 @@ div
             td(v-if="canAdminister")
               action-button(variant="flat" :action="{ name: 'common.action.delete', icon: 'mdi-delete', dock: 1, perform: () => deleteAttachment(item) }")
 
-      list-pagination(
-        v-if="items.length"
-        :page="page"
-        :total-pages="totalPages"
-        :page-size="pageSize"
-        :sort="sortOrder"
-        :sort-options="sortOptions"
-        :disabled="isLoading"
-        @update:page="page = $event"
-        @update:page-size="selectPageSize"
-        @update:sort="selectSort"
-      )
+  list-pagination(
+    v-if="items.length"
+    :page="page"
+    :total-pages="totalPages"
+    :page-size="pageSize"
+    :sort="sortOrder"
+    :sort-options="sortOptions"
+    :disabled="isLoading"
+    @update:page="page = $event"
+    @update:page-size="selectPageSize"
+    @update:sort="selectSort"
+  )
 </template>

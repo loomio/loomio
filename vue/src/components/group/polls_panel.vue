@@ -279,16 +279,16 @@ watch(() => route.query.page, fetch);
             :full-name="dashboard")
         p.pa-4.text-center(v-if="polls.length == 0 && !loader.loading") {{ t('polls_panel.no_polls') }}
         loading(v-if="loader.loading && polls.length == 0")
-        list-pagination(
-          v-if="polls.length"
-          :page="page"
-          :total-pages="totalPages"
-          :page-size="pageSize"
-          :sort="sortOrder"
-          :sort-options="sortOptions"
-          :disabled="loader.loading"
-          @update:page="page = $event"
-          @update:page-size="selectPageSize"
-          @update:sort="selectSort"
-        )
+    list-pagination(
+      v-if="polls.length && loader.status != 403"
+      :page="page"
+      :total-pages="totalPages"
+      :page-size="pageSize"
+      :sort="sortOrder"
+      :sort-options="sortOptions"
+      :disabled="loader.loading"
+      @update:page="page = $event"
+      @update:page-size="selectPageSize"
+      @update:sort="selectSort"
+    )
 </template>

@@ -399,16 +399,16 @@ watch(() => route.params.key, initGroup);
             template(v-slot:append)
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 
-        list-pagination(
-          v-if="loader && memberships.length"
-          :page="page"
-          :total-pages="totalPages"
-          :page-size="pageSize"
-          :sort="sortOrder"
-          :sort-options="sortOptions"
-          :disabled="loader.loading"
-          @update:page="page = $event"
-          @update:page-size="selectPageSize"
-          @update:sort="selectSort"
-        )
+    list-pagination(
+      v-if="loader && loader.status != 403 && memberships.length"
+      :page="page"
+      :total-pages="totalPages"
+      :page-size="pageSize"
+      :sort="sortOrder"
+      :sort-options="sortOptions"
+      :disabled="loader.loading"
+      @update:page="page = $event"
+      @update:page-size="selectPageSize"
+      @update:sort="selectSort"
+    )
 </template>

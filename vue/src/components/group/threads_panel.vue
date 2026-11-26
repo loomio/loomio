@@ -449,18 +449,18 @@ div.discussions-panel(v-if="dashboard || group")
 
         loading(v-if="isLoading && topics.length == 0")
 
-        list-pagination(
-          v-if="!noThreads"
-          :page="page"
-          :total-pages="totalPages"
-          :page-size="pageSize"
-          :sort="sortOrder"
-          :sort-options="sortOptions"
-          :disabled="isLoading"
-          @update:page="page = $event"
-          @update:page-size="selectPageSize"
-          @update:sort="selectSort"
-        )
+  list-pagination(
+    v-if="!noThreads && loader && loader.status != 403"
+    :page="page"
+    :total-pages="totalPages"
+    :page-size="pageSize"
+    :sort="sortOrder"
+    :sort-options="sortOptions"
+    :disabled="isLoading"
+    @update:page="page = $event"
+    @update:page-size="selectPageSize"
+    @update:sort="selectSort"
+  )
 </template>
 
 <style>
