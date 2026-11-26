@@ -12,7 +12,6 @@ import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { taskRecordTitle } from '@/shared/helpers/task_record_title.mjs';
-import { manualUrl } from '@/shared/helpers/manual_url';
 import { useTasks } from '@/composables/useTasks';
 import TagsFilterMenu from '@/components/tags/filter_menu.vue';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
@@ -433,9 +432,4 @@ component(:is="embedded ? 'div' : 'v-main'")
         template(v-if="allTasks.length === 0") {{ t('tasks.no_tasks_assigned') }}
         template(v-else-if="hasActiveFilters") {{ t('tasks.no_matching_tasks') }}
         template(v-else) {{ t('tasks.no_open_tasks') }}
-
-    .d-flex.justify-center.mt-6
-      v-chip(variant="outlined" :href="manualUrl('user_manual/discussions/tasks', locale)" target="_blank")
-        common-icon.mr-2(name="mdi-help-circle-outline")
-        span {{ t('common.user_guide') }}: {{ t('tasks.tasks') }}
 </template>

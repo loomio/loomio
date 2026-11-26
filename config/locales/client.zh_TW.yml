@@ -662,6 +662,7 @@ zh_TW:
     direct_discussions: 直接討論
     unread_discussions: 未讀討論
     unread_threads_count: 未讀對話串 (%{count})
+    votes_count: 1 票 | {count} 票
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -3390,3 +3391,28 @@ zh_TW:
     export_data_description: 下載此群組的對話串、投票、評論及成員資料副本。
     leave_group_description: 退出此群組並停止接收通知。
     destroy_group_description: 排程永久刪除此群組及其內容。
+  pagination:
+    page_of: 第 {page} 頁，共 {total} 頁
+    previous_page: 上一頁
+    next_page: 下一頁
+    sort_by: 排序方式
+    per_page: 每頁筆數
+    jump_to_page: 跳至頁面
+    sort:
+      recent_activity: 最近動態
+      newest: 最新
+      oldest: 最舊
+      closing_soon: 即將截止
+      name: 名稱
+      last_seen: 上次上線
+    edit_tags_description: 建立、重新命名、合併用來整理對話串和投票的標籤，並設定標籤顏色。
+    manage_subscription_description: 查看方案、帳單資料和成員人數上限。
+    change_volume_description: 選擇接收此群組電子郵件和推播通知的頻率。
+    email_group_description: 寄送電子郵件至此地址，即可在此群組建立新對話串。
+    group_stats_description: 查看成員活動、對話串互動和投票參與情況隨時間的變化。
+    become_coordinator_description: 取得此群組的群組管理員權限。
+    chatbots_description: 連接 Slack、Mattermost、Discord 或其他聊天工具，發布群組動態。
+    api_docs_description: 設定 API 存取權和 webhook，將 Loomio 與您自己的工具整合。
+    export_data_description: 下載此群組的對話串、投票、評論和成員資料副本。
+    leave_group_description: 退出此群組並停止接收通知。
+    destroy_group_description: 排定永久刪除此群組及其內容。

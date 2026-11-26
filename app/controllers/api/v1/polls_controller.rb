@@ -88,7 +88,15 @@ class Api::V1::PollsController < Api::V1::RestfulController
 
   def index
     instantiate_collection do |collection|
-      PollQuery.filter(chain: collection, params: params, user: current_user).order(created_at: :desc, id: :desc)
+      filtered = PollQuery.filter(chain: collection, params: params, user: current_user)
+      case params[:sort]
+      when 'closing_soon'
+        filtered.order(Arel.sql('polls.closing_at ASC NULLS LAST, polls.id ASC'))
+      when 'oldest'
+        filtered.order(created_at: :asc, id: :asc)
+      else
+        filtered.order(created_at: :desc, id: :desc)
+      end
     end
     respond_with_collection
   end

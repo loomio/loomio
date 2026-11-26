@@ -675,6 +675,7 @@ zh_CN:
     direct_threads: 私人帖子
     unread_threads: 未读帖子
     unread_threads_count: 未读帖子数 (%{count})
+    votes_count: 1 票 | {count} 票
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
@@ -3283,6 +3284,31 @@ zh_CN:
     become_coordinator_description: 获取此群组的管理员权限。
     chatbots_description: 连接 Slack、Mattermost、Discord 或其他聊天工具，发布群组动态。
     api_docs_description: 配置 API 访问和 Webhook，将 Loomio 与您自己的工具集成。
+    export_data_description: 下载此群组的帖子、投票、评论和成员数据副本。
+    leave_group_description: 退出此群组并停止接收通知。
+    destroy_group_description: 安排永久删除此群组及其内容。
+  pagination:
+    page_of: 第 {page} 页，共 {total} 页
+    previous_page: 上一页
+    next_page: 下一页
+    sort_by: 排序方式
+    per_page: 每页条数
+    jump_to_page: 跳转到页
+    sort:
+      recent_activity: 最近动态
+      newest: 最新
+      oldest: 最早
+      closing_soon: 即将截止
+      name: 名称
+      last_seen: 最近访问
+    edit_tags_description: 创建、重命名、合并标签并设置颜色，用于整理帖子和投票。
+    manage_subscription_description: 查看套餐、账单详情和成员人数上限。
+    change_volume_description: 选择接收此群组邮件和推送通知的频率。
+    email_group_description: 向此地址发送邮件，在此群组中发起新帖子。
+    group_stats_description: 查看成员活跃度、帖子互动和投票参与情况随时间的变化。
+    become_coordinator_description: 获取此群组的管理员权限。
+    chatbots_description: 连接 Slack、Mattermost、Discord 等聊天工具，发布群组动态。
+    api_docs_description: 配置 API 访问和 webhook，将 Loomio 与自己的工具集成。
     export_data_description: 下载此群组的帖子、投票、评论和成员数据副本。
     leave_group_description: 退出此群组并停止接收通知。
     destroy_group_description: 安排永久删除此群组及其内容。

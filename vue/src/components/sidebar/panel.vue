@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { ref, computed, watch, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter, useRoute } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { useTheme } from 'vuetify';
@@ -16,6 +17,7 @@ import { sidebarOpen } from '@/shared/services/sidebar_state';
 import { colorIsTransparent } from '@/shared/helpers/color.mjs';
 
 import SidebarSubgroups from '@/components/sidebar/subgroups';
+import SidebarActivityLinks from '@/components/sidebar/activity_links.vue';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
 import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
@@ -24,6 +26,7 @@ import { usePendingPolls } from '@/composables/usePendingPolls';
 
 import { mdiCog } from '@mdi/js';
 
+const { t } = useI18n();
 const router = useRouter();
 const route = useRoute();
 const display = useDisplay();
@@ -86,7 +89,48 @@ const unreadTopicCounts = computed(() => {
   return counts;
 });
 
-const pollsToVoteOnCount = computed(() => findPendingPolls().length);
+const votesNeededCounts = computed(() => {
+  const counts = {};
+  findPendingPolls().forEach(poll => {
+    counts.total = (counts.total || 0) + 1;
+    if (poll.groupId) {
+      counts[poll.groupId] = (counts[poll.groupId] || 0) + 1;
+    }
+  });
+  return counts;
+});
+
+function hasActivity(unread, votes) {
+  return (unread || 0) > 0 || (votes || 0) > 0;
+}
+
+function mySubgroups(org) {
+  return org.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user()));
+}
+
+function isOrgExpanded(org) {
+  return organization.value?.id === org.id;
+}
+
+function orgUnreadCount(org) {
+  const own = openCounts.value[org.id] || 0;
+  if (isOrgExpanded(org)) { return own; }
+  return mySubgroups(org).reduce((sum, sub) => sum + (openCounts.value[sub.id] || 0), own);
+}
+
+function orgVotesCount(org) {
+  const own = votesNeededCounts.value[org.id] || 0;
+  if (isOrgExpanded(org)) { return own; }
+  return mySubgroups(org).reduce((sum, sub) => sum + (votesNeededCounts.value[sub.id] || 0), own);
+}
+
+function orgHasSubgroupUnread(org) {
+  return !isOrgExpanded(org) && mySubgroups(org).some(sub => (openCounts.value[sub.id] || 0) > 0);
+}
+
+function orgHasSubgroupVotes(org) {
+  return !isOrgExpanded(org) && mySubgroups(org).some(sub => (votesNeededCounts.value[sub.id] || 0) > 0);
+}
 
 const bookmarksCount = computed(() => Records.bookmarks.find({userId: Session.userId, discardedAt: null}).length);
 
@@ -94,7 +138,6 @@ const CARRIED_THREAD_FILTERS = new Set(['locked', 'all']);
 const carriedThreadQuery = computed(() => {
   const q = {};
   if (CARRIED_THREAD_FILTERS.has(route.query?.t)) { q.t = route.query.t; }
-  if (route.query?.unread) { q.unread = '1'; }
   return q;
 });
 
@@ -196,23 +239,46 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
 
     v-divider
     v-list.sidebar__groups(nav density="compact" :lines="false")
-      v-list-item.sidebar__list-item-button--recent(slim :to="dashboardLink" :active="isDashboardRoute")
+      v-list-item.sidebar__list-item-button--recent(
+        slim
+        :to="dashboardLink"
+        :active="isDashboardRoute"
+        :lines="hasActivity(unreadTopicCounts['total'], votesNeededCounts.total) ? 'two' : false"
+      )
         template(v-slot:prepend)
           v-avatar(:size="24" color="transparent")
             common-icon(name="mdi-account-group" :size="20")
-        v-list-item-title
-          span(v-t="'dashboard_cards.all_groups'")
-        template(v-slot:append v-if="unreadTopicCounts['total']")
-          span.text-caption.text-medium-emphasis {{ unreadTopicCounts['total'] }}
+        v-list-item-title {{ t('dashboard_cards.all_groups') }}
+        sidebar-activity-links(
+          :unread="unreadTopicCounts['total'] || 0"
+          :votes="votesNeededCounts.total || 0"
+          base-path="/dashboard"
+        )
 
       template(v-for="org in organizations" :key="org.id")
-        v-list-item.sidebar__group(slim :to="groupLink(org)" :active="activeGroupId === org.id")
+        v-list-item.sidebar__group(
+          slim
+          :to="groupLink(org)"
+          :active="activeGroupId === org.id"
+          :lines="hasActivity(orgUnreadCount(org), orgVotesCount(org)) ? 'two' : false"
+        )
           template(v-slot:prepend)
             group-avatar(:group="org" :size="24")
           v-list-item-title {{ org.name }}
-          template(v-slot:append v-if="openCounts[org.id]")
-            span.text-caption.text-medium-emphasis {{ openCounts[org.id] }}
-        sidebar-subgroups(v-if="org == organization" :organization="org" :open-counts="openCounts" :active-group-id="activeGroupId")
+          sidebar-activity-links(
+            :unread="orgUnreadCount(org)"
+            :votes="orgVotesCount(org)"
+            :base-path="urlFor(org)"
+            :include-subgroups-unread="orgHasSubgroupUnread(org)"
+            :include-subgroups-votes="orgHasSubgroupVotes(org)"
+          )
+        sidebar-subgroups(
+          v-if="isOrgExpanded(org)"
+          :organization="org"
+          :open-counts="openCounts"
+          :votes-needed-counts="votesNeededCounts"
+          :active-group-id="activeGroupId"
+        )
 
       v-btn.sidebar-start-group.mt-2(
         block
@@ -221,7 +287,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open" :color="drawerC
         v-if="canStartGroups"
         to="/g/new"
       )
-        span(v-t="'sidebar.new_group'")
+        span {{ t('sidebar.new_group') }}
 
     sidebar-help
 

@@ -661,6 +661,7 @@ ca:
     direct_discussions: Discussions directes
     unread_discussions: Discussions no llegides
     unread_threads_count: Fils no llegits (%{count})
+    votes_count: 1 vot | {count} vots
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -3389,3 +3390,28 @@ ca:
     export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
     leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
     destroy_group_description: Programa l'eliminació definitiva d'aquest grup i del seu contingut.
+  pagination:
+    page_of: Pàgina {page} de {total}
+    previous_page: Pàgina anterior
+    next_page: Pàgina següent
+    sort_by: Ordena per
+    per_page: Per pàgina
+    jump_to_page: Ves a la pàgina
+    sort:
+      recent_activity: Activitat recent
+      newest: Més recents
+      oldest: Més antics
+      closing_soon: Tan =quen aviat
+      name: Nom
+      last_seen: Última visita
+    edit_tags_description: Crea, canvia el nom, fusiona i assigna colors a les etiquetes per organitzar fils i enquestes.
+    manage_subscription_description: Consulta el teu pla, les dades de facturació i els límits de membres.
+    change_volume_description: Tria amb quina freqüència reps correus i notificacions push d'aquest grup.
+    email_group_description: Inicia un fil nou en aquest grup enviant un correu a aquesta adreça.
+    group_stats_description: Consulta l'activitat dels membres, les interaccions als fils i la participació en les votacions al llarg del temps.
+    become_coordinator_description: Assumeix els permisos d'admin d'aquest grup.
+    chatbots_description: Connecta Slack, Mattermost, Discord o altres eines de xat per publicar novetats del grup.
+    api_docs_description: Configura l'accés a l'API i els webhooks per integrar Loomio amb les teves eines.
+    export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
+    leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
+    destroy_group_description: Programa l'eliminació permanent d'aquest grup i del seu contingut.

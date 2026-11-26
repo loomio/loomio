@@ -659,6 +659,7 @@ fi:
     direct_discussions: Suorat keskustelut
     unread_discussions: Lukemattomat keskustelut
     unread_threads_count: Lukemattomat ketjut (%{count})
+    votes_count: 1 ääni | {count} ääntä
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -3362,3 +3363,28 @@ fi:
     leave_group_description: Poistu ryhmästä ja lopeta sen ilmoitusten vastaanottaminen.
     destroy_group_description: Ajasta ryhmän ja sen sisällön pysyvä poisto.
     subtitle: Ryhmän vaihtoehdot
+  pagination:
+    page_of: Sivu {page}/{total}
+    previous_page: Edellinen sivu
+    next_page: Seuraava sivu
+    sort_by: Järjestä
+    per_page: Sivulla
+    jump_to_page: Siirry sivulle
+    sort:
+      recent_activity: Viimeisin toiminta
+      newest: Uusimmat
+      oldest: Vanhimmat
+      closing_soon: Pian sulkeutuvat
+      name: Nimi
+      last_seen: Viimeksi nähty
+    edit_tags_description: Luo, nimeä uudelleen, yhdistä ja värikoodaa ketjujen ja kyselyjen tunnisteita.
+    manage_subscription_description: Katso tilauksesi, laskutustiedot ja jäsenrajat.
+    change_volume_description: Valitse, kuinka usein saat ryhmästä sähköposti- ja push-ilmoituksia.
+    email_group_description: Aloita ryhmässä uusi ketju lähettämällä sähköpostia tähän osoitteeseen.
+    group_stats_description: Seuraa jäsenten aktiivisuutta sekä osallistumista ketjuihin ja äänestyksiin ajan mittaan.
+    become_coordinator_description: Ota tämän ryhmän ylläpitäjän oikeudet.
+    chatbots_description: Yhdistä Slack, Mattermost, Discord tai muu chat-työkalu ryhmän päivitysten julkaisemiseen.
+    api_docs_description: Määritä API-käyttö ja webhookit yhdistääksesi Loomion omiin työkaluihisi.
+    export_data_description: Lataa kopio ryhmän ketjuista, kyselyistä, kommenteista ja jäsenistä.
+    leave_group_description: Poistu ryhmästä ja lopeta sen ilmoitusten vastaanottaminen.
+    destroy_group_description: Ajasta ryhmän ja sen sisällön pysyvä poisto.

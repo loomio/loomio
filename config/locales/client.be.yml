@@ -675,6 +675,7 @@ be:
       threads_list: Дзеянні з ланцужкамі
       groups_list: Групы
       user_list: Дзеянні карыстальніка
+    votes_count: 1 голас | {count} галасоў
   strand_nav:
     jump_to: Перайсці да
     timeline: Храналогія
@@ -3264,3 +3265,28 @@ be:
     leave_group_description: Выйдзіце з гэтай групы і спыніце атрыманне апавяшчэнняў.
     destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
     change_volume_description: Выбар частаты атрымання апавяшчэнняў па электроннай пошце і пуш-апавяшчэнняў ад гэтай групы.
+  pagination:
+    page_of: Старонка {page} з {total}
+    previous_page: Папярэдняя старонка
+    next_page: Наступная старонка
+    sort_by: Сартаваць паводле
+    per_page: На старонцы
+    jump_to_page: Перайсці на старонку
+    sort:
+      recent_activity: Апошняя актыўнасць
+      newest: Найнавейшыя
+      oldest: Найстарэйшыя
+      closing_soon: Хутка закрываюцца
+      name: Назва
+      last_seen: Апошняе наведванне
+    edit_tags_description: Стварайце, пераймяноўвайце, аб’ядноўвайце і пазначайце колерам тэгі для ўпарадкавання тэм і апытанняў.
+    manage_subscription_description: Праглядзіце ваш тарыф, плацежныя звесткі і ліміты ўдзельнікаў.
+    email_group_description: Стварыце новую тэму ў гэтай групе, даслаўшы ліст на гэты адрас.
+    group_stats_description: Праглядзіце, як з часам змяняюцца актыўнасць удзельнікаў, удзел у тэмах і галасаваннях.
+    become_coordinator_description: Атрымайце правы адміністратара гэтай групы.
+    chatbots_description: Падключыце Slack, Mattermost, Discord ці іншыя чаты для публікацыі навін групы.
+    api_docs_description: Наладзьце доступ да API і вэбхукі для інтэграцыі Loomio з вашымі інструментамі.
+    export_data_description: Спампуйце копію тэм, апытанняў, каментарыяў і спіса ўдзельнікаў гэтай групы.
+    leave_group_description: Выйдзіце з гэтай групы, каб больш не атрымліваць апавяшчэнні.
+    destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
+    change_volume_description: Выбар частаты атрымання апавяшчэнняў ад гэтай групы па электроннай пошце і праз push.

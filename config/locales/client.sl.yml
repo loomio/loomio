@@ -659,6 +659,7 @@ sl:
     direct_discussions: Neposredne razprave
     unread_discussions: Neprebrane razprave
     unread_threads_count: Neprebrane niti (%{count})
+    votes_count: 1 glas | {count} glasov
   strand_nav:
     newest: Najnovejša
     oldest: Najstarejši
@@ -3356,6 +3357,31 @@ sl:
     email_group_description: Začnite novo nit v tej skupini s pošiljanjem e-pošte na ta naslov.
     group_stats_description: Oglejte si dejavnost članov, sodelovanje v nitih in udeležbo pri glasovanju skozi čas.
     become_coordinator_description: Pridobite dovoljenja skrbnika te skupine.
+    chatbots_description: Povežite Slack, Mattermost, Discord ali druga orodja za klepet za objavljanje novosti skupine.
+    api_docs_description: Nastavite dostop do API-ja in spletne kavlje za povezavo Loomia s svojimi orodji.
+    export_data_description: Prenesite kopijo niti, anket, komentarjev in članov te skupine.
+    leave_group_description: Zapustite to skupino in prenehajte prejemati obvestila.
+    destroy_group_description: Načrtujte trajni izbris te skupine in njene vsebine.
+    change_volume_description: Izbira pogostosti prejemanja e-poštnih in potisnih obvestil iz te skupine.
+  pagination:
+    page_of: Stran {page} od {total}
+    previous_page: Prejšnja stran
+    next_page: Naslednja stran
+    sort_by: Razvrsti po
+    per_page: Na stran
+    jump_to_page: Pojdite na stran
+    sort:
+      recent_activity: Nedavna dejavnost
+      newest: Najnovejše
+      oldest: Najstarejše
+      closing_soon: Kmalu se zaključi
+      name: Ime
+      last_seen: Zadnja prisotnost
+    edit_tags_description: Ustvarite, preimenujte, združite in barvno označite oznake za urejanje niti in anket.
+    manage_subscription_description: Oglejte si svoj paket, podatke za obračun in omejitve števila članov.
+    email_group_description: Začnite novo nit v tej skupini tako, da pošljete e-pošto na ta naslov.
+    group_stats_description: Oglejte si dejavnost članov, sodelovanje v nitih in udeležbo pri glasovanju skozi čas.
+    become_coordinator_description: Prevzemite pravice skrbnika te skupine.
     chatbots_description: Povežite Slack, Mattermost, Discord ali druga orodja za klepet za objavljanje novosti skupine.
     api_docs_description: Nastavite dostop do API-ja in spletne kavlje za povezavo Loomia s svojimi orodji.
     export_data_description: Prenesite kopijo niti, anket, komentarjev in članov te skupine.

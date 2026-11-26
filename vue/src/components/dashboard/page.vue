@@ -1,7 +1,10 @@
 <script setup>
 import { onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import EventBus from '@/shared/services/event_bus';
 import GroupsFilterMenu from '@/components/dashboard/groups_filter_menu.vue';
+
+const { t } = useI18n();
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
@@ -31,7 +34,7 @@ v-main
   v-container.dashboard-page.max-width-1024.px-2.px-sm-4
     .my-4
       groups-filter-menu
-        h1.text-headline-large(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_cards.all_groups'")
+        h1.text-headline-large(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_cards.all_groups') }}
     dashboard-cards
 
     v-text-field.dashboard-page__mobile-search.mb-3(

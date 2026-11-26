@@ -662,6 +662,7 @@ uk:
     direct_discussions: Прямі обговорення
     unread_discussions: Непрочитані обговорення
     unread_threads_count: Непрочитані теми (%{count})
+    votes_count: 1 голос | {count} голосів
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -3392,3 +3393,28 @@ uk:
     leave_group_description: Вийдіть із цієї групи та припиніть отримувати сповіщення.
     destroy_group_description: Заплануйте остаточне видалення цієї групи та її вмісту.
     change_volume_description: Вибір частоти отримання сповіщень електронною поштою та push-сповіщень від цієї групи.
+  pagination:
+    page_of: Сторінка {page} з {total}
+    previous_page: Попередня сторінка
+    next_page: Наступна сторінка
+    sort_by: Сортувати за
+    per_page: На сторінці
+    jump_to_page: Перейти до сторінки
+    sort:
+      recent_activity: Остання активність
+      newest: Найновіші
+      oldest: Найстаріші
+      closing_soon: Скоро завершуються
+      name: Назва
+      last_seen: Останній візит
+    edit_tags_description: Створюйте, перейменовуйте, об’єднуйте та позначайте кольором теги для впорядкування тем і опитувань.
+    manage_subscription_description: Перегляньте ваш тариф, платіжні дані та ліміти учасників.
+    email_group_description: Створіть нову тему в цій групі, надіславши листа на цю адресу.
+    group_stats_description: Перегляньте активність учасників, залученість у темах і участь у голосуванні з часом.
+    become_coordinator_description: Отримайте права адміністратора цієї групи.
+    chatbots_description: Підключіть Slack, Mattermost, Discord або інші чати для публікації новин групи.
+    api_docs_description: Налаштуйте доступ до API та вебхуки для інтеграції Loomio з вашими інструментами.
+    export_data_description: Завантажте копію тем, опитувань, коментарів і списку учасників цієї групи.
+    leave_group_description: Вийдіть із цієї групи та припиніть отримувати сповіщення.
+    destroy_group_description: Заплануйте остаточне видалення цієї групи та її вмісту.
+    change_volume_description: Вибір частоти отримання електронних листів і push-сповіщень від цієї групи.

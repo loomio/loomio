@@ -17,21 +17,25 @@ import { intersection, debounce, identity, map, pickBy, uniq } from 'lodash-es';
 import { mdiClose, mdiMagnify } from '@mdi/js';
 import Records from '@/shared/services/records';
 import GroupAbility from '@/shared/abilities/group_ability';
-import RecordLoader from '@/shared/services/record_loader';
+import PageLoader from '@/shared/services/page_loader';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
+import ListPagination from '@/components/common/list_pagination.vue';
 
 const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();
 
-const limit = 25;
-const order = ref('created_at desc');
 const group = ref(null);
 const loader = ref(null);
 const memberSearch = ref(null);
+
+const pageSize = computed(() => {
+  const n = parseInt(route.query.limit, 10);
+  return [25, 50, 100].includes(n) ? n : 25;
+});
 
 const searchState = reactive({
   searchOpen: Boolean(route.query.q),
@@ -52,21 +56,63 @@ const subgroupsFilter = computed(() => {
   return ['mine', 'all'].includes(route.query.subgroups) ? route.query.subgroups : null;
 });
 
-function refresh() {
-  if (!loader.value) { return; }
-  loader.value.fetchRecords({
-    offset: 0,
-    q: route.query.q,
-    order: order.value,
-    filter: route.query.filter,
-    subgroups: subgroupsFilter.value || undefined
+const sortOrder = computed(() => (
+  ['oldest', 'name', 'last_seen'].includes(route.query.sort) ? route.query.sort : 'newest'
+));
+
+const sortOptions = computed(() => [
+  { value: 'newest', label: t('pagination.sort.newest') },
+  { value: 'oldest', label: t('pagination.sort.oldest') },
+  { value: 'name', label: t('pagination.sort.name') },
+  { value: 'last_seen', label: t('pagination.sort.last_seen') }
+]);
+
+const page = computed({
+  get: () => parseInt(route.query.page) || 1,
+  set: (val) => router.replace(mergeQuery({ page: val === 1 ? null : val }))
+});
+
+const totalPages = computed(() => Math.max(1, Math.ceil((loader.value?.total || 0) / pageSize.value)));
+
+function createLoader() {
+  if (!group.value) { return; }
+  loader.value = new PageLoader({
+    path: 'memberships',
+    order: 'createdAt',
+    params: {
+      exclude_types: 'group',
+      group_id: group.value.id,
+      limit: pageSize.value,
+      q: route.query.q || undefined,
+      filter: route.query.filter || undefined,
+      subgroups: subgroupsFilter.value || undefined,
+      sort: sortOrder.value === 'newest' ? undefined : sortOrder.value
+    }
   });
 }
 
-const onQueryInput = debounce(val => {
-  searchState.searchQueryPushed = val || '';
-  return router.replace(mergeQuery({ q: val }));
-}, 500);
+function fetchPage() {
+  if (!loader.value) { return; }
+  loader.value.fetch(page.value);
+}
+
+function refresh() {
+  if (!group.value) { return; }
+  createLoader();
+  fetchPage();
+}
+
+function selectSubgroups(val) {
+  router.replace(mergeQuery({ subgroups: val, page: null }));
+}
+
+function selectSort(val) {
+  router.replace(mergeQuery({ sort: val === 'newest' ? null : val, page: null }));
+}
+
+function selectPageSize(val) {
+  router.replace(mergeQuery({ limit: val === 25 ? null : val, page: null }));
+}
 
 function openSearch() {
   searchState.searchOpen = true;
@@ -74,16 +120,18 @@ function openSearch() {
 }
 
 function closeSearch() {
-  onQueryInput.cancel();
+  searchState.searchOpen = false;
   searchState.searchQuery = '';
   searchState.searchQueryPushed = '';
-  searchState.searchOpen = false;
-  router.replace(mergeQuery({ q: null }));
+  if (route.query.q) {
+    router.replace(mergeQuery({ q: null, page: null }));
+  }
 }
 
-function selectSubgroups(val) {
-  router.replace(mergeQuery({ subgroups: val }));
-}
+const onQueryInput = debounce(val => {
+  searchState.searchQueryPushed = val || '';
+  return router.replace(mergeQuery({ q: val || null, page: null }));
+}, 400);
 
 function invite() {
   const allowed = Session.user().emailInvitationsAllowed() || group.value.emailInvitationsAllowed();
@@ -110,17 +158,6 @@ function initGroup() {
       }
     });
 
-    loader.value = new RecordLoader({
-      collection: 'memberships',
-      params: {
-        exclude_types: 'group',
-        group_id: group.value.id,
-        limit,
-        order: order.value,
-        subgroups: subgroupsFilter.value || undefined
-      }
-    });
-
     refresh();
   }).catch(() => {
     // GroupPage owns route-level group fetch error handling.
@@ -131,6 +168,17 @@ initGroup();
 
 const memberships = computed(() => {
   if (!group.value) { return []; }
+
+  const pageIds = loader.value?.pageIds?.[page.value];
+  if (Array.isArray(pageIds)) {
+    return pageIds
+      .map(id => Records.memberships.findById(id))
+      .filter(m => m && !m.revokedAt);
+  }
+
+  if (page.value !== 1 || !loader.value?.loading) {
+    return [];
+  }
 
   let groupFilter = group.value.id;
   if (subgroupsFilter.value === 'all') {
@@ -184,7 +232,23 @@ const memberships = computed(() => {
       break;
   }
 
-  return chain.simplesort('id', true).data();
+  const results = chain.data();
+  const memberTimestamp = m => (m.acceptedAt || m.createdAt || 0);
+  switch (sortOrder.value) {
+    case 'oldest':
+      results.sort((a, b) => memberTimestamp(a) - memberTimestamp(b));
+      break;
+    case 'name':
+      results.sort((a, b) => (a.user()?.name || '').localeCompare(b.user()?.name || ''));
+      break;
+    case 'last_seen':
+      results.sort((a, b) => (b.user()?.lastSeenAt || 0) - (a.user()?.lastSeenAt || 0));
+      break;
+    default:
+      results.sort((a, b) => memberTimestamp(b) - memberTimestamp(a));
+      break;
+  }
+  return results.slice(0, pageSize.value);
 });
 
 const canAddMembers = computed(() => GroupAbility.canAddMembers(group.value));
@@ -197,11 +261,15 @@ const showAdminWarning = computed(() => (
 
 // Only take the search from the URL when navigation changed it. The URL
 // update this box pushed can arrive after more typing, and must not undo it.
-watch(() => route.query, () => {
-  syncSearchFromQuery(searchState, route.query.q);
-  refresh();
-});
+watch(
+  () => [route.query.q, route.query.filter, route.query.subgroups, route.query.sort, route.query.limit],
+  () => {
+    syncSearchFromQuery(searchState, route.query.q);
+    refresh();
+  }
+);
 
+watch(() => route.query.page, fetchPage);
 watch(() => route.params.key, initGroup);
 </script>
 
@@ -212,11 +280,11 @@ watch(() => route.params.key, initGroup);
     v-alert.my-4(v-if="showAdminWarning" color="info" type="info" variant="tonal")
       span {{ t('memberships_page.only_one_admin') }}
 
-    .d-flex.align-center.flex-wrap.pt-4.pb-2
-      subgroups-filter-menu.mr-2(:group="group" :selected="subgroupsFilter" @select="selectSubgroups")
+    .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2
+      subgroups-filter-menu(:group="group" :selected="subgroupsFilter" @select="selectSubgroups")
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.members-panel__filters.mr-2.text-capitalize.text-medium-emphasis(v-bind="props" variant="tonal")
+          v-btn.members-panel__filters.text-capitalize.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="route.query.filter == 'admin'") {{ t('members_panel.order_by_admin_desc') }}
             span(v-else-if="route.query.filter == 'delegate'") {{ t('members_panel.delegates') }}
             span(v-else-if="route.query.filter == 'pending'") {{ t('members_panel.invitations') }}
@@ -224,24 +292,28 @@ watch(() => route.params.key, initGroup);
             span(v-else) {{ t('members_panel.all') }}
             common-icon(name="mdi-menu-down")
         v-list
-          v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null})")
+          v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null, page: null})")
             v-list-item-title {{ t('members_panel.all') }}
-          v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: 'accepted'})")
+          v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: 'accepted', page: null})")
             v-list-item-title {{ t('members_panel.accepted') }}
-          v-list-item.members-panel__filters-admins(:to="mergeQuery({filter: 'admin'})")
+          v-list-item.members-panel__filters-admins(:to="mergeQuery({filter: 'admin', page: null})")
             v-list-item-title {{ t('members_panel.order_by_admin_desc') }}
-          v-list-item.members-panel__filters-delegates(:to="mergeQuery({filter: 'delegate'})")
+          v-list-item.members-panel__filters-delegates(:to="mergeQuery({filter: 'delegate', page: null})")
             v-list-item-title {{ t('members_panel.delegates') }}
-          v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
+          v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending', page: null})")
             v-list-item-title {{ t('members_panel.invitations') }}
-      v-btn.members-panel__search-button.mr-2(
-        v-if="!searchState.searchOpen"
-        variant="text"
-        @click="openSearch"
-      )
-        v-icon.mr-1(:icon="mdiMagnify")
-        span {{ t('navbar.search_members_short') }}
-      v-text-field.mr-2(
+      v-tooltip(v-if="!searchState.searchOpen" location="bottom" :text="t('navbar.search_members_short')")
+        template(#activator="{ props }")
+          v-btn.members-panel__search-button.text-medium-emphasis(
+            v-bind="props"
+            icon
+            density="comfortable"
+            variant="tonal"
+            :aria-label="t('navbar.search_members_short')"
+            @click="openSearch"
+          )
+            common-icon(name="mdi-magnify")
+      v-text-field(
         v-if="searchState.searchOpen"
         ref="memberSearch"
         v-model="searchState.searchQuery"
@@ -256,7 +328,7 @@ watch(() => route.params.key, initGroup);
         @keyup.esc="closeSearch"
       )
       v-spacer
-      v-btn.membership-card__invite.mr-2(
+      v-btn.membership-card__invite(
         color="primary"
         variant="elevated"
         v-if="canAddMembers"
@@ -264,7 +336,7 @@ watch(() => route.params.key, initGroup);
       )
         span {{ t('common.action.invite') }}
       v-btn.members-panel__edit-weights(v-if="canManageWeights" variant="tonal" :to="urlFor(group, 'members/weights')") {{ t('members_panel.edit_vote_weights') }}
-      v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
+      v-btn.group-page__requests-tab.text-medium-emphasis(
         v-if="group.isVisibleToPublic && canAddMembers"
         :to="urlFor(group, 'membership_requests')"
         variant="text"
@@ -327,16 +399,16 @@ watch(() => route.params.key, initGroup);
             template(v-slot:append)
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 
-        .d-flex.justify-center(v-if="loader")
-          .d-flex.flex-column.align-center
-            .text-medium-emphasis(v-if="loader.total")
-              | {{ memberships.length }} / {{ loader.total }}
-            v-btn.my-2.members-panel__show-more(
-              variant="tonal"
-              color="primary"
-              v-if="memberships.length < loader.total && !loader.exhausted"
-              :loading="loader.loading"
-              @click="loader.fetchRecords({ limit: 50 })"
-            )
-              span {{ t('common.action.load_more') }}
+        list-pagination(
+          v-if="loader && memberships.length"
+          :page="page"
+          :total-pages="totalPages"
+          :page-size="pageSize"
+          :sort="sortOrder"
+          :sort-options="sortOptions"
+          :disabled="loader.loading"
+          @update:page="page = $event"
+          @update:page-size="selectPageSize"
+          @update:sort="selectSort"
+        )
 </template>

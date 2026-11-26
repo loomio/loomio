@@ -702,6 +702,7 @@ en:
     unread_discussions_count: Unread discussions (%{count})
     unread_threads: Unread threads
     unread_threads_count: Unread threads (%{count})
+    votes_count: "1 vote | {count} votes"
     new_group: New group
     new_subgroup: New subgroup
     start_subgroup: New subgroup
@@ -1549,6 +1550,20 @@ en:
     integrations_and_data: Integrations & data
     leave_or_delete: Leave or delete
     edit_group_description: Update the group name, description, logo, cover photo, privacy, and member permissions.
+  pagination:
+    page_of: "Page {page} of {total}"
+    previous_page: Previous page
+    next_page: Next page
+    sort_by: Sort by
+    per_page: Per page
+    jump_to_page: Jump to page
+    sort:
+      recent_activity: Recent activity
+      newest: Newest
+      oldest: Oldest
+      closing_soon: Closing soon
+      name: Name
+      last_seen: Last seen
     edit_tags_description: Create, rename, merge, and color-code tags used to organize threads and polls.
     manage_subscription_description: View your plan, billing details, and member limits.
     change_volume_description: Choose how often you receive email and push notifications from this group.

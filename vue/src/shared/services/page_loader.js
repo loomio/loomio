@@ -1,7 +1,7 @@
 import Records from '@/shared/services/records';
-import utils         from '@/shared/record_store/utils';
+import utils from '@/shared/record_store/utils';
 import RestfulClient from '@/shared/record_store/restful_client';
-import {merge, orderBy, uniq, map } from 'lodash-es';
+import { merge, map } from 'lodash-es';
 
 export default class PageLoader {
   constructor(opts) {
@@ -9,7 +9,7 @@ export default class PageLoader {
     this.loading = false;
     this.params = opts.params;
     this.path = opts.path;
-    this.per = opts.params.per;
+    this.per = opts.params.limit || opts.params.per;
     this.order = opts.order;
     this.total = 0;
     this.pageWindow = {};
@@ -19,27 +19,28 @@ export default class PageLoader {
   }
 
   totalPages() {
-    return Math.ceil(parseFloat(this.total) / parseFloat(this.params.per));
+    return Math.ceil(parseFloat(this.total) / parseFloat(this.per));
   }
 
   fetch(page) {
     this.loading = true;
+    const offsetParam = this.params.limit ? { offset: (page - 1) * this.per } : { from: (page - 1) * this.per };
     return this.remote.fetch({
       path: this.path,
-      params: merge({from: ((page - 1) * this.per)}, this.params)}).then(json => {
+      params: merge(offsetParam, this.params)
+    }).then(json => {
       const data = utils.deserialize(json);
       const records = data[data.meta.root];
       this.total = data.meta.total;
       if (records.length) {
-        const firstId = records[0][this.order];
-        const lastId = records[(records.length - 1)][this.order];
-        this.pageWindow[page] = [lastId,firstId];
+        const firstVal = this.order ? records[0][this.order] : null;
+        const lastVal = this.order ? records[records.length - 1][this.order] : null;
+        this.pageWindow[page] = firstVal <= lastVal ? [firstVal, lastVal] : [lastVal, firstVal];
         this.pageIds[page] = map(records, 'id');
       } else {
         this.pageWindow[page] = null;
         this.pageIds[page] = [];
       }
-      // console.log 'page', page, 'discussions.length', data.discussions.length, 'first', firstId, 'last', lastId, 'groupIds!', orderBy uniq(map(data['discussions'], 'groupId'))
       return Records.importREADY(data);
     }).catch(err => {
       this.err = err;

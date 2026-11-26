@@ -669,6 +669,7 @@ pt_BR:
     direct_discussions: Discussões diretas
     unread_discussions: Discussões não lidas
     unread_threads_count: Tópicos não lidos (%{count})
+    votes_count: 1 voto | {count} votos
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -3404,6 +3405,31 @@ pt_BR:
     become_coordinator_description: Assuma as permissões de admin deste grupo.
     chatbots_description: Conecte Slack, Mattermost, Discord ou outras ferramentas de chat para publicar atualizações do grupo.
     api_docs_description: Configure o acesso à API e os webhooks para integrar o Loomio às suas próprias ferramentas.
+    export_data_description: Baixe uma cópia das conversas, enquetes, comentários e membros deste grupo.
+    leave_group_description: Saia deste grupo e pare de receber notificações.
+    destroy_group_description: Agende a exclusão permanente deste grupo e de seu conteúdo.
+  pagination:
+    page_of: Página {page} de {total}
+    previous_page: Página anterior
+    next_page: Próxima página
+    sort_by: Ordenar por
+    per_page: Por página
+    jump_to_page: Ir para a página
+    sort:
+      recent_activity: Atividade recente
+      newest: Mais recentes
+      oldest: Mais antigos
+      closing_soon: Encerrando em breve
+      name: Nome
+      last_seen: Último acesso
+    edit_tags_description: Crie, renomeie, combine e defina cores para as tags usadas para organizar conversas e enquetes.
+    manage_subscription_description: Veja seu plano, dados de cobrança e limites de membros.
+    change_volume_description: Escolha com que frequência você recebe notificações por email e push deste grupo.
+    email_group_description: Inicie uma nova conversa neste grupo enviando um email para este endereço.
+    group_stats_description: Veja a atividade dos membros, o engajamento nas conversas e a participação nas votações ao longo do tempo.
+    become_coordinator_description: Obtenha permissões de admin deste grupo.
+    chatbots_description: Conecte Slack, Mattermost, Discord ou outras ferramentas de chat para publicar atualizações do grupo.
+    api_docs_description: Configure o acesso à API e webhooks para integrar o Loomio às suas ferramentas.
     export_data_description: Baixe uma cópia das conversas, enquetes, comentários e membros deste grupo.
     leave_group_description: Saia deste grupo e pare de receber notificações.
     destroy_group_description: Agende a exclusão permanente deste grupo e de seu conteúdo.

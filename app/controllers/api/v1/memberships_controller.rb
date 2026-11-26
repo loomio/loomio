@@ -11,7 +11,17 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
         params.delete(key)
       end
-      MembershipQuery.search(chain: collection, params: params).order('memberships.group_id, memberships.admin desc, memberships.created_at desc')
+      filtered = MembershipQuery.search(chain: collection, params: params)
+      case params[:sort]
+      when 'oldest'
+        filtered.order(Arel.sql('COALESCE(memberships.accepted_at, memberships.created_at) ASC, memberships.id ASC'))
+      when 'name'
+        filtered.order(Arel.sql('LOWER(users.name) ASC, memberships.id ASC'))
+      when 'last_seen'
+        filtered.order(Arel.sql('users.last_seen_at DESC NULLS LAST, memberships.id DESC'))
+      else
+        filtered.order(Arel.sql('COALESCE(memberships.accepted_at, memberships.created_at) DESC, memberships.id DESC'))
+      end
     end
     respond_with_collection(scope: index_scope)
   end

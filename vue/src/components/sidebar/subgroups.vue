@@ -1,43 +1,78 @@
 <script setup lang="js">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
 import Session from '@/shared/services/session';
-import Records from '@/shared/services/records';
 import GroupAbility from '@/shared/abilities/group_ability';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import { mdiPlus } from '@mdi/js';
+import SidebarActivityLinks from '@/components/sidebar/activity_links.vue';
 
-const props = defineProps(['organization', 'openCounts', 'activeGroupId']);
+const { organization, openCounts = {}, votesNeededCounts = {}, activeGroupId } = defineProps([
+  'organization',
+  'openCounts',
+  'votesNeededCounts',
+  'activeGroupId'
+]);
+const { t } = useI18n();
 const route = useRoute();
 
 const CARRIED_THREAD_FILTERS = new Set(['locked', 'all']);
 const groupLink = (model) => {
   const query = {};
   if (CARRIED_THREAD_FILTERS.has(route.query?.t)) { query.t = route.query.t; }
-  if (route.query?.unread) { query.unread = '1'; }
   return { path: LmoUrlService.route({ model }), query };
 };
 
-const mine = computed(() => props.organization.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user())));
-const more = computed(() => props.organization.subgroups().filter(g => GroupAbility.canShow(g) && !g.membershipFor(Session.user())));
-const canStartSubgroup = computed(() => GroupAbility.canAddSubgroup(props.organization));
+function hasActivity(unread, votes) {
+  return (unread || 0) > 0 || (votes || 0) > 0;
+}
+
+function urlFor(model) {
+  return LmoUrlService.route({ model });
+}
+
+const mine = computed(() => organization.subgroups().filter(g => !g.isDiscarded() && g.membershipFor(Session.user())));
+const more = computed(() => organization.subgroups().filter(g => GroupAbility.canShow(g) && !g.membershipFor(Session.user())));
+const canStartSubgroup = computed(() => GroupAbility.canAddSubgroup(organization));
 </script>
 
 <template lang="pug">
 .sidebar__subgroups(v-if="mine.length || more.length || canStartSubgroup")
   v-list.ma-0.pa-0(nav density="compact" :lines="false")
-    v-list-item.sidebar__group.sidebar__subgroup(v-for="group in mine" :key="group.id" nav slim :to="groupLink(group)" :active="activeGroupId === group.id")
+    v-list-item.sidebar__group.sidebar__subgroup(
+      v-for="group in mine"
+      :key="group.id"
+      nav
+      slim
+      :to="groupLink(group)"
+      :active="activeGroupId === group.id"
+      :lines="hasActivity(openCounts[group.id], votesNeededCounts[group.id]) ? 'two' : false"
+    )
       v-list-item-title.font-weight-regular
         plain-text(:model="group" field="name")
-      template(v-slot:append v-if="openCounts[group.id]")
-        span.text-caption.text-medium-emphasis {{ openCounts[group.id] }}
+      sidebar-activity-links(
+        :unread="openCounts[group.id] || 0"
+        :votes="votesNeededCounts[group.id] || 0"
+        :base-path="urlFor(group)"
+      )
 
-    v-list-item.sidebar__group.sidebar__subgroup(v-for="group in more" :key="group.id" nav slim :to="groupLink(group)" :active="activeGroupId === group.id")
+    v-list-item.sidebar__group.sidebar__subgroup(
+      v-for="group in more"
+      :key="group.id"
+      nav
+      slim
+      :to="groupLink(group)"
+      :active="activeGroupId === group.id"
+      :lines="hasActivity(openCounts[group.id], votesNeededCounts[group.id]) ? 'two' : false"
+    )
       v-list-item-title.font-weight-regular
         plain-text(:model="group" field="name")
-      template(v-slot:append v-if="openCounts[group.id]")
-        span.text-caption.text-medium-emphasis {{ openCounts[group.id] }}
+      sidebar-activity-links(
+        :unread="openCounts[group.id] || 0"
+        :votes="votesNeededCounts[group.id] || 0"
+        :base-path="urlFor(group)"
+      )
 
     v-btn.sidebar-start-subgroup.mt-1.mb-1(
       size="small"
@@ -47,7 +82,7 @@ const canStartSubgroup = computed(() => GroupAbility.canAddSubgroup(props.organi
       v-if="canStartSubgroup"
       :to="'/g/new?parent_id='+organization.id"
     )
-      span(v-t="'group_form.new_subgroup'")
+      span {{ t('group_form.new_subgroup') }}
 </template>
 
 <style scoped>

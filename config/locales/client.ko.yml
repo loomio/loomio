@@ -677,6 +677,7 @@ ko:
       threads_list: 스레드 작업
       groups_list: 그룹
       user_list: 사용자 작업
+    votes_count: 1표 | {count}표
   strand_nav:
     jump_to: 바로 이동
     timeline: 타임라인
@@ -3315,4 +3316,29 @@ ko:
     api_docs_description: API 접근과 웹훅을 설정해 Loomio를 사용 중인 도구와 연동하세요.
     export_data_description: 이 그룹의 스레드, 투표, 댓글, 멤버 데이터 사본을 다운로드하세요.
     leave_group_description: 이 그룹에서 탈퇴하고 알림 수신을 중단하세요.
+    destroy_group_description: 이 그룹과 콘텐츠의 영구 삭제를 예약하세요.
+  pagination:
+    page_of: 전체 {total}페이지 중 {page}페이지
+    previous_page: 이전 페이지
+    next_page: 다음 페이지
+    sort_by: 정렬 기준
+    per_page: 페이지당 항목 수
+    jump_to_page: 페이지 이동
+    sort:
+      recent_activity: 최근 활동순
+      newest: 최신순
+      oldest: 오래된순
+      closing_soon: 마감 임박순
+      name: 이름순
+      last_seen: 최근 접속순
+    edit_tags_description: 스레드와 투표를 정리하는 태그를 만들고, 이름을 바꾸고, 합치고, 색상을 지정하세요.
+    manage_subscription_description: 요금제, 결제 정보, 멤버 수 한도를 확인하세요.
+    change_volume_description: 이 그룹의 이메일 및 푸시 알림을 받을 빈도를 선택하세요.
+    email_group_description: 이 주소로 이메일을 보내 이 그룹에 새 스레드를 만드세요.
+    group_stats_description: 시간에 따른 멤버 활동, 스레드 참여, 투표 참여를 확인하세요.
+    become_coordinator_description: 이 그룹의 그룹 관리자 권한을 얻으세요.
+    chatbots_description: Slack, Mattermost, Discord 등 채팅 도구를 연결해 그룹 소식을 게시하세요.
+    api_docs_description: API 접근과 웹훅을 설정해 Loomio를 사용 중인 도구와 연동하세요.
+    export_data_description: 이 그룹의 스레드, 투표, 댓글, 멤버 정보 사본을 다운로드하세요.
+    leave_group_description: 이 그룹에서 탈퇴하고 알림 수신을 중지하세요.
     destroy_group_description: 이 그룹과 콘텐츠의 영구 삭제를 예약하세요.

@@ -661,6 +661,7 @@ pl:
     direct_discussions: Dyskusje bezpośrednie
     unread_discussions: Nieprzeczytane dyskusje
     unread_threads_count: Nieprzeczytane wątki (%{count})
+    votes_count: 1 głos | {count} głosów
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -3383,6 +3384,31 @@ pl:
     change_volume_description: Wybierz, jak często otrzymujesz powiadomienia e-mail i push z tej grupy.
     email_group_description: Rozpocznij nowy wątek w tej grupie, wysyłając e-mail na ten adres.
     group_stats_description: Sprawdź aktywność członków, udział w wątkach i głosowaniu na przestrzeni czasu.
+    become_coordinator_description: Uzyskaj uprawnienia administratora tej grupy.
+    chatbots_description: Połącz Slack, Mattermost, Discord lub inne czaty, by publikować aktualności grupy.
+    api_docs_description: Skonfiguruj dostęp do API i webhooki, by połączyć Loomio ze swoimi narzędziami.
+    export_data_description: Pobierz kopię wątków, ankiet, komentarzy i członków tej grupy.
+    leave_group_description: Opuść tę grupę i przestań otrzymywać powiadomienia.
+    destroy_group_description: Zaplanuj trwałe usunięcie tej grupy i jej treści.
+  pagination:
+    page_of: Strona {page} z {total}
+    previous_page: Poprzednia strona
+    next_page: Następna strona
+    sort_by: Sortuj według
+    per_page: Na stronie
+    jump_to_page: Przejdź do strony
+    sort:
+      recent_activity: Ostatnia aktywność
+      newest: Najnowsze
+      oldest: Najstarsze
+      closing_soon: Wkrótce się kończą
+      name: Nazwa
+      last_seen: Ostatnia wizyta
+    edit_tags_description: Twórz, zmieniaj nazwy, łącz i koloruj tagi do porządkowania wątków i ankiet.
+    manage_subscription_description: Sprawdź swój plan, dane rozliczeniowe i limity członków.
+    change_volume_description: Wybierz, jak często otrzymujesz powiadomienia e-mail i push z tej grupy.
+    email_group_description: Rozpocznij nowy wątek w tej grupie, wysyłając e-mail na ten adres.
+    group_stats_description: Sprawdź aktywność członków, zaangażowanie w wątki i udział w głosowaniu na przestrzeni czasu.
     become_coordinator_description: Uzyskaj uprawnienia administratora tej grupy.
     chatbots_description: Połącz Slack, Mattermost, Discord lub inne czaty, by publikować aktualności grupy.
     api_docs_description: Skonfiguruj dostęp do API i webhooki, by połączyć Loomio ze swoimi narzędziami.

@@ -1,5 +1,6 @@
 <script setup lang="js">
 import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { intersection, orderBy, uniq } from 'lodash-es';
 
@@ -14,6 +15,7 @@ const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
 });
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const { loadBookmarks } = useBookmarks();
@@ -75,7 +77,7 @@ const titleVisible = (visible) => {
 component(:is="embedded ? 'div' : 'v-main'")
   component(:is="embedded ? 'div' : 'v-container'" :class="embedded ? 'bookmarks-page pt-2' : 'bookmarks-page max-width-1024 px-2 px-sm-4'")
     template(v-if="!embedded")
-      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+      h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}") {{ t('dashboard_page.dashboard') }}
       dashboard-cards
 
     .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2(v-if="group")
@@ -105,6 +107,6 @@ component(:is="embedded ? 'div' : 'v-main'")
               )
                 common-icon(name="mdi-bookmark-remove-outline")
 
-      v-alert.mb-2(v-else type="info" variant="tonal" :title="$t('bookmarks.empty')")
-        span(v-t="'bookmarks.empty_help'")
+      v-alert.mb-2(v-else type="info" variant="tonal" :title="t('bookmarks.empty')")
+        span {{ t('bookmarks.empty_help') }}
 </template>

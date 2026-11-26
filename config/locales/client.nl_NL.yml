@@ -661,6 +661,7 @@ nl_NL:
     direct_discussions: Directe discussies
     unread_discussions: Ongelezen discussies
     unread_threads_count: Ongelezen threads (%{count})
+    votes_count: 1 stem | {count} stemmen
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -3389,3 +3390,28 @@ nl_NL:
     export_data_description: Download een kopie van de threads, peilingen, reacties en leden van deze groep.
     leave_group_description: Verlaat deze groep en ontvang geen meldingen meer.
     destroy_group_description: Plan het definitief verwijderen van deze groep en de inhoud ervan.
+  pagination:
+    page_of: Pagina {page} van {total}
+    previous_page: Vorige pagina
+    next_page: Volgende pagina
+    sort_by: Sorteren op
+    per_page: Per pagina
+    jump_to_page: Ga naar pagina
+    sort:
+      recent_activity: Recente activiteit
+      newest: Nieuwste
+      oldest: Oudste
+      closing_soon: Sluit binnenkort
+      name: Naam
+      last_seen: Laatst gezien
+    edit_tags_description: Maak, hernoem en combineer labels en geef ze kleuren om threads en peilingen te ordenen.
+    manage_subscription_description: Bekijk jouw abonnement, factuurgegevens en ledenlimieten.
+    change_volume_description: Kies hoe vaak je e-mail- en pushmeldingen van deze groep ontvangt.
+    email_group_description: Start een nieuwe thread in deze groep door een e-mail naar dit adres te sturen.
+    group_stats_description: Bekijk hoe actief leden zijn, hoeveel ze bijdragen aan threads en hoeveel ze stemmen door de tijd heen.
+    become_coordinator_description: Claim de rechten van groepsadmin voor deze groep.
+    chatbots_description: Koppel Slack, Mattermost, Discord of andere chattools om groepsupdates te plaatsen.
+    api_docs_description: Stel API-toegang en webhooks in om Loomio met jouw eigen tools te koppelen.
+    export_data_description: Download een kopie van de threads, peilingen, reacties en leden van deze groep.
+    leave_group_description: Verlaat deze groep en ontvang geen meldingen meer.
+    destroy_group_description: Plan de definitieve verwijdering van deze groep en de inhoud.

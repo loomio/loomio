@@ -669,6 +669,7 @@ it:
     direct_discussions: Discussioni dirette
     unread_discussions: Discussioni non lette
     unread_threads_count: Thread non letti (%{count})
+    votes_count: 1 voto | {count} voti
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -3389,4 +3390,29 @@ it:
     api_docs_description: Configura l'accesso API e i webhook per integrare Loomio con i tuoi strumenti.
     export_data_description: Scarica una copia delle conversazioni, dei sondaggi, dei commenti e dei membri di questo gruppo.
     leave_group_description: Lascia questo gruppo e smetti di ricevere notifiche.
+    destroy_group_description: Programma l'eliminazione definitiva di questo gruppo e dei suoi contenuti.
+  pagination:
+    page_of: Pagina {page} di {total}
+    previous_page: Pagina precedente
+    next_page: Pagina successiva
+    sort_by: Ordina per
+    per_page: Per pagina
+    jump_to_page: Vai alla pagina
+    sort:
+      recent_activity: Attività recente
+      newest: Più recenti
+      oldest: Più vecchi
+      closing_soon: In chiusura
+      name: Nome
+      last_seen: Ultimo accesso
+    edit_tags_description: Crea, rinomina, unisci e colora i tag usati per organizzare conversazioni e sondaggi.
+    manage_subscription_description: Visualizza il tuo piano, i dati di fatturazione e i limiti di membri.
+    change_volume_description: Scegli quanto spesso ricevere email e notifiche push da questo gruppo.
+    email_group_description: Avvia una nuova conversazione in questo gruppo inviando un'email a questo indirizzo.
+    group_stats_description: Visualizza nel tempo l'attività dei membri, il coinvolgimento nelle conversazioni e la partecipazione al voto.
+    become_coordinator_description: Assumi i permessi di amministratore di questo gruppo.
+    chatbots_description: Collega Slack, Mattermost, Discord o altre chat per pubblicare aggiornamenti del gruppo.
+    api_docs_description: Configura l'accesso API e i webhook per integrare Loomio con i tuoi strumenti.
+    export_data_description: Scarica una copia delle conversazioni, dei sondaggi, dei commenti e dei membri di questo gruppo.
+    leave_group_description: Esci da questo gruppo e smetti di ricevere notifiche.
     destroy_group_description: Programma l'eliminazione definitiva di questo gruppo e dei suoi contenuti.

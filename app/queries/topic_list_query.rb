@@ -15,7 +15,8 @@ class TopicListQuery
       group_ids: group_ids,
       only_direct: params.has_key?(:direct),
       only_unread: params.has_key?(:unread)
-    ).with_topicable.recent_activity_first.order(id: :desc)
+    ).with_topicable
+    records = apply_sort(records)
 
     if params[:topicable_type].present?
       records = records.where(topicable_type: params[:topicable_type])
@@ -44,6 +45,17 @@ class TopicListQuery
   end
 
   private
+
+  def apply_sort(records)
+    case params[:sort]
+    when 'newest'
+      records.order(created_at: :desc, id: :desc)
+    when 'oldest'
+      records.order(created_at: :asc, id: :asc)
+    else
+      records.recent_activity_first.order(id: :desc)
+    end
+  end
 
   def group_ids
     return [] unless params[:group_id].present?

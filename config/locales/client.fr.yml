@@ -669,6 +669,7 @@ fr:
     direct_discussions: Discussions directes
     unread_discussions: Discussions non lues
     unread_threads_count: Sujets non lus (%{count})
+    votes_count: 1 vote | {count} votes
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -3403,6 +3404,31 @@ fr:
     group_stats_description: Suivez l’activité des membres, les échanges dans les fils et la participation aux votes au fil du temps.
     become_coordinator_description: Obtenez les permissions d’administrateur de ce groupe.
     chatbots_description: Connectez Slack, Mattermost, Discord ou d’autres outils de messagerie pour publier les actualités du groupe.
+    api_docs_description: Configurez l’accès à l’API et les webhooks pour intégrer Loomio à vos outils.
+    export_data_description: Téléchargez une copie des fils, sondages, commentaires et membres de ce groupe.
+    leave_group_description: Quittez ce groupe et cessez de recevoir ses notifications.
+    destroy_group_description: Programmez la suppression définitive de ce groupe et de son contenu.
+  pagination:
+    page_of: Page {page} sur {total}
+    previous_page: Page précédente
+    next_page: Page suivante
+    sort_by: Trier par
+    per_page: Par page
+    jump_to_page: Aller à la page
+    sort:
+      recent_activity: Activité récente
+      newest: Plus récents
+      oldest: Plus anciens
+      closing_soon: Clôture prochaine
+      name: Nom
+      last_seen: Dernière connexion
+    edit_tags_description: Créez, renommez, fusionnez et colorez les tags servant à organiser les fils et les sondages.
+    manage_subscription_description: Consultez votre forfait, vos informations de facturation et vos limites de membres.
+    change_volume_description: Choisissez la fréquence des notifications par e-mail et push de ce groupe.
+    email_group_description: Créez un fil dans ce groupe en envoyant un e-mail à cette adresse.
+    group_stats_description: Suivez l’activité des membres, les échanges dans les fils et la participation aux votes au fil du temps.
+    become_coordinator_description: Obtenez les droits d’administrateur de ce groupe.
+    chatbots_description: Connectez Slack, Mattermost, Discord ou d’autres outils de messagerie pour publier les nouvelles du groupe.
     api_docs_description: Configurez l’accès à l’API et les webhooks pour intégrer Loomio à vos outils.
     export_data_description: Téléchargez une copie des fils, sondages, commentaires et membres de ce groupe.
     leave_group_description: Quittez ce groupe et cessez de recevoir ses notifications.

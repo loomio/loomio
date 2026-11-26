@@ -659,6 +659,7 @@ he:
     direct_discussions: דיונים ישירים
     unread_discussions: דיונים שלא נקראו
     unread_threads_count: שרשורים שלא נקראו (%{count})
+    votes_count: הצבעה אחת | {count} הצבעות
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -3381,3 +3382,28 @@ he:
     leave_group_description: ניתן לעזוב את הקבוצה הזו ולהפסיק לקבל התראות.
     destroy_group_description: ניתן לתזמן מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.
     change_volume_description: בחירה בתדירות קבלת התראות בדוא״ל והתראות דחיפה מהקבוצה הזו.
+  pagination:
+    page_of: עמוד {page} מתוך {total}
+    previous_page: העמוד הקודם
+    next_page: העמוד הבא
+    sort_by: מיון לפי
+    per_page: בכל עמוד
+    jump_to_page: מעבר לעמוד
+    sort:
+      recent_activity: פעילות אחרונה
+      newest: החדשים ביותר
+      oldest: הישנים ביותר
+      closing_soon: נסגרים בקרוב
+      name: שם
+      last_seen: ביקור אחרון
+    edit_tags_description: יצירה, שינוי שם, מיזוג וצביעה של תגיות לארגון שרשורים וסקרים.
+    manage_subscription_description: צפייה במסלול, בפרטי החיוב ובמגבלות על מספר החברים.
+    change_volume_description: בחירת תדירות קבלת התראות בדוא״ל ובדחיפה מהקבוצה הזו.
+    email_group_description: פתיחת שרשור חדש בקבוצה הזו בשליחת דוא״ל לכתובת הזו.
+    group_stats_description: צפייה בפעילות החברים, במעורבות בשרשורים ובהשתתפות בהצבעות לאורך זמן.
+    become_coordinator_description: קבלת הרשאות מנהל קבוצה בקבוצה הזו.
+    chatbots_description: חיבור Slack, Mattermost, Discord או כלי צ׳אט אחרים לפרסום עדכוני הקבוצה.
+    api_docs_description: הגדרת גישה ל-API ו-webhooks לשילוב Loomio עם הכלים שלכם.
+    export_data_description: הורדת עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
+    leave_group_description: עזיבת הקבוצה הזו והפסקת קבלת התראות.
+    destroy_group_description: תזמון מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.

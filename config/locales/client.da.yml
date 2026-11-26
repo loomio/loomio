@@ -659,6 +659,7 @@ da:
     direct_discussions: Direkte diskussioner
     unread_discussions: Ulæste diskussioner
     unread_threads_count: Ulæste tråde (%{count})
+    votes_count: 1 stemme | {count} stemmer
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -3373,4 +3374,29 @@ da:
     api_docs_description: Opsæt API-adgang og webhooks for at integrere Loomio med dine egne værktøjer.
     export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
     leave_group_description: Meld dig ud af denne gruppe, og stop med at modtage notifikationer.
+    destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.
+  pagination:
+    page_of: Side {page} af {total}
+    previous_page: Forrige side
+    next_page: Næste side
+    sort_by: Sortér efter
+    per_page: Pr. side
+    jump_to_page: Gå til side
+    sort:
+      recent_activity: Seneste aktivitet
+      newest: Nyeste
+      oldest: Ældste
+      closing_soon: Lukker snart
+      name: Navn
+      last_seen: Sidst set
+    edit_tags_description: Opret, omdøb, flet og farvekod tags til at organisere tråde og afstemninger.
+    manage_subscription_description: Se dit abonnement, dine faktureringsoplysninger og medlemsgrænser.
+    change_volume_description: Vælg, hvor ofte du får e-mails og pushnotifikationer fra denne gruppe.
+    email_group_description: Start en ny tråd i denne gruppe ved at sende en e-mail til denne adresse.
+    group_stats_description: Se medlemmers aktivitet, engagement i tråde og deltagelse i afstemninger over tid.
+    become_coordinator_description: Giv dig selv rettigheder som gruppeadmin i denne gruppe.
+    chatbots_description: Tilslut Slack, Mattermost, Discord eller andre chatværktøjer for at dele nyt fra gruppen.
+    api_docs_description: Opsæt API-adgang og webhooks for at forbinde Loomio med dine egne værktøjer.
+    export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
+    leave_group_description: Forlad denne gruppe, og stop med at modtage notifikationer.
     destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.

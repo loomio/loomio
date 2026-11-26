@@ -1,17 +1,47 @@
 class AttachmentQuery
-  def self.find(group_ids, query, limit, offset, user:)
+  def self.find(group_ids, query, limit, offset, user:, sort: nil)
     return ActiveStorage::Attachment.none if group_ids.blank?
 
     sql = union_sql(group_ids, query, user: user)
-    ids = ApplicationRecord.connection.select_values(
-      ActiveRecord::Base.sanitize_sql_array([
-        "SELECT id FROM (#{sql}) matching_attachments ORDER BY id DESC LIMIT :limit OFFSET :offset",
-        { limit: limit.to_i.clamp(1, 100), offset: [ offset.to_i, 0 ].max }
-      ])
-    )
-    return ActiveStorage::Attachment.none if ids.empty?
+    clamped_limit = limit.to_i.clamp(1, 100)
+    clamped_offset = [ offset.to_i, 0 ].max
 
-    ActiveStorage::Attachment.joins(:blob).where(id: ids).order(id: :desc)
+    case sort
+    when 'oldest'
+      ids = ApplicationRecord.connection.select_values(
+        ActiveRecord::Base.sanitize_sql_array([
+          "SELECT id FROM (#{sql}) matching_attachments ORDER BY id ASC LIMIT :limit OFFSET :offset",
+          { limit: clamped_limit, offset: clamped_offset }
+        ])
+      )
+      return ActiveStorage::Attachment.none if ids.empty?
+
+      ActiveStorage::Attachment.joins(:blob).where(id: ids).order(id: :asc)
+    when 'name'
+      ids = ApplicationRecord.connection.select_values(
+        ActiveRecord::Base.sanitize_sql_array([
+          "SELECT a.id FROM active_storage_attachments a
+           INNER JOIN active_storage_blobs b ON b.id = a.blob_id
+           WHERE a.id IN (#{sql})
+           ORDER BY LOWER(b.filename) ASC, a.id ASC
+           LIMIT :limit OFFSET :offset",
+          { limit: clamped_limit, offset: clamped_offset }
+        ])
+      )
+      return ActiveStorage::Attachment.none if ids.empty?
+
+      ActiveStorage::Attachment.joins(:blob).where(id: ids).order(Arel.sql("LOWER(active_storage_blobs.filename) ASC, active_storage_attachments.id ASC"))
+    else
+      ids = ApplicationRecord.connection.select_values(
+        ActiveRecord::Base.sanitize_sql_array([
+          "SELECT id FROM (#{sql}) matching_attachments ORDER BY id DESC LIMIT :limit OFFSET :offset",
+          { limit: clamped_limit, offset: clamped_offset }
+        ])
+      )
+      return ActiveStorage::Attachment.none if ids.empty?
+
+      ActiveStorage::Attachment.joins(:blob).where(id: ids).order(id: :desc)
+    end
   end
 
   def self.count(group_ids, query, user:)

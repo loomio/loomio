@@ -659,6 +659,7 @@ ru:
     direct_discussions: Прямые обсуждения
     unread_discussions: Непрочитанные обсуждения
     unread_threads_count: Непрочитанные сообщения (%{count})
+    votes_count: 1 голос | {count} голосов
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -3358,6 +3359,31 @@ ru:
     group_stats_description: Посмотрите, как меняется активность участников в группе, ветках и опросах.
     become_coordinator_description: Получите права администратора этой группы.
     chatbots_description: Подключите Slack, Mattermost, Discord или другие чаты для публикации обновлений группы.
+    api_docs_description: Настройте доступ к API и вебхуки для интеграции Loomio с вашими инструментами.
+    export_data_description: Скачайте копию веток, опросов, комментариев и списка участников этой группы.
+    leave_group_description: Выйдите из этой группы и перестаньте получать уведомления.
+    destroy_group_description: Запланируйте безвозвратное удаление этой группы и её содержимого.
+  pagination:
+    page_of: Страница {page} из {total}
+    previous_page: Предыдущая страница
+    next_page: Следующая страница
+    sort_by: Сортировать по
+    per_page: На странице
+    jump_to_page: Перейти к странице
+    sort:
+      recent_activity: Последняя активность
+      newest: Сначала новые
+      oldest: Сначала старые
+      closing_soon: Скоро закроются
+      name: Название
+      last_seen: Последний визит
+    edit_tags_description: Создавайте, переименовывайте, объединяйте и выделяйте цветом теги для веток и опросов.
+    manage_subscription_description: Просмотрите ваш тариф, платёжные данные и лимиты участников.
+    change_volume_description: Выберите, как часто получать письма и push-уведомления от этой группы.
+    email_group_description: Начните новую ветку в этой группе, отправив письмо на этот адрес.
+    group_stats_description: Просмотрите, как меняются активность участников, участие в ветках и голосовании.
+    become_coordinator_description: Получите права администратора этой группы.
+    chatbots_description: Подключите Slack, Mattermost, Discord или другие чаты для публикации новостей группы.
     api_docs_description: Настройте доступ к API и вебхуки для интеграции Loomio с вашими инструментами.
     export_data_description: Скачайте копию веток, опросов, комментариев и списка участников этой группы.
     leave_group_description: Выйдите из этой группы и перестаньте получать уведомления.
