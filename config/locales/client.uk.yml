@@ -43,6 +43,19 @@ uk:
     task_updated_not_done: Завдання позначено як невиконане
     no_tasks_assigned: Вам не призначено жодних завдань
     task_placeholder: Введіть завдання та {'@'}згадайте когось, щоб призначити його
+    status_todo: До виконання
+    status_done: Виконано
+    due_any: Будь-який термін
+    due_overdue: Прострочені
+    due_next_7_days: Наступні 7 днів
+    due_later: Пізніше
+    due_none: Без терміну
+    assigned_anyone: Будь-хто
+    assigned_me: Призначені мені
+    search_members: Пошук учасників
+    search_tasks: Пошук завдань
+    no_open_tasks: У вас немає невиконаних завдань.
+    no_matching_tasks: Немає завдань за вашими фільтрами.
   templates:
     template_gallery: Галерея шаблонів
     title_template: Шаблон %{title}
@@ -3319,6 +3332,23 @@ uk:
     threads_count: 1 тема | {count} тем
     view_threads: Переглянути теми
     no_threads: Немає тем
+    this_group_only: Лише ця група
+    my_subgroups: Мої підгрупи
+    all_subgroups: Усі підгрупи
+    filter_tags: Фільтрувати теги
+    filter_groups: Фільтрувати групи
+    filter_subgroups: Фільтрувати підгрупи
+    filter_qualifier_unread: непрочитаних
+    filter_qualifier_direct: прямих
+    filter_qualifier_locked: заблокованих
+    filter_qualifier_unlocked: розблокованих
+    no_filtered_threads: Немає {filters} тем
+    no_filtered_threads_with_tag: 'Немає {filters} тем із тегом: {tag}'
+    no_threads_with_tag: 'Немає тем із тегом: {tag}'
+    recent_count: "{count} нещодавніх"
+    need_vote_count: 1 потребує голосу | {count} потребують голосу
+    open_count: "{count} відкритих"
+    files_count: 1 файл | {count} файлів
   onboarding_card:
     extend_trial_title: Отримайте ще 30 днів
     extend_trial_initial: Отримайте ще 30 днів, коли {count} людей проголосують у пропозиції чи опитуванні.
@@ -3329,3 +3359,36 @@ uk:
     trial_extended_description: Ваш пробний період подовжено на 30 днів із доступом до підгруп і гостей.
     view_plans: Перегляньте тарифи
     upgrade_now: Оновіть тариф зараз
+  dashboard_cards:
+    all_groups: Усі групи
+    unread_count: "{count} непрочитаних"
+    direct: Прямі
+    direct_count: "{count} прямих"
+    people: Люди
+    recently_online: Нещодавно в мережі
+    recently_online_count: "{count} нещодавно в мережі"
+    your_tasks: Ваші завдання
+    tasks_todo_count: "{count} до виконання"
+    bookmarks_saved_count: "{count} збережених"
+    search_people: Пошук людей
+    direct_thread: Пряма тема
+    view_profile: Переглянути профіль
+    no_people_found: Нікого не знайдено
+  group_settings_panel:
+    subtitle: Налаштування групи
+    group_administration: Керування групою
+    your_membership: Ваша участь у групі
+    integrations_and_data: Інтеграції та дані
+    leave_or_delete: Вийти або видалити
+    edit_group_description: Оновіть назву групи, опис, логотип, фото обкладинки, приватність і права учасників.
+    edit_tags_description: Створюйте, перейменовуйте, об’єднуйте та позначайте кольорами теги для впорядкування тем і опитувань.
+    manage_subscription_description: Перегляньте свій тариф, платіжні дані та обмеження кількості учасників.
+    email_group_description: Створіть нову тему в цій групі, надіславши листа на цю адресу.
+    group_stats_description: Перегляньте активність учасників, участь у темах і голосуваннях за різні періоди.
+    become_coordinator_description: Отримайте права адміністратора цієї групи.
+    chatbots_description: Підключіть Slack, Mattermost, Discord або інші чати, щоб публікувати новини групи.
+    api_docs_description: Налаштуйте доступ до API та вебхуки для інтеграції Loomio з вашими інструментами.
+    export_data_description: Завантажте копію тем, опитувань, коментарів і списку учасників цієї групи.
+    leave_group_description: Вийдіть із цієї групи та припиніть отримувати сповіщення.
+    destroy_group_description: Заплануйте остаточне видалення цієї групи та її вмісту.
+    change_volume_description: Вибір частоти отримання сповіщень електронною поштою та push-сповіщень від цієї групи.

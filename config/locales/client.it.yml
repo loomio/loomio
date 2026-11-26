@@ -43,6 +43,19 @@ it:
     task_updated_not_done: Compito segnato come non eseguito!
     no_tasks_assigned: Non ci sono compiti assegnati a te
     task_placeholder: Inserisci un'attività e {'@'}menziona qualcuno a cui assegnarla
+    status_todo: Da fare
+    status_done: Eseguiti
+    due_any: Qualsiasi scadenza
+    due_overdue: Scaduti
+    due_next_7_days: Prossimi 7 giorni
+    due_later: Più avanti
+    due_none: Senza scadenza
+    assigned_anyone: Chiunque
+    assigned_me: Assegnati a me
+    search_members: Cerca membri
+    search_tasks: Cerca compiti
+    no_open_tasks: Non hai compiti da fare.
+    no_matching_tasks: Nessun compito corrisponde ai tuoi filtri.
   templates:
     template_gallery: Galleria di modelli
     title_template: "%{title} Modello"
@@ -3317,6 +3330,23 @@ it:
     threads_count: 1 conversazione | {count} conversazioni
     view_threads: Vedi conversazioni
     no_threads: Nessuna conversazione
+    this_group_only: Solo questo gruppo
+    my_subgroups: I miei sottogruppi
+    all_subgroups: Tutti i sottogruppi
+    filter_tags: Filtra tag
+    filter_groups: Filtra gruppi
+    filter_subgroups: Filtra sottogruppi
+    filter_qualifier_unread: non lette
+    filter_qualifier_direct: dirette
+    filter_qualifier_locked: bloccate
+    filter_qualifier_unlocked: sbloccate
+    no_filtered_threads: Non ci sono conversazioni {filters}
+    no_filtered_threads_with_tag: 'Non ci sono conversazioni {filters} con il tag: {tag}'
+    no_threads_with_tag: 'Non ci sono conversazioni con il tag: {tag}'
+    recent_count: "{count} recenti"
+    need_vote_count: 1 richiede un voto | {count} richiedono un voto
+    open_count: "{count} aperti"
+    files_count: 1 file | {count} file
   onboarding_card:
     extend_trial_title: Sblocca 30 giorni in più
     extend_trial_initial: Sblocca 30 giorni in più quando {count} persone votano in una proposta o un sondaggio.
@@ -3327,3 +3357,36 @@ it:
     trial_extended_description: La tua prova è stata estesa di 30 giorni con sottogruppi e ospiti abilitati.
     view_plans: Vedi i piani
     upgrade_now: Passa a un piano superiore
+  dashboard_cards:
+    all_groups: Tutti i gruppi
+    unread_count: "{count} non lette"
+    direct: Dirette
+    direct_count: "{count} dirette"
+    people: Persone
+    recently_online: Online di recente
+    recently_online_count: "{count} online di recente"
+    your_tasks: I tuoi compiti
+    tasks_todo_count: "{count} da fare"
+    bookmarks_saved_count: "{count} salvati"
+    search_people: Cerca persone
+    direct_thread: Conversazione diretta
+    view_profile: Vedi profilo
+    no_people_found: Nessuna persona trovata
+  group_settings_panel:
+    subtitle: Opzioni del gruppo
+    group_administration: Amministrazione del gruppo
+    your_membership: La tua adesione
+    integrations_and_data: Integrazioni e dati
+    leave_or_delete: Lascia o elimina
+    edit_group_description: Aggiorna nome, descrizione, logo, foto di copertina, privacy e permessi dei membri del gruppo.
+    edit_tags_description: Crea, rinomina, unisci e assegna colori ai tag per organizzare conversazioni e sondaggi.
+    manage_subscription_description: Vedi il tuo piano, i dati di fatturazione e i limiti di membri.
+    change_volume_description: Scegli quanto spesso ricevere email e notifiche push da questo gruppo.
+    email_group_description: Avvia una nuova conversazione in questo gruppo inviando un'email a questo indirizzo.
+    group_stats_description: Vedi nel tempo l'attività dei membri e la partecipazione alle conversazioni e al voto.
+    become_coordinator_description: Ottieni i permessi di amministratore di questo gruppo.
+    chatbots_description: Collega Slack, Mattermost, Discord o altre chat per pubblicare aggiornamenti del gruppo.
+    api_docs_description: Configura l'accesso API e i webhook per integrare Loomio con i tuoi strumenti.
+    export_data_description: Scarica una copia delle conversazioni, dei sondaggi, dei commenti e dei membri di questo gruppo.
+    leave_group_description: Lascia questo gruppo e smetti di ricevere notifiche.
+    destroy_group_description: Programma l'eliminazione definitiva di questo gruppo e dei suoi contenuti.

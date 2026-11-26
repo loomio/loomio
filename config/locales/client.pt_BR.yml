@@ -43,6 +43,19 @@ pt_BR:
     task_updated_not_done: Tarefa marcada como não concluída
     no_tasks_assigned: Não há tarefas atribuídas a você
     task_placeholder: Insira uma tarefa e {'@'}mencione alguém para atribuí-la
+    status_todo: A fazer
+    status_done: Concluídas
+    due_any: Qualquer data de vencimento
+    due_overdue: Atrasadas
+    due_next_7_days: Próximos 7 dias
+    due_later: Mais tarde
+    due_none: Sem data de vencimento
+    assigned_anyone: Qualquer pessoa
+    assigned_me: Atribuídas a mim
+    search_members: Buscar membros
+    search_tasks: Buscar tarefas
+    no_open_tasks: Você não tem tarefas em aberto.
+    no_matching_tasks: Nenhuma tarefa corresponde aos seus filtros.
   templates:
     template_gallery: Galeria de modelos
     title_template: "%{title} Modelo"
@@ -3334,6 +3347,23 @@ pt_BR:
     threads_count: 1 conversa | {count} conversas
     view_threads: Ver conversas
     no_threads: Nenhuma conversa
+    this_group_only: Só este grupo
+    my_subgroups: Meus subgrupos
+    all_subgroups: Todos os subgrupos
+    filter_tags: Filtrar tags
+    filter_groups: Filtrar grupos
+    filter_subgroups: Filtrar subgrupos
+    filter_qualifier_unread: não lidas
+    filter_qualifier_direct: diretas
+    filter_qualifier_locked: bloqueadas
+    filter_qualifier_unlocked: desbloqueadas
+    no_filtered_threads: Não há conversas {filters}
+    no_filtered_threads_with_tag: 'Não há conversas {filters} com a tag: {tag}'
+    no_threads_with_tag: 'Não há conversas com a tag: {tag}'
+    recent_count: "{count} recentes"
+    need_vote_count: 1 precisa de voto | {count} precisam de voto
+    open_count: "{count} abertas"
+    files_count: 1 arquivo | {count} arquivos
   onboarding_card:
     extend_trial_title: Libere mais 30 dias
     extend_trial_initial: Libere mais 30 dias quando {count} pessoas votarem em uma proposta ou enquete.
@@ -3344,3 +3374,36 @@ pt_BR:
     trial_extended_description: Seu período de teste foi estendido por 30 dias com subgrupos e convidados habilitados.
     view_plans: Ver planos
     upgrade_now: Mude de plano agora
+  dashboard_cards:
+    all_groups: Todos os grupos
+    unread_count: "{count} não lidas"
+    direct: Diretas
+    direct_count: "{count} diretas"
+    people: Pessoas
+    recently_online: Online recentemente
+    recently_online_count: "{count} online recentemente"
+    your_tasks: Suas tarefas
+    tasks_todo_count: "{count} a fazer"
+    bookmarks_saved_count: "{count} salvos"
+    search_people: Buscar pessoas
+    direct_thread: Conversa direta
+    view_profile: Ver perfil
+    no_people_found: Nenhuma pessoa encontrada
+  group_settings_panel:
+    subtitle: Opções do grupo
+    group_administration: Administração do grupo
+    your_membership: Sua participação
+    integrations_and_data: Integrações e dados
+    leave_or_delete: Sair ou excluir
+    edit_group_description: Atualize o nome, a descrição, o logo, a foto de capa, a privacidade e as permissões dos membros do grupo.
+    edit_tags_description: Crie, renomeie, mescle e defina cores para as tags usadas para organizar conversas e enquetes.
+    manage_subscription_description: Veja seu plano, dados de cobrança e limites de membros.
+    change_volume_description: Escolha com que frequência você recebe notificações por email e push deste grupo.
+    email_group_description: Inicie uma nova conversa neste grupo enviando um email para este endereço.
+    group_stats_description: Veja a atividade dos membros, o envolvimento nas conversas e a participação nas votações ao longo do tempo.
+    become_coordinator_description: Assuma as permissões de admin deste grupo.
+    chatbots_description: Conecte Slack, Mattermost, Discord ou outras ferramentas de chat para publicar atualizações do grupo.
+    api_docs_description: Configure o acesso à API e os webhooks para integrar o Loomio às suas próprias ferramentas.
+    export_data_description: Baixe uma cópia das conversas, enquetes, comentários e membros deste grupo.
+    leave_group_description: Saia deste grupo e pare de receber notificações.
+    destroy_group_description: Agende a exclusão permanente deste grupo e de seu conteúdo.

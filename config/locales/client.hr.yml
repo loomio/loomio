@@ -43,6 +43,19 @@ hr:
     task_updated_not_done: Zadatak označen kao neizvršen
     no_tasks_assigned: Nema zadataka koji su vam dodijeljeni
     task_placeholder: Unesite zadatak i {'@'}spomenite nekoga da ga dodijeli
+    status_todo: Za obaviti
+    status_done: Obavljeno
+    due_any: Bilo koji rok
+    due_overdue: Rok je prošao
+    due_next_7_days: Sljedećih 7 dana
+    due_later: Kasnije
+    due_none: Bez roka
+    assigned_anyone: Bilo tko
+    assigned_me: Dodijeljeno meni
+    search_members: Pretražite članove
+    search_tasks: Pretražite zadatke
+    no_open_tasks: Nemate otvorenih zadataka.
+    no_matching_tasks: Nema zadataka koji odgovaraju vašim filtrima.
   templates:
     template_gallery: Galerija predložaka
     title_template: Predložak %{title}
@@ -3290,6 +3303,23 @@ hr:
     threads_count: 1 nit | {count} niti
     view_threads: Pogledajte niti
     no_threads: Nema niti
+    this_group_only: Samo ova grupa
+    my_subgroups: Moje podgrupe
+    all_subgroups: Sve podgrupe
+    filter_tags: Filtrirajte oznake
+    filter_groups: Filtrirajte grupe
+    filter_subgroups: Filtrirajte podgrupe
+    filter_qualifier_unread: nepročitanih
+    filter_qualifier_direct: izravnih
+    filter_qualifier_locked: zaključanih
+    filter_qualifier_unlocked: otključanih
+    no_filtered_threads: Nema {filters} niti
+    no_filtered_threads_with_tag: 'Nema {filters} niti s oznakom: {tag}'
+    no_threads_with_tag: 'Nema niti s oznakom: {tag}'
+    recent_count: "{count} nedavnih"
+    need_vote_count: 1 čeka glas | {count} čeka glas
+    open_count: "{count} otvorenih"
+    files_count: 1 datoteka | {count} datoteka
   onboarding_card:
     extend_trial_title: Otključajte dodatnih 30 dana
     extend_trial_initial: Otključajte dodatnih 30 dana kad {count} osoba glasa o prijedlogu ili u anketi.
@@ -3300,3 +3330,36 @@ hr:
     trial_extended_description: Vaše probno razdoblje produljeno je za 30 dana uz omogućene podgrupe i goste.
     view_plans: Pogledajte pakete
     upgrade_now: Nadogradite sada
+  dashboard_cards:
+    all_groups: Sve grupe
+    unread_count: "{count} nepročitanih"
+    direct: Izravne
+    direct_count: "{count} izravnih"
+    people: Osobe
+    recently_online: Nedavno na mreži
+    recently_online_count: "{count} nedavno na mreži"
+    your_tasks: Vaši zadaci
+    tasks_todo_count: "{count} za obaviti"
+    bookmarks_saved_count: "{count} spremljenih"
+    search_people: Pretražite osobe
+    direct_thread: Izravna nit
+    view_profile: Pogledajte profil
+    no_people_found: Nema pronađenih osoba
+  group_settings_panel:
+    subtitle: Opcije grupe
+    group_administration: Upravljanje grupom
+    your_membership: Vaše članstvo
+    integrations_and_data: Integracije i podaci
+    leave_or_delete: Napuštanje ili brisanje
+    edit_group_description: Uredite naziv, opis, logotip, naslovnu fotografiju, privatnost i ovlasti članova grupe.
+    edit_tags_description: Izradite, preimenujte, spojite i obojite oznake za organiziranje niti i anketa.
+    manage_subscription_description: Pogledajte svoj paket, podatke za naplatu i ograničenja broja članova.
+    email_group_description: Pokrenite novu nit u ovoj grupi slanjem e-pošte na ovu adresu.
+    group_stats_description: Pratite aktivnost članova, sudjelovanje u nitima i glasanju kroz vrijeme.
+    become_coordinator_description: Preuzmite ovlasti admina ove grupe.
+    chatbots_description: Povežite Slack, Mattermost, Discord ili druge alate za razgovor radi objave novosti iz grupe.
+    api_docs_description: Postavite API pristup i webhookove za povezivanje Loomija s vlastitim alatima.
+    export_data_description: Preuzmite kopiju niti, anketa, komentara i članova ove grupe.
+    leave_group_description: Napustite ovu grupu i prestanite primati obavijesti.
+    destroy_group_description: Zakažite trajno brisanje ove grupe i njezina sadržaja.
+    change_volume_description: Odabir učestalosti primanja obavijesti e-poštom i push obavijesti iz ove grupe.

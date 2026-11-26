@@ -43,6 +43,19 @@ ro:
     task_updated_not_done: Sarcina marcată ca neterminată
     no_tasks_assigned: Nu vă sunt atribuite sarcini
     task_placeholder: Introduceți o sarcină și {'@'}menționați pe cineva căruia să i-o atribuiți
+    status_todo: De făcut
+    status_done: Finalizate
+    due_any: Orice dată scadentă
+    due_overdue: Întârziate
+    due_next_7_days: Următoarele 7 zile
+    due_later: Mai târziu
+    due_none: Fără dată scadentă
+    assigned_anyone: Oricine
+    assigned_me: Atribuite mie
+    search_members: Caută membri
+    search_tasks: Caută sarcini
+    no_open_tasks: Nu ai sarcini deschise.
+    no_matching_tasks: Nicio sarcină nu corespunde filtrelor tale.
   templates:
     template_gallery: Galerie de șabloane
     title_template: Șablon %{title}
@@ -3289,6 +3302,23 @@ ro:
     threads_count: 1 fir | {count} fire
     view_threads: Vezi firele
     no_threads: Niciun fir
+    this_group_only: Doar acest grup
+    my_subgroups: Subgrupurile mele
+    all_subgroups: Toate subgrupurile
+    filter_tags: Filtrează etichetele
+    filter_groups: Filtrează grupurile
+    filter_subgroups: Filtrează subgrupurile
+    filter_qualifier_unread: necitite
+    filter_qualifier_direct: directe
+    filter_qualifier_locked: blocate
+    filter_qualifier_unlocked: deblocate
+    no_filtered_threads: Nu există fire {filters}
+    no_filtered_threads_with_tag: 'Nu există fire {filters} cu eticheta: {tag}'
+    no_threads_with_tag: 'Nu există fire cu eticheta: {tag}'
+    recent_count: "{count} recente"
+    need_vote_count: 1 necesită vot | {count} necesită vot
+    open_count: "{count} deschise"
+    files_count: 1 fișier | {count} fișiere
   onboarding_card:
     extend_trial_title: Deblochează încă 30 de zile
     extend_trial_initial: Deblochează încă 30 de zile când {count} persoane votează la o propunere sau un sondaj.
@@ -3299,3 +3329,36 @@ ro:
     trial_extended_description: Perioada ta de probă a fost prelungită cu 30 de zile, cu subgrupuri și invitați activați.
     view_plans: Vezi planurile
     upgrade_now: Treci acum la un plan superior
+  dashboard_cards:
+    all_groups: Toate grupurile
+    unread_count: "{count} necitite"
+    direct: Directe
+    direct_count: "{count} directe"
+    people: Persoane
+    recently_online: Online recent
+    recently_online_count: "{count} online recent"
+    your_tasks: Sarcinile tale
+    tasks_todo_count: "{count} de făcut"
+    bookmarks_saved_count: "{count} salvate"
+    search_people: Caută persoane
+    direct_thread: Fir direct
+    view_profile: Vezi profilul
+    no_people_found: Nicio persoană găsită
+  group_settings_panel:
+    subtitle: Opțiunile grupului
+    group_administration: Administrarea grupului
+    your_membership: Calitatea ta de membru
+    integrations_and_data: Integrări & date
+    leave_or_delete: Părăsește sau șterge
+    edit_group_description: Actualizează numele, descrierea, sigla, fotografia de copertă, confidențialitatea și permisiunile membrilor grupului.
+    edit_tags_description: Creează, redenumește, îmbină și colorează etichetele folosite pentru a organiza firele și sondajele.
+    manage_subscription_description: Vezi planul tău, detaliile de facturare și limitele de membri.
+    change_volume_description: Alege cât de des primești notificări prin e-mail și push de la acest grup.
+    email_group_description: Începe un fir nou în acest grup trimițând un e-mail la această adresă.
+    group_stats_description: Vezi activitatea membrilor, implicarea în fire și participarea la vot de-a lungul timpului.
+    become_coordinator_description: Preia permisiunile de admin al acestui grup.
+    chatbots_description: Conectează Slack, Mattermost, Discord sau alte aplicații de chat pentru a publica noutăți din grup.
+    api_docs_description: Configurează accesul API și webhookurile pentru a integra Loomio cu propriile instrumente.
+    export_data_description: Descarcă o copie a firelor, sondajelor, comentariilor și membrilor acestui grup.
+    leave_group_description: Părăsește acest grup și nu mai primi notificări.
+    destroy_group_description: Programează ștergerea definitivă a acestui grup și a conținutului său.

@@ -43,6 +43,19 @@ he:
     task_updated_not_done: המשימה סומנה כלא בוצעה
     no_tasks_assigned: לא הוקצו לך משימות
     task_placeholder: הזן משימה ו-{'@'}אזכור מישהו להקצות אותה
+    status_todo: לביצוע
+    status_done: בוצע
+    due_any: כל תאריך יעד
+    due_overdue: באיחור
+    due_next_7_days: ב־7 הימים הקרובים
+    due_later: בהמשך
+    due_none: ללא תאריך יעד
+    assigned_anyone: כולם
+    assigned_me: הוקצו לי
+    search_members: חיפוש חברים
+    search_tasks: חיפוש משימות
+    no_open_tasks: אין לך משימות פתוחות.
+    no_matching_tasks: אין משימות שתואמות למסננים שלך.
   templates:
     template_gallery: גלריית תבניות
     title_template: תבנית %{title}
@@ -3308,6 +3321,23 @@ he:
     threads_count: שרשור אחד | {count} שרשורים
     view_threads: הצגת שרשורים
     no_threads: אין שרשורים
+    this_group_only: רק הקבוצה הזו
+    my_subgroups: תת־הקבוצות שלי
+    all_subgroups: כל תת־הקבוצות
+    filter_tags: סינון תגיות
+    filter_groups: סינון קבוצות
+    filter_subgroups: סינון תת־קבוצות
+    filter_qualifier_unread: שלא נקראו
+    filter_qualifier_direct: ישירים
+    filter_qualifier_locked: נעולים
+    filter_qualifier_unlocked: לא נעולים
+    no_filtered_threads: אין שרשורים {filters}
+    no_filtered_threads_with_tag: 'אין שרשורים {filters} עם התגית: {tag}'
+    no_threads_with_tag: 'אין שרשורים עם התגית: {tag}'
+    recent_count: "{count} מהזמן האחרון"
+    need_vote_count: 1 ממתין להצבעה | {count} ממתינים להצבעה
+    open_count: "{count} פתוחים"
+    files_count: קובץ אחד | {count} קבצים
   onboarding_card:
     extend_trial_title: קבלת 30 ימים נוספים
     extend_trial_initial: כש־{count} אנשים יצביעו בהצעה או בסקר, יתווספו 30 ימים לתקופת הניסיון.
@@ -3318,3 +3348,36 @@ he:
     trial_extended_description: תקופת הניסיון הוארכה ב־30 ימים, עם אפשרות לתת־קבוצות ולאורחים.
     view_plans: הצגת מסלולים
     upgrade_now: שדרוג עכשיו
+  dashboard_cards:
+    all_groups: כל הקבוצות
+    unread_count: "{count} שלא נקראו"
+    direct: ישירים
+    direct_count: "{count} ישירים"
+    people: אנשים
+    recently_online: התחברו לאחרונה
+    recently_online_count: "{count} התחברו לאחרונה"
+    your_tasks: המשימות שלך
+    tasks_todo_count: "{count} לביצוע"
+    bookmarks_saved_count: "{count} נשמרו"
+    search_people: חיפוש אנשים
+    direct_thread: שרשור ישיר
+    view_profile: הצגת פרופיל
+    no_people_found: לא נמצאו אנשים
+  group_settings_panel:
+    subtitle: אפשרויות הקבוצה
+    group_administration: ניהול הקבוצה
+    your_membership: החברות בקבוצה
+    integrations_and_data: חיבורים ונתונים
+    leave_or_delete: עזיבה או מחיקה
+    edit_group_description: ניתן לעדכן את שם הקבוצה, התיאור, הלוגו, תמונת הנושא, הפרטיות והרשאות החברים.
+    edit_tags_description: ניתן ליצור תגיות, לשנות את שמן, למזג ולסמן אותן בצבעים כדי לארגן שרשורים וסקרים.
+    manage_subscription_description: ניתן לצפות במסלול, בפרטי החיוב ובמגבלות מספר החברים.
+    email_group_description: ניתן לפתוח שרשור חדש בקבוצה הזו בשליחת מייל לכתובת הזו.
+    group_stats_description: ניתן לצפות בפעילות החברים, במעורבות בשרשורים ובהשתתפות בהצבעות לאורך זמן.
+    become_coordinator_description: ניתן לקבל הרשאות מנהל קבוצה בקבוצה הזו.
+    chatbots_description: ניתן לחבר את Slack, Mattermost, Discord או כלי צ'אט אחרים לפרסום עדכוני הקבוצה.
+    api_docs_description: ניתן להגדיר גישת API ו־webhooks כדי לחבר את Loomio לכלים שלך.
+    export_data_description: ניתן להוריד עותק של השרשורים, הסקרים, התגובות והחברים בקבוצה הזו.
+    leave_group_description: ניתן לעזוב את הקבוצה הזו ולהפסיק לקבל התראות.
+    destroy_group_description: ניתן לתזמן מחיקה לצמיתות של הקבוצה הזו והתוכן שלה.
+    change_volume_description: בחירה בתדירות קבלת התראות בדוא״ל והתראות דחיפה מהקבוצה הזו.

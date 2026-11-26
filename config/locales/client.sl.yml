@@ -43,6 +43,19 @@ sl:
     task_updated_not_done: Opravilo označeno kot nedokončano
     no_tasks_assigned: Dodeljena vam ni nobena naloga
     task_placeholder: Vnesite opravilo in {'@'}omenite nekoga, ki mu ga želite dodeliti
+    status_todo: Za opraviti
+    status_done: Opravljeno
+    due_any: Kateri koli rok
+    due_overdue: Zamujeno
+    due_next_7_days: Naslednjih 7 dni
+    due_later: Pozneje
+    due_none: Brez roka
+    assigned_anyone: Kdor koli
+    assigned_me: Dodeljeno meni
+    search_members: Poiščite člane
+    search_tasks: Poiščite opravila
+    no_open_tasks: Nimate odprtih opravil.
+    no_matching_tasks: Nobeno opravilo ne ustreza vašim filtrom.
   templates:
     template_gallery: Galerija predlog
     title_template: Predloga %{title}
@@ -3289,6 +3302,23 @@ sl:
     threads_count: 1 nit | {count} niti
     view_threads: Oglejte si niti
     no_threads: Ni niti
+    this_group_only: Samo ta skupina
+    my_subgroups: Moje podskupine
+    all_subgroups: Vse podskupine
+    filter_tags: Filtrirajte oznake
+    filter_groups: Filtrirajte skupine
+    filter_subgroups: Filtrirajte podskupine
+    filter_qualifier_unread: neprebranih
+    filter_qualifier_direct: neposrednih
+    filter_qualifier_locked: zaklenjenih
+    filter_qualifier_unlocked: odklenjenih
+    no_filtered_threads: Ni {filters} niti
+    no_filtered_threads_with_tag: 'Ni {filters} niti z oznako: {tag}'
+    no_threads_with_tag: 'Ni niti z oznako: {tag}'
+    recent_count: "{count} nedavnih"
+    need_vote_count: 1 čaka na glas | {count} jih čaka na glas
+    open_count: "{count} odprtih"
+    files_count: 1 datoteka | {count} datotek
   onboarding_card:
     extend_trial_title: Odklenite 30 dodatnih dni
     extend_trial_initial: Odklenite 30 dodatnih dni, ko v predlogu ali anketi glasuje {count} ljudi.
@@ -3299,3 +3329,36 @@ sl:
     trial_extended_description: Vaše preizkusno obdobje je podaljšano za 30 dni z omogočenimi podskupinami in gosti.
     view_plans: Oglejte si pakete
     upgrade_now: Nadgradite zdaj
+  dashboard_cards:
+    all_groups: Vse skupine
+    unread_count: 'Neprebrano: {count}'
+    direct: Neposredne
+    direct_count: 'Neposredne: {count}'
+    people: Ljudje
+    recently_online: Nedavno na spletu
+    recently_online_count: 'Nedavno na spletu: {count}'
+    your_tasks: Vaša opravila
+    tasks_todo_count: 'Za opraviti: {count}'
+    bookmarks_saved_count: 'Shranjeno: {count}'
+    search_people: Poiščite ljudi
+    direct_thread: Neposredna nit
+    view_profile: Oglejte si profil
+    no_people_found: Ni najdenih ljudi
+  group_settings_panel:
+    subtitle: Možnosti skupine
+    group_administration: Upravljanje skupine
+    your_membership: Vaše članstvo
+    integrations_and_data: Povezave in podatki
+    leave_or_delete: Zapustite ali izbrišite
+    edit_group_description: Posodobite ime skupine, opis, logotip, naslovno fotografijo, zasebnost in dovoljenja članov.
+    edit_tags_description: Ustvarite, preimenujte, združite in barvno označite oznake za urejanje niti in anket.
+    manage_subscription_description: Oglejte si svoj paket, podatke za obračun in omejitve števila članov.
+    email_group_description: Začnite novo nit v tej skupini s pošiljanjem e-pošte na ta naslov.
+    group_stats_description: Oglejte si dejavnost članov, sodelovanje v nitih in udeležbo pri glasovanju skozi čas.
+    become_coordinator_description: Pridobite dovoljenja skrbnika te skupine.
+    chatbots_description: Povežite Slack, Mattermost, Discord ali druga orodja za klepet za objavljanje novosti skupine.
+    api_docs_description: Nastavite dostop do API-ja in spletne kavlje za povezavo Loomia s svojimi orodji.
+    export_data_description: Prenesite kopijo niti, anket, komentarjev in članov te skupine.
+    leave_group_description: Zapustite to skupino in prenehajte prejemati obvestila.
+    destroy_group_description: Načrtujte trajni izbris te skupine in njene vsebine.
+    change_volume_description: Izbira pogostosti prejemanja e-poštnih in potisnih obvestil iz te skupine.

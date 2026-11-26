@@ -43,6 +43,19 @@ fr:
     task_updated_not_done: Tâche marquée comme pas terminée !
     no_tasks_assigned: Aucune tâche ne vous a été assignée
     task_placeholder: Saisissez une tâche et {'@'}mentionnez quelqu'un à qui l'attribuer
+    status_todo: À faire
+    status_done: Terminées
+    due_any: Toutes les échéances
+    due_overdue: En retard
+    due_next_7_days: 7 prochains jours
+    due_later: Plus tard
+    due_none: Sans échéance
+    assigned_anyone: Tout le monde
+    assigned_me: Attribuées à moi
+    search_members: Rechercher des membres
+    search_tasks: Rechercher des tâches
+    no_open_tasks: Vous n’avez aucune tâche en cours.
+    no_matching_tasks: Aucune tâche ne correspond à vos filtres.
   templates:
     template_gallery: Galerie de modèles
     title_template: "%{title} Modèle"
@@ -3334,6 +3347,23 @@ fr:
     threads_count: 1 fil | {count} fils
     view_threads: Voir les fils
     no_threads: Aucun fil
+    this_group_only: Ce groupe uniquement
+    my_subgroups: Mes sous-groupes
+    all_subgroups: Tous les sous-groupes
+    filter_tags: Filtrer les tags
+    filter_groups: Filtrer les groupes
+    filter_subgroups: Filtrer les sous-groupes
+    filter_qualifier_unread: non lus
+    filter_qualifier_direct: directs
+    filter_qualifier_locked: verrouillés
+    filter_qualifier_unlocked: déverrouillés
+    no_filtered_threads: Aucun fil {filters}
+    no_filtered_threads_with_tag: 'Aucun fil {filters} avec le tag : {tag}'
+    no_threads_with_tag: 'Aucun fil avec le tag : {tag}'
+    recent_count: "{count} récents"
+    need_vote_count: 1 attend votre vote | {count} attendent votre vote
+    open_count: "{count} ouverts"
+    files_count: 1 fichier | {count} fichiers
   onboarding_card:
     extend_trial_title: Débloquez 30 jours de plus
     extend_trial_initial: Débloquez 30 jours de plus lorsque {count} personnes votent sur une proposition ou un sondage.
@@ -3344,3 +3374,36 @@ fr:
     trial_extended_description: Votre essai a été prolongé de 30 jours avec les sous-groupes et les invités activés.
     view_plans: Voir les offres
     upgrade_now: Passer à une offre payante
+  dashboard_cards:
+    all_groups: Tous les groupes
+    unread_count: "{count} non lus"
+    direct: Directs
+    direct_count: "{count} directs"
+    people: Personnes
+    recently_online: En ligne récemment
+    recently_online_count: "{count} en ligne récemment"
+    your_tasks: Vos tâches
+    tasks_todo_count: "{count} à faire"
+    bookmarks_saved_count: "{count} enregistrés"
+    search_people: Rechercher des personnes
+    direct_thread: Fil direct
+    view_profile: Voir le profil
+    no_people_found: Aucune personne trouvée
+  group_settings_panel:
+    subtitle: Options du groupe
+    group_administration: Administration du groupe
+    your_membership: Votre adhésion
+    integrations_and_data: Intégrations et données
+    leave_or_delete: Quitter ou supprimer
+    edit_group_description: Modifiez le nom, la description, le logo, la photo de couverture, la confidentialité et les permissions des membres du groupe.
+    edit_tags_description: Créez, renommez, fusionnez et colorez les tags servant à organiser les fils et les sondages.
+    manage_subscription_description: Consultez votre forfait, vos informations de facturation et vos limites de membres.
+    change_volume_description: Choisissez la fréquence des notifications par e-mail et push de ce groupe.
+    email_group_description: Créez un fil dans ce groupe en envoyant un e-mail à cette adresse.
+    group_stats_description: Suivez l’activité des membres, les échanges dans les fils et la participation aux votes au fil du temps.
+    become_coordinator_description: Obtenez les permissions d’administrateur de ce groupe.
+    chatbots_description: Connectez Slack, Mattermost, Discord ou d’autres outils de messagerie pour publier les actualités du groupe.
+    api_docs_description: Configurez l’accès à l’API et les webhooks pour intégrer Loomio à vos outils.
+    export_data_description: Téléchargez une copie des fils, sondages, commentaires et membres de ce groupe.
+    leave_group_description: Quittez ce groupe et cessez de recevoir ses notifications.
+    destroy_group_description: Programmez la suppression définitive de ce groupe et de son contenu.

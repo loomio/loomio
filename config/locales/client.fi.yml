@@ -43,6 +43,19 @@ fi:
     task_updated_not_done: Tehtävä merkitty tekemättä
     no_tasks_assigned: Sinulle ei ole määrätty tehtäviä
     task_placeholder: Syötä tehtävä ja {'@'}mainitse joku, jolle haluat sen antaa
+    status_todo: Tekemättä
+    status_done: Tehty
+    due_any: Mikä tahansa eräpäivä
+    due_overdue: Myöhässä
+    due_next_7_days: Seuraavat 7 päivää
+    due_later: Myöhemmin
+    due_none: Ei eräpäivää
+    assigned_anyone: Kuka tahansa
+    assigned_me: Minulle osoitetut
+    search_members: Etsi jäseniä
+    search_tasks: Etsi tehtäviä
+    no_open_tasks: Sinulla ei ole avoimia tehtäviä.
+    no_matching_tasks: Mikään tehtävä ei vastaa suodattimiasi.
   templates:
     template_gallery: Malli galleria
     title_template: "%{title} Malli"
@@ -3289,6 +3302,23 @@ fi:
     threads_count: 1 ketju | {count} ketjua
     view_threads: Näytä ketjut
     no_threads: Ei ketjuja
+    this_group_only: Vain tämä ryhmä
+    my_subgroups: Omat alaryhmäni
+    all_subgroups: Kaikki alaryhmät
+    filter_tags: Suodata tunnisteita
+    filter_groups: Suodata ryhmiä
+    filter_subgroups: Suodata alaryhmiä
+    filter_qualifier_unread: lukemattomia
+    filter_qualifier_direct: suoria
+    filter_qualifier_locked: lukittuja
+    filter_qualifier_unlocked: lukitsemattomia
+    no_filtered_threads: Ei {filters} ketjuja
+    no_filtered_threads_with_tag: 'Ei {filters} ketjuja tunnisteella: {tag}'
+    no_threads_with_tag: 'Ei ketjuja tunnisteella: {tag}'
+    recent_count: "{count} tuoretta"
+    need_vote_count: 1 odottaa ääntäsi | {count} odottaa ääntäsi
+    open_count: "{count} avointa"
+    files_count: 1 tiedosto | {count} tiedostoa
   onboarding_card:
     extend_trial_title: Saa 30 lisäpäivää
     extend_trial_initial: Saat 30 lisäpäivää, kun {count} ihmistä äänestää ehdotuksessa tai kyselyssä.
@@ -3299,3 +3329,36 @@ fi:
     trial_extended_description: Kokeiluasi on jatkettu 30 päivällä, ja alaryhmät ja vieraat ovat nyt käytössä.
     view_plans: Katso tilausvaihtoehdot
     upgrade_now: Päivitä nyt
+  dashboard_cards:
+    all_groups: Kaikki ryhmät
+    unread_count: "{count} lukematonta"
+    direct: Suorat
+    direct_count: "{count} suoraa"
+    people: Ihmiset
+    recently_online: Äskettäin paikalla
+    recently_online_count: "{count} äskettäin paikalla"
+    your_tasks: Sinun tehtäväsi
+    tasks_todo_count: "{count} tekemättä"
+    bookmarks_saved_count: "{count} tallennettu"
+    search_people: Etsi ihmisiä
+    direct_thread: Suora ketju
+    view_profile: Näytä profiili
+    no_people_found: Ihmisiä ei löytynyt
+  group_settings_panel:
+    group_administration: Ryhmän hallinta
+    your_membership: Jäsenyytesi
+    integrations_and_data: Integraatiot & tiedot
+    leave_or_delete: Poistu tai poista
+    edit_group_description: Päivitä ryhmän nimi, kuvaus, logo, kansikuva, yksityisyys ja jäsenten oikeudet.
+    edit_tags_description: Luo, nimeä uudelleen, yhdistä ja värikoodaa ketjujen ja kyselyjen järjestämiseen käytettäviä tunnisteita.
+    manage_subscription_description: Katso tilauksesi, laskutustiedot ja jäsenrajat.
+    change_volume_description: Valitse, kuinka usein saat ryhmästä sähköposti- ja push-ilmoituksia.
+    email_group_description: Aloita ryhmässä uusi ketju lähettämällä sähköposti tähän osoitteeseen.
+    group_stats_description: Seuraa jäsenten aktiivisuutta sekä osallistumista ketjuihin ja äänestyksiin ajan mittaan.
+    become_coordinator_description: Ota ryhmän ylläpitäjän oikeudet itsellesi.
+    chatbots_description: Yhdistä Slack, Mattermost, Discord tai muu chat-työkalu ryhmän päivitysten julkaisemiseen.
+    api_docs_description: Määritä API-käyttö ja webhookit yhdistääksesi Loomion omiin työkaluihisi.
+    export_data_description: Lataa kopio ryhmän ketjuista, kyselyistä, kommenteista ja jäsenistä.
+    leave_group_description: Poistu ryhmästä ja lopeta sen ilmoitusten vastaanottaminen.
+    destroy_group_description: Ajasta ryhmän ja sen sisällön pysyvä poisto.
+    subtitle: Ryhmän vaihtoehdot

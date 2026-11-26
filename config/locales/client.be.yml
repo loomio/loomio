@@ -41,6 +41,19 @@ be:
     task_updated_done: Задача пазначана як выкананая!
     task_updated_not_done: Задача пазначана як няскончаная
     no_tasks_assigned: Вам не даручана ніякіх задач
+    status_todo: Да выканання
+    status_done: Выканана
+    due_any: Любы тэрмін
+    due_overdue: Пратэрмінаваныя
+    due_next_7_days: Наступныя 7 дзён
+    due_later: Пазней
+    due_none: Без тэрміну
+    assigned_anyone: Каму заўгодна
+    assigned_me: Прызначаныя мне
+    search_members: Пошук удзельнікаў
+    search_tasks: Пошук задач
+    no_open_tasks: У вас няма невыкананых задач.
+    no_matching_tasks: Няма задач паводле вашых фільтраў.
   tips:
     get_started_here: Адчуйце Loomio за 4 простыя крокі
     youve_completed_all_the_steps: "\U0001F389 Вы выканалі ўсе крокі!"
@@ -3191,6 +3204,23 @@ be:
     threads_count: 1 тэма | {count} тэм
     view_threads: Праглядзець тэмы
     no_threads: Няма тэм
+    this_group_only: Толькі гэтая група
+    my_subgroups: Мае падгрупы
+    all_subgroups: Усе падгрупы
+    filter_tags: Фільтраваць тэгі
+    filter_groups: Фільтраваць групы
+    filter_subgroups: Фільтраваць падгрупы
+    filter_qualifier_unread: непрачытаных
+    filter_qualifier_direct: прамых
+    filter_qualifier_locked: заблакаваных
+    filter_qualifier_unlocked: разблакаваных
+    no_filtered_threads: Няма {filters} тэм
+    no_filtered_threads_with_tag: 'Няма {filters} тэм з тэгам: {tag}'
+    no_threads_with_tag: 'Няма тэм з тэгам: {tag}'
+    recent_count: "{count} нядаўніх"
+    need_vote_count: 1 чакае голасу | {count} чакаюць голасу
+    open_count: "{count} адкрытых"
+    files_count: 1 файл | {count} файлаў
   onboarding_card:
     extend_trial_title: Атрымайце яшчэ 30 дзён
     extend_trial_initial: Атрымайце яшчэ 30 дзён, калі {count} чалавек прагаласуюць у прапанове ці апытанні.
@@ -3201,3 +3231,36 @@ be:
     trial_extended_description: Ваш пробны перыяд падоўжаны на 30 дзён з магчымасцю ствараць падгрупы і запрашаць гасцей.
     view_plans: Паглядзець тарыфы
     upgrade_now: Перайсці на платны тарыф
+  dashboard_cards:
+    all_groups: Усе групы
+    unread_count: "{count} непрачытаных"
+    direct: Прамыя
+    direct_count: "{count} прамых"
+    people: Людзі
+    recently_online: Нядаўна ў сетцы
+    recently_online_count: "{count} нядаўна ў сетцы"
+    your_tasks: Вашы задачы
+    tasks_todo_count: "{count} да выканання"
+    bookmarks_saved_count: "{count} захаваных"
+    search_people: Пошук людзей
+    direct_thread: Прамая тэма
+    view_profile: Праглядзець профіль
+    no_people_found: Нікога не знойдзена
+  group_settings_panel:
+    subtitle: Налады групы
+    group_administration: Кіраванне групай
+    your_membership: Ваш удзел у групе
+    integrations_and_data: Інтэграцыі і даныя
+    leave_or_delete: Выйсці або выдаліць
+    edit_group_description: Абнавіце назву, апісанне, лагатып, фота вокладкі, прыватнасць і правы ўдзельнікаў групы.
+    edit_tags_description: Стварайце, пераназывайце, аб’ядноўвайце і пазначайце колерамі тэгі для ўпарадкавання тэм і апытанняў.
+    manage_subscription_description: Праглядзіце ваш тарыфны план, плацежныя даныя і ліміты ўдзельнікаў.
+    email_group_description: Пачніце новую тэму ў гэтай групе, даслаўшы ліст на гэты адрас.
+    group_stats_description: Паглядзіце, як з часам змяняюцца актыўнасць удзельнікаў, удзел у тэмах і галасаванні.
+    become_coordinator_description: Атрымайце правы адміністратара гэтай групы.
+    chatbots_description: Падключыце Slack, Mattermost, Discord або іншыя чаты, каб публікаваць навіны групы.
+    api_docs_description: Наладзьце доступ да API і вэбхукі, каб злучыць Loomio з вашымі інструментамі.
+    export_data_description: Спампуйце копію тэм, апытанняў, каментарыяў і спіса ўдзельнікаў гэтай групы.
+    leave_group_description: Выйдзіце з гэтай групы і спыніце атрыманне апавяшчэнняў.
+    destroy_group_description: Заплануйце незваротнае выдаленне гэтай групы і яе змесціва.
+    change_volume_description: Выбар частаты атрымання апавяшчэнняў па электроннай пошце і пуш-апавяшчэнняў ад гэтай групы.

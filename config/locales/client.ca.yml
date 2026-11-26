@@ -43,6 +43,19 @@ ca:
     task_updated_not_done: Tasca marcada com a no feta
     no_tasks_assigned: No hi ha cap tasca assignada
     task_placeholder: Introdueix una tasca i {'@'}menciona algú per assignar-li-la
+    status_todo: Per fer
+    status_done: Fetes
+    due_any: Qualsevol data de venciment
+    due_overdue: Vençudes
+    due_next_7_days: Pròxims 7 dies
+    due_later: Més endavant
+    due_none: Sense data de venciment
+    assigned_anyone: Qualsevol
+    assigned_me: Assignades a mi
+    search_members: Cerca membres
+    search_tasks: Cerca tasques
+    no_open_tasks: No tens cap tasca pendent.
+    no_matching_tasks: Cap tasca coincideix amb els teus filtres.
   templates:
     template_gallery: Galeria de plantilles
     title_template: Plantilla %{title}
@@ -3316,6 +3329,23 @@ ca:
     threads_count: 1 fil | {count} fils
     view_threads: Mostra els fils
     no_threads: Cap fil
+    this_group_only: Només aquest grup
+    my_subgroups: Els meus subgrups
+    all_subgroups: Tots els subgrups
+    filter_tags: Filtra etiquetes
+    filter_groups: Filtra grups
+    filter_subgroups: Filtra subgrups
+    filter_qualifier_unread: no llegits
+    filter_qualifier_direct: directes
+    filter_qualifier_locked: bloquejats
+    filter_qualifier_unlocked: desbloquejats
+    no_filtered_threads: No hi ha fils {filters}
+    no_filtered_threads_with_tag: 'No hi ha fils {filters} amb l''etiqueta: {tag}'
+    no_threads_with_tag: 'No hi ha fils amb l''etiqueta: {tag}'
+    recent_count: "{count} recents"
+    need_vote_count: 1 necessita un vot | {count} necessiten un vot
+    open_count: "{count} obertes"
+    files_count: 1 fitxer | {count} fitxers
   onboarding_card:
     extend_trial_title: Desbloqueja 30 dies més
     extend_trial_initial: Desbloqueja 30 dies més quan {count} persones votin en una proposta o enquesta.
@@ -3326,3 +3356,36 @@ ca:
     trial_extended_description: El teu període de prova s'ha ampliat 30 dies amb els subgrups i els convidats activats.
     view_plans: Veure els plans
     upgrade_now: Millora el pla ara
+  dashboard_cards:
+    all_groups: Tots els grups
+    unread_count: "{count} no llegits"
+    direct: Directes
+    direct_count: "{count} directes"
+    people: Persones
+    recently_online: En línia fa poc
+    recently_online_count: "{count} en línia fa poc"
+    your_tasks: Les teves tasques
+    tasks_todo_count: "{count} per fer"
+    bookmarks_saved_count: "{count} desats"
+    search_people: Cerca persones
+    direct_thread: Fil directe
+    view_profile: Mostra el perfil
+    no_people_found: No s'ha trobat ningú
+  group_settings_panel:
+    subtitle: Opcions del grup
+    group_administration: Administració del grup
+    your_membership: La teva pertinença al grup
+    integrations_and_data: Integracions i dades
+    leave_or_delete: Surt o elimina
+    edit_group_description: Actualitza el nom, la descripció, el logotip, la foto de portada, la privacitat i els permisos dels membres del grup.
+    edit_tags_description: Crea, canvia el nom, fusiona i assigna colors a les etiquetes que organitzen fils i enquestes.
+    manage_subscription_description: Consulta el teu pla, les dades de facturació i els límits de membres.
+    change_volume_description: Tria amb quina freqüència reps notificacions per correu i notificacions push d'aquest grup.
+    email_group_description: Inicia un fil nou en aquest grup enviant un correu a aquesta adreça.
+    group_stats_description: Consulta l'activitat dels membres i la participació en fils i votacions al llarg del temps.
+    become_coordinator_description: Obtén permisos d'admin del grup.
+    chatbots_description: Connecta Slack, Mattermost, Discord o altres eines de xat per publicar novetats del grup.
+    api_docs_description: Configura l'accés a l'API i els webhooks per integrar Loomio amb les teves eines.
+    export_data_description: Descarrega una còpia dels fils, les enquestes, els comentaris i els membres d'aquest grup.
+    leave_group_description: Surt d'aquest grup i deixa de rebre'n notificacions.
+    destroy_group_description: Programa l'eliminació definitiva d'aquest grup i del seu contingut.

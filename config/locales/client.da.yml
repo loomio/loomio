@@ -43,6 +43,19 @@ da:
     task_updated_not_done: Opgave markeret som ikke udført
     no_tasks_assigned: Der er ingen opgaver tildelt dig
     task_placeholder: Indtast en opgave og {'@'}nævn en person, der skal tildele den
+    status_todo: Skal gøres
+    status_done: Udført
+    due_any: Alle forfaldsdatoer
+    due_overdue: Overskredet
+    due_next_7_days: Næste 7 dage
+    due_later: Senere
+    due_none: Ingen forfaldsdato
+    assigned_anyone: Alle
+    assigned_me: Tildelt mig
+    search_members: Søg efter medlemmer
+    search_tasks: Søg efter opgaver
+    no_open_tasks: Du har ingen åbne opgaver.
+    no_matching_tasks: Ingen opgaver matcher dine filtre.
   templates:
     template_gallery: Skabelongalleri
     title_template: "%{title} skabelon"
@@ -3301,6 +3314,23 @@ da:
     threads_count: 1 tråd | {count} tråde
     view_threads: Se tråde
     no_threads: Ingen tråde
+    this_group_only: Kun denne gruppe
+    my_subgroups: Mine undergrupper
+    all_subgroups: Alle undergrupper
+    filter_tags: Filtrer tags
+    filter_groups: Filtrer grupper
+    filter_subgroups: Filtrer undergrupper
+    filter_qualifier_unread: ulæste
+    filter_qualifier_direct: direkte
+    filter_qualifier_locked: låste
+    filter_qualifier_unlocked: ulåste
+    no_filtered_threads: Der er ingen {filters} tråde
+    no_filtered_threads_with_tag: 'Der er ingen {filters} tråde med tag: {tag}'
+    no_threads_with_tag: 'Der er ingen tråde med tag: {tag}'
+    recent_count: "{count} seneste"
+    need_vote_count: 1 mangler stemmer | {count} mangler stemmer
+    open_count: "{count} åbne"
+    files_count: 1 fil | {count} filer
   onboarding_card:
     extend_trial_title: Lås op for 30 ekstra dage
     extend_trial_initial: Lås op for 30 ekstra dage, når {count} personer stemmer om et forslag eller i en afstemning.
@@ -3311,3 +3341,36 @@ da:
     trial_extended_description: Din prøveperiode er forlænget med 30 dage med adgang til undergrupper og gæster.
     view_plans: Se abonnementer
     upgrade_now: Opgrader nu
+  dashboard_cards:
+    all_groups: Alle grupper
+    unread_count: "{count} ulæste"
+    direct: Direkte
+    direct_count: "{count} direkte"
+    people: Personer
+    recently_online: Online for nylig
+    recently_online_count: "{count} online for nylig"
+    your_tasks: Dine opgaver
+    tasks_todo_count: "{count} skal gøres"
+    bookmarks_saved_count: "{count} gemte"
+    search_people: Søg efter personer
+    direct_thread: Direkte tråd
+    view_profile: Se profil
+    no_people_found: Ingen personer fundet
+  group_settings_panel:
+    subtitle: Gruppeindstillinger
+    group_administration: Gruppeadministration
+    your_membership: Dit medlemskab
+    integrations_and_data: Integrationer & data
+    leave_or_delete: Forlad eller slet
+    edit_group_description: Opdater gruppens navn, beskrivelse, logo, coverbillede, privatliv og medlemsrettigheder.
+    edit_tags_description: Opret, omdøb, flet og farvekod tags til at organisere tråde og afstemninger.
+    manage_subscription_description: Se dit abonnement, dine faktureringsoplysninger og medlemsgrænser.
+    change_volume_description: Vælg, hvor ofte du modtager e-mail og pushnotifikationer fra denne gruppe.
+    email_group_description: Start en ny tråd i denne gruppe ved at sende en e-mail til denne adresse.
+    group_stats_description: Se medlemsaktivitet, engagement i tråde og deltagelse i afstemninger over tid.
+    become_coordinator_description: Giv dig selv rettigheder som gruppeadmin i denne gruppe.
+    chatbots_description: Tilslut Slack, Mattermost, Discord eller andre chatværktøjer for at dele nyt fra gruppen.
+    api_docs_description: Opsæt API-adgang og webhooks for at integrere Loomio med dine egne værktøjer.
+    export_data_description: Download en kopi af denne gruppes tråde, afstemninger, kommentarer og medlemmer.
+    leave_group_description: Meld dig ud af denne gruppe, og stop med at modtage notifikationer.
+    destroy_group_description: Planlæg permanent sletning af denne gruppe og dens indhold.

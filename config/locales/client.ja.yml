@@ -42,6 +42,19 @@ ja:
     task_updated_not_done: 未完了としてマークされたタスク
     no_tasks_assigned: あなたに割り当てられたタスクはありません
     task_placeholder: タスクを入力し、{'@'}メンションして割り当てる
+    status_todo: 未完了
+    status_done: 完了
+    due_any: 期日を問わず
+    due_overdue: 期日超過
+    due_next_7_days: 今後7日間
+    due_later: それ以降
+    due_none: 期日なし
+    assigned_anyone: 担当者を問わず
+    assigned_me: 自分が担当
+    search_members: メンバーを検索
+    search_tasks: タスクを検索
+    no_open_tasks: 自分が担当する未完了のタスクはありません。
+    no_matching_tasks: 条件に合うタスクはありません。
   templates:
     template_gallery: テンプレートギャラリー
     title_template: "%{title} テンプレート"
@@ -3288,6 +3301,23 @@ ja:
     threads_count: スレッド1件 | スレッド{count}件
     view_threads: スレッドを見る
     no_threads: スレッドはありません
+    this_group_only: このグループのみ
+    my_subgroups: 参加中のサブグループ
+    all_subgroups: すべてのサブグループ
+    filter_tags: タグを絞り込む
+    filter_groups: グループを絞り込む
+    filter_subgroups: サブグループを絞り込む
+    filter_qualifier_unread: 未読
+    filter_qualifier_direct: ダイレクト
+    filter_qualifier_locked: ロック済み
+    filter_qualifier_unlocked: ロックなし
+    no_filtered_threads: "{filters}のスレッドはありません"
+    no_filtered_threads_with_tag: タグ「{tag}」に一致する{filters}のスレッドはありません
+    no_threads_with_tag: タグ「{tag}」に一致するスレッドはありません
+    recent_count: 最近{count}件
+    need_vote_count: 未投票1件 | 未投票{count}件
+    open_count: 受付中{count}件
+    files_count: ファイル1件 | ファイル{count}件
   onboarding_card:
     extend_trial_title: 試用期間を30日延長
     extend_trial_initial: "{count}人が提案またはアンケートに投票すると、試用期間が30日延長されます。"
@@ -3298,3 +3328,36 @@ ja:
     trial_extended_description: 試用期間が30日延長され、サブグループとゲストが使えるようになりました。
     view_plans: プランを見る
     upgrade_now: 今すぐアップグレード
+  dashboard_cards:
+    all_groups: すべてのグループ
+    unread_count: 未読{count}件
+    direct: ダイレクト
+    direct_count: ダイレクト{count}件
+    people: ユーザー
+    recently_online: 最近オンライン
+    recently_online_count: 最近オンライン{count}人
+    your_tasks: 自分のタスク
+    tasks_todo_count: 未完了{count}件
+    bookmarks_saved_count: 保存済み{count}件
+    search_people: ユーザーを検索
+    direct_thread: ダイレクトスレッド
+    view_profile: プロフィールを見る
+    no_people_found: ユーザーが見つかりません
+  group_settings_panel:
+    subtitle: グループ設定
+    group_administration: グループ管理
+    your_membership: メンバー登録
+    integrations_and_data: 連携とデータ
+    leave_or_delete: 退会または削除
+    edit_group_description: グループ名、説明、ロゴ、カバー写真、公開範囲、メンバーの権限を更新します。
+    edit_tags_description: スレッドやアンケートを整理するタグを作成、名前変更、統合、色分けします。
+    manage_subscription_description: プラン、請求情報、メンバー数の上限を確認します。
+    change_volume_description: このグループからのメールやプッシュ通知を受け取る頻度を選びます。
+    email_group_description: このアドレスにメールを送信して、グループに新しいスレッドを作成します。
+    group_stats_description: メンバーの活動、スレッドへの反応、投票への参加状況の推移を確認します。
+    become_coordinator_description: このグループの管理者権限を取得します。
+    chatbots_description: Slack、Mattermost、Discordなどのチャットツールと連携して、グループの更新情報を投稿します。
+    api_docs_description: APIアクセスとWebhookを設定して、Loomioを独自のツールと連携します。
+    export_data_description: このグループのスレッド、アンケート、コメント、メンバーのデータをダウンロードします。
+    leave_group_description: このグループを退会し、通知の受信を停止します。
+    destroy_group_description: このグループとその内容の完全削除を予約します。

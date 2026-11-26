@@ -44,6 +44,19 @@ zh_TW:
     task_updated_not_done: 工作被標記為未完成
     no_tasks_assigned: 沒有分配給您的工作
     task_placeholder: 輸入任務並{'@'}提及某人來分配它
+    status_todo: 待辦
+    status_done: 已完成
+    due_any: 任何到期日
+    due_overdue: 已逾期
+    due_next_7_days: 未來 7 天
+    due_later: 更晚
+    due_none: 無到期日
+    assigned_anyone: 任何人
+    assigned_me: 指派給我
+    search_members: 搜尋成員
+    search_tasks: 搜尋工作
+    no_open_tasks: 您沒有待辦工作。
+    no_matching_tasks: 沒有符合篩選條件的工作。
   templates:
     template_gallery: 範本庫
     title_template: "%{title} 模板"
@@ -3317,6 +3330,23 @@ zh_TW:
     threads_count: 1 個對話串 | {count} 個對話串
     view_threads: 查看對話串
     no_threads: 沒有對話串
+    this_group_only: 僅此群組
+    my_subgroups: 我的子群組
+    all_subgroups: 所有子群組
+    filter_tags: 篩選標籤
+    filter_groups: 篩選群組
+    filter_subgroups: 篩選子群組
+    filter_qualifier_unread: 未讀
+    filter_qualifier_direct: 私人
+    filter_qualifier_locked: 已鎖定
+    filter_qualifier_unlocked: 未鎖定
+    no_filtered_threads: 沒有符合 {filters} 條件的對話串
+    no_filtered_threads_with_tag: 沒有符合 {filters} 條件且標籤為 {tag} 的對話串
+    no_threads_with_tag: 沒有標籤為 {tag} 的對話串
+    recent_count: "{count} 個近期對話串"
+    need_vote_count: 1 項待投票 | {count} 項待投票
+    open_count: "{count} 項進行中"
+    files_count: 1 個檔案 | {count} 個檔案
   onboarding_card:
     extend_trial_title: 解鎖額外 30 天試用期
     extend_trial_initial: "{count} 人參與提案或投票後，即可解鎖額外 30 天試用期。"
@@ -3327,3 +3357,36 @@ zh_TW:
     trial_extended_description: 試用期已延長 30 天，並已啟用子群組和訪客功能。
     view_plans: 查看方案
     upgrade_now: 立即升級
+  dashboard_cards:
+    all_groups: 所有群組
+    unread_count: "{count} 個未讀"
+    direct: 私人對話串
+    direct_count: "{count} 個私人對話串"
+    people: 人員
+    recently_online: 最近上線
+    recently_online_count: "{count} 人最近上線"
+    your_tasks: 您的工作
+    tasks_todo_count: "{count} 項待辦"
+    bookmarks_saved_count: "{count} 個已儲存"
+    search_people: 搜尋人員
+    direct_thread: 私人對話串
+    view_profile: 查看個人資料
+    no_people_found: 找不到人員
+  group_settings_panel:
+    subtitle: 群組選項
+    group_administration: 群組管理
+    your_membership: 您的成員資格
+    integrations_and_data: 整合與資料
+    leave_or_delete: 退出或刪除
+    edit_group_description: 更新群組名稱、說明、標誌、封面照片、隱私設定及成員權限。
+    edit_tags_description: 建立、重新命名、合併標籤及設定標籤顏色，用來整理對話串和投票。
+    manage_subscription_description: 查看方案、帳單明細及成員人數上限。
+    change_volume_description: 選擇接收此群組電子郵件和推播通知的頻率。
+    email_group_description: 寄電子郵件到此地址，即可在此群組建立新對話串。
+    group_stats_description: 查看成員活動、對話串互動及投票參與情況隨時間的變化。
+    become_coordinator_description: 取得此群組的管理員權限。
+    chatbots_description: 連接 Slack、Mattermost、Discord 或其他聊天工具，發布群組最新動態。
+    api_docs_description: 設定 API 存取權限和 webhook，將 Loomio 與自己的工具整合。
+    export_data_description: 下載此群組的對話串、投票、評論及成員資料副本。
+    leave_group_description: 退出此群組並停止接收通知。
+    destroy_group_description: 排程永久刪除此群組及其內容。

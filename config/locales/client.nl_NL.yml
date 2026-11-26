@@ -43,6 +43,19 @@ nl_NL:
     task_updated_not_done: Taak gemarkeerd als niet voltooid
     no_tasks_assigned: Er zijn geen taken aan u toegewezen
     task_placeholder: Voer een taak in en {'@'}noem iemand die deze moet toewijzen
+    status_todo: Te doen
+    status_done: Voltooid
+    due_any: Alle deadlines
+    due_overdue: Te laat
+    due_next_7_days: Komende 7 dagen
+    due_later: Later
+    due_none: Geen deadline
+    assigned_anyone: Iedereen
+    assigned_me: Aan mij toegewezen
+    search_members: Zoek leden
+    search_tasks: Zoek taken
+    no_open_tasks: Je hebt geen open taken.
+    no_matching_tasks: Geen taken passen bij je filters.
   templates:
     template_gallery: Sjabloongalerij
     title_template: "%{title} sjabloon"
@@ -3316,6 +3329,23 @@ nl_NL:
     threads_count: 1 thread | {count} threads
     view_threads: Bekijk threads
     no_threads: Geen threads
+    this_group_only: Alleen deze groep
+    my_subgroups: Mijn subgroepen
+    all_subgroups: Alle subgroepen
+    filter_tags: Filter labels
+    filter_groups: Filter groepen
+    filter_subgroups: Filter subgroepen
+    filter_qualifier_unread: ongelezen
+    filter_qualifier_direct: directe
+    filter_qualifier_locked: vergrendelde
+    filter_qualifier_unlocked: ontgrendelde
+    no_filtered_threads: Er zijn geen {filters} threads
+    no_filtered_threads_with_tag: 'Er zijn geen {filters} threads met label: {tag}'
+    no_threads_with_tag: 'Er zijn geen threads met label: {tag}'
+    recent_count: "{count} recent"
+    need_vote_count: 1 wacht op je stem | {count} wachten op je stem
+    open_count: "{count} open"
+    files_count: 1 bestand | {count} bestanden
   onboarding_card:
     extend_trial_title: Ontgrendel 30 extra dagen
     extend_trial_initial: Ontgrendel 30 extra dagen zodra {count} mensen stemmen in een voorstel of peiling.
@@ -3326,3 +3356,36 @@ nl_NL:
     trial_extended_description: Je proefperiode is met 30 dagen verlengd en subgroepen en gasten zijn ingeschakeld.
     view_plans: Bekijk abonnementen
     upgrade_now: Upgrade nu
+  dashboard_cards:
+    all_groups: Alle groepen
+    unread_count: "{count} ongelezen"
+    direct: Direct
+    direct_count: "{count} direct"
+    people: Mensen
+    recently_online: Onlangs online
+    recently_online_count: "{count} onlangs online"
+    your_tasks: Jouw taken
+    tasks_todo_count: "{count} te doen"
+    bookmarks_saved_count: "{count} opgeslagen"
+    search_people: Zoek mensen
+    direct_thread: Directe thread
+    view_profile: Bekijk profiel
+    no_people_found: Geen mensen gevonden
+  group_settings_panel:
+    subtitle: Groepsopties
+    group_administration: Groepsbeheer
+    your_membership: Je lidmaatschap
+    integrations_and_data: Integraties & gegevens
+    leave_or_delete: Verlaten of verwijderen
+    edit_group_description: Wijzig de groepsnaam, beschrijving, het logo, de omslagfoto, privacy en rechten van leden.
+    edit_tags_description: Maak, hernoem, combineer en kleur labels om threads en peilingen te ordenen.
+    manage_subscription_description: Bekijk je abonnement, factuurgegevens en ledenlimieten.
+    change_volume_description: Kies hoe vaak je e-mails en pushmeldingen van deze groep ontvangt.
+    email_group_description: Start een nieuwe thread in deze groep door een e-mail naar dit adres te sturen.
+    group_stats_description: Bekijk de activiteit van leden, betrokkenheid bij threads en deelname aan peilingen door de tijd heen.
+    become_coordinator_description: Claim de rechten van een groepsadmin voor deze groep.
+    chatbots_description: Koppel Slack, Mattermost, Discord of andere chatapps om groepsupdates te plaatsen.
+    api_docs_description: Stel API-toegang en webhooks in om Loomio met je eigen tools te verbinden.
+    export_data_description: Download een kopie van de threads, peilingen, reacties en leden van deze groep.
+    leave_group_description: Verlaat deze groep en ontvang geen meldingen meer.
+    destroy_group_description: Plan het definitief verwijderen van deze groep en de inhoud ervan.
