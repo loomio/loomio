@@ -11,7 +11,7 @@ vi.mock('@/shared/services/records', () => ({default: {
   notifications: {fetchNotifications: mocks.notifications, viewed: mocks.viewed}
 }}));
 vi.mock('@/components/notifications/page.vue', () => ({default: {}}));
-vi.mock('@/components/dashboard/polls_to_vote_on_page.vue', () => ({default: {}}));
+vi.mock('@/components/group/polls_panel.vue', () => ({default: {}}));
 
 import { prefetchNavigation } from '@/shared/services/navigation_data';
 

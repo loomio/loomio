@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures.mjs';
 import { groupAction } from '../helpers/groups.mjs';
 
-const pollsToVoteOn = page => page.locator('.polls-to-vote-on-page');
+const pollsToVoteOn = page => page.locator('.polls-panel');
 const noPolls = 'There are no polls you need to vote on';
 
 async function change(page, path) {

@@ -3,7 +3,6 @@ import GroupPage from './components/group/page.vue';
 import TopicPage from './components/topic/page';
 
 const InboxPage = () => import('./components/inbox/page');
-const PollsToVoteOnPage = () => import('./components/dashboard/polls_to_vote_on_page');
 const DashboardPeoplePage = () => import('./components/dashboard/people_page.vue');
 const NotificationsPage = () => import('./components/notifications/page');
 const ExplorePage = () => import('./components/explore/page');
