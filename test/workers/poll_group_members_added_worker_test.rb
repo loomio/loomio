@@ -92,4 +92,49 @@ class PollGroupMembersAddedWorkerTest < ActiveSupport::TestCase
     assert_equal 2, poll.vote_count_eligible
     assert_equal 1, poll.vote_count_uncast
   end
+
+  test 'adds stances for new group members even when the poll author has reached the invitation limit' do
+    billing_env = ENV.slice('CHARGIFY_API_KEY', 'LOOMIO_SUBSCRIPTIONS')
+    ENV.delete('CHARGIFY_API_KEY')
+    ENV['LOOMIO_SUBSCRIPTIONS'] = 'enabled'
+
+    author = User.create!(name: 'Demo Author', email: "demo-author-#{SecureRandom.hex(4)}@example.com", time_zone: 'UTC')
+    group = Group.create!(
+      name: 'Demo group',
+      group_privacy: 'secret',
+      subscription: Subscription.create!(plan: 'demo', max_members: nil)
+    )
+    group.add_admin!(author)
+    poll = PollService.create(params: {
+      title: 'Open demo poll', group_id: group.id, poll_type: 'proposal',
+      closing_at: 1.day.from_now, poll_option_names: %w[agree disagree]
+    }, actor: author)
+
+    # Fill the author's default invitation quota (e.g. reused demo author across demo groups).
+    UserInviter::DEFAULT_INVITATION_LIMIT.times do |i|
+      invitee = User.create!(email: "prior-invitee-#{i}-#{SecureRandom.hex(4)}@example.com", time_zone: 'UTC')
+      Membership.create!(user: invitee, group: Group.create!(name: "Other #{i}", group_privacy: 'secret'), inviter_id: author.id, accepted_at: Time.current)
+    end
+
+    member = users(:alien)
+    group.add_member!(member)
+    clear_enqueued_jobs
+
+    assert AppConfig.app_features[:subscriptions]
+    assert_raises(ThrottleService::LimitReached) do
+      UserInviter.check_invitation_limit!(actor: author, user_ids: [member.id])
+    end
+
+    assert_nothing_raised do
+      PollGroupMembersAddedWorker.perform_now(group.id)
+    end
+
+    assert_equal 1, poll.stances.latest.where(participant_id: member.id).count
+    assert member.can?(:vote_in, poll.reload)
+    assert_equal 2, poll.vote_count_eligible
+  ensure
+    %w[CHARGIFY_API_KEY LOOMIO_SUBSCRIPTIONS].each do |key|
+      billing_env.key?(key) ? ENV[key] = billing_env[key] : ENV.delete(key)
+    end
+  end
 end

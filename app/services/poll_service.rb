@@ -300,39 +300,46 @@ class PollService
         include_actor: include_actor,
         emails: emails
       ).where.not(id: existing_voter_ids)
-      next Stance.none unless users.exists?
 
-      reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
-
-      Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
-        stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
-      end
-
-      users_new = users.where.not(id: reinvited_user_ids).to_a
-      weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
-
-      new_stances = users_new.map do |user|
-        Stance.new(
-          participant: user,
-          poll: poll,
-          inviter: actor,
-          weight: weights_by_user_id.fetch(user.id, 1),
-          latest: true,
-          reason_format: user.default_format,
-          created_at: Time.zone.now
-        )
-      end
-
-      Stance.import(new_stances, on_duplicate_key_ignore: true)
-
-      # New stances are already latest, and reinvitations retain their revision
-      # flags. Resetting every response here locks unrelated votes and can
-      # deadlock with concurrent membership/account changes.
-      poll.update_counts!
-
-      Stance.where(participant_id: users.pluck(:id), poll_id: poll.id, latest: true)
+      create_stances_for_users(poll: poll, actor: actor, users: users)
     end
   end
+
+  def self.create_stances_for_users(poll:, actor:, users:)
+    return Stance.none unless users.exists?
+
+    user_ids = users.pluck(:id)
+    reinvited_user_ids = Stance.revoked.where(poll_id: poll.id, participant_id: user_ids).pluck(:participant_id)
+
+    Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
+      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
+    end
+
+    users_new = users.where.not(id: reinvited_user_ids).to_a
+    weights_by_user_id = poll.weighted_voting? ? poll.member_vote_weights_by_user_id(users_new.map(&:id)) : {}
+
+    new_stances = users_new.map do |user|
+      Stance.new(
+        participant: user,
+        poll: poll,
+        inviter: actor,
+        weight: weights_by_user_id.fetch(user.id, 1),
+        latest: true,
+        reason_format: user.default_format,
+        created_at: Time.zone.now
+      )
+    end
+
+    Stance.import(new_stances, on_duplicate_key_ignore: true)
+
+    # New stances are already latest, and reinvitations retain their revision
+    # flags. Resetting every response here locks unrelated votes and can
+    # deadlock with concurrent membership/account changes.
+    poll.update_counts!
+
+    Stance.where(participant_id: user_ids, poll_id: poll.id, latest: true)
+  end
+  private_class_method :create_stances_for_users
 
   def self.discard(poll:, actor:, &on_topic_item)
     actor.ability.authorize!(:destroy, poll)
@@ -466,14 +473,16 @@ class PollService
     raise "only use on specified_voters_only=false" if poll.specified_voters_only
     return if poll.anonymous?
 
-    member_ids = poll.members.humans.pluck(:id).uniq
-    revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
+    # Anyone-can-vote polls grant stances to existing group/topic members
+    # rather than sending invitations, so bypass UserInviter limits
+    # (matching create_anonymous_poll_voters).
+    poll.with_topic_lock do
+      existing_voter_ids = Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
+      revoked_user_ids = poll.stances.revoked.pluck(:participant_id)
+      users = poll.members.humans.where.not(id: (existing_voter_ids + revoked_user_ids).uniq)
 
-    create_stances(
-      poll: poll,
-      actor: poll.author,
-      user_ids: (member_ids - poll.voter_ids) - revoked_user_ids
-    )
+      create_stances_for_users(poll: poll, actor: poll.author, users: users)
+    end
   end
 
   def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at, preserve_cast_votes: false)
