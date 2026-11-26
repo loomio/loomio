@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   subscriptions: true,
   emit: vi.fn(),
   saveExperience: vi.fn(() => Promise.resolve()),
+  remoteGet: vi.fn(() => Promise.resolve({ participants_count: 1 })),
   groups: null,
   memberships: null,
   users: null,
@@ -42,6 +43,9 @@ vi.mock('@/shared/services/records', () => ({
     },
     users: {
       saveExperience: mocks.saveExperience
+    },
+    remote: {
+      get: mocks.remoteGet
     }
   }
 }));
@@ -100,7 +104,6 @@ describe('GroupCards and PlanBanner', () => {
       name: 'Trial Group',
       membershipsCount: 2,
       adminMembershipsCount: 1,
-      delegatesCount: 0,
       orgMembersCount: 2,
       pollsCount: 5,
       activePollsCount: 2,

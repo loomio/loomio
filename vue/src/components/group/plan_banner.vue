@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { differenceInDays, parseISO } from 'date-fns';
 import Records from '@/shared/services/records';
@@ -9,6 +9,7 @@ import SubscriptionService from '@/shared/services/subscription_service';
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
 const dismissed = ref(false);
+const fetchedParticipantsCount = ref(0);
 
 const REQUIRED_PARTICIPANTS = 3;
 
@@ -45,7 +46,7 @@ const emailInvitationsAllowed = computed(() => (
   Session.user().emailInvitationsAllowed() || parentGroup.value.emailInvitationsAllowed()
 ));
 const participantsCount = computed(() => (
-  trialExtended.value ? REQUIRED_PARTICIPANTS : Math.min(REQUIRED_PARTICIPANTS, parentGroup.value.trialParticipantsCount || 0)
+  trialExtended.value ? REQUIRED_PARTICIPANTS : Math.min(REQUIRED_PARTICIPANTS, fetchedParticipantsCount.value)
 ));
 const participantsRemaining = computed(() => Math.max(0, REQUIRED_PARTICIPANTS - participantsCount.value));
 const extendTrialText = computed(() => (
@@ -61,6 +62,21 @@ const alertColor = computed(() => {
 const visible = computed(() => (
   Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isDisabled.value || (isTrial.value && isAdmin.value))
 ));
+
+watch(
+  () => (visible.value && isTrial.value && !isDisabled.value && !trialExtended.value ? parentGroup.value?.id : null),
+  groupId => {
+    if (!groupId || !Records.remote?.get) { return; }
+    Records.remote.get('subscriptions/trial_status', { group_id: groupId })
+      .then(data => {
+        if (typeof data?.participants_count === 'number') {
+          fetchedParticipantsCount.value = data.participants_count;
+        }
+      })
+      .catch(() => {});
+  },
+  { immediate: true }
+);
 
 function dismiss() {
   dismissed.value = true;

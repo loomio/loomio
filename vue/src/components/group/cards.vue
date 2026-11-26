@@ -75,11 +75,7 @@ const recentThreadsCount = computed(() => recentTopics.value.length);
 const unreadThreadsCount = computed(() => recentTopics.value.filter(topic => topic.isUnread()).length);
 const membersSubtitle = computed(() => {
   const membersCount = group.membershipsCount || 0;
-  const parts = [t('group_cards.members_count', { count: membersCount }, membersCount)];
-  if (group.delegatesCount > 0) {
-    parts.push(t('group_cards.delegates_count', { count: group.delegatesCount }, group.delegatesCount));
-  }
-  return parts.join(', ');
+  return t('group_cards.members_count', { count: membersCount }, membersCount);
 });
 const votesNeededCount = computed(() => (
   isSignedIn.value && Records.polls?.collection

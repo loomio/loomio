@@ -36,7 +36,6 @@ class GroupSerializer < ApplicationSerializer
              :membership_granted_upon,
              :discussion_privacy_options,
              :admin_memberships_count,
-             :delegates_count,
              :discarded_at,
              :discarded_by,
              :attachments,
@@ -53,8 +52,7 @@ class GroupSerializer < ApplicationSerializer
              :categorize_poll_templates,
              :category,
              :request_to_join_prompt,
-             :current_user_followed,
-             :trial_participants_count
+             :current_user_followed
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -63,10 +61,6 @@ class GroupSerializer < ApplicationSerializer
 
   def subgroups_count
     cache_fetch(:subgroups_counts_by_group_id, object.id) { object.subgroups.count }
-  end
-
-  def delegates_count
-    cache_fetch(:delegates_counts_by_group_id, object.id) { object.memberships.active.where(delegate: true).count }
   end
 
   def active_polls_count
@@ -164,14 +158,6 @@ class GroupSerializer < ApplicationSerializer
 
   def include_org_members_count?
     object.is_parent?
-  end
-
-  def trial_participants_count
-    TrialExtensionService.participants_count(object)
-  end
-
-  def include_trial_participants_count?
-    defined?(TrialExtensionService) && object.is_parent? && subscription_record.trial? && subscription_record.trial_extended_at.nil?
   end
 
   def include_token?

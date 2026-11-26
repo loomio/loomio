@@ -136,7 +136,6 @@ module Null::Group
       memberships_count
       pending_memberships_count
       admin_memberships_count
-      delegates_count
       org_members_count
     ]
   end
