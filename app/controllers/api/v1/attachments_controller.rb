@@ -11,7 +11,9 @@ class Api::V1::AttachmentsController < Api::V1::RestfulController
     else
       current_user.group_ids
     end
-    self.collection = AttachmentQuery.find(group_ids, params[:q], (params[:per] || 20), (params[:from] || 0), user: current_user)
+    limit = params[:limit] || params[:per] || 20
+    offset = params[:offset] || params[:from] || 0
+    self.collection = AttachmentQuery.find(group_ids, params[:q], limit, offset, user: current_user)
     self.collection_count = AttachmentQuery.count(group_ids, params[:q], user: current_user)
     respond_with_collection
   end

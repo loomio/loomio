@@ -20,7 +20,7 @@ export function usePeopleSummary() {
 
   function loadPeopleSummary() {
     if (!summaryPromise) {
-      summaryPromise = Records.remote.get('memberships/people', { per: 1 }).then(data => {
+      summaryPromise = Records.remote.get('memberships/people', { limit: 1 }).then(data => {
         setRecentlyOnlineCount(data?.recently_online_count);
         return data;
       }).catch(() => {

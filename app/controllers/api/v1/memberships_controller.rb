@@ -59,9 +59,9 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
     end
 
     total = scope.count
-    from = [ params[:from].to_i, 0 ].max
-    per = params.fetch(:per, 30).to_i.clamp(1, 50)
-    users = scope.order(Arel.sql("users.last_seen_at DESC NULLS LAST, users.id DESC")).offset(from).limit(per)
+    offset = [ (params[:offset] || params[:from]).to_i, 0 ].max
+    limit = (params[:limit] || params[:per] || 30).to_i.clamp(1, 50)
+    users = scope.order(Arel.sql("users.last_seen_at DESC NULLS LAST, users.id DESC")).offset(offset).limit(limit)
 
     render json: {
       users: ActiveModel::ArraySerializer.new(

@@ -1536,10 +1536,11 @@ en:
     polls_count: "1 poll | {count} polls"
     proposals_count: "1 proposal | {count} proposals"
     needs_your_vote: "1 needs your vote | {count} need your vote"
-    need_vote_count: "{count} need vote"
+    need_vote_count: "1 needs vote | {count} need vote"
     open_count: "{count} open"
     no_open_polls: No open polls
     browse_files: View files
+    files_count: "1 file | {count} files"
     invite_get_started: Click here to get started
   onboarding_card:
     view_plans: View plans

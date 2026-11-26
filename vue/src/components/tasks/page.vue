@@ -15,6 +15,7 @@ import { taskRecordTitle } from '@/shared/helpers/task_record_title.mjs';
 import { manualUrl } from '@/shared/helpers/manual_url';
 import { useTasks } from '@/composables/useTasks';
 import TagsFilterMenu from '@/components/tags/filter_menu.vue';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 
 const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
@@ -68,11 +69,19 @@ const assigneeId = computed({
     router.replace({ query });
   }
 });
+const subgroupsFilter = computed({
+  get: () => (group.value && group.value.subgroupsCount > 0 && ['mine', 'all'].includes(route.query?.subgroups) ? route.query.subgroups : null),
+  set: (val) => {
+    const query = { ...route.query };
+    if (!val) { delete query.subgroups; } else { query.subgroups = val; }
+    router.replace({ query });
+  }
+});
 const selectedTag = ref(null);
 const searchQuery = ref('');
 const recentlyToggledIds = ref(new Set());
 
-watch([statusFilter, dueFilter, assigneeId, selectedTag, searchQuery, () => group.value?.id], () => {
+watch([statusFilter, dueFilter, assigneeId, subgroupsFilter, selectedTag, searchQuery, () => group.value?.id], () => {
   recentlyToggledIds.value = new Set();
 });
 
@@ -80,6 +89,7 @@ function fetchCurrentTasks() {
   if (group.value) {
     const params = { group_id: group.value.id };
     if (assigneeId.value) { params.user_id = assigneeId.value; }
+    if (subgroupsFilter.value) { params.subgroups = subgroupsFilter.value; }
     loading.value = groupTaskIds.value.length === 0;
     Records.tasks.fetch({ params }).then(data => {
       groupTaskIds.value = (data?.tasks || []).map(t => t.id);
@@ -125,7 +135,7 @@ watch(memberSearch, val => {
   if (memberMenuOpen.value) { fetchGroupMembers(val || ''); }
 });
 
-watch([() => group.value?.id, assigneeId], fetchCurrentTasks);
+watch([() => group.value?.id, assigneeId, subgroupsFilter], fetchCurrentTasks);
 
 onMounted(() => {
   EventBus.$emit('content-title-visible', false);
@@ -284,6 +294,7 @@ component(:is="embedded ? 'div' : 'v-main'")
       dashboard-cards
 
     .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-3
+      subgroups-filter-menu(v-if="group" :group="group" :selected="subgroupsFilter" @select="subgroupsFilter = $event")
       v-menu
         template(#activator="{ props }")
           v-btn.tasks-page__status-filter.text-medium-emphasis(v-bind="props" variant="tonal")
@@ -384,7 +395,7 @@ component(:is="embedded ? 'div' : 'v-main'")
         variant="flat"
       )
         .px-5.pt-4.pb-2
-          .text-caption.text-medium-emphasis.mb-1(v-if="!group && entry.group && entry.group.name") {{ entry.group.name }}
+          .text-caption.text-medium-emphasis.mb-1(v-if="(!group || subgroupsFilter) && entry.group && entry.group.name") {{ entry.group.name }}
           router-link.text-title-medium.text-high-emphasis.text-decoration-none.underline-on-hover(:to="entry.url") {{ entry.title }}
         v-list.px-2.pb-2(density="comfortable")
           v-list-item.tasks-page__item(

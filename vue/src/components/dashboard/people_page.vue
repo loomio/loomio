@@ -20,7 +20,7 @@ const total = ref(cachedTotal.value);
 const loading = ref(cachedPeople.value.length === 0);
 const loadingMore = ref(false);
 const query = ref('');
-const per = 30;
+const limit = 30;
 
 async function fetchPeople({ reset = true } = {}) {
   if (reset) {
@@ -30,11 +30,11 @@ async function fetchPeople({ reset = true } = {}) {
   }
 
   try {
-    const from = reset ? 0 : people.value.length;
+    const offset = reset ? 0 : people.value.length;
     const response = await Records.remote.get('memberships/people', {
       q: query.value.trim() || undefined,
-      from,
-      per
+      offset,
+      limit
     });
     const nextUsers = (response.users || []).map(attrs => new UserModel(attrs));
     people.value = reset ? nextUsers : people.value.concat(nextUsers);

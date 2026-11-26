@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import EventBus from '@/shared/services/event_bus';
@@ -9,6 +9,7 @@ import GroupAbility from '@/shared/abilities/group_ability';
 import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
 import { useBookmarks } from '@/composables/useBookmarks';
 import { useTasks } from '@/composables/useTasks';
+import { useFilesSummary } from '@/composables/useFilesSummary';
 
 const { group } = defineProps({ group: Object });
 const { t } = useI18n();
@@ -18,12 +19,18 @@ const isSignedIn = computed(() => Session.isSignedIn());
 
 const { loadBookmarks } = useBookmarks();
 const { loadTasks, taskIds } = useTasks();
+const { loadFilesSummary, getFilesCount } = useFilesSummary();
 
 if (isSignedIn.value && Records.bookmarks?.fetch) { loadBookmarks(); }
 if (isSignedIn.value && Records.tasks?.remote?.fetch) { loadTasks(); }
+watch(() => group?.id, id => {
+  if (isSignedIn.value && id) { loadFilesSummary(id); }
+}, { immediate: true });
+
+const filesCount = computed(() => getFilesCount(group?.id));
 
 const canAddMembers = computed(() => GroupAbility.canAddMembers(group));
-const showInviteLink = computed(() => canAddMembers.value && (group.membershipsCount || 0) < 3);
+const highlightInvite = computed(() => canAddMembers.value && (group.membershipsCount || 0) < 3);
 
 const basePath = computed(() => (group.handle ? `/${group.handle}` : `/g/${group.key}`));
 const threadsRoute = computed(() => basePath.value);
@@ -94,12 +101,40 @@ function invite() {
   const component = allowed ? 'GroupInvitationForm' : 'GroupShareableLinkForm';
   EventBus.$emit('openModal', { component, props: { group } });
 }
+
+const wrapEl = ref(null);
+const containerWidth = ref(1024);
+let resizeObserver = null;
+
+onMounted(() => {
+  if (!wrapEl.value || typeof ResizeObserver === 'undefined') { return; }
+  containerWidth.value = wrapEl.value.clientWidth || 1024;
+  resizeObserver = new ResizeObserver(entries => {
+    containerWidth.value = entries[0]?.contentRect?.width || 1024;
+  });
+  resizeObserver.observe(wrapEl.value);
+});
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect();
+});
+
+function isCollapsed(section) {
+  const w = containerWidth.value;
+  if (w <= 380) { return true; }
+  if (activeSection.value === section) { return false; }
+  if (section === 'tasks' || section === 'bookmarks') { return true; }
+  if (section === 'files') { return w < 900; }
+  if (section === 'members') { return w <= 680; }
+  if (section === 'polls') { return w <= 500; }
+  return false;
+}
 </script>
 
 <template lang="pug">
-.group-cards-wrap.my-4
+.group-cards-wrap.my-4(ref="wrapEl")
   .group-cards.d-flex.flex-nowrap.align-stretch.ga-2
-    v-tooltip(location="bottom" :text="t('group_cards.threads')")
+    v-tooltip(location="bottom" :text="t('group_cards.threads')" :disabled="!isCollapsed('threads')")
       template(#activator="{ props }")
         v-card.group-cards__card.group-cards__threads.group-page-discussions-tab(
           v-bind="props"
@@ -129,7 +164,7 @@ function invite() {
                   @click.prevent.stop="go(threadsRoute + '?unread=1')"
                 ) {{ t('dashboard_cards.unread_count', { count: unreadThreadsCount }) }}
 
-    v-tooltip(location="bottom" :text="t('group_page.polls')")
+    v-tooltip(location="bottom" :text="t('group_page.polls')" :disabled="!isCollapsed('polls')")
       template(#activator="{ props }")
         v-card.group-cards__card.group-cards__polls.group-page-polls-tab(
           v-bind="props"
@@ -152,14 +187,14 @@ function invite() {
                 a.group-cards__need-vote-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                   :href="pollsRoute + '?status=vote'"
                   @click.prevent.stop="go(pollsRoute + '?status=vote')"
-                ) {{ t('group_cards.need_vote_count', { count: votesNeededCount }) }}
+                ) {{ t('group_cards.need_vote_count', { count: votesNeededCount }, votesNeededCount) }}
                 span.mx-1 ·
                 a.group-cards__open-polls-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                   :href="pollsRoute + '?status=active'"
                   @click.prevent.stop="go(pollsRoute + '?status=active')"
                 ) {{ t('group_cards.open_count', { count: openPollsCount }) }}
 
-    v-tooltip(location="bottom" :text="t('group_page.members')")
+    v-tooltip(location="bottom" :text="t('group_page.members')" :disabled="!isCollapsed('members')")
       template(#activator="{ props }")
         v-card.group-cards__card.group-cards__members.group-page-members-tab(
           v-bind="props"
@@ -176,16 +211,34 @@ function invite() {
               .text-title-small.text-truncate {{ t('group_page.members') }}
               .text-body-small.text-medium-emphasis.text-truncate
                 span(v-if="membersSubtitle") {{ membersSubtitle }}
-                template(v-if="showInviteLink")
+                template(v-if="canAddMembers")
                   span.mx-1(v-if="membersSubtitle") ·
-                  a.group-cards__invite.text-primary.font-weight-medium.text-decoration-none.underline-on-hover(
+                  a.group-cards__invite.text-decoration-none.underline-on-hover(
                     href="#"
+                    :class="highlightInvite ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
                     @click.prevent.stop="invite"
-                  ) {{ t('group_page.invite_people') }}
+                  ) {{ t('common.action.invite') }}
 
-    v-tooltip(v-if="isSignedIn" location="bottom" :text="t('tasks.tasks')")
+    v-tooltip(location="bottom" :text="t('group_page.files')" :disabled="!isCollapsed('files')")
       template(#activator="{ props }")
-        v-card.group-cards__card.group-cards__tasks(
+        v-card.group-cards__card.group-cards__files.group-page-files-tab(
+          v-bind="props"
+          variant="tonal"
+          :color="activeSection === 'files' ? 'primary' : undefined"
+          :class="{ 'group-cards__card--active': activeSection === 'files' }"
+          :active="false"
+          :to="filesRoute"
+          :aria-label="t('group_page.files')"
+        )
+          .group-cards__inner
+            common-icon(name="mdi-file")
+            .group-cards__label
+              .text-title-small.text-truncate {{ t('group_page.files') }}
+              .text-body-small.text-medium-emphasis.text-truncate(v-if="filesCount !== null") {{ t('group_cards.files_count', { count: filesCount }, filesCount) }}
+
+    v-tooltip(v-if="isSignedIn" location="bottom" :text="t('tasks.tasks')" :disabled="!isCollapsed('tasks')")
+      template(#activator="{ props }")
+        v-card.group-cards__card.group-cards__tasks.group-cards__tile-default(
           v-bind="props"
           variant="tonal"
           :color="activeSection === 'tasks' ? 'primary' : undefined"
@@ -208,24 +261,7 @@ function invite() {
                   @click.prevent.stop="go(tasksRoute + '?status=todo')"
                 ) {{ t('dashboard_cards.tasks_todo_count', { count: incompleteTasksCount }, incompleteTasksCount) }}
 
-    v-tooltip(location="bottom" :text="t('group_page.files')")
-      template(#activator="{ props }")
-        v-card.group-cards__card.group-cards__files.group-page-files-tab.group-cards__tile-default(
-          v-bind="props"
-          variant="tonal"
-          :color="activeSection === 'files' ? 'primary' : undefined"
-          :class="{ 'group-cards__card--active': activeSection === 'files' }"
-          :active="false"
-          :to="filesRoute"
-          :aria-label="t('group_page.files')"
-        )
-          .group-cards__inner
-            common-icon(name="mdi-file")
-            .group-cards__label
-              .text-title-small.text-truncate {{ t('group_page.files') }}
-              .text-body-small.text-medium-emphasis.text-truncate {{ t('group_cards.browse_files') }}
-
-    v-tooltip(v-if="isSignedIn" location="bottom" :text="t('bookmarks.bookmarks')")
+    v-tooltip(v-if="isSignedIn" location="bottom" :text="t('bookmarks.bookmarks')" :disabled="!isCollapsed('bookmarks')")
       template(#activator="{ props }")
         v-card.group-cards__card.group-cards__bookmarks.group-cards__tile-default(
           v-bind="props"
@@ -301,20 +337,17 @@ function invite() {
   display: inline-flex;
 }
 
-/* Collapse Tasks to tile below 900px */
+/* Collapse Files to tile below 900px */
 @container (max-width: 899px) {
-  .group-cards__tasks {
+  .group-cards__files {
     flex: 0 0 58px;
   }
-  .group-cards__tasks .group-cards__inner {
+  .group-cards__files .group-cards__inner {
     justify-content: center;
     padding: 0;
   }
-  .group-cards__tasks .group-cards__label {
+  .group-cards__files .group-cards__label {
     display: none;
-  }
-  .group-cards__tasks .group-cards__badge :deep(.v-badge__badge) {
-    display: inline-flex;
   }
 }
 

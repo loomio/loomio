@@ -1,19 +1,21 @@
 <script setup lang="js">
 import { ref, computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { orderBy } from 'lodash-es';
+import { useRoute, useRouter } from 'vue-router';
+import { intersection, orderBy, uniq } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import { useBookmarks } from '@/composables/useBookmarks';
+import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 
 const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
 });
 
 const route = useRoute();
+const router = useRouter();
 const { loadBookmarks } = useBookmarks();
 const loading = ref(true);
 
@@ -21,10 +23,28 @@ const group = computed(() => (
   route.params.key ? Records.groups.fuzzyFind(route.params.key) : null
 ));
 
+const subgroupsFilter = computed({
+  get: () => (group.value && group.value.subgroupsCount > 0 && ['mine', 'all'].includes(route.query?.subgroups) ? route.query.subgroups : null),
+  set: (val) => {
+    const query = { ...route.query };
+    if (!val) { delete query.subgroups; } else { query.subgroups = val; }
+    router.replace({ query });
+  }
+});
+
+const allowedGroupIds = computed(() => {
+  if (!group.value) { return null; }
+  if (subgroupsFilter.value === 'all') { return group.value.organisationIds(); }
+  if (subgroupsFilter.value === 'mine') {
+    return uniq([group.value.id].concat(intersection(group.value.organisationIds(), Session.user().groupIds())));
+  }
+  return [group.value.id];
+});
+
 const bookmarks = computed(() => {
   const all = Records.bookmarks.find({userId: Session.userId, discardedAt: null});
-  const filtered = group.value
-    ? all.filter(b => b.groupId === group.value.id)
+  const filtered = allowedGroupIds.value
+    ? all.filter(b => allowedGroupIds.value.includes(b.groupId))
     : all;
   return orderBy(filtered, ['createdAt'], ['desc']);
 });
@@ -57,6 +77,9 @@ component(:is="embedded ? 'div' : 'v-main'")
     template(v-if="!embedded")
       h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
       dashboard-cards
+
+    .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2(v-if="group")
+      subgroups-filter-menu(:group="group" :selected="subgroupsFilter" @select="subgroupsFilter = $event")
 
     section.bookmarks-page__loading(v-if='loading && bookmarks.length == 0')
       v-card.mb-2

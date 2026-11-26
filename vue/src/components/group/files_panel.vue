@@ -7,6 +7,7 @@ import GroupAbility from '@/shared/abilities/group_ability';
 import { mdiMagnify } from '@mdi/js';
 import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
 import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
+import { useFilesSummary } from '@/composables/useFilesSummary';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
@@ -94,6 +95,9 @@ export default
         this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
         if (!this.searchQuery) {
           cachedAttachmentIds.set(this.cacheKey, this.attachmentIds);
+          if (!this.subgroupsFilter && typeof data?.meta?.total === 'number') {
+            useFilesSummary().setFilesCount(this.group?.id || null, data.meta.total);
+          }
         }
       });
     },

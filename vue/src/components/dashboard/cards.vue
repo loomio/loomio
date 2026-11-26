@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { unreadCutoffDate } from '@/shared/helpers/unread_cutoff.mjs';
@@ -9,6 +9,7 @@ import { usePendingPolls } from '@/composables/usePendingPolls';
 import { useBookmarks } from '@/composables/useBookmarks';
 import { useTasks } from '@/composables/useTasks';
 import { usePeopleSummary } from '@/composables/usePeopleSummary';
+import { useFilesSummary } from '@/composables/useFilesSummary';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -17,11 +18,15 @@ const { loadPendingPolls, findPendingPolls } = usePendingPolls();
 const { loadBookmarks } = useBookmarks();
 const { loadTasks, taskIds } = useTasks();
 const { loadPeopleSummary, recentlyOnlineCount } = usePeopleSummary();
+const { loadFilesSummary, getFilesCount } = useFilesSummary();
 
 loadPendingPolls();
 loadBookmarks();
 loadTasks();
 loadPeopleSummary();
+loadFilesSummary();
+
+const filesCount = computed(() => getFilesCount(null));
 
 const activeSection = computed(() => {
   const path = route?.path || '';
@@ -61,12 +66,40 @@ const incompleteTasksCount = computed(() => (
   taskIds.value.length > 0 ? Records.tasks.find(taskIds.value).filter(t => !t.doneAt).length : 0
 ));
 const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.userId, discardedAt: null }).length);
+
+const wrapEl = ref(null);
+const containerWidth = ref(1024);
+let resizeObserver = null;
+
+onMounted(() => {
+  if (!wrapEl.value || typeof ResizeObserver === 'undefined') { return; }
+  containerWidth.value = wrapEl.value.clientWidth || 1024;
+  resizeObserver = new ResizeObserver(entries => {
+    containerWidth.value = entries[0]?.contentRect?.width || 1024;
+  });
+  resizeObserver.observe(wrapEl.value);
+});
+
+onBeforeUnmount(() => {
+  resizeObserver?.disconnect();
+});
+
+function isCollapsed(section) {
+  const w = containerWidth.value;
+  if (w <= 380) { return true; }
+  if (activeSection.value === section) { return false; }
+  if (section === 'tasks' || section === 'bookmarks') { return true; }
+  if (section === 'files') { return w < 900; }
+  if (section === 'people') { return w <= 680; }
+  if (section === 'polls') { return w <= 500; }
+  return false;
+}
 </script>
 
 <template lang="pug">
-.dashboard-cards-wrap.my-4
+.dashboard-cards-wrap.my-4(ref="wrapEl")
   .dashboard-cards.d-flex.flex-nowrap.align-stretch.ga-2
-    v-tooltip(location="bottom" :text="t('group_cards.threads')")
+    v-tooltip(location="bottom" :text="t('group_cards.threads')" :disabled="!isCollapsed('threads')")
       template(#activator="{ props }")
         v-card.dashboard-cards__card.dashboard-cards__threads(
           v-bind="props"
@@ -97,7 +130,7 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
                     @click.prevent.stop="go('/dashboard?direct=1&unread=1')"
                   ) {{ t('dashboard_cards.direct_count', { count: unreadCounts.direct }, unreadCounts.direct) }}
 
-    v-tooltip(location="bottom" :text="t('group_page.polls')")
+    v-tooltip(location="bottom" :text="t('group_page.polls')" :disabled="!isCollapsed('polls')")
       template(#activator="{ props }")
         v-card.dashboard-cards__card.dashboard-cards__polls(
           v-bind="props"
@@ -120,14 +153,14 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
                 a.dashboard-cards__need-vote-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                   href="/dashboard/polls?status=vote"
                   @click.prevent.stop="go('/dashboard/polls?status=vote')"
-                ) {{ t('group_cards.need_vote_count', { count: pendingPollsCount }) }}
+                ) {{ t('group_cards.need_vote_count', { count: pendingPollsCount }, pendingPollsCount) }}
                 span.mx-1 ·
                 a.dashboard-cards__open-polls-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                   href="/dashboard/polls?status=active"
                   @click.prevent.stop="go('/dashboard/polls?status=active')"
                 ) {{ t('group_cards.open_count', { count: openPollsCount }) }}
 
-    v-tooltip(location="bottom" :text="t('dashboard_cards.people')")
+    v-tooltip(location="bottom" :text="t('dashboard_cards.people')" :disabled="!isCollapsed('people')")
       template(#activator="{ props }")
         v-card.dashboard-cards__card.dashboard-cards__people(
           v-bind="props"
@@ -150,9 +183,26 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
                 template(v-if="recentlyOnlineCount !== null") {{ t('dashboard_cards.recently_online_count', { count: recentlyOnlineCount }, recentlyOnlineCount) }}
                 template(v-else) {{ t('dashboard_cards.recently_online') }}
 
-    v-tooltip(location="bottom" :text="t('tasks.tasks')")
+    v-tooltip(location="bottom" :text="t('group_page.files')" :disabled="!isCollapsed('files')")
       template(#activator="{ props }")
-        v-card.dashboard-cards__card.dashboard-cards__tasks(
+        v-card.dashboard-cards__card.dashboard-cards__files(
+          v-bind="props"
+          variant="tonal"
+          :color="activeSection === 'files' ? 'primary' : undefined"
+          :class="{ 'dashboard-cards__card--active': activeSection === 'files' }"
+          :active="false"
+          to="/dashboard/files"
+          :aria-label="t('group_page.files')"
+        )
+          .dashboard-cards__inner
+            common-icon(name="mdi-file")
+            .dashboard-cards__label
+              .text-title-small.text-truncate {{ t('group_page.files') }}
+              .text-body-small.text-medium-emphasis.text-truncate(v-if="filesCount !== null") {{ t('group_cards.files_count', { count: filesCount }, filesCount) }}
+
+    v-tooltip(location="bottom" :text="t('tasks.tasks')" :disabled="!isCollapsed('tasks')")
+      template(#activator="{ props }")
+        v-card.dashboard-cards__card.dashboard-cards__tasks.dashboard-cards__tile-default(
           v-bind="props"
           variant="tonal"
           :color="activeSection === 'tasks' ? 'primary' : undefined"
@@ -175,24 +225,7 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
                   @click.prevent.stop="go('/dashboard/tasks?status=todo')"
                 ) {{ t('dashboard_cards.tasks_todo_count', { count: incompleteTasksCount }, incompleteTasksCount) }}
 
-    v-tooltip(location="bottom" :text="t('group_page.files')")
-      template(#activator="{ props }")
-        v-card.dashboard-cards__card.dashboard-cards__files.dashboard-cards__tile-default(
-          v-bind="props"
-          variant="tonal"
-          :color="activeSection === 'files' ? 'primary' : undefined"
-          :class="{ 'dashboard-cards__card--active': activeSection === 'files' }"
-          :active="false"
-          to="/dashboard/files"
-          :aria-label="t('group_page.files')"
-        )
-          .dashboard-cards__inner
-            common-icon(name="mdi-file")
-            .dashboard-cards__label
-              .text-title-small.text-truncate {{ t('group_page.files') }}
-              .text-body-small.text-medium-emphasis.text-truncate {{ t('group_cards.browse_files') }}
-
-    v-tooltip(location="bottom" :text="t('bookmarks.bookmarks')")
+    v-tooltip(location="bottom" :text="t('bookmarks.bookmarks')" :disabled="!isCollapsed('bookmarks')")
       template(#activator="{ props }")
         v-card.dashboard-cards__card.dashboard-cards__bookmarks.dashboard-cards__tile-default(
           v-bind="props"
@@ -264,20 +297,17 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
   display: inline-flex;
 }
 
-/* Collapse Tasks to tile below 900px */
+/* Collapse Files to tile below 900px */
 @container (max-width: 899px) {
-  .dashboard-cards__tasks {
+  .dashboard-cards__files {
     flex: 0 0 58px;
   }
-  .dashboard-cards__tasks .dashboard-cards__inner {
+  .dashboard-cards__files .dashboard-cards__inner {
     justify-content: center;
     padding: 0;
   }
-  .dashboard-cards__tasks .dashboard-cards__label {
+  .dashboard-cards__files .dashboard-cards__label {
     display: none;
-  }
-  .dashboard-cards__tasks .dashboard-cards__badge :deep(.v-badge__badge) {
-    display: inline-flex;
   }
 }
 

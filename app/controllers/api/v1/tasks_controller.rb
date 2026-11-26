@@ -4,7 +4,16 @@ class Api::V1::TasksController < Api::V1::RestfulController
       group = Group.kept.find(params[:group_id])
       current_user.ability.authorize!(:show, group)
 
-      scope = group_tasks_scope(group)
+      group_ids = case params[:subgroups]
+      when 'mine'
+        [ group.id ] | (current_user.group_ids & group.id_and_subgroup_ids)
+      when 'all'
+        [ group.id ] | group.all_subgroups.kept.select { |sg| current_user.can?(:show, sg) }.map(&:id)
+      else
+        [ group.id ]
+      end
+
+      scope = group_tasks_scope(group_ids)
       if params[:user_id].present?
         uid = params[:user_id].to_i
         scope = scope
@@ -54,27 +63,27 @@ class Api::V1::TasksController < Api::V1::RestfulController
   end
 
   private
-  def group_tasks_scope(group)
-    discussion_ids = Discussion.kept.joins(:topic).where(topics: { group_id: group.id, discarded_at: nil }).select(:id)
-    poll_ids = Poll.kept.joins(:topic).where(topics: { group_id: group.id, discarded_at: nil }).select(:id)
+  def group_tasks_scope(group_ids)
+    discussion_ids = Discussion.kept.joins(:topic).where(topics: { group_id: group_ids, discarded_at: nil }).select(:id)
+    poll_ids = Poll.kept.joins(:topic).where(topics: { group_id: group_ids, discarded_at: nil }).select(:id)
     comment_ids = Comment.kept
       .joins("INNER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
       .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
-      .where(topics: { group_id: group.id, discarded_at: nil })
+      .where(topics: { group_id: group_ids, discarded_at: nil })
       .select(:id)
-    outcome_ids = Outcome.joins(poll: :topic).where(topics: { group_id: group.id, discarded_at: nil }, polls: { discarded_at: nil }).select(:id)
+    outcome_ids = Outcome.joins(poll: :topic).where(topics: { group_id: group_ids, discarded_at: nil }, polls: { discarded_at: nil }).select(:id)
 
     Task.kept.where(
       "(tasks.record_type = 'Discussion' AND tasks.record_id IN (:discussion_ids)) OR " \
       "(tasks.record_type = 'Poll' AND tasks.record_id IN (:poll_ids)) OR " \
       "(tasks.record_type = 'Comment' AND tasks.record_id IN (:comment_ids)) OR " \
       "(tasks.record_type = 'Outcome' AND tasks.record_id IN (:outcome_ids)) OR " \
-      "(tasks.record_type = 'Group' AND tasks.record_id = :group_id)",
+      "(tasks.record_type = 'Group' AND tasks.record_id IN (:group_ids))",
       discussion_ids: discussion_ids,
       poll_ids: poll_ids,
       comment_ids: comment_ids,
       outcome_ids: outcome_ids,
-      group_id: group.id
+      group_ids: group_ids
     )
   end
 
