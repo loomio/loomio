@@ -31,6 +31,7 @@ RUN cp "$(node -e "const name = '@pagefind/' + process.platform + '-' + process.
 RUN cp node_modules/pagefind/LICENSE/LICENSE /tmp/pagefind-LICENSE
 
 FROM ruby:${RUBY_VERSION}-slim
+ARG INSTALL_MEDIA_TOOLS=0
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \
@@ -41,7 +42,9 @@ ENV MALLOC_ARENA_MAX=2 \
 
 WORKDIR /loomio
 
-# Base dependencies
+# Base dependencies. Media decoders (libvips, ffmpeg, poppler-utils, imagemagick)
+# live in the Hot Cell sidecar container by default; pass
+# --build-arg INSTALL_MEDIA_TOOLS=1 only for legacy single-container self-hosts.
 RUN apt-get update -qq && \
     apt-get install -y \
       ca-certificates \
@@ -50,13 +53,12 @@ RUN apt-get update -qq && \
       unzip \
       build-essential \
       git \
-      libvips \
-      ffmpeg \
-      poppler-utils \
       sudo \
-      imagemagick \
       libyaml-dev \
       libpq-dev && \
+    if [ "$INSTALL_MEDIA_TOOLS" = "1" ]; then \
+      apt-get install -y libvips ffmpeg poppler-utils imagemagick; \
+    fi && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 

@@ -36,6 +36,7 @@ class PieChartController < ApplicationController
         File.binread(output.path)
       end
     else
+      require 'image_processing/mini_magick'
       png = ImageProcessing::MiniMagick.source(svg_file).loader(background: 'none').convert('png').call
       begin
         File.binread(png.path)

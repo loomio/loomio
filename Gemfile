@@ -32,9 +32,9 @@ gem "aws-sdk-sesv2", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.62", require: false
 gem 'activestorage-hotcell-client'
-gem 'image_processing', '~> 2.2'
-gem 'mini_magick', '~> 5.4'
-gem "ruby-vips"
+gem 'image_processing', '~> 2.2', require: false
+gem 'mini_magick', '~> 5.4', require: false
+gem "ruby-vips", require: false
 gem "stackprof"
 gem "sentry-rails"
 gem 'http_accept_language'

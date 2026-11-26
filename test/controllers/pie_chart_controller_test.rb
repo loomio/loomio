@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'mini_magick'
 
 class PieChartControllerTest < ActionController::TestCase
   test "renders the pie chart with a transparent background" do
