@@ -17,14 +17,14 @@ const { t } = useI18n();
 const { setRecentlyOnlineCount, cachedPeople, cachedTotal, setCachedPeople } = usePeopleSummary();
 const people = ref(cachedPeople.value);
 const total = ref(cachedTotal.value);
-const loading = ref(cachedPeople.value.length === 0);
+const isLoading = ref(cachedPeople.value.length === 0);
 const loadingMore = ref(false);
 const query = ref('');
 const limit = 30;
 
 async function fetchPeople({ reset = true } = {}) {
   if (reset) {
-    loading.value = true;
+    isLoading.value = true;
   } else {
     loadingMore.value = true;
   }
@@ -44,7 +44,7 @@ async function fetchPeople({ reset = true } = {}) {
     }
     setRecentlyOnlineCount(response.recently_online_count);
   } finally {
-    loading.value = false;
+    isLoading.value = false;
     loadingMore.value = false;
   }
 }
@@ -61,12 +61,14 @@ function titleVisible(visible) {
 }
 
 onMounted(() => {
-  EventBus.$emit('content-title-visible', false);
-  EventBus.$emit('currentComponent', {
-    titleKey: 'dashboard_cards.people',
-    page: 'dashboardPeoplePage',
-    group: null
-  });
+  if (!embedded) {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', {
+      titleKey: 'dashboard_cards.people',
+      page: 'dashboardPeoplePage',
+      group: null
+    });
+  }
   fetchPeople({ reset: true });
 });
 </script>
@@ -89,7 +91,7 @@ component(:is="embedded ? 'div' : 'v-main'")
         hide-details
       )
 
-    v-card(v-if="loading && people.length === 0" variant="flat")
+    v-card(v-if="isLoading && people.length === 0" variant="flat")
       loading
 
     v-card(v-else-if="people.length > 0" variant="flat")

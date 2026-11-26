@@ -45,5 +45,12 @@ v-main
       @keydown.enter="openSearchModal"
     )
 
-    router-view
+    .dashboard-page__panel
+      router-view
 </template>
+
+<style scoped>
+.dashboard-page__panel {
+  min-height: calc(100vh - 160px);
+}
+</style>

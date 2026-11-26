@@ -88,5 +88,12 @@ v-main
     attachment-list(:attachments="group.attachments")
     plan-banner(:group="group")
     group-cards(:group="group")
-    router-view
+    .group-page__panel
+      router-view
 </template>
+
+<style scoped>
+.group-page__panel {
+  min-height: calc(100vh - 160px);
+}
+</style>

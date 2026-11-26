@@ -17,7 +17,7 @@ const { embedded } = defineProps({
 const route = useRoute();
 const router = useRouter();
 const { loadBookmarks } = useBookmarks();
-const loading = ref(true);
+const isLoading = ref(true);
 
 const group = computed(() => (
   route.params.key ? Records.groups.fuzzyFind(route.params.key) : null
@@ -54,7 +54,7 @@ const remove = (bookmark) => {
 };
 
 onMounted(() => {
-  if (!group.value) {
+  if (!embedded && !group.value) {
     EventBus.$emit('currentComponent', {
       titleKey: 'bookmarks.bookmarks',
       page: 'bookmarksPage'
@@ -62,7 +62,7 @@ onMounted(() => {
   }
 
   loadBookmarks().finally(() => {
-    loading.value = false;
+    isLoading.value = false;
   });
 });
 
@@ -81,7 +81,7 @@ component(:is="embedded ? 'div' : 'v-main'")
     .d-flex.align-center.flex-wrap.ga-2.pt-4.pb-2(v-if="group")
       subgroups-filter-menu(:group="group" :selected="subgroupsFilter" @select="subgroupsFilter = $event")
 
-    v-card.mb-2(v-if='loading && bookmarks.length == 0' variant="flat")
+    v-card.mb-2(v-if='isLoading && bookmarks.length == 0' variant="flat")
       loading
 
     template(v-else)

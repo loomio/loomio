@@ -30,7 +30,7 @@ const group = computed(() => (
   route.params.key ? Records.groups.fuzzyFind(route.params.key) : null
 ));
 
-const loading = ref(true);
+const isLoading = ref(true);
 const groupTaskIds = ref([]);
 const memberMenuOpen = ref(false);
 const memberSearch = ref('');
@@ -90,16 +90,16 @@ function fetchCurrentTasks() {
     const params = { group_id: group.value.id };
     if (assigneeId.value) { params.user_id = assigneeId.value; }
     if (subgroupsFilter.value) { params.subgroups = subgroupsFilter.value; }
-    loading.value = groupTaskIds.value.length === 0;
+    isLoading.value = groupTaskIds.value.length === 0;
     Records.tasks.fetch({ params }).then(data => {
       groupTaskIds.value = (data?.tasks || []).map(t => t.id);
     }).finally(() => {
-      loading.value = false;
+      isLoading.value = false;
     });
   } else {
-    loading.value = taskIds.value.length === 0;
+    isLoading.value = taskIds.value.length === 0;
     loadTasks().finally(() => {
-      loading.value = false;
+      isLoading.value = false;
     });
   }
 }
@@ -395,7 +395,7 @@ component(:is="embedded ? 'div' : 'v-main'")
         style="max-width: 260px; min-width: 180px"
       )
 
-    v-card(v-if="loading && allTasks.length === 0" variant="flat")
+    v-card(v-if="isLoading && allTasks.length === 0" variant="flat")
       loading
 
     .tasks-page__list(v-else-if="groupedEntries.length > 0")

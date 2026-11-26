@@ -63,7 +63,11 @@ export default {
     });
 
     EventBus.$on('currentComponent', data => {
-      data = Object.assign({focusHeading: true}, data);
+      const sameContext =
+        data.page === this.page &&
+        (data.group?.id ?? null) === (this.group?.id ?? null) &&
+        (data.discussion?.id ?? null) === (this.discussion?.id ?? null);
+      data = Object.assign({focusHeading: !sameContext}, data);
       if (data.title != null) {
         this.title = data.title;
       } else if (data.titleKey != null) {

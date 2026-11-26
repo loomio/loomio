@@ -103,7 +103,7 @@ const items = computed(() => {
   return orderBy(attachments, 'createdAt', 'desc');
 });
 
-const loading = computed(() => Boolean(attachmentLoader.value?.loading));
+const isLoading = computed(() => Boolean(attachmentLoader.value?.loading));
 const canAdminister = computed(() => Boolean(group.value) && GroupAbility.canUpdate(group.value));
 
 if (group.value) {
@@ -148,8 +148,8 @@ div
     )
   v-card.group-files-panel(variant="flat")
     div
-      loading(v-if="loading && !items.length")
-      p.text-center.pa-4(v-else-if="!loading && !items.length") {{ t('common.no_results_found') }}
+      loading(v-if="isLoading && !items.length")
+      p.text-center.pa-4(v-else-if="!isLoading && !items.length") {{ t('common.no_results_found') }}
       v-table(v-else :items="items" hide-default-footer)
         thead
           tr
@@ -176,7 +176,7 @@ div
             variant="tonal"
             color="primary"
             v-if="items.length && !attachmentLoader.exhausted"
-            :loading="loading"
+            :loading="isLoading"
             @click="fetch()"
           )
             span {{ t('common.action.load_more') }}
