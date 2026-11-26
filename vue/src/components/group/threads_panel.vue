@@ -274,6 +274,8 @@ export default
           chain = chain.find({lastActivityAt: {$between: this.loader.pageWindow[this.page]}});
         }
         topics = chain.data();
+      } else if (this.page === 1 && this.loading) {
+        topics = chain.limit(this.per).data();
       }
       return pinnedTopics.concat(topics);
     },

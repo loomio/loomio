@@ -6,11 +6,18 @@ class TaskSerializer < ApplicationSerializer
              :done_at,
              :due_on,
              :record_type,
-             :record_id
+             :record_id,
+             :can_update
 
   has_one :record, polymorphic: true, key: 'record_obj'
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :topic, serializer: TopicSerializer, root: :topics
+
+  def can_update
+    return false unless scope && scope[:current_user]
+
+    scope[:current_user].can?(:update, object)
+  end
 
   def topic
     object.record.topic

@@ -14,10 +14,10 @@ const { embedded } = defineProps({
 });
 
 const { t } = useI18n();
-const { setRecentlyOnlineCount } = usePeopleSummary();
-const people = ref([]);
-const total = ref(0);
-const loading = ref(true);
+const { setRecentlyOnlineCount, cachedPeople, cachedTotal, setCachedPeople } = usePeopleSummary();
+const people = ref(cachedPeople.value);
+const total = ref(cachedTotal.value);
+const loading = ref(cachedPeople.value.length === 0);
 const loadingMore = ref(false);
 const query = ref('');
 const per = 30;
@@ -39,6 +39,9 @@ async function fetchPeople({ reset = true } = {}) {
     const nextUsers = (response.users || []).map(attrs => new UserModel(attrs));
     people.value = reset ? nextUsers : people.value.concat(nextUsers);
     total.value = response.total || 0;
+    if (reset && !query.value.trim()) {
+      setCachedPeople(nextUsers, total.value);
+    }
     setRecentlyOnlineCount(response.recently_online_count);
   } finally {
     loading.value = false;

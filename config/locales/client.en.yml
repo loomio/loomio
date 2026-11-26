@@ -40,6 +40,19 @@ en:
     add_due_date: Add due date
     task_updated_done: Task marked as done!
     task_updated_not_done: Task marked as incomplete
+    status_todo: To do
+    status_done: Done
+    due_any: Any due date
+    due_overdue: Overdue
+    due_next_7_days: Next 7 days
+    due_later: Later
+    due_none: No due date
+    assigned_anyone: Anyone
+    assigned_me: Assigned to me
+    search_members: Search members
+    search_tasks: Search tasks
+    no_open_tasks: You don't have any open tasks.
+    no_matching_tasks: No tasks match your filters.
     no_tasks_assigned: There are no tasks assigned to you
   tips:
     get_started_here: Experience Loomio in 4 easy steps

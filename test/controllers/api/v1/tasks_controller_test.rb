@@ -242,6 +242,35 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     end
   end
 
+  test "group index returns readable group tasks, supports user_id filter, and enforces group authorization" do
+    bystander = User.create!(
+      name: "Group Bystander",
+      email: "task-bystander@example.com",
+      username: "taskbystander",
+      email_verified: true
+    )
+    @group.add_member!(bystander)
+    sign_in bystander
+
+    get :index, params: { group_id: @group.id }
+    assert_response :success
+    tasks = response.parsed_body.fetch('tasks')
+    assert_equal [ 17688090 ], tasks.map { |t| t['uid'] }
+
+    get :index, params: { group_id: @group.id, user_id: @doer.id }
+    assert_response :success
+    assert_equal [ 17688090 ], response.parsed_body.fetch('tasks').map { |t| t['uid'] }
+
+    get :index, params: { group_id: @group.id, user_id: bystander.id }
+    assert_response :success
+    assert_empty response.parsed_body.fetch('tasks')
+
+    sign_in users(:alien)
+    @group.update!(is_visible_to_public: false)
+    get :index, params: { group_id: @group.id }
+    assert_response :forbidden
+  end
+
   private
 
   def task_list_html(uid, author, assignee: nil)

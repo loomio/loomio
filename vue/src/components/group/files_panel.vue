@@ -10,6 +10,8 @@ import SubgroupsFilterMenu from '@/components/group/subgroups_filter_menu.vue';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
+const cachedAttachmentIds = new Map();
+
 export default
 {
   components: { SubgroupsFilterMenu },
@@ -58,6 +60,7 @@ export default
     });
 
     this.searchQuery = this.$route.query.q || '';
+    this.attachmentIds = cachedAttachmentIds.get(this.cacheKey) || [];
     this.fetch();
   },
 
@@ -67,7 +70,7 @@ export default
       this.fetch();
     },
     '$route.query.subgroups'() {
-      this.attachmentIds = [];
+      this.attachmentIds = cachedAttachmentIds.get(this.cacheKey) || [];
       const params = { per: this.per, from: 0 };
       if (this.group) {
         params.group_id = this.group.id;
@@ -89,6 +92,9 @@ export default
         // RecordLoader resolves a failed request after recording its error.
         if (this.attachmentLoader.err) { return; }
         this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
+        if (!this.searchQuery) {
+          cachedAttachmentIds.set(this.cacheKey, this.attachmentIds);
+        }
       });
     },
 
@@ -114,6 +120,9 @@ export default
     subgroupsFilter() {
       if (!this.group || !(this.group.subgroupsCount > 0)) { return null; }
       return ['mine', 'all'].includes(this.$route.query.subgroups) ? this.$route.query.subgroups : null;
+    },
+    cacheKey() {
+      return `${this.group ? this.group.id : 'dashboard'}:${this.subgroupsFilter || 'none'}`;
     },
     items() {
       const attachments = Records.attachments.collection.chain().
@@ -145,7 +154,8 @@ div
       :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(variant="flat")
     div
-      p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
+      loading(v-if="loading && !items.length")
+      p.text-center.pa-4(v-else-if="!loading && !items.length" v-t="'common.no_results_found'")
       v-table(v-else :items="items" hide-default-footer)
         thead
           tr

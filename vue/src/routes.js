@@ -46,6 +46,8 @@ const groupPageChildren = [
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
+  {path: 'tasks', component: TasksPage, props: { embedded: true }, meta: {noScroll: true}},
+  {path: 'bookmarks', component: BookmarksPage, props: { embedded: true }, meta: {noScroll: true}},
   {path: ':stub?', component: GroupThreadsPanel, meta: {noScroll: true}}
 ];
 

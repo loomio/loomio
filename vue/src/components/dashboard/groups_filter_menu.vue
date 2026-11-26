@@ -36,7 +36,9 @@ const currentSection = computed(() => {
   const segments = (route?.path || '').split('/').filter(Boolean);
   if (segments.includes('polls') || segments.includes('polls_to_vote_on')) { return 'polls'; }
   if (segments.includes('members') || segments.includes('people')) { return 'members'; }
+  if (segments.includes('tasks')) { return 'tasks'; }
   if (segments.includes('files')) { return 'files'; }
+  if (segments.includes('bookmarks')) { return 'bookmarks'; }
   return '';
 });
 

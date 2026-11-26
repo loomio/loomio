@@ -3,12 +3,19 @@ import Records from '@/shared/services/records';
 
 let summaryPromise = null;
 const recentlyOnlineCount = ref(null);
+const cachedPeople = ref([]);
+const cachedTotal = ref(0);
 
 export function usePeopleSummary() {
   function setRecentlyOnlineCount(count) {
     if (typeof count === 'number') {
       recentlyOnlineCount.value = count;
     }
+  }
+
+  function setCachedPeople(users, total) {
+    cachedPeople.value = users;
+    cachedTotal.value = total;
   }
 
   function loadPeopleSummary() {
@@ -23,5 +30,12 @@ export function usePeopleSummary() {
     return summaryPromise;
   }
 
-  return { loadPeopleSummary, recentlyOnlineCount, setRecentlyOnlineCount };
+  return {
+    loadPeopleSummary,
+    recentlyOnlineCount,
+    setRecentlyOnlineCount,
+    cachedPeople,
+    cachedTotal,
+    setCachedPeople
+  };
 }

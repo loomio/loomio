@@ -1,11 +1,25 @@
 class Api::V1::TasksController < Api::V1::RestfulController
   def index
-    # return tasks
+    if params[:group_id].present?
+      group = Group.kept.find(params[:group_id])
+      current_user.ability.authorize!(:show, group)
 
-    self.collection = Task.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
-        .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
-        .distinct
-        .select { |task| current_user.can?(:show, task) }
+      scope = group_tasks_scope(group)
+      if params[:user_id].present?
+        uid = params[:user_id].to_i
+        scope = scope
+          .joins('LEFT OUTER JOIN tasks_users ON tasks_users.task_id = tasks.id')
+          .where("tasks.author_id = :uid OR tasks.doer_id = :uid OR tasks_users.user_id = :uid", uid: uid)
+          .distinct
+      end
+
+      self.collection = scope.includes(:record).select { |task| task.record.present? && current_user.can?(:show, task.record) }
+    else
+      self.collection = Task.kept.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
+          .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+          .distinct
+          .select { |task| current_user.can?(:show, task) }
+    end
 
     respond_with_collection
   end
@@ -40,6 +54,30 @@ class Api::V1::TasksController < Api::V1::RestfulController
   end
 
   private
+  def group_tasks_scope(group)
+    discussion_ids = Discussion.kept.joins(:topic).where(topics: { group_id: group.id, discarded_at: nil }).select(:id)
+    poll_ids = Poll.kept.joins(:topic).where(topics: { group_id: group.id, discarded_at: nil }).select(:id)
+    comment_ids = Comment.kept
+      .joins("INNER JOIN topic_items ON topic_items.itemable_type = 'Comment' AND topic_items.itemable_id = comments.id")
+      .joins("INNER JOIN topics ON topics.id = topic_items.topic_id")
+      .where(topics: { group_id: group.id, discarded_at: nil })
+      .select(:id)
+    outcome_ids = Outcome.joins(poll: :topic).where(topics: { group_id: group.id, discarded_at: nil }, polls: { discarded_at: nil }).select(:id)
+
+    Task.kept.where(
+      "(tasks.record_type = 'Discussion' AND tasks.record_id IN (:discussion_ids)) OR " \
+      "(tasks.record_type = 'Poll' AND tasks.record_id IN (:poll_ids)) OR " \
+      "(tasks.record_type = 'Comment' AND tasks.record_id IN (:comment_ids)) OR " \
+      "(tasks.record_type = 'Outcome' AND tasks.record_id IN (:outcome_ids)) OR " \
+      "(tasks.record_type = 'Group' AND tasks.record_id = :group_id)",
+      discussion_ids: discussion_ids,
+      poll_ids: poll_ids,
+      comment_ids: comment_ids,
+      outcome_ids: outcome_ids,
+      group_id: group.id
+    )
+  end
+
   def record
     load_and_authorize(:group, optional: true)      ||
     load_and_authorize(:discussion, optional: true) ||

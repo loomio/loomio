@@ -149,6 +149,8 @@ const polls = computed(() => {
       chain = chain.find({createdAt: {$between: loader.value.pageWindow[page.value]}});
     }
     return chain.simplesort('createdAt', true).data();
+  } else if (page.value === 1 && loader.value.loading) {
+    return chain.simplesort('createdAt', true).limit(per).data();
   } else {
     return [];
   }
@@ -233,7 +235,7 @@ watch(() => route.query.page, fetch);
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
-        v-list(lines="two" v-if='polls.length && loader.pageWindow[page]')
+        v-list(lines="two" v-if='polls.length')
           poll-common-preview(
             :poll='poll'
             v-for='poll in polls'
@@ -241,6 +243,6 @@ watch(() => route.query.page, fetch);
             :display-group-name="dashboard || includeSubgroups"
             :full-name="dashboard")
         p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
-        loading(v-if="loader.loading")
+        loading(v-if="loader.loading && polls.length == 0")
         v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
 </template>

@@ -7,7 +7,7 @@ const taskIds = ref([]);
 export function useTasks() {
   function loadTasks() {
     if (!tasksPromise) {
-      tasksPromise = Records.tasks.remote.fetch('/').then(data => {
+      tasksPromise = Records.tasks.fetch({}).then(data => {
         taskIds.value = (data?.tasks || []).map(t => t.id);
         return data;
       }).catch(() => {

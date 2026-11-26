@@ -1,35 +1,47 @@
 <script setup lang="js">
 import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { orderBy } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
+import { useBookmarks } from '@/composables/useBookmarks';
 
 const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
 });
 
+const route = useRoute();
+const { loadBookmarks } = useBookmarks();
 const loading = ref(true);
 
-const bookmarks = computed(() => orderBy(
-  Records.bookmarks.find({userId: Session.userId, discardedAt: null}),
-  ['createdAt'],
-  ['desc']
+const group = computed(() => (
+  route.params.key ? Records.groups.fuzzyFind(route.params.key) : null
 ));
+
+const bookmarks = computed(() => {
+  const all = Records.bookmarks.find({userId: Session.userId, discardedAt: null});
+  const filtered = group.value
+    ? all.filter(b => b.groupId === group.value.id)
+    : all;
+  return orderBy(filtered, ['createdAt'], ['desc']);
+});
 
 const remove = (bookmark) => {
   bookmark.destroy().then(() => Flash.success('bookmarks.removed'));
 };
 
 onMounted(() => {
-  EventBus.$emit('currentComponent', {
-    titleKey: 'bookmarks.bookmarks',
-    page: 'bookmarksPage'
-  });
+  if (!group.value) {
+    EventBus.$emit('currentComponent', {
+      titleKey: 'bookmarks.bookmarks',
+      page: 'bookmarksPage'
+    });
+  }
 
-  Records.bookmarks.fetch({}).finally(() => {
+  loadBookmarks().finally(() => {
     loading.value = false;
   });
 });

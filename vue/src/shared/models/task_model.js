@@ -11,11 +11,15 @@ export default class TaskModel extends BaseModel {
   }
 
   toggleDone() {
-    this.processing = true
-    if (this.doneAt) {
-      return Records.tasks.remote.postMember(this.id, 'mark_as_not_done').finally(() => this.processing = false);
-    } else {
-      return Records.tasks.remote.postMember(this.id, 'mark_as_done').finally(() => this.processing = false);
-    }
+    const previousDoneAt = this.doneAt;
+    const action = previousDoneAt ? 'mark_as_not_done' : 'mark_as_done';
+    this.doneAt = previousDoneAt ? null : new Date().toISOString();
+    this.processing = true;
+    return Records.tasks.remote.postMember(this.id, action)
+      .catch(error => {
+        this.doneAt = previousDoneAt;
+        throw error;
+      })
+      .finally(() => { this.processing = false; });
   }
 };

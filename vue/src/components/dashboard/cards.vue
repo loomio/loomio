@@ -170,7 +170,10 @@ const bookmarksCount = computed(() => Records.bookmarks.find({ userId: Session.u
             .dashboard-cards__label
               .text-title-small.text-truncate {{ t('tasks.tasks') }}
               .text-body-small.text-medium-emphasis.text-truncate
-                | {{ t('dashboard_cards.tasks_todo_count', { count: incompleteTasksCount }, incompleteTasksCount) }}
+                a.dashboard-cards__todo-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
+                  href="/dashboard/tasks?status=todo"
+                  @click.prevent.stop="go('/dashboard/tasks?status=todo')"
+                ) {{ t('dashboard_cards.tasks_todo_count', { count: incompleteTasksCount }, incompleteTasksCount) }}
 
     v-tooltip(location="bottom" :text="t('group_page.files')")
       template(#activator="{ props }")
