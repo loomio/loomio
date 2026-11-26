@@ -15,7 +15,10 @@ const router = useRouter();
 const inviteClicked = ref(false);
 
 const canAddMembers = computed(() => GroupAbility.canAddMembers(group));
-const highlightInvite = computed(() => canAddMembers.value && (group.membershipsCount || 0) < 3 && !inviteClicked.value);
+const isAdmin = computed(() => (
+  typeof group.adminsInclude === 'function' ? group.adminsInclude(Session.user()) : false
+));
+const highlightInvite = computed(() => isAdmin.value && canAddMembers.value && (group.membershipsCount || 0) < 3 && !inviteClicked.value);
 
 const basePath = computed(() => (group.handle ? `/${group.handle}` : `/g/${group.key}`));
 const threadsRoute = computed(() => basePath.value);
@@ -86,9 +89,8 @@ function invite() {
                 @click.prevent.stop="go(threadsRoute)"
               ) {{ t('group_cards.recent_count', { count: recentThreadsCount }) }}
               span.mx-1 ·
-              a.group-cards__unread-link.text-decoration-none.underline-on-hover(
+              a.group-cards__unread-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                 :href="threadsRoute + '?unread=1'"
-                :class="unreadThreadsCount > 0 || route.query.unread ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
                 @click.prevent.stop="go(threadsRoute + '?unread=1')"
               ) {{ t('dashboard_cards.unread_count', { count: unreadThreadsCount }) }}
     v-col(cols="6" md="3")
@@ -103,15 +105,13 @@ function invite() {
           div
             .text-title-small {{ t('group_page.polls') }}
             .text-body-small.text-medium-emphasis
-              a.group-cards__need-vote-link.text-decoration-none.underline-on-hover(
+              a.group-cards__need-vote-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                 :href="pollsRoute + '?status=vote'"
-                :class="votesNeededCount > 0 || route.query.status === 'vote' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
                 @click.prevent.stop="go(pollsRoute + '?status=vote')"
               ) {{ t('group_cards.need_vote_count', { count: votesNeededCount }) }}
               span.mx-1 ·
-              a.group-cards__open-polls-link.text-decoration-none.underline-on-hover(
+              a.group-cards__open-polls-link.text-decoration-none.underline-on-hover.text-medium-emphasis(
                 :href="pollsRoute + '?status=active'"
-                :class="route.query.status === 'active' ? 'text-primary font-weight-medium' : 'text-medium-emphasis'"
                 @click.prevent.stop="go(pollsRoute + '?status=active')"
               ) {{ t('group_cards.open_count', { count: openPollsCount }) }}
     v-col(cols="6" md="3")

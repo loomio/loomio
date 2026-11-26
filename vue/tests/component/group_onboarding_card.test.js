@@ -203,4 +203,13 @@ describe('GroupCards and PlanBanner', () => {
     expect(mocks.saveExperience).toHaveBeenCalledWith('hideOnboarding', true);
     expect(wrapper.find('.plan-banner__dismiss').exists()).toBe(false);
   });
+
+  it('hides the active trial banner from non-admin members', async () => {
+    const group = setupGroup({ trialParticipantsCount: 1 });
+    mocks.memberships.findOne({ id: 1 }).admin = false;
+    wrapper = mountCards(group);
+    await flushPromises();
+
+    expect(wrapper.find('.plan-banner').exists()).toBe(false);
+  });
 });

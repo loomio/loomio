@@ -1487,10 +1487,14 @@ en:
   dashboard_cards:
     all_groups: All groups
     unread_count: "{count} unread"
+    direct: Direct
     direct_count: "{count} direct"
     people: People
     recently_online: Recently online
+    recently_online_count: "{count} recently online"
     your_tasks: Your tasks
+    tasks_todo_count: "{count} to do"
+    bookmarks_saved_count: "{count} saved"
     search_people: Search people
     direct_thread: Direct thread
     view_profile: View profile

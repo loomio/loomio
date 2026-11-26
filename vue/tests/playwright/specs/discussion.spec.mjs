@@ -108,9 +108,9 @@ test.describe('managing a thread', () => {
 
   test('starts a direct thread and comments in it', async ({ page, flash }) => {
     await ensureSidebar(page);
-    await page.locator('.sidebar__list-item-button--private').click();
-    await page.locator('.topics-page__new-topic-button').click();
-    await page.locator('.topics-page__new-discussion-button').click();
+    await page.locator('.sidebar__list-item-button--recent').click();
+    await page.locator('.discussions-panel__direct-toggle').click();
+    await page.locator('.discussions-panel__new-topic-button').click();
     await page.locator('.discussion-templates--direct-discussion').click();
     await addRecipient(page, 'test@example.com');
     await page.locator('.discussion-form__title-input input').fill('private thread');

@@ -20,6 +20,9 @@ const isLoggedIn = computed(() => Session.isSignedIn());
 const isMember = computed(() => (
   typeof group.membersInclude === 'function' ? group.membersInclude(Session.user()) : false
 ));
+const isAdmin = computed(() => (
+  typeof parentGroup.value.adminsInclude === 'function' ? parentGroup.value.adminsInclude(Session.user()) : false
+));
 const isFree = computed(() => subscription.value?.plan === 'free');
 const isTrial = computed(() => subscription.value?.plan === 'trial');
 const isDisabled = computed(() => (
@@ -56,7 +59,7 @@ const alertColor = computed(() => {
   return 'info';
 });
 const visible = computed(() => (
-  Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isTrial.value || isDisabled.value)
+  Boolean(subscription.value) && isLoggedIn.value && isMember.value && (isDisabled.value || (isTrial.value && isAdmin.value))
 ));
 
 function dismiss() {

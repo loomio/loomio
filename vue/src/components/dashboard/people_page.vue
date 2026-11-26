@@ -5,14 +5,16 @@ import { debounce } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import EventBus from '@/shared/services/event_bus';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import RestfulClient from '@/shared/record_store/restful_client';
+import Records from '@/shared/services/records';
 import UserModel from '@/shared/models/user_model';
+import { usePeopleSummary } from '@/composables/usePeopleSummary';
 
 const { embedded } = defineProps({
   embedded: { type: Boolean, default: false }
 });
 
 const { t } = useI18n();
+const { setRecentlyOnlineCount } = usePeopleSummary();
 const people = ref([]);
 const total = ref(0);
 const loading = ref(true);
@@ -29,7 +31,7 @@ async function fetchPeople({ reset = true } = {}) {
 
   try {
     const from = reset ? 0 : people.value.length;
-    const response = await RestfulClient.get('/api/v1/memberships/people', {
+    const response = await Records.remote.get('memberships/people', {
       q: query.value.trim() || undefined,
       from,
       per
@@ -37,6 +39,7 @@ async function fetchPeople({ reset = true } = {}) {
     const nextUsers = (response.users || []).map(attrs => new UserModel(attrs));
     people.value = reset ? nextUsers : people.value.concat(nextUsers);
     total.value = response.total || 0;
+    setRecentlyOnlineCount(response.recently_online_count);
   } finally {
     loading.value = false;
     loadingMore.value = false;

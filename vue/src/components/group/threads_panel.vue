@@ -54,6 +54,22 @@ export default
       this.routeQuery({ subgroups: val, page: null });
     },
 
+    toggleUnread() {
+      this.routeQuery({
+        unread: this.isUnreadFilter ? null : '1',
+        t: this.$route.query.t === 'unread' ? null : this.$route.query.t,
+        page: null
+      });
+    },
+
+    toggleDirect() {
+      this.routeQuery({
+        direct: this.isDirectFilter ? null : '1',
+        t: this.$route.query.t === 'direct' ? null : this.$route.query.t,
+        page: null
+      });
+    },
+
     hardRefresh() {
       if (this.dashboard) {
         this.refresh();
@@ -314,7 +330,12 @@ export default
     },
 
     canStartThread() {
-      return Boolean(this.group) && DiscussionAbility.canCreate(this.group);
+      if (this.group) { return DiscussionAbility.canCreate(this.group); }
+      return this.dashboard && this.isDirectFilter && Session.isSignedIn();
+    },
+
+    newThreadRoute() {
+      return this.group ? `/discussion_templates/?group_id=${this.group.id}` : '/discussion_templates/';
     },
 
     isLoggedIn() {
@@ -353,6 +374,28 @@ div.discussions-panel(v-if="dashboard || group")
         v-list-item.discussions-panel__filters-unlocked(:active="!lockFilter" @click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.unlocked'")
 
+    v-btn.discussions-panel__unread-toggle(
+      v-if="isLoggedIn"
+      variant="tonal"
+      :color="isUnreadFilter ? 'primary' : undefined"
+      :class="{ 'text-medium-emphasis': !isUnreadFilter }"
+      :aria-pressed="isUnreadFilter"
+      @click="toggleUnread"
+    )
+      common-icon.mr-1(v-if="isUnreadFilter" name="mdi-check" size="small" color="currentColor")
+      span(v-t="'common.unread'")
+
+    v-btn.discussions-panel__direct-toggle(
+      v-if="dashboard"
+      variant="tonal"
+      :color="isDirectFilter ? 'primary' : undefined"
+      :class="{ 'text-medium-emphasis': !isDirectFilter }"
+      :aria-pressed="isDirectFilter"
+      @click="toggleDirect"
+    )
+      common-icon.mr-1(v-if="isDirectFilter" name="mdi-check" size="small" color="currentColor")
+      span(v-t="'dashboard_cards.direct'")
+
     tags-filter-menu(:group="group" :selected-tag="$route.query.tag" @select="selectTag")
     v-btn.text-medium-emphasis(
       variant="tonal"
@@ -363,7 +406,7 @@ div.discussions-panel(v-if="dashboard || group")
     v-spacer
     v-btn.discussions-panel__new-topic-button(
       v-if="canStartThread"
-      :to="'/discussion_templates/?group_id=' + group.id"
+      :to="newThreadRoute"
       variant="elevated"
       color="primary"
     )

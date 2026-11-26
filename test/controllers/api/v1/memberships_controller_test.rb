@@ -860,9 +860,12 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     refute_includes returned_ids, outsider.id
     refute_includes returned_ids, bot_user.id
     assert_not_nil json['users'].find { |u| u['id'] == recent.id }['last_seen_at']
+    assert_operator json['recently_online_count'], :>=, 1
 
     get :people, params: { q: 'Recent' }
     assert_response :success
-    assert_equal [ recent.id ], JSON.parse(response.body)['users'].map { |u| u['id'] }
+    filtered_json = JSON.parse(response.body)
+    assert_equal [ recent.id ], filtered_json['users'].map { |u| u['id'] }
+    assert_equal json['recently_online_count'], filtered_json['recently_online_count']
   end
 end

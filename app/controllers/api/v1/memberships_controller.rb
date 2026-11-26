@@ -43,10 +43,11 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
 
   def people
     group_ids = current_user.group_ids
-    return render json: { users: [], total: 0 } if group_ids.empty?
+    return render json: { users: [], total: 0, recently_online_count: 0 } if group_ids.empty?
 
     member_user_ids = Membership.active.accepted.where(group_id: group_ids).select(:user_id)
     scope = User.active.where(bot: false).where.not(id: current_user.id).where(id: member_user_ids)
+    recently_online_count = scope.where("users.last_seen_at > ?", 24.hours.ago).count
 
     query = params[:q].to_s.strip
     if query.present?
@@ -68,7 +69,8 @@ class Api::V1::MembershipsController < Api::V1::RestfulController
         each_serializer: AuthorSerializer,
         scope: default_scope.merge(include_last_seen_at: true)
       ).as_json,
-      total: total
+      total: total,
+      recently_online_count: recently_online_count
     }
   end
 
