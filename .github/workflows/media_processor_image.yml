@@ -1,17 +1,17 @@
-name: Publish Hot Cell image
+name: Publish media processor image
 
 on:
   push:
     paths:
       - 'hotcell/**'
       - '.ruby-version'
-      - '.github/workflows/hotcell_image.yml'
+      - '.github/workflows/media_processor_image.yml'
   release:
     types: [published]
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: loomio/loomio-hotcell
+  IMAGE_NAME: loomio/media-processor
 
 jobs:
   build:
@@ -66,8 +66,8 @@ jobs:
             RUBY_VERSION=${{ steps.toolchain.outputs.ruby-version }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true,push=true
-          cache-from: type=gha,scope=hotcell-sidecar-${{ matrix.arch }}
-          cache-to: type=gha,scope=hotcell-sidecar-${{ matrix.arch }},mode=max
+          cache-from: type=gha,scope=media-processor-${{ matrix.arch }}
+          cache-to: type=gha,scope=media-processor-${{ matrix.arch }},mode=max
 
       - name: Export digest
         if: ${{ env.HAVESECRET == 'true' }}
@@ -80,7 +80,7 @@ jobs:
         if: ${{ env.HAVESECRET == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: digests-hotcell-sidecar-${{ matrix.arch }}
+          name: digests-media-processor-${{ matrix.arch }}
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 1
@@ -97,7 +97,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: /tmp/digests
-          pattern: digests-hotcell-sidecar-*
+          pattern: digests-media-processor-*
           merge-multiple: true
 
       - uses: docker/setup-buildx-action@v3
